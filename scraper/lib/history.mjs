@@ -18,7 +18,14 @@ import path from "node:path";
 const FILE = path.join(process.cwd(), "..", "data", "availability.jsonl");
 
 /** @typedef {{ts:string, restaurantId:string, source:string, diningDate:string,
- *             anyAvailable:boolean, slots:{time:string,seats:number|null}[]}} Observation */
+ *             anyAvailable:boolean|null, code?:number,
+ *             slots:{time:string,seats:number|null}[]}} Observation */
+
+/* anyAvailable may be null: the source answered, but not with a yes or a no
+ * (a closing day, a booking window not open yet, a status we can't read). Every
+ * reader below counts only the `true` days, so a null can never be mistaken for
+ * a sell-out — which is why sell-out timing is derived from the span of open
+ * observations rather than from whatever the first non-open day happens to be. */
 
 export async function append(observations) {
   if (!observations.length) return 0;

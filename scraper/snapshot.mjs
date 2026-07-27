@@ -38,34 +38,66 @@ function horizonDates() {
   return out;
 }
 
+/**
+ * What the `available` code on a Tabelog calendar day means.
+ *
+ * Established on 2026-07-27 by reading live calendars: 3 lands exactly on each
+ * restaurant's 定休日 plus the obon week and the September public holidays, and
+ * 4 only ever lands on today/tomorrow. 2 is the overwhelmingly common value and
+ * is the one `member_by_date` also uses for a party size you can actually pick,
+ * against 0 for one you can't.
+ *
+ * `null` means "this day is not evidence either way" and is deliberately not
+ * `false`: a shut restaurant is not a restaurant that sold out, and recording it
+ * as one would understate how long its seats really stay open.
+ */
+const VACANCY = {
+  0: { available: false, note: "満席／受付不可" },
+  1: { available: null, note: "残席わずか？ code 1 の意味は未確認" },
+  2: { available: true, note: "空席あり" },
+  3: { available: null, note: "定休日・休業", skip: true },
+  4: { available: null, note: "オンライン受付締切（当日・翌日）", skip: true },
+};
+
 const PROBES = {
   /**
-   * Tabelog's seat-availability calendar lives on the shop page's booking panel.
-   * Selectors here follow the long-standing `rstdtl-vacancy` markup and are
-   * UNVERIFIED — this environment cannot reach tabelog.com. First live run must
-   * confirm them; if the calendar yields nothing the probe throws rather than
-   * recording every date as unavailable.
+   * Tabelog's booking calendar is served as JSON by the shop page's own widget
+   * endpoint — roughly 66 days of day-level status. It has to be fetched from
+   * inside the page: the endpoint is same-origin only and returns the shop's
+   * calendar keyed by rst_id.
    */
   async tabelog(ctx, r) {
-    const page = await open(ctx, `${r.tabelog}yoyaku/`);
+    const page = await open(ctx, r.tabelog);
     try {
-      const cells = await page.$$eval(
-        ".rstdtl-vacancy__date, .vacancy-calendar__date, [data-vacancy-date]",
-        ns => ns.map(n => ({
-          date: n.getAttribute("data-vacancy-date") || n.getAttribute("data-date") || "",
-          state: (n.getAttribute("data-vacancy-status") || n.className || "").toLowerCase(),
-          text: (n.textContent || "").trim(),
-        }))
-      );
-      if (!cells.length) throw new Error("no calendar cells matched — selectors need updating");
+      const payload = await page.evaluate(async id => {
+        const res = await fetch(`/booking/calendar/initial_vacancy?rst_id=${id}`,
+          { headers: { "X-Requested-With": "XMLHttpRequest" } });
+        return res.ok ? res.json() : { __status: res.status };
+      }, r.id);
+
+      if (payload.__status) throw new Error(`vacancy endpoint returned HTTP ${payload.__status}`);
+      const list = payload?.date_with_status?.dateList;
+      if (!Array.isArray(list) || !list.length)
+        throw new Error("vacancy calendar was empty — endpoint or payload shape changed");
+
       const wanted = new Set(horizonDates());
-      return cells
-        .filter(c => wanted.has(c.date))
-        .map(c => ({
-          diningDate: c.date,
-          anyAvailable: !/(満席|full|unavailable|disabled|×)/.test(c.state + c.text),
+      const out = [];
+      for (const d of list) {
+        const diningDate =
+          `${d.year}-${String(d.month).padStart(2, "0")}-${String(d.day).padStart(2, "0")}`;
+        if (!wanted.has(diningDate)) continue;
+        const v = VACANCY[d.available];
+        if (v?.skip) continue;
+        out.push({
+          diningDate,
+          anyAvailable: v ? v.available : null,
+          /* Kept so a day can be reinterpreted later without re-scraping, and so
+             an unrecognised code is visible instead of silently becoming false. */
+          code: d.available,
           slots: [],
-        }));
+        });
+      }
+      return out;
     } finally {
       await page.close();
     }

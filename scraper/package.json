@@ -4,6 +4,10 @@
   "type": "module",
   "scripts": {
     "import": "node import.mjs",
-    "snapshot": "node snapshot.mjs"
+    "snapshot": "node snapshot.mjs",
+    "test": "node --test test.mjs"
+  },
+  "dependencies": {
+    "playwright": "^1.62.0"
   }
 }
