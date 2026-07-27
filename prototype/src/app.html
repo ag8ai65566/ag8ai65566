@@ -1,0 +1,1090 @@
+<title>東京 予約台帳 — 餐廳收藏與訂位規劃</title>
+<style>
+/*FONTFACE*/
+
+/* ── tokens ──────────────────────────────────────────────────────────── */
+:root{
+  --ground:#EDEFF3; --surface:#FFFFFF; --surface-2:#F5F7FA; --surface-3:#E7EBF1;
+  --ink:#131820; --ink-2:#4B5567; --ink-3:#7C8798;
+  --rule:#D3D9E2; --rule-strong:#B8C1CE;
+  --accent:#1D4E8F; --accent-soft:#E3EAF6; --accent-ink:#FFFFFF;
+  --ok:#2E7150; --ok-soft:#DFEDE6;
+  --warn:#8F6A14; --warn-soft:#F5EBD3;
+  --crit:#A93A31; --crit-soft:#F6E2DF;
+  --shadow:0 1px 2px rgba(19,24,32,.05), 0 8px 24px -12px rgba(19,24,32,.18);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ground:#0D1015; --surface:#151A21; --surface-2:#1A2029; --surface-3:#222A35;
+    --ink:#E9ECF2; --ink-2:#A6B0BF; --ink-3:#6F7A8A;
+    --rule:#242C37; --rule-strong:#333D4B;
+    --accent:#7BA8E4; --accent-soft:#1B2635; --accent-ink:#0D1015;
+    --ok:#6FBF95; --ok-soft:#16241D;
+    --warn:#D6AC55; --warn-soft:#2A2214;
+    --crit:#E0796D; --crit-soft:#2C1815;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="light"]{
+  --ground:#EDEFF3; --surface:#FFFFFF; --surface-2:#F5F7FA; --surface-3:#E7EBF1;
+  --ink:#131820; --ink-2:#4B5567; --ink-3:#7C8798;
+  --rule:#D3D9E2; --rule-strong:#B8C1CE;
+  --accent:#1D4E8F; --accent-soft:#E3EAF6; --accent-ink:#FFFFFF;
+  --ok:#2E7150; --ok-soft:#DFEDE6;
+  --warn:#8F6A14; --warn-soft:#F5EBD3;
+  --crit:#A93A31; --crit-soft:#F6E2DF;
+  --shadow:0 1px 2px rgba(19,24,32,.05), 0 8px 24px -12px rgba(19,24,32,.18);
+}
+:root[data-theme="dark"]{
+  --ground:#0D1015; --surface:#151A21; --surface-2:#1A2029; --surface-3:#222A35;
+  --ink:#E9ECF2; --ink-2:#A6B0BF; --ink-3:#6F7A8A;
+  --rule:#242C37; --rule-strong:#333D4B;
+  --accent:#7BA8E4; --accent-soft:#1B2635; --accent-ink:#0D1015;
+  --ok:#6FBF95; --ok-soft:#16241D;
+  --warn:#D6AC55; --warn-soft:#2A2214;
+  --crit:#E0796D; --crit-soft:#2C1815;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.7);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:"Plex Sans","Hiragino Sans","Yu Gothic","Noto Sans TC","Noto Sans JP",system-ui,sans-serif;
+  font-size:14px; line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.jp,.name-jp{font-family:"Instrument Serif","Hiragino Mincho ProN","Yu Mincho","Noto Serif TC","Noto Serif JP",serif}
+.mono,.num{font-family:"Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-variant-numeric:tabular-nums}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* ── shell ───────────────────────────────────────────────────────────── */
+.shell{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:100vh}
+.rail{
+  background:var(--surface);border-right:1px solid var(--rule);
+  display:flex;flex-direction:column;gap:22px;padding:20px 0 18px;
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+}
+.brand{padding:0 20px;display:flex;flex-direction:column;gap:3px}
+.brand .mark{
+  font-family:"Instrument Serif","Hiragino Mincho ProN","Yu Mincho",serif;
+  font-size:25px;line-height:1.1;letter-spacing:.03em;
+}
+.brand .sub{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+.rail-label{
+  padding:0 20px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:7px;
+}
+.tripsel{padding:0 14px}
+.tripsel select{
+  width:100%;background:var(--surface-2);border:1px solid var(--rule);border-radius:3px;
+  padding:8px 9px;font-size:13px;appearance:none;cursor:pointer;
+}
+.tripsel .meta{padding:7px 6px 0;font-size:11.5px;color:var(--ink-3);display:flex;justify-content:space-between}
+
+nav{display:flex;flex-direction:column}
+nav button{
+  display:flex;align-items:center;gap:10px;justify-content:flex-start;
+  background:none;border:0;border-left:2px solid transparent;
+  padding:9px 20px;cursor:pointer;color:var(--ink-2);text-align:left;width:100%;
+  transition:color .12s,background .12s;
+}
+nav button:hover{background:var(--surface-2);color:var(--ink)}
+nav button[aria-current="true"]{color:var(--ink);border-left-color:var(--accent);background:var(--surface-2);font-weight:600}
+nav .cnt{margin-left:auto;font-size:11px;color:var(--ink-3)}
+nav button[aria-current="true"] .cnt{color:var(--accent)}
+
+.rail-foot{margin-top:auto;padding:0 14px;display:flex;flex-direction:column;gap:8px}
+.themebtn{
+  display:flex;align-items:center;justify-content:center;gap:7px;width:100%;
+  background:var(--surface-2);border:1px solid var(--rule);border-radius:3px;
+  padding:7px;cursor:pointer;font-size:12px;color:var(--ink-2);
+}
+.themebtn:hover{border-color:var(--rule-strong);color:var(--ink)}
+.stamp{
+  border:1px solid var(--rule);border-radius:3px;padding:8px 10px;
+  font-size:10.5px;line-height:1.5;color:var(--ink-3);background:var(--surface-2);
+}
+
+/* ── main ────────────────────────────────────────────────────────────── */
+main{min-width:0;padding:28px 34px 72px;max-width:1180px}
+.view{display:none}
+.view.on{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+.vh{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
+    padding-bottom:14px;border-bottom:1px solid var(--rule-strong);margin-bottom:22px;flex-wrap:wrap}
+.vh h1{
+  margin:0;font-family:"Instrument Serif","Hiragino Mincho ProN","Yu Mincho",serif;
+  font-size:34px;font-weight:400;line-height:1.05;letter-spacing:.01em;text-wrap:balance;
+}
+.vh .lede{margin:6px 0 0;color:var(--ink-2);font-size:13px;max-width:60ch}
+.vh .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:5px}
+
+.btn{
+  background:var(--accent);color:var(--accent-ink);border:1px solid var(--accent);
+  border-radius:3px;padding:8px 15px;cursor:pointer;font-size:13px;font-weight:600;
+  transition:opacity .12s;white-space:nowrap;
+}
+.btn:hover{opacity:.87}
+.btn.ghost{background:transparent;color:var(--ink-2);border-color:var(--rule-strong);font-weight:400}
+.btn.ghost:hover{color:var(--ink);border-color:var(--ink-3);opacity:1}
+.btn.sm{padding:5px 11px;font-size:12px}
+
+/* chips / pills */
+.chips{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chip{
+  background:var(--surface);border:1px solid var(--rule);border-radius:999px;
+  padding:4px 11px;font-size:12px;cursor:pointer;color:var(--ink-2);transition:.12s;
+}
+.chip:hover{border-color:var(--rule-strong);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.pill{
+  display:inline-flex;align-items:center;gap:5px;border-radius:2px;padding:2px 7px;
+  font-size:10.5px;letter-spacing:.05em;font-weight:600;white-space:nowrap;
+}
+.pill.ok{background:var(--ok-soft);color:var(--ok)}
+.pill.warn{background:var(--warn-soft);color:var(--warn)}
+.pill.crit{background:var(--crit-soft);color:var(--crit)}
+.pill.neutral{background:var(--surface-3);color:var(--ink-2)}
+.pill.accent{background:var(--accent-soft);color:var(--accent)}
+
+/* ── ledger table ────────────────────────────────────────────────────── */
+.ledger{width:100%;border-collapse:collapse;font-size:13px}
+.ledger thead th{
+  text-align:left;font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:600;padding:0 12px 8px 0;border-bottom:1px solid var(--rule-strong);
+  white-space:nowrap;
+}
+.ledger tbody tr{border-bottom:1px solid var(--rule);transition:background .1s}
+.ledger tbody tr:hover{background:var(--surface)}
+.ledger td{padding:13px 12px 13px 0;vertical-align:middle}
+.ledger td:last-child,.ledger th:last-child{padding-right:0}
+.ledger .r{text-align:right}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroller .ledger{min-width:700px}
+
+/* countdown / departure board */
+.cd{display:flex;align-items:baseline;gap:4px}
+.cd .d{
+  font-family:"Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-size:20px;letter-spacing:-.02em;line-height:1;
+}
+.cd .u{font-size:10.5px;color:var(--ink-3);letter-spacing:.08em}
+.cd.is-crit .d{color:var(--crit)} .cd.is-warn .d{color:var(--warn)} .cd.is-ok .d{color:var(--ok)}
+
+.rname{display:flex;flex-direction:column;gap:2px;min-width:0}
+.rname b{font-family:"Instrument Serif","Hiragino Mincho ProN","Yu Mincho",serif;
+         font-size:17px;font-weight:400;letter-spacing:.01em;line-height:1.25;white-space:nowrap}
+.rname span{font-size:11.5px;color:var(--ink-3)}
+
+.plat{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:var(--ink-2)}
+.plat i{width:6px;height:6px;border-radius:50%;background:var(--ink-3);display:inline-block;flex:none}
+.plat[data-p="omakase"] i{background:#C6472F} .plat[data-p="tabelog"] i{background:#D9A441}
+.plat[data-p="tablecheck"] i{background:#3F7ACD} .plat[data-p="tableall"] i{background:#2C2C2C}
+.plat[data-p="phone"] i{background:#6B8E23} .plat[data-p="unknown"] i{background:var(--ink-3)}
+
+/* toggle */
+.tgl{position:relative;width:36px;height:20px;border-radius:999px;background:var(--surface-3);
+     border:1px solid var(--rule);cursor:pointer;padding:0;transition:.16s;flex:none}
+.tgl::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+            background:var(--ink-3);transition:.16s}
+.tgl[aria-pressed="true"]{background:var(--accent);border-color:var(--accent)}
+.tgl[aria-pressed="true"]::after{transform:translateX(16px);background:var(--accent-ink)}
+
+/* ── library grid ────────────────────────────────────────────────────── */
+.toolbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+.seg{display:flex;border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--surface)}
+.seg button{background:none;border:0;padding:6px 14px;cursor:pointer;font-size:12.5px;color:var(--ink-2);
+            border-right:1px solid var(--rule)}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:600}
+.search{flex:1;min-width:160px;max-width:280px;background:var(--surface);border:1px solid var(--rule);
+        border-radius:3px;padding:7px 11px;font-size:13px}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:1px;
+      background:var(--rule);border:1px solid var(--rule)}
+.card{background:var(--surface);border:0;padding:0;text-align:left;cursor:pointer;display:flex;
+      flex-direction:column;transition:background .12s}
+.card:hover{background:var(--surface-2)}
+.thumb{aspect-ratio:4/3;position:relative;overflow:hidden;display:grid;place-items:center}
+.thumb .glyph{
+  font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif TC",serif;
+  font-size:54px;color:rgba(255,255,255,.9);text-shadow:0 1px 14px rgba(0,0,0,.28);user-select:none;
+}
+.thumb .tag{position:absolute;top:8px;left:8px}
+.thumb .sc{position:absolute;bottom:8px;right:8px;background:rgba(10,12,16,.7);color:#fff;
+           font-family:"Plex Mono",monospace;font-size:11px;padding:2px 6px;border-radius:2px;
+           font-variant-numeric:tabular-nums}
+.card .body{padding:11px 13px 13px;display:flex;flex-direction:column;gap:5px;flex:1}
+.card .body .t{font-family:"Instrument Serif","Hiragino Mincho ProN","Yu Mincho",serif;
+               font-size:18px;line-height:1.2;letter-spacing:.01em}
+.card .body .m{font-size:11.5px;color:var(--ink-3);display:flex;gap:7px;flex-wrap:wrap}
+.card .body .foot{margin-top:auto;padding-top:7px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.stars{font-size:12px;letter-spacing:.1em;color:var(--accent)}
+.stars .off{color:var(--rule-strong)}
+
+/* ── drawer ──────────────────────────────────────────────────────────── */
+.scrim{position:fixed;inset:0;background:rgba(8,11,16,.42);opacity:0;pointer-events:none;
+       transition:opacity .22s;z-index:40}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{
+  position:fixed;top:0;right:0;height:100vh;width:min(500px,100%);background:var(--surface);
+  border-left:1px solid var(--rule);z-index:50;transform:translateX(100%);
+  transition:transform .26s cubic-bezier(.32,.72,0,1);overflow-y:auto;box-shadow:var(--shadow);
+}
+.drawer.on{transform:none}
+.dhead{position:relative}
+.dhero{height:168px;display:grid;place-items:center;position:relative}
+.dhero .glyph{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:76px;color:rgba(255,255,255,.92);
+              text-shadow:0 2px 18px rgba(0,0,0,.3)}
+.dclose{position:absolute;top:12px;right:12px;background:rgba(10,12,16,.55);border:0;color:#fff;
+        width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:16px;line-height:1}
+.dbody{padding:20px 22px 40px;display:flex;flex-direction:column;gap:20px}
+.dtitle h2{margin:0;font-family:"Instrument Serif","Hiragino Mincho ProN","Yu Mincho",serif;
+           font-size:29px;font-weight:400;line-height:1.15}
+.dtitle p{margin:4px 0 0;font-size:12px;color:var(--ink-3)}
+.dsec{display:flex;flex-direction:column;gap:9px}
+.dsec > h3{margin:0;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);
+           padding-bottom:6px;border-bottom:1px solid var(--rule)}
+.kv{display:grid;grid-template-columns:88px minmax(0,1fr);gap:5px 12px;font-size:13px}
+.kv dt{color:var(--ink-3);font-size:12px}
+.kv dd{margin:0;word-break:break-word}
+.note{background:var(--surface-2);border-left:2px solid var(--accent);padding:11px 13px;
+      font-size:13px;line-height:1.65;color:var(--ink-2)}
+.note .when{display:block;font-size:11px;color:var(--ink-3);margin-bottom:5px;letter-spacing:.04em}
+.photostrip{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.photostrip div{aspect-ratio:1;border-radius:2px;display:grid;place-items:center;font-size:10px;color:rgba(255,255,255,.75)}
+.photostrip .add{border:1px dashed var(--rule-strong);background:none;color:var(--ink-3);cursor:pointer;font-size:18px}
+a.link{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent}
+a.link:hover{border-bottom-color:currentColor}
+
+/* ── itinerary ───────────────────────────────────────────────────────── */
+.days{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule-strong)}
+.day{display:grid;grid-template-columns:96px minmax(0,1fr);gap:0;border-bottom:1px solid var(--rule)}
+.daykey{padding:16px 14px 16px 0;border-right:1px solid var(--rule)}
+.daykey .dn{font-family:"Plex Mono",monospace;font-size:23px;line-height:1;font-variant-numeric:tabular-nums}
+.daykey .dw{font-size:10.5px;color:var(--ink-3);letter-spacing:.1em;text-transform:uppercase;margin-top:4px}
+.slots{display:flex;flex-direction:column}
+.slot{display:grid;grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;
+      padding:11px 0 11px 16px;border-bottom:1px dashed var(--rule)}
+.slot:last-child{border-bottom:0}
+.slot .st{font-size:10.5px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase}
+.slot .empty{color:var(--ink-3);font-size:12.5px;font-style:italic}
+.slotpick{background:var(--surface-2);border:1px solid var(--rule);border-radius:3px;padding:6px 9px;
+          font-size:12.5px;cursor:pointer;max-width:100%;appearance:none}
+
+/* ── import ──────────────────────────────────────────────────────────── */
+.dropzone{border:1px dashed var(--rule-strong);border-radius:4px;background:var(--surface);padding:18px}
+.dropzone textarea{
+  width:100%;min-height:118px;resize:vertical;background:var(--surface-2);border:1px solid var(--rule);
+  border-radius:3px;padding:11px 13px;font-family:"Plex Mono",monospace;font-size:12px;line-height:1.75;
+}
+.dropzone .hint{font-size:11.5px;color:var(--ink-3);margin:9px 0 12px}
+.queue{margin-top:20px}
+.qrow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:13px;align-items:center;
+      padding:12px 0;border-bottom:1px solid var(--rule)}
+.qrow .idx{font-family:"Plex Mono",monospace;font-size:11px;color:var(--ink-3);width:22px}
+.qrow .u{font-family:"Plex Mono",monospace;font-size:11.5px;color:var(--ink-2);overflow:hidden;
+         text-overflow:ellipsis;white-space:nowrap}
+.qrow .u small{display:block;color:var(--ink-3);font-family:"Plex Sans",sans-serif;font-size:11px;margin-top:2px}
+
+.banner{
+  display:flex;gap:12px;align-items:flex-start;border:1px solid var(--rule);border-left:3px solid var(--warn);
+  background:var(--warn-soft);border-radius:3px;padding:13px 15px;margin-bottom:22px;
+}
+.banner.crit{border-left-color:var(--crit);background:var(--crit-soft)}
+.banner h4{margin:0 0 4px;font-size:13px;font-weight:600}
+.banner p{margin:0;font-size:12.5px;line-height:1.6;color:var(--ink-2)}
+.banner code{font-family:"Plex Mono",monospace;font-size:11.5px;background:var(--surface);
+             padding:1px 5px;border-radius:2px;border:1px solid var(--rule)}
+
+/* ── modal ───────────────────────────────────────────────────────────── */
+.modal{position:fixed;inset:0;display:none;place-items:center;z-index:60;padding:24px}
+.modal.on{display:grid}
+.modal .box{background:var(--surface);border:1px solid var(--rule);border-radius:4px;box-shadow:var(--shadow);
+            width:min(660px,100%);max-height:82vh;display:flex;flex-direction:column;overflow:hidden}
+.modal .box header{padding:16px 20px;border-bottom:1px solid var(--rule);display:flex;
+                   justify-content:space-between;align-items:center;gap:14px}
+.modal .box header h3{margin:0;font-family:"Instrument Serif","Hiragino Mincho ProN",serif;font-size:22px;font-weight:400}
+.modal pre{margin:0;padding:18px 20px;overflow:auto;font-family:"Plex Mono",monospace;font-size:11.5px;
+           line-height:1.75;background:var(--surface-2);flex:1;white-space:pre}
+.modal footer{padding:13px 20px;border-top:1px solid var(--rule);display:flex;gap:9px;justify-content:flex-end;align-items:center}
+.modal footer .msg{margin-right:auto;font-size:12px;color:var(--ink-3)}
+
+.empty-state{padding:52px 20px;text-align:center;color:var(--ink-3);font-size:13px}
+.sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:1px;background:var(--surface);
+     border:1px solid var(--rule);margin-bottom:24px;overflow:hidden}
+.sum > div{background:var(--surface);padding:13px 15px;box-shadow:1px 0 0 var(--rule),0 1px 0 var(--rule)}
+.sum .k{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.sum .v{font-family:"Plex Mono",monospace;font-size:25px;line-height:1.25;font-variant-numeric:tabular-nums;margin-top:3px}
+.sum .v small{font-size:12px;color:var(--ink-3);margin-left:3px;font-family:"Plex Sans",sans-serif}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:1fr}
+  .rail{position:static;height:auto;flex-direction:row;flex-wrap:wrap;align-items:center;gap:14px;
+        padding:14px 18px;border-right:0;border-bottom:1px solid var(--rule)}
+  .rail-label{display:none}
+  .tripsel{padding:0;min-width:180px;flex:1}
+  nav{flex-direction:row;flex-wrap:wrap;width:100%;gap:2px}
+  nav button{border-left:0;border-bottom:2px solid transparent;padding:7px 12px;width:auto}
+  nav button[aria-current="true"]{border-left-color:transparent;border-bottom-color:var(--accent)}
+  .rail-foot{margin:0;padding:0;flex-direction:row;align-items:center}
+  .stamp{display:none}
+  main{padding:20px 18px 64px}
+  .vh h1{font-size:27px}
+  .drawer{width:100%}
+}
+</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="brand">
+      <div class="mark">東京 予約台帳</div>
+      <div class="sub">Tokyo dining ledger</div>
+    </div>
+
+    <div>
+      <div class="rail-label">旅行</div>
+      <div class="tripsel">
+        <select id="tripSel" aria-label="選擇旅行"></select>
+        <div class="meta"><span id="tripDates" class="mono"></span><span id="tripNights"></span></div>
+      </div>
+    </div>
+
+    <nav id="nav" aria-label="主要導覽">
+      <button data-v="radar" aria-current="true">訂位雷達<span class="cnt" id="cRadar"></span></button>
+      <button data-v="lib">餐廳庫<span class="cnt" id="cLib"></span></button>
+      <button data-v="trip">行程表<span class="cnt" id="cTrip"></span></button>
+      <button data-v="import">匯入<span class="cnt" id="cImp"></span></button>
+    </nav>
+
+    <div class="rail-foot">
+      <button class="themebtn" id="themeBtn" type="button"><span id="themeIcon">◐</span><span id="themeTxt">深色</span></button>
+      <div class="stamp">
+        原型版・資料存於本機瀏覽器<br>
+        今日 <span class="mono" id="todayStamp"></span>
+      </div>
+    </div>
+  </aside>
+
+  <main>
+    <!-- ══ RADAR ══ -->
+    <section class="view on" id="v-radar">
+      <div class="vh">
+        <div>
+          <span class="eyebrow">Reservation radar</span>
+          <h1>該在什麼時候搶訂</h1>
+          <p class="lede">依「開放訂位時刻」由近到遠排列。每家店的開放規則不同 —— 有的前月一號十點，有的三個月前同日。倒數歸零前會提醒你。</p>
+        </div>
+        <button class="btn ghost" id="btnRules" type="button">開放規則說明</button>
+      </div>
+      <div class="sum" id="radarSum"></div>
+      <div class="scroller">
+        <table class="ledger">
+          <thead><tr>
+            <th style="width:30%">餐廳</th><th>訂位平台</th><th>開放規則</th>
+            <th>開放時刻</th><th class="r">倒數</th><th class="r">提醒</th>
+          </tr></thead>
+          <tbody id="radarBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ══ LIBRARY ══ -->
+    <section class="view" id="v-lib">
+      <div class="vh">
+        <div>
+          <span class="eyebrow">Library</span>
+          <h1>餐廳庫</h1>
+          <p class="lede">去過的留下評分、感想與照片；想去的排優先度。點任一家看完整記錄。</p>
+        </div>
+        <button class="btn" id="btnAdd" type="button">＋ 匯入餐廳</button>
+      </div>
+      <div class="toolbar">
+        <div class="seg" role="group" aria-label="狀態篩選">
+          <button data-st="all" aria-pressed="true">全部</button>
+          <button data-st="wish" aria-pressed="false">想去</button>
+          <button data-st="visited" aria-pressed="false">去過</button>
+        </div>
+        <input class="search" id="libSearch" type="search" placeholder="搜尋店名、地區…" aria-label="搜尋餐廳">
+      </div>
+      <div class="chips" id="genreChips" style="margin-bottom:18px"></div>
+      <div class="grid" id="libGrid"></div>
+      <div class="empty-state" id="libEmpty" hidden>沒有符合條件的餐廳。</div>
+    </section>
+
+    <!-- ══ TRIP ══ -->
+    <section class="view" id="v-trip">
+      <div class="vh">
+        <div>
+          <span class="eyebrow">Itinerary</span>
+          <h1 id="tripTitle"></h1>
+          <p class="lede">每天午餐、晚餐各一格。排好之後可以匯出成 Google My Maps 能吃的檔案。</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn ghost" id="btnNewTrip" type="button">＋ 新旅行</button>
+          <button class="btn" id="btnExport" type="button">匯出到 Google My Maps</button>
+        </div>
+      </div>
+      <div class="sum" id="tripSum"></div>
+      <div class="days" id="tripDays"></div>
+    </section>
+
+    <!-- ══ IMPORT ══ -->
+    <section class="view" id="v-import">
+      <div class="vh">
+        <div>
+          <span class="eyebrow">Import</span>
+          <h1>貼上 Tabelog 網址</h1>
+          <p class="lede">一行一個網址，貼多少都行。系統會抓店名、分類、地址、車站、預算、營業時間與訂位方式，整理好讓你確認後入庫。</p>
+        </div>
+      </div>
+      <div class="banner crit" id="netBanner">
+        <div>
+          <h4>目前無法連線到 tabelog.com — 需要你開通網路權限</h4>
+          <p>這個雲端環境的網路存取層級是 <strong>Trusted</strong>，只放行套件庫與 GitHub。<code>tabelog.com</code>、<code>omakase.in</code>、<code>tableall.com</code> 全部被擋（403）。把環境改成 <strong>Custom</strong> 並加入這些網域後，這裡就會真的抓得到資料。</p>
+        </div>
+      </div>
+      <div class="dropzone">
+        <textarea id="urlBox" spellcheck="false" aria-label="Tabelog 網址清單"></textarea>
+        <p class="hint">支援 tabelog.com／s.tabelog.com 的店家頁網址。也接受 omakase.in、tableall.com、tablecheck.com 的店家連結。</p>
+        <div style="display:flex;gap:9px;flex-wrap:wrap">
+          <button class="btn" id="btnParse" type="button">解析網址</button>
+          <button class="btn ghost" id="btnClearQ" type="button">清空</button>
+        </div>
+      </div>
+      <div class="queue" id="queue"></div>
+    </section>
+  </main>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true"><div id="drawerContent"></div></aside>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <header><h3 id="modalTitle"></h3><button class="btn ghost sm" id="modalX" type="button">關閉</button></header>
+    <pre id="modalBody"></pre>
+    <footer><span class="msg" id="modalMsg"></span><button class="btn" id="modalCopy" type="button">複製全部</button></footer>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ═══ helpers ═══════════════════════════════════════════════════════════ */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const el = (t, c, txt) => { const n = document.createElement(t); if (c) n.className = c; if (txt != null) n.textContent = txt; return n; };
+const pad = n => String(n).padStart(2, "0");
+const iso = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const fmtDate = d => `${d.getFullYear()}/${pad(d.getMonth() + 1)}/${pad(d.getDate())}`;
+const fmtDT = d => `${fmtDate(d)} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+const WD = ["日", "一", "二", "三", "四", "五", "六"];
+const TODAY = new Date();
+
+/* deterministic hue so every restaurant gets a stable placeholder tile */
+const hueOf = s => { let h = 0; for (const ch of s) h = (h * 31 + ch.codePointAt(0)) % 360; return h; };
+const tileBg = s => { const h = hueOf(s); return `linear-gradient(145deg,hsl(${h} 34% 38%),hsl(${(h + 38) % 360} 30% 22%))`; };
+
+/* ═══ booking rules ═════════════════════════════════════════════════════
+   Each rule computes: given a dining date, when does booking open?      */
+const RULES = {
+  monthlyFirst: { // 毎月1日 HH:00 に翌月分／N ヶ月先まで
+    label: (r) => `每月 ${r.day} 日 ${pad(r.hour)}:00 開放 ${r.lead} 個月後`,
+    opensAt(r, dine) {
+      const d = new Date(dine.getFullYear(), dine.getMonth() - r.lead, r.day, r.hour, 0, 0);
+      return d;
+    }
+  },
+  monthsBefore: { // N ヶ月前の同日
+    label: (r) => `${r.months} 個月前同日 ${pad(r.hour)}:00`,
+    opensAt(r, dine) {
+      return new Date(dine.getFullYear(), dine.getMonth() - r.months, dine.getDate(), r.hour, 0, 0);
+    }
+  },
+  daysBefore: { // N 日前
+    label: (r) => `${r.days} 天前 ${pad(r.hour)}:00`,
+    opensAt(r, dine) {
+      const d = new Date(dine); d.setDate(d.getDate() - r.days); d.setHours(r.hour, 0, 0, 0); return d;
+    }
+  },
+  unknown: { label: () => "規則未確認", opensAt: () => null }
+};
+const ruleLabel = r => RULES[r.kind].label(r);
+const ruleOpens = (r, dine) => RULES[r.kind].opensAt(r, dine);
+
+const PLATFORMS = {
+  omakase: "OMAKASE", tabelog: "Tabelog", tablecheck: "TableCheck",
+  tableall: "TableAll", phone: "電話預約", unknown: "待查"
+};
+
+/* ═══ seed data ═════════════════════════════════════════════════════════
+   NOTE: 這些是「範例資料」，店名為虛構，用來確認版面與流程。
+   真實資料等網路開通後由 Tabelog／OMAKASE 匯入覆蓋。                     */
+const SEED = [
+  { id: "r1", name: "鮨 むらせ", kana: "Sushi Murase", genre: "壽司", area: "銀座", station: "銀座一丁目 徒步 3 分",
+    address: "東京都中央区銀座 1-00-0 ○○ビル B1", score: 4.31, status: "wish", priority: 1, seats: 8,
+    budget: "¥40,000〜¥49,999", booking: { platform: "omakase", rule: { kind: "monthlyFirst", day: 1, hour: 10, lead: 1 } },
+    lat: 35.6735, lng: 139.7669, remind: true, sample: true },
+  { id: "r2", name: "焼鳥 とり久", kana: "Yakitori Torikyu", genre: "燒鳥", area: "西麻布", station: "六本木 徒步 8 分",
+    address: "東京都港区西麻布 2-00-0", score: 4.12, status: "wish", priority: 1, seats: 10,
+    budget: "¥20,000〜¥29,999", booking: { platform: "tablecheck", rule: { kind: "monthsBefore", months: 2, hour: 11 } },
+    lat: 35.6586, lng: 139.7245, remind: true, sample: true },
+  { id: "r3", name: "天ぷら 山路", kana: "Tempura Yamaji", genre: "天婦羅", area: "日本橋", station: "三越前 徒步 2 分",
+    address: "東京都中央区日本橋室町 3-00-0", score: 4.05, status: "wish", priority: 2, seats: 12,
+    budget: "¥15,000〜¥19,999", booking: { platform: "tabelog", rule: { kind: "daysBefore", days: 30, hour: 0 } },
+    lat: 35.6862, lng: 139.7731, remind: false, sample: true },
+  { id: "r4", name: "割烹 東雲", kana: "Kappo Shinonome", genre: "割烹", area: "神楽坂", station: "神楽坂 徒步 5 分",
+    address: "東京都新宿区神楽坂 4-00-0", score: 4.22, status: "wish", priority: 2, seats: 14,
+    budget: "¥25,000〜¥29,999", booking: { platform: "tableall", rule: { kind: "monthsBefore", months: 3, hour: 10 } },
+    lat: 35.7016, lng: 139.7402, remind: true, sample: true },
+  { id: "r5", name: "鰻 川清", kana: "Unagi Kawasei", genre: "鰻魚", area: "淺草", station: "淺草 徒步 6 分",
+    address: "東京都台東区浅草 1-00-0", score: 3.92, status: "wish", priority: 3, seats: 20,
+    budget: "¥8,000〜¥9,999", booking: { platform: "phone", rule: { kind: "daysBefore", days: 14, hour: 11 } },
+    lat: 35.7119, lng: 139.7967, remind: false, sample: true },
+  { id: "r6", name: "鮨 とし乃", kana: "Sushi Toshino", genre: "壽司", area: "六本木", station: "乃木坂 徒步 4 分",
+    address: "東京都港区六本木 7-00-0", score: 4.44, status: "visited", myRating: 5, seats: 9,
+    budget: "¥30,000〜¥39,999", booking: { platform: "omakase", rule: { kind: "monthlyFirst", day: 1, hour: 10, lead: 2 } },
+    lat: 35.6663, lng: 139.7288,
+    visits: [{ date: "2026-03-14", spend: 38000, note: "小鰭跟煮蛤是關鍵。醋飯偏赤醋、溫度高，配得住熟成種。師傅會依你吃的速度調握的節奏，坐吧台正中間最好。下次想試冬天的鮟鱇肝。" }],
+    remind: false, sample: true },
+  { id: "r7", name: "洋食 かねしろ", kana: "Yoshoku Kaneshiro", genre: "洋食", area: "銀座", station: "東銀座 徒步 3 分",
+    address: "東京都中央区銀座 5-00-0", score: 3.78, status: "visited", myRating: 4, seats: 26,
+    budget: "¥3,000〜¥3,999", booking: { platform: "unknown", rule: { kind: "unknown" } },
+    lat: 35.6695, lng: 139.7669,
+    visits: [{ date: "2026-03-16", spend: 3800, note: "蟹肉可樂餅炸得很輕，醬汁偏酸。中午不用訂，11:30 前到大概排 10 分鐘。" }],
+    remind: false, sample: true },
+  { id: "r8", name: "焼肉 隆星", kana: "Yakiniku Ryusei", genre: "燒肉", area: "麻布十番", station: "麻布十番 徒步 2 分",
+    address: "東京都港区麻布十番 2-00-0", score: 4.18, status: "visited", myRating: 4, seats: 18,
+    budget: "¥20,000〜¥29,999", booking: { platform: "tablecheck", rule: { kind: "monthsBefore", months: 1, hour: 12 } },
+    lat: 35.6552, lng: 139.7365,
+    visits: [{ date: "2026-03-15", spend: 24000, note: "夏拉布利厚切是招牌，配山葵。冷麵收尾份量偏大，兩個人點一份就好。" }],
+    remind: false, sample: true }
+];
+
+const PENDING = [
+  "https://tabelog.com/tokyo/A1303/A130301/13157208/",
+  "https://tabelog.com/tokyo/A1307/A130702/13304401/",
+  "https://tabelog.com/tokyo/A1316/A131602/13303865/"
+];
+
+const TRIPS = [
+  { id: "t1", name: "2027 年 1 月 東京", start: "2027-01-04", end: "2027-01-09", party: 2,
+    plan: { "2027-01-05|dinner": "r1", "2027-01-06|dinner": "r2", "2027-01-07|lunch": "r3", "2027-01-08|dinner": "r4" } },
+  { id: "t0", name: "2026 年 3 月 東京", start: "2026-03-13", end: "2026-03-17", party: 2, plan: {} }
+];
+
+/* ═══ state ═════════════════════════════════════════════════════════════ */
+const STORE = "tokyo-ledger-v1";
+let S;
+try {
+  S = JSON.parse(localStorage.getItem(STORE)) || null;
+} catch (e) { S = null; }
+if (!S || !S.restaurants) {
+  S = { restaurants: SEED, trips: TRIPS, tripId: "t1", theme: null, queue: [] };
+}
+const save = () => { try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) {} };
+const trip = () => S.trips.find(t => t.id === S.tripId) || S.trips[0];
+const byId = id => S.restaurants.find(r => r.id === id);
+
+/* ═══ theme ═════════════════════════════════════════════════════════════ */
+function applyTheme() {
+  const root = document.documentElement;
+  if (S.theme) root.setAttribute("data-theme", S.theme); else root.removeAttribute("data-theme");
+  const dark = S.theme === "dark" || (!S.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  $("#themeIcon").textContent = dark ? "☾" : "☀";
+  $("#themeTxt").textContent = dark ? "淺色" : "深色";
+}
+$("#themeBtn").onclick = () => {
+  const dark = S.theme === "dark" || (!S.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  S.theme = dark ? "light" : "dark"; save(); applyTheme();
+};
+
+/* ═══ trip dates ════════════════════════════════════════════════════════ */
+function tripDays(t) {
+  const out = [], a = new Date(t.start + "T00:00:00"), b = new Date(t.end + "T00:00:00");
+  for (let d = new Date(a); d <= b; d.setDate(d.getDate() + 1)) out.push(new Date(d));
+  return out;
+}
+/* the dining date we plan a wish-list restaurant for: its assigned slot, else trip day 1 */
+function dineDateFor(r) {
+  const t = trip();
+  for (const [k, v] of Object.entries(t.plan || {})) if (v === r.id) return new Date(k.split("|")[0] + "T00:00:00");
+  return new Date(t.start + "T00:00:00");
+}
+
+/* ═══ radar ═════════════════════════════════════════════════════════════ */
+function radarRows() {
+  return S.restaurants.filter(r => r.status === "wish").map(r => {
+    const dine = dineDateFor(r);
+    const opens = ruleOpens(r.booking.rule, dine);
+    const days = opens ? Math.ceil((opens - TODAY) / 864e5) : null;
+    return { r, dine, opens, days };
+  }).sort((a, b) => {
+    if (a.opens && b.opens) return a.opens - b.opens;
+    return a.opens ? -1 : b.opens ? 1 : 0;
+  });
+}
+function urgency(days) {
+  if (days === null) return "neutral";
+  if (days < 0) return "crit";
+  if (days <= 14) return "warn";
+  return "ok";
+}
+function renderRadar() {
+  const rows = radarRows(), tb = $("#radarBody");
+  tb.textContent = "";
+  const openNow = rows.filter(x => x.days !== null && x.days <= 0).length;
+  const soon = rows.filter(x => x.days !== null && x.days > 0 && x.days <= 14).length;
+  const unknown = rows.filter(x => x.days === null).length;
+  const next = rows.find(x => x.days !== null && x.days > 0);
+
+  $("#radarSum").textContent = "";
+  [["追蹤中", rows.length, ""], ["已可訂", openNow, ""], ["14 天內開放", soon, ""],
+   ["規則待查", unknown, ""], ["下一個開放", next ? next.days : "—", next ? "天後" : ""]]
+    .forEach(([k, v, u]) => {
+      const d = el("div"); d.append(el("div", "k", k));
+      const val = el("div", "v"); val.textContent = v;
+      if (u) { const s = el("small", "", u); val.append(s); }
+      d.append(val); $("#radarSum").append(d);
+    });
+
+  if (!rows.length) { tb.append(el("tr")).append(Object.assign(el("td"), { colSpan: 6, textContent: "想去清單是空的。" })); return; }
+
+  for (const { r, dine, opens, days } of rows) {
+    const tr = el("tr");
+
+    const c1 = el("td"); const nm = el("div", "rname");
+    const b = el("b"); b.textContent = r.name; nm.append(b);
+    nm.append(el("span", "", `${r.genre}・${r.area}${r.seats ? "・" + r.seats + " 席" : ""}`));
+    c1.append(nm); tr.append(c1);
+
+    const c2 = el("td"); const p = el("span", "plat"); p.dataset.p = r.booking.platform;
+    p.append(el("i"), document.createTextNode(PLATFORMS[r.booking.platform])); c2.append(p); tr.append(c2);
+
+    const c3 = el("td"); c3.style.color = "var(--ink-2)"; c3.style.fontSize = "12.5px";
+    c3.textContent = ruleLabel(r.booking.rule); tr.append(c3);
+
+    const c4 = el("td");
+    if (opens) { const s = el("span", "mono"); s.textContent = fmtDT(opens); s.style.fontSize = "12.5px"; c4.append(s); }
+    else { c4.append(el("span", "pill neutral", "待查")); }
+    const dd = el("div"); dd.style.cssText = "font-size:11px;color:var(--ink-3);margin-top:2px";
+    dd.textContent = `為 ${fmtDate(dine)} 用餐`; c4.append(dd); tr.append(c4);
+
+    const c5 = el("td", "r");
+    const u = urgency(days), cd = el("div", "cd is-" + u); cd.style.justifyContent = "flex-end";
+    if (days === null) { cd.append(el("span", "u", "—")); }
+    else if (days < 0) { cd.append(el("span", "d", Math.abs(days)), el("span", "u", "天前已開放")); }
+    else if (days === 0) { cd.append(el("span", "d", "今日"), el("span", "u", "開放")); }
+    else { cd.append(el("span", "d", days), el("span", "u", "天")); }
+    c5.append(cd); tr.append(c5);
+
+    const c6 = el("td", "r");
+    const tg = el("button", "tgl"); tg.type = "button";
+    tg.setAttribute("aria-pressed", String(!!r.remind));
+    tg.setAttribute("aria-label", `${r.name} 提醒`);
+    tg.style.marginLeft = "auto";
+    tg.onclick = e => { e.stopPropagation(); r.remind = !r.remind; save(); renderRadar(); };
+    const wrap = el("div"); wrap.style.cssText = "display:flex;justify-content:flex-end"; wrap.append(tg);
+    c6.append(wrap); tr.append(c6);
+
+    tr.style.cursor = "pointer";
+    tr.onclick = () => openDrawer(r.id);
+    tb.append(tr);
+  }
+}
+
+/* ═══ library ═══════════════════════════════════════════════════════════ */
+let libFilter = { status: "all", genre: null, q: "" };
+function renderChips() {
+  const box = $("#genreChips"); box.textContent = "";
+  const genres = [...new Set(S.restaurants.map(r => r.genre))];
+  const mk = (label, val) => {
+    const c = el("button", "chip", label); c.type = "button";
+    c.setAttribute("aria-pressed", String(libFilter.genre === val));
+    c.onclick = () => { libFilter.genre = libFilter.genre === val ? null : val; renderChips(); renderLib(); };
+    return c;
+  };
+  const all = el("button", "chip", "全部分類"); all.type = "button";
+  all.setAttribute("aria-pressed", String(libFilter.genre === null));
+  all.onclick = () => { libFilter.genre = null; renderChips(); renderLib(); };
+  box.append(all);
+  genres.forEach(g => box.append(mk(`${g} ${S.restaurants.filter(r => r.genre === g).length}`, g)));
+}
+function stars(n) {
+  const s = el("span", "stars");
+  for (let i = 1; i <= 5; i++) { const t = el("span", i <= n ? "" : "off", "★"); s.append(t); }
+  return s;
+}
+function renderLib() {
+  const g = $("#libGrid"); g.textContent = "";
+  const q = libFilter.q.trim().toLowerCase();
+  const list = S.restaurants.filter(r =>
+    (libFilter.status === "all" || r.status === libFilter.status) &&
+    (!libFilter.genre || r.genre === libFilter.genre) &&
+    (!q || (r.name + r.kana + r.area + r.genre).toLowerCase().includes(q))
+  );
+  $("#libEmpty").hidden = list.length > 0;
+  $("#libGrid").hidden = list.length === 0;
+
+  for (const r of list) {
+    const c = el("button", "card"); c.type = "button";
+    const th = el("div", "thumb"); th.style.background = tileBg(r.name);
+    th.append(el("div", "glyph", [...r.name][0]));
+    const tag = el("span", "pill " + (r.status === "visited" ? "ok" : "accent"), r.status === "visited" ? "去過" : "想去");
+    tag.classList.add("tag"); th.append(tag);
+    if (r.score) th.append(el("div", "sc", "食べログ " + r.score.toFixed(2)));
+    c.append(th);
+    const b = el("div", "body");
+    b.append(el("div", "t", r.name));
+    const m = el("div", "m");
+    m.append(el("span", "", r.genre), el("span", "", r.area));
+    b.append(m);
+    const f = el("div", "foot");
+    if (r.status === "visited") { f.append(stars(r.myRating || 0)); f.append(el("span", "mono", (r.visits && r.visits.length ? r.visits.length : 0) + " 次")); }
+    else { f.append(el("span", "pill neutral", "優先度 " + (r.priority || 3))); f.append(el("span", "plat", PLATFORMS[r.booking.platform])); }
+    f.querySelectorAll("span").forEach(s => { if (s.classList.contains("mono")) s.style.cssText = "font-size:11px;color:var(--ink-3)"; });
+    b.append(f); c.append(b);
+    c.onclick = () => openDrawer(r.id);
+    g.append(c);
+  }
+}
+$$("#v-lib .seg button").forEach(btn => btn.onclick = () => {
+  $$("#v-lib .seg button").forEach(b => b.setAttribute("aria-pressed", "false"));
+  btn.setAttribute("aria-pressed", "true");
+  libFilter.status = btn.dataset.st; renderLib();
+});
+$("#libSearch").oninput = e => { libFilter.q = e.target.value; renderLib(); };
+
+/* ═══ drawer ════════════════════════════════════════════════════════════ */
+function openDrawer(id) {
+  const r = byId(id); if (!r) return;
+  const c = $("#drawerContent"); c.textContent = "";
+
+  const head = el("div", "dhead");
+  const hero = el("div", "dhero"); hero.style.background = tileBg(r.name);
+  hero.append(el("div", "glyph", [...r.name][0]));
+  const x = el("button", "dclose", "×"); x.type = "button"; x.setAttribute("aria-label", "關閉"); x.onclick = closeDrawer;
+  head.append(hero, x); c.append(head);
+
+  const body = el("div", "dbody");
+
+  const t = el("div", "dtitle");
+  const h2 = el("h2"); h2.textContent = r.name; t.append(h2);
+  t.append(el("p", "", `${r.kana}・${r.genre}・${r.area}`));
+  const pills = el("div", "chips"); pills.style.marginTop = "10px";
+  pills.append(el("span", "pill " + (r.status === "visited" ? "ok" : "accent"), r.status === "visited" ? "去過" : "想去"));
+  if (r.score) pills.append(el("span", "pill neutral", "食べログ " + r.score.toFixed(2)));
+  if (r.sample) pills.append(el("span", "pill warn", "範例資料"));
+  t.append(pills);
+  body.append(t);
+
+  /* booking */
+  const bs = el("div", "dsec"); bs.append(el("h3", "", "訂位資訊"));
+  const bkv = el("dl", "kv");
+  const rows = [["平台", PLATFORMS[r.booking.platform]], ["開放規則", ruleLabel(r.booking.rule)]];
+  if (r.status === "wish") {
+    const dine = dineDateFor(r), opens = ruleOpens(r.booking.rule, dine);
+    rows.push(["計畫用餐", fmtDate(dine)]);
+    rows.push(["開放時刻", opens ? fmtDT(opens) : "待查"]);
+    if (opens) {
+      const d = Math.ceil((opens - TODAY) / 864e5);
+      rows.push(["倒數", d < 0 ? `已開放 ${Math.abs(d)} 天` : d === 0 ? "今天開放" : `${d} 天後`]);
+    }
+  }
+  if (r.seats) rows.push(["席數", r.seats + " 席"]);
+  if (r.budget) rows.push(["預算", r.budget]);
+  rows.forEach(([k, v]) => { bkv.append(el("dt", "", k)); const dd = el("dd", "", v); if (/開放時刻|倒數|席數/.test(k)) dd.classList.add("mono"); bkv.append(dd); });
+  bs.append(bkv); body.append(bs);
+
+  /* location */
+  const ls = el("div", "dsec"); ls.append(el("h3", "", "地點"));
+  const lkv = el("dl", "kv");
+  lkv.append(el("dt", "", "地址"), el("dd", "", r.address || "—"));
+  lkv.append(el("dt", "", "最近車站"), el("dd", "", r.station || "—"));
+  const dd = el("dd");
+  const a = el("a", "link", "在 Google Maps 開啟 ↗");
+  a.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(r.address || r.name)}`;
+  a.target = "_blank"; a.rel = "noopener";
+  dd.append(a); lkv.append(el("dt", "", "導航"), dd);
+  ls.append(lkv); body.append(ls);
+
+  /* visits */
+  if (r.status === "visited") {
+    const vs = el("div", "dsec");
+    const h3 = el("h3", "", "造訪記錄與感想"); vs.append(h3);
+    const rate = el("div"); rate.style.cssText = "display:flex;align-items:center;gap:9px;margin-bottom:3px";
+    rate.append(el("span", "", "我的評分"), stars(r.myRating || 0));
+    rate.firstChild.style.cssText = "font-size:12px;color:var(--ink-3)";
+    vs.append(rate);
+    (r.visits || []).forEach(v => {
+      const n = el("div", "note");
+      const w = el("span", "when");
+      const dt = new Date(v.date + "T00:00:00");
+      w.textContent = `${fmtDate(dt)}（週${WD[dt.getDay()]}）` + (v.spend ? `　¥${v.spend.toLocaleString()}／人` : "");
+      n.append(w, document.createTextNode(v.note));
+      vs.append(n);
+    });
+    const ps = el("div", "photostrip");
+    const h = hueOf(r.name);
+    for (let i = 0; i < 3; i++) {
+      const d = el("div", "", "");
+      d.style.background = `linear-gradient(150deg,hsl(${(h + i * 9) % 360} 28% ${40 - i * 5}%),hsl(${(h + 34 + i * 9) % 360} 24% ${22 - i * 3}%))`;
+      ps.append(d);
+    }
+    const add = el("button", "add", "＋"); add.type = "button"; add.title = "加照片（正式版接雲端儲存）";
+    add.onclick = () => toast("照片上傳會在正式版（Supabase Storage）啟用");
+    ps.append(add);
+    vs.append(ps);
+    body.append(vs);
+  }
+
+  /* actions */
+  const act = el("div"); act.style.cssText = "display:flex;gap:8px;flex-wrap:wrap";
+  const sw = el("button", "btn ghost sm", r.status === "wish" ? "標記為去過" : "移回想去"); sw.type = "button";
+  sw.onclick = () => {
+    r.status = r.status === "wish" ? "visited" : "wish";
+    if (r.status === "visited" && !r.visits) { r.visits = []; r.myRating = r.myRating || 0; }
+    save(); renderAll(); openDrawer(r.id);
+  };
+  act.append(sw);
+  if (r.tabelog || r.status) {
+    const tl = el("a", "btn ghost sm", "Tabelog ↗");
+    tl.href = r.tabelog || `https://tabelog.com/rstLst/?sk=${encodeURIComponent(r.name)}`;
+    tl.target = "_blank"; tl.rel = "noopener"; tl.style.textDecoration = "none";
+    act.append(tl);
+  }
+  body.append(act);
+
+  c.append(body);
+  $("#drawer").classList.add("on"); $("#drawer").setAttribute("aria-hidden", "false");
+  $("#scrim").classList.add("on");
+}
+function closeDrawer() {
+  $("#drawer").classList.remove("on"); $("#drawer").setAttribute("aria-hidden", "true");
+  $("#scrim").classList.remove("on");
+}
+$("#scrim").onclick = closeDrawer;
+addEventListener("keydown", e => { if (e.key === "Escape") { closeDrawer(); $("#modal").classList.remove("on"); } });
+
+/* ═══ itinerary ═════════════════════════════════════════════════════════ */
+function renderTrip() {
+  const t = trip();
+  $("#tripTitle").textContent = t.name;
+  const days = tripDays(t);
+
+  const assigned = Object.values(t.plan || {}).filter(Boolean).length;
+  $("#tripSum").textContent = "";
+  [["天數", days.length, "天"], ["餐次", days.length * 2, "格"], ["已排定", assigned, "家"],
+   ["同行", t.party, "人"]].forEach(([k, v, u]) => {
+    const d = el("div"); d.append(el("div", "k", k));
+    const val = el("div", "v"); val.textContent = v; val.append(el("small", "", u));
+    d.append(val); $("#tripSum").append(d);
+  });
+
+  const box = $("#tripDays"); box.textContent = "";
+  days.forEach(d => {
+    const row = el("div", "day");
+    const key = el("div", "daykey");
+    key.append(el("div", "dn", `${pad(d.getMonth() + 1)}/${pad(d.getDate())}`));
+    key.append(el("div", "dw", "週" + WD[d.getDay()]));
+    row.append(key);
+
+    const slots = el("div", "slots");
+    [["昼", "lunch"], ["夜", "dinner"], ].forEach(([lab, slot]) => {
+      const s = el("div", "slot");
+      s.append(el("div", "st", lab));
+      const key2 = `${iso(d)}|${slot}`;
+      const cur = (t.plan || {})[key2];
+      const mid = el("div");
+      if (cur) {
+        const r = byId(cur);
+        if (r) {
+          const nm = el("div", "rname");
+          const b = el("b"); b.textContent = r.name; nm.append(b);
+          nm.append(el("span", "", `${r.genre}・${r.area}・${PLATFORMS[r.booking.platform]}`));
+          mid.append(nm);
+        }
+      } else { mid.append(el("div", "empty", "未排定")); }
+      s.append(mid);
+
+      const sel = el("select", "slotpick");
+      sel.setAttribute("aria-label", `${fmtDate(d)} ${lab} 餐廳`);
+      const o0 = el("option", "", "— 選擇 —"); o0.value = ""; sel.append(o0);
+      S.restaurants.forEach(r => { const o = el("option", "", `${r.name}（${r.genre}）`); o.value = r.id; sel.append(o); });
+      sel.value = cur || "";
+      sel.onchange = () => {
+        t.plan = t.plan || {};
+        if (sel.value) t.plan[key2] = sel.value; else delete t.plan[key2];
+        save(); renderAll();
+      };
+      s.append(sel);
+      slots.append(s);
+    });
+    row.append(slots);
+    box.append(row);
+  });
+}
+$("#btnNewTrip").onclick = () => {
+  const name = prompt("旅行名稱", "2027 年 5 月 東京"); if (!name) return;
+  const start = prompt("出發日 YYYY-MM-DD", "2027-05-01"); if (!start) return;
+  const end = prompt("回程日 YYYY-MM-DD", "2027-05-06"); if (!end) return;
+  const party = parseInt(prompt("同行人數", "2") || "2", 10);
+  const t = { id: "t" + Date.now(), name, start, end, party, plan: {} };
+  S.trips.unshift(t); S.tripId = t.id; save(); renderAll();
+};
+
+/* ═══ My Maps export ════════════════════════════════════════════════════ */
+function exportCSV() {
+  const t = trip();
+  const head = ["名稱", "地址", "分類", "用餐日", "餐次", "訂位平台", "開放訂位", "食べログ", "備註"];
+  const lines = [head.join(",")];
+  const esc = v => `"${String(v == null ? "" : v).replace(/"/g, '""')}"`;
+  const entries = Object.entries(t.plan || {}).sort();
+  if (!entries.length) { toast("這趟行程還沒排任何餐廳"); return; }
+  for (const [k, id] of entries) {
+    const r = byId(id); if (!r) continue;
+    const [date, slot] = k.split("|");
+    const opens = ruleOpens(r.booking.rule, new Date(date + "T00:00:00"));
+    lines.push([r.name, r.address, r.genre, date, slot === "lunch" ? "午餐" : "晚餐",
+      PLATFORMS[r.booking.platform], opens ? fmtDT(opens) : "待查",
+      r.score ? r.score.toFixed(2) : "", r.station].map(esc).join(","));
+  }
+  const csv = lines.join("\n");
+  $("#modalTitle").textContent = `${t.name}・My Maps 匯入檔`;
+  $("#modalBody").textContent = csv;
+  $("#modalMsg").textContent = "到 mymaps.google.com → 建立新地圖 → 匯入 → 貼上此 CSV";
+  $("#modal").classList.add("on");
+  $("#modalCopy").onclick = async () => {
+    try { await navigator.clipboard.writeText(csv); $("#modalMsg").textContent = "已複製到剪貼簿"; }
+    catch (e) {
+      const sel = getSelection(), rg = document.createRange();
+      rg.selectNodeContents($("#modalBody")); sel.removeAllRanges(); sel.addRange(rg);
+      $("#modalMsg").textContent = "已全選 — 按 ⌘C／Ctrl+C 複製";
+    }
+  };
+}
+$("#btnExport").onclick = exportCSV;
+$("#modalX").onclick = () => $("#modal").classList.remove("on");
+
+$("#btnRules").onclick = () => {
+  $("#modalTitle").textContent = "東京餐廳的訂位開放規則";
+  $("#modalBody").textContent =
+`系統目前支援四種規則，匯入時會自動判讀店家頁的「予約」欄位。
+
+  1. 每月固定日開放          毎月1日 10:00 に翌月分を受付
+     → 想訂 2027/01/06，開放時刻 = 2026/12/01 10:00
+
+  2. N 個月前同日開放        3ヶ月前の同日より受付
+     → 想訂 2027/01/06，開放時刻 = 2026/10/06
+
+  3. 提前 N 天開放           30日前より受付
+     → 想訂 2027/01/06，開放時刻 = 2026/12/07
+
+  4. 規則未確認              需登入 OMAKASE／TableCheck 或去電確認
+
+提醒機制（正式版）
+  · 開放前 7 天、前 1 天、當天開放前 30 分鐘各推播一次
+  · 由每日執行的 Claude 排程檢查，推播到你的手機
+  · 時區一律以日本時間 JST 計算，不受你人在哪裡影響`;
+  $("#modalMsg").textContent = "";
+  $("#modalCopy").onclick = () => $("#modal").classList.remove("on");
+  $("#modal").classList.add("on");
+};
+
+/* ═══ import ════════════════════════════════════════════════════════════ */
+const TABELOG_RE = /^https?:\/\/(?:s\.)?tabelog\.com\/([a-z]+)\/([A-Z]\d+)\/([A-Z]\d+)\/(\d+)\/?/i;
+function parseUrl(u) {
+  u = u.trim(); if (!u) return null;
+  const m = u.match(TABELOG_RE);
+  if (m) return { url: u, source: "tabelog", pref: m[1], area1: m[2], area2: m[3], rid: m[4], ok: true };
+  try {
+    const h = new URL(u).hostname.replace(/^www\./, "");
+    const known = { "omakase.in": "omakase", "tableall.com": "tableall", "tablecheck.com": "tablecheck" };
+    if (known[h]) return { url: u, source: known[h], ok: true };
+    return { url: u, source: "其他網站", ok: true };
+  } catch (e) { return { url: u, source: null, ok: false }; }
+}
+function renderQueue() {
+  const box = $("#queue"); box.textContent = "";
+  if (!S.queue.length) return;
+  const h = el("h3"); h.style.cssText = "margin:0 0 4px;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)";
+  h.textContent = `待匯入佇列 — ${S.queue.length} 筆`;
+  box.append(h);
+  S.queue.forEach((q, i) => {
+    const row = el("div", "qrow");
+    row.append(el("div", "idx", pad(i + 1)));
+    const u = el("div", "u"); u.textContent = q.url;
+    const small = el("small");
+    small.textContent = q.ok
+      ? (q.source === "tabelog" ? `Tabelog 店家 ID ${q.rid}・區域 ${q.area1}/${q.area2} — 等待抓取店名、地址、分類、訂位規則`
+                                : `${q.source} 連結 — 等待抓取`)
+      : "無法辨識的網址格式";
+    u.append(small); row.append(u);
+    const st = el("span", "pill " + (q.ok ? "warn" : "crit"), q.ok ? "待抓取" : "格式錯誤");
+    row.append(st);
+    box.append(row);
+  });
+}
+$("#btnParse").onclick = () => {
+  const lines = $("#urlBox").value.split(/\s*\n\s*/).filter(Boolean);
+  S.queue = lines.map(parseUrl).filter(Boolean);
+  save(); renderQueue(); renderCounts();
+  toast(`已解析 ${S.queue.length} 筆網址 — 開通網路後即可抓取內容`);
+};
+$("#btnClearQ").onclick = () => { S.queue = []; $("#urlBox").value = ""; save(); renderQueue(); renderCounts(); };
+$("#btnAdd").onclick = () => go("import");
+
+/* ═══ toast ═════════════════════════════════════════════════════════════ */
+let toastT;
+function toast(msg) {
+  let t = $("#toast");
+  if (!t) {
+    t = el("div"); t.id = "toast";
+    t.style.cssText = "position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--ink);" +
+      "color:var(--ground);padding:10px 17px;border-radius:3px;font-size:13px;z-index:70;box-shadow:var(--shadow);" +
+      "max-width:min(460px,92vw);text-align:center";
+    document.body.append(t);
+  }
+  t.textContent = msg; t.style.opacity = "1";
+  clearTimeout(toastT); toastT = setTimeout(() => { t.style.opacity = "0"; t.style.transition = "opacity .4s"; }, 2600);
+}
+
+/* ═══ nav ═══════════════════════════════════════════════════════════════ */
+function go(v) {
+  $$(".view").forEach(s => s.classList.toggle("on", s.id === "v-" + v));
+  $$("#nav button").forEach(b => b.setAttribute("aria-current", String(b.dataset.v === v)));
+  scrollTo({ top: 0, behavior: "smooth" });
+}
+$$("#nav button").forEach(b => b.onclick = () => go(b.dataset.v));
+
+function renderCounts() {
+  const wish = S.restaurants.filter(r => r.status === "wish").length;
+  $("#cRadar").textContent = wish;
+  $("#cLib").textContent = S.restaurants.length;
+  $("#cTrip").textContent = Object.values(trip().plan || {}).filter(Boolean).length;
+  $("#cImp").textContent = S.queue.length || "";
+}
+function renderTripSel() {
+  const sel = $("#tripSel"); sel.textContent = "";
+  S.trips.forEach(t => { const o = el("option", "", t.name); o.value = t.id; sel.append(o); });
+  sel.value = S.tripId;
+  sel.onchange = () => { S.tripId = sel.value; save(); renderAll(); };
+  const t = trip();
+  const a = new Date(t.start + "T00:00:00"), b = new Date(t.end + "T00:00:00");
+  $("#tripDates").textContent = `${pad(a.getMonth() + 1)}/${pad(a.getDate())} – ${pad(b.getMonth() + 1)}/${pad(b.getDate())}`;
+  $("#tripNights").textContent = `${Math.round((b - a) / 864e5)} 晚・${t.party} 人`;
+}
+function renderAll() { renderTripSel(); renderCounts(); renderRadar(); renderChips(); renderLib(); renderTrip(); renderQueue(); }
+
+/* ═══ boot ══════════════════════════════════════════════════════════════ */
+applyTheme();
+$("#todayStamp").textContent = fmtDate(TODAY);
+if (!S.queue.length) { $("#urlBox").value = PENDING.join("\n"); S.queue = PENDING.map(parseUrl); }
+else { $("#urlBox").value = S.queue.map(q => q.url).join("\n"); }
+renderAll();
+</script>
