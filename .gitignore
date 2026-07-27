@@ -5,3 +5,10 @@ node_modules/
 package-lock.json
 *.log
 .DS_Store
+
+# scraper
+scraper/node_modules/
+scraper/node_modules_pw
+scraper/.auth/
+data/*.jsonl
+data/restaurants.json

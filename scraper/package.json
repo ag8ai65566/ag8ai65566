@@ -1,0 +1,9 @@
+{
+  "name": "tokyo-ledger-scraper",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "import": "node import.mjs",
+    "snapshot": "node snapshot.mjs"
+  }
+}
