@@ -575,12 +575,67 @@ const ruleOpens = (r, dine, announcement) =>
  */
 const STALE_DAYS = 10;
 
+const monthsBetween = (a, b) =>
+  (b.getFullYear() - a.getFullYear()) * 12 + (b.getMonth() - a.getMonth());
+
+/**
+ * When does the window covering *your* dining month open?
+ *
+ * Not the same question as "when is the next release", and for a trip a year out
+ * they have completely different answers: on 2026-08-01 とり茶太郎 releases
+ * November 2026, which is no use to someone eating in July 2027. Counting down
+ * to it would be counting down to somebody else's dinner.
+ *
+ * The booking horizon is readable from the observation — 受付期間 runs to
+ * 2026-10-31 while we looked in July, so roughly three months are open at a time
+ * — and each monthly release rolls that horizon forward by one. So the release
+ * covering month M is M minus the horizon, on the day and at the hour the
+ * platform published for the next one.
+ *
+ * This is arithmetic on top of an observation, so it is labelled 推估: the
+ * horizon can change, and only the daily poll will show whether it has.
+ */
+function releaseForDiningMonth(o, dine) {
+  if (!o || !o.windowUntil || !o.nextOpenAt || !o.observedAt) return null;
+  const horizon = monthsBetween(new Date(o.observedAt), new Date(o.windowUntil + "T00:00:00"));
+  if (horizon < 0) return null;
+  const t = jstWallClock(o.nextOpenAt);
+  const at = new Date(dine.getFullYear(), dine.getMonth() - horizon, t.getDate(),
+    t.getHours(), t.getMinutes(), 0, 0);
+  return at > TODAY ? { at, horizon } : null;
+}
+
+/** Is the dining date already inside the window the platform has open? */
+const insideWindow = (o, dine) =>
+  !!(o && o.windowUntil && dine <= new Date(o.windowUntil + "T23:59:59"));
+
 function nextAction(r, dine) {
   const o = r.booking.observed;
   const soon = iso => { const d = iso ? jstWallClock(iso) : null; return d && d > TODAY ? d : null; };
 
-  if (o && o.acceptingNow)
+  if (o && o.acceptingNow && insideWindow(o, dine))
     return { at: null, kind: "open", label: "現在可訂", basis: "平台狀態", timeKnown: false };
+
+  /* The trip is beyond what is on sale, so the release that matters is a future
+     one for that month — not whichever one happens to be next. */
+  if (o && !insideWindow(o, dine)) {
+    const est = releaseForDiningMonth(o, dine);
+    if (est) {
+      const raffleLead = o.raffle && o.raffle.applyDaysBeforeRelease;
+      const apply = raffleLead ? new Date(est.at.getTime() - raffleLead * 864e5) : null;
+      return apply && apply > TODAY
+        ? {
+            at: apply, kind: "raffle", label: "抽選應募開始", basis: "推估",
+            timeKnown: false,
+            note: `為 ${fmtDate(dine)} 用餐・開放 ${fmtDT(est.at)}・受付期間約 ${est.horizon} 個月`,
+          }
+        : {
+            at: est.at, kind: "release", label: "開放此月份", basis: "推估",
+            timeKnown: true,
+            note: `為 ${fmtDate(dine)} 用餐・受付期間約 ${est.horizon} 個月`,
+          };
+    }
+  }
 
   if (o && o.raffle) {
     const at = soon(o.raffle.applyUntil);

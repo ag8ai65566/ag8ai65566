@@ -133,11 +133,12 @@ def real_seed():
             "lat": None, "lng": None, "remind": True,
         })
     seed.sort(key=lambda s: (s["booking"]["platform"] == "none", s["name"] or ""))
-    # A placeholder trip: the radar needs a dining date to count back from, and
-    # the real dates aren't known here. Editable in the app.
+    # The trip the radar counts back from. A year out, this is what decides
+    # which release matters: the next one on sale is for somebody else's dinner.
+    # Editable in the app.
     trips = [{
-        "id": "t1", "name": "行程未定（改成你的日期）",
-        "start": "2026-10-05", "end": "2026-10-10", "party": 2, "plan": {},
+        "id": "t1", "name": "2027 年 7 月 東京",
+        "start": "2027-07-05", "end": "2027-07-12", "party": 2, "plan": {},
     }]
     return json.dumps(seed, ensure_ascii=False, indent=2), json.dumps(trips, ensure_ascii=False, indent=2), "[]"
 
