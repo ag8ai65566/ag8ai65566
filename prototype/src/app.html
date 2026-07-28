@@ -512,10 +512,44 @@ const RULES = {
       const d = new Date(dine); d.setDate(d.getDate() - r.days); d.setHours(r.hour, 0, 0, 0); return d;
     }
   },
+  monthlyFirstBusinessDay: { // 毎月最初の営業日に N ヶ月先 — 鳥しき ほか
+    label: (r) => `每月第一個營業日${r.hour == null ? "" : ` ${pad(r.hour)}:00`}開放 ${r.lead} 個月後`,
+    opensAt(r, dine) {
+      /* "First business day" is the first day of the month that isn't one of
+         this shop's own closing days, so the date drifts from month to month. */
+      const closed = new Set(r.closedDows || []);
+      const d = new Date(dine.getFullYear(), dine.getMonth() - r.lead, 1);
+      for (let i = 0; i < 7 && closed.has(d.getDay()); i++) d.setDate(d.getDate() + 1);
+      d.setHours(r.hour ?? 0, 0, 0, 0);
+      return d;
+    }
+  },
+  notAcceptingNew: { label: () => "不收新客", opensAt: () => null },
   unknown: { label: () => "規則未確認", opensAt: () => null }
 };
+const monthKey = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}`;
 const ruleLabel = r => RULES[r.kind].label(r);
-const ruleOpens = (r, dine) => RULES[r.kind].opensAt(r, dine);
+/**
+ * The shop's own dated notice wins over the inferred rule for the month it
+ * covers. 鳥しき is the case in point: its rule says "first business day", but
+ * the notice for October says 8/12 — the 12th, not the 1st. Trusting the rule
+ * there would have you calling eleven days late.
+ */
+const announcedFor = (ann, dine) => !!ann && ann.forMonth === monthKey(dine);
+/* Every rule above builds its date from plain local components, i.e. the clock
+   on screen is read as the shop's clock. The announcement arrives as an absolute
+   +09:00 instant, so take its wall-clock fields rather than letting the viewer's
+   timezone shift 17:00 to something else. */
+const jstWallClock = iso => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(iso);
+  return m ? new Date(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], 0, 0) : null;
+};
+const ruleOpens = (r, dine, announcement) =>
+  announcedFor(announcement, dine) ? jstWallClock(announcement.opensAt) : RULES[r.kind].opensAt(r, dine);
+/* Some rules pin the day but not the hour (鳥しき publishes no general time).
+   Printing those as 00:00 would read as midnight, which is simply wrong. */
+const opensTimeKnown = (r, dine, ann) => announcedFor(ann, dine) || r.hour != null;
+const fmtOpens = (d, timeKnown) => timeKnown ? fmtDT(d) : `${fmtDate(d)}（時刻未公布）`;
 
 const PLATFORMS = {
   omakase: "OMAKASE", tabelog: "Tabelog", tablecheck: "TableCheck",
@@ -621,7 +655,7 @@ function dineDateFor(r) {
 function radarRows() {
   return S.restaurants.filter(r => r.status === "wish").map(r => {
     const dine = dineDateFor(r);
-    const opens = ruleOpens(r.booking.rule, dine);
+    const opens = ruleOpens(r.booking.rule, dine, r.booking.announcement);
     const days = opens ? Math.ceil((opens - TODAY) / 864e5) : null;
     return { r, dine, opens, days };
   }).sort((a, b) => {
@@ -670,7 +704,7 @@ function renderRadar() {
     c3.textContent = ruleLabel(r.booking.rule); tr.append(c3);
 
     const c4 = el("td");
-    if (opens) { const s = el("span", "mono"); s.textContent = fmtDT(opens); s.style.fontSize = "12.5px"; c4.append(s); }
+    if (opens) { const s = el("span", "mono"); s.textContent = fmtOpens(opens, opensTimeKnown(r.booking.rule, dine, r.booking.announcement)); s.style.fontSize = "12.5px"; c4.append(s); }
     else { c4.append(el("span", "pill neutral", "待查")); }
     const dd = el("div"); dd.style.cssText = "font-size:11px;color:var(--ink-3);margin-top:2px";
     dd.textContent = `為 ${fmtDate(dine)} 用餐`; c4.append(dd); tr.append(c4);
@@ -788,9 +822,12 @@ function openDrawer(id) {
   const bkv = el("dl", "kv");
   const rows = [["平台", PLATFORMS[r.booking.platform]], ["開放規則", ruleLabel(r.booking.rule)]];
   if (r.status === "wish") {
-    const dine = dineDateFor(r), opens = ruleOpens(r.booking.rule, dine);
+    const dine = dineDateFor(r), opens = ruleOpens(r.booking.rule, dine, r.booking.announcement);
     rows.push(["計畫用餐", fmtDate(dine)]);
-    rows.push(["開放時刻", opens ? fmtDT(opens) : "待查"]);
+    rows.push(["開放時刻", opens ? fmtOpens(opens, opensTimeKnown(r.booking.rule, dine, r.booking.announcement)) : "待查"]);
+    /* Whether that time is the shop's word or our arithmetic changes how much
+       you should trust it, so say which. */
+    if (opens) rows.push(["依據", announcedFor(r.booking.announcement, dine) ? "店家公告" : "規則推算"]);
     if (opens) {
       const d = Math.ceil((opens - TODAY) / 864e5);
       rows.push(["倒數", d < 0 ? `已開放 ${Math.abs(d)} 天` : d === 0 ? "今天開放" : `${d} 天後`]);
@@ -949,9 +986,9 @@ function exportCSV() {
   for (const [k, id] of entries) {
     const r = byId(id); if (!r) continue;
     const [date, slot] = k.split("|");
-    const opens = ruleOpens(r.booking.rule, new Date(date + "T00:00:00"));
+    const opens = ruleOpens(r.booking.rule, new Date(date + "T00:00:00"), r.booking.announcement);
     lines.push([r.name, r.address, r.genre, date, slot === "lunch" ? "午餐" : "晚餐",
-      PLATFORMS[r.booking.platform], opens ? fmtDT(opens) : "待查",
+      PLATFORMS[r.booking.platform], opens ? fmtOpens(opens, opensTimeKnown(r.booking.rule, new Date(date + "T00:00:00"), r.booking.announcement)) : "待查",
       r.score ? r.score.toFixed(2) : "", r.station].map(esc).join(","));
   }
   const csv = lines.join("\n");

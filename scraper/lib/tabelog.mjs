@@ -153,10 +153,74 @@ export async function fetchRestaurant(ctx, url) {
       fetchedAt: new Date().toISOString(),
     };
     record.rule = inferRule(record.reservationText);
+    /* "First business day of the month" is only computable against this shop's
+       own closing days, so the rule carries them rather than making the radar
+       reach back into the record. */
+    if (record.rule.kind === "monthlyFirstBusinessDay")
+      record.rule.closedDows = closedDows(record.closed);
+    record.announcement = parseAnnouncement(record.reservationText);
     return record;
   } finally {
     await page.close();
   }
+}
+
+/** Full-width digits and punctuation are used interchangeably with ASCII here. */
+const ascii = s => String(s)
+  .replace(/[０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
+  .replace(/[：]/g, ":").replace(/[～〜]/g, "~").replace(/[　]/g, " ");
+
+const pad2 = n => String(n).padStart(2, "0");
+
+const DOW = "日月火水木金土";
+
+/**
+ * Weekday numbers (0=Sunday) out of a 定休日 string like 「月・火・日」.
+ * Tokenised rather than scanned, so 「日・祝日」 yields Sunday only and does not
+ * also read the 日 inside 祝日; anything that isn't a bare weekday (年末年始,
+ * 不定休, 無休) contributes nothing.
+ */
+export function closedDows(closed) {
+  if (!closed) return [];
+  const out = new Set();
+  for (const token of ascii(closed).split(/[・、,．.\s/／]+/)) {
+    const m = token.match(/^([日月火水木金土])(?:曜日?)?$/);
+    if (m) out.add(DOW.indexOf(m[1]));
+  }
+  return [...out].sort((a, b) => a - b);
+}
+
+/**
+ * A cancellation policy counts days before the meal exactly the way a booking
+ * rule does — 「3日前から50%のキャンセル料」 reads identically to 「3日前より予約
+ * 受付」 to a regex. Sentences about cancelling, changing or penalty fees are
+ * therefore removed before any rule matching: they are the single most common
+ * way to infer a confident, wrong booking date.
+ */
+const CANCELLATION = /キャンセル|取消|解約|変更手数料|ペナルティ|no\s*show/i;
+
+/**
+ * Some shops announce the next phone-booking window outright, e.g.
+ *   【2026年10月分】2026年8月12日（水）17:00~19:00
+ * That beats any inferred rule: it is the shop's own answer, it already accounts
+ * for the holidays and closures that make a general rule drift, and it carries a
+ * time of day. Returns null when no such line is present.
+ */
+export function parseAnnouncement(text) {
+  if (!text) return null;
+  const m = ascii(text).match(
+    /【\s*(\d{4})\s*年\s*(\d{1,2})\s*月分\s*】\s*(\d{4})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日\s*(?:[（(][^）)]*[）)])?\s*(\d{1,2}):(\d{2})\s*(?:~\s*(\d{1,2}):(\d{2}))?/
+  );
+  if (!m) return null;
+  const [, fy, fm, y, mo, d, h, mi, h2, mi2] = m;
+  /* Japan does not observe DST, so a fixed +09:00 is exact year-round. */
+  const at = (hh, mm) => `${y}-${pad2(mo)}-${pad2(d)}T${pad2(hh)}:${mm}:00+09:00`;
+  return {
+    forMonth: `${fy}-${pad2(fm)}`,
+    opensAt: at(h, mi),
+    opensUntil: h2 ? at(h2, mi2) : null,
+    raw: m[0],
+  };
 }
 
 /**
@@ -166,23 +230,53 @@ export async function fetchRestaurant(ctx, url) {
  */
 export function inferRule(text) {
   if (!text) return { kind: "unknown" };
-  const t = text.replace(/\s+/g, "");
-  const num = s => { const m = t.match(s); return m ? Number(m[1].replace(/[０-９]/g, d => "０１２３４５６７８９".indexOf(d))) : null; };
 
-  const hour = num(/(\d{1,2})[時:]/) ?? 10;
+  /* Match per sentence, not across the whole blob: it keeps a number from one
+     clause being paired with a time of day from an unrelated one. */
+  const sentences = ascii(text)
+    .split(/[\n。]/)
+    .map(s => s.replace(/\s+/g, ""))
+    .filter(Boolean)
+    .filter(s => !CANCELLATION.test(s));
 
-  // 毎月1日／翌月分 — the classic omakase counter pattern
-  const monthlyDay = num(/毎月(\d{1,2})日/);
-  if (monthlyDay !== null) {
-    const lead = num(/(\d{1,2})[ヶか]月(?:先|後)/) ?? (/翌々月/.test(t) ? 2 : 1);
-    return { kind: "monthlyFirst", day: monthlyDay, hour, lead };
+  if (!sentences.length) return { kind: "unknown", raw: text };
+
+  /* 新規予約不可 — not "we don't know when", but "not to you, not right now". */
+  if (sentences.some(s => /新規(?:の)?(?:ご)?予約(?:は)?(?:受け付けて|承って)?(?:おりません|不可|お断り)/.test(s)))
+    return { kind: "notAcceptingNew", raw: text };
+
+  const hourIn = s => { const m = s.match(/(\d{1,2})[時:]/); return m ? Number(m[1]) : null; };
+  const leadIn = s => {
+    const m = s.match(/(\d{1,2})[ヶヵかカ箇]月(?:先|後)/);
+    return m ? Number(m[1]) : (/翌々月/.test(s) ? 2 : /翌月/.test(s) ? 1 : null);
+  };
+
+  for (const s of sentences) {
+    // 毎月最初の営業日に N ヶ月先 — the date moves with the shop's own calendar
+    if (/毎月最初の営業日|毎月初(?:め)?の営業日/.test(s))
+      return { kind: "monthlyFirstBusinessDay", lead: leadIn(s) ?? 1, hour: hourIn(s) };
+
+    // 毎月1日／翌月分 — the classic omakase counter pattern
+    const monthlyDay = s.match(/毎月(\d{1,2})日/);
+    if (monthlyDay) {
+      const all = sentences.join("");
+      return {
+        kind: "monthlyFirst",
+        day: Number(monthlyDay[1]),
+        hour: hourIn(s) ?? 10,
+        lead: leadIn(s) ?? leadIn(all) ?? 1,
+      };
+    }
+
+    const months = s.match(/(\d{1,2})[ヶヵかカ箇]月前/);
+    if (months) return { kind: "monthsBefore", months: Number(months[1]), hour: hourIn(s) ?? 10 };
+
+    const weeks = s.match(/(\d{1,2})週間前/);
+    if (weeks) return { kind: "daysBefore", days: Number(weeks[1]) * 7, hour: hourIn(s) ?? 10 };
+
+    const days = s.match(/(\d{1,3})日前/);
+    if (days) return { kind: "daysBefore", days: Number(days[1]), hour: hourIn(s) ?? 10 };
   }
-  // Nヶ月前
-  const months = num(/(\d{1,2})[ヶか]月前/);
-  if (months !== null) return { kind: "monthsBefore", months, hour };
-  // N日前
-  const days = num(/(\d{1,3})日前/);
-  if (days !== null) return { kind: "daysBefore", days, hour };
 
   return { kind: "unknown", raw: text };
 }

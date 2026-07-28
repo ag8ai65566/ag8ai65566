@@ -2,7 +2,7 @@
 /** Tests for the parts that don't need network: rule inference and history stats. */
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { inferRule, parseShopUrl } from "./lib/tabelog.mjs";
+import { inferRule, parseShopUrl, parseAnnouncement, closedDows } from "./lib/tabelog.mjs";
 import { sellOutStats, perRestaurant } from "./lib/history.mjs";
 
 test("parseShopUrl accepts the shop-page shapes Tabelog serves", () => {
@@ -37,6 +37,61 @@ test("inferRule refuses to guess rather than sending you to book on the wrong da
   assert.equal(inferRule("完全予約制").kind, "unknown");
   assert.equal(inferRule("お電話にてお問い合わせください").kind, "unknown");
   assert.equal(inferRule("予約不可").raw, "予約不可");
+});
+
+/* Real 予約 text from 日本橋 蕎ノ字. The days here are a refund schedule; read as
+   a booking rule they produced a confident `daysBefore: 3`, which would have put
+   the alarm 27 days late for a shop that opens bookings a month out. */
+test("a cancellation policy is not a booking rule", () => {
+  assert.equal(inferRule(
+    "予約可\n「キャンセルポリシー」\n3日前から50％、前日から100%のキャンセル料がかかります。\n" +
+    "蕎麦アレルギーの方、強い香水はご遠慮下さい。").kind, "unknown");
+  assert.equal(inferRule("30日前からキャンセル料が発生します").kind, "unknown");
+  assert.equal(inferRule("2ヶ月前より変更手数料を頂戴します").kind, "unknown");
+  // but a real rule sitting next to a policy still gets read
+  assert.deepEqual(inferRule("30日前より予約受付\n3日前からキャンセル料100%"),
+    { kind: "daysBefore", days: 30, hour: 10 });
+});
+
+/* Real 予約 text from 鳥しき. */
+test("inferRule reads 毎月最初の営業日, whose date depends on the shop's calendar", () => {
+  assert.deepEqual(
+    inferRule("毎月最初の営業日に、お電話にて2ヶ月先のご予約を承ります。（例：1月に3月分）"),
+    { kind: "monthlyFirstBusinessDay", lead: 2, hour: null });
+  // the （例：1月に3月分） aside must not be mistaken for the lead time
+  assert.equal(inferRule("毎月最初の営業日に翌月分を承ります").lead, 1);
+});
+
+/* Real 予約 text from オオクサ. */
+test("inferRule reads weeks, and takes the hour from the same sentence", () => {
+  assert.deepEqual(
+    inferRule("電話予約は1週間前の昼12:00からお受け致します"),
+    { kind: "daysBefore", days: 7, hour: 12 });
+  // 1週間以内／1週間以上先 are not 1週間前 and must not match
+  assert.equal(inferRule("1週間以内のお好きな日程でご予約お受け致します").kind, "unknown");
+});
+
+test("inferRule distinguishes 'closed to new bookings' from 'rule unknown'", () => {
+  assert.equal(inferRule("完全予約制\n新規予約不可").kind, "notAcceptingNew");
+  assert.equal(inferRule("完全予約制").kind, "unknown");
+});
+
+test("parseAnnouncement prefers the shop's own dated notice", () => {
+  const a = parseAnnouncement(
+    "毎月最初の営業日に、お電話にて2ヶ月先のご予約を承ります。\n" +
+    "【2026年10月分】2026年8月12日（水）17：00～19：00");
+  assert.equal(a.forMonth, "2026-10");
+  assert.equal(a.opensAt, "2026-08-12T17:00:00+09:00");
+  assert.equal(a.opensUntil, "2026-08-12T19:00:00+09:00");
+  assert.equal(parseAnnouncement("毎月1日10時より翌月分"), null);
+});
+
+test("closedDows reads weekdays without picking them out of other words", () => {
+  assert.deepEqual(closedDows("月・火・日"), [0, 1, 2]);
+  assert.deepEqual(closedDows("日・祝日、年末年始"), [0]);   // not the 日 in 祝日
+  assert.deepEqual(closedDows("日曜日.他不定休"), [0]);
+  assert.deepEqual(closedDows("不定休"), []);
+  assert.deepEqual(closedDows(null), []);
 });
 
 const obs = (ts, id, diningDate, anyAvailable) =>

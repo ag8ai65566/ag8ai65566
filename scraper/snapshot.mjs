@@ -51,6 +51,14 @@ function horizonDates() {
  * `false`: a shut restaurant is not a restaurant that sold out, and recording it
  * as one would understate how long its seats really stay open.
  */
+/**
+ * The restaurant simply doesn't take reservations through this source — not an
+ * error, and specifically not a scraper failure. Kept apart from real errors so
+ * a nightly run over a list of phone-only places doesn't report the same handful
+ * of failures forever and bury the one that means the markup actually changed.
+ */
+class NotBookableOnline extends Error {}
+
 const VACANCY = {
   0: { available: false, note: "満席／受付不可" },
   1: { available: null, note: "残席わずか？ code 1 の意味は未確認" },
@@ -75,10 +83,23 @@ const PROBES = {
         return res.ok ? res.json() : { __status: res.status };
       }, r.id);
 
+      /* A shop with no Tabelog net-booking contract answers the widget endpoint
+         with an error page; one that has the widget but takes no online bookings
+         answers with an empty calendar and every party size unselectable. */
+      if (payload.__status === 400)
+        throw new NotBookableOnline("Tabelog ネット予約なし（この店は食べログでは予約できません）");
+
       if (payload.__status) throw new Error(`vacancy endpoint returned HTTP ${payload.__status}`);
+
       const list = payload?.date_with_status?.dateList;
-      if (!Array.isArray(list) || !list.length)
+      if (!Array.isArray(list))
+        throw new Error("no dateList in the vacancy payload — endpoint or payload shape changed");
+      if (!list.length) {
+        const sizes = payload?.member_by_date?.svpsOpts;
+        if (Array.isArray(sizes) && sizes.length && sizes.every(o => !o.status))
+          throw new NotBookableOnline("Tabelog ネット予約の空き枠なし（オンライン受付をしていない）");
         throw new Error("vacancy calendar was empty — endpoint or payload shape changed");
+      }
 
       const wanted = new Set(horizonDates());
       const out = [];
@@ -120,7 +141,7 @@ if (!restaurants.length) { console.error("nothing to snapshot"); process.exit(2)
 
 const ts = new Date().toISOString();
 const rows = [];
-let ok = 0, failed = 0;
+let ok = 0, failed = 0, skipped = 0;
 
 for (const r of restaurants) {
   const source = r.bookingSource || r.source || "tabelog";
@@ -135,8 +156,13 @@ for (const r of restaurants) {
     const openCount = found.filter(f => f.anyAvailable).length;
     console.log(`✓ ${r.id} ${r.name || ""} — ${found.length} dates, ${openCount} bookable`);
   } catch (err) {
-    failed++;
-    console.error(`✗ ${r.id} ${r.name || ""} — ${err.message}`);
+    if (err instanceof NotBookableOnline) {
+      skipped++;
+      console.log(`– ${r.id} ${r.name || ""} — ${err.message}`);
+    } else {
+      failed++;
+      console.error(`✗ ${r.id} ${r.name || ""} — ${err.message}`);
+    }
   } finally {
     if (ctx) await ctx.close();
   }
@@ -144,7 +170,8 @@ for (const r of restaurants) {
 
 await closeBrowser();
 const written = await append(rows);
-console.log(`\nsnapshot ${ts}: ${ok} ok, ${failed} failed, ${written} observations appended`);
+console.log(`\nsnapshot ${ts}: ${ok} ok, ${skipped} skipped (予約不可), ${failed} failed, ${written} observations appended`);
 /* A failed probe is not a reason to lose the rows that did work, but it is a
-   reason to exit non-zero so a scheduled run surfaces the problem. */
+   reason to exit non-zero so a scheduled run surfaces the problem. A skipped one
+   is a standing fact about the restaurant, not a problem, so it exits clean. */
 process.exit(failed ? 1 : 0);
