@@ -13,6 +13,7 @@ built page opens on the real list instead of the fictional placeholders. Pass
 --sample to keep the placeholders.
 """
 import base64
+import hashlib
 import json
 import pathlib
 import re
@@ -137,10 +138,17 @@ def real_seed():
     # which release matters: the next one on sale is for somebody else's dinner.
     # Editable in the app.
     trips = [{
-        "id": "t1", "name": "2027 年 7 月 東京",
-        "start": "2027-07-05", "end": "2027-07-12", "party": 2, "plan": {},
+        "id": "t1", "name": "2027 年 1 月 東京",
+        "start": "2027-01-05", "end": "2027-01-12", "party": 2, "plan": {},
     }]
-    return json.dumps(seed, ensure_ascii=False, indent=2), json.dumps(trips, ensure_ascii=False, indent=2), "[]"
+    # A fingerprint of the baked data, so a browser holding older data knows to
+    # fold the new version in rather than keep showing what it cached.
+    version = hashlib.sha256(
+        json.dumps(seed, ensure_ascii=False, sort_keys=True).encode("utf-8")
+    ).hexdigest()[:12]
+    return (json.dumps(seed, ensure_ascii=False, indent=2),
+            json.dumps(trips, ensure_ascii=False, indent=2),
+            "[]", json.dumps(version))
 
 
 def main() -> int:
@@ -166,8 +174,9 @@ def main() -> int:
 
     baked = None if "--sample" in sys.argv else real_seed()
     if baked:
-        seed, trips, pending = baked
-        for tag, value in (("SEED", seed), ("TRIPS", trips), ("PENDING", pending)):
+        seed, trips, pending, version = baked
+        for tag, value in (("SEED", seed), ("TRIPS", trips), ("PENDING", pending),
+                           ("DATAVER", version)):
             pattern = re.compile(r"/\*<<%s\*/.*?/\*%s>>\*/" % (tag, tag), re.S)
             if not pattern.search(html):
                 print(f"src/app.html has no <<{tag} marker", file=sys.stderr)

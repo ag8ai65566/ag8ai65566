@@ -124,6 +124,31 @@ main{min-width:0;padding:28px 34px 72px;max-width:1180px}
   font-size:34px;font-weight:400;line-height:1.05;letter-spacing:.01em;text-wrap:balance;
 }
 .vh .lede{margin:6px 0 0;color:var(--ink-2);font-size:13px;max-width:60ch}
+
+/* trip editor — the dates the whole radar counts back from, editable in place */
+.tripedit{
+  display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;
+  padding:14px 16px;margin:-6px 0 22px;background:var(--surface);
+  border:1px solid var(--rule);border-left:2px solid var(--accent);
+}
+.tripedit label{display:flex;flex-direction:column;gap:5px;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.tripedit input{
+  font:inherit;font-size:13px;padding:7px 9px;background:var(--surface-2);
+  color:var(--ink);border:1px solid var(--rule-strong);border-radius:0;
+}
+.tripedit input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.tripedit input[type="date"]{font-family:"Plex Mono",ui-monospace,monospace}
+.tripedit input[name="name"]{min-width:15ch}
+.tripedit input[name="party"]{width:7ch}
+.tripedit .grow{flex:1 1 auto}
+.tripedit .hint{font-size:11px;color:var(--ink-3);text-transform:none;letter-spacing:0;
+  font-weight:400;align-self:center}
+/* the radar's own pointer back to these dates */
+.datenote{font-size:12px;color:var(--ink-2);margin:8px 0 0}
+.datenote button{font:inherit;color:var(--accent);background:none;border:0;padding:0;
+  cursor:pointer;border-bottom:1px solid transparent}
+.datenote button:hover{border-bottom-color:var(--accent)}
 .vh .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:5px}
 
 .btn{
@@ -388,7 +413,8 @@ a.link:hover{border-bottom-color:currentColor}
         <div>
           <span class="eyebrow">Reservation radar</span>
           <h1>該在什麼時候搶訂</h1>
-          <p class="lede">依「開放訂位時刻」由近到遠排列。每家店的開放規則不同 —— 有的前月一號十點，有的三個月前同日。倒數歸零前會提醒你。</p>
+          <p class="lede">依「該動作的時刻」由近到遠排列。開放時刻優先採用平台公告，其次店家公告，最後才是規則推算 —— 每列都標明依據。</p>
+          <p class="datenote" id="radarDateNote"></p>
         </div>
         <button class="btn ghost" id="btnRules" type="button">開放規則說明</button>
       </div>
@@ -441,6 +467,15 @@ a.link:hover{border-bottom-color:currentColor}
           <button class="btn" id="btnExport" type="button">匯出到 Google My Maps</button>
         </div>
       </div>
+      <form class="tripedit" id="tripEdit" autocomplete="off">
+        <label>旅行名稱<input type="text" name="name" required maxlength="40"></label>
+        <label>出發日<input type="date" name="start" required></label>
+        <label>回程日<input type="date" name="end" required></label>
+        <label>人數<input type="number" name="party" min="1" max="20" required></label>
+        <button class="btn" type="submit">儲存日期</button>
+        <span class="hint grow" id="tripEditHint"></span>
+        <button class="btn ghost" type="button" id="btnDelTrip">刪除這趟</button>
+      </form>
       <div class="sum" id="tripSum"></div>
       <div class="days" id="tripDays"></div>
     </section>
@@ -704,6 +739,9 @@ const bookingModel = r => BOOKING_MODEL[r.booking.platform] || BOOKING_MODEL.unk
 /* ═══ seed data ═════════════════════════════════════════════════════════
    NOTE: 這些是「範例資料」，店名為虛構，用來確認版面與流程。
    真實資料等網路開通後由 Tabelog／OMAKASE 匯入覆蓋。                     */
+/* Bumped by build.py whenever the baked data changes; drives mergeSeed(). */
+const DATA_VERSION = "d7e621a9b9ef";
+
 const SEED = [
   {
     "id": "13157208",
@@ -1097,9 +1135,9 @@ const PENDING = []
 const TRIPS = [
   {
     "id": "t1",
-    "name": "2027 年 7 月 東京",
-    "start": "2027-07-05",
-    "end": "2027-07-12",
+    "name": "2027 年 1 月 東京",
+    "start": "2027-01-05",
+    "end": "2027-01-12",
     "party": 2,
     "plan": {}
   }
@@ -1112,9 +1150,46 @@ try {
   S = JSON.parse(localStorage.getItem(STORE)) || null;
 } catch (e) { S = null; }
 if (!S || !S.restaurants) {
-  S = { restaurants: SEED, trips: TRIPS, tripId: "t1", theme: null, queue: [] };
+  S = { restaurants: SEED, trips: TRIPS, tripId: "t1", theme: null, queue: [],
+        dataVersion: DATA_VERSION };
+}
+
+/**
+ * Fold a newly built seed into data already saved in this browser.
+ *
+ * Without this, everything the scraper learns is invisible to anyone who has
+ * opened the page before: localStorage wins on load, so a fresh booking reading,
+ * a corrected platform, or a newly added restaurant would sit in the file and
+ * never reach the screen. Whoever had visited would keep looking at the oldest
+ * data and have no way to tell.
+ *
+ * Scraped fields come from the seed; anything you did here — been there, rating,
+ * notes, reminders, priority, which trip slot it sits in — stays yours. A
+ * restaurant you added by hand and the seed has never heard of is kept as is.
+ */
+function mergeSeed() {
+  const MINE = ["status", "priority", "remind", "visits", "myRating", "note", "tags"];
+  const bySeedId = new Map(SEED.map(s => [s.id, s]));
+  const kept = new Map(S.restaurants.map(r => [r.id, r]));
+
+  const merged = SEED.map(fresh => {
+    const old = kept.get(fresh.id);
+    if (!old) return fresh;
+    const mine = {};
+    for (const k of MINE) if (old[k] !== undefined) mine[k] = old[k];
+    return { ...fresh, ...mine };
+  });
+  /* Hand-added restaurants have no seed row; losing them would be data loss. */
+  for (const [id, old] of kept) if (!bySeedId.has(id)) merged.push(old);
+
+  S.restaurants = merged;
+  S.dataVersion = DATA_VERSION;
+  save();
 }
 const save = () => { try { localStorage.setItem(STORE, JSON.stringify(S)); } catch (e) {} };
+/* After save() exists — mergeSeed persists the result, and calling it any
+   earlier throws on the temporal dead zone and silently re-merges every load. */
+if (S.dataVersion !== DATA_VERSION) mergeSeed();
 const trip = () => S.trips.find(t => t.id === S.tripId) || S.trips[0];
 const byId = id => S.restaurants.find(r => r.id === id);
 
@@ -1190,6 +1265,17 @@ function renderRadar() {
   const rows = radarRows(), tb = $("#radarBody");
   tb.textContent = "";
   renderRemindAll(rows);
+
+  /* Every countdown here is measured from the trip's first day, so say which
+     date that is and make it one click to change — otherwise the numbers look
+     authoritative while quietly answering the wrong question. */
+  const t = trip(), note = $("#radarDateNote");
+  note.textContent = "";
+  note.append(document.createTextNode(`以「${t.name}」的 ${fmtDate(new Date(t.start + "T00:00:00"))} 為用餐日回推。`));
+  const edit = el("button", "", "改日期");
+  edit.type = "button";
+  edit.onclick = () => { go("trip"); $("#tripEdit").elements.start.focus(); };
+  note.append(document.createTextNode(" "), edit);
   /* A shop the platform says is bookable right now counts as open even though it
      has no countdown — it was being tallied under 規則待查, which read as "we
      don't know" about the one thing we did know. */
@@ -1546,13 +1632,64 @@ function renderTrip() {
     box.append(row);
   });
 }
+/* ═══ trip editor ═══════════════════════════════════════════════════════
+   These dates are not decoration: every countdown on the radar is measured
+   back from 出發日, because the release that matters is the one covering the
+   month you are eating in. So they are editable here, in date fields, rather
+   than living in the build. */
+function renderTripEdit() {
+  const t = trip(), f = $("#tripEdit");
+  f.elements.name.value = t.name || "";
+  f.elements.start.value = t.start || "";
+  f.elements.end.value = t.end || "";
+  f.elements.party.value = t.party || 2;
+  $("#btnDelTrip").disabled = S.trips.length <= 1;
+  $("#tripEditHint").textContent =
+    `雷達的倒數是從出發日往回推算的（目前 ${t.start || "—"}）`;
+}
+
+$("#tripEdit").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target, t = trip();
+  const start = f.elements.start.value, end = f.elements.end.value;
+  if (!start || !end) { toast("請填出發日與回程日"); return; }
+  if (end < start) { toast("回程日不能早於出發日"); return; }
+  Object.assign(t, {
+    name: f.elements.name.value.trim() || t.name,
+    start, end,
+    party: Math.max(1, parseInt(f.elements.party.value, 10) || 1),
+  });
+  /* Slots that fell outside the new dates would otherwise sit in the plan
+     invisibly, counted but unreachable. */
+  const days = new Set(tripDays(t).map(d => iso(d)));
+  let dropped = 0;
+  for (const key of Object.keys(t.plan || {})) {
+    if (!days.has(key.split("|")[0])) { delete t.plan[key]; dropped++; }
+  }
+  save(); renderAll();
+  toast(dropped ? `已更新，${dropped} 個排在新日期之外的安排已移除` : "行程日期已更新");
+});
+
+$("#btnDelTrip").onclick = () => {
+  if (S.trips.length <= 1) { toast("至少要留一趟行程"); return; }
+  const t = trip();
+  if (!confirm(`刪除「${t.name}」？排進去的餐廳安排也會一起刪除。`)) return;
+  S.trips = S.trips.filter(x => x.id !== t.id);
+  S.tripId = S.trips[0].id;
+  save(); renderAll(); toast("已刪除");
+};
+
 $("#btnNewTrip").onclick = () => {
-  const name = prompt("旅行名稱", "2027 年 5 月 東京"); if (!name) return;
-  const start = prompt("出發日 YYYY-MM-DD", "2027-05-01"); if (!start) return;
-  const end = prompt("回程日 YYYY-MM-DD", "2027-05-06"); if (!end) return;
-  const party = parseInt(prompt("同行人數", "2") || "2", 10);
-  const t = { id: "t" + Date.now(), name, start, end, party, plan: {} };
+  const start = new Date(TODAY.getTime() + 180 * 864e5);
+  const end = new Date(start.getTime() + 6 * 864e5);
+  const t = {
+    id: "t" + Date.now(),
+    name: `${start.getFullYear()} 年 ${start.getMonth() + 1} 月 東京`,
+    start: iso(start), end: iso(end), party: 2, plan: {},
+  };
   S.trips.unshift(t); S.tripId = t.id; save(); renderAll();
+  $("#tripEdit").elements.name.focus();
+  toast("已新增一趟，改成你的日期再按儲存");
 };
 
 /* ═══ My Maps export ════════════════════════════════════════════════════ */
@@ -1696,7 +1833,7 @@ function renderTripSel() {
   $("#tripDates").textContent = `${pad(a.getMonth() + 1)}/${pad(a.getDate())} – ${pad(b.getMonth() + 1)}/${pad(b.getDate())}`;
   $("#tripNights").textContent = `${Math.round((b - a) / 864e5)} 晚・${t.party} 人`;
 }
-function renderAll() { renderTripSel(); renderCounts(); renderRadar(); renderChips(); renderLib(); renderTrip(); renderQueue(); }
+function renderAll() { renderTripSel(); renderTripEdit(); renderCounts(); renderRadar(); renderChips(); renderLib(); renderTrip(); renderQueue(); }
 
 /* ═══ boot ══════════════════════════════════════════════════════════════ */
 applyTheme();
