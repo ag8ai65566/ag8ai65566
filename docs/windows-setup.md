@@ -30,21 +30,42 @@
 
 ---
 
-## 3. 打開 PowerShell
+## 3. 打開 PowerShell 並切換到 scraper 資料夾
 
-1. 進到 `桌面 \ ledger \ scraper` 資料夾
-2. 在資料夾**空白處**按住 **Shift** 再按**滑鼠右鍵**
-3. 選「**在這裡開啟 PowerShell 視窗**」（或「在終端中開啟」）
+按開始鍵，打 `powershell`，點「**Windows PowerShell**」（**不要**選有 `(x86)` 的那個）。
 
-會跳出一個黑色或藍色的視窗，最後一行長得像：
+視窗打開時位置是你的家目錄，像 `PS C:\Users\Louis>`。**這不是我們要的位置**，
+要把它切到 `scraper` 資料夾。最不會錯的做法是用拖的，不用打路徑：
 
+1. 在 PowerShell 裡打 `cd` 再加**一個空白**。畫面變成 `PS C:\Users\Louis> cd `
+   —— **先不要按 Enter**
+2. 打開檔案總管，找到第 2 步解壓出來的 `scraper` 資料夾（看到就好，不用點進去）
+3. **把那個資料夾拖進 PowerShell 視窗放開**，完整路徑會自動填上
+4. **這時**才按 Enter
+
+想用打字的話，桌面路徑通常是這兩個之一（Windows 有時把桌面放在 OneDrive 底下）：
+
+```powershell
+cd "$HOME\Desktop\ledger\scraper"
 ```
-PS C:\Users\你的名字\Desktop\ledger\scraper>
+
+```powershell
+cd "$HOME\OneDrive\Desktop\ledger\scraper"
 ```
 
-**確認結尾是 `\scraper`。** 不對的話關掉重來，位置錯了後面每一步都會失敗。
+**確認位置對不對**，貼這行按 Enter：
 
-> 下面每一段指令，都是「複製 → 在視窗裡按右鍵貼上 → 按 Enter」。
+```powershell
+Test-Path dump-omakase.mjs
+```
+
+出現 `True` 才往下做。出現 `False` 表示位置不對，回到上面重切一次
+——後面每一步都靠這個位置，錯了會一路失敗。
+
+> 「Shift + 右鍵 →『在這裡開啟 PowerShell 視窗』」也可以，但那是在**檔案總管的
+> 資料夾裡**按，不是在 PowerShell 裡按。已經開好視窗就用上面的 `cd` 就好。
+
+> 下面每一段指令，都是「複製 → 在視窗裡按**滑鼠右鍵**貼上 → 按 Enter」。
 > PowerShell 貼上是按右鍵，不是 Ctrl+V。
 
 ---
@@ -132,8 +153,8 @@ node dump-omakase.mjs
 
 | 畫面上寫 | 意思 | 怎麼辦 |
 | --- | --- | --- |
-| `npm : 無法辨識...` | Node 沒裝好，或視窗是裝之前開的 | 關掉 PowerShell 重開一個再試 |
-| `Cannot find module` | 位置不對，或漏了 `npm install` | 確認提示字元結尾是 `\scraper`，重跑第 4 步 |
+| `npm : 無法辨識...` | Node 沒裝好，或視窗是裝之前開的 | 關掉 PowerShell 重開一個再試；還是不行就改開沒有 `(x86)` 的那個 PowerShell |
+| `Cannot find module` | 位置不對，或漏了 `npm install` | 用 `Test-Path dump-omakase.mjs` 確認是 `True`，再重跑第 4 步 |
 | `missing env: OMAKASE_EMAIL` | `.env` 沒建好或存錯地方 | 重做第 5 步，確認記事本標題列是 `.env` 不是 `.env.txt` |
 | `login rejected` | 帳密打錯 | 檢查 `.env`；或用第 6 步的手動登入 |
 | 跳出「我不是機器人」 | Cloudflare 驗證 | 自己在視窗裡點掉，回命令列按 Enter |
