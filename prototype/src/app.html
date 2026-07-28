@@ -565,6 +565,24 @@ const PLATFORMS = {
   tableall: "TableAll", phone: "電話預約", none: "不收新客", unknown: "待查"
 };
 
+/**
+ * How you actually get a seat, which is not the same question as which website
+ * the restaurant is listed on. Only `release` is a race against a clock — and
+ * the radar was presenting all nine as if they were, which is wrong for four
+ * of them. TableAll takes a request and arranges it for a fee; a phone-only
+ * shop needs you dialling; 三谷 is not taking anyone new at all.
+ */
+const BOOKING_MODEL = {
+  omakase:    { kind: "release", note: "" },
+  tablecheck: { kind: "release", note: "" },
+  tabelog:    { kind: "release", note: "" },
+  tableall:   { kind: "request", note: "代訂請求制・手續費 ¥8,000／人" },
+  phone:      { kind: "phone",   note: "打電話，沒有線上訂位" },
+  none:       { kind: "closed",  note: "目前不接受新客" },
+  unknown:    { kind: "release", note: "" },
+};
+const bookingModel = r => BOOKING_MODEL[r.booking.platform] || BOOKING_MODEL.unknown;
+
 /* ═══ seed data ═════════════════════════════════════════════════════════
    NOTE: 這些是「範例資料」，店名為虛構，用來確認版面與流程。
    真實資料等網路開通後由 Tabelog／OMAKASE 匯入覆蓋。                     */
@@ -704,7 +722,10 @@ function renderRadar() {
   renderRemindAll(rows);
   const openNow = rows.filter(x => x.days !== null && x.days <= 0).length;
   const soon = rows.filter(x => x.days !== null && x.days > 0 && x.days <= 14).length;
-  const unknown = rows.filter(x => x.days === null).length;
+  /* Only a restaurant whose seats are released at a time can have an unknown
+     release rule. Counting the request-only and closed ones as 規則待查 made the
+     backlog look bigger than it is, and implied research that has no answer. */
+  const unknown = rows.filter(x => x.days === null && bookingModel(x.r).kind === "release").length;
   const next = rows.find(x => x.days !== null && x.days > 0);
 
   $("#radarSum").textContent = "";
@@ -728,20 +749,38 @@ function renderRadar() {
     c1.append(nm); tr.append(c1);
 
     const c2 = el("td"); const p = el("span", "plat"); p.dataset.p = r.booking.platform;
-    p.append(el("i"), document.createTextNode(PLATFORMS[r.booking.platform])); c2.append(p); tr.append(c2);
+    p.append(el("i"), document.createTextNode(PLATFORMS[r.booking.platform])); c2.append(p);
+    /* Say what booking here actually involves — a fee, a phone call, or a
+       closed door — instead of letting the platform name imply "click here". */
+    /* Both lines matter and neither replaces the other: 鳥しき is a phone race
+       whose time is in the next column, and separately a TableAll request you
+       could pay for instead. */
+    const model = bookingModel(r);
+    const notes = [model.note];
+    if (r.booking.alt) notes.push(`或 ${PLATFORMS[r.booking.alt.source]}・${r.booking.alt.note}`);
+    for (const n of notes.filter(Boolean)) {
+      const mn = el("div"); mn.style.cssText = "font-size:11px;color:var(--ink-3);margin-top:3px";
+      mn.textContent = n; c2.append(mn);
+    }
+    tr.append(c2);
 
     const c3 = el("td"); c3.style.color = "var(--ink-2)"; c3.style.fontSize = "12.5px";
     c3.textContent = ruleLabel(r.booking.rule); tr.append(c3);
 
     const c4 = el("td");
     if (opens) { const s = el("span", "mono"); s.textContent = fmtOpens(opens, opensTimeKnown(r.booking.rule, dine, r.booking.announcement)); s.style.fontSize = "12.5px"; c4.append(s); }
+    /* 待查 promises an answer exists. For a shop taking nobody new, and for one
+       booked by request rather than at a set time, none does. */
+    else if (model.kind === "closed") { c4.append(el("span", "u", "—")); }
+    else if (model.kind === "request") { c4.append(el("span", "pill neutral", "無固定開放時刻")); }
     else { c4.append(el("span", "pill neutral", "待查")); }
     const dd = el("div"); dd.style.cssText = "font-size:11px;color:var(--ink-3);margin-top:2px";
     dd.textContent = `為 ${fmtDate(dine)} 用餐`; c4.append(dd); tr.append(c4);
 
     const c5 = el("td", "r");
     const u = urgency(days), cd = el("div", "cd is-" + u); cd.style.justifyContent = "flex-end";
-    if (days === null) { cd.append(el("span", "u", "—")); }
+    if (days === null && bookingModel(r).kind === "request") { cd.append(el("span", "u", "隨時可送出請求")); }
+    else if (days === null) { cd.append(el("span", "u", "—")); }
     else if (days < 0) { cd.append(el("span", "d", Math.abs(days)), el("span", "u", "天前已開放")); }
     else if (days === 0) { cd.append(el("span", "d", "今日"), el("span", "u", "開放")); }
     else { cd.append(el("span", "d", days), el("span", "u", "天")); }
@@ -850,7 +889,9 @@ function openDrawer(id) {
   /* booking */
   const bs = el("div", "dsec"); bs.append(el("h3", "", "訂位資訊"));
   const bkv = el("dl", "kv");
-  const rows = [["平台", PLATFORMS[r.booking.platform]], ["開放規則", ruleLabel(r.booking.rule)]];
+  const rows = [["平台", PLATFORMS[r.booking.platform]]];
+  if (bookingModel(r).note) rows.push(["訂位方式", bookingModel(r).note]);
+  rows.push(["開放規則", ruleLabel(r.booking.rule)]);
   if (r.status === "wish") {
     const dine = dineDateFor(r), opens = ruleOpens(r.booking.rule, dine, r.booking.announcement);
     rows.push(["計畫用餐", fmtDate(dine)]);
@@ -874,6 +915,14 @@ function openDrawer(id) {
     const a = el("a", "link", `在 ${PLATFORMS[r.booking.platform]} 開啟 ↗`);
     a.href = r.booking.url; a.target = "_blank"; a.rel = "noopener";
     dd.append(a); bkv.append(el("dt", "", "訂位頁"), dd);
+  }
+  if (r.booking.alt) {
+    const dd = el("dd");
+    const a = el("a", "link", `在 ${PLATFORMS[r.booking.alt.source]} 開啟 ↗`);
+    a.href = r.booking.alt.url; a.target = "_blank"; a.rel = "noopener";
+    dd.append(a, el("div", "", r.booking.alt.note));
+    dd.lastChild.style.cssText = "font-size:11px;color:var(--ink-3);margin-top:2px";
+    bkv.append(el("dt", "", "另一條路"), dd);
   }
   if (r.tabelog) {
     const dd = el("dd");

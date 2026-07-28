@@ -64,6 +64,7 @@ def to_seed(rec):
             "url": rec.get("bookingUrl"),
             "rule": rec.get("rule") or {"kind": "unknown"},
             "announcement": rec.get("announcement"),
+            "alt": rec.get("bookingAlt"),
         },
         "lat": rec.get("lat"),
         "lng": rec.get("lng"),

@@ -65,6 +65,9 @@ for (const url of urls) {
       bookingSource: plat.bookingSource,
       bookingUrl: plat.bookingUrl,
       bookingVerifiedBy: plat.verifiedBy,
+      /* A second, usually paid, way in — recorded separately so the primary
+         route's release time is never shown under the other one's name. */
+      bookingAlt: plat.alt || null,
     });
     byId.set(rec.id, { ...byId.get(rec.id), ...rec });
     ok++;

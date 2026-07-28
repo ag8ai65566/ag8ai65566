@@ -42,9 +42,15 @@
   },
   "13041029": {
     "name": "鳥しき",
-    "bookingSource": "tableall",
-    "bookingUrl": "https://www.tableall.com/restaurant/339",
-    "verifiedBy": "address 2 Chome-14-12 Kamiosaki, Shinagawa matches Tabelog 品川区上大崎2-14-12"
+    "bookingSource": "phone",
+    "bookingUrl": null,
+    "verifiedBy": "the shop's own 予約 text names the route: 毎月最初の営業日に、お電話にて2ヶ月先のご予約を承ります, with a dated notice for the next window. Phone is the primary route; TableAll is a paid alternative",
+    "alt": {
+      "source": "tableall",
+      "url": "https://www.tableall.com/restaurant/339",
+      "note": "代訂請求制・手續費 ¥8,000／人",
+      "verifiedBy": "address 2 Chome-14-12 Kamiosaki, Shinagawa matches Tabelog 品川区上大崎2-14-12"
+    }
   },
   "13259485": {
     "name": "末冨",
