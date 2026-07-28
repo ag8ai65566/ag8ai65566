@@ -4,9 +4,27 @@ import fsSync from "node:fs";
 import path from "node:path";
 import { X509Certificate, createHash } from "node:crypto";
 
-/* Credentials live in scraper/.env (gitignored). Node reads it natively, so
-   there's no dependency and nothing to remember to pass on the command line. */
-try { process.loadEnvFile(path.join(process.cwd(), ".env")); } catch { /* no .env */ }
+/**
+ * Credentials live in scraper/.env (gitignored).
+ *
+ * Parsed here rather than with process.loadEnvFile because this file gets
+ * written by hand on Windows, where Notepad may prepend a UTF-8 BOM and every
+ * line ends CRLF. The BOM would silently attach itself to the first key —
+ * "﻿OMAKASE_EMAIL" — and the login would fail with the credentials sitting
+ * right there in the file, which is a miserable thing to debug.
+ */
+function loadEnvFile(file) {
+  let raw;
+  try { raw = fsSync.readFileSync(file, "utf8"); } catch { return; }
+  if (raw.charCodeAt(0) === 0xfeff) raw = raw.slice(1);
+  for (const line of raw.split(/\r?\n/)) {
+    const m = line.match(/^\s*([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)$/);
+    if (!m) continue;                                   // blank line or # comment
+    const value = m[2].trim().replace(/^(["'])(.*)\1$/, "$2");
+    if (!(m[1] in process.env)) process.env[m[1]] = value;   // real env wins
+  }
+}
+loadEnvFile(path.join(process.cwd(), ".env"));
 
 const STATE_DIR = path.join(process.cwd(), ".auth");
 const DELAY = Number(process.env.REQUEST_DELAY_MS || 4000);
@@ -55,6 +73,15 @@ function proxyCaPin() {
   } catch { return null; }
 }
 
+/**
+ * Show the browser window instead of running headless. Worth it for anything a
+ * person runs by hand against a Cloudflare-protected site: headless Chromium
+ * gets challenged far more often, and when a challenge does appear you can only
+ * clear it if you can see it. Call before the first getBrowser().
+ */
+let headful = !!process.env.HEADFUL;
+export function setHeadful(v = true) { headful = v; }
+
 /** One shared browser per process. */
 let browser;
 export async function getBrowser() {
@@ -72,7 +99,7 @@ export async function getBrowser() {
   }
 
   browser = await chromium.launch({
-    headless: true,
+    headless: !headful,
     executablePath: findChromium(),
     proxy: proxyUrl ? { server: proxyUrl } : undefined,
     args,

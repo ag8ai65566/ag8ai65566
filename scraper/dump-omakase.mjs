@@ -19,10 +19,24 @@
  */
 import fs from "node:fs/promises";
 import path from "node:path";
-import { contextFor, closeBrowser, open } from "./lib/browser.mjs";
-import { login } from "./lib/omakase.mjs";
+import readline from "node:readline/promises";
+import { contextFor, closeBrowser, open, setHeadful, saveState } from "./lib/browser.mjs";
+import { login, isLoggedIn } from "./lib/omakase.mjs";
 
 const OUT = path.join(process.cwd(), "dump");
+
+/* A window you can watch, unless --headless says otherwise. This script is run
+   by a person, once; seeing what the browser is doing is worth more than the
+   speed, and a Cloudflare challenge can only be cleared if it is on screen. */
+setHeadful(!process.argv.includes("--headless"));
+
+/** Let the person clear whatever the site is showing, then carry on. */
+async function waitForHuman(message) {
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  console.log(`\n${message}`);
+  await rl.question("処理が済んだら Enter を押してください / 處理完按 Enter 繼續… ");
+  rl.close();
+}
 
 /* The four restaurants on the list that book through OMAKASE. */
 const SHOPS = [
@@ -35,7 +49,24 @@ const SHOPS = [
 await fs.mkdir(OUT, { recursive: true });
 const ctx = await contextFor("omakase");
 
-await login(ctx);
+try {
+  await login(ctx);
+} catch (err) {
+  /* A Cloudflare interstitial, or a login form that wants a checkbox ticked,
+     is something a person at the keyboard can clear in seconds. */
+  console.error(`\n自動ログインに失敗 / 自動登入失敗：${err.message}`);
+  await waitForHuman(
+    "開いているウィンドウで手動でログインしてください。\n" +
+    "請在打開的視窗裡自己登入 OMAKASE（有驗證就順手點掉）。");
+}
+
+if (!await isLoggedIn(ctx)) {
+  console.error("まだログインできていません / 仍未登入 —— 中止します。");
+  await closeBrowser();
+  process.exit(1);
+}
+/* Covers the manual case too, so a hand-cleared challenge isn't repeated. */
+await saveState(ctx, "omakase");
 console.log("signed in\n");
 
 for (const [name, url] of SHOPS) {
