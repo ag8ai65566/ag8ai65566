@@ -27,13 +27,22 @@ async function loadPlatforms() {
   } catch { return {}; }
 }
 
+/** Pull the http(s) URLs out of text, ignoring blank lines and # comments. */
+const urlsIn = text => (text.match(/https?:\/\/\S+/g) || []).filter(u => !u.startsWith("#"));
+
 async function readUrls() {
   const args = process.argv.slice(2).filter(a => !a.startsWith("-"));
   if (args.length) return args;
-  if (process.stdin.isTTY) return [];
-  const chunks = [];
-  for await (const c of process.stdin) chunks.push(c);
-  return Buffer.concat(chunks).toString("utf8").split(/\s+/).filter(Boolean);
+  if (!process.stdin.isTTY) {
+    const chunks = [];
+    for await (const c of process.stdin) chunks.push(c);
+    const piped = urlsIn(Buffer.concat(chunks).toString("utf8"));
+    if (piped.length) return piped;
+  }
+  /* Default to the tracked list, so a scheduled run needs no arguments and the
+     list itself is version-controlled rather than living in someone's shell. */
+  try { return urlsIn(await fs.readFile(path.join(process.cwd(), "watchlist.txt"), "utf8")); }
+  catch { return []; }
 }
 
 async function loadExisting() {

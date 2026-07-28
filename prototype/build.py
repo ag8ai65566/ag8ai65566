@@ -30,6 +30,27 @@ FACES = [
 
 
 DATA = HERE.parent / "data" / "restaurants.json"
+# Latest poll if there is one; the hand-transcribed seed until poll-omakase has run.
+STATE = HERE.parent / "data" / "booking-state.json"
+STATE_SEED = HERE.parent / "scraper" / "observed-seed.json"
+
+
+def booking_state():
+    """slug -> reading, from the freshest source available."""
+    for f in (STATE, STATE_SEED):
+        if f.exists():
+            raw = json.loads(f.read_text(encoding="utf-8"))
+            return {k: v for k, v in raw.items() if not k.startswith("_")}
+    return {}
+
+
+def _strip(obj):
+    """Drop _comment keys so build notes don't ship inside the page."""
+    if isinstance(obj, dict):
+        return {k: _strip(v) for k, v in obj.items() if not k.startswith("_")}
+    if isinstance(obj, list):
+        return [_strip(v) for v in obj]
+    return obj
 
 
 def _seats(text):
@@ -43,7 +64,7 @@ def _area(address):
     return m.group(1) if m else "東京"
 
 
-def to_seed(rec):
+def to_seed(rec, observed=None):
     """One scraped Tabelog record in the shape the page's SEED array uses."""
     return {
         "id": rec["id"],
@@ -65,6 +86,9 @@ def to_seed(rec):
             "rule": rec.get("rule") or {"kind": "unknown"},
             "announcement": rec.get("announcement"),
             "alt": rec.get("bookingAlt"),
+            # The platform's own published state, timestamped. Outranks the
+            # inferred rule wherever it exists — see nextAction() in app.html.
+            "observed": _strip(observed) if observed else None,
         },
         "lat": rec.get("lat"),
         "lng": rec.get("lng"),
@@ -79,7 +103,35 @@ def real_seed():
     records = json.loads(DATA.read_text(encoding="utf-8"))
     if not records:
         return None
-    seed = [to_seed(r) for r in records]
+
+    state = booking_state()
+    by_tabelog = {v.get("tabelogId"): v for v in state.values() if v.get("tabelogId")}
+    seed = [to_seed(r, by_tabelog.get(r["id"])) for r in records]
+
+    # Restaurants that exist only on a booking platform — acá has no Tabelog
+    # page, and requiring one would have quietly dropped it from the list.
+    claimed = {r["id"] for r in records}
+    for slug, s in state.items():
+        if s.get("tabelogId") in claimed:
+            continue
+        seed.append({
+            "id": slug,
+            "name": s.get("name"),
+            "genre": s.get("genre"),
+            "area": s.get("area") or "東京",
+            "station": "", "address": None, "phone": None, "tabelog": None,
+            "score": None, "status": "wish", "priority": 1, "seats": None,
+            "budget": None,
+            "booking": {
+                "platform": "omakase",
+                "url": s.get("url") or f"https://omakase.in/r/{slug}",
+                "rule": {"kind": "unknown"},
+                "announcement": None,
+                "alt": None,
+                "observed": _strip(s),
+            },
+            "lat": None, "lng": None, "remind": True,
+        })
     seed.sort(key=lambda s: (s["booking"]["platform"] == "none", s["name"] or ""))
     # A placeholder trip: the radar needs a dining date to count back from, and
     # the real dates aren't known here. Editable in the app.

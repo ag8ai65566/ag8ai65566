@@ -1,0 +1,112 @@
+{
+  "_comment": [
+    "OMAKASE publishes the answer outright, in the 予約ルール詳細 panel: 次回枠の受付開始日時.",
+    "It is state, not a rule — it changes every month, and the time of day differs per shop",
+    "(08:00 / 13:00 / 15:00 / 23:00 among these five), so nothing can compute it. 蒼 says 未定,",
+    "which is the platform declining to predict its own next window.",
+    "",
+    "These rows were transcribed by hand from screenshots on 2026-07-28 because this",
+    "environment is Cloudflare-blocked from omakase.in. poll-omakase.mjs replaces them with",
+    "fresh readings; until it has run, this is the seed. `observedAt` is what makes a stale",
+    "reading visible instead of silently wrong.",
+    "",
+    "Times are JST (+09:00). Japan has no DST, so the offset is exact year-round."
+  ],
+
+  "hn429275": {
+    "name": "とり茶太郎",
+    "tabelogId": "13157208",
+    "observedAt": "2026-07-28T00:00:00+09:00",
+    "observedBy": "manual-screenshot",
+    "acceptingNow": false,
+    "acceptingLabel": "ご予約可能な枠がありません",
+    "windowUntil": "2026-10-31",
+    "nextOpenAt": "2026-08-01T08:00:00+09:00",
+    "nextOpenAtRaw": "2026年8月1日 08:00",
+    "maxFrequency": "予約頻度の制限なし",
+    "feePerSeat": 390,
+    "mechanism": "firstcome"
+  },
+
+  "cn838977": {
+    "name": "酉囃子",
+    "tabelogId": "13304401",
+    "observedAt": "2026-07-28T00:00:00+09:00",
+    "observedBy": "manual-screenshot",
+    "acceptingNow": false,
+    "acceptingLabel": "ご予約可能な枠がありません",
+    "windowUntil": "2026-08-31",
+    "nextOpenAt": "2026-08-01T15:00:00+09:00",
+    "nextOpenAtRaw": "2026年8月1日 15:00",
+    "maxFrequency": "2ヶ月(1-2, 3-4, 5-6, 7-8, 9-10, 11-12月)ごとに最大1回",
+    "feePerSeat": 390,
+    "mechanism": "firstcome"
+  },
+
+  "ff108237": {
+    "name": "明寂",
+    "tabelogId": "13270958",
+    "observedAt": "2026-07-28T00:00:00+09:00",
+    "observedBy": "manual-screenshot",
+    "acceptingNow": true,
+    "acceptingLabel": "このお店を予約する",
+    "windowUntil": "2026-09-30",
+    "nextOpenAt": "2026-08-01T23:00:00+09:00",
+    "nextOpenAtRaw": "2026年8月1日 23:00",
+    "maxFrequency": "2ヶ月(1-2, 3-4, 5-6, 7-8, 9-10, 11-12月)ごとに最大1回",
+    "feePerSeat": 390,
+    "mechanism": "firstcome"
+  },
+
+  "iz931441": {
+    "name": "蒼",
+    "tabelogId": "13243463",
+    "observedAt": "2026-07-28T00:00:00+09:00",
+    "observedBy": "manual-screenshot",
+    "acceptingNow": true,
+    "acceptingLabel": "このお店を予約する",
+    "windowUntil": "2026-10-31",
+    "nextOpenAt": null,
+    "nextOpenAtRaw": "未定",
+    "maxFrequency": "月ごとに最大1回",
+    "feePerSeat": 390,
+    "mechanism": "firstcome"
+  },
+
+  "ac366431": {
+    "name": "スペイン料理 acá",
+    "tabelogId": null,
+    "genre": "スパニッシュ",
+    "area": "中央区",
+    "url": "https://omakase.in/r/ac366431",
+    "observedAt": "2026-07-28T00:00:00+09:00",
+    "observedBy": "manual-screenshot",
+    "acceptingNow": false,
+    "acceptingLabel": "ご予約可能な枠がありません",
+    "windowUntil": "2026-07-31",
+    "nextOpenAt": "2026-08-01T13:00:00+09:00",
+    "nextOpenAtRaw": "2026年8月1日 13:00",
+    "maxFrequency": "半年(1-6, 7,12月)ごとに最大1回",
+    "feePerSeat": 390,
+
+    "mechanism": "raffle",
+    "raffle": {
+      "_comment": [
+        "A lottery, not a queue. The deadline that matters closes BEFORE the release:",
+        "miss the application window and you cannot take part at all, however fast you are",
+        "on the day. Dates below are the page's own worked example for a 1st-of-month",
+        "release, which matches this shop's stated 次回枠 of 2026-08-01 13:00.",
+        "The general rule: 予約開始月1日の8日前より応募が開始."
+      ],
+      "appliesToRelease": "2026-08-01T13:00:00+09:00",
+      "applyFrom": "2026-07-24T00:00:00+09:00",
+      "applyUntil": "2026-07-30T23:59:00+09:00",
+      "drawOn": "2026-07-31",
+      "winnersBookFrom": "2026-08-01T12:00:00+09:00",
+      "winnersBookUntil": "2026-08-01T13:00:00+09:00",
+      "openToAllFrom": "2026-08-01T13:00:00+09:00",
+      "applyDaysBeforeRelease": 8,
+      "info": "https://omakase.in/raffle"
+    }
+  }
+}

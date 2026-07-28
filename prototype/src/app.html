@@ -555,6 +555,66 @@ const jstWallClock = iso => {
 };
 const ruleOpens = (r, dine, announcement) =>
   announcedFor(announcement, dine) ? jstWallClock(announcement.opensAt) : RULES[r.kind].opensAt(r, dine);
+
+/**
+ * What to actually do next about this restaurant, and when.
+ *
+ * A computed rule is the weakest answer here and comes last. OMAKASE prints its
+ * own 次回枠の受付開始日時, and those times are 08:00, 13:00, 15:00 and 23:00
+ * across four shops on the same date — no formula produces that, so a reading of
+ * the page beats a derivation from it every time. One shop publishes 未定, which
+ * a rule would have happily overwritten with a fabricated time.
+ *
+ * The ordering matters more than any single source:
+ *   1. bookable right now — nothing to wait for
+ *   2. a lottery application deadline — it CLOSES BEFORE the release, and missing
+ *      it removes you from the draw entirely, so it outranks the release itself
+ *   3. the platform's published next release
+ *   4. the shop's own dated notice (from Tabelog)
+ *   5. our arithmetic, clearly labelled as such
+ */
+const STALE_DAYS = 10;
+
+function nextAction(r, dine) {
+  const o = r.booking.observed;
+  const soon = iso => { const d = iso ? jstWallClock(iso) : null; return d && d > TODAY ? d : null; };
+
+  if (o && o.acceptingNow)
+    return { at: null, kind: "open", label: "現在可訂", basis: "平台狀態", timeKnown: false };
+
+  if (o && o.raffle) {
+    const at = soon(o.raffle.applyUntil);
+    if (at) return {
+      at, kind: "raffle", label: "抽選應募截止", basis: "平台公告", timeKnown: true,
+      note: [o.raffle.drawOn ? `抽選發表 ${o.raffle.drawOn}` : "",
+             o.nextOpenAt ? `開放 ${fmtDT(jstWallClock(o.nextOpenAt))}` : ""].filter(Boolean).join("・"),
+    };
+  }
+
+  const published = o && soon(o.nextOpenAt);
+  if (published) return { at: published, kind: "release", label: "平台開放", basis: "平台公告", timeKnown: true };
+
+  if (announcedFor(r.booking.announcement, dine))
+    return {
+      at: jstWallClock(r.booking.announcement.opensAt),
+      kind: "release", label: "電話受付開始", basis: "店家公告", timeKnown: true,
+    };
+
+  const computed = RULES[r.booking.rule.kind].opensAt(r.booking.rule, dine);
+  if (computed) return {
+    at: computed, kind: "release", label: "預估開放", basis: "規則推算",
+    timeKnown: r.booking.rule.hour != null,
+  };
+
+  return { at: null, kind: bookingModel(r).kind, label: null, basis: null, timeKnown: false };
+}
+
+/** How old the reading is, so a stale one can't pass for current. */
+function observedAge(r) {
+  const o = r.booking.observed;
+  if (!o || !o.observedAt) return null;
+  return Math.floor((TODAY - new Date(o.observedAt)) / 864e5);
+}
 /* Some rules pin the day but not the hour (鳥しき publishes no general time).
    Printing those as 00:00 would read as midnight, which is simply wrong. */
 const opensTimeKnown = (r, dine, ann) => announcedFor(ann, dine) || r.hour != null;
@@ -682,10 +742,14 @@ function dineDateFor(r) {
 function radarRows() {
   return S.restaurants.filter(r => r.status === "wish").map(r => {
     const dine = dineDateFor(r);
-    const opens = ruleOpens(r.booking.rule, dine, r.booking.announcement);
-    const days = opens ? Math.ceil((opens - TODAY) / 864e5) : null;
-    return { r, dine, opens, days };
+    const act = nextAction(r, dine);
+    const days = act.at ? Math.ceil((act.at - TODAY) / 864e5) : null;
+    return { r, dine, act, opens: act.at, days };
   }).sort((a, b) => {
+    /* Bookable now sits at the top: it needs doing today, not counting down. */
+    const rank = x => x.act.kind === "open" ? 0 : x.at === null && !x.days ? 2 : 1;
+    if (a.act.kind !== b.act.kind && (a.act.kind === "open" || b.act.kind === "open"))
+      return a.act.kind === "open" ? -1 : 1;
     if (a.opens && b.opens) return a.opens - b.opens;
     return a.opens ? -1 : b.opens ? 1 : 0;
   });
@@ -720,17 +784,20 @@ function renderRadar() {
   const rows = radarRows(), tb = $("#radarBody");
   tb.textContent = "";
   renderRemindAll(rows);
-  const openNow = rows.filter(x => x.days !== null && x.days <= 0).length;
+  /* A shop the platform says is bookable right now counts as open even though it
+     has no countdown — it was being tallied under 規則待查, which read as "we
+     don't know" about the one thing we did know. */
+  const openNow = rows.filter(x => x.act.kind === "open" || (x.days !== null && x.days <= 0)).length;
   const soon = rows.filter(x => x.days !== null && x.days > 0 && x.days <= 14).length;
   /* Only a restaurant whose seats are released at a time can have an unknown
-     release rule. Counting the request-only and closed ones as 規則待查 made the
-     backlog look bigger than it is, and implied research that has no answer. */
-  const unknown = rows.filter(x => x.days === null && bookingModel(x.r).kind === "release").length;
+     release rule. Request-only, phone, closed and bookable-now are not gaps. */
+  const unknown = rows.filter(x => x.days === null && x.act.kind === "release").length;
   const next = rows.find(x => x.days !== null && x.days > 0);
 
   $("#radarSum").textContent = "";
-  [["追蹤中", rows.length, ""], ["已可訂", openNow, ""], ["14 天內開放", soon, ""],
-   ["規則待查", unknown, ""], ["下一個開放", next ? next.days : "—", next ? "天後" : ""]]
+  [["追蹤中", rows.length, ""], ["現在可訂", openNow, ""], ["14 天內要動作", soon, ""],
+   ["規則待查", unknown, ""],
+   ["下一個期限", next ? next.days : "—", next ? "天後" : ""]]
     .forEach(([k, v, u]) => {
       const d = el("div"); d.append(el("div", "k", k));
       const val = el("div", "v"); val.textContent = v;
@@ -740,7 +807,7 @@ function renderRadar() {
 
   if (!rows.length) { tb.append(el("tr")).append(Object.assign(el("td"), { colSpan: 6, textContent: "想去清單是空的。" })); return; }
 
-  for (const { r, dine, opens, days } of rows) {
+  for (const { r, dine, act, opens, days } of rows) {
     const tr = el("tr");
 
     const c1 = el("td"); const nm = el("div", "rname");
@@ -768,14 +835,27 @@ function renderRadar() {
     c3.textContent = ruleLabel(r.booking.rule); tr.append(c3);
 
     const c4 = el("td");
-    if (opens) { const s = el("span", "mono"); s.textContent = fmtOpens(opens, opensTimeKnown(r.booking.rule, dine, r.booking.announcement)); s.style.fontSize = "12.5px"; c4.append(s); }
-    /* 待查 promises an answer exists. For a shop taking nobody new, and for one
-       booked by request rather than at a set time, none does. */
+    if (act.kind === "open") { c4.append(el("span", "pill ok", "現在可訂")); }
+    else if (opens) {
+      const s = el("span", "mono"); s.textContent = fmtOpens(opens, act.timeKnown);
+      s.style.fontSize = "12.5px"; c4.append(s);
+      /* Say which of the five sources this came from — a platform notice and our
+         own arithmetic deserve very different levels of trust. */
+      const bs = el("div"); bs.style.cssText = "font-size:11px;margin-top:2px";
+      bs.style.color = act.basis === "規則推算" ? "var(--warn)" : "var(--ink-3)";
+      bs.textContent = `${act.label}・${act.basis}`; c4.append(bs);
+    }
     else if (model.kind === "closed") { c4.append(el("span", "u", "—")); }
     else if (model.kind === "request") { c4.append(el("span", "pill neutral", "無固定開放時刻")); }
     else { c4.append(el("span", "pill neutral", "待查")); }
     const dd = el("div"); dd.style.cssText = "font-size:11px;color:var(--ink-3);margin-top:2px";
-    dd.textContent = `為 ${fmtDate(dine)} 用餐`; c4.append(dd); tr.append(c4);
+    dd.textContent = act.note || `為 ${fmtDate(dine)} 用餐`; c4.append(dd);
+    const age = observedAge(r);
+    if (age !== null && age > STALE_DAYS) {
+      const st = el("div"); st.style.cssText = "font-size:11px;color:var(--warn);margin-top:2px";
+      st.textContent = `平台資料 ${age} 天前讀取，需重新輪詢`; c4.append(st);
+    }
+    tr.append(c4);
 
     const c5 = el("td", "r");
     const u = urgency(days), cd = el("div", "cd is-" + u); cd.style.justifyContent = "flex-end";

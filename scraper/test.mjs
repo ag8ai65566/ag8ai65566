@@ -141,3 +141,95 @@ test("perRestaurant takes the median across closed series", () => {
   assert.equal(s.fastest, 1);
   assert.equal(s.slowest, 9);
 });
+
+/* ═══ OMAKASE booking state ═══════════════════════════════════════════════
+   Strings below are transcribed from live 予約ルール詳細 panels (2026-07-28).
+   The release time is published, not inferred — these lock in the reading of it. */
+import { parseJstDateTime, parseJstDate, parseRaffle, parseBookingState } from "./lib/omakase.mjs";
+
+test("parseJstDateTime reads the published release moment, and 未定 as no answer", () => {
+  assert.equal(parseJstDateTime("2026年8月1日 08:00"), "2026-08-01T08:00:00+09:00");
+  assert.equal(parseJstDateTime("2026年8月1日 23:00"), "2026-08-01T23:00:00+09:00");
+  assert.equal(parseJstDateTime("２０２６年８月１日 １３:００"), "2026-08-01T13:00:00+09:00");
+  // 蒼 publishes no next window; a guess here would be an invented alarm
+  assert.equal(parseJstDateTime("未定"), null);
+  assert.equal(parseJstDateTime(""), null);
+  assert.equal(parseJstDateTime(null), null);
+});
+
+test("parseJstDate reads the end of the current booking window", () => {
+  assert.equal(parseJstDate("2026年10月31日(土)まで"), "2026-10-31");
+  assert.equal(parseJstDate("2026年7月31日(金)まで"), "2026-07-31");
+});
+
+/* Real text from スペイン料理 acá. */
+const ACA_BODY = `==予約受付に関して==
+毎月1日の予約受付は、抽選式を導入させていただきまして、今後の流れは下記の通りとなります。
+※予約開始月1日の8日前より応募が開始されますが、予定日を過ぎても「ご予約可能な枠がありません」と表示されている場合、抽選は開始されていません。
+例)8/1に予約開始される場合
+【応募期間】7月24日00:00〜7月30日23:59
+【抽選発表】7月31日
+・8月1日　12:00〜13:00　当選者の方のみご予約開始
+・8月1日　13:00〜　全ての方のご予約開始
+抽選予約の詳細についてはこちらを御覧ください。
+https://omakase.in/raffle`;
+
+test("parseRaffle finds the application window, which closes before the release", () => {
+  const r = parseRaffle(ACA_BODY, { nextOpenAt: "2026-08-01T13:00:00+09:00" });
+  assert.equal(r.applyFrom, "2026-07-24T00:00:00+09:00");
+  assert.equal(r.applyUntil, "2026-07-30T23:59:00+09:00");
+  assert.equal(r.drawOn, "2026-07-31");
+  assert.equal(r.applyDaysBeforeRelease, 8);
+  assert.equal(r.info, "https://omakase.in/raffle");
+  // the deadline that matters is two days before the release, not the release
+  assert.ok(Date.parse(r.applyUntil) < Date.parse("2026-08-01T13:00:00+09:00"));
+});
+
+test("parseRaffle returns nothing for a first-come shop", () => {
+  assert.equal(parseRaffle("毎月1日 10:00 より受付を開始いたします"), null);
+});
+
+test("parseBookingState reads a shop with no seats left", () => {
+  const s = parseBookingState({
+    acceptLabel: "ご予約可能な枠がありません",
+    rows: {
+      "現在の予約受付期間": "2026年10月31日(土)まで",
+      "次回枠の受付開始日時": "2026年8月1日 08:00",
+      "最大予約頻度": "予約頻度の制限なし",
+    },
+    feeText: "予約時に一席あたり390円の手数料を頂きます。",
+    bodyText: "コース 茶太郎おまかせフルコース 14,000円",
+  });
+  assert.equal(s.acceptingNow, false);
+  assert.equal(s.windowUntil, "2026-10-31");
+  assert.equal(s.nextOpenAt, "2026-08-01T08:00:00+09:00");
+  assert.equal(s.feePerSeat, 390);
+  assert.equal(s.mechanism, "firstcome");
+  assert.equal(s.raffle, undefined);
+});
+
+test("parseBookingState reads a shop that is bookable right now", () => {
+  const s = parseBookingState({
+    acceptLabel: "このお店を予約する",
+    rows: { "現在の予約受付期間": "2026年10月31日(土)まで", "次回枠の受付開始日時": "未定",
+            "最大予約頻度": "月ごとに最大1回" },
+    feeText: "予約時に一席あたり390円の手数料を頂きます。",
+    bodyText: "予約ルール ■ご予約時間に30分以上遅れる場合",
+  });
+  assert.equal(s.acceptingNow, true);
+  assert.equal(s.nextOpenAt, null);          // 未定 stays unanswered
+  assert.equal(s.nextOpenAtRaw, "未定");
+});
+
+test("parseBookingState carries the raffle through", () => {
+  const s = parseBookingState({
+    acceptLabel: "ご予約可能な枠がありません",
+    rows: { "現在の予約受付期間": "2026年7月31日(金)まで", "次回枠の受付開始日時": "2026年8月1日 13:00",
+            "最大予約頻度": "半年(1-6, 7,12月)ごとに最大1回" },
+    feeText: "予約時に一席あたり390円の手数料を頂きます。",
+    bodyText: ACA_BODY,
+  });
+  assert.equal(s.mechanism, "raffle");
+  assert.equal(s.raffle.applyUntil, "2026-07-30T23:59:00+09:00");
+  assert.equal(s.raffle.appliesToRelease, "2026-08-01T13:00:00+09:00");
+});

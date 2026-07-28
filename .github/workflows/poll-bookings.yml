@@ -1,0 +1,86 @@
+# Read every tracked restaurant's published booking state, once a day, and commit
+# it. This is the part that makes the ledger a piece of software rather than a
+# thing you re-transcribe by hand every month.
+#
+# 次回枠の受付開始日時 changes monthly and differs per restaurant, so it has to be
+# re-read rather than computed. Committing each reading also means git history
+# becomes the record of how a restaurant's release pattern moves over time —
+# `git log -p data/booking-state.json` answers "is it always the 1st?" for free.
+#
+# Setup, once:
+#   Settings → Secrets and variables → Actions → New repository secret
+#     OMAKASE_EMAIL      your OMAKASE login
+#     OMAKASE_PASSWORD   your OMAKASE password
+#
+# If OMAKASE's Cloudflare blocks GitHub's shared runners, set a repository
+# variable POLL_RUNNER to `self-hosted` and register a runner on your own
+# machine. The workflow is unchanged — only where it runs.
+
+name: poll bookings
+
+on:
+  schedule:
+    # 21:10 UTC = 06:10 JST, before the earliest release time seen (08:00 JST)
+    - cron: "10 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: poll-bookings
+  cancel-in-progress: false
+
+jobs:
+  poll:
+    runs-on: ${{ vars.POLL_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install
+        working-directory: scraper
+        run: |
+          npm install
+          npx playwright install --with-deps chromium
+
+      - name: Unit tests
+        working-directory: scraper
+        run: npm test
+
+      - name: Poll OMAKASE
+        working-directory: scraper
+        env:
+          OMAKASE_EMAIL: ${{ secrets.OMAKASE_EMAIL }}
+          OMAKASE_PASSWORD: ${{ secrets.OMAKASE_PASSWORD }}
+          REQUEST_DELAY_MS: "8000"
+        run: node poll-omakase.mjs
+
+      - name: Commit the reading
+        run: |
+          if git diff --quiet -- data/booking-state.json; then
+            echo "nothing changed"
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/booking-state.json
+          git commit -m "Booking state as of $(date -u +%Y-%m-%dT%H:%MZ)"
+          git push
+
+      # Whatever happened, keep the evidence: a Cloudflare block and a changed
+      # page both look like "it failed" in the log alone.
+      - name: Upload the reading
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: booking-state
+          path: |
+            data/booking-state.json
+            data/booking-state.jsonl
+          if-no-files-found: warn

@@ -1,0 +1,16 @@
+# Tabelog shop URLs to import. One per line; # starts a comment.
+# This is the tracked list — it belongs in the repo, not in someone's clipboard.
+#   cat watchlist.txt | node import.mjs
+#
+# Restaurants with no Tabelog page (acá) live in observed-seed.json instead,
+# keyed by their OMAKASE slug.
+
+https://tabelog.com/tokyo/A1316/A131601/13041029/   # 鳥しき
+https://tabelog.com/tokyo/A1303/A130301/13157208/   # とり茶太郎
+https://tabelog.com/tokyo/A1309/A130903/13240980/   # オオクサ
+https://tabelog.com/tokyo/A1307/A130702/13304401/   # 酉囃子
+https://tabelog.com/tokyo/A1307/A130701/13243463/   # 蒼
+https://tabelog.com/tokyo/A1303/A130301/13259485/   # 末冨
+https://tabelog.com/tokyo/A1309/A130902/13042204/   # 三谷
+https://tabelog.com/tokyo/A1302/A130204/13201969/   # 日本橋 蕎ノ字
+https://tabelog.com/tokyo/A1307/A130701/13270958/   # 明寂
