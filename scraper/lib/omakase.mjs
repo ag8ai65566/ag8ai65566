@@ -13,6 +13,26 @@ import { open, saveState, requireEnv } from "./browser.mjs";
 
 const LOGIN = "https://omakase.in/users/sign_in";
 
+/**
+ * Turn Cloudflare's 403 into the one sentence that actually helps.
+ *
+ * Confirmed on 2026-07-28: GitHub's shared runners are blocked exactly as this
+ * project's cloud environment is, so the whole pipeline can pass its tests and
+ * still die here. Without this the log ends in a stack trace about page.goto,
+ * which reads like a bug in the scraper rather than a network that will never
+ * work from that machine.
+ */
+function blocked(err) {
+  if (!/403/.test(err.message)) throw err;
+  throw new Error(
+    "omakase.in returned 403 — Cloudflare is blocking this machine's IP address, " +
+    "not rejecting your login. Datacentre IPs (GitHub's runners included) are " +
+    "blocked; a home connection is not. Run this workflow on a self-hosted runner " +
+    "by setting the repository variable POLL_RUNNER=self-hosted, or run " +
+    "`node poll-omakase.mjs` on your own machine. See docs/github-setup.md."
+  );
+}
+
 /** Are we already signed in on this context? */
 export async function isLoggedIn(ctx) {
   const page = await open(ctx, "https://omakase.in/");
@@ -29,10 +49,10 @@ export async function isLoggedIn(ctx) {
  * session is usable afterwards.
  */
 export async function login(ctx, { force = false } = {}) {
-  if (!force && await isLoggedIn(ctx)) return true;
+  if (!force && await isLoggedIn(ctx).catch(blocked)) return true;
 
   const [email, password] = requireEnv("OMAKASE_EMAIL", "OMAKASE_PASSWORD");
-  const page = await open(ctx, LOGIN);
+  const page = await open(ctx, LOGIN).catch(blocked);
   try {
     await page.fill('input[name="user[email]"]', email);
     await page.fill('input[name="user[password]"]', password);
