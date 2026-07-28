@@ -72,8 +72,10 @@ Test-Path dump-omakase.mjs
 
 ## 4. 安裝需要的東西
 
+**注意結尾的 `.cmd`，這不是打錯**：
+
 ```powershell
-npm install
+npm.cmd install
 ```
 
 跑大約 1～3 分鐘，會刷很多字，正常。看到游標回到 `PS C:\...>` 就是好了。
@@ -81,10 +83,34 @@ npm install
 接著裝瀏覽器（約 150MB，看網速 2～5 分鐘）：
 
 ```powershell
-npx playwright install chromium
+npx.cmd playwright install chromium
 ```
 
 > 中間如果問你 `Ok to proceed? (y)`，打 `y` 再按 Enter。
+
+### 為什麼要加 `.cmd`
+
+PowerShell 預設**禁止執行腳本檔**，而 `npm` 在 PowerShell 裡指向的是 `npm.ps1`
+（一個腳本），所以直接打 `npm install` 會被擋掉：
+
+```
+npm : File C:\Program Files\nodejs\npm.ps1 cannot be loaded because running
+scripts is disabled on this system.
+```
+
+npm 同時也裝了 `npm.cmd`，那個不受這條規則管。加兩個字就繞過整個問題，
+**不用改任何系統設定**——這是最乾淨的做法。
+
+真的想一次解決（只影響你這個使用者帳號，不動整台電腦）也可以：
+
+```powershell
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
+問 `Do you want to change the execution policy?` 時打 `Y` 按 Enter。
+之後 `npm install` 就能直接用。
+
+> 第 6 步的 `node ...` 不受影響，`node` 是 `.exe` 不是腳本。
 
 ---
 
@@ -183,6 +209,7 @@ DOM 抓取那段是對的，整條線就完全通了。
 | 畫面上寫 | 意思 | 怎麼辦 |
 | --- | --- | --- |
 | `npm : 無法辨識...` | Node 沒裝好，或視窗是裝之前開的 | 關掉 PowerShell 重開一個再試；還是不行就改開沒有 `(x86)` 的那個 PowerShell |
+| `npm.ps1 cannot be loaded because running scripts is disabled` | PowerShell 擋腳本 | 用 `npm.cmd install` / `npx.cmd ...`，見第 4 步的說明 |
 | `Cannot find module` | 位置不對，或漏了 `npm install` | 用 `Test-Path dump-omakase.mjs` 確認是 `True`，再重跑第 4 步 |
 | `missing env: OMAKASE_EMAIL` | `.env` 沒建好或存錯地方 | 重做第 5 步，確認記事本標題列是 `.env` 不是 `.env.txt` |
 | `login rejected` | 帳密打錯 | 檢查 `.env`；或用第 6 步的手動登入 |
