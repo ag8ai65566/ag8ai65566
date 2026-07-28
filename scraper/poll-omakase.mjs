@@ -21,8 +21,15 @@
  */
 import fs from "node:fs/promises";
 import path from "node:path";
-import { contextFor, closeBrowser } from "./lib/browser.mjs";
-import { login, readBookingState } from "./lib/omakase.mjs";
+import readline from "node:readline/promises";
+import { contextFor, closeBrowser, setHeadful, saveState } from "./lib/browser.mjs";
+import { login, isLoggedIn, readBookingState } from "./lib/omakase.mjs";
+
+/* Headless by default — this is meant to run unattended. `--headed` opens a
+   window for a run someone is watching, which is what you want the first time
+   and whenever Cloudflare wants a checkbox ticked. */
+const HEADED = process.argv.includes("--headed");
+setHeadful(HEADED);
 
 const HERE = process.cwd();
 const PLATFORMS = path.join(HERE, "platforms.json");
@@ -62,7 +69,20 @@ if (only.length) list = list.filter(t => only.includes(t.slug));
 if (!list.length) { console.error("nothing to poll"); process.exit(2); }
 
 const ctx = await contextFor("omakase");
-await login(ctx);
+
+try {
+  await login(ctx);
+} catch (err) {
+  /* With a window open, a challenge or an odd login form is something the person
+     watching can clear in seconds. Unattended, there is nobody to ask, so fail. */
+  if (!HEADED) throw err;
+  console.error(`\n自動登入失敗 / login failed: ${err.message}`);
+  const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+  await rl.question("請在打開的視窗裡自己登入 OMAKASE，完成後按 Enter… ");
+  rl.close();
+  if (!await isLoggedIn(ctx)) { console.error("仍未登入，中止。"); process.exit(1); }
+  await saveState(ctx, "omakase");
+}
 
 const latest = await readJson(OUT_LATEST);
 const history = [];
