@@ -114,19 +114,43 @@ export async function closeBrowser() {
  * A context for one site. Logged-in cookies are kept on disk under .auth/<site>.json
  * so a later run reuses the session instead of logging in again.
  */
+/**
+ * A User-Agent that doesn't contradict the machine it's sent from, or null to
+ * leave Chromium's own alone.
+ *
+ * Overriding this with a fixed Mac string was actively harmful: Chromium still
+ * sends Client Hints derived from the real OS, so on Windows the request claimed
+ * `Macintosh` in the UA while `sec-ch-ua-platform` said `"Windows"`. That
+ * contradiction is exactly what bot protection looks for, and omakase.in
+ * answered its shop pages with 403 while serving the homepage normally.
+ *
+ * So: keep the browser's own UA, and only touch it to remove the giveaway that
+ * headless mode adds — which preserves the real platform either way.
+ */
+let cachedUA;
+async function consistentUserAgent(b) {
+  if (cachedUA === undefined) {
+    const probe = await b.newContext();
+    const page = await probe.newPage();
+    const ua = await page.evaluate(() => navigator.userAgent);
+    await probe.close();
+    cachedUA = ua.includes("Headless") ? ua.replace(/HeadlessChrome/g, "Chrome") : null;
+  }
+  return cachedUA;
+}
+
 export async function contextFor(site) {
   const b = await getBrowser();
   const statePath = path.join(STATE_DIR, `${site}.json`);
   let storageState;
   try { storageState = JSON.parse(await fs.readFile(statePath, "utf8")); } catch { /* first run */ }
+  const userAgent = await consistentUserAgent(b);
   return b.newContext({
     storageState,
     locale: "ja-JP",
     timezoneId: "Asia/Tokyo",
     viewport: { width: 1400, height: 1000 },
-    userAgent:
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 " +
-      "(KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36",
+    ...(userAgent ? { userAgent } : {}),
   });
 }
 

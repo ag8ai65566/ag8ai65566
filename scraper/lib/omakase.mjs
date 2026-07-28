@@ -37,8 +37,12 @@ function blocked(err) {
 export async function isLoggedIn(ctx) {
   const page = await open(ctx, "https://omakase.in/");
   try {
+    /* Only a sign-out control proves a session. This used to accept a link to
+       /mypage as well, which the guest homepage also carries — so it reported
+       "already signed in" on the very first run, login() returned early, and
+       every page after that was fetched as a guest. */
     return await page.evaluate(() =>
-      !!document.querySelector('a[href*="sign_out"], a[href*="/mypage"], form[action*="sign_out"]'));
+      !!document.querySelector('a[href*="sign_out"], form[action*="sign_out"], [data-method="delete"][href*="sign_out"]'));
   } finally {
     await page.close();
   }
