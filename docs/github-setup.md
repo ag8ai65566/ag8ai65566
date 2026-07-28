@@ -29,6 +29,32 @@
 
 ---
 
+## 第 1.5 步：把預設分支換掉（**沒做這步，後面全部不會動**）
+
+GitHub 有一條規則沒有例外：**定時執行和「Run workflow」按鈕，只認「預設分支」上的
+workflow 檔案。** 檔案在別的分支，Actions 頁面就當它不存在。
+
+這個 repo 沒有 `main`，預設分支是第一次做的舊分支
+`claude/tokyo-restaurant-planner-yunbi0`，而程式碼全在
+`claude/new-session-network-2ujcou`。所以要先換過去。
+
+新分支完整包含舊分支的所有內容（舊分支獨有的 commit 是 0 個），換過去不會丟任何東西。
+
+1. repo 最上方橫排點 **Settings**（最右邊那個）
+2. 左側選單點 **Branches**
+3. 最上面區塊 **Default branch**，現在顯示 `claude/tokyo-restaurant-planner-yunbi0`，
+   右邊有個**兩箭頭交換的圖示**（⇄，滑過去會顯示 *Switch to another branch*）—— 點它
+4. 下拉選 **`claude/new-session-network-2ujcou`** → 按 **Update**
+5. 跳出確認視窗，按 **I understand, update the default branch**
+
+做完 Default branch 那行應該變成 `claude/new-session-network-2ujcou`。
+
+> 之前如果誤按過「Skip this and set up a workflow yourself」進到編輯畫面，
+> 按左上的 **Cancel changes** 離開就好，不要 commit —— 那會在舊分支上留一個空的
+> `main.yml`。
+
+---
+
 ## 第 2 步：存入 OMAKASE 帳密（兩個 Secret）
 
 1. 在 repo 頁面**最上方橫排**找到 **⚙︎ Settings**（設定）。
@@ -86,12 +112,17 @@ OMAKASE_PASSWORD    Updated now
 1. 回到 repo 最上方橫排，點 **Actions**
 2. 第一次進來可能出現綠色大按鈕
    **I understand my workflows, go ahead and enable them** —— 按它
-3. 看**左側**的 workflow 清單，點 **poll bookings**
-4. 右邊會出現一條藍色提示，右端有個按鈕 **Run workflow ▾** —— 點它
-5. 展開的小框裡：
-   - **Use workflow from** 選 **`claude/new-session-network-2ujcou`**
-     ⚠️ **這步很重要**，選到 `main` 會找不到檔案
-   - 按綠色 **Run workflow**
+3. 看**左側**的 workflow 清單，應該出現 **poll bookings** —— 點它
+
+   > **左側沒有 poll bookings，反而出現「Get started with GitHub Actions」和一堆
+   > 範本？** 那就是第 1.5 步沒做成功，預設分支還是舊的。回去確認 Settings →
+   > Branches 的 Default branch 是不是 `claude/new-session-network-2ujcou`。
+   > **不要**按「set up a workflow yourself」去自己建檔案 —— 檔案已經在 repo 裡了，
+   > 只是 GitHub 沒在看那條分支。
+
+4. 右邊會出現一條藍色提示 *This workflow has a workflow_dispatch event trigger.*，
+   右端有個按鈕 **Run workflow ▾** —— 點它
+5. 展開的小框裡 **Use workflow from** 已經是預設分支，直接按綠色 **Run workflow**
 6. 等 3～5 秒，**重新整理頁面**，清單最上面會出現一筆帶黃色圓點的紀錄
 7. 點進去 → 點左邊的 **poll** → 展開每個步驟看進度
 
@@ -142,6 +173,7 @@ OMAKASE_PASSWORD    Updated now
 | `403` / `you have been blocked` | **Cloudflare 擋 GitHub 的機器** | 往下看「Cloudflare 擋住的話」 |
 | `Permission to ... denied` | 沒開寫入權限 | 回第 3 步 |
 | `Process completed with exit code 1` | 要往上找真正的紅字 | 展開該步驟捲到最上面 |
+| 左側根本沒有 poll bookings | 預設分支不對 | 回第 1.5 步 |
 
 ### Cloudflare 擋住的話
 
@@ -177,7 +209,23 @@ GitHub 的機器會不會也被擋。如果被擋，**程式不用改，只要�
 
 ---
 
+## 為什麼分支這件事這麼要命
+
+值得記一下，因為它的錯誤訊息完全看不出原因：**GitHub 的定時執行和手動按鈕，只讀
+「預設分支」上的 workflow 檔案。** 不是「你選的分支」，也不是「有檔案的分支」。
+
+所以檔案明明在 repo 裡、明明 commit 了、路徑也對，Actions 頁面還是說「你還沒有任何
+workflow」，然後引導你去新建一個 —— 照著建下去只會在錯的分支上留一個空檔案。
+
+以後如果我又開了新分支做東西，要讓自動化生效，就是回到 Settings → Branches
+把預設分支指過去（或叫我把它合併進預設分支）。
+
+---
+
 ## 一句話總結
 
-第 2 步（兩個 Secret）→ 第 3 步（開寫入權限）→ 第 4 步（跑一次看綠勾）。
-綠勾出現之後，這件事就自己跑一年，你到 2027 年 4 月再回來看倒數就好。
+第 1.5 步（換預設分支）→ 第 2 步（兩個 Secret）→ 第 3 步（開寫入權限）
+→ 第 4 步（跑一次看綠勾）。
+
+綠勾出現之後，這件事就自己跑一年，你到 2026 年 10 月再回來看
+とり茶太郎 的倒數就好。

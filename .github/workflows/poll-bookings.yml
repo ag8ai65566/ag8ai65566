@@ -71,7 +71,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/booking-state.json
           git commit -m "Booking state as of $(date -u +%Y-%m-%dT%H:%MZ)"
-          git push
+          # Name the target explicitly: a bare push depends on how the ref was
+          # checked out, and fails on some triggers with a detached HEAD.
+          git push origin "HEAD:${GITHUB_REF_NAME}"
 
       # Whatever happened, keep the evidence: a Cloudflare block and a changed
       # page both look like "it failed" in the log alone.
