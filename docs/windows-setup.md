@@ -56,11 +56,26 @@ cd "$HOME\OneDrive\Desktop\ledger\scraper"
 **確認位置對不對**，貼這行按 Enter：
 
 ```powershell
-Test-Path dump-omakase.mjs
+Test-Path poll-omakase.mjs
 ```
 
-出現 `True` 才往下做。出現 `False` 表示位置不對，回到上面重切一次
-——後面每一步都靠這個位置，錯了會一路失敗。
+出現 `True` 才往下做。出現 `False` 有兩種可能：
+
+- **位置不對** —— 回到上面重切一次
+- **zip 是舊的** —— 這支程式是後來才加的。如果你以前下載過，那份裡面沒有它。
+  回第 2 步用同一個連結重新下載（連結永遠給最新版），舊資料夾刪掉或改名
+
+  > 重下載之前先把帳密存一份，免得重打：
+  > `Copy-Item .env "$HOME\Desktop\env-backup.txt"`
+  > 換好資料夾之後再 `Copy-Item "$HOME\Desktop\env-backup.txt" .env` 放回去。
+  >
+  > **Playwright 那 150MB 不用重下** —— 瀏覽器裝在
+  > `%USERPROFILE%\AppData\Local\ms-playwright`，不在專案資料夾裡。
+  > 只有 `npm.cmd install` 要再跑一次。
+
+**檢查要跑的那支程式在不在，而不是隨便一個檔案** —— 這份教學原本檢查
+`dump-omakase.mjs`，結果舊 zip 明明缺了 `poll-omakase.mjs` 卻通過檢查，
+一路走到第 6 步才炸 `Cannot find module`。
 
 > 「Shift + 右鍵 →『在這裡開啟 PowerShell 視窗』」也可以，但那是在**檔案總管的
 > 資料夾裡**按，不是在 PowerShell 裡按。已經開好視窗就用上面的 `cd` 就好。
@@ -210,7 +225,8 @@ DOM 抓取那段是對的，整條線就完全通了。
 | --- | --- | --- |
 | `npm : 無法辨識...` | Node 沒裝好，或視窗是裝之前開的 | 關掉 PowerShell 重開一個再試；還是不行就改開沒有 `(x86)` 的那個 PowerShell |
 | `npm.ps1 cannot be loaded because running scripts is disabled` | PowerShell 擋腳本 | 用 `npm.cmd install` / `npx.cmd ...`，見第 4 步的說明 |
-| `Cannot find module` | 位置不對，或漏了 `npm install` | 用 `Test-Path dump-omakase.mjs` 確認是 `True`，再重跑第 4 步 |
+| `Cannot find module ...poll-omakase.mjs` | zip 是舊版，缺這支程式 | 重新下載 zip，見第 3 步的說明 |
+| `Cannot find module` 其他模組名 | 漏了 `npm.cmd install` | 確認 `Test-Path poll-omakase.mjs` 是 `True`，再重跑第 4 步 |
 | `missing env: OMAKASE_EMAIL` | `.env` 沒建好或存錯地方 | 重做第 5 步，確認記事本標題列是 `.env` 不是 `.env.txt` |
 | `login rejected` | 帳密打錯 | 檢查 `.env`；或用第 6 步的手動登入 |
 | 跳出「我不是機器人」 | Cloudflare 驗證 | 自己在視窗裡點掉，回命令列按 Enter |
