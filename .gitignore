@@ -12,3 +12,6 @@ scraper/node_modules_pw
 scraper/.auth/
 data/*.jsonl
 data/restaurants.json
+
+# scraper page dumps (contain your logged-in view)
+scraper/dump/

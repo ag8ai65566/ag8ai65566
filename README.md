@@ -38,6 +38,23 @@ OMAKASE 回 `403 Sorry, you have been blocked`（Cloudflare），不是可通過
 程式在 `lib/omakase.mjs`，用的是跟 TableAll 成功登入同一套做法，換一個沒被擋的網路就能跑。
 不從這裡繞過。
 
+### 在自己的電腦上把 OMAKASE 頁面撈下來
+
+雲端這邊沒有人看過登入後的 OMAKASE 頁，所以**還沒有**寫空席解析器——對著沒看過的頁面
+寫選擇器，這個 repo 已經付過兩次學費（猜的 `/yoyaku/` 網址、沒驗證的 `rstinfo` 選擇器）。
+
+在連得到 OMAKASE 的電腦上：
+
+```bash
+cd scraper
+npm i
+cp .env.example .env      # 填 OMAKASE_EMAIL / OMAKASE_PASSWORD
+node dump-omakase.mjs     # → dump/<slug>.{txt,calendar.html,png}
+```
+
+`dump/` 是 gitignore 的，因為裡面是你**登入後**的畫面（會有帳號名稱，也會有你已經
+訂到的位子）。送出去之前自己先看一遍。有了真實內容才寫解析器。
+
 ### 這 9 家都不能在 Tabelog 線上訂位
 
 清單裡的 9 家跑空席快照 **9 家全部 skip**。兩種訊號，意思一樣：
