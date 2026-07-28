@@ -1,0 +1,67 @@
+{
+  "_comment": [
+    "Which platform each restaurant actually takes bookings through, keyed by Tabelog shop id.",
+    "None of these nine can be booked on Tabelog itself, so this mapping is what the radar",
+    "hangs on. It lives in the repo because data/ is gitignored and this is the part that",
+    "cost real work to establish.",
+    "",
+    "`verifiedBy` says how the identity was confirmed — a name match alone is not enough:",
+    "searching OMAKASE for 蒼 also returns 蒼洋軒 and 蒼菓.",
+    "",
+    "Re-check with: node find-platform.mjs"
+  ],
+  "13243463": {
+    "name": "蒼",
+    "bookingSource": "omakase",
+    "bookingUrl": "https://omakase.in/ja/r/iz931441",
+    "verifiedBy": "linked from the shop's own site ao-nishiazabu.com; phone and address both match Tabelog"
+  },
+  "13157208": {
+    "name": "とり茶太郎",
+    "bookingSource": "omakase",
+    "bookingUrl": "https://omakase.in/r/hn429275",
+    "verifiedBy": "address 渋谷区鶯谷町7-12 matches Tabelog"
+  },
+  "13270958": {
+    "name": "明寂",
+    "bookingSource": "omakase",
+    "bookingUrl": "https://omakase.in/r/ff108237",
+    "verifiedBy": "address 港区西麻布3-2-34 matches Tabelog; sole search result"
+  },
+  "13304401": {
+    "name": "酉囃子",
+    "bookingSource": "omakase",
+    "bookingUrl": "https://omakase.in/r/cn838977",
+    "verifiedBy": "address 港区麻布十番1-6-9 matches Tabelog; sole search result"
+  },
+  "13201969": {
+    "name": "日本橋 蕎ノ字",
+    "bookingSource": "tableall",
+    "bookingUrl": "https://www.tableall.com/restaurant/109",
+    "verifiedBy": "address 2 Chome-22-11 Nihonbashiningyocho 1F matches Tabelog 日本橋人形町2-22-11 井上ビル1F"
+  },
+  "13041029": {
+    "name": "鳥しき",
+    "bookingSource": "tableall",
+    "bookingUrl": "https://www.tableall.com/restaurant/339",
+    "verifiedBy": "address 2 Chome-14-12 Kamiosaki, Shinagawa matches Tabelog 品川区上大崎2-14-12"
+  },
+  "13259485": {
+    "name": "末冨",
+    "bookingSource": "tableall",
+    "bookingUrl": "https://www.tableall.com/restaurant/220",
+    "verifiedBy": "UNCONFIRMED ADDRESS — both sites withhold it (Tabelog shows 東京都渋谷区 and 非公開 phone, TableAll says the address follows booking confirmation). Matched on name + Aoyama + the shop's own site aoyama-suetomi.jp"
+  },
+  "13240980": {
+    "name": "オオクサ",
+    "bookingSource": "phone",
+    "bookingUrl": null,
+    "verifiedBy": "absent from OMAKASE, TableCheck and TableAll; the shop's own 予約 text says phone only, from 12:00 one week ahead"
+  },
+  "13042204": {
+    "name": "三谷",
+    "bookingSource": "none",
+    "bookingUrl": null,
+    "verifiedBy": "absent from all three platforms; Tabelog 予約欄 says 新規予約不可"
+  }
+}

@@ -556,64 +556,282 @@ const fmtOpens = (d, timeKnown) => timeKnown ? fmtDT(d) : `${fmtDate(d)}（時�
 
 const PLATFORMS = {
   omakase: "OMAKASE", tabelog: "Tabelog", tablecheck: "TableCheck",
-  tableall: "TableAll", phone: "電話預約", unknown: "待查"
+  tableall: "TableAll", phone: "電話預約", none: "不收新客", unknown: "待查"
 };
 
 /* ═══ seed data ═════════════════════════════════════════════════════════
    NOTE: 這些是「範例資料」，店名為虛構，用來確認版面與流程。
    真實資料等網路開通後由 Tabelog／OMAKASE 匯入覆蓋。                     */
 const SEED = [
-  { id: "r1", name: "鮨 むらせ", kana: "Sushi Murase", genre: "壽司", area: "銀座", station: "銀座一丁目 徒步 3 分",
-    address: "東京都中央区銀座 1-00-0 ○○ビル B1", score: 4.31, status: "wish", priority: 1, seats: 8,
-    budget: "¥40,000〜¥49,999", booking: { platform: "omakase", rule: { kind: "monthlyFirst", day: 1, hour: 10, lead: 1 } },
-    lat: 35.6735, lng: 139.7669, remind: true, sample: true },
-  { id: "r2", name: "焼鳥 とり久", kana: "Yakitori Torikyu", genre: "燒鳥", area: "西麻布", station: "六本木 徒步 8 分",
-    address: "東京都港区西麻布 2-00-0", score: 4.12, status: "wish", priority: 1, seats: 10,
-    budget: "¥20,000〜¥29,999", booking: { platform: "tablecheck", rule: { kind: "monthsBefore", months: 2, hour: 11 } },
-    lat: 35.6586, lng: 139.7245, remind: true, sample: true },
-  { id: "r3", name: "天ぷら 山路", kana: "Tempura Yamaji", genre: "天婦羅", area: "日本橋", station: "三越前 徒步 2 分",
-    address: "東京都中央区日本橋室町 3-00-0", score: 4.05, status: "wish", priority: 2, seats: 12,
-    budget: "¥15,000〜¥19,999", booking: { platform: "tabelog", rule: { kind: "daysBefore", days: 30, hour: 0 } },
-    lat: 35.6862, lng: 139.7731, remind: false, sample: true },
-  { id: "r4", name: "割烹 東雲", kana: "Kappo Shinonome", genre: "割烹", area: "神楽坂", station: "神楽坂 徒步 5 分",
-    address: "東京都新宿区神楽坂 4-00-0", score: 4.22, status: "wish", priority: 2, seats: 14,
-    budget: "¥25,000〜¥29,999", booking: { platform: "tableall", rule: { kind: "monthsBefore", months: 3, hour: 10 } },
-    lat: 35.7016, lng: 139.7402, remind: true, sample: true },
-  { id: "r5", name: "鰻 川清", kana: "Unagi Kawasei", genre: "鰻魚", area: "淺草", station: "淺草 徒步 6 分",
-    address: "東京都台東区浅草 1-00-0", score: 3.92, status: "wish", priority: 3, seats: 20,
-    budget: "¥8,000〜¥9,999", booking: { platform: "phone", rule: { kind: "daysBefore", days: 14, hour: 11 } },
-    lat: 35.7119, lng: 139.7967, remind: false, sample: true },
-  { id: "r6", name: "鮨 とし乃", kana: "Sushi Toshino", genre: "壽司", area: "六本木", station: "乃木坂 徒步 4 分",
-    address: "東京都港区六本木 7-00-0", score: 4.44, status: "visited", myRating: 5, seats: 9,
-    budget: "¥30,000〜¥39,999", booking: { platform: "omakase", rule: { kind: "monthlyFirst", day: 1, hour: 10, lead: 2 } },
-    lat: 35.6663, lng: 139.7288,
-    visits: [{ date: "2026-03-14", spend: 38000, note: "小鰭跟煮蛤是關鍵。醋飯偏赤醋、溫度高，配得住熟成種。師傅會依你吃的速度調握的節奏，坐吧台正中間最好。下次想試冬天的鮟鱇肝。" }],
-    remind: false, sample: true },
-  { id: "r7", name: "洋食 かねしろ", kana: "Yoshoku Kaneshiro", genre: "洋食", area: "銀座", station: "東銀座 徒步 3 分",
-    address: "東京都中央区銀座 5-00-0", score: 3.78, status: "visited", myRating: 4, seats: 26,
-    budget: "¥3,000〜¥3,999", booking: { platform: "unknown", rule: { kind: "unknown" } },
-    lat: 35.6695, lng: 139.7669,
-    visits: [{ date: "2026-03-16", spend: 3800, note: "蟹肉可樂餅炸得很輕，醬汁偏酸。中午不用訂，11:30 前到大概排 10 分鐘。" }],
-    remind: false, sample: true },
-  { id: "r8", name: "焼肉 隆星", kana: "Yakiniku Ryusei", genre: "燒肉", area: "麻布十番", station: "麻布十番 徒步 2 分",
-    address: "東京都港区麻布十番 2-00-0", score: 4.18, status: "visited", myRating: 4, seats: 18,
-    budget: "¥20,000〜¥29,999", booking: { platform: "tablecheck", rule: { kind: "monthsBefore", months: 1, hour: 12 } },
-    lat: 35.6552, lng: 139.7365,
-    visits: [{ date: "2026-03-15", spend: 24000, note: "夏拉布利厚切是招牌，配山葵。冷麵收尾份量偏大，兩個人點一份就好。" }],
-    remind: false, sample: true }
-];
+  {
+    "id": "13157208",
+    "name": "とり茶太郎",
+    "genre": "焼き鳥",
+    "area": "渋谷区",
+    "station": "渋谷駅徒歩10分ほど",
+    "address": "東京都渋谷区鶯谷町7-12 TAKビル 1F",
+    "phone": "03-6416-0364",
+    "tabelog": "https://tabelog.com/tokyo/A1303/A130301/13157208/",
+    "score": 4.4,
+    "status": "wish",
+    "priority": 1,
+    "seats": 11,
+    "budget": "￥20,000～￥29,999",
+    "booking": {
+      "platform": "omakase",
+      "url": "https://omakase.in/r/hn429275",
+      "rule": {
+        "kind": "unknown",
+        "raw": "完全予約制\n※予約日時・人数の変更は、変更を希望された時点での日数に応じて\nキャンセルポリシーに定めるキャンセル料を変更手数料として頂戴いたしますのでご了承ください。\n※お電話でのご予約は現在承っておりません。\n【オンライン予約での20時45分予約に関して】\nオンライン上20:45の予約と表示されておりますが、20:40開始となります。\nお時間お間違いないようご注意ください。"
+      },
+      "announcement": null
+    },
+    "lat": 35.654112088712765,
+    "lng": 139.70214974415555,
+    "remind": true
+  },
+  {
+    "id": "13240980",
+    "name": "オオクサ",
+    "genre": "焼き鳥",
+    "area": "新宿区",
+    "station": "四谷三丁目駅から徒歩4分。",
+    "address": "東京都新宿区荒木町7-13 森戸ビル 1Ｆ",
+    "phone": "03-6709-8874",
+    "tabelog": "https://tabelog.com/tokyo/A1309/A130903/13240980/",
+    "score": 4.34,
+    "status": "wish",
+    "priority": 1,
+    "seats": 8,
+    "budget": "￥15,000～￥19,999",
+    "booking": {
+      "platform": "phone",
+      "url": null,
+      "rule": {
+        "kind": "daysBefore",
+        "days": 7,
+        "hour": 12
+      },
+      "announcement": null
+    },
+    "lat": 35.689113888696944,
+    "lng": 139.72227376449501,
+    "remind": true
+  },
+  {
+    "id": "13201969",
+    "name": "日本橋 蕎ノ字",
+    "genre": "天ぷら",
+    "area": "中央区",
+    "station": "東京メトロ日比谷線【人形町駅】徒歩３分",
+    "address": "東京都中央区日本橋人形町2-22-11 井上ビル 1F",
+    "phone": "03-5643-1566",
+    "tabelog": "https://tabelog.com/tokyo/A1302/A130204/13201969/",
+    "score": 4.45,
+    "status": "wish",
+    "priority": 1,
+    "seats": 9,
+    "budget": "￥30,000～￥39,999",
+    "booking": {
+      "platform": "tableall",
+      "url": "https://www.tableall.com/restaurant/109",
+      "rule": {
+        "kind": "unknown",
+        "raw": "予約可\n「キャンセルポリシー」\n3日前から50％、前日から100%のキャンセル料がかかります。\n蕎麦アレルギーの方、強い香水はご遠慮下さい。"
+      },
+      "announcement": null
+    },
+    "lat": 35.6862428487186,
+    "lng": 139.78454698442235,
+    "remind": true
+  },
+  {
+    "id": "13270958",
+    "name": "明寂",
+    "genre": "日本料理",
+    "area": "港区",
+    "station": "東京メトロ日比谷線　六本木駅徒歩8分",
+    "address": "東京都港区西麻布3-2-34 西麻布ヒルズ B1F",
+    "phone": "050-3101-3945",
+    "tabelog": "https://tabelog.com/tokyo/A1307/A130701/13270958/",
+    "score": 4.44,
+    "status": "wish",
+    "priority": 1,
+    "seats": 25,
+    "budget": "￥50,000～￥59,999",
+    "booking": {
+      "platform": "omakase",
+      "url": "https://omakase.in/r/ff108237",
+      "rule": {
+        "kind": "unknown",
+        "raw": "完全予約制"
+      },
+      "announcement": null
+    },
+    "lat": 35.65943733791184,
+    "lng": 139.72670538303035,
+    "remind": true
+  },
+  {
+    "id": "13259485",
+    "name": "末冨",
+    "genre": "日本料理",
+    "area": "渋谷区",
+    "station": "最寄り駅：渋谷駅・表参道駅",
+    "address": "東京都渋谷区",
+    "phone": "非公開",
+    "tabelog": "https://tabelog.com/tokyo/A1303/A130301/13259485/",
+    "score": 4.49,
+    "status": "wish",
+    "priority": 1,
+    "seats": 16,
+    "budget": "￥50,000～￥59,999",
+    "booking": {
+      "platform": "tableall",
+      "url": "https://www.tableall.com/restaurant/220",
+      "rule": {
+        "kind": "unknown",
+        "raw": "完全予約制\n予約日時・人数の変更は、変更を希望された時点での日数に応じてキャンセルポリシーに定めるキャンセル料を変更手数料として頂戴いたしますので、ご了承くださいませ。"
+      },
+      "announcement": null
+    },
+    "lat": 0,
+    "lng": 0,
+    "remind": true
+  },
+  {
+    "id": "13243463",
+    "name": "蒼",
+    "genre": "イノベーティブ、フレンチ",
+    "area": "港区",
+    "station": "最寄：六本木駅",
+    "address": "東京都港区西麻布3-21-3 オリンピアード麻布霞坂 2F",
+    "phone": "03-6434-9829",
+    "tabelog": "https://tabelog.com/tokyo/A1307/A130701/13243463/",
+    "score": 4.6,
+    "status": "wish",
+    "priority": 1,
+    "seats": 8,
+    "budget": "￥60,000～￥79,999",
+    "booking": {
+      "platform": "omakase",
+      "url": "https://omakase.in/ja/r/iz931441",
+      "rule": {
+        "kind": "unknown",
+        "raw": "完全予約制\n予約日時・人数の変更は、変更を希望された時点での日数に応じてキャンセルポリシーに定めるキャンセル料を変更手数料として頂戴いたしますのでご了承ください。\n※質問にご回答がない場合、当店よりお電話やメールにてご連絡させていただきます。ご連絡が取れない場合はやむを得ずキャンセル扱いとさせていただく場合がございます。なお、トラブル防止のため、ご本人様以外による代理でのご予約はご遠慮いただいております。"
+      },
+      "announcement": null
+    },
+    "lat": 35.660044337910996,
+    "lng": 139.7252667830375,
+    "remind": true
+  },
+  {
+    "id": "13304401",
+    "name": "酉囃子",
+    "genre": "焼き鳥",
+    "area": "港区",
+    "station": "麻布十番駅",
+    "address": "東京都港区麻布十番1-6-9 ARUGA22  4F",
+    "phone": "03-6689-9279",
+    "tabelog": "https://tabelog.com/tokyo/A1307/A130702/13304401/",
+    "score": 4.15,
+    "status": "wish",
+    "priority": 1,
+    "seats": 8,
+    "budget": "￥20,000～￥29,999",
+    "booking": {
+      "platform": "omakase",
+      "url": "https://omakase.in/r/cn838977",
+      "rule": {
+        "kind": "unknown",
+        "raw": "完全予約制"
+      },
+      "announcement": null
+    },
+    "lat": 35.65675100872131,
+    "lng": 139.73421492415974,
+    "remind": true
+  },
+  {
+    "id": "13041029",
+    "name": "鳥しき",
+    "genre": "焼き鳥",
+    "area": "品川区",
+    "station": "目黒駅から徒歩2分",
+    "address": "東京都品川区上大崎2-14-12",
+    "phone": "03-3440-7656",
+    "tabelog": "https://tabelog.com/tokyo/A1316/A131601/13041029/",
+    "score": 4.4,
+    "status": "wish",
+    "priority": 1,
+    "seats": 12,
+    "budget": "￥8,000～￥9,999",
+    "booking": {
+      "platform": "tableall",
+      "url": "https://www.tableall.com/restaurant/339",
+      "rule": {
+        "kind": "monthlyFirstBusinessDay",
+        "lead": 2,
+        "hour": null,
+        "closedDows": [
+          0,
+          1,
+          2
+        ]
+      },
+      "announcement": {
+        "forMonth": "2026-10",
+        "opensAt": "2026-08-12T17:00:00+09:00",
+        "opensUntil": "2026-08-12T19:00:00+09:00",
+        "raw": "【2026年10月分】2026年8月12日（水）17:00~19:00"
+      }
+    },
+    "lat": 35.63428698873006,
+    "lng": 139.71689778394497,
+    "remind": true
+  },
+  {
+    "id": "13042204",
+    "name": "三谷",
+    "genre": "寿司",
+    "area": "新宿区",
+    "station": "ＪＲ中央線【四ツ谷駅】徒歩４分",
+    "address": "東京都新宿区四谷1-22-1",
+    "phone": "03-5366-0132",
+    "tabelog": "https://tabelog.com/tokyo/A1309/A130902/13042204/",
+    "score": 4.47,
+    "status": "wish",
+    "priority": 1,
+    "seats": 6,
+    "budget": "￥50,000～￥59,999",
+    "booking": {
+      "platform": "none",
+      "url": null,
+      "rule": {
+        "kind": "notAcceptingNew",
+        "raw": "完全予約制\n新規予約不可"
+      },
+      "announcement": null
+    },
+    "lat": 35.68754416869974,
+    "lng": 139.72788182447522,
+    "remind": true
+  }
+]
 
-const PENDING = [
-  "https://tabelog.com/tokyo/A1303/A130301/13157208/",
-  "https://tabelog.com/tokyo/A1307/A130702/13304401/",
-  "https://tabelog.com/tokyo/A1316/A131602/13303865/"
-];
+const PENDING = []
 
 const TRIPS = [
-  { id: "t1", name: "2027 年 1 月 東京", start: "2027-01-04", end: "2027-01-09", party: 2,
-    plan: { "2027-01-05|dinner": "r1", "2027-01-06|dinner": "r2", "2027-01-07|lunch": "r3", "2027-01-08|dinner": "r4" } },
-  { id: "t0", name: "2026 年 3 月 東京", start: "2026-03-13", end: "2026-03-17", party: 2, plan: {} }
-];
+  {
+    "id": "t1",
+    "name": "行程未定（改成你的日期）",
+    "start": "2026-10-05",
+    "end": "2026-10-10",
+    "party": 2,
+    "plan": {}
+  }
+]
 
 /* ═══ state ═════════════════════════════════════════════════════════════ */
 const STORE = "tokyo-ledger-v1";
@@ -763,7 +981,7 @@ function renderLib() {
   const list = S.restaurants.filter(r =>
     (libFilter.status === "all" || r.status === libFilter.status) &&
     (!libFilter.genre || r.genre === libFilter.genre) &&
-    (!q || (r.name + r.kana + r.area + r.genre).toLowerCase().includes(q))
+    (!q || [r.name, r.kana, r.area, r.genre].filter(Boolean).join("").toLowerCase().includes(q))
   );
   $("#libEmpty").hidden = list.length > 0;
   $("#libGrid").hidden = list.length === 0;
@@ -812,7 +1030,7 @@ function openDrawer(id) {
 
   const t = el("div", "dtitle");
   const h2 = el("h2"); h2.textContent = r.name; t.append(h2);
-  t.append(el("p", "", `${r.kana}・${r.genre}・${r.area}`));
+  t.append(el("p", "", [r.kana, r.genre, r.area].filter(Boolean).join("・")));
   const pills = el("div", "chips"); pills.style.marginTop = "10px";
   pills.append(el("span", "pill " + (r.status === "visited" ? "ok" : "accent"), r.status === "visited" ? "去過" : "想去"));
   if (r.score) pills.append(el("span", "pill neutral", "食べログ " + r.score.toFixed(2)));
@@ -838,7 +1056,22 @@ function openDrawer(id) {
   }
   if (r.seats) rows.push(["席數", r.seats + " 席"]);
   if (r.budget) rows.push(["預算", r.budget]);
-  rows.forEach(([k, v]) => { bkv.append(el("dt", "", k)); const dd = el("dd", "", v); if (/開放時刻|倒數|席數/.test(k)) dd.classList.add("mono"); bkv.append(dd); });
+  if (r.phone && r.booking.platform === "phone") rows.push(["電話", r.phone]);
+  rows.forEach(([k, v]) => { bkv.append(el("dt", "", k)); const dd = el("dd", "", v); if (/開放時刻|倒數|席數|電話/.test(k)) dd.classList.add("mono"); bkv.append(dd); });
+  /* The point of knowing the platform is getting to the booking page fast, so
+     put the link right here rather than making you go find it. */
+  if (r.booking.url) {
+    const dd = el("dd");
+    const a = el("a", "link", `在 ${PLATFORMS[r.booking.platform]} 開啟 ↗`);
+    a.href = r.booking.url; a.target = "_blank"; a.rel = "noopener";
+    dd.append(a); bkv.append(el("dt", "", "訂位頁"), dd);
+  }
+  if (r.tabelog) {
+    const dd = el("dd");
+    const a = el("a", "link", "食べログ ↗");
+    a.href = r.tabelog; a.target = "_blank"; a.rel = "noopener";
+    dd.append(a); bkv.append(el("dt", "", "參考"), dd);
+  }
   bs.append(bkv); body.append(bs);
 
   /* location */

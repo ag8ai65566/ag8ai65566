@@ -553,13 +553,13 @@ const fmtOpens = (d, timeKnown) => timeKnown ? fmtDT(d) : `${fmtDate(d)}（時�
 
 const PLATFORMS = {
   omakase: "OMAKASE", tabelog: "Tabelog", tablecheck: "TableCheck",
-  tableall: "TableAll", phone: "電話預約", unknown: "待查"
+  tableall: "TableAll", phone: "電話預約", none: "不收新客", unknown: "待查"
 };
 
 /* ═══ seed data ═════════════════════════════════════════════════════════
    NOTE: 這些是「範例資料」，店名為虛構，用來確認版面與流程。
    真實資料等網路開通後由 Tabelog／OMAKASE 匯入覆蓋。                     */
-const SEED = [
+const SEED = /*<<SEED*/[
   { id: "r1", name: "鮨 むらせ", kana: "Sushi Murase", genre: "壽司", area: "銀座", station: "銀座一丁目 徒步 3 分",
     address: "東京都中央区銀座 1-00-0 ○○ビル B1", score: 4.31, status: "wish", priority: 1, seats: 8,
     budget: "¥40,000〜¥49,999", booking: { platform: "omakase", rule: { kind: "monthlyFirst", day: 1, hour: 10, lead: 1 } },
@@ -598,19 +598,19 @@ const SEED = [
     lat: 35.6552, lng: 139.7365,
     visits: [{ date: "2026-03-15", spend: 24000, note: "夏拉布利厚切是招牌，配山葵。冷麵收尾份量偏大，兩個人點一份就好。" }],
     remind: false, sample: true }
-];
+];/*SEED>>*/
 
-const PENDING = [
+const PENDING = /*<<PENDING*/[
   "https://tabelog.com/tokyo/A1303/A130301/13157208/",
   "https://tabelog.com/tokyo/A1307/A130702/13304401/",
   "https://tabelog.com/tokyo/A1316/A131602/13303865/"
-];
+];/*PENDING>>*/
 
-const TRIPS = [
+const TRIPS = /*<<TRIPS*/[
   { id: "t1", name: "2027 年 1 月 東京", start: "2027-01-04", end: "2027-01-09", party: 2,
     plan: { "2027-01-05|dinner": "r1", "2027-01-06|dinner": "r2", "2027-01-07|lunch": "r3", "2027-01-08|dinner": "r4" } },
   { id: "t0", name: "2026 年 3 月 東京", start: "2026-03-13", end: "2026-03-17", party: 2, plan: {} }
-];
+];/*TRIPS>>*/
 
 /* ═══ state ═════════════════════════════════════════════════════════════ */
 const STORE = "tokyo-ledger-v1";
@@ -760,7 +760,7 @@ function renderLib() {
   const list = S.restaurants.filter(r =>
     (libFilter.status === "all" || r.status === libFilter.status) &&
     (!libFilter.genre || r.genre === libFilter.genre) &&
-    (!q || (r.name + r.kana + r.area + r.genre).toLowerCase().includes(q))
+    (!q || [r.name, r.kana, r.area, r.genre].filter(Boolean).join("").toLowerCase().includes(q))
   );
   $("#libEmpty").hidden = list.length > 0;
   $("#libGrid").hidden = list.length === 0;
@@ -809,7 +809,7 @@ function openDrawer(id) {
 
   const t = el("div", "dtitle");
   const h2 = el("h2"); h2.textContent = r.name; t.append(h2);
-  t.append(el("p", "", `${r.kana}・${r.genre}・${r.area}`));
+  t.append(el("p", "", [r.kana, r.genre, r.area].filter(Boolean).join("・")));
   const pills = el("div", "chips"); pills.style.marginTop = "10px";
   pills.append(el("span", "pill " + (r.status === "visited" ? "ok" : "accent"), r.status === "visited" ? "去過" : "想去"));
   if (r.score) pills.append(el("span", "pill neutral", "食べログ " + r.score.toFixed(2)));
@@ -835,7 +835,22 @@ function openDrawer(id) {
   }
   if (r.seats) rows.push(["席數", r.seats + " 席"]);
   if (r.budget) rows.push(["預算", r.budget]);
-  rows.forEach(([k, v]) => { bkv.append(el("dt", "", k)); const dd = el("dd", "", v); if (/開放時刻|倒數|席數/.test(k)) dd.classList.add("mono"); bkv.append(dd); });
+  if (r.phone && r.booking.platform === "phone") rows.push(["電話", r.phone]);
+  rows.forEach(([k, v]) => { bkv.append(el("dt", "", k)); const dd = el("dd", "", v); if (/開放時刻|倒數|席數|電話/.test(k)) dd.classList.add("mono"); bkv.append(dd); });
+  /* The point of knowing the platform is getting to the booking page fast, so
+     put the link right here rather than making you go find it. */
+  if (r.booking.url) {
+    const dd = el("dd");
+    const a = el("a", "link", `在 ${PLATFORMS[r.booking.platform]} 開啟 ↗`);
+    a.href = r.booking.url; a.target = "_blank"; a.rel = "noopener";
+    dd.append(a); bkv.append(el("dt", "", "訂位頁"), dd);
+  }
+  if (r.tabelog) {
+    const dd = el("dd");
+    const a = el("a", "link", "食べログ ↗");
+    a.href = r.tabelog; a.target = "_blank"; a.rel = "noopener";
+    dd.append(a); bkv.append(el("dt", "", "參考"), dd);
+  }
   bs.append(bkv); body.append(bs);
 
   /* location */

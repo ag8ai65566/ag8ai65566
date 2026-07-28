@@ -12,6 +12,20 @@ import { contextFor, closeBrowser } from "./lib/browser.mjs";
 import { fetchRestaurant, parseShopUrl } from "./lib/tabelog.mjs";
 
 const OUT = path.join(process.cwd(), "..", "data", "restaurants.json");
+const PLATFORMS = path.join(process.cwd(), "platforms.json");
+
+/**
+ * Which platform a restaurant actually books through can't be read off its
+ * Tabelog page — none of these link out to OMAKASE or TableAll. It's kept as a
+ * checked-in mapping and merged on every import so a re-import doesn't drop it
+ * along with the rest of gitignored data/.
+ */
+async function loadPlatforms() {
+  try {
+    const raw = JSON.parse(await fs.readFile(PLATFORMS, "utf8"));
+    return Object.fromEntries(Object.entries(raw).filter(([k]) => !k.startsWith("_")));
+  } catch { return {}; }
+}
 
 async function readUrls() {
   const args = process.argv.slice(2).filter(a => !a.startsWith("-"));
@@ -36,6 +50,7 @@ const bad = urls.filter(u => !parseShopUrl(u));
 if (bad.length) console.error(`skipping ${bad.length} unrecognised URL(s):\n  ${bad.join("\n  ")}`);
 
 const ctx = await contextFor("tabelog");
+const platforms = await loadPlatforms();
 const existing = await loadExisting();
 const byId = new Map(existing.map(r => [r.id, r]));
 let ok = 0, failed = 0;
@@ -45,9 +60,16 @@ for (const url of urls) {
   if (!ref) continue;
   try {
     const rec = await fetchRestaurant(ctx, url);
+    const plat = platforms[rec.id];
+    if (plat) Object.assign(rec, {
+      bookingSource: plat.bookingSource,
+      bookingUrl: plat.bookingUrl,
+      bookingVerifiedBy: plat.verifiedBy,
+    });
     byId.set(rec.id, { ...byId.get(rec.id), ...rec });
     ok++;
-    console.log(`✓ ${rec.id}  ${rec.name || "(no name)"}  ${rec.genre || ""}  rule=${rec.rule.kind}`);
+    console.log(`✓ ${rec.id}  ${rec.name || "(no name)"}  ${rec.genre || ""}  ` +
+      `rule=${rec.rule.kind}  訂位=${plat ? plat.bookingSource : "?"}`);
     if (rec.rule.kind === "unknown" && rec.reservationText)
       console.log(`   予約欄未能判讀，原文保留：${rec.reservationText.replace(/\n/g, " / ")}`);
   } catch (err) {
