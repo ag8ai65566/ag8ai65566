@@ -161,6 +161,14 @@ main{min-width:0;padding:28px 34px 72px;max-width:1180px}
   color:var(--ink-3);font-weight:600;padding:0 12px 8px 0;border-bottom:1px solid var(--rule-strong);
   white-space:nowrap;
 }
+/* the all-on/all-off control that lives in the 提醒 column head */
+.ledger thead th .allbtn{
+  margin-left:8px;font:inherit;letter-spacing:inherit;text-transform:inherit;
+  color:var(--accent);background:none;border:0;padding:0;cursor:pointer;
+  border-bottom:1px solid transparent;
+}
+.ledger thead th .allbtn:hover{border-bottom-color:var(--accent)}
+.ledger thead th .allbtn:disabled{color:var(--ink-3);cursor:default;border-bottom-color:transparent}
 .ledger tbody tr{border-bottom:1px solid var(--rule);transition:background .1s}
 .ledger tbody tr:hover{background:var(--surface)}
 .ledger td{padding:13px 12px 13px 0;vertical-align:middle}
@@ -389,7 +397,8 @@ a.link:hover{border-bottom-color:currentColor}
         <table class="ledger">
           <thead><tr>
             <th style="width:30%">餐廳</th><th>訂位平台</th><th>開放規則</th>
-            <th>開放時刻</th><th class="r">倒數</th><th class="r">提醒</th>
+            <th>開放時刻</th><th class="r">倒數</th>
+            <th class="r">提醒<button class="allbtn" id="btnRemindAll" type="button"></button></th>
           </tr></thead>
           <tbody id="radarBody"></tbody>
         </table>
@@ -890,9 +899,30 @@ function urgency(days) {
   if (days <= 14) return "warn";
   return "ok";
 }
+/**
+ * One control for every reminder, labelled by what pressing it will do. It says
+ * 全取消 only when every row is already on, so the label is never a lie about
+ * the state you are in.
+ */
+function renderRemindAll(rows) {
+  const btn = $("#btnRemindAll");
+  if (!btn) return;
+  const all = rows.length > 0 && rows.every(x => x.r.remind);
+  btn.textContent = all ? "全取消" : "全選";
+  btn.disabled = rows.length === 0;
+  btn.setAttribute("aria-label", all ? "取消所有提醒" : "開啟所有提醒");
+  btn.onclick = () => {
+    rows.forEach(x => { x.r.remind = !all; });
+    save();
+    renderRadar();
+    toast(all ? "已取消所有提醒" : `已開啟 ${rows.length} 家的提醒`);
+  };
+}
+
 function renderRadar() {
   const rows = radarRows(), tb = $("#radarBody");
   tb.textContent = "";
+  renderRemindAll(rows);
   const openNow = rows.filter(x => x.days !== null && x.days <= 0).length;
   const soon = rows.filter(x => x.days !== null && x.days > 0 && x.days <= 14).length;
   const unknown = rows.filter(x => x.days === null).length;

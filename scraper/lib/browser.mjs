@@ -4,6 +4,10 @@ import fsSync from "node:fs";
 import path from "node:path";
 import { X509Certificate, createHash } from "node:crypto";
 
+/* Credentials live in scraper/.env (gitignored). Node reads it natively, so
+   there's no dependency and nothing to remember to pass on the command line. */
+try { process.loadEnvFile(path.join(process.cwd(), ".env")); } catch { /* no .env */ }
+
 const STATE_DIR = path.join(process.cwd(), ".auth");
 const DELAY = Number(process.env.REQUEST_DELAY_MS || 4000);
 
