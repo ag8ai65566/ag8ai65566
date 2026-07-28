@@ -3,7 +3,8 @@
 寫給完全沒用過 GitHub 的人。**全部在瀏覽器裡點，不用裝任何東西、不用打任何指令。**
 
 一次做完，之後每天早上 06:10（日本時間）它會自己去讀一次，把結果存起來。你的旅行在
-2027 年 7 月，也就是這件事要自己跑大概一年 —— 所以值得花這 10 分鐘設好。
+2027 年 1 月，第一個要動作的是 2026 年 10 月 1 日的 とり茶太郎 —— 也就是這件事要
+自己跑兩個多月，之後還要繼續跑到旅行結束。所以值得花這 10 分鐘設好。
 
 ---
 
@@ -151,8 +152,8 @@ OMAKASE_PASSWORD    Updated now
 ## 第 5 步：確認結果真的存下來了
 
 1. 回 repo 首頁（點左上 **Code**）
-2. 左上角有個分支選單（預設顯示 `main`）—— 點它，選
-   **`claude/new-session-network-2ujcou`**
+2. 做完第 1.5 步之後，左上角的分支選單本來就會是
+   `claude/new-session-network-2ujcou`，不用切
 3. 進入 **`data`** 資料夾 → 應該有一個 **`booking-state.json`**
 4. 點開它，會看到每家店的 `nextOpenAt`、`windowUntil` 等等
 
@@ -197,7 +198,7 @@ GitHub 的機器會不會也被擋。如果被擋，**程式不用改，只要�
 不用再找我，兩種情況：
 
 **有 Tabelog 頁面的**：編輯 `scraper/watchlist.txt`
-1. Code → 切到 `claude/new-session-network-2ujcou` 分支
+1. Code（分支已經是預設的那條）
 2. 進 `scraper` → 點 `watchlist.txt` → 右上角**鉛筆圖示**（Edit this file）
 3. 貼上新的 Tabelog 網址，一行一個
 4. 頁面下方 **Commit changes** → 綠色 **Commit changes**
