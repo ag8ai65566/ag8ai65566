@@ -171,25 +171,84 @@ OMAKASE_PASSWORD    Updated now
 | --- | --- | --- |
 | `missing env: OMAKASE_EMAIL` | Secret 名字打錯 | 回第 2 步，確認**完全**是 `OMAKASE_EMAIL`（大寫、底線） |
 | `login rejected` | 帳密不對 | 回第 2 步覆蓋成正確的 |
-| `403` / `you have been blocked` | **Cloudflare 擋 GitHub 的機器** | 往下看「Cloudflare 擋住的話」 |
+| `403` / `Cloudflare is blocking this machine's IP` | GitHub 的機器被擋（**必定發生**） | 往下看「Cloudflare 擋住 GitHub 的機器」 |
 | `Permission to ... denied` | 沒開寫入權限 | 回第 3 步 |
 | `Process completed with exit code 1` | 要往上找真正的紅字 | 展開該步驟捲到最上面 |
 | 左側根本沒有 poll bookings | 預設分支不對 | 回第 1.5 步 |
 
-### Cloudflare 擋住的話
+### Cloudflare 擋住 GitHub 的機器（**已確認會發生**）
 
-這是唯一我從雲端**測不出來**的部分 —— OMAKASE 擋掉了我這邊的 IP，我不知道
-GitHub 的機器會不會也被擋。如果被擋，**程式不用改，只要換執行的機器**：
+2026-07-28 實測結果：**會**。log 裡是
+
+```
+Error: https://omakase.in/users/sign_in — HTTP 403
+```
+
+其他每一環都正常 —— 安裝成功、Playwright 裝好、21 個測試全過、兩個 Secret 正確載入。
+唯一的問題是 GitHub 的機器在資料中心，而 Cloudflare 擋資料中心的 IP。**家用網路不會被擋。**
+
+所以 GitHub 免費的機器跑不了這件事。兩條路，程式碼都不用改：
+
+---
+
+#### 路線 B（先做這個）：偶爾自己在電腦上跑一行
+
+對你的實際需求這樣就夠了。到 2027 年 1 月之前真正要動作的日期只有幾個
+（2026/10/01、11/01、11/04、12/01、12/24、12/29），每天輪詢的價值主要是
+「偵測規律有沒有改變」，一週跑一次完全足夠。
+
+照 [`windows-setup.md`](windows-setup.md) 把環境設好（只要做一次），之後每次就是
+開 PowerShell 切到 `scraper` 資料夾，跑：
+
+```powershell
+node poll-omakase.mjs
+```
+
+結果會寫進 `..\data\booking-state.json`。把那個檔案內容貼給我，我確認讀到的東西正確。
+
+**為什麼先做這個**：`readBookingState` 抓 DOM 的部分還沒對真實頁面驗證過（解析文字的
+部分有 21 個測試，但「文字從哪個元素來」沒驗過）。先手動跑一次確認讀得到東西，再去弄
+路線 A 的自動化，順序才對。
+
+---
+
+#### 路線 A：讓 GitHub 用你家的電腦跑（完整自動化）
+
+一次設定，之後照排程每天自己跑。步驟瑣碎但都是複製貼上。
+
+**A-1. 告訴 workflow 要用你的機器**
 
 1. Settings → Secrets and variables → **Actions** → 切到 **Variables** 頁籤
 2. **New repository variable**
    - **Name**：`POLL_RUNNER`
    - **Value**：`self-hosted`
-   - **Add variable**
-3. 然後照 GitHub 的指引在你自己的 Windows 上註冊一台 runner
-   （Settings → Actions → Runners → **New self-hosted runner**，照它給的指令貼上）
+   - 按 **Add variable**
 
-這樣它就會用你家的網路去跑，跟你自己開瀏覽器一樣。
+**A-2. 在你的 Windows 上註冊一台 runner**
+
+1. Settings → 左側 **Actions** → **Runners**
+2. 按綠色 **New self-hosted runner**
+3. **Runner image 選 Windows**、Architecture 選 **x64**
+4. 頁面會列出指令，分 **Download** 和 **Configure** 兩區。在你電腦上開 PowerShell
+   （不要 x86 那個），把 **Download** 區每一行照順序貼上執行 —— 它會建
+   `C:\actions-runner` 並下載 runner
+5. 再貼 **Configure** 區那行 `./config.cmd --url ... --token ...`
+   （token 是一次性的，用它給你的那行，不要自己改）
+
+   會問幾個問題，**全部直接按 Enter** 用預設值：runner group、runner 名稱、
+   額外標籤、work folder
+6. **不要**執行它給的 `./run.cmd` —— 那個關掉視窗就停了。改成裝成服務，照 GitHub
+   頁面上 **Configure as a service** 那段的指令做（Windows 通常是
+   `./config.cmd --runasservice`，或用它列出的 `svc` 指令）
+7. 回 Settings → Actions → **Runners**，應該看到一台狀態 **Idle**（綠色）的 runner
+
+**A-3. 再跑一次**
+
+回 Actions → poll bookings → **Run workflow**。這次會在你的電腦上跑，出口 IP 是你家的
+網路，不會被擋。
+
+> **注意**：排程時間（06:10 JST）到的時候電腦要開著。關機那天就跳過，不會補跑。
+> 對這個用途影響不大 —— 開放時刻是每月變一次，不是每分鐘。
 
 ---
 
