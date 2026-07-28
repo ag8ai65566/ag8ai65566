@@ -14,8 +14,10 @@
 | --- | --- |
 | 視覺原型（單檔 Artifact） | ✅ 完成 — `prototype/ledger.html` |
 | Tabelog 匯入（店家資料） | ✅ 完成，已對真實頁面驗證 |
-| Tabelog 空席快照（每日累積） | ✅ 完成，但**對現在這 9 家全都不適用**（見下） |
-| OMAKASE／TableCheck／TableAll 空席 | 待做 — 網站進得去，但要登入後才看得到日曆 |
+| Tabelog 空席快照（每日累積） | ✅ 完成，但**對現在這 10 家全都不適用**（見下） |
+| OMAKASE 開放時刻 | ✅ 有了，但**手動更新**——店家頁擋自動化，見下 |
+| 行程日期 / 開放資訊在 UI 直接編輯 | ✅ 完成 |
+| TableCheck 空席 | 待做 |
 | 雲端儲存（Supabase）與照片上傳 | 待做 |
 | 手機推播提醒（Claude 排程） | 待做 |
 
@@ -28,32 +30,28 @@
 | --- | --- | --- | --- |
 | Tabelog | 有，JSON 端點，約 66 天 | 不需要 | 但這 9 家都沒開通線上訂位 |
 | TableAll | **沒有** | 登入成功 | 代訂請求制，手續費 ¥8,000／人 |
-| OMAKASE | 未知 | **無法測** | Cloudflare 硬擋這個雲端 IP |
+| OMAKASE | 有，而且直接公告開放時刻 | 成功 | **但店家頁擋自動化瀏覽器**，見下 |
+
+### OMAKASE 不走爬蟲
+
+實測三種環境：這個雲端容器、GitHub Actions 的機器、以及使用者自己的 Windows 家用網路。
+最後一種是真實家用 IP、登入成功、UA 與平台一致 —— **首頁和登入頁都正常，五個店家頁
+全部 403**。
+
+擋的不是 IP 也不是帳號，是「這是自動化瀏覽器」本身（Playwright 會設
+`navigator.webdriver = true`）。一般 Chrome 手動開完全正常。
+
+技術上能隱藏那個特徵，**這個專案不做**——那是規避網站明確表達的意願。
+
+改用 OMAKASE 自己的功能：店家頁有「お気に入り店舗の予約開始日を一覧で見る」，
+收藏之後一頁列出全部開放日期（旁邊的鈴鐺很可能還有通知）。讀到的值填進 app 詳情頁的
+「開放資訊（自己更新）」即可，一個月一次。
+
+`poll-omakase.mjs` 和登入程式留著 —— 它們對其他來源仍然有用，而且解析器有測試護著。
 
 TableAll 的日曆是**空白的日期選擇器**：62～64 格全是同一個 `fc-date` class、沒有任何一格
 標示不可訂。登入前後完全一樣。它不是空席表，是「你挑日期、我們去幫你喬」的請求表單，
 所以**沒有搶訂時刻可追**，也產不出賣完速度統計。
-
-OMAKASE 回 `403 Sorry, you have been blocked`（Cloudflare），不是可通過的驗證頁。登入
-程式在 `lib/omakase.mjs`，用的是跟 TableAll 成功登入同一套做法，換一個沒被擋的網路就能跑。
-不從這裡繞過。
-
-### 在自己的電腦上把 OMAKASE 頁面撈下來
-
-雲端這邊沒有人看過登入後的 OMAKASE 頁，所以**還沒有**寫空席解析器——對著沒看過的頁面
-寫選擇器，這個 repo 已經付過兩次學費（猜的 `/yoyaku/` 網址、沒驗證的 `rstinfo` 選擇器）。
-
-在連得到 OMAKASE 的電腦上：
-
-```bash
-cd scraper
-npm i
-cp .env.example .env      # 填 OMAKASE_EMAIL / OMAKASE_PASSWORD
-node dump-omakase.mjs     # → dump/<slug>.{txt,calendar.html,png}
-```
-
-`dump/` 是 gitignore 的，因為裡面是你**登入後**的畫面（會有帳號名稱，也會有你已經
-訂到的位子）。送出去之前自己先看一遍。有了真實內容才寫解析器。
 
 ### 這 9 家都不能在 Tabelog 線上訂位
 
@@ -110,7 +108,9 @@ node dump-omakase.mjs     # → dump/<slug>.{txt,calendar.html,png}
 那 6 家的規則**公開網路上查不到**。查過並確認沒有的來源：各店官網（`myoujyaku.com`、
 `ao-nishiazabu.com`、`aoyama-suetomi.jp`、`sonoji.info`、`torichataro8888.gorp.jp`）、
 一休、HAMONI、ヒトサラ、ぐるなび。唯一撈到的「N日前」全部是取消費表，不是開放規則。
-真正寫規則的地方是各店的 OMAKASE 頁，而那個網域擋住了。
+真正寫規則的地方是各店的 OMAKASE 頁 —— 而 OMAKASE 根本不寫「規則」，它直接公告
+**下一次的確切開放時刻**（`次回枠の受付開始日時`）。那是狀態不是規則，所以走
+`booking.observed`，在 app 詳情頁的「開放資訊（自己更新）」手動維護。
 
 ## 抓取
 

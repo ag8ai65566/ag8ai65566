@@ -122,6 +122,22 @@ main{min-width:0;padding:28px 34px 72px;max-width:1180px}
 }
 .vh .lede{margin:6px 0 0;color:var(--ink-2);font-size:13px;max-width:60ch}
 
+/* per-restaurant booking state, typed in from the platform's own listing */
+.obsedit{display:flex;flex-direction:column;gap:10px}
+.obsedit label{display:flex;flex-direction:column;gap:5px;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.obsedit input[type="date"],.obsedit input[type="datetime-local"]{
+  font:inherit;font-size:13px;font-family:"Plex Mono",ui-monospace,monospace;
+  padding:7px 9px;background:var(--surface-2);color:var(--ink);
+  border:1px solid var(--rule-strong);border-radius:0;width:100%;
+}
+.obsedit input:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.obsedit label.check{flex-direction:row;align-items:center;gap:8px;
+  text-transform:none;letter-spacing:0;font-size:13px;color:var(--ink);font-weight:400}
+.obsedit label.check input{width:16px;height:16px;accent-color:var(--accent)}
+.obsedit .btn{align-self:flex-start}
+.obshint{margin:0;font-size:11px;color:var(--ink-3)}
+
 /* trip editor — the dates the whole radar counts back from, editable in place */
 .tripedit{
   display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;
@@ -1152,6 +1168,74 @@ function openDrawer(id) {
     dd.append(a); bkv.append(el("dt", "", "參考"), dd);
   }
   bs.append(bkv); body.append(bs);
+
+  /* ── editable booking state ──────────────────────────────────────────
+     OMAKASE blocks automated browsers on its shop pages, so these numbers
+     arrive by being read and typed in — from OMAKASE's own
+     「お気に入り店舗の予約開始日を一覧で見る」 list, which shows every
+     favourited restaurant's release date on one page. Editing them here
+     beats editing JSON, and the radar recomputes the moment you save. */
+  const es = el("div", "dsec");
+  es.append(el("h3", "", "開放資訊（自己更新）"));
+  const o = r.booking.observed || {};
+  const form = el("form", "obsedit");
+
+  const field = (label, name, type, value, extra = {}) => {
+    const l = el("label", "", "");
+    l.append(el("span", "", label));
+    const i = el("input"); i.type = type; i.name = name;
+    if (value != null) i.value = value;
+    Object.assign(i, extra);
+    l.append(i); return l;
+  };
+  /* datetime-local wants YYYY-MM-DDTHH:MM with no zone; the stored value is
+     JST-absolute, so take its wall clock rather than converting. */
+  const localValue = iso => (iso || "").slice(0, 16) || "";
+
+  form.append(field("下次開放（日本時間）", "nextOpenAt", "datetime-local", localValue(o.nextOpenAt)));
+  form.append(field("受付期間到", "windowUntil", "date", o.windowUntil || ""));
+
+  const chk = el("label", "check", "");
+  const cb = el("input"); cb.type = "checkbox"; cb.name = "acceptingNow"; cb.checked = !!o.acceptingNow;
+  chk.append(cb, el("span", "", "現在就可以訂"));
+  form.append(chk);
+
+  const save1 = el("button", "btn", "儲存"); save1.type = "submit";
+  form.append(save1);
+  const hint = el("p", "obshint", "");
+  const age = observedAge(r);
+  hint.textContent = o.observedAt
+    ? `上次更新：${fmtDate(new Date(o.observedAt))}（${age} 天前）${o.observedBy === "manual" ? "・手動" : ""}`
+    : "還沒有平台開放資訊";
+  form.append(hint);
+
+  if (r.booking.url) {
+    const p2 = el("p", "obshint", "");
+    const a = el("a", "link", "去 OMAKASE 看「お気に入り店舗の予約開始日」↗");
+    a.href = "https://omakase.in/mypage"; a.target = "_blank"; a.rel = "noopener";
+    p2.append(a); form.append(p2);
+  }
+
+  form.onsubmit = e => {
+    e.preventDefault();
+    const f = e.target;
+    const dt = f.elements.nextOpenAt.value;      // "2026-10-01T08:00"
+    const wu = f.elements.windowUntil.value;
+    r.booking.observed = {
+      ...o,
+      /* Stored with the +09:00 the shop published it in, so nothing shifts
+         when this is read on a machine in another timezone. */
+      nextOpenAt: dt ? `${dt}:00+09:00` : null,
+      nextOpenAtRaw: dt ? dt.replace("T", " ") : "未定",
+      windowUntil: wu || null,
+      acceptingNow: f.elements.acceptingNow.checked,
+      observedAt: new Date().toISOString(),
+      observedBy: "manual",
+    };
+    save(); renderAll(); openDrawer(r.id);
+    toast(`${r.name} 的開放資訊已更新`);
+  };
+  es.append(form); body.append(es);
 
   /* location */
   const ls = el("div", "dsec"); ls.append(el("h3", "", "地點"));
