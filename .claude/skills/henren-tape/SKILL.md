@@ -13,9 +13,12 @@ the difference between adding to a shakeout and averaging into a regime change.
 > 五步三開關, bottom-confirmation checklist and September triggers are in
 > `references/playbook.md` in his own terms. The rest of the channel's markets entries
 > are still title-only (`references/corpus.md`). His checkable claims are scored in
-> `references/claim-checks.md`: every one that can be checked lands, several to the
-> decimal. The one row that log got *wrong* was wrong because the log read a title
-> without its transcript. Borrow the structure, re-derive every number.
+> `references/claim-checks.md` — but read that file's opening block before its table: the
+> sample comes from his own recap video, so it selects for hits and **no hit-rate can be
+> inferred from it**. It establishes that his mechanisms are visible in the tape, nothing
+> more. The frame earns its place here because its three layers are *separable and
+> independently measurable*, not because anyone has a scorecard. Borrow the structure,
+> re-derive every number. Forward scoring: `data/predictions.jsonl`.
 
 ## The frame
 
@@ -42,13 +45,28 @@ NODE_USE_ENV_PROXY=1 node scripts/gauges.mjs --json     # his own markers, score
 Never score a layer from commentary you have read. Score it from closes, then read
 commentary to see who is wrong.
 
-`gauges.mjs` scores his named markers against FRED and Yahoo: the fuel switch
-(`WRESBAL` vs his $2.8T / $2.5T lines), the SOFR−IORB spread, TGA, RRP, HY OAS, NFCI,
-the M2-vs-Nasdaq gap, the Buffett ratio, and single-name crowding. Markers with no free
-feed (FINRA margin debt, 0DTE share, index concentration, insider ratio, forward P/E,
-cloud-capex QoQ) live in `references/manual-gauges.json` with his last stated reading and
-its date — they report as `stale` once past their refresh window and are **never**
-treated as current. A gauge you cannot see is a gauge that is off.
+`gauges.mjs` scores his named markers against sources registered in
+`config/data-sources.json`: the fuel switch (`WRESBAL` level **and** its 4/13-week
+velocity, since his rule is "快速跌破" — a rate, not only a level), SOFR−IORB, TGA, RRP,
+HY OAS, NFCI, the M2-vs-Nasdaq gap, the Buffett ratio, and AI-basket relative volatility.
+
+Four rules it enforces, and none of them is optional:
+
+- **Missing or stale ⇒ `NO_DECISION`.** Never neutral, never yellow, never zero. Turning
+  "we don't know" into "risk looks moderate" is the failure this system most has to avoid.
+  Undecided gauges are listed separately and excluded from every count.
+- **Freshness is per dataset.** GDP lagging a quarter is by design; a daily series lagging
+  a week is broken. One global day-count cannot tell those apart.
+- **Percentiles alongside thresholds.** His cut-offs are asserted values with no measured
+  false-positive rate. Every gauge also reports where it sits in its own history, because
+  a fixed number silently expires when market structure moves.
+- **Provenance on every value** — source, authority level, effective date, age, retrieval
+  time, transformation, and the hash of the raw response it came from.
+
+Markers with no free feed (FINRA margin debt, 0DTE share, index concentration, insider
+ratio, forward P/E, hyperscaler capex QoQ) sit in `references/manual-gauges.json` against
+contracts in the registry. A gauge you cannot see is a gauge that is off, and it must say
+so rather than showing a colour.
 
 ### Step 2 — Score each layer independently
 

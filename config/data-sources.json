@@ -1,0 +1,198 @@
+{
+  "$schema_version": "1.0.0",
+  "_purpose": "Machine-readable source registry + data contracts. Every gauge names a source_id here; gauges.mjs refuses to emit a value for a source it cannot find. Answers, per dataset: who is authoritative, how often it publishes, how late it is by design, and when it stops being usable.",
+  "_authority_levels": {
+    "PRIMARY_OFFICIAL": "The issuing agency or the filer itself. Treat as authoritative.",
+    "OFFICIAL_AGGREGATOR": "Redistributes a primary source without editorial change (FRED over Fed/BEA/BLS/ICE).",
+    "UNOFFICIAL_FREE": "Undocumented public endpoint. Usable for development and for prices; NOT authoritative. Any conclusion resting on it must say so.",
+    "EXPERT_HYPOTHESIS": "A person's public commentary. A source of hypotheses to test, never a source of financial data."
+  },
+  "_status_vocabulary": [
+    "CURRENT_AS_PUBLISHED",
+    "LAGGED_BY_DESIGN",
+    "OVERDUE",
+    "STALE",
+    "DATE_MISMATCH",
+    "SOURCE_FAILURE",
+    "MISSING",
+    "NO_AUTHORITATIVE_SOURCE",
+    "INSUFFICIENT_HISTORY"
+  ],
+  "_note_on_price_authority": "A SIP/exchange-grade feed is the correct production source for quotes and this registry does not pretend otherwise. It is also several thousand USD a year, which is not proportionate to a single-user research tool. The honest position taken here: Yahoo stays as UNOFFICIAL_FREE, Stooq is registered as an independent cross-check, and any gauge built on prices carries authority_level UNOFFICIAL_FREE into the report rather than being silently promoted. Disagreement over whether that is acceptable is a scope question, not a data question — see docs/review-response.md §2.",
+
+  "sources": {
+    "fred": {
+      "source_name": "Federal Reserve Bank of St. Louis — FRED",
+      "authority_level": "OFFICIAL_AGGREGATOR",
+      "endpoint": "https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}",
+      "auth": "none",
+      "timezone": "America/Chicago",
+      "revision_policy": "Series-dependent. FRED serves the LATEST vintage only — it silently overwrites revised history. Any backtest over this source has revision bias by construction; ALFRED vintages are required for that and are not yet wired.",
+      "point_in_time_capable": false,
+      "vintage_source": "https://alfred.stlouisfed.org/graph/fredgraph.csv?id={series}&vintage_date={date}",
+      "fallback_source": null
+    },
+    "yahoo": {
+      "source_name": "Yahoo Finance chart endpoint",
+      "authority_level": "UNOFFICIAL_FREE",
+      "endpoint": "https://query1.finance.yahoo.com/v8/finance/chart/{symbol}",
+      "auth": "none",
+      "timezone": "America/New_York",
+      "revision_policy": "Splits and dividends restate history retroactively; no vintage access.",
+      "point_in_time_capable": false,
+      "fallback_source": "stooq",
+      "caveat": "Undocumented and unversioned. Can change shape or block without notice. Not authoritative for any published number."
+    },
+    "stooq": {
+      "source_name": "Stooq daily CSV",
+      "authority_level": "UNOFFICIAL_FREE",
+      "endpoint": "https://stooq.com/q/d/l/?s={symbol}&i=d",
+      "auth": "none",
+      "timezone": "Europe/Warsaw",
+      "revision_policy": "unknown",
+      "point_in_time_capable": false,
+      "role": "independent cross-check on yahoo; disagreement beyond tolerance raises SOURCE_CONFLICT",
+      "status": "registered, not yet wired (was serving a JS browser-check at last attempt)"
+    },
+    "sec_edgar": {
+      "source_name": "SEC EDGAR companyfacts / submissions",
+      "authority_level": "PRIMARY_OFFICIAL",
+      "endpoint": "https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json",
+      "auth": "User-Agent header required",
+      "timezone": "America/New_York",
+      "revision_policy": "Amendments arrive as separate accessions; never overwrite a prior filing.",
+      "point_in_time_capable": true,
+      "point_in_time_key": "accepted_at — the filing acceptance timestamp, NOT period_end",
+      "status": "registered, not yet wired — see docs/review-response.md §4"
+    },
+    "cboe": {
+      "source_name": "Cboe — SPX 0DTE share, SKEW, put/call ratios",
+      "authority_level": "PRIMARY_OFFICIAL",
+      "endpoint": "https://www.cboe.com/us/options/market_statistics/",
+      "auth": "none for daily summary; OPRA-quality intraday is licensed",
+      "revision_policy": "none",
+      "point_in_time_capable": true,
+      "status": "registered, not yet wired — 0DTE share is currently carried manually"
+    },
+    "finra": {
+      "source_name": "FINRA Margin Statistics",
+      "authority_level": "PRIMARY_OFFICIAL",
+      "endpoint": "https://www.finra.org/investors/learn-to-invest/advanced-investing/margin-statistics",
+      "auth": "none",
+      "revision_policy": "prior months occasionally restated",
+      "point_in_time_capable": false,
+      "status": "registered, not yet wired — carried manually"
+    },
+    "henren778": {
+      "source_name": "一个狠人 (YouTube @henren778)",
+      "authority_level": "EXPERT_HYPOTHESIS",
+      "endpoint": "https://www.youtube.com/@henren778",
+      "role": "Supplies the hypotheses and the threshold values under test. Supplies NO financial data. Every number he states is re-derived from a registered data source before it is reported; where it cannot be, it is reported as his claim, attributed, and left unverified.",
+      "point_in_time_capable": false
+    }
+  },
+
+  "datasets": {
+    "WRESBAL": {
+      "source_id": "fred", "series": "WRESBAL",
+      "description": "Reserve balances held at Federal Reserve Banks",
+      "unit": "USD millions", "scale_to": { "trillions": 1e-6 },
+      "expected_frequency": "weekly", "expected_publication_latency_days": 2,
+      "acceptable_age_days": 14, "revision_policy": "minor revisions to recent weeks",
+      "history_from": "1984-02-01"
+    },
+    "WTREGEN": {
+      "source_id": "fred", "series": "WTREGEN",
+      "description": "Treasury General Account balance",
+      "unit": "USD millions", "scale_to": { "billions": 1e-3 },
+      "expected_frequency": "weekly", "expected_publication_latency_days": 2,
+      "acceptable_age_days": 14, "revision_policy": "rare",
+      "history_from": "1975-01-01"
+    },
+    "SOFR": {
+      "source_id": "fred", "series": "SOFR",
+      "description": "Secured Overnight Financing Rate",
+      "unit": "percent", "expected_frequency": "business daily",
+      "expected_publication_latency_days": 1, "acceptable_age_days": 5,
+      "revision_policy": "same-day republication possible", "history_from": "2018-04-03"
+    },
+    "IORB": {
+      "source_id": "fred", "series": "IORB",
+      "description": "Interest rate on reserve balances",
+      "unit": "percent", "expected_frequency": "business daily",
+      "expected_publication_latency_days": 0, "acceptable_age_days": 5,
+      "revision_policy": "none", "history_from": "2021-07-29",
+      "note": "Short history. Percentile context on the SOFR-IORB spread is only meaningful post-2021."
+    },
+    "RRPONTSYD": {
+      "source_id": "fred", "series": "RRPONTSYD",
+      "description": "Overnight reverse repurchase agreements",
+      "unit": "USD billions", "expected_frequency": "business daily",
+      "expected_publication_latency_days": 1, "acceptable_age_days": 5,
+      "revision_policy": "none", "history_from": "2003-02-07"
+    },
+    "BAMLH0A0HYM2": {
+      "source_id": "fred", "series": "BAMLH0A0HYM2",
+      "description": "ICE BofA US High Yield Index option-adjusted spread",
+      "unit": "percent", "expected_frequency": "business daily",
+      "expected_publication_latency_days": 1, "acceptable_age_days": 5,
+      "revision_policy": "none", "history_from": "1996-12-31"
+    },
+    "NFCI": {
+      "source_id": "fred", "series": "NFCI",
+      "description": "Chicago Fed National Financial Conditions Index",
+      "unit": "standard deviations", "expected_frequency": "weekly",
+      "expected_publication_latency_days": 5, "acceptable_age_days": 21,
+      "revision_policy": "revised weekly as inputs revise", "history_from": "1971-01-08"
+    },
+    "M2SL": {
+      "source_id": "fred", "series": "M2SL",
+      "description": "M2 money stock, seasonally adjusted",
+      "unit": "USD billions", "expected_frequency": "monthly",
+      "expected_publication_latency_days": 30, "acceptable_age_days": 75,
+      "revision_policy": "seasonal factors revised annually; recent months revised routinely",
+      "history_from": "1959-01-01",
+      "note": "LAGGED_BY_DESIGN. Comparing this to a same-day equity close is a temporal-join error — see the alignment rule in gauges.mjs."
+    },
+    "NCBEILQ027S": {
+      "source_id": "fred", "series": "NCBEILQ027S",
+      "description": "Nonfinancial corporate business; corporate equities; liability (Z.1)",
+      "unit": "USD millions", "expected_frequency": "quarterly",
+      "expected_publication_latency_days": 75, "acceptable_age_days": 180,
+      "revision_policy": "revised for several quarters after first publication",
+      "history_from": "1945-10-01"
+    },
+    "GDP": {
+      "source_id": "fred", "series": "GDP",
+      "description": "Gross domestic product, SAAR",
+      "unit": "USD billions", "expected_frequency": "quarterly",
+      "expected_publication_latency_days": 30, "acceptable_age_days": 130,
+      "revision_policy": "advance / second / third estimates, then annual revisions",
+      "history_from": "1947-01-01"
+    },
+    "EQUITY_DAILY": {
+      "source_id": "yahoo",
+      "description": "Daily OHLC for indices, ETFs and single names",
+      "unit": "USD (index points for indices)",
+      "expected_frequency": "each US trading session",
+      "expected_publication_latency_days": 1, "acceptable_age_days": 5,
+      "session_timezone": "America/New_York", "session_close": "16:00",
+      "revision_policy": "split/dividend restatement",
+      "authority_caveat": "UNOFFICIAL_FREE — propagates to every gauge derived from it"
+    }
+  },
+
+  "manual_datasets": {
+    "_contract": "No free live feed exists. Each carries the reading its source last published, that reading's effective date, and its own SLA. Past SLA the gauge emits STALE and is excluded from every headline count. It is never rendered as a current reading.",
+    "HYPERSCALER_CAPEX": {
+      "authoritative_source_id": "sec_edgar", "expected_frequency": "quarterly",
+      "acceptable_age_days": 100,
+      "blocker": "Cash capex in XBRL omits finance leases, which are a large and growing share of AI datacenter spend. A tag-only pipeline understates the signal it is meant to measure. Needs a per-company mapping table before it can be trusted — see docs/review-response.md §4."
+    },
+    "FINRA_MARGIN_DEBT": { "authoritative_source_id": "finra", "expected_frequency": "monthly", "acceptable_age_days": 60 },
+    "SPX_0DTE_SHARE": { "authoritative_source_id": "cboe", "expected_frequency": "monthly", "acceptable_age_days": 60 },
+    "SPX_TOP10_WEIGHT": { "authoritative_source_id": "PRIMARY_OFFICIAL:S&P Dow Jones Indices", "expected_frequency": "monthly", "acceptable_age_days": 60 },
+    "INSIDER_SELL_BUY": { "authoritative_source_id": "sec_edgar", "expected_frequency": "monthly", "acceptable_age_days": 60 },
+    "NDX_FORWARD_PE": { "authoritative_source_id": "NO_AUTHORITATIVE_FREE_SOURCE", "expected_frequency": "weekly", "acceptable_age_days": 30 }
+  }
+}

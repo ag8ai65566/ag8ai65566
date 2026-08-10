@@ -4,8 +4,28 @@ Checked against Yahoo Finance closes and FRED series on 2026-08-10 (last equity 
 2026-08-07). Rerun `../../us-market-brief/scripts/market-snapshot.mjs` and
 `../scripts/gauges.mjs` before relying on any of this.
 
-The point is **calibration, not fandom**. Borrow a framework in proportion to how its
-author's falsifiable statements hold up. Score the misses too — including this file's own.
+---
+
+## ⛔ 這份評分不能當成準確率。讀下面這段再看表格。
+
+**這裡的宣稱幾乎全部出自他自己的一支「對賬／復盤」影片。** 復盤影片按定義就是作者
+**挑選出來的成功案例**。拿一個人自選的高光片段替他打分，然後得出「六項全中」，
+**在統計上沒有意義**——不管那些數字本身多精準（它們確實精準）。
+
+這個檔案的前一版把這個結果寫成「所以這個框架值得用」，並被引用進 `SKILL.md`。
+那是錯的推論，已經移除。
+
+**這份表格現在的定位是：機制合理性的佐證，不是命中率的證據。**
+它能回答「他描述的機制在這些案例裡對不對得上盤面」，
+**不能**回答「他下次會不會準」。後者需要的是事前樣本，記在
+`../../../data/predictions.jsonl`（不可修改的預測帳本），從 2026-08-10 開始累積。
+
+框架值得使用的理由，改為建立在它**內在的可分離性**上——三層各自有獨立、可量測的
+代理變數，而且彼此可以互相否證——而不是建立在任何命中率上。
+
+---
+
+The point is **calibration, not fandom**. Score the misses too — including this file's own.
 
 ## ⚠️ Correction — 2026-08-10
 
@@ -63,12 +83,17 @@ lesson is kept here rather than quietly edited away.
 
 ## How to read this scorecard
 
-Every checkable market claim lands, several to the decimal, including a
-**pre-registered timing window** and a set of live liquidity readings that reconcile
-exactly with FRED. That is a strong record and it is why the frame in `SKILL.md` is worth
-using as a lens.
+Every checkable claim in the sample lands, several to the decimal, and the live liquidity
+readings reconcile exactly with FRED. **That is a statement about this sample, and the
+sample is his.** See the block at the top of this file: a recap video selects for hits, so
+no hit-rate can be inferred from it, however precise the individual numbers are.
 
-It is still not a reason to accept the next call on trust. His numbers are load-bearing
-where they are checkable — and the one row this log got wrong was wrong because *the log*
-skipped the source, not because he did. Working rule unchanged:
-**borrow the structure, re-derive every number.**
+What it *does* establish: the mechanisms he describes are real and are visible in the
+tape — a positioning flush that leaves credit untouched, damage that stays local while
+the index makes highs, a memory name gapping 18% the session after the low. That is worth
+having as a lens.
+
+The one row this log got wrong was wrong because *the log* read a title without its
+source, not because he did. Working rule unchanged:
+**borrow the structure, re-derive every number.** Forward, unselected scoring lives in
+`../../../data/predictions.jsonl`.

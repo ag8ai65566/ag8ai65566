@@ -15,3 +15,12 @@ data/restaurants.json
 
 # scraper page dumps (contain your logged-in view)
 scraper/dump/
+
+# market system
+# Raw API responses: ~1MB per run, so they stay local. Reproducibility is preserved
+# through the sha256 prefix of each response recorded in data/gauges.json — a re-fetch
+# that hashes differently proves the source changed under us.
+data/raw/
+
+# The prediction ledger is the point — it must be committed, and never rewritten.
+!data/predictions.jsonl

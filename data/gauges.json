@@ -1,0 +1,595 @@
+{
+  "schema_version": "2.0.0",
+  "generated_at": "2026-08-10T03:18:51.418Z",
+  "generated_at_local": "8/9/2026, 11:18:51 PM EDT",
+  "frame": "基本面管方向、流動性管顛簸、擁擠管斷裂",
+  "tally": {
+    "green": 5,
+    "yellow": 1,
+    "red": 4,
+    "scored": 10,
+    "no_decision": 6,
+    "total": 16
+  },
+  "no_composite_score": "This build emits no bubble score, no market score, and no 0-100 index. None has been validated against a defined target, so none is reported. Read the components.",
+  "point_in_time": false,
+  "point_in_time_note": "FRED serves latest-vintage data only. These readings describe the present. They are not a point-in-time history and must not be used for backtesting.",
+  "gauges": [
+    {
+      "id": "fuel",
+      "switch": 1,
+      "label": "開關一 · 燃料（準備金）",
+      "plain": "銀行放在聯準會的閒錢。這桶油夠不夠，決定行情還能不能燒。",
+      "value": 2.993,
+      "unit": "兆美元",
+      "thresholds": {
+        "green": "> 2.8 兆",
+        "yellow": "2.5–2.8 兆，或四週內急跌 ≥3%",
+        "red": "< 2.5 兆 → 他的規則是無條件清倉"
+      },
+      "velocity": {
+        "change_4w_pct": -3.41,
+        "change_13w_pct": -1.29,
+        "velocity_percentile_5y": {
+          "value": 21.8,
+          "window_years": 5,
+          "n": 261
+        }
+      },
+      "level_percentile_5y": {
+        "value": 10,
+        "window_years": 5,
+        "n": 261
+      },
+      "status": "green",
+      "interpretation_note": "水位在門檻上方；四週變化 -3.41% 落在 p21.8，不構成「快速」流失。",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "fred",
+        "authority_level": "OFFICIAL_AGGREGATOR",
+        "dataset": "WRESBAL",
+        "effective_date": "2026-08-05",
+        "age_days": 5,
+        "acceptable_age_days": 14,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": "2026-08-10T03:18:51.969Z",
+        "raw_hash": "d9b10afc92dbdbaa",
+        "transformation": "level in trillions; 4/13-week pct change; percentile vs 5y",
+        "transformation_version": "2.0.0",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "ignition",
+      "label": "開關二 · 點火（代理指標）",
+      "plain": "",
+      "value": null,
+      "status": "DATE_MISMATCH",
+      "decision": "NO_DECISION",
+      "note": "^VIX 收在 2026-08-07、^VIX3M 收在 2026-07-17，不同交易日不可相除。"
+    },
+    {
+      "id": "sofr",
+      "label": "SOFR − IORB 利差",
+      "plain": "銀行之間借隔夜錢，要不要付比聯準會利率更高的價？要付，就代表錢在變緊。",
+      "value": 0,
+      "unit": "基點 (bp)",
+      "detail": {
+        "sofr": 3.65,
+        "iorb": 3.65,
+        "common_date": "2026-08-06"
+      },
+      "thresholds": {
+        "green": "< 1 bp",
+        "yellow": "1–3 bp",
+        "red": "≥ 3 bp（他引用的 95 分位黃色警報）"
+      },
+      "percentile_3y": {
+        "value": 80.3,
+        "window_years": 3,
+        "n": 780
+      },
+      "percentile_note": "IORB 序列自 2021-07 才開始，三年以上的分位數僅有有限樣本。",
+      "status": "green",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "fred",
+        "authority_level": "OFFICIAL_AGGREGATOR",
+        "dataset": "SOFR",
+        "effective_date": "2026-08-06",
+        "age_days": 4,
+        "acceptable_age_days": 5,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": "2026-08-10T03:18:52.560Z",
+        "raw_hash": "dec98e752cccaba1",
+        "transformation": "SOFR minus IORB in bp on a common date; percentile vs 3y",
+        "transformation_version": "2.0.0",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "tga",
+      "label": "財政部 TGA 帳戶餘額",
+      "plain": "財政部的活存帳戶。它變胖是把市場上的錢吸走，變瘦是把錢放回市場。",
+      "value": 907.3,
+      "unit": "十億美元",
+      "thresholds": {
+        "green": "< 9,500 億",
+        "yellow": "9,500 億 – 1 兆",
+        "red": "≥ 1 兆"
+      },
+      "percentile_5y": {
+        "value": 92.3,
+        "window_years": 5,
+        "n": 261
+      },
+      "context": "財政部自訂 9 月底目標 9,500 億美元；7–9 月淨市場化借款計畫 6,710 億美元。此為財政部公告，非本系統推算。",
+      "status": "green",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "fred",
+        "authority_level": "OFFICIAL_AGGREGATOR",
+        "dataset": "WTREGEN",
+        "effective_date": "2026-08-05",
+        "age_days": 5,
+        "acceptable_age_days": 14,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": "2026-08-10T03:18:54.177Z",
+        "raw_hash": "e27d88daab056cb6",
+        "transformation": "level in USD bn; percentile vs 5y",
+        "transformation_version": "2.0.0",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "rrp",
+      "label": "隔夜逆回購 (RRP) 緩衝",
+      "plain": "市場多餘現金的緩衝墊。墊子還厚，抽錢先抽它；墊子見底，就直接抽銀行準備金。",
+      "value": 1.45,
+      "unit": "十億美元",
+      "thresholds": {
+        "green": "> 500 億（仍有緩衝）",
+        "yellow": "< 500 億（緩衝耗盡，壓力直達準備金）"
+      },
+      "percentile_5y": {
+        "value": 11.4,
+        "window_years": 5,
+        "n": 1303
+      },
+      "status": "yellow",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "fred",
+        "authority_level": "OFFICIAL_AGGREGATOR",
+        "dataset": "RRPONTSYD",
+        "effective_date": "2026-08-07",
+        "age_days": 3,
+        "acceptable_age_days": 5,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": "2026-08-10T03:18:54.311Z",
+        "raw_hash": "dbbe80a2b7ee0edd",
+        "transformation": "level in USD bn; percentile vs 5y",
+        "transformation_version": "2.0.0",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "hyoas",
+      "label": "高收益債信用利差 (HY OAS)",
+      "plain": "借錢給體質最差的公司，投資人要多收多少利息當風險費。這個數字跳起來＝信用真的出事。",
+      "value": 2.71,
+      "unit": "%",
+      "thresholds": {
+        "green": "< 4%",
+        "yellow": "4–5%",
+        "red": "≥ 5%"
+      },
+      "percentile_5y": {
+        "value": 9.6,
+        "window_years": 5,
+        "n": 795
+      },
+      "percentile_20y": {
+        "value": 9.6,
+        "window_years": 20,
+        "n": 795
+      },
+      "status": "green",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "fred",
+        "authority_level": "OFFICIAL_AGGREGATOR",
+        "dataset": "BAMLH0A0HYM2",
+        "effective_date": "2026-08-06",
+        "age_days": 4,
+        "acceptable_age_days": 5,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": "2026-08-10T03:18:54.404Z",
+        "raw_hash": "2bb008786d3a3a50",
+        "transformation": "OAS in percent; percentile vs 5y and 20y",
+        "transformation_version": "2.0.0",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "nfci",
+      "label": "芝加哥聯準會金融條件指數 (NFCI)",
+      "plain": "整體金融環境是鬆還是緊的總分。負的＝比平均寬鬆，正的＝比平均緊。",
+      "value": -0.529,
+      "unit": "標準差",
+      "thresholds": {
+        "green": "< 0（寬鬆）",
+        "yellow": "0–0.2",
+        "red": "≥ 0.2（明顯收緊）"
+      },
+      "percentile_5y": {
+        "value": 13.1,
+        "window_years": 5,
+        "n": 260
+      },
+      "status": "green",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "fred",
+        "authority_level": "OFFICIAL_AGGREGATOR",
+        "dataset": "NFCI",
+        "effective_date": "2026-07-31",
+        "age_days": 10,
+        "acceptable_age_days": 21,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": "2026-08-10T03:18:54.498Z",
+        "raw_hash": "ddecf5b174c81809",
+        "transformation": "index level; percentile vs 5y",
+        "transformation_version": "2.0.0",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "m2gap",
+      "label": "M2 年增 − 那斯達克年增（增負差）",
+      "plain": "市場上的錢一年多了幾 %，股市一年漲了幾 %。股市跑得比錢快太多，多出來的就是估值撐的。",
+      "value": -36.2,
+      "unit": "個百分點",
+      "detail": {
+        "anchor_date": "2026-06-01",
+        "m2_yoy": 5.53,
+        "nasdaq_yoy": 41.71,
+        "nasdaq_close_used": {
+          "date": "2026-06-01",
+          "value": 27086.81
+        },
+        "m2_year_ago": "2025-06-01",
+        "nasdaq_year_ago": "2025-05-30"
+      },
+      "thresholds": {
+        "green": "> −15",
+        "yellow": "−15 至 −25",
+        "red": "≤ −25"
+      },
+      "status": "red",
+      "alignment_note": "兩邊都錨定在 2026-06-01（由較慢的 M2 決定）。股價因此使用 2026-06-01 收盤，而非最新收盤 —— 這個讀數描述的是 2026-06-01，不是今天。",
+      "mixed_authority": "此格混合 OFFICIAL_AGGREGATOR（M2）與 UNOFFICIAL_FREE（股價），以較低者為準。",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "fred",
+        "authority_level": "OFFICIAL_AGGREGATOR",
+        "dataset": "M2SL",
+        "effective_date": "2026-06-01",
+        "age_days": 70,
+        "acceptable_age_days": 75,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": "2026-08-10T03:18:54.575Z",
+        "raw_hash": "706397d1a68380f9",
+        "transformation": "calendar-aware YoY on both legs, anchored to the M2 effective date",
+        "transformation_version": "2.0.0",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "buffett",
+      "label": "巴菲特指標（總市值 ÷ GDP）",
+      "plain": "整個股市值多少錢，跟整個國家一年生產多少錢比一比。",
+      "value": null,
+      "status": "DATE_MISMATCH",
+      "decision": "NO_DECISION",
+      "note": "分子 2026-01-01、分母 2026-04-01，相差 90 天（超過一季）。兩者不同期，相除的結果沒有定義。",
+      "detail": {
+        "equities_date": "2026-01-01",
+        "gdp_date": "2026-04-01",
+        "offset_days": 90
+      },
+      "provenance": {
+        "source_id": "fred",
+        "authority_level": "OFFICIAL_AGGREGATOR",
+        "dataset": "NCBEILQ027S",
+        "effective_date": "2026-01-01",
+        "age_days": 221,
+        "acceptable_age_days": 180,
+        "freshness_status": "OVERDUE",
+        "retrieved_at": "2026-08-10T03:18:54.700Z",
+        "raw_hash": "fdbcd4072303d19b",
+        "transformation": "corporate equities liability / GDP, both quarterly",
+        "transformation_version": "2.0.0",
+        "point_in_time_capable": false
+      },
+      "would_have_been": 214
+    },
+    {
+      "id": "ai-basket-rel-vol",
+      "label": "AI 籃子相對波動（中位數）",
+      "plain": "這幾檔 AI 股最近上下跳的幅度，是大盤的幾倍。倍數越大，代表風險越集中在少數股票、不在指數。",
+      "value": 5.9,
+      "unit": "倍（中位數）",
+      "detail": {
+        "spx_rvol21": 14.04,
+        "basket": [
+          {
+            "symbol": "MU",
+            "rvol21": 107.59,
+            "x_index": 7.7,
+            "last": 877.57,
+            "as_of": "2026-08-07"
+          },
+          {
+            "symbol": "SNDK",
+            "rvol21": 156.41,
+            "x_index": 11.1,
+            "last": 1212.21,
+            "as_of": "2026-08-07"
+          },
+          {
+            "symbol": "PLTR",
+            "rvol21": 105.91,
+            "x_index": 7.5,
+            "last": 172.01,
+            "as_of": "2026-08-07"
+          },
+          {
+            "symbol": "AMD",
+            "rvol21": 82.4,
+            "x_index": 5.9,
+            "last": 483.36,
+            "as_of": "2026-08-07"
+          },
+          {
+            "symbol": "NVDA",
+            "rvol21": 43.3,
+            "x_index": 3.1,
+            "last": 223.96,
+            "as_of": "2026-08-07"
+          },
+          {
+            "symbol": "AVGO",
+            "rvol21": 42.66,
+            "x_index": 3,
+            "last": 427.76,
+            "as_of": "2026-08-07"
+          },
+          {
+            "symbol": "SMH",
+            "rvol21": 50.01,
+            "x_index": 3.6,
+            "last": 582.7,
+            "as_of": "2026-08-07"
+          }
+        ],
+        "max": 11.1,
+        "min": 3
+      },
+      "thresholds": {
+        "green": "< 3 倍",
+        "yellow": "3–5 倍",
+        "red": "≥ 5 倍"
+      },
+      "status": "red",
+      "naming_note": "本格量的是「已實現波動比值」，不是擁擠度。真正的擁擠度需要部位資料 —— 集中度、廣度、橫斷面相關性、成交量異常、選擇權部位。這些都尚未接線，所以此格不再命名為 Crowding，改為描述它實際計算的東西。",
+      "selection_bias_note": "籃子是人工挑選的 7 檔 AI 相關標的，本身就有主題偏誤；改用中位數而非最大值，是為了避免單一極端值代表整個市場。它仍然只描述這個籃子。",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "yahoo",
+        "authority_level": "UNOFFICIAL_FREE",
+        "dataset": "EQUITY_DAILY:^GSPC",
+        "effective_date": "2026-08-07",
+        "age_days": 3,
+        "acceptable_age_days": 5,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": "2026-08-10T03:18:54.782Z",
+        "raw_hash": "398592015c6f838b",
+        "transformation": "21-day annualised realised vol vs ^GSPC; median across a fixed basket",
+        "transformation_version": "2.0.0",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "capex-qoq",
+      "switch": 3,
+      "label": "開關三 · 逃生鈴（雲廠商 capex 環比增速）",
+      "plain": "微軟、Google、Amazon、Meta 這些大買家，這一季買設備的錢比上一季多多少 %。重點不是「還在花」，是「加速度有沒有變慢」。",
+      "value": null,
+      "unit": "% 環比",
+      "asOf": "2026-08-10",
+      "refreshDays": 95,
+      "status": "NOT_WIRED",
+      "thresholds": {
+        "green": "環比增速還在加速或持平",
+        "red": "環比增速見頂回落 → 他的規則是立刻平倉，不管當期獲利多漂亮"
+      },
+      "note": "他 2026-08 的原話：資本開支絕對額還在爬坡，還沒看到環比增速見頂回落的確認讀數 —— 也就是「還沒響」。這是他整套打法裡唯一的逃生鈴，也是唯一真正能翻轉「基本面管方向」那一層的東西。每季財報後必須手動更新。",
+      "source": "MSFT / GOOGL / AMZN / META 季報的 capex 揭露；算環比不是同比",
+      "dataset_id": "HYPERSCALER_CAPEX",
+      "decision": "NO_DECISION",
+      "provenance": {
+        "source_id": "manual",
+        "authority_level": "sec_edgar",
+        "dataset": "HYPERSCALER_CAPEX",
+        "effective_date": "2026-08-10",
+        "age_days": 0,
+        "acceptable_age_days": 100,
+        "freshness_status": "MISSING",
+        "retrieved_at": null,
+        "raw_hash": null,
+        "transformation": "hand-entered from the cited publication",
+        "point_in_time_capable": false
+      },
+      "blocker": "Cash capex in XBRL omits finance leases, which are a large and growing share of AI datacenter spend. A tag-only pipeline understates the signal it is meant to measure. Needs a per-company mapping table before it can be trusted — see docs/review-response.md §4."
+    },
+    {
+      "id": "margin-debt",
+      "label": "易爆盤 1 · 融資餘額 (FINRA margin debt)",
+      "plain": "散戶跟券商借錢買股票的總金額。借得越多，跌起來被強制賣出的骨牌就越長。",
+      "value": 1416,
+      "unit": "十億美元",
+      "asOf": "2026-05-31",
+      "refreshDays": 45,
+      "status": "STALE",
+      "thresholds": {
+        "green": "環比轉負（去槓桿中）",
+        "yellow": "環比正成長（短線燃料回來，但未來下跌會更猛）",
+        "red": "連續數月兩位數環比成長"
+      },
+      "note": "他的讀數：3 月 −2.6%、4 月 +6.8%、5 月 +8.5%，總額 1.416 兆美元。他判定為「彈性還在」的黃燈 —— 燃料回來了，副作用是之後去槓桿會更猛。",
+      "source": "FINRA Margin Statistics（每月中旬公布上月數據）",
+      "dataset_id": "FINRA_MARGIN_DEBT",
+      "decision": "NO_DECISION",
+      "provenance": {
+        "source_id": "manual",
+        "authority_level": "finra",
+        "dataset": "FINRA_MARGIN_DEBT",
+        "effective_date": "2026-05-31",
+        "age_days": 71,
+        "acceptable_age_days": 60,
+        "freshness_status": "STALE",
+        "retrieved_at": null,
+        "raw_hash": null,
+        "transformation": "hand-entered from the cited publication",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "zero-dte",
+      "label": "易爆盤 2 · SPX 零日到期選擇權占比",
+      "plain": "當天買、當天就到期的樂透型選擇權，占了整個標普選擇權交易的幾成。比例越高，代表市場越像賭場。",
+      "value": 64,
+      "unit": "%",
+      "asOf": "2026-06-30",
+      "refreshDays": 45,
+      "status": "red",
+      "thresholds": {
+        "green": "< 50%",
+        "yellow": "50–60%",
+        "red": "≥ 60%"
+      },
+      "note": "他的讀數：2–4 月月均約 63%，6 月高波動交易日達 64%，判定觸發。",
+      "source": "Cboe 官方統計 / 券商研究",
+      "dataset_id": "SPX_0DTE_SHARE",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "manual",
+        "authority_level": "cboe",
+        "dataset": "SPX_0DTE_SHARE",
+        "effective_date": "2026-06-30",
+        "age_days": 41,
+        "acceptable_age_days": 60,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": null,
+        "raw_hash": null,
+        "transformation": "hand-entered from the cited publication",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "top10-weight",
+      "label": "易爆盤 3 · 標普前十大權重",
+      "plain": "整個標普 500 裡，最大的十家公司就占了幾成。占比越高，指數越像那十家的分身。",
+      "value": 39.3,
+      "unit": "%",
+      "asOf": "2026-06-30",
+      "refreshDays": 60,
+      "status": "red",
+      "thresholds": {
+        "green": "< 30%",
+        "yellow": "30–35%",
+        "red": "≥ 35%"
+      },
+      "note": "他的讀數 39.3%，判定觸發。這是集中度風險，不是估值風險 —— 兩者要分開看。",
+      "source": "S&P Dow Jones Indices 月報 / SPY 持股揭露",
+      "dataset_id": "SPX_TOP10_WEIGHT",
+      "decision": "SCORED",
+      "provenance": {
+        "source_id": "manual",
+        "authority_level": "PRIMARY_OFFICIAL:S&P Dow Jones Indices",
+        "dataset": "SPX_TOP10_WEIGHT",
+        "effective_date": "2026-06-30",
+        "age_days": 41,
+        "acceptable_age_days": 60,
+        "freshness_status": "LAGGED_BY_DESIGN",
+        "retrieved_at": null,
+        "raw_hash": null,
+        "transformation": "hand-entered from the cited publication",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "insider-ratio",
+      "label": "易爆盤 6 · 內部人賣出 / 買進 金額比",
+      "plain": "公司高層自己在賣股票還是買股票。賣得比買得多太多，代表最懂的人在下車。",
+      "value": 3.44,
+      "unit": "倍",
+      "asOf": "2026-05-31",
+      "refreshDays": 45,
+      "status": "STALE",
+      "thresholds": {
+        "green": "< 5 倍",
+        "red": "≥ 5 倍"
+      },
+      "note": "他的讀數 3.44 倍，低於 5 倍門檻，判定未觸發。",
+      "source": "SEC Form 4 彙總（InsiderScore / Washington Service 等）",
+      "dataset_id": "INSIDER_SELL_BUY",
+      "decision": "NO_DECISION",
+      "provenance": {
+        "source_id": "manual",
+        "authority_level": "sec_edgar",
+        "dataset": "INSIDER_SELL_BUY",
+        "effective_date": "2026-05-31",
+        "age_days": 71,
+        "acceptable_age_days": 60,
+        "freshness_status": "STALE",
+        "retrieved_at": null,
+        "raw_hash": null,
+        "transformation": "hand-entered from the cited publication",
+        "point_in_time_capable": false
+      }
+    },
+    {
+      "id": "ndx-forward-pe",
+      "label": "易爆盤 7 · 那斯達克 100 未來 12 個月本益比",
+      "plain": "用未來一年預估的獲利去算，現在買要付幾倍價錢。倍數越高，等於越多錢是先付給「還沒發生的成長」。",
+      "value": 24.96,
+      "unit": "倍",
+      "asOf": "2026-06-01",
+      "refreshDays": 45,
+      "status": "STALE",
+      "thresholds": {
+        "green": "< 30 倍",
+        "red": "≥ 30 倍"
+      },
+      "note": "他的讀數 24.96 倍，低於 30 倍門檻，判定未觸發。這是他七項裡最反直覺的一項 —— 喊泡沫的人很多，但預估本益比其實沒有失控。",
+      "source": "FactSet / Bloomberg / Nasdaq 官方",
+      "dataset_id": "NDX_FORWARD_PE",
+      "decision": "NO_DECISION",
+      "provenance": {
+        "source_id": "manual",
+        "authority_level": "NO_AUTHORITATIVE_FREE_SOURCE",
+        "dataset": "NDX_FORWARD_PE",
+        "effective_date": "2026-06-01",
+        "age_days": 70,
+        "acceptable_age_days": 30,
+        "freshness_status": "STALE",
+        "retrieved_at": null,
+        "raw_hash": null,
+        "transformation": "hand-entered from the cited publication",
+        "point_in_time_capable": false
+      }
+    }
+  ]
+}
