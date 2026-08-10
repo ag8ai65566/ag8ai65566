@@ -13,6 +13,7 @@ import { readFileSync } from 'node:fs';
 
 const data = JSON.parse(readFileSync(process.argv[2], 'utf8'));
 const snap = process.argv[3] ? JSON.parse(readFileSync(process.argv[3], 'utf8')) : null;
+const hold = process.argv[4] ? JSON.parse(readFileSync(process.argv[4], 'utf8')) : null;
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 const evaluated = data.gauges.filter((g) => g.decision === 'RULE_EVALUATED');
@@ -165,6 +166,64 @@ const summary = `
   「狠人規則觸發」不等於「統計上證明危險」—— 全部 16 格的訊號驗證狀態都是 UNTESTED。</p>
 </section>`;
 
+// Holdings block. Reads holdings.json; computes nothing.
+const holdingsSection = !hold ? '' : `
+<section>
+  <h2>Holdings</h2>
+  <p class="h2sub">持股 · Serenity 閘門（首次實際執行）</p>
+  <p class="lede">在接上 SEC 財報之前，這個鏡頭的每一格都卡在 <code>unverified</code> ——
+  不是因為公司未經證實，而是<strong>系統沒有證據可以評分</strong>。現在有了。
+  規則不變：<strong>沒有引用就不得升級</strong>，XBRL 回答不了的欄位維持 <code>unverified</code>，
+  那是正確答案，不是缺口。</p>
+  <div class="conc">
+    <div class="conclab">集中度</div>
+    <p>${esc(hold.concentration.reading)}</p>
+    <p class="corr">${esc(hold.concentration.correlation_reading)}</p>
+    <p class="qmeta">${esc(hold.concentration.note)}</p>
+  </div>
+  <div class="grid">
+  ${hold.holdings.map((h) => {
+    const f = h.fundamentals, p = h.price, g = h.serenity_gate;
+    const flag = f?.plausibility?.status === 'FLAGGED';
+    return `<article class="g" style="--sev:var(--brass)">
+      <header>
+        <div class="ghead"><h3>${esc(h.ticker)} · ${esc(h.name)}<span class="tag">${esc(h.niche ?? h.sector)}</span></h3>
+        <p class="plain">${esc(h.note ?? '')}</p></div>
+        <div class="chips">
+          <span class="chip chip-state">財報 ${esc(f?.information_available_at ?? '—')}（${h.fundamentals_age_days ?? '—'} 天）</span>
+          <span class="chip chip-auth">官方一手</span>
+        </div>
+      </header>
+      <div class="quad">
+        <section class="q"><div class="qlab">營收（季）</div>
+          <div class="qval num">${f?.revenue_bn ? '$' + f.revenue_bn + 'B' : '—'}</div>
+          <div class="qmeta">年增 <b>${f?.revenue_yoy_pct ?? '—'}%</b>　期間 ${esc(f?.period_end ?? '—')}</div></section>
+        <section class="q"><div class="qlab">獲利品質</div>
+          <div class="qval num">${f?.net_margin_pct ?? '—'}%</div>
+          <div class="qmeta">淨利率　毛利率 ${f?.gross_margin_pct ?? '未揭露'}${f?.gross_margin_pct ? '%' : ''}<br>
+          FCF ${f?.free_cash_flow_bn ? '$' + f.free_cash_flow_bn + 'B' : '—'}</div></section>
+        <section class="q"><div class="qlab">價格位置</div>
+          <div class="qval num">${p?.from_2y_high_pct ?? '—'}%</div>
+          <div class="qmeta">距兩年高點　vs 50日線 <b>${p?.vs_50dma_pct ?? '—'}%</b><br>
+          21日波動 <b>${p?.rvol21_pct ?? '—'}%</b></div></section>
+        <section class="q q-rule"><div class="qlab">Serenity 閘門</div>
+          <div class="qval" style="font-size:15px;color:var(--ok)">賺錢能力 ${esc(g?.profitability.value ?? '—')}</div>
+          <div class="qmeta">護城河 <b>${esc(g?.moat.value ?? '—')}</b>　
+          客戶替換風險 <b>${esc(g?.customer_replacement_risk.value ?? '—')}</b><br>
+          結論 <b>${esc(g?.conclusion.value ?? '—')}</b></div></section>
+      </div>
+      ${g?.profitability.citations?.length ? `<p class="note"><b>賺錢能力的引用：</b>${g.profitability.citations.map(esc).join('；')}</p>` : ''}
+      ${g?.moat ? `<p class="note"><b>護城河為何仍是 unverified：</b>${esc(g.moat.reason)}</p>` : ''}
+      ${flag ? `<p class="note blocker"><b>⚠️ 合理性檢查未通過：</b>${f.plausibility.flags.map((x) => esc(x.issue)).join(' ')}
+        受影響欄位：${f.plausibility.flags.flatMap((x) => x.affects).join('、')}。此數字需對照原始申報文件人工確認。</p>` : ''}
+      ${g?.conclusion ? `<p class="note"><b>結論為何停在研究地图：</b>${esc(g.conclusion.reason)}</p>` : ''}
+    </article>`;
+  }).join('')}
+  </div>
+  <p class="nocomp"><b>鏡頭狀態：</b>${Object.entries(hold.lens_status).map(([k, v]) =>
+    `${k} = <b>${v}</b>`).join('　·　')}。${esc(hold.guardrail)}</p>
+</section>`;
+
 const html = `<title>美股儀表板 · 狠人規則 × 實證脈絡</title>
 <style>
 :root{--ground:#EDEFF2;--panel:#F8F9FB;--panel-2:#E7EAEF;--panel-3:#DDE2E9;--rule:#CDD3DC;--rule-soft:#DFE4EA;
@@ -281,6 +340,12 @@ border-radius:0 3px 3px 0;font-size:13px;color:var(--ink-2);line-height:1.6}
 .prov dt{color:var(--ink-3);font-size:10px;letter-spacing:.04em;text-transform:uppercase}
 .prov dd{margin:1px 0 0;color:var(--ink-2);font-size:11.5px;word-break:break-all}
 footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-3);line-height:1.7}
+.conc{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--brass);
+border-radius:4px;padding:15px 17px;margin:0 0 14px;box-shadow:var(--shadow)}
+.conclab{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-bottom:4px}
+.conc p{margin:0 0 6px;font-size:14px;color:var(--ink-2);line-height:1.6}
+.conc .corr{color:var(--ink);font-weight:600}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--panel-2);padding:1px 5px;border-radius:3px}
 .disc{margin-top:13px;padding:13px 15px;background:var(--panel-2);border:1px solid var(--rule);border-radius:4px;
 color:var(--ink-2);font-size:12.5px}
 </style>
@@ -326,6 +391,8 @@ ${summary}
   不代表統計上已證明市場風險升高。標「門檻非原話」的格子，門檻是本系統設的，不是他講的。</p>
   <div class="grid">${evaluated.map(card).join('')}</div>
 </section>
+
+${holdingsSection}
 
 <section>
   <h2>No Decision</h2>

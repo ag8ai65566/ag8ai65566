@@ -1,9 +1,9 @@
 {
   "schema_version": "3.0.0",
-  "calculation_version": "3.0.0",
-  "code_commit": "97d01ba",
-  "generated_at": "2026-08-10T03:45:10.035Z",
-  "generated_at_et": "8/9/2026, 11:45:10 PM EDT",
+  "calculation_version": "3.1.0",
+  "code_commit": "d8479f6",
+  "generated_at": "2026-08-10T06:29:51.213Z",
+  "generated_at_et": "8/10/2026, 2:29:51 AM EDT",
   "market_session": {
     "us_market": "CLOSED",
     "timezone": "America/New_York"
@@ -19,13 +19,14 @@
   },
   "status_summary": {
     "data_state": {
-      "LAGGED_BY_DESIGN": 13,
+      "LAGGED_BY_DESIGN": 11,
+      "CURRENT": 2,
       "OVERDUE": 2,
       "STALE": 1
     },
     "source_authority": {
-      "OFFICIAL_AGGREGATOR": 8,
-      "OFFICIAL_PRIMARY": 1,
+      "OFFICIAL_AGGREGATOR": 7,
+      "OFFICIAL_PRIMARY": 2,
       "UNOFFICIAL_FREE": 2,
       "MANUAL_SECONDARY": 4,
       "NO_AUTHORITATIVE_SOURCE": 1
@@ -99,11 +100,11 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "WRESBAL",
         "effective_date": "2026-08-05",
-        "retrieved_at": "2026-08-10T03:45:10.513Z",
+        "retrieved_at": "2026-08-10T06:29:51.800Z",
         "raw_hash": "d9b10afc92dbdbaa",
         "transformation": "level in USD trillions; 4/13-week change; percentile vs 5y",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -113,20 +114,20 @@
       "label": "開關二 · 點火（期限結構代理）",
       "plain": "市場覺得「現在」比「三個月後」更可怕嗎？怕近的＝恐慌還在；怕遠的＝恐慌已經退了。",
       "observed": {
-        "value": 0.811,
+        "value": 0.796,
         "unit": "VIX ÷ 3個月VIX",
-        "effective_date": "2026-08-06",
+        "effective_date": "2026-08-07",
         "detail": {
-          "vix": 15.15,
-          "vix_3m": 18.69
+          "vix": 14.9,
+          "vix_3m": 18.72
         }
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
-          "value": 5.8,
+          "value": 3,
           "window_years": 5,
-          "n": 1303
+          "n": 1254
         },
         "reading": "遠月波動率高於近月（Contango）＝ 市場沒有在為「馬上出事」定價"
       },
@@ -144,25 +145,25 @@
       "proxy_replacement": "Cboe SKEW 或 OPRA 等級選擇權資料（registry → cboe，尚未接線）",
       "status": {
         "data_state": "LAGGED_BY_DESIGN",
-        "source_authority": "OFFICIAL_AGGREGATOR",
+        "source_authority": "OFFICIAL_PRIMARY",
         "measurement_integrity": "CHECKED",
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
-      "age_days": 4,
+      "age_days": 3,
       "acceptable_age_days": 5,
       "decision": "RULE_EVALUATED",
       "provenance": {
-        "source_id": "fred",
-        "source_authority": "OFFICIAL_AGGREGATOR",
-        "dataset": "VIXCLS",
-        "effective_date": "2026-08-06",
-        "retrieved_at": "2026-08-10T03:45:11.039Z",
-        "raw_hash": "74fde6014dafcdf7",
-        "transformation": "VIXCLS / VXVCLS on a common effective date; percentile vs 5y",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
-        "point_in_time_capable": false
+        "source_id": "cboe",
+        "source_authority": "OFFICIAL_PRIMARY",
+        "dataset": "CBOE_VIX",
+        "effective_date": "2026-08-07",
+        "retrieved_at": "2026-08-10T06:29:52.296Z",
+        "raw_hash": "94dc475a4aac34af",
+        "transformation": "Cboe VIX / VIX3M closes on a common session; percentile vs 5y",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
+        "point_in_time_capable": true
       }
     },
     {
@@ -285,11 +286,11 @@
         "source_authority": "OFFICIAL_PRIMARY",
         "dataset": "SEC_CAPEX",
         "effective_date": "2026-03-31",
-        "retrieved_at": "2026-08-10T03:45:12.014Z",
+        "retrieved_at": "2026-08-10T06:29:53.566Z",
         "raw_hash": "MSFT:2a3f142c858f766d GOOGL:0936f4aeed7e9d49 AMZN:dd90f2b11e3f1363 META:d1f91dfda76626ce",
         "transformation": "YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; YoY and QoQ",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": true,
         "information_available_at": "2026-04-30"
       }
@@ -340,11 +341,11 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "SOFR",
         "effective_date": "2026-08-06",
-        "retrieved_at": "2026-08-10T03:45:12.835Z",
+        "retrieved_at": "2026-08-10T06:29:54.558Z",
         "raw_hash": "dec98e752cccaba1",
         "transformation": "SOFR minus IORB in bp on a common effective date; percentile vs 3y",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -389,11 +390,11 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "WTREGEN",
         "effective_date": "2026-08-05",
-        "retrieved_at": "2026-08-10T03:45:13.859Z",
+        "retrieved_at": "2026-08-10T06:29:55.005Z",
         "raw_hash": "e27d88daab056cb6",
         "transformation": "level in USD bn; percentile vs 5y",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -425,7 +426,7 @@
         "threshold_is_ours": true
       },
       "status": {
-        "data_state": "LAGGED_BY_DESIGN",
+        "data_state": "CURRENT",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "measurement_integrity": "CHECKED",
         "signal_validation": "UNTESTED",
@@ -439,11 +440,11 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "RRPONTSYD",
         "effective_date": "2026-08-07",
-        "retrieved_at": "2026-08-10T03:45:13.972Z",
+        "retrieved_at": "2026-08-10T06:29:55.123Z",
         "raw_hash": "dbbe80a2b7ee0edd",
         "transformation": "level in USD bn; percentile vs 5y",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -495,11 +496,11 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "BAMLH0A0HYM2",
         "effective_date": "2026-08-06",
-        "retrieved_at": "2026-08-10T03:45:14.034Z",
+        "retrieved_at": "2026-08-10T06:29:55.221Z",
         "raw_hash": "2bb008786d3a3a50",
         "transformation": "OAS in percent; percentile vs 5y and 20y",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -545,11 +546,11 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "NFCI",
         "effective_date": "2026-07-31",
-        "retrieved_at": "2026-08-10T03:45:14.098Z",
+        "retrieved_at": "2026-08-10T06:29:55.311Z",
         "raw_hash": "ddecf5b174c81809",
         "transformation": "index level; percentile vs 5y",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -605,11 +606,11 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "M2SL",
         "effective_date": "2026-06-01",
-        "retrieved_at": "2026-08-10T03:45:14.162Z",
+        "retrieved_at": "2026-08-10T06:29:55.371Z",
         "raw_hash": "706397d1a68380f9",
         "transformation": "calendar-aware YoY on both legs at a common anchor",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -663,11 +664,11 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "NCBEILQ027S",
         "effective_date": "2026-01-01",
-        "retrieved_at": "2026-08-10T03:45:14.615Z",
+        "retrieved_at": "2026-08-10T06:29:55.830Z",
         "raw_hash": "fdbcd4072303d19b",
         "transformation": "Z.1 corporate equities / GDP, joined on a common quarter",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false,
         "period_end": "2026-03-31"
       }
@@ -753,7 +754,7 @@
       "naming_note": "本格量的是**已實現波動比值**，不是擁擠度。真正的擁擠度需要部位資料 —— 集中度、廣度、橫斷面相關性、成交量異常、選擇權部位、資金流。那些都尚未接線，所以此格不叫 Crowding。",
       "selection_bias_note": "籃子是人工挑選的 7 檔 AI 相關標的，有主題偏誤；用中位數而非最大值，避免單一極端值代表整個市場。它只描述這個籃子。",
       "status": {
-        "data_state": "LAGGED_BY_DESIGN",
+        "data_state": "CURRENT",
         "source_authority": "UNOFFICIAL_FREE",
         "measurement_integrity": "CHECKED",
         "signal_validation": "UNTESTED",
@@ -767,11 +768,11 @@
         "source_authority": "UNOFFICIAL_FREE",
         "dataset": "EQUITY_DAILY:^GSPC",
         "effective_date": "2026-08-07",
-        "retrieved_at": "2026-08-10T03:45:14.726Z",
-        "raw_hash": "b935b20c14e381f2",
+        "retrieved_at": "2026-08-10T06:29:55.987Z",
+        "raw_hash": "952b20d957e89cd9",
         "transformation": "21-day annualised realised vol vs ^GSPC; median across a fixed basket",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -815,8 +816,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from FINRA Margin Statistics（每月中旬公布上月數據）",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -860,8 +861,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from Cboe 官方統計 / 券商研究",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -905,8 +906,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from S&P Dow Jones Indices 月報 / SPY 持股揭露",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -949,8 +950,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from SEC Form 4 彙總（InsiderScore / Washington Service 等）",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     },
@@ -993,8 +994,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from FactSet / Bloomberg / Nasdaq 官方",
-        "calculation_version": "3.0.0",
-        "code_commit": "97d01ba",
+        "calculation_version": "3.1.0",
+        "code_commit": "d8479f6",
         "point_in_time_capable": false
       }
     }

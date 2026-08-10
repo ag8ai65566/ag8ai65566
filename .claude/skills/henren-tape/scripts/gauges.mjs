@@ -27,7 +27,7 @@ import {
 } from '../../../../lib/temporal.mjs';
 import { aggregateCapex } from '../../../../lib/capex.mjs';
 
-export const CALCULATION_VERSION = '3.0.0';
+export const CALCULATION_VERSION = '3.1.0';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, '..', '..', '..', '..');
@@ -66,6 +66,24 @@ async function fredSeries(datasetId) {
   return { datasetId, ds, points, raw_hash: archive(datasetId, body), retrieved_at: new Date().toISOString() };
 }
 
+// Cboe publishes the volatility complex itself, one session ahead of FRED's
+// redistribution — a higher authority AND a fresher number, which is a rare combination.
+async function cboeSeries(datasetId) {
+  const ds = REGISTRY.datasets[datasetId];
+  if (!ds) throw new Error(`dataset ${datasetId} not in registry`);
+  const r = await fetch(REGISTRY.sources.cboe.endpoint.replace('{index}', ds.index), { headers: UA });
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  const body = await r.text();
+  const points = body.trim().split('\n').slice(1).map((l) => l.split(','))
+    .map(([d, , , , close]) => {
+      const [m, dd, y] = d.trim().split('/');
+      return { date: `${y}-${m}-${dd}`, value: Number(close) };
+    })
+    .filter((p) => Number.isFinite(p.value) && /^\d{4}-\d{2}-\d{2}$/.test(p.date));
+  if (!points.length) throw new Error('empty series');
+  return { datasetId, ds, points, raw_hash: archive(datasetId, body), retrieved_at: new Date().toISOString() };
+}
+
 async function equitySeries(symbol, range = '5y') {
   const ds = REGISTRY.datasets.EQUITY_DAILY;
   const r = await fetch(
@@ -86,7 +104,7 @@ async function equitySeries(symbol, range = '5y') {
 
 // ------------------------------------------------------- status + provenance
 
-const AUTHORITY = { fred: 'OFFICIAL_AGGREGATOR', yahoo: 'UNOFFICIAL_FREE', sec_edgar: 'OFFICIAL_PRIMARY', stooq: 'UNOFFICIAL_FREE' };
+const AUTHORITY = { fred: 'OFFICIAL_AGGREGATOR', yahoo: 'UNOFFICIAL_FREE', sec_edgar: 'OFFICIAL_PRIMARY', cboe: 'OFFICIAL_PRIMARY', stooq: 'UNOFFICIAL_FREE' };
 const AUTHORITY_RANK = { OFFICIAL_PRIMARY: 5, OFFICIAL_AGGREGATOR: 4, LICENSED: 3, MANUAL_PRIMARY: 3, MANUAL_SECONDARY: 2, UNOFFICIAL_FREE: 1, NO_AUTHORITATIVE_SOURCE: 0 };
 /** A composite is only as authoritative as its weakest input. */
 const weakestAuthority = (...levels) =>
@@ -108,13 +126,52 @@ function effectiveEnd(series) {
   return d.toISOString().slice(0, 10);
 }
 
+// US market holidays are not modelled; weekends are. Good enough to stop a weekend from
+// masquerading as staleness, which is the error that actually matters here.
+function tradingSessionsBetween(fromIso, to) {
+  let n = 0;
+  const d = new Date(`${fromIso}T00:00:00Z`);
+  const end = new Date(Date.UTC(to.getUTCFullYear(), to.getUTCMonth(), to.getUTCDate()));
+  while (d < end) {
+    d.setUTCDate(d.getUTCDate() + 1);
+    const dow = d.getUTCDay();
+    if (dow !== 0 && dow !== 6) n += 1;
+  }
+  return n;
+}
+
+const PERIOD_DAYS = { 'business daily': 1, weekly: 7, monthly: 30, quarterly: 91 };
+
+/**
+ * Age a series in the unit it actually moves in. A daily price series is aged in TRADING
+ * SESSIONS — on a Sunday, Friday's close is zero sessions old, not three days stale.
+ * Everything also reports staleness_ratio = age / publication period, which turns
+ * "132 days" into "1.4 publication cycles" and makes lag interpretable rather than alarming.
+ */
 function dataState(series) {
-  const age = dayDiff(effectiveEnd(series), RUN_AT);
+  const end = effectiveEnd(series);
   const { acceptable_age_days: sla, expected_publication_latency_days: lat = 0 } = series.ds;
-  if (age <= lat + 1) return { data_state: 'CURRENT', age_days: age, acceptable_age_days: sla };
-  if (age <= sla) return { data_state: 'LAGGED_BY_DESIGN', age_days: age, acceptable_age_days: sla };
-  if (age <= sla * 2) return { data_state: 'OVERDUE', age_days: age, acceptable_age_days: sla };
-  return { data_state: 'STALE', age_days: age, acceptable_age_days: sla };
+  const calendarAge = dayDiff(end, RUN_AT);
+  const sessionAge = series.ds.measure_age_in === 'trading_sessions'
+    ? tradingSessionsBetween(end, RUN_AT) : null;
+  const age = sessionAge ?? calendarAge;
+  const period = PERIOD_DAYS[series.ds.expected_frequency] ?? 1;
+  const common = {
+    age_days: calendarAge,
+    age_sessions: sessionAge,
+    age_effective: age,
+    age_unit: sessionAge === null ? 'calendar_days' : 'trading_sessions',
+    acceptable_age_days: sla,
+    publication_period_days: period,
+    staleness_ratio: Number((calendarAge / period).toFixed(2)),
+    staleness_reading: `落後 ${Number((calendarAge / period).toFixed(2))} 個發布週期`
+      + (sessionAge !== null ? `（交易日計：${sessionAge} 個 session）` : ''),
+  };
+  const limit = sessionAge === null ? sla : Math.max(3, Math.round(sla * 5 / 7));
+  if (age <= lat + (sessionAge === null ? 1 : 0)) return { data_state: 'CURRENT', ...common };
+  if (age <= limit) return { data_state: 'LAGGED_BY_DESIGN', ...common };
+  if (age <= limit * 2) return { data_state: 'OVERDUE', ...common };
+  return { data_state: 'STALE', ...common };
 }
 
 function provenance(series, transformation) {
@@ -209,12 +266,12 @@ const fuel = await attempt('fuel', '開關一 · 燃料（銀行準備金）', a
   }, { prov: provenance(s, 'level in USD trillions; 4/13-week change; percentile vs 5y'), state: dataState(s) });
 });
 
-// Switch 2 — ignition. Previously divided Yahoo's ^VIX by ^VIX3M; Yahoo stopped publishing
-// closes for the entire term-structure family after 2026-07-17, so that gauge had been
-// dividing across a three-week gap and printing green. FRED still publishes both, and at a
-// higher authority level.
+// Switch 2 — ignition. Yahoo stopped publishing closes for the whole term-structure family
+// after 2026-07-17, so the original gauge divided across a three-week gap and printed green.
+// FRED fixed that; Cboe now supersedes FRED, being the index publisher itself and running
+// one session ahead of FRED's redistribution — higher authority and fresher at once.
 const ignition = await attempt('ignition', '開關二 · 點火（期限結構代理）', async () => {
-  const [vix, vxv] = await Promise.all([fredSeries('VIXCLS'), fredSeries('VXVCLS')]);
+  const [vix, vxv] = await Promise.all([cboeSeries('CBOE_VIX'), cboeSeries('CBOE_VIX3M')]);
   const al = alignByEffectiveDate(vix.points, vxv.points);
   if (!al.ok) return noDecision('ignition', '開關二 · 點火（期限結構代理）', '', 'DATE_MISMATCH', al.reason);
   if (al.lag_days > 3) {
@@ -247,7 +304,7 @@ const ignition = await attempt('ignition', '開關二 · 點火（期限結構�
       + '兩者相關但不等價：偏度量的是尾部定價的不對稱，期限結構量的是恐慌的時間分布，可能給出相反答案。'
       + '不過他在底部確認清單裡也直接點名了 Contango 這一項，所以此代理至少落在他自己的判準集合內。',
     proxy_replacement: 'Cboe SKEW 或 OPRA 等級選擇權資料（registry → cboe，尚未接線）',
-  }, { prov: provenance(vix, 'VIXCLS / VXVCLS on a common effective date; percentile vs 5y'), state: dataState(vix) });
+  }, { prov: provenance(vix, 'Cboe VIX / VIX3M closes on a common session; percentile vs 5y'), state: dataState(vix) });
 });
 
 // Switch 3 — the escape bell. Layer A (reported cash capex) is now wired from SEC XBRL.

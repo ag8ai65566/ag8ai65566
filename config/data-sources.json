@@ -67,11 +67,12 @@
     "cboe": {
       "source_name": "Cboe — SPX 0DTE share, SKEW, put/call ratios",
       "authority_level": "PRIMARY_OFFICIAL",
-      "endpoint": "https://www.cboe.com/us/options/market_statistics/",
+      "endpoint": "https://cdn.cboe.com/api/global/us_indices/daily_prices/{index}_History.csv",
       "auth": "none for daily summary; OPRA-quality intraday is licensed",
       "revision_policy": "none",
       "point_in_time_capable": true,
-      "status": "registered, not yet wired — 0DTE share is currently carried manually"
+      "status": "WIRED 2026-08-10 for VIX / VIX3M / VIX9D. SKEW returns 403 from this CDN path.",
+      "note": "Publishes one session ahead of FRED's redistribution and is the index publisher itself, so it outranks both FRED and Yahoo for the volatility complex."
     },
     "finra": {
       "source_name": "FINRA Margin Statistics",
@@ -128,7 +129,8 @@
       "expected_publication_latency_days": 1,
       "acceptable_age_days": 5,
       "revision_policy": "same-day republication possible",
-      "history_from": "2018-04-03"
+      "history_from": "2018-04-03",
+      "measure_age_in": "trading_sessions"
     },
     "IORB": {
       "source_id": "fred",
@@ -140,7 +142,8 @@
       "acceptable_age_days": 5,
       "revision_policy": "none",
       "history_from": "2021-07-29",
-      "note": "Short history. Percentile context on the SOFR-IORB spread is only meaningful post-2021."
+      "note": "Short history. Percentile context on the SOFR-IORB spread is only meaningful post-2021.",
+      "measure_age_in": "trading_sessions"
     },
     "RRPONTSYD": {
       "source_id": "fred",
@@ -151,7 +154,8 @@
       "expected_publication_latency_days": 1,
       "acceptable_age_days": 5,
       "revision_policy": "none",
-      "history_from": "2003-02-07"
+      "history_from": "2003-02-07",
+      "measure_age_in": "trading_sessions"
     },
     "BAMLH0A0HYM2": {
       "source_id": "fred",
@@ -162,7 +166,8 @@
       "expected_publication_latency_days": 1,
       "acceptable_age_days": 5,
       "revision_policy": "none",
-      "history_from": "1996-12-31"
+      "history_from": "1996-12-31",
+      "measure_age_in": "trading_sessions"
     },
     "NFCI": {
       "source_id": "fred",
@@ -225,7 +230,8 @@
       "session_timezone": "America/New_York",
       "session_close": "16:00",
       "revision_policy": "split/dividend restatement",
-      "authority_caveat": "UNOFFICIAL_FREE — propagates to every gauge derived from it"
+      "authority_caveat": "UNOFFICIAL_FREE — propagates to every gauge derived from it",
+      "measure_age_in": "trading_sessions"
     },
     "VIXCLS": {
       "source_id": "fred",
@@ -237,7 +243,8 @@
       "acceptable_age_days": 5,
       "revision_policy": "none",
       "history_from": "1990-01-02",
-      "note": "Replaces Yahoo ^VIX for the ignition gauge: FRED is OFFICIAL_AGGREGATOR and, unlike Yahoo, is still publishing the whole term-structure family."
+      "note": "Replaces Yahoo ^VIX for the ignition gauge: FRED is OFFICIAL_AGGREGATOR and, unlike Yahoo, is still publishing the whole term-structure family.",
+      "measure_age_in": "trading_sessions"
     },
     "VXVCLS": {
       "source_id": "fred",
@@ -249,7 +256,8 @@
       "acceptable_age_days": 5,
       "revision_policy": "none",
       "history_from": "2007-12-04",
-      "note": "Yahoo's ^VIX3M / ^VIX9D / ^VIX6M all stopped returning closes after 2026-07-17, which is what made the old ignition gauge divide across a three-week gap."
+      "note": "Yahoo's ^VIX3M / ^VIX9D / ^VIX6M all stopped returning closes after 2026-07-17, which is what made the old ignition gauge divide across a three-week gap.",
+      "measure_age_in": "trading_sessions"
     },
     "SEC_CAPEX": {
       "source_id": "sec_edgar",
@@ -261,6 +269,42 @@
       "revision_policy": "amended filings supersede; latest filed value per span is used",
       "point_in_time_key": "filed",
       "note": "10-Q reports YTD cumulative, so discrete quarters are recovered by differencing. Layer A only — excludes finance leases (Layer B) and management guidance (Layer C)."
+    },
+    "CBOE_VIX": {
+      "source_id": "cboe",
+      "index": "VIX",
+      "description": "CBOE Volatility Index, publisher feed",
+      "unit": "index",
+      "expected_frequency": "business daily",
+      "expected_publication_latency_days": 0,
+      "acceptable_age_days": 5,
+      "revision_policy": "none",
+      "history_from": "varies by index",
+      "measure_age_in": "trading_sessions"
+    },
+    "CBOE_VIX3M": {
+      "source_id": "cboe",
+      "index": "VIX3M",
+      "description": "CBOE 3-Month Volatility Index, publisher feed",
+      "unit": "index",
+      "expected_frequency": "business daily",
+      "expected_publication_latency_days": 0,
+      "acceptable_age_days": 5,
+      "revision_policy": "none",
+      "history_from": "varies by index",
+      "measure_age_in": "trading_sessions"
+    },
+    "CBOE_VIX9D": {
+      "source_id": "cboe",
+      "index": "VIX9D",
+      "description": "CBOE 9-Day Volatility Index, publisher feed",
+      "unit": "index",
+      "expected_frequency": "business daily",
+      "expected_publication_latency_days": 0,
+      "acceptable_age_days": 5,
+      "revision_policy": "none",
+      "history_from": "varies by index",
+      "measure_age_in": "trading_sessions"
     }
   },
   "manual_datasets": {
@@ -297,5 +341,6 @@
       "expected_frequency": "weekly",
       "acceptable_age_days": 30
     }
-  }
+  },
+  "_note_on_freshness": "Age is measured in the unit the series actually moves in. Daily market data is aged in TRADING SESSIONS, not calendar days — on a Sunday, Friday's close is zero sessions old, not three days stale. Slower series additionally report staleness_ratio = age / publication period, so '132 days' becomes '1.4 publication cycles' and is interpretable."
 }

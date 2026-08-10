@@ -16,6 +16,8 @@ const registry = JSON.parse(read('config/data-sources.json'));
 const html = existsSync(join(repo, 'reports/us-market-dashboard.html'))
   ? read('reports/us-market-dashboard.html') : null;
 const renderer = read('.claude/skills/us-market-brief/scripts/render-dashboard.mjs');
+const holdings = existsSync(join(repo, 'data/holdings.json'))
+  ? JSON.parse(read('data/holdings.json')) : null;
 
 test('every gauge carries the five status dimensions', () => {
   const dims = ['data_state', 'source_authority', 'measurement_integrity', 'signal_validation', 'automation_mode'];
@@ -129,6 +131,42 @@ test('no buy/sell language reaches the rendered output', { skip: !html }, () => 
   ];
   for (const re of assertive) {
     assert.ok(!re.test(html), `guardrail breach: ${re} matched in the dashboard`);
+  }
+});
+
+test('the Serenity gate escalates only with a citation', { skip: !holdings }, () => {
+  for (const h of holdings.holdings) {
+    const g = h.serenity_gate;
+    if (!g) continue;
+    for (const [field, v] of Object.entries(g)) {
+      if (['unverified', 'not_yet', 'observed_not_judged'].includes(v.value)) continue;
+      if (field === 'conclusion') continue;
+      assert.ok(v.citations?.length || v.evidence?.length,
+        `${h.ticker}.${field} escalated to "${v.value}" with no cited evidence`);
+    }
+  }
+});
+
+test('the gate never reaches an investable conclusion without valuation work', { skip: !holdings }, () => {
+  for (const h of holdings.holdings) {
+    assert.notEqual(h.serenity_gate?.conclusion?.value, '可投资结论',
+      `${h.ticker} reached an investable conclusion; no valuation stage exists yet`);
+  }
+});
+
+test('a flagged plausibility check is surfaced, not swallowed', { skip: !holdings || !html }, () => {
+  for (const h of holdings.holdings) {
+    if (h.fundamentals?.plausibility?.status !== 'FLAGGED') continue;
+    assert.ok(html.includes('合理性檢查未通過'),
+      `${h.ticker} has a plausibility flag that never reaches the dashboard`);
+  }
+});
+
+test('concentration is judged on the broad sector, not the niche', { skip: !holdings }, () => {
+  const c = holdings.concentration;
+  if (c.distinct_niches > c.distinct_sectors) {
+    assert.equal(c.same_sector, c.distinct_sectors === 1,
+      'niche labels must not be able to manufacture apparent diversification');
   }
 });
 

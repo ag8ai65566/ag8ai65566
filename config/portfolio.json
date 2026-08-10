@@ -1,0 +1,29 @@
+{
+  "_purpose": "Holdings the system should analyse. Size and cost basis are optional and are NOT used to produce advice — the system does not size positions or recommend trades. They exist only so exposure can be described factually (e.g. two holdings that move as one factor).",
+  "_privacy": "Leave size/cost null to keep them out of the repo. Everything below works without them.",
+  "holdings": [
+    {
+      "ticker": "MU",
+      "cik": "0000723125",
+      "name": "Micron Technology",
+      "sector": "Semiconductors",
+      "shares": null,
+      "cost_basis": null,
+      "note": "持有中。狠人框架下屬於 AI 上游瓶頸標的；Serenity 方法下需檢驗四個條件。",
+      "niche": "Memory — DRAM/HBM"
+    },
+    {
+      "ticker": "SNDK",
+      "cik": "0002012383",
+      "name": "Sandisk",
+      "sector": "Semiconductors",
+      "shares": null,
+      "cost_basis": null,
+      "note": "持有中。2025-02 自 Western Digital 分拆，上市歷史短。",
+      "niche": "Memory — NAND"
+    }
+  ],
+  "benchmark": "^GSPC",
+  "sector_proxy": "SMH",
+  "_taxonomy_note": "sector 必須是寬分類，niche 才是細分。用細分當集中度依據會製造假分散 —— 「DRAM」和「NAND」聽起來是兩類，但它們同漲同跌、同一批買家、同一個資本開支週期。集中度一律以 sector 計算。"
+}

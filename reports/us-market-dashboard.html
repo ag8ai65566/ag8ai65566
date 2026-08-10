@@ -114,6 +114,12 @@ border-radius:0 3px 3px 0;font-size:13px;color:var(--ink-2);line-height:1.6}
 .prov dt{color:var(--ink-3);font-size:10px;letter-spacing:.04em;text-transform:uppercase}
 .prov dd{margin:1px 0 0;color:var(--ink-2);font-size:11.5px;word-break:break-all}
 footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-3);line-height:1.7}
+.conc{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--brass);
+border-radius:4px;padding:15px 17px;margin:0 0 14px;box-shadow:var(--shadow)}
+.conclab{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-bottom:4px}
+.conc p{margin:0 0 6px;font-size:14px;color:var(--ink-2);line-height:1.6}
+.conc .corr{color:var(--ink);font-weight:600}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--panel-2);padding:1px 5px;border-radius:3px}
 .disc{margin-top:13px;padding:13px 15px;background:var(--panel-2);border:1px solid var(--rule);border-radius:4px;
 color:var(--ink-2);font-size:12.5px}
 </style>
@@ -126,10 +132,10 @@ color:var(--ink-2);font-size:12.5px}
   這四件事永遠分開 —— 因為「他認為危險」和「數據證明危險」是兩個不同的主張，而目前
   <b>沒有任何一格通過統計驗證</b>。</p>
   <dl class="session">
-    <div><dt>產生時間</dt><dd class="num">8/9/2026, 11:45:10 PM EDT</dd></div>
+    <div><dt>產生時間</dt><dd class="num">8/10/2026, 2:29:51 AM EDT</dd></div>
     <div><dt>美股狀態</dt><dd>CLOSED</dd></div>
     <div><dt>最近收盤</dt><dd class="num">2026-08-07</dd></div>
-    <div><dt>計算版本</dt><dd class="num">v3.0.0 @ 97d01ba</dd></div>
+    <div><dt>計算版本</dt><dd class="num">v3.1.0 @ d8479f6</dd></div>
     <div><dt>Point-in-time</dt><dd>否</dd></div>
   </dl>
 </header>
@@ -185,7 +191,7 @@ color:var(--ink-2);font-size:12.5px}
     這不是「安全」，是<b>「還能燒，而且燒得很快」</b>。
     5 個規則觸發、1 個接近、7 個未觸發，另有 3 格沒有可用讀數。
   </div>
-  <p class="vdisc">以上每個數字都來自 canonical engine（calc v3.0.0 @ 97d01ba）。
+  <p class="vdisc">以上每個數字都來自 canonical engine（calc v3.1.0 @ d8479f6）。
   「狠人規則觸發」不等於「統計上證明危險」—— 全部 16 格的訊號驗證狀態都是 UNTESTED。</p>
 </section>
 
@@ -200,8 +206,8 @@ color:var(--ink-2);font-size:12.5px}
   </div>
   <div class="dims">
     <div class="dim"><h4>data state</h4>
-      <div><span>LAGGED_BY_DESIGN</span><b class="num">13</b></div><div><span>OVERDUE</span><b class="num">2</b></div><div><span>STALE</span><b class="num">1</b></div></div><div class="dim"><h4>source authority</h4>
-      <div><span>OFFICIAL_AGGREGATOR</span><b class="num">8</b></div><div><span>OFFICIAL_PRIMARY</span><b class="num">1</b></div><div><span>UNOFFICIAL_FREE</span><b class="num">2</b></div><div><span>MANUAL_SECONDARY</span><b class="num">4</b></div><div><span>NO_AUTHORITATIVE_SOURCE</span><b class="num">1</b></div></div><div class="dim"><h4>measurement integrity</h4>
+      <div><span>LAGGED_BY_DESIGN</span><b class="num">11</b></div><div><span>CURRENT</span><b class="num">2</b></div><div><span>OVERDUE</span><b class="num">2</b></div><div><span>STALE</span><b class="num">1</b></div></div><div class="dim"><h4>source authority</h4>
+      <div><span>OFFICIAL_AGGREGATOR</span><b class="num">7</b></div><div><span>OFFICIAL_PRIMARY</span><b class="num">2</b></div><div><span>UNOFFICIAL_FREE</span><b class="num">2</b></div><div><span>MANUAL_SECONDARY</span><b class="num">4</b></div><div><span>NO_AUTHORITATIVE_SOURCE</span><b class="num">1</b></div></div><div class="dim"><h4>measurement integrity</h4>
       <div><span>CHECKED</span><b class="num">13</b></div><div><span>RAW</span><b class="num">3</b></div></div><div class="dim"><h4>signal validation</h4>
       <div><span>UNTESTED</span><b class="num">16</b></div></div><div class="dim"><h4>automation mode</h4>
       <div><span>AUTOMATED</span><b class="num">10</b></div><div><span>HYBRID</span><b class="num">1</b></div><div><span>MANUAL_REVIEW_REQUIRED</span><b class="num">5</b></div></div>
@@ -258,7 +264,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WRESBAL</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-05</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:10.513Z</dd></div><div><dt>raw_hash</dt><dd class="num">d9b10afc92dbdbaa</dd></div><div><dt>transformation</dt><dd class="num">level in USD trillions; 4/13-week change; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WRESBAL</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-05</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:51.800Z</dd></div><div><dt>raw_hash</dt><dd class="num">d9b10afc92dbdbaa</dd></div><div><dt>transformation</dt><dd class="num">level in USD trillions; 4/13-week change; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--ok)">
   <header>
@@ -268,7 +274,7 @@ color:var(--ink-2);font-size:12.5px}
     </div>
     <div class="chips">
       <span class="chip chip-state">設計上落後</span>
-      <span class="chip chip-auth">官方彙整</span>
+      <span class="chip chip-auth">官方一手</span>
       <span class="chip chip-auto">自動</span>
     </div>
   </header>
@@ -276,15 +282,15 @@ color:var(--ink-2);font-size:12.5px}
   <div class="quad">
     <section class="q q-obs">
       <div class="qlab">觀測值</div>
-      <div class="qval num">0.811<span class="qunit">VIX ÷ 3個月VIX</span></div>
-      <div class="qmeta num">生效 2026-08-06　·　4 天前</div>
+      <div class="qval num">0.796<span class="qunit">VIX ÷ 3個月VIX</span></div>
+      <div class="qmeta num">生效 2026-08-07　·　3 天前</div>
     </section>
 
     <section class="q q-emp">
       <div class="qlab">歷史脈絡</div>
-      <div class="qval num">P5.8</div>
-      <div class="pbar"><div class="pfill" style="width:5.8%"></div><div class="pneedle" style="left:calc(5.8% - 1px)"></div></div>
-      <div class="qmeta">過去 5 年 n=1303</div>
+      <div class="qval num">P3</div>
+      <div class="pbar"><div class="pfill" style="width:3%"></div><div class="pneedle" style="left:calc(3% - 1px)"></div></div>
+      <div class="qmeta">過去 5 年 n=1254</div>
       <p class="qnote">遠月波動率高於近月（Contango）＝ 市場沒有在為「馬上出事」定價</p>
     </section>
 
@@ -306,7 +312,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">VIXCLS</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-06</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:11.039Z</dd></div><div><dt>raw_hash</dt><dd class="num">74fde6014dafcdf7</dd></div><div><dt>transformation</dt><dd class="num">VIXCLS / VXVCLS on a common effective date; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">cboe</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_PRIMARY</dd></div><div><dt>dataset</dt><dd class="num">CBOE_VIX</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-07</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:52.296Z</dd></div><div><dt>raw_hash</dt><dd class="num">94dc475a4aac34af</dd></div><div><dt>transformation</dt><dd class="num">Cboe VIX / VIX3M closes on a common session; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">true</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--ok)">
   <header>
@@ -352,7 +358,7 @@ color:var(--ink-2);font-size:12.5px}
   <div class="layers"><div class="layer"><b>reported cash capex</b><span>AUTOMATED — SEC XBRL，10-Q 累計數已差分還原為單季</span></div><div class="layer"><b>finance leases</b><span>NOT_WIRED — 融資租賃不進現金 capex，AI 資料中心佔比可觀且在變動，本格系統性低估</span></div><div class="layer"><b>management guidance</b><span>NOT_WIRED — 市場真正敏感的是下季指引，法說會內容沒有 XBRL tag</span></div></div>
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">sec_edgar</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_PRIMARY</dd></div><div><dt>dataset</dt><dd class="num">SEC_CAPEX</dd></div><div><dt>effective_date</dt><dd class="num">2026-03-31</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:12.014Z</dd></div><div><dt>raw_hash</dt><dd class="num">MSFT:2a3f142c858f766d GOOGL:0936f4aeed7e9d49 AMZN:dd90f2b11e3f1363 META:d1f91dfda76626ce</dd></div><div><dt>transformation</dt><dd class="num">YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; YoY and QoQ</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">true</dd></div><div><dt>information_available_at</dt><dd class="num">2026-04-30</dd></div>
+    <div><dt>source_id</dt><dd class="num">sec_edgar</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_PRIMARY</dd></div><div><dt>dataset</dt><dd class="num">SEC_CAPEX</dd></div><div><dt>effective_date</dt><dd class="num">2026-03-31</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:53.566Z</dd></div><div><dt>raw_hash</dt><dd class="num">MSFT:2a3f142c858f766d GOOGL:0936f4aeed7e9d49 AMZN:dd90f2b11e3f1363 META:d1f91dfda76626ce</dd></div><div><dt>transformation</dt><dd class="num">YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; YoY and QoQ</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">true</dd></div><div><dt>information_available_at</dt><dd class="num">2026-04-30</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--ok)">
   <header>
@@ -400,7 +406,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">SOFR</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-06</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:12.835Z</dd></div><div><dt>raw_hash</dt><dd class="num">dec98e752cccaba1</dd></div><div><dt>transformation</dt><dd class="num">SOFR minus IORB in bp on a common effective date; percentile vs 3y</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">SOFR</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-06</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:54.558Z</dd></div><div><dt>raw_hash</dt><dd class="num">dec98e752cccaba1</dd></div><div><dt>transformation</dt><dd class="num">SOFR minus IORB in bp on a common effective date; percentile vs 3y</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--ok)">
   <header>
@@ -448,7 +454,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WTREGEN</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-05</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:13.859Z</dd></div><div><dt>raw_hash</dt><dd class="num">e27d88daab056cb6</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WTREGEN</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-05</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:55.005Z</dd></div><div><dt>raw_hash</dt><dd class="num">e27d88daab056cb6</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--warn)">
   <header>
@@ -457,7 +463,7 @@ color:var(--ink-2);font-size:12.5px}
       <p class="plain">市場多餘現金的緩衝墊。墊子還厚，抽錢先抽它；墊子見底，就直接抽銀行準備金。</p>
     </div>
     <div class="chips">
-      <span class="chip chip-state">設計上落後</span>
+      <span class="chip chip-state">當前</span>
       <span class="chip chip-auth">官方彙整</span>
       <span class="chip chip-auto">自動</span>
     </div>
@@ -496,7 +502,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">RRPONTSYD</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-07</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:13.972Z</dd></div><div><dt>raw_hash</dt><dd class="num">dbbe80a2b7ee0edd</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">RRPONTSYD</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-07</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:55.123Z</dd></div><div><dt>raw_hash</dt><dd class="num">dbbe80a2b7ee0edd</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--ok)">
   <header>
@@ -544,7 +550,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">BAMLH0A0HYM2</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-06</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:14.034Z</dd></div><div><dt>raw_hash</dt><dd class="num">2bb008786d3a3a50</dd></div><div><dt>transformation</dt><dd class="num">OAS in percent; percentile vs 5y and 20y</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">BAMLH0A0HYM2</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-06</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:55.221Z</dd></div><div><dt>raw_hash</dt><dd class="num">2bb008786d3a3a50</dd></div><div><dt>transformation</dt><dd class="num">OAS in percent; percentile vs 5y and 20y</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--ok)">
   <header>
@@ -592,7 +598,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NFCI</dd></div><div><dt>effective_date</dt><dd class="num">2026-07-31</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:14.098Z</dd></div><div><dt>raw_hash</dt><dd class="num">ddecf5b174c81809</dd></div><div><dt>transformation</dt><dd class="num">index level; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NFCI</dd></div><div><dt>effective_date</dt><dd class="num">2026-07-31</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:55.311Z</dd></div><div><dt>raw_hash</dt><dd class="num">ddecf5b174c81809</dd></div><div><dt>transformation</dt><dd class="num">index level; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--bad)">
   <header>
@@ -638,7 +644,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">M2SL</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:14.162Z</dd></div><div><dt>raw_hash</dt><dd class="num">706397d1a68380f9</dd></div><div><dt>transformation</dt><dd class="num">calendar-aware YoY on both legs at a common anchor</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">M2SL</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:55.371Z</dd></div><div><dt>raw_hash</dt><dd class="num">706397d1a68380f9</dd></div><div><dt>transformation</dt><dd class="num">calendar-aware YoY on both legs at a common anchor</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--bad)">
   <header>
@@ -686,7 +692,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NCBEILQ027S</dd></div><div><dt>effective_date</dt><dd class="num">2026-01-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:14.615Z</dd></div><div><dt>raw_hash</dt><dd class="num">fdbcd4072303d19b</dd></div><div><dt>transformation</dt><dd class="num">Z.1 corporate equities / GDP, joined on a common quarter</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div><div><dt>period_end</dt><dd class="num">2026-03-31</dd></div>
+    <div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NCBEILQ027S</dd></div><div><dt>effective_date</dt><dd class="num">2026-01-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:55.830Z</dd></div><div><dt>raw_hash</dt><dd class="num">fdbcd4072303d19b</dd></div><div><dt>transformation</dt><dd class="num">Z.1 corporate equities / GDP, joined on a common quarter</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div><div><dt>period_end</dt><dd class="num">2026-03-31</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--bad)">
   <header>
@@ -695,7 +701,7 @@ color:var(--ink-2);font-size:12.5px}
       <p class="plain">這幾檔 AI 股最近上下跳的幅度，是大盤的幾倍。倍數越大，代表風險越集中在少數股票、不在指數。</p>
     </div>
     <div class="chips">
-      <span class="chip chip-state">設計上落後</span>
+      <span class="chip chip-state">當前</span>
       <span class="chip chip-auth weak">非官方免費</span>
       <span class="chip chip-auto">自動</span>
     </div>
@@ -732,7 +738,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">yahoo</dd></div><div><dt>source_authority</dt><dd class="num">UNOFFICIAL_FREE</dd></div><div><dt>dataset</dt><dd class="num">EQUITY_DAILY:^GSPC</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-07</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T03:45:14.726Z</dd></div><div><dt>raw_hash</dt><dd class="num">b935b20c14e381f2</dd></div><div><dt>transformation</dt><dd class="num">21-day annualised realised vol vs ^GSPC; median across a fixed basket</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">yahoo</dd></div><div><dt>source_authority</dt><dd class="num">UNOFFICIAL_FREE</dd></div><div><dt>dataset</dt><dd class="num">EQUITY_DAILY:^GSPC</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-07</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-10T06:29:55.987Z</dd></div><div><dt>raw_hash</dt><dd class="num">952b20d957e89cd9</dd></div><div><dt>transformation</dt><dd class="num">21-day annualised realised vol vs ^GSPC; median across a fixed basket</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--bad)">
   <header>
@@ -778,7 +784,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_0DTE_SHARE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from Cboe 官方統計 / 券商研究</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_0DTE_SHARE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from Cboe 官方統計 / 券商研究</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--bad)">
   <header>
@@ -824,9 +830,92 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_TOP10_WEIGHT</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from S&amp;P Dow Jones Indices 月報 / SPY 持股揭露</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_TOP10_WEIGHT</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from S&amp;P Dow Jones Indices 月報 / SPY 持股揭露</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article></div>
+</section>
+
+
+<section>
+  <h2>Holdings</h2>
+  <p class="h2sub">持股 · Serenity 閘門（首次實際執行）</p>
+  <p class="lede">在接上 SEC 財報之前，這個鏡頭的每一格都卡在 <code>unverified</code> ——
+  不是因為公司未經證實，而是<strong>系統沒有證據可以評分</strong>。現在有了。
+  規則不變：<strong>沒有引用就不得升級</strong>，XBRL 回答不了的欄位維持 <code>unverified</code>，
+  那是正確答案，不是缺口。</p>
+  <div class="conc">
+    <div class="conclab">集中度</div>
+    <p>全部 2 檔都在「Semiconductors」（細分為 Memory — DRAM/HBM、Memory — NAND，但那是同一個因子），這是一個因子，不是一個組合。</p>
+    <p class="corr">MU 與 SNDK 的日報酬相關係數 0.766（259 個交易日）。價格證實它們是同一筆交易，標籤上的細分沒有帶來分散。</p>
+    <p class="qmeta">本系統不做部位建議，也不知道你的部位大小。這裡只陳述暴露事實。</p>
+  </div>
+  <div class="grid">
+  <article class="g" style="--sev:var(--brass)">
+      <header>
+        <div class="ghead"><h3>MU · Micron Technology<span class="tag">Memory — DRAM/HBM</span></h3>
+        <p class="plain">持有中。狠人框架下屬於 AI 上游瓶頸標的；Serenity 方法下需檢驗四個條件。</p></div>
+        <div class="chips">
+          <span class="chip chip-state">財報 2026-06-25（46 天）</span>
+          <span class="chip chip-auth">官方一手</span>
+        </div>
+      </header>
+      <div class="quad">
+        <section class="q"><div class="qlab">營收（季）</div>
+          <div class="qval num">$41.46B</div>
+          <div class="qmeta">年增 <b>345.72%</b>　期間 2026-05-28</div></section>
+        <section class="q"><div class="qlab">獲利品質</div>
+          <div class="qval num">68.13%</div>
+          <div class="qmeta">淨利率　毛利率 84.56%<br>
+          FCF $17.56B</div></section>
+        <section class="q"><div class="qlab">價格位置</div>
+          <div class="qval num">-27.69%</div>
+          <div class="qmeta">距兩年高點　vs 50日線 <b>-9.62%</b><br>
+          21日波動 <b>107.59%</b></div></section>
+        <section class="q q-rule"><div class="qlab">Serenity 閘門</div>
+          <div class="qval" style="font-size:15px;color:var(--ok)">賺錢能力 proven</div>
+          <div class="qmeta">護城河 <b>unverified</b>　
+          客戶替換風險 <b>unverified</b><br>
+          結論 <b>研究地图</b></div></section>
+      </div>
+      <p class="note"><b>賺錢能力的引用：</b>10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）；10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）；10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）</p>
+      <p class="note"><b>護城河為何仍是 unverified：</b>護城河需要的是認證週期、轉換成本、設計導入、第二來源可得性等證據 —— XBRL 財報數字無法回答。高毛利率是結果，不是護城河本身，記憶體產業歷史上就是高毛利與虧損交替的週期股。</p>
+      
+      <p class="note"><b>結論為何停在研究地图：</b>Serenity 方法要求四個條件同時成立才升級：客戶非有不可、供給無法快速增加、公司已認證／設計導入、且相對於機會而言便宜。前三項本管線尚無證據，第四項需要估值工作。要到「可投资结论」，缺的是質性證據與估值，不是價格動能。</p>
+    </article><article class="g" style="--sev:var(--brass)">
+      <header>
+        <div class="ghead"><h3>SNDK · Sandisk<span class="tag">Memory — NAND</span></h3>
+        <p class="plain">持有中。2025-02 自 Western Digital 分拆，上市歷史短。</p></div>
+        <div class="chips">
+          <span class="chip chip-state">財報 2026-08-06（4 天）</span>
+          <span class="chip chip-auth">官方一手</span>
+        </div>
+      </header>
+      <div class="quad">
+        <section class="q"><div class="qlab">營收（季）</div>
+          <div class="qval num">$7.08B</div>
+          <div class="qmeta">年增 <b>30.63%</b>　期間 2026-06-30</div></section>
+        <section class="q"><div class="qlab">獲利品質</div>
+          <div class="qval num">27.02%</div>
+          <div class="qmeta">淨利率　毛利率 未揭露<br>
+          FCF $1.12B</div></section>
+        <section class="q"><div class="qlab">價格位置</div>
+          <div class="qval num">-48.09%</div>
+          <div class="qmeta">距兩年高點　vs 50日線 <b>-28.19%</b><br>
+          21日波動 <b>156.41%</b></div></section>
+        <section class="q q-rule"><div class="qlab">Serenity 閘門</div>
+          <div class="qval" style="font-size:15px;color:var(--ok)">賺錢能力 proven</div>
+          <div class="qmeta">護城河 <b>unverified</b>　
+          客戶替換風險 <b>unverified</b><br>
+          結論 <b>研究地图</b></div></section>
+      </div>
+      <p class="note"><b>賺錢能力的引用：</b>10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）；10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）；10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）</p>
+      <p class="note"><b>護城河為何仍是 unverified：</b>護城河需要的是認證週期、轉換成本、設計導入、第二來源可得性等證據 —— XBRL 財報數字無法回答。高毛利率是結果，不是護城河本身，記憶體產業歷史上就是高毛利與虧損交替的週期股。</p>
+      <p class="note blocker"><b>⚠️ 合理性檢查未通過：</b>年化營收僅為總資產的 16.1%，資產週轉率異常低。可能是合併了合資廠資產、實體範圍不符，或 tag 語意與假設不同。
+        受影響欄位：roe_annualised_pct。此數字需對照原始申報文件人工確認。</p>
+      <p class="note"><b>結論為何停在研究地图：</b>Serenity 方法要求四個條件同時成立才升級：客戶非有不可、供給無法快速增加、公司已認證／設計導入、且相對於機會而言便宜。前三項本管線尚無證據，第四項需要估值工作。要到「可投资结论」，缺的是質性證據與估值，不是價格動能。</p>
+    </article>
+  </div>
+  <p class="nocomp"><b>鏡頭狀態：</b>serenity-method = <b>EXECUTED</b>　·　serenity-bottleneck-hunter = <b>NOT_EXECUTED</b>　·　equity-research = <b>NOT_EXECUTED</b>。本檔不輸出買賣訊號、目標價或部位建議。所有品質欄位遵守 serenity-method 的規則：沒有引用證據就維持 unverified。</p>
 </section>
 
 <section>
@@ -877,7 +966,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">FINRA_MARGIN_DEBT</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FINRA Margin Statistics（每月中旬公布上月數據）</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">FINRA_MARGIN_DEBT</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FINRA Margin Statistics（每月中旬公布上月數據）</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--ok)">
   <header>
@@ -923,7 +1012,7 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">INSIDER_SELL_BUY</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from SEC Form 4 彙總（InsiderScore / Washington Service 等）</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">INSIDER_SELL_BUY</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from SEC Form 4 彙總（InsiderScore / Washington Service 等）</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article><article class="g" style="--sev:var(--ok)">
   <header>
@@ -969,14 +1058,14 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>來源鏈</summary><dl>
-    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">NDX_FORWARD_PE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-01</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FactSet / Bloomberg / Nasdaq 官方</dd></div><div><dt>calculation_version</dt><dd class="num">3.0.0</dd></div><div><dt>code_commit</dt><dd class="num">97d01ba</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
+    <div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">NDX_FORWARD_PE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-01</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FactSet / Bloomberg / Nasdaq 官方</dd></div><div><dt>calculation_version</dt><dd class="num">3.1.0</dd></div><div><dt>code_commit</dt><dd class="num">d8479f6</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div>
   </dl></details>
 </article></div>
 </section>
 
 <footer>
   <p><b>Canonical data flow</b>　<span class="num">FRED / SEC EDGAR / Yahoo → data/raw/ → gauges.mjs
-  (calc v3.0.0) → data/gauges.json → render-dashboard.mjs → 本頁</span>。
+  (calc v3.1.0) → data/gauges.json → render-dashboard.mjs → 本頁</span>。
   這個 renderer <b>不做任何金融計算</b> —— 沒有 YoY、沒有百分位、沒有中位數、沒有利差、沒有訊號邏輯。
   頁面上每個數字都是引擎算好的欄位。</p>
   <p><b>FRED 只提供最新修訂版，所以這些讀數描述現在，不是可回測的歷史。SEC capex 例外（帶 filed 日期）。</b></p>
