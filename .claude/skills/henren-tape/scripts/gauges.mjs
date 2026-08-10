@@ -1,29 +1,33 @@
 #!/usr/bin/env node
-// Score 一个狠人's judgment markers against registered data sources.
+// CANONICAL CALCULATION ENGINE. Every financial number in this system is produced here.
+// Renderers format its output; they never recompute anything.
 //
 //   NODE_USE_ENV_PROXY=1 node gauges.mjs                 # readable panel
-//   NODE_USE_ENV_PROXY=1 node gauges.mjs --json          # machine-readable
-//   NODE_USE_ENV_PROXY=1 node gauges.mjs --no-store      # skip raw-response archive
+//   NODE_USE_ENV_PROXY=1 node gauges.mjs --json          # canonical structured output
+//   NODE_USE_ENV_PROXY=1 node gauges.mjs --no-store      # skip the raw-response archive
 //
-// Contract (see docs/review-response.md):
-//   * Every gauge names a dataset in config/data-sources.json. No registry entry, no value.
-//   * Every gauge carries provenance: source, authority level, effective date, retrieval
-//     time, age, and the hash of the raw response it was computed from.
-//   * Missing or stale critical data yields NO_DECISION / STALE. It never becomes "neutral",
-//     never becomes yellow, never becomes 0. Not-knowing is not a middling risk reading.
-//   * Freshness is judged per dataset against its own SLA, not one global day count.
-//   * Hardcoded thresholds are reported ALONGSIDE a rolling percentile of the same series,
-//     because a fixed cut-off silently expires when market structure moves.
+// The one rule the whole file exists to keep:
+//   「狠人認為這是危險訊號」與「歷史數據證明這是有效的危險訊號」永遠是兩件事。
+// So every gauge separates four things and never blends them:
+//   observed  — what the number is
+//   empirical — where it sits in its own history
+//   henren    — what HIS rule says about it
+//   status    — how much any of that can be trusted
 //
-// Not yet true, and deliberately not papered over:
-//   * FRED serves latest-vintage only, so nothing here is point-in-time. These readings
-//     describe today. They are not a backtestable history.
-//   * Thresholds are the author's asserted values. None has a measured false-positive rate.
+// Missing data is never neutral. A gauge with no usable reading reports NO_DECISION and
+// is excluded from every count.
 
 import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { execSync } from 'node:child_process';
+import {
+  alignByEffectiveDate, yoyAtAnchor, alignQuarterly, percentileInWindow, priorObservation, shiftYears,
+} from '../../../../lib/temporal.mjs';
+import { aggregateCapex } from '../../../../lib/capex.mjs';
+
+export const CALCULATION_VERSION = '3.0.0';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, '..', '..', '..', '..');
@@ -31,13 +35,15 @@ const REGISTRY = JSON.parse(readFileSync(join(repo, 'config', 'data-sources.json
 const RUN_AT = new Date();
 const STORE = !process.argv.includes('--no-store');
 
-const UA = { 'User-Agent': 'Mozilla/5.0 (compatible; market-gauges/2.0)' };
-const round = (x, n = 2) => (Number.isFinite(x) ? Number(x.toFixed(n)) : null);
-const hash = (s) => createHash('sha256').update(s).digest('hex').slice(0, 16);
+const UA = { 'User-Agent': 'ag8ai6@gmail.com market-research-tool' };
+const r2 = (x, n = 2) => (Number.isFinite(x) ? Number(x.toFixed(n)) : null);
 const dayDiff = (a, b) => Math.round((new Date(b) - new Date(a)) / 86400000);
 
+let CODE_COMMIT = 'unknown';
+try { CODE_COMMIT = execSync('git rev-parse --short HEAD', { cwd: repo }).toString().trim(); } catch {}
+
 function archive(key, body) {
-  const h = hash(body);
+  const h = createHash('sha256').update(body).digest('hex').slice(0, 16);
   if (STORE) {
     const dir = join(repo, 'data', 'raw', RUN_AT.toISOString().slice(0, 10));
     mkdirSync(dir, { recursive: true });
@@ -46,333 +52,440 @@ function archive(key, body) {
   return h;
 }
 
-// ---------------------------------------------------------------- fetch layer
+// ---------------------------------------------------------------- fetch
 
 async function fredSeries(datasetId) {
   const ds = REGISTRY.datasets[datasetId];
   if (!ds) throw new Error(`dataset ${datasetId} not in registry`);
-  const url = REGISTRY.sources[ds.source_id].endpoint.replace('{series}', ds.series);
-  const r = await fetch(url, { headers: UA });
+  const r = await fetch(REGISTRY.sources[ds.source_id].endpoint.replace('{series}', ds.series), { headers: UA });
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   const body = await r.text();
-  const points = body.trim().split('\n').slice(1)
-    .map((l) => l.split(','))
-    .map(([date, v]) => ({ date, value: Number(v) }))
-    .filter((p) => Number.isFinite(p.value));
+  const points = body.trim().split('\n').slice(1).map((l) => l.split(','))
+    .map(([date, v]) => ({ date, value: Number(v) })).filter((p) => Number.isFinite(p.value));
   if (!points.length) throw new Error('empty series');
   return { datasetId, ds, points, raw_hash: archive(datasetId, body), retrieved_at: new Date().toISOString() };
 }
 
 async function equitySeries(symbol, range = '5y') {
   const ds = REGISTRY.datasets.EQUITY_DAILY;
-  const url = REGISTRY.sources[ds.source_id].endpoint.replace('{symbol}', encodeURIComponent(symbol))
-    + `?range=${range}&interval=1d`;
-  const r = await fetch(url, { headers: UA });
+  const r = await fetch(
+    `${REGISTRY.sources[ds.source_id].endpoint.replace('{symbol}', encodeURIComponent(symbol))}?range=${range}&interval=1d`,
+    { headers: UA });
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   const body = await r.text();
   const x = JSON.parse(body)?.chart?.result?.[0];
   if (!x) throw new Error('no chart result');
   const q = x.indicators?.quote?.[0] ?? {};
-  const points = (x.timestamp ?? [])
-    .map((t, i) => ({ date: new Date(t * 1000).toISOString().slice(0, 10), value: q.close?.[i] }))
-    .filter((p) => Number.isFinite(p.value));
+  const points = (x.timestamp ?? []).map((t, i) => ({
+    date: new Date(t * 1000).toISOString().slice(0, 10), value: q.close?.[i],
+  })).filter((p) => Number.isFinite(p.value));
   if (!points.length) throw new Error('empty series');
-  return {
-    datasetId: 'EQUITY_DAILY', ds, symbol, points, meta: x.meta,
-    raw_hash: archive(`EQUITY_${symbol.replace(/[^\w-]/g, '_')}`, body),
-    retrieved_at: new Date().toISOString(),
-  };
+  return { datasetId: 'EQUITY_DAILY', ds, symbol, points,
+    raw_hash: archive(`EQUITY_${symbol.replace(/[^\w-]/g, '_')}`, body), retrieved_at: new Date().toISOString() };
 }
 
-// ------------------------------------------------------------ freshness + stats
+// ------------------------------------------------------- status + provenance
 
-// Judge each dataset against its own contract, never one global rule.
-function freshness(series) {
-  const last = series.points.at(-1);
-  const age = dayDiff(last.date, RUN_AT);
-  const { acceptable_age_days: sla, expected_publication_latency_days: latency = 0 } = series.ds;
-  let status;
-  if (age <= latency + 1) status = 'CURRENT_AS_PUBLISHED';
-  else if (age <= sla) status = 'LAGGED_BY_DESIGN';
-  else if (age <= sla * 2) status = 'OVERDUE';
-  else status = 'STALE';
-  return { effective_date: last.date, age_days: age, acceptable_age_days: sla, freshness_status: status };
+const AUTHORITY = { fred: 'OFFICIAL_AGGREGATOR', yahoo: 'UNOFFICIAL_FREE', sec_edgar: 'OFFICIAL_PRIMARY', stooq: 'UNOFFICIAL_FREE' };
+const AUTHORITY_RANK = { OFFICIAL_PRIMARY: 5, OFFICIAL_AGGREGATOR: 4, LICENSED: 3, MANUAL_PRIMARY: 3, MANUAL_SECONDARY: 2, UNOFFICIAL_FREE: 1, NO_AUTHORITATIVE_SOURCE: 0 };
+/** A composite is only as authoritative as its weakest input. */
+const weakestAuthority = (...levels) =>
+  levels.reduce((w, l) => (AUTHORITY_RANK[l] < AUTHORITY_RANK[w] ? l : w), levels[0]);
+
+/**
+ * FRED labels quarterly and monthly observations by period START. Measuring age from the
+ * label makes a freshly published quarter look ~90 days stale, which is how the Buffett
+ * gauge ended up marked STALE while carrying the most recent Z.1 release there is.
+ * Age is measured from the period END.
+ */
+function effectiveEnd(series) {
+  const label = series.points.at(-1).date;
+  if (series.ds.period_labeling !== 'start') return label;
+  const d = new Date(`${label}T00:00:00Z`);
+  const months = series.ds.expected_frequency === 'quarterly' ? 3 : 1;
+  d.setUTCMonth(d.getUTCMonth() + months);
+  d.setUTCDate(0);                                  // last day of the period
+  return d.toISOString().slice(0, 10);
 }
 
-function provenance(series, transformation, transformation_version = '2.0.0') {
-  const src = REGISTRY.sources[series.ds.source_id];
+function dataState(series) {
+  const age = dayDiff(effectiveEnd(series), RUN_AT);
+  const { acceptable_age_days: sla, expected_publication_latency_days: lat = 0 } = series.ds;
+  if (age <= lat + 1) return { data_state: 'CURRENT', age_days: age, acceptable_age_days: sla };
+  if (age <= sla) return { data_state: 'LAGGED_BY_DESIGN', age_days: age, acceptable_age_days: sla };
+  if (age <= sla * 2) return { data_state: 'OVERDUE', age_days: age, acceptable_age_days: sla };
+  return { data_state: 'STALE', age_days: age, acceptable_age_days: sla };
+}
+
+function provenance(series, transformation) {
   return {
     source_id: series.ds.source_id,
-    authority_level: src.authority_level,
+    source_authority: AUTHORITY[series.ds.source_id] ?? 'NO_AUTHORITATIVE_SOURCE',
     dataset: series.datasetId + (series.symbol ? `:${series.symbol}` : ''),
-    ...freshness(series),
+    effective_date: series.points.at(-1).date,
     retrieved_at: series.retrieved_at,
     raw_hash: series.raw_hash,
     transformation,
-    transformation_version,
-    point_in_time_capable: src.point_in_time_capable === true,
+    calculation_version: CALCULATION_VERSION,
+    code_commit: CODE_COMMIT,
+    point_in_time_capable: REGISTRY.sources[series.ds.source_id]?.point_in_time_capable === true,
   };
 }
 
-// Where does today's reading sit in its own history? A percentile survives a change in
-// market structure; a hardcoded cut-off does not.
-function percentile(points, value, years) {
-  const cutoff = new Date(RUN_AT); cutoff.setFullYear(cutoff.getFullYear() - years);
-  const window = points.filter((p) => new Date(p.date) >= cutoff).map((p) => p.value);
-  const MIN_N = 30;
-  if (window.length < MIN_N) return { status: 'INSUFFICIENT_HISTORY', n: window.length, required: MIN_N };
-  const below = window.filter((v) => v < value).length;
-  return { value: round((below / window.length) * 100, 1), window_years: years, n: window.length };
+const rule = (value, bands) => bands.find(([, lo, hi]) => value >= lo && value < hi)?.[0] ?? bands.at(-1)[0];
+
+/**
+ * Assemble a gauge. `henren.status` is HIS rule firing — never presented as a validated
+ * market signal. Anything not CURRENT/LAGGED_BY_DESIGN becomes NO_DECISION.
+ */
+function gauge(core, { prov, state, measurement = 'CHECKED', validation = 'UNTESTED', automation = 'AUTOMATED' }) {
+  const usable = ['CURRENT', 'LAGGED_BY_DESIGN'].includes(state.data_state);
+  return {
+    ...core,
+    status: {
+      data_state: state.data_state,
+      source_authority: core.source_authority_override ?? prov.source_authority,
+      measurement_integrity: usable ? measurement : 'RAW',
+      signal_validation: validation,
+      automation_mode: automation,
+    },
+    age_days: state.age_days,
+    acceptable_age_days: state.acceptable_age_days,
+    decision: usable ? 'RULE_EVALUATED' : 'NO_DECISION',
+    provenance: prov,
+  };
 }
 
-const change = (points, back) => {
-  const last = points.at(-1), prior = points.at(-1 - back);
-  return prior ? round(((last.value / prior.value) - 1) * 100, 2) : null;
-};
+const noDecision = (id, label, plain, data_state, note, extra = {}) => ({
+  id, label, plain, observed: null, empirical: null, henren: null,
+  status: { data_state, source_authority: extra.source_authority ?? 'NO_AUTHORITATIVE_SOURCE',
+    measurement_integrity: 'RAW', signal_validation: 'UNTESTED',
+    automation_mode: extra.automation_mode ?? 'NOT_WIRED' },
+  decision: 'NO_DECISION', note, ...extra,
+});
 
-// A gauge whose data failed or expired reports that, and is excluded from every count.
-const undecided = (id, label, plain, status, note, extra = {}) =>
-  ({ id, label, plain, value: null, status, decision: 'NO_DECISION', note, ...extra });
-
-const band = (value, bands) => bands.find(([, lo, hi]) => value >= lo && value < hi)?.[0] ?? bands.at(-1)[0];
-
-// Only a gauge whose data is inside its own SLA may show a colour.
-function gate(g, prov) {
-  if (prov.freshness_status === 'STALE') {
-    return { ...g, status: 'STALE', decision: 'NO_DECISION',
-      note: `${prov.dataset} 已過 SLA（${prov.age_days} 天 > ${prov.acceptable_age_days} 天），不參與計分。`,
-      provenance: prov };
-  }
-  return { ...g, decision: 'SCORED', provenance: prov };
-}
-
-const attempt = async (id, fn) => {
+const attempt = async (id, label, fn) => {
   try { return await fn(); }
-  catch (e) {
-    return undecided(id, id, '', 'SOURCE_FAILURE', `取得或計算失敗：${e.message ?? e}`);
-  }
+  catch (e) { return noDecision(id, label, '', 'SOURCE_FAILURE', `取得或計算失敗：${e.message ?? e}`); }
 };
 
-// ---------------------------------------------------------------- the gauges
+// ---------------------------------------------------------------- gauges
 
-// Switch 1 — fuel. His thesis is a RATE ("快速跌破"), not only a level, so level alone
-// under-implements it. Velocity and its own percentile are reported beside the level.
-const fuel = await attempt('fuel', async () => {
+// Switch 1 — fuel. His rule names a RATE ("快速跌破"), so level alone under-implements it.
+const fuel = await attempt('fuel', '開關一 · 燃料（銀行準備金）', async () => {
   const s = await fredSeries('WRESBAL');
   const tn = s.points.at(-1).value / 1e6;
-  const levels = s.points.map((p) => ({ ...p, value: p.value / 1e6 }));
-  const v4 = change(s.points, 4), v13 = change(s.points, 13);
-  const velocitySeries = s.points.map((p, i) => i >= 4
-    ? { date: p.date, value: ((p.value / s.points[i - 4].value) - 1) * 100 } : null).filter(Boolean);
+  const levels = s.points.map((p) => ({ date: p.date, value: p.value / 1e6 }));
+  const v4 = s.points.at(-5) ? (s.points.at(-1).value / s.points.at(-5).value - 1) * 100 : null;
+  const v13 = s.points.at(-14) ? (s.points.at(-1).value / s.points.at(-14).value - 1) * 100 : null;
+  const velSeries = s.points.map((p, i) => (i >= 4
+    ? { date: p.date, value: (p.value / s.points[i - 4].value - 1) * 100 } : null)).filter(Boolean);
+  const velPct = percentileInWindow(velSeries, v4, 5, { now: RUN_AT });
+  // "Fast" is defined against this series' own history. An earlier build used a
+  // hand-picked −3%/4wk, which fires around the 22nd percentile — not fast, just a
+  // number someone chose. Bottom decile is the flag.
+  const fastDrain = velPct.ok && velPct.value <= 10;
+  const level = rule(tn, [['red', -Infinity, 2.5], ['yellow', 2.5, 2.8], ['green', 2.8, Infinity]]);
 
-  const levelBand = band(tn, [['red', -Infinity, 2.5], ['yellow', 2.5, 2.8], ['green', 2.8, Infinity]]);
-  // "Fast" has to be defined against this series' own history, not a number picked by hand.
-  // A first pass used −3% per 4 weeks; that fires around the 22nd percentile, which is not
-  // fast by any reasonable reading — it was an invented cut-off producing a false alarm.
-  // Bottom decile of 4-week changes is the flag.
-  const velPct = percentile(velocitySeries, v4, 5);
-  const draining = Number.isFinite(velPct?.value) && velPct.value <= 10;
-  const status = levelBand === 'green' && draining ? 'yellow' : levelBand;
-
-  return gate({
-    id: 'fuel', switch: 1, label: '開關一 · 燃料（準備金）',
+  return gauge({
+    id: 'fuel', switch: 1, label: '開關一 · 燃料（銀行準備金）',
     plain: '銀行放在聯準會的閒錢。這桶油夠不夠，決定行情還能不能燒。',
-    value: round(tn, 3), unit: '兆美元',
-    thresholds: { green: '> 2.8 兆', yellow: '2.5–2.8 兆，或四週內急跌 ≥3%', red: '< 2.5 兆 → 他的規則是無條件清倉' },
-    velocity: { change_4w_pct: v4, change_13w_pct: v13, velocity_percentile_5y: velPct },
-    level_percentile_5y: percentile(levels, tn, 5),
-    status,
-    interpretation_note: draining
-      ? `水位仍在門檻上方，但四週變化 ${v4}% 落在五年最快流失的一成（p${velPct.value}）—— 他的原句是「快速跌破」，速度本身是訊號。`
-      : `水位在門檻上方；四週變化 ${v4}% 落在 p${velPct?.value ?? '—'}，不構成「快速」流失。`,
-  }, provenance(s, 'level in trillions; 4/13-week pct change; percentile vs 5y'));
+    observed: { value: r2(tn, 3), unit: '兆美元', effective_date: s.points.at(-1).date },
+    empirical: {
+      level_percentile_5y: percentileInWindow(levels, tn, 5, { now: RUN_AT }),
+      change_4w_pct: r2(v4), change_13w_pct: r2(v13),
+      change_4w_percentile_5y: velPct,
+      reading: velPct.ok
+        ? `四週變化 ${r2(v4)}%，落在五年分布的 p${velPct.value}${fastDrain ? '（最快流失的一成）' : '，不構成快速流失'}`
+        : '歷史樣本不足，無法判斷速度是否異常',
+    },
+    henren: {
+      status: level === 'green' && fastDrain ? 'yellow' : level,
+      thresholds: { green: '> 2.8 兆', yellow: '2.5–2.8 兆', red: '< 2.5 兆 → 無條件清倉' },
+      quote: '每週一定要看 H.4.1 那個準備金餘額水位。站上 2.8 萬億美元上方，融漲邏輯是成立的。'
+        + '如果沒有危機的情況下快速跌破了 2.5 萬億，那就無條件清倉，這條沒有任何討論的餘地。',
+      note: fastDrain ? '水位在門檻上方，但速度落在最快的一成 —— 他的原句是「快速跌破」，速度本身是條件。' : null,
+    },
+  }, { prov: provenance(s, 'level in USD trillions; 4/13-week change; percentile vs 5y'), state: dataState(s) });
 });
 
-// Switch 2 — ignition. His signal is an options SKEW inversion. This is the VIX term
-// structure standing in for it. The two measure different things (tail-pricing asymmetry
-// vs the time distribution of fear) and CAN disagree. Named as a proxy, everywhere.
-const ignition = await attempt('ignition', async () => {
-  const [vix, vix3m] = await Promise.all([equitySeries('^VIX', '5y'), equitySeries('^VIX3M', '5y')]);
-  const a = vix.points.at(-1), b = vix3m.points.at(-1);
-  if (a.date !== b.date) {
-    return undecided('ignition', '開關二 · 點火（代理指標）', '',
-      'DATE_MISMATCH', `^VIX 收在 ${a.date}、^VIX3M 收在 ${b.date}，不同交易日不可相除。`);
+// Switch 2 — ignition. Previously divided Yahoo's ^VIX by ^VIX3M; Yahoo stopped publishing
+// closes for the entire term-structure family after 2026-07-17, so that gauge had been
+// dividing across a three-week gap and printing green. FRED still publishes both, and at a
+// higher authority level.
+const ignition = await attempt('ignition', '開關二 · 點火（期限結構代理）', async () => {
+  const [vix, vxv] = await Promise.all([fredSeries('VIXCLS'), fredSeries('VXVCLS')]);
+  const al = alignByEffectiveDate(vix.points, vxv.points);
+  if (!al.ok) return noDecision('ignition', '開關二 · 點火（期限結構代理）', '', 'DATE_MISMATCH', al.reason);
+  if (al.lag_days > 3) {
+    return noDecision('ignition', '開關二 · 點火（期限結構代理）', '', 'DATE_MISMATCH',
+      `VIX 與 3 個月 VIX 的最新日期相差 ${al.lag_days} 天，超過容忍值。`);
   }
-  const byDate = new Map(vix3m.points.map((p) => [p.date, p.value]));
+  const byDate = new Map(vxv.points.map((p) => [p.date, p.value]));
   const ratios = vix.points.filter((p) => byDate.has(p.date))
     .map((p) => ({ date: p.date, value: p.value / byDate.get(p.date) }));
-  const ratio = a.value / b.value;
+  const ratio = al.a.value / al.b.value;
 
-  return gate({
-    id: 'ignition', switch: 2, label: '開關二 · 點火（代理指標）',
-    plain: '市場覺得「現在」比「三個月後」更可怕嗎？怕近的＝恐慌還在；怕遠的＝恐慌退潮了。',
-    value: round(ratio, 3), unit: 'VIX ÷ VIX3M',
-    detail: { vix: round(a.value), vix3m: round(b.value), common_date: a.date },
-    thresholds: { green: '< 0.95（Contango，恐慌退潮）', yellow: '0.95–1.00', red: '> 1.00（倒掛，恐慌未退）' },
-    percentile_5y: percentile(ratios, ratio, 5),
-    status: band(ratio, [['green', -Infinity, 0.95], ['yellow', 0.95, 1.0], ['red', 1.0, Infinity]]),
+  return gauge({
+    id: 'ignition', switch: 2, label: '開關二 · 點火（期限結構代理）',
+    plain: '市場覺得「現在」比「三個月後」更可怕嗎？怕近的＝恐慌還在；怕遠的＝恐慌已經退了。',
+    observed: { value: r2(ratio, 3), unit: 'VIX ÷ 3個月VIX', effective_date: al.anchor,
+      detail: { vix: r2(al.a.value), vix_3m: r2(al.b.value) } },
+    empirical: {
+      percentile_5y: percentileInWindow(ratios, ratio, 5, { now: RUN_AT }),
+      reading: ratio < 1 ? '遠月波動率高於近月（Contango）＝ 市場沒有在為「馬上出事」定價'
+        : '近月高於遠月（Backwardation）＝ 恐慌集中在眼前',
+    },
+    henren: {
+      status: rule(ratio, [['green', -Infinity, 0.95], ['yellow', 0.95, 1.0], ['red', 1.0, Infinity]]),
+      thresholds: { green: '< 0.95（Contango，恐慌退潮）', yellow: '0.95–1.00', red: '> 1.00（倒掛）' },
+      quote: 'VIX 期限結構從倒掛回到正常，專業叫做 Contango，意思就是遠月的波動率重新高於近月，'
+        + '它的意義就是恐慌退潮了。',
+    },
     proxy: true,
-    proxy_warning: '他的原始訊號是選擇權 put/call 偏度極端倒掛＋現貨抗跌。期限結構與偏度相關但不等價，'
-      + '可能出現期限結構已轉綠而偏度尚未觸發（或相反）的情況。此格不可視為他的開關二本身。',
-    proxy_replacement: 'Cboe SKEW 或 OPRA 等級選擇權資料（config/data-sources.json → cboe，尚未接線）',
-  }, provenance(vix, 'front/3-month VIX ratio on a common session date; percentile vs 5y'));
+    proxy_warning: '他的原始開關二是**選擇權 put/call 偏度極端倒掛＋現貨抗跌**。這裡用期限結構代理，'
+      + '兩者相關但不等價：偏度量的是尾部定價的不對稱，期限結構量的是恐慌的時間分布，可能給出相反答案。'
+      + '不過他在底部確認清單裡也直接點名了 Contango 這一項，所以此代理至少落在他自己的判準集合內。',
+    proxy_replacement: 'Cboe SKEW 或 OPRA 等級選擇權資料（registry → cboe，尚未接線）',
+  }, { prov: provenance(vix, 'VIXCLS / VXVCLS on a common effective date; percentile vs 5y'), state: dataState(vix) });
 });
 
-// September liquidity alarms he names by number.
-const sofr = await attempt('sofr', async () => {
+// Switch 3 — the escape bell. Layer A (reported cash capex) is now wired from SEC XBRL.
+// Layers B (finance leases) and C (management guidance) are not, so this is HYBRID.
+const capex = await attempt('capex', '開關三 · 逃生鈴（雲廠商 capex 增速）', async () => {
+  const agg = await aggregateCapex({ archive });
+  const s = agg.series;
+  if (s.length < 6) throw new Error(`only ${s.length} common quarters`);
+  const last = s.at(-1), prev = s.at(-2);
+  const age = dayDiff(last.information_available_at, RUN_AT);
+  const ds = REGISTRY.datasets.SEC_CAPEX;
+
+  // The bell asks whether the growth RATE has peaked and rolled over. QoQ is seasonal
+  // for these issuers (Q1 is routinely soft), so YoY carries the trend and QoQ the texture.
+  const yoySeries = s.filter((x) => x.yoy_pct !== null);
+  const yoyPeak = Math.max(...yoySeries.map((x) => x.yoy_pct));
+  const rolledOver = last.yoy_pct < yoyPeak && yoySeries.at(-2)?.yoy_pct > last.yoy_pct;
+
+  const state = age <= ds.acceptable_age_days
+    ? { data_state: age <= ds.expected_publication_latency_days + 1 ? 'CURRENT' : 'LAGGED_BY_DESIGN',
+      age_days: age, acceptable_age_days: ds.acceptable_age_days }
+    : { data_state: age <= ds.acceptable_age_days * 2 ? 'OVERDUE' : 'STALE',
+      age_days: age, acceptable_age_days: ds.acceptable_age_days };
+
+  return gauge({
+    id: 'capex', switch: 3, label: '開關三 · 逃生鈴（雲廠商 capex 增速）',
+    plain: '微軟、Google、Amazon、Meta 這四家買設備的錢，這一季比去年同季多多少 %。'
+      + '重點不是「還在花」，是「增加的速度有沒有開始變慢」。',
+    observed: {
+      value: last.yoy_pct, unit: '% 年增', effective_date: last.period_end,
+      detail: {
+        total_bn: last.total_bn, qoq_pct: last.qoq_pct,
+        prior_quarter: { period_end: prev.period_end, total_bn: prev.total_bn, yoy_pct: prev.yoy_pct },
+        by_issuer: last.parts.map((p) => ({ ticker: p.ticker, bn: r2(p.val / 1e9), derived_from_cumulative: p.derived })),
+        information_available_at: last.information_available_at,
+        coverage: agg.coverage,
+      },
+    },
+    empirical: {
+      yoy_history: yoySeries.slice(-8).map((x) => ({ period_end: x.period_end, yoy_pct: x.yoy_pct, qoq_pct: x.qoq_pct })),
+      yoy_peak_in_series: yoyPeak,
+      rolled_over: rolledOver,
+      reading: rolledOver
+        ? `年增率自 ${yoyPeak}% 的高點回落到 ${last.yoy_pct}%，且連續兩季走低 —— 符合「見頂回落」的形狀。`
+        : `年增率 ${last.yoy_pct}% 是序列內最高${last.yoy_pct === yoyPeak ? '' : '之一'}，尚未見頂回落。`,
+    },
+    henren: {
+      status: rolledOver ? 'red' : 'green',
+      thresholds: { green: '增速持平或加速', red: '增速見頂回落 → 立刻平倉，不看當期獲利' },
+      quote: '你要盯的是下游的雲廠商的資本開支的二階導數，也就是環比增速而不是同比增速。'
+        + '如果資本開支的絕對額還在漲，但環比增速已經開始放緩甚至見頂回落的話，'
+        + '哪怕當期的淨利潤再創新高也必須立刻平倉。因為現在的估值給的是增量估值，增量沒了估值就沒有這個邏輯。',
+      implementation_divergence: '他要的是**環比**二階導。本格主判用**年增**，因為這四家的環比有明顯季節性'
+        + '（Q1 例行走弱：2025Q1 −0.6%、2026Q1 +9.37%），單看環比會週期性誤報「見頂」。'
+        + '環比數列仍完整回報在 empirical.yoy_history 裡供對照。這是實作上的偏離，不是他的規則。',
+    },
+    layers: {
+      A_reported_cash_capex: 'AUTOMATED — SEC XBRL，10-Q 累計數已差分還原為單季',
+      B_finance_leases: 'NOT_WIRED — 融資租賃不進現金 capex，AI 資料中心佔比可觀且在變動，本格系統性低估',
+      C_management_guidance: 'NOT_WIRED — 市場真正敏感的是下季指引，法說會內容沒有 XBRL tag',
+    },
+    source_authority_override: 'OFFICIAL_PRIMARY',
+  }, {
+    prov: {
+      source_id: 'sec_edgar', source_authority: 'OFFICIAL_PRIMARY', dataset: 'SEC_CAPEX',
+      effective_date: last.period_end, retrieved_at: agg.issuers[0]?.retrieved_at,
+      raw_hash: agg.issuers.map((i) => `${i.ticker}:${i.raw_hash}`).join(' '),
+      transformation: 'YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; YoY and QoQ',
+      calculation_version: CALCULATION_VERSION, code_commit: CODE_COMMIT, point_in_time_capable: true,
+      information_available_at: last.information_available_at,
+    },
+    state, automation: 'HYBRID',
+  });
+});
+
+// --- liquidity alarms -------------------------------------------------------
+
+const sofr = await attempt('sofr', 'SOFR − IORB 利差', async () => {
   const [s, i] = await Promise.all([fredSeries('SOFR'), fredSeries('IORB')]);
-  if (s.points.at(-1).date !== i.points.at(-1).date) {
-    // A 1-day offset is normal publication cadence, not an error — align on the common date.
-    const common = i.points.map((p) => p.date).filter((d) => s.points.some((q) => q.date === d)).at(-1);
-    if (!common) return undecided('sofr', 'SOFR − IORB 利差', '', 'DATE_MISMATCH', '兩序列無共同日期。');
-    const sv = s.points.find((p) => p.date === common).value;
-    const iv = i.points.find((p) => p.date === common).value;
-    return finishSofr(s, i, sv, iv, common);
+  const al = alignByEffectiveDate(s.points, i.points);
+  if (!al.ok || al.lag_days > 5) {
+    return noDecision('sofr', 'SOFR − IORB 利差', '', 'DATE_MISMATCH', al.reason ?? `相差 ${al.lag_days} 天`);
   }
-  return finishSofr(s, i, s.points.at(-1).value, i.points.at(-1).value, s.points.at(-1).date);
-});
-
-function finishSofr(s, i, sv, iv, date) {
-  const bp = (sv - iv) * 100;
   const byDate = new Map(i.points.map((p) => [p.date, p.value]));
   const spreads = s.points.filter((p) => byDate.has(p.date))
     .map((p) => ({ date: p.date, value: (p.value - byDate.get(p.date)) * 100 }));
-  return gate({
+  const bp = (al.a.value - al.b.value) * 100;
+  return gauge({
     id: 'sofr', label: 'SOFR − IORB 利差',
     plain: '銀行之間借隔夜錢，要不要付比聯準會利率更高的價？要付，就代表錢在變緊。',
-    value: round(bp, 1), unit: '基點 (bp)',
-    detail: { sofr: sv, iorb: iv, common_date: date },
-    thresholds: { green: '< 1 bp', yellow: '1–3 bp', red: '≥ 3 bp（他引用的 95 分位黃色警報）' },
-    percentile_3y: percentile(spreads, bp, 3),
-    percentile_note: 'IORB 序列自 2021-07 才開始，三年以上的分位數僅有有限樣本。',
-    status: band(bp, [['green', -Infinity, 1], ['yellow', 1, 3], ['red', 3, Infinity]]),
-  }, provenance(s, 'SOFR minus IORB in bp on a common date; percentile vs 3y'));
-}
+    observed: { value: r2(bp, 1), unit: '基點', effective_date: al.anchor,
+      detail: { sofr: al.a.value, iorb: al.b.value } },
+    empirical: { percentile_3y: percentileInWindow(spreads, bp, 3, { now: RUN_AT }),
+      note: 'IORB 序列自 2021-07 起，分位數樣本有限。' },
+    henren: {
+      status: rule(bp, [['green', -Infinity, 1], ['yellow', 1, 3], ['red', 3, Infinity]]),
+      thresholds: { green: '< 1 bp', yellow: '1–3 bp', red: '≥ 3 bp' },
+      quote: 'SOFR-IRB 這個大家一定要每天都看，黃色預警是利差衝過三個基點，因為這是一個 95 分位的程度。',
+    },
+  }, { prov: provenance(s, 'SOFR minus IORB in bp on a common effective date; percentile vs 3y'), state: dataState(s) });
+});
 
-const tga = await attempt('tga', async () => {
+const tga = await attempt('tga', '財政部 TGA 餘額', async () => {
   const s = await fredSeries('WTREGEN');
   const bn = s.points.at(-1).value / 1000;
-  const levels = s.points.map((p) => ({ ...p, value: p.value / 1000 }));
-  return gate({
-    id: 'tga', label: '財政部 TGA 帳戶餘額',
+  const levels = s.points.map((p) => ({ date: p.date, value: p.value / 1000 }));
+  return gauge({
+    id: 'tga', label: '財政部 TGA 餘額',
     plain: '財政部的活存帳戶。它變胖是把市場上的錢吸走，變瘦是把錢放回市場。',
-    value: round(bn, 1), unit: '十億美元',
-    thresholds: { green: '< 9,500 億', yellow: '9,500 億 – 1 兆', red: '≥ 1 兆' },
-    percentile_5y: percentile(levels, bn, 5),
-    context: '財政部自訂 9 月底目標 9,500 億美元；7–9 月淨市場化借款計畫 6,710 億美元。'
-      + '此為財政部公告，非本系統推算。',
-    status: band(bn, [['green', -Infinity, 950], ['yellow', 950, 1000], ['red', 1000, Infinity]]),
-  }, provenance(s, 'level in USD bn; percentile vs 5y'));
+    observed: { value: r2(bn, 1), unit: '十億美元', effective_date: s.points.at(-1).date },
+    empirical: { percentile_5y: percentileInWindow(levels, bn, 5, { now: RUN_AT }) },
+    henren: {
+      status: rule(bn, [['green', -Infinity, 950], ['yellow', 950, 1000], ['red', 1000, Infinity]]),
+      thresholds: { green: '< 9,500 億', yellow: '9,500 億–1 兆', red: '≥ 1 兆' },
+      quote: '財政部計劃在 2026 年的 7 月到 9 月淨市場化借款達到 6710 億美元，'
+        + '並且到 9 月底 TGA 帳戶的餘額目標是 9500 億美元。所以從 7 月份開始流動性壓力會逐漸上升。',
+    },
+  }, { prov: provenance(s, 'level in USD bn; percentile vs 5y'), state: dataState(s) });
 });
 
-const rrp = await attempt('rrp', async () => {
+const rrp = await attempt('rrp', '隔夜逆回購緩衝', async () => {
   const s = await fredSeries('RRPONTSYD');
   const v = s.points.at(-1).value;
-  return gate({
-    id: 'rrp', label: '隔夜逆回購 (RRP) 緩衝',
+  return gauge({
+    id: 'rrp', label: '隔夜逆回購緩衝',
     plain: '市場多餘現金的緩衝墊。墊子還厚，抽錢先抽它；墊子見底，就直接抽銀行準備金。',
-    value: round(v, 2), unit: '十億美元',
-    thresholds: { green: '> 500 億（仍有緩衝）', yellow: '< 500 億（緩衝耗盡，壓力直達準備金）' },
-    percentile_5y: percentile(s.points, v, 5),
-    status: v < 50 ? 'yellow' : 'green',
-  }, provenance(s, 'level in USD bn; percentile vs 5y'));
+    observed: { value: r2(v), unit: '十億美元', effective_date: s.points.at(-1).date },
+    empirical: { percentile_5y: percentileInWindow(s.points, v, 5, { now: RUN_AT }),
+      reading: v < 50 ? '緩衝實質見底 —— 財政部再抽錢會直接打到銀行準備金。' : '仍有緩衝。' },
+    henren: { status: v < 50 ? 'yellow' : 'green',
+      thresholds: { green: '> 500 億', yellow: '< 500 億（緩衝耗盡）' },
+      quote: '（他未給明確數值門檻；此門檻為本系統依其論述設定，不是他的原話。）', threshold_is_ours: true },
+  }, { prov: provenance(s, 'level in USD bn; percentile vs 5y'), state: dataState(s) });
 });
 
-const hyoas = await attempt('hyoas', async () => {
+const hyoas = await attempt('hyoas', '高收益債信用利差', async () => {
   const s = await fredSeries('BAMLH0A0HYM2');
   const v = s.points.at(-1).value;
-  return gate({
+  return gauge({
     id: 'hyoas', label: '高收益債信用利差 (HY OAS)',
     plain: '借錢給體質最差的公司，投資人要多收多少利息當風險費。這個數字跳起來＝信用真的出事。',
-    value: round(v, 2), unit: '%',
-    thresholds: { green: '< 4%', yellow: '4–5%', red: '≥ 5%' },
-    percentile_5y: percentile(s.points, v, 5),
-    percentile_20y: percentile(s.points, v, 20),
-    status: band(v, [['green', -Infinity, 4], ['yellow', 4, 5], ['red', 5, Infinity]]),
-  }, provenance(s, 'OAS in percent; percentile vs 5y and 20y'));
+    observed: { value: r2(v), unit: '%', effective_date: s.points.at(-1).date },
+    empirical: {
+      percentile_5y: percentileInWindow(s.points, v, 5, { now: RUN_AT }),
+      percentile_20y: percentileInWindow(s.points, v, 20, { now: RUN_AT }),
+    },
+    henren: { status: rule(v, [['green', -Infinity, 4], ['yellow', 4, 5], ['red', 5, Infinity]]),
+      thresholds: { green: '< 4%', yellow: '4–5%', red: '≥ 5%' },
+      quote: '（門檻為本系統設定；他強調的是「基本面沒變而價格崩了」時要看流動性與信用，未給數值。）',
+      threshold_is_ours: true },
+  }, { prov: provenance(s, 'OAS in percent; percentile vs 5y and 20y'), state: dataState(s) });
 });
 
-const nfci = await attempt('nfci', async () => {
+const nfci = await attempt('nfci', '金融條件指數 NFCI', async () => {
   const s = await fredSeries('NFCI');
   const v = s.points.at(-1).value;
-  return gate({
-    id: 'nfci', label: '芝加哥聯準會金融條件指數 (NFCI)',
+  return gauge({
+    id: 'nfci', label: '金融條件指數 (NFCI)',
     plain: '整體金融環境是鬆還是緊的總分。負的＝比平均寬鬆，正的＝比平均緊。',
-    value: round(v, 3), unit: '標準差',
-    thresholds: { green: '< 0（寬鬆）', yellow: '0–0.2', red: '≥ 0.2（明顯收緊）' },
-    percentile_5y: percentile(s.points, v, 5),
-    status: band(v, [['green', -Infinity, 0], ['yellow', 0, 0.2], ['red', 0.2, Infinity]]),
-  }, provenance(s, 'index level; percentile vs 5y'));
+    observed: { value: r2(v, 3), unit: '標準差', effective_date: s.points.at(-1).date },
+    empirical: { percentile_5y: percentileInWindow(s.points, v, 5, { now: RUN_AT }) },
+    henren: { status: rule(v, [['green', -Infinity, 0], ['yellow', 0, 0.2], ['red', 0.2, Infinity]]),
+      thresholds: { green: '< 0（寬鬆）', yellow: '0–0.2', red: '≥ 0.2' },
+      quote: '（門檻為本系統設定，非他的原話。）', threshold_is_ours: true },
+  }, { prov: provenance(s, 'index level; percentile vs 5y'), state: dataState(s) });
 });
 
-// M2 vs Nasdaq. The prior version compared M2 as of June against equities as of August.
-// Both legs now use the same anchor date t, and t is capped by the slower series.
-const m2gap = await attempt('m2gap', async () => {
+// M2 vs Nasdaq. Anchored on the slower series; both legs use calendar-aware YoY.
+const m2gap = await attempt('m2gap', 'M2 年增 − 那斯達克年增', async () => {
   const [m2, ndx] = await Promise.all([fredSeries('M2SL'), equitySeries('^IXIC', '5y')]);
-  const anchor = m2.points.at(-1).date;                       // slower series sets t
-  const equityAsOfT = ndx.points.filter((p) => p.date <= anchor).at(-1);
-  if (!equityAsOfT) return undecided('m2gap', 'M2 年增 − 那斯達克年增', '', 'DATE_MISMATCH',
-    `找不到 ${anchor} 或之前的股價收盤。`);
-
-  // Calendar-aware year-ago lookup on both legs, not "minus 365 days".
-  const yearBefore = (iso) => { const d = new Date(iso); d.setFullYear(d.getFullYear() - 1); return d.toISOString().slice(0, 10); };
-  const m2Prior = m2.points.filter((p) => p.date <= yearBefore(anchor)).at(-1);
-  const eqPrior = ndx.points.filter((p) => p.date <= yearBefore(equityAsOfT.date)).at(-1);
-  if (!m2Prior || !eqPrior) return undecided('m2gap', 'M2 年增 − 那斯達克年增', '',
-    'INSUFFICIENT_HISTORY', '缺少一年前的對應觀測值。');
-
-  const m2Yoy = (m2.points.at(-1).value / m2Prior.value - 1) * 100;
-  const eqYoy = (equityAsOfT.value / eqPrior.value - 1) * 100;
-  const gap = m2Yoy - eqYoy;
-  const prov = provenance(m2, 'calendar-aware YoY on both legs, anchored to the M2 effective date');
-
-  return gate({
+  const al = alignByEffectiveDate(m2.points, ndx.points);
+  if (!al.ok) return noDecision('m2gap', 'M2 年增 − 那斯達克年增', '', 'DATE_MISMATCH', al.reason);
+  const m2Yoy = yoyAtAnchor(m2.points, al.anchor);
+  const eqYoy = yoyAtAnchor(ndx.points, al.anchor, { maxBackfillDays: 10 });
+  if (!m2Yoy.ok || !eqYoy.ok) {
+    return noDecision('m2gap', 'M2 年增 − 那斯達克年增', '', 'INSUFFICIENT_HISTORY',
+      `無法取得一年前對應觀測：${m2Yoy.reason ?? ''} ${eqYoy.reason ?? ''}`.trim());
+  }
+  const gap = m2Yoy.pct - eqYoy.pct;
+  return gauge({
     id: 'm2gap', label: 'M2 年增 − 那斯達克年增（增負差）',
     plain: '市場上的錢一年多了幾 %，股市一年漲了幾 %。股市跑得比錢快太多，多出來的就是估值撐的。',
-    value: round(gap, 1), unit: '個百分點',
-    detail: {
-      anchor_date: anchor, m2_yoy: round(m2Yoy, 2), nasdaq_yoy: round(eqYoy, 2),
-      nasdaq_close_used: { date: equityAsOfT.date, value: round(equityAsOfT.value, 2) },
-      m2_year_ago: m2Prior.date, nasdaq_year_ago: eqPrior.date,
-    },
-    thresholds: { green: '> −15', yellow: '−15 至 −25', red: '≤ −25' },
-    status: band(gap, [['red', -Infinity, -25], ['yellow', -25, -15], ['green', -15, Infinity]]),
-    alignment_note: `兩邊都錨定在 ${anchor}（由較慢的 M2 決定）。股價因此使用 ${equityAsOfT.date} 收盤，`
-      + `而非最新收盤 —— 這個讀數描述的是 ${anchor}，不是今天。`,
-    mixed_authority: '此格混合 OFFICIAL_AGGREGATOR（M2）與 UNOFFICIAL_FREE（股價），以較低者為準。',
-  }, prov);
+    observed: { value: r2(gap, 1), unit: '個百分點', effective_date: al.anchor,
+      detail: { m2_yoy: r2(m2Yoy.pct), nasdaq_yoy: r2(eqYoy.pct),
+        m2_legs: [m2Yoy.then.date, m2Yoy.now.date], nasdaq_legs: [eqYoy.then.date, eqYoy.now.date],
+        anchor_set_by: al.anchor_set_by === 'A' ? 'M2（較慢）' : 'Nasdaq' } },
+    empirical: { reading: `此讀數描述的是 ${al.anchor}，不是今天 —— M2 每月發布且落後約一個月，`
+      + `錨點只能取到兩邊都有觀測的最新日期。` },
+    henren: { status: rule(gap, [['red', -Infinity, -25], ['yellow', -25, -15], ['green', -15, Infinity]]),
+      thresholds: { green: '> −15', yellow: '−15 至 −25', red: '≤ −25' },
+      quote: '第五項 M2 同比增長 5.6% 而同期的納斯達克漲幅是 29.7%，增負差仍在負的 24.1%，這項也觸發了。',
+      note: '他 6 月讀到 −24.1 判定觸發。' },
+    source_authority_override: weakestAuthority('OFFICIAL_AGGREGATOR', 'UNOFFICIAL_FREE'),
+    mixed_authority_note: 'M2 來自 FRED（OFFICIAL_AGGREGATOR），股價來自 Yahoo（UNOFFICIAL_FREE）；'
+      + '複合指標取最低者，故本格標為 UNOFFICIAL_FREE。',
+  }, { prov: provenance(m2, 'calendar-aware YoY on both legs at a common anchor'), state: dataState(m2) });
 });
 
-// Buffett ratio. Both legs are quarterly and lag by months; if they land in different
-// quarters the gauge says so rather than dividing them anyway.
-const buffett = await attempt('buffett', async () => {
+// Buffett ratio — both legs quarterly, joined on a common period instead of divided blind.
+const buffett = await attempt('buffett', '巴菲特指標（總市值 ÷ GDP）', async () => {
   const [eq, gdp] = await Promise.all([fredSeries('NCBEILQ027S'), fredSeries('GDP')]);
-  const e = eq.points.at(-1), g = gdp.points.at(-1);
-  const prov = provenance(eq, 'corporate equities liability / GDP, both quarterly');
-  const offset = Math.abs(dayDiff(e.date, g.date));
-  if (offset > 45) {
-    return { ...undecided('buffett', '巴菲特指標（總市值 ÷ GDP）',
+  const eqBn = eq.points.map((p) => ({ date: p.date, value: p.value / 1000 }));
+  const al = alignQuarterly(eqBn, gdp.points);
+  if (!al.ok) {
+    return noDecision('buffett', '巴菲特指標（總市值 ÷ GDP）',
       '整個股市值多少錢，跟整個國家一年生產多少錢比一比。', 'DATE_MISMATCH',
-      `分子 ${e.date}、分母 ${g.date}，相差 ${offset} 天（超過一季）。兩者不同期，相除的結果沒有定義。`),
-      detail: { equities_date: e.date, gdp_date: g.date, offset_days: offset },
-      provenance: prov,
-      would_have_been: round((e.value / 1000 / g.value) * 100, 1) };
+      `分子最新 ${al.latest_a}、分母最新 ${al.latest_b}，找不到同一季的配對。`);
   }
-  const ratio = (e.value / 1000 / g.value) * 100;
-  return gate({
+  const ratio = (al.a.value / al.b.value) * 100;
+  const hist = eqBn.map((e) => {
+    const g = gdp.points.find((x) => Math.abs(new Date(x.date) - new Date(e.date)) / 86400000 <= 45);
+    return g ? { date: e.date, value: (e.value / g.value) * 100 } : null;
+  }).filter(Boolean);
+  const periodEnd = (() => { const d = new Date(`${al.period}T00:00:00Z`);
+    d.setUTCMonth(d.getUTCMonth() + 3); d.setUTCDate(0); return d.toISOString().slice(0, 10); })();
+  const age = dayDiff(periodEnd, RUN_AT);
+  const ds = REGISTRY.datasets.NCBEILQ027S;
+  return gauge({
     id: 'buffett', label: '巴菲特指標（總市值 ÷ GDP）',
     plain: '整個股市值多少錢，跟整個國家一年生產多少錢比一比。超過 100% 就算貴。',
-    value: round(ratio, 1), unit: '%',
-    thresholds: { green: '< 150%', yellow: '150–200%', red: '≥ 200%' },
-    status: band(ratio, [['green', -Infinity, 150], ['yellow', 150, 200], ['red', 200, Infinity]]),
-  }, prov);
+    observed: { value: r2(ratio, 1), unit: '%', effective_date: al.period,
+      detail: { equities_bn: r2(al.a.value), equities_date: al.a.date,
+        gdp_bn: r2(al.b.value), gdp_date: al.b.date, offset_days: al.offset_days } },
+    empirical: { percentile_20y: percentileInWindow(hist, ratio, 20, { now: RUN_AT }),
+      reading: `兩邊都對齊在 ${al.period} 起始的那一季（截至 ${periodEnd}）。此讀數描述的是那一季，`
+        + `距季末約 ${age} 天。Z.1 與 GDP 都是季度資料且發布本身就落後，這是設計上的落後不是失效。` },
+    henren: { status: rule(ratio, [['green', -Infinity, 150], ['yellow', 150, 200], ['red', 200, Infinity]]),
+      thresholds: { green: '< 150%', yellow: '150–200%', red: '≥ 200%' },
+      quote: '第四項經典巴菲特指標 234%，也觸發。',
+      note: '他讀到 234%；本系統分母定義不同（Z.1 企業股權 ÷ GDP），數值對不齊是預期內的。' },
+  }, { prov: { ...provenance(eq, 'Z.1 corporate equities / GDP, joined on a common quarter'),
+      effective_date: al.period, period_end: periodEnd },
+    state: { data_state: age <= ds.acceptable_age_days ? 'LAGGED_BY_DESIGN' : 'STALE',
+      age_days: age, acceptable_age_days: ds.acceptable_age_days } });
 });
 
-// Renamed. The prior version took max(single-name vol / index vol) over a hand-picked AI
-// basket and called the result "crowding". It is not crowding: the basket is selected, the
-// max is an extreme-value statistic, and realised volatility is not positioning. It now
-// says what it actually computes, and reports the whole distribution.
-const aiVol = await attempt('ai-basket-rel-vol', async () => {
+// Named for what it computes. It is a volatility ratio over a chosen basket — not crowding.
+const aiVol = await attempt('ai-basket-rel-vol', 'AI 籃子相對波動（中位數）', async () => {
   const BASKET = ['MU', 'SNDK', 'PLTR', 'AMD', 'NVDA', 'AVGO', 'SMH'];
   const rvol = (pts, len = 21) => {
     if (pts.length < len + 1) return null;
@@ -388,109 +501,131 @@ const aiVol = await attempt('ai-basket-rel-vol', async () => {
     try {
       const s = await equitySeries(sym, '1y');
       const v = rvol(s.points);
-      rows.push({ symbol: sym, rvol21: round(v), x_index: round(v / spxVol, 1),
-        last: round(s.points.at(-1).value, 2), as_of: s.points.at(-1).date });
-    } catch (e) { rows.push({ symbol: sym, status: 'SOURCE_FAILURE', note: String(e.message ?? e) }); }
+      rows.push({ symbol: sym, rvol21: r2(v), x_index: r2(v / spxVol, 1),
+        last: r2(s.points.at(-1).value), as_of: s.points.at(-1).date });
+    } catch (e) { rows.push({ symbol: sym, error: String(e.message ?? e) }); }
   }
   const ok = rows.filter((r) => Number.isFinite(r.x_index));
-  if (ok.length < 4) return undecided('ai-basket-rel-vol', 'AI 籃子相對波動', '',
-    'MISSING', `僅取得 ${ok.length}/${BASKET.length} 檔，樣本不足。`);
+  if (ok.length < 4) {
+    return noDecision('ai-basket-rel-vol', 'AI 籃子相對波動（中位數）', '', 'MISSING',
+      `僅取得 ${ok.length}/${BASKET.length} 檔，樣本不足。`, { missing: rows.filter((r) => r.error) });
+  }
   const sorted = ok.map((r) => r.x_index).sort((a, b) => a - b);
   const median = sorted[Math.floor(sorted.length / 2)];
-
-  return gate({
+  return gauge({
     id: 'ai-basket-rel-vol', label: 'AI 籃子相對波動（中位數）',
     plain: '這幾檔 AI 股最近上下跳的幅度，是大盤的幾倍。倍數越大，代表風險越集中在少數股票、不在指數。',
-    value: round(median, 1), unit: '倍（中位數）',
-    detail: { spx_rvol21: round(spxVol), basket: rows, max: round(Math.max(...sorted), 1), min: round(Math.min(...sorted), 1) },
-    thresholds: { green: '< 3 倍', yellow: '3–5 倍', red: '≥ 5 倍' },
-    status: band(median, [['green', -Infinity, 3], ['yellow', 3, 5], ['red', 5, Infinity]]),
-    naming_note: '本格量的是「已實現波動比值」，不是擁擠度。真正的擁擠度需要部位資料 —— '
-      + '集中度、廣度、橫斷面相關性、成交量異常、選擇權部位。這些都尚未接線，所以此格'
-      + '不再命名為 Crowding，改為描述它實際計算的東西。',
-    selection_bias_note: `籃子是人工挑選的 ${BASKET.length} 檔 AI 相關標的，本身就有主題偏誤；`
-      + '改用中位數而非最大值，是為了避免單一極端值代表整個市場。它仍然只描述這個籃子。',
-  }, provenance(spx, '21-day annualised realised vol vs ^GSPC; median across a fixed basket'));
+    observed: { value: r2(median, 1), unit: '倍', effective_date: spx.points.at(-1).date,
+      detail: { spx_rvol21: r2(spxVol), max: r2(Math.max(...sorted), 1), min: r2(Math.min(...sorted), 1), basket: rows } },
+    empirical: { reading: `大盤 21 日已實現波動 ${r2(spxVol)}%，籃子中位數是它的 ${r2(median, 1)} 倍。` },
+    henren: { status: rule(median, [['green', -Infinity, 3], ['yellow', 3, 5], ['red', 5, Infinity]]),
+      thresholds: { green: '< 3 倍', yellow: '3–5 倍', red: '≥ 5 倍' },
+      quote: '（門檻為本系統設定。他談的是「拥挤就是一个金光闪闪的博弈矿」，未給數值門檻。）',
+      threshold_is_ours: true },
+    naming_note: '本格量的是**已實現波動比值**，不是擁擠度。真正的擁擠度需要部位資料 —— 集中度、廣度、'
+      + '橫斷面相關性、成交量異常、選擇權部位、資金流。那些都尚未接線，所以此格不叫 Crowding。',
+    selection_bias_note: `籃子是人工挑選的 ${BASKET.length} 檔 AI 相關標的，有主題偏誤；用中位數而非最大值，`
+      + '避免單一極端值代表整個市場。它只描述這個籃子。',
+  }, { prov: provenance(spx, '21-day annualised realised vol vs ^GSPC; median across a fixed basket'),
+    state: dataState(spx) });
 });
 
-// -------------------------------------------------- manual gauges (no free feed)
+// --- manual gauges ----------------------------------------------------------
 
 let manual = [];
 try {
   const file = JSON.parse(readFileSync(join(here, '..', 'references', 'manual-gauges.json'), 'utf8'));
-  manual = file.gauges.map((g) => {
+  manual = file.gauges.filter((g) => g.id !== 'capex-qoq').map((g) => {
     const contract = REGISTRY.manual_datasets[g.dataset_id] ?? {};
-    const sla = contract.acceptable_age_days ?? g.refreshDays ?? 45;
+    const sla = contract.acceptable_age_days ?? 45;
     const age = g.asOf ? dayDiff(g.asOf, RUN_AT) : null;
-    const stale = age === null || age > sla;
+    const state = g.value === null ? 'MISSING' : age > sla * 2 ? 'STALE' : age > sla ? 'OVERDUE' : 'LAGGED_BY_DESIGN';
+    const usable = ['LAGGED_BY_DESIGN'].includes(state);
     return {
-      ...g,
-      status: g.value === null ? 'NOT_WIRED' : stale ? 'STALE' : g.status,
-      decision: (g.value === null || stale) ? 'NO_DECISION' : 'SCORED',
-      provenance: {
-        source_id: 'manual',
-        authority_level: contract.authoritative_source_id ?? 'NO_AUTHORITATIVE_SOURCE',
-        dataset: g.dataset_id ?? g.id,
-        effective_date: g.asOf ?? null, age_days: age, acceptable_age_days: sla,
-        freshness_status: g.value === null ? 'MISSING' : stale ? 'STALE' : 'LAGGED_BY_DESIGN',
-        retrieved_at: null, raw_hash: null,
-        transformation: 'hand-entered from the cited publication',
-        point_in_time_capable: false,
+      id: g.id, label: g.label, plain: g.plain,
+      observed: { value: g.value, unit: g.unit, effective_date: g.asOf },
+      empirical: { reading: g.note },
+      henren: { status: g.status, thresholds: g.thresholds, quote: g.quote ?? null },
+      status: {
+        data_state: state,
+        source_authority: contract.authoritative_source_id?.startsWith('NO_') ? 'NO_AUTHORITATIVE_SOURCE' : 'MANUAL_SECONDARY',
+        measurement_integrity: usable ? 'CHECKED' : 'RAW',
+        signal_validation: 'UNTESTED',
+        automation_mode: 'MANUAL_REVIEW_REQUIRED',
       },
-      blocker: contract.blocker,
+      age_days: age, acceptable_age_days: sla,
+      decision: usable ? 'RULE_EVALUATED' : 'NO_DECISION',
+      note: usable ? null : `${g.asOf} 的讀數已過 SLA（${age} 天 > ${sla} 天），不參與規則評估。`,
+      provenance: { source_id: 'manual', source_authority: 'MANUAL_SECONDARY', dataset: g.dataset_id,
+        effective_date: g.asOf, retrieved_at: null, raw_hash: null,
+        transformation: `hand-entered from ${g.source}`, calculation_version: CALCULATION_VERSION,
+        code_commit: CODE_COMMIT, point_in_time_capable: false },
     };
   });
 } catch (e) {
-  manual = [undecided('manual-load', 'manual gauges', '', 'SOURCE_FAILURE', String(e.message ?? e))];
+  manual = [noDecision('manual-load', 'manual gauges', '', 'SOURCE_FAILURE', String(e.message ?? e))];
 }
 
 // ---------------------------------------------------------------- assemble
 
-const auto = [fuel, ignition, sofr, tga, rrp, hyoas, nfci, m2gap, buffett, aiVol];
-const all = [...auto, ...manual];
-const scored = all.filter((g) => g.decision === 'SCORED');
-const undecidedGauges = all.filter((g) => g.decision === 'NO_DECISION');
+const all = [fuel, ignition, capex, sofr, tga, rrp, hyoas, nfci, m2gap, buffett, aiVol, ...manual];
+const evaluated = all.filter((g) => g.decision === 'RULE_EVALUATED');
+const undecided = all.filter((g) => g.decision === 'NO_DECISION');
 
-const tally = scored.reduce((a, g) => { a[g.status] = (a[g.status] ?? 0) + 1; return a; }, {});
+const ruleTally = evaluated.reduce((a, g) => { a[g.henren.status] = (a[g.henren.status] ?? 0) + 1; return a; }, {});
+const dim = (k) => all.reduce((a, g) => { const v = g.status?.[k] ?? 'UNKNOWN'; a[v] = (a[v] ?? 0) + 1; return a; }, {});
 
 const out = {
-  schema_version: '2.0.0',
+  schema_version: '3.0.0',
+  calculation_version: CALCULATION_VERSION,
+  code_commit: CODE_COMMIT,
   generated_at: RUN_AT.toISOString(),
-  generated_at_local: RUN_AT.toLocaleString('en-US', { timeZone: 'America/New_York', timeZoneName: 'short' }),
+  generated_at_et: RUN_AT.toLocaleString('en-US', { timeZone: 'America/New_York', timeZoneName: 'short' }),
+  market_session: (() => {
+    const et = new Date(RUN_AT.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const day = et.getDay(), mins = et.getHours() * 60 + et.getMinutes();
+    const open = day >= 1 && day <= 5 && mins >= 570 && mins < 960;
+    return { us_market: open ? 'OPEN' : 'CLOSED', timezone: 'America/New_York' };
+  })(),
   frame: '基本面管方向、流動性管顛簸、擁擠管斷裂',
-  // Counts cover SCORED gauges only. Anything undecided is listed separately and never
-  // folded into a colour count — that is how "we don't know" becomes "looks fine".
-  tally: { ...tally, scored: scored.length, no_decision: undecidedGauges.length, total: all.length },
-  no_composite_score: 'This build emits no bubble score, no market score, and no 0-100 index. '
-    + 'None has been validated against a defined target, so none is reported. Read the components.',
+  // Two different questions, never merged: did HIS rule fire, and has anyone shown the
+  // rule works? The first is a reading; the second is a research programme.
+  henren_rule_tally: { ...ruleTally, evaluated: evaluated.length, no_decision: undecided.length, total: all.length },
+  status_summary: {
+    data_state: dim('data_state'),
+    source_authority: dim('source_authority'),
+    measurement_integrity: dim('measurement_integrity'),
+    signal_validation: dim('signal_validation'),
+    automation_mode: dim('automation_mode'),
+  },
+  no_composite_score: '本系統不輸出任何綜合分數、泡沫指數或 0–100 評分。沒有定義預測目標、沒有樣本外驗證的加權合成，是把不確定性藏起來，不是資訊。',
   point_in_time: false,
-  point_in_time_note: 'FRED serves latest-vintage data only. These readings describe the present. '
-    + 'They are not a point-in-time history and must not be used for backtesting.',
+  point_in_time_note: 'FRED 只提供最新修訂版，所以這些讀數描述現在，不是可回測的歷史。SEC capex 例外（帶 filed 日期）。',
   gauges: all,
 };
 
 if (process.argv.includes('--json')) {
   console.log(JSON.stringify(out, null, 2));
 } else {
-  const icon = { green: '🟢', yellow: '🟡', red: '🔴', STALE: '⚪', NOT_WIRED: '⛔',
-    SOURCE_FAILURE: '❌', DATE_MISMATCH: '⚠️', MISSING: '⛔', INSUFFICIENT_HISTORY: '⚠️' };
-  console.log(`狠人判斷標誌 · ${out.generated_at_local}`);
-  console.log(`資料來源見 config/data-sources.json · point-in-time: ${out.point_in_time}\n`);
-  console.log('— 已計分 —');
-  for (const g of scored) {
-    const pc = g.percentile_5y?.value ?? g.percentile_3y?.value;
-    console.log(`${icon[g.status] ?? '?'} ${(g.label ?? g.id).padEnd(30)}`
-      + `${String(`${g.value} ${g.unit ?? ''}`).padStart(20)}  `
-      + `${(g.provenance?.effective_date ?? '').padEnd(11)}`
-      + `${pc !== undefined ? ` p${pc}` : ''}`);
+  const icon = { green: '🟢', yellow: '🟡', red: '🔴' };
+  const ds = { STALE: '⚪', OVERDUE: '🟤', MISSING: '⛔', NOT_WIRED: '⛔', SOURCE_FAILURE: '❌', DATE_MISMATCH: '⚠️' };
+  console.log(`狠人判斷標誌 · ${out.generated_at_et} · 美股 ${out.market_session.us_market}`);
+  console.log(`calc v${out.calculation_version} @ ${out.code_commit} · point-in-time: ${out.point_in_time}\n`);
+  console.log('— HENREN RULE 已評估 —  (規則觸發，不是已驗證的市場訊號)');
+  for (const g of evaluated) {
+    const p = g.empirical?.percentile_5y ?? g.empirical?.percentile_3y ?? g.empirical?.percentile_20y;
+    console.log(`${icon[g.henren.status]} ${(g.label ?? g.id).padEnd(28)}`
+      + `${String(`${g.observed.value} ${g.observed.unit}`).padStart(18)}  ${g.observed.effective_date}`
+      + `${p?.ok ? `  p${p.value}` : ''}  ${g.status.automation_mode}`);
   }
-  console.log('\n— 未計分（NO_DECISION） —');
-  for (const g of undecidedGauges) {
-    console.log(`${icon[g.status] ?? '?'} ${(g.label ?? g.id).padEnd(30)} ${g.status}`);
+  console.log('\n— NO_DECISION —');
+  for (const g of undecided) {
+    console.log(`${ds[g.status.data_state] ?? '?'} ${(g.label ?? g.id).padEnd(28)} ${g.status.data_state}`);
     if (g.note) console.log(`     ${g.note}`);
-    if (g.blocker) console.log(`     blocker: ${g.blocker}`);
   }
-  console.log(`\n計分：${Object.entries(tally).map(([k, v]) => `${icon[k] ?? k}${v}`).join('  ')}`
-    + `　（已計分 ${scored.length} / 未計分 ${undecidedGauges.length} / 共 ${all.length}）`);
-  console.log('\n本版本不輸出任何綜合分數。未經驗證的加權合成不是資訊，是雜訊。');
+  console.log(`\nHenren 規則：${Object.entries(ruleTally).map(([k, v]) => `${icon[k] ?? k}${v}`).join('  ')}`
+    + `　已評估 ${evaluated.length} / 未評估 ${undecided.length} / 共 ${all.length}`);
+  console.log(`量測完整性：${JSON.stringify(out.status_summary.measurement_integrity)}`);
+  console.log(`訊號驗證：  ${JSON.stringify(out.status_summary.signal_validation)}  ← 沒有任何一格經過統計驗證`);
+  console.log(`自動化：    ${JSON.stringify(out.status_summary.automation_mode)}`);
 }
