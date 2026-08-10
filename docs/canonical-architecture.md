@@ -11,16 +11,17 @@ FRED (OFFICIAL_AGGREGATOR)  ─┐
 SEC EDGAR (OFFICIAL_PRIMARY) ─┼─→ data/raw/<date>/*.raw  (原始回應 + sha256)
 Yahoo (UNOFFICIAL_FREE)      ─┘            │
                                            ▼
+Cboe (OFFICIAL_PRIMARY)     ─┘
                      lib/temporal.mjs ──→ gauges.mjs  ← lib/capex.mjs
-                     （唯一的日期邏輯）    CANONICAL ENGINE
-                                           │  calc v3.0.0
+                     （唯一的日期邏輯）    CANONICAL ENGINE      ← lib/capex-reconcile.mjs
+                                           │  calc v3.4.0
                                            ▼
-                                    data/gauges.json
-                                           │
+                          data/gauges.json ＋ data/holdings.json
+                                           │      ↑ holdings.mjs ← lib/fundamentals.mjs
                           ┌────────────────┴────────────────┐
                           ▼                                 ▼
-              render-dashboard.mjs                   test/integrity.test.mjs
-                （只做格式化）                          （一致性閘門）
+              render-dashboard.mjs                      test/*.test.mjs
+                （只做格式化）                          （一致性閘門，35 項）
                           ▼
              reports/us-market-dashboard.html
 ```
@@ -94,9 +95,9 @@ Yahoo (UNOFFICIAL_FREE)      ─┘            │
 
 | 維度 | 分布 |
 | --- | --- |
-| data_state | LAGGED_BY_DESIGN 13、OVERDUE 2、STALE 1 |
-| source_authority | OFFICIAL_AGGREGATOR 6、OFFICIAL_PRIMARY 1、UNOFFICIAL_FREE 2、MANUAL_SECONDARY 5、NO_AUTHORITATIVE_SOURCE 2 |
-| measurement_integrity | CHECKED 13、RAW 3 |
+| data_state | LAGGED_BY_DESIGN 10、CURRENT 2、OVERDUE 2、STALE 1、RECONCILIATION_REQUIRED 1 |
+| source_authority | OFFICIAL_AGGREGATOR 7、OFFICIAL_PRIMARY 2、UNOFFICIAL_FREE 2、MANUAL_SECONDARY 4、NO_AUTHORITATIVE_SOURCE 1 |
+| measurement_integrity | CHECKED 12、RAW 4 |
 | **signal_validation** | **UNTESTED 16** — 沒有任何一格經過統計驗證 |
 | automation_mode | AUTOMATED 10、HYBRID 1、MANUAL_REVIEW_REQUIRED 5 |
 
@@ -109,10 +110,15 @@ Yahoo (UNOFFICIAL_FREE)      ─┘            │
 
 | 項目 | 修法 | 結果 |
 | --- | --- | --- |
-| 開關二 DATE_MISMATCH | Yahoo `^VIX3M` 自 2026-07-17 起收盤全 null；改用 FRED `VIXCLS`/`VXVCLS`，並強制共同日期 | 0.811（P5.8），權威等級同時從 UNOFFICIAL_FREE 升到 OFFICIAL_AGGREGATOR |
+| 開關二 DATE_MISMATCH | Yahoo `^VIX3M` 自 2026-07-17 起收盤全 null；先改 FRED，再升級為 **Cboe 一手**（比 FRED 早一個 session） | 0.8（實際 0.796，P3），權威從 UNOFFICIAL_FREE 升到 OFFICIAL_PRIMARY |
 | 巴菲特 DATE_MISMATCH | `alignQuarterly` 配對同一季，而不是各取最新 | 218.1%（P94.9），紅燈 |
 | 季度序列年齡高估 | FRED 季度資料用「期間起始日」標記，年齡改由期間結束日算 | 巴菲特從誤判 STALE 回到 LAGGED_BY_DESIGN |
-| 開關三 NOT_WIRED | 接上 SEC EDGAR XBRL，10-Q 累計數差分還原單季，四家彙總 | YoY +80.45%，automation=HYBRID |
+| 開關三 NOT_WIRED | 接上 SEC EDGAR XBRL，10-Q 累計數差分還原單季，四家彙總 | 資料接通，但差分對帳後改為 **NO_DECISION**（見下） |
+| 開關三 差分未驗證 | `capex-reconcile.mjs` 逐筆對照直接申報單季值；發現 META 無可對照值 | 規則（QoQ）不評估；YoY 降為脈絡 |
+| 合理性閘門拍門檻 | 三級化：STRUCTURAL / RECONCILIATION / OUTLIER；0.25 降為僅提醒 | SNDK 由「封鎖」變「提醒」 |
+| `proven` 過強 | 改 `SUPPORTED` + `scope: CURRENT_PERIOD` + `coverage` | 一季的正數不再讀成長期紀錄 |
+| 首頁紅綠計數 | 改為五層成熟度階梯 + 「經統計驗證訊號 0」 | 不再讀成市場評分 |
+| 顯示精度 | `display_value` / `exact_value` 分離，稽核抽屜保留完整精度 | 2.99 vs 2.993；P95 vs P94.9 |
 | 準備金速度門檻 | 自訂的 −3%/4週 實測落在 P21.8（不算快），改為底部十分位 | 開關一回綠燈 |
 | 「Scored」用詞 | 改為 **Framework Triggers / 狠人規則已評估** | 不再暗示這是校準過的評分 |
 | 紅黃綠語意 | 改為「規則觸發／接近／未觸發」，與 signal_validation 並列顯示 | 不再讀成「市場風險已證明升高」 |
@@ -131,13 +137,16 @@ Yahoo (UNOFFICIAL_FREE)      ─┘            │
 | Claim-level evidence | P1 | 裁決已降級 |
 | Stooq 交叉檢查 / SOURCE_CONFLICT | P1 | 端點回 JS 瀏覽器驗證 |
 | 融資餘額 / 0DTE / 前十大權重 / 內部人比 / 預估本益比 自動化 | P1 | 無免費權威來源；目前 MANUAL_REVIEW_REQUIRED |
+| META capex 差分無法驗證 | **P0** | 該公司從不申報獨立單季值，現行對帳法結構上做不到 |
+| `as_of_query` 從未執行 | P1 | `filed` 已存，但沒跑過一次 as-of 查詢 |
+| 輸出 schema allowlist | P1 | 目前買賣護欄只有 regex，可被改寫繞過 |
 
 ---
 
 ## F. Research Tool Production Definition（裁決 §29）
 
 ```
-[x] Canonical calculation engine exists              gauges.mjs, calc v3.0.0
+[x] Canonical calculation engine exists              gauges.mjs, calc v3.4.0
 [x] Dashboard uses only canonical outputs            測試強制
 [x] Important numbers have provenance                8 欄位／格
 [x] Date alignment bugs resolved                     兩個 DATE_MISMATCH 全修，含回歸測試
