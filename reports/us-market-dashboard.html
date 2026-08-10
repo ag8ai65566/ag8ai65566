@@ -1,0 +1,636 @@
+<title>美股儀表板 · 狠人三層框架 × Serenity</title>
+<style>
+  :root {
+    --ground: #EDEFF2;
+    --panel: #F8F9FB;
+    --panel-2: #E7EAEF;
+    --rule: #CDD3DC;
+    --rule-soft: #DFE4EA;
+    --ink: #171C24;
+    --ink-2: #4A5464;
+    --ink-3: #78828F;
+    --brass: #A8781C;
+    --brass-lit: #C8922E;
+    --ok: #1F7A54;
+    --warn: #B36A12;
+    --bad: #B03047;
+    --ok-bg: #DDEEE6;
+    --warn-bg: #F6E7CF;
+    --bad-bg: #F4DDE1;
+    --off: #C3CAD3;
+    --shadow: 0 1px 2px rgba(23,28,36,.06), 0 8px 24px -12px rgba(23,28,36,.16);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ground: #0C1017;
+      --panel: #141A23;
+      --panel-2: #1B222D;
+      --rule: #2A3341;
+      --rule-soft: #212936;
+      --ink: #E8ECF2;
+      --ink-2: #A3AEBD;
+      --ink-3: #737F8E;
+      --brass: #D9A43F;
+      --brass-lit: #EFC163;
+      --ok: #4CBF8B;
+      --warn: #E3A44E;
+      --bad: #E86A80;
+      --ok-bg: #14312A;
+      --warn-bg: #33280F;
+      --bad-bg: #371A22;
+      --off: #3A4453;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"] {
+    --ground: #0C1017;
+    --panel: #141A23;
+    --panel-2: #1B222D;
+    --rule: #2A3341;
+    --rule-soft: #212936;
+    --ink: #E8ECF2;
+    --ink-2: #A3AEBD;
+    --ink-3: #737F8E;
+    --brass: #D9A43F;
+    --brass-lit: #EFC163;
+    --ok: #4CBF8B;
+    --warn: #E3A44E;
+    --bad: #E86A80;
+    --ok-bg: #14312A;
+    --warn-bg: #33280F;
+    --bad-bg: #371A22;
+    --off: #3A4453;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 10px 30px -14px rgba(0,0,0,.7);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC",
+                 "Hiragino Sans", "Microsoft JhengHei", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .num { font-family: ui-monospace, "SF Mono", "Cascadia Mono", Menlo, Consolas, monospace;
+         font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 20px 96px; }
+
+  /* ---- masthead ---- */
+  .mast { border-bottom: 2px solid var(--ink); padding-bottom: 18px; margin-bottom: 28px; }
+  .kicker {
+    font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--brass); font-weight: 700; margin-bottom: 10px;
+  }
+  h1 { font-size: clamp(26px, 4.6vw, 40px); line-height: 1.15; margin: 0 0 12px;
+       letter-spacing: -.02em; text-wrap: balance; font-weight: 750; }
+  .standfirst { font-size: clamp(15px, 2vw, 17.5px); color: var(--ink-2); margin: 0; max-width: 62ch; }
+  .stamp { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px;
+           font-size: 12.5px; color: var(--ink-3); }
+  .stamp b { color: var(--ink-2); font-weight: 600; }
+
+  /* ---- verdict ---- */
+  .verdict { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0 36px; }
+  @media (max-width: 720px) { .verdict { grid-template-columns: 1fr; } }
+  .vcard {
+    background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+    padding: 22px 22px 20px; box-shadow: var(--shadow); position: relative; overflow: hidden;
+  }
+  .vcard::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 4px; background: var(--sev, var(--brass)); }
+  .vlabel { font-size: 11.5px; letter-spacing: .13em; text-transform: uppercase;
+            color: var(--ink-3); font-weight: 700; margin-bottom: 4px; }
+  .vbig { font-size: clamp(30px, 5vw, 42px); font-weight: 780; line-height: 1.1;
+          letter-spacing: -.02em; color: var(--sev, var(--ink)); margin: 4px 0 2px; }
+  .vsub { font-size: 14px; color: var(--ink-2); margin: 6px 0 0; }
+
+  /* segmented scale */
+  .scale { display: flex; gap: 3px; margin: 14px 0 8px; }
+  .seg { height: 9px; flex: 1; border-radius: 1px; background: var(--off); }
+  .seg.on { background: var(--sev, var(--brass)); }
+  .scale-ends { display: flex; justify-content: space-between; font-size: 11px; color: var(--ink-3); }
+
+  /* ---- sections ---- */
+  section { margin: 44px 0 0; }
+  h2 {
+    font-size: 12px; letter-spacing: .15em; text-transform: uppercase; color: var(--ink-3);
+    font-weight: 700; margin: 0 0 4px; display: flex; align-items: center; gap: 12px;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  .h2sub { font-size: clamp(19px, 2.6vw, 23px); font-weight: 700; letter-spacing: -.015em;
+           margin: 0 0 6px; text-wrap: balance; }
+  .lede { color: var(--ink-2); margin: 0 0 20px; max-width: 66ch; font-size: 15.5px; }
+
+  /* ---- switches ---- */
+  .switches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 820px) { .switches { grid-template-columns: 1fr; } }
+  .sw { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+        padding: 18px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .sw-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 2px; }
+  .sw-no { font-size: 11px; letter-spacing: .12em; color: var(--ink-3); font-weight: 700; text-transform: uppercase; }
+  .sw-name { font-size: 17.5px; font-weight: 720; margin: 2px 0 8px; letter-spacing: -.01em; }
+  .sw-val { font-size: 27px; font-weight: 740; letter-spacing: -.02em; color: var(--sev); margin: 2px 0; }
+  .sw-unit { font-size: 13px; color: var(--ink-3); font-weight: 500; margin-left: 4px; }
+  .sw-plain { font-size: 13.5px; color: var(--ink-2); margin: 8px 0 12px; line-height: 1.55; }
+  .sw-rule { font-size: 12.5px; color: var(--ink-2); border-top: 1px dashed var(--rule);
+             padding-top: 10px; margin-top: auto; }
+  .sw-rule b { color: var(--sev); }
+
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 700;
+          padding: 3px 9px; border-radius: 100px; letter-spacing: .03em; white-space: nowrap; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; flex: none; }
+  .s-green { color: var(--ok); background: var(--ok-bg); }
+  .s-yellow { color: var(--warn); background: var(--warn-bg); }
+  .s-red { color: var(--bad); background: var(--bad-bg); }
+  .s-stale { color: var(--ink-3); background: var(--panel-2); }
+
+  /* ---- gauge table ---- */
+  .gauges { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--rule);
+            border-radius: 4px; overflow: hidden; background: var(--panel); box-shadow: var(--shadow); }
+  .g { display: grid; grid-template-columns: 1.35fr 130px 190px auto; gap: 16px; align-items: center;
+       padding: 15px 18px; border-bottom: 1px solid var(--rule-soft); }
+  .g:last-child { border-bottom: 0; }
+  .g:nth-child(even) { background: var(--panel-2); }
+  @media (max-width: 860px) {
+    .g { grid-template-columns: 1fr auto; gap: 8px 12px; }
+    .g .meter-cell { grid-column: 1 / -1; }
+    .g .val-cell { text-align: right; }
+  }
+  .g-name { font-size: 14.5px; font-weight: 650; letter-spacing: -.005em; }
+  .g-plain { font-size: 12.5px; color: var(--ink-3); margin-top: 3px; line-height: 1.5; }
+  .g-val { font-size: 19px; font-weight: 720; letter-spacing: -.015em; color: var(--sev); }
+  .g-unit { font-size: 11.5px; color: var(--ink-3); font-weight: 500; }
+  .g-date { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+
+  .meter { position: relative; height: 8px; border-radius: 2px; background: var(--panel-2);
+           border: 1px solid var(--rule-soft); overflow: hidden; }
+  .zone { position: absolute; top: 0; bottom: 0; opacity: .5; }
+  .z-green { background: var(--ok); }
+  .z-yellow { background: var(--warn); }
+  .z-red { background: var(--bad); }
+  .needle { position: absolute; top: -4px; bottom: -4px; width: 3px; background: var(--ink);
+            border-radius: 1px; box-shadow: 0 0 0 2px var(--panel); }
+  .meter-wrap { padding: 6px 2px 0; }
+  .meter-legend { display: flex; justify-content: space-between; font-size: 10.5px;
+                  color: var(--ink-3); margin-top: 7px; }
+
+  /* ---- layer scorecard ---- */
+  .layers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  @media (max-width: 820px) { .layers { grid-template-columns: 1fr; } }
+  .layer { background: var(--panel); border: 1px solid var(--rule); border-top: 3px solid var(--sev);
+           border-radius: 4px; padding: 18px; box-shadow: var(--shadow); }
+  .layer h3 { margin: 0 0 2px; font-size: 18px; font-weight: 730; letter-spacing: -.01em; }
+  .layer .role { font-size: 12px; color: var(--ink-3); letter-spacing: .06em; text-transform: uppercase;
+                 font-weight: 700; margin-bottom: 10px; }
+  .layer p { margin: 0 0 12px; font-size: 13.5px; color: var(--ink-2); line-height: 1.6; }
+  .facts { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .facts li { font-size: 13px; display: flex; justify-content: space-between; gap: 12px;
+              border-bottom: 1px dotted var(--rule); padding-bottom: 5px; }
+  .facts li:last-child { border-bottom: 0; }
+  .facts span:last-child { font-weight: 700; white-space: nowrap; }
+
+  /* ---- chart ---- */
+  .chart-card { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+                padding: 20px; box-shadow: var(--shadow); overflow-x: auto; }
+  .bars { display: flex; flex-direction: column; gap: 13px; min-width: 460px; }
+  .bar-row { display: grid; grid-template-columns: 92px 1fr 96px; align-items: center; gap: 12px; }
+  .bar-name { font-size: 13.5px; font-weight: 680; }
+  .bar-track { position: relative; height: 22px; background: var(--panel-2);
+               border: 1px solid var(--rule-soft); border-radius: 2px; }
+  .bar-mid { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--ink-3); }
+  .bar-fall { position: absolute; top: 3px; bottom: 3px; background: var(--bad); opacity: .78; border-radius: 1px; }
+  .bar-rise { position: absolute; top: 3px; bottom: 3px; background: var(--ok); opacity: .82; border-radius: 1px; }
+  .bar-val { font-size: 12.5px; text-align: right; color: var(--ink-2); }
+  .bar-val b { color: var(--bad); }
+  .bar-val i { color: var(--ok); font-style: normal; }
+
+  /* ---- holdings ---- */
+  .hold { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 820px) { .hold { grid-template-columns: 1fr; } }
+  .h-card { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+            padding: 20px; box-shadow: var(--shadow); }
+  .h-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 3px; }
+  .h-tick { font-size: 22px; font-weight: 780; letter-spacing: -.02em; }
+  .h-name { font-size: 13px; color: var(--ink-3); }
+  .h-px { font-size: 15px; font-weight: 700; margin-left: auto; }
+  .h-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--rule-soft);
+            border: 1px solid var(--rule-soft); border-radius: 3px; margin: 14px 0; }
+  .h-cell { background: var(--panel); padding: 10px 12px; }
+  .h-k { font-size: 11px; color: var(--ink-3); letter-spacing: .04em; }
+  .h-v { font-size: 17px; font-weight: 720; letter-spacing: -.015em; margin-top: 1px; }
+  .neg { color: var(--bad); } .pos { color: var(--ok); }
+  .h-note { font-size: 13.5px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+
+  /* ---- callout ---- */
+  .callout { background: var(--panel); border: 1px solid var(--rule); border-left: 4px solid var(--brass);
+             border-radius: 4px; padding: 20px 22px; box-shadow: var(--shadow); }
+  .callout h3 { margin: 0 0 8px; font-size: 17px; font-weight: 720; }
+  .callout p { margin: 0 0 10px; font-size: 14.5px; color: var(--ink-2); line-height: 1.65; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout strong { color: var(--ink); }
+
+  /* ---- trigger list ---- */
+  .trig { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .trig li { background: var(--panel); border: 1px solid var(--rule); border-radius: 4px;
+             padding: 14px 16px; display: grid; grid-template-columns: auto 1fr; gap: 14px;
+             align-items: start; box-shadow: var(--shadow); }
+  .trig .n { font-size: 12px; font-weight: 800; color: var(--brass); letter-spacing: .06em;
+             background: var(--panel-2); border-radius: 3px; padding: 3px 8px; white-space: nowrap; }
+  .trig .t { font-size: 14.5px; }
+  .trig .t b { font-weight: 700; }
+  .trig .t em { font-style: normal; color: var(--ink-3); font-size: 13px; display: block; margin-top: 3px; }
+
+  /* ---- footer ---- */
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule);
+           font-size: 12.5px; color: var(--ink-3); line-height: 1.7; }
+  footer b { color: var(--ink-2); }
+  .disc { margin-top: 16px; padding: 14px 16px; background: var(--panel-2); border-radius: 4px;
+          border: 1px solid var(--rule); color: var(--ink-2); font-size: 13px; }
+  a { color: var(--brass); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <div class="kicker">狠人三層框架 × Serenity 方法 × Anthropic equity-research</div>
+    <h1>泡沫很大，油還很多，逃生鈴還沒響</h1>
+    <p class="standfirst">
+      把「一個狠人」講過的所有美股判斷標誌，全部接上即時數據跑一遍。
+      16 個儀表裡 <b>6 綠、3 黃、4 紅、3 個過期</b>——紅燈全部落在「估值和擁擠度」，
+      綠燈全部落在「流動性」。這兩件事同時成立，正是他框架裡最危險也最好賺的那一段。
+    </p>
+    <div class="stamp">
+      <span>股價截止 <b>2026-08-07 收盤</b></span>
+      <span>總體數據 <b>FRED，最新至 2026-08-10</b></span>
+      <span>產生於 <b>2026-08-10</b></span>
+    </div>
+  </header>
+
+  <div class="verdict">
+    <div class="vcard" style="--sev: var(--bad)">
+      <div class="vlabel">泡沫水位</div>
+      <div class="vbig">高</div>
+      <div class="scale" id="bubbleScale"></div>
+      <div class="scale-ends"><span>便宜</span><span>合理</span><span>過熱</span><span>極端</span></div>
+      <p class="vsub">
+        巴菲特指標 <b class="num">214%</b>、標普前十大權重 <b class="num">39.3%</b>、
+        當沖選擇權占比 <b class="num">64%</b>、個股波動是大盤的 <b class="num">11.1 倍</b>。
+        四項都在紅區。
+      </p>
+    </div>
+    <div class="vcard" style="--sev: var(--ok)">
+      <div class="vlabel">還能燒多久（樂觀度）</div>
+      <div class="vbig">油箱滿的</div>
+      <div class="scale" id="fuelScale"></div>
+      <div class="scale-ends"><span>枯竭</span><span>吃緊</span><span>充足</span><span>氾濫</span></div>
+      <p class="vsub">
+        銀行準備金 <b class="num">2.993 兆</b>（他的清倉線是 2.5 兆）、
+        隔夜拆款利差 <b class="num">0 bp</b>、垃圾債利差 <b class="num">2.71%</b>、
+        金融條件 <b class="num">−0.53</b>。五項全綠。
+      </p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h3>一句話看懂這個矛盾</h3>
+    <p>
+      想像一場<strong>越開越快的賽車</strong>。「泡沫水位」量的是<strong>車速</strong>——現在很快，
+      快到出事會很慘。「油箱」量的是<strong>還能不能繼續開</strong>——現在還很滿。
+    </p>
+    <p>
+      速度快不等於馬上撞車，油多也不等於安全。狠人整套框架的重點就是：
+      <strong>不要用車速判斷什麼時候該下車，要用油表和儀表板上那顆逃生燈。</strong>
+      而那顆燈——雲端大廠買設備的錢「增加的速度」有沒有開始變慢——<strong>目前還沒亮</strong>。
+    </p>
+  </div>
+
+  <section>
+    <h2>The three switches</h2>
+    <p class="h2sub">三個開關：他整套打法唯一會叫你動手的東西</p>
+    <p class="lede">
+      五個步驟是拿來「定位自己在哪」，三個開關才是動作訊號。前兩個可以自動抓，
+      第三個只能每季財報後手動更新——而它是唯一真正能翻轉大方向的那一個。
+    </p>
+    <div class="switches" id="switches"></div>
+  </section>
+
+  <section>
+    <h2>Three clocks</h2>
+    <p class="h2sub">三層計分：基本面管方向、流動性管顛簸、擁擠管斷裂</p>
+    <p class="lede">
+      他的核心比喻是三個轉速不同的鐘。平常互相牽制看起來風平浪靜，
+      <strong>極端行情幾乎從來不是三個一起壞掉，而是其中一個單獨失控、把另外兩個拖下水。</strong>
+      所以看盤第一件事不是問「會漲會跌」，是問「現在是哪一層在動」。
+    </p>
+    <div class="layers">
+      <div class="layer" style="--sev: var(--ok)">
+        <h3>基本面</h3>
+        <div class="role">管方向 · 走得最慢</div>
+        <p>公司到底值多少錢、能不能一直賺錢。它靠一季一季的現金流累積，所以動得很慢，但它決定長期往哪走。</p>
+        <ul class="facts">
+          <li><span>標普 500 距高點</span><span class="num pos">0.00%</span></li>
+          <li><span>等權重指數近三月</span><span class="num pos">+8.13%</span></li>
+          <li><span>對比市值權重</span><span class="num">+5.73%</span></li>
+          <li><span>羅素 2000 年初至今</span><span class="num pos">+20.98%</span></li>
+          <li><span>防禦股 XLU 近一月</span><span class="num neg">−3.37%</span></li>
+        </ul>
+        <p style="margin:12px 0 0;font-size:13px">
+          <b>小型股領先、等權贏市值權、防禦股落後</b>——這不是少數幾檔撐起來的盤。方向這層沒有裂縫。
+        </p>
+      </div>
+      <div class="layer" style="--sev: var(--ok)">
+        <h3>流動性</h3>
+        <div class="role">管顛簸 · 決定路多抖</div>
+        <p>市場上有沒有足夠的錢和願意接單的人。同一個消息，在有人接盤的市場只是小幅重新定價，在沒人接的市場會直接砸出好幾個台階。</p>
+        <ul class="facts">
+          <li><span>銀行準備金</span><span class="num pos">2.993 兆</span></li>
+          <li><span>SOFR − IORB</span><span class="num pos">0 bp</span></li>
+          <li><span>垃圾債利差</span><span class="num pos">2.71%</span></li>
+          <li><span>VIX</span><span class="num pos">14.90</span></li>
+          <li><span>逆回購緩衝</span><span class="num neg">14 億（見底）</span></li>
+        </ul>
+        <p style="margin:12px 0 0;font-size:13px">
+          <b>信用債是這層最誠實的指標，它完全沒在示警。</b>唯一的缺口是逆回購緩衝已經用完，
+          9 月財政部抽錢會直接打到準備金。
+        </p>
+      </div>
+      <div class="layer" style="--sev: var(--bad)">
+        <h3>擁擠</h3>
+        <div class="role">管斷裂 · 決定何時斷</div>
+        <p>太多人壓在同一筆倉位上。一有風吹草動就會被同時強制平倉，那時候價格不是「走」下來的，是「跳」下來的。</p>
+        <ul class="facts">
+          <li><span>標普波動率</span><span class="num">14.0%</span></li>
+          <li><span>閃迪 SNDK</span><span class="num neg">156.4%（11.1×）</span></li>
+          <li><span>美光 MU</span><span class="num neg">107.6%（7.7×）</span></li>
+          <li><span>PLTR</span><span class="num neg">105.9%（7.5×）</span></li>
+          <li><span>AMD</span><span class="num neg">82.4%（5.9×）</span></li>
+        </ul>
+        <p style="margin:12px 0 0;font-size:13px">
+          <b>大盤在睡覺，少數幾檔用年化 100%＋的波動在跑。</b>這個落差本身就是擁擠度的定義，
+          也是現在唯一閃紅燈的一層。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Proof of concept</h2>
+    <p class="h2sub">六、七月那一波是「洗盤」不是「葬禮」——已經蓋章了</p>
+    <p class="lede">
+      這是他框架最漂亮的一次實證。半導體整整跌掉四分之一、記憶體股腰斬還不止，
+      <strong>而標普從頭到尾沒有創過一次新低、信用債完全沒動</strong>，然後三週就收復。
+      這就是「分層塌方」：泡沫確實在消風，但它是一層一層塌，不是一聲巨響。
+    </p>
+    <div class="chart-card">
+      <div class="bars" id="swingChart"></div>
+      <p style="font-size:12px;color:var(--ink-3);margin:16px 0 0;line-height:1.6">
+        紅色＝ 6 月高點跌到 7/29 低點的幅度　·　綠色＝ 7/29 低點以來的反彈幅度　·　中線＝ 7/29 低點
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Full panel</h2>
+    <p class="h2sub">全部 16 個判斷標誌</p>
+    <p class="lede">
+      每一格的黑色指針＝現在的位置，底色＝他定的綠／黃／紅區間。
+      灰色的是<strong>沒有免費即時來源</strong>的指標，帶著他最後講出來的讀數和日期，過期就標成「舊資料」——
+      看不到的儀表就是關掉的儀表，不會假裝它是現在的值。
+    </p>
+    <div class="gauges" id="gaugeList"></div>
+  </section>
+
+  <section>
+    <h2>Your positions</h2>
+    <p class="h2sub">你手上的閃迪和美光，在這個框架裡長什麼樣子</p>
+    <p class="lede">
+      先講一個最容易被忽略的事實：<strong>這兩檔同一天見高（6/25）、同一天見底（7/29）。</strong>
+      它們不是兩筆投資，是同一筆——同一個記憶體漲價故事、同一批買家、同一個擁擠交易。
+      分散的錯覺比集中本身更危險。
+    </p>
+    <div class="hold" id="holdings"></div>
+    <div class="callout" style="margin-top:14px">
+      <h3>兩檔最關鍵的差別：反彈時誰被留下了</h3>
+      <p>
+        7/29 低點以來，美光反彈 <b class="num">+18.75%</b>、閃迪反彈 <b class="num">+19.32%</b>，看起來差不多。
+        但把鏡頭拉開就完全不同：<strong>美光已經回到 50 日均線下方 9.6%，閃迪還在下方 28.2%；
+        美光距高點 −27.7%，閃迪距高點 −48.1%。</strong>
+      </p>
+      <p>
+        用他的話說，第二波的錢<strong>回到美光身上，但沒有回到閃迪身上</strong>。
+        同一個故事、同一個時間點，市場選擇性地只買了其中一個——這通常代表市場在做<strong>品質分層</strong>，
+        而不是整個板塊一起回來。這是目前這兩檔最值得盯的一件事。
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Falsifiers</h2>
+    <p class="h2sub">會讓上面整套判斷作廢的東西</p>
+    <p class="lede">
+      一個說不出自己什麼時候會錯的判斷，就只是算命。以下每一條都是具體、可查、有數字的。
+    </p>
+    <ol class="trig">
+      <li><span class="n">開關三</span><span class="t"><b>雲端大廠買設備的錢「環比增速」見頂回落。</b>
+        <em>他自己說這是唯一的逃生鈴：不看絕對金額，看加速度。哪怕當期淨利再創新高也要立刻平倉——因為現在的估值買的是「增量」，增量沒了，估值的邏輯就沒了。每季財報後手動更新。</em></span></li>
+      <li><span class="n">開關一</span><span class="t"><b>銀行準備金在沒有重大危機的情況下快速跌破 2.5 兆美元。</b>
+        <em>現在 2.993 兆，離線還有 4,930 億的安全帶。他的規則沒有討論餘地：跌破就無條件清倉。每週看 Fed H.4.1。</em></span></li>
+      <li><span class="n">信用</span><span class="t"><b>垃圾債利差從 2.71% 擴大到 5% 以上。</b>
+        <em>這是三層裡最誠實的指標。它一動，下跌就不再是洗盤，而是流動性層真的斷了。這條優先於所有股票指標。</em></span></li>
+      <li><span class="n">廣度</span><span class="t"><b>等權重指數開始明顯落後市值權重指數。</b>
+        <em>現在等權近三月領先 2.4 個百分點。一旦反轉，代表市場退回少數股票撐盤，方向層的支撐就消失了。</em></span></li>
+      <li><span class="n">9 月</span><span class="t"><b>SOFR − IORB 利差衝過 3 bp，同時 TGA 向 1 兆靠攏。</b>
+        <em>現在利差 0 bp、TGA 9,073 億。財政部 7–9 月要淨借 6,710 億，而逆回購緩衝已經見底——這代表抽走的錢會直接從銀行準備金扣。9 月中稅期是壓力點。</em></span></li>
+    </ol>
+    <div class="callout" style="margin-top:16px">
+      <h3>反過來，這些不算推翻</h3>
+      <p>
+        半導體再跌 20%、閃迪或美光再腰斬、某檔 AI 股單日 −15%。
+        六、七月已經完整示範過一次：<strong>在信用債不動、廣度不壞的前提下，那些是擁擠層的局部事件</strong>，
+        不是系統性訊號。把局部斷裂讀成末日，正是他說「散戶的止損總是死在最低點」的原因。
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      <b>資料來源</b>　股價與波動率：Yahoo Finance 日線（收盤 2026-08-07）。
+      總體：FRED — <span class="num">WRESBAL</span>（準備金）、<span class="num">WTREGEN</span>（TGA）、
+      <span class="num">SOFR</span>／<span class="num">IORB</span>、<span class="num">RRPONTSYD</span>、
+      <span class="num">BAMLH0A0HYM2</span>（高收益債利差）、<span class="num">NFCI</span>、
+      <span class="num">M2SL</span>、<span class="num">NCBEILQ027S</span>／<span class="num">GDP</span>。
+    </p>
+    <p>
+      <b>框架來源</b>　一個狠人（<a href="https://www.youtube.com/@henren778">@henren778</a>）
+      2026-08-09 與 08-10 兩支影片的完整逐字稿，
+      加上頻道其他美股影片（僅標題）。個股方法用 Serenity（@aleabitoreddit）的瓶頸＋巴菲特閘門，
+      以及 Anthropic <span class="num">equity-research</span> 技能組。
+    </p>
+    <p>
+      <b>已知限制</b>　融資餘額、當沖選擇權占比、前十大權重、內部人買賣比、預估本益比
+      沒有免費即時來源，帶的是他最後講出來的讀數（2026 年 5–6 月），已標示為舊資料。
+      巴菲特指標的分子分母都是季度且落後，當方向看不當精算值。
+      會員影片屬付費內容，未取得也未嘗試取得。
+    </p>
+    <div class="disc">
+      這份儀表板是研究筆記，不是投資建議。它不會、也不應該告訴你買或賣。
+      它做的事情只有一件：把別人的判斷標準攤開成可以查證的數字，讓你自己看得懂現在站在哪裡。
+      所有 Serenity 品質欄位維持「未驗證」，因為這份沒有拉任何財報原始數據。
+      <br>仅作信息跟踪，不构成投资建议。
+    </div>
+  </footer>
+</div>
+
+<script>
+const GAUGES = [
+  { id:"fuel", sw:1, name:"開關一 · 燃料", plain:"銀行放在聯準會的閒錢。這桶油夠不夠，決定行情還能不能燒。",
+    value:2.993, unit:"兆美元", date:"2026-08-05", status:"green",
+    scale:{min:2.2,max:3.4}, zones:[["red",2.2,2.5],["yellow",2.5,2.8],["green",2.8,3.4]],
+    rule:"跌破 <b>2.5 兆</b> → 無條件清倉", legend:["2.2","3.4"] },
+  { id:"ignition", sw:2, name:"開關二 · 點火", plain:"市場覺得「現在」比「三個月後」更可怕嗎？怕近的＝恐慌還在；怕遠的＝恐慌已經退了。",
+    value:0.725, unit:"VIX ÷ VIX3M", date:"2026-08-07", status:"green",
+    scale:{min:0.6,max:1.3}, zones:[["green",0.6,0.95],["yellow",0.95,1.0],["red",1.0,1.3]],
+    rule:"低於 <b>0.95</b> ＝恐慌退潮，二波成立", legend:["0.6","1.3"], proxy:true },
+  { id:"capex", sw:3, name:"開關三 · 逃生鈴", plain:"雲端大廠這一季買設備的錢，比上一季多多少 %。重點不是還在花，是加速度有沒有變慢。",
+    value:null, unit:"% 環比", date:"每季財報後手動更新", status:"yellow",
+    rule:"<b>見頂回落 → 立刻平倉</b>，不看當期獲利", manual:true,
+    note:"他 2026-08 的讀數：絕對額還在爬坡，還沒看到環比增速見頂的確認 —— 也就是還沒響。" },
+  { id:"sofr", name:"SOFR − IORB 利差", plain:"銀行之間借隔夜錢，要不要付比聯準會利率更高的價？要付，就代表錢在變緊。",
+    value:0, unit:"bp", date:"2026-08-06", status:"green",
+    scale:{min:-2,max:8}, zones:[["green",-2,1],["yellow",1,3],["red",3,8]], legend:["−2","8"] },
+  { id:"tga", name:"財政部 TGA 餘額", plain:"財政部的活存帳戶。它變胖是把市場的錢吸走，變瘦是把錢放回市場。",
+    value:907.3, unit:"十億美元", date:"2026-08-05", status:"green",
+    scale:{min:600,max:1200}, zones:[["green",600,950],["yellow",950,1000],["red",1000,1200]], legend:["600","1200"] },
+  { id:"rrp", name:"隔夜逆回購緩衝", plain:"市場多餘現金的緩衝墊。墊子還厚，抽錢先抽它；墊子見底，就直接抽銀行準備金。",
+    value:1.45, unit:"十億美元", date:"2026-08-07", status:"yellow",
+    scale:{min:0,max:200}, zones:[["yellow",0,50],["green",50,200]], legend:["0","200"] },
+  { id:"hyoas", name:"高收益債信用利差", plain:"借錢給體質最差的公司，要多收多少利息當風險費。這個數字跳起來＝信用真的出事。",
+    value:2.71, unit:"%", date:"2026-08-06", status:"green",
+    scale:{min:2,max:8}, zones:[["green",2,4],["yellow",4,5],["red",5,8]], legend:["2%","8%"] },
+  { id:"nfci", name:"金融條件指數 NFCI", plain:"整體金融環境是鬆還是緊的總分。負的＝比平均寬鬆。",
+    value:-0.529, unit:"標準差", date:"2026-07-31", status:"green",
+    scale:{min:-1,max:0.6}, zones:[["green",-1,0],["yellow",0,0.2],["red",0.2,0.6]], legend:["−1.0","+0.6"] },
+  { id:"crowding", name:"擁擠度：個股 ÷ 大盤波動", plain:"大盤很平靜，但少數幾檔在瘋狂跳。差距越大，代表錢越集中壓在那幾檔上，斷起來越痛。",
+    value:11.1, unit:"倍", date:"2026-08-07", status:"red",
+    scale:{min:1,max:12}, zones:[["green",1,3],["yellow",3,5],["red",5,12]], legend:["1×","12×"] },
+  { id:"buffett", name:"巴菲特指標（市值 ÷ GDP）", plain:"整個股市值多少錢，跟整個國家一年生產多少錢比一比。超過 100% 就算貴。",
+    value:214, unit:"%", date:"2026-01-01 / GDP 2026-04-01", status:"red",
+    scale:{min:80,max:260}, zones:[["green",80,150],["yellow",150,200],["red",200,260]], legend:["80%","260%"] },
+  { id:"m2gap", name:"M2 年增 − 那斯達克年增", plain:"市場上的錢一年多了幾 %，股市漲了幾 %。股市跑得比錢快太多，多出來的就是估值撐的。",
+    value:-22, unit:"個百分點", date:"2026-06 / 2026-08-07", status:"yellow",
+    scale:{min:-45,max:10}, zones:[["red",-45,-25],["yellow",-25,-15],["green",-15,10]], legend:["−45","+10"] },
+  { id:"zerodte", name:"當沖選擇權占比（SPX 0DTE）", plain:"當天買、當天就到期的樂透型選擇權，占了幾成。比例越高，市場越像賭場。",
+    value:64, unit:"%", date:"2026-06-30", status:"red",
+    scale:{min:30,max:80}, zones:[["green",30,50],["yellow",50,60],["red",60,80]], legend:["30%","80%"] },
+  { id:"top10", name:"標普前十大權重", plain:"整個標普 500 裡，最大的十家就占了幾成。占比越高，指數越像那十家的分身。",
+    value:39.3, unit:"%", date:"2026-06-30", status:"red",
+    scale:{min:20,max:45}, zones:[["green",20,30],["yellow",30,35],["red",35,45]], legend:["20%","45%"] },
+  { id:"margin", name:"融資餘額（FINRA）", plain:"散戶跟券商借錢買股票的總額。借越多，跌起來被強制賣出的骨牌就越長。",
+    value:1416, unit:"十億美元", date:"2026-05-31", status:"stale", stale:"舊資料 71 天",
+    note:"他的讀數：3 月 −2.6%、4 月 +6.8%、5 月 +8.5%。他判為黃燈——燃料回來了，副作用是之後去槓桿更猛。" },
+  { id:"insider", name:"內部人賣出 ÷ 買進", plain:"公司高層自己在賣還是在買。賣得比買得多太多，代表最懂的人在下車。",
+    value:3.44, unit:"倍", date:"2026-05-31", status:"stale", stale:"舊資料 71 天",
+    note:"他的讀數 3.44 倍，低於 5 倍門檻，判定未觸發。" },
+  { id:"fwdpe", name:"那斯達克100 預估本益比", plain:"用未來一年預估的獲利算，現在買要付幾倍價錢。越高＝越多錢先付給還沒發生的成長。",
+    value:24.96, unit:"倍", date:"2026-06-01", status:"stale", stale:"舊資料 70 天",
+    note:"他的讀數 24.96 倍，低於 30 倍門檻，未觸發。這是七項裡最反直覺的一項——喊泡沫的人很多，但預估本益比其實沒失控。" },
+];
+
+const SWING = [
+  { name:"閃迪 SNDK", fall:-56.49, rise:19.32 },
+  { name:"美光 MU",   fall:-39.10, rise:18.75 },
+  { name:"AMD",       fall:-26.05, rise:12.52 },
+  { name:"博通 AVGO", fall:-25.15, rise:18.67 },
+  { name:"半導體 SMH",fall:-24.62, rise:15.56 },
+  { name:"輝達 NVDA", fall:-15.31, rise:17.87 },
+  { name:"那斯達克",  fall:-9.78,  rise:9.20  },
+  { name:"標普 500",  fall:0,      rise:0     },
+];
+
+const HOLDINGS = [
+  { tick:"SNDK", name:"Sandisk", px:"1,212.21", sev:"var(--bad)",
+    cells:[["距 52 週高點","−48.09%","neg"],["低於 50 日均線","−28.19%","neg"],
+           ["近一個月","−34.77%","neg"],["21 日波動率","156.4%","neg"]],
+    note:"全清單波動最極端的一檔——大盤的 <b>11.1 倍</b>。過去 18 個月有 <b>52 天</b>單日漲跌超過 10%。它距離高點腰斬，而且是這波第二波裡<b>被留下</b>的那個。" },
+  { tick:"MU", name:"Micron", px:"877.57", sev:"var(--warn)",
+    cells:[["距 52 週高點","−27.69%","neg"],["低於 50 日均線","−9.62%","neg"],
+           ["近三個月","+35.71%","pos"],["21 日波動率","107.6%","neg"]],
+    note:"基本面是這輪最硬的：FY26 Q3 營收 <b>414.6 億</b>（年增 346%）、毛利率 <b>85%</b>、16 份不可撤銷的 take-or-pay 合約鎖住 <b>220 億</b>、預付現金 <b>180 億</b>。但年初至今已經 <b>+178%</b>——你買的不再是「被忽視的上游」。" },
+];
+
+// --- render switches ---
+const sevOf = s => s==="green"?"var(--ok)":s==="yellow"?"var(--warn)":s==="red"?"var(--bad)":"var(--ink-3)";
+const pillOf = s => ({green:["s-green","綠燈"],yellow:["s-yellow","注意"],red:["s-red","紅燈"],stale:["s-stale","舊資料"]})[s];
+
+document.getElementById("switches").innerHTML = GAUGES.filter(g=>g.sw).map(g=>{
+  const [cls,txt] = pillOf(g.status);
+  return `<div class="sw" style="--sev:${sevOf(g.status)}">
+    <div class="sw-top"><span class="sw-no">開關 ${g.sw}</span>
+      <span class="pill ${cls}"><span class="dot"></span>${txt}</span></div>
+    <div class="sw-name">${g.name.split("· ")[1]}</div>
+    <div class="sw-val num">${g.value===null?"—":g.value}<span class="sw-unit">${g.unit}</span></div>
+    <p class="sw-plain">${g.plain}</p>
+    <div class="sw-rule">${g.rule}${g.note?`<br><span style="color:var(--ink-3)">${g.note}</span>`:""}</div>
+  </div>`;
+}).join("");
+
+// --- render gauge rows ---
+document.getElementById("gaugeList").innerHTML = GAUGES.map(g=>{
+  const [cls,txt] = pillOf(g.status);
+  let meter = `<div style="font-size:12px;color:var(--ink-3)">${g.note?"":"—"}</div>`;
+  if (g.scale) {
+    const pos = v => Math.max(0, Math.min(100, (v-g.scale.min)/(g.scale.max-g.scale.min)*100));
+    const zones = g.zones.map(([z,a,b])=>
+      `<div class="zone z-${z}" style="left:${pos(a)}%;width:${pos(b)-pos(a)}%"></div>`).join("");
+    meter = `<div class="meter-wrap">
+      <div class="meter">${zones}<div class="needle" style="left:calc(${pos(g.value)}% - 1.5px)"></div></div>
+      <div class="meter-legend"><span>${g.legend[0]}</span><span>${g.legend[1]}</span></div>
+    </div>`;
+  }
+  return `<div class="g" style="--sev:${sevOf(g.status)}">
+    <div><div class="g-name">${g.name}${g.proxy?' <span style="font-size:10.5px;color:var(--ink-3);font-weight:500">（代理指標）</span>':""}</div>
+      <div class="g-plain">${g.plain}</div></div>
+    <div class="val-cell"><div class="g-val num">${g.value===null?"—":g.value}<span class="g-unit"> ${g.unit}</span></div>
+      <div class="g-date num">${g.date}</div></div>
+    <div class="meter-cell">${meter}</div>
+    <div><span class="pill ${cls}"><span class="dot"></span>${g.stale||txt}</span></div>
+  </div>`;
+}).join("");
+
+// --- swing chart ---
+const MAXF = 60, MAXR = 25, MID = MAXF/(MAXF+MAXR)*100;
+document.getElementById("swingChart").innerHTML = SWING.map(s=>{
+  const fw = Math.abs(s.fall)/(MAXF+MAXR)*100;
+  const rw = s.rise/(MAXF+MAXR)*100;
+  return `<div class="bar-row">
+    <div class="bar-name">${s.name}</div>
+    <div class="bar-track">
+      <div class="bar-fall" style="right:${100-MID}%;width:${fw}%"></div>
+      <div class="bar-rise" style="left:${MID}%;width:${rw}%"></div>
+      <div class="bar-mid" style="left:${MID}%"></div>
+    </div>
+    <div class="bar-val num">${s.fall?`<b>${s.fall}%</b> → <i>+${s.rise}%</i>`:"未破低"}</div>
+  </div>`;
+}).join("");
+
+// --- holdings ---
+document.getElementById("holdings").innerHTML = HOLDINGS.map(h=>`
+  <div class="h-card" style="--sev:${h.sev}">
+    <div class="h-top"><span class="h-tick">${h.tick}</span><span class="h-name">${h.name}</span>
+      <span class="h-px num">$${h.px}</span></div>
+    <div class="h-grid">${h.cells.map(([k,v,c])=>
+      `<div class="h-cell"><div class="h-k">${k}</div><div class="h-v num ${c}">${v}</div></div>`).join("")}</div>
+    <p class="h-note">${h.note}</p>
+  </div>`).join("");
+
+// --- verdict scales ---
+const fill = (el,n,total,sev) => {
+  el.innerHTML = Array.from({length:total},(_,i)=>
+    `<div class="seg${i<n?" on":""}"></div>`).join("");
+};
+fill(document.getElementById("bubbleScale"), 9, 12);
+fill(document.getElementById("fuelScale"), 8, 12);
+</script>

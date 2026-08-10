@@ -9,13 +9,13 @@ A market-state lens distilled from the trading videos of **一个狠人 / @henre
 answers one question: *when the tape moves, which layer moved?* Getting that right is
 the difference between adding to a shakeout and averaging into a regime change.
 
-> **Provenance.** Distilled from public video **titles and hashtags**; no transcript has
-> been ingested (`scripts/fetch-channel.mjs --transcript-help`). His titles state their
-> theses explicitly, which is what makes this possible, but anything marked `【缺逐字稿】`
-> in `references/corpus.md` is his and is *not* reconstructed here. Do not invent the
-> steps of his 「五步三開關」. His checkable claims are scored in
-> `references/claim-checks.md` — six of seven land, one is inflated. Borrow the
-> structure, re-derive every number.
+> **Provenance.** The two core trading videos are now **transcript-backed** — his
+> 五步三開關, bottom-confirmation checklist and September triggers are in
+> `references/playbook.md` in his own terms. The rest of the channel's markets entries
+> are still title-only (`references/corpus.md`). His checkable claims are scored in
+> `references/claim-checks.md`: every one that can be checked lands, several to the
+> decimal. The one row that log got *wrong* was wrong because the log read a title
+> without its transcript. Borrow the structure, re-derive every number.
 
 ## The frame
 
@@ -37,9 +37,18 @@ deterioration as "just positioning" and buying a falling knife.
 ### Step 1 — Get the tape before the narrative
 ```bash
 NODE_USE_ENV_PROXY=1 node ../us-market-brief/scripts/market-snapshot.mjs --json
+NODE_USE_ENV_PROXY=1 node scripts/gauges.mjs --json     # his own markers, scored live
 ```
 Never score a layer from commentary you have read. Score it from closes, then read
 commentary to see who is wrong.
+
+`gauges.mjs` scores his named markers against FRED and Yahoo: the fuel switch
+(`WRESBAL` vs his $2.8T / $2.5T lines), the SOFR−IORB spread, TGA, RRP, HY OAS, NFCI,
+the M2-vs-Nasdaq gap, the Buffett ratio, and single-name crowding. Markers with no free
+feed (FINRA margin debt, 0DTE share, index concentration, insider ratio, forward P/E,
+cloud-capex QoQ) live in `references/manual-gauges.json` with his last stated reading and
+its date — they report as `stale` once past their refresh window and are **never**
+treated as current. A gauge you cannot see is a gauge that is off.
 
 ### Step 2 — Score each layer independently
 
@@ -88,6 +97,20 @@ index is doing X, the crowded cohort is doing Y, the gap between them is the ris
 here is the specific print that would flip this.* Never a price target, never a buy or
 sell.
 
+### Step 5 — Run the playbook switches
+`references/playbook.md` holds his 二波打法五步三開關 verbatim, plus the
+bottom-confirmation checklist and the September liquidity triggers. The three switches
+are the actionable part and `gauges.mjs` scores two of them automatically:
+
+| 開關 | 讀什麼 | 動作線 |
+| --- | --- | --- |
+| 1 燃料 | `WRESBAL` 準備金 | 無危機下快速跌破 **$2.5T** → 無條件清倉 |
+| 2 點火 | 選擇權偏度倒掛 + 現貨抗跌（腳本用 VIX 期限結構代理） | 倒掛出現 → 二波點火倒數 |
+| 3 逃生 | 雲廠商 capex **環比**增速 | **見頂回落 → 立刻平倉**，不看當期獲利 |
+
+Switch 3 is the one that actually flips the fundamental layer, it is manual, and it is
+the one people skip. Never report a read as complete without stating switch 3's status.
+
 ## Cross-checks from the rest of the channel
 
 Apply these as hygiene on any conclusion:
@@ -112,7 +135,10 @@ Apply these as hygiene on any conclusion:
   snapshot, or it is labelled unverified.
 - **Re-derive his numbers.** They are load-bearing when checkable and inflated when
   rhetorical (`腰斬` for a −33.5% drawdown). Cite the tape, not the title.
-- **Never fabricate the in-video content** — the 五步三開關 above all.
+- **Never fabricate in-video content.** What is transcript-backed lives in
+  `references/playbook.md`; what is title-only is marked as such in `references/corpus.md`.
+  Never read a title's claim without its referent — that is how the claim log got a row
+  backwards.
 - **Separate the channel's politics from its market work.** Most of the channel is China
   commentary. This skill uses the trading videos; do not import the political framing
   into a market call.

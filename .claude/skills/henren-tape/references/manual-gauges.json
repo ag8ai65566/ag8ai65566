@@ -1,0 +1,92 @@
+{
+  "_comment": "狠人的判斷標誌裡，沒有免費即時來源的那幾個。每一筆都記著他最後講出來的讀數、日期、門檻與更新來源。gauges.mjs 會依 refreshDays 判定過期，過期就標 stale（⚪），絕不當成當前值。看不到的儀表就是關掉的儀表。",
+  "_lastReview": "2026-08-10",
+  "gauges": [
+    {
+      "id": "capex-qoq",
+      "switch": 3,
+      "label": "開關三 · 逃生鈴（雲廠商 capex 環比增速）",
+      "plain": "微軟、Google、Amazon、Meta 這些大買家，這一季買設備的錢比上一季多多少 %。重點不是「還在花」，是「加速度有沒有變慢」。",
+      "value": null,
+      "unit": "% 環比",
+      "asOf": "2026-08-10",
+      "refreshDays": 95,
+      "status": "yellow",
+      "thresholds": {
+        "green": "環比增速還在加速或持平",
+        "red": "環比增速見頂回落 → 他的規則是立刻平倉，不管當期獲利多漂亮"
+      },
+      "note": "他 2026-08 的原話：資本開支絕對額還在爬坡，還沒看到環比增速見頂回落的確認讀數 —— 也就是「還沒響」。這是他整套打法裡唯一的逃生鈴，也是唯一真正能翻轉「基本面管方向」那一層的東西。每季財報後必須手動更新。",
+      "source": "MSFT / GOOGL / AMZN / META 季報的 capex 揭露；算環比不是同比"
+    },
+    {
+      "id": "margin-debt",
+      "label": "易爆盤 1 · 融資餘額 (FINRA margin debt)",
+      "plain": "散戶跟券商借錢買股票的總金額。借得越多，跌起來被強制賣出的骨牌就越長。",
+      "value": 1416,
+      "unit": "十億美元",
+      "asOf": "2026-05-31",
+      "refreshDays": 45,
+      "status": "yellow",
+      "thresholds": {
+        "green": "環比轉負（去槓桿中）",
+        "yellow": "環比正成長（短線燃料回來，但未來下跌會更猛）",
+        "red": "連續數月兩位數環比成長"
+      },
+      "note": "他的讀數：3 月 −2.6%、4 月 +6.8%、5 月 +8.5%，總額 1.416 兆美元。他判定為「彈性還在」的黃燈 —— 燃料回來了，副作用是之後去槓桿會更猛。",
+      "source": "FINRA Margin Statistics（每月中旬公布上月數據）"
+    },
+    {
+      "id": "zero-dte",
+      "label": "易爆盤 2 · SPX 零日到期選擇權占比",
+      "plain": "當天買、當天就到期的樂透型選擇權，占了整個標普選擇權交易的幾成。比例越高，代表市場越像賭場。",
+      "value": 64,
+      "unit": "%",
+      "asOf": "2026-06-30",
+      "refreshDays": 45,
+      "status": "red",
+      "thresholds": { "green": "< 50%", "yellow": "50–60%", "red": "≥ 60%" },
+      "note": "他的讀數：2–4 月月均約 63%，6 月高波動交易日達 64%，判定觸發。",
+      "source": "Cboe 官方統計 / 券商研究"
+    },
+    {
+      "id": "top10-weight",
+      "label": "易爆盤 3 · 標普前十大權重",
+      "plain": "整個標普 500 裡，最大的十家公司就占了幾成。占比越高，指數越像那十家的分身。",
+      "value": 39.3,
+      "unit": "%",
+      "asOf": "2026-06-30",
+      "refreshDays": 60,
+      "status": "red",
+      "thresholds": { "green": "< 30%", "yellow": "30–35%", "red": "≥ 35%" },
+      "note": "他的讀數 39.3%，判定觸發。這是集中度風險，不是估值風險 —— 兩者要分開看。",
+      "source": "S&P Dow Jones Indices 月報 / SPY 持股揭露"
+    },
+    {
+      "id": "insider-ratio",
+      "label": "易爆盤 6 · 內部人賣出 / 買進 金額比",
+      "plain": "公司高層自己在賣股票還是買股票。賣得比買得多太多，代表最懂的人在下車。",
+      "value": 3.44,
+      "unit": "倍",
+      "asOf": "2026-05-31",
+      "refreshDays": 45,
+      "status": "green",
+      "thresholds": { "green": "< 5 倍", "red": "≥ 5 倍" },
+      "note": "他的讀數 3.44 倍，低於 5 倍門檻，判定未觸發。",
+      "source": "SEC Form 4 彙總（InsiderScore / Washington Service 等）"
+    },
+    {
+      "id": "ndx-forward-pe",
+      "label": "易爆盤 7 · 那斯達克 100 未來 12 個月本益比",
+      "plain": "用未來一年預估的獲利去算，現在買要付幾倍價錢。倍數越高，等於越多錢是先付給「還沒發生的成長」。",
+      "value": 24.96,
+      "unit": "倍",
+      "asOf": "2026-06-01",
+      "refreshDays": 45,
+      "status": "green",
+      "thresholds": { "green": "< 30 倍", "red": "≥ 30 倍" },
+      "note": "他的讀數 24.96 倍，低於 30 倍門檻，判定未觸發。這是他七項裡最反直覺的一項 —— 喊泡沫的人很多，但預估本益比其實沒有失控。",
+      "source": "FactSet / Bloomberg / Nasdaq 官方"
+    }
+  ]
+}
