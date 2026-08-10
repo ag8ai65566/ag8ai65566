@@ -154,11 +154,28 @@ test('the gate never reaches an investable conclusion without valuation work', {
   }
 });
 
-test('a flagged plausibility check is surfaced, not swallowed', { skip: !holdings || !html }, () => {
+test('plausibility findings reach the dashboard, graded by severity', { skip: !holdings || !html }, () => {
   for (const h of holdings.holdings) {
-    if (h.fundamentals?.plausibility?.status !== 'FLAGGED') continue;
-    assert.ok(html.includes('合理性檢查未通過'),
-      `${h.ticker} has a plausibility flag that never reaches the dashboard`);
+    const p = h.fundamentals?.plausibility;
+    if (!p || p.level === 'PASS') continue;
+    if (p.structural?.length) {
+      assert.ok(html.includes('STRUCTURAL_ERROR'), `${h.ticker} structural error never surfaced`);
+    }
+    if (p.outliers?.length) {
+      assert.ok(html.includes('ECONOMIC_OUTLIER'), `${h.ticker} economic outlier never surfaced`);
+    }
+  }
+});
+
+test('an economic outlier blocks nothing, a structural error blocks something', { skip: !holdings }, () => {
+  for (const h of holdings.holdings) {
+    const p = h.fundamentals?.plausibility;
+    if (!p) continue;
+    if (p.level === 'ECONOMIC_OUTLIER') {
+      assert.deepEqual(p.blocks_metrics, [], `${h.ticker}: an outlier must not block a metric`);
+      for (const o of p.outliers) assert.equal(o.advisory_only, true);
+    }
+    if (p.structural?.length) assert.ok(p.blocks_metrics.length > 0);
   }
 });
 
@@ -168,6 +185,70 @@ test('concentration is judged on the broad sector, not the niche', { skip: !hold
     assert.equal(c.same_sector, c.distinct_sectors === 1,
       'niche labels must not be able to manufacture apparent diversification');
   }
+});
+
+test('display precision is coarser than storage precision, and the exact value survives',
+  { skip: !html }, () => {
+  for (const g of gauges.gauges) {
+    const o = g.observed;
+    if (!o || !o.display_rounded) continue;
+    assert.notEqual(o.display_value, o.exact_value, `${g.id} claims rounding but the values match`);
+    assert.ok(html.includes(String(o.exact_value)),
+      `${g.id}: the exact value must remain retrievable in the audit drawer`);
+  }
+});
+
+test('validation status is rendered before the reading, not after it', { skip: !html }, () => {
+  // The badge markup must precede the measurement block inside a card.
+  const firstCard = html.slice(html.indexOf('<article class="g"'));
+  const badge = firstCard.indexOf('vbadge');
+  const number = firstCard.indexOf('bignum');
+  assert.ok(badge > -1 && number > -1, 'card must contain both a validation badge and a reading');
+  assert.ok(badge < number, 'UNTESTED must be read before the number it qualifies');
+});
+
+test('the front page does not present a red/green market tally', { skip: !html }, () => {
+  const head = html.slice(0, html.indexOf('Framework Triggers'));
+  for (const banned of ['綠燈</span>', '紅燈</span>']) {
+    assert.ok(!head.includes(banned),
+      'a colour tally above the fold reads as a market verdict, whatever it is labelled');
+  }
+  assert.ok(head.includes('經統計驗證的訊號'), 'the front page must state the validated-signal count');
+});
+
+test('legacy ledger entries are excluded from any performance claim', () => {
+  const lines = read('data/predictions.jsonl').trim().split('\n').map((l) => JSON.parse(l));
+  for (const p of lines) {
+    assert.ok(p.protocol, `${p.prediction_id} has no protocol label`);
+    if (p.protocol === 'LEGACY_EXPLORATORY') {
+      assert.equal(p.eligible_for_performance, false,
+        `${p.prediction_id} is legacy but still counts toward performance`);
+    }
+  }
+});
+
+test('a rule whose transformation is unverified is not evaluated', () => {
+  for (const g of gauges.gauges) {
+    if (g.transformation_validation && g.transformation_validation !== 'CHECKED') {
+      assert.equal(g.decision, 'NO_DECISION',
+        `${g.id} evaluated its rule on arithmetic marked ${g.transformation_validation}`);
+    }
+  }
+});
+
+test('point-in-time is described as not implemented, never as impossible', () => {
+  assert.equal(gauges.point_in_time, 'NOT_IMPLEMENTED');
+  // Assertive constructions only. The note legitimately contains the phrase inside a
+  // negation ("this is not-yet-implemented, NOT structurally impossible"), and a naive
+  // substring match flags the sentence that establishes compliance. Third time this exact
+  // pattern has bitten a guardrail test in this repo — keyword scans need the surrounding
+  // grammar, or they end up policing the disclaimer instead of the claim.
+  const assertive = [/(?<!不是「)結構上不可能(?!」)/, /\bis structurally impossible\b/i];
+  for (const re of assertive) {
+    assert.ok(!re.test(gauges.point_in_time_note), `point_in_time_note asserts impossibility: ${re}`);
+  }
+  assert.ok(/尚未實作|NOT_IMPLEMENTED|vintage/.test(gauges.point_in_time_note),
+    'the note must say a backtest path exists but is unbuilt');
 });
 
 test('signal validation is honest about being untested', () => {

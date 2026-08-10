@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-10T06:30:29.008Z",
-  "generated_at_et": "8/10/2026, 2:30:29 AM EDT",
-  "code_commit": "d8479f6",
+  "generated_at": "2026-08-10T07:00:02.542Z",
+  "generated_at_et": "8/10/2026, 3:00:02 AM EDT",
+  "code_commit": "06870e2",
   "lens_status": {
     "serenity-method": "EXECUTED",
     "serenity-bottleneck-hunter": "NOT_EXECUTED",
@@ -56,13 +56,12 @@
         "equity_usd": 100724000000,
         "assets_usd": 134112000000,
         "plausibility": {
-          "checked": [
-            "asset_turnover",
-            "gross_margin",
-            "equity_vs_assets"
-          ],
-          "flags": [],
-          "status": "PASS"
+          "level": "PASS",
+          "blocks_metrics": [],
+          "structural": [],
+          "reconciliation": [],
+          "outliers": [],
+          "policy": "STRUCTURAL_ERROR 會封鎖其所指的欄位；RECONCILIATION_REQUIRED 需人工對照原始申報；ECONOMIC_OUTLIER 只是提醒，不封鎖任何欄位，也不使用警報視覺。"
         },
         "sources": {
           "revenue": {
@@ -134,17 +133,28 @@
       "fundamentals_age_days": 46,
       "serenity_gate": {
         "profitability": {
-          "value": "proven",
+          "value": "SUPPORTED",
+          "scope": "CURRENT_PERIOD",
+          "framework_label": "proven",
+          "period": "2026-05-28",
           "evidence": [
+            "revenue",
+            "net_income",
+            "free_cash_flow"
+          ],
+          "evidence_detail": [
             "營收 $41.46B、年增 345.72%",
             "毛利率 84.56%",
             "自由現金流 $17.56B（營運現金流 − capex，同一季）"
           ],
+          "missing": [],
+          "coverage": "COMPLETE",
           "citations": [
             "10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）",
             "10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）",
             "10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）"
-          ]
+          ],
+          "scope_note": "只證明最新一期的獲利與現金流為正，不證明長期獲利紀錄。要談 track record 需要連續數年的資料，本管線目前只讀最新季度。"
         },
         "moat": {
           "value": "unverified",
@@ -192,7 +202,7 @@
         "m3_pct": 35.71,
         "rvol21_pct": 107.59
       },
-      "price_raw_hash": "332534234d4561ac"
+      "price_raw_hash": "a9d60822bdbc8837"
     },
     {
       "ticker": "SNDK",
@@ -223,23 +233,24 @@
         "equity_usd": 57613000000,
         "assets_usd": 175875000000,
         "plausibility": {
-          "checked": [
-            "asset_turnover",
-            "gross_margin",
-            "equity_vs_assets"
-          ],
-          "flags": [
+          "level": "ECONOMIC_OUTLIER",
+          "blocks_metrics": [],
+          "structural": [],
+          "reconciliation": [],
+          "outliers": [
             {
-              "metric": "asset_turnover",
+              "check": "asset_turnover",
               "value": 0.161,
-              "issue": "年化營收僅為總資產的 16.1%，資產週轉率異常低。可能是合併了合資廠資產、實體範圍不符，或 tag 語意與假設不同。",
-              "affects": [
+              "detail": "年化營收為總資產的 16.1%",
+              "issue": "資產週轉率遠低於一般製造業常態。可能是合併合資廠資產、實體範圍不同，或這門生意本來就極度資本密集。",
+              "note": "此門檻（0.25）沒有統計依據，是人為設定的注意線，不是資料錯誤的證據。",
+              "advisory_only": true,
+              "affects_interpretation_of": [
                 "roe_annualised_pct"
-              ],
-              "action": "VERIFY_AGAINST_FILING"
+              ]
             }
           ],
-          "status": "FLAGGED"
+          "policy": "STRUCTURAL_ERROR 會封鎖其所指的欄位；RECONCILIATION_REQUIRED 需人工對照原始申報；ECONOMIC_OUTLIER 只是提醒，不封鎖任何欄位，也不使用警報視覺。"
         },
         "sources": {
           "revenue": {
@@ -305,17 +316,29 @@
       "fundamentals_age_days": 4,
       "serenity_gate": {
         "profitability": {
-          "value": "proven",
+          "value": "SUPPORTED",
+          "scope": "CURRENT_PERIOD",
+          "framework_label": "proven",
+          "period": "2026-06-30",
           "evidence": [
+            "revenue",
+            "net_income",
+            "free_cash_flow"
+          ],
+          "evidence_detail": [
             "營收 $7.08B、年增 30.63%",
-            "毛利率未揭露（該公司未 tag GrossProfit）",
             "自由現金流 $1.12B（營運現金流 − capex，同一季）"
           ],
+          "missing": [
+            "gross_profit"
+          ],
+          "coverage": "PARTIAL",
           "citations": [
             "10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）",
             "10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）",
             "10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）"
-          ]
+          ],
+          "scope_note": "只證明最新一期的獲利與現金流為正，不證明長期獲利紀錄。要談 track record 需要連續數年的資料，本管線目前只讀最新季度。"
         },
         "moat": {
           "value": "unverified",
@@ -363,7 +386,7 @@
         "m3_pct": -9.53,
         "rvol21_pct": 156.41
       },
-      "price_raw_hash": "ddddaab14615895d"
+      "price_raw_hash": "0f2669d677ab910e"
     }
   ]
 }

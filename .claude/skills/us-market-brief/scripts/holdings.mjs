@@ -96,13 +96,25 @@ function buffettGate(m) {
   const haveProfit = m.revenue_usd !== null && m.net_income_usd !== null;
   const growing = (m.revenue_yoy_pct ?? -1) > 0;
   const cashPositive = (m.free_cash_flow_usd ?? -1) > 0;
-  gate.profitability = haveProfit && growing && cashPositive
-    ? { value: 'proven',
-      evidence: [`營收 $${bn(m.revenue_usd)}B、年增 ${m.revenue_yoy_pct}%`,
-        m.gross_margin_pct !== null ? `毛利率 ${m.gross_margin_pct}%` : '毛利率未揭露（該公司未 tag GrossProfit）',
+  // One quarter of positive numbers supports a claim about THAT quarter. It does not
+  // establish a track record, and `proven` — the framework's own word — reads as though it
+  // does. The framework label is preserved for fidelity but never shown on its own.
+  const blocked = new Set(m.plausibility?.blocks_metrics ?? []);
+  const revBlocked = blocked.has('revenue_usd') || blocked.has('net_income_usd');
+  gate.profitability = haveProfit && growing && cashPositive && !revBlocked
+    ? { value: 'SUPPORTED', scope: 'CURRENT_PERIOD', framework_label: 'proven',
+      period: m.period_end,
+      evidence: ['revenue', 'net_income', 'free_cash_flow'],
+      evidence_detail: [`營收 $${bn(m.revenue_usd)}B、年增 ${m.revenue_yoy_pct}%`,
+        m.gross_margin_pct !== null ? `毛利率 ${m.gross_margin_pct}%` : null,
         `自由現金流 $${bn(m.free_cash_flow_usd)}B（營運現金流 − capex，同一季）`].filter(Boolean),
-      citations: [cite('revenue'), cite('netIncome'), cite('operatingCashFlow')].filter(Boolean) }
-    : { value: 'unverified', reason: '缺少營收／獲利／現金流其一，或成長為負。' };
+      missing: m.gross_margin_pct === null ? ['gross_profit'] : [],
+      coverage: m.gross_margin_pct === null ? 'PARTIAL' : 'COMPLETE',
+      citations: [cite('revenue'), cite('netIncome'), cite('operatingCashFlow')].filter(Boolean),
+      scope_note: '只證明最新一期的獲利與現金流為正，不證明長期獲利紀錄。'
+        + '要談 track record 需要連續數年的資料，本管線目前只讀最新季度。' }
+    : { value: 'unverified',
+      reason: revBlocked ? '損益相關欄位被 STRUCTURAL_ERROR 封鎖。' : '缺少營收／獲利／現金流其一，或成長為負。' };
 
   // Everything below needs qualitative evidence XBRL does not contain.
   gate.moat = { value: 'unverified',
@@ -225,16 +237,19 @@ if (process.argv.includes('--json')) {
       console.log(`  財報期間 ${f.period_end}　申報於 ${f.information_available_at}（${r.fundamentals_age_days} 天前）`);
       console.log(`  營收 $${bn(f.revenue_usd)}B (年增 ${f.revenue_yoy_pct}%)　毛利率 ${f.gross_margin_pct ?? '—'}%　`
         + `淨利率 ${f.net_margin_pct}%　FCF $${bn(f.free_cash_flow_usd)}B`);
-      if (f.plausibility.status === 'FLAGGED') {
-        for (const fl of f.plausibility.flags) console.log(`  ⚠️ 合理性: ${fl.metric} — ${fl.issue} → ${fl.action}`);
+      if (f.plausibility.level !== 'PASS') {
+        console.log(`  合理性: ${f.plausibility.level}`);
+        for (const x of [...f.plausibility.structural, ...f.plausibility.outliers])
+          console.log(`     ${x.check}: ${x.issue}${x.advisory_only ? ' [僅提醒，不封鎖]' : ' [封鎖]'}`);
       }
     }
     if (p) console.log(`  股價 ${p.close}（${p.as_of}）　距兩年高點 ${p.from_2y_high_pct}%　`
       + `vs 50日線 ${p.vs_50dma_pct}%　21日波動 ${p.rvol21_pct}%`);
     if (r.serenity_gate) {
       const g = r.serenity_gate;
-      console.log(`  Serenity 閘門：賺錢能力=${g.profitability.value}　護城河=${g.moat.value}　`
-        + `客戶替換風險=${g.customer_replacement_risk.value}　結論=${g.conclusion.value}`);
+      console.log(`  Serenity 閘門：賺錢能力=${g.profitability.value}`
+        + (g.profitability.scope ? `（${g.profitability.scope}，覆蓋 ${g.profitability.coverage}）` : '')
+        + `　護城河=${g.moat.value}　結論=${g.conclusion.value}`);
     }
   }
   console.log(`\n集中度：${concentration.reading}`);

@@ -1,25 +1,26 @@
 {
   "schema_version": "3.0.0",
-  "calculation_version": "3.1.0",
-  "code_commit": "d8479f6",
-  "generated_at": "2026-08-10T06:29:51.213Z",
-  "generated_at_et": "8/10/2026, 2:29:51 AM EDT",
+  "calculation_version": "3.4.0",
+  "code_commit": "06870e2",
+  "generated_at": "2026-08-10T07:00:42.253Z",
+  "generated_at_et": "8/10/2026, 3:00:42 AM EDT",
   "market_session": {
     "us_market": "CLOSED",
     "timezone": "America/New_York"
   },
   "frame": "基本面管方向、流動性管顛簸、擁擠管斷裂",
   "henren_rule_tally": {
-    "green": 7,
+    "green": 6,
     "yellow": 1,
     "red": 5,
-    "evaluated": 13,
-    "no_decision": 3,
+    "evaluated": 12,
+    "no_decision": 4,
     "total": 16
   },
   "status_summary": {
     "data_state": {
-      "LAGGED_BY_DESIGN": 11,
+      "LAGGED_BY_DESIGN": 10,
+      "RECONCILIATION_REQUIRED": 1,
       "CURRENT": 2,
       "OVERDUE": 2,
       "STALE": 1
@@ -32,8 +33,8 @@
       "NO_AUTHORITATIVE_SOURCE": 1
     },
     "measurement_integrity": {
-      "CHECKED": 13,
-      "RAW": 3
+      "CHECKED": 12,
+      "RAW": 4
     },
     "signal_validation": {
       "UNTESTED": 16
@@ -45,8 +46,35 @@
     }
   },
   "no_composite_score": "本系統不輸出任何綜合分數、泡沫指數或 0–100 評分。沒有定義預測目標、沒有樣本外驗證的加權合成，是把不確定性藏起來，不是資訊。",
-  "point_in_time": false,
-  "point_in_time_note": "FRED 只提供最新修訂版，所以這些讀數描述現在，不是可回測的歷史。SEC capex 例外（帶 filed 日期）。",
+  "maturity": [
+    {
+      "layer": "Data Provenance",
+      "state": "ESTABLISHED",
+      "detail": "每個數字帶來源、權威等級、生效日、抓取時間、轉換、版本、commit、原始回應 hash。"
+    },
+    {
+      "layer": "Calculation Integrity",
+      "state": "ESTABLISHED",
+      "detail": "canonical engine 唯一計算，renderer 零金融運算，測試強制一致。calc v3.4.0。"
+    },
+    {
+      "layer": "Measurement Validity",
+      "state": "IN_PROGRESS",
+      "detail": "capex 差分已對帳（65 筆可驗證中 64 筆分毫不差），但 META 無可對照值，環比因此不評估。「抓到的概念是不是我們以為的那個概念」仍在建立中。"
+    },
+    {
+      "layer": "Signal Validation",
+      "state": "NOT_STARTED",
+      "detail": "0 / 16 格經過統計檢驗。所有門檻皆來自一位公開評論者，未回測、未樣本外驗證。"
+    },
+    {
+      "layer": "Predictive Track Record",
+      "state": "NOT_STARTED",
+      "detail": "前瞻假說帳本 3 筆，全部標記 LEGACY_EXPLORATORY，不計入績效。"
+    }
+  ],
+  "point_in_time": "NOT_IMPLEMENTED",
+  "point_in_time_note": "FRED 的預設端點只回傳最新修訂版，所以目前的讀數描述現在、不是可回測的歷史。但這是「尚未實作」，不是「結構上不可能」—— ALFRED 提供 vintage 資料，FRED API 也有 series/vintagedates，回測路徑並沒有被資料架構永久封死。SEC 那條已帶 filed 時間戳，但 as-of 查詢從未實際執行過（as_of_query: NOT_TESTED）。",
   "gauges": [
     {
       "id": "fuel",
@@ -56,14 +84,19 @@
       "observed": {
         "value": 2.993,
         "unit": "兆美元",
-        "effective_date": "2026-08-05"
+        "effective_date": "2026-08-05",
+        "display_value": 2.99,
+        "exact_value": 2.993,
+        "display_rounded": true
       },
       "empirical": {
         "level_percentile_5y": {
           "ok": true,
           "value": 10,
           "window_years": 5,
-          "n": 261
+          "n": 261,
+          "display_value": 10,
+          "exact_value": 10
         },
         "change_4w_pct": -3.41,
         "change_13w_pct": -1.29,
@@ -71,7 +104,9 @@
           "ok": true,
           "value": 21.8,
           "window_years": 5,
-          "n": 261
+          "n": 261,
+          "display_value": 22,
+          "exact_value": 21.8
         },
         "reading": "四週變化 -3.41%，落在五年分布的 p21.8，不構成快速流失"
       },
@@ -100,12 +135,13 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "WRESBAL",
         "effective_date": "2026-08-05",
-        "retrieved_at": "2026-08-10T06:29:51.800Z",
+        "retrieved_at": "2026-08-10T07:00:43.344Z",
         "raw_hash": "d9b10afc92dbdbaa",
         "transformation": "level in USD trillions; 4/13-week change; percentile vs 5y",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": false
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "ABSENT",
+        "as_of_query": "NOT_TESTED"
       }
     },
     {
@@ -120,14 +156,19 @@
         "detail": {
           "vix": 14.9,
           "vix_3m": 18.72
-        }
+        },
+        "display_value": 0.8,
+        "exact_value": 0.796,
+        "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
           "value": 3,
           "window_years": 5,
-          "n": 1254
+          "n": 1254,
+          "display_value": 3,
+          "exact_value": 3
         },
         "reading": "遠月波動率高於近月（Contango）＝ 市場沒有在為「馬上出事」定價"
       },
@@ -158,30 +199,30 @@
         "source_authority": "OFFICIAL_PRIMARY",
         "dataset": "CBOE_VIX",
         "effective_date": "2026-08-07",
-        "retrieved_at": "2026-08-10T06:29:52.296Z",
+        "retrieved_at": "2026-08-10T07:00:43.927Z",
         "raw_hash": "94dc475a4aac34af",
         "transformation": "Cboe VIX / VIX3M closes on a common session; percentile vs 5y",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": true
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "PRESENT",
+        "as_of_query": "NOT_TESTED"
       }
     },
     {
       "id": "capex",
       "switch": 3,
       "label": "開關三 · 逃生鈴（雲廠商 capex 增速）",
-      "plain": "微軟、Google、Amazon、Meta 這四家買設備的錢，這一季比去年同季多多少 %。重點不是「還在花」，是「增加的速度有沒有開始變慢」。",
+      "plain": "微軟、Google、Amazon、Meta 這四家買設備的錢，增加的速度有沒有開始變慢。重點不是「還在花」，是「加速度」。",
       "observed": {
-        "value": 80.45,
-        "unit": "% 年增",
+        "value": 9.37,
+        "unit": "% 環比",
         "effective_date": "2026-03-31",
         "detail": {
           "total_bn": 129.75,
-          "qoq_pct": 9.37,
+          "yoy_pct": 80.45,
           "prior_quarter": {
             "period_end": "2025-12-31",
-            "total_bn": 118.63,
-            "yoy_pct": 63.99
+            "total_bn": 118.63
           },
           "by_issuer": [
             {
@@ -207,9 +248,14 @@
           ],
           "information_available_at": "2026-04-30",
           "coverage": "4/4 issuers"
-        }
+        },
+        "display_value": 9.37,
+        "exact_value": 9.37,
+        "display_rounded": false
       },
       "empirical": {
+        "yoy_pct": 80.45,
+        "yoy_peak_in_series": 80.45,
         "yoy_history": [
           {
             "period_end": "2024-06-30",
@@ -252,48 +298,78 @@
             "qoq_pct": 9.37
           }
         ],
-        "yoy_peak_in_series": 80.45,
-        "rolled_over": false,
-        "reading": "年增率 80.45% 是序列內最高，尚未見頂回落。"
+        "measurement_integrity_yoy": "CHECKED",
+        "reading": "年增 80.45%，是序列內最高（前高 80.45%）。年增兩端都是直接申報的單季值，不經差分，所以這個數字本身是可信的 —— 但它不是他的規則。他要的是環比。",
+        "information_scope": "REPORTED_ACTUALS_ONLY",
+        "interim_event_coverage": "MISSING",
+        "coverage_note": "本格只涵蓋已申報的實際支出。法說會的下季指引沒有 XBRL tag，未接線 —— 公司可能在季報之間就轉向，而這裡看不到。"
       },
       "henren": {
-        "status": "green",
+        "status": null,
+        "rule_metric": "QoQ",
+        "rule_value": 9.37,
         "thresholds": {
-          "green": "增速持平或加速",
-          "red": "增速見頂回落 → 立刻平倉，不看當期獲利"
+          "green": "環比增速持平或加速",
+          "red": "環比增速見頂回落 → 立刻平倉"
         },
-        "quote": "你要盯的是下游的雲廠商的資本開支的二階導數，也就是環比增速而不是同比增速。如果資本開支的絕對額還在漲，但環比增速已經開始放緩甚至見頂回落的話，哪怕當期的淨利潤再創新高也必須立刻平倉。因為現在的估值給的是增量估值，增量沒了估值就沒有這個邏輯。",
-        "implementation_divergence": "他要的是**環比**二階導。本格主判用**年增**，因為這四家的環比有明顯季節性（Q1 例行走弱：2025Q1 −0.6%、2026Q1 +9.37%），單看環比會週期性誤報「見頂」。環比數列仍完整回報在 empirical.yoy_history 裡供對照。這是實作上的偏離，不是他的規則。"
+        "quote": "你要盯的是下游的雲廠商的資本開支的二階導數，也就是環比增速而不是同比增速。如果資本開支的絕對額還在漲，但環比增速已經開始放緩甚至見頂回落的話，哪怕當期的淨利潤再創新高也必須立刻平倉。",
+        "seasonality_treatment": "NOT_ESTABLISHED",
+        "seasonality_note": "這四家的環比有明顯季節性（2025Q1 −0.6%、2026Q1 +9.37%），但只有 8 季共同資料，不足以建立季節調整。因此環比的原始讀數無法可靠地區分「季節性走弱」與「真的見頂回落」。"
+      },
+      "transformation_validation": "UNVERIFIED",
+      "reconciliation": {
+        "verdict": "PARTIALLY_VERIFIED",
+        "totals": {
+          "verifiable": 65,
+          "exact": 64
+        },
+        "by_issuer": {
+          "MSFT": "RECONCILED",
+          "GOOGL": "RECONCILED_WITH_HISTORICAL_EXCEPTIONS",
+          "AMZN": "RECONCILED",
+          "META": "UNVERIFIABLE"
+        },
+        "unverifiable_issuers": [
+          "META"
+        ],
+        "note": "可對照的 65 筆差分中，64 筆與公司直接申報的單季值分毫不差。 GOOGL 有 3 年以外的歷史差異（多為重編或重分類），不影響當前讀數。 META 完全沒有可對照的直接申報單季值 —— 其差分結果無法用此方法驗證，因此任何包含它的季度合計都帶有未驗證的算術。",
+        "qoq_base_derived_issuers": [
+          "GOOGL",
+          "AMZN",
+          "META"
+        ]
       },
       "layers": {
-        "A_reported_cash_capex": "AUTOMATED — SEC XBRL，10-Q 累計數已差分還原為單季",
-        "B_finance_leases": "NOT_WIRED — 融資租賃不進現金 capex，AI 資料中心佔比可觀且在變動，本格系統性低估",
-        "C_management_guidance": "NOT_WIRED — 市場真正敏感的是下季指引，法說會內容沒有 XBRL tag"
+        "A_reported_cash_capex": "AUTOMATED · SEC XBRL · 差分已對帳（64/65 分毫不差）",
+        "B_finance_leases": "NOT_WIRED · 融資租賃不進現金 capex，本格系統性低估",
+        "C_management_guidance": "NOT_WIRED · 下季指引無 XBRL tag"
       },
       "source_authority_override": "OFFICIAL_PRIMARY",
       "status": {
-        "data_state": "LAGGED_BY_DESIGN",
+        "data_state": "RECONCILIATION_REQUIRED",
         "source_authority": "OFFICIAL_PRIMARY",
-        "measurement_integrity": "CHECKED",
+        "measurement_integrity": "RAW",
         "signal_validation": "UNTESTED",
         "automation_mode": "HYBRID"
       },
       "age_days": 102,
       "acceptable_age_days": 135,
-      "decision": "RULE_EVALUATED",
+      "decision": "NO_DECISION",
       "provenance": {
         "source_id": "sec_edgar",
         "source_authority": "OFFICIAL_PRIMARY",
         "dataset": "SEC_CAPEX",
         "effective_date": "2026-03-31",
-        "retrieved_at": "2026-08-10T06:29:53.566Z",
+        "retrieved_at": "2026-08-10T07:00:44.880Z",
         "raw_hash": "MSFT:2a3f142c858f766d GOOGL:0936f4aeed7e9d49 AMZN:dd90f2b11e3f1363 META:d1f91dfda76626ce",
-        "transformation": "YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; YoY and QoQ",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": true,
+        "transformation": "YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; QoQ (rule) and YoY (context)",
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "PRESENT",
+        "as_of_query": "NOT_TESTED",
         "information_available_at": "2026-04-30"
-      }
+      },
+      "note": "環比是他的規則，但環比的比較基準（2025-12-31）含有無法驗證的差分還原值（META 沒有可對照的直接申報單季值）。在差分對帳完成以前，規則不評估 —— 年增很強不能代替「環比規則沒有觸發」。"
     },
     {
       "id": "sofr",
@@ -306,14 +382,19 @@
         "detail": {
           "sofr": 3.65,
           "iorb": 3.65
-        }
+        },
+        "display_value": 0,
+        "exact_value": 0,
+        "display_rounded": false
       },
       "empirical": {
         "percentile_3y": {
           "ok": true,
           "value": 80.3,
           "window_years": 3,
-          "n": 781
+          "n": 781,
+          "display_value": 80,
+          "exact_value": 80.3
         },
         "note": "IORB 序列自 2021-07 起，分位數樣本有限。"
       },
@@ -341,12 +422,13 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "SOFR",
         "effective_date": "2026-08-06",
-        "retrieved_at": "2026-08-10T06:29:54.558Z",
+        "retrieved_at": "2026-08-10T07:00:45.996Z",
         "raw_hash": "dec98e752cccaba1",
         "transformation": "SOFR minus IORB in bp on a common effective date; percentile vs 3y",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": false
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "ABSENT",
+        "as_of_query": "NOT_TESTED"
       }
     },
     {
@@ -356,14 +438,19 @@
       "observed": {
         "value": 907.3,
         "unit": "十億美元",
-        "effective_date": "2026-08-05"
+        "effective_date": "2026-08-05",
+        "display_value": 907,
+        "exact_value": 907.3,
+        "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
           "value": 92.3,
           "window_years": 5,
-          "n": 261
+          "n": 261,
+          "display_value": 92,
+          "exact_value": 92.3
         }
       },
       "henren": {
@@ -390,12 +477,13 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "WTREGEN",
         "effective_date": "2026-08-05",
-        "retrieved_at": "2026-08-10T06:29:55.005Z",
+        "retrieved_at": "2026-08-10T07:00:46.853Z",
         "raw_hash": "e27d88daab056cb6",
         "transformation": "level in USD bn; percentile vs 5y",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": false
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "ABSENT",
+        "as_of_query": "NOT_TESTED"
       }
     },
     {
@@ -405,14 +493,19 @@
       "observed": {
         "value": 1.45,
         "unit": "十億美元",
-        "effective_date": "2026-08-07"
+        "effective_date": "2026-08-07",
+        "display_value": 1.4,
+        "exact_value": 1.45,
+        "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
           "value": 11.4,
           "window_years": 5,
-          "n": 1304
+          "n": 1304,
+          "display_value": 11,
+          "exact_value": 11.4
         },
         "reading": "緩衝實質見底 —— 財政部再抽錢會直接打到銀行準備金。"
       },
@@ -440,12 +533,13 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "RRPONTSYD",
         "effective_date": "2026-08-07",
-        "retrieved_at": "2026-08-10T06:29:55.123Z",
+        "retrieved_at": "2026-08-10T07:00:46.971Z",
         "raw_hash": "dbbe80a2b7ee0edd",
         "transformation": "level in USD bn; percentile vs 5y",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": false
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "ABSENT",
+        "as_of_query": "NOT_TESTED"
       }
     },
     {
@@ -455,20 +549,27 @@
       "observed": {
         "value": 2.71,
         "unit": "%",
-        "effective_date": "2026-08-06"
+        "effective_date": "2026-08-06",
+        "display_value": 2.7,
+        "exact_value": 2.71,
+        "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
           "value": 9.6,
           "window_years": 5,
-          "n": 795
+          "n": 795,
+          "display_value": 10,
+          "exact_value": 9.6
         },
         "percentile_20y": {
           "ok": true,
           "value": 9.6,
           "window_years": 20,
-          "n": 795
+          "n": 795,
+          "display_value": 10,
+          "exact_value": 9.6
         }
       },
       "henren": {
@@ -496,12 +597,13 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "BAMLH0A0HYM2",
         "effective_date": "2026-08-06",
-        "retrieved_at": "2026-08-10T06:29:55.221Z",
+        "retrieved_at": "2026-08-10T07:00:47.098Z",
         "raw_hash": "2bb008786d3a3a50",
         "transformation": "OAS in percent; percentile vs 5y and 20y",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": false
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "ABSENT",
+        "as_of_query": "NOT_TESTED"
       }
     },
     {
@@ -511,14 +613,19 @@
       "observed": {
         "value": -0.529,
         "unit": "標準差",
-        "effective_date": "2026-07-31"
+        "effective_date": "2026-07-31",
+        "display_value": -0.53,
+        "exact_value": -0.529,
+        "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
           "value": 13.1,
           "window_years": 5,
-          "n": 260
+          "n": 260,
+          "display_value": 13,
+          "exact_value": 13.1
         }
       },
       "henren": {
@@ -546,12 +653,13 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "NFCI",
         "effective_date": "2026-07-31",
-        "retrieved_at": "2026-08-10T06:29:55.311Z",
+        "retrieved_at": "2026-08-10T07:00:47.157Z",
         "raw_hash": "ddecf5b174c81809",
         "transformation": "index level; percentile vs 5y",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": false
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "ABSENT",
+        "as_of_query": "NOT_TESTED"
       }
     },
     {
@@ -574,7 +682,10 @@
             "2026-06-01"
           ],
           "anchor_set_by": "M2（較慢）"
-        }
+        },
+        "display_value": -36,
+        "exact_value": -36.2,
+        "display_rounded": true
       },
       "empirical": {
         "reading": "此讀數描述的是 2026-06-01，不是今天 —— M2 每月發布且落後約一個月，錨點只能取到兩邊都有觀測的最新日期。"
@@ -606,12 +717,13 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "M2SL",
         "effective_date": "2026-06-01",
-        "retrieved_at": "2026-08-10T06:29:55.371Z",
+        "retrieved_at": "2026-08-10T07:00:47.350Z",
         "raw_hash": "706397d1a68380f9",
         "transformation": "calendar-aware YoY on both legs at a common anchor",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": false
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "ABSENT",
+        "as_of_query": "NOT_TESTED"
       }
     },
     {
@@ -628,14 +740,19 @@
           "gdp_bn": 31865.72,
           "gdp_date": "2026-01-01",
           "offset_days": 0
-        }
+        },
+        "display_value": 218,
+        "exact_value": 218.1,
+        "display_rounded": true
       },
       "empirical": {
         "percentile_20y": {
           "ok": true,
           "value": 94.9,
           "window_years": 20,
-          "n": 78
+          "n": 78,
+          "display_value": 95,
+          "exact_value": 94.9
         },
         "reading": "兩邊都對齊在 2026-01-01 起始的那一季（截至 2026-03-31）。此讀數描述的是那一季，距季末約 132 天。Z.1 與 GDP 都是季度資料且發布本身就落後，這是設計上的落後不是失效。"
       },
@@ -664,12 +781,13 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "NCBEILQ027S",
         "effective_date": "2026-01-01",
-        "retrieved_at": "2026-08-10T06:29:55.830Z",
+        "retrieved_at": "2026-08-10T07:00:47.776Z",
         "raw_hash": "fdbcd4072303d19b",
         "transformation": "Z.1 corporate equities / GDP, joined on a common quarter",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": false,
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "ABSENT",
+        "as_of_query": "NOT_TESTED",
         "period_end": "2026-03-31"
       }
     },
@@ -736,7 +854,10 @@
               "as_of": "2026-08-07"
             }
           ]
-        }
+        },
+        "display_value": 5.9,
+        "exact_value": 5.9,
+        "display_rounded": false
       },
       "empirical": {
         "reading": "大盤 21 日已實現波動 14.04%，籃子中位數是它的 5.9 倍。"
@@ -768,12 +889,13 @@
         "source_authority": "UNOFFICIAL_FREE",
         "dataset": "EQUITY_DAILY:^GSPC",
         "effective_date": "2026-08-07",
-        "retrieved_at": "2026-08-10T06:29:55.987Z",
-        "raw_hash": "952b20d957e89cd9",
+        "retrieved_at": "2026-08-10T07:00:47.906Z",
+        "raw_hash": "4a0439064af83650",
         "transformation": "21-day annualised realised vol vs ^GSPC; median across a fixed basket",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
-        "point_in_time_capable": false
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
+        "point_in_time_metadata": "ABSENT",
+        "as_of_query": "NOT_TESTED"
       }
     },
     {
@@ -816,8 +938,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from FINRA Margin Statistics（每月中旬公布上月數據）",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
         "point_in_time_capable": false
       }
     },
@@ -861,8 +983,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from Cboe 官方統計 / 券商研究",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
         "point_in_time_capable": false
       }
     },
@@ -906,8 +1028,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from S&P Dow Jones Indices 月報 / SPY 持股揭露",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
         "point_in_time_capable": false
       }
     },
@@ -950,8 +1072,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from SEC Form 4 彙總（InsiderScore / Washington Service 等）",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
         "point_in_time_capable": false
       }
     },
@@ -994,8 +1116,8 @@
         "retrieved_at": null,
         "raw_hash": null,
         "transformation": "hand-entered from FactSet / Bloomberg / Nasdaq 官方",
-        "calculation_version": "3.1.0",
-        "code_commit": "d8479f6",
+        "calculation_version": "3.4.0",
+        "code_commit": "06870e2",
         "point_in_time_capable": false
       }
     }

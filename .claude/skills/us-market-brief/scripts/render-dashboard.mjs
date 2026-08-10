@@ -40,68 +40,77 @@ const pct = (g) => {
   return p?.ok ? p : null;
 };
 
+const dv = (o) => (o?.display_value ?? o?.value);
+const pv = (p) => (p?.display_value ?? p?.value);
+
 function card(g) {
   const p = pct(g);
   const sev = SEV[g.henren?.status] ?? 'var(--off)';
   const th = g.henren?.thresholds ?? {};
-  return `<article class="g" style="--sev:${g.henren ? sev : 'var(--off)'}">
-  <header>
-    <div class="ghead">
-      <h3>${esc(g.label)}${g.proxy ? '<span class="tag">代理</span>' : ''}${g.henren?.threshold_is_ours ? '<span class="tag tag-ours">門檻非原話</span>' : ''}</h3>
-      <p class="plain">${esc(g.plain)}</p>
-    </div>
-    <div class="chips">
-      <span class="chip chip-state">${STATE_LABEL[g.status.data_state] ?? g.status.data_state}</span>
-      <span class="chip chip-auth${g.status.source_authority === 'UNOFFICIAL_FREE' ? ' weak' : ''}">${AUTH_LABEL[g.status.source_authority] ?? g.status.source_authority}</span>
-      <span class="chip chip-auto">${AUTO_LABEL[g.status.automation_mode] ?? g.status.automation_mode}</span>
-    </div>
-  </header>
+  const validation = g.status.signal_validation;
+  const o = g.observed;
+  return `<article class="g" style="--sev:${g.henren?.status ? sev : 'var(--off)'}">
 
-  <div class="quad">
-    <section class="q q-obs">
-      <div class="qlab">觀測值</div>
-      ${g.observed ? `<div class="qval num">${esc(g.observed.value)}<span class="qunit">${esc(g.observed.unit)}</span></div>
-      <div class="qmeta num">生效 ${esc(g.observed.effective_date)}　·　${g.age_days} 天前</div>` : '<div class="qval muted">—</div>'}
-    </section>
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">${esc(validation)}</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">${STATE_LABEL[g.status.data_state] ?? g.status.data_state}</span>
+      <span class="chip${g.status.source_authority === 'UNOFFICIAL_FREE' ? ' weak' : ''}">${AUTH_LABEL[g.status.source_authority] ?? g.status.source_authority}</span>
+      <span class="chip">${AUTO_LABEL[g.status.automation_mode] ?? g.status.automation_mode}</span>
+    </span>
+  </div>
 
-    <section class="q q-emp">
-      <div class="qlab">歷史脈絡</div>
-      ${p ? `<div class="qval num">P${p.value}</div>
-      <div class="pbar"><div class="pfill" style="width:${p.value}%"></div><div class="pneedle" style="left:calc(${p.value}% - 1px)"></div></div>
-      <div class="qmeta">過去 ${p.window_years} 年 n=${p.n}</div>` : '<div class="qval muted">—</div><div class="qmeta">無足夠歷史樣本</div>'}
+  <h3>${esc(g.label)}${g.proxy ? '<span class="tag">代理</span>' : ''}${g.henren?.threshold_is_ours ? '<span class="tag tag-ours">門檻非原話</span>' : ''}</h3>
+  <p class="plain">${esc(g.plain)}</p>
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      ${o && dv(o) !== null && dv(o) !== undefined ? `
+        <div class="bignum num">${esc(dv(o))}<span class="qunit">${esc(o.unit)}</span></div>
+        <div class="qmeta num">${esc(o.effective_date)}　·　${g.age_sessions !== null && g.age_sessions !== undefined ? `${g.age_sessions} 個交易日前` : `${g.age_days} 天前`}</div>
+        ${g.publication_lag_ratio !== undefined ? `<div class="qmeta">落後 ${g.publication_lag_ratio} 個發布週期</div>` : ''}
+      ` : '<div class="bignum muted">—</div>'}
+      ${p ? `
+        <div class="pctrow"><span>歷史位置</span><b class="num">P${esc(pv(p))}</b></div>
+        <div class="pbar"><div class="pfill" style="width:${pv(p)}%"></div><div class="pneedle" style="left:calc(${pv(p)}% - 1px)"></div></div>
+        <div class="qmeta">過去 ${p.window_years} 年，n=${p.n}</div>` : ''}
       ${g.empirical?.reading ? `<p class="qnote">${esc(g.empirical.reading)}</p>` : ''}
+      ${g.empirical?.interim_event_coverage === 'MISSING' ? `<p class="qnote cov"><b>資訊涵蓋範圍：</b>僅限已申報實績。${esc(g.empirical.coverage_note ?? '')}</p>` : ''}
     </section>
 
-    <section class="q q-rule">
-      <div class="qlab">狠人規則</div>
-      ${g.henren ? `<div class="qval" style="color:${sev}">${RULE_LABEL[g.henren.status]}</div>
-      <div class="ths">${Object.entries(th).map(([k, v]) => `<span class="th th-${k}">${esc(v)}</span>`).join('')}</div>` : '<div class="qval muted">—</div>'}
-    </section>
-
-    <section class="q q-val">
-      <div class="qlab">訊號驗證</div>
-      <div class="qval val-untested">${esc(g.status.signal_validation)}</div>
-      <div class="qmeta">此門檻尚未經任何統計檢驗</div>
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      ${g.henren?.status ? `
+        <div class="rulestat" style="color:${sev}">${RULE_LABEL[g.henren.status]}</div>
+        <div class="ths">${Object.entries(th).map(([k, v]) => `<span class="th th-${k}">${esc(v)}</span>`).join('')}</div>
+      ` : `<div class="rulestat muted">不評估</div>
+        <div class="qmeta">${esc(g.note ?? '此格沒有可用於規則評估的讀數。')}</div>`}
+      ${g.henren?.quote ? `<blockquote>${esc(g.henren.quote)}</blockquote>` : ''}
     </section>
   </div>
 
-  ${g.henren?.quote ? `<blockquote>${esc(g.henren.quote)}</blockquote>` : ''}
   ${[
     g.henren?.note && ['他的說明', g.henren.note],
-    g.henren?.implementation_divergence && ['實作偏離他的原話', g.henren.implementation_divergence],
+    g.henren?.seasonality_note && ['季節性', g.henren.seasonality_note],
     g.proxy_warning && ['代理指標警告', g.proxy_warning],
     g.naming_note && ['命名', g.naming_note],
     g.selection_bias_note && ['選樣偏誤', g.selection_bias_note],
     g.mixed_authority_note && ['來源權威', g.mixed_authority_note],
-    g.note && ['狀態', g.note],
+    g.reconciliation && ['差分對帳', `${g.reconciliation.verdict} — ${g.reconciliation.note}`],
   ].filter(Boolean).map(([k, v]) => `<p class="note"><b>${k}：</b>${esc(v)}</p>`).join('')}
   ${g.layers ? `<div class="layers">${Object.entries(g.layers).map(([k, v]) =>
     `<div class="layer"><b>${esc(k.replace(/^._/, '').replace(/_/g, ' '))}</b><span>${esc(v)}</span></div>`).join('')}</div>` : ''}
 
-  <details class="prov"><summary>來源鏈</summary><dl>
-    ${Object.entries(g.provenance ?? {}).map(([k, v]) =>
-      `<div><dt>${esc(k)}</dt><dd class="num">${esc(typeof v === 'boolean' ? (v ? 'true' : 'false') : v)}</dd></div>`).join('')}
-  </dl></details>
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    ${o?.display_rounded ? `<p class="exact">畫面顯示 <b class="num">${esc(dv(o))}</b>，實際值 <b class="num">${esc(o.exact_value)}</b>${p?.exact_value !== undefined ? `；百分位 P${esc(pv(p))} 的實際值為 ${esc(p.exact_value)}` : ''}。</p>` : ''}
+    <dl>${Object.entries(g.provenance ?? {}).map(([k, v]) =>
+      `<div><dt>${esc(k)}</dt><dd class="num">${esc(typeof v === 'boolean' ? (v ? 'true' : 'false') : v)}</dd></div>`).join('')}</dl>
+  </details>
 </article>`;
 }
 
@@ -160,7 +169,8 @@ const summary = `
     <b>一句話：</b>方向沒問題、油還夠、逃生鈴沒響 —— 但估值與擁擠度都在歷史極端
     （巴菲特指標 P${pct(G('buffett'))?.value}、AI 籃子波動是大盤 ${obs('ai-basket-rel-vol')?.value} 倍）。
     這不是「安全」，是<b>「還能燒，而且燒得很快」</b>。
-    ${t.red} 個規則觸發、${t.yellow ?? 0} 個接近、${t.green} 個未觸發，另有 ${t.no_decision} 格沒有可用讀數。
+    <b>${t.evaluated}</b> 條狠人規則已評估、其中 <b>${t.red ?? 0}</b> 條觸發，另有 <b>${t.no_decision}</b> 格沒有可用讀數。
+    經統計驗證的訊號：<b>0</b>。
   </div>
   <p class="vdisc">以上每個數字都來自 canonical engine（calc v${esc(data.calculation_version)} @ ${esc(data.code_commit)}）。
   「狠人規則觸發」不等於「統計上證明危險」—— 全部 16 格的訊號驗證狀態都是 UNTESTED。</p>
@@ -184,7 +194,9 @@ const holdingsSection = !hold ? '' : `
   <div class="grid">
   ${hold.holdings.map((h) => {
     const f = h.fundamentals, p = h.price, g = h.serenity_gate;
-    const flag = f?.plausibility?.status === 'FLAGGED';
+    const plaus = f?.plausibility;
+    const structural = plaus?.structural?.length ? plaus.structural : null;
+    const outliers = plaus?.outliers?.length ? plaus.outliers : null;
     return `<article class="g" style="--sev:var(--brass)">
       <header>
         <div class="ghead"><h3>${esc(h.ticker)} · ${esc(h.name)}<span class="tag">${esc(h.niche ?? h.sector)}</span></h3>
@@ -208,14 +220,16 @@ const holdingsSection = !hold ? '' : `
           21日波動 <b>${p?.rvol21_pct ?? '—'}%</b></div></section>
         <section class="q q-rule"><div class="qlab">Serenity 閘門</div>
           <div class="qval" style="font-size:15px;color:var(--ok)">賺錢能力 ${esc(g?.profitability.value ?? '—')}</div>
-          <div class="qmeta">護城河 <b>${esc(g?.moat.value ?? '—')}</b>　
-          客戶替換風險 <b>${esc(g?.customer_replacement_risk.value ?? '—')}</b><br>
-          結論 <b>${esc(g?.conclusion.value ?? '—')}</b></div></section>
+          <div class="qmeta">${g?.profitability.scope ? `範圍 <b>${esc(g.profitability.scope)}</b>　覆蓋 <b>${esc(g.profitability.coverage)}</b><br>` : ''}
+          護城河 <b>${esc(g?.moat.value ?? '—')}</b>　結論 <b>${esc(g?.conclusion.value ?? '—')}</b></div></section>
       </div>
       ${g?.profitability.citations?.length ? `<p class="note"><b>賺錢能力的引用：</b>${g.profitability.citations.map(esc).join('；')}</p>` : ''}
       ${g?.moat ? `<p class="note"><b>護城河為何仍是 unverified：</b>${esc(g.moat.reason)}</p>` : ''}
-      ${flag ? `<p class="note blocker"><b>⚠️ 合理性檢查未通過：</b>${f.plausibility.flags.map((x) => esc(x.issue)).join(' ')}
-        受影響欄位：${f.plausibility.flags.flatMap((x) => x.affects).join('、')}。此數字需對照原始申報文件人工確認。</p>` : ''}
+      ${g?.profitability.scope_note ? `<p class="note"><b>為什麼是 SUPPORTED 而不是 proven：</b>${esc(g.profitability.scope_note)}${g.profitability.missing?.length ? ` 另缺 ${g.profitability.missing.join('、')}，覆蓋為 PARTIAL。` : ''}</p>` : ''}
+      ${structural ? `<p class="note blocker"><b>⚠️ 合理性檢查未通過（STRUCTURAL_ERROR）：</b>${structural.map((x) => esc(x.issue)).join(' ')}
+        已封鎖欄位：${structural.flatMap((x) => x.blocks ?? []).join('、')}。</p>` : ''}
+      ${outliers ? `<p class="note advisory"><b>經濟異常值（${esc(plaus.level)}，僅提醒不封鎖）：</b>
+        ${outliers.map((x) => `${esc(x.check)} = ${esc(x.value)} — ${esc(x.issue)}${x.note ? ` <i>${esc(x.note)}</i>` : ''}`).join('　')}</p>` : ''}
       ${g?.conclusion ? `<p class="note"><b>結論為何停在研究地图：</b>${esc(g.conclusion.reason)}</p>` : ''}
     </article>`;
   }).join('')}
@@ -346,6 +360,54 @@ border-radius:4px;padding:15px 17px;margin:0 0 14px;box-shadow:var(--shadow)}
 .conc p{margin:0 0 6px;font-size:14px;color:var(--ink-2);line-height:1.6}
 .conc .corr{color:var(--ink);font-weight:600}
 code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--panel-2);padding:1px 5px;border-radius:3px}
+
+/* validation-first strip */
+.vstrip{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 11px;margin:-17px -17px 14px;
+background:var(--warn-bg);border-bottom:1px solid var(--rule);border-radius:3px 3px 0 0}
+.vbadge{font-size:11px;font-weight:800;letter-spacing:.09em;color:var(--warn);
+background:var(--panel);padding:3px 9px;border-radius:3px;border:1px solid var(--warn)}
+.vtext{font-size:12px;color:var(--warn);font-weight:600}
+.vchips{margin-left:auto;display:flex;gap:5px;flex-wrap:wrap}
+.g h3{margin:0 0 4px;font-size:17px;font-weight:730;letter-spacing:-.01em}
+.split{display:grid;grid-template-columns:1.15fr .85fr;gap:1px;background:var(--rule-soft);
+border:1px solid var(--rule-soft);border-radius:4px;margin:14px 0 0;overflow:hidden}
+@media(max-width:800px){.split{grid-template-columns:1fr}}
+.side{background:var(--panel);padding:14px 15px}
+.side-rule{background:var(--panel-2)}
+.sidelab{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-bottom:7px}
+.bignum{font-size:30px;font-weight:760;letter-spacing:-.025em;line-height:1.1}
+.bignum.muted{color:var(--ink-3)}
+.rulestat{font-size:24px;font-weight:760;letter-spacing:-.02em;line-height:1.15;margin-bottom:8px}
+.rulestat.muted{color:var(--ink-3);font-size:19px}
+.pctrow{display:flex;justify-content:space-between;align-items:baseline;margin:13px 0 5px;
+font-size:11.5px;color:var(--ink-3);border-top:1px dotted var(--rule);padding-top:11px}
+.pctrow b{font-size:16px;color:var(--ink)}
+.qnote.cov{border-left:2px solid var(--warn);padding-left:9px;margin-top:10px}
+.note.advisory{border-left:2px dotted var(--ink-3);padding-left:10px;color:var(--ink-2)}
+.note.advisory i{font-style:normal;color:var(--ink-3);font-size:.94em}
+.exact{font-size:12.5px;color:var(--ink-2);margin:0 0 10px;padding:9px 11px;
+background:var(--panel-2);border-radius:3px}
+/* maturity ladder */
+.ladder{list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:2px;
+border:1px solid var(--rule);border-radius:4px;overflow:hidden;box-shadow:var(--shadow)}
+.rung{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;
+padding:13px 16px;background:var(--panel);border-left:4px solid var(--off)}
+.rung-established{border-left-color:var(--ok);background:var(--panel)}
+.rung-in_progress{border-left-color:var(--warn);background:var(--panel)}
+.rung-not_started{border-left-color:var(--bad);background:var(--panel-2);opacity:.9}
+.rungno{font-size:12px;font-weight:800;color:var(--ink-3);width:16px;text-align:center}
+.rungbody{display:flex;flex-direction:column;gap:2px}
+.rungbody b{font-size:14.5px;font-weight:720}
+.rungdetail{font-size:12.5px;color:var(--ink-2);line-height:1.55}
+.rungstate{font-size:11.5px;font-weight:700;white-space:nowrap;padding:3px 9px;border-radius:3px}
+.rung-established .rungstate{color:var(--ok);background:var(--ok-bg)}
+.rung-in_progress .rungstate{color:var(--warn);background:var(--warn-bg)}
+.rung-not_started .rungstate{color:var(--bad);background:var(--bad-bg)}
+.counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:0 0 12px}
+.cnt{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:12px 14px;box-shadow:var(--shadow)}
+.cnt b{display:block;font-size:26px;font-weight:770;letter-spacing:-.02em;line-height:1.1}
+.cnt span{font-size:12px;color:var(--ink-2)}
+.cnt-zero{border-color:var(--bad)}.cnt-zero b{color:var(--bad)}
 .disc{margin-top:13px;padding:13px 15px;background:var(--panel-2);border:1px solid var(--rule);border-radius:4px;
 color:var(--ink-2);font-size:12.5px}
 </style>
@@ -369,17 +431,23 @@ color:var(--ink-2);font-size:12.5px}
 ${summary}
 
 <section>
-  <h2>Status</h2>
-  <p class="h2sub">系統狀態</p>
-  <div class="tallybar">
-    <div class="tchip t-red"><b class="num">${t.red ?? 0}</b><span>規則觸發</span></div>
-    <div class="tchip t-yellow"><b class="num">${t.yellow ?? 0}</b><span>接近</span></div>
-    <div class="tchip t-green"><b class="num">${t.green ?? 0}</b><span>未觸發</span></div>
-    <div class="tchip t-undec"><b class="num">${t.no_decision}</b><span>無可用讀數</span></div>
-  </div>
-  <div class="dims">
-    ${Object.entries(data.status_summary).map(([k, v]) => `<div class="dim"><h4>${esc(k.replace(/_/g, ' '))}</h4>
-      ${Object.entries(v).map(([kk, vv]) => `<div><span>${esc(kk)}</span><b class="num">${vv}</b></div>`).join('')}</div>`).join('')}
+  <h2>System maturity</h2>
+  <p class="h2sub">這套系統目前完成到哪一層</p>
+  <p class="lede">這比任何免責聲明都準確。上面兩層已經建立，下面兩層還沒開始 ——
+  <strong>可稽核不等於已驗證</strong>，而這個頁面的專業度只應該反映前者。</p>
+  <ol class="ladder">
+    ${data.maturity.map((m, i) => `<li class="rung rung-${m.state.toLowerCase()}">
+      <span class="rungno num">${i + 1}</span>
+      <span class="rungbody"><b>${esc(m.layer)}</b><span class="rungdetail">${esc(m.detail)}</span></span>
+      <span class="rungstate">${{ ESTABLISHED: '已建立', IN_PROGRESS: '建立中', NOT_STARTED: '尚未開始' }[m.state]}</span>
+    </li>`).join('')}
+  </ol>
+
+  <div class="counts">
+    <div class="cnt"><b class="num">${t.evaluated}</b><span>規則已評估</span></div>
+    <div class="cnt"><b class="num">${t.red ?? 0}</b><span>規則觸發</span></div>
+    <div class="cnt"><b class="num">${t.no_decision}</b><span>無可用讀數</span></div>
+    <div class="cnt cnt-zero"><b class="num">0</b><span>經統計驗證的訊號</span></div>
   </div>
   <p class="nocomp">${esc(data.no_composite_score)}</p>
 </section>

@@ -25,9 +25,10 @@ import { execSync } from 'node:child_process';
 import {
   alignByEffectiveDate, yoyAtAnchor, alignQuarterly, percentileInWindow, priorObservation, shiftYears,
 } from '../../../../lib/temporal.mjs';
-import { aggregateCapex } from '../../../../lib/capex.mjs';
+import { aggregateCapex, HYPERSCALERS } from '../../../../lib/capex.mjs';
+import { reconcileAll } from '../../../../lib/capex-reconcile.mjs';
 
-export const CALCULATION_VERSION = '3.1.0';
+export const CALCULATION_VERSION = '3.4.0';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, '..', '..', '..', '..');
@@ -145,7 +146,7 @@ const PERIOD_DAYS = { 'business daily': 1, weekly: 7, monthly: 30, quarterly: 91
 /**
  * Age a series in the unit it actually moves in. A daily price series is aged in TRADING
  * SESSIONS — on a Sunday, Friday's close is zero sessions old, not three days stale.
- * Everything also reports staleness_ratio = age / publication period, which turns
+ * Everything also reports publication_lag_ratio = age / publication period, which turns
  * "132 days" into "1.4 publication cycles" and makes lag interpretable rather than alarming.
  */
 function dataState(series) {
@@ -163,8 +164,10 @@ function dataState(series) {
     age_unit: sessionAge === null ? 'calendar_days' : 'trading_sessions',
     acceptable_age_days: sla,
     publication_period_days: period,
-    staleness_ratio: Number((calendarAge / period).toFixed(2)),
-    staleness_reading: `落後 ${Number((calendarAge / period).toFixed(2))} 個發布週期`
+    // Named for what it measures: distance from the publication cadence. It is NOT a
+    // statement about how complete our economic information is — that is `information_scope`.
+    publication_lag_ratio: Number((calendarAge / period).toFixed(2)),
+    publication_lag_reading: `落後 ${Number((calendarAge / period).toFixed(2))} 個發布週期`
       + (sessionAge !== null ? `（交易日計：${sessionAge} 個 session）` : ''),
   };
   const limit = sessionAge === null ? sla : Math.max(3, Math.round(sla * 5 / 7));
@@ -185,8 +188,30 @@ function provenance(series, transformation) {
     transformation,
     calculation_version: CALCULATION_VERSION,
     code_commit: CODE_COMMIT,
-    point_in_time_capable: REGISTRY.sources[series.ds.source_id]?.point_in_time_capable === true,
+    point_in_time_metadata: REGISTRY.sources[series.ds.source_id]?.point_in_time_capable === true ? 'PRESENT' : 'ABSENT',
+    as_of_query: 'NOT_TESTED',
   };
+}
+
+/**
+ * Display precision is not storage precision. `0.766` and `2.993` carry more resolution
+ * than the underlying inference supports, and precision cues raise perceived confidence
+ * independently of accuracy. The surface shows an economically meaningful figure; the
+ * audit drawer keeps the exact one. Rounding is arithmetic, so it happens here — the
+ * renderer is not allowed to do it.
+ */
+function displayPrecision(value, unit) {
+  if (!Number.isFinite(value)) return { display: value, exact: value, rounded: false };
+  const abs = Math.abs(value);
+  let display;
+  if (unit === '%' || String(unit).includes('個百分點')) display = Number(value.toFixed(abs >= 10 ? 0 : 1));
+  else if (String(unit).includes('兆')) display = Number(value.toFixed(2));
+  else if (String(unit).includes('十億')) display = Number(value.toFixed(abs >= 100 ? 0 : 1));
+  else if (String(unit).includes('基點')) display = Number(value.toFixed(1));
+  else if (abs >= 100) display = Number(value.toFixed(0));
+  else if (abs >= 10) display = Number(value.toFixed(1));
+  else display = Number(value.toFixed(2));
+  return { display, exact: value, rounded: display !== value };
 }
 
 const rule = (value, bands) => bands.find(([, lo, hi]) => value >= lo && value < hi)?.[0] ?? bands.at(-1)[0];
@@ -197,6 +222,17 @@ const rule = (value, bands) => bands.find(([, lo, hi]) => value >= lo && value <
  */
 function gauge(core, { prov, state, measurement = 'CHECKED', validation = 'UNTESTED', automation = 'AUTOMATED' }) {
   const usable = ['CURRENT', 'LAGGED_BY_DESIGN'].includes(state.data_state);
+  if (core.observed && Number.isFinite(core.observed.value)) {
+    const d = displayPrecision(core.observed.value, core.observed.unit);
+    core.observed.display_value = d.display;
+    core.observed.exact_value = d.exact;
+    core.observed.display_rounded = d.rounded;
+  }
+  // Percentiles are inference-resolution figures; P95 is honest, P94.9 is not.
+  for (const key of ['percentile_5y', 'percentile_3y', 'percentile_20y', 'change_4w_percentile_5y', 'level_percentile_5y']) {
+    const p = core.empirical?.[key];
+    if (p?.ok && Number.isFinite(p.value)) { p.display_value = Math.round(p.value); p.exact_value = p.value; }
+  }
   return {
     ...core,
     status: {
@@ -307,77 +343,123 @@ const ignition = await attempt('ignition', '開關二 · 點火（期限結構�
   }, { prov: provenance(vix, 'Cboe VIX / VIX3M closes on a common session; percentile vs 5y'), state: dataState(vix) });
 });
 
-// Switch 3 — the escape bell. Layer A (reported cash capex) is now wired from SEC XBRL.
-// Layers B (finance leases) and C (management guidance) are not, so this is HYBRID.
+// Switch 3 — the escape bell. His rule names the QoQ growth rate ("環比增速的二階導"),
+// so QoQ is the rule and YoY is only context. They are kept on separate tracks and YoY is
+// never allowed to stand in for the rule.
+//
+// The QoQ leg depends on quarters recovered by differencing YTD cumulatives, and that
+// arithmetic is now checked against issuers' own directly-tagged quarters. 64 of 65
+// checkable derivations match to the dollar — but Meta tags no standalone quarters at all,
+// so any aggregate containing Meta carries arithmetic nobody has verified. Under
+// `transformation_validation: UNVERIFIED` the rule reports NO_DECISION rather than green.
 const capex = await attempt('capex', '開關三 · 逃生鈴（雲廠商 capex 增速）', async () => {
   const agg = await aggregateCapex({ archive });
   const s = agg.series;
   if (s.length < 6) throw new Error(`only ${s.length} common quarters`);
   const last = s.at(-1), prev = s.at(-2);
+  const recon = await reconcileAll(agg.issuers.map((i) => ({
+    ticker: i.ticker, cik: HYPERSCALERS[i.ticker].cik, tag: i.tag })));
+
   const age = dayDiff(last.information_available_at, RUN_AT);
   const ds = REGISTRY.datasets.SEC_CAPEX;
-
-  // The bell asks whether the growth RATE has peaked and rolled over. QoQ is seasonal
-  // for these issuers (Q1 is routinely soft), so YoY carries the trend and QoQ the texture.
-  const yoySeries = s.filter((x) => x.yoy_pct !== null);
-  const yoyPeak = Math.max(...yoySeries.map((x) => x.yoy_pct));
-  const rolledOver = last.yoy_pct < yoyPeak && yoySeries.at(-2)?.yoy_pct > last.yoy_pct;
-
   const state = age <= ds.acceptable_age_days
     ? { data_state: age <= ds.expected_publication_latency_days + 1 ? 'CURRENT' : 'LAGGED_BY_DESIGN',
-      age_days: age, acceptable_age_days: ds.acceptable_age_days }
+      age_days: age, acceptable_age_days: ds.acceptable_age_days,
+      publication_period_days: 91, publication_lag_ratio: r2(age / 91),
+      publication_lag_reading: `落後 ${r2(age / 91)} 個發布週期` }
     : { data_state: age <= ds.acceptable_age_days * 2 ? 'OVERDUE' : 'STALE',
-      age_days: age, acceptable_age_days: ds.acceptable_age_days };
+      age_days: age, acceptable_age_days: ds.acceptable_age_days,
+      publication_period_days: 91, publication_lag_ratio: r2(age / 91) };
 
-  return gauge({
+  // Did the quarter feeding QoQ contain any derived (unverifiable) component?
+  const qoqDerivedIssuers = prev.parts.filter((p) => p.derived).map((p) => p.ticker);
+  const qoqTainted = qoqDerivedIssuers.some((t) => recon.unverifiable_issuers.includes(t))
+    || last.parts.filter((p) => p.derived).some((t) => recon.unverifiable_issuers.includes(t.ticker));
+  const transformValidation = recon.verdict === 'RECONCILED' ? 'CHECKED'
+    : qoqTainted ? 'UNVERIFIED' : 'PARTIALLY_CHECKED';
+
+  const yoySeries = s.filter((x) => x.yoy_pct !== null);
+  const yoyPeak = Math.max(...yoySeries.map((x) => x.yoy_pct));
+
+  const core = {
     id: 'capex', switch: 3, label: '開關三 · 逃生鈴（雲廠商 capex 增速）',
-    plain: '微軟、Google、Amazon、Meta 這四家買設備的錢，這一季比去年同季多多少 %。'
-      + '重點不是「還在花」，是「增加的速度有沒有開始變慢」。',
+    plain: '微軟、Google、Amazon、Meta 這四家買設備的錢，增加的速度有沒有開始變慢。'
+      + '重點不是「還在花」，是「加速度」。',
     observed: {
-      value: last.yoy_pct, unit: '% 年增', effective_date: last.period_end,
+      value: last.qoq_pct, unit: '% 環比', effective_date: last.period_end,
       detail: {
-        total_bn: last.total_bn, qoq_pct: last.qoq_pct,
-        prior_quarter: { period_end: prev.period_end, total_bn: prev.total_bn, yoy_pct: prev.yoy_pct },
+        total_bn: last.total_bn, yoy_pct: last.yoy_pct,
+        prior_quarter: { period_end: prev.period_end, total_bn: prev.total_bn },
         by_issuer: last.parts.map((p) => ({ ticker: p.ticker, bn: r2(p.val / 1e9), derived_from_cumulative: p.derived })),
         information_available_at: last.information_available_at,
         coverage: agg.coverage,
       },
     },
+    // YoY lives here — context, never the rule.
     empirical: {
-      yoy_history: yoySeries.slice(-8).map((x) => ({ period_end: x.period_end, yoy_pct: x.yoy_pct, qoq_pct: x.qoq_pct })),
+      yoy_pct: last.yoy_pct,
       yoy_peak_in_series: yoyPeak,
-      rolled_over: rolledOver,
-      reading: rolledOver
-        ? `年增率自 ${yoyPeak}% 的高點回落到 ${last.yoy_pct}%，且連續兩季走低 —— 符合「見頂回落」的形狀。`
-        : `年增率 ${last.yoy_pct}% 是序列內最高${last.yoy_pct === yoyPeak ? '' : '之一'}，尚未見頂回落。`,
+      yoy_history: yoySeries.slice(-8).map((x) => ({ period_end: x.period_end, yoy_pct: x.yoy_pct, qoq_pct: x.qoq_pct })),
+      measurement_integrity_yoy: 'CHECKED',
+      reading: `年增 ${last.yoy_pct}%，是序列內最高（前高 ${yoyPeak}%）。`
+        + '年增兩端都是直接申報的單季值，不經差分，所以這個數字本身是可信的 —— '
+        + '但它不是他的規則。他要的是環比。',
+      information_scope: 'REPORTED_ACTUALS_ONLY',
+      interim_event_coverage: 'MISSING',
+      coverage_note: '本格只涵蓋已申報的實際支出。法說會的下季指引沒有 XBRL tag，'
+        + '未接線 —— 公司可能在季報之間就轉向，而這裡看不到。',
     },
     henren: {
-      status: rolledOver ? 'red' : 'green',
-      thresholds: { green: '增速持平或加速', red: '增速見頂回落 → 立刻平倉，不看當期獲利' },
+      // The rule is QoQ. It reports its own status, and that status is gated below.
+      status: null,
+      rule_metric: 'QoQ',
+      rule_value: last.qoq_pct,
+      thresholds: { green: '環比增速持平或加速', red: '環比增速見頂回落 → 立刻平倉' },
       quote: '你要盯的是下游的雲廠商的資本開支的二階導數，也就是環比增速而不是同比增速。'
         + '如果資本開支的絕對額還在漲，但環比增速已經開始放緩甚至見頂回落的話，'
-        + '哪怕當期的淨利潤再創新高也必須立刻平倉。因為現在的估值給的是增量估值，增量沒了估值就沒有這個邏輯。',
-      implementation_divergence: '他要的是**環比**二階導。本格主判用**年增**，因為這四家的環比有明顯季節性'
-        + '（Q1 例行走弱：2025Q1 −0.6%、2026Q1 +9.37%），單看環比會週期性誤報「見頂」。'
-        + '環比數列仍完整回報在 empirical.yoy_history 裡供對照。這是實作上的偏離，不是他的規則。',
+        + '哪怕當期的淨利潤再創新高也必須立刻平倉。',
+      seasonality_treatment: 'NOT_ESTABLISHED',
+      seasonality_note: '這四家的環比有明顯季節性（2025Q1 −0.6%、2026Q1 +9.37%），'
+        + '但只有 8 季共同資料，不足以建立季節調整。因此環比的原始讀數無法可靠地區分'
+        + '「季節性走弱」與「真的見頂回落」。',
+    },
+    transformation_validation: transformValidation,
+    reconciliation: {
+      verdict: recon.verdict, totals: recon.totals, by_issuer: recon.by_issuer,
+      unverifiable_issuers: recon.unverifiable_issuers, note: recon.note,
+      qoq_base_derived_issuers: qoqDerivedIssuers,
     },
     layers: {
-      A_reported_cash_capex: 'AUTOMATED — SEC XBRL，10-Q 累計數已差分還原為單季',
-      B_finance_leases: 'NOT_WIRED — 融資租賃不進現金 capex，AI 資料中心佔比可觀且在變動，本格系統性低估',
-      C_management_guidance: 'NOT_WIRED — 市場真正敏感的是下季指引，法說會內容沒有 XBRL tag',
+      A_reported_cash_capex: 'AUTOMATED · SEC XBRL · 差分已對帳（64/65 分毫不差）',
+      B_finance_leases: 'NOT_WIRED · 融資租賃不進現金 capex，本格系統性低估',
+      C_management_guidance: 'NOT_WIRED · 下季指引無 XBRL tag',
     },
     source_authority_override: 'OFFICIAL_PRIMARY',
-  }, {
-    prov: {
-      source_id: 'sec_edgar', source_authority: 'OFFICIAL_PRIMARY', dataset: 'SEC_CAPEX',
-      effective_date: last.period_end, retrieved_at: agg.issuers[0]?.retrieved_at,
-      raw_hash: agg.issuers.map((i) => `${i.ticker}:${i.raw_hash}`).join(' '),
-      transformation: 'YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; YoY and QoQ',
-      calculation_version: CALCULATION_VERSION, code_commit: CODE_COMMIT, point_in_time_capable: true,
-      information_available_at: last.information_available_at,
-    },
-    state, automation: 'HYBRID',
-  });
+  };
+
+  const prov = {
+    source_id: 'sec_edgar', source_authority: 'OFFICIAL_PRIMARY', dataset: 'SEC_CAPEX',
+    effective_date: last.period_end, retrieved_at: agg.issuers[0]?.retrieved_at,
+    raw_hash: agg.issuers.map((i) => `${i.ticker}:${i.raw_hash}`).join(' '),
+    transformation: 'YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; QoQ (rule) and YoY (context)',
+    calculation_version: CALCULATION_VERSION, code_commit: CODE_COMMIT,
+    point_in_time_metadata: 'PRESENT', as_of_query: 'NOT_TESTED',
+    information_available_at: last.information_available_at,
+  };
+
+  const g = gauge(core, { prov, state, automation: 'HYBRID',
+    measurement: transformValidation === 'CHECKED' ? 'CHECKED' : 'RAW' });
+
+  // The rule cannot be evaluated on arithmetic nobody has checked.
+  if (transformValidation !== 'CHECKED') {
+    g.decision = 'NO_DECISION';
+    g.status.data_state = 'RECONCILIATION_REQUIRED';
+    g.henren.status = null;
+    g.note = `環比是他的規則，但環比的比較基準（${prev.period_end}）含有無法驗證的差分還原值`
+      + `（${recon.unverifiable_issuers.join('、')} 沒有可對照的直接申報單季值）。`
+      + '在差分對帳完成以前，規則不評估 —— 年增很強不能代替「環比規則沒有觸發」。';
+  }
+  return g;
 });
 
 // --- liquidity alarms -------------------------------------------------------
@@ -656,8 +738,27 @@ const out = {
     automation_mode: dim('automation_mode'),
   },
   no_composite_score: '本系統不輸出任何綜合分數、泡沫指數或 0–100 評分。沒有定義預測目標、沒有樣本外驗證的加權合成，是把不確定性藏起來，不是資訊。',
-  point_in_time: false,
-  point_in_time_note: 'FRED 只提供最新修訂版，所以這些讀數描述現在，不是可回測的歷史。SEC capex 例外（帶 filed 日期）。',
+  // The five layers, stated as system state rather than buried in a disclaimer. This is
+  // the most honest thing the page can say about itself: what has been established, and
+  // what has not. It costs nothing in precision or traceability.
+  maturity: [
+    { layer: 'Data Provenance', state: 'ESTABLISHED',
+      detail: '每個數字帶來源、權威等級、生效日、抓取時間、轉換、版本、commit、原始回應 hash。' },
+    { layer: 'Calculation Integrity', state: 'ESTABLISHED',
+      detail: `canonical engine 唯一計算，renderer 零金融運算，測試強制一致。calc v${CALCULATION_VERSION}。` },
+    { layer: 'Measurement Validity', state: 'IN_PROGRESS',
+      detail: 'capex 差分已對帳（65 筆可驗證中 64 筆分毫不差），但 META 無可對照值，環比因此不評估。'
+        + '「抓到的概念是不是我們以為的那個概念」仍在建立中。' },
+    { layer: 'Signal Validation', state: 'NOT_STARTED',
+      detail: '0 / 16 格經過統計檢驗。所有門檻皆來自一位公開評論者，未回測、未樣本外驗證。' },
+    { layer: 'Predictive Track Record', state: 'NOT_STARTED',
+      detail: '前瞻假說帳本 3 筆，全部標記 LEGACY_EXPLORATORY，不計入績效。' },
+  ],
+  point_in_time: 'NOT_IMPLEMENTED',
+  point_in_time_note: 'FRED 的預設端點只回傳最新修訂版，所以目前的讀數描述現在、不是可回測的歷史。'
+    + '但這是「尚未實作」，不是「結構上不可能」—— ALFRED 提供 vintage 資料，FRED API 也有 '
+    + 'series/vintagedates，回測路徑並沒有被資料架構永久封死。SEC 那條已帶 filed 時間戳，'
+    + '但 as-of 查詢從未實際執行過（as_of_query: NOT_TESTED）。',
   gauges: all,
 };
 
