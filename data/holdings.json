@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-10T07:00:02.542Z",
-  "generated_at_et": "8/10/2026, 3:00:02 AM EDT",
-  "code_commit": "06870e2",
+  "generated_at": "2026-08-10T07:15:26.331Z",
+  "generated_at_et": "8/10/2026, 3:15:26 AM EDT",
+  "code_commit": "bbe9e75",
   "lens_status": {
     "serenity-method": "EXECUTED",
     "serenity-bottleneck-hunter": "NOT_EXECUTED",
@@ -55,9 +55,11 @@
         "roe_caveat": "Quarterly net income × 4 over latest reported equity. A rough read, not a trailing-twelve-month ROE.",
         "equity_usd": 100724000000,
         "assets_usd": 134112000000,
+        "liabilities_usd": 33388000000,
         "plausibility": {
           "level": "PASS",
           "blocks_metrics": [],
+          "needs_human_review": [],
           "structural": [],
           "reconciliation": [],
           "outliers": [],
@@ -106,6 +108,14 @@
           },
           "assets": {
             "tag": "Assets",
+            "period": "2026-05-28",
+            "filed": "2026-06-25",
+            "accession": "0000723125-26-000015",
+            "form": "10-Q",
+            "derived_from_cumulative": null
+          },
+          "liabilities": {
+            "tag": "Liabilities",
             "period": "2026-05-28",
             "filed": "2026-06-25",
             "accession": "0000723125-26-000015",
@@ -202,7 +212,7 @@
         "m3_pct": 35.71,
         "rvol21_pct": 107.59
       },
-      "price_raw_hash": "a9d60822bdbc8837"
+      "price_raw_hash": "ea48e67276f42389"
     },
     {
       "ticker": "SNDK",
@@ -232,9 +242,11 @@
         "roe_caveat": "Quarterly net income × 4 over latest reported equity. A rough read, not a trailing-twelve-month ROE.",
         "equity_usd": 57613000000,
         "assets_usd": 175875000000,
+        "liabilities_usd": 111335000000,
         "plausibility": {
           "level": "ECONOMIC_OUTLIER",
           "blocks_metrics": [],
+          "needs_human_review": [],
           "structural": [],
           "reconciliation": [],
           "outliers": [
@@ -287,6 +299,14 @@
           },
           "assets": {
             "tag": "Assets",
+            "period": "2026-06-30",
+            "filed": "2026-08-06",
+            "accession": "0001193125-26-337177",
+            "form": "10-Q",
+            "derived_from_cumulative": null
+          },
+          "liabilities": {
+            "tag": "Liabilities",
             "period": "2026-06-30",
             "filed": "2026-08-06",
             "accession": "0001193125-26-337177",
@@ -386,7 +406,7 @@
         "m3_pct": -9.53,
         "rvol21_pct": 156.41
       },
-      "price_raw_hash": "0f2669d677ab910e"
+      "price_raw_hash": "7e6681590a600112"
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Canonical Architecture · Dashboard Consistency Audit
 
-**calc v3.0.0** · 2026-08-10 · 對應審查裁決 §16–§20、§31、§34
+**calc v3.4.0** · 2026-08-10 · 對應第二輪裁決 §16–§20、§31、§34 與第三輪 sprint
 
 ---
 
@@ -31,7 +31,10 @@ Yahoo (UNOFFICIAL_FREE)      ─┘            │
 | `lib/temporal.mjs` | 日期邏輯（唯一來源） | 對齊、YoY、百分位 | 取得資料 |
 | `lib/capex.mjs` | SEC XBRL 正規化 | 累計差分、跨公司彙總 | 判斷燈號 |
 | `.claude/skills/us-market-brief/scripts/market-snapshot.mjs` | 價格快照引擎 | 報酬率、回撤、已實現波動 | — |
-| `.claude/skills/us-market-brief/scripts/render-dashboard.mjs` | **RENDERER** | 版面、顏色、標籤、文案 | **任何金融計算** |
+| `.claude/skills/us-market-brief/scripts/render-dashboard.mjs` | **RENDERER** | 版面、顏色、標籤、文案 | **任何金融計算，含四捨五入** |
+| `.claude/skills/us-market-brief/scripts/holdings.mjs` | 持股引擎 | Serenity 閘門、集中度、相關係數 | — |
+| `lib/fundamentals.mjs` | SEC 財報正規化 | 累計差分、比率、合理性三級 | 判斷燈號 |
+| `lib/capex-reconcile.mjs` | 差分對帳 | 與直接申報單季值逐筆比對 | — |
 | `config/data-sources.json` | 來源註冊表 | 定義權威等級與 SLA | — |
 
 **已 DEPRECATED：** `reports/us-market-2026-08-10.md` — 數字手寫，含兩個已證實的錯誤，
@@ -41,14 +44,14 @@ Yahoo (UNOFFICIAL_FREE)      ─┘            │
 
 ## B. Dashboard Consistency Audit
 
-`test/integrity.test.mjs` 每次執行都會驗證下列對應關係。**23 個測試全數通過。**
+`test/` 每次執行都會驗證下列對應關係。**35 個測試全數通過。**
 
 | Dashboard 顯示 | Engine 欄位 | 計算函式 | 資料來源 |
 | --- | --- | --- | --- |
 | 開關一 2.993 兆 | `gauges[fuel].observed.value` | `fuel` + `percentileInWindow` | FRED `WRESBAL` |
 | 四週變化 P21.8 | `.empirical.change_4w_percentile_5y` | `percentileInWindow` | 同上 |
-| 開關二 0.811 | `gauges[ignition].observed.value` | `alignByEffectiveDate` | FRED `VIXCLS`/`VXVCLS` |
-| 開關三 80.45% | `gauges[capex].observed.value` | `aggregateCapex` | SEC EDGAR XBRL ×4 |
+| 開關二 0.8（實際 0.796） | `gauges[ignition].observed.display_value` / `.exact_value` | `alignByEffectiveDate` | **Cboe** VIX / VIX3M（一手） |
+| 開關三 **不評估** | `gauges[capex].decision = NO_DECISION` | `aggregateCapex` + `reconcileAll` | SEC EDGAR XBRL ×4 |
 | capex $129.75B | `.observed.detail.total_bn` | `toQuarters`（累計差分） | 同上 |
 | SOFR−IORB 0 bp | `gauges[sofr].observed.value` | `alignByEffectiveDate` | FRED `SOFR`/`IORB` |
 | TGA 907.3 | `gauges[tga].observed.value` | 直接讀值 | FRED `WTREGEN` |
@@ -152,4 +155,10 @@ Yahoo (UNOFFICIAL_FREE)      ─┘            │
 
 **14/14。** 依裁決 §37，系統現在可以被稱為 **Reliable Research & Risk Intelligence Tool**。
 
-下一步不是加指標，是逐格從 `UNTESTED` 往 `RETROSPECTIVE_TESTED` 升級——而那需要先做 ALFRED。
+第三輪追加完成：capex 差分對帳（65 筆可驗證中 64 筆分毫不差）、規則與脈絡分軌、
+合理性三級化、`proven → SUPPORTED`、首頁改為五層成熟度階梯、顯示精度與稽核精度分離、
+帳本標記 LEGACY_EXPLORATORY、術語對照表。
+
+**下一步不是 ALFRED，也不是加指標。** 依第三輪裁決 §18，中間還有一層
+**Measurement Validity** 尚未完成——capex 有一家發行人結構上無法用現行方法驗證，
+`as_of_query` 從未實際執行過。落實計畫見 `docs/roadmap-and-questions-v4.md`。

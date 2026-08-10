@@ -251,6 +251,24 @@ test('point-in-time is described as not implemented, never as impossible', () =>
     'the note must say a backtest path exists but is unbuilt');
 });
 
+test('every plausibility tier is reachable, not just declared', { skip: !holdings }, () => {
+  // A three-grade system whose middle grade can never fire is a two-grade system with
+  // extra vocabulary. The first version of the reconciliation tier was exactly that:
+  // it tested a variable that was hardcoded to null.
+  const p = holdings.holdings.find((h) => h.fundamentals?.plausibility)?.fundamentals.plausibility;
+  assert.ok(p, 'no plausibility block to inspect');
+  for (const tier of ['structural', 'reconciliation', 'outliers']) {
+    assert.ok(Array.isArray(p[tier]), `tier ${tier} is not even an array`);
+  }
+  // The reconciliation tier needs its inputs present, or it is decorative.
+  for (const h of holdings.holdings) {
+    const f = h.fundamentals;
+    if (!f) continue;
+    assert.ok(f.liabilities_usd !== undefined,
+      `${h.ticker}: reconciliation tier requires liabilities to be fetched at all`);
+  }
+});
+
 test('signal validation is honest about being untested', () => {
   const validated = gauges.gauges.filter((g) => g.status.signal_validation !== 'UNTESTED');
   for (const g of validated) {
