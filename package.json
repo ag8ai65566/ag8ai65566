@@ -1,0 +1,20 @@
+{
+  "name": "us-market-research-system",
+  "version": "4.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Henren framework gauges + Serenity gate, over a canonical calculation engine. Research tooling only: no buy/sell signals, no price targets, no position sizing, no composite score.",
+  "scripts": {
+    "gauges": "node .claude/skills/henren-tape/scripts/gauges.mjs --json > data/gauges.json",
+    "holdings": "node .claude/skills/us-market-brief/scripts/holdings.mjs --json > data/holdings.json",
+    "tests": "node scripts/test-report.mjs",
+    "render": "node .claude/skills/us-market-brief/scripts/render-dashboard.mjs data/gauges.json data/snapshot.json data/holdings.json data/test-report.json > reports/us-market-dashboard.html",
+    "build": "npm run gauges && npm run holdings && npm run render && npm run tests && npm run render && npm test",
+    "test": "node --test test/*.test.mjs"
+  },
+  "_build_note": "The dashboard drifted three versions behind the engine because regeneration was a sequence of remembered commands rather than one target. `npm run build` is that target.",
+  "_build_order_note": "render runs twice on purpose. The integrity tests compare the RENDERED page against the engine's JSON, so they have to run after a render or they are grading the previous run's artifact; the test report they produce then has to reach the page, which needs a second render. The second pass adds only the test-report section and touches no number, and the closing `npm test` is the real gate — it runs against the exact file that gets committed.",
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "$schema_version": "1.0.0",
+  "_purpose": "Concept contracts. The canonical layer canonicalises a FINANCIAL CONCEPT, not an API tag. `PaymentsToAcquirePropertyPlantAndEquipment` describes how a number was obtained; it does not establish that four issuers mean the same economic thing by it.",
+  "_rule": "同一個名稱底下，我們到底在量哪個金融概念 —— 這是 v3.4 之後的主要瓶頸。任何跨發行人的加總都必須先宣告 concept_id，且所有成分必須屬於同一個 concept。混用不同定義而共用一條線是禁止的。",
+
+  "concepts": {
+    "CASH_PPE_CAPEX": {
+      "definition": "Cash purchases / additions of property and equipment, as reported in the investing section of the cash flow statement.",
+      "includes_finance_lease_principal": false,
+      "includes_capital_accruals": "as reported — not adjusted",
+      "aggregation_allowed": true,
+      "aggregation_condition": "All components must be this same concept. An issuer reporting only a company-defined total cannot be summed into this line.",
+      "accepted_acquisition_paths": ["standard_xbrl", "custom_xbrl", "issuer_direct_table"],
+      "known_tag_variants": {
+        "MSFT": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "GOOGL": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "META": "us-gaap:PaymentsToAcquirePropertyPlantAndEquipment",
+        "AMZN": "us-gaap:PaymentsToAcquireProductiveAssets"
+      },
+      "_amzn_note": "Amazon books the line under PaymentsToAcquireProductiveAssets. Same economic concept, different tag — which is precisely why the contract keys on the concept and lists tags as variants rather than the other way round."
+    },
+
+    "INFRASTRUCTURE_CAPEX_BROAD": {
+      "definition": "Company-defined capital expenditure including finance-lease principal payments. This is the figure several hyperscalers headline in their earnings releases.",
+      "includes_cash_ppe": true,
+      "includes_finance_lease_principal": true,
+      "aggregation_allowed": true,
+      "aggregation_condition": "Never mix with CASH_PPE_CAPEX in one series.",
+      "accepted_acquisition_paths": ["issuer_direct_table", "custom_xbrl"],
+      "_why_separate": "融資租賃是 AI 資料中心產能可觀且變動中的一部分。把含租賃與不含租賃的數字加在同一條線上，會讓「增速」反映的是各家揭露口徑的變化，而不是支出的變化。"
+    }
+  },
+
+  "_selection": {
+    "hyperscaler_capex_series": "CASH_PPE_CAPEX",
+    "rationale": "Cash PP&E is the concept every one of the four reports on a comparable basis. The broad figure is the more economically complete measure but is not uniformly available, so it is tracked separately rather than blended in.",
+    "gap_disclosed": "此序列因此系統性低估基礎設施總支出，且低估幅度隨各家租賃占比變動。這是已知的概念邊界，不是誤差。"
+  }
+}

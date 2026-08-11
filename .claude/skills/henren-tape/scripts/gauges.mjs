@@ -17,7 +17,7 @@
 // Missing data is never neutral. A gauge with no usable reading reports NO_DECISION and
 // is excluded from every count.
 
-import { readFileSync, mkdirSync, writeFileSync } from 'node:fs';
+import { readFileSync, mkdirSync, writeFileSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -27,8 +27,11 @@ import {
 } from '../../../../lib/temporal.mjs';
 import { aggregateCapex, HYPERSCALERS } from '../../../../lib/capex.mjs';
 import { reconcileAll } from '../../../../lib/capex-reconcile.mjs';
+import { freshnessLayers, decisionRobustness, coverageMetadata } from '../../../../lib/capex-freshness.mjs';
+import { diffSnapshots, priorSnapshotFile } from '../../../../lib/snapshot-diff.mjs';
+import { validateOutput } from '../../../../lib/output-contract.mjs';
 
-export const CALCULATION_VERSION = '3.4.0';
+export const CALCULATION_VERSION = '4.0.0';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = join(here, '..', '..', '..', '..');
@@ -362,21 +365,38 @@ const capex = await attempt('capex', '開關三 · 逃生鈴（雲廠商 capex �
 
   const age = dayDiff(last.information_available_at, RUN_AT);
   const ds = REGISTRY.datasets.SEC_CAPEX;
-  const state = age <= ds.acceptable_age_days
-    ? { data_state: age <= ds.expected_publication_latency_days + 1 ? 'CURRENT' : 'LAGGED_BY_DESIGN',
-      age_days: age, acceptable_age_days: ds.acceptable_age_days,
-      publication_period_days: 91, publication_lag_ratio: r2(age / 91),
-      publication_lag_reading: `落後 ${r2(age / 91)} 個發布週期` }
-    : { data_state: age <= ds.acceptable_age_days * 2 ? 'OVERDUE' : 'STALE',
-      age_days: age, acceptable_age_days: ds.acceptable_age_days,
-      publication_period_days: 91, publication_lag_ratio: r2(age / 91) };
 
-  // Did the quarter feeding QoQ contain any derived (unverifiable) component?
-  const qoqDerivedIssuers = prev.parts.filter((p) => p.derived).map((p) => p.ticker);
-  const qoqTainted = qoqDerivedIssuers.some((t) => recon.unverifiable_issuers.includes(t))
-    || last.parts.filter((p) => p.derived).some((t) => recon.unverifiable_issuers.includes(t.ticker));
+  // Three-layer freshness. An ingestion gap must not hide behind "the source is slow".
+  const fresh = freshnessLayers(agg.issuers.map((i) => ({
+    ticker: i.ticker, quarters: i.quarters })), last.period_end, { now: RUN_AT });
+
+  const state = {
+    data_state: fresh.state === 'INGESTION_OVERDUE' ? 'INGESTION_OVERDUE'
+      : fresh.state === 'SOURCE_PUBLICATION_LAG' ? 'SOURCE_PUBLICATION_LAG'
+        : fresh.state === 'CURRENT' ? 'CURRENT' : 'LAGGED_BY_DESIGN',
+    age_days: age, acceptable_age_days: ds.acceptable_age_days,
+    publication_period_days: 91, publication_lag_ratio: r2(age / 91),
+    publication_lag_reading: `落後 ${r2(age / 91)} 個發布週期`,
+    freshness_layers: fresh,
+  };
+
+  // Which components carry arithmetic nobody verified?
+  const derivedInWindow = [...new Set([...prev.parts, ...last.parts]
+    .filter((p) => p.derived).map((p) => p.ticker))];
+  const unverified = derivedInWindow.filter((t) => recon.unverifiable_issuers.includes(t));
+
+  // Evidence coverage — never a confidence level.
+  const coverage = coverageMetadata(s, recon, unverified);
+
+  // The decisive question is not how much is verified, but whether the unverified part
+  // could move the answer across the threshold.
+  const robustness = decisionRobustness({
+    series: s, unverifiedTickers: unverified, shockPct: 0.25,
+    ruleFn: (qoq) => (qoq < 0 ? 'ROLLED_OVER' : 'NOT_ROLLED_OVER'),
+  });
+
   const transformValidation = recon.verdict === 'RECONCILED' ? 'CHECKED'
-    : qoqTainted ? 'UNVERIFIED' : 'PARTIALLY_CHECKED';
+    : unverified.length ? 'PARTIALLY_RECONCILED' : 'CHECKED';
 
   const yoySeries = s.filter((x) => x.yoy_pct !== null);
   const yoyPeak = Math.max(...yoySeries.map((x) => x.yoy_pct));
@@ -427,7 +447,8 @@ const capex = await attempt('capex', '開關三 · 逃生鈴（雲廠商 capex �
     reconciliation: {
       verdict: recon.verdict, totals: recon.totals, by_issuer: recon.by_issuer,
       unverifiable_issuers: recon.unverifiable_issuers, note: recon.note,
-      qoq_base_derived_issuers: qoqDerivedIssuers,
+      qoq_base_derived_issuers: derivedInWindow,
+      unverified_in_window: unverified,
     },
     layers: {
       A_reported_cash_capex: 'AUTOMATED · SEC XBRL · 差分已對帳（64/65 分毫不差）',
@@ -450,14 +471,40 @@ const capex = await attempt('capex', '開關三 · 逃生鈴（雲廠商 capex �
   const g = gauge(core, { prov, state, automation: 'HYBRID',
     measurement: transformValidation === 'CHECKED' ? 'CHECKED' : 'RAW' });
 
-  // The rule cannot be evaluated on arithmetic nobody has checked.
-  if (transformValidation !== 'CHECKED') {
+  g.coverage = coverage;
+  g.decision_robustness = robustness;
+  g.freshness_layers = fresh;
+
+  // Dependency propagation, not blanket contagion: the rule is blocked only when the
+  // unverified component could actually flip it. A verified 85% of the LEVEL means
+  // nothing on its own — the same component can be the whole of the CHANGE.
+  if (robustness.robustness === 'SENSITIVE' || robustness.robustness === 'UNKNOWN') {
     g.decision = 'NO_DECISION';
     g.status.data_state = 'RECONCILIATION_REQUIRED';
     g.henren.status = null;
-    g.note = `環比是他的規則，但環比的比較基準（${prev.period_end}）含有無法驗證的差分還原值`
-      + `（${recon.unverifiable_issuers.join('、')} 沒有可對照的直接申報單季值）。`
-      + '在差分對帳完成以前，規則不評估 —— 年增很強不能代替「環比規則沒有觸發」。';
+    g.note = `環比是他的規則，而未驗證成分（${unverified.join('、')}）在合理範圍內變動`
+      + '就足以翻轉判定，因此不評估。';
+  } else {
+    g.henren.status = last.qoq_pct < 0 ? 'red' : 'green';
+    if (unverified.length) {
+      g.henren.evaluated_under = 'PARTIALLY_RECONCILED';
+      g.note = `${unverified.join('、')} 的差分無法用 XBRL 對照驗證，但敏感度測試顯示`
+        + '即使它在 ±25% 內變動，規則判定仍維持不變，因此仍予評估。'
+        + '證據覆蓋率見 coverage 欄位 —— 那是覆蓋率，不是信心水準。';
+    }
+    // An ingestion gap does not make the ingested quarter wrong — it makes it superseded.
+    // Blacking the gauge out would discard a valid reading; showing a plain green would
+    // hide that a newer quarter exists for three of the four issuers. Neither is honest,
+    // so the decision carries the qualifier instead of collapsing to one of the two.
+    g.decision = fresh.state === 'INGESTION_OVERDUE'
+      ? 'RULE_EVALUATED_ON_SUPERSEDED_PERIOD' : 'RULE_EVALUATED';
+  }
+
+  if (fresh.state === 'INGESTION_OVERDUE') {
+    g.ingestion_alert = fresh.reading;
+    g.superseded_note = `本格評估的是 ${fresh.latest_ingested_label}，但 `
+      + `${fresh.per_issuer.filter((p) => p.latest_available === fresh.latest_available_period).map((p) => p.ticker).join('、')}`
+      + ` 已有 ${fresh.latest_available_label} 資料。若新季度已見頂回落，此讀數不會反映出來。`;
   }
   return g;
 });
@@ -708,11 +755,26 @@ try {
 // ---------------------------------------------------------------- assemble
 
 const all = [fuel, ignition, capex, sofr, tga, rrp, hyoas, nfci, m2gap, buffett, aiVol, ...manual];
-const evaluated = all.filter((g) => g.decision === 'RULE_EVALUATED');
+const EVALUATED_DECISIONS = ['RULE_EVALUATED', 'RULE_EVALUATED_ON_SUPERSEDED_PERIOD'];
+const evaluated = all.filter((g) => EVALUATED_DECISIONS.includes(g.decision));
 const undecided = all.filter((g) => g.decision === 'NO_DECISION');
+const superseded = all.filter((g) => g.decision === 'RULE_EVALUATED_ON_SUPERSEDED_PERIOD');
 
 const ruleTally = evaluated.reduce((a, g) => { a[g.henren.status] = (a[g.henren.status] ?? 0) + 1; return a; }, {});
 const dim = (k) => all.reduce((a, g) => { const v = g.status?.[k] ?? 'UNKNOWN'; a[v] = (a[v] ?? 0) + 1; return a; }, {});
+
+// What moved since the last run. The diff itself is a pure function in lib/snapshot-diff.mjs
+// so it can be tested against fixtures — with one day of history there is nothing real to
+// diff against, and inventing a prior snapshot to exercise the code would put fabricated
+// readings into the actual history file.
+function changesSinceLastRun() {
+  const dir = join(repo, 'data', 'snapshots');
+  let files = [];
+  try { files = readdirSync(dir); } catch { /* first run: no directory yet */ }
+  const prevFile = priorSnapshotFile(files, `${RUN_AT.toISOString().slice(0, 10)}.json`);
+  const prior = prevFile ? JSON.parse(readFileSync(join(dir, prevFile), 'utf8')) : null;
+  return diffSnapshots(prior, all);
+}
 
 const out = {
   schema_version: '3.0.0',
@@ -729,7 +791,9 @@ const out = {
   frame: '基本面管方向、流動性管顛簸、擁擠管斷裂',
   // Two different questions, never merged: did HIS rule fire, and has anyone shown the
   // rule works? The first is a reading; the second is a research programme.
-  henren_rule_tally: { ...ruleTally, evaluated: evaluated.length, no_decision: undecided.length, total: all.length },
+  henren_rule_tally: { ...ruleTally, evaluated: evaluated.length,
+    evaluated_on_superseded_period: superseded.length,
+    no_decision: undecided.length, total: all.length },
   status_summary: {
     data_state: dim('data_state'),
     source_authority: dim('source_authority'),
@@ -747,8 +811,9 @@ const out = {
     { layer: 'Calculation Integrity', state: 'ESTABLISHED',
       detail: `canonical engine 唯一計算，renderer 零金融運算，測試強制一致。calc v${CALCULATION_VERSION}。` },
     { layer: 'Measurement Validity', state: 'IN_PROGRESS',
-      detail: 'capex 差分已對帳（65 筆可驗證中 64 筆分毫不差），但 META 無可對照值，環比因此不評估。'
-        + '「抓到的概念是不是我們以為的那個概念」仍在建立中。' },
+      detail: 'capex 差分已對帳（65 筆可驗證中 64 筆分毫不差）。META 仍無可對照值，但改用敏感度測試'
+        + '取代連坐：只有當未驗證成分足以翻轉判定時才停止評估。概念契約已寫死「現金 PP&E，不含融資租賃」，'
+        + '「抓到的概念是不是我們以為的那個概念」才剛開始有答案。' },
     { layer: 'Signal Validation', state: 'NOT_STARTED',
       detail: '0 / 16 格經過統計檢驗。所有門檻皆來自一位公開評論者，未回測、未樣本外驗證。' },
     { layer: 'Predictive Track Record', state: 'NOT_STARTED',
@@ -758,9 +823,46 @@ const out = {
   point_in_time_note: 'FRED 的預設端點只回傳最新修訂版，所以目前的讀數描述現在、不是可回測的歷史。'
     + '但這是「尚未實作」，不是「結構上不可能」—— ALFRED 提供 vintage 資料，FRED API 也有 '
     + 'series/vintagedates，回測路徑並沒有被資料架構永久封死。SEC 那條已帶 filed 時間戳，'
-    + '但 as-of 查詢從未實際執行過（as_of_query: NOT_TESTED）。',
+    + 'as-of 查詢也已實際執行並通過測試（站在 2026-07-15 看不到 2026-08-06 才申報的那一季），'
+    + '所以 point-in-time 目前是 FRED 這一側缺 vintage，不是整條路徑都缺。',
+  as_of_query: 'TESTED',
+  changes_since_last_run: changesSinceLastRun(),
   gauges: all,
 };
+
+// Contract check runs on the structured payload, before anything is rendered. A
+// violation is a hard failure — silently dropping a forbidden key would hide that an
+// upstream producer already broke the contract.
+const contract = validateOutput(out);
+out.output_contract = { valid: contract.valid, violations: contract.violations,
+  scanned_prose_fields: contract.scanned_prose_fields };
+if (!contract.valid) {
+  console.error('OUTPUT CONTRACT VIOLATION:');
+  for (const v of contract.violations) console.error(`  ${v.type} @ ${v.path} — ${v.detail ?? v.pattern}`);
+  process.exit(1);
+}
+
+// Snapshot history. Signal Behavior Diagnostics cannot exist without it, and neither can
+// the "what changed since last run" question the dashboard currently cannot answer.
+// One small file per day; no database.
+if (STORE) {
+  const snapDir = join(repo, 'data', 'snapshots');
+  mkdirSync(snapDir, { recursive: true });
+  writeFileSync(join(snapDir, `${RUN_AT.toISOString().slice(0, 10)}.json`), JSON.stringify({
+    date: RUN_AT.toISOString().slice(0, 10),
+    generated_at: out.generated_at,
+    calculation_version: CALCULATION_VERSION,
+    code_commit: CODE_COMMIT,
+    gauges: all.map((g) => ({
+      id: g.id,
+      value: g.observed?.value ?? null,
+      rule_state: g.henren?.status ?? null,
+      data_state: g.status?.data_state ?? null,
+      decision: g.decision,
+      effective_date: g.observed?.effective_date ?? null,
+    })),
+  }, null, 2));
+}
 
 if (process.argv.includes('--json')) {
   console.log(JSON.stringify(out, null, 2));

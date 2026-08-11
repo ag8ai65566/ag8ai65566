@@ -19,7 +19,7 @@ const renderer = read('.claude/skills/us-market-brief/scripts/render-dashboard.m
 const holdings = existsSync(join(repo, 'data/holdings.json'))
   ? JSON.parse(read('data/holdings.json')) : null;
 
-test('every gauge carries the five status dimensions', () => {
+test('[integrity] every gauge carries the five status dimensions', () => {
   const dims = ['data_state', 'source_authority', 'measurement_integrity', 'signal_validation', 'automation_mode'];
   for (const g of gauges.gauges) {
     for (const d of dims) {
@@ -28,24 +28,38 @@ test('every gauge carries the five status dimensions', () => {
   }
 });
 
-test('missing data never becomes a rule evaluation', () => {
+test('[integrity] unusable data never becomes a clean rule evaluation', () => {
   const usable = ['CURRENT', 'LAGGED_BY_DESIGN'];
   for (const g of gauges.gauges) {
-    if (!usable.includes(g.status.data_state)) {
-      assert.equal(g.decision, 'NO_DECISION', `${g.id} is ${g.status.data_state} but was still evaluated`);
-      assert.equal(g.henren?.status ?? null, g.henren === null ? null : g.henren.status);
+    if (usable.includes(g.status.data_state)) continue;
+    assert.notEqual(g.decision, 'RULE_EVALUATED',
+      `${g.id} is ${g.status.data_state} but presents as a clean evaluation`);
+
+    // Exactly one middle state is permitted, and it has to pay for itself. It exists to end
+    // an inconsistency this suite did not catch: capex once reported decision NO_DECISION
+    // sitting next to rule_state green — the reading was valid arithmetic on a period that
+    // had since been superseded, and neither label said so. The state may only be used when
+    // something newer genuinely exists and the gauge admits it in words.
+    if (g.decision === 'RULE_EVALUATED_ON_SUPERSEDED_PERIOD') {
+      const f = g.freshness_layers;
+      assert.ok(g.superseded_note, `${g.id}: superseded evaluation carrying no note`);
+      assert.ok(f?.latest_available_period > f?.latest_ingested_period,
+        `${g.id}: claims a superseded period while nothing newer is actually available`);
+    } else {
+      assert.equal(g.decision, 'NO_DECISION',
+        `${g.id} is ${g.status.data_state} but was still evaluated`);
     }
   }
 });
 
-test('counts exclude undecided gauges', () => {
+test('[integrity] counts exclude undecided gauges', () => {
   const t = gauges.henren_rule_tally;
   const colours = (t.green ?? 0) + (t.yellow ?? 0) + (t.red ?? 0);
   assert.equal(colours, t.evaluated, 'colour counts must sum to evaluated, not to total');
   assert.equal(t.evaluated + t.no_decision, t.total);
 });
 
-test('no composite score is emitted', () => {
+test('[integrity] no composite score is emitted', () => {
   // Match KEYS, not substrings — `no_composite_score` legitimately contains one of these,
   // and the first version of this test failed on the very field that declares compliance.
   const banned = new Set(['bubble_score', 'market_score', 'composite_score', 'overall_score', 'risk_score']);
@@ -61,7 +75,7 @@ test('no composite score is emitted', () => {
   assert.ok(gauges.no_composite_score, 'the explicit no-composite declaration must be present');
 });
 
-test('every evaluated gauge names a registered source and carries provenance', () => {
+test('[integrity] every evaluated gauge names a registered source and carries provenance', () => {
   const known = new Set([...Object.keys(registry.sources), 'manual']);
   for (const g of gauges.gauges) {
     const p = g.provenance;
@@ -73,7 +87,7 @@ test('every evaluated gauge names a registered source and carries provenance', (
   }
 });
 
-test('a composite gauge inherits its weakest source authority', () => {
+test('[integrity] a composite gauge inherits its weakest source authority', () => {
   const m2 = gauges.gauges.find((g) => g.id === 'm2gap');
   if (m2 && m2.decision === 'RULE_EVALUATED') {
     assert.equal(m2.status.source_authority, 'UNOFFICIAL_FREE',
@@ -81,14 +95,14 @@ test('a composite gauge inherits its weakest source authority', () => {
   }
 });
 
-test('proxy gauges declare themselves and name a replacement', () => {
+test('[integrity] proxy gauges declare themselves and name a replacement', () => {
   for (const g of gauges.gauges.filter((x) => x.proxy)) {
     assert.ok(g.proxy_warning, `${g.id} is a proxy without a warning`);
     assert.ok(g.proxy_replacement, `${g.id} is a proxy without a named replacement`);
   }
 });
 
-test('thresholds this system invented are flagged as ours', () => {
+test('[integrity] thresholds this system invented are flagged as ours', () => {
   // Anything not traceable to his own words must say so rather than borrowing his authority.
   for (const g of gauges.gauges.filter((x) => x.henren?.threshold_is_ours)) {
     assert.match(g.henren.quote ?? '', /本系統|非他的原話|未給/,
@@ -96,7 +110,7 @@ test('thresholds this system invented are flagged as ours', () => {
   }
 });
 
-test('the renderer performs no financial calculation', () => {
+test('[integrity] the renderer performs no financial calculation', () => {
   const banned = [
     /Math\.log\s*\(/, /Math\.sqrt\s*\(/, /\*\s*252\b/, /\/\s*1e9\b/,
     /function\s+percentile/, /function\s+rvol/, /\.reduce\([^)]*\+[^)]*value/,
@@ -106,7 +120,7 @@ test('the renderer performs no financial calculation', () => {
   }
 });
 
-test('dashboard numbers match the engine exactly', { skip: !html }, () => {
+test('[integrity] dashboard numbers match the engine exactly', { skip: !html }, () => {
   for (const g of gauges.gauges) {
     if (g.decision !== 'RULE_EVALUATED' || g.observed?.value === null) continue;
     assert.ok(html.includes(String(g.observed.value)),
@@ -114,27 +128,34 @@ test('dashboard numbers match the engine exactly', { skip: !html }, () => {
   }
 });
 
-test('dashboard states the calculation version it was rendered from', { skip: !html }, () => {
+test('[integrity] every gauge the engine produced reaches the page', { skip: !html }, () => {
+  // A card went missing in silence: the renderer bucketed on `decision === 'RULE_EVALUATED'`,
+  // the engine gained a third decision state, and capex fell through both filters while the
+  // summary above it went on counting 13 rules. Nothing failed — the page was simply one
+  // card short. A count check alone would not have caught it either, since the counts are
+  // read from the engine, not from what was drawn.
+  for (const g of gauges.gauges) {
+    assert.ok(html.includes(`>${g.label}`) || html.includes(g.label),
+      `${g.id} (${g.label}) was computed but never rendered — decision ${g.decision} `
+      + 'is not in any bucket the renderer draws');
+  }
+});
+
+test('[integrity] dashboard states the calculation version it was rendered from', { skip: !html }, () => {
   assert.ok(html.includes(gauges.calculation_version), 'dashboard must show the calc version');
   assert.ok(html.includes(gauges.code_commit), 'dashboard must show the code commit');
 });
 
-test('no buy/sell language reaches the rendered output', { skip: !html }, () => {
-  // Assertive constructions only. A disclaimer that says "no price targets" contains the
-  // words "price target" — the first version of this test flagged its own guardrail text.
-  const assertive = [
-    /STRONG\s+(BUY|SELL)/i,
-    /\b(建議|應該)\s*(買進|買入|賣出|加碼|減碼|清倉|出清)/,
-    /目標價\s*[:：$＄\d]/,
-    /price\s+target\s*[:：$\d]/i,
-    /\b(BUY|SELL)\s+RATING\b/i,
-  ];
-  for (const re of assertive) {
-    assert.ok(!re.test(html), `guardrail breach: ${re} matched in the dashboard`);
-  }
+// The buy/sell scan used to run over the rendered HTML and kept flagging the disclaimer
+// that promised no price targets. It now lives in test/contract.test.mjs, against
+// structured data, where static copy is a different object rather than an adjacent
+// substring. What remains here is only that the guardrail ran at all.
+test('[integrity] the output contract was enforced before rendering', () => {
+  assert.equal(gauges.output_contract?.valid, true,
+    'the engine must refuse to emit a payload that violates its contract');
 });
 
-test('the Serenity gate escalates only with a citation', { skip: !holdings }, () => {
+test('[integrity] the Serenity gate escalates only with a citation', { skip: !holdings }, () => {
   for (const h of holdings.holdings) {
     const g = h.serenity_gate;
     if (!g) continue;
@@ -147,14 +168,14 @@ test('the Serenity gate escalates only with a citation', { skip: !holdings }, ()
   }
 });
 
-test('the gate never reaches an investable conclusion without valuation work', { skip: !holdings }, () => {
+test('[integrity] the gate never reaches an investable conclusion without valuation work', { skip: !holdings }, () => {
   for (const h of holdings.holdings) {
     assert.notEqual(h.serenity_gate?.conclusion?.value, '可投资结论',
       `${h.ticker} reached an investable conclusion; no valuation stage exists yet`);
   }
 });
 
-test('plausibility findings reach the dashboard, graded by severity', { skip: !holdings || !html }, () => {
+test('[integrity] plausibility findings reach the dashboard, graded by severity', { skip: !holdings || !html }, () => {
   for (const h of holdings.holdings) {
     const p = h.fundamentals?.plausibility;
     if (!p || p.level === 'PASS') continue;
@@ -167,7 +188,7 @@ test('plausibility findings reach the dashboard, graded by severity', { skip: !h
   }
 });
 
-test('an economic outlier blocks nothing, a structural error blocks something', { skip: !holdings }, () => {
+test('[integrity] an economic outlier blocks nothing, a structural error blocks something', { skip: !holdings }, () => {
   for (const h of holdings.holdings) {
     const p = h.fundamentals?.plausibility;
     if (!p) continue;
@@ -179,7 +200,7 @@ test('an economic outlier blocks nothing, a structural error blocks something', 
   }
 });
 
-test('concentration is judged on the broad sector, not the niche', { skip: !holdings }, () => {
+test('[integrity] concentration is judged on the broad sector, not the niche', { skip: !holdings }, () => {
   const c = holdings.concentration;
   if (c.distinct_niches > c.distinct_sectors) {
     assert.equal(c.same_sector, c.distinct_sectors === 1,
@@ -187,7 +208,7 @@ test('concentration is judged on the broad sector, not the niche', { skip: !hold
   }
 });
 
-test('display precision is coarser than storage precision, and the exact value survives',
+test('[integrity] display precision is coarser than storage precision, and the exact value survives',
   { skip: !html }, () => {
   for (const g of gauges.gauges) {
     const o = g.observed;
@@ -198,7 +219,7 @@ test('display precision is coarser than storage precision, and the exact value s
   }
 });
 
-test('validation status is rendered before the reading, not after it', { skip: !html }, () => {
+test('[integrity] validation status is rendered before the reading, not after it', { skip: !html }, () => {
   // The badge markup must precede the measurement block inside a card.
   const firstCard = html.slice(html.indexOf('<article class="g"'));
   const badge = firstCard.indexOf('vbadge');
@@ -207,7 +228,7 @@ test('validation status is rendered before the reading, not after it', { skip: !
   assert.ok(badge < number, 'UNTESTED must be read before the number it qualifies');
 });
 
-test('the front page does not present a red/green market tally', { skip: !html }, () => {
+test('[integrity] the front page does not present a red/green market tally', { skip: !html }, () => {
   const head = html.slice(0, html.indexOf('Framework Triggers'));
   for (const banned of ['綠燈</span>', '紅燈</span>']) {
     assert.ok(!head.includes(banned),
@@ -216,7 +237,7 @@ test('the front page does not present a red/green market tally', { skip: !html }
   assert.ok(head.includes('經統計驗證的訊號'), 'the front page must state the validated-signal count');
 });
 
-test('legacy ledger entries are excluded from any performance claim', () => {
+test('[integrity] legacy ledger entries are excluded from any performance claim', () => {
   const lines = read('data/predictions.jsonl').trim().split('\n').map((l) => JSON.parse(l));
   for (const p of lines) {
     assert.ok(p.protocol, `${p.prediction_id} has no protocol label`);
@@ -227,31 +248,55 @@ test('legacy ledger entries are excluded from any performance claim', () => {
   }
 });
 
-test('a rule whose transformation is unverified is not evaluated', () => {
+test('[integrity] an unverified transformation blocks the rule unless sensitivity shows it cannot matter', () => {
+  // The original form of this test blocked any gauge whose arithmetic was not fully
+  // reconciled. That is blanket contagion, and it was ruled against: one issuer that cannot
+  // be reconciled should not freeze an aggregate whose verdict does not turn on it. The
+  // exemption is not free, though — it costs a sensitivity test that was actually run and
+  // actually came back insensitive, with the unverified components named.
   for (const g of gauges.gauges) {
-    if (g.transformation_validation && g.transformation_validation !== 'CHECKED') {
-      assert.equal(g.decision, 'NO_DECISION',
-        `${g.id} evaluated its rule on arithmetic marked ${g.transformation_validation}`);
-    }
+    if (!g.transformation_validation || g.transformation_validation === 'CHECKED') continue;
+    if (g.decision === 'NO_DECISION') continue;
+
+    const r = g.decision_robustness;
+    assert.ok(r, `${g.id} evaluated on ${g.transformation_validation} arithmetic `
+      + 'with no sensitivity test to justify it');
+    assert.equal(r.robustness, 'ROBUST',
+      `${g.id} evaluated its rule on ${g.transformation_validation} arithmetic `
+      + `while the decision is ${r.robustness} to the unverified part`);
+    assert.equal(r.label, 'SENSITIVITY_RANGE',
+      'the exemption rests on a sensitivity range; calling it anything probabilistic '
+      + 'would claim a model that does not exist');
+    assert.ok(r.unverified_components?.length,
+      `${g.id}: arithmetic is ${g.transformation_validation} but robustness names nothing unverified`);
   }
 });
 
-test('point-in-time is described as not implemented, never as impossible', () => {
-  assert.equal(gauges.point_in_time, 'NOT_IMPLEMENTED');
-  // Assertive constructions only. The note legitimately contains the phrase inside a
-  // negation ("this is not-yet-implemented, NOT structurally impossible"), and a naive
-  // substring match flags the sentence that establishes compliance. Third time this exact
-  // pattern has bitten a guardrail test in this repo — keyword scans need the surrounding
-  // grammar, or they end up policing the disclaimer instead of the claim.
-  const assertive = [/(?<!不是「)結構上不可能(?!」)/, /\bis structurally impossible\b/i];
-  for (const re of assertive) {
-    assert.ok(!re.test(gauges.point_in_time_note), `point_in_time_note asserts impossibility: ${re}`);
+test('[integrity] the page never claims a capability the engine says it lacks', { skip: !html }, () => {
+  // The masthead rendered `data.point_in_time ? '是' : '否'` and printed 「是」, because the
+  // engine emits the string 'NOT_IMPLEMENTED' and every non-empty string is truthy. For one
+  // render the page advertised point-in-time backtesting directly above a footer explaining
+  // it does not exist. Status fields are strings with meaning; treating one as a boolean
+  // inverts it silently, so the assertion is on what the reader ends up seeing.
+  const mast = html.slice(html.indexOf('<dl class="session">'), html.indexOf('</dl>'));
+  assert.ok(mast.includes('Point-in-time'), 'the masthead must state point-in-time status at all');
+  if (gauges.point_in_time !== 'IMPLEMENTED') {
+    assert.ok(!/Point-in-time<\/dt><dd>是</.test(mast.replace(/\s+/g, '')),
+      `engine says point_in_time=${gauges.point_in_time} but the masthead reads 是`);
+    assert.ok(mast.includes(gauges.point_in_time),
+      'the masthead should name the actual state rather than reduce it to a yes/no');
   }
+});
+
+test('[integrity] point-in-time is described as not implemented, never as impossible', () => {
+  // Reduced to a structural assertion. The previous version scanned the note's wording and
+  // flagged the very sentence establishing compliance — the third instance of that pattern.
+  assert.equal(gauges.point_in_time, 'NOT_IMPLEMENTED');
   assert.ok(/尚未實作|NOT_IMPLEMENTED|vintage/.test(gauges.point_in_time_note),
     'the note must say a backtest path exists but is unbuilt');
 });
 
-test('every plausibility tier is reachable, not just declared', { skip: !holdings }, () => {
+test('[integrity] every plausibility tier is reachable, not just declared', { skip: !holdings }, () => {
   // A three-grade system whose middle grade can never fire is a two-grade system with
   // extra vocabulary. The first version of the reconciliation tier was exactly that:
   // it tested a variable that was hardcoded to null.
@@ -269,7 +314,7 @@ test('every plausibility tier is reachable, not just declared', { skip: !holding
   }
 });
 
-test('signal validation is honest about being untested', () => {
+test('[integrity] signal validation is honest about being untested', () => {
   const validated = gauges.gauges.filter((g) => g.status.signal_validation !== 'UNTESTED');
   for (const g of validated) {
     assert.fail(`${g.id} claims ${g.status.signal_validation} — no backtest exists to support that`);

@@ -24,3 +24,8 @@ data/raw/
 
 # The prediction ledger is the point — it must be committed, and never rewritten.
 !data/predictions.jsonl
+
+# Snapshot history is the raw material for Signal Behavior Diagnostics — it must be
+# committed, and it is small (one JSON per day).
+!data/snapshots/
+!data/snapshots/*.json

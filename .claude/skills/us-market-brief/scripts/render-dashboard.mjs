@@ -14,11 +14,20 @@ import { readFileSync } from 'node:fs';
 const data = JSON.parse(readFileSync(process.argv[2], 'utf8'));
 const snap = process.argv[3] ? JSON.parse(readFileSync(process.argv[3], 'utf8')) : null;
 const hold = process.argv[4] ? JSON.parse(readFileSync(process.argv[4], 'utf8')) : null;
+const tests = process.argv[5] ? JSON.parse(readFileSync(process.argv[5], 'utf8')) : null;
 const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-const evaluated = data.gauges.filter((g) => g.decision === 'RULE_EVALUATED');
+// Bucketing must be exhaustive. When the engine gained a third decision state, this file
+// still filtered on `=== 'RULE_EVALUATED'`, and the capex card silently disappeared from
+// the page while the summary above it kept counting 13 rules — a gauge can now only vanish
+// if every bucket misses it, and the last bucket catches whatever the others do not.
+const EVALUATED_DECISIONS = ['RULE_EVALUATED', 'RULE_EVALUATED_ON_SUPERSEDED_PERIOD'];
+const evaluated = data.gauges.filter((g) => EVALUATED_DECISIONS.includes(g.decision));
 const undecided = data.gauges.filter((g) => g.decision === 'NO_DECISION');
+const unbucketed = data.gauges.filter((g) =>
+  !EVALUATED_DECISIONS.includes(g.decision) && g.decision !== 'NO_DECISION');
 const t = data.henren_rule_tally;
+const chg = data.changes_since_last_run;
 const px = (sym) => snap?.rows?.find((r) => r.symbol === sym);
 
 const SEV = { green: 'var(--ok)', yellow: 'var(--warn)', red: 'var(--bad)' };
@@ -49,7 +58,11 @@ function card(g) {
   const th = g.henren?.thresholds ?? {};
   const validation = g.status.signal_validation;
   const o = g.observed;
-  return `<article class="g" style="--sev:${g.henren?.status ? sev : 'var(--off)'}">
+  // A rule that did not trigger on a quarter which has since been superseded is not a green
+  // card. The colour has to carry the same qualification the label does, or the eye reads a
+  // green light and the words never get a chance.
+  const superseded = g.decision === 'RULE_EVALUATED_ON_SUPERSEDED_PERIOD';
+  return `<article class="g" style="--sev:${superseded ? 'var(--brass)' : g.henren?.status ? sev : 'var(--off)'}">
 
   <!-- Validation status leads. It is read before the number, not after it. -->
   <div class="vstrip">
@@ -62,8 +75,29 @@ function card(g) {
     </span>
   </div>
 
-  <h3>${esc(g.label)}${g.proxy ? '<span class="tag">代理</span>' : ''}${g.henren?.threshold_is_ours ? '<span class="tag tag-ours">門檻非原話</span>' : ''}</h3>
+  <h3>${esc(g.label)}${g.proxy ? '<span class="tag">代理</span>' : ''}${g.henren?.threshold_is_ours ? '<span class="tag tag-ours">門檻非原話</span>' : ''}${superseded ? '<span class="tag tag-sup">讀數已被更新的一季超過</span>' : ''}</h3>
   <p class="plain">${esc(g.plain)}</p>
+
+  ${g.freshness_layers ? `<div class="fresh fresh-${g.freshness_layers.state.toLowerCase()}">
+    <div class="freshlab">資料新鮮度 · 三層</div>
+    <div class="freshrow">
+      <div class="fl"><span>日曆上應該有</span><b class="num">${esc(g.freshness_layers.latest_expected_label)}</b></div>
+      <div class="fl"><span>發行人已申報</span><b class="num">${esc(g.freshness_layers.latest_available_label ?? '—')}</b></div>
+      <div class="fl"><span>本管線實際有</span><b class="num">${esc(g.freshness_layers.latest_ingested_label)}</b></div>
+    </div>
+    <p class="freshread">${esc(g.freshness_layers.reading)}</p>
+    ${g.freshness_layers.blocking_issuers?.length ? `<p class="qmeta">卡住合計的是：${g.freshness_layers.blocking_issuers.map(esc).join('、')}。</p>` : ''}
+  </div>` : ''}
+
+  ${g.decision_robustness && g.decision_robustness.label === 'SENSITIVITY_RANGE' ? `<p class="note rob">
+    <b>未驗證成分會不會改變答案（${esc(g.decision_robustness.robustness)}）：</b>${esc(g.decision_robustness.reading)}
+    區間 ${esc(g.decision_robustness.sensitivity_range.min_qoq_pct)}% ～ ${esc(g.decision_robustness.sensitivity_range.max_qoq_pct)}%。
+    <i>${esc(g.decision_robustness.label_note)}</i></p>` : ''}
+
+  ${g.coverage ? `<p class="note"><b>證據覆蓋（不是信心水準）：</b>
+    發行人 ${esc(g.coverage.issuer_coverage)}　金額 ${esc(g.coverage.amount_coverage)}　轉換對帳 ${esc(g.coverage.transformation_coverage)}
+    合計狀態 ${esc(g.coverage.aggregate_measurement_status)}。覆蓋率說的是「有多少被驗證過」，
+    不是「有多大機率是對的」—— 佔水位 15% 的成分，可能就是變動的全部。</p>` : ''}
 
   <div class="split">
     <!-- Measurement -->
@@ -102,6 +136,8 @@ function card(g) {
     g.selection_bias_note && ['選樣偏誤', g.selection_bias_note],
     g.mixed_authority_note && ['來源權威', g.mixed_authority_note],
     g.reconciliation && ['差分對帳', `${g.reconciliation.verdict} — ${g.reconciliation.note}`],
+    g.superseded_note && ['這個判定成立於哪一季', g.superseded_note],
+    g.ingestion_alert && ['⚠️ 這是取得落後，不是來源落後', g.ingestion_alert],
   ].filter(Boolean).map(([k, v]) => `<p class="note"><b>${k}：</b>${esc(v)}</p>`).join('')}
   ${g.layers ? `<div class="layers">${Object.entries(g.layers).map(([k, v]) =>
     `<div class="layer"><b>${esc(k.replace(/^._/, '').replace(/_/g, ' '))}</b><span>${esc(v)}</span></div>`).join('')}</div>` : ''}
@@ -121,7 +157,7 @@ const capex = G('capex');
 
 // The summary reads canonical fields. It composes sentences; it computes nothing.
 const summary = `
-<section class="verdict">
+<section class="verdict" id="today">
   <h2>Today</h2>
   <p class="h2sub">狠人版總結 · 今天的市場</p>
 
@@ -129,7 +165,9 @@ const summary = `
     <div class="vbox">
       <div class="vlab">基本面 · 管方向</div>
       <div class="vstat" style="--sev:var(--ok)">沒有裂縫</div>
-      <p>標普收在 <b class="num">${px('^GSPC')?.close}</b>，距 52 週高點 <b class="num">${px('^GSPC')?.ddFromHigh}%</b>。
+      <p>標普收在 <b class="num">${px('^GSPC')?.close}</b>，${px('^GSPC')?.ddFromHigh === 0
+        ? `<b>就是 52 週最高點本身</b>（${esc(px('^GSPC')?.hi52Date)}）`
+        : `距 52 週高點 <b class="num">${px('^GSPC')?.ddFromHigh}%</b>`}。
       等權重 RSP 年初至今 <b class="num">${px('RSP')?.ytd}%</b>、羅素 2000 <b class="num">${px('^RUT')?.ytd}%</b>，
       都不輸市值權重的 <b class="num">${px('^GSPC')?.ytd}%</b> —— 這不是少數幾檔撐起來的盤。
       防禦股 XLU 近一月 <b class="num">${px('XLU')?.m1}%</b>，落後。</p>
@@ -152,33 +190,129 @@ const summary = `
     </div>
   </div>
 
-  <div class="bell">
+  <div class="bell${capex?.decision === 'RULE_EVALUATED_ON_SUPERSEDED_PERIOD' ? ' bell-sup' : ''}">
     <div class="belllab">逃生鈴 · 開關三</div>
-    <div class="bellval">還沒響</div>
-    <p>四家雲廠商最新一季 capex 合計 <b class="num">$${capex?.observed?.detail?.total_bn}B</b>
+    <div class="bellval">${capex?.decision === 'RULE_EVALUATED_ON_SUPERSEDED_PERIOD'
+      ? '還沒響 —— 但這是上一季的鈴' : '還沒響'}</div>
+    <!-- The two growth rates were swapped here: observed.value is the QoQ figure (its unit
+         says so), and the YoY lives in detail.yoy_pct. The page labelled the QoQ as 年增 and
+         printed "undefined%" for the other. Read the unit, do not assume which one is which. -->
+    <p>四家雲廠商 capex 合計 <b class="num">$${capex?.observed?.detail?.total_bn}B</b>
     （${esc(capex?.observed?.effective_date)} 季，資訊可得於 ${esc(capex?.observed?.detail?.information_available_at)}），
-    年增 <b class="num">${capex?.observed?.value}%</b> —— 是整個序列的最高點，
-    環比 <b class="num">${capex?.observed?.detail?.qoq_pct}%</b>。
-    他的規則是「增速見頂回落就立刻平倉」。<b>目前沒有回落，反而在加速。</b>
-    這用 SEC 申報資料證實了他 8 月的說法：還沒看到確認讀數。</p>
-    <p class="bellcaveat">但這只是 Layer A（申報現金 capex）。融資租賃與下季指引都沒接線，
-    所以這個「還沒響」是<b>系統性低估後的還沒響</b>。</p>
+    環比 <b class="num">${capex?.observed?.value}%</b>、年增 <b class="num">${capex?.observed?.detail?.yoy_pct}%</b>
+    （上一季 $${capex?.observed?.detail?.prior_quarter?.total_bn}B）。
+    他的規則是「增速見頂回落就立刻平倉」，而這一季沒有回落，是在加速。</p>
+    ${capex?.freshness_layers?.state === 'INGESTION_OVERDUE' ? `
+    <p class="bellstale"><b>先講最重要的一件事：這不是最新的一季。</b>
+    日曆上應該已經有 <b class="num">${esc(capex.freshness_layers.latest_expected_label)}</b>，
+    發行人也已經申報到 <b class="num">${esc(capex.freshness_layers.latest_available_label)}</b>，
+    但本管線手上只有 <b class="num">${esc(capex.freshness_layers.latest_ingested_label)}</b>。
+    差距卡在 ${capex.freshness_layers.blocking_issuers.map(esc).join('、')} ——
+    ${esc(capex.freshness_layers.blocking_issuers.join('、'))} 的單季數字在財報新聞稿裡有，
+    只是本管線走的 10-Q XBRL 這條路上還沒有。
+    <b>所以「還沒響」的正確讀法是：上一季沒響，這一季還沒看。</b>
+    這一格因此標為「已評估、但讀數已被更新的一季超過」，不是綠燈也不是無讀數 ——
+    把它算成綠燈，等於用舊資料背書現在。</p>` : ''}
+    <p class="bellcaveat">另外，這只是 Layer A（申報現金 capex）。概念契約寫死不含融資租賃，
+    下季指引也沒有 XBRL 標籤可接 —— 兩者都是 AI 資料中心支出裡會成長的部分。
+    所以這個「還沒響」是<b>系統性低估後的還沒響</b>，而且低估的幅度不是固定的。</p>
   </div>
 
   <div class="oneline">
-    <b>一句話：</b>方向沒問題、油還夠、逃生鈴沒響 —— 但估值與擁擠度都在歷史極端
+    <b>一句話：</b>方向沒問題、油還夠、逃生鈴上一季沒響 —— 但估值與擁擠度都在歷史極端
     （巴菲特指標 P${pct(G('buffett'))?.value}、AI 籃子波動是大盤 ${obs('ai-basket-rel-vol')?.value} 倍）。
     這不是「安全」，是<b>「還能燒，而且燒得很快」</b>。
-    <b>${t.evaluated}</b> 條狠人規則已評估、其中 <b>${t.red ?? 0}</b> 條觸發，另有 <b>${t.no_decision}</b> 格沒有可用讀數。
+    <b>${t.evaluated}</b> 條狠人規則已評估、其中 <b>${t.red ?? 0}</b> 條觸發${t.evaluated_on_superseded_period
+      ? `，其中 <b>${t.evaluated_on_superseded_period}</b> 條評估在已被超過的季度上`
+      : ''}，另有 <b>${t.no_decision}</b> 格沒有可用讀數。
     經統計驗證的訊號：<b>0</b>。
   </div>
+  <p class="vwhatnot"><b>這段總結不會告訴你的事：</b>它不說該買或該賣，不給目標價，也不給部位大小。
+  它只把「他的規則今天有沒有觸發」和「這條規則有沒有被證明過」分開講 ——
+  第二個問題目前 16 格全部是「沒有」。</p>
   <p class="vdisc">以上每個數字都來自 canonical engine（calc v${esc(data.calculation_version)} @ ${esc(data.code_commit)}）。
   「狠人規則觸發」不等於「統計上證明危險」—— 全部 16 格的訊號驗證狀態都是 UNTESTED。</p>
 </section>`;
 
+// What moved since the previous run. Every delta below was computed by the engine — this
+// file is not allowed to subtract two numbers, and a "what changed" panel is exactly where
+// that rule would otherwise get quietly broken.
+const changesSection = !chg ? '' : `
+<section id="changes">
+  <h2>Since last run</h2>
+  <p class="h2sub">上一次執行之後，有什麼真的變了</p>
+  ${!chg.available ? `<p class="lede">${esc(chg.reason)}</p>
+  <div class="chempty">
+    <p><b>這一區從下一次執行開始才有內容。</b>每次執行都會留下一份當日快照，之後這裡會列出三件事：
+    哪一格的規則判定翻了顏色、哪一格的資料狀態變了（例如從 CURRENT 掉到 OVERDUE），
+    以及每個讀數的絕對變動。</p>
+    <p>最右邊那欄會標明<b>來源到底有沒有重新發布</b> —— 因為數字變了不代表市場動了，
+    也可能只是同一個生效日的資料被修訂，或單純被重讀了一次。這兩件事在儀表板上長得一模一樣，
+    但意思完全不同。</p>
+  </div>` : `
+  <p class="lede">與 <b class="num">${esc(chg.prior_date)}</b> 的快照相比。
+  ${esc(chg.note)}</p>
+  <div class="chgrid">
+    <div class="chbox">
+      <div class="chlab">規則狀態改變</div>
+      ${chg.rule_changes.length ? `<ul class="chlist">${chg.rule_changes.map((c) =>
+        `<li><b>${esc(c.label)}</b><span class="chmove">${esc(c.from ?? '—')} → ${esc(c.to ?? '—')}</span></li>`).join('')}</ul>`
+        : '<p class="chnone">沒有任何一格的規則判定改變。</p>'}
+    </div>
+    <div class="chbox">
+      <div class="chlab">資料狀態改變</div>
+      ${chg.state_changes.length ? `<ul class="chlist">${chg.state_changes.map((c) =>
+        `<li><b>${esc(c.label)}</b><span class="chmove">${esc(c.from ?? '—')} → ${esc(c.to ?? '—')}</span></li>`).join('')}</ul>`
+        : '<p class="chnone">沒有任何一格的資料狀態改變。</p>'}
+    </div>
+  </div>
+  ${chg.moves.length ? `<table class="chtab">
+    <thead><tr><th>指標</th><th class="r">上次</th><th class="r">這次</th><th class="r">變動</th>
+    <th>生效日</th><th>來源有更新嗎</th></tr></thead>
+    <tbody>${chg.moves.map((m) => `<tr>
+      <td>${esc(m.label)}</td>
+      <td class="r num">${esc(m.from)}</td>
+      <td class="r num">${esc(m.to)}</td>
+      <td class="r num ${m.delta > 0 ? 'up' : 'down'}">${m.delta > 0 ? '+' : ''}${esc(m.delta)}</td>
+      <td class="num">${esc(m.effective_from)} → ${esc(m.effective_to)}</td>
+      <td class="${m.source_updated ? 'up' : 'reread'}">${m.source_updated ? '是，新發布' : '否，同一天重讀'}</td>
+      </tr>`).join('')}</tbody>
+  </table>
+  <p class="qmeta">只列絕對變動。百分比變動在通過零時沒有定義，而這裡有好幾格本身就是百分比 ——
+  「百分比的百分比變動」會讀成兩種完全不同的意思。最後一欄很重要：數字變了不代表市場動了，
+  也可能只是同一個生效日的資料被修訂或重讀。</p>` : '<p class="chnone">沒有任何讀數改變。</p>'}
+  `}
+</section>`;
+
+// Test suite, by the question each category answers. Reads data/test-report.json.
+const testSection = !tests ? '' : `
+<section id="tests">
+  <h2>What the tests actually test</h2>
+  <p class="h2sub">測試分類 · 「${tests.passed}/${tests.total} 通過」本身不是保證</p>
+  <p class="lede">一個總數聽起來像保證，但它沒說通過的是<strong>哪一個問題</strong>。
+  這裡把測試依照它們回答的問題分開 —— 最後一格是空的，而那格才是重點。</p>
+  <div class="tgrid">
+    ${tests.categories.map((c) => `<div class="tbox ${c.passed === c.total ? 'tok' : 'tbad'}">
+      <div class="tnum num">${c.passed}<span class="tof">/${c.total}</span></div>
+      <div class="tlab">${esc(c.label)}</div>
+      <p class="task">${esc(c.asks)}</p>
+      <p class="twhy">${esc(c.why)}</p>
+      ${c.failed.length ? `<p class="tfail">失敗：${c.failed.map(esc).join('；')}</p>` : ''}
+    </div>`).join('')}
+    <div class="tbox tempty">
+      <div class="tnum num">0<span class="tof">/0</span></div>
+      <div class="tlab">${esc(tests.absent_category.label)}</div>
+      <p class="task">${esc(tests.absent_category.asks)}</p>
+      <p class="twhy">${esc(tests.absent_category.why)}</p>
+      <p class="tfail">${esc(tests.absent_category.state)}</p>
+    </div>
+  </div>
+  <p class="nocomp">${esc(tests.reading)}</p>
+</section>`;
+
 // Holdings block. Reads holdings.json; computes nothing.
 const holdingsSection = !hold ? '' : `
-<section>
+<section id="holdings">
   <h2>Holdings</h2>
   <p class="h2sub">持股 · Serenity 閘門（首次實際執行）</p>
   <p class="lede">在接上 SEC 財報之前，這個鏡頭的每一格都卡在 <code>unverified</code> ——
@@ -234,8 +368,11 @@ const holdingsSection = !hold ? '' : `
     </article>`;
   }).join('')}
   </div>
-  <p class="nocomp"><b>鏡頭狀態：</b>${Object.entries(hold.lens_status).map(([k, v]) =>
-    `${k} = <b>${v}</b>`).join('　·　')}。${esc(hold.guardrail)}</p>
+  <p class="nocomp"><b>三條分析流程的執行狀態：</b>${Object.entries(hold.lens_status).map(([k, v]) =>
+    `${k} = <b>${v}</b>`).join('　·　')}。${esc(hold.guardrail)}<br>
+  <b>為什麼不叫「三個鏡頭」：</b>三條流程跑在同一批 SEC 與市場資料上，看得再多次也還是同一個來源。
+  證據的多樣性取決於<strong>每次分析背後有幾個彼此獨立的資料出處</strong>，不取決於跑了幾條流程 ——
+  三條流程一起同意，可能只是同一筆資料被讀了三次。</p>
 </section>`;
 
 const html = `<title>美股儀表板 · 狠人規則 × 實證脈絡</title>
@@ -285,6 +422,10 @@ border-radius:4px;padding:16px;box-shadow:var(--shadow)}
 padding:18px;box-shadow:var(--shadow);margin:12px 0}
 .belllab{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
 .bellval{font-size:26px;font-weight:770;color:var(--ok);letter-spacing:-.02em;margin:2px 0 8px}
+/* A bell that rang on a quarter which has since been superseded is not a green light.
+   Colouring it green is the visual form of the same mistake the label is there to prevent. */
+.bell-sup{border-left-color:var(--brass)}
+.bell-sup .bellval{color:var(--brass)}
 .bell p{margin:0 0 8px;font-size:14px;color:var(--ink-2);line-height:1.62}
 .bellcaveat{font-size:13px !important;border-top:1px dashed var(--rule);padding-top:9px;margin-top:10px !important}
 .oneline{background:var(--panel-2);border:1px solid var(--rule);border-left:4px solid var(--brass);
@@ -408,6 +549,78 @@ padding:13px 16px;background:var(--panel);border-left:4px solid var(--off)}
 .cnt b{display:block;font-size:26px;font-weight:770;letter-spacing:-.02em;line-height:1.1}
 .cnt span{font-size:12px;color:var(--ink-2)}
 .cnt-zero{border-color:var(--bad)}.cnt-zero b{color:var(--bad)}
+
+/* Sticky section nav. The page got long enough that "scroll until you find it" became the
+   navigation model, which buries the caveats under the numbers. */
+.nav{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:2px;margin:0 0 22px;
+padding:8px 0;background:var(--ground);border-bottom:1px solid var(--rule)}
+.nav a{padding:5px 11px;font-size:12px;color:var(--ink-2);text-decoration:none;border:1px solid transparent;
+border-radius:3px;letter-spacing:.02em}
+.nav a:hover{background:var(--panel);border-color:var(--rule);color:var(--ink)}
+/* Without this the sticky bar lands on top of whatever heading you jumped to. */
+section[id]{scroll-margin-top:56px}
+.chempty{padding:13px 15px;background:var(--panel);border:1px dashed var(--rule);border-radius:4px;
+font-size:12.5px;color:var(--ink-2);line-height:1.8}
+.chempty p{margin:0 0 8px}.chempty p:last-child{margin:0}
+
+/* Three-layer freshness. Laid out as three columns because the whole point is the GAP
+   between them — a single "as of" date cannot show that the pipeline is the slow part. */
+.fresh{margin:12px 0;padding:11px 13px;border:1px solid var(--rule);border-left:3px solid var(--ink-3);
+border-radius:3px;background:var(--panel-2)}
+.fresh-ingestion_overdue{border-left-color:var(--bad);background:#FBF1F3}
+.fresh-source_publication_lag{border-left-color:var(--warn)}
+.fresh-current{border-left-color:var(--ok)}
+.freshlab{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.freshrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fl{padding:6px 8px;background:var(--panel);border:1px solid var(--rule-soft);border-radius:3px}
+.fl span{display:block;font-size:10.5px;color:var(--ink-3);margin-bottom:2px}
+.fl b{font-size:14px;color:var(--ink)}
+.freshread{margin:8px 0 0;font-size:12px;color:var(--ink-2);line-height:1.65}
+.note.rob{border-left-color:var(--brass)}
+.note.rob i{color:var(--ink-3);font-style:normal;font-size:11.5px}
+.tag-sup{background:#FBF1F3;border-color:var(--bad);color:var(--bad)}
+.bellstale{margin-top:10px;padding:11px 13px;background:#FBF1F3;border:1px solid var(--bad);
+border-radius:3px;font-size:12.5px;line-height:1.75;color:var(--ink)}
+.vwhatnot{margin-top:12px;padding:10px 13px;border:1px dashed var(--rule);border-radius:3px;
+font-size:12px;color:var(--ink-2);line-height:1.7}
+
+/* Since last run. */
+.chgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.chbox{padding:12px 14px;background:var(--panel);border:1px solid var(--rule);border-radius:4px}
+.chlab{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.chlist{margin:0;padding:0;list-style:none}
+.chlist li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--rule-soft);
+font-size:12.5px}
+.chlist li:last-child{border-bottom:none}
+.chmove{font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
+.chnone{margin:0;font-size:12.5px;color:var(--ink-3)}
+.chtab{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--panel);
+border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.chtab th,.chtab td{padding:7px 11px;border-bottom:1px solid var(--rule-soft);text-align:left}
+.chtab th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--panel-2)}
+.chtab .r{text-align:right}
+.chtab tr:last-child td{border-bottom:none}
+.chtab .up{color:var(--ok)}.chtab .down{color:var(--bad)}.chtab .reread{color:var(--ink-3)}
+
+/* Tests by category. The empty fifth box is the message, so it is styled to be read. */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin-bottom:12px}
+.tbox{padding:13px 15px;background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--ok);
+border-radius:4px}
+.tbad{border-top-color:var(--bad)}
+.tempty{border-top-color:var(--bad);border-style:dashed;background:var(--panel-2)}
+.tnum{font-size:26px;line-height:1;color:var(--ink)}
+.tempty .tnum{color:var(--bad)}
+.tof{font-size:14px;color:var(--ink-3)}
+.tlab{margin-top:5px;font-size:13px;font-weight:600;color:var(--ink)}
+.task{margin:7px 0 0;font-size:12px;color:var(--ink-2);line-height:1.6}
+.twhy{margin:6px 0 0;font-size:11.5px;color:var(--ink-3);line-height:1.65}
+.tfail{margin:7px 0 0;font-size:11.5px;color:var(--bad);line-height:1.6}
+
+@media (max-width:720px){
+  .chgrid,.freshrow{grid-template-columns:1fr}
+  .nav{gap:0}
+  .nav a{padding:5px 8px;font-size:11.5px}
+}
 .disc{margin-top:13px;padding:13px 15px;background:var(--panel-2);border:1px solid var(--rule);border-radius:4px;
 color:var(--ink-2);font-size:12.5px}
 </style>
@@ -424,13 +637,25 @@ color:var(--ink-2);font-size:12.5px}
     <div><dt>美股狀態</dt><dd>${esc(data.market_session.us_market)}</dd></div>
     <div><dt>最近收盤</dt><dd class="num">${esc(px('^GSPC')?.asOf ?? '—')}</dd></div>
     <div><dt>計算版本</dt><dd class="num">v${esc(data.calculation_version)} @ ${esc(data.code_commit)}</dd></div>
-    <div><dt>Point-in-time</dt><dd>${data.point_in_time ? '是' : '否'}</dd></div>
+    <!-- This tested data.point_in_time for truthiness and printed 「是」, because the engine
+         emits the STRING 'NOT_IMPLEMENTED' and every non-empty string is truthy. The page
+         was claiming point-in-time was implemented directly underneath a footer explaining
+         that it is not. A status field is never a boolean. -->
+    <div><dt>Point-in-time</dt><dd>${data.point_in_time === 'IMPLEMENTED' ? '是'
+      : `否 · <span class="num">${esc(data.point_in_time)}</span>`}</dd></div>
+    <div><dt>SEC as-of 查詢</dt><dd>${data.as_of_query === 'TESTED' ? '已實測' : esc(data.as_of_query ?? '—')}</dd></div>
   </dl>
 </header>
 
+<nav class="nav">
+  <a href="#today">今天</a><a href="#maturity">系統成熟度</a><a href="#changes">上次之後的變化</a>
+  <a href="#triggers">規則已評估</a>${hold ? '<a href="#holdings">持股</a>' : ''}
+  <a href="#nodecision">無可用讀數</a>${tests ? '<a href="#tests">測試在測什麼</a>' : ''}
+</nav>
+
 ${summary}
 
-<section>
+<section id="maturity">
   <h2>System maturity</h2>
   <p class="h2sub">這套系統目前完成到哪一層</p>
   <p class="lede">這比任何免責聲明都準確。上面兩層已經建立，下面兩層還沒開始 ——
@@ -452,22 +677,33 @@ ${summary}
   <p class="nocomp">${esc(data.no_composite_score)}</p>
 </section>
 
-<section>
+${changesSection}
+
+<section id="triggers">
   <h2>Framework Triggers</h2>
   <p class="h2sub">狠人規則已評估的 ${evaluated.length} 格</p>
   <p class="lede">這是<strong>規則評估</strong>，不是校準過的評分。紅色代表「按他的原話，這格觸發了」，
-  不代表統計上已證明市場風險升高。標「門檻非原話」的格子，門檻是本系統設的，不是他講的。</p>
+  不代表統計上已證明市場風險升高。標「門檻非原話」的格子，門檻是本系統設的，不是他講的。
+  ${t.evaluated_on_superseded_period ? `其中 <strong>${t.evaluated_on_superseded_period}</strong> 格標示為
+  「讀數已被更新的一季超過」—— 判定本身有效，但它成立在已經不是最新的期間上。` : ''}</p>
   <div class="grid">${evaluated.map(card).join('')}</div>
 </section>
 
 ${holdingsSection}
 
-<section>
+<section id="nodecision">
   <h2>No Decision</h2>
   <p class="h2sub">沒有可用讀數的 ${undecided.length} 格</p>
   <p class="lede">資料逾期、過期或缺漏。這些格子<strong>不會被當成「中性」或「黃燈」</strong>，也不進任何計數。</p>
   <div class="grid">${undecided.map(card).join('')}</div>
+  ${unbucketed.length ? `<p class="note blocker"><b>⚠️ 未分類的判定狀態：</b>
+  ${unbucketed.map((g) => `${esc(g.label)}（${esc(g.decision)}）`).join('、')} ——
+  這些格子的 decision 值不在本頁認得的清單裡。它們被印在這裡而不是被丟掉，
+  因為上一次同樣的情況讓一整張卡片從頁面上消失，而總數還繼續數著它。</p>
+  <div class="grid">${unbucketed.map(card).join('')}</div>` : ''}
 </section>
+
+${testSection}
 
 <footer>
   <p><b>Canonical data flow</b>　<span class="num">FRED / SEC EDGAR / Yahoo → data/raw/ → gauges.mjs
