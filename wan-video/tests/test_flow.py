@@ -925,6 +925,189 @@ def test_seconds_to_frames() -> None:
     check(workflow.frames_for_seconds(0, 16) == 5, "zero clamps up to the minimum")
 
 
+# -- regressions from the code review ----------------------------------------
+
+
+async def test_review_regressions() -> None:
+    """Each case here is a bug the review found; all were real."""
+    import aiohttp
+    import images
+    import registry
+
+    section("review regressions")
+
+    fake = FakeComfy()
+    comfy_runner, comfy_url = await start(fake.app())
+    models_dir = TMP / "rev-models"
+    install(models_dir, registry.get("wan22-14b-fp8"))
+    for f in images.get("illustrious").all_files:
+        path = models_dir / f.folder / f.name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("wb") as fh:
+            fh.truncate(f.size)
+    # A checkpoint the user installed themselves.
+    (models_dir / "checkpoints" / "myMerge_v3.safetensors").write_bytes(b"\0" * 2048)
+
+    env = {
+        **os.environ,
+        "COMFY_URL": comfy_url,
+        "MODELS_DIR": str(models_dir),
+        "OUTPUT_DIR": str(TMP / "rev-out"),
+        "INBOX_DIR": str(TMP / "rev-in"),
+        "MODEL": "wan22-14b-fp8",
+        "PYTHONPATH": str(ROOT / "app"),
+        "LORAS": "",
+    }
+    proc = await asyncio.create_subprocess_exec(
+        sys.executable, "-m", "uvicorn", "server:app", "--host", "127.0.0.1", "--port", "18424",
+        cwd=str(ROOT / "app"), env=env,
+        stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT,
+    )
+    base = "http://127.0.0.1:18424"
+    try:
+        async with aiohttp.ClientSession() as s:
+            for _ in range(160):
+                try:
+                    async with s.get(f"{base}/api/health", timeout=5) as r:
+                        if r.status == 200:
+                            break
+                except Exception:  # noqa: BLE001
+                    await asyncio.sleep(0.25)
+            else:
+                out = await proc.stdout.read(4000)
+                raise AssertionError(f"server never started:\n{out.decode(errors='replace')}")
+
+            async with s.get(f"{base}/api/image/models") as r:
+                cat = await r.json()
+            by_id = {m["id"]: m for m in cat["models"]}
+
+            # A user-installed checkpoint must be selectable, not just listed.
+            custom_id = "custom:myMerge_v3.safetensors"
+            check(custom_id in by_id, f"self-installed checkpoint is a selectable model ({list(by_id)[-1]})")
+            check(by_id[custom_id]["installed"], "…and reports installed")
+            check(by_id[custom_id]["custom"], "…flagged as custom so the UI can warn")
+            check(not by_id[custom_id]["positive_prefix"],
+                  "…and gets no borrowed prompt prefix")
+
+            # It must also be removable.
+            async with s.delete(f"{base}/api/checkpoints/myMerge_v3.safetensors") as r:
+                check(r.status == 200, f"custom checkpoint deletable ({r.status})")
+            check(not (models_dir / "checkpoints" / "myMerge_v3.safetensors").exists(),
+                  "…file actually gone")
+            async with s.delete(f"{base}/api/checkpoints/..%2F..%2Fetc%2Fpasswd") as r:
+                check(r.status in (400, 404), f"checkpoint delete blocks traversal ({r.status})")
+            async with s.delete(f"{base}/api/checkpoints/Illustrious-XL-v0.1.safetensors") as r:
+                check(r.status == 400, "catalogue checkpoints are not deleted this way")
+
+            # An empty negative prompt is a choice, not an omission.
+            async with s.post(f"{base}/api/image/generate", json={
+                "model": "illustrious", "prompt": "a cat", "negative": "", "batch": 2,
+            }) as r:
+                job = await r.json()
+                check(r.status == 200, f"image job accepted ({r.status})")
+            check(job["negative"] == "", f"empty negative survives ({job['negative'][:20]!r})")
+
+            # The auto prefix must be applied once, and the raw prompt kept.
+            check(job["prompt"].startswith("masterpiece"), "prefix applied")
+            check(job["prompt_raw"] == "a cat", f"raw prompt stored ({job['prompt_raw']})")
+
+            for _ in range(300):
+                async with s.get(f"{base}/api/jobs/{job['id']}") as r:
+                    job = await r.json()
+                if job["status"] in ("done", "error"):
+                    break
+                await asyncio.sleep(0.1)
+            check(job["status"] == "done", f"image job ran ({job['status']}: {job['message'][:70]})")
+            check(job["kind"] == "image", "recorded as an image job")
+            check(job["model_label"].startswith("Illustrious"),
+                  f"image jobs show the friendly label, not the id ({job['model_label']})")
+
+            # Re-running must not prepend the prefix a second time.
+            async with s.post(f"{base}/api/image/generate", json={
+                "model": "illustrious", "prompt": job["prompt"], "negative": "n",
+            }) as r:
+                again = await r.json()
+            check(again["prompt"].count("masterpiece") == 1,
+                  f"prefix not doubled on re-run ({again['prompt'][:60]})")
+
+            # Server-side kind filtering, so one kind cannot hide the other.
+            async with s.get(f"{base}/api/jobs?kind=image") as r:
+                only = (await r.json())["jobs"]
+            check(only and all(j["kind"] == "image" for j in only), "kind=image filters server-side")
+            async with s.get(f"{base}/api/jobs?kind=video") as r:
+                vids = (await r.json())["jobs"]
+            check(all(j["kind"] == "video" for j in vids), "kind=video filters server-side")
+
+            # Stats split videos from images.
+            async with s.get(f"{base}/api/library/stats") as r:
+                st = await r.json()
+            check("videos" in st and "images" in st, "stats break down by kind")
+            check(st["images"] >= 1, f"the image job is counted as an image ({st['images']})")
+
+            # A seed of -1 must mean random, not literal 0.
+            async with s.post(f"{base}/api/image/generate", json={
+                "model": "illustrious", "prompt": "x", "seed": -1,
+            }) as r:
+                rnd = await r.json()
+            check(rnd["seed"] > 0, f"seed -1 becomes a random seed ({rnd['seed']})")
+    finally:
+        proc.terminate()
+        await proc.wait()
+        await comfy_runner.cleanup()
+
+
+async def test_object_info_cache_invalidation() -> None:
+    """Downloading a model must not leave validate() blind to it."""
+    import registry
+    import workflow
+    from comfy_client import ComfyClient
+
+    section("schema cache invalidation")
+    fake = FakeComfy(installed={"hy15-480p"})
+    runner, url = await start(fake.app())
+    try:
+        client = ComfyClient(url)
+        wan = registry.get("wan22-14b-fp8")
+        params = registry.GenParams.defaults_for(wan)
+        graph = workflow.build(wan, params, image_name="i.png", prompt="p", seed=1,
+                               width=832, height=480,
+                               available_nodes=await client.node_classes())
+        check(bool(await client.validate(graph)), "before install: rejected, as expected")
+
+        # The model arrives; ComfyUI now offers it.
+        fake.installed = None
+        check(bool(await client.validate(graph)),
+              "stale cache still rejects it (this was the bug)")
+        client.invalidate()
+        check(await client.validate(graph) == [],
+              "after invalidate() the freshly installed model validates")
+    finally:
+        await runner.cleanup()
+
+
+def test_webp_classification() -> None:
+    """SaveAnimatedWEBP is the video fallback, so .webp is not always an image."""
+    import library
+
+    section("webp classification")
+    root = TMP / "webp"
+    root.mkdir(parents=True, exist_ok=True)
+    (root / ".thumbs").mkdir(exist_ok=True)
+    lib = library.Library(root)
+    for kind, name in (("video", "v.webp"), ("image", "i.webp"), ("image", "p.png")):
+        (root / name).write_bytes(b"x" * 16)
+        lib.add(library.Record(id=name, model_id="m", prompt="p", kind=kind,
+                               outputs=[name], status="done"))
+    st = lib.stats()
+    check(st["videos"] == 1, f"a .webp video counts as a video ({st['videos']})")
+    check(st["images"] == 2, f"…and .webp/.png images as images ({st['images']})")
+
+    # An orphan has no record, so the extension is all there is to go on.
+    (root / "stray.webp").write_bytes(b"x" * 4)
+    st = lib.stats()
+    check(st["count"] == 4, "orphan still counted in the total")
+
+
 def test_windows_script_encoding() -> None:
     """Windows PowerShell 5.1 is unforgiving about how these files are stored.
 
@@ -1240,6 +1423,13 @@ async def test_watcher() -> None:
 
 async def main() -> int:
     live = "--live" in sys.argv
+    # Previous runs leave models, outputs and history behind; without this the
+    # suite passes or fails depending on what ran before it.
+    if TMP.exists():
+        import shutil
+
+        shutil.rmtree(TMP)
+    TMP.mkdir(parents=True, exist_ok=True)
     test_registry()
     test_dimensions()
     await test_graphs()
@@ -1256,6 +1446,9 @@ async def main() -> int:
     test_vram_advice()
     await test_civitai()
     await test_lora_download()
+    await test_review_regressions()
+    await test_object_info_cache_invalidation()
+    test_webp_classification()
     test_windows_script_encoding()
     await test_watcher()
     if live:

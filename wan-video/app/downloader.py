@@ -121,6 +121,8 @@ class Manager:
         self._cancel = False
         self._worker: asyncio.Task | None = None
         self._sidecars: dict[str, dict] = {}
+        # Called whenever models/ changed, so cached ComfyUI schemas get dropped.
+        self.on_change: "callable | None" = None
 
     # -- installed state ----------------------------------------------------
 
@@ -239,6 +241,8 @@ class Manager:
         if not path.is_file():
             return False
         path.unlink()
+        if self.on_change:
+            self.on_change()
         for suffix in (".civitai.json", ".json"):
             meta = path.with_name(path.name + suffix)
             if meta.is_file():
@@ -276,6 +280,8 @@ class Manager:
                             break
                         await self._fetch(session, state)
                 download.status = "cancelled" if self._cancel else "done"
+                if self.on_change:
+                    self.on_change()
             except asyncio.CancelledError:
                 download.status = "cancelled"
                 raise

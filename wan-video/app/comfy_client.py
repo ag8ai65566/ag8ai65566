@@ -66,6 +66,16 @@ class ComfyClient:
                     self._object_info = await r.json()
         return self._object_info
 
+    def invalidate(self) -> None:
+        """Drop the cached schema.
+
+        /object_info embeds the *current* contents of every model folder. Once
+        cached, a model downloaded afterwards is invisible to validate(), which
+        then rejects a graph for a model that is sitting right there on disk.
+        Anything that changes models/ must call this.
+        """
+        self._object_info = None
+
     async def node_classes(self) -> set[str]:
         return set((await self.object_info()).keys())
 

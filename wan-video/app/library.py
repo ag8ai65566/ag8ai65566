@@ -14,8 +14,12 @@ from pathlib import Path
 
 MAX_HISTORY = 2000
 VIDEO_SUFFIXES = {".mp4", ".webm", ".gif"}
-IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp"}
-MEDIA_SUFFIXES = VIDEO_SUFFIXES | IMAGE_SUFFIXES
+IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg"}
+# .webp is genuinely ambiguous: SaveAnimatedWEBP is the video fallback on
+# ComfyUI installs without CreateVideo/VHS, and it is also a still format. The
+# record's own `kind` decides; extension is only the fallback for orphans.
+AMBIGUOUS_SUFFIXES = {".webp"}
+MEDIA_SUFFIXES = VIDEO_SUFFIXES | IMAGE_SUFFIXES | AMBIGUOUS_SUFFIXES
 
 
 @dataclass
@@ -31,6 +35,8 @@ class Record:
     fps: int = 0
     settings: dict = field(default_factory=dict)
     negative: str = ""
+    negative_custom: bool = False
+    prompt_raw: str = ""
     source_name: str = ""
     tier: str = ""
     length: int = 0
@@ -170,6 +176,9 @@ class Library:
     # -- disk ----------------------------------------------------------------
 
     def stats(self) -> dict:
+        # Which record produced each file, so kind is authoritative and only
+        # unowned files fall back to guessing from the extension.
+        owner = {o: r.kind for r in self.records.values() for o in r.outputs}
         files = 0
         total = 0
         videos = images = 0
@@ -179,11 +188,14 @@ class Library:
                     continue
                 files += 1
                 total += path.stat().st_size
-                if path.suffix.lower() in VIDEO_SUFFIXES:
+                kind = owner.get(path.name)
+                if kind is None:
+                    kind = "video" if path.suffix.lower() in VIDEO_SUFFIXES else "image"
+                if kind == "video":
                     videos += 1
                 else:
                     images += 1
-        known = {o for r in self.records.values() for o in r.outputs}
+        known = set(owner)
         on_disk_known = sum(1 for o in known if (self.dir / o).is_file())
         return {
             "dir": str(self.dir),

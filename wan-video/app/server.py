@@ -43,15 +43,27 @@ queue: asyncio.Queue[tuple[str, bytes]] = asyncio.Queue()
 running: set[str] = set()
 
 
-def public(record: library.Record) -> dict:
+def model_label(record: library.Record) -> str:
+    """Records span two catalogues; look in the right one."""
+    if record.kind == "image":
+        model = images.resolve(record.model_id)
+        return model.label if model else record.model_id
     model = registry.get(record.model_id)
+    return model.label if model else record.model_id
+
+
+def public(record: library.Record) -> dict:
     progress = getattr(record, "_progress", 0.0)
     return {
         "id": record.id,
         "model": record.model_id,
-        "model_label": model.label if model else record.model_id,
+        "model_label": model_label(record),
         "prompt": record.prompt,
+        # The prompt as typed, before any auto prefix - so "run again" does not
+        # prepend Pony's score tags a second time.
+        "prompt_raw": record.prompt_raw or record.prompt,
         "negative": record.negative,
+        "negative_custom": record.negative_custom,
         "source": record.source_name,
         "status": record.status,
         "progress": round(progress, 3),
@@ -80,6 +92,9 @@ async def startup() -> None:
     for d in (config.OUTPUT_DIR, lib.thumbs, config.INBOX_DIR):
         d.mkdir(parents=True, exist_ok=True)
     lib.load()
+    # A finished download changes what ComfyUI can offer, and its /object_info
+    # is cached; drop that cache or the new model looks uninstalled.
+    models.on_change = client.invalidate
     models.start()
     app.state.worker = asyncio.create_task(worker())
 
@@ -156,7 +171,8 @@ async def run_job(record: library.Record, image_bytes: bytes) -> None:
         params,
         image_name=uploaded,
         prompt=record.prompt,
-        negative=record.negative or None,
+        # "" is a deliberate "no negative prompt"; only an unset one falls back.
+        negative=record.negative if record.negative_custom else None,
         seed=record.seed,
         width=record.width,
         height=record.height,
@@ -287,6 +303,7 @@ def submit(
     *,
     prompt: str,
     negative: str,
+    negative_custom: bool = False,
     source: str,
     model: registry.ModelDef,
     tier: str,
@@ -300,6 +317,7 @@ def submit(
         model_id=model.id,
         prompt=prompt.strip(),
         negative=negative.strip(),
+        negative_custom=negative_custom,
         source_name=source,
         tier=tier,
         length=workflow.normalize_length(length),
@@ -323,6 +341,7 @@ async def generate(
     seconds: float = Form(0.0),
     seed: int = Form(-1),
     lightning: str = Form(""),
+    negative_custom: str = Form(""),
     loras: str = Form(""),
 ) -> JSONResponse:
     data = await image.read()
@@ -356,10 +375,13 @@ async def generate(
         data,
         prompt=prompt or config.PROMPT_DEFAULT,
         negative=negative,
+        negative_custom=negative_custom.lower() in ("1", "true", "on", "yes"),
         source=image.filename or "upload",
         model=chosen,
         tier=tier if tier in chosen.tiers else config.default_tier(chosen),
-        length=(workflow.frames_for_seconds(seconds, chosen.fps) if seconds > 0
+        # defaults.fps honours an FPS override in .env; chosen.fps would not,
+        # and then the produced clip would not be the duration that was picked.
+        length=(workflow.frames_for_seconds(seconds, defaults.fps) if seconds > 0
                 else (length or defaults.length)),
         seed=seed if seed >= 0 else random.randint(0, 2**31 - 1),
         lightning=use_lightning,
@@ -627,6 +649,11 @@ async def civitai_status() -> JSONResponse:
 
 
 def image_status(model: images.ImageModel) -> dict:
+    if model.id.startswith(images.CUSTOM_PREFIX):
+        # Size is unknown for a user-installed file; presence is all we can check.
+        here = (config.MODELS_DIR / "checkpoints" / model.file.name).is_file()
+        return {"installed": here, "partial": False, "bytes_on_disk": 0,
+                "missing": [] if here else [model.file.name]}
     states = [models.file_status(f) for f in model.all_files]
     on_disk = sum(n for _, n in states)
     missing = [f.name for f, (st, _) in zip(model.all_files, states) if st != "ok"]
@@ -638,8 +665,13 @@ def image_status(model: images.ImageModel) -> dict:
     }
 
 
+def installed_checkpoints() -> list[str]:
+    folder = config.MODELS_DIR / "checkpoints"
+    return sorted(p.name for p in folder.glob("*.safetensors")) if folder.is_dir() else []
+
+
 async def run_image_job(record: library.Record) -> None:
-    model = images.get(record.model_id)
+    model = images.resolve(record.model_id, installed_checkpoints())
     if model is None:
         raise ComfyError(f"不認識的圖片模型：{record.model_id}")
     state = image_status(model)
@@ -710,15 +742,18 @@ async def image_models() -> JSONResponse:
                     .get("required", {}).get("sampler_name", [[]])[0])
         schedulers = (info.get("KSampler", {}).get("input", {})
                       .get("required", {}).get("scheduler", [[]])[0])
-        extra = sorted(
-            f.name for f in (config.MODELS_DIR / "checkpoints").glob("*.safetensors")
-        ) if (config.MODELS_DIR / "checkpoints").is_dir() else []
     except Exception:  # noqa: BLE001
-        samplers, schedulers, extra = [], [], []
+        samplers, schedulers = [], []
 
     known = {m.file.name for m in images.IMAGE_MODELS}
+    # Checkpoints the user installed themselves are first-class entries, not a
+    # list they can look at but never select.
+    catalogue = list(images.IMAGE_MODELS) + [
+        images.custom_model(name) for name in installed_checkpoints() if name not in known
+    ]
+
     out = []
-    for model in images.IMAGE_MODELS:
+    for model in catalogue:
         state = image_status(model)
         out.append(
             {
@@ -740,6 +775,7 @@ async def image_models() -> JSONResponse:
                 "nsfw_note": model.nsfw_note,
                 "note": model.note,
                 "civitai_bases": list(images.CIVITAI_BASES.get(model.id, ())),
+                "custom": model.id.startswith(images.CUSTOM_PREFIX),
                 **state,
             }
         )
@@ -750,10 +786,26 @@ async def image_models() -> JSONResponse:
             "samplers": samplers,
             "schedulers": schedulers,
             "loose_bases": list(images.CIVITAI_BASES_LOOSE),
-            "other_checkpoints": [n for n in extra if n not in known],
             "gpu": gpu,
         }
     )
+
+
+@app.delete("/api/checkpoints/{name}")
+async def delete_checkpoint(name: str) -> JSONResponse:
+    folder = (config.MODELS_DIR / "checkpoints").resolve()
+    path = (folder / name).resolve()
+    if folder != path.parent or not path.name:
+        raise HTTPException(400, f"不合法的檔名：{name}")
+    if name in {m.file.name for m in images.IMAGE_MODELS}:
+        raise HTTPException(
+            400, "這是目錄裡的內建底模，請到「模型」分頁處理，避免和下載狀態不同步"
+        )
+    if not path.is_file():
+        raise HTTPException(404, f"找不到 {name}")
+    path.unlink()
+    client.invalidate()
+    return JSONResponse({"deleted": name})
 
 
 @app.post("/api/image/models/{model_id}/download")
@@ -761,6 +813,8 @@ async def download_image_model(model_id: str) -> JSONResponse:
     model = images.get(model_id)
     if model is None:
         raise HTTPException(404, f"不認識的圖片模型：{model_id}")
+    if not model.file.repo:
+        raise HTTPException(400, "自己裝的底模沒有下載來源")
     remote = [
         downloader.RemoteFile(
             url=downloader.url_for(f), folder=f.folder, name=f.name, size=f.size
@@ -776,7 +830,7 @@ async def download_image_model(model_id: str) -> JSONResponse:
 
 @app.post("/api/image/generate")
 async def image_generate(payload: dict = Body(...)) -> JSONResponse:
-    model = images.get(str(payload.get("model", "")))
+    model = images.resolve(str(payload.get("model", "")), installed_checkpoints())
     if model is None:
         raise HTTPException(400, f"不認識的圖片模型：{payload.get('model')}")
     state = image_status(model)
@@ -787,11 +841,15 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
             "請到「模型」分頁下載，或改選已安裝的。",
         )
 
-    prompt = str(payload.get("prompt", "")).strip()
-    if not prompt:
+    raw_prompt = str(payload.get("prompt", "")).strip()
+    if not raw_prompt:
         raise HTTPException(400, "提詞是空的 —— 圖片生成沒有輸入圖，全靠提詞")
-    if payload.get("use_prefix", True) and model.positive_prefix:
-        prompt = f"{model.positive_prefix}, {prompt}"
+    prompt = raw_prompt
+    # Never prepend twice: a re-run sends back a prompt that may already carry
+    # the prefix.
+    if (payload.get("use_prefix", True) and model.positive_prefix
+            and not raw_prompt.startswith(model.positive_prefix)):
+        prompt = f"{model.positive_prefix}, {raw_prompt}"
 
     size_name = str(payload.get("size") or model.default_size)
     width, height = model.sizes.get(size_name, (1024, 1024))
@@ -810,7 +868,11 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         model_id=model.id,
         kind="image",
         prompt=prompt,
-        negative=str(payload.get("negative") or model.negative),
+        prompt_raw=raw_prompt,
+        # Key presence, not truthiness: an empty string is a deliberate
+        # "run with no negative prompt".
+        negative=str(payload["negative"]) if "negative" in payload else model.negative,
+        negative_custom=True,
         seed=seed if seed >= 0 else random.randint(0, 2**31 - 1),
         width=width,
         height=height,

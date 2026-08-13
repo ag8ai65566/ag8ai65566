@@ -155,6 +155,43 @@ def get(model_id: str) -> ImageModel | None:
     return BY_ID.get(model_id)
 
 
+CUSTOM_PREFIX = "custom:"
+
+
+def custom_model(filename: str) -> ImageModel:
+    """Wrap a checkpoint the user installed themselves (e.g. from CivitAI).
+
+    We know nothing about it beyond the filename, so it gets neutral SDXL
+    defaults and says so, rather than silently applying Pony's score tags or
+    Illustrious's CLIP skip to a checkpoint that wants neither.
+    """
+    return ImageModel(
+        id=CUSTOM_PREFIX + filename,
+        label=f"（自己裝的）{filename}",
+        file=ModelFile("", filename, "checkpoints", 0),
+        steps=28, cfg=6.0, sampler="dpmpp_2m", scheduler="karras", clip_skip=-1,
+        negative=ANIME_NEG,
+        prompt_style=(
+            "這是你自己裝的底模，我不知道它的習慣。"
+            "動漫系通常要 danbooru 標籤 + CLIP skip -2；寫實系用自然句子 + CLIP skip -1。"
+            "去它的 CivitAI 頁面看作者建議的參數。"
+        ),
+        sizes=SDXL_SIZES,
+        note="用中性的 SDXL 預設值。參數請照該模型作者的建議自己調。",
+        extra_files=(),
+    )
+
+
+def resolve(model_id: str, installed: list[str] | None = None) -> ImageModel | None:
+    """A catalogue model, or a user-installed checkpoint by filename."""
+    if model_id.startswith(CUSTOM_PREFIX):
+        name = model_id[len(CUSTOM_PREFIX):]
+        if installed is not None and name not in installed:
+            return None
+        return custom_model(name)
+    return BY_ID.get(model_id)
+
+
 # CivitAI baseModel strings that match SDXL-architecture checkpoints, so the
 # LoRA browser can filter to things that will actually load.
 CIVITAI_BASES = {
