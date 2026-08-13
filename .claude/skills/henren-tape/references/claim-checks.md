@@ -81,6 +81,34 @@ lesson is kept here rather than quietly edited away.
 | 垃圾股一個月暴漲27倍 | The transcript identifies GameStop; the exact 27x depends on the window and intraday prints used |
 | 「一個月前就講了」的原始時間戳 | Would need the earlier video's publish record. The 7/29 low landing inside a stated late-July/early-August window is consistent with the claim, but this log cannot independently date the original |
 
+## 2026-08-13 · 媒體說法與框架前提的檢查
+
+這一段檢的不是他，是**本週媒體的說法**，以及**他的規則所依賴的一個前提**。
+
+| 說法 | 這裡的資料 | 結果 |
+| --- | --- | --- |
+| 「AI 交易回歸」（多家財經媒體，8/12） | 指數成立：標普 7748.5，距 8/7 高點 7757.64 僅 −0.12%。但籃子內部近一個月 MSFT **+27.9%** 對 SNDK **−23.5%**，差 51 個百分點 | ⚠️ **對指數成立，對籃子不成立**。「AI 行情」已經不是一個籃子在動 |
+| 四大 2026 全年 capex 約 $725B，年增 77% | SEC 申報 H1 實際合計 **$294.8B**（Q1 $129.75B ＋ Q2 $165.05B）。要達標，H2 需再 $430B，即環比再加速約 46% | ⚪ **未證實但不矛盾**，需 Q3 資料 |
+| 標普創新高 | 52 週高點 7757.64（2026-08-07），與快照一致 | ✅ |
+
+### 一個前提上的問題（本系統的觀察，不是他的話）
+
+他的逃生鈴規則是：**capex 環比增速見頂回落 → 立刻平倉**。這條規則預設
+「capex 增速是需求的代理，增速還在上升就代表需求還在」。
+
+本季市場的反應與這個預設相反：Alphabet 上調 2026 資本支出後股價下跌約 7%，
+Amazon、Meta、Microsoft 同步走弱。**市場把 capex 上升讀成投資報酬率的問題，
+不是需求的證據。**
+
+如果這個轉變持續，「等環比見頂回落再出場」會是一個**結構性遲到**的訊號——
+價格先反映 ROI 疑慮，資料要再過一季才確認增速轉折。實際數字支持這個張力：
+2026-Q2 環比 **+27.21%**、年增 **+87.03%**，兩者都是序列最高，
+**逃生鈴按他的原話沒有響**，而 MU −24.9%、SNDK −42.4%、META −26.3%（距兩年高點）
+已經跌完了。
+
+這**不構成「他錯了」**。它是一個具名、可被推翻的觀察：
+若下一季有雲廠商上調 capex 而股價正面反應，這個觀察就被推翻。
+
 ## How to read this scorecard
 
 Every checkable claim in the sample lands, several to the decimal, and the live liquidity

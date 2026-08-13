@@ -273,7 +273,11 @@ const changesSection = !chg ? '' : `
       <td>${esc(m.label)}</td>
       <td class="r num">${esc(m.from)}</td>
       <td class="r num">${esc(m.to)}</td>
-      <td class="r num ${m.delta > 0 ? 'up' : 'down'}">${m.delta > 0 ? '+' : ''}${esc(m.delta)}</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">${m.delta > 0 ? '+' : ''}${esc(m.delta)}</td>
       <td class="num">${esc(m.effective_from)} → ${esc(m.effective_to)}</td>
       <td class="${m.source_updated ? 'up' : 'reread'}">${m.source_updated ? '是，新發布' : '否，同一天重讀'}</td>
       </tr>`).join('')}</tbody>
@@ -600,7 +604,7 @@ border:1px solid var(--rule);border-radius:4px;overflow:hidden}
 .chtab th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--panel-2)}
 .chtab .r{text-align:right}
 .chtab tr:last-child td{border-bottom:none}
-.chtab .up{color:var(--ok)}.chtab .down{color:var(--bad)}.chtab .reread{color:var(--ink-3)}
+.chtab .delta{color:var(--ink);font-weight:600}.chtab .up{color:var(--ok)}.chtab .reread{color:var(--ink-3)}
 
 /* Tests by category. The empty fifth box is the message, so it is styled to be read. */
 .tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin-bottom:12px}

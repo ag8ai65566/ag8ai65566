@@ -5,11 +5,12 @@
   "type": "module",
   "description": "Henren framework gauges + Serenity gate, over a canonical calculation engine. Research tooling only: no buy/sell signals, no price targets, no position sizing, no composite score.",
   "scripts": {
+    "snapshot": "node .claude/skills/us-market-brief/scripts/market-snapshot.mjs --add SNDK --json > data/snapshot.json",
     "gauges": "node .claude/skills/henren-tape/scripts/gauges.mjs --json > data/gauges.json",
     "holdings": "node .claude/skills/us-market-brief/scripts/holdings.mjs --json > data/holdings.json",
     "tests": "node scripts/test-report.mjs",
     "render": "node .claude/skills/us-market-brief/scripts/render-dashboard.mjs data/gauges.json data/snapshot.json data/holdings.json data/test-report.json > reports/us-market-dashboard.html",
-    "build": "npm run gauges && npm run holdings && npm run render && npm run tests && npm run render && npm test",
+    "build": "npm run snapshot && npm run gauges && npm run holdings && npm run render && npm run tests && npm run render && npm test",
     "test": "node --test test/*.test.mjs"
   },
   "_build_note": "The dashboard drifted three versions behind the engine because regeneration was a sequence of remembered commands rather than one target. `npm run build` is that target.",
