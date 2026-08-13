@@ -51,18 +51,32 @@ if ($vramGB -lt 8) {
 }
 Ok "先裝的模型：$Model（之後可以在網頁上加裝其他的）"
 
-$py = Get-Command python -ErrorAction SilentlyContinue
-if (-not $py) {
-  Die @'
-找不到 Python。請到 https://www.python.org/downloads/ 下載 3.12 版，
-安裝時務必勾選最下面的「Add python.exe to PATH」，裝完把這個視窗關掉重開再執行一次。
+$pyHelp = @'
+請到 https://www.python.org/downloads/ 下載 3.12 版，
+安裝時務必勾選最下面的「Add python.exe to PATH」，
+裝完把這個視窗關掉重新開一個，再執行一次這個腳本。
 '@
+
+$py = Get-Command python -ErrorAction SilentlyContinue
+if (-not $py) { Die "找不到 Python。`n$pyHelp" }
+
+# Windows ships a 0-byte python.exe stub under WindowsApps that just opens the
+# Microsoft Store. Get-Command finds it, so check for it explicitly rather than
+# letting the version probe fail with something unreadable.
+if ($py.Source -like '*\WindowsApps\*') {
+  Die "找到的 python 是 Windows 商店的空殼（$($py.Source)），不是真的 Python。`n$pyHelp"
 }
-$pyVer = (& python -c "import sys;print('%d.%d' % sys.version_info[:2])").Trim()
+
+$pyVer = $null
+try { $pyVer = (& python -c "import sys;print('%d.%d' % sys.version_info[:2])" 2>$null | Select-Object -First 1) } catch { }
+if (-not $pyVer -or $pyVer -notmatch '^\d+\.\d+$') {
+  Die "python 有找到（$($py.Source)）但問不出版本，可能裝壞了。`n$pyHelp"
+}
+$pyVer = $pyVer.Trim()
 if ([version]$pyVer -lt [version]'3.10' -or [version]$pyVer -ge [version]'3.14') {
-  Die "Python 版本是 $pyVer，需要 3.10 ~ 3.13。請安裝 3.12。"
+  Die "Python 版本是 $pyVer，需要 3.10 ~ 3.13。建議裝 3.12。`n$pyHelp"
 }
-Ok "Python $pyVer"
+Ok "Python $pyVer（$($py.Source)）"
 
 if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
   Die @'

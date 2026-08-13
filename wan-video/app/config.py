@@ -11,11 +11,27 @@ from pathlib import Path
 
 import registry
 
+REPO = Path(__file__).resolve().parents[1]
+
+
+def _dir(env_name: str, *candidates: Path) -> Path:
+    """Env var wins; otherwise the first candidate that exists, else the first.
+
+    The Docker images set these explicitly. A bare-metal install (or someone
+    running check.py by hand) gets the paths next to the repo instead of the
+    container's /models and /data, which would not exist there.
+    """
+    raw = os.environ.get(env_name)
+    if raw:
+        return Path(raw)
+    return next((p for p in candidates if p.exists()), candidates[0])
+
+
 COMFY_URL = os.environ.get("COMFY_URL", "http://127.0.0.1:8188")
-MODELS_DIR = Path(os.environ.get("MODELS_DIR", "/models"))
-OUTPUT_DIR = Path(os.environ.get("OUTPUT_DIR", "/data/outputs"))
-INBOX_DIR = Path(os.environ.get("INBOX_DIR", "/data/inbox"))
-DONE_DIR = Path(os.environ.get("DONE_DIR", "/data/inbox/done"))
+MODELS_DIR = _dir("MODELS_DIR", REPO / "ComfyUI" / "models", REPO / "models", Path("/models"))
+OUTPUT_DIR = _dir("OUTPUT_DIR", REPO / "data" / "outputs", Path("/data/outputs"))
+INBOX_DIR = _dir("INBOX_DIR", REPO / "data" / "inbox", Path("/data/inbox"))
+DONE_DIR = _dir("DONE_DIR", INBOX_DIR / "done")
 APP_URL = os.environ.get("APP_URL", "http://127.0.0.1:8000")
 
 DEFAULT_MODEL = os.environ.get("MODEL", "wan22-14b-fp8")

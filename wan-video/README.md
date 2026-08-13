@@ -66,6 +66,9 @@ latent、還有一個改寫提詞的 LLM 節點。我可以下載它全部的檔
 
 ### Windows（推薦你走這條）
 
+> **沒用過命令列的話,看這份逐步教學**:[docs/windows-tutorial.md](docs/windows-tutorial.md)
+> —— 從「怎麼確認自己的顯卡行不行」開始寫,命令列只有兩行。
+
 1. 先裝 **Python 3.12**（<https://www.python.org/downloads/>，安裝時**務必勾
    「Add python.exe to PATH」**）和 **Git**（<https://git-scm.com/download/win>，一路 Next）。
 2. 下載這個資料夾，在裡面按右鍵 →「在終端中開啟」。
