@@ -17,7 +17,9 @@ import requests
 
 IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp", ".bmp"}
 POLL_SECONDS = float(os.environ.get("WATCH_INTERVAL", "3"))
-PROMPT_DEFAULT = os.environ.get("PROMPT_DEFAULT", "subtle natural motion, cinematic")
+PROMPT_DEFAULT = config.PROMPT_DEFAULT
+# Which model drop-folder jobs use; falls back to the app's default.
+WATCH_MODEL = os.environ.get("WATCH_MODEL", "")
 
 
 def stable(path: Path, checks: int = 2) -> bool:
@@ -55,7 +57,7 @@ def submit(path: Path) -> None:
         response = requests.post(
             f"{config.APP_URL}/api/generate",
             files={"image": (path.name, fh, "application/octet-stream")},
-            data={"prompt": prompt},
+            data={"prompt": prompt, "model": WATCH_MODEL},
             timeout=120,
         )
     if response.status_code != 200:
@@ -63,6 +65,7 @@ def submit(path: Path) -> None:
         return
 
     job = response.json()
+    print(f"[watch]   -> {job['id']} ({job['model_label']})", flush=True)
     done = config.DONE_DIR
     done.mkdir(parents=True, exist_ok=True)
     path.rename(done / f"{job['id']}-{path.name}")

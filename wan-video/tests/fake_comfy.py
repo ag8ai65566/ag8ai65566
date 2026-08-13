@@ -1,7 +1,12 @@
 """A stand-in ComfyUI server for testing without a GPU.
 
-Mirrors the real /object_info schema shape closely enough that the validator in
-comfy_client exercises the same code paths it will hit against real ComfyUI.
+The node schemas in schema_core.json were dumped from a real ComfyUI 0.32.0
+/object_info, so the validator here exercises exactly the shapes the real
+server enforces. Only the file-listing combos are substituted, since those
+depend on what is on disk.
+
+Regenerate the fixture against a running ComfyUI with:
+    python3 tests/dump_schema.py http://127.0.0.1:8188
 """
 
 from __future__ import annotations
@@ -9,170 +14,78 @@ from __future__ import annotations
 import asyncio
 import json
 import sys
+from pathlib import Path
 
 from aiohttp import WSMsgType, web
 
-MODELS = {
-    "diffusion": [
-        "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
-        "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
-    ],
-    "gguf": [
-        "Wan2.2-I2V-A14B-HighNoise-Q4_K_M.gguf",
-        "Wan2.2-I2V-A14B-LowNoise-Q4_K_M.gguf",
-    ],
-    "clip": ["umt5_xxl_fp8_e4m3fn_scaled.safetensors"],
-    "vae": ["wan_2.1_vae.safetensors"],
-    "loras": [
-        "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
-        "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors",
-        "my_style.safetensors",
-    ],
-    "images": ["example.png"],
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "app"))
+import registry  # noqa: E402
+
+SCHEMA = json.loads((Path(__file__).parent / "schema_core.json").read_text())
+
+# (node class, input name) -> which models/<folder> the combo lists
+FILE_INPUTS = {
+    ("UNETLoader", "unet_name"): ("diffusion_models", "unet"),
+    ("UnetLoaderGGUF", "unet_name"): ("unet",),
+    ("CLIPLoader", "clip_name"): ("text_encoders",),
+    ("DualCLIPLoader", "clip_name1"): ("text_encoders",),
+    ("DualCLIPLoader", "clip_name2"): ("text_encoders",),
+    ("CLIPVisionLoader", "clip_name"): ("clip_vision",),
+    ("VAELoader", "vae_name"): ("vae",),
+    ("LoraLoaderModelOnly", "lora_name"): ("loras",),
+    ("LoraLoader", "lora_name"): ("loras",),
+    ("LoadImage", "image"): ("__images__",),
 }
 
-SAMPLERS = ["euler", "euler_ancestral", "dpmpp_2m", "ddim", "uni_pc"]
-SCHEDULERS = ["normal", "karras", "exponential", "simple", "beta"]
-
-FLOAT = ["FLOAT", {"default": 1.0}]
-INT = ["INT", {"default": 1}]
-BOOL = ["BOOLEAN", {"default": True}]
+EXTRA_LORAS = ["spicy_style.safetensors", "my_style.safetensors"]
 
 
-def object_info(video_nodes: set[str]) -> dict:
-    info = {
-        "UNETLoader": {
-            "input": {
-                "required": {
-                    "unet_name": [MODELS["diffusion"]],
-                    "weight_dtype": [["default", "fp8_e4m3fn", "fp8_e4m3fn_fast", "fp8_e5m2"]],
-                }
-            },
-            "output": ["MODEL"],
-        },
-        "UnetLoaderGGUF": {
-            "input": {"required": {"unet_name": [MODELS["gguf"]]}},
-            "output": ["MODEL"],
-        },
-        "CLIPLoader": {
-            "input": {
-                "required": {
-                    "clip_name": [MODELS["clip"]],
-                    "type": [["stable_diffusion", "sdxl", "flux", "wan", "hunyuan_video"]],
-                },
-                "optional": {"device": [["default", "cpu"]]},
-            },
-            "output": ["CLIP"],
-        },
-        "VAELoader": {
-            "input": {"required": {"vae_name": [MODELS["vae"]]}},
-            "output": ["VAE"],
-        },
-        "LoraLoaderModelOnly": {
-            "input": {
-                "required": {
-                    "model": ["MODEL"],
-                    "lora_name": [MODELS["loras"]],
-                    "strength_model": FLOAT,
-                }
-            },
-            "output": ["MODEL"],
-        },
-        "ModelSamplingSD3": {
-            "input": {"required": {"model": ["MODEL"], "shift": FLOAT}},
-            "output": ["MODEL"],
-        },
-        "CLIPTextEncode": {
-            "input": {"required": {"text": ["STRING", {"multiline": True}], "clip": ["CLIP"]}},
-            "output": ["CONDITIONING"],
-        },
-        "LoadImage": {
-            "input": {"required": {"image": [MODELS["images"], {"image_upload": True}]}},
-            "output": ["IMAGE", "MASK"],
-        },
-        "WanImageToVideo": {
-            "input": {
-                "required": {
-                    "positive": ["CONDITIONING"],
-                    "negative": ["CONDITIONING"],
-                    "vae": ["VAE"],
-                    "width": INT,
-                    "height": INT,
-                    "length": INT,
-                    "batch_size": INT,
-                },
-                "optional": {"clip_vision_output": ["CLIP_VISION_OUTPUT"], "start_image": ["IMAGE"]},
-            },
-            "output": ["CONDITIONING", "CONDITIONING", "LATENT"],
-        },
-        "KSamplerAdvanced": {
-            "input": {
-                "required": {
-                    "model": ["MODEL"],
-                    "add_noise": [["enable", "disable"]],
-                    "noise_seed": INT,
-                    "steps": INT,
-                    "cfg": FLOAT,
-                    "sampler_name": [SAMPLERS],
-                    "scheduler": [SCHEDULERS],
-                    "positive": ["CONDITIONING"],
-                    "negative": ["CONDITIONING"],
-                    "latent_image": ["LATENT"],
-                    "start_at_step": INT,
-                    "end_at_step": INT,
-                    "return_with_leftover_noise": [["disable", "enable"]],
-                }
-            },
-            "output": ["LATENT"],
-        },
-        "VAEDecode": {
-            "input": {"required": {"samples": ["LATENT"], "vae": ["VAE"]}},
-            "output": ["IMAGE"],
-        },
-        "SaveAnimatedWEBP": {
-            "input": {
-                "required": {
-                    "images": ["IMAGE"],
-                    "filename_prefix": ["STRING", {"default": "ComfyUI"}],
-                    "fps": FLOAT,
-                    "lossless": BOOL,
-                    "quality": INT,
-                    "method": [["default", "fastest", "slowest"]],
-                }
-            },
-            "output": [],
-        },
-    }
-    if "CreateVideo" in video_nodes:
-        info["CreateVideo"] = {
-            "input": {"required": {"images": ["IMAGE"], "fps": FLOAT}, "optional": {"audio": ["AUDIO"]}},
-            "output": ["VIDEO"],
-        }
-        info["SaveVideo"] = {
-            "input": {
-                "required": {
-                    "video": ["VIDEO"],
-                    "filename_prefix": ["STRING", {"default": "video/ComfyUI"}],
-                    "format": [["auto", "mp4", "webm"]],
-                    "codec": [["auto", "h264", "vp9"]],
-                }
-            },
-            "output": [],
-        }
+def installed_names(folders: tuple[str, ...], only: set[str] | None) -> list[str]:
+    """Filenames the fake install exposes for the given models/<folder> dirs."""
+    if folders == ("__images__",):
+        return ["example.png"]
+    names: set[str] = set()
+    for model in registry.MODELS:
+        if only is not None and model.id not in only:
+            continue
+        for f in model.all_files:
+            if f.folder in folders:
+                names.add(f.name)
+    if "loras" in folders:
+        names.update(EXTRA_LORAS)
+    return sorted(names)
+
+
+def object_info(video_nodes: set[str], installed: set[str] | None = None) -> dict:
+    info: dict = {}
+    for name, schema in SCHEMA.items():
+        if name in ("CreateVideo", "SaveVideo", "VHS_VideoCombine") and name not in video_nodes:
+            continue
+        spec = {"required": {}, "optional": {}}
+        for kind in ("required", "optional"):
+            for key, value in (schema["input"].get(kind) or {}).items():
+                folders = FILE_INPUTS.get((name, key))
+                if folders:
+                    rest = value[1] if len(value) > 1 else {}
+                    spec[kind][key] = [installed_names(folders, installed), rest]
+                else:
+                    spec[kind][key] = value
+        info[name] = {"input": spec, "output": schema.get("output", [])}
+
     if "VHS_VideoCombine" in video_nodes:
         info["VHS_VideoCombine"] = {
             "input": {
                 "required": {
                     "images": ["IMAGE"],
-                    "frame_rate": FLOAT,
-                    "loop_count": INT,
+                    "frame_rate": ["FLOAT", {"default": 8.0}],
+                    "loop_count": ["INT", {"default": 0}],
                     "filename_prefix": ["STRING", {"default": "AnimateDiff"}],
                     "format": [["image/gif", "video/h264-mp4", "video/webm"]],
                     "pix_fmt": [["yuv420p", "yuv420p10le"]],
-                    "crf": INT,
-                    "save_metadata": BOOL,
-                    "pingpong": BOOL,
-                    "save_output": BOOL,
+                    "crf": ["INT", {"default": 19}],
+                    "save_metadata": ["BOOLEAN", {"default": True}],
+                    "pingpong": ["BOOLEAN", {"default": False}],
+                    "save_output": ["BOOLEAN", {"default": True}],
                 },
                 "optional": {"audio": ["AUDIO"]},
             },
@@ -184,9 +97,15 @@ def object_info(video_nodes: set[str]) -> dict:
 class FakeComfy:
     """Records what it was asked to do so tests can assert on the graph."""
 
-    def __init__(self, video_nodes: set[str] | None = None, fail: str | None = None) -> None:
+    def __init__(
+        self,
+        video_nodes: set[str] | None = None,
+        fail: str | None = None,
+        installed: set[str] | None = None,
+    ) -> None:
         self.video_nodes = video_nodes if video_nodes is not None else {"CreateVideo", "SaveVideo"}
         self.fail = fail
+        self.installed = installed
         self.graphs: list[dict] = []
         self.uploads: list[str] = []
         self.video_bytes = b"\x00\x00\x00\x18ftypmp42FAKE-MP4-PAYLOAD"
@@ -209,10 +128,10 @@ class FakeComfy:
         return app
 
     async def stats(self, _req):
-        return web.json_response({"system": {"comfyui_version": "fake"}})
+        return web.json_response({"system": {"comfyui_version": "fake-0.32.0"}})
 
     async def info(self, _req):
-        return web.json_response(object_info(self.video_nodes))
+        return web.json_response(object_info(self.video_nodes, self.installed))
 
     async def upload(self, req):
         data = await req.post()
@@ -234,9 +153,9 @@ class FakeComfy:
     async def ws(self, req):
         ws = web.WebSocketResponse()
         await ws.prepare(req)
-        # Wait for the client to queue its prompt, as real ComfyUI would.
-        for _ in range(100):
-            if self.graphs:
+        before = len(self.graphs)
+        for _ in range(200):
+            if len(self.graphs) > before:
                 break
             await asyncio.sleep(0.02)
 
@@ -255,34 +174,22 @@ class FakeComfy:
 
         for step in range(1, 5):
             await ws.send_json(
-                {
-                    "type": "progress",
-                    "data": {"value": step, "max": 4, "prompt_id": "fake-prompt-1"},
-                }
+                {"type": "progress", "data": {"value": step, "max": 4, "prompt_id": "fake-prompt-1"}}
             )
             await asyncio.sleep(0.01)
-        await ws.send_json(
-            {"type": "executing", "data": {"node": None, "prompt_id": "fake-prompt-1"}}
-        )
+        await ws.send_json({"type": "executing", "data": {"node": None, "prompt_id": "fake-prompt-1"}})
         async for msg in ws:
             if msg.type is WSMsgType.ERROR:
                 break
         return ws
 
     async def history(self, _req):
-        if self.fail == "no_output":
-            outputs = {}
-        else:
-            outputs = {
-                "15": {
-                    "images": [
-                        {"filename": "anim_00001.png", "subfolder": "wan", "type": "output"}
-                    ],
-                    "videos": [
-                        {"filename": "anim_00001.mp4", "subfolder": "wan", "type": "output"}
-                    ],
-                }
+        outputs = {} if self.fail == "no_output" else {
+            "15": {
+                "images": [{"filename": "anim_00001.png", "subfolder": "wan", "type": "output"}],
+                "videos": [{"filename": "anim_00001.mp4", "subfolder": "wan", "type": "output"}],
             }
+        }
         return web.json_response(
             {"fake-prompt-1": {"status": {"status_str": "success", "completed": True}, "outputs": outputs}}
         )

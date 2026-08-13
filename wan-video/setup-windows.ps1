@@ -4,12 +4,11 @@
 #     powershell -ExecutionPolicy Bypass -File .\setup-windows.ps1
 #
 #   選項：
-#     -Profile gguf -Quant Q4_K_M   顯存不到 24GB 時用
-#     -SkipModels                    只裝程式、不下載模型
+#   -Model wan22-14b-q4   裝指定的模型（不給就依顯存自動挑）
+#   -SkipModels           只裝程式，模型稍後在網頁上挑
 [CmdletBinding()]
 param(
-  [ValidateSet('fp8', 'gguf')][string]$Profile = 'fp8',
-  [string]$Quant = 'Q4_K_M',
+  [string]$Model = '',
   [switch]$SkipModels
 )
 
@@ -39,12 +38,18 @@ $vramMB = [int]((& nvidia-smi --query-gpu=memory.total --format=csv,noheader,nou
 $vramGB = [math]::Round($vramMB / 1024, 1)
 Ok "顯卡：$gpuName（${vramGB}GB 顯存）"
 
+# Pick a starter model that actually fits this card. Everything else can be
+# added later from the web UI's model manager.
+if (-not $Model) {
+  $Model = if ($vramGB -ge 24) { 'wan22-14b-fp8' }
+           elseif ($vramGB -ge 16) { 'wan22-14b-q8' }
+           elseif ($vramGB -ge 12) { 'wan22-14b-q4' }
+           else { 'hy15-480p' }
+}
 if ($vramGB -lt 8) {
   Warn "顯存只有 ${vramGB}GB，跑起來會非常慢甚至失敗。建議 12GB 以上。"
-} elseif ($vramGB -lt 20 -and $Profile -eq 'fp8') {
-  Warn "顯存 ${vramGB}GB 用 fp8 會爆。自動改用 GGUF $Quant。"
-  $Profile = 'gguf'
 }
+Ok "先裝的模型：$Model（之後可以在網頁上加裝其他的）"
 
 $py = Get-Command python -ErrorAction SilentlyContinue
 if (-not $py) {
@@ -121,45 +126,17 @@ Ok 'app 就緒'
 
 # ---- 3. 模型 ---------------------------------------------------------------
 $models = "$root\ComfyUI\models"
-foreach ($d in 'diffusion_models', 'unet', 'text_encoders', 'vae', 'loras') {
+foreach ($d in 'diffusion_models', 'unet', 'text_encoders', 'vae', 'loras', 'clip_vision', 'checkpoints', 'latent_upscale_models') {
   New-Item -ItemType Directory -Force -Path "$models\$d" | Out-Null
 }
 
-function Get-Model($repo, $path, $dest) {
-  $url = "https://huggingface.co/$repo/resolve/main/$path"
-  $name = Split-Path $dest -Leaf
-  if (Test-Path $dest) {
-    $localSize = (Get-Item $dest).Length
-    $head = & curl.exe -sIL $url
-    $remote = ($head | Select-String -Pattern '^(x-linked-size|content-length):\s*(\d+)' |
-               Select-Object -Last 1).Matches.Groups[2].Value
-    if ($remote -and [int64]$remote -eq $localSize) { Ok "$name（已完成）"; return }
-    Write-Host "  續傳 $name" -ForegroundColor Yellow
-  } else {
-    Write-Host "  下載 $name" -ForegroundColor Gray
-  }
-  & curl.exe -fL --retry 5 --retry-delay 2 --retry-all-errors -C - -o $dest $url
-  if (-not (Test-Path $dest)) { Die "下載失敗：$name" }
-}
-
 if ($SkipModels) {
-  Warn '跳過模型下載（-SkipModels）'
+  Warn '跳過模型下載（-SkipModels）—— 之後在網頁的「模型管理」下載'
 } else {
-  $repack = 'Comfy-Org/Wan_2.2_ComfyUI_Repackaged'
-  Say '下載共用元件（約 8GB）'
-  Get-Model $repack 'split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors' "$models\text_encoders\umt5_xxl_fp8_e4m3fn_scaled.safetensors"
-  Get-Model $repack 'split_files/vae/wan_2.1_vae.safetensors' "$models\vae\wan_2.1_vae.safetensors"
-  Get-Model $repack 'split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors' "$models\loras\wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors"
-  Get-Model $repack 'split_files/loras/wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors' "$models\loras\wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors"
-
-  if ($Profile -eq 'fp8') {
-    Say '下載主模型 fp8（2 × 14.3GB，很久）'
-    Get-Model $repack 'split_files/diffusion_models/wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors' "$models\diffusion_models\wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors"
-    Get-Model $repack 'split_files/diffusion_models/wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors' "$models\diffusion_models\wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors"
-  } else {
-    Say "下載主模型 GGUF $Quant"
-    Get-Model 'QuantStack/Wan2.2-I2V-A14B-GGUF' "HighNoise/Wan2.2-I2V-A14B-HighNoise-$Quant.gguf" "$models\unet\Wan2.2-I2V-A14B-HighNoise-$Quant.gguf"
-    Get-Model 'QuantStack/Wan2.2-I2V-A14B-GGUF' "LowNoise/Wan2.2-I2V-A14B-LowNoise-$Quant.gguf" "$models\unet\Wan2.2-I2V-A14B-LowNoise-$Quant.gguf"
+  Say "下載模型 $Model（很久，可以先去做別的事）"
+  & $vpy "$root\scripts\fetch-model.py" $Model --models-dir $models
+  if ($LASTEXITCODE -ne 0) {
+    Warn '模型沒下載完。重跑這個腳本會續傳，或之後在網頁的「模型管理」按下載。'
   }
 }
 
@@ -168,12 +145,8 @@ Say '寫入設定'
 $comfyArgs = if ($vramGB -lt 12) { '--lowvram' } elseif ($vramGB -lt 20) { '--normalvram' } else { '' }
 if (-not (Test-Path "$root\.env")) {
   @"
-PROFILE=$Profile
-GGUF_QUANT=$Quant
+MODEL=$Model
 LIGHTNING=true
-TIER=480p
-LENGTH=81
-FPS=16
 LORAS=
 COMFY_ARGS=$comfyArgs
 "@ | Set-Content -Path "$root\.env" -Encoding UTF8
@@ -191,4 +164,5 @@ Write-Host @"
     .\start-windows.ps1
 
 它會開兩個黑色視窗（ComfyUI 和 app，都不要關），然後自動打開瀏覽器。
+在網頁的「模型管理」分頁可以直接下載其他模型，不用再回到命令列。
 "@ -ForegroundColor Green

@@ -104,7 +104,16 @@ class ComfyClient:
                 if not entry:
                     continue
                 choices = entry[0]
-                if isinstance(choices, list) and choices and value not in choices:
+                if not isinstance(choices, list):
+                    continue
+                if not choices:
+                    # An empty combo means the folder ComfyUI scans for this
+                    # input has no files at all, so nothing could be valid.
+                    problems.append(
+                        f"node {node_id} ({cls}): ComfyUI has no files to offer for "
+                        f"'{name}' — '{value}' is not installed (empty model folder)"
+                    )
+                elif value not in choices:
                     shown = ", ".join(str(c) for c in choices[:8])
                     problems.append(
                         f"node {node_id} ({cls}): '{value}' is not a valid {name}. "

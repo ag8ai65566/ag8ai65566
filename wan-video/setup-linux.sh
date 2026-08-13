@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # 一鍵安裝（Linux，不用 Docker）。Docker 版看 README 的 docker compose 段。
 #
-#   ./setup-linux.sh              # fp8，24GB+ 顯存
-#   ./setup-linux.sh gguf Q4_K_M  # 顯存較小
+#   ./setup-linux.sh                 # 依顯存自動挑一個模型
+#   ./setup-linux.sh wan22-14b-q4    # 指定模型
+#   ./setup-linux.sh none            # 只裝程式，模型稍後在網頁上挑
 set -euo pipefail
 
-PROFILE="${1:-fp8}"
-QUANT="${2:-Q4_K_M}"
+MODEL="${1:-}"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
 
@@ -20,10 +20,15 @@ GPU="$(nvidia-smi --query-gpu=name --format=csv,noheader | head -1)"
 VRAM="$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -1)"
 ok "顯卡：$GPU（$((VRAM / 1024))GB）"
 
-if [[ "$VRAM" -lt 20000 && "$PROFILE" == "fp8" ]]; then
-  echo "  !! 顯存 $((VRAM / 1024))GB 用 fp8 會爆，改用 GGUF $QUANT"
-  PROFILE=gguf
+# Pick a starter model that fits this card; the rest can be added from the UI.
+if [[ -z "$MODEL" ]]; then
+  if   [[ "$VRAM" -ge 24000 ]]; then MODEL=wan22-14b-fp8
+  elif [[ "$VRAM" -ge 16000 ]]; then MODEL=wan22-14b-q8
+  elif [[ "$VRAM" -ge 12000 ]]; then MODEL=wan22-14b-q4
+  else MODEL=hy15-480p
+  fi
 fi
+ok "先裝的模型：$MODEL"
 
 command -v git >/dev/null || die "需要 git"
 PYTHON="${PYTHON:-python3}"
@@ -68,21 +73,25 @@ say "安裝 app"
 "$PIP" install -r app/requirements.txt --quiet
 ok "app 就緒"
 
-say "下載模型"
-# 讓下載腳本把檔案放進 ComfyUI 自己的 models 目錄
-if [[ ! -e models ]]; then ln -s ComfyUI/models models; fi
-./scripts/download-models.sh "$PROFILE" "$QUANT"
+say "建立模型目錄"
+mkdir -p ComfyUI/models/{diffusion_models,unet,text_encoders,vae,loras,clip_vision,checkpoints,latent_upscale_models}
+# 讓 repo 根目錄的 models/ 指向 ComfyUI 的，兩邊看到同一份檔案
+[[ -e models ]] || ln -s ComfyUI/models models
+
+if [[ "$MODEL" == "none" ]]; then
+  ok "跳過模型下載 —— 之後在網頁的「模型管理」下載"
+else
+  say "下載模型 $MODEL（很久）"
+  "$VPY" scripts/fetch-model.py "$MODEL" --models-dir ComfyUI/models \
+    || echo "  !! 沒下載完，重跑會續傳，或之後在網頁上按下載"
+fi
 
 if [[ ! -f .env ]]; then
   COMFY_ARGS=""
   [[ "$VRAM" -lt 12000 ]] && COMFY_ARGS="--lowvram"
   cat > .env <<EOF
-PROFILE=$PROFILE
-GGUF_QUANT=$QUANT
+MODEL=$MODEL
 LIGHTNING=true
-TIER=480p
-LENGTH=81
-FPS=16
 LORAS=
 COMFY_ARGS=$COMFY_ARGS
 EOF
@@ -98,6 +107,7 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$ROOT"
 set -a; [[ -f .env ]] && . ./.env; set +a
 export COMFY_URL=http://127.0.0.1:8188
+export MODELS_DIR="$ROOT/ComfyUI/models"
 export OUTPUT_DIR="$ROOT/data/outputs" INBOX_DIR="$ROOT/data/inbox" DONE_DIR="$ROOT/data/inbox/done"
 export APP_URL=http://127.0.0.1:8000
 mkdir -p "$OUTPUT_DIR" "$INBOX_DIR"

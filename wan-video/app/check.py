@@ -1,6 +1,7 @@
-"""Pre-flight check: are ComfyUI, the custom nodes and the model files all in place?
+"""Pre-flight check: ComfyUI, custom nodes, model files and every graph.
 
     docker compose run --rm app python check.py
+    .\venv\Scripts\python.exe app\check.py
 """
 
 from __future__ import annotations
@@ -9,8 +10,14 @@ import asyncio
 import sys
 
 import config
+import downloader
+import registry
 import workflow
 from comfy_client import ComfyClient
+
+
+def gb(n: int) -> str:
+    return f"{n / 1e9:.1f}GB"
 
 
 async def main() -> int:
@@ -23,41 +30,67 @@ async def main() -> int:
         return 1
 
     info = await client.object_info()
+    nodes = set(info)
     print(f"  ✓ 就緒（{len(info)} 種節點）")
+    for node in ("WanImageToVideo", "Wan22ImageToVideoLatent", "HunyuanVideo15ImageToVideo", "DualCLIPLoader"):
+        print(f"  {'✓' if node in nodes else '✗'} {node}")
+    print(f"  {'✓' if 'UnetLoaderGGUF' in nodes else '✗'} UnetLoaderGGUF（GGUF 量化模型）")
+    video = [n for n in ("CreateVideo", "SaveVideo", "VHS_VideoCombine") if n in nodes]
+    print(f"  影片輸出節點：{', '.join(video) or '只有 SaveAnimatedWEBP'}")
 
-    for node in ("WanImageToVideo", "KSamplerAdvanced", "ModelSamplingSD3", "LoraLoaderModelOnly"):
-        print(f"  {'✓' if node in info else '✗'} {node}")
-    if "UnetLoaderGGUF" in info:
-        print("  ✓ UnetLoaderGGUF（GGUF 可用）")
-    video_nodes = [n for n in ("CreateVideo", "SaveVideo", "VHS_VideoCombine") if n in info]
-    print(f"  影片輸出節點：{', '.join(video_nodes) or '只有 SaveAnimatedWEBP'}")
+    manager = downloader.Manager(config.MODELS_DIR)
+    print(f"\n模型目錄：{config.MODELS_DIR}")
+    if not config.MODELS_DIR.is_dir():
+        print("  ✗ 這個目錄不存在 —— 檢查 MODELS_DIR 或 docker compose 的掛載")
 
-    settings = config.settings().resolved()
-    print(f"\nProfile: {config.PROFILE} / loader={settings.loader}")
-    print(f"  steps={settings.steps} boundary={settings.boundary} cfg={settings.cfg} shift={settings.shift}")
+    failures = 0
+    for model in registry.MODELS:
+        state = manager.model_status(model)
+        mark = "✓" if state["installed"] else ("◐" if state["partial"] else "·")
+        print(f"\n  {mark} {model.label}")
+        print(f"      顯存 {model.vram_gb}GB+ · 下載 {gb(model.download_bytes)} · 已有 {gb(state['bytes_on_disk'])}")
+        if not state["installed"]:
+            print(f"      缺 {len(state['missing'])} 個檔：{', '.join(state['missing'][:3])}")
+            continue
+        if not model.runnable:
+            print("      （只提供檔案，用 ComfyUI 內建範例跑）")
+            continue
 
-    # Building a real graph is enough to prove every model filename resolves,
-    # without spending GPU time on a generation.
-    graph = workflow.build(
-        image_name="placeholder.png",
-        prompt="test",
-        negative=workflow.DEFAULT_NEGATIVE,
-        seed=1,
-        width=832,
-        height=480,
-        settings=settings,
-        available_nodes=set(info),
-    )
-    problems = await client.validate(graph)
+        for lightning in ([False, True] if model.lightning else [False]):
+            params = config.params_for(model, lightning=lightning)
+            tier = config.default_tier(model)
+            w, h = workflow.fit_dimensions(1024, 1024, tier, model)
+            graph = workflow.build(
+                model, params, image_name="placeholder.png", prompt="test",
+                seed=1, width=w, height=h, available_nodes=nodes,
+            )
+            problems = await client.validate(graph)
+            tag = "4 步加速" if lightning else "標準"
+            if problems:
+                failures += 1
+                print(f"      ✗ 工作流程（{tag}）:")
+                for p in problems:
+                    print(f"          {p}")
+            else:
+                print(f"      ✓ 工作流程（{tag}）{len(graph)} 節點 · {w}x{h} · {params.steps} 步")
 
-    print("\n工作流程檢查：")
-    if not problems:
-        print("  ✓ 全部通過，可以開始生成")
-        return 0
-    for problem in problems:
-        print(f"  ✗ {problem}")
-    print("\n模型檔名對不上的話，檢查 ./models 下的檔案，或在 .env 用 MODEL_HIGH/MODEL_LOW 指定。")
-    return 1
+    loras = manager.list_loras()
+    print(f"\nLoRA（{config.MODELS_DIR / 'loras'}）：{len(loras)} 個")
+    for lora in loras[:8]:
+        print(f"  · {lora['name']}{' [內建加速]' if lora['builtin'] else ''}")
+
+    runnable_installed = [
+        m for m in registry.runnable() if manager.model_status(m)["installed"]
+    ]
+    print()
+    if not runnable_installed:
+        print("還沒有可用的模型。開 http://127.0.0.1:8000 的「模型管理」下載一個。")
+        return 1
+    if failures:
+        print(f"有 {failures} 個工作流程不相容，看上面的訊息。")
+        return 1
+    print(f"可以開始生成，{len(runnable_installed)} 個模型就緒。")
+    return 0
 
 
 if __name__ == "__main__":

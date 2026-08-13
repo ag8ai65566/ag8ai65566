@@ -39,11 +39,13 @@ services:
         condition: service_started
     volumes:
       - ./data:/data
+      - ./models:/models        # the app downloads models straight into ComfyUI's tree
     env_file:
       - path: .env
         required: false
     environment:
       - COMFY_URL=http://comfy:8188
+      - MODELS_DIR=/models
       - OUTPUT_DIR=/data/outputs
       - INBOX_DIR=/data/inbox
       - DONE_DIR=/data/inbox/done
@@ -60,11 +62,13 @@ services:
       - app
     volumes:
       - ./data:/data
+      - ./models:/models
     env_file:
       - path: .env
         required: false
     environment:
       - APP_URL=http://app:8000
+      - MODELS_DIR=/models
       - INBOX_DIR=/data/inbox
       - DONE_DIR=/data/inbox/done
       - OUTPUT_DIR=/data/outputs

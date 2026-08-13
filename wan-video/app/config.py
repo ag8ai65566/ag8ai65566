@@ -1,78 +1,92 @@
-"""Environment-driven configuration. See .env.example for the full list."""
+"""Environment-driven configuration. See .env.example for the full list.
+
+Almost everything the UI exposes is chosen per job now; the values here are
+just the starting defaults.
+"""
 
 from __future__ import annotations
 
 import os
 from pathlib import Path
 
-from workflow import Lora, Settings
+import registry
 
 COMFY_URL = os.environ.get("COMFY_URL", "http://127.0.0.1:8188")
+MODELS_DIR = Path(os.environ.get("MODELS_DIR", "/models"))
 OUTPUT_DIR = Path(os.environ.get("OUTPUT_DIR", "/data/outputs"))
 INBOX_DIR = Path(os.environ.get("INBOX_DIR", "/data/inbox"))
 DONE_DIR = Path(os.environ.get("DONE_DIR", "/data/inbox/done"))
 APP_URL = os.environ.get("APP_URL", "http://127.0.0.1:8000")
 
-# Profiles pick the model files. "fp8" needs ~24GB VRAM, "gguf" runs on less.
-PROFILE = os.environ.get("PROFILE", "fp8").lower()
-GGUF_QUANT = os.environ.get("GGUF_QUANT", "Q4_K_M")
+DEFAULT_MODEL = os.environ.get("MODEL", "wan22-14b-fp8")
+DEFAULT_TIER = os.environ.get("TIER", "")
+DEFAULT_LENGTH = int(os.environ.get("LENGTH", "0") or 0)
+PROMPT_DEFAULT = os.environ.get("PROMPT_DEFAULT", "subtle natural motion, cinematic")
 
 
 def _bool(name: str, default: bool) -> bool:
     return os.environ.get(name, str(default)).strip().lower() in ("1", "true", "yes", "on")
 
 
-def _parse_loras(raw: str) -> list[Lora]:
+LIGHTNING = _bool("LIGHTNING", True)
+WEIGHT_DTYPE = os.environ.get("WEIGHT_DTYPE", "default")
+
+
+def parse_loras(raw: str) -> list[registry.Lora]:
     """Parse "name.safetensors:0.8, other.safetensors" into Lora objects."""
-    loras: list[Lora] = []
+    loras: list[registry.Lora] = []
     for chunk in raw.split(","):
         chunk = chunk.strip()
         if not chunk:
             continue
         name, _, strength = chunk.rpartition(":")
-        if not name:  # no colon present
-            loras.append(Lora(chunk))
+        if not name:
+            loras.append(registry.Lora(chunk))
             continue
         try:
-            loras.append(Lora(name.strip(), float(strength)))
+            loras.append(registry.Lora(name.strip(), float(strength)))
         except ValueError:
-            loras.append(Lora(chunk))
+            loras.append(registry.Lora(chunk))
     return loras
 
 
-def settings() -> Settings:
-    s = Settings()
+ENV_LORAS = parse_loras(os.environ.get("LORAS", ""))
+ENV_LORAS_HIGH = parse_loras(os.environ.get("LORAS_HIGH", ""))
+ENV_LORAS_LOW = parse_loras(os.environ.get("LORAS_LOW", ""))
 
-    if PROFILE == "gguf":
-        s.loader = "gguf"
-        s.high_noise = f"Wan2.2-I2V-A14B-HighNoise-{GGUF_QUANT}.gguf"
-        s.low_noise = f"Wan2.2-I2V-A14B-LowNoise-{GGUF_QUANT}.gguf"
-    else:
-        s.loader = "safetensors"
-        s.high_noise = "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors"
-        s.low_noise = "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors"
 
-    s.high_noise = os.environ.get("MODEL_HIGH", s.high_noise)
-    s.low_noise = os.environ.get("MODEL_LOW", s.low_noise)
-    s.text_encoder = os.environ.get("TEXT_ENCODER", s.text_encoder)
-    s.vae = os.environ.get("VAE", s.vae)
-    s.weight_dtype = os.environ.get("WEIGHT_DTYPE", s.weight_dtype)
+def default_model() -> registry.ModelDef:
+    return registry.get(DEFAULT_MODEL) or registry.runnable()[0]
 
-    s.lightning = _bool("LIGHTNING", True)
-    s.lightning_strength = float(os.environ.get("LIGHTNING_STRENGTH", s.lightning_strength))
-    s.loras = _parse_loras(os.environ.get("LORAS", ""))
-    s.loras_high = _parse_loras(os.environ.get("LORAS_HIGH", ""))
-    s.loras_low = _parse_loras(os.environ.get("LORAS_LOW", ""))
 
-    s.tier = os.environ.get("TIER", s.tier)
-    s.length = int(os.environ.get("LENGTH", s.length))
-    s.fps = int(os.environ.get("FPS", s.fps))
+def params_for(model: registry.ModelDef, lightning: bool | None = None) -> registry.GenParams:
+    """Model defaults, with .env overrides layered on top."""
+    p = registry.GenParams.defaults_for(
+        model, lightning=LIGHTNING if lightning is None else lightning
+    )
+    p.weight_dtype = WEIGHT_DTYPE
+    p.loras = list(ENV_LORAS)
+    p.loras_high = list(ENV_LORAS_HIGH)
+    p.loras_low = list(ENV_LORAS_LOW)
+    if DEFAULT_LENGTH:
+        p.length = DEFAULT_LENGTH
+    # Explicit sampler overrides, for people who want to experiment.
+    for key, attr, cast in [
+        ("STEPS", "steps", int),
+        ("CFG", "cfg", float),
+        ("SHIFT", "shift", float),
+        ("BOUNDARY", "boundary", int),
+        ("SAMPLER", "sampler", str),
+        ("SCHEDULER", "scheduler", str),
+        ("FPS", "fps", int),
+    ]:
+        raw = os.environ.get(key)
+        if raw:
+            setattr(p, attr, cast(raw))
+    return p
 
-    # Only meaningful when LIGHTNING=false; the preset overrides these.
-    s.steps = int(os.environ.get("STEPS", s.steps))
-    s.boundary = int(os.environ.get("BOUNDARY", s.boundary))
-    s.cfg = float(os.environ.get("CFG", s.cfg))
-    s.shift = float(os.environ.get("SHIFT", s.shift))
-    s.sampler = os.environ.get("SAMPLER", s.sampler)
-    s.scheduler = os.environ.get("SCHEDULER", s.scheduler)
-    return s
+
+def default_tier(model: registry.ModelDef) -> str:
+    if DEFAULT_TIER and DEFAULT_TIER in model.tiers:
+        return DEFAULT_TIER
+    return next(iter(model.tiers), "480p")

@@ -24,6 +24,8 @@ if (Test-Path "$root\.env") {
   }
 }
 $env:COMFY_URL = 'http://127.0.0.1:8188'
+# The model manager downloads straight into ComfyUI's own models tree.
+$env:MODELS_DIR = "$root\ComfyUI\models"
 $env:OUTPUT_DIR = "$root\data\outputs"
 $env:INBOX_DIR = "$root\data\inbox"
 $env:DONE_DIR = "$root\data\inbox\done"

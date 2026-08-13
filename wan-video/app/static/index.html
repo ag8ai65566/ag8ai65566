@@ -6,191 +6,387 @@
 <title>圖片 → 動畫</title>
 <style>
   :root {
-    --bg: #0e0f13; --panel: #171922; --panel-2: #1f222e; --line: #2b2f3d;
-    --text: #e8eaf0; --muted: #9aa0b4; --accent: #6d8cff; --ok: #3ecf8e; --err: #ff6b6b;
+    --bg:#0e0f13; --panel:#171922; --panel2:#1f222e; --line:#2b2f3d;
+    --text:#e8eaf0; --muted:#9aa0b4; --accent:#6d8cff; --ok:#3ecf8e; --warn:#e0a458; --err:#ff6b6b;
   }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--text);
-    font: 15px/1.6 -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
-  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
-  h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: .02em; }
-  .sub { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
-  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
-  #drop { border: 1.5px dashed var(--line); border-radius: 12px; padding: 34px 18px; text-align: center;
-    cursor: pointer; transition: .15s; background: var(--panel-2); }
-  #drop.hot { border-color: var(--accent); background: #202540; }
-  #drop p { margin: 6px 0; color: var(--muted); font-size: 13px; }
-  #drop strong { color: var(--text); font-size: 15px; }
-  #preview { max-height: 200px; border-radius: 8px; margin-top: 12px; display: none; }
-  textarea { width: 100%; margin-top: 14px; background: var(--panel-2); color: var(--text);
-    border: 1px solid var(--line); border-radius: 10px; padding: 12px; font: inherit; resize: vertical; min-height: 78px; }
-  textarea:focus, select:focus, input:focus { outline: none; border-color: var(--accent); }
-  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
-  label.f { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
-  select, input[type=number] { background: var(--panel-2); color: var(--text); border: 1px solid var(--line);
-    border-radius: 8px; padding: 8px 10px; font: inherit; }
-  button { background: var(--accent); color: #0b0d16; border: 0; border-radius: 10px; padding: 11px 22px;
-    font: 600 15px inherit; cursor: pointer; }
-  button:disabled { opacity: .45; cursor: default; }
-  button.ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); font-weight: 500; }
-  .spacer { flex: 1; }
-  h2 { font-size: 14px; color: var(--muted); font-weight: 600; margin: 32px 0 12px; text-transform: uppercase; letter-spacing: .08em; }
-  .job { display: flex; gap: 14px; background: var(--panel); border: 1px solid var(--line);
-    border-radius: 12px; padding: 14px; margin-bottom: 12px; }
-  .job img.t { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; background: #000; flex: none; }
-  .job video { width: 260px; border-radius: 8px; background: #000; }
-  .job .meta { flex: 1; min-width: 0; }
-  .job .p { font-size: 14px; margin: 0 0 6px; word-break: break-word; }
-  .job .s { font-size: 12px; color: var(--muted); }
-  .bar { height: 5px; background: var(--panel-2); border-radius: 3px; overflow: hidden; margin: 8px 0; }
-  .bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s; }
-  .tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--panel-2); color: var(--muted); }
-  .tag.run { background: #24304f; color: var(--accent); }
-  .tag.done { background: #17372a; color: var(--ok); }
-  .tag.err { background: #3a1f22; color: var(--err); }
-  .err { color: var(--err); font-size: 12px; white-space: pre-wrap; margin-top: 6px; }
-  a.dl { color: var(--accent); font-size: 12px; text-decoration: none; }
-  #status { font-size: 12px; color: var(--muted); margin-top: 10px; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text);
+    font:15px/1.6 -apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif; }
+  .wrap { max-width:1000px; margin:0 auto; padding:28px 20px 80px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:20px; }
+  .tabs { display:flex; gap:4px; margin-bottom:16px; border-bottom:1px solid var(--line); }
+  .tabs button { background:none; border:0; color:var(--muted); padding:9px 16px; font:500 14px inherit;
+    cursor:pointer; border-bottom:2px solid transparent; }
+  .tabs button.on { color:var(--text); border-bottom-color:var(--accent); }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; }
+  #drop { border:1.5px dashed var(--line); border-radius:12px; padding:30px 18px; text-align:center;
+    cursor:pointer; transition:.15s; background:var(--panel2); }
+  #drop.hot { border-color:var(--accent); background:#202540; }
+  #drop p { margin:6px 0; color:var(--muted); font-size:13px; }
+  #drop strong { font-size:15px; word-break:break-all; }
+  #preview { max-height:190px; border-radius:8px; margin-top:12px; display:none; }
+  textarea { width:100%; margin-top:14px; background:var(--panel2); color:var(--text);
+    border:1px solid var(--line); border-radius:10px; padding:12px; font:inherit; resize:vertical; min-height:76px; }
+  textarea:focus, select:focus, input:focus { outline:none; border-color:var(--accent); }
+  .row { display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; margin-top:12px; }
+  label.f { display:flex; flex-direction:column; gap:4px; font-size:12px; color:var(--muted); }
+  select, input[type=number] { background:var(--panel2); color:var(--text); border:1px solid var(--line);
+    border-radius:8px; padding:8px 10px; font:inherit; max-width:100%; }
+  button.go { background:var(--accent); color:#0b0d16; border:0; border-radius:10px; padding:11px 22px;
+    font:600 15px inherit; cursor:pointer; }
+  button.ghost { background:transparent; color:var(--muted); border:1px solid var(--line);
+    border-radius:10px; padding:9px 16px; font:500 14px inherit; cursor:pointer; }
+  button:disabled { opacity:.45; cursor:default; }
+  .spacer { flex:1; }
+  .chk { display:flex; align-items:center; gap:7px; font-size:13px; color:var(--muted); cursor:pointer; }
+  h2 { font-size:13px; color:var(--muted); font-weight:600; margin:28px 0 10px;
+    text-transform:uppercase; letter-spacing:.08em; }
+  .job { display:flex; gap:14px; background:var(--panel); border:1px solid var(--line);
+    border-radius:12px; padding:14px; margin-bottom:12px; }
+  .job img.t { width:92px; height:92px; object-fit:cover; border-radius:8px; background:#000; flex:none; }
+  .job video { width:256px; max-width:45vw; border-radius:8px; background:#000; }
+  .job .meta { flex:1; min-width:0; }
+  .job .p { font-size:14px; margin:0 0 6px; word-break:break-word; }
+  .s { font-size:12px; color:var(--muted); }
+  .bar { height:5px; background:var(--panel2); border-radius:3px; overflow:hidden; margin:8px 0; }
+  .bar i { display:block; height:100%; background:var(--accent); width:0; transition:width .3s; }
+  .tag { font-size:11px; padding:2px 8px; border-radius:20px; background:var(--panel2); color:var(--muted); }
+  .tag.run { background:#24304f; color:var(--accent); }
+  .tag.done { background:#17372a; color:var(--ok); }
+  .tag.err { background:#3a1f22; color:var(--err); }
+  .errbox { color:var(--err); font-size:12px; white-space:pre-wrap; margin-top:6px; }
+  a.dl { color:var(--accent); font-size:12px; text-decoration:none; }
+  #status { font-size:12px; color:var(--muted); margin-top:10px; min-height:1.2em; }
+  /* model manager */
+  .m { border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:10px; background:var(--panel); }
+  .m .top { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .m .name { font-size:14px; font-weight:600; flex:1; min-width:220px; }
+  .m .note { font-size:12px; color:var(--muted); margin-top:6px; }
+  .m.installed { border-color:#245b43; }
+  .loralist { display:flex; flex-direction:column; gap:8px; margin-top:6px; max-height:220px; overflow-y:auto; }
+  .lora { display:flex; align-items:center; gap:9px; font-size:13px; }
+  .lora input[type=range] { flex:1; max-width:150px; accent-color:var(--accent); }
+  .lora .n { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  code { background:var(--panel2); padding:1px 5px; border-radius:4px; font-size:12px; }
+  .hidden { display:none; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <h1>圖片 → 動畫</h1>
-  <div class="sub">Wan 2.2 I2V · 本機執行 · 無內容過濾</div>
+  <div class="sub" id="sub">本機執行 · 無內容過濾</div>
 
-  <div class="card">
-    <div id="drop">
-      <strong>把圖片拖進來</strong>
-      <p>或點一下選檔案 · 也可以直接 Ctrl+V 貼上</p>
-      <img id="preview" alt="">
-    </div>
-    <input type="file" id="file" accept="image/*" hidden>
-
-    <textarea id="prompt" placeholder="想讓它怎麼動？例如：她慢慢轉頭看向鏡頭，頭髮被風吹動，鏡頭緩慢推近"></textarea>
-
-    <div class="row">
-      <label class="f">解析度
-        <select id="tier">
-          <option value="480p">480p（快）</option>
-          <option value="720p">720p（慢、細節好）</option>
-        </select>
-      </label>
-      <label class="f">長度（幀）
-        <select id="length">
-          <option value="49">49 ≈ 3 秒</option>
-          <option value="81" selected>81 ≈ 5 秒</option>
-          <option value="121">121 ≈ 7.5 秒</option>
-        </select>
-      </label>
-      <label class="f">種子（-1 隨機）
-        <input type="number" id="seed" value="-1" min="-1" style="width:120px">
-      </label>
-      <div class="spacer"></div>
-      <button class="ghost" id="stop">中斷</button>
-      <button id="go" disabled>生成</button>
-    </div>
-    <div id="status"></div>
+  <div class="tabs">
+    <button class="on" data-tab="gen">生成</button>
+    <button data-tab="mgr">模型管理</button>
   </div>
 
-  <h2>紀錄</h2>
-  <div id="jobs"></div>
+  <!-- ============ 生成 ============ -->
+  <div id="tab-gen">
+    <div class="card">
+      <div id="drop">
+        <strong>把圖片拖進來</strong>
+        <p>或點一下選檔案 · 也可以直接 Ctrl+V 貼上</p>
+        <img id="preview" alt="">
+      </div>
+      <input type="file" id="file" accept="image/*" hidden>
+
+      <textarea id="prompt" placeholder="想讓它怎麼動？例如：她慢慢轉頭看向鏡頭，頭髮被風吹動，鏡頭緩慢推近"></textarea>
+
+      <div class="row">
+        <label class="f" style="flex:1;min-width:260px">模型
+          <select id="model"></select>
+        </label>
+        <label class="f">解析度<select id="tier"></select></label>
+        <label class="f">長度<select id="length"></select></label>
+        <label class="f">種子（-1 隨機）
+          <input type="number" id="seed" value="-1" min="-1" style="width:110px">
+        </label>
+      </div>
+
+      <div class="row">
+        <label class="chk" id="litwrap"><input type="checkbox" id="lightning"> 4 步加速（快很多，動態略遜）</label>
+        <div class="spacer"></div>
+        <button class="ghost" id="stop">中斷</button>
+        <button class="go" id="go" disabled>生成</button>
+      </div>
+      <div id="modelnote" class="s"></div>
+      <div id="status"></div>
+    </div>
+
+    <div id="lorasec" class="hidden">
+      <h2>LoRA</h2>
+      <div class="card">
+        <div id="loras" class="loralist"></div>
+        <div class="s" id="lorahint" style="margin-top:10px"></div>
+      </div>
+    </div>
+
+    <h2>紀錄</h2>
+    <div id="jobs"></div>
+  </div>
+
+  <!-- ============ 模型管理 ============ -->
+  <div id="tab-mgr" class="hidden">
+    <div id="dl" class="hidden card" style="margin-bottom:16px"></div>
+    <div id="mlist"></div>
+  </div>
 </div>
 
 <script>
 const $ = (s) => document.querySelector(s);
-const drop = $('#drop'), file = $('#file'), preview = $('#preview'), go = $('#go');
-let picked = null;
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const gb = (b) => b >= 1e9 ? (b/1e9).toFixed(1)+'GB' : (b/1e6).toFixed(0)+'MB';
+function dur(s) {
+  if (s == null) return '';
+  if (s < 90) return Math.round(s)+' 秒';
+  if (s < 5400) return Math.round(s/60)+' 分';
+  return (s/3600).toFixed(1)+' 小時';
+}
 
+let MODELS = [], LORAS = [], picked = null, chosen = null;
+
+/* ---------- tabs ---------- */
+document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('on', x === b));
+  $('#tab-gen').classList.toggle('hidden', b.dataset.tab !== 'gen');
+  $('#tab-mgr').classList.toggle('hidden', b.dataset.tab !== 'mgr');
+});
+
+/* ---------- image picking ---------- */
+const drop = $('#drop'), file = $('#file');
 function pick(f) {
   if (!f || !f.type.startsWith('image/')) return;
   picked = f;
-  preview.src = URL.createObjectURL(f);
-  preview.style.display = 'block';
+  $('#preview').src = URL.createObjectURL(f);
+  $('#preview').style.display = 'block';
   drop.querySelector('strong').textContent = f.name;
-  go.disabled = false;
+  syncGo();
 }
-
 drop.onclick = () => file.click();
 file.onchange = () => pick(file.files[0]);
 drop.ondragover = (e) => { e.preventDefault(); drop.classList.add('hot'); };
 drop.ondragleave = () => drop.classList.remove('hot');
 drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove('hot'); pick(e.dataTransfer.files[0]); };
-window.addEventListener('paste', (e) => {
-  for (const item of e.clipboardData.files) { pick(item); break; }
-});
+window.addEventListener('paste', (e) => { for (const f of e.clipboardData.files) { pick(f); break; } });
 
-go.onclick = async () => {
-  if (!picked) return;
-  go.disabled = true;
+/* ---------- model selection ---------- */
+function syncGo() {
+  const ok = picked && chosen && chosen.installed && chosen.runnable;
+  $('#go').disabled = !ok;
+  if (picked && chosen && !chosen.installed) {
+    $('#status').textContent = `${chosen.label} 還沒下載 —— 到「模型管理」下載（${gb(chosen.download_bytes)}）`;
+  }
+}
+
+function renderModelPicker() {
+  const sel = $('#model');
+  sel.innerHTML = MODELS.filter((m) => m.runnable).map((m) => {
+    const mark = m.installed ? '✓' : (m.partial ? '◐' : '·');
+    return `<option value="${m.id}">${mark} ${esc(m.label)} — ${m.vram_gb}GB+</option>`;
+  }).join('');
+  if (chosen) sel.value = chosen.id;
+  onModelChange();
+}
+
+function onModelChange() {
+  chosen = MODELS.find((m) => m.id === $('#model').value) || MODELS.find((m) => m.runnable);
+  if (!chosen) return;
+
+  $('#tier').innerHTML = chosen.tiers.map((t) =>
+    `<option value="${t}"${t === chosen.default_tier ? ' selected' : ''}>${t}</option>`).join('');
+
+  const base = chosen.length;
+  const opts = [...new Set([49, 81, base, 121])].filter((n) => n >= 5).sort((a, b) => a - b);
+  $('#length').innerHTML = opts.map((n) =>
+    `<option value="${n}"${n === base ? ' selected' : ''}>${n} 幀 ≈ ${(n / chosen.fps).toFixed(1)} 秒</option>`).join('');
+
+  $('#litwrap').classList.toggle('hidden', !chosen.supports_lightning);
+  const sm = chosen.sampling;
+  $('#modelnote').textContent =
+    `${chosen.installed ? '已安裝' : '未下載 ' + gb(chosen.download_bytes)} · ${sm.steps} 步 · cfg ${sm.cfg} · shift ${sm.shift} · ${sm.sampler}/${sm.scheduler} · ${chosen.fps}fps`
+    + (chosen.note ? ' · ' + chosen.note : '');
+
+  $('#lorasec').classList.toggle('hidden', !chosen.supports_lora);
+  syncGo();
+}
+$('#model').onchange = onModelChange;
+
+/* ---------- LoRA picker ---------- */
+function renderLoras() {
+  const box = $('#loras');
+  if (!LORAS.length) {
+    box.innerHTML = '<div class="s">models/loras/ 裡還沒有檔案。</div>';
+  } else {
+    box.innerHTML = LORAS.map((l, i) => `
+      <div class="lora">
+        <input type="checkbox" id="lora${i}" data-n="${esc(l.name)}">
+        <span class="n" title="${esc(l.name)}">${esc(l.name)}${l.builtin ? ' <span class="tag">內建加速</span>' : ''}</span>
+        <input type="range" id="ls${i}" min="0" max="1.5" step="0.05" value="0.8">
+        <span class="s" id="lv${i}" style="width:2.4em">0.8</span>
+      </div>`).join('');
+    LORAS.forEach((_, i) => {
+      $('#ls' + i).oninput = (e) => $('#lv' + i).textContent = e.target.value;
+    });
+  }
+  $('#lorahint').innerHTML =
+    'CivitAI 的 Wan 2.2 LoRA 檔案丟進 <code>models/loras/</code> 就會出現在這裡。'
+    + '雙專家模型的 high/low 兩個檔請兩個都勾。強度先試 0.7～1.0，疊太多支會互相打架。';
+}
+
+function selectedLoras() {
+  return LORAS.map((l, i) => ({ name: l.name, strength: parseFloat($('#ls' + i).value) }))
+              .filter((_, i) => $('#lora' + i)?.checked);
+}
+
+/* ---------- generate ---------- */
+$('#go').onclick = async () => {
+  if (!picked || !chosen) return;
+  $('#go').disabled = true;
   const body = new FormData();
   body.append('image', picked);
   body.append('prompt', $('#prompt').value);
+  body.append('model', chosen.id);
   body.append('tier', $('#tier').value);
   body.append('length', $('#length').value);
   body.append('seed', $('#seed').value || '-1');
+  body.append('lightning', $('#lightning').checked ? '1' : '0');
+  body.append('loras', JSON.stringify(selectedLoras()));
   try {
     const r = await fetch('/api/generate', { method: 'POST', body });
     if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
     $('#status').textContent = '已排入佇列';
-    refresh();
-  } catch (err) {
-    $('#status').textContent = '送出失敗：' + err.message;
+    refreshJobs();
+  } catch (e) {
+    $('#status').textContent = '送出失敗：' + e.message;
   }
-  go.disabled = false;
+  syncGo();
 };
-
 $('#stop').onclick = () => fetch('/api/cancel', { method: 'POST' });
 
-const TAG = { queued: ['排隊中', ''], running: ['生成中', 'run'], done: ['完成', 'done'], error: ['失敗', 'err'] };
-
-function render(jobs, queued) {
-  $('#jobs').innerHTML = jobs.map((j) => {
+/* ---------- job list ---------- */
+const TAG = { queued:['排隊中',''], running:['生成中','run'], done:['完成','done'], error:['失敗','err'] };
+function renderJobs(list, queued) {
+  $('#jobs').innerHTML = list.map((j) => {
     const [text, cls] = TAG[j.status] || [j.status, ''];
-    const media = j.output
-      ? `<video src="${j.output}" controls loop muted autoplay playsinline></video>`
-      : (j.thumb ? `<img class="t" src="${j.thumb}" alt="">` : '');
-    const bar = j.status === 'running'
-      ? `<div class="bar"><i style="width:${j.progress * 100}%"></i></div>` : '';
-    return `<div class="job">
-      ${media}
-      <div class="meta">
-        <p class="p">${j.prompt ? escapeHtml(j.prompt) : '<i>（沒有指令）</i>'}</p>
-        <span class="tag ${cls}">${text}</span>
-        <span class="s"> ${j.size || j.tier} · ${j.length} 幀 · seed ${j.seed} · ${j.elapsed}s</span>
-        ${bar}
-        ${j.message && j.status !== 'error' ? `<div class="s">${escapeHtml(j.message)}</div>` : ''}
-        ${j.status === 'error' ? `<div class="err">${escapeHtml(j.message)}</div>` : ''}
-        ${j.output ? `<div><a class="dl" href="${j.output}" download>下載</a></div>` : ''}
-      </div>
-    </div>`;
-  }).join('') || '<div class="s" style="color:var(--muted)">還沒有紀錄</div>';
+    const media = j.output ? `<video src="${j.output}" controls loop muted autoplay playsinline></video>`
+                           : (j.thumb ? `<img class="t" src="${j.thumb}" alt="">` : '');
+    return `<div class="job">${media}<div class="meta">
+      <p class="p">${j.prompt ? esc(j.prompt) : '<i>（沒有指令）</i>'}</p>
+      <span class="tag ${cls}">${text}</span>
+      <span class="s"> ${esc(j.model_label)} · ${j.size || j.tier} · ${j.length} 幀 · seed ${j.seed}${j.lightning ? ' · 4步' : ''} · ${j.elapsed}s</span>
+      ${j.loras.length ? `<div class="s">LoRA: ${esc(j.loras.join(', '))}</div>` : ''}
+      ${j.status === 'running' ? `<div class="bar"><i style="width:${j.progress*100}%"></i></div>` : ''}
+      ${j.message && j.status !== 'error' ? `<div class="s">${esc(j.message)}</div>` : ''}
+      ${j.status === 'error' ? `<div class="errbox">${esc(j.message)}</div>` : ''}
+      ${j.output ? `<div><a class="dl" href="${j.output}" download>下載</a></div>` : ''}
+    </div></div>`;
+  }).join('') || '<div class="s">還沒有紀錄</div>';
   if (queued) $('#status').textContent = `佇列還有 ${queued} 個`;
 }
 
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-}
-
-let seen = '';
-async function refresh() {
+let jobSig = '';
+async function refreshJobs() {
   try {
     const d = await (await fetch('/api/jobs')).json();
-    // Only touch the DOM when something changed, so playing videos don't restart.
     const sig = JSON.stringify(d);
-    if (sig !== seen) { seen = sig; render(d.jobs, d.queued); }
+    if (sig !== jobSig) { jobSig = sig; renderJobs(d.jobs, d.queued); }   // keep playing videos alive
   } catch (_) {}
 }
-refresh();
-setInterval(refresh, 1500);
 
-fetch('/api/health').then((r) => r.json()).then((h) => {
-  $('#length').value = h.defaults.length;
-  $('#tier').value = h.defaults.tier;
-  if (!h.comfy.ok) $('#status').textContent = 'ComfyUI 還沒就緒：' + h.comfy.detail;
-  document.querySelector('.sub').textContent =
-    `Wan 2.2 I2V · ${h.profile} · ${h.sampling.lightning ? h.sampling.steps + ' 步 Lightning' : h.sampling.steps + ' 步'}` +
-    (h.loras.length ? ` · LoRA ${h.loras.length} 個` : '') + ' · 本機執行';
-}).catch(() => {});
+/* ---------- model manager ---------- */
+function renderManager() {
+  $('#mlist').innerHTML = MODELS.map((m) => {
+    const badge = m.installed ? `<span class="tag done">已安裝</span>`
+      : m.partial ? `<span class="tag">下載未完成</span>` : `<span class="tag">未下載</span>`;
+    const btn = m.installed
+      ? `<button class="ghost" data-redl="${m.id}">重新檢查／補齊</button>`
+      : `<button class="go" data-dl="${m.id}">下載 ${gb(m.download_bytes)}</button>`;
+    return `<div class="m ${m.installed ? 'installed' : ''}">
+      <div class="top">
+        <span class="name">${esc(m.label)}</span>${badge}
+        <span class="s">顯存 ${m.vram_gb}GB+ · ${gb(m.download_bytes)}</span>
+        ${btn}
+      </div>
+      ${m.note ? `<div class="note">${esc(m.note)}</div>` : ''}
+      ${!m.runnable ? `<div class="note">這個模型不能從本頁生成，只下載檔案。</div>` : ''}
+      ${m.missing.length && !m.installed ? `<div class="note">缺 ${m.missing.length} 個檔：${esc(m.missing.slice(0,3).join(', '))}${m.missing.length>3?' …':''}</div>` : ''}
+    </div>`;
+  }).join('');
+  document.querySelectorAll('[data-dl],[data-redl]').forEach((b) => b.onclick = async () => {
+    b.disabled = true;
+    await fetch(`/api/models/${b.dataset.dl || b.dataset.redl}/download`, { method: 'POST' });
+    refreshDownloads();
+  });
+}
+
+async function refreshDownloads() {
+  let d;
+  try { d = await (await fetch('/api/downloads')).json(); } catch (_) { return; }
+  const box = $('#dl'), c = d.current;
+  if (!c) {
+    const last = (d.recent || []).slice(-1)[0];
+    if (last && last.status === 'error') {
+      box.classList.remove('hidden');
+      box.innerHTML = `<div class="name">${esc(last.label)}</div><div class="errbox">${esc(last.message)}</div>`;
+    } else { box.classList.add('hidden'); }
+    return;
+  }
+  box.classList.remove('hidden');
+  const active = c.files.find((f) => f.status === 'downloading');
+  box.innerHTML = `
+    <div class="top"><span class="name">下載中：${esc(c.label)}</span>
+      <span class="s">${gb(c.done)} / ${gb(c.total)}${c.rate ? ' · ' + gb(c.rate) + '/s' : ''}${c.eta ? ' · 還要 ' + dur(c.eta) : ''}</span>
+      <button class="ghost" id="dlcancel">停止</button></div>
+    <div class="bar"><i style="width:${c.progress*100}%"></i></div>
+    <div class="s">${active ? esc(active.name) + ' — ' + gb(active.done) + ' / ' + gb(active.size) : '準備中…'}</div>
+    ${d.queued ? `<div class="s">佇列還有 ${d.queued} 個模型</div>` : ''}`;
+  $('#dlcancel').onclick = () => fetch('/api/downloads/cancel', { method: 'POST' });
+}
+
+/* ---------- polling ---------- */
+let modelSig = '';
+async function refreshModels() {
+  try {
+    const d = await (await fetch('/api/models')).json();
+    const sig = JSON.stringify(d);
+    if (sig === modelSig) return;
+    modelSig = sig;
+    MODELS = d.models;
+    if (!chosen) chosen = MODELS.find((m) => m.id === d.default) || MODELS.find((m) => m.runnable);
+    renderModelPicker();
+    renderManager();
+  } catch (_) {}
+}
+
+let loraSig = '';
+async function refreshLoras() {
+  try {
+    const d = await (await fetch('/api/loras')).json();
+    const sig = JSON.stringify(d.loras);
+    if (sig !== loraSig) { loraSig = sig; LORAS = d.loras; renderLoras(); }
+  } catch (_) {}
+}
+
+async function boot() {
+  await refreshModels();
+  await refreshLoras();
+  refreshJobs();
+  refreshDownloads();
+  try {
+    const h = await (await fetch('/api/health')).json();
+    $('#lightning').checked = !!h.lightning_default;
+    $('#sub').textContent =
+      `本機執行 · 無內容過濾 · 已安裝 ${h.installed.length} / ${MODELS.length} 個模型`
+      + (h.comfy.ok ? '' : ' · ComfyUI 還沒就緒：' + h.comfy.detail);
+  } catch (_) {}
+}
+boot();
+setInterval(refreshJobs, 1500);
+setInterval(refreshDownloads, 1000);
+setInterval(refreshModels, 5000);
+setInterval(refreshLoras, 8000);
 </script>
 </body>
 </html>
