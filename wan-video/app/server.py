@@ -126,11 +126,8 @@ async def run_job(job: Job, image_bytes: bytes) -> None:
     if model is None:
         raise ComfyError(f"不認識的模型：{job.model_id}")
 
-    state = models.model_status(model)
-    if not state["installed"]:
-        raise ComfyError(
-            f"{model.label} 還沒下載完，缺少：" + ", ".join(state["missing"][:4])
-        )
+    if reason := missing_reason(model):
+        raise ComfyError(reason)
 
     params = config.params_for(model, lightning=job.lightning)
     params.length = job.length
@@ -176,6 +173,34 @@ async def run_job(job: Job, image_bytes: bytes) -> None:
     data = await client.download(files[0])
     job.output = f"{job.id}{Path(files[0].filename).suffix or '.mp4'}"
     (OUT / job.output).write_bytes(data)
+
+
+def effective_default() -> registry.ModelDef:
+    """The model the UI should preselect: the configured one only if it is
+    actually installed, otherwise whichever installed model we do have.
+
+    Preselecting an uninstalled model sends people straight into a wall - they
+    drop an image, hit generate, and get a wall of missing-file errors.
+    """
+    configured = config.default_model()
+    if models.model_status(configured)["installed"]:
+        return configured
+    for model in registry.runnable():
+        if models.model_status(model)["installed"]:
+            return model
+    return configured
+
+
+def missing_reason(model: registry.ModelDef) -> str | None:
+    state = models.model_status(model)
+    if state["installed"]:
+        return None
+    missing = ", ".join(state["missing"][:3])
+    more = " 等" if len(state["missing"]) > 3 else ""
+    return (
+        f"{model.label} 還沒下載完（缺 {len(state['missing'])} 個檔："
+        f"{missing}{more}）。請到「模型管理」分頁下載，或改選已安裝的模型。"
+    )
 
 
 def submit(
@@ -229,11 +254,15 @@ async def generate(
     except Exception:
         raise HTTPException(400, "無法辨識這個圖片格式")
 
-    chosen = registry.get(model) if model else config.default_model()
+    chosen = registry.get(model) if model else effective_default()
     if chosen is None:
         raise HTTPException(400, f"不認識的模型：{model}")
     if not chosen.runnable:
         raise HTTPException(400, f"{chosen.label} 只提供檔案下載，不能從這裡生成")
+    # Refuse here rather than queueing a job that can only fail. The worker
+    # checks again, since files can be deleted between queueing and running.
+    if reason := missing_reason(chosen):
+        raise HTTPException(400, reason)
 
     defaults = config.params_for(chosen)
     use_lightning = config.LIGHTNING if lightning == "" else lightning.lower() in ("1", "true", "on", "yes")
@@ -315,7 +344,14 @@ async def list_models() -> JSONResponse:
                 **state,
             }
         )
-    return JSONResponse({"models": out, "default": config.default_model().id})
+    return JSONResponse(
+        {
+            "models": out,
+            "default": effective_default().id,
+            "configured_default": config.default_model().id,
+            "models_dir": str(config.MODELS_DIR),
+        }
+    )
 
 
 @app.post("/api/models/{model_id}/download")

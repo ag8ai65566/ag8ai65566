@@ -42,6 +42,17 @@ async def main() -> int:
     print(f"\n模型目錄：{config.MODELS_DIR}")
     if not config.MODELS_DIR.is_dir():
         print("  ✗ 這個目錄不存在 —— 檢查 MODELS_DIR 或 docker compose 的掛載")
+    else:
+        # List what is actually on disk. When the app and ComfyUI disagree about
+        # which files exist, this is the line that shows why.
+        for folder in ("diffusion_models", "unet", "text_encoders", "vae", "clip_vision", "checkpoints"):
+            here = sorted((config.MODELS_DIR / folder).glob("*")) if (config.MODELS_DIR / folder).is_dir() else []
+            real = [f for f in here if f.is_file() and not f.name.startswith(".")]
+            if real:
+                print(f"  {folder}/")
+                for f in real:
+                    print(f"      {f.name}  {gb(f.stat().st_size)}")
+    print(f"預設模型（設定）：{config.DEFAULT_MODEL}")
 
     failures = 0
     for model in registry.MODELS:

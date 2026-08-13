@@ -109,6 +109,7 @@
         <label class="chk" id="litwrap"><input type="checkbox" id="lightning"> 4 步加速（快很多，動態略遜）</label>
         <div class="spacer"></div>
         <button class="ghost" id="stop">中斷</button>
+        <button class="go hidden" id="getmodel">先下載這個模型</button>
         <button class="go" id="go" disabled>生成</button>
       </div>
       <div id="modelnote" class="s"></div>
@@ -173,12 +174,29 @@ window.addEventListener('paste', (e) => { for (const f of e.clipboardData.files)
 
 /* ---------- model selection ---------- */
 function syncGo() {
-  const ok = picked && chosen && chosen.installed && chosen.runnable;
-  $('#go').disabled = !ok;
-  if (picked && chosen && !chosen.installed) {
-    $('#status').textContent = `${chosen.label} 還沒下載 —— 到「模型管理」下載（${gb(chosen.download_bytes)}）`;
+  const needsDownload = chosen && chosen.runnable && !chosen.installed;
+  // An uninstalled model gets a download button instead of a dead generate
+  // button, so the way forward is obvious rather than a mystery.
+  $('#go').classList.toggle('hidden', !!needsDownload);
+  $('#getmodel').classList.toggle('hidden', !needsDownload);
+  $('#go').disabled = !(picked && chosen && chosen.installed && chosen.runnable);
+  if (needsDownload) {
+    $('#getmodel').textContent = `先下載這個模型（${gb(chosen.download_bytes)}）`;
+    $('#status').textContent =
+      `${chosen.label} 還沒下載。按上面那顆鈕開始下載，或改選前面有 ✓ 的模型。`;
+  } else if (!picked) {
+    $('#status').textContent = '';
   }
 }
+
+$('#getmodel').onclick = async () => {
+  if (!chosen) return;
+  $('#getmodel').disabled = true;
+  await fetch(`/api/models/${chosen.id}/download`, { method: 'POST' });
+  document.querySelector('.tabs button[data-tab="mgr"]').click();
+  refreshDownloads();
+  $('#getmodel').disabled = false;
+};
 
 function renderModelPicker() {
   const sel = $('#model');
@@ -380,6 +398,11 @@ async function boot() {
     $('#sub').textContent =
       `本機執行 · 無內容過濾 · 已安裝 ${h.installed.length} / ${MODELS.length} 個模型`
       + (h.comfy.ok ? '' : ' · ComfyUI 還沒就緒：' + h.comfy.detail);
+    $('#sub').title = '模型目錄：' + h.models_dir;
+    if (!h.installed.length) {
+      $('#status').textContent =
+        '一個模型都還沒裝好。到「模型管理」分頁下載一個。（模型目錄：' + h.models_dir + '）';
+    }
   } catch (_) {}
 }
 boot();

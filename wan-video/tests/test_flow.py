@@ -628,20 +628,19 @@ async def test_server() -> None:
             check(len(nodes_of(g2, "DualCLIPLoader")) == 1, "hunyuan dual encoder used")
             check(job2["model_label"].startswith("HunyuanVideo"), "job records which model ran")
 
-            # --- an uninstalled model must be refused with a useful message
+            # --- an uninstalled model is refused at the API boundary, so no
+            # doomed job ever reaches the queue
+            before = len((await (await s.get(f"{base}/api/jobs")).json())["jobs"])
             form = aiohttp.FormData()
             form.add_field("image", sample_png((512, 512)), filename="c.png", content_type="image/png")
             form.add_field("model", "wan22-14b-q4")
             async with s.post(f"{base}/api/generate", data=form) as r:
-                job3 = await r.json()
-            for _ in range(300):
-                async with s.get(f"{base}/api/jobs/{job3['id']}") as r:
-                    job3 = await r.json()
-                if job3["status"] in ("done", "error"):
-                    break
-                await asyncio.sleep(0.1)
-            check(job3["status"] == "error" and "還沒下載" in job3["message"],
-                  f"uninstalled model refused clearly ({job3['message'][:60]})")
+                status3, body3 = r.status, await r.json()
+            check(status3 == 400, f"uninstalled model rejected with 400 (got {status3})")
+            check("還沒下載完" in body3.get("detail", ""),
+                  f"message explains what to do ({body3.get('detail','')[:50]})")
+            after = len((await (await s.get(f"{base}/api/jobs")).json())["jobs"])
+            check(after == before, "no job was queued for the uninstalled model")
 
             # --- files-only model refused at the API boundary
             form = aiohttp.FormData()
@@ -669,6 +668,98 @@ async def test_server() -> None:
 
             async with s.get(f"{base}/api/downloads") as r:
                 check((await r.json())["current"] is None, "no download running")
+
+            # --- the trap that bit in practice: MODEL names an uninstalled
+            # model, so the UI must not preselect it and the API must refuse it
+            # up front rather than queueing a job that can only fail.
+            check(cat["default"] in ("wan22-14b-fp8", "hy15-720p"),
+                  f"default is an installed model ({cat['default']})")
+            check(cat["configured_default"] == "wan22-14b-fp8", "configured default still reported")
+            check("models_dir" in cat, "catalogue reports which folder it reads")
+    finally:
+        proc.terminate()
+        await proc.wait()
+        await comfy_runner.cleanup()
+
+
+async def test_uninstalled_model_is_refused_up_front() -> None:
+    """With only hy15-480p on disk but MODEL=wan22-14b-fp8 configured."""
+    import aiohttp
+    import registry
+
+    section("uninstalled default model")
+    fake = FakeComfy(installed={"hy15-480p"})
+    comfy_runner, comfy_url = await start(fake.app())
+
+    models_dir = TMP / "only-hy"
+    install(models_dir, registry.get("hy15-480p"))
+
+    env = {
+        **os.environ,
+        "COMFY_URL": comfy_url,
+        "MODELS_DIR": str(models_dir),
+        "OUTPUT_DIR": str(TMP / "only-hy-out"),
+        "INBOX_DIR": str(TMP / "only-hy-in"),
+        "MODEL": "wan22-14b-fp8",          # configured but NOT installed
+        "PYTHONPATH": str(ROOT / "app"),
+        "LORAS": "",
+    }
+    proc = await asyncio.create_subprocess_exec(
+        sys.executable, "-m", "uvicorn", "server:app", "--host", "127.0.0.1", "--port", "18423",
+        cwd=str(ROOT / "app"), env=env,
+        stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT,
+    )
+    base = "http://127.0.0.1:18423"
+    try:
+        async with aiohttp.ClientSession() as s:
+            for _ in range(160):
+                try:
+                    async with s.get(f"{base}/api/health", timeout=5) as r:
+                        if r.status == 200:
+                            break
+                except Exception:  # noqa: BLE001
+                    await asyncio.sleep(0.25)
+            else:
+                out = await proc.stdout.read(4000)
+                raise AssertionError(f"server never started:\n{out.decode(errors='replace')}")
+
+            async with s.get(f"{base}/api/models") as r:
+                cat = await r.json()
+            check(cat["default"] == "hy15-480p",
+                  f"UI preselects the installed model, not the configured one ({cat['default']})")
+            check(cat["configured_default"] == "wan22-14b-fp8", "configured default still visible")
+
+            # asking for the uninstalled model must 400 with a useful message
+            form = aiohttp.FormData()
+            form.add_field("image", sample_png((1100, 1600)), filename="a.png", content_type="image/png")
+            form.add_field("model", "wan22-14b-fp8")
+            async with s.post(f"{base}/api/generate", data=form) as r:
+                body = await r.json()
+                status = r.status
+            check(status == 400, f"uninstalled model refused with 400, not queued (got {status})")
+            detail = body.get("detail", "")
+            check("還沒下載完" in detail, f"message says it needs downloading ({detail[:40]})")
+            check("模型管理" in detail, "message points at the model manager")
+            check("wan2.2_i2v_high_noise" in detail, "message names a missing file")
+
+            async with s.get(f"{base}/api/jobs") as r:
+                check((await r.json())["jobs"] == [], "no doomed job was queued")
+
+            # the installed model still works
+            form = aiohttp.FormData()
+            form.add_field("image", sample_png((1100, 1600)), filename="b.png", content_type="image/png")
+            form.add_field("model", "hy15-480p")
+            form.add_field("prompt", "slow pan")
+            async with s.post(f"{base}/api/generate", data=form) as r:
+                check(r.status == 200, f"installed model accepted ({r.status})")
+                job = await r.json()
+            for _ in range(300):
+                async with s.get(f"{base}/api/jobs/{job['id']}") as r:
+                    job = await r.json()
+                if job["status"] in ("done", "error"):
+                    break
+                await asyncio.sleep(0.1)
+            check(job["status"] == "done", f"hy15 job runs ({job['status']}: {job['message'][:80]})")
     finally:
         proc.terminate()
         await proc.wait()
@@ -755,6 +846,7 @@ async def main() -> int:
     await test_downloader()
     await test_client()
     await test_server()
+    await test_uninstalled_model_is_refused_up_front()
     test_windows_script_encoding()
     await test_watcher()
     if live:
