@@ -19,12 +19,14 @@ from pathlib import Path
 from aiohttp import WSMsgType, web
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "app"))
+import images  # noqa: E402
 import registry  # noqa: E402
 
 SCHEMA = json.loads((Path(__file__).parent / "schema_core.json").read_text())
 
 # (node class, input name) -> which models/<folder> the combo lists
 FILE_INPUTS = {
+    ("CheckpointLoaderSimple", "ckpt_name"): ("checkpoints",),
     ("UNETLoader", "unet_name"): ("diffusion_models", "unet"),
     ("UnetLoaderGGUF", "unet_name"): ("unet",),
     ("CLIPLoader", "clip_name"): ("text_encoders",),
@@ -33,6 +35,7 @@ FILE_INPUTS = {
     ("CLIPVisionLoader", "clip_name"): ("clip_vision",),
     ("VAELoader", "vae_name"): ("vae",),
     ("LoraLoaderModelOnly", "lora_name"): ("loras",),
+    ("CLIPSetLastLayer", "__none__"): (),
     ("LoraLoader", "lora_name"): ("loras",),
     ("LoadImage", "image"): ("__images__",),
 }
@@ -45,6 +48,12 @@ def installed_names(folders: tuple[str, ...], only: set[str] | None) -> list[str
     if folders == ("__images__",):
         return ["example.png"]
     names: set[str] = set()
+    if "checkpoints" in folders:
+        names.update(f.name for m in images.IMAGE_MODELS for f in m.all_files
+                     if f.folder == "checkpoints")
+    if "vae" in folders:
+        names.update(f.name for m in images.IMAGE_MODELS for f in m.all_files
+                     if f.folder == "vae")
     for model in registry.MODELS:
         if only is not None and model.id not in only:
             continue

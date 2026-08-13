@@ -14,12 +14,7 @@
    },
    "required": {
     "clip_name": [
-     [
-      "byt5_small_glyphxl_fp16.safetensors",
-      "gemma_3_12B_it_fp4_mixed.safetensors",
-      "qwen_2.5_vl_7b_fp8_scaled.safetensors",
-      "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
-     ]
+     []
     ],
     "type": [
      [
@@ -52,6 +47,28 @@
       "mage",
       "minimax"
      ]
+    ]
+   }
+  },
+  "output": [
+   "CLIP"
+  ]
+ },
+ "CLIPSetLastLayer": {
+  "input": {
+   "required": {
+    "clip": [
+     "CLIP"
+    ],
+    "stop_at_clip_layer": [
+     "INT",
+     {
+      "advanced": true,
+      "default": -1,
+      "max": -1,
+      "min": -24,
+      "step": 1
+     }
     ]
    }
   },
@@ -107,14 +124,33 @@
   "input": {
    "required": {
     "clip_name": [
-     [
-      "sigclip_vision_patch14_384.safetensors"
-     ]
+     []
     ]
    }
   },
   "output": [
    "CLIP_VISION"
+  ]
+ },
+ "CheckpointLoaderSimple": {
+  "input": {
+   "required": {
+    "ckpt_name": [
+     [
+      "Illustrious-XL-v0.1.safetensors",
+      "Juggernaut-XL_v9_RunDiffusionPhoto_v2.safetensors",
+      "ponyDiffusionV6XL_v6StartWithThisOne.safetensors"
+     ],
+     {
+      "tooltip": "The name of the checkpoint (model) to load."
+     }
+    ]
+   }
+  },
+  "output": [
+   "MODEL",
+   "CLIP",
+   "VAE"
   ]
  },
  "CreateVideo": {
@@ -175,20 +211,10 @@
    },
    "required": {
     "clip_name1": [
-     [
-      "byt5_small_glyphxl_fp16.safetensors",
-      "gemma_3_12B_it_fp4_mixed.safetensors",
-      "qwen_2.5_vl_7b_fp8_scaled.safetensors",
-      "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
-     ]
+     []
     ],
     "clip_name2": [
-     [
-      "byt5_small_glyphxl_fp16.safetensors",
-      "gemma_3_12B_it_fp4_mixed.safetensors",
-      "qwen_2.5_vl_7b_fp8_scaled.safetensors",
-      "umt5_xxl_fp8_e4m3fn_scaled.safetensors"
-     ]
+     []
     ],
     "type": [
      [
@@ -210,6 +236,44 @@
   },
   "output": [
    "CLIP"
+  ]
+ },
+ "EmptyLatentImage": {
+  "input": {
+   "required": {
+    "batch_size": [
+     "INT",
+     {
+      "default": 1,
+      "max": 4096,
+      "min": 1,
+      "tooltip": "The number of latent images in the batch."
+     }
+    ],
+    "height": [
+     "INT",
+     {
+      "default": 512,
+      "max": 16384,
+      "min": 16,
+      "step": 8,
+      "tooltip": "The height of the latent images in pixels."
+     }
+    ],
+    "width": [
+     "INT",
+     {
+      "default": 512,
+      "max": 16384,
+      "min": 16,
+      "step": 8,
+      "tooltip": "The width of the latent images in pixels."
+     }
+    ]
+   }
+  },
+  "output": [
+   "LATENT"
   ]
  },
  "HunyuanVideo15ImageToVideo": {
@@ -565,6 +629,51 @@
    "LATENT"
   ]
  },
+ "LatentUpscale": {
+  "input": {
+   "required": {
+    "crop": [
+     [
+      "disabled",
+      "center"
+     ]
+    ],
+    "height": [
+     "INT",
+     {
+      "default": 512,
+      "max": 16384,
+      "min": 0,
+      "step": 8
+     }
+    ],
+    "samples": [
+     "LATENT"
+    ],
+    "upscale_method": [
+     [
+      "nearest-exact",
+      "bilinear",
+      "area",
+      "bicubic",
+      "bislerp"
+     ]
+    ],
+    "width": [
+     "INT",
+     {
+      "default": 512,
+      "max": 16384,
+      "min": 0,
+      "step": 8
+     }
+    ]
+   }
+  },
+  "output": [
+   "LATENT"
+  ]
+ },
  "LoadImage": {
   "input": {
    "required": {
@@ -583,13 +692,62 @@
    "MASK"
   ]
  },
+ "LoraLoader": {
+  "input": {
+   "required": {
+    "clip": [
+     "CLIP",
+     {
+      "tooltip": "The CLIP model the LoRA will be applied to."
+     }
+    ],
+    "lora_name": [
+     [
+      "my_style.safetensors"
+     ],
+     {
+      "tooltip": "The name of the LoRA."
+     }
+    ],
+    "model": [
+     "MODEL",
+     {
+      "tooltip": "The diffusion model the LoRA will be applied to."
+     }
+    ],
+    "strength_clip": [
+     "FLOAT",
+     {
+      "default": 1.0,
+      "max": 100.0,
+      "min": -100.0,
+      "step": 0.01,
+      "tooltip": "How strongly to modify the CLIP model. This value can be negative."
+     }
+    ],
+    "strength_model": [
+     "FLOAT",
+     {
+      "default": 1.0,
+      "max": 100.0,
+      "min": -100.0,
+      "step": 0.01,
+      "tooltip": "How strongly to modify the diffusion model. This value can be negative."
+     }
+    ]
+   }
+  },
+  "output": [
+   "MODEL",
+   "CLIP"
+  ]
+ },
  "LoraLoaderModelOnly": {
   "input": {
    "required": {
     "lora_name": [
      [
-      "wan2.2_i2v_lightx2v_4steps_lora_v1_high_noise.safetensors",
-      "wan2.2_i2v_lightx2v_4steps_lora_v1_low_noise.safetensors"
+      "my_style.safetensors"
      ]
     ],
     "model": [
@@ -685,6 +843,32 @@
       "default": 80,
       "max": 100,
       "min": 0
+     }
+    ]
+   }
+  },
+  "output": [
+   "IMAGE"
+  ]
+ },
+ "SaveImage": {
+  "input": {
+   "hidden": {
+    "extra_pnginfo": "EXTRA_PNGINFO",
+    "prompt": "PROMPT"
+   },
+   "required": {
+    "filename_prefix": [
+     "STRING",
+     {
+      "default": "ComfyUI",
+      "tooltip": "The prefix for the file to save. This may include formatting information such as %date:yyyy-MM-dd% or %Empty Latent Image.width% to include values from nodes."
+     }
+    ],
+    "images": [
+     "IMAGE",
+     {
+      "tooltip": "The images to save."
      }
     ]
    }
@@ -794,13 +978,7 @@
   "input": {
    "required": {
     "unet_name": [
-     [
-      "hunyuanvideo1.5_480p_i2v_fp16.safetensors",
-      "hunyuanvideo1.5_720p_i2v_fp16.safetensors",
-      "wan2.2_i2v_high_noise_14B_fp8_scaled.safetensors",
-      "wan2.2_i2v_low_noise_14B_fp8_scaled.safetensors",
-      "wan2.2_ti2v_5B_fp16.safetensors"
-     ]
+     []
     ],
     "weight_dtype": [
      [
@@ -860,9 +1038,7 @@
    "required": {
     "vae_name": [
      [
-      "hunyuanvideo15_vae_fp16.safetensors",
-      "wan2.2_vae.safetensors",
-      "wan_2.1_vae.safetensors",
+      "sdxl.vae.safetensors",
       "pixel_space"
      ]
     ]

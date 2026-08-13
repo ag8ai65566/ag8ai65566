@@ -827,6 +827,104 @@ async def test_uninstalled_model_is_refused_up_front() -> None:
         await comfy_runner.cleanup()
 
 
+# -- text to image -----------------------------------------------------------
+
+
+def test_image_registry() -> None:
+    import images
+
+    section("image models")
+    check(len(images.IMAGE_MODELS) >= 4, f"{len(images.IMAGE_MODELS)} checkpoints catalogued")
+    check(len({m.id for m in images.IMAGE_MODELS}) == len(images.IMAGE_MODELS), "ids unique")
+    for m in images.IMAGE_MODELS:
+        check(m.file.folder == "checkpoints", f"{m.id} installs into checkpoints/")
+        check(m.file.size > 1e9, f"{m.id} has a real size ({m.file.size/1e9:.1f}GB)")
+        check(bool(m.sizes), f"{m.id} offers sizes")
+        check(bool(m.prompt_style), f"{m.id} explains how to prompt it")
+        check(bool(m.negative), f"{m.id} ships a default negative prompt")
+        check(-12 <= m.clip_skip <= -1, f"{m.id} clip skip in range ({m.clip_skip})")
+        check(any(f.folder == "vae" for f in m.extra_files), f"{m.id} pairs an fp16 VAE")
+
+    # The per-model knowledge that is the whole point of the catalogue.
+    pony = images.get("pony")
+    check(pony.positive_prefix.startswith("score_9"), "Pony gets its score_ tags")
+    illus = images.get("illustrious")
+    check(illus.clip_skip == -2, "Illustrious uses CLIP skip -2")
+    jug = images.get("juggernaut")
+    check(jug.clip_skip == -1 and not jug.positive_prefix, "photoreal model needs neither")
+
+    for key in ("steps", "cfg", "sampler", "scheduler", "size", "batch", "seed", "clip_skip", "hires", "lora"):
+        check(key in images.HELP and len(images.HELP[key]) > 10, f"help text for {key}")
+
+
+async def test_image_graphs() -> None:
+    import images
+    from comfy_client import ComfyClient
+
+    section("image graphs")
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    try:
+        client = ComfyClient(url)
+        nodes = await client.node_classes()
+        for model in images.IMAGE_MODELS:
+            for hires in (0.0, 1.5):
+                w, h = list(model.sizes.values())[0]
+                g = images.build(model, prompt="p", negative="n", seed=1, width=w, height=h,
+                                 batch=3, hires_scale=hires,
+                                 loras=[("my_style.safetensors", 0.8)],
+                                 available_nodes=nodes)
+                problems = await client.validate(g)
+                check(problems == [], f"{model.id} hires={hires} validates {problems[:1]}")
+
+        model = images.get("illustrious")
+        g = images.build(model, prompt="p", negative="n", seed=7, width=832, height=1216,
+                         batch=4, loras=[("a.safetensors", 0.6), ("b.safetensors", 1.0)],
+                         available_nodes=nodes)
+        check(len(nodes_of(g, "LoraLoader")) == 2, "two LoRAs chained")
+        check(all(n["inputs"]["strength_model"] == n["inputs"]["strength_clip"]
+                  for n in nodes_of(g, "LoraLoader")), "image LoRAs drive model and CLIP together")
+        check(nodes_of(g, "EmptyLatentImage")[0]["inputs"]["batch_size"] == 4, "batch size wired")
+        check(len(nodes_of(g, "CLIPSetLastLayer")) == 1, "clip skip -2 adds the node")
+        check(nodes_of(g, "CLIPSetLastLayer")[0]["inputs"]["stop_at_clip_layer"] == -2, "…with -2")
+        check(len(nodes_of(g, "KSampler")) == 1, "single pass without hires")
+
+        g2 = images.build(images.get("juggernaut"), prompt="p", negative="n", seed=1,
+                          width=1024, height=1024, available_nodes=nodes)
+        check(nodes_of(g2, "CLIPSetLastLayer") == [], "clip skip -1 omits the node entirely")
+
+        g3 = images.build(model, prompt="p", negative="n", seed=1, width=1024, height=1024,
+                          hires_scale=1.5, hires_denoise=0.4, available_nodes=nodes)
+        ks = nodes_of(g3, "KSampler")
+        check(len(ks) == 2, "hires adds a second sampler")
+        check(ks[0]["inputs"]["denoise"] == 1.0 and ks[1]["inputs"]["denoise"] == 0.4,
+              "second pass uses the hires denoise")
+        up = nodes_of(g3, "LatentUpscale")[0]["inputs"]
+        check(up["width"] == 1536 and up["width"] % 8 == 0, f"upscaled to a legal size ({up['width']})")
+
+        check(nodes_of(g, "SaveImage")[0]["inputs"]["filename_prefix"].startswith("img/"),
+              "images save under their own prefix")
+    finally:
+        await runner.cleanup()
+
+
+def test_seconds_to_frames() -> None:
+    import workflow
+
+    section("duration")
+    # The official Wan template computes floor(seconds * fps + 1).
+    check(workflow.frames_for_seconds(5, 16) == 81, "5s @16fps -> 81 frames (the official default)")
+    check(workflow.frames_for_seconds(5, 24) == 121, "5s @24fps -> 121 frames")
+    for sec in (1, 2, 3, 5, 7.5, 10):
+        for fps in (16, 24):
+            f = workflow.frames_for_seconds(sec, fps)
+            check((f - 1) % 4 == 0, f"{sec}s @{fps} stays 4n+1 ({f})")
+            check(abs(workflow.seconds_for_frames(f, fps) - sec) < 0.2,
+                  f"{sec}s @{fps} round-trips ({workflow.seconds_for_frames(f, fps)})")
+    check(workflow.frames_for_seconds(999, 16) == 241, "absurd duration clamps")
+    check(workflow.frames_for_seconds(0, 16) == 5, "zero clamps up to the minimum")
+
+
 def test_windows_script_encoding() -> None:
     """Windows PowerShell 5.1 is unforgiving about how these files are stored.
 
@@ -1152,6 +1250,9 @@ async def main() -> int:
     await test_server()
     await test_uninstalled_model_is_refused_up_front()
     test_library()
+    test_image_registry()
+    await test_image_graphs()
+    test_seconds_to_frames()
     test_vram_advice()
     await test_civitai()
     await test_lora_download()

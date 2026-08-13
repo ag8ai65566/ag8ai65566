@@ -19,6 +19,9 @@ NEEDED = [
     "WanImageToVideo", "Wan22ImageToVideoLatent", "HunyuanVideo15ImageToVideo",
     "CLIPVisionLoader", "CLIPVisionEncode", "KSampler", "KSamplerAdvanced",
     "VAEDecode", "CreateVideo", "SaveVideo", "SaveAnimatedWEBP",
+    # text-to-image
+    "CheckpointLoaderSimple", "EmptyLatentImage", "LoraLoader", "CLIPSetLastLayer",
+    "LatentUpscale", "SaveImage",
 ]
 
 

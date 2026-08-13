@@ -118,7 +118,8 @@
   <div class="sub" id="sub">本機執行 · 無內容過濾</div>
 
   <div class="tabs">
-    <button class="on" data-tab="gen">生成</button>
+    <button class="on" data-tab="gen">影片</button>
+    <button data-tab="img">圖片</button>
     <button data-tab="lib">素材庫<span class="badge" id="libcount">0</span></button>
     <button data-tab="lora">LoRA</button>
     <button data-tab="mdl">模型</button>
@@ -142,7 +143,7 @@
           <select id="model"></select>
         </label>
         <label class="f">解析度<select id="tier"></select></label>
-        <label class="f">長度<select id="length"></select></label>
+        <label class="f">長度（秒）<select id="seconds"></select></label>
         <label class="f">種子
           <input type="number" id="seed" value="-1" min="-1" style="width:104px">
         </label>
@@ -180,6 +181,77 @@
     <div id="recent" class="grid"></div>
   </div>
 
+
+  <!-- ================= 圖片 ================= -->
+  <div id="tab-img" class="hidden">
+    <div class="card">
+      <div class="row">
+        <label class="f" style="flex:1;min-width:280px">底模
+          <select id="imodel"></select>
+        </label>
+        <label class="f">尺寸<select id="isize"></select></label>
+        <label class="f">一次幾張
+          <input type="number" id="ibatch" value="1" min="1" max="16" style="width:76px">
+        </label>
+        <label class="f">種子
+          <input type="number" id="iseed" value="-1" min="-1" style="width:104px">
+        </label>
+        <button class="ghost" id="ireseed" title="換一個隨機種子">🎲</button>
+      </div>
+      <div id="istyle" class="banner"></div>
+
+      <textarea id="iprompt" placeholder="想畫什麼？"></textarea>
+      <label class="chk" style="margin-top:6px"><input type="checkbox" id="iprefix" checked>
+        <span id="iprefixlabel">自動加上品質標籤</span></label>
+
+      <textarea id="inegative" placeholder="不想要什麼（負面提詞）" style="min-height:56px"></textarea>
+      <div class="row" style="margin-top:4px">
+        <button class="ghost tiny" id="inegreset">還原這個底模的預設負面詞</button>
+        <span class="s" id="ineghelp"></span>
+      </div>
+
+      <details id="iadv" style="margin-top:14px">
+        <summary class="s" style="cursor:pointer">進階微調（不動也能用）</summary>
+        <div class="row">
+          <label class="f">步數 <input type="number" id="isteps" min="1" max="100" style="width:80px"></label>
+          <label class="f">CFG <input type="number" id="icfg" min="1" max="30" step="0.5" style="width:80px"></label>
+          <label class="f">Sampler <select id="isampler"></select></label>
+          <label class="f">Scheduler <select id="ischeduler"></select></label>
+          <label class="f">CLIP skip <input type="number" id="iclip" min="-12" max="-1" style="width:80px"></label>
+        </div>
+        <div class="row">
+          <label class="chk"><input type="checkbox" id="ihires"> 高解析重繪（放大後再畫一次）</label>
+          <label class="f">放大倍率 <input type="number" id="ihiresscale" value="1.5" min="1.1" max="2.5" step="0.1" style="width:80px"></label>
+          <label class="f">重繪強度 <input type="number" id="ihiresden" value="0.45" min="0.1" max="1" step="0.05" style="width:80px"></label>
+        </div>
+        <div id="ihelp" class="note"></div>
+      </details>
+
+      <div class="row">
+        <div class="spacer"></div>
+        <button class="ghost" id="istop">中斷</button>
+        <button class="go hidden" id="igetmodel">先下載這個底模</button>
+        <button class="go" id="igo">生成</button>
+      </div>
+      <div id="ivram" class="banner hidden"></div>
+      <div id="istatus" class="note"></div>
+    </div>
+
+    <div id="iloraSec">
+      <h2>要套用的 LoRA</h2>
+      <div class="card">
+        <div id="iloras" class="loralist"></div>
+        <div class="s" style="margin-top:8px">
+          圖片的 LoRA 要用 <b>SDXL 系</b>（Illustrious / Pony / SDXL）的，影片的 LoRA 在這裡不會有作用。
+          到「LoRA」分頁搜尋時把上面的來源切成「圖片」就會自動篩對。
+        </div>
+      </div>
+    </div>
+
+    <h2>最近</h2>
+    <div id="irecent" class="grid"></div>
+  </div>
+
   <!-- ================= 素材庫 ================= -->
   <div id="tab-lib" class="hidden">
     <div class="card">
@@ -189,6 +261,13 @@
           <input type="range" id="cardsize" min="140" max="420" step="20" style="width:130px">
         </label>
         <label class="chk"><input type="checkbox" id="onlystar"> 只看星號</label>
+        <label class="f">種類
+          <select id="kindfilter">
+            <option value="">全部</option>
+            <option value="video">影片</option>
+            <option value="image">圖片</option>
+          </select>
+        </label>
         <div class="spacer"></div>
         <span class="s" id="libstats"></span>
         <button class="ghost tiny" id="sweep" title="刪掉沒有紀錄的孤兒影片檔">清孤兒檔</button>
@@ -210,6 +289,18 @@
         <button class="go" id="csearch">搜尋</button>
       </div>
       <div class="row">
+        <label class="f">用在哪
+          <select id="cfor">
+            <option value="video">影片模型</option>
+            <option value="image">圖片底模</option>
+          </select>
+        </label>
+        <label class="f">找什麼
+          <select id="ctype">
+            <option value="LORA">LoRA</option>
+            <option value="Checkpoint">底模 Checkpoint</option>
+          </select>
+        </label>
         <label class="f">相容範圍
           <select id="cscope">
             <option value="strict">只看完全相容</option>
@@ -266,9 +357,10 @@ let CIV = { items: [], cursor: '', loading: false };
 /* ---------- tabs ---------- */
 document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
   document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('on', x === b));
-  ['gen','lib','lora','mdl','set'].forEach((t) =>
+  ['gen','img','lib','lora','mdl','set'].forEach((t) =>
     $('#tab-'+t).classList.toggle('hidden', b.dataset.tab !== t));
   if (b.dataset.tab === 'lib') renderGallery();
+  if (b.dataset.tab === 'img') { refreshImageModels(); }
   if (b.dataset.tab === 'lora' && !CIV.items.length) civSearch(true);
   if (b.dataset.tab === 'set') renderSettings();
 });
@@ -329,9 +421,14 @@ function onModelChange() {
 
   $('#tier').innerHTML = chosen.tiers.map((t) =>
     `<option value="${t}"${t === chosen.default_tier ? ' selected' : ''}>${t}</option>`).join('');
-  const opts = [...new Set([49, 81, chosen.length, 121, 161])].filter((n) => n >= 5).sort((a,b) => a-b);
-  $('#length').innerHTML = opts.map((n) =>
-    `<option value="${n}"${n === chosen.length ? ' selected' : ''}>${n} 幀 ≈ ${(n/chosen.fps).toFixed(1)} 秒</option>`).join('');
+  // Duration is what people think in; frames are derived the way the official
+  // Wan template does it: floor(seconds * fps + 1), snapped to 4n+1.
+  const frames = (sec) => { let f = Math.floor(sec * chosen.fps) + 1;
+    f = Math.max(5, Math.min(f, 241)); return Math.floor((f - 1) / 4) * 4 + 1; };
+  const defSec = +(chosen.length / chosen.fps).toFixed(1);
+  const secs = [...new Set([2, 3, 5, defSec, 7.5, 10])].filter((x) => x >= 0.5).sort((a,b) => a-b);
+  $('#seconds').innerHTML = secs.map((sec) =>
+    `<option value="${sec}"${Math.abs(sec - defSec) < 0.06 ? ' selected' : ''}>${sec} 秒（${frames(sec)} 幀 @ ${chosen.fps}fps）</option>`).join('');
 
   $('#litwrap').classList.toggle('hidden', !chosen.supports_lightning);
   const sm = chosen.sampling;
@@ -404,7 +501,7 @@ $('#go').onclick = async () => {
   body.append('negative', $('#negtoggle').checked ? $('#negative').value : '');
   body.append('model', chosen.id);
   body.append('tier', $('#tier').value);
-  body.append('length', $('#length').value);
+  body.append('seconds', $('#seconds').value);
   body.append('seed', $('#seed').value || '-1');
   body.append('lightning', $('#lightning').checked ? '1' : '0');
   body.append('loras', JSON.stringify(selectedLoras()));
@@ -439,7 +536,10 @@ function itemHtml(j, big) {
     <div class="body">
       <div class="p">${j.prompt ? esc(j.prompt) : '<i class="s">（沒有指令）</i>'}</div>
       <div><span class="tag ${cls}">${text}</span>
-        <span class="s"> ${j.size || j.tier} · ${j.length}f · ${j.elapsed}s</span></div>
+        <span class="s"> ${j.size || j.tier}${j.kind === 'image'
+            ? (j.outputs.length > 1 ? ` · ${j.outputs.length} 張` : '')
+            : ` · ${j.duration ? j.duration + ' 秒' : j.length + 'f'}${j.fps ? ' @' + j.fps + 'fps' : ''}`}
+          · 花了 ${dur(j.elapsed)}</span></div>
       ${big ? `<div class="s">${esc(j.model_label)} · seed ${j.seed}${j.lightning?' · 4步':''} · ${when(j.created)}</div>`:''}
       ${j.loras.length ? `<div class="s">LoRA: ${esc(j.loras.join(', '))}</div>`:''}
       ${j.status === 'running' ? `<div class="bar"><i style="width:${j.progress*100}%"></i></div>`:''}
@@ -464,7 +564,7 @@ function wireItems(root) {
     delete el.dataset.play;
   });
   root.querySelectorAll('[data-star]').forEach((b) => b.onclick = async () => {
-    const j = JOBS.find((x) => x.id === b.dataset.star);
+    const j = [...JOBS, ...IMG.jobs].find((x) => x.id === b.dataset.star);
     await fetch(`/api/jobs/${b.dataset.star}/star`, {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ value: !(j && j.starred) }) });
@@ -476,13 +576,21 @@ function wireItems(root) {
     refreshJobs(true);
   });
   root.querySelectorAll('[data-again]').forEach((b) => b.onclick = () => {
-    const j = JOBS.find((x) => x.id === b.dataset.again);
+    const j = [...JOBS, ...IMG.jobs].find((x) => x.id === b.dataset.again);
     if (!j) return;
-    $('#prompt').value = j.prompt;
-    $('#seed').value = -1;
-    if (MODELS.some((m) => m.id === j.model)) { $('#model').value = j.model; onModelChange(); }
-    document.querySelector('.tabs button[data-tab="gen"]').click();
-    $('#status').textContent = '設定已帶入（換了新種子）。放一張圖再按生成。';
+    if (j.kind === 'image') {
+      $('#iprompt').value = j.prompt;
+      $('#iseed').value = -1;
+      if (IMG.models.some((m) => m.id === j.model)) { $('#imodel').value = j.model; onImageModelChange(); }
+      document.querySelector('.tabs button[data-tab="img"]').click();
+      $('#istatus').textContent = '設定已帶入（換了新種子）。按生成即可。';
+    } else {
+      $('#prompt').value = j.prompt;
+      $('#seed').value = -1;
+      if (MODELS.some((m) => m.id === j.model)) { $('#model').value = j.model; onModelChange(); }
+      document.querySelector('.tabs button[data-tab="gen"]').click();
+      $('#status').textContent = '設定已帶入（換了新種子）。放一張圖再按生成。';
+    }
     window.scrollTo({ top:0, behavior:'smooth' });
   });
 }
@@ -498,8 +606,11 @@ function renderRecent() {
   wireItems($('#recent'));
 }
 function renderGallery() {
-  const list = P.get('onlystar', false) ? JOBS.filter((j) => j.starred) : JOBS;
-  const sig = JSON.stringify(list) + P.get('autoplay', false) + P.get('onlystar', false);
+  const kind = P.get('kindfilter', '');
+  let list = JOBS;
+  if (P.get('onlystar', false)) list = list.filter((j) => j.starred);
+  if (kind) list = list.filter((j) => j.kind === kind);
+  const sig = JSON.stringify(list) + P.get('autoplay', false) + P.get('onlystar', false) + kind;
   if (sig === gallerySig) return;
   gallerySig = sig;
   $('#gallery').innerHTML = list.map((j) => itemHtml(j, true)).join('')
@@ -509,6 +620,7 @@ function renderGallery() {
 
 $('#autoplay').onchange = (e) => { P.set('autoplay', e.target.checked); recentSig = gallerySig = ''; renderRecent(); renderGallery(); };
 $('#onlystar').onchange = (e) => { P.set('onlystar', e.target.checked); gallerySig = ''; renderGallery(); };
+$('#kindfilter').onchange = (e) => { P.set('kindfilter', e.target.value); gallerySig = ''; renderGallery(); };
 $('#cardsize').oninput = (e) => { P.set('cardsize', +e.target.value); document.documentElement.style.setProperty('--card', e.target.value+'px'); };
 $('#sweep').onclick = async () => {
   const d = await (await fetch('/api/library/sweep', { method:'POST' })).json();
@@ -552,8 +664,13 @@ async function civSearch(reset) {
   if (CIV.loading) return;
   CIV.loading = true;
   if (reset) { CIV.items = []; CIV.cursor = ''; }
+  const forImage = $('#cfor').value === 'image';
   const q = new URLSearchParams({
-    query: $('#cq').value, model: chosen ? chosen.id : '', scope: $('#cscope').value,
+    query: $('#cq').value,
+    model: forImage ? '' : (chosen ? chosen.id : ''),
+    image_model: forImage ? (IMG.chosen ? IMG.chosen.id : '') : '',
+    types: $('#ctype').value,
+    scope: $('#cscope').value,
     sort: $('#csort').value, period: $('#cperiod').value, cursor: CIV.cursor, limit: '24',
   });
   if ($('#cnsfw').checked) q.set('nsfw', 'true');
@@ -588,6 +705,7 @@ function renderCiv() {
     const r = await fetch('/api/civitai/download', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
+        kind: $('#ctype').value === 'Checkpoint' ? 'checkpoint' : 'lora',
         files: [{ url: info.file.url, name: info.file.name, size: info.file.size }],
         version_id: info.version_id, label: info.label,
         page_url: info.page_url, trained_words: info.trained_words, base_model: info.base_model,
@@ -602,7 +720,9 @@ function renderCiv() {
 $('#csearch').onclick = () => civSearch(true);
 $('#cq').onkeydown = (e) => { if (e.key === 'Enter') civSearch(true); };
 $('#cmore').onclick = () => civSearch(false);
-['cscope','csort','cperiod'].forEach((id) => $('#'+id).onchange = () => civSearch(true));
+['cscope','csort','cperiod','cfor','ctype'].forEach((id) => $('#'+id).onchange = () => {
+  P.set(id, $('#'+id).value); civSearch(true);
+});
 $('#cnsfw').onchange = (e) => { P.set('cnsfw', e.target.checked); civSearch(true); };
 $('#cblur').onchange = (e) => { P.set('cblur', e.target.checked); renderCiv(); };
 
@@ -703,6 +823,157 @@ function renderSettings() {
     </div>`;
 }
 
+/* ---------- 圖片 ---------- */
+let IMG = { models: [], help: {}, samplers: [], schedulers: [], chosen: null, jobs: [] };
+
+function imgTouched(id) { return $('#'+id).dataset.touched === '1'; }
+['isteps','icfg','isampler','ischeduler','iclip','inegative'].forEach((id) => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', () => el.dataset.touched = '1');
+});
+
+async function refreshImageModels() {
+  try {
+    const d = await (await fetch('/api/image/models')).json();
+    IMG.models = d.models; IMG.help = d.help || {};
+    IMG.samplers = d.samplers || []; IMG.schedulers = d.schedulers || [];
+    const keep = $('#imodel').value || P.get('imodel', '');
+    $('#imodel').innerHTML = IMG.models.map((m) =>
+      `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}</option>`).join('');
+    if (IMG.models.some((m) => m.id === keep)) $('#imodel').value = keep;
+    $('#isampler').innerHTML = IMG.samplers.map((x) => `<option>${x}</option>`).join('');
+    $('#ischeduler').innerHTML = IMG.schedulers.map((x) => `<option>${x}</option>`).join('');
+    onImageModelChange();
+  } catch {}
+}
+
+function onImageModelChange() {
+  const m = IMG.models.find((x) => x.id === $('#imodel').value) || IMG.models[0];
+  IMG.chosen = m;
+  if (!m) return;
+  P.set('imodel', m.id);
+
+  $('#isize').innerHTML = Object.keys(m.sizes).map((k) =>
+    `<option value="${esc(k)}"${k === m.default_size ? ' selected' : ''}>${esc(k)}</option>`).join('');
+  $('#istyle').innerHTML = `<b>怎麼寫提詞</b>：${(m.prompt_style || '').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}`
+    + (m.nsfw_note ? `<div class="s" style="margin-top:6px">${esc(m.nsfw_note)}</div>` : '');
+  $('#iprefixlabel').textContent = m.positive_prefix
+    ? `自動加上品質標籤：${m.positive_prefix}` : '這個底模不需要品質標籤';
+  $('#iprefix').disabled = !m.positive_prefix;
+
+  if (!imgTouched('inegative')) $('#inegative').value = m.negative || '';
+  if (!imgTouched('isteps')) $('#isteps').value = m.steps;
+  if (!imgTouched('icfg')) $('#icfg').value = m.cfg;
+  if (!imgTouched('isampler') && IMG.samplers.includes(m.sampler)) $('#isampler').value = m.sampler;
+  if (!imgTouched('ischeduler') && IMG.schedulers.includes(m.scheduler)) $('#ischeduler').value = m.scheduler;
+  if (!imgTouched('iclip')) $('#iclip').value = m.clip_skip;
+
+  const h = IMG.help;
+  $('#ihelp').innerHTML = ['steps','cfg','sampler','scheduler','clip_skip','hires','size','batch','seed']
+    .filter((k) => h[k]).map((k) => `<div>· <b>${k}</b>：${esc(h[k])}</div>`).join('');
+  $('#ineghelp').textContent = '負面提詞 = 不想出現的東西。上面填的是這個底模的建議值。';
+
+  const a = m.vram_advice || {};
+  const box = $('#ivram');
+  if (a.level && a.level !== 'ok') {
+    box.className = 'banner ' + a.level;
+    box.innerHTML = (a.text || '').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+    box.classList.remove('hidden');
+  } else box.classList.add('hidden');
+
+  const needs = !m.installed;
+  $('#igo').classList.toggle('hidden', needs);
+  $('#igetmodel').classList.toggle('hidden', !needs);
+  if (needs) {
+    $('#igetmodel').textContent = `先下載這個底模（${gb(m.download_bytes)}）`;
+    $('#istatus').textContent = `${m.label} 還沒下載。`;
+  } else $('#istatus').textContent = '';
+  renderImageLoras();
+}
+$('#imodel').onchange = onImageModelChange;
+$('#ireseed').onclick = () => $('#iseed').value = Math.floor(Math.random()*2**31);
+$('#inegreset').onclick = () => {
+  if (IMG.chosen) { $('#inegative').value = IMG.chosen.negative || ''; delete $('#inegative').dataset.touched; }
+};
+$('#igetmodel').onclick = async () => {
+  if (!IMG.chosen) return;
+  $('#igetmodel').disabled = true;
+  await fetch(`/api/image/models/${IMG.chosen.id}/download`, { method:'POST' });
+  document.querySelector('.tabs button[data-tab="mdl"]').click();
+  refreshDownloads();
+  $('#igetmodel').disabled = false;
+};
+$('#istop').onclick = () => fetch('/api/cancel', { method:'POST' });
+
+function renderImageLoras() {
+  const box = $('#iloras');
+  if (!LORAS.length) {
+    box.innerHTML = '<div class="s">還沒有 LoRA。到「LoRA」分頁把「用在哪」切成「圖片底模」再搜。</div>';
+    return;
+  }
+  const prev = new Map([...box.querySelectorAll('.lora')].map((el) =>
+    [el.dataset.n, { on: el.querySelector('input[type=checkbox]').checked, v: el.querySelector('input[type=range]').value }]));
+  box.innerHTML = LORAS.map((l) => {
+    const st = prev.get(l.name) || { on:false, v:'0.8' };
+    const words = (l.trained_words || []).slice(0,3);
+    return `<div class="lora" data-n="${esc(l.name)}">
+      <input type="checkbox" ${st.on ? 'checked':''}>
+      <span class="n" title="${esc(l.name)}">${esc(l.name)}
+        ${l.base_model ? `<span class="s"> · ${esc(l.base_model)}</span>`:''}
+        ${words.length ? `<span class="s"> · 觸發詞 ${esc(words.join(', '))}</span>`:''}</span>
+      <input type="range" min="0" max="1.5" step="0.05" value="${st.v}">
+      <span class="s" style="width:2.4em">${st.v}</span></div>`;
+  }).join('');
+  box.querySelectorAll('.lora').forEach((el) => {
+    const r = el.querySelector('input[type=range]'), out = el.querySelector('.s:last-child');
+    r.oninput = () => out.textContent = r.value;
+  });
+}
+
+$('#igo').onclick = async () => {
+  if (!IMG.chosen) return;
+  const prompt = $('#iprompt').value.trim();
+  if (!prompt) { $('#istatus').textContent = '提詞是空的 —— 圖片全靠提詞，沒有輸入圖。'; return; }
+  $('#igo').disabled = true;
+  const loras = [...$('#iloras').querySelectorAll('.lora')]
+    .filter((el) => el.querySelector('input[type=checkbox]').checked)
+    .map((el) => ({ name: el.dataset.n, strength: parseFloat(el.querySelector('input[type=range]').value) }));
+  try {
+    const r = await fetch('/api/image/generate', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: IMG.chosen.id, prompt, negative: $('#inegative').value,
+        use_prefix: $('#iprefix').checked, size: $('#isize').value,
+        batch: +$('#ibatch').value || 1, seed: +$('#iseed').value,
+        steps: +$('#isteps').value, cfg: +$('#icfg').value,
+        sampler: $('#isampler').value, scheduler: $('#ischeduler').value,
+        clip_skip: +$('#iclip').value,
+        hires_scale: $('#ihires').checked ? (+$('#ihiresscale').value || 1.5) : 0,
+        hires_denoise: +$('#ihiresden').value || 0.45,
+        loras,
+      }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    $('#istatus').textContent = '已排入佇列';
+    refreshImageJobs(true);
+  } catch (e) { $('#istatus').textContent = '送出失敗：' + e.message; }
+  $('#igo').disabled = false;
+};
+
+let imgSig = '';
+async function refreshImageJobs(force) {
+  try {
+    const d = await (await fetch('/api/jobs?kind=image&limit=12')).json();
+    const sig = JSON.stringify(d) + P.get('autoplay', false);
+    if (sig === imgSig && !force) return;
+    imgSig = sig; IMG.jobs = d.jobs;
+    $('#irecent').innerHTML = d.jobs.map((j) => itemHtml(j, false)).join('') || '<div class="s">還沒有紀錄</div>';
+    wireItems($('#irecent'));
+  } catch {}
+}
+setInterval(() => { if (!$('#tab-img').classList.contains('hidden')) refreshImageJobs(); }, 1500);
+
 /* ---------- polling ---------- */
 let modelSig = '', loraSig = '', jobSig = '';
 async function refreshModels() {
@@ -727,7 +998,7 @@ async function refreshLoras(force) {
     const sig = JSON.stringify(d.loras);
     if (sig === loraSig && !force) return;
     loraSig = sig; LORAS = d.loras;
-    renderLoras(); renderInstalled();
+    renderLoras(); renderInstalled(); renderImageLoras();
   } catch {}
 }
 async function refreshJobs(force) {
@@ -755,6 +1026,8 @@ async function boot() {
   $('#onlystar').checked = P.get('onlystar', false);
   $('#cblur').checked = P.get('cblur', false);
   $('#cnsfw').checked = P.get('cnsfw', false);
+  $('#kindfilter').value = P.get('kindfilter', '');
+  ['cfor','ctype','cscope'].forEach((id) => { const v = P.get(id, null); if (v) $('#'+id).value = v; });
   const cs = P.get('cardsize', 200);
   $('#cardsize').value = cs;
   document.documentElement.style.setProperty('--card', cs+'px');
@@ -771,6 +1044,7 @@ async function boot() {
   } catch {}
 
   await refreshModels();
+  await refreshImageModels();
   await refreshLoras(true);
   await refreshJobs(true);
   refreshDownloads(); refreshStats();

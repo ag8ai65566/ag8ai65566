@@ -172,9 +172,10 @@ async def search(
     period: str = "AllTime",
     limit: int = 24,
     cursor: str = "",
+    types: str = "LORA",
 ) -> dict:
     params: list[tuple[str, str]] = [
-        ("types", "LORA"),
+        ("types", types if types in ("LORA", "Checkpoint", "TextualInversion") else "LORA"),
         ("limit", str(max(1, min(limit, 100)))),
         ("sort", sort if sort in SORTS else SORTS[0]),
         ("period", period if period in PERIODS else "AllTime"),

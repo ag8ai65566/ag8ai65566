@@ -12,7 +12,10 @@ import time
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
-MAX_HISTORY = 500
+MAX_HISTORY = 2000
+VIDEO_SUFFIXES = {".mp4", ".webm", ".gif"}
+IMAGE_SUFFIXES = {".png", ".jpg", ".jpeg", ".webp"}
+MEDIA_SUFFIXES = VIDEO_SUFFIXES | IMAGE_SUFFIXES
 
 
 @dataclass
@@ -20,6 +23,13 @@ class Record:
     id: str
     model_id: str
     prompt: str
+    # "video" or "image". Images can produce several files from one job, so
+    # `outputs` is the real field; `output` is kept as the first one for
+    # backwards compatibility with history written before batches existed.
+    kind: str = "video"
+    outputs: list[str] = field(default_factory=list)
+    fps: int = 0
+    settings: dict = field(default_factory=dict)
     negative: str = ""
     source_name: str = ""
     tier: str = ""
@@ -62,11 +72,18 @@ class Library:
                 continue
             known = {f for f in Record.__dataclass_fields__}
             record = Record(**{k: v for k, v in raw.items() if k in known})
+            # Older records only had a single `output`.
+            if record.output and not record.outputs:
+                record.outputs = [record.output]
+            elif record.outputs and not record.output:
+                record.output = record.outputs[0]
             # A record whose video is gone is history we cannot show; drop it so
             # the gallery never offers a dead link.
-            if record.status == "done" and record.output:
-                if not (self.dir / record.output).is_file():
+            if record.status == "done" and record.outputs:
+                record.outputs = [o for o in record.outputs if (self.dir / o).is_file()]
+                if not record.outputs:
                     continue
+                record.output = record.outputs[0]
             elif record.status in ("queued", "running"):
                 # Interrupted by a restart; nothing is running now.
                 record.status = "error"
@@ -102,8 +119,16 @@ class Library:
     def get(self, job_id: str) -> Record | None:
         return self.records.get(job_id)
 
-    def recent(self, limit: int = 60) -> list[Record]:
-        return [self.records[i] for i in reversed(self.order[-limit:]) if i in self.records]
+    def recent(self, limit: int = 60, kind: str = "") -> list[Record]:
+        out: list[Record] = []
+        for i in reversed(self.order):
+            record = self.records.get(i)
+            if record is None or (kind and record.kind != kind):
+                continue
+            out.append(record)
+            if len(out) >= limit:
+                break
+        return out
 
     def delete(self, job_id: str, persist: bool = True) -> bool:
         record = self.records.pop(job_id, None)
@@ -111,11 +136,11 @@ class Library:
             return False
         if job_id in self.order:
             self.order.remove(job_id)
-        for path in (
-            self.dir / record.output if record.output else None,
-            self.thumbs / record.thumb if record.thumb else None,
-        ):
-            if path and path.is_file():
+        paths = [self.dir / o for o in (record.outputs or ([record.output] if record.output else []))]
+        if record.thumb:
+            paths.append(self.thumbs / record.thumb)
+        for path in paths:
+            if path.is_file():
                 try:
                     path.unlink()
                 except OSError:
@@ -145,35 +170,42 @@ class Library:
     # -- disk ----------------------------------------------------------------
 
     def stats(self) -> dict:
-        videos = 0
-        video_bytes = 0
+        files = 0
+        total = 0
+        videos = images = 0
         if self.dir.is_dir():
             for path in self.dir.iterdir():
-                if path.is_file() and path.suffix.lower() in (".mp4", ".webm", ".webp", ".gif"):
+                if not path.is_file() or path.suffix.lower() not in MEDIA_SUFFIXES:
+                    continue
+                files += 1
+                total += path.stat().st_size
+                if path.suffix.lower() in VIDEO_SUFFIXES:
                     videos += 1
-                    video_bytes += path.stat().st_size
-        orphans = videos - sum(
-            1 for r in self.records.values() if r.output and (self.dir / r.output).is_file()
-        )
+                else:
+                    images += 1
+        known = {o for r in self.records.values() for o in r.outputs}
+        on_disk_known = sum(1 for o in known if (self.dir / o).is_file())
         return {
             "dir": str(self.dir),
-            "count": videos,
-            "bytes": video_bytes,
+            "count": files,
+            "videos": videos,
+            "images": images,
+            "bytes": total,
             "records": len(self.records),
-            "orphans": max(0, orphans),
+            "orphans": max(0, files - on_disk_known),
             "starred": sum(1 for r in self.records.values() if r.starred),
         }
 
     def sweep_orphans(self) -> int:
-        """Delete video files with no matching record (e.g. from an old run)."""
-        known = {r.output for r in self.records.values() if r.output}
+        """Delete media files with no matching record (e.g. from an old run)."""
+        known = {o for r in self.records.values() for o in r.outputs}
         removed = 0
         if not self.dir.is_dir():
             return 0
         for path in self.dir.iterdir():
             if not path.is_file():
                 continue
-            if path.suffix.lower() not in (".mp4", ".webm", ".webp", ".gif"):
+            if path.suffix.lower() not in MEDIA_SUFFIXES:
                 continue
             if path.name not in known:
                 try:

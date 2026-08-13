@@ -22,6 +22,7 @@ from pathlib import Path
 
 import civitai
 import config
+import images
 import downloader
 import library
 import registry
@@ -55,7 +56,12 @@ def public(record: library.Record) -> dict:
         "status": record.status,
         "progress": round(progress, 3),
         "message": record.message,
+        "kind": record.kind,
         "output": f"/outputs/{record.output}" if record.output else None,
+        "outputs": [f"/outputs/{o}" for o in record.outputs],
+        "fps": record.fps,
+        "duration": round(record.length / record.fps, 2) if record.fps and record.length else 0,
+        "settings": record.settings,
         "thumb": f"/thumbs/{record.thumb}" if record.thumb else None,
         "tier": record.tier,
         "length": record.length,
@@ -116,6 +122,8 @@ async def worker() -> None:
 
 
 async def run_job(record: library.Record, image_bytes: bytes) -> None:
+    if record.kind == "image":
+        return await run_image_job(record)
     model = registry.get(record.model_id)
     if model is None:
         raise ComfyError(f"不認識的模型：{record.model_id}")
@@ -125,6 +133,11 @@ async def run_job(record: library.Record, image_bytes: bytes) -> None:
     params = config.params_for(model, lightning=record.lightning)
     params.length = record.length
     params.loras = [*params.loras, *config.parse_loras(",".join(record.loras))]
+    record.fps = params.fps
+    record.settings = {
+        "steps": params.steps, "cfg": params.cfg, "shift": params.shift,
+        "sampler": params.sampler, "scheduler": params.scheduler,
+    }
 
     image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
     record.width, record.height = workflow.fit_dimensions(*image.size, record.tier, model)
@@ -163,9 +176,14 @@ async def run_job(record: library.Record, image_bytes: bytes) -> None:
         raise ComfyError("ComfyUI 沒有回傳任何輸出檔案")
 
     record.message = "下載結果…"
-    data = await client.download(files[0])
-    record.output = f"{record.id}{Path(files[0].filename).suffix or '.mp4'}"
-    (config.OUTPUT_DIR / record.output).write_bytes(data)
+    record.outputs = []
+    for index, f in enumerate(files):
+        data = await client.download(f)
+        suffix = Path(f.filename).suffix or (".png" if record.kind == "image" else ".mp4")
+        name = f"{record.id}{'' if index == 0 else f'-{index + 1}'}{suffix}"
+        (config.OUTPUT_DIR / name).write_bytes(data)
+        record.outputs.append(name)
+    record.output = record.outputs[0]
 
 
 # -- model availability ------------------------------------------------------
@@ -218,6 +236,26 @@ async def gpu_info() -> dict:
         "vram_gb": round(total / 1024**3, 1) if total else 0,
         "ram_total": (stats.get("system") or {}).get("ram_total") or 0,
         "comfy_version": (stats.get("system") or {}).get("comfyui_version", ""),
+    }
+
+
+def vram_advice_generic(need_gb: int, vram_gb: float) -> dict:
+    """Advisory only, for any model kind. Never used to block a job."""
+    note = (f"建議 {need_gb}GB 顯存。低於這個數字仍然跑得動 —— "
+            "ComfyUI 會把權重換到系統記憶體，只是慢很多。")
+    if not vram_gb:
+        return {"level": "unknown", "text": note, "flags": ""}
+    if vram_gb + 0.5 >= need_gb:
+        return {"level": "ok", "text": f"你的 {vram_gb}GB 夠跑這個模型。", "flags": ""}
+    ratio = vram_gb / need_gb
+    flags = "--lowvram" if ratio >= 0.45 else "--novram"
+    how_slow = "慢 2～4 倍" if ratio >= 0.45 else "慢 5 倍以上"
+    return {
+        "level": "tight" if ratio >= 0.45 else "very_tight",
+        "text": (f"這個模型建議 {need_gb}GB，你有 {vram_gb}GB。"
+                 f"**還是跑得動** —— ComfyUI 會把權重換到系統記憶體，大約{how_slow}。"
+                 f"建議在 .env 加 COMFY_ARGS={flags} 再重啟。"),
+        "flags": flags,
     }
 
 
@@ -282,6 +320,7 @@ async def generate(
     model: str = Form(""),
     tier: str = Form(""),
     length: int = Form(0),
+    seconds: float = Form(0.0),
     seed: int = Form(-1),
     lightning: str = Form(""),
     loras: str = Form(""),
@@ -320,7 +359,8 @@ async def generate(
         source=image.filename or "upload",
         model=chosen,
         tier=tier if tier in chosen.tiers else config.default_tier(chosen),
-        length=length or defaults.length,
+        length=(workflow.frames_for_seconds(seconds, chosen.fps) if seconds > 0
+                else (length or defaults.length)),
         seed=seed if seed >= 0 else random.randint(0, 2**31 - 1),
         lightning=use_lightning,
         loras=picked,
@@ -329,9 +369,9 @@ async def generate(
 
 
 @app.get("/api/jobs")
-async def list_jobs(limit: int = 60) -> JSONResponse:
+async def list_jobs(limit: int = 60, kind: str = "") -> JSONResponse:
     return JSONResponse(
-        {"jobs": [public(r) for r in lib.recent(limit)], "queued": queue.qsize()}
+        {"jobs": [public(r) for r in lib.recent(limit, kind)], "queued": queue.qsize()}
     )
 
 
@@ -480,6 +520,8 @@ async def delete_lora(name: str) -> JSONResponse:
 async def civitai_search(
     query: str = "",
     model: str = "",
+    image_model: str = "",
+    types: str = "LORA",
     scope: str = "strict",
     nsfw: str = "",
     sort: str = "Most Downloaded",
@@ -488,25 +530,35 @@ async def civitai_search(
     limit: int = 24,
 ) -> JSONResponse:
     bases: list[str] = []
-    chosen = registry.get(model) if model else None
-    if chosen and scope != "all":
-        bases = list(chosen.civitai_bases)
-        if scope == "loose":
-            bases += list(chosen.civitai_bases_loose)
-        if not bases and scope == "strict":
-            # No exact base exists for this model (HunyuanVideo 1.5); fall back
-            # so the search returns something rather than nothing.
-            bases = list(chosen.civitai_bases_loose)
+    if image_model:
+        # Image side: SDXL-family bases for the selected checkpoint.
+        if scope != "all":
+            bases = list(images.CIVITAI_BASES.get(image_model, ()))
+            if scope == "loose" or not bases:
+                bases = list(images.CIVITAI_BASES_LOOSE)
+    else:
+        chosen = registry.get(model) if model else None
+        if chosen and scope != "all":
+            bases = list(chosen.civitai_bases)
+            if scope == "loose":
+                bases += list(chosen.civitai_bases_loose)
+            if not bases and scope == "strict":
+                # No exact base exists for this model (HunyuanVideo 1.5); fall
+                # back so the search returns something rather than nothing.
+                bases = list(chosen.civitai_bases_loose)
     want_nsfw = None if nsfw == "" else nsfw.lower() in ("1", "true", "yes", "on")
     try:
         result = await civitai.search(
             query=query, base_models=bases, nsfw=want_nsfw,
-            sort=sort, period=period, cursor=cursor, limit=limit,
+            sort=sort, period=period, cursor=cursor, limit=limit, types=types,
         )
     except civitai.CivitaiError as exc:
         raise HTTPException(502, str(exc))
     result["bases_used"] = bases
     installed = {l["name"] for l in models.list_loras()}
+    ckpt_dir = config.MODELS_DIR / "checkpoints"
+    if ckpt_dir.is_dir():
+        installed |= {p.name for p in ckpt_dir.glob("*.safetensors")}
     for item in result["items"]:
         for version in item["versions"]:
             for f in version["files"]:
@@ -524,6 +576,7 @@ async def civitai_download(payload: dict = Body(...)) -> JSONResponse:
     except civitai.NeedsApiKey as exc:
         raise HTTPException(400, str(exc))
 
+    folder = "checkpoints" if payload.get("kind") == "checkpoint" else "loras"
     remote = []
     for f in files:
         url, name = f.get("url"), f.get("name")
@@ -533,7 +586,7 @@ async def civitai_download(payload: dict = Body(...)) -> JSONResponse:
             raise HTTPException(400, f"不合法的檔名：{name}")
         remote.append(
             downloader.RemoteFile(
-                url=url, folder="loras", name=name,
+                url=url, folder=folder, name=name,
                 size=int(f.get("size") or 0), headers=headers,
             )
         )
@@ -568,6 +621,217 @@ async def civitai_status() -> JSONResponse:
             ),
         }
     )
+
+
+# -- text to image -----------------------------------------------------------
+
+
+def image_status(model: images.ImageModel) -> dict:
+    states = [models.file_status(f) for f in model.all_files]
+    on_disk = sum(n for _, n in states)
+    missing = [f.name for f, (st, _) in zip(model.all_files, states) if st != "ok"]
+    return {
+        "installed": not missing,
+        "partial": bool(missing) and on_disk > 0,
+        "bytes_on_disk": on_disk,
+        "missing": missing,
+    }
+
+
+async def run_image_job(record: library.Record) -> None:
+    model = images.get(record.model_id)
+    if model is None:
+        raise ComfyError(f"不認識的圖片模型：{record.model_id}")
+    state = image_status(model)
+    if not state["installed"]:
+        raise ComfyError(
+            f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
+            "請到「模型」分頁下載。"
+        )
+
+    cfg = record.settings
+    graph = images.build(
+        model,
+        prompt=record.prompt,
+        negative=record.negative,
+        seed=record.seed,
+        width=record.width,
+        height=record.height,
+        batch=cfg.get("batch", 1),
+        steps=cfg.get("steps"),
+        cfg=cfg.get("cfg"),
+        sampler=cfg.get("sampler"),
+        scheduler=cfg.get("scheduler"),
+        clip_skip=cfg.get("clip_skip"),
+        loras=[(n, s) for n, s in cfg.get("loras", [])],
+        hires_scale=cfg.get("hires_scale", 0.0),
+        hires_denoise=cfg.get("hires_denoise", 0.45),
+        available_nodes=await client.node_classes(),
+        filename_prefix=f"img/{record.id}",
+    )
+    if problems := await client.validate(graph):
+        raise ComfyError("工作流程與這台 ComfyUI 不相容：\n- " + "\n- ".join(problems))
+
+    def progress(value: float) -> None:
+        record._progress = value
+        record.message = f"生成中 {value * 100:.0f}%"
+
+    record.message = "載入模型…（第一次會比較久）"
+    files = await client.run(graph, on_progress=progress)
+    if not files:
+        raise ComfyError("ComfyUI 沒有回傳任何輸出檔案")
+
+    record.message = "下載結果…"
+    record.outputs = []
+    for index, f in enumerate(files):
+        data = await client.download(f)
+        name = f"{record.id}{'' if index == 0 else f'-{index + 1}'}{Path(f.filename).suffix or '.png'}"
+        (config.OUTPUT_DIR / name).write_bytes(data)
+        record.outputs.append(name)
+    record.output = record.outputs[0]
+
+    # A thumbnail keeps the gallery light even with a big batch of PNGs.
+    try:
+        thumb = Image.open(config.OUTPUT_DIR / record.output).convert("RGB")
+        thumb.thumbnail((420, 420))
+        record.thumb = f"{record.id}.jpg"
+        thumb.save(lib.thumbs / record.thumb, "JPEG", quality=84)
+    except Exception:  # noqa: BLE001 - a missing thumbnail is not a failure
+        pass
+
+
+@app.get("/api/image/models")
+async def image_models() -> JSONResponse:
+    gpu = await gpu_info()
+    vram = gpu.get("vram_gb") or 0
+    try:
+        info = await client.object_info()
+        samplers = (info.get("KSampler", {}).get("input", {})
+                    .get("required", {}).get("sampler_name", [[]])[0])
+        schedulers = (info.get("KSampler", {}).get("input", {})
+                      .get("required", {}).get("scheduler", [[]])[0])
+        extra = sorted(
+            f.name for f in (config.MODELS_DIR / "checkpoints").glob("*.safetensors")
+        ) if (config.MODELS_DIR / "checkpoints").is_dir() else []
+    except Exception:  # noqa: BLE001
+        samplers, schedulers, extra = [], [], []
+
+    known = {m.file.name for m in images.IMAGE_MODELS}
+    out = []
+    for model in images.IMAGE_MODELS:
+        state = image_status(model)
+        out.append(
+            {
+                "id": model.id,
+                "label": model.label,
+                "vram_gb": model.vram_gb,
+                "vram_advice": vram_advice_generic(model.vram_gb, vram),
+                "download_bytes": model.download_bytes,
+                "steps": model.steps,
+                "cfg": model.cfg,
+                "sampler": model.sampler,
+                "scheduler": model.scheduler,
+                "clip_skip": model.clip_skip,
+                "positive_prefix": model.positive_prefix,
+                "negative": model.negative,
+                "prompt_style": model.prompt_style,
+                "sizes": {k: list(v) for k, v in model.sizes.items()},
+                "default_size": model.default_size,
+                "nsfw_note": model.nsfw_note,
+                "note": model.note,
+                "civitai_bases": list(images.CIVITAI_BASES.get(model.id, ())),
+                **state,
+            }
+        )
+    return JSONResponse(
+        {
+            "models": out,
+            "help": images.HELP,
+            "samplers": samplers,
+            "schedulers": schedulers,
+            "loose_bases": list(images.CIVITAI_BASES_LOOSE),
+            "other_checkpoints": [n for n in extra if n not in known],
+            "gpu": gpu,
+        }
+    )
+
+
+@app.post("/api/image/models/{model_id}/download")
+async def download_image_model(model_id: str) -> JSONResponse:
+    model = images.get(model_id)
+    if model is None:
+        raise HTTPException(404, f"不認識的圖片模型：{model_id}")
+    remote = [
+        downloader.RemoteFile(
+            url=downloader.url_for(f), folder=f.folder, name=f.name, size=f.size
+        )
+        for f in model.all_files
+    ]
+    return JSONResponse(
+        models.enqueue_files(
+            key=f"image:{model.id}", label=model.label, files=remote, kind="model"
+        ).public()
+    )
+
+
+@app.post("/api/image/generate")
+async def image_generate(payload: dict = Body(...)) -> JSONResponse:
+    model = images.get(str(payload.get("model", "")))
+    if model is None:
+        raise HTTPException(400, f"不認識的圖片模型：{payload.get('model')}")
+    state = image_status(model)
+    if not state["installed"]:
+        raise HTTPException(
+            400,
+            f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
+            "請到「模型」分頁下載，或改選已安裝的。",
+        )
+
+    prompt = str(payload.get("prompt", "")).strip()
+    if not prompt:
+        raise HTTPException(400, "提詞是空的 —— 圖片生成沒有輸入圖，全靠提詞")
+    if payload.get("use_prefix", True) and model.positive_prefix:
+        prompt = f"{model.positive_prefix}, {prompt}"
+
+    size_name = str(payload.get("size") or model.default_size)
+    width, height = model.sizes.get(size_name, (1024, 1024))
+    batch = max(1, min(int(payload.get("batch", 1)), 16))
+    seed = int(payload.get("seed", -1))
+
+    picked: list[tuple[str, float]] = []
+    for entry in payload.get("loras") or []:
+        name = str(entry.get("name", ""))
+        if "/" in name or "\\" in name or not name:
+            raise HTTPException(400, f"不合法的 LoRA 檔名：{name}")
+        picked.append((name, float(entry.get("strength", 0.8))))
+
+    record = library.Record(
+        id=uuid.uuid4().hex[:12],
+        model_id=model.id,
+        kind="image",
+        prompt=prompt,
+        negative=str(payload.get("negative") or model.negative),
+        seed=seed if seed >= 0 else random.randint(0, 2**31 - 1),
+        width=width,
+        height=height,
+        tier=size_name,
+        length=batch,
+        loras=[f"{n}:{s}" for n, s in picked],
+        settings={
+            "batch": batch,
+            "steps": int(payload.get("steps") or model.steps),
+            "cfg": float(payload.get("cfg") or model.cfg),
+            "sampler": str(payload.get("sampler") or model.sampler),
+            "scheduler": str(payload.get("scheduler") or model.scheduler),
+            "clip_skip": int(payload.get("clip_skip") or model.clip_skip),
+            "hires_scale": float(payload.get("hires_scale") or 0.0),
+            "hires_denoise": float(payload.get("hires_denoise") or 0.45),
+            "loras": picked,
+        },
+    )
+    lib.add(record)
+    queue.put_nowait((record.id, b""))
+    return JSONResponse(public(record))
 
 
 # -- health & files ----------------------------------------------------------

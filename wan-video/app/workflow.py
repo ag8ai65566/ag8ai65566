@@ -40,6 +40,19 @@ def fit_dimensions(width: int, height: int, tier: str, model: ModelDef | None = 
     return w, h
 
 
+def frames_for_seconds(seconds: float, fps: int) -> int:
+    """The official Wan template computes floor(seconds * fps + 1).
+
+    Duration is the number people actually think in; frames are an artefact of
+    how the model is built. The UI asks for seconds and derives this.
+    """
+    return normalize_length(int(seconds * fps) + 1)
+
+
+def seconds_for_frames(frames: int, fps: int) -> float:
+    return round(frames / fps, 2) if fps else 0.0
+
+
 def normalize_length(frames: int) -> int:
     """Every supported model compresses time 4:1, so frame count must be 4n+1."""
     frames = max(5, min(frames, 241))
