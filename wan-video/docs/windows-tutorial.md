@@ -1,9 +1,9 @@
 # Windows 逐步教學：把圖片變成短動畫
 
-寫給沒用過命令列的人。命令列的部分只有**兩行**，其他都是點滑鼠。
+寫給沒用過命令列的人。順利的話**完全不用打指令**，雙擊兩個檔案就好。
 
 第一次要花的時間：裝東西 15 分鐘，下載模型 1～3 小時（看網速，可以放著去睡）。
-**做完之後，以後每次只要做第 6 步一行指令。**
+**做完之後，以後每次只要雙擊一個檔案。**
 
 ---
 
@@ -70,7 +70,23 @@
 
 ---
 
-## 4. 打開 PowerShell 並切到 `wan-video` 資料夾
+## 4. 最簡單的做法:雙擊 `install.bat`
+
+點進 `anim\wan-video`,裡面有一個 **`install.bat`** —— **雙擊它就好**,跳過下面第 5、6 步。
+
+會跳出一個黑視窗開始跑。跑完會停在「Done. Next time, double-click start.bat」,
+按任意鍵關掉。之後每次要用就**雙擊 `start.bat`**。
+
+> 如果 Windows 跳出「已保護您的電腦」的藍色視窗:點「**其他資訊**」→「**仍要執行**」。
+> 那是因為這個檔案是從網路下載的,不是因為有問題。
+
+**雙擊沒反應、或黑視窗一閃就消失**的話,才需要走下面第 5 步的手動方式。
+
+---
+
+## 5. 手動方式（雙擊不行才用）
+
+### 5a. 打開 PowerShell 並切到 `wan-video` 資料夾
 
 按開始鍵,打 `powershell`,點「**Windows PowerShell**」（**不要**選有 `(x86)` 的）。
 
@@ -95,11 +111,9 @@ Test-Path setup-windows.ps1
 > 下面每一段指令都是:**複製 → 在視窗裡按滑鼠右鍵貼上 → 按 Enter**。
 > PowerShell 貼上是按**右鍵**,不是 Ctrl+V。
 
----
+### 5b. 貼上安裝指令
 
-## 5. 安裝（這步最久）
-
-貼這一行:
+這步最久。貼這一行:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\setup-windows.ps1
@@ -128,9 +142,7 @@ powershell -ExecutionPolicy Bypass -File .\setup-windows.ps1
 
 ```
 === 完成 ===
-接下來每次要用，只要在這個資料夾執行：
-
-    .\start-windows.ps1
+接下來每次要用，只要雙擊 start.bat
 ```
 
 > **中途斷線或不小心關掉了怎麼辦**:重跑同一行指令就好,**已經下載的部分不會重來**,
@@ -142,7 +154,9 @@ powershell -ExecutionPolicy Bypass -File .\setup-windows.ps1
 
 ---
 
-## 6. 每次要用就跑這行
+## 6. 每次要用
+
+**雙擊 `start.bat`**。或者用指令:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\start-windows.ps1
@@ -287,6 +301,8 @@ LoRA 是小的外掛模型,用來讓它更會畫某種東西。這是**畫質的
 | 生出來幾乎沒在動 | 指令太抽象,把動作和鏡頭寫具體。或把「4 步加速」關掉試試 |
 | 畫面糊掉、顏色怪 | LoRA 強度太高或疊太多支,降到 0.6～0.8,或先只留一支 |
 | 打開網頁是空白 | 兩個黑視窗是不是有一個被關掉了？重跑第 6 步 |
+| `Unexpected token '}'` 之類的一堆紅字 | 你手上的是舊版。重新下載第 3 步的 zip —— 舊版的腳本編碼不對,Windows PowerShell 讀不了 |
+| 雙擊 bat 後藍色視窗說「已保護您的電腦」 | 點「其他資訊」→「仍要執行」 |
 
 ---
 
@@ -297,6 +313,8 @@ LoRA 是小的外掛模型,用來讓它更會畫某種東西。這是**畫質的
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\start-windows.ps1 -Watch
 ```
+
+（或者在 `start.bat` 的捷徑後面加 `-Watch`）
 
 然後把圖片丟進 `wan-video\data\inbox\`,成品會自己出現在 `wan-video\data\outputs\`。
 

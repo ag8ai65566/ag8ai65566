@@ -675,6 +675,50 @@ async def test_server() -> None:
         await comfy_runner.cleanup()
 
 
+def test_windows_script_encoding() -> None:
+    """Windows PowerShell 5.1 is unforgiving about how these files are stored.
+
+    Without a UTF-8 BOM it decodes .ps1 using the system ANSI codepage, so the
+    Chinese text becomes mojibake - and Big5 trail bytes include { } ' " \\,
+    which breaks parsing outright. It also fails to terminate here-strings when
+    the line endings are LF-only. pwsh 7 tolerates both, so a parse check alone
+    does not catch this; these byte-level invariants do.
+    """
+    section("windows script encoding")
+    bom = b"\xef\xbb\xbf"
+
+    for name in ("setup-windows.ps1", "start-windows.ps1"):
+        raw = (ROOT / name).read_bytes()
+        check(raw.startswith(bom), f"{name} starts with a UTF-8 BOM")
+        body = raw[len(bom):]
+        lf, crlf = body.count(b"\n"), body.count(b"\r\n")
+        check(lf > 0 and lf == crlf, f"{name} is entirely CRLF ({lf} lines, {crlf} CRLF)")
+
+        text = body.decode("utf-8")
+        # A here-string opener is @' or @" at the end of a line.
+        openers = [
+            n for n, line in enumerate(text.splitlines(), 1)
+            if line.rstrip().endswith(("@'", '@"'))
+        ]
+        check(not openers, f"{name} uses no here-strings (lines {openers or 'none'})")
+
+    for name in ("install.bat", "start.bat"):
+        raw = (ROOT / name).read_bytes()
+        check(not raw.startswith(bom), f"{name} has no BOM (cmd.exe would echo it)")
+        try:
+            raw.decode("ascii")
+            ascii_only = True
+        except UnicodeDecodeError:
+            ascii_only = False
+        check(ascii_only, f"{name} is pure ASCII (read in the system ANSI codepage)")
+        lf, crlf = raw.count(b"\n"), raw.count(b"\r\n")
+        check(lf > 0 and lf == crlf, f"{name} is entirely CRLF")
+
+    attrs = (ROOT / ".gitattributes").read_text()
+    check("*.ps1 -text" in attrs, ".gitattributes stops git normalising .ps1 endings")
+    check("*.bat -text" in attrs, ".gitattributes stops git normalising .bat endings")
+
+
 async def test_watcher() -> None:
     section("watcher")
     import importlib
@@ -711,6 +755,7 @@ async def main() -> int:
     await test_downloader()
     await test_client()
     await test_server()
+    test_windows_script_encoding()
     await test_watcher()
     if live:
         await test_graphs(os.environ.get("COMFY_URL", "http://127.0.0.1:8188"))

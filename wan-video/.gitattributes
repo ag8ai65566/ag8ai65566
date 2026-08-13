@@ -1,0 +1,9 @@
+# Windows PowerShell 5.1 reads .ps1 without a BOM using the system ANSI
+# codepage, which turns the Chinese text in these scripts into mojibake - and
+# Big5 trail bytes include { } ' " \, so the file stops parsing. It also fails
+# to terminate here-strings when the line endings are LF-only.
+#
+# These files are therefore stored as UTF-8-with-BOM + CRLF, and marked -text so
+# git never normalises them on checkout or when GitHub builds a ZIP.
+*.ps1 -text
+*.bat -text
