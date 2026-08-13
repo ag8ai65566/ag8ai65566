@@ -104,6 +104,10 @@ latent、還有一個改寫提詞的 LLM 節點。我可以下載它全部的檔
 
 下載中斷不用怕，重跑會從斷點續傳。
 
+**之後要更新程式**：雙擊 `update.bat`（或 `powershell -ExecutionPolicy Bypass -File
+.\update-windows.ps1`）。它下載最新程式碼覆蓋上去，但 `ComfyUI\`、`venv\`、`data\`、
+`models\`、`.env` 一律不動，所以模型和成品不會重下。更新後要重啟才生效。
+
 ### Linux + Docker
 
 ```bash
@@ -272,7 +276,9 @@ docker compose run --rm app python check.py     # Docker
 ```
 docker-compose.yml     ComfyUI（GPU）+ app + 選用的拖檔監看
 Dockerfile.comfy       ComfyUI + ComfyUI-GGUF + VideoHelperSuite + Manager
-setup-windows.ps1      Windows 原生安裝（不用 Docker）／ start-windows.ps1 啟動
+setup-windows.ps1      Windows 原生安裝（不用 Docker）
+start-windows.ps1      Windows 啟動 · update-windows.ps1 更新程式碼（不動模型）
+install.bat / start.bat / update.bat   上面三支的雙擊包裝
 setup-linux.sh         Linux 裸機安裝
 scripts/
   fetch-model.py       命令列下載模型，可續傳。只用標準函式庫

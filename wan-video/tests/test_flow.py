@@ -839,7 +839,7 @@ def test_windows_script_encoding() -> None:
     section("windows script encoding")
     bom = b"\xef\xbb\xbf"
 
-    for name in ("setup-windows.ps1", "start-windows.ps1"):
+    for name in ("setup-windows.ps1", "start-windows.ps1", "update-windows.ps1"):
         raw = (ROOT / name).read_bytes()
         check(raw.startswith(bom), f"{name} starts with a UTF-8 BOM")
         body = raw[len(bom):]
@@ -854,7 +854,7 @@ def test_windows_script_encoding() -> None:
         ]
         check(not openers, f"{name} uses no here-strings (lines {openers or 'none'})")
 
-    for name in ("install.bat", "start.bat"):
+    for name in ("install.bat", "start.bat", "update.bat"):
         raw = (ROOT / name).read_bytes()
         check(not raw.startswith(bom), f"{name} has no BOM (cmd.exe would echo it)")
         try:
