@@ -8,68 +8,108 @@
   :root {
     --bg:#0e0f13; --panel:#171922; --panel2:#1f222e; --line:#2b2f3d;
     --text:#e8eaf0; --muted:#9aa0b4; --accent:#6d8cff; --ok:#3ecf8e; --warn:#e0a458; --err:#ff6b6b;
+    --card:200px;
   }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--bg); color:var(--text);
     font:15px/1.6 -apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif; }
-  .wrap { max-width:1000px; margin:0 auto; padding:28px 20px 80px; }
-  h1 { font-size:22px; margin:0 0 4px; }
-  .sub { color:var(--muted); font-size:13px; margin-bottom:20px; }
-  .tabs { display:flex; gap:4px; margin-bottom:16px; border-bottom:1px solid var(--line); }
-  .tabs button { background:none; border:0; color:var(--muted); padding:9px 16px; font:500 14px inherit;
-    cursor:pointer; border-bottom:2px solid transparent; }
+  .wrap { max-width:1180px; margin:0 auto; padding:24px 20px 90px; }
+  h1 { font-size:21px; margin:0 0 4px; }
+  .sub { color:var(--muted); font-size:13px; margin-bottom:16px; }
+  .tabs { display:flex; gap:2px; margin-bottom:16px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .tabs button { background:none; border:0; color:var(--muted); padding:9px 15px; font:500 14px inherit;
+    cursor:pointer; border-bottom:2px solid transparent; white-space:nowrap; }
   .tabs button.on { color:var(--text); border-bottom-color:var(--accent); }
-  .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; }
-  #drop { border:1.5px dashed var(--line); border-radius:12px; padding:30px 18px; text-align:center;
+  .tabs .badge { font-size:11px; background:var(--panel2); border-radius:10px; padding:0 6px; margin-left:5px; }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; }
+  .card + .card { margin-top:12px; }
+  #drop { border:1.5px dashed var(--line); border-radius:12px; padding:26px 16px; text-align:center;
     cursor:pointer; transition:.15s; background:var(--panel2); }
   #drop.hot { border-color:var(--accent); background:#202540; }
   #drop p { margin:6px 0; color:var(--muted); font-size:13px; }
   #drop strong { font-size:15px; word-break:break-all; }
-  #preview { max-height:190px; border-radius:8px; margin-top:12px; display:none; }
-  textarea { width:100%; margin-top:14px; background:var(--panel2); color:var(--text);
-    border:1px solid var(--line); border-radius:10px; padding:12px; font:inherit; resize:vertical; min-height:76px; }
-  textarea:focus, select:focus, input:focus { outline:none; border-color:var(--accent); }
+  #preview { max-height:180px; border-radius:8px; margin-top:12px; display:none; }
+  textarea, input[type=text] { width:100%; background:var(--panel2); color:var(--text);
+    border:1px solid var(--line); border-radius:10px; padding:11px; font:inherit; resize:vertical; }
+  textarea { min-height:74px; margin-top:12px; }
+  :focus { outline:none; border-color:var(--accent); }
   .row { display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; margin-top:12px; }
   label.f { display:flex; flex-direction:column; gap:4px; font-size:12px; color:var(--muted); }
   select, input[type=number] { background:var(--panel2); color:var(--text); border:1px solid var(--line);
     border-radius:8px; padding:8px 10px; font:inherit; max-width:100%; }
-  button.go { background:var(--accent); color:#0b0d16; border:0; border-radius:10px; padding:11px 22px;
+  button.go { background:var(--accent); color:#0b0d16; border:0; border-radius:10px; padding:11px 20px;
     font:600 15px inherit; cursor:pointer; }
   button.ghost { background:transparent; color:var(--muted); border:1px solid var(--line);
-    border-radius:10px; padding:9px 16px; font:500 14px inherit; cursor:pointer; }
+    border-radius:10px; padding:8px 14px; font:500 13px inherit; cursor:pointer; }
+  button.tiny { padding:3px 9px; font-size:12px; border-radius:8px; }
+  button.danger { color:var(--err); border-color:#4a2429; }
   button:disabled { opacity:.45; cursor:default; }
   .spacer { flex:1; }
-  .chk { display:flex; align-items:center; gap:7px; font-size:13px; color:var(--muted); cursor:pointer; }
-  h2 { font-size:13px; color:var(--muted); font-weight:600; margin:28px 0 10px;
+  .chk { display:flex; align-items:center; gap:7px; font-size:13px; color:var(--muted); cursor:pointer;
+    user-select:none; white-space:nowrap; }
+  h2 { font-size:13px; color:var(--muted); font-weight:600; margin:26px 0 10px;
     text-transform:uppercase; letter-spacing:.08em; }
-  .job { display:flex; gap:14px; background:var(--panel); border:1px solid var(--line);
-    border-radius:12px; padding:14px; margin-bottom:12px; }
-  .job img.t { width:92px; height:92px; object-fit:cover; border-radius:8px; background:#000; flex:none; }
-  .job video { width:256px; max-width:45vw; border-radius:8px; background:#000; }
-  .job .meta { flex:1; min-width:0; }
-  .job .p { font-size:14px; margin:0 0 6px; word-break:break-word; }
   .s { font-size:12px; color:var(--muted); }
   .bar { height:5px; background:var(--panel2); border-radius:3px; overflow:hidden; margin:8px 0; }
   .bar i { display:block; height:100%; background:var(--accent); width:0; transition:width .3s; }
-  .tag { font-size:11px; padding:2px 8px; border-radius:20px; background:var(--panel2); color:var(--muted); }
+  .tag { font-size:11px; padding:2px 8px; border-radius:20px; background:var(--panel2); color:var(--muted);
+    white-space:nowrap; }
   .tag.run { background:#24304f; color:var(--accent); }
   .tag.done { background:#17372a; color:var(--ok); }
   .tag.err { background:#3a1f22; color:var(--err); }
+  .tag.warn { background:#3c2e18; color:var(--warn); }
   .errbox { color:var(--err); font-size:12px; white-space:pre-wrap; margin-top:6px; }
-  a.dl { color:var(--accent); font-size:12px; text-decoration:none; }
-  #status { font-size:12px; color:var(--muted); margin-top:10px; min-height:1.2em; }
-  /* model manager */
-  .m { border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:10px; background:var(--panel); }
-  .m .top { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
-  .m .name { font-size:14px; font-weight:600; flex:1; min-width:220px; }
-  .m .note { font-size:12px; color:var(--muted); margin-top:6px; }
-  .m.installed { border-color:#245b43; }
-  .loralist { display:flex; flex-direction:column; gap:8px; margin-top:6px; max-height:220px; overflow-y:auto; }
-  .lora { display:flex; align-items:center; gap:9px; font-size:13px; }
-  .lora input[type=range] { flex:1; max-width:150px; accent-color:var(--accent); }
-  .lora .n { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .note { font-size:12px; color:var(--muted); margin-top:6px; }
+  a { color:var(--accent); }
   code { background:var(--panel2); padding:1px 5px; border-radius:4px; font-size:12px; }
-  .hidden { display:none; }
+  .hidden { display:none !important; }
+  .banner { border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:13px;
+    margin-top:12px; background:var(--panel2); }
+  .banner.tight { border-color:#4a3a1c; background:#26200f; }
+  .banner.very_tight { border-color:#4a2429; background:#2a1618; }
+  .banner b { color:var(--text); }
+
+  /* gallery */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(var(--card),1fr)); gap:12px; }
+  .item { background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+    display:flex; flex-direction:column; }
+  .item.star { border-color:#4a3f1c; }
+  .media { position:relative; background:#000; aspect-ratio:1/1; display:flex;
+    align-items:center; justify-content:center; cursor:pointer; }
+  .media img, .media video { width:100%; height:100%; object-fit:contain; display:block; }
+  .media .play { position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:34px; color:#fff; text-shadow:0 2px 12px #000; pointer-events:none; opacity:.85; }
+  .item .body { padding:9px 10px; display:flex; flex-direction:column; gap:5px; flex:1; }
+  .item .p { font-size:12.5px; line-height:1.45; max-height:3.9em; overflow:hidden; word-break:break-word; }
+  .item .acts { display:flex; gap:5px; align-items:center; flex-wrap:wrap; margin-top:auto; }
+  .toolbar { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+
+  /* civitai */
+  .lgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; }
+  .lcard { background:var(--panel); border:1px solid var(--line); border-radius:12px; overflow:hidden;
+    display:flex; flex-direction:column; }
+  .lcard .shot { aspect-ratio:4/5; background:#000; position:relative; }
+  .lcard .shot img { width:100%; height:100%; object-fit:cover; display:block; }
+  .lcard.blur .shot img { filter:blur(18px); }
+  .lcard .shot .reveal { position:absolute; inset:0; display:flex; align-items:center;
+    justify-content:center; font-size:12px; color:#fff; background:#0006; cursor:pointer; }
+  .lcard .info { padding:10px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .lcard .nm { font-size:13.5px; font-weight:600; line-height:1.35; word-break:break-word; }
+  .files { display:flex; flex-direction:column; gap:4px; }
+  .fl { display:flex; gap:6px; align-items:center; font-size:11.5px; color:var(--muted); }
+  .fl .fn { flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .words { display:flex; gap:4px; flex-wrap:wrap; }
+  .words span { font-size:10.5px; background:var(--panel2); padding:1px 6px; border-radius:6px; }
+
+  /* lora picker rows */
+  .lora { display:flex; align-items:center; gap:9px; font-size:13px; padding:4px 0; }
+  .lora input[type=range] { flex:1; max-width:140px; accent-color:var(--accent); }
+  .lora .n { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .loralist { max-height:280px; overflow-y:auto; }
+  .m { border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:10px; background:var(--panel); }
+  .m.installed { border-color:#245b43; }
+  .m .top { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .m .name { font-size:14px; font-weight:600; flex:1; min-width:200px; }
 </style>
 </head>
 <body>
@@ -79,10 +119,13 @@
 
   <div class="tabs">
     <button class="on" data-tab="gen">生成</button>
-    <button data-tab="mgr">模型管理</button>
+    <button data-tab="lib">素材庫<span class="badge" id="libcount">0</span></button>
+    <button data-tab="lora">LoRA</button>
+    <button data-tab="mdl">模型</button>
+    <button data-tab="set">設定</button>
   </div>
 
-  <!-- ============ 生成 ============ -->
+  <!-- ================= 生成 ================= -->
   <div id="tab-gen">
     <div class="card">
       <div id="drop">
@@ -95,67 +138,142 @@
       <textarea id="prompt" placeholder="想讓它怎麼動？例如：她慢慢轉頭看向鏡頭，頭髮被風吹動，鏡頭緩慢推近"></textarea>
 
       <div class="row">
-        <label class="f" style="flex:1;min-width:260px">模型
+        <label class="f" style="flex:1;min-width:280px">模型
           <select id="model"></select>
         </label>
         <label class="f">解析度<select id="tier"></select></label>
         <label class="f">長度<select id="length"></select></label>
-        <label class="f">種子（-1 隨機）
-          <input type="number" id="seed" value="-1" min="-1" style="width:110px">
+        <label class="f">種子
+          <input type="number" id="seed" value="-1" min="-1" style="width:104px">
         </label>
+        <button class="ghost" id="reseed" title="換一個隨機種子">🎲</button>
       </div>
 
       <div class="row">
-        <label class="chk" id="litwrap"><input type="checkbox" id="lightning"> 4 步加速（快很多，動態略遜）</label>
+        <label class="chk" id="litwrap"><input type="checkbox" id="lightning"> 4 步加速</label>
+        <label class="chk"><input type="checkbox" id="negtoggle"> 自訂負面提詞</label>
         <div class="spacer"></div>
         <button class="ghost" id="stop">中斷</button>
         <button class="go hidden" id="getmodel">先下載這個模型</button>
         <button class="go" id="go" disabled>生成</button>
       </div>
-      <div id="modelnote" class="s"></div>
-      <div id="status"></div>
+
+      <div id="negwrap" class="hidden" style="margin-top:10px">
+        <textarea id="negative" placeholder="負面提詞"></textarea>
+        <div class="s">留空就用該模型的官方預設值。<a href="#" id="negreset">還原預設</a></div>
+      </div>
+
+      <div id="vram" class="banner hidden"></div>
+      <div id="modelnote" class="note"></div>
+      <div id="status" class="note"></div>
     </div>
 
     <div id="lorasec" class="hidden">
-      <h2>LoRA</h2>
+      <h2>要套用的 LoRA</h2>
       <div class="card">
         <div id="loras" class="loralist"></div>
-        <div class="s" id="lorahint" style="margin-top:10px"></div>
+        <div class="s" id="lorahint" style="margin-top:8px"></div>
       </div>
     </div>
 
-    <h2>紀錄</h2>
-    <div id="jobs"></div>
+    <h2>最近</h2>
+    <div id="recent" class="grid"></div>
   </div>
 
-  <!-- ============ 模型管理 ============ -->
-  <div id="tab-mgr" class="hidden">
-    <div id="dl" class="hidden card" style="margin-bottom:16px"></div>
+  <!-- ================= 素材庫 ================= -->
+  <div id="tab-lib" class="hidden">
+    <div class="card">
+      <div class="toolbar">
+        <label class="chk"><input type="checkbox" id="autoplay"> 自動播放</label>
+        <label class="f">卡片大小
+          <input type="range" id="cardsize" min="140" max="420" step="20" style="width:130px">
+        </label>
+        <label class="chk"><input type="checkbox" id="onlystar"> 只看星號</label>
+        <div class="spacer"></div>
+        <span class="s" id="libstats"></span>
+        <button class="ghost tiny" id="sweep" title="刪掉沒有紀錄的孤兒影片檔">清孤兒檔</button>
+        <button class="ghost tiny danger" id="clearlib">清空（保留星號）</button>
+      </div>
+      <div class="note">
+        關掉「自動播放」時只顯示縮圖，點一下才載入影片 —— 卡片多的時候瀏覽器就不會一直在背景解碼。
+      </div>
+    </div>
+    <h2>全部成品</h2>
+    <div id="gallery" class="grid"></div>
+  </div>
+
+  <!-- ================= LoRA ================= -->
+  <div id="tab-lora" class="hidden">
+    <div class="card">
+      <div class="toolbar">
+        <input type="text" id="cq" placeholder="搜 CivitAI…（留空看熱門）" style="flex:1;min-width:200px">
+        <button class="go" id="csearch">搜尋</button>
+      </div>
+      <div class="row">
+        <label class="f">相容範圍
+          <select id="cscope">
+            <option value="strict">只看完全相容</option>
+            <option value="loose">含可能相容</option>
+            <option value="all">全部（不篩）</option>
+          </select>
+        </label>
+        <label class="f">排序<select id="csort"></select></label>
+        <label class="f">期間<select id="cperiod"></select></label>
+        <label class="chk"><input type="checkbox" id="cnsfw"> 只看 NSFW</label>
+        <label class="chk"><input type="checkbox" id="cblur"> 模糊預覽圖</label>
+      </div>
+      <div class="note" id="cbases"></div>
+      <div id="ckey" class="banner hidden"></div>
+    </div>
+
+    <h2>CivitAI 搜尋結果</h2>
+    <div id="cresults" class="lgrid"></div>
+    <div class="row"><button class="ghost hidden" id="cmore">載入更多</button></div>
+
+    <h2>已安裝的 LoRA</h2>
+    <div class="card"><div id="installed"></div></div>
+  </div>
+
+  <!-- ================= 模型 ================= -->
+  <div id="tab-mdl" class="hidden">
+    <div id="dl" class="hidden card" style="margin-bottom:14px"></div>
+    <div id="gpu" class="card" style="margin-bottom:14px"></div>
     <div id="mlist"></div>
+  </div>
+
+  <!-- ================= 設定 ================= -->
+  <div id="tab-set" class="hidden">
+    <div class="card" id="setbody"></div>
   </div>
 </div>
 
 <script>
 const $ = (s) => document.querySelector(s);
-const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const gb = (b) => b >= 1e9 ? (b/1e9).toFixed(1)+'GB' : (b/1e6).toFixed(0)+'MB';
-function dur(s) {
-  if (s == null) return '';
-  if (s < 90) return Math.round(s)+' 秒';
-  if (s < 5400) return Math.round(s/60)+' 分';
-  return (s/3600).toFixed(1)+' 小時';
-}
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const gb = (b) => !b ? '0' : b >= 1e9 ? (b/1e9).toFixed(1)+'GB' : b >= 1e6 ? (b/1e6).toFixed(0)+'MB' : (b/1e3).toFixed(0)+'KB';
+const dur = (s) => s == null ? '' : s < 90 ? Math.round(s)+' 秒' : s < 5400 ? Math.round(s/60)+' 分' : (s/3600).toFixed(1)+' 小時';
+const when = (t) => { const d = new Date(t*1000); return `${d.getMonth()+1}/${d.getDate()} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; };
 
-let MODELS = [], LORAS = [], picked = null, chosen = null;
+/* prefs persist so the page comes back the way you left it */
+const P = {
+  get(k, d) { try { const v = localStorage.getItem('wan.'+k); return v === null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { try { localStorage.setItem('wan.'+k, JSON.stringify(v)); } catch {} },
+};
+
+let MODELS = [], LORAS = [], JOBS = [], GPU = {}, picked = null, chosen = null;
+let CIV = { items: [], cursor: '', loading: false };
 
 /* ---------- tabs ---------- */
 document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
   document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('on', x === b));
-  $('#tab-gen').classList.toggle('hidden', b.dataset.tab !== 'gen');
-  $('#tab-mgr').classList.toggle('hidden', b.dataset.tab !== 'mgr');
+  ['gen','lib','lora','mdl','set'].forEach((t) =>
+    $('#tab-'+t).classList.toggle('hidden', b.dataset.tab !== t));
+  if (b.dataset.tab === 'lib') renderGallery();
+  if (b.dataset.tab === 'lora' && !CIV.items.length) civSearch(true);
+  if (b.dataset.tab === 'set') renderSettings();
 });
 
-/* ---------- image picking ---------- */
+/* ---------- image ---------- */
 const drop = $('#drop'), file = $('#file');
 function pick(f) {
   if (!f || !f.type.startsWith('image/')) return;
@@ -174,16 +292,13 @@ window.addEventListener('paste', (e) => { for (const f of e.clipboardData.files)
 
 /* ---------- model selection ---------- */
 function syncGo() {
-  const needsDownload = chosen && chosen.runnable && !chosen.installed;
-  // An uninstalled model gets a download button instead of a dead generate
-  // button, so the way forward is obvious rather than a mystery.
-  $('#go').classList.toggle('hidden', !!needsDownload);
-  $('#getmodel').classList.toggle('hidden', !needsDownload);
+  const needs = chosen && chosen.runnable && !chosen.installed;
+  $('#go').classList.toggle('hidden', !!needs);
+  $('#getmodel').classList.toggle('hidden', !needs);
   $('#go').disabled = !(picked && chosen && chosen.installed && chosen.runnable);
-  if (needsDownload) {
+  if (needs) {
     $('#getmodel').textContent = `先下載這個模型（${gb(chosen.download_bytes)}）`;
-    $('#status').textContent =
-      `${chosen.label} 還沒下載。按上面那顆鈕開始下載，或改選前面有 ✓ 的模型。`;
+    $('#status').textContent = `${chosen.label} 還沒下載。按上面那顆鈕開始，或改選前面有 ✓ 的。`;
   } else if (!picked) {
     $('#status').textContent = '';
   }
@@ -192,70 +307,91 @@ function syncGo() {
 $('#getmodel').onclick = async () => {
   if (!chosen) return;
   $('#getmodel').disabled = true;
-  await fetch(`/api/models/${chosen.id}/download`, { method: 'POST' });
-  document.querySelector('.tabs button[data-tab="mgr"]').click();
+  await fetch(`/api/models/${chosen.id}/download`, { method:'POST' });
+  document.querySelector('.tabs button[data-tab="mdl"]').click();
   refreshDownloads();
   $('#getmodel').disabled = false;
 };
 
 function renderModelPicker() {
   const sel = $('#model');
-  sel.innerHTML = MODELS.filter((m) => m.runnable).map((m) => {
-    const mark = m.installed ? '✓' : (m.partial ? '◐' : '·');
-    return `<option value="${m.id}">${mark} ${esc(m.label)} — ${m.vram_gb}GB+</option>`;
-  }).join('');
-  if (chosen) sel.value = chosen.id;
+  const keep = sel.value;
+  sel.innerHTML = MODELS.filter((m) => m.runnable).map((m) =>
+    `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}</option>`).join('');
+  sel.value = MODELS.some((m) => m.id === keep) ? keep : (chosen ? chosen.id : sel.value);
   onModelChange();
 }
 
 function onModelChange() {
   chosen = MODELS.find((m) => m.id === $('#model').value) || MODELS.find((m) => m.runnable);
   if (!chosen) return;
+  P.set('model', chosen.id);
 
   $('#tier').innerHTML = chosen.tiers.map((t) =>
     `<option value="${t}"${t === chosen.default_tier ? ' selected' : ''}>${t}</option>`).join('');
-
-  const base = chosen.length;
-  const opts = [...new Set([49, 81, base, 121])].filter((n) => n >= 5).sort((a, b) => a - b);
+  const opts = [...new Set([49, 81, chosen.length, 121, 161])].filter((n) => n >= 5).sort((a,b) => a-b);
   $('#length').innerHTML = opts.map((n) =>
-    `<option value="${n}"${n === base ? ' selected' : ''}>${n} 幀 ≈ ${(n / chosen.fps).toFixed(1)} 秒</option>`).join('');
+    `<option value="${n}"${n === chosen.length ? ' selected' : ''}>${n} 幀 ≈ ${(n/chosen.fps).toFixed(1)} 秒</option>`).join('');
 
   $('#litwrap').classList.toggle('hidden', !chosen.supports_lightning);
   const sm = chosen.sampling;
   $('#modelnote').textContent =
-    `${chosen.installed ? '已安裝' : '未下載 ' + gb(chosen.download_bytes)} · ${sm.steps} 步 · cfg ${sm.cfg} · shift ${sm.shift} · ${sm.sampler}/${sm.scheduler} · ${chosen.fps}fps`
-    + (chosen.note ? ' · ' + chosen.note : '');
+    `${chosen.installed ? '已安裝' : '未下載 '+gb(chosen.download_bytes)} · ${sm.steps} 步 · cfg ${sm.cfg} · shift ${sm.shift} · ${sm.sampler}/${sm.scheduler} · ${chosen.fps}fps`
+    + (chosen.note ? ' · '+chosen.note : '');
 
+  // VRAM is advice, never a gate.
+  const a = chosen.vram_advice || {};
+  const box = $('#vram');
+  if (a.level && a.level !== 'ok') {
+    box.className = 'banner ' + a.level;
+    box.innerHTML = (a.text || '').replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+    box.classList.remove('hidden');
+  } else { box.classList.add('hidden'); }
+
+  if (!$('#negative').dataset.touched) $('#negative').value = '';
+  $('#negative').placeholder = chosen.negative || '負面提詞';
   $('#lorasec').classList.toggle('hidden', !chosen.supports_lora);
+  renderLoras();
   syncGo();
 }
 $('#model').onchange = onModelChange;
+$('#reseed').onclick = () => { $('#seed').value = Math.floor(Math.random()*2**31); };
+$('#negtoggle').onchange = (e) => $('#negwrap').classList.toggle('hidden', !e.target.checked);
+$('#negative').oninput = (e) => e.target.dataset.touched = '1';
+$('#negreset').onclick = (e) => { e.preventDefault(); $('#negative').value=''; delete $('#negative').dataset.touched; };
 
-/* ---------- LoRA picker ---------- */
+/* ---------- LoRA picker on the generate tab ---------- */
 function renderLoras() {
   const box = $('#loras');
   if (!LORAS.length) {
-    box.innerHTML = '<div class="s">models/loras/ 裡還沒有檔案。</div>';
+    box.innerHTML = '<div class="s">還沒有 LoRA。到「LoRA」分頁從 CivitAI 找，或把 .safetensors 丟進 models/loras/。</div>';
   } else {
-    box.innerHTML = LORAS.map((l, i) => `
-      <div class="lora">
-        <input type="checkbox" id="lora${i}" data-n="${esc(l.name)}">
-        <span class="n" title="${esc(l.name)}">${esc(l.name)}${l.builtin ? ' <span class="tag">內建加速</span>' : ''}</span>
-        <input type="range" id="ls${i}" min="0" max="1.5" step="0.05" value="0.8">
-        <span class="s" id="lv${i}" style="width:2.4em">0.8</span>
-      </div>`).join('');
-    LORAS.forEach((_, i) => {
-      $('#ls' + i).oninput = (e) => $('#lv' + i).textContent = e.target.value;
+    const prev = new Map([...box.querySelectorAll('.lora')].map((el) =>
+      [el.dataset.n, { on: el.querySelector('input[type=checkbox]').checked, v: el.querySelector('input[type=range]').value }]));
+    box.innerHTML = LORAS.map((l, i) => {
+      const st = prev.get(l.name) || { on:false, v:'0.8' };
+      const words = (l.trained_words || []).slice(0,3);
+      return `<div class="lora" data-n="${esc(l.name)}">
+        <input type="checkbox" ${st.on ? 'checked':''}>
+        <span class="n" title="${esc(l.name)}">${esc(l.name)}${l.builtin ? ' <span class="tag">內建加速</span>':''}
+          ${words.length ? `<span class="s"> · 觸發詞 ${esc(words.join(', '))}</span>`:''}</span>
+        <input type="range" min="0" max="1.5" step="0.05" value="${st.v}">
+        <span class="s" style="width:2.4em">${st.v}</span>
+      </div>`;
+    }).join('');
+    box.querySelectorAll('.lora').forEach((el) => {
+      const r = el.querySelector('input[type=range]'), out = el.querySelector('.s:last-child');
+      r.oninput = () => out.textContent = r.value;
     });
   }
-  $('#lorahint').innerHTML =
-    'CivitAI 的 Wan 2.2 LoRA 檔案丟進 <code>models/loras/</code> 就會出現在這裡。'
-    + '雙專家模型的 high/low 兩個檔請兩個都勾。強度先試 0.7～1.0，疊太多支會互相打架。';
+  $('#lorahint').innerHTML = LORAS.length
+    ? '雙專家模型的 high / low 兩個檔要<b>兩個都勾</b>。強度先試 0.7～1.0，一次加一支。'
+    : '';
 }
-
 function selectedLoras() {
-  return LORAS.map((l, i) => ({ name: l.name, strength: parseFloat($('#ls' + i).value) }))
-              .filter((_, i) => $('#lora' + i)?.checked);
+  return [...$('#loras').querySelectorAll('.lora')]
+    .filter((el) => el.querySelector('input[type=checkbox]').checked)
+    .map((el) => ({ name: el.dataset.n, strength: parseFloat(el.querySelector('input[type=range]').value) }));
 }
 
 /* ---------- generate ---------- */
@@ -265,6 +401,7 @@ $('#go').onclick = async () => {
   const body = new FormData();
   body.append('image', picked);
   body.append('prompt', $('#prompt').value);
+  body.append('negative', $('#negtoggle').checked ? $('#negative').value : '');
   body.append('model', chosen.id);
   body.append('tier', $('#tier').value);
   body.append('length', $('#length').value);
@@ -272,144 +409,387 @@ $('#go').onclick = async () => {
   body.append('lightning', $('#lightning').checked ? '1' : '0');
   body.append('loras', JSON.stringify(selectedLoras()));
   try {
-    const r = await fetch('/api/generate', { method: 'POST', body });
-    if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
+    const r = await fetch('/api/generate', { method:'POST', body });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
     $('#status').textContent = '已排入佇列';
     refreshJobs();
-  } catch (e) {
-    $('#status').textContent = '送出失敗：' + e.message;
-  }
+  } catch (e) { $('#status').textContent = '送出失敗：' + e.message; }
   syncGo();
 };
-$('#stop').onclick = () => fetch('/api/cancel', { method: 'POST' });
+$('#stop').onclick = () => fetch('/api/cancel', { method:'POST' });
 
-/* ---------- job list ---------- */
+/* ---------- gallery ---------- */
 const TAG = { queued:['排隊中',''], running:['生成中','run'], done:['完成','done'], error:['失敗','err'] };
-function renderJobs(list, queued) {
-  $('#jobs').innerHTML = list.map((j) => {
-    const [text, cls] = TAG[j.status] || [j.status, ''];
-    const media = j.output ? `<video src="${j.output}" controls loop muted autoplay playsinline></video>`
-                           : (j.thumb ? `<img class="t" src="${j.thumb}" alt="">` : '');
-    return `<div class="job">${media}<div class="meta">
-      <p class="p">${j.prompt ? esc(j.prompt) : '<i>（沒有指令）</i>'}</p>
-      <span class="tag ${cls}">${text}</span>
-      <span class="s"> ${esc(j.model_label)} · ${j.size || j.tier} · ${j.length} 幀 · seed ${j.seed}${j.lightning ? ' · 4步' : ''} · ${j.elapsed}s</span>
-      ${j.loras.length ? `<div class="s">LoRA: ${esc(j.loras.join(', '))}</div>` : ''}
-      ${j.status === 'running' ? `<div class="bar"><i style="width:${j.progress*100}%"></i></div>` : ''}
-      ${j.message && j.status !== 'error' ? `<div class="s">${esc(j.message)}</div>` : ''}
-      ${j.status === 'error' ? `<div class="errbox">${esc(j.message)}</div>` : ''}
-      ${j.output ? `<div><a class="dl" href="${j.output}" download>下載</a></div>` : ''}
-    </div></div>`;
-  }).join('') || '<div class="s">還沒有紀錄</div>';
-  if (queued) $('#status').textContent = `佇列還有 ${queued} 個`;
+
+function itemHtml(j, big) {
+  const [text, cls] = TAG[j.status] || [j.status, ''];
+  const auto = P.get('autoplay', false);
+  let media = '<div class="media"><span class="s">（沒有縮圖）</span></div>';
+  if (j.output && auto) {
+    media = `<div class="media"><video src="${j.output}" controls loop muted autoplay playsinline></video></div>`;
+  } else if (j.output) {
+    media = `<div class="media" data-play="${j.output}">
+        ${j.thumb ? `<img src="${j.thumb}" alt="" loading="lazy">` : ''}<span class="play">▶</span></div>`;
+  } else if (j.thumb) {
+    media = `<div class="media"><img src="${j.thumb}" alt="" loading="lazy"></div>`;
+  }
+  return `<div class="item ${j.starred ? 'star':''}" data-id="${j.id}">
+    ${media}
+    <div class="body">
+      <div class="p">${j.prompt ? esc(j.prompt) : '<i class="s">（沒有指令）</i>'}</div>
+      <div><span class="tag ${cls}">${text}</span>
+        <span class="s"> ${j.size || j.tier} · ${j.length}f · ${j.elapsed}s</span></div>
+      ${big ? `<div class="s">${esc(j.model_label)} · seed ${j.seed}${j.lightning?' · 4步':''} · ${when(j.created)}</div>`:''}
+      ${j.loras.length ? `<div class="s">LoRA: ${esc(j.loras.join(', '))}</div>`:''}
+      ${j.status === 'running' ? `<div class="bar"><i style="width:${j.progress*100}%"></i></div>`:''}
+      ${j.message && j.status !== 'error' ? `<div class="s">${esc(j.message)}</div>`:''}
+      ${j.status === 'error' ? `<div class="errbox">${esc(j.message)}</div>`:''}
+      <div class="acts">
+        <button class="ghost tiny" data-star="${j.id}">${j.starred ? '★':'☆'}</button>
+        ${j.output ? `<a class="ghost tiny" style="text-decoration:none;padding:4px 9px" href="${j.output}" download>下載</a>`:''}
+        ${j.output ? `<button class="ghost tiny" data-again="${j.id}">再跑一次</button>`:''}
+        <button class="ghost tiny danger" data-del="${j.id}">刪</button>
+      </div>
+    </div>
+  </div>`;
 }
 
-let jobSig = '';
-async function refreshJobs() {
+function wireItems(root) {
+  root.querySelectorAll('.media[data-play]').forEach((el) => el.onclick = () => {
+    // One video at a time: replacing the clicked tile is enough because the
+    // others stay as static images until they are clicked too.
+    root.querySelectorAll('video').forEach((v) => { if (!P.get('autoplay', false)) v.pause(); });
+    el.innerHTML = `<video src="${el.dataset.play}" controls autoplay playsinline></video>`;
+    delete el.dataset.play;
+  });
+  root.querySelectorAll('[data-star]').forEach((b) => b.onclick = async () => {
+    const j = JOBS.find((x) => x.id === b.dataset.star);
+    await fetch(`/api/jobs/${b.dataset.star}/star`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ value: !(j && j.starred) }) });
+    refreshJobs(true);
+  });
+  root.querySelectorAll('[data-del]').forEach((b) => b.onclick = async () => {
+    const r = await fetch(`/api/jobs/${b.dataset.del}`, { method:'DELETE' });
+    if (!r.ok) { const d = await r.json().catch(()=>({})); alert(d.detail || '刪不掉'); }
+    refreshJobs(true);
+  });
+  root.querySelectorAll('[data-again]').forEach((b) => b.onclick = () => {
+    const j = JOBS.find((x) => x.id === b.dataset.again);
+    if (!j) return;
+    $('#prompt').value = j.prompt;
+    $('#seed').value = -1;
+    if (MODELS.some((m) => m.id === j.model)) { $('#model').value = j.model; onModelChange(); }
+    document.querySelector('.tabs button[data-tab="gen"]').click();
+    $('#status').textContent = '設定已帶入（換了新種子）。放一張圖再按生成。';
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
+}
+
+let recentSig = '', gallerySig = '';
+function renderRecent() {
+  const list = JOBS.slice(0, 8);
+  const sig = JSON.stringify(list) + P.get('autoplay', false);
+  if (sig === recentSig) return;
+  recentSig = sig;
+  $('#recent').innerHTML = list.map((j) => itemHtml(j, false)).join('')
+    || '<div class="s">還沒有紀錄</div>';
+  wireItems($('#recent'));
+}
+function renderGallery() {
+  const list = P.get('onlystar', false) ? JOBS.filter((j) => j.starred) : JOBS;
+  const sig = JSON.stringify(list) + P.get('autoplay', false) + P.get('onlystar', false);
+  if (sig === gallerySig) return;
+  gallerySig = sig;
+  $('#gallery').innerHTML = list.map((j) => itemHtml(j, true)).join('')
+    || '<div class="s">還沒有成品</div>';
+  wireItems($('#gallery'));
+}
+
+$('#autoplay').onchange = (e) => { P.set('autoplay', e.target.checked); recentSig = gallerySig = ''; renderRecent(); renderGallery(); };
+$('#onlystar').onchange = (e) => { P.set('onlystar', e.target.checked); gallerySig = ''; renderGallery(); };
+$('#cardsize').oninput = (e) => { P.set('cardsize', +e.target.value); document.documentElement.style.setProperty('--card', e.target.value+'px'); };
+$('#sweep').onclick = async () => {
+  const d = await (await fetch('/api/library/sweep', { method:'POST' })).json();
+  alert(`清掉 ${d.removed} 個孤兒檔`); refreshJobs(true);
+};
+$('#clearlib').onclick = async () => {
+  if (!confirm('刪掉所有沒加星號的成品？影片檔會真的從硬碟刪掉。')) return;
+  const r = await fetch('/api/library/clear', { method:'POST',
+    headers:{'Content-Type':'application/json'}, body: JSON.stringify({ keep_starred:true }) });
+  const d = await r.json();
+  if (!r.ok) return alert(d.detail || '清不掉');
+  alert(`刪了 ${d.removed} 個`); refreshJobs(true);
+};
+
+/* ---------- CivitAI ---------- */
+function civCard(item) {
+  const v = item.versions[0] || {};
+  const img = (v.images || [])[0];
+  const blur = P.get('cblur', false);
+  return `<div class="lcard ${blur ? 'blur':''}">
+    <div class="shot">${img ? `<img src="${esc(img.url)}" alt="" loading="lazy">` : ''}
+      ${blur ? '<div class="reveal">點一下看清楚</div>' : ''}</div>
+    <div class="info">
+      <div class="nm">${esc(item.name)}</div>
+      <div class="s">${esc(v.base_model)}${item.nsfw ? ' · <span class="tag warn">NSFW</span>':''}</div>
+      <div class="s">↓${item.downloads.toLocaleString()} · ♥${item.likes.toLocaleString()}${item.creator ? ' · '+esc(item.creator):''}</div>
+      ${(v.trained_words||[]).length ? `<div class="words">${v.trained_words.map((w)=>`<span>${esc(w)}</span>`).join('')}</div>`:''}
+      <div class="files">${(v.files||[]).map((f) => `
+        <div class="fl"><span class="fn" title="${esc(f.name)}">${esc(f.name)}</span>
+          <span>${gb(f.size)}</span>
+          ${f.installed
+            ? '<span class="tag done">已裝</span>'
+            : `<button class="ghost tiny" data-get='${esc(JSON.stringify({file:f, version_id:v.id, label:item.name, page_url:item.url, trained_words:v.trained_words, base_model:v.base_model}))}'>裝</button>`}
+        </div>`).join('')}</div>
+      <div class="acts" style="margin-top:auto"><a class="s" href="${esc(item.url)}" target="_blank" rel="noopener">在 CivitAI 開啟 ↗</a></div>
+    </div>
+  </div>`;
+}
+
+async function civSearch(reset) {
+  if (CIV.loading) return;
+  CIV.loading = true;
+  if (reset) { CIV.items = []; CIV.cursor = ''; }
+  const q = new URLSearchParams({
+    query: $('#cq').value, model: chosen ? chosen.id : '', scope: $('#cscope').value,
+    sort: $('#csort').value, period: $('#cperiod').value, cursor: CIV.cursor, limit: '24',
+  });
+  if ($('#cnsfw').checked) q.set('nsfw', 'true');
+  $('#csearch').disabled = true;
   try {
-    const d = await (await fetch('/api/jobs')).json();
-    const sig = JSON.stringify(d);
-    if (sig !== jobSig) { jobSig = sig; renderJobs(d.jobs, d.queued); }   // keep playing videos alive
-  } catch (_) {}
+    const r = await fetch('/api/civitai/search?' + q);
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    CIV.items = CIV.items.concat(d.items);
+    CIV.cursor = d.next_cursor || '';
+    $('#cbases').textContent = d.bases_used && d.bases_used.length
+      ? '篩選：' + d.bases_used.join(' / ')
+      : '沒有篩選 base model —— 結果可能和你的模型不相容。';
+    renderCiv();
+  } catch (e) {
+    $('#cresults').innerHTML = `<div class="errbox">搜尋失敗：${esc(e.message)}</div>`;
+  }
+  $('#csearch').disabled = false;
+  CIV.loading = false;
 }
 
-/* ---------- model manager ---------- */
+function renderCiv() {
+  $('#cresults').innerHTML = CIV.items.map(civCard).join('')
+    || '<div class="s">沒有結果。試試把「相容範圍」放寬，或換關鍵字。</div>';
+  $('#cmore').classList.toggle('hidden', !CIV.cursor);
+  $('#cresults').querySelectorAll('.reveal').forEach((el) => el.onclick = () => {
+    el.closest('.lcard').classList.remove('blur'); el.remove();
+  });
+  $('#cresults').querySelectorAll('[data-get]').forEach((b) => b.onclick = async () => {
+    const info = JSON.parse(b.dataset.get);
+    b.disabled = true; b.textContent = '…';
+    const r = await fetch('/api/civitai/download', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        files: [{ url: info.file.url, name: info.file.name, size: info.file.size }],
+        version_id: info.version_id, label: info.label,
+        page_url: info.page_url, trained_words: info.trained_words, base_model: info.base_model,
+      }),
+    });
+    const d = await r.json();
+    if (!r.ok) { alert(d.detail || '下載失敗'); b.disabled = false; b.textContent = '裝'; return; }
+    b.textContent = '下載中';
+    refreshDownloads(); refreshLoras(true);
+  });
+}
+$('#csearch').onclick = () => civSearch(true);
+$('#cq').onkeydown = (e) => { if (e.key === 'Enter') civSearch(true); };
+$('#cmore').onclick = () => civSearch(false);
+['cscope','csort','cperiod'].forEach((id) => $('#'+id).onchange = () => civSearch(true));
+$('#cnsfw').onchange = (e) => { P.set('cnsfw', e.target.checked); civSearch(true); };
+$('#cblur').onchange = (e) => { P.set('cblur', e.target.checked); renderCiv(); };
+
+function renderInstalled() {
+  $('#installed').innerHTML = LORAS.length ? LORAS.map((l) => `
+    <div class="lora">
+      <span class="n" title="${esc(l.name)}">${esc(l.name)}
+        ${l.builtin ? '<span class="tag">內建加速</span>':''}
+        ${l.base_model ? `<span class="s"> · ${esc(l.base_model)}</span>`:''}</span>
+      <span class="s">${gb(l.size)}</span>
+      ${l.source ? `<a class="s" href="${esc(l.source)}" target="_blank" rel="noopener">來源 ↗</a>`:''}
+      <button class="ghost tiny danger" data-rm="${esc(l.name)}">刪</button>
+    </div>
+    ${(l.trained_words||[]).length ? `<div class="words" style="margin:-2px 0 6px 26px">${l.trained_words.map((w)=>`<span>${esc(w)}</span>`).join('')}</div>`:''}
+  `).join('') : '<div class="s">models/loras/ 裡還沒有檔案。</div>';
+  $('#installed').querySelectorAll('[data-rm]').forEach((b) => b.onclick = async () => {
+    if (!confirm(`刪掉 ${b.dataset.rm}？`)) return;
+    const r = await fetch('/api/loras/' + encodeURIComponent(b.dataset.rm), { method:'DELETE' });
+    if (!r.ok) { const d = await r.json().catch(()=>({})); return alert(d.detail || '刪不掉'); }
+    refreshLoras(true);
+  });
+}
+
+/* ---------- models tab ---------- */
 function renderManager() {
+  const g = GPU.devices && GPU.devices.length
+    ? GPU.devices.map((d) => `${esc(d.name)}（${gb(d.vram_total)}）`).join('、')
+    : '讀不到（ComfyUI 還沒起來？）';
+  $('#gpu').innerHTML = `<div class="top"><span class="name">你的硬體</span></div>
+    <div class="note">顯卡：${g}${GPU.ram_total ? ` · 系統記憶體 ${gb(GPU.ram_total)}`:''}${GPU.comfy_version ? ` · ComfyUI ${esc(GPU.comfy_version)}`:''}</div>
+    <div class="note">下面每個模型寫的顯存是<b>建議值，不是門檻</b> —— 不夠也能跑，ComfyUI 會用系統記憶體換，只是慢。</div>`;
+
   $('#mlist').innerHTML = MODELS.map((m) => {
-    const badge = m.installed ? `<span class="tag done">已安裝</span>`
-      : m.partial ? `<span class="tag">下載未完成</span>` : `<span class="tag">未下載</span>`;
-    const btn = m.installed
-      ? `<button class="ghost" data-redl="${m.id}">重新檢查／補齊</button>`
-      : `<button class="go" data-dl="${m.id}">下載 ${gb(m.download_bytes)}</button>`;
-    return `<div class="m ${m.installed ? 'installed' : ''}">
+    const a = m.vram_advice || {};
+    const badge = m.installed ? '<span class="tag done">已安裝</span>'
+      : m.partial ? '<span class="tag">下載未完成</span>' : '<span class="tag">未下載</span>';
+    return `<div class="m ${m.installed ? 'installed':''}">
       <div class="top">
         <span class="name">${esc(m.label)}</span>${badge}
-        <span class="s">顯存 ${m.vram_gb}GB+ · ${gb(m.download_bytes)}</span>
-        ${btn}
+        <span class="s">建議 ${m.vram_gb}GB · ${gb(m.download_bytes)}</span>
+        ${m.installed ? `<button class="ghost" data-redl="${m.id}">補齊／重新檢查</button>`
+                      : `<button class="go" data-dl="${m.id}">下載 ${gb(m.download_bytes)}</button>`}
       </div>
-      ${m.note ? `<div class="note">${esc(m.note)}</div>` : ''}
-      ${!m.runnable ? `<div class="note">這個模型不能從本頁生成，只下載檔案。</div>` : ''}
-      ${m.missing.length && !m.installed ? `<div class="note">缺 ${m.missing.length} 個檔：${esc(m.missing.slice(0,3).join(', '))}${m.missing.length>3?' …':''}</div>` : ''}
+      ${m.note ? `<div class="note">${esc(m.note)}</div>`:''}
+      ${!m.runnable ? '<div class="note">這個模型不能從本頁生成，只下載檔案。</div>':''}
+      ${a.level && a.level !== 'ok' ? `<div class="banner ${a.level}">${(a.text||'').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}</div>`:''}
+      ${m.missing.length && !m.installed ? `<div class="note">缺 ${m.missing.length} 個檔：${esc(m.missing.slice(0,3).join(', '))}${m.missing.length>3?' …':''}</div>`:''}
     </div>`;
   }).join('');
   document.querySelectorAll('[data-dl],[data-redl]').forEach((b) => b.onclick = async () => {
     b.disabled = true;
-    await fetch(`/api/models/${b.dataset.dl || b.dataset.redl}/download`, { method: 'POST' });
+    await fetch(`/api/models/${b.dataset.dl || b.dataset.redl}/download`, { method:'POST' });
     refreshDownloads();
   });
 }
 
 async function refreshDownloads() {
-  let d;
-  try { d = await (await fetch('/api/downloads')).json(); } catch (_) { return; }
+  let d; try { d = await (await fetch('/api/downloads')).json(); } catch { return; }
   const box = $('#dl'), c = d.current;
   if (!c) {
     const last = (d.recent || []).slice(-1)[0];
     if (last && last.status === 'error') {
       box.classList.remove('hidden');
       box.innerHTML = `<div class="name">${esc(last.label)}</div><div class="errbox">${esc(last.message)}</div>`;
-    } else { box.classList.add('hidden'); }
+    } else box.classList.add('hidden');
     return;
   }
   box.classList.remove('hidden');
   const active = c.files.find((f) => f.status === 'downloading');
   box.innerHTML = `
     <div class="top"><span class="name">下載中：${esc(c.label)}</span>
-      <span class="s">${gb(c.done)} / ${gb(c.total)}${c.rate ? ' · ' + gb(c.rate) + '/s' : ''}${c.eta ? ' · 還要 ' + dur(c.eta) : ''}</span>
-      <button class="ghost" id="dlcancel">停止</button></div>
+      <span class="s">${gb(c.done)} / ${gb(c.total)}${c.rate ? ' · '+gb(c.rate)+'/s':''}${c.eta ? ' · 還要 '+dur(c.eta):''}</span>
+      <button class="ghost tiny" id="dlcancel">停止</button></div>
     <div class="bar"><i style="width:${c.progress*100}%"></i></div>
-    <div class="s">${active ? esc(active.name) + ' — ' + gb(active.done) + ' / ' + gb(active.size) : '準備中…'}</div>
-    ${d.queued ? `<div class="s">佇列還有 ${d.queued} 個模型</div>` : ''}`;
-  $('#dlcancel').onclick = () => fetch('/api/downloads/cancel', { method: 'POST' });
+    <div class="s">${active ? esc(active.name)+' — '+gb(active.done)+' / '+gb(active.size) : '準備中…'}</div>
+    ${d.queued ? `<div class="s">佇列還有 ${d.queued} 個</div>`:''}`;
+  $('#dlcancel').onclick = () => fetch('/api/downloads/cancel', { method:'POST' });
+}
+
+/* ---------- settings tab ---------- */
+let HEALTH = {};
+function renderSettings() {
+  const h = HEALTH;
+  $('#setbody').innerHTML = `
+    <div class="note">這些值來自 <code>.env</code>，改完要重啟 app（關掉兩個黑視窗再跑 start.bat）。</div>
+    <h2 style="margin-top:16px">現況</h2>
+    <div class="s">ComfyUI：${h.comfy && h.comfy.ok ? '就緒 · '+esc(h.comfy.detail) : '<span style="color:var(--err)">'+esc((h.comfy||{}).detail||'連不上')+'</span>'}</div>
+    <div class="s">模型目錄：<code>${esc(h.models_dir||'')}</code></div>
+    <div class="s">成品目錄：<code>${esc((h.library||{}).dir||'')}</code>（${(h.library||{}).count||0} 個檔，${gb((h.library||{}).bytes||0)}）</div>
+    <div class="s">COMFY_ARGS：<code>${esc(h.comfy_args || '(空)')}</code></div>
+    <div class="s">CivitAI API key：${h.civitai_key ? '已設定' : '<b>未設定</b> —— 可以搜尋，但不能下載'}</div>
+    <h2 style="margin-top:16px">想改什麼</h2>
+    <div class="note">
+      <b>顯存不夠、想跑大模型</b>：在 <code>.env</code> 加 <code>COMFY_ARGS=--lowvram</code>（很不夠就 <code>--novram</code>）。<br>
+      <b>要從 CivitAI 下載</b>：<code>CIVITAI_API_KEY=你的key</code>。到 civitai.com → 頭像 → Account settings → API Keys 產生。<br>
+      <b>每次都自動套某些 LoRA</b>：<code>LORAS=檔名:0.8</code>；雙專家模型分開指定用 <code>LORAS_HIGH=</code> / <code>LORAS_LOW=</code>。<br>
+      <b>換預設模型</b>：<code>MODEL=wan22-14b-q4</code>。
+    </div>`;
 }
 
 /* ---------- polling ---------- */
-let modelSig = '';
+let modelSig = '', loraSig = '', jobSig = '';
 async function refreshModels() {
   try {
     const d = await (await fetch('/api/models')).json();
     const sig = JSON.stringify(d);
     if (sig === modelSig) return;
     modelSig = sig;
-    MODELS = d.models;
-    if (!chosen) chosen = MODELS.find((m) => m.id === d.default) || MODELS.find((m) => m.runnable);
-    renderModelPicker();
-    renderManager();
-  } catch (_) {}
+    MODELS = d.models; GPU = d.gpu || {};
+    if (!chosen) {
+      const want = P.get('model', null);
+      chosen = MODELS.find((m) => m.id === want && m.runnable)
+            || MODELS.find((m) => m.id === d.default)
+            || MODELS.find((m) => m.runnable);
+    }
+    renderModelPicker(); renderManager();
+  } catch {}
 }
-
-let loraSig = '';
-async function refreshLoras() {
+async function refreshLoras(force) {
   try {
     const d = await (await fetch('/api/loras')).json();
     const sig = JSON.stringify(d.loras);
-    if (sig !== loraSig) { loraSig = sig; LORAS = d.loras; renderLoras(); }
-  } catch (_) {}
+    if (sig === loraSig && !force) return;
+    loraSig = sig; LORAS = d.loras;
+    renderLoras(); renderInstalled();
+  } catch {}
+}
+async function refreshJobs(force) {
+  try {
+    const d = await (await fetch('/api/jobs')).json();
+    const sig = JSON.stringify(d);
+    if (sig === jobSig && !force) return;
+    jobSig = sig; JOBS = d.jobs;
+    $('#libcount').textContent = JOBS.length;
+    renderRecent();
+    if (!$('#tab-lib').classList.contains('hidden')) renderGallery();
+    if (d.queued) $('#status').textContent = `佇列還有 ${d.queued} 個`;
+  } catch {}
+}
+async function refreshStats() {
+  try {
+    const s = await (await fetch('/api/library/stats')).json();
+    $('#libstats').textContent = `${s.count} 個影片 · ${gb(s.bytes)}${s.starred ? ` · ${s.starred} 個星號`:''}${s.orphans ? ` · ${s.orphans} 個孤兒檔`:''}`;
+  } catch {}
 }
 
 async function boot() {
-  await refreshModels();
-  await refreshLoras();
-  refreshJobs();
-  refreshDownloads();
+  // restore prefs
+  $('#autoplay').checked = P.get('autoplay', false);
+  $('#onlystar').checked = P.get('onlystar', false);
+  $('#cblur').checked = P.get('cblur', false);
+  $('#cnsfw').checked = P.get('cnsfw', false);
+  const cs = P.get('cardsize', 200);
+  $('#cardsize').value = cs;
+  document.documentElement.style.setProperty('--card', cs+'px');
+
   try {
-    const h = await (await fetch('/api/health')).json();
-    $('#lightning').checked = !!h.lightning_default;
-    $('#sub').textContent =
-      `本機執行 · 無內容過濾 · 已安裝 ${h.installed.length} / ${MODELS.length} 個模型`
-      + (h.comfy.ok ? '' : ' · ComfyUI 還沒就緒：' + h.comfy.detail);
-    $('#sub').title = '模型目錄：' + h.models_dir;
-    if (!h.installed.length) {
-      $('#status').textContent =
-        '一個模型都還沒裝好。到「模型管理」分頁下載一個。（模型目錄：' + h.models_dir + '）';
+    const st = await (await fetch('/api/civitai/status')).json();
+    $('#csort').innerHTML = st.sorts.map((s) => `<option${s==='Most Downloaded'?' selected':''}>${s}</option>`).join('');
+    $('#cperiod').innerHTML = st.periods.map((p) => `<option>${p}</option>`).join('');
+    if (!st.has_key) {
+      $('#ckey').classList.remove('hidden');
+      $('#ckey').className = 'banner tight';
+      $('#ckey').innerHTML = `<b>還沒設 CivitAI API key</b> —— 搜尋可以用，<b>下載會失敗</b>。<br><span class="s">${esc(st.help)}</span>`;
     }
-  } catch (_) {}
+  } catch {}
+
+  await refreshModels();
+  await refreshLoras(true);
+  await refreshJobs(true);
+  refreshDownloads(); refreshStats();
+
+  try {
+    HEALTH = await (await fetch('/api/health')).json();
+    $('#lightning').checked = !!HEALTH.lightning_default;
+    const v = (HEALTH.gpu || {}).vram_gb;
+    $('#sub').textContent = `本機執行 · 無內容過濾 · 已安裝 ${HEALTH.installed.length}/${MODELS.length} 個模型`
+      + (v ? ` · 顯卡 ${v}GB` : '')
+      + (HEALTH.comfy.ok ? '' : ' · ComfyUI 還沒就緒：'+HEALTH.comfy.detail);
+  } catch {}
 }
 boot();
-setInterval(refreshJobs, 1500);
+setInterval(() => refreshJobs(), 1500);
 setInterval(refreshDownloads, 1000);
-setInterval(refreshModels, 5000);
-setInterval(refreshLoras, 8000);
+setInterval(refreshModels, 6000);
+setInterval(() => refreshLoras(), 8000);
+setInterval(refreshStats, 5000);
 </script>
 </body>
 </html>

@@ -50,6 +50,14 @@ class ComfyClient:
             await asyncio.sleep(2)
         raise ComfyError(f"ComfyUI at {self.base} never became ready: {last}")
 
+    async def system_stats(self) -> dict:
+        """Includes per-device vram_total / vram_free, so the UI can report the
+        real card instead of asking the user to read Task Manager."""
+        async with aiohttp.ClientSession() as s:
+            async with s.get(f"{self.base}/system_stats", timeout=30) as r:
+                r.raise_for_status()
+                return await r.json()
+
     async def object_info(self, refresh: bool = False) -> dict:
         if self._object_info is None or refresh:
             async with aiohttp.ClientSession() as s:

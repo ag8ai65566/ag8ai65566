@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT / "app"))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from aiohttp import web  # noqa: E402
+from fake_civitai import FakeCivitai  # noqa: E402
 from fake_comfy import FakeComfy  # noqa: E402
 from PIL import Image  # noqa: E402
 
@@ -573,7 +574,9 @@ async def test_server() -> None:
 
             async with s.get(f"{base}/") as r:
                 html = await r.text()
-            check("把圖片拖進來" in html and "模型管理" in html, "UI serves with both tabs")
+            for tab in ("生成", "素材庫", "LoRA", "模型", "設定"):
+                check(f'>{tab}' in html or f'>{tab}<' in html, f"UI has the {tab} tab")
+            check("把圖片拖進來" in html, "UI serves the drop zone")
 
             # --- generate on the default model, with a LoRA
             form = aiohttp.FormData()
@@ -669,6 +672,64 @@ async def test_server() -> None:
             async with s.get(f"{base}/api/downloads") as r:
                 check((await r.json())["current"] is None, "no download running")
 
+            # --- gallery management: star, delete, stats, clear
+            async with s.get(f"{base}/api/library/stats") as r:
+                st = await r.json()
+            check(st["count"] >= 2, f"library stats count videos ({st['count']})")
+            check(st["bytes"] > 0, "library stats report bytes on disk")
+
+            async with s.post(f"{base}/api/jobs/{job['id']}/star",
+                              json={"value": True}) as r:
+                check(r.status == 200 and (await r.json())["starred"], "star a job")
+            async with s.get(f"{base}/api/jobs/{job['id']}") as r:
+                check((await r.json())["starred"], "star persists in the record")
+
+            async with s.post(f"{base}/api/library/clear", json={"keep_starred": True}) as r:
+                cleared = (await r.json())["removed"]
+            check(cleared >= 1, f"clear removed the unstarred jobs ({cleared})")
+            async with s.get(f"{base}/api/jobs") as r:
+                left = (await r.json())["jobs"]
+            check([j["id"] for j in left] == [job["id"]], f"only the starred job survived ({len(left)})")
+
+            async with s.delete(f"{base}/api/jobs/{job['id']}") as r:
+                check(r.status == 200, "delete the starred job explicitly")
+            async with s.get(f"{base}/api/jobs") as r:
+                check((await r.json())["jobs"] == [], "library now empty")
+            async with s.delete(f"{base}/api/jobs/nope") as r:
+                check(r.status == 404, "deleting a missing job 404s")
+
+            # --- VRAM is reported, and is advice rather than a gate
+            async with s.get(f"{base}/api/models") as r:
+                cat2 = await r.json()
+            check("gpu" in cat2, "catalogue reports gpu info")
+            for m in cat2["models"]:
+                check("vram_advice" in m and "vram_note" in m,
+                      f"{m['id']} carries vram advice") if m["id"] == "wan22-14b-fp8" else None
+            big = next(m for m in cat2["models"] if m["id"] == "wan22-14b-fp8")
+            check("跑得動" in big["vram_note"], "vram_note says a small card still runs")
+
+            # --- CivitAI endpoints are wired up
+            async with s.get(f"{base}/api/civitai/status") as r:
+                cs = await r.json()
+            check(cs["has_key"] is False, "no key configured in this test")
+            check("Most Downloaded" in cs["sorts"], "sort options exposed")
+
+            async with s.post(f"{base}/api/civitai/download",
+                              json={"files": [{"url": "https://x/y", "name": "a.safetensors"}]}) as r:
+                body = await r.json()
+                check(r.status == 400 and "API key" in body.get("detail", ""),
+                      f"lora download without a key 400s with a useful message ({r.status})")
+
+            async with s.post(f"{base}/api/civitai/download",
+                              json={"files": [{"url": "https://x/y", "name": "../evil.safetensors"}]}) as r:
+                check(r.status == 400, "traversal in a lora filename is rejected")
+
+            async with s.get(f"{base}/api/loras") as r:
+                lr = await r.json()
+            check("civitai_key" in lr, "lora listing reports key status")
+            async with s.delete(f"{base}/api/loras/..%2F..%2Fetc%2Fpasswd") as r:
+                check(r.status in (400, 404), f"lora delete blocks traversal ({r.status})")
+
             # --- the trap that bit in practice: MODEL names an uninstalled
             # model, so the UI must not preselect it and the API must refuse it
             # up front rather than queueing a job that can only fail.
@@ -739,7 +800,7 @@ async def test_uninstalled_model_is_refused_up_front() -> None:
             check(status == 400, f"uninstalled model refused with 400, not queued (got {status})")
             detail = body.get("detail", "")
             check("還沒下載完" in detail, f"message says it needs downloading ({detail[:40]})")
-            check("模型管理" in detail, "message points at the model manager")
+            check("「模型」分頁" in detail, f"message points at the model tab ({detail[-30:]})")
             check("wan2.2_i2v_high_noise" in detail, "message names a missing file")
 
             async with s.get(f"{base}/api/jobs") as r:
@@ -810,6 +871,249 @@ def test_windows_script_encoding() -> None:
     check("*.bat -text" in attrs, ".gitattributes stops git normalising .bat endings")
 
 
+# -- library / gallery -------------------------------------------------------
+
+
+def test_library() -> None:
+    import library
+
+    section("library")
+    root = TMP / "lib"
+    import shutil
+
+    if root.exists():
+        shutil.rmtree(root)
+    (root / ".thumbs").mkdir(parents=True)
+
+    lib = library.Library(root)
+    for i in range(3):
+        r = library.Record(id=f"job{i}", model_id="wan22-14b-fp8", prompt=f"p{i}", status="done")
+        r.output = f"job{i}.mp4"
+        r.thumb = f"job{i}.jpg"
+        (root / r.output).write_bytes(b"video" * 100)
+        (root / ".thumbs" / r.thumb).write_bytes(b"jpg")
+        lib.add(r)
+    check(len(lib.recent()) == 3, "three records stored")
+    check(lib.index.is_file(), "history file written")
+
+    # Reload from disk: the whole point of persisting.
+    again = library.Library(root)
+    again.load()
+    check(len(again.recent()) == 3, f"records survive a restart ({len(again.recent())})")
+    check(again.recent()[0].id == "job2", "newest first")
+
+    # A record whose video vanished must not come back as a dead link.
+    (root / "job1.mp4").unlink()
+    third = library.Library(root)
+    third.load()
+    check({r.id for r in third.recent()} == {"job0", "job2"},
+          f"record with a missing file is dropped ({[r.id for r in third.recent()]})")
+
+    stats = third.stats()
+    check(stats["count"] == 2 and stats["bytes"] > 0, f"disk stats ({stats['count']}, {stats['bytes']}B)")
+
+    check(third.star("job0", True), "starring works")
+    check(third.clear(keep_starred=True) == 1, "clear keeps starred")
+    check([r.id for r in third.recent()] == ["job0"], "starred record survived")
+    check(not (root / "job2.mp4").exists(), "cleared video deleted from disk")
+    check((root / "job0.mp4").exists(), "starred video kept on disk")
+
+    # Orphan sweep: a file with no record.
+    (root / "stray.mp4").write_bytes(b"x" * 10)
+    check(third.sweep_orphans() == 1, "orphan swept")
+    check(not (root / "stray.mp4").exists(), "orphan file gone")
+    check((root / "job0.mp4").exists(), "known file untouched by sweep")
+
+    # An interrupted job should not come back as still-running.
+    r = library.Record(id="mid", model_id="wan22-14b-fp8", prompt="x", status="running")
+    third.add(r)
+    fourth = library.Library(root)
+    fourth.load()
+    revived = next(x for x in fourth.recent() if x.id == "mid")
+    check(revived.status == "error" and "重啟" in revived.message,
+          f"interrupted job marked failed ({revived.status})")
+
+
+# -- VRAM advice -------------------------------------------------------------
+
+
+def test_vram_advice() -> None:
+    section("vram advice")
+    sys.path.insert(0, str(ROOT / "app"))
+    import registry
+    import server
+
+    wan = registry.get("wan22-14b-fp8")   # recommends 24GB
+    hy = registry.get("hy15-480p")        # recommends 10GB
+
+    plenty = server.vram_advice(wan, 24)
+    check(plenty["level"] == "ok", f"24GB card on a 24GB model is ok ({plenty['level']})")
+
+    tight = server.vram_advice(wan, 12)
+    check(tight["level"] == "tight", f"12GB on 24GB is tight ({tight['level']})")
+    check("跑得動" in tight["text"], "tight advice says it still runs")
+    check(tight["flags"] == "--lowvram", f"suggests --lowvram ({tight['flags']})")
+
+    dire = server.vram_advice(wan, 8)
+    check(dire["level"] == "very_tight", f"8GB on 24GB is very tight ({dire['level']})")
+    check("跑得動" in dire["text"], "very tight advice still says it runs")
+    check(dire["flags"] == "--novram", f"suggests --novram ({dire['flags']})")
+
+    check(server.vram_advice(hy, 10)["level"] == "ok", "10GB card on the 10GB model is ok")
+    check(server.vram_advice(wan, 0)["level"] == "unknown", "no reading -> unknown, not a block")
+
+    # The whole point: advice is never a refusal.
+    for gb_ in (0, 4, 8, 12, 24, 48):
+        a = server.vram_advice(wan, gb_)
+        check("不能" not in a["text"] and "無法" not in a["text"],
+              f"advice at {gb_}GB never says it cannot run")
+
+
+# -- CivitAI -----------------------------------------------------------------
+
+
+async def test_civitai() -> None:
+    import civitai
+
+    section("civitai client")
+    fake = FakeCivitai()
+    runner, url = await start(fake.app())
+    fake.base = url
+    old_api, old_key = civitai.API, os.environ.get("CIVITAI_API_KEY")
+    civitai.API = f"{url}/api/v1"
+    os.environ.pop("CIVITAI_API_KEY", None)
+    try:
+        res = await civitai.search(query="", base_models=["Wan Video 2.2 I2V-A14B"])
+        names = [i["name"] for i in res["items"]]
+        check("Glass Kiss" in names, f"base-model filter returns Wan 2.2 I2V items ({names})")
+        check("T2V Only Thing" not in names, "other base models filtered out")
+        check("Broken" not in names, "model with no weight file is dropped")
+        check(res["next_cursor"] == "2", f"cursor passed through ({res['next_cursor']})")
+        check(fake.searches[-1]["types"] == "LORA", "always asks for LORA type")
+
+        glass = next(i for i in res["items"] if i["name"] == "Glass Kiss")
+        files = glass["versions"][0]["files"]
+        check(len(files) == 2, f"only weight files kept ({[f['name'] for f in files]})")
+        check(all(f["size"] == 4096 * 1024 for f in files), "sizeKB converted to bytes")
+        check(glass["versions"][0]["trained_words"] == ["glasskiss"], "trigger words parsed")
+        check(glass["url"].endswith("/models/1"), "page url built")
+
+        page2 = await civitai.search(cursor="2")
+        check(page2["items"], "cursor fetches another page")
+
+        nsfw = await civitai.search(nsfw=True)
+        check(all(i["nsfw"] for i in nsfw["items"]) and nsfw["items"], "nsfw filter honoured")
+
+        # Downloads need a key; search does not.
+        try:
+            civitai.download_headers()
+            check(False, "download without a key raises")
+        except civitai.NeedsApiKey as exc:
+            check("API key" in str(exc), f"clear message about the key ({str(exc)[:30]})")
+
+        os.environ["CIVITAI_API_KEY"] = "testkey"
+        headers = civitai.download_headers()
+        check(headers["Authorization"] == "Bearer testkey", "key becomes a bearer token")
+        check("User-Agent" in headers, "download sends a User-Agent too")
+    finally:
+        civitai.API = old_api
+        if old_key is None:
+            os.environ.pop("CIVITAI_API_KEY", None)
+        else:
+            os.environ["CIVITAI_API_KEY"] = old_key
+        await runner.cleanup()
+
+    section("civitai 403 without a User-Agent")
+    fake2 = FakeCivitai()
+    runner, url = await start(fake2.app())
+    fake2.base = url
+    try:
+        import aiohttp
+
+        async with aiohttp.ClientSession(skip_auto_headers=["User-Agent"]) as s:
+            async with s.get(f"{url}/api/v1/models") as r:
+                check(r.status == 403, f"the fake reproduces the real 403 ({r.status})")
+    finally:
+        await runner.cleanup()
+
+
+async def test_lora_download() -> None:
+    import civitai
+    import downloader
+    import registry
+
+    section("lora download")
+    fake = FakeCivitai()
+    runner, url = await start(fake.app())
+    fake.base = url
+    root = TMP / "lora-models"
+    (root / "loras").mkdir(parents=True, exist_ok=True)
+    manager = downloader.Manager(root)
+    try:
+        os.environ["CIVITAI_API_KEY"] = "testkey"
+        headers = tuple(civitai.download_headers().items())
+        files = [
+            downloader.RemoteFile(url=f"{url}/api/download/models/10", folder="loras",
+                                  name="glass_kiss_high.safetensors", size=4096, headers=headers),
+            downloader.RemoteFile(url=f"{url}/api/download/models/11", folder="loras",
+                                  name="glass_kiss_low.safetensors", size=4096, headers=headers),
+        ]
+        dl = manager.enqueue_files(
+            key="civitai:10", label="LoRA · Glass Kiss", files=files,
+            sidecars={f.name: {"trained_words": ["glasskiss"], "url": "https://civitai.com/models/1",
+                               "base_model": "Wan Video 2.2 I2V-A14B"} for f in files},
+        )
+        for _ in range(400):
+            if dl.status in ("done", "error", "cancelled"):
+                break
+            await asyncio.sleep(0.02)
+        check(dl.status == "done", f"lora download completed ({dl.status}: {dl.message})")
+        check(dl.kind == "lora", "download is tagged as a lora")
+        for f in files:
+            path = root / "loras" / f.name
+            check(path.is_file() and path.stat().st_size == 4096, f"{f.name} written")
+            check(path.with_name(path.name + ".civitai.json").is_file(), f"{f.name} sidecar written")
+
+        listed = manager.list_loras()
+        entry = next(l for l in listed if l["name"] == "glass_kiss_high.safetensors")
+        check(entry["trained_words"] == ["glasskiss"], "trigger words read back from the sidecar")
+        check(entry["base_model"].startswith("Wan Video 2.2"), "base model read back")
+        check(entry["source"].endswith("/models/1"), "source url read back")
+
+        check(manager.delete_lora("glass_kiss_high.safetensors"), "delete works")
+        check(not (root / "loras" / "glass_kiss_high.safetensors").exists(), "file gone")
+        check(not (root / "loras" / "glass_kiss_high.safetensors.civitai.json").exists(),
+              "sidecar removed too")
+        check(not manager.delete_lora("nope.safetensors"), "deleting a missing lora returns False")
+        for bad in ("../evil", "a/b", "..", ""):
+            try:
+                manager.lora_path(bad)
+                check(False, f"path traversal blocked: {bad!r}")
+            except ValueError:
+                check(True, f"path traversal blocked: {bad!r}")
+
+        # Without a key the fetch must fail with a message that says why.
+        os.environ.pop("CIVITAI_API_KEY", None)
+        nokey = manager.enqueue_files(
+            key="civitai:11", label="no key",
+            files=[downloader.RemoteFile(url=f"{url}/api/download/models/10", folder="loras",
+                                         name="nokey.safetensors", size=4096)],
+        )
+        for _ in range(400):
+            if nokey.status in ("done", "error", "cancelled"):
+                break
+            await asyncio.sleep(0.02)
+        check(nokey.status == "error" and "API key" in nokey.message,
+              f"401 explained as a missing key ({nokey.message[:60]})")
+
+        worker = manager.stop()
+        if worker:
+            worker.cancel()
+    finally:
+        os.environ.pop("CIVITAI_API_KEY", None)
+        await runner.cleanup()
+
+
 async def test_watcher() -> None:
     section("watcher")
     import importlib
@@ -847,6 +1151,10 @@ async def main() -> int:
     await test_client()
     await test_server()
     await test_uninstalled_model_is_refused_up_front()
+    test_library()
+    test_vram_advice()
+    await test_civitai()
+    await test_lora_download()
     test_windows_script_encoding()
     await test_watcher()
     if live:

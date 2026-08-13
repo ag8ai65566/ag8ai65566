@@ -45,6 +45,7 @@ def _bool(name: str, default: bool) -> bool:
 
 
 LIGHTNING = _bool("LIGHTNING", True)
+COMFY_ARGS = os.environ.get("COMFY_ARGS", "").strip()
 WEIGHT_DTYPE = os.environ.get("WEIGHT_DTYPE", "default")
 
 

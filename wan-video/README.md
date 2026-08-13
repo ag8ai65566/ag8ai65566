@@ -53,12 +53,25 @@ latent、還有一個改寫提詞的 LLM 節點。我可以下載它全部的檔
 
 必須是 **NVIDIA** 顯卡（AMD / Intel / 內顯都跑不動）。
 
-一支 5 秒 480p 大概要：24GB 卡 1～3 分鐘、12GB 卡 6～12 分鐘、8GB 會很痛苦。
-720p 大約是 480p 的 2～3 倍時間與顯存。上面的時間是開了 4 步 Lightning 加速的結果。
+### 顯存數字是建議值，不是門檻
 
-**磁碟**：一個模型 18～43GB，可以裝多個（共用元件不會重複下載）。**記憶體**：建議 32GB。
+上表的顯存欄位是「順順跑」需要的量，**不是能不能跑的界線**。顯存不夠時 ComfyUI 會把
+權重換到系統記憶體，一樣跑得出來，只是慢。這套 app **不會**因為顯存小而拒絕任何模型 ——
+它會讀你的實際顯卡，告訴你差多少、大概慢幾倍、該加哪個參數，然後讓你自己決定。
 
-安裝腳本會讀你的顯存自動挑第一個模型，之後在網頁上加裝其他的。
+| 你的顯存 vs 建議值 | 加什麼 | 大概 |
+| --- | --- | --- |
+| 夠 | 不用加 | 正常速度 |
+| 約一半 | `COMFY_ARGS=--lowvram` | 慢 2～4 倍 |
+| 遠低於 | `COMFY_ARGS=--novram` | 慢 5 倍以上，但能跑 |
+
+一支 5 秒 480p：顯存充足的 24GB 卡約 1～3 分鐘；12GB 卡約 6～12 分鐘。
+720p 大約是 480p 的 2～3 倍。上面是開了 4 步 Lightning 加速的數字。
+
+**磁碟**：一個模型 18～43GB，可以裝多個（共用元件不會重複下載）。**記憶體**：建議 32GB
+—— 如果你要靠 `--lowvram` / `--novram` 跑大模型，系統記憶體就是替代顯存的那塊，越多越好。
+
+安裝腳本會依顯存挑一個「順順跑」的模型當起點，但你隨時可以在網頁上裝更大的來試。
 
 ---
 
@@ -121,15 +134,64 @@ python3 scripts/fetch-model.py hy15-480p --check  # 只檢查現況
 
 ## 四、怎麼用
 
-開 <http://127.0.0.1:8000>：
+開 <http://127.0.0.1:8000>，上面有五個分頁。
 
-**生成分頁** —— 圖拖進框裡（或 Ctrl+V 貼上）→ 選模型 → 打指令 → 按「生成」。
-下面會排隊、跑進度條，完成後直接在頁面上播放。沒下載的模型會標 `·` 並提示去下載。
+### 生成
 
-**模型管理分頁** —— 每個模型顯示顯存需求、下載大小、安裝狀態。按下載會顯示即時進度、
-速度和剩餘時間，可以中途停掉，之後接著下。已安裝的按「重新檢查／補齊」會補上缺的檔。
+圖拖進框裡（或 Ctrl+V 貼上）→ 選模型 → 打指令 → 按「生成」。
 
-**指令怎麼寫**，這些模型吃「描述動作與鏡頭」的句子，中英文都行：
+- 沒下載的模型也在選單裡（標 `·`），選了會出現「**先下載這個模型**」按鈕
+- 選到比你顯卡大的模型時，會出現一條說明：差多少、慢幾倍、加哪個參數 —— **不會阻止你**
+- `🎲` 換一個隨機種子；勾「自訂負面提詞」可以覆寫該模型的預設值
+- 下面「要套用的 LoRA」把已安裝的列出來，勾起來拉強度即可
+
+### 素材庫
+
+所有成品在這裡。**預設只顯示縮圖，點一下才載入影片** —— 卡片多的時候瀏覽器就不會一直在
+背景解碼幾十支影片。上面有：
+
+| 控制 | 作用 |
+| --- | --- |
+| 自動播放 | 打開才會像以前那樣自動循環播放。預設關 |
+| 卡片大小 | 140～420px，拉桿即時生效 |
+| 只看星號 | 過濾 |
+| 清孤兒檔 | 刪掉硬碟上沒有對應紀錄的影片檔 |
+| 清空（保留星號） | 刪掉所有沒加星號的成品，**檔案會真的從硬碟刪掉** |
+
+每張卡片可以加星號、下載、「再跑一次」（帶回原本的指令和模型、換新種子）、刪除。
+右上角顯示影片數量和佔用空間。這些設定記在瀏覽器裡，下次打開一樣。
+
+**紀錄現在會存到硬碟**（`data/outputs/.history.jsonl`），重啟 app 不會消失。
+
+### LoRA
+
+直接在 app 裡搜 CivitAI，不用開瀏覽器來回複製檔案：
+
+- 搜尋框 + 排序 / 期間，結果附預覽圖、下載數、觸發詞、檔案大小
+- **相容範圍**：預設只顯示和你當前模型 base model 完全相符的（Wan 2.2 I2V 有 380+ 支）；
+  放寬成「含可能相容」會加上鄰近版本；「全部」不篩
+- 「只看 NSFW」和「模糊預覽圖」兩個開關，設定會記住
+- 每個檔案一顆「裝」，直接下進 `models/loras/`，已裝的顯示「已裝」
+- 下載時同時存一份 `<檔名>.civitai.json`，所以**觸發詞和來源之後還看得到**
+- 下面列出已安裝的，可以刪
+
+> **下載需要 CivitAI API key，搜尋不用。** 到 civitai.com → 右上頭像 →
+> Account settings → API Keys 產生一個，填進 `.env` 的 `CIVITAI_API_KEY=`，重啟 app。
+> 沒設的話 LoRA 分頁上方會有提示。
+
+### 模型
+
+每個模型的建議顯存、下載大小、安裝狀態，以及**你實際顯卡**的對照建議。按下載會顯示
+即時進度、速度、剩餘時間，可以中途停掉再接著下。最上面顯示讀到的顯卡型號與顯存。
+
+### 設定
+
+現況一覽（ComfyUI 狀態、各個目錄、`COMFY_ARGS`、有沒有 CivitAI key），以及常見的
+`.env` 改法。
+
+### 指令怎麼寫
+
+這些模型吃「描述動作與鏡頭」的句子，中英文都行：
 
 ```
 她慢慢轉頭看向鏡頭，長髮被風吹動，鏡頭緩慢推近
@@ -148,18 +210,20 @@ he raises the glass and drinks, warm candlelight flickering, slow dolly in
 - 處理完的原圖搬到 `data/inbox/done/`
 - 用哪個模型看 `.env` 的 `WATCH_MODEL`（留空就用 `MODEL`）
 
-啟動：Windows `.\start-windows.ps1 -Watch`、Linux `./start-linux.sh --watch`、
+啟動：Windows `start.bat -Watch`、Linux `./start-linux.sh --watch`、
 Docker `docker compose --profile watch up -d`。
-
----
 
 ## 五、加 LoRA（畫風 / 題材 / NSFW）
 
 基礎模型本身沒有內容過濾，但要特定題材的品質，靠的是 LoRA。
 
+**最省事的做法是用 app 內建的 LoRA 分頁**（見上）—— 搜尋、看預覽、一鍵安裝，
+觸發詞也會一起存下來。需要一個 CivitAI API key 才能下載。
+
+手動也行：
 1. 到 [CivitAI](https://civitai.com/) 找 **Wan Video** 分類、標 **Wan 2.2** 的 LoRA。
 2. `.safetensors` 檔丟進 `models/loras/`（Windows 是 `ComfyUI\models\loras\`）。
-3. 回網頁，「LoRA」區塊會自動出現它 —— 勾起來、拉強度，就這樣。不用重啟。
+3. 回網頁，LoRA 清單會自動出現它 —— 勾起來、拉強度，就這樣。不用重啟。
 
 **Wan 2.2 是雙專家模型**，有 high-noise 和 low-noise 兩個模型。很多 CivitAI 的 LoRA 也分成
 兩個檔 —— **兩個都勾**，app 會各自套到對應的專家上。
@@ -191,7 +255,9 @@ docker compose run --rm app python check.py     # Docker
 
 | 症狀 | 原因 |
 | --- | --- |
-| `CUDA out of memory` | 換小一點的模型（`hy15-480p` 最省）、降解析度、減長度、`COMFY_ARGS=--lowvram` |
+| `CUDA out of memory` | 先加 `COMFY_ARGS=--lowvram`（還不行就 `--novram`），再考慮降解析度 / 減長度 / 換小模型 |
+| 想用大模型但顯存不夠 | **可以用**，加 `--lowvram` 或 `--novram`，會慢但跑得動。模型分頁會告訴你該加哪個 |
+| CivitAI 下載失敗 401 | 沒設 `CIVITAI_API_KEY`。搜尋不用 key，下載要 |
 | 某模型下拉選單裡是灰的 / 標 `·` | 還沒下載完 —— 去「模型管理」 |
 | `'xxx' is not a valid unet_name` | 檔案缺了或名字不符。「模型管理」按「重新檢查／補齊」 |
 | `ComfyUI has no node type 'UnetLoaderGGUF'` | ComfyUI-GGUF 沒裝好，重跑安裝腳本 |
@@ -211,16 +277,19 @@ setup-linux.sh         Linux 裸機安裝
 scripts/
   fetch-model.py       命令列下載模型，可續傳。只用標準函式庫
 app/
-  registry.py          模型目錄：檔名、repo 路徑、大小、每個模型的取樣參數
+  registry.py          模型目錄：檔名、repo 路徑、大小、取樣參數、CivitAI base model 對應
+  civitai.py           CivitAI 搜尋與下載（需要 User-Agent；下載需要 API key）
+  library.py           成品紀錄持久化、星號、磁碟統計、孤兒清理
   workflow.py          按家族組出 ComfyUI 工作流程（Wan 14B / Wan 5B / Hunyuan 1.5）
   comfy_client.py      ComfyUI HTTP + websocket 客戶端，含送出前的圖驗證
   downloader.py        背景下載，續傳、進度、大小驗證
   server.py            上傳 → 佇列 → mp4；模型與 LoRA 的 API
   watcher.py           拖檔模式
   check.py             環境檢查
-  static/index.html    網頁介面（生成 + 模型管理兩個分頁）
+  static/index.html    網頁介面（生成 / 素材庫 / LoRA / 模型 / 設定）
 tests/
-  test_flow.py         153 項檢查，用假的 ComfyUI 和假的 Hugging Face，不需要顯卡
+  test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡
+  fake_civitai.py      假的 CivitAI，重現「沒 User-Agent 就 403」「沒 key 下載就 401」
   schema_core.json     從真的 ComfyUI 0.32.0 匯出的節點結構，當測試基準
   dump_schema.py       ComfyUI 升級後用它重新匯出
 ```

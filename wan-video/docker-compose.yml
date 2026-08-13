@@ -46,6 +46,7 @@ services:
     environment:
       - COMFY_URL=http://comfy:8188
       - MODELS_DIR=/models
+      - CIVITAI_API_KEY=${CIVITAI_API_KEY:-}
       - OUTPUT_DIR=/data/outputs
       - INBOX_DIR=/data/inbox
       - DONE_DIR=/data/inbox/done

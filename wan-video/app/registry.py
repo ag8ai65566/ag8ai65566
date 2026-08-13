@@ -61,7 +61,20 @@ class ModelDef:
     lightning_cfg: float = 1.0
     lightning_shift: float = 5.0
     supports_lora: bool = True
+    # Exact CivitAI baseModel strings, best match first. Filters the in-app
+    # LoRA browser to things that stand a chance of working with this model.
+    civitai_bases: tuple[str, ...] = ()
+    # Trained for a neighbouring model; often works, sometimes not.
+    civitai_bases_loose: tuple[str, ...] = ()
     note: str = ""
+
+    @property
+    def vram_note(self) -> str:
+        """VRAM here is a recommendation, never a limit - said in one place."""
+        return (
+            f"建議 {self.vram_gb}GB 顯存。低於這個數字仍然跑得動 —— "
+            "ComfyUI 會把權重換到系統記憶體，只是慢很多。"
+        )
 
     @property
     def all_files(self) -> list[ModelFile]:
@@ -92,6 +105,16 @@ HY_COMMON = [
     ModelFile(HY_REPO, "split_files/vae/hunyuanvideo15_vae_fp16.safetensors", "vae", 2521292758),
     ModelFile(HY_REPO, "split_files/clip_vision/sigclip_vision_patch14_384.safetensors", "clip_vision", 856505640),
 ]
+
+# CivitAI baseModel strings, verified against live search results.
+WAN22_I2V_BASES = ("Wan Video 2.2 I2V-A14B",)
+WAN22_I2V_LOOSE = (
+    "Wan Video 2.2 T2V-A14B",
+    "Wan Video 14B i2v 480p",
+    "Wan Video 14B i2v 720p",
+    "Wan Video 14B t2v",
+    "Wan Video",
+)
 
 WAN_TIERS = {"480p": (832, 480), "720p": (1280, 720)}
 HY_TIERS = {"480p": (848, 480), "720p": (1280, 720)}
@@ -124,6 +147,8 @@ MODELS: list[ModelDef] = [
         shift=8.0,
         boundary=10,
         lightning=WAN_LIGHTNING,
+        civitai_bases=WAN22_I2V_BASES,
+        civitai_bases_loose=WAN22_I2V_LOOSE,
         note="NSFW LoRA 生態最完整的選擇。",
     ),
     ModelDef(
@@ -140,6 +165,8 @@ MODELS: list[ModelDef] = [
         shift=8.0,
         boundary=10,
         lightning=WAN_LIGHTNING,
+        civitai_bases=WAN22_I2V_BASES,
+        civitai_bases_loose=WAN22_I2V_LOOSE,
         note="需要 ComfyUI-GGUF 節點（安裝腳本已含）。",
     ),
     ModelDef(
@@ -156,6 +183,8 @@ MODELS: list[ModelDef] = [
         shift=8.0,
         boundary=10,
         lightning=WAN_LIGHTNING,
+        civitai_bases=WAN22_I2V_BASES,
+        civitai_bases_loose=WAN22_I2V_LOOSE,
         note="12GB 顯卡的主力選擇。畫質略降但動態仍好。",
     ),
     ModelDef(
@@ -175,6 +204,8 @@ MODELS: list[ModelDef] = [
         cfg=5.0,
         shift=8.0,
         sampler="uni_pc",
+        civitai_bases=("Wan Video 2.2 TI2V-5B",),
+        civitai_bases_loose=("Wan Video",),
         note="單一模型、下載量小。畫質明顯輸 14B，但快很多。",
     ),
     ModelDef(
@@ -193,6 +224,9 @@ MODELS: list[ModelDef] = [
         cfg=1.0,  # CFG is distilled into the weights; a real cfg would double the cost
         shift=7.0,
         negative=HY_NEGATIVE,
+        # CivitAI's "Hunyuan Video" is the original architecture, not 1.5,
+        # so those LoRAs are a gamble rather than a match.
+        civitai_bases_loose=("Hunyuan Video",),
         note="主模型只有 8.3GB。人臉與物理最自然，NSFW 生態比 Wan 少。",
     ),
     ModelDef(
@@ -211,6 +245,7 @@ MODELS: list[ModelDef] = [
         cfg=1.0,
         shift=7.0,
         negative=HY_NEGATIVE,
+        civitai_bases_loose=("Hunyuan Video",),
     ),
     ModelDef(
         id="hy15-720p-hq",
@@ -228,6 +263,7 @@ MODELS: list[ModelDef] = [
         cfg=6.0,  # official template value for the non-distilled build
         shift=7.0,
         negative=HY_NEGATIVE,
+        civitai_bases_loose=("Hunyuan Video",),
         note="官方範例的設定（cfg 6 / shift 7 / 20 步）。",
     ),
     # Files only: LTX-2.3's official pipeline is a ~50 node graph with two-pass
@@ -249,6 +285,7 @@ MODELS: list[ModelDef] = [
         ],
         tiers={},
         supports_lora=False,
+        civitai_bases=("LTXV 2.3",),
         note="影音同步一次生成。下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → LTX-2.3 I2V。",
     ),
 ]
