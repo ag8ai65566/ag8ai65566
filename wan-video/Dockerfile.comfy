@@ -1,0 +1,40 @@
+# ComfyUI + the custom nodes this stack needs.
+# Models are NOT baked in - they live on a mounted volume (see scripts/download-models.sh).
+FROM pytorch/pytorch:2.5.1-cuda12.4-cudnn9-runtime
+
+ARG COMFY_REF=master
+ARG GGUF_REF=main
+ARG VHS_REF=main
+
+ENV DEBIAN_FRONTEND=noninteractive PYTHONUNBUFFERED=1
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      git ffmpeg libgl1 libglib2.0-0 ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /opt
+RUN git clone https://github.com/comfyanonymous/ComfyUI.git \
+    && cd ComfyUI && git checkout "${COMFY_REF}" \
+    && pip install --no-cache-dir -r requirements.txt
+
+WORKDIR /opt/ComfyUI/custom_nodes
+# GGUF loaders, for running the 14B model on smaller cards.
+RUN git clone https://github.com/city96/ComfyUI-GGUF.git \
+    && cd ComfyUI-GGUF && git checkout "${GGUF_REF}" \
+    && pip install --no-cache-dir -r requirements.txt
+# VideoHelperSuite: mp4 muxing fallback and video previews in the ComfyUI tab.
+RUN git clone https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git \
+    && cd ComfyUI-VideoHelperSuite && git checkout "${VHS_REF}" \
+    && pip install --no-cache-dir -r requirements.txt
+# Manager, so extra nodes/LoRAs can be installed from the ComfyUI UI later.
+RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git \
+    && cd ComfyUI-Manager && pip install --no-cache-dir -r requirements.txt
+
+# sageattention gives a solid speedup on Ada/Hopper; harmless if unused.
+RUN pip install --no-cache-dir sageattention || \
+    echo "sageattention unavailable for this platform - continuing without it"
+
+WORKDIR /opt/ComfyUI
+EXPOSE 8188
+# models/ and output/ are bind-mounted by docker-compose; see COMFY_ARGS in .env
+# for per-GPU flags such as --lowvram.
+CMD ["sh", "-c", "python main.py --listen 0.0.0.0 --port 8188 ${COMFY_ARGS}"]

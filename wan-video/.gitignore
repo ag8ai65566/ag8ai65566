@@ -1,0 +1,11 @@
+# 模型權重（幾十 GB，不進版控）
+models/
+ComfyUI/
+
+# 執行期產物
+data/
+venv/
+start-linux.sh
+tests/.tmp/
+__pycache__/
+*.pyc

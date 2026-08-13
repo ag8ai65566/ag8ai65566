@@ -1,0 +1,70 @@
+services:
+  comfy:
+    build:
+      context: .
+      dockerfile: Dockerfile.comfy
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8188:8188"   # ComfyUI's own UI, for LoRA tweaking / debugging
+    volumes:
+      - ./models:/opt/ComfyUI/models
+      - ./data/comfy-output:/opt/ComfyUI/output
+      - ./data/comfy-input:/opt/ComfyUI/input
+    environment:
+      - COMFY_ARGS=${COMFY_ARGS:-}
+      - HF_HOME=/opt/ComfyUI/models/.hf
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request;urllib.request.urlopen('http://127.0.0.1:8188/system_stats',timeout=5)\""]
+      interval: 15s
+      timeout: 10s
+      retries: 40
+      start_period: 120s
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    restart: unless-stopped
+    ports:
+      - "${BIND_ADDR:-127.0.0.1}:8000:8000"
+    depends_on:
+      comfy:
+        condition: service_started
+    volumes:
+      - ./data:/data
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      - COMFY_URL=http://comfy:8188
+      - OUTPUT_DIR=/data/outputs
+      - INBOX_DIR=/data/inbox
+      - DONE_DIR=/data/inbox/done
+
+  # Drop-folder mode. Off by default: start with `--profile watch`.
+  watcher:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    profiles: ["watch"]
+    restart: unless-stopped
+    command: ["python", "watcher.py"]
+    depends_on:
+      - app
+    volumes:
+      - ./data:/data
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      - APP_URL=http://app:8000
+      - INBOX_DIR=/data/inbox
+      - DONE_DIR=/data/inbox/done
+      - OUTPUT_DIR=/data/outputs

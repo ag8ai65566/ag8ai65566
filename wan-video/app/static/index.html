@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>圖片 → 動畫</title>
+<style>
+  :root {
+    --bg: #0e0f13; --panel: #171922; --panel-2: #1f222e; --line: #2b2f3d;
+    --text: #e8eaf0; --muted: #9aa0b4; --accent: #6d8cff; --ok: #3ecf8e; --err: #ff6b6b;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font: 15px/1.6 -apple-system, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 20px 80px; }
+  h1 { font-size: 22px; margin: 0 0 4px; letter-spacing: .02em; }
+  .sub { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+  #drop { border: 1.5px dashed var(--line); border-radius: 12px; padding: 34px 18px; text-align: center;
+    cursor: pointer; transition: .15s; background: var(--panel-2); }
+  #drop.hot { border-color: var(--accent); background: #202540; }
+  #drop p { margin: 6px 0; color: var(--muted); font-size: 13px; }
+  #drop strong { color: var(--text); font-size: 15px; }
+  #preview { max-height: 200px; border-radius: 8px; margin-top: 12px; display: none; }
+  textarea { width: 100%; margin-top: 14px; background: var(--panel-2); color: var(--text);
+    border: 1px solid var(--line); border-radius: 10px; padding: 12px; font: inherit; resize: vertical; min-height: 78px; }
+  textarea:focus, select:focus, input:focus { outline: none; border-color: var(--accent); }
+  .row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-top: 12px; }
+  label.f { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--muted); }
+  select, input[type=number] { background: var(--panel-2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 10px; font: inherit; }
+  button { background: var(--accent); color: #0b0d16; border: 0; border-radius: 10px; padding: 11px 22px;
+    font: 600 15px inherit; cursor: pointer; }
+  button:disabled { opacity: .45; cursor: default; }
+  button.ghost { background: transparent; color: var(--muted); border: 1px solid var(--line); font-weight: 500; }
+  .spacer { flex: 1; }
+  h2 { font-size: 14px; color: var(--muted); font-weight: 600; margin: 32px 0 12px; text-transform: uppercase; letter-spacing: .08em; }
+  .job { display: flex; gap: 14px; background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+  .job img.t { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; background: #000; flex: none; }
+  .job video { width: 260px; border-radius: 8px; background: #000; }
+  .job .meta { flex: 1; min-width: 0; }
+  .job .p { font-size: 14px; margin: 0 0 6px; word-break: break-word; }
+  .job .s { font-size: 12px; color: var(--muted); }
+  .bar { height: 5px; background: var(--panel-2); border-radius: 3px; overflow: hidden; margin: 8px 0; }
+  .bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width .3s; }
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; background: var(--panel-2); color: var(--muted); }
+  .tag.run { background: #24304f; color: var(--accent); }
+  .tag.done { background: #17372a; color: var(--ok); }
+  .tag.err { background: #3a1f22; color: var(--err); }
+  .err { color: var(--err); font-size: 12px; white-space: pre-wrap; margin-top: 6px; }
+  a.dl { color: var(--accent); font-size: 12px; text-decoration: none; }
+  #status { font-size: 12px; color: var(--muted); margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>圖片 → 動畫</h1>
+  <div class="sub">Wan 2.2 I2V · 本機執行 · 無內容過濾</div>
+
+  <div class="card">
+    <div id="drop">
+      <strong>把圖片拖進來</strong>
+      <p>或點一下選檔案 · 也可以直接 Ctrl+V 貼上</p>
+      <img id="preview" alt="">
+    </div>
+    <input type="file" id="file" accept="image/*" hidden>
+
+    <textarea id="prompt" placeholder="想讓它怎麼動？例如：她慢慢轉頭看向鏡頭，頭髮被風吹動，鏡頭緩慢推近"></textarea>
+
+    <div class="row">
+      <label class="f">解析度
+        <select id="tier">
+          <option value="480p">480p（快）</option>
+          <option value="720p">720p（慢、細節好）</option>
+        </select>
+      </label>
+      <label class="f">長度（幀）
+        <select id="length">
+          <option value="49">49 ≈ 3 秒</option>
+          <option value="81" selected>81 ≈ 5 秒</option>
+          <option value="121">121 ≈ 7.5 秒</option>
+        </select>
+      </label>
+      <label class="f">種子（-1 隨機）
+        <input type="number" id="seed" value="-1" min="-1" style="width:120px">
+      </label>
+      <div class="spacer"></div>
+      <button class="ghost" id="stop">中斷</button>
+      <button id="go" disabled>生成</button>
+    </div>
+    <div id="status"></div>
+  </div>
+
+  <h2>紀錄</h2>
+  <div id="jobs"></div>
+</div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const drop = $('#drop'), file = $('#file'), preview = $('#preview'), go = $('#go');
+let picked = null;
+
+function pick(f) {
+  if (!f || !f.type.startsWith('image/')) return;
+  picked = f;
+  preview.src = URL.createObjectURL(f);
+  preview.style.display = 'block';
+  drop.querySelector('strong').textContent = f.name;
+  go.disabled = false;
+}
+
+drop.onclick = () => file.click();
+file.onchange = () => pick(file.files[0]);
+drop.ondragover = (e) => { e.preventDefault(); drop.classList.add('hot'); };
+drop.ondragleave = () => drop.classList.remove('hot');
+drop.ondrop = (e) => { e.preventDefault(); drop.classList.remove('hot'); pick(e.dataTransfer.files[0]); };
+window.addEventListener('paste', (e) => {
+  for (const item of e.clipboardData.files) { pick(item); break; }
+});
+
+go.onclick = async () => {
+  if (!picked) return;
+  go.disabled = true;
+  const body = new FormData();
+  body.append('image', picked);
+  body.append('prompt', $('#prompt').value);
+  body.append('tier', $('#tier').value);
+  body.append('length', $('#length').value);
+  body.append('seed', $('#seed').value || '-1');
+  try {
+    const r = await fetch('/api/generate', { method: 'POST', body });
+    if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
+    $('#status').textContent = '已排入佇列';
+    refresh();
+  } catch (err) {
+    $('#status').textContent = '送出失敗：' + err.message;
+  }
+  go.disabled = false;
+};
+
+$('#stop').onclick = () => fetch('/api/cancel', { method: 'POST' });
+
+const TAG = { queued: ['排隊中', ''], running: ['生成中', 'run'], done: ['完成', 'done'], error: ['失敗', 'err'] };
+
+function render(jobs, queued) {
+  $('#jobs').innerHTML = jobs.map((j) => {
+    const [text, cls] = TAG[j.status] || [j.status, ''];
+    const media = j.output
+      ? `<video src="${j.output}" controls loop muted autoplay playsinline></video>`
+      : (j.thumb ? `<img class="t" src="${j.thumb}" alt="">` : '');
+    const bar = j.status === 'running'
+      ? `<div class="bar"><i style="width:${j.progress * 100}%"></i></div>` : '';
+    return `<div class="job">
+      ${media}
+      <div class="meta">
+        <p class="p">${j.prompt ? escapeHtml(j.prompt) : '<i>（沒有指令）</i>'}</p>
+        <span class="tag ${cls}">${text}</span>
+        <span class="s"> ${j.size || j.tier} · ${j.length} 幀 · seed ${j.seed} · ${j.elapsed}s</span>
+        ${bar}
+        ${j.message && j.status !== 'error' ? `<div class="s">${escapeHtml(j.message)}</div>` : ''}
+        ${j.status === 'error' ? `<div class="err">${escapeHtml(j.message)}</div>` : ''}
+        ${j.output ? `<div><a class="dl" href="${j.output}" download>下載</a></div>` : ''}
+      </div>
+    </div>`;
+  }).join('') || '<div class="s" style="color:var(--muted)">還沒有紀錄</div>';
+  if (queued) $('#status').textContent = `佇列還有 ${queued} 個`;
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+let seen = '';
+async function refresh() {
+  try {
+    const d = await (await fetch('/api/jobs')).json();
+    // Only touch the DOM when something changed, so playing videos don't restart.
+    const sig = JSON.stringify(d);
+    if (sig !== seen) { seen = sig; render(d.jobs, d.queued); }
+  } catch (_) {}
+}
+refresh();
+setInterval(refresh, 1500);
+
+fetch('/api/health').then((r) => r.json()).then((h) => {
+  $('#length').value = h.defaults.length;
+  $('#tier').value = h.defaults.tier;
+  if (!h.comfy.ok) $('#status').textContent = 'ComfyUI 還沒就緒：' + h.comfy.detail;
+  document.querySelector('.sub').textContent =
+    `Wan 2.2 I2V · ${h.profile} · ${h.sampling.lightning ? h.sampling.steps + ' 步 Lightning' : h.sampling.steps + ' 步'}` +
+    (h.loras.length ? ` · LoRA ${h.loras.length} 個` : '') + ' · 本機執行';
+}).catch(() => {});
+</script>
+</body>
+</html>
