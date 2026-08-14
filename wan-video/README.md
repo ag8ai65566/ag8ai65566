@@ -107,6 +107,12 @@ latent、還有一個改寫提詞的 LLM 節點。我可以下載它全部的檔
 **之後要更新程式**：雙擊 `update.bat`（或 `powershell -ExecutionPolicy Bypass -File
 .\update-windows.ps1`）。它下載最新程式碼覆蓋上去，但 `ComfyUI\`、`venv\`、`data\`、
 `models\`、`.env` 一律不動，所以模型和成品不會重下。更新後要重啟才生效。
+更新是**全有全無**的：它會先確認每個要覆蓋的檔案都寫得進去，只要有一個不行就整個不動，
+不會留下一半新一半舊的狀態。跑完最後一行會直接寫 `UPDATE OK` 或 `UPDATE DID NOT COMPLETE`。
+
+> **這個資料夾可以隨便搬。** 所有腳本都用相對路徑，Python 一律用
+> `venv\Scripts\python.exe -m pip` 而不是 `pip.exe`（`.exe` 捷徑寫死絕對路徑，搬家就壞）。
+> 所以覺得放桌面會被 Windows 擋，直接把整個資料夾拖到 `C:\anim` 就好，模型不用重下。
 
 ### Linux + Docker
 
@@ -352,6 +358,30 @@ docker compose run --rm app python check.py     # Docker
 | 網頁說「ComfyUI 還沒就緒」 | 第一次載模型要一兩分鐘。更久就看黑視窗裡的紅字 |
 | 動作很小、幾乎靜止 | 指令太抽象；把動作和鏡頭講明確。或關掉 4 步加速 |
 | 畫面糊掉、顏色壞掉 | LoRA 強度太高或疊太多支，降到 0.6～0.8 |
+| `update.bat` 說 `Access to the path ... is denied` | Windows 擋住寫入。見下面一段 |
+
+### update.bat 說「Access to the path ... is denied」
+
+這是 Windows 拒絕覆蓋檔案，不是程式壞掉。**更新沒有完成**，畫面最後會直接寫
+`UPDATE DID NOT COMPLETE`。腳本會先檢查每個要覆蓋的檔案寫不寫得進去，**寫不進去就
+什麼都不改**，所以你原本的程式仍然是完整的、可以照常用。
+
+三個常見原因，由高到低：
+
+1. **資料夾放在桌面**，而 Windows 的「受控資料夾存取」（勒索軟體防護）預設會保護桌面。
+2. **OneDrive 正在同步**桌面／文件夾，同步中的檔案會被鎖住。
+3. **有程式開著那個檔案** —— 編輯器、檔案總管的預覽窗格、或防毒的即時掃描。
+
+**最快的解法是把整個 `anim` 資料夾搬離桌面**，例如搬到 `C:\anim`，一次避開前兩個原因。
+搬完直接在新位置雙擊 `update.bat` 就好 —— 所有腳本都用相對路徑，Python 也一律用
+`venv\Scripts\python.exe -m pip` 而不是 `pip.exe`（`.exe` 捷徑會寫死絕對路徑，搬家就壞），
+所以**整個資料夾可以隨便搬**，模型和成品都不用重下。
+
+如果不想搬，就把 PowerShell 加進「Windows 安全性 → 病毒與威脅防護 → 勒索軟體防護 →
+允許應用程式通過受控資料夾存取」，或先暫停 OneDrive 同步。處理完再跑一次 `update.bat`。
+
+> **萬一真的中途失敗了**（畫面寫「一半新一半舊」）：不要啟動，把原因排除後再跑一次
+> `update.bat`。它是可以重複執行的，第二次會把缺的補齊。
 
 ---
 

@@ -120,14 +120,18 @@ if ($null -eq $freeGB) {
 # ---- 1. 虛擬環境 ------------------------------------------------------------
 Say '建立 Python 虛擬環境'
 if (-not (Test-Path "$root\venv")) { & python -m venv "$root\venv" }
-$pip = "$root\venv\Scripts\pip.exe"
 $vpy = "$root\venv\Scripts\python.exe"
+# Everything below goes through "python.exe -m pip" rather than pip.exe. The
+# .exe shims in a venv hard-code the absolute path of the interpreter they were
+# built against, so a venv stops working the moment the folder is moved - and
+# moving the folder is the standard cure for Windows refusing writes on the
+# Desktop. Invoked this way, the whole tree can be dragged anywhere.
 if (-not (Test-Path $vpy)) { Die 'venv 建立失敗，$root\venv\Scripts\python.exe 不存在。' }
-& $pip install --upgrade pip --quiet
+& $vpy -m pip install --upgrade pip --quiet
 Ok 'venv 就緒'
 
 Say "安裝 PyTorch（$cuda，約 2~3GB，會等一下）"
-& $pip install torch torchvision torchaudio --index-url "https://download.pytorch.org/whl/$cuda"
+& $vpy -m pip install torch torchvision torchaudio --index-url "https://download.pytorch.org/whl/$cuda"
 if ($LASTEXITCODE -ne 0) { Die 'PyTorch 安裝失敗。檢查網路，然後重跑這個腳本。' }
 $torchOk = (& $vpy -c "import torch; print(torch.cuda.is_available())" | Select-Object -First 1)
 if ("$torchOk".Trim() -ne 'True') {
@@ -146,7 +150,7 @@ if (-not (Test-Path "$root\ComfyUI")) {
 } else {
   Ok 'ComfyUI 已存在，跳過下載'
 }
-& $pip install -r "$root\ComfyUI\requirements.txt"
+& $vpy -m pip install -r "$root\ComfyUI\requirements.txt"
 Ok 'ComfyUI 就緒'
 
 Say '安裝擴充節點'
@@ -159,12 +163,12 @@ foreach ($n in $nodes) {
   $dest = "$root\ComfyUI\custom_nodes\$($n.name)"
   if (-not (Test-Path $dest)) { & git clone $n.url $dest }
   $req = "$dest\requirements.txt"
-  if (Test-Path $req) { & $pip install -r $req --quiet }
+  if (Test-Path $req) { & $vpy -m pip install -r $req --quiet }
   Ok $n.name
 }
 
 Say '安裝這個 app'
-& $pip install -r "$root\app\requirements.txt" --quiet
+& $vpy -m pip install -r "$root\app\requirements.txt" --quiet
 Ok 'app 就緒'
 
 # ---- 3. 模型 ---------------------------------------------------------------

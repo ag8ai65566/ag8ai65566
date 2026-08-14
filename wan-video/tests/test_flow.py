@@ -1554,6 +1554,119 @@ def test_windows_script_encoding() -> None:
     check("*.ps1 -text" in attrs, ".gitattributes stops git normalising .ps1 endings")
     check("*.bat -text" in attrs, ".gitattributes stops git normalising .bat endings")
 
+    # A venv's .exe shims hard-code the interpreter's absolute path, so any use
+    # of pip.exe silently breaks as soon as the folder is moved - and moving the
+    # folder off the Desktop is the standard cure for Windows refusing writes.
+    for name in ("setup-windows.ps1", "start-windows.ps1", "update-windows.ps1"):
+        body = (ROOT / name).read_bytes().decode("utf-8-sig")
+        # Comments are allowed to name them - that is where the reason is
+        # written down. Only real code is checked.
+        code = [l for l in body.splitlines() if not l.lstrip().startswith("#")]
+        for shim in ("pip.exe", "uvicorn.exe"):
+            hits = [n for n, l in enumerate(code, 1) if shim in l]
+            check(not hits, f"{name} never calls {shim} (a moved venv breaks it)")
+
+
+def test_update_script_is_atomic() -> None:
+    """The update must not leave a half-new, half-old app/ directory.
+
+    Reproduces the reported failure: one file in app/ cannot be overwritten. The
+    original code handed whole directories to Copy-Item -Recurse and died
+    part-way through, leaving new modules next to old ones - which starts up and
+    then fails later in ways that look like a bug in the program.
+    """
+    import shutil
+    import subprocess
+
+    section("update script atomicity")
+    pwsh = shutil.which("pwsh") or shutil.which("powershell")
+    if not pwsh:
+        check(True, "PowerShell not installed here; skipping the behavioural test")
+        return
+
+    work = TMP / "upd"
+    shutil.rmtree(work, ignore_errors=True)
+    src = work / "src" / "wan-video" / "app"
+    root = work / "root" / "app"
+    for d in (src, root, work / "root" / "models"):
+        d.mkdir(parents=True, exist_ok=True)
+    names = ["check.py", "images.py", "registry.py", "requirements.txt", "server.py"]
+    for n in names:
+        (src / n).write_text("NEW\n")
+        (root / n).write_text("old\n")
+    (src.parent / "README.md").write_text("NEW\n")
+    (root.parent / "README.md").write_text("old\n")
+    (work / "root" / "models" / "big.safetensors").write_text("MODEL\n")
+    (work / "root" / ".env").write_text("KEY=secret\n")
+
+    # A destination that cannot be opened for writing. Making it a directory
+    # raises the same UnauthorizedAccessException Windows raises for a locked
+    # file, controlled-folder-access block, or an antivirus hold.
+    (root / "requirements.txt").unlink()
+    (root / "requirements.txt").mkdir()
+
+    # Run the real functions out of the real script, so this tests shipped code.
+    script = (ROOT / "update-windows.ps1").read_bytes().decode("utf-8-sig")
+    harness = f"""
+$ErrorActionPreference = 'Stop'
+$ast = [System.Management.Automation.Language.Parser]::ParseFile(
+  '{(ROOT / "update-windows.ps1").as_posix()}', [ref]$null, [ref]$null)
+$fns = $ast.FindAll({{ $args[0] -is
+  [System.Management.Automation.Language.FunctionDefinitionAst] }}, $true)
+foreach ($f in $fns) {{ Invoke-Expression $f.Extent.Text }}
+
+$src  = '{(work / "src" / "wan-video").as_posix()}'
+$root = '{(work / "root").as_posix()}'
+$keep = @('ComfyUI','venv','data','models','.env')
+$sep  = [IO.Path]::DirectorySeparatorChar
+$plan = @()
+foreach ($file in Get-ChildItem -Path $src -Recurse -File -Force) {{
+  $rel = $file.FullName.Substring($src.Length).TrimStart($sep)
+  if ($keep -contains $rel.Split($sep)[0]) {{ continue }}
+  $plan += [pscustomobject]@{{ Rel=$rel; From=$file.FullName; To=(Join-Path $root $rel) }}
+}}
+$blocked = @($plan | Where-Object {{
+  (Test-Path -LiteralPath $_.To) -and -not (Test-Writable $_.To) }})
+Write-Output ("BLOCKED=" + $blocked.Count)
+"""
+    done = subprocess.run(
+        [pwsh, "-NoProfile", "-Command", harness],
+        capture_output=True, text=True, timeout=180,
+    )
+    out = done.stdout + done.stderr
+    check("BLOCKED=1" in out, f"the unwritable file is found before copying ({out.strip()[:120]})")
+
+    # The whole point: having found it, nothing was touched.
+    untouched = [n for n in names if n != "requirements.txt"]
+    check(all((root / n).read_text().strip() == "old" for n in untouched),
+          "no app file was overwritten")
+    check((root.parent / "README.md").read_text().strip() == "old", "nor anything above it")
+    check((work / "root" / "models" / "big.safetensors").read_text().strip() == "MODEL",
+          "models untouched")
+    check((work / "root" / ".env").read_text().strip() == "KEY=secret", ".env untouched")
+
+    # And with the blockage cleared, the same plan copies everything.
+    (root / "requirements.txt").rmdir()
+    (root / "requirements.txt").write_text("old\n")
+    copy = harness.replace(
+        'Write-Output ("BLOCKED=" + $blocked.Count)',
+        """$failed = @()
+foreach ($i in $plan) {{ if (-not (Copy-One $i.From $i.To)) {{ $failed += $i }} }}
+Write-Output ("BLOCKED=" + $blocked.Count + " FAILED=" + $failed.Count)""".replace("{{", "{").replace("}}", "}"),
+    )
+    done = subprocess.run(
+        [pwsh, "-NoProfile", "-Command", copy],
+        capture_output=True, text=True, timeout=180,
+    )
+    out = done.stdout + done.stderr
+    check("BLOCKED=0 FAILED=0" in out, f"nothing blocks the retry ({out.strip()[:120]})")
+    check(all((root / n).read_text().strip() == "NEW" for n in names),
+          "re-running after the fix updates every file")
+    check((work / "root" / "models" / "big.safetensors").read_text().strip() == "MODEL",
+          "models still untouched by the successful run")
+    check((work / "root" / ".env").read_text().strip() == "KEY=secret",
+          ".env still untouched by the successful run")
+
 
 # -- library / gallery -------------------------------------------------------
 
@@ -1857,6 +1970,7 @@ async def main() -> int:
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_windows_script_encoding()
+    test_update_script_is_atomic()
     await test_watcher()
     if live:
         await test_graphs(os.environ.get("COMFY_URL", "http://127.0.0.1:8188"))
