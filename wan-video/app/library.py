@@ -56,10 +56,13 @@ class Record:
 
 
 class Library:
-    def __init__(self, output_dir: Path) -> None:
+    def __init__(self, output_dir: Path, inbox_dir: Path | None = None) -> None:
         self.dir = output_dir
         self.thumbs = output_dir / ".thumbs"
         self.index = output_dir / ".history.jsonl"
+        # Source images for image-to-image live here under the job's own id, so
+        # "run again" still works; they are deleted with the job that owns them.
+        self.inbox = inbox_dir
         self.records: dict[str, Record] = {}
         self.order: list[str] = []
 
@@ -145,6 +148,8 @@ class Library:
         paths = [self.dir / o for o in (record.outputs or ([record.output] if record.output else []))]
         if record.thumb:
             paths.append(self.thumbs / record.thumb)
+        if self.inbox is not None and record.source_name:
+            paths.append(self.inbox / f"{record.id}.png")
         for path in paths:
             if path.is_file():
                 try:

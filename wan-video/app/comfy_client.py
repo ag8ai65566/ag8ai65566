@@ -20,6 +20,44 @@ class ComfyError(RuntimeError):
 DYNAMIC_COMBOS = {("LoadImage", "image"), ("LoadImageMask", "image")}
 
 
+def combo_choices(entry: list) -> list | None:
+    """The allowed values of a combo input, or None if this input is not one.
+
+    /object_info describes combos in three different shapes and a single 0.33
+    install uses all three at once. The original one puts the choices in slot 0:
+
+        "ckpt_name": [["a.safetensors", "b.safetensors"], {}]
+
+    Most inputs then moved to a tagged form where slot 0 is the literal string
+    "COMBO" and the choices moved into the options dict - 468 of the 529 combo
+    inputs on 0.33, including UpscaleModelLoader's model_name:
+
+        "model_name": ["COMBO", {"multiselect": false, "options": [...]}]
+
+    And 120 more are COMFY_DYNAMICCOMBO_V3, whose options are objects that
+    carry follow-on inputs; the value to send is each object's "key":
+
+        "codec": ["COMFY_DYNAMICCOMBO_V3", {"options": [{"key": "h264", ...}]}]
+
+    Reading only slot 0 makes the last two look like plain scalars, so they are
+    never checked and a missing model reaches ComfyUI as a raw execution error
+    instead of a sentence saying what to download. Reading them without
+    unwrapping "key" is worse: every valid codec looks invalid.
+    """
+    if not entry:
+        return None
+    head = entry[0]
+    if isinstance(head, list):
+        return head
+    options = entry[1] if len(entry) > 1 and isinstance(entry[1], dict) else {}
+    if not isinstance(head, str) or not head.startswith("COMBO") and "DYNAMICCOMBO" not in head:
+        return None
+    choices = options.get("options")
+    if not isinstance(choices, list):
+        return None
+    return [c.get("key") if isinstance(c, dict) else c for c in choices]
+
+
 @dataclass
 class OutputFile:
     filename: str
@@ -79,6 +117,23 @@ class ComfyClient:
     async def node_classes(self) -> set[str]:
         return set((await self.object_info()).keys())
 
+    async def embeddings(self) -> list[str]:
+        """Textual-inversion names, usable in a prompt as `embedding:<name>`.
+
+        ComfyUI has a dedicated endpoint for these because they are not a node
+        input - they are looked up while the prompt is being tokenised, so they
+        appear nowhere in /object_info.
+        """
+        try:
+            async with aiohttp.ClientSession() as s:
+                async with s.get(f"{self.base}/embeddings", timeout=30) as r:
+                    if r.status != 200:
+                        return []
+                    body = await r.json()
+        except Exception:  # noqa: BLE001 - an optional nicety, never fatal
+            return []
+        return [str(name) for name in body] if isinstance(body, list) else []
+
     # -- validation ---------------------------------------------------------
 
     async def validate(self, graph: dict) -> list[str]:
@@ -87,8 +142,20 @@ class ComfyClient:
         Returns a list of human-readable problems; empty means the graph should
         be accepted. Catching this here gives a far better error message than
         ComfyUI's own 400 response.
+
+        A first failure re-reads /object_info once before reporting. The cached
+        copy lists the model folders as they were when it was fetched, so a file
+        the user dropped in by hand - or any change this app did not make - looks
+        missing forever. Re-checking against a fresh copy costs one request on
+        the path that was about to fail anyway, and turns a dead end into a job
+        that just runs.
         """
-        info = await self.object_info()
+        problems = await self._validate(graph, await self.object_info())
+        if problems:
+            problems = await self._validate(graph, await self.object_info(refresh=True))
+        return problems
+
+    async def _validate(self, graph: dict, info: dict) -> list[str]:
         problems: list[str] = []
 
         for node_id, node in graph.items():
@@ -121,8 +188,8 @@ class ComfyClient:
                 entry = required.get(name) or optional.get(name)
                 if not entry:
                     continue
-                choices = entry[0]
-                if not isinstance(choices, list):
+                choices = combo_choices(entry)
+                if choices is None:
                     continue
                 if not choices:
                     # An empty combo means the folder ComfyUI scans for this

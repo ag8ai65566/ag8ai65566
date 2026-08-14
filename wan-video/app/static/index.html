@@ -109,9 +109,27 @@
 
   /* lora picker rows */
   .lora { display:flex; align-items:center; gap:9px; font-size:13px; padding:4px 0; }
-  .lora input[type=range] { flex:1; max-width:140px; accent-color:var(--accent); }
+  .lora input[type=range] { flex:1; max-width:120px; accent-color:var(--accent); }
   .lora .n { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .loralist { max-height:280px; overflow-y:auto; }
+  .lora .trig { cursor:pointer; text-decoration:underline dotted; }
+  .lora .lp { width:34px; height:34px; border-radius:6px; object-fit:cover; flex:none;
+    background:var(--panel2); cursor:zoom-in; }
+  .lora .lp.none { display:flex; align-items:center; justify-content:center; color:var(--line);
+    font-size:15px; cursor:default; }
+  .loralist { max-height:340px; overflow-y:auto; }
+
+  /* installed lora manager cards */
+  .mine { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:10px; }
+  .mine .c { background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    overflow:hidden; display:flex; flex-direction:column; }
+  .mine .c.new { border-color:#4a3f1c; }
+  .mine .shot { aspect-ratio:1/1; background:var(--panel2); position:relative; cursor:zoom-in; }
+  .mine .shot img { width:100%; height:100%; object-fit:cover; display:block; }
+  .mine .shot .ph { position:absolute; inset:0; display:flex; align-items:center;
+    justify-content:center; color:var(--line); font-size:26px; }
+  .mine .b { padding:9px 10px; display:flex; flex-direction:column; gap:5px; flex:1; }
+  .mine .t { font-size:12.5px; font-weight:600; word-break:break-word; line-height:1.35; }
+  .mine .acts { display:flex; gap:5px; flex-wrap:wrap; margin-top:auto; }
   .m { border:1px solid var(--line); border-radius:12px; padding:14px; margin-bottom:10px; background:var(--panel); }
   .m.installed { border-color:#245b43; }
   .m .top { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
@@ -170,6 +188,22 @@
         <div class="s">留空就用該模型的官方預設值。<a href="#" id="negreset">還原預設</a></div>
       </div>
 
+      <details id="vadv" style="margin-top:12px">
+        <summary class="s" style="cursor:pointer">出片後處理（不動也能用）</summary>
+        <div class="row">
+          <label class="f">補幀（讓動作變順）
+            <select id="vinterp">
+              <option value="1">不補（原速）</option>
+              <option value="2">2 倍</option>
+              <option value="4">4 倍</option>
+            </select>
+          </label>
+          <label class="f">補幀模型<select id="vinterpmodel"></select></label>
+          <label class="f">放大成品<select id="vupscaler"></select></label>
+        </div>
+        <div class="note" id="vpost"></div>
+      </details>
+
       <div id="vram" class="banner hidden"></div>
       <div id="modelnote" class="note"></div>
       <div id="status" class="note"></div>
@@ -209,15 +243,46 @@
       </div>
       <div id="istyle" class="banner"></div>
 
+      <div class="row" id="icustomsize" style="margin-top:8px">
+        <label class="f">寬 <input type="number" id="iwidth" value="1024" min="256" max="2048" step="8" style="width:88px"></label>
+        <label class="f">高 <input type="number" id="iheight" value="1024" min="256" max="2048" step="8" style="width:88px"></label>
+        <span class="s" style="align-self:center">SDXL 在約 100 萬像素上訓練，離太遠會出現雙頭、肢體重複。</span>
+      </div>
+
+      <div id="i2i" class="banner tight hidden">
+        <div class="row" style="margin-top:0;align-items:center">
+          <img id="i2ithumb" style="height:64px;border-radius:8px">
+          <div style="flex:1;min-width:180px">
+            <b>以圖生圖</b>：照著這張的構圖重畫。
+            <div class="s" id="i2isize"></div>
+          </div>
+          <label class="f">重畫強度
+            <input type="range" id="idenoise" min="0.2" max="1" step="0.05" value="0.55" style="width:150px">
+          </label>
+          <span class="s" id="idenoiselabel" style="width:9em">0.55 · 保構圖換風格</span>
+          <button class="ghost tiny" id="i2iclear">移除</button>
+        </div>
+      </div>
+
       <textarea id="iprompt" placeholder="想畫什麼？"></textarea>
-      <label class="chk" style="margin-top:6px"><input type="checkbox" id="iprefix" checked>
-        <span id="iprefixlabel">自動加上品質標籤</span></label>
+      <div class="row" style="margin-top:6px;gap:8px">
+        <label class="chk"><input type="checkbox" id="iprefix" checked>
+          <span id="iprefixlabel">自動加上品質標籤</span></label>
+        <div class="spacer"></div>
+        <button class="ghost tiny" id="isyntax">提詞語法</button>
+        <button class="ghost tiny" id="ipreview">看看隨機變化</button>
+        <label class="chk"><input type="file" id="i2ifile" accept="image/*" hidden>
+          <button class="ghost tiny" id="i2ipick">＋來源圖（以圖生圖）</button></label>
+      </div>
+      <div id="isyntaxbox" class="banner hidden"></div>
+      <div id="ipreviewbox" class="banner hidden"></div>
 
       <textarea id="inegative" placeholder="不想要什麼（負面提詞）" style="min-height:56px"></textarea>
       <div class="row" style="margin-top:4px">
         <button class="ghost tiny" id="inegreset">還原這個底模的預設負面詞</button>
         <span class="s" id="ineghelp"></span>
       </div>
+      <div id="iembeds" class="row hidden" style="margin-top:6px;gap:4px"></div>
 
       <details id="iadv" style="margin-top:14px">
         <summary class="s" style="cursor:pointer">進階微調（不動也能用）</summary>
@@ -228,11 +293,28 @@
           <label class="f">Scheduler <select id="ischeduler"></select></label>
           <label class="f">CLIP skip <input type="number" id="iclip" min="-12" max="-1" style="width:80px"></label>
         </div>
-        <div class="row">
+
+        <h2 style="margin:18px 0 6px">放大與重繪</h2>
+        <div class="row" style="margin-top:6px">
           <label class="chk"><input type="checkbox" id="ihires"> 高解析重繪（放大後再畫一次）</label>
-          <label class="f">放大倍率 <input type="number" id="ihiresscale" value="1.5" min="1.1" max="2.5" step="0.1" style="width:80px"></label>
-          <label class="f">重繪強度 <input type="number" id="ihiresden" value="0.45" min="0.1" max="1" step="0.05" style="width:80px"></label>
+          <label class="f">倍率 <input type="number" id="ihiresscale" value="1.5" min="1.1" max="2.5" step="0.1" style="width:76px"></label>
+          <label class="f">重繪強度 <input type="number" id="ihiresden" value="0.45" min="0.1" max="1" step="0.05" style="width:76px"></label>
+          <label class="f">步數 <input type="number" id="ihiressteps" value="0" min="0" max="100" style="width:76px"></label>
+          <label class="f">放大方式 <select id="ihiresup"></select></label>
         </div>
+        <div class="row" style="margin-top:6px">
+          <label class="f">生成後直接放大（不重畫） <select id="iupscaler"></select></label>
+          <span class="s" id="iupshelp" style="align-self:center;flex:1;min-width:200px"></span>
+        </div>
+
+        <h2 style="margin:18px 0 6px">畫質補丁</h2>
+        <div class="row" style="margin-top:6px">
+          <label class="chk"><input type="checkbox" id="ifreeu"> FreeU</label>
+          <label class="f">PAG <input type="number" id="ipag" value="0" min="0" max="10" step="0.5" style="width:76px"></label>
+          <label class="f">Rescale CFG <input type="number" id="irescale" value="0" min="0" max="1" step="0.05" style="width:82px"></label>
+          <label class="chk"><input type="checkbox" id="itiled"> 分塊解碼（省顯存）</label>
+        </div>
+
         <div id="ihelp" class="note"></div>
       </details>
 
@@ -331,7 +413,15 @@
     <div class="row"><button class="ghost hidden" id="cmore">載入更多</button></div>
 
     <h2>已安裝的 LoRA</h2>
-    <div class="card"><div id="installed"></div></div>
+    <div class="card">
+      <div class="toolbar" style="margin-bottom:12px">
+        <input type="text" id="lfilter" placeholder="篩選已安裝的（名字、底模、觸發詞）" style="flex:1;min-width:180px">
+        <span class="s" id="lcount"></span>
+        <button class="ghost tiny" id="lcheck">檢查更新</button>
+      </div>
+      <div id="lupd" class="banner hidden"></div>
+      <div id="installed" class="mine"></div>
+    </div>
 
     <h2>已安裝的底模 Checkpoint</h2>
     <div class="card"><div id="ckpts"></div></div>
@@ -341,7 +431,13 @@
   <div id="tab-mdl" class="hidden">
     <div id="dl" class="hidden card" style="margin-bottom:14px"></div>
     <div id="gpu" class="card" style="margin-bottom:14px"></div>
+    <div id="mupd" class="banner hidden"></div>
+    <h2>影片模型</h2>
     <div id="mlist"></div>
+    <h2>放大模型（圖片和影片共用）</h2>
+    <div id="uplist"></div>
+    <h2>補幀模型（影片用）</h2>
+    <div id="interplist"></div>
   </div>
 
   <!-- ================= 設定 ================= -->
@@ -461,8 +557,28 @@ function onModelChange() {
   $('#negative').placeholder = chosen.negative || '負面提詞';
   $('#lorasec').classList.toggle('hidden', !chosen.supports_lora);
   renderLoras();
+  renderPostNote();
   syncGo();
 }
+
+// What the finished file will actually be, once post-processing is counted.
+function renderPostNote() {
+  if (!chosen) return;
+  const mult = +$('#vinterp').value || 1;
+  const model = $('#vinterpmodel').value;
+  const up = $('#vupscaler').value;
+  const parts = [];
+  if (mult > 1 && model) parts.push(`播放會變成 ${chosen.fps * mult}fps（原本 ${chosen.fps}）`);
+  else if (mult > 1) parts.push('要先下載一個補幀模型，不然這格不會生效');
+  if (up) parts.push(`成品會用 ${up} 放大（多半是 4 倍）`);
+  $('#vpost').textContent = parts.length
+    ? parts.join('；') + '。兩個都是畫完之後才做，不影響生成時的顯存。'
+    : '補幀讓動作變順（16fps 看起來會頓），放大讓畫面變清楚。都要先到「模型」分頁下載一個小模型。';
+}
+['vinterp','vinterpmodel','vupscaler'].forEach((id) => {
+  const el = document.getElementById(id);
+  if (el) el.onchange = renderPostNote;
+});
 $('#model').onchange = onModelChange;
 $('#reseed').onclick = () => { $('#seed').value = Math.floor(Math.random()*2**31); };
 $('#negtoggle').onchange = (e) => $('#negwrap').classList.toggle('hidden', !e.target.checked);
@@ -518,6 +634,9 @@ $('#go').onclick = async () => {
   body.append('seed', $('#seed').value || '-1');
   body.append('lightning', $('#lightning').checked ? '1' : '0');
   body.append('loras', JSON.stringify(selectedLoras()));
+  body.append('interpolate', $('#vinterp').value);
+  body.append('interpolate_model', $('#vinterpmodel').value);
+  body.append('upscaler', $('#vupscaler').value);
   try {
     const r = await fetch('/api/generate', { method:'POST', body });
     const d = await r.json();
@@ -574,7 +693,9 @@ function itemHtml(j, big) {
       <div><span class="tag ${cls}">${text}</span>
         <span class="s"> ${j.size || j.tier}${j.kind === 'image'
             ? (j.outputs.length > 1 ? ` · ${j.outputs.length} 張` : '')
-            : ` · ${j.duration ? j.duration + ' 秒' : j.length + 'f'}${j.fps ? ' @' + j.fps + 'fps' : ''}`}
+            : ` · ${j.duration ? j.duration + ' 秒' : j.length + 'f'}${
+                j.out_fps && j.out_fps !== j.fps ? ` @${j.out_fps}fps（補幀）`
+                  : (j.fps ? ' @' + j.fps + 'fps' : '')}`}
           · 花了 ${dur(j.elapsed)}</span></div>
       ${big ? `<div class="s">${esc(j.model_label)} · seed ${j.seed}${j.lightning?' · 4步':''} · ${when(j.created)}</div>`:''}
       ${j.loras.length ? `<div class="s">LoRA: ${esc(j.loras.join(', '))}</div>`:''}
@@ -587,6 +708,12 @@ function itemHtml(j, big) {
           ? j.outputs.map((u, i) => `<a class="ghost tiny" style="text-decoration:none;padding:4px 9px" href="${u}" download>下載 ${i+1}</a>`).join('')
           : (j.output ? `<a class="ghost tiny" style="text-decoration:none;padding:4px 9px" href="${j.output}" download>下載</a>` : '')}
         ${j.output ? `<button class="ghost tiny" data-again="${j.id}">再跑一次</button>`:''}
+        ${j.output && isImage ? `<button class="ghost tiny" data-again="${j.id}" data-sameseed="1"
+            title="同一個種子，只改你想試的那個設定">同種子微調</button>`:''}
+        ${j.output && isImage ? `<button class="ghost tiny" data-refine="${j.output}" data-job="${j.id}"
+            title="拿這張當來源圖再畫一次">接著修</button>`:''}
+        ${j.output && isImage ? `<button class="ghost tiny" data-tovideo="${j.output}" data-job="${j.id}"
+            title="把這張送到影片分頁">→ 做成影片</button>`:''}
         <button class="ghost tiny danger" data-del="${j.id}">刪</button>
       </div>
     </div>
@@ -621,19 +748,109 @@ function wireItems(root) {
     const j = [...JOBS, ...IMG.jobs].find((x) => x.id === b.dataset.again);
     if (!j) return;
     if (j.kind === 'image') {
-      $('#iprompt').value = j.prompt_raw || j.prompt;
-      $('#iseed').value = -1;
-      if (IMG.models.some((m) => m.id === j.model)) { $('#imodel').value = j.model; onImageModelChange(); }
+      reuseImageSettings(j, b.dataset.sameseed === '1');
       document.querySelector('.tabs button[data-tab="img"]').click();
-      $('#istatus').textContent = '設定已帶入（換了新種子）。按生成即可。';
+      $('#istatus').textContent = b.dataset.sameseed === '1'
+        ? '全部設定已帶入，種子也一樣 —— 改一個地方就能做對照。'
+        : '全部設定已帶入（換了新種子）。按生成即可。';
     } else {
       $('#prompt').value = j.prompt;
+      $('#negative').value = j.negative || '';
       $('#seed').value = -1;
       if (MODELS.some((m) => m.id === j.model)) { $('#model').value = j.model; onModelChange(); }
       document.querySelector('.tabs button[data-tab="gen"]').click();
       $('#status').textContent = '設定已帶入（換了新種子）。放一張圖再按生成。';
     }
     window.scrollTo({ top:0, behavior:'smooth' });
+  });
+  // A generated still is the natural input for the video page; without this the
+  // user has to download it and drag it back in by hand.
+  root.querySelectorAll('[data-tovideo]').forEach((b) => b.onclick = async () => {
+    b.disabled = true;
+    try {
+      const blob = await (await fetch(b.dataset.tovideo)).blob();
+      const name = b.dataset.tovideo.split('/').pop() || 'image.png';
+      pick(new File([blob], name, { type: blob.type || 'image/png' }));
+      const j = IMG.jobs.find((x) => x.id === b.dataset.job);
+      if (j && !$('#prompt').value.trim()) $('#prompt').value = j.prompt_raw || j.prompt || '';
+      document.querySelector('.tabs button[data-tab="gen"]').click();
+      $('#status').textContent = '這張圖已經放進來了。寫一句想怎麼動，然後按生成。';
+      window.scrollTo({ top:0, behavior:'smooth' });
+    } catch { alert('拿不到這張圖'); }
+    b.disabled = false;
+  });
+  // The same still, back into image-to-image, for iterating on a result.
+  root.querySelectorAll('[data-refine]').forEach((b) => b.onclick = async () => {
+    b.disabled = true;
+    try {
+      const blob = await (await fetch(b.dataset.refine)).blob();
+      const form = new FormData();
+      form.append('image', new File([blob], 'refine.png', { type: blob.type || 'image/png' }));
+      const r = await fetch('/api/image/upload', { method:'POST', body: form });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      IMG.init = d;
+      $('#i2ithumb').src = b.dataset.refine;
+      $('#i2isize').textContent = `上一張成品 · ${d.width}×${d.height}`;
+      $('#i2i').classList.remove('hidden');
+      const j = IMG.jobs.find((x) => x.id === b.dataset.job);
+      if (j) reuseImageSettings(j, false);
+      document.querySelector('.tabs button[data-tab="img"]').click();
+      $('#istatus').textContent = '這張成品變成來源圖了。調「重畫強度」決定要改多少。';
+      window.scrollTo({ top:0, behavior:'smooth' });
+    } catch (e) { alert('放不進去：' + e.message); }
+    b.disabled = false;
+  });
+}
+
+function setIfPresent(id, value) {
+  const el = $('#' + id);
+  if (el && value !== undefined && value !== null) { el.value = value; el.dataset.touched = '1'; }
+}
+
+function reuseImageSettings(j, keepSeed) {
+  const s = j.settings || {};
+  if (IMG.models.some((m) => m.id === j.model)) { $('#imodel').value = j.model; onImageModelChange(); }
+  $('#iprompt').value = j.prompt_raw || j.prompt;
+  $('#inegative').value = j.negative || '';
+  $('#inegative').dataset.touched = '1';
+  $('#iseed').value = keepSeed ? j.seed : -1;
+  if (j.tier) {
+    const opts = [...$('#isize').options].map((o) => o.value);
+    if (opts.includes(j.tier)) { $('#isize').value = j.tier; syncCustomSize(); }
+  }
+  if (j.size) {
+    const [w, h] = j.size.split('x');
+    setIfPresent('iwidth', w); setIfPresent('iheight', h);
+  }
+  setIfPresent('ibatch', s.batch);
+  setIfPresent('isteps', s.steps);
+  setIfPresent('icfg', s.cfg);
+  setIfPresent('iclip', s.clip_skip);
+  if (s.sampler && IMG.samplers.includes(s.sampler)) $('#isampler').value = s.sampler;
+  if (s.scheduler && IMG.schedulers.includes(s.scheduler)) $('#ischeduler').value = s.scheduler;
+  $('#ihires').checked = !!(s.hires_scale && s.hires_scale > 1);
+  if (s.hires_scale > 1) setIfPresent('ihiresscale', s.hires_scale);
+  setIfPresent('ihiresden', s.hires_denoise);
+  setIfPresent('ihiressteps', s.hires_steps || 0);
+  if (IMG.upscalers.includes(s.hires_upscaler)) $('#ihiresup').value = s.hires_upscaler;
+  if (IMG.upscalers.includes(s.upscaler)) $('#iupscaler').value = s.upscaler;
+  $('#ifreeu').checked = !!s.freeu;
+  setIfPresent('ipag', s.pag || 0);
+  setIfPresent('irescale', s.rescale_cfg || 0);
+  $('#itiled').checked = !!s.tiled_vae;
+  if (s.denoise) { $('#idenoise').value = s.denoise; $('#idenoise').oninput(); }
+  // Restore the LoRA selection, strengths included.
+  const want = new Map((s.loras || []).map((l) => [l[0], l]));
+  $('#iloras').querySelectorAll('.lora').forEach((el) => {
+    const hit = want.get(el.dataset.n);
+    el.querySelector('input[type=checkbox]').checked = !!hit;
+    if (!hit) return;
+    const m = el.querySelector('.sm'), c = el.querySelector('.sc');
+    m.value = hit[1]; c.value = hit.length > 2 ? hit[2] : hit[1];
+    el.querySelector('.vm').textContent = m.value;
+    el.querySelector('.vc').textContent = c.value;
+    if (m.value !== c.value && el.dataset.linked !== '0') el.querySelector('.lk').click();
   });
 }
 
@@ -693,7 +910,7 @@ function civCard(item) {
           <span>${gb(f.size)}</span>
           ${f.installed
             ? '<span class="tag done">已裝</span>'
-            : `<button class="ghost tiny" data-get='${esc(JSON.stringify({file:f, version_id:v.id, label:item.name, page_url:item.url, trained_words:v.trained_words, base_model:v.base_model}))}'>裝</button>`}
+            : `<button class="ghost tiny" data-get='${esc(JSON.stringify({file:f, version_id:v.id, label:item.name, page_url:item.url, trained_words:v.trained_words, base_model:v.base_model, preview:(img && img.url) || ''}))}'>裝</button>`}
         </div>`).join('')}</div>
       <div class="acts" style="margin-top:auto"><a class="s" href="${esc(item.url)}" target="_blank" rel="noopener">在 CivitAI 開啟 ↗</a></div>
     </div>
@@ -749,6 +966,8 @@ function renderCiv() {
         files: [{ url: info.file.url, name: info.file.name, size: info.file.size }],
         version_id: info.version_id, label: info.label,
         page_url: info.page_url, trained_words: info.trained_words, base_model: info.base_model,
+        // Saved next to the weights so the LoRA list shows a picture, not a filename.
+        preview: info.preview,
       }),
     });
     const d = await r.json();
@@ -767,22 +986,60 @@ $('#cnsfw').onchange = (e) => { P.set('cnsfw', e.target.checked); civSearch(true
 $('#cblur').onchange = (e) => { P.set('cblur', e.target.checked); renderCiv(); };
 
 function renderInstalled() {
-  $('#installed').innerHTML = LORAS.length ? LORAS.map((l) => `
-    <div class="lora">
-      <span class="n" title="${esc(l.name)}">${esc(l.name)}
-        ${l.builtin ? '<span class="tag">內建加速</span>':''}
-        ${l.base_model ? `<span class="s"> · ${esc(l.base_model)}</span>`:''}</span>
-      <span class="s">${gb(l.size)}</span>
-      ${l.source ? `<a class="s" href="${esc(l.source)}" target="_blank" rel="noopener">來源 ↗</a>`:''}
-      <button class="ghost tiny danger" data-rm="${esc(l.name)}">刪</button>
-    </div>
-    ${(l.trained_words||[]).length ? `<div class="words" style="margin:-2px 0 6px 26px">${l.trained_words.map((w)=>`<span>${esc(w)}</span>`).join('')}</div>`:''}
-  `).join('') : '<div class="s">models/loras/ 裡還沒有檔案。</div>';
-  $('#installed').querySelectorAll('[data-rm]').forEach((b) => b.onclick = async () => {
+  const box = $('#installed');
+  if (!LORAS.length) { box.innerHTML = '<div class="s">models/loras/ 裡還沒有檔案。</div>'; return; }
+  const q = ($('#lfilter') ? $('#lfilter').value : '').trim().toLowerCase();
+  const list = q ? LORAS.filter((l) =>
+    (l.name + ' ' + (l.label||'') + ' ' + (l.base_model||'') + ' ' + (l.trained_words||[]).join(' '))
+      .toLowerCase().includes(q)) : LORAS;
+  const upd = new Map((UPDATES.civitai || []).map((u) => [u.have, u]));
+  box.className = 'mine';
+  box.innerHTML = list.map((l) => {
+    const u = upd.get(l.name);
+    const words = l.trained_words || [];
+    return `<div class="c ${u ? 'new' : ''}">
+      <div class="shot" ${l.preview ? `data-big="/api/loras/${encodeURIComponent(l.name)}/preview"` : ''}>
+        ${l.preview
+          ? `<img src="/api/loras/${encodeURIComponent(l.name)}/preview" alt="" loading="lazy">`
+          : '<div class="ph">🖼</div>'}
+      </div>
+      <div class="b">
+        <div class="t" title="${esc(l.name)}">${esc(l.label || l.name)}</div>
+        <div class="s">${gb(l.size)}${l.base_model ? ' · ' + esc(l.base_model) : ''}
+          ${l.builtin ? '<span class="tag">內建加速</span>' : ''}</div>
+        ${u ? `<div class="s" style="color:var(--warn)">有新版：${esc(u.version_name || '')}</div>` : ''}
+        ${words.length ? `<div class="words">${words.slice(0,4).map((w)=>`<span>${esc(w)}</span>`).join('')}</div>` : ''}
+        <div class="acts">
+          ${l.source ? `<a class="s" href="${esc(l.source)}" target="_blank" rel="noopener">來源 ↗</a>` : ''}
+          <div class="spacer"></div>
+          <button class="ghost tiny" data-cover="${esc(l.name)}" title="用一張自己的圖當封面">封面</button>
+          <button class="ghost tiny danger" data-rm="${esc(l.name)}">刪</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('') || '<div class="s">沒有符合的 LoRA。</div>';
+
+  box.querySelectorAll('[data-big]').forEach((el) =>
+    el.onclick = () => openLightbox(el.dataset.big));
+  box.querySelectorAll('[data-rm]').forEach((b) => b.onclick = async () => {
     if (!confirm(`刪掉 ${b.dataset.rm}？`)) return;
     const r = await fetch('/api/loras/' + encodeURIComponent(b.dataset.rm), { method:'DELETE' });
     if (!r.ok) { const d = await r.json().catch(()=>({})); return alert(d.detail || '刪不掉'); }
     refreshLoras(true);
+  });
+  box.querySelectorAll('[data-cover]').forEach((b) => b.onclick = () => {
+    const picker = document.createElement('input');
+    picker.type = 'file'; picker.accept = 'image/*';
+    picker.onchange = async () => {
+      if (!picker.files[0]) return;
+      const form = new FormData();
+      form.append('image', picker.files[0]);
+      const r = await fetch(`/api/loras/${encodeURIComponent(b.dataset.cover)}/preview/upload`,
+                            { method:'POST', body: form });
+      if (!r.ok) { const d = await r.json().catch(()=>({})); return alert(d.detail || '設不了封面'); }
+      refreshLoras(true);
+    };
+    picker.click();
   });
 }
 
@@ -836,6 +1093,43 @@ function renderManager() {
   });
 }
 
+async function renderUpscalers() {
+  let d;
+  try { d = await (await fetch('/api/upscalers')).json(); } catch { return; }
+  $('#uplist').innerHTML = `<div class="note">${esc(d.help)}</div>` + d.upscalers.map((u) => `
+    <div class="m ${u.installed ? 'installed':''}">
+      <div class="top">
+        <span class="name">${esc(u.label)}</span>
+        ${u.installed ? '<span class="tag done">已安裝</span>' : '<span class="tag">未下載</span>'}
+        ${u.size ? `<span class="s">${gb(u.size)}${u.scale ? ` · 放大 ${u.scale} 倍` : ''}</span>` : ''}
+        ${u.installed || !u.id ? '' : `<button class="go" data-up="${esc(u.id)}">下載 ${gb(u.size)}</button>`}
+      </div>
+      <div class="note">${esc(u.best_for)}</div>
+    </div>`).join('');
+  $('#uplist').querySelectorAll('[data-up]').forEach((b) => b.onclick = async () => {
+    b.disabled = true;
+    await fetch(`/api/upscalers/${encodeURIComponent(b.dataset.up)}/download`, { method:'POST' });
+    refreshDownloads();
+  });
+
+  $('#interplist').innerHTML = `<div class="note">${esc(d.interp_help)}</div>`
+    + (d.interpolators || []).map((i) => `
+    <div class="m ${i.installed ? 'installed':''}">
+      <div class="top">
+        <span class="name">${esc(i.label)}</span>
+        ${i.installed ? '<span class="tag done">已安裝</span>' : '<span class="tag">未下載</span>'}
+        ${i.size ? `<span class="s">${gb(i.size)}</span>` : ''}
+        ${i.installed || !i.id ? '' : `<button class="go" data-ip="${esc(i.id)}">下載 ${gb(i.size)}</button>`}
+      </div>
+      <div class="note">${esc(i.best_for)}</div>
+    </div>`).join('');
+  $('#interplist').querySelectorAll('[data-ip]').forEach((b) => b.onclick = async () => {
+    b.disabled = true;
+    await fetch(`/api/interpolators/${encodeURIComponent(b.dataset.ip)}/download`, { method:'POST' });
+    refreshDownloads();
+  });
+}
+
 async function refreshDownloads() {
   let d; try { d = await (await fetch('/api/downloads')).json(); } catch { return; }
   const box = $('#dl'), c = d.current;
@@ -881,7 +1175,10 @@ function renderSettings() {
 }
 
 /* ---------- 圖片 ---------- */
-let IMG = { models: [], help: {}, samplers: [], schedulers: [], chosen: null, jobs: [] };
+let IMG = { models: [], help: {}, samplers: [], schedulers: [], chosen: null, jobs: [],
+            upscalers: [], embeddings: [], syntax: [], notSupported: [], customSize: '自訂尺寸',
+            init: null };
+let UPDATES = { app: {}, comfy: {}, civitai: [] };
 
 function imgTouched(id) { return $('#'+id).dataset.touched === '1'; }
 
@@ -905,6 +1202,9 @@ async function refreshImageModels() {
     const d = await (await fetch('/api/image/models')).json();
     IMG.models = d.models; IMG.help = d.help || {};
     IMG.samplers = d.samplers || []; IMG.schedulers = d.schedulers || [];
+    IMG.upscalers = d.upscalers || []; IMG.customSize = d.custom_size || '自訂尺寸';
+    IMG.syntax = d.syntax || []; IMG.notSupported = d.not_supported || [];
+    IMG.embeddings = d.embeddings || [];
     const keep = $('#imodel').value || P.get('imodel', '');
     $('#imodel').innerHTML = IMG.models.map((m) =>
       `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}</option>`).join('');
@@ -913,10 +1213,94 @@ async function refreshImageModels() {
     // restore it - so the user's own choice would silently revert. Keep it.
     fillKeeping('#isampler', IMG.samplers);
     fillKeeping('#ischeduler', IMG.schedulers);
+    const ups = [['', '拉大就好（不用下載，較模糊）'], ...IMG.upscalers.map((n) => [n, n])];
+    fillKeeping('#ihiresup', ups, '');
+    fillKeeping('#iupscaler', [['', '不放大'], ...IMG.upscalers.map((n) => [n, n])], '');
+    $('#iupshelp').textContent = IMG.upscalers.length
+      ? '放大模型會等比放大（多半是 4 倍）。'
+      : '還沒有放大模型 —— 到「模型」分頁下載一個（約 65MB），畫質提升很明顯。';
+    renderEmbeddings();
     onImageModelChange();
     renderCheckpoints();
   } catch {}
 }
+
+function renderEmbeddings() {
+  const box = $('#iembeds');
+  box.classList.toggle('hidden', !IMG.embeddings.length);
+  if (!IMG.embeddings.length) return;
+  box.innerHTML = '<span class="s">Embedding（點一下加到負面詞）：</span>'
+    + IMG.embeddings.map((e) => `<button class="ghost tiny" data-emb="${esc(e)}">${esc(e)}</button>`).join('');
+  box.querySelectorAll('[data-emb]').forEach((b) => b.onclick = () => {
+    const el = $('#inegative');
+    const token = `embedding:${b.dataset.emb}`;
+    if (el.value.includes(token)) return;
+    el.value = (el.value.trim() ? el.value.trim() + ', ' : '') + token;
+    el.dataset.touched = '1';
+  });
+}
+
+const DENOISE_WORDS = [
+  [0.35, '只改材質細節'], [0.5, '換風格、保構圖'], [0.65, '保構圖換風格'],
+  [0.8, '大幅改動'], [1.01, '幾乎整張重畫'],
+];
+function denoiseLabel(v) {
+  return (DENOISE_WORDS.find(([t]) => v < t) || DENOISE_WORDS[DENOISE_WORDS.length - 1])[1];
+}
+$('#idenoise').oninput = () => {
+  const v = +$('#idenoise').value;
+  $('#idenoiselabel').textContent = `${v.toFixed(2)} · ${denoiseLabel(v)}`;
+};
+
+$('#i2ipick').onclick = () => $('#i2ifile').click();
+$('#i2ifile').onchange = async () => {
+  const file = $('#i2ifile').files[0];
+  if (!file) return;
+  const form = new FormData();
+  form.append('image', file);
+  $('#istatus').textContent = '上傳來源圖…';
+  try {
+    const r = await fetch('/api/image/upload', { method:'POST', body: form });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    IMG.init = d;
+    $('#i2ithumb').src = URL.createObjectURL(file);
+    $('#i2isize').textContent = `${file.name} · ${d.width}×${d.height}`;
+    $('#i2i').classList.remove('hidden');
+    $('#istatus').textContent = '';
+  } catch (e) { $('#istatus').textContent = '上傳失敗：' + e.message; }
+  $('#i2ifile').value = '';
+};
+$('#i2iclear').onclick = () => { IMG.init = null; $('#i2i').classList.add('hidden'); };
+
+$('#isyntax').onclick = () => {
+  const box = $('#isyntaxbox');
+  box.classList.toggle('hidden');
+  if (box.classList.contains('hidden')) return;
+  box.innerHTML = '<b>提詞語法</b>'
+    + IMG.syntax.map(([k, v]) => `<div style="margin-top:5px">· <code>${esc(k)}</code> ${esc(v)}</div>`).join('')
+    + (IMG.notSupported.length ? '<div style="margin-top:9px"><b>ComfyUI 不支援的寫法</b>（會被當成普通文字）'
+        + IMG.notSupported.map(([k, v]) => `<div style="margin-top:5px">· <code>${esc(k)}</code> ${esc(v)}</div>`).join('')
+        + '</div>' : '');
+};
+
+$('#ipreview').onclick = async () => {
+  const box = $('#ipreviewbox');
+  const n = Math.max(3, Math.min(+$('#ibatch').value || 3, 8));
+  try {
+    const r = await fetch('/api/prompt/preview', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ prompt: $('#iprompt').value, count: n, seed: Date.now() % 100000 }),
+    });
+    const d = await r.json();
+    box.classList.remove('hidden');
+    if (d.warning) { box.className = 'banner very_tight'; box.innerHTML = `<b>提詞有問題</b>：${esc(d.warning)}`; return; }
+    box.className = 'banner';
+    box.innerHTML = d.has_wildcards
+      ? '<b>這次批量會長這樣</b>' + d.samples.map((s) => `<div class="s" style="margin-top:4px">· ${esc(s)}</div>`).join('')
+      : '提詞裡沒有 <code>{A|B}</code>，每張都會一樣。想要變化的話，把想換的部分寫成 <code>{紅|藍|綠}</code>。';
+  } catch {}
+};
 
 function onImageModelChange() {
   const m = IMG.models.find((x) => x.id === $('#imodel').value) || IMG.models[0];
@@ -924,7 +1308,8 @@ function onImageModelChange() {
   if (!m) return;
   P.set('imodel', m.id);
 
-  fillKeeping('#isize', Object.keys(m.sizes), m.default_size);
+  fillKeeping('#isize', [...Object.keys(m.sizes), IMG.customSize], m.default_size);
+  syncCustomSize();
   $('#istyle').innerHTML = `<b>怎麼寫提詞</b>：${(m.prompt_style || '').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}`
     + (m.nsfw_note ? `<div class="s" style="margin-top:6px">${esc(m.nsfw_note)}</div>` : '');
   $('#iprefixlabel').textContent = m.positive_prefix
@@ -940,7 +1325,9 @@ function onImageModelChange() {
   if (!imgTouched('iclip')) $('#iclip').value = m.clip_skip;
 
   const h = IMG.help;
-  $('#ihelp').innerHTML = ['steps','cfg','sampler','scheduler','clip_skip','hires','size','batch','seed']
+  $('#ihelp').innerHTML = ['steps','cfg','sampler','scheduler','clip_skip','size','batch','seed',
+    'denoise','hires','hires_denoise','hires_steps','hires_upscaler','upscaler',
+    'freeu','pag','rescale_cfg','tiled_vae','lora','lora_clip','wildcards']
     .filter((k) => h[k]).map((k) => `<div>· <b>${k}</b>：${esc(h[k])}</div>`).join('');
   $('#ineghelp').textContent = '負面提詞 = 不想出現的東西。上面填的是這個底模的建議值。';
 
@@ -962,6 +1349,10 @@ function onImageModelChange() {
   renderImageLoras();
 }
 $('#imodel').onchange = onImageModelChange;
+function syncCustomSize() {
+  $('#icustomsize').classList.toggle('hidden', $('#isize').value !== IMG.customSize);
+}
+$('#isize').onchange = syncCustomSize;
 $('#ireseed').onclick = () => $('#iseed').value = Math.floor(Math.random()*2**31);
 $('#inegreset').onclick = () => {
   if (IMG.chosen) { $('#inegative').value = IMG.chosen.negative || ''; delete $('#inegative').dataset.touched; }
@@ -982,48 +1373,103 @@ function renderImageLoras() {
     box.innerHTML = '<div class="s">還沒有 LoRA。到「LoRA」分頁把「用在哪」切成「圖片底模」再搜。</div>';
     return;
   }
-  const prev = new Map([...box.querySelectorAll('.lora')].map((el) =>
-    [el.dataset.n, { on: el.querySelector('input[type=checkbox]').checked, v: el.querySelector('input[type=range]').value }]));
+  // Keep whatever is already toggled: this redraws on every poll.
+  const prev = new Map([...box.querySelectorAll('.lora')].map((el) => [el.dataset.n, {
+    on: el.querySelector('input[type=checkbox]').checked,
+    m: el.querySelector('.sm').value,
+    c: el.querySelector('.sc').value,
+    linked: el.dataset.linked !== '0',
+  }]));
   box.innerHTML = LORAS.map((l) => {
-    const st = prev.get(l.name) || { on:false, v:'0.8' };
-    const words = (l.trained_words || []).slice(0,3);
-    return `<div class="lora" data-n="${esc(l.name)}">
+    const st = prev.get(l.name) || { on:false, m:'0.8', c:'0.8', linked:true };
+    const words = (l.trained_words || []).slice(0, 4);
+    return `<div class="lora" data-n="${esc(l.name)}" data-linked="${st.linked ? '1' : '0'}">
       <input type="checkbox" ${st.on ? 'checked':''}>
-      <span class="n" title="${esc(l.name)}">${esc(l.name)}
+      ${l.preview
+        ? `<img class="lp" src="/api/loras/${encodeURIComponent(l.name)}/preview" alt="" loading="lazy">`
+        : '<span class="lp none">?</span>'}
+      <span class="n" title="${esc(l.name)}">${esc(l.label || l.name)}
         ${l.base_model ? `<span class="s"> · ${esc(l.base_model)}</span>`:''}
-        ${words.length ? `<span class="s"> · 觸發詞 ${esc(words.join(', '))}</span>`:''}</span>
-      <input type="range" min="0" max="1.5" step="0.05" value="${st.v}">
-      <span class="s" style="width:2.4em">${st.v}</span></div>`;
+        ${words.length ? `<span class="s trig" data-w="${esc(words.join(', '))}"
+            title="點一下把觸發詞加進提詞"> · 觸發詞 ${esc(words.join(', '))}</span>`:''}</span>
+      <input class="sm" type="range" min="0" max="1.5" step="0.05" value="${st.m}" title="對畫面的強度">
+      <span class="s v vm" style="width:2.4em">${st.m}</span>
+      <button class="ghost tiny lk" title="分開調整 CLIP 強度">${st.linked ? '🔗' : '⛓️‍💥'}</button>
+      <input class="sc" type="range" min="0" max="1.5" step="0.05" value="${st.c}"
+             title="對文字理解的強度" ${st.linked ? 'hidden' : ''}>
+      <span class="s v vc" style="width:2.4em" ${st.linked ? 'hidden' : ''}>${st.c}</span>
+    </div>`;
   }).join('');
   box.querySelectorAll('.lora').forEach((el) => {
-    const r = el.querySelector('input[type=range]'), out = el.querySelector('.s:last-child');
-    r.oninput = () => out.textContent = r.value;
+    const m = el.querySelector('.sm'), c = el.querySelector('.sc');
+    const vm = el.querySelector('.vm'), vc = el.querySelector('.vc');
+    const link = () => el.dataset.linked !== '0';
+    m.oninput = () => {
+      vm.textContent = m.value;
+      if (link()) { c.value = m.value; vc.textContent = m.value; }
+    };
+    c.oninput = () => vc.textContent = c.value;
+    el.querySelector('.lk').onclick = () => {
+      const now = !link();
+      el.dataset.linked = now ? '1' : '0';
+      el.querySelector('.lk').textContent = now ? '🔗' : '⛓️‍💥';
+      c.hidden = vc.hidden = now;
+      if (now) { c.value = m.value; vc.textContent = m.value; }
+    };
+    const trig = el.querySelector('.trig');
+    if (trig) trig.onclick = () => {
+      const field = $('#iprompt');
+      const words = trig.dataset.w;
+      if (field.value.includes(words)) return;
+      field.value = (field.value.trim() ? field.value.trim() + ', ' : '') + words;
+      el.querySelector('input[type=checkbox]').checked = true;
+    };
   });
+}
+
+function imagePayload() {
+  const loras = [...$('#iloras').querySelectorAll('.lora')]
+    .filter((el) => el.querySelector('input[type=checkbox]').checked)
+    .map((el) => ({
+      name: el.dataset.n,
+      strength: parseFloat(el.querySelector('.sm').value),
+      strength_clip: parseFloat(el.querySelector('.sc').value),
+    }));
+  return {
+    model: IMG.chosen.id, prompt: $('#iprompt').value.trim(), negative: $('#inegative').value,
+    use_prefix: $('#iprefix').checked, size: $('#isize').value,
+    width: +$('#iwidth').value || 1024, height: +$('#iheight').value || 1024,
+    batch: +$('#ibatch').value || 1,
+    seed: $('#iseed').value === '' ? -1 : +$('#iseed').value,
+    steps: +$('#isteps').value, cfg: +$('#icfg').value,
+    sampler: $('#isampler').value, scheduler: $('#ischeduler').value,
+    clip_skip: +$('#iclip').value,
+    denoise: IMG.init ? +$('#idenoise').value : 1.0,
+    init_image: IMG.init ? IMG.init.name : '',
+    hires_scale: $('#ihires').checked ? (+$('#ihiresscale').value || 1.5) : 0,
+    hires_denoise: +$('#ihiresden').value || 0.45,
+    hires_steps: +$('#ihiressteps').value || 0,
+    hires_upscaler: $('#ihiresup').value,
+    upscaler: $('#iupscaler').value,
+    freeu: $('#ifreeu').checked,
+    pag: +$('#ipag').value || 0,
+    rescale_cfg: +$('#irescale').value || 0,
+    tiled_vae: $('#itiled').checked,
+    loras,
+  };
 }
 
 $('#igo').onclick = async () => {
   if (!IMG.chosen) return;
-  const prompt = $('#iprompt').value.trim();
-  if (!prompt) { $('#istatus').textContent = '提詞是空的 —— 圖片全靠提詞，沒有輸入圖。'; return; }
+  const payload = imagePayload();
+  if (!payload.prompt && !payload.init_image) {
+    $('#istatus').textContent = '提詞是空的 —— 沒放來源圖的話，畫面全靠提詞。'; return;
+  }
   $('#igo').disabled = true;
-  const loras = [...$('#iloras').querySelectorAll('.lora')]
-    .filter((el) => el.querySelector('input[type=checkbox]').checked)
-    .map((el) => ({ name: el.dataset.n, strength: parseFloat(el.querySelector('input[type=range]').value) }));
   try {
     const r = await fetch('/api/image/generate', {
       method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model: IMG.chosen.id, prompt, negative: $('#inegative').value,
-        use_prefix: $('#iprefix').checked, size: $('#isize').value,
-        batch: +$('#ibatch').value || 1,
-        seed: $('#iseed').value === '' ? -1 : +$('#iseed').value,
-        steps: +$('#isteps').value, cfg: +$('#icfg').value,
-        sampler: $('#isampler').value, scheduler: $('#ischeduler').value,
-        clip_skip: +$('#iclip').value,
-        hires_scale: $('#ihires').checked ? (+$('#ihiresscale').value || 1.5) : 0,
-        hires_denoise: +$('#ihiresden').value || 0.45,
-        loras,
-      }),
+      body: JSON.stringify(payload),
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.detail || r.statusText);
@@ -1046,6 +1492,74 @@ async function refreshImageJobs(force) {
 }
 setInterval(() => { if (!$('#tab-img').classList.contains('hidden')) refreshImageJobs(); }, 1500);
 
+/* ---------- updates ---------- */
+async function checkUpdates(force) {
+  const btn = $('#lcheck');
+  if (btn) { btn.disabled = true; btn.textContent = '檢查中…'; }
+  try {
+    UPDATES = await (await fetch('/api/updates' + (force ? '?refresh=true' : ''))).json();
+  } catch { UPDATES = { app:{}, comfy:{}, civitai:[] }; }
+  if (btn) { btn.disabled = false; btn.textContent = '檢查更新'; }
+  renderUpdates();
+  renderInstalled();
+}
+
+function renderUpdates() {
+  const box = $('#lupd');
+  const parts = [];
+  for (const g of [UPDATES.app, UPDATES.comfy]) {
+    if (g && g.ok && g.behind > 0) {
+      parts.push(`<div><b>${esc(g.label)}</b> 落後 ${g.behind} 個更新 —— `
+        + (g.label === 'ComfyUI'
+            ? '在 ComfyUI 資料夾按 <code>git pull</code> 後重開。'
+            : '關掉 app，執行 <code>update.bat</code>，再開起來。')
+        + '</div>');
+    }
+  }
+  const civ = UPDATES.civitai || [];
+  if (civ.length) {
+    parts.push(`<div style="margin-top:6px"><b>${civ.length} 個 LoRA / 底模有新版</b>`
+      + civ.slice(0, 8).map((u) => `<div class="s" style="margin-top:3px">· ${esc(u.have_label)}
+          → ${esc(u.version_name || '新版本')}
+          <a href="${esc(u.page_url)}" target="_blank" rel="noopener">看看 ↗</a>
+          <button class="ghost tiny" data-getupd="${esc(u.have)}">下載新版</button></div>`).join('')
+      + '</div>');
+  }
+  if (UPDATES.civitai_error) {
+    parts.push(`<div class="s">CivitAI 版本檢查失敗：${esc(UPDATES.civitai_error)}</div>`);
+  }
+  box.classList.toggle('hidden', !parts.length);
+  box.className = parts.length ? 'banner tight' : 'banner hidden';
+  box.innerHTML = parts.join('');
+
+  // The same news belongs on the models tab, where updating is the job at hand.
+  const soft = $('#mupd');
+  const code = [UPDATES.app, UPDATES.comfy].filter((g) => g && g.ok && g.behind > 0);
+  soft.classList.toggle('hidden', !code.length);
+  soft.className = code.length ? 'banner tight' : 'banner hidden';
+  soft.innerHTML = code.map((g) =>
+    `<div><b>${esc(g.label)}</b> 有 ${g.behind} 個更新沒拿 —— `
+    + (g.label === 'ComfyUI'
+        ? '在 ComfyUI 資料夾執行 <code>git pull</code> 後重開。'
+        : '關掉 app，跑一次 <code>update.bat</code>，再開起來。模型不會被動到。')
+    + '</div>').join('');
+  box.querySelectorAll('[data-getupd]').forEach((b) => b.onclick = async () => {
+    const u = (UPDATES.civitai || []).find((x) => x.have === b.dataset.getupd);
+    if (!u || !u.files.length) return;
+    b.disabled = true;
+    await fetch('/api/civitai/download', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        files: u.files, kind: u.folder === 'checkpoints' ? 'checkpoint' : 'lora',
+        label: `${u.model_name} ${u.version_name}`, page_url: u.page_url,
+        trained_words: u.trained_words, base_model: u.base_model, version_id: u.version_id,
+      }),
+    });
+    document.querySelector('.tabs button[data-tab="mdl"]').click();
+    refreshDownloads();
+  });
+}
+
 /* ---------- polling ---------- */
 let modelSig = '', loraSig = '', jobSig = '';
 async function refreshModels() {
@@ -1055,13 +1569,17 @@ async function refreshModels() {
     if (sig === modelSig) return;
     modelSig = sig;
     MODELS = d.models; GPU = d.gpu || {};
+    fillKeeping('#vupscaler', [['', '不放大'], ...(d.upscalers || []).map((n) => [n, n])], '');
+    fillKeeping('#vinterpmodel',
+      [['', '（還沒下載）'], ...(d.interpolators || []).map((n) => [n, n])],
+      (d.interpolators || [])[0] || '');
     if (!chosen) {
       const want = P.get('model', null);
       chosen = MODELS.find((m) => m.id === want && m.runnable)
             || MODELS.find((m) => m.id === d.default)
             || MODELS.find((m) => m.runnable);
     }
-    renderModelPicker(); renderManager();
+    renderModelPicker(); renderManager(); renderPostNote();
   } catch {}
 }
 async function refreshLoras(force) {
@@ -1070,6 +1588,8 @@ async function refreshLoras(force) {
     const sig = JSON.stringify(d.loras);
     if (sig === loraSig && !force) return;
     loraSig = sig; LORAS = d.loras;
+    $('#lcount').textContent = LORAS.length
+      ? `${LORAS.length} 個 · 共 ${gb(LORAS.reduce((a, l) => a + l.size, 0))}` : '';
     renderLoras(); renderInstalled(); renderImageLoras();
   } catch {}
 }
@@ -1122,11 +1642,17 @@ async function boot() {
     }
   } catch {}
 
+  $('#lcheck').onclick = () => checkUpdates(true);
+  $('#lfilter').oninput = renderInstalled;
+
   await refreshModels();
   await refreshImageModels();
   await refreshLoras(true);
   await refreshJobs(true);
-  refreshDownloads(); refreshStats();
+  refreshDownloads(); refreshStats(); renderUpscalers();
+  // Cached server-side for six hours, so this costs nothing on a reload and
+  // the answer is waiting by the time anyone opens the LoRA tab.
+  checkUpdates(false);
 
   try {
     HEALTH = await (await fetch('/api/health')).json();

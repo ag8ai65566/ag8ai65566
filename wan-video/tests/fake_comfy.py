@@ -1,6 +1,6 @@
 """A stand-in ComfyUI server for testing without a GPU.
 
-The node schemas in schema_core.json were dumped from a real ComfyUI 0.32.0
+The node schemas in schema_core.json were dumped from a real ComfyUI 0.33.0
 /object_info, so the validator here exercises exactly the shapes the real
 server enforces. Only the file-listing combos are substituted, since those
 depend on what is on disk.
@@ -38,15 +38,23 @@ FILE_INPUTS = {
     ("CLIPSetLastLayer", "__none__"): (),
     ("LoraLoader", "lora_name"): ("loras",),
     ("LoadImage", "image"): ("__images__",),
+    ("UpscaleModelLoader", "model_name"): ("upscale_models",),
+    ("FrameInterpolationModelLoader", "model_name"): ("frame_interpolation",),
 }
 
 EXTRA_LORAS = ["spicy_style.safetensors", "my_style.safetensors"]
+# Post-processing models are not in any ModelDef, so they are listed directly.
+import upscalers  # noqa: E402
 
 
 def installed_names(folders: tuple[str, ...], only: set[str] | None) -> list[str]:
     """Filenames the fake install exposes for the given models/<folder> dirs."""
     if folders == ("__images__",):
         return ["example.png"]
+    if folders == ("upscale_models",):
+        return sorted(u.name for u in upscalers.UPSCALERS)
+    if folders == ("frame_interpolation",):
+        return sorted(i.name for i in upscalers.INTERPOLATORS)
     names: set[str] = set()
     if "checkpoints" in folders:
         names.update(f.name for m in images.IMAGE_MODELS for f in m.all_files
@@ -119,6 +127,7 @@ class FakeComfy:
         self.uploads: list[str] = []
         self.video_bytes = b"\x00\x00\x00\x18ftypmp42FAKE-MP4-PAYLOAD"
         self.interrupts = 0
+        self.object_info_calls = 0
 
     def app(self) -> web.Application:
         app = web.Application()
@@ -137,9 +146,10 @@ class FakeComfy:
         return app
 
     async def stats(self, _req):
-        return web.json_response({"system": {"comfyui_version": "fake-0.32.0"}})
+        return web.json_response({"system": {"comfyui_version": "fake-0.33.0"}})
 
     async def info(self, _req):
+        self.object_info_calls += 1
         return web.json_response(object_info(self.video_nodes, self.installed))
 
     async def upload(self, req):

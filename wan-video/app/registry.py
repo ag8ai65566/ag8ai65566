@@ -2,7 +2,7 @@
 
 Every filename, repo path and byte size here was read from the Hugging Face
 API, and every node name and parameter value in the builders was validated
-against a real ComfyUI 0.32.0 /object_info. Sampler numbers come from the
+against a real ComfyUI 0.33.0 /object_info. Sampler numbers come from the
 official ComfyUI workflow templates for each model.
 """
 
@@ -324,6 +324,11 @@ class GenParams:
     loras: list[Lora] = field(default_factory=list)
     loras_high: list[Lora] = field(default_factory=list)
     loras_low: list[Lora] = field(default_factory=list)
+    # Post-processing on the decoded frames. Neither changes what the model
+    # generates; both are applied after it, so they cost no VRAM during sampling.
+    interpolate: int = 1  # frame multiplier; 1 = off
+    interpolate_model: str = ""
+    upscaler: str = ""  # a file in models/upscale_models, "" = leave as rendered
 
     @classmethod
     def defaults_for(cls, model: ModelDef, lightning: bool = False) -> "GenParams":

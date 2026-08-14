@@ -18,6 +18,12 @@ from registry import ModelDef, ModelFile
 
 CHUNK = 1 << 20  # 1 MiB
 HF = "https://huggingface.co"
+# Sample images sit beside the weights as <weights>.preview.jpg. ComfyUI's own
+# asset browser uses the same convention (<name>.<ext> next to the model), so a
+# preview fetched here also shows up if the user opens ComfyUI directly.
+PREVIEW_SUFFIX = ".preview.jpg"
+MAX_PREVIEW_BYTES = 4 << 20
+UA = "wan-video/1.0 (+local ComfyUI front-end)"
 
 
 @dataclass(frozen=True)
@@ -243,11 +249,55 @@ class Manager:
         path.unlink()
         if self.on_change:
             self.on_change()
-        for suffix in (".civitai.json", ".json"):
+        for suffix in (".civitai.json", ".json", PREVIEW_SUFFIX):
             meta = path.with_name(path.name + suffix)
             if meta.is_file():
                 meta.unlink()
         return True
+
+    # -- preview images ------------------------------------------------------
+
+    def preview_path(self, folder: str, name: str) -> Path:
+        base = (self.root / folder).resolve()
+        path = (base / name).resolve()
+        if base != path.parent or not path.name:
+            raise ValueError(f"不合法的檔名：{name}")
+        return path.with_name(path.name + PREVIEW_SUFFIX)
+
+    async def fetch_preview(self, folder: str, name: str, url: str) -> bool:
+        """Save one CivitAI sample image next to the weights.
+
+        A wall of identical filenames is the single worst thing about picking a
+        LoRA from disk, and CivitAI already hands us sample images in the search
+        response. They are small (a few hundred KB), so they are fetched once at
+        install time and then served locally forever - no per-render calls out
+        to a third party, which also keeps NSFW browsing off the network.
+        """
+        target = self.preview_path(folder, name)
+        if target.is_file():
+            return True
+        if not url.startswith(("http://", "https://")):
+            return False
+        timeout = aiohttp.ClientTimeout(total=60, sock_connect=15, sock_read=30)
+        try:
+            async with aiohttp.ClientSession(timeout=timeout) as session:
+                async with session.get(url, headers={"User-Agent": UA}) as response:
+                    if response.status != 200:
+                        return False
+                    data = await response.content.read(MAX_PREVIEW_BYTES + 1)
+        except (aiohttp.ClientError, asyncio.TimeoutError, OSError):
+            return False
+        if not data or len(data) > MAX_PREVIEW_BYTES:
+            return False
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(data)
+        return True
+
+    def has_preview(self, folder: str, name: str) -> bool:
+        try:
+            return self.preview_path(folder, name).is_file()
+        except ValueError:
+            return False
 
     def cancel(self) -> bool:
         if self.current and self.current.status == "running":
@@ -389,13 +439,17 @@ class Manager:
         known = {f.name for m in registry.MODELS for f in m.lightning}
         out = []
         for path in sorted(folder.glob("*.safetensors")):
+            stat = path.stat()
             entry = {
                 "name": path.name,
-                "size": path.stat().st_size,
+                "size": stat.st_size,
+                "added": stat.st_mtime,
                 "builtin": path.name in known,
                 "trained_words": [],
                 "source": "",
                 "base_model": "",
+                "label": path.stem,
+                "preview": path.with_name(path.name + PREVIEW_SUFFIX).is_file(),
             }
             sidecar = path.with_name(path.name + ".civitai.json")
             if sidecar.is_file():
@@ -406,6 +460,7 @@ class Manager:
                     entry["trained_words"] = meta.get("trained_words") or []
                     entry["source"] = meta.get("url") or ""
                     entry["base_model"] = meta.get("base_model") or ""
+                    entry["label"] = meta.get("name") or path.stem
                 except (ValueError, OSError):
                     pass
             out.append(entry)

@@ -12,6 +12,7 @@ import asyncio
 import io
 import json
 import os
+import random
 import sys
 from pathlib import Path
 
@@ -867,34 +868,51 @@ async def test_image_graphs() -> None:
     try:
         client = ComfyClient(url)
         nodes = await client.node_classes()
+        def settings(**kw) -> "images.ImageSettings":
+            base = images.defaults_for(kw.pop("_model"))
+            for key, value in kw.items():
+                setattr(base, key, value)
+            return base
+
         for model in images.IMAGE_MODELS:
             for hires in (0.0, 1.5):
                 w, h = list(model.sizes.values())[0]
-                g = images.build(model, prompt="p", negative="n", seed=1, width=w, height=h,
-                                 batch=3, hires_scale=hires,
-                                 loras=[("my_style.safetensors", 0.8)],
-                                 available_nodes=nodes)
+                g = images.build(
+                    model,
+                    settings(_model=model, batch=3, hires_scale=hires,
+                             loras=[("my_style.safetensors", 0.8, 0.8)]),
+                    prompt="p", negative="n", seed=1, width=w, height=h,
+                    available_nodes=nodes,
+                )
                 problems = await client.validate(g)
                 check(problems == [], f"{model.id} hires={hires} validates {problems[:1]}")
 
         model = images.get("illustrious")
-        g = images.build(model, prompt="p", negative="n", seed=7, width=832, height=1216,
-                         batch=4, loras=[("a.safetensors", 0.6), ("b.safetensors", 1.0)],
-                         available_nodes=nodes)
+        g = images.build(
+            model,
+            settings(_model=model, batch=4,
+                     loras=[("a.safetensors", 0.6, 0.6), ("b.safetensors", 1.0, 0.4)]),
+            prompt="p", negative="n", seed=7, width=832, height=1216, available_nodes=nodes,
+        )
         check(len(nodes_of(g, "LoraLoader")) == 2, "two LoRAs chained")
-        check(all(n["inputs"]["strength_model"] == n["inputs"]["strength_clip"]
-                  for n in nodes_of(g, "LoraLoader")), "image LoRAs drive model and CLIP together")
+        second = nodes_of(g, "LoraLoader")[1]["inputs"]
+        check(second["strength_model"] == 1.0 and second["strength_clip"] == 0.4,
+              "model and CLIP strengths stay independent")
         check(nodes_of(g, "EmptyLatentImage")[0]["inputs"]["batch_size"] == 4, "batch size wired")
         check(len(nodes_of(g, "CLIPSetLastLayer")) == 1, "clip skip -2 adds the node")
         check(nodes_of(g, "CLIPSetLastLayer")[0]["inputs"]["stop_at_clip_layer"] == -2, "…with -2")
         check(len(nodes_of(g, "KSampler")) == 1, "single pass without hires")
 
-        g2 = images.build(images.get("juggernaut"), prompt="p", negative="n", seed=1,
-                          width=1024, height=1024, available_nodes=nodes)
+        g2 = images.build(
+            images.get("juggernaut"), settings(_model=images.get("juggernaut")),
+            prompt="p", negative="n", seed=1, width=1024, height=1024, available_nodes=nodes,
+        )
         check(nodes_of(g2, "CLIPSetLastLayer") == [], "clip skip -1 omits the node entirely")
 
-        g3 = images.build(model, prompt="p", negative="n", seed=1, width=1024, height=1024,
-                          hires_scale=1.5, hires_denoise=0.4, available_nodes=nodes)
+        g3 = images.build(
+            model, settings(_model=model, hires_scale=1.5, hires_denoise=0.4),
+            prompt="p", negative="n", seed=1, width=1024, height=1024, available_nodes=nodes,
+        )
         ks = nodes_of(g3, "KSampler")
         check(len(ks) == 2, "hires adds a second sampler")
         check(ks[0]["inputs"]["denoise"] == 1.0 and ks[1]["inputs"]["denoise"] == 0.4,
@@ -904,8 +922,379 @@ async def test_image_graphs() -> None:
 
         check(nodes_of(g, "SaveImage")[0]["inputs"]["filename_prefix"].startswith("img/"),
               "images save under their own prefix")
+
+        # -- image to image --------------------------------------------------
+        g4 = images.build(
+            model, settings(_model=model, denoise=0.55, batch=2),
+            prompt="p", negative="n", seed=3, width=1024, height=1024,
+            init_image="src.png", available_nodes=nodes,
+        )
+        check(await client.validate(g4) == [], "img2img validates")
+        check(nodes_of(g4, "EmptyLatentImage") == [], "img2img starts from the picture, not noise")
+        check(len(nodes_of(g4, "VAEEncode")) == 1, "the source is encoded once")
+        check(nodes_of(g4, "RepeatLatentBatch")[0]["inputs"]["amount"] == 2,
+              "a batch repeats the encoded latent")
+        check(nodes_of(g4, "KSampler")[0]["inputs"]["denoise"] == 0.55,
+              "denoise reaches the sampler in img2img")
+        check(nodes_of(g4, "LoadImage")[0]["inputs"]["image"] == "src.png", "source wired in")
+
+        g5 = images.build(
+            model, settings(_model=model),
+            prompt="p", negative="n", seed=1, width=1024, height=1024, available_nodes=nodes,
+        )
+        check(nodes_of(g5, "KSampler")[0]["inputs"]["denoise"] == 1.0,
+              "text-to-image ignores denoise entirely")
     finally:
         await runner.cleanup()
+
+
+async def test_image_extras() -> None:
+    """The knobs added to catch up with (and pass) ComfyUI's own surface."""
+    import images
+    import prompts
+    from comfy_client import ComfyClient
+
+    section("image extras")
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    try:
+        client = ComfyClient(url)
+        nodes = await client.node_classes()
+        model = images.get("illustrious")
+
+        def settings(**kw):
+            base = images.defaults_for(model)
+            for key, value in kw.items():
+                setattr(base, key, value)
+            return base
+
+        # Quality patches chain onto the model, in order, and only when asked.
+        plain = images.build(model, settings(), prompt="p", negative="n", seed=1,
+                             width=1024, height=1024, available_nodes=nodes)
+        for cls in ("FreeU_V2", "PerturbedAttentionGuidance", "RescaleCFG", "VAEDecodeTiled"):
+            check(nodes_of(plain, cls) == [], f"{cls} stays off by default")
+
+        patched = images.build(
+            model, settings(freeu=True, pag=3.0, rescale_cfg=0.7, tiled_vae=True),
+            prompt="p", negative="n", seed=1, width=1024, height=1024, available_nodes=nodes,
+        )
+        check(await client.validate(patched) == [], "patched graph validates")
+        for cls in ("FreeU_V2", "PerturbedAttentionGuidance", "RescaleCFG"):
+            check(len(nodes_of(patched, cls)) == 1, f"{cls} added once")
+        check(nodes_of(patched, "PerturbedAttentionGuidance")[0]["inputs"]["scale"] == 3.0,
+              "PAG scale wired")
+        check(nodes_of(patched, "VAEDecode") == [] and len(nodes_of(patched, "VAEDecodeTiled")) == 1,
+              "tiled decode replaces the plain one")
+        sampler = nodes_of(patched, "KSampler")[0]["inputs"]["model"][0]
+        check(patched[sampler]["class_type"] == "RescaleCFG",
+              "the sampler reads the end of the patch chain, not the raw checkpoint")
+
+        # A GAN upscaler, both as a hi-res step and as a plain enlargement.
+        upscaled = images.build(
+            model, settings(upscaler="4x-UltraSharp.pth"),
+            prompt="p", negative="n", seed=1, width=1024, height=1024, available_nodes=nodes,
+        )
+        check(len(nodes_of(upscaled, "ImageUpscaleWithModel")) == 1, "final upscale added")
+        saved = nodes_of(upscaled, "SaveImage")[0]["inputs"]["images"][0]
+        check(upscaled[saved]["class_type"] == "ImageUpscaleWithModel",
+              "SaveImage takes the upscaled image, not the raw decode")
+        check(len(nodes_of(upscaled, "KSampler")) == 1, "a plain upscale runs no extra sampler")
+
+        hires_model = images.build(
+            model, settings(hires_scale=1.5, hires_upscaler="4x-UltraSharp.pth"),
+            prompt="p", negative="n", seed=1, width=1024, height=1024, available_nodes=nodes,
+        )
+        check(nodes_of(hires_model, "LatentUpscale") == [],
+              "a model upscaler replaces the latent upscale")
+        check(len(nodes_of(hires_model, "ImageUpscaleWithModel")) == 1, "…with a real upscale")
+        check(len(nodes_of(hires_model, "KSampler")) == 2, "…and still re-diffuses")
+
+        # An install without the upscale nodes must still produce a graph.
+        without = images.build(
+            model, settings(hires_scale=1.5, hires_upscaler="4x-UltraSharp.pth",
+                            upscaler="4x-UltraSharp.pth", tiled_vae=True),
+            prompt="p", negative="n", seed=1, width=1024, height=1024,
+            available_nodes={"CheckpointLoaderSimple", "CLIPTextEncode", "EmptyLatentImage",
+                             "KSampler", "VAEDecode", "SaveImage", "LatentUpscale",
+                             "CLIPSetLastLayer", "VAELoader"},
+        )
+        check(nodes_of(without, "ImageUpscaleWithModel") == [], "missing nodes are skipped")
+        check(len(nodes_of(without, "LatentUpscale")) == 1, "…falling back to latent upscale")
+        check(len(nodes_of(without, "VAEDecode")) == 1, "…and to the plain decode")
+
+        # Wildcards: one prompt per image, stitched back into one batch.
+        varied = [prompts.expand("a {red|blue} car", random.Random(i)) for i in range(4)]
+        forked = images.build(
+            model, settings(batch=4), prompt=varied, negative="n", seed=5,
+            width=1024, height=1024, available_nodes=nodes,
+        )
+        check(await client.validate(forked) == [], "forked wildcard graph validates")
+        if len(set(varied)) > 1:
+            check(len(nodes_of(forked, "KSampler")) == len(varied),
+                  "one sampler per distinct prompt")
+            check(len(nodes_of(forked, "ImageBatch")) == len(varied) - 1,
+                  "branches stitched back together")
+            seeds = {n["inputs"]["seed"] for n in nodes_of(forked, "KSampler")}
+            check(len(seeds) == len(varied), "each branch gets its own seed")
+            texts = {n["inputs"]["text"] for n in nodes_of(forked, "CLIPTextEncode")}
+            check(len(texts) >= len(set(varied)), "each branch encodes its own prompt")
+
+        same = images.build(
+            model, settings(batch=4), prompt=["x", "x", "x", "x"], negative="n", seed=5,
+            width=1024, height=1024, available_nodes=nodes,
+        )
+        check(len(nodes_of(same, "KSampler")) == 1, "identical prompts stay one batched sampler")
+        check(nodes_of(same, "EmptyLatentImage")[0]["inputs"]["batch_size"] == 4,
+              "…using a batched latent")
+    finally:
+        await runner.cleanup()
+
+
+async def test_new_endpoints() -> None:
+    """The API surface added for the image page, exercised against a live app."""
+    import aiohttp
+    import images
+    import registry
+
+    section("new endpoints")
+    fake = FakeComfy()
+    comfy_runner, comfy_url = await start(fake.app())
+    models_dir = TMP / "ep-models"
+    install(models_dir, registry.get("wan22-14b-fp8"))
+    for f in images.get("illustrious").all_files:
+        path = models_dir / f.folder / f.name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("wb") as fh:
+            fh.truncate(f.size)
+    (models_dir / "loras").mkdir(parents=True, exist_ok=True)
+    (models_dir / "loras" / "my_style.safetensors").write_bytes(b"\0" * 2048)
+    (models_dir / "upscale_models").mkdir(parents=True, exist_ok=True)
+    (models_dir / "upscale_models" / "4x-UltraSharp.pth").write_bytes(b"\0" * 512)
+
+    env = {
+        **os.environ,
+        "COMFY_URL": comfy_url,
+        "MODELS_DIR": str(models_dir),
+        "OUTPUT_DIR": str(TMP / "ep-out"),
+        "INBOX_DIR": str(TMP / "ep-in"),
+        "MODEL": "wan22-14b-fp8",
+        "PYTHONPATH": str(ROOT / "app"),
+        "LORAS": "",
+    }
+    proc = await asyncio.create_subprocess_exec(
+        sys.executable, "-m", "uvicorn", "server:app", "--host", "127.0.0.1", "--port", "18426",
+        cwd=str(ROOT / "app"), env=env,
+        stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT,
+    )
+    base = "http://127.0.0.1:18426"
+    try:
+        async with aiohttp.ClientSession() as s:
+            for _ in range(160):
+                try:
+                    async with s.get(f"{base}/api/health", timeout=5) as r:
+                        if r.status == 200:
+                            break
+                except Exception:  # noqa: BLE001
+                    await asyncio.sleep(0.25)
+            else:
+                out = await proc.stdout.read(4000)
+                raise AssertionError(f"server never started:\n{out.decode(errors='replace')}")
+
+            # -- upscaler / interpolator catalogues --------------------------
+            async with s.get(f"{base}/api/upscalers") as r:
+                cat = await r.json()
+            ups = {u["name"]: u for u in cat["upscalers"]}
+            check("4x-UltraSharp.pth" in ups and ups["4x-UltraSharp.pth"]["installed"],
+                  "an installed upscaler reports installed")
+            check(any(not u["installed"] for u in cat["upscalers"]),
+                  "the rest are offered as downloads")
+            check(len(cat["interpolators"]) >= 3, "interpolators are catalogued too")
+
+            # -- wildcard preview --------------------------------------------
+            async with s.post(f"{base}/api/prompt/preview",
+                              json={"prompt": "a {red|blue|green} car", "count": 6}) as r:
+                pv = await r.json()
+            check(pv["has_wildcards"], "wildcards detected")
+            check(len(pv["samples"]) == 6, "asked-for number of samples")
+            check(len(set(pv["samples"])) > 1, "the samples actually differ")
+            async with s.post(f"{base}/api/prompt/preview", json={"prompt": "a (cat:1.2 car"}) as r:
+                check((await r.json())["warning"], "an unbalanced weight is reported, not thrown")
+
+            # -- bad input is refused at the boundary ------------------------
+            for payload, why in [
+                ({"model": "illustrious", "prompt": "a (cat:1.2 x"}, "unbalanced weights"),
+                ({"model": "illustrious", "prompt": "<lora:x:1> y"}, "inline lora syntax"),
+                ({"model": "illustrious", "prompt": "x", "upscaler": "nope.pth"}, "missing upscaler"),
+                ({"model": "illustrious", "prompt": "x", "hires_upscaler": "nope.pth"},
+                 "missing hires upscaler"),
+                ({"model": "illustrious", "prompt": "x", "init_image": "../../etc/passwd"},
+                 "a traversal source path"),
+                ({"model": "illustrious", "prompt": ""}, "an empty prompt with no source image"),
+            ]:
+                async with s.post(f"{base}/api/image/generate", json=payload) as r:
+                    check(r.status == 400, f"{why} is refused ({r.status})")
+
+            # -- image-to-image round trip -----------------------------------
+            buf = io.BytesIO()
+            Image.new("RGB", (900, 600), (30, 90, 160)).save(buf, "PNG")
+            form = aiohttp.FormData()
+            form.add_field("image", buf.getvalue(), filename="src.png", content_type="image/png")
+            async with s.post(f"{base}/api/image/upload", data=form) as r:
+                up = await r.json()
+            check(r.status == 200 and up["width"] == 900, "a source image uploads and reports its size")
+
+            async with s.post(f"{base}/api/image/generate", json={
+                "model": "illustrious", "prompt": "x", "init_image": up["name"],
+                "denoise": 0.5, "batch": 2,
+            }) as r:
+                job = await r.json()
+            check(r.status == 200, f"img2img submits ({r.status})")
+            check(job["settings"]["denoise"] == 0.5, "denoise is carried on the record")
+            check(job["source"] == up["name"], "…along with which source it used")
+            check((TMP / "ep-in" / f"{job['id']}.png").is_file(),
+                  "the source is copied under the job id, so a re-run still has it")
+
+            # Deleting the job takes its source image with it. Wait for the job
+            # to stop running first: a running job refuses deletion by design.
+            for _ in range(80):
+                async with s.get(f"{base}/api/jobs/{job['id']}") as r:
+                    if (await r.json())["status"] in ("done", "error"):
+                        break
+                await asyncio.sleep(0.25)
+            async with s.delete(f"{base}/api/jobs/{job['id']}") as r:
+                check(r.status == 200, f"the finished job deletes ({r.status})")
+            check(not (TMP / "ep-in" / f"{job['id']}.png").is_file(),
+                  "deleting the job cleans up its source image")
+
+            # -- LoRA previews -----------------------------------------------
+            async with s.get(f"{base}/api/loras") as r:
+                before = {l["name"]: l for l in (await r.json())["loras"]}
+            check(before["my_style.safetensors"]["preview"] is False, "no preview to start with")
+
+            cover = io.BytesIO()
+            Image.new("RGB", (800, 800), (200, 40, 90)).save(cover, "PNG")
+            form = aiohttp.FormData()
+            form.add_field("image", cover.getvalue(), filename="c.png", content_type="image/png")
+            async with s.post(f"{base}/api/loras/my_style.safetensors/preview/upload",
+                              data=form) as r:
+                check(r.status == 200, f"a cover can be uploaded ({r.status})")
+            async with s.get(f"{base}/api/loras") as r:
+                after = {l["name"]: l for l in (await r.json())["loras"]}
+            check(after["my_style.safetensors"]["preview"] is True, "…and is then reported")
+            async with s.get(f"{base}/api/loras/my_style.safetensors/preview") as r:
+                blob = await r.read()
+            check(r.status == 200 and blob[:2] == b"\xff\xd8", "…and served back as a JPEG")
+            check(Image.open(io.BytesIO(blob)).size[0] <= 512, "…downscaled, not stored full size")
+
+            for bad in ("..%2F..%2Fetc%2Fpasswd", "nope.safetensors"):
+                async with s.get(f"{base}/api/loras/{bad}/preview") as r:
+                    check(r.status in (400, 404), f"preview for {bad} refused ({r.status})")
+
+            # Deleting the LoRA takes the preview with it.
+            async with s.delete(f"{base}/api/loras/my_style.safetensors") as r:
+                await r.read()
+            check(not (models_dir / "loras" / "my_style.safetensors.preview.jpg").exists(),
+                  "deleting a LoRA removes its preview too")
+    finally:
+        proc.terminate()
+        await proc.wait()
+        await comfy_runner.cleanup()
+
+
+async def test_video_post() -> None:
+    """Interpolation and upscaling ride on the decoded frames, after sampling."""
+    import registry
+    import upscalers
+    import workflow
+    from comfy_client import ComfyClient
+
+    section("video post-processing")
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    try:
+        client = ComfyClient(url)
+        nodes = await client.node_classes()
+        model = registry.get("wan22-14b-fp8")
+
+        def graph(**kw):
+            p = registry.GenParams.defaults_for(model)
+            for k, v in kw.items():
+                setattr(p, k, v)
+            return p, workflow.build(
+                model, p, image_name="i.png", prompt="p", seed=1,
+                width=832, height=480, available_nodes=nodes,
+            )
+
+        _, plain = graph()
+        check(nodes_of(plain, "FrameInterpolate") == [], "no interpolation by default")
+        check(nodes_of(plain, "ImageUpscaleWithModel") == [], "no upscale by default")
+
+        _, both = graph(interpolate=2, interpolate_model="rife_v4.26.safetensors",
+                        upscaler="4x-UltraSharp.pth")
+        check(await client.validate(both) == [], "post-processed video graph validates")
+        check(len(nodes_of(both, "FrameInterpolate")) == 1, "interpolation added")
+        check(nodes_of(both, "FrameInterpolate")[0]["inputs"]["multiplier"] == 2, "…with the multiplier")
+        check(len(nodes_of(both, "ImageUpscaleWithModel")) == 1, "upscale added")
+
+        # Order matters for cost: interpolate the small frames, then enlarge.
+        up = nodes_of(both, "ImageUpscaleWithModel")[0]["inputs"]["image"][0]
+        check(both[up]["class_type"] == "FrameInterpolate",
+              "upscale runs on the interpolated frames, not the other way round")
+
+        # Doubling the frames over the same seconds is a higher frame rate.
+        save = (nodes_of(both, "CreateVideo") or nodes_of(both, "SaveAnimatedWEBP"))[0]
+        check(save["inputs"]["fps"] == model.fps * 2, "the save node is told the new fps")
+        _, once = graph(interpolate=1, interpolate_model="rife_v4.26.safetensors")
+        save1 = (nodes_of(once, "CreateVideo") or nodes_of(once, "SaveAnimatedWEBP"))[0]
+        check(save1["inputs"]["fps"] == model.fps, "…and left alone when off")
+
+        # An install without the nodes still produces a runnable graph.
+        _, bare = graph(interpolate=2, interpolate_model="x.safetensors",
+                        upscaler="4x-UltraSharp.pth")
+        bare = workflow.build(
+            model, registry.GenParams.defaults_for(model), image_name="i.png", prompt="p",
+            seed=1, width=832, height=480,
+            available_nodes=nodes - {"FrameInterpolate", "ImageUpscaleWithModel"},
+        )
+        check(nodes_of(bare, "FrameInterpolate") == [], "missing nodes are skipped, not crashed on")
+
+        check({u.file.folder for u in upscalers.UPSCALERS} == {"upscale_models"},
+              "upscalers land where ComfyUI looks for them")
+        check({i.file.folder for i in upscalers.INTERPOLATORS} == {"frame_interpolation"},
+              "interpolators land where ComfyUI looks for them")
+    finally:
+        await runner.cleanup()
+
+
+def test_prompts() -> None:
+    import prompts
+
+    section("prompt syntax")
+    rng = random.Random(0)
+    for _ in range(20):
+        out = prompts.expand("a {red|blue|green} car", rng)
+        check(out in ("a red car", "a blue car", "a green car"), f"wildcard picks one ({out})")
+    check(prompts.expand("{2$$a|b|c}", random.Random(1)).count(",") == 1, "N$$ picks N")
+    check(prompts.expand("no braces here") == "no braces here", "plain text untouched")
+    check(prompts.expand("{}") == "{}", "an empty brace is left alone")
+    check(prompts.expand("{single}") == "{single}", "a brace with no | is not a wildcard")
+    check(prompts.expand("{a|{b|c}}", random.Random(3)) in ("a", "b", "c"), "nesting resolves")
+    check(prompts.has_wildcards("a {x|y}") and not prompts.has_wildcards("a {x}"),
+          "wildcard detection needs a |")
+    check(len(prompts.preview("{a|b}", 5, seed=1)) == 5, "preview returns the asked-for count")
+    check(prompts.preview("{a|b}", 3, seed=7) == prompts.preview("{a|b}", 3, seed=7),
+          "preview is reproducible for a seed")
+
+    check(prompts.weights_ok("a (cat:1.2) sitting") == "", "balanced weights pass")
+    check(prompts.weights_ok("a (cat:1.2 sitting") != "", "an unclosed ( is caught")
+    check(prompts.weights_ok("a cat:1.2) sitting") != "", "a stray ) is caught")
+    check(prompts.weights_ok("a \\(cat\\) sitting") == "", "escaped parens are literal text")
+    check("lora" in prompts.weights_ok("<lora:foo:1> cat").lower() or
+          "LoRA" in prompts.weights_ok("<lora:foo:1> cat"), "A1111 inline lora is called out")
+    check(prompts.weights_ok("(cat:3.0)") != "", "an absurd weight is called out")
+    check(prompts.weights_ok("") == "", "an empty prompt is fine")
+    check(prompts.strip_prefix("score_9, score_8_up, a cat", "score_9, score_8_up") == "a cat",
+          "the auto prefix can be removed again")
 
 
 def test_seconds_to_frames() -> None:
@@ -1073,14 +1462,28 @@ async def test_object_info_cache_invalidation() -> None:
                                width=832, height=480,
                                available_nodes=await client.node_classes())
         check(bool(await client.validate(graph)), "before install: rejected, as expected")
+        check(client._object_info is not None, "…and the schema is now cached")
 
-        # The model arrives; ComfyUI now offers it.
+        # The model arrives; ComfyUI now offers it. The original bug was that
+        # the cached schema hid this forever. There are two defences and both
+        # must hold: validate() re-reads once before reporting a failure, and
+        # anything that changes models/ can still invalidate explicitly.
         fake.installed = None
-        check(bool(await client.validate(graph)),
-              "stale cache still rejects it (this was the bug)")
-        client.invalidate()
         check(await client.validate(graph) == [],
-              "after invalidate() the freshly installed model validates")
+              "a failing check re-reads the schema instead of reporting a stale answer")
+
+        fake.installed = {"hy15-480p"}
+        client.invalidate()
+        check(bool(await client.validate(graph)), "an uninstalled model is still rejected")
+        fake.installed = None
+        client.invalidate()
+        check(await client.validate(graph) == [], "invalidate() also picks up the change")
+
+        # The refresh must not cost a second request when nothing is wrong.
+        before = fake.object_info_calls
+        check(await client.validate(graph) == [], "a passing graph validates")
+        check(fake.object_info_calls == before,
+              "a passing graph does not re-read the schema")
     finally:
         await runner.cleanup()
 
@@ -1442,6 +1845,10 @@ async def main() -> int:
     test_library()
     test_image_registry()
     await test_image_graphs()
+    await test_image_extras()
+    await test_video_post()
+    await test_new_endpoints()
+    test_prompts()
     test_seconds_to_frames()
     test_vram_advice()
     await test_civitai()

@@ -34,6 +34,11 @@ INBOX_DIR = _dir("INBOX_DIR", REPO / "data" / "inbox", Path("/data/inbox"))
 DONE_DIR = _dir("DONE_DIR", INBOX_DIR / "done")
 APP_URL = os.environ.get("APP_URL", "http://127.0.0.1:8000")
 
+# Checkouts the update check looks at. In Docker the app does not own either of
+# them, so both are allowed not to be git repos - the check just reports that.
+REPO_DIR = _dir("REPO_DIR", REPO.parent, REPO)
+COMFY_DIR = _dir("COMFY_DIR", REPO / "ComfyUI", Path("/opt/ComfyUI"))
+
 DEFAULT_MODEL = os.environ.get("MODEL", "wan22-14b-fp8")
 DEFAULT_TIER = os.environ.get("TIER", "")
 DEFAULT_LENGTH = int(os.environ.get("LENGTH", "0") or 0)

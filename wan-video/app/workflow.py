@@ -2,7 +2,7 @@
 
 Graphs are assembled in code rather than loaded from an exported .json so that
 resolution, clip length, LoRAs and step counts stay config-driven. Node class
-names and parameter values were checked against a real ComfyUI 0.32.0
+names and parameter values were checked against a real ComfyUI 0.33.0
 /object_info; comfy_client.validate() re-checks them against the target
 install before anything is submitted.
 """
@@ -84,6 +84,44 @@ def _lora_chain(g: GraphBuilder, model_node: str, loras: list[Lora]) -> str:
             f"LoRA {lora.name}",
         )
     return chain
+
+
+def _post_process(g: GraphBuilder, images: str, p: GenParams, nodes: set[str]) -> tuple[str, int]:
+    """Optional smoothing and enlargement between the decode and the save.
+
+    Both operate on the decoded frames, so they are ordinary image nodes applied
+    to a video batch - which is exactly what ComfyUI's own gan_upscaler template
+    does. Interpolation runs first: doubling the frames and *then* upscaling
+    them is the same picture for less work than the other order, because the
+    interpolator is cheaper at the smaller size.
+    """
+    fps = p.fps
+    if p.interpolate > 1 and {"FrameInterpolationModelLoader", "FrameInterpolate"} <= nodes:
+        loader = g.add(
+            "FrameInterpolationModelLoader",
+            {"model_name": p.interpolate_model},
+            "Interpolation model",
+        )
+        images = g.add(
+            "FrameInterpolate",
+            {
+                "interp_model": [loader, 0],
+                "images": [images, 0],
+                "multiplier": max(2, min(int(p.interpolate), 16)),
+            },
+            "Smooth",
+        )
+        # More frames over the same wall-clock seconds means a higher frame rate,
+        # not a slow-motion clip - so the save node has to be told.
+        fps = int(round(p.fps * p.interpolate))
+    if p.upscaler and {"UpscaleModelLoader", "ImageUpscaleWithModel"} <= nodes:
+        loader = g.add("UpscaleModelLoader", {"model_name": p.upscaler}, "Upscale model")
+        images = g.add(
+            "ImageUpscaleWithModel",
+            {"upscale_model": [loader, 0], "image": [images, 0]},
+            "Upscale",
+        )
+    return images, fps
 
 
 def _video_output(g: GraphBuilder, images: str, fps: int, prefix: str, nodes: set[str]) -> None:
@@ -228,7 +266,8 @@ def _build_wan22_14b(g, model, p, *, image, prompt, negative, seed, width, heigh
         "Sample (low noise)",
     )
     decoded = g.add("VAEDecode", {"samples": [stage2, 0], "vae": [vae, 0]}, "Decode")
-    _video_output(g, decoded, p.fps, prefix, nodes)
+    frames, out_fps = _post_process(g, decoded, p, nodes)
+    _video_output(g, frames, out_fps, prefix, nodes)
 
 
 def _build_wan22_5b(g, model, p, *, image, prompt, negative, seed, width, height, nodes, prefix):
@@ -273,7 +312,8 @@ def _build_wan22_5b(g, model, p, *, image, prompt, negative, seed, width, height
         "Sample",
     )
     decoded = g.add("VAEDecode", {"samples": [sampled, 0], "vae": [vae, 0]}, "Decode")
-    _video_output(g, decoded, p.fps, prefix, nodes)
+    frames, out_fps = _post_process(g, decoded, p, nodes)
+    _video_output(g, frames, out_fps, prefix, nodes)
 
 
 def _build_hunyuan15(g, model, p, *, image, prompt, negative, seed, width, height, nodes, prefix):
@@ -334,7 +374,8 @@ def _build_hunyuan15(g, model, p, *, image, prompt, negative, seed, width, heigh
         "Sample",
     )
     decoded = g.add("VAEDecode", {"samples": [sampled, 0], "vae": [vae, 0]}, "Decode")
-    _video_output(g, decoded, p.fps, prefix, nodes)
+    frames, out_fps = _post_process(g, decoded, p, nodes)
+    _video_output(g, frames, out_fps, prefix, nodes)
 
 
 BUILDERS = {

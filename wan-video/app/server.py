@@ -25,7 +25,10 @@ import config
 import images
 import downloader
 import library
+import prompts
 import registry
+import updates
+import upscalers
 import workflow
 from comfy_client import ComfyClient, ComfyError
 from fastapi import Body, FastAPI, Form, HTTPException, UploadFile
@@ -38,7 +41,7 @@ STATIC = Path(__file__).parent / "static"
 app = FastAPI(title="wan-drop")
 client = ComfyClient(config.COMFY_URL)
 models = downloader.Manager(config.MODELS_DIR)
-lib = library.Library(config.OUTPUT_DIR)
+lib = library.Library(config.OUTPUT_DIR, config.INBOX_DIR)
 queue: asyncio.Queue[tuple[str, bytes]] = asyncio.Queue()
 running: set[str] = set()
 
@@ -72,6 +75,9 @@ def public(record: library.Record) -> dict:
         "output": f"/outputs/{record.output}" if record.output else None,
         "outputs": [f"/outputs/{o}" for o in record.outputs],
         "fps": record.fps,
+        # Interpolation raises the playback rate without changing the duration,
+        # so both numbers are reported rather than one standing in for the other.
+        "out_fps": (record.settings or {}).get("out_fps") or record.fps,
         "duration": round(record.length / record.fps, 2) if record.fps and record.length else 0,
         "settings": record.settings,
         "thumb": f"/thumbs/{record.thumb}" if record.thumb else None,
@@ -148,10 +154,20 @@ async def run_job(record: library.Record, image_bytes: bytes) -> None:
     params = config.params_for(model, lightning=record.lightning)
     params.length = record.length
     params.loras = [*params.loras, *config.parse_loras(",".join(record.loras))]
+    extra = record.settings or {}
+    params.interpolate = int(extra.get("interpolate") or 1)
+    params.interpolate_model = str(extra.get("interpolate_model") or "")
+    params.upscaler = str(extra.get("upscaler") or "")
+    if params.interpolate > 1 and not params.interpolate_model:
+        params.interpolate = 1
     record.fps = params.fps
     record.settings = {
         "steps": params.steps, "cfg": params.cfg, "shift": params.shift,
         "sampler": params.sampler, "scheduler": params.scheduler,
+        "interpolate": params.interpolate, "interpolate_model": params.interpolate_model,
+        "upscaler": params.upscaler,
+        # What the file will actually play at, once interpolation is counted.
+        "out_fps": params.fps * max(1, params.interpolate),
     }
 
     image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
@@ -311,6 +327,7 @@ def submit(
     seed: int,
     lightning: bool,
     loras: list[str],
+    settings: dict | None = None,
 ) -> library.Record:
     record = library.Record(
         id=uuid.uuid4().hex[:12],
@@ -324,6 +341,7 @@ def submit(
         seed=seed,
         lightning=lightning and bool(model.lightning),
         loras=loras,
+        settings=settings or {},
     )
     lib.add(record)
     queue.put_nowait((record.id, image_bytes))
@@ -343,6 +361,9 @@ async def generate(
     lightning: str = Form(""),
     negative_custom: str = Form(""),
     loras: str = Form(""),
+    interpolate: int = Form(1),
+    interpolate_model: str = Form(""),
+    upscaler: str = Form(""),
 ) -> JSONResponse:
     data = await image.read()
     if not data:
@@ -386,6 +407,11 @@ async def generate(
         seed=seed if seed >= 0 else random.randint(0, 2**31 - 1),
         lightning=use_lightning,
         loras=picked,
+        settings={
+            "interpolate": max(1, min(interpolate, 4)),
+            "interpolate_model": interpolate_model,
+            "upscaler": upscaler,
+        },
     )
     return JSONResponse(public(record))
 
@@ -491,6 +517,8 @@ async def list_models() -> JSONResponse:
             "default": effective_default().id,
             "configured_default": config.default_model().id,
             "models_dir": str(config.MODELS_DIR),
+            "upscalers": installed_upscalers(),
+            "interpolators": installed_interpolators(),
             "gpu": gpu,
         }
     )
@@ -618,6 +646,7 @@ async def civitai_download(payload: dict = Body(...)) -> JSONResponse:
         "url": payload.get("page_url", ""),
         "trained_words": payload.get("trained_words") or [],
         "base_model": payload.get("base_model", ""),
+        "version_id": payload.get("version_id"),
         "name": label,
     }
     download = models.enqueue_files(
@@ -626,7 +655,81 @@ async def civitai_download(payload: dict = Body(...)) -> JSONResponse:
         files=remote,
         sidecars={f.name: meta for f in remote},
     )
+    # The sample image is small and the search response already handed us the
+    # URL; fetching it now is what turns the LoRA list from filenames into
+    # something you can actually recognise.
+    if preview_url := str(payload.get("preview") or ""):
+        for f in remote:
+            asyncio.create_task(models.fetch_preview(folder, f.name, preview_url))
     return JSONResponse(download.public())
+
+
+@app.get("/api/loras/{name}/preview")
+async def lora_preview(name: str) -> FileResponse:
+    try:
+        path = models.preview_path("loras", name)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc))
+    if not path.is_file():
+        raise HTTPException(404, "這個 LoRA 沒有預覽圖")
+    return FileResponse(path)
+
+
+@app.post("/api/loras/{name}/preview")
+async def set_lora_preview(name: str, payload: dict = Body(...)) -> JSONResponse:
+    """Attach a preview to a LoRA that arrived without one."""
+    url = str(payload.get("url") or "")
+    if not url:
+        raise HTTPException(400, "沒有給圖片網址")
+    try:
+        target = models.preview_path("loras", name)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc))
+    target.unlink(missing_ok=True)
+    if not await models.fetch_preview("loras", name, url):
+        raise HTTPException(502, "抓不到這張預覽圖")
+    return JSONResponse({"name": name, "preview": True})
+
+
+@app.post("/api/loras/{name}/preview/upload")
+async def upload_lora_preview(name: str, image: UploadFile) -> JSONResponse:
+    """Or use one of your own generated images as the LoRA's cover."""
+    data = await image.read()
+    if not data:
+        raise HTTPException(400, "圖片是空的")
+    try:
+        target = models.preview_path("loras", name)
+    except ValueError as exc:
+        raise HTTPException(400, str(exc))
+    try:
+        picture = Image.open(io.BytesIO(data)).convert("RGB")
+    except Exception:
+        raise HTTPException(400, "無法辨識這個圖片格式")
+    picture.thumbnail((512, 512))
+    target.parent.mkdir(parents=True, exist_ok=True)
+    picture.save(target, "JPEG", quality=85)
+    return JSONResponse({"name": name, "preview": True})
+
+
+@app.get("/api/updates")
+async def check_updates(refresh: bool = False) -> JSONResponse:
+    """Is anything here out of date? Best-effort; never blocks generation."""
+    if refresh:
+        updates.forget()
+    loop = asyncio.get_running_loop()
+    git = await loop.run_in_executor(
+        None, updates.app_updates, config.REPO_DIR, config.COMFY_DIR
+    )
+    watched: list = []
+    for folder in ("loras", "checkpoints"):
+        directory = config.MODELS_DIR / folder
+        if directory.is_dir():
+            watched += sorted(directory.glob("*.safetensors"))
+    try:
+        civitai_items = await updates.civitai_updates(watched)
+    except Exception as exc:  # noqa: BLE001 - a check must never break the page
+        return JSONResponse({**git, "civitai": [], "civitai_error": str(exc)})
+    return JSONResponse({**git, "civitai": civitai_items, "civitai_error": ""})
 
 
 @app.get("/api/civitai/status")
@@ -681,23 +784,32 @@ async def run_image_job(record: library.Record) -> None:
             "請到「模型」分頁下載。"
         )
 
-    cfg = record.settings
+    settings = images.ImageSettings.from_dict(record.settings)
+    # One expansion per image, seeded by the job's own seed so a re-run with the
+    # same seed reproduces the same set of wildcard picks.
+    rng = random.Random(record.seed)
+    expanded = [prompts.expand(record.prompt, rng) for _ in range(settings.batch)]
+    if len(set(expanded)) > 1:
+        record.settings = {**record.settings, "expanded": expanded}
+
+    init_name = ""
+    if record.source_name:
+        # image-to-image: the source was stashed at submit time, because the
+        # worker runs long after the upload request has gone.
+        source = config.INBOX_DIR / f"{record.id}.png"
+        if not source.is_file():
+            raise ComfyError("找不到剛才那張來源圖，請重新上傳一次")
+        init_name = await client.upload_image(source.read_bytes(), f"{record.id}.png")
+
     graph = images.build(
         model,
-        prompt=record.prompt,
-        negative=record.negative,
+        settings,
+        prompt=expanded,
+        negative=prompts.expand(record.negative, rng),
         seed=record.seed,
         width=record.width,
         height=record.height,
-        batch=cfg.get("batch", 1),
-        steps=cfg.get("steps"),
-        cfg=cfg.get("cfg"),
-        sampler=cfg.get("sampler"),
-        scheduler=cfg.get("scheduler"),
-        clip_skip=cfg.get("clip_skip"),
-        loras=[(n, s) for n, s in cfg.get("loras", [])],
-        hires_scale=cfg.get("hires_scale", 0.0),
-        hires_denoise=cfg.get("hires_denoise", 0.45),
+        init_image=init_name,
         available_nodes=await client.node_classes(),
         filename_prefix=f"img/{record.id}",
     )
@@ -751,6 +863,7 @@ async def image_models() -> JSONResponse:
     catalogue = list(images.IMAGE_MODELS) + [
         images.custom_model(name) for name in installed_checkpoints() if name not in known
     ]
+    installed_up = installed_upscalers()
 
     out = []
     for model in catalogue:
@@ -786,6 +899,11 @@ async def image_models() -> JSONResponse:
             "samplers": samplers,
             "schedulers": schedulers,
             "loose_bases": list(images.CIVITAI_BASES_LOOSE),
+            "upscalers": installed_up,
+            "embeddings": await client.embeddings(),
+            "custom_size": CUSTOM_SIZE,
+            "syntax": [list(pair) for pair in prompts.SYNTAX_HELP],
+            "not_supported": [list(pair) for pair in prompts.NOT_SUPPORTED],
             "gpu": gpu,
         }
     )
@@ -841,9 +959,13 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
             "請到「模型」分頁下載，或改選已安裝的。",
         )
 
+    init_name = str(payload.get("init_image") or "")
     raw_prompt = str(payload.get("prompt", "")).strip()
-    if not raw_prompt:
-        raise HTTPException(400, "提詞是空的 —— 圖片生成沒有輸入圖，全靠提詞")
+    if not raw_prompt and not init_name:
+        raise HTTPException(400, "提詞是空的 —— 沒放來源圖的話，畫面全靠提詞")
+    if complaint := prompts.weights_ok(raw_prompt):
+        raise HTTPException(400, complaint)
+
     prompt = raw_prompt
     # Never prepend twice: a re-run sends back a prompt that may already carry
     # the prefix.
@@ -852,16 +974,32 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         prompt = f"{model.positive_prefix}, {raw_prompt}"
 
     size_name = str(payload.get("size") or model.default_size)
-    width, height = model.sizes.get(size_name, (1024, 1024))
+    if size_name == CUSTOM_SIZE:
+        width, height = custom_size(payload)
+    else:
+        width, height = model.sizes.get(size_name, (1024, 1024))
     batch = max(1, min(int(payload.get("batch", 1)), 16))
     seed = int(payload.get("seed", -1))
 
-    picked: list[tuple[str, float]] = []
-    for entry in payload.get("loras") or []:
-        name = str(entry.get("name", ""))
-        if "/" in name or "\\" in name or not name:
-            raise HTTPException(400, f"不合法的 LoRA 檔名：{name}")
-        picked.append((name, float(entry.get("strength", 0.8))))
+    settings = images.ImageSettings.from_dict(
+        {
+            **images.defaults_for(model).to_dict(),
+            **{k: v for k, v in payload.items() if v is not None},
+            "batch": batch,
+            "loras": parse_image_loras(payload.get("loras") or []),
+        }
+    )
+    if settings.upscaler and settings.upscaler not in installed_upscalers():
+        raise HTTPException(400, f"還沒下載放大模型 {settings.upscaler}，請到「模型」分頁下載")
+    if settings.hires_upscaler and settings.hires_upscaler not in installed_upscalers():
+        raise HTTPException(400, f"還沒下載放大模型 {settings.hires_upscaler}，請到「模型」分頁下載")
+
+    source_name = ""
+    if init_name:
+        source = (config.INBOX_DIR / init_name).resolve()
+        if config.INBOX_DIR.resolve() not in source.parents or not source.is_file():
+            raise HTTPException(400, "找不到剛才上傳的來源圖，請重新放一次")
+        source_name = init_name
 
     record = library.Record(
         id=uuid.uuid4().hex[:12],
@@ -878,22 +1016,168 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         height=height,
         tier=size_name,
         length=batch,
-        loras=[f"{n}:{s}" for n, s in picked],
-        settings={
-            "batch": batch,
-            "steps": int(payload.get("steps") or model.steps),
-            "cfg": float(payload.get("cfg") or model.cfg),
-            "sampler": str(payload.get("sampler") or model.sampler),
-            "scheduler": str(payload.get("scheduler") or model.scheduler),
-            "clip_skip": int(payload.get("clip_skip") or model.clip_skip),
-            "hires_scale": float(payload.get("hires_scale") or 0.0),
-            "hires_denoise": float(payload.get("hires_denoise") or 0.45),
-            "loras": picked,
-        },
+        source_name=source_name,
+        loras=[f"{n}:{m}" for n, m, _ in settings.loras],
+        settings=settings.to_dict(),
     )
+    if source_name:
+        # The worker runs long after this request is gone, so the picture has to
+        # be on disk under the job's own name rather than held in memory.
+        (config.INBOX_DIR / f"{record.id}.png").write_bytes(source.read_bytes())
     lib.add(record)
     queue.put_nowait((record.id, b""))
     return JSONResponse(public(record))
+
+
+CUSTOM_SIZE = "自訂尺寸"
+
+
+def custom_size(payload: dict) -> tuple[int, int]:
+    """SDXL wants multiples of 8 and falls apart far from ~1 megapixel."""
+    try:
+        width = int(payload.get("width") or 1024)
+        height = int(payload.get("height") or 1024)
+    except (TypeError, ValueError):
+        raise HTTPException(400, "自訂尺寸要填數字")
+    width = max(256, min(width, 2048)) // 8 * 8
+    height = max(256, min(height, 2048)) // 8 * 8
+    return width, height
+
+
+def parse_image_loras(raw: list) -> list[list]:
+    picked: list[list] = []
+    for entry in raw:
+        name = str(entry.get("name", ""))
+        if "/" in name or "\\" in name or not name:
+            raise HTTPException(400, f"不合法的 LoRA 檔名：{name}")
+        model_s = float(entry.get("strength", 0.8))
+        clip_s = float(entry.get("strength_clip", model_s))
+        picked.append([name, model_s, clip_s])
+    return picked
+
+
+def installed_upscalers() -> list[str]:
+    folder = config.MODELS_DIR / "upscale_models"
+    if not folder.is_dir():
+        return []
+    return sorted(
+        p.name for p in folder.iterdir()
+        if p.is_file() and p.suffix.lower() in (".pth", ".safetensors")
+    )
+
+
+@app.post("/api/image/upload")
+async def image_upload(image: UploadFile) -> JSONResponse:
+    """Stash a source image for image-to-image, and report its aspect ratio."""
+    data = await image.read()
+    if not data:
+        raise HTTPException(400, "圖片是空的")
+    try:
+        opened = Image.open(io.BytesIO(data))
+        opened.verify()
+        width, height = Image.open(io.BytesIO(data)).size
+    except Exception:
+        raise HTTPException(400, "無法辨識這個圖片格式")
+    name = f"src-{uuid.uuid4().hex[:12]}.png"
+    config.INBOX_DIR.mkdir(parents=True, exist_ok=True)
+    # Staging files belong to nobody until a job claims a copy, so sweep the
+    # ones an abandoned tab left behind rather than growing the folder forever.
+    cutoff = time.time() - 24 * 3600
+    for stale in config.INBOX_DIR.glob("src-*.png"):
+        if stale.stat().st_mtime < cutoff:
+            stale.unlink(missing_ok=True)
+    Image.open(io.BytesIO(data)).convert("RGB").save(config.INBOX_DIR / name, "PNG")
+    return JSONResponse({"name": name, "width": width, "height": height})
+
+
+@app.get("/api/upscalers")
+async def list_upscalers() -> JSONResponse:
+    here = set(installed_upscalers())
+    out = [
+        {
+            "id": u.id, "label": u.label, "name": u.name, "scale": u.scale,
+            "best_for": u.best_for, "size": u.size, "installed": u.name in here,
+        }
+        for u in upscalers.UPSCALERS
+    ]
+    extra = sorted(here - {u.name for u in upscalers.UPSCALERS})
+    out += [
+        {"id": "", "label": name, "name": name, "scale": 0, "best_for": "你自己放進去的",
+         "size": 0, "installed": True}
+        for name in extra
+    ]
+    here_interp = set(installed_interpolators())
+    interp = [
+        {
+            "id": i.id, "label": i.label, "name": i.name, "best_for": i.best_for,
+            "size": i.size, "installed": i.name in here_interp,
+        }
+        for i in upscalers.INTERPOLATORS
+    ]
+    interp += [
+        {"id": "", "label": name, "name": name, "best_for": "你自己放進去的",
+         "size": 0, "installed": True}
+        for name in sorted(here_interp - {i.name for i in upscalers.INTERPOLATORS})
+    ]
+    return JSONResponse(
+        {
+            "upscalers": out, "help": upscalers.HELP,
+            "interpolators": interp, "interp_help": upscalers.INTERP_HELP,
+        }
+    )
+
+
+def installed_interpolators() -> list[str]:
+    folder = config.MODELS_DIR / "frame_interpolation"
+    if not folder.is_dir():
+        return []
+    return sorted(
+        p.name for p in folder.iterdir()
+        if p.is_file() and p.suffix.lower() in (".pth", ".safetensors", ".pkl")
+    )
+
+
+def _queue_single(key: str, label: str, file) -> dict:
+    remote = downloader.RemoteFile(
+        url=downloader.url_for(file), folder=file.folder, name=file.name, size=file.size,
+    )
+    return models.enqueue_files(
+        key=key, label=label, files=[remote], kind="model"
+    ).public()
+
+
+@app.post("/api/upscalers/{upscaler_id}/download")
+async def download_upscaler(upscaler_id: str) -> JSONResponse:
+    chosen = upscalers.get(upscaler_id)
+    if chosen is None:
+        raise HTTPException(404, f"不認識的放大模型：{upscaler_id}")
+    return JSONResponse(
+        _queue_single(f"upscaler:{chosen.id}", f"放大模型 · {chosen.label}", chosen.file)
+    )
+
+
+@app.post("/api/interpolators/{interp_id}/download")
+async def download_interpolator(interp_id: str) -> JSONResponse:
+    chosen = upscalers.interpolator(interp_id)
+    if chosen is None:
+        raise HTTPException(404, f"不認識的補幀模型：{interp_id}")
+    return JSONResponse(
+        _queue_single(f"interp:{chosen.id}", f"補幀模型 · {chosen.label}", chosen.file)
+    )
+
+
+@app.post("/api/prompt/preview")
+async def prompt_preview(payload: dict = Body(...)) -> JSONResponse:
+    """What a wildcard prompt will actually expand to, before spending a GPU on it."""
+    text = str(payload.get("prompt", ""))
+    count = max(1, min(int(payload.get("count", 3)), 16))
+    return JSONResponse(
+        {
+            "has_wildcards": prompts.has_wildcards(text),
+            "samples": prompts.preview(text, count, seed=int(payload.get("seed", 0))),
+            "warning": prompts.weights_ok(text),
+        }
+    )
 
 
 # -- health & files ----------------------------------------------------------

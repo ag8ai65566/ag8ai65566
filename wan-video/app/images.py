@@ -1,4 +1,4 @@
-"""Text-to-image: the model catalogue, the ComfyUI graph, and the knob help.
+"""Text-to-image and image-to-image: the catalogue, the graph, and the knob help.
 
 All four checkpoints are SDXL-architecture, so they share one graph. What
 differs between them is the stuff a newcomer cannot guess and that ComfyUI
@@ -7,13 +7,13 @@ prompt or it produces mush, Illustrious wants danbooru-style tags and CLIP skip
 -2, and photoreal SDXL merges want neither. Those are encoded per model here
 and surfaced in the UI rather than left as folklore.
 
-Node names and parameter ranges were read from a real ComfyUI 0.32.x
+Node names and parameter ranges were read from a real ComfyUI 0.33.0
 /object_info; file sizes come from the Hugging Face API.
 """
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields
 
 from registry import ModelFile
 
@@ -213,37 +213,136 @@ HELP = {
     "batch": "一次生幾張。同一組設定不同種子，用來一次挑好的。越多越吃顯存。",
     "seed": "隨機起點。固定同一個 seed + 同樣設定 = 同一張圖。`-1` 是每次隨機。",
     "clip_skip": "跳過文字編碼器最後幾層。動漫模型（Pony / Illustrious）習慣 -2，寫實模型用 -1。",
-    "denoise": "只在有放大時有意義：重畫多少。0.3～0.5 是加細節，1.0 等於整張重畫。",
+    "denoise": "重畫多少。只有「以圖生圖」時才有意義：0.3=只改材質，0.5～0.6=保構圖換風格，0.8 以上≈重畫。",
     "hires": "先小圖再放大重畫一次，細節更好但時間大約多一倍。手和臉會明顯改善。",
+    "hires_denoise": "放大後那一次要重畫多少。0.4～0.5 最安全；超過 0.6 構圖會跑掉。",
+    "hires_steps": "放大那一次跑幾步。留 0 就跟上面一樣；想省時間可以設成一半。",
+    "hires_upscaler": "放大的方式。用放大模型比純拉大清楚很多，但要先在「模型」分頁下載一個。",
+    "upscaler": "生完之後直接放大成品，不重畫。快、絕對不會改構圖，但也不會多出新細節。",
     "lora": "外掛的畫風／角色／題材模型。強度 0.6～1.0，一次加一支比較好抓。",
+    "lora_clip": "LoRA 對「文字理解」的影響力，通常和左邊一樣。畫風 LoRA 把它調低一點，可以避免它蓋掉你的提詞。",
     "prefix": "這個底模習慣的品質標籤，會自動加在你的提詞最前面。取消勾選就不加。",
+    "init": "放一張圖進來就變成「以圖生圖」：照著這張的構圖重畫。要改多少看下面的「重畫強度」。",
+    "freeu": "免費的畫質補丁，不用下載也不太花時間。通常讓細節更立體，但偶爾會讓顏色變重 —— 覺得怪就關掉。",
+    "pag": "另一種畫質補丁，對「構圖崩掉、手畫壞」特別有效，代價是生成時間大約多一倍。建議值 3。",
+    "rescale_cfg": "CFG 開很高時用來救回過飽和的顏色。CFG 沒開很高就不用動。0.7 是常見值。",
+    "tiled_vae": "把最後解碼的步驟切成小塊做。畫大圖時顯存不夠會在最後一刻爆掉，開這個就能過關，只是慢一點。",
+    "wildcards": "提詞裡寫 `{紅|藍|綠}` 就會每張隨機挑一個，一次生 8 張＝8 種變化。",
 }
+
+
+@dataclass
+class ImageSettings:
+    """Every knob for one image job.
+
+    One dataclass rather than twenty keyword arguments threaded through the API
+    handler and the job runner, because those two used to read and write the
+    same settings dict independently and could drift apart silently.
+    """
+
+    steps: int = 28
+    cfg: float = 6.0
+    sampler: str = "dpmpp_2m"
+    scheduler: str = "karras"
+    clip_skip: int = -1
+    batch: int = 1
+    denoise: float = 1.0
+    # (name, strength_model, strength_clip)
+    loras: list[tuple[str, float, float]] = field(default_factory=list)
+    # Second diffusion pass at a higher resolution.
+    hires_scale: float = 0.0
+    hires_denoise: float = 0.45
+    hires_steps: int = 0  # 0 = same as the main pass
+    hires_upscaler: str = ""  # "" = latent upscale; else an upscale_models file
+    # Plain enlargement of the finished image, no re-diffusion.
+    upscaler: str = ""
+    # Quality patches, all off by default.
+    freeu: bool = False
+    pag: float = 0.0
+    rescale_cfg: float = 0.0
+    tiled_vae: bool = False
+    tile_size: int = 512
+
+    @classmethod
+    def from_dict(cls, raw: dict) -> "ImageSettings":
+        """Tolerant of missing and legacy keys, so old history still replays."""
+        known = {f.name: f for f in fields(cls)}
+        out = cls()
+        for key, value in (raw or {}).items():
+            if key not in known or value is None:
+                continue
+            if key == "loras":
+                out.loras = [normalize_lora(entry) for entry in value or []]
+                continue
+            current = getattr(out, key)
+            try:
+                setattr(out, key, type(current)(value) if not isinstance(current, bool)
+                        else bool(value))
+            except (TypeError, ValueError):
+                pass
+        return out
+
+    def to_dict(self) -> dict:
+        return {
+            **{f.name: getattr(self, f.name) for f in fields(self) if f.name != "loras"},
+            "loras": [list(entry) for entry in self.loras],
+        }
+
+
+def normalize_lora(entry) -> tuple[str, float, float]:
+    """Accept (name, strength) from older records as well as the 3-tuple form."""
+    if isinstance(entry, dict):
+        name = str(entry.get("name", ""))
+        model_s = float(entry.get("strength", entry.get("strength_model", 0.8)))
+        clip_s = float(entry.get("strength_clip", model_s))
+        return name, model_s, clip_s
+    parts = list(entry)
+    name = str(parts[0])
+    model_s = float(parts[1]) if len(parts) > 1 else 0.8
+    clip_s = float(parts[2]) if len(parts) > 2 else model_s
+    return name, model_s, clip_s
+
+
+def defaults_for(model: ImageModel) -> ImageSettings:
+    return ImageSettings(
+        steps=model.steps, cfg=model.cfg, sampler=model.sampler,
+        scheduler=model.scheduler, clip_skip=model.clip_skip,
+    )
 
 
 def build(
     model: ImageModel,
+    settings: ImageSettings,
     *,
-    prompt: str,
+    prompt: str | list[str],
     negative: str,
     seed: int,
     width: int,
     height: int,
-    batch: int = 1,
-    steps: int | None = None,
-    cfg: float | None = None,
-    sampler: str | None = None,
-    scheduler: str | None = None,
-    clip_skip: int | None = None,
-    loras: list[tuple[str, float]] | None = None,
+    init_image: str = "",
     use_vae: bool = True,
-    hires_scale: float = 0.0,
-    hires_denoise: float = 0.45,
     available_nodes: set[str] | None = None,
     filename_prefix: str = "img/out",
 ) -> dict:
-    """Standard SDXL text-to-image graph, optionally with a hi-res second pass."""
+    """SDXL graph: text-to-image or image-to-image, with optional hi-res and upscale.
+
+    The shape is the one every ComfyUI SDXL workflow converges on, assembled in
+    code so the knobs stay data:
+
+        checkpoint -> LoRA chain -> patches -> KSampler -> [hi-res] -> decode
+                                 -> CLIP skip -> two CLIPTextEncode
+        latent: EmptyLatentImage, or VAEEncode of an uploaded image
+
+    `prompt` may be a list, one entry per image. That is how wildcards earn
+    their keep: a batch of four with `{red|blue|green}` needs four *different*
+    prompts, and a single batched latent can only carry one. When the list has
+    more than one distinct entry the graph forks into one sampler per image and
+    the results are stitched back together with ImageBatch; the plain batched
+    latent is kept for the ordinary case because it is faster.
+    """
     nodes: dict[str, dict] = {}
     n = 0
+    have = available_nodes
 
     def add(class_type: str, inputs: dict, title: str = "") -> str:
         nonlocal n
@@ -255,92 +354,239 @@ def build(
         }
         return str(n)
 
+    def supported(class_type: str) -> bool:
+        return have is None or class_type in have
+
     ckpt = add("CheckpointLoaderSimple", {"ckpt_name": model.file.name}, "Checkpoint")
     model_link: list = [ckpt, 0]
     clip_link: list = [ckpt, 1]
     vae_link: list = [ckpt, 2]
 
     # LoRAs affect both the model and the text encoder, so LoraLoader (not the
-    # model-only variant used for video) is the right node here.
-    for name, strength in loras or []:
+    # model-only variant used for video) is the right node here. The two
+    # strengths are separate on purpose: style LoRAs often want a weaker CLIP
+    # side so they do not hijack the wording of the prompt.
+    for name, strength_model, strength_clip in settings.loras:
         node = add(
             "LoraLoader",
             {
                 "model": model_link,
                 "clip": clip_link,
                 "lora_name": name,
-                "strength_model": strength,
-                "strength_clip": strength,
+                "strength_model": strength_model,
+                "strength_clip": strength_clip,
             },
             f"LoRA {name}",
         )
         model_link, clip_link = [node, 0], [node, 1]
 
-    skip = model.clip_skip if clip_skip is None else clip_skip
-    if skip < -1:
-        clip_node = add("CLIPSetLastLayer", {"clip": clip_link, "stop_at_clip_layer": skip}, "CLIP skip")
+    # Model patches, in the order the ComfyUI examples chain them.
+    if settings.freeu and supported("FreeU_V2"):
+        patched = add(
+            "FreeU_V2",
+            {"model": model_link, "b1": 1.3, "b2": 1.4, "s1": 0.9, "s2": 0.2},
+            "FreeU v2",
+        )
+        model_link = [patched, 0]
+    if settings.pag > 0 and supported("PerturbedAttentionGuidance"):
+        patched = add(
+            "PerturbedAttentionGuidance",
+            {"model": model_link, "scale": round(settings.pag, 2)},
+            "PAG",
+        )
+        model_link = [patched, 0]
+    if settings.rescale_cfg > 0 and supported("RescaleCFG"):
+        patched = add(
+            "RescaleCFG",
+            {"model": model_link, "multiplier": round(min(settings.rescale_cfg, 1.0), 2)},
+            "Rescale CFG",
+        )
+        model_link = [patched, 0]
+
+    if settings.clip_skip < -1:
+        clip_node = add(
+            "CLIPSetLastLayer",
+            {"clip": clip_link, "stop_at_clip_layer": settings.clip_skip},
+            "CLIP skip",
+        )
         clip_link = [clip_node, 0]
 
-    if use_vae and (available_nodes is None or "VAELoader" in available_nodes):
+    if use_vae and supported("VAELoader"):
         if any(f.folder == "vae" for f in model.extra_files):
             vae_name = next(f.name for f in model.extra_files if f.folder == "vae")
             vae_node = add("VAELoader", {"vae_name": vae_name}, "VAE (fp16 fix)")
             vae_link = [vae_node, 0]
 
-    pos = add("CLIPTextEncode", {"clip": clip_link, "text": prompt}, "Prompt")
+    batch = max(1, min(settings.batch, 16))
+    texts = [prompt] if isinstance(prompt, str) else list(prompt) or [""]
+    texts = texts[:batch]
+    # One branch per distinct prompt; the last one carries any leftover images.
+    forked = len(set(texts)) > 1
+    if not forked:
+        texts = texts[:1]
+
     neg = add("CLIPTextEncode", {"clip": clip_link, "text": negative}, "Negative")
-    latent = add(
-        "EmptyLatentImage",
-        {"width": width, "height": height, "batch_size": max(1, min(batch, 16))},
-        "Empty latent",
-    )
 
-    sampled = add(
-        "KSampler",
-        {
-            "model": model_link,
-            "seed": seed,
-            "steps": model.steps if steps is None else steps,
-            "cfg": model.cfg if cfg is None else cfg,
-            "sampler_name": sampler or model.sampler,
-            "scheduler": scheduler or model.scheduler,
-            "positive": [pos, 0],
-            "negative": [neg, 0],
-            "latent_image": [latent, 0],
-            "denoise": 1.0,
-        },
-        "Sample",
-    )
-
-    if hires_scale and hires_scale > 1.0:
-        up = add(
-            "LatentUpscale",
+    source_image: list | None = None
+    if init_image:
+        # image-to-image: the uploaded picture becomes the starting latent, and
+        # denoise decides how much of it survives.
+        loaded = add("LoadImage", {"image": init_image}, "Source image")
+        scaled = add(
+            "ImageScale",
             {
-                "samples": [sampled, 0],
-                "upscale_method": "nearest-exact",
-                "width": int(width * hires_scale) // 8 * 8,
-                "height": int(height * hires_scale) // 8 * 8,
-                "crop": "disabled",
+                "image": [loaded, 0],
+                "upscale_method": "lanczos",
+                "width": width,
+                "height": height,
+                "crop": "center",
             },
-            "Upscale latent",
+            "Fit to size",
         )
-        sampled = add(
+        source_image = [scaled, 0]
+
+    def make_latent(count: int) -> str:
+        if source_image is not None:
+            encoded = add("VAEEncode", {"pixels": source_image, "vae": vae_link}, "Encode")
+            if count > 1:
+                return add(
+                    "RepeatLatentBatch", {"samples": [encoded, 0], "amount": count}, "Batch"
+                )
+            return encoded
+        return add(
+            "EmptyLatentImage",
+            {"width": width, "height": height, "batch_size": count},
+            "Empty latent",
+        )
+
+    denoise = max(0.05, min(settings.denoise, 1.0)) if init_image else 1.0
+
+    def sample(
+        latent_node: str, denoise_value: float, steps: int, title: str,
+        positive: list, noise_seed: int,
+    ) -> str:
+        return add(
             "KSampler",
             {
                 "model": model_link,
-                "seed": seed,
-                "steps": model.steps if steps is None else steps,
-                "cfg": model.cfg if cfg is None else cfg,
-                "sampler_name": sampler or model.sampler,
-                "scheduler": scheduler or model.scheduler,
-                "positive": [pos, 0],
+                "seed": noise_seed,
+                "steps": steps,
+                "cfg": settings.cfg,
+                "sampler_name": settings.sampler,
+                "scheduler": settings.scheduler,
+                "positive": positive,
                 "negative": [neg, 0],
-                "latent_image": [up, 0],
-                "denoise": max(0.05, min(hires_denoise, 1.0)),
+                "latent_image": [latent_node, 0],
+                "denoise": denoise_value,
             },
-            "Hi-res pass",
+            title,
         )
 
-    decoded = add("VAEDecode", {"samples": [sampled, 0], "vae": vae_link}, "Decode")
-    add("SaveImage", {"images": [decoded, 0], "filename_prefix": filename_prefix}, "Save")
+    def decode(latent_node: str, title: str = "Decode") -> str:
+        if settings.tiled_vae and supported("VAEDecodeTiled"):
+            return add(
+                "VAEDecodeTiled",
+                {
+                    "samples": [latent_node, 0],
+                    "vae": vae_link,
+                    "tile_size": max(64, settings.tile_size),
+                    "overlap": 64,
+                    "temporal_size": 64,
+                    "temporal_overlap": 8,
+                },
+                title + " (tiled)",
+            )
+        return add("VAEDecode", {"samples": [latent_node, 0], "vae": vae_link}, title)
+
+    can_upscale = supported("UpscaleModelLoader") and supported("ImageUpscaleWithModel")
+
+    def branch(text: str, count: int, noise_seed: int, tag: str) -> list:
+        """One prompt all the way to a decoded image, ready to save."""
+        pos = add("CLIPTextEncode", {"clip": clip_link, "text": text}, f"Prompt{tag}")
+        latent = make_latent(count)
+        sampled = sample(latent, denoise, settings.steps, f"Sample{tag}", [pos, 0], noise_seed)
+
+        if settings.hires_scale and settings.hires_scale > 1.0:
+            target_w = int(width * settings.hires_scale) // 8 * 8
+            target_h = int(height * settings.hires_scale) // 8 * 8
+            hires_steps = settings.hires_steps or settings.steps
+            hires_denoise = max(0.05, min(settings.hires_denoise, 1.0))
+            if settings.hires_upscaler and can_upscale:
+                # Enlarge with a trained GAN, then re-diffuse. Sharper than
+                # growing the latent, which just interpolates and leaves the
+                # sampler to invent everything back.
+                decoded = decode(sampled, f"Decode for upscale{tag}")
+                loader = add(
+                    "UpscaleModelLoader",
+                    {"model_name": settings.hires_upscaler},
+                    "Upscale model",
+                )
+                big = add(
+                    "ImageUpscaleWithModel",
+                    {"upscale_model": [loader, 0], "image": [decoded, 0]},
+                    f"Upscale{tag}",
+                )
+                fitted = add(
+                    "ImageScale",
+                    {
+                        "image": [big, 0],
+                        "upscale_method": "lanczos",
+                        "width": target_w,
+                        "height": target_h,
+                        "crop": "disabled",
+                    },
+                    f"Fit to target{tag}",
+                )
+                reencoded = add(
+                    "VAEEncode", {"pixels": [fitted, 0], "vae": vae_link}, f"Re-encode{tag}"
+                )
+                sampled = sample(
+                    reencoded, hires_denoise, hires_steps, f"Hi-res pass{tag}",
+                    [pos, 0], noise_seed,
+                )
+            else:
+                up = add(
+                    "LatentUpscale",
+                    {
+                        "samples": [sampled, 0],
+                        "upscale_method": "nearest-exact",
+                        "width": target_w,
+                        "height": target_h,
+                        "crop": "disabled",
+                    },
+                    f"Upscale latent{tag}",
+                )
+                sampled = sample(
+                    up, hires_denoise, hires_steps, f"Hi-res pass{tag}", [pos, 0], noise_seed
+                )
+
+        return [decode(sampled, f"Decode{tag}"), 0]
+
+    if forked:
+        # Each image gets its own prompt and its own noise, then they are
+        # stitched into one batch so a single SaveImage writes them all.
+        links = [
+            branch(text, 1, seed + i, f" {i + 1}") for i, text in enumerate(texts)
+        ]
+        image_link = links[0]
+        for extra in links[1:]:
+            merged = add("ImageBatch", {"image1": image_link, "image2": extra}, "Combine")
+            image_link = [merged, 0]
+    else:
+        image_link = branch(texts[0], batch, seed, "")
+
+    # A final plain enlargement, after everything else. No sampler runs, so it
+    # costs seconds rather than another full generation.
+    if settings.upscaler and can_upscale:
+        loader = add(
+            "UpscaleModelLoader", {"model_name": settings.upscaler}, "Upscale model"
+        )
+        final = add(
+            "ImageUpscaleWithModel",
+            {"upscale_model": [loader, 0], "image": image_link},
+            "Final upscale",
+        )
+        image_link = [final, 0]
+
+    add("SaveImage", {"images": image_link, "filename_prefix": filename_prefix}, "Save")
     return nodes
