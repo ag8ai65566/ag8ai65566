@@ -27,6 +27,7 @@ import images
 import downloader
 import inspect_image
 import library
+import promptbook
 import prompts
 import registry
 import tags
@@ -45,6 +46,7 @@ app = FastAPI(title="wan-drop")
 client = ComfyClient(config.COMFY_URL)
 models = downloader.Manager(config.MODELS_DIR)
 lib = library.Library(config.OUTPUT_DIR, config.INBOX_DIR)
+book = promptbook.Book(config.OUTPUT_DIR.parent / "promptbook.jsonl")
 queue: asyncio.Queue[tuple[str, bytes]] = asyncio.Queue()
 running: set[str] = set()
 
@@ -101,6 +103,7 @@ async def startup() -> None:
     for d in (config.OUTPUT_DIR, lib.thumbs, config.INBOX_DIR):
         d.mkdir(parents=True, exist_ok=True)
     lib.load()
+    book.load()
     # A finished download changes what ComfyUI can offer, and its /object_info
     # is cached; drop that cache or the new model looks uninstalled.
     models.on_change = client.invalidate
@@ -1268,6 +1271,114 @@ async def download_interpolator(interp_id: str) -> JSONResponse:
     return JSONResponse(
         _queue_single(f"interp:{chosen.id}", f"補幀模型 · {chosen.label}", chosen.file)
     )
+
+
+@app.post("/api/promptbook/preview")
+async def promptbook_preview(file: UploadFile) -> JSONResponse:
+    """Parse an uploaded collection and show what came out - saving nothing.
+
+    A guess about the shape of someone else's document should be reviewable
+    before it lands in their library, so importing is two steps: look, then
+    keep.
+    """
+    data = await file.read()
+    if not data:
+        raise HTTPException(400, "檔案是空的")
+    if len(data) > 64 * 1024 * 1024:
+        raise HTTPException(400, "檔案太大了（上限 64MB）")
+    name = Path(file.filename or "collection.txt").name
+    if Path(name).suffix.lower() not in promptbook.SUPPORTED:
+        raise HTTPException(
+            400,
+            f"不支援 {Path(name).suffix or '這種'} 檔。支援："
+            + "、".join(sorted(promptbook.SUPPORTED)),
+        )
+    parsed = await asyncio.get_running_loop().run_in_executor(
+        None, promptbook.parse, data, name
+    )
+    known = set(book.entries)
+    return JSONResponse(
+        {
+            "how": parsed.how,
+            "note": parsed.note,
+            "count": len(parsed.entries),
+            "new": sum(1 for e in parsed.entries if e.key not in known),
+            "source": name,
+            # A sample, not the lot: a 20k-entry file should not become a 20MB
+            # response just to show the user it parsed.
+            "sample": [e.public() for e in parsed.entries[:40]],
+            "entries": [e.public() for e in parsed.entries],
+        }
+    )
+
+
+@app.post("/api/promptbook/import")
+async def promptbook_import(payload: dict = Body(...)) -> JSONResponse:
+    """Keep the entries the preview produced (optionally an edited subset)."""
+    rows = payload.get("entries")
+    if not isinstance(rows, list) or not rows:
+        raise HTTPException(400, "沒有要匯入的內容")
+    source = str(payload.get("source", "") or "匯入")
+    entries = []
+    for row in rows[: promptbook.MAX_ENTRIES]:
+        if not isinstance(row, dict):
+            continue
+        entry = promptbook.Entry(
+            positive=str(row.get("positive", "")),
+            negative=str(row.get("negative", "")),
+            title=str(row.get("title", "")),
+            note=str(row.get("note", "")),
+            tags=[str(t) for t in (row.get("tags") or [])][:12],
+            source=str(row.get("source") or source),
+        )
+        if entry.positive.strip():
+            entries.append(entry)
+    if not entries:
+        raise HTTPException(400, "這些項目裡沒有可用的提詞")
+    added, duplicate = book.add_all(entries)
+    return JSONResponse(
+        {"added": added, "duplicate": duplicate, "total": len(book.entries)}
+    )
+
+
+@app.get("/api/promptbook")
+async def promptbook_list(q: str = "", starred: bool = False,
+                          limit: int = 60, offset: int = 0) -> JSONResponse:
+    found, total = book.search(q, starred, max(1, min(limit, 300)), max(0, offset))
+    return JSONResponse(
+        {
+            "entries": [e.public() for e in found],
+            "total": total,
+            "all": len(book.entries),
+            "sources": book.sources(),
+        }
+    )
+
+
+@app.post("/api/promptbook/{entry_id}/star")
+async def promptbook_star(entry_id: str, payload: dict = Body(...)) -> JSONResponse:
+    if not book.star(entry_id, bool(payload.get("starred", True))):
+        raise HTTPException(404, "找不到這一則")
+    return JSONResponse({"ok": True})
+
+
+@app.post("/api/promptbook/{entry_id}/used")
+async def promptbook_used(entry_id: str) -> JSONResponse:
+    book.used(entry_id)
+    return JSONResponse({"ok": True})
+
+
+@app.delete("/api/promptbook/{entry_id}")
+async def promptbook_delete(entry_id: str) -> JSONResponse:
+    if not book.delete(entry_id):
+        raise HTTPException(404, "找不到這一則")
+    return JSONResponse({"ok": True, "total": len(book.entries)})
+
+
+@app.delete("/api/promptbook/source/{source}")
+async def promptbook_delete_source(source: str) -> JSONResponse:
+    removed = book.delete_source(source)
+    return JSONResponse({"removed": removed, "total": len(book.entries)})
 
 
 @app.get("/api/taggers")

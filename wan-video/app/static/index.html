@@ -129,6 +129,18 @@
   .pnl .bub input[type=text] { flex:1; }
   .pnl .bub select { flex:none; }
 
+  /* prompt library */
+  .pbgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:10px; }
+  .pbc { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:11px 12px;
+    display:flex; flex-direction:column; gap:6px; }
+  .pbc .t { font-size:13px; font-weight:600; }
+  .pbc .p { font-size:12.5px; line-height:1.5; word-break:break-word; max-height:9em; overflow-y:auto; }
+  .pbc .n { font-size:11.5px; color:var(--muted); word-break:break-word; max-height:4em; overflow-y:auto; }
+  .pbc .n b { color:var(--text); }
+  .pbc .acts { display:flex; gap:5px; align-items:center; margin-top:auto; flex-wrap:wrap; }
+  #pbsources .tag a { text-decoration:none; margin-left:5px; opacity:.6; }
+  #pbsources .tag a:hover { opacity:1; color:var(--err); }
+
   /* lora picker rows */
   .lora { display:flex; align-items:center; gap:9px; font-size:13px; padding:4px 0; }
   .lora input[type=range] { flex:1; max-width:120px; accent-color:var(--accent); }
@@ -167,6 +179,7 @@
     <button class="on" data-tab="gen">影片</button>
     <button data-tab="img">圖片</button>
     <button data-tab="lib">素材庫<span class="badge" id="libcount">0</span></button>
+    <button data-tab="pb">提詞庫<span class="badge" id="pbcount">0</span></button>
     <button data-tab="lora">LoRA</button>
     <button data-tab="mdl">模型</button>
     <button data-tab="set">設定</button>
@@ -426,6 +439,32 @@
     </div>
     <h2>全部成品</h2>
     <div id="gallery" class="grid"></div>
+  </div>
+
+
+  <!-- ================= 提詞庫 ================= -->
+  <div id="tab-pb" class="hidden">
+    <div class="card">
+      <div class="toolbar">
+        <input type="text" id="pbq" placeholder="搜尋你的範例（空白分隔＝要全部符合）" style="flex:1;min-width:220px">
+        <label class="chk"><input type="checkbox" id="pbstar"> 只看星號</label>
+        <div class="spacer"></div>
+        <input type="file" id="pbfile" accept=".txt,.md,.markdown,.text,.prompt,.prompts,.json,.jsonl,.ndjson,.csv,.tsv,.docx,.pdf" hidden>
+        <button class="go" id="pbimport">匯入檔案</button>
+      </div>
+      <div class="note">
+        支援 <code>.txt</code> <code>.md</code> <code>.csv</code> <code>.tsv</code>
+        <code>.json</code> <code>.jsonl</code> <code>.docx</code> <code>.pdf</code>。
+        它會自己看出你的檔案是怎麼分段的（一行一個／空行分段／<code>Prompt:</code> 標籤／
+        <code>---</code> 分隔線／Markdown 標題／A1111 參數區塊／JSON／表格），
+        <b>匯入前會先給你看抓到什麼</b>。檔案只在你自己電腦上處理，不會上傳到任何地方。
+      </div>
+      <div id="pbsources" class="row"></div>
+    </div>
+    <div id="pbpreview" class="card hidden"></div>
+    <h2>我的範例 <span class="s" id="pbtotal"></span></h2>
+    <div id="pblist"></div>
+    <div class="row"><button class="ghost hidden" id="pbmore">載入更多</button></div>
   </div>
 
   <!-- ================= LoRA ================= -->
@@ -1322,6 +1361,161 @@ function renderEmbeddings() {
   });
 }
 
+/* ---------- prompt library ---------- */
+let PB = { entries: [], total: 0, offset: 0, pending: null };
+
+$('#pbimport').onclick = () => $('#pbfile').click();
+$('#pbfile').onchange = async () => {
+  const file = $('#pbfile').files[0];
+  if (!file) return;
+  const box = $('#pbpreview');
+  box.classList.remove('hidden');
+  box.innerHTML = '<div class="s">讀取中…</div>';
+  const form = new FormData();
+  form.append('file', file);
+  try {
+    const r = await fetch('/api/promptbook/preview', { method:'POST', body: form });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    PB.pending = d;
+    renderPbPreview();
+  } catch (e) {
+    box.innerHTML = `<div class="errbox">讀不了：${esc(e.message)}</div>`;
+  }
+  $('#pbfile').value = '';
+};
+
+function renderPbPreview() {
+  const d = PB.pending;
+  const box = $('#pbpreview');
+  if (!d.count) {
+    box.innerHTML = `<b>沒抓到範例</b>
+      <div class="s" style="margin-top:6px">${esc(d.note || '看不出這個檔案怎麼分段')}</div>
+      <div class="s" style="margin-top:6px">可以試著把檔案改成「一行一個提詞」或用空行隔開，再匯入一次。</div>
+      <div class="row"><div class="spacer"></div><button class="ghost" id="pbcancel">關掉</button></div>`;
+    $('#pbcancel').onclick = () => box.classList.add('hidden');
+    return;
+  }
+  box.innerHTML = `
+    <div class="row" style="margin-top:0;align-items:center">
+      <div style="flex:1;min-width:200px">
+        <b>抓到 ${d.count} 則</b>
+        <span class="tag">分段方式：${esc(d.how)}</span>
+        ${d.new < d.count ? `<span class="tag warn">其中 ${d.count - d.new} 則你已經有了</span>` : ''}
+        <div class="s" style="margin-top:4px">來源：${esc(d.source)} · 下面是前 ${Math.min(40, d.count)} 則，確認沒問題再匯入。</div>
+      </div>
+      <button class="ghost" id="pbcancel">取消</button>
+      <button class="go" id="pbconfirm">匯入 ${d.new} 則新的</button>
+    </div>
+    <div class="pbgrid" style="margin-top:10px;max-height:360px;overflow-y:auto">
+      ${d.sample.map(pbCard).join('')}
+    </div>`;
+  $('#pbcancel').onclick = () => { box.classList.add('hidden'); PB.pending = null; };
+  $('#pbconfirm').onclick = async () => {
+    $('#pbconfirm').disabled = true;
+    try {
+      const r = await fetch('/api/promptbook/import', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ entries: d.entries, source: d.source }),
+      });
+      const out = await r.json();
+      if (!r.ok) throw new Error(out.detail || r.statusText);
+      box.classList.add('hidden'); PB.pending = null;
+      PB.offset = 0;
+      await refreshPb();
+      alert(`匯入 ${out.added} 則${out.duplicate ? `（略過 ${out.duplicate} 則重複的）` : ''}。`);
+    } catch (e) { alert('匯入失敗：' + e.message); }
+    $('#pbconfirm').disabled = false;
+  };
+}
+
+function pbCard(e, saved) {
+  return `<div class="pbc" data-id="${esc(e.id)}">
+    ${e.title ? `<div class="t">${esc(e.title)}</div>` : ''}
+    <div class="p">${esc(e.positive)}</div>
+    ${e.negative ? `<div class="n"><b>負面</b> ${esc(e.negative)}</div>` : ''}
+    ${e.note ? `<div class="s">${esc(e.note)}</div>` : ''}
+    ${(e.tags || []).length ? `<div class="words">${e.tags.map((t) => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
+    ${saved ? `<div class="acts">
+      <button class="ghost tiny" data-star="${esc(e.id)}">${e.starred ? '★' : '☆'}</button>
+      <div class="spacer"></div>
+      <button class="ghost tiny" data-use="${esc(e.id)}" data-where="img">用在圖片</button>
+      <button class="ghost tiny" data-use="${esc(e.id)}" data-where="gen">用在影片</button>
+      <button class="ghost tiny danger" data-rm="${esc(e.id)}">刪</button>
+    </div>` : ''}
+  </div>`;
+}
+
+async function refreshPb(append) {
+  try {
+    const q = encodeURIComponent($('#pbq').value.trim());
+    const star = $('#pbstar').checked ? '&starred=true' : '';
+    const d = await (await fetch(`/api/promptbook?q=${q}${star}&limit=60&offset=${PB.offset}`)).json();
+    PB.entries = append ? PB.entries.concat(d.entries) : d.entries;
+    PB.total = d.total;
+    $('#pbcount').textContent = d.all;
+    $('#pbtotal').textContent = d.total ? `（${PB.entries.length} / ${d.total}）` : '';
+    $('#pblist').className = 'pbgrid';
+    $('#pblist').innerHTML = PB.entries.map((e) => pbCard(e, true)).join('')
+      || '<div class="s">還沒有範例。按右上角「匯入檔案」把你的收藏丟進來。</div>';
+    $('#pbmore').classList.toggle('hidden', PB.entries.length >= d.total);
+    $('#pbsources').innerHTML = (d.sources || []).map((x) =>
+      `<span class="tag">${esc(x.name)} · ${x.count}
+        <a href="#" data-rmsrc="${esc(x.name)}" title="移除這個來源的全部">✕</a></span>`).join('');
+    wirePb();
+  } catch {}
+}
+
+function wirePb() {
+  const list = $('#pblist');
+  list.querySelectorAll('[data-use]').forEach((b) => b.onclick = async () => {
+    const e = PB.entries.find((x) => x.id === b.dataset.use);
+    if (!e) return;
+    if (b.dataset.where === 'img') {
+      $('#iprompt').value = e.positive; $('#iprompt').dataset.touched = '1';
+      if (e.negative) { $('#inegative').value = e.negative; $('#inegative').dataset.touched = '1'; }
+      document.querySelector('.tabs button[data-tab="img"]').click();
+      $('#istatus').textContent = '提詞已帶入。';
+    } else {
+      $('#prompt').value = e.positive;
+      if (e.negative) { $('#negtoggle').checked = true; $('#negwrap').classList.remove('hidden');
+                        $('#negative').value = e.negative; $('#negative').dataset.touched = '1'; }
+      document.querySelector('.tabs button[data-tab="gen"]').click();
+      $('#status').textContent = '提詞已帶入。放一張圖再按生成。';
+    }
+    fetch(`/api/promptbook/${encodeURIComponent(e.id)}/used`, { method:'POST' });
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
+  list.querySelectorAll('[data-star]').forEach((b) => b.onclick = async () => {
+    const e = PB.entries.find((x) => x.id === b.dataset.star);
+    if (!e) return;
+    e.starred = !e.starred;
+    b.textContent = e.starred ? '★' : '☆';
+    await fetch(`/api/promptbook/${encodeURIComponent(e.id)}/star`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ starred: e.starred }),
+    });
+  });
+  list.querySelectorAll('[data-rm]').forEach((b) => b.onclick = async () => {
+    await fetch('/api/promptbook/' + encodeURIComponent(b.dataset.rm), { method:'DELETE' });
+    PB.offset = 0; refreshPb();
+  });
+  $('#pbsources').querySelectorAll('[data-rmsrc]').forEach((a) => a.onclick = async (ev) => {
+    ev.preventDefault();
+    if (!confirm(`把「${a.dataset.rmsrc}」匯入的全部刪掉？`)) return;
+    await fetch('/api/promptbook/source/' + encodeURIComponent(a.dataset.rmsrc), { method:'DELETE' });
+    PB.offset = 0; refreshPb();
+  });
+}
+
+let pbTimer = null;
+$('#pbq').oninput = () => {
+  clearTimeout(pbTimer);
+  pbTimer = setTimeout(() => { PB.offset = 0; refreshPb(); }, 250);
+};
+$('#pbstar').onchange = () => { PB.offset = 0; refreshPb(); };
+$('#pbmore').onclick = () => { PB.offset = PB.entries.length; refreshPb(true); };
+
 /* ---------- inspect an image ---------- */
 let INSP = null;
 
@@ -2019,7 +2213,7 @@ async function boot() {
   await refreshComicLayouts();
   await refreshLoras(true);
   await refreshJobs(true);
-  refreshDownloads(); refreshStats(); renderUpscalers();
+  refreshDownloads(); refreshStats(); renderUpscalers(); refreshPb();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }

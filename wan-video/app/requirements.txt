@@ -8,3 +8,6 @@ requests==2.32.3
 # installed; the exact-metadata reader needs nothing beyond pillow.
 onnxruntime==1.28.0
 numpy>=1.26,<3
+# Only for importing a PDF of prompt examples; every other format
+# (txt/md/csv/json/docx) is handled with the standard library.
+pypdf==6.16.1

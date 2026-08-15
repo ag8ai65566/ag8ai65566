@@ -1166,6 +1166,60 @@ async def test_new_endpoints() -> None:
             check(not (TMP / "ep-in" / f"{job['id']}.png").is_file(),
                   "deleting the job cleans up its source image")
 
+            # -- the prompt library --------------------------------------------
+            collection = (
+                "Prompt: 1girl, silver hair, gothic dress\n"
+                "Negative: bad hands, blurry\n"
+                "Tags: gothic\n\n"
+                "Prompt: 2girls, bedroom, intimate\n"
+                "Negative: bad anatomy\n"
+            ).encode("utf-8")
+
+            form = aiohttp.FormData()
+            form.add_field("file", collection, filename="mine.txt",
+                           content_type="text/plain")
+            async with s.post(f"{base}/api/promptbook/preview", data=form) as r:
+                pv = await r.json()
+            check(r.status == 200 and pv["count"] == 2, f"preview parses ({r.status})")
+            check(pv["new"] == 2 and pv["how"], "…reporting how it split and what is new")
+            async with s.get(f"{base}/api/promptbook") as r:
+                check((await r.json())["all"] == 0, "previewing saves nothing")
+
+            async with s.post(f"{base}/api/promptbook/import",
+                              json={"entries": pv["entries"], "source": pv["source"]}) as r:
+                done = await r.json()
+            check(done["added"] == 2, f"import keeps them ({done})")
+            async with s.post(f"{base}/api/promptbook/import",
+                              json={"entries": pv["entries"], "source": pv["source"]}) as r:
+                again = await r.json()
+            check(again["added"] == 0 and again["duplicate"] == 2,
+                  "re-importing the same file adds nothing")
+
+            async with s.get(f"{base}/api/promptbook?q=bedroom") as r:
+                hits = await r.json()
+            check(hits["total"] == 1, "search works over the library")
+            entry_id = hits["entries"][0]["id"]
+            async with s.post(f"{base}/api/promptbook/{entry_id}/star",
+                              json={"starred": True}) as r:
+                check(r.status == 200, "an entry can be starred")
+            async with s.get(f"{base}/api/promptbook?starred=true") as r:
+                check((await r.json())["total"] == 1, "…and filtered to")
+
+            for name, body, why in [
+                ("x.exe", b"MZ", "an unsupported extension"),
+                ("x.txt", b"", "an empty file"),
+            ]:
+                form = aiohttp.FormData()
+                form.add_field("file", body, filename=name, content_type="application/octet-stream")
+                async with s.post(f"{base}/api/promptbook/preview", data=form) as r:
+                    check(r.status == 400, f"{why} is refused ({r.status})")
+
+            async with s.post(f"{base}/api/promptbook/import", json={"entries": []}) as r:
+                check(r.status == 400, f"an empty import is refused ({r.status})")
+
+            async with s.delete(f"{base}/api/promptbook/source/mine.txt") as r:
+                check((await r.json())["removed"] == 2, "a whole import can be undone")
+
             # -- inspecting an image -------------------------------------------
             async with s.get(f"{base}/api/taggers") as r:
                 tg = await r.json()
@@ -1372,6 +1426,160 @@ async def test_video_post() -> None:
               "interpolators land where ComfyUI looks for them")
     finally:
         await runner.cleanup()
+
+
+def test_promptbook() -> None:
+    """Importing a collection of prompt examples in whatever shape it arrives."""
+    import zipfile
+
+    import promptbook as pb
+
+    section("prompt library")
+
+    def parse(text, name="x.txt"):
+        return pb.parse(text.encode("utf-8") if isinstance(text, str) else text, name)
+
+    # -- one prompt per line, no blank lines. The nastiest case: joining these
+    # into one entry is the worst possible outcome, and used to happen.
+    got = parse("1girl, long hair, school uniform, sitting\n"
+                "2girls, beach, swimsuit, summer\n"
+                "solo, cat ears, maid outfit, indoors\n")
+    check(len(got.entries) == 3, f"a tag dump splits per line ({len(got.entries)})")
+    check(all("\n" not in e.positive for e in got.entries), "…without gluing lines together")
+
+    # A prompt genuinely wrapped over lines must NOT be split.
+    wrapped = parse("masterpiece, best quality,\n1girl, long hair,\noutdoors\n")
+    check(len(wrapped.entries) == 1,
+          f"a trailing comma means the prompt continues ({len(wrapped.entries)})")
+
+    # -- blank-line blocks with titles
+    got = parse("校園場景\n1girl, school uniform, classroom, sitting at desk\n\n"
+                "海邊\n2girls, bikini, beach, ocean, sunset\n")
+    check(len(got.entries) == 2, "blank lines separate entries")
+    check(got.entries[0].title == "校園場景", f"a short first line is a title ({got.entries[0].title})")
+    check("1girl" in got.entries[0].positive and "校園場景" not in got.entries[0].positive,
+          "…and is not left inside the prompt")
+
+    # -- labelled
+    got = parse("Prompt: 1girl, silver hair, gothic dress\n"
+                "Negative: bad hands, blurry\n"
+                "Tags: gothic, portrait\n\n"
+                "Prompt: 2girls, bedroom, intimate\n"
+                "Negative: bad anatomy\n")
+    check(len(got.entries) == 2, "Prompt:/Negative: pairs split into entries")
+    check(got.entries[0].negative == "bad hands, blurry", "the negative is kept apart")
+    check(got.entries[0].tags == ["gothic", "portrait"], "tags are split")
+    check(got.how.startswith("標籤式"), f"and it says how it split ({got.how})")
+
+    # -- A1111 blocks, reusing the image inspector's parser
+    got = parse("masterpiece, 1girl, standing\n"
+                "Negative prompt: bad hands, blurry\n"
+                "Steps: 28, Sampler: DPM++ 2M, CFG scale: 7, Seed: 1, Size: 832x1216, "
+                "Model: illustriousXL\n\n"
+                "score_9, 1girl, bedroom\n"
+                "Negative prompt: score_4\n"
+                "Steps: 30, Sampler: Euler a, CFG scale: 6, Seed: 2, Size: 832x1216, "
+                "Model: ponyV6\n")
+    check(len(got.entries) == 2, "pasted A1111 blocks split into entries")
+    check(got.entries[0].negative == "bad hands, blurry", "…keeping the negative")
+    check("illustriousXL" in got.entries[0].note and "28" in got.entries[0].note,
+          f"…and noting the settings ({got.entries[0].note})")
+
+    # -- markdown, separators, json, jsonl, csv
+    got = parse("# 校園\n\n```\n1girl, school uniform, classroom\n```\n\n"
+                "## 泳裝\n\n```\n1girl, swimsuit, poolside, summer\n```\n", "b.md")
+    check(len(got.entries) == 2 and got.entries[0].title == "校園",
+          "markdown headings + fenced blocks")
+
+    got = parse("1girl, library, glasses\n---\n1girl, kitchen, apron\n---\n2girls, park, picnic\n")
+    check(len(got.entries) == 3, "--- separates entries")
+
+    payload = json.dumps([
+        {"title": "A", "prompt": "1girl, red dress, city", "negative": "bad hands",
+         "tags": ["urban"]},
+        {"title": "B", "positive": "2girls, forest, armor", "negative": "blurry"},
+    ], ensure_ascii=False)
+    got = parse(payload, "p.json")
+    check(len(got.entries) == 2, "a JSON array imports")
+    check(got.entries[0].tags == ["urban"] and got.entries[1].positive.startswith("2girls"),
+          "…reading both `prompt` and `positive` spellings")
+
+    got = parse('{"prompt":"1girl, cafe, coffee"}\n{"prompt":"1boy, rain, umbrella"}\n', "d.jsonl")
+    check(len(got.entries) == 2, "JSONL imports")
+
+    got = parse('title,prompt,negative,tags\n'
+                '甲,"1girl, kimono, festival","bad hands","japanese,festival"\n'
+                '乙,"2girls, gym, sportswear","blurry","sport"\n', "s.csv")
+    check(len(got.entries) == 2 and got.entries[0].title == "甲", "a CSV with headers imports")
+    check(got.entries[0].tags == ["japanese", "festival"], "…splitting the tags column")
+
+    # A headerless CSV takes the longest cell as the prompt.
+    got = parse("1,\"1girl, red dress, standing\",note\n2,\"2girls, beach, summer\",note\n", "n.csv")
+    check(len(got.entries) == 2, "a headerless CSV still imports")
+    check(got.entries[0].positive.startswith("1girl"), "…picking the prompt column")
+
+    # -- .docx, read with the standard library only
+    buf = io.BytesIO()
+    ns = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+    paras = ["提詞範例集", "1girl, maid outfit, cafe, serving", "",
+             "1girl, nurse uniform, hospital, night", "", "2girls, office, suit, evening"]
+    body = "".join(f"<w:p><w:r><w:t>{p}</w:t></w:r></w:p>" for p in paras)
+    with zipfile.ZipFile(buf, "w") as archive:
+        archive.writestr("[Content_Types].xml", "<Types/>")
+        archive.writestr("word/document.xml",
+                         f'<?xml version="1.0"?><w:document xmlns:w="{ns}"><w:body>'
+                         f"{body}</w:body></w:document>")
+    got = parse(buf.getvalue(), "examples.docx")
+    check(len(got.entries) == 3, f"a .docx imports with no extra dependency ({len(got.entries)})")
+    check("maid outfit" in got.entries[0].positive, "…with the text intact")
+
+    # -- failures degrade, never raise
+    for data, name, why in [
+        (b"not a zip", "x.docx", "a corrupt docx"),
+        (b"%PDF-1.4 broken", "x.pdf", "an unreadable pdf"),
+        (b"", "x.txt", "an empty file"),
+        ("純散文沒有任何提詞".encode("utf-8"), "x.txt", "prose with no prompts"),
+        (b"\xff\xfe\x00\x01\x02", "x.txt", "binary junk"),
+    ]:
+        out = pb.parse(data, name)
+        check(out.entries == [] or all(e.positive for e in out.entries),
+              f"{why} yields no broken entries")
+        check(isinstance(out.note, str), f"{why} explains itself instead of raising")
+
+    # Big5 and UTF-16 files are common on Windows.
+    for encoding in ("big5", "utf-16"):
+        raw = "1girl, 學校制服, 教室, 坐著\n2girls, 海邊, 泳裝, 夏天\n".encode(encoding)
+        out = pb.parse(raw, "x.txt")
+        check(len(out.entries) == 2, f"{encoding} decodes ({len(out.entries)})")
+        check("學校制服" in out.entries[0].positive, f"…with {encoding} characters intact")
+
+    # -- the store
+    store = Book = pb.Book(TMP / "pb" / "book.jsonl")
+    store.entries.clear()
+    entries = parse("Prompt: 1girl, a, b\nNegative: bad\n\nPrompt: 2girls, c, d\n").entries
+    added, dup = store.add_all(entries)
+    check((added, dup) == (2, 0), f"entries are added ({added}, {dup})")
+    added, dup = store.add_all(entries)
+    check((added, dup) == (0, 2), "re-importing the same file adds nothing")
+
+    found, total = store.search("2girls")
+    check(total == 1 and found[0].positive.startswith("2girls"), "search finds by word")
+    found, total = store.search("1girl b")
+    check(total == 1, "several words must all match")
+    check(store.search("nothing-like-this")[1] == 0, "a miss returns nothing")
+
+    key = entries[0].key
+    check(store.star(key, True), "an entry can be starred")
+    check(store.search("", starred=True)[1] == 1, "…and filtered to")
+    check(store.search("")[0][0].starred, "starred entries sort first")
+
+    reloaded = pb.Book(store.path)
+    reloaded.load()
+    check(len(reloaded.entries) == 2, "the library survives a restart")
+    check(reloaded.entries[key].starred, "…including the stars")
+
+    check(store.delete_source(entries[0].source) == 2, "a whole import can be undone")
+    check(len(store.entries) == 0, "…leaving nothing behind")
 
 
 def test_inspect_image() -> None:
@@ -2331,6 +2539,7 @@ async def main() -> int:
     await test_video_post()
     await test_new_endpoints()
     await test_comics()
+    test_promptbook()
     test_inspect_image()
     test_prompts()
     test_seconds_to_frames()
