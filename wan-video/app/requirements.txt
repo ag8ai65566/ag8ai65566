@@ -4,3 +4,7 @@ python-multipart==0.0.20
 aiohttp==3.11.11
 pillow==11.1.0
 requests==2.32.3
+# For the image tagger (app/tags.py). Only used when a tagger model is
+# installed; the exact-metadata reader needs nothing beyond pillow.
+onnxruntime==1.28.0
+numpy>=1.26,<3

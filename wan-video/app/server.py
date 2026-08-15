@@ -25,9 +25,11 @@ import comics
 import config
 import images
 import downloader
+import inspect_image
 import library
 import prompts
 import registry
+import tags
 import updates
 import upscalers
 import workflow
@@ -988,6 +990,9 @@ async def image_models() -> JSONResponse:
                 "note": model.note,
                 "civitai_bases": list(images.CIVITAI_BASES.get(model.id, ())),
                 "custom": model.id.startswith(images.CUSTOM_PREFIX),
+                # The checkpoint filename, so an image that names the model it
+                # was made with can be matched back to an entry here.
+                "file_name": model.file.name,
                 **state,
             }
         )
@@ -1263,6 +1268,119 @@ async def download_interpolator(interp_id: str) -> JSONResponse:
     return JSONResponse(
         _queue_single(f"interp:{chosen.id}", f"補幀模型 · {chosen.label}", chosen.file)
     )
+
+
+@app.get("/api/taggers")
+async def list_taggers() -> JSONResponse:
+    here = set(tags.installed(config.MODELS_DIR))
+    return JSONResponse(
+        {
+            "taggers": [
+                {"id": t.id, "label": t.label, "note": t.note, "size": t.size,
+                 "installed": t.id in here}
+                for t in tags.TAGGERS
+            ],
+            "installed": sorted(here),
+            "runtime": _has_onnx(),
+        }
+    )
+
+
+def _has_onnx() -> bool:
+    try:
+        import onnxruntime  # noqa: F401
+        return True
+    except Exception:  # noqa: BLE001
+        return False
+
+
+@app.post("/api/taggers/{tagger_id}/download")
+async def download_tagger(tagger_id: str) -> JSONResponse:
+    chosen = tags.get(tagger_id)
+    if chosen is None:
+        raise HTTPException(404, f"不認識的分析模型：{tagger_id}")
+    remote = [
+        downloader.RemoteFile(url=downloader.url_for(f), folder=f.folder,
+                              name=f.name, size=f.size)
+        for f in (chosen.model, chosen.labels)
+    ]
+    return JSONResponse(
+        models.enqueue_files(
+            key=f"tagger:{chosen.id}", label=f"看圖分析 · {chosen.label}",
+            files=remote, kind="model",
+        ).public()
+    )
+
+
+@app.post("/api/inspect")
+async def inspect(image: UploadFile, tagger: str = Form(""),
+                  threshold: float = Form(tags.DEFAULT_GENERAL)) -> JSONResponse:
+    """What made this image, and what is in it.
+
+    Two answers with very different standing, so they are returned separately
+    and labelled: `metadata` is read out of the file and is exact; `tags` is a
+    model's opinion of the pixels. Nothing here claims to identify a LoRA from
+    an image, because nothing can - a LoRA is only reported when the file
+    itself names one.
+    """
+    data = await image.read()
+    if not data:
+        raise HTTPException(400, "圖片是空的")
+    try:
+        picture = Image.open(io.BytesIO(data))
+        picture.load()
+    except Exception:
+        raise HTTPException(400, "無法辨識這個圖片格式")
+
+    found = inspect_image.read_metadata(picture)
+    result: dict = {
+        "size": list(picture.size),
+        "metadata": found.public(),
+        "tags": None,
+        "tagger_error": "",
+        "loras": [],
+        "suggest_model": "",
+        "rating_label": "",
+    }
+
+    here = tags.installed(config.MODELS_DIR)
+    chosen = tagger if tagger in here else (here[0] if here else "")
+    if chosen:
+        try:
+            loop = asyncio.get_running_loop()
+            guess = await loop.run_in_executor(
+                None, tags.describe, picture,
+                tags.folder(config.MODELS_DIR, chosen),
+                max(0.05, min(float(threshold), 0.95)),
+            )
+            result["tags"] = guess.public()
+            result["suggest_model"] = tags.suggest_model(guess)
+            result["rating_label"] = tags.RATING_LABEL.get(guess.rating, guess.rating)
+            result["lora_hints"] = tags.matching_loras(guess, models.list_loras())
+        except ImportError:
+            result["tagger_error"] = (
+                "缺少 onnxruntime 套件。關掉 app，跑一次 update.bat 或 install.bat 就會裝好。"
+            )
+        except Exception as exc:  # noqa: BLE001 - a failed guess must not 500
+            result["tagger_error"] = f"分析失敗：{type(exc).__name__}: {exc}"
+    elif not tags.installed(config.MODELS_DIR):
+        result["tagger_error"] = "還沒下載看圖分析模型（到「模型」分頁下載，約 380MB）。"
+
+    # Which of the LoRAs the file named do we actually have?
+    have = {l["name"] for l in models.list_loras()}
+    for lora in found.loras:
+        name = str(lora.get("name", ""))
+        stem = name.rsplit(".", 1)[0].lower()
+        match = next((h for h in have if h.rsplit(".", 1)[0].lower() == stem), "")
+        result["loras"].append(
+            {
+                **lora,
+                "installed": bool(match),
+                "installed_as": match,
+                "search": f"https://civitai.com/search/models?query={name.rsplit('.', 1)[0]}",
+            }
+        )
+    return JSONResponse(result)
 
 
 @app.get("/api/comic/layouts")

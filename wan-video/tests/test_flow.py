@@ -1166,6 +1166,61 @@ async def test_new_endpoints() -> None:
             check(not (TMP / "ep-in" / f"{job['id']}.png").is_file(),
                   "deleting the job cleans up its source image")
 
+            # -- inspecting an image -------------------------------------------
+            async with s.get(f"{base}/api/taggers") as r:
+                tg = await r.json()
+            check(len(tg["taggers"]) >= 3, "taggers are offered for download")
+            check(not any(t["installed"] for t in tg["taggers"]),
+                  "none installed in this fixture")
+
+            from PIL.PngImagePlugin import PngInfo
+            settings = images.defaults_for(images.get("illustrious"))
+            settings.loras = [("my_style.safetensors", 0.85, 0.5),
+                              ("absent_v2.safetensors", 0.7, 0.7)]
+            graph = images.build(
+                images.get("illustrious"), settings, prompt="1girl, pink dress",
+                negative="bad hands", seed=4242, width=832, height=1216,
+            )
+            meta = PngInfo()
+            meta.add_text("prompt", json.dumps(graph))
+            buf = io.BytesIO()
+            Image.new("RGB", (128, 128), (60, 20, 40)).save(buf, "PNG", pnginfo=meta)
+
+            form = aiohttp.FormData()
+            form.add_field("image", buf.getvalue(), filename="a.png", content_type="image/png")
+            async with s.post(f"{base}/api/inspect", data=form) as r:
+                got = await r.json()
+            check(r.status == 200, f"inspect answers ({r.status})")
+            check(got["metadata"]["source"] == "comfyui", "the graph is read out of the file")
+            check(got["metadata"]["prompt"] == "1girl, pink dress", "…exactly")
+            check(got["metadata"]["seed"] == 4242, "…seed included")
+            by_name = {l["name"]: l for l in got["loras"]}
+            check(by_name["my_style.safetensors"]["installed"],
+                  "a LoRA we have is marked as had")
+            check(not by_name["absent_v2.safetensors"]["installed"],
+                  "one we lack is marked as missing")
+            check("civitai.com" in by_name["absent_v2.safetensors"]["search"],
+                  "…with somewhere to go and get it")
+            # No tagger installed here: that must degrade to a message, not a 500,
+            # and must not stop the exact half from being returned.
+            check(got["tags"] is None and got["tagger_error"],
+                  f"a missing tagger is explained, not thrown ({got['tagger_error'][:40]})")
+
+            plain = io.BytesIO()
+            Image.new("RGB", (64, 64), (10, 10, 10)).save(plain, "PNG")
+            form = aiohttp.FormData()
+            form.add_field("image", plain.getvalue(), filename="b.png", content_type="image/png")
+            async with s.post(f"{base}/api/inspect", data=form) as r:
+                bare = await r.json()
+            check(r.status == 200 and bare["metadata"]["source"] == "",
+                  "an image with no metadata claims nothing")
+            check(bare["loras"] == [], "…and invents no LoRAs")
+
+            form = aiohttp.FormData()
+            form.add_field("image", b"not an image", filename="c.png", content_type="image/png")
+            async with s.post(f"{base}/api/inspect", data=form) as r:
+                check(r.status == 400, f"a non-image is refused ({r.status})")
+
             # -- comics --------------------------------------------------------
             async with s.get(f"{base}/api/comic/layouts") as r:
                 cat = await r.json()
@@ -1317,6 +1372,131 @@ async def test_video_post() -> None:
               "interpolators land where ComfyUI looks for them")
     finally:
         await runner.cleanup()
+
+
+def test_inspect_image() -> None:
+    """Recovering settings out of a generated file. This half must be exact."""
+    import images
+    import inspect_image
+    import tags
+    from PIL.PngImagePlugin import PngInfo
+
+    section("reading an image's settings")
+
+    model = images.get("illustrious")
+    settings = images.defaults_for(model)
+    settings.loras = [("my_style.safetensors", 0.85, 0.5), ("other.safetensors", 0.6, 0.6)]
+    settings.steps, settings.cfg, settings.hires_scale = 30, 5.5, 1.5
+    graph = images.build(
+        model, settings, prompt="1girl, pink dress", negative="bad hands",
+        seed=424242, width=832, height=1216,
+    )
+
+    def png_with(**chunks) -> Image.Image:
+        meta = PngInfo()
+        for key, value in chunks.items():
+            meta.add_text(key, value)
+        buf = io.BytesIO()
+        Image.new("RGB", (64, 64), (20, 30, 40)).save(buf, "PNG", pnginfo=meta)
+        return Image.open(io.BytesIO(buf.getvalue()))
+
+    # -- ComfyUI ------------------------------------------------------------
+    # The chunk name and JSON encoding match ComfyUI's nodes.py exactly:
+    # metadata.add_text("prompt", json.dumps(prompt)).
+    found = inspect_image.read_metadata(png_with(prompt=json.dumps(graph)))
+    check(found.source == "comfyui", "a ComfyUI png is recognised")
+    check(found.prompt == "1girl, pink dress", f"the prompt comes back verbatim ({found.prompt})")
+    check(found.negative == "bad hands", "so does the negative")
+    check(found.model == model.file.name, f"and the checkpoint ({found.model})")
+    check(found.seed == 424242 and found.steps == 30 and found.cfg == 5.5,
+          "seed, steps and cfg come back")
+    check(found.sampler == model.sampler and found.scheduler == model.scheduler,
+          "sampler and scheduler come back")
+    check(found.clip_skip == -2, f"CLIP skip comes back ({found.clip_skip})")
+    check((found.width, found.height) == (832, 1216), "so does the size")
+    check([l["name"] for l in found.loras] == ["my_style.safetensors", "other.safetensors"],
+          "every LoRA is listed")
+    check(found.loras[0]["strength"] == 0.85 and found.loras[0]["strength_clip"] == 0.5,
+          "…with its two strengths kept apart")
+
+    # A hi-res graph has two samplers; the one that produced the saved image is
+    # the last in the chain, not the first.
+    check(len(nodes_of(graph, "KSampler")) == 2, "the fixture really has two samplers")
+    plain = images.build(model, images.defaults_for(model), prompt="x", negative="y",
+                         seed=7, width=1024, height=1024)
+    simple = inspect_image.read_metadata(png_with(prompt=json.dumps(plain)))
+    check(simple.prompt == "x" and simple.seed == 7, "a single-sampler graph reads too")
+
+    # -- Automatic1111 -------------------------------------------------------
+    a1111 = (
+        "masterpiece, 1girl, <lora:animeStyle:0.8> standing\n"
+        "Negative prompt: bad hands, blurry\n"
+        "Steps: 28, Sampler: DPM++ 2M, Schedule type: Karras, CFG scale: 7.5, "
+        'Seed: 987654, Size: 832x1216, Model hash: abc123, Model: ponyDiffusionV6XL, '
+        'Clip skip: 2, Lora hashes: "animeStyle: 1a2b, extraDetail: 9z8y", Version: v1.10.1'
+    )
+    found = inspect_image.read_metadata(png_with(parameters=a1111))
+    check(found.source == "a1111", "an A1111 png is recognised")
+    check(found.prompt.startswith("masterpiece, 1girl"), "prompt parsed")
+    check(found.negative == "bad hands, blurry", "negative parsed")
+    check(found.model == "ponyDiffusionV6XL" and found.seed == 987654, "model and seed parsed")
+    check(found.steps == 28 and found.cfg == 7.5, "steps and cfg parsed")
+    check(found.sampler == "DPM++ 2M" and found.scheduler == "Karras", "sampler parsed")
+    check((found.width, found.height) == (832, 1216), "size parsed")
+    check(found.clip_skip == -2,
+          f"A1111 counts clip skip up from 1, ComfyUI down from -1 ({found.clip_skip})")
+    names = [l["name"] for l in found.loras]
+    check("animeStyle" in names and "extraDetail" in names,
+          f"inline and hash-listed LoRAs both found ({names})")
+    check(next(l for l in found.loras if l["name"] == "animeStyle")["strength"] == 0.8,
+          "…with the inline strength")
+    check(found.extras.get("Model hash") == "abc123", "unrecognised settings are kept, not lost")
+
+    # A1111 also hides the same string in EXIF for JPEG.
+    buf = io.BytesIO()
+    exif = Image.Exif()
+    exif[inspect_image.EXIF_USER_COMMENT] = b"UNICODE\x00" + a1111.encode("utf-16-be")
+    Image.new("RGB", (32, 32)).save(buf, "JPEG", exif=exif)
+    from_jpeg = inspect_image.read_metadata(Image.open(io.BytesIO(buf.getvalue())))
+    check(from_jpeg.source == "a1111", "a JPEG's EXIF UserComment is read too")
+    check(from_jpeg.seed == 987654, "…with the same values")
+
+    # -- nothing, and rubbish ------------------------------------------------
+    blank = io.BytesIO()
+    Image.new("RGB", (32, 32)).save(blank, "PNG")
+    nothing = inspect_image.read_metadata(Image.open(io.BytesIO(blank.getvalue())))
+    check(nothing.source == "" and not nothing.prompt,
+          "a plain photo claims nothing rather than inventing it")
+    for junk in ("{not json", "[]", "{}", json.dumps({"1": {"class_type": "Nope"}}), ""):
+        out = inspect_image.read_metadata(png_with(prompt=junk))
+        check(out.source in ("", "comfyui"), f"junk metadata does not crash ({junk[:12]})")
+        check(not out.prompt, "…and does not fabricate a prompt")
+    check(inspect_image.read_metadata(png_with(parameters="just a caption")).source == "",
+          "an ordinary text chunk is not mistaken for A1111 settings")
+
+    # -- tag helpers ---------------------------------------------------------
+    check(tags.to_prompt("long_hair") == "long hair", "underscores become spaces")
+    check(tags.to_prompt("rem_(re:zero)") == r"rem \(re:zero\)",
+          "parentheses are escaped, or they would reweight the prompt")
+    folders = [t.model.folder for t in tags.TAGGERS]
+    check(len(set(folders)) == len(folders),
+          "each tagger downloads to its own folder (all are named model.onnx)")
+    check(all(t.model.folder == t.labels.folder for t in tags.TAGGERS),
+          "weights and labels land together")
+
+    guess = tags.Guess(general=[("1girl", 0.9), ("long_hair", 0.8)],
+                       characters=[("rem_(re:zero)", 0.9)])
+    check(guess.prompt.startswith("rem "), "characters lead the prompt")
+    check("long hair" in guess.prompt, "general tags follow")
+    check(tags.suggest_model(guess) == "illustrious", "anime tags suggest the anime model")
+    photo = tags.Guess(general=[("realistic", 0.9), ("1girl", 0.8)])
+    check(tags.suggest_model(photo) == "juggernaut", "realistic tags suggest the photo model")
+    hints = tags.matching_loras(
+        guess, [{"name": "a.safetensors", "trained_words": ["long hair", "nope"]},
+                {"name": "b.safetensors", "trained_words": ["unrelated"]}])
+    check([h["name"] for h in hints] == ["a.safetensors"],
+          "only LoRAs whose trigger words appear are hinted")
+    check(hints[0]["matched"] == ["long hair"], "…and it says which word matched")
 
 
 async def test_comics() -> None:
@@ -2151,6 +2331,7 @@ async def main() -> int:
     await test_video_post()
     await test_new_endpoints()
     await test_comics()
+    test_inspect_image()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()

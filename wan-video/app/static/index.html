@@ -246,10 +246,16 @@
 
   <!-- ================= 圖片 ================= -->
   <div id="tab-img" class="hidden">
-    <div class="modes">
-      <button class="on" data-mode="plain">單張圖片</button>
-      <button data-mode="comic">漫畫分鏡</button>
+    <div class="row" style="margin-top:0;align-items:center">
+      <div class="modes" style="margin-bottom:0">
+        <button class="on" data-mode="plain">單張圖片</button>
+        <button data-mode="comic">漫畫分鏡</button>
+      </div>
+      <div class="spacer"></div>
+      <input type="file" id="inspfile" accept="image/*" hidden>
+      <button class="ghost" id="inspbtn">🔍 看圖猜設定</button>
     </div>
+    <div id="insp" class="card hidden" style="margin-bottom:12px"></div>
     <div class="card">
       <div class="row">
         <label class="f" style="flex:1;min-width:280px">底模
@@ -488,6 +494,8 @@
     <div id="uplist"></div>
     <h2>補幀模型（影片用）</h2>
     <div id="interplist"></div>
+    <h2>看圖分析模型（把圖片變成提詞）</h2>
+    <div id="taglist"></div>
   </div>
 
   <!-- ================= 設定 ================= -->
@@ -1178,6 +1186,30 @@ async function renderUpscalers() {
     await fetch(`/api/interpolators/${encodeURIComponent(b.dataset.ip)}/download`, { method:'POST' });
     refreshDownloads();
   });
+
+  let t;
+  try { t = await (await fetch('/api/taggers')).json(); } catch { return; }
+  $('#taglist').innerHTML =
+    '<div class="note">丟一張圖進「🔍 看圖猜設定」，它會列出 danbooru 標籤直接當提詞用。'
+    + '如果那張圖是 ComfyUI 或 A1111 生的，<b>連提詞、種子、用了哪些 LoRA 都會原封不動讀出來</b>，'
+    + '那部分不需要下載任何東西。</div>'
+    + (t.runtime ? '' : '<div class="banner tight">缺少 onnxruntime 套件 —— '
+        + '跑一次 <code>update.bat</code> 或 <code>install.bat</code> 就會裝好。</div>')
+    + t.taggers.map((x) => `
+    <div class="m ${x.installed ? 'installed':''}">
+      <div class="top">
+        <span class="name">${esc(x.label)}</span>
+        ${x.installed ? '<span class="tag done">已安裝</span>' : '<span class="tag">未下載</span>'}
+        <span class="s">${gb(x.size)}</span>
+        ${x.installed ? '' : `<button class="go" data-tg="${esc(x.id)}">下載 ${gb(x.size)}</button>`}
+      </div>
+      <div class="note">${esc(x.note)}</div>
+    </div>`).join('');
+  $('#taglist').querySelectorAll('[data-tg]').forEach((b) => b.onclick = async () => {
+    b.disabled = true;
+    await fetch(`/api/taggers/${encodeURIComponent(b.dataset.tg)}/download`, { method:'POST' });
+    refreshDownloads();
+  });
 }
 
 async function refreshDownloads() {
@@ -1288,6 +1320,151 @@ function renderEmbeddings() {
     el.value = (el.value.trim() ? el.value.trim() + ', ' : '') + token;
     el.dataset.touched = '1';
   });
+}
+
+/* ---------- inspect an image ---------- */
+let INSP = null;
+
+$('#inspbtn').onclick = () => $('#inspfile').click();
+$('#inspfile').onchange = async () => {
+  const file = $('#inspfile').files[0];
+  if (!file) return;
+  const box = $('#insp');
+  box.classList.remove('hidden');
+  box.innerHTML = '<div class="s">分析中…（第一次會慢一點，要載入模型）</div>';
+  const form = new FormData();
+  form.append('image', file);
+  try {
+    const r = await fetch('/api/inspect', { method:'POST', body: form });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    INSP = d;
+    INSP._preview = URL.createObjectURL(file);
+    renderInspect();
+  } catch (e) {
+    box.innerHTML = `<div class="errbox">看不了這張圖：${esc(e.message)}</div>`;
+  }
+  $('#inspfile').value = '';
+};
+
+function renderInspect() {
+  const d = INSP, m = d.metadata || {};
+  const exact = m.source === 'comfyui' || m.source === 'a1111';
+  const parts = [];
+
+  parts.push(`<div class="row" style="margin-top:0;align-items:flex-start">
+    <img src="${d._preview}" style="width:120px;border-radius:8px">
+    <div style="flex:1;min-width:220px">
+      <div class="row" style="margin-top:0">
+        <b>${exact ? '這張圖自己帶了完整參數' : '這張圖沒有夾帶參數'}</b>
+        ${exact ? `<span class="tag done">${m.source === 'comfyui' ? 'ComfyUI' : 'A1111'} · 精確</span>`
+                : '<span class="tag warn">只能用看的猜</span>'}
+      </div>
+      <div class="s" style="margin-top:4px">${d.size[0]}×${d.size[1]}
+        ${d.rating_label ? ` · 分級判定：<b>${esc(d.rating_label)}</b>` : ''}</div>
+      ${m.note ? `<div class="s">${esc(m.note)}</div>` : ''}
+    </div>
+  </div>`);
+
+  if (exact) {
+    const rows = [
+      ['提詞', m.prompt], ['負面提詞', m.negative], ['底模', m.model],
+      ['種子', m.seed], ['步數', m.steps], ['CFG', m.cfg],
+      ['Sampler', [m.sampler, m.scheduler].filter(Boolean).join(' / ')],
+      ['CLIP skip', m.clip_skip], ['尺寸', m.width ? `${m.width}×${m.height}` : ''],
+    ].filter(([, v]) => v !== '' && v !== null && v !== undefined);
+    parts.push('<h2 style="margin-top:14px">檔案裡寫的（這是事實，不是猜的）</h2>'
+      + '<div class="card" style="background:var(--panel2)">'
+      + rows.map(([k, v]) =>
+          `<div class="s" style="margin:3px 0"><b style="color:var(--text)">${esc(k)}</b>：${esc(String(v))}</div>`).join('')
+      + '</div>');
+
+    if ((d.loras || []).length) {
+      parts.push('<h2>它用了這些 LoRA</h2><div class="card" style="background:var(--panel2)">'
+        + d.loras.map((l) => `<div class="row" style="margin-top:4px;align-items:center">
+            <span style="flex:1;min-width:160px">${esc(l.name)}
+              <span class="s"> · 強度 ${l.strength}${l.strength_clip !== l.strength ? ` / CLIP ${l.strength_clip}` : ''}</span></span>
+            ${l.installed ? '<span class="tag done">你有</span>'
+              : `<span class="tag warn">你沒有</span>
+                 <a class="ghost tiny" style="text-decoration:none;padding:4px 9px"
+                    href="${esc(l.search)}" target="_blank" rel="noopener">去 CivitAI 找 ↗</a>`}
+          </div>`).join('') + '</div>');
+    }
+  }
+
+  if (d.tags) {
+    const t = d.tags;
+    const chip = (x) => `<span class="tag" title="信心 ${x.p}">${esc(x.name)}</span>`;
+    parts.push('<h2>看圖猜到的內容（danbooru 標籤）</h2><div class="card" style="background:var(--panel2)">'
+      + (t.characters.length ? `<div class="words" style="margin-bottom:6px"><b class="s">角色：</b>${t.characters.map(chip).join('')}</div>` : '')
+      + `<div class="words">${t.general.map(chip).join('')}</div>`
+      + `<textarea id="insptags" style="margin-top:8px;min-height:60px">${esc(t.prompt)}</textarea>`
+      + '</div>');
+  } else if (d.tagger_error) {
+    parts.push(`<div class="banner tight">${esc(d.tagger_error)}
+      <button class="ghost tiny" id="getTagger" style="margin-left:8px">去下載</button></div>`);
+  }
+
+  if ((d.lora_hints || []).length) {
+    parts.push('<div class="banner"><b>你裝的 LoRA 裡，觸發詞對得上的有：</b>'
+      + d.lora_hints.map((h) => `<div class="s">· ${esc(h.label)}（${esc(h.matched.join(', '))}）</div>`).join('')
+      + '<div class="s" style="margin-top:4px">這只是「詞對得上」，<b>不代表原圖就是用它畫的</b> —— '
+      + '從像素沒辦法反推是哪一支 LoRA。</div></div>');
+  }
+
+  parts.push(`<div class="row">
+    <div class="spacer"></div>
+    <button class="ghost" id="inspclose">關掉</button>
+    <button class="go" id="inspapply">套用到下面的設定</button>
+  </div>`);
+
+  $('#insp').innerHTML = parts.join('');
+  $('#inspclose').onclick = () => { $('#insp').classList.add('hidden'); INSP = null; };
+  const dl = $('#getTagger');
+  if (dl) dl.onclick = () => document.querySelector('.tabs button[data-tab="mdl"]').click();
+  $('#inspapply').onclick = applyInspect;
+}
+
+function applyInspect() {
+  const d = INSP, m = d.metadata || {};
+  const tagged = $('#insptags');
+  // The file's own prompt is exact; the tagger's is a description. Prefer the
+  // exact one, but let an edited tag list win if that is all there is.
+  const prompt = m.prompt || (tagged ? tagged.value : '');
+  if (prompt) { $('#iprompt').value = prompt; $('#iprompt').dataset.touched = '1'; }
+  if (m.negative) { $('#inegative').value = m.negative; $('#inegative').dataset.touched = '1'; }
+
+  const want = d.suggest_model || '';
+  const byFile = IMG.models.find((x) => m.model &&
+    x.file_name && x.file_name.toLowerCase() === String(m.model).toLowerCase());
+  const pick = byFile ? byFile.id : (IMG.models.some((x) => x.id === want) ? want : '');
+  if (pick) { $('#imodel').value = pick; onImageModelChange(); }
+
+  setIfPresent('isteps', m.steps);
+  setIfPresent('icfg', m.cfg);
+  setIfPresent('iclip', m.clip_skip);
+  setIfPresent('iseed', m.seed);
+  if (m.sampler && IMG.samplers.includes(m.sampler)) $('#isampler').value = m.sampler;
+  if (m.scheduler && IMG.schedulers.includes(m.scheduler)) $('#ischeduler').value = m.scheduler;
+  if (m.width && m.height) {
+    $('#isize').value = IMG.customSize; syncCustomSize();
+    setIfPresent('iwidth', m.width); setIfPresent('iheight', m.height);
+  }
+  // Tick any LoRA the file named that we actually have.
+  const have = new Map((d.loras || []).filter((l) => l.installed)
+    .map((l) => [l.installed_as, l]));
+  $('#iloras').querySelectorAll('.lora').forEach((el) => {
+    const hit = have.get(el.dataset.n);
+    if (!hit) return;
+    el.querySelector('input[type=checkbox]').checked = true;
+    const sm = el.querySelector('.sm'), sc = el.querySelector('.sc');
+    sm.value = hit.strength; sc.value = hit.strength_clip;
+    el.querySelector('.vm').textContent = sm.value;
+    el.querySelector('.vc').textContent = sc.value;
+  });
+  $('#istatus').textContent = (m.source ? '參數已帶入。' : '提詞已帶入。')
+    + '按生成就會照這組設定重畫。';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ---------- comic mode ---------- */
