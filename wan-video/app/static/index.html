@@ -107,6 +107,28 @@
   .words { display:flex; gap:4px; flex-wrap:wrap; }
   .words span { font-size:10.5px; background:var(--panel2); padding:1px 6px; border-radius:6px; }
 
+  /* mode switch inside the image tab */
+  .modes { display:inline-flex; gap:2px; background:var(--panel2); border:1px solid var(--line);
+    border-radius:10px; padding:3px; margin-bottom:12px; }
+  .modes button { background:none; border:0; color:var(--muted); padding:6px 16px; font:500 13px inherit;
+    cursor:pointer; border-radius:8px; }
+  .modes button.on { background:var(--accent); color:#0b0d16; }
+
+  /* comic panel editor */
+  .panels { display:flex; gap:14px; margin-top:12px; align-items:flex-start; flex-wrap:wrap; }
+  .panels #cpanels { flex:1; min-width:280px; display:flex; flex-direction:column; gap:8px; }
+  .panels .pv { width:290px; flex:none; }
+  .panels .pv img { width:100%; border:1px solid var(--line); border-radius:8px; background:#fff;
+    display:block; }
+  .pnl { border:1px solid var(--line); border-radius:10px; padding:9px 10px; background:var(--panel2); }
+  .pnl .hd { display:flex; align-items:center; gap:8px; font-size:12px; color:var(--muted);
+    margin-bottom:6px; }
+  .pnl .hd b { color:var(--text); font-size:13px; }
+  .pnl textarea { min-height:46px; margin-top:0; background:var(--panel); }
+  .pnl .bub { display:flex; gap:6px; margin-top:6px; align-items:center; }
+  .pnl .bub input[type=text] { flex:1; }
+  .pnl .bub select { flex:none; }
+
   /* lora picker rows */
   .lora { display:flex; align-items:center; gap:9px; font-size:13px; padding:4px 0; }
   .lora input[type=range] { flex:1; max-width:120px; accent-color:var(--accent); }
@@ -224,15 +246,20 @@
 
   <!-- ================= 圖片 ================= -->
   <div id="tab-img" class="hidden">
+    <div class="modes">
+      <button class="on" data-mode="plain">單張圖片</button>
+      <button data-mode="comic">漫畫分鏡</button>
+    </div>
     <div class="card">
       <div class="row">
         <label class="f" style="flex:1;min-width:280px">底模
           <select id="imodel"></select>
         </label>
-        <label class="f">尺寸<select id="isize"></select></label>
-        <label class="f">一次幾張
+        <label class="f plain-only">尺寸<select id="isize"></select></label>
+        <label class="f plain-only">一次幾張
           <input type="number" id="ibatch" value="1" min="1" max="16" style="width:76px">
         </label>
+        <label class="f comic-only">分鏡<select id="clayout"></select></label>
         <label class="f">種子
           <input type="number" id="iseed" value="-1" min="-1" style="width:104px">
         </label>
@@ -264,7 +291,30 @@
         </div>
       </div>
 
-      <textarea id="iprompt" placeholder="想畫什麼？"></textarea>
+      <div id="comicbox" class="comic-only hidden">
+        <div class="note" id="clayoutnote"></div>
+        <textarea id="cshared" placeholder="共用提詞：每一格都會加上，用來固定角色和畫風。例如 1girl, long black hair, red dress, school classroom" style="min-height:52px"></textarea>
+        <div class="row" style="margin-top:4px">
+          <label class="chk"><input type="checkbox" id="ccolor" checked> 全彩</label>
+          <span class="s" id="ccolorhelp"></span>
+        </div>
+        <div class="panels">
+          <div id="cpanels"></div>
+          <div class="pv">
+            <img id="cpreview" alt="分鏡預覽">
+            <div class="s" style="margin-top:6px">上面是版面預覽（灰色是畫面會出現的地方），對白位置改了會馬上更新。</div>
+            <div class="row" style="margin-top:6px">
+              <label class="f">格線粗細 <input type="number" id="cborder" value="5" min="0" max="20" style="width:70px"></label>
+              <label class="f">格子間距 <input type="number" id="cgutter" value="18" min="0" max="80" style="width:70px"></label>
+              <label class="f">成品寬度 <input type="number" id="cwidth" value="1600" min="768" max="3000" step="100" style="width:86px"></label>
+            </div>
+          </div>
+        </div>
+        <div id="cfontwarn" class="banner tight hidden"></div>
+        <div class="note" id="cshots"></div>
+      </div>
+
+      <textarea id="iprompt" class="plain-only" placeholder="想畫什麼？"></textarea>
       <div class="row" style="margin-top:6px;gap:8px">
         <label class="chk"><input type="checkbox" id="iprefix" checked>
           <span id="iprefixlabel">自動加上品質標籤</span></label>
@@ -666,7 +716,7 @@ const TAG = { queued:['排隊中',''], running:['生成中','run'], done:['完�
 function itemHtml(j, big) {
   const [text, cls] = TAG[j.status] || [j.status, ''];
   const auto = P.get('autoplay', false);
-  const isImage = j.kind === 'image';
+  const isImage = j.kind === 'image' || j.kind === 'comic';
   let media = '<div class="media"><span class="s">（沒有縮圖）</span></div>';
   if (j.output && isImage) {
     // Images are images: a <video> tag renders a blank player for a PNG.
@@ -1240,6 +1290,134 @@ function renderEmbeddings() {
   });
 }
 
+/* ---------- comic mode ---------- */
+let COMIC = { layouts: [], help: {}, shots: [], anchors: [], font: true, chosen: null };
+
+function comicMode() { return document.querySelector('.modes button.on').dataset.mode === 'comic'; }
+
+function applyMode() {
+  const on = comicMode();
+  document.querySelectorAll('#tab-img .plain-only').forEach((el) => el.classList.toggle('hidden', on));
+  document.querySelectorAll('#tab-img .comic-only').forEach((el) => el.classList.toggle('hidden', !on));
+  $('#igo').textContent = on ? '畫這一頁' : '生成';
+  P.set('imode', on ? 'comic' : 'plain');
+  if (on) { renderPanels(); refreshComicPreview(); }
+}
+document.querySelectorAll('.modes button').forEach((b) => b.onclick = () => {
+  document.querySelectorAll('.modes button').forEach((x) => x.classList.toggle('on', x === b));
+  applyMode();
+});
+
+async function refreshComicLayouts() {
+  try {
+    const d = await (await fetch('/api/comic/layouts')).json();
+    COMIC.layouts = d.layouts; COMIC.help = d.help || {}; COMIC.shots = d.shots || [];
+    COMIC.anchors = d.anchors || []; COMIC.font = !!d.font;
+    const keep = P.get('clayout', 'four-grid');
+    $('#clayout').innerHTML = COMIC.layouts.map((l) =>
+      `<option value="${esc(l.id)}">${esc(l.label)}</option>`).join('');
+    if (COMIC.layouts.some((l) => l.id === keep)) $('#clayout').value = keep;
+    $('#ccolorhelp').textContent = COMIC.help.color || '';
+    $('#cshots').innerHTML = '<b>鏡頭怎麼換</b>：'
+      + COMIC.shots.map(([tag, why]) => `<div>· <code>${esc(tag)}</code> —— ${esc(why)}</div>`).join('');
+    $('#cfontwarn').classList.toggle('hidden', COMIC.font);
+    if (!COMIC.font) {
+      $('#cfontwarn').innerHTML = '找不到中文字型，<b>對白會被略過</b>。'
+        + '這在 Windows 上不會發生（系統自帶微軟正黑體）。';
+    }
+    onLayoutChange();
+  } catch {}
+}
+
+function currentLayout() {
+  return COMIC.layouts.find((l) => l.id === $('#clayout').value) || COMIC.layouts[0];
+}
+
+function onLayoutChange() {
+  const l = currentLayout();
+  if (!l) return;
+  COMIC.chosen = l;
+  P.set('clayout', l.id);
+  $('#clayoutnote').innerHTML = `<b>${l.count} 格</b> · ${esc(l.note || '')}`
+    + `<div style="margin-top:4px">${esc(COMIC.help.layout || '')}</div>`;
+  renderPanels();
+  refreshComicPreview();
+}
+$('#clayout').onchange = onLayoutChange;
+
+function renderPanels() {
+  const l = currentLayout();
+  if (!l) return;
+  const box = $('#cpanels');
+  // Keep what is already typed when the layout changes, by panel index.
+  const prev = [...box.querySelectorAll('.pnl')].map((el) => ({
+    text: el.querySelector('textarea').value,
+    bubble: el.querySelector('.bt').value,
+    at: el.querySelector('.ba').value,
+  }));
+  const anchors = COMIC.anchors.length ? COMIC.anchors
+    : ['top-left','top','top-right','bottom-left','bottom','bottom-right'];
+  const AT_LABEL = { 'top-left':'左上','top':'上中','top-right':'右上',
+                     'bottom-left':'左下','bottom':'下中','bottom-right':'右下' };
+  box.innerHTML = Array.from({ length: l.count }, (_, i) => {
+    const p = prev[i] || { text:'', bubble:'', at: i % 2 ? 'bottom-right' : 'top-left' };
+    return `<div class="pnl" data-i="${i}">
+      <div class="hd"><b>第 ${i + 1} 格</b>
+        <span>${['起','承','轉','合'][i] && l.count === 4 ? ['起','承','轉','合'][i] : ''}</span></div>
+      <textarea placeholder="這一格畫什麼？例如 close-up, surprised expression, blushing">${esc(p.text)}</textarea>
+      <div class="bub">
+        <span class="s">對白</span>
+        <input type="text" class="bt" placeholder="（可留空）" value="${esc(p.bubble)}">
+        <select class="ba">${anchors.map((a) =>
+          `<option value="${a}"${a === p.at ? ' selected' : ''}>${AT_LABEL[a] || a}</option>`).join('')}</select>
+      </div>
+    </div>`;
+  }).join('');
+  box.querySelectorAll('.bt, .ba').forEach((el) => {
+    el.oninput = el.onchange = () => schedulePreview();
+  });
+}
+
+function comicPanels() {
+  return [...$('#cpanels').querySelectorAll('.pnl')].map((el) => el.querySelector('textarea').value);
+}
+function comicBubbles() {
+  return [...$('#cpanels').querySelectorAll('.pnl')].map((el) => {
+    const text = el.querySelector('.bt').value.trim();
+    return text ? [{ text, at: el.querySelector('.ba').value }] : [];
+  });
+}
+
+let previewTimer = null;
+function schedulePreview() {
+  clearTimeout(previewTimer);
+  previewTimer = setTimeout(refreshComicPreview, 350);
+}
+async function refreshComicPreview() {
+  const l = currentLayout();
+  if (!l) return;
+  try {
+    const r = await fetch('/api/comic/preview', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        layout: l.id, bubbles: comicBubbles(),
+        gutter: +$('#cgutter').value || 0, border: +$('#cborder').value || 0,
+      }),
+    });
+    if (!r.ok) return;
+    const blob = await r.blob();
+    const old = $('#cpreview').dataset.url;
+    if (old) URL.revokeObjectURL(old);
+    const url = URL.createObjectURL(blob);
+    $('#cpreview').dataset.url = url;
+    $('#cpreview').src = url;
+  } catch {}
+}
+['cgutter','cborder'].forEach((id) => {
+  const el = document.getElementById(id);
+  if (el) el.oninput = schedulePreview;
+});
+
 const DENOISE_WORDS = [
   [0.35, '只改材質細節'], [0.5, '換風格、保構圖'], [0.65, '保構圖換風格'],
   [0.8, '大幅改動'], [1.01, '幾乎整張重畫'],
@@ -1461,13 +1639,26 @@ function imagePayload() {
 
 $('#igo').onclick = async () => {
   if (!IMG.chosen) return;
+  const comic = comicMode();
   const payload = imagePayload();
-  if (!payload.prompt && !payload.init_image) {
+  if (comic) {
+    const l = currentLayout();
+    if (!l) return;
+    Object.assign(payload, {
+      layout: l.id, panels: comicPanels(), shared: $('#cshared').value,
+      bubbles: comicBubbles(), full_color: $('#ccolor').checked,
+      gutter: +$('#cgutter').value || 0, border: +$('#cborder').value || 0,
+      page_width: +$('#cwidth').value || 1600,
+    });
+    if (!payload.panels.some((p) => p.trim()) && !payload.shared.trim()) {
+      $('#istatus').textContent = '每一格都是空的 —— 至少寫一格，或填共用提詞。'; return;
+    }
+  } else if (!payload.prompt && !payload.init_image) {
     $('#istatus').textContent = '提詞是空的 —— 沒放來源圖的話，畫面全靠提詞。'; return;
   }
   $('#igo').disabled = true;
   try {
-    const r = await fetch('/api/image/generate', {
+    const r = await fetch(comic ? '/api/comic/generate' : '/api/image/generate', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify(payload),
     });
@@ -1482,7 +1673,8 @@ $('#igo').onclick = async () => {
 let imgSig = '';
 async function refreshImageJobs(force) {
   try {
-    const d = await (await fetch('/api/jobs?kind=image&limit=12')).json();
+    const d = await (await fetch('/api/jobs?limit=14')).json();
+    d.jobs = d.jobs.filter((j) => j.kind === 'image' || j.kind === 'comic');
     const sig = JSON.stringify(d) + P.get('autoplay', false);
     if (sig === imgSig && !force) return;
     imgSig = sig; IMG.jobs = d.jobs;
@@ -1647,9 +1839,13 @@ async function boot() {
 
   await refreshModels();
   await refreshImageModels();
+  await refreshComicLayouts();
   await refreshLoras(true);
   await refreshJobs(true);
   refreshDownloads(); refreshStats(); renderUpscalers();
+  if (P.get('imode', 'plain') === 'comic') {
+    document.querySelector('.modes button[data-mode="comic"]').click();
+  } else { applyMode(); }
   // Cached server-side for six hours, so this costs nothing on a reload and
   // the answer is waiting by the time anyone opens the LoRA tab.
   checkUpdates(false);

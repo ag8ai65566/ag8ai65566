@@ -1166,6 +1166,59 @@ async def test_new_endpoints() -> None:
             check(not (TMP / "ep-in" / f"{job['id']}.png").is_file(),
                   "deleting the job cleans up its source image")
 
+            # -- comics --------------------------------------------------------
+            async with s.get(f"{base}/api/comic/layouts") as r:
+                cat = await r.json()
+            check(len(cat["layouts"]) >= 8, "layouts are offered")
+            check(all(len(l["panels"]) == l["count"] for l in cat["layouts"]),
+                  "each layout reports as many rectangles as panels")
+
+            async with s.post(f"{base}/api/comic/preview", json={
+                "layout": "4koma", "gutter": 18, "border": 5,
+                "bubbles": [[{"text": "早安", "at": "top-left"}], [], [], []],
+            }) as r:
+                png = await r.read()
+            check(r.status == 200 and png[:8] == b"\x89PNG\r\n\x1a\n",
+                  f"the layout preview renders a PNG ({r.status})")
+            preview = Image.open(io.BytesIO(png))
+            check(preview.height > preview.width * 2,
+                  f"…with 4koma's tall page shape {preview.size}")
+
+            for payload, why in [
+                ({"model": "illustrious", "layout": "nope", "panels": ["x"]}, "an unknown layout"),
+                ({"model": "illustrious", "layout": "four-grid", "panels": ["", "", "", ""]},
+                 "a page with nothing in it"),
+                ({"model": "illustrious", "layout": "four-grid", "panels": ["a (b:1.2 c"]},
+                 "a broken weight in a panel"),
+            ]:
+                async with s.post(f"{base}/api/comic/generate", json=payload) as r:
+                    check(r.status == 400, f"{why} is refused ({r.status})")
+
+            async with s.post(f"{base}/api/comic/generate", json={
+                "model": "illustrious", "layout": "four-grid",
+                "shared": "1girl, red dress",
+                "panels": ["wide shot", "close-up", "from above", "smiling"],
+                "bubbles": [[{"text": "早安", "at": "top-left"}], [], [], []],
+                "full_color": True, "seed": 11, "steps": 6,
+            }) as r:
+                job = await r.json()
+            check(r.status == 200, f"a comic submits ({r.status})")
+            check(job["kind"] == "comic", "…as a comic record")
+            check(job["length"] == 4, "…knowing how many panels it has")
+            check("monochrome" in job["negative"],
+                  "…with full colour enforced through the negative prompt")
+            check(job["settings"]["layout"] == "four-grid" and
+                  len(job["settings"]["panels"]) == 4,
+                  "…and the panels stored for a re-run")
+
+            async with s.post(f"{base}/api/comic/generate", json={
+                "model": "illustrious", "layout": "two-v", "panels": ["a", "b"],
+                "full_color": False,
+            }) as r:
+                grey = await r.json()
+            check("monochrome" not in grey["negative"],
+                  "black-and-white pages stop excluding monochrome")
+
             # -- LoRA previews -----------------------------------------------
             async with s.get(f"{base}/api/loras") as r:
                 before = {l["name"]: l for l in (await r.json())["loras"]}
@@ -1262,6 +1315,142 @@ async def test_video_post() -> None:
               "upscalers land where ComfyUI looks for them")
         check({i.file.folder for i in upscalers.INTERPOLATORS} == {"frame_interpolation"},
               "interpolators land where ComfyUI looks for them")
+    finally:
+        await runner.cleanup()
+
+
+async def test_comics() -> None:
+    """Panel layouts, the graph they build, and the page they compose into."""
+    import comics
+    import images
+    from comfy_client import ComfyClient
+
+    section("comics")
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    try:
+        client = ComfyClient(url)
+        nodes = await client.node_classes()
+        model = images.get("illustrious")
+
+        # -- layout geometry ------------------------------------------------
+        for layout in comics.LAYOUTS:
+            total = sum(p.w * p.h for p in layout.panels)
+            check(abs(total - 1.0) < 0.001, f"{layout.id} panels tile the page exactly ({total})")
+            for p in layout.panels:
+                inside = 0 <= p.x and 0 <= p.y and p.x + p.w <= 1.001 and p.y + p.h <= 1.001
+                check(inside, f"{layout.id} panel stays on the page")
+            for w, h in (comics.panel_size(p, layout.aspect) for p in layout.panels):
+                mp = w * h / 1e6
+                check(0.9 < mp < 1.15, f"{layout.id} panel is ~1MP, not off-distribution ({mp:.2f})")
+                check(w % 8 == 0 and h % 8 == 0, f"{layout.id} panel size is a multiple of 8")
+
+        # A tall slot must get a tall render and a wide slot a wide one.
+        wide = comics.panel_size(comics.Panel(0, 0, 1, 0.25), 2 / 3)
+        tall = comics.panel_size(comics.Panel(0, 0, 0.25, 1), 2 / 3)
+        check(wide[0] > wide[1], f"a wide slot renders landscape {wide}")
+        check(tall[1] > tall[0], f"a tall slot renders portrait {tall}")
+
+        # -- graph ----------------------------------------------------------
+        for layout in comics.LAYOUTS:
+            settings = images.defaults_for(model)
+            settings.loras = [("my_style.safetensors", 0.7, 0.5)]
+            settings.freeu, settings.pag, settings.tiled_vae = True, 3.0, True
+            panels = [
+                (comics.scaffold("close-up", "1girl", "score_9"),
+                 *comics.panel_size(p, layout.aspect))
+                for p in layout.panels
+            ]
+            g = images.build_comic(
+                model, settings, panels=panels,
+                negative=comics.negative_for(model.negative), seed=5,
+                available_nodes=nodes, filename_prefix="comic/t",
+            )
+            problems = await client.validate(g)
+            check(problems == [], f"{layout.id} graph validates {problems[:1]}")
+            check(len(nodes_of(g, "SaveImage")) == layout.count,
+                  f"{layout.id} saves one file per panel")
+            check(len(nodes_of(g, "EmptyLatentImage")) == layout.count,
+                  f"{layout.id} gives every panel its own latent")
+            # The expensive parts are shared, not repeated per panel.
+            check(len(nodes_of(g, "CheckpointLoaderSimple")) == 1,
+                  f"{layout.id} loads the checkpoint once")
+            check(len(nodes_of(g, "LoraLoader")) == 1, f"{layout.id} loads the LoRA once")
+            check(len(nodes_of(g, "FreeU_V2")) == 1, f"{layout.id} patches the model once")
+            seeds = [n["inputs"]["seed"] for n in nodes_of(g, "KSampler")]
+            check(len(set(seeds)) == layout.count,
+                  f"{layout.id} varies the seed per panel, so it is not one image N times")
+            prefixes = [n["inputs"]["filename_prefix"] for n in nodes_of(g, "SaveImage")]
+            check(len(set(prefixes)) == layout.count, f"{layout.id} panel files do not collide")
+            check(prefixes == sorted(prefixes), f"{layout.id} filenames sort into page order")
+
+        # -- prompt scaffolding ----------------------------------------------
+        full = comics.negative_for(model.negative, full_color=True)
+        grey = comics.negative_for(model.negative, full_color=False)
+        check("monochrome" in full and "greyscale" in full,
+              "full colour works by excluding monochrome (52% of danbooru comics are grey)")
+        check("monochrome" not in grey, "turning colour off stops excluding it")
+        check("speech bubble" in comics.negative_for("", draw_text=True),
+              "the model is told not to letter, because the app letters afterwards")
+        check("speech bubble" not in comics.negative_for("", draw_text=False),
+              "…unless the user wants the model's own lettering")
+        built = comics.scaffold("close-up", "1girl, red dress", "score_9")
+        check(built.startswith("score_9"), "the model's own prefix stays first")
+        check("comic" in built and "1girl" in built and "close-up" in built,
+              "panel prompt = prefix + comic style + shared + panel")
+        check(comics.scaffold("x", "") == f"{comics.PANEL_STYLE}, x", "empty parts are dropped")
+
+        # -- page composition -------------------------------------------------
+        layout = comics.get("four-grid")
+        art = [Image.new("RGB", comics.panel_size(p, layout.aspect), (i * 40, 90, 120))
+               for i, p in enumerate(layout.panels)]
+        page = comics.compose(layout, art, style=comics.PageStyle(width=1200))
+        check(page.size == (1200, 1800), f"page follows the layout aspect {page.size}")
+        check(page.getpixel((3, 3)) == (255, 255, 255), "the page has a margin")
+
+        # Panels must be cropped to fill, never letterboxed - a grey bar in a
+        # comic panel is the tell that the art did not fit.
+        squashed = comics.compose(
+            layout, [Image.new("RGB", (1536, 640), (200, 30, 30))] * 4,
+            style=comics.PageStyle(width=1200, border=0, gutter=0, margin=0),
+        )
+        check(squashed.getpixel((300, 400)) == (200, 30, 30),
+              "a wrong-shaped panel is cropped to fill, not letterboxed")
+
+        # Missing art still yields a page, so a partial render is inspectable.
+        partial = comics.compose(layout, art[:2], style=comics.PageStyle(width=800))
+        check(partial.size == (800, 1200), "a partial page still composes")
+
+        # Spacing is relative to page width, so the same numbers look the same.
+        small = comics.compose(layout, art, style=comics.PageStyle(width=600))
+        big = comics.compose(layout, art, style=comics.PageStyle(width=2400))
+        check(big.size[0] == 4 * small.size[0], "page scales cleanly")
+
+        # -- lettering --------------------------------------------------------
+        if comics.find_font(20):
+            plain = comics.compose(layout, art, style=comics.PageStyle(width=1000))
+            lettered = comics.compose(
+                layout, art,
+                [[comics.Bubble("這是對白，測試中文", "top-left")], [], [], []],
+                comics.PageStyle(width=1000),
+            )
+            check(list(plain.getdata()) != list(lettered.getdata()),
+                  "a bubble actually changes the page")
+            white_plain = sum(1 for p in plain.getdata() if p == (255, 255, 255))
+            white_bubble = sum(1 for p in lettered.getdata() if p == (255, 255, 255))
+            check(white_bubble > white_plain + 5000, "the bubble is drawn, not just the text")
+            empty = comics.compose(layout, art, [[comics.Bubble("   ", "top")], [], [], []],
+                                   comics.PageStyle(width=1000))
+            check(list(empty.getdata()) == list(plain.getdata()),
+                  "a blank bubble draws nothing")
+        else:
+            check(True, "no CJK font here; lettering checks skipped")
+
+        check(comics._wrap("", 10) == [], "empty text wraps to nothing")
+        check(len(comics._wrap("一二三四五六七八九十", 5)) == 2, "CJK wraps by character count")
+        check(all(len(l) <= 20 for l in comics._wrap("the quick brown fox jumps over it", 8)),
+              "Latin wraps on word boundaries")
+        check(len(comics._wrap("x\n" * 40, 10)) <= 6, "runaway text is capped")
     finally:
         await runner.cleanup()
 
@@ -1961,6 +2150,7 @@ async def main() -> int:
     await test_image_extras()
     await test_video_post()
     await test_new_endpoints()
+    await test_comics()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()

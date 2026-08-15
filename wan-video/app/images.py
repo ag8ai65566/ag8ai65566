@@ -310,6 +310,128 @@ def defaults_for(model: ImageModel) -> ImageSettings:
     )
 
 
+def build_comic(
+    model: ImageModel,
+    settings: ImageSettings,
+    *,
+    panels: list[tuple[str, int, int]],
+    negative: str,
+    seed: int,
+    available_nodes: set[str] | None = None,
+    filename_prefix: str = "comic/out",
+) -> dict:
+    """One graph that renders every panel of a page, each at its own size.
+
+    Panels are separate branches with their own SaveImage rather than one
+    batched latent, for two reasons: a batch forces every image to the same
+    dimensions, and a page wants a tall panel next to a wide one; and ImageBatch
+    could not stitch them afterwards anyway. Each panel therefore lands as its
+    own file and the page is assembled from those.
+
+    Everything before the sampler - checkpoint, LoRAs, patches, CLIP skip - is
+    built once and shared, so N panels cost one model load, not N.
+    """
+    nodes: dict[str, dict] = {}
+    n = 0
+    have = available_nodes
+
+    def add(class_type: str, inputs: dict, title: str = "") -> str:
+        nonlocal n
+        n += 1
+        nodes[str(n)] = {
+            "class_type": class_type,
+            "inputs": inputs,
+            "_meta": {"title": title or class_type},
+        }
+        return str(n)
+
+    def supported(class_type: str) -> bool:
+        return have is None or class_type in have
+
+    ckpt = add("CheckpointLoaderSimple", {"ckpt_name": model.file.name}, "Checkpoint")
+    model_link: list = [ckpt, 0]
+    clip_link: list = [ckpt, 1]
+    vae_link: list = [ckpt, 2]
+
+    for name, strength_model, strength_clip in settings.loras:
+        node = add(
+            "LoraLoader",
+            {
+                "model": model_link, "clip": clip_link, "lora_name": name,
+                "strength_model": strength_model, "strength_clip": strength_clip,
+            },
+            f"LoRA {name}",
+        )
+        model_link, clip_link = [node, 0], [node, 1]
+
+    if settings.freeu and supported("FreeU_V2"):
+        node = add("FreeU_V2", {"model": model_link, "b1": 1.3, "b2": 1.4,
+                                "s1": 0.9, "s2": 0.2}, "FreeU v2")
+        model_link = [node, 0]
+    if settings.pag > 0 and supported("PerturbedAttentionGuidance"):
+        node = add("PerturbedAttentionGuidance",
+                   {"model": model_link, "scale": round(settings.pag, 2)}, "PAG")
+        model_link = [node, 0]
+    if settings.rescale_cfg > 0 and supported("RescaleCFG"):
+        node = add("RescaleCFG",
+                   {"model": model_link,
+                    "multiplier": round(min(settings.rescale_cfg, 1.0), 2)}, "Rescale CFG")
+        model_link = [node, 0]
+
+    if settings.clip_skip < -1:
+        node = add("CLIPSetLastLayer",
+                   {"clip": clip_link, "stop_at_clip_layer": settings.clip_skip}, "CLIP skip")
+        clip_link = [node, 0]
+
+    if supported("VAELoader") and any(f.folder == "vae" for f in model.extra_files):
+        vae_name = next(f.name for f in model.extra_files if f.folder == "vae")
+        vae_link = [add("VAELoader", {"vae_name": vae_name}, "VAE (fp16 fix)"), 0]
+
+    neg = add("CLIPTextEncode", {"clip": clip_link, "text": negative}, "Negative")
+    can_upscale = supported("UpscaleModelLoader") and supported("ImageUpscaleWithModel")
+
+    for index, (text, width, height) in enumerate(panels):
+        tag = f" P{index + 1}"
+        pos = add("CLIPTextEncode", {"clip": clip_link, "text": text}, f"Prompt{tag}")
+        latent = add("EmptyLatentImage",
+                     {"width": width, "height": height, "batch_size": 1}, f"Latent{tag}")
+        # Each panel gets its own seed so a page is not four variations of one
+        # composition, but a fixed page seed still reproduces the whole page.
+        sampled = add(
+            "KSampler",
+            {
+                "model": model_link, "seed": seed + index, "steps": settings.steps,
+                "cfg": settings.cfg, "sampler_name": settings.sampler,
+                "scheduler": settings.scheduler, "positive": [pos, 0],
+                "negative": [neg, 0], "latent_image": [latent, 0], "denoise": 1.0,
+            },
+            f"Sample{tag}",
+        )
+        if settings.tiled_vae and supported("VAEDecodeTiled"):
+            decoded = add(
+                "VAEDecodeTiled",
+                {"samples": [sampled, 0], "vae": vae_link,
+                 "tile_size": max(64, settings.tile_size), "overlap": 64,
+                 "temporal_size": 64, "temporal_overlap": 8},
+                f"Decode{tag}",
+            )
+        else:
+            decoded = add("VAEDecode", {"samples": [sampled, 0], "vae": vae_link},
+                          f"Decode{tag}")
+        link: list = [decoded, 0]
+        if settings.upscaler and can_upscale:
+            loader = add("UpscaleModelLoader", {"model_name": settings.upscaler},
+                         f"Upscale model{tag}")
+            link = [add("ImageUpscaleWithModel",
+                        {"upscale_model": [loader, 0], "image": link}, f"Upscale{tag}"), 0]
+        # Zero-padded so the panels sort back into page order on disk.
+        add("SaveImage",
+            {"images": link, "filename_prefix": f"{filename_prefix}-p{index + 1:02d}"},
+            f"Save{tag}")
+
+    return nodes
+
+
 def build(
     model: ImageModel,
     settings: ImageSettings,

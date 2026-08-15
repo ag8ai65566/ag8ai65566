@@ -21,6 +21,7 @@ import uuid
 from pathlib import Path
 
 import civitai
+import comics
 import config
 import images
 import downloader
@@ -48,7 +49,7 @@ running: set[str] = set()
 
 def model_label(record: library.Record) -> str:
     """Records span two catalogues; look in the right one."""
-    if record.kind == "image":
+    if record.kind in ("image", "comic"):
         model = images.resolve(record.model_id)
         return model.label if model else record.model_id
     model = registry.get(record.model_id)
@@ -143,7 +144,7 @@ async def worker() -> None:
 
 
 async def run_job(record: library.Record, image_bytes: bytes) -> None:
-    if record.kind == "image":
+    if record.kind in ("image", "comic"):
         return await run_image_job(record)
     model = registry.get(record.model_id)
     if model is None:
@@ -773,7 +774,105 @@ def installed_checkpoints() -> list[str]:
     return sorted(p.name for p in folder.glob("*.safetensors")) if folder.is_dir() else []
 
 
+async def run_comic_job(record: library.Record) -> None:
+    """Render every panel, then compose the page here rather than in ComfyUI."""
+    model = images.resolve(record.model_id, installed_checkpoints())
+    if model is None:
+        raise ComfyError(f"不認識的圖片模型：{record.model_id}")
+    state = image_status(model)
+    if not state["installed"]:
+        raise ComfyError(
+            f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
+            "請到「模型」分頁下載。"
+        )
+    cfg = record.settings or {}
+    layout = comics.get(str(cfg.get("layout", "")))
+    if layout is None:
+        raise ComfyError(f"不認識的分鏡：{cfg.get('layout')}")
+
+    settings = images.ImageSettings.from_dict(cfg)
+    rng = random.Random(record.seed)
+    shared = prompts.expand(str(cfg.get("shared", "")), rng)
+    raw_panels = list(cfg.get("panels") or [])
+    panels: list[tuple[str, int, int]] = []
+    for index, panel in enumerate(layout.panels):
+        text = raw_panels[index] if index < len(raw_panels) else ""
+        width, height = comics.panel_size(panel, layout.aspect)
+        panels.append(
+            (
+                comics.scaffold(
+                    prompts.expand(str(text), rng), shared,
+                    model.positive_prefix if cfg.get("use_prefix", True) else "",
+                ),
+                width,
+                height,
+            )
+        )
+
+    graph = images.build_comic(
+        model,
+        settings,
+        panels=panels,
+        negative=record.negative,
+        seed=record.seed,
+        available_nodes=await client.node_classes(),
+        filename_prefix=f"comic/{record.id}",
+    )
+    if problems := await client.validate(graph):
+        raise ComfyError("工作流程與這台 ComfyUI 不相容：\n- " + "\n- ".join(problems))
+
+    def progress(value: float) -> None:
+        record._progress = value
+        record.message = f"畫第 {min(layout.count, int(value * layout.count) + 1)}/{layout.count} 格…"
+
+    record.message = "載入模型…（第一次會比較久）"
+    files = await client.run(graph, on_progress=progress)
+    if not files:
+        raise ComfyError("ComfyUI 沒有回傳任何輸出檔案")
+
+    record.message = "拼版中…"
+    # ComfyUI returns outputs in node order, which is panel order here, but the
+    # filenames carry the index too - sort on those so a reordered response
+    # cannot silently scramble the page.
+    ordered = sorted(files, key=lambda f: f.filename)
+    art: list[Image.Image] = []
+    record.outputs = []
+    for index, f in enumerate(ordered[: layout.count]):
+        data = await client.download(f)
+        name = f"{record.id}-p{index + 1:02d}.png"
+        (config.OUTPUT_DIR / name).write_bytes(data)
+        record.outputs.append(name)
+        art.append(Image.open(io.BytesIO(data)))
+
+    bubbles = [
+        [comics.Bubble(text=str(b.get("text", "")), at=str(b.get("at", "top-left")))
+         for b in (row or []) if str(b.get("text", "")).strip()]
+        for row in (cfg.get("bubbles") or [])
+    ]
+    style = comics.PageStyle(
+        gutter=int(cfg.get("gutter", 18)),
+        border=int(cfg.get("border", 5)),
+        width=int(cfg.get("page_width", 1600)),
+        font_path=str(cfg.get("font", "")),
+    )
+    page = comics.compose(layout, art, bubbles, style)
+    page_name = f"{record.id}.png"
+    page.save(config.OUTPUT_DIR / page_name, "PNG")
+    # The page is the deliverable, so it leads; the panels stay available for
+    # anyone who wants to re-letter or re-crop one.
+    record.outputs.insert(0, page_name)
+    record.output = page_name
+    record.width, record.height = page.size
+
+    thumb = page.copy()
+    thumb.thumbnail((480, 480))
+    record.thumb = f"{record.id}.jpg"
+    thumb.convert("RGB").save(lib.thumbs / record.thumb, "JPEG", quality=84)
+
+
 async def run_image_job(record: library.Record) -> None:
+    if record.kind == "comic":
+        return await run_comic_job(record)
     model = images.resolve(record.model_id, installed_checkpoints())
     if model is None:
         raise ComfyError(f"不認識的圖片模型：{record.model_id}")
@@ -1164,6 +1263,128 @@ async def download_interpolator(interp_id: str) -> JSONResponse:
     return JSONResponse(
         _queue_single(f"interp:{chosen.id}", f"補幀模型 · {chosen.label}", chosen.file)
     )
+
+
+@app.get("/api/comic/layouts")
+async def comic_layouts() -> JSONResponse:
+    return JSONResponse(
+        {
+            "layouts": [comics.public(l) for l in comics.LAYOUTS],
+            "help": comics.HELP,
+            "shots": [list(pair) for pair in comics.SHOT_HINTS],
+            "anchors": list(comics.ANCHORS),
+            "max_panels": comics.MAX_PANELS,
+            # Without a CJK-capable font the bubbles have to be skipped, so the
+            # UI needs to know before the user types dialogue into them.
+            "font": bool(comics.find_font(20)),
+            "color_negative": comics.COLOR_NEGATIVE,
+        }
+    )
+
+
+@app.post("/api/comic/generate")
+async def comic_generate(payload: dict = Body(...)) -> JSONResponse:
+    model = images.resolve(str(payload.get("model", "")), installed_checkpoints())
+    if model is None:
+        raise HTTPException(400, f"不認識的圖片模型：{payload.get('model')}")
+    state = image_status(model)
+    if not state["installed"]:
+        raise HTTPException(
+            400,
+            f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
+            "請到「模型」分頁下載，或改選已安裝的。",
+        )
+    layout = comics.get(str(payload.get("layout", "four-grid")))
+    if layout is None:
+        raise HTTPException(400, f"不認識的分鏡：{payload.get('layout')}")
+
+    panels = [str(p or "") for p in (payload.get("panels") or [])][: layout.count]
+    shared = str(payload.get("shared", ""))
+    if not any(p.strip() for p in panels) and not shared.strip():
+        raise HTTPException(400, "每一格都是空的 —— 至少寫一格要畫什麼，或填共用提詞")
+    for text in [*panels, shared]:
+        if complaint := prompts.weights_ok(text):
+            raise HTTPException(400, complaint)
+
+    settings = images.ImageSettings.from_dict(
+        {
+            **images.defaults_for(model).to_dict(),
+            **{k: v for k, v in payload.items() if v is not None},
+            "batch": 1,
+            "loras": parse_image_loras(payload.get("loras") or []),
+        }
+    )
+    if settings.upscaler and settings.upscaler not in installed_upscalers():
+        raise HTTPException(400, f"還沒下載放大模型 {settings.upscaler}，請到「模型」分頁下載")
+
+    full_color = bool(payload.get("full_color", True))
+    negative = comics.negative_for(
+        str(payload["negative"]) if "negative" in payload else model.negative,
+        full_color=full_color,
+        # Lettering is drawn afterwards, so the model is told not to attempt it -
+        # unless the user wants the model's own (unreadable) sound effects.
+        draw_text=not bool(payload.get("model_text", False)),
+    )
+    seed = int(payload.get("seed", -1))
+    bubbles = payload.get("bubbles") or []
+
+    record = library.Record(
+        id=uuid.uuid4().hex[:12],
+        model_id=model.id,
+        kind="comic",
+        prompt=" / ".join(p.strip() for p in panels if p.strip()) or shared,
+        prompt_raw=" / ".join(panels),
+        negative=negative,
+        negative_custom=True,
+        seed=seed if seed >= 0 else random.randint(0, 2**31 - 1),
+        tier=layout.label,
+        length=layout.count,
+        loras=[f"{n}:{m}" for n, m, _ in settings.loras],
+        settings={
+            **settings.to_dict(),
+            "layout": layout.id,
+            "panels": panels,
+            "shared": shared,
+            "bubbles": bubbles,
+            "full_color": full_color,
+            "use_prefix": bool(payload.get("use_prefix", True)),
+            "gutter": max(0, min(int(payload.get("gutter", 18)), 80)),
+            "border": max(0, min(int(payload.get("border", 5)), 20)),
+            "page_width": max(768, min(int(payload.get("page_width", 1600)), 3000)),
+        },
+    )
+    lib.add(record)
+    queue.put_nowait((record.id, b""))
+    return JSONResponse(public(record))
+
+
+@app.post("/api/comic/preview")
+async def comic_preview(payload: dict = Body(...)) -> FileResponse:
+    """The page with placeholder panels, so the layout can be judged instantly.
+
+    Rendering four panels takes minutes; deciding whether the dialogue fits
+    should not. This draws the real geometry and the real lettering with grey
+    boxes where the art will go.
+    """
+    layout = comics.get(str(payload.get("layout", "four-grid")))
+    if layout is None:
+        raise HTTPException(400, f"不認識的分鏡：{payload.get('layout')}")
+    bubbles = [
+        [comics.Bubble(text=str(b.get("text", "")), at=str(b.get("at", "top-left")))
+         for b in (row or []) if str(b.get("text", "")).strip()]
+        for row in (payload.get("bubbles") or [])
+    ]
+    style = comics.PageStyle(
+        gutter=max(0, min(int(payload.get("gutter", 18)), 80)),
+        border=max(0, min(int(payload.get("border", 5)), 20)),
+        width=900,
+    )
+    page = comics.compose(layout, [], bubbles, style)
+    config.INBOX_DIR.mkdir(parents=True, exist_ok=True)
+    target = config.INBOX_DIR / "comic-preview.png"
+    page.save(target, "PNG")
+    return FileResponse(target, media_type="image/png",
+                        headers={"Cache-Control": "no-store"})
 
 
 @app.post("/api/prompt/preview")
