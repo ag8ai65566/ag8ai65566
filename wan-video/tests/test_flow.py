@@ -2738,6 +2738,186 @@ async def test_comics() -> None:
         await runner.cleanup()
 
 
+async def test_charpacks() -> None:
+    """Character packs: a LoRA's whole cast turned into a one-click prompt.
+
+    The data is transcribed from a model page, so the checks that matter are
+    about the transcription staying usable: every character reachable from a
+    group, every costume carrying tags, and the parentheses escaped - a bare
+    `(1st costume)` is ComfyUI weighting syntax, not a costume name.
+    """
+    from fastapi import HTTPException
+
+    import charpacks
+    import images
+    import server
+
+    section("character packs")
+
+    check(charpacks.PACKS, f"packs load from disk ({len(charpacks.PACKS)})")
+    for pack in charpacks.PACKS:
+        tag = pack.id
+        check(pack.file.endswith(".safetensors"), f"{tag}: names a real weight file")
+        check(pack.characters, f"{tag}: has characters")
+        keys = [c.key for c in pack.characters]
+        check(len(set(keys)) == len(keys), f"{tag}: every character key is unique")
+
+        # A character in no group is a character nobody can click.
+        grouped = [m for g in pack.groups for m in g.members]
+        check(sorted(grouped) == sorted(keys),
+              f"{tag}: every character is in exactly one group "
+              f"({sorted(set(keys) - set(grouped)) or 'all placed'})")
+        check(len(grouped) == len(set(grouped)), f"{tag}: nobody is listed twice")
+
+        for c in pack.characters:
+            check(c.costumes, f"{tag}/{c.key}: has at least one outfit")
+            labels = [k.label for k in c.costumes]
+            check(len(set(labels)) == len(labels),
+                  f"{tag}/{c.key}: outfit names are distinct ({labels})")
+            for k in c.costumes:
+                check(k.trigger.strip(), f"{tag}/{c.key}/{k.label}: has a trigger")
+                # ComfyUI parses ( ) as weighting. An unescaped costume name
+                # would quietly become a 1.1x weight on the wrong words.
+                bare = re.sub(r"\\[()]", "", k.trigger)
+                check("(" not in bare and ")" not in bare,
+                      f"{tag}/{c.key}/{k.label}: parens escaped ({k.trigger})")
+
+        if pack.wants_model:
+            check(images.get(pack.wants_model) is not None,
+                  f"{tag}: wants a base model this app actually has ({pack.wants_model})")
+
+    # -- the Hololive pack in particular -------------------------------------
+    holo = charpacks.get("hololive-collection")
+    check(holo is not None, "the Hololive pack is there")
+    check(holo.wants_model == "pony", f"…and says it needs Pony ({holo.wants_model})")
+    check(holo.size == 913775292, f"…with the size the CivitAI API reported ({holo.size})")
+    check(len(holo.characters) == 75, f"75 members ({len(holo.characters)})")
+    check(sum(len(c.costumes) for c in holo.characters) == 319,
+          f"319 outfits ({sum(len(c.costumes) for c in holo.characters)})")
+    # Groups run in debut order, which is the whole reason for grouping at all.
+    order = [g.id for g in holo.groups]
+    check(order[:4] == ["jp-gen0", "jp-gen1", "jp-gen2", "jp-gamers"],
+          f"generations are in debut order ({order[:4]})")
+    check(order.index("en-myth") > order.index("jp-regloss")
+          and order.index("id-gen1") > order.index("en-justice"),
+          f"JP then EN then ID ({order})")
+    for who, group in [("gawr-gura", "en-myth"), ("hoshimachi-suisei", "jp-gen0"),
+                       ("kobo-kanaeru", "id-gen3"), ("la-darknesss", "jp-gen6")]:
+        got = holo.by_key.get(who)
+        check(got is not None and got.group == group,
+              f"{who} is in {group} ({got.group if got else 'missing'})")
+    check(holo.by_key["kiryu-coco"].former, "a graduated member is flagged as such")
+    check(not holo.by_key["gawr-gura"].former, "…and an active one is not")
+
+    # -- building a prompt ---------------------------------------------------
+    built = charpacks.build_prompt(holo, "hoshimachi-suisei", 0, extra="sitting, night")
+    check(built is not None, "a prompt is built")
+    tags = [t.strip() for t in built["prompt"].split(",")]
+    check(tags[0] == "hoshimachi suisei", f"the trigger leads ({tags[0]})")
+    check(r"hoshimachi suisei \(1st costume\)" in built["prompt"], "…and names the outfit")
+    check("1girl" in tags and "virtual youtuber" in tags, "the author's scaffold is added")
+    check("blue hair" in tags, "the outfit's own tags come along")
+    check("sitting" in tags and "night" in tags, "…as does whatever the user typed")
+    # Pony reads the score tags as a global quality signal; every example on the
+    # model's own page puts them last.
+    check(tags[-1] == "very aesthetic", f"quality tags go at the end ({tags[-3:]})")
+    check(len(set(t.lower() for t in tags)) == len(tags),
+          "no tag is repeated (a doubled tag is a weight nobody asked for)")
+    check(built["lora"] == holo.file and built["strength"] == holo.strength,
+          "the prompt says which LoRA to switch on, and how hard")
+    check("score_4" in built["negative"], "the author's negative prompt comes back too")
+
+    plain = charpacks.build_prompt(holo, "hoshimachi-suisei", 0, quality=False)
+    check("score_9" not in plain["prompt"], "quality tags can be turned off")
+
+    # The scaffold says 1girl and so do some outfit lines; deduping is what
+    # stops "1girl, 1girl" becoming an accidental emphasis.
+    dupe = charpacks.build_prompt(holo, "gawr-gura", 0, extra="1girl, blue eyes, 1girl")
+    dtags = [t.strip().lower() for t in dupe["prompt"].split(",")]
+    check(dtags.count("1girl") == 1, f"a repeated tag is collapsed ({dtags.count('1girl')})")
+
+    second = charpacks.build_prompt(holo, "gawr-gura", 2)
+    check(second["costume"] == holo.by_key["gawr-gura"].costumes[2].label,
+          "a different outfit index picks a different outfit")
+    over = charpacks.build_prompt(holo, "gawr-gura", 99)
+    check(over["costume"] == holo.by_key["gawr-gura"].costumes[0].label,
+          "an out-of-range outfit falls back to the first, not a crash")
+    check(charpacks.build_prompt(holo, "nobody-here") is None, "an unknown character is None")
+
+    # -- a broken or hand-edited pack file -----------------------------------
+    folder = TMP / "packs"
+    folder.mkdir(parents=True, exist_ok=True)
+    (folder / "broken.json").write_text("{ not json", encoding="utf-8")
+    (folder / "empty.json").write_text('{"id": "e", "file": "x.safetensors"}', encoding="utf-8")
+    (folder / "nofile.json").write_text('{"id": "n", "characters": []}', encoding="utf-8")
+    (folder / "good.json").write_text(json.dumps({
+        "id": "mine", "label": "My pack", "file": "mine.safetensors",
+        "groups": [{"id": "g1", "label": "One", "members": ["a", "ghost"]}],
+        "characters": [
+            {"key": "a", "name": "A", "costumes": [{"label": "1st", "trigger": "a", "tags": "x"}]},
+            {"key": "b", "name": "B", "costumes": [{"label": "1st", "trigger": "b", "tags": "y"}]},
+            {"key": "c", "name": "C", "costumes": []},
+        ],
+        "strength": "not a number",
+    }, ensure_ascii=False), encoding="utf-8")
+    loaded = charpacks.load(folder)
+    check([p.id for p in loaded] == ["mine"],
+          f"a malformed pack file is skipped, not fatal ({[p.id for p in loaded]})")
+    mine = loaded[0]
+    check([c.key for c in mine.characters] == ["a", "b"],
+          "a character with no outfits is dropped")
+    check(mine.groups[0].members == ["a"], "a group member who does not exist is dropped")
+    check(mine.groups[-1].id == "_other" and mine.groups[-1].members == ["b"],
+          f"an ungrouped character still gets a home ({[g.id for g in mine.groups]})")
+    check(mine.strength == 0.8, f"a non-numeric strength falls back ({mine.strength})")
+
+    # -- the endpoints -------------------------------------------------------
+    listed = json.loads((await server.list_packs()).body)
+    check(listed["packs"] and listed["packs"][0]["id"] == holo.id, "the pack list is served")
+    first = listed["packs"][0]
+    for key in ("installed", "model_installed", "model_label", "groups", "characters"):
+        check(key in first, f"the list says {key}")
+    got = json.loads((await server.pack_prompt(
+        holo.id, {"character": "gawr-gura", "costume": 1})).body)
+    check("gawr gura" in got["prompt"], "the endpoint builds a prompt")
+    check("lora_installed" in got, "…and says whether the LoRA is actually here")
+    junk = json.loads((await server.pack_prompt(
+        holo.id, {"character": "gawr-gura", "costume": "nonsense"})).body)
+    check(junk["costume"] == holo.by_key["gawr-gura"].costumes[0].label,
+          "a non-numeric costume index is a fallback, not a 500")
+    bare = json.loads((await server.pack_prompt(holo.id, {"character": "gawr-gura"})).body)
+    check(bare["prompt"], "a body with no costume builds the first outfit")
+    try:
+        await server.pack_prompt("no-such-pack", {"character": "x"})
+        check(False, "an unknown pack should 404")
+    except HTTPException as exc:
+        check(exc.status_code == 404, f"an unknown pack is a 404 ({exc.status_code})")
+    try:
+        await server.pack_prompt(holo.id, {"character": "not-a-member"})
+        check(False, "an unknown character should 404")
+    except HTTPException as exc:
+        check(exc.status_code == 404, f"an unknown character is a 404 ({exc.status_code})")
+
+    # -- the page ------------------------------------------------------------
+    html = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check("/api/packs" in html, "the UI fetches the packs")
+    check("packswitch" in html and "onImageModelChange()" in html,
+          "…and can switch the base model in one click, through the real handler")
+    check("/api/packs/${encodeURIComponent(p.id)}/download" in html,
+          "…and can download the LoRA in one click")
+    check("function packExtra()" in html,
+          "switching member does not drag the previous member's tags along")
+    check("function packField()" in html and "comicMode() ? $('#cshared')" in html,
+          "in comic mode the character lands in the shared box, not the unused one")
+    guide = ROOT / "docs" / "character-packs.md"
+    check(guide.is_file(), "the character-pack tutorial exists")
+    check("docs/character-packs.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
+          "…and the README points at it")
+    text = guide.read_text(encoding="utf-8")
+    for topic in ("app/packs/", "wants_model", r"\\(", "Pony"):
+        check(topic in text, f"the tutorial covers {topic}")
+
+
 def test_prompts() -> None:
     import prompts
 
@@ -3068,6 +3248,11 @@ def test_update_script_is_atomic() -> None:
         (root / n).write_text("old\n")
     (src.parent / "README.md").write_text("NEW\n")
     (root.parent / "README.md").write_text("old\n")
+    # A folder the installed copy has never seen. Character packs arrived as a
+    # brand-new app/packs/, and Copy-Item does not create parent directories -
+    # so an update would have "succeeded" with the packs missing.
+    (src / "packs").mkdir(parents=True, exist_ok=True)
+    (src / "packs" / "hololive.json").write_text("NEW\n")
     (work / "root" / "models" / "big.safetensors").write_text("MODEL\n")
     (work / "root" / ".env").write_text("KEY=secret\n")
 
@@ -3134,6 +3319,9 @@ Write-Output ("BLOCKED=" + $blocked.Count + " FAILED=" + $failed.Count)""".repla
     check("BLOCKED=0 FAILED=0" in out, f"nothing blocks the retry ({out.strip()[:120]})")
     check(all((root / n).read_text().strip() == "NEW" for n in names),
           "re-running after the fix updates every file")
+    new_dir = root / "packs" / "hololive.json"
+    check(new_dir.is_file() and new_dir.read_text().strip() == "NEW",
+          "a folder the installed copy never had is created, not skipped")
     check((work / "root" / "models" / "big.safetensors").read_text().strip() == "MODEL",
           "models still untouched by the successful run")
     check((work / "root" / ".env").read_text().strip() == "KEY=secret",
@@ -3440,6 +3628,7 @@ async def main() -> int:
     await test_restage_deferred()
     test_second_review_regressions()
     test_inspect_image()
+    await test_charpacks()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()

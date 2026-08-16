@@ -1,0 +1,2554 @@
+{
+ "id": "hololive-collection",
+ "label": "Hololive Collection JP・EN・ID",
+ "subject": "hololive VTuber",
+ "author": "motimalu",
+ "civitai": "https://civitai.com/models/713551",
+ "model_id": 713551,
+ "version_id": 886276,
+ "version": "v2.0",
+ "file": "hololive_allmems_lora_v2.safetensors",
+ "size": 913775292,
+ "download_url": "https://civitai.com/api/download/models/886276?fileId=794739",
+ "base_model": "Pony",
+ "wants_model": "pony",
+ "strength": 0.8,
+ "strength_clip": 0.8,
+ "scaffold": "1girl, virtual youtuber",
+ "quality": "score_9, score_8_up, score_7_up, score_6_up, masterpiece, best quality, very aesthetic",
+ "negative": "(worst quality, low quality, sketch:1.1), score_4, score_3, score_2, score_1, error, bad anatomy, bad hands, watermark, ugly, distorted, signature",
+ "note": "作者訓練時以「1st costume」為主，所以第一套衣服最準。有些成員 Pony 底模本身就認得名字，不加 LoRA 也畫得出來，但細節會差。作者說明：僅供非商業同人用途。",
+ "license": "Fair AI Public License 1.0-SD",
+ "groups": [
+  {
+   "id": "jp-gen0",
+   "label": "JP 0期生",
+   "members": [
+    "tokino-sora",
+    "roboco-san",
+    "sakura-miko",
+    "hoshimachi-suisei",
+    "azki"
+   ]
+  },
+  {
+   "id": "jp-gen1",
+   "label": "JP 1期生",
+   "members": [
+    "yozora-mel",
+    "aki-rosenthal",
+    "akai-haato",
+    "natsuiro-matsuri"
+   ]
+  },
+  {
+   "id": "jp-gen2",
+   "label": "JP 2期生",
+   "members": [
+    "minato-aqua",
+    "murasaki-shion",
+    "nakiri-ayame",
+    "yuzuki-choco",
+    "oozora-subaru"
+   ]
+  },
+  {
+   "id": "jp-gamers",
+   "label": "JP ゲーマーズ",
+   "members": [
+    "shirakami-fubuki",
+    "ookami-mio",
+    "nekomata-okayu",
+    "inugami-korone"
+   ]
+  },
+  {
+   "id": "jp-gen3",
+   "label": "JP 3期生 (Fantasy)",
+   "members": [
+    "usada-pekora",
+    "shiranui-flare",
+    "shirogane-noel",
+    "houshou-marine",
+    "uruha-rushia"
+   ]
+  },
+  {
+   "id": "jp-gen4",
+   "label": "JP 4期生 (bloom)",
+   "members": [
+    "amane-kanata",
+    "tsunomaki-watame",
+    "tokoyami-towa",
+    "himemori-luna",
+    "kiryu-coco"
+   ]
+  },
+  {
+   "id": "jp-gen5",
+   "label": "JP 5期生 (holoFive)",
+   "members": [
+    "yukihana-lamy",
+    "momosuzu-nene",
+    "shishiro-botan",
+    "omaru-polka",
+    "mano-aloe"
+   ]
+  },
+  {
+   "id": "jp-gen6",
+   "label": "JP 6期生 (holoX)",
+   "members": [
+    "la-darknesss",
+    "takane-lui",
+    "hakui-koyori",
+    "sakamata-chloe",
+    "kazama-iroha"
+   ]
+  },
+  {
+   "id": "jp-regloss",
+   "label": "JP ReGLOSS (DEV_IS)",
+   "members": [
+    "hiodoshi-ao",
+    "otonose-kanade",
+    "ichijou-ririka",
+    "juufuutei-raden",
+    "todoroki-hajime"
+   ]
+  },
+  {
+   "id": "jp-other",
+   "label": "JP 事務所・家族",
+   "members": [
+    "a-chan",
+    "harusaki-nodoka",
+    "pekomama"
+   ]
+  },
+  {
+   "id": "en-myth",
+   "label": "EN Myth (1期)",
+   "members": [
+    "mori-calliope",
+    "takanashi-kiara",
+    "ninomae-ina-nis",
+    "gawr-gura",
+    "watson-amelia"
+   ]
+  },
+  {
+   "id": "en-hope",
+   "label": "EN Project: HOPE",
+   "members": [
+    "irys"
+   ]
+  },
+  {
+   "id": "en-promise",
+   "label": "EN Council / Promise (2期)",
+   "members": [
+    "ceres-fauna",
+    "ouro-kronii",
+    "nanashi-mumei",
+    "hakos-baelz",
+    "tsukumo-sana"
+   ]
+  },
+  {
+   "id": "en-advent",
+   "label": "EN Advent (3期)",
+   "members": [
+    "shiori-novella",
+    "koseki-bijou",
+    "nerissa-ravencroft",
+    "fuwawa-abyssgard",
+    "mococo-abyssgard"
+   ]
+  },
+  {
+   "id": "en-justice",
+   "label": "EN Justice (4期)",
+   "members": [
+    "elizabeth-rose-bloodflame",
+    "gigi-murin",
+    "cecilia-immergreen",
+    "raora-panthera"
+   ]
+  },
+  {
+   "id": "id-gen1",
+   "label": "ID 1期生",
+   "members": [
+    "ayunda-risu",
+    "moona-hoshinova",
+    "airani-iofifteen"
+   ]
+  },
+  {
+   "id": "id-gen2",
+   "label": "ID 2期生",
+   "members": [
+    "kureiji-ollie",
+    "anya-melfissa",
+    "pavolia-reine"
+   ]
+  },
+  {
+   "id": "id-gen3",
+   "label": "ID 3期生",
+   "members": [
+    "vestia-zeta",
+    "kaela-kovalskia",
+    "kobo-kanaeru"
+   ]
+  }
+ ],
+ "characters": [
+  {
+   "key": "tokino-sora",
+   "name": "Tokino Sora",
+   "jp": "ときのそら",
+   "emoji": "🐻",
+   "group": "jp-gen0",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "tokino sora, tokino sora \\(1st costume\\)",
+     "tags": "long hair, brown hair, star hair ornament, cropped shirt, blue vest, navel, sleeveless shirt, hair flaps, red ribbon, diamond hair ornament, white shirt, hair ribbon, blue skirt, midriff, cropped vest, pleated skirt, miniskirt, wrist cuffs, blue thighhighs, waist cape, collared shirt, bare shoulders, neck ribbon, crop top, hairclip, purple eyes, thigh ribbon"
+    },
+    {
+     "label": "birthday 2022",
+     "trigger": "tokino sora, tokino sora \\(birthday 2022\\)",
+     "tags": "brown hair, star hair ornament, long hair, hair ribbon, blue eyes, bare shoulders, white dress, side ponytail, idol, hairclip, diamond hair ornament, white ribbon, hair flaps, half gloves, bow, detached collar"
+    },
+    {
+     "label": "streetwear",
+     "trigger": "tokino sora, tokino sora \\(streetwear\\)",
+     "tags": "brown hair, long hair, brown eyes, baseball cap, two-tone hoodie, black headwear, white hoodie, black hoodie, shorts, o-ring choker, long sleeves, socks, black choker, black footwear"
+    },
+    {
+     "label": "casual",
+     "trigger": "tokino sora, tokino sora \\(casual\\)",
+     "tags": "star hair ornament, brown hair, hair ribbon, brown eyes, long hair, side ponytail, hair flaps, pink shirt, belt, wavy hair, hairclip, long sleeves, pink ribbon, diamond hair ornament, frilled camisole, bracelet, long skirt, frills, brown skirt, puffy sleeves, blouse"
+    },
+    {
+     "label": "hololive summer 2019",
+     "trigger": "tokino sora, tokino sora \\(hololive summer 2019\\)",
+     "tags": "long hair, blue eyes, hair ribbon, brown hair, navel, star hair ornament, pleated skirt, hairclip, hair flaps, sailor bikini, blue skirt, white sailor collar, miniskirt, white bikini, red ribbon"
+    }
+   ]
+  },
+  {
+   "key": "roboco-san",
+   "name": "Roboco-san",
+   "jp": "ロボ子さん",
+   "emoji": "🤖",
+   "group": "jp-gen0",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "roboco-san, roboco-san \\(1st costume\\)",
+     "tags": "mechanical legs, brown hair, mechanical arms, navel, camouflage jacket, short hair, android, glasses, black-framed eyewear, grey jacket, extra ears, short sleeves, animal ear fluff, gloves, yellow eyes, jumping, gradient hair, cat ears, brown eyes, kemonomimi mode"
+    },
+    {
+     "label": "dark bride",
+     "trigger": "roboco-san, roboco-san \\(dark bride\\)",
+     "tags": "mechanical legs, brown hair, mechanical arms, android, long hair, yellow eyes, gradient hair, dress, brown eyes"
+    },
+    {
+     "label": "hoodie",
+     "trigger": "roboco-san, roboco-san \\(hoodie\\)",
+     "tags": "mechanical legs, camouflage, brown hair, eyes visible through hair, pink hoodie, android, yellow eyes, mechanical arms, hood down, short hair, long sleeves, gradient hair"
+    },
+    {
+     "label": "high spec t-shirt",
+     "trigger": "roboco-san, roboco-san \\(high spec t-shirt\\)",
+     "tags": "mechanical legs, brown hair, cat ears, glasses, cat tail, black-framed eyewear, mechanical arms, animal ear fluff, kemonomimi mode, yellow eyes, very long hair, android, white shirt, short sleeves, gradient hair, t-shirt, brown eyes, extra ears"
+    },
+    {
+     "label": "new year",
+     "trigger": "roboco-san, roboco-san \\(new year\\)",
+     "tags": "glasses, brown hair, yellow eyes, obi, android, scarf, hair bow, gloves, black-framed eyewear, short hair, mechanical arms, multicolored hair, red bow, frills, red kimono, short kimono, long sleeves, round eyewear, wide sleeves"
+    }
+   ]
+  },
+  {
+   "key": "sakura-miko",
+   "name": "Sakura Miko",
+   "jp": "さくらみこ",
+   "emoji": "🌸",
+   "group": "jp-gen0",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "sakura miko, sakura miko \\(1st costume\\)",
+     "tags": "green eyes, hair bell, ahoge, detached sleeves, x hair ornament, pink hair, thigh strap, jingle bell, long hair, bridal garter, bow, cherry blossom print, japanese clothes, hairclip, medium hair"
+    },
+    {
+     "label": "school work",
+     "trigger": "sakura miko, sakura miko \\(school work\\)",
+     "tags": "green eyes, pink hair, ahoge, short shorts, thigh strap, neck bell, jingle bell, wide sleeves, hairclip, shirt, red shorts, two side up, night, navel, long sleeves, detached sleeves, red ribbon, hair ribbon"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "sakura miko, sakura miko \\(school uniform\\)",
+     "tags": "green eyes, pink hair, bandaid hair ornament, ahoge, white thighhighs, white beret, white shirt, white sailor collar, plaid skirt, pink skirt, pleated skirt, short sleeves, cat hair ornament, neck ribbon, serafuku, short hair, red ribbon, hairclip, miniskirt"
+    },
+    {
+     "label": "casual",
+     "trigger": "sakura miko, sakura miko \\(casual\\)",
+     "tags": "green eyes, long hair, ahoge, pink hair, red skirt, white shirt, long sleeves, black thighhighs, black headwear, collared shirt, animal hat, hairclip, jingle bell, beret, neck bell, detached sleeves, corset, bowtie, low twintails, bare shoulders, frilled skirt, red bow, flower"
+    },
+    {
+     "label": "street",
+     "trigger": "sakura miko, sakura miko \\(street\\)",
+     "tags": "green eyes, pink hair, hat, long hair, ahoge, blue skirt, hairclip, long sleeves, white shirt, bag, frilled skirt, ribbon, braid, corset, brown headwear, lace-up boots, black bow"
+    },
+    {
+     "label": "new year",
+     "trigger": "sakura miko, sakura miko \\(new year\\)",
+     "tags": "green eyes, pink hair, detached sleeves, ahoge, pom pom hair ornament, long hair, white sleeves, white skirt, frilled sleeves, twintails, hair rings, hairclip, leg ribbon, bag, zoom layer, maid headdress, leg up, thigh strap, white shirt, white dress"
+    }
+   ]
+  },
+  {
+   "key": "hoshimachi-suisei",
+   "name": "Hoshimachi Suisei",
+   "jp": "星街すいせい",
+   "emoji": "☄️",
+   "group": "jp-gen0",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "hoshimachi suisei, hoshimachi suisei \\(1st costume\\)",
+     "tags": "blue hair, blue eyes, plaid headwear, black gloves, beret, grey headwear, side ponytail, plaid jacket, blue skirt, grey jacket, medium hair, sidelocks, plaid skirt"
+    },
+    {
+     "label": "stellar into the galaxy",
+     "trigger": "hoshimachi suisei, hoshimachi suisei \\(stellar into the galaxy\\)",
+     "tags": "single glove, mini crown, juliet sleeves, star hair ornament, puffy sleeves, hair ribbon, single thighhigh, blue shorts, o-ring thigh strap"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "hoshimachi suisei, hoshimachi suisei \\(school uniform\\)",
+     "tags": "hood up, white jacket, blue eyes, hooded jacket, animal hood, symbol in eye, open clothes, yellow bowtie, open jacket, pleated skirt, star in eye, blue skirt, blue choker, blue sailor collar"
+    },
+    {
+     "label": "oriental suit",
+     "trigger": "hoshimachi suisei, hoshimachi suisei \\(oriental suit\\)",
+     "tags": "black headwear, sunglasses, round eyewear, red eyes, red-tinted eyewear, black dress, hair over shoulder, fedora, two-sided fabric, side slit"
+    },
+    {
+     "label": "streetwear",
+     "trigger": "hoshimachi suisei, hoshimachi suisei \\(streetwear\\)",
+     "tags": "orange pantyhose, blue eyes, blue hair, star in eye, symbol in eye, beret, off shoulder, black skirt, o-ring thigh strap, blue jacket, black footwear"
+    },
+    {
+     "label": "shout in crisis",
+     "trigger": "hoshimachi suisei, hoshimachi suisei \\(shout in crisis\\)",
+     "tags": "blue eyes, floral print, rose print, hair ribbon, black shorts, high ponytail, black belt, fiery hair, black shirt, chest belt, symbol in eye"
+    }
+   ]
+  },
+  {
+   "key": "azki",
+   "name": "AZKi",
+   "jp": "",
+   "emoji": "⚒️",
+   "group": "jp-gen0",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "azki \\(hololive\\), azki \\(1st costume\\) \\(hololive\\)",
+     "tags": "black hair, navel, black gloves, looking at viewer, elbow gloves, facial mark, very long hair, black tube top, asymmetrical clothes, bare shoulders, see-through, detached sleeves, blunt bangs, black panties, purple eyes, black bandeau, red sleeves, asymmetrical legwear, twintails"
+    },
+    {
+     "label": "2nd costume",
+     "trigger": "azki \\(hololive\\), azki \\(2nd costume\\) \\(hololive\\)",
+     "tags": "black bandeau, see-through, black shorts, black jacket, black hair, off shoulder, black thighhighs, short hair, black tube top, bare shoulders, open jacket, short shorts, purple eyes, necklace, bob cut, sleeveless, facial mark, long sleeves, pink shirt, highleg panties, sneakers, black choker, midriff, multicolored hair, bra, sleeves past wrists, inverted bob, blue eyes, pink dress"
+    },
+    {
+     "label": "3rd costume",
+     "trigger": "azki \\(hololive\\), azki \\(3rd costume\\) \\(hololive\\)",
+     "tags": "colored inner hair, pink hair, purple eyes, black hair, smile, dress, open mouth, looking at viewer, wrist cuffs, short hair, socks, detached collar, frills, pink footwear, bare shoulders, skirt, ribbon"
+    },
+    {
+     "label": "4th costume",
+     "trigger": "azki \\(hololive\\), azki \\(4th costume\\) \\(hololive\\)",
+     "tags": "colored inner hair, pink hair, purple eyes, white ascot, streaked hair, brown jacket, mole under eye, white dress, black hair, white hair, hairclip, collared dress, double-parted bangs, brown hair, hair intakes, very long hair"
+    },
+    {
+     "label": "dress",
+     "trigger": "azki \\(hololive\\), azki \\(dress\\) \\(hololive\\)",
+     "tags": "pink hair, colored inner hair, white dress, purple eyes, long hair, black hair, white gloves, side ponytail, tiara, high heels, streaked hair, purple hair, hair ornament, jacket, hair between eyes"
+    }
+   ]
+  },
+  {
+   "key": "yozora-mel",
+   "name": "Yozora Mel",
+   "jp": "夜空メル",
+   "emoji": "🌟",
+   "group": "jp-gen1",
+   "former": true,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "yozora mel, yozora mel \\(1st costume\\)",
+     "tags": "white sleeves, fingerless gloves, short hair, black gloves, blonde hair, skin fang, cleavage, ahoge, bat hair ornament, black shorts, navel, detached sleeves, underbust, hairclip, black choker, short shorts, bustier, short sleeves, yellow eyes, cross-laced clothes, midriff, crop top, overskirt, arm garter, bare shoulders, jewelry, star \\(symbol\\), frills, strapless"
+    }
+   ]
+  },
+  {
+   "key": "aki-rosenthal",
+   "name": "Aki Rosenthal",
+   "jp": "アキ・ローゼンタール",
+   "emoji": "🍎",
+   "group": "jp-gen1",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "aki rosenthal, aki rosenthal \\(1st costume\\)",
+     "tags": "blonde hair, pleated dress, elbow gloves, bob cut, headgear, detached hair, white gloves, blue jacket, short dress, red necktie, parted bangs, shrug \\(clothing\\), collared dress, low twintails, short sleeves, short hair, white dress, overskirt, blue eyes, thigh boots, black thighhighs, two-tone dress, purple eyes, white skirt, hair ornament"
+    },
+    {
+     "label": "sleepwear",
+     "trigger": "aki rosenthal, aki rosenthal \\(sleepwear\\)",
+     "tags": "detached hair, blonde hair, parted bangs, navel, bob cut, low twintails, babydoll, short hair, blue eyes, headgear, purple eyes, bare shoulders, long hair, hair ornament, white thighhighs, choker, single thighhigh, see-through"
+    },
+    {
+     "label": "gaming casual",
+     "trigger": "aki rosenthal, aki rosenthal \\(gaming casual\\)",
+     "tags": "blonde hair, parted bangs, purple eyes, green jacket, paint splatter, cat ears, long hair, paint on clothes, animal ear fluff, detached hair, off shoulder, twintails, bare shoulders, tank top, long sleeves"
+    },
+    {
+     "label": "gothic lolita",
+     "trigger": "aki rosenthal, aki rosenthal \\(gothic lolita\\)",
+     "tags": "detached hair, blonde hair, gothic lolita, black dress, white pantyhose, black gloves, parted bangs, key, claw ring, red eyes, twin drills, juliet sleeves, very long hair, lolita hairband, glowing, low twintails, purple eyes, halterneck, half gloves, horns, frilled dress"
+    },
+    {
+     "label": "new year",
+     "trigger": "aki rosenthal, aki rosenthal \\(new year\\)",
+     "tags": "purple eyes, blonde hair, hakama skirt, detached hair, parted bangs, long hair, sleeveless kimono, detached sleeves, red hakama, red skirt, blue headwear, blue kimono, white apron, beret, frilled apron, swept bangs, hair flower, lace-up boots, bare shoulders, obi, sideboob, waist apron, bob cut, hair bun, floral print, tachi-e"
+    }
+   ]
+  },
+  {
+   "key": "akai-haato",
+   "name": "Akai Haato",
+   "jp": "赤井はあと",
+   "emoji": "❤️‍🔥",
+   "group": "jp-gen1",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "akai haato, akai haato \\(1st costume\\)",
+     "tags": "blonde hair, heart hair ornament, hair ribbon, white shirt, red ribbon, one side up, very long hair, black thighhighs, loafers, high-waist skirt, blue skirt, collared shirt, short sleeves, aqua eyes, tachi-e, bowtie, pleated skirt, miniskirt, neck ribbon, blue eyes"
+    },
+    {
+     "label": "gothic lolita",
+     "trigger": "akai haato, akai haato \\(gothic lolita\\)",
+     "tags": "blonde hair, very long hair, hair ornament, two side up, black panties, red dress, sleeveless, frills, tiara"
+    },
+    {
+     "label": "hololive summer 2019",
+     "trigger": "akai haato, akai haato \\(hololive summer 2019\\)",
+     "tags": "blonde hair, blue eyes, very long hair, navel, single side bun, red bikini, underboob, single hair bun, hair ornament, bikini skirt, beach towel, hair ribbon"
+    },
+    {
+     "label": "6th costume",
+     "trigger": "akai haato, akai haato \\(6th costume\\)",
+     "tags": "blonde hair, twintails, tiara, long hair, white dress, blue eyes, frills, heart hair ornament, white choker, red bow, detached sleeves, aqua eyes, puffy short sleeves, hairclip"
+    },
+    {
+     "label": "casual",
+     "trigger": "akai haato, akai haato \\(casual\\)",
+     "tags": "blonde hair, very long hair, blue eyes, ponytail, white dress, heart hair ornament, hairclip, hair ribbon, red jacket, long sleeves, red ribbon, open jacket, hood"
+    },
+    {
+     "label": "new year",
+     "trigger": "akai haato, akai haato \\(new year\\)",
+     "tags": "blonde hair, red kimono, obi, very long hair, wide sleeves, tabi, floral print, ahoge, fur collar, blue eyes, fur trim, print kimono, hair flower, hair bow, long sleeves, white socks, white flower, hairband, furisode, aqua eyes"
+    }
+   ]
+  },
+  {
+   "key": "natsuiro-matsuri",
+   "name": "Natsuiro Matsuri",
+   "jp": "夏色まつり",
+   "emoji": "🏮",
+   "group": "jp-gen1",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "natsuiro matsuri, natsuiro matsuri \\(1st costume\\)",
+     "tags": "brown hair, ahoge, side ponytail, navel, black camisole, pleated skirt, cat hair ornament, white skirt, orange jacket, black pantyhose, short sleeves, green ribbon, miniskirt, cropped jacket, midriff, crop top, off-shoulder jacket, green eyes, hair ribbon, spaghetti strap, bare shoulders, medium hair, neck ribbon"
+    },
+    {
+     "label": "hololive summer 2019",
+     "trigger": "natsuiro matsuri, natsuiro matsuri \\(hololive summer 2019\\)",
+     "tags": "sunflower, straw hat, brown hair, orange bikini, navel, side ponytail, frilled bikini, green eyes, groin, bare shoulders, sun hat, hat flower, yellow flower, medium hair, halterneck, one-piece tan"
+    },
+    {
+     "label": "casual",
+     "trigger": "natsuiro matsuri, natsuiro matsuri \\(casual\\)",
+     "tags": "brown hair, shoulder cutout, twintails, ahoge, hair ribbon, see-through sleeves, black ribbon, brown skirt, blue eyes, grey shirt, bare shoulders, puffy long sleeves, collared shirt, choker, medium hair"
+    },
+    {
+     "label": "gaming casual",
+     "trigger": "natsuiro matsuri, natsuiro matsuri \\(gaming casual\\)",
+     "tags": "long hair, shirt, brown hair, long sleeves, bare shoulders, jacket, ahoge, open clothes, shorts, socks, off shoulder, open jacket, sleeves past wrists, short shorts, black shorts, puffy long sleeves, orange shirt"
+    },
+    {
+     "label": "natsuri's day off",
+     "trigger": "natsuiro matsuri, natsuiro matsuri \\(natsuri's day off\\)",
+     "tags": "brown hair, ahoge, side ponytail, striped jacket, camisole, striped clothes, hair scrunchie, short shorts, green eyes, orange shorts, long sleeves, open clothes, off shoulder, bare shoulders, orange scrunchie, midriff"
+    },
+    {
+     "label": "street casual",
+     "trigger": "natsuiro matsuri, natsuiro matsuri \\(street casual\\)",
+     "tags": "brown skirt, brown hair, white shirt, plaid skirt, plaid jacket, pleated skirt, parted bangs, long sleeves, black headwear, blue eyes, long hair, black socks, brown jacket, necklace, beret, open jacket, fake animal ears, brown socks, aqua eyes"
+    },
+    {
+     "label": "summer 2020",
+     "trigger": "natsuiro matsuri, natsuiro matsuri \\(summer 2020\\)",
+     "tags": "eyewear on head, ahoge, navel, sunglasses, twintails, green eyes, one-piece tan, white bikini, brown hair, white jacket, long sleeves, sunflower hair ornament, front-tie bikini top, bare shoulders, hair ribbon, off shoulder"
+    },
+    {
+     "label": "new year",
+     "trigger": "natsuiro matsuri, natsuiro matsuri \\(new year\\)",
+     "tags": "brown hair, navel, ahoge, detached sleeves, japanese clothes, midriff, hair bow, red bow, red skirt, nontraditional miko, wide sleeves, aqua eyes, miniskirt, streaked hair, jingle bell, crop top, hair bell"
+    }
+   ]
+  },
+  {
+   "key": "minato-aqua",
+   "name": "Minato Aqua",
+   "jp": "湊あくあ",
+   "emoji": "⚓️",
+   "group": "jp-gen2",
+   "former": true,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "minato aqua, minato aqua \\(1st costume\\)",
+     "tags": "colored inner hair, two-tone hair, purple eyes, purple hair, twintails, maid headdress, blue hair, ahoge, wrist cuffs, anchor symbol, braid, hair ribbon, frilled dress, blue dress, white bow, streaked hair, puffy short sleeves, bowtie, very long hair, blue bow"
+    }
+   ]
+  },
+  {
+   "key": "murasaki-shion",
+   "name": "Murasaki Shion",
+   "jp": "紫咲シオン",
+   "emoji": "🌙",
+   "group": "jp-gen2",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "murasaki shion, murasaki shion \\(1st costume\\)",
+     "tags": "long hair, witch hat, navel, grey hair, vertical-striped shirt, cropped shirt, long sleeves, midriff, vertical-striped clothes, hairband, gloves, thighhighs, black skirt, single side bun, pinstripe shirt, yellow eyes, black headwear, black capelet, hair ornament, arched bangs, miniskirt, pink bowtie"
+    },
+    {
+     "label": "8th costume",
+     "trigger": "murasaki shion, murasaki shion \\(8th costume\\)",
+     "tags": "long hair, grey hair, black shirt, streaked hair, yellow eyes, arm warmers, thigh strap, hairclip, purple hair, short sleeves, bandaid on leg, cat ear headphones, purple skirt, pleated skirt, plaid skirt, t-shirt, black collar, belt, necklace, black skirt, miniskirt"
+    },
+    {
+     "label": "gothic lolita",
+     "trigger": "murasaki shion, murasaki shion \\(gothic lolita\\)",
+     "tags": "long hair, halter dress, cat ears, detached sleeves, black dress, grey hair, criss-cross halter, frilled choker, tail bow, cat tail, star brooch, bare shoulders, frilled dress, white pantyhose, cat girl, yellow eyes, animal ear fluff, ribbon, black sleeves, twintails, sleeveless dress, long sleeves"
+    },
+    {
+     "label": "magical girl maid",
+     "trigger": "murasaki shion, murasaki shion \\(magical girl maid\\)",
+     "tags": "long hair, grey hair, white socks, pink jacket, single side bun, white shirt, sleeves past wrists, shorts, long sleeves, potted plant, hair ornament, wand, single hair bun, off shoulder, orange eyes, yellow eyes, blunt bangs, hairband, arched bangs"
+    },
+    {
+     "label": "hololive summer 2019",
+     "trigger": "murasaki shion, murasaki shion \\(hololive summer 2019\\)",
+     "tags": "long hair, navel, grey hair, criss-cross halter, bikini skirt, black bikini, hairband, bare shoulders, black choker, yellow eyes"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "murasaki shion, murasaki shion \\(school uniform\\)",
+     "tags": "purple necktie, headphones around neck, thigh strap, cat hood, grey hair, thigh belt, long hair, white thighhighs, cat tail, long sleeves, miniskirt, orange eyes, hood up, black footwear, hooded jacket, yellow eyes, low twintails, black skirt, animal ears, black shirt, star hair ornament, arched bangs, pleated skirt"
+    },
+    {
+     "label": "new year",
+     "trigger": "murasaki shion, murasaki shion \\(new year\\)",
+     "tags": "long hair, grey hair, single side bun, hair ornament, black footwear, hairband, kimono, single hair bun, fur trim, long sleeves, yellow eyes, frills, black pantyhose, arched bangs, thigh strap, v-shaped eyebrows"
+    }
+   ]
+  },
+  {
+   "key": "nakiri-ayame",
+   "name": "Nakiri Ayame",
+   "jp": "百鬼あやめ",
+   "emoji": "😈",
+   "group": "jp-gen2",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "nakiri ayame, nakiri ayame \\(1st costume\\)",
+     "tags": "nakiri oni horns, japanese clothes, white thighhighs, hair bell, oni mask on head, off shoulder, black kimono, double bun, long sleeves, shimenawa, bare shoulders"
+    },
+    {
+     "label": "shrine maiden",
+     "trigger": "nakiri ayame \\(shrine maiden\\)",
+     "tags": "nakiri oni horns, japanese clothes, white thighhighs, wide sleeves, sleeves past wrists"
+    },
+    {
+     "label": "girly",
+     "trigger": "nakiri ayame \\(girly\\)",
+     "tags": "nakiri oni horns, white shirt, shoulder cutout, suspender skirt, hair bow, collared shirt, black skirt, suspenders, clothing cutout, skin fang, high-waist skirt, very long hair"
+    },
+    {
+     "label": "new year",
+     "trigger": "nakiri ayame \\(new year\\)",
+     "tags": "nakiri oni horns, japanese clothes, red kimono, side ponytail, hair flower, sash, obi, floral print, print kimono, wide sleeves, tabi, sleeves past wrists, skin fang"
+    },
+    {
+     "label": "offwork",
+     "trigger": "nakiri ayame \\(offwork\\)",
+     "tags": "nakiri oni horns, white shirt, open jacket, skin fang, red jacket, open clothes"
+    },
+    {
+     "label": "shrine maiden 2",
+     "trigger": "nakiri ayame \\(shrine maiden\\)",
+     "tags": "nakiri oni horns, japanese clothes, detached sleeves, hair flower, maple leaf, wide sleeves, shimenawa, white kimono"
+    },
+    {
+     "label": "streetwear",
+     "trigger": "nakiri ayame \\(streetwear\\)",
+     "tags": "nakiri oni horns, black necktie, x hair ornament, pleated skirt, white shirt, off shoulder, black thighhighs, black jacket, sleeveless shirt, hair ribbon, black skirt, collared shirt, black ribbon, open clothes, bare shoulders, miniskirt, black choker, open jacket, black belt, tie clip"
+    },
+    {
+     "label": "summer",
+     "trigger": "nakiri ayame \\(summer\\)",
+     "tags": "nakiri oni horns, blue bikini, bikini skirt, side-tie bikini bottom"
+    }
+   ]
+  },
+  {
+   "key": "yuzuki-choco",
+   "name": "Yuzuki Choco",
+   "jp": "癒月ちょこ",
+   "emoji": "💋",
+   "group": "jp-gen2",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "yuzuki choco, yuzuki choco \\(1st costume\\)",
+     "tags": "demon horns, demon girl, breast tattoo, swept bangs, long hair, horn ring, demon wings, single sidelock, demon tail, horn ornament, blonde hair, black horns, pointy ears, garter straps, blue eyes, pink shirt, thighhighs, sleeveless shirt, frilled shirt, gradient hair, lace-trimmed skirt, bare shoulders, collared shirt"
+    },
+    {
+     "label": "8th costume",
+     "trigger": "yuzuki choco, yuzuki choco \\(8th costume\\)",
+     "tags": "blonde hair, demon wings, pointy ears, long hair, demon girl, demon tail, multicolored hair, black necktie, single sidelock, blue eyes, short sleeves, yuzuki choco horns, thigh strap, swept bangs, frills, x hair ornament, horn ring, horn ornament, blue headwear, pink hair, police hat, collared shirt, white shirt, white skirt"
+    },
+    {
+     "label": "hololive summer 2019",
+     "trigger": "yuzuki choco, yuzuki choco \\(hololive summer 2019\\)",
+     "tags": "pointy ears, breast tattoo, blonde hair, demon wings, demon tail, demon girl, long hair, yuzuki choco horns, black bikini, navel, green eyes, swept bangs, single sidelock, hair flower, ponytail, side-tie bikini bottom, horn ornament, gradient hair, horn ring, hair scrunchie, frilled bikini, halterneck, lace trim"
+    },
+    {
+     "label": "maid",
+     "trigger": "yuzuki choco, yuzuki choco \\(maid\\)",
+     "tags": "long hair, pointy ears, demon girl, blonde hair, swept bangs, maid headdress, yuzuki choco horns, twintails, horn ornament, see-through cleavage, demon wings, single sidelock, gradient hair, frills, horn ring, demon tail, detached sleeves, green eyes, long sleeves, couch, red bowtie, white apron, corset, sleeveless, maid apron, underbust"
+    },
+    {
+     "label": "new year",
+     "trigger": "yuzuki choco, yuzuki choco \\(new year\\)",
+     "tags": "blonde hair, see-through cleavage, pointy ears, red kimono, breast tattoo, yuzuki choco horns, blue eyes, single sidelock, hair flower, demon girl, swept bangs, horn ornament, off shoulder, bare shoulders, wide sleeves, horn ring, fishnet top, single hair bun, crown braid, gradient hair, pink hair, o-ring"
+    },
+    {
+     "label": "nurse",
+     "trigger": "yuzuki choco, yuzuki choco \\(nurse\\)",
+     "tags": "breast tattoo, swept bangs, yuzuki choco horns, double bun, horn ornament, single sidelock, blonde hair, pointy ears, demon wings, demon girl, nurse cap, long hair, sleeves past wrists, pink necktie, blue eyes, long sleeves, black jacket, black cardigan, open jacket, open cardigan, white shirt, parted bangs, sidelocks, sailor collar"
+    },
+    {
+     "label": "sleepwear",
+     "trigger": "yuzuki choco, yuzuki choco \\(sleepwear\\)",
+     "tags": "breast tattoo, pointy ears, blonde hair, demon girl, long hair, blue eyes, yuzuki choco horns, swept bangs, necklace, white dress"
+    },
+    {
+     "label": "streetwear",
+     "trigger": "yuzuki choco, yuzuki choco \\(streetwear\\)",
+     "tags": "breast tattoo, pointy ears, blonde hair, demon wings, swept bangs, short hair, demon girl, horn ornament, off shoulder, yuzuki choco horns, earrings, heart necklace, long sleeves, horn ring, white jacket, bare shoulders, blue eyes, cleavage cutout, sleeveless turtleneck, open jacket, turtleneck sweater"
+    }
+   ]
+  },
+  {
+   "key": "oozora-subaru",
+   "name": "Oozora Subaru",
+   "jp": "大空スバル",
+   "emoji": "🚑",
+   "group": "jp-gen2",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "oozora subaru, oozora subaru \\(1st costume\\)",
+     "tags": "white shorts, swept bangs, red thighhighs, short hair, vertical-striped shirt, vertical-striped clothes, baseball cap, tied shirt, mismatched legwear, stopwatch, two-tone headwear, wristband, blue eyes, short shorts, short sleeves, yellow shirt, red headwear, sweatband, black hair, t-shirt, brown hair, whistle around neck, white shirt"
+    },
+    {
+     "label": "loungewear",
+     "trigger": "oozora subaru, oozora subaru \\(loungewear\\)",
+     "tags": "sunflower, short hair, striped clothes, black hair, yellow jacket, striped socks, hooded jacket, aqua eyes, brown hair, shorts, long sleeves, open clothes, green eyes, hoodie"
+    },
+    {
+     "label": "new year",
+     "trigger": "oozora subaru, oozora subaru \\(new year\\)",
+     "tags": "kanzashi, short hair, kimono, blue eyes, hakama skirt, red bow, swept bangs, tassel hair ornament, black hair, hair bow, wide sleeves, long sleeves, hair ribbon, white socks"
+    },
+    {
+     "label": "casual",
+     "trigger": "oozora subaru, oozora subaru \\(casual\\)",
+     "tags": "center frills, long hair, red bowtie, blue headwear, blue skirt, swept bangs, white shirt, long sleeves, hair ribbon, virgin killer outfit, beret, frilled shirt collar, high-waist skirt, white ribbon, plaid skirt, black hair, frilled skirt, aqua eyes, blue eyes, ahoge, brown hair, shoulder bag"
+    },
+    {
+     "label": "hololive summer 2019",
+     "trigger": "oozora subaru, oozora subaru \\(hololive summer 2019\\)",
+     "tags": "striped bikini, short hair, striped clothes, bow hairband, swept bangs, black hair, yellow bikini, brown hair, bare shoulders, off shoulder, open jacket, blue eyes, two-tone jacket, hair ribbon, polka dot ribbon, blue hairband, blue jacket"
+    },
+    {
+     "label": "starlight",
+     "trigger": "oozora subaru, oozora subaru \\(starlight\\)",
+     "tags": "white gloves, suspender shorts, white thighhighs, short hair, navel, beret, black hair, garter straps, midriff, idol, white headwear, blue eyes, short sleeves, black shorts, shirt, aqua eyes, crop top, sunflower hair ornament, center frills, short shorts"
+    },
+    {
+     "label": "work",
+     "trigger": "oozora subaru, oozora subaru \\(work\\)",
+     "tags": "swept bangs, hip vent, grey thighhighs, short hair, blue shorts, vertical-striped clothes, vertical-striped shirt, black bowtie, navel, grey shirt, blue jacket, cropped shirt, cropped jacket, long sleeves, hairclip, panty peek, midriff, suspender shorts, black hair, armband, beret, french braid, short shorts, blue eyes, crop top, high collar, grey headwear, aqua eyes, brown hair, belt, lace-trimmed panties"
+    }
+   ]
+  },
+  {
+   "key": "shirakami-fubuki",
+   "name": "Shirakami Fubuki",
+   "jp": "白上フブキ",
+   "emoji": "🌽",
+   "group": "jp-gamers",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "shirakami fubuki, shirakami fubuki \\(1st costume\\)",
+     "tags": "fox ears, fox tail, fox girl, ahoge, white hair, detached sleeves, long hair, thigh strap, animal ear fluff, black thighhighs, pentagram, navel, black shorts, white hoodie, single braid, sidelocks, short shorts, aqua eyes"
+    },
+    {
+     "label": "loungewear",
+     "trigger": "shirakami fubuki, shirakami fubuki \\(loungewear\\)",
+     "tags": "black panties, fox ears, fox girl, fox tail, black shirt, long hair, white hair, animal ear fluff, blue eyes, black hairband, socks, extra ears, hair between eyes"
+    },
+    {
+     "label": "aristocrat kei",
+     "trigger": "shirakami fubuki, shirakami fubuki \\(aristocrat kei\\)",
+     "tags": "long hair, white pantyhose, blue jacket, mini hat, ahoge, fox ears, white hair, white gloves, fox girl, single braid, green eyes, white shirt, sidelocks, grey skirt, braided ponytail, open jacket, fox tail, ascot, lolita fashion, animal ear fluff, frilled skirt, pentagram, bow, long skirt, long sleeves, corset, black hairband"
+    },
+    {
+     "label": "8th costume",
+     "trigger": "shirakami fubuki, shirakami fubuki \\(8th costume\\)",
+     "tags": "fox ears, long hair, white hair, fox girl, ahoge, fox tail, animal ear fluff, detached sleeves, dress, sidelocks, pantyhose, braid, green eyes, maid apron, enmaided, hairclip, frills, chinese clothes, orange blouse"
+    },
+    {
+     "label": "fubukitek",
+     "trigger": "shirakami fubuki, shirakami fubuki \\(fubukitek\\)",
+     "tags": "fox ears, long hair, fox girl, fox tail, white hair, ahoge, thigh strap, white jacket, pentagram, open jacket, fur-trimmed jacket, black choker, animal ear fluff, single braid, green eyes, sidelocks, shirt, side braid, black dress, long sleeves, aqua eyes, shorts"
+    },
+    {
+     "label": "hololive summer 2019",
+     "trigger": "shirakami fubuki, shirakami fubuki \\(hololive summer 2019\\)",
+     "tags": "fox ears, ahoge, fox girl, white hair, fox tail, white jacket, twin braids, open jacket, blue bikini, sidelocks, shading eyes, animal ear fluff, green eyes, bikini skirt, single braid, very long hair, long sleeves, white shirt, hooded jacket, open shirt, frilled bikini"
+    },
+    {
+     "label": "street",
+     "trigger": "shirakami fubuki, shirakami fubuki \\(street\\)",
+     "tags": "fox ears, fox tail, fox girl, black headwear, white hair, beret, ahoge, black pantyhose, white shirt, sidelocks, frilled skirt, black skirt, green eyes, animal ear fluff, green skirt, pentagram, single braid, low ponytail, long sleeves, wide sleeves, very long hair, side braid"
+    },
+    {
+     "label": "new year",
+     "trigger": "shirakami fubuki, shirakami fubuki \\(new year\\)",
+     "tags": "fox ears, long hair, fox girl, ahoge, white hair, fox tail, white kimono, animal ear fluff, single braid, earrings, green eyes, hair flower, sidelocks, wide sleeves, skirt, blue hakama, sash, blue kimono"
+    }
+   ]
+  },
+  {
+   "key": "ookami-mio",
+   "name": "Ookami Mio",
+   "jp": "大神ミオ",
+   "emoji": "🌲",
+   "group": "jp-gamers",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "ookami mio, ookami mio \\(1st costume\\)",
+     "tags": "wolf ears, wolf tail, wolf girl, multicolored hair, white thighhighs, detached sleeves, streaked hair, red choker, animal ear fluff, black skirt, midriff, pleated skirt, rope, kouhaku nawa, miniskirt, black shirt, shimenawa, yellow eyes, very long hair, bare shoulders, tabi, sleeveless shirt"
+    },
+    {
+     "label": "another ookami mio",
+     "trigger": "ookami mio, ookami mio \\(another ookami mio\\)",
+     "tags": "black hair, wolf ears, streaked hair, wolf tail, wolf girl, navel, black shorts, animal ear fluff, sailor collar, long hair, midriff, black choker, long sleeves, thigh strap, open clothes, neckerchief, hooded jacket, black shirt, short shorts, hood up, white hair, crop top, black jacket"
+    },
+    {
+     "label": "wonderland",
+     "trigger": "ookami mio, ookami mio \\(wonderland\\)",
+     "tags": "thigh boots, twintails, black hair, elbow gloves, long hair, hair flower, yellow eyes, black gloves, thighhighs, white bow, pantyhose, hair bow, puffy sleeves, streaked hair, choker, dress, short sleeves, red rose, helmet, cross-laced clothes, clothing cutout"
+    },
+    {
+     "label": "street",
+     "trigger": "ookami mio, ookami mio \\(street\\)",
+     "tags": "black hair, wolf ears, streaked hair, animal ear fluff, yellow eyes, black skirt, braid, white shirt, beret, wolf girl, hairclip, black headwear, steepled fingers, sleeveless shirt, necklace, low ponytail, long sleeves, brown cardigan, very long hair, x hair ornament, open cardigan, off shoulder"
+    },
+    {
+     "label": "casual",
+     "trigger": "ookami mio, ookami mio \\(casual\\)",
+     "tags": "black hair, wolf ears, wolf tail, glasses, streaked hair, wolf girl, animal ear fluff, black hoodie, white hoodie, black pantyhose, paw print pattern, long sleeves, two-tone hoodie, sleeves past wrists, black choker, white hair, short shorts, hairclip, black shorts, very long hair, yellow eyes"
+    },
+    {
+     "label": "hololive summer 2019",
+     "trigger": "ookami mio, ookami mio \\(hololive summer 2019\\)",
+     "tags": "wolf ears, black hair, white shorts, navel, streaked hair, wolf girl, animal ear fluff, bikini under clothes, open jacket, black jacket, front-tie bikini top, black choker, yellow eyes, string bikini, open fly, short shorts, white bikini, off shoulder, skin fang, maple leaf print, long sleeves, very long hair, hairclip"
+    },
+    {
+     "label": "new year",
+     "trigger": "ookami mio, ookami mio \\(new year\\)",
+     "tags": "wolf ears, black hair, long hair, streaked hair, black choker, yellow eyes, animal ear fluff, wolf girl, bare shoulders, off shoulder, floral print, hairclip, red kimono, ponytail, hair ribbon, nape, print kimono, obi"
+    }
+   ]
+  },
+  {
+   "key": "nekomata-okayu",
+   "name": "Nekomata Okayu",
+   "jp": "猫又おかゆ",
+   "emoji": "🍙",
+   "group": "jp-gamers",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "nekomata okayu, nekomata okayu \\(1st costume\\)",
+     "tags": "cat tail, onigiri print, black hoodie, sleeves past wrists, white pants, animal collar, midriff, crossed bangs, drawstring, hood down, black collar, medium hair"
+    },
+    {
+     "label": "oversized shirt",
+     "trigger": "nekomata okayu, nekomata okayu \\(oversized shirt\\)",
+     "tags": "cat tail, purple ribbon, black collar, collared shirt, medium hair"
+    },
+    {
+     "label": "8th costume",
+     "trigger": "nekomata okayu, nekomata okayu \\(8th costume\\)",
+     "tags": "cleavage cutout, clothing cutout, animal ear fluff, cat tail, black jacket, bandaid on arm, alternate hairstyle, hair ribbon, grey sweater, sleeveless sweater"
+    },
+    {
+     "label": "membership",
+     "trigger": "nekomata okayu, nekomata okayu \\(membership\\)",
+     "tags": "cat tail, purple jacket, strap slip, purple shorts, open jacket, off shoulder, open clothes, partially unzipped, medium hair, short shorts"
+    },
+    {
+     "label": "newyear",
+     "trigger": "nekomata okayu, nekomata okayu \\(newyear\\)",
+     "tags": "japanese clothes, animal ear fluff, onigiri, wa maid, white apron, wide sleeves, tabi, hair flower, frills, frilled apron, obi, zouri, sash, white socks, purple kimono, purple skirt, ribbon-trimmed sleeves, purple sleeves"
+    },
+    {
+     "label": "poisonya syndrome",
+     "trigger": "nekomata okayu, nekomata okayu \\(poisonya syndrome\\)",
+     "tags": "cat tail, black boots, black shorts, animal ear fluff, heart on chest, midriff, clothing cutout, shorts under skirt, medium hair, beret, hat flower"
+    },
+    {
+     "label": "seifuku",
+     "trigger": "nekomata okayu, nekomata okayu \\(seifuku\\)",
+     "tags": "cat tail, midriff, white shorts, animal ear fluff, school shirt, black collar, white neckerchief, black hairband, buttons, crossed bangs, black shirt, animal collar"
+    },
+    {
+     "label": "wonderland",
+     "trigger": "nekomata okayu, nekomata okayu \\(wonderland\\)",
+     "tags": "white shirt, cat tail, black beret, black shorts, heart on chest, frills, animal ear fluff, kneehighs, cleavage cutout, cat girl, black coat, striped tail, purple socks"
+    },
+    {
+     "label": "summer",
+     "trigger": "nekomata okayu, nekomata okayu \\(summer\\)",
+     "tags": "bikini under clothes, black bikini, t-shirt, string bikini, animal collar, see-through shirt, crossed bangs, black choker"
+    }
+   ]
+  },
+  {
+   "key": "inugami-korone",
+   "name": "Inugami Korone",
+   "jp": "戌神ころね",
+   "emoji": "🥐",
+   "group": "jp-gamers",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "inugami korone, inugami korone \\(1st costume\\)",
+     "tags": "dog ears, bone hair ornament, dog tail, yellow jacket, white dress, dog girl, off shoulder, red eyes, red collar, animal collar, open jacket, extra ears, sleeveless dress, open clothes, short dress, buttons"
+    },
+    {
+     "label": "boxing",
+     "trigger": "inugami korone, inugami korone \\(boxing\\)",
+     "tags": "bone hair ornament, boxing gloves, dog ears, dog girl, dog tail, navel, midriff, red collar, black shorts, yellow sports bra"
+    },
+    {
+     "label": "loungewear",
+     "trigger": "inugami korone, inugami korone \\(loungewear\\)",
+     "tags": "dog ears, dog tail, striped clothes, dog girl, detached sleeves, black choker, striped socks, pink jacket, black shirt, o-ring choker, fur trim, extra ears, pink sleeves, hooded vest, open clothes, long sleeves, fur-trimmed sleeves, pink hoodie, collarbone"
+    },
+    {
+     "label": "newyear",
+     "trigger": "inugami korone, inugami korone \\(newyear\\)",
+     "tags": "brown hair, brown eyes, detached sleeves, japanese clothes, halterneck, dog ears, shawl, tabi, bone hair ornament"
+    },
+    {
+     "label": "street",
+     "trigger": "inugami korone, inugami korone \\(street\\)",
+     "tags": "dog girl, dog ears, bone hair ornament, dog tail, frills, black socks, white shirt, yellow bowtie, kneehighs, brown skirt, hair ribbon, frilled skirt, high-waist skirt, long sleeves, brown capelet"
+    },
+    {
+     "label": "viking",
+     "trigger": "inugami korone, inugami korone \\(viking\\)",
+     "tags": "animal helmet, brown hair, red eyes, navel, belt, black thighhighs, necklace, fur trim, red skirt, fur-trimmed boots"
+    },
+    {
+     "label": "waitress",
+     "trigger": "inugami korone, inugami korone \\(waitress\\)",
+     "tags": "paw gloves, spiked collar, animal hands, bone hair ornament, visor cap, waist apron, dog ears, dog tail, dog girl, yellow skirt, navel, single thighhigh, red eyes, red thighhighs, midriff, yellow shirt, white apron, red collar, miniskirt, sleeveless shirt, frills, frilled apron, animal collar"
+    },
+    {
+     "label": "wonderland",
+     "trigger": "inugami korone, inugami korone \\(wonderland\\)",
+     "tags": "brown hair, brown eyes, black choker, blue dress, fishnets, dog ears, dog tail, fishnet pantyhose, dog girl, o-ring choker"
+    }
+   ]
+  },
+  {
+   "key": "usada-pekora",
+   "name": "Usada Pekora",
+   "jp": "兎田ぺこら",
+   "emoji": "👯",
+   "group": "jp-gen3",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "usada pekora, usada pekora \\(1st costume\\)",
+     "tags": "rabbit ears, animal ear fluff, black gloves, thick eyebrows, carrot hair ornament, detached sleeves, hair bow, fur scarf, rabbit girl, white dress, short eyebrows, white bow"
+    },
+    {
+     "label": "casual",
+     "trigger": "usada pekora, usada pekora \\(casual\\)",
+     "tags": "blue jacket, thick eyebrows, rabbit ears, carrot hair ornament, fur trim, fur-trimmed jacket, open jacket, short hair, short eyebrows, denim jacket, open clothes, white shirt"
+    },
+    {
+     "label": "furi furi bunny dress",
+     "trigger": "usada pekora, usada pekora \\(furi furi bunny dress\\)",
+     "tags": "rabbit ears, high heels, thick eyebrows, fishnet thighhighs, fake animal ears, fishnets, rabbit tail, black dress, short eyebrows, puffy short sleeves, black thighhighs, playboy bunny, puffy sleeves, detached collar, rabbit girl"
+    },
+    {
+     "label": "newyear",
+     "trigger": "usada pekora, usada pekora \\(newyear\\)",
+     "tags": "rabbit ears, japanese clothes, double bun, red kimono, thick eyebrows, sash, rabbit girl, animal ear fluff, tabi, white socks, rabbit-shaped pupils, obi, wine bottle, hair flower, braided bun, short eyebrows, kimono skirt, short kimono, sidelocks"
+    },
+    {
+     "label": "prisoner",
+     "trigger": "usada pekora, usada pekora \\(prisoner\\)",
+     "tags": "prison clothes, rabbit ears, rabbit tail, striped headwear, rabbit girl, thick eyebrows, metal collar, off shoulder, safety pin, short eyebrows, bare shoulders, hair between eyes"
+    },
+    {
+     "label": "summer",
+     "trigger": "usada pekora, usada pekora \\(summer\\)",
+     "tags": "rabbit ears, animal ear fluff, carrot hair ornament, white bikini, open clothes, bare shoulders, open jacket, off shoulder, white jacket, frilled bikini, thick eyebrows, front-tie top, bikini skirt, front-tie bikini top, ahoge, halterneck"
+    }
+   ]
+  },
+  {
+   "key": "shiranui-flare",
+   "name": "Shiranui Flare",
+   "jp": "不知火フレア",
+   "emoji": "🔥",
+   "group": "jp-gen3",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "shiranui flare, shiranui flare \\(1st costume\\)",
+     "tags": "long hair, dark-skinned female, blonde hair, streaked hair, hair bow, sidelocks, detached sleeves, white thighhighs, elf, red eyes, blue bow, white hair, bare shoulders, bowtie, red bow, high ponytail, white dress, cleavage cutout, skirt, white sleeves, ribbon"
+    },
+    {
+     "label": "old design",
+     "trigger": "shiranui flare, shiranui flare \\(old design\\)",
+     "tags": "long hair, dark-skinned female, blonde hair, streaked hair, hair bow, elf, ponytail, red eyes, single thighhigh, black gloves, clothing cutout, white hair, wide sleeves"
+    },
+    {
+     "label": "street",
+     "trigger": "shiranui flare, shiranui flare \\(street\\)",
+     "tags": "long hair, blonde hair, dark-skinned female, streaked hair, white sailor collar, sailor dress, grey dress, long sleeves, sidelocks, vertical-striped dress, frills, red eyes, pinstripe pattern, elf, vertical-striped clothes, french braid, orange eyes, black ribbon"
+    },
+    {
+     "label": "4th costume",
+     "trigger": "shiranui flare, shiranui flare \\(4th costume\\)",
+     "tags": "blonde hair, long hair, streaked hair, dark-skinned female, belt, necktie, elf, hair flower, long sleeves, sidelocks, hooded jacket, open jacket, white hair, french braid, white shirt, pink jacket, puffy sleeves, hood down"
+    },
+    {
+     "label": "loungewear",
+     "trigger": "shiranui flare, shiranui flare \\(loungewear\\)",
+     "tags": "streaked hair, blonde hair, long hair, dark-skinned female, striped clothes, long sleeves, white hair, hair bow, hood up, red eyes, striped socks, animal ears, rabbit hood, orange eyes, twintails, hooded jacket"
+    },
+    {
+     "label": "new year",
+     "trigger": "shiranui flare, shiranui flare \\(new year\\)",
+     "tags": "streaked hair, long hair, dark-skinned female, blonde hair, red gloves, elf, red eyes, hakama skirt, sidelocks, kimono, hair bow, white hair, wide sleeves, long sleeves, red hakama"
+    }
+   ]
+  },
+  {
+   "key": "shirogane-noel",
+   "name": "Shirogane Noel",
+   "jp": "",
+   "emoji": "⚔️",
+   "group": "jp-gen3",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "shirogane noel, shirogane noel \\(1st costume\\)",
+     "tags": "green eyes, grey hair, medium hair, wavy hair, braid, shoulder armor, mole, tiara, brown belt, chest belt, gloves, cleavage cutout"
+    },
+    {
+     "label": "5th costume",
+     "trigger": "shirogane noel, shirogane noel \\(5th costume\\)",
+     "tags": "green eyes, grey hair, ponytail, thigh strap, bare shoulders, belt, black shorts, hair ribbon, braid, medium hair, wide sleeves, wavy hair, choker, blue ribbon, short shorts, shirt, cleavage"
+    },
+    {
+     "label": "7th costume",
+     "trigger": "shirogane noel, shirogane noel \\(7th costume\\)",
+     "tags": "green eyes, grey hair, horns, pelvic curtain, nun, wavy hair, short hair, gauntlets, habit, black thighhighs, pauldrons, black gloves"
+    },
+    {
+     "label": "dirndl",
+     "trigger": "shirogane noel, shirogane noel \\(dirndl\\)",
+     "tags": "green eyes, grey hair, twin braids, hair flower, dirndl, long hair, necklace, short sleeves, blunt bangs, bare shoulders, white shirt, frills, puffy sleeves"
+    },
+    {
+     "label": "casual",
+     "trigger": "shirogane noel, shirogane noel \\(casual\\)",
+     "tags": "green eyes, grey hair, short hair, wavy hair, off-shoulder sweater, white sweater, black choker, hair ribbon, black skirt, bare shoulders, plaid, french braid, ribbed sweater"
+    },
+    {
+     "label": "new year",
+     "trigger": "shirogane noel, shirogane noel \\(new year\\)",
+     "tags": "grey hair, green eyes, blue kimono, floral print, print kimono, hair flower, wide sleeves, braid, short hair, tabi, white socks, zouri, long sleeves, wavy hair, obijime, furisode, hair between eyes"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "shirogane noel, shirogane noel \\(school uniform\\)",
+     "tags": "grey hair, green eyes, clothes around waist, plaid skirt, braid, white shirt, collared shirt, school uniform, pleated skirt, blue skirt, short hair, sweater, loafers, blue necktie, miniskirt, sleeves rolled up"
+    },
+    {
+     "label": "summer 2020",
+     "trigger": "shirogane noel, shirogane noel \\(summer 2020\\)",
+     "tags": "green eyes, grey hair, eyewear on head, navel, sunglasses, short hair, wavy hair, bikini skirt, choker, arm strap, black-framed eyewear, two-tone bikini, bare shoulders, front-tie bikini top, highleg bikini, microskirt, crossed bangs, blue skirt, wrist cuffs"
+    }
+   ]
+  },
+  {
+   "key": "houshou-marine",
+   "name": "Houshou Marine",
+   "jp": "宝鐘マリン",
+   "emoji": "🏴‍☠️",
+   "group": "jp-gen3",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "houshou marine, houshou marine \\(1st costume\\)",
+     "tags": "bicorne, red skirt, white gloves, off shoulder, black thighhighs, black headwear, leotard under clothes, black coat, hair ribbon, red ribbon, long sleeves"
+    },
+    {
+     "label": "8th costume",
+     "trigger": "houshou marine, houshou marine \\(8th costume\\)",
+     "tags": "long hair, heterochromia, yellow eyes, red hair, earrings, wrist scrunchie, red eyes, bare shoulders, covered navel, see-through, nightgown, choker, frills"
+    },
+    {
+     "label": "summer",
+     "trigger": "houshou marine, houshou marine \\(summer\\)",
+     "tags": "heart-shaped eyewear, sunglasses, very long hair, baseball cap, heart earrings, purple-tinted eyewear, pink-tinted eyewear, heterochromia, off shoulder, eyewear on headwear, hooded jacket"
+    },
+    {
+     "label": "nun",
+     "trigger": "houshou marine, houshou marine \\(nun\\)",
+     "tags": "nun, breast curtains, navel, heterochromia, white thighhighs, long sleeves, pelvic curtain"
+    },
+    {
+     "label": "businesswoman",
+     "trigger": "houshou marine, houshou marine \\(businesswoman\\)",
+     "tags": "heterochromia, bodystocking, id card, short hair, fur trim, black gloves, black skirt, beret, black headwear, fur-trimmed coat, sleeveless shirt, black bra, white shirt, see-through cleavage, collared shirt, skin fang"
+    },
+    {
+     "label": "gothic lolita",
+     "trigger": "houshou marine, houshou marine \\(gothic lolita\\)",
+     "tags": "red hair, heterochromia, red eyes, yellow eyes, very long hair, white thighhighs, twintails, corset, hair ribbon, black gloves, hat flower, red dress, top hat, detached sleeves, frilled sleeves, black ribbon, long sleeves, valentine, garter straps, black headwear, bare shoulders, leg ribbon, red ribbon, mini hat, frilled dress, black bow, red flower"
+    },
+    {
+     "label": "marching band",
+     "trigger": "houshou marine, houshou marine \\(marching band\\)",
+     "tags": "heterochromia, multicolored hair, streaked hair, very long hair, elbow gloves, see-through cleavage, hair bun, bare shoulders, thigh boots, single side bun"
+    },
+    {
+     "label": "new year",
+     "trigger": "houshou marine, houshou marine \\(new year\\)",
+     "tags": "heterochromia, red eyes, red hair, yellow eyes, ponytail, detached collar, hair bow, hair flower, long hair, fur trim, wide sleeves, white kimono, off shoulder, pelvic curtain"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "houshou marine, houshou marine \\(school uniform\\)",
+     "tags": "red eyes, red hair, yellow eyes, heterochromia, long hair, white shirt, black headwear, beret, brown pantyhose, black choker, black jacket, school uniform, collared shirt, plaid skirt, pleated skirt, long sleeves, blue bowtie, partially unbuttoned, blue skirt, open jacket, plaid bowtie"
+    },
+    {
+     "label": "1st costume 2",
+     "trigger": "houshou marine",
+     "tags": "houshou kumarine, red hair, yellow eyes, heterochromia, red eyes, long hair, animal costume, paw gloves, animal, hood, black choker, animal ears, hood up"
+    }
+   ]
+  },
+  {
+   "key": "uruha-rushia",
+   "name": "Uruha Rushia",
+   "jp": "潤羽るしあ",
+   "emoji": "🦋",
+   "group": "jp-gen3",
+   "former": true,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "uruha rushia, uruha rushia \\(1st costume\\)",
+     "tags": "skull hair ornament, double bun, green hair, red eyes, short hair, blue dress, detached sleeves, bare shoulders, skull earrings, hair ribbon, blue hair, butterfly print, strapless dress, juliet sleeves, detached collar, gradient hair"
+    }
+   ]
+  },
+  {
+   "key": "amane-kanata",
+   "name": "Amane Kanata",
+   "jp": "天音かなた",
+   "emoji": "💫",
+   "group": "jp-gen4",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "amane kanata, amane kanata \\(1st costume\\)",
+     "tags": "colored inner hair, blue hair, purple eyes, grey hair, angel wings, star halo, bob cut, feathered wings, short hair, long sleeves, single hair intake, asymmetrical hair, asymmetrical bangs, maid headdress, streaked hair, armband, black skirt, sailor collar, mini wings, white wings, blue bow, shirt, frilled skirt, bowtie, white jacket"
+    },
+    {
+     "label": "another world",
+     "trigger": "amane kanata, amane kanata \\(another world\\)",
+     "tags": "long hair, feathered wings, purple eyes, black gloves, grey hair, angel wings, feathers, double bun, thigh strap, colored inner hair, single thighhigh, blue hair, bare shoulders, halo, strapless, black dress, x hair ornament, ribbon, skirt"
+    },
+    {
+     "label": "work",
+     "trigger": "amane kanata, amane kanata \\(work\\)",
+     "tags": "colored inner hair, long hair, grey hair, star halo, blue hair, purple eyes, single hair intake, single thighhigh, angel wings, blue thighhighs, hairclip, black gloves, feathered wings, two side up, single kneehigh, uneven legwear, mismatched legwear, streaked hair, bare shoulders, black socks, asymmetrical bangs, black dress, frills, necklace, mini wings"
+    },
+    {
+     "label": "nurse",
+     "trigger": "amane kanata, amane kanata \\(nurse\\)",
+     "tags": "colored inner hair, blue hair, purple eyes, long hair, grey hair, angel wings, two side up, thigh strap, single hair intake, short sleeves, white dress, streaked hair, star halo, black ribbon, hair ribbon, asymmetrical bangs, feathered wings, mini wings, puffy sleeves, gradient wings"
+    },
+    {
+     "label": "new year",
+     "trigger": "amane kanata, amane kanata \\(new year\\)",
+     "tags": "purple eyes, blue hair, grey hair, single hair intake, colored inner hair, asymmetrical hair, streaked hair, hair flower, detached sleeves, obi, x hair ornament, braid, wide sleeves, short hair, single side bun, pink hair, floral print, single hair bun, long sleeves, blue kimono, frilled sleeves, hairclip, white kimono, asymmetrical bangs"
+    },
+    {
+     "label": "punk rock",
+     "trigger": "amane kanata, amane kanata \\(punk rock\\)",
+     "tags": "blue hair, grey hair, white shirt, fishnet pantyhose, angel wings, halo, t-shirt, hairclip, print shirt, ahoge, blue eyes, thigh strap, feathered wings, streaked hair, character print, black shorts, colored inner hair, x hair ornament, v over mouth, off shoulder, black collar, black choker, platform footwear, single hair intake, single leg pantyhose, short sleeves, loose socks, white wings, asymmetrical legwear"
+    },
+    {
+     "label": "summer",
+     "trigger": "amane kanata, amane kanata \\(summer\\)",
+     "tags": "double bun, purple eyes, grey hair, blue hair, bikini, angel wings, hairclip, feathered wings, navel, streaked hair, bow, colored inner hair, black choker, ahoge, pink hair, see-through"
+    }
+   ]
+  },
+  {
+   "key": "tsunomaki-watame",
+   "name": "Tsunomaki Watame",
+   "jp": "角巻わため",
+   "emoji": "🐏",
+   "group": "jp-gen4",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "tsunomaki watame, tsunomaki watame \\(1st costume\\)",
+     "tags": "sheep girl, watame horns, harp, sheep ears, blonde hair, ahoge, very long hair, hairclip, fur trim, white dress, purple eyes, fur-trimmed dress, bare shoulders, blue eyes, cape, fur-trimmed boots, hair flower, sleeveless dress, high heel boots"
+    },
+    {
+     "label": "watame night fever!!",
+     "trigger": "tsunomaki watame, tsunomaki watame \\(watame night fever!!\\)",
+     "tags": "sheep girl, tsunomaki watame horns, blonde hair, sheep ears, hairclip, white dress, very long hair, ahoge, sleeveless dress"
+    },
+    {
+     "label": "1st solo live",
+     "trigger": "tsunomaki watame, tsunomaki watame \\(1st solo live\\)",
+     "tags": "red gloves, blonde hair, tsunomaki watame horns, purple eyes, sheep ears, sheep girl, half-skirt, ahoge, overskirt, frilled choker, single glove, halter shirt, bare shoulders, very long hair, black skirt, two side up, plaid skirt, miniskirt, black shirt, puffy short sleeves, sleeveless, hair ribbon, red choker, red ribbon, halterneck, wrist cuffs, pleated skirt, see-through, hairclip, detached sleeves, layered skirt"
+    },
+    {
+     "label": "8th costume",
+     "trigger": "tsunomaki watame, tsunomaki watame \\(8th costume\\)",
+     "tags": "purple eyes, blonde hair, sheep ears, sheep girl, navel, midriff, white shorts, tsunomaki watame horns, crop top, open jacket, short shorts, white shirt, sneakers, ahoge, hairclip, white socks, long hair, cropped shirt, choker, puffy long sleeves, multicolored jacket, off shoulder, ribbon, white belt, kneehighs"
+    },
+    {
+     "label": "loungewear",
+     "trigger": "tsunomaki watame, tsunomaki watame \\(loungewear\\)",
+     "tags": "sheep girl, tsunomaki watame horns, blonde hair, sheep ears, ahoge, hairclip, purple eyes, low twintails, blue eyes, white shirt, blue jacket"
+    },
+    {
+     "label": "new year",
+     "trigger": "tsunomaki watame, tsunomaki watame \\(new year\\)",
+     "tags": "sheep girl, tsunomaki watame horns, blonde hair, japanese clothes, sheep ears, purple eyes, ahoge, hair flower, cross-laced footwear, beret, red kimono, hakama skirt, wide sleeves, floral print, print kimono, hair bow, lace-up boots, fur scarf"
+    },
+    {
+     "label": "street casual",
+     "trigger": "tsunomaki watame, tsunomaki watame \\(street casual\\)",
+     "tags": "sheep girl, tsunomaki watame horns, blonde hair, sheep ears, ahoge, hairclip, vertical-striped dress, vertical-striped clothes, headphones around neck, purple eyes, open clothes, aran sweater, cable knit, red choker, open jacket, open cardigan, white skirt, sailor dress, hair ribbon"
+    }
+   ]
+  },
+  {
+   "key": "tokoyami-towa",
+   "name": "Tokoyami Towa",
+   "jp": "常闇トワ",
+   "emoji": "👾",
+   "group": "jp-gen4",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "tokoyami towa, tokoyami towa \\(1st costume\\)",
+     "tags": "long hair, purple hair, green eyes, twintails, white jacket, cropped jacket, streaked hair, fishnet thighhighs, ear piercing, demon tail, black headwear, off shoulder, black shorts, pink hair, midriff, navel piercing, tail piercing, horned headwear, hairclip, short shorts, baseball cap, black choker, crop top, bare shoulders, long sleeves, black tank top, sidelocks, colored inner hair, white belt"
+    },
+    {
+     "label": "5th costume",
+     "trigger": "tokoyami towa, tokoyami towa \\(5th costume\\)",
+     "tags": "green eyes, navel piercing, demon tail, purple hair, see-through sleeves, white shorts, demon wings, white hair, white gloves, short shorts, streaked hair, hood up, long sleeves, thigh belt, thigh strap, demon girl, midriff, pink hair, snap-fit buckle, short hair, thigh pouch, goggles on head, ear piercing, shrug \\(clothing\\), stomach tattoo, translucent armwear"
+    },
+    {
+     "label": "7th costume",
+     "trigger": "tokoyami towa, tokoyami towa \\(7th costume\\)",
+     "tags": "long hair, green eyes, demon tail, purple hair, pink hair, white shorts, leg tattoo, demon girl, capelet, swept bangs, hairclip, tail piercing, short shorts, shirt, ear piercing, colored inner hair"
+    },
+    {
+     "label": "new year",
+     "trigger": "tokoyami towa, tokoyami towa \\(new year\\)",
+     "tags": "green eyes, fishnet gloves, twintails, purple hair, pink hair, hakama skirt, hairclip, checkered kimono, streaked hair, very long hair"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "tokoyami towa, tokoyami towa \\(school uniform\\)",
+     "tags": "green eyes, purple hair, demon tail, long hair, side ponytail, demon wings, ear piercing, black shirt, tail piercing, demon girl, pink hair, hairclip, demon horns, multicolored hair, purple necktie, sidelocks, short sleeves, pleated skirt, miniskirt"
+    },
+    {
+     "label": "break your xxx",
+     "trigger": "tokoyami towa, tokoyami towa \\(break your xxx\\)",
+     "tags": "green eyes, navel, purple hair, ponytail, single garter strap, white gloves, midriff, pink hair, white shorts, short shorts, belt, earrings, very long hair, asymmetrical sleeves, crop top, black choker, fishnet thighhighs, single thighhigh, hair ornament, bracelet, tiara, streaked hair, shirt, single glove, see-through sleeves, single sleeve"
+    },
+    {
+     "label": "jirai kei",
+     "trigger": "tokoyami towa, tokoyami towa \\(jirai kei\\)",
+     "tags": "green eyes, long hair, purple hair, pink hair, demon tail, white socks, black skirt, white shirt, pleated skirt, single side bun, black headwear, horned headwear, sleeves past fingers, collared shirt, hairclip, beret, swept bangs, colored inner hair, sleeveless shirt, x hair ornament, off shoulder, grey cardigan, frilled sleeves, streaked hair, miniskirt, long sleeves, tail piercing, aran sweater, open cardigan, one side up, single hair bun, black ribbon, loose socks, frilled shirt, black bowtie, demon girl, suspender skirt"
+    }
+   ]
+  },
+  {
+   "key": "himemori-luna",
+   "name": "Himemori Luna",
+   "jp": "姫森ルーナ",
+   "emoji": "🍬",
+   "group": "jp-gen4",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "himemori luna, himemori luna \\(1st costume\\)",
+     "tags": "green eyes, purple eyes, heterochromia, candy hair ornament, pink hair, long hair, gradient hair, bracelet, crescent earrings, hair rings, pink dress, single hair ring, one side up, bare shoulders, mini crown, puffy short sleeves"
+    },
+    {
+     "label": "sundress",
+     "trigger": "himemori luna, himemori luna \\(sundress\\)",
+     "tags": "green eyes, purple eyes, heterochromia, pink hair, candy hair ornament, ahoge, mini crown, crescent earrings, blue dress, medium hair, necklace, bracelet, gradient hair, frilled dress, sailor collar, sleeveless, purple hair, short dress"
+    },
+    {
+     "label": "4th costume",
+     "trigger": "himemori luna, himemori luna \\(4th costume\\)",
+     "tags": "green eyes, purple eyes, heterochromia, pink hair, gradient hair, white gloves, long hair, twintails, white thighhighs, blue hair, candy hair ornament, white dress, ahoge, strapless dress, crescent earrings, pearl necklace, black bow"
+    },
+    {
+     "label": "new year",
+     "trigger": "himemori luna, himemori luna \\(new year\\)",
+     "tags": "green eyes, purple eyes, heterochromia, twin braids, pink hair, pink kimono, gradient hair, blue hair, wide sleeves, long hair, beret, purple hair, fur scarf, hair flower, long sleeves, obi, black headwear, fur trim, bow, skirt"
+    }
+   ]
+  },
+  {
+   "key": "kiryu-coco",
+   "name": "Kiryu Coco",
+   "jp": "桐生ココ",
+   "emoji": "🐉",
+   "group": "jp-gen4",
+   "former": true,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "kiryu coco, kiryu coco \\(1st costume\\)",
+     "tags": "orange hair, long hair, kiryu coco horns, dragon tail, hip vent, horn bow, ahoge, dragon girl, red skirt, blonde hair, streaked hair, pointy ears, diagonal-striped bow, cleavage cutout, side-tie skirt, pleated skirt, miniskirt, brooch, white shirt, blunt bangs, black jacket, side braid, collared shirt, purple eyes, single braid, black hairband, gem, dragon wings, fangs, skin fang, multicolored eyes"
+    }
+   ]
+  },
+  {
+   "key": "yukihana-lamy",
+   "name": "Yukihana Lamy",
+   "jp": "雪花ラミィ",
+   "emoji": "☃️",
+   "group": "jp-gen5",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "yukihana lamy, yukihana lamy \\(1st costume\\)",
+     "tags": "blue hair, yellow eyes, hair flower, heart ahoge, white thighhighs, blue skirt, beret, frilled thighhighs, half updo, streaked hair, white headwear, colored tips, cleavage cutout, blue coat, white shirt, side braid, elf, sleeveless shirt, corset, center frills, fur-trimmed boots, off shoulder, fur-trimmed coat, bare shoulders, belt, white flower, high heel boots, very long hair, pleated skirt, blue bowtie"
+    },
+    {
+     "label": "new year",
+     "trigger": "yukihana lamy, yukihana lamy \\(new year\\)",
+     "tags": "heart ahoge, cat ears, blue hair, cat tail, yellow eyes, long hair, streaked hair, colored tips, floral print, pointy ears, snowing, print kimono, cat girl, hair ornament, wide sleeves, blue kimono, low twintails, animal ear fluff, hakama skirt, long sleeves, obi"
+    },
+    {
+     "label": "loungewear",
+     "trigger": "yukihana lamy, yukihana lamy \\(loungewear\\)",
+     "tags": "blue hair, heart ahoge, yellow eyes, striped jacket, white camisole, slippers, sleepwear, elf, striped clothes, fur-trimmed jacket, long sleeves, pajamas, streaked hair, bare shoulders, frilled camisole, off shoulder, hairclip, open clothes, very long hair, frills, colored tips, blue jacket"
+    },
+    {
+     "label": "casual",
+     "trigger": "yukihana lamy, yukihana lamy \\(casual\\)",
+     "tags": "heart ahoge, blue hair, yellow eyes, pointy ears, twintails, off shoulder, black socks, hair ribbon, black ribbon, head tilt, brown dress, vertical-striped socks, streaked hair, long sleeves, plaid dress, frilled dress, very long hair, sleeveless, necklace, vertical-striped clothes, open jacket, bow, open cardigan"
+    },
+    {
+     "label": "5th costume",
+     "trigger": "yukihana lamy, yukihana lamy \\(5th costume\\)",
+     "tags": "yellow eyes, blue hair, elf, ponytail, very long hair, wrist cuffs, dress, white socks, bow, necktie"
+    }
+   ]
+  },
+  {
+   "key": "momosuzu-nene",
+   "name": "Momosuzu Nene",
+   "jp": "桃鈴ねね",
+   "emoji": "🍑🥟",
+   "group": "jp-gen5",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "momosuzu nene, momosuzu nene \\(1st costume\\)",
+     "tags": "green eyes, blonde hair, cleavage cutout, frilled shirt, long hair, bear ears, multicolored bow, paw gloves, hair flower, orange shirt, corset, brown bowtie, yellow bowtie, cutout above navel, gradient hair, underbust, two side up, orange bowtie, pink hair, arm garter, v-shaped eyebrows, sleeveless shirt, neck bell, bare shoulders, jingle bell"
+    },
+    {
+     "label": "casual",
+     "trigger": "momosuzu nene, momosuzu nene \\(casual\\)",
+     "tags": "green eyes, side ponytail, long hair, plaid skirt, sleeves past fingers, pink hair, hairclip, blonde hair, pom pom hair ornament, red skirt, white sailor collar, white socks, long sleeves, gradient hair, white shirt, brown cardigan, sweater, frills"
+    },
+    {
+     "label": "cheerleader",
+     "trigger": "momosuzu nene, momosuzu nene \\(cheerleader\\)",
+     "tags": "visor cap, blonde hair, green eyes, inline skates, cheerleader, navel, pink skirt, pink hair, gradient hair, long hair, miniskirt, pink sash, sideways hat, hairclip, white thighhighs, midriff, single hair ring, frilled skirt, sticker on face, layered skirt, bow, crop top overhang, shirt, heart hair ornament, black sports bra, arm garter, white tank top, facial mark"
+    },
+    {
+     "label": "new year",
+     "trigger": "momosuzu nene, momosuzu nene \\(new year\\)",
+     "tags": "blonde hair, green eyes, short hair, hair flower, floral print, white gloves, hair bow, bob cut, off shoulder, frills, kanzashi, hakama skirt, bare shoulders, obi, white shirt, steepled fingers, ribbon, blunt bangs, black bow, print kimono, white kimono, gradient hair, sleeveless shirt"
+    }
+   ]
+  },
+  {
+   "key": "shishiro-botan",
+   "name": "Shishiro Botan",
+   "jp": "獅白ぼたん",
+   "emoji": "♌",
+   "group": "jp-gen5",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "shishiro botan, shishiro botan \\(1st costume\\)",
+     "tags": "lion ears, grey hair, long hair, lion girl, grey eyes, lion tail, fur-trimmed jacket, navel, two side up, black jacket, grey skirt, single leg pantyhose, black pantyhose, torn pantyhose, sleeveless shirt, see-through cleavage, miniskirt, black shirt, off shoulder, midriff, necklace, ahoge, o-ring thigh strap, bare shoulders, open jacket, messy hair, sleeves past wrists, high heel boots, ear piercing, long sleeves, fangs, crop top"
+    },
+    {
+     "label": "button-down",
+     "trigger": "shishiro botan, shishiro botan \\(button-down\\)",
+     "tags": "lion girl, lion ears, long hair, black shorts, ear piercing, grey hair, lion tail, ahoge, black sports bra, grey eyes, dog tags, short shorts, bare shoulders, o-ring thigh strap"
+    },
+    {
+     "label": "5th costume",
+     "trigger": "shishiro botan, shishiro botan \\(5th costume\\)",
+     "tags": "long hair, cape, detached sleeves, white dress, grey hair, blonde hair, multicolored hair, grey hair, bow, ahoge, blue eyes, night, green eyes, detached collar, lion ears"
+    },
+    {
+     "label": "casual",
+     "trigger": "shishiro botan, shishiro botan \\(casual\\)",
+     "tags": "grey hair, lion ears, white shirt, grey eyes, ahoge, off shoulder, lion girl, game controller, t-shirt, very long hair, single bare shoulder, naked shirt, animal ear piercing, indian style, short sleeves"
+    },
+    {
+     "label": "new year",
+     "trigger": "shishiro botan, shishiro botan \\(new year\\)",
+     "tags": "lion ears, double bun, lion girl, grey hair, ahoge, lion tail, grey eyes, ear piercing, tabi, sleeves past fingers, bare shoulders, white kimono, okobo, white socks, platform footwear, sleeveless kimono, wide sleeves, fur-trimmed kimono, off shoulder, short kimono, long sleeves, medium hair, obijime, two side up, hair flower"
+    }
+   ]
+  },
+  {
+   "key": "omaru-polka",
+   "name": "Omaru Polka",
+   "jp": "尾丸ポルカ",
+   "emoji": "🎪",
+   "group": "jp-gen5",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "omaru polka, omaru polka \\(1st costume\\)",
+     "tags": "fox ears, purple eyes, fox girl, single glove, animal ear fluff, bare shoulders, navel cutout, facial mark, bowtie, thighhighs, ahoge, elbow gloves, red bow, diamond \\(shape\\), blue bow, choker, striped clothes, blonde hair, pink hair, black hair, streaked hair, long hair, hair over shoulder, diamond hair ornament, hair bow, x hair ornament, hairclip, single braid, side braid, spade hair ornament, heart hair ornament, club \\(shape\\)"
+    },
+    {
+     "label": "5th costume",
+     "trigger": "omaru polka, omaru polka \\(5th costume\\)",
+     "tags": "fox ears, fox tail, blonde hair, long hair, navel, plaid jacket, eyewear on head, fox girl, red shorts, streaked hair, crop top, pink hair, ahoge, red jacket, midriff, animal ear fluff, white shirt, necklace, sunglasses, earrings, black choker, thigh boots, purple eyes, facial mark, cropped shirt, extra ears, off shoulder, heart-shaped eyewear, open jacket, black belt, black thighhighs, short shorts, short sleeves"
+    },
+    {
+     "label": "street casual",
+     "trigger": "omaru polka, omaru polka \\(street casual\\)",
+     "tags": "streaked hair, blonde hair, purple eyes, hat, pink hair, brown jacket, white shirt, long sleeves, brown headwear, off shoulder, blue skirt, fox ears, open clothes, shoulder cutout"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "omaru polka, omaru polka \\(school uniform\\)",
+     "tags": "fox ears, blonde hair, fox tail, fox girl, streaked hair, pink hair, purple eyes, school uniform, bowtie, white shirt, animal ear fluff, very long hair, clothes around waist, hair bow, hairclip, red skirt, blue hair, ponytail, pleated skirt, loose socks, white socks, long sleeves, ahoge, kogal, collared shirt, black hair, blue bow"
+    },
+    {
+     "label": "new year",
+     "trigger": "omaru polka, omaru polka \\(new year\\)",
+     "tags": "fox ears, blonde hair, purple eyes, streaked hair, pink hair, fox girl, fox tail, hair bow, bangs pinned back, hair ornament, long hair, bare shoulders, forehead, kimono, blue hair, animal ear fluff, ponytail, blue bow, off shoulder"
+    }
+   ]
+  },
+  {
+   "key": "mano-aloe",
+   "name": "Mano Aloe",
+   "jp": "魔乃アロエ",
+   "emoji": "👅",
+   "group": "jp-gen5",
+   "former": true,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "mano aloe, mano aloe \\(1st costume\\)",
+     "tags": "pointy ears, headphones around neck, chest harness, green eyes, pink hair, mano aloe horns, long hair, blonde hair, two-tone hair, colored inner hair, hair ornament, wrist cuffs, bare shoulders, tail, hair between eyes, thigh strap, demon girl, sleeveless shirt, horn bow, bowtie, purple bow, arm strap, frills, hair bow, fangs, white shirt"
+    }
+   ]
+  },
+  {
+   "key": "la-darknesss",
+   "name": "La+ Darknesss",
+   "jp": "ラプラス・ダークネス",
+   "emoji": "🛸💜",
+   "group": "jp-gen6",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "la+ darknesss, la+ darknesss \\(1st costume\\)",
+     "tags": "streaked hair, yellow eyes, sleeves past fingers, purple hair, ahoge, pointy ears, la+ darknesss horns, very long hair, braid, metal collar, long sleeves, yellow ascot, purple coat, tail, belt, demon girl, side slit"
+    },
+    {
+     "label": "4th costume",
+     "trigger": "la+ darknesss, la+ darknesss \\(4th costume\\)",
+     "tags": "yellow eyes, purple hair, pointy ears, streaked hair, ahoge, grey hair, thigh strap, navel, twintails, very long hair, open jacket, la+ darknesss horns, long sleeves, black sailor collar, neckerchief, white jacket, white shirt, tattoo, black shorts, black panties, crop top"
+    },
+    {
+     "label": "casual",
+     "trigger": "la+ darknesss, la+ darknesss \\(casual\\)",
+     "tags": "crescent hair ornament, purple necktie, streaked hair, sparkle hair ornament, yellow eyes, purple hair, black jacket, purple choker, short hair, ahoge, grey hair, purple skirt, pointy ears, cross hair ornament, plaid skirt, navel, black belt, ear piercing, la+ darknesss horns, cropped shirt, flame print, white shirt, collared shirt, open jacket, midriff, long sleeves, pleated skirt"
+    },
+    {
+     "label": "new year",
+     "trigger": "la+ darknesss, la+ darknesss \\(new year\\)",
+     "tags": "character print, pointy ears, yellow eyes, streaked hair, purple hair, twintails, braid, very long hair, grey hair, jingle bell, la+ darknesss horns, print kimono, floral print, hair bell, sash, long sleeves"
+    }
+   ]
+  },
+  {
+   "key": "takane-lui",
+   "name": "Takane Lui",
+   "jp": "鷹嶺ルイ",
+   "emoji": "🥀",
+   "group": "jp-gen6",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "takane lui, takane lui \\(1st costume\\)",
+     "tags": "pink hair, high-waist shorts, short hair, thigh strap, white shirt, pantyhose under shorts, puffy long sleeves, black gloves, hair wings, black shorts, necktie, brown pantyhose, taut clothes, yellow eyes, multicolored hair, collared shirt, head wings, orange eyes, red coat"
+    },
+    {
+     "label": "4th costume",
+     "trigger": "takane lui, takane lui \\(4th costume\\)",
+     "tags": "blue eyes, pink hair, short hair, black gloves, thigh strap, black shorts, long sleeves, black shirt, garter straps, braid, jacket"
+    },
+    {
+     "label": "casual",
+     "trigger": "takane lui, takane lui \\(casual\\)",
+     "tags": "blue eyes, short hair, pink hair, black shirt, puffy long sleeves, red ribbon, black-framed eyewear, round eyewear, bespectacled, see-through sleeves, neck ribbon, red skirt, choker"
+    },
+    {
+     "label": "new year",
+     "trigger": "takane lui, takane lui \\(new year\\)",
+     "tags": "long hair, pink hair, blue eyes, bow, black hairband, black kimono, obi, long sleeves, choker, hair ornament, wide sleeves"
+    }
+   ]
+  },
+  {
+   "key": "hakui-koyori",
+   "name": "Hakui Koyori",
+   "jp": "博衣こより",
+   "emoji": "🧪",
+   "group": "jp-gen6",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "hakui koyori, hakui koyori \\(1st costume\\)",
+     "tags": "lab coat, animal ears, pink hair, thighhighs, long hair, wolf ears, white shirt, crossed bangs, antenna hair, hexagon hair ornament, double bun, pink tail"
+    },
+    {
+     "label": "summer",
+     "trigger": "hakui koyori, hakui koyori \\(summer\\)",
+     "tags": "wolf ears, wolf tail, pink hair, wolf girl, purple eyes, underboob, frilled choker, braid, bridal garter, hair ornament, armlet, antenna hair, animal ear fluff, white choker, pink ribbon, bare shoulders, pink choker, bikini, pink bow, bloomers, extra ears, medium hair, bracelet, white skirt"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "hakui koyori, hakui koyori \\(school uniform\\)",
+     "tags": "pink hair, wolf ears, long hair, antenna hair, wolf girl, animal ear fluff, sailor collar, wolf tail, purple eyes, white shirt, white socks, hairclip, pink cardigan, pink bow, bandaid on leg, hair ribbon, plaid skirt, long sleeves, pleated skirt, frilled socks, serafuku, bowtie, o-ring thigh strap, kneehighs, open cardigan, pink ribbon, black choker"
+    },
+    {
+     "label": "new year",
+     "trigger": "hakui koyori, hakui koyori \\(new year\\)",
+     "tags": "pink hair, purple eyes, wolf ears, wolf tail, braid, detached sleeves, frills, hair flower, hair bun, bow, animal ear fluff, obi, choker, wolf girl, floral print, vertical-striped kimono, print kimono, kanzashi, white kimono"
+    }
+   ]
+  },
+  {
+   "key": "sakamata-chloe",
+   "name": "Sakamata Chloe",
+   "jp": "沙花叉クロヱ",
+   "emoji": "🎣",
+   "group": "jp-gen6",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "sakamata chloe, sakamata chloe \\(1st costume\\)",
+     "tags": "red eyes, grey hair, hood up, black gloves, torn thighhighs, plaid bow, black hair, x hair ornament, streaked hair, plaid skirt, black jacket, garter straps, red skirt, belt, red bow, medium hair, miniskirt, animal hood, bare shoulders, collar, open jacket, white camisole, off-shoulder jacket, black thighhighs"
+    },
+    {
+     "label": "jirai kei",
+     "trigger": "sakamata chloe, sakamata chloe \\(jirai kei\\)",
+     "tags": "twin drills, two-sided coat, red eyes, bandaid hair ornament, cleavage cutout, fishnet thighhighs, two-sided fabric, black hair, frilled dress, black dress, grey hair, black bow, x hair ornament, sleeveless dress, black coat, hair bow, streaked hair, heart cutout, o-ring thigh strap, medium hair, black thighhighs, red coat, bandaid on leg, black belt"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "sakamata chloe, sakamata chloe \\(school uniform\\)",
+     "tags": "red eyes, grey hair, black hair, x hair ornament, ear piercing, streaked hair, white shirt, red skirt, plaid skirt, long hair, pleated skirt, long sleeves, school uniform, collared shirt, skirt lift, red bowtie, open clothes, skin fang, hairclip, black choker, pink jacket, earrings, belt, miniskirt"
+    },
+    {
+     "label": "new year",
+     "trigger": "sakamata chloe, sakamata chloe \\(new year\\)",
+     "tags": "red eyes, grey hair, streaked hair, black hair, black choker, chest sarashi, hair flower, white kimono, off shoulder, bare shoulders, tassel, single hair bun, long sleeves, bow, single side bun, seigaiha, frilled kimono, sash, thigh strap, braid"
+    }
+   ]
+  },
+  {
+   "key": "kazama-iroha",
+   "name": "Kazama Iroha",
+   "jp": "風真いろは",
+   "emoji": "🍃",
+   "group": "jp-gen6",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "kazama iroha, kazama iroha \\(1st costume\\)",
+     "tags": "blonde hair, chest sarashi, black gloves, white thighhighs, ponytail, haori, pleated skirt, black hairband, long sleeves, wide sleeves, aqua eyes, hakama, leaf hair ornament, medium hair"
+    },
+    {
+     "label": "street",
+     "trigger": "kazama iroha, kazama iroha \\(street\\)",
+     "tags": "letterman jacket, backwards hat, blonde hair, navel, braid, baseball cap, pink jacket, long hair, cropped shirt, thigh strap, midriff, crop top, white headwear, short shorts, hair bow, belt, denim shorts, aqua eyes, blue eyes, long sleeves, white shirt, open clothes, leaf hair ornament"
+    },
+    {
+     "label": "new year",
+     "trigger": "kazama iroha, kazama iroha \\(new year\\)",
+     "tags": "blonde hair, blue eyes, hakama skirt, twintails, frills, hair ornament, raccoon ears, orange kimono, tanuki, medium hair"
+    }
+   ]
+  },
+  {
+   "key": "hiodoshi-ao",
+   "name": "Hiodoshi Ao",
+   "jp": "火威青",
+   "emoji": "🖋️",
+   "group": "jp-regloss",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "hidoshi ao, hidoshi ao \\(1st costume\\)",
+     "tags": "mole under mouth, blue hair, blue eyes, grey jacket, black pants, collared shirt, black belt, long sleeves, blue shirt, earrings, chain necklace, medium hair, black shirt, androgynous, short hair, open clothes, vertical-striped jacket, ear piercing, tomboy"
+    }
+   ]
+  },
+  {
+   "key": "otonose-kanade",
+   "name": "Otonose Kanade",
+   "jp": "音乃瀬奏",
+   "emoji": "🎹✨",
+   "group": "jp-regloss",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "otonose kanade, otonose kanade \\(1st costume\\)",
+     "tags": "musical note hair ornament, long hair, blonde hair, ahoge, white jacket, brown dress, red eyes, one side up, red ribbon, long sleeves, hair ribbon, frills, red bow, open jacket, plaid dress"
+    }
+   ]
+  },
+  {
+   "key": "ichijou-ririka",
+   "name": "Ichijou Ririka",
+   "jp": "一条莉々華",
+   "emoji": "🌃",
+   "group": "jp-regloss",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "ichijou ririka, ichijou ririka \\(1st costume\\)",
+     "tags": "orange eyes, orange hair, eyewear on head, ahoge, white belt, pink shirt, blue skirt, gold earrings, long hair, sunglasses, hairpin, purple skirt, center frills, fur jacket, fur coat, sleeveless shirt, multicolored hair, bra, thigh strap, single earring, bare shoulders"
+    }
+   ]
+  },
+  {
+   "key": "juufuutei-raden",
+   "name": "Juufuutei Raden",
+   "jp": "儒烏風亭らでん",
+   "emoji": "🐚",
+   "group": "jp-regloss",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "juufuutei raden, juufuutei raden \\(1st costume\\)",
+     "tags": "black hair, black gloves, long hair, streaked hair, blunt bangs, blue eyes, black choker, gothic, black dress, grey hair, lace-trimmed choker, two-tone hair, sidelocks, frills, lace choker, lace trim, black ascot, green dress"
+    }
+   ]
+  },
+  {
+   "key": "todoroki-hajime",
+   "name": "Todoroki Hajime",
+   "jp": "轟はじめ",
+   "emoji": "🐧⚡️",
+   "group": "jp-regloss",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "todoroki hajime, todoroki hajime \\(1st costume\\)",
+     "tags": "purple eyes, blonde hair, two side up, streaked hair, purple hair, short hair, purple choker, white shirt, white jacket"
+    }
+   ]
+  },
+  {
+   "key": "a-chan",
+   "name": "A-Chan",
+   "jp": "えーちゃん",
+   "emoji": "👓",
+   "group": "jp-other",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "a-chan \\(hololive\\)",
+     "tags": "blue hair, glasses, hair bow, short hair, black jacket, black-framed eyewear, lanyard, blue eyes, black shirt, blue bow, open jacket, office lady, long sleeves, white pants, blazer"
+    }
+   ]
+  },
+  {
+   "key": "harusaki-nodoka",
+   "name": "Harusaki Nodoka",
+   "jp": "春先のどか",
+   "emoji": "📝",
+   "group": "jp-other",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "harusaki nodoka",
+     "tags": "brown hair, ahoge, short hair, white shirt, green cardigan, collared shirt, hairclip, id card, lanyard, red eyes, long sleeves, v-shaped eyebrows, dress shirt"
+    }
+   ]
+  },
+  {
+   "key": "pekomama",
+   "name": "Pekomama",
+   "jp": "ぺこらマミー",
+   "emoji": "🐰🍳",
+   "group": "jp-other",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "usada pekora",
+     "tags": "pekomama, rabbit ears, rabbit tail, animal ear fluff, rabbit girl, mature female, hair over shoulder, bare shoulders, streaked hair, thick eyebrows, white sleeves, white dress"
+    }
+   ]
+  },
+  {
+   "key": "mori-calliope",
+   "name": "Mori Calliope",
+   "jp": "",
+   "emoji": "💀",
+   "group": "en-myth",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "mori calliope, mori calliope \\(1st costume\\)",
+     "tags": "pink hair, long hair, veil, tiara, pink eyes, high heels, black dress, black thighhighs, anklet, cape"
+    },
+    {
+     "label": "party dress",
+     "trigger": "mori calliope, mori calliope \\(party dress\\)",
+     "tags": "pink hair, long hair, skull, red eyes, red dress, strapless, rose"
+    },
+    {
+     "label": "sleepwear",
+     "trigger": "mori calliope, mori calliope \\(sleepwear\\)",
+     "tags": "pink hair, twintails, long hair, skull hair ornament, pink eyes, tiara, black dress, red eyes, skull earrings, bare shoulders, blunt bangs"
+    },
+    {
+     "label": "streetwear",
+     "trigger": "mori calliope, mori calliope \\(streetwear\\)",
+     "tags": "pink hair, hoop earrings, navel, black headwear, black pants, necklace, skull print, ponytail, crop top, midriff, red eyes, baseball cap, pink eyes, very long hair, fishnets, white shirt, black jacket, off shoulder, skull and crossbones, open jacket, red jacket"
+    },
+    {
+     "label": "new underworld order",
+     "trigger": "mori calliope, mori calliope \\(new underworld order\\)",
+     "tags": "long hair, pink hair, headphones around neck, pants, black jacket, pink eyes, baseball cap, red eyes, black headwear, electric guitar, shirt, backwards hat, open jacket, music, necklace, black choker, long sleeves"
+    },
+    {
+     "label": "sheriff",
+     "trigger": "mori calliope, mori calliope \\(sheriff\\)",
+     "tags": "cowboy hat, pink hair, long hair, cowboy western, red eyes, cowboy boots, thighhighs, necktie, white shirt, skull, jacket"
+    },
+    {
+     "label": "sleepwear 2",
+     "trigger": "mori calliope, mori calliope \\(sleepwear\\)",
+     "tags": "messy hair, nightgown, sleep mask, pink hair, long hair, black choker, pink eyes, bare shoulders, covered navel, black mask, sleepwear, bare arms, mask on head"
+    },
+    {
+     "label": "9th costume",
+     "trigger": "mori calliope, mori calliope \\(9th costume\\)",
+     "tags": "rabbit ears, pink hair, long hair, fake animal ears, torn pantyhose, playboy bunny, headphones, fur-trimmed jacket, red eyes, black pantyhose, belt, shorts, bare shoulders, black leotard"
+    }
+   ]
+  },
+  {
+   "key": "takanashi-kiara",
+   "name": "Takanashi Kiara",
+   "jp": "",
+   "emoji": "🐔",
+   "group": "en-myth",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "takanashi kiara, takanashi kiara \\(1st costume\\)",
+     "tags": "orange hair, navel, orange skirt, detached sleeves, purple eyes, white thighhighs, long hair, feather earrings, miniskirt, beret, midriff, belt, white headwear, orange headwear, orange shirt, bow, gradient hair"
+    },
+    {
+     "label": "party dress",
+     "trigger": "takanashi kiara, takanashi kiara \\(party dress\\)",
+     "tags": "orange hair, feather earrings, red dress, long hair, bare shoulders, purple eyes, frilled dress, gradient hair, sleeveless dress, swept bangs, wings, blue feathers, folded wings"
+    },
+    {
+     "label": "casual",
+     "trigger": "takanashi kiara, takanashi kiara \\(casual\\)",
+     "tags": "twin braids, orange hair, eyewear on head, sunglasses, green choker, navel, multicolored hair, purple eyes, straw hat, side-tie bikini bottom, halterneck, green bikini, sun hat, green hair, string bikini, long hair, open shirt, feather earrings, long sleeves, bikini under clothes"
+    },
+    {
+     "label": "dirndl",
+     "trigger": "takanashi kiara, takanashi kiara \\(dirndl\\)",
+     "tags": "orange hair, green dress, multicolored hair, dirndl, bird on head, purple eyes, see-through sleeves, feather earrings, braid, short sleeves, hair flower, green hair, choker"
+    },
+    {
+     "label": "fever night",
+     "trigger": "takanashi kiara, takanashi kiara \\(fever night\\)",
+     "tags": "orange hair, multicolored hair, ponytail, purple eyes, purple pantyhose, green hair, long sleeves, bare shoulders, blue sweater, bikini under clothes, halterneck, hairband, long hair, off-shoulder sweater, shirt"
+    },
+    {
+     "label": "knight",
+     "trigger": "takanashi kiara, takanashi kiara \\(knight\\)",
+     "tags": "orange hair, long hair, ponytail, purple eyes, multicolored hair, gauntlets, high heels, thighhighs, feathers, thigh strap, black skirt, earrings"
+    },
+    {
+     "label": "new year",
+     "trigger": "takanashi kiara, takanashi kiara \\(new year\\)",
+     "tags": "orange hair, purple eyes, earrings, hair flower, twintails, long hair, white kimono, wide sleeves, floral print, choker, long sleeves, animal print, bow, sash"
+    }
+   ]
+  },
+  {
+   "key": "ninomae-ina-nis",
+   "name": "Ninomae Ina'nis",
+   "jp": "",
+   "emoji": "🐙",
+   "group": "en-myth",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "ninomae ina'nis, ninomae ina'nis \\(1st costume\\)",
+     "tags": "tentacle hair, blunt bangs, gradient hair, very long hair, pointy ears, sidelocks, halo, orange hair, blue eyes, tentacles, black dress, purple hair, low wings, black gloves, single detached sleeve, strapless dress, bare shoulders, fur trim, mole"
+    },
+    {
+     "label": "loungewear",
+     "trigger": "ninomae ina'nis, ninomae ina'nis \\(loungewear\\)",
+     "tags": "headphones around neck, short hair, pointy ears, black shorts, white shirt, purple hair, nintendo switch, blue eyes, t-shirt, short shorts, short sleeves, blunt bangs, couch, sidelocks, mole under eye, bob cut, bare legs"
+    },
+    {
+     "label": "pastry chef",
+     "trigger": "ninomae ina'nis, ninomae ina'nis \\(pastry chef\\)",
+     "tags": "tentacle hair, orange hair, whisk, sidelocks, gradient hair, pointy ears, purple hair, blunt bangs, dress, purple eyes, long sleeves, cake, mole under eye, bow, very long hair, white apron, puffy sleeves, maid"
+    },
+    {
+     "label": "casual",
+     "trigger": "ninomae ina'nis, ninomae ina'nis \\(casual\\)",
+     "tags": "pointy ears, glasses, gradient hair, tentacle hair, purple hair, orange hair, sidelocks, beret, long sleeves, tentacles, blunt bangs, purple eyes, black dress, mole under eye, very long hair, pinafore dress, neck ribbon, purple shirt, black ribbon, pleated dress, purple sweater, sleeves past wrists"
+    },
+    {
+     "label": "new year",
+     "trigger": "ninomae ina'nis, ninomae ina'nis \\(new year\\)",
+     "tags": "pointy ears, braided bun, long hair, double bun, hair flower, black gloves, tentacles, sidelocks, mole under eye, black hair, purple eyes, floral print, statue, purple kimono, purple hair, long sleeves, obi, wide sleeves, print kimono, blunt bangs, black kimono"
+    }
+   ]
+  },
+  {
+   "key": "gawr-gura",
+   "name": "Gawr Gura",
+   "jp": "",
+   "emoji": "🔱",
+   "group": "en-myth",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "gawr gura, gawr gura \\(1st costume\\)",
+     "tags": "shark tail, sharp teeth, blue eyes, shark hood, fins, shark girl, blue hair, grey hair, streaked hair, blue hoodie, wide sleeves, blunt bangs, medium hair, hood up"
+    },
+    {
+     "label": "party dress",
+     "trigger": "gawr gura, gawr gura \\(party dress\\)",
+     "tags": "trident, blue eyes, blue hair, greco-roman clothes, streaked hair, ancient greek clothes, sharp teeth, shark tail, fins, grey hair, white dress, toga, shark girl, hair ornament, two side up, medium hair, bare shoulders, gladiator sandals, blunt bangs, fall"
+    },
+    {
+     "label": "casual",
+     "trigger": "gawr gura, gawr gura \\(casual\\)",
+     "tags": "shark tail, sharp teeth, blue eyes, fins, blue hair, shark girl, cat ears, streaked hair, grey hair, side ponytail, white shirt, blue dress, short sleeves, animal ear fluff, cube hair ornament, blunt bangs, medium hair, sidelocks"
+    },
+    {
+     "label": "new year",
+     "trigger": "gawr gura, gawr gura \\(new year\\)",
+     "tags": "shark tail, sharp teeth, streaked hair, blue eyes, fins, blue hair, detached sleeves, shark girl, blue kimono, grey hair, hamaya, two side up, new year, blunt bangs, tail ornament, hair ornament, wide sleeves, medium hair, obi, frills, ahoge, long sleeves, sleeveless kimono, fur collar, skirt"
+    },
+    {
+     "label": "school uniform",
+     "trigger": "gawr gura, gawr gura \\(school uniform\\)",
+     "tags": "shark tail, shark girl, fins, sharp teeth, blue hair, streaked hair, squatting, hair ornament, blue skirt, blue eyes, long hair, pleated skirt, short sleeves, yellow vest, grey hair, blunt bangs, white shirt, white socks, on desk, bike shorts under skirt, serafuku, neckerchief, sailor collar, white hair, black shorts"
+    }
+   ]
+  },
+  {
+   "key": "watson-amelia",
+   "name": "Watson Amelia",
+   "jp": "",
+   "emoji": "🔎",
+   "group": "en-myth",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "watson amelia, watson amelia \\(1st costume\\)",
+     "tags": "blonde hair, blue eyes, bob cut, red necktie, hair ornament, plaid skirt, white shirt, deerstalker, collared shirt, high-waist skirt, thigh strap, brown skirt, short hair, long sleeves, brown headwear, black thighhighs, coat, pocket watch, brown thighhighs, holster, brown capelet, pleated skirt"
+    },
+    {
+     "label": "astronaut",
+     "trigger": "watson amelia, watson amelia \\(astronaut\\)",
+     "tags": "spacesuit, blonde hair, blue eyes, astronaut, space helmet, gloves, headset, double bun, short hair, single bare shoulder, black tube top"
+    },
+    {
+     "label": "street casual",
+     "trigger": "watson amelia, watson amelia \\(street casual\\)",
+     "tags": "blonde hair, blue eyes, pocket watch, hair ornament, black skirt, off-shoulder shirt, black pantyhose, white shirt, bob cut, short hair, bare shoulders"
+    },
+    {
+     "label": "new year",
+     "trigger": "watson amelia, watson amelia \\(new year\\)",
+     "tags": "blonde hair, blue eyes, fish print, goldfish, bagged fish, blue kimono, long hair, hakama skirt, twintails, hair ribbon, wide sleeves, print kimono, floral print"
+    },
+    {
+     "label": "party dress",
+     "trigger": "watson amelia, watson amelia \\(party dress\\)",
+     "tags": "blonde hair, blue eyes, earrings, black dress, thigh strap, see-through, single hair bun"
+    },
+    {
+     "label": "street casual 2",
+     "trigger": "watson amelia, watson amelia \\(street casual\\)",
+     "tags": "blonde hair, black skirt, glasses, blue eyes, white shirt, black-framed eyewear, round eyewear, key necklace, black headwear, black pantyhose, cabbie hat, plaid jacket, zipper, suspender skirt, long sleeves, medium hair, off-shoulder shirt, brown jacket, bob cut, brown coat, black ribbon, bare shoulders, brown pantyhose, pleated skirt, short hair, open jacket, frilled shirt"
+    }
+   ]
+  },
+  {
+   "key": "irys",
+   "name": "IRyS",
+   "jp": "",
+   "emoji": "💎",
+   "group": "en-hope",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "irys \\(hololive\\)",
+     "tags": "irys \\(hololive\\) \\(1st costume\\), heterochromia, pointy ears, horns, white dress, blue eyes, detached sleeves, purple hair, very long hair, star halo, purple eyes, dress flower, pink eyes, streaked hair, bare shoulders, fangs, sleeveless dress, two-tone hair, earrings, hair between eyes"
+    },
+    {
+     "label": "casualrys",
+     "trigger": "irys \\(hololive\\), irys \\(casualrys\\) \\(hololive\\)",
+     "tags": "pointy ears, horns, gold necklace, beret, white dress, lace-trimmed choker, blue eyes, black choker, white headwear, earrings, open cardigan, purple hair, crystal wings, black bow, fangs, streaked hair, brown cardigan, bracelet"
+    },
+    {
+     "label": "gaming casual",
+     "trigger": "irys \\(hololive\\), irys \\(gaming casual\\) \\(hololive\\)",
+     "tags": "horns, heterochromia, pointy ears, purple hair, library, twin braids, pleated skirt, blue eyes, long hair, crystal wings, long sleeves, sailor collar, black serafuku, halo, reading, neckerchief, hair over shoulder, black shirt, streaked hair, detached wings, blue serafuku, blue skirt, black skirt, purple eyes"
+    },
+    {
+     "label": "new year",
+     "trigger": "irys \\(hololive\\), irys \\(new year\\) \\(hololive\\)",
+     "tags": "heterochromia, pointy ears, blue eyes, long hair, horns, star halo, hair flower, wide sleeves, obi, purple eyes, crystal wings, purple hair, twintails, multicolored kimono, long sleeves, pink eyes, streaked hair, floral print, print kimono"
+    }
+   ]
+  },
+  {
+   "key": "ceres-fauna",
+   "name": "Ceres Fauna",
+   "jp": "",
+   "emoji": "🌿",
+   "group": "en-promise",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "ceres fauna, ceres fauna \\(1st costume\\)",
+     "tags": "green hair, ceres fauna horns, yellow eyes, hair flower, mole under eye, dress, braided bangs, multicolored hair, single braid, long hair"
+    },
+    {
+     "label": "goth",
+     "trigger": "ceres fauna, ceres fauna \\(goth\\)",
+     "tags": "green hair, yellow eyes, long hair, mole under eye, black choker, ceres fauna horns, earrings, black thighhighs, black dress, hairclip, bare shoulders, detached sleeves, gem"
+    },
+    {
+     "label": "jirai kei",
+     "trigger": "ceres fauna, ceres fauna \\(jirai kei\\)",
+     "tags": "yellow eyes, ceres fauna horns, green hair, jirai kei, white shirt, apple, long hair, black skirt, earrings, high-waist skirt, black choker, long sleeves, mole under eye, frills, braid, open cardigan, black ribbon, hair ornament, hair ribbon"
+    },
+    {
+     "label": "new year",
+     "trigger": "ceres fauna, ceres fauna \\(new year\\)",
+     "tags": "hair flower, green hair, ceres fauna horns, yellow eyes, pink kimono, long hair, wide sleeves, floral print, mole under eye, print kimono, white apron, frilled apron, hair over shoulder, hair bow, long sleeves, low twin braids, eyes visible through hair, twintails, maid apron, red bow, earrings, wa maid"
+    }
+   ]
+  },
+  {
+   "key": "ouro-kronii",
+   "name": "Ouro Kronii",
+   "jp": "",
+   "emoji": "⏳",
+   "group": "en-promise",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "ouro kronii, ouro kronii \\(1st costume\\)",
+     "tags": "clock, blue eyes, detached sleeves, hair intakes, blue hair, black thighhighs, black gloves, short hair, bow earrings, cleavage cutout, turtleneck, chain headband, sleeveless shirt, striped skirt, black hair, black skirt, miniskirt, juliet sleeves"
+    },
+    {
+     "label": "casual",
+     "trigger": "ouro kronii, ouro kronii \\(casual\\)",
+     "tags": "high-waist pants, long hair, blue hair, blue eyes, glasses, hair intakes, large breasts, colored inner hair, jeans, white shirt, blunt bangs, black hair, semi-rimless eyewear, black-framed eyewear, open coat, shirt tucked in"
+    },
+    {
+     "label": "new year",
+     "trigger": "ouro kronii, ouro kronii \\(new year\\)",
+     "tags": "blue eyes, hair flower, hair intakes, short hair, black hair, chest sarashi, floral print kimono, blue hair, off shoulder, white flower, kanzashi, obi"
+    }
+   ]
+  },
+  {
+   "key": "nanashi-mumei",
+   "name": "Nanashi Mumei",
+   "jp": "",
+   "emoji": "🪶",
+   "group": "en-promise",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "nanashi mumei, nanashi mumei \\(1st costume\\)",
+     "tags": "brown hair, ahoge, ponytail, white shirt, hieroglyphics, feather hair ornament, streaked hair, brown cloak, hairclip, brown capelet, very long hair, cleavage cutout, brown corset, ribbon, bow"
+    },
+    {
+     "label": "new year",
+     "trigger": "nanashi mumei, nanashi mumei \\(new year\\)",
+     "tags": "white kimono, brown hair, streaked hair, shawl, brown eyes, floral print, smoke, print kimono, wide sleeves, ahoge, braid, feathers, smoking pipe, off shoulder, hairclip, ribbon, earrings"
+    },
+    {
+     "label": "new year 2",
+     "trigger": "nanashi mumei, nanashi mumei \\(new year\\)",
+     "tags": "shawl, white kimono, brown hair, beret, lace gloves, brown eyes, streaked hair, wide sleeves, short hair, mountainous horizon, floral print, braided bangs, print kimono, feathers, ribbon, ahoge, crossed bangs, hair between eyes"
+    },
+    {
+     "label": "emo",
+     "trigger": "nanashi mumei, nanashi mumei \\(emo\\)",
+     "tags": "streaked hair, ahoge, twintails, brown hair, black choker, brown eyes, couch, long sleeves, long hair, red shirt, pleated skirt, fishnet socks, fishnets, dress, grey hair, off shoulder, hair ribbon, yellow eyes, legs up"
+    },
+    {
+     "label": "casual",
+     "trigger": "nanashi mumei, nanashi mumei \\(casual\\)",
+     "tags": "food-themed earrings, brown skirt, guitar, long skirt, brown hair, red socks, red shirt, brown hoodie, brown eyes, streaked hair, glasses, round eyewear, plaid skirt, slippers, oversized clothes, ahoge, black choker, necklace, white sweater, crossed bangs, sleeves past wrists, very long hair"
+    }
+   ]
+  },
+  {
+   "key": "hakos-baelz",
+   "name": "Hakos Baelz",
+   "jp": "",
+   "emoji": "🎲",
+   "group": "en-promise",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "hakos baelz, hakos baelz \\(1st costume\\)",
+     "tags": "mouse ears, navel, mouse tail, spiked collar, dice hair ornament, blue eyes, black hair, tail bow, twintails, streaked hair, midriff, white hair, key, mouse girl, bare shoulders, detached sleeves, white shirt, animal ear fluff, black skirt, long sleeves, crop top, strapless, white skirt, multicolored skirt, long hair, miniskirt"
+    },
+    {
+     "label": "casual",
+     "trigger": "hakos baelz, hakos baelz \\(casual\\)",
+     "tags": "headphones around neck, mouse ears, mouse tail, mouse girl, streaked hair, blue eyes, white hair, black hair, navel, star hair ornament, midriff, asymmetrical legwear, black gloves, sneakers, white jacket, pants, fishnet thighhighs, hairclip, cropped jacket, crop top, night, socks, short sleeves, twintails"
+    },
+    {
+     "label": "new year",
+     "trigger": "hakos baelz, hakos baelz \\(new year\\)",
+     "tags": "mouse ears, black hair, kimono, streaked hair, blue eyes, long hair, mismatched legwear, mask on head, white hair, mouse girl, hair flower, obi, white thighhighs, multicolored clothes, hair bun, detached sleeves"
+    },
+    {
+     "label": "steel rose",
+     "trigger": "hakos baelz, hakos baelz \\(steel rose\\)",
+     "tags": "virtual youtuber black hair, hat, sharp teeth, blue eyes, black shorts, white hair, black gloves, white shirt, eyepatch, center frills, streaked hair, mouse ears, black bowtie, mouse girl, long hair, thigh strap, fur trim, white headwear, couch, long sleeves, suspender shorts, grey thighhighs, knee boots"
+    }
+   ]
+  },
+  {
+   "key": "tsukumo-sana",
+   "name": "Tsukumo Sana",
+   "jp": "九十九佐命",
+   "emoji": "🪐",
+   "group": "en-promise",
+   "former": true,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "tsukumo sana, tsukumo sana \\(1st costume\\)",
+     "tags": "limiter \\(tsukumo sana\\), twintails, dark-skinned female, planet hair ornament, very long hair, sideboob, halterneck, yellow eyes, elbow gloves, bare shoulders, white hair, underbust, blue ribbon, earrings, floating hair, starry sky, white gloves, space"
+    }
+   ]
+  },
+  {
+   "key": "shiori-novella",
+   "name": "Shiori Novella",
+   "jp": "",
+   "emoji": "👁️‍🗨️",
+   "group": "en-advent",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "shiori novella, shiori novella \\(1st costume\\)",
+     "tags": "black hair, split-color hair, yellow eyes, black dress, black choker, grey hair, ring, long hair, two-tone hair, chest belt, hair ornament, arm warmers, sleeveless dress, striped clothes, black belt, arm strap, lace trim, black thighhighs"
+    },
+    {
+     "label": "new year",
+     "trigger": "shiori novella, shiori novella \\(new year\\)",
+     "tags": "black hair, hair flower, white kimono, white hair, two-tone hair, wide sleeves, black kimono, grey eyes, single hair bun, floral print, bare shoulders, sleeveless, obi, black gloves, long sleeves"
+    }
+   ]
+  },
+  {
+   "key": "koseki-bijou",
+   "name": "Koseki Bijou",
+   "jp": "",
+   "emoji": "🗿",
+   "group": "en-advent",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "koseki bijou, koseki bijou \\(1st costume\\)",
+     "tags": "purple eyes, long hair, grey hair, white dress, circlet, chest jewel, detached collar, bare shoulders, strapless dress, hair flaps, multicolored hair, purple gemstone"
+    },
+    {
+     "label": "new year",
+     "trigger": "koseki bijou, koseki bijou \\(new year\\)",
+     "tags": "purple eyes, bonnet, twin braids, obi, grey hair, purple hair, multicolored hair, white headwear, butterfly print, white kimono, very long hair, hair bow"
+    }
+   ]
+  },
+  {
+   "key": "nerissa-ravencroft",
+   "name": "Nerissa Ravencroft",
+   "jp": "",
+   "emoji": "🎼",
+   "group": "en-advent",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "nerissa ravencroft, nerissa ravencroft \\(1st costume\\)",
+     "tags": "mole under eye, black hair, red eyes, asymmetrical horns, colored inner hair, long hair, demon horns, blue hair, hair ornament, black gloves, uneven horns, fur trim, bare shoulders, shoulder cutout, two-tone hair, shirt"
+    },
+    {
+     "label": "new year",
+     "trigger": "nerissa ravencroft, nerissa ravencroft \\(new year\\)",
+     "tags": "nerissa ravencroft horns, mole under eye, blue hair, black hair, colored inner hair, red eyes, black kimono, hair ornament, long hair, floral print, two-tone hair, lace gloves, black gloves"
+    }
+   ]
+  },
+  {
+   "key": "fuwawa-abyssgard",
+   "name": "Fuwawa Abyssgard",
+   "jp": "",
+   "emoji": "🐾",
+   "group": "en-advent",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "fuwawa abyssgard, fuwawa abyssgard \\(1st costume\\)",
+     "tags": "dog girl, dog ears, white dress, blue hair, animal ear fluff, streaked hair, spiked collar, blonde hair, pink eyes, long hair, black collar, dog tail, skin fang, cleavage cutout, frills, long sleeves, hairclip, hairpin, two side up, bandaid hair ornament"
+    },
+    {
+     "label": "new year",
+     "trigger": "fuwawa abyssgard, fuwawa abyssgard \\(new year\\)",
+     "tags": "sideless kimono, dog ears, sleeveless kimono, blonde hair, floral print kimono, streaked hair, dog girl, pink eyes, animal ear fluff, sideboob, ponytail, long hair, hair flower, single detached sleeve, dog tail, blue hair, obi, multicolored kimono, blue kimono, thigh strap, spiked collar, black sash, short kimono, paw gloves, neck tassel, blue belt"
+    }
+   ]
+  },
+  {
+   "key": "mococo-abyssgard",
+   "name": "Mococo Abyssgard",
+   "jp": "",
+   "emoji": "🐾",
+   "group": "en-advent",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "mococo abyssgard, mococo abyssgard \\(1st costume\\)",
+     "tags": "dog ears, pink belt, dog girl, x hair ornament, blonde hair, dog tail, streaked hair, navel, white shorts, animal ear fluff, blue eyes, white shirt, cropped shirt, black collar, fishnets, short shorts, chain, midriff, fishnet socks, skin fang, frilled shorts, crossed bangs, spiked collar, short hair, double-parted bangs, bandaid hair ornament, two side up, pink hairband"
+    },
+    {
+     "label": "new year",
+     "trigger": "mococo abyssgard, mococo abyssgard \\(new year\\)",
+     "tags": "dog ears, pink hair, dog girl, pink kimono, blonde hair, blue eyes, dog tail, animal ear fluff, streaked hair, thigh strap, paw shoes, pom pom hair ornament, frills, detached sleeves, pink belt, twintails, short hair, paw gloves, sleeves past fingers, sleeveless kimono, floral print kimono, fur trim"
+    }
+   ]
+  },
+  {
+   "key": "elizabeth-rose-bloodflame",
+   "name": "Elizabeth Rose Bloodflame",
+   "jp": "",
+   "emoji": "💄",
+   "group": "en-justice",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "elizabeth rose bloodflame, elizabeth rose bloodflame \\(1st costume\\)",
+     "tags": "long hair, red eyes, earrings, bare shoulders, chest flame, ahoge, dress, detached sleeves, belt, colored inner hair, sleeveless, hair ornament, covered collarbone, blue hair"
+    }
+   ]
+  },
+  {
+   "key": "gigi-murin",
+   "name": "Gigi Murin",
+   "jp": "",
+   "emoji": "👧",
+   "group": "en-justice",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "gigi murin, gigi murin \\(1st costume\\)",
+     "tags": "brown hair, pink eyes, ahoge, black gloves, hood up, two-tone hair, orange jacket, blonde hair, short hair, long sleeves, hair through headwear"
+    }
+   ]
+  },
+  {
+   "key": "cecilia-immergreen",
+   "name": "Cecilia Immergreen",
+   "jp": "",
+   "emoji": "🍵",
+   "group": "en-justice",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "cecilia immergreen, cecilia immergreen \\(1st costume\\)",
+     "tags": "doll joints, detached sleeves, bare shoulders, green eyes, short hair, dress, detached collar, green hair, grey hair, white hair, green skirt, red ascot, streaked hair, hair ornament, bow \\(music\\), long sleeves, puffy sleeves"
+    }
+   ]
+  },
+  {
+   "key": "raora-panthera",
+   "name": "Raora Panthera",
+   "jp": "",
+   "emoji": "🐱",
+   "group": "en-justice",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "raora panthera, raora panthera \\(1st costume\\)",
+     "tags": "pink hair, hat, tail, black headwear, animal ear fluff, goggles on head, yellow eyes, white hair, hair intakes, multicolored hair, skin fang, very long hair, bare shoulders, cat ears, thigh strap, white thighhighs, garter straps, cat girl"
+    }
+   ]
+  },
+  {
+   "key": "ayunda-risu",
+   "name": "Ayunda Risu",
+   "jp": "",
+   "emoji": "🐿️",
+   "group": "id-gen1",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "ayunda risu, ayunda risu \\(1st costume\\)",
+     "tags": "squirrel girl, squirrel ears, green eyes, squirrel tail, brown hair, pink headwear, beret, dress, pink cardigan, leaf hair ornament, fur trim, acorn, shoulder cutout, red bow, pantyhose, pink jacket, pink sweater, pink hoodie"
+    },
+    {
+     "label": "3rd costume",
+     "trigger": "ayunda risu, ayunda risu \\(3rd costume\\)",
+     "tags": "squirrel girl, green eyes, witch hat, brown hair, white gloves, squirrel tail, squirrel ears, hat flower, white shirt, black pantyhose, jacket, black skirt, long sleeves, hairclip, collared shirt, ribbon, long hair, leaf hair ornament"
+    },
+    {
+     "label": "cyberpunk",
+     "trigger": "ayunda risu, ayunda risu \\(cyberpunk\\)",
+     "tags": "squirrel girl, squirrel tail, brown hair, squirrel ears, navel, pleated skirt, black skirt, midriff, tachi-e, short hair, black shirt, crop top, headphones, black jacket, open jacket, pink jacket, hairclip, black pantyhose, puffy long sleeves, streaked hair, thigh strap, two-tone jacket, pink hair, green eyes"
+    },
+    {
+     "label": "indonesian casual",
+     "trigger": "ayunda risu, ayunda risu \\(indonesian casual\\)",
+     "tags": "squirrel girl, green eyes, squirrel tail, white dress, brown hair, tachi-e, squirrel ears, floral print, long hair, belt, necklace, bracelet, short sleeves, jacket, hair flower, red sleeves"
+    },
+    {
+     "label": "new year",
+     "trigger": "ayunda risu, ayunda risu \\(new year\\)",
+     "tags": "squirrel girl, green eyes, brown hair, squirrel tail, floral print, squirrel ears, long hair, obi, tabi, red kimono, print kimono, hair ornament, white socks, fur collar, wide sleeves, fur trim, long sleeves, red bow, zouri"
+    }
+   ]
+  },
+  {
+   "key": "moona-hoshinova",
+   "name": "Moona Hoshinova",
+   "jp": "",
+   "emoji": "🔮",
+   "group": "id-gen1",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "moona hoshinova, moona hoshinova \\(1st costume\\)",
+     "tags": "starry hair, crop top, purple hair, navel, colored inner hair, midriff, blonde hair, bike shorts, belt, purple eyes, white jacket, sleeveless shirt, gradient hair, off shoulder, two-tone hair, black shorts, black shirt, bare shoulders, gradient eyes, thigh gap, choker, very long hair, open jacket"
+    },
+    {
+     "label": "casual",
+     "trigger": "moona hoshinova, moona hoshinova \\(casual\\)",
+     "tags": "purple hair, jacket on shoulders, short hair, crop top, purple eyes, colored inner hair, white shirt, starry hair, cropped shirt, black choker, blonde hair, black pants, clothes writing, single earring, midriff, yellow eyes, short sleeves, blue jacket, t-shirt, belt, gradient eyes"
+    },
+    {
+     "label": "indonesian casual",
+     "trigger": "moona hoshinova, moona hoshinova \\(indonesian casual\\)",
+     "tags": "starry hair, purple hair, colored inner hair, long hair, purple eyes, ponytail, earrings, blonde hair, hair bow, hair ornament, detached sleeves, bare shoulders, sleeveless, crescent moon, two-tone hair, green skirt, belt, black shirt"
+    },
+    {
+     "label": "punk rock",
+     "trigger": "moona hoshinova, moona hoshinova \\(punk rock\\)",
+     "tags": "crescent hair ornament, fishnet pantyhose, neon lights, long hair, ahoge, chain-link fence, purple hair, black skirt, purple eyes, midriff, pleated skirt, crop top, navel, knee boots, arm belt, building, black gloves, miniskirt, shirt, sleeveless jacket, cityscape, see-through, earrings, multicolored hair, black jacket, zipper, black vest"
+    },
+    {
+     "label": "new year",
+     "trigger": "moona hoshinova, moona hoshinova \\(new year\\)",
+     "tags": "long hair, hair ornament, very long hair, braid, purple hair, multicolored hair, japanese clothes, twin braids, forehead mark, starry hair"
+    }
+   ]
+  },
+  {
+   "key": "airani-iofifteen",
+   "name": "Airani Iofifteen",
+   "jp": "",
+   "emoji": "🎨",
+   "group": "id-gen1",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "airani iofifteen, airani iofifteen \\(1st costume\\)",
+     "tags": "purple eyes, pink hair, paint on clothes, side ponytail, paint splatter on face, overalls, long hair, single side bun, paintbrush, blue hair, gradient hair, hairband, wrist scrunchie, hair ornament, single hair bun, white shirt"
+    },
+    {
+     "label": "indonesian casual",
+     "trigger": "airani iofifteen, airani iofifteen \\(indonesian casual\\)",
+     "tags": "purple eyes, pink hair, gradient hair, braid, long hair, blue hair, hair ornament, crescent, light pink shirt, black skirt, thighlet, long sleeves, red bow, red sash"
+    },
+    {
+     "label": "military casual",
+     "trigger": "airani iofifteen, airani iofifteen \\(military casual\\)",
+     "tags": "purple eyes, pink hair, navel, hat, long hair, midriff, black headwear, knee boots, gradient hair, necktie, crop top, black shorts, braid, belt, earrings, blue hair, short shorts, collared shirt, vest, sleeveless shirt, hair over shoulder, stomach"
+    },
+    {
+     "label": "new year",
+     "trigger": "airani iofifteen, airani iofifteen \\(new year\\)",
+     "tags": "purple eyes, white hair, earrings, choker, bare shoulders, butterfly hair ornament, hat, black kimono, bridal gauntlets, neck bell, very long hair, off shoulder, long sleeves, jingle bell, obi, dress, large breasts"
+    },
+    {
+     "label": "sci-fi princess",
+     "trigger": "airani iofifteen, airani iofifteen \\(sci-fi princess\\)",
+     "tags": "purple eyes, elbow gloves, long hair, white gloves, twintails, bare shoulders, white dress, pink hair, blue hair, gradient hair, hair ornament, strapless dress, necklace"
+    },
+    {
+     "label": "work",
+     "trigger": "airani iofifteen, airani iofifteen \\(work\\)",
+     "tags": "long hair, gloves, navel, blue hair, purple eyes, pink hair, braid, multicolored hair, black gloves, midriff, gradient hair, black shorts, white frills"
+    }
+   ]
+  },
+  {
+   "key": "kureiji-ollie",
+   "name": "Kureiji Ollie",
+   "jp": "",
+   "emoji": "🧟‍♀️",
+   "group": "id-gen2",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "kureiji ollie, kureiji ollie \\(1st costume\\)",
+     "tags": "sword, patchwork skin, multicolored hair, grey skin, zombie, stitched face, two-tone skin, double bun, stitched arm, hair bow, torn dress, yellow eyes, blunt ends, grey hair, heterochromia, bandaged leg, red bow, black bow, bandaged arm, pink hair, ahoge, white skin, fangs, black dress, sarashi, huge bow, impaled, multicolored eyes, wrist bow, wrist ribbon, corset, object through head"
+    },
+    {
+     "label": "5th costume",
+     "trigger": "kureiji ollie, kureiji ollie \\(5th costume\\)",
+     "tags": "shirt, twintails, jacket, yellow eyes, pink hair, ahoge, multicolored hair, red hair, bag, text \"love\", streaked hair, colored skin, black pants, heterochromia, headband, white skin, print shirt, grey skin, stitches, multicolored skin, two-tone skin, zombie, glowstick, character print, patchwork skin, stitched face"
+    },
+    {
+     "label": "indonesian dress",
+     "trigger": "kureiji ollie, kureiji ollie \\(indonesian dress\\)",
+     "tags": "zombie, stitched face, stitched arm, patchwork skin, grey skin, yellow eyes, two-tone skin, tiara, heterochromia, white skin, fangs, red eyes, black dress, hair ornament, very long hair, white hair, black skirt, x-shaped pupils, pink hair, mismatched pupils, sash, two-tone hair, wedding dress, blunt ends, detached sleeves, hair down, hair bow"
+    },
+    {
+     "label": "mafia princess",
+     "trigger": "kureiji ollie, kureiji ollie \\(mafia princess\\)",
+     "tags": "pearl necklace, fishnet pantyhose, stitched face, heterochromia, patchwork skin, white dress, twin drills, grey skin, red eyes, sunglasses, white hairband, twintails, yellow eyes, fur coat, red-tinted eyewear, zombie, x-shaped pupils, diamond-shaped pupils, bag, white coat, two-tone hair, very long hair, mismatched pupils, white skin, stuffed toy, grey hair, earrings, streaked hair, long sleeves, character hair ornament"
+    },
+    {
+     "label": "new year",
+     "trigger": "kureiji ollie, kureiji ollie \\(new year\\)",
+     "tags": "patchwork skin, zombie, heterochromia, yellow eyes, two-tone skin, grey skin, stitched face, red eyes, ahoge, black kimono, katana, forehead protector, short hair, black pants, obi, pink hair, white skin, floral print, x-shaped pupils, streaked hair, mismatched pupils, diamond-shaped pupils, stitched arm, white hair, grey hair, sleeveless, bare shoulders"
+    }
+   ]
+  },
+  {
+   "key": "anya-melfissa",
+   "name": "Anya Melfissa",
+   "jp": "",
+   "emoji": "🍂",
+   "group": "id-gen2",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "anya melfissa, anya melfissa \\(1st costume\\)",
+     "tags": "purple eyes, brown hair, detached sleeves, two side up, black dress, gradient hair, blonde hair, streaked hair, wavy hair, bow, tachi-e, hair ornament, thigh strap, very long hair, bare legs"
+    },
+    {
+     "label": "casual",
+     "trigger": "anya melfissa, anya melfissa \\(casual\\)",
+     "tags": "purple eyes, brown hair, glasses, braid, streaked hair, belt, blonde hair, long hair, brown coat, round eyewear, black pantyhose, earrings, white shirt, blue skirt, sleeves past wrists"
+    },
+    {
+     "label": "steampunk",
+     "trigger": "anya melfissa, anya melfissa \\(steampunk\\)",
+     "tags": "gears, purple eyes, mask, steampunk, green shirt, thigh boots, brown hair, respirator, black gloves, black hair, brown cape, brown shorts, belt, thighhighs, brown corset, long hair, earrings, frills, streaked hair"
+    },
+    {
+     "label": "new year",
+     "trigger": "anya melfissa, anya melfissa \\(new year\\)",
+     "tags": "skirt, brown hair, hair ornament, gloves, purple eyes, multicolored hair, japanese clothes, hair flower, kimono, streaked hair, hakama, hakama skirt"
+    }
+   ]
+  },
+  {
+   "key": "pavolia-reine",
+   "name": "Pavolia Reine",
+   "jp": "",
+   "emoji": "🦚",
+   "group": "id-gen2",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "pavolia reine, pavolia reine \\(1st costume\\)",
+     "tags": "long hair, earrings, detached sleeves, feather hair ornament, grey hair, braided bangs, stomach cutout, side ponytail, navel cutout, white thighhighs, blue dress"
+    },
+    {
+     "label": "street",
+     "trigger": "pavolia reine, pavolia reine \\(street\\)",
+     "tags": "braided bangs, white pants, glasses, grey hair, crop top, short hair, navel, shawl, midriff, earrings, feather hair ornament, collared shirt, black shirt, blue eyes, sleeveless shirt, cropped shirt, hair behind ear"
+    },
+    {
+     "label": "streetwear",
+     "trigger": "pavolia reine, pavolia reine \\(streetwear\\)",
+     "tags": "long hair, blue hair, hair ornament, green eyes, grey hair, earrings, crop top, fishnets, midriff, white jacket, hooded jacket, hood up, pantyhose, navel, braid, animal hood, colored inner hair"
+    },
+    {
+     "label": "5th costume",
+     "trigger": "pavolia reine, pavolia reine \\(5th costume\\)",
+     "tags": "hair ornament, fishnets, drill hair, grey hair, long hair, bodysuit, black gloves, green eyes, aqua eyes"
+    },
+    {
+     "label": "new year",
+     "trigger": "pavolia reine, pavolia reine \\(new year\\)",
+     "tags": "black hair, twin braids, grey hair, earrings, hair ornament, obi, lace gloves, necklace, yellow kimono, choker, gradient hair, belt, long hair, blue eyes, black fur trim"
+    }
+   ]
+  },
+  {
+   "key": "vestia-zeta",
+   "name": "Vestia Zeta",
+   "jp": "",
+   "emoji": "📜",
+   "group": "id-gen3",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "vestia zeta, vestia zeta \\(1st costume\\)",
+     "tags": "long hair, cone hair bun, grey hair, white dress, braid, earrings, pleated dress, blue eyes, double bun, hair ribbon, mismatched legwear, cropped jacket"
+    },
+    {
+     "label": "jirai kei",
+     "trigger": "vestia zeta, vestia zeta \\(jirai kei\\)",
+     "tags": "short hair, blue eyes, shirt, skirt, long sleeves, hair ornament, bow, ribbon, grey hair, braid, frills, choker, socks, belt, bowtie, black skirt, bag, thigh strap, black choker, blue bow, grey shirt, puffy long sleeves, o-ring, slippers, heart o-ring, animal slippers"
+    },
+    {
+     "label": "new year",
+     "trigger": "vestia zeta, vestia zeta \\(new year\\)",
+     "tags": "grey hair, purple eyes, grey kimono, off shoulder, earrings, bare shoulders, obi, wide sleeves, hair bow"
+    }
+   ]
+  },
+  {
+   "key": "kaela-kovalskia",
+   "name": "Kaela Kovalskia",
+   "jp": "",
+   "emoji": "🔨",
+   "group": "id-gen3",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "kaela kovalskia, kaela kovalskia \\(1st costume\\)",
+     "tags": "blonde hair, eyewear on head, red eyes, white dress, red gloves, medium hair, tight dress, hammer, impossible dress, sunglasses, red-tinted eyewear, red hairband"
+    },
+    {
+     "label": "business casual",
+     "trigger": "kaela kovalskia, kaela kovalskia \\(business casual\\)",
+     "tags": "long hair, shirt, skirt, blonde hair, red eyes, braid, necktie, socks, bracelet, white socks, fringe trim"
+    },
+    {
+     "label": "new year",
+     "trigger": "kaela kovalskia, kaela kovalskia \\(new year\\)",
+     "tags": "red gloves, red eyes, blonde hair, black kimono, detached sleeves, mask on head, medium hair, hair ornament, obi, sleeveless kimono, bare shoulders, wide sleeves"
+    }
+   ]
+  },
+  {
+   "key": "kobo-kanaeru",
+   "name": "Kobo Kanaeru",
+   "jp": "",
+   "emoji": "☔",
+   "group": "id-gen3",
+   "former": false,
+   "costumes": [
+    {
+     "label": "1st costume",
+     "trigger": "kobo kanaeru, kobo kanaeru \\(1st costume\\)",
+     "tags": "blue eyes, looking up, long hair, blue hair, white hair, see-through jacket, sleeves past fingers, raincoat, ear piercing, earrings, white hoodie, two-tone hair"
+    },
+    {
+     "label": "indonesian dress",
+     "trigger": "kobo kanaeru, kobo kanaeru \\(indonesian dress\\)",
+     "tags": "blue eyes, long hair, bracelet, blue hair, white hair, hair ornament, skirt"
+    },
+    {
+     "label": "new year",
+     "trigger": "kobo kanaeru, kobo kanaeru \\(new year\\)",
+     "tags": "long hair, blue eyes, skirt, long sleeves, hair ornament, twintails, blue hair, japanese clothes, socks, wide sleeves, kimono, hair bun, fur trim, sash, double bun, obi"
+    }
+   ]
+  }
+ ]
+}

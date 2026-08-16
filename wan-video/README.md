@@ -450,6 +450,36 @@ Docker `docker compose --profile watch up -d`。
 **最省事的做法是用 app 內建的 LoRA 分頁**（見上）—— 搜尋、看預覽、一鍵安裝，
 觸發詞也會一起存下來。需要一個 CivitAI API key 才能下載。
 
+### 角色包（大型角色 LoRA 一鍵切換）—— 教程在 [`docs/character-packs.md`](docs/character-packs.md)
+
+一支大型角色 LoRA 不是一個觸發詞，是好幾百個。**Hololive Collection 一支就有
+75 位角色、319 套衣裝**，而這些資訊只存在 CivitAI 說明頁上的一大坨文字裡 ——
+每次要用都得回去翻，那才是真正花時間的地方。
+
+所以圖片分頁上多了一塊「🎤 角色包」：**選期別 → 點成員 → 點衣裝 → 提詞就好了**。
+成員照出道順序排（JP 0期生 → 1期生 → … → ゲーマーズ → … → EN Myth → … → ID 3期生），
+搜尋框打 `suisei`、`すいせい` 或 `星街` 都找得到。
+
+按下「填入提詞」會一次做完四件事：
+
+1. 提詞填好：**觸發詞 → 這套衣服的外觀標籤 → 你自己打的字 → 品質標籤**（放最後，
+   因為 Pony 把 score 標籤當整體品質訊號，那支 LoRA 的每個官方範例也都這樣寫）
+2. 負面提詞換成作者建議的那組
+3. **這支 LoRA 自動勾選**，強度設成作者建議的值
+4. 底模不對就提醒你，旁邊直接有「**一鍵切換到 Pony**」——
+   走的是跟下拉選單同一條路，所以 sampler、CLIP skip、`score_9…` 前綴會一起換過去
+
+| 內建的包 | 內容 | 要的底模 | LoRA |
+| --- | --- | --- | --- |
+| [Hololive Collection JP・EN・ID](https://civitai.com/models/713551)（motimalu） | 75 位 · 319 套衣裝 | **Pony Diffusion V6 XL** | 914MB |
+
+已畢業的成員（ココ、るしあ、アロエ、メル、あくあ、Sana）**留在原本的期別裡並標「已畢業」**——
+你找 4 期生的時候，ココ 本來就該在那裡。
+
+**要加新的包：給我 CivitAI 連結就好**，我會把成員和衣裝抓出來排好。
+加一個包不用改程式，只是往 `app/packs/` 放一個 JSON 檔；
+格式和自己動手的做法寫在上面那份教程裡。壞掉的檔案只會被略過，不會讓 app 掛掉。
+
 手動也行：
 1. 到 [CivitAI](https://civitai.com/) 找 **Wan Video** 分類、標 **Wan 2.2** 的 LoRA。
 2. `.safetensors` 檔丟進 `models/loras/`（Windows 是 `ComfyUI\models\loras\`）。
@@ -542,6 +572,8 @@ app/
   promptbook.py        匯入提詞範例文件，自動判斷分段方式（8 種格式）
   upscalers.py         GAN 放大模型與補幀模型目錄（圖片和影片共用）
   controlnets.py       ControlNet 目錄：鎖住構圖重畫內容（分鏡克隆的核心）
+  charpacks.py         角色包：一支角色 LoRA 的所有角色與衣裝，一鍵出提詞
+  packs/*.json         角色包資料（加一個檔案就多一個包，不用改程式）
   prompts.py           {A|B} 隨機提詞展開、權重語法檢查、語法小抄
   updates.py           app / ComfyUI / CivitAI 三邊的更新偵測，各自獨立、失敗不互相影響
   civitai.py           CivitAI 搜尋與下載（需要 User-Agent；下載需要 API key）
@@ -555,6 +587,7 @@ app/
   static/index.html    網頁介面（影片 / 圖片 / 素材庫 / LoRA / 模型 / 提詞庫 / 設定）
 docs/
   comic-restage.md     漫畫分鏡克隆的完整教程
+  character-packs.md   角色包的用法與資料格式
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡

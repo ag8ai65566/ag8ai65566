@@ -295,6 +295,27 @@
         <span class="s" style="align-self:center">SDXL 在約 100 萬像素上訓練，離太遠會出現雙頭、肢體重複。</span>
       </div>
 
+      <details id="packbox" class="hidden" style="margin-top:10px" open>
+        <summary><b>🎤 角色包</b> <span class="s" id="packsum"></span></summary>
+        <div class="row" style="margin-top:8px">
+          <label class="f">角色包 <select id="packpick"></select></label>
+          <label class="f">期別／分組 <select id="packgroup"></select></label>
+          <input id="packfind" placeholder="搜尋成員（打 suisei、すいせい 或 星街都可以）"
+                 style="flex:1;min-width:200px">
+        </div>
+        <div id="packstate" class="banner tight"></div>
+        <div id="packmembers" class="words" style="margin-top:6px;max-height:190px;overflow-y:auto"></div>
+        <div id="packcostumes" class="words" style="margin-top:6px"></div>
+        <div class="row" style="margin-top:6px">
+          <label class="chk"><input type="checkbox" id="packquality" checked> 加上這支 LoRA 的品質標籤</label>
+          <label class="chk"><input type="checkbox" id="packkeep" checked> 保留我自己打的字</label>
+          <label class="chk"><input type="checkbox" id="packneg" checked> 一併套用建議負面詞</label>
+          <div class="spacer"></div>
+          <button class="go" id="packgo" disabled>填入提詞</button>
+        </div>
+        <div class="note" id="packnote"></div>
+      </details>
+
       <div id="i2i" class="banner tight hidden">
         <div class="row" style="margin-top:0;align-items:center">
           <img id="i2ithumb" style="height:64px;border-radius:8px">
@@ -1402,6 +1423,10 @@ function renderSettings() {
 /* ControlNet state, declared up here because onLayoutChange() reaches
    for it and runs during the first model refresh. */
 let CN = { list: [], all: [], help: {}, note: '', ref: null, controls: [] };
+// A big character LoRA is several hundred trigger words living in a wall of
+// text on someone's model page. PACK turns that wall into a picker. Declared
+// up here for the same reason as CN: onImageModelChange() reads it.
+let PACK = { list: [], chosen: null, who: '', costume: 0, last: '', help: '' };
 let IMG = { models: [], help: {}, samplers: [], schedulers: [], chosen: null, jobs: [],
             upscalers: [], embeddings: [], syntax: [], notSupported: [], customSize: '自訂尺寸',
             init: null };
@@ -1451,6 +1476,7 @@ async function refreshImageModels() {
     renderCheckpoints();
   } catch {}
   await refreshControlnets();
+  await refreshPacks();
 }
 
 async function refreshControlnets() {
@@ -1496,6 +1522,196 @@ function renderControlnetModels() {
     refreshDownloads();
   });
 }
+
+/* ---------- character packs ---------- */
+async function refreshPacks() {
+  try {
+    const d = await (await fetch('/api/packs')).json();
+    PACK.list = d.packs || []; PACK.help = d.help || '';
+    PACK.key = !!d.civitai_key;
+  } catch { return; }
+  $('#packbox').classList.toggle('hidden', !PACK.list.length);
+  if (!PACK.list.length) return;
+  fillKeeping('#packpick', PACK.list.map((p) => [p.id, p.label]),
+              P.get('pack', PACK.list[0].id));
+  choosePack($('#packpick').value || PACK.list[0].id);
+}
+
+function choosePack(id) {
+  const p = PACK.list.find((x) => x.id === id) || PACK.list[0];
+  if (!p) return;
+  const changed = !PACK.chosen || PACK.chosen.id !== p.id;
+  PACK.chosen = p;
+  P.set('pack', p.id);
+  $('#packsum').textContent = `${p.label} · ${p.count} 位角色 · ${p.costume_count} 套衣裝`;
+  if (changed) { PACK.who = ''; PACK.costume = 0; PACK.last = ''; }
+  fillKeeping('#packgroup', [['', `全部（${p.count} 位）`],
+    ...p.groups.map((g) => [g.id, `${g.label}（${g.members.length}）`])], '');
+  renderPackState();
+  renderPackMembers();
+}
+
+function renderPackState() {
+  const p = PACK.chosen;
+  const wrongModel = p.wants_model && IMG.chosen && IMG.chosen.id !== p.wants_model;
+  const bits = [];
+  bits.push(p.installed
+    ? '<span class="tag done">LoRA 已安裝</span>'
+    : `<span class="tag warn">LoRA 還沒下載</span>
+       <button class="ghost tiny" id="packdl">下載 ${gb(p.size)}</button>`);
+  if (p.wants_model) {
+    bits.push(p.model_installed
+      ? `<span class="tag ${wrongModel ? 'warn' : 'done'}">要用 ${esc(p.base_model)} 底模</span>`
+      : `<span class="tag warn">還沒下載 ${esc(p.model_label)}</span>`);
+    if (wrongModel && p.model_installed) {
+      bits.push('<button class="ghost tiny" id="packswitch">一鍵切換到 ' + esc(p.base_model) + '</button>');
+    } else if (!p.model_installed) {
+      bits.push('<button class="ghost tiny" id="packgetmodel">下載這個底模</button>');
+    }
+  }
+  $('#packstate').innerHTML = `<div class="row" style="margin-top:0;align-items:center">
+    ${bits.join(' ')}
+    <div class="spacer"></div>
+    ${p.civitai ? `<a class="s" href="${esc(p.civitai)}" target="_blank" rel="noopener">CivitAI 頁面 ↗</a>` : ''}
+  </div>`;
+  $('#packnote').innerHTML = [PACK.help, p.note,
+    p.author ? `作者：${p.author}　授權：${p.license || '見頁面'}` : ''].filter(Boolean)
+    .map((t) => `<div>${esc(t)}</div>`).join('');
+  if ($('#packdl')) $('#packdl').onclick = async (e) => {
+    e.target.disabled = true;
+    try {
+      const r = await fetch(`/api/packs/${encodeURIComponent(p.id)}/download`, { method:'POST' });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      $('#istatus').textContent = '開始下載 LoRA，進度在「模型」分頁。';
+      refreshDownloads();
+    } catch (err) {
+      $('#istatus').textContent = '下載失敗：' + err.message;
+      e.target.disabled = false;
+    }
+  };
+  if ($('#packswitch')) $('#packswitch').onclick = () => {
+    $('#imodel').value = p.wants_model;
+    // Same path the dropdown takes, so the sampler, CLIP skip and the score-tag
+    // prefix all move with it - switching the model is not just a label change.
+    onImageModelChange();
+    $('#istatus').textContent = `底模已切換到 ${p.base_model}，取樣參數也跟著換了。`;
+    renderPackState();
+  };
+  if ($('#packgetmodel')) $('#packgetmodel').onclick = () => {
+    $('#imodel').value = p.wants_model;
+    onImageModelChange();
+    if ($('#igetmodel')) $('#igetmodel').click();
+  };
+}
+
+function renderPackMembers() {
+  const p = PACK.chosen;
+  const group = $('#packgroup').value;
+  const find = $('#packfind').value.trim().toLowerCase();
+  const inGroup = group ? new Set((p.groups.find((g) => g.id === group) || {}).members || []) : null;
+  const hit = (c) => (!inGroup || inGroup.has(c.key))
+    && (!find || `${c.name} ${c.jp} ${c.key}`.toLowerCase().includes(find));
+  // Groups stay in the file's order, which is debut order - that is the whole
+  // point of listing them by generation rather than alphabetically.
+  const html = p.groups.map((g) => {
+    const members = g.members.map((k) => p.characters.find((c) => c.key === k))
+      .filter((c) => c && hit(c));
+    if (!members.length) return '';
+    return `<div style="width:100%;margin-top:4px"><span class="s"><b>${esc(g.label)}</b></span></div>`
+      + members.map((c) => `<button class="tag ${c.key === PACK.who ? 'done' : ''}"
+          data-who="${esc(c.key)}" title="${esc(c.name)}${c.jp ? ' / ' + esc(c.jp) : ''} · ${c.costumes.length} 套">
+          ${esc(c.emoji)} ${esc(c.name)}${c.jp ? `<span class="s"> ${esc(c.jp)}</span>` : ''}
+          ${c.former ? '<span class="s"> ·已畢業</span>' : ''}</button>`).join('');
+  }).join('');
+  $('#packmembers').innerHTML = html || '<span class="s">沒有符合的成員。</span>';
+  $('#packmembers').querySelectorAll('[data-who]').forEach((b) => b.onclick = () => {
+    PACK.who = b.dataset.who; PACK.costume = 0;
+    renderPackMembers(); renderPackCostumes();
+  });
+  renderPackCostumes();
+}
+
+function renderPackCostumes() {
+  const p = PACK.chosen;
+  const who = p.characters.find((c) => c.key === PACK.who);
+  $('#packgo').disabled = !who;
+  if (!who) {
+    $('#packcostumes').innerHTML = '<span class="s">先選一位成員。</span>';
+    return;
+  }
+  $('#packcostumes').innerHTML =
+    `<span class="s" style="width:100%">${esc(who.name)}${who.jp ? ' / ' + esc(who.jp) : ''}
+      的衣裝（${who.costumes.length} 套，第一套最準）：</span>`
+    + who.costumes.map((c, i) => `<button class="tag ${i === PACK.costume ? 'done' : ''}"
+        data-cos="${i}" title="${esc(c.tags.slice(0, 160))}">${esc(c.label)}</button>`).join('');
+  $('#packcostumes').querySelectorAll('[data-cos]').forEach((b) => b.onclick = () => {
+    PACK.costume = +b.dataset.cos;
+    renderPackCostumes();
+  });
+}
+
+// What the user typed that did not come from the last insert. Without this,
+// "keep my own text" would drag the previous character's tags along every time
+// they switched member.
+// In comic mode the per-panel boxes hold the action; the character belongs in
+// the shared box, which is the field that keeps them the same person across
+// every panel. Writing to #iprompt there would fill a box nobody reads.
+function packField() { return comicMode() ? $('#cshared') : $('#iprompt'); }
+
+function packExtra() {
+  if (!$('#packkeep').checked) return '';
+  const mine = packField().value.split(',').map((t) => t.trim()).filter(Boolean);
+  const inserted = new Set(PACK.last.split(',').map((t) => t.trim().toLowerCase()).filter(Boolean));
+  return mine.filter((t) => !inserted.has(t.toLowerCase())).join(', ');
+}
+
+async function applyPack() {
+  const p = PACK.chosen;
+  if (!p || !PACK.who) return;
+  $('#packgo').disabled = true;
+  try {
+    const r = await fetch(`/api/packs/${encodeURIComponent(p.id)}/prompt`, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ character: PACK.who, costume: PACK.costume,
+                             extra: packExtra(), quality: $('#packquality').checked }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    packField().value = d.prompt;
+    PACK.last = d.prompt;
+    if (comicMode()) schedulePreview();
+    if ($('#packneg').checked && d.negative) {
+      $('#inegative').value = d.negative;
+      $('#inegative').dataset.touched = '1';
+    }
+    // Tick the pack's own LoRA at the strength its author recommends. Without
+    // it the trigger words mean nothing to the base model.
+    let armed = false;
+    $('#iloras').querySelectorAll('.lora').forEach((el) => {
+      if (el.dataset.n !== d.lora) return;
+      armed = true;
+      el.querySelector('input[type=checkbox]').checked = true;
+      const m = el.querySelector('.sm'), c = el.querySelector('.sc');
+      m.value = d.strength; c.value = d.strength_clip;
+      el.querySelector('.vm').textContent = m.value;
+      el.querySelector('.vc').textContent = c.value;
+    });
+    const bits = [`已填入${comicMode() ? '共用提詞' : '提詞'}：${d.character} · ${d.costume}`];
+    if (armed) bits.push(`LoRA 已勾選（強度 ${d.strength}）`);
+    else if (!d.lora_installed) bits.push('但 LoRA 還沒下載 —— 現在畫出來會是底模自己的想像');
+    if (p.wants_model && IMG.chosen && IMG.chosen.id !== p.wants_model) {
+      bits.push(`這支 LoRA 是 ${p.base_model} 訓練的，記得切換底模`);
+    }
+    $('#istatus').textContent = bits.join('　·　');
+  } catch (e) { $('#istatus').textContent = '填不進去：' + e.message; }
+  $('#packgo').disabled = false;
+}
+
+$('#packpick').onchange = () => choosePack($('#packpick').value);
+$('#packgroup').onchange = renderPackMembers;
+$('#packfind').oninput = renderPackMembers;
+$('#packgo').onclick = applyPack;
 
 function controlPayload() {
   const name = $('#icn') ? $('#icn').value : '';
@@ -2336,6 +2552,9 @@ function onImageModelChange() {
     $('#istatus').textContent = `${m.label} 還沒下載。`;
   } else $('#istatus').textContent = '';
   renderImageLoras();
+  // The pack's status line says "you are on the wrong base model", so it has to
+  // be redrawn whenever the base model moves.
+  if (PACK.chosen) renderPackState();
 }
 $('#imodel').onchange = onImageModelChange;
 function syncCustomSize() {

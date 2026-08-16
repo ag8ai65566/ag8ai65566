@@ -21,6 +21,7 @@ import traceback
 import uuid
 from pathlib import Path
 
+import charpacks
 import civitai
 import comics
 import config
@@ -1340,6 +1341,78 @@ async def list_controlnets() -> JSONResponse:
             "preprocessors": [{"id": k, "help": v}
                               for k, v in controlnets.PREPROCESSORS.items()],
         }
+    )
+
+
+@app.get("/api/packs")
+async def list_packs() -> JSONResponse:
+    """Every character pack, with whether its LoRA and its base model are here.
+
+    The whole cast ships in one response - it is ~130KB for the Hololive pack
+    and the picker has to be instant, so paging it would cost more than it saves.
+    """
+    here = {l["name"] for l in models.list_loras()}
+    installed_ckpts = installed_checkpoints()
+    out = []
+    for pack in charpacks.PACKS:
+        wanted = images.get(pack.wants_model) if pack.wants_model else None
+        out.append({
+            **pack.public(),
+            "installed": pack.file in here,
+            "model_installed": bool(wanted and image_status(wanted)["installed"]),
+            "model_label": wanted.label if wanted else "",
+            "checkpoints": installed_ckpts,
+        })
+    return JSONResponse({"packs": out, "help": charpacks.HELP,
+                         "civitai_key": bool(civitai.api_key())})
+
+
+@app.post("/api/packs/{pack_id}/prompt")
+async def pack_prompt(pack_id: str, payload: dict = Body(default={})) -> JSONResponse:
+    """One character in one outfit, assembled into a prompt ready to generate."""
+    pack = charpacks.get(pack_id)
+    if pack is None:
+        raise HTTPException(404, f"不認識的角色包：{pack_id}")
+    payload = payload if isinstance(payload, dict) else {}
+    try:
+        costume = int(payload.get("costume", 0))
+    except (TypeError, ValueError):
+        costume = 0
+    built = charpacks.build_prompt(
+        pack, str(payload.get("character", "")), costume,
+        extra=str(payload.get("extra", "")),
+        quality=payload.get("quality", True) is not False,
+    )
+    if built is None:
+        raise HTTPException(404, f"這個角色包裡沒有：{payload.get('character')}")
+    here = {l["name"] for l in models.list_loras()}
+    built["lora_installed"] = pack.file in here
+    return JSONResponse(built)
+
+
+@app.post("/api/packs/{pack_id}/download")
+async def download_pack_lora(pack_id: str) -> JSONResponse:
+    """Fetch the pack's LoRA from CivitAI, which needs the user's own API key."""
+    pack = charpacks.get(pack_id)
+    if pack is None:
+        raise HTTPException(404, f"不認識的角色包：{pack_id}")
+    if not pack.download_url:
+        raise HTTPException(400, f"這個角色包沒有附下載連結，請自己到 {pack.civitai} 抓")
+    try:
+        headers = tuple(civitai.download_headers().items())
+    except civitai.NeedsApiKey as exc:
+        raise HTTPException(400, str(exc))
+    remote = downloader.RemoteFile(
+        url=pack.download_url, folder="loras", name=pack.file,
+        size=pack.size, headers=headers,
+    )
+    meta = {"url": pack.civitai, "trained_words": [], "base_model": pack.base_model,
+            "version_id": pack.version_id, "name": pack.label}
+    return JSONResponse(
+        models.enqueue_files(
+            key=f"pack:{pack.id}", label=f"角色包 · {pack.label}",
+            files=[remote], sidecars={pack.file: meta},
+        ).public()
     )
 
 
