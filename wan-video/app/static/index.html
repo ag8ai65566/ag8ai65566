@@ -343,8 +343,10 @@
               <option value="rtl">右→左（日漫）</option>
             </select>
           </label>
+          <button class="ghost" id="crsclear" hidden>✕ 清除分鏡</button>
           <span class="s" id="crestagehint">丟一頁（或連續好幾頁）漫畫 + 一張角色圖，它會量出分鏡、看懂每格在做什麼，再換成你的角色。<b>選檔案時可以一次選多張</b>，每一頁會各自成為一張成品。</span>
         </div>
+        <div id="crsready" class="banner tight hidden"></div>
         <div id="crestagebox" class="hidden"></div>
         <div id="clocked" class="banner tight hidden"></div>
         <div class="note" id="clayoutnote"></div>
@@ -2206,6 +2208,17 @@ function applyMode() {
   document.querySelectorAll('#tab-img .comic-only').forEach((el) => el.classList.toggle('hidden', !on));
   $('#igo').textContent = on ? '畫這一頁' : '生成';
   P.set('imode', on ? 'comic' : 'plain');
+  // The per-panel crops belong to a comic page. Carrying them into single-image
+  // mode left ControlNet switched on with nothing to feed it, and the next
+  // plain generation was refused for "having no reference picture" - which
+  // looks like the app breaking rather than a leftover from the last page.
+  if (!on && CN.controls.length && $('#icn') && $('#icn').value && !CN.ref) {
+    CN.controls = [];
+    $('#icn').value = '';
+    renderControlHelp();
+    $('#istatus').textContent =
+      '切回單張圖片：剛才那一頁的構圖鎖定已經關掉了（那些參考圖是給分鏡用的）。';
+  }
   if (on) { renderPanels(); refreshComicPreview(); }
 }
 document.querySelectorAll('.modes button').forEach((b) => b.onclick = () => {
@@ -2218,6 +2231,7 @@ async function refreshComicLayouts() {
     const d = await (await fetch('/api/comic/layouts')).json();
     COMIC.layouts = d.layouts; COMIC.help = d.help || {}; COMIC.shots = d.shots || [];
     COMIC.anchors = d.anchors || []; COMIC.font = !!d.font;
+    COMIC.ready = d.restage_ready || {};
     const keep = $('#clayout').value || P.get('clayout', 'four-grid');
     $('#clayout').innerHTML =
       (COMIC.custom ? `<option value="custom">${esc(COMIC.custom.label)}</option>` : '')
@@ -2233,8 +2247,43 @@ async function refreshComicLayouts() {
       $('#cfontwarn').innerHTML = '找不到中文字型，<b>對白會被略過</b>。'
         + '這在 Windows 上不會發生（系統自帶微軟正黑體）。';
     }
+    renderRestageReady();
     onLayoutChange();
   } catch {}
+}
+
+// Restaging needs two downloads. Without the tagger every panel prompt comes
+// back empty; without a ControlNet nothing carries the original composition.
+// The feature then still runs and draws whatever is in the shared prompt -
+// four panels of the same thing, unrelated to the page that was uploaded.
+// That is what "完全沒關係" looked like, so the requirements are now stated
+// before the upload rather than as a footnote after it.
+function renderRestageReady() {
+  const box = $('#crsready'), r = COMIC.ready || {};
+  const missing = [];
+  if (!r.tagger) missing.push({
+    what: '看圖分析模型', why: '沒有它就讀不出每一格在畫什麼，所有格子的提詞會是空的',
+    size: '約 380MB',
+  });
+  if (!r.controlnet) missing.push({
+    what: 'ControlNet 模型', why: '沒有它只會複製格子的形狀，不會複製鏡頭和構圖',
+    size: '約 2.5GB',
+  });
+  box.classList.toggle('hidden', !missing.length);
+  $('#crestage').classList.toggle('warn', missing.length === 2);
+  if (!missing.length) return;
+  box.innerHTML = `<div><b>⚠ 「照現成的一頁重畫」現在只會半套</b>
+    —— 少了下面這${missing.length === 2 ? '兩' : ''}個，克隆分鏡不會有效果：</div>
+    ${missing.map((m) => `<div class="s">· <b>${esc(m.what)}</b>（${esc(m.size)}）——
+      ${esc(m.why)}</div>`).join('')}
+    <div class="row" style="margin-top:6px">
+      <button class="go" id="crsgetmodels">到「模型」分頁下載</button>
+      <span class="s" style="align-self:center">下載完重新整理這一頁就會生效。</span>
+    </div>`;
+  $('#crsgetmodels').onclick = () => {
+    document.querySelector('.tabs button[data-tab="mdl"]').click();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 }
 
 function currentLayout() {
@@ -2250,6 +2299,36 @@ function layoutPayload(l) {
     : { layout: l ? l.id : 'four-grid' };
 }
 
+// Getting *out* of a restage was the missing half: once a measured layout was
+// applied there was no way back to "just draw what I typed". Worse, the
+// ControlNet stayed switched on with crops attached, so the next plain image
+// was refused for having no reference. This puts everything back.
+function clearRestage(quiet) {
+  COMIC.locked = null;
+  COMIC.custom = null;
+  if (RESTAGE) RESTAGE.pages.forEach((pg) => pg._url && URL.revokeObjectURL(pg._url));
+  RESTAGE = null;
+  CN.controls = [];
+  if ($('#icn')) { $('#icn').value = ''; renderControlHelp(); }
+  $('#crestagebox').classList.add('hidden');
+  // Drop the one-off layout from the picker and fall back to a stock one.
+  const opt = [...$('#clayout').options].find((o) => o.value === 'custom');
+  if (opt) opt.remove();
+  $('#clayout').disabled = false;
+  if ($('#clayout').value === 'custom' || !$('#clayout').value) {
+    $('#clayout').value = P.get('clayout', 'four-grid');
+    if (!$('#clayout').value && $('#clayout').options.length) {
+      $('#clayout').selectedIndex = 0;
+    }
+  }
+  onLayoutChange();
+  $('#crsclear').hidden = true;
+  if (!quiet) {
+    $('#istatus').textContent =
+      '分鏡已清除。現在是普通的版型，構圖參考圖也拿掉了 —— 直接打提詞就好。';
+  }
+}
+
 function renderLock() {
   const box = $('#clocked'), lock = COMIC.locked;
   $('#clayout').disabled = !!lock;
@@ -2261,6 +2340,7 @@ function renderLock() {
       格數和每一格的位置都跟著原稿，不會被改掉。</span>
     <div class="spacer"></div>
     <button class="ghost tiny" id="cunlock">解除鎖定，自己挑分鏡</button>
+    <button class="ghost tiny" id="cdrop">✕ 完全清除</button>
   </div>`;
   $('#cunlock').onclick = () => {
     COMIC.locked = null;
@@ -2270,6 +2350,7 @@ function renderLock() {
     renderLock();
     $('#istatus').textContent = '分鏡鎖定已解除。現在可以自己挑版型，但構圖參考圖已經清掉了。';
   };
+  if ($('#cdrop')) $('#cdrop').onclick = () => clearRestage();
 }
 
 function onLayoutChange() {
@@ -2375,6 +2456,7 @@ const nowPage = () => (RESTAGE && RESTAGE.pages[RESTAGE.at]) || null;
 $('#creading').value = P.get('reading', 'ltr');
 $('#creading').onchange = () => P.set('reading', $('#creading').value);
 $('#crestage').onclick = () => $('#cpagefile').click();
+$('#crsclear').onclick = () => clearRestage();
 $('#cpagefile').onchange = () => {
   const files = [...$('#cpagefile').files];
   if (!files.length) return;
@@ -2624,6 +2706,7 @@ function applyRestage(page) {
   // 5-panel page to a 3-panel layout while the per-panel prompts and the
   // per-panel reference crops still say 5 is not a choice, it is a trap.
   COMIC.locked = { count: L.count, name: d._name || '上傳的頁面', page: d };
+  $('#crsclear').hidden = false;
   onLayoutChange();
   $('#cpanels').querySelectorAll('.pnl').forEach((el, i) => {
     const p = d.panels[i];
@@ -2651,9 +2734,29 @@ function applyRestage(page) {
     renderControlHelp();
   }
   $('#crestagebox').classList.add('hidden');
-  $('#istatus').textContent =
-    `分鏡和每一格的內容都帶進來了（${L.count} 格）。可以再改任何一格，然後按「畫這一頁」。`
-    + extra;
+  // Be blunt about what this apply actually achieved. "N 格帶進來了" while every
+  // prompt is empty and no ControlNet is armed is the message that made the
+  // result look like a bug instead of a missing download.
+  const wrote = d.panels.filter((x) => x && x.prompt).length;
+  const armed = lock && CN.list.length && CN.controls.some(Boolean);
+  let verdict;
+  if (!wrote && !armed) {
+    verdict = `⚠ 分鏡的格子帶進來了（${L.count} 格），但**內容和構圖都沒有** ——`
+      + '每一格的提詞是空的，也沒有 ControlNet 導引。'
+      + '這樣畫出來只會照你自己打的字，跟原稿沒有關係。'
+      + '請先到「模型」分頁把「看圖分析模型」和「ControlNet 模型」下載好。';
+  } else if (!wrote) {
+    verdict = `分鏡和構圖帶進來了（${L.count} 格），但每一格的提詞是空的`
+      + '（缺「看圖分析模型」）。構圖會照著原稿，內容要自己寫。';
+  } else if (!armed) {
+    verdict = `分鏡和每一格的內容都帶進來了（${L.count} 格），`
+      + '但沒有構圖鎖定 —— 會是「類似的場景」，不是「同一個鏡頭」。'
+      + '要同一個鏡頭的話，下載 ControlNet 模型再重讀一次。';
+  } else {
+    verdict = `分鏡、每一格的內容和構圖都帶進來了（${L.count} 格）。`
+      + '可以再改任何一格，然後按「畫這一頁」。';
+  }
+  $('#istatus').textContent = verdict + extra;
   schedulePreview();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }

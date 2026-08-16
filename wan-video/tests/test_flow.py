@@ -960,6 +960,7 @@ async def test_controlnet() -> None:
     import comics
     import controlnets
     import images
+    import server
     from comfy_client import ComfyClient
 
     section("controlnet")
@@ -1182,6 +1183,31 @@ async def test_controlnet() -> None:
         check("id=\"cunlock\"" in html, "…with an explicit way out")
         check("CN.controls = []; $('#icn').value = ''" in html,
               "…which drops the crops, since they belong to the old rectangles")
+
+        # -- the reason it looked completely broken --------------------------
+        # Restaging needs a tagger (for the per-panel prompts) and a ControlNet
+        # (for the composition). With neither, it measured rectangles and drew
+        # whatever was in the shared prompt: four panels of the same thing,
+        # unrelated to the uploaded page. It now says so before the upload.
+        layouts = json.loads((await server.comic_layouts()).body)
+        check("restage_ready" in layouts, "the server reports what restaging is missing")
+        check(set(layouts["restage_ready"]) == {"tagger", "controlnet"},
+              f"…both prerequisites ({layouts['restage_ready']})")
+        check("function renderRestageReady()" in html,
+              "the page warns about them before anything is uploaded")
+        check("只會半套" in html, "…in words, not a silent degrade")
+        check("內容和構圖都沒有" in html,
+              "…and after applying, says plainly when nothing useful was produced")
+
+        # -- getting back out ------------------------------------------------
+        check("function clearRestage(" in html, "a restage can be cleared entirely")
+        check('id="crsclear"' in html and 'id="cdrop"' in html,
+              "…from the toolbar and from the lock banner")
+        check("opt.remove()" in html,
+              "…which takes the one-off layout back out of the picker")
+        check("切回單張圖片：剛才那一頁的構圖鎖定已經關掉了" in html,
+              "switching to single-image mode drops the page's crops, "
+              "instead of refusing the next plain image for having no reference")
 
         # A feature nobody can find is not a feature.
         guide = ROOT / "docs" / "comic-restage.md"
@@ -2954,10 +2980,41 @@ async def test_charpacks() -> None:
     check(not holo.by_key["watson-amelia"].artist_tag,
           "a designer with no danbooru artist tag is left blank, not invented")
 
-    check(holo.artist_tag_models == ["illustrious"],
-          f"artist tags are declared to work on Illustrious only ({holo.artist_tag_models})")
+    check(holo.artist_tag_models == ["noobai", "illustrious"],
+          f"artist tags work on the danbooru-trained models only ({holo.artist_tag_models})")
+    check("pony" not in holo.artist_tag_models,
+          "…and Pony is not one of them: its model card says artist names were removed")
     check(holo.wants_model not in holo.artist_tag_models,
           "…which is not the model this LoRA needs - that tension is the point")
+
+    # NoobAI-XL is the answer to "the output looks bad": it is Illustrious
+    # re-tuned on the full danbooru + e621 set, so unlike Pony it keeps artist
+    # tags AND knows these characters. Every number below is off its model card.
+    noob = images.get("noobai")
+    check(noob is not None, "NoobAI-XL is in the catalogue")
+    check(noob.file.size == 7105349958, f"…at the size HF reports ({noob.file.size})")
+    check(noob.sampler == "euler_ancestral" and 5 <= noob.cfg <= 6 and 25 <= noob.steps <= 30,
+          f"…with the model card's sampler/cfg/steps ({noob.sampler}, {noob.cfg}, {noob.steps})")
+    check(noob.default_size == "832×1216 直式", f"…and its preferred size ({noob.default_size})")
+    check(noob.positive_prefix == "masterpiece, best quality, newest, absurdres, highres",
+          f"…and its prefix verbatim ({noob.positive_prefix})")
+    # The card ships `nsfw` in the negative and `safe` in the prefix. This app
+    # has no content filter, so silently negating what the user asked for would
+    # be the wrong default.
+    check("nsfw" not in noob.negative, "the card's `nsfw` negative is dropped, not smuggled in")
+    check("safe" not in noob.positive_prefix.split(", "), "…and so is `safe`")
+    check("mammal" in noob.negative and "furry" in noob.negative,
+          "…while the rest of the card's negative is kept")
+    check("noobai" in holo.native_models, "the pack knows NoobAI can draw these characters")
+
+    series = charpacks.build_prompt(holo, "mori-calliope", 0, model="noobai")
+    stags = [t.strip() for t in series["prompt"].split(",")]
+    check("hololive" in stags, f"the series tag is added on a danbooru model ({stags[:4]})")
+    check(stags.index("hololive") < stags.index("1girl"),
+          "…in the caption order NoobAI documents: character, series, artist, then the rest")
+    plain_pony = charpacks.build_prompt(holo, "mori-calliope", 0, model="pony")
+    check("hololive" not in [t.strip() for t in plain_pony["prompt"].split(",")],
+          "…and not on Pony, which was not captioned that way")
 
     calli = charpacks.build_prompt(holo, "mori-calliope", 0, model="pony", style=True)
     check(not calli["style"]["applied"],
@@ -2972,8 +3029,8 @@ async def test_charpacks() -> None:
     check(illus["style"]["applied"], "on Illustrious it is applied")
     tags2 = [t.strip() for t in illus["prompt"].split(",")]
     check("by yukisame" in tags2, f"…as 'by <artist>' ({tags2[:3]})")
-    check(tags2.index("by yukisame") <= 2,
-          "…right after the character, where the style guides put it")
+    check(tags2.index("by yukisame") <= 3,
+          f"…right after the character and series, where NoobAI's caption order puts it ({tags2[:4]})")
     off = charpacks.build_prompt(holo, "mori-calliope", 0, model="illustrious", style=False)
     check("by yukisame" not in off["prompt"], "…and only when asked for")
 
@@ -3160,8 +3217,10 @@ async def test_settings_and_updates() -> None:
     faq = ROOT / "docs" / "faq.md"
     check(faq.is_file(), "the FAQ answering all of this exists")
     text = faq.read_text(encoding="utf-8")
-    for topic in ("CIVITAI_API_KEY" if False else "API Keys", "git pull --ff-only",
-                  "$keep = @('ComfyUI'", "總強度", "by yukisame", "沒有顯卡"):
+    for topic in ("API Keys", "git pull --ff-only", "$keep = @('ComfyUI'",
+                  "總強度", "by yukisame", "沒有顯卡",
+                  # The three the user hit this round.
+                  "內容和構圖都沒有", "✕ 清除分鏡", "NoobAI-XL"):
         check(topic in text, f"the FAQ covers {topic}")
     check("docs/faq.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
           "…and the README points at it")

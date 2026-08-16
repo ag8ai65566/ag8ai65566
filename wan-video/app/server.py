@@ -1759,6 +1759,14 @@ async def comic_layouts() -> JSONResponse:
             # UI needs to know before the user types dialogue into them.
             "font": bool(comics.find_font(20)),
             "color_negative": comics.COLOR_NEGATIVE,
+            # Restaging needs two downloads to do anything. Without them it
+            # still "works" - it measures rectangles and then draws whatever
+            # you typed, which looks exactly like the feature being broken.
+            # So the requirements are stated before the upload, not after.
+            "restage_ready": {
+                "tagger": bool(tags.installed(config.MODELS_DIR)),
+                "controlnet": bool(installed_controlnets()),
+            },
         }
     )
 

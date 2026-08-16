@@ -103,6 +103,11 @@ class Pack:
     # Base models that know these characters without the LoRA at all.
     native_models: list[str] = field(default_factory=list)
     style_note: str = ""
+    # The danbooru copyright tag for this cast. NoobAI's documented caption
+    # order is <1girl>, <character>, <series>, <artists>, ... so on a
+    # danbooru-trained model naming the series is worth a tag; on Pony it is
+    # noise, because Pony was not captioned that way.
+    series: str = ""
 
     @property
     def by_key(self) -> dict[str, Character]:
@@ -119,6 +124,7 @@ class Pack:
             "negative": self.negative, "note": self.note, "license": self.license,
             "artist_tag_models": self.artist_tag_models,
             "native_models": self.native_models, "style_note": self.style_note,
+            "series": self.series,
             "groups": [{"id": g.id, "label": g.label, "members": g.members}
                        for g in self.groups],
             "characters": [c.public() for c in self.characters],
@@ -202,7 +208,7 @@ def _load(path: Path) -> Pack | None:
         license=str(raw.get("license", "")),
         artist_tag_models=[str(m) for m in (raw.get("artist_tag_models") or [])],
         native_models=[str(m) for m in (raw.get("native_models") or [])],
-        style_note=str(raw.get("style_note", "")),
+        style_note=str(raw.get("style_note", "")), series=str(raw.get("series", "")),
     )
 
 
@@ -281,7 +287,11 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
 
     # The artist tag goes right after the character, which is where every
     # Illustrious style guide puts it and where it has the most pull.
-    head = [outfit.trigger] + ([f"by {who.artist_tag}"] if applied else [])
+    head = [outfit.trigger]
+    if pack.series and model in pack.native_models:
+        head.append(pack.series)
+    if applied:
+        head.append(f"by {who.artist_tag}")
     parts = [*head, pack.scaffold, outfit.tags, extra.strip()]
     if quality:
         # A different base model wants different quality tags: Pony's score_*

@@ -76,7 +76,45 @@ PHOTO_NEG = (
     "mutated hands, cartoon, anime, 3d render"
 )
 
+# NoobAI's own model card, verbatim. It ships `nsfw` in the negative and `safe`
+# in the prefix; both are removed here because this app has no content filter
+# and silently negating what the user asked for is worse than a bad default.
+NOOB_NEG = (
+    "worst quality, old, early, low quality, lowres, signature, username, logo, "
+    "bad hands, mutated hands, mammal, anthro, furry, ambiguous form, feral, semi-anthro"
+)
+
 IMAGE_MODELS: list[ImageModel] = [
+    ImageModel(
+        id="noobai",
+        label="NoobAI-XL v1.1 — 動漫首選（認得角色，也認得畫師）",
+        file=ModelFile(
+            "Laxhar/noobai-XL-1.1", "NoobAI-XL-v1.1.safetensors", "checkpoints", 7105349958,
+        ),
+        vram_gb=8,
+        # CFG 5~6, 25~30 steps, Euler a - straight off the model card.
+        steps=28, cfg=5.5, sampler="euler_ancestral", scheduler="normal",
+        clip_skip=-2,
+        positive_prefix="masterpiece, best quality, newest, absurdres, highres",
+        negative=NOOB_NEG,
+        prompt_style=(
+            "用 danbooru 標籤，而且**照這個順序**："
+            "`1girl, 角色名, 作品名, by 畫師, 特殊標籤, 一般標籤`。"
+            "這是它訓練時的排法，照著寫差很多。年代標籤 `newest` 代表 2021-2024 的畫風。"
+        ),
+        sizes=SDXL_SIZES,
+        default_size="832×1216 直式",
+        nsfw_note=(
+            "官方建議的負面詞裡本來有 `nsfw`，這裡拿掉了 —— 要成人內容不用再改設定。"
+            "反過來想要全年齡就在提詞加 `safe`。"
+        ),
+        note=(
+            "拿最新的 danbooru + e621 全量訓練，是 Illustrious 的再微調。"
+            "**它認得 danbooru 的畫師標籤**（`by yukisame`），也認得幾乎所有 VTuber 角色 —— "
+            "這兩件事 Pony 都做不到。授權：Fair AI Public License 1.0-SD，禁止商用。"
+        ),
+        extra_files=(SDXL_VAE,),
+    ),
     ImageModel(
         id="illustrious",
         label="Illustrious XL — 動漫 / 插畫（NSFW 生態最大）",
@@ -196,6 +234,7 @@ def resolve(model_id: str, installed: list[str] | None = None) -> ImageModel | N
 # CivitAI baseModel strings that match SDXL-architecture checkpoints, so the
 # LoRA browser can filter to things that will actually load.
 CIVITAI_BASES = {
+    "noobai": ("NoobAI", "Illustrious"),
     "illustrious": ("Illustrious", "NoobAI"),
     "pony": ("Pony",),
     "juggernaut": ("SDXL 1.0", "SDXL Lightning"),

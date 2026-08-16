@@ -3002,10 +3002,13 @@
   }
  ],
  "artist_tag_models": [
+  "noobai",
   "illustrious"
  ],
  "native_models": [
+  "noobai",
   "illustrious"
  ],
- "style_note": "想貼近原畫師的畫風，只有 danbooru 訓練的底模做得到（Illustrious）——Pony V6 的官方說明寫明訓練時把畫師名字拿掉了，所以在 Pony 上加畫師標籤沒有作用。"
+ "style_note": "想貼近原畫師的畫風，只有 danbooru 訓練的底模做得到（NoobAI-XL / Illustrious）——Pony V6 的官方說明寫明訓練時把畫師名字拿掉了，所以在 Pony 上加畫師標籤沒有作用。NoobAI 同時也是這幾個底模裡畫得最好的，Hololive 角色它本來就認得。",
+ "series": "hololive"
 }

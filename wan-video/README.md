@@ -172,6 +172,7 @@ python3 scripts/fetch-model.py hy15-480p --check  # 只檢查現況
 
 | 底模 | 適合 | 顯存 | 下載 |
 | --- | --- | --- | --- |
+| **NoobAI-XL v1.1** | **動漫首選**。最新全量 danbooru + e621，**認得 VTuber 角色，也吃畫師標籤** | 8GB | 7.1GB |
 | **Illustrious XL** | 動漫 / 插畫，**NSFW LoRA 生態最大** | 8GB | 7.3GB |
 | **Pony Diffusion V6 XL** | 動漫 / 多元題材，NSFW 生態第二大 | 8GB | 7.3GB |
 | **Juggernaut XL v9** | 寫實照片風 | 8GB | 7.4GB |
@@ -181,6 +182,8 @@ python3 scripts/fetch-model.py hy15-480p --check  # 只檢查現況
 
 - **Pony 的提詞開頭一定要有 `score_9, score_8_up, score_7_up`**，否則畫面會爛 ——
   app 幫你自動加，也可以取消
+- **NoobAI 要照它的標籤順序寫**：`1girl, 角色, 作品, by 畫師, 其他標籤`，CFG 5~6、Euler a。
+  它是唯一同時**認得角色又認得畫師**的一個 —— 想貼近原畫師畫風就選它
 - **Illustrious 要用 danbooru 標籤**（`1girl, long hair, sitting`），句子式描述效果差；
   CLIP skip 要 -2
 - **Juggernaut 相反**，要用自然句子描述場景光線，CLIP skip -1、不要品質標籤
