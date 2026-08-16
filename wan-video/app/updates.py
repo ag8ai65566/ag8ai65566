@@ -95,6 +95,45 @@ def git_status(repo: Path, label: str) -> dict:
     return out
 
 
+def pull(repo: Path) -> dict:
+    """Fast-forward a checkout to its upstream.
+
+    Only ever a fast-forward. ComfyUI's models/, custom_nodes/, output/, input/
+    and user/ are all in its .gitignore, so a fast-forward cannot touch them -
+    but a merge or a rebase could reach tracked files the user has edited, and
+    then the failure lands in the middle of someone's install rather than here.
+    """
+    out = {"ok": False, "detail": "", "before": "", "after": ""}
+    if not (repo / ".git").exists():
+        out["detail"] = "這個資料夾不是 git 目錄，沒辦法自動更新"
+        return out
+    ok, before = _git(repo, "rev-parse", "--short", "HEAD")
+    if not ok:
+        out["detail"] = before
+        return out
+    out["before"] = before
+    ok, dirty = _git(repo, "status", "--porcelain", "--untracked-files=no")
+    if ok and dirty.strip():
+        # Porcelain is "XY <path>", but the status pair may be one char plus a
+        # space, so splitting beats a fixed slice - which ate the leading "n"
+        # of "nodes.py".
+        changed = [l.split(maxsplit=1)[-1] for l in dirty.splitlines()[:4] if l.strip()]
+        out["detail"] = (
+            "資料夾裡有被改過的檔案，先不自動更新（怕蓋掉你的修改）："
+            + "、".join(changed)
+        )
+        return out
+    ok, said = _git(repo, "pull", "--ff-only", timeout=300)
+    forget()
+    if not ok:
+        out["detail"] = f"git pull 失敗：{said[:200]}"
+        return out
+    ok2, after = _git(repo, "rev-parse", "--short", "HEAD")
+    out.update(ok=True, after=after if ok2 else "",
+               detail="已經是最新的" if before == after else f"更新完成：{before} → {after}")
+    return out
+
+
 def app_updates(app_repo: Path, comfy_repo: Path) -> dict:
     key = f"git:{app_repo}:{comfy_repo}"
     if hit := _cached(key):

@@ -28,6 +28,7 @@ import config
 import controlnets
 import images
 import downloader
+import envfile
 import inspect_image
 import library
 import pagelayout
@@ -1344,6 +1345,44 @@ async def list_controlnets() -> JSONResponse:
     )
 
 
+@app.post("/api/updates/comfy/pull")
+async def pull_comfy() -> JSONResponse:
+    """The "在 ComfyUI 資料夾按 git pull" the update notice used to just tell you to do.
+
+    update.bat deliberately never touches ComfyUI/ - that folder holds every
+    model you downloaded - so the two are updated separately, and this is the
+    other half.
+    """
+    loop = asyncio.get_running_loop()
+    result = await loop.run_in_executor(None, updates.pull, config.COMFY_DIR)
+    result["dir"] = str(config.COMFY_DIR)
+    result["note"] = (
+        "ComfyUI 更新完要重開它才生效（關掉 ComfyUI 那個黑視窗，再跑一次 start.bat）。"
+        if result["ok"] and result.get("before") != result.get("after") else ""
+    )
+    if not result["ok"]:
+        raise HTTPException(400, result["detail"])
+    return JSONResponse(result)
+
+
+@app.get("/api/settings")
+async def get_settings() -> JSONResponse:
+    return JSONResponse({"settings": envfile.state(), "file": str(envfile.path())})
+
+
+@app.post("/api/settings")
+async def set_setting(payload: dict = Body(...)) -> JSONResponse:
+    name = str((payload or {}).get("name", ""))
+    if name not in envfile.WRITABLE:
+        raise HTTPException(400, f"不能從網頁設定這個：{name}")
+    try:
+        envfile.write(name, str((payload or {}).get("value", "")))
+    except (OSError, ValueError) as exc:
+        raise HTTPException(400, f"寫不進 .env：{exc}")
+    return JSONResponse({"settings": envfile.state(), "file": str(envfile.path()),
+                         "needs_restart": envfile.WRITABLE[name]["restart"]})
+
+
 @app.get("/api/packs")
 async def list_packs() -> JSONResponse:
     """Every character pack, with whether its LoRA and its base model are here.
@@ -1378,10 +1417,17 @@ async def pack_prompt(pack_id: str, payload: dict = Body(default={})) -> JSONRes
         costume = int(payload.get("costume", 0))
     except (TypeError, ValueError):
         costume = 0
+    # Which base model is selected changes the answer twice over: whether the
+    # artist tag does anything, and which quality tags belong on the end.
+    model_id = str(payload.get("model", "") or pack.wants_model)
+    model = images.resolve(model_id, installed_checkpoints())
     built = charpacks.build_prompt(
         pack, str(payload.get("character", "")), costume,
         extra=str(payload.get("extra", "")),
         quality=payload.get("quality", True) is not False,
+        model=model.id if model else "",
+        style=bool(payload.get("style")),
+        quality_tags=(model.positive_prefix if model and model.id != pack.wants_model else ""),
     )
     if built is None:
         raise HTTPException(404, f"這個角色包裡沒有：{payload.get('character')}")

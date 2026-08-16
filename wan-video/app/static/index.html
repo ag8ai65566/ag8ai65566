@@ -306,6 +306,7 @@
         <div id="packstate" class="banner tight"></div>
         <div id="packmembers" class="words" style="margin-top:6px;max-height:190px;overflow-y:auto"></div>
         <div id="packcostumes" class="words" style="margin-top:6px"></div>
+        <div id="packstyle" class="banner tight"></div>
         <div class="row" style="margin-top:6px">
           <label class="chk"><input type="checkbox" id="packquality" checked> 加上這支 LoRA 的品質標籤</label>
           <label class="chk"><input type="checkbox" id="packkeep" checked> 保留我自己打的字</label>
@@ -333,7 +334,7 @@
 
       <div id="comicbox" class="comic-only hidden">
         <div class="row" style="margin-top:0">
-          <input type="file" id="cpagefile" accept="image/*" hidden>
+          <input type="file" id="cpagefile" accept="image/*" multiple hidden>
           <input type="file" id="ccharfile" accept="image/*" hidden>
           <button class="ghost" id="crestage">📄 照現成的一頁重畫（換角色）</button>
           <label class="f">閱讀方向
@@ -342,9 +343,10 @@
               <option value="rtl">右→左（日漫）</option>
             </select>
           </label>
-          <span class="s" id="crestagehint">丟一頁漫畫 + 一張角色圖，它會量出分鏡、看懂每格在做什麼，再換成你的角色。</span>
+          <span class="s" id="crestagehint">丟一頁（或連續好幾頁）漫畫 + 一張角色圖，它會量出分鏡、看懂每格在做什麼，再換成你的角色。<b>選檔案時可以一次選多張</b>，每一頁會各自成為一張成品。</span>
         </div>
         <div id="crestagebox" class="hidden"></div>
+        <div id="clocked" class="banner tight hidden"></div>
         <div class="note" id="clayoutnote"></div>
         <textarea id="cshared" placeholder="共用提詞：每一格都會加上，用來固定角色和畫風。例如 1girl, long black hair, red dress, school classroom" style="min-height:52px"></textarea>
         <div class="row" style="margin-top:4px">
@@ -461,6 +463,7 @@
       <h2>要套用的 LoRA</h2>
       <div class="card">
         <div id="iloras" class="loralist"></div>
+        <div id="iloranote" class="s"></div>
         <div class="s" style="margin-top:8px">
           圖片的 LoRA 要用 <b>SDXL 系</b>（Illustrious / Pony / SDXL）的，影片的 LoRA 在這裡不會有作用。
           到「LoRA」分頁搜尋時把上面的來源切成「圖片」就會自動篩對。
@@ -1399,24 +1402,110 @@ async function refreshDownloads() {
 }
 
 /* ---------- settings tab ---------- */
-let HEALTH = {};
-function renderSettings() {
+let HEALTH = {}, SETTINGS = { settings: [], file: '' };
+
+async function renderSettings() {
+  try { SETTINGS = await (await fetch('/api/settings')).json(); } catch {}
   const h = HEALTH;
+  // Editable in place. Telling someone to "填進 .env 然後重啟" without saying
+  // where that file is, or how to edit it, is not an instruction - it is a
+  // dead end, and it was in front of the one setting that gates every download.
+  const fields = (SETTINGS.settings || []).map((f) => `
+    <div class="m" data-set="${esc(f.name)}">
+      <div class="top">
+        <span class="name">${esc(f.label)}</span>
+        ${f.set ? '<span class="tag done">已設定</span>' : '<span class="tag warn">未設定</span>'}
+        ${f.needs_restart ? '<span class="s">改完要重開 ComfyUI</span>' : '<span class="s">存檔就生效，不用重啟</span>'}
+      </div>
+      <div class="row" style="margin-top:6px">
+        <input class="v" type="${f.secret ? 'password' : 'text'}"
+               placeholder="${f.set ? esc(f.value) : '（空的）'}"
+               style="flex:1;min-width:220px" autocomplete="off">
+        ${f.secret ? '<button class="ghost tiny eye">👁</button>' : ''}
+        <button class="go save">存起來</button>
+        ${f.set ? '<button class="ghost tiny clear">清除</button>' : ''}
+      </div>
+      <div class="note">${esc(f.help)}</div>
+    </div>`).join('');
+
+  const comfy = UPDATES.comfy || {};
   $('#setbody').innerHTML = `
-    <div class="note">這些值來自 <code>.env</code>，改完要重啟 app（關掉兩個黑視窗再跑 start.bat）。</div>
+    <h2 style="margin-top:0">設定（直接改，會寫進 <code>${esc(SETTINGS.file || '.env')}</code>）</h2>
+    ${fields}
+    <h2 style="margin-top:16px">更新</h2>
+    <div class="m">
+      <div class="top">
+        <span class="name">ComfyUI</span>
+        ${comfy.ok
+          ? (comfy.behind ? `<span class="tag warn">落後 ${comfy.behind} 個更新</span>`
+                          : '<span class="tag done">已是最新</span>')
+          : `<span class="s">${esc(comfy.detail || '還沒檢查')}</span>`}
+        <button class="ghost tiny" id="setpullcomfy">立刻更新 ComfyUI</button>
+      </div>
+      <div class="note">
+        <b>為什麼 update.bat 更新完 ComfyUI 還是舊的？</b>
+        因為 <code>update.bat</code> 刻意不碰 <code>ComfyUI\\</code> 這個資料夾 ——
+        你所有的模型都放在裡面（<code>ComfyUI\\models\\</code>），
+        連同 <code>venv\\</code>、<code>data\\</code>、<code>models\\</code>、<code>.env</code>
+        一起被列為「絕對不覆蓋」。所以 app 的程式和 ComfyUI 本體是分開更新的。
+        按上面那顆按鈕就等於幫你在 ComfyUI 資料夾裡跑 <code>git pull</code>，
+        模型和 custom node 都不會動（它們在 ComfyUI 自己的 .gitignore 裡）。
+      </div>
+      <div id="setpullout" class="s"></div>
+    </div>
     <h2 style="margin-top:16px">現況</h2>
     <div class="s">ComfyUI：${h.comfy && h.comfy.ok ? '就緒 · '+esc(h.comfy.detail) : '<span style="color:var(--err)">'+esc((h.comfy||{}).detail||'連不上')+'</span>'}</div>
     <div class="s">模型目錄：<code>${esc(h.models_dir||'')}</code></div>
     <div class="s">成品目錄：<code>${esc((h.library||{}).dir||'')}</code>（${(h.library||{}).count||0} 個檔，${gb((h.library||{}).bytes||0)}）</div>
-    <div class="s">COMFY_ARGS：<code>${esc(h.comfy_args || '(空)')}</code></div>
-    <div class="s">CivitAI API key：${h.civitai_key ? '已設定' : '<b>未設定</b> —— 可以搜尋，但不能下載'}</div>
-    <h2 style="margin-top:16px">想改什麼</h2>
+    <h2 style="margin-top:16px">只能手動改的（在 .env 裡）</h2>
     <div class="note">
-      <b>顯存不夠、想跑大模型</b>：在 <code>.env</code> 加 <code>COMFY_ARGS=--lowvram</code>（很不夠就 <code>--novram</code>）。<br>
-      <b>要從 CivitAI 下載</b>：<code>CIVITAI_API_KEY=你的key</code>。到 civitai.com → 頭像 → Account settings → API Keys 產生。<br>
       <b>每次都自動套某些 LoRA</b>：<code>LORAS=檔名:0.8</code>；雙專家模型分開指定用 <code>LORAS_HIGH=</code> / <code>LORAS_LOW=</code>。<br>
       <b>換預設模型</b>：<code>MODEL=wan22-14b-q4</code>。
     </div>`;
+
+  $('#setbody').querySelectorAll('[data-set]').forEach((box) => {
+    const input = box.querySelector('.v');
+    const save = async (value) => {
+      box.querySelectorAll('button').forEach((b) => b.disabled = true);
+      try {
+        const r = await fetch('/api/settings', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ name: box.dataset.set, value }),
+        });
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.detail || r.statusText);
+        await refreshHealth();
+        renderSettings();
+        // The key is live the moment it is written, so anything that was
+        // blocked on it can be retried straight away.
+        refreshControlnets(); refreshPacks();
+      } catch (e) {
+        box.querySelector('.note').innerHTML = `<span style="color:var(--err)">存不進去：${esc(e.message)}</span>`;
+        box.querySelectorAll('button').forEach((b) => b.disabled = false);
+      }
+    };
+    box.querySelector('.save').onclick = () => save(input.value.trim());
+    if (box.querySelector('.clear')) box.querySelector('.clear').onclick = () => save('');
+    if (box.querySelector('.eye')) box.querySelector('.eye').onclick = () => {
+      input.type = input.type === 'password' ? 'text' : 'password';
+    };
+    input.onkeydown = (e) => { if (e.key === 'Enter') save(input.value.trim()); };
+  });
+
+  $('#setpullcomfy').onclick = async (e) => {
+    e.target.disabled = true;
+    $('#setpullout').textContent = '更新中…（第一次可能要一兩分鐘）';
+    try {
+      const r = await fetch('/api/updates/comfy/pull', { method:'POST' });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      $('#setpullout').textContent = d.detail + (d.note ? '　' + d.note : '');
+      checkUpdates(true);
+    } catch (err) {
+      $('#setpullout').innerHTML = `<span style="color:var(--err)">${esc(err.message)}</span>`;
+    }
+    e.target.disabled = false;
+  };
 }
 
 /* ---------- 圖片 ---------- */
@@ -1649,6 +1738,56 @@ function renderPackCostumes() {
     PACK.costume = +b.dataset.cos;
     renderPackCostumes();
   });
+  renderPackStyle();
+}
+
+// "Draw it the way the character's own designer draws it." Only a base model
+// trained with danbooru artist tags can be told that, so the box says plainly
+// which case you are in rather than offering a switch that does nothing.
+function renderPackStyle() {
+  const p = PACK.chosen, box = $('#packstyle');
+  const who = p && p.characters.find((c) => c.key === PACK.who);
+  if (!who) { box.classList.add('hidden'); return; }
+  box.classList.remove('hidden');
+  const model = IMG.chosen ? IMG.chosen.id : '';
+  const works = !!who.artist_tag && (p.artist_tag_models || []).includes(model);
+  const want = (p.artist_tag_models || [])[0] || '';
+  const wantLabel = (IMG.models.find((m) => m.id === want) || {}).label || want;
+  box.innerHTML = `<div class="row" style="margin-top:0;align-items:center">
+    <label class="chk"><input type="checkbox" id="packstylechk" ${P.get('packstyle', true) ? 'checked' : ''}
+      ${works ? '' : 'disabled'}> <b>盡量貼近原畫師的畫風</b></label>
+    ${who.designer
+      ? `<span class="s">原畫師：${esc(who.designer)}${who.artist_tag
+          ? ` · <code>by ${esc(who.artist_tag)}</code>（danbooru ${who.artist_posts} 張）` : ''}</span>`
+      : '<span class="s">這位沒有查到原畫師</span>'}
+    <div class="spacer"></div>
+    ${who.wiki ? `<a class="s" href="${esc(who.wiki)}" target="_blank" rel="noopener">官方設定圖 ↗</a>` : ''}
+  </div>
+  ${works ? '' : `<div class="s" style="margin-top:4px;color:var(--warn)">${esc(
+      !who.artist_tag
+        ? `${who.name} 的原畫師在 danbooru 上沒有可用的畫師標籤，沒辦法用標籤指定畫風。`
+        : `${(IMG.chosen || {}).label || '這個底模'}不吃畫師標籤 —— ${esc(p.base_model)} `
+          + '訓練時把畫師名字拿掉了，加了也沒作用。')}</div>`}
+  ${!works && who.artist_tag && want ? `<div class="row" style="margin-top:4px">
+      <button class="ghost tiny" id="packstyleswitch">改用 ${esc(wantLabel)}（畫風才吃得到）</button>
+      <span class="s" style="align-self:center">${who.danbooru_posts >= 1000
+        ? `${esc(who.name)} 在 danbooru 有 ${who.danbooru_posts} 張，換過去不用 LoRA 也畫得出來。`
+        : '換過去之後這支 Pony LoRA 就不該再勾了。'}</span>
+    </div>` : ''}
+  ${who.wiki ? `<div class="s" style="margin-top:4px">
+      想更貼近官方設定：到「官方設定圖」抓一張立繪，放進上面的<b>構圖鎖定（ControlNet）</b>當參考圖，
+      比例和服裝細節會直接跟著官方走 —— 這條路在哪個底模上都有效。</div>` : ''}`;
+  if ($('#packstylechk')) $('#packstylechk').onchange = () => {
+    P.set('packstyle', $('#packstylechk').checked);
+  };
+  if ($('#packstyleswitch')) $('#packstyleswitch').onclick = () => {
+    $('#imodel').value = want;
+    onImageModelChange();
+    renderPackStyle();
+    $('#istatus').textContent =
+      `底模已換成 ${wantLabel}，現在畫師標籤有作用了。這支 LoRA 是 ${p.base_model} 訓練的，`
+      + `在這裡不該再勾（記得取消）。`;
+  };
 }
 
 // What the user typed that did not come from the last insert. Without this,
@@ -1674,7 +1813,9 @@ async function applyPack() {
     const r = await fetch(`/api/packs/${encodeURIComponent(p.id)}/prompt`, {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ character: PACK.who, costume: PACK.costume,
-                             extra: packExtra(), quality: $('#packquality').checked }),
+                             extra: packExtra(), quality: $('#packquality').checked,
+                             model: IMG.chosen ? IMG.chosen.id : '',
+                             style: !!($('#packstylechk') && $('#packstylechk').checked) }),
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.detail || r.statusText);
@@ -1697,7 +1838,13 @@ async function applyPack() {
       el.querySelector('.vm').textContent = m.value;
       el.querySelector('.vc').textContent = c.value;
     });
+    loraBudget();
     const bits = [`已填入${comicMode() ? '共用提詞' : '提詞'}：${d.character} · ${d.costume}`];
+    if (d.style && d.style.applied) bits.push(`畫風：by ${d.style.tag}`);
+    else if (d.style && d.style.tag && $('#packstylechk') && $('#packstylechk').checked) {
+      bits.push(d.style.why);
+    }
+    renderPackStyle();
     if (armed) bits.push(`LoRA 已勾選（強度 ${d.strength}）`);
     else if (!d.lora_installed) bits.push('但 LoRA 還沒下載 —— 現在畫出來會是底模自己的想像');
     if (p.wants_model && IMG.chosen && IMG.chosen.id !== p.wants_model) {
@@ -2046,7 +2193,10 @@ function applyInspect() {
 
 /* ---------- comic mode ---------- */
 let COMIC = { layouts: [], help: {}, shots: [], anchors: [], font: true, chosen: null,
-              custom: null };
+              custom: null,
+              // Set when a layout was measured off an uploaded page: the panel
+              // count is then the page's, not something to pick from a menu.
+              locked: null };
 
 function comicMode() { return document.querySelector('.modes button.on').dataset.mode === 'comic'; }
 
@@ -2100,6 +2250,28 @@ function layoutPayload(l) {
     : { layout: l ? l.id : 'four-grid' };
 }
 
+function renderLock() {
+  const box = $('#clocked'), lock = COMIC.locked;
+  $('#clayout').disabled = !!lock;
+  box.classList.toggle('hidden', !lock);
+  if (!lock) return;
+  box.innerHTML = `<div class="row" style="margin-top:0;align-items:center">
+    <span class="tag done">🔒 分鏡已鎖定</span>
+    <span class="s">照著 <b>${esc(lock.name)}</b> 量出來的 ${lock.count} 格 ——
+      格數和每一格的位置都跟著原稿，不會被改掉。</span>
+    <div class="spacer"></div>
+    <button class="ghost tiny" id="cunlock">解除鎖定，自己挑分鏡</button>
+  </div>`;
+  $('#cunlock').onclick = () => {
+    COMIC.locked = null;
+    // The crops belong to the measured rectangles; keeping them past an
+    // unlock would guide the wrong shots.
+    CN.controls = []; $('#icn').value = ''; renderControlHelp();
+    renderLock();
+    $('#istatus').textContent = '分鏡鎖定已解除。現在可以自己挑版型，但構圖參考圖已經清掉了。';
+  };
+}
+
 function onLayoutChange() {
   const l = currentLayout();
   if (!l) return;
@@ -2114,6 +2286,7 @@ function onLayoutChange() {
   $('#clayoutnote').innerHTML = `<b>${l.count} 格</b> · ${esc(l.note || '')}`
     + `<div style="margin-top:4px">${esc(COMIC.help.layout || '')}</div>`;
   renderPanels();
+  renderLock();
   refreshComicPreview();
 }
 $('#clayout').onchange = onLayoutChange;
@@ -2192,13 +2365,32 @@ async function refreshComicPreview() {
 });
 
 /* ---------- restage an existing page ---------- */
-let RESTAGE = null;
+// One entry per uploaded page. A page is the unit the generator works in, so
+// several連貫的 pages become several jobs rather than one impossible layout -
+// but they are measured together and share the cast, the reading order and the
+// shared prompt, which is what makes them read as one sequence.
+let RESTAGE = null;   // { pages: [...], at: 0 }
+const nowPage = () => (RESTAGE && RESTAGE.pages[RESTAGE.at]) || null;
 
 $('#creading').value = P.get('reading', 'ltr');
 $('#creading').onchange = () => P.set('reading', $('#creading').value);
 $('#crestage').onclick = () => $('#cpagefile').click();
 $('#cpagefile').onchange = () => {
-  if (!$('#cpagefile').files[0]) return;
+  const files = [...$('#cpagefile').files];
+  if (!files.length) return;
+  // Say what came in, immediately. Analysis takes seconds and until this was
+  // here there was no way to tell a successful upload from a dead button.
+  const box = $('#crestagebox');
+  box.classList.remove('hidden');
+  box.className = 'banner';
+  box.innerHTML = `<div class="row" style="margin-top:0;align-items:center">
+    ${files.map((f) => `<img src="${URL.createObjectURL(f)}"
+        style="height:70px;border-radius:8px;background:#fff" title="${esc(f.name)}">`).join('')}
+    <div style="flex:1;min-width:200px">
+      <b>已讀取 ${files.length} 頁</b>
+      <div class="s">${files.map((f) => esc(f.name) + '（' + gb(f.size) + '）').join('<br>')}</div>
+      <div class="s">接著選一張角色圖（不想換角色就按取消）…</div>
+    </div></div>`;
   // Ask for the character straight after the page, so it is one gesture.
   $('#ccharfile').click();
 };
@@ -2207,43 +2399,60 @@ $('#ccharfile').onchange = () => runRestage();
 $('#ccharfile').oncancel = () => runRestage();
 
 async function runRestage() {
-  const pageFile = $('#cpagefile').files[0];
-  if (!pageFile) return;
+  const files = [...$('#cpagefile').files].slice(0, 12);
+  if (!files.length) return;
   const box = $('#crestagebox');
+  const charFile = $('#ccharfile').files[0];
+  if (RESTAGE) RESTAGE.pages.forEach((p) => p._url && URL.revokeObjectURL(p._url));
+  RESTAGE = { pages: [], at: 0 };
   box.classList.remove('hidden');
   box.className = 'banner';
-  box.innerHTML = '<div class="s">量分鏡、看每一格在畫什麼…（第一次要載入分析模型，會慢一點）</div>';
-  const form = new FormData();
-  form.append('page', pageFile);
-  if ($('#ccharfile').files[0]) form.append('character', $('#ccharfile').files[0]);
-  form.append('outfit_from', P.get('outfit_from', 'character'));
-  form.append('reading', P.get('reading', 'ltr'));
-  try {
-    const r = await fetch('/api/comic/restage', { method:'POST', body: form });
-    const d = await r.json();
-    if (!r.ok) throw new Error(d.detail || r.statusText);
-    if (RESTAGE && RESTAGE._page) URL.revokeObjectURL(RESTAGE._page);
-    RESTAGE = d;
-    RESTAGE._page = URL.createObjectURL(pageFile);
+
+  for (let i = 0; i < files.length; i++) {
+    box.innerHTML = `<div class="s">量第 ${i + 1}/${files.length} 頁的分鏡…`
+      + '（第一次要載入分析模型，會慢一點）</div>';
+    const form = new FormData();
+    form.append('page', files[i]);
+    if (charFile) form.append('character', charFile);
+    form.append('outfit_from', P.get('outfit_from', 'character'));
+    form.append('reading', P.get('reading', 'ltr'));
+    try {
+      const r = await fetch('/api/comic/restage', { method:'POST', body: form });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      d._url = URL.createObjectURL(files[i]);
+      d._name = files[i].name;
+      RESTAGE.pages.push(d);
+    } catch (e) {
+      box.className = 'banner very_tight';
+      box.innerHTML = `<div class="errbox">第 ${i + 1} 頁讀不了：${esc(e.message)}</div>`;
+      if (!RESTAGE.pages.length) { RESTAGE = null; $('#cpagefile').value = ''; return; }
+      break;
+    }
     // The layout is back in under a second; showing it now beats staring at a
     // spinner while every panel is tagged.
+    RESTAGE.at = RESTAGE.pages.length - 1;
     renderRestage();
-    if (d.token && d.panels.length) await fillPanels();
-  } catch (e) {
-    box.className = 'banner very_tight';
-    box.innerHTML = `<div class="errbox">讀不了：${esc(e.message)}</div>`;
   }
+  RESTAGE.at = 0;
+  renderRestage();
+  for (let i = 0; i < RESTAGE.pages.length; i++) {
+    if (!RESTAGE) return;
+    RESTAGE.at = i;
+    await fillPanels(RESTAGE.pages[i]);
+  }
+  RESTAGE.at = 0;
+  renderRestage();
   $('#cpagefile').value = ''; $('#ccharfile').value = '';
 }
 
 // Panels are tagged one at a time so the user can watch it happen and stop
 // early if the layout is obviously wrong.
-async function fillPanels() {
-  const d = RESTAGE;
+async function fillPanels(d) {
   if (!d || !d.token) return;
   d._busy = true;
   for (let i = 0; i < d.panels.length; i++) {
-    if (!RESTAGE || RESTAGE.token !== d.token) return;   // cancelled
+    if (!RESTAGE || !RESTAGE.pages.includes(d)) return;   // cancelled
     d._doing = i;
     renderRestage();
     try {
@@ -2288,7 +2497,10 @@ function restageControlHtml(d) {
 }
 
 function renderRestage() {
-  const d = RESTAGE, L = d.layout, box = $('#crestagebox');
+  const d = nowPage();
+  if (!d) return;
+  const L = d.layout, box = $('#crestagebox');
+  const many = RESTAGE.pages.length > 1;
   const conf = L.confidence;
   const done = d.panels.filter(Boolean).length;
   const chips = (arr, cls) => (arr || []).slice(0, 14)
@@ -2296,8 +2508,9 @@ function renderRestage() {
   box.className = 'banner';
   box.innerHTML = `
     <div class="row" style="margin-top:0;align-items:flex-start">
-      <img src="${d._page}" style="width:130px;border-radius:8px;background:#fff">
+      <img src="${d._url}" style="width:130px;border-radius:8px;background:#fff">
       <div style="flex:1;min-width:220px">
+        <div class="s">${esc(d._name || '')}</div>
         <b>量到 ${L.count} 格</b>
         <span class="tag ${conf > 0.8 ? 'done' : 'warn'}">吻合度 ${(conf * 100).toFixed(0)}%</span>
         ${L.note ? `<div class="s" style="margin-top:4px">${esc(L.note)}</div>` : ''}
@@ -2310,6 +2523,12 @@ function renderRestage() {
           服裝也用我的角色（取消＝沿用原頁面的穿著）</label>
       </div>
     </div>
+    ${many ? `<div class="words" style="margin-top:6px">
+      <span class="s" style="width:100%">共 ${RESTAGE.pages.length} 頁（每一頁會各自成為一張成品）：</span>
+      ${RESTAGE.pages.map((pg, i) => `<button class="tag ${i === RESTAGE.at ? 'done' : ''}"
+        data-pg="${i}">第 ${i + 1} 頁 · ${pg.layout.count} 格${
+          pg.panels.filter(Boolean).length < pg.panels.length ? ' …' : ''}</button>`).join('')}
+    </div>` : ''}
     ${restageControlHtml(d)}
     <div class="s" style="margin-top:10px">每一格讀到的內容 —— 套用之後還可以再改：
       ${done < d.panels.length
@@ -2331,9 +2550,12 @@ function renderRestage() {
       <div class="spacer"></div>
       <button class="ghost" id="crscancel">取消</button>
       ${L.count
-        ? `<button class="go" id="crsapply"${d._busy ? ' disabled' : ''}>${
-            d._busy ? '讀取中…' : '套用這個分鏡'}</button>`
+        ? `<button class="${many ? 'ghost' : 'go'}" id="crsapply"${d._busy ? ' disabled' : ''}>${
+            d._busy ? '讀取中…' : (many ? `只套用第 ${RESTAGE.at + 1} 頁` : '套用這個分鏡')}</button>`
         : '<span class="s">量不到格子，請在下面挑一個現成的分鏡。</span>'}
+      ${many ? `<button class="go" id="crsall"${
+        RESTAGE.pages.some((pg) => pg._busy) ? ' disabled' : ''}>${
+        RESTAGE.pages.some((pg) => pg._busy) ? '讀取中…' : `${RESTAGE.pages.length} 頁一起畫`}</button>` : ''}
     </div>`;
   $('#coutfit').onchange = () => {
     P.set('outfit_from', $('#coutfit').checked ? 'character' : 'page');
@@ -2344,17 +2566,22 @@ function renderRestage() {
   if ($('#crslock')) $('#crslock').onchange = () => P.set('lockpose', $('#crslock').checked);
   $('#crscancel').onclick = () => {
     box.classList.add('hidden');
-    if (RESTAGE && RESTAGE._page) URL.revokeObjectURL(RESTAGE._page);
+    if (RESTAGE) RESTAGE.pages.forEach((pg) => pg._url && URL.revokeObjectURL(pg._url));
     RESTAGE = null;
   };
-  if ($('#crsapply')) $('#crsapply').onclick = applyRestage;
+  box.querySelectorAll('[data-pg]').forEach((b) => b.onclick = () => {
+    RESTAGE.at = +b.dataset.pg;
+    renderRestage();
+  });
+  if ($('#crsapply')) $('#crsapply').onclick = () => applyRestage();
+  if ($('#crsall')) $('#crsall').onclick = queueAllPages;
 }
 
 // Re-derive each panel's prompt from the tags already fetched, so flipping the
 // outfit switch is instant instead of another upload and another minute of
 // tagging.
 function resortRestage() {
-  const d = RESTAGE;
+  const d = nowPage();
   if (!d || !d.character) { renderRestage(); return; }
   const mine = $('#coutfit') ? $('#coutfit').checked : true;
   d.outfit_from = mine ? 'character' : 'page';
@@ -2368,8 +2595,10 @@ function resortRestage() {
   renderRestage();
 }
 
-function applyRestage() {
-  const d = RESTAGE, L = d.layout;
+function applyRestage(page) {
+  const d = page || nowPage();
+  if (!d) return;
+  const L = d.layout;
   if (!L.count) {
     $('#istatus').textContent = '這頁沒量到任何格子，請改用下面的現成分鏡。';
     return;
@@ -2391,6 +2620,10 @@ function applyRestage() {
     [...$('#clayout').options].find((o) => o.value === 'custom').textContent = COMIC.custom.label;
   }
   $('#clayout').value = 'custom';
+  // Pinned to the page it was measured from. Being able to quietly switch a
+  // 5-panel page to a 3-panel layout while the per-panel prompts and the
+  // per-panel reference crops still say 5 is not a choice, it is a trap.
+  COMIC.locked = { count: L.count, name: d._name || '上傳的頁面', page: d };
   onLayoutChange();
   $('#cpanels').querySelectorAll('.pnl').forEach((el, i) => {
     const p = d.panels[i];
@@ -2423,6 +2656,33 @@ function applyRestage() {
     + extra;
   schedulePreview();
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Several連貫的 pages are several jobs: one record, one composed page each.
+// They share the shared prompt, the LoRAs and the seed base so the character
+// and the style hold across the sequence.
+async function queueAllPages() {
+  if (!RESTAGE || !RESTAGE.pages.length) return;
+  const pages = RESTAGE.pages.filter((pg) => pg.layout.count);
+  if (!pages.length) {
+    $('#istatus').textContent = '這幾頁都沒量到格子，沒有東西可以畫。';
+    return;
+  }
+  const btn = $('#crsall');
+  if (btn) btn.disabled = true;
+  let made = 0;
+  for (let i = 0; i < pages.length; i++) {
+    applyRestage(pages[i]);
+    $('#istatus').textContent = `送出第 ${i + 1}/${pages.length} 頁…`;
+    // Straight through the normal submit path, so a page queued here is
+    // identical to one queued by hand - same validation, same settings.
+    await submitImage(true);
+    made += 1;
+  }
+  $('#crestagebox').classList.add('hidden');
+  $('#istatus').textContent = `${made} 頁都排進佇列了，會一頁一頁畫。`;
+  if (btn) btn.disabled = false;
+  refreshImageJobs(true);
 }
 
 const DENOISE_WORDS = [
@@ -2554,7 +2814,7 @@ function onImageModelChange() {
   renderImageLoras();
   // The pack's status line says "you are on the wrong base model", so it has to
   // be redrawn whenever the base model moves.
-  if (PACK.chosen) renderPackState();
+  if (PACK.chosen) { renderPackState(); renderPackStyle(); }
 }
 $('#imodel').onchange = onImageModelChange;
 function syncCustomSize() {
@@ -2615,8 +2875,10 @@ function renderImageLoras() {
     m.oninput = () => {
       vm.textContent = m.value;
       if (link()) { c.value = m.value; vc.textContent = m.value; }
+      loraBudget();
     };
     c.oninput = () => vc.textContent = c.value;
+    el.querySelector('input[type=checkbox]').onchange = loraBudget;
     el.querySelector('.lk').onclick = () => {
       const now = !link();
       el.dataset.linked = now ? '1' : '0';
@@ -2631,8 +2893,34 @@ function renderImageLoras() {
       if (field.value.includes(words)) return;
       field.value = (field.value.trim() ? field.value.trim() + ', ' : '') + words;
       el.querySelector('input[type=checkbox]').checked = true;
+      loraBudget();
     };
   });
+  loraBudget();
+}
+
+function loraBudget() {
+  const on = [...$('#iloras').querySelectorAll('.lora')]
+    .filter((el) => el.querySelector('input[type=checkbox]').checked)
+    .map((el) => ({ n: el.dataset.n, m: parseFloat(el.querySelector('.sm').value) || 0 }));
+  const box = $('#iloranote');
+  if (!box) return;
+  const total = on.reduce((a, b) => a + b.m, 0);
+  if (on.length < 2) {
+    box.innerHTML = on.length
+      ? '<span class="s">一支 LoRA，強度 ' + on[0].m.toFixed(2) + '。0.6～1.0 都正常。</span>'
+      : '';
+    return;
+  }
+  const warn = total > 1.6;
+  box.innerHTML = `<span class="${warn ? 'tag warn' : 'tag done'}">${on.length} 支 LoRA，`
+    + `總強度 ${total.toFixed(2)}</span> `
+    + (warn
+      ? '<span class="s">偏高了。多支 LoRA 是疊加在同一組權重上的，總和超過 1.6 之後'
+        + '臉和手會開始崩。建議：<b>角色 LoRA 0.7～0.8，畫風 LoRA 0.4～0.6</b>，'
+        + '並且把畫風那支的 🔗 拆開、CLIP 強度調到 0.2～0.3，'
+        + '它就不會搶走你提詞裡的角色描述。</span>'
+      : '<span class="s">這個總和還好。角色 LoRA 擺高一點、畫風 LoRA 擺低一點最穩。</span>');
 }
 
 function imagePayload() {
@@ -2668,8 +2956,12 @@ function imagePayload() {
   };
 }
 
-$('#igo').onclick = async () => {
-  if (!IMG.chosen) return;
+$('#igo').onclick = () => submitImage(false);
+
+// Named so a multi-page restage can queue each page through exactly the same
+// path a single press of the button takes - same validation, same payload.
+async function submitImage(quiet) {
+  if (!IMG.chosen) return false;
   const comic = comicMode();
   const payload = imagePayload();
   if (comic) {
@@ -2686,24 +2978,25 @@ $('#igo').onclick = async () => {
         ? Array.from({ length: l.count }, (_, i) => CN.controls[i] || '') : [],
     });
     if (!payload.panels.some((p) => p.trim()) && !payload.shared.trim()) {
-      $('#istatus').textContent = '每一格都是空的 —— 至少寫一格，或填共用提詞。'; return;
+      $('#istatus').textContent = '每一格都是空的 —— 至少寫一格，或填共用提詞。'; return false;
     }
     if (payload.controlnet && !payload.controls.some(Boolean)) {
       // A page-wide reference makes no sense: each panel is a different shot.
       $('#istatus').textContent =
         '開了構圖鎖定，但沒有每一格的參考圖 —— 先用「照現成的一頁重畫」讀一次原稿，'
         + '或把上面的構圖鎖定關掉。';
-      return;
+      return false;
     }
   } else if (!payload.prompt && !payload.init_image) {
-    $('#istatus').textContent = '提詞是空的 —— 沒放來源圖的話，畫面全靠提詞。'; return;
+    $('#istatus').textContent = '提詞是空的 —— 沒放來源圖的話，畫面全靠提詞。'; return false;
   } else if (payload.controlnet) {
     if (!CN.ref) {
-      $('#istatus').textContent = '開了構圖鎖定，就要選一張構圖參考圖。'; return;
+      $('#istatus').textContent = '開了構圖鎖定，就要選一張構圖參考圖。'; return false;
     }
     payload.control_image = CN.ref.name;
   }
   $('#igo').disabled = true;
+  let ok = false;
   try {
     const r = await fetch(comic ? '/api/comic/generate' : '/api/image/generate', {
       method:'POST', headers:{'Content-Type':'application/json'},
@@ -2711,11 +3004,12 @@ $('#igo').onclick = async () => {
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.detail || r.statusText);
-    $('#istatus').textContent = '已排入佇列';
-    refreshImageJobs(true);
+    ok = true;
+    if (!quiet) { $('#istatus').textContent = '已排入佇列'; refreshImageJobs(true); }
   } catch (e) { $('#istatus').textContent = '送出失敗：' + e.message; }
   $('#igo').disabled = false;
-};
+  return ok;
+}
 
 let imgSig = '';
 async function refreshImageJobs(force) {
@@ -2896,6 +3190,10 @@ async function boot() {
   // the answer is waiting by the time anyone opens the LoRA tab.
   checkUpdates(false);
 
+  await refreshHealth();
+}
+
+async function refreshHealth() {
   try {
     HEALTH = await (await fetch('/api/health')).json();
     $('#lightning').checked = !!HEALTH.lightning_default;

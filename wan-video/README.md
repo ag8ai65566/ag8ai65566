@@ -502,6 +502,8 @@ Docker `docker compose --profile watch up -d`。
 
 ## 六、出問題的時候
 
+> **先看這份**：[docs/faq.md](docs/faq.md) —— CivitAI key 怎麼填、ComfyUI 怎麼更新、為什麼 `update.bat` 更新完 ComfyUI 還是舊的、多支 LoRA 怎麼共存、怎麼讓成品貼近原畫師的畫風。
+
 先跑檢查工具。它會逐項列出每個模型的安裝狀態，並把每個工作流程拿去跟你這台 ComfyUI
 對照，哪個節點、哪個參數不對都會指名道姓：
 
@@ -588,6 +590,7 @@ app/
 docs/
   comic-restage.md     漫畫分鏡克隆的完整教程
   character-packs.md   角色包的用法與資料格式
+  faq.md               設定、更新、LoRA 共存、畫風貼近原畫師
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡

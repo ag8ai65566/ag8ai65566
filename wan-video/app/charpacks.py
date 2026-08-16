@@ -41,12 +41,26 @@ class Character:
     emoji: str = ""
     group: str = ""
     former: bool = False
+    # Who actually drew this character ("mama"), and the danbooru artist tag
+    # for them if one exists. The tag is what a danbooru-trained model needs to
+    # be told in order to draw in that person's style.
+    designer: str = ""
+    designer_url: str = ""
+    artist_tag: str = ""
+    artist_posts: int = 0
+    # How many danbooru posts carry this character's own tag - i.e. how well a
+    # danbooru-trained base model knows them with no LoRA at all.
+    danbooru_posts: int = 0
+    wiki: str = ""
     costumes: list[Costume] = field(default_factory=list)
 
     def public(self) -> dict:
         return {
             "key": self.key, "name": self.name, "jp": self.jp, "emoji": self.emoji,
             "group": self.group, "former": self.former,
+            "designer": self.designer, "designer_url": self.designer_url,
+            "artist_tag": self.artist_tag, "artist_posts": self.artist_posts,
+            "danbooru_posts": self.danbooru_posts, "wiki": self.wiki,
             "costumes": [c.public() for c in self.costumes],
         }
 
@@ -82,6 +96,13 @@ class Pack:
     negative: str = ""
     note: str = ""
     license: str = ""
+    # Base models that were trained with danbooru artist tags intact, so
+    # "by <artist>" actually steers the style. Pony V6 is not one of them: its
+    # own model card says artist names were removed from the training captions.
+    artist_tag_models: list[str] = field(default_factory=list)
+    # Base models that know these characters without the LoRA at all.
+    native_models: list[str] = field(default_factory=list)
+    style_note: str = ""
 
     @property
     def by_key(self) -> dict[str, Character]:
@@ -96,6 +117,8 @@ class Pack:
             "strength": self.strength, "strength_clip": self.strength_clip,
             "scaffold": self.scaffold, "quality": self.quality,
             "negative": self.negative, "note": self.note, "license": self.license,
+            "artist_tag_models": self.artist_tag_models,
+            "native_models": self.native_models, "style_note": self.style_note,
             "groups": [{"id": g.id, "label": g.label, "members": g.members}
                        for g in self.groups],
             "characters": [c.public() for c in self.characters],
@@ -128,10 +151,19 @@ def _load(path: Path) -> Pack | None:
         ]
         if not costumes:
             continue
+        try:
+            posts = int(entry.get("artist_posts") or 0)
+            native = int(entry.get("danbooru_posts") or 0)
+        except (TypeError, ValueError):
+            posts = native = 0
         characters.append(Character(
             key=str(entry["key"]), name=str(entry.get("name", entry["key"])),
             jp=str(entry.get("jp", "")), emoji=str(entry.get("emoji", "")),
             group=str(entry.get("group", "")), former=bool(entry.get("former")),
+            designer=str(entry.get("designer", "")),
+            designer_url=str(entry.get("designer_url", "")),
+            artist_tag=str(entry.get("artist_tag", "")), artist_posts=posts,
+            danbooru_posts=native, wiki=str(entry.get("wiki", "")),
             costumes=costumes,
         ))
     if not characters:
@@ -168,6 +200,9 @@ def _load(path: Path) -> Pack | None:
         scaffold=str(raw.get("scaffold", "")), quality=str(raw.get("quality", "")),
         negative=str(raw.get("negative", "")), note=str(raw.get("note", "")),
         license=str(raw.get("license", "")),
+        artist_tag_models=[str(m) for m in (raw.get("artist_tag_models") or [])],
+        native_models=[str(m) for m in (raw.get("native_models") or [])],
+        style_note=str(raw.get("style_note", "")),
     )
 
 
@@ -188,23 +223,70 @@ def get(pack_id: str) -> Pack | None:
     return next((p for p in PACKS if p.id == pack_id), None)
 
 
+def style_advice(pack: Pack, who: Character, model: str) -> dict:
+    """Can this base model be told to draw in the original designer's style?
+
+    Only a model trained with danbooru artist tags can. Pony V6's own model card
+    says artist names were removed from its captions, so `by teshima_nari` there
+    is three tokens of nothing - and quietly adding it anyway would look like
+    the feature works when it does not.
+    """
+    out = {"tag": who.artist_tag, "designer": who.designer, "posts": who.artist_posts,
+           "wiki": who.wiki, "works": False, "why": ""}
+    if not who.artist_tag:
+        out["why"] = (
+            f"{who.name} 的原畫師"
+            + (f"（{who.designer}）" if who.designer else "")
+            + "在 danbooru 上沒有可用的畫師標籤，所以沒辦法用標籤指定畫風。"
+        )
+        return out
+    if model and model in pack.artist_tag_models:
+        out["works"] = True
+        out["why"] = f"{who.designer} 的 danbooru 畫師標籤（{who.artist_posts} 張），這個底模認得。"
+        return out
+    known = "／".join(pack.artist_tag_models) or "沒有"
+    out["why"] = (
+        f"這個底模不吃畫師標籤，加了也沒作用（{pack.base_model or '它'} 訓練時把畫師名字拿掉了）。"
+        f"要靠標籤貼近 {who.designer or '原畫師'} 的畫風，底模要換成 {known}。"
+    )
+    if who.danbooru_posts >= 1000:
+        out["why"] += (
+            f" 好消息是 {who.name} 在 danbooru 上有 {who.danbooru_posts} 張圖，"
+            "換過去之後不用這支 LoRA 也畫得出來。"
+        )
+    return out
+
+
 def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
-                 extra: str = "", quality: bool = True) -> dict | None:
+                 extra: str = "", quality: bool = True, model: str = "",
+                 style: bool = False, quality_tags: str = "") -> dict | None:
     """The one-click prompt: who, wearing what, in the order the author wants.
 
     Trigger first, then that outfit's appearance tags, then whatever the user
     typed, then the quality tags last. Pony reads the score tags as a global
     quality signal rather than as subject matter, and every example on the
     model's own page puts them at the end - so that is where they go.
+
+    `style` asks for the original character designer's own look. It is honoured
+    only on a base model that was trained with artist tags; everywhere else the
+    request comes back refused with a reason, rather than silently doing nothing.
     """
     who = pack.by_key.get(character_key)
     if who is None:
         return None
     index = costume if 0 <= costume < len(who.costumes) else 0
     outfit = who.costumes[index]
-    parts = [outfit.trigger, pack.scaffold, outfit.tags, extra.strip()]
-    if quality and pack.quality:
-        parts.append(pack.quality)
+    advice = style_advice(pack, who, model)
+    applied = bool(style and advice["works"])
+
+    # The artist tag goes right after the character, which is where every
+    # Illustrious style guide puts it and where it has the most pull.
+    head = [outfit.trigger] + ([f"by {who.artist_tag}"] if applied else [])
+    parts = [*head, pack.scaffold, outfit.tags, extra.strip()]
+    if quality:
+        # A different base model wants different quality tags: Pony's score_*
+        # ladder means nothing to Illustrious and vice versa.
+        parts.append(quality_tags.strip() or pack.quality)
     seen: set[str] = set()
     tags: list[str] = []
     for chunk in parts:
@@ -224,6 +306,7 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
         "strength": pack.strength,
         "strength_clip": pack.strength_clip,
         "wants_model": pack.wants_model,
+        "style": {**advice, "applied": applied},
     }
 
 

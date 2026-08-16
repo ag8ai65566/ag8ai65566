@@ -239,12 +239,48 @@ try {
   } else {
     Warn 'venv 不存在，跳過。之後跑 install.bat 會建立。'
   }
+
+  # ComfyUI is a separate checkout and is on the never-overwrite list above -
+  # every model lives inside it. So it is updated the only safe way: a
+  # fast-forward git pull in place. Its own .gitignore covers models/,
+  # custom_nodes/, output/, input/ and user/, so none of those can be touched.
+  Say '更新 ComfyUI 本體'
+  $comfy = "$root\ComfyUI"
+  if (-not (Test-Path "$comfy\.git")) {
+    Warn 'ComfyUI 不是 git 目錄，跳過（模型完全沒事）。'
+  } else {
+    $dirty = & git -C $comfy status --porcelain --untracked-files=no 2>&1
+    if ($LASTEXITCODE -ne 0) {
+      Warn "讀不到 ComfyUI 的狀態，跳過：$dirty"
+    } elseif ("$dirty".Trim()) {
+      Warn 'ComfyUI 資料夾裡有被改過的檔案，跳過更新（怕蓋掉你的修改）。'
+    } else {
+      $before = (& git -C $comfy rev-parse --short HEAD 2>$null)
+      & git -C $comfy pull --ff-only 2>&1 | Out-Null
+      if ($LASTEXITCODE -ne 0) {
+        Warn 'ComfyUI 更新失敗（通常是網路）。app 本身已經更新好了，之後再試即可。'
+      } else {
+        $after = (& git -C $comfy rev-parse --short HEAD 2>$null)
+        if ($before -eq $after) {
+          Ok 'ComfyUI 已經是最新的'
+        } else {
+          Ok "ComfyUI 更新完成：$before -> $after"
+          if (Test-Path $vpy) {
+            & $vpy -m pip install -r "$comfy\requirements.txt" --quiet
+            if ($LASTEXITCODE -ne 0) {
+              Warn 'ComfyUI 的套件安裝回報錯誤。啟動時若說少套件，跑一次 install.bat。'
+            } else { Ok 'ComfyUI 套件已同步' }
+          }
+        }
+      }
+    }
+  }
 } finally {
   Remove-Item -Path $tmp -Recurse -Force -ErrorAction SilentlyContinue
 }
 
 Say '完成'
-Write-Host '程式碼已是最新版。模型、成品、.env 都保留。' -ForegroundColor Green
+Write-Host 'app 程式碼和 ComfyUI 本體都已更新。模型、成品、.env 都保留。' -ForegroundColor Green
 if ($busy.Count) {
   Write-Host ''
   Write-Host '請把那兩個黑視窗關掉，再雙擊 start.bat —— 新程式要重啟才生效。' -ForegroundColor Yellow

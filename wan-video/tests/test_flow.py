@@ -1160,6 +1160,29 @@ async def test_controlnet() -> None:
         # silently ignores the setting, so it has to be refused in the browser.
         check("開了構圖鎖定" in html, "asking for control with no reference is explained")
 
+        # -- what the upload actually tells you ------------------------------
+        # There was no way to tell a successful upload from a dead button: the
+        # file went in and nothing appeared until the analysis finished.
+        check("已讀取 ${files.length} 頁" in html,
+              "the uploaded pages are echoed back the moment they are picked")
+        check("esc(f.name)" in html, "…by name")
+        check('id="cpagefile" accept="image/*" multiple' in html,
+              "several連貫的 pages can be picked at once")
+        check("async function queueAllPages()" in html and "頁一起畫" in html,
+              "…and queued as one job per page")
+        check("await submitImage(true)" in html,
+              "…through the same submit path a single press takes")
+
+        # A measured layout must not be swappable for a different panel count
+        # while the prompts and the reference crops still belong to the old one.
+        check("COMIC.locked = { count: L.count" in html,
+              "applying a measured page pins the layout to it")
+        check("$('#clayout').disabled = !!lock" in html,
+              "…so the panel-count picker cannot be changed behind it")
+        check("id=\"cunlock\"" in html, "…with an explicit way out")
+        check("CN.controls = []; $('#icn').value = ''" in html,
+              "…which drops the crops, since they belong to the old rectangles")
+
         # A feature nobody can find is not a feature.
         guide = ROOT / "docs" / "comic-restage.md"
         check(guide.is_file(), "the restage tutorial exists")
@@ -2909,6 +2932,68 @@ async def test_charpacks() -> None:
           "switching member does not drag the previous member's tags along")
     check("function packField()" in html and "comicMode() ? $('#cshared')" in html,
           "in comic mode the character lands in the shared box, not the unused one")
+
+    # -- the original artist's style ----------------------------------------
+    # Every artist tag here was matched to danbooru through the designer's own
+    # registered URL, not by name: fuzzy name search turned "Ordan" into
+    # "edward_jordan" (9 posts), and a wrong artist tag steers the style
+    # somewhere that has nothing to do with the character.
+    tagged = [c for c in holo.characters if c.artist_tag]
+    check(len(tagged) >= 70, f"most members carry a designer's artist tag ({len(tagged)}/75)")
+    check(all(c.artist_posts >= 40 for c in tagged),
+          "…and none of them is a tag too thin to have taught the model anything")
+    named = [c for c in holo.characters if c.designer]
+    check(len(named) >= 70, f"…and the designer is named even where the tag is missing ({len(named)})")
+    check(all(c.wiki.startswith("https://") for c in holo.characters),
+          "every character links its official design gallery")
+    for key, want in [("mori-calliope", "yukisame"), ("hoshimachi-suisei", "teshima_nari"),
+                      ("gawr-gura", "amashiro_natsuki"), ("shirakami-fubuki", "nagishiro_mito")]:
+        check(holo.by_key[key].artist_tag == want,
+              f"{key} -> {want} ({holo.by_key[key].artist_tag})")
+    # Checked and genuinely absent rather than guessed.
+    check(not holo.by_key["watson-amelia"].artist_tag,
+          "a designer with no danbooru artist tag is left blank, not invented")
+
+    check(holo.artist_tag_models == ["illustrious"],
+          f"artist tags are declared to work on Illustrious only ({holo.artist_tag_models})")
+    check(holo.wants_model not in holo.artist_tag_models,
+          "…which is not the model this LoRA needs - that tension is the point")
+
+    calli = charpacks.build_prompt(holo, "mori-calliope", 0, model="pony", style=True)
+    check(not calli["style"]["applied"],
+          "asking for the artist's style on Pony does not silently do nothing")
+    check("by yukisame" not in calli["prompt"], "…the tag is not added")
+    check("拿掉" in calli["style"]["why"],
+          f"…and it says why: Pony removed artist names ({calli['style']['why'][:30]})")
+    check("12496" in calli["style"]["why"] or "danbooru" in calli["style"]["why"],
+          "…and points at the way that does work")
+
+    illus = charpacks.build_prompt(holo, "mori-calliope", 0, model="illustrious", style=True)
+    check(illus["style"]["applied"], "on Illustrious it is applied")
+    tags2 = [t.strip() for t in illus["prompt"].split(",")]
+    check("by yukisame" in tags2, f"…as 'by <artist>' ({tags2[:3]})")
+    check(tags2.index("by yukisame") <= 2,
+          "…right after the character, where the style guides put it")
+    off = charpacks.build_prompt(holo, "mori-calliope", 0, model="illustrious", style=False)
+    check("by yukisame" not in off["prompt"], "…and only when asked for")
+
+    swapped = charpacks.build_prompt(holo, "mori-calliope", 0, model="illustrious",
+                                     quality_tags="masterpiece, best quality, very aesthetic")
+    check("score_9" not in swapped["prompt"] and "very aesthetic" in swapped["prompt"],
+          "a different base model gets its own quality tags, not Pony's score ladder")
+
+    nomama = charpacks.build_prompt(holo, "watson-amelia", 0, model="illustrious", style=True)
+    check(not nomama["style"]["applied"] and "沒有可用的畫師標籤" in nomama["style"]["why"],
+          f"a member with no artist tag says so plainly ({nomama['style']['why'][:30]})")
+
+    styled = json.loads((await server.pack_prompt(holo.id, {
+        "character": "hoshimachi-suisei", "model": "illustrious", "style": True})).body)
+    check(styled["style"]["applied"] and "by teshima_nari" in styled["prompt"],
+          "the endpoint honours the style request")
+    check("packstylechk" in html and "官方設定圖" in html,
+          "the page offers the toggle and links the official design sheets")
+    check("ControlNet" in html and "packstyleswitch" in html,
+          "…and offers both routes: switch model, or use the design sheet as a reference")
     guide = ROOT / "docs" / "character-packs.md"
     check(guide.is_file(), "the character-pack tutorial exists")
     check("docs/character-packs.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
@@ -2916,6 +3001,172 @@ async def test_charpacks() -> None:
     text = guide.read_text(encoding="utf-8")
     for topic in ("app/packs/", "wants_model", r"\\(", "Pony"):
         check(topic in text, f"the tutorial covers {topic}")
+
+
+async def test_settings_and_updates() -> None:
+    """The .env box and the ComfyUI update button.
+
+    Both exist because the app used to end an instruction with "填進 .env 然後
+    重啟" or "在 ComfyUI 資料夾按 git pull" and then leave the user there.
+    """
+    import shutil
+    import subprocess
+
+    from fastapi import HTTPException
+
+    import envfile
+    import server
+    import updates
+
+    section("settings and updates")
+
+    env = TMP / "envtest" / ".env"
+    env.parent.mkdir(parents=True, exist_ok=True)
+    env.write_text(
+        "# 這是註解，不能被吃掉\n"
+        "MODEL=wan22-14b-q4\n"
+        "COMFY_ARGS=--lowvram\n"
+        "\n"
+        "# 另一段註解\n"
+        "LORAS=x.safetensors:0.8\n",
+        encoding="utf-8",
+    )
+    got = envfile.read(env)
+    check(got["MODEL"] == "wan22-14b-q4" and got["COMFY_ARGS"] == "--lowvram",
+          f"existing values are read ({got}) ")
+
+    envfile.write("CIVITAI_API_KEY", "abcd1234efgh5678", env)
+    text = env.read_text(encoding="utf-8")
+    check("CIVITAI_API_KEY=abcd1234efgh5678" in text, "a new key is appended")
+    check("# 這是註解，不能被吃掉" in text and "# 另一段註解" in text,
+          "…and every comment in the file survives")
+    check("LORAS=x.safetensors:0.8" in text, "…as does every other setting")
+    check(os.environ.get("CIVITAI_API_KEY") == "abcd1234efgh5678",
+          "the running process picks it up immediately, with no restart")
+    import civitai
+    check(civitai.api_key() == "abcd1234efgh5678", "…so downloads work right away")
+
+    envfile.write("COMFY_ARGS", "--novram", env)
+    lines = [l for l in env.read_text(encoding="utf-8").splitlines()
+             if l.startswith("COMFY_ARGS")]
+    check(lines == ["COMFY_ARGS=--novram"],
+          f"an existing key is replaced in place, not duplicated ({lines})")
+
+    envfile.write("CIVITAI_API_KEY", "", env)
+    check("CIVITAI_API_KEY" not in env.read_text(encoding="utf-8"),
+          "clearing removes the line rather than leaving KEY=")
+    check(not os.environ.get("CIVITAI_API_KEY"), "…and unsets it live too")
+
+    # A settings box must never become a general environment writer.
+    for bad in ("PATH", "MODELS_DIR", "PYTHONPATH", ""):
+        try:
+            envfile.write(bad, "x", env)
+            check(False, f"{bad} should be refused")
+        except ValueError:
+            check(True, f"{bad} cannot be set from the browser")
+    try:
+        envfile.write("CIVITAI_API_KEY", "line1\nMODELS_DIR=/etc", env)
+        check(False, "a newline should be refused")
+    except ValueError:
+        check(True, "a value cannot smuggle in a second line")
+
+    check(envfile.mask("abcd1234efgh5678") == "abcd••••••••5678",
+          f"a secret is shown masked ({envfile.mask('abcd1234efgh5678')})")
+    check(envfile.mask("") == "" and envfile.mask("short") == "•••••",
+          "…and a short one gives nothing away")
+    fresh = TMP / "envtest2" / ".env"
+    envfile.write("CIVITAI_API_KEY", "k", fresh)
+    check(fresh.is_file() and fresh.read_text(encoding="utf-8").strip() == "CIVITAI_API_KEY=k",
+          "a missing .env is created rather than erroring")
+    envfile.write("CIVITAI_API_KEY", "", fresh)
+
+    names = {f["name"] for f in envfile.state(env)}
+    check(names == set(envfile.WRITABLE), f"the page lists every writable setting ({names})")
+
+    body = json.loads((await server.get_settings()).body)
+    check(body["settings"] and body["file"], "the endpoint serves them")
+    try:
+        await server.set_setting({"name": "PATH", "value": "/tmp"})
+        check(False, "PATH should be refused by the endpoint too")
+    except HTTPException as exc:
+        check(exc.status_code == 400, f"an unwritable name is a 400 ({exc.status_code})")
+
+    # -- pulling ComfyUI -----------------------------------------------------
+    if not shutil.which("git"):
+        check(True, "git not installed here; skipping the pull test")
+    else:
+        base = TMP / "gitpull"
+        shutil.rmtree(base, ignore_errors=True)
+        origin, clone = base / "origin", base / "clone"
+        origin.mkdir(parents=True)
+        run = lambda cwd, *a: subprocess.run(["git", "-C", str(cwd), *a],  # noqa: E731
+                                             capture_output=True, text=True)
+        subprocess.run(["git", "init", "--quiet", "-b", "main", str(origin)],
+                       capture_output=True)
+        (origin / "nodes.py").write_text("one\n")
+        run(origin, "add", "-A")
+        run(origin, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "one")
+        subprocess.run(["git", "clone", "--quiet", str(origin), str(clone)],
+                       capture_output=True)
+        # Untracked files are what models/ and custom_nodes/ are, so this is the
+        # thing that must survive.
+        (clone / "models").mkdir()
+        (clone / "models" / "big.safetensors").write_text("MODEL")
+
+        same = updates.pull(clone)
+        check(same["ok"] and "最新" in same["detail"], f"an up-to-date checkout says so ({same})")
+
+        (origin / "nodes.py").write_text("two\n")
+        run(origin, "add", "-A")
+        run(origin, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "two")
+        moved = updates.pull(clone)
+        check(moved["ok"] and moved["before"] != moved["after"],
+              f"a behind checkout fast-forwards ({moved})")
+        check((clone / "nodes.py").read_text().strip() == "two", "…and the code is new")
+        check((clone / "models" / "big.safetensors").read_text() == "MODEL",
+              "the models sitting inside ComfyUI are untouched")
+
+        # A user who edited a tracked file must not have it clobbered.
+        (clone / "nodes.py").write_text("mine\n")
+        (origin / "nodes.py").write_text("three\n")
+        run(origin, "add", "-A")
+        run(origin, "-c", "user.email=t@t", "-c", "user.name=t", "commit", "-qm", "three")
+        dirty = updates.pull(clone)
+        check(not dirty["ok"] and "改過" in dirty["detail"],
+              f"a modified checkout is left alone, with a reason ({dirty['detail'][:40]})")
+        check("nodes.py" in dirty["detail"],
+              f"…naming the file whole, not clipped ({dirty['detail'][-20:]})")
+        check((clone / "nodes.py").read_text().strip() == "mine", "…and the edit survives")
+
+        nogit = base / "plain"
+        nogit.mkdir(parents=True)
+        out = updates.pull(nogit)
+        check(not out["ok"] and "git" in out["detail"], "a non-git folder says so, not crashes")
+
+    # -- the update script now covers ComfyUI too ----------------------------
+    script = (ROOT / "update-windows.ps1").read_bytes().decode("utf-8-sig")
+    check("$keep = @('ComfyUI', 'venv', 'data', 'models', '.env')" in script,
+          "ComfyUI is still on the never-overwrite list (every model lives there)")
+    check("git -C $comfy pull --ff-only" in script,
+          "…and is instead updated in place, which is why it used to fall behind")
+    check("status --porcelain" in script, "…skipping it when the user has edited it")
+
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check("/api/settings" in page, "the settings tab writes .env itself")
+    check("setpullcomfy" in page and "/api/updates/comfy/pull" in page,
+          "…and has the button the 'git pull' notice used to just describe")
+    check("為什麼 update.bat 更新完 ComfyUI 還是舊的" in page,
+          "…and explains why the two update separately")
+    faq = ROOT / "docs" / "faq.md"
+    check(faq.is_file(), "the FAQ answering all of this exists")
+    text = faq.read_text(encoding="utf-8")
+    for topic in ("CIVITAI_API_KEY" if False else "API Keys", "git pull --ff-only",
+                  "$keep = @('ComfyUI'", "總強度", "by yukisame", "沒有顯卡"):
+        check(topic in text, f"the FAQ covers {topic}")
+    check("docs/faq.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
+          "…and the README points at it")
+    check("id=\"iloranote\"" in page and "function loraBudget()" in page,
+          "the LoRA list shows a live strength budget")
 
 
 def test_prompts() -> None:
@@ -3629,6 +3880,7 @@ async def main() -> int:
     test_second_review_regressions()
     test_inspect_image()
     await test_charpacks()
+    await test_settings_and_updates()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()
