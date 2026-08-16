@@ -120,6 +120,34 @@ def get(layout_id: str) -> Layout | None:
     return BY_ID.get(layout_id)
 
 
+CUSTOM_ID = "custom"
+
+
+def custom_layout(panels: list[dict], aspect: float) -> Layout | None:
+    """A layout read off an existing page, rather than one from the catalogue.
+
+    Rectangles are clamped and sanity-checked here because they arrive from a
+    detector working on someone's scan, not from this file's own constants.
+    """
+    boxes: list[Panel] = []
+    for raw in panels[:MAX_PANELS]:
+        try:
+            x, y = float(raw["x"]), float(raw["y"])
+            w, h = float(raw["w"]), float(raw["h"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        x, y = max(0.0, min(x, 0.98)), max(0.0, min(y, 0.98))
+        w, h = max(0.02, min(w, 1.0 - x)), max(0.02, min(h, 1.0 - y))
+        boxes.append(Panel(x, y, w, h))
+    if not boxes:
+        return None
+    return Layout(
+        id=CUSTOM_ID, label="從頁面讀到的分鏡", panels=tuple(boxes),
+        aspect=max(0.2, min(aspect, 4.0)),
+        note="這是從你上傳的那一頁量出來的格子。",
+    )
+
+
 def panel_size(panel: Panel, page_aspect: float) -> tuple[int, int]:
     """The SDXL bucket closest in shape to this panel's slot."""
     slot = (panel.w * page_aspect) / max(panel.h, 1e-6)

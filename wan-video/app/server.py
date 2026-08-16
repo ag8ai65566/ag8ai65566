@@ -27,6 +27,7 @@ import images
 import downloader
 import inspect_image
 import library
+import pagelayout
 import promptbook
 import prompts
 import registry
@@ -806,7 +807,7 @@ async def run_comic_job(record: library.Record) -> None:
             "請到「模型」分頁下載。"
         )
     cfg = record.settings or {}
-    layout = comics.get(str(cfg.get("layout", "")))
+    layout = resolve_layout(cfg)
     if layout is None:
         raise ComfyError(f"不認識的分鏡：{cfg.get('layout')}")
 
@@ -1540,6 +1541,111 @@ async def comic_layouts() -> JSONResponse:
     )
 
 
+def resolve_layout(payload: dict):
+    """A catalogue layout, or one measured off a page the user uploaded."""
+    name = str(payload.get("layout", "four-grid"))
+    if name == comics.CUSTOM_ID:
+        return comics.custom_layout(
+            payload.get("custom_panels") or [],
+            float(payload.get("custom_aspect") or (2 / 3)),
+        )
+    return comics.get(name)
+
+
+@app.post("/api/comic/restage")
+async def comic_restage(
+    page: UploadFile,
+    character: UploadFile | None = None,
+    outfit_from: str = Form("character"),
+    tagger: str = Form(""),
+) -> JSONResponse:
+    """Read a page's panel layout and staging, ready to redraw with someone else.
+
+    Nothing is generated here. It returns the detected panels, and for each one
+    a suggested prompt built from the shot's own tags plus the new character's
+    - so the whole thing lands in the comic editor as editable text rather than
+    as a black box. Every tag is labelled with where it came from.
+    """
+    page_bytes = await page.read()
+    if not page_bytes:
+        raise HTTPException(400, "頁面圖片是空的")
+    try:
+        page_image = Image.open(io.BytesIO(page_bytes))
+        page_image.load()
+        page_image = page_image.convert("RGB")
+    except Exception:
+        raise HTTPException(400, "無法辨識這個頁面圖片")
+
+    loop = asyncio.get_running_loop()
+    found = await loop.run_in_executor(None, pagelayout.detect, page_image)
+    result: dict = {
+        "layout": found.public(),
+        "panels": [],
+        "character": None,
+        "tagger_error": "",
+        "outfit_from": "page" if outfit_from == "page" else "character",
+    }
+    if not found.boxes:
+        result["tagger_error"] = found.note
+        return JSONResponse(result)
+
+    here = tags.installed(config.MODELS_DIR)
+    chosen = tagger if tagger in here else (here[0] if here else "")
+    if not chosen:
+        result["tagger_error"] = (
+            "分鏡切出來了，但要看懂每一格畫了什麼需要「看圖分析模型」"
+            "（到「模型」分頁下載，約 380MB）。現在只會給你空的格子。"
+        )
+        result["panels"] = [{"scene": [], "prompt": ""} for _ in found.boxes]
+        return JSONResponse(result)
+
+    base = tags.folder(config.MODELS_DIR, chosen)
+    look: list[str] = []
+    outfit: list[str] = []
+    if character is not None:
+        char_bytes = await character.read()
+        if char_bytes:
+            try:
+                char_image = Image.open(io.BytesIO(char_bytes))
+                char_image.load()
+            except Exception:
+                raise HTTPException(400, "無法辨識這個角色圖片")
+            guess = await loop.run_in_executor(None, tags.describe, char_image, base)
+            split = tags.split_tags([n for n, _ in guess.general])
+            look = split["look"]
+            outfit = split["outfit"]
+            result["character"] = {
+                **guess.public(),
+                "look": [tags.to_prompt(t) for t in look],
+                "outfit": [tags.to_prompt(t) for t in outfit],
+                "dropped": [tags.to_prompt(t) for t in split["scene"] + split["drop"]],
+            }
+
+    take_outfit = result["outfit_from"] == "character"
+    for crop in pagelayout.crops(page_image, found.boxes):
+        guess = await loop.run_in_executor(None, tags.describe, crop, base)
+        split = tags.split_tags([n for n, _ in guess.general])
+        # The shot keeps its blocking; the character brings their own face. A
+        # character name detected on the page is always dropped - that is the
+        # original cast, and replacing them is the entire point.
+        pieces = list(split["scene"])
+        pieces += (outfit or split["outfit"]) if take_outfit else split["outfit"]
+        pieces = look + pieces
+        seen: set[str] = set()
+        ordered = [t for t in pieces if not (t in seen or seen.add(t))]
+        result["panels"].append(
+            {
+                "scene": [tags.to_prompt(t) for t in split["scene"]],
+                "outfit": [tags.to_prompt(t) for t in split["outfit"]],
+                "dropped": [tags.to_prompt(t) for t in split["look"] + split["drop"]]
+                + [tags.to_prompt(n) for n, _ in guess.characters],
+                "rating": guess.rating,
+                "prompt": ", ".join(tags.to_prompt(t) for t in ordered),
+            }
+        )
+    return JSONResponse(result)
+
+
 @app.post("/api/comic/generate")
 async def comic_generate(payload: dict = Body(...)) -> JSONResponse:
     model = images.resolve(str(payload.get("model", "")), installed_checkpoints())
@@ -1552,7 +1658,7 @@ async def comic_generate(payload: dict = Body(...)) -> JSONResponse:
             f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
             "請到「模型」分頁下載，或改選已安裝的。",
         )
-    layout = comics.get(str(payload.get("layout", "four-grid")))
+    layout = resolve_layout(payload)
     if layout is None:
         raise HTTPException(400, f"不認識的分鏡：{payload.get('layout')}")
 
@@ -1601,6 +1707,10 @@ async def comic_generate(payload: dict = Body(...)) -> JSONResponse:
         settings={
             **settings.to_dict(),
             "layout": layout.id,
+            "custom_panels": [
+                {"x": p.x, "y": p.y, "w": p.w, "h": p.h} for p in layout.panels
+            ] if layout.id == comics.CUSTOM_ID else [],
+            "custom_aspect": layout.aspect,
             "panels": panels,
             "shared": shared,
             "bubbles": bubbles,
@@ -1624,7 +1734,7 @@ async def comic_preview(payload: dict = Body(...)) -> FileResponse:
     should not. This draws the real geometry and the real lettering with grey
     boxes where the art will go.
     """
-    layout = comics.get(str(payload.get("layout", "four-grid")))
+    layout = resolve_layout(payload)
     if layout is None:
         raise HTTPException(400, f"不認識的分鏡：{payload.get('layout')}")
     bubbles = [

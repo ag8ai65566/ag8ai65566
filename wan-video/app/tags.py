@@ -206,6 +206,131 @@ def describe(
     return guess
 
 
+# -- splitting a description into "who" and "what is happening" ---------------
+
+# Restaging a page means keeping its blocking and swapping its cast, so the
+# tags a panel produces have to be sorted into what belongs to the shot and
+# what belongs to the character. Danbooru's vocabulary makes that tractable,
+# because the tag families are lexically obvious: `*_hair` and `*_eyes` are
+# always the person, `from_above` and `sitting` are always the shot.
+#
+# Clothing is the genuinely ambiguous family - a signature outfit is part of a
+# character, a swimsuit at the beach is part of the scene - so it is kept as a
+# third bucket the user assigns, rather than guessed at.
+
+_SCENE_EXACT = {
+    "solo", "solo_focus", "multiple_girls", "multiple_boys", "multiple_views",
+    "looking_at_viewer", "looking_at_another", "looking_away", "looking_back",
+    "looking_down", "looking_up", "looking_to_the_side", "eye_contact",
+    "full_body", "upper_body", "lower_body", "cowboy_shot", "portrait",
+    "close-up", "profile", "facing_viewer", "facing_away", "dutch_angle",
+    "from_above", "from_below", "from_side", "from_behind", "from_outside",
+    "pov", "depth_of_field", "blurry_background", "blurry_foreground",
+    "sitting", "standing", "kneeling", "squatting", "lying", "on_back",
+    "on_stomach", "on_side", "walking", "running", "jumping", "leaning",
+    "leaning_forward", "leaning_back", "arms_up", "arm_up", "arms_behind_back",
+    "crossed_arms", "spread_arms", "outstretched_arms", "outstretched_hand",
+    "hand_on_own_hip", "hands_on_hips", "hand_up", "hand_on_own_face",
+    "holding", "hugging", "carrying", "bent_over", "arched_back", "all_fours",
+    "spread_legs", "crossed_legs", "legs_up", "knees_up", "kneeling",
+    "smile", "grin", "frown", "blush", "open_mouth", "closed_mouth",
+    "closed_eyes", "half-closed_eyes", "wide-eyed", "surprised", "angry",
+    "sad", "crying", "tears", "embarrassed", "smug", "seductive_smile",
+    "indoors", "outdoors", "day", "night", "sunset", "sky", "cloud",
+    "simple_background", "white_background", "transparent_background",
+    "gradient_background", "sunlight", "backlighting", "dappled_sunlight",
+    "hetero", "yuri", "yaoi", "male_focus",
+    # How many people are in frame belongs to the shot, not to the character -
+    # restaging a two-hander with a new lead still needs two people.
+    "1girl", "1boy", "1other", "2girls", "2boys", "3girls", "multiple_boys",
+}
+_SCENE_SUBSTRINGS = (
+    "background", "_focus", "from_", "shot", "angle", "lighting", "_view",
+    "sitting", "standing", "lying", "kneeling", "squat", "pose", "looking_",
+    "_grab", "_lift", "_hold", "holding_", "leaning", "walking", "running",
+)
+# Locations and props: anything ending in one of these is set dressing.
+_PLACE_WORDS = (
+    "room", "classroom", "kitchen", "bathroom", "bedroom", "office", "street",
+    "city", "forest", "beach", "ocean", "pool", "park", "cafe", "library",
+    "shrine", "train", "car", "bed", "chair", "desk", "table", "window",
+    "door", "wall", "floor", "stairs", "rooftop", "garden", "snow", "rain",
+)
+
+_LOOK_SUBSTRINGS = (
+    "_hair", "hair_", "_eyes", "eyes_", "eyelashes", "eyebrow", "breasts",
+    "skin", "_ears", "tail", "horn", "wings", "freckles", "mole", "scar",
+    "muscular", "_body", "thighs", "navel", "collarbone", "fang", "beard",
+)
+_LOOK_EXACT = {
+    "ahoge", "braid", "twintails", "ponytail", "sidelocks", "bangs", "ahoge",
+    "long_hair", "short_hair", "very_long_hair", "medium_hair", "bald",
+    "dark_skin", "pale_skin", "tan", "petite", "curvy", "toned", "abs",
+    "thighs", "collarbone",
+}
+
+# How much skin is showing follows from the outfit and the pose, so it travels
+# with whichever of those the user picks rather than with the face.
+_EXPOSURE = {
+    "cleavage", "nipples", "navel", "ass", "bare_shoulders", "bare_arms",
+    "bare_legs", "midriff", "sideboob", "underboob", "cameltoe",
+}
+
+_OUTFIT_SUBSTRINGS = (
+    "shirt", "skirt", "dress", "uniform", "jacket", "coat", "sweater",
+    "hoodie", "pants", "shorts", "socks", "thighhighs", "pantyhose",
+    "gloves", "hat", "cap", "ribbon", "bow", "necktie", "scarf", "shoes",
+    "boots", "sandals", "swimsuit", "bikini", "lingerie", "panties", "bra",
+    "underwear", "apron", "cape", "armor", "kimono", "leotard", "sleeves",
+    "collar", "jewelry", "earrings", "necklace", "glasses", "mask",
+    "hair_ornament", "headband", "hairband", "choker", "frills", "sleeveless",
+    "costume", "clothes", "outfit", "nude", "naked",
+    "topless", "bottomless", "barefoot",
+)
+
+# Never carried across: they describe the medium, not the picture.
+_DROP = {
+    "comic", "4koma", "2koma", "3koma", "monochrome", "greyscale", "sketch",
+    "lineart", "traditional_media", "speech_bubble", "text", "english_text",
+    "japanese_text", "translated", "commentary", "commentary_request",
+    "artist_name", "signature", "watermark", "username", "web_address",
+    "highres", "absurdres", "lowres", "border", "panels", "halftone",
+    "screentone", "censored", "mosaic_censoring", "bar_censor",
+}
+
+
+def classify(name: str) -> str:
+    """'scene' | 'look' | 'outfit' | 'drop' for one danbooru tag."""
+    tag = name.strip().lower().replace(" ", "_")
+    if tag in _DROP:
+        return "drop"
+    if tag in _SCENE_EXACT:
+        return "scene"
+    if tag in _LOOK_EXACT:
+        return "look"
+    if tag in _EXPOSURE:
+        return "outfit"
+    if any(word in tag for word in _OUTFIT_SUBSTRINGS):
+        return "outfit"
+    if any(word in tag for word in _LOOK_SUBSTRINGS):
+        return "look"
+    if any(word in tag for word in _SCENE_SUBSTRINGS):
+        return "scene"
+    if any(tag.endswith(word) or tag == word for word in _PLACE_WORDS):
+        return "scene"
+    # Unknown tags describe the picture more often than the person, and a
+    # stray scene tag is a much smaller mistake than dropping the character's
+    # defining feature, so the shot is the safer default.
+    return "scene"
+
+
+def split_tags(names: list[str]) -> dict[str, list[str]]:
+    out: dict[str, list[str]] = {"scene": [], "look": [], "outfit": [], "drop": []}
+    for name in names:
+        out[classify(name)].append(name)
+    return out
+
+
 # -- turning a guess into advice ---------------------------------------------
 
 # Tags that say "this is a photo", so a realism checkpoint suits it better than

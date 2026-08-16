@@ -24,7 +24,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from aiohttp import web  # noqa: E402
 from fake_civitai import FakeCivitai  # noqa: E402
 from fake_comfy import FakeComfy  # noqa: E402
-from PIL import Image  # noqa: E402
+from PIL import Image, ImageDraw  # noqa: E402
 
 failures: list[str] = []
 TMP = ROOT / "tests" / ".tmp"
@@ -1235,6 +1235,65 @@ async def test_new_endpoints() -> None:
             async with s.delete(f"{base}/api/promptbook/source/mine.txt") as r:
                 check((await r.json())["removed"] == 2, "a whole import can be undone")
 
+            # -- restaging an existing page ------------------------------------
+            import comics as comics_mod
+
+            hero = comics_mod.get("hero-two")
+            art_panels = [
+                Image.new("RGB", comics_mod.panel_size(p, hero.aspect),
+                          (40 + i * 60, 90, 160))
+                for i, p in enumerate(hero.panels)
+            ]
+            page_png = io.BytesIO()
+            comics_mod.compose(hero, art_panels,
+                               style=comics_mod.PageStyle(width=900)).save(page_png, "PNG")
+
+            form = aiohttp.FormData()
+            form.add_field("page", page_png.getvalue(), filename="page.png",
+                           content_type="image/png")
+            async with s.post(f"{base}/api/comic/restage", data=form) as r:
+                staged = await r.json()
+            check(r.status == 200, f"restage answers ({r.status})")
+            check(staged["layout"]["count"] == 3,
+                  f"the page's 3 panels are recovered ({staged['layout']['count']})")
+            check(staged["layout"]["confidence"] > 0.8, "…confidently")
+            # No tagger installed in this fixture: the layout still comes back.
+            check(staged["tagger_error"], "a missing tagger is explained")
+            check(len(staged["panels"]) == 3, "…and there is still a slot per panel")
+
+            # The measured rectangles must be usable as a layout.
+            async with s.post(f"{base}/api/comic/preview", json={
+                "layout": "custom", "custom_panels": staged["layout"]["panels"],
+                "custom_aspect": 2 / 3,
+            }) as r:
+                png = await r.read()
+            check(r.status == 200 and png[:8] == b"\x89PNG\r\n\x1a\n",
+                  f"a measured layout previews ({r.status})")
+
+            async with s.post(f"{base}/api/comic/generate", json={
+                "model": "illustrious", "layout": "custom",
+                "custom_panels": staged["layout"]["panels"], "custom_aspect": 2 / 3,
+                "panels": ["a", "b", "c"], "shared": "1girl", "seed": 3,
+            }) as r:
+                job = await r.json()
+            check(r.status == 200 and job["length"] == 3,
+                  f"…and generates ({r.status}, {job.get('length')})")
+            check(len(job["settings"]["custom_panels"]) == 3,
+                  "the rectangles are stored on the record for a re-run")
+
+            for payload, why in [
+                ({"model": "illustrious", "layout": "custom", "custom_panels": [],
+                  "panels": ["a"]}, "a custom layout with no rectangles"),
+            ]:
+                async with s.post(f"{base}/api/comic/generate", json=payload) as r:
+                    check(r.status == 400, f"{why} is refused ({r.status})")
+
+            form = aiohttp.FormData()
+            form.add_field("page", b"not an image", filename="x.png",
+                           content_type="image/png")
+            async with s.post(f"{base}/api/comic/restage", data=form) as r:
+                check(r.status == 400, f"a non-image page is refused ({r.status})")
+
             # -- inspecting an image -------------------------------------------
             async with s.get(f"{base}/api/taggers") as r:
                 tg = await r.json()
@@ -1595,6 +1654,137 @@ def test_promptbook() -> None:
 
     check(store.delete_source(entries[0].source) == 2, "a whole import can be undone")
     check(len(store.entries) == 0, "…leaving nothing behind")
+
+
+def test_restage() -> None:
+    """Reading an existing page's panels, and sorting its tags into who/what."""
+    import comics
+    import pagelayout
+    import tags
+
+    section("restaging a page")
+
+    def art(w, h, seed):
+        rng = random.Random(seed)
+        image = Image.new("RGB", (w, h),
+                          (rng.randint(60, 200), rng.randint(60, 200), rng.randint(60, 200)))
+        draw = ImageDraw.Draw(image)
+        for _ in range(40):
+            x, y = rng.randint(0, w), rng.randint(0, h)
+            draw.ellipse([x, y, x + rng.randint(20, 90), y + rng.randint(20, 90)],
+                         fill=(rng.randint(0, 255),) * 3)
+        return image
+
+    def overlap(a, b) -> float:
+        ix = max(0, min(a.x + a.w, b.x + b.w) - max(a.x, b.x))
+        iy = max(0, min(a.y + a.h, b.y + b.h) - max(a.y, b.y))
+        inter = ix * iy
+        union = a.w * a.h + b.w * b.h - inter
+        return inter / union if union else 0.0
+
+    # -- every layout this app can draw, it can also read back --------------
+    for layout in comics.LAYOUTS:
+        panels = [art(*comics.panel_size(p, layout.aspect), i)
+                  for i, p in enumerate(layout.panels)]
+        page = comics.compose(layout, panels, style=comics.PageStyle(width=1000))
+        found = pagelayout.detect(page)
+        check(len(found.boxes) == layout.count,
+              f"{layout.id}: {layout.count} panels detected ({len(found.boxes)})")
+        scores = [
+            max((overlap(pagelayout.Box(p.x, p.y, p.w, p.h), g) for g in found.boxes),
+                default=0.0)
+            for p in layout.panels
+        ]
+        worst = min(scores)
+        check(worst > 0.8, f"{layout.id}: every panel matched its rectangle ({worst:.2f})")
+        check(found.confidence > 0.8, f"{layout.id}: reported confident ({found.confidence:.2f})")
+
+    # A gutter inside a band is not a gutter across the page, so the profiles
+    # have to be measured per region. Wide-over-two is the layout that proves it.
+    hero = comics.get("hero-two")
+    page = comics.compose(
+        hero, [art(*comics.panel_size(p, hero.aspect), i) for i, p in enumerate(hero.panels)],
+        style=comics.PageStyle(width=1000),
+    )
+    found = pagelayout.detect(page)
+    check(len(found.boxes) == 3, f"a wide panel over two narrow ones reads as 3 ({len(found.boxes)})")
+    tops = sorted({round(b.y, 1) for b in found.boxes})
+    check(len(tops) == 2, f"…in two rows ({tops})")
+
+    # -- awkward pages must fail safely, not confidently ---------------------
+    blank = pagelayout.detect(Image.new("RGB", (800, 1200), (255, 255, 255)))
+    check(blank.boxes == [] and blank.confidence == 0.0, "a blank page finds nothing")
+    check(blank.note, "…and says so")
+
+    # A single illustration has flat bands that read as gutters, but of wildly
+    # varying width. That inconsistency is the proof it has no panel grid.
+    flat = pagelayout.detect(art(800, 1200, 9))
+    check(len(flat.boxes) == 1, f"a full-bleed image is one panel ({len(flat.boxes)})")
+    check(flat.confidence < 0.6, f"…and says it is unsure ({flat.confidence:.2f})")
+    check("滿版" in flat.note, "…explaining why, rather than drawing 6 rectangles")
+
+    grid = comics.get("four-grid")
+    imgs = [art(*comics.panel_size(p, grid.aspect), i) for i, p in enumerate(grid.panels)]
+    dark = comics.compose(grid, imgs, style=comics.PageStyle(
+        width=900, background=(12, 12, 12), ink=(230, 230, 230)))
+    got = pagelayout.detect(dark)
+    check(len(got.boxes) == 4, f"a dark-background page still reads ({len(got.boxes)})")
+    check(got.background == "dark", "…and is reported as dark")
+
+    borderless = comics.compose(grid, imgs, style=comics.PageStyle(width=900, border=0, gutter=26))
+    check(len(pagelayout.detect(borderless).boxes) == 4, "gutters alone are enough, no border needed")
+    check(len(pagelayout.detect(Image.new("RGB", (30, 40), (200, 30, 30))).boxes) <= 1,
+          "a tiny image does not explode")
+
+    check(len(pagelayout.crops(page, found.boxes)) == len(found.boxes),
+          "each detected panel yields a crop to tag")
+
+    # -- who vs what ---------------------------------------------------------
+    expected = {
+        "long_hair": "look", "blue_eyes": "look", "large_breasts": "look",
+        "collarbone": "look", "animal_ears": "look",
+        "school_uniform": "outfit", "thighhighs": "outfit", "hairband": "outfit",
+        "choker": "outfit", "cleavage": "outfit", "nude": "outfit",
+        "from_above": "scene", "close-up": "scene", "sitting": "scene",
+        "looking_at_viewer": "scene", "blush": "scene", "classroom": "scene",
+        "outdoors": "scene", "night": "scene",
+        # Cast size is blocking: restaging a two-hander still needs two people.
+        "1girl": "scene", "2girls": "scene", "1boy": "scene",
+        "comic": "drop", "monochrome": "drop", "speech_bubble": "drop",
+        "artist_name": "drop", "4koma": "drop",
+    }
+    wrong = {t: tags.classify(t) for t, want in expected.items() if tags.classify(t) != want}
+    check(not wrong, f"tags sort into who/what/drop correctly ({wrong or 'all correct'})")
+
+    split = tags.split_tags(list(expected))
+    check(len(split["scene"]) + len(split["look"]) + len(split["outfit"])
+          + len(split["drop"]) == len(expected), "every tag lands in exactly one bucket")
+    check("collarbone" not in split["outfit"],
+          "a body part is not mistaken for clothing by the 'collar' substring")
+    # An unknown tag is safer as scene than as identity.
+    check(tags.classify("zzz_unknown_thing") == "scene", "unknown tags default to the shot")
+
+    # -- a layout measured off a page is usable ------------------------------
+    made = comics.custom_layout([b.public() for b in found.boxes], 2 / 3)
+    check(made is not None and made.count == 3, "detected rectangles become a layout")
+    check(made.id == comics.CUSTOM_ID, "…flagged as custom")
+    check(comics.custom_layout([], 0.5) is None, "no rectangles means no layout")
+    junk = comics.custom_layout(
+        [{"x": -5, "y": 0.1, "w": 99, "h": 0.4}, {"nope": 1}, {"x": 0.1, "y": 0.1, "w": 0.5, "h": 0.5}],
+        99.0,
+    )
+    check(junk is not None and junk.count == 2, f"malformed rectangles are skipped ({junk.count})")
+    for panel in junk.panels:
+        inside = (0 <= panel.x <= 1 and 0 <= panel.y <= 1
+                  and 0 < panel.w <= 1 and 0 < panel.h <= 1
+                  and panel.x + panel.w <= 1.001 and panel.y + panel.h <= 1.001)
+        check(inside, f"…and the rest are clamped onto the page ({panel})")
+    check(0.2 <= junk.aspect <= 4.0, f"an absurd aspect is clamped ({junk.aspect})")
+
+    # It composes like any other layout.
+    page2 = comics.compose(made, [art(400, 400, i) for i in range(3)],
+                           style=comics.PageStyle(width=800))
+    check(page2.size[0] == 800, "a measured layout composes into a page")
 
 
 def test_second_review_regressions() -> None:
@@ -2681,6 +2871,7 @@ async def main() -> int:
     await test_new_endpoints()
     await test_comics()
     test_promptbook()
+    test_restage()
     test_second_review_regressions()
     test_inspect_image()
     test_prompts()

@@ -311,6 +311,13 @@
       </div>
 
       <div id="comicbox" class="comic-only hidden">
+        <div class="row" style="margin-top:0">
+          <input type="file" id="cpagefile" accept="image/*" hidden>
+          <input type="file" id="ccharfile" accept="image/*" hidden>
+          <button class="ghost" id="crestage">📄 照現成的一頁重畫（換角色）</button>
+          <span class="s" id="crestagehint">丟一頁漫畫 + 一張角色圖，它會量出分鏡、看懂每格在做什麼，再換成你的角色。</span>
+        </div>
+        <div id="crestagebox" class="hidden"></div>
         <div class="note" id="clayoutnote"></div>
         <textarea id="cshared" placeholder="共用提詞：每一格都會加上，用來固定角色和畫風。例如 1girl, long black hair, red dress, school classroom" style="min-height:52px"></textarea>
         <div class="row" style="margin-top:4px">
@@ -1697,7 +1704,8 @@ function applyInspect() {
 }
 
 /* ---------- comic mode ---------- */
-let COMIC = { layouts: [], help: {}, shots: [], anchors: [], font: true, chosen: null };
+let COMIC = { layouts: [], help: {}, shots: [], anchors: [], font: true, chosen: null,
+              custom: null };
 
 function comicMode() { return document.querySelector('.modes button.on').dataset.mode === 'comic'; }
 
@@ -1719,10 +1727,13 @@ async function refreshComicLayouts() {
     const d = await (await fetch('/api/comic/layouts')).json();
     COMIC.layouts = d.layouts; COMIC.help = d.help || {}; COMIC.shots = d.shots || [];
     COMIC.anchors = d.anchors || []; COMIC.font = !!d.font;
-    const keep = P.get('clayout', 'four-grid');
-    $('#clayout').innerHTML = COMIC.layouts.map((l) =>
-      `<option value="${esc(l.id)}">${esc(l.label)}</option>`).join('');
-    if (COMIC.layouts.some((l) => l.id === keep)) $('#clayout').value = keep;
+    const keep = $('#clayout').value || P.get('clayout', 'four-grid');
+    $('#clayout').innerHTML =
+      (COMIC.custom ? `<option value="custom">${esc(COMIC.custom.label)}</option>` : '')
+      + COMIC.layouts.map((l) =>
+        `<option value="${esc(l.id)}">${esc(l.label)}</option>`).join('');
+    if (keep === 'custom' && COMIC.custom) $('#clayout').value = 'custom';
+    else if (COMIC.layouts.some((l) => l.id === keep)) $('#clayout').value = keep;
     $('#ccolorhelp').textContent = COMIC.help.color || '';
     $('#cshots').innerHTML = '<b>鏡頭怎麼換</b>：'
       + COMIC.shots.map(([tag, why]) => `<div>· <code>${esc(tag)}</code> —— ${esc(why)}</div>`).join('');
@@ -1736,14 +1747,23 @@ async function refreshComicLayouts() {
 }
 
 function currentLayout() {
+  if ($('#clayout').value === 'custom' && COMIC.custom) return COMIC.custom;
   return COMIC.layouts.find((l) => l.id === $('#clayout').value) || COMIC.layouts[0];
+}
+
+// The measured rectangles have to travel with every request that renders the
+// page - the server only knows the stock layouts by name.
+function layoutPayload(l) {
+  return l && l.id === 'custom'
+    ? { layout: 'custom', custom_panels: l.panels, custom_aspect: l.aspect }
+    : { layout: l ? l.id : 'four-grid' };
 }
 
 function onLayoutChange() {
   const l = currentLayout();
   if (!l) return;
   COMIC.chosen = l;
-  P.set('clayout', l.id);
+  if (l.id !== 'custom') P.set('clayout', l.id);
   $('#clayoutnote').innerHTML = `<b>${l.count} 格</b> · ${esc(l.note || '')}`
     + `<div style="margin-top:4px">${esc(COMIC.help.layout || '')}</div>`;
   renderPanels();
@@ -1806,7 +1826,7 @@ async function refreshComicPreview() {
     const r = await fetch('/api/comic/preview', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
-        layout: l.id, bubbles: comicBubbles(),
+        ...layoutPayload(l), bubbles: comicBubbles(),
         gutter: +$('#cgutter').value || 0, border: +$('#cborder').value || 0,
       }),
     });
@@ -1823,6 +1843,117 @@ async function refreshComicPreview() {
   const el = document.getElementById(id);
   if (el) el.oninput = schedulePreview;
 });
+
+/* ---------- restage an existing page ---------- */
+let RESTAGE = null;
+
+$('#crestage').onclick = () => $('#cpagefile').click();
+$('#cpagefile').onchange = () => {
+  if (!$('#cpagefile').files[0]) return;
+  // Ask for the character straight after the page, so it is one gesture.
+  $('#ccharfile').click();
+};
+$('#ccharfile').onchange = () => runRestage();
+// If the character picker is dismissed, still read the page on its own.
+$('#ccharfile').oncancel = () => runRestage();
+
+async function runRestage() {
+  const pageFile = $('#cpagefile').files[0];
+  if (!pageFile) return;
+  const box = $('#crestagebox');
+  box.classList.remove('hidden');
+  box.className = 'banner';
+  box.innerHTML = '<div class="s">量分鏡、看每一格在畫什麼…（第一次要載入分析模型，會慢一點）</div>';
+  const form = new FormData();
+  form.append('page', pageFile);
+  if ($('#ccharfile').files[0]) form.append('character', $('#ccharfile').files[0]);
+  form.append('outfit_from', P.get('outfit_from', 'character'));
+  try {
+    const r = await fetch('/api/comic/restage', { method:'POST', body: form });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    RESTAGE = d;
+    RESTAGE._page = URL.createObjectURL(pageFile);
+    renderRestage();
+  } catch (e) {
+    box.className = 'banner very_tight';
+    box.innerHTML = `<div class="errbox">讀不了：${esc(e.message)}</div>`;
+  }
+  $('#cpagefile').value = ''; $('#ccharfile').value = '';
+}
+
+function renderRestage() {
+  const d = RESTAGE, L = d.layout, box = $('#crestagebox');
+  const conf = L.confidence;
+  const chips = (arr, cls) => (arr || []).slice(0, 14)
+    .map((t) => `<span class="tag ${cls || ''}">${esc(t)}</span>`).join('');
+  box.className = 'banner';
+  box.innerHTML = `
+    <div class="row" style="margin-top:0;align-items:flex-start">
+      <img src="${d._page}" style="width:130px;border-radius:8px;background:#fff">
+      <div style="flex:1;min-width:220px">
+        <b>量到 ${L.count} 格</b>
+        <span class="tag ${conf > 0.8 ? 'done' : 'warn'}">吻合度 ${(conf * 100).toFixed(0)}%</span>
+        ${L.note ? `<div class="s" style="margin-top:4px">${esc(L.note)}</div>` : ''}
+        ${d.tagger_error ? `<div class="s" style="margin-top:4px;color:var(--warn)">${esc(d.tagger_error)}</div>` : ''}
+        ${d.character ? `<div class="s" style="margin-top:6px"><b>你的角色</b>（會加到每一格）：
+            ${chips(d.character.look, 'done')} ${chips(d.character.outfit)}</div>`
+          : '<div class="s" style="margin-top:6px">沒放角色圖 —— 只會複製分鏡和運鏡，角色請自己寫在共用提詞。</div>'}
+        <label class="chk" style="margin-top:6px"><input type="checkbox" id="coutfit"
+          ${P.get('outfit_from', 'character') === 'character' ? 'checked' : ''}>
+          服裝也用我的角色（取消＝沿用原頁面的穿著）</label>
+      </div>
+    </div>
+    <div class="s" style="margin-top:10px">每一格讀到的內容 —— 套用之後還可以再改：</div>
+    <div class="pbgrid" style="margin-top:6px;max-height:300px;overflow-y:auto">
+      ${d.panels.map((p, i) => `<div class="pbc">
+        <div class="t">第 ${i + 1} 格</div>
+        <div class="s">保留運鏡／動作：</div><div class="words">${chips(p.scene)}</div>
+        ${p.dropped && p.dropped.length ? `<div class="s" style="margin-top:4px">換掉的原角色特徵：</div>
+          <div class="words">${chips(p.dropped, 'warn')}</div>` : ''}
+      </div>`).join('')}
+    </div>
+    <div class="row">
+      <div class="spacer"></div>
+      <button class="ghost" id="crscancel">取消</button>
+      <button class="go" id="crsapply">套用這個分鏡</button>
+    </div>`;
+  $('#coutfit').onchange = () => {
+    P.set('outfit_from', $('#coutfit').checked ? 'character' : 'page');
+    $('#cpagefile').value = '';
+  };
+  $('#crscancel').onclick = () => { box.classList.add('hidden'); RESTAGE = null; };
+  $('#crsapply').onclick = applyRestage;
+}
+
+function applyRestage() {
+  const d = RESTAGE, L = d.layout;
+  // The measured rectangles become a one-off layout, added to the picker so it
+  // can be re-selected and so the preview and the job both see it.
+  COMIC.custom = {
+    id: 'custom', label: `從頁面讀到的分鏡（${L.count} 格）`, count: L.count,
+    aspect: L.aspect || 0.6667, note: '', panels: L.panels,
+  };
+  const keep = [...$('#clayout').options].some((o) => o.value === 'custom');
+  if (!keep) {
+    const opt = document.createElement('option');
+    opt.value = 'custom'; opt.textContent = COMIC.custom.label;
+    $('#clayout').insertBefore(opt, $('#clayout').firstChild);
+  } else {
+    [...$('#clayout').options].find((o) => o.value === 'custom').textContent = COMIC.custom.label;
+  }
+  $('#clayout').value = 'custom';
+  onLayoutChange();
+  $('#cpanels').querySelectorAll('.pnl').forEach((el, i) => {
+    const p = d.panels[i];
+    if (p) el.querySelector('textarea').value = p.prompt || '';
+  });
+  $('#crestagebox').classList.add('hidden');
+  $('#istatus').textContent =
+    `分鏡和每一格的內容都帶進來了（${L.count} 格）。可以再改任何一格，然後按「畫這一頁」。`;
+  schedulePreview();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 const DENOISE_WORDS = [
   [0.35, '只改材質細節'], [0.5, '換風格、保構圖'], [0.65, '保構圖換風格'],
@@ -2051,7 +2182,7 @@ $('#igo').onclick = async () => {
     const l = currentLayout();
     if (!l) return;
     Object.assign(payload, {
-      layout: l.id, panels: comicPanels(), shared: $('#cshared').value,
+      ...layoutPayload(l), panels: comicPanels(), shared: $('#cshared').value,
       bubbles: comicBubbles(), full_color: $('#ccolor').checked,
       gutter: +$('#cgutter').value || 0, border: +$('#cborder').value || 0,
       page_width: +$('#cwidth').value || 1600,
