@@ -32,6 +32,11 @@ MODELS_DIR = _dir("MODELS_DIR", REPO / "ComfyUI" / "models", REPO / "models", Pa
 OUTPUT_DIR = _dir("OUTPUT_DIR", REPO / "data" / "outputs", Path("/data/outputs"))
 INBOX_DIR = _dir("INBOX_DIR", REPO / "data" / "inbox", Path("/data/inbox"))
 DONE_DIR = _dir("DONE_DIR", INBOX_DIR / "done")
+# Source images for image-to-image and comic previews. Deliberately NOT
+# INBOX_DIR: that folder is the drop-folder watcher's queue, and anything left
+# there gets picked up, submitted as a video job and moved to done/ - which
+# would delete an image job's source out from under it before the worker runs.
+STAGING_DIR = _dir("STAGING_DIR", REPO / "data" / "staging", Path("/data/staging"))
 APP_URL = os.environ.get("APP_URL", "http://127.0.0.1:8000")
 
 # Checkouts the update check looks at. In Docker the app does not own either of

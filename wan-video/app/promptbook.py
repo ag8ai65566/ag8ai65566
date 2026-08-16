@@ -93,12 +93,71 @@ def read_text(data: bytes, name: str) -> tuple[str, str]:
         return _from_docx(data)
     if suffix == ".pdf":
         return _from_pdf(data)
-    for encoding in ("utf-8-sig", "utf-16", "big5", "gb18030", "cp1252"):
+    return decode(data), ""
+
+
+# A byte-order mark is the only *reliable* signal, so it is checked first and
+# the matching codec used outright.
+BOMS = (
+    (b"\xef\xbb\xbf", "utf-8-sig"),
+    (b"\xff\xfe\x00\x00", "utf-32"),
+    (b"\x00\x00\xfe\xff", "utf-32"),
+    (b"\xff\xfe", "utf-16"),
+    (b"\xfe\xff", "utf-16"),
+)
+
+
+def decode(data: bytes) -> str:
+    """Text out of bytes, guessing the encoding in an order that cannot lie.
+
+    UTF-16 must be tried *after* the legacy Chinese codecs, not before. Without
+    a BOM, almost any even-length byte string decodes as UTF-16LE without error
+    - it just produces mojibake - so trying it early silently mangles every
+    Big5 file that happens to have an even byte count, while the same file one
+    byte longer imports fine. Big5 and GB18030 reject far more byte sequences,
+    so a successful decode there means much more.
+    """
+    for bom, codec in BOMS:
+        if data.startswith(bom):
+            try:
+                return data.decode(codec)
+            except (UnicodeDecodeError, LookupError):
+                break
+
+    # BOM-less UTF-16 has to be spotted from the bytes, not from a successful
+    # decode. Mostly-ASCII UTF-16LE is every other byte NUL, and NUL is
+    # perfectly valid UTF-8 - so utf-8 "succeeds" and hands back text riddled
+    # with NULs. Real text files contain no NUL at all, so their position is
+    # the giveaway: odd offsets mean little-endian, even offsets big-endian.
+    head = data[:4096]
+    nulls = head.count(0)
+    if nulls > len(head) * 0.2:
+        odd = sum(1 for i in range(1, len(head), 2) if head[i] == 0)
+        codec = "utf-16-le" if odd * 2 > nulls else "utf-16-be"
         try:
-            return data.decode(encoding), ""
+            return data.decode(codec)
+        except (UnicodeDecodeError, LookupError):
+            pass
+
+    for codec in ("utf-8", "big5", "gb18030", "cp932", "utf-16", "cp1252"):
+        try:
+            text = data.decode(codec)
         except (UnicodeDecodeError, LookupError):
             continue
-    return data.decode("utf-8", errors="replace"), ""
+        # A decode that "succeeds" into NULs or unassigned CJK is the mojibake
+        # case; treat it as a failure and let the next codec try.
+        if "\x00" in text or (codec == "utf-16" and _mojibake(text)):
+            continue
+        return text
+    return data.decode("utf-8", errors="replace").replace("\x00", "")
+
+
+def _mojibake(text: str) -> bool:
+    sample = text[:2000]
+    if not sample:
+        return False
+    odd = sum(1 for ch in sample if ch not in "\n\r\t" and ord(ch) < 32 or ord(ch) >= 0xE000)
+    return odd > len(sample) * 0.05
 
 
 def _from_docx(data: bytes) -> tuple[str, str]:
@@ -114,8 +173,18 @@ def _from_docx(data: bytes) -> tuple[str, str]:
         return "", "這個 .docx 的內容解析失敗"
     lines = []
     for para in root.iter(f"{ns}p"):
-        parts = [node.text or "" for node in para.iter(f"{ns}t")]
-        # A <w:br/> inside a paragraph is a real line break in the document.
+        # A <w:br/> is Shift+Enter in Word: a real line break inside one
+        # paragraph. Ignoring it glues consecutive prompts into one line, and
+        # a document written that way collapses to a single entry.
+        parts = []
+        for node in para.iter():
+            tag = node.tag
+            if tag == f"{ns}t":
+                parts.append(node.text or "")
+            elif tag in (f"{ns}br", f"{ns}cr"):
+                parts.append("\n")
+            elif tag == f"{ns}tab":
+                parts.append("\t")
         lines.append("".join(parts))
     return "\n".join(lines), ""
 
@@ -152,10 +221,23 @@ _A1111_MARK = re.compile(r"^\s*(Negative prompt:|Steps:\s*\d)", re.M)
 _HEADING = re.compile(r"^\s{0,3}(#{1,6})\s+(.+?)\s*#*\s*$")
 _NUMBERED = re.compile(r"^\s{0,3}(?:\d{1,3}[.)、]|[-*•]\s)\s*")
 _RULE = re.compile(r"^\s*(?:-{3,}|={3,}|\*{3,}|_{3,}|—{3,})\s*$")
+# Longest alternative first: regex alternation is first-match-wins, so with
+# `negative` ahead of `negative prompt` the line "Negative prompt: x" matches
+# only "negative", leaves " prompt:" unconsumed, and the whole line gets glued
+# onto the positive instead of becoming the negative.
 _LABELLED = re.compile(
-    r"^\s*(prompt|positive|negative|neg|標題|title|提詞|正面|負面|tags?|標籤)\s*[:：]\s*(.*)$",
+    r"^\s*("
+    r"negative prompt|negative|neg|負面提詞|負面"
+    r"|positive prompt|positive|prompt|提詞|正面"
+    r"|title|標題|名稱"
+    r"|tags|tag|標籤"
+    r")\s*[:：]\s*(.*)$",
     re.I,
 )
+_NEG_LABELS = {"negative prompt", "negative", "neg", "負面提詞", "負面"}
+_POS_LABELS = {"positive prompt", "positive", "prompt", "提詞", "正面"}
+_TITLE_LABELS = {"title", "標題", "名稱"}
+_TAG_LABELS = {"tags", "tag", "標籤"}
 
 
 @dataclass
@@ -275,7 +357,13 @@ def _from_json(text: str, name: str) -> Parsed | None:
         elif isinstance(raw_tags, str):
             entry.tags = [t.strip() for t in re.split(r"[,;、]", raw_tags) if t.strip()][:12]
         entries.append(entry)
-    return _finish(entries, "JSON", name, bonus=50) if entries else None
+    if not entries:
+        return None
+    parsed = _finish(entries, "JSON", name, bonus=50)
+    # _finish drops rows whose text does not read as a prompt, so valid JSON
+    # with unfamiliar key names can come back empty. Returning that as a result
+    # short-circuits the text splitters, which might well have found something.
+    return parsed if parsed.entries else None
 
 
 def _pick(row: dict, keys: tuple[str, ...]):
@@ -326,7 +414,12 @@ def _from_table(text: str, name: str, delimiter: str) -> Parsed | None:
         if tags := cell(tags_at):
             entry.tags = [t.strip() for t in re.split(r"[,;、]", tags) if t.strip()][:12]
         entries.append(entry)
-    return _finish(entries, "表格", name, bonus=40) if entries else None
+    if not entries:
+        return None
+    parsed = _finish(entries, "表格", name, bonus=40)
+    # Same reason as _from_json: an empty result must not short-circuit the
+    # text splitters, or a .csv that is really a plain list imports as nothing.
+    return parsed if parsed.entries else None
 
 
 def _split_a1111(text: str, name: str) -> Parsed:
@@ -369,33 +462,42 @@ def _split_labelled(text: str, name: str) -> Parsed:
     current = Entry(source=name)
     field_now = ""
     seen_label = False
+
+    def flush() -> None:
+        nonlocal current
+        if current.positive:
+            entries.append(current)
+        current = Entry(source=name)
+
     for line in text.splitlines():
         match = _LABELLED.match(line)
         if match:
             seen_label = True
             label, value = match.group(1).lower(), match.group(2)
-            if label in ("negative", "neg", "負面", "負面提詞"):
+            if label in _NEG_LABELS:
                 field_now = "negative"
                 current.negative = (current.negative + " " + value).strip()
-            elif label in ("tags", "tag", "標籤"):
+            elif label in _TAG_LABELS:
                 field_now = ""
                 current.tags = [t.strip() for t in re.split(r"[,;、]", value) if t.strip()][:12]
-            elif label in ("title", "標題", "名稱"):
+            elif label in _TITLE_LABELS:
+                # A title belongs to the entry it introduces. If one is already
+                # under way, this starts the next - otherwise the new title
+                # overwrites the previous entry's and the last one is lost.
+                if current.positive:
+                    flush()
                 field_now = ""
                 current.title = value
             else:
-                # A new positive starts a new entry, once one is under way.
                 if current.positive:
-                    entries.append(current)
-                    current = Entry(source=name)
+                    flush()
                 field_now = "positive"
                 current.positive = value
         elif line.strip() and field_now:
             setattr(current, field_now, (getattr(current, field_now) + " " + line.strip()).strip())
         elif not line.strip():
             field_now = ""
-    if current.positive:
-        entries.append(current)
+    flush()
     return _finish(entries, "標籤式（Prompt: / Negative:）", name,
                    bonus=55 if seen_label else 0.0)
 
@@ -461,8 +563,13 @@ def _split_blank_lines(text: str, name: str) -> Parsed:
         if not lines:
             continue
         title = ""
-        # A short first line above a long block is a title, not part of it.
-        if len(lines) > 1 and len(lines[0]) < 40 and not lines[0].rstrip().endswith(","):
+        # A short first line above a block is a title - but only if it does not
+        # itself read as a prompt. Length alone is not enough: a block of two
+        # short prompts would lose the first one to the title, and because that
+        # halves the entry count it can even tie on score and win.
+        if (len(lines) > 1 and len(lines[0]) < 40
+                and not lines[0].rstrip().endswith((",", "，"))
+                and not _looks_like_prompt(lines[0])):
             title, lines = lines[0].strip(" #*-"), lines[1:]
         if _standalone_lines(lines):
             entries += [Entry(positive=l, title=title, source=name) for l in lines]
@@ -490,6 +597,8 @@ class Book:
     def __init__(self, path: Path) -> None:
         self.path = path
         self.entries: dict[str, Entry] = {}
+        self._dirty = False
+        self._last_save = 0.0
 
     def load(self) -> None:
         if not self.path.is_file():
@@ -513,6 +622,8 @@ class Book:
         tmp = self.path.with_suffix(".tmp")
         tmp.write_text("\n".join(lines) + ("\n" if lines else ""), encoding="utf-8")
         tmp.replace(self.path)
+        self._dirty = False
+        self._last_save = time.time()
 
     def add_all(self, entries: list[Entry]) -> tuple[int, int]:
         """(added, skipped-as-duplicate)."""
@@ -577,7 +688,22 @@ class Book:
         return True
 
     def used(self, entry_id: str) -> None:
+        """Bump the use counter, writing at most once every few seconds.
+
+        Rewriting the whole JSONL on every click stalls the server for as long
+        as the file takes to serialise, and a use counter is not worth that. A
+        star is - it is an explicit action the user expects to persist - so
+        that one still writes through.
+        """
         entry = self.entries.get(entry_id)
-        if entry is not None:
-            entry.uses += 1
+        if entry is None:
+            return
+        entry.uses += 1
+        self._dirty = True
+        if time.time() - self._last_save > 5:
+            self.save()
+
+    def flush(self) -> None:
+        """Write out anything a debounced update left pending."""
+        if getattr(self, "_dirty", False):
             self.save()

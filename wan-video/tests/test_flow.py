@@ -13,6 +13,7 @@ import io
 import json
 import os
 import random
+import re
 import sys
 from pathlib import Path
 
@@ -1077,6 +1078,7 @@ async def test_new_endpoints() -> None:
         "MODELS_DIR": str(models_dir),
         "OUTPUT_DIR": str(TMP / "ep-out"),
         "INBOX_DIR": str(TMP / "ep-in"),
+        "STAGING_DIR": str(TMP / "ep-stage"),
         "MODEL": "wan22-14b-fp8",
         "PYTHONPATH": str(ROOT / "app"),
         "LORAS": "",
@@ -1151,7 +1153,7 @@ async def test_new_endpoints() -> None:
             check(r.status == 200, f"img2img submits ({r.status})")
             check(job["settings"]["denoise"] == 0.5, "denoise is carried on the record")
             check(job["source"] == up["name"], "…along with which source it used")
-            check((TMP / "ep-in" / f"{job['id']}.png").is_file(),
+            check((TMP / "ep-stage" / f"{job['id']}.png").is_file(),
                   "the source is copied under the job id, so a re-run still has it")
 
             # Deleting the job takes its source image with it. Wait for the job
@@ -1163,7 +1165,7 @@ async def test_new_endpoints() -> None:
                 await asyncio.sleep(0.25)
             async with s.delete(f"{base}/api/jobs/{job['id']}") as r:
                 check(r.status == 200, f"the finished job deletes ({r.status})")
-            check(not (TMP / "ep-in" / f"{job['id']}.png").is_file(),
+            check(not (TMP / "ep-stage" / f"{job['id']}.png").is_file(),
                   "deleting the job cleans up its source image")
 
             # -- the prompt library --------------------------------------------
@@ -1185,12 +1187,25 @@ async def test_new_endpoints() -> None:
             async with s.get(f"{base}/api/promptbook") as r:
                 check((await r.json())["all"] == 0, "previewing saves nothing")
 
+            check("entries" not in pv and pv.get("token"),
+                  "preview returns a token, not the whole collection")
             async with s.post(f"{base}/api/promptbook/import",
-                              json={"entries": pv["entries"], "source": pv["source"]}) as r:
+                              json={"token": pv["token"]}) as r:
                 done = await r.json()
             check(done["added"] == 2, f"import keeps them ({done})")
+            # A token is single-use, so a double-click cannot import twice.
             async with s.post(f"{base}/api/promptbook/import",
-                              json={"entries": pv["entries"], "source": pv["source"]}) as r:
+                              json={"token": pv["token"]}) as r:
+                check(r.status == 400, f"a spent token is refused ({r.status})")
+
+            form = aiohttp.FormData()
+            form.add_field("file", collection, filename="mine.txt",
+                           content_type="text/plain")
+            async with s.post(f"{base}/api/promptbook/preview", data=form) as r:
+                pv2 = await r.json()
+            check(pv2["new"] == 0, "the second preview sees them as already known")
+            async with s.post(f"{base}/api/promptbook/import",
+                              json={"token": pv2["token"]}) as r:
                 again = await r.json()
             check(again["added"] == 0 and again["duplicate"] == 2,
                   "re-importing the same file adds nothing")
@@ -1214,8 +1229,8 @@ async def test_new_endpoints() -> None:
                 async with s.post(f"{base}/api/promptbook/preview", data=form) as r:
                     check(r.status == 400, f"{why} is refused ({r.status})")
 
-            async with s.post(f"{base}/api/promptbook/import", json={"entries": []}) as r:
-                check(r.status == 400, f"an empty import is refused ({r.status})")
+            async with s.post(f"{base}/api/promptbook/import", json={"token": "nope"}) as r:
+                check(r.status == 400, f"an unknown token is refused ({r.status})")
 
             async with s.delete(f"{base}/api/promptbook/source/mine.txt") as r:
                 check((await r.json())["removed"] == 2, "a whole import can be undone")
@@ -1580,6 +1595,132 @@ def test_promptbook() -> None:
 
     check(store.delete_source(entries[0].source) == 2, "a whole import can be undone")
     check(len(store.entries) == 0, "…leaving nothing behind")
+
+
+def test_second_review_regressions() -> None:
+    """Each case is a defect the second review found. All were reproduced."""
+    import config
+    import promptbook as pb
+    import registry
+    import watcher
+    import workflow
+
+    section("second review regressions")
+
+    def parse(text, name="x.txt"):
+        return pb.parse(text.encode("utf-8") if isinstance(text, str) else text, name)
+
+    # -- the blocker: a tab with no entry in the switcher's list -------------
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    buttons = set(re.findall(r'<button[^>]*data-tab="([^"]+)"', page))
+    panels = set(re.findall(r'id="tab-([^"]+)"', page))
+    check(buttons == panels,
+          f"every tab button has a panel and vice versa ({buttons ^ panels or 'matched'})")
+    check("const TABS = [...document.querySelectorAll('.tabs button')]" in page,
+          "the switcher derives its tab list from the DOM, not a hand-kept array")
+
+    # -- `Negative prompt:` with no `Steps:` line ---------------------------
+    got = parse("Prompt: 1girl, silver hair\nNegative prompt: bad hands, blurry\n")
+    check(got.entries[0].negative == "bad hands, blurry",
+          f"'Negative prompt:' is matched whole ({got.entries[0].negative!r})")
+    check("Negative" not in got.entries[0].positive,
+          "…and is not glued onto the positive")
+    for label in ("負面提詞", "負面", "Negative", "neg"):
+        out = parse(f"Prompt: 1girl, a, b\n{label}: bad hands\n")
+        check(out.entries[0].negative == "bad hands", f"'{label}:' is recognised")
+    for label in ("名稱", "標題", "Title"):
+        out = parse(f"{label}: 甲\nPrompt: 1girl, a, b\n")
+        check(out.entries[0].title == "甲", f"'{label}:' is recognised")
+
+    # -- two short prompts in one blank-line block --------------------------
+    got = parse("1girl, red, a\n2girls, blue, b\n\n1boy, green, c\n3girls, gold, d\n")
+    check(len(got.entries) == 4, f"no prompt is eaten as a title ({len(got.entries)})")
+    check(all(e.title == "" for e in got.entries), "…and none is mislabelled")
+    # A real title still works.
+    titled = parse("校園場景\n1girl, school uniform, classroom, sitting\n")
+    check(titled.entries[0].title == "校園場景", "a genuine title is still detected")
+
+    # -- BOM-less Big5 of even byte length ----------------------------------
+    for pad in ("", "a", "aa", "aaa"):
+        text = f"1girl, 學校制服{pad}\n2girls, 海邊泳裝\n"
+        raw = text.encode("big5")
+        out = pb.parse(raw, "x.txt")
+        check(len(out.entries) == 2 and "學校制服" in out.entries[0].positive,
+              f"Big5 decodes at byte length {len(raw)} ({'even' if len(raw) % 2 == 0 else 'odd'})")
+    check(pb.decode("測試中文一二三四".encode("big5")) == "測試中文一二三四",
+          "an even-length Big5 blob is not mistaken for UTF-16")
+    for codec in ("utf-8-sig", "utf-16", "utf-16-le", "utf-16-be"):
+        blob = "1girl, red dress\n2girls, blue sky\n".encode(codec)
+        out = pb.parse(blob, "x.txt")
+        check(len(out.entries) == 2, f"{codec} still decodes ({len(out.entries)})")
+
+    # -- Title: before its Prompt: ------------------------------------------
+    got = parse("Title: A\nPrompt: 1girl, aaa, bbb\n\nTitle: B\nPrompt: 2girls, ccc, ddd\n")
+    check([e.title for e in got.entries] == ["A", "B"],
+          f"a title stays with the entry it introduces ({[e.title for e in got.entries]})")
+    check(len(got.entries) == 2, "…and no entry is lost")
+
+    # -- <w:br/> inside a Word paragraph ------------------------------------
+    import zipfile
+    ns = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+    body = ("<w:p><w:r><w:t>1girl, maid outfit, cafe</w:t><w:br/>"
+            "<w:t>2girls, beach, summer</w:t></w:r></w:p>")
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as archive:
+        archive.writestr("[Content_Types].xml", "<Types/>")
+        archive.writestr("word/document.xml",
+                         f'<?xml version="1.0"?><w:document xmlns:w="{ns}">'
+                         f"<w:body>{body}</w:body></w:document>")
+    got = pb.parse(buf.getvalue(), "x.docx")
+    check(len(got.entries) == 2, f"Shift+Enter is a line break ({len(got.entries)})")
+    check("cafe2girls" not in " ".join(e.positive for e in got.entries),
+          "…so consecutive prompts are not glued together")
+
+    # -- structured parsers must not short-circuit on an empty result -------
+    got = pb.parse(json.dumps([{"weird_key": "1girl, red dress, standing"}]).encode(),
+                   "x.json")
+    check(len(got.entries) >= 1,
+          f"a .json with unknown keys falls through to the text splitters ({len(got.entries)})")
+    got = pb.parse(b"1girl, red dress, standing\n2girls, blue sky, outdoors\n", "x.csv")
+    check(len(got.entries) == 2, f"a .csv that is really a plain list still imports ({len(got.entries)})")
+
+    # -- staging must not live in the watcher's drop folder -----------------
+    check(config.STAGING_DIR != config.INBOX_DIR,
+          "image staging has its own directory")
+    check(not str(config.STAGING_DIR).startswith(str(config.INBOX_DIR) + os.sep),
+          "…and is not nested inside the watched one either")
+    server_src = (ROOT / "app" / "server.py").read_text(encoding="utf-8")
+    check("INBOX_DIR / f\"{record.id}.png\"" not in server_src,
+          "no job source is written into the watched folder")
+    check(watcher.IMAGE_SUFFIXES, "the watcher does claim image files (hence the split)")
+
+    # -- out_fps must describe what happened, not what was asked ------------
+    model = registry.get("wan22-14b-fp8")
+    params = registry.GenParams.defaults_for(model)
+    params.interpolate, params.interpolate_model = 2, "rife_v4.26.safetensors"
+    full = {"FrameInterpolationModelLoader", "FrameInterpolate"}
+    check(workflow.output_fps(params, full) == model.fps * 2,
+          "interpolation doubles the reported fps when it runs")
+    check(workflow.output_fps(params, set()) == model.fps,
+          "…and does not when the nodes are missing")
+    params.interpolate_model = ""
+    check(workflow.output_fps(params, full) == model.fps,
+          "…nor when no interpolation model was chosen")
+    params.interpolate = 1
+    check(workflow.output_fps(params, full) == model.fps, "off means off")
+
+    # -- a partial download with an unknown size must resume ----------------
+    dl_src = (ROOT / "app" / "downloader.py").read_text(encoding="utf-8")
+    check("if state.file.size and existing > state.file.size:" in dl_src,
+          "a .part is only discarded when a known size proves it too big")
+
+    # -- fire-and-forget tasks must be held ---------------------------------
+    check("_background.add(task)" in server_src,
+          "background tasks are referenced so they cannot be collected mid-flight")
+
+    # -- the comic preview must not share one filename ----------------------
+    check("comic-preview.png" not in server_src,
+          "the layout preview is returned as bytes, not via a shared file")
 
 
 def test_inspect_image() -> None:
@@ -2540,6 +2681,7 @@ async def main() -> int:
     await test_new_endpoints()
     await test_comics()
     test_promptbook()
+    test_second_review_regressions()
     test_inspect_image()
     test_prompts()
     test_seconds_to_frames()

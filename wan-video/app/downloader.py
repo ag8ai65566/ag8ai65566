@@ -350,7 +350,10 @@ class Manager:
 
         # Resume from whatever a previous run left behind.
         existing = part.stat().st_size if part.exists() else 0
-        if existing > state.file.size:
+        # Only a *known* size can prove a partial file is too big. CivitAI often
+        # omits sizeKB, and size 0 then made every resume look oversized, so the
+        # .part was deleted and the download restarted from scratch every time.
+        if state.file.size and existing > state.file.size:
             existing = 0
             part.unlink(missing_ok=True)
 

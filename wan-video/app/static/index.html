@@ -560,10 +560,14 @@ let MODELS = [], LORAS = [], JOBS = [], GPU = {}, picked = null, chosen = null;
 let CIV = { items: [], cursor: '', loading: false };
 
 /* ---------- tabs ---------- */
+// Derived from the buttons themselves rather than a hand-kept list: a
+// hardcoded list silently loses any tab added later, which is exactly what
+// happened to 提詞庫 - the panel existed and was simply never un-hidden.
+const TABS = [...document.querySelectorAll('.tabs button')].map((b) => b.dataset.tab);
 document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
   document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('on', x === b));
-  ['gen','img','lib','lora','mdl','set'].forEach((t) =>
-    $('#tab-'+t).classList.toggle('hidden', b.dataset.tab !== t));
+  TABS.forEach((t) => $('#tab-'+t).classList.toggle('hidden', b.dataset.tab !== t));
+  if (b.dataset.tab === 'pb') refreshPb();
   if (b.dataset.tab === 'lib') renderGallery();
   if (b.dataset.tab === 'img') { refreshImageModels(); }
   if (b.dataset.tab === 'lora' && !CIV.items.length) civSearch(true);
@@ -788,7 +792,7 @@ function itemHtml(j, big) {
     <div class="body">
       <div class="p">${j.prompt ? esc(j.prompt) : '<i class="s">（沒有指令）</i>'}</div>
       <div><span class="tag ${cls}">${text}</span>
-        <span class="s"> ${j.size || j.tier}${j.kind === 'image'
+        <span class="s"> ${j.size || j.tier}${isImage
             ? (j.outputs.length > 1 ? ` · ${j.outputs.length} 張` : '')
             : ` · ${j.duration ? j.duration + ' 秒' : j.length + 'f'}${
                 j.out_fps && j.out_fps !== j.fps ? ` @${j.out_fps}fps（補幀）`
@@ -844,7 +848,7 @@ function wireItems(root) {
   root.querySelectorAll('[data-again]').forEach((b) => b.onclick = () => {
     const j = [...JOBS, ...IMG.jobs].find((x) => x.id === b.dataset.again);
     if (!j) return;
-    if (j.kind === 'image') {
+    if (j.kind === 'image' || j.kind === 'comic') {
       reuseImageSettings(j, b.dataset.sameseed === '1');
       document.querySelector('.tabs button[data-tab="img"]').click();
       $('#istatus').textContent = b.dataset.sameseed === '1'
@@ -908,6 +912,34 @@ function setIfPresent(id, value) {
 function reuseImageSettings(j, keepSeed) {
   const s = j.settings || {};
   if (IMG.models.some((m) => m.id === j.model)) { $('#imodel').value = j.model; onImageModelChange(); }
+
+  // A comic carries a layout, per-panel prompts and dialogue. Dropping it into
+  // the plain prompt box would throw all of that away, so switch modes and put
+  // the page back together instead.
+  const isComic = j.kind === 'comic';
+  const modeBtn = document.querySelector(`.modes button[data-mode="${isComic ? 'comic' : 'plain'}"]`);
+  if (modeBtn && !modeBtn.classList.contains('on')) modeBtn.click();
+  if (isComic) {
+    if (s.layout && COMIC.layouts.some((l) => l.id === s.layout)) {
+      $('#clayout').value = s.layout;
+      onLayoutChange();
+    }
+    $('#cshared').value = s.shared || '';
+    $('#ccolor').checked = s.full_color !== false;
+    setIfPresent('cgutter', s.gutter);
+    setIfPresent('cborder', s.border);
+    setIfPresent('cwidth', s.page_width);
+    const panels = s.panels || [], bubbles = s.bubbles || [];
+    $('#cpanels').querySelectorAll('.pnl').forEach((el, i) => {
+      el.querySelector('textarea').value = panels[i] || '';
+      const first = (bubbles[i] || [])[0] || {};
+      el.querySelector('.bt').value = first.text || '';
+      if (first.at) el.querySelector('.ba').value = first.at;
+    });
+    $('#iseed').value = keepSeed ? j.seed : -1;
+    schedulePreview();
+  }
+
   $('#iprompt').value = j.prompt_raw || j.prompt;
   $('#inegative').value = j.negative || '';
   $('#inegative').dataset.touched = '1';
@@ -953,7 +985,8 @@ function reuseImageSettings(j, keepSeed) {
 
 let recentSig = '', gallerySig = '';
 function renderRecent() {
-  const list = JOBS.filter((j) => j.kind !== 'image').slice(0, 8);
+  // Comics are image work; the video tab's recent strip is videos only.
+  const list = JOBS.filter((j) => j.kind !== 'image' && j.kind !== 'comic').slice(0, 8);
   const sig = JSON.stringify(list) + P.get('autoplay', false);
   if (sig === recentSig) return;
   recentSig = sig;
@@ -1414,9 +1447,10 @@ function renderPbPreview() {
   $('#pbconfirm').onclick = async () => {
     $('#pbconfirm').disabled = true;
     try {
+      // The parsed entries stay on the server; only the token comes back.
       const r = await fetch('/api/promptbook/import', {
         method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ entries: d.entries, source: d.source }),
+        body: JSON.stringify({ token: d.token }),
       });
       const out = await r.json();
       if (!r.ok) throw new Error(out.detail || r.statusText);
@@ -1438,6 +1472,7 @@ function pbCard(e, saved) {
     ${(e.tags || []).length ? `<div class="words">${e.tags.map((t) => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
     ${saved ? `<div class="acts">
       <button class="ghost tiny" data-star="${esc(e.id)}">${e.starred ? '★' : '☆'}</button>
+      ${e.uses ? `<span class="s" title="你用過幾次">用過 ${e.uses} 次</span>` : ''}
       <div class="spacer"></div>
       <button class="ghost tiny" data-use="${esc(e.id)}" data-where="img">用在圖片</button>
       <button class="ghost tiny" data-use="${esc(e.id)}" data-where="gen">用在影片</button>
@@ -2044,8 +2079,7 @@ $('#igo').onclick = async () => {
 let imgSig = '';
 async function refreshImageJobs(force) {
   try {
-    const d = await (await fetch('/api/jobs?limit=14')).json();
-    d.jobs = d.jobs.filter((j) => j.kind === 'image' || j.kind === 'comic');
+    const d = await (await fetch('/api/jobs?kind=image,comic&limit=12')).json();
     const sig = JSON.stringify(d) + P.get('autoplay', false);
     if (sig === imgSig && !force) return;
     imgSig = sig; IMG.jobs = d.jobs;

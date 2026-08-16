@@ -36,7 +36,7 @@ import upscalers
 import workflow
 from comfy_client import ComfyClient, ComfyError
 from fastapi import Body, FastAPI, Form, HTTPException, UploadFile
-from fastapi.responses import FileResponse, HTMLResponse, JSONResponse
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from PIL import Image
 
@@ -45,10 +45,12 @@ STATIC = Path(__file__).parent / "static"
 app = FastAPI(title="wan-drop")
 client = ComfyClient(config.COMFY_URL)
 models = downloader.Manager(config.MODELS_DIR)
-lib = library.Library(config.OUTPUT_DIR, config.INBOX_DIR)
+lib = library.Library(config.OUTPUT_DIR, config.STAGING_DIR)
 book = promptbook.Book(config.OUTPUT_DIR.parent / "promptbook.jsonl")
 queue: asyncio.Queue[tuple[str, bytes]] = asyncio.Queue()
 running: set[str] = set()
+# Strong references to fire-and-forget tasks; see civitai_download.
+_background: set[asyncio.Task] = set()
 
 
 def model_label(record: library.Record) -> str:
@@ -100,7 +102,7 @@ def public(record: library.Record) -> dict:
 
 @app.on_event("startup")
 async def startup() -> None:
-    for d in (config.OUTPUT_DIR, lib.thumbs, config.INBOX_DIR):
+    for d in (config.OUTPUT_DIR, lib.thumbs, config.STAGING_DIR, config.INBOX_DIR):
         d.mkdir(parents=True, exist_ok=True)
     lib.load()
     book.load()
@@ -114,6 +116,7 @@ async def startup() -> None:
 @app.on_event("shutdown")
 async def shutdown() -> None:
     lib.save()
+    book.flush()
     for task in (getattr(app.state, "worker", None), models.stop()):
         if task:
             task.cancel()
@@ -121,7 +124,6 @@ async def shutdown() -> None:
 
 async def worker() -> None:
     """Serial job runner. Survives individual job failures."""
-    await client.wait_until_ready()
     while True:
         job_id, image_bytes = await queue.get()
         record = lib.get(job_id)
@@ -130,6 +132,12 @@ async def worker() -> None:
             continue
         running.add(job_id)
         try:
+            # Waited for per job, not once at startup. Outside the try, a
+            # ComfyUI that is slow to boot kills the only queue consumer, and
+            # because nothing restarts it every later job sits at "排隊中"
+            # forever with no error to show for it.
+            record.message = "等 ComfyUI 就緒…"
+            await client.wait_until_ready()
             record.status, record.started = "running", time.time()
             record.message = "準備中…"
             await run_job(record, image_bytes)
@@ -167,13 +175,15 @@ async def run_job(record: library.Record, image_bytes: bytes) -> None:
     if params.interpolate > 1 and not params.interpolate_model:
         params.interpolate = 1
     record.fps = params.fps
+    available = await client.node_classes()
     record.settings = {
         "steps": params.steps, "cfg": params.cfg, "shift": params.shift,
         "sampler": params.sampler, "scheduler": params.scheduler,
         "interpolate": params.interpolate, "interpolate_model": params.interpolate_model,
         "upscaler": params.upscaler,
-        # What the file will actually play at, once interpolation is counted.
-        "out_fps": params.fps * max(1, params.interpolate),
+        # What the file will really play at - asked of the same function the
+        # graph builder uses, so a skipped interpolation is not advertised.
+        "out_fps": workflow.output_fps(params, available),
     }
 
     image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
@@ -198,7 +208,7 @@ async def run_job(record: library.Record, image_bytes: bytes) -> None:
         seed=record.seed,
         width=record.width,
         height=record.height,
-        available_nodes=await client.node_classes(),
+        available_nodes=available,
         filename_prefix=f"wan/{record.id}",
     )
     if problems := await client.validate(graph):
@@ -666,7 +676,12 @@ async def civitai_download(payload: dict = Body(...)) -> JSONResponse:
     # something you can actually recognise.
     if preview_url := str(payload.get("preview") or ""):
         for f in remote:
-            asyncio.create_task(models.fetch_preview(folder, f.name, preview_url))
+            # Held in a set until done: asyncio keeps only a weak reference to a
+            # running task, so a bare create_task can be garbage-collected
+            # mid-flight and the LoRA quietly installs with no cover image.
+            task = asyncio.create_task(models.fetch_preview(folder, f.name, preview_url))
+            _background.add(task)
+            task.add_done_callback(_background.discard)
     return JSONResponse(download.public())
 
 
@@ -900,7 +915,7 @@ async def run_image_job(record: library.Record) -> None:
     if record.source_name:
         # image-to-image: the source was stashed at submit time, because the
         # worker runs long after the upload request has gone.
-        source = config.INBOX_DIR / f"{record.id}.png"
+        source = config.STAGING_DIR / f"{record.id}.png"
         if not source.is_file():
             raise ComfyError("找不到剛才那張來源圖，請重新上傳一次")
         init_name = await client.upload_image(source.read_bytes(), f"{record.id}.png")
@@ -1103,8 +1118,8 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
 
     source_name = ""
     if init_name:
-        source = (config.INBOX_DIR / init_name).resolve()
-        if config.INBOX_DIR.resolve() not in source.parents or not source.is_file():
+        source = (config.STAGING_DIR / init_name).resolve()
+        if config.STAGING_DIR.resolve() not in source.parents or not source.is_file():
             raise HTTPException(400, "找不到剛才上傳的來源圖，請重新放一次")
         source_name = init_name
 
@@ -1130,7 +1145,7 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
     if source_name:
         # The worker runs long after this request is gone, so the picture has to
         # be on disk under the job's own name rather than held in memory.
-        (config.INBOX_DIR / f"{record.id}.png").write_bytes(source.read_bytes())
+        (config.STAGING_DIR / f"{record.id}.png").write_bytes(source.read_bytes())
     lib.add(record)
     queue.put_nowait((record.id, b""))
     return JSONResponse(public(record))
@@ -1186,14 +1201,14 @@ async def image_upload(image: UploadFile) -> JSONResponse:
     except Exception:
         raise HTTPException(400, "無法辨識這個圖片格式")
     name = f"src-{uuid.uuid4().hex[:12]}.png"
-    config.INBOX_DIR.mkdir(parents=True, exist_ok=True)
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
     # Staging files belong to nobody until a job claims a copy, so sweep the
     # ones an abandoned tab left behind rather than growing the folder forever.
     cutoff = time.time() - 24 * 3600
-    for stale in config.INBOX_DIR.glob("src-*.png"):
+    for stale in config.STAGING_DIR.glob("src-*.png"):
         if stale.stat().st_mtime < cutoff:
             stale.unlink(missing_ok=True)
-    Image.open(io.BytesIO(data)).convert("RGB").save(config.INBOX_DIR / name, "PNG")
+    Image.open(io.BytesIO(data)).convert("RGB").save(config.STAGING_DIR / name, "PNG")
     return JSONResponse({"name": name, "width": width, "height": height})
 
 
@@ -1297,47 +1312,61 @@ async def promptbook_preview(file: UploadFile) -> JSONResponse:
         None, promptbook.parse, data, name
     )
     known = set(book.entries)
+    # The parse result stays here and is imported by token. Returning every
+    # entry so the browser can post it straight back would round-trip the whole
+    # collection twice - a 64MB upload (this endpoint's own cap) becomes
+    # 100MB+ of JSON each way - to render forty preview rows.
+    token = uuid.uuid4().hex[:16]
+    _pending[token] = (time.time(), name, parsed.entries)
+    _sweep_pending()
     return JSONResponse(
         {
+            "token": token,
             "how": parsed.how,
             "note": parsed.note,
             "count": len(parsed.entries),
             "new": sum(1 for e in parsed.entries if e.key not in known),
             "source": name,
-            # A sample, not the lot: a 20k-entry file should not become a 20MB
-            # response just to show the user it parsed.
             "sample": [e.public() for e in parsed.entries[:40]],
-            "entries": [e.public() for e in parsed.entries],
         }
     )
 
 
+# token -> (when, source, entries). Previews the user never confirmed are
+# dropped rather than held forever.
+_pending: dict[str, tuple[float, str, list]] = {}
+PENDING_TTL = 30 * 60
+PENDING_MAX = 8
+
+
+def _sweep_pending() -> None:
+    cutoff = time.time() - PENDING_TTL
+    for key in [k for k, v in _pending.items() if v[0] < cutoff]:
+        _pending.pop(key, None)
+    while len(_pending) > PENDING_MAX:
+        _pending.pop(min(_pending, key=lambda k: _pending[k][0]), None)
+
+
 @app.post("/api/promptbook/import")
 async def promptbook_import(payload: dict = Body(...)) -> JSONResponse:
-    """Keep the entries the preview produced (optionally an edited subset)."""
-    rows = payload.get("entries")
-    if not isinstance(rows, list) or not rows:
+    """Keep the entries a preview produced, minus anything the user dropped."""
+    token = str(payload.get("token", ""))
+    staged = _pending.pop(token, None)
+    if staged is None:
+        raise HTTPException(400, "這份預覽已經過期了，請重新選一次檔案")
+    _, source, entries = staged
+    drop = {str(d) for d in (payload.get("drop") or [])}
+    # Entries came from promptbook.parse, so they are already cleaned and
+    # length-capped by _finish; nothing untrusted is reconstructed here.
+    keep = [e for e in entries if e.key not in drop]
+    if not keep:
         raise HTTPException(400, "沒有要匯入的內容")
-    source = str(payload.get("source", "") or "匯入")
-    entries = []
-    for row in rows[: promptbook.MAX_ENTRIES]:
-        if not isinstance(row, dict):
-            continue
-        entry = promptbook.Entry(
-            positive=str(row.get("positive", "")),
-            negative=str(row.get("negative", "")),
-            title=str(row.get("title", "")),
-            note=str(row.get("note", "")),
-            tags=[str(t) for t in (row.get("tags") or [])][:12],
-            source=str(row.get("source") or source),
-        )
-        if entry.positive.strip():
-            entries.append(entry)
-    if not entries:
-        raise HTTPException(400, "這些項目裡沒有可用的提詞")
-    added, duplicate = book.add_all(entries)
+    added, duplicate = await asyncio.get_running_loop().run_in_executor(
+        None, book.add_all, keep
+    )
     return JSONResponse(
-        {"added": added, "duplicate": duplicate, "total": len(book.entries)}
+        {"added": added, "duplicate": duplicate, "total": len(book.entries),
+         "source": source}
     )
 
 
@@ -1609,11 +1638,13 @@ async def comic_preview(payload: dict = Body(...)) -> FileResponse:
         width=900,
     )
     page = comics.compose(layout, [], bubbles, style)
-    config.INBOX_DIR.mkdir(parents=True, exist_ok=True)
-    target = config.INBOX_DIR / "comic-preview.png"
-    page.save(target, "PNG")
-    return FileResponse(target, media_type="image/png",
-                        headers={"Cache-Control": "no-store"})
+    # Returned as bytes rather than written to a shared filename: this fires on
+    # every keystroke in a dialogue box, so two overlapping requests would
+    # truncate each other's file mid-read, and the file outlived every sweep.
+    buf = io.BytesIO()
+    page.save(buf, "PNG")
+    return Response(content=buf.getvalue(), media_type="image/png",
+                    headers={"Cache-Control": "no-store"})
 
 
 @app.post("/api/prompt/preview")

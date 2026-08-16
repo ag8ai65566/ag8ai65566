@@ -86,6 +86,19 @@ def _lora_chain(g: GraphBuilder, model_node: str, loras: list[Lora]) -> str:
     return chain
 
 
+def output_fps(p: GenParams, nodes: set[str]) -> int:
+    """The frame rate the saved file will really have.
+
+    Interpolation is skipped when the install lacks the nodes for it, so the
+    requested multiplier is not what the clip plays at. Reporting the request
+    instead of the result makes a card claim "@32fps（補幀）" over a 16fps file.
+    """
+    if p.interpolate > 1 and p.interpolate_model and \
+            {"FrameInterpolationModelLoader", "FrameInterpolate"} <= nodes:
+        return int(round(p.fps * p.interpolate))
+    return p.fps
+
+
 def _post_process(g: GraphBuilder, images: str, p: GenParams, nodes: set[str]) -> tuple[str, int]:
     """Optional smoothing and enlargement between the decode and the save.
 
@@ -96,7 +109,8 @@ def _post_process(g: GraphBuilder, images: str, p: GenParams, nodes: set[str]) -
     interpolator is cheaper at the smaller size.
     """
     fps = p.fps
-    if p.interpolate > 1 and {"FrameInterpolationModelLoader", "FrameInterpolate"} <= nodes:
+    if p.interpolate > 1 and p.interpolate_model and \
+            {"FrameInterpolationModelLoader", "FrameInterpolate"} <= nodes:
         loader = g.add(
             "FrameInterpolationModelLoader",
             {"model_name": p.interpolate_model},

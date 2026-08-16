@@ -129,10 +129,17 @@ class Library:
         return self.records.get(job_id)
 
     def recent(self, limit: int = 60, kind: str = "") -> list[Record]:
+        """Most recent first. `kind` may be a comma-separated set.
+
+        Several kinds at once matters because the image tab shows both `image`
+        and `comic`. Filtering client-side instead means asking for N rows,
+        getting N videos, and rendering an empty page.
+        """
+        wanted = {k.strip() for k in kind.split(",") if k.strip()}
         out: list[Record] = []
         for i in reversed(self.order):
             record = self.records.get(i)
-            if record is None or (kind and record.kind != kind):
+            if record is None or (wanted and record.kind not in wanted):
                 continue
             out.append(record)
             if len(out) >= limit:
