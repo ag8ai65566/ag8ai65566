@@ -55,6 +55,10 @@ class Detected:
     confidence: float = 0.0
     note: str = ""
     background: str = "light"
+    # The page's own shape. Without it a landscape page or a 4koma strip gets
+    # recomposed at the default 2:3 and none of the panels line up.
+    aspect: float = 2 / 3
+    reading: str = "ltr"
 
     def public(self) -> dict:
         return {
@@ -63,6 +67,8 @@ class Detected:
             "confidence": round(self.confidence, 3),
             "note": self.note,
             "background": self.background,
+            "aspect": round(self.aspect, 4),
+            "reading": self.reading,
         }
 
 
@@ -138,7 +144,7 @@ def _trim(profile, lo: int, hi: int) -> tuple[int, int]:
 
 
 def _cut(prof: Profiles, x0, y0, x1, y1, depth, min_gap, min_w, min_h, out,
-         widths=None, max_gap=0) -> None:
+         widths=None) -> None:
     x0, x1 = _trim(lambda x: prof.col(x, y0, y1), x0, x1)
     y0, y1 = _trim(lambda y: prof.row(y, x0, x1), y0, y1)
     if x1 - x0 < min_w or y1 - y0 < min_h or len(out) >= MAX_PANELS:
@@ -153,14 +159,14 @@ def _cut(prof: Profiles, x0, y0, x1, y1, depth, min_gap, min_w, min_h, out,
         )
         for axis, profile, a0, a1 in axes:
             gaps = [g for g in _runs(profile, a0, a1, min_gap) if g[0] > a0 and g[1] < a1]
-            # A band far wider than this page's usual gutter is not a gutter, it
-            # is empty space inside the art. See _pass_widths.
-            if max_gap:
-                gaps = [g for g in gaps if g[1] - g[0] <= max_gap]
             if not gaps:
                 continue
             if widths is not None:
-                widths.extend(g[1] - g[0] for g in gaps)
+                # Kept per axis. Manga routinely uses a wide gutter between
+                # rows and a narrow one between columns; comparing the two
+                # against each other makes a perfectly ordinary page look
+                # inconsistent and get rejected as a full-bleed illustration.
+                widths[axis].extend(g[1] - g[0] for g in gaps)
             pieces, cursor = [], a0
             for start, end in gaps:
                 pieces.append((cursor, start))
@@ -169,10 +175,10 @@ def _cut(prof: Profiles, x0, y0, x1, y1, depth, min_gap, min_w, min_h, out,
             for lo, hi in pieces:
                 if axis == "y":
                     _cut(prof, x0, lo, x1, hi, depth + 1, min_gap, min_w, min_h,
-                         out, widths, max_gap)
+                         out, widths)
                 else:
                     _cut(prof, lo, y0, hi, y1, depth + 1, min_gap, min_w, min_h,
-                         out, widths, max_gap)
+                         out, widths)
             return
     out.append((x0, y0, x1, y1))
 
@@ -197,22 +203,31 @@ def _pass_widths(prof, width, height, min_gap, min_w, min_h):
     confident rectangles drawn through the middle of somebody's artwork.
     """
     found: list[tuple[int, int, int, int]] = []
-    widths: list[int] = []
+    widths: dict[str, list[int]] = {"x": [], "y": []}
     _cut(prof, 0, 0, width, height, 0, min_gap, min_w, min_h, found, widths)
-    if len(widths) < 3:
-        return found, widths, True
-    ordered = sorted(widths)
-    median = ordered[len(ordered) // 2]
-    spread = (ordered[-1] - ordered[0]) / max(1, median)
-    if spread <= GUTTER_SPREAD:
+
+    consistent = True
+    for axis_widths in widths.values():
+        if len(axis_widths) < 3:
+            continue
+        ordered = sorted(axis_widths)
+        median = ordered[len(ordered) // 2]
+        if (ordered[-1] - ordered[0]) / max(1, median) > GUTTER_SPREAD:
+            consistent = False
+    if consistent:
         return found, widths, True
     whole: list[tuple[int, int, int, int]] = []
     _cut(prof, 0, 0, width, height, MAX_DEPTH, min_gap, min_w, min_h, whole)
     return whole, widths, False
 
 
-def detect(image: Image.Image, max_side: int = 900) -> Detected:
-    """Recover the panel rectangles of a comic page."""
+def detect(image: Image.Image, max_side: int = 900, reading: str = "ltr") -> Detected:
+    """Recover the panel rectangles of a comic page.
+
+    `reading` orders the panels: "rtl" for manga, which is read right-to-left
+    within a row, so panel 1 is the top *right*. Getting this backwards silently
+    reverses the story - the prompts land on mirrored rectangles.
+    """
     page = image.convert("L")
     scale = min(1.0, max_side / max(page.size))
     if scale < 1.0:
@@ -220,10 +235,16 @@ def detect(image: Image.Image, max_side: int = 900) -> Detected:
                             max(1, int(page.height * scale))), Image.BILINEAR)
     width, height = page.size
     pixels = list(page.getdata())
+    short = min(width, height)
+    min_gap = max(2, int(short * MIN_GUTTER))
+    min_w, min_h = int(width * MIN_PANEL), int(height * MIN_PANEL)
 
-    # Gutters are whatever colour the page margin is - white for most comics,
-    # black for a dark-background page. Read it off the border rather than
-    # assuming, or every dark page detects as a single panel.
+    # Which grey is the gutter? Reading it off the page border works for a page
+    # with a margin, and fails completely on a full-bleed page where the border
+    # *is* artwork - the mask then treats one panel's fill as background and the
+    # cut disintegrates. So several candidates are tried and the one that
+    # actually yields a clean grid wins: the border median, the commonest value
+    # on the page, and plain white and black for the two conventional cases.
     border = (
         [pixels[x] for x in range(width)]
         + [pixels[(height - 1) * width + x] for x in range(width)]
@@ -231,23 +252,52 @@ def detect(image: Image.Image, max_side: int = 900) -> Detected:
         + [pixels[y * width + width - 1] for y in range(height)]
     )
     border.sort()
-    level = border[len(border) // 2]
+    histogram = [0] * 256
+    for value in pixels:
+        histogram[value] += 1
+    candidates: list[int] = []
+    for level in (border[len(border) // 2], histogram.index(max(histogram)), 255, 0):
+        if all(abs(level - seen) > 8 for seen in candidates):
+            candidates.append(level)
+
+    best = None
+    for level in candidates:
+        mask = [1 if abs(p - level) <= 26 else 0 for p in pixels]
+        present = sum(mask) / len(mask)
+        # A colour that barely appears cannot be the gutter. Without this a
+        # blank white page "wins" on the black candidate, which finds no
+        # background at all and so calls the empty page one full panel.
+        if present < 0.01:
+            continue
+        prof = Profiles(mask, width, height)
+        boxes, widths, gridded = _pass_widths(prof, width, height, min_gap, min_w, min_h)
+        covered = sum((x1 - x0) * (y1 - y0) for x0, y0, x1, y1 in boxes) / (width * height)
+        # A single box spanning the page is the *absence* of a cut, so it must
+        # never outrank a real one - by coverage it scores a perfect 1.00 and
+        # would win every time, since any genuine grid loses area to its own
+        # gutters. Finding a grid at all is therefore the first term, and
+        # coverage only ranks the grids against each other: that also demotes a
+        # shattered cut, which covers far less of the page than a correct one.
+        found_grid = gridded and len(boxes) >= 2
+        score = (1.0 if found_grid else 0.0) + covered
+        if best is None or score > best[0]:
+            best = (score, boxes, widths, gridded, level)
+        if found_grid and covered > 0.88:
+            break
+
+    if best is None:
+        return Detected([], 0.0, "看不出格線 —— 這頁可能是滿版單張，或格子是斜的／破格的。",
+                        "light", (width / height) if height else 2 / 3, reading)
+    _, found, widths, gridded, level = best
     dark = level < 128
-    tol = 26
-    mask = [1 if abs(p - level) <= tol else 0 for p in pixels]
-
-    prof = Profiles(mask, width, height)
-    short = min(width, height)
-    min_gap = max(2, int(short * MIN_GUTTER))
-    min_w, min_h = int(width * MIN_PANEL), int(height * MIN_PANEL)
-
-    found, widths, gridded = _pass_widths(prof, width, height, min_gap, min_w, min_h)
 
     boxes = [
         Box(x0 / width, y0 / height, (x1 - x0) / width, (y1 - y0) / height)
         for x0, y0, x1, y1 in found
     ]
-    boxes.sort(key=lambda b: (round(b.y, 2), b.x))
+    # Row-major, then across the row in the page's reading direction.
+    right_to_left = reading == "rtl"
+    boxes.sort(key=lambda b: (round(b.y, 2), -b.x if right_to_left else b.x))
 
     covered = sum(b.w * b.h for b in boxes)
     note = ""
@@ -262,6 +312,8 @@ def detect(image: Image.Image, max_side: int = 900) -> Detected:
         note = "格子偵測得不太完整，建議手動挑一個接近的分鏡。"
     return Detected(
         boxes=boxes,
+        aspect=(image.width / image.height) if image.height else 2 / 3,
+        reading="rtl" if right_to_left else "ltr",
         # Panels should cover most of a page; how much they do is the honest
         # measure of whether this page suited a rectangular cut at all.
         confidence=(min(1.0, covered / 0.92) if boxes else 0.0) * (1.0 if gridded else 0.4),

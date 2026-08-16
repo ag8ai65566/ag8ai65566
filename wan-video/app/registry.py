@@ -31,10 +31,14 @@ class ModelFile:
     path: str
     folder: str  # ComfyUI models/<folder>
     size: int
+    # Some repos publish everything as `diffusion_pytorch_model.safetensors`,
+    # so the basename would collide between models and tell the user nothing in
+    # the loader's dropdown. This is the name it lands under instead.
+    save_as: str = ""
 
     @property
     def name(self) -> str:
-        return self.path.rsplit("/", 1)[-1]
+        return self.save_as or self.path.rsplit("/", 1)[-1]
 
 
 @dataclass

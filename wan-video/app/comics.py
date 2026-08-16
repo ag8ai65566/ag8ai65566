@@ -113,7 +113,10 @@ LAYOUTS: list[Layout] = [
 ]
 
 BY_ID = {layout.id: layout for layout in LAYOUTS}
-MAX_PANELS = max(layout.count for layout in LAYOUTS)
+# The stock layouts top out at six panels, but a page read off disk can have
+# more. Truncating a detected layout to the stock maximum silently drops whole
+# rows - a 3x3 page rendered as six panels - so the ceiling is the detector's.
+MAX_PANELS = 12
 
 
 def get(layout_id: str) -> Layout | None:

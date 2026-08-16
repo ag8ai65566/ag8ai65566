@@ -132,6 +132,36 @@
    "CLIP_VISION"
   ]
  },
+ "Canny": {
+  "input": {
+   "required": {
+    "high_threshold": [
+     "FLOAT",
+     {
+      "default": 0.8,
+      "max": 0.99,
+      "min": 0.01,
+      "step": 0.01
+     }
+    ],
+    "image": [
+     "IMAGE"
+    ],
+    "low_threshold": [
+     "FLOAT",
+     {
+      "default": 0.4,
+      "max": 0.99,
+      "min": 0.01,
+      "step": 0.01
+     }
+    ]
+   }
+  },
+  "output": [
+   "IMAGE"
+  ]
+ },
  "CheckpointLoaderSimple": {
   "input": {
    "required": {
@@ -149,6 +179,76 @@
    "MODEL",
    "CLIP",
    "VAE"
+  ]
+ },
+ "ControlNetApplyAdvanced": {
+  "input": {
+   "optional": {
+    "vae": [
+     "VAE"
+    ]
+   },
+   "required": {
+    "control_net": [
+     "CONTROL_NET"
+    ],
+    "end_percent": [
+     "FLOAT",
+     {
+      "default": 1.0,
+      "max": 1.0,
+      "min": 0.0,
+      "step": 0.001
+     }
+    ],
+    "image": [
+     "IMAGE"
+    ],
+    "negative": [
+     "CONDITIONING"
+    ],
+    "positive": [
+     "CONDITIONING"
+    ],
+    "start_percent": [
+     "FLOAT",
+     {
+      "default": 0.0,
+      "max": 1.0,
+      "min": 0.0,
+      "step": 0.001
+     }
+    ],
+    "strength": [
+     "FLOAT",
+     {
+      "default": 1.0,
+      "max": 10.0,
+      "min": 0.0,
+      "step": 0.01
+     }
+    ]
+   }
+  },
+  "output": [
+   "CONDITIONING",
+   "CONDITIONING"
+  ]
+ },
+ "ControlNetLoader": {
+  "input": {
+   "required": {
+    "control_net_name": [
+     [
+      "controlnet-union-sdxl-promax.safetensors",
+      "controlnet-canny-sdxl-v2.safetensors",
+      "controlnet-scribble-sdxl.safetensors"
+     ]
+    ]
+   }
+  },
+  "output": [
+   "CONTROL_NET"
   ]
  },
  "CreateVideo": {
@@ -1206,6 +1306,34 @@
   },
   "output": [
    "VIDEO"
+  ]
+ },
+ "SetUnionControlNetType": {
+  "input": {
+   "required": {
+    "control_net": [
+     "CONTROL_NET"
+    ],
+    "type": [
+     "COMBO",
+     {
+      "options": [
+       "auto",
+       "openpose",
+       "depth",
+       "hed/pidi/scribble/ted",
+       "canny/lineart/anime_lineart/mlsd",
+       "normal",
+       "segment",
+       "tile",
+       "repaint"
+      ]
+     }
+    ]
+   }
+  },
+  "output": [
+   "CONTROL_NET"
   ]
  },
  "UNETLoader": {

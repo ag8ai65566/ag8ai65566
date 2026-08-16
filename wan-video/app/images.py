@@ -15,6 +15,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field, fields
 
+import controlnets
 from registry import ModelFile
 
 SDXL_VAE = ModelFile(
@@ -256,6 +257,17 @@ class ImageSettings:
     hires_upscaler: str = ""  # "" = latent upscale; else an upscale_models file
     # Plain enlargement of the finished image, no re-diffusion.
     upscaler: str = ""
+    # Keep a reference picture's composition and redraw its contents. The
+    # control picture itself is passed per call, not stored here, because a
+    # comic page needs a different one for every panel.
+    controlnet: str = ""            # a file in models/controlnet
+    controlnet_strength: float = 0.75
+    controlnet_start: float = 0.0
+    controlnet_end: float = 0.75
+    controlnet_preprocess: str = "canny"   # canny | none
+    controlnet_low: float = 0.4
+    controlnet_high: float = 0.8
+    controlnet_union_type: str = ""  # "" = ask the catalogue what this model wants
     # Quality patches, all off by default.
     freeu: bool = False
     pag: float = 0.0
@@ -303,6 +315,85 @@ def normalize_lora(entry) -> tuple[str, float, float]:
     return name, model_s, clip_s
 
 
+class _ControlNet:
+    """The ControlNet half of a graph, built once and applied many times.
+
+    The model is loaded by a single node no matter how many panels use it - a
+    nine-panel page must not load 2.5GB nine times - while each panel gets its
+    own hint image and its own apply node, because the whole point is that each
+    panel keeps *its own* composition.
+
+    An instance is only ever created when the graph can actually carry it; the
+    callers hold `None` otherwise, so every call site reads the same way.
+    """
+
+    def __init__(self, add, supported, settings: "ImageSettings") -> None:
+        self.add = add
+        self.supported = supported
+        self.settings = settings
+        node = add(
+            "ControlNetLoader", {"control_net_name": settings.controlnet}, "ControlNet"
+        )
+        link: list = [node, 0]
+        # The union models carry every control type in one file and have to be
+        # told which one is meant. A plain ControlNet has no such input, so
+        # setting it would make the graph invalid - hence asking the catalogue.
+        known = controlnets.by_name(settings.controlnet)
+        want = settings.controlnet_union_type or (
+            known.union_type if known and known.union else ""
+        )
+        if want and want in controlnets.UNION_TYPES and supported("SetUnionControlNetType"):
+            link = [add("SetUnionControlNetType",
+                        {"control_net": link, "type": want}, "ControlNet type"), 0]
+        self.link = link
+
+    @staticmethod
+    def usable(settings: "ImageSettings", supported) -> bool:
+        return bool(
+            settings.controlnet
+            and supported("ControlNetLoader")
+            and supported("ControlNetApplyAdvanced")
+            and supported("LoadImage")
+        )
+
+    def apply(self, positive: list, negative: list, image_name: str,
+              width: int, height: int, tag: str = "") -> tuple[list, list]:
+        """Route one panel's conditioning through its own hint image."""
+        if not image_name:
+            return positive, negative
+        s = self.settings
+        loaded = self.add("LoadImage", {"image": image_name}, f"Control source{tag}")
+        # The hint has to be the size of the thing being drawn, or the outlines
+        # land in the wrong place and the result is a smeared double exposure.
+        hint: list = [self.add(
+            "ImageScale",
+            {"image": [loaded, 0], "upscale_method": "lanczos",
+             "width": width, "height": height, "crop": "center"},
+            f"Fit control{tag}",
+        ), 0]
+        if s.controlnet_preprocess == "canny" and self.supported("Canny"):
+            low = max(0.01, min(s.controlnet_low, 0.99))
+            high = max(low + 0.01, min(s.controlnet_high, 0.99))
+            hint = [self.add(
+                "Canny",
+                {"image": hint, "low_threshold": round(low, 2),
+                 "high_threshold": round(high, 2)},
+                f"Edges{tag}",
+            ), 0]
+        applied = self.add(
+            "ControlNetApplyAdvanced",
+            {
+                "positive": positive, "negative": negative, "control_net": self.link,
+                "image": hint,
+                "strength": round(max(0.0, min(s.controlnet_strength, 2.0)), 2),
+                "start_percent": round(max(0.0, min(s.controlnet_start, 1.0)), 3),
+                "end_percent": round(max(0.0, min(s.controlnet_end, 1.0)), 3),
+            },
+            f"Apply ControlNet{tag}",
+        )
+        return [applied, 0], [applied, 1]
+
+
 def defaults_for(model: ImageModel) -> ImageSettings:
     return ImageSettings(
         steps=model.steps, cfg=model.cfg, sampler=model.sampler,
@@ -314,13 +405,18 @@ def build_comic(
     model: ImageModel,
     settings: ImageSettings,
     *,
-    panels: list[tuple[str, int, int]],
+    panels: list[tuple],
     negative: str,
     seed: int,
     available_nodes: set[str] | None = None,
     filename_prefix: str = "comic/out",
 ) -> dict:
     """One graph that renders every panel of a page, each at its own size.
+
+    A panel is `(prompt, width, height)`, or `(prompt, width, height, control)`
+    where `control` names an image already uploaded to ComfyUI. That fourth
+    slot is how a restaged page keeps the original's shot composition: each
+    panel is guided by the crop it was measured from.
 
     Panels are separate branches with their own SaveImage rather than one
     batched latent, for two reasons: a batch forces every image to the same
@@ -390,9 +486,25 @@ def build_comic(
     neg = add("CLIPTextEncode", {"clip": clip_link, "text": negative}, "Negative")
     can_upscale = supported("UpscaleModelLoader") and supported("ImageUpscaleWithModel")
 
-    for index, (text, width, height) in enumerate(panels):
+    # One loader for the whole page; the per-panel apply nodes come later.
+    control = (
+        _ControlNet(add, supported, settings)
+        if _ControlNet.usable(settings, supported)
+        and any(len(p) > 3 and p[3] for p in panels)
+        else None
+    )
+
+    for index, panel in enumerate(panels):
+        text, width, height = panel[0], panel[1], panel[2]
+        control_image = str(panel[3]) if len(panel) > 3 and panel[3] else ""
         tag = f" P{index + 1}"
         pos = add("CLIPTextEncode", {"clip": clip_link, "text": text}, f"Prompt{tag}")
+        pos_link: list = [pos, 0]
+        neg_link: list = [neg, 0]
+        if control is not None:
+            pos_link, neg_link = control.apply(
+                pos_link, neg_link, control_image, width, height, tag
+            )
         latent = add("EmptyLatentImage",
                      {"width": width, "height": height, "batch_size": 1}, f"Latent{tag}")
         # Each panel gets its own seed so a page is not four variations of one
@@ -402,8 +514,8 @@ def build_comic(
             {
                 "model": model_link, "seed": seed + index, "steps": settings.steps,
                 "cfg": settings.cfg, "sampler_name": settings.sampler,
-                "scheduler": settings.scheduler, "positive": [pos, 0],
-                "negative": [neg, 0], "latent_image": [latent, 0], "denoise": 1.0,
+                "scheduler": settings.scheduler, "positive": pos_link,
+                "negative": neg_link, "latent_image": [latent, 0], "denoise": 1.0,
             },
             f"Sample{tag}",
         )
@@ -442,6 +554,7 @@ def build(
     width: int,
     height: int,
     init_image: str = "",
+    control_image: str = "",
     use_vae: bool = True,
     available_nodes: set[str] | None = None,
     filename_prefix: str = "img/out",
@@ -548,6 +661,11 @@ def build(
         texts = texts[:1]
 
     neg = add("CLIPTextEncode", {"clip": clip_link, "text": negative}, "Negative")
+    control = (
+        _ControlNet(add, supported, settings)
+        if control_image and _ControlNet.usable(settings, supported)
+        else None
+    )
 
     source_image: list | None = None
     if init_image:
@@ -585,7 +703,7 @@ def build(
 
     def sample(
         latent_node: str, denoise_value: float, steps: int, title: str,
-        positive: list, noise_seed: int,
+        positive: list, noise_seed: int, negative: list | None = None,
     ) -> str:
         return add(
             "KSampler",
@@ -597,7 +715,7 @@ def build(
                 "sampler_name": settings.sampler,
                 "scheduler": settings.scheduler,
                 "positive": positive,
-                "negative": [neg, 0],
+                "negative": negative if negative is not None else [neg, 0],
                 "latent_image": [latent_node, 0],
                 "denoise": denoise_value,
             },
@@ -625,8 +743,15 @@ def build(
     def branch(text: str, count: int, noise_seed: int, tag: str) -> list:
         """One prompt all the way to a decoded image, ready to save."""
         pos = add("CLIPTextEncode", {"clip": clip_link, "text": text}, f"Prompt{tag}")
+        pos_link: list = [pos, 0]
+        neg_link: list = [neg, 0]
+        if control is not None:
+            pos_link, neg_link = control.apply(
+                pos_link, neg_link, control_image, width, height, tag
+            )
         latent = make_latent(count)
-        sampled = sample(latent, denoise, settings.steps, f"Sample{tag}", [pos, 0], noise_seed)
+        sampled = sample(latent, denoise, settings.steps, f"Sample{tag}", pos_link,
+                         noise_seed, neg_link)
 
         if settings.hires_scale and settings.hires_scale > 1.0:
             target_w = int(width * settings.hires_scale) // 8 * 8
@@ -664,7 +789,7 @@ def build(
                 )
                 sampled = sample(
                     reencoded, hires_denoise, hires_steps, f"Hi-res pass{tag}",
-                    [pos, 0], noise_seed,
+                    pos_link, noise_seed, neg_link,
                 )
             else:
                 up = add(
@@ -679,7 +804,8 @@ def build(
                     f"Upscale latent{tag}",
                 )
                 sampled = sample(
-                    up, hires_denoise, hires_steps, f"Hi-res pass{tag}", [pos, 0], noise_seed
+                    up, hires_denoise, hires_steps, f"Hi-res pass{tag}", pos_link,
+                    noise_seed, neg_link,
                 )
 
         return [decode(sampled, f"Decode{tag}"), 0]

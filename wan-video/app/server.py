@@ -15,6 +15,7 @@ import asyncio
 import io
 import json
 import random
+import re
 import time
 import traceback
 import uuid
@@ -23,6 +24,7 @@ from pathlib import Path
 import civitai
 import comics
 import config
+import controlnets
 import images
 import downloader
 import inspect_image
@@ -815,9 +817,32 @@ async def run_comic_job(record: library.Record) -> None:
     rng = random.Random(record.seed)
     shared = prompts.expand(str(cfg.get("shared", "")), rng)
     raw_panels = list(cfg.get("panels") or [])
-    panels: list[tuple[str, int, int]] = []
+    raw_controls = list(cfg.get("controls") or [])
+    # Each surviving crop is handed to ComfyUI once, up front. A crop that has
+    # since been swept just leaves that panel unguided - the rest of the page
+    # still keeps its composition.
+    uploaded: dict[str, str] = {}
+    if settings.controlnet:
+        for name in dict.fromkeys(c for c in raw_controls if c):
+            path = control_path(str(name))
+            if path is None:
+                continue
+            try:
+                uploaded[str(name)] = await client.upload_image(path.read_bytes(), str(name))
+            except (OSError, ComfyError):
+                continue
+    # Whatever the crops did, say so on the finished card rather than in a
+    # message the progress ticker overwrites two lines later.
+    warning = ""
+    if settings.controlnet and raw_controls and not uploaded:
+        warning = "構圖參考圖已經過期，這一頁只照提詞畫。回「分鏡克隆」重讀一次原稿就會有。"
+    elif settings.controlnet and len(uploaded) < len([c for c in raw_controls if c]):
+        warning = "有幾格的構圖參考圖過期了，那幾格只照提詞畫。"
+
+    panels: list[tuple[str, int, int, str]] = []
     for index, panel in enumerate(layout.panels):
         text = raw_panels[index] if index < len(raw_panels) else ""
+        control = raw_controls[index] if index < len(raw_controls) else ""
         width, height = comics.panel_size(panel, layout.aspect)
         panels.append(
             (
@@ -827,6 +852,7 @@ async def run_comic_job(record: library.Record) -> None:
                 ),
                 width,
                 height,
+                uploaded.get(str(control), ""),
             )
         )
 
@@ -889,6 +915,8 @@ async def run_comic_job(record: library.Record) -> None:
     thumb.thumbnail((480, 480))
     record.thumb = f"{record.id}.jpg"
     thumb.convert("RGB").save(lib.thumbs / record.thumb, "JPEG", quality=84)
+    if warning:
+        record.message = warning
 
 
 async def run_image_job(record: library.Record) -> None:
@@ -921,6 +949,15 @@ async def run_image_job(record: library.Record) -> None:
             raise ComfyError("找不到剛才那張來源圖，請重新上傳一次")
         init_name = await client.upload_image(source.read_bytes(), f"{record.id}.png")
 
+    control_name = ""
+    if settings.controlnet and (record.settings or {}).get("control_image"):
+        staged = config.STAGING_DIR / f"{record.id}-control.png"
+        if not staged.is_file():
+            raise ComfyError("找不到剛才那張構圖參考圖，請重新上傳一次")
+        control_name = await client.upload_image(
+            staged.read_bytes(), f"{record.id}-control.png"
+        )
+
     graph = images.build(
         model,
         settings,
@@ -930,6 +967,7 @@ async def run_image_job(record: library.Record) -> None:
         width=record.width,
         height=record.height,
         init_image=init_name,
+        control_image=control_name,
         available_nodes=await client.node_classes(),
         filename_prefix=f"img/{record.id}",
     )
@@ -1124,6 +1162,19 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
             raise HTTPException(400, "找不到剛才上傳的來源圖，請重新放一次")
         source_name = init_name
 
+    control_name = ""
+    if settings.controlnet:
+        if settings.controlnet not in installed_controlnets():
+            raise HTTPException(
+                400, f"還沒下載 ControlNet 模型 {settings.controlnet}，請到「模型」分頁下載"
+            )
+        raw_control = str(payload.get("control_image") or "")
+        control = (config.STAGING_DIR / raw_control).resolve() if raw_control else None
+        if control is None or config.STAGING_DIR.resolve() not in control.parents \
+                or not control.is_file():
+            raise HTTPException(400, "開了 ControlNet 就要放一張構圖參考圖")
+        control_name = raw_control
+
     record = library.Record(
         id=uuid.uuid4().hex[:12],
         model_id=model.id,
@@ -1141,12 +1192,14 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         length=batch,
         source_name=source_name,
         loras=[f"{n}:{m}" for n, m, _ in settings.loras],
-        settings=settings.to_dict(),
+        settings={**settings.to_dict(), "control_image": control_name},
     )
     if source_name:
         # The worker runs long after this request is gone, so the picture has to
         # be on disk under the job's own name rather than held in memory.
         (config.STAGING_DIR / f"{record.id}.png").write_bytes(source.read_bytes())
+    if control_name:
+        (config.STAGING_DIR / f"{record.id}-control.png").write_bytes(control.read_bytes())
     lib.add(record)
     queue.put_nowait((record.id, b""))
     return JSONResponse(public(record))
@@ -1247,6 +1300,56 @@ async def list_upscalers() -> JSONResponse:
             "upscalers": out, "help": upscalers.HELP,
             "interpolators": interp, "interp_help": upscalers.INTERP_HELP,
         }
+    )
+
+
+def installed_controlnets() -> list[str]:
+    folder = config.MODELS_DIR / "controlnet"
+    if not folder.is_dir():
+        return []
+    return sorted(
+        p.name for p in folder.iterdir()
+        if p.is_file() and p.suffix.lower() in (".pth", ".safetensors", ".ckpt")
+    )
+
+
+@app.get("/api/controlnets")
+async def list_controlnets() -> JSONResponse:
+    here = set(installed_controlnets())
+    out = [
+        {
+            "id": c.id, "label": c.label, "name": c.name, "best_for": c.best_for,
+            "size": c.size, "installed": c.name in here, "union": c.union,
+            "union_type": c.union_type,
+        }
+        for c in controlnets.CONTROLNETS
+    ]
+    # A file the user dropped in themselves is perfectly usable; we just do not
+    # know whether it is a union model, so it is offered as a plain one.
+    out += [
+        {"id": "", "label": name, "name": name, "best_for": "你自己放進去的",
+         "size": 0, "installed": True, "union": False, "union_type": ""}
+        for name in sorted(here - {c.name for c in controlnets.CONTROLNETS})
+    ]
+    return JSONResponse(
+        {
+            "controlnets": out,
+            "help": controlnets.HELP,
+            "note": controlnets.NOTE,
+            "union_types": list(controlnets.UNION_TYPES),
+            "preprocessors": [{"id": k, "help": v}
+                              for k, v in controlnets.PREPROCESSORS.items()],
+        }
+    )
+
+
+@app.post("/api/controlnets/{controlnet_id}/download")
+async def download_controlnet(controlnet_id: str) -> JSONResponse:
+    chosen = controlnets.get(controlnet_id)
+    if chosen is None:
+        raise HTTPException(404, f"不認識的 ControlNet：{controlnet_id}")
+    return JSONResponse(
+        _queue_single(f"controlnet:{chosen.id}", f"ControlNet · {chosen.label}", chosen.file)
     )
 
 
@@ -1545,10 +1648,12 @@ def resolve_layout(payload: dict):
     """A catalogue layout, or one measured off a page the user uploaded."""
     name = str(payload.get("layout", "four-grid"))
     if name == comics.CUSTOM_ID:
-        return comics.custom_layout(
-            payload.get("custom_panels") or [],
-            float(payload.get("custom_aspect") or (2 / 3)),
-        )
+        try:
+            aspect = float(payload.get("custom_aspect") or (2 / 3))
+        except (TypeError, ValueError):
+            # Comes from the client; a bad value is a 400, not a 500.
+            aspect = 2 / 3
+        return comics.custom_layout(payload.get("custom_panels") or [], aspect)
     return comics.get(name)
 
 
@@ -1557,7 +1662,9 @@ async def comic_restage(
     page: UploadFile,
     character: UploadFile | None = None,
     outfit_from: str = Form("character"),
+    reading: str = Form("ltr"),
     tagger: str = Form(""),
+    defer: bool = Form(True),
 ) -> JSONResponse:
     """Read a page's panel layout and staging, ready to redraw with someone else.
 
@@ -1577,17 +1684,27 @@ async def comic_restage(
         raise HTTPException(400, "無法辨識這個頁面圖片")
 
     loop = asyncio.get_running_loop()
-    found = await loop.run_in_executor(None, pagelayout.detect, page_image)
+    found = await loop.run_in_executor(
+        None, pagelayout.detect, page_image, 900,
+        "rtl" if reading == "rtl" else "ltr",
+    )
     result: dict = {
         "layout": found.public(),
         "panels": [],
         "character": None,
         "tagger_error": "",
         "outfit_from": "page" if outfit_from == "page" else "character",
+        "controls": [],
+        "controlnets": installed_controlnets(),
     }
     if not found.boxes:
         result["tagger_error"] = found.note
         return JSONResponse(result)
+
+    # Every panel's own crop is kept, so the new page can be guided by the old
+    # one's actual composition and not merely by tags copied off it. This is
+    # what turns "a similar scene" into "the same shot with someone else in it".
+    result["controls"] = _save_controls(page_image, found.boxes)
 
     here = tags.installed(config.MODELS_DIR)
     chosen = tagger if tagger in here else (here[0] if here else "")
@@ -1595,6 +1712,7 @@ async def comic_restage(
         result["tagger_error"] = (
             "分鏡切出來了，但要看懂每一格畫了什麼需要「看圖分析模型」"
             "（到「模型」分頁下載，約 380MB）。現在只會給你空的格子。"
+            "（構圖參考圖已經留好了，即使沒有這個模型，用 ControlNet 一樣能複製分鏡。）"
         )
         result["panels"] = [{"scene": [], "prompt": ""} for _ in found.boxes]
         return JSONResponse(result)
@@ -1610,7 +1728,17 @@ async def comic_restage(
                 char_image.load()
             except Exception:
                 raise HTTPException(400, "無法辨識這個角色圖片")
-            guess = await loop.run_in_executor(None, tags.describe, char_image, base)
+            try:
+                guess = await loop.run_in_executor(None, tags.describe, char_image, base)
+            except ImportError:
+                result["tagger_error"] = (
+                    "缺少 onnxruntime 套件，所以看不懂圖。關掉 app 跑一次 update.bat 就會裝好。"
+                    "分鏡還是量好了。"
+                )
+                return JSONResponse(result)
+            except Exception as exc:  # noqa: BLE001 - keep the layout we did get
+                result["tagger_error"] = f"角色圖分析失敗：{type(exc).__name__}: {exc}"
+                return JSONResponse(result)
             split = tags.split_tags([n for n, _ in guess.general])
             look = split["look"]
             outfit = split["outfit"]
@@ -1621,29 +1749,170 @@ async def comic_restage(
                 "dropped": [tags.to_prompt(t) for t in split["scene"] + split["drop"]],
             }
 
-    take_outfit = result["outfit_from"] == "character"
-    for crop in pagelayout.crops(page_image, found.boxes):
-        guess = await loop.run_in_executor(None, tags.describe, crop, base)
-        split = tags.split_tags([n for n, _ in guess.general])
-        # The shot keeps its blocking; the character brings their own face. A
-        # character name detected on the page is always dropped - that is the
-        # original cast, and replacing them is the entire point.
-        pieces = list(split["scene"])
-        pieces += (outfit or split["outfit"]) if take_outfit else split["outfit"]
-        pieces = look + pieces
-        seen: set[str] = set()
-        ordered = [t for t in pieces if not (t in seen or seen.add(t))]
+    # Tagging is ~2s per panel on CPU, so a nine-panel page is half a minute of
+    # nothing happening. The layout itself takes under a second, so it is handed
+    # back straight away under a token and the panels are fetched one at a time,
+    # which gives the UI something real to show progress against.
+    if defer:
+        token = uuid.uuid4().hex[:16]
+        _restage[token] = (time.time(), page_image, base, look, outfit,
+                           result["outfit_from"], found.boxes)
+        _sweep_restage()
+        result["token"] = token
+        result["panels"] = [None] * len(found.boxes)
+        return JSONResponse(result)
+
+    for box in found.boxes:
         result["panels"].append(
-            {
-                "scene": [tags.to_prompt(t) for t in split["scene"]],
-                "outfit": [tags.to_prompt(t) for t in split["outfit"]],
-                "dropped": [tags.to_prompt(t) for t in split["look"] + split["drop"]]
-                + [tags.to_prompt(n) for n, _ in guess.characters],
-                "rating": guess.rating,
-                "prompt": ", ".join(tags.to_prompt(t) for t in ordered),
-            }
+            await _read_panel(page_image, box, base, look, outfit,
+                              result["outfit_from"])
         )
     return JSONResponse(result)
+
+
+CONTROL_PREFIX = "ctrl-"
+CONTROL_RE = re.compile(r"^ctrl-[0-9a-f]{12}-\d{2}\.png$")
+# A control crop is only wanted for as long as the tab that made it is open.
+CONTROL_TTL = 24 * 3600
+
+
+def _save_controls(page_image: Image.Image, boxes: list) -> list[str]:
+    """Stash each panel's own art, to guide the redraw of that same panel.
+
+    Returns one entry per box, in box order, so index N of this list always
+    belongs to panel N. A box too small to crop yields "" rather than shifting
+    every later panel's reference onto the wrong rectangle.
+    """
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    cutoff = time.time() - CONTROL_TTL
+    for stale in config.STAGING_DIR.glob(f"{CONTROL_PREFIX}*.png"):
+        try:
+            if stale.stat().st_mtime < cutoff:
+                stale.unlink(missing_ok=True)
+        except OSError:
+            pass
+    group = uuid.uuid4().hex[:12]
+    out: list[str] = []
+    for index, box in enumerate(boxes[:99]):
+        crop = pagelayout.crops(page_image, [box])
+        if not crop:
+            out.append("")
+            continue
+        name = f"{CONTROL_PREFIX}{group}-{index:02d}.png"
+        try:
+            crop[0].convert("RGB").save(config.STAGING_DIR / name, "PNG")
+        except OSError:
+            out.append("")
+            continue
+        out.append(name)
+    return out
+
+
+def control_path(name: str) -> Path | None:
+    """The staged crop behind a name the client sent back, or None.
+
+    The name makes a round trip through the browser, so it is matched against
+    the exact shape this server writes rather than trusted - otherwise it is a
+    path straight out of the staging folder.
+    """
+    if not CONTROL_RE.match(name or ""):
+        return None
+    path = config.STAGING_DIR / name
+    return path if path.is_file() else None
+
+
+@app.get("/api/comic/control/{name}")
+async def comic_control(name: str) -> FileResponse:
+    """The stashed crop, so the editor can show what each panel will follow."""
+    path = control_path(name)
+    if path is None:
+        raise HTTPException(404, "找不到這張構圖參考圖（可能已經過期）")
+    return FileResponse(path, media_type="image/png")
+
+
+# token -> (when, page, tagger dir, look, outfit, outfit_from, boxes)
+_restage: dict[str, tuple] = {}
+RESTAGE_TTL = 20 * 60
+RESTAGE_MAX = 4
+
+
+def _sweep_restage() -> None:
+    cutoff = time.time() - RESTAGE_TTL
+    for key in [k for k, v in _restage.items() if v[0] < cutoff]:
+        _restage.pop(key, None)
+    while len(_restage) > RESTAGE_MAX:
+        _restage.pop(min(_restage, key=lambda k: _restage[k][0]), None)
+
+
+async def _read_panel(page_image, box, base, look, outfit, outfit_from) -> dict:
+    """Tag one panel and turn it into a prompt for the new character."""
+    blank = {"scene": [], "outfit": [], "dropped": [], "rating": "",
+             "no_people": False, "prompt": ""}
+    # crops() skips a degenerate box, so panels are paired to rectangles
+    # explicitly - zipping the two lists would shift every later panel's prompt
+    # onto the wrong rectangle whenever one crop was dropped.
+    crop = pagelayout.crops(page_image, [box])
+    if not crop:
+        return {**blank, "note": "這一格太小，讀不出內容"}
+    try:
+        guess = await asyncio.get_running_loop().run_in_executor(
+            None, tags.describe, crop[0], base
+        )
+    except Exception as exc:  # noqa: BLE001 - a failed panel must not lose the layout
+        return {**blank, "note": f"這一格分析失敗：{type(exc).__name__}"}
+
+    split = tags.split_tags([n for n, _ in guess.general])
+    # The shot keeps its blocking; the character brings their own face. A
+    # character name detected on the page is always dropped - that is the
+    # original cast, and replacing them is the entire point.
+    # An establishing shot with nobody in it must not have a character pasted
+    # into it - "no humans, blue eyes, long hair" argues with itself, and the
+    # model settles the argument by drawing a person. Their clothes do it just
+    # as surely as their face, so an empty panel takes neither: it keeps only
+    # what the page itself had.
+    empty = any(n in ("no_humans", "scenery") for n, _ in guess.general)
+    pieces = list(split["scene"])
+    if empty:
+        pieces += split["outfit"]
+    else:
+        pieces = look + pieces
+        pieces += (outfit or split["outfit"]) if outfit_from == "character" else split["outfit"]
+    seen: set[str] = set()
+    ordered = [t for t in pieces if not (t in seen or seen.add(t))]
+    return {
+        "scene": [tags.to_prompt(t) for t in split["scene"]],
+        "outfit": [tags.to_prompt(t) for t in split["outfit"]],
+        "dropped": [tags.to_prompt(t) for t in split["look"] + split["drop"]]
+        + [tags.to_prompt(n) for n, _ in guess.characters],
+        "rating": guess.rating,
+        "no_people": empty,
+        "note": "這格沒有人物，所以沒有套用角色外觀" if empty else "",
+        "prompt": ", ".join(tags.to_prompt(t) for t in ordered),
+    }
+
+
+@app.post("/api/comic/restage/{token}/panel/{index}")
+async def restage_panel(token: str, index: int,
+                        payload: dict = Body(default={})) -> JSONResponse:
+    """Read one panel of a page a previous restage call measured."""
+    staged = _restage.get(token)
+    if staged is None:
+        raise HTTPException(400, "這次的分析已經過期了，請重新上傳一次頁面")
+    when, page_image, base, look, outfit, outfit_from, boxes = staged
+    if not 0 <= index < len(boxes):
+        raise HTTPException(404, "沒有這一格")
+    # The switch can be flipped after the fact without re-uploading anything.
+    # A body of `null` arrives as None rather than as the default, so the shape
+    # is checked instead of assumed.
+    payload = payload if isinstance(payload, dict) else {}
+    if payload.get("outfit_from") in ("character", "page"):
+        outfit_from = str(payload["outfit_from"])
+    _restage[token] = (time.time(), page_image, base, look, outfit, outfit_from, boxes)
+    return JSONResponse(
+        {"index": index,
+         "panel": await _read_panel(page_image, boxes[index], base, look,
+                                    outfit, outfit_from)}
+    )
 
 
 @app.post("/api/comic/generate")
@@ -1681,6 +1950,25 @@ async def comic_generate(payload: dict = Body(...)) -> JSONResponse:
     if settings.upscaler and settings.upscaler not in installed_upscalers():
         raise HTTPException(400, f"還沒下載放大模型 {settings.upscaler}，請到「模型」分頁下載")
 
+    # Composition references, one per panel, produced by a restage. Anything
+    # that is not a crop this server wrote is dropped rather than refused: a
+    # stale reference should cost that panel its guide, not the whole page.
+    controls: list[str] = []
+    if settings.controlnet:
+        if settings.controlnet not in installed_controlnets():
+            raise HTTPException(
+                400,
+                f"還沒下載 ControlNet 模型 {settings.controlnet}，請到「模型」分頁下載",
+            )
+        raw = [str(c or "") for c in (payload.get("controls") or [])][: layout.count]
+        controls = [c if control_path(c) else "" for c in raw]
+        if raw and not any(controls):
+            raise HTTPException(
+                400,
+                "構圖參考圖都不見了（超過保存時間，或 app 重開過）。"
+                "請回到「分鏡克隆」重新上傳一次原稿。",
+            )
+
     full_color = bool(payload.get("full_color", True))
     negative = comics.negative_for(
         str(payload["negative"]) if "negative" in payload else model.negative,
@@ -1712,6 +2000,7 @@ async def comic_generate(payload: dict = Body(...)) -> JSONResponse:
             ] if layout.id == comics.CUSTOM_ID else [],
             "custom_aspect": layout.aspect,
             "panels": panels,
+            "controls": controls,
             "shared": shared,
             "bubbles": bubbles,
             "full_color": full_color,

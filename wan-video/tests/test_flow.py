@@ -15,6 +15,7 @@ import os
 import random
 import re
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -949,6 +950,232 @@ async def test_image_graphs() -> None:
         await runner.cleanup()
 
 
+async def test_controlnet() -> None:
+    """Keeping a picture's composition while replacing what is in it.
+
+    This is what makes panel restaging reproduce the *shot* and not just the
+    rectangle, so the graph shape matters: one model load for a whole page, one
+    hint per panel, and the conditioning actually reaching the sampler.
+    """
+    import comics
+    import controlnets
+    import images
+    from comfy_client import ComfyClient
+
+    section("controlnet")
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    try:
+        client = ComfyClient(url)
+        nodes = await client.node_classes()
+        model = images.get("illustrious")
+        union = controlnets.get("union-promax")
+        plain = controlnets.get("canny")
+        check(union is not None and plain is not None, "the catalogue has both kinds")
+        check(union.file.folder == "controlnet",
+              f"ControlNets land where ComfyUI looks for them ({union.file.folder})")
+        # Three repos all publish "diffusion_pytorch_model.safetensors"; without
+        # a rename they would overwrite each other and the dropdown would be
+        # three identical lines.
+        names = [c.name for c in controlnets.CONTROLNETS]
+        check(len(set(names)) == len(names), f"every ControlNet has its own filename ({names})")
+        for c in controlnets.CONTROLNETS:
+            check(c.name.endswith(".safetensors") and "diffusion_pytorch_model" not in c.name,
+                  f"{c.id} is saved under a name that says what it is ({c.name})")
+        check(all(c.union_type in controlnets.UNION_TYPES for c in controlnets.CONTROLNETS
+                  if c.union_type),
+              "every declared union type is one the node accepts")
+
+        def settings(**kw):
+            base = images.defaults_for(model)
+            for key, value in kw.items():
+                setattr(base, key, value)
+            return base
+
+        off = images.build(model, settings(), prompt="p", negative="n", seed=1,
+                           width=1024, height=1024, available_nodes=nodes)
+        check(nodes_of(off, "ControlNetLoader") == [], "ControlNet stays off by default")
+
+        # Asked for but with no picture to follow: nothing to do, and above all
+        # not a broken graph.
+        armed = images.build(model, settings(controlnet=union.name), prompt="p",
+                             negative="n", seed=1, width=1024, height=1024,
+                             available_nodes=nodes)
+        check(nodes_of(armed, "ControlNetLoader") == [],
+              "a ControlNet with no reference picture adds nothing")
+
+        g = images.build(
+            model, settings(controlnet=union.name, controlnet_strength=0.7,
+                            controlnet_end=0.65),
+            prompt="p", negative="n", seed=1, width=832, height=1216,
+            control_image="ref.png", available_nodes=nodes,
+        )
+        check(await client.validate(g) == [], "a ControlNet graph validates")
+        check(len(nodes_of(g, "ControlNetLoader")) == 1, "the model is loaded once")
+        check(nodes_of(g, "ControlNetLoader")[0]["inputs"]["control_net_name"] == union.name,
+              "…by name")
+        typed = nodes_of(g, "SetUnionControlNetType")
+        check(len(typed) == 1 and typed[0]["inputs"]["type"] == union.union_type,
+              f"a union model is told which control it is doing ({typed})")
+        canny = nodes_of(g, "Canny")
+        check(len(canny) == 1, "the reference is turned into outlines")
+        fit = g[canny[0]["inputs"]["image"][0]]
+        check(fit["class_type"] == "ImageScale"
+              and (fit["inputs"]["width"], fit["inputs"]["height"]) == (832, 1216),
+              f"…after being fitted to the panel it will guide ({fit['inputs']})")
+        applied = nodes_of(g, "ControlNetApplyAdvanced")[0]["inputs"]
+        check(applied["strength"] == 0.7 and applied["end_percent"] == 0.65,
+              f"strength and end reach the node ({applied['strength']}, {applied['end_percent']})")
+        # Both halves of the conditioning have to come back out of the apply
+        # node - wiring only the positive silently halves the effect.
+        sampler = nodes_of(g, "KSampler")[0]["inputs"]
+        check(g[sampler["positive"][0]]["class_type"] == "ControlNetApplyAdvanced"
+              and g[sampler["negative"][0]]["class_type"] == "ControlNetApplyAdvanced",
+              "the sampler reads both conditionings through the ControlNet")
+        check(sampler["positive"][1] == 0 and sampler["negative"][1] == 1,
+              "…off the right output slots")
+
+        # A hi-res pass that dropped the control would redraw the composition
+        # away in its second pass, which is exactly what it must not do.
+        hi = images.build(
+            model, settings(controlnet=union.name, hires_scale=1.5),
+            prompt="p", negative="n", seed=1, width=1024, height=1024,
+            control_image="ref.png", available_nodes=nodes,
+        )
+        check(await client.validate(hi) == [], "hi-res plus ControlNet validates")
+        for ks in nodes_of(hi, "KSampler"):
+            check(hi[ks["inputs"]["positive"][0]]["class_type"] == "ControlNetApplyAdvanced",
+                  "every pass keeps the composition, including the hi-res one")
+
+        # A plain (non-union) model has no type input; setting one is invalid.
+        p = images.build(model, settings(controlnet=plain.name), prompt="p", negative="n",
+                         seed=1, width=1024, height=1024, control_image="ref.png",
+                         available_nodes=nodes)
+        check(await client.validate(p) == [], "a plain ControlNet graph validates")
+        check(nodes_of(p, "SetUnionControlNetType") == [],
+              "a single-purpose ControlNet is not given a union type")
+        unknown = images.build(model, settings(controlnet="whatever_i_downloaded.safetensors"),
+                               prompt="p", negative="n", seed=1, width=1024, height=1024,
+                               control_image="ref.png", available_nodes=nodes)
+        check(nodes_of(unknown, "SetUnionControlNetType") == [],
+              "an unrecognised file is treated as plain, which is the safe guess")
+        check(len(nodes_of(unknown, "ControlNetLoader")) == 1, "…but is still loaded")
+
+        raw = images.build(model, settings(controlnet=plain.name, controlnet_preprocess="none"),
+                           prompt="p", negative="n", seed=1, width=1024, height=1024,
+                           control_image="ref.png", available_nodes=nodes)
+        check(nodes_of(raw, "Canny") == [], "'none' hands the picture over untouched")
+
+        # Out-of-range numbers come from a text box; they must be clamped, not
+        # sent to ComfyUI to be rejected.
+        wild = images.build(
+            model,
+            settings(controlnet=plain.name, controlnet_strength=99.0, controlnet_start=-3.0,
+                     controlnet_end=8.0, controlnet_low=0.9, controlnet_high=0.2),
+            prompt="p", negative="n", seed=1, width=1024, height=1024,
+            control_image="ref.png", available_nodes=nodes,
+        )
+        check(await client.validate(wild) == [], "absurd ControlNet numbers still validate")
+        a = nodes_of(wild, "ControlNetApplyAdvanced")[0]["inputs"]
+        check(a["strength"] == 2.0 and a["start_percent"] == 0.0 and a["end_percent"] == 1.0,
+              f"strength/start/end clamped ({a['strength']}, {a['start_percent']}, {a['end_percent']})")
+        edge = nodes_of(wild, "Canny")[0]["inputs"]
+        check(edge["high_threshold"] > edge["low_threshold"],
+              f"a reversed threshold pair is straightened out ({edge})")
+
+        # An older ComfyUI without these nodes must fall back, not produce a
+        # graph referring to something that is not there.
+        without = images.build(model, settings(controlnet=union.name), prompt="p",
+                               negative="n", seed=1, width=1024, height=1024,
+                               control_image="ref.png",
+                               available_nodes=nodes - {"ControlNetApplyAdvanced"})
+        check(nodes_of(without, "ControlNetLoader") == [],
+              "no apply node means no ControlNet at all, rather than a dangling loader")
+        no_union = images.build(model, settings(controlnet=union.name), prompt="p",
+                                negative="n", seed=1, width=1024, height=1024,
+                                control_image="ref.png",
+                                available_nodes=nodes - {"SetUnionControlNetType"})
+        check(len(nodes_of(no_union, "ControlNetLoader")) == 1
+              and nodes_of(no_union, "SetUnionControlNetType") == [],
+              "without the type node the union model is still used, just unhinted")
+
+        # -- a whole page ----------------------------------------------------
+        grid = comics.get("four-grid")
+        page = [
+            (f"panel {i}", *comics.panel_size(p, grid.aspect), f"ctrl-{i}.png")
+            for i, p in enumerate(grid.panels)
+        ]
+        cg = images.build_comic(
+            model, settings(controlnet=union.name), panels=page, negative="n", seed=5,
+            available_nodes=nodes,
+        )
+        check(await client.validate(cg) == [], "a controlled page validates")
+        check(len(nodes_of(cg, "ControlNetLoader")) == 1,
+              f"2.5GB is loaded once for the page, not once per panel "
+              f"({len(nodes_of(cg, 'ControlNetLoader'))})")
+        check(len(nodes_of(cg, "SetUnionControlNetType")) == 1, "…and typed once")
+        check(len(nodes_of(cg, "ControlNetApplyAdvanced")) == 4, "but applied per panel")
+        used = [n["inputs"]["image"] for n in nodes_of(cg, "LoadImage")]
+        check(used == [f"ctrl-{i}.png" for i in range(4)],
+              f"each panel follows its own crop, in order ({used})")
+        for i, ks in enumerate(nodes_of(cg, "KSampler")):
+            check(cg[ks["inputs"]["positive"][0]]["class_type"] == "ControlNetApplyAdvanced",
+                  f"panel {i + 1} is sampled through its own control")
+
+        # A page where one crop was too small to keep: that panel goes
+        # unguided, and the others must not shift onto the wrong reference.
+        gap = [(t, w, h, "" if i == 1 else c) for i, (t, w, h, c) in enumerate(page)]
+        cg2 = images.build_comic(model, settings(controlnet=union.name), panels=gap,
+                                 negative="n", seed=5, available_nodes=nodes)
+        check(await client.validate(cg2) == [], "a page with a missing crop validates")
+        check(len(nodes_of(cg2, "ControlNetApplyAdvanced")) == 3, "three panels are guided")
+        kept = [n["inputs"]["image"] for n in nodes_of(cg2, "LoadImage")]
+        check(kept == ["ctrl-0.png", "ctrl-2.png", "ctrl-3.png"],
+              f"…and they are still the right three ({kept})")
+        second = nodes_of(cg2, "KSampler")[1]["inputs"]
+        check(cg2[second["positive"][0]]["class_type"] == "CLIPTextEncode",
+              "the unguided panel goes straight from its prompt to the sampler")
+
+        # Panels are still allowed to be 3-tuples; every existing caller is one.
+        old = images.build_comic(
+            model, settings(controlnet=union.name),
+            panels=[("a", 512, 768), ("b", 512, 768)], negative="n", seed=1,
+            available_nodes=nodes,
+        )
+        check(await client.validate(old) == [], "a page with no crops at all validates")
+        check(nodes_of(old, "ControlNetLoader") == [],
+              "…and does not load a ControlNet it has nothing to feed")
+
+        # -- the page that drives it -----------------------------------------
+        html = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+        check("/api/controlnets" in html, "the UI asks the server which models are here")
+        check("data-cn=" in html and "/api/controlnets/${encodeURIComponent(b.dataset.cn)}/download"
+              in html, "…and can download one from the models tab")
+        check("/api/comic/control/" in html,
+              "each panel's reference is shown, not just counted")
+        check("controls: payload.controlnet" in html,
+              "the per-panel references are sent with a comic job")
+        check("...controlPayload()" in html, "the ControlNet knobs ride along with every job")
+        # Turning it on with nothing to follow is the one way to get a page that
+        # silently ignores the setting, so it has to be refused in the browser.
+        check("開了構圖鎖定" in html, "asking for control with no reference is explained")
+
+        # A feature nobody can find is not a feature.
+        guide = ROOT / "docs" / "comic-restage.md"
+        check(guide.is_file(), "the restage tutorial exists")
+        text = guide.read_text(encoding="utf-8")
+        check("docs/comic-restage.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
+              "…and the README points at it")
+        for topic in ("真人照片", "未成年", "ControlNet", "閱讀方向", "no_humans"):
+            check(topic in text, f"the tutorial covers {topic}")
+        for c in controlnets.CONTROLNETS:
+            check(str(round(c.size / 1e9, 1)) in text or "2.5GB" in text,
+                  "…and states the download size")
+            break
+    finally:
+        await runner.cleanup()
+
+
 async def test_image_extras() -> None:
     """The knobs added to catch up with (and pass) ComfyUI's own surface."""
     import images
@@ -1716,12 +1943,73 @@ def test_restage() -> None:
     check(blank.boxes == [] and blank.confidence == 0.0, "a blank page finds nothing")
     check(blank.note, "…and says so")
 
-    # A single illustration has flat bands that read as gutters, but of wildly
-    # varying width. That inconsistency is the proof it has no panel grid.
+    # A single illustration must never be shattered into panels, whichever
+    # route gets there - the background search may read it cleanly as one
+    # picture, or the gutter-consistency check may reject the cut.
     flat = pagelayout.detect(art(800, 1200, 9))
     check(len(flat.boxes) == 1, f"a full-bleed image is one panel ({len(flat.boxes)})")
-    check(flat.confidence < 0.6, f"…and says it is unsure ({flat.confidence:.2f})")
-    check("滿版" in flat.note, "…explaining why, rather than drawing 6 rectangles")
+
+    # The consistency check itself: flat bands inside one drawing vary wildly in
+    # width, unlike a real page's gutters, and that is what exposes them.
+    grey = Image.new("RGB", (800, 1200), (150, 150, 150))
+    pen = ImageDraw.Draw(grey)
+    rng = random.Random(4)
+    for _ in range(30):
+        x, y = rng.randint(0, 800), rng.randint(0, 1200)
+        pen.ellipse([x, y, x + rng.randint(20, 80), y + rng.randint(20, 80)],
+                    fill=(rng.randint(0, 255),) * 3)
+    band = pagelayout.detect(grey)
+    check(len(band.boxes) <= 1, f"flat art is not split into panels ({len(band.boxes)})")
+    if band.boxes and band.confidence < 0.6:
+        check("滿版" in band.note, "…and when unsure it explains why")
+
+    # A page whose row gutters are much wider than its column gutters is
+    # perfectly ordinary manga, and must not be mistaken for flat art: the two
+    # axes are compared separately for exactly this reason.
+    mixed = Image.new("RGB", (900, 1300), (255, 255, 255))
+    cell_w, cell_h = (900 - 8) // 2, (1300 - 2 * 32) // 3
+    for row in range(3):
+        for col in range(2):
+            mixed.paste(art(cell_w, cell_h, row * 2 + col),
+                        (col * (cell_w + 8), row * (cell_h + 32)))
+    uneven = pagelayout.detect(mixed)
+    check(len(uneven.boxes) == 6,
+          f"8px column gutters with 32px row gutters still read as 6 ({len(uneven.boxes)})")
+
+    # The page's own shape has to come back, or every restage is composed at 2:3.
+    wide = comics.compose(comics.get("two-h"),
+                          [art(400, 300, 1), art(400, 300, 2)],
+                          style=comics.PageStyle(width=1200))
+    got = pagelayout.detect(wide)
+    check(abs(got.aspect - wide.width / wide.height) < 0.02,
+          f"the page's aspect is measured and returned ({got.aspect:.2f})")
+
+    # Manga is read right to left; panel 1 is then the top *right*.
+    grid_page = comics.compose(
+        comics.get("four-grid"),
+        [art(*comics.panel_size(p, comics.get("four-grid").aspect), i)
+         for i, p in enumerate(comics.get("four-grid").panels)],
+        style=comics.PageStyle(width=900),
+    )
+    ltr = pagelayout.detect(grid_page, reading="ltr")
+    rtl = pagelayout.detect(grid_page, reading="rtl")
+    check(len(ltr.boxes) == len(rtl.boxes) == 4, "both reading orders find 4 panels")
+    check(rtl.boxes[0].x > ltr.boxes[0].x,
+          f"rtl starts on the right ({rtl.boxes[0].x:.2f} vs {ltr.boxes[0].x:.2f})")
+    check(ltr.reading == "ltr" and rtl.reading == "rtl", "…and the order is reported")
+
+    # A page with more panels than the stock catalogue holds must survive.
+    nine = comics.Layout(id="n", label="n", panels=comics._grid(3, 3), aspect=2 / 3)
+    big = comics.compose(nine, [art(*comics.panel_size(p, nine.aspect), i)
+                                for i, p in enumerate(nine.panels)],
+                         style=comics.PageStyle(width=1000))
+    found9 = pagelayout.detect(big)
+    check(len(found9.boxes) == 9, f"a 3x3 page reads as 9 panels ({len(found9.boxes)})")
+    made9 = comics.custom_layout([b.public() for b in found9.boxes], found9.aspect)
+    check(made9 is not None and made9.count == 9,
+          f"…and all 9 survive into the layout ({made9.count if made9 else 0})")
+    check(comics.MAX_PANELS >= pagelayout.MAX_PANELS,
+          "the layout cap is not below what the detector can return")
 
     grid = comics.get("four-grid")
     imgs = [art(*comics.panel_size(p, grid.aspect), i) for i, p in enumerate(grid.panels)]
@@ -1753,6 +2041,17 @@ def test_restage() -> None:
         "comic": "drop", "monochrome": "drop", "speech_bubble": "drop",
         "artist_name": "drop", "4koma": "drop",
     }
+    # Naive substring matching sent all of these to the wrong bucket, and with
+    # "outfit from my character" on, the outfit bucket is discarded - so these
+    # backgrounds simply vanished from the restaged page.
+    expected.update({
+        "landscape": "scene", "cityscape": "scene", "library": "scene",
+        "rainbow": "scene", "bowl": "scene", "elbow": "scene",
+        "bowing": "scene", "hatching": "scene", "detailed_background": "scene",
+        "windowsill": "scene", "scenery": "scene",
+        # …while these must still reach it
+        "elbow_gloves": "outfit", "hair_ribbon": "outfit", "white_shirt": "outfit",
+    })
     wrong = {t: tags.classify(t) for t, want in expected.items() if tags.classify(t) != want}
     check(not wrong, f"tags sort into who/what/drop correctly ({wrong or 'all correct'})")
 
@@ -1787,6 +2086,260 @@ def test_restage() -> None:
     check(page2.size[0] == 800, "a measured layout composes into a page")
 
 
+async def test_restage_deferred() -> None:
+    """The two-phase restage: layout first, then one panel at a time.
+
+    Tagging costs ~2s a panel on CPU, so a nine-panel page used to be half a
+    minute of a blank screen. The panels are fetched under a token instead, and
+    that token is what these checks are about - it has to expire, it has to be
+    bounded, and a panel must always come back on the rectangle it was asked
+    for even when its neighbour fails to read.
+    """
+    from fastapi import HTTPException
+
+    import comics
+    import pagelayout
+    import server
+    import tags
+
+    section("restaging: deferred panels")
+
+    def art(w, h, seed):
+        rng = random.Random(seed)
+        image = Image.new("RGB", (w, h),
+                          (rng.randint(60, 200), rng.randint(60, 200), rng.randint(60, 200)))
+        draw = ImageDraw.Draw(image)
+        for _ in range(30):
+            x, y = rng.randint(0, w), rng.randint(0, h)
+            draw.ellipse([x, y, x + rng.randint(20, 90), y + rng.randint(20, 90)],
+                         fill=(rng.randint(0, 255),) * 3)
+        return image
+
+    grid = comics.get("four-grid")
+    page = comics.compose(
+        grid, [art(*comics.panel_size(p, grid.aspect), i) for i, p in enumerate(grid.panels)],
+        style=comics.PageStyle(width=900),
+    )
+    boxes = pagelayout.detect(page).boxes
+    check(len(boxes) == 4, f"the test page reads as 4 panels ({len(boxes)})")
+
+    # The tagger needs a 380MB ONNX model, so it is stood in for. Panel 1 is a
+    # deliberately empty establishing shot and panel 2 deliberately explodes.
+    calls: list[int] = []
+
+    def fake_describe(image, base, *a, **k):
+        calls.append(image.size[0])
+        if len(calls) == 3:
+            raise RuntimeError("onnx exploded")
+        guess = tags.Guess(rating="questionable")
+        if len(calls) == 2:
+            guess.general = [("no_humans", 0.9), ("scenery", 0.8), ("night", 0.7)]
+        else:
+            guess.general = [("1girl", 0.99), ("classroom", 0.9), ("school_uniform", 0.8),
+                             ("from_above", 0.7)]
+            guess.characters = [("hatsune_miku", 0.95)]
+        return guess
+
+    real_describe = tags.describe
+    tags.describe = fake_describe
+    real_store = dict(server._restage)
+    server._restage.clear()
+    try:
+        look = ["long_hair", "blue_eyes"]
+        outfit = ["thighhighs"]
+        token = "tok0"
+        server._restage[token] = (time.time(), page, ROOT, look, outfit, "character", boxes)
+
+        got = await server.restage_panel(token, 0)
+        body = json.loads(got.body)
+        check(body["index"] == 0, f"the panel comes back on its own index ({body['index']})")
+        panel = body["panel"]
+        check("long hair" in panel["prompt"] and "blue eyes" in panel["prompt"],
+              f"the new character's looks are applied ({panel['prompt']})")
+        check("thighhighs" in panel["prompt"],
+              "…and their outfit, since outfit_from=character")
+        check("school uniform" not in panel["prompt"],
+              "…replacing the outfit the page was wearing")
+        check("classroom" in panel["prompt"] and "from above" in panel["prompt"],
+              "the shot keeps its own staging")
+        check("hatsune miku" not in panel["prompt"],
+              "the original cast is never carried over")
+        check("hatsune miku" in panel["dropped"], "…and is listed as dropped, not hidden")
+        check(panel["rating"] == "questionable", "the panel's rating is reported")
+
+        # An establishing shot with nobody in it must not get a person pasted in.
+        empty = json.loads((await server.restage_panel(token, 1)).body)["panel"]
+        check(empty["no_people"], "a no-humans panel is flagged")
+        check("long hair" not in empty["prompt"],
+              f"…and the character is not pasted into it ({empty['prompt']})")
+        check("thighhighs" not in empty["prompt"],
+              "…nor their clothes, which would draw them just as surely")
+        check(empty["note"], "…and the page says why")
+
+        # A panel that fails to read must not take the layout down with it.
+        broken = json.loads((await server.restage_panel(token, 2)).body)["panel"]
+        check(broken["prompt"] == "" and "失敗" in broken["note"],
+              f"a failed panel returns empty with a reason ({broken['note']!r})")
+
+        # The switch can be flipped without re-uploading the page.
+        kept = json.loads(
+            (await server.restage_panel(token, 3, {"outfit_from": "page"})).body)["panel"]
+        check("school uniform" in kept["prompt"] and "thighhighs" not in kept["prompt"],
+              f"outfit_from=page keeps the page's clothes ({kept['prompt']})")
+        again = json.loads((await server.restage_panel(token, 0)).body)["panel"]
+        check("school uniform" in again["prompt"],
+              "…and the choice sticks for later panels without re-sending it")
+        bogus = json.loads(
+            (await server.restage_panel(token, 0, {"outfit_from": "nonsense"})).body)["panel"]
+        check(bogus["prompt"] == again["prompt"], "an unknown outfit_from is ignored, not obeyed")
+
+        for index in (-1, 4, 99):
+            try:
+                await server.restage_panel(token, index)
+                check(False, f"panel {index} should not exist")
+            except HTTPException as exc:
+                check(exc.status_code == 404, f"panel {index} is a 404 ({exc.status_code})")
+        try:
+            await server.restage_panel("nope", 0)
+            check(False, "an unknown token should be refused")
+        except HTTPException as exc:
+            check(exc.status_code == 400 and "過期" in exc.detail,
+                  f"an expired token says so in Chinese ({exc.detail!r})")
+
+        # Each page held is a full-size bitmap, so the store is bounded twice:
+        # by age, and by count.
+        server._restage.clear()
+        server._restage["old"] = (time.time() - server.RESTAGE_TTL - 1, page, ROOT,
+                                  [], [], "character", boxes)
+        server._restage["new"] = (time.time(), page, ROOT, [], [], "character", boxes)
+        server._sweep_restage()
+        check("old" not in server._restage and "new" in server._restage,
+              f"a stale page is swept, a fresh one kept ({sorted(server._restage)})")
+
+        server._restage.clear()
+        for i in range(server.RESTAGE_MAX + 3):
+            server._restage[f"t{i}"] = (time.time() + i, page, ROOT, [], [],
+                                        "character", boxes)
+            server._sweep_restage()
+        check(len(server._restage) <= server.RESTAGE_MAX,
+              f"no more than {server.RESTAGE_MAX} pages are held ({len(server._restage)})")
+        check("t0" not in server._restage and f"t{server.RESTAGE_MAX + 2}" in server._restage,
+              "…and it is the oldest that goes")
+
+        # Touching a token has to keep it alive - a nine-panel page takes longer
+        # to read than a short TTL would allow.
+        server._restage.clear()
+        stamp = time.time() - 600
+        server._restage["live"] = (stamp, page, ROOT, [], [], "character", boxes)
+        await server.restage_panel("live", 0)
+        check(server._restage["live"][0] > stamp, "reading a panel refreshes the token")
+
+        # -- the composition crops -------------------------------------------
+        # Copying tags gives a similar scene; copying the panel's own art into
+        # a ControlNet gives the same shot. These are those crops.
+        import config
+
+        saved = server._save_controls(page, boxes)
+        check(len(saved) == len(boxes), f"one reference per panel ({len(saved)})")
+        check(all(server.control_path(n) is not None for n in saved),
+              "every one of them is on disk")
+        sizes = [Image.open(server.control_path(n)).size for n in saved]
+        check(all(w > 8 and h > 8 for w, h in sizes), f"…and is real art ({sizes})")
+        check(len(set(saved)) == len(saved), "no two panels share a reference file")
+
+        # A box too small to crop must leave a hole, not shift the rest.
+        gappy = [boxes[0], pagelayout.Box(0.5, 0.5, 0.0005, 0.0005), boxes[1]]
+        holed = server._save_controls(page, gappy)
+        check(len(holed) == 3 and holed[1] == "",
+              f"a degenerate panel yields an empty slot ({holed})")
+        check(server.control_path(holed[0]) and server.control_path(holed[2]),
+              "…and its neighbours keep their own crops")
+
+        # The name makes a round trip through the browser, so it is matched
+        # against the shape this server writes rather than trusted.
+        for bad in ("", "../../.env", "ctrl-../../x-00.png", "src-abc.png",
+                    "ctrl-zz-00.png", "ctrl-0123456789ab-00.png.txt",
+                    "/etc/passwd", "ctrl-0123456789ab-0.png"):
+            check(server.control_path(bad) is None, f"{bad!r} is refused")
+        check(server.control_path("ctrl-0123456789ab-00.png") is None,
+              "a well-shaped name that is not on disk is refused too")
+
+        # Old crops are swept, or the staging folder grows without limit.
+        old_crop = config.STAGING_DIR / "ctrl-ffffffffffff-00.png"
+        old_crop.parent.mkdir(parents=True, exist_ok=True)
+        Image.new("RGB", (16, 16)).save(old_crop, "PNG")
+        os.utime(old_crop, (0, time.time() - server.CONTROL_TTL - 60))
+        fresh = server._save_controls(page, boxes[:1])
+        check(not old_crop.exists(), "a crop older than the TTL is swept")
+        check(server.control_path(fresh[0]) is not None, "…while the new one survives")
+
+        # -- the whole round trip --------------------------------------------
+        # Restage measures the page and keeps the crops; the browser hands both
+        # back; the job has to end up carrying the crops in panel order. This is
+        # the seam where a page silently loses its composition.
+        import controlnets
+
+        crops = server._save_controls(page, boxes)
+        installed = [c.name for c in controlnets.CONTROLNETS]
+        real_installed = server.installed_controlnets
+        real_status = server.image_status
+        server.installed_controlnets = lambda: installed
+        # There is no 7GB checkpoint on disk here, and the endpoint refuses
+        # before it ever reaches the crops - so it is stood in for.
+        server.image_status = lambda m: {"installed": True, "missing": []}
+        try:
+            payload = {
+                "model": "illustrious",
+                "layout": "custom",
+                "custom_panels": [b.public() for b in boxes],
+                "custom_aspect": 2 / 3,
+                "panels": ["a", "b", "c", "d"],
+                "controlnet": installed[0],
+                "controls": crops,
+                "controlnet_strength": 0.6,
+            }
+            out = json.loads((await server.comic_generate(payload)).body)
+            stored = next(r for r in server.lib.recent() if r.id == out["id"]).settings
+            check(stored["controls"] == crops, "the crops reach the job in panel order")
+            check(stored["controlnet"] == installed[0], "…along with the model")
+            check(stored["controlnet_strength"] == 0.6, "…and the strength")
+
+            # A ControlNet that is not on disk has to be caught here, not by
+            # ComfyUI half a minute into the job.
+            try:
+                await server.comic_generate({**payload, "controlnet": "nope.safetensors"})
+                check(False, "an uninstalled ControlNet should be refused")
+            except HTTPException as exc:
+                check(exc.status_code == 400 and "下載" in exc.detail,
+                      f"an uninstalled ControlNet is refused up front ({exc.detail[:24]})")
+
+            # A dead reference must cost that panel its guide, not the page.
+            (config.STAGING_DIR / crops[1]).unlink()
+            out2 = json.loads((await server.comic_generate(payload)).body)
+            kept = next(r for r in server.lib.recent() if r.id == out2["id"]).settings["controls"]
+            check(kept[1] == "" and kept[0] and kept[2],
+                  f"a swept crop leaves a hole, not a shift ({kept})")
+            check(len(kept) == len(crops), "…and the list keeps its length")
+
+            # All of them gone means the page would silently ignore the setting,
+            # so that is the one case worth stopping for.
+            for name in crops:
+                (config.STAGING_DIR / name).unlink(missing_ok=True)
+            try:
+                await server.comic_generate(payload)
+                check(False, "a page with every reference gone should be refused")
+            except HTTPException as exc:
+                check(exc.status_code == 400 and "重新上傳" in exc.detail,
+                      f"…and says to upload the original again ({exc.detail[:20]})")
+        finally:
+            server.installed_controlnets = real_installed
+            server.image_status = real_status
+    finally:
+        tags.describe = real_describe
+        server._restage.clear()
+        server._restage.update(real_store)
+
+
 def test_second_review_regressions() -> None:
     """Each case is a defect the second review found. All were reproduced."""
     import config
@@ -1808,6 +2361,17 @@ def test_second_review_regressions() -> None:
           f"every tab button has a panel and vice versa ({buttons ^ panels or 'matched'})")
     check("const TABS = [...document.querySelectorAll('.tabs button')]" in page,
           "the switcher derives its tab list from the DOM, not a hand-kept array")
+
+    # The same defect one level down: `$('#thing')` on an id that no longer
+    # exists returns null and the whole handler dies on the next line, taking
+    # every later listener on the page with it. Ids written into template
+    # literals count - that is how the restage cards and the LoRA rows are
+    # built - so the search is over the whole file, markup and script alike.
+    have_ids = set(re.findall(r'\bid="([A-Za-z][\w-]*)"', page))
+    wanted = set(re.findall(r"""\$\('#([A-Za-z][\w-]*)'\)""", page))
+    wanted |= set(re.findall(r"""getElementById\('([A-Za-z][\w-]*)'\)""", page))
+    missing = sorted(wanted - have_ids)
+    check(not missing, f"every id the script reaches for exists ({missing or 'all present'})")
 
     # -- `Negative prompt:` with no `Steps:` line ---------------------------
     got = parse("Prompt: 1girl, silver hair\nNegative prompt: bad hands, blurry\n")
@@ -2867,11 +3431,13 @@ async def main() -> int:
     test_image_registry()
     await test_image_graphs()
     await test_image_extras()
+    await test_controlnet()
     await test_video_post()
     await test_new_endpoints()
     await test_comics()
     test_promptbook()
     test_restage()
+    await test_restage_deferred()
     test_second_review_regressions()
     test_inspect_image()
     test_prompts()

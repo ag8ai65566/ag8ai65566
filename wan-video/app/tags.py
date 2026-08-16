@@ -257,10 +257,10 @@ _PLACE_WORDS = (
     "door", "wall", "floor", "stairs", "rooftop", "garden", "snow", "rain",
 )
 
-_LOOK_SUBSTRINGS = (
-    "_hair", "hair_", "_eyes", "eyes_", "eyelashes", "eyebrow", "breasts",
-    "skin", "_ears", "tail", "horn", "wings", "freckles", "mole", "scar",
-    "muscular", "_body", "thighs", "navel", "collarbone", "fang", "beard",
+_LOOK_WORDS = (
+    "hair", "eyes", "eye", "eyelashes", "eyebrows", "breasts", "skin",
+    "ears", "tail", "horns", "wings", "freckles", "mole", "scar",
+    "muscular", "thighs", "fang", "fangs", "beard", "moustache", "hairstyle",
 )
 _LOOK_EXACT = {
     "ahoge", "braid", "twintails", "ponytail", "sidelocks", "bangs", "ahoge",
@@ -276,16 +276,18 @@ _EXPOSURE = {
     "bare_legs", "midriff", "sideboob", "underboob", "cameltoe",
 }
 
-_OUTFIT_SUBSTRINGS = (
+# Whole words, matched against the tag's own words - see _has_word.
+_OUTFIT_WORDS = (
     "shirt", "skirt", "dress", "uniform", "jacket", "coat", "sweater",
     "hoodie", "pants", "shorts", "socks", "thighhighs", "pantyhose",
-    "gloves", "hat", "cap", "ribbon", "bow", "necktie", "scarf", "shoes",
-    "boots", "sandals", "swimsuit", "bikini", "lingerie", "panties", "bra",
-    "underwear", "apron", "cape", "armor", "kimono", "leotard", "sleeves",
-    "collar", "jewelry", "earrings", "necklace", "glasses", "mask",
-    "hair_ornament", "headband", "hairband", "choker", "frills", "sleeveless",
-    "costume", "clothes", "outfit", "nude", "naked",
-    "topless", "bottomless", "barefoot",
+    "gloves", "glove", "hat", "cap", "ribbon", "bow", "necktie", "tie",
+    "scarf", "shoes", "boots", "sandals", "swimsuit", "bikini", "lingerie",
+    "panties", "bra", "underwear", "apron", "cape", "armor", "kimono",
+    "leotard", "sleeves", "collar", "jewelry", "earrings", "necklace",
+    "glasses", "mask", "ornament", "headband", "hairband", "choker",
+    "frills", "sleeveless", "costume", "clothes", "clothing", "outfit",
+    "nude", "naked", "topless", "bottomless", "barefoot", "hairclip",
+    "hairpin", "veil", "crown", "belt", "bag", "backpack",
 )
 
 # Never carried across: they describe the medium, not the picture.
@@ -299,6 +301,29 @@ _DROP = {
 }
 
 
+def _words(tag: str) -> list[str]:
+    """danbooru tags are underscore-separated words; treat them as such."""
+    return [w for w in re.split(r"[_\-()]+", tag) if w]
+
+
+def _has_word(tag: str, vocabulary: tuple[str, ...]) -> bool:
+    """Whole-word match, not a substring.
+
+    Naive `in` matching is what put `landscape`, `cityscape` and `library` into
+    the clothing bucket (all contain a garment or accessory as a substring:
+    "cape", "cape", "bra"), and `rainbow`/`elbow`/`bowing` followed "bow". With
+    "outfit from my character" on, the whole bucket is discarded - so those
+    backgrounds simply vanished from the restaged panel.
+    """
+    return any(word in vocabulary for word in _words(tag))
+
+
+def _has_suffix(tag: str, vocabulary: tuple[str, ...]) -> bool:
+    """For families named by their last word: `school_uniform`, `blue_eyes`."""
+    words = _words(tag)
+    return bool(words) and words[-1] in vocabulary
+
+
 def classify(name: str) -> str:
     """'scene' | 'look' | 'outfit' | 'drop' for one danbooru tag."""
     tag = name.strip().lower().replace(" ", "_")
@@ -310,13 +335,15 @@ def classify(name: str) -> str:
         return "look"
     if tag in _EXPOSURE:
         return "outfit"
-    if any(word in tag for word in _OUTFIT_SUBSTRINGS):
+    # Places win over everything: `library` and `cityscape` are rooms and views,
+    # whatever garment their letters happen to spell.
+    if _has_word(tag, _PLACE_WORDS) or _has_suffix(tag, _PLACE_WORDS):
+        return "scene"
+    if _has_word(tag, _OUTFIT_WORDS) or _has_suffix(tag, _OUTFIT_WORDS):
         return "outfit"
-    if any(word in tag for word in _LOOK_SUBSTRINGS):
+    if _has_word(tag, _LOOK_WORDS) or _has_suffix(tag, _LOOK_WORDS):
         return "look"
     if any(word in tag for word in _SCENE_SUBSTRINGS):
-        return "scene"
-    if any(tag.endswith(word) or tag == word for word in _PLACE_WORDS):
         return "scene"
     # Unknown tags describe the picture more often than the person, and a
     # stray scene tag is a much smaller mistake than dropping the character's

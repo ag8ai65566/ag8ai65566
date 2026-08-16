@@ -26,6 +26,8 @@ NEEDED = [
     "VAEEncode", "ImageScale", "RepeatLatentBatch", "ImageBatch",
     "UpscaleModelLoader", "ImageUpscaleWithModel", "VAEDecodeTiled",
     "FreeU_V2", "PerturbedAttentionGuidance", "RescaleCFG",
+    # composition control
+    "ControlNetLoader", "ControlNetApplyAdvanced", "SetUnionControlNetType", "Canny",
     # video post-processing
     "FrameInterpolationModelLoader", "FrameInterpolate",
 ]

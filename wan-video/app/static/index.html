@@ -315,6 +315,12 @@
           <input type="file" id="cpagefile" accept="image/*" hidden>
           <input type="file" id="ccharfile" accept="image/*" hidden>
           <button class="ghost" id="crestage">📄 照現成的一頁重畫（換角色）</button>
+          <label class="f">閱讀方向
+            <select id="creading">
+              <option value="ltr">左→右（美漫／橫排）</option>
+              <option value="rtl">右→左（日漫）</option>
+            </select>
+          </label>
           <span class="s" id="crestagehint">丟一頁漫畫 + 一張角色圖，它會量出分鏡、看懂每格在做什麼，再換成你的角色。</span>
         </div>
         <div id="crestagebox" class="hidden"></div>
@@ -382,6 +388,32 @@
           <label class="f">生成後直接放大（不重畫） <select id="iupscaler"></select></label>
           <span class="s" id="iupshelp" style="align-self:center;flex:1;min-width:200px"></span>
         </div>
+
+        <h2 style="margin:18px 0 6px">構圖鎖定（ControlNet）</h2>
+        <div class="row" style="margin-top:6px">
+          <label class="f">模式 <select id="icn"></select></label>
+          <label class="f">抓多緊
+            <input type="range" id="icnstr" min="0.1" max="1.5" step="0.05" value="0.75"
+                   style="width:130px"></label>
+          <span class="s" id="icnstrlabel" style="width:4.5em">0.75</span>
+          <label class="f">管到幾成
+            <input type="range" id="icnend" min="0.2" max="1" step="0.05" value="0.75"
+                   style="width:130px"></label>
+          <span class="s" id="icnendlabel" style="width:4.5em">0.75</span>
+        </div>
+        <div class="row" id="icnrow2" style="margin-top:6px">
+          <label class="f">參考圖怎麼處理 <select id="icnpre">
+            <option value="canny">邊緣偵測（線稿）</option>
+            <option value="none">原圖直接用</option>
+          </select></label>
+          <label class="f">細線門檻
+            <input type="number" id="icnlow" value="0.4" min="0.01" max="0.98" step="0.05"
+                   style="width:80px"></label>
+          <button class="ghost tiny" id="icnpick">選一張構圖參考圖</button>
+          <input type="file" id="icnfile" accept="image/*" hidden>
+          <span class="s" id="icnsrc" style="align-self:center;flex:1;min-width:180px"></span>
+        </div>
+        <div class="note" id="icnhelp"></div>
 
         <h2 style="margin:18px 0 6px">畫質補丁</h2>
         <div class="row" style="margin-top:6px">
@@ -540,6 +572,8 @@
     <div id="uplist"></div>
     <h2>補幀模型（影片用）</h2>
     <div id="interplist"></div>
+    <h2>構圖控制模型 ControlNet（漫畫分鏡克隆要用）</h2>
+    <div id="cnlist"></div>
     <h2>看圖分析模型（把圖片變成提詞）</h2>
     <div id="taglist"></div>
   </div>
@@ -927,7 +961,22 @@ function reuseImageSettings(j, keepSeed) {
   const modeBtn = document.querySelector(`.modes button[data-mode="${isComic ? 'comic' : 'plain'}"]`);
   if (modeBtn && !modeBtn.classList.contains('on')) modeBtn.click();
   if (isComic) {
-    if (s.layout && COMIC.layouts.some((l) => l.id === s.layout)) {
+    if (s.layout === 'custom' && (s.custom_panels || []).length) {
+      // A restaged page is not in the catalogue; rebuild it from the geometry
+      // the record stored, or "run again" silently reshapes the whole page.
+      COMIC.custom = {
+        id: 'custom', label: `從頁面讀到的分鏡（${s.custom_panels.length} 格）`,
+        count: s.custom_panels.length, aspect: s.custom_aspect || 0.6667,
+        note: '', panels: s.custom_panels,
+      };
+      if (![...$('#clayout').options].some((o) => o.value === 'custom')) {
+        const opt = document.createElement('option');
+        opt.value = 'custom'; opt.textContent = COMIC.custom.label;
+        $('#clayout').insertBefore(opt, $('#clayout').firstChild);
+      }
+      $('#clayout').value = 'custom';
+      onLayoutChange();
+    } else if (s.layout && COMIC.layouts.some((l) => l.id === s.layout)) {
       $('#clayout').value = s.layout;
       onLayoutChange();
     }
@@ -943,8 +992,22 @@ function reuseImageSettings(j, keepSeed) {
       el.querySelector('.bt').value = first.text || '';
       if (first.at) el.querySelector('.ba').value = first.at;
     });
+    // The composition references live on disk for a day. Re-running an older
+    // page therefore restores the knobs but may find the crops gone, which the
+    // server reports as such rather than silently drawing a different page.
+    CN.controls = s.controls || [];
     $('#iseed').value = keepSeed ? j.seed : -1;
     schedulePreview();
+  }
+
+  if (s.controlnet && CN.list.some((c) => c.name === s.controlnet)) {
+    $('#icn').value = s.controlnet;
+    setIfPresent('icnstr', s.controlnet_strength);
+    setIfPresent('icnend', s.controlnet_end);
+    setIfPresent('icnlow', s.controlnet_low);
+    if (s.controlnet_preprocess) $('#icnpre').value = s.controlnet_preprocess;
+    $('#icnstr').oninput(); $('#icnend').oninput();
+    renderControlHelp();
   }
 
   $('#iprompt').value = j.prompt_raw || j.prompt;
@@ -1336,6 +1399,9 @@ function renderSettings() {
 }
 
 /* ---------- 圖片 ---------- */
+/* ControlNet state, declared up here because onLayoutChange() reaches
+   for it and runs during the first model refresh. */
+let CN = { list: [], all: [], help: {}, note: '', ref: null, controls: [] };
 let IMG = { models: [], help: {}, samplers: [], schedulers: [], chosen: null, jobs: [],
             upscalers: [], embeddings: [], syntax: [], notSupported: [], customSize: '自訂尺寸',
             init: null };
@@ -1384,6 +1450,65 @@ async function refreshImageModels() {
     onImageModelChange();
     renderCheckpoints();
   } catch {}
+  await refreshControlnets();
+}
+
+async function refreshControlnets() {
+  try {
+    const d = await (await fetch('/api/controlnets')).json();
+    CN.list = (d.controlnets || []).filter((c) => c.installed);
+    CN.help = d.help || {}; CN.note = d.note || '';
+    CN.all = d.controlnets || [];
+  } catch { return; }
+  fillKeeping('#icn',
+    [['', '關閉（自由發揮）'], ...CN.list.map((c) => [c.name, c.label])], '');
+  renderControlHelp();
+  renderControlnetModels();
+}
+
+function renderControlHelp() {
+  const on = !!$('#icn').value;
+  $('#icnrow2').classList.toggle('hidden', !on);
+  $('#icnhelp').innerHTML = !CN.list.length
+    ? `還沒下載 ControlNet 模型。${esc(CN.note)}到「模型」分頁下載一個，`
+      + `「漫畫分鏡克隆」就能連原稿的鏡頭角度一起複製，而不只是換幾個字。`
+    : [CN.help.controlnet, on ? CN.help.strength : '', on ? CN.help.end : '']
+        .filter(Boolean).map((t) => `<div>${esc(t)}</div>`).join('');
+}
+
+function renderControlnetModels() {
+  const box = $('#cnlist');
+  if (!box) return;
+  box.innerHTML = `<div class="note">${esc(CN.help.controlnet || '')} ${esc(CN.note)}</div>`
+    + (CN.all || []).map((c) => `
+    <div class="m ${c.installed ? 'installed' : ''}">
+      <div class="top">
+        <span class="name">${esc(c.label)}</span>
+        ${c.installed ? '<span class="tag done">已安裝</span>' : '<span class="tag">未下載</span>'}
+        ${c.size ? `<span class="s">${gb(c.size)}</span>` : ''}
+        ${c.installed || !c.id ? '' : `<button class="go" data-cn="${esc(c.id)}">下載 ${gb(c.size)}</button>`}
+      </div>
+      <div class="note">${esc(c.best_for)}</div>
+    </div>`).join('');
+  box.querySelectorAll('[data-cn]').forEach((b) => b.onclick = async () => {
+    b.disabled = true;
+    await fetch(`/api/controlnets/${encodeURIComponent(b.dataset.cn)}/download`, { method:'POST' });
+    refreshDownloads();
+  });
+}
+
+function controlPayload() {
+  const name = $('#icn') ? $('#icn').value : '';
+  if (!name) return { controlnet: '' };
+  return {
+    controlnet: name,
+    controlnet_strength: +$('#icnstr').value || 0.75,
+    controlnet_end: +$('#icnend').value || 0.75,
+    controlnet_start: 0,
+    controlnet_preprocess: $('#icnpre').value,
+    controlnet_low: +$('#icnlow').value || 0.4,
+    controlnet_high: Math.min(0.98, (+$('#icnlow').value || 0.4) + 0.4),
+  };
 }
 
 function renderEmbeddings() {
@@ -1763,7 +1888,13 @@ function onLayoutChange() {
   const l = currentLayout();
   if (!l) return;
   COMIC.chosen = l;
-  if (l.id !== 'custom') P.set('clayout', l.id);
+  if (l.id !== 'custom') {
+    P.set('clayout', l.id);
+    // The crops belong to the measured layout, panel for panel. On any other
+    // layout panel 3 is a different rectangle, so following the old crop would
+    // guide the wrong shot - drop them rather than misapply them.
+    if (CN.controls.length) { CN.controls = []; $('#icn').value = ''; renderControlHelp(); }
+  }
   $('#clayoutnote').innerHTML = `<b>${l.count} 格</b> · ${esc(l.note || '')}`
     + `<div style="margin-top:4px">${esc(COMIC.help.layout || '')}</div>`;
   renderPanels();
@@ -1847,6 +1978,8 @@ async function refreshComicPreview() {
 /* ---------- restage an existing page ---------- */
 let RESTAGE = null;
 
+$('#creading').value = P.get('reading', 'ltr');
+$('#creading').onchange = () => P.set('reading', $('#creading').value);
 $('#crestage').onclick = () => $('#cpagefile').click();
 $('#cpagefile').onchange = () => {
   if (!$('#cpagefile').files[0]) return;
@@ -1868,13 +2001,18 @@ async function runRestage() {
   form.append('page', pageFile);
   if ($('#ccharfile').files[0]) form.append('character', $('#ccharfile').files[0]);
   form.append('outfit_from', P.get('outfit_from', 'character'));
+  form.append('reading', P.get('reading', 'ltr'));
   try {
     const r = await fetch('/api/comic/restage', { method:'POST', body: form });
     const d = await r.json();
     if (!r.ok) throw new Error(d.detail || r.statusText);
+    if (RESTAGE && RESTAGE._page) URL.revokeObjectURL(RESTAGE._page);
     RESTAGE = d;
     RESTAGE._page = URL.createObjectURL(pageFile);
+    // The layout is back in under a second; showing it now beats staring at a
+    // spinner while every panel is tagged.
     renderRestage();
+    if (d.token && d.panels.length) await fillPanels();
   } catch (e) {
     box.className = 'banner very_tight';
     box.innerHTML = `<div class="errbox">讀不了：${esc(e.message)}</div>`;
@@ -1882,9 +2020,61 @@ async function runRestage() {
   $('#cpagefile').value = ''; $('#ccharfile').value = '';
 }
 
+// Panels are tagged one at a time so the user can watch it happen and stop
+// early if the layout is obviously wrong.
+async function fillPanels() {
+  const d = RESTAGE;
+  if (!d || !d.token) return;
+  d._busy = true;
+  for (let i = 0; i < d.panels.length; i++) {
+    if (!RESTAGE || RESTAGE.token !== d.token) return;   // cancelled
+    d._doing = i;
+    renderRestage();
+    try {
+      const r = await fetch(`/api/comic/restage/${d.token}/panel/${i}`, {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ outfit_from: d.outfit_from }),
+      });
+      const got = await r.json();
+      if (!r.ok) throw new Error(got.detail || r.statusText);
+      d.panels[i] = got.panel;
+    } catch (e) {
+      d.panels[i] = { scene: [], outfit: [], dropped: [], prompt: '',
+                      note: '讀不到：' + e.message };
+    }
+  }
+  d._busy = false; d._doing = -1;
+  renderRestage();
+}
+
+// Copying tags reproduces "a classroom, from above". Copying each panel's own
+// art into a ControlNet reproduces *that* classroom from *that* angle. This is
+// the difference between a similar page and the same page with a new cast, so
+// it is offered right here rather than buried in the advanced settings.
+function restageControlHtml(d) {
+  const have = (d.controls || []).filter(Boolean).length;
+  if (!have) return '';
+  const models = (d.controlnets || []);
+  if (!models.length) {
+    return `<div class="s" style="margin-top:8px;color:var(--warn)">
+      每一格的構圖參考圖已經留好了，但還沒有 ControlNet 模型 ——
+      到「模型」分頁下載一個（約 2.5GB），下一次重畫就能連鏡頭角度一起複製。</div>`;
+  }
+  const on = P.get('lockpose', true);
+  return `<label class="chk" style="margin-top:8px"><input type="checkbox" id="crslock"
+      ${on ? 'checked' : ''}> <b>連構圖一起鎖住</b>（用 ControlNet 照著原稿的鏡頭畫，
+      ${have} 格都有參考圖）</label>
+    <div class="words" id="crsthumbs" style="margin-top:4px">${
+      (d.controls || []).map((name, i) => name
+        ? `<img src="/api/comic/control/${encodeURIComponent(name)}"
+             title="第 ${i + 1} 格的構圖參考" style="height:52px;border-radius:6px;background:#fff">`
+        : `<span class="tag warn">第 ${i + 1} 格沒有參考圖</span>`).join('')}</div>`;
+}
+
 function renderRestage() {
   const d = RESTAGE, L = d.layout, box = $('#crestagebox');
   const conf = L.confidence;
+  const done = d.panels.filter(Boolean).length;
   const chips = (arr, cls) => (arr || []).slice(0, 14)
     .map((t) => `<span class="tag ${cls || ''}">${esc(t)}</span>`).join('');
   box.className = 'banner';
@@ -1904,34 +2094,76 @@ function renderRestage() {
           服裝也用我的角色（取消＝沿用原頁面的穿著）</label>
       </div>
     </div>
-    <div class="s" style="margin-top:10px">每一格讀到的內容 —— 套用之後還可以再改：</div>
+    ${restageControlHtml(d)}
+    <div class="s" style="margin-top:10px">每一格讀到的內容 —— 套用之後還可以再改：
+      ${done < d.panels.length
+        ? `<b>讀取中 ${done}/${d.panels.length}</b>`
+        : ''}</div>
+    ${done < d.panels.length
+      ? `<div class="bar"><i style="width:${(done / d.panels.length) * 100}%"></i></div>` : ''}
     <div class="pbgrid" style="margin-top:6px;max-height:300px;overflow-y:auto">
       ${d.panels.map((p, i) => `<div class="pbc">
-        <div class="t">第 ${i + 1} 格</div>
+        <div class="t">第 ${i + 1} 格 ${!p && i === d._doing ? '<span class="s">讀取中…</span>' : ''}</div>
+        ${!p ? '<div class="s">等待中</div>' : `
         <div class="s">保留運鏡／動作：</div><div class="words">${chips(p.scene)}</div>
+        ${p.note ? `<div class="s" style="color:var(--warn)">${esc(p.note)}</div>` : ''}
         ${p.dropped && p.dropped.length ? `<div class="s" style="margin-top:4px">換掉的原角色特徵：</div>
-          <div class="words">${chips(p.dropped, 'warn')}</div>` : ''}
+          <div class="words">${chips(p.dropped, 'warn')}</div>` : ''}`}
       </div>`).join('')}
     </div>
     <div class="row">
       <div class="spacer"></div>
       <button class="ghost" id="crscancel">取消</button>
-      <button class="go" id="crsapply">套用這個分鏡</button>
+      ${L.count
+        ? `<button class="go" id="crsapply"${d._busy ? ' disabled' : ''}>${
+            d._busy ? '讀取中…' : '套用這個分鏡'}</button>`
+        : '<span class="s">量不到格子，請在下面挑一個現成的分鏡。</span>'}
     </div>`;
   $('#coutfit').onchange = () => {
     P.set('outfit_from', $('#coutfit').checked ? 'character' : 'page');
-    $('#cpagefile').value = '';
+    // Re-sort the tags we already have rather than asking the user to upload
+    // the page again - the toggle used to change nothing on screen.
+    resortRestage();
   };
-  $('#crscancel').onclick = () => { box.classList.add('hidden'); RESTAGE = null; };
-  $('#crsapply').onclick = applyRestage;
+  if ($('#crslock')) $('#crslock').onchange = () => P.set('lockpose', $('#crslock').checked);
+  $('#crscancel').onclick = () => {
+    box.classList.add('hidden');
+    if (RESTAGE && RESTAGE._page) URL.revokeObjectURL(RESTAGE._page);
+    RESTAGE = null;
+  };
+  if ($('#crsapply')) $('#crsapply').onclick = applyRestage;
+}
+
+// Re-derive each panel's prompt from the tags already fetched, so flipping the
+// outfit switch is instant instead of another upload and another minute of
+// tagging.
+function resortRestage() {
+  const d = RESTAGE;
+  if (!d || !d.character) { renderRestage(); return; }
+  const mine = $('#coutfit') ? $('#coutfit').checked : true;
+  d.outfit_from = mine ? 'character' : 'page';
+  d.panels.forEach((p) => {
+    if (!p || p.no_people) return;                 // unread, or nobody in shot
+    const outfit = mine ? (d.character.outfit.length ? d.character.outfit : p.outfit)
+                        : p.outfit;
+    const parts = [...d.character.look, ...p.scene, ...outfit];
+    p.prompt = [...new Set(parts)].join(', ');
+  });
+  renderRestage();
 }
 
 function applyRestage() {
   const d = RESTAGE, L = d.layout;
+  if (!L.count) {
+    $('#istatus').textContent = '這頁沒量到任何格子，請改用下面的現成分鏡。';
+    return;
+  }
   // The measured rectangles become a one-off layout, added to the picker so it
   // can be re-selected and so the preview and the job both see it.
   COMIC.custom = {
     id: 'custom', label: `從頁面讀到的分鏡（${L.count} 格）`, count: L.count,
+    // The page's own shape, measured by the detector. Falling back to 2:3
+    // would recompose a landscape page or a 4koma strip at the wrong ratio.
     aspect: L.aspect || 0.6667, note: '', panels: L.panels,
   };
   const keep = [...$('#clayout').options].some((o) => o.value === 'custom');
@@ -1946,11 +2178,33 @@ function applyRestage() {
   onLayoutChange();
   $('#cpanels').querySelectorAll('.pnl').forEach((el, i) => {
     const p = d.panels[i];
-    if (p) el.querySelector('textarea').value = p.prompt || '';
+    const box = el.querySelector('textarea');
+    if (!p) return;
+    // Only overwrite when there is something to write. With no tagger
+    // installed every suggestion is empty, and blanking what the user already
+    // typed is the worst possible outcome of pressing "apply".
+    if (p && p.prompt) box.value = p.prompt;
+    if (p && p.note) el.querySelector('.hd').setAttribute('title', p.note);
   });
+  // The crops travel with the layout, so pressing "draw this page" reuses the
+  // original's framing shot by shot instead of only its rectangles.
+  CN.controls = (d.controls || []).slice(0, L.count);
+  let extra = '';
+  const lock = $('#crslock') && $('#crslock').checked && CN.controls.some(Boolean);
+  if (lock && CN.list.length) {
+    if (!$('#icn').value) $('#icn').value = CN.list[0].name;
+    renderControlHelp();
+    extra = '　構圖鎖定已開，每一格會照著原稿的鏡頭畫。';
+  } else if (lock) {
+    extra = '　（還沒有 ControlNet 模型，這次只會照分鏡和提詞畫。）';
+  } else {
+    $('#icn').value = '';
+    renderControlHelp();
+  }
   $('#crestagebox').classList.add('hidden');
   $('#istatus').textContent =
-    `分鏡和每一格的內容都帶進來了（${L.count} 格）。可以再改任何一格，然後按「畫這一頁」。`;
+    `分鏡和每一格的內容都帶進來了（${L.count} 格）。可以再改任何一格，然後按「畫這一頁」。`
+    + extra;
   schedulePreview();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -1962,6 +2216,26 @@ const DENOISE_WORDS = [
 function denoiseLabel(v) {
   return (DENOISE_WORDS.find(([t]) => v < t) || DENOISE_WORDS[DENOISE_WORDS.length - 1])[1];
 }
+$('#icn').onchange = () => { P.set('controlnet', $('#icn').value); renderControlHelp(); };
+$('#icnstr').oninput = () => { $('#icnstrlabel').textContent = (+$('#icnstr').value).toFixed(2); };
+$('#icnend').oninput = () => { $('#icnendlabel').textContent = (+$('#icnend').value).toFixed(2); };
+$('#icnpick').onclick = () => $('#icnfile').click();
+$('#icnfile').onchange = async () => {
+  const file = $('#icnfile').files[0];
+  if (!file) return;
+  $('#icnsrc').textContent = '上傳中…';
+  try {
+    const form = new FormData();
+    form.append('image', file);
+    const r = await fetch('/api/image/upload', { method:'POST', body: form });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    CN.ref = d;
+    $('#icnsrc').textContent = `構圖參考：${file.name}（${d.width}×${d.height}）`;
+  } catch (e) { CN.ref = null; $('#icnsrc').textContent = '讀不了：' + e.message; }
+  $('#icnfile').value = '';
+};
+
 $('#idenoise').oninput = () => {
   const v = +$('#idenoise').value;
   $('#idenoiselabel').textContent = `${v.toFixed(2)} · ${denoiseLabel(v)}`;
@@ -2170,6 +2444,7 @@ function imagePayload() {
     pag: +$('#ipag').value || 0,
     rescale_cfg: +$('#irescale').value || 0,
     tiled_vae: $('#itiled').checked,
+    ...controlPayload(),
     loras,
   };
 }
@@ -2186,12 +2461,28 @@ $('#igo').onclick = async () => {
       bubbles: comicBubbles(), full_color: $('#ccolor').checked,
       gutter: +$('#cgutter').value || 0, border: +$('#cborder').value || 0,
       page_width: +$('#cwidth').value || 1600,
+      // One reference per panel, kept from the page that was restaged. The
+      // list is padded to the layout so index N always means panel N.
+      controls: payload.controlnet
+        ? Array.from({ length: l.count }, (_, i) => CN.controls[i] || '') : [],
     });
     if (!payload.panels.some((p) => p.trim()) && !payload.shared.trim()) {
       $('#istatus').textContent = '每一格都是空的 —— 至少寫一格，或填共用提詞。'; return;
     }
+    if (payload.controlnet && !payload.controls.some(Boolean)) {
+      // A page-wide reference makes no sense: each panel is a different shot.
+      $('#istatus').textContent =
+        '開了構圖鎖定，但沒有每一格的參考圖 —— 先用「照現成的一頁重畫」讀一次原稿，'
+        + '或把上面的構圖鎖定關掉。';
+      return;
+    }
   } else if (!payload.prompt && !payload.init_image) {
     $('#istatus').textContent = '提詞是空的 —— 沒放來源圖的話，畫面全靠提詞。'; return;
+  } else if (payload.controlnet) {
+    if (!CN.ref) {
+      $('#istatus').textContent = '開了構圖鎖定，就要選一張構圖參考圖。'; return;
+    }
+    payload.control_image = CN.ref.name;
   }
   $('#igo').disabled = true;
   try {
