@@ -392,6 +392,67 @@ npm install playwright && node tests/browser_check.js  # 另一個視窗
 
 ---
 
+## 14. 更新時出現「UPDATE DID NOT COMPLETE」，卡在 ComfyUI 那一段
+
+### 先講你現在的狀態：app 其實已經更新好了
+
+腳本的順序是這樣的，**ComfyUI 是最後一步**：
+
+```
+檢查 → 下載程式碼 → 解壓 → 確認可寫 → 複製程式碼 → 驗證大小 → 補裝套件 → 更新 ComfyUI → 完成
+                                        ↑ 你已經走完這裡      ↑ 死在這裡
+```
+
+所以：
+
+- **app 的程式碼是完整的、而且驗證過大小了**（不然它會停在更早的步驟）
+- Python 套件也裝好了
+- `git pull` **實際上跑完了**（那行 `From https://github.com/...` 就是 git 抓到東西之後才會印的）
+- 唯一沒做到的是 ComfyUI 的 `requirements.txt` 補裝，以及最後那句 `UPDATE OK`
+
+**你可以直接用。** 想確認 ComfyUI 更新到哪了，到「設定」分頁看，或按一次「立刻更新 ComfyUI」。
+
+### 為什麼會這樣：git 把好消息寫在 stderr
+
+`git pull` 成功的時候，會把 `From https://github.com/...` 印到 **stderr**，不是 stdout。
+這不是錯誤，只是 git 的習慣。
+
+而我那一行寫成 `2>&1 | Out-Null`，把 stderr 併進了管線。
+**Windows PowerShell 5.1** 在 `$ErrorActionPreference = 'Stop'` 之下，
+會把被重導的原生指令 stderr 變成一個**終止性錯誤**（`NativeCommandError`）——
+於是一個已經成功的 pull 殺掉了整個腳本。
+
+這是我的錯，而且錯得很典型：**拿 stderr 當成敗的判斷依據**。唯一誠實的訊號是結束代碼。
+
+### 改了三件事
+
+1. **`Invoke-Git` 包裝函式** —— 呼叫期間把 `$ErrorActionPreference` 設成 `Continue`，
+   把輸出轉成字串，**只看結束代碼**。git 的訊息還是留著，失敗時會原文印給你看。
+2. **整個 ComfyUI 區塊包在 `try/catch` 裡。** 這是更重要的一層：
+   走到那裡的時候 app 的程式碼已經複製並驗證完了，
+   **這個收尾步驟沒有資格讓整個更新失敗**。現在它最多降級成一行警告。
+3. **新增一個 PowerShell 語法檢查**，三支 `.ps1` 都要能通過 parser。
+   這些腳本沒辦法在 Linux 上完整執行，語法錯誤以前會直接送到你手上才爆。
+
+### 老實說一句：這個 bug 我沒能在這裡重現
+
+我裝了 PowerShell 7.6.4 實測，**舊的那一行在 PS7 底下不會死** ——
+微軟在 7.x 改掉了這個行為。這個 bug 只在 **Windows PowerShell 5.1** 出現，
+而 `update.bat` 用的正是 5.1（`powershell` 而不是 `pwsh`）。我沒辦法在 Linux 上跑 5.1。
+
+所以我能驗的和不能驗的分開講：
+
+| 驗過了 | 沒驗過 |
+| --- | --- |
+| 新的 `Invoke-Git` 面對「stderr 有輸出 + exit 0」回報成功，腳本活著 | 5.1 那個 `NativeCommandError` 本身 |
+| 面對「stderr 有輸出 + exit 1」回報失敗，並把 git 的原因帶出來 | |
+| 沒有任何原生呼叫在包裝函式外面併 stderr（這條就是當初該擋住那一行的檢查） | |
+| 三支腳本都通過 PowerShell parser | |
+
+下次跑 `update.bat`，最後一行應該是 `UPDATE OK`。要是又不是，把訊息貼給我。
+
+---
+
 ## 最後，老實說一句
 
 我在這台機器上**沒有顯卡**，所以上面所有跟「畫出來長怎樣」有關的建議

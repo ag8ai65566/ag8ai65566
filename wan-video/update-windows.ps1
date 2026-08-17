@@ -53,6 +53,30 @@ function Get-BlockReasons($path) {
   return $why
 }
 
+# Native commands use stderr for ordinary progress, not just for errors: git
+# prints "From <url>" there after every successful fetch. Windows PowerShell 5.1
+# (which update.bat runs) turns a *redirected* stderr line into a terminating
+# NativeCommandError while $ErrorActionPreference is 'Stop' - so a pull that had
+# already succeeded killed this script, and it reported UPDATE DID NOT COMPLETE.
+# The exit code is the only honest signal. This neutralises the stream for the
+# duration of the call and hands back the code alongside the text.
+function Invoke-Git {
+  param([string[]]$GitArgs)
+  $prev = $ErrorActionPreference
+  $ErrorActionPreference = 'Continue'
+  try {
+    $lines = & git @GitArgs 2>&1
+    $code = $LASTEXITCODE
+    $text = ''
+    if ($null -ne $lines) {
+      $text = (($lines | ForEach-Object { $_.ToString() }) -join "`n").Trim()
+    }
+    return [pscustomobject]@{ Code = $code; Text = $text }
+  } finally {
+    $ErrorActionPreference = $prev
+  }
+}
+
 # Copy-Item -Force handles a read-only destination but not a locked one, and a
 # lock is usually momentary. Clear the attribute, then retry a few times.
 function Copy-One($from, $to) {
@@ -244,23 +268,30 @@ try {
   # every model lives inside it. So it is updated the only safe way: a
   # fast-forward git pull in place. Its own .gitignore covers models/,
   # custom_nodes/, output/, input/ and user/, so none of those can be touched.
+  # Wrapped whole. By this point the app code is copied and verified, so nothing
+  # in here has the right to fail the update - and something in here did exactly
+  # that: git's ordinary stderr chatter became a terminating error under Windows
+  # PowerShell 5.1 and the script printed UPDATE DID NOT COMPLETE for an update
+  # that had already succeeded. A best-effort tail step degrades to a warning.
+  try {
   Say '更新 ComfyUI 本體'
   $comfy = "$root\ComfyUI"
   if (-not (Test-Path "$comfy\.git")) {
     Warn 'ComfyUI 不是 git 目錄，跳過（模型完全沒事）。'
   } else {
-    $dirty = & git -C $comfy status --porcelain --untracked-files=no 2>&1
-    if ($LASTEXITCODE -ne 0) {
-      Warn "讀不到 ComfyUI 的狀態，跳過：$dirty"
-    } elseif ("$dirty".Trim()) {
+    $st = Invoke-Git @('-C', $comfy, 'status', '--porcelain', '--untracked-files=no')
+    if ($st.Code -ne 0) {
+      Warn "讀不到 ComfyUI 的狀態，跳過：$($st.Text)"
+    } elseif ($st.Text) {
       Warn 'ComfyUI 資料夾裡有被改過的檔案，跳過更新（怕蓋掉你的修改）。'
     } else {
-      $before = (& git -C $comfy rev-parse --short HEAD 2>$null)
-      & git -C $comfy pull --ff-only 2>&1 | Out-Null
-      if ($LASTEXITCODE -ne 0) {
-        Warn 'ComfyUI 更新失敗（通常是網路）。app 本身已經更新好了，之後再試即可。'
+      $before = (Invoke-Git @('-C', $comfy, 'rev-parse', '--short', 'HEAD')).Text
+      $pull = Invoke-Git @('-C', $comfy, 'pull', '--ff-only')
+      if ($pull.Code -ne 0) {
+        Warn 'ComfyUI 更新失敗。app 本身已經更新好了，之後再試一次即可。原因：'
+        Warn $pull.Text
       } else {
-        $after = (& git -C $comfy rev-parse --short HEAD 2>$null)
+        $after = (Invoke-Git @('-C', $comfy, 'rev-parse', '--short', 'HEAD')).Text
         if ($before -eq $after) {
           Ok 'ComfyUI 已經是最新的'
         } else {
@@ -274,6 +305,11 @@ try {
         }
       }
     }
+  }
+  } catch {
+    Warn 'ComfyUI 這一段出了意外，跳過（app 的程式碼已經更新並驗證過了）。'
+    Warn "原因：$($_.Exception.Message)"
+    Warn '之後可以到「設定」分頁按「立刻更新 ComfyUI」，或自己在 ComfyUI 資料夾跑 git pull。'
   }
 } finally {
   Remove-Item -Path $tmp -Recurse -Force -ErrorAction SilentlyContinue

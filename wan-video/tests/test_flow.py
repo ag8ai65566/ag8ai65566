@@ -3290,9 +3290,10 @@ async def test_settings_and_updates() -> None:
     script = (ROOT / "update-windows.ps1").read_bytes().decode("utf-8-sig")
     check("$keep = @('ComfyUI', 'venv', 'data', 'models', '.env')" in script,
           "ComfyUI is still on the never-overwrite list (every model lives there)")
-    check("git -C $comfy pull --ff-only" in script,
+    check("'pull', '--ff-only'" in script,
           "…and is instead updated in place, which is why it used to fall behind")
-    check("status --porcelain" in script, "…skipping it when the user has edited it")
+    check("'status', '--porcelain'" in script,
+          "…skipping it when the user has edited it")
 
     page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
     check("/api/settings" in page, "the settings tab writes .env itself")
@@ -3308,7 +3309,8 @@ async def test_settings_and_updates() -> None:
                   # The three the user hit this round.
                   "內容和構圖都沒有", "✕ 清除分鏡", "NoobAI-XL",
                   "(artist:amashiro_natsuki:1.3)", "artist:john_kafka",
-                  "prefers-reduced-motion", "--line-strong", "browser_check.js"):
+                  "prefers-reduced-motion", "--line-strong", "browser_check.js",
+                  "NativeCommandError", "Invoke-Git"):
         check(topic in text, f"the FAQ covers {topic}")
     check("docs/faq.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
           "…and the README points at it")
@@ -3737,6 +3739,38 @@ def test_webp_classification() -> None:
     check(st["count"] == 4, "orphan still counted in the total")
 
 
+def test_powershell_scripts_parse() -> None:
+    """Every shipped .ps1 must parse. Cheap, and the only check that scales.
+
+    These scripts cannot be fully executed here - they install Python packages
+    and clone repositories onto a Windows box - so a syntax slip would otherwise
+    reach the user as a crash on line 1. The PowerShell parser answers that in
+    milliseconds without running a thing.
+    """
+    import shutil
+    import subprocess
+
+    section("powershell scripts parse")
+    pwsh = shutil.which("pwsh") or shutil.which("powershell")
+    if not pwsh:
+        check(True, "PowerShell not installed here; skipping")
+        return
+    for name in sorted(pth.name for pth in ROOT.glob("*.ps1")):
+        probe = (
+            "$errs = $null; "
+            f"$text = Get-Content -Raw -LiteralPath '{ROOT / name}'; "
+            "[void][System.Management.Automation.Language.Parser]::ParseInput("
+            "$text, [ref]$null, [ref]$errs); "
+            "if ($errs.Count) { $errs | ForEach-Object { "
+            "Write-Host \"ERR line $($_.Extent.StartLineNumber): $($_.Message)\" } } "
+            "else { Write-Host 'CLEAN' }"
+        )
+        done = subprocess.run([pwsh, "-NoProfile", "-Command", probe],
+                              capture_output=True, text=True, timeout=120)
+        out = (done.stdout + done.stderr).strip()
+        check("CLEAN" in out, f"{name} parses ({out[:110]})")
+
+
 def test_windows_script_encoding() -> None:
     """Windows PowerShell 5.1 is unforgiving about how these files are stored.
 
@@ -3791,6 +3825,112 @@ def test_windows_script_encoding() -> None:
         for shim in ("pip.exe", "uvicorn.exe"):
             hits = [n for n, l in enumerate(code, 1) if shim in l]
             check(not hits, f"{name} never calls {shim} (a moved venv breaks it)")
+
+
+def test_git_stderr_is_not_an_error() -> None:
+    """A successful `git pull` writes to stderr, and that must not be fatal.
+
+    Reported failure: the ComfyUI update died on `From
+    https://github.com/comfyanonymous/ComfyUI` - which is what git prints after
+    a fetch that *worked*. Windows PowerShell 5.1 turns a redirected native
+    stderr line into a terminating NativeCommandError while
+    $ErrorActionPreference is 'Stop', so the script reported UPDATE DID NOT
+    COMPLETE for an update that had already succeeded.
+
+    The decision has to come from the exit code. These cases run the real
+    Invoke-Git out of the real script against a stub git.
+    """
+    import shutil
+    import subprocess
+
+    section("git stderr is not an error")
+    pwsh = shutil.which("pwsh") or shutil.which("powershell")
+    if not pwsh:
+        check(True, "PowerShell not installed here; skipping")
+        return
+
+    script = (ROOT / "update-windows.ps1").read_bytes().decode("utf-8-sig")
+    check("function Invoke-Git" in script, "the script has a native-call wrapper")
+    check("$ErrorActionPreference = 'Continue'" in script,
+          "…which neutralises the stream around the call")
+    # Nothing may pipe native stderr into the pipeline outside that wrapper.
+    outside = [
+        l.strip() for l in script.replace("\r\n", "\n").split("\n")
+        if "2>&1" in l and "&" in l and "$lines" not in l
+    ]
+    check(not outside, f"no native call merges stderr except inside it ({outside})")
+
+    work = TMP / "gitstderr"
+    shutil.rmtree(work, ignore_errors=True)
+    (work / "bin").mkdir(parents=True)
+
+    def stub_git(message: str, code: int) -> None:
+        """A git that behaves like the real one: chatter on stderr, then exit."""
+        shim = work / "bin" / "git"
+        shim.write_text(
+            "#!/bin/sh\n"
+            f'echo "{message}" >&2\n'
+            f"exit {code}\n",
+            encoding="utf-8",
+        )
+        shim.chmod(0o755)
+
+    # Lift the function itself out of the shipped script by brace matching, so
+    # this exercises the real code rather than a copy that can drift from it.
+    body = script.replace("\r\n", "\n")
+    start = body.index("function Invoke-Git")
+    depth, end = 0, None
+    for i in range(body.index("{", start), len(body)):
+        if body[i] == "{":
+            depth += 1
+        elif body[i] == "}":
+            depth -= 1
+            if depth == 0:
+                end = i + 1
+                break
+    check(end is not None, "Invoke-Git can be lifted out of the script")
+    func = body[start:end]
+
+    def run_case(label: str) -> str:
+        # $ErrorActionPreference = 'Stop' is what the real script sets, and is
+        # the condition under which the bug fired.
+        harness = (
+            "$ErrorActionPreference = 'Stop'\n"
+            + func + "\n"
+            "$r = Invoke-Git @('pull', '--ff-only')\n"
+            "Write-Host \"CODE=$($r.Code) TEXT=$($r.Text)\"\n"
+            "Write-Host 'SURVIVED'\n"
+        )
+        path = work / f"{label}.ps1"
+        path.write_text(harness, encoding="utf-8")
+        done = subprocess.run(
+            [pwsh, "-NoProfile", "-File", str(path)],
+            capture_output=True, text=True, timeout=120,
+            env={**os.environ, "PATH": f"{work / 'bin'}:{os.environ['PATH']}"},
+        )
+        return done.stdout + done.stderr
+
+    # 1. The reported case, verbatim: chatter on stderr, exit 0.
+    stub_git("From https://github.com/comfyanonymous/ComfyUI", 0)
+    out = run_case("success")
+    check("SURVIVED" in out, f"a pull that talks on stderr does not kill the script ({out.strip()[:90]})")
+    check("CODE=0" in out, f"…and is reported as success ({out.strip()[:70]})")
+    check("From https://github.com" in out, "…with the message still available")
+
+    # The ComfyUI step runs last, after the app code is copied and verified, so
+    # it must not be able to fail the whole update no matter what it hits.
+    tail = body[body.index("更新 ComfyUI 本體") - 400:]
+    check("try {" in tail.split("Say '更新 ComfyUI 本體'")[0][-500:],
+          "the ComfyUI step is inside a try block")
+    check("app 的程式碼已經更新並驗證過了" in body,
+          "…and its catch says the app itself is fine")
+
+    # 2. A real failure must still be a failure.
+    stub_git("fatal: Not possible to fast-forward, aborting.", 1)
+    out = run_case("failure")
+    check("SURVIVED" in out, "a genuine failure is also handled without dying")
+    check("CODE=1" in out, f"…and is reported as a failure ({out.strip()[:70]})")
+    check("fatal:" in out, "…with git's own reason carried through, not swallowed")
 
 
 def test_update_script_is_atomic() -> None:
@@ -4215,7 +4355,9 @@ async def main() -> int:
     await test_review_regressions()
     await test_object_info_cache_invalidation()
     test_webp_classification()
+    test_powershell_scripts_parse()
     test_windows_script_encoding()
+    test_git_stderr_is_not_an_error()
     test_update_script_is_atomic()
     await test_watcher()
     if live:
