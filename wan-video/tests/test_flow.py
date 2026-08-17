@@ -2408,8 +2408,18 @@ def test_second_review_regressions() -> None:
     panels = set(re.findall(r'id="tab-([^"]+)"', page))
     check(buttons == panels,
           f"every tab button has a panel and vice versa ({buttons ^ panels or 'matched'})")
-    check("const TABS = [...document.querySelectorAll('.tabs button')]" in page,
-          "the switcher derives its tab list from the DOM, not a hand-kept array")
+    # The defect this guards against is a hand-written list of tab ids that
+    # silently loses any tab added later. Assert that property, not one exact
+    # line of source - the literal string broke the moment the switcher was
+    # refactored for keyboard support, while the property still held.
+    switcher = re.search(r"const TABS = ([^;]+);", page)
+    check(switcher is not None, "the tab list is derived, not written out")
+    if switcher:
+        derived = switcher.group(1)
+        check("querySelectorAll" in derived or "TABBTNS" in derived,
+              f"…from the DOM ({derived.strip()[:60]})")
+        check("'gen'" not in derived and '"gen"' not in derived,
+              "…with no tab id hardcoded into it")
 
     # The same defect one level down: `$('#thing')` on an id that no longer
     # exists returns null and the whole handler dies on the next line, taking
@@ -3297,7 +3307,8 @@ async def test_settings_and_updates() -> None:
                   "總強度", "by yukisame", "沒有顯卡",
                   # The three the user hit this round.
                   "內容和構圖都沒有", "✕ 清除分鏡", "NoobAI-XL",
-                  "(artist:amashiro_natsuki:1.3)", "artist:john_kafka"):
+                  "(artist:amashiro_natsuki:1.3)", "artist:john_kafka",
+                  "prefers-reduced-motion", "--line-strong", "browser_check.js"):
         check(topic in text, f"the FAQ covers {topic}")
     check("docs/faq.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
           "…and the README points at it")
@@ -3347,6 +3358,101 @@ def test_vendored_skill() -> None:
     third_party = imports - set(sys.stdlib_module_names) - {"core", "design_system",
                                                             "reasoning_contract"}
     check(not third_party, f"the scripts need no third-party packages ({third_party or 'none'})")
+
+
+def test_accessibility() -> None:
+    """The CRITICAL items from the UI/UX review, as properties of the page.
+
+    All measurable, all counted from the markup rather than eyeballed. Each one
+    was failing before the review: no focus ring at all, three icon-only
+    buttons with no name, no reduced-motion support, no landmarks, and a tab
+    strip that told assistive tech nothing about what was selected.
+    """
+    section("accessibility")
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    css = re.search(r"<style>(.*?)</style>", page, re.S).group(1)
+
+    def luminance(hex_colour: str) -> float:
+        raw = hex_colour.lstrip("#")
+        parts = [int(raw[i:i + 2], 16) / 255 for i in (0, 2, 4)]
+        parts = [c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4 for c in parts]
+        return 0.2126 * parts[0] + 0.7152 * parts[1] + 0.0722 * parts[2]
+
+    def contrast(a_hex: str, b_hex: str) -> float:
+        la, lb = luminance(a_hex), luminance(b_hex)
+        return (max(la, lb) + 0.05) / (min(la, lb) + 0.05)
+
+    tokens = dict(re.findall(r"--([\w-]+):\s*(#[0-9a-fA-F]{6});", css))
+    for name in ("bg", "panel", "panel2", "text", "muted", "accent", "line-strong"):
+        check(name in tokens, f"the palette defines --{name}")
+
+    # Body text on every surface it can land on.
+    for surface in ("bg", "panel", "panel2"):
+        got = contrast(tokens["text"], tokens[surface])
+        check(got >= 4.5, f"body text on --{surface} meets AA ({got:.2f}:1)")
+        quiet = contrast(tokens["muted"], tokens[surface])
+        check(quiet >= 4.5, f"secondary text on --{surface} meets AA ({quiet:.2f}:1)")
+    # A control's border is often the only thing marking where the control is,
+    # which puts it under the non-text 3:1 rule rather than the decorative one.
+    for surface in ("bg", "panel", "panel2"):
+        edge = contrast(tokens["line-strong"], tokens[surface])
+        check(edge >= 3.0, f"control borders on --{surface} meet the 3:1 minimum ({edge:.2f}:1)")
+
+    check(":focus-visible" in css, "there is a focus-visible ring")
+    check(re.search(r":focus-visible[^{]*\{[^}]*outline:\s*\d", css) is not None,
+          "…and it is a real outline, not just a colour change")
+    check(not re.search(r"outline:\s*none", re.sub(r"/\*.*?\*/", "", css, flags=re.S)),
+          "nothing strips the outline without replacing it")
+    check("prefers-reduced-motion" in css, "motion respects the OS setting")
+
+    # An icon-only control has no accessible name unless it is given one.
+    nameless = []
+    for m in re.finditer(r"<button([^>]*)>(.*?)</button>", page, re.S):
+        attrs, inner = m.group(1), re.sub(r"<[^>]+>", "", m.group(2)).strip()
+        if "aria-label" in attrs or not inner:
+            continue
+        # Digits are a real label ("1.2" on a preset button), so only a label
+        # made purely of symbols or emoji counts as nameless.
+        if not re.sub(r"[^\w]", "", inner, flags=re.UNICODE):
+            nameless.append(inner[:12])
+    check(not nameless, f"every icon-only button has an accessible name ({nameless or 'all named'})")
+
+    check("<nav" in page and 'role="tablist"' in page, "the tab strip is a labelled navigation landmark")
+    check(page.count('role="tab"') == page.count('role="tabpanel"') == len(
+        re.findall(r'<button[^>]*data-tab="', page)),
+        "every tab has a panel and both are announced as such")
+    check(page.count("aria-controls") == page.count('role="tab"'),
+          "…and each tab names the panel it controls")
+    check("x.setAttribute('aria-selected'" in page,
+          "the selected tab is kept truthful for assistive tech, not just styled")
+    check("ArrowRight" in page and "ArrowLeft" in page,
+          "a tablist is one tab stop with arrow-key movement between tabs")
+
+    # A placeholder vanishes the moment you type, so it cannot be the only name.
+    body = page[page.index("</style>"):page.index("<script>")]
+    unnamed = []
+    for m in re.finditer(r"<(input|textarea)\b([^>]*)>", body):
+        attrs = m.group(2)
+        ident = re.search(r'id="([^"]+)"', attrs)
+        if not ident or "aria-label" in attrs or "hidden" in attrs:
+            continue
+        if "placeholder=" in attrs and f'for="{ident.group(1)}"' not in body:
+            unnamed.append(ident.group(1))
+    check(not unnamed, f"no control relies on its placeholder as its name ({unnamed or 'none do'})")
+
+    # -- the two layout bugs a real browser found ----------------------------
+    # Both were invisible to every static check here and to the JS harness;
+    # they only showed up by loading the page in Chromium at 375px.
+    chk = re.search(r"\.chk \{[^}]*\}", css, re.S)
+    check(chk is not None, "the checkbox-label rule is still there")
+    check(chk and "white-space:nowrap" not in chk.group(0),
+          "checkbox labels can wrap - nowrap pushed the page 112px past a 375px phone")
+    check("overflow-wrap:anywhere" in css.replace(" ", ""),
+          "long machine strings (tag lists, filenames) are allowed to break")
+    check(re.search(r"\.row > \*\s*\{[^}]*min-width:\s*0", css) is not None,
+          "…and flex children may shrink below their content")
+    check('rel="icon"' in page,
+          "a favicon is supplied - its absence was a 404 and a console error on every load")
 
 
 def test_ui_smoke() -> None:
@@ -4099,6 +4205,7 @@ async def main() -> int:
     await test_charpacks()
     await test_settings_and_updates()
     test_vendored_skill()
+    test_accessibility()
     test_ui_smoke()
     test_prompts()
     test_seconds_to_frames()

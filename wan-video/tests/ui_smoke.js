@@ -72,7 +72,9 @@ function el(tag) {
     querySelector: () => el(),
     querySelectorAll: () => [],
     appendChild() {}, insertBefore() {}, remove() {},
-    setAttribute() {}, getAttribute: () => null,
+    _attrs: {},
+    setAttribute(k, v) { this._attrs[k] = String(v); },
+    getAttribute(k) { return k in this._attrs ? this._attrs[k] : null; },
     addEventListener() {}, removeEventListener() {},
     scrollIntoView() {}, focus() {}, click() {},
   };
@@ -227,6 +229,32 @@ for (const [weight, want] of Object.entries(expected)) {
   const got = (context.__w = Number(weight), run('artistToken("artist:x", __w)'));
   check(got === want, `artistToken(${weight}) === ${want} (got ${got})`);
 }
+
+/* ---------- the tab switcher, which the a11y pass refactored ---------- */
+// This is the one piece of existing behaviour the accessibility work rewrote,
+// so it gets exercised rather than grepped: the class, the ARIA state and the
+// panel visibility all have to move together, or the page says one thing and
+// announces another.
+noThrow('showTab() runs', () => run('showTab(TABBTNS[1])'));
+const btns = run('TABBTNS');
+const selected = btns.filter((b) => b.getAttribute('aria-selected') === 'true');
+check(selected.length === 1, `exactly one tab is selected (${selected.length})`);
+check(btns[1].classList.contains('on'), 'the clicked tab is the styled one');
+check(btns[1].getAttribute('aria-selected') === 'true', '…and the announced one');
+check(btns[0].getAttribute('aria-selected') === 'false', 'the previous tab is deselected');
+check(btns.filter((b) => b.tabIndex === 0).length === 1,
+      'the tablist is a single tab stop');
+noThrow('arrow keys move between tabs',
+        () => btns[1].onkeydown({ key: 'ArrowRight', preventDefault() {} }));
+check(btns[2].getAttribute('aria-selected') === 'true',
+      'ArrowRight lands on the next tab');
+noThrow('Home jumps to the first tab',
+        () => run('TABBTNS')[2].onkeydown({ key: 'Home', preventDefault() {} }));
+check(btns[0].getAttribute('aria-selected') === 'true', '…and it is selected');
+// A key the tablist does not handle must fall through untouched.
+let prevented = false;
+btns[0].onkeydown({ key: 'a', preventDefault() { prevented = true; } });
+check(!prevented, 'an unrelated key is left alone');
 
 /* ---------- everything else that renders from server data ---------- */
 noThrow('renderPackState()', () => run('renderPackState()'));
