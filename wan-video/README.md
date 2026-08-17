@@ -564,6 +564,8 @@ Dockerfile.comfy       ComfyUI + ComfyUI-GGUF + VideoHelperSuite + Manager
 setup-windows.ps1      Windows 原生安裝（不用 Docker）
 start-windows.ps1      Windows 啟動 · update-windows.ps1 更新程式碼（不動模型）
 install.bat / start.bat / update.bat   上面三支的雙擊包裝
+setup-codex.bat        選用：裝 OpenAI Codex 並註冊給 Claude Code 當工具
+                       （見 docs/codex-mcp.md；憑證由你自己輸入，不經過腳本）
 setup-linux.sh         Linux 裸機安裝
 scripts/
   fetch-model.py       命令列下載模型，可續傳。只用標準函式庫
@@ -594,6 +596,7 @@ docs/
   comic-restage.md     漫畫分鏡克隆的完整教程
   character-packs.md   角色包的用法與資料格式
   faq.md               設定、更新、LoRA 共存、畫風貼近原畫師
+  codex-mcp.md         讓 Claude Code 跟 OpenAI Codex 協作（選用）
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡

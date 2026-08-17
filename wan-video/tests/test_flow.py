@@ -3739,6 +3739,58 @@ def test_webp_classification() -> None:
     check(st["count"] == 4, "orphan still counted in the total")
 
 
+def test_codex_setup_never_touches_the_key() -> None:
+    """The Codex installer must not take a credential, in any form.
+
+    A credential belongs to the user. It must not be a script parameter (it
+    lands in shell history and in `ps` output), must not be written to a file
+    the script controls, and must never be echoed. `codex login` reads it from
+    stdin precisely so none of that happens, so the script's job is to say so
+    and step back.
+    """
+    section("codex setup")
+    script = (ROOT / "setup-codex.ps1").read_bytes().decode("utf-8-sig")
+
+    check("param(" not in script.split("function")[0],
+          "the script takes no parameters at all, so no key can be passed in")
+    # An assignment would mean the script is holding the value.
+    bad = [l.strip() for l in script.splitlines()
+           if ("OPENAI_API_KEY" in l or "api-key" in l.lower())
+           and "=" in l and "Write-Host" not in l]
+    check(not bad, f"nothing assigns or captures a key ({bad})")
+    check("--with-api-key" in script,
+          "…but the stdin-based route is shown to the user")
+    check("codex login" in script, "…as is the browser sign-in")
+    check("codex login --with-api-key" not in script.replace("| codex login --with-api-key", ""),
+          "the script never runs the key-based login itself")
+
+    # Never install a language runtime on someone's machine behind their back.
+    for danger in ("winget install", "choco install", "apt-get", "sudo "):
+        check(danger not in script, f"the script does not run `{danger.strip()}`")
+    check("Install Node.js LTS from https://nodejs.org/" in script,
+          "…it tells the user to install Node themselves instead")
+
+    # Same stderr lesson as the git pull bug.
+    check("function Invoke-Native" in script,
+          "native calls go through a wrapper that judges on the exit code")
+    outside = [l.strip() for l in script.splitlines()
+               if "2>&1" in l and "&" in l and "$lines" not in l]
+    check(not outside, f"no native call merges stderr outside it ({outside})")
+
+    # Re-running must not add the server twice.
+    check("mcp', 'list'" in script and "match 'codex'" in script,
+          "registration is idempotent - it checks before adding")
+
+    doc = ROOT / "docs" / "codex-mcp.md"
+    check(doc.is_file(), "there is a doc explaining it")
+    text = doc.read_text(encoding="utf-8")
+    check("不要，而且不需要" in text, "…which answers the API-key question first")
+    check("用完就丟" in text, "…and is honest that this container cannot hold an install")
+    check("沒驗過" in text, "…and separates what was verified from what was not")
+    check("docs/codex-mcp.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
+          "…and the README points at it")
+
+
 def test_powershell_scripts_parse() -> None:
     """Every shipped .ps1 must parse. Cheap, and the only check that scales.
 
@@ -3783,7 +3835,9 @@ def test_windows_script_encoding() -> None:
     section("windows script encoding")
     bom = b"\xef\xbb\xbf"
 
-    for name in ("setup-windows.ps1", "start-windows.ps1", "update-windows.ps1"):
+    scripts = sorted(pth.name for pth in ROOT.glob("*.ps1"))
+    check(len(scripts) >= 4, f"every shipped .ps1 is checked, not a hand-kept three ({scripts})")
+    for name in scripts:
         raw = (ROOT / name).read_bytes()
         check(raw.startswith(bom), f"{name} starts with a UTF-8 BOM")
         body = raw[len(bom):]
@@ -3798,7 +3852,7 @@ def test_windows_script_encoding() -> None:
         ]
         check(not openers, f"{name} uses no here-strings (lines {openers or 'none'})")
 
-    for name in ("install.bat", "start.bat", "update.bat"):
+    for name in sorted(pth.name for pth in ROOT.glob("*.bat")):
         raw = (ROOT / name).read_bytes()
         check(not raw.startswith(bom), f"{name} has no BOM (cmd.exe would echo it)")
         try:
@@ -4355,6 +4409,7 @@ async def main() -> int:
     await test_review_regressions()
     await test_object_info_cache_invalidation()
     test_webp_classification()
+    test_codex_setup_never_touches_the_key()
     test_powershell_scripts_parse()
     test_windows_script_encoding()
     test_git_stderr_is_not_an_error()
