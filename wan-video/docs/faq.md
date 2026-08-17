@@ -282,6 +282,59 @@ Illustrious 是拿 danbooru 訓練的，所以**它本來就認得這些人**，
 
 ---
 
+## 12. 怎麼加重畫師的權重？（`{{artist:xxx}}` 有用嗎）
+
+**你說對了一半：`artist:xxx` 確實是對的寫法 —— 但 `{{ }}` 沒有用。**
+
+### `{{ }}` 是 NovelAI 的語法，ComfyUI 不吃
+
+我把 ComfyUI 0.33 自己的解析器（`comfy/sd1_clip.py` 的 `token_weights()`）
+抓出來跑了一次，結果是：
+
+| 你打的 | ComfyUI 實際讀到的 |
+| --- | --- |
+| `{{artist:amashiro_natsuki}}` | 標籤 = **`{{artist:amashiro_natsuki}}`**，權重 1.0 ← 大括號變成提詞的一部分 |
+| `(artist:amashiro_natsuki)` | 標籤 = `artist:amashiro_natsuki`，權重 **1.1** |
+| `((artist:amashiro_natsuki))` | 權重 **1.21**（每層 ×1.1） |
+| `(artist:amashiro_natsuki:1.3)` | 標籤 = `artist:amashiro_natsuki`，權重 **1.3** ✓ |
+
+最後一行有個容易踩到的地方：標籤裡本來就有一個冒號。
+ComfyUI 是**從最後一個冒號切**的，所以 `(artist:xxx:1.3)` 會被正確地讀成
+「`artist:xxx` 這個標籤，權重 1.3」。這個我特地驗過。
+
+### `artist:` 才是 NoobAI 的寫法（我原本寫錯了）
+
+我之前一律用 `by xxx`，那是 Illustrious 的慣例。**NoobAI 官方 model card 的範例是：**
+
+```
+masterpiece, best quality, artist:john_kafka, artist:nixeu, artist:quasarcake, ...
+```
+
+所以現在改成看底模決定：
+
+| 底模 | 寫法 | 出處 |
+| --- | --- | --- |
+| **NoobAI-XL** | `artist:amashiro_natsuki` | 官方 model card 的範例提詞 |
+| **Illustrious** | `by amashiro_natsuki` | 官方／社群通行寫法 |
+| Pony | （沒有用） | model card 說畫師名字被拿掉了 |
+
+### 介面上怎麼用
+
+角色包選好成員之後，「盡量貼近原畫師的畫風」下面多了一條**畫師權重**：
+
+- 拉桿 0.6 ～ 1.6，旁邊有 **1.0 / 1.2 / 1.35** 三顆快捷鍵
+- 右邊**即時顯示會實際送出去的那一段**，例如 `(artist:amashiro_natsuki:1.35)`
+- 超過 1.45 會跳警告（顏色過飽和、線條糊）
+- 底模換掉的時候，那一段會自動改成該底模的寫法
+
+**如果你自己在提詞裡也打了一次同一個畫師**（`artist:yukisame` 或 `by yukisame`），
+會被自動吸收掉 —— 兩個同一個畫師標籤用不同權重互拉，不是你按那個拉桿的意思。
+
+常用範圍：**1.15 ～ 1.35**。加重就是提高畫風的比例，代價是角色本身的辨識度會被壓一點；
+角色跑掉的話就往下調，或把角色的觸發詞也加重一點平衡回來。
+
+---
+
 ## 最後，老實說一句
 
 我在這台機器上**沒有顯卡**，所以上面所有跟「畫出來長怎樣」有關的建議

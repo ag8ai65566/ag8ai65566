@@ -2980,8 +2980,11 @@ async def test_charpacks() -> None:
     check(not holo.by_key["watson-amelia"].artist_tag,
           "a designer with no danbooru artist tag is left blank, not invented")
 
-    check(holo.artist_tag_models == ["noobai", "illustrious"],
-          f"artist tags work on the danbooru-trained models only ({holo.artist_tag_models})")
+    # Each model's own documentation, not one convention applied everywhere:
+    # NoobAI's model card prompts with `artist:john_kafka`; the Illustrious
+    # guidance is `by ebifurya`.
+    check(holo.artist_tag_models == {"noobai": "artist:{tag}", "illustrious": "by {tag}"},
+          f"each danbooru model gets the artist form it documents ({holo.artist_tag_models})")
     check("pony" not in holo.artist_tag_models,
           "…and Pony is not one of them: its model card says artist names were removed")
     check(holo.wants_model not in holo.artist_tag_models,
@@ -3028,11 +3031,70 @@ async def test_charpacks() -> None:
     illus = charpacks.build_prompt(holo, "mori-calliope", 0, model="illustrious", style=True)
     check(illus["style"]["applied"], "on Illustrious it is applied")
     tags2 = [t.strip() for t in illus["prompt"].split(",")]
-    check("by yukisame" in tags2, f"…as 'by <artist>' ({tags2[:3]})")
+    check("by yukisame" in tags2, f"…as 'by <artist>' on Illustrious ({tags2[:4]})")
+    nb = charpacks.build_prompt(holo, "mori-calliope", 0, model="noobai", style=True)
+    ntags = [t.strip() for t in nb["prompt"].split(",")]
+    check("artist:yukisame" in ntags,
+          f"…and as 'artist:<artist>' on NoobAI, which is what its card prompts with ({ntags[:4]})")
+    check("by yukisame" not in ntags, "…not both forms at once")
     check(tags2.index("by yukisame") <= 3,
           f"…right after the character and series, where NoobAI's caption order puts it ({tags2[:4]})")
     off = charpacks.build_prompt(holo, "mori-calliope", 0, model="illustrious", style=False)
     check("by yukisame" not in off["prompt"], "…and only when asked for")
+
+    # -- weighting the artist -------------------------------------------------
+    # `{{tag}}` is NovelAI syntax. ComfyUI's parser only knows `(x)` and
+    # `(x:1.3)`, so the braces would land in the prompt as literal text. The
+    # weights below are therefore emitted in the one form ComfyUI parses, and
+    # checked against a re-implementation of its own splitting rule.
+    def comfy_weight(text):
+        """ComfyUI 0.33 splits a parenthesised group on its LAST colon."""
+        if not (text.startswith("(") and text.endswith(")")):
+            return text, 1.0
+        inner = text[1:-1]
+        cut = inner.rfind(":")
+        if cut <= 0:
+            return inner, 1.1
+        try:
+            return inner[:cut], float(inner[cut + 1:])
+        except ValueError:
+            return inner, 1.1
+
+    check(charpacks.weighted("artist:x", 1.0) == "artist:x",
+          "weight 1.0 emits the bare tag, no pointless parentheses")
+    heavy = charpacks.weighted("artist:amashiro_natsuki", 1.35)
+    check(heavy == "(artist:amashiro_natsuki:1.35)", f"…and above 1.0 wraps it ({heavy})")
+    # The colon inside the tag is the trap: a parser splitting on the FIRST
+    # colon would read the weight as "amashiro_natsuki:1.35" and give up.
+    tag, weight = comfy_weight(heavy)
+    check(tag == "artist:amashiro_natsuki" and weight == 1.35,
+          f"ComfyUI reads it back as tag+weight, colon in the tag and all ({tag}, {weight})")
+    check(charpacks.weighted("artist:x", 99) == "(artist:x:2.0)"
+          and charpacks.weighted("artist:x", -5) == "(artist:x:0.1)",
+          "an absurd weight is clamped rather than sent on")
+
+    for w, want in [(1.0, "artist:yukisame"), (1.25, "(artist:yukisame:1.25)")]:
+        got = charpacks.build_prompt(holo, "mori-calliope", 0, model="noobai",
+                                     style=True, artist_weight=w)
+        check(got["style"]["emitted"] == want,
+              f"weight {w} emits {want} ({got['style']['emitted']})")
+        check(want in got["prompt"], "…and it is in the prompt")
+    # A hand-typed copy of the same artist would be a second, unweighted pull.
+    both = charpacks.build_prompt(holo, "mori-calliope", 0, model="noobai", style=True,
+                                  artist_weight=1.3, extra="artist:yukisame, night")
+    btags = [t.strip() for t in both["prompt"].split(",")]
+    check(btags.count("artist:yukisame") == 0 and "(artist:yukisame:1.3)" in btags,
+          f"a duplicate artist tag is absorbed into the weighted one ({btags[:5]})")
+    check("night" in btags, "…without eating the rest of what was typed")
+
+    page_txt = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check("packstylew" in page_txt and "畫師權重" in page_txt,
+          "the page has the weight control")
+    check("packstyletok" in page_txt,
+          "…and shows the exact token it will emit, at that weight")
+    import prompts as pmod
+    check(any("{{" in a for a, _ in pmod.NOT_SUPPORTED),
+          "the syntax help warns that NovelAI's {{ }} does nothing in ComfyUI")
 
     swapped = charpacks.build_prompt(holo, "mori-calliope", 0, model="illustrious",
                                      quality_tags="masterpiece, best quality, very aesthetic")
@@ -3220,7 +3282,8 @@ async def test_settings_and_updates() -> None:
     for topic in ("API Keys", "git pull --ff-only", "$keep = @('ComfyUI'",
                   "總強度", "by yukisame", "沒有顯卡",
                   # The three the user hit this round.
-                  "內容和構圖都沒有", "✕ 清除分鏡", "NoobAI-XL"):
+                  "內容和構圖都沒有", "✕ 清除分鏡", "NoobAI-XL",
+                  "(artist:amashiro_natsuki:1.3)", "artist:john_kafka"):
         check(topic in text, f"the FAQ covers {topic}")
     check("docs/faq.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
           "…and the README points at it")

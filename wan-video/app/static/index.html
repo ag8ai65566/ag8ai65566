@@ -1755,6 +1755,14 @@ function renderPackStyle() {
   const works = !!who.artist_tag && (p.artist_tag_models || []).includes(model);
   const want = (p.artist_tag_models || [])[0] || '';
   const wantLabel = (IMG.models.find((m) => m.id === want) || {}).label || want;
+  // The exact token that will land in the prompt, at the exact weight.
+  // Each base model wants a different form - NoobAI's own card prompts with
+  // `artist:john_kafka`, Illustrious's guidance is `by ebifurya` - so this is
+  // read from the pack rather than assumed.
+  const form = ((p.artist_tag_models || {})[model] || 'artist:{tag}')
+    .replace('{tag}', who.artist_tag || '');
+  const w = +P.get('artistw', 1.0);
+  const token = Math.abs(w - 1) < 0.005 ? form : `(${form}:${w.toFixed(2)})`;
   box.innerHTML = `<div class="row" style="margin-top:0;align-items:center">
     <label class="chk"><input type="checkbox" id="packstylechk" ${P.get('packstyle', true) ? 'checked' : ''}
       ${works ? '' : 'disabled'}> <b>盡量貼近原畫師的畫風</b></label>
@@ -1765,7 +1773,20 @@ function renderPackStyle() {
     <div class="spacer"></div>
     ${who.wiki ? `<a class="s" href="${esc(who.wiki)}" target="_blank" rel="noopener">官方設定圖 ↗</a>` : ''}
   </div>
-  ${works ? '' : `<div class="s" style="margin-top:4px;color:var(--warn)">${esc(
+  ${works ? `<div class="row" style="margin-top:4px;align-items:center">
+    <label class="f">畫師權重
+      <input type="range" id="packstylew" min="0.6" max="1.6" step="0.05" value="${w}"
+             style="width:150px"></label>
+    <span class="s" id="packstylewv" style="width:3.2em">${w.toFixed(2)}</span>
+    <button class="ghost tiny" data-aw="1">1.0</button>
+    <button class="ghost tiny" data-aw="1.2">1.2</button>
+    <button class="ghost tiny" data-aw="1.35">1.35</button>
+    <code class="s" id="packstyletok" style="flex:1;min-width:200px">${esc(token)}</code>
+  </div>
+  <div class="s">${w > 1.45
+    ? '⚠ 超過 1.45 通常會開始燒畫面（顏色過飽和、線條糊）。1.15～1.35 是常用範圍。'
+    : '這就是會加進提詞的那一段。加重就是提高畫師風格的比例，'
+      + '代價是角色本身的辨識度會被壓一點。'}</div>` : `<div class="s" style="margin-top:4px;color:var(--warn)">${esc(
       !who.artist_tag
         ? `${who.name} 的原畫師在 danbooru 上沒有可用的畫師標籤，沒辦法用標籤指定畫風。`
         : `${(IMG.chosen || {}).label || '這個底模'}不吃畫師標籤 —— ${esc(p.base_model)} `
@@ -1782,6 +1803,23 @@ function renderPackStyle() {
   if ($('#packstylechk')) $('#packstylechk').onchange = () => {
     P.set('packstyle', $('#packstylechk').checked);
   };
+  if ($('#packstylew')) {
+    const slider = $('#packstylew');
+    const show = () => {
+      const v = +slider.value;
+      P.set('artistw', v);
+      $('#packstylewv').textContent = v.toFixed(2);
+      $('#packstyletok').textContent =
+        Math.abs(v - 1) < 0.005 ? form : `(${form}:${v.toFixed(2)})`;
+    };
+    slider.oninput = show;
+    slider.onchange = () => renderPackStyle();
+    box.querySelectorAll('[data-aw]').forEach((b2) => b2.onclick = () => {
+      slider.value = b2.dataset.aw;
+      show();
+      renderPackStyle();
+    });
+  }
   if ($('#packstyleswitch')) $('#packstyleswitch').onclick = () => {
     $('#imodel').value = want;
     onImageModelChange();
@@ -1817,7 +1855,8 @@ async function applyPack() {
       body: JSON.stringify({ character: PACK.who, costume: PACK.costume,
                              extra: packExtra(), quality: $('#packquality').checked,
                              model: IMG.chosen ? IMG.chosen.id : '',
-                             style: !!($('#packstylechk') && $('#packstylechk').checked) }),
+                             style: !!($('#packstylechk') && $('#packstylechk').checked),
+                             artist_weight: +P.get('artistw', 1.0) }),
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.detail || r.statusText);
@@ -1842,7 +1881,7 @@ async function applyPack() {
     });
     loraBudget();
     const bits = [`已填入${comicMode() ? '共用提詞' : '提詞'}：${d.character} · ${d.costume}`];
-    if (d.style && d.style.applied) bits.push(`畫風：by ${d.style.tag}`);
+    if (d.style && d.style.applied) bits.push(`畫風：${d.style.emitted}`);
     else if (d.style && d.style.tag && $('#packstylechk') && $('#packstylechk').checked) {
       bits.push(d.style.why);
     }

@@ -3001,10 +3001,10 @@
    "danbooru_posts": 1313
   }
  ],
- "artist_tag_models": [
-  "noobai",
-  "illustrious"
- ],
+ "artist_tag_models": {
+  "noobai": "artist:{tag}",
+  "illustrious": "by {tag}"
+ },
  "native_models": [
   "noobai",
   "illustrious"

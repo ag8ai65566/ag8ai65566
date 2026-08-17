@@ -1406,6 +1406,13 @@ async def list_packs() -> JSONResponse:
                          "civitai_key": bool(civitai.api_key())})
 
 
+def _as_float(value, default: float) -> float:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return default
+
+
 @app.post("/api/packs/{pack_id}/prompt")
 async def pack_prompt(pack_id: str, payload: dict = Body(default={})) -> JSONResponse:
     """One character in one outfit, assembled into a prompt ready to generate."""
@@ -1427,6 +1434,7 @@ async def pack_prompt(pack_id: str, payload: dict = Body(default={})) -> JSONRes
         quality=payload.get("quality", True) is not False,
         model=model.id if model else "",
         style=bool(payload.get("style")),
+        artist_weight=_as_float(payload.get("artist_weight"), 1.0),
         quality_tags=(model.positive_prefix if model and model.id != pack.wants_model else ""),
     )
     if built is None:

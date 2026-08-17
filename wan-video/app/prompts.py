@@ -126,4 +126,8 @@ NOT_SUPPORTED = [
     ("[字]", "ComfyUI 沒有這個減弱語法，請改用 `(字:0.8)`。"),
     ("<lora:名字:1>", "ComfyUI 不吃行內 LoRA，請用下面的 LoRA 清單勾選。"),
     ("BREAK", "核心 ComfyUI 不支援，會被當成一個普通英文字編進去。"),
+    # Verified by running ComfyUI 0.33's own token_weights() on it: the braces
+    # come out as literal text at weight 1.0.
+    ("{{字}}", "這是 NovelAI 的加重語法，ComfyUI 不吃 —— 大括號會原封不動變成提詞的一部分。"
+               "要加重請用 `(字:1.3)`。"),
 ]

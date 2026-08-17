@@ -96,10 +96,12 @@ class Pack:
     negative: str = ""
     note: str = ""
     license: str = ""
-    # Base models that were trained with danbooru artist tags intact, so
-    # "by <artist>" actually steers the style. Pony V6 is not one of them: its
-    # own model card says artist names were removed from the training captions.
-    artist_tag_models: list[str] = field(default_factory=list)
+    # Base models trained with danbooru artist tags intact, mapped to the form
+    # each one actually wants. They differ, and the difference matters:
+    # NoobAI's own model card prompts with `artist:john_kafka`, while the
+    # Illustrious guidance is `by ebifurya`. Pony is in neither - its model card
+    # says artist names were removed from the training captions.
+    artist_tag_models: dict[str, str] = field(default_factory=dict)
     # Base models that know these characters without the LoRA at all.
     native_models: list[str] = field(default_factory=list)
     style_note: str = ""
@@ -131,6 +133,18 @@ class Pack:
             "count": len(self.characters),
             "costume_count": sum(len(c.costumes) for c in self.characters),
         }
+
+
+# "{tag}" is where the artist name goes. A bare list is still accepted so a
+# hand-written pack does not have to know about per-model forms.
+DEFAULT_ARTIST_FORM = "artist:{tag}"
+
+
+def _forms(raw) -> dict[str, str]:
+    if isinstance(raw, dict):
+        return {str(k): (str(v) if "{tag}" in str(v) else DEFAULT_ARTIST_FORM)
+                for k, v in raw.items()}
+    return {str(m): DEFAULT_ARTIST_FORM for m in (raw or [])}
 
 
 def _load(path: Path) -> Pack | None:
@@ -206,7 +220,7 @@ def _load(path: Path) -> Pack | None:
         scaffold=str(raw.get("scaffold", "")), quality=str(raw.get("quality", "")),
         negative=str(raw.get("negative", "")), note=str(raw.get("note", "")),
         license=str(raw.get("license", "")),
-        artist_tag_models=[str(m) for m in (raw.get("artist_tag_models") or [])],
+        artist_tag_models=_forms(raw.get("artist_tag_models")),
         native_models=[str(m) for m in (raw.get("native_models") or [])],
         style_note=str(raw.get("style_note", "")), series=str(raw.get("series", "")),
     )
@@ -238,7 +252,7 @@ def style_advice(pack: Pack, who: Character, model: str) -> dict:
     the feature works when it does not.
     """
     out = {"tag": who.artist_tag, "designer": who.designer, "posts": who.artist_posts,
-           "wiki": who.wiki, "works": False, "why": ""}
+           "wiki": who.wiki, "works": False, "why": "", "form": ""}
     if not who.artist_tag:
         out["why"] = (
             f"{who.name} 的原畫師"
@@ -248,7 +262,9 @@ def style_advice(pack: Pack, who: Character, model: str) -> dict:
         return out
     if model and model in pack.artist_tag_models:
         out["works"] = True
-        out["why"] = f"{who.designer} 的 danbooru 畫師標籤（{who.artist_posts} 張），這個底模認得。"
+        out["form"] = pack.artist_tag_models[model].replace("{tag}", who.artist_tag)
+        out["why"] = (f"{who.designer} 的 danbooru 畫師標籤（{who.artist_posts} 張），"
+                      f"這個底模認得，寫法是 `{out['form']}`。")
         return out
     known = "／".join(pack.artist_tag_models) or "沒有"
     out["why"] = (
@@ -263,9 +279,23 @@ def style_advice(pack: Pack, who: Character, model: str) -> dict:
     return out
 
 
+def weighted(token: str, weight: float) -> str:
+    """`(token:1.3)` - the only weighting syntax ComfyUI actually parses.
+
+    Checked by running ComfyUI 0.33's own token_weights() over the result: it
+    splits on the *last* colon, so `(artist:amashiro_natsuki:1.3)` comes back as
+    the tag `artist:amashiro_natsuki` at 1.3, colon in the tag and all. The
+    NovelAI form `{{tag}}` comes back as literal braces at weight 1.0 - i.e. it
+    does nothing here except put punctuation in the prompt.
+    """
+    weight = round(max(0.1, min(weight, 2.0)), 2)
+    return token if abs(weight - 1.0) < 0.005 else f"({token}:{weight})"
+
+
 def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
                  extra: str = "", quality: bool = True, model: str = "",
-                 style: bool = False, quality_tags: str = "") -> dict | None:
+                 style: bool = False, quality_tags: str = "",
+                 artist_weight: float = 1.0) -> dict | None:
     """The one-click prompt: who, wearing what, in the order the author wants.
 
     Trigger first, then that outfit's appearance tags, then whatever the user
@@ -291,7 +321,7 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
     if pack.series and model in pack.native_models:
         head.append(pack.series)
     if applied:
-        head.append(f"by {who.artist_tag}")
+        head.append(weighted(advice["form"], artist_weight))
     parts = [*head, pack.scaffold, outfit.tags, extra.strip()]
     if quality:
         # A different base model wants different quality tags: Pony's score_*
@@ -299,6 +329,15 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
         parts.append(quality_tags.strip() or pack.quality)
     seen: set[str] = set()
     tags: list[str] = []
+    if applied:
+        # A hand-typed `artist:x` next to the weighted one is two artist tags
+        # pulling at different strengths, which is not what the slider means.
+        # Every spelling is blocked except the one actually being emitted -
+        # discarding the *form* instead let the unweighted copy back in at
+        # weight 1.0, where the form and the emitted token are the same string.
+        bare = who.artist_tag.lower()
+        seen |= {bare, f"artist:{bare}", f"by {bare}"}
+        seen.discard(weighted(advice["form"], artist_weight).lower())
     for chunk in parts:
         for tag in (t.strip() for t in chunk.split(",")):
             # Dropping repeats matters here: the scaffold says "1girl" and so do
@@ -316,7 +355,9 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
         "strength": pack.strength,
         "strength_clip": pack.strength_clip,
         "wants_model": pack.wants_model,
-        "style": {**advice, "applied": applied},
+        "style": {**advice, "applied": applied,
+                  "weight": round(max(0.1, min(artist_weight, 2.0)), 2),
+                  "emitted": weighted(advice["form"], artist_weight) if applied else ""},
     }
 
 
