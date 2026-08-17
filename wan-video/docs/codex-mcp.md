@@ -55,6 +55,38 @@ $env:OPENAI_API_KEY | codex login --with-api-key
 
 ---
 
+## 裝好之後怎麼用（**沒有 `/codex` 這個指令**）
+
+先講最容易踩的：**打 `/codex` 不會有任何反應，因為那個指令不存在。**
+
+MCP server 只有在提供 **prompts** 的時候才會產生斜線指令，而且名字長得像
+`/mcp__codex__<prompt名>`，永遠不會是 `/codex`。而 Codex 的 server
+**一個 prompt 都沒有提供**。實測（JSON-RPC 直接問它）：
+
+```
+initialize  → capabilities: {"tools": {"listChanged": true}}   ← 只有 tools
+tools/list  → ["codex", "codex-reply"]
+prompts/list → 沒有回應，連這個方法都不答
+```
+
+它提供的是兩個**工具**：
+
+| 工具 | 作用 |
+| --- | --- |
+| `codex` | 開一個新的 Codex session 跑一件事 |
+| `codex-reply` | 接續既有 session 再問一輪（就是下面「多輪有問題」講的那個機制） |
+
+**工具是 Claude Code 呼叫的，不是你打的。** 所以用法是直接用講話交代：
+
+```
+叫 Codex 去看 app/images.py 的 ControlNet 那段有沒有問題
+讓 Codex 獨立驗證一次 charpacks.py 的權重計算跟 index.html 對得上
+```
+
+Claude Code 會呼叫 `codex` 工具、把結果拿回來。你不用記任何指令。
+
+---
+
 ## 這在做什麼
 
 `codex mcp-server` 是 Codex CLI 內建的子命令（不是第三方套件），

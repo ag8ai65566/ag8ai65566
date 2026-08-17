@@ -3790,6 +3790,18 @@ def test_codex_setup_never_touches_the_key() -> None:
     check("docs/codex-mcp.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
           "…and the README points at it")
 
+    # The first thing the user tried after installing was typing /codex, which
+    # does not exist: the server declares only a `tools` capability and answers
+    # nothing for prompts/list, so it contributes no slash command at all.
+    # Probed over JSON-RPC against codex-cli 0.147.0. Say so in the doc, or the
+    # next reader wastes the same round trip.
+    check("沒有 `/codex` 這個指令" in text,
+          "…and says up front that /codex is not a command")
+    for tool in ("codex-reply", "tools/list", "prompts/list"):
+        check(tool in text, f"…and names what the server really exposes ({tool})")
+    check("不是你打的" in text,
+          "…and explains the tools are called by Claude Code, not typed")
+
 
 def test_powershell_scripts_parse() -> None:
     """Every shipped .ps1 must parse. Cheap, and the only check that scales.
