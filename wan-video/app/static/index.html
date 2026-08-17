@@ -180,6 +180,14 @@
   .lora input[type=range] { flex:1; max-width:120px; accent-color:var(--accent); }
   .lora .n { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
   .lora .trig { cursor:pointer; text-decoration:underline dotted; }
+  /* How well the model knows a tag, shown rather than described. The border is
+     what carries it, so it survives a forced-colours mode where backgrounds
+     are dropped. Both variants clear 3:1 against the panel. */
+  .tag.qt { text-align:left; }
+  .tag.qt .s { opacity:.72; margin-left:5px; }
+  .tag.sstrong, b.sstrong { border-color:var(--accent); color:var(--text); }
+  .tag.sok { border-color:var(--line-strong); }
+  .tag.sweak { border-color:var(--line); opacity:.85; }
   .lora .lp { width:34px; height:34px; border-radius:6px; object-fit:cover; flex:none;
     background:var(--panel2); cursor:zoom-in; }
   .lora .lp.none { display:flex; align-items:center; justify-content:center; color:var(--line);
@@ -323,10 +331,34 @@
       </div>
       <div id="istyle" class="banner"></div>
 
-      <div class="row" id="icustomsize" style="margin-top:8px">
-        <label class="f">寬 <input type="number" id="iwidth" value="1024" min="256" max="2048" step="8" style="width:88px"></label>
-        <label class="f">高 <input type="number" id="iheight" value="1024" min="256" max="2048" step="8" style="width:88px"></label>
-        <span class="s" style="align-self:center">SDXL 在約 100 萬像素上訓練，離太遠會出現雙頭、肢體重複。</span>
+      <div id="icustomsize" style="margin-top:8px">
+        <div class="row" style="margin-top:0">
+          <label class="f" style="flex:1;min-width:240px">寬 <span class="s" id="iwlabel">1024</span>
+            <input type="range" id="iwrange" min="256" max="2048" step="64" value="1024"
+                   aria-label="自訂寬度">
+          </label>
+          <label class="f">寬 <input type="number" id="iwidth" value="1024" min="256" max="2048" step="8" style="width:88px"></label>
+        </div>
+        <div class="row">
+          <label class="f" style="flex:1;min-width:240px">高 <span class="s" id="ihlabel">1024</span>
+            <input type="range" id="ihrange" min="256" max="2048" step="64" value="1024"
+                   aria-label="自訂高度">
+          </label>
+          <label class="f">高 <input type="number" id="iheight" value="1024" min="256" max="2048" step="8" style="width:88px"></label>
+        </div>
+        <div class="row">
+          <label class="chk"><input type="checkbox" id="ilockratio"> 鎖定目前比例</label>
+          <div class="spacer"></div>
+          <span class="s" style="align-self:center">常用比例：</span>
+          <button class="ghost tiny" data-ratio="1:1">1:1</button>
+          <button class="ghost tiny" data-ratio="2:3">2:3</button>
+          <button class="ghost tiny" data-ratio="3:2">3:2</button>
+          <button class="ghost tiny" data-ratio="3:4">3:4</button>
+          <button class="ghost tiny" data-ratio="4:3">4:3</button>
+          <button class="ghost tiny" data-ratio="9:16">9:16</button>
+          <button class="ghost tiny" data-ratio="16:9">16:9</button>
+        </div>
+        <div class="s" id="isizenote"></div>
       </div>
 
       <details id="packbox" class="hidden" style="margin-top:10px" open>
@@ -410,10 +442,25 @@
         <label class="chk"><input type="checkbox" id="iprefix" checked>
           <span id="iprefixlabel">自動加上品質標籤</span></label>
         <div class="spacer"></div>
+        <button class="ghost tiny" id="iwdown" title="把游標所在（或選取）的提詞權重降低 0.05　Ctrl+↓">權重 −</button>
+        <button class="ghost tiny" id="iwup" title="把游標所在（或選取）的提詞權重提高 0.05　Ctrl+↑">權重 ＋</button>
+        <button class="ghost tiny" id="itags">常用提詞</button>
         <button class="ghost tiny" id="isyntax">提詞語法</button>
         <button class="ghost tiny" id="ipreview">看看隨機變化</button>
         <label class="chk"><input type="file" id="i2ifile" accept="image/*" hidden>
           <button class="ghost tiny" id="i2ipick">＋來源圖（以圖生圖）</button></label>
+      </div>
+      <div class="s" id="iwhint"></div>
+      <div id="itagsbox" class="card hidden" style="background:var(--panel2);margin-top:8px">
+        <div class="toolbar">
+          <input type="text" id="qtq" aria-label="搜尋常用提詞"
+                 placeholder="搜尋（中英都可以：ahegao、阿嘿顏、愛心…）" style="flex:1;min-width:200px">
+          <label class="chk"><input type="checkbox" id="qtstrong"> 只看模型很熟的（10 萬張以上）</label>
+          <div class="spacer"></div>
+          <button class="ghost tiny" id="qtclose">收起</button>
+        </div>
+        <div class="s" id="qtnote"></div>
+        <div id="qtlist"></div>
       </div>
       <div id="isyntaxbox" class="banner hidden"></div>
       <div id="ipreviewbox" class="banner hidden"></div>
@@ -3125,8 +3172,116 @@ function onImageModelChange() {
 $('#imodel').onchange = onImageModelChange;
 function syncCustomSize() {
   $('#icustomsize').classList.toggle('hidden', $('#isize').value !== IMG.customSize);
+  paintSize();
 }
 $('#isize').onchange = syncCustomSize;
+
+/* ---------- custom size: sliders, ratio locks, a pixel-budget warning ---- */
+// Typing numbers is fine when you know the number you want. Dragging is better
+// when you are looking for it, which is what "custom" usually means - so both
+// drive the same value and neither is authoritative.
+const SIZE_STEP = 64;   // SDXL's own bucket step; 8 is legal but 64 is what it was trained on
+const SDXL_PIXELS = 1024 * 1024;
+
+function snap(n) {
+  return Math.max(256, Math.min(2048, Math.round(n / SIZE_STEP) * SIZE_STEP));
+}
+
+function paintSize() {
+  const w = parseInt($('#iwidth').value, 10) || 1024;
+  const h = parseInt($('#iheight').value, 10) || 1024;
+  $('#iwlabel').textContent = w;
+  $('#ihlabel').textContent = h;
+  if ($('#iwrange').value !== String(w)) $('#iwrange').value = snap(w);
+  if ($('#ihrange').value !== String(h)) $('#ihrange').value = snap(h);
+  const mp = (w * h) / 1e6;
+  const off = (w * h) / SDXL_PIXELS;
+  const ratio = simpleRatio(w, h);
+  let verdict = '在 SDXL 的舒適範圍內。';
+  if (off >= 1.8) verdict = '<b>像素是 SDXL 訓練尺寸的 ' + off.toFixed(1) + ' 倍</b> —— 幾乎一定會出現雙頭、多手多腳。請用原尺寸生成再開高解析放大。';
+  else if (off >= 1.35) verdict = '<b>已經超出 SDXL 的所有訓練尺寸</b>（它最大的也只有約 1.05 MP）—— 開始容易出現雙頭、肢體重複。';
+  else if (off < 0.55) verdict = '<b>比訓練尺寸小不少</b> —— 構圖會變糟、細節會糊。';
+  else if (w % 64 || h % 64) verdict = '可以跑，但寬高<b>不是 64 的倍數</b>，邊緣偶爾會出現接縫。拉滑桿會自動對齊 64。';
+  // Naming the asked-for ratio next to the real one is the honest version:
+  // 9:16 has no multiple-of-64 size at this pixel budget, 768x1344 (4:7) is the
+  // closest there is, and silently printing "9:16" would be a lie.
+  const asked = SIZE_ASKED && SIZE_ASKED !== ratio
+    ? `　·　你按的是 ${SIZE_ASKED}，對齊 64 之後最接近的就是這個`
+    : '';
+  $('#isizenote').innerHTML = `${w}×${h}　·　${mp.toFixed(2)} MP　·　比例 ${ratio}${asked}　·　${verdict}`;
+}
+
+function simpleRatio(w, h) {
+  const gcd = (a, b) => (b ? gcd(b, a % b) : a);
+  const g = gcd(w, h) || 1;
+  let a = w / g, b = h / g;
+  if (a > 20 || b > 20) {   // 833:1216 is not a ratio anyone reads
+    const r = w / h;
+    const best = [[1,1],[2,3],[3,2],[3,4],[4,3],[9,16],[16,9],[5,7],[7,5],[4,5],[5,4]]
+      .map(([x, y]) => ({ x, y, d: Math.abs(x / y - r) }))
+      .sort((p, q) => p.d - q.d)[0];
+    return `${best.x}:${best.y}`;
+  }
+  return `${a}:${b}`;
+}
+
+let SIZE_ASKED = '';    // the ratio button last pressed, if any
+
+function setSize(w, h, asked) {
+  $('#iwidth').value = snap(w);
+  $('#iheight').value = snap(h);
+  SIZE_ASKED = asked || '';
+  paintSize();
+}
+
+function wireSize() {
+  let ratio = 1;
+  const lockNow = () => {
+    ratio = (parseInt($('#iwidth').value, 10) || 1024) / (parseInt($('#iheight').value, 10) || 1024);
+  };
+  $('#ilockratio').onchange = lockNow;
+  $('#iwrange').oninput = () => {
+    SIZE_ASKED = '';
+    $('#iwidth').value = $('#iwrange').value;
+    if ($('#ilockratio').checked) $('#iheight').value = snap(+$('#iwrange').value / ratio);
+    paintSize();
+  };
+  $('#ihrange').oninput = () => {
+    SIZE_ASKED = '';
+    $('#iheight').value = $('#ihrange').value;
+    if ($('#ilockratio').checked) $('#iwidth').value = snap(+$('#ihrange').value * ratio);
+    paintSize();
+  };
+  // The number boxes keep step 8 so an exact value stays typeable; only the
+  // sliders snap to 64.
+  $('#iwidth').oninput = () => { if ($('#ilockratio').checked) $('#iheight').value = snap(+$('#iwidth').value / ratio); paintSize(); };
+  $('#iheight').oninput = () => { if ($('#ilockratio').checked) $('#iwidth').value = snap(+$('#iheight').value * ratio); paintSize(); };
+  document.querySelectorAll('#icustomsize button[data-ratio]').forEach((b) => {
+    b.onclick = () => {
+      const [x, y] = b.dataset.ratio.split(':').map(Number);
+      // Keep roughly SDXL's pixel budget rather than the current width, so
+      // switching ratio does not quietly walk into the double-head zone.
+      const scale = Math.sqrt(SDXL_PIXELS / (x * y));
+      setSize(x * scale, y * scale, b.dataset.ratio);
+      lockNow();
+    };
+  });
+  lockNow();
+  paintSize();
+}
+
+function wirePromptTools() {
+  $('#iwup').onclick = () => { $('#iprompt').focus(); adjustWeight($('#iprompt'), W_STEP); };
+  $('#iwdown').onclick = () => { $('#iprompt').focus(); adjustWeight($('#iprompt'), -W_STEP); };
+  $('#itags').onclick = () => {
+    const box = $('#itagsbox'), hide = !box.classList.contains('hidden');
+    box.classList.toggle('hidden', hide);
+    if (!hide) $('#qtq').focus();
+  };
+  $('#qtclose').onclick = () => $('#itagsbox').classList.add('hidden');
+  $('#qtq').oninput = renderQuickTags;
+  $('#qtstrong').onchange = renderQuickTags;
+}
 $('#ireseed').onclick = () => $('#iseed').value = Math.floor(Math.random()*2**31);
 $('#inegreset').onclick = () => {
   if (IMG.chosen) { $('#inegative').value = IMG.chosen.negative || ''; delete $('#inegative').dataset.touched; }
@@ -3457,6 +3612,155 @@ async function refreshStats() {
   } catch {}
 }
 
+/* ---------- prompt weights ---------- */
+// ComfyUI understands exactly one weighting form: `(tag:1.3)`. It has no UI for
+// producing one, so people type the parentheses by hand and get them wrong -
+// and an unbalanced paren silently reweights the rest of the prompt. This does
+// the edit for you, on the tag under the cursor or on a selection.
+//
+// Step and bounds match charpacks.weighted / naiweights so one prompt cannot
+// hold two different roundings of the same idea. 0.05 is also A1111's step, so
+// the Ctrl+arrow habit transfers.
+const W_STEP = 0.05, W_MIN = 0.1, W_MAX = 2.0;
+const W_WRAPPED = /^\((?<body>.*):(?<weight>-?\d*\.?\d+)\)$/;
+
+function fmtWeight(n) {
+  // Match Python's `:g`: 1.2 not 1.20, 1.05 not 1.050.
+  return String(Math.round(n * 100) / 100);
+}
+
+function tagBounds(text, start, end) {
+  // Grow an empty selection to the comma-delimited tag the caret sits in.
+  if (end > start) return [start, end];
+  let a = start, b = start;
+  while (a > 0 && text[a - 1] !== ',' && text[a - 1] !== '\n') a--;
+  while (b < text.length && text[b] !== ',' && text[b] !== '\n') b++;
+  while (a < b && /\s/.test(text[a])) a++;
+  while (b > a && /\s/.test(text[b - 1])) b--;
+  return [a, b];
+}
+
+function adjustWeight(box, delta) {
+  if (!box) return;
+  const text = box.value;
+  const [a, b] = tagBounds(text, box.selectionStart, box.selectionEnd);
+  let chunk = text.slice(a, b).trim();
+  if (!chunk) return;
+  let weight = 1, body = chunk;
+  const m = W_WRAPPED.exec(chunk);
+  if (m) { body = m.groups.body; weight = parseFloat(m.groups.weight) || 1; }
+  weight = Math.min(W_MAX, Math.max(W_MIN, weight + delta));
+  // Back at 1.0 the parentheses are noise, so they come off again. Leaving
+  // `(tag:1)` behind would also cost tokens for nothing.
+  const next = Math.abs(weight - 1) < 0.005 ? body : `(${body}:${fmtWeight(weight)})`;
+  box.value = text.slice(0, a) + next + text.slice(b);
+  box.setSelectionRange(a, a + next.length);
+  box.dataset.touched = '1';
+  box.dispatchEvent(new Event('input', { bubbles: true }));
+  showWeightHint(body, weight);
+}
+
+function showWeightHint(body, weight) {
+  const hint = $('#iwhint');
+  if (!hint) return;
+  hint.textContent = Math.abs(weight - 1) < 0.005
+    ? `${body} → 回到 1.0（括號已移除）`
+    : `${body} → ${fmtWeight(weight)}　（1.1 已經很明顯，超過 1.5 常常會壞掉）`;
+}
+
+// Delegated, so it also covers boxes rendered later - the pose library's own
+// prompt box, panel prompts, anything added after load.
+document.addEventListener('keydown', (e) => {
+  if (!(e.ctrlKey || e.metaKey) || e.altKey) return;
+  if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+  const box = e.target;
+  if (!box || box.tagName !== 'TEXTAREA') return;
+  e.preventDefault();
+  adjustWeight(box, e.key === 'ArrowUp' ? W_STEP : -W_STEP);
+});
+
+/* ---------- quick-pick tags ---------- */
+let QT = { groups: [], corrections: {}, count: 0 };
+
+async function refreshQuickTags() {
+  try {
+    const d = await (await fetch('/api/quicktags')).json();
+    QT.groups = d.groups || [];
+    QT.corrections = d.corrections || {};
+    QT.count = d.count || 0;
+    renderQuickTags();
+  } catch {}
+}
+
+function renderQuickTags() {
+  const q = $('#qtq').value.trim().toLowerCase();
+  const strongOnly = $('#qtstrong').checked;
+  const words = q.split(/\s+/).filter(Boolean);
+  const parts = [];
+  let shown = 0;
+  QT.groups.forEach((g) => {
+    const hits = g.tags.filter((t) => {
+      if (strongOnly && t.strength !== 'strong') return false;
+      if (!words.length) return true;
+      const hay = `${t.raw} ${t.tag} ${t.zh} ${g.title}`.toLowerCase().replace(/_/g, ' ');
+      return words.every((w) => hay.includes(w));
+    });
+    if (!hits.length) return;
+    shown += hits.length;
+    parts.push(`<div class="s" style="margin:8px 0 3px;color:var(--muted)"><b>${esc(g.title)}</b></div>`
+      + '<div class="words">' + hits.map((t) =>
+        `<button class="tag qt s${t.strength}" data-tag="${esc(t.tag)}"
+           title="danbooru 上有 ${t.posts.toLocaleString()} 張帶這個 tag${
+             t.note ? '　※ ' + esc(t.note) : ''}">${esc(t.zh)}
+           <span class="s">${esc(t.tag)}</span></button>`).join('') + '</div>');
+  });
+  if (!shown) {
+    // The correction table is most useful exactly here: the reason a search
+    // fails is usually that the name is one of the ones that does not work.
+    const fix = QT.corrections[q.replace(/_/g, ' ')];
+    parts.push(fix
+      ? `<div class="banner tight"><b>「${esc(q)}」在 danbooru 上是 0 張圖</b>，
+         打了等於沒打。真正有用的是 <code>${esc(fix)}</code>
+         <button class="ghost tiny" id="qtfix" style="margin-left:8px">加這個</button></div>`
+      : '<div class="s">沒有符合的。這裡只收經過 danbooru 查證、真的有圖的 tag。</div>');
+  }
+  $('#qtnote').innerHTML = `共 ${QT.count} 個 tag，每個都查過 danbooru 的實際圖片數 ——
+    <b class="sstrong">深色</b>＝模型很熟（10 萬張以上），淺色＝比較少見、可能要加權才吃得到。
+    點一下就加到提詞後面。`;
+  $('#qtlist').innerHTML = parts.join('');
+  $('#qtlist').querySelectorAll('button.qt').forEach((b) => {
+    b.onclick = () => addTagToPrompt(b.dataset.tag);
+  });
+  const fixbtn = $('#qtfix');
+  if (fixbtn) fixbtn.onclick = () => addTagToPrompt(QT.corrections[q.replace(/_/g, ' ')]);
+}
+
+// `(heart hands:1.05)` and `heart hands` are the same tag. Comparing the raw
+// text missed that, so weighting a tag and then clicking its chip again added a
+// second copy - and a duplicated tag is a silent double weight.
+function bareTag(chunk) {
+  let t = chunk.trim();
+  const m = W_WRAPPED.exec(t);
+  if (m) t = m.groups.body;
+  return t.replace(/\\/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+}
+
+function addTagToPrompt(tag) {
+  const box = $('#iprompt');
+  const have = box.value.trim().replace(/,\s*$/, '');
+  const seen = new Set(have.split(',').map(bareTag).filter(Boolean));
+  if (seen.has(bareTag(tag))) {
+    $('#iwhint').textContent = `${tag} 已經在提詞裡了（含加權過的形式），沒有重複加。`;
+    return;
+  }
+  box.value = have ? `${have}, ${tag}` : tag;
+  box.dataset.touched = '1';
+  box.focus();
+  // Land the caret on what was just added, so Ctrl+↑ weights it immediately.
+  const at = box.value.length - tag.length;
+  box.setSelectionRange(at, box.value.length);
+}
+
 /* ---------- pose / action codex ---------- */
 // The whole book arrives in one response and is filtered here. It is ~380KB for
 // 285 entries, and the alternative - a round trip per keystroke - would make the
@@ -3704,6 +4008,7 @@ async function boot() {
   await refreshJobs(true);
   refreshDownloads(); refreshStats(); renderUpscalers(); refreshPb();
   wirePosebook(); refreshPosebook();
+  wirePromptTools(); refreshQuickTags(); wireSize();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }

@@ -62,6 +62,95 @@ const { chromium } = require('playwright');
         `the focused tab has a real ring (${ring.w} ${ring.style})`);
 
   // The image tab is the busiest one; make sure it renders and nothing overflows.
+  await page.click('.tabs button[data-tab="img"]');
+  await page.waitForTimeout(500);
+  // ---- weights ----
+  await page.fill('#iprompt', '1girl, ahegao, breasts out');
+  // caret inside "ahegao"
+  await page.evaluate(() => { const b=document.getElementById('iprompt'); b.focus(); b.setSelectionRange(10,10); });
+  await page.keyboard.down('Control'); await page.keyboard.press('ArrowUp'); await page.keyboard.up('Control');
+  let v = await page.inputValue('#iprompt');
+  check(v === '1girl, (ahegao:1.05), breasts out', 'Ctrl+Up wraps the tag under the caret -> ' + v);
+  for (let i=0;i<3;i++){ await page.keyboard.down('Control'); await page.keyboard.press('ArrowUp'); await page.keyboard.up('Control'); }
+  v = await page.inputValue('#iprompt');
+  check(v.includes('(ahegao:1.2)'), 'repeats accumulate, printed as 1.2 not 1.20 -> ' + v);
+  for (let i=0;i<4;i++){ await page.keyboard.down('Control'); await page.keyboard.press('ArrowDown'); await page.keyboard.up('Control'); }
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl, ahegao, breasts out', 'back at 1.0 the parens come off -> ' + v);
+  // selection form
+  await page.evaluate(() => { const b=document.getElementById('iprompt'); b.focus(); b.setSelectionRange(15,26); });
+  await page.click('#iwup');
+  v = await page.inputValue('#iprompt');
+  check(v.includes('(breasts out:1.05)'), 'the button weights a multi-word selection -> ' + v);
+  // clamp
+  await page.fill('#iprompt', '(x:1.95)');
+  await page.evaluate(() => { const b=document.getElementById('iprompt'); b.focus(); b.setSelectionRange(3,3); });
+  for (let i=0;i<6;i++) await page.click('#iwup');
+  v = await page.inputValue('#iprompt');
+  check(v === '(x:2)', 'clamped at 2.0 -> ' + v);
+
+  // ---- quick tags ----
+  await page.fill('#iprompt', '1girl');
+  await page.click('#itags');
+  await page.waitForTimeout(400);
+  const chips = await page.evaluate(() => document.querySelectorAll('#qtlist button.qt').length);
+  check(chips > 250, `the tag list renders (${chips} chips)`);
+  await page.fill('#qtq', 'ahegao');
+  await page.waitForTimeout(250);
+  const found = await page.evaluate(() => [...document.querySelectorAll('#qtlist button.qt')].map(b=>b.dataset.tag));
+  check(found.includes('ahegao'), 'search finds it -> ' + found.join(','));
+  await page.fill('#qtq', '阿嘿顏');
+  await page.waitForTimeout(250);
+  const zh = await page.evaluate(() => [...document.querySelectorAll('#qtlist button.qt')].map(b=>b.dataset.tag));
+  check(zh.includes('ahegao'), 'Chinese search works too -> ' + zh.join(','));
+  await page.fill('#qtq', 'double peace gesture');
+  await page.waitForTimeout(250);
+  const fixTxt = await page.textContent('#qtlist');
+  check(fixTxt.includes('double v'), 'a dead tag name is answered with the real one');
+  await page.click('#qtfix');
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl, double v', 'and "add this" adds the corrected tag -> ' + v);
+  // clicking a chip, then weighting it straight away
+  await page.fill('#qtq', 'heart hands');
+  await page.waitForTimeout(250);
+  await page.click('#qtlist button.qt');
+  v = await page.inputValue('#iprompt');
+  check(v.endsWith('heart hands'), 'a chip appends -> ' + v);
+  await page.click('#iwup');
+  v = await page.inputValue('#iprompt');
+  check(v.endsWith('(heart hands:1.05)'), 'the caret is left on it, so weighting is one more key -> ' + v);
+  await page.click('#qtlist button.qt');
+  v = await page.inputValue('#iprompt');
+  check((v.match(/heart hands/g) || []).length === 1,
+      'clicking twice does not duplicate, even after weighting -> ' + v);
+  check((await page.textContent('#iwhint')).includes('已經在提詞裡'), 'and it says why');
+
+  // ---- custom size ----
+  await page.selectOption('#isize', { label: '自訂尺寸' }).catch(async () => {
+    await page.evaluate(() => { const s=document.getElementById('isize'); s.value = IMG.customSize; s.dispatchEvent(new Event('change')); });
+  });
+  await page.waitForTimeout(300);
+  check(await page.isVisible('#iwrange'), 'choosing 自訂尺寸 reveals the sliders');
+  await page.evaluate(() => { const r=document.getElementById('iwrange'); r.value=1536; r.dispatchEvent(new Event('input')); });
+  await page.waitForTimeout(150);
+  check(await page.inputValue('#iwidth') === '1536', 'dragging width updates the number box');
+  let note = await page.textContent('#isizenote');
+  check(note.includes('超出'), 'and warns when the pixel budget is too big -> ' + note.slice(0,60));
+  await page.check('#ilockratio');
+  await page.evaluate(() => { const r=document.getElementById('iwrange'); r.value=1024; r.dispatchEvent(new Event('input')); });
+  await page.waitForTimeout(150);
+  const w = await page.inputValue('#iwidth'), h = await page.inputValue('#iheight');
+  check(Math.abs(w/h - 1536/1024) < 0.05, `ratio lock holds ${w}x${h}`);
+  await page.uncheck('#ilockratio');
+  await page.click('#icustomsize button[data-ratio="9:16"]');
+  await page.waitForTimeout(150);
+  const w2 = await page.inputValue('#iwidth'), h2 = await page.inputValue('#iheight');
+  note = await page.textContent('#isizenote');
+  check(w2 % 64 === 0 && h2 % 64 === 0, `a ratio preset snaps to 64 (${w2}x${h2})`);
+  check(Math.abs((w2*h2)/(1024*1024) - 1) < 0.35, `and keeps SDXL's pixel budget (${((w2*h2)/1e6).toFixed(2)} MP)`);
+  check(note.includes('你按的是 9:16'), 'the readout is honest about the snap -> ' + note.slice(0,44));
+
+
   // ---- the pose library: 285 entries rendered, filtered and clicked ----
   await page.click('.tabs button[data-tab="pb"]');
   await page.waitForTimeout(600);

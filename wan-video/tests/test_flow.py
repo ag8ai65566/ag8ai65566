@@ -3858,6 +3858,107 @@ def test_inspect_parts() -> None:
     check('class="insppart"' in page, "each bucket is separately switchable")
 
 
+def test_quicktags() -> None:
+    """The quick-pick tag list, and the claim that every tag in it is real.
+
+    The value of this list is entirely in the verification, so that is what gets
+    tested: a tag with no danbooru posts is one the model was never taught, and
+    shipping it would send the user off adjusting weights on a word that does
+    nothing. The counts are recorded, so this can assert on them.
+    """
+    section("quicktags")
+    import quicktags as qt
+
+    data = qt.public()
+    check(data["count"] >= 300, f"{data['count']} tags in the quick-pick list")
+    check(len(data["groups"]) == 9, f"grouped into 9 families ({len(data['groups'])})")
+    check(all(g["title"] and g["tags"] for g in data["groups"]),
+          "every group is named and non-empty")
+
+    tags = [t for g in qt.GROUPS for t in g.tags]
+    check(all(t.posts > 0 for t in tags), "every tag has a real danbooru post count")
+    thin = [t.tag for t in tags if t.posts < 500]
+    check(not thin, f"…and none is below 500 posts ({thin})")
+    check(all(t.zh for t in tags), "every tag carries a Chinese label")
+    seen = [t.tag for t in tags]
+    dupes = {x for x in seen if seen.count(x) > 1}
+    check(not dupes, f"no tag appears twice ({dupes})")
+
+    # The four the list started from, and what happened to each.
+    check(qt.BY_TAG["ahegao"].posts == 28089, "ahegao is real (28,089 posts)")
+    check(qt.BY_TAG["breasts_out"].posts == 87377, "breasts out is real (87,377)")
+    check("double_peace_gesture" not in qt.BY_TAG,
+          "double peace gesture is not shipped - it is not a danbooru tag")
+    check(qt.correction("double peace gesture") is not None
+          and qt.correction("double peace gesture").tag == "double_v",
+          "…typing it answers with double_v instead")
+    check("ahegao_face" not in qt.BY_TAG,
+          "ahegao face is not shipped - the name exists but has 0 posts")
+    check(qt.correction("ahegao face").tag == "ahegao", "…and redirects to ahegao")
+    check(qt.correction("half naked").tag == "topless_female",
+          "half naked (0 posts) redirects to topless_female")
+
+    # Prompt-guide vocabulary that does nothing on a danbooru-trained model.
+    for dead in ("soft lighting", "cinematic lighting", "dramatic lighting",
+                 "rim lighting", "volumetric lighting"):
+        check(dead.replace(" ", "_") not in qt.BY_TAG,
+              f"{dead} is not shipped (0 danbooru posts)")
+        check(qt.correction(dead) is not None, f"…but {dead} still gets an answer")
+    for real in ("backlighting", "sidelighting", "underlighting", "dim_lighting"):
+        check(real in qt.BY_TAG, f"{real} is real, so it is offered")
+
+    # Aliases resolve to the form that has the posts.
+    check(qt.correction("naked").tag == "nude", "naked -> nude")
+    check(qt.correction("see-through").tag == "see-through_clothes",
+          "see-through -> see-through_clothes")
+    check(qt.correction("cat pose").tag == "paw_pose", "cat pose -> paw_pose")
+    check(qt.correction("erect nipples").tag == "covered_nipples",
+          "erect nipples -> covered_nipples")
+    check(qt.correction("breasts out") is None,
+          "a tag that already works needs no correction")
+
+    # Emitted text has to be what a checkpoint wants, not what danbooru stores.
+    check(qt.BY_TAG["top-down_bottom-up"].prompt == "top-down bottom-up",
+          "underscores become spaces")
+    check(qt.BY_TAG["shower_(place)"].prompt == "shower \\(place\\)",
+          f"parens are escaped ({qt.BY_TAG['shower_(place)'].prompt})")
+    check("\\" not in qt.BY_TAG["ahegao"].prompt, "…and a plain tag is left alone")
+
+    # The strength banding is what tells the user which tags need help.
+    check(qt.BY_TAG["blush"].strength == "strong", "4M posts is 'strong'")
+    check(qt.BY_TAG["ahegao"].strength == "ok", "28k posts is 'ok'")
+    check(qt.BY_TAG["peace_symbol"].strength == "weak", "1.6k posts is 'weak'")
+
+    found = qt.search("ahegao")
+    check(found and found[0].tag == "ahegao", "search finds an English tag")
+    check([t.tag for t in qt.search("阿嘿顏")] == ["ahegao"], "…and a Chinese label")
+    check(len(qt.search("")) == 0, "an empty query returns nothing rather than everything")
+    check([t.posts for t in qt.search("cum")]
+          == sorted([t.posts for t in qt.search("cum")], reverse=True),
+          "results are ordered by how well the model knows them")
+
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check("W_STEP = 0.05" in page, "the weight step matches A1111's, so the habit transfers")
+    check("W_MAX = 2.0" in page and "W_MIN = 0.1" in page,
+          "…and the bounds match charpacks/naiweights")
+    check("function bareTag" in page,
+          "the tag-dedup compares bare tags, so a weighted copy is still a duplicate")
+    check("SDXL_PIXELS" in page and "1.35" in page,
+          "the custom-size readout warns past SDXL's trained pixel budget")
+    check('data-ratio="9:16"' in page, "…and offers common ratios")
+    check("SIZE_ASKED" in page,
+          "…and admits when snapping to 64 changed the ratio you asked for")
+
+    doc = ROOT / "docs" / "prompt-weights.md"
+    check(doc.is_file(), "weights and the tag list are documented")
+    text = doc.read_text(encoding="utf-8")
+    check("Ctrl" in text and "1.05" in text, "…including the shortcut and the step")
+    check("0 張" in text, "…and why a zero-post tag is worse than no tag")
+    check("docs/prompt-weights.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
+          "…and the README points at it")
+
+
+
 def test_ui_smoke() -> None:
     """Run the page's own script and call its render functions for real.
 
@@ -4817,6 +4918,7 @@ async def main() -> int:
     test_naiweights()
     test_posebook()
     test_inspect_parts()
+    test_quicktags()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()

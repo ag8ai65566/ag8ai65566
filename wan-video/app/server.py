@@ -35,6 +35,7 @@ import pagelayout
 import posebook
 import promptbook
 import prompts
+import quicktags
 import registry
 import tags
 import updates
@@ -1443,6 +1444,15 @@ async def pack_prompt(pack_id: str, payload: dict = Body(default={})) -> JSONRes
     here = {l["name"] for l in models.list_loras()}
     built["lora_installed"] = pack.file in here
     return JSONResponse(built)
+
+
+@app.get("/api/quicktags")
+async def list_quicktags() -> JSONResponse:
+    """The verified quick-pick tag list, with post counts and the corrections.
+
+    Static data, so it ships whole and is filtered in the browser.
+    """
+    return JSONResponse(quicktags.public())
 
 
 @app.get("/api/posebook")

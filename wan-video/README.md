@@ -453,6 +453,21 @@ Docker `docker compose --profile watch up -d`。
 **最省事的做法是用 app 內建的 LoRA 分頁**（見上）—— 搜尋、看預覽、一鍵安裝，
 觸發詞也會一起存下來。需要一個 CivitAI API key 才能下載。
 
+### 提詞權重與常用提詞 —— 教程在 [`docs/prompt-weights.md`](docs/prompt-weights.md)
+
+游標放在一個 tag 上按 **`Ctrl + ↑`** 就加權（每次 0.05，回到 1.0 時括號自動移除），
+提詞框旁也有按鈕。ComfyUI **只認得 `(x:N)`** —— `[x]`、`{{x}}`、`1.3::x::` 全部無效，
+這是讀 `comfy/sd1_clip.py` 原始碼確認的。
+
+**`常用提詞`** 按鈕有 **316 個 tag**，分表情／手勢／服裝狀態／姿勢／視角／體液／
+身體／場景／光影九類，中英都能搜，點一下加進提詞。每一個都查過 danbooru 的
+**實際圖片數**並顯示強弱 —— 因為「聽起來對」和「模型真的認得」是兩件事：
+`ahegao face`、`half naked`、`soft lighting`、`cinematic lighting` 在 danbooru 上
+**都是 0 張圖，打了等於沒打**。清單附 43 組錯名對照，打錯會直接告訴你該用哪個。
+
+**自訂尺寸**改成可以拉滑桿（64 為單位）＋比例鎖＋常用比例一鍵，並即時顯示
+百萬像素與「這個尺寸會不會出雙頭」。
+
 ### 動作／姿勢庫（法典）—— 教程在 [`docs/pose-library.md`](docs/pose-library.md)
 
 **提詞庫**分頁最上面：285 個動作、26 位畫師、依原文的 8 大類 / 35 小節排好，
@@ -604,6 +619,7 @@ app/
   check.py             環境檢查
   naiweights.py        NovelAI 語法 → ComfyUI 權重（{{}} / [[]] / 1.3::x::）
   posebook.py          動作／姿勢法典的解析與一鍵組裝
+  quicktags.py         常用提詞清單（每個都查過 danbooru 實際圖片數）
   poses/               法典資料（一個 JSON 一份法典）
   static/index.html    網頁介面（影片 / 圖片 / 素材庫 / LoRA / 模型 / 提詞庫 / 設定）
 docs/
@@ -611,6 +627,7 @@ docs/
   character-packs.md   角色包的用法與資料格式
   faq.md               設定、更新、LoRA 共存、畫風貼近原畫師
   pose-library.md      動作／姿勢法典：NAI→ComfyUI 權重換算、畫師 tag 分離
+  prompt-weights.md    提詞權重、316 個查證過的常用 tag、自訂尺寸滑桿
   codex-mcp.md         讓 Claude Code 跟 OpenAI Codex 協作（選用）
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
