@@ -3069,9 +3069,14 @@ async def test_charpacks() -> None:
     tag, weight = comfy_weight(heavy)
     check(tag == "artist:amashiro_natsuki" and weight == 1.35,
           f"ComfyUI reads it back as tag+weight, colon in the tag and all ({tag}, {weight})")
-    check(charpacks.weighted("artist:x", 99) == "(artist:x:2.0)"
+    check(charpacks.weighted("artist:x", 99) == "(artist:x:2)"
           and charpacks.weighted("artist:x", -5) == "(artist:x:0.1)",
           "an absurd weight is clamped rather than sent on")
+    # The browser previews this same token before the request is made, and JS
+    # prints 2 where Python's str() prints 2.0. A preview that does not match
+    # what is sent is worse than no preview.
+    check(charpacks.weighted("artist:x", 1.20) == "(artist:x:1.2)",
+          f"the weight is formatted the way JS would ({charpacks.weighted('artist:x', 1.20)})")
 
     for w, want in [(1.0, "artist:yukisame"), (1.25, "(artist:yukisame:1.25)")]:
         got = charpacks.build_prompt(holo, "mori-calliope", 0, model="noobai",
@@ -3080,12 +3085,21 @@ async def test_charpacks() -> None:
               f"weight {w} emits {want} ({got['style']['emitted']})")
         check(want in got["prompt"], "…and it is in the prompt")
     # A hand-typed copy of the same artist would be a second, unweighted pull.
-    both = charpacks.build_prompt(holo, "mori-calliope", 0, model="noobai", style=True,
-                                  artist_weight=1.3, extra="artist:yukisame, night")
-    btags = [t.strip() for t in both["prompt"].split(",")]
-    check(btags.count("artist:yukisame") == 0 and "(artist:yukisame:1.3)" in btags,
-          f"a duplicate artist tag is absorbed into the weighted one ({btags[:5]})")
-    check("night" in btags, "…without eating the rest of what was typed")
+    # Every spelling of the same artist a user might reasonably type, at both
+    # the weighted and the unweighted setting. The parenthesised ones are the
+    # ones the FAQ actively teaches, and they used to slip straight past.
+    for weight in (1.0, 1.3):
+        want = charpacks.weighted("artist:yukisame", weight)
+        for typed in ("artist:yukisame", "by yukisame", "yukisame",
+                      "(artist:yukisame:1.2)", "((yukisame))", "(by yukisame:0.9)"):
+            both = charpacks.build_prompt(holo, "mori-calliope", 0, model="noobai",
+                                          style=True, artist_weight=weight,
+                                          extra=f"{typed}, night")
+            btags = [t.strip() for t in both["prompt"].split(",")]
+            hits = [t for t in btags if "yukisame" in t]
+            check(hits == [want],
+                  f"w={weight} with {typed!r} typed leaves exactly one artist tag ({hits})")
+            check("night" in btags, "…without eating the rest of what was typed")
 
     page_txt = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
     check("packstylew" in page_txt and "畫師權重" in page_txt,
@@ -3289,6 +3303,87 @@ async def test_settings_and_updates() -> None:
           "…and the README points at it")
     check("id=\"iloranote\"" in page and "function loraBudget()" in page,
           "the LoRA list shows a live strength budget")
+
+
+def test_vendored_skill() -> None:
+    """The vendored ui-ux-pro-max skill is present and its scripts run.
+
+    It is committed rather than installed per-machine, so it has to keep
+    working like any other file in the repo - and its own scripts are the only
+    thing that can say whether the data files came across intact.
+    """
+    import subprocess
+
+    section("vendored skill")
+    root = ROOT.parent / ".claude" / "skills" / "ui-ux-pro-max"
+    if not root.is_dir():
+        check(False, f"the skill directory exists ({root})")
+        return
+    check(True, "the skill directory exists")
+    skill = root / "SKILL.md"
+    check(skill.is_file(), "SKILL.md is there")
+    text = skill.read_text(encoding="utf-8")
+    check(text.startswith("---\nname: ui-ux-pro-max"),
+          "…with the frontmatter Claude Code needs to register it")
+    check("{{" not in text, "…and no unsubstituted template placeholders")
+    check((root / "LICENSE").is_file(), "the upstream MIT licence travelled with it")
+    check((root / "INSTALLED.md").is_file(), "…and a note saying where it came from")
+    check((root / "data" / "styles.csv").is_file(), "the data files came across")
+
+    search = root / "scripts" / "search.py"
+    check(search.is_file(), "search.py is there")
+    done = subprocess.run(
+        [sys.executable, str(search), "form validation", "--domain", "ux"],
+        capture_output=True, text=True, timeout=120,
+    )
+    check(done.returncode == 0 and "Search Results" in done.stdout,
+          f"…and it runs ({(done.stdout or done.stderr).strip()[:60]})")
+    # Standard library only is the whole reason this is safe to vendor.
+    imports = set()
+    for py in (root / "scripts").glob("*.py"):
+        for line in py.read_text(encoding="utf-8").splitlines():
+            if line.startswith(("import ", "from ")):
+                imports.add(line.split()[1].split(".")[0])
+    third_party = imports - set(sys.stdlib_module_names) - {"core", "design_system",
+                                                            "reasoning_contract"}
+    check(not third_party, f"the scripts need no third-party packages ({third_party or 'none'})")
+
+
+def test_ui_smoke() -> None:
+    """Run the page's own script and call its render functions for real.
+
+    Every other index.html check in this file greps for a substring, which
+    proves a line exists and nothing about whether it runs. Four bugs shipped
+    behind that in one commit - `artist_tag_models` became a dict in Python
+    while the JS still called `.includes()` on it, so the whole style block
+    threw and silently disappeared while every grep still passed.
+    """
+    import shutil
+    import subprocess
+
+    import charpacks
+
+    section("ui smoke (real JS)")
+    node = shutil.which("node")
+    if not node:
+        check(True, "node not installed here; skipping the JS smoke test")
+        return
+
+    # The browser previews the same token the server will emit, so the two
+    # formatters are compared against each other rather than against a guess.
+    want = {str(w): charpacks.weighted("artist:x", w) for w in (1, 1.05, 1.2, 1.35, 1.6)}
+    done = subprocess.run(
+        [node, str(ROOT / "tests" / "ui_smoke.js"), json.dumps(want)],
+        capture_output=True, text=True, timeout=120, cwd=str(ROOT),
+    )
+    out = (done.stdout + done.stderr).strip()
+    for line in out.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("ok "):
+            check(True, stripped[3:].strip())
+        elif stripped.startswith("FAIL "):
+            check(False, stripped[5:].strip())
+    check(done.returncode == 0, f"the page's JS runs clean ({out.splitlines()[-1] if out else 'no output'})")
 
 
 def test_prompts() -> None:
@@ -4003,6 +4098,8 @@ async def main() -> int:
     test_inspect_image()
     await test_charpacks()
     await test_settings_and_updates()
+    test_vendored_skill()
+    test_ui_smoke()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()

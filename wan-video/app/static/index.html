@@ -1746,29 +1746,42 @@ function renderPackCostumes() {
 // "Draw it the way the character's own designer draws it." Only a base model
 // trained with danbooru artist tags can be told that, so the box says plainly
 // which case you are in rather than offering a switch that does nothing.
+// Must match charpacks.weighted() exactly - this box claims to show the token
+// that will be sent. Python renders 1.2 as "1.2", so toFixed(2) here printed
+// "(artist:x:1.20)" for a prompt that actually said "(artist:x:1.2)".
+function artistToken(form, weight) {
+  const w = Math.round(Math.max(0.1, Math.min(weight, 2.0)) * 100) / 100;
+  if (Math.abs(w - 1) < 0.005) return form;
+  return `(${form}:${String(w)})`;
+}
+
 function renderPackStyle() {
   const p = PACK.chosen, box = $('#packstyle');
   const who = p && p.characters.find((c) => c.key === PACK.who);
   if (!who) { box.classList.add('hidden'); return; }
   box.classList.remove('hidden');
   const model = IMG.chosen ? IMG.chosen.id : '';
-  const works = !!who.artist_tag && (p.artist_tag_models || []).includes(model);
-  const want = (p.artist_tag_models || [])[0] || '';
+  // artist_tag_models is a {model: form} map, not a list. Treating it as an
+  // array threw on .includes() and took the whole style block - checkbox,
+  // slider and all - down with it, silently disabling the feature.
+  const forms = (p.artist_tag_models && typeof p.artist_tag_models === 'object')
+    ? p.artist_tag_models : {};
+  const works = !!who.artist_tag && Object.prototype.hasOwnProperty.call(forms, model);
+  const want = Object.keys(forms)[0] || '';
   const wantLabel = (IMG.models.find((m) => m.id === want) || {}).label || want;
   // The exact token that will land in the prompt, at the exact weight.
   // Each base model wants a different form - NoobAI's own card prompts with
   // `artist:john_kafka`, Illustrious's guidance is `by ebifurya` - so this is
   // read from the pack rather than assumed.
-  const form = ((p.artist_tag_models || {})[model] || 'artist:{tag}')
-    .replace('{tag}', who.artist_tag || '');
+  const form = (forms[model] || 'artist:{tag}').replace('{tag}', who.artist_tag || '');
   const w = +P.get('artistw', 1.0);
-  const token = Math.abs(w - 1) < 0.005 ? form : `(${form}:${w.toFixed(2)})`;
+  const token = artistToken(form, w);
   box.innerHTML = `<div class="row" style="margin-top:0;align-items:center">
     <label class="chk"><input type="checkbox" id="packstylechk" ${P.get('packstyle', true) ? 'checked' : ''}
       ${works ? '' : 'disabled'}> <b>盡量貼近原畫師的畫風</b></label>
     ${who.designer
       ? `<span class="s">原畫師：${esc(who.designer)}${who.artist_tag
-          ? ` · <code>by ${esc(who.artist_tag)}</code>（danbooru ${who.artist_posts} 張）` : ''}</span>`
+          ? ` · <code>${esc(form)}</code>（danbooru ${who.artist_posts} 張）` : ''}</span>`
       : '<span class="s">這位沒有查到原畫師</span>'}
     <div class="spacer"></div>
     ${who.wiki ? `<a class="s" href="${esc(who.wiki)}" target="_blank" rel="noopener">官方設定圖 ↗</a>` : ''}
@@ -1809,8 +1822,7 @@ function renderPackStyle() {
       const v = +slider.value;
       P.set('artistw', v);
       $('#packstylewv').textContent = v.toFixed(2);
-      $('#packstyletok').textContent =
-        Math.abs(v - 1) < 0.005 ? form : `(${form}:${v.toFixed(2)})`;
+      $('#packstyletok').textContent = artistToken(form, v);
     };
     slider.oninput = show;
     slider.onchange = () => renderPackStyle();

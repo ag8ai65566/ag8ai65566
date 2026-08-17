@@ -144,8 +144,8 @@ ComfyUI 的 `requirements.txt` 有變的話也順便補裝。
 > model card 上）。所以在 Pony 上打 `by yukisame` 是三個 token 的空氣，
 > 完全沒有作用。
 >
-> **Illustrious 相反** —— 它是拿 danbooru 訓練的，畫師標籤原封不動，
-> 官方推薦的寫法就是 `by <畫師>`。
+> **Illustrious 和 NoobAI 相反** —— 它們是拿 danbooru 訓練的，畫師標籤原封不動。
+> 寫法各自不同：Illustrious 是 `by <畫師>`，NoobAI 是 `artist:<畫師>`（見第 12 題）。
 
 而你現在用的 Hololive Collection **是 Pony 訓練的**。這就是矛盾所在。
 
@@ -159,12 +159,14 @@ ComfyUI 的 `requirements.txt` 有變的話也順便補裝。
 
 結果：**75 位裡有 72 位有可用的畫師標籤**，例如
 
-| 成員 | 原畫師 | danbooru 畫師標籤 |
-| --- | --- | --- |
-| Mori Calliope | Yukisame（ゆきさめ） | `by yukisame` |
-| Hoshimachi Suisei | Teshima Nari | `by teshima_nari`（661 張） |
-| Gawr Gura | Amashiro Natsuki | `by amashiro_natsuki`（491 張） |
-| Shirakami Fubuki | Nagishiro Mito | `by nagishiro_mito`（807 張） |
+| 成員 | 原畫師 | 在 NoobAI 上寫 | 在 Illustrious 上寫 |
+| --- | --- | --- | --- |
+| Mori Calliope | Yukisame（ゆきさめ） | `artist:yukisame` | `by yukisame` |
+| Hoshimachi Suisei | Teshima Nari（661 張） | `artist:teshima_nari` | `by teshima_nari` |
+| Gawr Gura | Amashiro Natsuki（491 張） | `artist:amashiro_natsuki` | `by amashiro_natsuki` |
+| Shirakami Fubuki | Nagishiro Mito（807 張） | `artist:nagishiro_mito` | `by nagishiro_mito` |
+
+（寫法為什麼不一樣，見第 12 題。介面會照你選的底模自動用對的那個，不用自己記。）
 
 查不到的 3 位（Watson Amelia、Pavolia Reine、Sakamata Chloe）**留空白，不亂填**。
 

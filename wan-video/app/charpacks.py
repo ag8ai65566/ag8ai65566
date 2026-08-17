@@ -17,6 +17,7 @@ version id came from the model's own CivitAI page or the CivitAI API.
 from __future__ import annotations
 
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -136,15 +137,24 @@ class Pack:
 
 
 # "{tag}" is where the artist name goes. A bare list is still accepted so a
-# hand-written pack does not have to know about per-model forms.
+# hand-written pack does not have to know about per-model forms - but it then
+# gets the form that model documents, not one blanket default. A list of
+# ["illustrious"] used to come back as `artist:{tag}`, which is precisely the
+# spelling this project's own docs call wrong for Illustrious.
 DEFAULT_ARTIST_FORM = "artist:{tag}"
+KNOWN_ARTIST_FORMS = {
+    "noobai": "artist:{tag}",        # its model card prompts with artist:john_kafka
+    "illustrious": "by {tag}",       # its guidance is "by ebifurya"
+}
 
 
 def _forms(raw) -> dict[str, str]:
     if isinstance(raw, dict):
-        return {str(k): (str(v) if "{tag}" in str(v) else DEFAULT_ARTIST_FORM)
+        return {str(k): (str(v) if "{tag}" in str(v)
+                         else KNOWN_ARTIST_FORMS.get(str(k), DEFAULT_ARTIST_FORM))
                 for k, v in raw.items()}
-    return {str(m): DEFAULT_ARTIST_FORM for m in (raw or [])}
+    return {str(m): KNOWN_ARTIST_FORMS.get(str(m), DEFAULT_ARTIST_FORM)
+            for m in (raw or [])}
 
 
 def _load(path: Path) -> Pack | None:
@@ -289,7 +299,28 @@ def weighted(token: str, weight: float) -> str:
     does nothing here except put punctuation in the prompt.
     """
     weight = round(max(0.1, min(weight, 2.0)), 2)
-    return token if abs(weight - 1.0) < 0.005 else f"({token}:{weight})"
+    # `:g` rather than str(): the browser shows this same token before the
+    # request is made, and JS prints 2 where Python prints 2.0. A preview that
+    # does not match the thing sent is worse than no preview.
+    return token if abs(weight - 1.0) < 0.005 else f"({token}:{weight:g})"
+
+
+# `(artist:x:1.2)` / `(by x)` / `((x))` - any parenthesised spelling of one tag.
+_WEIGHTED = re.compile(r"^\(+\s*(?:artist:|by\s+)?(?P<tag>[^():]+?)\s*(?::[\d.]+)?\s*\)+$",
+                       re.IGNORECASE)
+
+
+def _drop_duplicate_artist(chunk: str, bare: str) -> str:
+    """Strip any weighted mention of `bare` from a comma-separated chunk."""
+    if not chunk or bare not in chunk.lower():
+        return chunk
+    kept = []
+    for tag in chunk.split(","):
+        m = _WEIGHTED.match(tag.strip())
+        if m and m.group("tag").strip().lower() == bare:
+            continue
+        kept.append(tag)
+    return ",".join(kept)
 
 
 def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
@@ -320,9 +351,16 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
     head = [outfit.trigger]
     if pack.series and model in pack.native_models:
         head.append(pack.series)
+    mine = extra.strip()
     if applied:
         head.append(weighted(advice["form"], artist_weight))
-    parts = [*head, pack.scaffold, outfit.tags, extra.strip()]
+        # Any weighted spelling of the same artist typed by hand - `(artist:x:1.2)`,
+        # `((x))`, `(by x:0.9)` - is a second pull on one artist at a different
+        # strength, which is the exact thing the weight slider exists to control.
+        # Only the user's own text is filtered: running this over `head` as well
+        # deleted the token the slider had just produced.
+        mine = _drop_duplicate_artist(mine, who.artist_tag.lower())
+    parts = [*head, pack.scaffold, outfit.tags, mine]
     if quality:
         # A different base model wants different quality tags: Pony's score_*
         # ladder means nothing to Illustrious and vice versa.
