@@ -62,12 +62,92 @@ const { chromium } = require('playwright');
         `the focused tab has a real ring (${ring.w} ${ring.style})`);
 
   // The image tab is the busiest one; make sure it renders and nothing overflows.
+  // ---- the pose library: 285 entries rendered, filtered and clicked ----
+  await page.click('.tabs button[data-tab="pb"]');
+  await page.waitForTimeout(600);
+  const poseCount = await page.evaluate(() =>
+    document.querySelectorAll('#pklist button.pk').length);
+  check(poseCount > 0, `the pose library renders (${poseCount} buttons)`);
+  const countLabel = await page.textContent('#pkcount');
+  check(/\d+ 個動作/.test(countLabel || ''), `…and says how many (${countLabel})`);
+
+  await page.fill('#pkq', 'paizuri');
+  await page.waitForTimeout(250);
+  const filtered = await page.evaluate(() =>
+    document.querySelectorAll('#pklist button.pk').length);
+  check(filtered > 0 && filtered < poseCount,
+    `search narrows the list (${poseCount} -> ${filtered})`);
+  await page.fill('#pkq', 'zzzz-no-such-pose');
+  await page.waitForTimeout(250);
+  check((await page.textContent('#pklist')).includes('沒有符合'),
+    'an empty result says so rather than showing a blank area');
+  await page.fill('#pkq', '');
+  await page.waitForTimeout(250);
+
+  // Open one that carries artist tags anywhere in the entry. Picking on the
+  // first variant alone finds nothing: in this document the canonical `主要 Tag`
+  // string is always artist-free, so NO pose has artists on the version shown
+  // first. That is exactly the bug this check found - the switch did nothing on
+  // every pose - and the fix was to treat the artist run as belonging to the
+  // entry, which is why targeting the entry is now the right thing to assert.
+  const opened = await page.evaluate(() => {
+    const target = PK.poses.find((p) => (p.artist_names || []).length);
+    if (!target) return '';
+    const btn = document.querySelector(`#pklist button.pk[data-pose="${target.id}"]`);
+    if (btn) { btn.click(); return target.title; }
+    return '';
+  });
+  await page.waitForTimeout(500);
+  check(!!opened, `clicking a pose opens it (${opened})`);
+  const built = await page.inputValue('#pkprompt');
+  check(built.length > 10, `…with a prompt assembled (${built.slice(0, 48)}…)`);
+  check(!/[{}\[\]]/.test(built) && !built.includes('::'),
+    'the assembled prompt carries no NAI syntax');
+  check(!/\bartist\s*:/i.test(built),
+    'artists stay out by default, so they cannot overrule the character pack');
+
+  await page.check('#pkartists');
+  await page.waitForTimeout(500);
+  const withArtists = await page.inputValue('#pkprompt');
+  check(/\bartist\s*:/i.test(withArtists), 'ticking the box brings the artists in');
+  check(await page.isVisible('#pkawrap'), '…and reveals the artist weight slider');
+  await page.uncheck('#pkartists');
+  await page.waitForTimeout(400);
+  check(!await page.isVisible('#pkawrap'), 'unticking hides it again');
+
+  await page.fill('#pkhead', 'mori calliope, hololive');
+  await page.dispatchEvent('#pkhead', 'change');
+  await page.waitForTimeout(500);
+  check((await page.inputValue('#pkprompt')).startsWith('mori calliope, hololive'),
+    'the character you type goes to the front of the prompt');
+
+  await page.click('#pkuse');
+  await page.waitForTimeout(400);
+  const sent = await page.inputValue('#iprompt');
+  check(sent.startsWith('mori calliope, hololive'),
+    'sending it lands in the image prompt and switches tab');
+  check(await page.evaluate(() =>
+    !document.getElementById('tab-img').classList.contains('hidden')),
+    '…on the image tab');
+
   await page.click('.tabs button[data-tab="img"]');
   await page.waitForTimeout(400);
   const overflow = await page.evaluate(() =>
     document.documentElement.scrollWidth - document.documentElement.clientWidth);
   check(overflow <= 0, `no horizontal overflow at 1280px (${overflow}px)`);
   await page.screenshot({ path: 'shot-img-1280.png', fullPage: false });
+
+  // The pose library is the widest new thing on the page, so it gets its own
+  // small-screen measurement rather than trusting the image tab to represent it.
+  await page.click('.tabs button[data-tab="pb"]');
+  await page.setViewportSize({ width: 375, height: 800 });
+  await page.waitForTimeout(400);
+  const pkNarrow = await page.evaluate(() =>
+    document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  check(pkNarrow <= 1, `the pose library does not overflow at 375px (${pkNarrow}px)`);
+  await page.screenshot({ path: 'shot-pose-375.png', fullPage: false });
+  await page.setViewportSize({ width: 1280, height: 900 });
+  await page.waitForTimeout(200);
 
   // 375px is the small-phone case the checklist calls for.
   await page.setViewportSize({ width: 375, height: 800 });

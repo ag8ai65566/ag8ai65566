@@ -32,6 +32,7 @@ import envfile
 import inspect_image
 import library
 import pagelayout
+import posebook
 import promptbook
 import prompts
 import registry
@@ -1442,6 +1443,81 @@ async def pack_prompt(pack_id: str, payload: dict = Body(default={})) -> JSONRes
     here = {l["name"] for l in models.list_loras()}
     built["lora_installed"] = pack.file in here
     return JSONResponse(built)
+
+
+@app.get("/api/posebook")
+async def list_posebook() -> JSONResponse:
+    """Every pose codex, whole. Same reasoning as /api/packs.
+
+    ~380KB for the one that ships, and the picker walks a 3-level tree that has
+    to feel instant, so it is sent once and filtered in the browser.
+    """
+    books = posebook.load_all()
+    return JSONResponse({
+        "books": [b.public() for b in books],
+        "artist_negative": posebook.ARTIST_NEGATIVE,
+    })
+
+
+@app.post("/api/posebook/{book_id}/prompt")
+async def posebook_prompt(book_id: str, payload: dict = Body(default={})) -> JSONResponse:
+    """One pose, assembled. The artist group is opt-in, which is the point.
+
+    A codex entry's artist tags are the tester's style, not the pose. Left on by
+    default they would quietly overrule whatever the user picked in a character
+    pack, so `artists` defaults to off and carries its own weight when on.
+    """
+    book = posebook.get(book_id)
+    if book is None:
+        raise HTTPException(404, f"不認識的動作庫：{book_id}")
+    payload = payload if isinstance(payload, dict) else {}
+    pose = book.get(str(payload.get("pose", "")))
+    if pose is None:
+        raise HTTPException(404, f"這個動作庫裡沒有：{payload.get('pose')}")
+    try:
+        variant = int(payload.get("variant", 0))
+    except (TypeError, ValueError):
+        variant = 0
+    built = posebook.build_prompt(
+        pose, variant,
+        artists=bool(payload.get("artists")),
+        artist_weight=_as_float(payload.get("artist_weight"), 1.0),
+        cast=bool(payload.get("cast")),
+        extra=str(payload.get("extra", "")),
+        head=str(payload.get("head", "")),
+    )
+    return JSONResponse(built)
+
+
+@app.post("/api/posebook/import")
+async def import_posebook(file: UploadFile) -> JSONResponse:
+    """Preview what a codex document would become, without saving anything.
+
+    These documents get revised, and the next revision should not need a code
+    change - but it should not silently replace a working database either, so
+    this reports what it found and leaves writing to the build script.
+    """
+    data = await file.read()
+    if not data:
+        raise HTTPException(400, "檔案是空的")
+    text, error = promptbook.read_text(data, file.filename or "codex.txt")
+    if error:
+        raise HTTPException(400, error)
+    book = posebook.parse_codex(text, codex_id="preview",
+                                name=file.filename or "", source="")
+    groups = book.public()["groups"]
+    return JSONResponse({
+        "count": len(book.poses),
+        "variants": sum(len(p.variants) for p in book.poses),
+        "skipped": book.skipped,
+        "skipped_variants": book.skipped_variants,
+        "groups": [{"label": g["label"],
+                    "sections": len(g["sections"]),
+                    "poses": sum(len(s["poses"]) for s in g["sections"])}
+                   for g in groups],
+        "artists": book.artist_index()[:30],
+        "sample": [p.public() for p in book.poses[:3]],
+    })
 
 
 @app.post("/api/packs/{pack_id}/download")

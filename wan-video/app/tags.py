@@ -149,6 +149,27 @@ class Guess:
         names = [n for n, _ in self.characters] + [n for n, _ in self.general]
         return ", ".join(to_prompt(n) for n in names)
 
+    def parts(self) -> dict[str, list[str]]:
+        """The guess split into what it is *of* versus what is happening.
+
+        Sometimes only the staging is wanted - "the pose and the background, I
+        will add my own character" - and that is not a matter of deleting the
+        character name alone. A tagger describing a picture also reports the
+        hair, the eyes and the body, and those follow the character just as
+        much as the name does. So the same three buckets the restage feature
+        uses are reported here (see classify): `character` is the name, `look`
+        is who they are, `outfit` is what they have on, `scene` is the pose,
+        the framing and the place.
+        """
+        split = split_tags([n for n, _ in self.general])
+        return {
+            "character": [to_prompt(n) for n, _ in self.characters],
+            "look": [to_prompt(n) for n in split["look"]],
+            "outfit": [to_prompt(n) for n in split["outfit"]],
+            "scene": [to_prompt(n) for n in split["scene"]],
+            "drop": [to_prompt(n) for n in split["drop"]],
+        }
+
     def public(self) -> dict:
         return {
             "prompt": self.prompt,
@@ -158,6 +179,7 @@ class Guess:
                            for n, p in self.characters],
             "rating": self.rating,
             "ratings": [{"name": n, "p": round(p, 3)} for n, p in self.ratings],
+            "parts": self.parts(),
         }
 
 

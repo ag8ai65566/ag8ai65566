@@ -9,3 +9,6 @@ start-linux.sh
 tests/.tmp/
 __pycache__/
 *.pyc
+
+# Screenshots written by tests/browser_check.js
+shot-*.png

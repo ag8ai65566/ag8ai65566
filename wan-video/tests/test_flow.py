@@ -3423,23 +3423,45 @@ def test_accessibility() -> None:
     check(page.count('role="tab"') == page.count('role="tabpanel"') == len(
         re.findall(r'<button[^>]*data-tab="', page)),
         "every tab has a panel and both are announced as such")
-    check(page.count("aria-controls") == page.count('role="tab"'),
-          "…and each tab names the panel it controls")
+    # Per element, not by global count. Counting every aria-controls on the page
+    # and comparing to the number of tabs asserted something that was never the
+    # rule: a disclosure button is *supposed* to carry aria-controls alongside
+    # aria-expanded, so the first collapsible panel added to the page failed a
+    # test about tabs.
+    tabs_without_target = [
+        m.group(0)[:60] for m in re.finditer(r"<button[^>]*>", page)
+        if 'role="tab"' in m.group(0) and "aria-controls" not in m.group(0)
+    ]
+    check(not tabs_without_target,
+          f"…and each tab names the panel it controls ({tabs_without_target or 'all do'})")
     check("x.setAttribute('aria-selected'" in page,
           "the selected tab is kept truthful for assistive tech, not just styled")
     check("ArrowRight" in page and "ArrowLeft" in page,
           "a tablist is one tab stop with arrow-key movement between tabs")
 
     # A placeholder vanishes the moment you type, so it cannot be the only name.
+    #
+    # Three things name a control, and this has to accept all three or it fails
+    # valid markup: aria-label, an explicit `for=`, and a wrapping <label>. The
+    # implicit form is what most of this page already uses; the test only passed
+    # before because every placeholder-bearing input happened to also carry an
+    # aria-label, so the first `<label class="f">…<input placeholder></label>`
+    # tripped it.
     body = page[page.index("</style>"):page.index("<script>")]
+    wrapped: set[str] = set()
+    for m in re.finditer(r"<label\b[^>]*>(.*?)</label>", body, re.S):
+        for inner in re.finditer(r'<(?:input|textarea|select)\b[^>]*id="([^"]+)"',
+                                 m.group(1)):
+            wrapped.add(inner.group(1))
     unnamed = []
     for m in re.finditer(r"<(input|textarea)\b([^>]*)>", body):
         attrs = m.group(2)
         ident = re.search(r'id="([^"]+)"', attrs)
         if not ident or "aria-label" in attrs or "hidden" in attrs:
             continue
-        if "placeholder=" in attrs and f'for="{ident.group(1)}"' not in body:
-            unnamed.append(ident.group(1))
+        name = ident.group(1)
+        if "placeholder=" in attrs and f'for="{name}"' not in body and name not in wrapped:
+            unnamed.append(name)
     check(not unnamed, f"no control relies on its placeholder as its name ({unnamed or 'none do'})")
 
     # -- the two layout bugs a real browser found ----------------------------
@@ -3455,6 +3477,385 @@ def test_accessibility() -> None:
           "…and flex children may shrink below their content")
     check('rel="icon"' in page,
           "a favicon is supplied - its absence was a 404 and a console error on every load")
+
+
+def test_naiweights() -> None:
+    """NAI syntax -> ComfyUI weights, checked against ComfyUI's own parser.
+
+    This is the load-bearing conversion in the pose database, and the whole
+    reason it exists is that ComfyUI honours exactly one weighting construct.
+    So the assertions are not "my function returns what I expect" - they run the
+    output through a copy of comfy/sd1_clip.py's parse_parentheses/token_weights
+    and check the weight CLIP would actually receive.
+    """
+    section("naiweights (NAI -> ComfyUI)")
+    import naiweights as nw
+
+    # A local transcription of ComfyUI 0.33's parser. Kept short deliberately:
+    # it is the entire grammar, which is the point being tested.
+    def parse_parens(string):
+        result, current, nest = [], "", 0
+        for char in string:
+            if char == "(":
+                if nest == 0:
+                    if current:
+                        result.append(current)
+                    current = "("
+                else:
+                    current += char
+                nest += 1
+            elif char == ")":
+                nest -= 1
+                if nest == 0:
+                    result.append(current + ")")
+                    current = ""
+                else:
+                    current += char
+            else:
+                current += char
+        if current:
+            result.append(current)
+        return result
+
+    def token_weights(string, current_weight):
+        out = []
+        for x in parse_parens(string):
+            weight = current_weight
+            if len(x) >= 2 and x[-1] == ")" and x[0] == "(":
+                x = x[1:-1]
+                xx = x.rfind(":")
+                weight *= 1.1
+                if xx > 0:
+                    try:
+                        weight = float(x[xx + 1:])
+                        x = x[:xx]
+                    except ValueError:
+                        pass
+                out += token_weights(x, weight)
+            else:
+                out += [(x, current_weight)]
+        return out
+
+    def comfy_sees(text):
+        # escape_important/unescape_important, so `\(` is protected exactly as
+        # ComfyUI protects it.
+        t = text.replace("\\)", "\0\1").replace("\\(", "\0\2")
+        got = token_weights(t, 1.0)
+        return [(x.replace("\0\1", ")").replace("\0\2", "(").strip(), round(w, 4))
+                for x, w in got if x.strip()]
+
+    def weight_of(text, tag):
+        return next((w for t, w in comfy_sees(text) if t == tag), None)
+
+    # NAI braces step by 1.05, not SD's 1.1: five of them is 1.276, not 1.61.
+    out = nw.convert("{{{{{vacuum fellatio}}}}}").prompt()
+    check(weight_of(out, "vacuum fellatio") == 1.28,
+          f"{{}}x5 becomes 1.05^5 = 1.28 ({out})")
+    out = nw.convert("[[[deepthroat]]]").prompt()
+    check(weight_of(out, "deepthroat") == 0.86, f"[]x3 becomes 1/1.05^3 = 0.86 ({out})")
+
+    # NAI4.5 numeric weights, distributed over the whole group.
+    out = nw.convert("1.35::breasts press,girl arms around another's waist::").prompt()
+    check(weight_of(out, "breasts press") == 1.35
+          and weight_of(out, "girl arms around another's waist") == 1.35,
+          f"N::a,b:: puts N on both tags ({out})")
+
+    # A negative NAI weight has no positive-prompt equivalent, so it moves.
+    conv = nw.convert("1girl,-2::pov::")
+    check("pov" not in conv.prompt(), "a negative NAI weight leaves the positive prompt")
+    check(weight_of(conv.negative_prompt(), "pov") == 2.0,
+          f"…and lands in the negative at abs(weight) ({conv.negative_prompt()})")
+    check(any("負權重" in n for n in conv.notes), "…and the move is reported, not silent")
+
+    # Character names must be escaped or ComfyUI reweights half of them.
+    out = nw.convert("{{{{{{{{elaina (majo no tabitabi)}}}}}}}}").prompt()
+    check(weight_of(out, "elaina (majo no tabitabi)") == 1.48,
+          f"a name's own parens are escaped, not read as weighting ({out})")
+    check("\\(" in out, "…which means the emitted text carries backslashes")
+
+    # The codex's `aritst:` typo silently disables the artist, so it is fixed.
+    conv = nw.convert("{{aritst:deadflow}}")
+    check(conv.artist_prompt().startswith("(artist:deadflow"),
+          f"aritst: is corrected to artist: ({conv.artist_prompt()})")
+    check(any("aritst" in n for n in conv.notes), "…and says so")
+
+    # Artists come out as their own group - the feature the user asked for.
+    conv = nw.convert("1girl,[artist:ciloranko],((artist:CiloRanko)),fellatio")
+    check(conv.artist_prompt() and "artist:ciloranko" in conv.artist_prompt(),
+          "artist tokens are separated from the pose")
+    check("artist" not in conv.prompt(artists=False),
+          f"…and the pose string has none left ({conv.prompt(artists=False)})")
+    check(weight_of(conv.artist_prompt(), "artist:ciloranko") == 0.95,
+          "…keeping the weight the [] asked for")
+    check(weight_of(conv.artist_prompt(), "artist:CiloRanko") == 1.21,
+          "…and SD-style (()) too, since the document mixes both")
+
+    # `(artist:x:1.05)` only works because ComfyUI splits on the LAST colon.
+    check(weight_of("(artist:ciloranko:1.05)", "artist:ciloranko") == 1.05,
+          "a weighted artist token survives its own colon")
+
+    # An unclosed name paren in the source is closed rather than shipped broken.
+    out = nw.convert("{w(arknights}").prompt()
+    check(weight_of(out, "w(arknights)") == 1.05,
+          f"an unbalanced name paren from the source is repaired ({out})")
+
+    # Weights are clamped, so a stacked source cannot produce nonsense.
+    out = nw.convert("{" * 40 + "x" + "}" * 40).prompt()
+    check(weight_of(out, "x") == nw.MAX_WEIGHT, f"weights are clamped ({out})")
+
+    # `:g` formatting has to match charpacks and the JS mirror of it.
+    check(nw.render(nw.Chunk("x", 1.2)) == "(x:1.2)", "1.20 prints as 1.2, not 1.20")
+
+
+def test_posebook() -> None:
+    """The shipped pose database: structure, separation, and the safety filter."""
+    section("posebook")
+    import posebook
+
+    posebook.clear_cache()
+    books = posebook.load_all()
+    check(len(books) >= 1, f"a pose codex ships with the app ({len(books)} found)")
+    book = books[0]
+    check(book.id and book.name, f"…with an id and a name ({book.id})")
+
+    # Accounting against the source document: it holds 288 `####` headings, one
+    # of which is a mis-promoted field, so 287 real entries - 2 blocked = 285.
+    check(len(book.poses) == 285,
+          f"285 entries parsed ({len(book.poses)})")
+    check(book.skipped == 2, f"2 entries excluded by the minors filter ({book.skipped})")
+    check(book.skipped_variants >= 3,
+          f"…plus variants inside otherwise-fine entries ({book.skipped_variants})")
+
+    variants = [v for p in book.poses for v in p.variants]
+    check(len(variants) >= 400, f"{len(variants)} tag strings in total")
+    check(all(p.id for p in book.poses), "every entry has an id")
+    check(len({p.id for p in book.poses}) == len(book.poses), "…and the ids are unique")
+    check(all(p.title for p in book.poses), "every entry has a title")
+    check(all(p.group and p.section for p in book.poses),
+          "every entry keeps its place in the document's own taxonomy")
+
+    groups = {p.group for p in book.poses}
+    check(len(groups) == 8,
+          f"8 of the document's 10 groups have entries; 2 are empty in the source ({len(groups)})")
+    check(any(p.people == "單女" for p in book.poses),
+          "the group name is read as a head-count, which is the useful filter")
+
+    # -- no NAI syntax survives anywhere -------------------------------------
+    leftover = []
+    for pose in book.poses:
+        for v in pose.variants:
+            for field_name in ("prompt", "artists", "characters", "negative"):
+                text = getattr(v, field_name)
+                if re.search(r"[{}\[\]]", text) or "::" in text:
+                    leftover.append((pose.title, field_name, text[:60]))
+    check(not leftover, f"no NAI bracket or :: syntax survives conversion ({leftover[:3]})")
+
+    # -- artists are separated, which is the point ---------------------------
+    # 69 of the 415 tag strings carry an artist run, spread over 40 entries and
+    # 26 distinct artists. Measured, not guessed - a first pass at this test
+    # asserted >=100 from misreading the artist index (which counts entries per
+    # artist, not strings) and failed on correct data.
+    with_artists = [v for v in variants if v.artists]
+    check(len(with_artists) == 69,
+          f"69 tag strings carried artist tags ({len(with_artists)})")
+    check(sum(1 for p in book.poses if any(v.artists for v in p.variants)) == 40,
+          "…across 40 entries")
+    strays = [v.prompt[:60] for v in variants
+              if re.search(r"\bartist\s*:", v.prompt, re.I)]
+    check(not strays, f"…and not one is left in a pose string ({strays[:2]})")
+    check(all(a.startswith("artist:") or a.startswith("(artist:")
+              for v in with_artists for a in posebook._split_top(v.artists)),
+          "the artist group holds only artist tokens")
+    index = book.artist_index()
+    check(len(index) >= 20, f"the artists are also readable as a list ({len(index)} of them)")
+    check(index == sorted(index, key=lambda a: (-a["uses"], a["name"])),
+          "…ordered by how often the document uses them")
+
+    # -- the tester's own cast is separated too -------------------------------
+    cast = [v for v in variants if v.characters]
+    check(len(cast) >= 40, f"{len(cast)} strings carried the tester's demo character")
+    names = {n for v in cast for n in v.character_names}
+    check("elaina (majo no tabitabi)" in names,
+          f"…the most common one is found ({sorted(names)[:3]})")
+    check(any("houshou marine" in n for n in names),
+          "…including a Hololive member, which is exactly why this matters")
+    check(not [v for v in variants
+               if any(posebook.is_character(c) for c in posebook._split_top(v.prompt))],
+          "no demo character is left in a pose string")
+
+    # -- the minors filter ---------------------------------------------------
+    check(posebook.blocked("1girl, (aged down:1.16), (child:1.16)"),
+          "the filter sees a weighted tag, not just a bare one")
+    check(posebook.blocked("1girl,shota,nsfw"), "…and a bare one")
+    check(not posebook.blocked("1girl, (qi lolita:1.1), lolita fashion"),
+          "…and does not confuse a clothing style with an age")
+    check(not posebook.blocked("1girl, childe (genshin impact)"),
+          "…nor a name that merely contains a blocked word")
+    reached: list[str] = []
+    for pose in book.poses:
+        for v in pose.variants:
+            if posebook.blocked(v.prompt) or posebook.blocked(v.raw):
+                reached.append(pose.title)
+
+    check(not reached, f"no blocked variant reached the shipped database ({reached[:3]})")
+
+    # A kindergarten uniform on an adult is a costume; the aged-down variant of
+    # the same entry is not. Dropping the variant and keeping the entry is the
+    # precise behaviour, so it is pinned.
+    uniform = next((p for p in book.poses if "幼儿园" in p.title), None)
+    check(uniform is not None, "the costume entry survives")
+    if uniform:
+        check(not any("幼化" in v.label for v in uniform.variants),
+              "…while its aged-down variant does not")
+
+    # -- placeholders --------------------------------------------------------
+    slots = {s for v in variants for s in v.placeholders}
+    check(slots, f"the author's fill-in slots are found and flagged ({sorted(slots)[:3]})")
+    check(any("场景" in s for s in slots), "…including the scene slot")
+    check(not any(s in (":>=", "@ @", "?", "69") for s in slots),
+          "…and real danbooru tags with no letters are not mistaken for slots")
+
+    # -- prose never reaches a prompt ----------------------------------------
+    cjk = re.compile(r"[一-鿿]")
+    prose = []
+    for pose in book.poses:
+        for chunk in posebook._split_top(pose.negative):
+            if cjk.search(chunk):
+                prose.append((pose.title, chunk))
+    check(not prose, f"no Chinese prose leaked into a negative prompt ({prose[:3]})")
+
+    # -- one-click assembly --------------------------------------------------
+    pose = next(p for p in book.poses if any(v.artists for v in p.variants))
+    idx = next(i for i, v in enumerate(pose.variants) if v.artists)
+    plain = posebook.build_prompt(pose, idx, head="mori calliope, hololive")
+    check(plain["prompt"].startswith("mori calliope, hololive"),
+          "the character you asked for goes first")
+    check("artist:" not in plain["prompt"],
+          "artists are OFF by default, so they cannot overrule your own choice")
+    withart = posebook.build_prompt(pose, idx, artists=True, artist_weight=1.3,
+                                    head="mori calliope, hololive")
+    check("artist:" in withart["prompt"], "…and ON when asked")
+    check(withart["prompt"].index("artist:")
+          < withart["prompt"].index(pose.variants[idx].prompt.split(",")[0]),
+          "…placed between the character and the pose, per the codex's own advice")
+    check("chibi" in withart["negative"],
+          "…with the negative the codex prescribes for artist strings")
+    check("chibi" not in plain["negative"],
+          "…which is not added when the artists are off")
+
+    # The switch has to work on the version shown FIRST, or it reads as broken.
+    # In this document the canonical `主要 Tag` string is always the artist-free
+    # one and the artist run lives on `Tag 1`/`Tag 2`, so zero entries carry
+    # artists on variant 0. Found in a real browser: ticking "bring the artists
+    # in" changed nothing on every single pose.
+    firsts = [p for p in book.poses if p.variants[0].artists]
+    check(not firsts,
+          "no entry has artists on its first variant - which is why they are "
+          f"treated as belonging to the entry ({len(firsts)})")
+    have_artists = [p for p in book.poses if p.artists]
+    check(len(have_artists) == 40,
+          f"40 entries expose an entry-level artist run ({len(have_artists)})")
+    for p in have_artists[:20]:
+        built = posebook.build_prompt(p, 0, artists=True)
+        if not re.search(r"\bartist\s*:", built["prompt"]):
+            check(False, f"the artist switch does nothing on {p.title} variant 0")
+            break
+    else:
+        check(True, "…and the switch works on variant 0 for every one of them")
+    borrowed = posebook.build_prompt(have_artists[0], 0, artists=True)
+    check(borrowed["artists_borrowed"] is True,
+          "…reporting that the run was borrowed from another version")
+    check(borrowed["artists_from"],
+          f"…and naming which one ({borrowed['artists_from']})")
+    check(posebook.build_prompt(have_artists[0], 0)["artists_used"] == "",
+          "nothing is borrowed when the switch is off")
+
+    # The artist slider scales every token in the group.
+    scaled = posebook._reweight("(artist:hiten:1.0), artist:wlop", 1.5)
+    check("(artist:hiten:1.5)" in scaled and "(artist:wlop:1.5)" in scaled,
+          f"the artist weight scales a whole group ({scaled})")
+    check(posebook._reweight("artist:wlop", 1.0) == "artist:wlop",
+          "…and weight 1.0 leaves the token bare")
+
+    cast_on = posebook.build_prompt(pose, idx, cast=True)
+    cast_off = posebook.build_prompt(pose, idx, cast=False)
+    if pose.variants[idx].characters:
+        check(pose.variants[idx].characters in cast_on["prompt"],
+              "the demo cast can be brought back deliberately")
+        check(pose.variants[idx].characters not in cast_off["prompt"],
+              "…but is absent by default")
+
+    # -- re-parsing is stable -------------------------------------------------
+    raw = (ROOT / "app" / "poses").glob("*.json")
+    path = next(iter(sorted(raw)))
+    again = posebook._from_json(json.loads(path.read_text(encoding="utf-8")))
+    check(len(again.poses) == len(book.poses), "the JSON round-trips")
+    check([p.id for p in again.poses] == [p.id for p in book.poses],
+          "…with stable ids, so a rebuild does not shuffle them")
+
+    # -- a fresh parse of a tiny document ------------------------------------
+    doc = "\n".join([
+        "## 一、单男单女",
+        "### （一）口",
+        "#### 1. 測試動作",
+        "作者：某人",
+        "主要 Tag：1girl,{{{kiss}}},[artist:someone],着衣版:1girl,{{hug}}",
+        "负面 Tag：{{bad}},n4 无需负面",
+        "备注：隨便寫的",
+    ])
+    small = posebook.parse_codex(doc, codex_id="t")
+    check(len(small.poses) == 1, "a minimal document parses")
+    p0 = small.poses[0]
+    check(p0.title == "測試動作" and p0.author == "某人", "title and author are read")
+    check(len(p0.variants) == 2,
+          f"an inline 着衣版 label makes a second variant ({len(p0.variants)})")
+    check(p0.variants[1].label == "着衣版", "…labelled with what the document called it")
+    check("artist:someone" in p0.variants[0].artists, "the artist is separated")
+    check("bad" in p0.negative and "无需" not in p0.negative,
+          f"prose is stripped from the negative ({p0.negative})")
+    check("无需" in p0.note, "…and kept in the note instead")
+
+
+def test_inspect_parts() -> None:
+    """The guesser can hand back the staging without the character."""
+    section("inspect: drop the character")
+    import tags as tagmod
+
+    guess = tagmod.Guess(
+        general=[("sitting", 0.9), ("blue_hair", 0.8), ("school_uniform", 0.7),
+                 ("classroom", 0.6), ("from_above", 0.5), ("comic", 0.4)],
+        characters=[("hoshimachi_suisei", 0.95)],
+        rating="general",
+    )
+    parts = guess.parts()
+    check(parts["character"] == ["hoshimachi suisei"], f"the name is its own bucket ({parts})")
+    check("blue hair" in parts["look"],
+          "hair goes with the character, not the shot - dropping the name alone is not enough")
+    check("school uniform" in parts["outfit"], "clothing is its own bucket")
+    check("sitting" in parts["scene"] and "classroom" in parts["scene"]
+          and "from above" in parts["scene"],
+          f"pose, place and framing are the shot ({parts['scene']})")
+    check("comic" in parts["drop"], "medium tags are dropped, never offered")
+    everything = sum((parts[k] for k in ("character", "look", "outfit", "scene", "drop")), [])
+    check(len(everything) == len(guess.general) + len(guess.characters),
+          "every guessed tag lands in exactly one bucket")
+    check("parts" in guess.public(), "…and the split is on the wire for the UI")
+
+    doc = ROOT / "docs" / "pose-library.md"
+    check(doc.is_file(), "the pose library is documented")
+    text = doc.read_text(encoding="utf-8")
+    check("完全無效" in text,
+          "…leading with the fact that the source's weights do nothing in ComfyUI")
+    check("aritst" in text, "…and the typo that silently disables the artist")
+    check("預設關閉" in text, "…and that the artist/cast groups are off by default")
+    check("docs/pose-library.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
+          "…and the README points at it")
+
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check('id="inspnochar"' in page, "the UI has a one-click 'only the pose and background'")
+    check("INSP_ORDER" in page and "'drop'" not in page.split("INSP_ORDER")[1][:120],
+          "…and never offers the medium bucket as a choice")
+    check('class="insppart"' in page, "each bucket is separately switchable")
 
 
 def test_ui_smoke() -> None:
@@ -4413,6 +4814,9 @@ async def main() -> int:
     test_vendored_skill()
     test_accessibility()
     test_ui_smoke()
+    test_naiweights()
+    test_posebook()
+    test_inspect_parts()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()

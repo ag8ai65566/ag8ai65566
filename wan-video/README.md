@@ -453,6 +453,17 @@ Docker `docker compose --profile watch up -d`。
 **最省事的做法是用 app 內建的 LoRA 分頁**（見上）—— 搜尋、看預覽、一鍵安裝，
 觸發詞也會一起存下來。需要一個 CivitAI API key 才能下載。
 
+### 動作／姿勢庫（法典）—— 教程在 [`docs/pose-library.md`](docs/pose-library.md)
+
+**提詞庫**分頁最上面：285 個動作、26 位畫師、依原文的 8 大類 / 35 小節排好，
+填上你要的角色 → 點動作 → 送到圖片提詞。
+
+要緊的是這份法典是給 **NovelAI** 寫的，而 **ComfyUI 完全不認得 NAI 的權重語法**
+（`{{{x}}}`、`[[[x]]]`、`1.3::x::` 全部被當成純文字，權重一律 1.0 外加括號雜訊）。
+匯入時整份都照法典自己寫的換算率轉成 `(x:1.2)`，並拿 ComfyUI 自己的解析器
+驗過 **2643 個加權 tag**。同時把**畫師 tag 和測試角色抽成獨立、預設關閉的兩組** ——
+它們是當初測試者的選擇，留在裡面會直接蓋掉你在角色包選的畫師和角色。
+
 ### 角色包（大型角色 LoRA 一鍵切換）—— 教程在 [`docs/character-packs.md`](docs/character-packs.md)
 
 一支大型角色 LoRA 不是一個觸發詞，是好幾百個。**Hololive Collection 一支就有
@@ -591,11 +602,15 @@ app/
   server.py            上傳 → 佇列 → mp4；模型與 LoRA 的 API
   watcher.py           拖檔模式
   check.py             環境檢查
+  naiweights.py        NovelAI 語法 → ComfyUI 權重（{{}} / [[]] / 1.3::x::）
+  posebook.py          動作／姿勢法典的解析與一鍵組裝
+  poses/               法典資料（一個 JSON 一份法典）
   static/index.html    網頁介面（影片 / 圖片 / 素材庫 / LoRA / 模型 / 提詞庫 / 設定）
 docs/
   comic-restage.md     漫畫分鏡克隆的完整教程
   character-packs.md   角色包的用法與資料格式
   faq.md               設定、更新、LoRA 共存、畫風貼近原畫師
+  pose-library.md      動作／姿勢法典：NAI→ComfyUI 權重換算、畫師 tag 分離
   codex-mcp.md         讓 Claude Code 跟 OpenAI Codex 協作（選用）
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/

@@ -543,6 +543,49 @@
 
   <!-- ================= 提詞庫 ================= -->
   <div id="tab-pb" role="tabpanel" tabindex="0" class="hidden">
+
+    <!-- ---------- pose / action codex ---------- -->
+    <div class="card" id="pkcard">
+      <div class="row" style="margin-top:0;align-items:baseline">
+        <h2 style="margin:0">動作／姿勢庫 <span class="s" id="pkcount"></span></h2>
+        <div class="spacer"></div>
+        <button class="ghost tiny" id="pktoggle" aria-expanded="true"
+                aria-controls="pkbody">收起</button>
+      </div>
+      <div id="pkbody">
+        <div id="pknote" class="note"></div>
+        <div class="toolbar">
+          <input type="text" id="pkq" aria-label="搜尋動作" placeholder="搜動作名稱或 tag…" style="flex:1;min-width:200px">
+          <label class="f">人數
+            <select id="pkpeople"><option value="">全部</option></select>
+          </label>
+          <label class="f">分類
+            <select id="pkgroup"><option value="">全部</option></select>
+          </label>
+        </div>
+        <div class="row">
+          <label class="chk" title="法典裡每條動作都帶著測試者自己的畫師串。預設關掉，因為它會蓋掉你在角色包裡選的畫師。">
+            <input type="checkbox" id="pkartists"> 一起帶入原本的畫師 tag
+          </label>
+          <label class="f" id="pkawrap" style="display:none">畫師權重
+            <input type="range" id="pkaw" min="0.3" max="1.8" step="0.05" value="1">
+            <span class="s" id="pkawv">1.0</span>
+          </label>
+          <label class="chk" title="法典測試時用的角色（例如 elaina）。預設關掉，否則會跟你自己要畫的角色打架。">
+            <input type="checkbox" id="pkcast"> 一起帶入原本的角色 tag
+          </label>
+        </div>
+        <div class="row">
+          <label class="f" style="flex:1;min-width:220px">前面接上（角色提詞）
+            <input type="text" id="pkhead" placeholder="例：mori calliope, hololive　←　可從角色包一鍵帶入">
+          </label>
+        </div>
+        <div id="pklist" class="wrap"></div>
+        <div id="pkout" class="hidden"></div>
+      </div>
+    </div>
+
+    <h2>我的範例 <span class="s" id="pbtotal2"></span></h2>
     <div class="card">
       <div class="toolbar">
         <input type="text" id="pbq" aria-label="搜尋提詞庫" placeholder="搜尋你的範例（空白分隔＝要全部符合）" style="flex:1;min-width:220px">
@@ -561,7 +604,7 @@
       <div id="pbsources" class="row"></div>
     </div>
     <div id="pbpreview" class="card hidden"></div>
-    <h2>我的範例 <span class="s" id="pbtotal"></span></h2>
+    <div class="s" id="pbtotal"></div>
     <div id="pblist"></div>
     <div class="row"><button class="ghost hidden" id="pbmore">載入更多</button></div>
   </div>
@@ -2227,10 +2270,28 @@ function renderInspect() {
   if (d.tags) {
     const t = d.tags;
     const chip = (x) => `<span class="tag" title="信心 ${x.p}">${esc(x.name)}</span>`;
+    const pp = t.parts || {};
+    // Which buckets go into the box is a choice, not a fixed answer: often only
+    // the staging is wanted ("the pose and the background, I'll add my own
+    // character"). Dropping the character *name* alone is not enough for that -
+    // the hair, eyes and body the tagger reported follow the character too - so
+    // all three are separate switches.
     parts.push('<h2>看圖猜到的內容（danbooru 標籤）</h2><div class="card" style="background:var(--panel2)">'
       + (t.characters.length ? `<div class="words" style="margin-bottom:6px"><b class="s">角色：</b>${t.characters.map(chip).join('')}</div>` : '')
       + `<div class="words">${t.general.map(chip).join('')}</div>`
+      + '<div class="row" style="margin-top:8px"><b class="s" style="align-self:center">要放進提詞的部分：</b>'
+      + [['character', `角色名`, pp.character],
+         ['look', `外觀（髮色／眼睛／身材）`, pp.look],
+         ['outfit', `服裝`, pp.outfit],
+         ['scene', `動作·構圖·背景`, pp.scene]].map(([k, label, list]) =>
+        `<label class="chk"><input type="checkbox" class="insppart" data-part="${k}" checked${
+          (list || []).length ? '' : ' disabled'}> ${esc(label)}
+          <span class="s">${(list || []).length}</span></label>`).join('')
+      + '<div class="spacer"></div>'
+      + '<button class="ghost tiny" id="inspnochar">只要動作和背景</button>'
+      + '<button class="ghost tiny" id="inspall">全部</button></div>'
       + `<textarea id="insptags" style="margin-top:8px;min-height:60px">${esc(t.prompt)}</textarea>`
+      + '<div class="s" id="insppartnote"></div>'
       + '</div>');
   } else if (d.tagger_error) {
     parts.push(`<div class="banner tight">${esc(d.tagger_error)}
@@ -2255,6 +2316,42 @@ function renderInspect() {
   const dl = $('#getTagger');
   if (dl) dl.onclick = () => document.querySelector('.tabs button[data-tab="mdl"]').click();
   $('#inspapply').onclick = applyInspect;
+  wireInspectParts();
+}
+
+// Which buckets are ticked -> the tag box. `drop` is never offered: those tags
+// describe the medium (comic, monochrome, speech bubble, watermark) and carrying
+// them into a fresh generation is never what anyone means.
+const INSP_ORDER = ['character', 'look', 'outfit', 'scene'];
+
+function inspectTags() {
+  const pp = (INSP && INSP.tags && INSP.tags.parts) || {};
+  const on = new Set([...document.querySelectorAll('.insppart')]
+    .filter((c) => c.checked).map((c) => c.dataset.part));
+  const out = [];
+  INSP_ORDER.forEach((k) => { if (on.has(k)) out.push(...(pp[k] || [])); });
+  return out;
+}
+
+function wireInspectParts() {
+  const boxes = [...document.querySelectorAll('.insppart')];
+  if (!boxes.length) return;
+  const paint = () => {
+    const tags = inspectTags();
+    $('#insptags').value = tags.join(', ');
+    const off = boxes.filter((b) => !b.checked && !b.disabled).length;
+    $('#insppartnote').textContent = off
+      ? `已拿掉 ${off} 組，剩 ${tags.length} 個標籤。人物部分自己補上就行。`
+      : `${tags.length} 個標籤（全部）。`;
+  };
+  boxes.forEach((b) => { b.onchange = paint; });
+  const set = (parts) => {
+    boxes.forEach((b) => { if (!b.disabled) b.checked = parts.includes(b.dataset.part); });
+    paint();
+  };
+  $('#inspnochar').onclick = () => set(['scene']);
+  $('#inspall').onclick = () => set(INSP_ORDER);
+  paint();
 }
 
 function applyInspect() {
@@ -3360,6 +3457,220 @@ async function refreshStats() {
   } catch {}
 }
 
+/* ---------- pose / action codex ---------- */
+// The whole book arrives in one response and is filtered here. It is ~380KB for
+// 285 entries, and the alternative - a round trip per keystroke - would make the
+// search feel worse than scrolling the original document, which is the thing
+// this is meant to replace.
+let PK = { books: [], book: null, poses: [], open: '', artist_negative: '' };
+
+async function refreshPosebook() {
+  try {
+    const d = await (await fetch('/api/posebook')).json();
+    PK.books = d.books || [];
+    PK.artist_negative = d.artist_negative || '';
+    PK.book = PK.books[0] || null;
+    if (!PK.book) { $('#pkcard').classList.add('hidden'); return; }
+    // Flatten once: every render filters this, and the group/section labels are
+    // needed on each row anyway.
+    PK.poses = [];
+    (PK.book.groups || []).forEach((g) => (g.sections || []).forEach((s) =>
+      (s.poses || []).forEach((p) => PK.poses.push(p))));
+    const people = [...new Set(PK.poses.map((p) => p.people).filter(Boolean))];
+    $('#pkpeople').innerHTML = '<option value="">全部</option>'
+      + people.map((x) => `<option>${esc(x)}</option>`).join('');
+    const groups = [...new Set(PK.poses.map((p) => p.group))];
+    $('#pkgroup').innerHTML = '<option value="">全部</option>'
+      + groups.map((x) => `<option>${esc(x)}</option>`).join('');
+    const nArt = (PK.book.artists || []).length;
+    $('#pkcount').textContent = `${PK.book.count} 個動作 · ${nArt} 位畫師`;
+    const bits = [];
+    if (PK.book.note) bits.push(esc(PK.book.note));
+    if (PK.book.source) bits.push(`來源：${esc(PK.book.source)}`);
+    if (PK.book.skipped) {
+      bits.push(`<b>已排除 ${PK.book.skipped} 條、${PK.book.skipped_variants} 個版本</b>`
+        + '（含未成年相關 tag，這是唯一被過濾掉的東西）');
+    }
+    bits.push('原文是 <b>NovelAI 語法</b>（<code>{{}}</code>／<code>[[]]</code>／'
+      + '<code>1.3::x::</code>），ComfyUI <b>完全不吃</b> —— 全部照 1.05／1.1 的換算'
+      + '改成 <code>(x:1.2)</code> 了，權重才會真的生效。');
+    if ((PK.book.advice || []).length) {
+      bits.push('<details style="margin-top:4px"><summary class="s">原作者的使用建議</summary>'
+        + PK.book.advice.map((a) => `<div class="s">· ${esc(a)}</div>`).join('') + '</details>');
+    }
+    $('#pknote').innerHTML = bits.join('<br>');
+    renderPoses();
+  } catch { $('#pkcard').classList.add('hidden'); }
+}
+
+function pkFiltered() {
+  const q = $('#pkq').value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+  const people = $('#pkpeople').value, group = $('#pkgroup').value;
+  return PK.poses.filter((p) => {
+    if (people && p.people !== people) return false;
+    if (group && p.group !== group) return false;
+    if (!q.length) return true;
+    const hay = [p.title, p.section, p.group, p.author, p.note,
+      ...(p.variants || []).map((v) => v.prompt + ' ' + v.label),
+      ...(p.artist_names || [])].join(' ').toLowerCase();
+    return q.every((w) => hay.includes(w));
+  });
+}
+
+function renderPoses() {
+  const list = pkFiltered();
+  const shown = list.slice(0, 400);
+  let section = '';
+  const parts = [];
+  shown.forEach((p) => {
+    const key = p.group + ' / ' + p.section;
+    if (key !== section) {
+      section = key;
+      parts.push(`<div class="s" style="margin:10px 0 4px;color:var(--muted)"><b>${esc(key)}</b></div>`);
+    }
+    const marks = [];
+    if ((p.variants || []).length > 1) marks.push(`${p.variants.length} 版本`);
+    if ((p.artist_names || []).length) marks.push(`${p.artist_names.length} 畫師`);
+    if ((p.character_names || []).length) marks.push('含測試角色');
+    parts.push(`<button class="tag pk" data-pose="${esc(p.id)}"
+      title="${esc(p.author ? '作者：' + p.author : '')}">${esc(p.title)}${
+      marks.length ? `<span class="s"> · ${esc(marks.join(' · '))}</span>` : ''}</button>`);
+  });
+  if (!shown.length) parts.push('<div class="s">沒有符合的動作。</div>');
+  else if (list.length > shown.length) {
+    parts.push(`<div class="s" style="margin-top:6px">另外還有 ${list.length - shown.length} 個，縮小搜尋範圍看得到。</div>`);
+  }
+  $('#pklist').innerHTML = parts.join('');
+  $('#pklist').querySelectorAll('button.pk').forEach((b) => {
+    b.onclick = () => pickPose(b.dataset.pose);
+  });
+}
+
+async function pickPose(id, variant) {
+  const pose = PK.poses.find((p) => p.id === id);
+  if (!pose) return;
+  PK.open = id;
+  const idx = Number.isInteger(variant) ? variant : 0;
+  const body = {
+    pose: id, variant: idx,
+    artists: $('#pkartists').checked,
+    artist_weight: parseFloat($('#pkaw').value) || 1,
+    cast: $('#pkcast').checked,
+    head: $('#pkhead').value,
+  };
+  let built;
+  try {
+    const r = await fetch(`/api/posebook/${encodeURIComponent(PK.book.id)}/prompt`,
+      { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    built = await r.json();
+    if (!r.ok) throw new Error(built.detail || r.statusText);
+  } catch (e) {
+    $('#pkout').classList.remove('hidden');
+    $('#pkout').innerHTML = `<div class="errbox">組不出提詞：${esc(e.message)}</div>`;
+    return;
+  }
+  const v = pose.variants[idx] || pose.variants[0];
+  const parts = [`<h2 style="margin-top:14px">${esc(pose.title)}
+    <span class="s">${esc(pose.group)} / ${esc(pose.section)}${pose.author ? ' · 作者 ' + esc(pose.author) : ''}</span></h2>`];
+
+  if (pose.variants.length > 1) {
+    parts.push('<div class="words">' + pose.variants.map((x, i) => {
+      const marks = [];
+      if ((x.artist_names || []).length) marks.push('含畫師');
+      if ((x.character_names || []).length) marks.push('含角色');
+      return `<button class="tag${i === idx ? ' done' : ''}" data-v="${i}">${
+        esc(x.label || '主要版本')}${marks.length ? `<span class="s"> · ${marks.join('·')}</span>` : ''}</button>`;
+    }).join('') + '</div>');
+  }
+  parts.push(`<label class="f">提詞（動作部分）
+    <textarea id="pkprompt" style="min-height:76px">${esc(built.prompt)}</textarea></label>`);
+  if (built.negative) {
+    parts.push(`<label class="f">建議負面提詞
+      <textarea id="pkneg" style="min-height:48px">${esc(built.negative)}</textarea></label>`);
+  }
+  if ((pose.artist_names || []).length) {
+    parts.push('<div class="note"><b>這條原本帶的畫師：</b>'
+      + pose.artist_names.map((n) => `<span class="tag">${esc(n)}</span>`).join(' ')
+      + `<div class="s" style="margin-top:4px">${$('#pkartists').checked
+        ? '目前<b>有</b>帶入。它會蓋掉你在角色包裡選的畫師 —— 兩邊只留一邊比較好。'
+          + (built.artists_borrowed
+            ? `（這個版本自己沒附，用的是「${esc(built.artists_from || '')}」那版的）` : '')
+        : '目前<b>沒有</b>帶入，所以畫風由你自己的角色包／畫師設定決定。'}</div></div>`);
+  }
+  if ((v.character_names || []).length) {
+    parts.push('<div class="note"><b>原作者是用這些角色測的：</b>'
+      + v.character_names.map((n) => `<span class="tag">${esc(n)}</span>`).join(' ')
+      + `<div class="s" style="margin-top:4px">${$('#pkcast').checked
+        ? '目前<b>有</b>帶入 —— 你自己要畫的角色會跟它打架。'
+        : '目前<b>沒有</b>帶入，動作照用、角色換成你的。'}</div></div>`);
+  }
+  (built.placeholders || []).length && parts.push(
+    `<div class="banner tight"><b>這條有作者留給你自己填的空位：</b>`
+    + built.placeholders.map((x) => `<code>${esc(x)}</code>`).join('、')
+    + '<div class="s">照原文的意思，那幾個中文字要換成你要的 tag。</div></div>');
+  (built.notes || []).forEach((n) => parts.push(`<div class="s">· ${esc(n)}</div>`));
+  if (pose.note) parts.push(`<div class="note"><b>原文備註</b><div class="s">${esc(pose.note)}</div></div>`);
+  parts.push(`<div class="row">
+    <button class="go" id="pkuse">送到圖片提詞</button>
+    <button class="ghost" id="pkappend">接在現有提詞後面</button>
+    <button class="ghost" id="pkraw">看原文 tag</button>
+    <div class="spacer"></div>
+    <button class="ghost" id="pkclose">關掉</button></div>
+    <pre id="pkrawbox" class="hidden s" style="white-space:pre-wrap;word-break:break-all">${esc(v.raw)}</pre>`);
+
+  $('#pkout').classList.remove('hidden');
+  $('#pkout').innerHTML = parts.join('');
+  $('#pkout').querySelectorAll('button[data-v]').forEach((b) => {
+    b.onclick = () => pickPose(id, parseInt(b.dataset.v, 10));
+  });
+  $('#pkuse').onclick = () => sendPose(false);
+  $('#pkappend').onclick = () => sendPose(true);
+  $('#pkclose').onclick = () => { $('#pkout').classList.add('hidden'); PK.open = ''; };
+  $('#pkraw').onclick = () => $('#pkrawbox').classList.toggle('hidden');
+}
+
+function sendPose(append) {
+  const prompt = $('#pkprompt') ? $('#pkprompt').value : '';
+  const neg = $('#pkneg') ? $('#pkneg').value : '';
+  const box = $('#iprompt');
+  box.value = append && box.value.trim()
+    ? box.value.trim().replace(/,\s*$/, '') + ', ' + prompt : prompt;
+  box.dataset.touched = '1';
+  if (neg) {
+    const nb = $('#inegative');
+    const have = nb.value.trim().replace(/,\s*$/, '');
+    // Merge rather than replace: the base model's own negative is already in
+    // there and dropping it to add four tags would be a bad trade.
+    const seen = new Set(have.split(',').map((x) => x.trim()).filter(Boolean));
+    const add = neg.split(',').map((x) => x.trim()).filter((x) => x && !seen.has(x));
+    if (add.length) { nb.value = [have, ...add].filter(Boolean).join(', '); nb.dataset.touched = '1'; }
+  }
+  document.querySelector('.tabs button[data-tab="img"]').click();
+  $('#iprompt').focus();
+}
+
+function wirePosebook() {
+  ['pkq'].forEach((id) => { $('#'+id).oninput = renderPoses; });
+  ['pkpeople','pkgroup'].forEach((id) => { $('#'+id).onchange = renderPoses; });
+  const reopen = () => { if (PK.open) pickPose(PK.open); };
+  $('#pkartists').onchange = () => {
+    $('#pkawrap').style.display = $('#pkartists').checked ? '' : 'none';
+    reopen();
+  };
+  $('#pkcast').onchange = reopen;
+  $('#pkhead').onchange = reopen;
+  $('#pkaw').oninput = () => {
+    $('#pkawv').textContent = (parseFloat($('#pkaw').value) || 1).toFixed(2).replace(/0$/, '');
+  };
+  $('#pkaw').onchange = reopen;
+  $('#pktoggle').onclick = () => {
+    const body = $('#pkbody'), hide = !body.classList.contains('hidden');
+    body.classList.toggle('hidden', hide);
+    $('#pktoggle').textContent = hide ? '展開' : '收起';
+    $('#pktoggle').setAttribute('aria-expanded', String(!hide));
+  };
+}
+
 async function boot() {
   // restore prefs
   $('#autoplay').checked = P.get('autoplay', false);
@@ -3392,6 +3703,7 @@ async function boot() {
   await refreshLoras(true);
   await refreshJobs(true);
   refreshDownloads(); refreshStats(); renderUpscalers(); refreshPb();
+  wirePosebook(); refreshPosebook();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }
