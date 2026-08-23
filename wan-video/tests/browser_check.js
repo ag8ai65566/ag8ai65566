@@ -196,6 +196,85 @@ const { chromium } = require('playwright');
   check(v === '1girl', 'clear removes only what the strip added -> ' + v);
 
 
+  // ---- official reference art ----
+  // Needs the fixture files; skipped when they are not present.
+  const REFDIR = process.env.REFTEST_DIR || '';
+  if (REFDIR) {
+  // Start from empty, or the second run of this file sees the first run's
+  // imports and every count is off by the previous run.
+  await page.evaluate(async () => {
+    const d = await (await fetch('/api/refs?pack=hololive-collection')).json();
+    const all = [...(d.unfiled || [])];
+    for (const key of Object.keys(d.counts || {})) {
+      const r = await (await fetch(`/api/refs/hololive-collection/${key}`)).json();
+      all.push(...(r.refs || []));
+    }
+    for (const ref of all) {
+      await fetch(`/api/refs/hololive-collection/${ref.name}`, { method: 'DELETE' });
+    }
+  });
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.click('.tabs button[data-tab="img"]');
+  await page.waitForTimeout(700);
+  check(await page.isVisible('#refbox'), 'the reference panel is on the character page');
+  check((await page.textContent('#refnote')).includes('照檔名自動分'), 'empty state explains what to do');
+
+  await page.setInputFiles('#reffiles', [
+    REFDIR+'Mori Calliope - 1st Costume.png', REFDIR+'hoshimachi_suisei_03.png',
+    REFDIR+'Gawr Gura official art.png', REFDIR+'Shirogane Noel.png',
+    REFDIR+'IMG_2831.png', REFDIR+'noel.png', REFDIR+'batch.zip']);
+  await page.waitForTimeout(2500);
+  const refNote = await page.textContent('#refnote');
+  check(refNote.includes('匯入完成'), 'import ran -> ' + refNote.replace(/\s+/g,' ').slice(0,90));
+  check(/7 張對到角色/.test(refNote), '…and filed the 7 nameable ones (4 loose + 3 in the zip)');
+  check(/2 張沒對到/.test(refNote), '…and declined the 2 ambiguous ones rather than guessing');
+
+  const refCnt = await page.textContent('#refcount');
+  check(/全部 9 張/.test(refCnt), 'the zip was unpacked too (4+3+2 distinct) -> ' + refCnt);
+
+  // pick a character and see her own references
+  await page.fill('#packfind','calliope'); await page.waitForTimeout(500);
+  await page.evaluate(()=>{ const b=document.querySelector('#packmembers button'); if(b) b.click(); });
+  await page.waitForTimeout(800);
+  const refMine = await page.evaluate(()=>document.querySelectorAll('#reflist button[data-ref]').length);
+  check(refMine === 1, `the selected member shows her own reference (${refMine})`);
+
+  // one click -> img2img source
+  await page.click('#reflist button[data-ref]'); await page.waitForTimeout(400);
+  check(await page.isVisible('#refasinit'), 'clicking a thumbnail asks what to use it for');
+  await page.click('#refasinit'); await page.waitForTimeout(700);
+  const refStatus = await page.textContent('#istatus');
+  check(refStatus.includes('來源圖'), 'it becomes the img2img source -> ' + refStatus.slice(0,60));
+  check(await page.isVisible('#i2i'), '…and the img2img panel opens');
+  const refDn = await page.inputValue('#idenoise').catch(()=>'');
+  check(refDn === '0.45', `…with denoise pre-set into the useful band (${refDn})`);
+
+  // the unfiled queue
+  await page.click('#refunfiled'); await page.waitForTimeout(500);
+  const refUn = await page.textContent('#refunfiledbox');
+  check(refUn.includes('沒對到'), 'the unfiled queue lists them');
+  check(refUn.includes('不會亂猜'), '…and says why it declined');
+  const refSels = await page.evaluate(()=>document.querySelectorAll('#refunfiledbox select[data-assign]').length);
+  check(refSels === 2, `…with a picker per file (${refSels})`);
+  await page.selectOption('#refunfiledbox select[data-assign]', { label: 'Shirogane Noel' });
+  await page.waitForTimeout(900);
+  const refCnt2 = await page.textContent('#refcount');
+  check(/1 張沒對到/.test(refCnt2) || !/沒對到/.test(refCnt2), 'assigning by hand moves it -> ' + refCnt2);
+  // Tidy up so a later run - or the user's own library - is not polluted.
+  await page.evaluate(async () => {
+    const d = await (await fetch('/api/refs?pack=hololive-collection')).json();
+    const all = [...(d.unfiled || [])];
+    for (const key of Object.keys(d.counts || {})) {
+      const r = await (await fetch(`/api/refs/hololive-collection/${key}`)).json();
+      all.push(...(r.refs || []));
+    }
+    for (const ref of all) {
+      await fetch(`/api/refs/hololive-collection/${ref.name}`, { method: 'DELETE' });
+    }
+  });
+
+  }
+
   // ---- "why doesn't it look like the stream model" ----
   await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='noobai'; s.dispatchEvent(new Event('change')); });
   await page.waitForTimeout(400);

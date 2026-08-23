@@ -37,6 +37,7 @@ import posebook
 import promptbook
 import prompts
 import quicktags
+import refs as refslib
 import registry
 import tags
 import updates
@@ -1463,6 +1464,139 @@ async def list_quicktags() -> JSONResponse:
     return JSONResponse(quicktags.public())
 
 
+# -- official reference art --------------------------------------------------
+#
+# The point of this whole group of endpoints is one button: take a picture the
+# user collected and hand it to the generator as an image, because words average
+# and a picture does not. Everything else here is filing.
+
+REF_LIB = refslib.RefLibrary(config.REFS_DIR)
+REF_LIB.load()
+
+
+def _ref_candidates(pack_id: str):
+    pack = charpacks.get(pack_id)
+    return refslib.candidates_from_pack(pack) if pack else []
+
+
+@app.get("/api/refs")
+async def list_refs(pack: str = "hololive-collection") -> JSONResponse:
+    REF_LIB.load()
+    return JSONResponse({
+        "pack": pack,
+        "counts": REF_LIB.counts(pack),
+        "unfiled": [r.public("/refs") for r in REF_LIB.unfiled(pack)],
+        "total": sum(1 for r in REF_LIB.refs if r.pack == pack),
+    })
+
+
+@app.get("/api/refs/{pack}/{character}")
+async def refs_for_character(pack: str, character: str) -> JSONResponse:
+    REF_LIB.load()
+    return JSONResponse({
+        "refs": [r.public("/refs") for r in REF_LIB.for_character(pack, character)]
+    })
+
+
+@app.post("/api/refs/import")
+async def import_refs(files: list[UploadFile], pack: str = Form("hololive-collection")
+                      ) -> JSONResponse:
+    """Take a pile of downloaded images (or a zip of them) and file them.
+
+    Reports what it could not place rather than guessing: an unmatched file is
+    one click to assign, a mis-matched one is a wrong reference you find out
+    about three generations later.
+    """
+    cands = _ref_candidates(pack)
+    if not cands:
+        raise HTTPException(400, f"不認識的角色包：{pack}")
+    REF_LIB.load()
+    filed, unfiled, dupes, failed = 0, 0, 0, []
+    for upload in files:
+        raw = await upload.read()
+        name = upload.filename or "image.png"
+        items: list[tuple[str, bytes]] = []
+        if name.lower().endswith(".zip"):
+            import io
+            import zipfile
+            try:
+                with zipfile.ZipFile(io.BytesIO(raw)) as zf:
+                    for info in zf.infolist():
+                        if info.is_dir() or info.file_size > refslib.MAX_BYTES:
+                            continue
+                        if Path(info.filename).suffix.lower() in refslib.IMAGE_SUFFIXES:
+                            items.append((Path(info.filename).name, zf.read(info)))
+            except Exception as exc:  # noqa: BLE001
+                failed.append(f"{name}: 解不開（{type(exc).__name__}）")
+                continue
+        else:
+            items.append((name, raw))
+        for item_name, data in items:
+            try:
+                ref = REF_LIB.add(data, item_name, pack, cands)
+            except ValueError as exc:
+                failed.append(str(exc))
+                continue
+            if ref.note == "duplicate":
+                dupes += 1
+            elif ref.character:
+                filed += 1
+            else:
+                unfiled += 1
+    REF_LIB.save()
+    return JSONResponse({
+        "filed": filed, "unfiled": unfiled, "dupes": dupes, "failed": failed[:20],
+        "counts": REF_LIB.counts(pack),
+        "unfiled_list": [r.public("/refs") for r in REF_LIB.unfiled(pack)],
+    })
+
+
+@app.post("/api/refs/{pack}/{name}/assign")
+async def assign_ref(pack: str, name: str, payload: dict = Body(default={})
+                     ) -> JSONResponse:
+    REF_LIB.load()
+    ref = REF_LIB.get(pack, name)
+    if ref is None:
+        raise HTTPException(404, "找不到這張參考圖")
+    payload = payload if isinstance(payload, dict) else {}
+    character = str(payload.get("character", ""))
+    if character and not any(c.key == character for c in _ref_candidates(pack)):
+        raise HTTPException(400, f"這個角色包裡沒有：{character}")
+    REF_LIB.assign(ref, character)
+    REF_LIB.save()
+    return JSONResponse(ref.public("/refs"))
+
+
+@app.delete("/api/refs/{pack}/{name}")
+async def delete_ref(pack: str, name: str) -> JSONResponse:
+    REF_LIB.load()
+    if not REF_LIB.delete(pack, name):
+        raise HTTPException(404, "找不到這張參考圖")
+    REF_LIB.save()
+    return JSONResponse({"ok": True})
+
+
+@app.post("/api/refs/{pack}/{name}/use")
+async def use_ref(pack: str, name: str) -> JSONResponse:
+    """Copy a reference into staging so a generation can use it.
+
+    Same staging path an uploaded source image takes, so it works with img2img
+    and ControlNet without either of those knowing references exist.
+    """
+    REF_LIB.load()
+    ref = REF_LIB.get(pack, name)
+    if ref is None:
+        raise HTTPException(404, "找不到這張參考圖")
+    source = REF_LIB.path(ref)
+    if not source.is_file():
+        raise HTTPException(404, "這張參考圖的檔案不見了")
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    staged = f"ref-{uuid.uuid4().hex[:10]}{source.suffix.lower()}"
+    (config.STAGING_DIR / staged).write_bytes(source.read_bytes())
+    return JSONResponse({"name": staged, "width": ref.width, "height": ref.height,
+                         "original": ref.original})
+
+
 @app.get("/api/artists")
 async def list_artists() -> JSONResponse:
     """The artist roster: tag, style note, measured signals, post count."""
@@ -2339,6 +2473,11 @@ async def thumb(name: str) -> FileResponse:
 
 
 app.mount("/static", StaticFiles(directory=STATIC), name="static")
+# Reference art is served straight off disk. It never leaves the machine - the
+# whole app is local - and the paths are content hashes under a per-character
+# folder, so there is nothing to guess at.
+config.REFS_DIR.mkdir(parents=True, exist_ok=True)
+app.mount("/refs", StaticFiles(directory=config.REFS_DIR), name="refs")
 
 
 @app.get("/")

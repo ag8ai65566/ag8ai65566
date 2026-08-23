@@ -37,6 +37,11 @@ DONE_DIR = _dir("DONE_DIR", INBOX_DIR / "done")
 # there gets picked up, submitted as a video job and moved to done/ - which
 # would delete an image job's source out from under it before the worker runs.
 STAGING_DIR = _dir("STAGING_DIR", REPO / "data" / "staging", Path("/data/staging"))
+
+# Official reference art, filed per character. Kept out of OUTPUT_DIR on
+# purpose: these are inputs the user collected, not things this app generated,
+# and losing them to a history cleanup would be someone else's afternoon.
+REFS_DIR = _dir("REFS_DIR", REPO / "data" / "refs", Path("/data/refs"))
 APP_URL = os.environ.get("APP_URL", "http://127.0.0.1:8000")
 
 # Checkouts the update check looks at. In Docker the app does not own either of

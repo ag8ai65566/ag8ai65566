@@ -4197,6 +4197,109 @@ def test_likeness() -> None:
 
 
 
+def test_refs() -> None:
+    """Official reference art: filing a download, and refusing to guess.
+
+    The matcher is the whole feature - if it files Marine's art under Noel, the
+    user finds out three generations later - so the tests are mostly about what
+    it declines to do.
+    """
+    section("reference art")
+    import charpacks
+    import refs as refslib
+
+    pack = charpacks.get("hololive-collection")
+    cands = refslib.candidates_from_pack(pack)
+    check(len(cands) == 75, f"every character is a candidate ({len(cands)})")
+
+    # Shapes a downloaded file actually comes in.
+    for filename, want in [
+        ("Mori Calliope - 1st Costume.png", "mori-calliope"),
+        ("hoshimachi_suisei_03.jpg", "hoshimachi-suisei"),
+        ("星街すいせい.png", "hoshimachi-suisei"),
+        ("Gawr Gura 2nd outfit official art 1920x1080.png", "gawr-gura"),
+        ("houshou_marine_(1st_costume).webp", "houshou-marine"),
+        ("Nakiri Ayame (1st costume).png", "nakiri-ayame"),
+        ("tokino_sora_wallpaper_1920x1080_v2.png", "tokino-sora"),
+        ("sakura miko.webp", "sakura-miko"),
+        ("兎田ぺこら.png", "usada-pekora"),
+    ]:
+        got, score = refslib.match(filename, cands)
+        check(got == want, f"{filename!r} -> {want} (got {got or 'unfiled'}, {score:.2f})")
+
+    # …and the ones where guessing would be worse than declining.
+    for filename in ("IMG_2831.PNG", "random_landscape_photo.jpg", "noel.png",
+                     "DSC00194.jpg", "wallpaper.png"):
+        got, _ = refslib.match(filename, cands)
+        check(not got, f"{filename!r} is left unfiled rather than guessed ({got})")
+
+    # A real ambiguity in this pack: Pekomama's costume trigger contains
+    # "usada pekora", because danbooru tags mother and daughter together. The
+    # daughter wins on her own name; the mother only matched an outfit alias.
+    got, _ = refslib.match("Usada Pekora official art.png", cands)
+    check(got == "usada-pekora",
+          f"a name matching a character AND someone's outfit picks the character ({got})")
+    got, _ = refslib.match("Pekomama.png", cands)
+    check(got == "pekomama", f"…and the other one still files correctly ({got})")
+
+    # Store behaviour, on a scratch directory.
+    import shutil
+    root = TMP / "refs"
+    shutil.rmtree(root, ignore_errors=True)
+    lib_ = refslib.RefLibrary(root)
+    lib_.load()
+    png = (b"\x89PNG\r\n\x1a\n" + b"x" * 64)
+    a = lib_.add(png, "Mori Calliope.png", "p", cands)
+    check(a.character == "mori-calliope", "add() files by name")
+    check(a.note == "new", "…and reports it as new")
+    b = lib_.add(png, "a totally different name.png", "p", cands)
+    check(b.name == a.name and b.note == "duplicate",
+          "the same bytes are one file, reported as a duplicate not a second import")
+    check(len(lib_.refs) == 1, f"…and only one record exists ({len(lib_.refs)})")
+    c = lib_.add(png + b"different", "IMG_0001.png", "p", cands)
+    check(c.character == "", "an unnameable file lands unfiled")
+    check(len(lib_.unfiled("p")) == 1, "…and is listed as such")
+    lib_.assign(c, "gawr-gura")
+    check(lib_.path(c).is_file(), "assigning by hand moves the file on disk")
+    check(lib_.counts("p") == {"mori-calliope": 1, "gawr-gura": 1},
+          f"counts follow ({lib_.counts('p')})")
+    lib_.save()
+    again = refslib.RefLibrary(root)
+    again.load()
+    check(len(again.refs) == 2, "the index round-trips")
+    check(lib_.delete("p", a.name) and not lib_.path(a).is_file(),
+          "delete removes the file too")
+    shutil.rmtree(root, ignore_errors=True)
+
+    # Path safety: a pack or character id must never escape the refs folder.
+    # The property is *containment* - separators are stripped, so "../../etc"
+    # collapses to one harmless component rather than walking up.
+    store = refslib.RefLibrary(root)
+    for bad_pack, bad_char in (("../../etc", "../../../root"),
+                               ("..", ".."), ("a/b", "c\\d"), ("", "")):
+        where = store.folder(bad_pack, bad_char).resolve()
+        check(root.resolve() in where.parents or where == root.resolve(),
+              f"{bad_pack!r}/{bad_char!r} stays inside the refs folder ({where.name})")
+
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check('id="refbox"' in page and 'id="reffiles"' in page, "the UI exists")
+    check("refasinit" in page and "refasctrl" in page,
+          "…offering both img2img and ControlNet, which is the point")
+    check("不會亂猜" in page, "…and telling the user why something was left unfiled")
+    check("multiple" in page.split('id="reffiles"')[1][:200],
+          "…and accepting a whole download at once")
+
+    doc = ROOT / "docs" / "reference-art.md"
+    check(doc.is_file(), "the reference library is documented")
+    dtext = doc.read_text(encoding="utf-8")
+    check("不會亂猜" in dtext, "…including that it declines rather than guesses")
+    check("Pekomama" in dtext, "…with the real ambiguity spelled out")
+    check("路徑穿越" in dtext, "…and the traversal bug the tests caught")
+    check("docs/reference-art.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
+          "…and the README points at it")
+
+
+
 def test_ui_smoke() -> None:
     """Run the page's own script and call its render functions for real.
 
@@ -5172,6 +5275,7 @@ async def main() -> int:
     test_quicktags()
     test_artists()
     test_likeness()
+    test_refs()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()

@@ -384,6 +384,18 @@
           </label>
         </div>
         <div id="packlikenote" class="banner tight hidden"></div>
+        <div id="refbox" style="margin-top:8px;border-top:1px solid var(--line);padding-top:8px">
+          <div class="row" style="margin-top:0;align-items:baseline">
+            <b class="s">官方參考圖 <span class="s" id="refcount"></span></b>
+            <div class="spacer"></div>
+            <input type="file" id="reffiles" accept=".png,.jpg,.jpeg,.webp,.bmp,.zip" multiple hidden>
+            <button class="ghost tiny" id="refimport">匯入圖片／zip</button>
+            <button class="ghost tiny" id="refunfiled">看沒對到的</button>
+          </div>
+          <div class="s" id="refnote"></div>
+          <div id="reflist" class="row" style="gap:6px;flex-wrap:wrap"></div>
+          <div id="refunfiledbox" class="hidden" style="margin-top:6px"></div>
+        </div>
         <div class="row" style="margin-top:6px">
           <label class="chk"><input type="checkbox" id="packquality" checked> 加上這支 LoRA 的品質標籤</label>
           <label class="chk"><input type="checkbox" id="packkeep" checked> 保留我自己打的字</label>
@@ -1828,6 +1840,7 @@ function choosePack(id) {
     ...p.groups.map((g) => [g.id, `${g.label}（${g.members.length}）`])], '');
   renderPackState();
   renderPackMembers();
+  if (typeof refreshRefs === 'function') refreshRefs();
 }
 
 function renderPackState() {
@@ -1907,6 +1920,8 @@ function renderPackMembers() {
   $('#packmembers').querySelectorAll('[data-who]').forEach((b) => b.onclick = () => {
     PACK.who = b.dataset.who; PACK.costume = 0;
     renderPackMembers(); renderPackCostumes();
+    // Which references exist is per character, so switching person repaints it.
+    if (typeof refreshMyRefs === 'function') refreshMyRefs();
   });
   renderPackCostumes();
 }
@@ -3815,6 +3830,190 @@ function bareTag(chunk) {
   return t.replace(/\\/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
+/* ---------- official reference art ---------- */
+// Words average; a picture does not. This is the shortest path from "I have the
+// official art" to "the generator is looking at it": one click stages the file
+// and points either img2img or ControlNet at it.
+let REFS = { counts: {}, total: 0, unfiled: [], mine: [] };
+
+async function refreshRefs() {
+  const pack = PACK.chosen && PACK.chosen.id;
+  if (!pack) { $('#refbox').classList.add('hidden'); return; }
+  try {
+    const d = await (await fetch(`/api/refs?pack=${encodeURIComponent(pack)}`)).json();
+    REFS.counts = d.counts || {};
+    REFS.total = d.total || 0;
+    REFS.unfiled = d.unfiled || [];
+    await refreshMyRefs();
+  } catch { $('#refbox').classList.add('hidden'); }
+}
+
+async function refreshMyRefs() {
+  const pack = PACK.chosen && PACK.chosen.id;
+  REFS.mine = [];
+  if (pack && PACK.who) {
+    try {
+      const d = await (await fetch(
+        `/api/refs/${encodeURIComponent(pack)}/${encodeURIComponent(PACK.who)}`)).json();
+      REFS.mine = d.refs || [];
+    } catch {}
+  }
+  renderRefs();
+}
+
+function renderRefs() {
+  $('#refbox').classList.remove('hidden');
+  const n = REFS.mine.length;
+  $('#refcount').textContent = REFS.total
+    ? `這位 ${n} 張 · 全部 ${REFS.total} 張${REFS.unfiled.length ? ` · ${REFS.unfiled.length} 張沒對到` : ''}`
+    : '還沒有';
+  if (!REFS.total) {
+    $('#refnote').innerHTML = '把你下載的官方設定圖／立繪丟進來（可以整包 zip），'
+      + '會<b>照檔名自動分給每個角色</b>。之後點一下就能當來源圖或構圖參考 —— '
+      + '這是唯一能把「官方長相」直接餵給模型的方法。';
+    $('#reflist').innerHTML = '';
+    return;
+  }
+  if (!n) {
+    $('#refnote').innerHTML = PACK.who
+      ? '這位還沒有參考圖。匯入時檔名要看得出是誰，或用「看沒對到的」手動指定。'
+      : '先選一位角色。';
+    $('#reflist').innerHTML = '';
+    return;
+  }
+  $('#refnote').innerHTML = '點縮圖 → 選它要當<b>來源圖</b>（以圖生圖，重繪 0.4～0.6）'
+    + '還是<b>構圖參考</b>（ControlNet）。';
+  $('#reflist').innerHTML = REFS.mine.map((r) => `
+    <button class="ghost" data-ref="${esc(r.name)}"
+      style="padding:0;border-radius:8px;overflow:hidden;line-height:0"
+      title="${esc(r.original)}　${r.width}×${r.height}">
+      <img src="${esc(r.url)}" style="width:84px;height:84px;object-fit:cover;display:block">
+    </button>`).join('');
+  $('#reflist').querySelectorAll('button[data-ref]').forEach((b) => {
+    b.onclick = () => pickRef(b.dataset.ref);
+  });
+}
+
+async function pickRef(name) {
+  const pack = PACK.chosen.id;
+  const ref = REFS.mine.find((r) => r.name === name);
+  const box = $('#refunfiledbox');
+  box.classList.remove('hidden');
+  box.innerHTML = `<div class="banner tight">
+    <b>${esc(ref ? ref.original : name)}</b> 要拿來做什麼？
+    <div class="row" style="margin-top:6px">
+      <button class="go" id="refasinit">當來源圖（以圖生圖）</button>
+      <button class="ghost" id="refasctrl">當構圖參考（ControlNet）</button>
+      <div class="spacer"></div>
+      <button class="ghost tiny" id="refdel">刪掉這張</button>
+      <button class="ghost tiny" id="refcancel">取消</button>
+    </div></div>`;
+  const stage = async () => {
+    const r = await fetch(
+      `/api/refs/${encodeURIComponent(pack)}/${encodeURIComponent(name)}/use`,
+      { method: 'POST' });
+    if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
+    return r.json();
+  };
+  $('#refasinit').onclick = async () => {
+    try {
+      const d = await stage();
+      IMG.init = d.name;
+      $('#i2i').classList.remove('hidden');
+      $('#i2isize').textContent = `${d.original} · ${d.width}×${d.height}`;
+      // 0.45 sits in the band where the reference still governs the shapes but
+      // the prompt can still change what is happening. Not measured - see
+      // docs/character-packs.md - so it is a starting point, not a setting.
+      if ($('#idenoise')) { $('#idenoise').value = 0.45; $('#idenoise').dispatchEvent(new Event('input')); }
+      $('#istatus').textContent = `已把 ${d.original} 設成來源圖（重繪 0.45，可自己調）`;
+      box.classList.add('hidden');
+    } catch (e) { box.innerHTML = `<div class="errbox">${esc(e.message)}</div>`; }
+  };
+  $('#refasctrl').onclick = async () => {
+    try {
+      const d = await stage();
+      CN.ref = { name: d.name, width: d.width, height: d.height };
+      $('#istatus').textContent = `已把 ${d.original} 設成 ControlNet 構圖參考`;
+      if (typeof renderControlHelp === 'function') renderControlHelp();
+      box.classList.add('hidden');
+    } catch (e) { box.innerHTML = `<div class="errbox">${esc(e.message)}</div>`; }
+  };
+  $('#refdel').onclick = async () => {
+    await fetch(`/api/refs/${encodeURIComponent(pack)}/${encodeURIComponent(name)}`,
+                { method: 'DELETE' });
+    box.classList.add('hidden');
+    refreshRefs();
+  };
+  $('#refcancel').onclick = () => box.classList.add('hidden');
+}
+
+function renderUnfiled() {
+  const box = $('#refunfiledbox');
+  if (!REFS.unfiled.length) {
+    box.classList.remove('hidden');
+    box.innerHTML = '<div class="s">沒有待處理的 —— 全部都對到角色了。</div>';
+    return;
+  }
+  const options = (PACK.chosen ? (PACK.chosen.characters || []) : [])
+    .map((c) => `<option value="${esc(c.key)}">${esc(c.name)}</option>`).join('');
+  box.classList.remove('hidden');
+  box.innerHTML = '<div class="s" style="margin-bottom:4px">'
+    + `<b>${REFS.unfiled.length} 張沒對到</b> —— 檔名看不出是誰，或有兩位角色都符合。`
+    + '這種情況我<b>不會亂猜</b>，因為對錯人比沒對到更麻煩。</div>'
+    + REFS.unfiled.map((r) => `<div class="row" style="margin-top:4px;align-items:center">
+        <img src="${esc(r.url)}" style="width:56px;height:56px;object-fit:cover;border-radius:6px">
+        <span class="s" style="flex:1;min-width:140px">${esc(r.original)}</span>
+        <select data-assign="${esc(r.name)}" aria-label="指定角色">
+          <option value="">選一位角色…</option>${options}
+        </select>
+        <button class="ghost tiny" data-drop="${esc(r.name)}">刪掉</button>
+      </div>`).join('');
+  box.querySelectorAll('select[data-assign]').forEach((sel) => {
+    sel.onchange = async () => {
+      if (!sel.value) return;
+      await fetch(`/api/refs/${encodeURIComponent(PACK.chosen.id)}/${encodeURIComponent(sel.dataset.assign)}/assign`,
+        { method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ character: sel.value }) });
+      await refreshRefs();
+      renderUnfiled();
+    };
+  });
+  box.querySelectorAll('button[data-drop]').forEach((b) => {
+    b.onclick = async () => {
+      await fetch(`/api/refs/${encodeURIComponent(PACK.chosen.id)}/${encodeURIComponent(b.dataset.drop)}`,
+                  { method:'DELETE' });
+      await refreshRefs();
+      renderUnfiled();
+    };
+  });
+}
+
+function wireRefs() {
+  $('#refimport').onclick = () => $('#reffiles').click();
+  $('#refunfiled').onclick = renderUnfiled;
+  $('#reffiles').onchange = async () => {
+    const files = [...$('#reffiles').files];
+    if (!files.length) return;
+    $('#refnote').textContent = `匯入中…（${files.length} 個檔案）`;
+    const form = new FormData();
+    files.forEach((f) => form.append('files', f));
+    form.append('pack', PACK.chosen ? PACK.chosen.id : 'hololive-collection');
+    try {
+      const r = await fetch('/api/refs/import', { method:'POST', body: form });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      await refreshRefs();
+      $('#refnote').innerHTML = `匯入完成：<b>${d.filed} 張對到角色</b>`
+        + (d.unfiled ? `，${d.unfiled} 張沒對到（按「看沒對到的」手動指定）` : '')
+        + (d.dupes ? `，${d.dupes} 張是重複的（同一張圖只留一份）` : '')
+        + (d.failed.length ? `<br><span class="s">${d.failed.length} 個沒收：${esc(d.failed[0])}</span>` : '');
+    } catch (e) {
+      $('#refnote').innerHTML = `<span class="errbox">匯入失敗：${esc(e.message)}</span>`;
+    }
+    $('#reffiles').value = '';
+  };
+}
+
 /* ---------- "why doesn't it look like the stream model" ---------- */
 // The honest answer needs numbers, because the intuitive fix (name the original
 // designer) is the one that does not work, and saying so without evidence just
@@ -4346,7 +4545,7 @@ async function boot() {
   refreshDownloads(); refreshStats(); renderUpscalers(); refreshPb();
   wirePosebook(); refreshPosebook();
   wirePromptTools(); refreshQuickTags(); wireSize();
-  wireArtists(); refreshArtists(); wireLikeness();
+  wireArtists(); refreshArtists(); wireLikeness(); wireRefs();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }

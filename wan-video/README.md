@@ -453,6 +453,21 @@ Docker `docker compose --profile watch up -d`。
 **最省事的做法是用 app 內建的 LoRA 分頁**（見上）—— 搜尋、看預覽、一鍵安裝，
 觸發詞也會一起存下來。需要一個 CivitAI API key 才能下載。
 
+### 官方參考圖 —— 教程在 [`docs/reference-art.md`](docs/reference-art.md)
+
+角色包面板可以**整包匯入**你收集的官方設定圖／立繪（幾百個檔案或一個 zip 都行），
+它會**照檔名自動分給每個角色** —— `Mori Calliope - 1st Costume.png`、
+`hoshimachi_suisei_03.jpg`、`星街すいせい.png`、`兎田ぺこら.png` 都認得，
+解析度與 `official`／`wallpaper`／編號之類的雜訊會忽略。
+
+**對不上的它不會亂猜**（`IMG_2831.PNG`、只有名沒有姓的 `noel.png`、
+或兩位角色同樣符合時），留在「沒對到」清單讓你一秒指定 ——
+因為對錯人比沒對到麻煩得多。
+
+然後點縮圖就能把那張圖**當來源圖（以圖生圖）或構圖參考（ControlNet）**。
+這是唯一能把「官方長相」直接餵給模型的方法：danbooru 上這些角色只有 1～3%
+是官方圖，所以純靠提詞永遠只會得到同人平均值 —— **文字會平均，圖片不會**。
+
 ### 提詞權重與常用提詞 —— 教程在 [`docs/prompt-weights.md`](docs/prompt-weights.md)
 
 游標放在一個 tag 上按 **`Ctrl + ↑`** 就加權（每次 0.05，回到 1.0 時括號自動移除），
@@ -640,6 +655,7 @@ app/
   naiweights.py        NovelAI 語法 → ComfyUI 權重（{{}} / [[]] / 1.3::x::）
   posebook.py          動作／姿勢法典的解析與一鍵組裝
   quicktags.py         常用提詞清單（每個都查過 danbooru 實際圖片數）
+  refs.py              官方參考圖庫（檔名→角色的比對，對不上就不猜）
   artists.py           畫師清單（風格特徵用 danbooru lift 統計出來）
   poses/               法典資料（一個 JSON 一份法典）
   static/index.html    網頁介面（影片 / 圖片 / 素材庫 / LoRA / 模型 / 提詞庫 / 設定）
@@ -653,6 +669,7 @@ docs/
   codex-mcp.md         讓 Claude Code 跟 OpenAI Codex 協作（選用）
   codex-review-brief.md 給第二個模型審查用的自足摘要（主張＋數據＋我自己知道的弱點）
   review-response.md   對 Codex 審查的逐條回應：改了什麼、還沒做什麼
+  reference-art.md     官方參考圖：匯入、自動分角色、一鍵當來源圖／構圖參考
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡
