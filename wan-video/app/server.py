@@ -30,6 +30,7 @@ import controlnets
 import images
 import downloader
 import envfile
+import experiments as exp_mod
 import inspect_image
 import library
 import pagelayout
@@ -1462,6 +1463,185 @@ async def list_quicktags() -> JSONResponse:
     Static data, so it ships whole and is filtered in the browser.
     """
     return JSONResponse(quicktags.public())
+
+
+# -- experiments: fixed-seed sweeps ------------------------------------------
+
+EXPERIMENTS = exp_mod.ExperimentStore(config.OUTPUT_DIR / ".experiments.jsonl")
+EXPERIMENTS.load()
+
+
+def _provenance(payload: dict) -> dict:
+    """Hash what actually produced the pictures, by content not by filename."""
+    ckpt_dir = config.MODELS_DIR / "checkpoints"
+    lora_dir = config.MODELS_DIR / "loras"
+    wanted_models = set(payload.get("axes", {}).get("model", []) or [])
+    base_model = str(payload.get("base", {}).get("model", ""))
+    if base_model:
+        wanted_models.add(base_model)
+    checkpoints = {}
+    for model_id in wanted_models:
+        model = images.resolve(model_id, installed_checkpoints())
+        if model is not None:
+            path = ckpt_dir / model.file.name
+            if path.is_file():
+                checkpoints[model.file.name] = path
+    loras = {}
+    for entry in payload.get("base", {}).get("loras", []) or []:
+        name = str(entry.get("name", ""))
+        path = lora_dir / name
+        if name and path.is_file():
+            loras[name] = path
+    return exp_mod.provenance(
+        checkpoints=checkpoints, loras=loras,
+        comfy_commit=updates.head_commit(config.COMFY_DIR),
+        extra={"app_commit": updates.head_commit(config.REPO_DIR)})
+
+
+@app.get("/api/experiments")
+async def list_experiments() -> JSONResponse:
+    return JSONResponse({
+        "experiments": [e.public() for e in EXPERIMENTS.recent()],
+        "axes": exp_mod.AXES,
+        "criteria": exp_mod.CRITERIA,
+        "max_jobs": exp_mod.MAX_JOBS,
+        "max_seeds": exp_mod.MAX_SEEDS,
+    })
+
+
+@app.post("/api/experiments/preview")
+async def preview_experiment(payload: dict = Body(default={})) -> JSONResponse:
+    """What a sweep would cost, before committing a GPU to it."""
+    payload = payload if isinstance(payload, dict) else {}
+    seeds = [int(s) for s in payload.get("seeds", []) if str(s).lstrip("-").isdigit()]
+    if not seeds:
+        seeds = exp_mod.make_seeds(int(payload.get("seed_count", 3) or 3))
+    variants, warning = exp_mod.expand(payload.get("axes", {}) or {}, seeds)
+    return JSONResponse({
+        "variants": [v.public() for v in variants],
+        "seeds": seeds,
+        "jobs": len(variants) * len(seeds),
+        "warning": warning,
+    })
+
+
+@app.post("/api/experiments")
+async def create_experiment(payload: dict = Body(default={})) -> JSONResponse:
+    payload = payload if isinstance(payload, dict) else {}
+    base = payload.get("base", {}) or {}
+    if not isinstance(base, dict) or not base.get("prompt"):
+        raise HTTPException(400, "實驗要有一段基礎提詞")
+    seeds = [int(s) for s in payload.get("seeds", []) if str(s).lstrip("-").isdigit()]
+    if not seeds:
+        seeds = exp_mod.make_seeds(int(payload.get("seed_count", 3) or 3))
+    EXPERIMENTS.load()
+    experiment, warning = EXPERIMENTS.create(
+        str(payload.get("name", "")), base, payload.get("axes", {}) or {}, seeds,
+        _provenance(payload))
+    EXPERIMENTS.save()
+    return JSONResponse({**experiment.public(), "warning": warning})
+
+
+@app.post("/api/experiments/{exp_id}/run")
+async def run_experiment(exp_id: str) -> JSONResponse:
+    """Queue every cell of the matrix, on the same seeds.
+
+    Each job goes through the ordinary generate endpoint, so a sweep is exactly
+    the generation the user would have run by hand - same validation, same
+    graph, same history - just without the bookkeeping mistakes.
+    """
+    EXPERIMENTS.load()
+    experiment = EXPERIMENTS.get(exp_id)
+    if experiment is None:
+        raise HTTPException(404, "找不到這個實驗")
+    if experiment.job_count:
+        raise HTTPException(400, "這個實驗已經跑過了")
+    queued, failed = 0, []
+    for variant in experiment.variants:
+        variant.jobs = []
+        for seed in experiment.seeds:
+            request = exp_mod.settings_for(experiment.base, variant, seed)
+            request["batch"] = 1
+            try:
+                response = await image_generate(request)
+                record = json.loads(bytes(response.body).decode("utf-8"))
+            except HTTPException as exc:
+                failed.append(f"{variant.label}: {exc.detail}")
+                continue
+            variant.jobs.append(record["id"])
+            queued += 1
+    EXPERIMENTS.save()
+    return JSONResponse({**experiment.public(), "queued": queued,
+                         "failed": failed[:10]})
+
+
+@app.get("/api/experiments/{exp_id}")
+async def get_experiment(exp_id: str) -> JSONResponse:
+    EXPERIMENTS.load()
+    experiment = EXPERIMENTS.get(exp_id)
+    if experiment is None:
+        raise HTTPException(404, "找不到這個實驗")
+    # Attach the current state of each job so a contact sheet can render.
+    jobs = {}
+    for variant in experiment.variants:
+        for job_id in variant.jobs:
+            record = lib.records.get(job_id)
+            if record is not None:
+                jobs[job_id] = public(record)
+    return JSONResponse({**experiment.public(), "jobs": jobs})
+
+
+@app.get("/api/experiments/{exp_id}/pair")
+async def experiment_pair(exp_id: str, criterion: str = "likeness") -> JSONResponse:
+    """The next blind pair to judge, or nothing left."""
+    EXPERIMENTS.load()
+    experiment = EXPERIMENTS.get(exp_id)
+    if experiment is None:
+        raise HTTPException(404, "找不到這個實驗")
+    if criterion not in exp_mod.CRITERIA:
+        raise HTTPException(400, f"不認識的評分項目：{criterion}")
+    pair = exp_mod.next_pair(experiment, criterion)
+    if pair is None:
+        return JSONResponse({"done": True, "standings": experiment.standings()})
+    for side in ("a", "b"):
+        record = lib.records.get(pair[side]["job"])
+        pair[side]["image"] = public(record)["output"] if record else ""
+        pair[side]["ready"] = bool(record and record.status == "done")
+    return JSONResponse({"done": False, "pair": pair, "criterion": criterion,
+                         "question": exp_mod.CRITERIA[criterion]})
+
+
+@app.post("/api/experiments/{exp_id}/vote")
+async def experiment_vote(exp_id: str, payload: dict = Body(default={})
+                          ) -> JSONResponse:
+    EXPERIMENTS.load()
+    experiment = EXPERIMENTS.get(exp_id)
+    if experiment is None:
+        raise HTTPException(404, "找不到這個實驗")
+    payload = payload if isinstance(payload, dict) else {}
+    criterion = str(payload.get("criterion", ""))
+    if criterion not in exp_mod.CRITERIA:
+        raise HTTPException(400, f"不認識的評分項目：{criterion}")
+    winner = str(payload.get("winner", ""))
+    loser = str(payload.get("loser", ""))
+    known = {v.id for v in experiment.variants}
+    if loser not in known or (winner and winner not in known):
+        raise HTTPException(400, "投票對象不在這個實驗裡")
+    experiment.votes.append(exp_mod.Vote(
+        criterion=criterion, winner=winner, loser=loser,
+        seed=int(payload.get("seed", 0) or 0)))
+    EXPERIMENTS.save()
+    return JSONResponse({"standings": experiment.standings(),
+                         "votes": len(experiment.votes)})
+
+
+@app.delete("/api/experiments/{exp_id}")
+async def delete_experiment(exp_id: str) -> JSONResponse:
+    EXPERIMENTS.load()
+    if not EXPERIMENTS.delete(exp_id):
+        raise HTTPException(404, "找不到這個實驗")
+    EXPERIMENTS.save()
+    return JSONResponse({"ok": True})
 
 
 # -- official reference art --------------------------------------------------

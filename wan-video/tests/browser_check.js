@@ -196,6 +196,80 @@ const { chromium } = require('playwright');
   check(v === '1girl', 'clear removes only what the strip added -> ' + v);
 
 
+  // ---- experiments: fixed-seed sweeps ----
+  // Needs a checkpoint present; the model picker just needs SOMETHING
+  // installed, so this is skipped when nothing is.
+  const HAVE_CKPT = await page.evaluate(() =>
+    [...document.querySelectorAll('#imodel option')].some(o => o.value.startsWith('custom:')));
+  if (HAVE_CKPT) {
+  // Start clean: this block creates an experiment, so without a sweep-up every
+  // run leaves one behind and the list grows forever.
+  await page.evaluate(async () => {
+    const d = await (await fetch('/api/experiments')).json();
+    for (const e of d.experiments || []) {
+      await fetch(`/api/experiments/${e.id}`, { method: 'DELETE' });
+    }
+  });
+  await page.click('.tabs button[data-tab="img"]'); await page.waitForTimeout(600);
+  await page.evaluate(()=>{ const s=document.getElementById('imodel');
+    const opt=[...s.options].find(o=>o.value.startsWith('custom:'));
+    if(opt){ s.value=opt.value; s.dispatchEvent(new Event('change')); } });
+  await page.fill('#iprompt','1girl, hoshimachi suisei');
+  await page.waitForTimeout(400);
+  await page.click('.tabs button[data-tab="lib"]'); await page.waitForTimeout(500);
+  check(await page.isVisible('#expcard'), 'the experiment card is on the library tab');
+  check(!await page.isVisible('#expbody'), '…collapsed by default');
+  await page.click('#exptoggle'); await page.waitForTimeout(700);
+  check(await page.isVisible('#expbody'), 'it expands');
+  const expIntro = await page.textContent('#expintro');
+  check(expIntro.includes('同一組 seed'), 'the intro states the control');
+
+  await page.click('#expnew'); await page.waitForTimeout(600);
+  check(await page.isVisible('#expaxes'), 'the axis form appears');
+  const expAxes = await page.evaluate(()=>document.querySelectorAll('#expaxeslist input[data-axis]').length);
+  check(expAxes >= 6, `every sweepable axis is offered (${expAxes})`);
+
+  await page.fill('#expaxeslist input[data-axis="cfg"]', '5, 6, 7');
+  await page.waitForTimeout(700);
+  let expPrev = await page.textContent('#exppreview');
+  check(/3 組設定 × 3 個 seed = 9 張圖/.test(expPrev), 'preview counts the matrix -> ' + expPrev.replace(/\s+/g,' ').slice(0,46));
+  check(expPrev.includes('同一批 seed'), '…and repeats why the seeds are shared');
+
+  await page.fill('#expaxeslist input[data-axis="steps"]', '20, 25, 30, 35, 40, 45, 50');
+  await page.fill('#expaxeslist input[data-axis="lora_strength"]', '0.6, 0.7, 0.8, 0.9');
+  await page.fill('#expseeds','16'); await page.dispatchEvent('#expseeds','input'); await page.waitForTimeout(900);
+  expPrev = await page.textContent('#exppreview');
+  check(expPrev.includes('超過上限'), 'an oversized sweep warns before it costs anything');
+
+  await page.fill('#expaxeslist input[data-axis="steps"]', '');
+  await page.fill('#expaxeslist input[data-axis="lora_strength"]', '');
+  await page.fill('#expseeds','2'); await page.dispatchEvent('#expseeds','input'); await page.waitForTimeout(700);
+  await page.fill('#expname','cfg sweep');
+  await page.click('#expcreate'); await page.waitForTimeout(1500);
+  check(await page.isVisible('#expdetail'), 'creating opens the experiment');
+  const expDetail = await page.textContent('#expdetail');
+  check(expDetail.includes('3 組 × 2 seed'), 'it shows the shape -> ' + expDetail.replace(/\s+/g,' ').slice(0,42));
+  check(expDetail.includes('可重現用'), '…with a provenance section');
+  check(await page.isVisible('#exprun'), '…and a run button');
+
+  await page.click('#exprun'); await page.waitForTimeout(3000);
+  const expAfter = await page.textContent('#expdetail');
+  check(/6 張/.test(expAfter), 'running queues the jobs -> ' + expAfter.replace(/\s+/g,' ').slice(0,52));
+  check(await page.isVisible('#expjudge'), 'the blind-judging control appears once jobs exist');
+  const expCrits = await page.evaluate(()=>[...document.querySelectorAll('#expcrit option')].map(o=>o.textContent));
+  check(expCrits.length >= 4, `several judging criteria (${expCrits.length})`);
+  check(expCrits.some(c=>c.includes('像本人')) && expCrits.some(c=>c.includes('好看')),
+     '…keeping "looks like her" and "looks good" separate');
+  // …and leave nothing behind.
+  await page.evaluate(async () => {
+    const d = await (await fetch('/api/experiments')).json();
+    for (const e of d.experiments || []) {
+      await fetch(`/api/experiments/${e.id}`, { method: 'DELETE' });
+    }
+  });
+
+  }
+
   // ---- official reference art ----
   // Needs the fixture files; skipped when they are not present.
   const REFDIR = process.env.REFTEST_DIR || '';

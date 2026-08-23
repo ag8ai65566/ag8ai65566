@@ -615,6 +615,43 @@
 
   <!-- ================= 素材庫 ================= -->
   <div id="tab-lib" role="tabpanel" tabindex="0" class="hidden">
+
+    <!-- ---------- experiments: fixed-seed sweeps ---------- -->
+    <div class="card" id="expcard">
+      <div class="row" style="margin-top:0;align-items:baseline">
+        <h2 style="margin:0">實驗（固定 seed 掃參數）</h2>
+        <div class="spacer"></div>
+        <button class="ghost tiny" id="exptoggle" aria-expanded="false"
+                aria-controls="expbody">展開</button>
+      </div>
+      <div class="s" id="expintro"></div>
+      <div id="expbody" class="hidden">
+        <div class="row">
+          <button class="go" id="expnew">用目前圖片分頁的設定開一個實驗</button>
+          <label class="f">每組幾個 seed
+            <input type="number" id="expseeds" value="3" min="1" max="16" style="width:70px">
+          </label>
+        </div>
+        <div id="expaxes" class="hidden">
+          <div class="s" style="margin-top:8px"><b>要掃什麼？</b>
+            填數值用逗號分隔，例如 <code>0.6, 0.8, 1.0</code>。空白＝這一項不掃。</div>
+          <div id="expaxeslist"></div>
+          <div class="row">
+            <label class="f" style="flex:1;min-width:200px">實驗名稱
+              <input type="text" id="expname" placeholder="例：Suisei denoise 掃描">
+            </label>
+          </div>
+          <div id="exppreview" class="banner tight"></div>
+          <div class="row">
+            <button class="go" id="expcreate">建立並排入佇列</button>
+            <button class="ghost" id="expcancel">取消</button>
+          </div>
+        </div>
+        <div id="explist" style="margin-top:10px"></div>
+        <div id="expdetail" class="hidden" style="margin-top:10px"></div>
+      </div>
+    </div>
+
     <div class="card">
       <div class="toolbar">
         <label class="chk"><input type="checkbox" id="autoplay"> 自動播放</label>
@@ -3830,6 +3867,317 @@ function bareTag(chunk) {
   return t.replace(/\\/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
+/* ---------- experiments: fixed-seed sweeps ---------- */
+// Everything this app says about quality is a hypothesis until something is
+// generated and compared. This is the smallest machine that turns one into a
+// result: same seeds across every variant, side by side, judged blind.
+let EXP = { axes: {}, criteria: {}, list: [], open: null, draft: null,
+            maxJobs: 400, pair: null, criterion: 'likeness' };
+
+async function refreshExperiments() {
+  try {
+    const d = await (await fetch('/api/experiments')).json();
+    EXP.axes = d.axes || {};
+    EXP.criteria = d.criteria || {};
+    EXP.list = d.experiments || [];
+    EXP.maxJobs = d.max_jobs || 400;
+    renderExpIntro();
+    renderExpList();
+  } catch { $('#expcard').classList.add('hidden'); }
+}
+
+function renderExpIntro() {
+  $('#expintro').innerHTML = '這個 app 講的所有「最佳參數」目前都是<b>推測</b> —— '
+    + '因為還沒生成過任何一張圖來比較。這裡把推測變成量測：'
+    + '<b>每個變體都跑同一組 seed</b>（不然差異是骰子不是參數），跑完並排看、'
+    + '再<b>蓋住設定盲測</b>投票。'
+    + `目前有 ${EXP.list.length} 個實驗。`;
+}
+
+function renderExpList() {
+  if (!EXP.list.length) { $('#explist').innerHTML = '<div class="s">還沒有實驗。</div>'; return; }
+  $('#explist').innerHTML = EXP.list.map((e) => `
+    <div class="row" style="margin-top:4px;align-items:center">
+      <button class="ghost" data-exp="${esc(e.id)}" style="flex:1;min-width:200px;text-align:left">
+        <b>${esc(e.name)}</b>
+        <span class="s"> · ${e.variants.length} 組 × ${e.seeds.length} seed
+          · ${e.job_count} 張 · ${e.votes.length} 票</span>
+      </button>
+      <button class="ghost tiny" data-expdel="${esc(e.id)}">刪除</button>
+    </div>`).join('');
+  $('#explist').querySelectorAll('button[data-exp]').forEach((b) => {
+    b.onclick = () => openExperiment(b.dataset.exp);
+  });
+  $('#explist').querySelectorAll('button[data-expdel]').forEach((b) => {
+    b.onclick = async () => {
+      await fetch(`/api/experiments/${encodeURIComponent(b.dataset.expdel)}`, { method:'DELETE' });
+      $('#expdetail').classList.add('hidden');
+      refreshExperiments();
+    };
+  });
+}
+
+function currentImageSettings() {
+  // Whatever the image tab is set to right now becomes the fixed base, so an
+  // experiment starts from a prompt the user has already got working.
+  const loras = [...document.querySelectorAll('#iloras .lora')]
+    .filter((el) => el.querySelector('input[type=checkbox]').checked)
+    .map((el) => ({ name: el.dataset.n,
+                    strength: parseFloat(el.querySelector('.sm').value),
+                    strength_clip: parseFloat(el.querySelector('.sc').value) }));
+  const base = {
+    prompt: $('#iprompt').value.trim(),
+    negative: $('#inegative').value,
+    model: $('#imodel').value,
+    size: $('#isize').value,
+    use_prefix: $('#iprefix').checked,
+    loras,
+  };
+  if (IMG.init) base.init_image = IMG.init;
+  ['steps','cfg','sampler','scheduler','denoise','clip_skip'].forEach((k) => {
+    const el = $('#i' + k);
+    if (el && el.value !== '' && el.value != null) {
+      base[k] = isNaN(+el.value) ? el.value : +el.value;
+    }
+  });
+  return base;
+}
+
+function renderExpAxes() {
+  $('#expaxeslist').innerHTML = Object.entries(EXP.axes).map(([key, a]) => `
+    <div class="row" style="margin-top:4px;align-items:center">
+      <label class="f" style="flex:1;min-width:220px">${esc(a.label)}
+        <input type="text" data-axis="${esc(key)}" placeholder="不掃就留空"
+               aria-label="${esc(a.label)} 的值">
+      </label>
+      <span class="s" style="flex:2;min-width:200px">${esc(a.why)}</span>
+    </div>`).join('');
+  $('#expaxeslist').querySelectorAll('input[data-axis]').forEach((el) => {
+    el.oninput = previewExperiment;
+  });
+}
+
+function draftAxes() {
+  const axes = {};
+  document.querySelectorAll('#expaxeslist input[data-axis]').forEach((el) => {
+    const raw = el.value.split(',').map((x) => x.trim()).filter(Boolean);
+    if (!raw.length) return;
+    const kind = (EXP.axes[el.dataset.axis] || {}).kind;
+    axes[el.dataset.axis] = kind === 'number'
+      ? raw.map(Number).filter((n) => !isNaN(n)) : raw;
+  });
+  return axes;
+}
+
+async function previewExperiment() {
+  const axes = draftAxes();
+  const seedCount = Math.max(1, Math.min(+$('#expseeds').value || 3, 16));
+  try {
+    const r = await fetch('/api/experiments/preview', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ axes, seed_count: seedCount }) });
+    const d = await r.json();
+    EXP.draft = { axes, seeds: d.seeds };
+    const rough = d.jobs * 8;   // ~8s a picture is a common ballpark on a mid GPU
+    $('#exppreview').innerHTML = `<b>${d.variants.length} 組設定 × ${d.seeds.length} 個 seed`
+      + ` = ${d.jobs} 張圖</b>`
+      + `<div class="s">粗估 ${Math.round(rough / 60)} 分鐘（用一張圖 8 秒抓的，`
+      + `你的機器可能快很多或慢很多）。每組都跑<b>同一批 seed</b>，所以差異是參數不是骰子。</div>`
+      + (d.warning ? `<div class="s"><b>${esc(d.warning)}</b></div>` : '')
+      + (d.variants.length > 1 ? '' : '<div class="s">沒有填任何要掃的值 —— 這樣只會跑一組。</div>');
+  } catch (e) {
+    $('#exppreview').innerHTML = `<span class="errbox">${esc(e.message)}</span>`;
+  }
+}
+
+async function openExperiment(id) {
+  try {
+    const d = await (await fetch(`/api/experiments/${encodeURIComponent(id)}`)).json();
+    EXP.open = d;
+    renderExperiment();
+  } catch {}
+}
+
+function renderExperiment() {
+  const e = EXP.open;
+  if (!e) return;
+  const box = $('#expdetail');
+  box.classList.remove('hidden');
+  const done = Object.values(e.jobs || {}).filter((j) => j.status === 'done').length;
+  const prov = e.provenance || {};
+  const parts = [`<h2 style="margin-top:0">${esc(e.name)}</h2>
+    <div class="s">${e.variants.length} 組 × ${e.seeds.length} seed = ${e.job_count} 張
+      · 完成 ${done} · seed：${e.seeds.join(', ')}</div>`];
+
+  // Provenance is the difference between a result and an anecdote.
+  const ck = Object.entries(prov.checkpoints || {});
+  parts.push(`<details style="margin-top:6px"><summary class="s">這批圖是什麼跑出來的（可重現用）</summary>
+    <div class="s">app commit：<code>${esc(prov.app_commit || '?')}</code>
+      · ComfyUI：<code>${esc(prov.comfy_commit || '(不是 git 目錄)')}</code></div>
+    ${ck.map(([n, h]) => `<div class="s">${esc(n)}：<code>${esc((h || '').slice(0, 16))}…</code></div>`).join('')}
+    ${Object.entries(prov.loras || {}).map(([n, h]) =>
+      `<div class="s">LoRA ${esc(n)}：<code>${esc((h || '').slice(0, 16))}…</code></div>`).join('')}
+    <div class="s" style="opacity:.8">用內容雜湊而不是檔名 —— 檔名會被重複使用。</div>
+    </details>`);
+
+  if (!e.job_count) {
+    parts.push('<div class="row"><button class="go" id="exprun">排入佇列開始跑</button></div>');
+  } else {
+    // Contact sheet: one row per variant, the same seeds across each row.
+    parts.push('<div style="margin-top:8px">' + e.variants.map((v) => `
+      <div style="margin-top:6px">
+        <div class="s"><b>${esc(v.label)}</b></div>
+        <div class="row" style="gap:4px">${v.jobs.map((j) => {
+          const job = (e.jobs || {})[j];
+          const src = job && job.output ? job.output : '';
+          return src
+            ? `<img src="${esc(src)}" style="width:110px;height:110px;object-fit:cover;border-radius:6px">`
+            : `<div class="s" style="width:110px;height:110px;display:flex;align-items:center;
+                 justify-content:center;background:var(--panel2);border-radius:6px">${
+                 esc(job ? job.status : '?')}</div>`;
+        }).join('')}</div>
+      </div>`).join('') + '</div>');
+    parts.push(`<div class="row" style="margin-top:8px">
+      <label class="f">盲測項目
+        <select id="expcrit">${Object.entries(EXP.criteria).map(([k, q]) =>
+          `<option value="${esc(k)}"${k === EXP.criterion ? ' selected' : ''}>${esc(q)}</option>`).join('')}</select>
+      </label>
+      <button class="go" id="expjudge">開始盲測</button>
+      <div class="spacer"></div>
+      <button class="ghost tiny" id="expstand">看目前排名</button>
+    </div>`);
+  }
+  parts.push('<div id="exparena" class="hidden" style="margin-top:8px"></div>');
+  box.innerHTML = parts.join('');
+  const run = $('#exprun');
+  if (run) run.onclick = async () => {
+    run.disabled = true; run.textContent = '排入中…';
+    const r = await fetch(`/api/experiments/${encodeURIComponent(e.id)}/run`, { method:'POST' });
+    const d = await r.json();
+    if (!r.ok) { run.textContent = d.detail || '失敗'; run.disabled = false; return; }
+    await refreshExperiments();
+    openExperiment(e.id);
+    refreshJobs(true);
+  };
+  const judge = $('#expjudge');
+  if (judge) judge.onclick = () => {
+    EXP.criterion = $('#expcrit').value;
+    nextJudgement();
+  };
+  const stand = $('#expstand');
+  if (stand) stand.onclick = renderStandings;
+}
+
+async function nextJudgement() {
+  const e = EXP.open;
+  const arena = $('#exparena');
+  arena.classList.remove('hidden');
+  const r = await fetch(`/api/experiments/${encodeURIComponent(e.id)}/pair?criterion=${encodeURIComponent(EXP.criterion)}`);
+  const d = await r.json();
+  if (d.done) { renderStandings(); return; }
+  EXP.pair = d.pair;
+  const side = (key) => {
+    const s = d.pair[key];
+    return `<button class="ghost" data-vote="${esc(s.variant)}" style="padding:4px;line-height:0">
+      ${s.image ? `<img src="${esc(s.image)}" style="width:260px;max-width:42vw;border-radius:8px">`
+                : '<div class="s" style="padding:30px">還沒跑完</div>'}</button>`;
+  };
+  // The configuration stays hidden until the vote lands, or the vote is about
+  // what the user expects rather than what they see.
+  arena.innerHTML = `<div class="banner tight"><b>${esc(d.question)}</b>
+    <div class="s">seed ${d.pair.seed} —— 兩張的 seed 一樣，所以差別就是設定。
+      <b>設定先蓋住</b>，投完才揭曉。</div>
+    <div class="row" style="margin-top:6px;align-items:center">
+      ${side('a')}${side('b')}
+    </div>
+    <div class="row" style="margin-top:6px">
+      <button class="ghost" id="votetie">兩張差不多</button>
+      <div class="spacer"></div>
+      <button class="ghost tiny" id="votestop">停止</button>
+    </div></div>`;
+  arena.querySelectorAll('button[data-vote]').forEach((b) => {
+    b.onclick = () => castVote(b.dataset.vote);
+  });
+  $('#votetie').onclick = () => castVote('');
+  $('#votestop').onclick = () => arena.classList.add('hidden');
+}
+
+async function castVote(winner) {
+  const p = EXP.pair;
+  if (!p) return;
+  const loser = winner === p.a.variant ? p.b.variant
+              : winner === p.b.variant ? p.a.variant : p.a.variant;
+  await fetch(`/api/experiments/${encodeURIComponent(EXP.open.id)}/vote`, {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ criterion: EXP.criterion, winner, loser, seed: p.seed }) });
+  await openExperiment(EXP.open.id);
+  nextJudgement();
+}
+
+function renderStandings() {
+  const e = EXP.open;
+  const table = (e.standings || {})[EXP.criterion] || {};
+  const rows = e.variants.map((v) => ({ v, r: table[v.id] || { win:0, loss:0, tie:0, played:0, rate:0 } }))
+    .sort((a, b) => b.r.rate - a.r.rate || b.r.win - a.r.win);
+  const total = rows.reduce((n, x) => n + x.r.played, 0);
+  const arena = $('#exparena');
+  arena.classList.remove('hidden');
+  arena.innerHTML = `<div class="banner tight">
+    <b>${esc(EXP.criteria[EXP.criterion] || EXP.criterion)}</b> 的目前排名
+    <div class="s">共 ${total} 次比較。${total < 10
+      ? '<b>票數還太少</b>，這個排名先別當結論。' : ''}</div>
+    <div style="margin-top:6px">${rows.map((x, i) => `
+      <div class="s" style="margin:2px 0">${i + 1}. <b>${esc(x.v.label)}</b>
+        —— 勝 ${x.r.win} / 負 ${x.r.loss} / 平 ${x.r.tie}
+        ${x.r.played ? `（勝率 ${Math.round(x.r.rate * 100)}%）` : ''}</div>`).join('')}
+    </div>
+    <div class="s" style="margin-top:6px;opacity:.8">「好看」和「像本人」是<b>分開算</b>的 ——
+      漂亮但不像的圖不該在「像不像」這項贏。</div>
+    <div class="row" style="margin-top:6px"><button class="ghost" id="votemore">繼續盲測</button></div>
+    </div>`;
+  $('#votemore').onclick = nextJudgement;
+}
+
+function wireExperiments() {
+  $('#exptoggle').onclick = () => {
+    const body = $('#expbody'), show = body.classList.contains('hidden');
+    body.classList.toggle('hidden', !show);
+    $('#exptoggle').textContent = show ? '收起' : '展開';
+    $('#exptoggle').setAttribute('aria-expanded', String(show));
+    if (show) refreshExperiments();
+  };
+  $('#expnew').onclick = () => {
+    const base = currentImageSettings();
+    if (!base.prompt) {
+      $('#exppreview').innerHTML = '<span class="errbox">圖片分頁的提詞是空的 —— '
+        + '先把一組你已經跑得起來的設定調好，再來開實驗。</span>';
+      $('#expaxes').classList.remove('hidden');
+      return;
+    }
+    EXP.draft = { base };
+    $('#expaxes').classList.remove('hidden');
+    renderExpAxes();
+    previewExperiment();
+  };
+  $('#expcancel').onclick = () => $('#expaxes').classList.add('hidden');
+  $('#expseeds').oninput = previewExperiment;
+  $('#expcreate').onclick = async () => {
+    const base = currentImageSettings();
+    const body = { name: $('#expname').value, base, axes: draftAxes(),
+                   seed_count: Math.max(1, Math.min(+$('#expseeds').value || 3, 16)) };
+    const r = await fetch('/api/experiments', {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    const d = await r.json();
+    if (!r.ok) {
+      $('#exppreview').innerHTML = `<span class="errbox">${esc(d.detail || r.statusText)}</span>`;
+      return;
+    }
+    $('#expaxes').classList.add('hidden');
+    await refreshExperiments();
+    openExperiment(d.id);
+  };
+}
+
 /* ---------- official reference art ---------- */
 // Words average; a picture does not. This is the shortest path from "I have the
 // official art" to "the generator is looking at it": one click stages the file
@@ -4546,6 +4894,7 @@ async function boot() {
   wirePosebook(); refreshPosebook();
   wirePromptTools(); refreshQuickTags(); wireSize();
   wireArtists(); refreshArtists(); wireLikeness(); wireRefs();
+  wireExperiments();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }

@@ -453,6 +453,19 @@ Docker `docker compose --profile watch up -d`。
 **最省事的做法是用 app 內建的 LoRA 分頁**（見上）—— 搜尋、看預覽、一鍵安裝，
 觸發詞也會一起存下來。需要一個 CivitAI API key 才能下載。
 
+### 實驗模式 —— 教程在 [`docs/experiments.md`](docs/experiments.md)
+
+**素材庫分頁**多了「實驗（固定 seed 掃參數）」。這個 app 講的所有「最佳參數」
+目前都還是**推測**（一張圖都沒生成過），這裡把推測變成量測：
+
+- 選要掃的軸（LoRA 強度／重繪強度／CFG／步數／底模／官方風格偏移／畫師權重／sampler）
+- **每個組合都跑同一批 seed** —— 不然量到的是骰子不是參數
+- 記下 checkpoint 與 LoRA 的 **SHA256**、ComfyUI 與 app 的 commit（檔名會被重複使用）
+- 跑完並排看，然後**蓋住設定盲測投票**，左右順序隨機
+- **「好看」和「像本人」分開計分** —— 漂亮但不像的圖不該在「像不像」贏
+
+跑完之後，文件裡標成 HEURISTIC 的建議值你都能自己換成實測結果。
+
 ### 官方參考圖 —— 教程在 [`docs/reference-art.md`](docs/reference-art.md)
 
 角色包面板可以**整包匯入**你收集的官方設定圖／立繪（幾百個檔案或一個 zip 都行），
@@ -656,6 +669,7 @@ app/
   posebook.py          動作／姿勢法典的解析與一鍵組裝
   quicktags.py         常用提詞清單（每個都查過 danbooru 實際圖片數）
   refs.py              官方參考圖庫（檔名→角色的比對，對不上就不猜）
+  experiments.py       實驗矩陣、內容雜湊來源記錄、盲測配對與計分
   artists.py           畫師清單（風格特徵用 danbooru lift 統計出來）
   poses/               法典資料（一個 JSON 一份法典）
   static/index.html    網頁介面（影片 / 圖片 / 素材庫 / LoRA / 模型 / 提詞庫 / 設定）
@@ -670,6 +684,7 @@ docs/
   codex-review-brief.md 給第二個模型審查用的自足摘要（主張＋數據＋我自己知道的弱點）
   review-response.md   對 Codex 審查的逐條回應：改了什麼、還沒做什麼
   reference-art.md     官方參考圖：匯入、自動分角色、一鍵當來源圖／構圖參考
+  experiments.md       固定 seed 掃參數、來源記錄、盲測 pairwise
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡

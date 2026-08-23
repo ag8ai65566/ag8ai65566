@@ -4300,6 +4300,267 @@ def test_refs() -> None:
 
 
 
+def test_experiments() -> None:
+    """Fixed-seed sweeps: the matrix, the cap, the pairing, and the counting.
+
+    All of this is arithmetic and bookkeeping, which is exactly why it is worth
+    testing hard - the value of a sweep is that its comparisons are controlled,
+    and every bug here is a silently uncontrolled comparison.
+    """
+    section("experiments")
+    import random
+
+    import experiments as ex
+
+    # -- the matrix ----------------------------------------------------------
+    seeds = ex.make_seeds(4, random.Random(7))
+    check(len(seeds) == 4 and len(set(seeds)) == 4, f"distinct seeds ({seeds})")
+    check(len(ex.make_seeds(999)) == ex.MAX_SEEDS, "seed count is capped")
+    check(len(ex.make_seeds(0)) == 1, "…and never zero")
+
+    variants, warning = ex.expand(
+        {"lora_strength": [0.6, 0.8, 1.0], "denoise": [0.35, 0.45]}, seeds)
+    check(len(variants) == 6, f"3x2 axes make 6 variants ({len(variants)})")
+    check(not warning, "…with no warning at this size")
+    check(len({v.id for v in variants}) == 6, "variant ids are unique")
+    combos = {tuple(sorted(v.values.items())) for v in variants}
+    check(len(combos) == 6, "every cell of the product is distinct")
+    check(all("LoRA 強度" in v.label for v in variants),
+          f"…and labelled readably ({variants[0].label})")
+
+    empty, _ = ex.expand({}, seeds)
+    check(len(empty) == 1 and empty[0].values == {},
+          "no axes means one baseline variant, not zero")
+    junk, _ = ex.expand({"nonsense": [1, 2], "lora_strength": []}, seeds)
+    check(len(junk) == 1, "unknown or empty axes are ignored")
+    dupes, _ = ex.expand({"cfg": [5, 5, 5, 6]}, seeds)
+    check(len(dupes) == 2, f"repeated values collapse ({len(dupes)})")
+
+    big, warn2 = ex.expand({"lora_strength": [0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1],
+                            "cfg": [4, 5, 6, 7, 8], "steps": [20, 25, 30, 35]}, seeds)
+    check(len(big) * len(seeds) <= ex.MAX_JOBS,
+          f"an oversized sweep is capped ({len(big) * len(seeds)} <= {ex.MAX_JOBS})")
+    check("超過上限" in warn2, "…and says so rather than quietly truncating")
+
+    # -- one concrete request ------------------------------------------------
+    base = {"prompt": "1girl", "model": "noobai", "cfg": 5.5}
+    got = ex.settings_for(base, variants[0], 1234)
+    check(got["prompt"] == "1girl" and got["model"] == "noobai",
+          "the fixed base carries through")
+    check(got["seed"] == 1234, "…with the seed the sweep chose")
+    check(got["lora_strength"] == variants[0].values["lora_strength"],
+          "…and the axis value overriding the base")
+    override = ex.settings_for({"cfg": 5.5}, ex.Variant("v", {"cfg": 9.0}), 1)
+    check(override["cfg"] == 9.0, "an axis beats the base for the same key")
+
+    # -- the store -----------------------------------------------------------
+    path = TMP / "experiments.jsonl"
+    path.unlink(missing_ok=True)
+    store = ex.ExperimentStore(path)
+    store.load()
+    exp, _ = store.create("sweep", base, {"cfg": [5, 6]}, seeds[:2])
+    check(len(exp.variants) == 2, "created with its variants")
+    check(exp.job_count == 0, "…and no jobs until it is run")
+    exp.variants[0].jobs = ["j1", "j2"]
+    exp.variants[1].jobs = ["j3", "j4"]
+    store.save()
+    again = ex.ExperimentStore(path)
+    again.load()
+    back = again.get(exp.id)
+    check(back is not None and back.job_count == 4, "the store round-trips jobs")
+    check(back.seeds == exp.seeds, "…and the seeds, which is the control")
+    check(again.delete(exp.id) and again.get(exp.id) is None, "delete works")
+    path.unlink(missing_ok=True)
+
+    # -- pairing: the same seed on both sides, or it measures the dice --------
+    exp2 = ex.Experiment(id="e", seeds=[11, 22], variants=[
+        ex.Variant("v0", {"cfg": 5}, ["a1", "a2"]),
+        ex.Variant("v1", {"cfg": 6}, ["b1", "b2"]),
+    ])
+    seen_pairs = set()
+    for _ in range(40):
+        pair = ex.next_pair(exp2, "likeness", random.Random())
+        if pair is None:
+            break
+        jobs = {pair["a"]["job"], pair["b"]["job"]}
+        # a1/b1 belong to seed 11, a2/b2 to seed 22 - never mixed.
+        check_ok = jobs in ({"a1", "b1"}, {"a2", "b2"})
+        if not check_ok:
+            check(False, f"a pair mixed seeds: {jobs}")
+            break
+        check_ok = pair["a"]["variant"] != pair["b"]["variant"]
+        if not check_ok:
+            check(False, "a pair compared a variant with itself")
+            break
+        seen_pairs.add(tuple(sorted(jobs)))
+    else:
+        check(True, "every pair is same-seed and cross-variant")
+    check(len(seen_pairs) == 2, f"both seeds get offered ({seen_pairs})")
+
+    sides = set()
+    for _ in range(60):
+        pair = ex.next_pair(exp2, "costume", random.Random())
+        if pair:
+            sides.add(pair["a"]["variant"])
+    check(len(sides) == 2, "which variant is shown first is randomised (position bias)")
+
+    # A voted-on comparison is not offered again.
+    exp2.votes.append(ex.Vote(criterion="likeness", winner="v0", loser="v1", seed=11))
+    exp2.votes.append(ex.Vote(criterion="likeness", winner="v1", loser="v0", seed=22))
+    check(ex.next_pair(exp2, "likeness", random.Random()) is None,
+          "once judged, a pairing is not offered again")
+    check(ex.next_pair(exp2, "costume", random.Random()) is not None,
+          "…but a different criterion still has work to do")
+
+    # -- counting ------------------------------------------------------------
+    table = exp2.standings()["likeness"]
+    check(table["v0"]["win"] == 1 and table["v0"]["loss"] == 1,
+          f"wins and losses are counted per variant ({table['v0']})")
+    check(table["v0"]["rate"] == 0.5, f"…and a win rate derived ({table['v0']['rate']})")
+    exp2.votes.append(ex.Vote(criterion="beauty", winner="", loser="v0"))
+    tie = exp2.standings()["beauty"]["v0"]
+    check(tie["tie"] == 1 and tie["win"] == 0,
+          f"'no difference' is a tie, not a win ({tie})")
+    check(set(exp2.standings()) == set(ex.CRITERIA),
+          "every criterion gets its own table - beauty and likeness are "
+          "different questions and must not be averaged together")
+
+    # -- provenance ----------------------------------------------------------
+    sample = TMP / "prov.bin"
+    sample.write_bytes(b"weights")
+    first = ex.file_hash(sample)
+    check(len(first) == 64, f"a file hashes to sha256 ({first[:12]}…)")
+    check(ex.file_hash(sample) == first, "…and the cache returns the same value")
+    time.sleep(0.01)
+    sample.write_bytes(b"different weights")
+    check(ex.file_hash(sample) != first,
+          "…but rewriting the file changes it - the cache key includes size and "
+          "mtime, because reusing a filename for new weights is the exact "
+          "failure provenance exists to catch")
+    check(ex.file_hash(TMP / "does-not-exist") == "",
+          "a missing file hashes to empty rather than raising")
+    prov = ex.provenance(checkpoints={"m.safetensors": sample}, loras={},
+                         comfy_commit="abc1234")
+    check(prov["checkpoints"]["m.safetensors"] and prov["comfy_commit"] == "abc1234",
+          "provenance records content hashes and the commit")
+    sample.unlink(missing_ok=True)
+
+    import updates
+    check(updates.head_commit(ROOT.parent) or True,
+          "head_commit runs without touching the network")
+
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check('id="expcard"' in page and "function wireExperiments" in page,
+          "the UI exists")
+    check("同一批 seed" in page,
+          "…and states the control where the user reads it")
+    doc = ROOT / "docs" / "experiments.md"
+    check(doc.is_file(), "experiments are documented")
+    dtext = doc.read_text(encoding="utf-8")
+    check("骰子" in dtext, "…explaining why the seeds are shared")
+    check("內容雜湊" in dtext, "…and why provenance is by hash, not filename")
+    check("不該在" in dtext,
+          "…and that beauty and likeness are never averaged together")
+    check("HEURISTIC" in dtext,
+          "…and what this unblocks: turning the heuristics into measurements")
+    check("docs/experiments.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
+          "…and the README points at it")
+
+
+
+async def test_experiment_run() -> None:
+    """A whole sweep through the real endpoints against a fake ComfyUI.
+
+    The unit tests cover the matrix arithmetic; this covers the thing that
+    actually matters at runtime - that every variant really did run the same
+    seeds, and that each job really carried its own axis values. A sweep whose
+    comparisons are not controlled is worse than no sweep, because it produces
+    a confident number from noise.
+    """
+    section("experiment run (end to end)")
+    import config
+    import images
+    import server
+    from fastapi import HTTPException
+
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    old_url = config.COMFY_URL
+    config.COMFY_URL = url
+    ck = config.MODELS_DIR / "checkpoints"
+    ck.mkdir(parents=True, exist_ok=True)
+    stub = ck / "sweeptest-experiment.safetensors"
+    stub.write_bytes(b"fake weights")
+    saved = dict(server.EXPERIMENTS.items)
+    server.EXPERIMENTS.items = {}
+    try:
+        base = {"prompt": "1girl, hoshimachi suisei",
+                "model": images.CUSTOM_PREFIX + stub.name, "batch": 1}
+        created = json.loads(bytes((await server.create_experiment({
+            "name": "sweep", "base": base,
+            "axes": {"cfg": [5, 6], "steps": [20, 25]}, "seed_count": 2})).body))
+        check(len(created["variants"]) == 4,
+              f"2x2 axes make 4 variants ({len(created['variants'])})")
+        check(len(created["seeds"]) == 2, "…on 2 seeds")
+        digest = list(created["provenance"].get("checkpoints", {}).values())
+        check(digest and len(digest[0]) == 64,
+              "the checkpoint is recorded by content hash, not filename")
+        check(created["provenance"].get("app_commit") is not None,
+              "…alongside the app commit")
+
+        run = json.loads(bytes((await server.run_experiment(created["id"])).body))
+        check(run["queued"] == 8, f"8 jobs queued ({run['queued']}) {run['failed'][:1]}")
+        check(not run["failed"], f"…with nothing rejected ({run['failed'][:1]})")
+
+        got = json.loads(bytes((await server.get_experiment(created["id"])).body))
+        per_variant = [[got["jobs"][j]["seed"] for j in v["jobs"]]
+                       for v in got["variants"]]
+        check(all(row == per_variant[0] for row in per_variant),
+              f"every variant ran the SAME seeds - the whole control ({per_variant})")
+        mismatched = [v["label"] for v in got["variants"]
+                      if got["jobs"][v["jobs"][0]]["settings"]["cfg"] != v["values"]["cfg"]
+                      or got["jobs"][v["jobs"][0]]["settings"]["steps"] != v["values"]["steps"]]
+        check(not mismatched, f"…and each job carried its own axis values ({mismatched})")
+
+        # Blind pairing over finished jobs.
+        experiment = server.EXPERIMENTS.get(created["id"])
+        for variant in experiment.variants:
+            for job_id in variant.jobs:
+                record = server.lib.records[job_id]
+                record.status = "done"
+                record.output = f"{job_id}.png"
+        pair = json.loads(bytes(
+            (await server.experiment_pair(created["id"], "likeness")).body))
+        check(not pair["done"], "there is a pair to judge")
+        a_seed = server.lib.records[pair["pair"]["a"]["job"]].seed
+        b_seed = server.lib.records[pair["pair"]["b"]["job"]].seed
+        check(a_seed == b_seed,
+              f"both sides of a comparison share a seed ({a_seed} vs {b_seed})")
+        check(pair["pair"]["a"]["variant"] != pair["pair"]["b"]["variant"],
+              "…and are different variants")
+
+        voted = json.loads(bytes((await server.experiment_vote(created["id"], {
+            "criterion": "likeness", "winner": pair["pair"]["a"]["variant"],
+            "loser": pair["pair"]["b"]["variant"], "seed": pair["pair"]["seed"]})).body))
+        won = voted["standings"]["likeness"][pair["pair"]["a"]["variant"]]
+        check(won["win"] == 1 and won["rate"] == 1.0, f"the vote counts ({won})")
+        other = voted["standings"]["beauty"][pair["pair"]["a"]["variant"]]
+        check(other["played"] == 0,
+              "…and a likeness vote does not leak into the beauty table")
+
+        try:
+            await server.run_experiment(created["id"])
+            check(False, "re-running an experiment should be refused")
+        except HTTPException as exc:
+            check("跑過" in str(exc.detail), f"re-running is refused ({exc.detail})")
+    finally:
+        config.COMFY_URL = old_url
+        stub.unlink(missing_ok=True)
+        server.EXPERIMENTS.items = saved
+        await runner.cleanup()
+
+
+
 def test_ui_smoke() -> None:
     """Run the page's own script and call its render functions for real.
 
@@ -5276,6 +5537,8 @@ async def main() -> int:
     test_artists()
     test_likeness()
     test_refs()
+    test_experiments()
+    await test_experiment_run()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()

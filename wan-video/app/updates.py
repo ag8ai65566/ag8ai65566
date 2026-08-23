@@ -62,6 +62,19 @@ def _git(repo: Path, *args: str, timeout: int = 30) -> tuple[bool, str]:
     return done.returncode == 0, (done.stdout or done.stderr).strip()
 
 
+def head_commit(repo: Path) -> str:
+    """The checked-out commit, with no network round trip.
+
+    git_status() fetches from origin, which is right when the question is "am I
+    behind" and wrong when the question is "what exactly produced this image" -
+    provenance must not depend on the network being up, or on being fast.
+    """
+    if not (repo / ".git").exists():
+        return ""
+    ok, head = _git(repo, "rev-parse", "--short", "HEAD", timeout=10)
+    return head if ok else ""
+
+
 def git_status(repo: Path, label: str) -> dict:
     """How far behind `repo`'s upstream branch is, if it is a git checkout."""
     out = {"label": label, "ok": False, "behind": 0, "detail": "", "local": "", "remote": ""}
