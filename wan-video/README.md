@@ -478,8 +478,10 @@ Docker `docker compose --profile watch up -d`。
 因為對錯人比沒對到麻煩得多。
 
 然後點縮圖就能把那張圖**當來源圖（以圖生圖）或構圖參考（ControlNet）**。
-這是唯一能把「官方長相」直接餵給模型的方法：danbooru 上這些角色只有 1～3%
-是官方圖，所以純靠提詞永遠只會得到同人平均值 —— **文字會平均，圖片不會**。
+這是唯一能把「官方長相」直接餵給模型的方法：danbooru 上這些角色的官方圖佔比
+**實測是 0.62%～9.45%（中位數 3.7%）**，而且**越紅的成員佔比越薄**
+（張數 ≥1 萬的中位數 2.08%，<2 千的 7.79%）—— 所以純靠提詞，
+越紅的角色越只會得到同人平均值。**文字會平均，圖片不會。**
 
 **已經有一整包整理好的圖庫的話走「從資料夾匯入」**：貼上路徑
 （例如 `C:\anim\wan-video\Holo pic\Hololive_Ultimate_Archive\01_官方角色全身立繪_最重要`），
@@ -753,6 +755,7 @@ docs/
   style-library.md     22 組風格配方、量出來的衝突表、提詞健康度
   spec-review.md       對「Prompt 靈感庫」規格書的逐條審查回覆（給下一輪 review 用）
   refs-review.md       參考圖庫整包匯入與中文名比對的審查說明（給下一輪 review 用）
+  review-round2.md     對 Round 2 審查的逐條回應：3 個實驗記帳 bug、官方圖比例的實測修正
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡

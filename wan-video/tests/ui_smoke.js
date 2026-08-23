@@ -272,4 +272,54 @@ check(run('COMIC.locked') === null && run('CN.controls.length') === 0,
 noThrow('loraBudget()', () => run('loraBudget()'));
 noThrow('controlPayload()', () => run('controlPayload()'));
 
+/* ---------- the experiment vote payload and the standings line ---------- */
+// A review found two bookkeeping bugs in this exact pair of functions: a tie
+// sent only one of the two variants, and the standings line summed per-variant
+// tallies so every comparison was reported twice. The Chromium run cannot reach
+// them without a real checkpoint installed, so they are exercised here with the
+// network stubbed - which is enough, because what is being checked is the shape
+// of the payload and one line of arithmetic.
+const posted = [];
+set('EXP.open', {
+  id: 'e1',
+  variants: [{ id: 'v0', label: 'A' }, { id: 'v1', label: 'B' }],
+  votes: [
+    { criterion: 'likeness', winner: 'v0', loser: 'v1', other: '', seed: 11 },
+    { criterion: 'likeness', winner: '', loser: 'v0', other: 'v1', seed: 22 },
+    { criterion: 'beauty', winner: 'v1', loser: 'v0', other: '', seed: 11 },
+  ],
+  standings: {
+    likeness: { v0: { win: 1, loss: 0, tie: 1, played: 2, rate: 0.5 },
+                v1: { win: 0, loss: 1, tie: 1, played: 2, rate: 0 } },
+  },
+});
+set('EXP.criterion', 'likeness');
+set('EXP.criteria', { likeness: '哪張比較像本人？' });
+set('EXP.pair', { seed: 33, a: { variant: 'v0', job: 'j1' }, b: { variant: 'v1', job: 'j2' } });
+run(`fetch = async (url, opts) => { POSTED.push([url, JSON.parse(opts.body)]);
+       return { ok: true, json: async () => ({}) }; };`.replace('POSTED', '__posted'));
+set('__posted', posted);
+set('openExperiment', function () {});
+set('nextJudgement', function () {});
+
+noThrow('castVote() on a tie', () => run("castVote('')"));
+const tieBody = posted.length ? posted[posted.length - 1][1] : {};
+check(tieBody.winner === '' && tieBody.loser === 'v0' && tieBody.other === 'v1',
+      `a tie posts both variants (${JSON.stringify(tieBody)})`);
+check(tieBody.seed === 33, '…and the seed it was judged on');
+
+noThrow('castVote() with a winner', () => run("castVote('v1')"));
+const winBody = posted[posted.length - 1][1];
+check(winBody.winner === 'v1' && winBody.loser === 'v0' && winBody.other === '',
+      `a decided vote has no third side (${JSON.stringify(winBody)})`);
+
+noThrow('renderStandings()', () => run('renderStandings()'));
+const stand = run("$('#exparena').innerHTML");
+// Two votes on `likeness`. Summing `played` across the two rows gives 4, which
+// is the bug; counting the votes for this criterion gives 2.
+check(/共 2 次比較/.test(stand),
+      `the standings count votes, not per-variant tallies (${
+        (/共 \d+ 次比較/.exec(stand) || ['no count found'])[0]})`);
+check(stand.includes('票數還太少'), '…and two votes is still too few to conclude from');
+
 report();

@@ -105,11 +105,42 @@ class Variant:
 
 @dataclass
 class Vote:
+    """One blind judgement.
+
+    `winner` empty means "no difference". A tie still has two sides, so `other`
+    carries the second one - without it a tie is only half a result: the
+    standings can credit one variant and the pairing logic cannot tell which
+    two variants were actually compared, so it may offer the same pair again.
+
+    `other` defaults to empty so votes recorded before it existed still load.
+    Those old ties genuinely have no second side stored; `pair` reports that
+    rather than inventing one, which means a legacy tie deduplicates nothing.
+    That is the correct trade: showing a pair twice costs a click, guessing
+    which variant it was corrupts the result the whole harness exists to produce.
+    """
+
     criterion: str
     winner: str            # variant id, or "" for "no difference"
     loser: str
+    other: str = ""        # the second side of a tie
     seed: int = 0
     at: float = field(default_factory=time.time)
+
+    @property
+    def pair(self) -> tuple[str, str]:
+        """The two variants this vote actually compared, order-insensitive."""
+        if self.winner:
+            return tuple(sorted((self.winner, self.loser)))
+        if self.other:
+            return tuple(sorted((self.loser, self.other)))
+        return (self.loser, self.loser)   # legacy tie: second side unknown
+
+    @property
+    def sides(self) -> tuple[str, ...]:
+        """Every variant this vote says something about."""
+        if self.winner:
+            return (self.winner, self.loser)
+        return tuple(x for x in (self.loser, self.other) if x)
 
 
 @dataclass
@@ -127,7 +158,18 @@ class Experiment:
 
     @property
     def job_count(self) -> int:
-        return sum(len(v.jobs) for v in self.variants)
+        """Jobs that were actually queued. Empty slots are failed cells."""
+        return sum(1 for v in self.variants for job in v.jobs if job)
+
+    @property
+    def has_run(self) -> bool:
+        """Whether run was ever attempted, which is not the same as job_count.
+
+        A run where every single generation failed leaves placeholders and no
+        job ids, so `job_count` is 0 - and guarding "already run" on that would
+        let the whole experiment be queued a second time on top of itself.
+        """
+        return any(v.jobs for v in self.variants)
 
     def variant(self, variant_id: str) -> Variant | None:
         return next((v for v in self.variants if v.id == variant_id), None)
@@ -162,7 +204,11 @@ class Experiment:
                 if vote.criterion != criterion:
                     continue
                 if not vote.winner:
-                    for side in (vote.loser,):
+                    # A tie is a statement about both variants. Crediting only
+                    # one made ties asymmetric, which is the one thing a tie
+                    # cannot be. A legacy tie has one known side and only that
+                    # side is credited - the other is not guessed.
+                    for side in set(vote.sides):
                         if side in table:
                             table[side]["tie"] += 1
                     continue
@@ -237,7 +283,12 @@ def file_hash(path: Path) -> str:
         stat = path.stat()
     except OSError:
         return ""
-    key = f"{path}:{stat.st_size}:{int(stat.st_mtime)}"
+    # Nanoseconds, not whole seconds. The failure this guards against is a
+    # filename being reused for different weights, and a same-size file
+    # rewritten inside one second is exactly that case - with a one-second key
+    # the cache would hand back the previous file's hash and the provenance
+    # record would be a lie.
+    key = f"{path}:{stat.st_size}:{stat.st_mtime_ns}"
     if key in _HASH_CACHE:
         return _HASH_CACHE[key]
     digest = hashlib.sha256()
@@ -344,16 +395,27 @@ def next_pair(exp: Experiment, criterion: str,
     by_seed: dict[int, list[tuple[str, str]]] = {}
     for variant in exp.variants:
         for index, job in enumerate(variant.jobs):
+            # An empty slot is a cell whose generation failed. It is kept in the
+            # list so the position of every later job still lines up with
+            # exp.seeds - dropping it would slide seed 33's picture into seed
+            # 22's place and quietly mislabel every comparison after the failure.
+            if not job:
+                continue
             if index < len(exp.seeds):
                 by_seed.setdefault(exp.seeds[index], []).append((variant.id, job))
-    seen = {(v.criterion, tuple(sorted((v.winner, v.loser))))
+    # Keyed on the seed as well as the pair. Without the seed, voting on A vs B
+    # at seed 11 marked A vs B done for every other seed too - so an experiment
+    # that ran four seeds per variant collected one vote per pair and called
+    # itself finished. That contradicts the whole point of running fixed seeds:
+    # the noise a single seed carries is exactly what more seeds are for.
+    seen = {(v.criterion, v.seed, v.pair)
             for v in exp.votes if v.criterion == criterion}
     options = []
     for seed, entries in by_seed.items():
         for (a_id, a_job), (b_id, b_job) in itertools.combinations(entries, 2):
             if a_id == b_id:
                 continue
-            if (criterion, tuple(sorted((a_id, b_id)))) in seen:
+            if (criterion, seed, tuple(sorted((a_id, b_id)))) in seen:
                 continue
             options.append({"seed": seed, "a": {"variant": a_id, "job": a_job},
                             "b": {"variant": b_id, "job": b_job}})

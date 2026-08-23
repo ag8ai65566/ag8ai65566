@@ -2089,11 +2089,11 @@ function renderPackStyle() {
       !who.artist_tag
         ? `${who.name} 的原畫師在 danbooru 上沒有可用的畫師標籤，沒辦法用標籤指定畫風。`
         : `${(IMG.chosen || {}).label || '這個底模'}不吃畫師標籤 —— ${esc(p.base_model)} `
-          + '訓練時把畫師名字拿掉了，加了也沒作用。')}</div>`}
+          + '訓練時把畫師名字拿掉了，所以本專案不會自動加 —— 加了會怎樣本專案沒實測過。')}</div>`}
   ${!works && who.artist_tag && want ? `<div class="row" style="margin-top:4px">
       <button class="ghost tiny" id="packstyleswitch">改用 ${esc(wantLabel)}（畫風才吃得到）</button>
       <span class="s" style="align-self:center">${who.danbooru_posts >= 1000
-        ? `${esc(who.name)} 在 danbooru 有 ${who.danbooru_posts} 張，換過去不用 LoRA 也畫得出來。`
+        ? `${esc(who.name)} 在 danbooru 有 ${who.danbooru_posts.toLocaleString()} 張，以 danbooru 系底模來說算常見角色，換過去<b>有機會</b>不用 LoRA 也畫得出來（先驗，不是保證）。`
         : '換過去之後這支 Pony LoRA 就不該再勾了。'}</span>
     </div>` : ''}
   ${who.wiki ? `<div class="s" style="margin-top:4px">
@@ -4408,9 +4408,13 @@ async function castVote(winner) {
   if (!p) return;
   const loser = winner === p.a.variant ? p.b.variant
               : winner === p.b.variant ? p.a.variant : p.a.variant;
+  // A tie has two sides. Sending only one made the standings credit a single
+  // variant for a result that was about both, and left the pairing logic
+  // unable to tell which two variants had been compared.
+  const other = winner ? '' : p.b.variant;
   await fetch(`/api/experiments/${encodeURIComponent(EXP.open.id)}/vote`, {
     method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ criterion: EXP.criterion, winner, loser, seed: p.seed }) });
+    body: JSON.stringify({ criterion: EXP.criterion, winner, loser, other, seed: p.seed }) });
   await openExperiment(EXP.open.id);
   nextJudgement();
 }
@@ -4420,7 +4424,10 @@ function renderStandings() {
   const table = (e.standings || {})[EXP.criterion] || {};
   const rows = e.variants.map((v) => ({ v, r: table[v.id] || { win:0, loss:0, tie:0, played:0, rate:0 } }))
     .sort((a, b) => b.r.rate - a.r.rate || b.r.win - a.r.win);
-  const total = rows.reduce((n, x) => n + x.r.played, 0);
+  // Count the votes, not the per-variant tallies. `played` is per variant, so
+  // one A-beats-B comparison increments two rows and summing them reported
+  // every comparison twice - which reads as "plenty of data" at half the data.
+  const total = (e.votes || []).filter((v) => v.criterion === EXP.criterion).length;
   const arena = $('#exparena');
   arena.classList.remove('hidden');
   arena.innerHTML = `<div class="banner tight">

@@ -2,9 +2,11 @@
 
 The single biggest gap in this project - named as much by an outside review as
 by the user's own results - is that everything steers a character through
-*words*. Words average. danbooru holds 1-3% official art for these characters,
-so a character tag reproduces a fan consensus and no amount of prompt tuning
-turns that into the reference sheet.
+*words*. Words average. Measured across all 75 members, danbooru holds between
+0.62% and 9.45% official art for them (median 3.7%), and the share thins as a
+member gets more popular - so for the most-drawn characters a character tag
+reproduces a fan consensus, and no amount of prompt tuning turns that into the
+reference sheet. See charpacks.likeness_advice for the per-character numbers.
 
 A picture does not average. Feed the official art in as an actual image - as an
 img2img source, or through ControlNet - and the model has the real proportions,

@@ -260,6 +260,34 @@ const { chromium } = require('playwright');
   check(expCrits.length >= 4, `several judging criteria (${expCrits.length})`);
   check(expCrits.some(c=>c.includes('像本人')) && expCrits.some(c=>c.includes('好看')),
      '…keeping "looks like her" and "looks good" separate');
+
+  // Voting, and specifically the two bookkeeping bugs an outside review found
+  // in this exact flow: a tie that only credited one variant, and a comparison
+  // counter that reported every comparison twice.
+  await page.click('#expjudge'); await page.waitForTimeout(1200);
+  const arenaTxt = await page.textContent('#exparena');
+  check(arenaTxt.includes('設定先蓋住'), 'the arena hides the settings until the vote lands');
+  const seedShown = /seed (\d+)/.exec(arenaTxt);
+  check(!!seedShown, `a pair is offered with its seed (${seedShown && seedShown[1]})`);
+  await page.click('#votetie'); await page.waitForTimeout(1500);
+  const tieState = await page.evaluate(() => {
+    const v = (EXP.open.votes || []).filter((x) => x.criterion === EXP.criterion);
+    const t = (EXP.open.standings || {})[EXP.criterion] || {};
+    return { votes: v, ties: Object.values(t).map((r) => r.tie) };
+  });
+  check(tieState.votes.length === 1 && tieState.votes[0].winner === '',
+    'a tie is recorded as a vote with no winner');
+  check(!!tieState.votes[0].other,
+    `…carrying its second side (${tieState.votes[0].other || 'MISSING'})`);
+  check(tieState.ties.filter((n) => n === 1).length === 2,
+    `…and credited to both variants (${tieState.ties})`);
+
+  // The standings line counts votes, not per-variant tallies.
+  await page.evaluate(() => renderStandings()); await page.waitForTimeout(400);
+  const standTxt = await page.textContent('#exparena');
+  check(/共 1 次比較/.test(standTxt),
+    'one comparison reads as one, not two -> ' + standTxt.replace(/\s+/g,' ').slice(0,40));
+  check(standTxt.includes('票數還太少'), '…and under ten votes it says so');
   // …and leave nothing behind.
   await page.evaluate(async () => {
     const d = await (await fetch('/api/experiments')).json();

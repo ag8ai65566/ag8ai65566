@@ -3033,8 +3033,11 @@ async def test_charpacks() -> None:
     check(not calli["style"]["applied"],
           "asking for the artist's style on Pony does not silently do nothing")
     check("by yukisame" not in calli["prompt"], "…the tag is not added")
-    check("拿掉" in calli["style"]["why"],
-          f"…and it says why: Pony removed artist names ({calli['style']['why'][:30]})")
+    check("沒有畫師名字" in calli["style"]["why"]
+          and "沒有實測過" in calli["style"]["why"],
+          f"…and says why without overclaiming: Pony's captions have no artist "
+          f"names, and what it does with one anyway was never measured here "
+          f"({calli['style']['why'][:30]})")
     check("12496" in calli["style"]["why"] or "danbooru" in calli["style"]["why"],
           "…and points at the way that does work")
 
@@ -4126,15 +4129,47 @@ def test_likeness() -> None:
           f"vs {info['posts']}) - which is why naming them does not fix likeness")
     check(info["wiki"].startswith("https://virtualyoutuber.fandom.com"),
           "…and the official gallery is on hand as a reference image source")
-    check("同人平均值" in info["why"], "the explanation names the real cause")
+    # The measured ratio for this exact character, not a range. The previous
+    # version of this said "1-3% for all of them", which a review flagged and
+    # measuring disproved: across the 75 the real spread is 0.62%-9.45%.
+    check(f"{info['official_ratio']}%" in info["why"],
+          f"the explanation quotes this character's measured ratio "
+          f"({info['official_ratio']}%)")
+    check("資料比例" in info["why"] and "不是量到的模型行為" in info["why"],
+          "…and says outright that it is corpus prevalence, not model behaviour")
+    ratios = [c.official_ratio for c in pack.characters if c.danbooru_posts]
+    check(len(ratios) == 75, f"every character has a measured ratio ({len(ratios)})")
+    check(min(ratios) < 1 and max(ratios) > 9,
+          f"…and they really do span an order of magnitude "
+          f"({min(ratios)}% - {max(ratios)}%)")
+    check(sum(1 for r in ratios if r > 5) > 20,
+          f"…with far more than a handful above 5% ({sum(1 for r in ratios if r > 5)}), "
+          f"which is why the old flat '1-3%' could not be right")
+    low = charpacks.likeness_advice(pack, next(
+        c for c in pack.characters if c.key == "gawr-gura"))
+    high = charpacks.likeness_advice(pack, next(
+        c for c in pack.characters if c.key == "tokino-sora"))
+    check("同人平均值" in low["why"], "at 1.06% the fan-consensus argument is stated")
+    check("講不通" in high["why"],
+          "…and at 9.45% it is explicitly withdrawn rather than repeated")
     check(who.designer in info["artist_why"], "…and names the designer with their count")
 
     plain = charpacks.build_prompt(pack, "mori-calliope", 0, model="noobai")
     strong = charpacks.build_prompt(pack, "mori-calliope", 0, model="noobai",
-                                    likeness=1.25)
+                                    likeness=1.25,
+                                    likeness_tags=charpacks.LIKENESS_TAGS)
     check("official art" not in plain["prompt"], "the mode is off by default")
     check("official art" in strong["prompt"],
-          "…and adds the official-art bias when asked")
+          "…and adds the official-art bias when the caller asks for it by name")
+    # `likeness_tags` no longer defaults to LIKENESS_TAGS. It used to, which
+    # meant calling this function directly - as any script or future endpoint
+    # would - posted a danbooru general tag to whatever checkpoint was named,
+    # including the photo models that have never seen one. This function does
+    # not know the checkpoint; the caller does.
+    bare = charpacks.build_prompt(pack, "mori-calliope", 0, model="juggernaut",
+                                  likeness=1.25)
+    check("official art" not in bare["prompt"],
+          "…and adds nothing on its own, even with likeness on")
     check("newest" not in strong["prompt"],
           "…and NOT `newest`, which is a 2021-2024 date bucket for the artwork, "
           "not the character's current design")
@@ -4869,23 +4904,76 @@ def test_experiments() -> None:
             sides.add(pair["a"]["variant"])
     check(len(sides) == 2, "which variant is shown first is randomised (position bias)")
 
-    # A voted-on comparison is not offered again.
+    # A voted-on comparison is not offered again - but only on the seed it was
+    # judged on. This is the regression an outside review caught: the dedup key
+    # had no seed in it, so one vote on A-vs-B retired that pair across every
+    # seed, and a four-seed experiment collected one vote per pair and declared
+    # itself finished. Running fixed seeds and then throwing away all but one of
+    # them is worse than not running them, because the result still looks
+    # controlled.
     exp2.votes.append(ex.Vote(criterion="likeness", winner="v0", loser="v1", seed=11))
+    remaining = ex.next_pair(exp2, "likeness", random.Random(0))
+    check(remaining is not None and remaining["seed"] == 22,
+          f"the same A/B is still judged on the second seed ({remaining and remaining['seed']})")
     exp2.votes.append(ex.Vote(criterion="likeness", winner="v1", loser="v0", seed=22))
     check(ex.next_pair(exp2, "likeness", random.Random()) is None,
-          "once judged, a pairing is not offered again")
+          "…and only then is that criterion finished")
     check(ex.next_pair(exp2, "costume", random.Random()) is not None,
           "…but a different criterion still has work to do")
+
+    # A failed generation must not slide later seeds one place to the left. The
+    # position of a job in the list is the only thing that says which seed it
+    # came from, so a dropped cell relabels every job after it - a wrong result
+    # rather than a missing one.
+    partial = ex.Experiment(id="p", seeds=[11, 22, 33], variants=[
+        ex.Variant("v0", {}, ["a11", "", "a33"]),
+        ex.Variant("v1", {}, ["b11", "b22", "b33"]),
+    ])
+    offered = set()
+    for _ in range(60):
+        pair = ex.next_pair(partial, "likeness", random.Random())
+        if pair is None:
+            break
+        offered.add((pair["seed"], tuple(sorted((pair["a"]["job"], pair["b"]["job"])))))
+    check(offered == {(11, ("a11", "b11")), (33, ("a33", "b33"))},
+          f"a failed middle cell is skipped, not shifted ({sorted(offered)})")
+    check(not any(j == "b22" for _, jobs in offered for j in jobs),
+          "…so seed 22's surviving picture is never paired against seed 33's")
+    check(partial.job_count == 5, f"job_count counts real jobs, not slots ({partial.job_count})")
+    check(partial.has_run, "…and has_run is true even with a hole in it")
+    check(not ex.Experiment(id="q", seeds=[11], variants=[ex.Variant("v0", {}, [])]).has_run,
+          "an experiment that was never run says so")
+    allfail = ex.Experiment(id="r", seeds=[11], variants=[ex.Variant("v0", {}, [""])])
+    check(allfail.has_run and allfail.job_count == 0,
+          "a run where everything failed still counts as run - or it gets queued twice")
 
     # -- counting ------------------------------------------------------------
     table = exp2.standings()["likeness"]
     check(table["v0"]["win"] == 1 and table["v0"]["loss"] == 1,
           f"wins and losses are counted per variant ({table['v0']})")
     check(table["v0"]["rate"] == 0.5, f"…and a win rate derived ({table['v0']['rate']})")
-    exp2.votes.append(ex.Vote(criterion="beauty", winner="", loser="v0"))
-    tie = exp2.standings()["beauty"]["v0"]
-    check(tie["tie"] == 1 and tie["win"] == 0,
-          f"'no difference' is a tie, not a win ({tie})")
+    # A tie is a statement about two variants, so it has to be credited to both.
+    # Storing one side made ties asymmetric, which is the one thing a tie cannot
+    # be, and left the pairing logic unable to tell what had been compared.
+    exp2.votes.append(ex.Vote(criterion="beauty", winner="", loser="v0",
+                              other="v1", seed=11))
+    beauty = exp2.standings()["beauty"]
+    check(beauty["v0"]["tie"] == 1 and beauty["v1"]["tie"] == 1,
+          f"a tie counts for both sides ({beauty['v0']['tie']}, {beauty['v1']['tie']})")
+    check(beauty["v0"]["win"] == 0, "…and for neither as a win")
+    tie_vote = exp2.votes[-1]
+    check(tie_vote.pair == ("v0", "v1"), f"a tie knows which pair it was ({tie_vote.pair})")
+    check(ex.next_pair(exp2, "beauty", random.Random(0))["seed"] == 22,
+          "…so the tied pair is not offered again on the same seed")
+
+    # Votes written before `other` existed still load, and are not guessed at.
+    legacy = ex.Vote(criterion="adherence", winner="", loser="v0")
+    check(legacy.pair == ("v0", "v0") and legacy.sides == ("v0",),
+          "a legacy tie reports one known side rather than inventing the other")
+    exp2.votes.append(legacy)
+    legacy_table = exp2.standings()["adherence"]
+    check(legacy_table["v0"]["tie"] == 1 and legacy_table["v1"]["tie"] == 0,
+          "…and is credited only where it actually has data")
     check(set(exp2.standings()) == set(ex.CRITERIA),
           "every criterion gets its own table - beauty and likeness are "
           "different questions and must not be averaged together")
@@ -4902,6 +4990,26 @@ def test_experiments() -> None:
           "…but rewriting the file changes it - the cache key includes size and "
           "mtime, because reusing a filename for new weights is the exact "
           "failure provenance exists to catch")
+    # The case a one-second cache key silently gets wrong: same filename, same
+    # size, rewritten inside the same second. os.utime pins both stat times to
+    # the same integer second with different nanoseconds, which is exactly the
+    # shape a fast overwrite produces - and with `int(st_mtime)` in the key the
+    # cache handed back the previous file's digest, making the provenance record
+    # a lie about which weights produced the picture.
+    same = TMP / "same-second.bin"
+    same.write_bytes(b"A" * 32)
+    at = same.stat().st_mtime
+    os.utime(same, ns=(int(at) * 10**9 + 100, int(at) * 10**9 + 100))
+    before = ex.file_hash(same)
+    same.write_bytes(b"B" * 32)
+    os.utime(same, ns=(int(at) * 10**9 + 900, int(at) * 10**9 + 900))
+    after_stat = same.stat()
+    check(int(after_stat.st_mtime) == int(at) and same.stat().st_size == 32,
+          "the rewrite really does share the same whole second and size")
+    check(ex.file_hash(same) != before,
+          "…and the hash still changes, because the cache key is nanoseconds")
+    same.unlink(missing_ok=True)
+
     check(ex.file_hash(TMP / "does-not-exist") == "",
           "a missing file hashes to empty rather than raising")
     prov = ex.provenance(checkpoints={"m.safetensors": sample}, loras={},

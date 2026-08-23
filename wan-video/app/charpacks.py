@@ -49,11 +49,29 @@ class Character:
     designer_url: str = ""
     artist_tag: str = ""
     artist_posts: int = 0
-    # How many danbooru posts carry this character's own tag - i.e. how well a
-    # danbooru-trained base model knows them with no LoRA at all.
+    # How many danbooru posts currently carry this character's own tag. This is
+    # *corpus prevalence*, not a measurement of how strongly any checkpoint
+    # learned the concept: between the two sit the training snapshot's cutoff,
+    # dedup, caption normalisation, tag dropout and sampling weights. A high
+    # count is a good prior that a danbooru-trained base model knows them
+    # without a LoRA; only a generation can say whether it does.
     danbooru_posts: int = 0
+    # How many of those posts also carry `official_art`. Measured per character
+    # against danbooru on 2026-08-23, because the previous version of this file
+    # quoted a flat "1-3%" for everyone - a figure taken from a handful of the
+    # most popular members and generalised to all 75. It does not hold: across
+    # the 75 the real range is 0.62% to 9.45%, median 3.7%, and 28 of them are
+    # above 5%. See `official_ratio` for what the number actually tracks.
+    official_posts: int = 0
     wiki: str = ""
     costumes: list[Costume] = field(default_factory=list)
+
+    @property
+    def official_ratio(self) -> float:
+        """Share of this character's danbooru posts that are official art, in %."""
+        if self.danbooru_posts <= 0:
+            return 0.0
+        return round(self.official_posts / self.danbooru_posts * 100, 2)
 
     def public(self) -> dict:
         return {
@@ -61,7 +79,9 @@ class Character:
             "group": self.group, "former": self.former,
             "designer": self.designer, "designer_url": self.designer_url,
             "artist_tag": self.artist_tag, "artist_posts": self.artist_posts,
-            "danbooru_posts": self.danbooru_posts, "wiki": self.wiki,
+            "danbooru_posts": self.danbooru_posts,
+            "official_posts": self.official_posts,
+            "official_ratio": self.official_ratio, "wiki": self.wiki,
             "costumes": [c.public() for c in self.costumes],
         }
 
@@ -193,7 +213,9 @@ def _load(path: Path) -> Pack | None:
             designer=str(entry.get("designer", "")),
             designer_url=str(entry.get("designer_url", "")),
             artist_tag=str(entry.get("artist_tag", "")), artist_posts=posts,
-            danbooru_posts=native, wiki=str(entry.get("wiki", "")),
+            danbooru_posts=native,
+            official_posts=int(entry.get("official_posts") or 0),
+            wiki=str(entry.get("wiki", "")),
             costumes=costumes,
         ))
     if not characters:
@@ -257,9 +279,12 @@ def style_advice(pack: Pack, who: Character, model: str) -> dict:
     """Can this base model be told to draw in the original designer's style?
 
     Only a model trained with danbooru artist tags can. Pony V6's own model card
-    says artist names were removed from its captions, so `by teshima_nari` there
-    is three tokens of nothing - and quietly adding it anyway would look like
-    the feature works when it does not.
+    says artist names were removed from its captions, so an artist tag there has
+    no caption behind it - which is a fact about the training data, not a
+    measured result. This project has never generated an image, so it does not
+    know what Pony does with those tokens; it declines to add them silently,
+    because a feature that looks like it works and does not is worse than one
+    that says up front it is unverified.
     """
     out = {"tag": who.artist_tag, "designer": who.designer, "posts": who.artist_posts,
            "wiki": who.wiki, "works": False, "why": "", "form": ""}
@@ -278,13 +303,15 @@ def style_advice(pack: Pack, who: Character, model: str) -> dict:
         return out
     known = "／".join(pack.artist_tag_models) or "沒有"
     out["why"] = (
-        f"這個底模不吃畫師標籤，加了也沒作用（{pack.base_model or '它'} 訓練時把畫師名字拿掉了）。"
-        f"要靠標籤貼近 {who.designer or '原畫師'} 的畫風，底模要換成 {known}。"
+        f"這個底模的訓練標註裡沒有畫師名字（{pack.base_model or '它'} 官方說明寫的），"
+        "所以本專案不會自動幫你加 —— **加了會怎樣本專案沒有實測過**。"
+        f"要靠標籤貼近 {who.designer or '原畫師'} 的畫風，底模換成 {known} 比較有把握。"
     )
     if who.danbooru_posts >= 1000:
         out["why"] += (
-            f" 好消息是 {who.name} 在 danbooru 上有 {who.danbooru_posts} 張圖，"
-            "換過去之後不用這支 LoRA 也畫得出來。"
+            f" 另外 {who.name} 在 danbooru 上有 {who.danbooru_posts:,} 張圖，"
+            "以 danbooru 訓練的底模來說算是常見角色，換過去之後**有機會**不用這支 LoRA "
+            "也畫得出來——這是先驗不是保證，實際認不認得要生一張才知道。"
         )
     return out
 
@@ -341,14 +368,62 @@ def _drop_duplicate_artist(chunk: str, bare: str) -> str:
 LIKENESS_TAGS = "official art"
 
 
+# The quartiles of the measured distribution across all 75 members, so the
+# wording is anchored on where this character actually sits rather than on a
+# threshold picked to sound decisive. Q1 2.50%, median 3.70%, Q3 5.87%.
+RATIO_Q1 = 2.50
+RATIO_Q3 = 5.87
+
+
+def _ratio_note(ratio: float) -> str:
+    """How strongly the fan-consensus argument applies to this exact character."""
+    if ratio < RATIO_Q1:
+        return ("這在 75 位裡屬於<b>偏低的四分之一</b>，"
+                "所以模型能學到的主要是「同人平均值」而不是設定圖。")
+    if ratio > RATIO_Q3:
+        return ("這在 75 位裡屬於<b>偏高的四分之一</b>，"
+                "所以「只學到同人平均」對她比較講不通 —— 不像的原因可能在別的地方"
+                "（LoRA 強度、解析度、服裝 tag、尺寸）。")
+    return ("這大約落在 75 位的<b>中間</b>（中位數 3.7%）。"
+            "官方圖仍然是少數，但沒有少到可以斷定「一定學不到」。")
+
+
 def likeness_advice(pack: Pack, who: Character) -> dict:
     """Why a generated character drifts from the stream model, with numbers.
 
     This is the most common disappointment with a character LoRA and the reason
-    is not a bug, it is what the training data is: danbooru holds fan art, and
-    only 1-3% of any of these characters is official art. So the concept the
-    model learned is a *fan consensus*, not the reference sheet - it will be
-    recognisably them and still not match the Live2D model.
+    is not a bug, it is what the training data is: danbooru holds mostly fan
+    art, so the concept a danbooru-trained model can learn is a *fan consensus*
+    rather than the reference sheet.
+
+    How lopsided that is was measured per character rather than asserted, after
+    a review pointed out that the earlier version of this docstring quoted a
+    flat "1-3% official art" for all 75 members. **That figure was wrong.** It
+    came from spot-checking a few of the most popular members and generalising.
+    Measured across all 75 on 2026-08-23:
+
+        range      0.62% (Kiryu Coco) to 9.45% (Tokino Sora)
+        median     3.7%
+        pooled     3.17%  (13,434 official of 424,064 posts)
+        above 5%   28 of 74 measurable members
+
+    And the spread is not noise - it tracks popularity, in the direction that
+    weakens the original claim rather than the one that flatters it:
+
+        Pearson r (log10 posts vs official %)   -0.646
+        members with >=10,000 posts   median 2.08%
+        members with  <2,000 posts    median 7.79%
+
+    Which makes sense: official art accrues at a roughly fixed rate per member
+    while fan art compounds with popularity, so the *most* drawn members are
+    exactly the ones whose official share is thinnest. So the argument holds
+    strongly for Gura (1.06%) and barely at all for Tokino Sora (9.45%), and
+    the honest thing is to quote the number for the character in front of the
+    user instead of a range that fits nobody.
+
+    Even per character, the ratio is corpus prevalence and not a measurement of
+    what any checkpoint learned. It is a good reason to expect drift; it is not
+    evidence of drift. Only a generation is that.
 
     Naming the original designer does not fix it either, and the numbers say why
     more clearly than any explanation: of Mori Calliope's 12,544 danbooru posts,
@@ -357,10 +432,12 @@ def likeness_advice(pack: Pack, who: Character) -> dict:
     style - mostly drawn on other subjects - rather than their rendering of this
     character, which is why it can make likeness worse rather than better.
 
-    What does help is measurable too: the costume tag. `mori_calliope_(1st_costume)`
-    carries 3,136 posts, `gawr_gura_(1st_costume)` 7,598 - because the official
-    look *is* that outfit, and the outfit tag is the part of the identity that
-    fan art reproduces faithfully.
+    The costume tag is offered as an explicit control over the outfit half of
+    the identity: `mori_calliope_(1st_costume)` carries 3,136 posts,
+    `gawr_gura_(1st_costume)` 7,598, and the official look *is* that outfit.
+    That is a reason to give the user the lever, not a finding that it is the
+    strongest one. Which lever actually wins is what the fixed-seed benchmark in
+    experiments.py exists to answer, and it has not been run.
     """
     costume_tags = [c.trigger for c in who.costumes]
     return {
@@ -370,10 +447,19 @@ def likeness_advice(pack: Pack, who: Character) -> dict:
         "artist_posts": who.artist_posts,
         "wiki": who.wiki,
         "costumes": len(costume_tags),
+        "official_posts": who.official_posts,
+        "official_ratio": who.official_ratio,
+        # The number for *this* character, measured, rather than a range that
+        # fits nobody. The wording changes with it: at 1% the fan-consensus
+        # argument is strong, at 9% it is weak, and pretending otherwise was
+        # the thing a review correctly objected to.
         "why": (
-            f"danbooru 上 {who.danbooru_posts:,} 張{who.name}裡，官方圖只佔 1～3%。"
-            "模型學到的是「同人平均值」，不是設定圖。"
-        ),
+            f"danbooru 上 {who.name} 有 {who.danbooru_posts:,} 張，"
+            f"其中帶 <code>official art</code> 的有 {who.official_posts:,} 張，"
+            f"<b>{who.official_ratio}%</b>。"
+            + _ratio_note(who.official_ratio)
+            + "（這是 danbooru 的<b>資料比例</b>，不是量到的模型行為。）"
+        ) if who.danbooru_posts else "",
         # What the counts support is "not a reliable identity token", which is
         # not the same as "makes it worse" - diffusion composes concepts that
         # rarely co-occur, so the artist tag can carry style without carrying
@@ -392,7 +478,7 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
                  extra: str = "", quality: bool = True, model: str = "",
                  style: bool = False, quality_tags: str = "",
                  artist_weight: float = 1.0, likeness: float = 0.0,
-                 likeness_tags: str | None = None) -> dict | None:
+                 likeness_tags: str = "") -> dict | None:
     """The one-click prompt: who, wearing what, in the order the author wants.
 
     Trigger first, then that outfit's appearance tags, then whatever the user
@@ -414,16 +500,20 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
 
     # The artist tag goes right after the character, which is where every
     # Illustrious style guide puts it and where it has the most pull.
-    # `likeness` weights the costume trigger, which is the strongest identity
-    # lever there is - see likeness_advice for the counts behind that claim.
+    # `likeness` weights the costume trigger. That is an *explicit control* over
+    # the outfit half of the identity, offered because the outfit is the part
+    # fan art reproduces most faithfully - not a claim that it is the strongest
+    # identity lever. Which lever wins is what the fixed-seed benchmark in
+    # experiments.py is for, and it has not been run.
     head = [weighted(outfit.trigger, likeness) if likeness else outfit.trigger]
-    if likeness:
-        # Gated by the caller, which knows the checkpoint: a danbooru general
-        # tag means nothing to a photo model, and shipping one anyway is the
-        # bug this parameter exists to stop.
-        extra_tags = LIKENESS_TAGS if likeness_tags is None else likeness_tags
-        if extra_tags.strip():
-            head.append(extra_tags.strip())
+    if likeness and likeness_tags.strip():
+        # Opt-in only. `likeness_tags` used to default to LIKENESS_TAGS when the
+        # caller passed nothing, so calling this function directly - as any
+        # script or future endpoint would - silently posted a danbooru general
+        # tag to a photo model that has never seen one. The caller knows the
+        # checkpoint; this function does not, so it adds nothing it was not
+        # given. The HTTP route passes it explicitly after checking tag_style.
+        head.append(likeness_tags.strip())
     if pack.series and model in pack.native_models:
         head.append(pack.series)
     mine = extra.strip()

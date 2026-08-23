@@ -1651,7 +1651,10 @@ async def run_experiment(exp_id: str) -> JSONResponse:
     experiment = EXPERIMENTS.get(exp_id)
     if experiment is None:
         raise HTTPException(404, "找不到這個實驗")
-    if experiment.job_count:
+    # has_run, not job_count: a run where every generation failed leaves
+    # placeholders and no job ids, and guarding on the count would let the whole
+    # experiment be queued a second time on top of the first.
+    if experiment.has_run:
         raise HTTPException(400, "這個實驗已經跑過了")
     queued, failed = 0, []
     for variant in experiment.variants:
@@ -1663,7 +1666,13 @@ async def run_experiment(exp_id: str) -> JSONResponse:
                 response = await image_generate(request)
                 record = json.loads(bytes(response.body).decode("utf-8"))
             except HTTPException as exc:
-                failed.append(f"{variant.label}: {exc.detail}")
+                failed.append(f"{variant.label} · seed {seed}: {exc.detail}")
+                # Keep the slot. Position in this list is what says which seed a
+                # job belongs to, so dropping a failed cell slides every later
+                # job one seed to the left - and the pairwise comparison then
+                # labels seed 33's picture as seed 22. That is a wrong result
+                # rather than a missing one, which is far worse.
+                variant.jobs.append("")
                 continue
             variant.jobs.append(record["id"])
             queued += 1
@@ -1721,11 +1730,22 @@ async def experiment_vote(exp_id: str, payload: dict = Body(default={})
         raise HTTPException(400, f"不認識的評分項目：{criterion}")
     winner = str(payload.get("winner", ""))
     loser = str(payload.get("loser", ""))
+    other = str(payload.get("other", ""))
     known = {v.id for v in experiment.variants}
     if loser not in known or (winner and winner not in known):
         raise HTTPException(400, "投票對象不在這個實驗裡")
+    if winner:
+        if winner == loser:
+            raise HTTPException(400, "贏家和輸家不能是同一組設定")
+        other = ""      # a decided vote has no third side
+    else:
+        # A tie is a statement about two variants, so both have to arrive or the
+        # standings credit one of them and the pairing logic cannot tell what
+        # was compared.
+        if other not in known or other == loser:
+            raise HTTPException(400, "平手投票必須帶兩個不同的設定")
     experiment.votes.append(exp_mod.Vote(
-        criterion=criterion, winner=winner, loser=loser,
+        criterion=criterion, winner=winner, loser=loser, other=other,
         seed=int(payload.get("seed", 0) or 0)))
     EXPERIMENTS.save()
     return JSONResponse({"standings": experiment.standings(),
