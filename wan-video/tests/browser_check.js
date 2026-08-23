@@ -370,7 +370,7 @@ const { chromium } = require('playwright');
   check(likePrompt.includes('official art'), '…and official art is added');
   check(await page.isVisible('#packlikenote'), 'the explanation shows');
   const likeNote = await page.textContent('#packlikenote');
-  check(likeNote.includes('12,496') || /\d,\d\d\d 張/.test(note), 'it quotes the real post count -> ' + likeNote.slice(0,54).replace(/\s+/g,' '));
+  check(likeNote.includes('12,496') || /\d,\d\d\d 張/.test(likeNote), 'it quotes the real post count -> ' + likeNote.slice(0,54).replace(/\s+/g,' '));
   check(likeNote.includes('Yukisame'), '…and names the designer with their own count');
   check(likeNote.includes('以圖生圖'), '…and leads with the img2img/ControlNet answer');
   const likeLink = await page.evaluate(()=>{ const a=document.querySelector('#packlikenote a'); return a?a.href:''; });
@@ -469,6 +469,184 @@ const { chromium } = require('playwright');
   const grp = await page.evaluate(()=>[...document.querySelectorAll('#artlist button[data-art]')].length);
   check(grp > 3 && grp < 52, `group filter works (${grp} in 成人向)`);
   await page.selectOption('#artgroup','');
+
+
+  // ---- style library + prompt doctor ----
+  // The diff is the whole trust story here: nothing may reach the prompt box
+  // until it has been shown, and the user's own tags must come out the far side
+  // untouched. Both are checked against a prompt full of things the merger has
+  // never heard of.
+  const errMark = errors.length;
+  await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='noobai'; s.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(500);
+  await page.fill('#iprompt', '1girl, hoshimachi suisei, pastel colors, score_9, my_lora_trigger, (smile:1.3)');
+  await page.fill('#inegative', '');
+  await page.waitForTimeout(500);
+
+  check(!await page.isVisible('#stylebox'), 'the style library starts collapsed');
+  await page.click('#istyles');
+  await page.waitForTimeout(600);
+  check(await page.isVisible('#stylebox'), 'the 風格靈感庫 button opens it');
+  const recipeCount = await page.evaluate(()=>document.querySelectorAll('#stlist button[data-recipe]').length);
+  check(recipeCount === 22, `22 recipes render for NoobAI (${recipeCount})`);
+  const presetCount = await page.evaluate(()=>document.querySelectorAll('#stpresets button[data-preset]').length);
+  check(presetCount >= 3, `and its quality presets (${presetCount})`);
+
+  // Chips carry their provenance band, and a caption token is not shown as a
+  // rare tag just because danbooru has 0 posts for it.
+  const bands = await page.evaluate(()=>{
+    const c = { kd:0, kc:0, kp:0 };
+    document.querySelectorAll('#stlist .tag').forEach((t)=>{
+      if (t.classList.contains('kd')) c.kd++;
+      if (t.classList.contains('kc')) c.kc++;
+      if (t.classList.contains('kp')) c.kp++;
+    });
+    return c;
+  });
+  check(bands.kd > 50, `danbooru chips are marked (${bands.kd})`);
+  const noteTxt = await page.textContent('#stnote');
+  check(noteTxt.includes('不是模仿畫師'), 'the panel says these are not artist imitation');
+
+  // Nothing invented ships. `2d` is the dangerous one - it aliases to an artist.
+  const allChips = await page.evaluate(()=>[...document.querySelectorAll('#stlist .tag')].map((t)=>t.childNodes[0].textContent.trim()));
+  check(!allChips.includes('2d'), '`2d` is nowhere in the rendered recipes (it aliases to artist nidy)');
+  ['clean lineart','cel shading','rim light','dramatic lighting','detailed eyes','glossy skin'].forEach((t)=>{
+    check(!allChips.includes(t), `the spec's invented \`${t}\` did not ship`);
+  });
+  const replTxt = await page.textContent('#streplbody');
+  check(replTxt.includes('nidy'), 'the substitution table explains the 2d/nidy alias');
+
+  await page.fill('#stq', '雨');
+  await page.waitForTimeout(300);
+  const rainy = await page.evaluate(()=>document.querySelectorAll('#stlist button[data-recipe]').length);
+  check(rainy === 2, `searching 雨 narrows to 2 (${rainy})`);
+  await page.fill('#stq', 'zzzz-nothing');
+  await page.waitForTimeout(300);
+  check((await page.textContent('#stlist')).includes('沒有符合'), 'an empty search says so');
+  await page.fill('#stq', '');
+  await page.waitForTimeout(300);
+
+  // Applying shows a diff and writes nothing yet.
+  const beforeApply = await page.inputValue('#iprompt');
+  await page.click('#stlist button[data-recipe="ink-manga"]');
+  await page.waitForTimeout(500);
+  check(await page.isVisible('#pdbox'), 'applying a recipe shows the diff first');
+  check(await page.inputValue('#iprompt') === beforeApply, '…and has not touched the prompt box yet');
+  const diff = await page.textContent('#pdbox');
+  check(diff.includes('－ 換掉') && diff.includes('pastel colors'),
+    'the diff names what it is replacing -> ' + diff.slice(0,40).replace(/\s+/g,' '));
+  check(diff.includes('score_9'), '…and what it is cleaning out for this checkpoint');
+  await page.click('#stcancel');
+  await page.waitForTimeout(200);
+  check(await page.inputValue('#iprompt') === beforeApply, 'cancelling changes nothing');
+
+  await page.click('#stlist button[data-recipe="ink-manga"]');
+  await page.waitForTimeout(500);
+  await page.click('#stok');
+  await page.waitForTimeout(500);
+  const merged = await page.inputValue('#iprompt');
+  check(merged.includes('monochrome') && merged.includes('greyscale'),
+    'accepting writes the recipe in, both sides of its own conflict intact');
+  check(merged.includes('my_lora_trigger'), '…without eating the LoRA trigger');
+  check(merged.includes('(smile:1.3)'), '…and keeping the user’s own weight');
+  check(!merged.includes('score_9'), '…while dropping the foreign score tag');
+  check(!merged.includes('pastel colors'), '…and the conflicting palette');
+
+  // Keep-my-style leaves the conflict alone.
+  await page.fill('#iprompt', '1girl, pastel colors');
+  await page.waitForTimeout(400);
+  await page.check('#stkeep');
+  await page.click('#stlist button[data-recipe="ink-manga"]');
+  await page.waitForTimeout(500);
+  await page.click('#stok');
+  await page.waitForTimeout(400);
+  check((await page.inputValue('#iprompt')).includes('pastel colors'),
+    '保留目前畫風 keeps the conflicting tag');
+  await page.uncheck('#stkeep');
+
+  // A quality preset.
+  await page.fill('#iprompt', '1girl');
+  await page.waitForTimeout(400);
+  await page.click('#stpresets button[data-preset="noobai-official"]');
+  await page.waitForTimeout(500);
+  await page.click('#stok');
+  await page.waitForTimeout(400);
+  check((await page.inputValue('#iprompt')).includes('masterpiece'),
+    'a quality preset applies through the same diff');
+  await page.click('#stclose');
+  await page.waitForTimeout(200);
+  check(!await page.isVisible('#stylebox'), 'the panel collapses again');
+
+  // ---- prompt doctor ----
+  await page.evaluate(()=>{ const s=document.getElementById('isize'); s.value='832×1216 直式'; s.dispatchEvent(new Event('change')); });
+  await page.fill('#iprompt', '1girl, hoshimachi suisei, official art, masterpiece, best quality');
+  await page.fill('#inegative', 'worst quality, lowres');
+  await page.waitForTimeout(900);
+  let health = await page.textContent('#pdline');
+  check(health.includes('良好'), `a clean prompt reads 良好 -> ${health.trim()}`);
+
+  await page.fill('#iprompt', 'score_9, 1girl, 8k, ultra detailed, smile, smile');
+  await page.fill('#inegative', 'smile');
+  await page.waitForTimeout(900);
+  health = await page.textContent('#pdline');
+  check(health.includes('要先處理') || health.includes('值得看'),
+    `a broken prompt does not -> ${health.trim()}`);
+  await page.click('#pdopen');
+  await page.waitForTimeout(300);
+  const findings = await page.textContent('#pdbox');
+  check(findings.includes('Pony'), 'the detail names the score dialect');
+  check(findings.includes('從來沒有生成過任何一張圖'),
+    'and the panel says outright that none of this was measured on a picture');
+
+  // The one-click fix actually edits the prompt.
+  await page.click('#pdbox button[data-fix]');
+  await page.waitForTimeout(600);
+  check(!(await page.inputValue('#iprompt')).includes('score_9'),
+    'the 移除 button takes the foreign tags out');
+
+  // The resolution warning is the most valuable finding, so it is checked end
+  // to end: shrink the canvas, see the warning, click the fix, see it go.
+  // 看細節 is a toggle, so the panel has to be closed before it can be reopened.
+  await page.click('#pdopen');
+  await page.waitForTimeout(200);
+  check(!await page.isVisible('#pdbox'), '看細節 closes the panel again');
+  await page.evaluate(()=>{ const s=document.getElementById('isize'); s.value=IMG.customSize; s.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(300);
+  await page.evaluate(()=>{ document.getElementById('iwidth').value=512; document.getElementById('iheight').value=512; paintSize(); });
+  await page.waitForTimeout(900);
+  await page.click('#pdopen');
+  await page.waitForTimeout(300);
+  const resTxt = await page.textContent('#pdbox');
+  check(resTxt.includes('512×512') && resTxt.includes('SDXL'),
+    'a 512² canvas on an SDXL checkpoint is called out -> ' + resTxt.slice(0,48).replace(/\s+/g,' '));
+  await page.click('#pdbox button[data-size]');
+  await page.waitForTimeout(900);
+  check(await page.inputValue('#iwidth') === '832', 'and its one-click fix resizes the canvas');
+  await page.waitForTimeout(400);
+  // The prompt still has `smile` on both sides, so the *line* stays red - what
+  // has to be gone is the resolution finding itself.
+  const stillRes = await page.evaluate(()=>PD.last.findings.some((f)=>f.id==='resolution'));
+  check(!stillRes, '…after which the resolution finding is gone');
+  await page.evaluate(()=>{ const b=document.getElementById('pdbox'); b.classList.add('hidden'); });
+  await page.fill('#iprompt', '');
+  await page.fill('#inegative', '');
+  // Put the canvas back where the rest of the file expects to find it: the
+  // custom-size block below starts from whatever these are left at.
+  await page.evaluate(()=>{ document.getElementById('iwidth').value=1024; document.getElementById('iheight').value=1024; paintSize(); });
+  await page.waitForTimeout(400);
+
+  // Only errors raised during this block, and only real ones. The health check
+  // fires on a debounce as the prompt is typed, which reuses keep-alive sockets
+  // faster than uvicorn's default 5s timeout retires them - that shows up as a
+  // transient ERR_CONNECTION_RESET on a request the page then simply retries.
+  // It is a property of the dev server's socket handling, not of this code, so
+  // it is counted and printed rather than asserted on.
+  const mine = errors.slice(errMark);
+  const resets = mine.filter((e) => /ERR_CONNECTION_RESET|ERR_ABORTED/.test(e));
+  const real = mine.filter((e) => !/ERR_CONNECTION_RESET|ERR_ABORTED/.test(e));
+  check(real.length === 0,
+    `no JS errors from the style library (${real.slice(0,2).join(' | ') || 'clean'}` +
+    `${resets.length ? `; ${resets.length} transient socket reset(s) ignored` : ''})`);
 
 
   // ---- custom size ----

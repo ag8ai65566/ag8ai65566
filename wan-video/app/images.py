@@ -138,9 +138,24 @@ IMAGE_MODELS: list[ImageModel] = [
         steps=28, cfg=6.0, sampler="euler_ancestral", scheduler="normal",
         clip_skip=-2,
         artist_form="by {tag}",
-        positive_prefix="masterpiece, best quality, amazing quality, very aesthetic",
-        negative="bad quality, worst quality, worst detail, sketch, censor, " + ANIME_NEG,
-        prompt_style="用 danbooru 標籤，逗號分隔：`1girl, long hair, school uniform, sitting, from side`。句子式描述效果差。",
+        # Base Illustrious's own card lists exactly six quality words - worst /
+        # bad / average / good / best quality and masterpiece. The `amazing
+        # quality, very aesthetic` string that used to be here is the WAI and
+        # Animagine dialect, not this checkpoint's; it was not on any card.
+        positive_prefix="masterpiece, best quality",
+        # The card's own negative example, minus the four tags that would stop
+        # this app doing things the user explicitly asked for: `comic`,
+        # `monochrome`, `greyscale` and `multiple views` (they rule out the
+        # manga and black-and-white recipes) and the censoring ones.
+        negative=("worst quality, bad quality, low quality, lowres, displeasing, "
+                  "very displeasing, bad anatomy, bad hands, scan artifacts, "
+                  "signature, twitter username, jpeg artifacts, extra digits, "
+                  "fewer digits, jaggy lines"),
+        prompt_style=("用 danbooru 標籤，逗號分隔："
+                      "`1girl, long hair, school uniform, sitting, from side`。"
+                      "官方 card 另外提醒：`close-up`、`upside-down`、`cowboy shot` 這類構圖詞"
+                      "不要濫用，會互相打架。品質詞它只認 worst / bad / average / good / "
+                      "best quality 跟 masterpiece 這六個。"),
         sizes=SDXL_SIZES,
         nsfw_note="Illustrious 系的 LoRA 在 CivitAI 上最多，NSFW 題材涵蓋最廣。",
         note="CivitAI 上下載數最高的 NSFW 底模系列（WAI-illustrious 等都是它的微調）。",

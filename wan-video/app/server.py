@@ -37,7 +37,10 @@ import pagelayout
 import posebook
 import promptbook
 import prompts
+import promptdoctor
+import promptmerge
 import quicktags
+import styles
 import refs as refslib
 import registry
 import tags
@@ -1463,6 +1466,100 @@ async def list_quicktags() -> JSONResponse:
     Static data, so it ships whole and is filtered in the browser.
     """
     return JSONResponse(quicktags.public())
+
+
+# -- style library: recipes, quality presets, merge, prompt doctor -----------
+
+
+@app.get("/api/styles")
+async def list_styles(model: str = "", tag_style: str = "") -> JSONResponse:
+    """Every style recipe and quality preset, optionally filtered to one model.
+
+    `tag_style` decides which spelling the one-click prompt uses: `danbooru` for
+    the anime finetunes, `natural` for Juggernaut and SDXL base. When it is not
+    given it is taken from the model, which is what the UI does.
+    """
+    if not tag_style:
+        m = images.get(model) if model else None
+        tag_style = m.tag_style if m else "danbooru"
+    return JSONResponse(styles.public(model, tag_style))
+
+
+@app.get("/api/styles/search")
+async def search_styles(q: str = "", model: str = "", tag_style: str = "") -> JSONResponse:
+    if not tag_style:
+        m = images.get(model) if model else None
+        tag_style = m.tag_style if m else "danbooru"
+    hits = styles.search(q, model)
+    return JSONResponse({"recipes": [r.public(tag_style) for r in hits], "query": q})
+
+
+@app.post("/api/styles/apply")
+async def apply_style(payload: dict) -> JSONResponse:
+    """Merge a recipe or a quality preset into a prompt and return the diff.
+
+    Nothing is written anywhere: the browser gets the merged prompt plus a list
+    of what changed, and decides whether to accept it. That is the whole point of
+    the diff - a one-click apply the user cannot see into is a one-click apply
+    they stop trusting the second it eats a LoRA trigger.
+    """
+    prompt = str(payload.get("prompt") or "")
+    negative = str(payload.get("negative") or "")
+    model_id = str(payload.get("model") or "")
+    replace = payload.get("replace_conflicts", True)
+    m = images.get(model_id) if model_id else None
+    tag_style = str(payload.get("tag_style") or (m.tag_style if m else "danbooru"))
+
+    recipe_id = str(payload.get("recipe") or "")
+    preset_id = str(payload.get("preset") or "")
+    tags = payload.get("tags")
+
+    if recipe_id:
+        merged = promptmerge.apply_recipe(
+            prompt, negative, recipe_id, model_id=model_id,
+            tag_style=tag_style, replace_conflicts=bool(replace),
+        )
+        if merged is None:
+            raise HTTPException(status_code=404, detail="沒有這個風格配方")
+    elif preset_id:
+        merged = promptmerge.apply_preset(prompt, negative, preset_id, model_id=model_id)
+        if merged is None:
+            raise HTTPException(status_code=404, detail="沒有這個品質預設")
+    elif isinstance(tags, list):
+        merged = promptmerge.merge(
+            prompt, negative, [str(t) for t in tags],
+            [str(t) for t in (payload.get("negative_tags") or [])],
+            model_id=model_id, replace_conflicts=bool(replace),
+        )
+    else:
+        raise HTTPException(status_code=400, detail="要給 recipe、preset 或 tags 其中一個")
+
+    return JSONResponse(merged.public())
+
+
+@app.post("/api/styles/remove")
+async def remove_style_tags(payload: dict) -> JSONResponse:
+    """The undo half: take a named set of tags back out of a prompt."""
+    prompt = str(payload.get("prompt") or "")
+    tags = [str(t) for t in (payload.get("tags") or [])]
+    return JSONResponse({"prompt": promptmerge.remove_tags(prompt, tags)})
+
+
+@app.post("/api/prompt/check")
+async def check_prompt(payload: dict) -> JSONResponse:
+    """Prompt health: canvas size, dialect, conflicts, duplicates.
+
+    Runs on plain data with no model loaded, so it is cheap enough to call on
+    every keystroke-debounce from the browser.
+    """
+    findings = promptdoctor.check(
+        str(payload.get("prompt") or ""),
+        str(payload.get("negative") or ""),
+        model_id=str(payload.get("model") or ""),
+        width=int(payload.get("width") or 0),
+        height=int(payload.get("height") or 0),
+    )
+    return JSONResponse(promptdoctor.summary(findings))
 
 
 # -- experiments: fixed-seed sweeps ------------------------------------------

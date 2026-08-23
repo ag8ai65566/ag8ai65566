@@ -516,6 +516,47 @@ Juggernaut / SDXL 官方底模送自然句子，因為後者從來沒學過 danb
 **自訂尺寸**改成可以拉滑桿（64 為單位）＋比例鎖＋常用比例一鍵，並即時顯示
 百萬像素與「這個尺寸會不會出雙頭」。
 
+### 風格靈感庫 —— 教程在 [`docs/style-library.md`](docs/style-library.md)
+
+提詞框下面的 **風格靈感庫**：22 組可以疊在角色提詞上的畫面配方
+（清爽動畫 key visual／動畫截圖／霧面 2D／電影感／輕小說封面／手遊立繪／遊戲 CG／
+夢幻粉彩／黃金時刻／月夜／賽博霓虹／暗黑奇幻／水彩／墨線漫畫／90 年代／動態戰鬥／
+精緻近景／髮絲／高資訊背景／魔法特效／時裝／雨夜）。**這不是模仿畫師**，畫師另外一欄。
+
+配方本身是別人寫的規格書給的。**我把裡面 135 個 tag 一個一個查過 danbooru，
+64 個（47%）根本不存在** —— `clean lineart`、`dramatic lighting`、`detailed eyes`、
+`rim light`、`cel shading`、`glossy skin` 全部 0 張。有同義的真 tag 就換真 tag，
+沒有就整個拿掉，**71 條替換全部列在面板最下面可以自己看**。
+
+最該注意的一條：規格書推薦的 `2d` 在 danbooru 上**是畫師 `nidy` 的別名**（409 張）。
+在 NoobAI 上打它等於點名一位特定畫師，跟那個配方的目的正好相反。沒有出貨。
+
+每個 tag 標了它的來源：<code>tag 55k</code> 是真 danbooru tag、
+<code>tag caption</code> 是**模型作者訓練時自己塞進標註的詞**（品質詞、年代桶，
+查 danbooru 是 0 張很正常）、<code>tag en</code> 是一般英文。
+
+**套用會先給你看 diff**，確認才寫進提詞框。合併不是字串相加：
+你原本的拼法和權重贏、角色名和 LoRA 觸發詞絕對不碰、
+衝突的 tag 才換掉——而衝突表是去 danbooru **數出來**的
+（`monochrome`+`greyscale` 共現 14.2 倍是同一件事，
+`monochrome`+`pastel colors` 只有 0.072 倍才是真衝突）。
+
+### 提詞健康度
+
+提詞框下面那一行，改提詞或改尺寸就重算。會講的話包括：
+
+- **512×512 配 SDXL** —— 這通常才是「圖很爛」的真正原因，附一鍵改尺寸
+- Pony 的 `score_9` 出現在 NoobAI 上（或 Pony 上少了那六個）
+- `8k`／`ultra detailed`／`trending on artstation` —— 沒有任何 anime model card 列過
+- 同一個字同時在正面和負面、提詞內部互相衝突、重複的 tag
+- 畫師標籤的寫法不合這個底模
+
+順帶查證出一個這個 app 自己的錯：Illustrious 的預設前綴本來是
+`masterpiece, best quality, amazing quality, very aesthetic`。
+去看它自己的 model card，上面只列 worst／bad／average／good／best quality
+跟 masterpiece 六個 —— **`amazing quality` 和 `very aesthetic` 是 WAI 和 Animagine
+那些微調自己加的詞，不是 base Illustrious 的**。已經改掉了。
+
 ### 動作／姿勢庫（法典）—— 教程在 [`docs/pose-library.md`](docs/pose-library.md)
 
 **提詞庫**分頁最上面：285 個動作、26 位畫師、依原文的 8 大類 / 35 小節排好，
@@ -671,6 +712,9 @@ app/
   refs.py              官方參考圖庫（檔名→角色的比對，對不上就不猜）
   experiments.py       實驗矩陣、內容雜湊來源記錄、盲測配對與計分
   artists.py           畫師清單（風格特徵用 danbooru lift 統計出來）
+  styles.py            22 組風格配方（每個 tag 都查過 danbooru，47% 的原始建議是不存在的字）
+  promptmerge.py       套用配方時的合併：去重、衝突（用共現量出來的）、清方言、給 diff
+  promptdoctor.py      提詞健康度：畫布尺寸、模型方言、互相矛盾、重複
   poses/               法典資料（一個 JSON 一份法典）
   static/index.html    網頁介面（影片 / 圖片 / 素材庫 / LoRA / 模型 / 提詞庫 / 設定）
 docs/
@@ -685,6 +729,8 @@ docs/
   review-response.md   對 Codex 審查的逐條回應：改了什麼、還沒做什麼
   reference-art.md     官方參考圖：匯入、自動分角色、一鍵當來源圖／構圖參考
   experiments.md       固定 seed 掃參數、來源記錄、盲測 pairwise
+  style-library.md     22 組風格配方、量出來的衝突表、提詞健康度
+  spec-review.md       對「Prompt 靈感庫」規格書的逐條審查回覆（給下一輪 review 用）
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡

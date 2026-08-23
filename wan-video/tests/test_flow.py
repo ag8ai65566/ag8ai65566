@@ -4300,6 +4300,309 @@ def test_refs() -> None:
 
 
 
+def test_styles() -> None:
+    """The style library, and the claim that every tag in it was checked.
+
+    The recipes came from a written spec whose author had not seen the code and
+    had not checked the tags. 47% of them turned out not to exist on danbooru,
+    so the whole value of this module is the substitution pass - which means the
+    substitution pass is what has to be tested. Two things must hold: nothing a
+    recipe ships is an invented phrase, and every replacement is recorded.
+    """
+    section("style recipes")
+    import styles
+
+    check(len(styles.RECIPES) == 22, f"22 recipes ({len(styles.RECIPES)})")
+    check(len({r.id for r in styles.RECIPES}) == 22, "every recipe id is unique")
+    check(all(r.zh and r.en and r.desc for r in styles.RECIPES),
+          "every recipe has a Chinese name, an English name and a description")
+    check(all(r.chips for r in styles.RECIPES), "no recipe is empty")
+
+    # Every tag a recipe names has to resolve in the shared vocabulary; a typo
+    # here would ship a tag that is not the one that was verified.
+    unknown = []
+    for r in styles.RECIPES:
+        for name in r.chips + r.negative:
+            if name not in styles.ALL_CHIPS:
+                unknown.append((r.id, name))
+    check(not unknown, f"every recipe tag resolves ({unknown})")
+
+    # The core claim. A `danbooru` chip must have a real post count; a `caption`
+    # chip must name the model card it came from; nothing may be unlabelled.
+    bad_kind = [c.tag for c in styles.ALL_CHIPS.values()
+                if c.kind not in {"danbooru", "caption", "plain"}]
+    check(not bad_kind, f"every chip declares its kind ({bad_kind})")
+    zero = [c.tag for c in styles.ALL_CHIPS.values() if c.kind == "danbooru" and c.posts <= 0]
+    check(not zero, f"every danbooru chip has a real post count ({zero})")
+    unsourced = [c.tag for c in styles.ALL_CHIPS.values()
+                 if c.kind == "caption" and not c.source]
+    check(not unsourced, f"every caption token names its model card ({unsourced})")
+
+    # The dangerous one. `2d` is an active danbooru alias of the artist `nidy`,
+    # so the spec's "Matte 2D" recipe would have asked for one artist's style.
+    shipped = {c for r in styles.RECIPES for c in r.chips + r.negative}
+    check("2d" not in shipped and "2d" not in styles.ALL_CHIPS,
+          "`2d` is not shipped - it aliases to the artist `nidy` (409 posts)")
+    check("2d" in styles.REPLACED, "…and the reason is recorded in REPLACED")
+
+    # The rest of the invented phrases. If one is ever added back it must go
+    # through REPLACED, so the audit trail cannot rot.
+    invented = ["clean lineart", "cel shading", "rim light", "dramatic lighting",
+                "volumetric lighting", "detailed eyes", "detailed background",
+                "cinematic composition", "glossy skin", "soft lighting",
+                "matte colors", "reflections", "wet street", "catchlight"]
+    leaked = [t for t in invented if t.replace(" ", "_") in styles.ALL_CHIPS]
+    check(not leaked, f"none of the spec's invented phrases ships ({leaked})")
+    missing = [t for t in invented if t not in styles.REPLACED]
+    check(not missing, f"…and each one's replacement is written down ({missing})")
+    check(len(styles.REPLACED) >= 70,
+          f"{len(styles.REPLACED)} substitutions recorded in total")
+
+    # `spot color` is a real tag (62,361 posts) that the spec used wrongly: it
+    # means "monochrome except for one colour", so it does not belong in a
+    # matte-2D recipe. It stays in the vocabulary, just not in that recipe.
+    matte = styles.BY_ID["matte-2d-no-ai-gloss"]
+    check("spot_color" not in matte.chips, "matte-2D does not ship `spot color`")
+    check("spot_color" in styles.ALL_CHIPS, "…but the tag itself is still available")
+
+    # Date buckets: five, from the model card, not the spec's six.
+    check(set(styles.ERAS) == {"old", "early", "mid", "recent", "newest"},
+          "five NoobAI date buckets, not six")
+    check("newest" not in shipped,
+          "`newest` is not used as a quality word in any recipe")
+
+    # Prompts render, and the natural-language spelling is different.
+    r = styles.BY_ID["clean-anime-keyvisual"]
+    check("official art" in r.prompt(), "a recipe renders a comma-separated prompt")
+    check(r.prompt("natural") != r.prompt(),
+          "…and spells itself differently for a natural-language checkpoint")
+    ink = styles.BY_ID["ink-manga"]
+    check("\\(" in ink.prompt(), "parens in tag names are escaped for ComfyUI")
+
+    # Model gating.
+    for m in ("noobai", "illustrious", "pony", "juggernaut", "sdxl-base"):
+        got = styles.recipes_for(m)
+        check(bool(got), f"{m} has recipes ({len(got)})")
+        check(all(m in r.models for r in got), f"…all gated to {m}")
+    check(len(styles.recipes_for("juggernaut")) < len(styles.recipes_for("noobai")),
+          "a photo checkpoint gets fewer anime recipes than NoobAI")
+
+    # Search covers names, descriptions, keywords and the tags inside.
+    check([r.id for r in styles.search("雨")] == ["neon-cyberpunk", "rainy-cinematic"],
+          "search finds recipes by Chinese keyword")
+    check("hair-detail" in [r.id for r in styles.search("backlighting")],
+          "…and by a tag buried inside the recipe")
+    check(len(styles.search("")) == 22, "an empty search returns everything")
+
+    # Quality presets are quoted from model cards, and kept apart from recipes.
+    check(len(styles.PRESETS) >= 5, f"{len(styles.PRESETS)} quality presets")
+    check(all(p.source for p in styles.PRESETS), "every preset names its source")
+    pony = styles.PRESET_BY_ID["pony-official"]
+    check(pony.positive.count("score_") == 6, "Pony's preset has all six score tags")
+    ill = styles.PRESET_BY_ID["illustrious-official"]
+    check("amazing quality" not in ill.positive and "very aesthetic" not in ill.positive,
+          "Illustrious's preset uses its own card's words, not WAI's")
+    check(ill.positive == "masterpiece, best quality",
+          "…which is `masterpiece, best quality`")
+    check("comic" not in ill.negative and "monochrome" not in ill.negative,
+          "…and the card's negative is trimmed so the manga recipe still works")
+
+
+def test_promptmerge() -> None:
+    """Merging a recipe into a prompt without eating anything.
+
+    The two rules that matter are that the user's own tags survive and that
+    nothing unrecognised is ever removed, so both are tested with the worst
+    case: a prompt full of things the merger has never heard of.
+    """
+    section("prompt merge")
+    import promptmerge as pm
+
+    # Splitting has to respect brackets, or a weighted group becomes two tags.
+    check(pm.split_tags("a, b, c") == ["a", "b", "c"], "splits on commas")
+    check(pm.split_tags("(a, b:1.2), c") == ["(a, b:1.2)", "c"],
+          "a comma inside a weight group is not a separator")
+    check(pm.split_tags("shenhe \\(genshin impact\\), 1girl")
+          == ["shenhe \\(genshin impact\\)", "1girl"],
+          "escaped parens in a character name survive")
+    check(pm.split_tags("a,,  , b") == ["a", "b"], "empty pieces are dropped")
+
+    check(pm.key("(smile:1.3)") == "smile", "weights do not change a tag's identity")
+    check(pm.key("flat_color") == "flat color", "nor do underscores")
+
+    # Conflicts have sides: same side coexists, across sides does not.
+    check(not pm.conflicts_with("monochrome", "greyscale"),
+          "monochrome and greyscale are the same side (14.2x co-occurrence)")
+    check(not pm.conflicts_with("realistic", "photorealistic"),
+          "photorealistic is a subset of realistic, not a conflict")
+    check(not pm.conflicts_with("anime coloring", "flat color"),
+          "anime coloring and flat color measure 0.57x - not a conflict")
+    check(not pm.conflicts_with("portrait", "upper body"),
+          "framing tags are a warning, not a deletion")
+    check(pm.conflicts_with("monochrome", "pastel colors") == "color-mode",
+          "monochrome and pastel colors are (0.072x)")
+    check(pm.conflicts_with("newest", "old") == "era", "two date buckets are")
+    check(pm.conflicts_with("flat color", "3d") == "render", "flat color and 3d are")
+    check(all(c.why and c.evidence for c in pm.CONFLICTS),
+          "every conflict states its reason and its evidence")
+    check(len(pm.CONFLICTS[0].sides) == 5, "five date buckets, not the spec's six")
+
+    # A recipe that ships both sides of a conflict must not delete half of
+    # itself: ink-manga carries monochrome *and* greyscale.
+    m = pm.apply_recipe("1girl", "", "ink-manga", model_id="noobai")
+    check("monochrome" in m.prompt and "greyscale" in m.prompt,
+          "a recipe never retires its own tags")
+    check(not m.replaced, "…and reports nothing replaced")
+
+    # The user's tags win.
+    m = pm.merge("1girl, (smile:1.3), my_lora_trigger, {red|blue} dress",
+                 "", ["smile", "lineart"], model_id="noobai")
+    check("(smile:1.3)" in m.prompt, "the user's weight survives")
+    check(m.already == ["smile"], "…and the duplicate is reported, not added")
+    check("my_lora_trigger" in m.prompt, "an unknown LoRA trigger is untouched")
+    check("{red|blue} dress" in m.prompt, "so is a wildcard")
+
+    # Conflicts replace, and say why.
+    m = pm.merge("1girl, pastel colors", "", ["monochrome"], model_id="noobai")
+    check("pastel colors" not in m.prompt, "an incoming tag retires what it conflicts with")
+    check(m.replaced[0]["because"] == "monochrome" and m.replaced[0]["why"],
+          "…and the diff says which tag did it and why")
+    m = pm.merge("1girl, pastel colors", "", ["monochrome"],
+                 model_id="noobai", replace_conflicts=False)
+    check("pastel colors" in m.prompt, "keep-my-style leaves the conflict alone")
+
+    # Model cleanup, by name only.
+    m = pm.merge("score_9, score_8_up, 1girl, newest", "", [], model_id="noobai")
+    check("score_9" not in m.prompt and "newest" in m.prompt,
+          "Pony scores are stripped on NoobAI; NoobAI's own era tag is not")
+    m = pm.merge("score_9, 1girl, newest, masterpiece", "", [], model_id="pony")
+    check("score_9" in m.prompt and "newest" not in m.prompt,
+          "on Pony it is the other way round")
+    check(all(c["why"] for c in m.cleaned), "every cleanup says why")
+    m = pm.merge("1girl, my_score_lora, scorecard", "", [], model_id="noobai")
+    check("my_score_lora" in m.prompt and "scorecard" in m.prompt,
+          "cleanup matches whole tags only - it cannot eat a lookalike trigger")
+
+    # Negatives merge separately and do not duplicate.
+    m = pm.merge("1girl", "3d, realistic", [], ["3d", "photorealistic"], model_id="noobai")
+    check(m.negative == "3d, realistic, photorealistic", "negatives dedupe")
+    check(m.negative_added == ["photorealistic"], "…and only the new one is reported")
+
+    # Undo.
+    check(pm.remove_tags("1girl, lineart, (smile:1.2)", ["lineart", "smile"]) == "1girl",
+          "removing tags matches through weights")
+
+    check(pm.apply_recipe("", "", "nope") is None, "an unknown recipe id returns None")
+    check(pm.apply_preset("", "", "nope") is None, "so does an unknown preset id")
+
+
+def test_promptdoctor() -> None:
+    """The prompt health check.
+
+    Every finding has to be checkable from data - a model card or a danbooru
+    count - because the app has never generated an image and so cannot make a
+    claim about how anything will look.
+    """
+    section("prompt doctor")
+    import promptdoctor as pd
+
+    # The single most useful thing it says.
+    f = pd.check("1girl", model_id="noobai", width=512, height=512)
+    ids = [x.id for x in f]
+    check("resolution" in ids, "512x512 on an SDXL checkpoint is flagged")
+    res = next(x for x in f if x.id == "resolution")
+    check(res.level == "high", "…at the highest level")
+    check(res.action == "resize" and res.size == (832, 1216), "…with a fix attached")
+    check("25%" in res.detail, "…and states the actual fraction of the trained area")
+    check(not [x for x in pd.check("1girl", model_id="noobai", width=832, height=1216)
+               if x.id == "resolution"],
+          "a native size is not flagged")
+    big = pd.check("1girl", model_id="noobai", width=2048, height=1536)
+    check("resolution-big" in [x.id for x in big], "and far above native is flagged too")
+
+    # Dialect.
+    f = pd.check("score_9, score_8_up, 1girl", model_id="noobai", width=832, height=1216)
+    sc = next(x for x in f if x.id == "score-dialect")
+    check(len(sc.tags) == 2 and sc.action == "remove", "Pony scores on NoobAI are removable")
+    check(not [x for x in pd.check("score_9, 1girl", model_id="pony", width=1024, height=1024)
+               if x.id == "score-dialect"], "…and are fine on Pony")
+    f = pd.check("1girl", model_id="pony", width=1024, height=1024)
+    miss = next(x for x in f if x.id == "score-missing")
+    check(len(miss.tags) == 6, "Pony without its scores is told to add all six")
+
+    # Folklore quality words.
+    f = pd.check("1girl, 8k, ultra detailed, trending on artstation, masterpiece",
+                 model_id="noobai", width=832, height=1216)
+    fl = next(x for x in f if x.id == "folklore-quality")
+    check(len(fl.tags) == 3, "three undocumented buzzwords found")
+    check("masterpiece" not in fl.tags, "…and a real card word is not among them")
+
+    # Words from another finetune's dialect.
+    f = pd.check("1girl, amazing quality, very aesthetic", model_id="illustrious",
+                 width=832, height=1216)
+    fq = next(x for x in f if x.id == "foreign-quality")
+    check(set(fq.tags) == {"amazing quality", "very aesthetic"},
+          "WAI's quality words are named as not being on Illustrious's card")
+
+    # Contradictions.
+    f = pd.check("1girl, smile", "smile, worst quality", model_id="noobai",
+                 width=832, height=1216)
+    both = next(x for x in f if x.id == "both-sides")
+    check(both.level == "high" and both.tags == ["smile"],
+          "the same tag on both sides is a high-level finding")
+
+    f = pd.check("1girl, monochrome, pastel colors", model_id="noobai",
+                 width=832, height=1216)
+    con = next(x for x in f if x.id.startswith("conflict-"))
+    check("0.072" in con.detail, "a conflict quotes its measured co-occurrence")
+
+    f = pd.check("1girl, smile, smile", model_id="noobai", width=832, height=1216)
+    check("duplicate" in [x.id for x in f], "a repeated tag is noticed")
+    dup = next(x for x in f if x.id == "duplicate")
+    check("不等於加權" in dup.detail, "…and the reason repeating is not weighting is given")
+
+    # Illustrious's own advice about framing tags.
+    f = pd.check("1girl, portrait, upper body, close-up", model_id="noobai",
+                 width=832, height=1216)
+    fr = next(x for x in f if x.id == "framing")
+    check(fr.level == "info", "three framing tags is a note, not an error")
+    check("11 倍" in fr.detail, "…because the data says they do co-occur")
+
+    # Artist spelling.
+    f = pd.check("1girl, artist:wlop", model_id="pony", width=1024, height=1024)
+    check("artist-ignored" in [x.id for x in f],
+          "Pony is told artist tags do nothing there")
+    f = pd.check("1girl, artist:wlop", model_id="illustrious", width=832, height=1216)
+    check("artist-form" in [x.id for x in f],
+          "Illustrious is told its card spells it `by name`")
+    check(not [x for x in pd.check("1girl, artist:wlop", model_id="noobai",
+                                   width=832, height=1216) if x.id == "artist-form"],
+          "…and NoobAI, whose card uses `artist:`, is not")
+
+    # Subject count.
+    check("no-subject" in [x.id for x in pd.check("blue hair, smile", model_id="noobai",
+                                                  width=832, height=1216)],
+          "a prompt with no 1girl/1boy/no humans is noted")
+    check("empty" in [x.id for x in pd.check("", model_id="noobai")],
+          "an empty prompt is caught")
+
+    # A clean prompt gets a clean bill.
+    good = pd.check("1girl, hoshimachi suisei, official art, anime coloring, "
+                    "masterpiece, best quality",
+                    "worst quality, lowres", model_id="noobai", width=832, height=1216)
+    s = pd.summary(good)
+    check(s["level"] == "ok" and not good, f"a clean prompt reports 良好 ({[x.id for x in good]})")
+    check(pd.summary(pd.check("1girl", model_id="noobai", width=512, height=512))["level"]
+          == "high", "and a broken one does not")
+
+    # Findings come back worst first.
+    f = pd.check("score_9, 1girl, smile, smile", "smile", model_id="noobai",
+                 width=512, height=512)
+    levels = [x.level for x in f]
+    check(levels == sorted(levels, key=lambda l: {"high": 0, "warn": 1, "info": 2}[l]),
+          "findings are ordered worst first")
+
+
 def test_experiments() -> None:
     """Fixed-seed sweeps: the matrix, the cap, the pairing, and the counting.
 
@@ -5538,6 +5841,9 @@ async def main() -> int:
     test_likeness()
     test_refs()
     test_experiments()
+    test_styles()
+    test_promptmerge()
+    test_promptdoctor()
     await test_experiment_run()
     test_prompts()
     test_seconds_to_frames()
