@@ -481,6 +481,26 @@ Docker `docker compose --profile watch up -d`。
 這是唯一能把「官方長相」直接餵給模型的方法：danbooru 上這些角色只有 1～3%
 是官方圖，所以純靠提詞永遠只會得到同人平均值 —— **文字會平均，圖片不會**。
 
+**已經有一整包整理好的圖庫的話走「從資料夾匯入」**：貼上路徑
+（例如 `C:\anim\wan-video\Holo pic\Hololive_Ultimate_Archive\01_官方角色全身立繪_最重要`），
+先按「先掃描看看」——**這一步不動任何檔案**，只讀檔名和資料夾名，
+然後告訴你掃到幾張、幾張對到角色、**幾張是靠資料夾名字認出來的**、
+以及**對不到的實際長什麼樣**。看了滿意再匯入。
+
+匯入預設**不搬也不複製**，只記住檔案在哪 —— 一包立繪動輒好幾 GB，
+而且那是你自己的資料夾。你之後把它搬走，那些參考會自動從清單消失。
+
+**中文名字現在也認得，而且繁簡都有**：`星街彗星`、`兔田佩克拉`、
+`寶鐘瑪琳`／`宝钟玛琳`、`時乃空`／`时乃空`、`森美聲`⋯⋯共 73 位。
+這些名字不是我翻的，是從 zh.wikipedia 的 Hololive production 條目
+用它自己的字體轉換器讀兩次（`variant=zh-tw` 和 `zh-cn`）拿到的。
+兩位沒收：AZKi（名字本來就是拉丁字母）和 Pekomama（沒條目、譯名不只一種），
+**猜不如不猜**。
+
+順帶修掉一個會出錯的比對方式：中文名原本是拆成單字比對，
+那樣兩個字的名字會 match 到幾乎所有東西（`可律的圖.png` 會 100% 命中 `律可`）。
+改成**連續子字串**比對之後，順序也要對。
+
 ### 提詞權重與常用提詞 —— 教程在 [`docs/prompt-weights.md`](docs/prompt-weights.md)
 
 游標放在一個 tag 上按 **`Ctrl + ↑`** 就加權（每次 0.05，回到 1.0 時括號自動移除），
@@ -709,7 +729,8 @@ app/
   naiweights.py        NovelAI 語法 → ComfyUI 權重（{{}} / [[]] / 1.3::x::）
   posebook.py          動作／姿勢法典的解析與一鍵組裝
   quicktags.py         常用提詞清單（每個都查過 danbooru 實際圖片數）
-  refs.py              官方參考圖庫（檔名→角色的比對，對不上就不猜）
+  refs.py              官方參考圖庫（檔名／資料夾名→角色的比對，對不上就不猜）
+  refnames.py          73 位成員的中文名（繁簡都有，從 zh.wikipedia 兩種字體轉換讀來的）
   experiments.py       實驗矩陣、內容雜湊來源記錄、盲測配對與計分
   artists.py           畫師清單（風格特徵用 danbooru lift 統計出來）
   styles.py            22 組風格配方（每個 tag 都查過 danbooru，47% 的原始建議是不存在的字）
@@ -727,7 +748,7 @@ docs/
   codex-mcp.md         讓 Claude Code 跟 OpenAI Codex 協作（選用）
   codex-review-brief.md 給第二個模型審查用的自足摘要（主張＋數據＋我自己知道的弱點）
   review-response.md   對 Codex 審查的逐條回應：改了什麼、還沒做什麼
-  reference-art.md     官方參考圖：匯入、自動分角色、一鍵當來源圖／構圖參考
+  reference-art.md     官方參考圖：整包資料夾匯入、中文名比對、一鍵當來源圖／構圖參考
   experiments.md       固定 seed 掃參數、來源記錄、盲測 pairwise
   style-library.md     22 組風格配方、量出來的衝突表、提詞健康度
   spec-review.md       對「Prompt 靈感庫」規格書的逐條審查回覆（給下一輪 review 用）

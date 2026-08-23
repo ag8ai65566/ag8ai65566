@@ -4603,6 +4603,168 @@ def test_promptdoctor() -> None:
           "findings are ordered worst first")
 
 
+def test_ref_chinese_names() -> None:
+    """Chinese filenames find their member, and near-misses still do not.
+
+    The user's own collection is organised in Chinese - the folder is literally
+    `01_官方角色全身立繪_最重要` - and before this the matcher scored every one of
+    those names zero. The table is data lifted from zh.wikipedia in both scripts,
+    so the test checks the provenance holds as much as the matching does.
+    """
+    section("reference art: Chinese names")
+    import charpacks
+    import refnames
+    import refs as refslib
+
+    pack = charpacks.get("hololive-collection")
+    cands = refslib.candidates_from_pack(pack)
+
+    check(len(refnames.ZH_NAMES) == 73, f"73 members have Chinese names ({len(refnames.ZH_NAMES)})")
+    absent = [c.key for c in pack.characters if c.key not in refnames.ZH_NAMES]
+    check(sorted(absent) == sorted(refnames.NO_ZH_NAME),
+          f"the two without one are declared, not forgotten ({absent})")
+    check(all(refnames.NO_ZH_NAME.values()), "…each with a stated reason")
+    keys = {c.key for c in pack.characters}
+    stray = [k for k in refnames.ZH_NAMES if k not in keys]
+    check(not stray, f"no name belongs to a character the pack does not have ({stray})")
+
+    # Both scripts came from the source, so both have to work.
+    for filename, want in [
+        ("星街彗星.png", "hoshimachi-suisei"),
+        ("兔田佩克拉_立繪.png", "usada-pekora"),
+        ("寶鐘瑪琳.png", "houshou-marine"),
+        ("宝钟玛琳 (3).jpg", "houshou-marine"),
+        ("時乃空.png", "tokino-sora"),
+        ("时乃空.png", "tokino-sora"),
+        ("櫻巫女_立繪.png", "sakura-miko"),
+        ("樱巫女.png", "sakura-miko"),
+        ("森美聲.png", "mori-calliope"),
+        ("噶嗚·古拉 official.png", "gawr-gura"),
+    ]:
+        got, score = refslib.match(filename, cands)
+        check(got == want, f"{filename} -> {got or '(none)'} ({score:.2f})")
+
+    # Watson Amelia's two sources disagree on the *translation*, not the script.
+    for filename in ("華生·艾米莉亞.png", "沃森·阿米莉亚.png"):
+        got, _ = refslib.match(filename, cands)
+        check(got == "watson-amelia", f"{filename} -> {got or '(none)'}")
+
+    # The reason CJK is matched as a run rather than a bag of characters: a
+    # two-character name tokenised into its characters matches almost anything.
+    check(refslib._is_cjk_name("星街彗星") and not refslib._is_cjk_name("Gawr Gura"),
+          "a Han name is detected as one; a latin name is not")
+    check(refslib._score_cjk("律可", "可律的圖") == 0.5,
+          "reversed characters do not count as the name")
+    check(refslib._score_cjk("星街彗星", "01_星街彗星_full.png") == 1.0,
+          "…but the name inside a longer filename does")
+    for filename in ("可律的圖.png", "霧夜的可怕故事.png", "某某某.png", "背景圖.png"):
+        got, _ = refslib.match(filename, cands)
+        check(got == "", f"{filename} matches nobody, correctly")
+
+
+def test_ref_folder_import(tmp: Path) -> None:
+    """Scanning and importing a local folder, without moving the user's files.
+
+    The archive being imported here is 5GB of somebody's own filing system on
+    their own machine. Three things must hold: the scan says what it will do
+    before anything happens, the import does not move or copy by default, and
+    re-running it does not duplicate.
+    """
+    section("reference art: folder import")
+    import charpacks
+    import refs as refslib
+    from PIL import Image
+
+    pack = charpacks.get("hololive-collection")
+    cands = refslib.candidates_from_pack(pack)
+
+    root = tmp / "archive" / "01_官方角色全身立繪_最重要"
+    # Every picture is a different colour on purpose. Copy mode identifies a
+    # file by the hash of its bytes, so seven identical test images would all
+    # collapse into one and the test would be measuring nothing.
+    shade = 0
+    for folder, files in [
+        ("星街彗星", ["01.png", "02.png"]),
+        ("兔田佩克拉", ["a.png"]),
+        ("宝钟玛琳", ["marine.png"]),
+        ("其他", ["unknown_thing.png", "背景.png"]),
+    ]:
+        (root / folder).mkdir(parents=True, exist_ok=True)
+        for name in files:
+            shade += 17
+            Image.new("RGB", (64, 96), (shade, 30, 60)).save(root / folder / name)
+    Image.new("RGB", (64, 96), (7, 20, 30)).save(root / "Mori Calliope 1st.png")
+    (root / "notes.txt").write_text("not an image", encoding="utf-8")
+
+    rows, problems = refslib.scan(root, cands)
+    summary = refslib.scan_summary(rows)
+    check(not problems, f"a clean folder scans without complaint ({problems})")
+    check(summary["total"] == 7, f"only the images are counted ({summary['total']})")
+    check(summary["matched"] == 5, f"5 match ({summary['matched']})")
+    check(summary["unmatched"] == 2, f"2 do not ({summary['unmatched']})")
+    check(summary["characters"] == 4, f"across 4 members ({summary['characters']})")
+    check(summary["by_folder"] == 4,
+          f"4 were decided by the folder name, not the filename ({summary['by_folder']})")
+    check(summary["counts"].get("hoshimachi-suisei") == 2,
+          "…and the per-member counts are right")
+    check(any("unknown_thing" in r["rel"] for r in summary["unmatched_sample"]),
+          "the unmatched sample names actual files, so it can be acted on")
+
+    # Nothing is written by a scan.
+    before = sorted(p.name for p in root.rglob("*"))
+
+    store = refslib.RefLibrary(tmp / "reflib")
+    result = store.import_folder(root, "hololive-collection", cands, only_matched=True)
+    check(result["filed"] == 5, f"the import files 5 ({result['filed']})")
+    check(result["unfiled"] == 0, "…and skipped the unmatched, as asked")
+    check(sorted(p.name for p in root.rglob("*")) == before,
+          "the source folder is untouched - nothing moved, nothing renamed")
+    check(not any((tmp / "reflib").rglob("*.png")),
+          "and nothing was copied: the archive is indexed where it lies")
+    check(all(r.linked and Path(r.source).is_file() for r in store.refs),
+          "every reference points at a real file in the archive")
+
+    again = store.import_folder(root, "hololive-collection", cands, only_matched=True)
+    check(again["filed"] == 0 and again["dupes"] == 5,
+          f"re-running finds them all already there ({again})")
+    check(len(store.refs) == 5, f"…and does not duplicate ({len(store.refs)})")
+
+    # A linked reference survives a round trip through the index file.
+    store.save()
+    reopened = refslib.RefLibrary(tmp / "reflib")
+    reopened.load()
+    check(len(reopened.refs) == 5, f"the index reloads ({len(reopened.refs)})")
+    check(reopened.counts("hololive-collection").get("hoshimachi-suisei") == 2,
+          "…with the filing intact")
+
+    # Deleting a linked reference forgets it; it must not delete the user's file.
+    victim = reopened.refs[0]
+    source = Path(victim.source)
+    check(reopened.delete("hololive-collection", victim.name), "a linked ref can be removed")
+    check(source.is_file(), "…and the file in the archive is still there")
+
+    # If the archive moves, the references disappear rather than 404 forever.
+    reopened.save()
+    moved = tmp / "archive-moved"
+    (root.parent).rename(moved)
+    after = refslib.RefLibrary(tmp / "reflib")
+    after.load()
+    check(not after.refs, "moving the archive drops the stale references")
+    moved.rename(root.parent)
+
+    # copy=True is the other mode, for a USB stick you are about to unplug.
+    copied = refslib.RefLibrary(tmp / "reflib-copy")
+    result = copied.import_folder(root, "hololive-collection", cands,
+                                  copy=True, only_matched=True)
+    check(result["filed"] == 5, "copy mode files the same 5")
+    check(len(list((tmp / "reflib-copy").rglob("*.png"))) == 5,
+          "…and this time the bytes really are copied")
+    check(all(not r.linked for r in copied.refs), "…and they are not linked")
+
+    # A path that is not there is an error, not a silent empty result.
+    rows, problems = refslib.scan(tmp / "nope", cands)
+    check(not rows and problems, "a missing folder reports a problem")
+
 def test_experiments() -> None:
     """Fixed-seed sweeps: the matrix, the cap, the pairing, and the counting.
 
@@ -5840,6 +6002,8 @@ async def main() -> int:
     test_artists()
     test_likeness()
     test_refs()
+    test_ref_chinese_names()
+    test_ref_folder_import(TMP / "reffolder")
     test_experiments()
     test_styles()
     test_promptmerge()

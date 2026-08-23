@@ -1775,6 +1775,85 @@ async def refs_for_character(pack: str, character: str) -> JSONResponse:
     })
 
 
+@app.post("/api/refs/scan")
+async def scan_refs(payload: dict = Body(default={})) -> JSONResponse:
+    """Dry run: look at a local folder and say what an import would do.
+
+    Reads filenames only, never pixels, and writes nothing. The archive is the
+    user's own filing system and this matcher has never seen its naming
+    convention, so showing the answer before touching anything is the only
+    honest way to find out whether it works.
+    """
+    payload = payload if isinstance(payload, dict) else {}
+    pack = str(payload.get("pack") or "hololive-collection")
+    cands = _ref_candidates(pack)
+    if not cands:
+        raise HTTPException(400, f"不認識的角色包：{pack}")
+    folder = str(payload.get("path") or "").strip().strip('"')
+    if not folder:
+        raise HTTPException(400, "要給一個資料夾路徑")
+    root = Path(folder).expanduser()
+    if not root.is_dir():
+        raise HTTPException(400, f"找不到這個資料夾：{root}")
+    rows, problems = refslib.scan(root, cands)
+    return JSONResponse({
+        "path": str(root), "pack": pack, "problems": problems,
+        **refslib.scan_summary(rows),
+    })
+
+
+@app.post("/api/refs/import-folder")
+async def import_refs_folder(payload: dict = Body(default={})) -> JSONResponse:
+    """Import a local folder. Indexes in place by default; never moves anything.
+
+    `copy: true` takes a copy into the refs folder instead, which is what you
+    want if the source is a USB stick or a temp download you are about to
+    delete. Otherwise the archive stays where it is and only gets an index.
+    """
+    payload = payload if isinstance(payload, dict) else {}
+    pack = str(payload.get("pack") or "hololive-collection")
+    cands = _ref_candidates(pack)
+    if not cands:
+        raise HTTPException(400, f"不認識的角色包：{pack}")
+    folder = str(payload.get("path") or "").strip().strip('"')
+    if not folder:
+        raise HTTPException(400, "要給一個資料夾路徑")
+    root = Path(folder).expanduser()
+    if not root.is_dir():
+        raise HTTPException(400, f"找不到這個資料夾：{root}")
+    REF_LIB.load()
+    result = REF_LIB.import_folder(
+        root, pack, cands,
+        copy=bool(payload.get("copy")),
+        only_matched=bool(payload.get("only_matched")),
+    )
+    REF_LIB.save()
+    return JSONResponse({
+        **result, "path": str(root), "pack": pack,
+        "counts": REF_LIB.counts(pack),
+        "unfiled_list": [r.public("/refs") for r in REF_LIB.unfiled(pack)][:60],
+    })
+
+
+@app.get("/api/refs/file/{pack}/{name}")
+async def ref_file(pack: str, name: str) -> FileResponse:
+    """Serve one reference image.
+
+    The static mount under /refs only covers files that live in the refs folder.
+    A linked reference lives in the user's own archive, so it needs a route that
+    looks the path up in the index - which also means nothing outside the index
+    is reachable through it.
+    """
+    REF_LIB.load()
+    ref = REF_LIB.get(pack, name)
+    if ref is None:
+        raise HTTPException(404, "找不到這張參考圖")
+    path = REF_LIB.path(ref)
+    if not path.is_file():
+        raise HTTPException(404, "檔案不在了（原始資料夾被移動或刪掉了？）")
+    return FileResponse(path)
+
+
 @app.post("/api/refs/import")
 async def import_refs(files: list[UploadFile], pack: str = Form("hololive-collection")
                       ) -> JSONResponse:

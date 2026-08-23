@@ -349,6 +349,96 @@ const { chromium } = require('playwright');
 
   }
 
+  // ---- importing a whole folder off the local disk ----
+  // The real case this exists for: a curated archive of official character
+  // sheets, several gigabytes, organised in Chinese, sitting on the same machine
+  // the app runs on. Picking those files one by one in a browser dialog is not
+  // an import, so the app gets pointed at the folder instead - and because it
+  // has never seen that archive's naming convention, it scans before it touches
+  // anything. Needs the fixture folder; skipped without it.
+  const ARCHIVE = process.env.REFARCHIVE_DIR || '';
+  if (ARCHIVE) {
+  await page.evaluate(async () => {
+    const d = await (await fetch('/api/refs?pack=hololive-collection')).json();
+    const all = [...(d.unfiled || [])];
+    for (const key of Object.keys(d.counts || {})) {
+      const r = await (await fetch(`/api/refs/hololive-collection/${key}`)).json();
+      all.push(...(r.refs || []));
+    }
+    for (const ref of all) await fetch(`/api/refs/hololive-collection/${ref.name}`, { method: 'DELETE' });
+  });
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.click('.tabs button[data-tab="img"]');
+  await page.waitForTimeout(800);
+
+  check(!await page.isVisible('#reffolderbox'), 'the folder importer starts collapsed');
+  await page.click('#reffolder');
+  await page.waitForTimeout(200);
+  check(await page.isVisible('#refpath'), '「從資料夾匯入」opens a path box');
+  check((await page.textContent('#refscanhint')).includes('先掃描不會動到任何檔案'),
+    'and promises the scan touches nothing');
+
+  await page.fill('#refpath', ARCHIVE);
+  await page.click('#refscan');
+  await page.waitForTimeout(1500);
+  check(await page.isVisible('#refscanout'), 'the scan reports back');
+  const scanTxt = await page.textContent('#refscanout');
+  check(/掃到 \d+ 張圖/.test(scanTxt), 'it says how many it found -> ' + scanTxt.replace(/\s+/g,' ').slice(0,60));
+  check(scanTxt.includes('對到角色'), '…how many matched a member');
+  check(scanTxt.includes('資料夾名字'), '…and that some were matched by folder name, not filename');
+  check(scanTxt.includes('對不到的長這樣'), 'it shows the actual unmatched filenames, which are the actionable part');
+  check(scanTxt.includes('不會搬動也不會複製'), 'and states that nothing will be moved or copied');
+
+  // Nothing has been imported yet.
+  let cntTxt = await page.textContent('#refcount');
+  check(cntTxt.includes('還沒有'), 'scanning alone imports nothing -> ' + cntTxt);
+
+  await page.click('#refdoimport');
+  await page.waitForTimeout(2000);
+  const impTxt = await page.textContent('#refnote');
+  check(impTxt.includes('匯入完成'), 'importing runs -> ' + impTxt.replace(/\s+/g,' ').slice(0,70));
+  check(/\d+ 張對到角色/.test(impTxt), '…and reports what it filed');
+
+  // A Chinese-named folder found its member, and the picture really serves.
+  const suiRefs = await page.evaluate(async () =>
+    (await (await fetch('/api/refs/hololive-collection/hoshimachi-suisei')).json()).refs || []);
+  check(suiRefs.length === 2, `星街彗星's folder landed on Hoshimachi Suisei (${suiRefs.length})`);
+  check(suiRefs.every((r) => r.linked), '…as links, not copies');
+  const served = await page.evaluate(async (u) => (await fetch(u)).status, suiRefs[0].url);
+  check(served === 200, `a linked reference serves through its own route (${served})`);
+
+  // Re-importing the same folder must not duplicate.
+  await page.click('#refscan'); await page.waitForTimeout(1200);
+  await page.click('#refdoimport'); await page.waitForTimeout(1500);
+  const again = await page.evaluate(async () =>
+    (await (await fetch('/api/refs?pack=hololive-collection')).json()).total);
+  check(again === 5, `re-importing does not duplicate (${again})`);
+
+  // And the likeness note now leads with "you already have her official art".
+  await page.fill('#packfind', 'suisei'); await page.waitForTimeout(500);
+  await page.evaluate(()=>{ const b=document.querySelector('#packmembers button'); if(b) b.click(); });
+  await page.waitForTimeout(900);
+  if (!await page.isChecked('#packlike')) { await page.check('#packlike'); await page.waitForTimeout(900); }
+  const likeTxt = await page.textContent('#packlikenote');
+  check(likeTxt.includes('你已經有這位的'),
+    'the likeness answer points at the art the user already imported');
+
+  await page.evaluate(async () => {
+    const d = await (await fetch('/api/refs?pack=hololive-collection')).json();
+    const all = [...(d.unfiled || [])];
+    for (const key of Object.keys(d.counts || {})) {
+      const r = await (await fetch(`/api/refs/hololive-collection/${key}`)).json();
+      all.push(...(r.refs || []));
+    }
+    for (const ref of all) await fetch(`/api/refs/hololive-collection/${ref.name}`, { method: 'DELETE' });
+  });
+  await page.click('#reffolder');
+  // Put the likeness tick back where the next block expects to find it: it
+  // asserts the slider is hidden until asked, and this block asked.
+  if (await page.isChecked('#packlike')) { await page.uncheck('#packlike'); }
+  await page.waitForTimeout(600);
+  }
+
   // ---- "why doesn't it look like the stream model" ----
   await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='noobai'; s.dispatchEvent(new Event('change')); });
   await page.waitForTimeout(400);
