@@ -4017,6 +4017,94 @@ def test_quicktags() -> None:
 
 
 
+def test_artists() -> None:
+    """The artist roster: real tags, per-model prefixes, and measured styles."""
+    section("artists")
+    import artists as art
+    import images
+
+    data = art.public()
+    check(data["count"] >= 30, f"at least 30 artists, as asked ({data['count']})")
+    check(len(data["groups"]) >= 5, f"grouped by style family ({data['groups']})")
+    check(all(a.posts >= 100 for a in art.ARTISTS),
+          "every artist has enough danbooru posts for the finetune to have seen them")
+    check(all(a.zh and a.style and a.group for a in art.ARTISTS),
+          "every artist has a name, a style note and a group")
+    check(all(a.signals for a in art.ARTISTS),
+          "…and the measured tags that back the note up")
+    tags = [a.tag for a in art.ARTISTS]
+    check(len(set(tags)) == len(tags), "no artist appears twice")
+
+    # The codex the user imported must be represented, since that is what they
+    # are actually generating with.
+    from_codex = [a for a in art.ARTISTS if a.codex]
+    check(len(from_codex) >= 15,
+          f"the artists their own codex uses are included ({len(from_codex)})")
+    for want in ("ciloranko", "wlop", "hiten_(hitenkei)", "ningen_mame",
+                 "bee_(deadflow)", "modare", "wanke", "na_tarapisu153"):
+        check(want in art.BY_TAG, f"…including {want}")
+
+    # Two of the codex's most-used artists are written as tags that name nobody.
+    check("hiten" not in art.BY_TAG and art.misnamed("hiten").tag == "hiten_(hitenkei)",
+          "the codex's `artist:hiten` (37 entries) points at hiten_(hitenkei)")
+    check(art.misnamed("deadflow").tag == "bee_(deadflow)",
+          "…and its `aritst:deadflow` (32 entries) at bee_(deadflow)")
+    check(art.misnamed("sho (sho lwlw)") is None,
+          "…while sho_(sho_lwlw) has no redirect, because its target was excluded")
+    check(art.misnamed("ciloranko") is None,
+          "a name that is already right needs no redirect")
+
+    # Emitted text has to suit the checkpoint, and one checkpoint ignores these
+    # entirely - which is worth being loud about rather than letting it fail
+    # silently.
+    forms = {m.id: m.artist_form for m in images.IMAGE_MODELS}
+    check(forms["noobai"] == "artist:{tag}",
+          "NoobAI's own model card prompts artist:<name>")
+    check(forms["illustrious"] == "by {tag}", "Illustrious uses `by <name>`")
+    check(forms["pony"] == "",
+          "Pony V6 stripped artist names from training, so it gets no form at all")
+    check(forms["juggernaut"] == forms["sdxl-base"] == "",
+          "…same for the photo models")
+    wlop = art.BY_TAG["wlop"]
+    check(wlop.emit(forms["noobai"]) == "artist:wlop", "the NoobAI spelling")
+    check(wlop.emit(forms["illustrious"]) == "by wlop", "the Illustrious spelling")
+    check(art.BY_TAG["bb_(baalbuddy)"].name == "bb \\(baalbuddy\\)",
+          f"parens in an artist name are escaped ({art.BY_TAG['bb_(baalbuddy)'].name})")
+    check(art.BY_TAG["yd_(orange_maru)"].emit("artist:{tag}")
+          == "artist:yd \\(orange maru\\)",
+          "…and survive the prefix")
+
+    # Nothing whose signature output is minors.
+    for gone in ("kedama_milk", "toraishi_666", "todoroki_masaru"):
+        check(gone not in art.BY_TAG, f"{gone} is not in the roster")
+    src = (ROOT / "app" / "artists.py").read_text(encoding="utf-8")
+    check("loli" in src and "does not do" in src,
+          "…and the file says why, rather than leaving a silent gap")
+
+    check(art.search("厚塗"), "search works on the Chinese style note")
+    check([a.tag for a in art.search("bkub")] == ["bkub"], "…and on the tag")
+    check(art.search("halftone"), "…and on the measured signals")
+
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check('id="artbox"' in page and 'id="artlist"' in page, "the panel exists")
+    check("function artistIsOn" in page,
+          "on/off is derived from the prompt, like the favourites")
+    check('id="artswitch"' in page,
+          "…and a model that ignores artists offers the switch to one that does not")
+    check("artist_form" in page, "the prefix comes from the model, not the page")
+
+    doc = ROOT / "docs" / "artists.md"
+    check(doc.is_file(), "the roster is documented")
+    text = doc.read_text(encoding="utf-8")
+    flat = text.replace("_", " ")
+    check("hiten (hitenkei)" in flat and "bee (deadflow)" in flat,
+          "…including the two names the codex got wrong")
+    check("Pony" in text, "…and that Pony ignores artist tags")
+    check("docs/artists.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
+          "…and the README points at it")
+
+
+
 def test_ui_smoke() -> None:
     """Run the page's own script and call its render functions for real.
 
@@ -4977,6 +5065,7 @@ async def main() -> int:
     test_posebook()
     test_inspect_parts()
     test_quicktags()
+    test_artists()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()

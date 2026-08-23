@@ -196,6 +196,81 @@ const { chromium } = require('playwright');
   check(v === '1girl', 'clear removes only what the strip added -> ' + v);
 
 
+  // ---- artists ----
+  check(await page.isVisible('#artbox'), 'the artist panel is on the same page as the character pack');
+  const artN = await page.evaluate(()=>document.querySelectorAll('#artlist button[data-art]').length);
+  check(artN >= 30, `at least 30 artists listed (${artN})`);
+  const cnt = await page.textContent('#artcount');
+  check(/\d+\/\d+ 位/.test(cnt), `…with a count (${cnt})`);
+  const firstRow = await page.textContent('#artlist');
+  check(firstRow.includes('danbooru') && firstRow.includes('特徵'),
+     'each row shows post count and the measured style signals');
+
+  await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='noobai'; s.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(400);
+  await page.fill('#iprompt','1girl');
+  await page.click('#artlist button[data-art="wlop"]');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl, artist:wlop', 'NoobAI gets artist:<name> -> ' + v);
+  await page.click('#artlist button[data-art="wlop"]');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl', 'clicking again removes it -> ' + v);
+
+  // weight slider
+  await page.evaluate(()=>{ const r=document.getElementById('artw'); r.value=1.2; r.dispatchEvent(new Event('input')); });
+  await page.click('#artlist button[data-art="ciloranko"]');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl, (artist:ciloranko:1.2)', 'the weight slider is applied when adding -> ' + v);
+  check(await page.evaluate(()=>document.querySelector('#artlist button[data-art="ciloranko"]').classList.contains('done')),
+     'and the chip lights up even though it is weighted');
+  await page.click('#artclear'); await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl', 'clear removes the weighted form too -> ' + v);
+
+  // Illustrious uses a different prefix
+  await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='illustrious'; s.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(400);
+  // Reset the slider: it persists across model switches (deliberately), and the
+  // previous step left it at 1.2.
+  await page.evaluate(()=>{ const r=document.getElementById('artw'); r.value=1; r.dispatchEvent(new Event('input')); });
+  await page.fill('#iprompt','1girl');
+  await page.click('#artlist button[data-art="wlop"]');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl, by wlop', 'Illustrious gets "by <name>" -> ' + v);
+
+  // Pony ignores artists entirely
+  await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='pony'; s.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(400);
+  check(await page.isVisible('#artwarn'), 'Pony shows the "this model ignores artists" warning');
+  const artWarn = await page.textContent('#artwarn');
+  check(artWarn.includes('Pony V6'), '…and says why -> ' + artWarn.slice(0,46));
+  check(!await page.isVisible('#artwwrap'), '…and hides the weight slider');
+  await page.click('#artswitch'); await page.waitForTimeout(500);
+  check(await page.inputValue('#imodel') === 'noobai', 'the "switch to NoobAI" button works');
+  check(!await page.isVisible('#artwarn'), '…and the warning goes away');
+
+  // misnamed lookup
+  await page.fill('#artq','hiten'); await page.waitForTimeout(300);
+  const hits = await page.evaluate(()=>document.querySelectorAll('#artlist button[data-art]').length);
+  check(hits >= 1, `searching the codex's spelling still finds the artist (${hits})`);
+  await page.fill('#artq','deadflow'); await page.waitForTimeout(300);
+  const txt = await page.textContent('#artlist');
+  check(txt.includes('bee') , 'and "deadflow" reaches bee (deadflow) -> ' + txt.slice(0,60).replace(/\s+/g,' '));
+
+  await page.fill('#artq',''); await page.check('#artcodex'); await page.waitForTimeout(300);
+  const cod = await page.evaluate(()=>document.querySelectorAll('#artlist button[data-art]').length);
+  check(cod >= 15 && cod < 52, `"only ones the codex used" filters to ${cod}`);
+  await page.uncheck('#artcodex');
+  await page.selectOption('#artgroup','成人向'); await page.waitForTimeout(300);
+  const grp = await page.evaluate(()=>[...document.querySelectorAll('#artlist button[data-art]')].length);
+  check(grp > 3 && grp < 52, `group filter works (${grp} in 成人向)`);
+  await page.selectOption('#artgroup','');
+
+
   // ---- custom size ----
   await page.selectOption('#isize', { label: '自訂尺寸' }).catch(async () => {
     await page.evaluate(() => { const s=document.getElementById('isize'); s.value = IMG.customSize; s.dispatchEvent(new Event('change')); });

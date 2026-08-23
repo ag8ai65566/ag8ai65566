@@ -21,6 +21,7 @@ import traceback
 import uuid
 from pathlib import Path
 
+import artists
 import charpacks
 import civitai
 import comics
@@ -1046,6 +1047,7 @@ async def image_models() -> JSONResponse:
                 "negative": model.negative,
                 "prompt_style": model.prompt_style,
                 "tag_style": model.tag_style,
+                "artist_form": model.artist_form,
                 "sizes": {k: list(v) for k, v in model.sizes.items()},
                 "default_size": model.default_size,
                 "nsfw_note": model.nsfw_note,
@@ -1454,6 +1456,12 @@ async def list_quicktags() -> JSONResponse:
     Static data, so it ships whole and is filtered in the browser.
     """
     return JSONResponse(quicktags.public())
+
+
+@app.get("/api/artists")
+async def list_artists() -> JSONResponse:
+    """The artist roster: tag, style note, measured signals, post count."""
+    return JSONResponse(artists.public())
 
 
 @app.get("/api/posebook")

@@ -391,6 +391,28 @@
           <div id="favlist" class="words" style="margin-top:5px"></div>
           <div class="s" id="favnote"></div>
         </div>
+
+        <div id="artbox" style="margin-top:10px;border-top:1px solid var(--line);padding-top:8px">
+          <div class="row" style="margin-top:0;align-items:baseline">
+            <b class="s">畫師風格 <span class="s" id="artcount"></span></b>
+            <div class="spacer"></div>
+            <button class="ghost tiny" id="artclear">清掉畫師</button>
+          </div>
+          <div id="artwarn" class="banner tight hidden"></div>
+          <div class="toolbar">
+            <input type="text" id="artq" aria-label="搜尋畫師"
+                   placeholder="搜畫師、風格或特徵（厚塗、水感、四格、bkub…）" style="flex:1;min-width:200px">
+            <label class="f">分類 <select id="artgroup"><option value="">全部</option></select></label>
+            <label class="chk"><input type="checkbox" id="artcodex"> 只看法典用過的</label>
+          </div>
+          <label class="f" id="artwwrap">畫師權重
+            <input type="range" id="artw" min="0.5" max="1.6" step="0.05" value="1"
+                   aria-label="畫師權重">
+            <span class="s" id="artwv">1.0</span>
+          </label>
+          <div id="artlist" style="margin-top:5px;max-height:280px;overflow-y:auto"></div>
+          <div class="s" id="artnote"></div>
+        </div>
       </details>
 
       <div id="i2i" class="banner tight hidden">
@@ -3146,6 +3168,7 @@ function onImageModelChange() {
   // The favourite strip spells itself differently per checkpoint, so it has to
   // repaint whenever the checkpoint changes - not only on first load.
   if (typeof renderFavorites === 'function') renderFavorites();
+  if (typeof renderArtists === 'function') renderArtists();
 
   if (!imgTouched('inegative')) $('#inegative').value = m.negative || '';
   if (!imgTouched('isteps')) $('#isteps').value = m.steps;
@@ -3294,6 +3317,7 @@ function wirePromptTools() {
   // since that is where the truth lives now.
   $('#iprompt').addEventListener('input', () => {
     if (QT.favorites && QT.favorites.length) renderFavorites();
+    if (ART.list && ART.list.length) renderArtists();
   });
   $('#iwup').onclick = () => { $('#iprompt').focus(); adjustWeight($('#iprompt'), W_STEP); };
   $('#iwdown').onclick = () => { $('#iprompt').focus(); adjustWeight($('#iprompt'), -W_STEP); };
@@ -3774,6 +3798,156 @@ function bareTag(chunk) {
   return t.replace(/\\/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
+/* ---------- artists ---------- */
+// An artist tag is the strongest single style lever these checkpoints have, and
+// also the one with the most ways to silently do nothing: wrong spelling, wrong
+// prefix for the model, or a model that was never trained on artist names at
+// all. images.py owns the prefix (ImageModel.artist_form) so there is one
+// answer; an empty prefix means "this checkpoint ignores artists", which is the
+// case for Pony and for the two photo models.
+let ART = { list: [], groups: [], misnamed: {}, count: 0 };
+
+async function refreshArtists() {
+  try {
+    const d = await (await fetch('/api/artists')).json();
+    ART.list = d.artists || [];
+    ART.groups = d.groups || [];
+    ART.misnamed = d.misnamed || {};
+    ART.count = d.count || 0;
+    $('#artgroup').innerHTML = '<option value="">全部</option>'
+      + ART.groups.map((g) => `<option>${esc(g)}</option>`).join('');
+    renderArtists();
+  } catch { $('#artbox').classList.add('hidden'); }
+}
+
+function artistForm() {
+  return (IMG.chosen && IMG.chosen.artist_form) || '';
+}
+
+function artistText(a, weight) {
+  const form = artistForm() || '{tag}';
+  const body = form.replace('{tag}', a.name);
+  const w = Math.round((weight || 1) * 100) / 100;
+  return Math.abs(w - 1) < 0.005 ? body : `(${body}:${w})`;
+}
+
+// On is derived from the prompt, same as the favourites - see favIsOn for why.
+function artistIsOn(a) {
+  const form = artistForm() || '{tag}';
+  const want = bareTag(form.replace('{tag}', a.name));
+  return $('#iprompt').value.split(',').map(bareTag).some((x) => x === want);
+}
+
+function renderArtists() {
+  if (!ART.list.length) { $('#artbox').classList.add('hidden'); return; }
+  $('#artbox').classList.remove('hidden');
+  const form = artistForm();
+  const dead = !form;
+  const warn = $('#artwarn');
+  if (dead) {
+    // Saying "it will not work" and leaving the user to figure out what does is
+    // half an answer, so the switch to a model that listens is right here.
+    warn.classList.remove('hidden');
+    warn.innerHTML = `<b>這支底模不吃畫師 tag。</b>`
+      + (IMG.chosen && IMG.chosen.id === 'pony'
+        ? ' Pony V6 訓練時把畫師名字整個從標註裡拿掉了，所以怎麼寫都沒用。'
+        : ' 它從來沒學過 danbooru 的畫師標籤。')
+      + ' <button class="ghost tiny" id="artswitch" style="margin-left:6px">換成 NoobAI</button>';
+  } else {
+    warn.classList.add('hidden');
+  }
+  $('#artwwrap').style.display = dead ? 'none' : '';
+
+  const q = $('#artq').value.trim().toLowerCase();
+  const group = $('#artgroup').value;
+  const onlyCodex = $('#artcodex').checked;
+  const words = q.split(/\s+/).filter(Boolean);
+  const hits = ART.list.filter((a) => {
+    if (group && a.group !== group) return false;
+    if (onlyCodex && !a.codex) return false;
+    if (!words.length) return true;
+    const hay = `${a.tag} ${a.name} ${a.zh} ${a.group} ${a.style} ${a.signals.join(' ')}`
+      .toLowerCase().replace(/_/g, ' ');
+    return words.every((w) => hay.includes(w));
+  });
+  $('#artcount').textContent = `${hits.length}/${ART.count} 位`;
+
+  const weight = parseFloat($('#artw').value) || 1;
+  let section = '';
+  const parts = [];
+  hits.forEach((a) => {
+    if (a.group !== section) {
+      section = a.group;
+      parts.push(`<div class="s" style="margin:8px 0 3px;color:var(--muted)"><b>${esc(section)}</b></div>`);
+    }
+    const on = artistIsOn(a);
+    parts.push(`<div class="row artrow${on ? ' on' : ''}" style="margin-top:4px;align-items:flex-start">
+      <button class="tag s${esc(a.strength)}${on ? ' done' : ''}" data-art="${esc(a.tag)}"
+        style="min-width:150px;text-align:left">${esc(a.zh)}${
+          a.zh.toLowerCase().replace(/[^a-z0-9]/g, '') === a.tag.replace(/[^a-z0-9]/g, '')
+            ? '' : `<span class="s"> ${esc(a.name)}</span>`}</button>
+      <div style="flex:1;min-width:200px">
+        <div class="s">${esc(a.style)}</div>
+        <div class="s" style="opacity:.75">danbooru ${a.posts.toLocaleString()} 張${
+          a.codex ? ' · <b>你的法典用過</b>' : ''} · 特徵：${
+          a.signals.slice(0, 6).map((x) => esc(x)).join('、')}</div>
+      </div>
+    </div>`);
+  });
+  if (!hits.length) {
+    const fix = ART.misnamed[q] || ART.misnamed[q.replace(/ /g, '_')];
+    parts.push(fix
+      ? `<div class="banner tight"><b>「${esc(q)}」在 danbooru 上不是任何人。</b>
+         真正的 tag 是 <code>${esc(fix)}</code>
+         <button class="ghost tiny" id="artfix" style="margin-left:8px">搜這個</button></div>`
+      : '<div class="s">沒有符合的。</div>');
+  }
+  $('#artlist').innerHTML = parts.join('');
+  $('#artlist').querySelectorAll('button[data-art]').forEach((b) => {
+    b.onclick = () => toggleArtist(b.dataset.art);
+  });
+  const fixb = $('#artfix');
+  if (fixb) fixb.onclick = () => {
+    $('#artq').value = (ART.misnamed[q] || ART.misnamed[q.replace(/ /g, '_')] || '');
+    renderArtists();
+  };
+  const sw = $('#artswitch');
+  if (sw) sw.onclick = () => {
+    $('#imodel').value = 'noobai';
+    $('#imodel').dispatchEvent(new Event('change'));
+  };
+  $('#artnote').innerHTML = dead ? '' :
+    `寫法會跟著底模走：目前是 <code>${esc(form.replace('{tag}', '畫師名'))}</code>。`
+    + ' 風格說明是我寫的，後面「特徵」那串是<b>從 danbooru 統計出來</b>的，可以拿來對照。'
+    + ' 一次<b>只掛一到兩位</b>比較好，掛太多會互相打架。';
+}
+
+function toggleArtist(tag) {
+  const a = ART.list.find((x) => x.tag === tag);
+  if (!a || !artistForm()) return;
+  if (artistIsOn(a)) {
+    // removeTagsFromPrompt compares bare tags, so the unweighted spelling
+    // removes the weighted one too.
+    removeTagsFromPrompt(artistText(a, 1));
+  } else {
+    addTagToPrompt(artistText(a, parseFloat($('#artw').value) || 1));
+  }
+  renderArtists();
+}
+
+function wireArtists() {
+  $('#artq').oninput = renderArtists;
+  $('#artgroup').onchange = renderArtists;
+  $('#artcodex').onchange = renderArtists;
+  $('#artw').oninput = () => {
+    $('#artwv').textContent = (parseFloat($('#artw').value) || 1).toFixed(2).replace(/0$/, '');
+  };
+  $('#artclear').onclick = () => {
+    ART.list.forEach((a) => { if (artistIsOn(a)) removeTagsFromPrompt(artistText(a, 1)); });
+    renderArtists();
+  };
+}
+
 /* ---------- favourites, pinned by the character picker ---------- */
 // Which spelling a favourite emits depends on the checkpoint: the anime
 // finetunes were conditioned on danbooru tag strings, the photo models never
@@ -4113,6 +4287,7 @@ async function boot() {
   refreshDownloads(); refreshStats(); renderUpscalers(); refreshPb();
   wirePosebook(); refreshPosebook();
   wirePromptTools(); refreshQuickTags(); wireSize();
+  wireArtists(); refreshArtists();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }

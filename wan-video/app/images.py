@@ -44,6 +44,11 @@ class ImageModel:
     # lever; the photo models never saw those tags and want a plain description
     # of the same thing. Same idea, two spellings - see quicktags.FAVORITES.
     tag_style: str = "danbooru"
+    # How this checkpoint wants an artist named, if at all. NoobAI's model card
+    # prompts `artist:john_kafka`; Illustrious uses `by <name>`; Pony V6 removed
+    # artist names from its captions altogether, so an artist tag does close to
+    # nothing there whatever the spelling - an empty string says exactly that.
+    artist_form: str = ""
     sizes: dict[str, tuple[int, int]] = field(default_factory=dict)
     default_size: str = "1024×1024 方形"
     nsfw_note: str = ""
@@ -100,6 +105,7 @@ IMAGE_MODELS: list[ImageModel] = [
         # CFG 5~6, 25~30 steps, Euler a - straight off the model card.
         steps=28, cfg=5.5, sampler="euler_ancestral", scheduler="normal",
         clip_skip=-2,
+        artist_form="artist:{tag}",
         positive_prefix="masterpiece, best quality, newest, absurdres, highres",
         negative=NOOB_NEG,
         prompt_style=(
@@ -130,6 +136,7 @@ IMAGE_MODELS: list[ImageModel] = [
         vram_gb=8,
         steps=28, cfg=6.0, sampler="euler_ancestral", scheduler="normal",
         clip_skip=-2,
+        artist_form="by {tag}",
         positive_prefix="masterpiece, best quality, amazing quality, very aesthetic",
         negative="bad quality, worst quality, worst detail, sketch, censor, " + ANIME_NEG,
         prompt_style="用 danbooru 標籤，逗號分隔：`1girl, long hair, school uniform, sitting, from side`。句子式描述效果差。",

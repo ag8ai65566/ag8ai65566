@@ -467,6 +467,19 @@ Docker `docker compose --profile watch up -d`。
 圖片數量的是**這支底模被磨得多利**：danbooru 正式 tag 更準、更省權重。
 清單附 43 組「更準的寫法」對照。
 
+### 畫師風格清單 —— 教程在 [`docs/artists.md`](docs/artists.md)
+
+同一塊面板再下面是 **52 位畫師**，分厚塗寫實／通透插畫／日系輕柔／鮮豔設計／
+漫畫四格／成人向／其他七類，每位附風格說明、danbooru 張數與**從統計算出來的特徵**
+（lift：出現率 ÷ 全站基準，所以 `bkub` 會列網點和四格、`wlop` 會列紅唇和寫實）。
+其中 20 位是你那份法典用過的。
+
+**前綴會跟著底模自動換**：NoobAI 用 `artist:wlop`、Illustrious 用 `by wlop`、
+**Pony V6 完全不吃**（它訓練時把畫師名字從標註裡拿掉了），切到 Pony 或寫實底模會
+直接告訴你並提供一鍵換回 NoobAI。順帶查到你法典裡用最多的兩位畫師名字是錯的：
+`artist:hiten`（37 條）和 `aritst:deadflow`（32 條）在 danbooru 上都是 0 張，
+正確的是 `hiten (hitenkei)` 和 `bee (deadflow)`。
+
 另外**角色包（Hololive）那一塊下面釘了一排常用動作／表情**一鍵按鈕
 （單/雙手比 V、露胸、阿嘿顏、上身/下身全裸、蹲馬步、M 字腿、無表情/厭惡/認真/高興），
 點一下加、再點一下拿掉，而且**會跟著底模自動換寫法** —— 動漫底模送 danbooru 標籤，
@@ -627,6 +640,7 @@ app/
   naiweights.py        NovelAI 語法 → ComfyUI 權重（{{}} / [[]] / 1.3::x::）
   posebook.py          動作／姿勢法典的解析與一鍵組裝
   quicktags.py         常用提詞清單（每個都查過 danbooru 實際圖片數）
+  artists.py           畫師清單（風格特徵用 danbooru lift 統計出來）
   poses/               法典資料（一個 JSON 一份法典）
   static/index.html    網頁介面（影片 / 圖片 / 素材庫 / LoRA / 模型 / 提詞庫 / 設定）
 docs/
@@ -635,6 +649,7 @@ docs/
   faq.md               設定、更新、LoRA 共存、畫風貼近原畫師
   pose-library.md      動作／姿勢法典：NAI→ComfyUI 權重換算、畫師 tag 分離
   prompt-weights.md    提詞權重、316 個查證過的常用 tag、自訂尺寸滑桿
+  artists.md           52 位畫師 tag：風格、danbooru 張數、各底模的正確前綴
   codex-mcp.md         讓 Claude Code 跟 OpenAI Codex 協作（選用）
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
