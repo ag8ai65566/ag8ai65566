@@ -752,6 +752,7 @@ docs/
   experiments.md       固定 seed 掃參數、來源記錄、盲測 pairwise
   style-library.md     22 組風格配方、量出來的衝突表、提詞健康度
   spec-review.md       對「Prompt 靈感庫」規格書的逐條審查回覆（給下一輪 review 用）
+  refs-review.md       參考圖庫整包匯入與中文名比對的審查說明（給下一輪 review 用）
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡
