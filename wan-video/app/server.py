@@ -1440,6 +1440,7 @@ async def pack_prompt(pack_id: str, payload: dict = Body(default={})) -> JSONRes
         model=model.id if model else "",
         style=bool(payload.get("style")),
         artist_weight=_as_float(payload.get("artist_weight"), 1.0),
+        likeness=_as_float(payload.get("likeness"), 0.0),
         quality_tags=(model.positive_prefix if model and model.id != pack.wants_model else ""),
     )
     if built is None:

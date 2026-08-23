@@ -323,10 +323,59 @@ def _drop_duplicate_artist(chunk: str, bare: str) -> str:
     return ",".join(kept)
 
 
+# Tags that pull towards the official design rather than the fan-art average.
+# `official_art` is a 533,688-post tag, so the model knows it well as a framing
+# and finish; combined with a character it biases towards that character's own
+# small official subset. `newest` is NoobAI's own recency bucket, which matters
+# because a VTuber's current look is the recent one.
+LIKENESS_TAGS = "official art, newest"
+
+
+def likeness_advice(pack: Pack, who: Character) -> dict:
+    """Why a generated character drifts from the stream model, with numbers.
+
+    This is the most common disappointment with a character LoRA and the reason
+    is not a bug, it is what the training data is: danbooru holds fan art, and
+    only 1-3% of any of these characters is official art. So the concept the
+    model learned is a *fan consensus*, not the reference sheet - it will be
+    recognisably them and still not match the Live2D model.
+
+    Naming the original designer does not fix it either, and the numbers say why
+    more clearly than any explanation: of Mori Calliope's 12,544 danbooru posts,
+    30 are by her designer Yukisame. Of Hoshimachi Suisei's 15,155, fourteen are
+    by Teshima Nari. The artist tag therefore contributes that person's *general*
+    style - mostly drawn on other subjects - rather than their rendering of this
+    character, which is why it can make likeness worse rather than better.
+
+    What does help is measurable too: the costume tag. `mori_calliope_(1st_costume)`
+    carries 3,136 posts, `gawr_gura_(1st_costume)` 7,598 - because the official
+    look *is* that outfit, and the outfit tag is the part of the identity that
+    fan art reproduces faithfully.
+    """
+    costume_tags = [c.trigger for c in who.costumes]
+    return {
+        "posts": who.danbooru_posts,
+        "designer": who.designer,
+        "artist_tag": who.artist_tag,
+        "artist_posts": who.artist_posts,
+        "wiki": who.wiki,
+        "costumes": len(costume_tags),
+        "why": (
+            f"danbooru 上 {who.danbooru_posts:,} 張{who.name}裡，官方圖只佔 1～3%。"
+            "模型學到的是「同人平均值」，不是設定圖。"
+        ),
+        "artist_why": (
+            f"{who.designer} 在 danbooru 只有 {who.artist_posts:,} 張，"
+            f"其中畫{who.name}的更少 —— 所以掛他的 tag 是把他<b>畫別人時</b>的畫風"
+            "拉進來，對「像不像本人」通常沒幫助，甚至會扯後腿。"
+        ) if who.artist_tag else "",
+    }
+
+
 def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
                  extra: str = "", quality: bool = True, model: str = "",
                  style: bool = False, quality_tags: str = "",
-                 artist_weight: float = 1.0) -> dict | None:
+                 artist_weight: float = 1.0, likeness: float = 0.0) -> dict | None:
     """The one-click prompt: who, wearing what, in the order the author wants.
 
     Trigger first, then that outfit's appearance tags, then whatever the user
@@ -348,7 +397,11 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
 
     # The artist tag goes right after the character, which is where every
     # Illustrious style guide puts it and where it has the most pull.
-    head = [outfit.trigger]
+    # `likeness` weights the costume trigger, which is the strongest identity
+    # lever there is - see likeness_advice for the counts behind that claim.
+    head = [weighted(outfit.trigger, likeness) if likeness else outfit.trigger]
+    if likeness:
+        head.append(LIKENESS_TAGS)
     if pack.series and model in pack.native_models:
         head.append(pack.series)
     mine = extra.strip()
@@ -393,6 +446,7 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
         "strength": pack.strength,
         "strength_clip": pack.strength_clip,
         "wants_model": pack.wants_model,
+        "likeness": likeness_advice(pack, who),
         "style": {**advice, "applied": applied,
                   "weight": round(max(0.1, min(artist_weight, 2.0)), 2),
                   "emitted": weighted(advice["form"], artist_weight) if applied else ""},

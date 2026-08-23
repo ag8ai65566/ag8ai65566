@@ -196,6 +196,53 @@ const { chromium } = require('playwright');
   check(v === '1girl', 'clear removes only what the strip added -> ' + v);
 
 
+  // ---- "why doesn't it look like the stream model" ----
+  await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='noobai'; s.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(400);
+  // pick a member
+  await page.fill('#packfind','calliope'); await page.waitForTimeout(400);
+  const packMem = await page.evaluate(()=>{ const b=document.querySelector('#packmembers button'); if(b){b.click(); return b.textContent.trim();} return ''; });
+  check(!!packMem, 'picked a member -> ' + packMem);
+  await page.waitForTimeout(400);
+  await page.click('#packgo'); await page.waitForTimeout(600);
+  const packPlain = await page.inputValue('#iprompt');
+  check(packPlain.includes('mori calliope'), 'plain fill works -> ' + packPlain.slice(0,70));
+  check(!packPlain.includes('official art'), '…and does not add official art by default');
+
+  check(!await page.isVisible('#packlikewrap'), 'the likeness slider is hidden until asked');
+  await page.check('#packlike'); await page.waitForTimeout(800);
+  check(await page.isVisible('#packlikewrap'), 'ticking it reveals the strength slider');
+  const likePrompt = await page.inputValue('#iprompt');
+  check(/\(mori calliope.*:1\.25\)/.test(likePrompt), 'the costume trigger is weighted -> ' + likePrompt.slice(0,80));
+  check(likePrompt.includes('official art'), '…and official art is added');
+  check(await page.isVisible('#packlikenote'), 'the explanation shows');
+  const likeNote = await page.textContent('#packlikenote');
+  check(likeNote.includes('12,496') || /\d,\d\d\d 張/.test(note), 'it quotes the real post count -> ' + likeNote.slice(0,54).replace(/\s+/g,' '));
+  check(likeNote.includes('Yukisame'), '…and names the designer with their own count');
+  check(likeNote.includes('以圖生圖'), '…and leads with the img2img/ControlNet answer');
+  const likeLink = await page.evaluate(()=>{ const a=document.querySelector('#packlikenote a'); return a?a.href:''; });
+  check(likeLink.includes('virtualyoutuber.fandom.com'), 'the official gallery link is there -> ' + likeLink);
+
+  // conflict warning when the designer style is also on
+  const hasStyle = await page.evaluate(()=>!!document.getElementById('packstylechk'));
+  if (hasStyle) {
+    await page.evaluate(()=>{ const c=document.getElementById('packstylechk'); if(!c.checked){c.checked=true;c.dispatchEvent(new Event('change'));} });
+    await page.waitForTimeout(700);
+    const likeNote2 = await page.textContent('#packlikenote');
+    check(likeNote2.includes('反方向'), 'having both on warns they pull against each other');
+  }
+
+  await page.evaluate(()=>{ const r=document.getElementById('packlikew'); r.value=1.4; r.dispatchEvent(new Event('input')); r.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(700);
+  const likeStrong = await page.inputValue('#iprompt');
+  check(likeStrong.includes(':1.4)'), 'the strength slider changes the weight -> ' + likeStrong.slice(0,60));
+
+  await page.uncheck('#packlike'); await page.waitForTimeout(700);
+  check(!await page.isVisible('#packlikenote'), 'unticking hides the note again');
+  const likeBack = await page.inputValue('#iprompt');
+  check(!likeBack.includes('official art'), '…and takes official art back out');
+
+
   // ---- artists ----
   check(await page.isVisible('#artbox'), 'the artist panel is on the same page as the character pack');
   const artN = await page.evaluate(()=>document.querySelectorAll('#artlist button[data-art]').length);

@@ -374,6 +374,17 @@
         <div id="packcostumes" class="words" style="margin-top:6px"></div>
         <div id="packstyle" class="banner tight"></div>
         <div class="row" style="margin-top:6px">
+          <label class="chk" title="加權角色／服裝 tag 並加上 official art，往官方設定拉">
+            <input type="checkbox" id="packlike"> 貼近官方設定
+          </label>
+          <label class="f" id="packlikewrap" style="display:none">強度
+            <input type="range" id="packlikew" min="1.05" max="1.5" step="0.05" value="1.25"
+                   aria-label="貼近官方設定的強度">
+            <span class="s" id="packlikev">1.25</span>
+          </label>
+        </div>
+        <div id="packlikenote" class="banner tight hidden"></div>
+        <div class="row" style="margin-top:6px">
           <label class="chk"><input type="checkbox" id="packquality" checked> 加上這支 LoRA 的品質標籤</label>
           <label class="chk"><input type="checkbox" id="packkeep" checked> 保留我自己打的字</label>
           <label class="chk"><input type="checkbox" id="packneg" checked> 一併套用建議負面詞</label>
@@ -2045,7 +2056,9 @@ async function applyPack() {
                              extra: packExtra(), quality: $('#packquality').checked,
                              model: IMG.chosen ? IMG.chosen.id : '',
                              style: !!($('#packstylechk') && $('#packstylechk').checked),
-                             artist_weight: +P.get('artistw', 1.0) }),
+                             artist_weight: +P.get('artistw', 1.0),
+                             likeness: $('#packlike').checked
+                               ? (parseFloat($('#packlikew').value) || 1.25) : 0 }),
     });
     const d = await r.json();
     if (!r.ok) throw new Error(d.detail || r.statusText);
@@ -2075,6 +2088,7 @@ async function applyPack() {
       bits.push(d.style.why);
     }
     renderPackStyle();
+    renderLikeness(d);
     if (armed) bits.push(`LoRA 已勾選（強度 ${d.strength}）`);
     else if (!d.lora_installed) bits.push('但 LoRA 還沒下載 —— 現在畫出來會是底模自己的想像');
     if (p.wants_model && IMG.chosen && IMG.chosen.id !== p.wants_model) {
@@ -3798,6 +3812,32 @@ function bareTag(chunk) {
   return t.replace(/\\/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
+/* ---------- "why doesn't it look like the stream model" ---------- */
+// The honest answer needs numbers, because the intuitive fix (name the original
+// designer) is the one that does not work, and saying so without evidence just
+// sounds like an excuse.
+function renderLikeness(d) {
+  const box = $('#packlikenote');
+  const info = d && d.likeness;
+  if (!info || !$('#packlike').checked) { box.classList.add('hidden'); return; }
+  box.classList.remove('hidden');
+  const styleOn = $('#packstylechk') && $('#packstylechk').checked;
+  box.innerHTML = `<b>為什麼生出來跟直播/設定圖不像</b>
+    <div class="s" style="margin-top:4px">${info.why}</div>
+    ${info.artist_why ? `<div class="s" style="margin-top:4px">${info.artist_why}</div>` : ''}
+    ${styleOn && info.artist_tag
+      ? `<div class="s" style="margin-top:4px"><b>你現在同時開著「原畫師畫風」</b> ——
+         這兩個是反方向的，建議二選一。</div>` : ''}
+    <div class="s" style="margin-top:6px"><b>真正有效的做法，由強到弱：</b></div>
+    <div class="s">1. <b>拿官方設定圖當來源圖</b>（以圖生圖，重繪強度 0.4～0.6），
+       或丟進 ControlNet 鎖輪廓 —— 這是唯一能把「官方長相」直接餵給模型的方法。
+       ${info.wiki ? `<a href="${esc(info.wiki)}" target="_blank" rel="noopener">開官方設定圖庫 ↗</a>` : ''}</div>
+    <div class="s">2. 已經幫你做的：<b>加權服裝 tag</b>（官方長相＝那套衣服，
+       而服裝 tag 是同人圖最忠實還原的部分）＋ <code>official art</code>。</div>
+    <div class="s">3. 只畫這一位的話，去 CivitAI 找<b>單人 LoRA</b> ——
+       75 人合集 LoRA 平均下來每個人都會軟一點。</div>`;
+}
+
 /* ---------- artists ---------- */
 // An artist tag is the strongest single style lever these checkpoints have, and
 // also the one with the most ways to silently do nothing: wrong spelling, wrong
@@ -3933,6 +3973,18 @@ function toggleArtist(tag) {
     addTagToPrompt(artistText(a, parseFloat($('#artw').value) || 1));
   }
   renderArtists();
+}
+
+function wireLikeness() {
+  $('#packlike').onchange = () => {
+    $('#packlikewrap').style.display = $('#packlike').checked ? '' : 'none';
+    if (!$('#packlike').checked) $('#packlikenote').classList.add('hidden');
+    if (PACK.who) applyPack();
+  };
+  $('#packlikew').oninput = () => {
+    $('#packlikev').textContent = (parseFloat($('#packlikew').value) || 1.25).toFixed(2);
+  };
+  $('#packlikew').onchange = () => { if (PACK.who && $('#packlike').checked) applyPack(); };
 }
 
 function wireArtists() {
@@ -4287,7 +4339,7 @@ async function boot() {
   refreshDownloads(); refreshStats(); renderUpscalers(); refreshPb();
   wirePosebook(); refreshPosebook();
   wirePromptTools(); refreshQuickTags(); wireSize();
-  wireArtists(); refreshArtists();
+  wireArtists(); refreshArtists(); wireLikeness();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }

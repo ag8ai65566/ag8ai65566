@@ -4105,6 +4105,67 @@ def test_artists() -> None:
 
 
 
+def test_likeness() -> None:
+    """Why a generated Hololive member drifts from the stream model, and the fix.
+
+    The user's report - "even with the original designer's artist tag it still
+    does not look like them" - is not a bug, and the numbers say why. These pin
+    the explanation to measured data so it cannot decay into folklore.
+    """
+    section("likeness (official design)")
+    import charpacks
+
+    pack = charpacks.get("hololive-collection")
+    check(pack is not None, "the Hololive pack loads")
+    who = pack.by_key["mori-calliope"]
+    info = charpacks.likeness_advice(pack, who)
+    check(info["posts"] > 10000,
+          f"the character is well represented on danbooru ({info['posts']:,})")
+    check(info["artist_posts"] and info["artist_posts"] < info["posts"] / 50,
+          f"…but the designer has a tiny fraction of that ({info['artist_posts']} "
+          f"vs {info['posts']}) - which is why naming them does not fix likeness")
+    check(info["wiki"].startswith("https://virtualyoutuber.fandom.com"),
+          "…and the official gallery is on hand as a reference image source")
+    check("同人平均值" in info["why"], "the explanation names the real cause")
+    check(who.designer in info["artist_why"], "…and names the designer with their count")
+
+    plain = charpacks.build_prompt(pack, "mori-calliope", 0, model="noobai")
+    strong = charpacks.build_prompt(pack, "mori-calliope", 0, model="noobai",
+                                    likeness=1.25)
+    check("official art" not in plain["prompt"], "the mode is off by default")
+    check("official art" in strong["prompt"],
+          "…and adds the official-art bias when asked")
+    check("newest" in strong["prompt"], "…plus NoobAI's own recency bucket")
+    check(":1.25)" in strong["prompt"],
+          f"…and weights the costume trigger ({strong['prompt'][:60]})")
+    check(strong["prompt"].startswith("("),
+          "…which stays first, where a tag has the most pull")
+    # The costume tag is the lever, so it must be inside the weighted group.
+    head = strong["prompt"].split("),")[0]
+    check("1st costume" in head,
+          f"the costume tag is what gets weighted ({head[:70]})")
+
+    for w in (0, 1.05, 1.5):
+        built = charpacks.build_prompt(pack, "mori-calliope", 0, model="noobai",
+                                       likeness=w)
+        check(built is not None and built["prompt"],
+              f"likeness={w} still produces a prompt")
+
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check('id="packlike"' in page, "the UI exposes it")
+    check("function renderLikeness" in page, "…with the explanation attached")
+    check("以圖生圖" in page and "ControlNet" in page,
+          "…leading with the reference-image answer, which is the strong one")
+    check("反方向" in page,
+          "…and warning when the designer-style switch is fighting it")
+
+    doc = ROOT / "docs" / "character-packs.md"
+    text = doc.read_text(encoding="utf-8")
+    check("同人" in text and "official art" in text,
+          "…and the pack doc explains the drift")
+
+
+
 def test_ui_smoke() -> None:
     """Run the page's own script and call its render functions for real.
 
@@ -5066,6 +5127,7 @@ async def main() -> int:
     test_inspect_parts()
     test_quicktags()
     test_artists()
+    test_likeness()
     test_prompts()
     test_seconds_to_frames()
     test_vram_advice()
