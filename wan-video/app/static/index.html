@@ -381,6 +381,16 @@
           <button class="go" id="packgo" disabled>填入提詞</button>
         </div>
         <div class="note" id="packnote"></div>
+        <div id="favbox" style="margin-top:10px;border-top:1px solid var(--line);padding-top:8px">
+          <div class="row" style="margin-top:0;align-items:baseline">
+            <b class="s">常用動作／表情</b>
+            <span class="s" id="favstyle"></span>
+            <div class="spacer"></div>
+            <button class="ghost tiny" id="favclear">清掉我加的</button>
+          </div>
+          <div id="favlist" class="words" style="margin-top:5px"></div>
+          <div class="s" id="favnote"></div>
+        </div>
       </details>
 
       <div id="i2i" class="banner tight hidden">
@@ -3133,6 +3143,9 @@ function onImageModelChange() {
   $('#iprefixlabel').textContent = m.positive_prefix
     ? `自動加上品質標籤：${m.positive_prefix}` : '這個底模不需要品質標籤';
   $('#iprefix').disabled = !m.positive_prefix;
+  // The favourite strip spells itself differently per checkpoint, so it has to
+  // repaint whenever the checkpoint changes - not only on first load.
+  if (typeof renderFavorites === 'function') renderFavorites();
 
   if (!imgTouched('inegative')) $('#inegative').value = m.negative || '';
   if (!imgTouched('isteps')) $('#isteps').value = m.steps;
@@ -3271,6 +3284,17 @@ function wireSize() {
 }
 
 function wirePromptTools() {
+  $('#favclear').onclick = () => {
+    (QT.favorites || []).forEach((f) => {
+      if (favIsOn(f)) removeTagsFromPrompt(favTags(f).join(', '));
+    });
+    renderFavorites();
+  };
+  // Editing the prompt by hand has to light the chips up (or off) as well,
+  // since that is where the truth lives now.
+  $('#iprompt').addEventListener('input', () => {
+    if (QT.favorites && QT.favorites.length) renderFavorites();
+  });
   $('#iwup').onclick = () => { $('#iprompt').focus(); adjustWeight($('#iprompt'), W_STEP); };
   $('#iwdown').onclick = () => { $('#iprompt').focus(); adjustWeight($('#iprompt'), -W_STEP); };
   $('#itags').onclick = () => {
@@ -3680,7 +3704,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ---------- quick-pick tags ---------- */
-let QT = { groups: [], corrections: {}, count: 0 };
+let QT = { groups: [], corrections: {}, count: 0, favorites: [] };
 
 async function refreshQuickTags() {
   try {
@@ -3688,7 +3712,9 @@ async function refreshQuickTags() {
     QT.groups = d.groups || [];
     QT.corrections = d.corrections || {};
     QT.count = d.count || 0;
+    QT.favorites = d.favorites || [];
     renderQuickTags();
+    renderFavorites();
   } catch {}
 }
 
@@ -3719,14 +3745,17 @@ function renderQuickTags() {
     // fails is usually that the name is one of the ones that does not work.
     const fix = QT.corrections[q.replace(/_/g, ' ')];
     parts.push(fix
-      ? `<div class="banner tight"><b>「${esc(q)}」在 danbooru 上是 0 張圖</b>，
-         打了等於沒打。真正有用的是 <code>${esc(fix)}</code>
-         <button class="ghost tiny" id="qtfix" style="margin-left:8px">加這個</button></div>`
-      : '<div class="s">沒有符合的。這裡只收經過 danbooru 查證、真的有圖的 tag。</div>');
+      ? `<div class="banner tight"><b>「${esc(q)}」不是 danbooru 的正式 tag</b>
+         （或者是它的別名）。你這樣打<b>通常還是有效果</b> —— 底模看得懂英文 ——
+         但底模真正練過的字串是 <code>${esc(fix)}</code>，會更準、也更省權重。
+         <button class="ghost tiny" id="qtfix" style="margin-left:8px">用這個</button></div>`
+      : '<div class="s">這份清單裡沒有。清單只收 danbooru 上圖片數夠多的 tag，不代表別的字打了沒用。</div>');
   }
   $('#qtnote').innerHTML = `共 ${QT.count} 個 tag，每個都查過 danbooru 的實際圖片數 ——
     <b class="sstrong">深色</b>＝模型很熟（10 萬張以上），淺色＝比較少見、可能要加權才吃得到。
-    點一下就加到提詞後面。`;
+    點一下就加到提詞後面。<br>
+    <b>圖片數少不等於沒用</b>：底模是 CLIP，看得懂英文句子，所以自己描述也會有效果；
+    danbooru 的正式 tag 只是<b>更準、更省權重</b>。`;
   $('#qtlist').innerHTML = parts.join('');
   $('#qtlist').querySelectorAll('button.qt').forEach((b) => {
     b.onclick = () => addTagToPrompt(b.dataset.tag);
@@ -3743,6 +3772,81 @@ function bareTag(chunk) {
   const m = W_WRAPPED.exec(t);
   if (m) t = m.groups.body;
   return t.replace(/\\/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+}
+
+/* ---------- favourites, pinned by the character picker ---------- */
+// Which spelling a favourite emits depends on the checkpoint: the anime
+// finetunes were conditioned on danbooru tag strings, the photo models never
+// saw one. images.py owns that call (ImageModel.tag_style) so there is a single
+// answer rather than one per surface.
+function tagStyle() {
+  return (IMG.chosen && IMG.chosen.tag_style) || 'danbooru';
+}
+
+// Whether a favourite is "on" is derived from the prompt box, never tracked
+// alongside it. A separate list drifts the moment anything else writes the
+// prompt - the character pack refilling it, the pose library sending one over,
+// or the user simply editing the text - and then the chip claims a tag is in
+// there when it is not, so clicking it tries to remove something absent and
+// appears to do nothing at all.
+function favTags(fav) {
+  const text = tagStyle() === 'natural' ? fav.natural : fav.danbooru;
+  return text.split(',').map((x) => x.trim()).filter(Boolean);
+}
+
+function favIsOn(fav) {
+  const have = new Set($('#iprompt').value.split(',').map(bareTag).filter(Boolean));
+  const parts = favTags(fav);
+  return parts.length > 0 && parts.every((t) => have.has(bareTag(t)));
+}
+
+function renderFavorites() {
+  if (!QT.favorites || !QT.favorites.length) {
+    $('#favbox').classList.add('hidden');
+    return;
+  }
+  $('#favbox').classList.remove('hidden');
+  const style = tagStyle();
+  const natural = style === 'natural';
+  $('#favstyle').innerHTML = natural
+    ? `· 目前底模是<b>寫實型</b>，會改用自然語句（它沒學過 danbooru 標籤）`
+    : `· 目前底模吃 <b>danbooru 標籤</b>`;
+  $('#favlist').innerHTML = QT.favorites.map((f) => {
+    const text = natural ? f.natural : f.danbooru;
+    const on = favIsOn(f);
+    return `<button class="tag fav${on ? ' done' : ''}" data-fav="${esc(f.key)}"
+      title="${esc(text)}${f.posts ? `　·　danbooru ${f.posts.toLocaleString()} 張` : ''}${
+        f.note ? '\n' + esc(f.note) : ''}">${esc(f.zh)}</button>`;
+  }).join('');
+  $('#favlist').querySelectorAll('button.fav').forEach((b) => {
+    b.onclick = () => toggleFavorite(b.dataset.fav);
+  });
+  const notes = QT.favorites.filter((f) => f.note);
+  $('#favnote').innerHTML = natural
+    ? '寫實底模用完整句子比較準；切回 NoobAI / Illustrious / Pony 會自動換回短標籤。'
+    : '點一下加進提詞，再點一下拿掉。滑鼠停在上面可以看它實際會送出什麼。';
+  void notes;
+}
+
+function toggleFavorite(key) {
+  const fav = (QT.favorites || []).find((f) => f.key === key);
+  if (!fav) return;
+  if (favIsOn(fav)) {
+    removeTagsFromPrompt(favTags(fav).join(', '));
+  } else {
+    // A favourite can be several tags ("squatting, spread legs"), so each part
+    // goes through the same de-duplicating path a single chip uses.
+    favTags(fav).forEach(addTagToPrompt);
+  }
+  renderFavorites();
+}
+
+function removeTagsFromPrompt(text) {
+  const drop = new Set(text.split(',').map(bareTag).filter(Boolean));
+  const box = $('#iprompt');
+  const kept = box.value.split(',').filter((chunk) => !drop.has(bareTag(chunk)));
+  box.value = kept.map((x) => x.trim()).filter(Boolean).join(', ');
+  box.dataset.touched = '1';
 }
 
 function addTagToPrompt(tag) {

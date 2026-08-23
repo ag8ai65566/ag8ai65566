@@ -1045,6 +1045,7 @@ async def image_models() -> JSONResponse:
                 "positive_prefix": model.positive_prefix,
                 "negative": model.negative,
                 "prompt_style": model.prompt_style,
+                "tag_style": model.tag_style,
                 "sizes": {k: list(v) for k, v in model.sizes.items()},
                 "default_size": model.default_size,
                 "nsfw_note": model.nsfw_note,

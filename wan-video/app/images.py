@@ -39,6 +39,11 @@ class ImageModel:
     positive_prefix: str = ""
     negative: str = ""
     prompt_style: str = ""  # one line telling the user how to write for it
+    # Which vocabulary this checkpoint was actually conditioned on. The anime
+    # finetunes are trained on danbooru tag strings, so the exact tag is a sharp
+    # lever; the photo models never saw those tags and want a plain description
+    # of the same thing. Same idea, two spellings - see quicktags.FAVORITES.
+    tag_style: str = "danbooru"
     sizes: dict[str, tuple[int, int]] = field(default_factory=dict)
     default_size: str = "1024×1024 方形"
     nsfw_note: str = ""
@@ -161,6 +166,7 @@ IMAGE_MODELS: list[ImageModel] = [
         vram_gb=8,
         steps=30, cfg=5.0, sampler="dpmpp_2m", scheduler="karras",
         clip_skip=-1,
+        tag_style="natural",
         positive_prefix="",
         negative=PHOTO_NEG,
         prompt_style="用自然句子描述場景與光線：`a woman standing by a window, soft morning light, 85mm portrait, shallow depth of field`。",
@@ -179,6 +185,7 @@ IMAGE_MODELS: list[ImageModel] = [
         vram_gb=8,
         steps=30, cfg=7.0, sampler="dpmpp_2m", scheduler="karras",
         clip_skip=-1,
+        tag_style="natural",
         negative=PHOTO_NEG,
         prompt_style="自然句子。這是未微調的官方底模，風格最中性，也最不擅長 NSFW。",
         sizes=SDXL_SIZES,

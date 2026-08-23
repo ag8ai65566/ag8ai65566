@@ -1,34 +1,44 @@
-"""A verified quick-pick list of the tags people actually reach for.
+"""A quick-pick list of the tags people reach for, with how well each is known.
 
 Every tag here was checked against danbooru's own API and carries its real post
-count, because a tag that sounds right and does nothing is worse than no tag at
-all: the model simply ignores it, and you spend the next hour adjusting weights
-on a word that was never in the training captions.
+count. What that count means needs stating carefully, because the first version
+of this file overclaimed and a user was right to push back on it.
 
-That is not a hypothetical. Of the four tags this list started from, two were
-unusable as written:
+**A post count is not a pass/fail.** These checkpoints are built on CLIP, which
+is a language model: it understands English whether or not danbooru has a tag
+for the phrase. Measured in CLIP ViT-L/14's own text space - SDXL's text encoder
+1, run on CPU - the phrases that looked "dead" are nothing of the sort:
 
-    double peace gesture   not a danbooru tag at all -> double_v (42,459 posts)
-    ahegao face            the name exists, 0 posts  -> ahegao (28,089)
-    half naked             the name exists, 0 posts  -> topless_female (88,094)
-    breasts out            real, 87,377 posts        -> kept as-is
+    ahegao face          vs ahegao      0.884   almost the same vector
+    breasts out          vs exposed breasts 0.826
+    double peace gesture vs double v    0.567
+    soft lighting        vs dim lighting 0.715
+    (unrelated control: 'double v' vs '1girl standing' = 0.342)
 
-The same check killed a whole family of words that circulate in prompt guides
-but are not danbooru vocabulary: `soft lighting`, `cinematic lighting`,
-`dramatic lighting`, `rim lighting` and `volumetric lighting` all have zero
-posts. Only `backlighting`, `sidelighting`, `underlighting` and `dim lighting`
-are real, so those are what this offers. Words borrowed from Midjourney habits
-do nothing on a danbooru-trained checkpoint.
+So `double peace gesture` really does produce a V sign, and `ahegao face` really
+does produce ahegao. Anyone who has used them knows this, and any claim to the
+contrary is simply wrong.
 
-Aliases were followed to their canonical form the same way - danbooru redirects
-`naked` to `nude`, `see-through` to `see-through_clothes`, `cat pose` to
-`paw_pose`, `presenting` to `presenting_own_body`, `erect nipples` to
-`covered_nipples` - because the alias itself has no posts, so the alias is the
-version that quietly fails.
+**What the count does measure** is how hard the anime finetune sharpened that
+exact string. NoobAI, Illustrious and Pony were trained on danbooru tag strings,
+so the exact tag is a narrow, reliable lever: it lands harder, at lower weight,
+with less drift into neighbouring concepts. A paraphrase lands in roughly the
+right region and usually needs more weight to be as decisive. Both work; one is
+sharper.
 
-The counts are here on purpose. A tag with 300,000 posts is something the model
-knows cold; one with 900 is a coin flip, and being able to see which is which is
-the difference between tuning a prompt and guessing at it.
+Two places where the count still says something close to pass/fail:
+
+  * A phrase can be a *danbooru alias*, in which case the canonical form is
+    strictly better - `peace_sign` is an active alias of `v`, `double_peace` of
+    `double_v`, `naked` of `nude`. The alias is resolved away when the training
+    captions are exported, so only the canonical string was ever trained on.
+  * A tag under a few thousand posts is genuinely thin, and the finetune may
+    barely distinguish it. `disgust` (4,078) is the weakest thing in this list
+    and is flagged as such.
+
+The counts are shown in the UI for exactly this reason: a tag with 300,000 posts
+is something the model knows cold, one with 900 is a coin flip, and being able
+to see which is which is the difference between tuning a prompt and guessing.
 """
 
 from __future__ import annotations
@@ -416,9 +426,11 @@ GROUPS: list[Group] = [
 
 BY_TAG = {t.tag: t for g in GROUPS for t in g.tags}
 
-# Names that feel right and do nothing. Typed into the search box, these answer
-# with the tag that works instead of with "no results" - which is the whole
-# lesson of this file, made usable rather than just documented.
+# Sharper spellings. These are not "the broken name -> the working name": the
+# left-hand side generally works too (see the docstring). The right-hand side is
+# the string the anime finetunes were actually trained on, so it lands harder at
+# lower weight - and where the left side is a danbooru alias, it is the only one
+# that ever appeared in a training caption.
 CORRECTIONS: dict[str, str] = {
     "double peace gesture": "double_v",
     "double peace": "double_v",
@@ -452,8 +464,9 @@ CORRECTIONS: dict[str, str] = {
     "exposed breasts": "breasts_out",
     "untied bikini": "untied_bikini_top",
     "bending forward": "leaning_forward",
-    # Prompt-guide words with no danbooru posts at all. Pointing at the nearest
-    # real tag is more useful than an empty result.
+    # Prompt-guide vocabulary with no danbooru posts. These still do something
+    # via CLIP (`soft lighting` sits at 0.715 to `dim lighting`), but the anime
+    # finetunes never sharpened them, so the danbooru word is the stronger lever.
     "soft lighting": "dim_lighting",
     "cinematic lighting": "backlighting",
     "dramatic lighting": "backlighting",
@@ -469,7 +482,7 @@ CORRECTIONS: dict[str, str] = {
 
 
 def correction(text: str) -> T | None:
-    """The real tag for a name that does not work, if there is one."""
+    """The sharper danbooru spelling for a phrase, if there is one."""
     key = re.sub(r"[_\s]+", " ", (text or "").strip().lower())
     target = CORRECTIONS.get(key)
     return BY_TAG.get(target) if target else None
@@ -491,8 +504,83 @@ def search(query: str, limit: int = 60) -> list[T]:
 
 def public() -> dict:
     return {
+        "favorites": [f.public() for f in FAVORITES],
         "groups": [g.public() for g in GROUPS],
         "count": sum(len(g.tags) for g in GROUPS),
         "corrections": {k: BY_TAG[v].prompt for k, v in CORRECTIONS.items()
                         if v in BY_TAG},
     }
+
+
+# -- favourites ---------------------------------------------------------------
+#
+# The handful of tags one person reaches for every session, pinned next to the
+# character picker so getting from "which Hololive member" to "doing what" is
+# two clicks rather than a search.
+#
+# Each one carries two spellings, because the checkpoints in this app were not
+# all trained on the same vocabulary:
+#
+#   danbooru   what NoobAI / Illustrious / Pony were conditioned on. The exact
+#              tag string, which is the sharpest lever those models have.
+#   natural    a plain description of the same thing, for Juggernaut and stock
+#              SDXL, which never saw a danbooru tag in training.
+#
+# Both are real. Measured in CLIP ViT-L/14's own text space (SDXL's text encoder
+# 1), `double peace gesture` sits at 0.567 cosine to `double v` against a 0.28
+# baseline for unrelated text - so the natural phrase genuinely carries the
+# meaning. The danbooru tag is not "the only thing that works"; it is the
+# spelling the finetune sharpened, which is why it needs less weight to land.
+
+
+@dataclass(frozen=True)
+class Fav:
+    key: str
+    zh: str
+    danbooru: str
+    natural: str
+    posts: int = 0
+    note: str = ""
+
+    def emit(self, tag_style: str = "danbooru") -> str:
+        raw = self.natural if tag_style == "natural" else self.danbooru
+        return re.sub(r"([()])", r"\\\1", raw.replace("_", " "))
+
+    def public(self) -> dict:
+        return {
+            "key": self.key, "zh": self.zh, "posts": self.posts, "note": self.note,
+            "danbooru": self.emit("danbooru"), "natural": self.emit("natural"),
+        }
+
+
+FAVORITES: list[Fav] = [
+    Fav("v", "單手比 V", "v", "making a peace sign with one hand", 234750),
+    Fav("double_v", "雙手比 V", "double_v",
+        "making a peace sign with both hands", 42651,
+        "你打的 `double peace gesture` 在 danbooru 上不是 tag，但它在 CLIP 裡離 double v 很近，所以有效果——只是比較鬆。"),
+    Fav("breasts_out", "露胸", "breasts_out", "bare breasts, breasts exposed", 87622),
+    Fav("ahegao", "阿嘿顏", "ahegao",
+        "ahegao, eyes rolled back, tongue out, blissful expression", 28181,
+        "`ahegao face` 跟 `ahegao` 在 CLIP 裡的相似度 0.884，幾乎是同一個向量，所以你原本那樣打也會出——這裡用 danbooru 那個更準的。"),
+    Fav("ahegao_double_peace", "阿嘿顏＋雙手 V", "ahegao, double_v",
+        "ahegao, tongue out, making a peace sign with both hands", 0,
+        "經典組合（アヘ顔ダブルピース）。"),
+    Fav("topless", "上身全裸", "topless_female", "topless, bare chest", 88273),
+    Fav("bottomless", "下身全裸", "bottomless", "bottomless, nothing below the waist",
+        121953, "`bottomless female` 在 danbooru 是 0 張，正式的 tag 就是 `bottomless`。"),
+    Fav("horse_stance", "蹲馬步（蹲姿張腿）", "squatting, spread_legs",
+        "squatting low with legs wide apart, horse stance", 136036,
+        "danbooru 沒有單一的「馬步」tag（`horse stance` 只有 30 張），實務上是 squatting + spread legs。"),
+    Fav("m_legs", "M 字腿", "m_legs", "lying with knees up and legs spread", 17456),
+    Fav("expressionless", "無表情", "expressionless", "expressionless, blank face", 179053),
+    Fav("disgust", "厭惡表情", "disgust", "disgusted expression, grimacing", 4078,
+        "只有 4,078 張，是這幾個裡最弱的一個，可能要加權到 1.2 才明顯。"),
+    Fav("serious", "認真表情", "serious", "serious expression", 39472),
+    Fav("happy", "高興表情", "happy, smile", "happy, smiling", 137696),
+]
+
+FAV_BY_KEY = {f.key: f for f in FAVORITES}
+
+
+def favorites(tag_style: str = "danbooru") -> list[dict]:
+    return [{**f.public(), "tag": f.emit(tag_style)} for f in FAVORITES]

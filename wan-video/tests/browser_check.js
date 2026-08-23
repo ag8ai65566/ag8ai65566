@@ -125,6 +125,77 @@ const { chromium } = require('playwright');
       'clicking twice does not duplicate, even after weighting -> ' + v);
   check((await page.textContent('#iwhint')).includes('已經在提詞裡'), 'and it says why');
 
+  // ---- favourites pinned by the character picker ----
+  check(await page.isVisible('#favbox'), 'the favourites strip is on the character-pack panel');
+  const n = await page.evaluate(()=>document.querySelectorAll('#favlist button.fav').length);
+  check(n === 13, `13 favourites pinned (${n})`);
+  const labels = await page.evaluate(()=>[...document.querySelectorAll('#favlist button.fav')].map(b=>b.textContent.trim()));
+  check(labels.includes('雙手比 V') && labels.includes('阿嘿顏') && labels.includes('無表情')
+     && labels.includes('厭惡表情') && labels.includes('認真表情') && labels.includes('高興表情')
+     && labels.includes('上身全裸') && labels.includes('下身全裸') && labels.includes('蹲馬步（蹲姿張腿）'),
+     'everything asked for is there -> ' + labels.join('／'));
+
+  await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='noobai'; s.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(300);
+  await page.fill('#iprompt', '1girl');
+  await page.click('#favlist button.fav[data-fav="double_v"]');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl, double v', 'danbooru model gets the tag -> ' + v);
+  await page.click('#favlist button.fav[data-fav="horse_stance"]');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl, double v, squatting, spread legs', 'a multi-tag favourite adds both -> ' + v);
+  await page.click('#favlist button.fav[data-fav="horse_stance"]');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl, double v', 'clicking again takes it back out -> ' + v);
+
+  // weighted tags must survive the removal path
+  await page.fill('#iprompt', '1girl');
+  await page.click('#favlist button.fav[data-fav="ahegao"]');
+  await page.waitForTimeout(150);
+  await page.click('#iwup'); await page.click('#iwup');
+  v = await page.inputValue('#iprompt');
+  check(v.includes('(ahegao:1.1)'), 'a favourite can be weighted straight away -> ' + v);
+  await page.click('#favlist button.fav[data-fav="ahegao"]');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl', 'and removing it finds the weighted form too -> ' + v);
+
+  // switching to a photo model must change the spelling
+  await page.fill('#iprompt', '1girl');
+  await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='juggernaut'; s.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(400);
+  check((await page.textContent('#favstyle')).includes('寫實'), 'it says the model wants plain language');
+  await page.click('#favlist button.fav[data-fav="double_v"]');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl, making a peace sign with both hands',
+     'the photo model gets a sentence, not a danbooru tag -> ' + v);
+  // The chip state must follow the prompt, not a side list: retyping the box
+  // by hand has to turn the chip back off.
+  const lit = await page.evaluate(()=>document.querySelector('#favlist button.fav[data-fav="double_v"]').classList.contains('done'));
+  check(lit, 'the chip lights up while its text is in the prompt');
+  await page.fill('#iprompt', '1girl, solo');
+  await page.dispatchEvent('#iprompt','input');
+  await page.waitForTimeout(200);
+  const lit2 = await page.evaluate(()=>document.querySelector('#favlist button.fav[data-fav="double_v"]').classList.contains('done'));
+  check(!lit2, 'and goes dark again when the prompt is edited by hand');
+  await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='pony'; s.dispatchEvent(new Event('change')); });
+  await page.waitForTimeout(400);
+  check((await page.textContent('#favstyle')).includes('danbooru'), 'switching back to Pony says danbooru again');
+
+  await page.fill('#iprompt','1girl');
+  await page.click('#favlist button.fav[data-fav="v"]');
+  await page.click('#favlist button.fav[data-fav="breasts_out"]');
+  await page.waitForTimeout(200);
+  await page.click('#favclear');
+  await page.waitForTimeout(200);
+  v = await page.inputValue('#iprompt');
+  check(v === '1girl', 'clear removes only what the strip added -> ' + v);
+
+
   // ---- custom size ----
   await page.selectOption('#isize', { label: '自訂尺寸' }).catch(async () => {
     await page.evaluate(() => { const s=document.getElementById('isize'); s.value = IMG.customSize; s.dispatchEvent(new Event('change')); });

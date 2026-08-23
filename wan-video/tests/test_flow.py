@@ -3903,7 +3903,8 @@ def test_quicktags() -> None:
                  "rim lighting", "volumetric lighting"):
         check(dead.replace(" ", "_") not in qt.BY_TAG,
               f"{dead} is not shipped (0 danbooru posts)")
-        check(qt.correction(dead) is not None, f"…but {dead} still gets an answer")
+        check(qt.correction(dead) is not None,
+              f"…but {dead} still points at the sharper word")
     for real in ("backlighting", "sidelighting", "underlighting", "dim_lighting"):
         check(real in qt.BY_TAG, f"{real} is real, so it is offered")
 
@@ -3949,11 +3950,68 @@ def test_quicktags() -> None:
     check("SIZE_ASKED" in page,
           "…and admits when snapping to 64 changed the ratio you asked for")
 
+    # A user reported that `peace` / `double peace gesture` / `ahegao face` work
+    # for them, and they were right: CLIP reads English, so a paraphrase lands
+    # near the tag rather than nowhere. Measured on CLIP ViT-L/14 (SDXL's own
+    # text encoder 1) at 0.884 / 0.567 against a 0.28-0.34 unrelated baseline.
+    # These pin the corrected framing so it cannot quietly regress.
+    src = (ROOT / "app" / "quicktags.py").read_text(encoding="utf-8")
+    for gone in ("does nothing", "打了等於沒打", "completely useless"):
+        check(gone not in src, f"the module no longer claims a paraphrase {gone!r}")
+    check("0.884" in src and "0.567" in src,
+          "…and records the measurement that settled it")
+    check("is not a pass/fail" in src,
+          "…stating plainly what a post count does and does not mean")
+    page_src = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check("打了等於沒打" not in page_src, "the UI copy was corrected too")
+    check("圖片數少不等於沒用" in page_src, "…and says so where the user reads it")
+
+    # -- favourites, pinned by the character picker -------------------------
+    favs = qt.public()["favorites"]
+    check(len(favs) == 13, f"13 favourites are pinned ({len(favs)})")
+    keys = {f["key"] for f in favs}
+    for want in ("v", "double_v", "breasts_out", "ahegao", "topless", "bottomless",
+                 "horse_stance", "m_legs", "expressionless", "disgust", "serious",
+                 "happy"):
+        check(want in keys, f"…including {want}")
+    check(all(f["danbooru"] and f["natural"] for f in favs),
+          "every favourite carries both a danbooru and a natural spelling")
+    check(all(f["danbooru"] != f["natural"] for f in favs),
+          "…and the two really differ, or the switch would be theatre")
+    check(qt.FAV_BY_KEY["double_v"].emit("danbooru") == "double v",
+          "the anime models get the tag")
+    check("peace sign" in qt.FAV_BY_KEY["double_v"].emit("natural"),
+          "…and the photo models get a description")
+    check(qt.FAV_BY_KEY["bottomless"].emit() == "bottomless",
+          "bottomless_female has 0 posts, so the real tag is used")
+    check(qt.FAV_BY_KEY["horse_stance"].emit() == "squatting, spread legs",
+          "danbooru has no horse-stance tag; the pair that means it is used")
+    check("30 張" in (ROOT / "docs" / "prompt-weights.md").read_text(encoding="utf-8"),
+          "…and the doc says why")
+
+    # tag_style is the single source of truth for which spelling to use.
+    import images
+    styles = {m.id: m.tag_style for m in images.IMAGE_MODELS}
+    check(styles["noobai"] == styles["illustrious"] == styles["pony"] == "danbooru",
+          f"the anime finetunes are marked danbooru ({styles})")
+    check(styles["juggernaut"] == styles["sdxl-base"] == "natural",
+          "…and the photo models natural, because they never saw a danbooru tag")
+    check('"tag_style": model.tag_style' in (ROOT / "app" / "server.py").read_text(encoding="utf-8"),
+          "…and it reaches the browser")
+    check("function favIsOn" in page_src,
+          "whether a favourite is on is derived from the prompt, not tracked beside it")
+    check("FAV_ADDED" not in page_src,
+          "…the drifting side-list is gone (it desynced whenever anything else "
+          "wrote the prompt)")
+
     doc = ROOT / "docs" / "prompt-weights.md"
     check(doc.is_file(), "weights and the tag list are documented")
     text = doc.read_text(encoding="utf-8")
     check("Ctrl" in text and "1.05" in text, "…including the shortcut and the step")
-    check("0 張" in text, "…and why a zero-post tag is worse than no tag")
+    check("那句話是錯的" in text,
+          "…and openly corrects the earlier overclaim rather than quietly editing it")
+    check("0.884" in text and "0.567" in text,
+          "…backing the correction with the measured CLIP similarities")
     check("docs/prompt-weights.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
           "…and the README points at it")
 
