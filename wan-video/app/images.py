@@ -39,10 +39,11 @@ class ImageModel:
     positive_prefix: str = ""
     negative: str = ""
     prompt_style: str = ""  # one line telling the user how to write for it
-    # Which vocabulary this checkpoint was actually conditioned on. The anime
-    # finetunes are trained on danbooru tag strings, so the exact tag is a sharp
-    # lever; the photo models never saw those tags and want a plain description
-    # of the same thing. Same idea, two spellings - see quicktags.FAVORITES.
+    # Which vocabulary suits this checkpoint *by default*. It is a preference,
+    # not an exclusive capability: Pony V6 says outright that it understands
+    # natural language as well as tags, and Illustrious advertises both. What
+    # this field picks is which spelling a one-click button should emit, not
+    # what the model is able to read. See quicktags.FAVORITES.
     tag_style: str = "danbooru"
     # How this checkpoint wants an artist named, if at all. NoobAI's model card
     # prompts `artist:john_kafka`; Illustrious uses `by <name>`; Pony V6 removed
@@ -155,9 +156,13 @@ IMAGE_MODELS: list[ImageModel] = [
         vram_gb=8,
         steps=25, cfg=7.0, sampler="euler_ancestral", scheduler="normal",
         clip_skip=-2,
-        positive_prefix="score_9, score_8_up, score_7_up",
+        # The full six-tag ladder, not the three-tag community shorthand. Pony's
+        # own page: "you can still use score_9 but it has a much weaker effect
+        # compared to full string."
+        positive_prefix=("score_9, score_8_up, score_7_up, score_6_up, "
+                         "score_5_up, score_4_up"),
         negative="score_6, score_5, score_4, " + ANIME_NEG,
-        prompt_style="**開頭一定要有 `score_9, score_8_up, score_7_up`**（已自動加），否則畫面會爛。之後用 danbooru 標籤。",
+        prompt_style="**開頭一定要有那串 `score_*`**（已自動加完整六個；官方說只用 `score_9` 效果差很多）。之後 danbooru 標籤和自然語句都吃得下。",
         sizes=SDXL_SIZES,
         nsfw_note="NSFW 生態僅次於 Illustrious，寫實向的 Pony 微調也很多。",
         note="那串 score_ 標籤是 Pony 特有的品質控制，不是裝飾。",

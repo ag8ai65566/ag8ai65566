@@ -4135,7 +4135,17 @@ def test_likeness() -> None:
     check("official art" not in plain["prompt"], "the mode is off by default")
     check("official art" in strong["prompt"],
           "…and adds the official-art bias when asked")
-    check("newest" in strong["prompt"], "…plus NoobAI's own recency bucket")
+    check("newest" not in strong["prompt"],
+          "…and NOT `newest`, which is a 2021-2024 date bucket for the artwork, "
+          "not the character's current design")
+    import images as _img
+    photo = charpacks.build_prompt(pack, "mori-calliope", 0, model="juggernaut",
+                                   likeness=1.25, likeness_tags="")
+    check("official art" not in photo["prompt"],
+          "a danbooru general tag is not handed to a checkpoint that never saw one")
+    check(_img.get("pony").positive_prefix.count("score_") == 6,
+          "Pony gets its full six-tag ladder, not the three-tag shorthand "
+          f"({_img.get('pony').positive_prefix})")
     check(":1.25)" in strong["prompt"],
           f"…and weights the costume trigger ({strong['prompt'][:60]})")
     check(strong["prompt"].startswith("("),
@@ -4163,6 +4173,27 @@ def test_likeness() -> None:
     text = doc.read_text(encoding="utf-8")
     check("同人" in text and "official art" in text,
           "…and the pack doc explains the drift")
+    check("畫風" in text and "A/B" in text,
+          "…and says the artist tag is style control, not proof it hurts likeness")
+
+    # A second model reviewed this and found real defects; the response is
+    # tracked so the corrections cannot quietly regress into the old claims.
+    resp = ROOT / "docs" / "review-response.md"
+    check(resp.is_file(), "the review has a written response")
+    rtext = resp.read_text(encoding="utf-8")
+    for label in ("FACT", "AUTHOR-REC", "MEASURED", "HEURISTIC", "HYPOTHESIS"):
+        check(label in rtext, f"…adopting the evidence grade {label}")
+    check("2021-2024" in rtext,
+          "…and recording what `newest` actually is")
+    check("OpenCLIP bigG" in rtext,
+          "…and that the cosine measurement is not on SDXL's pooled path")
+    check("沒有" in rtext.split("我保留意見的部分")[1][:40],
+          "…and is honest that nothing in the review needed rebutting")
+    page2 = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check("官方風格偏移（實驗性）" in page2,
+          "the UI label no longer promises more than the evidence carries")
+    check("貼近官方設定<" not in page2 and "> 貼近官方設定" not in page2,
+          "…and the old overclaiming label is gone")
 
 
 

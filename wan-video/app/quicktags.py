@@ -19,6 +19,14 @@ So `double peace gesture` really does produce a V sign, and `ahegao face` really
 does produce ahegao. Anyone who has used them knows this, and any claim to the
 contrary is simply wrong.
 
+The reverse overclaim is worth guarding too, and a review caught it: these
+numbers are a *lexical* diagnostic, not a prediction of what any U-Net does.
+They come from CLIP-L's pooled vector, while SDXL's pooled embedding is taken
+from OpenCLIP bigG - so this measurement is not even on the path the pooled
+embedding actually travels. It is enough to disprove "zero posts means zero
+effect". It is not enough to claim two spellings are interchangeable in
+generation; only a fixed-seed A/B could say that, and none has been run.
+
 **What the count does measure** is how hard the anime finetune sharpened that
 exact string. NoobAI, Illustrious and Pony were trained on danbooru tag strings,
 so the exact tag is a narrow, reliable lever: it lands harder, at lower weight,
@@ -36,9 +44,12 @@ Two places where the count still says something close to pass/fail:
     barely distinguish it. `disgust` (4,078) is the weakest thing in this list
     and is flagged as such.
 
-The counts are shown in the UI for exactly this reason: a tag with 300,000 posts
-is something the model knows cold, one with 900 is a coin flip, and being able
-to see which is which is the difference between tuning a prompt and guessing.
+The counts are shown in the UI as **danbooru prevalence**, which is what they
+actually are. A tag carried by 300,000 posts is far more likely to be a sharp
+lever than one carried by 900, and seeing which is which beats guessing between
+two spellings. It is still a prior, not a measurement of the checkpoint: only a
+fixed-seed A/B on real generations could tell you how a given model responds,
+and this project has run none.
 """
 
 from __future__ import annotations
@@ -63,7 +74,17 @@ class T:
 
     @property
     def strength(self) -> str:
-        """How reliable this tag is, from how much of danbooru carries it."""
+        """danbooru prevalence band - NOT a measure of this checkpoint's training.
+
+        Named carefully because the loose version does not hold up: a post count
+        is how common the tag is in the database today, and between that and how
+        strongly a given checkpoint responds to the token sit dataset snapshot,
+        dedup, caption normalisation, alias resolution, tag dropout, sampling
+        weights, training steps, and whatever LoRA is stacked on top. Prevalence
+        is a useful prior for picking between two spellings. It is not a
+        measurement of model behaviour, and the weight advice that hangs off it
+        is a heuristic, not a result.
+        """
         if self.posts >= 100000:
             return "strong"
         if self.posts >= 10000:

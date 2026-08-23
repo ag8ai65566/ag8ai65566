@@ -323,12 +323,22 @@ def _drop_duplicate_artist(chunk: str, bare: str) -> str:
     return ",".join(kept)
 
 
-# Tags that pull towards the official design rather than the fan-art average.
-# `official_art` is a 533,688-post tag, so the model knows it well as a framing
-# and finish; combined with a character it biases towards that character's own
-# small official subset. `newest` is NoobAI's own recency bucket, which matters
-# because a VTuber's current look is the recent one.
-LIKENESS_TAGS = "official art, newest"
+# A bias towards official-art *rendering*, not a query for a character's official
+# subset. Worth stating precisely, because the loose version of this claim does
+# not survive review: `character + official_art` is compositional conditioning,
+# so what it actually pulls in is what `official_art` looks like - clean finish,
+# promotional framing, plain backgrounds. Whether that lands closer to the
+# reference sheet for any given character is a hypothesis this project has not
+# tested, which is why the UI calls it experimental.
+#
+# `newest` used to be in here, justified as "a VTuber's current look is the
+# recent one". That was simply wrong: NoobAI's model card defines `newest` as
+# the date bucket **2021-2024**, alongside old/early/mid/recent. It is a
+# recency label for the *artwork*, not for the character's design, and NoobAI
+# already carries it in its own quality prefix - so adding it here was both
+# meaningless and a duplicate. Worse, it was added regardless of checkpoint,
+# handing a NoobAI-specific token to Pony and to the photo models.
+LIKENESS_TAGS = "official art"
 
 
 def likeness_advice(pack: Pack, who: Character) -> dict:
@@ -364,10 +374,16 @@ def likeness_advice(pack: Pack, who: Character) -> dict:
             f"danbooru 上 {who.danbooru_posts:,} 張{who.name}裡，官方圖只佔 1～3%。"
             "模型學到的是「同人平均值」，不是設定圖。"
         ),
+        # What the counts support is "not a reliable identity token", which is
+        # not the same as "makes it worse" - diffusion composes concepts that
+        # rarely co-occur, so the artist tag can carry style without carrying
+        # identity. Saying more than that would be inventing a causal claim on
+        # top of a correlational one.
         "artist_why": (
             f"{who.designer} 在 danbooru 只有 {who.artist_posts:,} 張，"
-            f"其中畫{who.name}的更少 —— 所以掛他的 tag 是把他<b>畫別人時</b>的畫風"
-            "拉進來，對「像不像本人」通常沒幫助，甚至會扯後腿。"
+            f"其中畫{who.name}的更少 —— 所以這個 tag 帶進來的主要是他<b>畫別人時</b>"
+            "的畫風。它是<b>畫風控制</b>，不是身份控制；對「像不像本人」幫不上忙，"
+            "至於會不會反而扯後腿，要你自己 A/B 比過才知道。"
         ) if who.artist_tag else "",
     }
 
@@ -375,7 +391,8 @@ def likeness_advice(pack: Pack, who: Character) -> dict:
 def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
                  extra: str = "", quality: bool = True, model: str = "",
                  style: bool = False, quality_tags: str = "",
-                 artist_weight: float = 1.0, likeness: float = 0.0) -> dict | None:
+                 artist_weight: float = 1.0, likeness: float = 0.0,
+                 likeness_tags: str | None = None) -> dict | None:
     """The one-click prompt: who, wearing what, in the order the author wants.
 
     Trigger first, then that outfit's appearance tags, then whatever the user
@@ -401,7 +418,12 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
     # lever there is - see likeness_advice for the counts behind that claim.
     head = [weighted(outfit.trigger, likeness) if likeness else outfit.trigger]
     if likeness:
-        head.append(LIKENESS_TAGS)
+        # Gated by the caller, which knows the checkpoint: a danbooru general
+        # tag means nothing to a photo model, and shipping one anyway is the
+        # bug this parameter exists to stop.
+        extra_tags = LIKENESS_TAGS if likeness_tags is None else likeness_tags
+        if extra_tags.strip():
+            head.append(extra_tags.strip())
     if pack.series and model in pack.native_models:
         head.append(pack.series)
     mine = extra.strip()
@@ -432,8 +454,10 @@ def build_prompt(pack: Pack, character_key: str, costume: int = 0, *,
     for chunk in parts:
         for tag in (t.strip() for t in chunk.split(",")):
             # Dropping repeats matters here: the scaffold says "1girl" and so do
-            # a few of the per-outfit tag lists, and a doubled tag is a weight
-            # the user did not ask for.
+            # a few of the per-outfit tag lists. Repeating a tag is not the same
+            # mechanism as `(tag:1.1)` - it just puts the token in twice - but it
+            # does add conditioning influence nobody asked for, and it wastes
+            # context. Tidiness, not arithmetic.
             if tag and tag.lower() not in seen:
                 seen.add(tag.lower())
                 tags.append(tag)

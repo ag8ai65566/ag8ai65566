@@ -374,8 +374,8 @@
         <div id="packcostumes" class="words" style="margin-top:6px"></div>
         <div id="packstyle" class="banner tight"></div>
         <div class="row" style="margin-top:6px">
-          <label class="chk" title="加權角色／服裝 tag 並加上 official art，往官方設定拉">
-            <input type="checkbox" id="packlike"> 貼近官方設定
+          <label class="chk" title="加權角色／服裝 tag，並在動漫底模上加 official art。尚未經生成實驗驗證。">
+            <input type="checkbox" id="packlike"> 官方風格偏移（實驗性）
           </label>
           <label class="f" id="packlikewrap" style="display:none">強度
             <input type="range" id="packlikew" min="1.05" max="1.5" step="0.05" value="1.25"
@@ -3789,11 +3789,14 @@ function renderQuickTags() {
          <button class="ghost tiny" id="qtfix" style="margin-left:8px">用這個</button></div>`
       : '<div class="s">這份清單裡沒有。清單只收 danbooru 上圖片數夠多的 tag，不代表別的字打了沒用。</div>');
   }
-  $('#qtnote').innerHTML = `共 ${QT.count} 個 tag，每個都查過 danbooru 的實際圖片數 ——
-    <b class="sstrong">深色</b>＝模型很熟（10 萬張以上），淺色＝比較少見、可能要加權才吃得到。
+  $('#qtnote').innerHTML = `共 ${QT.count} 個 tag，每個都查過 <b>danbooru 上的圖片數</b>
+    （tag 普及度）—— <b class="sstrong">深色</b>＝10 萬張以上，淺色＝1 萬張以下。
     點一下就加到提詞後面。<br>
     <b>圖片數少不等於沒用</b>：底模是 CLIP，看得懂英文句子，所以自己描述也會有效果；
-    danbooru 的正式 tag 只是<b>更準、更省權重</b>。`;
+    danbooru 的正式 tag 通常<b>更準、更省權重</b>。<br>
+    <span style="opacity:.8">圖片數是<b>資料庫普及度</b>，不是「這支底模對這個詞的訓練強度」——
+    中間隔著去重、caption 正規化、tag dropout、取樣權重等等。所以「幾張要加權多少」
+    是<b>經驗法則，不是實測</b>。</span>`;
   $('#qtlist').innerHTML = parts.join('');
   $('#qtlist').querySelectorAll('button.qt').forEach((b) => {
     b.onclick = () => addTagToPrompt(b.dataset.tag);
@@ -3823,6 +3826,8 @@ function renderLikeness(d) {
   box.classList.remove('hidden');
   const styleOn = $('#packstylechk') && $('#packstylechk').checked;
   box.innerHTML = `<b>為什麼生出來跟直播/設定圖不像</b>
+    <div class="s" style="margin-top:4px;opacity:.8">下面數字是查 danbooru 得到的；
+      「加權多少最好」則是<b>還沒實測的推測</b>，這個容器沒有 GPU。</div>
     <div class="s" style="margin-top:4px">${info.why}</div>
     ${info.artist_why ? `<div class="s" style="margin-top:4px">${info.artist_why}</div>` : ''}
     ${styleOn && info.artist_tag
@@ -3833,7 +3838,9 @@ function renderLikeness(d) {
        或丟進 ControlNet 鎖輪廓 —— 這是唯一能把「官方長相」直接餵給模型的方法。
        ${info.wiki ? `<a href="${esc(info.wiki)}" target="_blank" rel="noopener">開官方設定圖庫 ↗</a>` : ''}</div>
     <div class="s">2. 已經幫你做的：<b>加權服裝 tag</b>（官方長相＝那套衣服，
-       而服裝 tag 是同人圖最忠實還原的部分）＋ <code>official art</code>。</div>
+       而服裝 tag 是同人圖還原度較高的部分）＋ 動漫底模上加 <code>official art</code>。
+       <b>注意</b>：<code>official art</code> 拉進來的是「官方圖的畫法」（乾淨、宣傳圖構圖），
+       不等於資料庫查詢，會不會更像本人<b>要你自己 A/B</b>。</div>
     <div class="s">3. 只畫這一位的話，去 CivitAI 找<b>單人 LoRA</b> ——
        75 人合集 LoRA 平均下來每個人都會軟一點。</div>`;
 }

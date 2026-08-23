@@ -260,7 +260,21 @@ SDXL 是在**約 100 萬像素**上訓練的，離太遠就會出現雙頭、多
 **沒驗過的**：權重調到多少「最好看」。那張建議表是社群共識加模型結構的推論，
 不是我實測的 —— 這個容器沒有 GPU，這專案至今**一張圖都沒有真的生成過**。
 
-上面那些相似度數字量的是 **CLIP ViT-L/14 的 pooled 向量**。實際生成時 SDXL 用的是
-**兩顆**文字編碼器（另一顆是 OpenCLIP bigG）、而且吃的是 token 層的隱藏狀態不是 pooled。
+### 關於上面那些相似度數字的但書（第二個模型審查後修正）
+
+我原本寫「實際生成吃的是 token 層隱藏狀態，**不是** pooled」—— **這句話講太死了**。
+SDXL 兩個都用：`prompt_embeds`（token 層隱藏狀態，進 cross-attention）
+**和** `pooled_prompt_embeds`（進 time embedding）。pooled 有參與生成。
+
+但真正的問題其實更嚴重一點：**SDXL 的 pooled 是從 OpenCLIP bigG 那顆取的，
+而我量的是 CLIP-L 的 pooled** —— 所以我測的東西根本不在那條路上。
+
+所以這些數字的正確定位是：**詞義診斷（lexical / semantic diagnostic）**。
+
+- ✅ 足以證明「`double peace gesture` 跟 `double v` 在 CLIP 語意空間裡明顯相關，
+  遠高於無關基準」，因此**足以推翻我原本「0 張 = 沒用」的說法**。
+- ❌ **不足以**證明 NoobAI / Illustrious / Pony 的 U-Net 對兩者反應相同。
+  要證明那個，唯一的辦法是同 checkpoint、同 seed、同 latent、同 sampler、同 CFG、
+  同 steps，只換那一個 token，多個 seed 統計成功率。**這個實驗我沒做，這台機器也做不了。**
 所以那些數字是**方向性的證據，不是精確的等價度** —— 它足以證明「0 張 ≠ 沒用」，
 但不足以宣稱「0.884 就等於一模一樣」。

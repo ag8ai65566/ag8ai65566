@@ -652,6 +652,7 @@ docs/
   artists.md           52 位畫師 tag：風格、danbooru 張數、各底模的正確前綴
   codex-mcp.md         讓 Claude Code 跟 OpenAI Codex 協作（選用）
   codex-review-brief.md 給第二個模型審查用的自足摘要（主張＋數據＋我自己知道的弱點）
+  review-response.md   對 Codex 審查的逐條回應：改了什麼、還沒做什麼
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡

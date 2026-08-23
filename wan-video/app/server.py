@@ -1441,6 +1441,10 @@ async def pack_prompt(pack_id: str, payload: dict = Body(default={})) -> JSONRes
         style=bool(payload.get("style")),
         artist_weight=_as_float(payload.get("artist_weight"), 1.0),
         likeness=_as_float(payload.get("likeness"), 0.0),
+        # `official art` is danbooru vocabulary, so it only belongs on a
+        # checkpoint trained on danbooru captions.
+        likeness_tags=(charpacks.LIKENESS_TAGS
+                       if (model and model.tag_style == "danbooru") else ""),
         quality_tags=(model.positive_prefix if model and model.id != pack.wants_model else ""),
     )
     if built is None:
