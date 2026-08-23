@@ -87,6 +87,37 @@ Claude Code 會呼叫 `codex` 工具、把結果拿回來。你不用記任何�
 
 ---
 
+## 「在這個對話裡直接裝」為什麼行不通
+
+你問能不能裝在這邊、直接用 `/codex`。我照做了一次並實測，結果是**兩個都卡住**，
+所以寫清楚免得你再試：
+
+```
+npm install -g @openai/codex     已經裝好      codex-cli 0.147.0
+claude mcp add codex -- ...      註冊成功      codex: codex mcp-server - ✓ Connected
+這個對話看得到那個工具嗎？        ✗ 看不到
+codex login status               ✗ Not logged in
+```
+
+**第一個卡點：MCP server 是「開對話時」載入的。** `claude --help` 裡
+`--mcp-config` 跟其他設定並列在啟動參數，**沒有任何 reload 指令**。
+所以我在對話中途註冊，這個正在跑的對話不會看到它 —— 我實測搜過工具清單，
+`mcp__codex__codex` 不存在。
+
+**第二個卡點：Codex 沒有登入。** 而登入要你的憑證，那個不能經過我。
+
+**第三個卡點（最關鍵）：這個容器是用完就丟的。** 就算開新對話，也是**新的容器**，
+上面沒有 codex。所以「裝在這邊」在這個雲端環境裡永遠不會留下來。
+
+### 那要怎麼「刷新」
+
+**沒有指令可以刷新，只能開新對話。** 你記得的 `bash /reload-skills` 那種東西
+在這個環境裡不存在（我找過 `/root/.claude` 和專案的 `.claude/`，沒有任何 reload 指令）。
+
+skills 跟 MCP server 都一樣：**在對話啟動時掃一次**，之後不再重掃。
+
+---
+
 ## 這在做什麼
 
 `codex mcp-server` 是 Codex CLI 內建的子命令（不是第三方套件），

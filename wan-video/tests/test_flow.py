@@ -4496,6 +4496,19 @@ def test_codex_setup_never_touches_the_key() -> None:
     check("不要，而且不需要" in text, "…which answers the API-key question first")
     check("用完就丟" in text, "…and is honest that this container cannot hold an install")
     check("沒驗過" in text, "…and separates what was verified from what was not")
+    # Measured, not assumed: registering an MCP server mid-session does not make
+    # it visible to the session that is already running, and this container is
+    # disposable so a fresh session would not have codex installed either.
+    check("沒有任何 reload 指令" in text,
+          "…and states there is no in-session reload, because there isn't one")
+    check("用完就丟" in text, "…and why installing it here cannot persist")
+    brief = ROOT / "docs" / "codex-review-brief.md"
+    check(brief.is_file(), "there is a self-contained brief a second model can check")
+    btext = brief.read_text(encoding="utf-8")
+    check("0.884" in btext and "12,544" in btext,
+          "…carrying the actual measurements, not just the conclusions")
+    check("弱點" in btext and "推論不是實測" in btext,
+          "…and naming the weak points itself rather than waiting to be caught")
     check("docs/codex-mcp.md" in (ROOT / "README.md").read_text(encoding="utf-8"),
           "…and the README points at it")
 
