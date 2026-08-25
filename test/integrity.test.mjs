@@ -320,3 +320,32 @@ test('[integrity] signal validation is honest about being untested', () => {
     assert.fail(`${g.id} claims ${g.status.signal_validation} — no backtest exists to support that`);
   }
 });
+
+test('[integrity] the summary verdict cannot disagree with the gauges underneath it',
+  { skip: !html }, () => {
+  // The three layer boxes carried a hardcoded colour and headline. When TGA flipped to
+  // yellow, the liquidity box went on saying 「平靜」in green — static prose asserting a
+  // state the data no longer supported, which is this file's oldest recurring bug.
+  const liquidityIds = ['fuel', 'sofr', 'tga', 'rrp', 'hyoas', 'nfci'];
+  const rank = { green: 0, yellow: 1, red: 2 };
+  const states = gauges.gauges.filter((g) => liquidityIds.includes(g.id) && g.henren?.status)
+    .map((g) => g.henren.status);
+  if (!states.length) return;
+  const worst = states.reduce((a, b) => (rank[b] > rank[a] ? b : a));
+  const box = html.slice(html.indexOf('流動性 · 管顛簸'));
+  const headline = box.slice(0, box.indexOf('</div>', box.indexOf('vstat')));
+  if (worst !== 'green') {
+    assert.ok(!headline.includes('var(--ok)'),
+      `a liquidity gauge is ${worst} but the summary box is still painted green`);
+  }
+});
+
+test('[integrity] an intraday price is never labelled as a close', { skip: !html }, () => {
+  // Runs during market hours printed 「收在」over a live quote. A price is a close or it
+  // is not, and the label has to follow the session rather than the habit.
+  if (gauges.market_session?.us_market !== 'OPEN') return;
+  const verdict = html.slice(html.indexOf('class="verdict"'), html.indexOf('Framework Triggers'));
+  assert.ok(!verdict.includes('標普收在'),
+    'the market is open, so the headline price is intraday and must not be called a close');
+  assert.ok(verdict.includes('標普現價'), 'an open session must say so');
+});

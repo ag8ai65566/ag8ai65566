@@ -130,3 +130,34 @@ test('[measurement] snapshot history is being written for behaviour diagnostics'
     }
   }
 });
+
+test('[measurement] a gauge about to go dark warns before it goes, not after', () => {
+  // When a reading ages past its SLA it becomes NO_DECISION and the red count drops by one.
+  // A falling red count looks exactly like a risk receding, and it is the opposite: the
+  // gauge went dark. So the warning has to exist while the number is still on the page.
+  for (const g of gauges.gauges) {
+    const c = g.sla_countdown;
+    if (!c) continue;
+    assert.ok(c.days_until_no_decision >= 0, `${g.id}: already expired but still counting down`);
+    assert.ok(c.days_until_no_decision < c.publication_period_days,
+      `${g.id}: warned with ${c.days_until_no_decision} days left against a `
+      + `${c.publication_period_days}-day cadence — the next release lands first, so there `
+      + 'is nothing to warn about');
+    assert.ok(c.tally_note.includes('不代表'),
+      `${g.id}: the countdown must say what the falling tally does NOT mean`);
+    assert.equal(g.decision === 'NO_DECISION', false,
+      `${g.id}: a countdown on an already-undecided gauge is noise`);
+  }
+});
+
+test('[measurement] the countdown fires on lateness that only a person can fix', () => {
+  // The first version warned on ten gauges, most of them daily FRED series three days from
+  // a five-day SLA — a state they are in every single run. A warning that is always on is
+  // wallpaper. The condition worth surfacing is that the reading expires BEFORE its source
+  // is next due to publish, which no amount of waiting resolves.
+  const warned = gauges.gauges.filter((g) => g.sla_countdown);
+  const daily = warned.filter((g) => g.sla_countdown.publication_period_days <= 1);
+  assert.equal(daily.length, 0,
+    `a daily series can always be refreshed tomorrow; warning about it is noise: `
+    + daily.map((g) => g.id).join(', '));
+});

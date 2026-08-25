@@ -28,6 +28,11 @@ const unbucketed = data.gauges.filter((g) =>
   !EVALUATED_DECISIONS.includes(g.decision) && g.decision !== 'NO_DECISION');
 const t = data.henren_rule_tally;
 const chg = data.changes_since_last_run;
+// Gauges that will expire out of rule evaluation before their source is next due to
+// publish. Worth its own banner: when one of these drops out, the red count falls, and a
+// falling red count is indistinguishable from a risk receding unless the page said so first.
+const goingDark = data.gauges.filter((g) => g.sla_countdown);
+
 const px = (sym) => snap?.rows?.find((r) => r.symbol === sym);
 
 const SEV = { green: 'var(--ok)', yellow: 'var(--warn)', red: 'var(--bad)' };
@@ -43,6 +48,31 @@ const AUTH_LABEL = {
 const AUTO_LABEL = {
   AUTOMATED: '自動', HYBRID: '混合', MANUAL_REVIEW_REQUIRED: '需人工', NOT_WIRED: '未接線',
 };
+
+// The three summary boxes used to carry a hardcoded colour and headline. That is the same
+// failure as every other one in this file's history: static prose asserting a state the
+// data no longer supports. When TGA flipped to yellow the liquidity box went on saying
+// 「平靜」in green, because nothing connected the sentence to the gauges underneath it.
+// The verdict is now the worst rule state among the layer's own gauges — still presentation
+// logic (a lookup, not a calculation), but it cannot disagree with the cards below.
+const RANK = { green: 0, yellow: 1, red: 2 };
+const layerVerdict = (ids) => {
+  const states = ids.map((id) => data.gauges.find((g) => g.id === id))
+    .filter((g) => g && g.henren?.status).map((g) => g.henren.status);
+  if (!states.length) return { sev: 'var(--off)', status: null, evaluated: 0 };
+  const worst = states.reduce((a, b) => (RANK[b] > RANK[a] ? b : a));
+  return { sev: SEV[worst], status: worst, evaluated: states.length,
+    counts: states.reduce((a, s) => { a[s] = (a[s] ?? 0) + 1; return a; }, {}) };
+};
+const LIQUIDITY_GAUGES = ['fuel', 'sofr', 'tga', 'rrp', 'hyoas', 'nfci'];
+const CROWDING_GAUGES = ['ai-basket-rel-vol', 'zero-dte', 'top10-weight', 'margin-debt', 'insider-ratio'];
+const liq = layerVerdict(LIQUIDITY_GAUGES);
+const crowd = layerVerdict(CROWDING_GAUGES);
+
+// The masthead said 「收在」 over an intraday print whenever the run happened during market
+// hours. A price is a close or it is not; the label has to follow the session, not the habit.
+const live = data.market_session?.us_market === 'OPEN';
+const priceVerb = live ? '現價' : '收在';
 
 const pct = (g) => {
   const p = g.empirical?.percentile_5y ?? g.empirical?.percentile_3y ?? g.empirical?.percentile_20y;
@@ -75,8 +105,11 @@ function card(g) {
     </span>
   </div>
 
-  <h3>${esc(g.label)}${g.proxy ? '<span class="tag">代理</span>' : ''}${g.henren?.threshold_is_ours ? '<span class="tag tag-ours">門檻非原話</span>' : ''}${superseded ? '<span class="tag tag-sup">讀數已被更新的一季超過</span>' : ''}</h3>
+  <h3>${esc(g.label)}${g.proxy ? '<span class="tag">代理</span>' : ''}${g.henren?.threshold_is_ours ? '<span class="tag tag-ours">門檻非原話</span>' : ''}${superseded ? '<span class="tag tag-sup">讀數已被更新的一季超過</span>' : ''}${g.sla_countdown ? `<span class="tag tag-dark">${g.sla_countdown.days_until_no_decision} 天後失效</span>` : ''}</h3>
   <p class="plain">${esc(g.plain)}</p>
+
+  ${g.sla_countdown ? `<p class="note going-dark"><b>⏳ 這一格快要看不到了：</b>${esc(g.sla_countdown.reading)}
+  ${esc(g.sla_countdown.tally_note)}</p>` : ''}
 
   ${g.freshness_layers ? `<div class="fresh fresh-${g.freshness_layers.state.toLowerCase()}">
     <div class="freshlab">資料新鮮度 · 三層</div>
@@ -165,7 +198,7 @@ const summary = `
     <div class="vbox">
       <div class="vlab">基本面 · 管方向</div>
       <div class="vstat" style="--sev:var(--ok)">沒有裂縫</div>
-      <p>標普收在 <b class="num">${px('^GSPC')?.close}</b>，${px('^GSPC')?.ddFromHigh === 0
+      <p>標普${priceVerb} <b class="num">${px('^GSPC')?.close}</b>，${px('^GSPC')?.ddFromHigh === 0
         ? `<b>就是 52 週最高點本身</b>（${esc(px('^GSPC')?.hi52Date)}）`
         : `距 52 週高點 <b class="num">${px('^GSPC')?.ddFromHigh}%</b>`}。
       等權重 RSP 年初至今 <b class="num">${px('RSP')?.ytd}%</b>、羅素 2000 <b class="num">${px('^RUT')?.ytd}%</b>，
@@ -174,7 +207,8 @@ const summary = `
     </div>
     <div class="vbox">
       <div class="vlab">流動性 · 管顛簸</div>
-      <div class="vstat" style="--sev:var(--ok)">平靜，但緩衝沒了</div>
+      <div class="vstat" style="--sev:${liq.sev}">${liq.status === 'green' ? '平靜，緩衝仍在'
+        : liq.status === 'yellow' ? '價格面平靜，緩衝已經沒了' : '價格面開始承認'}</div>
       <p>銀行準備金 <b class="num">${obs('fuel')?.value}</b> 兆（清倉線 2.5 兆）、隔夜拆款利差
       <b class="num">${obs('sofr')?.value}</b> bp、垃圾債利差 <b class="num">${obs('hyoas')?.value}%</b>（五年 P${pct(G('hyoas'))?.value}）、
       VIX <b class="num">${px('^VIX')?.close}</b>。<b>唯一缺口：逆回購緩衝只剩
@@ -182,7 +216,8 @@ const summary = `
     </div>
     <div class="vbox">
       <div class="vlab">擁擠 · 管斷裂</div>
-      <div class="vstat" style="--sev:var(--bad)">唯一紅燈</div>
+      <div class="vstat" style="--sev:${crowd.sev}">${crowd.status === 'red'
+        ? `${crowd.counts.red} 格觸發` : crowd.status === 'yellow' ? '接近門檻' : '未觸發'}</div>
       <p>大盤 21 日已實現波動 <b class="num">${px('^GSPC')?.rvol21}%</b>，但 AI 籃子中位數是它的
       <b class="num">${obs('ai-basket-rel-vol')?.value}</b> 倍，最高
       <b class="num">${obs('ai-basket-rel-vol')?.detail?.max}</b> 倍（SNDK）。
@@ -567,6 +602,20 @@ section[id]{scroll-margin-top:56px}
 font-size:12.5px;color:var(--ink-2);line-height:1.8}
 .chempty p{margin:0 0 8px}.chempty p:last-child{margin:0}
 
+/* Going dark. Deliberately above the fold: a gauge that expires takes a red light with it,
+   and the tally moving down reads as improvement unless this is said in advance. */
+.darkwarn{margin:0 0 22px;padding:14px 16px;background:#FBF6EC;border:1px solid var(--brass);
+border-left:4px solid var(--brass);border-radius:4px}
+.dwlab{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:7px}
+.darkwarn p{margin:0 0 9px;font-size:12.5px;line-height:1.8;color:var(--ink)}
+.dwlist{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.dwlist li{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:7px 10px;
+background:var(--panel);border:1px solid var(--rule-soft);border-radius:3px;font-size:12.5px}
+.dwdays{font-variant-numeric:tabular-nums;font-weight:700;color:var(--brass)}
+.dwwhy{color:var(--ink-3);font-size:11.5px}
+.tag-dark{background:#FBF6EC;border-color:var(--brass);color:var(--brass)}
+.note.going-dark{border-left-color:var(--brass);background:#FBF6EC}
+
 /* Three-layer freshness. Laid out as three columns because the whole point is the GAP
    between them — a single "as of" date cannot show that the pipeline is the slow part. */
 .fresh{margin:12px 0;padding:11px 13px;border:1px solid var(--rule);border-left:3px solid var(--ink-3);
@@ -639,7 +688,7 @@ color:var(--ink-2);font-size:12.5px}
   <dl class="session">
     <div><dt>產生時間</dt><dd class="num">${esc(data.generated_at_et)}</dd></div>
     <div><dt>美股狀態</dt><dd>${esc(data.market_session.us_market)}</dd></div>
-    <div><dt>最近收盤</dt><dd class="num">${esc(px('^GSPC')?.asOf ?? '—')}</dd></div>
+    <div><dt>${live ? '價格為' : '最近收盤'}</dt><dd class="num">${esc(px('^GSPC')?.asOf ?? '—')}${live ? ' 盤中' : ''}</dd></div>
     <div><dt>計算版本</dt><dd class="num">v${esc(data.calculation_version)} @ ${esc(data.code_commit)}</dd></div>
     <!-- This tested data.point_in_time for truthiness and printed 「是」, because the engine
          emits the STRING 'NOT_IMPLEMENTED' and every non-empty string is truthy. The page
@@ -656,6 +705,18 @@ color:var(--ink-2);font-size:12.5px}
   <a href="#triggers">規則已評估</a>${hold ? '<a href="#holdings">持股</a>' : ''}
   <a href="#nodecision">無可用讀數</a>${tests ? '<a href="#tests">測試在測什麼</a>' : ''}
 </nav>
+
+${goingDark.length ? `<section class="darkwarn">
+  <div class="dwlab">即將失效</div>
+  <p><b>${goingDark.length} 格讀數會在來源下一次發布之前先過期。</b>
+  它們過期之後就不再參與規則評估，計數會跟著少 —— <b>而計數變少不代表風險變小，
+  只代表那一格看不到了。</b>先在這裡講，是因為事後解釋「為什麼紅燈少了一個」永遠來不及。</p>
+  <ul class="dwlist">${goingDark.map((g) => `<li>
+    <b>${esc(g.label)}</b>
+    <span class="dwdays">${g.sla_countdown.days_until_no_decision} 天後失效</span>
+    <span class="dwwhy">目前判定 ${g.henren?.status ? RULE_LABEL[g.henren.status] : '不評估'}　·　
+    來源每 ${g.sla_countdown.publication_period_days} 天發布一次</span></li>`).join('')}</ul>
+</section>` : ''}
 
 ${summary}
 

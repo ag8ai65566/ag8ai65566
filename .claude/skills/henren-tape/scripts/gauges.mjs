@@ -152,6 +152,35 @@ const PERIOD_DAYS = { 'business daily': 1, weekly: 7, monthly: 30, quarterly: 91
  * Everything also reports publication_lag_ratio = age / publication period, which turns
  * "132 days" into "1.4 publication cycles" and makes lag interpretable rather than alarming.
  */
+/**
+ * How close is this reading to dropping out of rule evaluation?
+ *
+ * A gauge that ages past its SLA becomes NO_DECISION, and the red count falls by one. That
+ * looks identical to a risk receding, and it is the opposite: the gauge went dark. So the
+ * page has to warn BEFORE the number disappears rather than explain afterwards why the
+ * tally moved.
+ *
+ * The window is measured against the SOURCE'S OWN PUBLICATION CADENCE, not a fixed number
+ * of days. A daily series sitting three days from its limit is not in trouble — it will be
+ * refreshed tomorrow, and warning about it every single run is how a warning becomes
+ * wallpaper. The condition that actually matters is: **this reading will expire before its
+ * source is next due to publish**, which can only be fixed by someone intervening.
+ */
+function slaCountdown(age, limit, periodDays) {
+  const remaining = limit - age;
+  if (remaining < 0 || !Number.isFinite(periodDays)) return null;
+  if (remaining >= periodDays) return null;          // the next release lands first
+  return {
+    days_until_no_decision: remaining,
+    publication_period_days: periodDays,
+    reading: remaining === 0
+      ? '這是這個讀數參與規則評估的最後一天，而來源的下一次發布還沒到。'
+      : `再過 ${remaining} 天這個讀數就會過 SLA，而來源要 ${periodDays} 天才發布一次 —— `
+        + '也就是說它會在下一次更新之前先失效。',
+    tally_note: '屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。',
+  };
+}
+
 function dataState(series) {
   const end = effectiveEnd(series);
   const { acceptable_age_days: sla, expected_publication_latency_days: lat = 0 } = series.ds;
@@ -174,6 +203,8 @@ function dataState(series) {
       + (sessionAge !== null ? `（交易日計：${sessionAge} 個 session）` : ''),
   };
   const limit = sessionAge === null ? sla : Math.max(3, Math.round(sla * 5 / 7));
+  const countdown = slaCountdown(age, limit, period);
+  if (countdown) common.sla_countdown = countdown;
   if (age <= lat + (sessionAge === null ? 1 : 0)) return { data_state: 'CURRENT', ...common };
   if (age <= limit) return { data_state: 'LAGGED_BY_DESIGN', ...common };
   if (age <= limit * 2) return { data_state: 'OVERDUE', ...common };
@@ -246,7 +277,9 @@ function gauge(core, { prov, state, measurement = 'CHECKED', validation = 'UNTES
       automation_mode: automation,
     },
     age_days: state.age_days,
+    age_sessions: state.age_sessions,
     acceptable_age_days: state.acceptable_age_days,
+    ...(state.sla_countdown ? { sla_countdown: state.sla_countdown } : {}),
     decision: usable ? 'RULE_EVALUATED' : 'NO_DECISION',
     provenance: prov,
   };
@@ -727,6 +760,10 @@ try {
     const age = g.asOf ? dayDiff(g.asOf, RUN_AT) : null;
     const state = g.value === null ? 'MISSING' : age > sla * 2 ? 'STALE' : age > sla ? 'OVERDUE' : 'LAGGED_BY_DESIGN';
     const usable = ['LAGGED_BY_DESIGN'].includes(state);
+    // Manual gauges are the ones that actually go dark, because nobody re-enters them on a
+    // schedule. Their publication cadence comes from the registry contract.
+    const manualPeriod = PERIOD_DAYS[contract.expected_frequency] ?? 30;
+    const countdown = age === null ? null : slaCountdown(age, sla, manualPeriod);
     return {
       id: g.id, label: g.label, plain: g.plain,
       observed: { value: g.value, unit: g.unit, effective_date: g.asOf },
@@ -740,6 +777,7 @@ try {
         automation_mode: 'MANUAL_REVIEW_REQUIRED',
       },
       age_days: age, acceptable_age_days: sla,
+      ...(countdown ? { sla_countdown: countdown } : {}),
       decision: usable ? 'RULE_EVALUATED' : 'NO_DECISION',
       note: usable ? null : `${g.asOf} 的讀數已過 SLA（${age} 天 > ${sla} 天），不參與規則評估。`,
       provenance: { source_id: 'manual', source_authority: 'MANUAL_SECONDARY', dataset: g.dataset_id,

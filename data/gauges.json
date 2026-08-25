@@ -1,17 +1,17 @@
 {
   "schema_version": "3.0.0",
   "calculation_version": "4.0.0",
-  "code_commit": "b7c0279",
-  "generated_at": "2026-08-13T01:46:42.724Z",
-  "generated_at_et": "8/12/2026, 9:46:42 PM EDT",
+  "code_commit": "3a9b8e8",
+  "generated_at": "2026-08-25T15:55:49.701Z",
+  "generated_at_et": "8/25/2026, 11:55:49 AM EDT",
   "market_session": {
-    "us_market": "CLOSED",
+    "us_market": "OPEN",
     "timezone": "America/New_York"
   },
   "frame": "基本面管方向、流動性管顛簸、擁擠管斷裂",
   "henren_rule_tally": {
-    "green": 7,
-    "yellow": 1,
+    "green": 6,
+    "yellow": 2,
     "red": 5,
     "evaluated": 13,
     "evaluated_on_superseded_period": 0,
@@ -20,8 +20,8 @@
   },
   "status_summary": {
     "data_state": {
-      "LAGGED_BY_DESIGN": 9,
-      "CURRENT": 4,
+      "LAGGED_BY_DESIGN": 8,
+      "CURRENT": 5,
       "OVERDUE": 2,
       "STALE": 1
     },
@@ -78,88 +78,123 @@
   "as_of_query": "TESTED",
   "changes_since_last_run": {
     "available": true,
-    "prior_date": "2026-08-11",
+    "prior_date": "2026-08-13",
     "prior_calculation_version": "4.0.0",
-    "rule_changes": [],
+    "rule_changes": [
+      {
+        "id": "tga",
+        "label": "財政部 TGA 餘額",
+        "from": "green",
+        "to": "yellow"
+      }
+    ],
     "state_changes": [
       {
-        "id": "capex",
-        "label": "開關三 · 逃生鈴（雲廠商 capex 增速）",
-        "from": "INGESTION_OVERDUE",
+        "id": "sofr",
+        "label": "SOFR − IORB 利差",
+        "from": "LAGGED_BY_DESIGN",
+        "to": "CURRENT"
+      },
+      {
+        "id": "hyoas",
+        "label": "高收益債信用利差 (HY OAS)",
+        "from": "LAGGED_BY_DESIGN",
         "to": "CURRENT"
       },
       {
         "id": "nfci",
         "label": "金融條件指數 (NFCI)",
-        "from": "LAGGED_BY_DESIGN",
-        "to": "CURRENT"
+        "from": "CURRENT",
+        "to": "LAGGED_BY_DESIGN"
       }
     ],
     "moves": [
       {
-        "id": "ignition",
-        "label": "開關二 · 點火（期限結構代理）",
-        "from": 0.815,
-        "to": 0.785,
-        "delta": -0.03,
-        "unit": "VIX ÷ 3個月VIX",
-        "effective_from": "2026-08-10",
-        "effective_to": "2026-08-12",
+        "id": "fuel",
+        "label": "開關一 · 燃料（銀行準備金）",
+        "from": 2.993,
+        "to": 2.935,
+        "delta": -0.06,
+        "unit": "兆美元",
+        "effective_from": "2026-08-05",
+        "effective_to": "2026-08-19",
         "source_updated": true
       },
       {
-        "id": "capex",
-        "label": "開關三 · 逃生鈴（雲廠商 capex 增速）",
-        "from": 9.37,
-        "to": 27.21,
-        "delta": 17.84,
-        "unit": "% 環比",
-        "effective_from": "2026-03-31",
-        "effective_to": "2026-06-30",
+        "id": "ignition",
+        "label": "開關二 · 點火（期限結構代理）",
+        "from": 0.785,
+        "to": 0.854,
+        "delta": 0.07,
+        "unit": "VIX ÷ 3個月VIX",
+        "effective_from": "2026-08-12",
+        "effective_to": "2026-08-24",
         "source_updated": true
       },
       {
         "id": "sofr",
         "label": "SOFR − IORB 利差",
-        "from": -3,
-        "to": -1,
-        "delta": 2,
+        "from": -1,
+        "to": 0,
+        "delta": 1,
         "unit": "基點",
-        "effective_from": "2026-08-07",
-        "effective_to": "2026-08-11",
+        "effective_from": "2026-08-11",
+        "effective_to": "2026-08-24",
+        "source_updated": true
+      },
+      {
+        "id": "tga",
+        "label": "財政部 TGA 餘額",
+        "from": 907.3,
+        "to": 953.6,
+        "delta": 46.3,
+        "unit": "十億美元",
+        "effective_from": "2026-08-05",
+        "effective_to": "2026-08-19",
         "source_updated": true
       },
       {
         "id": "rrp",
         "label": "隔夜逆回購緩衝",
-        "from": 0.97,
-        "to": 0.72,
-        "delta": -0.25,
+        "from": 0.72,
+        "to": 0.38,
+        "delta": -0.34,
         "unit": "十億美元",
-        "effective_from": "2026-08-10",
-        "effective_to": "2026-08-12",
+        "effective_from": "2026-08-12",
+        "effective_to": "2026-08-24",
         "source_updated": true
       },
       {
         "id": "hyoas",
         "label": "高收益債信用利差 (HY OAS)",
-        "from": 2.7,
-        "to": 2.72,
-        "delta": 0.02,
+        "from": 2.72,
+        "to": 2.69,
+        "delta": -0.03,
         "unit": "%",
-        "effective_from": "2026-08-07",
-        "effective_to": "2026-08-11",
+        "effective_from": "2026-08-11",
+        "effective_to": "2026-08-24",
         "source_updated": true
       },
       {
         "id": "nfci",
         "label": "金融條件指數 (NFCI)",
-        "from": -0.529,
-        "to": -0.549,
-        "delta": -0.02,
+        "from": -0.549,
+        "to": -0.559,
+        "delta": -0.01,
         "unit": "標準差",
-        "effective_from": "2026-07-31",
-        "effective_to": "2026-08-07",
+        "effective_from": "2026-08-07",
+        "effective_to": "2026-08-14",
+        "source_updated": true
+      },
+      {
+        "id": "ai-basket-rel-vol",
+        "label": "AI 籃子相對波動（中位數）",
+        "from": 5.9,
+        "to": 6,
+        "delta": 0.1,
+        "unit": "倍",
+        "effective_from": "2026-08-12",
+        "effective_to": "2026-08-25",
         "source_updated": true
       }
     ],
@@ -172,33 +207,33 @@
       "label": "開關一 · 燃料（銀行準備金）",
       "plain": "銀行放在聯準會的閒錢。這桶油夠不夠，決定行情還能不能燒。",
       "observed": {
-        "value": 2.993,
+        "value": 2.935,
         "unit": "兆美元",
-        "effective_date": "2026-08-05",
-        "display_value": 2.99,
-        "exact_value": 2.993,
+        "effective_date": "2026-08-19",
+        "display_value": 2.94,
+        "exact_value": 2.935,
         "display_rounded": true
       },
       "empirical": {
         "level_percentile_5y": {
           "ok": true,
-          "value": 10,
+          "value": 5,
           "window_years": 5,
-          "n": 260,
-          "display_value": 10,
-          "exact_value": 10
+          "n": 261,
+          "display_value": 5,
+          "exact_value": 5
         },
-        "change_4w_pct": -3.41,
-        "change_13w_pct": -1.29,
+        "change_4w_pct": -4.14,
+        "change_13w_pct": -6.21,
         "change_4w_percentile_5y": {
           "ok": true,
-          "value": 21.9,
+          "value": 18,
           "window_years": 5,
-          "n": 260,
-          "display_value": 22,
-          "exact_value": 21.9
+          "n": 261,
+          "display_value": 18,
+          "exact_value": 18
         },
-        "reading": "四週變化 -3.41%，落在五年分布的 p21.9，不構成快速流失"
+        "reading": "四週變化 -4.14%，落在五年分布的 p18，不構成快速流失"
       },
       "henren": {
         "status": "green",
@@ -217,19 +252,20 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
-      "age_days": 8,
+      "age_days": 7,
+      "age_sessions": null,
       "acceptable_age_days": 14,
       "decision": "RULE_EVALUATED",
       "provenance": {
         "source_id": "fred",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "WRESBAL",
-        "effective_date": "2026-08-05",
-        "retrieved_at": "2026-08-13T01:46:43.734Z",
-        "raw_hash": "d9b10afc92dbdbaa",
+        "effective_date": "2026-08-19",
+        "retrieved_at": "2026-08-25T15:55:49.934Z",
+        "raw_hash": "b10e207ffbe19ae5",
         "transformation": "level in USD trillions; 4/13-week change; percentile vs 5y",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "ABSENT",
         "as_of_query": "NOT_TESTED"
       }
@@ -240,25 +276,25 @@
       "label": "開關二 · 點火（期限結構代理）",
       "plain": "市場覺得「現在」比「三個月後」更可怕嗎？怕近的＝恐慌還在；怕遠的＝恐慌已經退了。",
       "observed": {
-        "value": 0.785,
+        "value": 0.854,
         "unit": "VIX ÷ 3個月VIX",
-        "effective_date": "2026-08-12",
+        "effective_date": "2026-08-24",
         "detail": {
-          "vix": 14.55,
-          "vix_3m": 18.53
+          "vix": 15.85,
+          "vix_3m": 18.56
         },
-        "display_value": 0.79,
-        "exact_value": 0.785,
+        "display_value": 0.85,
+        "exact_value": 0.854,
         "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
-          "value": 1.7,
+          "value": 28.5,
           "window_years": 5,
           "n": 1254,
-          "display_value": 2,
-          "exact_value": 1.7
+          "display_value": 29,
+          "exact_value": 28.5
         },
         "reading": "遠月波動率高於近月（Contango）＝ 市場沒有在為「馬上出事」定價"
       },
@@ -281,19 +317,20 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
-      "age_days": 1,
+      "age_days": 2,
+      "age_sessions": 1,
       "acceptable_age_days": 5,
       "decision": "RULE_EVALUATED",
       "provenance": {
         "source_id": "cboe",
         "source_authority": "OFFICIAL_PRIMARY",
         "dataset": "CBOE_VIX",
-        "effective_date": "2026-08-12",
-        "retrieved_at": "2026-08-13T01:46:44.281Z",
-        "raw_hash": "fad8a552c728bf1a",
+        "effective_date": "2026-08-24",
+        "retrieved_at": "2026-08-25T15:55:50.320Z",
+        "raw_hash": "c8534f6e3362140d",
         "transformation": "Cboe VIX / VIX3M closes on a common session; percentile vs 5y",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "PRESENT",
         "as_of_query": "NOT_TESTED"
       }
@@ -446,7 +483,7 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "HYBRID"
       },
-      "age_days": 13,
+      "age_days": 26,
       "acceptable_age_days": 135,
       "decision": "RULE_EVALUATED",
       "provenance": {
@@ -454,11 +491,11 @@
         "source_authority": "OFFICIAL_PRIMARY",
         "dataset": "SEC_CAPEX",
         "effective_date": "2026-06-30",
-        "retrieved_at": "2026-08-13T01:46:44.756Z",
+        "retrieved_at": "2026-08-25T15:55:50.515Z",
         "raw_hash": "MSFT:2a3f142c858f766d GOOGL:0936f4aeed7e9d49 AMZN:dd90f2b11e3f1363 META:ee842c677e662488",
         "transformation": "YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; QoQ (rule) and YoY (context)",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "PRESENT",
         "as_of_query": "NOT_TESTED",
         "information_available_at": "2026-07-31"
@@ -532,25 +569,25 @@
       "label": "SOFR − IORB 利差",
       "plain": "銀行之間借隔夜錢，要不要付比聯準會利率更高的價？要付，就代表錢在變緊。",
       "observed": {
-        "value": -1,
+        "value": 0,
         "unit": "基點",
-        "effective_date": "2026-08-11",
+        "effective_date": "2026-08-24",
         "detail": {
-          "sofr": 3.64,
+          "sofr": 3.65,
           "iorb": 3.65
         },
-        "display_value": -1,
-        "exact_value": -1,
+        "display_value": 0,
+        "exact_value": 0,
         "display_rounded": false
       },
       "empirical": {
         "percentile_3y": {
           "ok": true,
-          "value": 77.5,
+          "value": 79.8,
           "window_years": 3,
           "n": 782,
-          "display_value": 78,
-          "exact_value": 77.5
+          "display_value": 80,
+          "exact_value": 79.8
         },
         "note": "IORB 序列自 2021-07 起，分位數樣本有限。"
       },
@@ -564,25 +601,26 @@
         "quote": "SOFR-IRB 這個大家一定要每天都看，黃色預警是利差衝過三個基點，因為這是一個 95 分位的程度。"
       },
       "status": {
-        "data_state": "LAGGED_BY_DESIGN",
+        "data_state": "CURRENT",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "measurement_integrity": "CHECKED",
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
       "age_days": 2,
+      "age_sessions": 1,
       "acceptable_age_days": 5,
       "decision": "RULE_EVALUATED",
       "provenance": {
         "source_id": "fred",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "SOFR",
-        "effective_date": "2026-08-11",
-        "retrieved_at": "2026-08-13T01:46:45.651Z",
-        "raw_hash": "e6b62e9bb21551ba",
+        "effective_date": "2026-08-24",
+        "retrieved_at": "2026-08-25T15:55:51.179Z",
+        "raw_hash": "f91acd4dc53ee894",
         "transformation": "SOFR minus IORB in bp on a common effective date; percentile vs 3y",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "ABSENT",
         "as_of_query": "NOT_TESTED"
       }
@@ -592,25 +630,25 @@
       "label": "財政部 TGA 餘額",
       "plain": "財政部的活存帳戶。它變胖是把市場上的錢吸走，變瘦是把錢放回市場。",
       "observed": {
-        "value": 907.3,
+        "value": 953.6,
         "unit": "十億美元",
-        "effective_date": "2026-08-05",
-        "display_value": 907,
-        "exact_value": 907.3,
+        "effective_date": "2026-08-19",
+        "display_value": 954,
+        "exact_value": 953.6,
         "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
-          "value": 92.3,
+          "value": 97.7,
           "window_years": 5,
-          "n": 260,
-          "display_value": 92,
-          "exact_value": 92.3
+          "n": 261,
+          "display_value": 98,
+          "exact_value": 97.7
         }
       },
       "henren": {
-        "status": "green",
+        "status": "yellow",
         "thresholds": {
           "green": "< 9,500 億",
           "yellow": "9,500 億–1 兆",
@@ -625,19 +663,20 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
-      "age_days": 8,
+      "age_days": 7,
+      "age_sessions": null,
       "acceptable_age_days": 14,
       "decision": "RULE_EVALUATED",
       "provenance": {
         "source_id": "fred",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "WTREGEN",
-        "effective_date": "2026-08-05",
-        "retrieved_at": "2026-08-13T01:46:45.819Z",
-        "raw_hash": "e27d88daab056cb6",
+        "effective_date": "2026-08-19",
+        "retrieved_at": "2026-08-25T15:55:51.310Z",
+        "raw_hash": "673329e7e2acf713",
         "transformation": "level in USD bn; percentile vs 5y",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "ABSENT",
         "as_of_query": "NOT_TESTED"
       }
@@ -647,21 +686,21 @@
       "label": "隔夜逆回購緩衝",
       "plain": "市場多餘現金的緩衝墊。墊子還厚，抽錢先抽它；墊子見底，就直接抽銀行準備金。",
       "observed": {
-        "value": 0.72,
+        "value": 0.38,
         "unit": "十億美元",
-        "effective_date": "2026-08-12",
-        "display_value": 0.7,
-        "exact_value": 0.72,
+        "effective_date": "2026-08-24",
+        "display_value": 0.4,
+        "exact_value": 0.38,
         "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
-          "value": 8.1,
+          "value": 6.7,
           "window_years": 5,
           "n": 1304,
-          "display_value": 8,
-          "exact_value": 8.1
+          "display_value": 7,
+          "exact_value": 6.7
         },
         "reading": "緩衝實質見底 —— 財政部再抽錢會直接打到銀行準備金。"
       },
@@ -681,19 +720,20 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
-      "age_days": 1,
+      "age_days": 2,
+      "age_sessions": 1,
       "acceptable_age_days": 5,
       "decision": "RULE_EVALUATED",
       "provenance": {
         "source_id": "fred",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "RRPONTSYD",
-        "effective_date": "2026-08-12",
-        "retrieved_at": "2026-08-13T01:46:45.908Z",
-        "raw_hash": "081bda1516a9858d",
+        "effective_date": "2026-08-24",
+        "retrieved_at": "2026-08-25T15:55:51.413Z",
+        "raw_hash": "3051b6c9a95be6f2",
         "transformation": "level in USD bn; percentile vs 5y",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "ABSENT",
         "as_of_query": "NOT_TESTED"
       }
@@ -703,29 +743,29 @@
       "label": "高收益債信用利差 (HY OAS)",
       "plain": "借錢給體質最差的公司，投資人要多收多少利息當風險費。這個數字跳起來＝信用真的出事。",
       "observed": {
-        "value": 2.72,
+        "value": 2.69,
         "unit": "%",
-        "effective_date": "2026-08-11",
+        "effective_date": "2026-08-24",
         "display_value": 2.7,
-        "exact_value": 2.72,
+        "exact_value": 2.69,
         "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
-          "value": 11.5,
+          "value": 7.8,
           "window_years": 5,
-          "n": 794,
-          "display_value": 12,
-          "exact_value": 11.5
+          "n": 793,
+          "display_value": 8,
+          "exact_value": 7.8
         },
         "percentile_20y": {
           "ok": true,
-          "value": 11.5,
+          "value": 7.8,
           "window_years": 20,
-          "n": 794,
-          "display_value": 12,
-          "exact_value": 11.5
+          "n": 793,
+          "display_value": 8,
+          "exact_value": 7.8
         }
       },
       "henren": {
@@ -739,25 +779,26 @@
         "threshold_is_ours": true
       },
       "status": {
-        "data_state": "LAGGED_BY_DESIGN",
+        "data_state": "CURRENT",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "measurement_integrity": "CHECKED",
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
       "age_days": 2,
+      "age_sessions": 1,
       "acceptable_age_days": 5,
       "decision": "RULE_EVALUATED",
       "provenance": {
         "source_id": "fred",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "BAMLH0A0HYM2",
-        "effective_date": "2026-08-11",
-        "retrieved_at": "2026-08-13T01:46:45.967Z",
-        "raw_hash": "cc1b8edd00c1d95f",
+        "effective_date": "2026-08-24",
+        "retrieved_at": "2026-08-25T15:55:51.445Z",
+        "raw_hash": "40e1540215acd930",
         "transformation": "OAS in percent; percentile vs 5y and 20y",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "ABSENT",
         "as_of_query": "NOT_TESTED"
       }
@@ -767,21 +808,21 @@
       "label": "金融條件指數 (NFCI)",
       "plain": "整體金融環境是鬆還是緊的總分。負的＝比平均寬鬆，正的＝比平均緊。",
       "observed": {
-        "value": -0.549,
+        "value": -0.559,
         "unit": "標準差",
-        "effective_date": "2026-08-07",
-        "display_value": -0.55,
-        "exact_value": -0.549,
+        "effective_date": "2026-08-14",
+        "display_value": -0.56,
+        "exact_value": -0.559,
         "display_rounded": true
       },
       "empirical": {
         "percentile_5y": {
           "ok": true,
-          "value": 10.3,
+          "value": 7.3,
           "window_years": 5,
-          "n": 261,
-          "display_value": 10,
-          "exact_value": 10.3
+          "n": 260,
+          "display_value": 7,
+          "exact_value": 7.3
         }
       },
       "henren": {
@@ -795,25 +836,26 @@
         "threshold_is_ours": true
       },
       "status": {
-        "data_state": "CURRENT",
+        "data_state": "LAGGED_BY_DESIGN",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "measurement_integrity": "CHECKED",
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
-      "age_days": 6,
+      "age_days": 12,
+      "age_sessions": null,
       "acceptable_age_days": 21,
       "decision": "RULE_EVALUATED",
       "provenance": {
         "source_id": "fred",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "NFCI",
-        "effective_date": "2026-08-07",
-        "retrieved_at": "2026-08-13T01:46:46.023Z",
-        "raw_hash": "e3a649d848c1b42d",
+        "effective_date": "2026-08-14",
+        "retrieved_at": "2026-08-25T15:55:51.482Z",
+        "raw_hash": "95c472d2723beff4",
         "transformation": "index level; percentile vs 5y",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "ABSENT",
         "as_of_query": "NOT_TESTED"
       }
@@ -865,19 +907,26 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
-      "age_days": 44,
+      "age_days": 57,
+      "age_sessions": null,
       "acceptable_age_days": 75,
+      "sla_countdown": {
+        "days_until_no_decision": 18,
+        "publication_period_days": 30,
+        "reading": "再過 18 天這個讀數就會過 SLA，而來源要 30 天才發布一次 —— 也就是說它會在下一次更新之前先失效。",
+        "tally_note": "屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。"
+      },
       "decision": "RULE_EVALUATED",
       "provenance": {
         "source_id": "fred",
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "M2SL",
         "effective_date": "2026-06-01",
-        "retrieved_at": "2026-08-13T01:46:46.078Z",
+        "retrieved_at": "2026-08-25T15:55:51.549Z",
         "raw_hash": "706397d1a68380f9",
         "transformation": "calendar-aware YoY on both legs at a common anchor",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "ABSENT",
         "as_of_query": "NOT_TESTED"
       }
@@ -910,7 +959,7 @@
           "display_value": 95,
           "exact_value": 94.9
         },
-        "reading": "兩邊都對齊在 2026-01-01 起始的那一季（截至 2026-03-31）。此讀數描述的是那一季，距季末約 135 天。Z.1 與 GDP 都是季度資料且發布本身就落後，這是設計上的落後不是失效。"
+        "reading": "兩邊都對齊在 2026-01-01 起始的那一季（截至 2026-03-31）。此讀數描述的是那一季，距季末約 148 天。Z.1 與 GDP 都是季度資料且發布本身就落後，這是設計上的落後不是失效。"
       },
       "henren": {
         "status": "red",
@@ -929,7 +978,7 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "AUTOMATED"
       },
-      "age_days": 135,
+      "age_days": 148,
       "acceptable_age_days": 180,
       "decision": "RULE_EVALUATED",
       "provenance": {
@@ -937,11 +986,11 @@
         "source_authority": "OFFICIAL_AGGREGATOR",
         "dataset": "NCBEILQ027S",
         "effective_date": "2026-01-01",
-        "retrieved_at": "2026-08-13T01:46:46.605Z",
+        "retrieved_at": "2026-08-25T15:55:51.739Z",
         "raw_hash": "fdbcd4072303d19b",
         "transformation": "Z.1 corporate equities / GDP, joined on a common quarter",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "ABSENT",
         "as_of_query": "NOT_TESTED",
         "period_end": "2026-03-31"
@@ -952,71 +1001,71 @@
       "label": "AI 籃子相對波動（中位數）",
       "plain": "這幾檔 AI 股最近上下跳的幅度，是大盤的幾倍。倍數越大，代表風險越集中在少數股票、不在指數。",
       "observed": {
-        "value": 5.9,
+        "value": 6,
         "unit": "倍",
-        "effective_date": "2026-08-12",
+        "effective_date": "2026-08-25",
         "detail": {
-          "spx_rvol21": 13.7,
-          "max": 11.1,
-          "min": 2.9,
+          "spx_rvol21": 12.93,
+          "max": 10.8,
+          "min": 2.6,
           "basket": [
             {
               "symbol": "MU",
-              "rvol21": 106.86,
-              "x_index": 7.8,
-              "last": 911.29,
-              "as_of": "2026-08-12"
+              "rvol21": 96.96,
+              "x_index": 7.5,
+              "last": 925.13,
+              "as_of": "2026-08-25"
             },
             {
               "symbol": "SNDK",
-              "rvol21": 151.49,
-              "x_index": 11.1,
-              "last": 1344.29,
-              "as_of": "2026-08-12"
+              "rvol21": 140.14,
+              "x_index": 10.8,
+              "last": 1502.92,
+              "as_of": "2026-08-25"
             },
             {
               "symbol": "PLTR",
-              "rvol21": 106.02,
-              "x_index": 7.7,
-              "last": 171.04,
-              "as_of": "2026-08-12"
+              "rvol21": 102.77,
+              "x_index": 7.9,
+              "last": 175.1,
+              "as_of": "2026-08-25"
             },
             {
               "symbol": "AMD",
-              "rvol21": 81.1,
-              "x_index": 5.9,
-              "last": 482.93,
-              "as_of": "2026-08-12"
+              "rvol21": 78.01,
+              "x_index": 6,
+              "last": 476.71,
+              "as_of": "2026-08-25"
             },
             {
               "symbol": "NVDA",
-              "rvol21": 39.68,
-              "x_index": 2.9,
-              "last": 224.09,
-              "as_of": "2026-08-12"
+              "rvol21": 34.19,
+              "x_index": 2.6,
+              "last": 211.21,
+              "as_of": "2026-08-25"
             },
             {
               "symbol": "AVGO",
-              "rvol21": 40.45,
-              "x_index": 3,
-              "last": 416.05,
-              "as_of": "2026-08-12"
+              "rvol21": 44.33,
+              "x_index": 3.4,
+              "last": 360.54,
+              "as_of": "2026-08-25"
             },
             {
               "symbol": "SMH",
-              "rvol21": 48.21,
-              "x_index": 3.5,
-              "last": 584.83,
-              "as_of": "2026-08-12"
+              "rvol21": 44.23,
+              "x_index": 3.4,
+              "last": 554.09,
+              "as_of": "2026-08-25"
             }
           ]
         },
-        "display_value": 5.9,
-        "exact_value": 5.9,
+        "display_value": 6,
+        "exact_value": 6,
         "display_rounded": false
       },
       "empirical": {
-        "reading": "大盤 21 日已實現波動 13.7%，籃子中位數是它的 5.9 倍。"
+        "reading": "大盤 21 日已實現波動 12.93%，籃子中位數是它的 6 倍。"
       },
       "henren": {
         "status": "red",
@@ -1038,18 +1087,19 @@
         "automation_mode": "AUTOMATED"
       },
       "age_days": 1,
+      "age_sessions": 0,
       "acceptable_age_days": 5,
       "decision": "RULE_EVALUATED",
       "provenance": {
         "source_id": "yahoo",
         "source_authority": "UNOFFICIAL_FREE",
         "dataset": "EQUITY_DAILY:^GSPC",
-        "effective_date": "2026-08-12",
-        "retrieved_at": "2026-08-13T01:46:46.719Z",
-        "raw_hash": "f2deb87fecec61ac",
+        "effective_date": "2026-08-25",
+        "retrieved_at": "2026-08-25T15:55:51.876Z",
+        "raw_hash": "30880783471ff4da",
         "transformation": "21-day annualised realised vol vs ^GSPC; median across a fixed basket",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_metadata": "ABSENT",
         "as_of_query": "NOT_TESTED"
       }
@@ -1082,10 +1132,10 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "MANUAL_REVIEW_REQUIRED"
       },
-      "age_days": 74,
+      "age_days": 87,
       "acceptable_age_days": 60,
       "decision": "NO_DECISION",
-      "note": "2026-05-31 的讀數已過 SLA（74 天 > 60 天），不參與規則評估。",
+      "note": "2026-05-31 的讀數已過 SLA（87 天 > 60 天），不參與規則評估。",
       "provenance": {
         "source_id": "manual",
         "source_authority": "MANUAL_SECONDARY",
@@ -1095,7 +1145,7 @@
         "raw_hash": null,
         "transformation": "hand-entered from FINRA Margin Statistics（每月中旬公布上月數據）",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_capable": false
       }
     },
@@ -1127,8 +1177,14 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "MANUAL_REVIEW_REQUIRED"
       },
-      "age_days": 44,
+      "age_days": 57,
       "acceptable_age_days": 60,
+      "sla_countdown": {
+        "days_until_no_decision": 3,
+        "publication_period_days": 30,
+        "reading": "再過 3 天這個讀數就會過 SLA，而來源要 30 天才發布一次 —— 也就是說它會在下一次更新之前先失效。",
+        "tally_note": "屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。"
+      },
       "decision": "RULE_EVALUATED",
       "note": null,
       "provenance": {
@@ -1140,7 +1196,7 @@
         "raw_hash": null,
         "transformation": "hand-entered from Cboe 官方統計 / 券商研究",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_capable": false
       }
     },
@@ -1172,8 +1228,14 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "MANUAL_REVIEW_REQUIRED"
       },
-      "age_days": 44,
+      "age_days": 57,
       "acceptable_age_days": 60,
+      "sla_countdown": {
+        "days_until_no_decision": 3,
+        "publication_period_days": 30,
+        "reading": "再過 3 天這個讀數就會過 SLA，而來源要 30 天才發布一次 —— 也就是說它會在下一次更新之前先失效。",
+        "tally_note": "屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。"
+      },
       "decision": "RULE_EVALUATED",
       "note": null,
       "provenance": {
@@ -1185,7 +1247,7 @@
         "raw_hash": null,
         "transformation": "hand-entered from S&P Dow Jones Indices 月報 / SPY 持股揭露",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_capable": false
       }
     },
@@ -1216,10 +1278,10 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "MANUAL_REVIEW_REQUIRED"
       },
-      "age_days": 74,
+      "age_days": 87,
       "acceptable_age_days": 60,
       "decision": "NO_DECISION",
-      "note": "2026-05-31 的讀數已過 SLA（74 天 > 60 天），不參與規則評估。",
+      "note": "2026-05-31 的讀數已過 SLA（87 天 > 60 天），不參與規則評估。",
       "provenance": {
         "source_id": "manual",
         "source_authority": "MANUAL_SECONDARY",
@@ -1229,7 +1291,7 @@
         "raw_hash": null,
         "transformation": "hand-entered from SEC Form 4 彙總（InsiderScore / Washington Service 等）",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_capable": false
       }
     },
@@ -1260,10 +1322,10 @@
         "signal_validation": "UNTESTED",
         "automation_mode": "MANUAL_REVIEW_REQUIRED"
       },
-      "age_days": 73,
+      "age_days": 86,
       "acceptable_age_days": 30,
       "decision": "NO_DECISION",
-      "note": "2026-06-01 的讀數已過 SLA（73 天 > 30 天），不參與規則評估。",
+      "note": "2026-06-01 的讀數已過 SLA（86 天 > 30 天），不參與規則評估。",
       "provenance": {
         "source_id": "manual",
         "source_authority": "MANUAL_SECONDARY",
@@ -1273,7 +1335,7 @@
         "raw_hash": null,
         "transformation": "hand-entered from FactSet / Bloomberg / Nasdaq 官方",
         "calculation_version": "4.0.0",
-        "code_commit": "b7c0279",
+        "code_commit": "3a9b8e8",
         "point_in_time_capable": false
       }
     }

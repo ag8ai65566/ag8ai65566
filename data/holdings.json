@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-13T01:46:47.787Z",
-  "generated_at_et": "8/12/2026, 9:46:47 PM EDT",
-  "code_commit": "b7c0279",
+  "generated_at": "2026-08-25T15:55:52.904Z",
+  "generated_at_et": "8/25/2026, 11:55:52 AM EDT",
+  "code_commit": "3a9b8e8",
   "lens_status": {
     "serenity-method": "EXECUTED",
     "serenity-bottleneck-hunter": "NOT_EXECUTED",
@@ -19,11 +19,11 @@
         "MU",
         "SNDK"
       ],
-      "value": 0.766,
+      "value": 0.772,
       "n_days": 259
     },
     "reading": "全部 2 檔都在「Semiconductors」（細分為 Memory — DRAM/HBM、Memory — NAND，但那是同一個因子），這是一個因子，不是一個組合。",
-    "correlation_reading": "MU 與 SNDK 的日報酬相關係數 0.766（259 個交易日）。價格證實它們是同一筆交易，標籤上的細分沒有帶來分散。",
+    "correlation_reading": "MU 與 SNDK 的日報酬相關係數 0.772（259 個交易日）。價格證實它們是同一筆交易，標籤上的細分沒有帶來分散。",
     "note": "本系統不做部位建議，也不知道你的部位大小。這裡只陳述暴露事實。"
   },
   "holdings": [
@@ -140,7 +140,7 @@
         "equity_bn": 100.72,
         "assets_bn": 134.11
       },
-      "fundamentals_age_days": 49,
+      "fundamentals_age_days": 62,
       "serenity_gate": {
         "profitability": {
           "value": "SUPPORTED",
@@ -201,18 +201,18 @@
         }
       },
       "price": {
-        "as_of": "2026-08-12",
-        "close": 911.29,
-        "from_2y_high_pct": -24.91,
+        "as_of": "2026-08-25",
+        "close": 925.38,
+        "from_2y_high_pct": -23.75,
         "high_2y": 1213.56,
         "high_2y_date": "2026-06-25",
-        "vs_50dma_pct": -5.58,
-        "vs_200dma_pct": 67.15,
-        "m1_pct": -7.31,
-        "m3_pct": 18.88,
-        "rvol21_pct": 106.86
+        "vs_50dma_pct": -3.78,
+        "vs_200dma_pct": 60.1,
+        "m1_pct": 2.8,
+        "m3_pct": 3.29,
+        "rvol21_pct": 96.97
       },
-      "price_raw_hash": "f32226c6ebb1e406"
+      "price_raw_hash": "8f8041b731fe93ed"
     },
     {
       "ticker": "SNDK",
@@ -333,7 +333,7 @@
         "equity_bn": 57.61,
         "assets_bn": 175.88
       },
-      "fundamentals_age_days": 7,
+      "fundamentals_age_days": 20,
       "serenity_gate": {
         "profitability": {
           "value": "SUPPORTED",
@@ -395,18 +395,18 @@
         }
       },
       "price": {
-        "as_of": "2026-08-12",
-        "close": 1344.29,
-        "from_2y_high_pct": -42.43,
+        "as_of": "2026-08-25",
+        "close": 1503.57,
+        "from_2y_high_pct": -35.61,
         "high_2y": 2335,
         "high_2y_date": "2026-06-25",
-        "vs_50dma_pct": -19.17,
-        "vs_200dma_pct": 51.18,
-        "m1_pct": -23.53,
-        "m3_pct": -7.42,
-        "rvol21_pct": 151.49
+        "vs_50dma_pct": -8.14,
+        "vs_200dma_pct": 57.91,
+        "m1_pct": 17.63,
+        "m3_pct": -5.41,
+        "rvol21_pct": 140.14
       },
-      "price_raw_hash": "fc4f090616270b0e"
+      "price_raw_hash": "e308dcab34527442"
     }
   ]
 }

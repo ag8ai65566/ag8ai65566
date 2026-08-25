@@ -186,6 +186,20 @@ section[id]{scroll-margin-top:56px}
 font-size:12.5px;color:var(--ink-2);line-height:1.8}
 .chempty p{margin:0 0 8px}.chempty p:last-child{margin:0}
 
+/* Going dark. Deliberately above the fold: a gauge that expires takes a red light with it,
+   and the tally moving down reads as improvement unless this is said in advance. */
+.darkwarn{margin:0 0 22px;padding:14px 16px;background:#FBF6EC;border:1px solid var(--brass);
+border-left:4px solid var(--brass);border-radius:4px}
+.dwlab{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:7px}
+.darkwarn p{margin:0 0 9px;font-size:12.5px;line-height:1.8;color:var(--ink)}
+.dwlist{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.dwlist li{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:7px 10px;
+background:var(--panel);border:1px solid var(--rule-soft);border-radius:3px;font-size:12.5px}
+.dwdays{font-variant-numeric:tabular-nums;font-weight:700;color:var(--brass)}
+.dwwhy{color:var(--ink-3);font-size:11.5px}
+.tag-dark{background:#FBF6EC;border-color:var(--brass);color:var(--brass)}
+.note.going-dark{border-left-color:var(--brass);background:#FBF6EC}
+
 /* Three-layer freshness. Laid out as three columns because the whole point is the GAP
    between them — a single "as of" date cannot show that the pipeline is the slow part. */
 .fresh{margin:12px 0;padding:11px 13px;border:1px solid var(--rule);border-left:3px solid var(--ink-3);
@@ -256,10 +270,10 @@ color:var(--ink-2);font-size:12.5px}
   這四件事永遠分開 —— 因為「他認為危險」和「數據證明危險」是兩個不同的主張，而目前
   <b>沒有任何一格通過統計驗證</b>。</p>
   <dl class="session">
-    <div><dt>產生時間</dt><dd class="num">8/12/2026, 9:46:42 PM EDT</dd></div>
-    <div><dt>美股狀態</dt><dd>CLOSED</dd></div>
-    <div><dt>最近收盤</dt><dd class="num">2026-08-12</dd></div>
-    <div><dt>計算版本</dt><dd class="num">v4.0.0 @ b7c0279</dd></div>
+    <div><dt>產生時間</dt><dd class="num">8/25/2026, 11:55:49 AM EDT</dd></div>
+    <div><dt>美股狀態</dt><dd>OPEN</dd></div>
+    <div><dt>價格為</dt><dd class="num">2026-08-25 盤中</dd></div>
+    <div><dt>計算版本</dt><dd class="num">v4.0.0 @ 3a9b8e8</dd></div>
     <!-- This tested data.point_in_time for truthiness and printed 「是」, because the engine
          emits the STRING 'NOT_IMPLEMENTED' and every non-empty string is truthy. The page
          was claiming point-in-time was implemented directly underneath a footer explaining
@@ -275,6 +289,26 @@ color:var(--ink-2);font-size:12.5px}
   <a href="#nodecision">無可用讀數</a><a href="#tests">測試在測什麼</a>
 </nav>
 
+<section class="darkwarn">
+  <div class="dwlab">即將失效</div>
+  <p><b>3 格讀數會在來源下一次發布之前先過期。</b>
+  它們過期之後就不再參與規則評估，計數會跟著少 —— <b>而計數變少不代表風險變小，
+  只代表那一格看不到了。</b>先在這裡講，是因為事後解釋「為什麼紅燈少了一個」永遠來不及。</p>
+  <ul class="dwlist"><li>
+    <b>M2 年增 − 那斯達克年增（增負差）</b>
+    <span class="dwdays">18 天後失效</span>
+    <span class="dwwhy">目前判定 觸發　·　
+    來源每 30 天發布一次</span></li><li>
+    <b>易爆盤 2 · SPX 零日到期選擇權占比</b>
+    <span class="dwdays">3 天後失效</span>
+    <span class="dwwhy">目前判定 觸發　·　
+    來源每 30 天發布一次</span></li><li>
+    <b>易爆盤 3 · 標普前十大權重</b>
+    <span class="dwdays">3 天後失效</span>
+    <span class="dwwhy">目前判定 觸發　·　
+    來源每 30 天發布一次</span></li></ul>
+</section>
+
 
 <section class="verdict" id="today">
   <h2>Today</h2>
@@ -284,25 +318,25 @@ color:var(--ink-2);font-size:12.5px}
     <div class="vbox">
       <div class="vlab">基本面 · 管方向</div>
       <div class="vstat" style="--sev:var(--ok)">沒有裂縫</div>
-      <p>標普收在 <b class="num">7748.5</b>，距 52 週高點 <b class="num">-0.12%</b>。
-      等權重 RSP 年初至今 <b class="num">14.63%</b>、羅素 2000 <b class="num">21.42%</b>，
-      都不輸市值權重的 <b class="num">12.98%</b> —— 這不是少數幾檔撐起來的盤。
-      防禦股 XLU 近一月 <b class="num">-4.05%</b>，落後。</p>
+      <p>標普現價 <b class="num">7670.88</b>，距 52 週高點 <b class="num">-1.64%</b>。
+      等權重 RSP 年初至今 <b class="num">14.94%</b>、羅素 2000 <b class="num">19.86%</b>，
+      都不輸市值權重的 <b class="num">11.85%</b> —— 這不是少數幾檔撐起來的盤。
+      防禦股 XLU 近一月 <b class="num">-5.31%</b>，落後。</p>
     </div>
     <div class="vbox">
       <div class="vlab">流動性 · 管顛簸</div>
-      <div class="vstat" style="--sev:var(--ok)">平靜，但緩衝沒了</div>
-      <p>銀行準備金 <b class="num">2.993</b> 兆（清倉線 2.5 兆）、隔夜拆款利差
-      <b class="num">-1</b> bp、垃圾債利差 <b class="num">2.72%</b>（五年 P11.5）、
-      VIX <b class="num">14.55</b>。<b>唯一缺口：逆回購緩衝只剩
-      <span class="num">0.72</span> 億美元</b> —— 財政部再抽錢會直接打到準備金。</p>
+      <div class="vstat" style="--sev:var(--warn)">價格面平靜，緩衝已經沒了</div>
+      <p>銀行準備金 <b class="num">2.935</b> 兆（清倉線 2.5 兆）、隔夜拆款利差
+      <b class="num">0</b> bp、垃圾債利差 <b class="num">2.69%</b>（五年 P7.8）、
+      VIX <b class="num">15.59</b>。<b>唯一缺口：逆回購緩衝只剩
+      <span class="num">0.38</span> 億美元</b> —— 財政部再抽錢會直接打到準備金。</p>
     </div>
     <div class="vbox">
       <div class="vlab">擁擠 · 管斷裂</div>
-      <div class="vstat" style="--sev:var(--bad)">唯一紅燈</div>
-      <p>大盤 21 日已實現波動 <b class="num">14.13%</b>，但 AI 籃子中位數是它的
-      <b class="num">5.9</b> 倍，最高
-      <b class="num">11.1</b> 倍（SNDK）。
+      <div class="vstat" style="--sev:var(--bad)">3 格觸發</div>
+      <p>大盤 21 日已實現波動 <b class="num">12.93%</b>，但 AI 籃子中位數是它的
+      <b class="num">6</b> 倍，最高
+      <b class="num">10.8</b> 倍（SNDK）。
       指數在睡覺、少數幾檔用年化三位數波動在跑 —— 斷裂風險在個股，不在指數。</p>
     </div>
   </div>
@@ -326,7 +360,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <div class="oneline">
     <b>一句話：</b>方向沒問題、油還夠、逃生鈴上一季沒響 —— 但估值與擁擠度都在歷史極端
-    （巴菲特指標 P94.9、AI 籃子波動是大盤 5.9 倍）。
+    （巴菲特指標 P94.9、AI 籃子波動是大盤 6 倍）。
     這不是「安全」，是<b>「還能燒，而且燒得很快」</b>。
     <b>13</b> 條狠人規則已評估、其中 <b>5</b> 條觸發，另有 <b>3</b> 格沒有可用讀數。
     經統計驗證的訊號：<b>0</b>。
@@ -334,7 +368,7 @@ color:var(--ink-2);font-size:12.5px}
   <p class="vwhatnot"><b>這段總結不會告訴你的事：</b>它不說該買或該賣，不給目標價，也不給部位大小。
   它只把「他的規則今天有沒有觸發」和「這條規則有沒有被證明過」分開講 ——
   第二個問題目前 16 格全部是「沒有」。</p>
-  <p class="vdisc">以上每個數字都來自 canonical engine（calc v4.0.0 @ b7c0279）。
+  <p class="vdisc">以上每個數字都來自 canonical engine（calc v4.0.0 @ 3a9b8e8）。
   「狠人規則觸發」不等於「統計上證明危險」—— 全部 16 格的訊號驗證狀態都是 UNTESTED。</p>
 </section>
 
@@ -381,86 +415,108 @@ color:var(--ink-2);font-size:12.5px}
   <h2>Since last run</h2>
   <p class="h2sub">上一次執行之後，有什麼真的變了</p>
   
-  <p class="lede">與 <b class="num">2026-08-11</b> 的快照相比。
+  <p class="lede">與 <b class="num">2026-08-13</b> 的快照相比。
   比較的是兩次執行之間的變化，不是市場報酬。讀數的生效日可能與執行日不同，所以每筆都附上生效日 —— 引擎跑了不代表來源更新了。</p>
   <div class="chgrid">
     <div class="chbox">
       <div class="chlab">規則狀態改變</div>
-      <p class="chnone">沒有任何一格的規則判定改變。</p>
+      <ul class="chlist"><li><b>財政部 TGA 餘額</b><span class="chmove">green → yellow</span></li></ul>
     </div>
     <div class="chbox">
       <div class="chlab">資料狀態改變</div>
-      <ul class="chlist"><li><b>開關三 · 逃生鈴（雲廠商 capex 增速）</b><span class="chmove">INGESTION_OVERDUE → CURRENT</span></li><li><b>金融條件指數 (NFCI)</b><span class="chmove">LAGGED_BY_DESIGN → CURRENT</span></li></ul>
+      <ul class="chlist"><li><b>SOFR − IORB 利差</b><span class="chmove">LAGGED_BY_DESIGN → CURRENT</span></li><li><b>高收益債信用利差 (HY OAS)</b><span class="chmove">LAGGED_BY_DESIGN → CURRENT</span></li><li><b>金融條件指數 (NFCI)</b><span class="chmove">CURRENT → LAGGED_BY_DESIGN</span></li></ul>
     </div>
   </div>
   <table class="chtab">
     <thead><tr><th>指標</th><th class="r">上次</th><th class="r">這次</th><th class="r">變動</th>
     <th>生效日</th><th>來源有更新嗎</th></tr></thead>
     <tbody><tr>
+      <td>開關一 · 燃料（銀行準備金）</td>
+      <td class="r num">2.993</td>
+      <td class="r num">2.935</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">-0.06</td>
+      <td class="num">2026-08-05 → 2026-08-19</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
       <td>開關二 · 點火（期限結構代理）</td>
-      <td class="r num">0.815</td>
       <td class="r num">0.785</td>
+      <td class="r num">0.854</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">+0.07</td>
+      <td class="num">2026-08-12 → 2026-08-24</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>SOFR − IORB 利差</td>
+      <td class="r num">-1</td>
+      <td class="r num">0</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">+1</td>
+      <td class="num">2026-08-11 → 2026-08-24</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>財政部 TGA 餘額</td>
+      <td class="r num">907.3</td>
+      <td class="r num">953.6</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">+46.3</td>
+      <td class="num">2026-08-05 → 2026-08-19</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>隔夜逆回購緩衝</td>
+      <td class="r num">0.72</td>
+      <td class="r num">0.38</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">-0.34</td>
+      <td class="num">2026-08-12 → 2026-08-24</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>高收益債信用利差 (HY OAS)</td>
+      <td class="r num">2.72</td>
+      <td class="r num">2.69</td>
       <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
            stress, a fall in reserves is stress, and a rise in capex growth is the thing the
            escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
            colouring it would assert a judgement the engine never made. -->
       <td class="r num delta">-0.03</td>
-      <td class="num">2026-08-10 → 2026-08-12</td>
-      <td class="up">是，新發布</td>
-      </tr><tr>
-      <td>開關三 · 逃生鈴（雲廠商 capex 增速）</td>
-      <td class="r num">9.37</td>
-      <td class="r num">27.21</td>
-      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
-           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
-           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
-           colouring it would assert a judgement the engine never made. -->
-      <td class="r num delta">+17.84</td>
-      <td class="num">2026-03-31 → 2026-06-30</td>
-      <td class="up">是，新發布</td>
-      </tr><tr>
-      <td>SOFR − IORB 利差</td>
-      <td class="r num">-3</td>
-      <td class="r num">-1</td>
-      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
-           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
-           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
-           colouring it would assert a judgement the engine never made. -->
-      <td class="r num delta">+2</td>
-      <td class="num">2026-08-07 → 2026-08-11</td>
-      <td class="up">是，新發布</td>
-      </tr><tr>
-      <td>隔夜逆回購緩衝</td>
-      <td class="r num">0.97</td>
-      <td class="r num">0.72</td>
-      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
-           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
-           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
-           colouring it would assert a judgement the engine never made. -->
-      <td class="r num delta">-0.25</td>
-      <td class="num">2026-08-10 → 2026-08-12</td>
-      <td class="up">是，新發布</td>
-      </tr><tr>
-      <td>高收益債信用利差 (HY OAS)</td>
-      <td class="r num">2.7</td>
-      <td class="r num">2.72</td>
-      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
-           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
-           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
-           colouring it would assert a judgement the engine never made. -->
-      <td class="r num delta">+0.02</td>
-      <td class="num">2026-08-07 → 2026-08-11</td>
+      <td class="num">2026-08-11 → 2026-08-24</td>
       <td class="up">是，新發布</td>
       </tr><tr>
       <td>金融條件指數 (NFCI)</td>
-      <td class="r num">-0.529</td>
       <td class="r num">-0.549</td>
+      <td class="r num">-0.559</td>
       <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
            stress, a fall in reserves is stress, and a rise in capex growth is the thing the
            escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
            colouring it would assert a judgement the engine never made. -->
-      <td class="r num delta">-0.02</td>
-      <td class="num">2026-07-31 → 2026-08-07</td>
+      <td class="r num delta">-0.01</td>
+      <td class="num">2026-08-07 → 2026-08-14</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>AI 籃子相對波動（中位數）</td>
+      <td class="r num">5.9</td>
+      <td class="r num">6</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">+0.1</td>
+      <td class="num">2026-08-12 → 2026-08-25</td>
       <td class="up">是，新發布</td>
       </tr></tbody>
   </table>
@@ -498,17 +554,19 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
-        <div class="bignum num">2.99<span class="qunit">兆美元</span></div>
-        <div class="qmeta num">2026-08-05　·　8 天前</div>
+        <div class="bignum num">2.94<span class="qunit">兆美元</span></div>
+        <div class="qmeta num">2026-08-19　·　7 天前</div>
         
       
       
-      <p class="qnote">四週變化 -3.41%，落在五年分布的 p21.9，不構成快速流失</p>
+      <p class="qnote">四週變化 -4.14%，落在五年分布的 p18，不構成快速流失</p>
       
     </section>
 
@@ -527,8 +585,8 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
-    <p class="exact">畫面顯示 <b class="num">2.99</b>，實際值 <b class="num">2.993</b>。</p>
-    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WRESBAL</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-05</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:43.734Z</dd></div><div><dt>raw_hash</dt><dd class="num">d9b10afc92dbdbaa</dd></div><div><dt>transformation</dt><dd class="num">level in USD trillions; 4/13-week change; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+    <p class="exact">畫面顯示 <b class="num">2.94</b>，實際值 <b class="num">2.935</b>。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WRESBAL</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-19</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:49.934Z</dd></div><div><dt>raw_hash</dt><dd class="num">b10e207ffbe19ae5</dd></div><div><dt>transformation</dt><dd class="num">level in USD trillions; 4/13-week change; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--ok)">
 
@@ -552,18 +610,20 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
-        <div class="bignum num">0.79<span class="qunit">VIX ÷ 3個月VIX</span></div>
-        <div class="qmeta num">2026-08-12　·　1 天前</div>
+        <div class="bignum num">0.85<span class="qunit">VIX ÷ 3個月VIX</span></div>
+        <div class="qmeta num">2026-08-24　·　1 個交易日前</div>
         
       
       
-        <div class="pctrow"><span>歷史位置</span><b class="num">P2</b></div>
-        <div class="pbar"><div class="pfill" style="width:2%"></div><div class="pneedle" style="left:calc(2% - 1px)"></div></div>
+        <div class="pctrow"><span>歷史位置</span><b class="num">P29</b></div>
+        <div class="pbar"><div class="pfill" style="width:29%"></div><div class="pneedle" style="left:calc(29% - 1px)"></div></div>
         <div class="qmeta">過去 5 年，n=1254</div>
       <p class="qnote">遠月波動率高於近月（Contango）＝ 市場沒有在為「馬上出事」定價</p>
       
@@ -584,8 +644,8 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
-    <p class="exact">畫面顯示 <b class="num">0.79</b>，實際值 <b class="num">0.785</b>；百分位 P2 的實際值為 1.7。</p>
-    <dl><div><dt>source_id</dt><dd class="num">cboe</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_PRIMARY</dd></div><div><dt>dataset</dt><dd class="num">CBOE_VIX</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-12</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:44.281Z</dd></div><div><dt>raw_hash</dt><dd class="num">fad8a552c728bf1a</dd></div><div><dt>transformation</dt><dd class="num">Cboe VIX / VIX3M closes on a common session; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">PRESENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+    <p class="exact">畫面顯示 <b class="num">0.85</b>，實際值 <b class="num">0.854</b>；百分位 P29 的實際值為 28.5。</p>
+    <dl><div><dt>source_id</dt><dd class="num">cboe</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_PRIMARY</dd></div><div><dt>dataset</dt><dd class="num">CBOE_VIX</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-24</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:50.320Z</dd></div><div><dt>raw_hash</dt><dd class="num">c8534f6e3362140d</dd></div><div><dt>transformation</dt><dd class="num">Cboe VIX / VIX3M closes on a common session; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">PRESENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--ok)">
 
@@ -602,6 +662,8 @@ color:var(--ink-2);font-size:12.5px}
 
   <h3>開關三 · 逃生鈴（雲廠商 capex 增速）</h3>
   <p class="plain">微軟、Google、Amazon、Meta 這四家買設備的錢，增加的速度有沒有開始變慢。重點不是「還在花」，是「加速度」。</p>
+
+  
 
   <div class="fresh fresh-current">
     <div class="freshlab">資料新鮮度 · 三層</div>
@@ -630,7 +692,7 @@ color:var(--ink-2);font-size:12.5px}
       <div class="sidelab">觀測到的事實</div>
       
         <div class="bignum num">27.2<span class="qunit">% 環比</span></div>
-        <div class="qmeta num">2026-06-30　·　13 天前</div>
+        <div class="qmeta num">2026-06-30　·　26 天前</div>
         
       
       
@@ -654,7 +716,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     <p class="exact">畫面顯示 <b class="num">27.2</b>，實際值 <b class="num">27.21</b>。</p>
-    <dl><div><dt>source_id</dt><dd class="num">sec_edgar</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_PRIMARY</dd></div><div><dt>dataset</dt><dd class="num">SEC_CAPEX</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:44.756Z</dd></div><div><dt>raw_hash</dt><dd class="num">MSFT:2a3f142c858f766d GOOGL:0936f4aeed7e9d49 AMZN:dd90f2b11e3f1363 META:ee842c677e662488</dd></div><div><dt>transformation</dt><dd class="num">YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; QoQ (rule) and YoY (context)</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">PRESENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div><div><dt>information_available_at</dt><dd class="num">2026-07-31</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">sec_edgar</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_PRIMARY</dd></div><div><dt>dataset</dt><dd class="num">SEC_CAPEX</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:50.515Z</dd></div><div><dt>raw_hash</dt><dd class="num">MSFT:2a3f142c858f766d GOOGL:0936f4aeed7e9d49 AMZN:dd90f2b11e3f1363 META:ee842c677e662488</dd></div><div><dt>transformation</dt><dd class="num">YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; QoQ (rule) and YoY (context)</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">PRESENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div><div><dt>information_available_at</dt><dd class="num">2026-07-31</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--ok)">
 
@@ -663,7 +725,7 @@ color:var(--ink-2);font-size:12.5px}
     <span class="vbadge">UNTESTED</span>
     <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
     <span class="vchips">
-      <span class="chip">設計上落後</span>
+      <span class="chip">當前</span>
       <span class="chip">官方彙整</span>
       <span class="chip">自動</span>
     </span>
@@ -678,18 +740,20 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
-        <div class="bignum num">-1<span class="qunit">基點</span></div>
-        <div class="qmeta num">2026-08-11　·　2 天前</div>
+        <div class="bignum num">0<span class="qunit">基點</span></div>
+        <div class="qmeta num">2026-08-24　·　1 個交易日前</div>
         
       
       
-        <div class="pctrow"><span>歷史位置</span><b class="num">P78</b></div>
-        <div class="pbar"><div class="pfill" style="width:78%"></div><div class="pneedle" style="left:calc(78% - 1px)"></div></div>
+        <div class="pctrow"><span>歷史位置</span><b class="num">P80</b></div>
+        <div class="pbar"><div class="pfill" style="width:80%"></div><div class="pneedle" style="left:calc(80% - 1px)"></div></div>
         <div class="qmeta">過去 3 年，n=782</div>
       
       
@@ -711,9 +775,9 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     
-    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">SOFR</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-11</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:45.651Z</dd></div><div><dt>raw_hash</dt><dd class="num">e6b62e9bb21551ba</dd></div><div><dt>transformation</dt><dd class="num">SOFR minus IORB in bp on a common effective date; percentile vs 3y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">SOFR</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-24</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:51.179Z</dd></div><div><dt>raw_hash</dt><dd class="num">f91acd4dc53ee894</dd></div><div><dt>transformation</dt><dd class="num">SOFR minus IORB in bp on a common effective date; percentile vs 3y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
   </details>
-</article><article class="g" style="--sev:var(--ok)">
+</article><article class="g" style="--sev:var(--warn)">
 
   <!-- Validation status leads. It is read before the number, not after it. -->
   <div class="vstrip">
@@ -735,19 +799,21 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
-        <div class="bignum num">907<span class="qunit">十億美元</span></div>
-        <div class="qmeta num">2026-08-05　·　8 天前</div>
+        <div class="bignum num">954<span class="qunit">十億美元</span></div>
+        <div class="qmeta num">2026-08-19　·　7 天前</div>
         
       
       
-        <div class="pctrow"><span>歷史位置</span><b class="num">P92</b></div>
-        <div class="pbar"><div class="pfill" style="width:92%"></div><div class="pneedle" style="left:calc(92% - 1px)"></div></div>
-        <div class="qmeta">過去 5 年，n=260</div>
+        <div class="pctrow"><span>歷史位置</span><b class="num">P98</b></div>
+        <div class="pbar"><div class="pfill" style="width:98%"></div><div class="pneedle" style="left:calc(98% - 1px)"></div></div>
+        <div class="qmeta">過去 5 年，n=261</div>
       
       
     </section>
@@ -756,7 +822,7 @@ color:var(--ink-2);font-size:12.5px}
     <section class="side side-rule">
       <div class="sidelab">狠人的規則怎麼說</div>
       
-        <div class="rulestat" style="color:var(--ok)">未觸發</div>
+        <div class="rulestat" style="color:var(--warn)">接近</div>
         <div class="ths"><span class="th th-green">&lt; 9,500 億</span><span class="th th-yellow">9,500 億–1 兆</span><span class="th th-red">≥ 1 兆</span></div>
       
       <blockquote>財政部計劃在 2026 年的 7 月到 9 月淨市場化借款達到 6710 億美元，並且到 9 月底 TGA 帳戶的餘額目標是 9500 億美元。所以從 7 月份開始流動性壓力會逐漸上升。</blockquote>
@@ -767,8 +833,8 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
-    <p class="exact">畫面顯示 <b class="num">907</b>，實際值 <b class="num">907.3</b>；百分位 P92 的實際值為 92.3。</p>
-    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WTREGEN</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-05</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:45.819Z</dd></div><div><dt>raw_hash</dt><dd class="num">e27d88daab056cb6</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+    <p class="exact">畫面顯示 <b class="num">954</b>，實際值 <b class="num">953.6</b>；百分位 P98 的實際值為 97.7。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WTREGEN</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-19</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:51.310Z</dd></div><div><dt>raw_hash</dt><dd class="num">673329e7e2acf713</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--warn)">
 
@@ -792,18 +858,20 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
-        <div class="bignum num">0.7<span class="qunit">十億美元</span></div>
-        <div class="qmeta num">2026-08-12　·　1 天前</div>
+        <div class="bignum num">0.4<span class="qunit">十億美元</span></div>
+        <div class="qmeta num">2026-08-24　·　1 個交易日前</div>
         
       
       
-        <div class="pctrow"><span>歷史位置</span><b class="num">P8</b></div>
-        <div class="pbar"><div class="pfill" style="width:8%"></div><div class="pneedle" style="left:calc(8% - 1px)"></div></div>
+        <div class="pctrow"><span>歷史位置</span><b class="num">P7</b></div>
+        <div class="pbar"><div class="pfill" style="width:7%"></div><div class="pneedle" style="left:calc(7% - 1px)"></div></div>
         <div class="qmeta">過去 5 年，n=1304</div>
       <p class="qnote">緩衝實質見底 —— 財政部再抽錢會直接打到銀行準備金。</p>
       
@@ -824,8 +892,8 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
-    <p class="exact">畫面顯示 <b class="num">0.7</b>，實際值 <b class="num">0.72</b>；百分位 P8 的實際值為 8.1。</p>
-    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">RRPONTSYD</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-12</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:45.908Z</dd></div><div><dt>raw_hash</dt><dd class="num">081bda1516a9858d</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+    <p class="exact">畫面顯示 <b class="num">0.4</b>，實際值 <b class="num">0.38</b>；百分位 P7 的實際值為 6.7。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">RRPONTSYD</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-24</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:51.413Z</dd></div><div><dt>raw_hash</dt><dd class="num">3051b6c9a95be6f2</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--ok)">
 
@@ -834,7 +902,7 @@ color:var(--ink-2);font-size:12.5px}
     <span class="vbadge">UNTESTED</span>
     <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
     <span class="vchips">
-      <span class="chip">設計上落後</span>
+      <span class="chip">當前</span>
       <span class="chip">官方彙整</span>
       <span class="chip">自動</span>
     </span>
@@ -849,19 +917,21 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
         <div class="bignum num">2.7<span class="qunit">%</span></div>
-        <div class="qmeta num">2026-08-11　·　2 天前</div>
+        <div class="qmeta num">2026-08-24　·　1 個交易日前</div>
         
       
       
-        <div class="pctrow"><span>歷史位置</span><b class="num">P12</b></div>
-        <div class="pbar"><div class="pfill" style="width:12%"></div><div class="pneedle" style="left:calc(12% - 1px)"></div></div>
-        <div class="qmeta">過去 5 年，n=794</div>
+        <div class="pctrow"><span>歷史位置</span><b class="num">P8</b></div>
+        <div class="pbar"><div class="pfill" style="width:8%"></div><div class="pneedle" style="left:calc(8% - 1px)"></div></div>
+        <div class="qmeta">過去 5 年，n=793</div>
       
       
     </section>
@@ -881,8 +951,8 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
-    <p class="exact">畫面顯示 <b class="num">2.7</b>，實際值 <b class="num">2.72</b>；百分位 P12 的實際值為 11.5。</p>
-    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">BAMLH0A0HYM2</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-11</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:45.967Z</dd></div><div><dt>raw_hash</dt><dd class="num">cc1b8edd00c1d95f</dd></div><div><dt>transformation</dt><dd class="num">OAS in percent; percentile vs 5y and 20y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+    <p class="exact">畫面顯示 <b class="num">2.7</b>，實際值 <b class="num">2.69</b>；百分位 P8 的實際值為 7.8。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">BAMLH0A0HYM2</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-24</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:51.445Z</dd></div><div><dt>raw_hash</dt><dd class="num">40e1540215acd930</dd></div><div><dt>transformation</dt><dd class="num">OAS in percent; percentile vs 5y and 20y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--ok)">
 
@@ -891,7 +961,7 @@ color:var(--ink-2);font-size:12.5px}
     <span class="vbadge">UNTESTED</span>
     <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
     <span class="vchips">
-      <span class="chip">當前</span>
+      <span class="chip">設計上落後</span>
       <span class="chip">官方彙整</span>
       <span class="chip">自動</span>
     </span>
@@ -906,19 +976,21 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
-        <div class="bignum num">-0.55<span class="qunit">標準差</span></div>
-        <div class="qmeta num">2026-08-07　·　6 天前</div>
+        <div class="bignum num">-0.56<span class="qunit">標準差</span></div>
+        <div class="qmeta num">2026-08-14　·　12 天前</div>
         
       
       
-        <div class="pctrow"><span>歷史位置</span><b class="num">P10</b></div>
-        <div class="pbar"><div class="pfill" style="width:10%"></div><div class="pneedle" style="left:calc(10% - 1px)"></div></div>
-        <div class="qmeta">過去 5 年，n=261</div>
+        <div class="pctrow"><span>歷史位置</span><b class="num">P7</b></div>
+        <div class="pbar"><div class="pfill" style="width:7%"></div><div class="pneedle" style="left:calc(7% - 1px)"></div></div>
+        <div class="qmeta">過去 5 年，n=260</div>
       
       
     </section>
@@ -938,8 +1010,8 @@ color:var(--ink-2);font-size:12.5px}
   
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
-    <p class="exact">畫面顯示 <b class="num">-0.55</b>，實際值 <b class="num">-0.549</b>；百分位 P10 的實際值為 10.3。</p>
-    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NFCI</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-07</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:46.023Z</dd></div><div><dt>raw_hash</dt><dd class="num">e3a649d848c1b42d</dd></div><div><dt>transformation</dt><dd class="num">index level; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+    <p class="exact">畫面顯示 <b class="num">-0.56</b>，實際值 <b class="num">-0.559</b>；百分位 P7 的實際值為 7.3。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NFCI</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-14</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:51.482Z</dd></div><div><dt>raw_hash</dt><dd class="num">95c472d2723beff4</dd></div><div><dt>transformation</dt><dd class="num">index level; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--bad)">
 
@@ -954,8 +1026,11 @@ color:var(--ink-2);font-size:12.5px}
     </span>
   </div>
 
-  <h3>M2 年增 − 那斯達克年增（增負差）</h3>
+  <h3>M2 年增 − 那斯達克年增（增負差）<span class="tag tag-dark">18 天後失效</span></h3>
   <p class="plain">市場上的錢一年多了幾 %，股市一年漲了幾 %。股市跑得比錢快太多，多出來的就是估值撐的。</p>
+
+  <p class="note going-dark"><b>⏳ 這一格快要看不到了：</b>再過 18 天這個讀數就會過 SLA，而來源要 30 天才發布一次 —— 也就是說它會在下一次更新之前先失效。
+  屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。</p>
 
   
 
@@ -969,7 +1044,7 @@ color:var(--ink-2);font-size:12.5px}
       <div class="sidelab">觀測到的事實</div>
       
         <div class="bignum num">-36<span class="qunit">個百分點</span></div>
-        <div class="qmeta num">2026-06-01　·　44 天前</div>
+        <div class="qmeta num">2026-06-01　·　57 天前</div>
         
       
       
@@ -993,7 +1068,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     <p class="exact">畫面顯示 <b class="num">-36</b>，實際值 <b class="num">-36.2</b>。</p>
-    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">M2SL</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:46.078Z</dd></div><div><dt>raw_hash</dt><dd class="num">706397d1a68380f9</dd></div><div><dt>transformation</dt><dd class="num">calendar-aware YoY on both legs at a common anchor</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">M2SL</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:51.549Z</dd></div><div><dt>raw_hash</dt><dd class="num">706397d1a68380f9</dd></div><div><dt>transformation</dt><dd class="num">calendar-aware YoY on both legs at a common anchor</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--bad)">
 
@@ -1017,20 +1092,22 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
         <div class="bignum num">218<span class="qunit">%</span></div>
-        <div class="qmeta num">2026-01-01　·　135 天前</div>
+        <div class="qmeta num">2026-01-01　·　148 天前</div>
         
       
       
         <div class="pctrow"><span>歷史位置</span><b class="num">P95</b></div>
         <div class="pbar"><div class="pfill" style="width:95%"></div><div class="pneedle" style="left:calc(95% - 1px)"></div></div>
         <div class="qmeta">過去 20 年，n=78</div>
-      <p class="qnote">兩邊都對齊在 2026-01-01 起始的那一季（截至 2026-03-31）。此讀數描述的是那一季，距季末約 135 天。Z.1 與 GDP 都是季度資料且發布本身就落後，這是設計上的落後不是失效。</p>
+      <p class="qnote">兩邊都對齊在 2026-01-01 起始的那一季（截至 2026-03-31）。此讀數描述的是那一季，距季末約 148 天。Z.1 與 GDP 都是季度資料且發布本身就落後，這是設計上的落後不是失效。</p>
       
     </section>
 
@@ -1050,7 +1127,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     <p class="exact">畫面顯示 <b class="num">218</b>，實際值 <b class="num">218.1</b>；百分位 P95 的實際值為 94.9。</p>
-    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NCBEILQ027S</dd></div><div><dt>effective_date</dt><dd class="num">2026-01-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:46.605Z</dd></div><div><dt>raw_hash</dt><dd class="num">fdbcd4072303d19b</dd></div><div><dt>transformation</dt><dd class="num">Z.1 corporate equities / GDP, joined on a common quarter</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div><div><dt>period_end</dt><dd class="num">2026-03-31</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NCBEILQ027S</dd></div><div><dt>effective_date</dt><dd class="num">2026-01-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:51.739Z</dd></div><div><dt>raw_hash</dt><dd class="num">fdbcd4072303d19b</dd></div><div><dt>transformation</dt><dd class="num">Z.1 corporate equities / GDP, joined on a common quarter</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div><div><dt>period_end</dt><dd class="num">2026-03-31</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--bad)">
 
@@ -1074,17 +1151,19 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
-        <div class="bignum num">5.9<span class="qunit">倍</span></div>
-        <div class="qmeta num">2026-08-12　·　1 天前</div>
+        <div class="bignum num">6<span class="qunit">倍</span></div>
+        <div class="qmeta num">2026-08-25　·　0 個交易日前</div>
         
       
       
-      <p class="qnote">大盤 21 日已實現波動 13.7%，籃子中位數是它的 5.9 倍。</p>
+      <p class="qnote">大盤 21 日已實現波動 12.93%，籃子中位數是它的 6 倍。</p>
       
     </section>
 
@@ -1104,7 +1183,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     
-    <dl><div><dt>source_id</dt><dd class="num">yahoo</dd></div><div><dt>source_authority</dt><dd class="num">UNOFFICIAL_FREE</dd></div><div><dt>dataset</dt><dd class="num">EQUITY_DAILY:^GSPC</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-12</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-13T01:46:46.719Z</dd></div><div><dt>raw_hash</dt><dd class="num">f2deb87fecec61ac</dd></div><div><dt>transformation</dt><dd class="num">21-day annualised realised vol vs ^GSPC; median across a fixed basket</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">yahoo</dd></div><div><dt>source_authority</dt><dd class="num">UNOFFICIAL_FREE</dd></div><div><dt>dataset</dt><dd class="num">EQUITY_DAILY:^GSPC</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-25</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-25T15:55:51.876Z</dd></div><div><dt>raw_hash</dt><dd class="num">30880783471ff4da</dd></div><div><dt>transformation</dt><dd class="num">21-day annualised realised vol vs ^GSPC; median across a fixed basket</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--bad)">
 
@@ -1119,8 +1198,11 @@ color:var(--ink-2);font-size:12.5px}
     </span>
   </div>
 
-  <h3>易爆盤 2 · SPX 零日到期選擇權占比</h3>
+  <h3>易爆盤 2 · SPX 零日到期選擇權占比<span class="tag tag-dark">3 天後失效</span></h3>
   <p class="plain">當天買、當天就到期的樂透型選擇權，占了整個標普選擇權交易的幾成。比例越高，代表市場越像賭場。</p>
+
+  <p class="note going-dark"><b>⏳ 這一格快要看不到了：</b>再過 3 天這個讀數就會過 SLA，而來源要 30 天才發布一次 —— 也就是說它會在下一次更新之前先失效。
+  屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。</p>
 
   
 
@@ -1134,7 +1216,7 @@ color:var(--ink-2);font-size:12.5px}
       <div class="sidelab">觀測到的事實</div>
       
         <div class="bignum num">64<span class="qunit">%</span></div>
-        <div class="qmeta num">2026-06-30　·　44 天前</div>
+        <div class="qmeta num">2026-06-30　·　57 天前</div>
         
       
       
@@ -1158,7 +1240,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     
-    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_0DTE_SHARE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from Cboe 官方統計 / 券商研究</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_0DTE_SHARE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from Cboe 官方統計 / 券商研究</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--bad)">
 
@@ -1173,8 +1255,11 @@ color:var(--ink-2);font-size:12.5px}
     </span>
   </div>
 
-  <h3>易爆盤 3 · 標普前十大權重</h3>
+  <h3>易爆盤 3 · 標普前十大權重<span class="tag tag-dark">3 天後失效</span></h3>
   <p class="plain">整個標普 500 裡，最大的十家公司就占了幾成。占比越高，指數越像那十家的分身。</p>
+
+  <p class="note going-dark"><b>⏳ 這一格快要看不到了：</b>再過 3 天這個讀數就會過 SLA，而來源要 30 天才發布一次 —— 也就是說它會在下一次更新之前先失效。
+  屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。</p>
 
   
 
@@ -1188,7 +1273,7 @@ color:var(--ink-2);font-size:12.5px}
       <div class="sidelab">觀測到的事實</div>
       
         <div class="bignum num">39.3<span class="qunit">%</span></div>
-        <div class="qmeta num">2026-06-30　·　44 天前</div>
+        <div class="qmeta num">2026-06-30　·　57 天前</div>
         
       
       
@@ -1212,7 +1297,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     
-    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_TOP10_WEIGHT</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from S&amp;P Dow Jones Indices 月報 / SPY 持股揭露</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_TOP10_WEIGHT</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from S&amp;P Dow Jones Indices 月報 / SPY 持股揭露</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
   </details>
 </article></div>
 </section>
@@ -1228,7 +1313,7 @@ color:var(--ink-2);font-size:12.5px}
   <div class="conc">
     <div class="conclab">集中度</div>
     <p>全部 2 檔都在「Semiconductors」（細分為 Memory — DRAM/HBM、Memory — NAND，但那是同一個因子），這是一個因子，不是一個組合。</p>
-    <p class="corr">MU 與 SNDK 的日報酬相關係數 0.766（259 個交易日）。價格證實它們是同一筆交易，標籤上的細分沒有帶來分散。</p>
+    <p class="corr">MU 與 SNDK 的日報酬相關係數 0.772（259 個交易日）。價格證實它們是同一筆交易，標籤上的細分沒有帶來分散。</p>
     <p class="qmeta">本系統不做部位建議，也不知道你的部位大小。這裡只陳述暴露事實。</p>
   </div>
   <div class="grid">
@@ -1237,7 +1322,7 @@ color:var(--ink-2);font-size:12.5px}
         <div class="ghead"><h3>MU · Micron Technology<span class="tag">Memory — DRAM/HBM</span></h3>
         <p class="plain">持有中。狠人框架下屬於 AI 上游瓶頸標的；Serenity 方法下需檢驗四個條件。</p></div>
         <div class="chips">
-          <span class="chip chip-state">財報 2026-06-25（49 天）</span>
+          <span class="chip chip-state">財報 2026-06-25（62 天）</span>
           <span class="chip chip-auth">官方一手</span>
         </div>
       </header>
@@ -1250,9 +1335,9 @@ color:var(--ink-2);font-size:12.5px}
           <div class="qmeta">淨利率　毛利率 84.56%<br>
           FCF $17.56B</div></section>
         <section class="q"><div class="qlab">價格位置</div>
-          <div class="qval num">-24.91%</div>
-          <div class="qmeta">距兩年高點　vs 50日線 <b>-5.58%</b><br>
-          21日波動 <b>106.86%</b></div></section>
+          <div class="qval num">-23.75%</div>
+          <div class="qmeta">距兩年高點　vs 50日線 <b>-3.78%</b><br>
+          21日波動 <b>96.97%</b></div></section>
         <section class="q q-rule"><div class="qlab">Serenity 閘門</div>
           <div class="qval" style="font-size:15px;color:var(--ok)">賺錢能力 SUPPORTED</div>
           <div class="qmeta">範圍 <b>CURRENT_PERIOD</b>　覆蓋 <b>COMPLETE</b><br>
@@ -1269,7 +1354,7 @@ color:var(--ink-2);font-size:12.5px}
         <div class="ghead"><h3>SNDK · Sandisk<span class="tag">Memory — NAND</span></h3>
         <p class="plain">持有中。2025-02 自 Western Digital 分拆，上市歷史短。</p></div>
         <div class="chips">
-          <span class="chip chip-state">財報 2026-08-06（7 天）</span>
+          <span class="chip chip-state">財報 2026-08-06（20 天）</span>
           <span class="chip chip-auth">官方一手</span>
         </div>
       </header>
@@ -1282,9 +1367,9 @@ color:var(--ink-2);font-size:12.5px}
           <div class="qmeta">淨利率　毛利率 未揭露<br>
           FCF $1.12B</div></section>
         <section class="q"><div class="qlab">價格位置</div>
-          <div class="qval num">-42.43%</div>
-          <div class="qmeta">距兩年高點　vs 50日線 <b>-19.17%</b><br>
-          21日波動 <b>151.49%</b></div></section>
+          <div class="qval num">-35.61%</div>
+          <div class="qmeta">距兩年高點　vs 50日線 <b>-8.14%</b><br>
+          21日波動 <b>140.14%</b></div></section>
         <section class="q q-rule"><div class="qlab">Serenity 閘門</div>
           <div class="qval" style="font-size:15px;color:var(--ok)">賺錢能力 SUPPORTED</div>
           <div class="qmeta">範圍 <b>CURRENT_PERIOD</b>　覆蓋 <b>PARTIAL</b><br>
@@ -1331,13 +1416,15 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
         <div class="bignum num">1416<span class="qunit">十億美元</span></div>
-        <div class="qmeta num">2026-05-31　·　74 天前</div>
+        <div class="qmeta num">2026-05-31　·　87 天前</div>
         
       
       
@@ -1361,7 +1448,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     
-    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">FINRA_MARGIN_DEBT</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FINRA Margin Statistics（每月中旬公布上月數據）</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">FINRA_MARGIN_DEBT</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FINRA Margin Statistics（每月中旬公布上月數據）</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--ok)">
 
@@ -1385,13 +1472,15 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
         <div class="bignum num">3.44<span class="qunit">倍</span></div>
-        <div class="qmeta num">2026-05-31　·　74 天前</div>
+        <div class="qmeta num">2026-05-31　·　87 天前</div>
         
       
       
@@ -1415,7 +1504,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     
-    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">INSIDER_SELL_BUY</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from SEC Form 4 彙總（InsiderScore / Washington Service 等）</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">INSIDER_SELL_BUY</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from SEC Form 4 彙總（InsiderScore / Washington Service 等）</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
   </details>
 </article><article class="g" style="--sev:var(--ok)">
 
@@ -1439,13 +1528,15 @@ color:var(--ink-2);font-size:12.5px}
 
   
 
+  
+
   <div class="split">
     <!-- Measurement -->
     <section class="side side-obs">
       <div class="sidelab">觀測到的事實</div>
       
         <div class="bignum num">24.96<span class="qunit">倍</span></div>
-        <div class="qmeta num">2026-06-01　·　73 天前</div>
+        <div class="qmeta num">2026-06-01　·　86 天前</div>
         
       
       
@@ -1469,7 +1560,7 @@ color:var(--ink-2);font-size:12.5px}
 
   <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
     
-    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">NDX_FORWARD_PE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-01</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FactSet / Bloomberg / Nasdaq 官方</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">b7c0279</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">NDX_FORWARD_PE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-01</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FactSet / Bloomberg / Nasdaq 官方</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">3a9b8e8</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
   </details>
 </article></div>
   
@@ -1478,7 +1569,7 @@ color:var(--ink-2);font-size:12.5px}
 
 <section id="tests">
   <h2>What the tests actually test</h2>
-  <p class="h2sub">測試分類 · 「59/59 通過」本身不是保證</p>
+  <p class="h2sub">測試分類 · 「63/63 通過」本身不是保證</p>
   <p class="lede">一個總數聽起來像保證，但它沒說通過的是<strong>哪一個問題</strong>。
   這裡把測試依照它們回答的問題分開 —— 最後一格是空的，而那格才是重點。</p>
   <div class="tgrid">
@@ -1489,7 +1580,7 @@ color:var(--ink-2);font-size:12.5px}
       <p class="twhy">這一層的每個測試都對應一個真的出過的錯 —— 六月的 M2 對上八月的那斯達克，把一個紅燈壓成黃燈。</p>
       
     </div><div class="tbox tok">
-      <div class="tnum num">27<span class="tof">/27</span></div>
+      <div class="tnum num">29<span class="tof">/29</span></div>
       <div class="tlab">計算一致性</div>
       <p class="task">畫面上的數字，是不是引擎算出來的那一個？</p>
       <p class="twhy">renderer 不准做任何金融運算，連 /1e9 和四捨五入都不行。這一層負責讓這條規則不只是註解。</p>
@@ -1501,7 +1592,7 @@ color:var(--ink-2);font-size:12.5px}
       <p class="twhy">在結構化資料上檢查，不是掃 HTML —— 舊做法連續三次抓到自己的免責聲明。</p>
       
     </div><div class="tbox tok">
-      <div class="tnum num">10<span class="tof">/10</span></div>
+      <div class="tnum num">12<span class="tof">/12</span></div>
       <div class="tlab">量測效度</div>
       <p class="task">這個標籤底下，量到的到底是哪一個財務概念？</p>
       <p class="twhy">第四次審查指出這是目前的瓶頸：算對了，不代表算的是你以為的那個東西。</p>
