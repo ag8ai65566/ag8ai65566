@@ -130,6 +130,54 @@ console.log('\n=== timezone independence ===');
   check('MRKU3519668 LFD under TZ=' + (process.env.TZ || 'default'), rec.dateText, '7/10/2026');
 }
 
+console.log('\n=== a REAL fixed export must not be corrected (regression) ===');
+{
+  /* The 25 AUG report was re-issued with the export defect fixed: dates are
+     real date cells spread across the whole month. The tool must recognise
+     that and leave it alone. */
+  const { parsed, det } = load('shipments_v5.xlsx');
+  check('fixed file: all fields still resolve', det.missing, []);
+  const dg = C.diagnose(parsed.rows, det.columns);
+  check('fixed file: has dates past the 12th', dg.realGt12 > 0, true);
+  check('fixed file: NOT flagged corrupted', dg.corrupted, false);
+  check('fixed file: not flagged partial', dg.partial, false);
+
+  /* column layout changed too - a new leading column shifts everything */
+  check('header detection survives the added PTE CW column',
+        parsed.header[det.columns.container], 'CONTAINER');
+
+  const scacs = C.collectScacs(parsed.rows, det.columns);
+  const want = { X2: 534, VA: 271, RD: 237, LF: 225 };
+  C.MILESTONES.forEach(ms => {
+    const r = B.buildRecords(parsed, det.columns, ms, { applyDateFix: false }, scacs);
+    check(`fixed file: ${ms.code} row count`, r.records.length, want[ms.code]);
+    check(`fixed file: ${ms.code} nothing corrected`,
+          r.records.filter(x => x.corrected).length, 0);
+  });
+}
+
+console.log('\n=== correcting the broken file equals their fixed export ===');
+{
+  /* The strongest check available: run the defective 25 AUG file through the
+     day/month correction, and the re-issued fixed file through no correction.
+     Every uploaded value must agree. */
+  const collect = (file, fix) => {
+    const { parsed, det, scacs } = load(file);
+    const out = {};
+    C.MILESTONES.forEach(m => {
+      B.buildRecords(parsed, det.columns, m, { applyDateFix: fix, applyMblPrefix: true }, scacs)
+        .records.forEach(r => { out[r.container + '|' + r.event] = r.dateText; });
+    });
+    return out;
+  };
+  const mine = collect('shipments_v4.xlsx', true);
+  const theirs = collect('shipments_v5.xlsx', false);
+  const keys = [...new Set([...Object.keys(mine), ...Object.keys(theirs)])];
+  const mismatched = keys.filter(k => mine[k] !== theirs[k]);
+  check('same set of records', keys.length, Object.keys(mine).length);
+  check('every corrected value matches the fixed export', mismatched.length, 0);
+}
+
 console.log('\n=== a clean file must NOT be corrected ===');
 {
   /* Round-trip a clean sheet through a real .xlsx so this exercises the
