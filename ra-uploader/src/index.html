@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RA 批次上傳工具</title>
+<style>
+:root{
+  --bg:#f6f7f9; --panel:#fff; --ink:#16191d; --muted:#5f6773; --line:#e2e5ea;
+  --accent:#1f6feb; --accent-soft:#e8f0fe;
+  --warn:#b45309; --warn-soft:#fef3c7; --warn-line:#fcd34d;
+  --bad:#b91c1c; --bad-soft:#fee2e2; --bad-line:#fca5a5;
+  --good:#15803d; --good-soft:#dcfce7; --good-line:#86efac;
+  --fix:#92400e; --fix-soft:#fef9c3;
+  --radius:10px; --shadow:0 1px 2px rgba(16,24,40,.06),0 1px 3px rgba(16,24,40,.1);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0f1115; --panel:#171a20; --ink:#e6e8ec; --muted:#98a1b0; --line:#272b33;
+    --accent:#4f8cf7; --accent-soft:#16233d;
+    --warn:#fbbf24; --warn-soft:#3a2e10; --warn-line:#6b5311;
+    --bad:#f87171; --bad-soft:#3b1414; --bad-line:#7f1d1d;
+    --good:#4ade80; --good-soft:#12301c; --good-line:#166534;
+    --fix:#fcd34d; --fix-soft:#3a3410;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans TC","PingFang TC","Microsoft JhengHei",Arial,sans-serif;}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 20px 80px}
+h1{font-size:21px;margin:0 0 3px;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 24px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow);padding:20px;margin-bottom:16px}
+.step{display:flex;align-items:center;gap:9px;font-weight:600;font-size:13px;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:0 0 14px}
+.step b{display:grid;place-items:center;width:21px;height:21px;border-radius:50%;
+  background:var(--accent);color:#fff;font-size:12px;font-weight:700}
+.panel[hidden]{display:none}
+
+/* drop zone */
+#drop{border:2px dashed var(--line);border-radius:var(--radius);padding:38px 20px;text-align:center;
+  cursor:pointer;transition:.15s;background:var(--panel)}
+#drop:hover,#drop.over{border-color:var(--accent);background:var(--accent-soft)}
+#drop .big{font-size:15px;font-weight:600;margin-bottom:5px}
+#drop .small{color:var(--muted);font-size:13px}
+input[type=file]{display:none}
+
+/* verdict banner */
+.verdict{border-radius:var(--radius);padding:15px 17px;margin-bottom:15px;border:1px solid}
+.verdict.bad{background:var(--bad-soft);border-color:var(--bad-line)}
+.verdict.good{background:var(--good-soft);border-color:var(--good-line)}
+.verdict.warn{background:var(--warn-soft);border-color:var(--warn-line)}
+.verdict h3{margin:0 0 6px;font-size:15px}
+.verdict.bad h3{color:var(--bad)} .verdict.good h3{color:var(--good)} .verdict.warn h3{color:var(--warn)}
+.verdict p{margin:0 0 8px;font-size:13.5px;line-height:1.6}
+.verdict p:last-child{margin-bottom:0}
+.evidence{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:11px}
+.ev{background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:9px 11px}
+.ev .n{font-size:19px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.2}
+.ev .l{font-size:11.5px;color:var(--muted);margin-top:2px;line-height:1.35}
+
+/* milestone cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:11px}
+.card{border:1.5px solid var(--line);border-radius:var(--radius);padding:13px 15px;cursor:pointer;
+  background:var(--panel);transition:.13s;position:relative;user-select:none}
+.card:hover{border-color:var(--accent)}
+.card.on{border-color:var(--accent);background:var(--accent-soft)}
+.card.empty{opacity:.45;cursor:not-allowed}
+.card .top{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.card input{width:15px;height:15px;accent-color:var(--accent);margin:0}
+.card .code{font:600 12px ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--ink);color:var(--panel);
+  padding:1.5px 6px;border-radius:4px;letter-spacing:.03em}
+.card .name{font-weight:600;font-size:14px}
+.card .n{font-size:23px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.15}
+.card .l{font-size:12px;color:var(--muted);margin-top:1px}
+.card .fixnote{font-size:11.5px;color:var(--fix);margin-top:5px;font-weight:500}
+
+/* options */
+.opts{display:flex;flex-direction:column;gap:11px}
+.opt{display:flex;gap:10px;align-items:flex-start}
+.opt input{width:15px;height:15px;accent-color:var(--accent);margin:2px 0 0}
+.opt .t{font-weight:550;font-size:14px}
+.opt .d{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:1px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;margin-top:3px}
+.seg button{border:0;background:var(--panel);color:var(--ink);padding:6px 13px;font-size:13px;cursor:pointer;
+  font-family:inherit;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--accent);color:#fff}
+
+/* preview */
+.tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px}
+.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:7px;
+  padding:6px 12px;font-size:13px;cursor:pointer;font-family:inherit}
+.tab.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:550}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:8px;max-height:440px;overflow-y:auto}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{position:sticky;top:0;background:var(--panel);text-align:left;padding:8px 11px;font-size:11.5px;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--line);white-space:nowrap;z-index:1}
+td{padding:7px 11px;border-bottom:1px solid var(--line);white-space:nowrap;
+  font-variant-numeric:tabular-nums}
+tr:last-child td{border-bottom:0}
+td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px}
+.chg{background:var(--fix-soft);color:var(--fix);font-weight:600;padding:1px 5px;border-radius:4px}
+.was{color:var(--muted);text-decoration:line-through;font-size:11.5px;margin-right:5px}
+.pfx{background:var(--accent-soft);color:var(--accent);font-weight:600;padding:1px 5px;border-radius:4px}
+tr.flagged{background:var(--bad-soft)}
+.flag{color:var(--bad);font-size:11.5px}
+.legend{display:flex;gap:15px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:10px 0 0}
+.legend span{display:flex;align-items:center;gap:5px}
+.sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+
+/* export */
+.exports{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+button.go{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:10px 17px;
+  font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+button.go:hover{filter:brightness(1.08)}
+button.go.alt{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+button.go:disabled{opacity:.45;cursor:not-allowed}
+.note{font-size:12.5px;color:var(--muted);margin-top:11px;line-height:1.6}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;
+  background:var(--bg);padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
+.filemeta{font-size:13px;color:var(--muted);margin-top:9px}
+.filemeta b{color:var(--ink);font-weight:600}
+details{margin-top:11px;font-size:13px}
+summary{cursor:pointer;color:var(--accent);font-size:13px}
+details .body{margin-top:9px;color:var(--muted);line-height:1.65;font-size:13px}
+.err{background:var(--bad-soft);border:1px solid var(--bad-line);color:var(--bad);
+  padding:13px 15px;border-radius:var(--radius);font-size:13.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>RA 批次上傳工具</h1>
+  <p class="sub">把 AUTOZONE MX 週報整理成 RA Client Container Status 的批次上傳格式</p>
+
+  <div class="panel">
+    <div class="step"><b>1</b>選擇檔案</div>
+    <div id="drop">
+      <div class="big">把 Excel 拖到這裡,或點一下選檔</div>
+      <div class="small">支援 .xlsx / .xlsm — 檔案不會離開這台電腦</div>
+    </div>
+    <input type="file" id="file" accept=".xlsx,.xlsm,.xls">
+    <div class="filemeta" id="filemeta" hidden></div>
+    <div id="fileerr" style="margin-top:12px" hidden></div>
+  </div>
+
+  <div class="panel" id="p-diag" hidden>
+    <div class="step"><b>2</b>日期檢查</div>
+    <div id="diag"></div>
+  </div>
+
+  <div class="panel" id="p-ms" hidden>
+    <div class="step"><b>3</b>選擇要上傳的 milestone</div>
+    <div class="cards" id="cards"></div>
+  </div>
+
+  <div class="panel" id="p-opt" hidden>
+    <div class="step"><b>4</b>選項</div>
+    <div class="opts" id="opts"></div>
+  </div>
+
+  <div class="panel" id="p-prev" hidden>
+    <div class="step"><b>5</b>預覽</div>
+    <div class="tabs" id="tabs"></div>
+    <div class="tablewrap"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--fix-soft);border:1px solid var(--fix)"></i>日期已修正</span>
+      <span><i class="sw" style="background:var(--accent-soft);border:1px solid var(--accent)"></i>MBL 已加前綴</span>
+      <span><i class="sw" style="background:var(--bad-soft);border:1px solid var(--bad-line)"></i>有疑慮,建議先確認</span>
+    </div>
+    <div class="note" id="prevnote"></div>
+  </div>
+
+  <div class="panel" id="p-out" hidden>
+    <div class="step"><b>6</b>匯出</div>
+    <div class="exports" id="exportbtns"></div>
+    <div class="note">
+      匯出的檔案已符合 RA 格式:6 欄、<b>沒有標題列</b>、沒有空白列。
+      欄位順序為 <code>Container # / MBL / Event / Date / Time / Update By</code>。
+      日期與時間以文字寫入,避免再被任何地區設定重新解讀。
+      <br>上傳步驟:RA → Client Container Status → Upload Excel → Excel 格式選 <code>MBL#</code> → 選檔 → Upload → 確認無誤後 Save。
+    </div>
+  </div>
+</div>
+
+<script>/*__SHEETJS__*/</script>
+<script>/*__CORE__*/</script>
+<script>/*__BUILD__*/</script>
+<script>/*__APP__*/</script>
+</body>
+</html>
