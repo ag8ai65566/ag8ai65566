@@ -98,6 +98,46 @@ console.log('\n=== MBL prefix detection ===');
   check('NGB prefixed correctly', sample ? sample.mbl : null, 'PABV' + (sample ? sample.originalMbl : ''));
 }
 
+console.log('\n=== confirmed RA prefix rules ===');
+{
+  /* Verified against RA on the 25 Aug upload: PABV+NGB must carry the
+     prefix, PABV+SHCS must not (RA rejected all nine with
+     "Container No ... is not exists"). */
+  const { parsed, det, scacs } = load('shipments_v5.xlsx');
+  const recs = B.buildRecords(parsed, det.columns, C.MILESTONES[0],
+    { applyDateFix: false, applyMblPrefix: true }, scacs).records;
+  check('no MBL is emitted as PABVSHCS...', recs.filter(r => /^PABVSHCS/.test(r.mbl)).length, 0);
+  check('SHCS MBLs stay bare', recs.filter(r => /^SHCS/.test(r.mbl)).length, 9);
+  check('SHCS is not even offered as a candidate',
+        recs.filter(r => r.prefixCandidate && /^SHCS/.test(r.originalMbl)).length, 0);
+  check('NGB MBLs still get the PABV prefix', recs.filter(r => /^PABVNGB/.test(r.mbl)).length, 17);
+
+  /* the nine containers RA rejected must now carry a bare SHCS MBL */
+  const rejected = ['HPCU5193443','PCIU9144550','PIDU4051879','PIDU4056232','HPCU5118141',
+                    'PCIU8534717','PIDU4382440','PILU8021535','PCIU9423261'];
+  const found = rejected.map(cn => recs.find(r => r.container === cn)).filter(Boolean);
+  check('all nine rejected containers present in X2', found.length, 9);
+  check('all nine now carry a bare SHCS MBL',
+        found.every(r => /^SHCS\d+$/.test(r.mbl)), true);
+}
+
+console.log('\n=== regenerating LF reproduces the hand-corrected upload ===');
+{
+  /* The user hand-fixed the LF file after RA rejected nine rows. With the
+     confirmed rules in place the tool must now produce that file unaided. */
+  const theirs = XLSX.utils.sheet_to_json(
+    XLSX.read(fs.readFileSync(DIR + '/LF_fixed.xlsx'), { type: 'buffer' }).Sheets.Sheet1,
+    { header: 1, raw: false, defval: '' });
+  const { parsed, det, scacs } = load('shipments_v5.xlsx');
+  const mine = B.toAoa(B.buildRecords(parsed, det.columns,
+    C.MILESTONES.find(m => m.key === 'lfd'),
+    { applyDateFix: false, applyMblPrefix: true }, scacs).records);
+  check('same row count', mine.length, theirs.length);
+  const byCntr = new Map(mine.map(r => [r[0], r.join('|')]));
+  check('every row matches the hand-corrected file',
+        theirs.filter(r => byCntr.get(r[0]) !== r.join('|')).length, 0);
+}
+
 console.log('\n=== output shape ===');
 {
   const { parsed, det, scacs } = load('shipments_v4.xlsx');

@@ -150,7 +150,25 @@
   /* RA stores some MBLs with the carrier SCAC prepended
      (NGB600492000 -> PABVNGB600492000). Only flag an MBL that starts with
      no SCAC seen anywhere in the CARRIER column, so OOCL/OOLU and other
-     legitimate cross-carrier references are left alone. */
+     legitimate cross-carrier references are left alone.
+
+     Whether RA wants the prefix is decided per MBL family, and the source
+     report gives no reliable hint, so it can only be learned from what RA
+     accepts. Confirmed against RA on the 25 Aug upload:
+       PABV + NGB...   prefix required   - accepted
+       PABV + SHCS...  prefix rejected   - "Container No ... is not exists"
+     NO_PREFIX holds the families RA wants bare. */
+  var NO_PREFIX = [
+    { carrier: 'PABV', prefix: 'SHCS' }
+  ];
+
+  function isKnownBare(carrier, mbl) {
+    for (var i = 0; i < NO_PREFIX.length; i++) {
+      if (NO_PREFIX[i].carrier === carrier && mbl.indexOf(NO_PREFIX[i].prefix) === 0) return true;
+    }
+    return false;
+  }
+
   function collectScacs(rows, columns) {
     var set = {};
     if (columns.carrier == null) return set;
@@ -166,6 +184,7 @@
   function needsPrefix(carrier, mbl, scacs) {
     if (!carrier || !mbl) return false;
     if (mbl.indexOf(carrier) === 0) return false;
+    if (isKnownBare(carrier, mbl)) return false;
     for (var s in scacs) if (mbl.indexOf(s) === 0) return false;
     return true;
   }
@@ -195,6 +214,7 @@
     serialToDate: serialToDate, isDateFormat: isDateFormat, isTimeFormat: isTimeFormat,
     readCell: readCell, diagnose: diagnose, swapDayMonth: swapDayMonth,
     collectScacs: collectScacs, needsPrefix: needsPrefix,
+    NO_PREFIX: NO_PREFIX, isKnownBare: isKnownBare,
     fmtDate: fmtDate, fmtTime: fmtTime, isoDate: isoDate,
     DATE_FIELDS: DATE_FIELDS
   };
