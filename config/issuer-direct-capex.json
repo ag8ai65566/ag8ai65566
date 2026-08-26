@@ -1,0 +1,31 @@
+{
+  "$schema_version": "1.0.0",
+  "_purpose": "Issuer-direct quarterly capex, transcribed from each company's own published earnings materials. This is the PRIMARY reconciliation path — stronger evidence than differencing a cumulative XBRL span, because it is the issuer stating the quarter directly.",
+  "_authority": "MANUAL_PRIMARY — the issuer's own published figure, hand-transcribed. Higher authority than MANUAL_SECONDARY (a third party's summary), lower than an automated read of a filed XBRL fact only in that a human could mistype it.",
+  "_why_this_exists": "A previous version of this system claimed Meta 'structurally cannot be verified' because Company Facts carries no standalone quarterly XBRL fact for it. That conflated ONE acquisition path with the concept itself. Meta publishes quarterly capex directly; the pipeline simply was not reading that path.",
+  "_maintenance": "每季財報後更新。每一筆必須填 source_url、source_document、retrieved_at。缺任何一項即視為未驗證，不得用於對帳。",
+  "_verification_protocol": [
+    "1. 從公司 IR 或 SEC 申報的 earnings release（通常是 8-K Exhibit 99.1）讀取單季數字",
+    "2. 分開記錄 cash PP&E 與 finance lease principal —— 不要只記合計",
+    "3. 記錄來源 URL 與文件名稱，讓第二個人能重新取得同一份文件",
+    "4. 與 XBRL 差分還原值比對；差異超過 $10M 需人工判定原因"
+  ],
+
+  "entries": [
+    {
+      "issuer": "META",
+      "period_end": "2026-06-30",
+      "concept": "CASH_PPE_CAPEX",
+      "value_usd": null,
+      "finance_lease_principal_usd": null,
+      "company_defined_total_usd": null,
+      "source_url": null,
+      "source_document": null,
+      "retrieved_at": null,
+      "status": "PENDING_TRANSCRIPTION",
+      "_note": "第四輪審查指出 Meta 於 2026-07-29 公布 2026 Q2，且 earnings release 將 cash PP&E 與融資租賃本金分列。該季的 XBRL 單季 fact 在本系統擷取時尚未出現在 companyconcept API，因此此路徑是唯一的取得方式。填入前保持 null —— 本系統不轉錄自己沒有讀過的數字。"
+    }
+  ],
+
+  "_pending_note": "entries 目前全部是 PENDING_TRANSCRIPTION。這是刻意的：第三方引用的數字（包括審查意見裡引用的）不能直接當成一手資料寫進來。必須有人實際打開該份 earnings release、確認數字、填上 source_url，才算完成轉錄。在那之前，reconciliation 仍然報 PARTIALLY_RECONCILED。"
+}

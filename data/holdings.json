@@ -1,0 +1,412 @@
+{
+  "schema_version": "1.0.0",
+  "generated_at": "2026-08-26T22:38:30.210Z",
+  "generated_at_et": "8/26/2026, 6:38:30 PM EDT",
+  "code_commit": "28f1bbb",
+  "lens_status": {
+    "serenity-method": "EXECUTED",
+    "serenity-bottleneck-hunter": "NOT_EXECUTED",
+    "equity-research": "NOT_EXECUTED"
+  },
+  "guardrail": "本檔不輸出買賣訊號、目標價或部位建議。所有品質欄位遵守 serenity-method 的規則：沒有引用證據就維持 unverified。",
+  "concentration": {
+    "holdings": 2,
+    "distinct_sectors": 1,
+    "distinct_niches": 2,
+    "same_sector": true,
+    "daily_return_correlation": {
+      "pair": [
+        "MU",
+        "SNDK"
+      ],
+      "value": 0.772,
+      "n_days": 259
+    },
+    "reading": "全部 2 檔都在「Semiconductors」（細分為 Memory — DRAM/HBM、Memory — NAND，但那是同一個因子），這是一個因子，不是一個組合。",
+    "correlation_reading": "MU 與 SNDK 的日報酬相關係數 0.772（259 個交易日）。價格證實它們是同一筆交易，標籤上的細分沒有帶來分散。",
+    "note": "本系統不做部位建議，也不知道你的部位大小。這裡只陳述暴露事實。"
+  },
+  "holdings": [
+    {
+      "ticker": "MU",
+      "cik": "0000723125",
+      "name": "Micron Technology",
+      "sector": "Semiconductors",
+      "shares": null,
+      "cost_basis": null,
+      "note": "持有中。狠人框架下屬於 AI 上游瓶頸標的；Serenity 方法下需檢驗四個條件。",
+      "niche": "Memory — DRAM/HBM",
+      "errors": [],
+      "fundamentals": {
+        "period_end": "2026-05-28",
+        "information_available_at": "2026-06-25",
+        "revenue_usd": 41456000000,
+        "revenue_yoy_pct": 345.72,
+        "gross_margin_pct": 84.56,
+        "gross_margin_alignment": "same_quarter",
+        "net_income_usd": 28243000000,
+        "net_income_yoy_pct": 1398.3,
+        "net_margin_pct": 68.13,
+        "operating_cash_flow_usd": 25388000000,
+        "capex_usd": 7826000000,
+        "free_cash_flow_usd": 17562000000,
+        "free_cash_flow_alignment": "same_quarter",
+        "roe_annualised_pct": 112.16,
+        "roe_caveat": "Quarterly net income × 4 over latest reported equity. A rough read, not a trailing-twelve-month ROE.",
+        "equity_usd": 100724000000,
+        "assets_usd": 134112000000,
+        "liabilities_usd": 33388000000,
+        "plausibility": {
+          "level": "PASS",
+          "blocks_metrics": [],
+          "needs_human_review": [],
+          "structural": [],
+          "reconciliation": [],
+          "outliers": [],
+          "policy": "STRUCTURAL_ERROR 會封鎖其所指的欄位；RECONCILIATION_REQUIRED 需人工對照原始申報；ECONOMIC_OUTLIER 只是提醒，不封鎖任何欄位，也不使用警報視覺。"
+        },
+        "sources": {
+          "revenue": {
+            "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+            "period": "2026-05-28",
+            "filed": "2026-06-25",
+            "accession": "0000723125-26-000015",
+            "form": "10-Q",
+            "derived_from_cumulative": false
+          },
+          "grossProfit": {
+            "tag": "GrossProfit",
+            "period": "2026-05-28",
+            "filed": "2026-06-25",
+            "accession": "0000723125-26-000015",
+            "form": "10-Q",
+            "derived_from_cumulative": false
+          },
+          "netIncome": {
+            "tag": "NetIncomeLoss",
+            "period": "2026-05-28",
+            "filed": "2026-06-25",
+            "accession": "0000723125-26-000015",
+            "form": "10-Q",
+            "derived_from_cumulative": false
+          },
+          "operatingCashFlow": {
+            "tag": "NetCashProvidedByUsedInOperatingActivities",
+            "period": "2026-05-28",
+            "filed": "2026-06-25",
+            "accession": "0000723125-26-000015",
+            "form": "10-Q",
+            "derived_from_cumulative": true
+          },
+          "capex": {
+            "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+            "period": "2026-05-28",
+            "filed": "2026-06-25",
+            "accession": "0000723125-26-000015",
+            "form": "10-Q",
+            "derived_from_cumulative": true
+          },
+          "assets": {
+            "tag": "Assets",
+            "period": "2026-05-28",
+            "filed": "2026-06-25",
+            "accession": "0000723125-26-000015",
+            "form": "10-Q",
+            "derived_from_cumulative": null
+          },
+          "liabilities": {
+            "tag": "Liabilities",
+            "period": "2026-05-28",
+            "filed": "2026-06-25",
+            "accession": "0000723125-26-000015",
+            "form": "10-Q",
+            "derived_from_cumulative": null
+          },
+          "equity": {
+            "tag": "StockholdersEquity",
+            "period": "2026-05-28",
+            "filed": "2026-06-25",
+            "accession": "0000723125-26-000015",
+            "form": "10-Q",
+            "derived_from_cumulative": null
+          }
+        },
+        "missing": [],
+        "revenue_bn": 41.46,
+        "net_income_bn": 28.24,
+        "operating_cash_flow_bn": 25.39,
+        "capex_bn": 7.83,
+        "free_cash_flow_bn": 17.56,
+        "equity_bn": 100.72,
+        "assets_bn": 134.11
+      },
+      "fundamentals_age_days": 63,
+      "serenity_gate": {
+        "profitability": {
+          "value": "SUPPORTED",
+          "scope": "CURRENT_PERIOD",
+          "framework_label": "proven",
+          "period": "2026-05-28",
+          "evidence": [
+            "revenue",
+            "net_income",
+            "free_cash_flow"
+          ],
+          "evidence_detail": [
+            "營收 $41.46B、年增 345.72%",
+            "毛利率 84.56%",
+            "自由現金流 $17.56B（營運現金流 − capex，同一季）"
+          ],
+          "missing": [],
+          "coverage": "COMPLETE",
+          "citations": [
+            "10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）",
+            "10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）",
+            "10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）"
+          ],
+          "scope_note": "只證明最新一期的獲利與現金流為正，不證明長期獲利紀錄。要談 track record 需要連續數年的資料，本管線目前只讀最新季度。"
+        },
+        "moat": {
+          "value": "unverified",
+          "reason": "護城河需要的是認證週期、轉換成本、設計導入、第二來源可得性等證據 —— XBRL 財報數字無法回答。高毛利率是結果，不是護城河本身，記憶體產業歷史上就是高毛利與虧損交替的週期股。",
+          "what_would_settle_it": [
+            "客戶的 10-K 是否揭露單一來源依賴",
+            "認證／設計導入的合約期限",
+            "產能擴張的前置時間",
+            "競爭對手量產時程"
+          ]
+        },
+        "customer_replacement_risk": {
+          "value": "unverified",
+          "reason": "需要客戶集中度揭露與第二來源狀況；本管線尚未抓取客戶集中度段落。",
+          "what_would_settle_it": [
+            "10-K 的客戶集中度揭露",
+            "大客戶自製化的公開跡象"
+          ]
+        },
+        "capital_allocation": {
+          "value": "observed_not_judged",
+          "evidence": [
+            "本季 capex $7.83B，佔營運現金流 30.83%"
+          ],
+          "note": "這是事實觀測，不是品質判斷。判斷需要多年期的投入報酬紀錄。"
+        },
+        "is_buffett_quality": {
+          "value": "not_yet",
+          "reason": "需要護城河、賺錢能力、資本配置三項同時高於 unverified。目前只有賺錢能力可判定。"
+        },
+        "conclusion": {
+          "value": "研究地图",
+          "reason": "Serenity 方法要求四個條件同時成立才升級：客戶非有不可、供給無法快速增加、公司已認證／設計導入、且相對於機會而言便宜。前三項本管線尚無證據，第四項需要估值工作。要到「可投资结论」，缺的是質性證據與估值，不是價格動能。"
+        }
+      },
+      "price": {
+        "as_of": "2026-08-26",
+        "close": 938.4,
+        "from_2y_high_pct": -22.67,
+        "high_2y": 1213.56,
+        "high_2y_date": "2026-06-25",
+        "vs_50dma_pct": -2.14,
+        "vs_200dma_pct": 61.37,
+        "m1_pct": 14.37,
+        "m3_pct": 1.08,
+        "rvol21_pct": 90.9
+      },
+      "price_raw_hash": "2e43d999af48bb2d"
+    },
+    {
+      "ticker": "SNDK",
+      "cik": "0002012383",
+      "name": "Sandisk",
+      "sector": "Semiconductors",
+      "shares": null,
+      "cost_basis": null,
+      "note": "持有中。2025-02 自 Western Digital 分拆，上市歷史短。",
+      "niche": "Memory — NAND",
+      "errors": [],
+      "fundamentals": {
+        "period_end": "2026-06-30",
+        "information_available_at": "2026-08-06",
+        "revenue_usd": 7084000000,
+        "revenue_yoy_pct": 30.63,
+        "gross_margin_pct": null,
+        "gross_margin_alignment": "MISALIGNED_OR_MISSING",
+        "net_income_usd": 1914000000,
+        "net_income_yoy_pct": 20.15,
+        "net_margin_pct": 27.02,
+        "operating_cash_flow_usd": 1227000000,
+        "capex_usd": 109000000,
+        "free_cash_flow_usd": 1118000000,
+        "free_cash_flow_alignment": "same_quarter",
+        "roe_annualised_pct": 13.29,
+        "roe_caveat": "Quarterly net income × 4 over latest reported equity. A rough read, not a trailing-twelve-month ROE.",
+        "equity_usd": 57613000000,
+        "assets_usd": 175875000000,
+        "liabilities_usd": 111335000000,
+        "plausibility": {
+          "level": "ECONOMIC_OUTLIER",
+          "blocks_metrics": [],
+          "needs_human_review": [],
+          "structural": [],
+          "reconciliation": [],
+          "outliers": [
+            {
+              "check": "asset_turnover",
+              "value": 0.161,
+              "detail": "年化營收為總資產的 16.1%",
+              "issue": "資產週轉率遠低於一般製造業常態。可能是合併合資廠資產、實體範圍不同，或這門生意本來就極度資本密集。",
+              "note": "此門檻（0.25）沒有統計依據，是人為設定的注意線，不是資料錯誤的證據。",
+              "advisory_only": true,
+              "affects_interpretation_of": [
+                "roe_annualised_pct"
+              ]
+            }
+          ],
+          "policy": "STRUCTURAL_ERROR 會封鎖其所指的欄位；RECONCILIATION_REQUIRED 需人工對照原始申報；ECONOMIC_OUTLIER 只是提醒，不封鎖任何欄位，也不使用警報視覺。"
+        },
+        "sources": {
+          "revenue": {
+            "tag": "RevenueFromContractWithCustomerExcludingAssessedTax",
+            "period": "2026-06-30",
+            "filed": "2026-08-06",
+            "accession": "0001193125-26-337177",
+            "form": "10-Q",
+            "derived_from_cumulative": false
+          },
+          "netIncome": {
+            "tag": "NetIncomeLoss",
+            "period": "2026-06-30",
+            "filed": "2026-08-06",
+            "accession": "0001193125-26-337177",
+            "form": "10-Q",
+            "derived_from_cumulative": false
+          },
+          "operatingCashFlow": {
+            "tag": "NetCashProvidedByUsedInOperatingActivities",
+            "period": "2026-06-30",
+            "filed": "2026-08-06",
+            "accession": "0001193125-26-337177",
+            "form": "10-Q",
+            "derived_from_cumulative": true
+          },
+          "capex": {
+            "tag": "PaymentsToAcquirePropertyPlantAndEquipment",
+            "period": "2026-06-30",
+            "filed": "2026-08-06",
+            "accession": "0001193125-26-337177",
+            "form": "10-Q",
+            "derived_from_cumulative": true
+          },
+          "assets": {
+            "tag": "Assets",
+            "period": "2026-06-30",
+            "filed": "2026-08-06",
+            "accession": "0001193125-26-337177",
+            "form": "10-Q",
+            "derived_from_cumulative": null
+          },
+          "liabilities": {
+            "tag": "Liabilities",
+            "period": "2026-06-30",
+            "filed": "2026-08-06",
+            "accession": "0001193125-26-337177",
+            "form": "10-Q",
+            "derived_from_cumulative": null
+          },
+          "equity": {
+            "tag": "StockholdersEquity",
+            "period": "2026-06-30",
+            "filed": "2026-08-06",
+            "accession": "0001193125-26-337177",
+            "form": "10-Q",
+            "derived_from_cumulative": null
+          }
+        },
+        "missing": [
+          "grossProfit"
+        ],
+        "revenue_bn": 7.08,
+        "net_income_bn": 1.91,
+        "operating_cash_flow_bn": 1.23,
+        "capex_bn": 0.11,
+        "free_cash_flow_bn": 1.12,
+        "equity_bn": 57.61,
+        "assets_bn": 175.88
+      },
+      "fundamentals_age_days": 21,
+      "serenity_gate": {
+        "profitability": {
+          "value": "SUPPORTED",
+          "scope": "CURRENT_PERIOD",
+          "framework_label": "proven",
+          "period": "2026-06-30",
+          "evidence": [
+            "revenue",
+            "net_income",
+            "free_cash_flow"
+          ],
+          "evidence_detail": [
+            "營收 $7.08B、年增 30.63%",
+            "自由現金流 $1.12B（營運現金流 − capex，同一季）"
+          ],
+          "missing": [
+            "gross_profit"
+          ],
+          "coverage": "PARTIAL",
+          "citations": [
+            "10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）",
+            "10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）",
+            "10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）"
+          ],
+          "scope_note": "只證明最新一期的獲利與現金流為正，不證明長期獲利紀錄。要談 track record 需要連續數年的資料，本管線目前只讀最新季度。"
+        },
+        "moat": {
+          "value": "unverified",
+          "reason": "護城河需要的是認證週期、轉換成本、設計導入、第二來源可得性等證據 —— XBRL 財報數字無法回答。高毛利率是結果，不是護城河本身，記憶體產業歷史上就是高毛利與虧損交替的週期股。",
+          "what_would_settle_it": [
+            "客戶的 10-K 是否揭露單一來源依賴",
+            "認證／設計導入的合約期限",
+            "產能擴張的前置時間",
+            "競爭對手量產時程"
+          ]
+        },
+        "customer_replacement_risk": {
+          "value": "unverified",
+          "reason": "需要客戶集中度揭露與第二來源狀況；本管線尚未抓取客戶集中度段落。",
+          "what_would_settle_it": [
+            "10-K 的客戶集中度揭露",
+            "大客戶自製化的公開跡象"
+          ]
+        },
+        "capital_allocation": {
+          "value": "observed_not_judged",
+          "evidence": [
+            "本季 capex $0.11B，佔營運現金流 8.88%"
+          ],
+          "note": "這是事實觀測，不是品質判斷。判斷需要多年期的投入報酬紀錄。"
+        },
+        "is_buffett_quality": {
+          "value": "not_yet",
+          "reason": "需要護城河、賺錢能力、資本配置三項同時高於 unverified。目前只有賺錢能力可判定。"
+        },
+        "conclusion": {
+          "value": "研究地图",
+          "reason": "Serenity 方法要求四個條件同時成立才升級：客戶非有不可、供給無法快速增加、公司已認證／設計導入、且相對於機會而言便宜。前三項本管線尚無證據，第四項需要估值工作。要到「可投资结论」，缺的是質性證據與估值，不是價格動能。"
+        }
+      },
+      "price": {
+        "as_of": "2026-08-26",
+        "close": 1499.37,
+        "from_2y_high_pct": -35.79,
+        "high_2y": 2335,
+        "high_2y_date": "2026-06-25",
+        "vs_50dma_pct": -7.69,
+        "vs_200dma_pct": 56.43,
+        "m1_pct": 36.79,
+        "m3_pct": -5.7,
+        "rvol21_pct": 127.49
+      },
+      "price_raw_hash": "0efc3d20d25f77fc"
+    }
+  ]
+}

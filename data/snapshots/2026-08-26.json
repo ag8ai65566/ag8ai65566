@@ -1,0 +1,136 @@
+{
+  "date": "2026-08-26",
+  "generated_at": "2026-08-26T22:38:25.956Z",
+  "calculation_version": "4.0.0",
+  "code_commit": "28f1bbb",
+  "gauges": [
+    {
+      "id": "fuel",
+      "value": 2.935,
+      "rule_state": "green",
+      "data_state": "LAGGED_BY_DESIGN",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-08-19"
+    },
+    {
+      "id": "ignition",
+      "value": 0.848,
+      "rule_state": "green",
+      "data_state": "LAGGED_BY_DESIGN",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-08-25"
+    },
+    {
+      "id": "capex",
+      "value": 27.21,
+      "rule_state": "green",
+      "data_state": "CURRENT",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-06-30"
+    },
+    {
+      "id": "sofr",
+      "value": 1,
+      "rule_state": "green",
+      "data_state": "CURRENT",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-08-25"
+    },
+    {
+      "id": "tga",
+      "value": 953.6,
+      "rule_state": "yellow",
+      "data_state": "LAGGED_BY_DESIGN",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-08-19"
+    },
+    {
+      "id": "rrp",
+      "value": 0.7,
+      "rule_state": "yellow",
+      "data_state": "CURRENT",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-08-26"
+    },
+    {
+      "id": "hyoas",
+      "value": 2.7,
+      "rule_state": "green",
+      "data_state": "CURRENT",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-08-25"
+    },
+    {
+      "id": "nfci",
+      "value": -0.566,
+      "rule_state": "green",
+      "data_state": "CURRENT",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-08-21"
+    },
+    {
+      "id": "m2gap",
+      "value": -23.5,
+      "rule_state": "yellow",
+      "data_state": "CURRENT",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-07-01"
+    },
+    {
+      "id": "buffett",
+      "value": 218.1,
+      "rule_state": "red",
+      "data_state": "LAGGED_BY_DESIGN",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-01-01"
+    },
+    {
+      "id": "ai-basket-rel-vol",
+      "value": 5.6,
+      "rule_state": "red",
+      "data_state": "CURRENT",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-08-26"
+    },
+    {
+      "id": "margin-debt",
+      "value": 1416,
+      "rule_state": "yellow",
+      "data_state": "OVERDUE",
+      "decision": "NO_DECISION",
+      "effective_date": "2026-05-31"
+    },
+    {
+      "id": "zero-dte",
+      "value": 64,
+      "rule_state": "red",
+      "data_state": "LAGGED_BY_DESIGN",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-06-30"
+    },
+    {
+      "id": "top10-weight",
+      "value": 39.3,
+      "rule_state": "red",
+      "data_state": "LAGGED_BY_DESIGN",
+      "decision": "RULE_EVALUATED",
+      "effective_date": "2026-06-30"
+    },
+    {
+      "id": "insider-ratio",
+      "value": 3.44,
+      "rule_state": "green",
+      "data_state": "OVERDUE",
+      "decision": "NO_DECISION",
+      "effective_date": "2026-05-31"
+    },
+    {
+      "id": "ndx-forward-pe",
+      "value": 24.96,
+      "rule_state": "green",
+      "data_state": "STALE",
+      "decision": "NO_DECISION",
+      "effective_date": "2026-06-01"
+    }
+  ]
+}

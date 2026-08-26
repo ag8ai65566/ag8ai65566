@@ -1,0 +1,1735 @@
+<title>美股儀表板 · 狠人規則 × 實證脈絡</title>
+<style>
+:root{--ground:#EDEFF2;--panel:#F8F9FB;--panel-2:#E7EAEF;--panel-3:#DDE2E9;--rule:#CDD3DC;--rule-soft:#DFE4EA;
+--ink:#171C24;--ink-2:#4A5464;--ink-3:#78828F;--brass:#A8781C;--ok:#1F7A54;--warn:#B36A12;--bad:#B03047;
+--ok-bg:#DDEEE6;--warn-bg:#F6E7CF;--bad-bg:#F4DDE1;--off:#C3CAD3;
+--shadow:0 1px 2px rgba(23,28,36,.06),0 8px 24px -12px rgba(23,28,36,.16);}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ground:#0C1017;--panel:#141A23;--panel-2:#1B222D;
+--panel-3:#222A36;--rule:#2A3341;--rule-soft:#212936;--ink:#E8ECF2;--ink-2:#A3AEBD;--ink-3:#737F8E;--brass:#D9A43F;
+--ok:#4CBF8B;--warn:#E3A44E;--bad:#E86A80;--ok-bg:#14312A;--warn-bg:#33280F;--bad-bg:#371A22;--off:#3A4453;
+--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);}}
+:root[data-theme="dark"]{--ground:#0C1017;--panel:#141A23;--panel-2:#1B222D;--panel-3:#222A36;--rule:#2A3341;
+--rule-soft:#212936;--ink:#E8ECF2;--ink-2:#A3AEBD;--ink-3:#737F8E;--brass:#D9A43F;--ok:#4CBF8B;--warn:#E3A44E;
+--bad:#E86A80;--ok-bg:#14312A;--warn-bg:#33280F;--bad-bg:#371A22;--off:#3A4453;
+--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -14px rgba(0,0,0,.7);}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-size:16px;line-height:1.65;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
+-webkit-font-smoothing:antialiased}
+.num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums}
+.wrap{max-width:1040px;margin:0 auto;padding:30px 20px 90px}
+.mast{border-bottom:2px solid var(--ink);padding-bottom:16px;margin-bottom:20px}
+.kicker{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);font-weight:700;margin-bottom:9px}
+h1{font-size:clamp(24px,4.2vw,36px);line-height:1.15;margin:0 0 11px;letter-spacing:-.02em;font-weight:750;text-wrap:balance}
+.standfirst{font-size:15.5px;color:var(--ink-2);margin:0;max-width:66ch}
+.session{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px 18px;
+background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:13px 15px;box-shadow:var(--shadow)}
+.session dt{color:var(--ink-3);font-size:10.5px;letter-spacing:.05em;text-transform:uppercase}
+.session dd{margin:2px 0 0;font-weight:600;font-size:12.5px}
+h2{font-size:11.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);font-weight:700;
+margin:40px 0 4px;display:flex;align-items:center;gap:12px}
+h2::after{content:"";flex:1;height:1px;background:var(--rule)}
+.h2sub{font-size:20px;font-weight:720;margin:0 0 6px;letter-spacing:-.015em}
+.lede{color:var(--ink-2);margin:0 0 16px;max-width:68ch;font-size:14.5px}
+
+/* verdict */
+.verdict{margin:26px 0 0}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:14px 0}
+@media(max-width:840px){.vgrid{grid-template-columns:1fr}}
+.vbox{background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--sev,var(--off));
+border-radius:4px;padding:16px;box-shadow:var(--shadow)}
+.vlab{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.vstat{font-size:20px;font-weight:750;color:var(--sev);margin:3px 0 8px;letter-spacing:-.015em}
+.vbox p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.6}
+.bell{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--ok);border-radius:4px;
+padding:18px;box-shadow:var(--shadow);margin:12px 0}
+.belllab{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.bellval{font-size:26px;font-weight:770;color:var(--ok);letter-spacing:-.02em;margin:2px 0 8px}
+/* A bell that rang on a quarter which has since been superseded is not a green light.
+   Colouring it green is the visual form of the same mistake the label is there to prevent. */
+.bell-sup{border-left-color:var(--brass)}
+.bell-sup .bellval{color:var(--brass)}
+.bell p{margin:0 0 8px;font-size:14px;color:var(--ink-2);line-height:1.62}
+.bellcaveat{font-size:13px !important;border-top:1px dashed var(--rule);padding-top:9px;margin-top:10px !important}
+.oneline{background:var(--panel-2);border:1px solid var(--rule);border-left:4px solid var(--brass);
+border-radius:4px;padding:16px 18px;font-size:15px;line-height:1.7;color:var(--ink-2)}
+.oneline b{color:var(--ink)}
+.vdisc{font-size:12.5px;color:var(--ink-3);margin:10px 0 0;line-height:1.6}
+
+/* tally */
+.tallybar{display:flex;gap:9px;flex-wrap:wrap;margin:16px 0 10px}
+.tchip{display:flex;align-items:baseline;gap:6px;background:var(--panel);border:1px solid var(--rule);
+border-radius:4px;padding:9px 13px;box-shadow:var(--shadow)}
+.tchip b{font-size:20px;font-weight:760;letter-spacing:-.02em}.tchip span{font-size:12px;color:var(--ink-2)}
+.t-red b{color:var(--bad)}.t-yellow b{color:var(--warn)}.t-green b{color:var(--ok)}.t-undec b{color:var(--ink-3)}
+.dims{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;margin:12px 0 0}
+.dim{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:12px 14px;box-shadow:var(--shadow)}
+.dim h4{margin:0 0 6px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.dim div{font-size:12.5px;color:var(--ink-2);display:flex;justify-content:space-between;gap:10px}
+.dim b{color:var(--ink);font-weight:700}
+.nocomp{background:var(--panel-2);border:1px solid var(--rule);border-left:4px solid var(--brass);border-radius:4px;
+padding:13px 15px;font-size:13.5px;color:var(--ink-2);margin:14px 0 0}
+
+/* gauge cards */
+.grid{display:flex;flex-direction:column;gap:11px}
+.g{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--sev);border-radius:4px;
+padding:17px;box-shadow:var(--shadow)}
+.g header{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start}
+.g h3{margin:0;font-size:16.5px;font-weight:720;letter-spacing:-.01em}
+.tag{font-size:10px;font-weight:700;padding:2px 6px;border-radius:3px;background:var(--panel-3);
+color:var(--ink-3);margin-left:7px;vertical-align:middle;letter-spacing:.04em}
+.tag-ours{background:var(--warn-bg);color:var(--warn)}
+.plain{margin:5px 0 0;font-size:13px;color:var(--ink-2);max-width:62ch;line-height:1.55}
+.chips{display:flex;gap:5px;flex-wrap:wrap;flex:none}
+.chip{font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:3px;background:var(--panel-2);
+color:var(--ink-3);border:1px solid var(--rule-soft);white-space:nowrap}
+.chip-auth.weak{color:var(--warn);background:var(--warn-bg);border-color:transparent}
+.quad{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule-soft);
+border:1px solid var(--rule-soft);border-radius:4px;margin:15px 0 0;overflow:hidden}
+@media(max-width:820px){.quad{grid-template-columns:repeat(2,1fr)}}
+.q{background:var(--panel);padding:12px 13px}
+.q-rule{background:var(--panel-2)}
+.qlab{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-bottom:5px}
+.qval{font-size:21px;font-weight:750;letter-spacing:-.02em;line-height:1.2}
+.qval.muted{color:var(--ink-3)}
+.val-untested{font-size:13px;font-weight:700;color:var(--warn);letter-spacing:.02em}
+.qunit{font-size:11px;color:var(--ink-3);font-weight:500;margin-left:4px}
+.qmeta{font-size:11px;color:var(--ink-3);margin-top:4px}
+.qnote{font-size:11.5px;color:var(--ink-2);margin:7px 0 0;line-height:1.5}
+.pbar{position:relative;height:6px;background:var(--panel-3);border-radius:2px;margin:7px 0 0;overflow:hidden}
+.pfill{position:absolute;inset:0 auto 0 0;background:var(--sev);opacity:.35}
+.pneedle{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--ink);border-radius:1px}
+.ths{display:flex;flex-direction:column;gap:3px;margin-top:7px}
+.th{font-size:10.5px;padding:2px 7px;border-radius:3px;background:var(--panel);border:1px solid var(--rule-soft);color:var(--ink-2)}
+.th-green{color:var(--ok);background:var(--ok-bg);border-color:transparent}
+.th-yellow{color:var(--warn);background:var(--warn-bg);border-color:transparent}
+.th-red{color:var(--bad);background:var(--bad-bg);border-color:transparent}
+blockquote{margin:14px 0 0;padding:10px 14px;border-left:3px solid var(--brass);background:var(--panel-2);
+border-radius:0 3px 3px 0;font-size:13px;color:var(--ink-2);line-height:1.6}
+.note{font-size:12.5px;color:var(--ink-2);margin:10px 0 0;line-height:1.6;max-width:76ch}
+.note b{color:var(--ink)}
+.layers{margin:12px 0 0;display:flex;flex-direction:column;gap:5px}
+.layer{display:flex;gap:10px;font-size:12px;background:var(--panel-2);padding:7px 10px;border-radius:3px}
+.layer b{color:var(--ink);flex:none;min-width:170px;font-weight:700}
+.layer span{color:var(--ink-2)}
+.prov{margin-top:13px;font-size:12px}
+.prov summary{cursor:pointer;color:var(--brass);font-weight:600;font-size:11.5px;letter-spacing:.04em}
+.prov dl{margin:9px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:5px 18px}
+.prov dt{color:var(--ink-3);font-size:10px;letter-spacing:.04em;text-transform:uppercase}
+.prov dd{margin:1px 0 0;color:var(--ink-2);font-size:11.5px;word-break:break-all}
+footer{margin-top:48px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--ink-3);line-height:1.7}
+.conc{background:var(--panel);border:1px solid var(--rule);border-left:4px solid var(--brass);
+border-radius:4px;padding:15px 17px;margin:0 0 14px;box-shadow:var(--shadow)}
+.conclab{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-bottom:4px}
+.conc p{margin:0 0 6px;font-size:14px;color:var(--ink-2);line-height:1.6}
+.conc .corr{color:var(--ink);font-weight:600}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.9em;background:var(--panel-2);padding:1px 5px;border-radius:3px}
+
+/* validation-first strip */
+.vstrip{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 11px;margin:-17px -17px 14px;
+background:var(--warn-bg);border-bottom:1px solid var(--rule);border-radius:3px 3px 0 0}
+.vbadge{font-size:11px;font-weight:800;letter-spacing:.09em;color:var(--warn);
+background:var(--panel);padding:3px 9px;border-radius:3px;border:1px solid var(--warn)}
+.vtext{font-size:12px;color:var(--warn);font-weight:600}
+.vchips{margin-left:auto;display:flex;gap:5px;flex-wrap:wrap}
+.g h3{margin:0 0 4px;font-size:17px;font-weight:730;letter-spacing:-.01em}
+.split{display:grid;grid-template-columns:1.15fr .85fr;gap:1px;background:var(--rule-soft);
+border:1px solid var(--rule-soft);border-radius:4px;margin:14px 0 0;overflow:hidden}
+@media(max-width:800px){.split{grid-template-columns:1fr}}
+.side{background:var(--panel);padding:14px 15px}
+.side-rule{background:var(--panel-2)}
+.sidelab{font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--ink-3);font-weight:700;margin-bottom:7px}
+.bignum{font-size:30px;font-weight:760;letter-spacing:-.025em;line-height:1.1}
+.bignum.muted{color:var(--ink-3)}
+.rulestat{font-size:24px;font-weight:760;letter-spacing:-.02em;line-height:1.15;margin-bottom:8px}
+.rulestat.muted{color:var(--ink-3);font-size:19px}
+.pctrow{display:flex;justify-content:space-between;align-items:baseline;margin:13px 0 5px;
+font-size:11.5px;color:var(--ink-3);border-top:1px dotted var(--rule);padding-top:11px}
+.pctrow b{font-size:16px;color:var(--ink)}
+.qnote.cov{border-left:2px solid var(--warn);padding-left:9px;margin-top:10px}
+.note.advisory{border-left:2px dotted var(--ink-3);padding-left:10px;color:var(--ink-2)}
+.note.advisory i{font-style:normal;color:var(--ink-3);font-size:.94em}
+.exact{font-size:12.5px;color:var(--ink-2);margin:0 0 10px;padding:9px 11px;
+background:var(--panel-2);border-radius:3px}
+/* maturity ladder */
+.ladder{list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:2px;
+border:1px solid var(--rule);border-radius:4px;overflow:hidden;box-shadow:var(--shadow)}
+.rung{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;
+padding:13px 16px;background:var(--panel);border-left:4px solid var(--off)}
+.rung-established{border-left-color:var(--ok);background:var(--panel)}
+.rung-in_progress{border-left-color:var(--warn);background:var(--panel)}
+.rung-not_started{border-left-color:var(--bad);background:var(--panel-2);opacity:.9}
+.rungno{font-size:12px;font-weight:800;color:var(--ink-3);width:16px;text-align:center}
+.rungbody{display:flex;flex-direction:column;gap:2px}
+.rungbody b{font-size:14.5px;font-weight:720}
+.rungdetail{font-size:12.5px;color:var(--ink-2);line-height:1.55}
+.rungstate{font-size:11.5px;font-weight:700;white-space:nowrap;padding:3px 9px;border-radius:3px}
+.rung-established .rungstate{color:var(--ok);background:var(--ok-bg)}
+.rung-in_progress .rungstate{color:var(--warn);background:var(--warn-bg)}
+.rung-not_started .rungstate{color:var(--bad);background:var(--bad-bg)}
+.counts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:0 0 12px}
+.cnt{background:var(--panel);border:1px solid var(--rule);border-radius:4px;padding:12px 14px;box-shadow:var(--shadow)}
+.cnt b{display:block;font-size:26px;font-weight:770;letter-spacing:-.02em;line-height:1.1}
+.cnt span{font-size:12px;color:var(--ink-2)}
+.cnt-zero{border-color:var(--bad)}.cnt-zero b{color:var(--bad)}
+
+/* Sticky section nav. The page got long enough that "scroll until you find it" became the
+   navigation model, which buries the caveats under the numbers. */
+.nav{position:sticky;top:0;z-index:20;display:flex;flex-wrap:wrap;gap:2px;margin:0 0 22px;
+padding:8px 0;background:var(--ground);border-bottom:1px solid var(--rule)}
+.nav a{padding:5px 11px;font-size:12px;color:var(--ink-2);text-decoration:none;border:1px solid transparent;
+border-radius:3px;letter-spacing:.02em}
+.nav a:hover{background:var(--panel);border-color:var(--rule);color:var(--ink)}
+/* Without this the sticky bar lands on top of whatever heading you jumped to. */
+section[id]{scroll-margin-top:56px}
+.chempty{padding:13px 15px;background:var(--panel);border:1px dashed var(--rule);border-radius:4px;
+font-size:12.5px;color:var(--ink-2);line-height:1.8}
+.chempty p{margin:0 0 8px}.chempty p:last-child{margin:0}
+
+/* Going dark. Deliberately above the fold: a gauge that expires takes a red light with it,
+   and the tally moving down reads as improvement unless this is said in advance. */
+.darkwarn{margin:0 0 22px;padding:14px 16px;background:#FBF6EC;border:1px solid var(--brass);
+border-left:4px solid var(--brass);border-radius:4px}
+.dwlab{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);margin-bottom:7px}
+.darkwarn p{margin:0 0 9px;font-size:12.5px;line-height:1.8;color:var(--ink)}
+.dwlist{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+.dwlist li{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:7px 10px;
+background:var(--panel);border:1px solid var(--rule-soft);border-radius:3px;font-size:12.5px}
+.dwdays{font-variant-numeric:tabular-nums;font-weight:700;color:var(--brass)}
+.dwwhy{color:var(--ink-3);font-size:11.5px}
+.tag-dark{background:#FBF6EC;border-color:var(--brass);color:var(--brass)}
+.note.going-dark{border-left-color:var(--brass);background:#FBF6EC}
+.persist{margin:12px 0;padding:11px 13px;background:var(--panel-2);border:1px solid var(--rule);
+border-left:3px solid var(--ink-3);border-radius:3px}
+.provline{margin-top:8px;font-size:11.5px;color:var(--ink-3)}
+.provline b{font-weight:650}
+.prov-his b{color:var(--ok)}.prov-derived b{color:var(--warn)}.prov-ours b{color:var(--brass)}
+.provsum{margin:14px 0 12px;padding:13px 15px;background:var(--panel);border:1px solid var(--rule);
+border-left:3px solid var(--brass);border-radius:4px}
+.provsum p{margin:0 0 7px;font-size:12.5px;line-height:1.8;color:var(--ink)}
+.provsum p:last-child{margin:0}
+
+/* Three-layer freshness. Laid out as three columns because the whole point is the GAP
+   between them — a single "as of" date cannot show that the pipeline is the slow part. */
+.fresh{margin:12px 0;padding:11px 13px;border:1px solid var(--rule);border-left:3px solid var(--ink-3);
+border-radius:3px;background:var(--panel-2)}
+.fresh-ingestion_overdue{border-left-color:var(--bad);background:#FBF1F3}
+.fresh-source_publication_lag{border-left-color:var(--warn)}
+.fresh-current{border-left-color:var(--ok)}
+.freshlab{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.freshrow{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fl{padding:6px 8px;background:var(--panel);border:1px solid var(--rule-soft);border-radius:3px}
+.fl span{display:block;font-size:10.5px;color:var(--ink-3);margin-bottom:2px}
+.fl b{font-size:14px;color:var(--ink)}
+.freshread{margin:8px 0 0;font-size:12px;color:var(--ink-2);line-height:1.65}
+.note.rob{border-left-color:var(--brass)}
+.note.rob i{color:var(--ink-3);font-style:normal;font-size:11.5px}
+.tag-sup{background:#FBF1F3;border-color:var(--bad);color:var(--bad)}
+.bellstale{margin-top:10px;padding:11px 13px;background:#FBF1F3;border:1px solid var(--bad);
+border-radius:3px;font-size:12.5px;line-height:1.75;color:var(--ink)}
+.vwhatnot{margin-top:12px;padding:10px 13px;border:1px dashed var(--rule);border-radius:3px;
+font-size:12px;color:var(--ink-2);line-height:1.7}
+
+/* Since last run. */
+.chgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.chbox{padding:12px 14px;background:var(--panel);border:1px solid var(--rule);border-radius:4px}
+.chlab{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.chlist{margin:0;padding:0;list-style:none}
+.chlist li{display:flex;justify-content:space-between;gap:10px;padding:5px 0;border-bottom:1px solid var(--rule-soft);
+font-size:12.5px}
+.chlist li:last-child{border-bottom:none}
+.chmove{font-variant-numeric:tabular-nums;color:var(--ink-2);white-space:nowrap}
+.chnone{margin:0;font-size:12.5px;color:var(--ink-3)}
+.chtab{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--panel);
+border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.chtab th,.chtab td{padding:7px 11px;border-bottom:1px solid var(--rule-soft);text-align:left}
+.chtab th{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);background:var(--panel-2)}
+.chtab .r{text-align:right}
+.chtab tr:last-child td{border-bottom:none}
+.chtab .delta{color:var(--ink);font-weight:600}.chtab .up{color:var(--ok)}.chtab .reread{color:var(--ink-3)}
+
+/* Tests by category. The empty fifth box is the message, so it is styled to be read. */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin-bottom:12px}
+.tbox{padding:13px 15px;background:var(--panel);border:1px solid var(--rule);border-top:3px solid var(--ok);
+border-radius:4px}
+.tbad{border-top-color:var(--bad)}
+.tempty{border-top-color:var(--bad);border-style:dashed;background:var(--panel-2)}
+.tnum{font-size:26px;line-height:1;color:var(--ink)}
+.tempty .tnum{color:var(--bad)}
+.tof{font-size:14px;color:var(--ink-3)}
+.tlab{margin-top:5px;font-size:13px;font-weight:600;color:var(--ink)}
+.task{margin:7px 0 0;font-size:12px;color:var(--ink-2);line-height:1.6}
+.twhy{margin:6px 0 0;font-size:11.5px;color:var(--ink-3);line-height:1.65}
+.tfail{margin:7px 0 0;font-size:11.5px;color:var(--bad);line-height:1.6}
+
+@media (max-width:720px){
+  .chgrid,.freshrow{grid-template-columns:1fr}
+  .nav{gap:0}
+  .nav a{padding:5px 8px;font-size:11.5px}
+}
+.disc{margin-top:13px;padding:13px 15px;background:var(--panel-2);border:1px solid var(--rule);border-radius:4px;
+color:var(--ink-2);font-size:12.5px}
+</style>
+<div class="wrap">
+<header class="mast">
+  <div class="kicker">Henren Framework + Empirical Context Layer</div>
+  <h1>狠人的規則，配上它自己的歷史脈絡</h1>
+  <p class="standfirst">每一格分成四塊：<b>觀測值</b>（數字是多少）、<b>歷史脈絡</b>（在自己的歷史裡多極端）、
+  <b>狠人規則</b>（按他的原話有沒有觸發）、<b>訊號驗證</b>（有沒有人證明過這條規則有效）。
+  這四件事永遠分開 —— 因為「他認為危險」和「數據證明危險」是兩個不同的主張，而目前
+  <b>沒有任何一格通過統計驗證</b>。</p>
+  <dl class="session">
+    <div><dt>產生時間</dt><dd class="num">8/26/2026, 6:38:25 PM EDT</dd></div>
+    <div><dt>美股狀態</dt><dd>CLOSED</dd></div>
+    <div><dt>最近收盤</dt><dd class="num">2026-08-26</dd></div>
+    <div><dt>計算版本</dt><dd class="num">v4.0.0 @ 28f1bbb</dd></div>
+    <!-- This tested data.point_in_time for truthiness and printed 「是」, because the engine
+         emits the STRING 'NOT_IMPLEMENTED' and every non-empty string is truthy. The page
+         was claiming point-in-time was implemented directly underneath a footer explaining
+         that it is not. A status field is never a boolean. -->
+    <div><dt>Point-in-time</dt><dd>否 · <span class="num">NOT_IMPLEMENTED</span></dd></div>
+    <div><dt>SEC as-of 查詢</dt><dd>已實測</dd></div>
+  </dl>
+</header>
+
+<nav class="nav">
+  <a href="#today">今天</a><a href="#maturity">系統成熟度</a><a href="#changes">上次之後的變化</a>
+  <a href="#triggers">規則已評估</a><a href="#holdings">持股</a>
+  <a href="#nodecision">無可用讀數</a><a href="#tests">測試在測什麼</a>
+</nav>
+
+<section class="darkwarn">
+  <div class="dwlab">即將失效</div>
+  <p><b>4 格讀數會在來源下一次發布之前先過期。</b>
+  它們過期之後就不再參與規則評估，計數會跟著少 —— <b>而計數變少不代表風險變小，
+  只代表那一格看不到了。</b>先在這裡講，是因為事後解釋「為什麼紅燈少了一個」永遠來不及。</p>
+  <ul class="dwlist"><li>
+    <b>開關一 · 燃料（銀行準備金）</b>
+    <span class="dwdays">6 天後失效</span>
+    <span class="dwwhy">目前判定 未觸發　·　
+    來源每 7 天發布一次</span></li><li>
+    <b>財政部 TGA 餘額</b>
+    <span class="dwdays">6 天後失效</span>
+    <span class="dwwhy">目前判定 接近　·　
+    來源每 7 天發布一次</span></li><li>
+    <b>易爆盤 2 · SPX 零日到期選擇權占比</b>
+    <span class="dwdays">2 天後失效</span>
+    <span class="dwwhy">目前判定 觸發　·　
+    來源每 30 天發布一次</span></li><li>
+    <b>易爆盤 3 · 標普前十大權重</b>
+    <span class="dwdays">2 天後失效</span>
+    <span class="dwwhy">目前判定 觸發　·　
+    來源每 30 天發布一次</span></li></ul>
+</section>
+
+
+<section class="verdict" id="today">
+  <h2>Today</h2>
+  <p class="h2sub">狠人版總結 · 今天的市場</p>
+
+  <div class="vgrid">
+    <div class="vbox">
+      <div class="vlab">基本面 · 管方向</div>
+      <div class="vstat" style="--sev:var(--ok)">沒有裂縫</div>
+      <p>標普收在 <b class="num">7675.7</b>，距 52 週高點 <b class="num">-1.58%</b>。
+      等權重 RSP 年初至今 <b class="num">15.17%</b>、羅素 2000 <b class="num">19.84%</b>，
+      都不輸市值權重的 <b class="num">11.92%</b> —— 這不是少數幾檔撐起來的盤。
+      防禦股 XLU 近一月 <b class="num">-4.42%</b>，落後。</p>
+    </div>
+    <div class="vbox">
+      <div class="vlab">流動性 · 管顛簸</div>
+      <div class="vstat" style="--sev:var(--warn)">價格面平靜，緩衝已經沒了</div>
+      <p>銀行準備金 <b class="num">2.935</b> 兆（清倉線 2.5 兆）、隔夜拆款利差
+      <b class="num">1</b> bp、垃圾債利差 <b class="num">2.7%</b>（五年 P9.4）、
+      VIX <b class="num">15.21</b>。<b>唯一缺口：逆回購緩衝只剩
+      <span class="num">0.7</span> 億美元</b> —— 財政部再抽錢會直接打到準備金。</p>
+    </div>
+    <div class="vbox">
+      <div class="vlab">擁擠 · 管斷裂</div>
+      <div class="vstat" style="--sev:var(--bad)">3 格觸發</div>
+      <p>大盤 21 日已實現波動 <b class="num">12.95%</b>，但 AI 籃子中位數是它的
+      <b class="num">5.6</b> 倍，最高
+      <b class="num">9.8</b> 倍（SNDK）。
+      指數在睡覺、少數幾檔用年化三位數波動在跑 —— 斷裂風險在個股，不在指數。</p>
+    </div>
+  </div>
+
+  <div class="bell">
+    <div class="belllab">逃生鈴 · 開關三</div>
+    <div class="bellval">還沒響</div>
+    <!-- The two growth rates were swapped here: observed.value is the QoQ figure (its unit
+         says so), and the YoY lives in detail.yoy_pct. The page labelled the QoQ as 年增 and
+         printed "undefined%" for the other. Read the unit, do not assume which one is which. -->
+    <p>四家雲廠商 capex 合計 <b class="num">$165.05B</b>
+    （2026-06-30 季，資訊可得於 2026-07-31），
+    環比 <b class="num">27.21%</b>、年增 <b class="num">87.03%</b>
+    （上一季 $129.75B）。
+    他的規則是「增速見頂回落就立刻平倉」，而這一季沒有回落，是在加速。</p>
+    
+    <p class="bellcaveat">另外，這只是 Layer A（申報現金 capex）。概念契約寫死不含融資租賃，
+    下季指引也沒有 XBRL 標籤可接 —— 兩者都是 AI 資料中心支出裡會成長的部分。
+    所以這個「還沒響」是<b>系統性低估後的還沒響</b>，而且低估的幅度不是固定的。</p>
+  </div>
+
+  <div class="oneline">
+    <b>一句話：</b>方向沒問題、油還夠、逃生鈴上一季沒響 —— 但估值與擁擠度都在歷史極端
+    （巴菲特指標 P94.9、AI 籃子波動是大盤 5.6 倍）。
+    這不是「安全」，是<b>「還能燒，而且燒得很快」</b>。
+    <b>13</b> 條狠人規則已評估、其中 <b>4</b> 條觸發，另有 <b>3</b> 格沒有可用讀數。
+    經統計驗證的訊號：<b>0</b>。
+  </div>
+  <p class="vwhatnot"><b>這段總結不會告訴你的事：</b>它不說該買或該賣，不給目標價，也不給部位大小。
+  它只把「他的規則今天有沒有觸發」和「這條規則有沒有被證明過」分開講 ——
+  第二個問題目前 16 格全部是「沒有」。</p>
+  <p class="vdisc">以上每個數字都來自 canonical engine（calc v4.0.0 @ 28f1bbb）。
+  「狠人規則觸發」不等於「統計上證明危險」—— 全部 16 格的訊號驗證狀態都是 UNTESTED。</p>
+</section>
+
+<section id="maturity">
+  <h2>System maturity</h2>
+  <p class="h2sub">這套系統目前完成到哪一層</p>
+  <p class="lede">這比任何免責聲明都準確。上面兩層已經建立，下面兩層還沒開始 ——
+  <strong>可稽核不等於已驗證</strong>，而這個頁面的專業度只應該反映前者。</p>
+  <ol class="ladder">
+    <li class="rung rung-established">
+      <span class="rungno num">1</span>
+      <span class="rungbody"><b>Data Provenance</b><span class="rungdetail">每個數字帶來源、權威等級、生效日、抓取時間、轉換、版本、commit、原始回應 hash。</span></span>
+      <span class="rungstate">已建立</span>
+    </li><li class="rung rung-established">
+      <span class="rungno num">2</span>
+      <span class="rungbody"><b>Calculation Integrity</b><span class="rungdetail">canonical engine 唯一計算，renderer 零金融運算，測試強制一致。calc v4.0.0。</span></span>
+      <span class="rungstate">已建立</span>
+    </li><li class="rung rung-in_progress">
+      <span class="rungno num">3</span>
+      <span class="rungbody"><b>Measurement Validity</b><span class="rungdetail">capex 差分已對帳（65 筆可驗證中 64 筆分毫不差）。META 仍無可對照值，但改用敏感度測試取代連坐：只有當未驗證成分足以翻轉判定時才停止評估。概念契約已寫死「現金 PP&amp;E，不含融資租賃」，「抓到的概念是不是我們以為的那個概念」才剛開始有答案。</span></span>
+      <span class="rungstate">建立中</span>
+    </li><li class="rung rung-not_started">
+      <span class="rungno num">4</span>
+      <span class="rungbody"><b>Signal Validation</b><span class="rungdetail">0 / 16 格經過統計檢驗。所有門檻皆來自一位公開評論者，未回測、未樣本外驗證。</span></span>
+      <span class="rungstate">尚未開始</span>
+    </li><li class="rung rung-not_started">
+      <span class="rungno num">5</span>
+      <span class="rungbody"><b>Predictive Track Record</b><span class="rungdetail">前瞻假說帳本 3 筆，全部標記 LEGACY_EXPLORATORY，不計入績效。</span></span>
+      <span class="rungstate">尚未開始</span>
+    </li>
+  </ol>
+
+  <div class="counts">
+    <div class="cnt"><b class="num">13</b><span>規則已評估</span></div>
+    <div class="cnt"><b class="num">4</b><span>規則觸發</span></div>
+    <div class="cnt"><b class="num">3</b><span>無可用讀數</span></div>
+    <div class="cnt cnt-zero"><b class="num">0</b><span>經統計驗證的訊號</span></div>
+  </div>
+  <div class="provsum">
+    <div class="chlab">門檻是誰畫的</div>
+    <p>這個頁面叫「狠人的規則」，所以最該講清楚的一件事是：
+    <b>16 格裡只有 7 格用的是他真正講過的數字或規則。</b>
+    另外 3 格是<b>由他的判定反推</b>的——他只給了讀數和「觸發／未觸發」，
+    中間那條線是本系統補的，補法是「讓他的判定成立」，不是「他這樣定義」。
+    剩下 6 格<b>整條線都是本系統設的</b>。</p>
+    <p class="qmeta">反推與自訂都不等於錯，但它們借用了他的名字。分開標示之後，
+    每一格的顏色可以被追問到底是誰的判斷 —— 這比「全部都是他的框架」誠實。</p>
+  </div>
+  <p class="nocomp">本系統不輸出任何綜合分數、泡沫指數或 0–100 評分。沒有定義預測目標、沒有樣本外驗證的加權合成，是把不確定性藏起來，不是資訊。</p>
+</section>
+
+
+<section id="changes">
+  <h2>Since last run</h2>
+  <p class="h2sub">上一次執行之後，有什麼真的變了</p>
+  
+  <p class="lede">與 <b class="num">2026-08-25</b> 的快照相比。
+  比較的是兩次執行之間的變化，不是市場報酬。讀數的生效日可能與執行日不同，所以每筆都附上生效日 —— 引擎跑了不代表來源更新了。</p>
+  <div class="chgrid">
+    <div class="chbox">
+      <div class="chlab">規則狀態改變</div>
+      <ul class="chlist"><li><b>M2 年增 − 那斯達克年增（增負差）</b><span class="chmove">red → yellow</span></li></ul>
+    </div>
+    <div class="chbox">
+      <div class="chlab">資料狀態改變</div>
+      <ul class="chlist"><li><b>金融條件指數 (NFCI)</b><span class="chmove">LAGGED_BY_DESIGN → CURRENT</span></li><li><b>M2 年增 − 那斯達克年增（增負差）</b><span class="chmove">LAGGED_BY_DESIGN → CURRENT</span></li></ul>
+    </div>
+  </div>
+  <table class="chtab">
+    <thead><tr><th>指標</th><th class="r">上次</th><th class="r">這次</th><th class="r">變動</th>
+    <th>生效日</th><th>來源有更新嗎</th></tr></thead>
+    <tbody><tr>
+      <td>開關二 · 點火（期限結構代理）</td>
+      <td class="r num">0.854</td>
+      <td class="r num">0.848</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">-0.01</td>
+      <td class="num">2026-08-24 → 2026-08-25</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>SOFR − IORB 利差</td>
+      <td class="r num">0</td>
+      <td class="r num">1</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">+1</td>
+      <td class="num">2026-08-24 → 2026-08-25</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>隔夜逆回購緩衝</td>
+      <td class="r num">0.38</td>
+      <td class="r num">0.7</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">+0.32</td>
+      <td class="num">2026-08-24 → 2026-08-26</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>高收益債信用利差 (HY OAS)</td>
+      <td class="r num">2.69</td>
+      <td class="r num">2.7</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">+0.01</td>
+      <td class="num">2026-08-24 → 2026-08-25</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>金融條件指數 (NFCI)</td>
+      <td class="r num">-0.559</td>
+      <td class="r num">-0.566</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">-0.01</td>
+      <td class="num">2026-08-14 → 2026-08-21</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>M2 年增 − 那斯達克年增（增負差）</td>
+      <td class="r num">-36.2</td>
+      <td class="r num">-23.5</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">+12.7</td>
+      <td class="num">2026-06-01 → 2026-07-01</td>
+      <td class="up">是，新發布</td>
+      </tr><tr>
+      <td>AI 籃子相對波動（中位數）</td>
+      <td class="r num">6</td>
+      <td class="r num">5.6</td>
+      <!-- Deliberately not coloured green/red. Up is not good here: a rise in HY OAS is
+           stress, a fall in reserves is stress, and a rise in capex growth is the thing the
+           escape-bell rule is watching for the ABSENCE of. Direction is the sign's job;
+           colouring it would assert a judgement the engine never made. -->
+      <td class="r num delta">-0.4</td>
+      <td class="num">2026-08-25 → 2026-08-26</td>
+      <td class="up">是，新發布</td>
+      </tr></tbody>
+  </table>
+  <p class="qmeta">只列絕對變動。百分比變動在通過零時沒有定義，而這裡有好幾格本身就是百分比 ——
+  「百分比的百分比變動」會讀成兩種完全不同的意思。最後一欄很重要：數字變了不代表市場動了，
+  也可能只是同一個生效日的資料被修訂或重讀。</p>
+  
+</section>
+
+<section id="triggers">
+  <h2>Framework Triggers</h2>
+  <p class="h2sub">狠人規則已評估的 13 格</p>
+  <p class="lede">這是<strong>規則評估</strong>，不是校準過的評分。紅色代表「按他的原話，這格觸發了」，
+  不代表統計上已證明市場風險升高。標「門檻非原話」的格子，門檻是本系統設的，不是他講的。
+  </p>
+  <div class="grid"><article class="g" style="--sev:var(--ok)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">設計上落後</span>
+      <span class="chip">官方彙整</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>開關一 · 燃料（銀行準備金）<span class="tag tag-dark">6 天後失效</span></h3>
+  <p class="plain">銀行放在聯準會的閒錢。這桶油夠不夠，決定行情還能不能燒。</p>
+
+  <p class="note going-dark"><b>⏳ 這一格快要看不到了：</b>再過 6 天這個讀數就會過 SLA，而來源要 7 天才發布一次 —— 也就是說它會在下一次更新之前先失效。
+  屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">2.94<span class="qunit">兆美元</span></div>
+        <div class="qmeta num">2026-08-19　·　8 天前</div>
+        
+      
+      
+      <p class="qnote">四週變化 -4.14%，落在五年分布的 p18.1，不構成快速流失</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--ok)">未觸發</div>
+        <div class="ths"><span class="th th-green">&gt; 2.8 兆</span><span class="th th-yellow">2.5–2.8 兆</span><span class="th th-red">&lt; 2.5 兆 → 無條件清倉</span></div>
+        <div class="provline prov-his">門檻來源：<b>他給的數值</b></div>
+        
+      
+      <blockquote>每週一定要看 H.4.1 那個準備金餘額水位。站上 2.8 萬億美元上方，融漲邏輯是成立的。如果沒有危機的情況下快速跌破了 2.5 萬億，那就無條件清倉，這條沒有任何討論的餘地。</blockquote>
+    </section>
+  </div>
+
+  
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    <p class="exact">畫面顯示 <b class="num">2.94</b>，實際值 <b class="num">2.935</b>。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WRESBAL</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-19</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:26.189Z</dd></div><div><dt>raw_hash</dt><dd class="num">b10e207ffbe19ae5</dd></div><div><dt>transformation</dt><dd class="num">level in USD trillions; 4/13-week change; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--ok)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">設計上落後</span>
+      <span class="chip">官方一手</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>開關二 · 點火（期限結構代理）<span class="tag">代理</span><span class="tag tag-ours">門檻非原話</span></h3>
+  <p class="plain">市場覺得「現在」比「三個月後」更可怕嗎？怕近的＝恐慌還在；怕遠的＝恐慌已經退了。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">0.85<span class="qunit">VIX ÷ 3個月VIX</span></div>
+        <div class="qmeta num">2026-08-25　·　1 個交易日前</div>
+        
+      
+      
+        <div class="pctrow"><span>歷史位置</span><b class="num">P24</b></div>
+        <div class="pbar"><div class="pfill" style="width:24%"></div><div class="pneedle" style="left:calc(24% - 1px)"></div></div>
+        <div class="qmeta">過去 5 年，n=1254</div>
+      <p class="qnote">遠月波動率高於近月（Contango）＝ 市場沒有在為「馬上出事」定價</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--ok)">未觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 0.95（Contango；0.95 這條緩衝線是本系統加的，他只講 1.00 這個分界）</span><span class="th th-yellow">0.95–1.00（本系統加的接近區，他未給）</span><span class="th th-red">&gt; 1.00（倒掛 —— 這條是他的定義：遠月不再高於近月）</span></div>
+        <div class="provline prov-ours">門檻來源：<b>本系統設定</b></div>
+        
+      
+      <blockquote>VIX 期限結構從倒掛回到正常，專業叫做 Contango，意思就是遠月的波動率重新高於近月，它的意義就是恐慌退潮了。（1.00 的分界來自這句話的定義；0.95 的緩衝線是本系統加的，非他的原話。）</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>代理指標警告：</b>他的原始開關二是**選擇權 put/call 偏度極端倒掛＋現貨抗跌**。這裡用期限結構代理，兩者相關但不等價：偏度量的是尾部定價的不對稱，期限結構量的是恐慌的時間分布，可能給出相反答案。不過他在底部確認清單裡也直接點名了 Contango 這一項，所以此代理至少落在他自己的判準集合內。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    <p class="exact">畫面顯示 <b class="num">0.85</b>，實際值 <b class="num">0.848</b>；百分位 P24 的實際值為 24.1。</p>
+    <dl><div><dt>source_id</dt><dd class="num">cboe</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_PRIMARY</dd></div><div><dt>dataset</dt><dd class="num">CBOE_VIX</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-25</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:26.617Z</dd></div><div><dt>raw_hash</dt><dd class="num">9e6a6958041079e5</dd></div><div><dt>transformation</dt><dd class="num">Cboe VIX / VIX3M closes on a common session; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">PRESENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--ok)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">當前</span>
+      <span class="chip">官方一手</span>
+      <span class="chip">混合</span>
+    </span>
+  </div>
+
+  <h3>開關三 · 逃生鈴（雲廠商 capex 增速）</h3>
+  <p class="plain">微軟、Google、Amazon、Meta 這四家買設備的錢，增加的速度有沒有開始變慢。重點不是「還在花」，是「加速度」。</p>
+
+  
+
+  <div class="fresh fresh-current">
+    <div class="freshlab">資料新鮮度 · 三層</div>
+    <div class="freshrow">
+      <div class="fl"><span>日曆上應該有</span><b class="num">2026-Q2</b></div>
+      <div class="fl"><span>發行人已申報</span><b class="num">2026-Q2</b></div>
+      <div class="fl"><span>本管線實際有</span><b class="num">2026-Q2</b></div>
+    </div>
+    <p class="freshread">已到達日曆上應有的最新季度。</p>
+    
+  </div>
+
+  
+
+  
+
+  <p class="note rob">
+    <b>未驗證成分會不會改變答案（ROBUST）：</b>即使未驗證成分（META）在 ±25% 內任意變動，規則判定都維持「NOT_ROLLED_OVER」。決策對未驗證部分不敏感。
+    區間 17.12% ～ 38.06%。
+    <i>這是敏感度範圍，不是信賴區間。它假設未驗證成分在 ±25% 內任意變動，沒有機率模型支撐，也不代表任何分佈。</i></p>
+
+  <p class="note"><b>證據覆蓋（不是信心水準）：</b>
+    發行人 3/4　金額 0.8175　轉換對帳 0.9846
+    合計狀態 PARTIALLY_RECONCILED。覆蓋率說的是「有多少被驗證過」，
+    不是「有多大機率是對的」—— 佔水位 15% 的成分，可能就是變動的全部。</p>
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">27.2<span class="qunit">% 環比</span></div>
+        <div class="qmeta num">2026-06-30　·　27 天前</div>
+        
+      
+      
+      <p class="qnote">年增 87.03%，是序列內最高（前高 87.03%）。年增兩端都是直接申報的單季值，不經差分，所以這個數字本身是可信的 —— 但它不是他的規則。他要的是環比。</p>
+      <p class="qnote cov"><b>資訊涵蓋範圍：</b>僅限已申報實績。本格只涵蓋已申報的實際支出。法說會的下季指引沒有 XBRL tag，未接線 —— 公司可能在季報之間就轉向，而這裡看不到。</p>
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--ok)">未觸發</div>
+        <div class="ths"><span class="th th-green">環比增速持平或加速</span><span class="th th-red">環比增速見頂回落 → 立刻平倉</span></div>
+        <div class="provline prov-his">門檻來源：<b>他給的數值</b></div>
+        
+      
+      <blockquote>你要盯的是下游的雲廠商的資本開支的二階導數，也就是環比增速而不是同比增速。如果資本開支的絕對額還在漲，但環比增速已經開始放緩甚至見頂回落的話，哪怕當期的淨利潤再創新高也必須立刻平倉。</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>季節性：</b>這四家的環比有明顯季節性（2025Q1 −0.6%、2026Q1 +9.37%），但只有 8 季共同資料，不足以建立季節調整。因此環比的原始讀數無法可靠地區分「季節性走弱」與「真的見頂回落」。</p><p class="note"><b>差分對帳：</b>PARTIALLY_VERIFIED — 可對照的 65 筆差分中，64 筆與公司直接申報的單季值分毫不差。 GOOGL 有 3 年以外的歷史差異（多為重編或重分類），不影響當前讀數。 META 完全沒有可對照的直接申報單季值 —— 其差分結果無法用此方法驗證，因此任何包含它的季度合計都帶有未驗證的算術。</p>
+  <div class="layers"><div class="layer"><b>reported cash capex</b><span>AUTOMATED · SEC XBRL · 差分已對帳（64/65 分毫不差）</span></div><div class="layer"><b>finance leases</b><span>NOT_WIRED · 融資租賃不進現金 capex，本格系統性低估</span></div><div class="layer"><b>management guidance</b><span>NOT_WIRED · 下季指引無 XBRL tag</span></div></div>
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    <p class="exact">畫面顯示 <b class="num">27.2</b>，實際值 <b class="num">27.21</b>。</p>
+    <dl><div><dt>source_id</dt><dd class="num">sec_edgar</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_PRIMARY</dd></div><div><dt>dataset</dt><dd class="num">SEC_CAPEX</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:27.978Z</dd></div><div><dt>raw_hash</dt><dd class="num">MSFT:2a3f142c858f766d GOOGL:0936f4aeed7e9d49 AMZN:dd90f2b11e3f1363 META:ee842c677e662488</dd></div><div><dt>transformation</dt><dd class="num">YTD cumulative differenced to discrete quarters; summed across 4 issuers on common period ends; QoQ (rule) and YoY (context)</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">PRESENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div><div><dt>information_available_at</dt><dd class="num">2026-07-31</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--ok)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">當前</span>
+      <span class="chip">官方彙整</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>SOFR − IORB 利差</h3>
+  <p class="plain">銀行之間借隔夜錢，要不要付比聯準會利率更高的價？要付，就代表錢在變緊。</p>
+
+  
+
+  
+
+  <div class="persist">
+    <div class="freshlab">持續性 · 不是單日水位</div>
+    <p class="freshread">最近 20 個交易日中有 4 天 ≥ 1bp、0 天 ≥ 3bp；目前連續 1 天 ≥ 1bp。</p>
+    <p class="qmeta">單日為正可能只是結算日或月底的日曆壓力；真正的早期稀缺訊號是「持續」高於 IORB，不是某一天高於 IORB。所以這一格同時給水位與持續性，讓兩者不會被讀成同一件事。</p>
+  </div>
+
+  <p class="note"><b>他沒有給這一格紅燈：</b>他沒有給這一格紅燈的數值。以前的版本把他的黃燈（3bp）畫成紅燈，又自己加了一條 1bp 的黃線 —— 兩者都不是他的話。現在只保留他真正說過的那一條。</p>
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">1<span class="qunit">基點</span></div>
+        <div class="qmeta num">2026-08-25　·　1 個交易日前</div>
+        
+      
+      
+        <div class="pctrow"><span>歷史位置</span><b class="num">P86</b></div>
+        <div class="pbar"><div class="pfill" style="width:86%"></div><div class="pneedle" style="left:calc(86% - 1px)"></div></div>
+        <div class="qmeta">過去 3 年，n=782</div>
+      
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--ok)">未觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 3 bp（他未給此區間名稱）</span><span class="th th-yellow">≥ 3 bp（他的「黃色預警」）</span></div>
+        <div class="provline prov-his">門檻來源：<b>他給的數值</b></div>
+        
+      
+      <blockquote>SOFR-IRB 這個大家一定要每天都看，黃色預警是利差衝過三個基點，因為這是一個 95 分位的程度。</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>命名：</b>本格的判定只用他給的 3bp。1bp 這條線是本系統早期自己加的，已經移除 —— 它會讓月底一個 +1bp 的日曆性正值看起來像規則觸發。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">SOFR</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-25</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:28.635Z</dd></div><div><dt>raw_hash</dt><dd class="num">7a3434b7d0ea9e52</dd></div><div><dt>transformation</dt><dd class="num">SOFR minus IORB in bp on a common effective date; percentile vs 3y; plus persistence over the trailing 20 sessions</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--warn)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">設計上落後</span>
+      <span class="chip">官方彙整</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>財政部 TGA 餘額<span class="tag tag-dark">6 天後失效</span></h3>
+  <p class="plain">財政部的活存帳戶。它變胖是把市場上的錢吸走，變瘦是把錢放回市場。</p>
+
+  <p class="note going-dark"><b>⏳ 這一格快要看不到了：</b>再過 6 天這個讀數就會過 SLA，而來源要 7 天才發布一次 —— 也就是說它會在下一次更新之前先失效。
+  屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">954<span class="qunit">十億美元</span></div>
+        <div class="qmeta num">2026-08-19　·　8 天前</div>
+        
+      
+      
+        <div class="pctrow"><span>歷史位置</span><b class="num">P98</b></div>
+        <div class="pbar"><div class="pfill" style="width:98%"></div><div class="pneedle" style="left:calc(98% - 1px)"></div></div>
+        <div class="qmeta">過去 5 年，n=260</div>
+      
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--warn)">接近</div>
+        <div class="ths"><span class="th th-green">&lt; 9,500 億</span><span class="th th-yellow">9,500 億–1 兆</span><span class="th th-red">≥ 1 兆</span></div>
+        <div class="provline prov-his">門檻來源：<b>他給的數值</b></div>
+        
+      
+      <blockquote>財政部計劃在 2026 年的 7 月到 9 月淨市場化借款達到 6710 億美元，並且到 9 月底 TGA 帳戶的餘額目標是 9500 億美元。所以從 7 月份開始流動性壓力會逐漸上升。</blockquote>
+    </section>
+  </div>
+
+  
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    <p class="exact">畫面顯示 <b class="num">954</b>，實際值 <b class="num">953.6</b>；百分位 P98 的實際值為 97.7。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">WTREGEN</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-19</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:28.707Z</dd></div><div><dt>raw_hash</dt><dd class="num">673329e7e2acf713</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--warn)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">當前</span>
+      <span class="chip">官方彙整</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>隔夜逆回購緩衝<span class="tag tag-ours">門檻非原話</span></h3>
+  <p class="plain">市場多餘現金的緩衝墊。墊子還厚，抽錢先抽它；墊子見底，就直接抽銀行準備金。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">0.7<span class="qunit">十億美元</span></div>
+        <div class="qmeta num">2026-08-26　·　0 個交易日前</div>
+        
+      
+      
+        <div class="pctrow"><span>歷史位置</span><b class="num">P9</b></div>
+        <div class="pbar"><div class="pfill" style="width:9%"></div><div class="pneedle" style="left:calc(9% - 1px)"></div></div>
+        <div class="qmeta">過去 5 年，n=1305</div>
+      <p class="qnote">緩衝實質見底 —— 財政部再抽錢會直接打到銀行準備金。</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--warn)">接近</div>
+        <div class="ths"><span class="th th-green">&gt; 500 億</span><span class="th th-yellow">&lt; 500 億（緩衝耗盡）</span></div>
+        <div class="provline prov-ours">門檻來源：<b>本系統設定</b></div>
+        
+      
+      <blockquote>（他未給明確數值門檻；此門檻為本系統依其論述設定，不是他的原話。）</blockquote>
+    </section>
+  </div>
+
+  
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">RRPONTSYD</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-26</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:28.879Z</dd></div><div><dt>raw_hash</dt><dd class="num">063c6f4ea8e944b2</dd></div><div><dt>transformation</dt><dd class="num">level in USD bn; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--ok)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">當前</span>
+      <span class="chip">官方彙整</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>高收益債信用利差 (HY OAS)<span class="tag tag-ours">門檻非原話</span></h3>
+  <p class="plain">借錢給體質最差的公司，投資人要多收多少利息當風險費。這個數字跳起來＝信用真的出事。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">2.7<span class="qunit">%</span></div>
+        <div class="qmeta num">2026-08-25　·　1 個交易日前</div>
+        
+      
+      
+        <div class="pctrow"><span>歷史位置</span><b class="num">P9</b></div>
+        <div class="pbar"><div class="pfill" style="width:9%"></div><div class="pneedle" style="left:calc(9% - 1px)"></div></div>
+        <div class="qmeta">過去 5 年，n=794</div>
+      
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--ok)">未觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 4%</span><span class="th th-yellow">4–5%</span><span class="th th-red">≥ 5%</span></div>
+        <div class="provline prov-ours">門檻來源：<b>本系統設定</b></div>
+        
+      
+      <blockquote>（門檻為本系統設定；他強調的是「基本面沒變而價格崩了」時要看流動性與信用，未給數值。）</blockquote>
+    </section>
+  </div>
+
+  
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">BAMLH0A0HYM2</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-25</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:28.918Z</dd></div><div><dt>raw_hash</dt><dd class="num">0f0149216e75e93d</dd></div><div><dt>transformation</dt><dd class="num">OAS in percent; percentile vs 5y and 20y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--ok)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">當前</span>
+      <span class="chip">官方彙整</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>金融條件指數 (NFCI)<span class="tag tag-ours">門檻非原話</span></h3>
+  <p class="plain">整體金融環境是鬆還是緊的總分。負的＝比平均寬鬆，正的＝比平均緊。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">-0.57<span class="qunit">標準差</span></div>
+        <div class="qmeta num">2026-08-21　·　6 天前</div>
+        
+      
+      
+        <div class="pctrow"><span>歷史位置</span><b class="num">P5</b></div>
+        <div class="pbar"><div class="pfill" style="width:5%"></div><div class="pneedle" style="left:calc(5% - 1px)"></div></div>
+        <div class="qmeta">過去 5 年，n=261</div>
+      
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--ok)">未觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 0（寬鬆）</span><span class="th th-yellow">0–0.2</span><span class="th th-red">≥ 0.2</span></div>
+        <div class="provline prov-ours">門檻來源：<b>本系統設定</b></div>
+        
+      
+      <blockquote>（門檻為本系統設定，非他的原話。）</blockquote>
+    </section>
+  </div>
+
+  
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    <p class="exact">畫面顯示 <b class="num">-0.57</b>，實際值 <b class="num">-0.566</b>；百分位 P5 的實際值為 5。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NFCI</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-21</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:28.969Z</dd></div><div><dt>raw_hash</dt><dd class="num">4b489d3be3574ad5</dd></div><div><dt>transformation</dt><dd class="num">index level; percentile vs 5y</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--warn)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">當前</span>
+      <span class="chip weak">非官方免費</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>M2 年增 − 那斯達克年增（增負差）</h3>
+  <p class="plain">市場上的錢一年多了幾 %，股市一年漲了幾 %。股市跑得比錢快太多，多出來的就是估值撐的。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">-24<span class="qunit">個百分點</span></div>
+        <div class="qmeta num">2026-07-01　·　27 天前</div>
+        
+      
+      
+      <p class="qnote">此讀數描述的是 2026-07-01，不是今天 —— M2 每月發布且落後約一個月，錨點只能取到兩邊都有觀測的最新日期。</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--warn)">接近</div>
+        <div class="ths"><span class="th th-green">&gt; −15（本系統設定）</span><span class="th th-yellow">−15 至 −24（上界為本系統設定）</span><span class="th th-red">≤ −24（由他的判定反推：他在 −24.1 判定觸發）</span></div>
+        <div class="provline prov-derived">門檻來源：<b>由他的判定反推</b></div>
+        <p class="qmeta">他 6 月讀到 −24.1 判定觸發，所以紅線必須落在 −24.1 或更高（更靠近 0）的位置。舊版把紅線設在 −25，等於他自己的那個例子在本系統裡會被判成黃燈 —— 規則與它唯一的已知案例互相矛盾。反推的意思是「讓他的判定成立」，不是「他這樣定義」。</p>
+      
+      <blockquote>第五項 M2 同比增長 5.6% 而同期的納斯達克漲幅是 29.7%，增負差仍在負的 24.1%，這項也觸發了。</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>他的說明：</b>他 6 月讀到 −24.1 判定觸發，所以紅線必須落在 −24.1 或更高（更靠近 0）的位置。舊版把紅線設在 −25，等於他自己的那個例子在本系統裡會被判成黃燈 —— 規則與它唯一的已知案例互相矛盾。反推的意思是「讓他的判定成立」，不是「他這樣定義」。</p><p class="note"><b>來源權威：</b>M2 來自 FRED（OFFICIAL_AGGREGATOR），股價來自 Yahoo（UNOFFICIAL_FREE）；複合指標取最低者，故本格標為 UNOFFICIAL_FREE。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    <p class="exact">畫面顯示 <b class="num">-24</b>，實際值 <b class="num">-23.5</b>。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">M2SL</dd></div><div><dt>effective_date</dt><dd class="num">2026-07-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:29.011Z</dd></div><div><dt>raw_hash</dt><dd class="num">7a6e79e6f5d9ded0</dd></div><div><dt>transformation</dt><dd class="num">calendar-aware YoY on both legs at a common anchor</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--bad)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">設計上落後</span>
+      <span class="chip">官方彙整</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>巴菲特指標（總市值 ÷ GDP）<span class="tag tag-ours">門檻非原話</span></h3>
+  <p class="plain">整個股市值多少錢，跟整個國家一年生產多少錢比一比。超過 100% 就算貴。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">218<span class="qunit">%</span></div>
+        <div class="qmeta num">2026-01-01　·　149 天前</div>
+        
+      
+      
+        <div class="pctrow"><span>歷史位置</span><b class="num">P95</b></div>
+        <div class="pbar"><div class="pfill" style="width:95%"></div><div class="pneedle" style="left:calc(95% - 1px)"></div></div>
+        <div class="qmeta">過去 20 年，n=78</div>
+      <p class="qnote">兩邊都對齊在 2026-01-01 起始的那一季（截至 2026-03-31）。此讀數描述的是那一季，距季末約 149 天。Z.1 與 GDP 都是季度資料且發布本身就落後，這是設計上的落後不是失效。</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--bad)">觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 150%（本系統設定）</span><span class="th th-yellow">150–200%（本系統設定）</span><span class="th th-red">≥ 200%（本系統設定；他只給讀數 234% 與「觸發」，未給門檻）</span></div>
+        <div class="provline prov-ours">門檻來源：<b>本系統（通用慣例線）</b></div>
+        <p class="qmeta">他讀到 234%；本系統分母定義不同（Z.1 企業股權 ÷ GDP），數值對不齊是預期內的。門檻本身也不是他的：他給的是一個讀數和一個判定，中間那條線是本系統補的。</p>
+      
+      <blockquote>第四項經典巴菲特指標 234%，也觸發。（150/200 是這個指標的通用慣例線，為本系統設定，非他的原話 —— 他未給門檻，只講了讀數與判定。）</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>他的說明：</b>他讀到 234%；本系統分母定義不同（Z.1 企業股權 ÷ GDP），數值對不齊是預期內的。門檻本身也不是他的：他給的是一個讀數和一個判定，中間那條線是本系統補的。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    <p class="exact">畫面顯示 <b class="num">218</b>，實際值 <b class="num">218.1</b>；百分位 P95 的實際值為 94.9。</p>
+    <dl><div><dt>source_id</dt><dd class="num">fred</dd></div><div><dt>source_authority</dt><dd class="num">OFFICIAL_AGGREGATOR</dd></div><div><dt>dataset</dt><dd class="num">NCBEILQ027S</dd></div><div><dt>effective_date</dt><dd class="num">2026-01-01</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:29.137Z</dd></div><div><dt>raw_hash</dt><dd class="num">fdbcd4072303d19b</dd></div><div><dt>transformation</dt><dd class="num">Z.1 corporate equities / GDP, joined on a common quarter</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div><div><dt>period_end</dt><dd class="num">2026-03-31</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--bad)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">當前</span>
+      <span class="chip weak">非官方免費</span>
+      <span class="chip">自動</span>
+    </span>
+  </div>
+
+  <h3>AI 籃子相對波動（中位數）<span class="tag tag-ours">門檻非原話</span></h3>
+  <p class="plain">這幾檔 AI 股最近上下跳的幅度，是大盤的幾倍。倍數越大，代表風險越集中在少數股票、不在指數。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">5.6<span class="qunit">倍</span></div>
+        <div class="qmeta num">2026-08-26　·　0 個交易日前</div>
+        
+      
+      
+      <p class="qnote">大盤 21 日已實現波動 12.95%，籃子中位數是它的 5.6 倍。</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--bad)">觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 3 倍</span><span class="th th-yellow">3–5 倍</span><span class="th th-red">≥ 5 倍</span></div>
+        <div class="provline prov-ours">門檻來源：<b>本系統設定</b></div>
+        
+      
+      <blockquote>（門檻為本系統設定。他談的是「拥挤就是一个金光闪闪的博弈矿」，未給數值門檻。）</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>命名：</b>本格量的是**已實現波動比值**，不是擁擠度。真正的擁擠度需要部位資料 —— 集中度、廣度、橫斷面相關性、成交量異常、選擇權部位、資金流。那些都尚未接線，所以此格不叫 Crowding。</p><p class="note"><b>選樣偏誤：</b>籃子是人工挑選的 7 檔 AI 相關標的，有主題偏誤；用中位數而非最大值，避免單一極端值代表整個市場。它只描述這個籃子。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    
+    <dl><div><dt>source_id</dt><dd class="num">yahoo</dd></div><div><dt>source_authority</dt><dd class="num">UNOFFICIAL_FREE</dd></div><div><dt>dataset</dt><dd class="num">EQUITY_DAILY:^GSPC</dd></div><div><dt>effective_date</dt><dd class="num">2026-08-26</dd></div><div><dt>retrieved_at</dt><dd class="num">2026-08-26T22:38:29.252Z</dd></div><div><dt>raw_hash</dt><dd class="num">567908b48bb02ed4</dd></div><div><dt>transformation</dt><dd class="num">21-day annualised realised vol vs ^GSPC; median across a fixed basket</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_metadata</dt><dd class="num">ABSENT</dd></div><div><dt>as_of_query</dt><dd class="num">NOT_TESTED</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--bad)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">設計上落後</span>
+      <span class="chip">人工二手</span>
+      <span class="chip">需人工</span>
+    </span>
+  </div>
+
+  <h3>易爆盤 2 · SPX 零日到期選擇權占比<span class="tag tag-ours">門檻非原話</span><span class="tag tag-dark">2 天後失效</span></h3>
+  <p class="plain">當天買、當天就到期的樂透型選擇權，占了整個標普選擇權交易的幾成。比例越高，代表市場越像賭場。</p>
+
+  <p class="note going-dark"><b>⏳ 這一格快要看不到了：</b>再過 2 天這個讀數就會過 SLA，而來源要 30 天才發布一次 —— 也就是說它會在下一次更新之前先失效。
+  屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">64<span class="qunit">%</span></div>
+        <div class="qmeta num">2026-06-30　·　58 天前</div>
+        
+      
+      
+      <p class="qnote">他的讀數：2–4 月月均約 63%，6 月高波動交易日達 64%，判定觸發。</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--bad)">觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 50%</span><span class="th th-yellow">50–60%</span><span class="th th-red">≥ 60%</span></div>
+        <div class="provline prov-derived">門檻來源：<b>由他的判定反推</b></div>
+        <p class="qmeta">他只給了讀數（2–4 月月均約 63%、6 月 64%）與判定（觸發），沒有給數值門檻。50/60 這兩條線是本系統反推的 —— 反推的意思是「讓他的判定成立」，不是「他這樣定義」。</p>
+      
+      <blockquote>（他未給數值門檻。他只給了讀數（2–4 月月均約 63%、6 月 64%）與判定（觸發），沒有給數值門檻。50/60 這兩條線是本系統反推的 —— 反推的意思是「讓他的判定成立」，不是「他這樣定義」。）</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>他的說明：</b>他只給了讀數（2–4 月月均約 63%、6 月 64%）與判定（觸發），沒有給數值門檻。50/60 這兩條線是本系統反推的 —— 反推的意思是「讓他的判定成立」，不是「他這樣定義」。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_0DTE_SHARE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from Cboe 官方統計 / 券商研究</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--bad)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">設計上落後</span>
+      <span class="chip">人工二手</span>
+      <span class="chip">需人工</span>
+    </span>
+  </div>
+
+  <h3>易爆盤 3 · 標普前十大權重<span class="tag tag-ours">門檻非原話</span><span class="tag tag-dark">2 天後失效</span></h3>
+  <p class="plain">整個標普 500 裡，最大的十家公司就占了幾成。占比越高，指數越像那十家的分身。</p>
+
+  <p class="note going-dark"><b>⏳ 這一格快要看不到了：</b>再過 2 天這個讀數就會過 SLA，而來源要 30 天才發布一次 —— 也就是說它會在下一次更新之前先失效。
+  屆時計數會少一格。那不代表這個風險下降了，只代表這一格看不到了。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">39.3<span class="qunit">%</span></div>
+        <div class="qmeta num">2026-06-30　·　58 天前</div>
+        
+      
+      
+      <p class="qnote">他的讀數 39.3%，判定觸發。這是集中度風險，不是估值風險 —— 兩者要分開看。</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--bad)">觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 30%</span><span class="th th-yellow">30–35%</span><span class="th th-red">≥ 35%</span></div>
+        <div class="provline prov-derived">門檻來源：<b>由他的判定反推</b></div>
+        <p class="qmeta">他只給了讀數 39.3% 與判定（觸發），沒有給門檻。30/35 是本系統反推的。</p>
+      
+      <blockquote>（他未給數值門檻。他只給了讀數 39.3% 與判定（觸發），沒有給門檻。30/35 是本系統反推的。）</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>他的說明：</b>他只給了讀數 39.3% 與判定（觸發），沒有給門檻。30/35 是本系統反推的。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">SPX_TOP10_WEIGHT</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-30</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from S&amp;P Dow Jones Indices 月報 / SPY 持股揭露</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+  </details>
+</article></div>
+</section>
+
+
+<section id="holdings">
+  <h2>Holdings</h2>
+  <p class="h2sub">持股 · Serenity 閘門（首次實際執行）</p>
+  <p class="lede">在接上 SEC 財報之前，這個鏡頭的每一格都卡在 <code>unverified</code> ——
+  不是因為公司未經證實，而是<strong>系統沒有證據可以評分</strong>。現在有了。
+  規則不變：<strong>沒有引用就不得升級</strong>，XBRL 回答不了的欄位維持 <code>unverified</code>，
+  那是正確答案，不是缺口。</p>
+  <div class="conc">
+    <div class="conclab">集中度</div>
+    <p>全部 2 檔都在「Semiconductors」（細分為 Memory — DRAM/HBM、Memory — NAND，但那是同一個因子），這是一個因子，不是一個組合。</p>
+    <p class="corr">MU 與 SNDK 的日報酬相關係數 0.772（259 個交易日）。價格證實它們是同一筆交易，標籤上的細分沒有帶來分散。</p>
+    <p class="qmeta">本系統不做部位建議，也不知道你的部位大小。這裡只陳述暴露事實。</p>
+  </div>
+  <div class="grid">
+  <article class="g" style="--sev:var(--brass)">
+      <header>
+        <div class="ghead"><h3>MU · Micron Technology<span class="tag">Memory — DRAM/HBM</span></h3>
+        <p class="plain">持有中。狠人框架下屬於 AI 上游瓶頸標的；Serenity 方法下需檢驗四個條件。</p></div>
+        <div class="chips">
+          <span class="chip chip-state">財報 2026-06-25（63 天）</span>
+          <span class="chip chip-auth">官方一手</span>
+        </div>
+      </header>
+      <div class="quad">
+        <section class="q"><div class="qlab">營收（季）</div>
+          <div class="qval num">$41.46B</div>
+          <div class="qmeta">年增 <b>345.72%</b>　期間 2026-05-28</div></section>
+        <section class="q"><div class="qlab">獲利品質</div>
+          <div class="qval num">68.13%</div>
+          <div class="qmeta">淨利率　毛利率 84.56%<br>
+          FCF $17.56B</div></section>
+        <section class="q"><div class="qlab">價格位置</div>
+          <div class="qval num">-22.67%</div>
+          <div class="qmeta">距兩年高點　vs 50日線 <b>-2.14%</b><br>
+          21日波動 <b>90.9%</b></div></section>
+        <section class="q q-rule"><div class="qlab">Serenity 閘門</div>
+          <div class="qval" style="font-size:15px;color:var(--ok)">賺錢能力 SUPPORTED</div>
+          <div class="qmeta">範圍 <b>CURRENT_PERIOD</b>　覆蓋 <b>COMPLETE</b><br>
+          護城河 <b>unverified</b>　結論 <b>研究地图</b></div></section>
+      </div>
+      <p class="note"><b>賺錢能力的引用：</b>10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）；10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）；10-Q 0000723125-26-000015（期間 2026-05-28，申報 2026-06-25）</p>
+      <p class="note"><b>護城河為何仍是 unverified：</b>護城河需要的是認證週期、轉換成本、設計導入、第二來源可得性等證據 —— XBRL 財報數字無法回答。高毛利率是結果，不是護城河本身，記憶體產業歷史上就是高毛利與虧損交替的週期股。</p>
+      <p class="note"><b>為什麼是 SUPPORTED 而不是 proven：</b>只證明最新一期的獲利與現金流為正，不證明長期獲利紀錄。要談 track record 需要連續數年的資料，本管線目前只讀最新季度。</p>
+      
+      
+      <p class="note"><b>結論為何停在研究地图：</b>Serenity 方法要求四個條件同時成立才升級：客戶非有不可、供給無法快速增加、公司已認證／設計導入、且相對於機會而言便宜。前三項本管線尚無證據，第四項需要估值工作。要到「可投资结论」，缺的是質性證據與估值，不是價格動能。</p>
+    </article><article class="g" style="--sev:var(--brass)">
+      <header>
+        <div class="ghead"><h3>SNDK · Sandisk<span class="tag">Memory — NAND</span></h3>
+        <p class="plain">持有中。2025-02 自 Western Digital 分拆，上市歷史短。</p></div>
+        <div class="chips">
+          <span class="chip chip-state">財報 2026-08-06（21 天）</span>
+          <span class="chip chip-auth">官方一手</span>
+        </div>
+      </header>
+      <div class="quad">
+        <section class="q"><div class="qlab">營收（季）</div>
+          <div class="qval num">$7.08B</div>
+          <div class="qmeta">年增 <b>30.63%</b>　期間 2026-06-30</div></section>
+        <section class="q"><div class="qlab">獲利品質</div>
+          <div class="qval num">27.02%</div>
+          <div class="qmeta">淨利率　毛利率 未揭露<br>
+          FCF $1.12B</div></section>
+        <section class="q"><div class="qlab">價格位置</div>
+          <div class="qval num">-35.79%</div>
+          <div class="qmeta">距兩年高點　vs 50日線 <b>-7.69%</b><br>
+          21日波動 <b>127.49%</b></div></section>
+        <section class="q q-rule"><div class="qlab">Serenity 閘門</div>
+          <div class="qval" style="font-size:15px;color:var(--ok)">賺錢能力 SUPPORTED</div>
+          <div class="qmeta">範圍 <b>CURRENT_PERIOD</b>　覆蓋 <b>PARTIAL</b><br>
+          護城河 <b>unverified</b>　結論 <b>研究地图</b></div></section>
+      </div>
+      <p class="note"><b>賺錢能力的引用：</b>10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）；10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）；10-Q 0001193125-26-337177（期間 2026-06-30，申報 2026-08-06）</p>
+      <p class="note"><b>護城河為何仍是 unverified：</b>護城河需要的是認證週期、轉換成本、設計導入、第二來源可得性等證據 —— XBRL 財報數字無法回答。高毛利率是結果，不是護城河本身，記憶體產業歷史上就是高毛利與虧損交替的週期股。</p>
+      <p class="note"><b>為什麼是 SUPPORTED 而不是 proven：</b>只證明最新一期的獲利與現金流為正，不證明長期獲利紀錄。要談 track record 需要連續數年的資料，本管線目前只讀最新季度。 另缺 gross_profit，覆蓋為 PARTIAL。</p>
+      
+      <p class="note advisory"><b>經濟異常值（ECONOMIC_OUTLIER，僅提醒不封鎖）：</b>
+        asset_turnover = 0.161 — 資產週轉率遠低於一般製造業常態。可能是合併合資廠資產、實體範圍不同，或這門生意本來就極度資本密集。 <i>此門檻（0.25）沒有統計依據，是人為設定的注意線，不是資料錯誤的證據。</i></p>
+      <p class="note"><b>結論為何停在研究地图：</b>Serenity 方法要求四個條件同時成立才升級：客戶非有不可、供給無法快速增加、公司已認證／設計導入、且相對於機會而言便宜。前三項本管線尚無證據，第四項需要估值工作。要到「可投资结论」，缺的是質性證據與估值，不是價格動能。</p>
+    </article>
+  </div>
+  <p class="nocomp"><b>三條分析流程的執行狀態：</b>serenity-method = <b>EXECUTED</b>　·　serenity-bottleneck-hunter = <b>NOT_EXECUTED</b>　·　equity-research = <b>NOT_EXECUTED</b>。本檔不輸出買賣訊號、目標價或部位建議。所有品質欄位遵守 serenity-method 的規則：沒有引用證據就維持 unverified。<br>
+  <b>為什麼不叫「三個鏡頭」：</b>三條流程跑在同一批 SEC 與市場資料上，看得再多次也還是同一個來源。
+  證據的多樣性取決於<strong>每次分析背後有幾個彼此獨立的資料出處</strong>，不取決於跑了幾條流程 ——
+  三條流程一起同意，可能只是同一筆資料被讀了三次。</p>
+</section>
+
+<section id="nodecision">
+  <h2>No Decision</h2>
+  <p class="h2sub">沒有可用讀數的 3 格</p>
+  <p class="lede">資料逾期、過期或缺漏。這些格子<strong>不會被當成「中性」或「黃燈」</strong>，也不進任何計數。</p>
+  <div class="grid"><article class="g" style="--sev:var(--warn)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">逾期未更新</span>
+      <span class="chip">人工二手</span>
+      <span class="chip">需人工</span>
+    </span>
+  </div>
+
+  <h3>易爆盤 1 · 融資餘額 (FINRA margin debt)</h3>
+  <p class="plain">散戶跟券商借錢買股票的總金額。借得越多，跌起來被強制賣出的骨牌就越長。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">1416<span class="qunit">十億美元</span></div>
+        <div class="qmeta num">2026-05-31　·　88 天前</div>
+        
+      
+      
+      <p class="qnote">他的讀數：3 月 −2.6%、4 月 +6.8%、5 月 +8.5%，總額 1.416 兆美元。他判定為「彈性還在」的黃燈 —— 燃料回來了，副作用是之後去槓桿會更猛。</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--warn)">接近</div>
+        <div class="ths"><span class="th th-green">環比轉負（去槓桿中）</span><span class="th th-yellow">環比正成長（短線燃料回來，但未來下跌會更猛）</span><span class="th th-red">連續數月兩位數環比成長</span></div>
+        <div class="provline prov-his">門檻來源：<b>他給的規則（方向性）</b></div>
+        <p class="qmeta">他的門檻是方向性的（環比轉負／正成長／連續數月兩位數），不是單一數值，已照原樣保留。</p>
+      
+      
+    </section>
+  </div>
+
+  <p class="note"><b>他的說明：</b>他的門檻是方向性的（環比轉負／正成長／連續數月兩位數），不是單一數值，已照原樣保留。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">FINRA_MARGIN_DEBT</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FINRA Margin Statistics（每月中旬公布上月數據）</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--ok)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">逾期未更新</span>
+      <span class="chip">人工二手</span>
+      <span class="chip">需人工</span>
+    </span>
+  </div>
+
+  <h3>易爆盤 6 · 內部人賣出 / 買進 金額比</h3>
+  <p class="plain">公司高層自己在賣股票還是買股票。賣得比買得多太多，代表最懂的人在下車。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">3.44<span class="qunit">倍</span></div>
+        <div class="qmeta num">2026-05-31　·　88 天前</div>
+        
+      
+      
+      <p class="qnote">他的讀數 3.44 倍，低於 5 倍門檻，判定未觸發。</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--ok)">未觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 5 倍</span><span class="th th-red">≥ 5 倍</span></div>
+        <div class="provline prov-his">門檻來源：<b>他給的數值</b></div>
+        <p class="qmeta">他明確以 5 倍為門檻（讀數 3.44 倍，低於門檻，判定未觸發）。</p>
+      
+      <blockquote>（他明確以 5 倍為門檻（讀數 3.44 倍，低於門檻，判定未觸發）。）</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>他的說明：</b>他明確以 5 倍為門檻（讀數 3.44 倍，低於門檻，判定未觸發）。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">INSIDER_SELL_BUY</dd></div><div><dt>effective_date</dt><dd class="num">2026-05-31</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from SEC Form 4 彙總（InsiderScore / Washington Service 等）</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+  </details>
+</article><article class="g" style="--sev:var(--ok)">
+
+  <!-- Validation status leads. It is read before the number, not after it. -->
+  <div class="vstrip">
+    <span class="vbadge">UNTESTED</span>
+    <span class="vtext">此門檻尚未經過任何回測或樣本外檢驗</span>
+    <span class="vchips">
+      <span class="chip">過期</span>
+      <span class="chip">無權威來源</span>
+      <span class="chip">需人工</span>
+    </span>
+  </div>
+
+  <h3>易爆盤 7 · 那斯達克 100 未來 12 個月本益比</h3>
+  <p class="plain">用未來一年預估的獲利去算，現在買要付幾倍價錢。倍數越高，等於越多錢是先付給「還沒發生的成長」。</p>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  <div class="split">
+    <!-- Measurement -->
+    <section class="side side-obs">
+      <div class="sidelab">觀測到的事實</div>
+      
+        <div class="bignum num">24.96<span class="qunit">倍</span></div>
+        <div class="qmeta num">2026-06-01　·　87 天前</div>
+        
+      
+      
+      <p class="qnote">他的讀數 24.96 倍，低於 30 倍門檻，判定未觸發。這是他七項裡最反直覺的一項 —— 喊泡沫的人很多，但預估本益比其實沒有失控。</p>
+      
+    </section>
+
+    <!-- Interpretation. A separate object, never fused with the measurement. -->
+    <section class="side side-rule">
+      <div class="sidelab">狠人的規則怎麼說</div>
+      
+        <div class="rulestat" style="color:var(--ok)">未觸發</div>
+        <div class="ths"><span class="th th-green">&lt; 30 倍</span><span class="th th-red">≥ 30 倍</span></div>
+        <div class="provline prov-his">門檻來源：<b>他給的數值</b></div>
+        <p class="qmeta">他明確以 30 倍為門檻（讀數 24.96 倍，低於門檻，判定未觸發）。</p>
+      
+      <blockquote>（他明確以 30 倍為門檻（讀數 24.96 倍，低於門檻，判定未觸發）。）</blockquote>
+    </section>
+  </div>
+
+  <p class="note"><b>他的說明：</b>他明確以 30 倍為門檻（讀數 24.96 倍，低於門檻，判定未觸發）。</p>
+  
+
+  <details class="prov"><summary>稽核抽屜 · 完整精度與來源鏈</summary>
+    
+    <dl><div><dt>source_id</dt><dd class="num">manual</dd></div><div><dt>source_authority</dt><dd class="num">MANUAL_SECONDARY</dd></div><div><dt>dataset</dt><dd class="num">NDX_FORWARD_PE</dd></div><div><dt>effective_date</dt><dd class="num">2026-06-01</dd></div><div><dt>retrieved_at</dt><dd class="num"></dd></div><div><dt>raw_hash</dt><dd class="num"></dd></div><div><dt>transformation</dt><dd class="num">hand-entered from FactSet / Bloomberg / Nasdaq 官方</dd></div><div><dt>calculation_version</dt><dd class="num">4.0.0</dd></div><div><dt>code_commit</dt><dd class="num">28f1bbb</dd></div><div><dt>point_in_time_capable</dt><dd class="num">false</dd></div></dl>
+  </details>
+</article></div>
+  
+</section>
+
+
+<section id="tests">
+  <h2>What the tests actually test</h2>
+  <p class="h2sub">測試分類 · 「64/64 通過」本身不是保證</p>
+  <p class="lede">一個總數聽起來像保證，但它沒說通過的是<strong>哪一個問題</strong>。
+  這裡把測試依照它們回答的問題分開 —— 最後一格是空的，而那格才是重點。</p>
+  <div class="tgrid">
+    <div class="tbox tok">
+      <div class="tnum num">15<span class="tof">/15</span></div>
+      <div class="tlab">時間對齊</div>
+      <p class="task">兩條序列是不是在同一個時間點上被比較？</p>
+      <p class="twhy">這一層的每個測試都對應一個真的出過的錯 —— 六月的 M2 對上八月的那斯達克，把一個紅燈壓成黃燈。</p>
+      
+    </div><div class="tbox tok">
+      <div class="tnum num">30<span class="tof">/30</span></div>
+      <div class="tlab">計算一致性</div>
+      <p class="task">畫面上的數字，是不是引擎算出來的那一個？</p>
+      <p class="twhy">renderer 不准做任何金融運算，連 /1e9 和四捨五入都不行。這一層負責讓這條規則不只是註解。</p>
+      
+    </div><div class="tbox tok">
+      <div class="tnum num">7<span class="tof">/7</span></div>
+      <div class="tlab">輸出契約</div>
+      <p class="task">這份輸出有沒有可能夾帶買賣建議、目標價或綜合評分？</p>
+      <p class="twhy">在結構化資料上檢查，不是掃 HTML —— 舊做法連續三次抓到自己的免責聲明。</p>
+      
+    </div><div class="tbox tok">
+      <div class="tnum num">12<span class="tof">/12</span></div>
+      <div class="tlab">量測效度</div>
+      <p class="task">這個標籤底下，量到的到底是哪一個財務概念？</p>
+      <p class="twhy">第四次審查指出這是目前的瓶頸：算對了，不代表算的是你以為的那個東西。</p>
+      
+    </div>
+    <div class="tbox tempty">
+      <div class="tnum num">0<span class="tof">/0</span></div>
+      <div class="tlab">訊號驗證</div>
+      <p class="task">這些門檻在歷史上真的能分辨後續報酬嗎？</p>
+      <p class="twhy">這一格是空的，而且空得很重要。全部通過只證明管線忠實，不證明框架有效。要填滿它需要的是回測與樣本外檢驗，不是再多寫幾個單元測試。</p>
+      <p class="tfail">NO_TESTS_EXIST</p>
+    </div>
+  </div>
+  <p class="nocomp">測試分類比總數誠實。通過的是「管線有沒有騙人」，沒有測的是「訊號準不準」。</p>
+</section>
+
+<footer>
+  <p><b>Canonical data flow</b>　<span class="num">FRED / SEC EDGAR / Yahoo → data/raw/ → gauges.mjs
+  (calc v4.0.0) → data/gauges.json → render-dashboard.mjs → 本頁</span>。
+  這個 renderer <b>不做任何金融計算</b> —— 沒有 YoY、沒有百分位、沒有中位數、沒有利差、沒有訊號邏輯。
+  頁面上每個數字都是引擎算好的欄位。</p>
+  <p><b>FRED 的預設端點只回傳最新修訂版，所以目前的讀數描述現在、不是可回測的歷史。但這是「尚未實作」，不是「結構上不可能」—— ALFRED 提供 vintage 資料，FRED API 也有 series/vintagedates，回測路徑並沒有被資料架構永久封死。SEC 那條已帶 filed 時間戳，as-of 查詢也已實際執行並通過測試（站在 2026-07-15 看不到 2026-08-06 才申報的那一季），所以 point-in-time 目前是 FRED 這一側缺 vintage，不是整條路徑都缺。</b></p>
+  <div class="disc">研究工具，不是投資建議。不輸出買賣訊號、目標價、部位建議或綜合評分。
+  所有訊號驗證狀態皆為 UNTESTED —— 這些門檻來自一位公開評論者，尚未經回測或樣本外檢驗。
+  <br>仅作信息跟踪，不构成投资建议。</div>
+</footer>
+</div>
