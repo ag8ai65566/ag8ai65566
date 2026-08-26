@@ -64,6 +64,27 @@ const layerVerdict = (ids) => {
   return { sev: SEV[worst], status: worst, evaluated: states.length,
     counts: states.reduce((a, s) => { a[s] = (a[s] ?? 0) + 1; return a; }, {}) };
 };
+// Where each numeric line actually came from. The page is titled 「狠人的規則」, so the
+// difference between a number he said, a number reverse-engineered so his verdict
+// reproduces, and a number this system chose is the single most load-bearing fact about it.
+const PROV_LABEL = {
+  HIS_STATED_NUMBER: { short: '他給的數值', tone: 'his' },
+  HIS_STATED_RULE: { short: '他給的規則（方向性）', tone: 'his' },
+  DERIVED_FROM_HIS_VERDICT: { short: '由他的判定反推', tone: 'derived' },
+  OURS_CONVENTIONAL: { short: '本系統（通用慣例線）', tone: 'ours' },
+  OURS: { short: '本系統設定', tone: 'ours' },
+};
+const provOf = (g) => {
+  if (!g.henren?.thresholds) return null;
+  const key = g.henren.threshold_provenance
+    ?? (g.henren.threshold_is_ours ? 'OURS' : 'HIS_STATED_NUMBER');
+  return { key, ...(PROV_LABEL[key] ?? { short: key, tone: 'ours' }) };
+};
+const provTally = data.gauges.reduce((a, g) => {
+  const p = provOf(g); if (!p) return a;
+  a[p.tone] = (a[p.tone] ?? 0) + 1; a.total = (a.total ?? 0) + 1; return a;
+}, {});
+
 const LIQUIDITY_GAUGES = ['fuel', 'sofr', 'tga', 'rrp', 'hyoas', 'nfci'];
 const CROWDING_GAUGES = ['ai-basket-rel-vol', 'zero-dte', 'top10-weight', 'margin-debt', 'insider-ratio'];
 const liq = layerVerdict(LIQUIDITY_GAUGES);
@@ -122,6 +143,14 @@ function card(g) {
     ${g.freshness_layers.blocking_issuers?.length ? `<p class="qmeta">卡住合計的是：${g.freshness_layers.blocking_issuers.map(esc).join('、')}。</p>` : ''}
   </div>` : ''}
 
+  ${g.observed?.detail?.persistence ? `<div class="persist">
+    <div class="freshlab">持續性 · 不是單日水位</div>
+    <p class="freshread">${esc(g.observed.detail.persistence.reading)}</p>
+    <p class="qmeta">${esc(g.observed.detail.persistence.why)}</p>
+  </div>` : ''}
+
+  ${g.henren?.no_red_threshold ? `<p class="note"><b>他沒有給這一格紅燈：</b>${esc(g.henren.no_red_threshold)}</p>` : ''}
+
   ${g.decision_robustness && g.decision_robustness.label === 'SENSITIVITY_RANGE' ? `<p class="note rob">
     <b>未驗證成分會不會改變答案（${esc(g.decision_robustness.robustness)}）：</b>${esc(g.decision_robustness.reading)}
     區間 ${esc(g.decision_robustness.sensitivity_range.min_qoq_pct)}% ～ ${esc(g.decision_robustness.sensitivity_range.max_qoq_pct)}%。
@@ -155,6 +184,8 @@ function card(g) {
       ${g.henren?.status ? `
         <div class="rulestat" style="color:${sev}">${RULE_LABEL[g.henren.status]}</div>
         <div class="ths">${Object.entries(th).map(([k, v]) => `<span class="th th-${k}">${esc(v)}</span>`).join('')}</div>
+        ${provOf(g) ? `<div class="provline prov-${provOf(g).tone}">門檻來源：<b>${esc(provOf(g).short)}</b></div>` : ''}
+        ${g.henren?.note ? `<p class="qmeta">${esc(g.henren.note)}</p>` : ''}
       ` : `<div class="rulestat muted">不評估</div>
         <div class="qmeta">${esc(g.note ?? '此格沒有可用於規則評估的讀數。')}</div>`}
       ${g.henren?.quote ? `<blockquote>${esc(g.henren.quote)}</blockquote>` : ''}
@@ -615,6 +646,15 @@ background:var(--panel);border:1px solid var(--rule-soft);border-radius:3px;font
 .dwwhy{color:var(--ink-3);font-size:11.5px}
 .tag-dark{background:#FBF6EC;border-color:var(--brass);color:var(--brass)}
 .note.going-dark{border-left-color:var(--brass);background:#FBF6EC}
+.persist{margin:12px 0;padding:11px 13px;background:var(--panel-2);border:1px solid var(--rule);
+border-left:3px solid var(--ink-3);border-radius:3px}
+.provline{margin-top:8px;font-size:11.5px;color:var(--ink-3)}
+.provline b{font-weight:650}
+.prov-his b{color:var(--ok)}.prov-derived b{color:var(--warn)}.prov-ours b{color:var(--brass)}
+.provsum{margin:14px 0 12px;padding:13px 15px;background:var(--panel);border:1px solid var(--rule);
+border-left:3px solid var(--brass);border-radius:4px}
+.provsum p{margin:0 0 7px;font-size:12.5px;line-height:1.8;color:var(--ink)}
+.provsum p:last-child{margin:0}
 
 /* Three-layer freshness. Laid out as three columns because the whole point is the GAP
    between them — a single "as of" date cannot show that the pipeline is the slow part. */
@@ -738,6 +778,16 @@ ${summary}
     <div class="cnt"><b class="num">${t.red ?? 0}</b><span>規則觸發</span></div>
     <div class="cnt"><b class="num">${t.no_decision}</b><span>無可用讀數</span></div>
     <div class="cnt cnt-zero"><b class="num">0</b><span>經統計驗證的訊號</span></div>
+  </div>
+  <div class="provsum">
+    <div class="chlab">門檻是誰畫的</div>
+    <p>這個頁面叫「狠人的規則」，所以最該講清楚的一件事是：
+    <b>${data.gauges.length} 格裡只有 ${provTally.his ?? 0} 格用的是他真正講過的數字或規則。</b>
+    另外 ${provTally.derived ?? 0} 格是<b>由他的判定反推</b>的——他只給了讀數和「觸發／未觸發」，
+    中間那條線是本系統補的，補法是「讓他的判定成立」，不是「他這樣定義」。
+    剩下 ${provTally.ours ?? 0} 格<b>整條線都是本系統設的</b>。</p>
+    <p class="qmeta">反推與自訂都不等於錯，但它們借用了他的名字。分開標示之後，
+    每一格的顏色可以被追問到底是誰的判斷 —— 這比「全部都是他的框架」誠實。</p>
   </div>
   <p class="nocomp">${esc(data.no_composite_score)}</p>
 </section>

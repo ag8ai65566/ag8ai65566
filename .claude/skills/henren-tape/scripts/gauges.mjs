@@ -366,10 +366,18 @@ const ignition = await attempt('ignition', '開關二 · 點火（期限結構�
         : '近月高於遠月（Backwardation）＝ 恐慌集中在眼前',
     },
     henren: {
+      // 1.00 is his: he defines the state by 「遠月的波動率重新高於近月」, and the ratio
+      // crossing one IS that definition. 0.95 is not his — it is a buffer this system added,
+      // and it has to say so instead of sitting in the same list looking equally sourced.
       status: rule(ratio, [['green', -Infinity, 0.95], ['yellow', 0.95, 1.0], ['red', 1.0, Infinity]]),
-      thresholds: { green: '< 0.95（Contango，恐慌退潮）', yellow: '0.95–1.00', red: '> 1.00（倒掛）' },
+      thresholds: {
+        green: '< 0.95（Contango；0.95 這條緩衝線是本系統加的，他只講 1.00 這個分界）',
+        yellow: '0.95–1.00（本系統加的接近區，他未給）',
+        red: '> 1.00（倒掛 —— 這條是他的定義：遠月不再高於近月）',
+      },
+      threshold_is_ours: true,
       quote: 'VIX 期限結構從倒掛回到正常，專業叫做 Contango，意思就是遠月的波動率重新高於近月，'
-        + '它的意義就是恐慌退潮了。',
+        + '它的意義就是恐慌退潮了。（1.00 的分界來自這句話的定義；0.95 的緩衝線是本系統加的，非他的原話。）',
     },
     proxy: true,
     proxy_warning: '他的原始開關二是**選擇權 put/call 偏度極端倒掛＋現貨抗跌**。這裡用期限結構代理，'
@@ -554,19 +562,51 @@ const sofr = await attempt('sofr', 'SOFR − IORB 利差', async () => {
   const spreads = s.points.filter((p) => byDate.has(p.date))
     .map((p) => ({ date: p.date, value: (p.value - byDate.get(p.date)) * 100 }));
   const bp = (al.a.value - al.b.value) * 100;
+
+  // Persistence, not the single print. His own words make the marker a spread that
+  // 「衝過三個基點」, and the public commentary on this spread says the same thing from the
+  // other side: an isolated positive print reflects settlement and month-end calendar
+  // pressure, while it is PERSISTENT printing above IORB that is the early scarcity signal.
+  // A one-session reading cannot distinguish those two, so the gauge publishes the run
+  // alongside the level and lets the reader see which one they are looking at.
+  const recent = spreads.slice(-20);
+  const atOrAbove = (arr, t) => arr.filter((x) => x.value >= t).length;
+  let currentRun = 0;
+  for (let k = spreads.length - 1; k >= 0 && spreads[k].value >= 1; k -= 1) currentRun += 1;
+  const persistence = {
+    consecutive_sessions_at_or_above_1bp: currentRun,
+    sessions_at_or_above_1bp_in_last_20: atOrAbove(recent, 1),
+    sessions_at_or_above_3bp_in_last_20: atOrAbove(recent, 3),
+    window_sessions: recent.length,
+    reading: `最近 ${recent.length} 個交易日中有 ${atOrAbove(recent, 1)} 天 ≥ 1bp、`
+      + `${atOrAbove(recent, 3)} 天 ≥ 3bp；目前連續 ${currentRun} 天 ≥ 1bp。`,
+    why: '單日為正可能只是結算日或月底的日曆壓力；真正的早期稀缺訊號是「持續」高於 IORB，'
+      + '不是某一天高於 IORB。所以這一格同時給水位與持續性，讓兩者不會被讀成同一件事。',
+  };
+
   return gauge({
     id: 'sofr', label: 'SOFR − IORB 利差',
     plain: '銀行之間借隔夜錢，要不要付比聯準會利率更高的價？要付，就代表錢在變緊。',
     observed: { value: r2(bp, 1), unit: '基點', effective_date: al.anchor,
-      detail: { sofr: al.a.value, iorb: al.b.value } },
+      detail: { sofr: al.a.value, iorb: al.b.value, persistence } },
     empirical: { percentile_3y: percentileInWindow(spreads, bp, 3, { now: RUN_AT }),
       note: 'IORB 序列自 2021-07 起，分位數樣本有限。' },
     henren: {
-      status: rule(bp, [['green', -Infinity, 1], ['yellow', 1, 3], ['red', 3, Infinity]]),
-      thresholds: { green: '< 1 bp', yellow: '1–3 bp', red: '≥ 3 bp' },
+      // His marker is 3bp, and he calls that the YELLOW warning. The previous mapping made
+      // his yellow into this system's red and invented a yellow at 1bp he never mentioned —
+      // borrowing his authority for a line he did not draw, with his own quote sitting
+      // directly underneath contradicting it. His words set the bands; where he gave no
+      // level, this system does not manufacture one.
+      status: rule(bp, [['green', -Infinity, 3], ['yellow', 3, Infinity]]),
+      thresholds: { green: '< 3 bp（他未給此區間名稱）', yellow: '≥ 3 bp（他的「黃色預警」）' },
       quote: 'SOFR-IRB 這個大家一定要每天都看，黃色預警是利差衝過三個基點，因為這是一個 95 分位的程度。',
+      no_red_threshold: '他沒有給這一格紅燈的數值。以前的版本把他的黃燈（3bp）畫成紅燈，'
+        + '又自己加了一條 1bp 的黃線 —— 兩者都不是他的話。現在只保留他真正說過的那一條。',
     },
-  }, { prov: provenance(s, 'SOFR minus IORB in bp on a common effective date; percentile vs 3y'), state: dataState(s) });
+    naming_note: '本格的判定只用他給的 3bp。1bp 這條線是本系統早期自己加的，已經移除 —— '
+      + '它會讓月底一個 +1bp 的日曆性正值看起來像規則觸發。',
+  }, { prov: provenance(s, 'SOFR minus IORB in bp on a common effective date; percentile vs 3y; '
+      + 'plus persistence over the trailing 20 sessions'), state: dataState(s) });
 });
 
 const tga = await attempt('tga', '財政部 TGA 餘額', async () => {
@@ -655,10 +695,18 @@ const m2gap = await attempt('m2gap', 'M2 年增 − 那斯達克年增', async (
         anchor_set_by: al.anchor_set_by === 'A' ? 'M2（較慢）' : 'Nasdaq' } },
     empirical: { reading: `此讀數描述的是 ${al.anchor}，不是今天 —— M2 每月發布且落後約一個月，`
       + `錨點只能取到兩邊都有觀測的最新日期。` },
-    henren: { status: rule(gap, [['red', -Infinity, -25], ['yellow', -25, -15], ['green', -15, Infinity]]),
-      thresholds: { green: '> −15', yellow: '−15 至 −25', red: '≤ −25' },
+    // The red line was −25, and he called −24.1 a trigger. Under the old band his own worked
+    // example came out YELLOW — the rule contradicted the one case he actually decided. His
+    // verdict is the only evidence there is for where this line sits, so the line goes where
+    // his verdict puts it: at or below −24. The −15 boundary remains this system's own.
+    henren: { status: rule(gap, [['red', -Infinity, -24], ['yellow', -24, -15], ['green', -15, Infinity]]),
+      thresholds: { green: '> −15（本系統設定）', yellow: '−15 至 −24（上界為本系統設定）',
+        red: '≤ −24（由他的判定反推：他在 −24.1 判定觸發）' },
+      threshold_provenance: 'DERIVED_FROM_HIS_VERDICT',
       quote: '第五項 M2 同比增長 5.6% 而同期的納斯達克漲幅是 29.7%，增負差仍在負的 24.1%，這項也觸發了。',
-      note: '他 6 月讀到 −24.1 判定觸發。' },
+      note: '他 6 月讀到 −24.1 判定觸發，所以紅線必須落在 −24.1 或更高（更靠近 0）的位置。'
+        + '舊版把紅線設在 −25，等於他自己的那個例子在本系統裡會被判成黃燈 —— '
+        + '規則與它唯一的已知案例互相矛盾。反推的意思是「讓他的判定成立」，不是「他這樣定義」。' },
     source_authority_override: weakestAuthority('OFFICIAL_AGGREGATOR', 'UNOFFICIAL_FREE'),
     mixed_authority_note: 'M2 來自 FRED（OFFICIAL_AGGREGATOR），股價來自 Yahoo（UNOFFICIAL_FREE）；'
       + '複合指標取最低者，故本格標為 UNOFFICIAL_FREE。',
@@ -694,9 +742,14 @@ const buffett = await attempt('buffett', '巴菲特指標（總市值 ÷ GDP）'
       reading: `兩邊都對齊在 ${al.period} 起始的那一季（截至 ${periodEnd}）。此讀數描述的是那一季，`
         + `距季末約 ${age} 天。Z.1 與 GDP 都是季度資料且發布本身就落後，這是設計上的落後不是失效。` },
     henren: { status: rule(ratio, [['green', -Infinity, 150], ['yellow', 150, 200], ['red', 200, Infinity]]),
-      thresholds: { green: '< 150%', yellow: '150–200%', red: '≥ 200%' },
-      quote: '第四項經典巴菲特指標 234%，也觸發。',
-      note: '他讀到 234%；本系統分母定義不同（Z.1 企業股權 ÷ GDP），數值對不齊是預期內的。' },
+      thresholds: { green: '< 150%（本系統設定）', yellow: '150–200%（本系統設定）',
+        red: '≥ 200%（本系統設定；他只給讀數 234% 與「觸發」，未給門檻）' },
+      threshold_is_ours: true,
+      threshold_provenance: 'OURS_CONVENTIONAL',
+      quote: '第四項經典巴菲特指標 234%，也觸發。'
+        + '（150/200 是這個指標的通用慣例線，為本系統設定，非他的原話 —— 他未給門檻，只講了讀數與判定。）',
+      note: '他讀到 234%；本系統分母定義不同（Z.1 企業股權 ÷ GDP），數值對不齊是預期內的。'
+        + '門檻本身也不是他的：他給的是一個讀數和一個判定，中間那條線是本系統補的。' },
   }, { prov: { ...provenance(eq, 'Z.1 corporate equities / GDP, joined on a common quarter'),
       effective_date: al.period, period_end: periodEnd },
     state: { data_state: age <= ds.acceptable_age_days ? 'LAGGED_BY_DESIGN' : 'STALE',
@@ -768,7 +821,13 @@ try {
       id: g.id, label: g.label, plain: g.plain,
       observed: { value: g.value, unit: g.unit, effective_date: g.asOf },
       empirical: { reading: g.note },
-      henren: { status: g.status, thresholds: g.thresholds, quote: g.quote ?? null },
+      henren: { status: g.status, thresholds: g.thresholds, quote: g.quote ?? null,
+        // Threshold provenance travels with the gauge or it may as well not exist: a band
+        // reverse-engineered so HIS verdict reproduces is a weaker claim than a number he
+        // stated, and both are weaker than nothing if the page cannot tell them apart.
+        ...(g.threshold_is_ours ? { threshold_is_ours: true } : {}),
+        ...(g.threshold_provenance ? { threshold_provenance: g.threshold_provenance } : {}),
+        ...(g.threshold_note ? { note: g.threshold_note } : {}) },
       status: {
         data_state: state,
         source_authority: contract.authoritative_source_id?.startsWith('NO_') ? 'NO_AUTHORITATIVE_SOURCE' : 'MANUAL_SECONDARY',

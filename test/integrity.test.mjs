@@ -349,3 +349,31 @@ test('[integrity] an intraday price is never labelled as a close', { skip: !html
     'the market is open, so the headline price is intraday and must not be called a close');
   assert.ok(verdict.includes('標普現價'), 'an open session must say so');
 });
+
+test('[integrity] a rule band either comes from his words or is marked as ours', { skip: !html }, () => {
+  // The SOFR gauge carried bands of green <1 / yellow 1-3 / red >=3 while his quote, printed
+  // directly underneath it, said 「黃色預警是利差衝過三個基點」. His yellow had been redrawn as
+  // this system's red, and a yellow invented at 1bp he never mentioned — with no
+  // threshold_is_ours flag. That is borrowing his authority for a line he did not draw, and
+  // it is worse than an invented threshold that admits it, because the quote makes it look
+  // sourced. Every numeric band must either be traceable to the quote or declared as ours.
+  for (const g of gauges.gauges) {
+    const h = g.henren;
+    if (!h?.thresholds || h.threshold_is_ours) continue;
+    // He speaks numbers, so the quote writes them the way a person says them: 「衝過三個基點」
+    // carries the same 3 that the threshold does. Normalise the quote before comparing, or
+    // the check flags a threshold that IS traceable and pushes toward the wrong fix —
+    // relabelling his line as ours to make a test pass would be exactly backwards.
+    const CN = { 零: '0', 一: '1', 二: '2', 兩: '2', 三: '3', 四: '4', 五: '5',
+      六: '6', 七: '7', 八: '8', 九: '9', 十: '10' };
+    const quote = (h.quote ?? '').replace(/[零一二兩三四五六七八九十]/g, (c) => CN[c]);
+    for (const [band, text] of Object.entries(h.thresholds)) {
+      const numbers = String(text).match(/\d+(?:\.\d+)?/g) ?? [];
+      for (const n of numbers) {
+        assert.ok(quote.includes(n) || /本系統|他未給|未給|沒有給/.test(String(text)),
+          `${g.id}.${band} uses ${n}, which appears nowhere in his quote and is not `
+          + 'declared as this system\'s own line');
+      }
+    }
+  }
+});

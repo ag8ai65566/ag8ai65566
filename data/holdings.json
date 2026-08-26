@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0.0",
-  "generated_at": "2026-08-25T15:55:52.904Z",
-  "generated_at_et": "8/25/2026, 11:55:52 AM EDT",
-  "code_commit": "3a9b8e8",
+  "generated_at": "2026-08-26T22:38:30.210Z",
+  "generated_at_et": "8/26/2026, 6:38:30 PM EDT",
+  "code_commit": "28f1bbb",
   "lens_status": {
     "serenity-method": "EXECUTED",
     "serenity-bottleneck-hunter": "NOT_EXECUTED",
@@ -140,7 +140,7 @@
         "equity_bn": 100.72,
         "assets_bn": 134.11
       },
-      "fundamentals_age_days": 62,
+      "fundamentals_age_days": 63,
       "serenity_gate": {
         "profitability": {
           "value": "SUPPORTED",
@@ -201,18 +201,18 @@
         }
       },
       "price": {
-        "as_of": "2026-08-25",
-        "close": 925.38,
-        "from_2y_high_pct": -23.75,
+        "as_of": "2026-08-26",
+        "close": 938.4,
+        "from_2y_high_pct": -22.67,
         "high_2y": 1213.56,
         "high_2y_date": "2026-06-25",
-        "vs_50dma_pct": -3.78,
-        "vs_200dma_pct": 60.1,
-        "m1_pct": 2.8,
-        "m3_pct": 3.29,
-        "rvol21_pct": 96.97
+        "vs_50dma_pct": -2.14,
+        "vs_200dma_pct": 61.37,
+        "m1_pct": 14.37,
+        "m3_pct": 1.08,
+        "rvol21_pct": 90.9
       },
-      "price_raw_hash": "8f8041b731fe93ed"
+      "price_raw_hash": "2e43d999af48bb2d"
     },
     {
       "ticker": "SNDK",
@@ -333,7 +333,7 @@
         "equity_bn": 57.61,
         "assets_bn": 175.88
       },
-      "fundamentals_age_days": 20,
+      "fundamentals_age_days": 21,
       "serenity_gate": {
         "profitability": {
           "value": "SUPPORTED",
@@ -395,18 +395,18 @@
         }
       },
       "price": {
-        "as_of": "2026-08-25",
-        "close": 1503.57,
-        "from_2y_high_pct": -35.61,
+        "as_of": "2026-08-26",
+        "close": 1499.37,
+        "from_2y_high_pct": -35.79,
         "high_2y": 2335,
         "high_2y_date": "2026-06-25",
-        "vs_50dma_pct": -8.14,
-        "vs_200dma_pct": 57.91,
-        "m1_pct": 17.63,
-        "m3_pct": -5.41,
-        "rvol21_pct": 140.14
+        "vs_50dma_pct": -7.69,
+        "vs_200dma_pct": 56.43,
+        "m1_pct": 36.79,
+        "m3_pct": -5.7,
+        "rvol21_pct": 127.49
       },
-      "price_raw_hash": "e308dcab34527442"
+      "price_raw_hash": "0efc3d20d25f77fc"
     }
   ]
 }
