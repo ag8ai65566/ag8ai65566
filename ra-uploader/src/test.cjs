@@ -196,6 +196,46 @@ console.log('\n=== a REAL fixed export must not be corrected (regression) ===');
   });
 }
 
+console.log('\n=== a corrected re-issue of the 27 Aug report (regression) ===');
+{
+  /* The 27 Aug export shipped with the defect again; it was re-issued the
+     next day with the dates correct. Same 17-column layout as the broken
+     one, so this covers a clean file in the ORIGINAL column layout (the
+     other clean fixture has the wider 22-column layout). */
+  const { parsed, det, scacs } = load('shipments_v7.xlsx');
+  check('reissue: all fields resolve', det.missing, []);
+  const dg = C.diagnose(parsed.rows, det.columns);
+  check('reissue: has dates past the 12th', dg.realGt12 > 0, true);
+  check('reissue: NOT flagged corrupted', dg.corrupted, false);
+  const want = { X2: 533, VA: 271, RD: 237, LF: 225 };
+  C.MILESTONES.forEach(ms => {
+    const r = B.buildRecords(parsed, det.columns, ms, { applyDateFix: false }, scacs);
+    check(`reissue: ${ms.code} row count`, r.records.length, want[ms.code]);
+    check(`reissue: ${ms.code} nothing corrected`, r.records.filter(x => x.corrected).length, 0);
+  });
+}
+
+console.log('\n=== correcting 27 Aug equals the corrected re-issue ===');
+{
+  /* Same invariant as the 25 Aug pair, on a second independent week:
+     the defective export plus the correction must equal the clean export. */
+  const collect = (file, fix) => {
+    const { parsed, det, scacs } = load(file);
+    const out = {};
+    C.MILESTONES.forEach(m => {
+      B.buildRecords(parsed, det.columns, m, { applyDateFix: fix, applyMblPrefix: true }, scacs)
+        .records.forEach(r => { out[r.container + '|' + r.event] = r.dateText; });
+    });
+    return out;
+  };
+  const corrected = collect('shipments_v6.xlsx', true);   // defective + fix
+  const clean = collect('shipments_v7.xlsx', false);      // re-issued clean
+  const keys = [...new Set([...Object.keys(corrected), ...Object.keys(clean)])];
+  check('same set of records', keys.length, Object.keys(clean).length);
+  check('every value matches the clean re-issue',
+        keys.filter(k => corrected[k] !== clean[k]).length, 0);
+}
+
 console.log('\n=== correcting the broken file equals their fixed export ===');
 {
   /* The strongest check available: run the defective 25 AUG file through the
