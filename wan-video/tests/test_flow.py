@@ -97,6 +97,78 @@ def test_registry() -> None:
     check("clip_vision" in {f.folder for f in hy.files}, "hunyuan ships clip_vision")
     check(registry.get("ltx23").family == "files_only", "LTX-2.3 is files-only")
 
+    # LTX-2.5: the newest open-weight video model in the catalogue, and the
+    # first entry whose repo is *gated* - Hugging Face answers 401 to an
+    # anonymous request even though the weights are free. Everything below is
+    # about not letting a user discover that 40GB into a download.
+    ltx25 = registry.get("ltx25")
+    check(ltx25 is not None and ltx25.family == "files_only", "LTX-2.5 is catalogued")
+    check(ltx25.gated_repos == ["Lightricks/LTX-2.5"],
+          f"…and declares which repo is gated ({ltx25.gated_repos})")
+    check(all(f.gated for f in ltx25.files),
+          "…on every one of its files, since the gate is per repo")
+    folders25 = {f.folder for f in ltx25.files}
+    check(folders25 == {"diffusion_models", "text_encoders", "vae", "latent_upscale_models"},
+          f"…and it ships the four folders ComfyUI's own LTX-2.5 page lists ({sorted(folders25)})")
+    check(sum(1 for f in ltx25.files if f.folder == "vae") == 2,
+          "…including two VAEs, because the audio is generated in the same pass")
+    check(37e9 < ltx25.download_bytes < 42e9,
+          f"the download is the int8 build, not the 42GB bf16 one "
+          f"({ltx25.download_bytes / 1e9:.1f}GB)")
+    check(not any("bf16" in f.name and "transformer" in f.name for f in ltx25.files),
+          "…so no bf16 transformer sneaked in")
+    check(all(f.gated is False for m in registry.MODELS for f in m.all_files
+              if m.id != "ltx25"),
+          "no other model is marked gated - the flag means something")
+
+    section("gated downloads")
+    import downloader
+
+    saved = os.environ.pop("HF_TOKEN", None)
+    try:
+        free = registry.get("wan22-5b").files[0]
+        walled = registry.get("ltx25").files[0]
+        check(downloader.headers_for(walled) == {},
+              "with no token, nothing is sent - the app does not invent auth")
+        os.environ["HF_TOKEN"] = "hf_pretend"
+        check(downloader.headers_for(walled) == {"Authorization": "Bearer hf_pretend"},
+              "with a token, it goes in the Authorization header")
+        check(downloader.headers_for(free) == {"Authorization": "Bearer hf_pretend"},
+              "…for every huggingface.co file, gated or not")
+        # A RemoteFile can point at any host, so the user's HF token must not be
+        # attached to it. This is the leak the type check is there to stop.
+        remote = downloader.RemoteFile(
+            url="https://example.com/thing.safetensors", name="thing.safetensors",
+            folder="loras", size=1, headers=(("X-Own", "1"),))
+        check(downloader.headers_for(remote) == {"X-Own": "1"},
+              "a non-HF source keeps its own headers and never sees the HF token")
+        check("Authorization" not in downloader.headers_for(remote),
+              "…which is the point: the token would otherwise leak to any host")
+
+        # The 401 message has to name the fix, and the fix differs by source.
+        os.environ.pop("HF_TOKEN")
+        missing = downloader._auth_error(walled, 401)
+        check("gated" in missing and "設定" in missing,
+              "no token: the error says it is gated and where the box is")
+        check("huggingface.co/Lightricks/LTX-2.5" in missing,
+              "…and links the exact page to accept the licence on")
+        os.environ["HF_TOKEN"] = "hf_pretend"
+        wrong = downloader._auth_error(walled, 401)
+        check("同意授權" in wrong and "gated" not in wrong.split("。")[0],
+              "with a token: it points at the licence instead of the token box")
+        check("CivitAI" in downloader._auth_error(remote, 401),
+              "a CivitAI 401 sends the user to the CivitAI key, not the HF one")
+    finally:
+        os.environ.pop("HF_TOKEN", None)
+        if saved is not None:
+            os.environ["HF_TOKEN"] = saved
+
+    import envfile
+    check("HF_TOKEN" in envfile.WRITABLE, "the token is settable from the settings page")
+    check(envfile.WRITABLE["HF_TOKEN"]["secret"], "…and masked, like the CivitAI key")
+    check(not envfile.WRITABLE["HF_TOKEN"]["restart"],
+          "…and takes effect without a restart, because it is read per request")
+
     section("gen params")
     wan = registry.get("wan22-14b-fp8")
     base = registry.GenParams.defaults_for(wan, lightning=False)

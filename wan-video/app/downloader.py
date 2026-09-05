@@ -8,6 +8,7 @@ survives a page reload.
 from __future__ import annotations
 
 import asyncio
+import os
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -54,8 +55,47 @@ def url_for(file: ModelFile | RemoteFile) -> str:
     return f"{HF}/{file.repo}/resolve/main/{file.path}"
 
 
+def hf_token() -> str:
+    """Read on every call, so pasting the token in settings works immediately.
+
+    Same reasoning as civitai.api_key(): caching it at import time is what makes
+    a settings box feel broken, because the value the process is using is not
+    the value the user just saved.
+    """
+    return (os.environ.get("HF_TOKEN") or "").strip()
+
+
 def headers_for(file: ModelFile | RemoteFile) -> dict:
-    return file.header_dict if isinstance(file, RemoteFile) else {}
+    """Auth for the request, if the destination needs any.
+
+    Most Hugging Face repos are anonymous, but a *gated* one - LTX-2.5 is the
+    first in this catalogue - answers 401 without a token even though the file
+    is free. The token goes only to huggingface.co: a RemoteFile can point
+    anywhere, and attaching the user's token to an arbitrary host would leak it.
+    """
+    if isinstance(file, RemoteFile):
+        return file.header_dict
+    token = hf_token()
+    return {"Authorization": f"Bearer {token}"} if token else {}
+
+
+def _auth_error(file: ModelFile | RemoteFile, status: int) -> str:
+    """Say which key is missing and what to do, not just "needs an API key".
+
+    The two sources need different things and the fix is different for each, so
+    one generic message sends the user to the wrong settings box.
+    """
+    if isinstance(file, RemoteFile):
+        return (f"HTTP {status}：這個來源需要有效的 API key（{file.name}）。"
+                "如果是 CivitAI，到「設定」分頁貼上 CivitAI API key。")
+    if not hf_token():
+        return (f"HTTP {status}：`{file.repo}` 是 Hugging Face 的**閘門式**"
+                "（gated）倉庫，要登入才能下載。"
+                "到「設定」分頁貼上 Hugging Face access token，"
+                f"並先到 https://huggingface.co/{file.repo} 按一次同意授權。")
+    return (f"HTTP {status}：token 有了但 `{file.repo}` 還是拒絕。"
+            f"多半是還沒在 https://huggingface.co/{file.repo} 頁面上按同意授權 —— "
+            "gated 倉庫兩件事都要做。也可能是 token 沒有 read 權限。")
 
 
 @dataclass
@@ -372,10 +412,7 @@ class Manager:
                     if existing and response.status == 416:
                         break  # already complete
                     if response.status in (401, 403):
-                        raise RuntimeError(
-                            f"HTTP {response.status}：這個來源需要有效的 API key"
-                            f"（{state.file.name}）"
-                        )
+                        raise RuntimeError(_auth_error(state.file, response.status))
                     if response.status not in (200, 206):
                         raise RuntimeError(f"HTTP {response.status} for {state.file.name}")
                     # Learn the real size when the catalogue did not know it.

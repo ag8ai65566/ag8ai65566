@@ -530,6 +530,10 @@ async def list_models() -> JSONResponse:
                 "civitai_bases": list(model.civitai_bases),
                 "civitai_bases_loose": list(model.civitai_bases_loose),
                 "note": model.note,
+                # A gated repo answers 401 to the very first byte, so the UI has
+                # to be able to say so before the download button, not after.
+                "gated_repos": model.gated_repos,
+                "has_hf_token": bool(downloader.hf_token()),
                 "sampling": {
                     "steps": params.steps,
                     "cfg": params.cfg,

@@ -13,6 +13,7 @@ from dataclasses import dataclass, field
 WAN_REPO = "Comfy-Org/Wan_2.2_ComfyUI_Repackaged"
 HY_REPO = "Comfy-Org/HunyuanVideo_1.5_repackaged"
 GGUF_REPO = "QuantStack/Wan2.2-I2V-A14B-GGUF"
+LTX25_REPO = "Lightricks/LTX-2.5"
 
 # The negative prompt shipped with the official Wan workflows. Kept verbatim -
 # it is tuned for this model family and beats an English equivalent.
@@ -35,6 +36,11 @@ class ModelFile:
     # so the basename would collide between models and tell the user nothing in
     # the loader's dropdown. This is the name it lands under instead.
     save_as: str = ""
+    # Hugging Face "gated" repos answer 401 to an anonymous request even though
+    # the weights are free: you have to be logged in *and* have clicked accept
+    # on the model page. Flagged here so the UI can say that before a 40GB
+    # download fails at the first byte, rather than after.
+    gated: bool = False
 
     @property
     def name(self) -> str:
@@ -87,6 +93,11 @@ class ModelDef:
     @property
     def download_bytes(self) -> int:
         return sum(f.size for f in self.all_files)
+
+    @property
+    def gated_repos(self) -> list[str]:
+        """Repos that need a Hugging Face token plus an accepted licence."""
+        return sorted({f.repo for f in self.all_files if f.gated})
 
     @property
     def runnable(self) -> bool:
@@ -291,6 +302,48 @@ MODELS: list[ModelDef] = [
         supports_lora=False,
         civitai_bases=("LTXV 2.3",),
         note="影音同步一次生成。下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → LTX-2.3 I2V。",
+    ),
+    ModelDef(
+        # The current LTX generation, and the newest open-weight video model in
+        # this catalogue. Worth stating why it is here at all: the models people
+        # ask for by name - Seedance, Wan 2.5 - are closed APIs with no weights
+        # to download, so "the latest" and "runs on your machine" have stopped
+        # being the same list. This is the newest thing that is actually both.
+        id="ltx25",
+        label="LTX-2.5 22B — 只下載檔案（用 ComfyUI 內建範例跑）",
+        family="files_only",
+        vram_gb=24,
+        files=[
+            # The int8 "convrot" builds are the ones ComfyUI's own LTX-2.5 page
+            # lists. The bf16 transformer is 42GB and the distilled one is what
+            # the documented workflow loads, so the extra 20GB buys nothing here.
+            ModelFile(LTX25_REPO,
+                      "diffusion_models/ltx-2.5-22b-distilled-transformer-comfy-int8-convrot.safetensors",
+                      "diffusion_models", 21504034224, gated=True),
+            # Not interchangeable with LTX-2.3's Gemma 3: the projection is baked
+            # in and the loader checks the encoder version against the one the
+            # checkpoint was trained with, so this exact file or nothing.
+            ModelFile(LTX25_REPO,
+                      "text_encoders/gemma4-12b-with-proj-ltx-2.5-comfy-int8-convrot.safetensors",
+                      "text_encoders", 15372969374, gated=True),
+            ModelFile(LTX25_REPO, "vae/ltx-2.5-video-vae-bf16.safetensors",
+                      "vae", 1472223346, gated=True),
+            # Audio is generated in the same pass as the picture, so its VAE is
+            # not optional the way an upscaler is.
+            ModelFile(LTX25_REPO, "vae/ltx-2.5-audio-vae-bf16.safetensors",
+                      "vae", 364866540, gated=True),
+            ModelFile(LTX25_REPO,
+                      "latent_upscale_models/ltx-2.5-latent-spatial-upscaler-x2-bf16-1.0.safetensors",
+                      "latent_upscale_models", 995778752, gated=True),
+        ],
+        tiers={},
+        supports_lora=False,
+        civitai_bases=("LTXV 2.5",),
+        civitai_bases_loose=("LTXV 2.3",),
+        note="影音同步一次生成，官方說支援到 4K HDR / 50fps。"
+             "**這個倉庫是 gated**：要先到 huggingface.co/Lightricks/LTX-2.5 按同意授權，"
+             "再到「設定」分頁貼上 Hugging Face token，否則下載會直接 401。"
+             "下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → LTX-2.5。",
     ),
 ]
 

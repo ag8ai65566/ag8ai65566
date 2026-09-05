@@ -21,6 +21,7 @@
 | `hy15-720p` | HunyuanVideo 1.5 720p fp8 | 12GB | 22GB | |
 | `hy15-720p-hq` | HunyuanVideo 1.5 720p fp16 | 20GB | 30GB | 官方設定，品質優先 |
 | `ltx23` | LTX-2.3 22B | 24GB | 43GB | 影音同步，**只下載檔案**（見下） |
+| `ltx25` | LTX-2.5 22B | 24GB | 40GB | 開放權重裡最新的，影音同步、**倉庫是 gated**（見下） |
 
 共用元件（文字編碼器、VAE）只會下載一次，所以第二個同家族的模型會小很多。
 
@@ -46,6 +47,34 @@ latent、還有一個改寫提詞的 LLM 節點。我可以下載它全部的檔
 
 檔案下載完之後，在 ComfyUI（<http://127.0.0.1:8188>）用
 **Workflow → Browse Templates → LTX-2.3 Image to Video**，那是官方維護、一定對的流程。
+
+### LTX-2.5：下載前要先在 Hugging Face 按同意 —— 教程在 [`docs/video-models.md`](docs/video-models.md)
+
+LTX-2.5 是目前**開放權重裡最新的**影片模型，同樣是影音一次生成，官方說支援到
+4K HDR / 50fps。它是這份目錄裡**第一個 gated（閘門式）倉庫** ——
+`Lightricks/LTX-2.5` 對匿名請求直接回 **401**（實測過），權重免費但要登入。
+
+所以要做兩件事，**少一件都會 401**：
+
+1. 開 <https://huggingface.co/Lightricks/LTX-2.5> 登入，**按同意授權**
+2. 「設定」分頁貼上 **Hugging Face access token**（read 權限就夠）
+
+模型分頁的卡片會把這兩步列出來，並顯示你的 token 有沒有設好 ——
+gated 倉庫是**第一個 byte 就 401**，等 40GB 下載失敗才講等於讓你白等。
+
+檔名與大小全部讀自 HuggingFace 的 tree API。用的是 int8 `convrot` 的
+distilled 版（ComfyUI 官方頁列的那個），不是 42GB 的 bf16；
+兩個 VAE 都要，因為聲音跟畫面是同一個 pass 生成的。
+
+### 那 Seedance？Wan 2.5？
+
+**匯不進來，它們沒有權重可以下載。** 兩個都是閉源 API。
+
+ComfyUI 是有 Seedance 節點，但那是 **API 節點**：要 comfy.org 帳號＋預付點數
+（目前還不能用你自己的 ByteDance key）、本機只允許從 `127.0.0.1` 存取
+（這個專案的 ComfyUI 跑 `--listen 0.0.0.0`，所以還得改用 API Key 登入）、
+5 秒影片約 $0.51（480p）/ $1.16（720p），而且**真人肖像要先過 ByteDance 的活體驗證**。
+你的提詞和圖片會離開你的電腦。細節與取捨寫在 [`docs/video-models.md`](docs/video-models.md)。
 
 ---
 
@@ -756,6 +785,7 @@ docs/
   spec-review.md       對「Prompt 靈感庫」規格書的逐條審查回覆（給下一輪 review 用）
   refs-review.md       參考圖庫整包匯入與中文名比對的審查說明（給下一輪 review 用）
   review-round2.md     對 Round 2 審查的逐條回應：3 個實驗記帳 bug、官方圖比例的實測修正
+  video-models.md      為什麼 Seedance / Wan 2.5 匯不進來，以及 LTX-2.5 的 gated 下載
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡

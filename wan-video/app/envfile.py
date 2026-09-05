@@ -27,6 +27,16 @@ WRITABLE = {
         "help": "到 civitai.com → 右上頭像 → Account settings → API Keys → 產生一個貼進來。"
                 "沒有它可以搜尋，但不能下載任何 LoRA 或模型。",
     },
+    "HF_TOKEN": {
+        "label": "Hugging Face access token",
+        "secret": True,
+        "restart": False,   # downloader reads os.environ on every request
+        "help": "只有**閘門式（gated）**的模型需要，例如 LTX-2.5。"
+                "到 huggingface.co → 右上頭像 → Settings → Access Tokens → "
+                "New token（read 權限就夠）。"
+                "**拿到 token 還不夠**：還要去那個模型的頁面按一次同意授權，"
+                "否則一樣是 401。",
+    },
     "COMFY_ARGS": {
         "label": "ComfyUI 啟動參數",
         "secret": False,

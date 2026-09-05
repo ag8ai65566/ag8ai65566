@@ -1578,6 +1578,23 @@ function renderManager() {
     <div class="note">顯卡：${g}${GPU.ram_total ? ` · 系統記憶體 ${gb(GPU.ram_total)}`:''}${GPU.comfy_version ? ` · ComfyUI ${esc(GPU.comfy_version)}`:''}</div>
     <div class="note">下面每個模型寫的顯存是<b>建議值，不是門檻</b> —— 不夠也能跑，ComfyUI 會用系統記憶體換，只是慢。</div>`;
 
+// A Hugging Face "gated" repo answers 401 to the very first byte, so the only
+// useful place to say so is above the download button. Saying it afterwards
+// means the user watched a 40GB download fail instantly and has no idea why.
+function gateBanner(m) {
+  if (m.installed || !(m.gated_repos || []).length) return '';
+  const links = m.gated_repos.map((r) =>
+    `<a href="https://huggingface.co/${esc(r)}" target="_blank" rel="noopener">${esc(r)} ↗</a>`).join('、');
+  return `<div class="banner ${m.has_hf_token ? '' : 'warn'}">
+    <b>這個模型要先在 Hugging Face 同意授權</b>（gated 倉庫）——
+    免費，但匿名下載會直接 401。兩件事都要做：
+    <div class="s" style="margin-top:3px">1. 開 ${links} 登入後按同意授權</div>
+    <div class="s">2. 「設定」分頁貼上 Hugging Face access token
+      ${m.has_hf_token ? '<b class="ok">（已經有了 ✓）</b>'
+                       : '<b class="warn">（還沒有）</b>'}</div>
+  </div>`;
+}
+
   $('#mlist').innerHTML = MODELS.map((m) => {
     const a = m.vram_advice || {};
     const badge = m.installed ? '<span class="tag done">已安裝</span>'
@@ -1589,8 +1606,9 @@ function renderManager() {
         ${m.installed ? `<button class="ghost" data-redl="${m.id}">補齊／重新檢查</button>`
                       : `<button class="go" data-dl="${m.id}">下載 ${gb(m.download_bytes)}</button>`}
       </div>
-      ${m.note ? `<div class="note">${esc(m.note)}</div>`:''}
+      ${m.note ? `<div class="note">${(m.note).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}</div>`:''}
       ${!m.runnable ? '<div class="note">這個模型不能從本頁生成，只下載檔案。</div>':''}
+      ${gateBanner(m)}
       ${a.level && a.level !== 'ok' ? `<div class="banner ${a.level}">${(a.text||'').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}</div>`:''}
       ${m.missing.length && !m.installed ? `<div class="note">缺 ${m.missing.length} 個檔：${esc(m.missing.slice(0,3).join(', '))}${m.missing.length>3?' …':''}</div>`:''}
     </div>`;
@@ -1710,7 +1728,7 @@ async function renderSettings() {
         <button class="go save">存起來</button>
         ${f.set ? '<button class="ghost tiny clear">清除</button>' : ''}
       </div>
-      <div class="note">${esc(f.help)}</div>
+      <div class="note">${esc(f.help).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')}</div>
     </div>`).join('');
 
   const comfy = UPDATES.comfy || {};

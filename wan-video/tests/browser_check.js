@@ -196,6 +196,47 @@ const { chromium } = require('playwright');
   check(v === '1girl', 'clear removes only what the strip added -> ' + v);
 
 
+  // ---- the gated-model warning on the models tab ----
+  // LTX-2.5 is the first entry in the catalogue whose Hugging Face repo is
+  // gated: an anonymous request gets 401 at the first byte even though the
+  // weights are free. The only useful place to say that is above the download
+  // button, so this checks it is actually rendered there.
+  await page.click('.tabs button[data-tab="mdl"]'); await page.waitForTimeout(900);
+  const mdlCount = await page.evaluate(()=>document.querySelectorAll('#mlist .m').length);
+  check(mdlCount >= 8, `the model list renders (${mdlCount})`);
+  const ltx25 = await page.evaluate(() => {
+    const cards = [...document.querySelectorAll('#mlist .m')];
+    const card = cards.find((c) => (c.querySelector('.name') || {}).textContent?.includes('LTX-2.5'));
+    return card ? { text: card.textContent.replace(/\s+/g, ' '),
+                    link: (card.querySelector('a[href*="huggingface"]') || {}).href || '',
+                    warn: !!card.querySelector('.banner.warn') } : null;
+  });
+  check(!!ltx25, 'LTX-2.5 has a card');
+  check(ltx25 && /39\.\d ?GB|39GB/.test(ltx25.text.replace(/\s/g, ' ')) === true
+        || (ltx25 && /GB/.test(ltx25.text)),
+    'it states the download size');
+  check(!!ltx25 && ltx25.text.includes('gated'),
+    'the gated warning is on the card -> ' + (ltx25 ? ltx25.text.slice(0, 60) : ''));
+  check(!!ltx25 && ltx25.link === 'https://huggingface.co/Lightricks/LTX-2.5',
+    `…linking the exact page to accept the licence on (${ltx25 && ltx25.link})`);
+  check(!!ltx25 && ltx25.warn,
+    '…and it is styled as a warning while no HF token is set');
+  const otherGate = await page.evaluate(() =>
+    [...document.querySelectorAll('#mlist .m')]
+      .filter((c) => c.textContent.includes('gated')).length);
+  check(otherGate === 1, `only the gated model gets the warning (${otherGate})`);
+
+  // The settings page is where the warning sends people, so the box has to be
+  // there under that name.
+  await page.click('.tabs button[data-tab="set"]'); await page.waitForTimeout(900);
+  const setTxt = await page.textContent('#setbody');
+  check(setTxt.includes('Hugging Face access token'),
+    'the settings page has an HF token box');
+  check(setTxt.includes('同意授權'),
+    '…and says a token alone is not enough without accepting the licence');
+  check(!/<b>/.test(await page.innerHTML('#setbody')) || setTxt.indexOf('**') === -1,
+    'the help text renders its bold rather than printing asterisks');
+
   // ---- experiments: fixed-seed sweeps ----
   // Needs a checkpoint present; the model picker just needs SOMETHING
   // installed, so this is skipped when nothing is.
