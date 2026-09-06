@@ -237,78 +237,91 @@ const { chromium } = require('playwright');
   check(!/<b>/.test(await page.innerHTML('#setbody')) || setTxt.indexOf('**') === -1,
     'the help text renders its bold rather than printing asterisks');
 
-  // ---- 短劇: the shot list and the rules around it ----
-  // This tab is bookkeeping with the reasons written next to it, so what is
-  // worth checking in a real browser is that the reasons actually render and
-  // that the validator's findings reach the page.
+  // ---- 短劇: the shot list, the evidence labels, and the accept flow ----
+  // What is worth checking in a real browser: that the claim badges reach the
+  // page, that the XSS the review found is actually escaped, and that a shot
+  // does not become "done" by itself.
   await page.click('.tabs button[data-tab="sd"]'); await page.waitForTimeout(1200);
   const sdIntro = await page.textContent('#sdintro');
-  check(sdIntro.includes('3.2'), 'the tab states the median shot length -> ' + sdIntro.replace(/\s+/g,' ').slice(0,52));
+  check(sdIntro.includes('3.2'), 'the tab states the reference median -> ' + sdIntro.replace(/\s+/g,' ').slice(0,46));
   check(sdIntro.includes('一格影片都沒生成過'),
     'and says up front that none of this was measured on real video');
+  check(/\d+ 條是上游官方規格/.test(sdIntro) && /\d+ 條是本專案量的/.test(sdIntro),
+    'and counts its own claims by evidence kind, separately');
+  check(/0 條是本專案量的/.test(sdIntro),
+    'and the count of things measured here is zero, because it is');
+  await page.click('#sdclaims'); await page.waitForTimeout(400);
+  const claimTxt = await page.textContent('#sdclaimbox');
+  check(claimTxt.includes('待驗證假說'), 'the claim list grades hypotheses as such');
 
-  // Start clean so a second run does not see the first run's project.
+  check(claimTxt.includes('官方規格'), '…and official specs separately');
+  check(claimTxt.includes('限制：'), '…and shows what each claim is NOT true of');
+  await page.click('#sdclaims'); await page.waitForTimeout(200);
+
   await page.evaluate(async () => {
     const d = await (await fetch('/api/drama')).json();
     for (const p of d.projects || []) await fetch(`/api/drama/${p.id}`, { method: 'DELETE' });
   });
-  await page.evaluate(() => refreshDrama()); await page.waitForTimeout(600);
+  await page.evaluate(() => refreshDrama()); await page.waitForTimeout(700);
   check((await page.textContent('#sdempty')).includes('還沒有專案'), 'the empty state explains itself');
-  check(!await page.isVisible('#sdbody'), 'and the pipeline stays hidden until there is one');
 
   await page.fill('#sdnew', '測試短劇');
-  await page.click('#sdcreate'); await page.waitForTimeout(1200);
+  await page.click('#sdcreate'); await page.waitForTimeout(1400);
   check(await page.isVisible('#sdbody'), 'creating a project opens the pipeline');
-  const specNote = await page.textContent('#sdspecnote');
-  check(/原生 \d+fps/.test(specNote), 'step 0 states the locked native frame rate -> ' + specNote.replace(/\s+/g,' ').slice(0,46));
-  check((await page.textContent('#sdspecwhy')).includes('內容審核'),
-    '…and explains the frame-rate artifact is forced on the platforms, not on you');
-  check((await page.textContent('#sdcastwhy')).includes('40%'),
-    'step 1 quotes the retouch cost that the asset layer buys down');
+  const routeCount = await page.evaluate(()=>document.querySelectorAll('#sdroutes .route').length);
+  check(routeCount === 4, `each shot method gets its own route row (${routeCount})`);
+  check((await page.textContent('#sdspecwhy')).includes('不是「一個模型」'),
+    'step 0 explains that the delivery is what is locked, not one model');
 
-  // A cast member, then a shot that uses them.
+  // A male character must not be given a female count tag.
   await page.click('#sdaddcast'); await page.waitForTimeout(900);
-  await page.fill('#sdcast .cn', '女主');
-  await page.fill('#sdcast .ct', '1girl, silver hair');
-  await page.fill('#sdcast .cc', 'school uniform');
+  await page.fill('#sdcast .cn', '男主');
+  await page.selectOption('#sdcast .cg', 'male');
+  await page.fill('#sdcast .ct', 'black suit');
   await page.click('#sdaddshot'); await page.waitForTimeout(900);
-  const rows = await page.evaluate(()=>document.querySelectorAll('#sdshots tr[data-si]').length);
-  check(rows === 1, `a shot row appears (${rows})`);
-  await page.fill('#sdshots .sa', '睜眼、驚');
-  await page.fill('#sdshots .sc', 'dim bedroom, night');
-  await page.selectOption('#sdshots .sz', '特寫');
+  await page.fill('#sdshots .sa', '走進門');
   await page.selectOption('#sdshots .sw', { index: 0 });
-  await page.click('#sdsave'); await page.waitForTimeout(1200);
-  check((await page.textContent('#sdstats')).includes('1 顆'), 'the stats line counts it');
-
-  // The per-shot plan: the composed prompt and the ordered steps.
+  await page.click('#sdsave'); await page.waitForTimeout(1300);
   await page.click('#sdshots .splan'); await page.waitForTimeout(1000);
-  check(await page.isVisible('#sdplan'), '「做這顆」 opens the shot plan');
   const planTxt = await page.textContent('#sdplan');
-  check(planTxt.includes('1girl, silver hair, school uniform'),
-    'the keyframe prompt is composed from the cast -> ' + planTxt.replace(/\s+/g,' ').slice(0,70));
-  check(planTxt.includes('portrait, close-up'), '…with the shot size as a real booru tag');
-  check(/\d+ 格/.test(planTxt), '…and says how many frames the shot will be');
-  check(planTxt.includes('靜態圖修'), '…and why to fix defects in the still');
+  check(planTxt.includes('1boy') && !planTxt.includes('1girl'),
+    'a male-only shot opens with 1boy, not 1girl -> ' + planTxt.replace(/\s+/g,' ').slice(0,64));
+  check(planTxt.includes('還沒有嘗試'), 'the shot shows it has no attempts yet');
+  // `extra` was a field the data model saved and the UI could not reach.
+  await page.fill('#sdextra', 'dim rim light, holding a knife');
+  await page.click('#sdextrasave'); await page.waitForTimeout(1300);
+  await page.click('#sdshots .splan'); await page.waitForTimeout(900);
+  check((await page.textContent('#sdplan')).includes('holding a knife'),
+    'a shot-specific prompt addition is editable and reaches the prompt');
+  check(/\d+ 格/.test(planTxt), 'and how many frames it will be');
 
-  // One click hands the prompt to the image tab, at the right size and model.
-  await page.click('#sdtoimg'); await page.waitForTimeout(1200);
-  const handed = await page.inputValue('#iprompt');
-  check(handed.includes('silver hair'), 'the prompt reaches the image tab -> ' + handed.slice(0,50));
-  check(await page.inputValue('#iwidth') === '832' && await page.inputValue('#iheight') === '1216',
-    'and the canvas is set to the project keyframe size');
+  // The XSS the review found: a character name is interpolated into a finding.
+  await page.fill('#sdcast .cn', '<img src=x onerror=window.__xss=1>');
+  await page.fill('#sdcast .ct', '');
+  await page.click('#sdsave'); await page.waitForTimeout(1400);
+  const pwned = await page.evaluate(() => !!window.__xss);
+  check(!pwned, 'a character name containing HTML does not execute (stored XSS)');
+  const healthHtml = await page.innerHTML('#sdhealth');
+  check(healthHtml.includes('&lt;img') || !healthHtml.includes('<img src=x'),
+    'the name is escaped in the health panel');
+  await page.fill('#sdcast .cn', '男主');
+  await page.fill('#sdcast .ct', 'black suit');
+  await page.click('#sdsave'); await page.waitForTimeout(1200);
 
-  // The validator reaches the page.
-  await page.click('.tabs button[data-tab="sd"]'); await page.waitForTimeout(900);
+  // Findings carry their evidence grade.
   const sdHealth = await page.textContent('#sdhealth');
-  check(sdHealth.includes('LoRA'), 'the health panel raises the missing character LoRA');
+  check(/資料檢查|待驗證假說|產業慣例|本工具建議|官方規格/.test(sdHealth),
+    'every finding shows what kind of evidence it rests on');
   const sdLine = await page.textContent('#sdhealthline');
-  check(/個/.test(sdLine), 'and the summary line counts the findings -> ' + sdLine.trim());
+  check(/資料檢查 \d+ 項、主張 \d+ 項/.test(sdLine),
+    'the summary separates data checks from claims -> ' + sdLine.trim().slice(0,44));
 
-  // Deleting the project cleans up after the run.
+  // Progress means "an accepted video", and nothing accepts itself.
+  check((await page.textContent('#sdstats')).includes('已採用影片 0/1'),
+    'progress counts accepted videos, and starts at zero');
+
   await page.click('#sddel'); await page.waitForTimeout(1000);
   check(!await page.isVisible('#sdbody'), 'deleting the project closes the pipeline');
-  await page.evaluate(()=>{ document.getElementById('iprompt').value=''; });
 
   // ---- experiments: fixed-seed sweeps ----
   // Needs a checkpoint present; the model picker just needs SOMETHING

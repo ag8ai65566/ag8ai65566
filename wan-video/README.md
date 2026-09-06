@@ -790,7 +790,8 @@ app/
   quicktags.py         常用提詞清單（每個都查過 danbooru 實際圖片數）
   refs.py              官方參考圖庫（檔名／資料夾名→角色的比對，對不上就不猜）
   refnames.py          73 位成員的中文名（繁簡都有，從 zh.wikipedia 兩種字體轉換讀來的）
-  shortdrama.py        短劇專案：分鏡表、格式規則、每顆鏡頭的關鍵幀提詞與步驟
+  shortdrama.py        短劇專案：分鏡表、格式規則、每顆鏡頭的關鍵幀提詞與生成紀錄
+  claims.py            這個 app 對使用者講的每一句話，以及它背後是哪一種證據
   experiments.py       實驗矩陣、內容雜湊來源記錄、盲測配對與計分
   artists.py           畫師清單（風格特徵用 danbooru lift 統計出來）
   styles.py            22 組風格配方（每個 tag 都查過 danbooru，47% 的原始建議是不存在的字）

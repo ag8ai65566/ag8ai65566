@@ -1,35 +1,35 @@
-"""短劇 projects: a shot list, the format rules, and what to generate per shot.
+"""短劇 projects: a shot list, what to generate for each shot, and what is wrong.
 
-This is the piece between "I can make a five-second clip" and "I have an
-episode". The clip was never the hard part - the hard part is that an episode is
-a hundred of them that have to look like the same person in the same room, and
-that discipline is bookkeeping, not prompting.
+This module holds an episode's plan. It does not generate anything - the image
+and video tabs do that, because that is where the full controls live - and it
+does not decide whether a picture is good, because this project has never
+generated one.
 
-Everything here comes out of docs/short-drama.md, which reverse-engineers how
-the AI short-drama platforms actually work. Three findings shape this module:
+What it is responsible for:
 
-**The asset layer is the ceiling.** Character consistency measures ~85-90% with
-a closed platform's reference-image feature, 90-95% with IP-Adapter plus
-ControlNet, and near 100% with a per-character LoRA trained on 30-50 images.
-Manual retouching is over 40% of total production hours, and almost all of it is
-paying off consistency that was not locked down first. So a project here starts
-by naming its cast and their LoRAs, and refuses to be useful until it has.
+  * the delivery spec, the keyframe profile, and one route per shot method
+  * the cast, and the prompt fragments locked to each of them
+  * the shot list, with a stable id per shot
+  * which generation attempts belong to which shot, and which one was accepted
+  * validation, split into two kinds that must not be confused
 
-**A 3.2-second median shot is a technical limit written into an aesthetic.**
-An eight-minute episode is ~117 shots. Video models drift as a clip runs long -
-faces wander, hands fail, physics gives up - and three seconds is roughly where
-this generation still holds. Cutting often is a quality technique, not a
-shortcut, so the validator says so when shots run long.
+**Validation is two different things.** An INTEGRITY finding says the record is
+broken - a speaker who is not in the shot, a negative duration, a method this
+project has no route for. Those are facts about the data and are never softened.
+A CLAIM-backed finding says something about the world, and every one of them
+carries a `claim_id` into `claims.py`, where the evidence behind it is written
+down once and graded. Nothing in this file states a claim in its own words.
 
-**The visible "AI tell" in the platforms' NSFW shots is a frame-rate artifact,
-and it is self-inflicted.** They run two tracks - commercial APIs for ordinary
-shots, local models for the ones an API would refuse - and those tracks have
-different native frame rates that meet on one timeline. A local-only pipeline
-has no reason to make that compromise, so the validator treats mixed frame rates
-as an error rather than a preference. It is the one place where being unable to
-use a filtered API is an advantage.
+That separation exists because the first version of this module did not have it,
+and an outside review took it apart: "a LoRA is ~100% consistent", "three seconds
+is where the model starts to break", "the frame-rate artifact is what gives those
+platforms away" were all asserted as fact, in three places each, with nothing
+behind them. See `claims.py` for what each of them is actually worth.
 
-Nothing here filters content. A shot type is a shot type.
+Persistence is one JSONL file under the output directory, `schema_version` 2.
+Version 1 projects (a single `model` plus `fps`) are migrated on load into the
+delivery/keyframe/route split; the old fields are read and never written back,
+so there is only ever one source of truth on disk.
 """
 
 from __future__ import annotations
@@ -41,72 +41,203 @@ import uuid
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
+import claims
 import registry
 
+SCHEMA_VERSION = 2
 
-# -- the format ---------------------------------------------------------------
-# Industry convention for vertical short drama, not invented here. Sources in
-# docs/short-drama.md; the numbers are what the validator measures against.
 
-EPISODE_SECONDS = (60, 180)      # 1-3 minutes per episode
-SHOT_MEDIAN_TARGET = 3.2         # seconds; the measured median of a real episode
-SHOT_LONG = 6.0                  # past here a clip visibly drifts
-DIALOGUE_MAX_CHARS = 15          # per line, so it can be read at short-drama pace
-EPISODE_DIALOGUE_CHARS = (200, 300)
-HOOK_SECONDS = 3.0               # the "golden three seconds"
+# -- format constants ---------------------------------------------------------
+# Each one is a number some claim in claims.py is about. They live here so the
+# validator can compute with them; the *reason* they matter lives there.
 
-# 景別 - the shot sizes a storyboard actually uses, with the danbooru/booru tag
-# that puts a still image at that distance. The tag matters: this is what gets
-# composed into the keyframe prompt, and the image models were trained on these
-# exact strings.
+EPISODE_SECONDS = (60, 180)          # format.episode_length
+SHOT_MEDIAN_REFERENCE = 3.2          # format.shot_median
+SHOT_LONG_HINT = 6.0                 # video.drift_with_length - a hint, not a rule
+DIALOGUE_MAX_CHARS = 15              # format.line_length
+EPISODE_DIALOGUE_CHARS = (200, 300)  # format.line_length
+HOOK_SECONDS = 3.0                   # format.hook
+VERTICAL_RATIO = 9 / 16              # format.vertical
+VERTICAL_TOLERANCE = 0.06            # 4:5 is not 9:16 and must not pass as it
+MAX_SHOT_SECONDS = 600.0             # anything beyond this is a typo, not a shot
+
+
+# 景別. The tag is what gets composed into the keyframe prompt, so it is the
+# booru string the image models were actually captioned with.
 SHOT_SIZES: dict[str, dict] = {
-    "特寫": {"tag": "portrait, close-up", "zh": "臉部特寫", "why": "情緒。短劇有一半的鏡頭是這個。"},
-    "近景": {"tag": "upper body", "zh": "胸上", "why": "對話的預設景別。"},
-    "中景": {"tag": "cowboy shot", "zh": "膝上", "why": "看得到手勢和一點環境。"},
-    "全身": {"tag": "full body", "zh": "全身", "why": "進場、離場、打鬥。"},
-    "過肩": {"tag": "over-the-shoulder shot, from behind", "zh": "過肩", "why": "兩人對峙。"},
-    "俯拍": {"tag": "from above", "zh": "由上往下", "why": "壓迫感、示弱。"},
-    "仰拍": {"tag": "from below", "zh": "由下往上", "why": "威脅感、氣勢。"},
-    "特寫物件": {"tag": "still life, close-up, no humans", "zh": "道具特寫", "why": "轉場、伏筆。很省，很好用。"},
+    "特寫": {"tag": "portrait, close-up", "zh": "臉部特寫", "people": True,
+             "why": "臉部情緒。"},
+    "近景": {"tag": "upper body", "zh": "胸上", "people": True,
+             "why": "看得到表情和上半身手勢。"},
+    "中景": {"tag": "cowboy shot", "zh": "膝上", "people": True,
+             "why": "看得到手勢和一點環境。"},
+    "全身": {"tag": "full body", "zh": "全身", "people": True,
+             "why": "進場、離場、打鬥。"},
+    "過肩": {"tag": "over-the-shoulder shot, from behind", "zh": "過肩", "people": True,
+             "why": "兩人對峙。"},
+    "俯拍": {"tag": "from above", "zh": "由上往下", "people": True,
+             "why": "從上往下拍。"},
+    "仰拍": {"tag": "from below", "zh": "由下往上", "people": True,
+             "why": "從下往上拍。"},
+    # `people: False` is load-bearing: this size emits `no humans`, so a cast
+    # list on the same shot would produce a prompt that contradicts itself.
+    "空鏡": {"tag": "still life, close-up, no humans", "zh": "道具／空景特寫",
+             "people": False, "why": "沒有人的畫面。會送出 `no humans`，所以不能有出場角色。"},
 }
 
-# How a shot gets from a still to moving pictures. `model` names the video model
-# family it needs, so the validator can say "you have not downloaded that yet".
-METHODS: dict[str, dict] = {
-    "i2v": {
-        "zh": "圖生影片", "needs": "video",
-        "why": "一張關鍵幀 → 動起來。沒有台詞的鏡頭都用這個。",
-    },
-    "flf": {
-        "zh": "首尾幀", "needs": "video",
-        "why": "出兩張關鍵幀，中間交給模型。運鏡要準的時候用。",
-    },
-    "s2v": {
-        "zh": "說話（音訊驅動）", "needs": "s2v",
-        "why": "音訊驅動、原生口型同步。**有台詞的鏡頭用這個**，"
-               "而且音檔要先做好——音檔長度決定鏡頭長度。",
-    },
-    "animate": {
-        "zh": "動作轉移", "needs": "animate",
-        "why": "拿一段參考影片的姿勢＋表情，套到你的角色身上。"
-               "甩巴掌、轉身、摔門這種短劇高頻動作，錄一次就能重複用。",
-    },
+# The count tag that opens a danbooru-style prompt, by who is in the shot.
+# Getting this from the cast rather than hard-coding `1girl` is not a detail:
+# the first version emitted `1girl` for an all-male shot, so every male
+# character was fighting a female count tag at the front of his own prompt.
+GENDERS = {
+    "female": {"zh": "女", "one": "1girl", "many": "{n}girls"},
+    "male": {"zh": "男", "one": "1boy", "many": "{n}boys"},
+    "other": {"zh": "其他／不指定", "one": "1other", "many": "{n}others"},
 }
 
-MODEL_ROLE = {"video": "wan22-14b-fp8", "s2v": "wan22-s2v", "animate": "wan22-animate"}
+
+@dataclass(frozen=True)
+class Method:
+    id: str
+    zh: str
+    needs_route: bool = True
+    needs_endframe: bool = False
+    needs_audio: bool = False
+    claim_id: str = ""
+    why: str = ""
 
 
-# -- one project --------------------------------------------------------------
+METHODS: dict[str, Method] = {m.id: m for m in (
+    Method("i2v", "圖生影片",
+           why="一張關鍵幀 → 一段影片。"),
+    Method("flf", "首尾幀", needs_endframe=True,
+           claim_id="wan22.flf_uses_i2v_weights",
+           why="出兩張關鍵幀，中間由模型補。"),
+    Method("s2v", "說話（音訊驅動）", needs_audio=True,
+           claim_id="s2v.audio_driven",
+           why="音檔是輸入，口型在同一個 pass 產生。"),
+    Method("animate", "動作轉移",
+           why="拿一段參考影片的姿勢與表情，套到你的角色身上。"),
+)}
+
+# Which model each method's default route points at. A project may override any
+# of them; nothing requires them to be the same model, because they cannot be -
+# S2V and Animate are separate checkpoints from the I2V one.
+DEFAULT_ROUTE_MODEL = {
+    "i2v": "hy15-720p",
+    "flf": "wan22-14b-fp8",
+    "s2v": "wan22-s2v",
+    "animate": "wan22-animate",
+}
+
+STAGES = ("keyframe", "endframe", "video", "audio")
+
+
+# -- the three layers ---------------------------------------------------------
+# Locking "one video model for the whole episode" was wrong and the data model
+# could not express what actually happens: the moment a project has one line of
+# dialogue it needs S2V, which is a different checkpoint from the I2V one. What
+# is genuinely locked is the *delivery*; each method then says how it gets there.
+
+@dataclass
+class FinishPolicy:
+    """How a route's native frame rate reaches the delivery frame rate.
+
+    Machine-readable on purpose. The first version kept this as a sentence of
+    Chinese, which meant the actual rule - the one the validator has to check -
+    was hidden inside display text and could not be checked at all.
+    """
+
+    mode: str = "native"        # native | interpolate | retime | manual
+    factor: int = 1             # interpolate: frames multiplier
+    retime_audio: bool = False  # retime: was the audio stretched to match?
+
+    def public(self) -> dict:
+        return asdict(self)
+
+
+@dataclass
+class Route:
+    """How one shot method gets generated."""
+
+    model_id: str
+    finish: FinishPolicy = field(default_factory=FinishPolicy)
+
+    @property
+    def native_fps(self) -> int:
+        model = registry.get(self.model_id)
+        return model.fps if model else 0
+
+    @property
+    def clip_seconds(self) -> float:
+        """Seconds this route's *configured* length produces: frames / fps.
+
+        Not a hard ceiling. The official workflows let the frame count be
+        changed and Animate has an extension mechanism, so this is what the
+        catalogue's default would generate - which is still worth checking a
+        shot against, but is not a limit of the model.
+        """
+        model = registry.get(self.model_id)
+        if not model or not model.fps:
+            return 0.0
+        return round(model.length / model.fps, 2)
+
+    def delivered_fps(self, delivery_fps: int) -> int:
+        """The frame rate this route lands on before the timeline takes over."""
+        native = self.native_fps
+        if self.finish.mode == "interpolate":
+            return native * max(1, self.finish.factor)
+        if self.finish.mode in ("retime", "manual"):
+            return delivery_fps
+        return native
+
+    def public(self) -> dict:
+        return {"model_id": self.model_id, "finish": self.finish.public(),
+                "native_fps": self.native_fps, "clip_seconds": self.clip_seconds}
+
+
+@dataclass
+class DeliverySpec:
+    width: int = 1080
+    height: int = 1920
+    fps: int = 24
+
+    @property
+    def ratio(self) -> float:
+        return self.width / self.height if self.height else 0.0
+
+    def public(self) -> dict:
+        return {"width": self.width, "height": self.height, "fps": self.fps,
+                "ratio": round(self.ratio, 4)}
+
+
+@dataclass
+class KeyframeProfile:
+    model_id: str = "noobai"
+    width: int = 832
+    height: int = 1216
+    style_id: str = ""
+
+    @property
+    def pixels(self) -> int:
+        return self.width * self.height
+
+    def public(self) -> dict:
+        return {"model_id": self.model_id, "width": self.width,
+                "height": self.height, "style_id": self.style_id,
+                "pixels": self.pixels}
+
+
+# -- cast and shots -----------------------------------------------------------
 
 @dataclass
 class Character:
-    """A cast member. `lora` is the whole point - see the module docstring."""
-
     key: str
     name: str
-    lora: str = ""              # installed LoRA filename, "" = not trained yet
+    gender: str = "female"      # key into GENDERS; drives the count tag
     trigger: str = ""           # prompt fragment that summons them
-    costume: str = ""           # locked wardrobe tags, pasted verbatim every shot
+    costume: str = ""           # locked wardrobe tags, pasted verbatim
+    lora: str = ""              # installed LoRA filename, if one was trained
     voice: str = ""             # TTS voice sample id, for dialogue shots
     note: str = ""
 
@@ -116,19 +247,45 @@ class Character:
 
 @dataclass
 class Shot:
-    no: int
+    # A stable id, because the display number is not one: deleting shot 3
+    # renumbers everything after it, and a job recorded against "shot 7" would
+    # then point at a different shot than the one it was generated for.
+    id: str = ""
+    no: int = 0
     seconds: float = 3.2
-    size: str = "近景"          # key into SHOT_SIZES
-    who: list[str] = field(default_factory=list)   # Character.key
-    action: str = ""            # what happens, in plain words
-    dialogue: str = ""          # spoken line, "" for silent shots
-    method: str = "i2v"         # key into METHODS
-    scene: str = ""             # location, matched against the scene library
-    extra: str = ""             # anything else that goes in the prompt verbatim
-    keyframe: str = ""          # job id of the still
-    video: str = ""             # job id of the clip
-    status: str = "todo"        # todo | keyframe | video | done | fix
+    size: str = "近景"
+    who: list[str] = field(default_factory=list)
+    speaker: str = ""           # which of `who` is talking; S2V drives them
+    action: str = ""
+    dialogue: str = ""
+    method: str = "i2v"
+    scene: str = ""
+    extra: str = ""             # anything else, pasted into the prompt verbatim
+    # Attempts, not results. One shot is generated several times before one is
+    # kept, and the last job to finish is not the one the user chose.
+    keyframe_jobs: list[str] = field(default_factory=list)
+    endframe_jobs: list[str] = field(default_factory=list)
+    video_jobs: list[str] = field(default_factory=list)
+    active_keyframe: str = ""   # the accepted take, set only by an explicit act
+    active_endframe: str = ""
+    active_video: str = ""
     note: str = ""
+
+    def jobs_for(self, stage: str) -> list[str]:
+        return {"keyframe": self.keyframe_jobs, "endframe": self.endframe_jobs,
+                "video": self.video_jobs}.get(stage, [])
+
+    def active_for(self, stage: str) -> str:
+        return {"keyframe": self.active_keyframe, "endframe": self.active_endframe,
+                "video": self.active_video}.get(stage, "")
+
+    def set_active(self, stage: str, job_id: str) -> None:
+        if stage == "keyframe":
+            self.active_keyframe = job_id
+        elif stage == "endframe":
+            self.active_endframe = job_id
+        elif stage == "video":
+            self.active_video = job_id
 
     def public(self) -> dict:
         return asdict(self)
@@ -138,19 +295,17 @@ class Shot:
 class Project:
     id: str
     title: str = ""
-    # The spec, locked before anything is generated. See `SPECS`.
-    model: str = "hy15-720p"    # the ONE video model for the whole episode
-    fps: int = 24
-    width: int = 832            # keyframe size; SDXL-native, upscaled later
-    height: int = 1216
-    deliver_width: int = 1080
-    deliver_height: int = 1920
-    image_model: str = "noobai"
-    style: str = ""             # style recipe id from styles.py
+    schema_version: int = SCHEMA_VERSION
+    delivery: DeliverySpec = field(default_factory=DeliverySpec)
+    keyframes: KeyframeProfile = field(default_factory=KeyframeProfile)
+    routes: dict[str, Route] = field(default_factory=dict)
     cast: list[Character] = field(default_factory=list)
     shots: list[Shot] = field(default_factory=list)
     created: float = field(default_factory=time.time)
     note: str = ""
+
+    def route(self, method: str) -> Route | None:
+        return self.routes.get(method)
 
     @property
     def seconds(self) -> float:
@@ -170,107 +325,467 @@ class Project:
             return round(lengths[mid], 2)
         return round((lengths[mid - 1] + lengths[mid]) / 2, 2)
 
+    @property
+    def methods_used(self) -> set[str]:
+        return {s.method for s in self.shots if s.method in METHODS}
+
     def character(self, key: str) -> Character | None:
         return next((c for c in self.cast if c.key == key), None)
 
-    def public(self) -> dict:
+    def shot(self, shot_id: str) -> Shot | None:
+        return next((s for s in self.shots if s.id == shot_id), None)
+
+    def public(self, jobs: dict | None = None) -> dict:
+        states = {s.id: shot_state(s, jobs or {}) for s in self.shots}
         return {
-            "id": self.id, "title": self.title, "model": self.model, "fps": self.fps,
-            "width": self.width, "height": self.height,
-            "deliver_width": self.deliver_width, "deliver_height": self.deliver_height,
-            "image_model": self.image_model, "style": self.style,
+            "id": self.id, "title": self.title, "schema_version": self.schema_version,
+            "delivery": self.delivery.public(), "keyframes": self.keyframes.public(),
+            "routes": {k: v.public() for k, v in self.routes.items()},
             "created": self.created, "note": self.note,
             "cast": [c.public() for c in self.cast],
-            "shots": [s.public() for s in self.shots],
+            "shots": [{**s.public(), "state": states[s.id]} for s in self.shots],
             "seconds": self.seconds, "shot_count": len(self.shots),
             "median_shot": self.median_shot, "dialogue_chars": self.dialogue_chars,
-            "done": sum(1 for s in self.shots if s.status == "done"),
+            # Derived, not `bool(active_video)`. An accepted job that was later
+            # deleted leaves the string in place, and counting the string made
+            # the progress line say "1/1 done" for a shot whose own state said
+            # otherwise - the exact contradiction this whole design is against.
+            "done": sum(1 for st in states.values() if st["phase"] == "done"),
         }
 
 
 def _clean_line(text: str) -> str:
-    """Dialogue length is counted in characters people read, not punctuation."""
+    """Dialogue length counts characters people read, not punctuation."""
     return re.sub(r"[\s，。！？、,.!?…「」“”\"']", "", text or "")
 
 
-# -- spec presets -------------------------------------------------------------
-# One video model for the whole episode, and the frame rate that model is native
-# at. Mixing is the single artifact that gives the AI platforms away, and it is
-# only forced on them because half their shots have to go through an API that
-# would refuse the other half. Running everything locally, there is no reason to
-# inherit that compromise - so these presets exist to stop it happening by
-# accident.
+# -- derived state ------------------------------------------------------------
+# Not persisted. A shot's progress is a function of its attempts and what the
+# job store currently says about them, so storing it would mean storing a copy
+# of something that changes underneath - and the copy would be the one the UI
+# showed.
 
-@dataclass(frozen=True)
-class Spec:
+def shot_state(shot: Shot, jobs: dict) -> dict:
+    """Where this shot has got to, computed against the job store."""
+
+    def status_of(job_id: str) -> str:
+        record = jobs.get(job_id)
+        if record is None:
+            return "missing"       # deleted from the library, or never existed
+        return getattr(record, "status", "") or "unknown"
+
+    def stage_state(stage: str) -> dict:
+        attempts = shot.jobs_for(stage)
+        active = shot.active_for(stage)
+        live = [j for j in attempts if status_of(j) not in ("missing",)]
+        return {
+            "attempts": len(attempts),
+            "missing": len(attempts) - len(live),
+            "running": sum(1 for j in live if status_of(j) in ("queued", "running")),
+            "done": sum(1 for j in live if status_of(j) == "done"),
+            "failed": sum(1 for j in live if status_of(j) == "error"),
+            "active": active,
+            # An accepted job that has since been deleted is worse than none:
+            # the shot claims to be finished and the file is gone.
+            "active_missing": bool(active and status_of(active) == "missing"),
+            # And "accepted" is not the same as "finished". The API only accepts
+            # a completed job, but hand-edited JSONL and older records exist, so
+            # the phase is computed from what the job store says now.
+            "active_done": bool(active and status_of(active) == "done"),
+        }
+
+    stages = {s: stage_state(s) for s in ("keyframe", "endframe", "video")}
+    if stages["video"]["active_done"]:
+        phase = "done"
+    # "Review" outranks "running": if one take has finished, there is something
+    # the user can act on, and that is the more useful thing to say even while
+    # another attempt is still in the queue.
+    elif stages["video"]["done"]:
+        phase = "video_review"
+    elif stages["video"]["running"]:
+        phase = "video_running"
+    elif stages["keyframe"]["active_done"]:
+        phase = "keyframe_accepted"
+    elif stages["keyframe"]["done"]:
+        phase = "keyframe_review"
+    elif stages["keyframe"]["running"]:
+        phase = "keyframe_running"
+    elif any(stages[s]["failed"] for s in stages):
+        phase = "error"
+    else:
+        phase = "todo"
+    return {"phase": phase, "stages": stages}
+
+
+PHASE_ZH = {
+    "todo": "還沒開始",
+    "keyframe_running": "關鍵幀生成中",
+    "keyframe_review": "關鍵幀待選",
+    "keyframe_accepted": "關鍵幀已採用",
+    "video_running": "影片生成中",
+    "video_review": "影片待選",
+    "done": "完成",
+    "error": "上一次失敗",
+}
+
+
+# -- validation ---------------------------------------------------------------
+
+@dataclass
+class Finding:
     id: str
-    label: str
-    model: str
-    fps: int
-    clip_seconds: float
-    finish: str          # what to do about frame rate at the end
-    why: str
+    level: str                  # BLOCK | WARN | INFO | GUIDE
+    zh: str
+    detail: str = ""
+    kind: str = "INTEGRITY"     # INTEGRITY, or a claims.evidence_kind
+    claim_id: str = ""
+    shots: list[int] = field(default_factory=list)
+
+    def public(self) -> dict:
+        claim = claims.get(self.claim_id) if self.claim_id else None
+        return {
+            "id": self.id, "level": self.level, "zh": self.zh,
+            "detail": self.detail, "kind": self.kind, "claim_id": self.claim_id,
+            "badge": claim.badge if claim else "資料檢查",
+            "claim": claim.public() if claim else None,
+            "shots": self.shots,
+        }
 
 
-SPECS: list[Spec] = [
-    Spec("hunyuan-24", "HunyuanVideo 1.5 · 24fps 原生（推薦）",
-         "hy15-720p", 24, 5.04,
-         "時間線就設 24fps，**一格都不用補幀**。",
-         "人臉與物理最自然，而且 24fps 是原生的 —— 交付 24fps 就完全不會有補幀痕跡，"
-         "那正是那些平台最明顯的破綻。"),
-    Spec("wan5b-24", "Wan 2.2 5B · 24fps 原生",
-         "wan22-5b", 24, 5.04,
-         "時間線就設 24fps，不用補幀。",
-         "輕量、快、原生 720p。12GB 顯卡的實際選擇。"),
-    Spec("wan14b-16", "Wan 2.2 I2V 14B · 16fps（NSFW LoRA 最多）",
-         "wan22-14b-fp8", 16, 5.06,
-         "RIFE ×2 → **32fps 整條交付**，或整條均勻 retime 到 30fps"
-         "（慢 6.25%，看不出來，不掉幀不抖）。**絕不要 16 直接補到 30**。",
-         "社群為 Wan 2.2 訓練的 LoRA 遠多於其他模型，成人題材尤其。"
-         "代價是 16fps 不是整數倍，補幀要照上面那樣做才不會露餡。"),
-]
-
-SPEC_BY_ID = {s.id: s for s in SPECS}
+def _claim_finding(finding_id: str, claim_id: str, zh: str, detail: str = "",
+                   shots: list[int] | None = None,
+                   level: str | None = None) -> Finding:
+    """A finding whose justification lives in claims.py, never restated here."""
+    claim = claims.get(claim_id)
+    return Finding(
+        id=finding_id, level=level or (claim.policy if claim else claims.INFO),
+        zh=zh, detail=detail, claim_id=claim_id,
+        kind=claim.evidence_kind if claim else "INTEGRITY",
+        shots=shots or [],
+    )
 
 
-# -- building the prompt for one shot -----------------------------------------
+def check_integrity(project: Project) -> list[Finding]:
+    """Ways the record itself is broken. Never softened, never a matter of taste."""
+    out: list[Finding] = []
+    shots = project.shots
+
+    keys = [c.key for c in project.cast]
+    dupes = sorted({k for k in keys if keys.count(k) > 1})
+    if dupes:
+        out.append(Finding("cast-dupe", claims.BLOCK,
+                           f"有 {len(dupes)} 個角色 key 重複。",
+                           f"重複的：{'、'.join(dupes)}。鏡頭引用時會指到哪一個是不確定的。"))
+    if any(not c.key or not c.name for c in project.cast):
+        out.append(Finding("cast-blank", claims.BLOCK, "有角色沒有 key 或名字。"))
+    bad_gender = sorted({c.gender for c in project.cast if c.gender not in GENDERS})
+    if bad_gender:
+        out.append(Finding("cast-gender", claims.BLOCK,
+                           f"有角色的性別欄位不合法：{'、'.join(bad_gender)}",
+                           "這個欄位決定提詞最前面的人數 tag（1girl／1boy／1other）。"))
+
+    known = {c.key for c in project.cast}
+    for shot in shots:
+        n = shot.no
+        if not (shot.seconds and shot.seconds > 0) or shot.seconds != shot.seconds:
+            out.append(Finding("shot-seconds", claims.BLOCK,
+                               f"第 {n} 顆的秒數不是正數。", shots=[n]))
+        elif shot.seconds > MAX_SHOT_SECONDS:
+            out.append(Finding("shot-seconds-huge", claims.BLOCK,
+                               f"第 {n} 顆是 {shot.seconds} 秒，這比較像打錯了。",
+                               shots=[n]))
+        if shot.size not in SHOT_SIZES:
+            out.append(Finding("shot-size", claims.BLOCK,
+                               f"第 {n} 顆的景別「{shot.size}」不認得。", shots=[n]))
+        if shot.method not in METHODS:
+            out.append(Finding("shot-method", claims.BLOCK,
+                               f"第 {n} 顆的生成方式「{shot.method}」不認得。", shots=[n]))
+        missing = [w for w in shot.who if w not in known]
+        if missing:
+            out.append(Finding("shot-cast", claims.BLOCK,
+                               f"第 {n} 顆引用了卡司裡沒有的角色。",
+                               f"找不到：{'、'.join(missing)}。"
+                               "這些鏡頭不會帶到觸發詞、鎖定服裝或 LoRA。", shots=[n]))
+        if len(set(shot.who)) != len(shot.who):
+            out.append(Finding("shot-who-dupe", claims.WARN,
+                               f"第 {n} 顆的出場角色有重複。", shots=[n]))
+        size = SHOT_SIZES.get(shot.size)
+        if size and not size["people"] and shot.who:
+            out.append(Finding(
+                "shot-object-people", claims.BLOCK,
+                f"第 {n} 顆是「{shot.size}」卻有出場角色。",
+                f"「{shot.size}」會送出 `no humans`，跟人數 tag 直接互相矛盾——"
+                "提詞會同時要求有人和沒人。要嘛換景別，要嘛把角色拿掉。", shots=[n]))
+        if shot.dialogue and not shot.speaker:
+            out.append(Finding("shot-no-speaker", claims.BLOCK,
+                               f"第 {n} 顆有台詞卻沒指定誰在說。",
+                               "同框兩個人的時候，沒有這個欄位就無法決定音訊要驅動誰。",
+                               shots=[n]))
+        if shot.speaker and shot.speaker not in shot.who:
+            out.append(Finding("shot-speaker-absent", claims.BLOCK,
+                               f"第 {n} 顆指定的說話者不在這顆的出場角色裡。", shots=[n]))
+        method = METHODS.get(shot.method)
+        if method and method.needs_endframe and not (
+                shot.endframe_jobs or shot.active_endframe):
+            out.append(_claim_finding(
+                "shot-no-endframe", "wan22.flf_uses_i2v_weights",
+                f"第 {n} 顆用首尾幀，但還沒有結束幀。",
+                "首尾幀要兩張圖：起始幀和結束幀。只有一張就跑不了這個工作流。",
+                shots=[n], level=claims.BLOCK))
+        if method and method.needs_route and shot.method not in project.routes:
+            out.append(Finding("shot-no-route", claims.BLOCK,
+                               f"第 {n} 顆用「{method.zh}」，但專案沒有設定這條路線。",
+                               "到第 0 步指定這個生成方式要用哪個模型。", shots=[n]))
+
+    ids = [s.id for s in shots]
+    if len(set(ids)) != len(ids) or any(not i for i in ids):
+        out.append(Finding("shot-id", claims.BLOCK, "鏡頭的內部 id 有重複或空的。",
+                           "這會讓生成紀錄掛到錯的鏡頭上。"))
+    return out
+
+
+def check_claims(project: Project, *, installed: set[str] | None = None
+                 ) -> list[Finding]:
+    """Findings about the world. Every one carries its evidence into claims.py.
+
+    `installed` is the set of model ids on disk. `None` means the caller does
+    not know and the download check is skipped; an *empty set* means nothing is
+    installed, which is a real answer - conflating the two is a bug this module
+    already shipped once.
+    """
+    out: list[Finding] = []
+    shots = project.shots
+    if not shots:
+        return out
+
+    # -- delivery shape
+    ratio = project.delivery.ratio
+    if ratio and abs(ratio - VERTICAL_RATIO) > VERTICAL_TOLERANCE:
+        out.append(_claim_finding(
+            "delivery-ratio", "format.vertical",
+            f"交付尺寸 {project.delivery.width}×{project.delivery.height} "
+            f"不是 9:16（比例 {ratio:.3f}，9:16 是 {VERTICAL_RATIO:.3f}）。",
+            "只檢查「高比寬大」會讓 4:5 過關，所以這裡比的是實際比例。"))
+
+    # -- keyframe size against the checkpoint's trained resolution
+    px = project.keyframes.pixels
+    if px and px < 1024 * 1024 * 0.45:
+        out.append(_claim_finding(
+            "keyframe-small", "sdxl.native_resolution",
+            f"關鍵幀 {project.keyframes.width}×{project.keyframes.height} "
+            f"只有原生面積的 {px / (1024 * 1024):.0%}。",
+            "關鍵幀是整條線裡控制力最強的一步，在這裡省像素等於在源頭省畫質。"))
+
+    # -- frame rate: per route, against the delivery timeline
+    for method in sorted(project.methods_used):
+        route = project.route(method)
+        if route is None:
+            continue
+        landed = route.delivered_fps(project.delivery.fps)
+        if landed and landed != project.delivery.fps:
+            out.append(_claim_finding(
+                "fps-route", "fps.single_native_rate",
+                f"「{METHODS[method].zh}」這條路線落在 {landed}fps，"
+                f"但時間線是 {project.delivery.fps}fps。",
+                f"{route.model_id} 原生 {route.native_fps}fps。"
+                "在第 0 步替這條路線選一個收尾方式（原生／補幀／retime），"
+                "否則會在後期變成非整數倍的轉換。", level=claims.WARN))
+        if route.finish.mode == "retime" and not route.finish.retime_audio:
+            out.append(_claim_finding(
+                "retime-audio", "fps.retime_audio",
+                f"「{METHODS[method].zh}」設定成 retime，但沒有勾聲音一起處理。",
+                "畫面被拉長或壓縮之後，沒跟著處理的聲音就會失去同步。",
+                level=claims.WARN))
+
+    # -- clip length against what one pass can produce
+    for method in sorted(project.methods_used):
+        route = project.route(method)
+        if route is None or not route.clip_seconds:
+            continue
+        over = [s.no for s in shots
+                if s.method == method and s.seconds > route.clip_seconds]
+        if over:
+            out.append(_claim_finding(
+                "over-clip", "video.clip_length_is_spec",
+                f"{len(over)} 顆鏡頭比 {route.model_id} 單次能生成的長度還長"
+                f"（{route.clip_seconds} 秒）。",
+                "要嘛把秒數改短，要嘛在 ComfyUI 裡把工作流的幀數調高，"
+                "要嘛拆成兩顆。（幀數是可以改的，這裡比的是目前設定的預設值。）",
+                shots=over, level=claims.WARN))
+
+    long_shots = [s.no for s in shots if s.seconds > SHOT_LONG_HINT]
+    if long_shots:
+        out.append(_claim_finding(
+            "long-shots", "video.drift_with_length",
+            f"{len(long_shots)} 顆鏡頭超過 {SHOT_LONG_HINT} 秒。",
+            "社群普遍回報片段越長越容易漂移，但本專案沒有量過，"
+            f"所以 {SHOT_LONG_HINT} 秒只是一個提醒用的門檻，不是實測的閾值。",
+            shots=long_shots))
+
+    # -- format conventions
+    if project.median_shot > SHOT_MEDIAN_REFERENCE * 1.6:
+        out.append(_claim_finding(
+            "slow-pace", "format.shot_median",
+            f"鏡頭中位數 {project.median_shot} 秒，"
+            f"參考值是 {SHOT_MEDIAN_REFERENCE} 秒。",
+            "那個參考值是某一部成片的剪輯統計，不是規定。慢是可以的，但要是刻意的。"))
+    long_lines = [s.no for s in shots
+                  if len(_clean_line(s.dialogue)) > DIALOGUE_MAX_CHARS]
+    if long_lines:
+        out.append(_claim_finding(
+            "long-dialogue", "format.line_length",
+            f"{len(long_lines)} 句台詞超過 {DIALOGUE_MAX_CHARS} 個字。",
+            "標點不算在內。", shots=long_lines))
+    chars = project.dialogue_chars
+    if chars > EPISODE_DIALOGUE_CHARS[1] * 1.5:
+        out.append(_claim_finding(
+            "wordy", "format.line_length",
+            f"整集台詞 {chars} 字，慣例是 {'-'.join(map(str, EPISODE_DIALOGUE_CHARS))} 字。"))
+    first = shots[0]
+    if not (first.action or first.dialogue):
+        out.append(_claim_finding(
+            "no-hook", "format.hook", "第一顆鏡頭是空的。",
+            "這顆目前既沒有動作也沒有台詞。", shots=[first.no], level=claims.WARN))
+    lo_s, hi_s = EPISODE_SECONDS
+    if project.seconds and not (lo_s * 0.5 <= project.seconds <= hi_s * 1.5):
+        out.append(_claim_finding(
+            "episode-length", "format.episode_length",
+            f"整集 {project.seconds} 秒，慣例是 {lo_s}-{hi_s} 秒。"))
+
+    # -- consistency strategy: offered, never assumed
+    used = {k for s in shots for k in s.who}
+    styled = [c for c in project.cast if c.key in used and (c.lora or c.trigger)]
+    bare = [c.name for c in project.cast if c.key in used
+            and not c.lora and not c.trigger]
+    if bare:
+        out.append(_claim_finding(
+            "no-strategy", "consistency.lora",
+            f"{len(bare)} 位角色既沒有觸發詞也沒有 LoRA。",
+            f"這份記錄裡，{'、'.join(bare)} 沒有任何共用的外觀描述，"
+            "所以每顆鏡頭送出去的提詞只有景別、場景和動作。"
+            "角色 LoRA、觸發詞、參考圖控制都是可以用的方法——"
+            "本專案沒有比較過哪個好，但這份記錄裡一個都沒有。"
+            "（如果你是在 app 外面用別的方式控一致性，這條可以忽略。）",
+            level=claims.WARN))
+    no_costume = [c.name for c in project.cast if c.key in used and not c.costume]
+    if no_costume and styled:
+        out.append(_claim_finding(
+            "no-costume", "consistency.lora",
+            f"{len(no_costume)} 位角色沒有鎖定服裝。",
+            "把服裝描述集中保存一份、每顆鏡頭原封不動貼，"
+            "可以避免不同鏡頭之間出現文字上的差異——這是資料一致性，不是畫質主張。"))
+
+    # -- audio ordering
+    talking = [s.no for s in shots if s.dialogue and s.method != "s2v"]
+    if talking:
+        out.append(_claim_finding(
+            "dialogue-not-s2v", "s2v.vs_postsync",
+            f"{len(talking)} 顆有台詞的鏡頭不是用音訊驅動。",
+            "這些之後要另外補口型（InfiniteTalk／LatentSync）。"
+            "兩條路的輸入和返工成本不同，成品差異本專案沒有比較過。",
+            shots=talking))
+
+    # -- models on disk
+    if installed is not None:
+        for method in sorted(project.methods_used):
+            route = project.route(method)
+            if route is None or route.model_id in installed:
+                continue
+            model = registry.get(route.model_id)
+            out.append(Finding(
+                f"missing-{method}", claims.BLOCK,
+                f"「{METHODS[method].zh}」要用的 "
+                f"{model.label if model else route.model_id} 還沒下載。",
+                ("到「模型」分頁下載"
+                 + (f"（{model.download_bytes / 1e9:.1f}GB）。" if model else "。")),
+                kind="INTEGRITY"))
+    return out
+
+
+ORDER = {claims.BLOCK: 0, claims.WARN: 1, claims.INFO: 2, claims.GUIDE: 3}
+
+
+def check(project: Project, *, installed: set[str] | None = None) -> list[Finding]:
+    """Integrity first, always: a broken record makes every other check noise."""
+    found = check_integrity(project) + check_claims(project, installed=installed)
+    found.sort(key=lambda f: (ORDER.get(f.level, 9), f.kind != "INTEGRITY"))
+    return found
+
+
+def summary(findings: list[Finding]) -> dict:
+    counts = {p: sum(1 for f in findings if f.level == p) for p in claims.POLICIES}
+    integrity = sum(1 for f in findings if f.kind == "INTEGRITY")
+    if counts[claims.BLOCK]:
+        line, level = f"有 {counts[claims.BLOCK]} 個一定要先修的問題", "high"
+    elif counts[claims.WARN]:
+        line, level = f"有 {counts[claims.WARN]} 個值得看一下的地方", "warn"
+    elif findings:
+        line, level = "沒有擋路的問題，有幾個提醒", "info"
+    else:
+        line, level = "分鏡表看起來沒問題", "ok"
+    return {"level": level, "line": line, "counts": counts,
+            "integrity": integrity, "claims": len(findings) - integrity,
+            "findings": [f.public() for f in findings]}
+
+
+# -- building one shot's prompt -----------------------------------------------
+
+def count_tag(people: list[Character]) -> str:
+    """The count tag that opens the prompt, derived from who is actually in it.
+
+    The first version hard-coded `1girl` / `2girls`, so an all-male shot opened
+    with a female count tag and every male character spent the rest of the
+    prompt arguing with it. Mixed casts get one tag per gender, which is how
+    danbooru captions them.
+    """
+    if not people:
+        return ""
+    order = ["female", "male", "other"]
+    buckets: dict[str, int] = {}
+    for who in people:
+        gender = who.gender if who.gender in GENDERS else "other"
+        buckets[gender] = buckets.get(gender, 0) + 1
+    parts = []
+    for gender in order:
+        n = buckets.get(gender, 0)
+        if not n:
+            continue
+        spec = GENDERS[gender]
+        parts.append(spec["one"] if n == 1 else spec["many"].format(n=n))
+    return ", ".join(parts)
+
 
 def keyframe_prompt(project: Project, shot: Shot) -> dict:
-    """Compose the still-image prompt for one shot, in the order that matters.
+    """Compose the still-image prompt for one shot.
 
-    Order is not decoration. The danbooru-trained checkpoints were captioned as
-    `<count>, <character>, <series>, <artist>, <special>, <general>`, and the
-    front of the prompt pulls hardest - so the character and their locked
-    costume go first, the camera next, and the loose description last where it
-    can flavour without overriding.
+    The order is the one danbooru captions use - count, character, then the
+    looser description. That the front of a prompt carries more weight is a
+    common belief and is *not* asserted here; the order is followed because it
+    matches how the training captions were written, which is checkable.
     """
-    bits: list[str] = []
-    people = [project.character(k) for k in shot.who]
-    people = [p for p in people if p]
-
-    count = {0: "", 1: "1girl", 2: "2girls"}.get(len(people), f"{len(people)} people")
-    if count:
-        bits.append(count)
-    for who in people:
-        if who.trigger:
-            bits.append(who.trigger)
-        if who.costume:
-            bits.append(who.costume)
-
-    size = SHOT_SIZES.get(shot.size)
-    if size:
-        bits.append(size["tag"])
-    if shot.scene:
-        bits.append(shot.scene)
-    if shot.action:
-        bits.append(shot.action)
-    if shot.extra:
-        bits.append(shot.extra)
-
-    # Deduped through the same comparison the merge engine uses, because a
-    # character trigger very often already starts with `1girl` and a doubled tag
-    # is a silent double weight rather than an emphasis.
     import promptmerge
+
+    size = SHOT_SIZES.get(shot.size, SHOT_SIZES["近景"])
+    people = [p for p in (project.character(k) for k in shot.who) if p]
+    bits: list[str] = []
+
+    # A shot size that emits `no humans` never gets a cast; check_integrity
+    # blocks that combination, and this is the second line of defence so a
+    # contradictory prompt cannot be built even if the record slipped through.
+    if size["people"]:
+        count = count_tag(people)
+        if count:
+            bits.append(count)
+        for who in people:
+            if who.trigger:
+                bits.append(who.trigger)
+            if who.costume:
+                bits.append(who.costume)
+
+    bits.append(size["tag"])
+    for extra in (shot.scene, shot.action, shot.extra):
+        if extra:
+            bits.append(extra)
 
     pieces: list[str] = []
     for chunk in bits:
@@ -278,231 +793,79 @@ def keyframe_prompt(project: Project, shot: Shot) -> dict:
     return {
         "prompt": ", ".join(promptmerge.dedupe(pieces)),
         "loras": [w.lora for w in people if w.lora],
-        "model": project.image_model,
-        "width": project.width, "height": project.height,
-        "style": project.style,
+        "model": project.keyframes.model_id,
+        "width": project.keyframes.width, "height": project.keyframes.height,
+        "style": project.keyframes.style_id,
     }
 
 
 def shot_plan(project: Project, shot: Shot) -> dict:
-    """Everything the user has to do for this shot, in order, with the reason."""
+    """What to do for this shot, in order, each step saying which claim it rests on."""
     method = METHODS.get(shot.method, METHODS["i2v"])
-    steps = []
-    if shot.dialogue:
-        steps.append({
-            "do": "先做音檔",
-            "why": "S2V 是音訊驅動的，音檔長度決定鏡頭長度。順序顛倒就要重跑。",
-        })
-    steps.append({
-        "do": f"生關鍵幀（{project.width}×{project.height}）",
-        "why": "在靜態圖修，不要在影片修。這裡一隻沒修好的手，"
-               f"會被複製到這個鏡頭的 {int(shot.seconds * project.fps)} 格裡去。",
-    })
-    if shot.method == "flf":
-        steps.append({"do": "再生一張結束幀", "why": "首尾幀要兩張。"})
-    steps.append({
-        "do": f"{method['zh']} → {shot.seconds} 秒",
-        "why": method["why"],
-    })
-    return {"no": shot.no, "method": shot.method, "steps": steps,
-            "frames": int(round(shot.seconds * project.fps))}
+    route = project.route(shot.method)
+    steps: list[dict] = []
 
+    if method.needs_audio or shot.dialogue:
+        steps.append({"do": "先做音檔", "claim_id": "s2v.audio_first"})
+    steps.append({"do": f"生關鍵幀（{project.keyframes.width}×{project.keyframes.height}）",
+                  "claim_id": "workflow.fix_stills_first"})
+    if method.needs_endframe:
+        steps.append({"do": "再生一張結束幀",
+                      "claim_id": "wan22.flf_uses_i2v_weights"})
+    steps.append({"do": f"{method.zh} → {shot.seconds} 秒",
+                  "claim_id": method.claim_id})
 
-# -- the validator -------------------------------------------------------------
-# Same idea as promptdoctor: every finding is a checkable rule with a stated
-# source, never a prediction about how the result will look. This project has
-# never generated a frame of video, so it cannot make the second kind of claim.
-
-@dataclass
-class Finding:
-    id: str
-    level: str          # high | warn | info
-    zh: str
-    detail: str = ""
-    shots: list[int] = field(default_factory=list)
-
-    def public(self) -> dict:
-        return asdict(self)
-
-
-def check(project: Project, *, installed: set[str] | None = None) -> list[Finding]:
-    """Everything wrong with this episode that can be seen without rendering it.
-
-    `installed` is the set of model ids actually on disk. `None` means the
-    caller does not know and the download check is skipped; an *empty set* means
-    nothing is installed, which is a real answer and must not be confused with
-    not knowing - that confusion is why the check silently never fired.
-    """
-    out: list[Finding] = []
-    shots = project.shots
-
-    if not shots:
-        out.append(Finding("empty", "info", "還沒有鏡頭。",
-                           "先把分鏡表寫完再開始生成。資產層和分鏡沒鎖就開工，"
-                           "是人工精修那 40% 工時的第二大來源。"))
-        return out
-
-    # -- 1. the cast. This is the ceiling on everything else.
-    used = {k for s in shots for k in s.who}
-    nameless = sorted(k for k in used if not project.character(k))
-    if nameless:
-        out.append(Finding(
-            "unknown-cast", "high", f"有 {len(nameless)} 個角色沒有在卡司裡定義。",
-            f"鏡頭引用了 {'、'.join(nameless)}，但卡司名單裡沒有他們，"
-            "所以生成時不會帶到 LoRA、觸發詞或服裝。"))
-    no_lora = [c.name for c in project.cast if c.key in used and not c.lora]
-    if no_lora:
-        out.append(Finding(
-            "no-lora", "warn", f"{len(no_lora)} 位角色還沒有專屬 LoRA。",
-            "角色一致性：閉源參考圖 85-90%、IP-Adapter＋ControlNet 90-95%、"
-            "**專屬 LoRA 接近 100%**。差的那 5-10% 在上百個鏡頭裡會變成"
-            "「每十個鏡頭臉就跑掉一次」，而**人工精修佔總工時 40% 以上**，"
-            "那 40% 幾乎全是一致性沒鎖好的帳。"
-            f"沒訓練的：{'、'.join(no_lora)}"))
-    no_costume = [c.name for c in project.cast if c.key in used and not c.costume]
-    if no_costume:
-        out.append(Finding(
-            "no-costume", "info", f"{len(no_costume)} 位角色沒有鎖定服裝。",
-            "服裝要寫死成一段文字、每個鏡頭原封不動貼上去。"
-            "靠每次重打描述來維持連戲，是穿幫最常見的原因。"))
-
-    # -- 2. frame rate. The one artifact that is entirely self-inflicted.
-    spec = next((s for s in SPECS if s.model == project.model), None)
-    if spec and spec.fps != project.fps:
-        out.append(Finding(
-            "fps-mismatch", "high",
-            f"時間線設 {project.fps}fps，但 {project.model} 的原生幀率是 {spec.fps}fps。",
-            "混幀率就是那些 AI 短劇平台最明顯的破綻 —— 而他們是被內容審核逼的"
-            "（一半鏡頭得走商業 API），你不是。整條線都在本機，就沒有理由自己製造這個問題。"
-            f"處理方式：{spec.finish}"))
-
-    # -- 3. shot length. A technical limit wearing an aesthetic's clothes.
-    long_shots = [s.no for s in shots if s.seconds > SHOT_LONG]
-    if long_shots:
-        out.append(Finding(
-            "long-shots", "warn", f"{len(long_shots)} 個鏡頭超過 {SHOT_LONG} 秒。",
-            "AI 影片越長越飄：角色漂移、手壞掉、物理崩掉。"
-            f"真實短劇的鏡頭中位數是 {SHOT_MEDIAN_TARGET} 秒，那不是巧合，"
-            "是技術限制被寫進了美學。**在它變糟之前就切掉**。",
-            long_shots))
-    if spec:
-        over = [s.no for s in shots if s.seconds > spec.clip_seconds]
-        if over:
-            out.append(Finding(
-                "over-clip", "warn",
-                f"{len(over)} 個鏡頭比這個模型單次能生成的長度還長"
-                f"（{spec.clip_seconds} 秒）。",
-                "超過的部分要嘛拆成兩個鏡頭，要嘛接兩段 —— 接的地方一定看得出來。"
-                "拆成兩個鏡頭比較好，反正短劇本來就該多切。", over))
-    if project.median_shot > SHOT_MEDIAN_TARGET * 1.6:
-        out.append(Finding(
-            "slow-pace", "info",
-            f"鏡頭中位數 {project.median_shot} 秒，比短劇慣例（{SHOT_MEDIAN_TARGET} 秒）慢不少。",
-            "節奏偏慢在短劇裡是真的會掉觀眾的。也不一定要照抄，但要是刻意的。"))
-
-    # -- 4. dialogue. Format conventions, and the lip-sync trap.
-    long_lines = [s.no for s in shots if len(_clean_line(s.dialogue)) > DIALOGUE_MAX_CHARS]
-    if long_lines:
-        out.append(Finding(
-            "long-dialogue", "info",
-            f"{len(long_lines)} 句台詞超過 {DIALOGUE_MAX_CHARS} 個字。",
-            "短劇的台詞慣例是單句壓在 15 字以內、一集有效台詞 200-300 字。"
-            "講太長觀眾會滑掉，而且配音也難卡秒數。", long_lines))
-    talking_wrong = [s.no for s in shots if s.dialogue and s.method not in ("s2v",)]
-    if talking_wrong:
-        out.append(Finding(
-            "no-lipsync", "warn",
-            f"{len(talking_wrong)} 個有台詞的鏡頭沒有用音訊驅動（S2V）。",
-            "圖生影片不會對口型。這些鏡頭之後要另外補口型"
-            "（InfiniteTalk 或 LatentSync），而補的永遠比原生生的差。"
-            "能用 S2V 就用 S2V。", talking_wrong))
-    chars = project.dialogue_chars
-    lo, hi = EPISODE_DIALOGUE_CHARS
-    if chars > hi * 1.5:
-        out.append(Finding(
-            "wordy", "info", f"整集台詞 {chars} 字，慣例是 {lo}-{hi} 字。",
-            "短劇是靠剪和衝突推進的，不是靠台詞。話多通常代表劇情沒有用畫面講。"))
-
-    # -- 5. the hook. Three seconds is the whole industry's number.
-    first = shots[0]
-    if not (first.action or first.dialogue):
-        out.append(Finding(
-            "no-hook", "warn", "第一個鏡頭是空的。",
-            "**黃金 3 秒**：開篇 30 秒內必須拋出核心衝突或懸念，而第一個鏡頭"
-            "決定觀眾要不要看第二個。這是短劇唯一真正不能省的地方。", [first.no]))
-    elif first.seconds > HOOK_SECONDS * 2:
-        out.append(Finding(
-            "slow-hook", "info", f"第一個鏡頭 {first.seconds} 秒，開場偏慢。",
-            "黃金 3 秒的意思是前 3 秒就要有東西發生。", [first.no]))
-
-    # -- 6. episode length
-    lo_s, hi_s = EPISODE_SECONDS
-    if project.seconds < lo_s * 0.5:
-        out.append(Finding(
-            "short-episode", "info",
-            f"整集 {project.seconds} 秒，短劇單集慣例是 {lo_s}-{hi_s} 秒。",
-            "比慣例短很多不是錯，但如果是要放到平台上，長度會影響推薦。"))
-    elif project.seconds > hi_s * 1.5:
-        out.append(Finding(
-            "long-episode", "info",
-            f"整集 {project.seconds} 秒，比單集慣例（{lo_s}-{hi_s} 秒）長不少。",
-            "考慮拆成兩集 —— 多一個結尾就是多一個鉤子。"))
-
-    # -- 7. models actually on disk
-    needed = {METHODS[s.method]["needs"] for s in shots if s.method in METHODS}
-    for role in sorted(needed):
-        want = MODEL_ROLE.get(role)
-        if role == "video":
-            want = project.model
-        if want and installed is not None and want not in installed:
-            model = registry.get(want)
-            out.append(Finding(
-                f"missing-{role}", "high",
-                f"有鏡頭需要 {model.label if model else want}，但它還沒下載。",
-                "到「模型」分頁下載。" + (
-                    f"（{model.download_bytes / 1e9:.1f}GB）" if model else "")))
-
-    # -- 8. keyframe size
-    px = project.width * project.height
-    if min(project.width, project.height) < 640 or px < 1024 * 1024 * 0.45:
-        out.append(Finding(
-            "small-keyframe", "high",
-            f"關鍵幀設 {project.width}×{project.height}，對 SDXL 太小。",
-            "SDXL 是在 1024² 附近訓練的。關鍵幀是整條線裡你控制力最強的地方，"
-            "在這裡省像素等於在源頭省畫質。建議 832×1216，最後再放大到 "
-            f"{project.deliver_width}×{project.deliver_height}。"))
-    if project.width > project.height:
-        out.append(Finding(
-            "not-vertical", "warn",
-            f"關鍵幀是橫的（{project.width}×{project.height}）。",
-            "短劇是直式的（9:16）。"))
-
-    order = {"high": 0, "warn": 1, "info": 2}
-    out.sort(key=lambda f: order[f.level])
-    return out
-
-
-def summary(findings: list[Finding]) -> dict:
-    highs = sum(1 for f in findings if f.level == "high")
-    warns = sum(1 for f in findings if f.level == "warn")
-    if highs:
-        line, level = f"有 {highs} 個要先處理的問題", "high"
-    elif warns:
-        line, level = f"有 {warns} 個值得看一下的地方", "warn"
-    elif findings:
-        line, level = "大致沒問題，有幾個小提醒", "info"
-    else:
-        line, level = "分鏡表看起來沒問題", "ok"
-    return {"level": level, "line": line, "high": highs, "warn": warns,
-            "info": len(findings) - highs - warns,
-            "findings": [f.public() for f in findings]}
+    for step in steps:
+        claim = claims.get(step.get("claim_id") or "")
+        step["why"] = claim.text if claim else ""
+        step["badge"] = claim.badge if claim else ""
+    fps = route.native_fps if route else project.delivery.fps
+    return {"no": shot.no, "id": shot.id, "method": shot.method, "steps": steps,
+            "frames": int(round(shot.seconds * fps)) if fps else 0,
+            "route": route.public() if route else None,
+            "method_why": method.why}
 
 
 # -- the store ----------------------------------------------------------------
 
-class ProjectStore:
-    """One JSONL file. Same shape as ExperimentStore, same reasoning."""
+def default_routes() -> dict[str, Route]:
+    return {m: Route(model_id) for m, model_id in DEFAULT_ROUTE_MODEL.items()}
 
+
+def _route_from(raw: dict) -> Route:
+    finish = raw.get("finish") or {}
+    return Route(
+        model_id=str(raw.get("model_id") or ""),
+        finish=FinishPolicy(mode=str(finish.get("mode") or "native"),
+                            factor=int(finish.get("factor") or 1),
+                            retime_audio=bool(finish.get("retime_audio"))),
+    )
+
+
+def _migrate_v1(raw: dict) -> dict:
+    """Version 1 stored one `model` plus `fps` for the whole episode.
+
+    That could not describe a project with dialogue, because S2V is a different
+    checkpoint - so the old value becomes the i2v route and the rest take their
+    defaults. The v1 keys are read here and never written back: two sources of
+    truth on disk is how they start disagreeing.
+    """
+    routes = default_routes()
+    if raw.get("model"):
+        routes["i2v"] = Route(str(raw["model"]))
+    return {
+        "delivery": {"width": int(raw.get("deliver_width") or 1080),
+                     "height": int(raw.get("deliver_height") or 1920),
+                     "fps": int(raw.get("fps") or 24)},
+        "keyframes": {"model_id": raw.get("image_model") or "noobai",
+                      "width": int(raw.get("width") or 832),
+                      "height": int(raw.get("height") or 1216),
+                      "style_id": raw.get("style") or ""},
+        "routes": {k: {"model_id": v.model_id} for k, v in routes.items()},
+    }
+
+
+class ProjectStore:
     def __init__(self, path: Path) -> None:
         self.path = path
         self.items: dict[str, Project] = {}
@@ -517,18 +880,30 @@ class ProjectStore:
                 continue
             try:
                 raw = json.loads(line)
+                if int(raw.get("schema_version") or 1) < 2:
+                    raw = {**raw, **_migrate_v1(raw)}
+                delivery = raw.get("delivery") or {}
+                keyframes = raw.get("keyframes") or {}
                 project = Project(
                     id=raw["id"], title=raw.get("title", ""),
-                    model=raw.get("model", "hy15-720p"), fps=int(raw.get("fps", 24)),
-                    width=int(raw.get("width", 832)), height=int(raw.get("height", 1216)),
-                    deliver_width=int(raw.get("deliver_width", 1080)),
-                    deliver_height=int(raw.get("deliver_height", 1920)),
-                    image_model=raw.get("image_model", "noobai"),
-                    style=raw.get("style", ""),
+                    delivery=DeliverySpec(
+                        width=int(delivery.get("width") or 1080),
+                        height=int(delivery.get("height") or 1920),
+                        fps=int(delivery.get("fps") or 24)),
+                    keyframes=KeyframeProfile(
+                        model_id=keyframes.get("model_id") or "noobai",
+                        width=int(keyframes.get("width") or 832),
+                        height=int(keyframes.get("height") or 1216),
+                        style_id=keyframes.get("style_id") or ""),
+                    routes={k: _route_from(v)
+                            for k, v in (raw.get("routes") or {}).items()},
                     created=raw.get("created", time.time()), note=raw.get("note", ""),
                     cast=[Character(**c) for c in raw.get("cast", [])],
                     shots=[Shot(**s) for s in raw.get("shots", [])],
                 )
+                if not project.routes:
+                    project.routes = default_routes()
+                normalise(project)
                 self.items[project.id] = project
             except Exception:
                 continue          # one bad line must not lose the rest
@@ -536,10 +911,14 @@ class ProjectStore:
     def save(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         rows = [json.dumps({
-            "id": p.id, "title": p.title, "model": p.model, "fps": p.fps,
-            "width": p.width, "height": p.height,
-            "deliver_width": p.deliver_width, "deliver_height": p.deliver_height,
-            "image_model": p.image_model, "style": p.style,
+            "id": p.id, "title": p.title, "schema_version": SCHEMA_VERSION,
+            "delivery": {"width": p.delivery.width, "height": p.delivery.height,
+                         "fps": p.delivery.fps},
+            "keyframes": {"model_id": p.keyframes.model_id,
+                          "width": p.keyframes.width, "height": p.keyframes.height,
+                          "style_id": p.keyframes.style_id},
+            "routes": {k: {"model_id": v.model_id, "finish": v.finish.public()}
+                       for k, v in p.routes.items()},
             "created": p.created, "note": p.note,
             "cast": [c.public() for c in p.cast],
             "shots": [s.public() for s in p.shots],
@@ -548,10 +927,9 @@ class ProjectStore:
         tmp.write_text("".join(r + "\n" for r in rows), encoding="utf-8")
         tmp.replace(self.path)
 
-    def create(self, title: str, spec_id: str = "hunyuan-24") -> Project:
-        spec = SPEC_BY_ID.get(spec_id) or SPECS[0]
+    def create(self, title: str) -> Project:
         project = Project(id=uuid.uuid4().hex[:10], title=title or "未命名短劇",
-                          model=spec.model, fps=spec.fps)
+                          routes=default_routes())
         self.items[project.id] = project
         return project
 
@@ -565,24 +943,33 @@ class ProjectStore:
         return sorted(self.items.values(), key=lambda p: -p.created)
 
 
-def renumber(project: Project) -> None:
-    """Shot numbers are 1..n in order, always. They are referred to by number."""
+def normalise(project: Project) -> None:
+    """Give every shot a stable id and a display number. Idempotent."""
     for i, shot in enumerate(project.shots, 1):
+        if not shot.id:
+            shot.id = uuid.uuid4().hex[:8]
         shot.no = i
 
 
 def public() -> dict:
-    """The static half: what the UI needs to render the pickers and the guide."""
+    """The static tables the UI renders its pickers and its guide from."""
     return {
-        "sizes": {k: v for k, v in SHOT_SIZES.items()},
-        "methods": {k: v for k, v in METHODS.items()},
-        "specs": [asdict(s) for s in SPECS],
+        "sizes": SHOT_SIZES,
+        "genders": GENDERS,
+        "methods": {k: {**asdict(v), "claim": (claims.get(v.claim_id).public()
+                                               if claims.get(v.claim_id) else None)}
+                    for k, v in METHODS.items()},
+        "default_routes": DEFAULT_ROUTE_MODEL,
+        "phases": PHASE_ZH,
+        "stages": list(STAGES),
         "format": {
             "episode_seconds": list(EPISODE_SECONDS),
-            "shot_median": SHOT_MEDIAN_TARGET,
-            "shot_long": SHOT_LONG,
+            "shot_median": SHOT_MEDIAN_REFERENCE,
+            "shot_long_hint": SHOT_LONG_HINT,
             "dialogue_max": DIALOGUE_MAX_CHARS,
             "episode_dialogue": list(EPISODE_DIALOGUE_CHARS),
             "hook_seconds": HOOK_SECONDS,
+            "vertical_ratio": round(VERTICAL_RATIO, 4),
         },
+        "claims": claims.public(),
     }

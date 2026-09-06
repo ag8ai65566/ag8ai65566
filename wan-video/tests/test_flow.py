@@ -4873,160 +4873,260 @@ def test_ref_folder_import(tmp: Path) -> None:
     check(not rows and problems, "a missing folder reports a problem")
 
 def test_shortdrama(tmp: Path) -> None:
-    """The shot list, the format rules, and the one artifact that is avoidable.
+    """The shot list, the format rules, and the split between data and claims.
 
-    This module is bookkeeping, which is exactly why it is worth testing hard:
-    every rule in it is a claim about how short drama is actually made, and a
-    rule that fires on the wrong thing is worse than no rule - it teaches the
-    user to ignore the panel.
+    This module was rewritten after an outside review took the first version
+    apart, so most of what is checked here is a bug that shipped once: a count
+    tag that hard-coded `1girl`, an object shot that asked for people and for
+    `no humans` at the same time, a vertical check that let 4:5 through, and a
+    "one video model per episode" rule the data could not actually keep.
     """
     section("short drama")
+    import claims
     import registry
     import shortdrama as sd
 
-    # -- the static tables the UI renders from
+    # -- the claim registry. Nothing in shortdrama.py states a fact itself.
+    check(len(claims.CLAIMS) >= 15, f"{len(claims.CLAIMS)} claims registered")
+    check(len({c.id for c in claims.CLAIMS}) == len(claims.CLAIMS), "claim ids unique")
+    bad = [c.id for c in claims.CLAIMS if c.evidence_kind not in claims.EVIDENCE_KINDS]
+    check(not bad, f"every claim declares a known evidence kind ({bad})")
+    bad = [c.id for c in claims.CLAIMS if c.policy not in claims.POLICIES]
+    check(not bad, f"…and a known policy ({bad})")
+    unsourced = [c.id for c in claims.CLAIMS if c.evidenced and not (c.source or c.urls)]
+    check(not unsourced, f"anything claiming evidence names a source ({unsourced})")
+    # Deliberately not one boolean called "verified": an external measurement
+    # with no published method must not borrow a model card's credibility.
+    check(claims.get("production.retouch_share").evidenced
+          and not claims.get("production.retouch_share").public()["upstream"],
+          "an external measurement is evidenced but not upstream-specified")
+    # The point of the taxonomy: the things this project cannot possibly know
+    # are not allowed to sit in the same band as an official spec.
+    for cid in ("consistency.lora", "video.drift_with_length",
+                "fps.mixed_timeline_artifact", "workflow.colour_match"):
+        claim = claims.get(cid)
+        check(claim is not None and claim.evidence_kind == claims.HYPOTHESIS,
+              f"{cid} is a hypothesis, not a fact")
+        check(claim.limits, f"…and says what it is not ({cid})")
+    check(claims.get("consistency.lora").policy != claims.BLOCK,
+          "a hypothesis never blocks the user")
+    check(claims.get("wan22.flf_uses_i2v_weights").evidence_kind == claims.OFFICIAL_SPEC,
+          "…while an upstream-documented fact is graded as one")
+    for cid in ("production.retouch_share", "format.shot_median"):
+        check(claims.get(cid).evidence_kind == claims.EXTERNAL_MEASUREMENT,
+              f"{cid} is somebody else's measurement, not this project's")
+    check(not [c for c in claims.CLAIMS if c.evidence_kind == claims.LOCAL_MEASUREMENT],
+          "nothing claims to be measured here - no image has ever been generated")
+
+    # -- static tables
     data = sd.public()
     check(len(data["sizes"]) == 8, f"eight shot sizes ({len(data['sizes'])})")
-    check(all(v["tag"] and v["why"] for v in data["sizes"].values()),
-          "every shot size has a booru tag and a reason to use it")
+    check(sum(1 for v in data["sizes"].values() if not v["people"]) == 1,
+          "exactly one shot size is the people-free one")
     check(len(data["methods"]) == 4, f"four ways to animate a shot ({len(data['methods'])})")
-    check(all(v["why"] for v in data["methods"].values()), "…each with its reason")
-    check(len(sd.SPECS) == 3, f"three locked specs ({len(sd.SPECS)})")
-    for spec in sd.SPECS:
-        model = registry.get(spec.model)
-        check(model is not None, f"{spec.id} names a real model ({spec.model})")
-        check(model.fps == spec.fps,
-              f"…at that model's actual native fps ({model.fps} vs {spec.fps})")
-        check(abs(model.length / model.fps - spec.clip_seconds) < 0.05,
-              f"…and the clip length is frames/fps, not a guess ({spec.clip_seconds})")
+    for method, model_id in sd.DEFAULT_ROUTE_MODEL.items():
+        check(registry.get(model_id) is not None,
+              f"the default route for {method} names a real model ({model_id})")
 
-    # -- prompt composition. Order is the caption order these models were
-    # trained on; dedupe matters because a trigger usually starts with 1girl.
-    project = sd.Project(id="p", model="hy15-720p", fps=24)
-    project.cast = [
-        sd.Character("f", "女主", trigger="1girl, silver hair", costume="school uniform"),
-        sd.Character("m", "男主", trigger="1boy, black suit"),
-    ]
-    project.shots = [sd.Shot(1, 3.0, "特寫", ["f"], "睜眼", scene="dim bedroom")]
-    sd.renumber(project)
+    # -- the count tag comes from the cast. The first version hard-coded 1girl,
+    # so every male character opened his own prompt arguing with a female tag.
+    female = sd.Character("f", "女", "female", trigger="silver hair")
+    male = sd.Character("m", "男", "male", trigger="black suit")
+    other = sd.Character("o", "他", "other")
+    check(sd.count_tag([male]) == "1boy", f"one man is 1boy ({sd.count_tag([male])})")
+    check(sd.count_tag([male, male]) == "2boys", "two men are 2boys")
+    check(sd.count_tag([female]) == "1girl", "one woman is still 1girl")
+    check(sd.count_tag([female, male]) == "1girl, 1boy",
+          f"a mixed shot gets both ({sd.count_tag([female, male])})")
+    check(sd.count_tag([other]) == "1other", "and a third option exists")
+    check(sd.count_tag([]) == "", "an empty shot gets no count tag")
+
+    project = sd.Project(id="p", routes=sd.default_routes(), cast=[female, male])
+    project.shots = [sd.Shot(size="近景", who=["m"], action="走")]
+    sd.normalise(project)
     built = sd.keyframe_prompt(project, project.shots[0])
-    check(built["prompt"] == "1girl, silver hair, school uniform, portrait, close-up, "
-                             "dim bedroom, 睜眼",
-          f"the keyframe prompt composes in caption order ({built['prompt']})")
-    check(built["prompt"].count("1girl") == 1,
-          "…and the count tag is not doubled by the character trigger")
-    two = sd.Shot(2, 3.0, "過肩", ["f", "m"], "對峙")
-    project.shots.append(two)
-    check(sd.keyframe_prompt(project, two)["prompt"].startswith("2girls")
-          or "1girl" in sd.keyframe_prompt(project, two)["prompt"],
-          "two characters produce a count tag of their own")
-    project.cast[0] = sd.Character("f", "女主", trigger="1girl", lora="heroine.safetensors")
-    check(sd.keyframe_prompt(project, project.shots[0])["loras"] == ["heroine.safetensors"],
-          "the shot names the LoRAs its cast needs")
+    check(built["prompt"] == "1boy, black suit, upper body, 走",
+          f"a male-only shot never says 1girl ({built['prompt']})")
+    check(project.shots[0].id, "normalise gives every shot a stable id")
 
-    # -- the plan for one shot: the frame count is the argument for fixing
-    # defects in the still rather than in the clip.
-    plan = sd.shot_plan(project, project.shots[0])
-    check(plan["frames"] == 72, f"3.0s at 24fps is 72 frames ({plan['frames']})")
-    check(any("靜態圖修" in step["why"] for step in plan["steps"]),
-          "…and the plan says why to fix it in the still")
-    talky = sd.Shot(3, 3.0, "近景", ["f"], "說", dialogue="你是誰", method="s2v")
-    project.shots.append(talky)
-    steps = sd.shot_plan(project, talky)["steps"]
-    check("音檔" in steps[0]["do"],
-          f"a dialogue shot starts with the audio, not the picture ({steps[0]['do']})")
+    # An object shot emits `no humans`, so it must not also emit a count tag.
+    obj = sd.Shot(size="空鏡", who=["m"], action="刀")
+    project.shots.append(obj)
+    sd.normalise(project)
+    prompt = sd.keyframe_prompt(project, obj)["prompt"]
+    check("no humans" in prompt and "1boy" not in prompt,
+          f"an object shot does not ask for a person and for no humans ({prompt})")
+    check(any(f.id == "shot-object-people" for f in sd.check_integrity(project)),
+          "…and the contradiction is reported rather than silently fixed")
 
-    # -- the validator
-    # Frame rate is the one finding that is about an artifact the user can
-    # simply decline to create, so it is graded highest.
-    bad_fps = sd.Project(id="x", model="hy15-720p", fps=30,
-                         shots=[sd.Shot(1, 3.0, action="走")])
-    fps_finding = next(f for f in sd.check(bad_fps) if f.id == "fps-mismatch")
-    check(fps_finding.level == "high", "a mixed frame rate is a high-level finding")
-    check("內容審核" in fps_finding.detail,
-          "…and explains it is a compromise the platforms are forced into, not one you are")
+    # -- integrity findings are about the record, never about taste
+    broken = sd.Project(id="b", routes=sd.default_routes(),
+                        cast=[sd.Character("a", "甲", "female")])
+    broken.shots = [
+        sd.Shot(seconds=0, size="近景", who=["a"]),
+        sd.Shot(seconds=3, size="不存在", who=["ghost"]),
+        sd.Shot(seconds=3, size="近景", who=["a"], dialogue="嗨"),
+        sd.Shot(seconds=3, size="近景", who=["a"], speaker="ghost", dialogue="嗨"),
+        sd.Shot(seconds=3, size="近景", who=["a"], method="flf"),
+    ]
+    sd.normalise(broken)
+    ids = {f.id for f in sd.check_integrity(broken)}
+    for want in ("shot-seconds", "shot-size", "shot-cast", "shot-no-speaker",
+                 "shot-speaker-absent", "shot-no-endframe"):
+        check(want in ids, f"integrity catches {want}")
+    check(all(f.level in (claims.BLOCK, claims.WARN) for f in sd.check_integrity(broken)),
+          "…and every one of them blocks or warns - a broken record is not a matter "
+          "of taste, and makes every other check noise")
+    # An integrity finding may still cite a claim for *why* the rule exists -
+    # "first-and-last-frame needs two frames" is an upstream spec - but the
+    # finding itself is about the record being incomplete, not about the world.
+    cited = [f.claim_id for f in sd.check_integrity(broken) if f.claim_id]
+    check(all(claims.get(c) for c in cited),
+          f"…and any claim an integrity finding cites resolves ({cited})")
 
-    long = sd.Project(id="y", model="hy15-720p", fps=24,
-                      shots=[sd.Shot(1, 9.0, action="走")])
-    ids = {f.id for f in sd.check(long)}
-    check("long-shots" in ids and "over-clip" in ids,
-          f"a nine-second shot is flagged twice: drift and clip length ({sorted(ids)})")
-    check(any("3.2" in f.detail for f in sd.check(long) if f.id == "long-shots"),
-          "…quoting the median a real episode actually runs at")
+    # -- claim-backed findings all carry their evidence
+    loose = sd.Project(id="c", routes=sd.default_routes(),
+                       cast=[sd.Character("a", "甲", "female")],
+                       shots=[sd.Shot(seconds=9.0, size="近景", who=["a"], action="走")])
+    sd.normalise(loose)
+    found = sd.check_claims(loose, installed={"hy15-720p"})
+    unbacked = [f.id for f in found if f.kind != "INTEGRITY" and not f.claim_id]
+    check(not unbacked, f"every claim-backed finding names its claim ({unbacked})")
+    unknown = [f.claim_id for f in found if f.claim_id and not claims.get(f.claim_id)]
+    check(not unknown, f"…and every claim id resolves ({unknown})")
+    drift = next(f for f in found if f.id == "long-shots")
+    check(drift.level != claims.BLOCK,
+          "a long shot is a note, not a block - nothing here has been measured")
+    check("沒有量過" in drift.detail,
+          "…and the wording says so out loud")
 
-    talk = sd.Project(id="z", model="hy15-720p", fps=24, shots=[
-        sd.Shot(1, 3.0, action="說", dialogue="你到底是誰為什麼要這樣對我啊真的很過分", method="i2v")])
-    ids = {f.id for f in sd.check(talk)}
-    check("no-lipsync" in ids, "a dialogue shot without S2V is flagged")
-    check("long-dialogue" in ids, "…and a line over 15 characters is too")
-    ok_line = sd.Project(id="z2", model="hy15-720p", fps=24, shots=[
-        sd.Shot(1, 3.0, action="說", dialogue="你，到底是誰？", method="s2v")])
-    ids = {f.id for f in sd.check(ok_line)}
-    check("long-dialogue" not in ids,
-          "punctuation does not count toward the 15-character line limit")
-    check("no-lipsync" not in ids, "…and S2V satisfies the lip-sync rule")
+    # -- the vertical check compares ratios. width>height let 4:5 pass.
+    four_five = sd.Project(id="d", routes=sd.default_routes(),
+                           delivery=sd.DeliverySpec(1024, 1280, 24),
+                           shots=[sd.Shot(seconds=3, action="走")])
+    sd.normalise(four_five)
+    check("delivery-ratio" in {f.id for f in sd.check_claims(four_five)},
+          "4:5 is caught, which a width>height test would have passed")
+    nine_sixteen = sd.Project(id="e", routes=sd.default_routes(),
+                              shots=[sd.Shot(seconds=3, action="走")])
+    sd.normalise(nine_sixteen)
+    check("delivery-ratio" not in {f.id for f in sd.check_claims(nine_sixteen)},
+          "…and 1080×1920 is not")
 
-    cast_less = sd.Project(id="w", model="hy15-720p", fps=24,
-                           shots=[sd.Shot(1, 3.0, who=["ghost"], action="走")])
-    check(next(f for f in sd.check(cast_less) if f.id == "unknown-cast").level == "high",
-          "a shot referring to a character that is not in the cast is a hard error")
+    # -- routes, not one model per episode. A project with dialogue needs S2V,
+    # which is a different checkpoint, so "one model" was never expressible.
+    talky = sd.Project(id="f", routes=sd.default_routes(),
+                       cast=[sd.Character("a", "甲", "female", trigger="1girl")])
+    talky.shots = [sd.Shot(seconds=3, size="近景", who=["a"], speaker="a",
+                           dialogue="你是誰", method="s2v")]
+    sd.normalise(talky)
+    check(not [f for f in sd.check_integrity(talky)],
+          f"a dialogue shot on its own S2V route is valid "
+          f"({[f.id for f in sd.check_integrity(talky)]})")
+    check(talky.route("s2v").model_id != talky.route("i2v").model_id,
+          "…precisely because the two routes are different checkpoints")
 
-    no_lora = sd.Project(id="v", model="hy15-720p", fps=24,
-                         cast=[sd.Character("a", "甲")],
-                         shots=[sd.Shot(1, 3.0, who=["a"], action="走")])
-    lora_finding = next(f for f in sd.check(no_lora) if f.id == "no-lora")
-    check("100%" in lora_finding.detail and "40%" in lora_finding.detail,
-          "the LoRA finding quotes both the consistency numbers and the retouch cost")
+    # Frame rate is checked per route against the timeline, with a policy.
+    mixed = sd.Project(id="g", delivery=sd.DeliverySpec(1080, 1920, 30),
+                       routes={"i2v": sd.Route("hy15-720p")},
+                       shots=[sd.Shot(seconds=3, action="走")])
+    sd.normalise(mixed)
+    check("fps-route" in {f.id for f in sd.check_claims(mixed)},
+          "24fps native landing on a 30fps timeline is flagged")
+    mixed.routes["i2v"] = sd.Route("hy15-720p", sd.FinishPolicy("retime"))
+    ids = {f.id for f in sd.check_claims(mixed)}
+    check("fps-route" not in ids, "…and stating a finish policy answers it")
+    check("retime-audio" in ids,
+          "…but retiming without touching the audio is its own finding")
+    mixed.routes["i2v"].finish.retime_audio = True
+    check("retime-audio" not in {f.id for f in sd.check_claims(mixed)},
+          "…which clears once the audio is handled")
 
-    missing = sd.check(no_lora, installed=set())
-    check(any(f.id == "missing-video" for f in missing),
-          "a model the shot list needs but is not downloaded is a hard finding")
-    check(not [f for f in sd.check(no_lora, installed={"hy15-720p"})
-               if f.id.startswith("missing-")],
-          "…and goes away once it is on disk")
+    # -- clip length is a spec, and it is per route
+    over = sd.Project(id="h", routes={"i2v": sd.Route("hy15-720p")},
+                      shots=[sd.Shot(seconds=8.0, action="走")])
+    sd.normalise(over)
+    check("over-clip" in {f.id for f in sd.check_claims(over)},
+          "a shot longer than one pass can produce is flagged")
+    check(sd.Route("hy15-720p").clip_seconds == 5.04,
+          "…using frames/fps from the registry, not a guess")
 
-    tiny = sd.Project(id="u", model="hy15-720p", fps=24, width=512, height=512,
-                      shots=[sd.Shot(1, 3.0, action="走")])
-    ids = {f.id for f in sd.check(tiny)}
-    check("small-keyframe" in ids, "a 512 keyframe is caught, same as in the prompt doctor")
-    wide = sd.Project(id="t2", model="hy15-720p", fps=24, width=1216, height=832,
-                      shots=[sd.Shot(1, 3.0, action="走")])
-    check("not-vertical" in {f.id for f in sd.check(wide)}, "so is a landscape keyframe")
+    # -- derived state: attempts, acceptance, and a progress count that is true
+    shot = sd.Shot(id="s1", no=1)
+    class _Rec:
+        def __init__(self, status): self.status = status
+    state = sd.shot_state(shot, {})
+    check(state["phase"] == "todo", "a shot with no attempts is todo")
+    shot.keyframe_jobs = ["j1", "j2"]
+    jobs = {"j1": _Rec("done"), "j2": _Rec("running")}
+    state = sd.shot_state(shot, jobs)
+    check(state["phase"] == "keyframe_review",
+          f"a finished attempt that nobody accepted is 'review' ({state['phase']})")
+    check(state["stages"]["keyframe"]["done"] == 1
+          and state["stages"]["keyframe"]["running"] == 1,
+          "…and both attempts are counted by their real status")
+    shot.active_keyframe = "j1"
+    check(sd.shot_state(shot, jobs)["phase"] == "keyframe_accepted",
+          "accepting one moves it on - nothing is accepted automatically")
+    shot.video_jobs = ["v1"]; shot.active_video = "v1"
+    check(sd.shot_state(shot, {**jobs, "v1": _Rec("done")})["phase"] == "done",
+          "a shot is done when a video is accepted")
+    check(sd.shot_state(shot, jobs)["stages"]["video"]["active_missing"],
+          "an accepted job that was later deleted is reported, not ignored")
 
-    empty_hook = sd.Project(id="h", model="hy15-720p", fps=24, shots=[sd.Shot(1, 3.0)])
-    hook = next(f for f in sd.check(empty_hook) if f.id == "no-hook")
-    check("黃金 3 秒" in hook.detail, "the first shot is judged against the golden three seconds")
+    # The progress count is derived, not `bool(active_video)`. Counting the
+    # string made a shot whose accepted render had been deleted still report
+    # "done" - the contradiction an outside review caught, and which the first
+    # version of this very test had locked in.
+    project.shots[0].active_video = "v1"
+    check(project.public({})["done"] == 0,
+          "an accepted video that is gone does not count as done")
+    check(project.public({"v1": _Rec("done")})["done"] == 1,
+          "…and one that is really there does")
+    check(project.public({"v1": _Rec("error")})["done"] == 0,
+          "…and an accepted job that failed does not, however it got accepted")
 
-    clean = sd.Project(id="ok", model="hy15-720p", fps=24,
-                       cast=[sd.Character("a", "甲", trigger="1girl", lora="a.safetensors",
-                                          costume="school uniform")],
-                       shots=[sd.Shot(i, 3.2, "近景", ["a"], f"動作{i}") for i in range(1, 25)])
-    findings = sd.check(clean, installed={"hy15-720p"})
-    check(not findings, f"a well-formed episode reports nothing ({[f.id for f in findings]})")
-    check(sd.summary(findings)["level"] == "ok", "…and the summary says so")
-    check(clean.seconds == 76.8 and clean.median_shot == 3.2,
-          f"the episode totals add up ({clean.seconds}s, median {clean.median_shot})")
-
-    # -- the store round-trips, and renumbering is absolute
+    # -- the store, and the v1 migration
     store = sd.ProjectStore(tmp / "drama.jsonl")
-    made = store.create("測試", "wan14b-16")
-    check(made.model == "wan22-14b-fp8" and made.fps == 16,
-          f"a spec sets the model and its native fps together ({made.model}, {made.fps})")
-    made.cast = [sd.Character("a", "甲", trigger="1girl")]
-    made.shots = [sd.Shot(0, 3.0, action="一"), sd.Shot(0, 3.0, action="二")]
-    sd.renumber(made)
-    check([s.no for s in made.shots] == [1, 2], "shots are numbered 1..n in order")
+    made = store.create("測試")
+    made.cast = [sd.Character("a", "甲", "male", trigger="1boy")]
+    made.shots = [sd.Shot(action="一"), sd.Shot(action="二")]
+    sd.normalise(made)
+    first_id = made.shots[0].id
     store.save()
     again = sd.ProjectStore(tmp / "drama.jsonl")
     again.load()
     back = again.get(made.id)
-    check(back is not None and len(back.shots) == 2 and back.cast[0].trigger == "1girl",
-          "the store round-trips the cast and the shot list")
-    check(back.fps == 16, "…and the locked spec")
-    made.shots.pop(0)
-    sd.renumber(made)
-    check([s.no for s in made.shots] == [1] and made.shots[0].action == "二",
-          "deleting a shot renumbers the rest, so shot numbers stay meaningful")
+    check(back is not None and len(back.shots) == 2, "the store round-trips")
+    check(back.cast[0].gender == "male", "…including the cast's gender")
+    check(back.shots[0].id == first_id, "…and the stable shot ids")
+    check(back.routes["s2v"].model_id == "wan22-s2v", "…and the routes")
+
+    # A v1 project is one `model` plus `fps`; it has to keep working.
+    legacy = tmp / "legacy.jsonl"
+    legacy.write_text(json.dumps({
+        "id": "old1", "title": "舊的", "model": "wan22-14b-fp8", "fps": 16,
+        "width": 832, "height": 1216, "deliver_width": 1080, "deliver_height": 1920,
+        "image_model": "noobai", "style": "",
+        "cast": [{"key": "a", "name": "甲"}],
+        "shots": [{"no": 1, "seconds": 3.0, "size": "近景", "who": ["a"], "action": "走"}],
+    }, ensure_ascii=False) + "\n", encoding="utf-8")
+    old_store = sd.ProjectStore(legacy)
+    old_store.load()
+    moved = old_store.get("old1")
+    check(moved is not None, "a version 1 project still loads")
+    check(moved.routes["i2v"].model_id == "wan22-14b-fp8",
+          "…with its single model becoming the i2v route")
+    check(moved.delivery.fps == 16 and moved.keyframes.width == 832,
+          "…and its delivery and keyframe settings carried across")
+    check(moved.cast[0].gender == "female",
+          "…and a cast with no gender field takes the default")
+    check(moved.shots[0].id, "…and its shots get stable ids on the way in")
+    old_store.save()
+    reread = json.loads(legacy.read_text(encoding="utf-8").splitlines()[0])
+    check(reread["schema_version"] == 2 and "model" not in reread,
+          "saving writes v2 only - two sources of truth on disk would drift")
+
     check(again.delete(made.id) and again.get(made.id) is None, "delete works")
 
 def test_experiments() -> None:
@@ -5693,11 +5793,15 @@ def test_codex_setup_never_touches_the_key() -> None:
     check("不要，而且不需要" in text, "…which answers the API-key question first")
     check("用完就丟" in text, "…and is honest that this container cannot hold an install")
     check("沒驗過" in text, "…and separates what was verified from what was not")
-    # Measured, not assumed: registering an MCP server mid-session does not make
-    # it visible to the session that is already running, and this container is
-    # disposable so a fresh session would not have codex installed either.
-    check("沒有任何 reload 指令" in text,
-          "…and states there is no in-session reload, because there isn't one")
+    # Measured, not assumed. Two things were true when this was written and one
+    # of them stopped being true: the tool IS visible now, because the
+    # environment registers codex at session start rather than mid-session. What
+    # has not changed is that nothing reloads an MCP server inside a session.
+    check("沒有指令可以在對話中途重載" in text,
+          "…and states there is no in-session reload, because there still isn't one")
+    check("「Connected」只代表" in text,
+          "…and that a connected MCP server is not a logged-in one, "
+          "which is the failure that actually cost time")
     check("用完就丟" in text, "…and why installing it here cannot persist")
     brief = ROOT / "docs" / "codex-review-brief.md"
     check(brief.is_file(), "there is a self-contained brief a second model can check")

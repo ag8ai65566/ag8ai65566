@@ -1571,14 +1571,31 @@ async def check_prompt(payload: dict) -> JSONResponse:
 #
 # The clip was never the hard part. An episode is a hundred clips that have to
 # look like the same person in the same room, and that is bookkeeping. This
-# group of endpoints is the bookkeeping.
+# group of endpoints is the bookkeeping - including which generation attempts
+# belong to which shot, which is what turns a progress counter into a fact
+# rather than a decoration.
 
 DRAMAS = shortdrama.ProjectStore(config.OUTPUT_DIR / ".shortdrama.jsonl")
 
 
 def _drama_installed() -> set[str]:
-    """Which video models are actually on disk, for the validator."""
     return {m.id for m in registry.MODELS if models.model_status(m).get("installed")}
+
+
+def _drama_jobs(project) -> dict:
+    """The job records this project's shots refer to, for derived state.
+
+    Read from the library rather than stored on the shot: a job can finish,
+    fail or be deleted after the shot was saved, and a copy of its status would
+    be the version the UI shows.
+    """
+    wanted: set[str] = set()
+    for shot in project.shots:
+        for stage in ("keyframe", "endframe", "video"):
+            wanted.update(shot.jobs_for(stage))
+            if shot.active_for(stage):
+                wanted.add(shot.active_for(stage))
+    return {j: lib.records[j] for j in wanted if j in lib.records}
 
 
 def _drama_or_404(project_id: str):
@@ -1589,13 +1606,19 @@ def _drama_or_404(project_id: str):
     return project
 
 
+def _drama_payload(project) -> dict:
+    jobs = _drama_jobs(project)
+    findings = shortdrama.check(project, installed=_drama_installed())
+    return {**project.public(jobs), "health": shortdrama.summary(findings),
+            "jobs": {j: public(r) for j, r in jobs.items()}}
+
+
 @app.get("/api/drama")
 async def list_dramas() -> JSONResponse:
-    """Every project, plus the static tables the UI renders its pickers from."""
     DRAMAS.load()
     return JSONResponse({
         **shortdrama.public(),
-        "projects": [p.public() for p in DRAMAS.list()],
+        "projects": [p.public(_drama_jobs(p)) for p in DRAMAS.list()],
         "installed": sorted(_drama_installed()),
     })
 
@@ -1604,18 +1627,14 @@ async def list_dramas() -> JSONResponse:
 async def create_drama(payload: dict = Body(default={})) -> JSONResponse:
     payload = payload if isinstance(payload, dict) else {}
     DRAMAS.load()
-    project = DRAMAS.create(str(payload.get("title") or ""),
-                            str(payload.get("spec") or "hunyuan-24"))
+    project = DRAMAS.create(str(payload.get("title") or ""))
     DRAMAS.save()
-    return JSONResponse(project.public())
+    return JSONResponse(_drama_payload(project))
 
 
 @app.get("/api/drama/{project_id}")
 async def get_drama(project_id: str) -> JSONResponse:
-    project = _drama_or_404(project_id)
-    findings = shortdrama.check(project, installed=_drama_installed())
-    return JSONResponse({**project.public(),
-                         "health": shortdrama.summary(findings)})
+    return JSONResponse(_drama_payload(_drama_or_404(project_id)))
 
 
 @app.post("/api/drama/{project_id}")
@@ -1623,62 +1642,97 @@ async def update_drama(project_id: str, payload: dict = Body(default={})
                        ) -> JSONResponse:
     """Replace the spec, the cast and the shot list in one write.
 
-    Whole-document, not per-field: the shot list is edited as a table and a
-    partial update would need the browser and the server to agree on row
-    identity, which is exactly the kind of agreement that rots.
+    Whole-document, because the shot list is edited as a table and a partial
+    update would need the browser and the server to agree on row identity. The
+    generation bookkeeping is the exception: `keyframe_jobs`, `active_video` and
+    their siblings are carried over from the stored shot by id and are never
+    taken from the browser, so a stale table cannot wipe a finished render.
     """
     project = _drama_or_404(project_id)
     payload = payload if isinstance(payload, dict) else {}
 
-    for key in ("title", "note", "style"):
+    for key in ("title", "note"):
         if key in payload:
             setattr(project, key, str(payload[key] or ""))
-    for key in ("fps", "width", "height", "deliver_width", "deliver_height"):
-        if key in payload:
-            setattr(project, key, max(1, int(payload[key] or 1)))
-    if "model" in payload:
-        want = str(payload["model"] or "")
-        if want and registry.get(want) is None:
-            raise HTTPException(400, f"沒有這個影片模型：{want}")
-        project.model = want or project.model
-    if "image_model" in payload:
-        want = str(payload["image_model"] or "")
-        if want and images.get(want) is None:
+
+    if isinstance(payload.get("delivery"), dict):
+        d = payload["delivery"]
+        project.delivery = shortdrama.DeliverySpec(
+            width=max(1, int(d.get("width") or project.delivery.width)),
+            height=max(1, int(d.get("height") or project.delivery.height)),
+            fps=max(1, int(d.get("fps") or project.delivery.fps)))
+    if isinstance(payload.get("keyframes"), dict):
+        k = payload["keyframes"]
+        want = str(k.get("model_id") or project.keyframes.model_id)
+        if images.get(want) is None:
             raise HTTPException(400, f"沒有這個圖片底模：{want}")
-        project.image_model = want or project.image_model
-    if "spec" in payload:
-        spec = shortdrama.SPEC_BY_ID.get(str(payload["spec"]))
-        if spec is None:
-            raise HTTPException(400, f"沒有這個規格：{payload['spec']}")
-        # A spec is the pair, always: picking a model without its native frame
-        # rate is how the mixed-rate artifact gets in.
-        project.model, project.fps = spec.model, spec.fps
+        project.keyframes = shortdrama.KeyframeProfile(
+            model_id=want,
+            width=max(1, int(k.get("width") or project.keyframes.width)),
+            height=max(1, int(k.get("height") or project.keyframes.height)),
+            style_id=str(k.get("style_id") or ""))
+    if isinstance(payload.get("routes"), dict):
+        routes = {}
+        for method, raw in payload["routes"].items():
+            if method not in shortdrama.METHODS or not isinstance(raw, dict):
+                continue
+            model_id = str(raw.get("model_id") or "")
+            if model_id and registry.get(model_id) is None:
+                raise HTTPException(400, f"沒有這個影片模型：{model_id}")
+            finish = raw.get("finish") or {}
+            mode = str(finish.get("mode") or "native")
+            if mode not in ("native", "interpolate", "retime", "manual"):
+                raise HTTPException(400, f"不認識的收尾方式：{mode}")
+            routes[method] = shortdrama.Route(
+                model_id=model_id,
+                finish=shortdrama.FinishPolicy(
+                    mode=mode, factor=max(1, int(finish.get("factor") or 1)),
+                    retime_audio=bool(finish.get("retime_audio"))))
+        if routes:
+            project.routes = routes
 
     if isinstance(payload.get("cast"), list):
         project.cast = [shortdrama.Character(
             key=str(c.get("key") or "").strip() or uuid.uuid4().hex[:6],
-            name=str(c.get("name") or ""), lora=str(c.get("lora") or ""),
+            name=str(c.get("name") or ""),
+            gender=str(c.get("gender") or "female"),
             trigger=str(c.get("trigger") or ""), costume=str(c.get("costume") or ""),
-            voice=str(c.get("voice") or ""), note=str(c.get("note") or ""),
+            lora=str(c.get("lora") or ""), voice=str(c.get("voice") or ""),
+            note=str(c.get("note") or ""),
         ) for c in payload["cast"] if isinstance(c, dict)]
 
     if isinstance(payload.get("shots"), list):
-        project.shots = [shortdrama.Shot(
-            no=0, seconds=round(float(s.get("seconds") or 3.2), 2),
-            size=str(s.get("size") or "近景"),
-            who=[str(w) for w in (s.get("who") or [])],
-            action=str(s.get("action") or ""), dialogue=str(s.get("dialogue") or ""),
-            method=str(s.get("method") or "i2v"), scene=str(s.get("scene") or ""),
-            extra=str(s.get("extra") or ""), keyframe=str(s.get("keyframe") or ""),
-            video=str(s.get("video") or ""), status=str(s.get("status") or "todo"),
-            note=str(s.get("note") or ""),
-        ) for s in payload["shots"] if isinstance(s, dict)]
-        shortdrama.renumber(project)
+        keep = {s.id: s for s in project.shots if s.id}
+        shots = []
+        for raw in payload["shots"]:
+            if not isinstance(raw, dict):
+                continue
+            prior = keep.get(str(raw.get("id") or ""))
+            shots.append(shortdrama.Shot(
+                id=str(raw.get("id") or ""), no=0,
+                seconds=round(float(raw.get("seconds") or 3.2), 2),
+                size=str(raw.get("size") or "近景"),
+                who=[str(w) for w in (raw.get("who") or [])],
+                speaker=str(raw.get("speaker") or ""),
+                action=str(raw.get("action") or ""),
+                dialogue=str(raw.get("dialogue") or ""),
+                method=str(raw.get("method") or "i2v"),
+                scene=str(raw.get("scene") or ""),
+                extra=str(raw.get("extra") or ""),
+                note=str(raw.get("note") or ""),
+                # Never from the browser. See the docstring.
+                keyframe_jobs=list(prior.keyframe_jobs) if prior else [],
+                endframe_jobs=list(prior.endframe_jobs) if prior else [],
+                video_jobs=list(prior.video_jobs) if prior else [],
+                active_keyframe=prior.active_keyframe if prior else "",
+                active_endframe=prior.active_endframe if prior else "",
+                active_video=prior.active_video if prior else "",
+            ))
+        project.shots = shots
+        shortdrama.normalise(project)
 
     DRAMAS.save()
-    findings = shortdrama.check(project, installed=_drama_installed())
-    return JSONResponse({**project.public(),
-                         "health": shortdrama.summary(findings)})
+    return JSONResponse(_drama_payload(project))
 
 
 @app.delete("/api/drama/{project_id}")
@@ -1690,26 +1744,86 @@ async def delete_drama(project_id: str) -> JSONResponse:
     return JSONResponse({"ok": True})
 
 
-@app.get("/api/drama/{project_id}/shot/{no}")
-async def drama_shot(project_id: str, no: int) -> JSONResponse:
-    """The keyframe prompt and the ordered to-do list for one shot."""
-    project = _drama_or_404(project_id)
-    shot = next((s for s in project.shots if s.no == no), None)
+def _shot_or_404(project, shot_id: str):
+    shot = project.shot(shot_id)
     if shot is None:
-        raise HTTPException(404, f"這個專案沒有第 {no} 個鏡頭")
+        raise HTTPException(404, "這個專案沒有這顆鏡頭")
+    return shot
+
+
+@app.get("/api/drama/{project_id}/shot/{shot_id}")
+async def drama_shot(project_id: str, shot_id: str) -> JSONResponse:
+    """The keyframe prompt and the ordered plan for one shot."""
+    project = _drama_or_404(project_id)
+    shot = _shot_or_404(project, shot_id)
     built = shortdrama.keyframe_prompt(project, shot)
-    model = images.get(project.image_model)
-    # The style recipe is merged through the same engine the style panel uses,
-    # so a recipe cannot quietly retire a costume tag the cast list locked.
-    if project.style:
+    model = images.get(project.keyframes.model_id)
+    if project.keyframes.style_id:
         merged = promptmerge.apply_recipe(
-            built["prompt"], "", project.style, model_id=project.image_model,
+            built["prompt"], "", project.keyframes.style_id,
+            model_id=project.keyframes.model_id,
             tag_style=model.tag_style if model else "danbooru")
         if merged is not None:
             built["prompt"] = merged.prompt
             built["negative"] = merged.negative
+    jobs = _drama_jobs(project)
     return JSONResponse({**built, "shot": shot.public(),
+                         "state": shortdrama.shot_state(shot, jobs),
                          "plan": shortdrama.shot_plan(project, shot)})
+
+
+@app.post("/api/drama/{project_id}/shot/{shot_id}/attach")
+async def drama_attach(project_id: str, shot_id: str,
+                       payload: dict = Body(default={})) -> JSONResponse:
+    """Record that a generation job belongs to this shot at this stage.
+
+    The job is created by the ordinary image/video endpoints - this app has one
+    generator and it stays that way - and then pointed at here. Recording the
+    link rather than the result is deliberate: the shot keeps a list of attempts
+    and their status is read back from the library, so a job that fails or is
+    deleted later cannot leave the shot claiming to be finished.
+    """
+    project = _drama_or_404(project_id)
+    shot = _shot_or_404(project, shot_id)
+    payload = payload if isinstance(payload, dict) else {}
+    stage = str(payload.get("stage") or "")
+    job_id = str(payload.get("job") or "")
+    if stage not in ("keyframe", "endframe", "video"):
+        raise HTTPException(400, f"不認識的階段：{stage}")
+    if job_id not in lib.records:
+        raise HTTPException(404, "找不到這個生成工作")
+    attempts = shot.jobs_for(stage)
+    if job_id not in attempts:
+        attempts.append(job_id)
+    DRAMAS.save()
+    return JSONResponse(_drama_payload(project))
+
+
+@app.post("/api/drama/{project_id}/shot/{shot_id}/accept")
+async def drama_accept(project_id: str, shot_id: str,
+                       payload: dict = Body(default={})) -> JSONResponse:
+    """Mark one attempt as the take that counts. Only this makes a shot done.
+
+    Nothing is accepted automatically. The last job to finish is not the one the
+    user picked, and a progress bar that fills itself in is a progress bar that
+    lies.
+    """
+    project = _drama_or_404(project_id)
+    shot = _shot_or_404(project, shot_id)
+    payload = payload if isinstance(payload, dict) else {}
+    stage = str(payload.get("stage") or "")
+    job_id = str(payload.get("job") or "")
+    if stage not in ("keyframe", "endframe", "video"):
+        raise HTTPException(400, f"不認識的階段：{stage}")
+    if job_id and job_id not in shot.jobs_for(stage):
+        raise HTTPException(400, "這個工作不屬於這顆鏡頭的這個階段")
+    if job_id:
+        record = lib.records.get(job_id)
+        if record is None or record.status != "done":
+            raise HTTPException(400, "只有已經跑完的工作可以採用")
+    shot.set_active(stage, job_id)     # "" clears the acceptance
+    DRAMAS.save()
+    return JSONResponse(_drama_payload(project))
 
 
 # -- experiments: fixed-seed sweeps ------------------------------------------
