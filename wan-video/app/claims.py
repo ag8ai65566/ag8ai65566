@@ -353,6 +353,182 @@ CLAIMS: tuple[Claim, ...] = (
                "那個排序沒有任何依據。",
         policy=INFO,
     ),
+
+    # --- LoRA training. Nothing here was run by this project: there is no GPU
+    # in the environment it was written in, so every one of these is somebody
+    # else's number or an explicit recommendation, and says so.
+    # --- what the video model does with the still it is handed.
+    Claim(
+        id="wan.output_follows_input_ratio",
+        text="Wan I2V 的輸出比例跟著輸入圖走，並依 480P/720P 的面積上限重新縮放。",
+        evidence_kind=OFFICIAL_SPEC,
+        source="Wan 2.2 官方 README 與 generate.py；ComfyUI WanImageToVideo 節點文件",
+        urls=("https://github.com/Wan-Video/Wan2.2",
+              "https://github.com/Wan-Video/Wan2.2/blob/main/generate.py"),
+        checked="2026-09-06",
+        scope="Wan 2.1 / 2.2 的 I2V",
+        limits="所以關鍵幀是什麼比例，影片就是什麼比例 —— "
+               "**不會**自己裁成你設定的交付比例。"
+               "先把關鍵幀做成 9:16，比事後裁掉三分之一畫面好。",
+        policy=WARN,
+    ),
+    Claim(
+        id="wan.vertical_sizes",
+        text="直式的實務尺寸是抽卡 480×832、定稿 720×1280，長寬都對齊 16 的倍數。",
+        evidence_kind=EXTERNAL_MEASUREMENT,
+        source="公開的直式 Wan I2V 工作流與實測；ComfyUI 節點的寬高 step 是 16",
+        urls=("https://github.com/Comfy-Org/embedded-docs/blob/main/"
+              "comfyui_embedded_docs/docs/WanImageToVideo/en.md",),
+        checked="2026-09-06",
+        scope="24GB 單卡的直式 I2V",
+        limits="別人量的，本專案沒重現。"
+               "有人回報低解析度的動作反而更連貫，那是個人測試，不是官方保證。",
+        policy=GUIDE,
+    ),
+    Claim(
+        id="train.dataset_size",
+        text="一個寫實虛構人物的角色 LoRA，20-40 張精修圖是常見範圍；10-15 張可以起步。",
+        evidence_kind=EXTERNAL_MEASUREMENT,
+        source="公開的 synthetic-character LoRA 流程與角色一致性實務指南",
+        urls=("https://tendre.ai/en/docs/character-consistency",
+              "https://phosphene.cc/blog/lora-training-ai-generated-dataset"),
+        checked="2026-09-06",
+        scope="寫實人物的身份 LoRA",
+        limits="這是別人報的常見範圍，不是門檻。張數本身不保證像，"
+               "**挑圖的品質比張數重要**；本專案沒有訓練過任何一個 LoRA。",
+        policy=WARN,
+    ),
+    Claim(
+        id="train.shot_mix",
+        text="訓練集要涵蓋臉／半身／全身與困難條件，不能全是同一個景別。",
+        evidence_kind=AUTHOR_RECOMMENDATION,
+        source="LoRA 只學得到你給它看的東西；沒有全身圖就沒有全身的身份",
+        scope="多鏡頭連戲用的角色 LoRA",
+        limits="30/30/25/15 這組比例是本工具挑的一個可用起點，"
+               "不是量出來的最佳解。",
+        policy=WARN,
+    ),
+    Claim(
+        id="train.captions",
+        text="標註寫出來的東西是「可變的」，沒寫的會被併進觸發詞。",
+        evidence_kind=AUTHOR_RECOMMENDATION,
+        source="caption 的作用是把不該屬於身份的變因分離出去",
+        scope="角色 LoRA 的標註",
+        limits="這是這類訓練的通行心法，不是某篇論文的結論。"
+               "實際分離程度跟訓練步數和 dim 都有關。",
+        policy=WARN,
+    ),
+    Claim(
+        id="train.resolution",
+        text="SDXL 的訓練圖長邊至少 1024，並開 aspect-ratio buckets。",
+        evidence_kind=OFFICIAL_SPEC,
+        source="SDXL 是以 1024 級解析度訓練的架構；kohya 的 bucket 參數文件",
+        urls=("https://arxiv.org/abs/2307.01952",
+              "https://github.com/bmaltais/kohya_ss/wiki/LoRA-training-parameters"),
+        checked="2026-09-06",
+        scope="SDXL 系底模的 LoRA 訓練",
+        limits="放大過的小圖不算數 —— 插值的糊會一起被學進去。",
+        policy=WARN,
+    ),
+    Claim(
+        id="train.sdxl_recipe",
+        text="SDXL 寫實人物 LoRA 的起點：dim 32 / alpha 16、lr 1e-4、"
+             "AdamW8bit、1024、20-40 張約 1200-2400 步。",
+        evidence_kind=AUTHOR_RECOMMENDATION,
+        source="社群通行的 SDXL 角色 LoRA 參數區間",
+        scope="24GB 單卡、寫實人物",
+        limits="**起點，不是調好的最佳值。**本專案沒有跑過。"
+               "過擬合與否只有你自己看每個 epoch 的存檔才知道 —— "
+               "所以設定檔裡每個 epoch 都會存一次。",
+        policy=GUIDE,
+    ),
+    Claim(
+        id="train.flux_recipe",
+        text="FLUX 角色 LoRA 的起點：dim 16 / alpha 16、lr 1e-4、不訓 text encoder。",
+        evidence_kind=AUTHOR_RECOMMENDATION,
+        source="ai-toolkit 官方 24GB FLUX LoRA 設定的參數形狀",
+        urls=("https://github.com/ostris/ai-toolkit",),
+        checked="2026-09-06",
+        scope="24GB 單卡、FLUX.1-dev 系",
+        limits="FLUX.1-dev 本身是非商用授權，訓出來的 LoRA 也受它約束。",
+        policy=GUIDE,
+    ),
+    Claim(
+        id="train.wan_recipe",
+        text="Wan 影片 LoRA 的起點：dim 32、lr 2e-5、fp8 transformer、block swap。",
+        evidence_kind=AUTHOR_RECOMMENDATION,
+        source="diffusion-pipe 的 Wan 設定形狀",
+        urls=("https://github.com/tdrussell/diffusion-pipe",),
+        checked="2026-09-06",
+        scope="24GB 單卡、Wan 2.1/2.2",
+        limits="影片 LoRA 比圖片 LoRA 貴一個數量級。"
+               "**身份建議交給關鍵幀的 SDXL/FLUX LoRA**，這條留給動作或風格。",
+        policy=GUIDE,
+    ),
+    Claim(
+        id="train.kohya_sdxl",
+        text="kohya_ss 是 SDXL 角色 LoRA 最成熟的訓練器，24GB 可以跑 1024。",
+        evidence_kind=OFFICIAL_SPEC,
+        source="kohya_ss 的 LoRA 參數文件",
+        urls=("https://github.com/bmaltais/kohya_ss/wiki/LoRA-training-parameters",),
+        checked="2026-09-06",
+        scope="SD1.5 / SDXL",
+        limits="「最成熟」是生態觀察，不是效能量測。",
+        policy=GUIDE,
+    ),
+    Claim(
+        id="train.onetrainer",
+        text="OneTrainer 有 GUI，SDXL 與 FLUX 都能訓。",
+        evidence_kind=OFFICIAL_SPEC,
+        source="OneTrainer 官方說明",
+        urls=("https://onetrainer.org/",),
+        checked="2026-09-06",
+        scope="SDXL / FLUX",
+        policy=GUIDE,
+    ),
+    Claim(
+        id="train.aitoolkit_flux",
+        text="ai-toolkit 是 FLUX 角色 LoRA 的標準工具，官方附 24GB 設定。",
+        evidence_kind=OFFICIAL_SPEC,
+        source="ai-toolkit 官方 repo 的 train_lora_flux_24gb 範例",
+        urls=("https://github.com/ostris/ai-toolkit",),
+        checked="2026-09-06",
+        scope="FLUX.1",
+        policy=GUIDE,
+    ),
+    Claim(
+        id="train.diffusionpipe_video",
+        text="diffusion-pipe 能在本機訓 Wan / HunyuanVideo / LTX 的 LoRA。",
+        evidence_kind=OFFICIAL_SPEC,
+        source="diffusion-pipe 官方支援列表",
+        urls=("https://github.com/tdrussell/diffusion-pipe",),
+        checked="2026-09-06",
+        scope="影片模型的 LoRA",
+        limits="24GB 是**緊繃**配置，要靠 block swap 和 8-bit optimizer。"
+               "時間常以小時到數天計。",
+        policy=GUIDE,
+    ),
+    Claim(
+        id="train.synthetic_identity",
+        text="先用底模生出一個長相固定的虛構人物，再拿那批圖訓 LoRA，是可行的流程。",
+        evidence_kind=EXTERNAL_MEASUREMENT,
+        source="公開的 synthetic reference → LoRA 流程紀錄",
+        urls=("https://phosphene.cc/blog/lora-training-ai-generated-dataset",),
+        checked="2026-09-06",
+        scope="虛構角色（不是真實人物）",
+        limits="已知風險是把生成圖的塑膠皮膚、單一光線和瑕疵一起蒸餾進 LoRA。"
+               "挑圖時要主動淘汰漂移的那幾張，必要時重訓。",
+        policy=INFO,
+    ),
+    Claim(
+        id="train.no_local_run",
+        text="這個 app 不執行訓練，只準備資料與產生設定檔。",
+        evidence_kind=AUTHOR_RECOMMENDATION,
+        source="訓練要 GPU 與數小時，且本專案從未執行過任何一次訓練",
+        scope="這個工具的能力邊界",
+        limits="包一個沒跑過的訓練器當按鈕，等於把沒驗證的東西當功能賣。",
+        policy=INFO,
+    ),
 )
 
 BY_ID: dict[str, Claim] = {c.id: c for c in CLAIMS}

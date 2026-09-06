@@ -214,8 +214,11 @@ class DeliverySpec:
 @dataclass
 class KeyframeProfile:
     model_id: str = "noobai"
-    width: int = 832
-    height: int = 1216
+    # 9:16 (0.565), both axes multiples of 16, and 1.04MP - SDXL's native area.
+    # Was 832x1216, which is 2:3: every frame of a 9:16 episode would have had
+    # to be cropped by a fifth, because Wan I2V's output follows its input.
+    width: int = 768
+    height: int = 1360
     style_id: str = ""
 
     @property
@@ -575,6 +578,35 @@ def check_claims(project: Project, *, installed: set[str] | None = None
             f"關鍵幀 {project.keyframes.width}×{project.keyframes.height} "
             f"只有原生面積的 {px / (1024 * 1024):.0%}。",
             "關鍵幀是整條線裡控制力最強的一步，在這裡省像素等於在源頭省畫質。"))
+
+    # -- keyframe shape against the delivery shape. The video model does not
+    # reframe for you: Wan I2V's output ratio follows the still it is handed.
+    # So a 2:3 keyframe on a 9:16 timeline is not a rounding difference, it is
+    # a crop of roughly a fifth of every frame, decided later and by hand.
+    kf = project.keyframes
+    kf_ratio = kf.width / kf.height if kf.height else 0.0
+    if kf_ratio and project.delivery.ratio:
+        drift = abs(kf_ratio - project.delivery.ratio)
+        if drift > VERTICAL_TOLERANCE:
+            lost = 1 - (project.delivery.ratio / kf_ratio) if kf_ratio > project.delivery.ratio \
+                else 1 - (kf_ratio / project.delivery.ratio)
+            out.append(_claim_finding(
+                "keyframe-ratio", "wan.output_follows_input_ratio",
+                f"關鍵幀 {kf.width}×{kf.height} 是 {kf_ratio:.3f}，"
+                f"交付是 {project.delivery.ratio:.3f}。",
+                f"影片會照關鍵幀的比例出來，所以每一顆都要再裁掉約 "
+                f"{lost:.0%} 才放得進時間線。與其之後一顆一顆裁，"
+                f"不如現在就把關鍵幀改成同比例。"))
+
+    # -- a size the video node can actually take. Only the keyframe: the
+    # delivery size is an export target that goes through upscaling in post and
+    # never reaches the video node, so 1080x1920 is right and not a defect.
+    if (kf.width % 16) or (kf.height % 16):
+        out.append(_claim_finding(
+            "size-align", "wan.vertical_sizes",
+            f"關鍵幀 {kf.width}×{kf.height} 不是 16 的倍數。",
+            "ComfyUI 的影片節點寬高都以 16 為步進。不對齊會被無聲調整，"
+            "算出來的格數就跟你設定的對不上。"))
 
     # -- frame rate: per route, against the delivery timeline
     for method in sorted(project.methods_used):

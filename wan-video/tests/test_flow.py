@@ -5149,6 +5149,196 @@ def test_shortdrama(tmp: Path) -> None:
 
     check(again.delete(made.id) and again.get(made.id) is None, "delete works")
 
+def test_training(tmp: Path) -> None:
+    """Dataset planning, dataset checking, and the configs that come out.
+
+    Everything here is what can be established without a GPU, which is exactly
+    the line training.py draws: this app prepares and checks a training set and
+    writes a config, and does not claim to have trained anything. So the tests
+    are about arithmetic, file inspection and config syntax - and one of them
+    asserts the absence of a training runner on purpose.
+    """
+    section("lora training")
+    import tomllib
+
+    import claims
+    import training as tr
+    from PIL import Image
+
+    # -- the plan always adds back up. A split that says 30/30/25/15 of 25 and
+    # then lists 24 images is a plan the user stops trusting.
+    for count in (0, 1, 7, 10, 20, 25, 30, 37, 40, 50, 99):
+        plan = tr.plan_for(count)
+        total = sum(p["count"] for p in plan)
+        check(total == count, f"plan_for({count}) sums to {count} (got {total})")
+    check(len(tr.plan_for(30)) == len(tr.SHOT_MIX),
+          "…and every framing is listed even when its share rounds to zero")
+    check(abs(sum(m.share for m in tr.SHOT_MIX) - 1.0) < 1e-9,
+          "the shot mix shares add up to one")
+
+    # -- steps are arithmetic, not a recommendation
+    r = tr.RECIPES["sdxl"]
+    check(r.steps_for(30) == 30 * r.repeats * r.epochs // r.batch_size,
+          f"steps are images x repeats x epochs / batch ({r.steps_for(30)})")
+    check(r.steps_for(0) == 0, "…and no images is no steps, not a division error")
+    check(1200 <= r.steps_for(20) and r.steps_for(40) <= 2500,
+          f"20-40 images lands in the sourced 1200-2500 band "
+          f"({r.steps_for(20)}-{r.steps_for(40)})")
+
+    # -- the trigger check. A real word is the classic mistake: the base model
+    # already has an opinion about "emma", and the LoRA then fights it.
+    check(not tr.check_trigger("s1vra_person"), "a nonsense token is a good trigger")
+    for bad, why in (("", "empty"), ("Emma", "capitals"), ("my person", "a space"),
+                     ("女主角", "CJK"), ("ab", "too short"), ("woman", "a real word")):
+        check(bool(tr.check_trigger(bad)), f"rejected: {why} ({bad!r})")
+    check("s1vra_person" in tr.check_trigger("woman"),
+          "…and the complaint about a real word suggests a replacement")
+
+    # -- captions. What is written is taught as variable; what is left out gets
+    # folded into the trigger. So the trigger leads and the face is never named.
+    cap = tr.caption_for("s1vra_person", shot="three-quarter portrait",
+                         hair="black hair", wearing="white blouse",
+                         light="soft window light")
+    check(cap.startswith("s1vra_person, adult"),
+          f"a caption opens with the trigger, then declares an adult ({cap[:34]})")
+    check("white blouse" in cap and "soft window light" in cap,
+          "…and names the clothes and the light, which are the variable parts")
+    check(tr.caption_for("s1vra_person") == "s1vra_person, adult",
+          "…and an empty caption is not padded with blanks")
+
+    # -- reading a real folder off disk
+    tmp.mkdir(parents=True, exist_ok=True)
+    good = tmp / "good"
+    good.mkdir()
+    for i in range(24):
+        size = (832, 1216) if i % 3 else (1216, 832)
+        Image.new("RGB", size, (100, 100, 100)).save(good / f"{i:02}.png")
+        (good / f"{i:02}.txt").write_text(
+            f"s1vra_person, adult, framing {i}, outfit {i}", encoding="utf-8")
+    samples = tr.read_dataset(good)
+    check(len(samples) == 24, f"read 24 images ({len(samples)})")
+    check(all(s.caption for s in samples), "…each with its sidecar caption")
+    check(samples[0].width and samples[0].height,
+          "…and real pixel sizes, read from the file rather than the name")
+    ids = {f.id for f in tr.check_dataset(samples, trigger="s1vra_person")}
+    check(not (ids - {"steps"}), f"a sane set produces no complaints ({ids})")
+
+    # -- and every way a set goes wrong
+    bad = tmp / "bad"
+    bad.mkdir()
+    for i in range(6):
+        Image.new("RGB", (512, 512), (10, 10, 10)).save(bad / f"{i}.png")
+    (bad / "notes.txt").write_text("not an image", encoding="utf-8")
+    findings = {f.id: f for f in tr.check_dataset(tr.read_dataset(bad), trigger="Emma")}
+    for want in ("trigger", "too-few", "low-res", "no-captions"):
+        check(want in findings, f"caught: {want}")
+    # Not "one-shape" here: six images is already a BLOCK, and piling a framing
+    # complaint on top of "you do not have enough images" is noise. The check is
+    # deliberately suppressed under ten, and the `half` set below proves it
+    # still fires once the set is big enough to be worth complaining about.
+    check("one-shape" not in findings,
+          "…but not the framing complaint, which a six-image set has not earned")
+    check(findings["too-few"].level == claims.BLOCK,
+          "too few images blocks - the whole run would be wasted")
+    check(findings["low-res"].level == claims.WARN,
+          "…and undersized images warn, since bucketing can still cope")
+
+    # A caption on every file but one is worse than none on any: the missing one
+    # trains something that cannot be called back.
+    half = tmp / "half"
+    half.mkdir()
+    for i in range(20):
+        Image.new("RGB", (1024, 1536), (60, 60, 60)).save(half / f"{i:02}.png")
+        if i:
+            (half / f"{i:02}.txt").write_text(
+                f"s1vra_person, adult, shot {i}", encoding="utf-8")
+    ids = {f.id for f in tr.check_dataset(tr.read_dataset(half), trigger="s1vra_person")}
+    check("some-captions" in ids, f"one missing caption is caught ({ids})")
+    check("one-shape" in ids,
+          "…and twenty images that are all the same shape is caught, because "
+          "one shape usually means one framing, and a character trained at one "
+          "distance stops being that character at any other")
+
+    same = tmp / "same"
+    same.mkdir()
+    for i in range(20):
+        Image.new("RGB", (1024, 1536), (60, 60, 60)).save(same / f"{i:02}.png")
+        (same / f"{i:02}.txt").write_text("s1vra_person, adult", encoding="utf-8")
+    ids = {f.id for f in tr.check_dataset(tr.read_dataset(same), trigger="s1vra_person")}
+    check("same-caption" in ids,
+          f"identical captions are caught - they say nothing about what differs ({ids})")
+
+    missing_trigger = tr.check_dataset(tr.read_dataset(good), trigger="other_token")
+    check("trigger-missing" in {f.id for f in missing_trigger},
+          "a trigger that is in no caption is caught")
+
+    # -- the configs are files a trainer has to be able to parse
+    for arch, parser in (("sdxl", "toml"), ("flux", "yaml"), ("wan", "toml")):
+        job = tr.TrainJob(trigger="s1vra_person", arch=arch,
+                          dataset_dir=str(good), output_dir=str(tmp / "out"),
+                          output_name=f"lora_{arch}", base_model="C:/m.safetensors",
+                          image_count=24)
+        cfg = tr.config_for(job)
+        check(cfg["format"] == parser, f"{arch} emits {parser} ({cfg['format']})")
+        if parser == "toml":
+            try:
+                parsed = tomllib.loads(cfg["text"])
+                ok = bool(parsed)
+            except Exception as exc:                      # noqa: BLE001
+                ok = False
+                parsed = {"err": str(exc)}
+            check(ok, f"…and it is valid TOML ({str(parsed)[:60]})")
+        check(cfg["command"], f"…and comes with the command to run it")
+        check(claims.get(cfg["claim_id"]) is not None,
+              f"…and the recipe behind it names a registered claim ({cfg['claim_id']})")
+
+    kohya = tomllib.loads(tr.config_for(tr.TrainJob(
+        "s1vra_person", "sdxl", str(good), str(tmp / "out"), "k",
+        "C:/m.safetensors", 24))["text"])
+    # Buckets are what let one folder hold portraits and full-body shots. Without
+    # them every image is cropped square and the full-body shots - the ones that
+    # stop the character collapsing at distance - lose their legs.
+    check(kohya["dataset_arguments"]["enable_bucket"] is True,
+          "kohya config turns bucketing on")
+    check(kohya["dataset_arguments"]["bucket_no_upscale"] is True,
+          "…and refuses to upscale into a bucket, which would teach interpolation")
+    check(kohya["dataset_arguments"]["keep_tokens"] == 1,
+          "…and pins the first token so shuffling cannot lose the trigger")
+    check(kohya["training_arguments"]["save_every_n_epochs"] == 1,
+          "…and saves every epoch, because the good one is rarely the last one")
+    for knob in ("gradient_checkpointing", "cache_latents"):
+        check(kohya["training_arguments"][knob] is True,
+              f"…and turns on {knob}, which is what makes 24GB enough")
+
+    # -- a trainer can be swapped for another that trains the same architecture,
+    # and cannot be swapped for one that does not.
+    swap = tr.TrainJob("s1vra_person", "sdxl", str(good), str(tmp / "out"), "s",
+                       "C:/m.safetensors", 24, trainer_override="onetrainer")
+    check(swap.trainer.id == "onetrainer", "an override picks a different trainer")
+    nope = tr.TrainJob("s1vra_person", "sdxl", str(good), str(tmp / "out"), "s",
+                       "C:/m.safetensors", 24, trainer_override="ai-toolkit")
+    check(nope.trainer.id == "kohya",
+          "…and an override that cannot train this architecture is ignored, "
+          "not silently obeyed")
+
+    # -- the boundary, asserted rather than described. If a future edit adds a
+    # runner, this fails and the docs and claims have to be updated with it.
+    source = (Path(__file__).resolve().parents[1] / "app" / "training.py").read_text(
+        encoding="utf-8")
+    for forbidden in ("subprocess", "os.system", "Popen"):
+        check(forbidden not in source,
+              f"training.py does not shell out ({forbidden}) - it has never run "
+              f"a trainer and must not pretend otherwise")
+    check(claims.get("train.no_local_run") is not None,
+          "…and that boundary is a registered claim, not just a comment")
+    check(claims.get("train.sdxl_recipe").policy == claims.GUIDE,
+          "the recipe is offered as guidance, not asserted as correct")
+    for cid in (r.claim_id for r in tr.RECIPES.values()):
+        claim = claims.get(cid)
+        check(claim is not None and not claim.evidenced or claim.source or claim.urls,
+              f"every recipe's claim says where it came from ({cid})")
+
+
 def test_experiments() -> None:
     """Fixed-seed sweeps: the matrix, the cap, the pairing, and the counting.
 
@@ -6466,6 +6656,7 @@ async def main() -> int:
     test_ref_chinese_names()
     test_ref_folder_import(TMP / "reffolder")
     test_experiments()
+    test_training(TMP / "training")
     test_shortdrama(TMP / "drama")
     test_styles()
     test_promptmerge()

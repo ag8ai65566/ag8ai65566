@@ -24,6 +24,7 @@ from pathlib import Path
 import artists
 import charpacks
 import civitai
+import claims
 import comics
 import config
 import controlnets
@@ -45,6 +46,7 @@ import styles
 import refs as refslib
 import registry
 import tags
+import training
 import updates
 import upscalers
 import workflow
@@ -3110,6 +3112,129 @@ async def output(name: str) -> FileResponse:
 @app.get("/thumbs/{name}")
 async def thumb(name: str) -> FileResponse:
     return _serve(lib.thumbs, name)
+
+
+# -- character LoRA training ---------------------------------------------------
+# The app prepares and checks the dataset and writes the config; the trainer
+# itself runs outside, on the user's GPU. See training.py for why that line is
+# drawn there rather than wrapping a trainer this project has never executed.
+
+
+@app.get("/api/training")
+async def training_meta() -> JSONResponse:
+    return JSONResponse({
+        "trainers": [
+            {"id": t.id, "label": t.label, "trains": list(t.trains),
+             "repo": t.repo, "vram_gb": t.vram_gb, "why": t.why,
+             "claim": (claims.get(t.claim_id).public() if claims.get(t.claim_id) else None)}
+            for t in training.TRAINERS.values()
+        ],
+        "recipes": [
+            {"arch": r.arch, "zh": r.zh, "trainer": r.trainer_id,
+             "network_dim": r.network_dim, "network_alpha": r.network_alpha,
+             "learning_rate": r.learning_rate, "optimizer": r.optimizer,
+             "resolution": r.resolution, "repeats": r.repeats,
+             "epochs": r.epochs, "note": r.note,
+             "claim": (claims.get(r.claim_id).public() if claims.get(r.claim_id) else None)}
+            for r in training.RECIPES.values()
+        ],
+        "shot_mix": [{"key": m.key, "zh": m.zh, "share": m.share, "why": m.why}
+                     for m in training.SHOT_MIX],
+        "claims": claims.public(),
+    })
+
+
+@app.post("/api/training/plan")
+async def training_plan(payload: dict = Body(default={})) -> JSONResponse:
+    """How many images of which framing, for a target set size."""
+    payload = payload if isinstance(payload, dict) else {}
+    try:
+        count = int(payload.get("count") or 0)
+    except (TypeError, ValueError):
+        count = 0
+    return JSONResponse({"count": max(0, count), "plan": training.plan_for(max(0, count))})
+
+
+@app.post("/api/training/caption")
+async def training_caption(payload: dict = Body(default={})) -> JSONResponse:
+    """One caption in the shape the recipes expect."""
+    payload = payload if isinstance(payload, dict) else {}
+    trigger = str(payload.get("trigger") or "")
+    text = training.caption_for(
+        trigger,
+        shot=str(payload.get("shot") or ""), hair=str(payload.get("hair") or ""),
+        eyes=str(payload.get("eyes") or ""),
+        expression=str(payload.get("expression") or ""),
+        wearing=str(payload.get("wearing") or ""),
+        setting=str(payload.get("setting") or ""),
+        light=str(payload.get("light") or ""))
+    return JSONResponse({"caption": text, "trigger_problem": training.check_trigger(trigger)})
+
+
+@app.post("/api/training/check")
+async def training_check(payload: dict = Body(default={})) -> JSONResponse:
+    """Read a training folder off disk and say what is wrong with it.
+
+    The folder is whatever the user typed. This app is local and already reads
+    the reference-art folders the same way; nothing is uploaded anywhere.
+    """
+    payload = payload if isinstance(payload, dict) else {}
+    folder = Path(str(payload.get("folder") or "").strip()).expanduser()
+    trigger = str(payload.get("trigger") or "")
+    arch = str(payload.get("arch") or "sdxl")
+    if not str(folder):
+        raise HTTPException(400, "要先給一個資料夾")
+    if not folder.is_dir():
+        raise HTTPException(404, f"找不到這個資料夾：{folder}")
+    samples = training.read_dataset(folder)
+    findings = training.check_dataset(samples, trigger=trigger, arch=arch)
+    recipe = training.RECIPES.get(arch) or training.RECIPES["sdxl"]
+    usable = [s for s in samples if s.width and s.height]
+    return JSONResponse({
+        "folder": str(folder),
+        "count": len(usable),
+        "samples": [s.public() for s in samples[:200]],
+        "truncated": len(samples) > 200,
+        "health": training.summary(findings),
+        "steps": recipe.steps_for(len(usable)),
+        "plan": training.plan_for(len(usable) or 30),
+    })
+
+
+@app.post("/api/training/config")
+async def training_config(payload: dict = Body(default={})) -> JSONResponse:
+    """The config file text and the command that runs it."""
+    payload = payload if isinstance(payload, dict) else {}
+    arch = str(payload.get("arch") or "sdxl")
+    if arch not in training.RECIPES:
+        raise HTTPException(400, f"不認識的架構：{arch}")
+    trigger = str(payload.get("trigger") or "").strip()
+    if problem := training.check_trigger(trigger):
+        raise HTTPException(400, problem)
+    name = re.sub(r"[^A-Za-z0-9_.-]", "_", str(payload.get("name") or trigger)).strip("_")
+    if not name:
+        raise HTTPException(400, "輸出名稱不能是空的")
+    try:
+        count = int(payload.get("count") or 0)
+    except (TypeError, ValueError):
+        count = 0
+    override = str(payload.get("trainer") or "")
+    if override:
+        if override not in training.TRAINERS:
+            raise HTTPException(400, f"不認識的訓練器：{override}")
+        if arch not in training.TRAINERS[override].trains:
+            raise HTTPException(
+                400, f"{training.TRAINERS[override].label} 不訓 {arch}")
+    job = training.TrainJob(
+        trigger=trigger, arch=arch,
+        dataset_dir=str(payload.get("dataset_dir") or ""),
+        output_dir=str(payload.get("output_dir") or ""),
+        output_name=name,
+        base_model=str(payload.get("base_model") or ""),
+        image_count=max(0, count),
+        trainer_override=override,
+    )
+    return JSONResponse(training.config_for(job))
 
 
 app.mount("/static", StaticFiles(directory=STATIC), name="static")
