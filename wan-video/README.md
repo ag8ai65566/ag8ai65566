@@ -805,7 +805,7 @@ docs/
   pose-library.md      動作／姿勢法典：NAI→ComfyUI 權重換算、畫師 tag 分離
   prompt-weights.md    提詞權重、316 個查證過的常用 tag、自訂尺寸滑桿
   artists.md           52 位畫師 tag：風格、danbooru 張數、各底模的正確前綴
-  codex-mcp.md         讓 Claude Code 跟 OpenAI Codex 協作（選用）
+  codex-mcp.md         讓 Claude Code 跟 OpenAI Codex 協作（雲端 session 用 scripts/codex-login.sh 登入）
   codex-review-brief.md 給第二個模型審查用的自足摘要（主張＋數據＋我自己知道的弱點）
   review-response.md   對 Codex 審查的逐條回應：改了什麼、還沒做什麼
   reference-art.md     官方參考圖：整包資料夾匯入、中文名比對、一鍵當來源圖／構圖參考

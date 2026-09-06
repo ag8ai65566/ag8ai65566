@@ -27,15 +27,33 @@ $env:OPENAI_API_KEY | codex login --with-api-key
 
 ### 2. 你可以幫我裝嗎？
 
-**我可以驗證整條流程，但沒辦法幫你「裝好放著」**，原因很實際：
+**可以，而且現在已經裝好了。這一節本來寫「不行」，那個答案已經過期了。**
 
-我跑 Claude Code 的這個容器是**用完就丟的**。我剛剛在裡面真的裝了一次
-（`codex-cli 0.147.0`）、註冊成 MCP server、確認 `claude mcp list` 顯示
-**`codex: codex mcp-server - ✓ Connected`**，然後把註冊移除、把環境還原。
-那次安裝隨著容器一起消失了。
+> **2026-09-06 更正。** 這份文件原本寫「我沒辦法幫你裝好放著」，理由是
+> 容器裡的工具在對話中途註冊、這個對話看不到它，而且登入要瀏覽器。
+> 現在兩件事都不成立了：
+>
+> * **工具是可見的。** 這個雲端環境會在**對話啟動時**就把 codex 註冊好，
+>   所以 `mcp__codex__codex` 一開始就在工具清單裡。實測 `claude mcp list`
+>   顯示 `codex: codex mcp-server - ✓ Connected`。
+> * **登入不需要瀏覽器。** `codex login --device-auth` 是給無頭機器用的流程：
+>   它印一個網址和一組一次性代碼，你在**自己的電腦上**打開輸入，
+>   token 由 OpenAI 直接發回容器。**憑證完全不經過對話。**
+>
+> 下面那一節（「在這個對話裡直接裝為什麼行不通」）也一起改了，
+> 原本的內容留著並標明哪裡錯，因為那是當時實測的結果，不是憑空寫的。
 
-所以我能給你最有用的東西是**一個可以重複執行的安裝腳本**，commit 進 repo，
-在你自己那台機器上跑 —— 那才會留下來。就是 `setup-codex.bat`。
+所以現在的做法是：
+
+```bash
+bash scripts/codex-login.sh
+```
+
+它會自己判斷情況 —— 已經登入就不重跑；有 `OPENAI_API_KEY` 就用它
+（從 pipe 讀，不走參數，所以不會出現在 `ps` 或 shell 歷史裡）；
+兩個都沒有就跑裝置碼流程。
+
+`setup-codex.bat` 仍然有用，但它是給**你自己那台 Windows** 的 —— 兩件不同的事。
 
 ### 3. 怎麼裝
 
@@ -87,34 +105,44 @@ Claude Code 會呼叫 `codex` 工具、把結果拿回來。你不用記任何�
 
 ---
 
-## 「在這個對話裡直接裝」為什麼行不通
+## 在這個對話裡直接用：現在可以了
 
-你問能不能裝在這邊、直接用 `/codex`。我照做了一次並實測，結果是**兩個都卡住**，
-所以寫清楚免得你再試：
+**現況（2026-09-06 實測）：**
 
 ```
-npm install -g @openai/codex     已經裝好      codex-cli 0.147.0
-claude mcp add codex -- ...      註冊成功      codex: codex mcp-server - ✓ Connected
-這個對話看得到那個工具嗎？        ✗ 看不到
-codex login status               ✗ Not logged in
+codex --version                  codex-cli 0.147.0          ✓ 容器裡已安裝
+claude mcp list                  codex: ✓ Connected         ✓ 對話啟動時就註冊好
+工具清單有 mcp__codex__codex 嗎？  ✓ 有
+~/.codex/auth.json               ✗ 不存在  ← 只缺這個
+實際打一發                        401 Unauthorized           ← 就是上面那行的後果
 ```
 
-**第一個卡點：MCP server 是「開對話時」載入的。** `claude --help` 裡
-`--mcp-config` 跟其他設定並列在啟動參數，**沒有任何 reload 指令**。
-所以我在對話中途註冊，這個正在跑的對話不會看到它 —— 我實測搜過工具清單，
-`mcp__codex__codex` 不存在。
+**「Connected」只代表那個 process 起得來，不代表登入了。** 這是最容易誤會的一點：
+`claude mcp list` 是綠的，工具也在，但第一次真的呼叫才會撞到 401。
 
-**第二個卡點：Codex 沒有登入。** 而登入要你的憑證，那個不能經過我。
+補上登入（`bash scripts/codex-login.sh`）之後就能用了。
 
-**第三個卡點（最關鍵）：這個容器是用完就丟的。** 就算開新對話，也是**新的容器**，
-上面沒有 codex。所以「裝在這邊」在這個雲端環境裡永遠不會留下來。
+### 三件仍然成立的事
 
-### 那要怎麼「刷新」
+1. **沒有 `/codex` 這個斜線指令。** Codex 在這裡是 **MCP server**，
+   也就是**我去呼叫它**，不是你打指令。你要它做事就直接跟我說
+   「叫 codex 看一下 X」。
+2. **一般的 `codex login` 在這裡還是不行。** 它會開瀏覽器、等
+   `127.0.0.1:1455` 的 OAuth callback，而那個 callback 你的電腦碰不到。
+   要用 `--device-auth`。
+3. **容器是用完就丟的。** token 會跟著消失，新 session 要重登。
+   不想每次重登就把 `OPENAI_API_KEY` 設在**環境設定的環境變數**裡
+   （不是貼在對話裡），新 session 一開就有。
 
-**沒有指令可以刷新，只能開新對話。** 你記得的 `bash /reload-skills` 那種東西
-在這個環境裡不存在（我找過 `/root/.claude` 和專案的 `.claude/`，沒有任何 reload 指令）。
+### 原本這一節寫錯的地方
 
-skills 跟 MCP server 都一樣：**在對話啟動時掃一次**，之後不再重掃。
+原本寫「這個對話看不到那個工具」，理由是 MCP server 只在對話啟動時載入、
+沒有 reload 指令。**那個觀察本身沒錯，錯的是結論**：這個環境會在啟動時
+就把 codex 註冊進去，所以不需要中途 reload。「無法中途載入」不等於「不能用」。
+
+至於刷新：**確實沒有指令可以在對話中途重載 MCP server 或 skills，只能開新對話。**
+你記得的 `bash /reload-skills` 在這個環境裡不存在（找過 `/root/.claude`
+和專案的 `.claude/`）。這一點沒有變。
 
 ---
 
