@@ -269,7 +269,65 @@ ERAS: dict[str, Chip] = {c.tag: c for c in [
     C("newest", "2021-2024 畫風", "era", kind="caption", source="NoobAI-XL 1.1 model card"),
 ]}
 
-ALL_CHIPS: dict[str, Chip] = {**V, **QUALITY, **ERAS}
+# --- the photographic vocabulary -------------------------------------------
+# Everything above is danbooru: a tag with a post count, checkable against the
+# corpus the anime checkpoints were captioned from. None of that applies here.
+# A photoreal checkpoint was captioned in English sentences, so these are
+# `kind="plain"` - ordinary words, no prevalence to quote, and the UI shows
+# them without a strength band rather than inventing one.
+#
+# The categories are the ones a cinematographer actually decides: lens, light,
+# location, skin, grade. Anime "style" recipes have no equivalent, which is
+# why these are a separate list rather than translations of the ones above.
+PHOTO_CHIPS: dict[str, Chip] = {c.tag: c for c in [
+    # lens and framing
+    C("85mm portrait lens", "85mm 人像鏡", "lens", kind="plain"),
+    C("50mm lens", "50mm 標準鏡", "lens", kind="plain"),
+    C("35mm lens", "35mm 廣角", "lens", kind="plain"),
+    C("shallow depth of field", "淺景深（背景糊）", "lens", kind="plain"),
+    C("deep focus", "全景深（前後都清楚）", "lens", kind="plain"),
+    C("handheld camera", "手持晃動", "lens", kind="plain"),
+    C("static tripod shot", "腳架固定", "lens", kind="plain"),
+
+    # light
+    C("soft window light", "窗光（柔）", "light", kind="plain"),
+    C("hard directional light", "硬光（影子清楚）", "light", kind="plain"),
+    C("warm practical lamp light", "現場燈（暖）", "light", kind="plain"),
+    C("cool moonlight through blinds", "百葉窗月光", "light", kind="plain"),
+    C("neon signage spill", "霓虹外溢光", "light", kind="plain"),
+    C("high key lighting, even and bright", "高調（明亮平均）", "light", kind="plain"),
+    C("low key lighting, deep shadows", "低調（大片暗部）", "light", kind="plain"),
+    C("rim light separating subject from background", "輪廓光", "light", kind="plain"),
+
+    # location
+    C("cramped rented apartment", "出租套房", "location", kind="plain"),
+    C("cheap motel room at night", "汽車旅館夜景", "location", kind="plain"),
+    C("open plan office after hours", "下班後的辦公室", "location", kind="plain"),
+    C("concrete stairwell", "樓梯間", "location", kind="plain"),
+    C("inside a parked car", "車內", "location", kind="plain"),
+    C("hotel bathroom", "飯店浴室", "location", kind="plain"),
+
+    # skin and finish - the part that decides whether it reads as a photograph
+    C("visible skin texture and pores", "看得到毛孔", "skin", kind="plain",
+      note="寫實的成敗多半在這裡。省掉它最常見的結果是塑膠皮膚。"),
+    C("fine flyaway hair strands", "碎髮", "skin", kind="plain"),
+    C("natural skin tone, no smoothing", "沒有磨皮", "skin", kind="plain"),
+    C("subtle film grain", "輕微顆粒", "grade", kind="plain"),
+    C("muted desaturated grade", "低飽和調色", "grade", kind="plain"),
+    C("warm amber grade", "暖調", "grade", kind="plain"),
+    C("cool teal grade", "冷調", "grade", kind="plain"),
+
+    # negatives that matter for photoreal specifically
+    C("plastic skin", "塑膠皮膚", "negative", kind="plain"),
+    C("airbrushed", "過度磨皮", "negative", kind="plain"),
+    C("cartoon", "卡通感", "negative", kind="plain"),
+    C("anime", "動漫感", "negative", kind="plain"),
+    C("3d render", "3D 渲染感", "negative", kind="plain"),
+    C("oversaturated", "過飽和", "negative", kind="plain"),
+    C("waxy", "蠟像感", "negative", kind="plain"),
+]}
+
+ALL_CHIPS: dict[str, Chip] = {**V, **QUALITY, **ERAS, **PHOTO_CHIPS}
 
 
 # --- what was substituted, and why ------------------------------------------
@@ -355,7 +413,13 @@ REPLACED: dict[str, tuple[str, str]] = {
 # --- recipes ----------------------------------------------------------------
 
 ANIME = ("noobai", "illustrious", "pony")
-ALL_MODELS = ("noobai", "illustrious", "pony", "juggernaut", "sdxl-base")
+# The photoreal line. Recipes written in danbooru tags must never be offered
+# for these: the tags are not in their caption vocabulary, so they read as
+# noise. The two lists are kept separate rather than one list with a flag.
+PHOTO = ("juggernaut", "lustify", "biglust", "cyberrealistic-pony",
+         "epicrealism-xl", "sdxl-base")
+ALL_MODELS = ("noobai", "illustrious", "pony", "juggernaut", "sdxl-base",
+              "lustify", "biglust", "cyberrealistic-pony", "epicrealism-xl")
 
 
 @dataclass(frozen=True)
@@ -390,6 +454,12 @@ class Recipe:
             "negative_prompt": self.negative_prompt(tag_style),
         }
 
+
+# What a photoreal recipe negates. Not the anime negative list: `bad anatomy`
+# and friends are generic, while these are the specific ways a photograph stops
+# looking like one.
+PHOTO_NEG_CHIPS = ("plastic skin", "airbrushed", "cartoon", "anime",
+                   "3d render", "waxy")
 
 RECIPES: list[Recipe] = [
     Recipe(
@@ -558,6 +628,77 @@ RECIPES: list[Recipe] = [
         chips=("rain", "wet", "puddle", "reflective_floor", "backlighting",
                "bokeh", "film_grain", "night"),
         models=ALL_MODELS, keywords=("rain", "wet", "night", "cinematic", "雨", "夜"),
+    ),
+
+    # -- photoreal. Not translations of the recipes above: an anime "style"
+    # recipe decides linework and colouring, and a photograph has neither. What
+    # these decide is what a cinematographer decides - lens, light, location,
+    # grade - and every one of them carries the skin chips, because plastic
+    # skin is the single thing that most reliably breaks the illusion.
+    Recipe(
+        "photo-window-portrait", "窗光人像", "Soft Window Portrait",
+        "柔和窗光、淺景深、看得到毛孔。對白近景最安全的一組。",
+        chips=("soft window light", "85mm portrait lens", "shallow depth of field",
+               "visible skin texture and pores", "natural skin tone, no smoothing",
+               "fine flyaway hair strands"),
+        negative=PHOTO_NEG_CHIPS,
+        models=PHOTO, keywords=("portrait", "window", "soft", "人像", "窗光"),
+    ),
+    Recipe(
+        "photo-night-motel", "汽車旅館夜戲", "Night Motel",
+        "暖現場燈、低調、冷調外光。短劇最常見的夜間內景。",
+        chips=("cheap motel room at night", "warm practical lamp light",
+               "low key lighting, deep shadows", "50mm lens",
+               "visible skin texture and pores", "subtle film grain",
+               "muted desaturated grade"),
+        negative=PHOTO_NEG_CHIPS,
+        models=PHOTO, keywords=("motel", "night", "汽旅", "夜", "低調"),
+    ),
+    Recipe(
+        "photo-handheld-tension", "手持緊張感", "Handheld Tension",
+        "手持、硬光、樓梯間。衝突和追逐用的。",
+        chips=("handheld camera", "hard directional light", "concrete stairwell",
+               "35mm lens", "deep focus", "visible skin texture and pores",
+               "cool teal grade"),
+        negative=PHOTO_NEG_CHIPS,
+        models=PHOTO, keywords=("handheld", "tension", "手持", "衝突"),
+    ),
+    Recipe(
+        "photo-office-afterhours", "下班後辦公室", "Office After Hours",
+        "空辦公室、冷調、腳架固定。談判和攤牌。",
+        chips=("open plan office after hours", "cool teal grade",
+               "static tripod shot", "50mm lens",
+               "rim light separating subject from background",
+               "visible skin texture and pores"),
+        negative=PHOTO_NEG_CHIPS,
+        models=PHOTO, keywords=("office", "辦公室", "冷調"),
+    ),
+    Recipe(
+        "photo-neon-street", "霓虹夜街", "Neon Street",
+        "霓虹外溢、淺景深、顆粒。城市夜戲。",
+        chips=("neon signage spill", "shallow depth of field", "35mm lens",
+               "subtle film grain", "visible skin texture and pores",
+               "fine flyaway hair strands"),
+        negative=PHOTO_NEG_CHIPS,
+        models=PHOTO, keywords=("neon", "street", "霓虹", "夜街"),
+    ),
+    Recipe(
+        "photo-bright-clinical", "高調明亮", "Bright and Clinical",
+        "高調、全景深、平均光。日戲、醫院、辦公室白天。",
+        chips=("high key lighting, even and bright", "deep focus", "50mm lens",
+               "static tripod shot", "visible skin texture and pores",
+               "natural skin tone, no smoothing"),
+        negative=PHOTO_NEG_CHIPS,
+        models=PHOTO, keywords=("bright", "high key", "日戲", "高調"),
+    ),
+    Recipe(
+        "photo-in-car", "車內", "Inside a Car",
+        "車內、窗外光、淺景深。移動中的對話。",
+        chips=("inside a parked car", "soft window light",
+               "shallow depth of field", "50mm lens",
+               "visible skin texture and pores", "muted desaturated grade"),
+        negative=PHOTO_NEG_CHIPS,
+        models=PHOTO, keywords=("car", "車內", "driving"),
     ),
 ]
 

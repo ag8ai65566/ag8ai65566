@@ -4459,8 +4459,12 @@ def test_styles() -> None:
     section("style recipes")
     import styles
 
-    check(len(styles.RECIPES) == 22, f"22 recipes ({len(styles.RECIPES)})")
-    check(len({r.id for r in styles.RECIPES}) == 22, "every recipe id is unique")
+    check(len(styles.RECIPES) == 29, f"29 recipes ({len(styles.RECIPES)})")
+    # Compared against the real length, not a second copy of the literal above:
+    # written as `== 22` this failed for the wrong reason the moment a recipe
+    # was added, and said nothing about uniqueness either way.
+    check(len({r.id for r in styles.RECIPES}) == len(styles.RECIPES),
+          "every recipe id is unique")
     check(all(r.zh and r.en and r.desc for r in styles.RECIPES),
           "every recipe has a Chinese name, an English name and a description")
     check(all(r.chips for r in styles.RECIPES), "no recipe is empty")
@@ -4539,7 +4543,42 @@ def test_styles() -> None:
           "search finds recipes by Chinese keyword")
     check("hair-detail" in [r.id for r in styles.search("backlighting")],
           "…and by a tag buried inside the recipe")
-    check(len(styles.search("")) == 22, "an empty search returns everything")
+    check(len(styles.search("")) == len(styles.RECIPES),
+          "an empty search returns everything")
+
+    # -- the photoreal line. An anime recipe is written in danbooru tags, which
+    # a photo checkpoint has no entry for, so the two lists must not cross.
+    photo = [r for r in styles.RECIPES if r.id.startswith("photo-")]
+    check(len(photo) >= 6, f"{len(photo)} photographic recipes")
+    for r in photo:
+        check(set(r.models) <= set(styles.PHOTO),
+              f"{r.id} is offered only for photoreal checkpoints ({r.models})")
+        check(all(styles.ALL_CHIPS[c].kind == "plain" for c in r.chips),
+              f"{r.id} is built from plain words, not danbooru tags")
+        check("visible skin texture and pores" in r.chips,
+              f"{r.id} asks for skin texture - without it the output goes plastic")
+        check(r.negative, f"{r.id} carries the photoreal negatives")
+    anime_only = [r for r in styles.RECIPES if set(r.models) == set(styles.ANIME)]
+    for r in anime_only:
+        for model in ("lustify", "biglust", "cyberrealistic-pony"):
+            check(r.id not in [x.id for x in styles.recipes_for(model)],
+                  f"the anime recipe {r.id} is not offered for {model}")
+    for model in ("lustify", "biglust", "cyberrealistic-pony", "epicrealism-xl"):
+        got = styles.recipes_for(model)
+        check(got, f"{model} has recipes to choose from ({len(got)})")
+        check(any(r.id.startswith("photo-") for r in got),
+              f"…including the photographic ones")
+    # Every chip a recipe names has to resolve, or the recipe throws at render.
+    unknown = [c for r in styles.RECIPES for c in (r.chips + r.negative)
+               if c not in styles.ALL_CHIPS]
+    check(not unknown, f"every chip in every recipe resolves ({unknown[:4]})")
+    for chip in styles.PHOTO_CHIPS.values():
+        check(chip.kind == "plain",
+              f"photo chips claim no danbooru prevalence ({chip.tag})")
+        check(chip.posts == 0,
+              f"…and quote no post count, because there is none ({chip.tag})")
+        check(chip.strength == "plain",
+              f"…so the UI shows no strength band for them ({chip.tag})")
 
     # Quality presets are quoted from model cards, and kept apart from recipes.
     check(len(styles.PRESETS) >= 5, f"{len(styles.PRESETS)} quality presets")
