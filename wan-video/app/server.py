@@ -1066,6 +1066,13 @@ async def image_models() -> JSONResponse:
                 "note": model.note,
                 "civitai_bases": list(images.CIVITAI_BASES.get(model.id, ())),
                 "custom": model.id.startswith(images.CUSTOM_PREFIX),
+                # Where the weights come from, and - for CivitAI - whether the
+                # user has the key that fetching them needs. Saying that on the
+                # card beats a download that 401s after the user picked it.
+                "source": model.source,
+                "needs_civitai_key": bool(model.civitai_version) and not civitai.api_key(),
+                "sha256": model.sha256,
+                "checked": model.checked,
                 # The checkpoint filename, so an image that names the model it
                 # was made with can be matched back to an entry here.
                 "file_name": model.file.name,
@@ -1111,14 +1118,30 @@ async def download_image_model(model_id: str) -> JSONResponse:
     model = images.get(model_id)
     if model is None:
         raise HTTPException(404, f"不認識的圖片模型：{model_id}")
-    if not model.file.repo:
+    if not model.downloadable:
         raise HTTPException(400, "自己裝的底模沒有下載來源")
-    remote = [
-        downloader.RemoteFile(
-            url=downloader.url_for(f), folder=f.folder, name=f.name, size=f.size
-        )
-        for f in model.all_files
-    ]
+
+    # A CivitAI checkpoint needs the user's key, and the key goes only to
+    # civitai.com. The extra files (the SDXL VAE) still come from Hugging Face,
+    # so they keep the plain URL and no auth - one model can span both hosts and
+    # neither host gets the other's credentials.
+    civitai_headers: tuple[tuple[str, str], ...] = ()
+    if model.civitai_version:
+        try:
+            civitai_headers = tuple(civitai.download_headers().items())
+        except civitai.NeedsApiKey as exc:
+            raise HTTPException(400, str(exc)) from exc
+
+    remote = []
+    for f in model.all_files:
+        if model.civitai_version and f is model.file:
+            remote.append(downloader.RemoteFile(
+                url=f"https://civitai.com/api/download/models/{model.civitai_version}",
+                folder=f.folder, name=f.name, size=f.size,
+                headers=civitai_headers, label=model.label))
+        else:
+            remote.append(downloader.RemoteFile(
+                url=downloader.url_for(f), folder=f.folder, name=f.name, size=f.size))
     return JSONResponse(
         models.enqueue_files(
             key=f"image:{model.id}", label=model.label, files=remote, kind="model"

@@ -55,6 +55,25 @@ class ImageModel:
     nsfw_note: str = ""
     note: str = ""
     extra_files: tuple[ModelFile, ...] = ()
+    # CivitAI model-version id, for the checkpoints that are only published
+    # there. A version id is the stable identity: the *model* page keeps moving
+    # to new base architectures - LUSTIFY v10 is Krea 2, not SDXL - so pinning
+    # the model would silently change what this entry's sampling defaults are
+    # even about. Downloading needs the user's CivitAI API key.
+    civitai_version: int = 0
+    # SHA256 of the main file as CivitAI reports it, so "is this the file I
+    # think it is" has an answer that does not depend on the filename.
+    sha256: str = ""
+    # When the numbers above were read off the API.
+    checked: str = ""
+
+    @property
+    def source(self) -> str:
+        return "civitai" if self.civitai_version else "huggingface"
+
+    @property
+    def downloadable(self) -> bool:
+        return bool(self.file.repo or self.civitai_version)
 
     @property
     def all_files(self) -> list[ModelFile]:
@@ -202,6 +221,115 @@ IMAGE_MODELS: list[ImageModel] = [
         note="CivitAI 上最多下載的寫實 SDXL。",
         extra_files=(SDXL_VAE,),
     ),
+    # -- photoreal, adult-capable. These are the keyframe layer for a live-action
+    # short drama: the anime checkpoints above cannot produce it, and Juggernaut
+    # below is photoreal but not tuned for explicit anatomy. All four are
+    # CivitAI-only, so downloading them needs an API key in the settings tab.
+    #
+    # File names, byte sizes and hashes were read from the CivitAI API on the
+    # date each entry records, not typed from memory. What is NOT claimed here
+    # is that any of them is "the best" - nothing in this project has generated
+    # an image, and no independent benchmark for this exists.
+    ImageModel(
+        id="lustify",
+        label="LUSTIFY! ZENITH v9 — 寫實成人（SDXL）",
+        file=ModelFile("", "lustifyNSFWCheckpoint_zenithV9.safetensors",
+                       "checkpoints", 6938143490),
+        civitai_version=3045803,
+        sha256="1A3ABF0BF48113EB",
+        checked="2026-09-06",
+        vram_gb=8,
+        steps=30, cfg=5.0, sampler="dpmpp_2m", scheduler="karras",
+        clip_skip=-1,
+        tag_style="natural",
+        negative=PHOTO_NEG,
+        prompt_style=(
+            "自然句子，先講人、再講動作、再講鏡頭與光線："
+            "`a woman sitting on the edge of a bed, looking at the camera, "
+            "warm lamp light, 50mm, shallow depth of field`。"
+            "**不要**用 danbooru 標籤或 Pony 的 score 詞 —— 這個模型沒有那套詞彙。"
+        ),
+        sizes=SDXL_SIZES,
+        default_size="832×1216 直式",
+        nsfw_note="這個 checkpoint 本身就是為寫實成人內容微調的，不需要另外加 LoRA。",
+        note=(
+            "CivitAI 上下載量最高的寫實成人 SDXL 之一（查證當日 387k）。"
+            "**注意版本**：這個條目鎖的是 SDXL 架構的 ZENITH v9；"
+            "更新的 v10 換成 Krea 2 架構，尺寸、取樣參數和 LoRA 相容性都不一樣。"
+            "授權以 CivitAI 該版本頁上的標示為準，不要套用 SDXL base 的授權。"
+        ),
+        extra_files=(SDXL_VAE,),
+    ),
+    ImageModel(
+        id="biglust",
+        label="Big Lust v1.6 — 寫實成人（SDXL）",
+        file=ModelFile("", "bigLust_v16.safetensors", "checkpoints", 6938058338),
+        civitai_version=1081768,
+        sha256="4C1E096B9493DBB5",
+        checked="2026-09-06",
+        vram_gb=8,
+        steps=30, cfg=5.0, sampler="dpmpp_2m", scheduler="karras",
+        clip_skip=-1,
+        tag_style="natural",
+        negative=PHOTO_NEG,
+        prompt_style="自然句子。跟 LUSTIFY 同一類，出來的臉和膚質走向不同，值得兩個都試。",
+        sizes=SDXL_SIZES,
+        default_size="832×1216 直式",
+        nsfw_note="同樣是為寫實成人內容微調的底模。",
+        note="另一條寫實成人 SDXL 路線。哪個比較合你的題材只能自己比，這裡不做排名。",
+        extra_files=(SDXL_VAE,),
+    ),
+    ImageModel(
+        id="cyberrealistic-pony",
+        label="CyberRealistic Pony v18 — 寫實成人（Pony 底）",
+        file=ModelFile("", "cyberrealisticPony_v180Coreshift.safetensors",
+                       "checkpoints", 6938041288),
+        civitai_version=2884631,
+        sha256="1D580C1C3F3612FA",
+        checked="2026-09-06",
+        vram_gb=8,
+        steps=30, cfg=5.5, sampler="dpmpp_2m", scheduler="karras",
+        clip_skip=-2,
+        # Pony-derived, so it keeps Pony's score ladder even though the output
+        # is photoreal. Getting this wrong is the classic Pony mistake: without
+        # the prefix the same prompt produces mush.
+        positive_prefix="score_9, score_8_up, score_7_up",
+        negative=PHOTO_NEG,
+        prompt_style=(
+            "**它是 Pony 微調，所以 score 詞要留著**（已自動加在前面），"
+            "其餘用自然句子描述。Pony 底的構圖控制通常比純 SDXL 好，"
+            "但它認不得畫師標籤。"
+        ),
+        tag_style="natural",
+        sizes=SDXL_SIZES,
+        default_size="832×1216 直式",
+        nsfw_note="Pony 系本來就不迴避成人內容，加上這個微調是走寫實方向。",
+        note=(
+            "查證當日下載量 768k，是這幾個裡面最高的。"
+            "Pony 底的代價是 CLIP skip -2 和 score 詞這兩個額外規矩。"
+        ),
+        extra_files=(SDXL_VAE,),
+    ),
+    ImageModel(
+        id="epicrealism-xl",
+        label="epiCRealism XL Pure — 寫實通用（SDXL）",
+        file=ModelFile("", "epicrealismXL_pureFix.safetensors",
+                       "checkpoints", 6938041144),
+        civitai_version=2514955,
+        sha256="DD21ADCC3A04A4A6",
+        checked="2026-09-06",
+        vram_gb=8,
+        steps=30, cfg=4.5, sampler="dpmpp_2m", scheduler="karras",
+        clip_skip=-1,
+        tag_style="natural",
+        negative=PHOTO_NEG,
+        prompt_style="自然句子。走的是照片感而不是成人專項，適合非露骨的鋪陳鏡頭。",
+        sizes=SDXL_SIZES,
+        default_size="832×1216 直式",
+        nsfw_note="通用寫實底模，露骨內容通常還是要靠 LoRA 或換上面那兩個。",
+        note="一集裡大部分鏡頭其實是穿著衣服的，那些鏡頭用這個或 Juggernaut 就夠。",
+        extra_files=(SDXL_VAE,),
+    ),
     ImageModel(
         id="sdxl-base",
         label="SDXL 1.0 官方底模（乾淨基準）",
@@ -273,6 +401,13 @@ CIVITAI_BASES = {
     "pony": ("Pony",),
     "juggernaut": ("SDXL 1.0", "SDXL Lightning"),
     "sdxl-base": ("SDXL 1.0", "SDXL Lightning"),
+    # The photoreal line. Which base a LoRA was trained on is not cosmetic:
+    # a Pony LoRA will not load on a plain SDXL checkpoint, and CyberRealistic
+    # Pony is Pony-derived however photoreal its output looks.
+    "lustify": ("SDXL 1.0", "SDXL Lightning"),
+    "biglust": ("SDXL 1.0", "SDXL Lightning"),
+    "epicrealism-xl": ("SDXL 1.0", "SDXL Lightning"),
+    "cyberrealistic-pony": ("Pony",),
 }
 CIVITAI_BASES_LOOSE = ("SDXL 1.0", "Illustrious", "Pony", "NoobAI", "SDXL Lightning")
 

@@ -931,6 +931,46 @@ def test_image_registry() -> None:
     for key in ("steps", "cfg", "sampler", "scheduler", "size", "batch", "seed", "clip_skip", "hires", "lora"):
         check(key in images.HELP and len(images.HELP[key]) > 10, f"help text for {key}")
 
+    # -- the photoreal line. A live-action drama cannot be keyframed by an anime
+    # checkpoint, so these exist; they are CivitAI-only, which is a different
+    # download path and a different credential from everything above.
+    photoreal = [m for m in images.IMAGE_MODELS if m.source == "civitai"]
+    check(len(photoreal) >= 4, f"{len(photoreal)} photoreal checkpoints catalogued")
+    for m in photoreal:
+        check(m.civitai_version > 0, f"{m.id} pins a CivitAI *version* id ({m.civitai_version})")
+        check(not m.file.repo, f"{m.id} has no Hugging Face repo, as it is not there")
+        check(m.downloadable, f"{m.id} is downloadable")
+        check(bool(m.sha256), f"{m.id} records the hash it was checked against")
+        check(bool(m.checked), f"{m.id} records when that was read ({m.checked})")
+        check(m.tag_style == "natural",
+              f"{m.id} prompts in sentences, not danbooru tags")
+        check("danbooru" not in m.prompt_style or "不要" in m.prompt_style,
+              f"{m.id} does not tell the user to write booru tags at a photo model")
+    # Version, not model: LUSTIFY's model page has moved on to a different base
+    # architecture, so pinning the model would have silently changed what these
+    # sampling defaults are even about.
+    lust = images.get("lustify")
+    check(lust.civitai_version == 3045803, "LUSTIFY is pinned to the SDXL ZENITH v9 version")
+    check("Krea" in lust.note, "…and the note warns that the newer version is a different base")
+
+    # CyberRealistic Pony is Pony-derived however photoreal it looks, and that
+    # decides two things a user cannot guess: the score ladder and CLIP skip.
+    crp = images.get("cyberrealistic-pony")
+    check(crp.positive_prefix.startswith("score_9"),
+          "the Pony-derived photoreal model keeps the score ladder")
+    check(crp.clip_skip == -2, "…and Pony's CLIP skip")
+    check(images.CIVITAI_BASES["cyberrealistic-pony"] == ("Pony",),
+          "…and its LoRA filter offers Pony LoRAs only, which is what will load")
+    for sdxl_photo in ("lustify", "biglust", "epicrealism-xl"):
+        check("Pony" not in images.CIVITAI_BASES[sdxl_photo],
+              f"{sdxl_photo} is plain SDXL, so Pony LoRAs are not offered for it")
+        check(not images.get(sdxl_photo).positive_prefix,
+              f"…and it gets no score ladder, which would be noise in its prompt")
+    missing = [m.id for m in images.IMAGE_MODELS
+               if not m.id.startswith(images.CUSTOM_PREFIX)
+               and m.id not in images.CIVITAI_BASES]
+    check(not missing, f"every catalogued checkpoint says which LoRAs fit it ({missing})")
+
 
 async def test_image_graphs() -> None:
     import images
@@ -5025,6 +5065,74 @@ def test_shortdrama(tmp: Path) -> None:
           f"({[f.id for f in sd.check_integrity(talky)]})")
     check(talky.route("s2v").model_id != talky.route("i2v").model_id,
           "…precisely because the two routes are different checkpoints")
+
+    # -- the keyframe prompt is written in the checkpoint's own vocabulary.
+    # `1girl` and `cowboy shot` are danbooru words. A photoreal checkpoint was
+    # captioned in English sentences and has no entry for either, so sending
+    # them is closer to noise than to an instruction.
+    def _prompt_on(model_id: str) -> dict:
+        proj = sd.Project(id="dialect", routes=sd.default_routes(),
+                          keyframes=sd.KeyframeProfile(model_id=model_id,
+                                                       width=768, height=1360),
+                          cast=[sd.Character("a", "甲", "female", trigger="s1vra_person"),
+                                sd.Character("b", "乙", "male", trigger="m2kor_person")],
+                          shots=[sd.Shot(seconds=3.2, size="中景", who=["a", "b"],
+                                         action="turns away")])
+        sd.normalise(proj)
+        return sd.keyframe_prompt(proj, proj.shots[0])
+
+    anime = _prompt_on("noobai")
+    photo = _prompt_on("lustify")
+    check(anime["dialect"] == "danbooru" and photo["dialect"] == "natural",
+          f"the dialect follows the checkpoint ({anime['dialect']}/{photo['dialect']})")
+    check("1girl" in anime["prompt"] and "1boy" in anime["prompt"],
+          "an anime checkpoint gets booru count tags")
+    check("1girl" not in photo["prompt"] and "one adult woman" in photo["prompt"],
+          f"a photo checkpoint gets a sentence instead ({photo['prompt'][:40]})")
+    check("adult" in photo["prompt"],
+          "…which says adult, because that is what these are")
+    check("cowboy shot" in anime["prompt"], "the framing is a booru tag for anime")
+    check("cowboy shot" not in photo["prompt"] and "knees up" in photo["prompt"],
+          "…and a described framing for photo, since `cowboy shot` is a booru word")
+    for size in sd.SHOT_SIZES.values():
+        check(bool(size.get("photo")), f"every shot size has a photo spelling ({size['zh']})")
+    check("no people" in sd.SHOT_SIZES["空鏡"]["photo"],
+          "…including the empty shot, which still has to exclude people")
+    for spec in sd.GENDERS.values():
+        check("adult" in spec["photo_one"] and "adult" in spec["photo_many"],
+              f"the photo count phrase says adult ({spec['photo_one']})")
+        check("girl" not in spec["photo_one"] and "boy" not in spec["photo_one"],
+              f"…and never says girl or boy ({spec['photo_one']})")
+
+    # A trigger word is a real handle on an anime checkpoint - it was captioned
+    # with danbooru character tags. On a photoreal one it is an unfamiliar
+    # token, and only a LoRA pins the face. That is the moment the drama page
+    # has to send the user to the training tab.
+    def _cast_project(model_id: str, lora: str = "") -> sd.Project:
+        proj = sd.Project(id="cast", routes=sd.default_routes(),
+                          keyframes=sd.KeyframeProfile(model_id=model_id,
+                                                       width=768, height=1360),
+                          cast=[sd.Character("a", "甲", "female",
+                                             trigger="s1vra_person",
+                                             costume="white blouse", lora=lora)],
+                          shots=[sd.Shot(seconds=3.2, size="中景", who=["a"],
+                                         action="turns away")])
+        sd.normalise(proj)
+        return proj
+
+    check("photoreal-no-lora" not in
+          {f.id for f in sd.check(_cast_project("noobai"))},
+          "an anime checkpoint with a trigger and no LoRA is not warned about")
+    warned = {f.id: f for f in sd.check(_cast_project("lustify"))}
+    check("photoreal-no-lora" in warned,
+          f"a photoreal checkpoint with a trigger and no LoRA is ({sorted(warned)})")
+    check("訓練角色" in warned["photoreal-no-lora"].detail,
+          "…and it names the tab that fixes it")
+    check(warned["photoreal-no-lora"].level == claims.WARN,
+          "…as a warning, since reference-image control is a real alternative")
+    check("photoreal-no-lora" not in
+          {f.id for f in sd.check(_cast_project("lustify", "s1vra_v1.safetensors"))},
+          "…and it goes away once the character has one")
 
     # -- "downloaded" and "this app can run it" are not the same thing. S2V and
     # Animate ship as files only: there is no validated graph here for them, so

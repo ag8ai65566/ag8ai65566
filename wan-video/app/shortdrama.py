@@ -64,35 +64,57 @@ MAX_SHOT_SECONDS = 600.0             # anything beyond this is a typo, not a sho
 
 # 景別. The tag is what gets composed into the keyframe prompt, so it is the
 # booru string the image models were actually captioned with.
+# `tag` is the danbooru spelling the anime checkpoints were captioned with.
+# `photo` is the same framing said the way a photoreal checkpoint understands
+# it - `cowboy shot` is a booru word and means nothing to LUSTIFY, while
+# "medium shot from the knees up, 50mm" is the vocabulary its captions used.
+# Which one is emitted follows the checkpoint's tag_style, not a global switch.
 SHOT_SIZES: dict[str, dict] = {
     "特寫": {"tag": "portrait, close-up", "zh": "臉部特寫", "people": True,
+             "photo": "close-up portrait, head and shoulders, 85mm lens, "
+                      "shallow depth of field",
              "why": "臉部情緒。"},
     "近景": {"tag": "upper body", "zh": "胸上", "people": True,
+             "photo": "medium close-up, from the chest up, 50mm lens",
              "why": "看得到表情和上半身手勢。"},
     "中景": {"tag": "cowboy shot", "zh": "膝上", "people": True,
+             "photo": "medium shot, from the knees up, 35mm lens",
              "why": "看得到手勢和一點環境。"},
     "全身": {"tag": "full body", "zh": "全身", "people": True,
+             "photo": "full body shot, head to feet in frame, 35mm lens",
              "why": "進場、離場、打鬥。"},
     "過肩": {"tag": "over-the-shoulder shot, from behind", "zh": "過肩", "people": True,
+             "photo": "over-the-shoulder shot, camera behind one person's shoulder",
              "why": "兩人對峙。"},
     "俯拍": {"tag": "from above", "zh": "由上往下", "people": True,
+             "photo": "high angle shot, camera looking down",
              "why": "從上往下拍。"},
     "仰拍": {"tag": "from below", "zh": "由下往上", "people": True,
+             "photo": "low angle shot, camera looking up",
              "why": "從下往上拍。"},
     # `people: False` is load-bearing: this size emits `no humans`, so a cast
     # list on the same shot would produce a prompt that contradicts itself.
     "空鏡": {"tag": "still life, close-up, no humans", "zh": "道具／空景特寫",
-             "people": False, "why": "沒有人的畫面。會送出 `no humans`，所以不能有出場角色。"},
+             "people": False,
+             "photo": "still life close-up, no people in frame",
+             "why": "沒有人的畫面。會送出 `no humans`，所以不能有出場角色。"},
 }
 
 # The count tag that opens a danbooru-style prompt, by who is in the shot.
 # Getting this from the cast rather than hard-coding `1girl` is not a detail:
 # the first version emitted `1girl` for an all-male shot, so every male
 # character was fighting a female count tag at the front of his own prompt.
+# `one`/`many` are booru count tags. `photo_one`/`photo_many` say the same
+# thing in the words a photoreal checkpoint was captioned with - "1girl" is not
+# English and a photo model has no entry for it. Note the photo spelling says
+# "woman", never "girl": these are adults.
 GENDERS = {
-    "female": {"zh": "女", "one": "1girl", "many": "{n}girls"},
-    "male": {"zh": "男", "one": "1boy", "many": "{n}boys"},
-    "other": {"zh": "其他／不指定", "one": "1other", "many": "{n}others"},
+    "female": {"zh": "女", "one": "1girl", "many": "{n}girls",
+               "photo_one": "one adult woman", "photo_many": "{n} adult women"},
+    "male": {"zh": "男", "one": "1boy", "many": "{n}boys",
+             "photo_one": "one adult man", "photo_many": "{n} adult men"},
+    "other": {"zh": "其他／不指定", "one": "1other", "many": "{n}others",
+              "photo_one": "one adult person", "photo_many": "{n} adult people"},
 }
 
 
@@ -699,6 +721,24 @@ def check_claims(project: Project, *, installed: set[str] | None = None
             "本專案沒有比較過哪個好，但這份記錄裡一個都沒有。"
             "（如果你是在 app 外面用別的方式控一致性，這條可以忽略。）",
             level=claims.WARN))
+    # On an anime checkpoint a danbooru character tag is a real handle: the
+    # model was captioned with it and knows the face. A photoreal checkpoint has
+    # no such vocabulary, so a trigger word alone is just an unfamiliar token -
+    # the only thing that pins the face is a LoRA. Which makes this the point
+    # where a photoreal project has to go and train one.
+    if dialect_for(project.keyframes.model_id) == "natural":
+        trigger_only = [c.name for c in project.cast
+                        if c.key in used and c.trigger and not c.lora]
+        if trigger_only:
+            out.append(_claim_finding(
+                "photoreal-no-lora", "consistency.photoreal_needs_lora",
+                f"底模是寫實的，但 {len(trigger_only)} 位角色只有觸發詞、沒有 LoRA。",
+                f"{'、'.join(trigger_only)} 的觸發詞在寫實底模上不會叫出固定的臉 —— "
+                "動漫底模的標註裡有角色標籤，寫實底模沒有。"
+                "到「訓練角色」分頁做一個角色 LoRA，"
+                "或改用參考圖控制；不然每顆鏡頭都會是不同的人。",
+                level=claims.WARN))
+
     no_costume = [c.name for c in project.cast if c.key in used and not c.costume]
     if no_costume and styled:
         out.append(_claim_finding(
@@ -779,16 +819,21 @@ def summary(findings: list[Finding]) -> dict:
 
 # -- building one shot's prompt -----------------------------------------------
 
-def count_tag(people: list[Character]) -> str:
+def count_tag(people: list[Character], *, dialect: str = "danbooru") -> str:
     """The count tag that opens the prompt, derived from who is actually in it.
 
     The first version hard-coded `1girl` / `2girls`, so an all-male shot opened
     with a female count tag and every male character spent the rest of the
     prompt arguing with it. Mixed casts get one tag per gender, which is how
     danbooru captions them.
+
+    `dialect` picks the spelling, not the meaning. A photoreal checkpoint has
+    never seen the token `1girl`; it was captioned in English sentences, so it
+    gets "one adult woman" for the same cast.
     """
     if not people:
         return ""
+    photo = dialect == "natural"
     order = ["female", "male", "other"]
     buckets: dict[str, int] = {}
     for who in people:
@@ -800,8 +845,22 @@ def count_tag(people: list[Character]) -> str:
         if not n:
             continue
         spec = GENDERS[gender]
-        parts.append(spec["one"] if n == 1 else spec["many"].format(n=n))
+        one, many = ("photo_one", "photo_many") if photo else ("one", "many")
+        parts.append(spec[one] if n == 1 else spec[many].format(n=n))
     return ", ".join(parts)
+
+
+def dialect_for(model_id: str) -> str:
+    """Which vocabulary this keyframe checkpoint was captioned in.
+
+    Read off the image catalogue rather than stored on the project: the answer
+    is a property of the checkpoint, and a stored copy would go stale the moment
+    the keyframe model is changed.
+    """
+    import images
+
+    model = images.get(model_id) or images.resolve(model_id, [])
+    return model.tag_style if model else "danbooru"
 
 
 def keyframe_prompt(project: Project, shot: Shot) -> dict:
@@ -816,13 +875,14 @@ def keyframe_prompt(project: Project, shot: Shot) -> dict:
 
     size = SHOT_SIZES.get(shot.size, SHOT_SIZES["近景"])
     people = [p for p in (project.character(k) for k in shot.who) if p]
+    dialect = dialect_for(project.keyframes.model_id)
     bits: list[str] = []
 
     # A shot size that emits `no humans` never gets a cast; check_integrity
     # blocks that combination, and this is the second line of defence so a
     # contradictory prompt cannot be built even if the record slipped through.
     if size["people"]:
-        count = count_tag(people)
+        count = count_tag(people, dialect=dialect)
         if count:
             bits.append(count)
         for who in people:
@@ -831,7 +891,10 @@ def keyframe_prompt(project: Project, shot: Shot) -> dict:
             if who.costume:
                 bits.append(who.costume)
 
-    bits.append(size["tag"])
+    # The framing, said the way this checkpoint was captioned. `cowboy shot` is
+    # a booru word: at a photoreal model it is closer to noise than to a
+    # framing instruction.
+    bits.append(size["photo"] if dialect == "natural" else size["tag"])
     for extra in (shot.scene, shot.action, shot.extra):
         if extra:
             bits.append(extra)
@@ -841,6 +904,7 @@ def keyframe_prompt(project: Project, shot: Shot) -> dict:
         pieces.extend(promptmerge.split_tags(chunk))
     return {
         "prompt": ", ".join(promptmerge.dedupe(pieces)),
+        "dialect": dialect,
         "loras": [w.lora for w in people if w.lora],
         "model": project.keyframes.model_id,
         "width": project.keyframes.width, "height": project.keyframes.height,

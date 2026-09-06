@@ -357,6 +357,19 @@ CLAIMS: tuple[Claim, ...] = (
     # --- LoRA training. Nothing here was run by this project: there is no GPU
     # in the environment it was written in, so every one of these is somebody
     # else's number or an explicit recommendation, and says so.
+    Claim(
+        id="consistency.photoreal_needs_lora",
+        text="寫實底模沒有內建的角色詞彙，所以一個固定長相的人只能靠 LoRA（或等價的參考圖控制）。",
+        evidence_kind=OFFICIAL_SPEC,
+        source="動漫底模的訓練標註帶 danbooru 角色標籤，寫實底模沒有這種標籤空間；"
+               "NoobAI 的模型卡明講它認得角色標籤，寫實 checkpoint 的卡則沒有這個宣稱",
+        scope="寫實／照片風的關鍵幀底模",
+        limits="這是「有沒有那個詞彙」的差別，不是畫質高低。"
+               "參考圖控制（IP-Adapter、PuLID）也做得到，只是每張都要調；"
+               "本專案兩條都沒有實測過。",
+        policy=WARN,
+    ),
+
     # --- what the video model does with the still it is handed.
     Claim(
         id="wan.output_follows_input_ratio",
