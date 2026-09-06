@@ -5309,6 +5309,7 @@ def test_training(tmp: Path) -> None:
     import tomllib
 
     import claims
+    import images as images_mod
     import training as tr
     from PIL import Image
 
@@ -5467,6 +5468,28 @@ def test_training(tmp: Path) -> None:
     check(nope.trainer.id == "kohya",
           "…and an override that cannot train this architecture is ignored, "
           "not silently obeyed")
+
+    # -- the document. Its whole point is that the Seedance answer and the
+    # evidence for it survive being asked again, so the numbers that were
+    # actually verified are asserted here rather than left to rot in prose.
+    doc = (Path(__file__).resolve().parents[1] / "docs" / "photoreal.md")
+    check(doc.is_file(), "docs/photoreal.md exists")
+    text = doc.read_text(encoding="utf-8")
+    for phrase in ("沒有公開權重", "MiniMax/MiniMax-H3", "148 個模型",
+                   "API nodes", "2026-09-06"):
+        check(phrase in text, f"the doc keeps the Seedance evidence: {phrase}")
+    check("LOCAL_MEASUREMENT` 是 0" in text or "LOCAL_MEASUREMENT 是 0" in text,
+          "…and repeats that nothing here was measured locally")
+    check("未經同意的深偽" in text,
+          "…and states the boundary on real people's faces")
+    for model_id in ("lustify", "biglust", "cyberrealistic-pony", "epicrealism-xl"):
+        version = str(images_mod.get(model_id).civitai_version)
+        check(version in text,
+              f"…and pins {model_id}'s version id in prose too ({version})")
+    check("768×1360" in text, "…and the keyframe size the code actually defaults to")
+    check("docs/photoreal.md" in (Path(__file__).resolve().parents[1]
+                                  / "README.md").read_text(encoding="utf-8"),
+          "…and the README points at it")
 
     # -- the boundary, asserted rather than described. If a future edit adds a
     # runner, this fails and the docs and claims have to be updated with it.

@@ -175,7 +175,7 @@ python3 scripts/fetch-model.py hy15-480p --check  # 只檢查現況
 
 ## 四、怎麼用
 
-開 <http://127.0.0.1:8000>，上面有七個分頁。
+開 <http://127.0.0.1:8000>，上面有九個分頁。
 
 ### 影片
 
@@ -199,15 +199,24 @@ python3 scripts/fetch-model.py hy15-480p --check  # 只檢查現況
 
 ### 圖片
 
-不需要輸入圖，全靠提詞。四個 SDXL 系底模，都是 CivitAI 上實測下載量最高的：
+不需要輸入圖，全靠提詞。九個 SDXL 系底模，分成動漫和寫實兩條線：
 
-| 底模 | 適合 | 顯存 | 下載 |
+| 底模 | 適合 | 來源 | 下載 |
 | --- | --- | --- | --- |
-| **NoobAI-XL v1.1** | **動漫首選**。最新全量 danbooru + e621，**認得 VTuber 角色，也吃畫師標籤** | 8GB | 7.1GB |
-| **Illustrious XL** | 動漫 / 插畫，**NSFW LoRA 生態最大** | 8GB | 7.3GB |
-| **Pony Diffusion V6 XL** | 動漫 / 多元題材，NSFW 生態第二大 | 8GB | 7.3GB |
-| **Juggernaut XL v9** | 寫實照片風 | 8GB | 7.4GB |
-| **SDXL 1.0 官方** | 中性基準 | 8GB | 7.3GB |
+| **NoobAI-XL v1.1** | **動漫首選**。最新全量 danbooru + e621，**認得 VTuber 角色，也吃畫師標籤** | HF | 7.1GB |
+| **Illustrious XL** | 動漫 / 插畫，**NSFW LoRA 生態最大** | HF | 7.3GB |
+| **Pony Diffusion V6 XL** | 動漫 / 多元題材，NSFW 生態第二大 | HF | 7.3GB |
+| **LUSTIFY! ZENITH v9** | **寫實成人**（SDXL） | CivitAI | 7.3GB |
+| **Big Lust v1.6** | 寫實成人，另一種臉和膚質走向 | CivitAI | 7.3GB |
+| **CyberRealistic Pony v18** | 寫實成人，**Pony 底**（score 詞和 CLIP skip -2 要留著） | CivitAI | 7.3GB |
+| **epiCRealism XL Pure** | 通用寫實，穿著衣服的鏡頭 | CivitAI | 7.3GB |
+| **Juggernaut XL v9** | 寫實照片風，通用 | HF | 7.4GB |
+| **SDXL 1.0 官方** | 中性基準 | HF | 7.3GB |
+
+寫實那四個放在 CivitAI，下載要在「設定」分頁填 CivitAI API key（key 只會送到
+civitai.com）。條目鎖的是**版本 id 不是模型 id** —— LUSTIFY 的模型頁已經走到 v10、
+換成 Krea 2 架構，鎖模型的話這裡的取樣參數會在某天靜靜地變成在講別的東西。
+完整說明在 [`docs/photoreal.md`](docs/photoreal.md)。
 
 **每個底模的「眉角」寫在介面上**，這是 ComfyUI 不會告訴你的部分：
 
@@ -217,7 +226,11 @@ python3 scripts/fetch-model.py hy15-480p --check  # 只檢查現況
   它是唯一同時**認得角色又認得畫師**的一個 —— 想貼近原畫師畫風就選它
 - **Illustrious 要用 danbooru 標籤**（`1girl, long hair, sitting`），句子式描述效果差；
   CLIP skip 要 -2
-- **Juggernaut 相反**，要用自然句子描述場景光線，CLIP skip -1、不要品質標籤
+- **Juggernaut 和寫實那幾個相反**，要用自然句子描述場景光線，CLIP skip -1、不要品質標籤。
+  `1girl`、`cowboy shot` 是 danbooru 的詞，寫實底模的標註是英文句子，**沒有這兩個詞的位置** ——
+  短劇分頁會照底模自動切換詞彙，圖片分頁的「風格靈感庫」也分成動漫 22 組和攝影 7 組兩條線
+- **CyberRealistic Pony 是例外中的例外**：出來是寫實的，但它是 Pony 微調，
+  所以 score 詞和 CLIP skip -2 都要留著，而且只吃 Pony 的 LoRA
 
 可調的東西都有一句話解釋在旁邊。不想調就不用碰，預設值是照每個底模的建議填的。
 
@@ -569,6 +582,21 @@ Juggernaut / SDXL 官方底模送自然句子，因為後者從來沒學過 danb
 **自訂尺寸**改成可以拉滑桿（64 為單位）＋比例鎖＋常用比例一鍵，並即時顯示
 百萬像素與「這個尺寸會不會出雙頭」。
 
+### 訓練角色分頁 —— 教程在 [`docs/photoreal.md`](docs/photoreal.md)
+
+**要做寫實真人的話，角色一致性只能靠 LoRA。** 動漫底模的標註裡有 danbooru 角色標籤，
+所以打角色名真的會叫出那張臉；寫實底模沒有那個詞彙空間，只有觸發詞的話每顆鏡頭都會是
+不同的人。這個分頁把訓練前那一半做完：觸發詞檢查、要準備哪些景別的圖、標註怎麼寫、
+**真的去讀你的訓練資料夾把問題列出來**，然後產生 kohya_ss / ai-toolkit /
+diffusion-pipe / OneTrainer 的設定檔與執行指令。
+
+**這個 app 不執行訓練** —— 訓練要 GPU 和好幾個小時，包一個沒跑過的訓練器當按鈕，
+等於把沒驗證的東西當功能賣。
+
+同一份文件也回答了「可以用 Seedance 嗎」：**不行，它沒有任何公開權重**
+（HuggingFace、ModelScope、ByteDance 三個官方組織全查過，過程寫在第一節），
+並列出真正做得到的開放權重組合。
+
 ### 短劇分頁 —— 教程在 [`docs/short-drama.md`](docs/short-drama.md)
 
 把「我會做五秒片段」和「我有一集」之間的東西補起來。**五秒片段從來不是難的部分** ——
@@ -811,12 +839,13 @@ docs/
   review-response.md   對 Codex 審查的逐條回應：改了什麼、還沒做什麼
   reference-art.md     官方參考圖：整包資料夾匯入、中文名比對、一鍵當來源圖／構圖參考
   experiments.md       固定 seed 掃參數、來源記錄、盲測 pairwise
-  style-library.md     22 組風格配方、量出來的衝突表、提詞健康度
+  style-library.md     29 組風格配方（22 動漫＋7 攝影）、量出來的衝突表、提詞健康度
   spec-review.md       對「Prompt 靈感庫」規格書的逐條審查回覆（給下一輪 review 用）
   refs-review.md       參考圖庫整包匯入與中文名比對的審查說明（給下一輪 review 用）
   review-round2.md     對 Round 2 審查的逐條回應：3 個實驗記帳 bug、官方圖比例的實測修正
   video-models.md      為什麼 Seedance / Wan 2.5 匯不進來，以及 LTX-2.5 的 gated 下載
   short-drama.md       AI 短劇（黃果那類）的完整製作流程，以及用這套工具做到最細的方法
+  photoreal.md         寫實真人線：Seedance 為什麼本機跑不了、開放權重的替代組合、角色 LoRA 訓練
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡
