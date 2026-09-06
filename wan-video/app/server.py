@@ -40,6 +40,7 @@ import prompts
 import promptdoctor
 import promptmerge
 import quicktags
+import shortdrama
 import styles
 import refs as refslib
 import registry
@@ -1564,6 +1565,151 @@ async def check_prompt(payload: dict) -> JSONResponse:
         height=int(payload.get("height") or 0),
     )
     return JSONResponse(promptdoctor.summary(findings))
+
+
+# -- 短劇: shot lists, the format rules, and what to generate per shot --------
+#
+# The clip was never the hard part. An episode is a hundred clips that have to
+# look like the same person in the same room, and that is bookkeeping. This
+# group of endpoints is the bookkeeping.
+
+DRAMAS = shortdrama.ProjectStore(config.OUTPUT_DIR / ".shortdrama.jsonl")
+
+
+def _drama_installed() -> set[str]:
+    """Which video models are actually on disk, for the validator."""
+    return {m.id for m in registry.MODELS if models.model_status(m).get("installed")}
+
+
+def _drama_or_404(project_id: str):
+    DRAMAS.load()
+    project = DRAMAS.get(project_id)
+    if project is None:
+        raise HTTPException(404, "找不到這個短劇專案")
+    return project
+
+
+@app.get("/api/drama")
+async def list_dramas() -> JSONResponse:
+    """Every project, plus the static tables the UI renders its pickers from."""
+    DRAMAS.load()
+    return JSONResponse({
+        **shortdrama.public(),
+        "projects": [p.public() for p in DRAMAS.list()],
+        "installed": sorted(_drama_installed()),
+    })
+
+
+@app.post("/api/drama")
+async def create_drama(payload: dict = Body(default={})) -> JSONResponse:
+    payload = payload if isinstance(payload, dict) else {}
+    DRAMAS.load()
+    project = DRAMAS.create(str(payload.get("title") or ""),
+                            str(payload.get("spec") or "hunyuan-24"))
+    DRAMAS.save()
+    return JSONResponse(project.public())
+
+
+@app.get("/api/drama/{project_id}")
+async def get_drama(project_id: str) -> JSONResponse:
+    project = _drama_or_404(project_id)
+    findings = shortdrama.check(project, installed=_drama_installed())
+    return JSONResponse({**project.public(),
+                         "health": shortdrama.summary(findings)})
+
+
+@app.post("/api/drama/{project_id}")
+async def update_drama(project_id: str, payload: dict = Body(default={})
+                       ) -> JSONResponse:
+    """Replace the spec, the cast and the shot list in one write.
+
+    Whole-document, not per-field: the shot list is edited as a table and a
+    partial update would need the browser and the server to agree on row
+    identity, which is exactly the kind of agreement that rots.
+    """
+    project = _drama_or_404(project_id)
+    payload = payload if isinstance(payload, dict) else {}
+
+    for key in ("title", "note", "style"):
+        if key in payload:
+            setattr(project, key, str(payload[key] or ""))
+    for key in ("fps", "width", "height", "deliver_width", "deliver_height"):
+        if key in payload:
+            setattr(project, key, max(1, int(payload[key] or 1)))
+    if "model" in payload:
+        want = str(payload["model"] or "")
+        if want and registry.get(want) is None:
+            raise HTTPException(400, f"沒有這個影片模型：{want}")
+        project.model = want or project.model
+    if "image_model" in payload:
+        want = str(payload["image_model"] or "")
+        if want and images.get(want) is None:
+            raise HTTPException(400, f"沒有這個圖片底模：{want}")
+        project.image_model = want or project.image_model
+    if "spec" in payload:
+        spec = shortdrama.SPEC_BY_ID.get(str(payload["spec"]))
+        if spec is None:
+            raise HTTPException(400, f"沒有這個規格：{payload['spec']}")
+        # A spec is the pair, always: picking a model without its native frame
+        # rate is how the mixed-rate artifact gets in.
+        project.model, project.fps = spec.model, spec.fps
+
+    if isinstance(payload.get("cast"), list):
+        project.cast = [shortdrama.Character(
+            key=str(c.get("key") or "").strip() or uuid.uuid4().hex[:6],
+            name=str(c.get("name") or ""), lora=str(c.get("lora") or ""),
+            trigger=str(c.get("trigger") or ""), costume=str(c.get("costume") or ""),
+            voice=str(c.get("voice") or ""), note=str(c.get("note") or ""),
+        ) for c in payload["cast"] if isinstance(c, dict)]
+
+    if isinstance(payload.get("shots"), list):
+        project.shots = [shortdrama.Shot(
+            no=0, seconds=round(float(s.get("seconds") or 3.2), 2),
+            size=str(s.get("size") or "近景"),
+            who=[str(w) for w in (s.get("who") or [])],
+            action=str(s.get("action") or ""), dialogue=str(s.get("dialogue") or ""),
+            method=str(s.get("method") or "i2v"), scene=str(s.get("scene") or ""),
+            extra=str(s.get("extra") or ""), keyframe=str(s.get("keyframe") or ""),
+            video=str(s.get("video") or ""), status=str(s.get("status") or "todo"),
+            note=str(s.get("note") or ""),
+        ) for s in payload["shots"] if isinstance(s, dict)]
+        shortdrama.renumber(project)
+
+    DRAMAS.save()
+    findings = shortdrama.check(project, installed=_drama_installed())
+    return JSONResponse({**project.public(),
+                         "health": shortdrama.summary(findings)})
+
+
+@app.delete("/api/drama/{project_id}")
+async def delete_drama(project_id: str) -> JSONResponse:
+    DRAMAS.load()
+    if not DRAMAS.delete(project_id):
+        raise HTTPException(404, "找不到這個短劇專案")
+    DRAMAS.save()
+    return JSONResponse({"ok": True})
+
+
+@app.get("/api/drama/{project_id}/shot/{no}")
+async def drama_shot(project_id: str, no: int) -> JSONResponse:
+    """The keyframe prompt and the ordered to-do list for one shot."""
+    project = _drama_or_404(project_id)
+    shot = next((s for s in project.shots if s.no == no), None)
+    if shot is None:
+        raise HTTPException(404, f"這個專案沒有第 {no} 個鏡頭")
+    built = shortdrama.keyframe_prompt(project, shot)
+    model = images.get(project.image_model)
+    # The style recipe is merged through the same engine the style panel uses,
+    # so a recipe cannot quietly retire a costume tag the cast list locked.
+    if project.style:
+        merged = promptmerge.apply_recipe(
+            built["prompt"], "", project.style, model_id=project.image_model,
+            tag_style=model.tag_style if model else "danbooru")
+        if merged is not None:
+            built["prompt"] = merged.prompt
+            built["negative"] = merged.negative
+    return JSONResponse({**built, "shot": shot.public(),
+                         "plan": shortdrama.shot_plan(project, shot)})
 
 
 # -- experiments: fixed-seed sweeps ------------------------------------------

@@ -4872,6 +4872,163 @@ def test_ref_folder_import(tmp: Path) -> None:
     rows, problems = refslib.scan(tmp / "nope", cands)
     check(not rows and problems, "a missing folder reports a problem")
 
+def test_shortdrama(tmp: Path) -> None:
+    """The shot list, the format rules, and the one artifact that is avoidable.
+
+    This module is bookkeeping, which is exactly why it is worth testing hard:
+    every rule in it is a claim about how short drama is actually made, and a
+    rule that fires on the wrong thing is worse than no rule - it teaches the
+    user to ignore the panel.
+    """
+    section("short drama")
+    import registry
+    import shortdrama as sd
+
+    # -- the static tables the UI renders from
+    data = sd.public()
+    check(len(data["sizes"]) == 8, f"eight shot sizes ({len(data['sizes'])})")
+    check(all(v["tag"] and v["why"] for v in data["sizes"].values()),
+          "every shot size has a booru tag and a reason to use it")
+    check(len(data["methods"]) == 4, f"four ways to animate a shot ({len(data['methods'])})")
+    check(all(v["why"] for v in data["methods"].values()), "…each with its reason")
+    check(len(sd.SPECS) == 3, f"three locked specs ({len(sd.SPECS)})")
+    for spec in sd.SPECS:
+        model = registry.get(spec.model)
+        check(model is not None, f"{spec.id} names a real model ({spec.model})")
+        check(model.fps == spec.fps,
+              f"…at that model's actual native fps ({model.fps} vs {spec.fps})")
+        check(abs(model.length / model.fps - spec.clip_seconds) < 0.05,
+              f"…and the clip length is frames/fps, not a guess ({spec.clip_seconds})")
+
+    # -- prompt composition. Order is the caption order these models were
+    # trained on; dedupe matters because a trigger usually starts with 1girl.
+    project = sd.Project(id="p", model="hy15-720p", fps=24)
+    project.cast = [
+        sd.Character("f", "女主", trigger="1girl, silver hair", costume="school uniform"),
+        sd.Character("m", "男主", trigger="1boy, black suit"),
+    ]
+    project.shots = [sd.Shot(1, 3.0, "特寫", ["f"], "睜眼", scene="dim bedroom")]
+    sd.renumber(project)
+    built = sd.keyframe_prompt(project, project.shots[0])
+    check(built["prompt"] == "1girl, silver hair, school uniform, portrait, close-up, "
+                             "dim bedroom, 睜眼",
+          f"the keyframe prompt composes in caption order ({built['prompt']})")
+    check(built["prompt"].count("1girl") == 1,
+          "…and the count tag is not doubled by the character trigger")
+    two = sd.Shot(2, 3.0, "過肩", ["f", "m"], "對峙")
+    project.shots.append(two)
+    check(sd.keyframe_prompt(project, two)["prompt"].startswith("2girls")
+          or "1girl" in sd.keyframe_prompt(project, two)["prompt"],
+          "two characters produce a count tag of their own")
+    project.cast[0] = sd.Character("f", "女主", trigger="1girl", lora="heroine.safetensors")
+    check(sd.keyframe_prompt(project, project.shots[0])["loras"] == ["heroine.safetensors"],
+          "the shot names the LoRAs its cast needs")
+
+    # -- the plan for one shot: the frame count is the argument for fixing
+    # defects in the still rather than in the clip.
+    plan = sd.shot_plan(project, project.shots[0])
+    check(plan["frames"] == 72, f"3.0s at 24fps is 72 frames ({plan['frames']})")
+    check(any("靜態圖修" in step["why"] for step in plan["steps"]),
+          "…and the plan says why to fix it in the still")
+    talky = sd.Shot(3, 3.0, "近景", ["f"], "說", dialogue="你是誰", method="s2v")
+    project.shots.append(talky)
+    steps = sd.shot_plan(project, talky)["steps"]
+    check("音檔" in steps[0]["do"],
+          f"a dialogue shot starts with the audio, not the picture ({steps[0]['do']})")
+
+    # -- the validator
+    # Frame rate is the one finding that is about an artifact the user can
+    # simply decline to create, so it is graded highest.
+    bad_fps = sd.Project(id="x", model="hy15-720p", fps=30,
+                         shots=[sd.Shot(1, 3.0, action="走")])
+    fps_finding = next(f for f in sd.check(bad_fps) if f.id == "fps-mismatch")
+    check(fps_finding.level == "high", "a mixed frame rate is a high-level finding")
+    check("內容審核" in fps_finding.detail,
+          "…and explains it is a compromise the platforms are forced into, not one you are")
+
+    long = sd.Project(id="y", model="hy15-720p", fps=24,
+                      shots=[sd.Shot(1, 9.0, action="走")])
+    ids = {f.id for f in sd.check(long)}
+    check("long-shots" in ids and "over-clip" in ids,
+          f"a nine-second shot is flagged twice: drift and clip length ({sorted(ids)})")
+    check(any("3.2" in f.detail for f in sd.check(long) if f.id == "long-shots"),
+          "…quoting the median a real episode actually runs at")
+
+    talk = sd.Project(id="z", model="hy15-720p", fps=24, shots=[
+        sd.Shot(1, 3.0, action="說", dialogue="你到底是誰為什麼要這樣對我啊真的很過分", method="i2v")])
+    ids = {f.id for f in sd.check(talk)}
+    check("no-lipsync" in ids, "a dialogue shot without S2V is flagged")
+    check("long-dialogue" in ids, "…and a line over 15 characters is too")
+    ok_line = sd.Project(id="z2", model="hy15-720p", fps=24, shots=[
+        sd.Shot(1, 3.0, action="說", dialogue="你，到底是誰？", method="s2v")])
+    ids = {f.id for f in sd.check(ok_line)}
+    check("long-dialogue" not in ids,
+          "punctuation does not count toward the 15-character line limit")
+    check("no-lipsync" not in ids, "…and S2V satisfies the lip-sync rule")
+
+    cast_less = sd.Project(id="w", model="hy15-720p", fps=24,
+                           shots=[sd.Shot(1, 3.0, who=["ghost"], action="走")])
+    check(next(f for f in sd.check(cast_less) if f.id == "unknown-cast").level == "high",
+          "a shot referring to a character that is not in the cast is a hard error")
+
+    no_lora = sd.Project(id="v", model="hy15-720p", fps=24,
+                         cast=[sd.Character("a", "甲")],
+                         shots=[sd.Shot(1, 3.0, who=["a"], action="走")])
+    lora_finding = next(f for f in sd.check(no_lora) if f.id == "no-lora")
+    check("100%" in lora_finding.detail and "40%" in lora_finding.detail,
+          "the LoRA finding quotes both the consistency numbers and the retouch cost")
+
+    missing = sd.check(no_lora, installed=set())
+    check(any(f.id == "missing-video" for f in missing),
+          "a model the shot list needs but is not downloaded is a hard finding")
+    check(not [f for f in sd.check(no_lora, installed={"hy15-720p"})
+               if f.id.startswith("missing-")],
+          "…and goes away once it is on disk")
+
+    tiny = sd.Project(id="u", model="hy15-720p", fps=24, width=512, height=512,
+                      shots=[sd.Shot(1, 3.0, action="走")])
+    ids = {f.id for f in sd.check(tiny)}
+    check("small-keyframe" in ids, "a 512 keyframe is caught, same as in the prompt doctor")
+    wide = sd.Project(id="t2", model="hy15-720p", fps=24, width=1216, height=832,
+                      shots=[sd.Shot(1, 3.0, action="走")])
+    check("not-vertical" in {f.id for f in sd.check(wide)}, "so is a landscape keyframe")
+
+    empty_hook = sd.Project(id="h", model="hy15-720p", fps=24, shots=[sd.Shot(1, 3.0)])
+    hook = next(f for f in sd.check(empty_hook) if f.id == "no-hook")
+    check("黃金 3 秒" in hook.detail, "the first shot is judged against the golden three seconds")
+
+    clean = sd.Project(id="ok", model="hy15-720p", fps=24,
+                       cast=[sd.Character("a", "甲", trigger="1girl", lora="a.safetensors",
+                                          costume="school uniform")],
+                       shots=[sd.Shot(i, 3.2, "近景", ["a"], f"動作{i}") for i in range(1, 25)])
+    findings = sd.check(clean, installed={"hy15-720p"})
+    check(not findings, f"a well-formed episode reports nothing ({[f.id for f in findings]})")
+    check(sd.summary(findings)["level"] == "ok", "…and the summary says so")
+    check(clean.seconds == 76.8 and clean.median_shot == 3.2,
+          f"the episode totals add up ({clean.seconds}s, median {clean.median_shot})")
+
+    # -- the store round-trips, and renumbering is absolute
+    store = sd.ProjectStore(tmp / "drama.jsonl")
+    made = store.create("測試", "wan14b-16")
+    check(made.model == "wan22-14b-fp8" and made.fps == 16,
+          f"a spec sets the model and its native fps together ({made.model}, {made.fps})")
+    made.cast = [sd.Character("a", "甲", trigger="1girl")]
+    made.shots = [sd.Shot(0, 3.0, action="一"), sd.Shot(0, 3.0, action="二")]
+    sd.renumber(made)
+    check([s.no for s in made.shots] == [1, 2], "shots are numbered 1..n in order")
+    store.save()
+    again = sd.ProjectStore(tmp / "drama.jsonl")
+    again.load()
+    back = again.get(made.id)
+    check(back is not None and len(back.shots) == 2 and back.cast[0].trigger == "1girl",
+          "the store round-trips the cast and the shot list")
+    check(back.fps == 16, "…and the locked spec")
+    made.shots.pop(0)
+    sd.renumber(made)
+    check([s.no for s in made.shots] == [1] and made.shots[0].action == "二",
+          "deleting a shot renumbers the rest, so shot numbers stay meaningful")
+    check(again.delete(made.id) and again.get(made.id) is None, "delete works")
+
 def test_experiments() -> None:
     """Fixed-seed sweeps: the matrix, the cap, the pairing, and the counting.
 
@@ -6185,6 +6342,7 @@ async def main() -> int:
     test_ref_chinese_names()
     test_ref_folder_import(TMP / "reffolder")
     test_experiments()
+    test_shortdrama(TMP / "drama")
     test_styles()
     test_promptmerge()
     test_promptdoctor()

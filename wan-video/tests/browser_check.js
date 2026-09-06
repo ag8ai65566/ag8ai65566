@@ -37,7 +37,7 @@ const { chromium } = require('playwright');
 
   // Every tab still opens, and only its own panel is visible.
   const tabs = await page.$$eval('.tabs button', (bs) => bs.map((b) => b.dataset.tab));
-  check(tabs.length === 7, `all 7 tabs present (${tabs.join(',')})`);
+  check(tabs.length === 8, `all 8 tabs present (${tabs.join(',')})`);
   for (const t of tabs) {
     await page.click(`.tabs button[data-tab="${t}"]`);
     await page.waitForTimeout(120);
@@ -236,6 +236,79 @@ const { chromium } = require('playwright');
     '…and says a token alone is not enough without accepting the licence');
   check(!/<b>/.test(await page.innerHTML('#setbody')) || setTxt.indexOf('**') === -1,
     'the help text renders its bold rather than printing asterisks');
+
+  // ---- 短劇: the shot list and the rules around it ----
+  // This tab is bookkeeping with the reasons written next to it, so what is
+  // worth checking in a real browser is that the reasons actually render and
+  // that the validator's findings reach the page.
+  await page.click('.tabs button[data-tab="sd"]'); await page.waitForTimeout(1200);
+  const sdIntro = await page.textContent('#sdintro');
+  check(sdIntro.includes('3.2'), 'the tab states the median shot length -> ' + sdIntro.replace(/\s+/g,' ').slice(0,52));
+  check(sdIntro.includes('一格影片都沒生成過'),
+    'and says up front that none of this was measured on real video');
+
+  // Start clean so a second run does not see the first run's project.
+  await page.evaluate(async () => {
+    const d = await (await fetch('/api/drama')).json();
+    for (const p of d.projects || []) await fetch(`/api/drama/${p.id}`, { method: 'DELETE' });
+  });
+  await page.evaluate(() => refreshDrama()); await page.waitForTimeout(600);
+  check((await page.textContent('#sdempty')).includes('還沒有專案'), 'the empty state explains itself');
+  check(!await page.isVisible('#sdbody'), 'and the pipeline stays hidden until there is one');
+
+  await page.fill('#sdnew', '測試短劇');
+  await page.click('#sdcreate'); await page.waitForTimeout(1200);
+  check(await page.isVisible('#sdbody'), 'creating a project opens the pipeline');
+  const specNote = await page.textContent('#sdspecnote');
+  check(/原生 \d+fps/.test(specNote), 'step 0 states the locked native frame rate -> ' + specNote.replace(/\s+/g,' ').slice(0,46));
+  check((await page.textContent('#sdspecwhy')).includes('內容審核'),
+    '…and explains the frame-rate artifact is forced on the platforms, not on you');
+  check((await page.textContent('#sdcastwhy')).includes('40%'),
+    'step 1 quotes the retouch cost that the asset layer buys down');
+
+  // A cast member, then a shot that uses them.
+  await page.click('#sdaddcast'); await page.waitForTimeout(900);
+  await page.fill('#sdcast .cn', '女主');
+  await page.fill('#sdcast .ct', '1girl, silver hair');
+  await page.fill('#sdcast .cc', 'school uniform');
+  await page.click('#sdaddshot'); await page.waitForTimeout(900);
+  const rows = await page.evaluate(()=>document.querySelectorAll('#sdshots tr[data-si]').length);
+  check(rows === 1, `a shot row appears (${rows})`);
+  await page.fill('#sdshots .sa', '睜眼、驚');
+  await page.fill('#sdshots .sc', 'dim bedroom, night');
+  await page.selectOption('#sdshots .sz', '特寫');
+  await page.selectOption('#sdshots .sw', { index: 0 });
+  await page.click('#sdsave'); await page.waitForTimeout(1200);
+  check((await page.textContent('#sdstats')).includes('1 顆'), 'the stats line counts it');
+
+  // The per-shot plan: the composed prompt and the ordered steps.
+  await page.click('#sdshots .splan'); await page.waitForTimeout(1000);
+  check(await page.isVisible('#sdplan'), '「做這顆」 opens the shot plan');
+  const planTxt = await page.textContent('#sdplan');
+  check(planTxt.includes('1girl, silver hair, school uniform'),
+    'the keyframe prompt is composed from the cast -> ' + planTxt.replace(/\s+/g,' ').slice(0,70));
+  check(planTxt.includes('portrait, close-up'), '…with the shot size as a real booru tag');
+  check(/\d+ 格/.test(planTxt), '…and says how many frames the shot will be');
+  check(planTxt.includes('靜態圖修'), '…and why to fix defects in the still');
+
+  // One click hands the prompt to the image tab, at the right size and model.
+  await page.click('#sdtoimg'); await page.waitForTimeout(1200);
+  const handed = await page.inputValue('#iprompt');
+  check(handed.includes('silver hair'), 'the prompt reaches the image tab -> ' + handed.slice(0,50));
+  check(await page.inputValue('#iwidth') === '832' && await page.inputValue('#iheight') === '1216',
+    'and the canvas is set to the project keyframe size');
+
+  // The validator reaches the page.
+  await page.click('.tabs button[data-tab="sd"]'); await page.waitForTimeout(900);
+  const sdHealth = await page.textContent('#sdhealth');
+  check(sdHealth.includes('LoRA'), 'the health panel raises the missing character LoRA');
+  const sdLine = await page.textContent('#sdhealthline');
+  check(/個/.test(sdLine), 'and the summary line counts the findings -> ' + sdLine.trim());
+
+  // Deleting the project cleans up after the run.
+  await page.click('#sddel'); await page.waitForTimeout(1000);
+  check(!await page.isVisible('#sdbody'), 'deleting the project closes the pipeline');
+  await page.evaluate(()=>{ document.getElementById('iprompt').value=''; });
 
   // ---- experiments: fixed-seed sweeps ----
   // Needs a checkpoint present; the model picker just needs SOMETHING

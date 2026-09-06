@@ -224,6 +224,63 @@ MODELS: list[ModelDef] = [
         note="單一模型、下載量小。畫質明顯輸 14B，但快很多。",
     ),
     ModelDef(
+        # The one thing a short drama cannot be made without: a character who
+        # talks. S2V is audio-driven - the audio goes in and the lip movement
+        # comes out of the same pass, rather than being pasted on afterwards by
+        # a separate lip-sync model. That ordering matters in practice: the
+        # audio has to exist first, and its length decides the shot's length.
+        id="wan22-s2v",
+        label="Wan 2.2 S2V 14B — 說話鏡頭（音訊驅動，原生口型）",
+        family="files_only",
+        vram_gb=16,
+        files=[
+            ModelFile(WAN_REPO, "split_files/diffusion_models/wan2.2_s2v_14B_fp8_scaled.safetensors",
+                      "diffusion_models", 16394832474),
+            # S2V listens through wav2vec, so the audio encoder is not optional.
+            ModelFile(WAN_REPO, "split_files/audio_encoders/wav2vec2_large_english_fp16.safetensors",
+                      "audio_encoders", 630997322),
+            WAN_TE,
+            WAN21_VAE,
+        ],
+        tiers={},
+        fps=16,
+        supports_lora=False,
+        civitai_bases=("Wan Video 2.2 I2V-A14B",),
+        note="**短劇有台詞的鏡頭就是靠這個。** 音檔進去、對好口型的影片出來，"
+             "不是事後再貼一層 lip-sync。所以順序是**先做音檔再生影片** —— "
+             "音檔長度直接決定鏡頭長度，反過來做就要重跑。"
+             "下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → Wan 2.2 S2V。",
+    ),
+    ModelDef(
+        # Motion retargeting: take the pose and expression out of a driving
+        # video and put them on your character. For short drama this is an asset
+        # play, not a one-off - the genre runs on the same handful of beats
+        # (a slap, a turn, a door slammed, an embrace), so one good driving clip
+        # gets reused across characters and episodes.
+        id="wan22-animate",
+        label="Wan 2.2 Animate 14B — 動作轉移（把參考影片的動作套到你的角色）",
+        family="files_only",
+        vram_gb=16,
+        files=[
+            ModelFile(WAN_REPO, "split_files/diffusion_models/wan2.2_animate_14B_int8_convrot.safetensors",
+                      "diffusion_models", 18413068672),
+            # Relight LoRA: without it the character keeps the lighting of the
+            # plate they came from and looks pasted into the scene.
+            ModelFile(WAN_REPO, "split_files/loras/wan2.2_animate_14B_relight_lora_bf16.safetensors",
+                      "loras", 1436673432),
+            WAN_TE,
+            WAN21_VAE,
+        ],
+        tiers={},
+        fps=16,
+        supports_lora=False,
+        civitai_bases=("Wan Video 2.2 I2V-A14B",),
+        note="**動作也可以當資產。** 短劇的動作是高度重複的（甩巴掌、轉身、摔門、"
+             "擁抱），錄一次或找一段參考影片，就能套到不同角色身上重複用。"
+             "附的 relight LoRA 會把角色的光線重打成場景的光線，不加會像貼上去的。"
+             "下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → Wan 2.2 Animate。",
+    ),
+    ModelDef(
         id="hy15-480p",
         label="HunyuanVideo 1.5 480p — fp8 cfg-distilled（最省顯存）",
         family="hunyuan15",

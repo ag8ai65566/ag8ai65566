@@ -191,6 +191,14 @@
   /* Where a style-recipe tag comes from. A caption token has zero danbooru
      posts *by construction* - the checkpoint author injected it at training
      time - so it must not be shown in the same band as a rare real tag. */
+  /* The shot table. Dense on purpose - a storyboard is read as a table, and
+     scrolling one row per shot makes the pacing impossible to see. */
+  table.shots { border-collapse:collapse; width:100%; font-size:13px; }
+  table.shots th { text-align:left; color:var(--muted); font-weight:600;
+    padding:4px 6px; border-bottom:1px solid var(--line); white-space:nowrap; }
+  table.shots td { padding:3px 6px; border-bottom:1px solid var(--line); vertical-align:middle; }
+  table.shots input, table.shots select { padding:3px 5px; font-size:13px; }
+  .card.step h3 { margin:0 0 4px; font-size:15px; }
   .tag.kd { border-color:var(--line-strong); }
   .tag.kc { border-color:var(--accent); }
   .tag.kp { border-color:var(--line); opacity:.85; }
@@ -231,6 +239,7 @@
     <button data-tab="img" role="tab" aria-controls="tab-img" aria-selected="false">圖片</button>
     <button data-tab="lib" role="tab" aria-controls="tab-lib" aria-selected="false">素材庫<span class="badge" id="libcount">0</span></button>
     <button data-tab="pb" role="tab" aria-controls="tab-pb" aria-selected="false">提詞庫<span class="badge" id="pbcount">0</span></button>
+    <button data-tab="sd" role="tab" aria-controls="tab-sd" aria-selected="false">短劇</button>
     <button data-tab="lora" role="tab" aria-controls="tab-lora" aria-selected="false">LoRA</button>
     <button data-tab="mdl" role="tab" aria-controls="tab-mdl" aria-selected="false">模型</button>
     <button data-tab="set" role="tab" aria-controls="tab-set" aria-selected="false">設定</button>
@@ -795,6 +804,89 @@
   </div>
 
   <!-- ================= LoRA ================= -->
+  <!-- ================= 短劇 ================= -->
+  <div id="tab-sd" role="tabpanel" tabindex="0" class="hidden">
+    <div class="card">
+      <h2 style="margin-top:0">短劇製作流程</h2>
+      <div class="s" id="sdintro"></div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="toolbar">
+        <select id="sdpick" aria-label="選擇專案" style="min-width:220px"></select>
+        <input type="text" id="sdnew" aria-label="新專案名稱" placeholder="新專案名稱" style="min-width:160px">
+        <button class="ghost tiny" id="sdcreate">開新專案</button>
+        <div class="spacer"></div>
+        <button class="ghost tiny" id="sddel">刪掉這個專案</button>
+      </div>
+      <div id="sdempty" class="s"></div>
+    </div>
+
+    <div id="sdbody" class="hidden">
+      <!-- 第 0 步 -->
+      <div class="card step" style="margin-top:12px">
+        <h3>第 0 步 · 鎖規格<span class="s"> —— 動手之前先決定，之後不要改</span></h3>
+        <div class="s" id="sdspecwhy"></div>
+        <div class="row" style="margin-top:8px;gap:8px;flex-wrap:wrap">
+          <label class="f">拍攝規格 <select id="sdspec" style="min-width:280px"></select></label>
+          <label class="f">圖片底模 <select id="sdimodel"></select></label>
+          <label class="f">畫風 <select id="sdstyle" style="min-width:180px"></select></label>
+        </div>
+        <div class="row" style="margin-top:6px;gap:8px;flex-wrap:wrap">
+          <label class="f">關鍵幀 <input type="number" id="sdw" step="64" style="width:80px"> ×
+            <input type="number" id="sdh" step="64" style="width:80px"></label>
+          <label class="f">成品 <input type="number" id="sddw" step="8" style="width:80px"> ×
+            <input type="number" id="sddh" step="8" style="width:80px"></label>
+          <span class="s" id="sdsizewhy"></span>
+        </div>
+        <div class="banner tight" id="sdspecnote" style="margin-top:8px"></div>
+      </div>
+
+      <!-- 第 1 步 -->
+      <div class="card step" style="margin-top:12px">
+        <h3>第 1 步 · 資產層<span class="s"> —— 這一步決定後面所有步驟的天花板</span></h3>
+        <div class="s" id="sdcastwhy"></div>
+        <div id="sdcast" style="margin-top:8px"></div>
+        <button class="ghost tiny" id="sdaddcast" style="margin-top:6px">＋ 加一個角色</button>
+      </div>
+
+      <!-- 第 2 步 -->
+      <div class="card step" style="margin-top:12px">
+        <div class="row" style="align-items:baseline">
+          <h3 style="margin:0">第 2 步 · 分鏡表<span class="s"> —— 寫完再生成，不要邊做邊想</span></h3>
+          <div class="spacer"></div>
+          <span class="s" id="sdstats"></span>
+        </div>
+        <div class="s" id="sdshotwhy" style="margin-top:4px"></div>
+        <div style="overflow-x:auto;margin-top:8px"><table id="sdshots" class="shots"></table></div>
+        <div class="row" style="margin-top:6px">
+          <button class="ghost tiny" id="sdaddshot">＋ 加一個鏡頭</button>
+          <button class="ghost tiny" id="sdsave">存起來</button>
+          <span class="s" id="sdsaved"></span>
+        </div>
+      </div>
+
+      <!-- 健康度 -->
+      <div class="card step" style="margin-top:12px">
+        <h3>分鏡健康度</h3>
+        <div class="s" id="sdhealthline"></div>
+        <div id="sdhealth" style="margin-top:6px"></div>
+      </div>
+
+      <!-- 第 3-7 步 -->
+      <div class="card step" style="margin-top:12px">
+        <h3>第 3 步之後 · 每個鏡頭怎麼做</h3>
+        <div class="s">點分鏡表任何一列的<b>「做這顆」</b>，會展開那顆鏡頭的關鍵幀提詞和步驟。</div>
+        <div id="sdplan" class="hidden" style="margin-top:8px"></div>
+      </div>
+
+      <div class="card step" style="margin-top:12px">
+        <h3>最後 · 後期與精修</h3>
+        <div id="sdpost"></div>
+      </div>
+    </div>
+  </div>
+
   <div id="tab-lora" role="tabpanel" tabindex="0" class="hidden">
     <div class="card">
       <div class="toolbar">
@@ -909,6 +1001,13 @@ function showTab(b) {
   if (b.dataset.tab === 'img') { refreshImageModels(); }
   if (b.dataset.tab === 'lora' && !CIV.items.length) civSearch(true);
   if (b.dataset.tab === 'set') renderSettings();
+  // The shot table's pickers are populated from the image models, the LoRA list
+  // and the style recipes, so those have to exist before it renders.
+  if (b.dataset.tab === 'sd') {
+    if (!IMG.models.length) refreshImageModels();
+    if (!ST.recipes.length) refreshStyles();
+    refreshDrama();
+  }
 }
 TABBTNS.forEach((b, i) => {
   b.onclick = () => showTab(b);
@@ -3950,6 +4049,325 @@ function bareTag(chunk) {
   return t.replace(/\\/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
+/* ---------- 短劇: the shot list and the pipeline around it ---------- */
+// The clip was never the hard part. An episode is a hundred clips that have to
+// look like the same person in the same room, and that is bookkeeping - so this
+// tab is a table with the reasons written next to it, not a generate button.
+// Every annotation here comes out of docs/short-drama.md.
+let SD = { specs: [], sizes: {}, methods: {}, format: {}, projects: [],
+           installed: [], open: null, dirty: false };
+
+async function refreshDrama() {
+  try {
+    const d = await (await fetch('/api/drama')).json();
+    SD.specs = d.specs || []; SD.sizes = d.sizes || {}; SD.methods = d.methods || {};
+    SD.format = d.format || {}; SD.projects = d.projects || []; SD.installed = d.installed || [];
+    renderDramaIntro();
+    renderDramaPicker();
+    if (SD.open) { await openDrama(SD.open.id); } else { renderDramaBody(); }
+  } catch { }
+}
+
+function renderDramaIntro() {
+  const f = SD.format;
+  $('#sdintro').innerHTML = `
+    這頁把「我會做五秒片段」和「我有一集」之間的東西補起來。
+    <b>五秒片段從來不是難的部分</b> —— 難的是一集有上百顆鏡頭，
+    而它們要看起來是同一個人在同一個房間裡，那是<b>記帳</b>不是提詞。
+    <div style="margin-top:6px">產業慣例（不是我編的，出處在
+      <code>docs/short-drama.md</code>）：
+      直式 9:16、單集 ${(f.episode_seconds||[60,180])[0]}–${(f.episode_seconds||[60,180])[1]} 秒、
+      <b>鏡頭中位數 ${f.shot_median} 秒</b>（8 分鐘成片 = 117 顆鏡頭）、
+      單句台詞 ≤${f.dialogue_max} 字、一集有效台詞 ${(f.episode_dialogue||[200,300]).join('–')} 字、
+      開場<b>黃金 ${f.hook_seconds} 秒</b>。</div>
+    <div style="margin-top:6px;opacity:.85">※ 這台機器沒有 GPU，<b>一格影片都沒生成過</b>。
+      這裡的數字是規格與產業慣例的整理，不是實測。</div>`;
+}
+
+function renderDramaPicker() {
+  $('#sdpick').innerHTML = SD.projects.length
+    ? SD.projects.map((p) => `<option value="${esc(p.id)}">${esc(p.title)} · ${p.shot_count} 顆 · ${p.seconds}s</option>`).join('')
+    : '<option value="">（還沒有專案）</option>';
+  if (SD.open) $('#sdpick').value = SD.open.id;
+  $('#sdempty').innerHTML = SD.projects.length ? ''
+    : '還沒有專案。上面取個名字按「開新專案」 —— 一個專案就是一集。';
+}
+
+async function openDrama(id) {
+  if (!id) { SD.open = null; renderDramaBody(); return; }
+  try {
+    const d = await (await fetch(`/api/drama/${encodeURIComponent(id)}`)).json();
+    SD.open = d; SD.dirty = false;
+    renderDramaBody();
+  } catch { }
+}
+
+function renderDramaBody() {
+  const p = SD.open;
+  $('#sdbody').classList.toggle('hidden', !p);
+  if (!p) return;
+
+  // -- step 0: the spec
+  const spec = SD.specs.find((x) => x.model === p.model);
+  $('#sdspecwhy').innerHTML = `
+    <b>一部片只用一個影片模型、一個原生幀率。</b>
+    那些 AI 短劇平台最明顯的破綻是補幀痕跡 —— 而那是他們<b>被內容審核逼出來的</b>：
+    一半鏡頭得走商業 API（30fps），另一半只能本機跑（24fps），兩軌撞在同一條時間線上。
+    <b>你整條線都在本機，沒有理由繼承這個妥協。</b>`;
+  $('#sdspec').innerHTML = SD.specs.map((x) =>
+    `<option value="${esc(x.id)}"${x.model === p.model ? ' selected' : ''}>${esc(x.label)}</option>`).join('');
+  $('#sdimodel').innerHTML = (IMG.models || []).map((m) =>
+    `<option value="${esc(m.id)}"${m.id === p.image_model ? ' selected' : ''}>${esc(m.label.split('—')[0].trim())}</option>`).join('');
+  $('#sdstyle').innerHTML = '<option value="">（不套風格配方）</option>'
+    + (ST.recipes || []).map((r) =>
+      `<option value="${esc(r.id)}"${r.id === p.style ? ' selected' : ''}>${esc(r.zh)}</option>`).join('');
+  $('#sdw').value = p.width; $('#sdh').value = p.height;
+  $('#sddw').value = p.deliver_width; $('#sddh').value = p.deliver_height;
+  $('#sdsizewhy').innerHTML = '關鍵幀走 SDXL 原生（約 1MP），最後才放大到成品尺寸。'
+    + '直接在 1080×1920 生成會出雙頭。';
+  $('#sdspecnote').innerHTML = spec
+    ? `<b>${esc(spec.label)}</b> · 原生 ${spec.fps}fps · 單段上限約 ${spec.clip_seconds} 秒
+       <div class="s" style="margin-top:3px">${spec.why}</div>
+       <div class="s" style="margin-top:3px"><b>收尾怎麼做：</b>${spec.finish.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}</div>`
+    : '';
+
+  // -- step 1: the cast
+  $('#sdcastwhy').innerHTML = `
+    角色一致性是有數字的：閉源平台的參考圖功能 <b>85–90%</b>、
+    IP-Adapter＋ControlNet <b>90–95%</b>、<b>專屬 LoRA 接近 100%</b>。
+    而<b>人工精修佔總工時 40% 以上</b>，那 40% 幾乎全是一致性沒鎖好的帳。
+    <b>做長篇就一定要走 LoRA 那條。</b>
+    服裝也要寫死成一段文字、每顆鏡頭原封不動貼 —— 靠每次重打描述維持連戲，是穿幫第一名。`;
+  const loraOpts = (LORAS || []).map((l) => l.name);
+  $('#sdcast').innerHTML = (p.cast || []).map((c, i) => `
+    <div class="row cast" data-ci="${i}" style="gap:6px;flex-wrap:wrap;margin-top:4px;align-items:center">
+      <input type="text" class="cn" aria-label="角色名" value="${esc(c.name)}" placeholder="角色名" style="width:110px">
+      <input type="text" class="ct" aria-label="觸發詞" value="${esc(c.trigger)}" placeholder="觸發詞（1girl, silver hair…）" style="flex:1;min-width:180px">
+      <input type="text" class="cc" aria-label="鎖定服裝" value="${esc(c.costume)}" placeholder="鎖定服裝" style="flex:1;min-width:150px">
+      <select class="cl" aria-label="這個角色的 LoRA" style="min-width:140px"><option value="">（沒有 LoRA）</option>
+        ${loraOpts.map((n) => `<option value="${esc(n)}"${n === c.lora ? ' selected' : ''}>${esc(n)}</option>`).join('')}</select>
+      <button class="ghost tiny cdel">刪</button>
+    </div>`).join('') || '<div class="s">還沒有角色。至少加一個，不然分鏡表沒東西可以引用。</div>';
+
+  // -- step 2: the shot table
+  const f = SD.format;
+  $('#sdshotwhy').innerHTML = `
+    <b>鏡頭中位數 ${f.shot_median} 秒不是巧合</b> —— AI 影片越長越飄（角色漂移、手壞、物理崩），
+    3 秒左右剛好是這一代模型還沒開始壞的長度。<b>「多切」不是省事，是品質手段。</b>
+    一集 1.5 分鐘大約是 <b>22–28 顆鏡頭</b>。`;
+  $('#sdstats').innerHTML = `${p.shot_count} 顆 · ${p.seconds} 秒 · 中位數 ${p.median_shot}s
+    · 台詞 ${p.dialogue_chars} 字 · 完成 ${p.done}/${p.shot_count}`;
+  renderShotTable();
+
+  // -- health
+  const h = p.health || { level: 'ok', line: '', findings: [] };
+  const cls = { high: 'bad', warn: 'warn', info: 'muted', ok: 'ok' }[h.level];
+  $('#sdhealthline').innerHTML = `<span class="${cls}">●</span> ${esc(h.line)}`;
+  $('#sdhealth').innerHTML = (h.findings || []).map((x) => `
+    <div style="margin-top:7px">
+      <b>${x.level === 'high' ? '⚑' : x.level === 'warn' ? '!' : '·'} ${esc(x.zh)}</b>
+      <div class="s">${x.detail.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')}</div>
+      ${(x.shots || []).length ? `<div class="s">鏡號：${x.shots.join('、')}</div>` : ''}
+    </div>`).join('') || '<div class="s">沒有發現問題。</div>';
+
+  renderDramaPost();
+  wireDramaBody();
+}
+
+function renderShotTable() {
+  const p = SD.open;
+  const sizeOpts = Object.entries(SD.sizes);
+  const methodOpts = Object.entries(SD.methods);
+  $('#sdshots').innerHTML = `
+    <tr><th>#</th><th>秒</th><th>景別</th><th>角色</th><th>場景</th>
+        <th>動作／情緒</th><th>台詞</th><th>生成方式</th><th></th></tr>`
+    + (p.shots || []).map((s, i) => `
+    <tr data-si="${i}">
+      <td class="s">${s.no}</td>
+      <td><input type="number" class="ss" aria-label="秒數" value="${s.seconds}" step="0.1" min="0.5" style="width:58px"></td>
+      <td><select class="sz" aria-label="景別">${sizeOpts.map(([k, v]) =>
+        `<option value="${esc(k)}"${k === s.size ? ' selected' : ''} title="${esc(v.why)}">${esc(k)}</option>`).join('')}</select></td>
+      <td><select class="sw" aria-label="出場角色" multiple size="1" style="min-width:90px">${(p.cast || []).map((c) =>
+        `<option value="${esc(c.key)}"${(s.who || []).includes(c.key) ? ' selected' : ''}>${esc(c.name)}</option>`).join('')}</select></td>
+      <td><input type="text" class="sc" aria-label="場景" value="${esc(s.scene)}" placeholder="場景" style="width:110px"></td>
+      <td><input type="text" class="sa" aria-label="動作或情緒" value="${esc(s.action)}" placeholder="動作" style="width:150px"></td>
+      <td><input type="text" class="sd2" aria-label="台詞" value="${esc(s.dialogue)}" placeholder="台詞" style="width:150px"></td>
+      <td><select class="sm2" aria-label="生成方式">${methodOpts.map(([k, v]) =>
+        `<option value="${esc(k)}"${k === s.method ? ' selected' : ''} title="${esc(v.why.replace(/\*\*/g,''))}">${esc(v.zh)}</option>`).join('')}</select></td>
+      <td class="row" style="gap:3px">
+        <button class="ghost tiny splan" data-no="${s.no}">做這顆</button>
+        <button class="ghost tiny sdel">刪</button></td>
+    </tr>`).join('');
+}
+
+function renderDramaPost() {
+  const p = SD.open;
+  const spec = SD.specs.find((x) => x.model === p.model);
+  $('#sdpost').innerHTML = `
+    <div class="s"><b>1. 幀率</b> —— ${spec ? spec.finish.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>') : ''}
+      整部片只用一種原生幀率，混軌就是自己製造 AI 感。</div>
+    <div class="s" style="margin-top:5px"><b>2. 放大</b> —— 到 ${p.deliver_width}×${p.deliver_height}。「模型」分頁有放大模型。</div>
+    <div class="s" style="margin-top:5px"><b>3. 調色統一</b> —— <b>這是「AI 感」最大的來源，比補幀還明顯。</b>
+      同一場景的所有鏡頭必須同色溫同對比。挑一顆當基準去 match 其他的。</div>
+    <div class="s" style="margin-top:5px"><b>4. 卡點剪輯</b> —— 短劇的節奏靠剪不靠演。台詞講完立刻切。
+      剪輯用現成的（達芬奇／剪映／Premiere），這個 app 只到單顆鏡頭。</div>
+    <div class="s" style="margin-top:5px"><b>5. 音效</b> —— 腳步、關門、衣料摩擦。
+      沒有音效的 AI 影片一秒就被認出來。</div>
+    <div class="s" style="margin-top:5px"><b>6. 精修（預留 40% 的時間）</b> —— 順序：
+      臉（觀眾只看臉）→ 手 → 服裝連戲 → 背景穿幫。業界數據就是 40%，別以為你會例外。</div>`;
+}
+
+// The in-memory project is the source of truth for *which* rows exist; the DOM
+// is the source of truth for what is *typed in* them. Reading only the DOM was
+// a real bug: adding a cast member pushes onto the model and saves before the
+// table has re-rendered, so the collector saw the old rows and the new member
+// vanished on the way to the server. Deleting one lost the delete the same way.
+function collectDrama() {
+  const p = SD.open;
+  const castRows = [...document.querySelectorAll('#sdcast .cast')];
+  const cast = (p.cast || []).map((c, i) => {
+    const row = castRows[i];
+    return {
+      key: c.key || '',
+      name: row ? row.querySelector('.cn').value.trim() : (c.name || ''),
+      trigger: row ? row.querySelector('.ct').value.trim() : (c.trigger || ''),
+      costume: row ? row.querySelector('.cc').value.trim() : (c.costume || ''),
+      lora: row ? row.querySelector('.cl').value : (c.lora || ''),
+      voice: c.voice || '', note: c.note || '',
+    };
+  });
+  const shotRows = [...document.querySelectorAll('#sdshots tr[data-si]')];
+  const shots = (p.shots || []).map((s, i) => {
+    const row = shotRows[i];
+    if (!row) return { ...s };
+    return {
+      seconds: parseFloat(row.querySelector('.ss').value) || 3.2,
+      size: row.querySelector('.sz').value,
+      who: [...row.querySelector('.sw').selectedOptions].map((o) => o.value),
+      scene: row.querySelector('.sc').value.trim(),
+      action: row.querySelector('.sa').value.trim(),
+      dialogue: row.querySelector('.sd2').value.trim(),
+      method: row.querySelector('.sm2').value,
+      extra: s.extra || '', keyframe: s.keyframe || '', video: s.video || '',
+      status: s.status || 'todo', note: s.note || '',
+    };
+  });
+  return {
+    cast, shots,
+    spec: $('#sdspec').value,
+    image_model: $('#sdimodel').value,
+    style: $('#sdstyle').value,
+    width: +$('#sdw').value, height: +$('#sdh').value,
+    deliver_width: +$('#sddw').value, deliver_height: +$('#sddh').value,
+  };
+}
+
+async function saveDrama(quiet) {
+  const p = SD.open;
+  if (!p) return;
+  const r = await fetch(`/api/drama/${encodeURIComponent(p.id)}`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(collectDrama()),
+  });
+  if (!r.ok) { $('#sdsaved').textContent = '存不起來'; return; }
+  SD.open = await r.json();
+  SD.projects = SD.projects.map((x) => x.id === SD.open.id ? SD.open : x);
+  renderDramaPicker();
+  renderDramaBody();
+  if (!quiet) {
+    $('#sdsaved').textContent = '已存';
+    setTimeout(() => { const el = $('#sdsaved'); if (el) el.textContent = ''; }, 1500);
+  }
+}
+
+function wireDramaBody() {
+  document.querySelectorAll('#sdcast .cdel').forEach((b, i) => b.onclick = async () => {
+    SD.open.cast.splice(i, 1); await saveDrama(true);
+  });
+  document.querySelectorAll('#sdshots .sdel').forEach((b, i) => b.onclick = async () => {
+    SD.open.shots.splice(i, 1); await saveDrama(true);
+  });
+  document.querySelectorAll('#sdshots .splan').forEach((b) => b.onclick = () => planShot(b.dataset.no));
+  $('#sdspec').onchange = () => saveDrama(true);
+  ['#sdimodel', '#sdstyle', '#sdw', '#sdh', '#sddw', '#sddh']
+    .forEach((id) => { const el = $(id); if (el) el.onchange = () => saveDrama(true); });
+}
+
+async function planShot(no) {
+  const p = SD.open;
+  const box = $('#sdplan');
+  const d = await (await fetch(
+    `/api/drama/${encodeURIComponent(p.id)}/shot/${encodeURIComponent(no)}`)).json();
+  box.classList.remove('hidden');
+  box.className = 'banner';
+  box.innerHTML = `<b>第 ${no} 顆鏡頭</b>
+    <div class="s" style="margin-top:4px">關鍵幀提詞（已經把角色觸發詞、鎖定服裝、景別 tag、
+      場景、動作依序組好，並去掉重複的 tag）：</div>
+    <div style="margin-top:3px"><code id="sdkf">${esc(d.prompt)}</code></div>
+    ${d.loras && d.loras.length ? `<div class="s" style="margin-top:3px">要開的 LoRA：${d.loras.map(esc).join('、')}</div>` : ''}
+    <div style="margin-top:8px">${(d.plan.steps || []).map((x, i) => `
+      <div class="s" style="margin-top:4px"><b>${i + 1}. ${esc(x.do)}</b>
+        <div style="opacity:.85">${x.why.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')}</div></div>`).join('')}</div>
+    <div class="s" style="margin-top:6px">這顆會是 <b>${d.plan.frames} 格</b>
+      （${d.shot.seconds}s × ${p.fps}fps）。</div>
+    <div class="row" style="margin-top:8px">
+      <button class="ghost tiny" id="sdtoimg">把提詞送到「圖片」分頁</button>
+      <button class="ghost tiny" id="sdplanclose">收起</button>
+    </div>`;
+  $('#sdtoimg').onclick = () => {
+    $('#iprompt').value = d.prompt;
+    $('#iprompt').dataset.touched = '1';
+    if (d.negative) { $('#inegative').value = d.negative; $('#inegative').dataset.touched = '1'; }
+    if ($('#imodel') && d.model) { $('#imodel').value = d.model; onImageModelChange(); }
+    if ($('#isize')) {
+      $('#isize').value = IMG.customSize; syncCustomSize();
+      $('#iwidth').value = d.width; $('#iheight').value = d.height;
+      SIZE_ASKED = ''; paintSize();
+    }
+    showTab(document.querySelector('.tabs button[data-tab="img"]'));
+    $('#istatus').textContent = `已帶入第 ${no} 顆鏡頭的關鍵幀提詞。修好再送去影片。`;
+  };
+  $('#sdplanclose').onclick = () => box.classList.add('hidden');
+}
+
+function wireDrama() {
+  $('#sdpick').onchange = () => openDrama($('#sdpick').value);
+  $('#sdcreate').onclick = async () => {
+    const title = $('#sdnew').value.trim();
+    const r = await fetch('/api/drama', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title }),
+    });
+    const d = await r.json();
+    $('#sdnew').value = '';
+    await refreshDrama();
+    await openDrama(d.id);
+  };
+  $('#sddel').onclick = async () => {
+    if (!SD.open) return;
+    await fetch(`/api/drama/${encodeURIComponent(SD.open.id)}`, { method: 'DELETE' });
+    SD.open = null;
+    await refreshDrama();
+  };
+  $('#sdaddcast').onclick = async () => {
+    if (!SD.open) return;
+    SD.open.cast.push({ key: '', name: '新角色', trigger: '', costume: '', lora: '', voice: '', note: '' });
+    await saveDrama(true);
+  };
+  $('#sdaddshot').onclick = async () => {
+    if (!SD.open) return;
+    const last = SD.open.shots[SD.open.shots.length - 1] || {};
+    // Inherit the previous shot's scene and cast: consecutive shots are almost
+    // always the same place and the same people, and retyping that is how a
+    // continuity mistake gets in.
+    SD.open.shots.push({ seconds: SD.format.shot_median || 3.2, size: '近景',
+      who: last.who || [], scene: last.scene || '', action: '', dialogue: '',
+      method: 'i2v', extra: '', keyframe: '', video: '', status: 'todo', note: '' });
+    await saveDrama(true);
+  };
+  $('#sdsave').onclick = () => saveDrama(false);
+}
+
 /* ---------- style library: recipes, quality presets, one-click merge ------ */
 // A recipe is a bundle of rendering / lighting / composition tags that sits on
 // top of whatever character prompt is already in the box. Applying one goes
@@ -5325,7 +5743,7 @@ async function boot() {
   wirePosebook(); refreshPosebook();
   wirePromptTools(); refreshQuickTags(); wireSize();
   wireArtists(); refreshArtists(); wireLikeness(); wireRefs();
-  wireExperiments();
+  wireExperiments(); wireDrama();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }
