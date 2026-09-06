@@ -20,6 +20,42 @@
  * machine drop the executablePath and let Playwright find its own.
  */
 const { chromium } = require('playwright');
+const zlib = require('zlib');
+// A minimal but genuinely valid PNG of the requested size. The dataset checker
+// reads dimensions out of the file, so the fixture has to really be that size.
+function pngOf(width, height) {
+  const chunk = (type, data) => {
+    const len = Buffer.alloc(4); len.writeUInt32BE(data.length);
+    const body = Buffer.concat([Buffer.from(type, 'ascii'), data]);
+    const crcBuf = Buffer.alloc(4); crcBuf.writeUInt32BE(crc32(body) >>> 0);
+    return Buffer.concat([len, body, crcBuf]);
+  };
+  const ihdr = Buffer.alloc(13);
+  ihdr.writeUInt32BE(width, 0); ihdr.writeUInt32BE(height, 4);
+  ihdr[8] = 8; ihdr[9] = 0; ihdr[10] = 0; ihdr[11] = 0; ihdr[12] = 0;  // 8-bit grey
+  const raw = Buffer.alloc(height * (width + 1));  // one filter byte per row
+  const idat = zlib.deflateSync(raw);
+  return Buffer.concat([
+    Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]),
+    chunk('IHDR', ihdr), chunk('IDAT', idat), chunk('IEND', Buffer.alloc(0)),
+  ]);
+}
+let CRC_TABLE = null;
+function crc32(buf) {
+  if (!CRC_TABLE) {
+    CRC_TABLE = new Int32Array(256);
+    for (let n = 0; n < 256; n++) {
+      let c = n;
+      for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+      CRC_TABLE[n] = c;
+    }
+  }
+  let c = 0xffffffff;
+  for (const b of buf) c = CRC_TABLE[(c ^ b) & 0xff] ^ (c >>> 8);
+  return (c ^ 0xffffffff) >>> 0;
+}
+
+
 (async () => {
   const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
   const errors = [], warnings = [];
@@ -29,6 +65,25 @@ const { chromium } = require('playwright');
   page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
   await page.goto('http://127.0.0.1:8811/', { waitUntil: 'networkidle' });
 
+  // A training folder for the 訓練角色 block to inspect. Made here so the suite
+  // does not depend on a folder someone created by hand.
+  const TRAIN_FIXTURE = require('path').join(require('os').tmpdir(), 'wan-trainset');
+  await page.evaluate(() => {});
+  {
+    const fs = require('fs');
+    fs.rmSync(TRAIN_FIXTURE, { recursive: true, force: true });
+    fs.mkdirSync(TRAIN_FIXTURE, { recursive: true });
+    // 1x1 PNGs would be caught as undersized, so the fixture carries real
+    // dimensions: the checker reads the header, not the filename.
+    for (let i = 0; i < 26; i++) {
+      const tall = i % 3 !== 0;
+      const png = pngOf(tall ? 832 : 1216, tall ? 1216 : 832);
+      fs.writeFileSync(require('path').join(TRAIN_FIXTURE, String(i).padStart(2,'0') + '.png'), png);
+      fs.writeFileSync(require('path').join(TRAIN_FIXTURE, String(i).padStart(2,'0') + '.txt'),
+        `s1vra_person, adult, framing ${i}, outfit ${i}`, 'utf-8');
+    }
+  }
+
   const say = (ok, label) => console.log((ok ? '  ok   ' : '  FAIL ') + label);
   let bad = 0;
   const check = (ok, label) => { if (!ok) bad++; say(ok, label); };
@@ -37,7 +92,7 @@ const { chromium } = require('playwright');
 
   // Every tab still opens, and only its own panel is visible.
   const tabs = await page.$$eval('.tabs button', (bs) => bs.map((b) => b.dataset.tab));
-  check(tabs.length === 8, `all 8 tabs present (${tabs.join(',')})`);
+  check(tabs.length === 9, `all 9 tabs present (${tabs.join(',')})`);
   for (const t of tabs) {
     await page.click(`.tabs button[data-tab="${t}"]`);
     await page.waitForTimeout(120);
@@ -747,12 +802,111 @@ const { chromium } = require('playwright');
   await page.selectOption('#artgroup','');
 
 
+  // ---- 訓練角色: plan, check a real folder, emit a config ----
+  // The whole tab is the part of training that can be done without a GPU, so
+  // the whole tab is testable: the arithmetic, the folder inspection and the
+  // syntax of the file that comes out. What it must never do is imply it
+  // trained anything, so that is checked too.
+  const trMark = errors.length;
+  await page.click('.tabs button[data-tab="train"]');
+  await page.waitForTimeout(1200);
+  const trIntro = await page.textContent('#trintro');
+  check(trIntro.includes('不執行訓練'), 'the training tab says up front that it does not train');
+  check(/0 條是本專案量的/.test(trIntro),
+    'and that nothing on it was measured here, same as the drama tab');
+
+  // A trainer that cannot train the selected architecture must not be offered:
+  // that is how you get a config the trainer refuses to open.
+  const sdxlTrainers = await page.evaluate(() =>
+    [...document.querySelectorAll('#trtrainer option')].map((o) => o.value));
+  check(sdxlTrainers.includes('kohya') && !sdxlTrainers.includes('ai-toolkit'),
+    `SDXL offers kohya, not the FLUX-only trainer (${sdxlTrainers.join(',')})`);
+  await page.selectOption('#trarch', 'flux');
+  await page.waitForTimeout(700);
+  const fluxTrainers = await page.evaluate(() =>
+    [...document.querySelectorAll('#trtrainer option')].map((o) => o.value));
+  check(fluxTrainers.includes('ai-toolkit') && !fluxTrainers.includes('kohya'),
+    `switching to FLUX swaps the list (${fluxTrainers.join(',')})`);
+  await page.selectOption('#trarch', 'sdxl');
+  await page.waitForTimeout(700);
+
+  await page.fill('#trcount', '30');
+  await page.dispatchEvent('#trcount', 'input');
+  await page.waitForTimeout(800);
+  check(/9 張/.test(await page.textContent('#trplan')),
+    'the shot mix splits 30 images across framings');
+  check((await page.textContent('#trsteps')).includes('1800'),
+    'and says how many steps that is, marked as arithmetic');
+
+  // The trigger check runs as you type, because finding out after three hours
+  // that the token collided with a real word is the expensive way to learn it.
+  await page.fill('#trtrigger', 'woman');
+  await page.dispatchEvent('#trtrigger', 'input');
+  await page.waitForTimeout(700);
+  check((await page.textContent('#trtriggerwhy')).includes('打架'),
+    'a real word is rejected as a trigger, live');
+  await page.fill('#trtrigger', 's1vra_person');
+  await page.dispatchEvent('#trtrigger', 'input');
+  await page.waitForTimeout(700);
+  check((await page.textContent('#trtriggerwhy')).includes('可以用'),
+    'and a token the base model has no opinion about is accepted');
+  const trCap = await page.textContent('#trcaption');
+  check(trCap.startsWith('s1vra_person, adult'),
+    `the caption leads with the trigger (${trCap.slice(0, 40)})`);
+
+  // A real folder on disk, read for real.
+  const trDir = TRAIN_FIXTURE;
+  await page.fill('#trfolder', trDir);
+  await page.click('#trcheck');
+  await page.waitForTimeout(2200);
+  const trLine = await page.textContent('#trhealthline');
+  check(trLine.includes('26'), `checking a folder reports what is in it (${trLine.replace(/\s+/g,' ').slice(0,44)})`);
+  check((await page.inputValue('#trcount')) === '26',
+    'and the count comes from disk rather than what was typed');
+
+  await page.fill('#trbase', 'C:/anim/wan-video/ComfyUI/models/checkpoints/lustify.safetensors');
+  await page.fill('#trout', 'C:/anim/train/out');
+  await page.click('#trgo');
+  await page.waitForTimeout(1500);
+  const trCfg = await page.textContent('#trcfg');
+  check(trCfg.includes('[network_arguments]') && trCfg.includes('enable_bucket = true'),
+    'the config comes out with bucketing on');
+  check(trCfg.includes('lustify.safetensors'), 'and the base model path filled in');
+  const trNote = await page.textContent('#trcfgnote');
+  check(trNote.includes('accelerate launch'), 'and the command that runs it');
+  check(trNote.includes('沒有跑過'),
+    'and says once more that this project has never run a training job');
+  check(errors.length === trMark,
+    `no console errors across the training tab (${errors.slice(trMark, trMark+2).join(' | ') || 'clean'})`);
+
+  // Two deliberate failures. They log 404/400 to the console by design, so they
+  // come after the error assertion above rather than tripping it.
+  await page.fill('#trfolder', '/does/not/exist/at/all');
+  await page.click('#trcheck');
+  await page.waitForTimeout(1500);
+  check((await page.textContent('#trhealthline')).includes('找不到'),
+    'a folder that is not there says so rather than throwing');
+  await page.fill('#trtrigger', 'Emma');
+  await page.dispatchEvent('#trtrigger', 'input');
+  await page.waitForTimeout(400);
+  await page.click('#trgo');
+  await page.waitForTimeout(1200);
+  check((await page.textContent('#trcfgnote')).includes('觸發詞'),
+    'and a bad trigger is refused at config time, not only while typing');
+  check(!errors.slice(trMark).some((e) => e.startsWith('pageerror')),
+    'and neither failure threw');
+
   // ---- style library + prompt doctor ----
   // The diff is the whole trust story here: nothing may reach the prompt box
   // until it has been shown, and the user's own tags must come out the far side
   // untouched. Both are checked against a prompt full of things the merger has
   // never heard of.
   const errMark = errors.length;
+  // These controls live on the image tab, and the block above ends on another
+  // one. Reach it explicitly rather than inheriting whatever tab happened to
+  // be open - that coupling has broken this suite twice.
+  await page.click('.tabs button[data-tab="img"]');
+  await page.waitForTimeout(600);
   await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='noobai'; s.dispatchEvent(new Event('change')); });
   await page.waitForTimeout(500);
   await page.fill('#iprompt', '1girl, hoshimachi suisei, pastel colors, score_9, my_lora_trigger, (smile:1.3)');

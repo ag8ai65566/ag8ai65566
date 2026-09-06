@@ -3134,7 +3134,7 @@ async def training_meta() -> JSONResponse:
              "network_dim": r.network_dim, "network_alpha": r.network_alpha,
              "learning_rate": r.learning_rate, "optimizer": r.optimizer,
              "resolution": r.resolution, "repeats": r.repeats,
-             "epochs": r.epochs, "note": r.note,
+             "epochs": r.epochs, "batch_size": r.batch_size, "note": r.note,
              "claim": (claims.get(r.claim_id).public() if claims.get(r.claim_id) else None)}
             for r in training.RECIPES.values()
         ],

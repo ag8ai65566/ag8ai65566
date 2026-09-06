@@ -240,6 +240,7 @@
     <button data-tab="lib" role="tab" aria-controls="tab-lib" aria-selected="false">素材庫<span class="badge" id="libcount">0</span></button>
     <button data-tab="pb" role="tab" aria-controls="tab-pb" aria-selected="false">提詞庫<span class="badge" id="pbcount">0</span></button>
     <button data-tab="sd" role="tab" aria-controls="tab-sd" aria-selected="false">短劇</button>
+    <button data-tab="train" role="tab" aria-controls="tab-train" aria-selected="false">訓練角色</button>
     <button data-tab="lora" role="tab" aria-controls="tab-lora" aria-selected="false">LoRA</button>
     <button data-tab="mdl" role="tab" aria-controls="tab-mdl" aria-selected="false">模型</button>
     <button data-tab="set" role="tab" aria-controls="tab-set" aria-selected="false">設定</button>
@@ -884,6 +885,99 @@
       <div class="card step" style="margin-top:12px">
         <h3>最後 · 後期與精修</h3>
         <div id="sdpost"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tab-train" role="tabpanel" tabindex="0" class="hidden">
+    <div class="card">
+      <h3>訓練一個角色</h3>
+      <div class="s" id="trintro"></div>
+    </div>
+
+    <!-- 1. 這個角色是誰 -->
+    <div class="card step" style="margin-top:12px">
+      <h3>第 1 步 · 這個角色是誰</h3>
+      <div class="row" style="gap:8px;flex-wrap:wrap;align-items:flex-end">
+        <label class="f" style="min-width:200px">觸發詞
+          <input type="text" id="trtrigger" aria-label="觸發詞" value="s1vra_person"
+            placeholder="s1vra_person" style="width:100%"></label>
+        <label class="f" style="min-width:150px">底模架構
+          <select id="trarch" aria-label="底模架構"></select></label>
+        <label class="f" style="min-width:150px">訓練器
+          <select id="trtrainer" aria-label="訓練器"></select></label>
+      </div>
+      <div class="s" id="trtriggerwhy" style="margin-top:5px"></div>
+      <div class="s" id="trarchwhy" style="margin-top:5px"></div>
+    </div>
+
+    <!-- 2. 要準備哪些圖 -->
+    <div class="card step" style="margin-top:12px">
+      <h3>第 2 步 · 要準備哪些圖</h3>
+      <div class="row" style="gap:8px;align-items:flex-end">
+        <label class="f" style="max-width:160px">打算用幾張
+          <input type="number" id="trcount" aria-label="打算用幾張" value="30"
+            min="1" max="200" step="1" style="width:100%"></label>
+        <span class="s" id="trsteps"></span>
+      </div>
+      <div id="trplan" style="margin-top:8px"></div>
+      <div class="s" id="trplanwhy" style="margin-top:6px"></div>
+    </div>
+
+    <!-- 3. 標註 -->
+    <div class="card step" style="margin-top:12px">
+      <h3>第 3 步 · 標註怎麼寫</h3>
+      <div class="s">寫進標註的東西會被當成<b>可變的</b>；沒寫的會被併進觸發詞。
+        所以姿勢、服裝、景別、光線都要寫出來，臉不要寫 —— 臉就是要學的東西。</div>
+      <div class="row" style="gap:6px;flex-wrap:wrap;margin-top:8px">
+        <label class="f" style="min-width:150px">景別
+          <input type="text" id="trcshot" aria-label="景別" value="three-quarter portrait" style="width:100%"></label>
+        <label class="f" style="min-width:130px">髮型
+          <input type="text" id="trchair" aria-label="髮型" value="black shoulder-length hair" style="width:100%"></label>
+        <label class="f" style="min-width:110px">表情
+          <input type="text" id="trcexp" aria-label="表情" value="neutral expression" style="width:100%"></label>
+        <label class="f" style="min-width:130px">服裝
+          <input type="text" id="trcwear" aria-label="服裝" value="white blouse" style="width:100%"></label>
+        <label class="f" style="min-width:130px">光線
+          <input type="text" id="trclight" aria-label="光線" value="indoor soft window light" style="width:100%"></label>
+      </div>
+      <div style="margin-top:8px"><code id="trcaption"></code></div>
+      <div class="s" style="margin-top:5px">這一行存成跟圖片同名的 <code>.txt</code>，
+        放在同一個資料夾。每張圖的內容要不一樣。</div>
+    </div>
+
+    <!-- 4. 檢查資料夾 -->
+    <div class="card step" style="margin-top:12px">
+      <h3>第 4 步 · 檢查這組資料</h3>
+      <div class="row" style="gap:8px;align-items:flex-end">
+        <label class="f" style="flex:1;min-width:260px">訓練圖資料夾（這台電腦上的路徑）
+          <input type="text" id="trfolder" aria-label="訓練圖資料夾"
+            placeholder="C:\anim\train\s1vra" style="width:100%"></label>
+        <button class="ghost" id="trcheck">檢查</button>
+      </div>
+      <div class="s" id="trhealthline" style="margin-top:6px"></div>
+      <div id="trhealth" style="margin-top:6px"></div>
+    </div>
+
+    <!-- 5. 設定檔 -->
+    <div class="card step" style="margin-top:12px">
+      <h3>第 5 步 · 產生設定檔</h3>
+      <div class="row" style="gap:8px;flex-wrap:wrap;align-items:flex-end">
+        <label class="f" style="min-width:170px">輸出檔名
+          <input type="text" id="trname" aria-label="輸出檔名" value="s1vra_v1" style="width:100%"></label>
+        <label class="f" style="flex:1;min-width:240px">底模檔案的完整路徑
+          <input type="text" id="trbase" aria-label="底模檔案路徑"
+            placeholder="…\ComfyUI\models\checkpoints\lustify.safetensors" style="width:100%"></label>
+        <label class="f" style="flex:1;min-width:200px">LoRA 存到哪
+          <input type="text" id="trout" aria-label="輸出資料夾"
+            placeholder="C:\anim\train\out" style="width:100%"></label>
+        <button class="ghost" id="trgo">產生</button>
+      </div>
+      <div class="s" id="trcfgnote" style="margin-top:6px"></div>
+      <pre id="trcfg" class="hidden" style="margin-top:8px;max-height:340px;overflow:auto;white-space:pre;font-size:12px"></pre>
+      <div class="row" style="gap:6px;margin-top:6px">
+        <button class="ghost tiny hidden" id="trcopy">複製設定檔</button>
+        <button class="ghost tiny hidden" id="trcopycmd">複製指令</button>
       </div>
     </div>
   </div>
@@ -4562,6 +4656,192 @@ async function attachDramaJob(jobId) {
   } catch { }
 }
 
+/* ---------- 訓練角色 ----------
+   The app prepares and checks the dataset and writes the config. It does not
+   train: that needs a GPU and hours of it, and wrapping a trainer this project
+   has never executed would be an untested claim wearing a button. */
+const TR = { trainers: [], recipes: [], mix: [], claims: {}, cfg: null };
+
+async function refreshTraining() {
+  try {
+    const d = await (await fetch('/api/training')).json();
+    TR.trainers = d.trainers || []; TR.recipes = d.recipes || [];
+    TR.mix = d.shot_mix || []; TR.claims = d.claims || {};
+  } catch { return; }
+  $('#trarch').innerHTML = TR.recipes.map((r) =>
+    `<option value="${esc(r.arch)}">${esc(r.zh)}</option>`).join('');
+  renderTrainIntro();
+  onTrainArch();
+  renderTrainPlan();
+  renderTrainCaption();
+}
+
+function renderTrainIntro() {
+  const c = TR.claims.counts || {};
+  $('#trintro').innerHTML =
+    `多鏡頭連戲的臉，最後都要靠一個角色 LoRA。這一頁幫你把訓練集<b>準備好、檢查完</b>，
+     再產生對應訓練器的設定檔。<br>
+     <b>這個 app 不執行訓練</b> —— 訓練要 GPU 和好幾個小時，跑訓練的是
+     ${TR.trainers.map((t) => esc(t.label)).join('、')}，設定檔產生完直接拿去用。<br>
+     這頁的建議值有 ${(c.OFFICIAL_SPEC || 0)} 條是上游官方規格、
+     ${(c.EXTERNAL_MEASUREMENT || 0)} 條是別人量的、
+     <b>${(c.LOCAL_MEASUREMENT || 0)} 條是本專案量的</b> ——
+     這個專案沒有訓練過任何一個 LoRA，也沒有生成過任何一張圖。`;
+}
+
+function trainRecipe() {
+  return TR.recipes.find((r) => r.arch === $('#trarch').value) || TR.recipes[0];
+}
+
+function onTrainArch() {
+  const r = trainRecipe();
+  if (!r) return;
+  // Only the trainers that can actually train this architecture. Offering one
+  // that cannot is how you get a config the trainer refuses to open.
+  const fit = TR.trainers.filter((t) => (t.trains || []).includes(r.arch));
+  $('#trtrainer').innerHTML = fit.map((t) =>
+    `<option value="${esc(t.id)}"${t.id === r.trainer ? ' selected' : ''}>${esc(t.label)}</option>`).join('');
+  const t = fit.find((x) => x.id === $('#trtrainer').value) || fit[0];
+  $('#trarchwhy').innerHTML = `<b>dim ${r.network_dim} / alpha ${r.network_alpha}</b> ·
+    lr ${r.learning_rate} · ${esc(r.optimizer)} · ${r.resolution}px ·
+    ${r.repeats} repeats × ${r.epochs} epochs`
+    + (t ? ` · 建議 ${t.vram_gb}GB 以上 · <a href="${esc(t.repo)}" target="_blank" rel="noopener">${esc(t.label)}</a>` : '')
+    + (r.note ? `<br>${esc(r.note)}` : '')
+    + (r.claim ? `<br><span class="tag kp">${esc(r.claim.badge)}</span> ${esc(r.claim.limits || r.claim.text)}` : '');
+  renderTrainPlan();
+}
+
+async function renderTrainPlan() {
+  const r = trainRecipe();
+  const n = Math.max(0, parseInt($('#trcount').value, 10) || 0);
+  let plan = [];
+  try {
+    plan = (await (await fetch('/api/training/plan', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ count: n }),
+    })).json()).plan || [];
+  } catch { return; }
+  $('#trplan').innerHTML = plan.map((p) => `
+    <div class="s" style="margin-top:4px"><b>${p.count} 張</b> ——
+      ${esc(p.zh)} <span style="opacity:.7">（${Math.round(p.share * 100)}%）</span>
+      <div style="opacity:.85">${esc(p.why)}</div></div>`).join('');
+  // Steps are arithmetic, not advice, and the page says which is which.
+  const steps = r ? Math.ceil(n * r.repeats * r.epochs / (r.batch_size || 1)) : 0;
+  $('#trsteps').innerHTML = n
+    ? `會跑 <b>${steps}</b> 步（${n} × ${r.repeats} repeats × ${r.epochs} epochs`
+      + `${r.batch_size > 1 ? ` ÷ batch ${r.batch_size}` : ''}）—— 這是算出來的。`
+    : '';
+  const claim = (TR.claims.claims || []).find((c) => c.id === 'train.shot_mix');
+  $('#trplanwhy').innerHTML = claim
+    ? `<span class="tag kp">${esc(claim.badge)}</span> ${esc(claim.limits || claim.text)}` : '';
+}
+
+async function renderTrainCaption() {
+  const trigger = $('#trtrigger').value.trim();
+  let d = null;
+  try {
+    d = await (await fetch('/api/training/caption', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        trigger,
+        shot: $('#trcshot').value, hair: $('#trchair').value,
+        expression: $('#trcexp').value, wearing: $('#trcwear').value,
+        light: $('#trclight').value,
+      }),
+    })).json();
+  } catch { return; }
+  $('#trcaption').textContent = d.caption || '';
+  $('#trtriggerwhy').innerHTML = d.trigger_problem
+    ? `<span class="bad">${esc(d.trigger_problem)}</span>`
+    : '這個觸發詞可以用。它要是一個底模沒有既有印象的字 —— 用真名的話，'
+      + 'LoRA 會一直在跟模型原本對那個名字的印象打架。';
+}
+
+function wireTraining() {
+  $('#trarch').onchange = onTrainArch;
+  $('#trtrainer').onchange = onTrainArch;
+  $('#trcount').oninput = renderTrainPlan;
+  $('#trtrigger').oninput = renderTrainCaption;
+  ['#trcshot', '#trchair', '#trcexp', '#trcwear', '#trclight']
+    .forEach((id) => { const el = $(id); if (el) el.oninput = renderTrainCaption; });
+
+  $('#trcheck').onclick = async () => {
+    const folder = $('#trfolder').value.trim();
+    if (!folder) { $('#trhealthline').textContent = '要先填一個資料夾路徑。'; return; }
+    $('#trcheck').disabled = true;
+    $('#trhealthline').textContent = '讀取中…';
+    try {
+      const r = await fetch('/api/training/check', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ folder, trigger: $('#trtrigger').value.trim(),
+                               arch: $('#trarch').value }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      const h = d.health || {};
+      $('#trhealthline').innerHTML =
+        `<b class="${h.level === 'high' ? 'bad' : (h.level === 'warn' ? 'warn' : '')}">●</b> `
+        + `${esc(h.line || '')} · 讀到 ${d.count} 張 · 會跑 ${d.steps} 步`;
+      $('#trhealth').innerHTML = (h.findings || []).map((f) => `
+        <div class="s" style="margin-top:5px">
+          <span class="tag kp">${esc(f.badge)}</span>
+          <b class="${f.level === 'BLOCK' ? 'bad' : (f.level === 'WARN' ? 'warn' : '')}">${esc(f.zh)}</b>
+          ${f.detail ? `<div style="opacity:.85">${esc(f.detail)}</div>` : ''}
+          ${f.claim && f.claim.limits ? `<div style="opacity:.7">限制：${esc(f.claim.limits)}</div>` : ''}
+        </div>`).join('');
+      // Fill the count in from what is actually on disk, so the plan and the
+      // step count stop being about a number the user typed once.
+      if (d.count) { $('#trcount').value = d.count; renderTrainPlan(); }
+    } catch (e) {
+      $('#trhealthline').innerHTML = `<span class="bad">${esc(e.message)}</span>`;
+      $('#trhealth').innerHTML = '';
+    }
+    $('#trcheck').disabled = false;
+  };
+
+  $('#trgo').onclick = async () => {
+    $('#trgo').disabled = true;
+    try {
+      const r = await fetch('/api/training/config', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          arch: $('#trarch').value, trainer: $('#trtrainer').value,
+          trigger: $('#trtrigger').value.trim(), name: $('#trname').value.trim(),
+          dataset_dir: $('#trfolder').value.trim(),
+          output_dir: $('#trout').value.trim(),
+          base_model: $('#trbase').value.trim(),
+          count: parseInt($('#trcount').value, 10) || 0,
+        }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      TR.cfg = d;
+      $('#trcfg').textContent = d.text;
+      $('#trcfg').classList.remove('hidden');
+      $('#trcopy').classList.remove('hidden');
+      $('#trcopycmd').classList.remove('hidden');
+      $('#trcfgnote').innerHTML =
+        `存成 <code>${esc(d.filename)}</code>，放進 ${esc(d.trainer_label)} 的資料夾，然後跑：`
+        + `<br><code>${esc(d.command)}</code>`
+        + `<br><span class="s">會跑 ${d.steps} 步 · 建議 ${d.vram_gb}GB 以上 · `
+        + `<a href="${esc(d.repo)}" target="_blank" rel="noopener">${esc(d.trainer_label)}</a>`
+        + ` —— 這些是起點參數，本專案沒有跑過任何一次訓練。</span>`;
+    } catch (e) {
+      $('#trcfgnote').innerHTML = `<span class="bad">${esc(e.message)}</span>`;
+      $('#trcfg').classList.add('hidden');
+    }
+    $('#trgo').disabled = false;
+  };
+
+  const copy = (get) => async () => {
+    if (!TR.cfg) return;
+    try { await navigator.clipboard.writeText(get(TR.cfg)); $('#trcfgnote').dataset.copied = '1'; }
+    catch { }
+  };
+  $('#trcopy').onclick = copy((c) => c.text);
+  $('#trcopycmd').onclick = copy((c) => c.command);
+}
+
 function wireDrama() {
   $('#sdpick').onchange = () => openDrama($('#sdpick').value);
   $('#sdcreate').onclick = async () => {
@@ -5976,6 +6256,7 @@ async function boot() {
   wirePromptTools(); refreshQuickTags(); wireSize();
   wireArtists(); refreshArtists(); wireLikeness(); wireRefs();
   wireExperiments(); wireDrama();
+  wireTraining(); refreshTraining();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }
