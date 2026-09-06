@@ -786,6 +786,7 @@ docs/
   refs-review.md       參考圖庫整包匯入與中文名比對的審查說明（給下一輪 review 用）
   review-round2.md     對 Round 2 審查的逐條回應：3 個實驗記帳 bug、官方圖比例的實測修正
   video-models.md      為什麼 Seedance / Wan 2.5 匯不進來，以及 LTX-2.5 的 gated 下載
+  short-drama.md       AI 短劇（黃果那類）的完整製作流程，以及用這套工具做到最細的方法
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/
   test_flow.py         用假的 ComfyUI / Hugging Face / CivitAI 跑完整流程，不需要顯卡
