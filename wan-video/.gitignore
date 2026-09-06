@@ -12,3 +12,7 @@ __pycache__/
 
 # Screenshots written by tests/browser_check.js
 shot-*.png
+
+# Left behind by "npm install playwright" when running tests/browser_check.js.
+# The browser suite is optional and installed on demand - see docs/faq.md.
+package.json

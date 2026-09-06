@@ -320,6 +320,32 @@ const { chromium } = require('playwright');
   check((await page.textContent('#sdstats')).includes('已採用影片 0/1'),
     'progress counts accepted videos, and starts at zero');
 
+  // The video step. Before this existed there was no button at all, so the
+  // progress bar above could never move through the UI. It is gated on an
+  // accepted keyframe rather than shown-and-disabled, because there is nothing
+  // to hand the video model until a still has been chosen.
+  await page.click('#sdshots .splan'); await page.waitForTimeout(900);
+  check(!await page.isVisible('#sdtovid'),
+    'with no accepted keyframe there is no video button');
+  check((await page.textContent('#sdplan')).includes('先採用一張關鍵幀'),
+    '…and the page says what has to happen first');
+
+  // A route pointing at a files-only model warns before twenty shots are
+  // planned, not at generation time.
+  await page.selectOption('#sdshots .sm2', 's2v');
+  await page.fill('#sdshots .sd2', '你是誰');
+  await page.selectOption('#sdshots .sp', { index: 1 });
+  await page.click('#sdsave'); await page.waitForTimeout(1500);
+  const filesOnly = await page.textContent('#sdhealth');
+  check(filesOnly.includes('沒辦法從這個 app 生成'),
+    'a route on a files-only model is flagged on the page');
+  check(filesOnly.includes('ComfyUI'), '…and says where it can be done instead');
+  await page.selectOption('#sdshots .sm2', 'i2v');
+  await page.fill('#sdshots .sd2', '');
+  await page.click('#sdsave'); await page.waitForTimeout(1400);
+  check(!(await page.textContent('#sdhealth')).includes('沒辦法從這個 app 生成'),
+    '…and the warning goes away when the route is runnable again');
+
   await page.click('#sddel'); await page.waitForTimeout(1000);
   check(!await page.isVisible('#sdbody'), 'deleting the project closes the pipeline');
 
@@ -595,6 +621,11 @@ const { chromium } = require('playwright');
   }
 
   // ---- "why doesn't it look like the stream model" ----
+  // The character-pack controls live on the image tab. Reach it explicitly:
+  // the blocks above are guarded on having a checkpoint or a reference folder,
+  // so on a machine with neither, nothing has switched tabs and every fill
+  // below would time out on a hidden input.
+  await page.click('.tabs button[data-tab="img"]'); await page.waitForTimeout(600);
   await page.evaluate(()=>{ const s=document.getElementById('imodel'); s.value='noobai'; s.dispatchEvent(new Event('change')); });
   await page.waitForTimeout(400);
   // pick a member

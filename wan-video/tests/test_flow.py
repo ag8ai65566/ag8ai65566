@@ -5026,6 +5026,26 @@ def test_shortdrama(tmp: Path) -> None:
     check(talky.route("s2v").model_id != talky.route("i2v").model_id,
           "…precisely because the two routes are different checkpoints")
 
+    # -- "downloaded" and "this app can run it" are not the same thing. S2V and
+    # Animate ship as files only: there is no validated graph here for them, so
+    # a project routed at one has to finish in ComfyUI by hand. Learning that
+    # after planning twenty dialogue shots is the failure this check prevents.
+    check(not registry.get("wan22-s2v").runnable,
+          "wan22-s2v is files-only, so a dialogue route cannot be generated here")
+    warn = next(f for f in sd.check_claims(talky, installed={"wan22-s2v"})
+                if f.id == "not-runnable-s2v")
+    check(warn.level == claims.WARN,
+          "…which warns rather than blocks - the work is possible, just not here")
+    check("ComfyUI" in warn.detail, "…and says where it can be done instead")
+    check("not-runnable-i2v" not in
+          {f.id for f in sd.check_claims(talky, installed={"wan22-s2v"})},
+          "…while the runnable i2v route says nothing")
+    # The two checks are independent: not-downloaded and not-runnable can both
+    # be true, and neither one implies the other.
+    both = {f.id for f in sd.check_claims(talky, installed=set())}
+    check({"missing-s2v", "not-runnable-s2v"} <= both,
+          f"a files-only model that is also absent reports both ({sorted(both)})")
+
     # Frame rate is checked per route against the timeline, with a policy.
     mixed = sd.Project(id="g", delivery=sd.DeliverySpec(1080, 1920, 30),
                        routes={"i2v": sd.Route("hy15-720p")},

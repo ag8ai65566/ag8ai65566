@@ -1193,6 +1193,10 @@ $('#go').onclick = async () => {
     const d = await r.json();
     if (!r.ok) throw new Error(d.detail || r.statusText);
     $('#status').textContent = '已排入佇列';
+    // Same link as the image path: if this clip was started from a shot in the
+    // 短劇 tab, record which shot it belongs to now, while the intent is still
+    // known. Without this the video stage could never gain an attempt.
+    if (typeof attachDramaJob === 'function' && d.id) await attachDramaJob(d.id);
     refreshJobs();
   } catch (e) { $('#status').textContent = '送出失敗：' + e.message; }
   syncGo();
@@ -4434,6 +4438,9 @@ async function planShot(shotId) {
     <div class="s">景別、場景、動作涵蓋不到的東西放這裡。它會接在提詞最後面。</div>
     <div class="row" style="margin-top:8px;flex-wrap:wrap">
       <button class="ghost tiny" id="sdtoimg">生關鍵幀（帶到圖片分頁）</button>
+      ${st.stages.keyframe.active_done
+        ? '<button class="ghost tiny" id="sdtovid">用採用的關鍵幀做影片</button>'
+        : '<span class="s">（先採用一張關鍵幀，才能做影片）</span>'}
       ${(SD.methods[shot.method] || {}).needs_endframe
         ? '<button class="ghost tiny" id="sdtoend">生結束幀</button>' : ''}
       <button class="ghost tiny" id="sdplanclose">收起</button>
@@ -4473,6 +4480,60 @@ async function planShot(shotId) {
     planShot(shotId);
   };
   $('#sdtoimg').onclick = hand('keyframe');
+  // The step that was missing entirely: without it the video stage could never
+  // gain an attempt through the UI, so "已採用影片 x/y" could never move and the
+  // page promised a progress bar it had no way to fill.
+  const vid = $('#sdtovid');
+  if (vid) vid.onclick = async () => {
+    const jobId = st.stages.keyframe.active;
+    const rec = (p.jobs || {})[jobId];
+    const src = rec && (rec.output || (rec.outputs || [])[0]);
+    if (!src) { $('#sdplannote').textContent = '找不到那張採用的關鍵幀。'; return; }
+    vid.disabled = true;
+    try {
+      const blob = await (await fetch(src)).blob();
+      pick(new File([blob], src.split('/').pop() || 'keyframe.png',
+                    { type: blob.type || 'image/png' }));
+      // The motion prompt is the shot's action, not the still's description -
+      // the video model is being told what should *happen*, not what is there.
+      if (!$('#prompt').value.trim()) {
+        $('#prompt').value = [shot.action, shot.extra].filter(Boolean).join(', ');
+      }
+      // The model picker only lists runnable models, so a route pointing at a
+      // files-only model (S2V, Animate) has nothing to select. Say that out
+      // loud instead of leaving whatever was selected before and pretending
+      // the route was honoured.
+      const route = d.plan.route;
+      let routed = true;
+      if (route && $('#model')) {
+        const opt = [...$('#model').options].find((o) => o.value === route.model_id);
+        if (opt) { $('#model').value = route.model_id; onModelChange(); }
+        else routed = false;
+      }
+      // Length is rebuilt per model, so the shot's own duration is added after
+      // the model switch - otherwise a 3.2s shot silently becomes the model's
+      // default 5s and the cut runs long.
+      const secs = $('#seconds');
+      if (secs && shot.seconds > 0) {
+        const want = String(shot.seconds);
+        if (![...secs.options].some((o) => o.value === want)) {
+          const o = document.createElement('option');
+          o.value = want;
+          o.textContent = `${want} 秒（這顆鏡頭）`;
+          secs.appendChild(o);
+        }
+        secs.value = want;
+      }
+      SD.pending = { project: p.id, shot: shotId, stage: 'video' };
+      showTab(document.querySelector('.tabs button[data-tab="gen"]'));
+      $('#status').textContent = `第 ${shot.no} 顆鏡頭的影片：關鍵幀已放進來，`
+        + `寫一句想怎麼動（${shot.seconds}s），按生成。跑完會自動記回那顆鏡頭。`
+        + (routed ? '' : `（這條路線的模型 ${route.model_id} 只下載檔案，`
+           + `這裡跑不了——要去 ComfyUI 手動生成，或先改成別的模型）`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch { $('#sdplannote').textContent = '拿不到那張圖。'; }
+    vid.disabled = false;
+  };
   if ($('#sdtoend')) $('#sdtoend').onclick = hand('endframe');
   $('#sdplanclose').onclick = () => { box.classList.add('hidden'); SD.pending = null; };
 }
@@ -4493,7 +4554,10 @@ async function attachDramaJob(jobId) {
       });
     if (r.ok) {
       SD.open = await r.json();
-      $('#istatus').textContent += '（已記到那顆鏡頭）';
+      // The video stage is queued from the 影片 tab, so the note has to land on
+      // that tab's status line, not the image tab's.
+      const line = want.stage === 'video' ? $('#status') : $('#istatus');
+      if (line) line.textContent += '（已記到那顆鏡頭）';
     }
   } catch { }
 }

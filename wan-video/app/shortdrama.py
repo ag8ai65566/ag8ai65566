@@ -685,6 +685,23 @@ def check_claims(project: Project, *, installed: set[str] | None = None
             "兩條路的輸入和返工成本不同，成品差異本專案沒有比較過。",
             shots=talking))
 
+    # -- can this app actually run the route, or only download its files?
+    # A `files_only` model is one this app has no validated graph for, so it is
+    # generated in ComfyUI by hand. Planning twenty dialogue shots and finding
+    # that out at generation time is exactly the trap this check exists to close.
+    for method in sorted(project.methods_used):
+        route = project.route(method)
+        model = registry.get(route.model_id) if route else None
+        if model and not model.runnable:
+            out.append(Finding(
+                f"not-runnable-{method}", claims.WARN,
+                f"「{METHODS[method].zh}」用的 {model.label.split('—')[0].strip()} "
+                "沒辦法從這個 app 生成。",
+                "這個模型只下載檔案，本頁沒有驗證過的工作流可以跑它 —— "
+                "要到 ComfyUI（:8188）用官方範本手動生成，再回來把結果掛到鏡頭上。"
+                "先知道總比排完二十顆才發現好。",
+                kind="INTEGRITY"))
+
     # -- models on disk
     if installed is not None:
         for method in sorted(project.methods_used):
