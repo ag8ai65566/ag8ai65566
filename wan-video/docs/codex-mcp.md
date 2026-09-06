@@ -120,7 +120,38 @@ claude mcp list                  codex: ✓ Connected         ✓ 對話啟動�
 **「Connected」只代表那個 process 起得來，不代表登入了。** 這是最容易誤會的一點：
 `claude mcp list` 是綠的，工具也在，但第一次真的呼叫才會撞到 401。
 
-補上登入（`bash scripts/codex-login.sh`）之後就能用了。
+補上登入（`bash scripts/codex-login.sh`）之後就能用了 —— **但還有一步**，見下。
+
+### 最容易卡住的一步：登入之後要重啟 MCP server
+
+實測到的（2026-09-06）：
+
+```
+codex mcp-server  process 啟動   19:02:00
+~/.codex/auth.json 寫入          19:09:00   ← 晚了七分鐘
+呼叫 mcp__codex__codex           401 Unauthorized
+```
+
+**`codex mcp-server` 是在啟動時把憑證讀進記憶體的。** 你事後才登入，
+那個已經在跑的 process 不知道 —— 它會一直回 401，而 `claude mcp list`
+還是好端端顯示 `✓ Connected`。
+
+**這就是「Connected 不等於登入」最貴的一次示範。** 解法是把它砍掉，
+下次呼叫時會用新憑證重開：
+
+```bash
+kill $(pgrep -f 'codex mcp-server')
+```
+
+`scripts/codex-login.sh` 登入成功後會自己偵測有沒有這個 process，
+有的話直接把該執行的 `kill` 指令印給你。
+
+驗證通了沒有，就叫它讀一個真的檔案（不要只叫它回「OK」——
+那不能證明它讀得到你的 repo）：
+
+> 叫 codex 讀 `app/shortdrama.py`，回答定義了幾種景別、以及「過肩」的 tag 是什麼。
+
+答對了就是真的通了。
 
 ### 三件仍然成立的事
 
