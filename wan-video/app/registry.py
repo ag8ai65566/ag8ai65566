@@ -47,6 +47,32 @@ class ModelFile:
         return self.save_as or self.path.rsplit("/", 1)[-1]
 
 
+@dataclass(frozen=True)
+class Licence:
+    """A licence with terms the user has to see before downloading.
+
+    Separate from `ModelFile.gated`, which is about whether Hugging Face will
+    serve the bytes. This is about whether the person is allowed to use them,
+    which the download cannot answer and which this project should not answer
+    on their behalf - so it is surfaced, not enforced.
+    """
+
+    name: str
+    url: str
+    # Places the licence excludes outright. Empty for the permissive ones.
+    excluded: tuple[str, ...] = ()
+    note: str = ""
+
+    @property
+    def restricted(self) -> bool:
+        return bool(self.excluded or self.note)
+
+    def public(self) -> dict:
+        return {"name": self.name, "url": self.url,
+                "excluded": list(self.excluded), "note": self.note,
+                "restricted": self.restricted}
+
+
 @dataclass
 class ModelDef:
     id: str
@@ -76,6 +102,10 @@ class ModelDef:
     civitai_bases: tuple[str, ...] = ()
     # Trained for a neighbouring model; often works, sometimes not.
     civitai_bases_loose: tuple[str, ...] = ()
+    # Set when the licence restricts who may use the weights. Shown before the
+    # download button rather than after it. An absent licence means there is
+    # nothing to warn about - Wan 2.2 is Apache 2.0.
+    licence: Licence | None = None
     note: str = ""
 
     @property
@@ -102,6 +132,25 @@ class ModelDef:
     @property
     def runnable(self) -> bool:
         return self.family != "files_only"
+
+
+# Licences that restrict *where* the weights may be used. Read from the LICENSE
+# file in each repo rather than from a summary: HunyuanVideo's opens with "THIS
+# LICENSE AGREEMENT DOES NOT APPLY IN THE EUROPEAN UNION, UNITED KINGDOM AND
+# SOUTH KOREA", and MiniMax's excludes the United States on top of those.
+HUNYUAN_LICENCE = Licence(
+    name="Tencent Hunyuan Community License",
+    url="https://huggingface.co/tencent/HunyuanVideo-1.5/blob/main/LICENSE",
+    excluded=("歐盟", "英國", "韓國"),
+    note="另附 Acceptable Use Policy。",
+)
+
+LTX_LICENCE = Licence(
+    name="LTX-2 Community License",
+    url="https://huggingface.co/Lightricks/LTX-2.5",
+    note="自訂社群授權：年營收達 1000 萬美元的實體要另外購買商用授權，"
+         "衍生出來的 LoRA 也受同一份授權約束。",
+)
 
 
 # -- shared component sets ---------------------------------------------------
@@ -280,6 +329,63 @@ MODELS: list[ModelDef] = [
              "附的 relight LoRA 會把角色的光線重打成場景的光線，不加會像貼上去的。"
              "下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → Wan 2.2 Animate。",
     ),
+    # MiniMax H3. Added after a round with a second model; we agreed on the
+    # shape - files_only, FL2VA only, and the licence shown before the download
+    # button rather than under it.
+    #
+    # Why files_only when this one *does* have a ComfyUI template: the same
+    # reason as LTX and Wan S2V. This project has no GPU and has never produced
+    # a frame, so an in-app graph would be a guess wearing a button. The
+    # official template is maintained by people who can test it.
+    #
+    # Ref2VA (multi-image character reference) is deliberately absent. It is a
+    # second ~21GB transformer, and bundling it would mean everybody downloads
+    # it to find out whether they wanted it.
+    ModelDef(
+        id="minimax-h3",
+        label="MiniMax H3 FL2VA — 只下載檔案（用 ComfyUI 內建範例跑）",
+        family="files_only",
+        vram_gb=24,
+        files=[
+            # int8 convrot, not the nvfp4 build. NVFP4 needs a Blackwell card
+            # (RTX 50-series); a 24GB machine is far more likely to be a 3090 or
+            # 4090, which would download 15GB and then not be able to run it.
+            # The int8 text encoder is 11GB larger and works on anything recent.
+            ModelFile("Comfy-Org/MiniMax-H3",
+                      "diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+                      "diffusion_models", 20970379616),
+            ModelFile("Comfy-Org/MiniMax-H3",
+                      "text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+                      "text_encoders", 27141342152),
+            # Two VAEs, because the audio comes out of the same pass.
+            ModelFile("Comfy-Org/MiniMax-H3",
+                      "vae/minimax_h3_video_vae_fp16.safetensors", "vae", 5207808496),
+            ModelFile("Comfy-Org/MiniMax-H3",
+                      "vae/minimax_h3_audio_vae_fp32.safetensors", "vae", 605254808),
+            ModelFile("Comfy-Org/MiniMax-H3",
+                      "loras/minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+                      "loras", 1956193000),
+        ],
+        tiers={},
+        fps=24,
+        supports_lora=False,
+        civitai_bases=("MiniMax H3",),
+        licence=Licence(
+            name="MiniMax H3 Community License",
+            url="https://huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/LICENSE",
+            # The only licence in this catalogue that excludes the United
+            # States, which is not what anyone expects and is easy to miss.
+            excluded=("美國", "歐盟", "英國", "韓國"),
+            note="年營收超過 2000 萬美元要另外向 MiniMax 申請授權；"
+                 "商用產品的介面上還要標示「MiniMax H3」。",
+        ),
+        note="**權重是真的開放的**，不像 Seedance 那樣只有 API —— "
+             "但這是目錄裡最大的一個（約 56GB），而且光文字編碼器"
+             "（Qwen3-VL 32B）就 27GB，塞不進 24GB 顯存，一定要大量 offload。"
+             "它**沒有單純的 I2V**：FL2VA 是首尾幀，加原生同步音訊。"
+             "多圖角色參考的 Ref2VA 是另外 21GB，沒有收進這個下載包。"
+             "下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → MiniMax H3。",
+    ),
     ModelDef(
         id="hy15-480p",
         label="HunyuanVideo 1.5 480p — fp8 cfg-distilled（最省顯存）",
@@ -299,6 +405,7 @@ MODELS: list[ModelDef] = [
         # CivitAI's "Hunyuan Video" is the original architecture, not 1.5,
         # so those LoRAs are a gamble rather than a match.
         civitai_bases_loose=("Hunyuan Video",),
+        licence=HUNYUAN_LICENCE,
         note="主模型只有 8.3GB。人臉與物理最自然，NSFW 生態比 Wan 少。",
     ),
     ModelDef(
@@ -318,6 +425,7 @@ MODELS: list[ModelDef] = [
         shift=7.0,
         negative=HY_NEGATIVE,
         civitai_bases_loose=("Hunyuan Video",),
+        licence=HUNYUAN_LICENCE,
     ),
     ModelDef(
         id="hy15-720p-hq",
@@ -336,6 +444,7 @@ MODELS: list[ModelDef] = [
         shift=7.0,
         negative=HY_NEGATIVE,
         civitai_bases_loose=("Hunyuan Video",),
+        licence=HUNYUAN_LICENCE,
         note="官方範例的設定（cfg 6 / shift 7 / 20 步）。",
     ),
     # Files only: LTX-2.3's official pipeline is a ~50 node graph with two-pass
@@ -358,6 +467,7 @@ MODELS: list[ModelDef] = [
         tiers={},
         supports_lora=False,
         civitai_bases=("LTXV 2.3",),
+        licence=LTX_LICENCE,
         note="影音同步一次生成。下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → LTX-2.3 I2V。",
     ),
     ModelDef(
@@ -396,6 +506,7 @@ MODELS: list[ModelDef] = [
         tiers={},
         supports_lora=False,
         civitai_bases=("LTXV 2.5",),
+        licence=LTX_LICENCE,
         civitai_bases_loose=("LTXV 2.3",),
         note="影音同步一次生成，官方說支援到 4K HDR / 50fps。"
              "**這個倉庫是 gated**：要先到 huggingface.co/Lightricks/LTX-2.5 按同意授權，"

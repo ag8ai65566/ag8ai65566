@@ -931,6 +931,43 @@ def test_image_registry() -> None:
     for key in ("steps", "cfg", "sampler", "scheduler", "size", "batch", "seed", "clip_skip", "hires", "lora"):
         check(key in images.HELP and len(images.HELP[key]) > 10, f"help text for {key}")
 
+    # -- licences that restrict where the weights may be used. Read from each
+    # repo's LICENSE file, not from a summary: HunyuanVideo's opens with "THIS
+    # LICENSE AGREEMENT DOES NOT APPLY IN THE EUROPEAN UNION, UNITED KINGDOM AND
+    # SOUTH KOREA", and MiniMax H3 excludes the United States on top of that -
+    # which is not what anyone expects from an open-weights release.
+    import registry as reg
+    h3 = reg.get("minimax-h3")
+    check(h3 is not None, "MiniMax H3 is catalogued")
+    check(not h3.runnable,
+          "…as files-only, like every other model this project has no verified graph for")
+    check(h3.licence and "美國" in h3.licence.excluded,
+          f"…and its licence excludes the United States ({h3.licence.excluded})")
+    for place in ("歐盟", "英國", "韓國"):
+        check(place in h3.licence.excluded, f"…and {place}")
+    check(h3.download_bytes > 50e9,
+          f"…and its real size is stated, not rounded down ({h3.download_bytes/1e9:.1f}GB)")
+    te = [f for f in h3.all_files if f.folder == "text_encoders"]
+    check(len(te) == 1 and "int8" in te[0].path,
+          f"the int8 text encoder is used, not nvfp4 - NVFP4 needs a Blackwell "
+          f"card and a 24GB machine is far more likely to be a 3090 or 4090 "
+          f"({[f.name for f in te]})")
+    check(all("ref2va" not in f.path for f in h3.all_files),
+          "Ref2VA is not bundled - it is a second 21GB transformer nobody asked for yet")
+    check(any("audio_vae" in f.path for f in h3.all_files),
+          "…but both VAEs are, because the audio comes out of the same pass")
+
+    for model_id in ("hy15-480p", "hy15-720p", "hy15-720p-hq"):
+        lic = reg.get(model_id).licence
+        check(lic and "歐盟" in lic.excluded,
+              f"{model_id} carries the Hunyuan territory restriction too")
+    for model_id in ("wan22-14b-fp8", "wan22-5b", "wan22-s2v"):
+        check(reg.get(model_id).licence is None,
+              f"{model_id} is Apache 2.0, so it carries no licence warning")
+    restricted = [m.id for m in reg.MODELS if m.licence and m.licence.restricted]
+    check(len(restricted) == 6,
+          f"six models carry a restriction, and the rest genuinely do not ({restricted})")
+
     # -- the photoreal line. A live-action drama cannot be keyframed by an anime
     # checkpoint, so these exist; they are CivitAI-only, which is a different
     # download path and a different credential from everything above.
@@ -5369,6 +5406,100 @@ def test_lora_import(tmp: Path) -> None:
           f"importing the same folder twice skips rather than overwrites ({again})")
 
 
+def test_hf_import() -> None:
+    """Hugging Face as a second source: URL parsing, and what is refused.
+
+    There is no search here, and that was a decision rather than an omission:
+    HF's `filter=lora` is dominated by language-model adapters, and its
+    `base_model` is the uploader's own declaration rather than CivitAI's
+    structured field. A LoRA on the wrong base does not error, it silently does
+    nothing - so a compatibility claim this project cannot stand behind is
+    worse than no claim. What is tested is what the module can be sure of.
+    """
+    section("huggingface import")
+    import hfhub
+
+    cases = [
+        ("https://huggingface.co/Comfy-Org/MiniMax-H3", "Comfy-Org/MiniMax-H3", "main", ""),
+        ("Comfy-Org/MiniMax-H3", "Comfy-Org/MiniMax-H3", "main", ""),
+        ("https://huggingface.co/models/a/b", "a/b", "main", ""),
+        ("https://huggingface.co/x/y/tree/main/subdir", "x/y", "main", "subdir"),
+        ("https://huggingface.co/x/y/blob/main/sub/f.safetensors", "x/y", "main",
+         "sub/f.safetensors"),
+        ("https://huggingface.co/x/y/resolve/v2/f.safetensors", "x/y", "v2",
+         "f.safetensors"),
+        ("  https://huggingface.co/a/b/  ", "a/b", "main", ""),
+    ]
+    for text, repo, rev, path in cases:
+        got = hfhub.parse_url(text)
+        check(got.repo_id == repo and got.revision == rev and got.path == path,
+              f"parsed {text.strip()[:48]} -> {got.repo_id}@{got.revision}:{got.path or '-'}")
+    for junk in ("", "   ", "nonsense", "https://example.com/a/b"):
+        check(not hfhub.parse_url(junk).ok, f"rejected: {junk!r}")
+    for wrong in ("https://huggingface.co/datasets/a/b",
+                  "https://huggingface.co/spaces/a/b"):
+        try:
+            hfhub.parse_url(wrong)
+            ok = False
+        except hfhub.HubError:
+            ok = True
+        check(ok, f"a dataset or space is refused rather than treated as a model ({wrong[-12:]})")
+
+    # -- the URL is built here, never accepted from the browser. That request
+    # carries the user's HF token, so a caller-supplied URL would make this an
+    # open proxy that attaches their credentials to any host.
+    url = hfhub.download_url("owner/repo", "main", "loras/a.safetensors")
+    check(url == "https://huggingface.co/owner/repo/resolve/main/loras/a.safetensors",
+          f"the download URL is built from parts ({url})")
+    for repo, rev, path in (("norepo", "main", "a.safetensors"),
+                            ("o/r", "main", "../../etc/passwd"),
+                            ("o/r", "..", "a.safetensors"),
+                            ("o/r", "main", "/abs/path"),
+                            ("o/r", "", "a.safetensors"),
+                            ("o/r", "main", "")):
+        try:
+            hfhub.download_url(repo, rev, path)
+            ok = False
+        except hfhub.HubError:
+            ok = True
+        check(ok, f"refused to build a URL from {repo!r} {rev!r} {path!r}")
+
+    # -- pickle formats execute code when they load, so they are never offered.
+    check(".bin" in hfhub.PICKLE_SUFFIXES and ".pt" in hfhub.PICKLE_SUFFIXES
+          and ".ckpt" in hfhub.PICKLE_SUFFIXES,
+          "the pickle formats are named and refused")
+    check(set(hfhub.SAFE_SUFFIXES) == {".safetensors", ".gguf"},
+          f"and only tensor-only formats are accepted ({hfhub.SAFE_SUFFIXES})")
+    overlap = set(hfhub.SAFE_SUFFIXES) & set(hfhub.PICKLE_SUFFIXES)
+    check(not overlap, f"with nothing in both lists ({overlap})")
+
+    # -- where a file lands. A wrong guess means ComfyUI never lists it, so the
+    # hint is shown to the user rather than applied silently.
+    for path, want in (("loras/x.safetensors", "loras"),
+                       ("vae/x.safetensors", "vae"),
+                       ("text_encoders/x.safetensors", "text_encoders"),
+                       ("diffusion_models/x.safetensors", "diffusion_models"),
+                       ("some_adapter.safetensors", "loras")):
+        got = hfhub.HubFile(path=path, size=500_000_000).folder_hint
+        check(got == want, f"{path} -> {got}")
+    big = hfhub.HubFile(path="model.safetensors", size=7_000_000_000).folder_hint
+    check(big == "checkpoints", f"a 7GB unnamed weight file reads as a checkpoint ({big})")
+
+    # -- base model grading. "Declared" is the uploader's word, and the tags HF
+    # derives from that same field are the same evidence, not a second source.
+    bases, conf = hfhub._base_models({"id": "o/r", "cardData": {"base_model": "a/b"}})
+    check(bases == ["a/b"] and conf == "declared", f"a declared string base ({bases}, {conf})")
+    bases, conf = hfhub._base_models(
+        {"id": "o/r", "cardData": {"base_model": ["o/r", "a/b"]}})
+    check(bases == ["a/b"], f"a repo listing itself is dropped ({bases})")
+    bases, conf = hfhub._base_models(
+        {"id": "o/r", "tags": ["base_model:a/b", "base_model:adapter:a/b"]})
+    check(bases == ["a/b"] and conf == "declared", f"tags are read too ({bases})")
+    bases, conf = hfhub._base_models({"id": "o/r", "tags": ["diffusion"]})
+    check(bases == [] and conf == "unknown",
+          "and nothing at all is 'unknown', never a guess")
+
+
 def test_doc_links() -> None:
     """Every relative link in the README and docs/ points at a file that exists.
 
@@ -6927,6 +7058,7 @@ async def main() -> int:
     test_ref_folder_import(TMP / "reffolder")
     test_experiments()
     test_lora_import(TMP / "loraimport")
+    test_hf_import()
     test_doc_links()
     test_training(TMP / "training")
     test_shortdrama(TMP / "drama")

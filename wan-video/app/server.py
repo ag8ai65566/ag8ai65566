@@ -32,6 +32,7 @@ import controlnets
 import images
 import downloader
 import envfile
+import hfhub
 import experiments as exp_mod
 import inspect_image
 import library
@@ -538,6 +539,11 @@ async def list_models() -> JSONResponse:
                 # to be able to say so before the download button, not after.
                 "gated_repos": model.gated_repos,
                 "has_hf_token": bool(downloader.hf_token()),
+                # Some licences restrict where the weights may be used at all -
+                # HunyuanVideo excludes the EU, UK and Korea; MiniMax H3 adds
+                # the United States. That belongs in front of the download
+                # button, not in a note under it.
+                "licence": model.licence.public() if model.licence else None,
                 "sampling": {
                     "steps": params.steps,
                     "cfg": params.cfg,
@@ -666,6 +672,77 @@ async def civitai_resolve(payload: dict = Body(default={})) -> JSONResponse:
         return JSONResponse(await civitai.resolve(str(payload.get("url") or "")))
     except civitai.CivitaiError as exc:
         raise HTTPException(400, str(exc)) from exc
+
+
+@app.post("/api/hf/resolve")
+async def hf_resolve(payload: dict = Body(default={})) -> JSONResponse:
+    """Look up a pasted Hugging Face link and list the weight files in it.
+
+    There is no HF search here on purpose - see hfhub.py for the two reasons.
+    This answers the narrower question the module can answer honestly: the user
+    has a link, what is in it.
+    """
+    payload = payload if isinstance(payload, dict) else {}
+    try:
+        return JSONResponse(await hfhub.resolve(
+            str(payload.get("url") or ""), token=downloader.hf_token()))
+    except hfhub.NeedsToken as exc:
+        raise HTTPException(401, str(exc)) from exc
+    except hfhub.HubError as exc:
+        raise HTTPException(400, str(exc)) from exc
+
+
+@app.post("/api/hf/download")
+async def hf_download(payload: dict = Body(default={})) -> JSONResponse:
+    """Fetch the files the user ticked.
+
+    The browser sends repo, revision and paths - never a URL. hfhub builds the
+    URL, so the Hugging Face token can only ever be sent to huggingface.co.
+    """
+    payload = payload if isinstance(payload, dict) else {}
+    repo_id = str(payload.get("repo_id") or "")
+    revision = str(payload.get("revision") or "main")
+    wanted = payload.get("files") or []
+    if not wanted:
+        raise HTTPException(400, "沒有勾選任何檔案")
+
+    token = downloader.hf_token()
+    headers = (("Authorization", f"Bearer {token}"),) if token else ()
+
+    remote = []
+    for item in wanted:
+        if not isinstance(item, dict):
+            raise HTTPException(400, "檔案格式不對")
+        path = str(item.get("path") or "")
+        folder = str(item.get("folder") or "loras")
+        if folder not in ("loras", "checkpoints", "vae", "text_encoders",
+                          "diffusion_models", "controlnet"):
+            raise HTTPException(400, f"不認識的資料夾：{folder}")
+        try:
+            url = hfhub.download_url(repo_id, revision, path)
+        except hfhub.HubError as exc:
+            raise HTTPException(400, str(exc)) from exc
+        remote.append(downloader.RemoteFile(
+            url=url, folder=folder, name=path.rsplit("/", 1)[-1],
+            size=int(item.get("size") or 0), headers=headers,
+            label=f"{repo_id}/{path}"))
+
+    meta = {
+        "source": "huggingface",
+        "url": f"https://huggingface.co/{repo_id}",
+        "repo_id": repo_id, "revision": revision,
+        "base_model": str(payload.get("base_model") or ""),
+        "base_confidence": str(payload.get("base_confidence") or "unknown"),
+        "license": str(payload.get("licence") or ""),
+        "name": repo_id.rsplit("/", 1)[-1],
+        "trained_words": payload.get("trained_words") or [],
+    }
+    return JSONResponse(models.enqueue_files(
+        key=f"hf:{repo_id}@{revision}",
+        label=f"HF · {repo_id}",
+        files=remote,
+        sidecars={f.name: meta for f in remote},
+    ).public())
 
 
 @app.post("/api/loras/import")

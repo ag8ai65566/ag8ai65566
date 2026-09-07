@@ -1021,10 +1021,11 @@
         反過來也一樣。所以下面每個 LoRA 都會標它是給哪個底模的，選錯了 app 會擋。
       </div>
       <div class="s" style="margin-top:8px">
-        拿 LoRA 有三條路，三條都在這一頁：
-        <b>① 用下面的搜尋</b>（最簡單）·
-        <b>② 貼一個網址</b>（你自己在 CivitAI 找到的）·
-        <b>③ 匯入你已經下載好的檔案</b>。
+        拿 LoRA 有四條路，全都在這一頁：
+        <b>① 用下面的搜尋</b>（最簡單，CivitAI）·
+        <b>② 貼 CivitAI 網址</b>（你自己找到的）·
+        <b>③ 匯入你已經下載好的檔案</b> ·
+        <b>④ 貼 HuggingFace 網址</b>。
       </div>
     </div>
 
@@ -1057,6 +1058,20 @@
         檔案會<b>複製</b>過來，你原本那份不動。
       </div>
       <div class="s" id="limnote" style="margin-top:6px"></div>
+
+      <div class="row" style="gap:8px;align-items:flex-end;flex-wrap:wrap;margin-top:12px">
+        <label class="f" style="flex:1;min-width:280px">④ 貼 HuggingFace 網址
+          <input type="text" id="hfurl" aria-label="HuggingFace 網址"
+            placeholder="https://huggingface.co/作者/repo　或　作者/repo" style="width:100%"></label>
+        <button class="ghost" id="hfgo">找這個</button>
+      </div>
+      <div class="s" style="margin-top:4px">
+        HuggingFace 上也有很多人放訓練好的 LoRA。這裡<b>沒有搜尋</b>，只認網址 ——
+        HF 的分類資料不像 CivitAI 那麼可靠（它的 <code>filter=lora</code> 大半是語言模型的
+        LoRA），與其給你一個看起來很準其實在猜的搜尋，不如你自己找到再貼進來。
+        <b>一個 repo 可能有很多個檔案</b>，會列出來讓你自己勾。
+      </div>
+      <div id="hfbox" class="banner hidden" style="margin-top:8px"></div>
     </div>
 
     <div class="card" style="margin-top:12px">
@@ -1863,6 +1878,111 @@ function renderLimFound() {
   };
 }
 
+/* ---------- HuggingFace: paste a URL, pick the files ----------
+   No search. HF's LoRA metadata is not reliable enough to claim compatibility
+   from - see app/hfhub.py for what was actually measured. */
+
+const HF = { found: null };
+
+async function hfResolve() {
+  const url = $('#hfurl').value.trim();
+  if (!url) { $('#hfbox').classList.add('hidden'); return; }
+  $('#hfgo').disabled = true;
+  $('#hfbox').classList.remove('hidden');
+  $('#hfbox').innerHTML = '<span class="s">查詢中…</span>';
+  try {
+    const r = await fetch('/api/hf/resolve', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    HF.found = d;
+    renderHfFound();
+  } catch (e) {
+    $('#hfbox').innerHTML = `<span class="bad">${esc(e.message)}</span>`;
+  }
+  $('#hfgo').disabled = false;
+}
+
+function renderHfFound() {
+  const d = HF.found;
+  if (!d) return;
+  // Compatibility is graded, not asserted. HF's base_model is the uploader's
+  // own declaration; a LoRA on the wrong base does not error, it silently does
+  // nothing, so "unknown" has to look different from "declared".
+  const baseLine = d.base_models.length
+    ? `<b>作者說是給</b> <code>${d.base_models.map(esc).join('</code>、<code>')}</code> 用的`
+    : '<b class="warn">作者沒有標這是給哪個底模用的</b> —— '
+      + 'LoRA 配錯底模<b>不會報錯，只是沒有效果</b>。裝之前先去 repo 頁面確認。';
+  const rows = d.files.map((f, i) => `
+    <label class="chk" style="display:block;margin-top:3px">
+      <input type="checkbox" data-hff="${i}"${d.files.length === 1 ? ' checked' : ''}>
+      <code>${esc(f.path)}</code>
+      <span class="s">${(f.size / 1e6).toFixed(1)} MB → <code>${esc(f.folder)}</code></span>
+    </label>`).join('');
+  $('#hfbox').innerHTML = `
+    <b>${esc(d.repo_id)}</b>
+    ${d.gated ? '<span class="tag">要登入</span>' : ''}
+    <span class="s">${d.downloads.toLocaleString()} 次下載 · ♥ ${d.likes}
+      · 授權 ${esc(d.licence || '（作者未標示）')}</span>
+    <div class="s" style="margin-top:4px">${baseLine}</div>
+    ${d.skipped.length ? `<div class="s" style="margin-top:4px">
+      這個 repo 裡有 ${d.skipped.length} 個 <code>.bin</code>／<code>.pt</code> 檔沒有列出來 ——
+      那種格式載入時會執行程式碼，這裡只收 <code>.safetensors</code> 和 <code>.gguf</code>。</div>` : ''}
+    <div class="s" style="margin-top:8px"><b>要下載哪些？</b>
+      ${d.files.length > 1 ? `（這個 repo 有 ${d.files.length} 個檔）` : ''}</div>
+    <div style="max-height:230px;overflow:auto;margin-top:3px">${rows}</div>
+    <div class="s" style="margin-top:8px">
+      <b>這個功能是給虛構角色、你自己生成的身份，以及你有權使用的素材用的。</b>
+      不要把可辨識的真實人物放進成人內容。
+    </div>
+    <div class="row" style="gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap">
+      <button class="go" id="hfget">下載勾選的</button>
+      <a class="s" href="${esc(d.page_url)}" target="_blank" rel="noopener">先去看看這個 repo</a>
+      <span class="s" id="hfsum"></span>
+    </div>`;
+
+  const boxes = () => [...document.querySelectorAll('[data-hff]')];
+  const sum = () => {
+    const picked = boxes().filter((b) => b.checked);
+    const bytes = picked.reduce((n, b) => n + d.files[+b.dataset.hff].size, 0);
+    $('#hfsum').textContent = picked.length
+      ? `${picked.length} 個檔，共 ${(bytes / 1e9).toFixed(2)} GB`
+      : '還沒勾任何檔案';
+    $('#hfget').disabled = !picked.length;
+  };
+  boxes().forEach((b) => b.onchange = sum);
+  sum();
+
+  $('#hfget').onclick = async () => {
+    const picked = boxes().filter((b) => b.checked).map((b) => d.files[+b.dataset.hff]);
+    if (!picked.length) return;
+    $('#hfget').disabled = true;
+    const r = await fetch('/api/hf/download', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        repo_id: d.repo_id, revision: d.revision,
+        // Paths, never URLs: the request carries the HF token, so the browser
+        // must not be able to name the host it goes to.
+        files: picked.map((f) => ({ path: f.path, folder: f.folder, size: f.size })),
+        base_model: d.base_models[0] || '', base_confidence: d.base_confidence,
+        licence: d.licence,
+      }),
+    });
+    const out = await r.json();
+    if (!r.ok) {
+      $('#hfsum').innerHTML = `<span class="bad">${esc(out.detail || '下載失敗')}</span>`;
+      $('#hfget').disabled = false;
+      return;
+    }
+    $('#hfget').textContent = '已排入下載';
+    refreshDownloads(); refreshLoras(true);
+  };
+}
+
+$('#hfgo').onclick = hfResolve;
+$('#hfurl').onkeydown = (e) => { if (e.key === 'Enter') hfResolve(); };
 $('#limgo').onclick = limResolve;
 $('#limurl').onkeydown = (e) => { if (e.key === 'Enter') limResolve(); };
 $('#limfile').onclick = async () => {
@@ -2000,6 +2120,28 @@ function gateBanner(m) {
   </div>`;
 }
 
+function licenceBanner(m) {
+  const l = m.licence;
+  if (!l || !l.restricted) return '';
+  // Territory first: it is the part that decides whether someone may use this
+  // at all, and the part nobody expects. MiniMax H3 excludes the United States,
+  // which is not something you would guess from an open-weights release.
+  return `<div class="banner warn">
+    <b>這個模型的授權有限制</b> —— ${esc(l.name)}
+    ${l.excluded.length
+      ? `<div style="margin-top:4px"><b class="bad">不適用於：${l.excluded.map(esc).join('、')}</b></div>`
+      : ''}
+    ${l.note ? `<div class="s" style="margin-top:4px">${esc(l.note)}</div>` : ''}
+    <div class="s" style="margin-top:4px">
+      <a href="${esc(l.url)}" target="_blank" rel="noopener">讀原始授權</a>
+      —— 這個 app 無法、也不會替你判斷你在哪裡，只負責在你按下載之前把條款放到你面前。
+    </div>
+    <label class="chk" style="margin-top:6px">
+      <input type="checkbox" data-ack="${esc(m.id)}"> 我讀過了，而且我不在上面那些地區
+    </label>
+  </div>`;
+}
+
   $('#mlist').innerHTML = MODELS.map((m) => {
     const a = m.vram_advice || {};
     const badge = m.installed ? '<span class="tag done">已安裝</span>'
@@ -2013,15 +2155,30 @@ function gateBanner(m) {
       </div>
       ${m.note ? `<div class="note">${(m.note).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}</div>`:''}
       ${!m.runnable ? '<div class="note">這個模型不能從本頁生成，只下載檔案。</div>':''}
+      ${licenceBanner(m)}
       ${gateBanner(m)}
       ${a.level && a.level !== 'ok' ? `<div class="banner ${a.level}">${(a.text||'').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}</div>`:''}
       ${m.missing.length && !m.installed ? `<div class="note">缺 ${m.missing.length} 個檔：${esc(m.missing.slice(0,3).join(', '))}${m.missing.length>3?' …':''}</div>`:''}
     </div>`;
   }).join('');
-  document.querySelectorAll('[data-dl],[data-redl]').forEach((b) => b.onclick = async () => {
-    b.disabled = true;
-    await fetch(`/api/models/${b.dataset.dl || b.dataset.redl}/download`, { method:'POST' });
-    refreshDownloads();
+  // A restricted licence has to be acknowledged before the bytes move. This is
+  // not a legal control - nothing here can verify where anyone is - it is
+  // making sure the terms were put in front of them first, which is the part
+  // that was missing.
+  document.querySelectorAll('[data-ack]').forEach((c) => c.onchange = () => {
+    const btn = document.querySelector(`[data-dl="${c.dataset.ack}"]`)
+             || document.querySelector(`[data-redl="${c.dataset.ack}"]`);
+    if (btn) btn.disabled = !c.checked;
+  });
+  document.querySelectorAll('[data-dl],[data-redl]').forEach((b) => {
+    const id = b.dataset.dl || b.dataset.redl;
+    const ack = document.querySelector(`[data-ack="${id}"]`);
+    if (ack && !ack.checked) b.disabled = true;
+    b.onclick = async () => {
+      b.disabled = true;
+      await fetch(`/api/models/${id}/download`, { method:'POST' });
+      refreshDownloads();
+    };
   });
 }
 

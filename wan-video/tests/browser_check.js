@@ -852,7 +852,8 @@ function crc32(buf) {
   const loraTxt = await page.textContent('#tab-lora');
   check(loraTxt.includes('LoRA 認底模'),
     'the LoRA tab leads with the compatibility rule, which is the one that bites');
-  check(loraTxt.includes('三條路'), 'and names all three ways to get one');
+  check(loraTxt.includes('四條路'),
+    'and names every way to get one - four now that Hugging Face is a source');
 
   // A file the user already downloaded. No network needed, so this runs
   // everywhere; the URL path is covered by the Python tests against the parser.
@@ -888,6 +889,58 @@ function crc32(buf) {
   // This block reloads twice; the aborted polls those cause are collected
   // separately (see the console handler at the top) rather than counted here.
   await page.waitForTimeout(1200);
+
+  // ---- HuggingFace as a second source, and the licence gate ----
+  // No search on the HF side, by decision: its LoRA metadata is not good enough
+  // to claim compatibility from. What is asserted here is that the page says so
+  // rather than quietly guessing.
+  const hfMark = errors.length;
+  await page.click('.tabs button[data-tab="lora"]');
+  await page.waitForTimeout(900);
+  check((await page.textContent('#tab-lora')).includes('沒有搜尋'),
+    'the HF path says it has no search, and why');
+
+  await page.fill('#hfurl', 'lopi999/Wan2.2-I2V_General-NSFW-LoRA');
+  await page.click('#hfgo');
+  await page.waitForTimeout(5000);
+  let hfTxt = await page.textContent('#hfbox');
+  check(hfTxt.includes('作者說是給') && hfTxt.includes('Wan-AI/Wan2.2-I2V-A14B'),
+    'a declared base model is shown as declared, and named');
+  const hfFiles = await page.evaluate(() => document.querySelectorAll('[data-hff]').length);
+  check(hfFiles === 2,
+    `both of that repo's files are listed - a repo is not one LoRA (${hfFiles})`);
+
+  await page.fill('#hfurl', 'Se0ulSeeker/wan_2.2_i2v_nsfw_loras');
+  await page.click('#hfgo');
+  await page.waitForTimeout(5500);
+  hfTxt = await page.textContent('#hfbox');
+  check(hfTxt.includes('作者沒有標'),
+    'an undeclared base model is called out rather than guessed');
+  check(hfTxt.includes('不會報錯'),
+    'and says what a wrong base actually does, which is nothing at all');
+  check(hfTxt.includes('虛構角色'),
+    'and the boundary on real people is on the page, not only in the docs');
+  check(errors.length === hfMark,
+    `no console errors across the HF path (${errors.slice(hfMark, hfMark + 2).join(' | ') || 'clean'})`);
+
+  // The licence gate. MiniMax H3 excludes the United States, which nobody
+  // expects from an open-weights release, so the download waits for a tick.
+  await page.click('.tabs button[data-tab="mdl"]');
+  await page.waitForTimeout(1500);
+  const mdlTxt = await page.textContent('#mlist');
+  check(mdlTxt.includes('MiniMax H3'), 'MiniMax H3 is in the model list');
+  check(mdlTxt.includes('這個模型的授權有限制') && mdlTxt.includes('美國'),
+    'and its licence banner names the United States');
+  check(mdlTxt.includes('沒有單純的 I2V'),
+    'and the note says it has no plain I2V, which changes how it is used');
+  const h3Btn = '[data-dl="minimax-h3"], [data-redl="minimax-h3"]';
+  check(await page.isDisabled(h3Btn), 'its download button starts disabled');
+  await page.check('[data-ack="minimax-h3"]');
+  await page.waitForTimeout(400);
+  check(!await page.isDisabled(h3Btn), 'and the acknowledgement enables it');
+  const wanGated = await page.evaluate(() =>
+    !!document.querySelector('[data-ack="wan22-14b-fp8"]'));
+  check(!wanGated, 'while Wan, being Apache 2.0, is not gated at all');
 
   // ---- 訓練角色: plan, check a real folder, emit a config ----
   // The whole tab is the part of training that can be done without a GPU, so
