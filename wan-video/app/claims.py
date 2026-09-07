@@ -52,6 +52,15 @@ LOCAL_MEASUREMENT = "LOCAL_MEASUREMENT"
 hash and a written-down question it is a HYPOTHESIS with extra confidence.
 """
 
+PEER_REVIEWED = "PEER_REVIEWED"
+"""Established in published research, with the paper named.
+
+Stronger than EXTERNAL_MEASUREMENT because the method was reviewed and can be
+read - but it is still not LOCAL_MEASUREMENT. A paper showing that a failure
+*occurs* is not a measurement of how often it will happen to you, and the
+`limits` field is where that distinction has to be written down.
+"""
+
 EXTERNAL_MEASUREMENT = "EXTERNAL_MEASUREMENT"
 """Somebody else measured it and this project has not reproduced it.
 
@@ -83,13 +92,14 @@ because it has never generated one.
 """
 
 EVIDENCE_KINDS = (
-    OFFICIAL_SPEC, LOCAL_MEASUREMENT, EXTERNAL_MEASUREMENT,
+    OFFICIAL_SPEC, LOCAL_MEASUREMENT, PEER_REVIEWED, EXTERNAL_MEASUREMENT,
     INDUSTRY_CONVENTION, AUTHOR_RECOMMENDATION, HYPOTHESIS,
 )
 
 EVIDENCE_ZH = {
     OFFICIAL_SPEC: "官方規格",
     LOCAL_MEASUREMENT: "本專案實測",
+    PEER_REVIEWED: "已發表研究",
     EXTERNAL_MEASUREMENT: "外部實測（未重現）",
     INDUSTRY_CONVENTION: "產業慣例",
     AUTHOR_RECOMMENDATION: "本工具建議",
@@ -132,7 +142,7 @@ class Claim:
         credibility of a model card. The UI shows the three counts separately.
         """
         return self.evidence_kind in (OFFICIAL_SPEC, LOCAL_MEASUREMENT,
-                                      EXTERNAL_MEASUREMENT)
+                                      PEER_REVIEWED, EXTERNAL_MEASUREMENT)
 
     def public(self) -> dict:
         return {
@@ -352,6 +362,26 @@ CLAIMS: tuple[Claim, ...] = (
         limits="先前寫成「這是 AI 感最大的來源，比補幀還明顯」——"
                "那個排序沒有任何依據。",
         policy=INFO,
+    ),
+
+    Claim(
+        id="consistency.multi_lora_bleed",
+        text="同一張圖同時全域載入兩個角色 LoRA，可能讓兩人的臉、髮型或服裝互相混合，"
+             "或讓其中一個角色失去辨識度。",
+        evidence_kind=PEER_REVIEWED,
+        source="多概念客製化的研究把這類失敗命名為 concept confusion、"
+               "concept vanishing、concept conflict 與 identity loss；"
+               "LoRA-Composer 與 Mix-of-Show 都以此為出發點",
+        urls=("https://arxiv.org/abs/2403.11627",
+              "https://arxiv.org/abs/2305.18292"),
+        checked="2026-09-07",
+        scope="同一次生成裡用普通 LoRA loader 全域疊上兩個以上的角色 LoRA",
+        limits="**不是「一定會混」。** 論文證明的是這類失敗存在並值得研究，"
+               "不是某個失敗率。而且**查不到可靠的強度臨界點** —— "
+               "「調到 0.7 就安全」這種說法沒有依據，"
+               "結果跟 LoRA 的訓練程度、rank、底模、兩個角色本身有多像都有關。"
+               "本專案沒有生成過任何一張圖，這條也沒有重現過。",
+        policy=WARN,
     ),
 
     # --- LoRA training. Nothing here was run by this project: there is no GPU

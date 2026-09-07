@@ -71,8 +71,22 @@ running: set[str] = set()
 _background: set[asyncio.Task] = set()
 
 
+UPLOAD_MODEL_ID = "user-upload"
+
+# Caps on an imported still. Not about disk - a decompression bomb is a small
+# file that becomes gigabytes of pixels in memory, and a keyframe has no reason
+# to be anywhere near either limit.
+MAX_IMPORT_BYTES = 80_000_000
+MAX_IMPORT_PIXELS = 64_000_000
+
+
 def model_label(record: library.Record) -> str:
     """Records span two catalogues; look in the right one."""
+    # An imported picture was not generated here, so it must not wear the name
+    # of a model that did not make it - "which model produced this" has to keep
+    # meaning what it says.
+    if record.model_id == UPLOAD_MODEL_ID:
+        return "（你自己匯入的圖）"
     if record.kind in ("image", "comic"):
         model = images.resolve(record.model_id)
         return model.label if model else record.model_id
@@ -1976,21 +1990,45 @@ async def drama_upload(project_id: str, shot_id: str,
     data = await image.read()
     if not data:
         raise HTTPException(400, "圖片是空的")
+    if len(data) > MAX_IMPORT_BYTES:
+        raise HTTPException(
+            400, f"檔案太大（{len(data)/1e6:.0f}MB）。上限是 "
+                 f"{MAX_IMPORT_BYTES//1_000_000}MB —— 關鍵幀不需要這麼大。")
     try:
+        probe = Image.open(io.BytesIO(data))
+        probe.verify()
         opened = Image.open(io.BytesIO(data))
-        opened.verify()
-        opened = Image.open(io.BytesIO(data))
+        pixels = opened.size[0] * opened.size[1]
+        if pixels > MAX_IMPORT_PIXELS:
+            raise HTTPException(
+                400, f"這張圖 {opened.size[0]}×{opened.size[1]}，像素太多。"
+                     f"上限約 {MAX_IMPORT_PIXELS//1_000_000} 百萬像素。")
         # EXIF orientation is a real trap: a phone photo can be stored
         # landscape with a "rotate me" tag, and PIL ignores it unless asked.
         # The video model would then animate a sideways picture.
         opened = ImageOps.exif_transpose(opened)
+        had_alpha = opened.mode in ("RGBA", "LA", "P")
+        mode_was = opened.mode
+        if had_alpha:
+            # Flattening onto black is a choice, not a no-op: `.convert("RGB")`
+            # would do it silently and the user would wonder where the
+            # transparent background went.
+            flat = Image.new("RGB", opened.size, (0, 0, 0))
+            alpha = opened.convert("RGBA").split()[-1]
+            flat.paste(opened.convert("RGB"), mask=alpha)
+            opened = flat
+        else:
+            # Covers CMYK JPEGs and greyscale, both of which reach here.
+            opened = opened.convert("RGB")
         width, height = opened.size
+    except HTTPException:
+        raise
     except Exception:
         raise HTTPException(400, "無法辨識這個圖片格式。JPG / PNG / WebP 都可以。")
 
     record = library.Record(
         id=uuid.uuid4().hex[:12],
-        model_id="",
+        model_id=UPLOAD_MODEL_ID,
         prompt=f"（匯入的圖片）{image.filename or ''}".strip(),
         kind="image",
         status="done",
@@ -1998,11 +2036,22 @@ async def drama_upload(project_id: str, shot_id: str,
         width=width, height=height,
         created=time.time(),
         finished=time.time(),
-        settings={"imported": True},
+        # `kind` means media type, not how it was obtained - the gallery and the
+        # job filters both branch on it - so the origin lives in settings.
+        settings={"origin": "upload",
+                  "original_filename": image.filename or "",
+                  "original_mode": mode_was,
+                  "import_stage": stage},
     )
     name = f"{record.id}.png"
     config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    opened.convert("RGB").save(config.OUTPUT_DIR / name, "PNG")
+    # Re-encoded rather than stored as uploaded, which drops EXIF, GPS and XMP
+    # along the way. A holiday photo should not carry its coordinates into a
+    # folder the user will later share.
+    clean = Image.new("RGB", opened.size)
+    clean.putdata(list(opened.getdata()))
+    clean.save(config.OUTPUT_DIR / name, "PNG")
+    opened = clean
     record.outputs = [name]
     record.output = name
     thumb = opened.copy()
@@ -2015,9 +2064,13 @@ async def drama_upload(project_id: str, shot_id: str,
     attempts = shot.jobs_for(stage)
     if record.id not in attempts:
         attempts.append(record.id)
-    # An imported still is not a draft to choose between - the user picked it by
-    # choosing the file - so it is accepted outright. They can still swap it.
-    shot.set_active(stage, record.id)
+    # Accepted only when nothing was accepted yet. Choosing the file is a
+    # deliberate act, so the first import needs no second confirmation - but
+    # silently replacing a take the user already picked is the "progress that
+    # fills itself in" failure this page was built to avoid.
+    replaced = bool(shot.active_for(stage))
+    if not replaced:
+        shot.set_active(stage, record.id)
     DRAMAS.save()
 
     # The video model's output follows the ratio of the still it is handed, so a
@@ -2031,8 +2084,15 @@ async def drama_upload(project_id: str, shot_id: str,
             note = (f"這張圖是 {width}×{height}（比例 {ratio:.3f}），"
                     f"交付是 {delivery.ratio:.3f}。影片會照這張圖的比例出來，"
                     f"所以之後得再裁掉一部分。")
+    if replaced:
+        note = ("這顆鏡頭已經有採用的" + ("結束幀" if stage == "endframe" else "關鍵幀")
+                + "了，所以這張先放著沒有取代它 —— 要換的話按它下面的「採用這個」。"
+                + ("　" + note if note else ""))
+    if had_alpha:
+        note = ("原圖有透明背景，已經填成黑色（不然影片模型會拿到一塊沒定義的區域）。"
+                + ("　" + note if note else ""))
     return JSONResponse({**_drama_payload(project), "imported": record.id,
-                         "note": note})
+                         "accepted": not replaced, "note": note})
 
 
 @app.post("/api/drama/{project_id}/shot/{shot_id}/attach")

@@ -5142,6 +5142,48 @@ def test_shortdrama(tmp: Path) -> None:
     check(talky.route("s2v").model_id != talky.route("i2v").model_id,
           "…precisely because the two routes are different checkpoints")
 
+    # -- two character LoRAs on one still. Published research names this
+    # failure (concept confusion / concept vanishing / identity loss), so it is
+    # the project's first PEER_REVIEWED claim - and the trigger is the LoRAs,
+    # not the head count: two people where only one has a LoRA is not this.
+    def _two(loras: tuple[str, str]) -> sd.Project:
+        proj = sd.Project(
+            id="pair", routes=sd.default_routes(),
+            keyframes=sd.KeyframeProfile(model_id="lustify", width=768, height=1360),
+            cast=[sd.Character("a", "女主", "female", trigger="s1vra",
+                               costume="x", lora=loras[0]),
+                  sd.Character("b", "男主", "male", trigger="m2kor",
+                               costume="y", lora=loras[1])],
+            shots=[sd.Shot(seconds=3.2, size="中景", who=["a", "b"], action="走")])
+        sd.normalise(proj)
+        return proj
+
+    both = {f.id: f for f in sd.check(_two(("a.safetensors", "b.safetensors")))}
+    check("multi-lora" in both, f"two character LoRAs on one shot warns ({sorted(both)})")
+    check(both["multi-lora"].level == claims.WARN,
+          "…as a warning: the research shows the failure exists, not that it is certain")
+    one = {f.id for f in sd.check(_two(("a.safetensors", "")))}
+    check("multi-lora" not in one,
+          f"…and one LoRA between two characters does not, which is a different case ({one})")
+    none = {f.id for f in sd.check(_two(("", "")))}
+    check("multi-lora" not in none, "…nor does a shot with no LoRAs at all")
+
+    bleed = claims.get("consistency.multi_lora_bleed")
+    check(bleed.evidence_kind == claims.PEER_REVIEWED,
+          f"the claim is graded as published research ({bleed.evidence_kind})")
+    check(len(bleed.urls) >= 2 and all("arxiv.org" in u for u in bleed.urls),
+          f"…and names the papers ({bleed.urls})")
+    check("不是某個失敗率" in bleed.limits,
+          "…and its limits say the research does not give a failure rate")
+    check("0.7" in bleed.limits,
+          "…and that the strength numbers people quote have nothing behind them")
+    check(bleed.evidenced, "peer-reviewed counts as evidenced")
+    check(claims.PEER_REVIEWED in claims.EVIDENCE_KINDS
+          and claims.PEER_REVIEWED in claims.EVIDENCE_ZH,
+          "…and the new evidence class is registered everywhere it has to be")
+    check("拆" in both["multi-lora"].detail,
+          "the finding leads with the fix that works today: split the shot")
+
     # -- the keyframe prompt is written in the checkpoint's own vocabulary.
     # `1girl` and `cowboy shot` are danbooru words. A photoreal checkpoint was
     # captioned in English sentences and has no entry for either, so sending

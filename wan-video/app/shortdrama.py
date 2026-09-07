@@ -739,6 +739,27 @@ def check_claims(project: Project, *, installed: set[str] | None = None
                 "或改用參考圖控制；不然每顆鏡頭都會是不同的人。",
                 level=claims.WARN))
 
+    # Two character LoRAs on one still is the case the research is about, and
+    # the trigger is the LoRAs, not the head count: two people where only one
+    # has a LoRA is a different situation entirely.
+    for shot in shots:
+        people = [p for p in (project.character(k) for k in shot.who) if p]
+        with_lora = [p for p in people if p.lora]
+        if len(with_lora) < 2:
+            continue
+        out.append(_claim_finding(
+            "multi-lora", "consistency.multi_lora_bleed",
+            f"第 {shot.no} 顆鏡頭同時要載入 {len(with_lora)} 個角色 LoRA"
+            f"（{'、'.join(p.name for p in with_lora)}）。",
+            "普通的 LoRA 載入是**改整個模型**，不會把 A 的 LoRA 限制在 A 身上，"
+            "所以兩人的臉、髮型或服裝可能互相混合，也可能其中一個失去辨識度。"
+            "**這不是一定會發生。** 可以試的順序："
+            "①把這顆拆成近景／反應／過肩，讓兩人不同框（現在就做得到，也最有效）；"
+            "②先生構圖，再遮住一個人、只掛一個 LoRA 分別重繪臉；"
+            "③把各自的 LoRA 強度往下調 —— 但**沒有可靠的安全值**，"
+            "0.7 這種數字沒有依據，要自己試。",
+            level=claims.WARN))
+
     no_costume = [c.name for c in project.cast if c.key in used and not c.costume]
     if no_costume and styled:
         out.append(_claim_finding(
