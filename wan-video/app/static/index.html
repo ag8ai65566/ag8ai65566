@@ -4896,13 +4896,20 @@ async function planShot(shotId) {
     <div class="s">景別、場景、動作涵蓋不到的東西放這裡。它會接在提詞最後面。</div>
     <div class="row" style="margin-top:8px;flex-wrap:wrap">
       <button class="ghost tiny" id="sdtoimg">生關鍵幀（帶到圖片分頁）</button>
+      <label class="chk">
+        <input type="file" id="sdupfile" accept="image/*" hidden>
+        <button class="ghost tiny" id="sdup">用我自己的圖</button></label>
       ${st.stages.keyframe.active_done
         ? '<button class="ghost tiny" id="sdtovid">用採用的關鍵幀做影片</button>'
         : '<span class="s">（先採用一張關鍵幀，才能做影片）</span>'}
       ${(SD.methods[shot.method] || {}).needs_endframe
-        ? '<button class="ghost tiny" id="sdtoend">生結束幀</button>' : ''}
+        ? `<button class="ghost tiny" id="sdtoend">生結束幀</button>
+           <label class="chk"><input type="file" id="sdupendfile" accept="image/*" hidden>
+             <button class="ghost tiny" id="sdupend">結束幀用我自己的圖</button></label>` : ''}
       <button class="ghost tiny" id="sdplanclose">收起</button>
     </div>
+    <div class="s">「用我自己的圖」= 你已經有想要的畫面了，直接拿它當這顆鏡頭的起點，
+      不用再生一張。影片會從這張圖動起來。</div>
     <div class="s" id="sdplannote"></div>`;
 
   box.querySelectorAll('[data-accept]').forEach((b) => b.onclick = async () => {
@@ -4938,6 +4945,44 @@ async function planShot(shotId) {
     planShot(shotId);
   };
   $('#sdtoimg').onclick = hand('keyframe');
+
+  // Bring your own still. This is image-to-video's most natural use and the
+  // tab had no path for it: a keyframe could only ever be generated here.
+  const upload = (stage, btnId, fileId) => {
+    const btn = $('#' + btnId), file = $('#' + fileId);
+    if (!btn || !file) return;
+    btn.onclick = (e) => { e.preventDefault(); file.click(); };
+    file.onchange = async () => {
+      const chosen = file.files && file.files[0];
+      if (!chosen) return;
+      btn.disabled = true;
+      $('#sdplannote').textContent = '上傳中…';
+      try {
+        const body = new FormData();
+        body.append('image', chosen);
+        body.append('stage', stage);
+        const r = await fetch(
+          `/api/drama/${encodeURIComponent(p.id)}/shot/${encodeURIComponent(shotId)}/upload`,
+          { method: 'POST', body });
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.detail || r.statusText);
+        SD.open = d;
+        renderDramaBody();
+        // Awaited: planShot re-renders the panel, and setting the note before
+        // it finishes means planShot wipes it. The note is the whole point of
+        // the round trip - the server knows the delivery spec and the browser
+        // does not - so it has to land after the re-render, not before.
+        await planShot(shotId);
+        if (d.note) $('#sdplannote').innerHTML = `<span class="warn">${esc(d.note)}</span>`;
+      } catch (err) {
+        $('#sdplannote').innerHTML = `<span class="bad">${esc(err.message)}</span>`;
+        btn.disabled = false;
+      }
+      file.value = '';
+    };
+  };
+  upload('keyframe', 'sdup', 'sdupfile');
+  upload('endframe', 'sdupend', 'sdupendfile');
   // The step that was missing entirely: without it the video stage could never
   // gain an attempt through the UI, so "已採用影片 x/y" could never move and the
   // page promised a progress bar it had no way to fill.

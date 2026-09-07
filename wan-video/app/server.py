@@ -56,7 +56,7 @@ from comfy_client import ComfyClient, ComfyError
 from fastapi import Body, FastAPI, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
-from PIL import Image
+from PIL import Image, ImageOps
 
 STATIC = Path(__file__).parent / "static"
 
@@ -1948,6 +1948,91 @@ async def drama_shot(project_id: str, shot_id: str) -> JSONResponse:
     return JSONResponse({**built, "shot": shot.public(),
                          "state": shortdrama.shot_state(shot, jobs),
                          "plan": shortdrama.shot_plan(project, shot)})
+
+
+@app.post("/api/drama/{project_id}/shot/{shot_id}/upload")
+async def drama_upload(project_id: str, shot_id: str,
+                       image: UploadFile,
+                       stage: str = Form("keyframe")) -> JSONResponse:
+    """Use a picture the user already has as this shot's keyframe.
+
+    The gap this closes: the drama tab could only ever *generate* a keyframe,
+    so "I already have the shot I want" had nowhere to go - which is image-to-
+    video's most natural use.
+
+    The upload becomes a real library record rather than a path stored on the
+    shot. That keeps one source of truth: `shot_state` computes progress by
+    joining attempts against the library, and a second kind of attempt that
+    lived somewhere else would need every one of those paths to learn about it.
+    """
+    project = _drama_or_404(project_id)
+    shot = _shot_or_404(project, shot_id)
+    if stage not in ("keyframe", "endframe"):
+        # Not "video": an uploaded clip has no frames this app produced and
+        # nothing downstream can re-derive, and letting one in would make
+        # "已採用影片" mean two different things.
+        raise HTTPException(400, f"只能匯入關鍵幀或結束幀，不能匯入 {stage}")
+
+    data = await image.read()
+    if not data:
+        raise HTTPException(400, "圖片是空的")
+    try:
+        opened = Image.open(io.BytesIO(data))
+        opened.verify()
+        opened = Image.open(io.BytesIO(data))
+        # EXIF orientation is a real trap: a phone photo can be stored
+        # landscape with a "rotate me" tag, and PIL ignores it unless asked.
+        # The video model would then animate a sideways picture.
+        opened = ImageOps.exif_transpose(opened)
+        width, height = opened.size
+    except Exception:
+        raise HTTPException(400, "無法辨識這個圖片格式。JPG / PNG / WebP 都可以。")
+
+    record = library.Record(
+        id=uuid.uuid4().hex[:12],
+        model_id="",
+        prompt=f"（匯入的圖片）{image.filename or ''}".strip(),
+        kind="image",
+        status="done",
+        source_name=image.filename or "upload",
+        width=width, height=height,
+        created=time.time(),
+        finished=time.time(),
+        settings={"imported": True},
+    )
+    name = f"{record.id}.png"
+    config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    opened.convert("RGB").save(config.OUTPUT_DIR / name, "PNG")
+    record.outputs = [name]
+    record.output = name
+    thumb = opened.copy()
+    thumb.thumbnail((480, 480))
+    record.thumb = f"{record.id}.jpg"
+    lib.thumbs.mkdir(parents=True, exist_ok=True)
+    thumb.convert("RGB").save(lib.thumbs / record.thumb, "JPEG", quality=84)
+    lib.add(record)
+
+    attempts = shot.jobs_for(stage)
+    if record.id not in attempts:
+        attempts.append(record.id)
+    # An imported still is not a draft to choose between - the user picked it by
+    # choosing the file - so it is accepted outright. They can still swap it.
+    shot.set_active(stage, record.id)
+    DRAMAS.save()
+
+    # The video model's output follows the ratio of the still it is handed, so a
+    # picture that is not the delivery shape is worth saying so about now rather
+    # than after twenty shots have been generated from it.
+    delivery = project.delivery
+    note = ""
+    if width and height and delivery.ratio:
+        ratio = width / height
+        if abs(ratio - delivery.ratio) > shortdrama.VERTICAL_TOLERANCE:
+            note = (f"這張圖是 {width}×{height}（比例 {ratio:.3f}），"
+                    f"交付是 {delivery.ratio:.3f}。影片會照這張圖的比例出來，"
+                    f"所以之後得再裁掉一部分。")
+    return JSONResponse({**_drama_payload(project), "imported": record.id,
+                         "note": note})
 
 
 @app.post("/api/drama/{project_id}/shot/{shot_id}/attach")

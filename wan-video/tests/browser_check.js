@@ -401,6 +401,33 @@ function crc32(buf) {
   check((await page.textContent('#sdplan')).includes('先採用一張關鍵幀'),
     '…and the page says what has to happen first');
 
+  // Bring your own still. Image-to-video's most natural use - "I already have
+  // the picture I want" - had no path at all: a keyframe could only be
+  // generated here. An imported still is accepted outright, because choosing
+  // the file *is* the choice.
+  await page.click('#sdshots .splan');
+  await page.waitForTimeout(1000);
+  check(await page.isVisible('#sdup'), 'a shot offers "use my own picture"');
+  const kfGood = require('path').join(require('os').tmpdir(), 'wan-kf-good.png');
+  require('fs').writeFileSync(kfGood, pngOf(768, 1360));
+  await page.setInputFiles('#sdupfile', kfGood);
+  await page.waitForTimeout(2600);
+  check((await page.textContent('#sdplan')).includes('關鍵幀已採用'),
+    'uploading one files it under the shot and accepts it');
+  check(await page.isVisible('#sdtovid'),
+    '…so the video step unlocks without generating anything');
+
+  // The video model's output follows the ratio of the still it is given, so a
+  // picture of the wrong shape is worth saying so about immediately.
+  const kfSquare = require('path').join(require('os').tmpdir(), 'wan-kf-square.png');
+  require('fs').writeFileSync(kfSquare, pngOf(1024, 1024));
+  await page.setInputFiles('#sdupfile', kfSquare);
+  await page.waitForTimeout(2600);
+  const upNote = await page.textContent('#sdplannote');
+  check(upNote.includes('比例') && upNote.includes('裁'),
+    `a square picture is flagged against the 9:16 delivery (${upNote.replace(/\s+/g,' ').slice(0,44)})`);
+
+
   // A route pointing at a files-only model warns before twenty shots are
   // planned, not at generation time.
   await page.selectOption('#sdshots .sm2', 's2v');
