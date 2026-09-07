@@ -1,5 +1,8 @@
-> 另一個獨立的東西放在 [`wan-video/`](wan-video/)：本機跑的「圖片 → 短動畫」環境
-> （Wan 2.2 I2V）。跟訂位系統無關，只是共用同一個 repo。
+> 另一個獨立的東西放在 [`wan-video/`](wan-video/)：本機跑的 AI 影像工作台
+> —— 圖生影片、文生圖、漫畫分鏡、短劇分鏡表、角色 LoRA 訓練。跟訂位系統無關，
+> 只是共用同一個 repo。**它的說明在 [`wan-video/README.md`](wan-video/README.md)，
+> 文件在 [`wan-video/docs/`](wan-video/docs/)** —— 那些 README 裡寫的
+> `docs/xxx.md` 都是相對於 `wan-video/` 的，從 repo 根目錄點會 404。
 
 # 東京 予約台帳
 

@@ -5296,6 +5296,33 @@ def test_shortdrama(tmp: Path) -> None:
 
     check(again.delete(made.id) and again.get(made.id) is None, "delete works")
 
+def test_doc_links() -> None:
+    """Every relative link in the README and docs/ points at a file that exists.
+
+    GitHub resolves these against the file they are written in, so a link that
+    is correct in `wan-video/README.md` is a 404 if the same text is quoted from
+    the repository root. The links themselves are fine; what this catches is a
+    doc being renamed or moved while something still points at the old path.
+    """
+    section("doc links")
+    import re
+
+    root = Path(__file__).resolve().parents[1]
+    pages = [root / "README.md", *sorted((root / "docs").glob("*.md"))]
+    checked, broken = 0, []
+    for page in pages:
+        text = page.read_text(encoding="utf-8")
+        for match in re.finditer(r"\[[^\]]*\]\(([^)#\s]+)(?:#[^)]*)?\)", text):
+            target = match.group(1)
+            if target.startswith(("http://", "https://", "mailto:")):
+                continue
+            checked += 1
+            if not (page.parent / target).exists():
+                broken.append(f"{page.name} -> {target}")
+    check(checked >= 20, f"{checked} relative links found to check")
+    check(not broken, f"every one of them resolves ({broken[:3]})")
+
+
 def test_training(tmp: Path) -> None:
     """Dataset planning, dataset checking, and the configs that come out.
 
@@ -6826,6 +6853,7 @@ async def main() -> int:
     test_ref_chinese_names()
     test_ref_folder_import(TMP / "reffolder")
     test_experiments()
+    test_doc_links()
     test_training(TMP / "training")
     test_shortdrama(TMP / "drama")
     test_styles()
