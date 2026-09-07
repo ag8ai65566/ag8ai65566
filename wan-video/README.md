@@ -175,6 +175,10 @@ python3 scripts/fetch-model.py hy15-480p --check  # 只檢查現況
 
 ## 四、怎麼用
 
+> **第一次用、不知道「底模」「畫風」「LoRA」是什麼?**
+> 先看 [`docs/start-here.md`](docs/start-here.md) —— 三個名詞各一句話講完,
+> 以及你到底要下載什麼、下載幾個。app 裡「圖片」分頁上面也有一份 30 秒版本。
+
 開 <http://127.0.0.1:8000>，上面有九個分頁。
 
 ### 影片
@@ -845,6 +849,7 @@ docs/
   review-round2.md     對 Round 2 審查的逐條回應：3 個實驗記帳 bug、官方圖比例的實測修正
   video-models.md      為什麼 Seedance / Wan 2.5 匯不進來，以及 LTX-2.5 的 gated 下載
   short-drama.md       AI 短劇（黃果那類）的完整製作流程，以及用這套工具做到最細的方法
+  start-here.md        **新手先看這份**：底模／畫風／LoRA 是什麼、你到底要下載什麼
   photoreal.md         寫實真人線：Seedance 為什麼本機跑不了、開放權重的替代組合、角色 LoRA 訓練
   windows-tutorial.md  Windows 從零開始的圖文教學
 tests/

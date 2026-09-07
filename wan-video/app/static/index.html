@@ -330,6 +330,32 @@
       <button class="ghost" id="inspbtn">🔍 看圖猜設定</button>
     </div>
     <div id="insp" class="card hidden" style="margin-bottom:12px"></div>
+
+    <!-- The three words this app kept using without ever defining them. Shown
+         until dismissed: someone who already knows should not have to read it
+         twice, and someone who does not should not have to go looking. -->
+    <div id="basics" class="card hidden" style="margin-bottom:12px">
+      <div class="row" style="align-items:flex-start">
+        <div style="flex:1">
+          <b>先搞懂三個字（30 秒）</b>
+          <div class="s" style="margin-top:6px">
+            <b>底模</b> = 那個會畫畫的模型本體。6～7GB，到「模型」分頁下載，
+            <b>一次用一個</b>。沒有它什麼都做不了。<br>
+            <b>LoRA</b> = 一個小檔案（50～300MB），<b>疊在底模上面</b>教它一件它本來不會的事
+            —— 某個角色的長相、某種畫風。選配的，不是必需。<br>
+            <b>風格靈感庫</b>（下面那個按鈕）<b>不是模型，不用下載</b> ——
+            它就是幫你打好的一串提詞，按下去直接加到你的提詞後面。
+          </div>
+          <div class="s" style="margin-top:6px">
+            <b>最少你只要下載一個底模就能開始。</b>
+            動漫選 NoobAI-XL，寫實真人選 LUSTIFY。
+            完整的新手教學在 <code>docs/start-here.md</code>。
+          </div>
+        </div>
+        <button class="ghost tiny" id="basicsclose">知道了</button>
+      </div>
+    </div>
+
     <div class="card">
       <div class="row">
         <label class="f" style="flex:1;min-width:280px">底模
@@ -536,7 +562,7 @@
         <button class="ghost tiny" id="iwdown" title="把游標所在（或選取）的提詞權重降低 0.05　Ctrl+↓">權重 −</button>
         <button class="ghost tiny" id="iwup" title="把游標所在（或選取）的提詞權重提高 0.05　Ctrl+↑">權重 ＋</button>
         <button class="ghost tiny" id="itags">常用提詞</button>
-        <button class="ghost tiny" id="istyles">風格靈感庫</button>
+        <button class="ghost tiny" id="istyles" title="幫你打好的提詞範本 —— 不是模型，不用下載">風格提詞範本</button>
         <button class="ghost tiny" id="isyntax">提詞語法</button>
         <button class="ghost tiny" id="ipreview">看看隨機變化</button>
         <label class="chk"><input type="file" id="i2ifile" accept="image/*" hidden>
@@ -983,7 +1009,58 @@
   </div>
 
   <div id="tab-lora" role="tabpanel" tabindex="0" class="hidden">
+    <!-- What a LoRA is, before any control that assumes you know. -->
     <div class="card">
+      <h3>LoRA 是什麼</h3>
+      <div class="s">
+        <b>底模</b>是那個會畫畫的大模型（幾 GB，「模型」分頁下載）。
+        <b>LoRA</b> 是一個小檔案（通常 50～300MB），<b>疊在底模上面</b>教它一件它本來不會的事 ——
+        某個特定角色的長相、某種畫風、某個動作。<br>
+        一個底模可以同時疊好幾個 LoRA。**LoRA 不能單獨用**，一定要配一個底模。<br><br>
+        <b>最重要的一件事：LoRA 認底模。</b> 給 SDXL 訓的 LoRA 掛在 Pony 底模上不會動，
+        反過來也一樣。所以下面每個 LoRA 都會標它是給哪個底模的，選錯了 app 會擋。
+      </div>
+      <div class="s" style="margin-top:8px">
+        拿 LoRA 有三條路，三條都在這一頁：
+        <b>① 用下面的搜尋</b>（最簡單）·
+        <b>② 貼一個網址</b>（你自己在 CivitAI 找到的）·
+        <b>③ 匯入你已經下載好的檔案</b>。
+      </div>
+    </div>
+
+    <!-- ② and ③: bring your own. The built-in search only finds what CivitAI's
+         ranking surfaces; someone who already found what they want had no way
+         to use it. -->
+    <div class="card" style="margin-top:12px">
+      <h3>自己抓的 LoRA 放進來</h3>
+      <div class="row" style="gap:8px;align-items:flex-end;flex-wrap:wrap">
+        <label class="f" style="flex:1;min-width:280px">② 貼 CivitAI 網址
+          <input type="text" id="limurl" aria-label="CivitAI 網址"
+            placeholder="https://civitai.com/models/573152" style="width:100%"></label>
+        <button class="ghost" id="limgo">找這個</button>
+      </div>
+      <div class="s" style="margin-top:4px">
+        在 CivitAI 上找到想要的，把<b>網址列整條複製</b>貼進來就好。
+        版本網址（`?modelVersionId=…`）也認得，而且會優先選你正在看的那個版本。
+      </div>
+      <div id="limbox" class="banner hidden" style="margin-top:8px"></div>
+
+      <div class="row" style="gap:8px;align-items:flex-end;flex-wrap:wrap;margin-top:12px">
+        <label class="f" style="flex:1;min-width:280px">③ 匯入已經下載好的檔案
+          <input type="text" id="limpath" aria-label="LoRA 檔案或資料夾路徑"
+            placeholder="C:\Users\你\Downloads\某某角色.safetensors" style="width:100%"></label>
+        <button class="ghost" id="limfile">匯入</button>
+      </div>
+      <div class="s" style="margin-top:4px">
+        已經自己下載過的話，把<b>那個 .safetensors 檔的完整路徑</b>貼進來。
+        給一個<b>資料夾</b>的話，裡面所有 .safetensors 會一起匯入。
+        檔案會<b>複製</b>過來，你原本那份不動。
+      </div>
+      <div class="s" id="limnote" style="margin-top:6px"></div>
+    </div>
+
+    <div class="card" style="margin-top:12px">
+      <div class="s" style="margin-bottom:6px"><b>① 或者在這裡搜</b></div>
       <div class="toolbar">
         <input type="text" id="cq" aria-label="搜尋素材庫" placeholder="搜 CivitAI…（留空看熱門）" style="flex:1;min-width:200px">
         <button class="go" id="csearch">搜尋</button>
@@ -1683,6 +1760,136 @@ function renderCiv() {
     refreshDownloads(); refreshLoras(true);
   });
 }
+/* ---------- the three words, shown until dismissed ---------- */
+// Stays visible across reloads until it is closed. The alternative - showing it
+// once on a genuine first run - means anyone who skimmed it on day one can
+// never get it back, and that is precisely the person who needs it on day two.
+function wireBasics() {
+  const box = $('#basics');
+  if (!box) return;
+  box.classList.toggle('hidden', !!P.get('basicsdone', false));
+  $('#basicsclose').onclick = () => {
+    P.set('basicsdone', true);
+    box.classList.add('hidden');
+  };
+}
+
+/* ---------- bring your own LoRA ----------
+   Two paths the built-in search cannot cover: a link the user already found,
+   and a file they already downloaded. */
+
+async function limResolve() {
+  const url = $('#limurl').value.trim();
+  if (!url) { $('#limbox').classList.add('hidden'); return; }
+  $('#limgo').disabled = true;
+  $('#limbox').classList.remove('hidden');
+  $('#limbox').innerHTML = '<span class="s">查詢中…</span>';
+  try {
+    const r = await fetch('/api/civitai/resolve', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    LIM.found = d;
+    renderLimFound();
+  } catch (e) {
+    $('#limbox').innerHTML = `<span class="bad">${esc(e.message)}</span>`;
+  }
+  $('#limgo').disabled = false;
+}
+
+const LIM = { found: null };
+
+function renderLimFound() {
+  const d = LIM.found;
+  if (!d) return;
+  // A model page can hold versions built on different architectures, so the
+  // version is chosen here rather than assuming the newest is the wanted one.
+  const opts = d.versions.map((v, i) => {
+    const file = (v.files || []).find((f) => f.primary) || (v.files || [])[0];
+    const size = file && file.size ? ` · ${(file.size / 1e9).toFixed(2)}GB` : '';
+    return `<option value="${i}">${esc(v.name || '(未命名版本)')} — ${esc(v.base_model || '?')}${size}</option>`;
+  }).join('');
+  const kindZh = d.kind === 'checkpoint' ? '底模 checkpoint' : 'LoRA';
+  $('#limbox').innerHTML = `
+    <b>${esc(d.name)}</b> <span class="tag kp">${esc(kindZh)}</span>
+    ${d.nsfw ? '<span class="tag">NSFW</span>' : ''}
+    ${d.creator ? `<span class="s">by ${esc(d.creator)}</span>` : ''}
+    <div class="s" style="margin-top:4px">這是一個 <b>${esc(kindZh)}</b>，會裝到
+      ${d.kind === 'checkpoint' ? '<code>models/checkpoints</code>（底模，在「圖片」分頁選）'
+                               : '<code>models/loras</code>（LoRA，在生成頁的 LoRA 區選）'}。</div>
+    <div class="row" style="gap:8px;align-items:flex-end;margin-top:8px;flex-wrap:wrap">
+      <label class="f" style="flex:1;min-width:260px">選版本
+        <select id="limver" aria-label="選版本">${opts}</select></label>
+      <button class="go" id="limget">下載這個</button>
+    </div>
+    <div class="s" id="limwords" style="margin-top:6px"></div>
+    ${d.has_key ? '' : '<div class="s bad" style="margin-top:6px">還沒設 CivitAI API key —— '
+      + '搜尋可以匿名，<b>下載不行</b>。到「設定」分頁貼上就好。</div>'}`;
+  const showWords = () => {
+    const v = d.versions[+$('#limver').value] || d.versions[0];
+    const words = (v.trained_words || []);
+    $('#limwords').innerHTML = words.length
+      ? `<b>觸發詞</b>：${words.map((w) => `<code>${esc(w)}</code>`).join('、')}
+         —— 提詞裡要打這些字，這個 LoRA 才會作用。`
+      : '<span style="opacity:.75">這個版本沒有標觸發詞。</span>';
+  };
+  $('#limver').onchange = showWords;
+  showWords();
+  $('#limget').onclick = async () => {
+    const v = d.versions[+$('#limver').value] || d.versions[0];
+    const file = (v.files || []).find((f) => f.primary) || (v.files || [])[0];
+    if (!file) { $('#limwords').innerHTML = '<span class="bad">這個版本沒有可下載的檔案。</span>'; return; }
+    $('#limget').disabled = true;
+    const r = await fetch('/api/civitai/download', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        kind: d.kind,
+        files: [{ url: file.url, name: file.name, size: file.size }],
+        version_id: v.id, label: d.name, page_url: d.page_url,
+        trained_words: v.trained_words, base_model: v.base_model,
+        preview: (v.images && v.images[0] && v.images[0].url) || '',
+      }),
+    });
+    const out = await r.json();
+    if (!r.ok) {
+      $('#limwords').innerHTML = `<span class="bad">${esc(out.detail || '下載失敗')}</span>`;
+      $('#limget').disabled = false;
+      return;
+    }
+    $('#limget').textContent = '已排入下載';
+    refreshDownloads(); refreshLoras(true);
+  };
+}
+
+$('#limgo').onclick = limResolve;
+$('#limurl').onkeydown = (e) => { if (e.key === 'Enter') limResolve(); };
+$('#limfile').onclick = async () => {
+  const path = $('#limpath').value.trim();
+  if (!path) { $('#limnote').innerHTML = '<span class="bad">要先填一個路徑。</span>'; return; }
+  $('#limfile').disabled = true;
+  $('#limnote').textContent = '複製中…';
+  try {
+    const r = await fetch('/api/loras/import', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path }),
+    });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    const bits = [];
+    if (d.copied.length) bits.push(`<b>匯入了 ${d.copied.length} 個</b>：${d.copied.map(esc).join('、')}`);
+    if (d.skipped.length) bits.push(`<span style="opacity:.8">已經有了，跳過 ${d.skipped.length} 個：${d.skipped.map(esc).join('、')}</span>`);
+    if (d.failed.length) bits.push(`<span class="bad">失敗 ${d.failed.length} 個：${d.failed.map(esc).join('、')}</span>`);
+    if (!bits.length) bits.push('沒有可以匯入的檔案。');
+    $('#limnote').innerHTML = bits.join('<br>');
+    if (d.copied.length) { $('#limpath').value = ''; refreshLoras(true); }
+  } catch (e) {
+    $('#limnote').innerHTML = `<span class="bad">${esc(e.message)}</span>`;
+  }
+  $('#limfile').disabled = false;
+};
+
 $('#csearch').onclick = () => civSearch(true);
 $('#cq').onkeydown = (e) => { if (e.key === 'Enter') civSearch(true); };
 $('#cmore').onclick = () => civSearch(false);
@@ -6256,7 +6463,7 @@ async function boot() {
   wirePromptTools(); refreshQuickTags(); wireSize();
   wireArtists(); refreshArtists(); wireLikeness(); wireRefs();
   wireExperiments(); wireDrama();
-  wireTraining(); refreshTraining();
+  wireTraining(); refreshTraining(); wireBasics();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }

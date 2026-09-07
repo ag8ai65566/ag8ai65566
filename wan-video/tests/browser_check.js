@@ -61,7 +61,23 @@ function crc32(buf) {
   const errors = [], warnings = [];
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
   const page = await ctx.newPage();
-  page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
+  // A request that was cut off mid-flight is not a fault in the page: reloading
+  // aborts whatever polling was running, and the browser logs that as
+  // ERR_CONNECTION_RESET. The event arrives asynchronously, so it lands
+  // wherever it lands - which made it get blamed on whichever block happened to
+  // be running. Kept in a separate list rather than dropped, so a genuine flood
+  // of them is still visible. Server faults are unaffected: those log as
+  // "the server responded with a status of ..." and stay in `errors`.
+  const aborted = [];
+  page.on('console', (m) => {
+    if (m.type() !== 'error') return;
+    const text = m.text();
+    if (/ERR_CONNECTION_RESET|ERR_ABORTED|ERR_NETWORK_CHANGED/.test(text)) {
+      aborted.push(text);
+      return;
+    }
+    errors.push(text);
+  });
   page.on('pageerror', (e) => errors.push('pageerror: ' + e.message));
   await page.goto('http://127.0.0.1:8811/', { waitUntil: 'networkidle' });
 
@@ -801,6 +817,77 @@ function crc32(buf) {
   check(grp > 3 && grp < 52, `group filter works (${grp} in 成人向)`);
   await page.selectOption('#artgroup','');
 
+
+  // ---- the three words, and bringing your own LoRA ----
+  // The user's complaint was not that a feature was missing; it was that the
+  // page used 底模 / 畫風 / LoRA without ever saying what they are. So the
+  // explanation is asserted like a feature, because that is what it is.
+  const loMark = errors.length;
+  await page.click('.tabs button[data-tab="img"]');
+  await page.waitForTimeout(700);
+  await page.evaluate(() => { try { localStorage.removeItem('wan.basicsdone'); } catch {} });
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForTimeout(1600);
+  await page.click('.tabs button[data-tab="img"]');
+  await page.waitForTimeout(700);
+  check(await page.isVisible('#basics'), 'the three-word explainer shows until dismissed');
+  const basicsTxt = await page.textContent('#basics');
+  check(basicsTxt.includes('不是模型，不用下載'),
+    'and says the prompt templates are not a download - the thing that was misread');
+  check(basicsTxt.includes('一次用一個'),
+    'and that one base model is used at a time');
+  check((await page.textContent('#istyles')).includes('提詞範本'),
+    'the button says what it is rather than calling itself a style');
+  await page.click('#basicsclose');
+  await page.waitForTimeout(400);
+  check(!await page.isVisible('#basics'), 'dismissing hides it');
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForTimeout(1600);
+  await page.click('.tabs button[data-tab="img"]');
+  await page.waitForTimeout(700);
+  check(!await page.isVisible('#basics'), 'and it stays dismissed across a reload');
+
+  await page.click('.tabs button[data-tab="lora"]');
+  await page.waitForTimeout(900);
+  const loraTxt = await page.textContent('#tab-lora');
+  check(loraTxt.includes('LoRA 認底模'),
+    'the LoRA tab leads with the compatibility rule, which is the one that bites');
+  check(loraTxt.includes('三條路'), 'and names all three ways to get one');
+
+  // A file the user already downloaded. No network needed, so this runs
+  // everywhere; the URL path is covered by the Python tests against the parser.
+  const loDir = require('path').join(require('os').tmpdir(), 'wan-lora-import');
+  {
+    const fs = require('fs');
+    fs.rmSync(loDir, { recursive: true, force: true });
+    fs.mkdirSync(loDir, { recursive: true });
+    fs.writeFileSync(require('path').join(loDir, 'browser_test_char.safetensors'),
+                     Buffer.alloc(4096));
+  }
+  await page.fill('#limpath', loDir);
+  await page.click('#limfile');
+  await page.waitForTimeout(2200);
+  check((await page.textContent('#limnote')).includes('匯入了 1 個'),
+    'a local folder import copies the weight file in');
+  await page.fill('#limpath', loDir);
+  await page.click('#limfile');
+  await page.waitForTimeout(2200);
+  check((await page.textContent('#limnote')).includes('跳過'),
+    'and importing it again skips rather than overwriting');
+  check(errors.length === loMark,
+    `no console errors across the LoRA tab (${errors.slice(loMark, loMark + 2).join(' | ') || 'clean'})`);
+  await page.fill('#limpath', '/definitely/not/here');
+  await page.click('#limfile');
+  await page.waitForTimeout(1600);
+  check((await page.textContent('#limnote')).includes('找不到'),
+    'and a path that does not exist says so rather than failing silently');
+  await page.evaluate(async () => {
+    // Leave the LoRA folder as it was found.
+    await fetch('/api/loras/browser_test_char.safetensors', { method: 'DELETE' });
+  });
+  // This block reloads twice; the aborted polls those cause are collected
+  // separately (see the console handler at the top) rather than counted here.
+  await page.waitForTimeout(1200);
 
   // ---- 訓練角色: plan, check a real folder, emit a config ----
   // The whole tab is the part of training that can be done without a GPU, so

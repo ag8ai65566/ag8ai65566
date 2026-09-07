@@ -14,6 +14,7 @@ that actually exist for video LoRAs, counted from live search results.
 from __future__ import annotations
 
 import os
+import re
 from dataclasses import dataclass, field
 from urllib.parse import urlencode
 
@@ -35,6 +36,78 @@ BASE_MODELS = {
     "hunyuan": "Hunyuan Video",              # original HunyuanVideo, not 1.5
     "ltx23": "LTXV 2.3",
 }
+
+# The URL shapes a person actually ends up with after browsing CivitAI. All of
+# them were checked against the live site; the query string matters because the
+# model page defaults to the *newest* version, and someone who picked an older
+# one from the version tabs has `?modelVersionId=` in their address bar and
+# means that one.
+#
+#   https://civitai.com/models/573152
+#   https://civitai.com/models/573152/lustify-nsfw-checkpoint
+#   https://civitai.com/models/573152?modelVersionId=3045803
+#   https://civitai.com/api/download/models/3045803
+#   civitai.red / civitarchive mirrors, same path shape
+#   a bare number, which people paste too
+URL_RE = re.compile(
+    r"""(?:
+          /api/download/models/(?P<download>\d+)
+        | /models/(?P<model>\d+)
+        | ^(?P<bare>\d+)$
+        )""",
+    re.VERBOSE,
+)
+VERSION_QUERY_RE = re.compile(r"[?&]modelVersionId=(\d+)")
+
+
+@dataclass(frozen=True)
+class ParsedUrl:
+    """What a pasted CivitAI link points at.
+
+    `version_id` is authoritative when present: a model page shows whichever
+    version was picked, and downloading "the model" would silently hand over a
+    different one - LUSTIFY's newest version is a different architecture from
+    the one two tabs to the left.
+    """
+
+    model_id: int = 0
+    version_id: int = 0
+
+    @property
+    def ok(self) -> bool:
+        return bool(self.model_id or self.version_id)
+
+
+def parse_url(text: str) -> ParsedUrl:
+    """Pull a model or version id out of whatever the user pasted.
+
+    Deliberately permissive about the host: civitai.red and the archive mirrors
+    use the same path shape, and refusing them would mean telling someone their
+    own working link is invalid. The id is what gets used, and it is looked up
+    against the real API afterwards - so a wrong guess fails as "not found"
+    rather than downloading something unexpected.
+    """
+    raw = (text or "").strip()
+    if not raw:
+        return ParsedUrl()
+    version = 0
+    if q := VERSION_QUERY_RE.search(raw):
+        version = int(q.group(1))
+    match = URL_RE.search(raw)
+    if not match:
+        return ParsedUrl(version_id=version)
+    if got := match.group("download"):
+        # A direct download link names the version outright, and beats the
+        # query string if somehow both are present.
+        return ParsedUrl(version_id=int(got))
+    if got := match.group("model"):
+        return ParsedUrl(model_id=int(got), version_id=version)
+    if got := match.group("bare"):
+        # A bare number is ambiguous. Treat it as a model id, which is what the
+        # number in a normal CivitAI URL is.
+        return ParsedUrl(model_id=int(got), version_id=version)
+    return ParsedUrl(version_id=version)
+
 
 SORTS = ["Most Downloaded", "Highest Rated", "Newest", "Most Liked"]
 PERIODS = ["AllTime", "Year", "Month", "Week", "Day"]
@@ -231,6 +304,72 @@ async def version(version_id: int) -> dict:
                 raise CivitaiError(f"CivitAI 回應 {response.status}")
             raw = await response.json()
     return _parse_version(raw).public()
+
+
+async def resolve(text: str) -> dict:
+    """Turn a pasted CivitAI link into the same shape the search results have.
+
+    Two lookups are possible and they answer different questions. A version id
+    names one file set outright. A model id names a *page*, whose versions can
+    be different architectures - so the versions are all returned and the caller
+    picks, rather than this quietly taking the newest.
+    """
+    parsed = parse_url(text)
+    if not parsed.ok:
+        raise CivitaiError(
+            "看不懂這個連結。貼 CivitAI 上那個模型的網址就可以，"
+            "像 https://civitai.com/models/573152 ——"
+            "網址列直接複製整條最保險。")
+
+    headers = {"User-Agent": UA, "Accept": "application/json"}
+    if key := api_key():
+        headers["Authorization"] = f"Bearer {key}"
+
+    async def fetch(url: str) -> dict:
+        async with aiohttp.ClientSession(headers=headers) as session:
+            async with session.get(url, timeout=aiohttp.ClientTimeout(total=45)) as response:
+                if response.status == 404:
+                    raise CivitaiError("CivitAI 上找不到這個東西（404）。連結對嗎？")
+                if response.status == 403:
+                    raise CivitaiError("CivitAI 拒絕這個請求（403）。稍後再試。")
+                if response.status != 200:
+                    raise CivitaiError(f"CivitAI 回應 {response.status}")
+                return await response.json()
+
+    if parsed.version_id and not parsed.model_id:
+        raw = await fetch(f"{API}/model-versions/{parsed.version_id}")
+        model_id = (raw.get("modelId") or 0)
+        model = await fetch(f"{API}/models/{model_id}") if model_id else {}
+        versions = [_parse_version(raw)]
+    else:
+        model = await fetch(f"{API}/models/{parsed.model_id}")
+        versions = [_parse_version(v) for v in (model.get("modelVersions") or [])]
+        versions = [v for v in versions if v.files]
+        if parsed.version_id:
+            # The user was looking at a specific version tab; put it first
+            # rather than letting the newest win by default.
+            versions.sort(key=lambda v: v.id != parsed.version_id)
+
+    if not versions:
+        raise CivitaiError("這個項目沒有可下載的權重檔。")
+
+    kind = (model.get("type") or "").lower()
+    return {
+        "id": model.get("id") or 0,
+        "name": model.get("name") or "",
+        "type": model.get("type") or "",
+        # LORA and Checkpoint go into different folders, and getting it wrong
+        # means ComfyUI simply never lists the file. Reported so the UI can say
+        # which one this is before anything is fetched.
+        "kind": "checkpoint" if kind == "checkpoint" else "lora",
+        "nsfw": bool(model.get("nsfw")),
+        "creator": (model.get("creator") or {}).get("username", ""),
+        "page_url": f"https://civitai.com/models/{model.get('id')}"
+                    if model.get("id") else "",
+        "asked_version": parsed.version_id,
+        "versions": [v.public() for v in versions],
+        "has_key": bool(api_key()),
+    }
 
 
 def download_headers() -> dict:

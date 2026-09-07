@@ -16,6 +16,7 @@ import io
 import json
 import random
 import re
+import shutil
 import time
 import traceback
 import uuid
@@ -650,6 +651,81 @@ async def civitai_search(
             for f in version["files"]:
                 f["installed"] = f["name"] in installed
     return JSONResponse(result)
+
+
+@app.post("/api/civitai/resolve")
+async def civitai_resolve(payload: dict = Body(default={})) -> JSONResponse:
+    """Turn a CivitAI link the user pasted into something downloadable.
+
+    The built-in search only finds what CivitAI's own ranking surfaces. Someone
+    who already found the LoRA they want - in a browser, from a friend, off a
+    forum post - has a URL and no way to use it, which is the gap this closes.
+    """
+    payload = payload if isinstance(payload, dict) else {}
+    try:
+        return JSONResponse(await civitai.resolve(str(payload.get("url") or "")))
+    except civitai.CivitaiError as exc:
+        raise HTTPException(400, str(exc)) from exc
+
+
+@app.post("/api/loras/import")
+async def import_lora(payload: dict = Body(default={})) -> JSONResponse:
+    """Copy a .safetensors the user already has into the LoRA folder.
+
+    A path rather than an upload: this app is local, the file is already on the
+    same disk, and a 500MB round trip through the browser to land two
+    directories away would be pure ceremony. A folder imports everything in it,
+    which is what someone who has been collecting LoRAs actually has.
+    """
+    payload = payload if isinstance(payload, dict) else {}
+    raw = str(payload.get("path") or "").strip().strip('"')
+    if not raw:
+        raise HTTPException(400, "要先給一個檔案或資料夾的路徑")
+    source = Path(raw).expanduser()
+    if not source.exists():
+        raise HTTPException(404, f"找不到：{source}")
+
+    if source.is_dir():
+        found = sorted(p for p in source.iterdir()
+                       if p.suffix.lower() in (".safetensors", ".pt"))
+        if not found:
+            raise HTTPException(400, f"{source} 裡面沒有 .safetensors 檔案")
+    else:
+        if source.suffix.lower() not in (".safetensors", ".pt"):
+            raise HTTPException(
+                400,
+                f"LoRA 要是 .safetensors 檔（你給的是 {source.suffix or '沒有副檔名'}）。"
+                "如果你下載到的是 .zip，先解壓縮。")
+        found = [source]
+
+    target_dir = config.MODELS_DIR / "loras"
+    target_dir.mkdir(parents=True, exist_ok=True)
+    copied, skipped, failed = [], [], []
+    for item in found:
+        target = target_dir / item.name
+        # Already there is not an error, and silently overwriting someone's file
+        # because the names collide would be worse than saying so.
+        if target.exists():
+            skipped.append(item.name)
+            continue
+        try:
+            # Copy, never move: the user's own copy stays where they put it.
+            # Written beside the target first so a failure cannot leave a
+            # half-file that ComfyUI would list and then choke on.
+            part = target.with_name(target.name + ".part")
+            shutil.copyfile(item, part)
+            part.replace(target)
+            copied.append(item.name)
+        except OSError as exc:
+            failed.append(f"{item.name}（{exc.strerror or exc}）")
+            for leftover in (target_dir / (item.name + ".part"),):
+                leftover.unlink(missing_ok=True)
+
+    return JSONResponse({
+        "copied": copied, "skipped": skipped, "failed": failed,
+        "folder": str(target_dir),
+        "loras": models.list_loras(),
+    })
 
 
 @app.post("/api/civitai/download")

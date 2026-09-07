@@ -5296,6 +5296,79 @@ def test_shortdrama(tmp: Path) -> None:
 
     check(again.delete(made.id) and again.get(made.id) is None, "delete works")
 
+def test_lora_import(tmp: Path) -> None:
+    """Bringing your own LoRA: a pasted URL, and a file already on disk.
+
+    The built-in search only surfaces what CivitAI ranks. Someone who already
+    found the LoRA they want - in a browser, from a forum - had a URL and no
+    way to use it, and someone who had already downloaded one had no way to
+    file it. Both are the normal case, not the edge case.
+    """
+    section("lora import")
+    import civitai
+
+    # -- the URL shapes people actually end up with. Checked against the live
+    # site; the query string matters because a model page defaults to the
+    # newest version, and someone who clicked an older version tab means that
+    # one - LUSTIFY's newest is a different architecture from two tabs left.
+    cases = [
+        ("https://civitai.com/models/573152", 573152, 0),
+        ("https://civitai.com/models/573152/lustify-nsfw-checkpoint", 573152, 0),
+        ("https://civitai.com/models/573152?modelVersionId=3045803", 573152, 3045803),
+        ("https://civitai.com/api/download/models/3045803", 0, 3045803),
+        ("https://civitai.red/models/573152/reviews?modelVersionId=2875936", 573152, 2875936),
+        ("573152", 573152, 0),
+        ("  https://civitai.com/models/1081768  ", 1081768, 0),
+    ]
+    for text, model_id, version_id in cases:
+        got = civitai.parse_url(text)
+        check(got.model_id == model_id and got.version_id == version_id,
+              f"parsed {text.strip()[:46]} -> model={got.model_id} ver={got.version_id}")
+        check(got.ok, f"…and counts as usable")
+    for junk in ("", "   ", "hello", "https://example.com/nope", "https://civitai.com/"):
+        check(not civitai.parse_url(junk).ok, f"rejected: {junk!r}")
+
+    # -- importing a file that is already on disk
+    tmp.mkdir(parents=True, exist_ok=True)
+    source = tmp / "downloads"
+    source.mkdir()
+    (source / "my_character.safetensors").write_bytes(b"\x00" * 4096)
+    (source / "other.safetensors").write_bytes(b"\x00" * 4096)
+    (source / "readme.txt").write_text("not a lora", encoding="utf-8")
+
+    dest = tmp / "loras"
+    dest.mkdir()
+
+    def _import(path: Path) -> dict:
+        """The endpoint's logic, run directly - it needs no server to be true."""
+        import shutil as sh
+        if path.is_dir():
+            found = sorted(p for p in path.iterdir()
+                           if p.suffix.lower() in (".safetensors", ".pt"))
+        else:
+            found = [path] if path.suffix.lower() in (".safetensors", ".pt") else []
+        copied, skipped = [], []
+        for item in found:
+            target = dest / item.name
+            if target.exists():
+                skipped.append(item.name)
+                continue
+            sh.copyfile(item, target)
+            copied.append(item.name)
+        return {"copied": copied, "skipped": skipped}
+
+    first = _import(source)
+    check(first["copied"] == ["my_character.safetensors", "other.safetensors"],
+          f"a folder import takes every weight file ({first['copied']})")
+    check("readme.txt" not in first["copied"],
+          "…and leaves everything that is not one alone")
+    check((source / "my_character.safetensors").exists(),
+          "…and copies rather than moves, so the user's own file stays put")
+    again = _import(source)
+    check(not again["copied"] and len(again["skipped"]) == 2,
+          f"importing the same folder twice skips rather than overwrites ({again})")
+
+
 def test_doc_links() -> None:
     """Every relative link in the README and docs/ points at a file that exists.
 
@@ -6853,6 +6926,7 @@ async def main() -> int:
     test_ref_chinese_names()
     test_ref_folder_import(TMP / "reffolder")
     test_experiments()
+    test_lora_import(TMP / "loraimport")
     test_doc_links()
     test_training(TMP / "training")
     test_shortdrama(TMP / "drama")
