@@ -6019,6 +6019,20 @@ def test_runner() -> None:
           f"waiting for a slot gives up eventually, but not early "
           f"({runner.SLOT_TIMEOUT_SECONDS}s)")
 
+    # The plan is built from the project once, and each candidate gets its own
+    # copy of the payload - two candidates sharing one dict would mean editing
+    # either one edited both.
+    import server
+
+    plan, refused = server._plan_run(project, jobs, "keyframe", 2)
+    check(len(plan) == 4 and not refused,
+          f"two shots x two candidates is four frozen tasks ({len(plan)})")
+    check(all(t.payload["prompt"] for t in plan),
+          "each carries the prompt it will be submitted with")
+    plan[0].payload["prompt"] = "改過了"
+    check(plan[1].payload["prompt"] != "改過了",
+          "and they are separate copies, not one dict shared four ways")
+
     # Nothing in this module accepts a take. Grep rather than behaviour: the
     # rule is "never", and a behavioural test only covers the paths it walks.
     source = (ROOT / "app" / "runner.py").read_text(encoding="utf-8")
@@ -6118,6 +6132,25 @@ async def test_episode_endpoints() -> None:
                   "and reports another project's run separately, not as its own")
             async with s.delete(f"{base}/api/drama/{other['id']}") as r:
                 pass
+
+            # A model that is not on disk is one problem with one button. It
+            # used to be reported once per shot, as the same sentence twenty
+            # times with a filename in it and nothing to press.
+            async with s.get(f"{base}/api/drama/{pid}/run") as r:
+                needs = (await r.json())["models"]
+            check(any(n["kind"] == "image" for n in needs),
+                  "the run panel says which image model this episode needs")
+            check(all(not n["installed"] for n in needs),
+                  "and that none of them is on disk here")
+            check(all(n["bytes"] > 0 for n in needs),
+                  "with the download size, so the button can say it")
+            async with s.post(f"{base}/api/drama/{pid}/run",
+                              json={"stage": "keyframe"}) as r:
+                detail = (await r.json()).get("detail", "")
+                check(r.status == 400 and "下載" in detail,
+                      f"and the run refuses once, pointing at the button ({detail[:26]})")
+                check("第 1 顆" not in detail and "第 2 顆" not in detail,
+                      "rather than once per shot")
 
             # -- joining: nothing to join yet
             async with s.get(f"{base}/api/drama/{pid}/assemble") as r:

@@ -1443,7 +1443,7 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         raise HTTPException(
             400,
             f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
-            "請到「模型」分頁下載，或改選已安裝的。",
+            "短劇分頁「整集」那一格、或「模型」分頁，都可以下載它。",
         )
 
     init_name = str(payload.get("init_image") or "")
@@ -2089,6 +2089,54 @@ RUNS = runner_mod.Runs(config.OUTPUT_DIR / ".drama-run.json")
 RUNS.load()
 
 
+def _drama_models(project) -> list[dict]:
+    """Every model this episode needs, and whether it is actually on disk.
+
+    The drama page used to report a missing model once per shot, as twenty
+    identical failures with a filename in them and no way to act - the user
+    had to work out which tab to go to and which of forty entries it was. The
+    same information belongs here, once, with the button attached.
+    """
+    out: list[dict] = []
+    image_model = images.get(project.keyframes.model_id)
+    if image_model is not None:
+        state = image_status(image_model)
+        out.append({
+            "kind": "image", "id": image_model.id, "label": image_model.label,
+            "for": "關鍵幀",
+            "installed": state["installed"],
+            "missing": state["missing"][:3],
+            "bytes": sum(f.size for f in image_model.all_files),
+            "downloadable": bool(getattr(image_model, "downloadable", True)),
+        })
+    for method in sorted(project.methods_used):
+        route = project.route(method)
+        model = registry.get(route.model_id) if route else None
+        if model is None:
+            continue
+        state = models.model_status(model)
+        out.append({
+            "kind": "video", "id": model.id, "label": model.label,
+            "for": shortdrama.METHODS[method].zh,
+            "installed": state["installed"],
+            "missing": (state.get("missing") or [])[:3],
+            "bytes": sum(f.size for f in model.all_files),
+            "downloadable": True,
+            "runnable_here": model.runnable or bool(
+                wfimport.load(config.WORKFLOWS_DIR, model.id)),
+        })
+    # One entry per model: a project with four methods on one model should not
+    # offer the same download four times.
+    seen, unique = set(), []
+    for entry in out:
+        if (entry["kind"], entry["id"]) in seen:
+            continue
+        seen.add((entry["kind"], entry["id"]))
+        unique.append(entry)
+    return unique
+
+
+
 @app.get("/api/drama/{project_id}/run")
 async def run_status(project_id: str) -> JSONResponse:
     """What a run would do, and what one in flight has done so far."""
@@ -2107,6 +2155,9 @@ async def run_status(project_id: str) -> JSONResponse:
         "video_todo": [s.no for s in runner_mod.shots_needing(project, jobs, "video")],
         "video_blocked": runner_mod.blocked_reason(project, jobs, "video"),
         "max_per_run": runner_mod.MAX_PER_RUN,
+        # What this episode needs on disk, with enough for the page to offer
+        # the download itself instead of sending the user to another tab.
+        "models": _drama_models(project),
     })
 
 
@@ -2135,6 +2186,18 @@ async def run_episode(project_id: str, payload: dict = Body(default={})) -> JSON
     jobs = _drama_jobs(project)
     if reason := runner_mod.blocked_reason(project, jobs, stage):
         raise HTTPException(400, reason)
+    # A missing model is one problem, not twenty. Reporting it per shot was
+    # technically accurate and completely useless: the same sentence repeated,
+    # with a filename in it, and nothing to press.
+    want = "image" if stage == "keyframe" else "video"
+    absent = [m for m in _drama_models(project)
+              if m["kind"] == want and not m["installed"]]
+    if absent:
+        raise HTTPException(
+            400,
+            f"{absent[0]['label'].split('—')[0].strip()} 還沒下載完，"
+            f"所以現在生不出東西。下面那顆「下載」按鈕可以直接下載"
+            f"（{absent[0]['bytes'] / 1e9:.1f}GB），下載完再按一次。")
     todo = runner_mod.shots_needing(project, jobs, stage)
     if not todo:
         raise HTTPException(

@@ -315,6 +315,13 @@ function crc32(buf) {
   await page.click('.tabs button[data-tab="sd"]'); await page.waitForTimeout(1200);
   const sdIntro = await page.textContent('#sdintro');
   check(sdIntro.includes('3.2'), 'the tab states the reference median -> ' + sdIntro.replace(/\s+/g,' ').slice(0,46));
+  // It used to say "it generates nothing - generating is on the image/video
+  // tabs". That stopped being true and stayed on the page, which is worse than
+  // never having been true.
+  check(!sdIntro.includes('它不生成任何東西'),
+    'the tab no longer claims it cannot generate');
+  check(sdIntro.includes('都在下面'),
+    'and says the whole episode is made here -> ' + sdIntro.replace(/\s+/g,' ').slice(0,36));
   check(sdIntro.includes('一格影片都沒生成過'),
     'and says up front that none of this was measured on real video');
   check(/\d+ 條是上游官方規格/.test(sdIntro) && /\d+ 條是本專案量的/.test(sdIntro),
@@ -533,13 +540,28 @@ function crc32(buf) {
   check(!await page.isVisible('#sdfitrow'),
     'the crop question stays out of the way until a shot is the wrong shape');
 
-  // A run with no video model installed must attempt the shot and report the
-  // failure against it, rather than failing silently.
-  await page.click('#sdrunvid'); await page.waitForTimeout(7000);
+  // A model that is not on disk is one problem with one button, not twenty
+  // identical failures with a filename in them and nowhere to press.
+  const needTxt = await page.textContent('#sdneed');
+  check(needTxt.includes('還沒下載完'),
+    'a missing model is named in the episode card -> ' + needTxt.replace(/\s+/g,' ').slice(0,40));
+  check(await page.isVisible('#sdneed .sdget'),
+    '…with its download button right there, not on another tab');
+  check(/\d+\.\d+GB/.test(await page.textContent('#sdneed .sdget')),
+    '…and the size on the button');
+  check((await page.textContent('#sdhealth')).includes('不用離開這一頁'),
+    'and the health panel points at that button too, not at another tab');
+
+  // With the model not on disk, pressing the live button must say that once -
+  // naming the model and pointing at the button that fixes it. It used to
+  // attempt every shot and report the same sentence once per shot instead.
+  await page.click('#sdrunvid'); await page.waitForTimeout(5000);
   const ranNote = await page.textContent('#sdrunnote');
-  check(ranNote.includes('有問題的鏡頭') || ranNote.includes('排好了'),
-    'a run reports what happened per shot -> ' + ranNote.replace(/\s+/g,' ').slice(0,46));
-  check(ranNote.includes('第 1 顆'), '…naming the shot it belongs to');
+  check(ranNote.includes('還沒下載完') && ranNote.includes('下載'),
+    'a run blocked by a missing model says so, with the fix -> '
+    + ranNote.replace(/\s+/g,' ').slice(0,46));
+  check(!ranNote.includes('第 1 顆'), '…once, not once per shot');
+  check(!/已排 \d+\/\d+/.test(ranNote), '…and nothing was queued');
 
   // A shot can be given a sound file, and is told plainly when its route will
   // not use one.

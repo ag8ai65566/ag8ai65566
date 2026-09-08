@@ -916,6 +916,9 @@
           <div class="spacer"></div>
           <button class="go" id="sdjoin">③ 接成一支影片</button>
         </div>
+        <!-- What this episode needs on disk. A missing model used to be twenty
+             identical failures with a filename in them and nothing to press. -->
+        <div id="sdneed" style="margin-top:6px"></div>
         <div class="s" id="sdrunnote" style="margin-top:6px"></div>
         <!-- Only appears when a shot is genuinely the wrong shape. Both answers
              throw something away, so it is asked rather than defaulted. -->
@@ -4790,8 +4793,9 @@ function renderDramaIntro() {
     + (c.INDUSTRY_CONVENTION || 0);
   const total = Object.values(c).reduce((a, b) => a + b, 0);
   $('#sdintro').innerHTML = `
-    這頁保存一集的<b>拍攝計畫</b>：交付規格、卡司、分鏡表，以及每顆鏡頭生成過幾次、
-    你採用了哪一次。<b>它不生成任何東西</b> —— 生成在圖片／影片分頁。
+    <b>一集從頭到尾都在這一頁做完。</b>寫分鏡表、上傳你自己的圖、生關鍵幀、
+    生影片、挑要哪一個、最後接成一支檔案 —— 都在下面，不用跳到別的分頁。
+    每顆鏡頭生成過幾次、你採用了哪一次，這裡都記著。
     <div style="margin-top:6px">產業慣例：直式 9:16、單集
       ${(f.episode_seconds || [60, 180]).join('–')} 秒、鏡頭中位數參考值
       ${f.shot_median} 秒、單句台詞 ≤${f.dialogue_max} 字、開場
@@ -5970,6 +5974,8 @@ async function refreshRun() {
   $('#sdrunnote').innerHTML = bits.join('<br>')
     || '每顆鏡頭都排好也挑好了。可以按「接成一支影片」。';
 
+  renderNeeds(d.models || []);
+
   // One step is live at a time. Three enabled buttons in a row is three ways to
   // get it wrong; the disabled ones stay visible so the order is still legible.
   const kfLeft = (d.keyframe_todo || []).length;
@@ -5991,6 +5997,72 @@ async function refreshRun() {
   if (step === 'join') refreshJoinable();
   else { const row = $('#sdfitrow'); if (row) row.classList.add('hidden'); }
   return run;
+}
+
+// What this episode needs on disk, with the download attached. A missing model
+// used to surface as one failure per shot - the same sentence twenty times,
+// with a filename in it, and no way to act on it from this page.
+let needDownloading = '';
+function renderNeeds(needs) {
+  const box = $('#sdneed');
+  if (!box) return;
+  const missing = needs.filter((m) => !m.installed);
+  if (!missing.length) { box.innerHTML = ''; needDownloading = ''; return; }
+  box.innerHTML = missing.map((m) => `
+    <div class="row" style="gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px">
+      <span class="bad">●</span>
+      <span><b>${esc(m.label.split('—')[0].trim())}</b>（${esc(m.for)}用的）還沒下載完</span>
+      ${m.downloadable
+        ? `<button class="go tiny sdget" data-kind="${esc(m.kind)}" data-id="${esc(m.id)}">
+             下載（${(m.bytes / 1e9).toFixed(1)}GB）</button>`
+        : '<span class="s">這個底模是你自己放進來的，沒有下載來源</span>'}
+    </div>`).join('')
+    + '<div class="s" style="margin-top:2px">下載完這一格會自己消失，然後上面的按鈕就能按了。</div>';
+  box.querySelectorAll('.sdget').forEach((b) => b.onclick = async () => {
+    b.disabled = true;
+    b.textContent = '開始下載…';
+    const url = b.dataset.kind === 'image'
+      ? `/api/image/models/${encodeURIComponent(b.dataset.id)}/download`
+      : `/api/models/${encodeURIComponent(b.dataset.id)}/download`;
+    try {
+      const r = await fetch(url, { method: 'POST' });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      needDownloading = b.dataset.id;
+      watchNeed();
+    } catch (e) {
+      b.disabled = false;
+      b.textContent = '下載';
+      $('#sdrunnote').innerHTML = `<span class="bad">${esc(e.message)}</span>`;
+    }
+  });
+}
+
+// Progress for a download started from this page, shown on this page. Sending
+// someone to another tab to watch a bar is the thing this card exists to stop.
+let needWatch = null;
+function watchNeed() {
+  if (needWatch) clearInterval(needWatch);
+  needWatch = setInterval(async () => {
+    let d;
+    try { d = await (await fetch('/api/downloads')).json(); } catch { return; }
+    const c = d.current;
+    const box = $('#sdneed');
+    if (!box) { clearInterval(needWatch); needWatch = null; return; }
+    if (!c) {
+      clearInterval(needWatch); needWatch = null;
+      const last = (d.recent || []).slice(-1)[0];
+      if (last && last.status === 'error') {
+        box.innerHTML = `<div class="errbox">${esc(last.label)}：${esc(last.message)}</div>`;
+      } else if (SD.open) { refreshRun(); }
+      return;
+    }
+    box.innerHTML = `
+      <div class="s"><b>下載中：</b>${esc(c.label.split('—')[0].trim())}
+        · ${gb(c.done)} / ${gb(c.total)}${c.eta ? ' · 還要 ' + dur(c.eta) : ''}</div>
+      <div class="bar"><i style="width:${c.progress * 100}%"></i></div>
+      <div class="s">下載完這一格會自己消失。可以先去寫分鏡表。</div>`;
+  }, 2000);
 }
 
 function watchRun() {

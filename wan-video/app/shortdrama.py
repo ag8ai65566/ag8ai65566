@@ -876,8 +876,9 @@ def check_claims(project: Project, *, installed: set[str] | None = None
                 f"missing-{method}", claims.BLOCK,
                 f"「{METHODS[method].zh}」要用的 "
                 f"{model.label if model else route.model_id} 還沒下載。",
-                ("到「模型」分頁下載"
-                 + (f"（{model.download_bytes / 1e9:.1f}GB）。" if model else "。")),
+                ("下面「整集」那一格有這個模型的下載按鈕"
+                 + (f"（{model.download_bytes / 1e9:.1f}GB）" if model else "")
+                 + "，按下去就會開始下載，不用離開這一頁。"),
                 kind="INTEGRITY"))
     return out
 
