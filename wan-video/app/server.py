@@ -231,19 +231,37 @@ async def run_job(record: library.Record, image_bytes: bytes) -> None:
     image.save(png, "PNG")
     uploaded = await client.upload_image(png.getvalue(), f"{record.id}.png")
 
-    graph = workflow.build(
-        model,
-        params,
-        image_name=uploaded,
-        prompt=record.prompt,
-        # "" is a deliberate "no negative prompt"; only an unset one falls back.
-        negative=record.negative if record.negative_custom else None,
-        seed=record.seed,
-        width=record.width,
-        height=record.height,
-        available_nodes=available,
-        filename_prefix=f"wan/{record.id}",
-    )
+    # An imported workflow wins over a built one. It is the official graph from
+    # the user's own ComfyUI, where it demonstrably runs; this app's builders
+    # only exist for the families it has been able to verify.
+    stored = wfimport.load(config.WORKFLOWS_DIR, model.id)
+    if stored:
+        slots = wfimport.slots_from(stored)
+        graph = wfimport.apply(
+            stored["graph"], slots,
+            image=uploaded,
+            prompt=record.prompt,
+            negative=record.negative if record.negative_custom else model.negative,
+            seed=record.seed,
+            width=record.width,
+            height=record.height,
+            prefix=f"wan/{record.id}",
+        )
+        record.message = "用你匯入的工作流…"
+    else:
+        graph = workflow.build(
+            model,
+            params,
+            image_name=uploaded,
+            prompt=record.prompt,
+            # "" is a deliberate "no negative prompt"; only an unset one falls back.
+            negative=record.negative if record.negative_custom else None,
+            seed=record.seed,
+            width=record.width,
+            height=record.height,
+            available_nodes=available,
+            filename_prefix=f"wan/{record.id}",
+        )
     if problems := await client.validate(graph):
         raise ComfyError("工作流程與這台 ComfyUI 不相容：\n- " + "\n- ".join(problems))
 
@@ -425,8 +443,14 @@ async def generate(
     chosen = registry.get(model) if model else effective_default()
     if chosen is None:
         raise HTTPException(400, f"不認識的模型：{model}")
-    if not chosen.runnable:
-        raise HTTPException(400, f"{chosen.label} 只提供檔案下載，不能從這裡生成")
+    # Runnable here means "this app ships a graph for it" OR "the user imported
+    # one". Checking only the first is what made the picker offer a model the
+    # server then refused.
+    if not chosen.runnable and not wfimport.load(config.WORKFLOWS_DIR, chosen.id):
+        raise HTTPException(
+            400,
+            f"{chosen.label} 只提供檔案下載，不能從這裡生成。"
+            "到「模型」分頁把 ComfyUI 官方的工作流匯入，就可以了。")
     if reason := missing_reason(chosen):
         raise HTTPException(400, reason)
 

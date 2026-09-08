@@ -5720,6 +5720,20 @@ def test_workflow_import() -> None:
           "…and it can be removed again")
     _sh.rmtree(root, ignore_errors=True)
 
+    # -- and the part that makes any of it matter: the job actually uses it.
+    # The importer, the storage and the UI were all built before the generation
+    # path knew about them, so the picker offered a model the server then
+    # refused - worse than not offering it, because it looked available.
+    src = (Path(__file__).resolve().parents[1] / "app" / "server.py").read_text(
+        encoding="utf-8")
+    check("wfimport.load(config.WORKFLOWS_DIR, model.id)" in src,
+          "the job builder looks for an imported workflow")
+    check("wfimport.apply(" in src, "…and applies it instead of building one")
+    gate = src[src.index("if not chosen.runnable"):][:260]
+    check("wfimport.load" in gate,
+          "…and the generate gate accepts a model whose workflow was imported, "
+          "rather than checking only the catalogue flag")
+
     # -- the summary a beginner reads: names first, node numbers as small print
     rows = wfimport.summary(got)
     check(all("label" in r and "found" in r for r in rows), "the summary is complete")
