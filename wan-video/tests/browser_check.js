@@ -344,6 +344,16 @@ function crc32(buf) {
   check((await page.textContent('#sdspecwhy')).includes('不是「一個模型」'),
     'step 0 explains that the delivery is what is locked, not one model');
 
+  // The upload path has to be findable without knowing where it is. It used to
+  // live only inside the per-shot panel, and that panel does not exist until
+  // 做這顆 is pressed - so someone looking for "where do I put my picture" was
+  // staring at a table that never mentioned it.
+  const emptyTable = await page.textContent('#sdshots');
+  check(emptyTable.includes('還沒有鏡頭'),
+    'an empty shot table says what to press rather than showing bare headers');
+  check(emptyTable.includes('上傳圖'),
+    '…and names the upload, before any panel has been opened');
+
   // A male character must not be given a female count tag.
   await page.click('#sdaddcast'); await page.waitForTimeout(900);
   await page.fill('#sdcast .cn', '男主');
@@ -456,6 +466,9 @@ function crc32(buf) {
     '…and the video button waits for an accepted keyframe');
   check((await page.textContent('#sdplan')).includes('要細調的話'),
     '…while the hand-off to the full controls is kept, just demoted');
+
+  check(await page.isVisible('#sdshots .rowupbtn'),
+    'every shot row carries its own upload button, panel closed or not');
 
   // Bring your own still. Image-to-video's most natural use - "I already have
   // the picture I want" - had no path at all: a keyframe could only be

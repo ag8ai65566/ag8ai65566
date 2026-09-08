@@ -4737,6 +4737,12 @@ function renderShotTable() {
   $('#sdshots').innerHTML = `
     <tr><th>#</th><th>狀態</th><th>秒</th><th>景別</th><th>角色</th><th>說話者</th>
         <th>場景</th><th>動作／情緒</th><th>台詞</th><th>生成方式</th><th></th></tr>`
+    // An empty table with only headers tells a first-time user nothing about
+    // what to press. Everything on this page hangs off having a shot.
+    + ((p.shots || []).length ? '' : `<tr><td colspan="11" class="s" style="padding:10px">
+        還沒有鏡頭。按上面的<b>「加鏡頭」</b>新增一顆 ——
+        每一列右邊會有<b>「做這顆」</b>（展開提詞和生成）和<b>「上傳圖」</b>
+        （直接拿你自己的圖當關鍵幀）。</td></tr>`)
     + (p.shots || []).map((s, i) => `
     <tr data-si="${i}" data-sid="${esc(s.id)}">
       <td class="s">${s.no}</td>
@@ -4755,6 +4761,9 @@ function renderShotTable() {
         `<option value="${esc(k)}"${k === s.method ? ' selected' : ''}>${esc(v.zh)}</option>`).join('')}</select></td>
       <td class="row" style="gap:3px">
         <button class="ghost tiny splan" data-sid="${esc(s.id)}">做這顆</button>
+        <label class="chk" title="用你自己的圖當這顆的關鍵幀">
+          <input type="file" class="rowup" data-sid="${esc(s.id)}" accept="image/*" hidden>
+          <button class="ghost tiny rowupbtn" data-sid="${esc(s.id)}">上傳圖</button></label>
         <button class="ghost tiny sdel">刪</button></td>
     </tr>`).join('');
 }
@@ -4854,6 +4863,38 @@ function wireDramaBody() {
   });
   document.querySelectorAll('#sdshots .splan').forEach((b) =>
     b.onclick = () => planShot(b.dataset.sid));
+  // Upload lives on the row as well as in the panel. It was panel-only, and the
+  // panel does not exist until you click 做這顆 - so someone looking for "where
+  // do I put my picture" was staring at a table that did not mention it.
+  document.querySelectorAll('#sdshots .rowupbtn').forEach((b) => b.onclick = (e) => {
+    e.preventDefault();
+    const input = document.querySelector(`#sdshots .rowup[data-sid="${b.dataset.sid}"]`);
+    if (input) input.click();
+  });
+  document.querySelectorAll('#sdshots .rowup').forEach((input) => input.onchange = async () => {
+    const chosen = input.files && input.files[0];
+    if (!chosen) return;
+    const sid = input.dataset.sid;
+    $('#sdsaved').textContent = '上傳中…';
+    try {
+      const body = new FormData();
+      body.append('image', chosen);
+      body.append('stage', 'keyframe');
+      const r = await fetch(
+        `/api/drama/${encodeURIComponent(SD.open.id)}/shot/${encodeURIComponent(sid)}/upload`,
+        { method: 'POST', body });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      SD.open = d;
+      renderDramaBody();
+      await planShot(sid);
+      $('#sdsaved').textContent = '';
+      if (d.note) $('#sdplannote').innerHTML = `<span class="warn">${esc(d.note)}</span>`;
+    } catch (err) {
+      $('#sdsaved').innerHTML = `<span class="bad">${esc(err.message)}</span>`;
+    }
+    input.value = '';
+  });
   document.querySelectorAll('#sdroutes .rf').forEach((sel) => sel.onchange = () => {
     const row = sel.closest('.route');
     row.querySelector('.rfx').classList.toggle('hidden', sel.value !== 'interpolate');
