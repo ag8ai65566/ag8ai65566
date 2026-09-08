@@ -865,6 +865,24 @@ def check_claims(project: Project, *, installed: set[str] | None = None
             "再把結果掛回這顆鏡頭。",
             shots=flf, kind="INTEGRITY"))
 
+    # -- a route pointing at a model that has no such mode. Different from
+    # "not downloaded" and from "no graph here": this one can never work, no
+    # matter what you install or import, because the model does not do that.
+    for method in sorted(project.methods_used):
+        route = project.route(method)
+        model = registry.get(route.model_id) if route else None
+        if model is None or not model.methods or method in model.methods:
+            continue
+        can = "、".join(METHODS[m].zh for m in model.methods if m in METHODS)
+        out.append(Finding(
+            f"wrong-mode-{method}", claims.BLOCK,
+            f"「{METHODS[method].zh}」指到 {model.label.split('—')[0].strip()}，"
+            f"但這個模型沒有這種模式。",
+            f"它只能做：{can}。"
+            "在第 0 步把這條路線換成別的模型，或者把用到這種鏡頭的生成方式改掉 —— "
+            "不然生成的時候會失敗，或是生出跟你要的不一樣的東西。",
+            kind="INTEGRITY"))
+
     # -- models on disk
     if installed is not None:
         for method in sorted(project.methods_used):

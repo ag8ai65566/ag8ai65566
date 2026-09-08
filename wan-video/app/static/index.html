@@ -72,6 +72,34 @@
   button.ghost { background:transparent; color:var(--muted); border:1px solid var(--line);
     border-radius:10px; padding:8px 14px; font:500 13px inherit; cursor:pointer; }
   button.tiny { padding:3px 9px; font-size:12px; border-radius:8px; }
+  /* "Where do I upload my own picture" was asked four times over four rounds.
+     It was a `ghost tiny` button wedged between 做這顆 and 刪 at the far right
+     of a table that scrolls sideways - the same weight as a delete button, in
+     the place a delete button lives. Its own labelled column, and a look that
+     is neither the primary action nor the destructive one. */
+  /* The shot table's three prose fields were 100-130px fixed-width inputs.
+     A sentence of Chinese is gone past the right edge after eight characters,
+     and you cannot see what you typed. They grow with their content instead,
+     and the table gives them the room by being wide enough to scroll. */
+  #sdshots textarea.grow { width:100%; min-width:150px; resize:vertical;
+    background:var(--panel2); color:var(--fg); border:1px solid var(--line);
+    border-radius:8px; padding:6px 8px; font:400 13px inherit; line-height:1.4;
+    overflow:hidden; }
+  #sdshots td:nth-child(7) { min-width:150px; }
+  #sdshots td:nth-child(8), #sdshots td:nth-child(9) { min-width:220px; }
+  /* The table scrolls sideways, and the two columns that hold the actions are
+     the ones you go looking for - so they stay put instead of being the first
+     thing to disappear off the right edge. Widening the prose fields pushed
+     them out of view, which is exactly the bug this whole row was fixing. */
+  #sdshots th:nth-last-child(-n+2), #sdshots td:nth-last-child(-n+2) {
+    position:sticky; background:var(--panel); z-index:2; }
+  #sdshots th:last-child, #sdshots td:last-child { right:0; }
+  #sdshots th:nth-last-child(2), #sdshots td:nth-last-child(2) { right:64px;
+    box-shadow:-8px 0 8px -8px rgba(0,0,0,.6); }
+  button.up { background:transparent; color:var(--accent); border:1px dashed var(--accent);
+    border-radius:9px; padding:5px 10px; font:600 12px inherit; cursor:pointer;
+    white-space:nowrap; }
+  button.up:hover { background:color-mix(in srgb, var(--accent) 14%, transparent); }
   button.danger { color:var(--err); border-color:#4a2429; }
   button:disabled { opacity:.45; cursor:default; }
   .spacer { flex:1; }
@@ -944,7 +972,9 @@
       <!-- 第 3-7 步 -->
       <div class="card step" style="margin-top:12px">
         <h3>第 3 步之後 · 每個鏡頭怎麼做</h3>
-        <div class="s">點分鏡表任何一列的<b>「做這顆」</b>，會展開那顆鏡頭的關鍵幀提詞和步驟。</div>
+        <div class="s">點分鏡表任何一列的<b>「做這顆」</b>，會展開那顆鏡頭的關鍵幀提詞和步驟。
+        <br><b>要用你自己的照片</b>的話不用展開 —— 分鏡表那一列的
+        <b>「你的圖」</b>欄位就有<b>「⬆ 上傳我的圖」</b>，選了檔案就直接當成那顆的關鍵幀。</div>
         <div id="sdplan" class="hidden" style="margin-top:8px"></div>
       </div>
 
@@ -4920,7 +4950,9 @@ function renderDramaBody() {
   $('#sdshotwhy').innerHTML = `
     參考中位數是 <b>${f.shot_median} 秒</b>（來自某一部成片的鏡頭統計，
     <b>不是任何模型的故障閾值</b>）。一集 1.5 分鐘大約 22–28 顆。
-    有台詞就要指定<b>誰在說</b> —— 同框兩個人時，音訊要驅動誰沒有別的地方可以判斷。`;
+    有台詞就要指定<b>誰在說</b> —— 同框兩個人時，音訊要驅動誰沒有別的地方可以判斷。
+    <div style="margin-top:4px"><b>已經有想用的圖？</b>右邊<b>「你的圖」</b>那一欄的
+    <b>「⬆ 上傳我的圖」</b>，選了就直接當那顆的關鍵幀，不用生成也不用挑。</div>`;
   $('#sdstats').innerHTML = `${p.shot_count} 顆 · ${p.seconds} 秒 · 中位數 ${p.median_shot}s
     · 台詞 ${p.dialogue_chars} 字 · <b>已採用影片 ${p.done}/${p.shot_count}</b>`;
   renderShotTable();
@@ -4962,13 +4994,14 @@ function renderShotTable() {
   const methodOpts = Object.entries(SD.methods);
   $('#sdshots').innerHTML = `
     <tr><th>#</th><th>狀態</th><th>秒</th><th>景別</th><th>角色</th><th>說話者</th>
-        <th>場景</th><th>動作／情緒</th><th>台詞</th><th>生成方式</th><th></th></tr>`
+        <th>場景</th><th>動作／情緒</th><th>台詞</th><th>生成方式</th>
+        <th title="用你自己的圖當這顆的關鍵幀，不用生成">你的圖</th><th></th></tr>`
     // An empty table with only headers tells a first-time user nothing about
     // what to press. Everything on this page hangs off having a shot.
-    + ((p.shots || []).length ? '' : `<tr><td colspan="11" class="s" style="padding:10px">
-        還沒有鏡頭。按上面的<b>「加鏡頭」</b>新增一顆 ——
-        每一列右邊會有<b>「做這顆」</b>（展開提詞和生成）和<b>「上傳圖」</b>
-        （直接拿你自己的圖當關鍵幀）。</td></tr>`)
+    + ((p.shots || []).length ? '' : `<tr><td colspan="12" class="s" style="padding:10px">
+        還沒有鏡頭。按下面的<b>「＋ 加一個鏡頭」</b>新增一顆 ——
+        每一列會有一欄<b>「你的圖」</b>（把你自己的照片當這顆的關鍵幀）
+        和<b>「做這顆」</b>（展開提詞、直接在這裡生成）。</td></tr>`)
     + (p.shots || []).map((s, i) => `
     <tr data-si="${i}" data-sid="${esc(s.id)}">
       <td class="s">${s.no}</td>
@@ -4980,16 +5013,22 @@ function renderShotTable() {
         `<option value="${esc(c.key)}"${(s.who || []).includes(c.key) ? ' selected' : ''}>${esc(c.name)}</option>`).join('')}</select></td>
       <td><select class="sp" aria-label="說話者"><option value="">—</option>${(p.cast || []).map((c) =>
         `<option value="${esc(c.key)}"${c.key === s.speaker ? ' selected' : ''}>${esc(c.name)}</option>`).join('')}</select></td>
-      <td><input type="text" class="sc" aria-label="場景" value="${esc(s.scene)}" placeholder="場景" style="width:100px"></td>
-      <td><input type="text" class="sa" aria-label="動作或情緒" value="${esc(s.action)}" placeholder="動作" style="width:130px"></td>
-      <td><input type="text" class="sd2" aria-label="台詞" value="${esc(s.dialogue)}" placeholder="台詞" style="width:130px"></td>
+      <td><textarea class="sc grow" aria-label="場景" rows="1"
+        placeholder="場景">${esc(s.scene)}</textarea></td>
+      <td><textarea class="sa grow" aria-label="動作或情緒" rows="1"
+        placeholder="他站在窗邊，手插口袋">${esc(s.action)}</textarea></td>
+      <td><textarea class="sd2 grow" aria-label="台詞" rows="1"
+        placeholder="台詞">${esc(s.dialogue)}</textarea></td>
       <td><select class="sm2" aria-label="生成方式">${methodOpts.map(([k, v]) =>
         `<option value="${esc(k)}"${k === s.method ? ' selected' : ''}>${esc(v.zh)}</option>`).join('')}</select></td>
+      <td style="white-space:nowrap">
+        <input type="file" class="rowup" data-sid="${esc(s.id)}" accept="image/*" hidden>
+        <button class="up rowupbtn" data-sid="${esc(s.id)}"
+          title="用你自己的圖當這顆的關鍵幀，不用生成">⬆ 上傳我的圖</button>
+        ${((s.state || {}).stages || {}).keyframe && s.state.stages.keyframe.active_done
+          ? '<div class="s ok" style="margin-top:2px">已經有採用的關鍵幀</div>' : ''}</td>
       <td class="row" style="gap:3px">
         <button class="ghost tiny splan" data-sid="${esc(s.id)}">做這顆</button>
-        <label class="chk" title="用你自己的圖當這顆的關鍵幀">
-          <input type="file" class="rowup" data-sid="${esc(s.id)}" accept="image/*" hidden>
-          <button class="ghost tiny rowupbtn" data-sid="${esc(s.id)}">上傳圖</button></label>
         <button class="ghost tiny sdel">刪</button></td>
     </tr>`).join('');
 }
@@ -5080,7 +5119,19 @@ async function saveDrama(quiet) {
   }
 }
 
+// A one-line box that grows to fit what is in it. Without this the prose
+// fields hold one line and scroll their own content out of sight, which is the
+// same as not being able to read what you typed.
+function fitBox(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight + 2, 160) + 'px';
+}
+
 function wireDramaBody() {
+  document.querySelectorAll('#sdshots textarea.grow').forEach((t) => {
+    fitBox(t);
+    t.oninput = () => fitBox(t);
+  });
   document.querySelectorAll('#sdcast .cdel').forEach((b, i) => b.onclick = async () => {
     SD.open.cast.splice(i, 1); await saveDrama(true);
   });
@@ -5931,6 +5982,21 @@ async function refreshJoinable() {
   return d;
 }
 
+// The reason a shot failed is not decoration - it is the instruction for what
+// to do next. It used to be cut at 60 characters, which landed mid-sentence,
+// immediately before the part that said how to fix it. Twenty shots failing
+// for one reason is also one message, not twenty.
+function failureHtml(failures) {
+  const byReason = new Map();
+  for (const f of failures) {
+    if (!byReason.has(f.reason)) byReason.set(f.reason, []);
+    byReason.get(f.reason).push(f.shot_no);
+  }
+  return [...byReason.entries()].slice(0, 4).map(([reason, shots]) =>
+    `<div style="margin-top:4px"><b class="bad">第 ${shots.join('、')} 顆：</b>`
+    + `${esc(reason)}</div>`).join('');
+}
+
 // Poll a run in flight. Stops itself when it finishes, so opening the tab twice
 // cannot leave two timers updating the same panel.
 let runWatch = null;
@@ -5955,11 +6021,7 @@ async function refreshRun() {
         + '現在改鏡頭沒關係，改的東西會用在下一輪。</span>');
     }
     if (run.message) bits.push(esc(run.message));
-    if ((run.failures || []).length) {
-      bits.push('<b class="bad">有問題的鏡頭：</b>'
-        + run.failures.slice(0, 4).map((f) =>
-            `第 ${f.shot_no} 顆（${esc(f.reason).slice(0, 60)}）`).join('、'));
-    }
+    if ((run.failures || []).length) bits.push(failureHtml(run.failures));
   }
   // One run at a time, app-wide. If it belongs to another project, say so -
   // otherwise this panel looks idle and the button that refuses to start looks
@@ -6007,8 +6069,24 @@ function renderNeeds(needs) {
   const box = $('#sdneed');
   if (!box) return;
   const missing = needs.filter((m) => !m.installed);
-  if (!missing.length) { box.innerHTML = ''; needDownloading = ''; return; }
-  box.innerHTML = missing.map((m) => `
+  // Downloaded but still not runnable: a files-only model has all its weights
+  // and no graph this app can drive. That is a different problem with a
+  // different fix, and it needs saying here rather than as a per-shot failure.
+  const noGraph = needs.filter((m) => m.installed && m.runnable_here === false);
+  if (!missing.length && !noGraph.length) {
+    box.innerHTML = ''; needDownloading = ''; return;
+  }
+  box.innerHTML = noGraph.map((m) => `
+    <div class="row" style="gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px">
+      <span class="warn">●</span>
+      <span><b>${esc(m.label.split('—')[0].trim())}</b>（${esc(m.for)}用的）檔案下載好了，
+        但這個 app 沒有跑它的工作流</span>
+      <button class="go tiny sdwf" data-id="${esc(m.id)}">去匯入官方工作流</button>
+    </div>
+    <div class="s" style="margin-top:2px">在 ComfyUI 用官方範本跑一次確認會動，
+      <b>Workflow → Export (API)</b> 存出 .json，匯進來之後這一頁就能用它生成。
+      按上面那顆會直接跳到匯入的地方，模型也幫你選好。</div>`).join('')
+    + missing.map((m) => `
     <div class="row" style="gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px">
       <span class="bad">●</span>
       <span><b>${esc(m.label.split('—')[0].trim())}</b>（${esc(m.for)}用的）還沒下載完</span>
@@ -6017,7 +6095,18 @@ function renderNeeds(needs) {
              下載（${(m.bytes / 1e9).toFixed(1)}GB）</button>`
         : '<span class="s">這個底模是你自己放進來的，沒有下載來源</span>'}
     </div>`).join('')
-    + '<div class="s" style="margin-top:2px">下載完這一格會自己消失，然後上面的按鈕就能按了。</div>';
+    + (missing.length
+       ? '<div class="s" style="margin-top:2px">下載完這一格會自己消失，然後上面的按鈕就能按了。</div>'
+       : '');
+  box.querySelectorAll('.sdwf').forEach((b) => b.onclick = () => {
+    // One click to the importer with the model already chosen, rather than
+    // "go to the models tab and find it among forty entries".
+    document.querySelector('.tabs button[data-tab="mdl"]').click();
+    const picker = $('#wfmodel');
+    if (picker) picker.value = b.dataset.id;
+    const card = $('#wfcard');
+    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
   box.querySelectorAll('.sdget').forEach((b) => b.onclick = async () => {
     b.disabled = true;
     b.textContent = '開始下載…';

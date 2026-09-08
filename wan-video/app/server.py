@@ -458,8 +458,10 @@ async def generate(
     if not chosen.runnable and not wfimport.load(config.WORKFLOWS_DIR, chosen.id):
         raise HTTPException(
             400,
-            f"{chosen.label} 只提供檔案下載，不能從這裡生成。"
-            "到「模型」分頁把 ComfyUI 官方的工作流匯入，就可以了。")
+            f"{chosen.label} 只提供檔案下載，這個 app 沒有可以跑它的工作流。"
+            "把 ComfyUI 官方的工作流匯入就可以了 —— "
+            "短劇分頁「整集」那一格有「去匯入官方工作流」的按鈕，"
+            "「模型」分頁最下面也有同一個地方。")
     if reason := missing_reason(chosen):
         raise HTTPException(400, reason)
 
@@ -721,10 +723,15 @@ async def list_workflows() -> JSONResponse:
         "folder": str(config.WORKFLOWS_DIR),
         # The models this is for: ones the app downloads but has no verified
         # graph of its own for.
+        # Video models only. The TTS entries are also files-only, but a
+        # ComfyUI video workflow is not a thing they have - offering them here
+        # is a dead end dressed up as an option.
         "candidates": [
             {"id": m.id, "label": m.label,
              "installed": models.model_status(m)["installed"]}
-            for m in registry.MODELS if not m.family_runnable
+            for m in registry.MODELS
+            if not m.family_runnable
+            and not all(f.folder.startswith("tts") for f in m.all_files)
         ],
     })
 
@@ -2198,6 +2205,36 @@ async def run_episode(project_id: str, payload: dict = Body(default={})) -> JSON
             f"{absent[0]['label'].split('—')[0].strip()} 還沒下載完，"
             f"所以現在生不出東西。下面那顆「下載」按鈕可以直接下載"
             f"（{absent[0]['bytes'] / 1e9:.1f}GB），下載完再按一次。")
+    # Downloaded but with no graph this app can drive is a different problem
+    # with a different fix, and it was surfacing once per shot as a sentence
+    # that got cut off before the part explaining what to do.
+    # A model that has no such mode can never work - not by downloading, not by
+    # importing a graph - so it is checked before either of those.
+    if want == "video":
+        for method in sorted(project.methods_used):
+            route = project.route(method)
+            model = registry.get(route.model_id) if route else None
+            if model is None or not model.methods or method in model.methods:
+                continue
+            can = "、".join(shortdrama.METHODS[m].zh for m in model.methods
+                            if m in shortdrama.METHODS)
+            raise HTTPException(
+                400,
+                f"「{shortdrama.METHODS[method].zh}」這條路線指到 "
+                f"{model.label.split('—')[0].strip()}，但這個模型沒有這種模式"
+                f"（它只能做：{can}）。到第 0 步把這條路線換成別的模型。")
+
+    ungraphed = [m for m in _drama_models(project)
+                 if m["kind"] == want and m["installed"]
+                 and m.get("runnable_here") is False]
+    if ungraphed:
+        raise HTTPException(
+            400,
+            f"{ungraphed[0]['label'].split('—')[0].strip()} 的檔案下載好了，"
+            "但這個 app 沒有可以跑它的工作流。下面那顆「去匯入官方工作流」"
+            "會帶你到匯入的地方（模型也幫你選好）—— "
+            "在 ComfyUI 用官方範本跑一次確認會動，Workflow → Export (API) "
+            "存出 .json，匯進來之後這一頁就能用它生成。")
     todo = runner_mod.shots_needing(project, jobs, stage)
     if not todo:
         raise HTTPException(

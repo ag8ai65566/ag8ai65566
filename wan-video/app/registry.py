@@ -100,6 +100,13 @@ class ModelDef:
     lightning_cfg: float = 1.0
     lightning_shift: float = 5.0
     supports_lora: bool = True
+    # Which of the drama page's shot methods this model can actually serve.
+    # Empty means "all of them", which is true of the general image-to-video
+    # checkpoints. MiniMax H3 is the reason this exists: it has no plain I2V
+    # mode at all - first-and-last-frame or reference-image only - so routing
+    # 圖生影片 at it can never work, and the page used to let you pick it and
+    # find out twenty shots later.
+    methods: tuple[str, ...] = ()
     # Exact CivitAI baseModel strings, best match first. Filters the in-app
     # LoRA browser to things that stand a chance of working with this model.
     civitai_bases: tuple[str, ...] = ()
@@ -464,6 +471,8 @@ MODELS: list[ModelDef] = [
     ModelDef(
         id="minimax-h3",
         label="MiniMax H3 FL2VA — 只下載檔案（用 ComfyUI 內建範例跑）",
+        # No plain image-to-video mode exists in this model. See `note`.
+        methods=("flf",),
         family="files_only",
         vram_gb=24,
         files=[

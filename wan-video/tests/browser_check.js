@@ -358,8 +358,8 @@ function crc32(buf) {
   const emptyTable = await page.textContent('#sdshots');
   check(emptyTable.includes('還沒有鏡頭'),
     'an empty shot table says what to press rather than showing bare headers');
-  check(emptyTable.includes('上傳圖'),
-    '…and names the upload, before any panel has been opened');
+  check(emptyTable.includes('你的圖'),
+    '…and names the upload column, before any panel has been opened');
 
   // A male character must not be given a female count tag.
   await page.click('#sdaddcast'); await page.waitForTimeout(900);
@@ -474,8 +474,55 @@ function crc32(buf) {
   check((await page.textContent('#sdplan')).includes('要細調的話'),
     '…while the hand-off to the full controls is kept, just demoted');
 
+  // "Where do I upload my own picture" was asked four times across four
+  // rounds. It was a ghost button the size and shape of the delete button
+  // beside it, in an unlabelled column at the right of a table that scrolls
+  // sideways. Its own labelled column now, and a look of its own.
   check(await page.isVisible('#sdshots .rowupbtn'),
     'every shot row carries its own upload button, panel closed or not');
+  const shotHeads = await page.$$eval('#sdshots th', (ns) => ns.map((n) => n.textContent.trim()));
+  check(shotHeads.includes('你的圖'),
+    '…in a column whose header says what it is -> ' + shotHeads.join('|'));
+  check((await page.textContent('#sdshots .rowupbtn')).includes('上傳我的圖'),
+    '…on a button that says it in words, not an icon');
+  check(await page.$eval('#sdshots .rowupbtn', (el) => getComputedStyle(el).borderStyle) === 'dashed',
+    '…and it does not look like the delete button next to it');
+  check((await page.textContent('#sdshotwhy')).includes('你的圖'),
+    '…with the text above the table pointing at that column');
+
+  // The prose fields were 100-130px inputs: a Chinese sentence scrolled out of
+  // its own box after eight characters. And widening them must not push the
+  // upload column off the right edge of a table that scrolls sideways.
+  await page.fill('#sdshots .sa',
+    'Yangmi 邁著自信的步伐走到 SM 旁邊，抬手拍了他的肩膀，臉上帶著挑釁的笑');
+  await page.waitForTimeout(400);
+  const proseBox = await page.$eval('#sdshots .sa', (el) => ({
+    tag: el.tagName, h: el.clientHeight, content: el.scrollHeight, w: el.clientWidth }));
+  check(proseBox.tag === 'TEXTAREA' && proseBox.h >= proseBox.content - 4,
+    `the action field grows to show what was typed (${proseBox.h} vs ${proseBox.content})`);
+  check(proseBox.w >= 200, `…and is wide enough to read (${proseBox.w}px)`);
+  const upSeen = await page.evaluate(() => {
+    const btn = document.querySelector('#sdshots .rowupbtn');
+    const wrap = btn.closest('div[style*="overflow-x"]') || document.body;
+    const b = btn.getBoundingClientRect(), w = wrap.getBoundingClientRect();
+    return b.right <= w.right + 1 && b.left >= w.left - 1;
+  });
+  check(upSeen, '…and the upload column stays pinned on screen, not scrolled off');
+
+  // A failure reason is the instruction for what to do next. It was cut at 60
+  // characters, which landed mid-sentence right before the part that said how
+  // to fix it - and repeated once per shot.
+  const failText = await page.evaluate(() => {
+    const long = 'MiniMax H3 FL2VA 的檔案下載好了，但這個 app 沒有可以跑它的工作流。'
+      + '下面那顆「去匯入官方工作流」會帶你到匯入的地方，模型也幫你選好。';
+    const el = document.createElement('div');
+    el.innerHTML = failureHtml([{ shot_no: 1, reason: long }, { shot_no: 2, reason: long }]);
+    return el.textContent;
+  });
+  check(failText.includes('模型也幫你選好'),
+    'a failure reason is shown whole, instruction and all');
+  check(failText.includes('第 1、2 顆'),
+    '…and shots sharing one reason are grouped, not repeated');
 
   // Bring your own still. Image-to-video's most natural use - "I already have
   // the picture I want" - had no path at all: a keyframe could only be
@@ -490,6 +537,8 @@ function crc32(buf) {
   await page.waitForTimeout(2600);
   check((await page.textContent('#sdplan')).includes('關鍵幀已採用'),
     'uploading one files it under the shot and accepts it');
+  check((await page.textContent('#sdshots tr[data-si="0"]')).includes('已經有採用的關鍵幀'),
+    '…and the row itself says so, without opening anything');
   check(await page.isVisible('#sdtovid'),
     '…so the video step unlocks without generating anything');
 
@@ -1065,6 +1114,10 @@ function crc32(buf) {
     [...document.querySelectorAll('#wfmodel option')].map((o) => o.value));
   check(wfCands.includes('minimax-h3') && !wfCands.includes('wan22-14b-fp8'),
     `only files-only models are offered (${wfCands.join(',')})`);
+  // The TTS bundles are files-only too, but there is no ComfyUI video graph to
+  // import for them - offering them is a dead end dressed up as an option.
+  check(!wfCands.includes('qwen3-tts') && !wfCands.includes('cosyvoice3'),
+    '…and the TTS bundles are not among them');
 
   // A real API-format graph, built by the app's own builder - same shape.
   const wfPath = require('path').join(require('os').tmpdir(), 'wan-wf-api.json');

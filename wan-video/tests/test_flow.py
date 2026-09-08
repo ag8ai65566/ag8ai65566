@@ -5964,6 +5964,20 @@ def test_runner() -> None:
           "a first/last-frame shot is flagged while planning, not at generate time")
     project.shots[0].method = "i2v"
 
+    # A model with no such mode can never work - not by downloading it, not by
+    # importing a graph for it. MiniMax H3 has no plain image-to-video mode at
+    # all, and the page let you route 圖生影片 at it and find out much later.
+    project.routes["i2v"] = shortdrama.Route("minimax-h3")
+    ids = {f.id for f in shortdrama.check(project)}
+    check("wrong-mode-i2v" in ids,
+          "routing a shot method at a model without that mode is flagged")
+    detail = next(f for f in shortdrama.check(project) if f.id == "wrong-mode-i2v")
+    check("首尾幀" in detail.detail,
+          f"…saying what the model can do instead ({detail.detail[:24]})")
+    project.routes["i2v"] = shortdrama.Route("wan22-14b-fp8")
+    check("wrong-mode-i2v" not in {f.id for f in shortdrama.check(project)},
+          "…and a model that does have the mode is not flagged")
+
     reason = runner.blocked_reason(project, {}, "video")
     check("還沒有採用的關鍵幀" in reason,
           "the video pass says why it cannot run, not just that it cannot")
