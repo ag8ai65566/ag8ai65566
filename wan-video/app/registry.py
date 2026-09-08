@@ -477,33 +477,60 @@ MODELS: list[ModelDef] = [
     # it to find out whether they wanted it.
     ModelDef(
         id="minimax-h3",
-        label="MiniMax H3 FL2VA — 只下載檔案（用 ComfyUI 內建範例跑）",
-        # No plain image-to-video mode exists in this model. See `note`.
-        methods=("flf",),
-        family="files_only",
+        label="MiniMax H3 — 圖生影片，自帶同步聲音",
+        # Both, through one node: MiniMaxH3ImageToVideo takes a first frame and
+        # an *optional* last frame. An earlier version of this entry said H3 had
+        # no plain image-to-video mode at all, which was simply wrong - ComfyUI
+        # ships `video_minimax_h3_i2v` as a built-in template.
+        methods=("i2v", "flf"),
+        family="minimax_h3",
         vram_gb=24,
         files=[
-            # int8 convrot, not the nvfp4 build. NVFP4 needs a Blackwell card
-            # (RTX 50-series); a 24GB machine is far more likely to be a 3090 or
-            # 4090, which would download 15GB and then not be able to run it.
-            # The int8 text encoder is 11GB larger and works on anything recent.
+            # int8_convrot for the diffusion model, which the repo's README
+            # states outright is the preferred build.
             ModelFile("Comfy-Org/MiniMax-H3",
                       "diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
                       "diffusion_models", 20970379616),
+            # nvfp4 for the text encoder: 15.7GB against int8's 27.1GB, and the
+            # official README says in as many words that it "does not require
+            # Blackwell GPU to use". This entry used to download the int8 build
+            # on the strength of a note claiming NVFP4 needed an RTX 50-series
+            # card - that was simply wrong, and it cost 11.4GB of download and
+            # the VRAM to match.
             ModelFile("Comfy-Org/MiniMax-H3",
-                      "text_encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
-                      "text_encoders", 27141342152),
+                      "text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+                      "text_encoders", 15687142551),
             # Two VAEs, because the audio comes out of the same pass.
             ModelFile("Comfy-Org/MiniMax-H3",
                       "vae/minimax_h3_video_vae_fp16.safetensors", "vae", 5207808496),
             ModelFile("Comfy-Org/MiniMax-H3",
                       "vae/minimax_h3_audio_vae_fp32.safetensors", "vae", 605254808),
+            # The turbo LoRA moved to `lightning` - it is the template's
+            # "Enable Lightning LoRA" switch, and listing it in both places
+            # made `all_files` hand the downloader the same file twice.
+        ],
+        # Straight from the official template's own widget values: 1344x768,
+        # res_multistep / simple, 20 steps, and 6 with the turbo LoRA.
+        tiers={"768p": (1344, 768), "540p": (960, 544)},
+        fps=24,
+        # 124 frames at 24fps is the node's own default (~5.2s). ComfyUI's
+        # tooltip puts the trained range at 124-362 frames, i.e. roughly 5 to
+        # 15 seconds - shorter than that is outside what the model was trained
+        # on, which is worth knowing before blaming the prompt.
+        length=124,
+        steps=20,
+        cfg=1.0,          # BasicGuider: the graph has no negative prompt at all
+        shift=1.0,        # unused - H3 has no ModelSamplingSD3 in its graph
+        sampler="res_multistep",
+        scheduler="simple",
+        lightning=(
             ModelFile("Comfy-Org/MiniMax-H3",
                       "loras/minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
                       "loras", 1956193000),
-        ],
-        tiers={},
-        fps=24,
+        ),
+        lightning_steps=6,
+        lightning_cfg=1.0,
+        lightning_shift=1.0,
         supports_lora=False,
         civitai_bases=("MiniMax H3",),
         licence=Licence(
@@ -516,11 +543,17 @@ MODELS: list[ModelDef] = [
                  "商用產品的介面上還要標示「MiniMax H3」。",
         ),
         note="**權重是真的開放的**，不像 Seedance 那樣只有 API —— "
-             "但這是目錄裡最大的一個（約 56GB），而且光文字編碼器"
-             "（Qwen3-VL 32B）就 27GB，塞不進 24GB 顯存，一定要大量 offload。"
-             "它**沒有單純的 I2V**：FL2VA 是首尾幀，加原生同步音訊。"
-             "多圖角色參考的 Ref2VA 是另外 21GB，沒有收進這個下載包。"
-             "下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → MiniMax H3。",
+             "但這是目錄裡最大的一個（約 44GB），而且光文字編碼器"
+             "（Qwen3-VL 32B）就 16GB，塞不進 24GB 顯存，一定要大量 offload。"
+             "**這個 app 現在可以直接跑它**（圖生影片，也支援首尾幀）—— "
+             "工作流是照 ComfyUI 內建範本 `video_minimax_h3_i2v` 一比一組的，"
+             "但**本專案沒有 GPU，沒有實跑驗證過**。"
+             "聲音是它自己**生出來的**，不是你放進去的。"
+             "訓練長度是 124–362 幀（約 5–15 秒），比 5 秒短是在訓練範圍外面。"
+             "**顯卡不夠大就別選這個**：光文字編碼器就 16GB，24GB 顯卡也要大量 offload，"
+             "10GB 的卡基本上跑不動 —— 一般真人動作鏡頭先用 HunyuanVideo 1.5 480p，"
+             "那個是 8.3B、單張圖直接生，快得多。"
+             "多圖角色參考的 Ref2VA 是另外 21GB，沒有收進這個下載包。",
     ),
     ModelDef(
         id="hy15-480p",

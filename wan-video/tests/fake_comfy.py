@@ -38,6 +38,8 @@ FILE_INPUTS = {
     ("CLIPSetLastLayer", "__none__"): (),
     ("LoraLoader", "lora_name"): ("loras",),
     ("LoadImage", "image"): ("__images__",),
+    # H3's audio VAE lives in models/vae like every other VAE.
+    ("VAEDecodeAudio", "__none__"): (),
     ("UpscaleModelLoader", "model_name"): ("upscale_models",),
     ("FrameInterpolationModelLoader", "model_name"): ("frame_interpolation",),
 }

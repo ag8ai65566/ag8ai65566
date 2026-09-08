@@ -1246,13 +1246,18 @@
     <div class="card" id="wfcard" style="margin-top:14px">
       <h3>讓「只下載檔案」的模型也能在這裡跑</h3>
       <div class="s">
-        上面標成<b>「這裡跑不了」</b>的模型（LTX、Wan S2V／Animate、MiniMax H3），
+        上面標成<b>「這裡跑不了」</b>的模型（LTX、Wan S2V／Animate），
         它們的官方流程是幾十個節點的圖，這個 app 沒有驗證過的版本可以跑。<br>
         <b>但你可以把 ComfyUI 官方的那張圖拿過來用。</b>三步：
         <ol style="margin:6px 0 0 18px;padding:0">
           <li>在 ComfyUI（<a href="http://127.0.0.1:8188" target="_blank" rel="noopener">:8188</a>）
             用 <b>Workflow → Browse Templates</b> 打開那個模型的官方範本，<b>先跑一次確認它會動</b></li>
-          <li>選 <b>Workflow → Export (API)</b>，會存出一個 <code>.json</code></li>
+          <li>選 <b>Workflow → Export (API)</b>，會存出一個 <code>.json</code>。
+            <b>找不到這個選項的話</b>：右上角齒輪 <b>Settings → Comfy → Dev Mode</b>，
+            把 <b>Enable dev mode options</b> 打開，選單裡才會出現它
+            （依版本可能在 <b>File → Export (API)</b>）。
+            <br>注意不是「Save」或「Export」—— 那兩個存出來的是<b>畫布格式</b>，
+            匯進來會被擋掉並告訴你選錯了</li>
           <li>把那個檔案丟到下面</li>
         </ol>
       </div>

@@ -1148,8 +1148,13 @@ function crc32(buf) {
     '…and says to prove the workflow runs there first');
   const wfCands = await page.evaluate(() =>
     [...document.querySelectorAll('#wfmodel option')].map((o) => o.value));
-  check(wfCands.includes('minimax-h3') && !wfCands.includes('wan22-14b-fp8'),
+  // MiniMax H3 used to be the headline candidate here. It stopped being one
+  // when the app grew a graph of its own for it, built from ComfyUI's built-in
+  // template - a model that runs here does not need an imported workflow.
+  check(wfCands.includes('wan22-s2v') && !wfCands.includes('wan22-14b-fp8'),
     `only files-only models are offered (${wfCands.join(',')})`);
+  check(!wfCands.includes('minimax-h3'),
+    '…and H3 is not among them any more, because it runs here now');
   // The TTS bundles are files-only too, but there is no ComfyUI video graph to
   // import for them - offering them is a dead end dressed up as an option.
   check(!wfCands.includes('qwen3-tts') && !wfCands.includes('cosyvoice3'),
@@ -1193,7 +1198,8 @@ function crc32(buf) {
   await page.waitForTimeout(500);
   check(await page.isVisible('#wffixbox'), '…and it opens on request');
 
-  await page.selectOption('#wfmodel', 'minimax-h3');
+  // Wan S2V, not H3: H3 grew a graph of its own and left this list.
+  await page.selectOption('#wfmodel', 'wan22-s2v');
   await page.setInputFiles('#wffile', wfPath);
   await page.waitForTimeout(2400);
   await page.click('#wfsave');
@@ -1203,29 +1209,33 @@ function crc32(buf) {
   await page.click('.tabs button[data-tab="gen"]');
   await page.waitForTimeout(1500);
   const h3after = await page.evaluate(() => {
-    const o = [...document.querySelectorAll('#model option')].find((x) => x.value === 'minimax-h3');
+    const o = [...document.querySelectorAll('#model option')].find((x) => x.value === 'wan22-s2v');
     return o ? { disabled: o.disabled, text: o.textContent } : null;
   });
   check(h3after && !h3after.disabled,
     'a files-only model becomes selectable once its workflow is imported');
   check(h3after && h3after.text.includes('匯入的工作流'),
     '…and says it is running the imported one');
-  await page.evaluate(() => fetch('/api/workflows/minimax-h3', { method: 'DELETE' }));
+  await page.evaluate(() => fetch('/api/workflows/wan22-s2v', { method: 'DELETE' }));
   await page.waitForTimeout(600);
   check(errors.length === wfMark,
     `no console errors across the import (${errors.slice(wfMark, wfMark + 2).join(' | ') || 'clean'})`);
 
   // ---- files-only models are shown, not hidden ----
-  // Downloading 56GB of MiniMax H3 and then finding no trace of it in the
-  // picker is being answered with silence, which reads as a bug. "You cannot
-  // run this here" is worth saying.
+  // Downloading a large files-only model and then finding no trace of it in
+  // the picker is being answered with silence, which reads as a bug. "You
+  // cannot run this here" is worth saying. (MiniMax H3 was the example until
+  // it stopped being files-only; Wan S2V still is.)
   await page.click('.tabs button[data-tab="gen"]');
   await page.waitForTimeout(900);
   const picker = await page.evaluate(() =>
     [...document.querySelectorAll('#model option')]
       .map((o) => ({ v: o.value, disabled: o.disabled, text: o.textContent })));
-  const h3opt = picker.find((o) => o.v === 'minimax-h3');
+  const h3opt = picker.find((o) => o.v === 'wan22-s2v');
   check(!!h3opt, 'a files-only model is listed in the video picker');
+  const h3run = picker.find((o) => o.v === 'minimax-h3');
+  check(h3run && !h3run.disabled,
+    'and MiniMax H3, which now has a graph here, is selectable rather than greyed');
   check(h3opt && h3opt.disabled, '…disabled rather than filtered out');
   check(h3opt && h3opt.text.includes('這裡跑不了'), '…and saying so in the option itself');
   const picked = await page.evaluate(() => document.getElementById('model').value);
@@ -1275,8 +1285,14 @@ function crc32(buf) {
   check(mdlTxt.includes('MiniMax H3'), 'MiniMax H3 is in the model list');
   check(mdlTxt.includes('這個模型的授權有限制') && mdlTxt.includes('美國'),
     'and its licence banner names the United States');
-  check(mdlTxt.includes('沒有單純的 I2V'),
-    'and the note says it has no plain I2V, which changes how it is used');
+  // This used to assert the note said H3 has "no plain I2V". That claim was
+  // wrong - ComfyUI ships a built-in image-to-video template for it - and the
+  // note now has to carry the two things that are true and matter: it runs
+  // here, and nobody has run it on real hardware.
+  check(!mdlTxt.includes('沒有單純的 I2V'),
+    'and the note no longer claims it has no plain image-to-video');
+  check(mdlTxt.includes('沒有實跑驗證過'),
+    '…while still saying the graph has never been run on real hardware');
   const h3Btn = '[data-dl="minimax-h3"], [data-redl="minimax-h3"]';
   check(await page.isDisabled(h3Btn), 'its download button starts disabled');
   await page.check('[data-ack="minimax-h3"]');

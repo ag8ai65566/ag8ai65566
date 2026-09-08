@@ -16,6 +16,7 @@ import random
 import re
 import sys
 import time
+from dataclasses import replace
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -80,7 +81,8 @@ def test_registry() -> None:
     check(len({m.id for m in registry.MODELS}) == len(registry.MODELS), "model ids unique")
 
     families = {m.family for m in registry.runnable()}
-    check(families == {"wan22_14b", "wan22_5b", "hunyuan15"}, f"three runnable families ({families})")
+    check(families == {"wan22_14b", "wan22_5b", "hunyuan15", "minimax_h3"},
+          f"four runnable families ({families})")
     check(all(not m.runnable or m.tiers for m in registry.MODELS), "every runnable model has tiers")
     check(all(f.size > 0 for m in registry.MODELS for f in m.all_files), "every file has a real size")
     # A file lands under its repo path's basename unless it says otherwise.
@@ -404,6 +406,113 @@ async def test_validator() -> None:
         check(await client.validate(g_ok) == [], "the installed model still validates")
     finally:
         await runner.cleanup()
+
+
+def test_minimax_h3_graph() -> None:
+    """The H3 graph, against the official template it was copied from.
+
+    Every claim below was read out of ComfyUI's own `video_minimax_h3_i2v`
+    template and `comfy_extras/nodes_minimax_h3.py`, not reconstructed from a
+    description. What this cannot check is whether it produces a good video:
+    this machine has no GPU, and the registry note says so out loud.
+    """
+    import config
+    import registry
+    import workflow
+
+    section("minimax h3 graph")
+    model = registry.get("minimax-h3")
+    params = config.params_for(model)
+    graph = workflow.build(
+        model, params, image_name="a.png", prompt="她轉頭看向鏡頭", seed=7,
+        width=1344, height=768,
+        available_nodes={"CreateVideo", "SaveVideo"}, filename_prefix="t/h3")
+    kinds = {n["class_type"] for n in graph.values()}
+
+    # The core node, and the two things that make H3 different from every other
+    # model here: one node emits both the conditioning and the latent, and the
+    # sound is decoded out of that same latent by a second VAE.
+    check("MiniMaxH3ImageToVideo" in kinds, f"the H3 node is in the graph ({sorted(kinds)})")
+    h3 = next(n for n in graph.values() if n["class_type"] == "MiniMaxH3ImageToVideo")
+    check(set(h3["inputs"]) >= {"clip", "vae", "first_frame", "prompt", "width", "height", "length"},
+          f"…with the inputs the node actually declares ({sorted(h3['inputs'])})")
+    check("last_frame" not in h3["inputs"],
+          "…and no last frame unless one was given, because it is optional")
+    check("VAEDecodeAudio" in kinds, "the sound is decoded, not thrown away")
+    audio = next(n for n in graph.values() if n["class_type"] == "VAEDecodeAudio")
+    picture = next(n for n in graph.values() if n["class_type"] == "VAEDecode")
+    check(audio["inputs"]["samples"] == picture["inputs"]["samples"],
+          "…out of the same latent the picture came from")
+    check(audio["inputs"]["vae"] != picture["inputs"]["vae"],
+          "…through a different VAE, which is why the download has two")
+    video = next(n for n in graph.values() if n["class_type"] == "CreateVideo")
+    check("audio" in video["inputs"],
+          "and the sound reaches the file, rather than being decoded and dropped")
+
+    # Guidance is unconditional: the template has no negative prompt at all.
+    check("BasicGuider" in kinds and "CFGGuider" not in kinds,
+          "guidance is unconditional, as in the template")
+    check(not any("CLIPTextEncode" == n["class_type"] for n in graph.values()),
+          "…so there is no separate text encode node - the H3 node takes the prompt")
+    check("SamplerCustomAdvanced" in kinds and "KSampler" not in kinds,
+          "sampling is the custom-sampler chain, not KSampler")
+    sched = next(n for n in graph.values() if n["class_type"] == "BasicScheduler")
+    check(sched["inputs"]["scheduler"] == "simple" and sched["inputs"]["denoise"] == 1.0,
+          f"scheduler and denoise match the template ({sched['inputs']['scheduler']})")
+    picker = next(n for n in graph.values() if n["class_type"] == "KSamplerSelect")
+    check(picker["inputs"]["sampler_name"] == "res_multistep",
+          f"and the sampler is the one the template ships ({picker['inputs']['sampler_name']})")
+
+    # Frame count snaps to 17k+5 at 24fps - a different grid from every other
+    # model here, which uses 4n+1.
+    for seconds in (2, 5, 5.2, 10, 15):
+        length = workflow.h3_length(seconds)
+        check(length % 17 == 5 % 17 and length >= 5,
+              f"{seconds}s snaps onto the 17k+5 grid ({length} frames)")
+    check(workflow.h3_length(5) == 124,
+          f"…and 5 seconds lands exactly on the node's own default of 124 "
+          f"({workflow.h3_length(5)})")
+    check(124 <= workflow.h3_length(15) <= 362,
+          "…with 15s at the top of the range ComfyUI calls trained")
+
+    # First-and-last-frame is the same node with one more picture.
+    flf = workflow.build(
+        model, params, image_name="a.png", end_image_name="b.png",
+        prompt="x", seed=1, width=960, height=544,
+        available_nodes={"CreateVideo", "SaveVideo"}, filename_prefix="t/h3")
+    node = next(n for n in flf.values() if n["class_type"] == "MiniMaxH3ImageToVideo")
+    check("last_frame" in node["inputs"],
+          "a second picture becomes the last frame on the same node")
+    loads = [n for n in flf.values() if n["class_type"] == "LoadImage"]
+    check(len(loads) == 2, f"…which needs two LoadImage nodes, not a second graph ({len(loads)})")
+
+    # The endpoint has to carry the second picture all the way to the graph.
+    # It is threaded through submit() and the worker queue, and every one of
+    # those hops was a place it could be quietly dropped.
+    import inspect
+
+    import server
+
+    check("end_image" in inspect.signature(server.generate).parameters,
+          "the generate endpoint accepts a second picture")
+    check("end_bytes" in inspect.signature(server.submit).parameters,
+          "…which submit() carries")
+    check("end_bytes" in inspect.signature(server.run_job).parameters,
+          "…and the worker hands to the builder")
+    src = inspect.getsource(server.worker)
+    check("end_bytes" in src and "len(item) > 2" in src,
+          "…through a queue item that still accepts the old two-element shape")
+
+    # And a model that has no such input must refuse rather than ignore it.
+    refused = ""
+    try:
+        workflow.build(registry.get("wan22-5b"), config.params_for(registry.get("wan22-5b")),
+                       image_name="a.png", end_image_name="b.png", prompt="x", seed=1,
+                       width=640, height=640, available_nodes=set(), filename_prefix="t/x")
+    except workflow.UnsupportedModel as exc:
+        refused = str(exc)
+    check("首尾幀" in refused,
+          f"a model with no last-frame input refuses rather than silently ignoring it ({refused[:30]})")
 
 
 async def test_video_fallback() -> None:
@@ -981,19 +1090,40 @@ def test_image_registry() -> None:
     import registry as reg
     h3 = reg.get("minimax-h3")
     check(h3 is not None, "MiniMax H3 is catalogued")
-    check(not h3.runnable,
-          "…as files-only, like every other model this project has no verified graph for")
+    # It was files-only until the official ComfyUI template turned out to be
+    # nine nodes around one core node, `MiniMaxH3ImageToVideo`. The graph is
+    # built from that template one-for-one - which is not the same as having
+    # been run, and the note has to keep saying so.
+    check(h3.runnable, "…and now has a graph of its own")
+    check("沒有實跑驗證過" in h3.note,
+          "…which the note still says has never been run on real hardware")
+    check(h3.methods == ("i2v", "flf"),
+          f"…doing both plain and first/last frame, through one node ({h3.methods})")
+    # The text encoder was the int8 build on the strength of a note claiming
+    # NVFP4 needs an RTX 50-series card. The repo's own README says it "does
+    # not require Blackwell GPU to use", and the nvfp4 build is 11.4GB smaller.
+    encoder = next(f for f in h3.all_files if f.folder == "text_encoders")
+    check("nvfp4" in encoder.name,
+          f"…on the smaller text encoder, since it needs no special card ({encoder.name})")
+    check(40e9 < h3.download_bytes < 46e9,
+          f"…which takes the whole download from ~56GB to ~44GB "
+          f"({h3.download_bytes / 1e9:.1f}GB)")
     check(h3.licence and "美國" in h3.licence.excluded,
           f"…and its licence excludes the United States ({h3.licence.excluded})")
     for place in ("歐盟", "英國", "韓國"):
         check(place in h3.licence.excluded, f"…and {place}")
-    check(h3.download_bytes > 50e9,
+    check(h3.download_bytes > 40e9,
           f"…and its real size is stated, not rounded down ({h3.download_bytes/1e9:.1f}GB)")
     te = [f for f in h3.all_files if f.folder == "text_encoders"]
-    check(len(te) == 1 and "int8" in te[0].path,
-          f"the int8 text encoder is used, not nvfp4 - NVFP4 needs a Blackwell "
-          f"card and a 24GB machine is far more likely to be a 3090 or 4090 "
-          f"({[f.name for f in te]})")
+    # This used to assert the opposite, on a note claiming NVFP4 needs a
+    # Blackwell card. Comfy-Org's own README says it "does not require
+    # Blackwell GPU to use", and the nvfp4 build is 11.4GB smaller - so the
+    # note cost 11.4GB of download for a restriction that does not exist.
+    check(len(te) == 1 and "nvfp4" in te[0].path,
+          f"the smaller nvfp4 text encoder is used ({[f.name for f in te]})")
+    diffusion = [f for f in h3.all_files if f.folder == "diffusion_models"]
+    check(all("int8_convrot" in f.path for f in diffusion),
+          "…while the diffusion model stays int8_convrot, which its README prefers")
     check(all("ref2va" not in f.path for f in h3.all_files),
           "Ref2VA is not bundled - it is a second 21GB transformer nobody asked for yet")
     check(any("audio_vae" in f.path for f in h3.all_files),
@@ -5975,15 +6105,28 @@ def test_runner() -> None:
     project.shots[0].method = "i2v"
 
     # A model with no such mode can never work - not by downloading it, not by
-    # importing a graph for it. MiniMax H3 has no plain image-to-video mode at
-    # all, and the page let you route 圖生影片 at it and find out much later.
+    # importing a graph for it. This check was added believing MiniMax H3 had
+    # no plain image-to-video mode; ComfyUI ships `video_minimax_h3_i2v` as a
+    # built-in template, so that belief was wrong and the entry is fixed. The
+    # mechanism is still right, so it is exercised against a stand-in rather
+    # than deleted - and H3 is checked for the correction.
+    import registry as reg
+
     project.routes["i2v"] = shortdrama.Route("minimax-h3")
-    ids = {f.id for f in shortdrama.check(project)}
-    check("wrong-mode-i2v" in ids,
-          "routing a shot method at a model without that mode is flagged")
-    detail = next(f for f in shortdrama.check(project) if f.id == "wrong-mode-i2v")
-    check("首尾幀" in detail.detail,
-          f"…saying what the model can do instead ({detail.detail[:24]})")
+    check("wrong-mode-i2v" not in {f.id for f in shortdrama.check(project)},
+          "H3 does image-to-video, so routing 圖生影片 at it is not flagged")
+
+    real = reg.get
+    flf_only = replace(reg.get("minimax-h3"), methods=("flf",))
+    reg.get = lambda mid: flf_only if mid == "minimax-h3" else real(mid)
+    try:
+        found = [f for f in shortdrama.check(project) if f.id == "wrong-mode-i2v"]
+        check(len(found) == 1,
+              "a route pointing at a model without that mode is flagged")
+        check("首尾幀" in found[0].detail,
+              f"…saying what the model can do instead ({found[0].detail[:24]})")
+    finally:
+        reg.get = real
     project.routes["i2v"] = shortdrama.Route("wan22-14b-fp8")
     check("wrong-mode-i2v" not in {f.id for f in shortdrama.check(project)},
           "…and a model that does have the mode is not flagged")
@@ -7767,6 +7910,7 @@ async def main() -> int:
     test_dimensions()
     await test_graphs()
     await test_validator()
+    test_minimax_h3_graph()
     await test_video_fallback()
     await test_downloader()
     await test_client()

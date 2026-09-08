@@ -167,7 +167,11 @@ async def shutdown() -> None:
 async def worker() -> None:
     """Serial job runner. Survives individual job failures."""
     while True:
-        job_id, image_bytes = await queue.get()
+        # A third element for the one model that takes a second picture; older
+        # two-element items are still accepted so nothing in flight breaks.
+        item = await queue.get()
+        job_id, image_bytes = item[0], item[1]
+        end_bytes = item[2] if len(item) > 2 else b""
         record = lib.get(job_id)
         if record is None:
             queue.task_done()
@@ -182,7 +186,7 @@ async def worker() -> None:
             await client.wait_until_ready()
             record.status, record.started = "running", time.time()
             record.message = "準備中…"
-            await run_job(record, image_bytes)
+            await run_job(record, image_bytes, end_bytes)
             record.status, record.message = "done", ""
             record._progress = 1.0
         except (ComfyError, workflow.UnsupportedModel) as exc:
@@ -198,7 +202,8 @@ async def worker() -> None:
             queue.task_done()
 
 
-async def run_job(record: library.Record, image_bytes: bytes) -> None:
+async def run_job(record: library.Record, image_bytes: bytes,
+                  end_bytes: bytes = b"") -> None:
     if record.kind in ("image", "comic"):
         return await run_image_job(record)
     model = registry.get(record.model_id)
@@ -240,6 +245,14 @@ async def run_job(record: library.Record, image_bytes: bytes) -> None:
     image.save(png, "PNG")
     uploaded = await client.upload_image(png.getvalue(), f"{record.id}.png")
 
+    # The second picture, for the one model that takes one. Uploaded under its
+    # own name so the graph can reference both.
+    end_uploaded = ""
+    if end_bytes:
+        end_png = io.BytesIO()
+        Image.open(io.BytesIO(end_bytes)).convert("RGB").save(end_png, "PNG")
+        end_uploaded = await client.upload_image(end_png.getvalue(), f"{record.id}-end.png")
+
     # An imported workflow wins over a built one. It is the official graph from
     # the user's own ComfyUI, where it demonstrably runs; this app's builders
     # only exist for the families it has been able to verify.
@@ -270,6 +283,7 @@ async def run_job(record: library.Record, image_bytes: bytes) -> None:
             height=record.height,
             available_nodes=available,
             filename_prefix=f"wan/{record.id}",
+            end_image_name=end_uploaded or None,
         )
     if problems := await client.validate(graph):
         raise ComfyError("工作流程與這台 ComfyUI 不相容：\n- " + "\n- ".join(problems))
@@ -393,6 +407,10 @@ def vram_advice(model: registry.ModelDef, vram_gb: float) -> dict:
 def submit(
     image_bytes: bytes,
     *,
+    # The second picture, for the one model whose node takes one. Empty for
+    # everything else, and refused by the graph builder if it is not empty and
+    # the model has nowhere to put it.
+    end_bytes: bytes = b"",
     prompt: str,
     negative: str,
     negative_custom: bool = False,
@@ -420,13 +438,16 @@ def submit(
         settings=settings or {},
     )
     lib.add(record)
-    queue.put_nowait((record.id, image_bytes))
+    queue.put_nowait((record.id, image_bytes, end_bytes))
     return record
 
 
 @app.post("/api/generate")
 async def generate(
     image: UploadFile,
+    # Only MiniMax H3 has anywhere to put this: its node takes an optional
+    # `last_frame`. Every other model refuses rather than ignoring it.
+    end_image: UploadFile | None = None,
     prompt: str = Form(""),
     negative: str = Form(""),
     model: str = Form(""),
@@ -448,6 +469,15 @@ async def generate(
         Image.open(io.BytesIO(data)).verify()
     except Exception:
         raise HTTPException(400, "無法辨識這個圖片格式")
+
+    end_data = await end_image.read() if end_image is not None else b""
+    if end_image is not None and not end_data:
+        raise HTTPException(400, "最後一張圖是空的")
+    if end_data:
+        try:
+            Image.open(io.BytesIO(end_data)).verify()
+        except Exception:
+            raise HTTPException(400, "無法辨識最後一張圖的格式")
 
     chosen = registry.get(model) if model else effective_default()
     if chosen is None:
@@ -478,6 +508,7 @@ async def generate(
 
     record = submit(
         data,
+        end_bytes=end_data,
         prompt=prompt or config.PROMPT_DEFAULT,
         negative=negative,
         negative_custom=negative_custom.lower() in ("1", "true", "on", "yes"),
@@ -2419,13 +2450,28 @@ def _video_payload(project, jobs: dict, shot) -> dict:
     different take while the run is going changes the next run, not this one.
     """
     method = shortdrama.METHODS.get(shot.method)
+    route = project.route(shot.method)
+    model = registry.get(route.model_id) if route else None
+    end_name = ""
     if method is not None and method.needs_endframe:
-        # Sending just the keyframe would produce a perfectly good video that
-        # is not the one asked for, and nothing downstream would notice.
-        raise HTTPException(
-            400,
-            "「首尾幀」要把兩張圖送進另一種工作流，這個 app 還沒有那個工作流。"
-            "把這顆改成「圖生影片」，或到 ComfyUI 用官方首尾幀範本生成後掛回來。")
+        # Only a model that actually takes two pictures may run this. Sending
+        # just the first frame would produce a perfectly good video that is not
+        # the one asked for, and nothing downstream would notice.
+        if model is None or (model.methods and "flf" not in model.methods):
+            raise HTTPException(
+                400,
+                f"「首尾幀」這條路線指到 {(model.label if model else route.model_id if route else '?')}"
+                "，但它吃不了第二張圖。目前只有 MiniMax H3 做得到首尾幀 —— "
+                "到第 0 步把這條路線改成它，或把這顆改成「圖生影片」。")
+        end_id = shot.active_for("endframe")
+        end_rec = jobs.get(end_id) if end_id else None
+        end_out = getattr(end_rec, "output", None) if end_rec else None
+        if not end_out or not (config.OUTPUT_DIR / end_out).is_file():
+            raise HTTPException(
+                400,
+                "「首尾幀」還缺最後一張圖 —— 這顆鏡頭要先採用一張<b>結束幀</b>。"
+                "在這顆鏡頭的面板裡生一張或上傳一張，採用它之後再排影片。")
+        end_name = end_out
     job_id = shot.active_for("keyframe")
     record = jobs.get(job_id) if job_id else None
     output = getattr(record, "output", None) if record else None
@@ -2435,11 +2481,10 @@ def _video_payload(project, jobs: dict, shot) -> dict:
     motion = shortdrama.video_prompt(shot)["prompt"]
     if not motion:
         raise HTTPException(400, "還沒填「影片怎麼動」")
-    route = project.route(shot.method)
     if route is None:
         raise HTTPException(400, f"「{shot.method}」沒有設定路線")
     return {"source": output, "prompt": motion, "model": route.model_id,
-            "seconds": shot.seconds}
+            "seconds": shot.seconds, "end_source": end_name}
 
 
 async def _queue_video(payload: dict) -> str:
@@ -2453,13 +2498,22 @@ async def _queue_video(payload: dict) -> str:
     class _Upload:
         """The shape /api/generate's UploadFile parameter is used through."""
 
-        filename = path.name
+        def __init__(self, where):
+            self.path = where
+            self.filename = where.name
 
         async def read(self) -> bytes:
-            return path.read_bytes()
+            return self.path.read_bytes()
+
+    end = str(payload.get("end_source") or "")
+    end_path = (config.OUTPUT_DIR / end) if end else None
+    if end and (end_path is None or not end_path.is_file()):
+        raise HTTPException(400, "採用的結束幀在這一輪開始之後不見了")
 
     response = await generate(
-        image=_Upload(), prompt=str(payload.get("prompt") or ""),
+        image=_Upload(path),
+        end_image=_Upload(end_path) if end_path else None,
+        prompt=str(payload.get("prompt") or ""),
         model=str(payload.get("model") or ""),
         seconds=float(payload.get("seconds") or 0.0), seed=-1)
     return json.loads(bytes(response.body))["id"]

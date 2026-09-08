@@ -854,16 +854,27 @@ def check_claims(project: Project, *, installed: set[str] | None = None
     # this app builds neither. Generating it anyway would send only the first
     # frame through the ordinary image-to-video path - the user would get a
     # video, it would not be the one they asked for, and nothing would say so.
-    flf = [s.no for s in shots if METHODS.get(s.method, METHODS["i2v"]).needs_endframe]
+    # First-and-last-frame needs a model that actually takes two pictures.
+    # MiniMax H3 does - `MiniMaxH3ImageToVideo` has an optional `last_frame` -
+    # and nothing else in the catalogue does. Sending only the first frame to a
+    # model that cannot take a second would produce a perfectly good video that
+    # is not the one asked for, with nothing anywhere saying so.
+    flf = [s.no for s in shots
+           if METHODS.get(s.method, METHODS["i2v"]).needs_endframe]
     if flf:
-        out.append(Finding(
-            "no-flf-graph", claims.WARN,
-            f"{len(flf)} 顆鏡頭用「首尾幀」，這個 app 還不能生成這種。",
-            "首尾幀要把兩張圖送進另一種工作流，本頁沒有 —— "
-            "生成的時候會直接擋下來，不會偷偷只拿第一張去生成一段普通的圖生影片。"
-            "現在的做法：改成「圖生影片」，或到 ComfyUI 用官方首尾幀範本手動生成，"
-            "再把結果掛回這顆鏡頭。",
-            shots=flf, kind="INTEGRITY"))
+        route = project.route("flf")
+        model = registry.get(route.model_id) if route else None
+        capable = bool(model and (not model.methods or "flf" in model.methods)
+                       and model.runnable)
+        if not capable:
+            out.append(Finding(
+                "no-flf-graph", claims.BLOCK,
+                f"{len(flf)} 顆鏡頭用「首尾幀」，但這條路線的模型吃不了第二張圖。",
+                "目前只有 **MiniMax H3** 做得到首尾幀（同一個節點多接一張圖）。"
+                "在第 0 步把「首尾幀」這條路線改成 MiniMax H3，"
+                "或把這些鏡頭改成「圖生影片」。"
+                "生成的時候會直接擋下來，不會偷偷只拿第一張去生一段普通的圖生影片。",
+                shots=flf, kind="INTEGRITY"))
 
     # -- a route pointing at a model that has no such mode. Different from
     # "not downloaded" and from "no graph here": this one can never work, no

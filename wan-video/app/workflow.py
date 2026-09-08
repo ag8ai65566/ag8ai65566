@@ -392,10 +392,134 @@ def _build_hunyuan15(g, model, p, *, image, prompt, negative, seed, width, heigh
     _video_output(g, frames, out_fps, prefix, nodes)
 
 
+# MiniMax H3 snaps frame count to 17n+5 at 24fps, not the 4n+1 every other
+# supported model uses. Straight from the official template's own expression:
+#   max(5, round(a*24)) + (5 - (max(5, round(a*24)) % 17)) % 17
+H3_FPS = 24
+H3_PERIOD = 17
+H3_PHASE = 5
+
+
+def h3_length(seconds: float) -> int:
+    base = max(5, round(seconds * H3_FPS))
+    return base + (H3_PHASE - (base % H3_PERIOD)) % H3_PERIOD
+
+
+def _build_minimax_h3(g, model, p, *, image, prompt, negative, seed, width, height,
+                      nodes, prefix, end_image=None):
+    """MiniMax H3, wired the way ComfyUI's own `video_minimax_h3_i2v` template is.
+
+    Every node class, every file name and every link below was read out of that
+    template, not reconstructed from a description: `MiniMaxH3ImageToVideo`
+    takes the clip, the VAE, a first frame, an *optional* last frame and the
+    prompt, and returns the conditioning and the latent together. Sampling is
+    the SamplerCustomAdvanced chain rather than KSampler, and there is no
+    negative prompt at all - BasicGuider means the guidance is unconditional.
+
+    The one thing the app does differently from the template is the text
+    encoder: the template ships the nvfp4 build, which needs a Blackwell card
+    (RTX 50-series). The registry downloads the int8 build instead, and
+    CLIPLoader takes whichever is on disk.
+
+    Audio is an *output*, not an input. H3 decodes picture and sound from the
+    same latent through two different VAEs, so the save path has to be
+    CreateVideo with an audio input - the app's usual `_video_output` would
+    drop the sound on the floor.
+
+    **This graph has never been run.** This machine has no GPU and no ComfyUI,
+    so what is verified is that it matches the official template structurally
+    and that every node and widget name exists in the ComfyUI schema the app
+    validates against. Whether it produces a good video is not something this
+    project has established.
+    """
+    unet_file = _pick(model, ("diffusion_models", "unet"))[0]
+    unet = _diffusion_loader(g, model, unet_file, p.weight_dtype, "MiniMax H3")
+
+    # The turbo LoRA is the template's "Enable Lightning LoRA" switch, resolved
+    # here instead of as a node: 6 steps with it, 20 without.
+    turbo = next((f.name for f in model.lightning), "")
+    steps = p.steps
+    if p.lightning and turbo:
+        unet = g.add(
+            "LoraLoaderModelOnly",
+            {"model": [unet, 0], "lora_name": turbo, "strength_model": 1.0},
+            "H3 turbo LoRA (8 步)",
+        )
+        steps = model.lightning_steps
+    unet = _lora_chain(g, unet, p.loras)
+
+    clip = g.add(
+        "CLIPLoader",
+        {"clip_name": _main_files(model, "text_encoders")[0], "type": "minimax"},
+        "Qwen3-VL (minimax)",
+    )
+    vaes = _main_files(model, "vae")
+    video_vae = g.add(
+        "VAELoader", {"vae_name": next(v for v in vaes if "video" in v)}, "H3 video VAE")
+    audio_vae = g.add(
+        "VAELoader", {"vae_name": next(v for v in vaes if "audio" in v)}, "H3 audio VAE")
+
+    first = g.add("LoadImage", {"image": image}, "第一張圖")
+    h3_inputs = {
+        "clip": [clip, 0],
+        "vae": [video_vae, 0],
+        "first_frame": [first, 0],
+        "prompt": prompt,
+        "width": width,
+        "height": height,
+        "length": h3_length(seconds_for_frames(p.length, model.fps)),
+    }
+    # First-and-last-frame is the same node with one more picture, which is why
+    # H3 does not need a separate graph for it.
+    if end_image:
+        last = g.add("LoadImage", {"image": end_image}, "最後一張圖")
+        h3_inputs["last_frame"] = [last, 0]
+    h3 = g.add("MiniMaxH3ImageToVideo", h3_inputs, "MiniMax H3")
+
+    guider = g.add("BasicGuider", {"model": [unet, 0], "conditioning": [h3, 0]}, "Guider")
+    sigmas = g.add(
+        "BasicScheduler",
+        {"model": [unet, 0], "scheduler": p.scheduler, "steps": steps, "denoise": 1.0},
+        "Sigmas",
+    )
+    sampled = g.add(
+        "SamplerCustomAdvanced",
+        {
+            "noise": [g.add("RandomNoise", {"noise_seed": seed}, "Noise"), 0],
+            "guider": [guider, 0],
+            "sampler": [g.add("KSamplerSelect", {"sampler_name": p.sampler}, "Sampler"), 0],
+            "sigmas": [sigmas, 0],
+            "latent_image": [h3, 1],
+        },
+        "Sample",
+    )
+    # Picture and sound come out of the same latent, through different VAEs.
+    picture = g.add("VAEDecode", {"samples": [sampled, 0], "vae": [video_vae, 0]}, "Decode 畫面")
+    sound = g.add("VAEDecodeAudio", {"samples": [sampled, 0], "vae": [audio_vae, 0]}, "Decode 聲音")
+
+    frames, out_fps = _post_process(g, picture, p, nodes)
+    if "CreateVideo" in nodes and "SaveVideo" in nodes:
+        video = g.add(
+            "CreateVideo",
+            {"images": [frames, 0], "audio": [sound, 0], "fps": out_fps},
+            "Assemble video",
+        )
+        g.add(
+            "SaveVideo",
+            {"video": [video, 0], "filename_prefix": prefix, "format": "mp4", "codec": "h264"},
+            "Save mp4",
+        )
+    else:
+        # Without those two nodes the sound cannot be muxed in, so it is dropped
+        # - and that has to be visible rather than silently happening.
+        _video_output(g, frames, out_fps, prefix + "-no-audio", nodes)
+
+
 BUILDERS = {
     "wan22_14b": _build_wan22_14b,
     "wan22_5b": _build_wan22_5b,
     "hunyuan15": _build_hunyuan15,
+    "minimax_h3": _build_minimax_h3,
 }
 
 
@@ -415,6 +539,7 @@ def build(
     height: int,
     available_nodes: set[str] | None = None,
     filename_prefix: str = "wan/anim",
+    end_image_name: str | None = None,
 ) -> dict:
     builder = BUILDERS.get(model.family)
     if builder is None:
@@ -424,6 +549,15 @@ def build(
         )
 
     g = GraphBuilder()
+    # Only the H3 builder takes a second picture; passing it to the others
+    # would be a silent no-op, which is worse than a clear refusal.
+    extra = {}
+    if end_image_name:
+        if model.family != "minimax_h3":
+            raise UnsupportedModel(
+                f"{model.label} 沒有「最後一張圖」這種輸入 —— "
+                "首尾幀目前只有 MiniMax H3 做得到。")
+        extra["end_image"] = end_image_name
     builder(
         g,
         model,
@@ -436,5 +570,6 @@ def build(
         height=height,
         nodes=available_nodes or set(),
         prefix=filename_prefix,
+        **extra,
     )
     return g.nodes

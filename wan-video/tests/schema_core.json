@@ -1,4 +1,61 @@
 {
+ "BasicGuider": {
+  "input": {
+   "required": {
+    "conditioning": [
+     "CONDITIONING"
+    ],
+    "model": [
+     "MODEL"
+    ]
+   }
+  },
+  "output": [
+   "GUIDER"
+  ]
+ },
+ "BasicScheduler": {
+  "input": {
+   "required": {
+    "denoise": [
+     "FLOAT",
+     {
+      "default": 1.0,
+      "max": 1.0,
+      "min": 0.0,
+      "step": 0.01
+     }
+    ],
+    "model": [
+     "MODEL"
+    ],
+    "scheduler": [
+     [
+      "simple",
+      "sgm_uniform",
+      "karras",
+      "exponential",
+      "ddim_uniform",
+      "beta",
+      "normal",
+      "linear_quadratic",
+      "kl_optimal"
+     ]
+    ],
+    "steps": [
+     "INT",
+     {
+      "default": 20,
+      "max": 10000,
+      "min": 1
+     }
+    ]
+   }
+  },
+  "output": [
+   "SIGMAS"
+  ]
+ },
  "CLIPLoader": {
   "input": {
    "optional": {
@@ -899,6 +956,63 @@
    "LATENT"
   ]
  },
+ "KSamplerSelect": {
+  "input": {
+   "required": {
+    "sampler_name": [
+     [
+      "euler",
+      "euler_cfg_pp",
+      "euler_ancestral",
+      "euler_ancestral_cfg_pp",
+      "heun",
+      "heunpp2",
+      "exp_heun_2_x0",
+      "exp_heun_2_x0_sde",
+      "dpm_2",
+      "dpm_2_ancestral",
+      "lms",
+      "dpm_fast",
+      "dpm_adaptive",
+      "dpmpp_2s_ancestral",
+      "dpmpp_2s_ancestral_cfg_pp",
+      "dpmpp_sde",
+      "dpmpp_sde_gpu",
+      "dpmpp_2m",
+      "dpmpp_2m_cfg_pp",
+      "dpmpp_2m_sde",
+      "dpmpp_2m_sde_gpu",
+      "dpmpp_2m_sde_heun",
+      "dpmpp_2m_sde_heun_gpu",
+      "dpmpp_3m_sde",
+      "dpmpp_3m_sde_gpu",
+      "ddpm",
+      "lcm",
+      "ipndm",
+      "ipndm_v",
+      "deis",
+      "res_multistep",
+      "res_multistep_cfg_pp",
+      "res_multistep_ancestral",
+      "res_multistep_ancestral_cfg_pp",
+      "gradient_estimation",
+      "gradient_estimation_cfg_pp",
+      "er_sde",
+      "seeds_2",
+      "seeds_3",
+      "sa_solver",
+      "sa_solver_pece",
+      "ddim",
+      "uni_pc",
+      "uni_pc_bh2"
+     ]
+    ]
+   }
+  },
+  "output": [
+   "SAMPLER"
+  ]
+ },
  "LatentUpscale": {
   "input": {
    "required": {
@@ -1038,6 +1152,64 @@
    "MODEL"
   ]
  },
+ "MiniMaxH3ImageToVideo": {
+  "input": {
+   "optional": {
+    "first_frame": [
+     "IMAGE"
+    ],
+    "last_frame": [
+     "IMAGE"
+    ]
+   },
+   "required": {
+    "clip": [
+     "CLIP"
+    ],
+    "height": [
+     "INT",
+     {
+      "default": 768,
+      "max": 16384,
+      "min": 32,
+      "step": 32
+     }
+    ],
+    "length": [
+     "INT",
+     {
+      "default": 124,
+      "max": 3600,
+      "min": 5,
+      "step": 17
+     }
+    ],
+    "prompt": [
+     "STRING",
+     {
+      "dynamicPrompts": true,
+      "multiline": true
+     }
+    ],
+    "vae": [
+     "VAE"
+    ],
+    "width": [
+     "INT",
+     {
+      "default": 1344,
+      "max": 16384,
+      "min": 32,
+      "step": 32
+     }
+    ]
+   }
+  },
+  "output": [
+   "CONDITIONING",
+   "LATENT"
+  ]
+ },
  "ModelSamplingSD3": {
   "input": {
    "required": {
@@ -1082,6 +1254,24 @@
    "MODEL"
   ]
  },
+ "RandomNoise": {
+  "input": {
+   "required": {
+    "noise_seed": [
+     "INT",
+     {
+      "control_after_generate": true,
+      "default": 0,
+      "max": 18446744073709551615,
+      "min": 0
+     }
+    ]
+   }
+  },
+  "output": [
+   "NOISE"
+  ]
+ },
  "RepeatLatentBatch": {
   "input": {
    "required": {
@@ -1121,6 +1311,31 @@
   },
   "output": [
    "MODEL"
+  ]
+ },
+ "SamplerCustomAdvanced": {
+  "input": {
+   "required": {
+    "guider": [
+     "GUIDER"
+    ],
+    "latent_image": [
+     "LATENT"
+    ],
+    "noise": [
+     "NOISE"
+    ],
+    "sampler": [
+     "SAMPLER"
+    ],
+    "sigmas": [
+     "SIGMAS"
+    ]
+   }
+  },
+  "output": [
+   "LATENT",
+   "LATENT"
   ]
  },
  "SaveAnimatedWEBP": {
@@ -1411,6 +1626,21 @@
   },
   "output": [
    "IMAGE"
+  ]
+ },
+ "VAEDecodeAudio": {
+  "input": {
+   "required": {
+    "samples": [
+     "LATENT"
+    ],
+    "vae": [
+     "VAE"
+    ]
+   }
+  },
+  "output": [
+   "AUDIO"
   ]
  },
  "VAEDecodeTiled": {
