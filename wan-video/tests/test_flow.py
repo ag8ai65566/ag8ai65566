@@ -6510,6 +6510,27 @@ def test_runner() -> None:
     undeclared = [m.id for m in reg.runnable() if not m.methods]
     check(not undeclared,
           f"every runnable model says which shot methods it can serve ({undeclared})")
+
+    # The defaults have to satisfy their own rules. 首尾幀 defaulted to Wan 2.2,
+    # which has no first-and-last-frame builder here, so a new project with one
+    # 首尾幀 shot opened onto two BLOCK findings telling the user to change a
+    # setting they had never touched.
+    bad_default = []
+    for method, model_id in shortdrama.DEFAULT_ROUTE_MODEL.items():
+        model = reg.get(model_id)
+        if model is None:
+            bad_default.append(f"{method} -> {model_id} does not exist")
+        elif model.methods and method not in model.methods:
+            bad_default.append(f"{method} -> {model_id} cannot do it")
+    check(not bad_default, f"every default route can serve its own method ({bad_default})")
+
+    fresh = shortdrama.Project(id="d", title="預設", routes=shortdrama.default_routes())
+    fresh.shots = [shortdrama.Shot(id="f1", seconds=3.0, method="flf", action="站著")]
+    shortdrama.normalise(fresh)
+    import claims as _claims
+    blocks = {f.id for f in shortdrama.check(fresh) if f.level == _claims.BLOCK}
+    check(blocks == {"shot-no-endframe"},
+          f"…so an untouched project only blocks on what the user has yet to do ({sorted(blocks)})")
     project.shots[0].method = "s2v"
     project.routes["s2v"] = shortdrama.Route("wan22-14b-fp8")
     spoken = [f for f in shortdrama.check(project) if f.id == "wrong-mode-s2v"]

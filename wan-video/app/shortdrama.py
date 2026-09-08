@@ -145,9 +145,18 @@ METHODS: dict[str, Method] = {m.id: m for m in (
 # Which model each method's default route points at. A project may override any
 # of them; nothing requires them to be the same model, because they cannot be -
 # S2V and Animate are separate checkpoints from the I2V one.
+# Each method's default model. It has to be one that can actually serve that
+# method, which sounds obvious and was not true: 首尾幀 defaulted to Wan 2.2,
+# which this app has no first-and-last-frame builder for, so every new project
+# with a 首尾幀 shot opened onto two BLOCK findings whose fix was "switch this
+# to MiniMax H3" - the thing it should have been from the start. `test_flow`
+# now fails if any default here points at a model that cannot do its method.
 DEFAULT_ROUTE_MODEL = {
     "i2v": "hy15-720p",
-    "flf": "wan22-14b-fp8",
+    "flf": "minimax-h3",
+    # No graph here for either of these; they run through a workflow the user
+    # imports. The default names the model that actually does the job, so the
+    # page can say what is missing rather than point somewhere else.
     "s2v": "wan22-s2v",
     "animate": "wan22-animate",
 }
