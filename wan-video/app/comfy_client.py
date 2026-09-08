@@ -34,15 +34,22 @@ def explain(exc: BaseException, base_url: str = "") -> str:
         return (f"等 ComfyUI（{where}）回應等太久了。它可能還在載入模型 —— "
                 "第一次載入大模型會花好幾分鐘，等它那邊不再跳訊息之後再試一次。")
     if isinstance(exc, (aiohttp.ClientConnectorError, ConnectionRefusedError, OSError)):
-        return (
-            f"連不上 ComfyUI（{where}）—— 它應該是沒有啟動。\n"
-            "這個 app 自己不會畫圖，它是把工作丟給 ComfyUI 跑的，所以要先把它打開：\n"
-            "1. 到你安裝 ComfyUI 的資料夾，執行 run_nvidia_gpu.bat"
-            "（沒有獨顯的話是 run_cpu.bat，會非常慢）\n"
-            f"2. 等到瀏覽器打得開 {where}\n"
-            "3. 回來這裡再按一次生成\n"
-            "如果你的 ComfyUI 開在別的位址或連接埠，到「設定」分頁改 COMFY_URL。"
-        )
+        # Ask the module that actually looks at the disk. This used to hold its
+        # own copy of the advice, naming `run_nvidia_gpu.bat` - a file the
+        # portable ComfyUI download has and this project's install does not.
+        # Two copies of the same advice means fixing one and leaving the other
+        # reachable, which is exactly what happened: the health check was
+        # corrected and this path, which fires when ComfyUI dies *during* a
+        # generation, kept telling people to find a file they do not have.
+        # Imported inside the function so this module stays importable on its
+        # own, which the fake ComfyUI in the tests relies on.
+        try:
+            import comfyboot
+
+            return comfyboot.advice(comfyboot.find(), base_url or "")
+        except Exception:  # noqa: BLE001 - advice must never be the thing that fails
+            return (f"連不上 ComfyUI（{where}）—— 它應該是沒有啟動。"
+                    "先把 ComfyUI 開起來，再回來按一次生成。")
     return f"{type(exc).__name__}: {exc}"
 
 

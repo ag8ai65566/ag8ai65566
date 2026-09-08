@@ -100,13 +100,33 @@ class ModelDef:
     lightning_cfg: float = 1.0
     lightning_shift: float = 5.0
     supports_lora: bool = True
-    # Which of the drama page's shot methods this model can actually serve.
-    # Empty means "all of them", which is true of the general image-to-video
-    # checkpoints. MiniMax H3 is the reason this exists: it has no plain I2V
-    # mode at all - first-and-last-frame or reference-image only - so routing
-    # 圖生影片 at it can never work, and the page used to let you pick it and
-    # find out twenty shots later.
+    # Which of the drama page's shot methods THIS APP can build for this model.
+    # Not the model's own capabilities: Wan 2.2 has an official
+    # `WanFirstLastFrameToVideo` route, but there is no builder for it here, so
+    # Wan says i2v only. It exists so the drama page can refuse a route it
+    # cannot build, instead of letting you pick it and find out twenty shots
+    # later with a video that is not the one you asked for.
+    #
+    # Empty used to mean "all of them", which read as a convenience and behaved
+    # as a trap: every runnable model except H3 was empty, so routing 說話 or
+    # 動作轉移 at Wan passed every check and then built a plain image-to-video
+    # graph. Every runnable model now says what it can do; empty means "nothing
+    # declared", which is what a files-only entry honestly is.
     methods: tuple[str, ...] = ()
+    # Pixel granularity the sampler needs. 16 covers every VAE here (they
+    # downsample by 8 or 16). MiniMax H3 needs 32: its DiT patchifies the
+    # latent in 2x2 blocks (`patch_size=(1, 2, 2)` in comfy/ldm/minimax/
+    # model.py) and reshapes `lat_h // 2, 2, lat_w // 2, 2`, so an odd latent
+    # side is a shape error, not a soft-edged output. A vertical drama shot
+    # snapped to 16 came out 848x1232 - latent 53x77, both odd - which is
+    # every portrait shot at the 768p tier.
+    dim_multiple: int = 16
+    # The frame grid this family snaps to: n * period + phase. 4n+1 for every
+    # model whose VAE compresses time 4:1; MiniMax H3 is 17n+5 at 24fps. The
+    # page used to derive frames from seconds with 4n+1 written into it, so
+    # picking 5 seconds of H3 quoted 121 frames while the graph built 124.
+    frame_period: int = 4
+    frame_phase: int = 1
     # What this entry is for. Everything in this catalogue is downloadable from
     # the models tab, but only the video ones belong in a "which model makes
     # the clip" picker - the TTS bundles were being offered there, which is a
@@ -170,7 +190,8 @@ HUNYUAN_LICENCE = Licence(
     name="Tencent Hunyuan Community License",
     url="https://huggingface.co/tencent/HunyuanVideo-1.5/blob/main/LICENSE",
     excluded=("歐盟", "英國", "韓國"),
-    note="另附 Acceptable Use Policy。",
+    note="月活躍使用者超過 1 億要另外向騰訊申請授權（授不授權由他們決定）；"
+         "另附 Acceptable Use Policy。",
 )
 
 LTX_LICENCE = Licence(
@@ -223,6 +244,7 @@ MODELS: list[ModelDef] = [
     ModelDef(
         id="wan22-14b-fp8",
         label="Wan 2.2 I2V 14B — fp8（畫質最好）",
+        methods=("i2v",),
         family="wan22_14b",
         vram_gb=24,
         files=[
@@ -246,6 +268,7 @@ MODELS: list[ModelDef] = [
     ModelDef(
         id="wan22-14b-q8",
         label="Wan 2.2 I2V 14B — GGUF Q8（接近 fp8）",
+        methods=("i2v",),
         family="wan22_14b",
         vram_gb=16,
         files=[*_gguf("Q8_0", 15406608896), WAN_TE, WAN21_VAE],
@@ -264,6 +287,7 @@ MODELS: list[ModelDef] = [
     ModelDef(
         id="wan22-14b-q4",
         label="Wan 2.2 I2V 14B — GGUF Q4_K_M（省顯存）",
+        methods=("i2v",),
         family="wan22_14b",
         vram_gb=12,
         files=[*_gguf("Q4_K_M", 9651728896), WAN_TE, WAN21_VAE],
@@ -282,6 +306,7 @@ MODELS: list[ModelDef] = [
     ModelDef(
         id="wan22-5b",
         label="Wan 2.2 TI2V 5B（輕量、原生 720p）",
+        methods=("i2v",),
         family="wan22_5b",
         vram_gb=12,
         files=[
@@ -511,7 +536,18 @@ MODELS: list[ModelDef] = [
         ],
         # Straight from the official template's own widget values: 1344x768,
         # res_multistep / simple, 20 steps, and 6 with the turbo LoRA.
+        # 768p is the model's own canvas: `adapt_canvas` in ComfyUI's
+        # nodes_minimax_h3.py derives every reference canvas at short edge 768
+        # with a 768*1344 area cap, and 1344x768 is exactly that cap. The I2V
+        # path does not run that function - it uses what you pass, verbatim -
+        # so 540p really is 960x544 rather than being silently resized. It is
+        # below the short edge the model works at, though, so it is a way to
+        # fit a smaller card and not a mode the model advertises.
         tiers={"768p": (1344, 768), "540p": (960, 544)},
+        # 2x2 patchify - see ModelDef.dim_multiple.
+        dim_multiple=32,
+        frame_period=17,
+        frame_phase=5,
         fps=24,
         # 124 frames at 24fps is the node's own default (~5.2s). ComfyUI's
         # tooltip puts the trained range at 124-362 frames, i.e. roughly 5 to
@@ -552,12 +588,13 @@ MODELS: list[ModelDef] = [
              "訓練長度是 124–362 幀（約 5–15 秒），比 5 秒短是在訓練範圍外面。"
              "**顯卡不夠大就別選這個**：光文字編碼器就 16GB，24GB 顯卡也要大量 offload，"
              "10GB 的卡基本上跑不動 —— 一般真人動作鏡頭先用 HunyuanVideo 1.5 480p，"
-             "那個是 8.3B、單張圖直接生，快得多。"
+             "那個的 DiT 是 8.3B，整包約 21.5GB，只吃一張圖。"
              "多圖角色參考的 Ref2VA 是另外 21GB，沒有收進這個下載包。",
     ),
     ModelDef(
         id="hy15-480p",
         label="HunyuanVideo 1.5 480p — fp8 cfg-distilled（最省顯存）",
+        methods=("i2v",),
         family="hunyuan15",
         vram_gb=10,
         files=[
@@ -575,11 +612,12 @@ MODELS: list[ModelDef] = [
         # so those LoRAs are a gamble rather than a match.
         civitai_bases_loose=("Hunyuan Video",),
         licence=HUNYUAN_LICENCE,
-        note="主模型只有 8.3GB。人臉與物理最自然，NSFW 生態比 Wan 少。",
+        note="主模型（DiT）8.3GB，但**要全部下載完才能跑**：加上文字編碼器、VAE、視覺編碼器一共約 21.5GB。人臉與物理最自然，NSFW 生態比 Wan 少。",
     ),
     ModelDef(
         id="hy15-720p",
         label="HunyuanVideo 1.5 720p — fp8 cfg-distilled",
+        methods=("i2v",),
         family="hunyuan15",
         vram_gb=12,
         files=[
@@ -599,6 +637,7 @@ MODELS: list[ModelDef] = [
     ModelDef(
         id="hy15-720p-hq",
         label="HunyuanVideo 1.5 720p — fp16（品質優先）",
+        methods=("i2v",),
         family="hunyuan15",
         vram_gb=20,
         files=[
@@ -631,7 +670,7 @@ MODELS: list[ModelDef] = [
             ModelFile("Comfy-Org/ltx-2", "split_files/text_encoders/gemma_3_12B_it_fp4_mixed.safetensors", "text_encoders", 9447702218),
             ModelFile("Comfy-Org/ltx-2.3", "split_files/loras/ltx_2.3_22b_distilled_1.1_lora_dynamic_fro09_avg_rank_111_bf16.safetensors", "loras", 2741024390),
             ModelFile("Comfy-Org/ltx-2", "split_files/loras/gemma-3-12b-it-abliterated_lora_rank64_bf16.safetensors", "loras", 628203616),
-            ModelFile("Lightricks/LTX-2.3", "ltx-2.3-spatial-upscaler-x2-1.1.safetensors", "latent_upscale_models", 1002438656),
+            ModelFile("Lightricks/LTX-2.3", "ltx-2.3-spatial-upscaler-x2-1.1.safetensors", "latent_upscale_models", 995743560),
         ],
         tiers={},
         supports_lora=False,

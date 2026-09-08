@@ -17,6 +17,7 @@ import json
 import random
 import re
 import shutil
+import subprocess
 import time
 import traceback
 import uuid
@@ -262,6 +263,17 @@ async def run_job(record: library.Record, image_bytes: bytes,
     # the user's own ComfyUI, where it demonstrably runs; this app's builders
     # only exist for the families it has been able to verify.
     stored = wfimport.load(config.WORKFLOWS_DIR, model.id)
+    if stored and end_uploaded:
+        # The importer finds one image slot. It has no idea which LoadImage in
+        # someone else's graph is the *last* frame, so putting the end frame in
+        # would be a guess and leaving it out would quietly hand back an
+        # ordinary image-to-video clip - the same silent downgrade the planner
+        # already refuses. Say so instead.
+        raise ComfyError(
+            f"「{model.label}」有匯入的工作流，匯入的圖只認得一張輸入圖，"
+            "放不進結束幀 —— 這樣跑出來會是普通的圖生影片，不是首尾幀。\n"
+            "要用首尾幀，請到「模型」分頁把這個模型的匯入工作流刪掉，改用內建的；"
+            "或是把這顆鏡頭改成圖生影片。")
     if stored:
         slots = wfimport.slots_from(stored)
         graph = wfimport.apply(
@@ -618,6 +630,17 @@ async def list_models() -> JSONResponse:
                 "fps": model.fps,
                 "negative": model.negative,
                 "supports_lightning": bool(model.lightning),
+                # How many steps the speed LoRA runs at, so the checkbox can
+                # say the real number. It was hardcoded "4 步加速" in the page,
+                # which is Wan's - MiniMax H3's official template ships its
+                # turbo LoRA at 6.
+                "lightning_steps": model.lightning_steps,
+                # The frame grid this family snaps to: n*period + phase. Wan
+                # and Hunyuan are 4n+1; MiniMax H3 is 17n+5. The page derived
+                # frames from seconds with 4n+1 hardcoded, so the seconds
+                # picker quoted a frame count the graph never used.
+                "frame_period": model.frame_period,
+                "frame_phase": model.frame_phase,
                 "supports_lora": model.supports_lora,
                 "civitai_bases": list(model.civitai_bases),
                 "civitai_bases_loose": list(model.civitai_bases_loose),
@@ -1945,7 +1968,11 @@ def _drama_jobs(project) -> dict:
     """
     wanted: set[str] = set()
     for shot in project.shots:
-        for stage in ("keyframe", "endframe", "video"):
+        # `shortdrama.STAGES`, not a list spelled out here. Spelled out, it said
+        # keyframe/endframe/video and the audio stage was added without it - so
+        # an uploaded take was stored and never looked up again, and the panel
+        # showed nothing where the sound should be.
+        for stage in shortdrama.STAGES:
             wanted.update(shot.jobs_for(stage))
             if shot.active_for(stage):
                 wanted.add(shot.active_for(stage))
@@ -2033,8 +2060,15 @@ async def update_drama(project_id: str, payload: dict = Body(default={})
             if method not in shortdrama.METHODS or not isinstance(raw, dict):
                 continue
             model_id = str(raw.get("model_id") or "")
-            if model_id and registry.get(model_id) is None:
+            picked = registry.get(model_id) if model_id else None
+            if model_id and picked is None:
                 raise HTTPException(400, f"沒有這個影片模型：{model_id}")
+            # The picker only offers role="video", but the picker is not the
+            # only way in - this is an open endpoint, and a TTS bundle set here
+            # would fail much later with something unreadable.
+            if picked is not None and picked.role != "video":
+                raise HTTPException(
+                    400, f"「{picked.label}」不是影片模型，不能拿來生成鏡頭。")
             finish = raw.get("finish") or {}
             mode = str(finish.get("mode") or "native")
             if mode not in ("native", "interpolate", "retime", "manual"):
@@ -2466,7 +2500,7 @@ def _video_payload(project, jobs: dict, shot) -> dict:
             raise HTTPException(
                 400,
                 f"「首尾幀」這條路線指到 {(model.label if model else route.model_id if route else '?')}"
-                "，但它吃不了第二張圖。目前只有 MiniMax H3 做得到首尾幀 —— "
+                "，但這個 app 只有 MiniMax H3 接了首尾幀的工作流 —— "
                 "到第 0 步把這條路線改成它，或把這顆改成「圖生影片」。")
         end_id = shot.active_for("endframe")
         end_rec = jobs.get(end_id) if end_id else None
@@ -2584,10 +2618,27 @@ def _assemble_segments(project, jobs) -> tuple[list, list[int]]:
         output = getattr(record, "output", None) if record else None
         path = (config.OUTPUT_DIR / output) if output else None
         if path and path.is_file():
-            ready.append(assemble.Segment(path, shot.seconds, shot.no))
+            ready.append(assemble.Segment(path, shot.seconds, shot.no,
+                                          audio=_shot_audio(shot, jobs)))
         else:
             missing.append(shot.no)
     return ready, missing
+
+
+def _shot_audio(shot, jobs) -> Path | None:
+    """The sound file this shot accepted, if it is still on disk.
+
+    None of the runnable models take sound as an *input* - H3 generates its own
+    and Wan S2V, which does, has no graph here - so an uploaded take is the
+    shot's soundtrack, and the only place it can be used is the join. It used
+    to be stored and then never read, which meant attaching dialogue to every
+    shot and getting a silent episode with nothing said about it.
+    """
+    job_id = shot.active_for("audio")
+    record = jobs.get(job_id) if job_id else None
+    output = getattr(record, "output", None) if record else None
+    path = (config.OUTPUT_DIR / output) if output else None
+    return path if path and path.is_file() else None
 
 
 @app.post("/api/drama/{project_id}/assemble")
@@ -2826,11 +2877,13 @@ MAX_AUDIO_BYTES = 60_000_000
 @app.post("/api/drama/{project_id}/shot/{shot_id}/audio")
 async def drama_audio(project_id: str, shot_id: str,
                       audio: UploadFile) -> JSONResponse:
-    """Attach a sound file to a shot, for the routes that take one.
+    """Attach a sound file to a shot: it becomes that shot's soundtrack.
 
-    S2V and MiniMax H3 are audio-driven: the sound is an *input*, and the lip
-    movement is generated to match it. So the file has to reach the shot before
-    the video is generated, not be laid over it afterwards.
+    Not a generation input. Nothing runnable here takes sound as an input -
+    MiniMax H3 generates its own (`MiniMaxH3ImageToVideo` has no audio slot at
+    all), and Wan S2V, which genuinely is audio-driven, is files-only with no
+    graph in this app. So the one place an uploaded take can be used is the
+    join, where it is laid over the shot's picture.
 
     Uploaded rather than generated: this app has no text-to-speech, and has
     never run one. See docs for the candidates.
@@ -2874,11 +2927,14 @@ async def drama_audio(project_id: str, shot_id: str,
         shot.set_active("audio", record.id)
     DRAMAS.save()
 
-    note = ""
-    if shot.method != "s2v" and not shot.dialogue:
-        note = ("這顆鏡頭的生成方式不是「說話（音訊驅動）」，"
-                "所以這個音檔目前只會被記著，不會進生成 —— "
-                "要讓它驅動口型，把生成方式改成 S2V。")
+    # What it will and will not do, said at the moment of upload. It used to
+    # say "switch to S2V and it will drive the lips", which pointed at a route
+    # this app has no graph for - and it did not mention the one thing the file
+    # actually does.
+    note = ("這個音檔會在「合成整集」的時候蓋到這顆鏡頭上"
+            "（比畫面短就補靜音，長就切掉）。"
+            "它不會進生成 —— 這裡能跑的模型都不吃音檔當輸入，"
+            "MiniMax H3 的聲音是它自己生的。")
     return JSONResponse({**_drama_payload(project), "imported": record.id,
                          "note": note})
 
@@ -4183,6 +4239,19 @@ async def prompt_preview(payload: dict = Body(...)) -> JSONResponse:
 # -- health & files ----------------------------------------------------------
 
 
+# The ComfyUI this app started, if it started one. Two of them would both try
+# to take the whole graphics card, and the second would die of an out-of-memory
+# error that looks like a model problem. ComfyUI takes a minute or two to
+# answer, and the button comes back on a page reload, so "is it already up?"
+# cannot be answered by asking it.
+_started_comfy: subprocess.Popen | None = None
+# The "is it up?" check awaits, so without this two clicks - or a click and a
+# retry - can both get past it and each spawn a ComfyUI. Two of them fight over
+# the card and the second one usually dies on the port, which reads as "the
+# button does not work".
+_comfy_start_lock = asyncio.Lock()
+
+
 @app.post("/api/comfy/start")
 async def comfy_start() -> JSONResponse:
     """Start ComfyUI, so the user never has to find a file to double-click.
@@ -4191,18 +4260,32 @@ async def comfy_start() -> JSONResponse:
     interpreter to run it with. Anywhere else, the honest answer is the advice
     text, not a guess at a command line.
     """
+    global _started_comfy
+
     found = comfyboot.find()
     if not found.startable:
         raise HTTPException(400, comfyboot.advice(found, config.COMFY_URL))
-    try:
-        await client.node_classes(refresh=True)
-        return JSONResponse({"already": True, "message": "ComfyUI 本來就在跑了。"})
-    except Exception:  # noqa: BLE001 - not running is the expected case here
-        pass
-    try:
-        await asyncio.to_thread(comfyboot.start, found, config.COMFY_ARGS)
-    except comfyboot.StartError as exc:
-        raise HTTPException(400, str(exc)) from exc
+    # Held across the whole check-then-spawn, not just the spawn: the check
+    # itself awaits, and that gap is the race.
+    async with _comfy_start_lock:
+        try:
+            await client.node_classes(refresh=True)
+            return JSONResponse({"already": True, "message": "ComfyUI 本來就在跑了。"})
+        except Exception:  # noqa: BLE001 - not running is the expected case here
+            pass
+        if _started_comfy is not None and _started_comfy.poll() is None:
+            # Booting, not dead. Starting a second one here is how you get two
+            # processes fighting over the card.
+            return JSONResponse({
+                "already": True,
+                "message": "已經在啟動了，它還在載入 —— 第一次會花一兩分鐘。"
+                           "上面那條橫幅載好之後會自己消失。",
+            })
+        try:
+            _started_comfy = await asyncio.to_thread(
+                comfyboot.start, found, config.COMFY_ARGS, config.COMFY_URL)
+        except comfyboot.StartError as exc:
+            raise HTTPException(400, str(exc)) from exc
     return JSONResponse({
         "already": False,
         "message": "開起來了。第一次載入模型會花一兩分鐘 —— "

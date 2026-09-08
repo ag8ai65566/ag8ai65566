@@ -743,23 +743,6 @@ def clear_cache() -> None:
     _cache.clear()
 
 
-def to_json(codex: Codex) -> dict:
-    return {
-        "id": codex.id, "name": codex.name, "source": codex.source,
-        "note": codex.note, "advice": codex.advice, "skipped": codex.skipped,
-        "skipped_variants": codex.skipped_variants,
-        "poses": [
-            {
-                "id": p.id, "title": p.title, "group": p.group,
-                "section": p.section, "author": p.author, "note": p.note,
-                "negative": p.negative,
-                "variants": [v.public() for v in p.variants],
-            }
-            for p in codex.poses
-        ],
-    }
-
-
 # -- one-click prompt ---------------------------------------------------------
 
 # The codex's own note 6: artist strings drag in chibi figures, and these four

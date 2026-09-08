@@ -98,6 +98,20 @@ def test_registry() -> None:
     # downloading it three times would be three copies of the same bytes. What
     # must not happen is two *different* sources landing on one name, which is
     # what `save_as` is there to prevent.
+    # A catalogued size is compared to the bytes on disk *exactly*
+    # (downloader.file_status), so a wrong number means the file downloads in
+    # full, is judged incomplete forever, and is re-fetched on every run. The
+    # LTX-2.3 upscaler sat wrong by 6.7MB until `scripts/verify_sizes.py` was
+    # written to check all of them against Hugging Face.
+    check((Path(__file__).resolve().parents[1] / "scripts" / "verify_sizes.py").is_file(),
+          "there is a script that checks every size against the real file")
+    # Non-zero, not "big": several of these are genuinely tiny config files
+    # (CosyVoice3's config.json is two bytes). Zero is the thing that matters -
+    # `file_status` treats a zero size as "presence is all we can check", which
+    # silently drops the integrity guarantee for that file.
+    zero = [(m.id, f.name) for m in registry.MODELS for f in m.all_files if not f.size]
+    check(not zero, f"every catalogued file has a real byte count ({zero})")
+
     landing: dict[tuple[str, str], set[str]] = {}
     for m in registry.MODELS:
         for f in m.all_files:
@@ -246,6 +260,27 @@ def test_dimensions() -> None:
 
     ew, eh = workflow.fit_dimensions(64, 12000, "480p", wan)
     check(ew >= 16 and eh >= 16, f"extreme aspect stays legal ({ew}x{eh})")
+
+    # H3's DiT patchifies the latent 2x2 and reshapes `lat_h // 2, 2, lat_w //
+    # 2, 2`, so an odd latent side throws. Snapping to 16 gave 848x1232 for a
+    # portrait shot - latent 53x77 - i.e. every vertical drama shot at 768p.
+    # This walks every model rather than just H3, because the next model with
+    # a coarser grid must not have to remember to add its own test.
+    off_grid = []
+    for model in registry.runnable():
+        step = model.dim_multiple
+        for tier in model.tiers:
+            for src in ((832, 1216), (1080, 1920), (1024, 1024), (1920, 1080)):
+                dw, dh = workflow.fit_dimensions(*src, tier, model)
+                if dw % step or dh % step:
+                    off_grid.append(f"{model.id} {tier} {src[0]}x{src[1]} -> {dw}x{dh} /{step}")
+    check(not off_grid, "every model x tier x aspect lands on its own grid"
+          + ("" if not off_grid else f" ({len(off_grid)} off: {off_grid[:3]})"))
+    h3 = registry.get("minimax-h3")
+    check(h3.dim_multiple == 32, "H3 asks for /32")
+    vw, vh = workflow.fit_dimensions(1080, 1920, "768p", h3)
+    check((vw, vh) == (768, 1344),
+          f"a vertical shot lands on H3's own 768-short-edge canvas ({vw}x{vh})")
 
     section("length")
     check(workflow.normalize_length(81) == 81, "81 unchanged")
@@ -408,6 +443,82 @@ async def test_validator() -> None:
         await runner.cleanup()
 
 
+def test_drama_roundtrip(tmp: Path) -> None:
+    """Save a project with every field set, reload it, lose nothing.
+
+    Twice now a field has been added to the model and not to the serialiser:
+    the audio attachments vanished on the next save, and the crop choice
+    reverted to "not chosen" on the next reload. Both were found by a user
+    hitting them. This walks the dataclasses instead, so the next field that
+    gets added is caught by existing rather than by someone losing work.
+    """
+    import dataclasses
+
+    import shortdrama as sd
+
+    section("drama save/load round trip")
+    tmp.mkdir(parents=True, exist_ok=True)
+    store = sd.ProjectStore(tmp / "dramas.jsonl")
+    project = store.create("往返測試")
+
+    # Set every field to something that is NOT the default, so a field that is
+    # dropped comes back as the default and the comparison catches it.
+    project.note = "整份備註"
+    project.delivery = sd.DeliverySpec(width=720, height=1280, fps=30, fit="cover")
+    project.keyframes = sd.KeyframeProfile(model_id="lustify", width=832,
+                                           height=1216, style_id="filmic")
+    project.cast = [sd.Character(key="a", name="小明", gender="male",
+                                 trigger="xm", costume="黑西裝", lora="x.safetensors",
+                                 voice="低沉", note="主角")]
+    shot = sd.Shot(id="s1", seconds=4.5, size="特寫", who=["a"], speaker="a",
+                   action="站著", motion="轉頭", dialogue="你好", method="s2v",
+                   scene="街上", extra="額外", note="備註")
+    for stage in sd.STAGES:
+        shot.jobs_for(stage).extend([f"{stage}-1", f"{stage}-2"])
+        shot.set_active(stage, f"{stage}-1")
+    project.shots = [shot]
+    sd.normalise(project)
+    store.save()
+
+    again = sd.ProjectStore(tmp / "dramas.jsonl")
+    again.load()
+    back = again.get(project.id)
+    check(back is not None, "the project survives a save and a reload")
+
+    for name, before, after in (("delivery", project.delivery, back.delivery),
+                                ("keyframes", project.keyframes, back.keyframes)):
+        lost = [f.name for f in dataclasses.fields(before)
+                if getattr(before, f.name) != getattr(after, f.name)]
+        check(not lost, f"every {name} field round-trips ({lost})")
+    check(back.delivery.fit == "cover",
+          f"…including the crop choice, which used to be dropped ({back.delivery.fit})")
+
+    lost = [f.name for f in dataclasses.fields(project.cast[0])
+            if getattr(project.cast[0], f.name) != getattr(back.cast[0], f.name)]
+    check(not lost, f"every cast field round-trips ({lost})")
+
+    lost = [f.name for f in dataclasses.fields(shot)
+            if getattr(shot, f.name) != getattr(back.shots[0], f.name)]
+    check(not lost, f"every shot field round-trips ({lost})")
+    check(back.shots[0].active_audio == "audio-1",
+          "…including the accepted audio, which used to vanish on save")
+    check(back.note == "整份備註" and back.created == project.created,
+          "and the project's own fields survive too")
+
+    # The other half of the same bug: the shot kept its audio, and the server
+    # then looked jobs up for keyframe/endframe/video only, so the panel had
+    # nothing to show for it. Both lists have to come from STAGES.
+    import inspect
+    import server
+    source = inspect.getsource(server._drama_jobs)
+    check("shortdrama.STAGES" in source and '"video")' not in source,
+          "the job lookup walks STAGES rather than a list spelled out again")
+    covered = {stage for stage in sd.STAGES
+               if shot.jobs_for(stage) and shot.active_for(stage)}
+    check(covered == set(sd.STAGES),
+          f"…and every stage has somewhere to put jobs ({sorted(covered)})")
+
+
 def test_comfy_boot(tmp: Path) -> None:
     """Finding ComfyUI, and saying the right thing about what was found.
 
@@ -442,6 +553,19 @@ def test_comfy_boot(tmp: Path) -> None:
     check("run_nvidia_gpu" not in said,
           "…and never a file from a different install layout")
 
+    # -- where it is told to listen
+    # Starting it on 8188 while the app talks to 8189 is the worst outcome:
+    # it really did start, and the banner never goes away.
+    check(comfyboot.listen_for("http://127.0.0.1:8189") == ("127.0.0.1", "8189"),
+          "the port comes from the URL this app will actually call")
+    check(comfyboot.listen_for("") == ("127.0.0.1", "8188"), "…with the usual default")
+    # COMFY_ARGS comes from .env, where a Windows path with a space is normal.
+    check(comfyboot.split_args('--foo "D:\\My Files" --bar')
+          == ["--foo", "D:\\My Files", "--bar"],
+          "a quoted path stays one argument")
+    check(comfyboot.split_args('--a "unbalanced') == ["--a", '"unbalanced'],
+          "…and a stray quote does not stop it from starting at all")
+
     # -- never installed
     bare = tmp / "bare"
     bare.mkdir(parents=True)
@@ -461,6 +585,19 @@ def test_comfy_boot(tmp: Path) -> None:
     said = comfyboot.advice(comfyboot.find(nowhere), "http://comfy:8188")
     check("docker" in said.lower(),
           f"…and a setup with no scripts at all is pointed at compose ({said[:26]})")
+
+    # Two ComfyUIs would both take the whole card, and the second would die of
+    # an out-of-memory error that reads like a model problem. It boots slowly
+    # and the button comes back on a page reload, so "is one already coming
+    # up?" cannot be answered by asking ComfyUI itself.
+    server_src = (ROOT / "app" / "server.py").read_text(encoding="utf-8")
+    check("_started_comfy" in server_src and ".poll() is None" in server_src,
+          "the start endpoint remembers the process it launched")
+    start_block = server_src[server_src.index('@app.post("/api/comfy/start")'):]
+    start_block = start_block[:start_block.index("@app.get")]
+    check(start_block.index("_started_comfy is not None")
+          < start_block.index("comfyboot.start"),
+          "…and checks it is not already coming up before launching another")
 
     # Starting something that is not there must refuse, not run a guess.
     refused = ""
@@ -486,11 +623,37 @@ def test_comfy_down_message() -> None:
     refused = aiohttp.ClientConnectorError(
         connection_key=None, os_error=ConnectionRefusedError(61, "refused"))
     said = comfy_client.explain(refused, "http://127.0.0.1:8188")
-    check("沒有啟動" in said, "a refused connection says ComfyUI is not running")
-    check("run_nvidia_gpu.bat" in said, "…and names the file to double-click")
-    check("COMFY_URL" in said, "…and where to change the address if it differs")
+    check("ComfyUI" in said and "install.bat" in said or "沒有啟動" in said,
+          "a refused connection says ComfyUI is not running, and what to do")
     check("ClientConnectorError" not in said,
           f"…without the class name the user cannot act on ({said[:24]})")
+    # One copy of the advice, not two. The health check was corrected and this
+    # path - which fires when ComfyUI dies *during* a generation - kept its own
+    # stale copy naming a file from a different install layout.
+    check("run_nvidia_gpu" not in said,
+          "…and never a file from a different install layout")
+    import comfyboot
+    check(said == comfyboot.advice(comfyboot.find(), "http://127.0.0.1:8188"),
+          "…because both paths ask the same function, rather than each holding a copy")
+    # In a comment explaining the history is fine; in a string the user could
+    # be shown is not. Parse rather than grep, so the comment does not have to
+    # be worded around the check.
+    import ast as _ast
+
+    literals = []
+    for mod in ("comfy_client.py", "comfyboot.py", "server.py"):
+        tree = _ast.parse((ROOT / "app" / mod).read_text(encoding="utf-8"))
+        # Docstrings explain why the old text was wrong; they are not shown to
+        # anyone. Only strings that could reach a screen count.
+        docs = {id(_ast.get_docstring(n, clean=False) and n.body[0].value)
+                for n in _ast.walk(tree)
+                if isinstance(n, (_ast.Module, _ast.FunctionDef, _ast.AsyncFunctionDef,
+                                  _ast.ClassDef)) and _ast.get_docstring(n)}
+        literals += [n.value for n in _ast.walk(tree)
+                     if isinstance(n, _ast.Constant) and isinstance(n.value, str)
+                     and id(n) not in docs]
+    check(not [t for t in literals if "run_nvidia_gpu" in t],
+          "and no string the user can be shown still names that file")
 
     slow = comfy_client.explain(asyncio.TimeoutError(), "http://127.0.0.1:8188")
     check("載入模型" in slow,
@@ -557,6 +720,28 @@ def test_minimax_h3_graph() -> None:
     picker = next(n for n in graph.values() if n["class_type"] == "KSamplerSelect")
     check(picker["inputs"]["sampler_name"] == "res_multistep",
           f"and the sampler is the one the template ships ({picker['inputs']['sampler_name']})")
+
+    # Sound is the only reason to pick this model, so a ComfyUI that cannot mux
+    # it is refused rather than quietly handing back a silent mp4.
+    silent_refusal = ""
+    try:
+        workflow.build(model, params, image_name="a.png", prompt="p", seed=7,
+                       width=1344, height=768, available_nodes=set(),
+                       filename_prefix="t/h3")
+    except workflow.UnsupportedModel as exc:
+        silent_refusal = str(exc)
+    check("CreateVideo" in silent_refusal and "無聲" in silent_refusal,
+          f"no CreateVideo means no H3 run, not a silent one ({silent_refusal[:20]})")
+
+    # The page derives frames from seconds. It used to do it with Wan's grid
+    # written in, so 5 seconds of H3 said 121 on screen and built 124.
+    check((model.frame_period, model.frame_phase) == (workflow.H3_PERIOD, workflow.H3_PHASE),
+          "the grid the page is told matches the one the graph uses")
+    for other in registry.runnable():
+        if other.family == "minimax_h3":
+            continue
+        check((other.frame_period, other.frame_phase) == (4, 1),
+              f"{other.id} is on the 4n+1 grid the rest of the builders use")
 
     # Frame count snaps to 17k+5 at 24fps - a different grid from every other
     # model here, which uses 4n+1.
@@ -5933,6 +6118,23 @@ def test_workflow_import() -> None:
     check(parsed[got.positive.node]["inputs"][got.positive.key] == "a woman walking",
           "and the stored graph is untouched, so the next run is not the last one's")
 
+    # -- there is exactly one image slot, and that is why a first-and-last-frame
+    # shot cannot run through an imported graph. Guessing which LoadImage in
+    # someone else's workflow is the *last* frame would be a guess; leaving the
+    # end frame out would hand back an ordinary image-to-video clip and say
+    # nothing - the same silent downgrade the planner already refuses.
+    import dataclasses as dc
+    slot_names = {f.name for f in dc.fields(got)}
+    check(not {n for n in slot_names if "end" in n or "last" in n},
+          f"the importer has no end-frame slot to fill ({sorted(slot_names)})")
+    import inspect as _i
+    import server as _srv
+    guard = _i.getsource(_srv.run_job)
+    check("stored and end_uploaded" in guard,
+          "so run_job refuses that combination up front")
+    check("放不進結束幀" in guard,
+          "…and says which of the two to change, rather than failing inside ComfyUI")
+
     # -- an exported graph carries its own output path, which can be anywhere.
     # The app decides where its jobs land; the import does not get a say.
     hostile = json.loads(json.dumps(graph))
@@ -6078,6 +6280,60 @@ def test_assemble(tmp: Path) -> None:
         width=1080, height=1920, fps=24, codecs=codecs, media=over)
     check("-t" in args and args[args.index("-t") + 1].startswith("3.0"),
           "sound outlasting the picture is trimmed, so later shots stay in sync")
+
+    # -- the shot's own sound file
+    # Uploading dialogue for every shot and getting a silent episode was the
+    # whole failure: it was stored, and the assembler only ever read the video.
+    padder = assemble.Codecs("libx264", ["-crf", "18"], "aac", ".mp4", pad=True)
+    take = tmp / "line.wav"
+    args = assemble.normalise_args(
+        "ffmpeg", tmp / "in.mp4", tmp / "out.mp4", width=1080, height=1920,
+        fps=24, codecs=padder, media=silent, audio=take)
+    check(str(take) in args, "an accepted take is fed in as a second input")
+    check("[1:a]apad[a]" in " ".join(args), "padded, so a short take does not end the shot")
+    check("[a]" in args and "0:a" not in args and "anullsrc" not in " ".join(args),
+          "and it replaces the clip's own track rather than joining it")
+    check("-shortest" in args, "the endless pad is cut back to the picture")
+    # A take longer than the shot must not push the next shot late; -shortest
+    # already ends on the picture, so no -t is needed on top of it.
+    check(args.count("-map") == 2, "exactly one picture and one sound stream")
+
+    # Same call on an ffmpeg without apad: the sound is not silently dropped.
+    plain = assemble.normalise_args(
+        "ffmpeg", tmp / "in.mp4", tmp / "out.mp4", width=1080, height=1920,
+        fps=24, codecs=codecs, media=silent, audio=take)
+    check(str(take) not in plain, "without apad the take is not half-applied")
+    # A stand-in ffmpeg that only answers "what can you do". Enough to exercise
+    # the capability check, which the container's stripped ffmpeg cannot.
+    def fake_ffmpeg(name: str, *, apad: bool) -> str:
+        path = tmp / name
+        path.write_text(
+            "#!/bin/sh\n"
+            'case "$1$2" in\n'
+            '*-encoders*) echo \' V....D libx264 H.264\'; echo \' A....D aac AAC\';;\n'
+            '*-filters*) echo \' ... anullsrc |->A Null audio source.\''
+            + ("; echo \' ... apad A->A Pad audio.\'" if apad else "") + ";;\n"
+            "esac\n", encoding="utf-8")
+        path.chmod(0o755)
+        return str(path)
+
+    rich = fake_ffmpeg("ffmpeg-rich", apad=True)
+    poor = fake_ffmpeg("ffmpeg-poor", apad=False)
+    check(assemble.pick_codecs(rich).pad, "apad is detected when the build has it")
+    check(not assemble.pick_codecs(poor).pad, "and not claimed when it does not")
+    check(assemble.pick_codecs(poor).audio == "aac",
+          "a build without apad still gets an audio encoder for the silent filler")
+
+    refused = ""
+    (tmp / "in.mp4").write_bytes(b"not really an mp4, but it exists")
+    try:
+        assemble.build([assemble.Segment(tmp / "in.mp4", 3.0, 1, silent, audio=take)],
+                       tmp / "ep.mp4", width=1080, height=1920, fps=24,
+                       ffmpeg=poor, workdir=tmp / "wd")
+    except assemble.AssembleError as exc:
+        refused = str(exc)
+    check("apad" in refused and "沒有聲音" in refused,
+          f"…it stops and says why, rather than handing back a silent episode ({refused[:24]})")
 
     # -- shape policy
     contain = assemble.fit_filter("contain", 1080, 1920)
@@ -6225,6 +6481,23 @@ def test_runner() -> None:
     project.routes["i2v"] = shortdrama.Route("wan22-14b-fp8")
     check("wrong-mode-i2v" not in {f.id for f in shortdrama.check(project)},
           "…and a model that does have the mode is not flagged")
+
+    # Empty methods used to mean "all of them". Every runnable model except H3
+    # was empty, so routing 說話 or 動作轉移 at Wan passed every check here and
+    # then built a plain image-to-video graph: a video, but not the one asked
+    # for, with nothing anywhere saying so.
+    undeclared = [m.id for m in reg.runnable() if not m.methods]
+    check(not undeclared,
+          f"every runnable model says which shot methods it can serve ({undeclared})")
+    project.shots[0].method = "s2v"
+    project.routes["s2v"] = shortdrama.Route("wan22-14b-fp8")
+    spoken = [f for f in shortdrama.check(project) if f.id == "wrong-mode-s2v"]
+    check(len(spoken) == 1,
+          "routing 說話 at an image-to-video model is caught while planning")
+    check("圖生影片" in spoken[0].detail,
+          f"…and told what that model can actually do ({spoken[0].detail[:20]})")
+    project.shots[0].method = "i2v"
+    project.routes["s2v"] = shortdrama.Route("wan22-s2v")
 
     reason = runner.blocked_reason(project, {}, "video")
     check("還沒有採用的關鍵幀" in reason,
@@ -6414,6 +6687,15 @@ async def test_episode_endpoints() -> None:
                 check("第 1 顆" not in detail and "第 2 顆" not in detail,
                       "rather than once per shot")
 
+            # A TTS bundle is not a video model. The picker only offers
+            # role="video", but the picker is not the only way in.
+            async with s.post(f"{base}/api/drama/{pid}",
+                              json={**project,
+                                    "routes": {"i2v": {"model_id": "qwen3-tts"}}}) as r:
+                detail = (await r.json()).get("detail", "")
+                check(r.status == 400 and "不是影片模型" in detail,
+                      f"a TTS bundle is refused as a shot's video model ({detail[:20]})")
+
             # -- joining: nothing to join yet
             async with s.get(f"{base}/api/drama/{pid}/assemble") as r:
                 asm = await r.json()
@@ -6435,8 +6717,15 @@ async def test_episode_endpoints() -> None:
                 up = await r.json()
             check(r.status == 200, "a wav is accepted")
             check(up["shots"][0]["active_audio"], "and attached to the shot")
-            check("音訊驅動" in up["note"],
-                  "with a note that an i2v shot will not use it")
+            # The note used to say "switch to S2V and it will drive the lips",
+            # which points at a route this app has no graph for - and it never
+            # mentioned the one thing the file actually does.
+            check("合成整集" in up["note"] and "不會進生成" in up["note"],
+                  f"…and says where it will be used, and where it will not ({up['note'][:18]})")
+            check("S2V" not in up["note"],
+                  "…without sending anyone to a mode that cannot run here")
+            check("**" not in up["note"],
+                  "…and with no markdown in a string the page escapes")
 
             form = aiohttp.FormData()
             form.add_field("audio", b"not audio", filename="line.exe",
@@ -8005,6 +8294,7 @@ async def main() -> int:
     test_dimensions()
     await test_graphs()
     await test_validator()
+    test_drama_roundtrip(TMP / "roundtrip")
     test_comfy_boot(TMP / "comfyboot")
     test_comfy_down_message()
     test_minimax_h3_graph()

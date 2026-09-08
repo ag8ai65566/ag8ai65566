@@ -30,13 +30,16 @@ def tier_budget(model: ModelDef | None, tier: str) -> int:
 def fit_dimensions(width: int, height: int, tier: str, model: ModelDef | None = None) -> tuple[int, int]:
     """Scale the source image to the tier's pixel budget, keeping aspect ratio.
 
-    Snapped to a multiple of 16: the video VAEs downsample by 8 or 16 and the
-    DiT patchifies on top of that.
+    Snapped to the model's own granularity (`ModelDef.dim_multiple`): the video
+    VAEs downsample by 8 or 16, and some DiTs patchify the latent on top of
+    that. 16 is right for most of them; MiniMax H3 needs 32 or its latent comes
+    out with an odd side and the reshape in the model throws.
     """
     budget = tier_budget(model, tier)
+    step = max(8, int(getattr(model, "dim_multiple", 16) or 16))
     scale = math.sqrt(budget / max(1, width * height))
-    w = max(16, int(round(width * scale / 16)) * 16)
-    h = max(16, int(round(height * scale / 16)) * 16)
+    w = max(step, int(round(width * scale / step)) * step)
+    h = max(step, int(round(height * scale / step)) * step)
     return w, h
 
 
@@ -402,7 +405,18 @@ H3_PHASE = 5
 
 def h3_length(seconds: float) -> int:
     base = max(5, round(seconds * H3_FPS))
-    return base + (H3_PHASE - (base % H3_PERIOD)) % H3_PERIOD
+    return snap_length(base, H3_PERIOD, H3_PHASE)
+
+
+def snap_length(frames: int, period: int, phase: int) -> int:
+    """Round a frame count *up* onto a family's n*period + phase grid.
+
+    Up, not down: `normalize_length` rounds down because a Wan clip one frame
+    short is nothing, while H3's grid steps by 17 and rounding down would cost
+    most of a second. Shared so the page and the graph cannot disagree about
+    how many frames a number of seconds is - they used to.
+    """
+    return frames + (phase - (frames % period)) % period
 
 
 def _build_minimax_h3(g, model, p, *, image, prompt, negative, seed, width, height,
@@ -510,9 +524,18 @@ def _build_minimax_h3(g, model, p, *, image, prompt, negative, seed, width, heig
             "Save mp4",
         )
     else:
-        # Without those two nodes the sound cannot be muxed in, so it is dropped
-        # - and that has to be visible rather than silently happening.
-        _video_output(g, frames, out_fps, prefix + "-no-audio", nodes)
+        # Sound is the reason to pick this model - it generates its own dialogue
+        # and effects, which nothing else here does - and without these two
+        # nodes there is nowhere to mux it. Handing back a silent mp4 with
+        # "-no-audio" in the filename was a note nobody reads until after
+        # watching it. `MiniMaxH3ImageToVideo` is newer than both of these
+        # nodes, so a ComfyUI that has the one and not the others is broken
+        # rather than merely old.
+        raise UnsupportedModel(
+            "這台 ComfyUI 沒有 CreateVideo／SaveVideo 節點，"
+            "MiniMax H3 自己生的聲音接不出來，出來會是無聲的影片。"
+            "請更新 ComfyUI 再跑 —— 它有 MiniMax H3 的節點卻沒有這兩個，"
+            "表示安裝是壞的，不只是舊。")
 
 
 BUILDERS = {
@@ -555,8 +578,8 @@ def build(
     if end_image_name:
         if model.family != "minimax_h3":
             raise UnsupportedModel(
-                f"{model.label} 沒有「最後一張圖」這種輸入 —— "
-                "首尾幀目前只有 MiniMax H3 做得到。")
+                f"這個 app 為 {model.label} 組的圖沒有「最後一張圖」這個輸入 —— "
+                "目前只有 MiniMax H3 接了首尾幀。")
         extra["end_image"] = end_image_name
     builder(
         g,

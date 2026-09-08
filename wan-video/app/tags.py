@@ -132,10 +132,6 @@ def _load(base: Path) -> tuple:
     return _sessions[key]
 
 
-def unload() -> None:
-    _sessions.clear()
-
-
 @dataclass
 class Guess:
     general: list[tuple[str, float]] = field(default_factory=list)

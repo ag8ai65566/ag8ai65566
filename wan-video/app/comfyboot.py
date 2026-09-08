@@ -22,7 +22,9 @@ touching a terminal at all.
 from __future__ import annotations
 
 import os
+import shlex
 import subprocess
+import urllib.parse
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -149,7 +151,35 @@ class StartError(RuntimeError):
     pass
 
 
-def start(found: Found, args: str = "") -> subprocess.Popen:
+def listen_for(url: str) -> tuple[str, str]:
+    """The host and port to start ComfyUI on, taken from the URL we will call.
+
+    Starting it on 8188 while the app talks to :8189 gives the worst possible
+    outcome: it really did start, the button says so, and the banner never goes
+    away because nothing is listening where this app looks.
+    """
+    parts = urllib.parse.urlsplit(url or "")
+    host = parts.hostname or "127.0.0.1"
+    port = str(parts.port or 8188)
+    return host, port
+
+
+def split_args(args: str) -> list[str]:
+    """`COMFY_ARGS` from .env, as argv. Quoted paths stay in one piece.
+
+    `.split()` broke `--foo "D:\My Files"` into two arguments, which is how a
+    perfectly correct setting turns into an unreadable ComfyUI error.
+    """
+    try:
+        return [a for a in shlex.split(args or "") if a]
+    except ValueError:
+        # Unbalanced quotes. Whitespace splitting is wrong too, but it is what
+        # the user's line most nearly means, and refusing to start over a
+        # stray quote helps nobody.
+        return [a for a in (args or "").split() if a]
+
+
+def start(found: Found, args: str = "", url: str = "") -> subprocess.Popen:
     """Launch ComfyUI the way this project's own start script does.
 
     Detached on purpose: it has to outlive the request that started it, and on
@@ -158,8 +188,16 @@ def start(found: Found, args: str = "") -> subprocess.Popen:
     """
     if not found.startable:
         raise StartError("找不到 ComfyUI 或可以跑它的 Python。")
-    command = [str(found.python), "main.py", "--listen", "127.0.0.1", "--port", "8188"]
-    command += [a for a in (args or "").split() if a]
+    extra = split_args(args)
+    host, port = listen_for(url)
+    command = [str(found.python), "main.py"]
+    # Only when the user has not said otherwise in COMFY_ARGS. Passing both
+    # would leave two --port flags and the answer depending on argparse order.
+    if "--listen" not in extra:
+        command += ["--listen", host]
+    if "--port" not in extra:
+        command += ["--port", port]
+    command += extra
     kwargs: dict = {"cwd": str(found.comfy)}
     if os.name == "nt":
         # CREATE_NEW_CONSOLE. ComfyUI prints its progress there, which is where

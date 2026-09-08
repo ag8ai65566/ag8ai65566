@@ -90,10 +90,16 @@ class Segment:
     # What the file measures, filled in by whoever probed it. `seconds` above is
     # what the *shot list* asked for; these two disagreeing is worth showing.
     media: "Media | None" = None
+    # The sound the user accepted for this shot, if any. Without this the shot
+    # panel let you upload dialogue for every shot and the finished episode came
+    # out silent, because the assembler only ever read the accepted *video*.
+    audio: Path | None = None
 
     def public(self) -> dict:
         out = {"path": self.path.name, "seconds": self.seconds,
                "shot_no": self.shot_no}
+        if self.audio:
+            out["audio"] = self.audio.name
         if self.media:
             out["measured"] = self.media.public()
         return out
@@ -141,10 +147,15 @@ class Codecs:
     video_args: list[str]
     audio: str
     suffix: str
+    # `apad` is what lets a shot's own sound file be shorter than its picture
+    # without the segment ending early. Cut-down ffmpeg builds ship without it,
+    # so this is checked rather than assumed - and when it is missing the
+    # uploaded sound is refused out loud instead of being dropped in silence.
+    pad: bool = False
 
     def public(self) -> dict:
         return {"video": self.video, "audio": self.audio or "(無音訊)",
-                "container": self.suffix}
+                "container": self.suffix, "can_pad": self.pad}
 
 
 def filters(ffmpeg: str) -> set[str]:
@@ -163,7 +174,8 @@ def pick_codecs(ffmpeg: str) -> Codecs:
     # The silent filler track needs anullsrc. Without it there is no way to give
     # a silent shot an audio stream, so audio is dropped for the whole file
     # rather than kept for some shots and lost at the concat.
-    can_silence = "anullsrc" in filters(ffmpeg)
+    available = filters(ffmpeg)
+    can_silence = "anullsrc" in available
     for name, args, suffix in VIDEO_ENCODERS:
         if name in have:
             audio = next((a for a, boxes in AUDIO_ENCODERS
@@ -172,7 +184,8 @@ def pick_codecs(ffmpeg: str) -> Codecs:
                 audio = next((a for a, _ in AUDIO_ENCODERS if a in have), "")
             if not can_silence:
                 audio = ""
-            return Codecs(name, list(args), audio, suffix)
+            return Codecs(name, list(args), audio, suffix,
+                          pad=bool(audio) and "apad" in available)
     raise AssembleError(
         "這個 ffmpeg 沒有可以用的影片編碼器。"
         "請換一個完整版的 ffmpeg（gyan.dev 的 essentials 版就可以）。")
@@ -388,7 +401,8 @@ def unmeasured(segments: list[Segment]) -> list[int]:
 
 def normalise_args(ffmpeg: str, source: Path, target: Path, *,
                    width: int, height: int, fps: int, codecs: Codecs,
-                   fit: str = "contain", media: Media | None = None) -> list[str]:
+                   fit: str = "contain", media: Media | None = None,
+                   audio: Path | None = None) -> list[str]:
     """The exact ffmpeg command for one shot. Pure, so it can be tested.
 
     Split out from `normalise` on purpose. This project has no ffmpeg that can
@@ -399,13 +413,20 @@ def normalise_args(ffmpeg: str, source: Path, target: Path, *,
     rate wrong, a wrong map order drops the audio, a bare scale stretches faces.
     """
     media = media or Media()
+    # A sound file the user accepted for this shot replaces whatever the clip
+    # came with. It is only taken when this ffmpeg can `apad`: padded audio is
+    # what makes `-shortest` end on the *picture*, so a dialogue take shorter
+    # than the shot leaves silence at the end instead of cutting the shot off.
+    use_audio = audio if (audio and codecs.audio and codecs.pad) else None
     # Whether the silent filler is needed is decided per shot, not per run.
     # Mapping both `0:a?` and the silence gives a file with *two* audio tracks
     # when the shot already had sound - which players resolve differently and
     # concat then has to reconcile.
-    fill_silence = bool(codecs.audio) and not media.audio
+    fill_silence = bool(codecs.audio) and not media.audio and not use_audio
     args = [ffmpeg, "-y", "-i", str(source)]
-    if fill_silence:
+    if use_audio:
+        args += ["-i", str(use_audio)]
+    elif fill_silence:
         # So a shot with no sound still has an audio stream: concatenating a
         # mixture of with-audio and without drops the audio entirely.
         args += ["-f", "lavfi", "-i",
@@ -414,21 +435,28 @@ def normalise_args(ffmpeg: str, source: Path, target: Path, *,
     # both filters are absent from cut-down ffmpeg builds, while `-r` is a core
     # output option that every build has. Same result, fewer ways to fail on a
     # machine whose ffmpeg came bundled with something else.
+    chains = [f"[0:v]{fit_filter(fit, width, height)}[v]"]
+    if use_audio:
+        # Infinite tail, cut back to the picture by `-shortest` below. Longer
+        # audio is truncated by the same rule, so the next shot cannot land
+        # late because someone's take ran over.
+        chains.append("[1:a]apad[a]")
     args += [
-        "-filter_complex", f"[0:v]{fit_filter(fit, width, height)}[v]",
+        "-filter_complex", ";".join(chains),
         "-map", "[v]", "-r", str(fps),
     ]
     if codecs.audio:
-        args += ["-map", "1:a" if fill_silence else "0:a",
+        args += ["-map", "[a]" if use_audio else ("1:a" if fill_silence else "0:a"),
                  "-c:a", codecs.audio, "-ar", "48000", "-ac", "2"]
     else:
         args += ["-an"]
     args += ["-map_metadata", "-1",
              "-c:v", codecs.video, *codecs.video_args, "-pix_fmt", "yuv420p"]
-    if fill_silence:
-        # anullsrc never ends, so without this the encode never ends either.
-        # This is the only case `-shortest` is correct here: with a real audio
-        # track it would cut the *picture* short whenever the sound ran out
+    if fill_silence or use_audio:
+        # anullsrc and apad never end, so without this the encode never ends
+        # either. Both are endless *on purpose*, which is what makes -shortest
+        # safe here: it can only ever end on the picture. With a bare audio
+        # track it would cut the picture short whenever the sound ran out
         # first, which is a silent way to lose the end of a shot.
         args += ["-shortest"]
     elif media.audio and media.seconds and media.audio_seconds > media.seconds + 0.05:
@@ -440,11 +468,12 @@ def normalise_args(ffmpeg: str, source: Path, target: Path, *,
 
 def normalise(ffmpeg: str, source: Path, target: Path, *,
               width: int, height: int, fps: int, codecs: Codecs,
-              fit: str = "contain", media: Media | None = None) -> None:
+              fit: str = "contain", media: Media | None = None,
+              audio: Path | None = None) -> None:
     """Re-encode one shot to the delivery spec, with an audio track guaranteed."""
     result = _run(normalise_args(
         ffmpeg, source, target, width=width, height=height, fps=fps,
-        codecs=codecs, fit=fit, media=media))
+        codecs=codecs, fit=fit, media=media, audio=audio))
     if result.returncode != 0 or not target.is_file():
         tail = (result.stderr or "").strip().splitlines()[-3:]
         raise AssembleError(f"第 {source.name} 段轉檔失敗：" + " / ".join(tail))
@@ -505,6 +534,20 @@ def build(segments: list[Segment], target: Path, *, width: int, height: int,
             "可能是檔案被刪掉或搬走了，那幾顆要重新生成或重新採用。")
 
     codecs = pick_codecs(ffmpeg)
+    # Refuse rather than hand back a silent episode. Someone who attached a
+    # take to every shot would otherwise watch the whole thing to find out.
+    if not codecs.pad:
+        with_sound = [s.shot_no for s in segments if s.audio]
+        if with_sound:
+            raise AssembleError(
+                f"有 {len(with_sound)} 顆鏡頭掛了自己的音檔"
+                f"（第 {'、'.join(str(n) for n in with_sound[:6])} 顆），"
+                "但這個 ffmpeg 少了 `apad`"
+                + ("／音訊編碼器" if not codecs.audio else "")
+                + "，接不進去。"
+                "接下去會得到一支沒有聲音的成品，所以這裡先停。"
+                "換一個完整版的 ffmpeg（gyan.dev 的 essentials 版就有），"
+                "或把那幾顆的音檔取消採用再接。")
     if target.suffix.lower() != codecs.suffix:
         target = target.with_suffix(codecs.suffix)
     # Each segment is re-encoded before the join, so the run needs room for the
@@ -527,7 +570,7 @@ def build(segments: list[Segment], target: Path, *, width: int, height: int,
                         f"處理第 {segment.shot_no} 顆（{index + 1}/{len(segments)}）")
         part = workdir / f"part{index:03d}{codecs.suffix}"
         normalise(ffmpeg, segment.path, part, width=width, height=height,
-                  fps=fps, codecs=codecs, fit=fit,
+                  fps=fps, codecs=codecs, fit=fit, audio=segment.audio,
                   media=segment.media or probe(segment.path, ffprobe=ffprobe,
                                                ffmpeg=ffmpeg))
         parts.append(part)

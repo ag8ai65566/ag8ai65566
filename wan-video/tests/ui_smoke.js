@@ -322,4 +322,19 @@ check(/共 2 次比較/.test(stand),
         (/共 \d+ 次比較/.exec(stand) || ['no count found'])[0]})`);
 check(stand.includes('票數還太少'), '…and two votes is still too few to conclude from');
 
+// ---- seconds -> frames, both grids -------------------------------------
+// The page derived this with Wan's 4n+1 written in, for every model. Picking
+// 5 seconds of MiniMax H3 quoted 121 frames on screen while the graph built
+// 124. The numbers below are the ones tests/test_flow.py checks on the Python
+// side, so if either implementation drifts one of the two suites fails.
+const h3grid = { fps: 24, frame_period: 17, frame_phase: 5 };
+const wangrid = { fps: 16, frame_period: 4, frame_phase: 1 };
+noThrow('framesFor() is reachable', () => run('framesFor({fps:16}, 3)'));
+const h3got = [2, 5, 10].map((s) => run(`framesFor(${JSON.stringify(h3grid)}, ${s})`));
+check(String(h3got) === '56,124,243', `H3 rounds up onto 17n+5 (${h3got})`);
+const wangot = [3, 5].map((s) => run(`framesFor(${JSON.stringify(wangrid)}, ${s})`));
+check(String(wangot) === '49,81', `Wan stays on 4n+1 (${wangot})`);
+check(run('framesFor({fps:16}, 5)') === 81,
+      'a model with no grid declared falls back to 4n+1');
+
 report();

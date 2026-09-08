@@ -1251,7 +1251,15 @@ function crc32(buf) {
   // cannot run this here" is worth saying. (MiniMax H3 was the example until
   // it stopped being files-only; Wan S2V still is.)
   await page.click('.tabs button[data-tab="gen"]');
-  await page.waitForTimeout(900);
+  // The delete above went straight to the endpoint, so nothing told the page.
+  // It picks the change up on its own 6s poll, and a fixed wait shorter than
+  // that made this check pass or fail depending on where in the cycle the
+  // delete landed. Wait for the state instead of guessing how long it takes.
+  await page.waitForFunction(() => {
+    const o = [...document.querySelectorAll('#model option')]
+      .find((x) => x.value === 'wan22-s2v');
+    return !!o && o.disabled;
+  }, { timeout: 15000 }).catch(() => {});
   const picker = await page.evaluate(() =>
     [...document.querySelectorAll('#model option')]
       .map((o) => ({ v: o.value, disabled: o.disabled, text: o.textContent })));

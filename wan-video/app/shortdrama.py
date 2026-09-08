@@ -864,8 +864,10 @@ def check_claims(project: Project, *, installed: set[str] | None = None
     if flf:
         route = project.route("flf")
         model = registry.get(route.model_id) if route else None
-        capable = bool(model and (not model.methods or "flf" in model.methods)
-                       and model.runnable)
+        # Every runnable model declares its methods now, so this is a plain
+        # membership test - no "empty means everything" shortcut, which is what
+        # let a route that could never work pass this check.
+        capable = bool(model and model.runnable and "flf" in model.methods)
         if not capable:
             out.append(Finding(
                 "no-flf-graph", claims.BLOCK,
@@ -882,6 +884,10 @@ def check_claims(project: Project, *, installed: set[str] | None = None
     for method in sorted(project.methods_used):
         route = project.route(method)
         model = registry.get(route.model_id) if route else None
+        # No methods declared means a files-only entry, which runs through a
+        # workflow the user imported from their own ComfyUI. This app cannot
+        # look inside that graph, so it has nothing to say about it - which is
+        # different from "it can do everything".
         if model is None or not model.methods or method in model.methods:
             continue
         can = "、".join(METHODS[m].zh for m in model.methods if m in METHODS)
@@ -1181,14 +1187,20 @@ class ProjectStore:
                 continue          # one bad line must not lose the rest
 
     def save(self) -> None:
+        """Write every project. Field lists here are the enemy.
+
+        `delivery` and `keyframes` used to be spelled out field by field, and
+        `DeliverySpec.fit` was added without being added here - so the crop
+        choice survived until the next reload and then quietly reverted to
+        "not chosen", asking the user the same question again. Same shape of
+        bug as the audio attachments that vanished on save. Both are gone now:
+        these two go through `asdict`, so a new field is written by existing.
+        """
         self.path.parent.mkdir(parents=True, exist_ok=True)
         rows = [json.dumps({
             "id": p.id, "title": p.title, "schema_version": SCHEMA_VERSION,
-            "delivery": {"width": p.delivery.width, "height": p.delivery.height,
-                         "fps": p.delivery.fps},
-            "keyframes": {"model_id": p.keyframes.model_id,
-                          "width": p.keyframes.width, "height": p.keyframes.height,
-                          "style_id": p.keyframes.style_id},
+            "delivery": asdict(p.delivery),
+            "keyframes": asdict(p.keyframes),
             "routes": {k: {"model_id": v.model_id, "finish": v.finish.public()}
                        for k, v in p.routes.items()},
             "created": p.created, "note": p.note,

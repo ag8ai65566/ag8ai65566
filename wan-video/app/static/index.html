@@ -306,7 +306,7 @@
       <div class="banner hidden" id="wfbox" style="margin-top:6px"></div>
 
       <div class="row">
-        <label class="chk" id="litwrap"><input type="checkbox" id="lightning"> 4 步加速</label>
+        <label class="chk" id="litwrap"><input type="checkbox" id="lightning"> <span id="litlabel">加速</span></label>
         <label class="chk"><input type="checkbox" id="negtoggle"> 自訂負面提詞</label>
         <div class="spacer"></div>
         <button class="ghost" id="stop">中斷</button>
@@ -879,7 +879,7 @@
 
       <div id="qkdrop" style="margin-top:10px">
         <strong>把圖片拖進來</strong>
-        <p>或點一下選檔案 · 沒有圖也可以，就是純文字生影片（看模型支不支援）</p>
+        <p>或點一下選檔案 · 這裡的每個模型都要一張圖當第一幀</p>
         <img id="qkpreview" alt="">
       </div>
       <input type="file" id="qkfile" accept="image/*" hidden>
@@ -1395,11 +1395,29 @@ $('#getmodel').onclick = async () => {
   $('#getmodel').disabled = false;
 };
 
+// Seconds -> frames, the way that family's official template does it. Kept out
+// here rather than inside the picker so there is one named rule and the smoke
+// test can call it: the two sides of this disagreed silently, and a seconds
+// menu that quotes a frame count the graph never builds is the kind of wrong
+// nobody checks.
+function framesFor(m, sec) {
+  const per = (m && m.frame_period) || 4, ph = (m && m.frame_phase) || 1;
+  const fps = (m && m.fps) || 24;
+  if (per === 4 && ph === 1) {
+    // Wan's own template: floor(seconds * fps + 1), clamped, then down to 4n+1.
+    const f = Math.max(5, Math.min(Math.floor(sec * fps) + 1, 241));
+    return Math.floor((f - 1) / 4) * 4 + 1;
+  }
+  // H3 steps by 17 frames, so its template rounds *up* onto the grid.
+  const base = Math.max(ph, Math.round(sec * fps));
+  return base + (ph - (base % per) + per) % per;
+}
+
 function renderModelPicker() {
   const sel = $('#model');
   const keep = sel.value;
   // Files-only models are listed, disabled, rather than filtered out. Someone
-  // who has just downloaded 56GB of MiniMax H3 and finds no trace of it in the
+  // who has just downloaded 40GB of LTX and finds no trace of it in the
   // picker has been answered with silence, which reads as a bug - and "you
   // cannot run this here" is a thing worth saying, not hiding.
   // `runnable_here` rather than `runnable`: a files-only model becomes usable
@@ -1441,15 +1459,20 @@ function onModelChange() {
   $('#tier').innerHTML = chosen.tiers.map((t) =>
     `<option value="${t}"${t === chosen.default_tier ? ' selected' : ''}>${t}</option>`).join('');
   // Duration is what people think in; frames are derived the way the official
-  // Wan template does it: floor(seconds * fps + 1), snapped to 4n+1.
-  const frames = (sec) => { let f = Math.floor(sec * chosen.fps) + 1;
-    f = Math.max(5, Math.min(f, 241)); return Math.floor((f - 1) / 4) * 4 + 1; };
+  // template for that family does it. The grid comes from the model rather
+  // than being written in here: Wan and Hunyuan are 4n+1, MiniMax H3 is 17n+5,
+  // and this used to quote Wan's answer for every model - so 5 seconds of H3
+  // said 121 frames on screen while the graph built 124.
+  const frames = (sec) => framesFor(chosen, sec);
   const defSec = +(chosen.length / chosen.fps).toFixed(1);
   const secs = [...new Set([2, 3, 5, defSec, 7.5, 10])].filter((x) => x >= 0.5).sort((a,b) => a-b);
   $('#seconds').innerHTML = secs.map((sec) =>
     `<option value="${sec}"${Math.abs(sec - defSec) < 0.06 ? ' selected' : ''}>${sec} 秒（${frames(sec)} 幀 @ ${chosen.fps}fps）</option>`).join('');
 
   $('#litwrap').classList.toggle('hidden', !chosen.supports_lightning);
+  // The real number for this model, not Wan's 4. H3's official template ships
+  // its turbo LoRA at 6 steps despite the file being called "8step".
+  $('#litlabel').textContent = `${chosen.lightning_steps || 4} 步加速`;
   const sm = chosen.sampling;
   $('#modelnote').textContent =
     `${chosen.installed ? '已安裝' : '未下載 '+gb(chosen.download_bytes)} · ${sm.steps} 步 · cfg ${sm.cfg} · shift ${sm.shift} · ${sm.sampler}/${sm.scheduler} · ${chosen.fps}fps`
@@ -4941,7 +4964,7 @@ function quickModels() {
   const want = P.get('qkmodel', '');
   // Ready first: a model whose files are all on disk and that this app has a
   // graph for. The rest stay listed and say why they cannot run, because
-  // hiding them is what sent someone downloading 56GB for nothing.
+  // hiding them is what sent someone downloading 40GB for nothing.
   const rows = (MODELS || []).filter((m) => m.role !== 'tts').map((m) => {
     const name = m.label.split('—')[0].trim();
     const size = m.download_bytes || 0;
@@ -5315,7 +5338,11 @@ function collectDrama() {
   });
   return {
     cast, shots, routes,
-    delivery: { width: +$('#sddw').value, height: +$('#sddh').value, fps: +$('#sdfps').value },
+    // `fit` too, even though it is set through its own endpoint: the server
+    // falls back to the stored value when it is absent, and a whole-document
+    // save that omits a field is exactly how the audio attachments were lost.
+    delivery: { width: +$('#sddw').value, height: +$('#sddh').value,
+                fps: +$('#sdfps').value, fit: (SD.open?.delivery?.fit) || '' },
     keyframes: { model_id: $('#sdimodel').value, width: +$('#sdw').value,
                  height: +$('#sdh').value, style_id: $('#sdstyle').value },
   };
@@ -5539,7 +5566,7 @@ async function planShot(shotId) {
         ? `<button class="ghost tiny" id="sdtoend">生結束幀</button>
            <label class="chk"><input type="file" id="sdupendfile" accept="image/*" hidden>
              <button class="ghost tiny" id="sdupend">結束幀用我自己的圖</button></label>` : ''}
-      <label class="chk" title="這顆鏡頭的台詞音檔（S2V 用它驅動口型）">
+      <label class="chk" title="這顆鏡頭的聲音軌 —— 合成整集的時候會蓋上去，不會進生成">
         <input type="file" id="sdaudiofile" accept="audio/*" hidden>
         <button class="ghost tiny" id="sdaudio">上傳音檔</button></label>
       <button class="ghost tiny" id="sdsplit" title="在這顆後面插一顆一樣場景、一樣角色的空鏡頭">拆成下一顆</button>
@@ -5783,9 +5810,10 @@ async function planShot(shotId) {
         SD.open = d;
         renderDramaBody();
         await planShot(shotId);
-        $('#sdplannote').innerHTML = d.note
-          ? `<span class="warn">${esc(d.note)}</span>`
-          : '音檔已經掛到這顆鏡頭上。';
+        // Plain text, not `warn`: this note is what always happens, not a
+        // problem, and a permanent yellow box teaches people to ignore it.
+        $('#sdplannote').innerHTML =
+          `音檔已經掛到這顆鏡頭上。${d.note ? ' ' + esc(d.note) : ''}`;
       } catch (err) {
         $('#sdplannote').innerHTML = `<span class="bad">${esc(err.message)}</span>`;
       }
