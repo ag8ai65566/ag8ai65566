@@ -600,6 +600,9 @@ async def list_models() -> JSONResponse:
                 # this" is not a catalogue fact - it depends on this machine.
                 "has_workflow": model.id in imported_workflows,
                 "runnable_here": model.runnable or model.id in imported_workflows,
+                # "video" or "tts". Only the video ones belong in a picker that
+                # asks which model makes the clip.
+                "role": model.role,
                 "sampling": {
                     "steps": params.steps,
                     "cfg": params.cfg,
@@ -730,8 +733,7 @@ async def list_workflows() -> JSONResponse:
             {"id": m.id, "label": m.label,
              "installed": models.model_status(m)["installed"]}
             for m in registry.MODELS
-            if not m.family_runnable
-            and not all(f.folder.startswith("tts") for f in m.all_files)
+            if not m.family_runnable and m.role == "video"
         ],
     })
 

@@ -313,6 +313,42 @@ function crc32(buf) {
   // page, that the XSS the review found is actually escaped, and that a shot
   // does not become "done" by itself.
   await page.click('.tabs button[data-tab="sd"]'); await page.waitForTimeout(1200);
+
+  // ---- the short path: a picture, a model, a sentence, a button ----
+  // The episode planner used to be the first thing on this tab, which made
+  // "I want one clip" look like a seven-step process.
+  for (const [sel, what] of [['#qkdrop', 'upload'], ['#qkprompt', 'prompt'],
+                             ['#qkmodel', 'model'], ['#qkgo', 'generate']]) {
+    check(await page.isVisible(sel),
+      `${what} is on screen the moment the drama tab opens (${sel})`);
+  }
+  const qkTops = await page.evaluate(() => ['#qkdrop', '#qkprompt', '#qkmodel', '#qkgo']
+    .map((s) => Math.round(document.querySelector(s).getBoundingClientRect().top)));
+  check(qkTops[0] < qkTops[1] && qkTops[1] < qkTops[2] && qkTops[3] >= qkTops[2] - 24,
+    `…in that order down the card (${qkTops.join(' , ')})`);
+  check(!await page.evaluate(() => document.getElementById('sdfull').open),
+    'the episode planner starts collapsed, not gone');
+  check(!await page.isVisible('#sdshots'),
+    '…so the shot table is not the first thing on the page');
+  const qkOpts = await page.$$eval('#qkmodel option', (ns) => ns.map((n) => n.textContent));
+  check(!qkOpts.some((t) => t.includes('TTS') || t.includes('CosyVoice')),
+    `…and the TTS bundles are not offered as video models (${qkOpts.length} listed)`);
+  const qkGuards = await page.evaluate(async () => {
+    const out = [];
+    const go = document.getElementById('qkgo');
+    document.getElementById('qkprompt').value = '';
+    go.disabled = false; await quickGenerate();
+    out.push(document.getElementById('qknote').textContent);
+    document.getElementById('qkprompt').value = '她慢慢轉頭看向鏡頭';
+    go.disabled = false; await quickGenerate();
+    out.push(document.getElementById('qknote').textContent);
+    return out;
+  });
+  check(qkGuards[0].includes('指令'), '…pressing generate with no prompt says so');
+  check(qkGuards[1].includes('圖'), '…and with no picture says that');
+
+  await page.evaluate(() => { document.getElementById('sdfull').open = true; });
+  await page.waitForTimeout(500);
   const sdIntro = await page.textContent('#sdintro');
   check(sdIntro.includes('3.2'), 'the tab states the reference median -> ' + sdIntro.replace(/\s+/g,' ').slice(0,46));
   // It used to say "it generates nothing - generating is on the image/video

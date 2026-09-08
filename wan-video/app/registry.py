@@ -107,6 +107,11 @@ class ModelDef:
     # 圖生影片 at it can never work, and the page used to let you pick it and
     # find out twenty shots later.
     methods: tuple[str, ...] = ()
+    # What this entry is for. Everything in this catalogue is downloadable from
+    # the models tab, but only the video ones belong in a "which model makes
+    # the clip" picker - the TTS bundles were being offered there, which is a
+    # dead end that looks like a choice.
+    role: str = "video"
     # Exact CivitAI baseModel strings, best match first. Filters the in-app
     # LoRA browser to things that stand a chance of working with this model.
     civitai_bases: tuple[str, ...] = ()
@@ -371,6 +376,7 @@ MODELS: list[ModelDef] = [
     # because the official loaders look for them by name.
     ModelDef(
         id="qwen3-tts",
+        role="tts",
         label="Qwen3-TTS 0.6B CustomVoice — 中文語音（只下載檔案）",
         family="files_only",
         vram_gb=8,
@@ -411,6 +417,7 @@ MODELS: list[ModelDef] = [
     ),
     ModelDef(
         id="cosyvoice3",
+        role="tts",
         label="Fun-CosyVoice3 0.5B — 中文語音、可複製音色（只下載檔案）",
         family="files_only",
         vram_gb=8,

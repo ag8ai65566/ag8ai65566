@@ -29,12 +29,12 @@
   .tabs .badge { font-size:11px; background:var(--panel2); border-radius:10px; padding:0 6px; margin-left:5px; }
   .card { background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px; }
   .card + .card { margin-top:12px; }
-  #drop { border:1.5px dashed var(--line); border-radius:12px; padding:26px 16px; text-align:center;
-    cursor:pointer; transition:.15s; background:var(--panel2); }
-  #drop.hot { border-color:var(--accent); background:#202540; }
-  #drop p { margin:6px 0; color:var(--muted); font-size:13px; }
-  #drop strong { font-size:15px; word-break:break-all; }
-  #preview { max-height:180px; border-radius:8px; margin-top:12px; display:none; }
+  #drop, #qkdrop { border:1.5px dashed var(--line); border-radius:12px; padding:26px 16px;
+    text-align:center; cursor:pointer; transition:.15s; background:var(--panel2); }
+  #drop.hot, #qkdrop.over, #qkdrop.has { border-color:var(--accent); background:#202540; }
+  #drop p, #qkdrop p { margin:6px 0; color:var(--muted); font-size:13px; }
+  #drop strong, #qkdrop strong { font-size:15px; word-break:break-all; }
+  #preview, #qkpreview { max-height:180px; border-radius:8px; margin-top:12px; display:none; }
   textarea, input[type=text] { width:100%; background:var(--panel2); color:var(--text);
     border:1px solid var(--line); border-radius:10px; padding:11px; font:inherit; resize:vertical; }
   textarea { min-height:74px; margin-top:12px; }
@@ -863,7 +863,41 @@
   <!-- ================= LoRA ================= -->
   <!-- ================= 短劇 ================= -->
   <div id="tab-sd" role="tabpanel" tabindex="0" class="hidden">
+    <!-- The short path, first, with nothing in front of it: a picture, a
+         model, a sentence, a button. Everything below this is for planning a
+         whole episode, and it was the first thing on the page - which made
+         "I just want to make a clip" look like a seven-step process. -->
     <div class="card">
+      <h2 style="margin-top:0">做一段影片</h2>
+      <div class="s" id="qkwhy">上傳一張圖 → 選模型 → 打指令 → 生成。就這樣。
+        要排一整集（很多顆鏡頭、最後接成一支）再往下拉。</div>
+
+      <div id="qkdrop" style="margin-top:10px">
+        <strong>把圖片拖進來</strong>
+        <p>或點一下選檔案 · 沒有圖也可以，就是純文字生影片（看模型支不支援）</p>
+        <img id="qkpreview" alt="">
+      </div>
+      <input type="file" id="qkfile" accept="image/*" hidden>
+
+      <textarea id="qkprompt" aria-label="影片指令" style="margin-top:10px"
+        placeholder="想讓它怎麼動？例如：她慢慢轉頭看向鏡頭，頭髮被風吹動，鏡頭緩慢推近"></textarea>
+
+      <div class="row" style="margin-top:8px">
+        <label class="f" style="flex:1;min-width:260px">模型
+          <select id="qkmodel" aria-label="用哪個影片模型"></select></label>
+        <label class="f" style="max-width:120px">幾秒
+          <select id="qkseconds" aria-label="影片長度"></select></label>
+        <div class="spacer"></div>
+        <button class="go" id="qkgo">生成</button>
+      </div>
+      <div class="s" id="qknote" style="margin-top:8px"></div>
+      <div id="qkout" style="margin-top:10px"></div>
+    </div>
+
+    <details id="sdfull" style="margin-top:12px">
+      <summary style="cursor:pointer;padding:10px 0;font-weight:600">
+        排一整集（分鏡表、一次生完、接成一支檔案）</summary>
+    <div class="card" style="margin-top:8px">
       <h2 style="margin-top:0">短劇製作流程</h2>
       <div class="s" id="sdintro"></div>
       <div id="sdclaimbox" class="hidden" style="margin-top:8px"></div>
@@ -983,6 +1017,7 @@
         <div id="sdpost"></div>
       </div>
     </div>
+    </details>
   </div>
 
   <div id="tab-train" role="tabpanel" tabindex="0" class="hidden">
@@ -1290,6 +1325,9 @@ function showTab(b) {
   if (b.dataset.tab === 'sd') {
     if (!IMG.models.length) refreshImageModels();
     if (!ST.recipes.length) refreshStyles();
+    // The short path first: it must be usable the moment the tab opens, with
+    // no project and nothing else loaded.
+    quickModels();
     refreshDrama();
   }
 }
@@ -1357,7 +1395,9 @@ function renderModelPicker() {
   // `runnable_here` rather than `runnable`: a files-only model becomes usable
   // the moment the user imports the official workflow for it.
   const canRun = (m) => m.runnable_here !== undefined ? m.runnable_here : m.runnable;
-  sel.innerHTML = MODELS.map((m) => canRun(m)
+  // The TTS bundles are in the same catalogue because that is where they are
+  // downloaded from; they do not make video and do not belong in this picker.
+  sel.innerHTML = MODELS.filter((m) => m.role !== 'tts').map((m) => canRun(m)
     ? `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}`
       + `${m.has_workflow ? '（用你匯入的工作流）' : ''}</option>`
     : `<option value="${m.id}" disabled>${m.installed ? '✓' : '·'} ${esc(m.label)}　—— 這裡跑不了</option>`
@@ -4875,8 +4915,175 @@ async function openDrama(id) {
   } catch { }
 }
 
+/* ---------- 短劇 · 做一段影片（上傳圖 → 選模型 → 打指令 → 生成） -------
+   Four controls and nothing else. The planner below this page used to be the
+   first thing on it, which made "I want one clip" look like a seven-step
+   process. This path creates no project, no shot and no bookkeeping: it does
+   what the video tab does, in the place the user was already standing. */
+let QK = { file: null, watch: null };
+
+function quickModels() {
+  const sel = $('#qkmodel');
+  if (!sel) return;
+  const want = P.get('qkmodel', '');
+  // Ready first: a model whose files are all on disk and that this app has a
+  // graph for. The rest stay listed and say why they cannot run, because
+  // hiding them is what sent someone downloading 56GB for nothing.
+  const rows = (MODELS || []).filter((m) => m.role !== 'tts').map((m) => {
+    const name = m.label.split('—')[0].trim();
+    const size = m.download_bytes || 0;
+    if (!m.installed) return { id: m.id, text: `${name}（還沒下載 ${gb(size)}）`, ok: false, size };
+    if (!m.runnable_here) return { id: m.id, text: `${name}（下載好了，但還沒有工作流）`, ok: false, size };
+    return { id: m.id, text: name, ok: true, size };
+  });
+  // Ready first; among the not-ready, smallest download first. Someone with an
+  // empty models folder should be pointed at the 8GB one, not the 38GB one.
+  rows.sort((a, b) => (b.ok ? 1 : 0) - (a.ok ? 1 : 0) || a.size - b.size);
+  const pick = rows.some((r) => r.id === want && r.ok) ? want
+    : (rows.find((r) => r.ok) || rows[0] || {}).id;
+  sel.innerHTML = rows.map((r) =>
+    `<option value="${esc(r.id)}"${r.id === pick ? ' selected' : ''}>${esc(r.text)}</option>`).join('');
+  quickModelChanged();
+}
+
+function quickModelChanged() {
+  const m = (MODELS || []).find((x) => x.id === $('#qkmodel').value);
+  const secs = $('#qkseconds');
+  if (m && secs) {
+    const def = +(m.length / m.fps).toFixed(1);
+    const list = [...new Set([2, 3, 5, def, 7.5, 10])].sort((a, b) => a - b);
+    secs.innerHTML = list.map((x) =>
+      `<option value="${x}"${Math.abs(x - def) < 0.06 ? ' selected' : ''}>${x} 秒</option>`).join('');
+  }
+  quickNote();
+}
+
+function quickNote(extra) {
+  const m = (MODELS || []).find((x) => x.id === $('#qkmodel').value);
+  const box = $('#qknote'), go = $('#qkgo');
+  if (!box) return;
+  if (extra !== undefined) { box.innerHTML = extra; return; }
+  if (!m) { box.textContent = ''; return; }
+  if (!m.installed) {
+    box.innerHTML = `<span class="warn">這個模型還沒下載完（${gb(m.download_bytes)}）。</span>`
+      + ` <button class="go tiny" id="qkget">下載它</button>`;
+    if (go) go.disabled = true;
+    const b = $('#qkget');
+    if (b) b.onclick = async () => {
+      b.disabled = true; b.textContent = '開始下載…';
+      try {
+        const r = await fetch(`/api/models/${encodeURIComponent(m.id)}/download`, { method: 'POST' });
+        if (!r.ok) throw new Error((await r.json()).detail || r.statusText);
+        quickNote('<span class="ok">開始下載了。</span>下載進度在「模型」分頁，'
+          + '下載完回來這裡按生成就好。');
+      } catch (e) { quickNote(`<span class="bad">${esc(e.message)}</span>`); }
+    };
+    return;
+  }
+  if (!m.runnable_here) {
+    box.innerHTML = '<span class="warn">檔案下載好了，但這個 app 沒有可以跑它的工作流。</span>'
+      + ' <button class="go tiny" id="qkwf">去匯入官方工作流</button>';
+    if (go) go.disabled = true;
+    const b = $('#qkwf');
+    if (b) b.onclick = () => {
+      document.querySelector('.tabs button[data-tab="mdl"]').click();
+      const picker = $('#wfmodel');
+      if (picker) picker.value = m.id;
+      const card = $('#wfcard');
+      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    };
+    return;
+  }
+  box.textContent = QK.file ? '' : '沒放圖也可以按生成，但多數影片模型是「圖生影片」，沒有圖會被擋下來。';
+  if (go) go.disabled = false;
+}
+
+function wireQuick() {
+  const drop = $('#qkdrop'), file = $('#qkfile');
+  if (!drop || !file) return;
+  const show = (f) => {
+    QK.file = f;
+    const img = $('#qkpreview');
+    img.src = URL.createObjectURL(f);
+    img.style.display = 'block';
+    drop.classList.add('has');
+    quickNote();
+  };
+  drop.onclick = () => file.click();
+  file.onchange = () => { if (file.files && file.files[0]) show(file.files[0]); };
+  drop.ondragover = (e) => { e.preventDefault(); drop.classList.add('over'); };
+  drop.ondragleave = () => drop.classList.remove('over');
+  drop.ondrop = (e) => {
+    e.preventDefault(); drop.classList.remove('over');
+    const f = e.dataTransfer.files && e.dataTransfer.files[0];
+    if (f && f.type.startsWith('image/')) show(f);
+  };
+  $('#qkmodel').onchange = () => {
+    P.set('qkmodel', $('#qkmodel').value);
+    quickModelChanged();
+  };
+  $('#qkgo').onclick = quickGenerate;
+}
+
+async function quickGenerate() {
+  const go = $('#qkgo');
+  const prompt = $('#qkprompt').value.trim();
+  if (!prompt) { quickNote('<span class="bad">先寫一句指令 —— 要它怎麼動。</span>'); return; }
+  if (!QK.file) { quickNote('<span class="bad">先放一張圖。</span>'); return; }
+  go.disabled = true;
+  quickNote('送出中…');
+  const body = new FormData();
+  body.append('image', QK.file);
+  body.append('prompt', prompt);
+  body.append('model', $('#qkmodel').value);
+  body.append('seconds', $('#qkseconds').value);
+  body.append('seed', '-1');
+  try {
+    const r = await fetch('/api/generate', { method: 'POST', body });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    quickNote('<span class="ok">排進去了。</span>下面會顯示進度，跑完直接可以看。');
+    watchQuick(d.id);
+  } catch (e) {
+    quickNote(`<span class="bad">${esc(e.message).replace(/\n/g, '<br>')}</span>`);
+  }
+  go.disabled = false;
+}
+
+// Progress and the finished clip, on this page. Sending someone to the library
+// tab to find out whether their own click worked is the thing being removed.
+function watchQuick(jobId) {
+  if (QK.watch) clearInterval(QK.watch);
+  const render = async () => {
+    let j;
+    try { j = await (await fetch(`/api/jobs/${encodeURIComponent(jobId)}`)).json(); }
+    catch { return; }
+    const out = $('#qkout');
+    if (!out) return;
+    if (j.status === 'done' && j.output) {
+      clearInterval(QK.watch); QK.watch = null;
+      out.innerHTML = `<video src="/outputs/${esc(j.output)}" controls playsinline
+          style="max-width:100%;border-radius:12px"></video>
+        <div class="s" style="margin-top:4px">也在「素材庫」裡。再打一句指令就可以生下一段。</div>`;
+      refreshJobs(true);
+      return;
+    }
+    if (j.status === 'error') {
+      clearInterval(QK.watch); QK.watch = null;
+      out.innerHTML = `<div class="errbox">${esc(j.message || '生成失敗')}</div>`;
+      return;
+    }
+    out.innerHTML = `<div class="s">${esc(j.message || '生成中…')}</div>`
+      + `<div class="bar"><i style="width:${Math.round((j.progress || 0) * 100)}%"></i></div>`;
+  };
+  render();
+  QK.watch = setInterval(render, 2000);
+}
+
 function videoModelOptions(selected) {
-  return (MODELS || []).map((m) =>
+  // TTS bundles live in the same catalogue because that is where you download
+  // them; they are not something that makes a clip.
+  return (MODELS || []).filter((m) => m.role !== 'tts').map((m) =>
     `<option value="${esc(m.id)}"${m.id === selected ? ' selected' : ''}>${
       esc(m.label.split('—')[0].trim())}${m.installed ? '' : '（未下載）'}</option>`).join('');
 }
@@ -7547,7 +7754,7 @@ async function boot() {
   wirePosebook(); refreshPosebook();
   wirePromptTools(); refreshQuickTags(); wireSize();
   wireArtists(); refreshArtists(); wireLikeness(); wireRefs();
-  wireExperiments(); wireDrama();
+  wireExperiments(); wireDrama(); wireQuick(); quickModels();
   wireTraining(); refreshTraining(); wireBasics();
   wireWorkflows(); refreshWorkflows();
   if (P.get('imode', 'plain') === 'comic') {

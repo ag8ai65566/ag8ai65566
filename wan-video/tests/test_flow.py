@@ -108,6 +108,16 @@ def test_registry() -> None:
     # something already complete or a truncated file called installed. These
     # two were catalogued from memory rather than from the API, and both were
     # off by 40-50%.
+    # The catalogue holds both video models and TTS bundles - they are all
+    # downloaded from the same tab. Only the video ones may reach a picker that
+    # asks "which model makes the clip"; a TTS bundle offered there is a dead
+    # end that looks like a choice.
+    check({m.id for m in registry.MODELS if m.role == "tts"}
+          == {"qwen3-tts", "cosyvoice3"},
+          "the TTS bundles are marked as such, not as video models")
+    check(all(m.role == "video" for m in registry.runnable()),
+          "and everything runnable here is a video model")
+
     for mid, want_files, want_bytes in (
             ("qwen3-tts", 11, 2_498_383_000), ("cosyvoice3", 17, 9_747_380_000)):
         model = registry.get(mid)
