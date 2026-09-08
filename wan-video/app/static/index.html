@@ -270,6 +270,7 @@
         <button class="ghost" id="reseed" aria-label="換一個隨機種子" title="換一個隨機種子"><span aria-hidden="true">🎲</span></button>
       </div>
       <div class="s hidden" id="modelfilesonly" style="margin-top:4px"></div>
+      <div class="banner hidden" id="wfbox" style="margin-top:6px"></div>
 
       <div class="row">
         <label class="chk" id="litwrap"><input type="checkbox" id="lightning"> 4 步加速</label>
@@ -1136,6 +1137,33 @@
     <div id="mupd" class="banner hidden"></div>
     <h2>影片模型</h2>
     <div id="mlist"></div>
+
+    <!-- Importing a workflow. On the models tab because that is where someone
+         is standing when they discover a model says "這裡跑不了". -->
+    <div class="card" id="wfcard" style="margin-top:14px">
+      <h3>讓「只下載檔案」的模型也能在這裡跑</h3>
+      <div class="s">
+        上面標成<b>「這裡跑不了」</b>的模型（LTX、Wan S2V／Animate、MiniMax H3），
+        它們的官方流程是幾十個節點的圖，這個 app 沒有驗證過的版本可以跑。<br>
+        <b>但你可以把 ComfyUI 官方的那張圖拿過來用。</b>三步：
+        <ol style="margin:6px 0 0 18px;padding:0">
+          <li>在 ComfyUI（<a href="http://127.0.0.1:8188" target="_blank" rel="noopener">:8188</a>）
+            用 <b>Workflow → Browse Templates</b> 打開那個模型的官方範本，<b>先跑一次確認它會動</b></li>
+          <li>選 <b>Workflow → Export (API)</b>，會存出一個 <code>.json</code></li>
+          <li>把那個檔案丟到下面</li>
+        </ol>
+      </div>
+      <div class="row" style="gap:8px;align-items:flex-end;flex-wrap:wrap;margin-top:10px">
+        <label class="f" style="min-width:220px">這是給哪個模型的
+          <select id="wfmodel" aria-label="這個工作流是給哪個模型的"></select></label>
+        <label class="chk">
+          <input type="file" id="wffile" accept=".json,application/json" hidden>
+          <button class="go" id="wfpick">選那個 .json 檔</button></label>
+        <span class="s" id="wfstatus"></span>
+      </div>
+      <div id="wfresult" class="banner hidden" style="margin-top:10px"></div>
+      <div id="wflist" style="margin-top:10px"></div>
+    </div>
     <h2>放大模型（圖片和影片共用）</h2>
     <div id="uplist"></div>
     <h2>補幀模型（影片用）</h2>
@@ -1258,24 +1286,29 @@ function renderModelPicker() {
   // who has just downloaded 56GB of MiniMax H3 and finds no trace of it in the
   // picker has been answered with silence, which reads as a bug - and "you
   // cannot run this here" is a thing worth saying, not hiding.
-  sel.innerHTML = MODELS.map((m) => m.runnable
-    ? `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}</option>`
+  // `runnable_here` rather than `runnable`: a files-only model becomes usable
+  // the moment the user imports the official workflow for it.
+  const canRun = (m) => m.runnable_here !== undefined ? m.runnable_here : m.runnable;
+  sel.innerHTML = MODELS.map((m) => canRun(m)
+    ? `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}`
+      + `${m.has_workflow ? '（用你匯入的工作流）' : ''}</option>`
     : `<option value="${m.id}" disabled>${m.installed ? '✓' : '·'} ${esc(m.label)}　—— 這裡跑不了</option>`
   ).join('');
-  const runnable = MODELS.filter((m) => m.runnable);
+  const runnable = MODELS.filter(canRun);
   // Never leave a disabled entry selected: the generate button would be armed
   // against a model this app has no graph for.
-  const wanted = MODELS.find((m) => m.id === keep && m.runnable);
-  sel.value = wanted ? keep : ((chosen && chosen.runnable) ? chosen.id
+  const wanted = MODELS.find((m) => m.id === keep && canRun(m));
+  sel.value = wanted ? keep : ((chosen && canRun(chosen)) ? chosen.id
                                : (runnable[0] ? runnable[0].id : sel.value));
-  const filesOnly = MODELS.filter((m) => !m.runnable && m.installed);
+  const filesOnly = MODELS.filter((m) => !canRun(m) && m.installed);
   const note = $('#modelfilesonly');
   if (note) {
     note.innerHTML = filesOnly.length
       ? `你已經下載了 <b>${filesOnly.map((m) => esc(m.label.split('—')[0].trim())).join('、')}</b>，`
         + '但它們<b>不能從這一頁生成</b> —— 這個 app 沒有經過驗證的工作流可以跑它們。'
-        + '到 ComfyUI（<a href="http://127.0.0.1:8188" target="_blank" rel="noopener">:8188</a>）'
-        + '用 Workflow → Browse Templates 找對應的官方範本，生成完再回「短劇」分頁掛到鏡頭上。'
+        + '兩條路：到「模型」分頁把 ComfyUI 官方的工作流<b>匯入</b>（之後就能在這裡跑），'
+        + '或直接在 ComfyUI（<a href="http://127.0.0.1:8188" target="_blank" rel="noopener">:8188</a>）'
+        + '用官方範本生成，再回「短劇」分頁掛到鏡頭上。'
       : '';
     note.classList.toggle('hidden', !filesOnly.length);
   }
@@ -2203,6 +2236,155 @@ function licenceBanner(m) {
       refreshDownloads();
     };
   });
+}
+
+/* ---------- importing a ComfyUI workflow ----------
+   The point of this feature is that the graph is not ours. The user exports the
+   official template from their own ComfyUI - where it demonstrably runs - and
+   this app only fills in the picture, the prompt and the seed. So the UI's job
+   is to show that mapping in plain words and let them correct it, not to
+   explain a node graph. */
+const WF = { pending: null, list: {} };
+
+async function refreshWorkflows() {
+  let d;
+  try { d = await (await fetch('/api/workflows')).json(); } catch { return; }
+  WF.list = d.workflows || {};
+  const pick = $('#wfmodel');
+  if (pick) {
+    pick.innerHTML = (d.candidates || []).map((c) =>
+      `<option value="${esc(c.id)}">${esc(c.label.split('—')[0].trim())}`
+      + `${WF.list[c.id] ? '（已經有工作流）' : (c.installed ? '' : '（還沒下載）')}</option>`).join('');
+  }
+  const have = Object.values(WF.list);
+  $('#wflist').innerHTML = have.length
+    ? '<div class="s"><b>已經匯入的：</b></div>' + have.map((w) => `
+        <div class="row" style="gap:8px;align-items:center;margin-top:4px">
+          <span class="s" style="flex:1">${esc(w.model_id)} —— ${w.nodes} 個節點
+            ${w.source ? `<span style="opacity:.7">（${esc(w.source)}）</span>` : ''}</span>
+          <button class="ghost tiny" data-wfdel="${esc(w.model_id)}">移除</button>
+        </div>`).join('')
+    : '<div class="s" style="opacity:.75">還沒有匯入任何工作流。</div>';
+  $('#wflist').querySelectorAll('[data-wfdel]').forEach((b) => b.onclick = async () => {
+    await fetch(`/api/workflows/${encodeURIComponent(b.dataset.wfdel)}`, { method: 'DELETE' });
+    await refreshWorkflows();
+    await refreshModels();
+  });
+}
+
+function renderWfResult(d, modelId) {
+  const box = $('#wfresult');
+  box.classList.remove('hidden');
+  // Plain sentences, because what has to be checked is the mapping - "my
+  // prompt goes here" - and not the graph. The node numbers are shown so the
+  // answer is verifiable in ComfyUI, but they are never the headline.
+  // The node's own name leads; its number is small print. "節點 17" means
+  // nothing to someone opening this for the first time - the name is what they
+  // can find again in ComfyUI.
+  const rows = (d.summary || []).map((r) => `
+    <div class="s" style="margin-top:4px">
+      <b class="${r.found ? 'ok' : 'warn'}">${r.found ? '✓' : '？'}</b>
+      ${esc(r.label)} <b>${esc(r.where || '—')}</b>
+      ${r.detail ? `<span style="opacity:.8">（${esc(r.detail)}）</span>` : ''}
+      ${r.node ? `<div style="opacity:.6;padding-left:16px">${esc(r.node)}</div>` : ''}
+    </div>`).join('');
+  const notes = (d.detected.notes || []).map((n) =>
+    `<div class="s" style="margin-top:3px;opacity:.85">· ${esc(n)}</div>`).join('');
+  // Where the graph and the pictures are going. Usually the same machine, but
+  // COMFY_URL is configurable and "nothing leaves your computer" stops being
+  // true the moment it is not loopback - so it says the address rather than
+  // making a promise it cannot keep.
+  const url = d.comfy_url || '';
+  const local = /^https?:\/\/(127\.0\.0\.1|localhost|\[::1\])(:|\/|$)/.test(url);
+  box.innerHTML = `<b>讀到 ${d.nodes} 個節點。</b>
+    ${local ? '' : `<div class="s warn" style="margin-top:4px">
+      這份工作流和你的圖片會送到 <code>${esc(url)}</code> —— 那不是這台電腦。</div>`}
+    <div class="s" style="margin-top:4px">這個 app 會這樣用它：</div>
+    ${rows}${notes}
+    ${d.detected.usable
+      ? `<div class="row" style="gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap">
+           <button class="go" id="wfsave">對，就這樣用</button>
+           <button class="ghost tiny" id="wffix">認錯了，我自己選</button>
+           <span class="s" id="wfsavemsg"></span>
+         </div>`
+      : `<div class="s bad" style="margin-top:8px">這個工作流缺少必要的東西
+           （${(d.detected.missing || []).map(esc).join('、')}），沒辦法用。
+           確認一下是不是匯出了對的那個範本。</div>`}
+    <div id="wffixbox" class="hidden" style="margin-top:8px"></div>`;
+
+  const fix = $('#wffix');
+  if (fix) fix.onclick = () => {
+    const opts = (d.detected.nodes || []).map((n) =>
+      `<option value="${esc(n.id)}">第 ${esc(n.id)} 號 · ${esc(n.title || n.class_type)}</option>`).join('');
+    const box2 = $('#wffixbox');
+    box2.classList.toggle('hidden');
+    if (box2.innerHTML) return;
+    box2.innerHTML = `<div class="s">自己指定要把值放到哪個節點。
+        欄位名稱通常是 <code>text</code>（提詞）或 <code>image</code>（圖片）。</div>`
+      + ['image', 'positive', 'negative'].map((k) => `
+        <div class="row" style="gap:6px;margin-top:4px;align-items:flex-end;flex-wrap:wrap">
+          <label class="f" style="min-width:130px">${
+            k === 'image' ? '圖片' : (k === 'positive' ? '提詞' : '負面提詞')}
+            <select data-wfk="${k}" aria-label="${k} 節點">
+              <option value="">（用自動偵測的）</option>${opts}</select></label>
+          <label class="f" style="max-width:130px">欄位名稱
+            <input type="text" data-wfkey="${k}" placeholder="${k === 'image' ? 'image' : 'text'}"
+              aria-label="${k} 欄位名稱" style="width:100%"></label>
+        </div>`).join('');
+  };
+
+  const save = $('#wfsave');
+  if (save) save.onclick = async () => {
+    save.disabled = true;
+    const body = { json: WF.pending, source: WF.source || '' };
+    document.querySelectorAll('[data-wfk]').forEach((sel) => {
+      if (!sel.value) return;
+      const key = document.querySelector(`[data-wfkey="${sel.dataset.wfk}"]`);
+      body[sel.dataset.wfk] = { node: sel.value, key: (key && key.value.trim()) || 'text' };
+    });
+    try {
+      const r = await fetch(`/api/workflows/${encodeURIComponent(modelId)}`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      const out = await r.json();
+      if (!r.ok) throw new Error(out.detail || r.statusText);
+      $('#wfsavemsg').innerHTML = '<b class="ok">存好了。</b>這個模型現在可以從短劇分頁生成。';
+      await refreshWorkflows();
+      await refreshModels();
+    } catch (e) {
+      $('#wfsavemsg').innerHTML = `<span class="bad">${esc(e.message)}</span>`;
+      save.disabled = false;
+    }
+  };
+}
+
+function wireWorkflows() {
+  const pickBtn = $('#wfpick'), file = $('#wffile');
+  if (!pickBtn || !file) return;
+  pickBtn.onclick = (e) => { e.preventDefault(); file.click(); };
+  file.onchange = async () => {
+    const chosen = file.files && file.files[0];
+    if (!chosen) return;
+    $('#wfstatus').textContent = '讀取中…';
+    $('#wfresult').classList.add('hidden');
+    try {
+      const text = await chosen.text();
+      WF.pending = text;
+      WF.source = chosen.name;
+      const r = await fetch('/api/workflows/inspect', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ json: text }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      $('#wfstatus').textContent = chosen.name;
+      renderWfResult(d, $('#wfmodel').value);
+    } catch (e) {
+      $('#wfstatus').innerHTML = `<span class="bad">${esc(e.message)}</span>`;
+    }
+    file.value = '';
+  };
 }
 
 async function renderUpscalers() {
@@ -6936,6 +7118,7 @@ async function boot() {
   wireArtists(); refreshArtists(); wireLikeness(); wireRefs();
   wireExperiments(); wireDrama();
   wireTraining(); refreshTraining(); wireBasics();
+  wireWorkflows(); refreshWorkflows();
   if (P.get('imode', 'plain') === 'comic') {
     document.querySelector('.modes button[data-mode="comic"]').click();
   } else { applyMode(); }

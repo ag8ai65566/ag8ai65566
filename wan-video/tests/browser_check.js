@@ -986,6 +986,83 @@ function crc32(buf) {
   // separately (see the console handler at the top) rather than counted here.
   await page.waitForTimeout(1200);
 
+  // ---- importing a ComfyUI workflow ----
+  // The whole point is that the graph is not ours: the user exports the
+  // official template from their own ComfyUI, where it demonstrably runs, and
+  // this app only substitutes the picture, the prompt and the seed.
+  const wfMark = errors.length;
+  await page.click('.tabs button[data-tab="mdl"]');
+  await page.waitForTimeout(1600);
+  const wfCard = await page.textContent('#wfcard');
+  check(wfCard.includes('Export (API)'),
+    'the import card names the exact ComfyUI menu item');
+  check(wfCard.includes('先跑一次確認它會動'),
+    '…and says to prove the workflow runs there first');
+  const wfCands = await page.evaluate(() =>
+    [...document.querySelectorAll('#wfmodel option')].map((o) => o.value));
+  check(wfCands.includes('minimax-h3') && !wfCands.includes('wan22-14b-fp8'),
+    `only files-only models are offered (${wfCands.join(',')})`);
+
+  // A real API-format graph, built by the app's own builder - same shape.
+  const wfPath = require('path').join(require('os').tmpdir(), 'wan-wf-api.json');
+  {
+    const graph = await page.evaluate(async () => {
+      const r = await fetch('/api/models');
+      return (await r.json()) && null;
+    });
+    // Built server-side would need a GPU-free builder call; instead use the
+    // smallest graph that exercises every slot.
+    require('fs').writeFileSync(wfPath, JSON.stringify({
+      "1": { class_type: 'LoadImage', inputs: { image: 'in.png' },
+             _meta: { title: 'Starting image' } },
+      "2": { class_type: 'CLIPTextEncode', inputs: { text: 'hello' },
+             _meta: { title: 'Prompt' } },
+      "3": { class_type: 'CLIPTextEncode', inputs: { text: 'bad' },
+             _meta: { title: 'Negative' } },
+      "4": { class_type: 'KSampler',
+             inputs: { positive: ['2', 0], negative: ['3', 0], seed: 1 },
+             _meta: { title: 'Sampler' } },
+      "5": { class_type: 'SaveImage',
+             inputs: { images: ['4', 0], filename_prefix: 'x' },
+             _meta: { title: 'Save' } },
+    }));
+  }
+  await page.setInputFiles('#wffile', wfPath);
+  await page.waitForTimeout(2500);
+  const wfRes = await page.textContent('#wfresult');
+  check(wfRes.includes('你打的提詞會進'), 'the mapping is shown as plain sentences');
+  check(wfRes.includes('Prompt'),
+    '…leading with the node\'s own name, which is what is recognisable in ComfyUI');
+  check(wfRes.includes('節點'), '…and keeping the node number as small print');
+  check(await page.isVisible('#wffix'), 'there is a way to say the detection is wrong');
+  check(!await page.isVisible('#wffixbox'),
+    '…collapsed by default, so a first-time user is not shown a node list');
+  await page.click('#wffix');
+  await page.waitForTimeout(500);
+  check(await page.isVisible('#wffixbox'), '…and it opens on request');
+
+  await page.selectOption('#wfmodel', 'minimax-h3');
+  await page.setInputFiles('#wffile', wfPath);
+  await page.waitForTimeout(2400);
+  await page.click('#wfsave');
+  await page.waitForTimeout(2400);
+  check((await page.textContent('#wfsavemsg')).includes('存好了'), 'saving reports success');
+
+  await page.click('.tabs button[data-tab="gen"]');
+  await page.waitForTimeout(1500);
+  const h3after = await page.evaluate(() => {
+    const o = [...document.querySelectorAll('#model option')].find((x) => x.value === 'minimax-h3');
+    return o ? { disabled: o.disabled, text: o.textContent } : null;
+  });
+  check(h3after && !h3after.disabled,
+    'a files-only model becomes selectable once its workflow is imported');
+  check(h3after && h3after.text.includes('匯入的工作流'),
+    '…and says it is running the imported one');
+  await page.evaluate(() => fetch('/api/workflows/minimax-h3', { method: 'DELETE' }));
+  await page.waitForTimeout(600);
+  check(errors.length === wfMark,
+    `no console errors across the import (${errors.slice(wfMark, wfMark + 2).join(' | ') || 'clean'})`);
+
   // ---- files-only models are shown, not hidden ----
   // Downloading 56GB of MiniMax H3 and then finding no trace of it in the
   // picker is being answered with silence, which reads as a bug. "You cannot

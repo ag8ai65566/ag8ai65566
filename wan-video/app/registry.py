@@ -131,7 +131,20 @@ class ModelDef:
 
     @property
     def runnable(self) -> bool:
+        """Whether this app ships a verified graph for the model.
+
+        A catalogue fact, and deliberately not the whole answer: a user can
+        import their own ComfyUI workflow for a files-only model, and then it
+        *is* generatable here. That combination is computed in the server,
+        where the imported workflows live - the catalogue should not have to
+        know what is on this particular machine.
+        """
         return self.family != "files_only"
+
+    @property
+    def family_runnable(self) -> bool:
+        """Alias, for callers that mean the catalogue fact specifically."""
+        return self.runnable
 
 
 # Licences that restrict *where* the weights may be used. Read from the LICENSE

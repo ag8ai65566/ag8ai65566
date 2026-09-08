@@ -42,6 +42,10 @@ STAGING_DIR = _dir("STAGING_DIR", REPO / "data" / "staging", Path("/data/staging
 # purpose: these are inputs the user collected, not things this app generated,
 # and losing them to a history cleanup would be someone else's afternoon.
 REFS_DIR = _dir("REFS_DIR", REPO / "data" / "refs", Path("/data/refs"))
+# Workflows the user exported from their own ComfyUI. Same reasoning as REFS_DIR:
+# they are the user's, not this app's output, and a history sweep must not take
+# them - re-exporting one is a trip back through another program's menus.
+WORKFLOWS_DIR = _dir("WORKFLOWS_DIR", REPO / "data" / "workflows", Path("/data/workflows"))
 APP_URL = os.environ.get("APP_URL", "http://127.0.0.1:8000")
 
 # Checkouts the update check looks at. In Docker the app does not own either of

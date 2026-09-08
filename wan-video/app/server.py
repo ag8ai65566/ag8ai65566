@@ -51,6 +51,7 @@ import tags
 import training
 import updates
 import upscalers
+import wfimport
 import workflow
 from comfy_client import ComfyClient, ComfyError
 from fastapi import Body, FastAPI, Form, HTTPException, UploadFile
@@ -525,6 +526,7 @@ async def cancel() -> JSONResponse:
 async def list_models() -> JSONResponse:
     gpu = await gpu_info()
     vram = gpu.get("vram_gb") or 0
+    imported_workflows = wfimport.installed(config.WORKFLOWS_DIR)
     out = []
     for model in registry.MODELS:
         state = models.model_status(model)
@@ -558,6 +560,11 @@ async def list_models() -> JSONResponse:
                 # the United States. That belongs in front of the download
                 # button, not in a note under it.
                 "licence": model.licence.public() if model.licence else None,
+                # A files-only model becomes generatable once the user imports
+                # the official workflow from their own ComfyUI, so "can I run
+                # this" is not a catalogue fact - it depends on this machine.
+                "has_workflow": model.id in imported_workflows,
+                "runnable_here": model.runnable or model.id in imported_workflows,
                 "sampling": {
                     "steps": params.steps,
                     "cfg": params.cfg,
@@ -671,6 +678,83 @@ async def civitai_search(
             for f in version["files"]:
                 f["installed"] = f["name"] in installed
     return JSONResponse(result)
+
+
+@app.get("/api/workflows")
+async def list_workflows() -> JSONResponse:
+    """Which models have an imported workflow behind them."""
+    return JSONResponse({
+        "workflows": wfimport.installed(config.WORKFLOWS_DIR),
+        "folder": str(config.WORKFLOWS_DIR),
+        # The models this is for: ones the app downloads but has no verified
+        # graph of its own for.
+        "candidates": [
+            {"id": m.id, "label": m.label,
+             "installed": models.model_status(m)["installed"]}
+            for m in registry.MODELS if not m.family_runnable
+        ],
+    })
+
+
+@app.post("/api/workflows/inspect")
+async def inspect_workflow(payload: dict = Body(default={})) -> JSONResponse:
+    """Read an exported workflow and say what it found, without saving."""
+    payload = payload if isinstance(payload, dict) else {}
+    try:
+        graph = wfimport.parse(str(payload.get("json") or ""))
+    except wfimport.ImportError_ as exc:
+        raise HTTPException(400, str(exc)) from exc
+    detected = wfimport.detect(graph)
+    return JSONResponse({
+        "nodes": len(graph),
+        "detected": detected.public(),
+        "summary": wfimport.summary(detected),
+        "comfy_url": config.COMFY_URL,
+    })
+
+
+@app.post("/api/workflows/{model_id}")
+async def save_workflow(model_id: str, payload: dict = Body(default={})) -> JSONResponse:
+    """Attach an exported workflow to a model, so it can be generated from here."""
+    model = registry.get(model_id)
+    if model is None:
+        raise HTTPException(404, f"不認識的模型：{model_id}")
+    payload = payload if isinstance(payload, dict) else {}
+    try:
+        graph = wfimport.parse(str(payload.get("json") or ""))
+    except wfimport.ImportError_ as exc:
+        raise HTTPException(400, str(exc)) from exc
+    detected = wfimport.detect(graph)
+
+    # Overrides from the confirmation step, when detection got something wrong.
+    for name in ("image", "positive", "negative"):
+        chosen = payload.get(name)
+        if isinstance(chosen, dict) and chosen.get("node"):
+            node_id = str(chosen["node"])
+            node = graph.get(node_id)
+            if node is None:
+                raise HTTPException(400, f"這個工作流沒有第 {node_id} 號節點")
+            key = str(chosen.get("key") or "")
+            if key not in (node.get("inputs") or {}):
+                raise HTTPException(400, f"第 {node_id} 號節點沒有 {key} 這個欄位")
+            setattr(detected, name, wfimport.Slot(
+                node_id, key, node.get("class_type", ""),
+                str((node.get("_meta") or {}).get("title") or "")))
+
+    if not detected.usable:
+        raise HTTPException(
+            400, "這個工作流少了必要的東西：" + "、".join(detected.missing)
+                 + "。要有一個放提詞的欄位和一個儲存節點才跑得起來。")
+    record = wfimport.save(config.WORKFLOWS_DIR, model_id, graph, detected,
+                           source=str(payload.get("source") or ""))
+    return JSONResponse({"saved": True, "model_id": model_id,
+                         "nodes": record["nodes"],
+                         "summary": wfimport.summary(detected)})
+
+
+@app.delete("/api/workflows/{model_id}")
+async def delete_workflow(model_id: str) -> JSONResponse:
+    return JSONResponse({"removed": wfimport.remove(config.WORKFLOWS_DIR, model_id)})
 
 
 @app.post("/api/civitai/resolve")

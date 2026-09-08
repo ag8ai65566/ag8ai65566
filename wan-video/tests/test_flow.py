@@ -5599,6 +5599,136 @@ def test_hf_import() -> None:
           "and nothing at all is 'unknown', never a guess")
 
 
+def test_workflow_import() -> None:
+    """Running the user's own exported ComfyUI graph instead of a guessed one.
+
+    Several models are files-only because their official pipelines are large
+    and this project has no GPU to check a reconstruction against. An imported
+    workflow removes the guess: it is the official graph, from the user's own
+    ComfyUI where it demonstrably runs, and this app only substitutes values.
+    """
+    section("workflow import")
+    import config
+    import registry as reg
+    import wfimport
+    import workflow as wf
+
+    # A real graph, built by this app's own builder - same shape as an export.
+    model = reg.get("wan22-14b-fp8")
+    graph = wf.build(model, config.params_for(model), image_name="in.png",
+                     prompt="a woman walking", negative="blurry", seed=42,
+                     width=832, height=480, available_nodes=set())
+    parsed = wfimport.parse(json.dumps(graph))
+    check(len(parsed) == len(graph), f"an API-format graph parses ({len(parsed)} nodes)")
+
+    # -- the wrong export is the mistake everybody makes, so it is named.
+    for bad, why in (
+        (json.dumps({"nodes": [{"id": 1}], "links": []}), "canvas format"),
+        ("not json at all", "not json"),
+        (json.dumps({}), "empty"),
+        (json.dumps([1, 2]), "not an object"),
+        (json.dumps({"1": {"inputs": {}}}), "no class_type"),
+    ):
+        try:
+            wfimport.parse(bad)
+            ok = False
+            msg = ""
+        except wfimport.ImportError_ as exc:
+            ok, msg = True, str(exc)
+        check(ok, f"refused: {why}")
+        if why == "canvas format":
+            check("Export (API)" in msg,
+                  "…and the canvas-format message names the right menu item")
+
+    # -- detection is structural. Which text is positive is read off the
+    # graph's own `positive`/`negative` input names, not guessed from words.
+    got = wfimport.detect(parsed)
+    check(got.usable, f"the graph is usable ({got.missing})")
+    check(got.image and got.image.class_type == "LoadImage",
+          f"the image slot is the LoadImage node ({got.image})")
+    check(got.positive and graph[got.positive.node]["inputs"][got.positive.key]
+          == "a woman walking",
+          "the positive slot really holds the positive prompt")
+    check(got.negative and graph[got.negative.node]["inputs"][got.negative.key] == "blurry",
+          "…and the negative slot the negative one")
+    check(got.positive.node != got.negative.node,
+          "…which are different nodes, so they were told apart")
+    check(len(got.seeds) == 2,
+          f"both samplers' seeds are found, not just the first ({len(got.seeds)})")
+    check(got.outputs, f"and the saving node ({got.outputs})")
+
+    # -- substitution never touches the stored graph
+    out = wfimport.apply(parsed, got, image="mine.png", prompt="NEW", negative="NEG",
+                         seed=999, width=768, height=1360, prefix="wan/job-1")
+    check(out[got.positive.node]["inputs"][got.positive.key] == "NEW", "the prompt is替換")
+    check(all(out[s.node]["inputs"][s.key] == 999 for s in got.seeds),
+          "every seed is set, not one of them - half-random is worse than random")
+    check(parsed[got.positive.node]["inputs"][got.positive.key] == "a woman walking",
+          "and the stored graph is untouched, so the next run is not the last one's")
+
+    # -- an exported graph carries its own output path, which can be anywhere.
+    # The app decides where its jobs land; the import does not get a say.
+    hostile = json.loads(json.dumps(graph))
+    hostile[got.outputs[0]]["inputs"]["filename_prefix"] = "../../../../etc/evil"
+    hostile_slots = wfimport.detect(hostile)
+    safe = wfimport.apply(hostile, hostile_slots, prompt="x", prefix="wan/job-2")
+    written = [n["inputs"]["filename_prefix"] for n in safe.values()
+               if isinstance(n.get("inputs"), dict) and "filename_prefix" in n["inputs"]]
+    check(written and all(".." not in w for w in written),
+          f"an absolute or escaping output path is overwritten ({written})")
+    check(all(w.startswith("wan/job-2") for w in written),
+          "…and every writing node lands under this job's own prefix")
+
+    # -- limits, so a pathological file cannot be expensive
+    try:
+        wfimport.parse(json.dumps(
+            {"1": {"class_type": "CLIPTextEncode", "inputs": {"text": "x" * 300_000}}}))
+        ok = False
+    except wfimport.ImportError_:
+        ok = True
+    check(ok, "a quarter-megabyte string is refused - that is not a prompt")
+    big = {str(i): {"class_type": "X", "inputs": {}} for i in range(wfimport.MAX_NODES + 5)}
+    try:
+        wfimport.parse(json.dumps(big))
+        ok = False
+    except wfimport.ImportError_:
+        ok = True
+    check(ok, f"and more than {wfimport.MAX_NODES} nodes")
+
+    # -- a cycle must not hang the tracer
+    cyclic = {
+        "1": {"class_type": "A", "inputs": {"x": ["2", 0]}},
+        "2": {"class_type": "B", "inputs": {"x": ["1", 0]}},
+        "3": {"class_type": "KSampler", "inputs": {"positive": ["1", 0]}},
+        "4": {"class_type": "SaveImage", "inputs": {"images": ["3", 0]}},
+    }
+    found = wfimport.detect(cyclic)
+    check(found.positive is None, "a cycle terminates rather than looping forever")
+
+    # -- storage round trip
+    root = Path(config.WORKFLOWS_DIR).parent / "wftest"
+    import shutil as _sh
+    _sh.rmtree(root, ignore_errors=True)
+    wfimport.save(root, "minimax-h3", graph, got, source="h3.json")
+    listed = wfimport.installed(root)
+    check("minimax-h3" in listed, f"a saved workflow is listed ({sorted(listed)})")
+    back = wfimport.slots_from(wfimport.load(root, "minimax-h3"))
+    check(back.positive and back.positive.node == got.positive.node,
+          "…and its slots survive the round trip")
+    check(len(back.seeds) == len(got.seeds), "…including every seed")
+    check(wfimport.remove(root, "minimax-h3") and not wfimport.installed(root),
+          "…and it can be removed again")
+    _sh.rmtree(root, ignore_errors=True)
+
+    # -- the summary a beginner reads: names first, node numbers as small print
+    rows = wfimport.summary(got)
+    check(all("label" in r and "found" in r for r in rows), "the summary is complete")
+    lead = next(r for r in rows if r["label"].startswith("你打的提詞"))
+    check(lead["where"] and "節點" not in lead["where"],
+          f"the headline is the node's name, not its number ({lead['where']})")
+    check("節點" in lead["node"], f"…which is kept as small print ({lead['node']})")
+
+
 def test_doc_links() -> None:
     """Every relative link in the README and docs/ points at a file that exists.
 
@@ -7158,6 +7288,7 @@ async def main() -> int:
     test_experiments()
     test_lora_import(TMP / "loraimport")
     test_hf_import()
+    test_workflow_import()
     test_doc_links()
     test_training(TMP / "training")
     test_shortdrama(TMP / "drama")
