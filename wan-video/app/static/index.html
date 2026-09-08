@@ -1440,7 +1440,7 @@ function renderModelPicker() {
   const note = $('#modelfilesonly');
   if (note) {
     note.innerHTML = filesOnly.length
-      ? `你已經下載了 <b>${filesOnly.map((m) => esc(m.label.split('—')[0].trim())).join('、')}</b>，`
+      ? `你已經下載了 <b>${filesOnly.map((m) => esc(m.short || m.label)).join('、')}</b>，`
         + '但它們<b>不能從這一頁生成</b> —— 這個 app 沒有經過驗證的工作流可以跑它們。'
         + '兩條路：到「模型」分頁把 ComfyUI 官方的工作流<b>匯入</b>（之後就能在這裡跑），'
         + '或直接在 ComfyUI（<a href="http://127.0.0.1:8188" target="_blank" rel="noopener">:8188</a>）'
@@ -2394,7 +2394,7 @@ async function refreshWorkflows() {
   const pick = $('#wfmodel');
   if (pick) {
     pick.innerHTML = (d.candidates || []).map((c) =>
-      `<option value="${esc(c.id)}">${esc(c.label.split('—')[0].trim())}`
+      `<option value="${esc(c.id)}">${esc(c.short || c.label)}`
       + `${WF.list[c.id] ? '（已經有工作流）' : (c.installed ? '' : '（還沒下載）')}</option>`).join('');
   }
   const have = Object.values(WF.list);
@@ -4966,7 +4966,7 @@ function quickModels() {
   // graph for. The rest stay listed and say why they cannot run, because
   // hiding them is what sent someone downloading 40GB for nothing.
   const rows = (MODELS || []).filter((m) => m.role !== 'tts').map((m) => {
-    const name = m.label.split('—')[0].trim();
+    const name = m.short || m.label;
     const size = m.download_bytes || 0;
     if (!m.installed) return { id: m.id, text: `${name}（還沒下載 ${gb(size)}）`, ok: false, size };
     if (!m.runnable_here) return { id: m.id, text: `${name}（下載好了，但還沒有工作流）`, ok: false, size };
@@ -5121,7 +5121,7 @@ function videoModelOptions(selected) {
   // them; they are not something that makes a clip.
   return (MODELS || []).filter((m) => m.role !== 'tts').map((m) =>
     `<option value="${esc(m.id)}"${m.id === selected ? ' selected' : ''}>${
-      esc(m.label.split('—')[0].trim())}${m.installed ? '' : '（未下載）'}</option>`).join('');
+      esc(m.short || m.label)}${m.installed ? '' : '（未下載）'}</option>`).join('');
 }
 
 function renderDramaBody() {
@@ -5141,7 +5141,7 @@ function renderDramaBody() {
   $('#sdfps').value = p.delivery.fps;
   $('#sdimodel').innerHTML = (IMG.models || []).map((m) =>
     `<option value="${esc(m.id)}"${m.id === p.keyframes.model_id ? ' selected' : ''}>${
-      esc(m.label.split('—')[0].trim())}</option>`).join('');
+      esc(m.short || m.label)}</option>`).join('');
   $('#sdstyle').innerHTML = '<option value="">（不套風格配方）</option>'
     + (ST.recipes || []).map((r) =>
       `<option value="${esc(r.id)}"${r.id === p.keyframes.style_id ? ' selected' : ''}>${esc(r.zh)}</option>`).join('');
@@ -6327,7 +6327,7 @@ function renderNeeds(needs) {
   box.innerHTML = noGraph.map((m) => `
     <div class="row" style="gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px">
       <span class="warn">●</span>
-      <span><b>${esc(m.label.split('—')[0].trim())}</b>（${esc(m.for)}用的）檔案下載好了，
+      <span><b>${esc(m.short || m.label)}</b>（${esc(m.for)}用的）檔案下載好了，
         但這個 app 沒有跑它的工作流</span>
       <button class="go tiny sdwf" data-id="${esc(m.id)}">去匯入官方工作流</button>
     </div>
@@ -6337,7 +6337,7 @@ function renderNeeds(needs) {
     + missing.map((m) => `
     <div class="row" style="gap:8px;align-items:center;flex-wrap:wrap;margin-top:4px">
       <span class="bad">●</span>
-      <span><b>${esc(m.label.split('—')[0].trim())}</b>（${esc(m.for)}用的）還沒下載完</span>
+      <span><b>${esc(m.short || m.label)}</b>（${esc(m.for)}用的）還沒下載完</span>
       ${m.downloadable
         ? `<button class="go tiny sdget" data-kind="${esc(m.kind)}" data-id="${esc(m.id)}">
              下載（${(m.bytes / 1e9).toFixed(1)}GB）</button>`
@@ -6395,7 +6395,7 @@ function watchNeed() {
       return;
     }
     box.innerHTML = `
-      <div class="s"><b>下載中：</b>${esc(c.label.split('—')[0].trim())}
+      <div class="s"><b>下載中：</b>${esc(c.short || c.label)}
         · ${gb(c.done)} / ${gb(c.total)}${c.eta ? ' · 還要 ' + dur(c.eta) : ''}</div>
       <div class="bar"><i style="width:${c.progress * 100}%"></i></div>
       <div class="s">下載完這一格會自己消失。可以先去寫分鏡表。</div>`;

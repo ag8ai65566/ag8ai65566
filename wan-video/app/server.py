@@ -618,6 +618,10 @@ async def list_models() -> JSONResponse:
             {
                 "id": model.id,
                 "label": model.label,
+                # Short enough for a dropdown and still unique - the page
+                # used to derive this itself by cutting at the em dash,
+                # which produced three identical "Wan 2.2 I2V 14B".
+                "short": registry.short_label(model.label),
                 "family": model.family,
                 "runnable": model.runnable,
                 "vram_gb": model.vram_gb,
@@ -789,7 +793,7 @@ async def list_workflows() -> JSONResponse:
         # ComfyUI video workflow is not a thing they have - offering them here
         # is a dead end dressed up as an option.
         "candidates": [
-            {"id": m.id, "label": m.label,
+            {"id": m.id, "label": m.label, "short": registry.short_label(m.label),
              "installed": models.model_status(m)["installed"]}
             for m in registry.MODELS
             if not m.family_runnable and m.role == "video"
@@ -1399,6 +1403,7 @@ async def image_models() -> JSONResponse:
             {
                 "id": model.id,
                 "label": model.label,
+                "short": registry.short_label(model.label),
                 "vram_gb": model.vram_gb,
                 "vram_advice": vram_advice_generic(model.vram_gb, vram),
                 "download_bytes": model.download_bytes,
@@ -2182,6 +2187,7 @@ def _drama_models(project) -> list[dict]:
         state = image_status(image_model)
         out.append({
             "kind": "image", "id": image_model.id, "label": image_model.label,
+            "short": registry.short_label(image_model.label),
             "for": "關鍵幀",
             "installed": state["installed"],
             "missing": state["missing"][:3],
@@ -2196,6 +2202,7 @@ def _drama_models(project) -> list[dict]:
         state = models.model_status(model)
         out.append({
             "kind": "video", "id": model.id, "label": model.label,
+            "short": registry.short_label(model.label),
             "for": shortdrama.METHODS[method].zh,
             "installed": state["installed"],
             "missing": (state.get("missing") or [])[:3],
@@ -2274,7 +2281,7 @@ async def run_episode(project_id: str, payload: dict = Body(default={})) -> JSON
     if absent:
         raise HTTPException(
             400,
-            f"{absent[0]['label'].split('—')[0].strip()} 還沒下載完，"
+            f"{absent[0].get('short') or absent[0]['label']} 還沒下載完，"
             f"所以現在生不出東西。下面那顆「下載」按鈕可以直接下載"
             f"（{absent[0]['bytes'] / 1e9:.1f}GB），下載完再按一次。")
     # Downloaded but with no graph this app can drive is a different problem
@@ -2302,7 +2309,7 @@ async def run_episode(project_id: str, payload: dict = Body(default={})) -> JSON
     if ungraphed:
         raise HTTPException(
             400,
-            f"{ungraphed[0]['label'].split('—')[0].strip()} 的檔案下載好了，"
+            f"{ungraphed[0].get('short') or ungraphed[0]['label']} 的檔案下載好了，"
             "但這個 app 沒有可以跑它的工作流。下面那顆「去匯入官方工作流」"
             "會帶你到匯入的地方（模型也幫你選好）—— "
             "在 ComfyUI 用官方範本跑一次確認會動，Workflow → Export (API) "

@@ -144,6 +144,10 @@ class Download:
         return {
             "model": self.model_id,
             "label": self.label,
+            # Same shortening as everywhere else, so the progress line names
+            # the same thing the picker does - "Wan 2.2 I2V 14B — GGUF Q8",
+            # not one of three entries that all read "Wan 2.2 I2V 14B".
+            "short": registry.short_label(self.label),
             "kind": self.kind,
             "status": self.status,
             "message": self.message,

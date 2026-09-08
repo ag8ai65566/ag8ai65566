@@ -276,6 +276,27 @@ def test_dimensions() -> None:
                     off_grid.append(f"{model.id} {tier} {src[0]}x{src[1]} -> {dw}x{dh} /{step}")
     check(not off_grid, "every model x tier x aspect lands on its own grid"
           + ("" if not off_grid else f" ({len(off_grid)} off: {off_grid[:3]})"))
+    # The picker shortened these itself by cutting at the em dash, which threw
+    # away the only thing telling the variants apart: three entries reading
+    # "Wan 2.2 I2V 14B" and two reading "HunyuanVideo 1.5 720p". The invariant
+    # is uniqueness, so that is what is checked - not the shortening rule.
+    seen: dict[str, str] = {}
+    clash = []
+    for model in registry.MODELS:
+        short = registry.short_label(model.label)
+        if short in seen:
+            clash.append(f"{seen[short]} / {model.id} -> {short}")
+        seen[short] = model.id
+        check_len = len(short) <= 44
+        if not check_len:
+            clash.append(f"{model.id} name too long for a dropdown ({len(short)})")
+    check(not clash, f"every catalogue entry has its own name in a menu ({clash})")
+    check(registry.short_label("Wan 2.2 I2V 14B — GGUF Q8（接近 fp8）")
+          == "Wan 2.2 I2V 14B — GGUF Q8",
+          "the variant survives and the prose goes")
+    check(registry.short_label("Wan 2.2 TI2V 5B（輕量、原生 720p）") == "Wan 2.2 TI2V 5B",
+          "…and an entry that is only prose after the name loses all of it")
+
     h3 = registry.get("minimax-h3")
     check(h3.dim_multiple == 32, "H3 asks for /32")
     vw, vh = workflow.fit_dimensions(1080, 1920, "768p", h3)

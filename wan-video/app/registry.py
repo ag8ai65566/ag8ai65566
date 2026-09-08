@@ -8,6 +8,8 @@ official ComfyUI workflow templates for each model.
 
 from __future__ import annotations
 
+import re
+
 from dataclasses import dataclass, field
 
 WAN_REPO = "Comfy-Org/Wan_2.2_ComfyUI_Repackaged"
@@ -186,6 +188,24 @@ class ModelDef:
 # file in each repo rather than from a summary: HunyuanVideo's opens with "THIS
 # LICENSE AGREEMENT DOES NOT APPLY IN THE EUROPEAN UNION, UNITED KINGDOM AND
 # SOUTH KOREA", and MiniMax's excludes the United States on top of those.
+def short_label(label: str) -> str:
+    """A name short enough for a dropdown that still tells the variants apart.
+
+    The page used to shorten these itself, by cutting at the em dash and
+    keeping the left half. That threw away exactly the part that distinguishes
+    them: three entries reading "Wan 2.2 I2V 14B" and two reading
+    "HunyuanVideo 1.5 720p", differing only in the fp8 / GGUF Q8 / Q4_K_M /
+    fp16 that had just been cut off. Someone picking a model saw the same name
+    three times and no way to tell which was which.
+
+    So the parenthetical prose goes - that is the decoration - and everything
+    up to it stays. `test_flow` fails if any two entries still collide, which
+    is the invariant that was being broken rather than the rule that broke it.
+    """
+    text = re.sub(r"[（(][^）)]*[）)]", "", label)
+    return re.sub(r"[\s—-]+$", "", text).strip()
+
+
 HUNYUAN_LICENCE = Licence(
     name="Tencent Hunyuan Community License",
     url="https://huggingface.co/tencent/HunyuanVideo-1.5/blob/main/LICENSE",
