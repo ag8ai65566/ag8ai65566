@@ -269,6 +269,7 @@
         </label>
         <button class="ghost" id="reseed" aria-label="換一個隨機種子" title="換一個隨機種子"><span aria-hidden="true">🎲</span></button>
       </div>
+      <div class="s hidden" id="modelfilesonly" style="margin-top:4px"></div>
 
       <div class="row">
         <label class="chk" id="litwrap"><input type="checkbox" id="lightning"> 4 步加速</label>
@@ -1253,9 +1254,31 @@ $('#getmodel').onclick = async () => {
 function renderModelPicker() {
   const sel = $('#model');
   const keep = sel.value;
-  sel.innerHTML = MODELS.filter((m) => m.runnable).map((m) =>
-    `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}</option>`).join('');
-  sel.value = MODELS.some((m) => m.id === keep) ? keep : (chosen ? chosen.id : sel.value);
+  // Files-only models are listed, disabled, rather than filtered out. Someone
+  // who has just downloaded 56GB of MiniMax H3 and finds no trace of it in the
+  // picker has been answered with silence, which reads as a bug - and "you
+  // cannot run this here" is a thing worth saying, not hiding.
+  sel.innerHTML = MODELS.map((m) => m.runnable
+    ? `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}</option>`
+    : `<option value="${m.id}" disabled>${m.installed ? '✓' : '·'} ${esc(m.label)}　—— 這裡跑不了</option>`
+  ).join('');
+  const runnable = MODELS.filter((m) => m.runnable);
+  // Never leave a disabled entry selected: the generate button would be armed
+  // against a model this app has no graph for.
+  const wanted = MODELS.find((m) => m.id === keep && m.runnable);
+  sel.value = wanted ? keep : ((chosen && chosen.runnable) ? chosen.id
+                               : (runnable[0] ? runnable[0].id : sel.value));
+  const filesOnly = MODELS.filter((m) => !m.runnable && m.installed);
+  const note = $('#modelfilesonly');
+  if (note) {
+    note.innerHTML = filesOnly.length
+      ? `你已經下載了 <b>${filesOnly.map((m) => esc(m.label.split('—')[0].trim())).join('、')}</b>，`
+        + '但它們<b>不能從這一頁生成</b> —— 這個 app 沒有經過驗證的工作流可以跑它們。'
+        + '到 ComfyUI（<a href="http://127.0.0.1:8188" target="_blank" rel="noopener">:8188</a>）'
+        + '用 Workflow → Browse Templates 找對應的官方範本，生成完再回「短劇」分頁掛到鏡頭上。'
+      : '';
+    note.classList.toggle('hidden', !filesOnly.length);
+  }
   onModelChange();
 }
 
@@ -4845,6 +4868,31 @@ function wireDramaBody() {
 
 /* ---------- one shot: prompt, plan, attempts, accept ---------- */
 
+// While a shot has jobs in flight, refresh its panel. Stops on its own once
+// nothing is queued or running, so it cannot leak a timer per shot opened.
+let shotWatch = null;
+function watchShot(shotId) {
+  if (shotWatch) clearInterval(shotWatch);
+  let ticks = 0;
+  shotWatch = setInterval(async () => {
+    ticks++;
+    if (!SD.open || ticks > 600) { clearInterval(shotWatch); shotWatch = null; return; }
+    try {
+      const d = await (await fetch(`/api/drama/${encodeURIComponent(SD.open.id)}`)).json();
+      SD.open = d;
+      renderDramaBody();
+      const box = $('#sdplan');
+      if (box && !box.classList.contains('hidden')) await planShot(shotId);
+      const shot = (d.shots || []).find((x) => x.id === shotId);
+      const busy = shot && ['keyframe', 'endframe', 'video'].some((stage) => {
+        const info = (shot.state.stages || {})[stage] || {};
+        return (info.running || 0) > 0;
+      });
+      if (!busy) { clearInterval(shotWatch); shotWatch = null; }
+    } catch { }
+  }, 4000);
+}
+
 async function planShot(shotId) {
   const p = SD.open;
   const box = $('#sdplan');
@@ -4923,7 +4971,25 @@ async function planShot(shotId) {
     </div>
     <div class="s">景別、場景、動作涵蓋不到的東西放這裡。
       它只會接在<b>關鍵幀</b>提詞最後面，不會送進影片。</div>
+    <div class="row" style="margin-top:10px;flex-wrap:wrap;gap:6px;align-items:center">
+      <b class="s">就在這裡生成：</b>
+      <button class="go tiny" id="sdgenkf">生關鍵幀</button>
+      ${st.stages.keyframe.active_done
+        ? `<button class="go tiny" id="sdgenvid">生影片</button>`
+        : '<span class="s">（採用一張關鍵幀後才能生影片）</span>'}
+      <label class="f" style="max-width:120px">一次幾張
+        <select id="sdbatch" aria-label="一次生幾個候選">
+          <option value="1">1 個</option>
+          <option value="2" selected>2 個</option>
+          <option value="4">4 個</option>
+        </select></label>
+      <span class="s" id="sdgenstatus"></span>
+    </div>
+    <div class="s">一次多抽幾個是因為<b>抽卡率才是真正的瓶頸</b> ——
+      生完會列在上面，挑一個按「採用這個」。影片很貴，一次抽 4 個可能要跑很久。</div>
+
     <div class="row" style="margin-top:8px;flex-wrap:wrap">
+      <span class="s" style="align-self:center">要細調的話：</span>
       <button class="ghost tiny" id="sdtoimg">生關鍵幀（帶到圖片分頁）</button>
       <label class="chk">
         <input type="file" id="sdupfile" accept="image/*" hidden>
@@ -5011,6 +5077,98 @@ async function planShot(shotId) {
       extra: from.extra || '', note: '',
     });
     await saveDrama(true);
+  };
+
+  // Generate without leaving the tab. The hand-off buttons below still exist
+  // for anyone who wants the full controls, but the common path - prompt is
+  // already built, model and size already chosen - needed none of them, and
+  // making people bounce between three tabs per shot was the complaint.
+  //
+  // N candidates are queued as N separate jobs rather than one batch, because
+  // a shot accepts a *job*: a batch of four would be one attempt holding four
+  // pictures, and there would be no way to accept the third.
+  const genStatus = (msg, bad) => {
+    const el = $('#sdgenstatus');
+    if (el) el.innerHTML = bad ? `<span class="bad">${esc(msg)}</span>` : esc(msg);
+  };
+
+  const genKf = $('#sdgenkf');
+  if (genKf) genKf.onclick = async () => {
+    const n = +($('#sdbatch') || {}).value || 1;
+    genKf.disabled = true;
+    genStatus(`排入 ${n} 個…`);
+    let queued = 0;
+    try {
+      for (let i = 0; i < n; i++) {
+        const r = await fetch('/api/image/generate', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            model: p.keyframes.model_id,
+            prompt: d.prompt, negative: d.negative || '',
+            width: p.keyframes.width, height: p.keyframes.height,
+            batch: 1, seed: -1,
+            // The character LoRAs this shot's cast carries, at full strength -
+            // the same list the plan panel shows above.
+            loras: (d.loras || []).map((name) => ({ name, strength: 1.0, strength_clip: 1.0 })),
+          }),
+        });
+        const out = await r.json();
+        if (!r.ok) throw new Error(out.detail || r.statusText);
+        await fetch(
+          `/api/drama/${encodeURIComponent(p.id)}/shot/${encodeURIComponent(shotId)}/attach`,
+          { method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ stage: 'keyframe', job: out.id }) });
+        queued++;
+      }
+      genStatus(`已排入 ${queued} 個，跑完會出現在上面`);
+      watchShot(shotId);
+    } catch (e) {
+      genStatus((queued ? `排入 ${queued} 個後失敗：` : '') + e.message, true);
+    }
+    genKf.disabled = false;
+  };
+
+  const genVid = $('#sdgenvid');
+  if (genVid) genVid.onclick = async () => {
+    const route = d.plan.route;
+    const model = (MODELS || []).find((m) => m.id === (route && route.model_id));
+    if (!model || !model.runnable) {
+      genStatus(`這條路線用的 ${(route && route.model_id) || '模型'} 只下載檔案，`
+                + '這裡跑不了 —— 要到 ComfyUI 生成，或在第 0 步換一個模型。', true);
+      return;
+    }
+    const src = ((p.jobs || {})[st.stages.keyframe.active] || {}).output;
+    if (!src) { genStatus('找不到那張採用的關鍵幀。', true); return; }
+    const motion = (d.video && d.video.prompt) || '';
+    if (!motion) { genStatus('先填「影片怎麼動」，不然不知道要它動什麼。', true); return; }
+    const n = Math.min(+($('#sdbatch') || {}).value || 1, 4);
+    genVid.disabled = true;
+    genStatus(`排入 ${n} 個影片…`);
+    let queued = 0;
+    try {
+      const blob = await (await fetch(src)).blob();
+      for (let i = 0; i < n; i++) {
+        const body = new FormData();
+        body.append('image', new File([blob], 'keyframe.png', { type: blob.type || 'image/png' }));
+        body.append('prompt', motion);
+        body.append('model', route.model_id);
+        body.append('seconds', String(shot.seconds));
+        body.append('seed', '-1');
+        const r = await fetch('/api/generate', { method: 'POST', body });
+        const out = await r.json();
+        if (!r.ok) throw new Error(out.detail || r.statusText);
+        await fetch(
+          `/api/drama/${encodeURIComponent(p.id)}/shot/${encodeURIComponent(shotId)}/attach`,
+          { method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ stage: 'video', job: out.id }) });
+        queued++;
+      }
+      genStatus(`已排入 ${queued} 個影片。影片很慢，可以先去做別的。`);
+      watchShot(shotId);
+    } catch (e) {
+      genStatus((queued ? `排入 ${queued} 個後失敗：` : '') + e.message, true);
+    }
+    genVid.disabled = false;
   };
 
   $('#sdtoimg').onclick = hand('keyframe');

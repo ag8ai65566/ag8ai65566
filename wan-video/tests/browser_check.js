@@ -443,6 +443,20 @@ function crc32(buf) {
   check((await page.textContent('#sdplan')).includes('先採用一張關鍵幀'),
     '…and the page says what has to happen first');
 
+  // Generating without leaving the tab. Bouncing between three tabs per shot
+  // was the complaint, and the common path needs none of the controls that
+  // made the hand-off exist in the first place.
+  check(await page.isVisible('#sdgenkf'),
+    'a shot can generate its keyframe in place');
+  const batchOpts = await page.evaluate(() =>
+    [...document.querySelectorAll('#sdbatch option')].map((o) => o.value));
+  check(batchOpts.join(',') === '1,2,4',
+    `…several candidates at once, because the retry rate is the real bottleneck (${batchOpts})`);
+  check(!await page.isVisible('#sdgenvid'),
+    '…and the video button waits for an accepted keyframe');
+  check((await page.textContent('#sdplan')).includes('要細調的話'),
+    '…while the hand-off to the full controls is kept, just demoted');
+
   // Bring your own still. Image-to-video's most natural use - "I already have
   // the picture I want" - had no path at all: a keyframe could only be
   // generated here. An imported still is accepted outright, because choosing
@@ -958,6 +972,25 @@ function crc32(buf) {
   // This block reloads twice; the aborted polls those cause are collected
   // separately (see the console handler at the top) rather than counted here.
   await page.waitForTimeout(1200);
+
+  // ---- files-only models are shown, not hidden ----
+  // Downloading 56GB of MiniMax H3 and then finding no trace of it in the
+  // picker is being answered with silence, which reads as a bug. "You cannot
+  // run this here" is worth saying.
+  await page.click('.tabs button[data-tab="gen"]');
+  await page.waitForTimeout(900);
+  const picker = await page.evaluate(() =>
+    [...document.querySelectorAll('#model option')]
+      .map((o) => ({ v: o.value, disabled: o.disabled, text: o.textContent })));
+  const h3opt = picker.find((o) => o.v === 'minimax-h3');
+  check(!!h3opt, 'a files-only model is listed in the video picker');
+  check(h3opt && h3opt.disabled, '…disabled rather than filtered out');
+  check(h3opt && h3opt.text.includes('這裡跑不了'), '…and saying so in the option itself');
+  const picked = await page.evaluate(() => document.getElementById('model').value);
+  const pickedOpt = picker.find((o) => o.v === picked);
+  check(pickedOpt && !pickedOpt.disabled,
+    `…and a disabled entry is never left selected, which would arm the generate button (${picked})`);
+  check(picker.some((o) => !o.disabled), 'runnable models are still selectable');
 
   // ---- HuggingFace as a second source, and the licence gate ----
   // No search on the HF side, by decision: its LoRA metadata is not good enough
