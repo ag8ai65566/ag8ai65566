@@ -14,6 +14,38 @@ class ComfyError(RuntimeError):
     pass
 
 
+def explain(exc: BaseException, base_url: str = "") -> str:
+    """Turn a connection failure into something a person can act on.
+
+    `ClientConnectorError: Cannot connect to host 127.0.0.1:8188 ssl:default
+    [The remote computer refused the network connection]` is the exact text a
+    user saw under the generate button. Every word of it is true and none of it
+    says the one thing that matters: ComfyUI is not running. This app does not
+    generate anything itself - it hands the work to ComfyUI - so "it is not
+    running" is the single most common failure there is, and it was being
+    reported as a Python class name.
+    """
+    where = base_url or "http://127.0.0.1:8188"
+    # Timeout first: in Python 3.11 `asyncio.TimeoutError` *is* `TimeoutError`,
+    # which is an OSError subclass - so the connection branch below would
+    # otherwise swallow it and tell someone whose ComfyUI is busy loading a
+    # model that it is not running.
+    if isinstance(exc, asyncio.TimeoutError):
+        return (f"等 ComfyUI（{where}）回應等太久了。它可能還在載入模型 —— "
+                "第一次載入大模型會花好幾分鐘，等它那邊不再跳訊息之後再試一次。")
+    if isinstance(exc, (aiohttp.ClientConnectorError, ConnectionRefusedError, OSError)):
+        return (
+            f"連不上 ComfyUI（{where}）—— 它應該是沒有啟動。\n"
+            "這個 app 自己不會畫圖，它是把工作丟給 ComfyUI 跑的，所以要先把它打開：\n"
+            "1. 到你安裝 ComfyUI 的資料夾，執行 run_nvidia_gpu.bat"
+            "（沒有獨顯的話是 run_cpu.bat，會非常慢）\n"
+            f"2. 等到瀏覽器打得開 {where}\n"
+            "3. 回來這裡再按一次生成\n"
+            "如果你的 ComfyUI 開在別的位址或連接埠，到「設定」分頁改 COMFY_URL。"
+        )
+    return f"{type(exc).__name__}: {exc}"
+
+
 # Combo inputs whose choices are a live directory listing rather than a fixed
 # set. /object_info is cached, so a file we uploaded seconds ago will not appear
 # in it - checking those values would reject every freshly uploaded image.
@@ -86,7 +118,8 @@ class ComfyClient:
             except Exception as exc:  # noqa: BLE001 - retry on anything
                 last = exc
             await asyncio.sleep(2)
-        raise ComfyError(f"ComfyUI at {self.base} never became ready: {last}")
+        raise ComfyError(explain(last, self.base) if last else
+                         f"等 ComfyUI（{self.base}）就緒等超過 {timeout:.0f} 秒。")
 
     async def system_stats(self) -> dict:
         """Includes per-device vram_total / vram_free, so the UI can report the

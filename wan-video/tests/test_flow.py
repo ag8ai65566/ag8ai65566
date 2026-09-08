@@ -408,6 +408,38 @@ async def test_validator() -> None:
         await runner.cleanup()
 
 
+def test_comfy_down_message() -> None:
+    """The failure every user hits first, in words they can act on.
+
+    `ClientConnectorError: Cannot connect to host 127.0.0.1:8188 ssl:default
+    [The remote computer refused the network connection]` is the exact string a
+    user saw under the generate button. Every word of it is true and none of it
+    says the one thing that matters.
+    """
+    import aiohttp
+    import comfy_client
+
+    section("comfyui not running")
+    refused = aiohttp.ClientConnectorError(
+        connection_key=None, os_error=ConnectionRefusedError(61, "refused"))
+    said = comfy_client.explain(refused, "http://127.0.0.1:8188")
+    check("沒有啟動" in said, "a refused connection says ComfyUI is not running")
+    check("run_nvidia_gpu.bat" in said, "…and names the file to double-click")
+    check("COMFY_URL" in said, "…and where to change the address if it differs")
+    check("ClientConnectorError" not in said,
+          f"…without the class name the user cannot act on ({said[:24]})")
+
+    slow = comfy_client.explain(asyncio.TimeoutError(), "http://127.0.0.1:8188")
+    check("載入模型" in slow,
+          "a timeout suggests the likely cause rather than just 'timeout'")
+
+    # Anything unrecognised still says what it was, rather than being swallowed
+    # into a friendly message that hides a real bug.
+    other = comfy_client.explain(ValueError("weird"), "http://x")
+    check(other == "ValueError: weird",
+          f"an unexpected error is passed through unchanged ({other})")
+
+
 def test_minimax_h3_graph() -> None:
     """The H3 graph, against the official template it was copied from.
 
@@ -7910,6 +7942,7 @@ async def main() -> int:
     test_dimensions()
     await test_graphs()
     await test_validator()
+    test_comfy_down_message()
     test_minimax_h3_graph()
     await test_video_fallback()
     await test_downloader()

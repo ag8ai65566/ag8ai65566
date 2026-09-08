@@ -135,6 +135,24 @@ function crc32(buf) {
   // The image tab is the busiest one; make sure it renders and nothing overflows.
   await page.click('.tabs button[data-tab="img"]');
   await page.waitForTimeout(500);
+  // ---- ComfyUI not running: the most common failure there is ----
+  // This app hands every job to ComfyUI and cannot start it itself. The
+  // failure used to reach the user as `ClientConnectorError: Cannot connect to
+  // host 127.0.0.1:8188 ssl:default [The remote computer refused the network
+  // connection]` - every word true, and not one of them saying "ComfyUI is not
+  // running". There is no ComfyUI in this container, so the banner is live.
+  check(await page.isVisible('#comfydown'),
+    'a banner says so when ComfyUI is not running');
+  const downTxt = await page.textContent('#comfydown');
+  check(downTxt.includes('ComfyUI 沒有在跑'),
+    'and leads with what is wrong -> ' + downTxt.replace(/\s+/g, ' ').slice(0, 28));
+  check(downTxt.includes('run_nvidia_gpu.bat'), '…naming the file to double-click');
+  check(downTxt.includes('COMFY_URL'), '…and where to change it if the port differs');
+  check(!downTxt.includes('ClientConnectorError') && !downTxt.includes('ssl:default'),
+    '…with no raw Python exception left in it');
+  check((await page.textContent('#sub')).includes('ComfyUI 還沒開'),
+    'and the header line stays to four words');
+
   // ---- weights ----
   await page.fill('#iprompt', '1girl, ahegao, breasts out');
   // caret inside "ahegao"

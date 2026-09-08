@@ -55,6 +55,7 @@ import updates
 import upscalers
 import wfimport
 import workflow
+import comfy_client
 from comfy_client import ComfyClient, ComfyError
 from fastapi import Body, FastAPI, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
@@ -193,7 +194,10 @@ async def worker() -> None:
             record.status, record.message = "error", str(exc)
         except Exception as exc:  # noqa: BLE001 - never kill the worker
             record.status = "error"
-            record.message = f"{type(exc).__name__}: {exc}"
+            # `explain` turns a connection failure into "ComfyUI is not
+            # running, here is how to start it". Anything it does not
+            # recognise still falls back to the class name and the message.
+            record.message = comfy_client.explain(exc, config.COMFY_URL)
             traceback.print_exc()
         finally:
             record.finished = time.time()
@@ -4184,7 +4188,9 @@ async def health() -> JSONResponse:
         classes = await client.node_classes()
         comfy_ok, detail = True, f"{len(classes)} node types"
     except Exception as exc:  # noqa: BLE001
-        comfy_ok, detail = False, str(exc)
+        # The header shows this. "ComfyUI is not running, start it like this"
+        # belongs there more than a Python class name does.
+        comfy_ok, detail = False, comfy_client.explain(exc, config.COMFY_URL)
     installed = [m.id for m in registry.MODELS if models.model_status(m)["installed"]]
     return JSONResponse(
         {

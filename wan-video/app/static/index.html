@@ -262,6 +262,11 @@
   <h1>圖片 → 動畫</h1>
   <div class="sub" id="sub">本機執行 · 無內容過濾</div>
 
+  <!-- The app hands every job to ComfyUI and cannot start it itself, so
+       "ComfyUI is not running" is the most common failure there is. It used to
+       surface as a raw ClientConnectorError under the generate button. -->
+  <div class="banner warn hidden" id="comfydown" style="margin:10px 0"></div>
+
   <nav class="tabs" role="tablist" aria-label="主要分頁">
     <button class="on" data-tab="gen" role="tab" aria-controls="tab-gen" aria-selected="true">影片</button>
     <button data-tab="img" role="tab" aria-controls="tab-img" aria-selected="false">圖片</button>
@@ -7779,7 +7784,19 @@ async function refreshHealth() {
     const v = (HEALTH.gpu || {}).vram_gb;
     $('#sub').textContent = `本機執行 · 無內容過濾 · 已安裝 ${HEALTH.installed.length}/${MODELS.length} 個模型`
       + (v ? ` · 顯卡 ${v}GB` : '')
-      + (HEALTH.comfy.ok ? '' : ' · ComfyUI 還沒就緒：'+HEALTH.comfy.detail);
+      + (HEALTH.comfy.ok ? '' : ' · ComfyUI 還沒開');
+  // The header has room for four words; the reason and the fix go in a banner
+  // that is actually readable. This is the most common failure there is - the
+  // app hands every job to ComfyUI and cannot start it itself - and it used to
+  // surface as a raw ClientConnectorError.
+  const cbox = $('#comfydown');
+  if (cbox) {
+    cbox.classList.toggle('hidden', !!HEALTH.comfy.ok);
+    if (!HEALTH.comfy.ok) {
+      cbox.innerHTML = '<b>ComfyUI 沒有在跑，所以現在什麼都生不出來。</b><br>'
+        + esc(HEALTH.comfy.detail || '').replace(/\n/g, '<br>');
+    }
+  }
   } catch {}
 }
 boot();
