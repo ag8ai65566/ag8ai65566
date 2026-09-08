@@ -147,8 +147,8 @@ class ComfyClient:
         """
         self._object_info = None
 
-    async def node_classes(self) -> set[str]:
-        return set((await self.object_info()).keys())
+    async def node_classes(self, refresh: bool = False) -> set[str]:
+        return set((await self.object_info(refresh)).keys())
 
     async def embeddings(self) -> list[str]:
         """Textual-inversion names, usable in a prompt as `embedding:<name>`.

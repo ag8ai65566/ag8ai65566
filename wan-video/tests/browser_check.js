@@ -146,8 +146,14 @@ function crc32(buf) {
   const downTxt = await page.textContent('#comfydown');
   check(downTxt.includes('ComfyUI 沒有在跑'),
     'and leads with what is wrong -> ' + downTxt.replace(/\s+/g, ' ').slice(0, 28));
-  check(downTxt.includes('run_nvidia_gpu.bat'), '…naming the file to double-click');
-  check(downTxt.includes('COMFY_URL'), '…and where to change it if the port differs');
+  // The file it names has to be one this install actually has. The message a
+  // user hit said `run_nvidia_gpu.bat`, which the portable ComfyUI download
+  // has and this project's installer does not - so they went looking for a
+  // file they do not own and concluded the app was broken.
+  check(downTxt.includes('install.bat') || downTxt.includes('start.bat'),
+    '…naming a script this install actually has');
+  check(!downTxt.includes('run_nvidia_gpu'),
+    '…and never one from a different install layout');
   check(!downTxt.includes('ClientConnectorError') && !downTxt.includes('ssl:default'),
     '…with no raw Python exception left in it');
   check((await page.textContent('#sub')).includes('ComfyUI 還沒開'),

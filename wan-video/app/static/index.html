@@ -2627,7 +2627,8 @@ async function renderSettings() {
         ${comfy.ok
           ? (comfy.behind ? `<span class="tag warn">落後 ${comfy.behind} 個更新</span>`
                           : '<span class="tag done">已是最新</span>')
-          : `<span class="s">${esc(comfy.detail || '還沒檢查')}</span>`}
+          : `<span class="s">${esc((comfy.detail || '還沒檢查').split('\n')[0]
+                                      .replace(/\*\*/g, ''))}</span>`}
         <button class="ghost tiny" id="setpullcomfy">立刻更新 ComfyUI</button>
       </div>
       <div class="note">
@@ -2642,7 +2643,9 @@ async function renderSettings() {
       <div id="setpullout" class="s"></div>
     </div>
     <h2 style="margin-top:16px">現況</h2>
-    <div class="s">ComfyUI：${h.comfy && h.comfy.ok ? '就緒 · '+esc(h.comfy.detail) : '<span style="color:var(--err)">'+esc((h.comfy||{}).detail||'連不上')+'</span>'}</div>
+    <div class="s">ComfyUI：${h.comfy && h.comfy.ok ? '就緒 · '+esc(h.comfy.detail)
+      : '<span style="color:var(--err)">'
+        + bold((h.comfy||{}).detail||'連不上').replace(/\n/g, '<br>') + '</span>'}</div>
     <div class="s">模型目錄：<code>${esc(h.models_dir||'')}</code></div>
     <div class="s">成品目錄：<code>${esc((h.library||{}).dir||'')}</code>（${(h.library||{}).count||0} 個檔，${gb((h.library||{}).bytes||0)}）</div>
     <h2 style="margin-top:16px">只能手動改的（在 .env 裡）</h2>
@@ -7793,8 +7796,33 @@ async function refreshHealth() {
   if (cbox) {
     cbox.classList.toggle('hidden', !!HEALTH.comfy.ok);
     if (!HEALTH.comfy.ok) {
+      const inst = HEALTH.comfy.install || {};
       cbox.innerHTML = '<b>ComfyUI 沒有在跑，所以現在什麼都生不出來。</b><br>'
-        + esc(HEALTH.comfy.detail || '').replace(/\n/g, '<br>');
+        + bold(HEALTH.comfy.detail || '').replace(/\n/g, '<br>')
+        + (inst.startable
+           ? '<div style="margin-top:8px"><button class="go" id="comfygo">幫我啟動 ComfyUI</button>'
+             + '<span class="s" id="comfygomsg" style="margin-left:8px"></span></div>'
+           : '');
+      const go = $('#comfygo');
+      if (go) go.onclick = async () => {
+        go.disabled = true;
+        const msg = $('#comfygomsg');
+        msg.textContent = '啟動中…';
+        try {
+          const r = await fetch('/api/comfy/start', { method: 'POST' });
+          const d = await r.json();
+          if (!r.ok) throw new Error(d.detail || r.statusText);
+          msg.innerHTML = `<span class="ok">${esc(d.message)}</span>`;
+          // Poll until it answers, then the banner removes itself.
+          const t = setInterval(async () => {
+            await refreshHealth();
+            if (HEALTH.comfy && HEALTH.comfy.ok) clearInterval(t);
+          }, 4000);
+        } catch (e) {
+          go.disabled = false;
+          msg.innerHTML = `<span class="bad">${esc(e.message)}</span>`;
+        }
+      };
     }
   }
   } catch {}

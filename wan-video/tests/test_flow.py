@@ -408,6 +408,69 @@ async def test_validator() -> None:
         await runner.cleanup()
 
 
+def test_comfy_boot(tmp: Path) -> None:
+    """Finding ComfyUI, and saying the right thing about what was found.
+
+    The message a user actually hit told them to run `run_nvidia_gpu.bat` -
+    a file the portable ComfyUI download has and this project's install does
+    not. `setup-windows.ps1` clones ComfyUI into `<repo>/ComfyUI` and shares
+    one venv with it. Sending someone to look for a file they do not have is
+    worse than saying nothing: they look, fail, and conclude it is broken.
+    """
+    import comfyboot
+
+    section("finding comfyui")
+
+    # -- installed the way this project's own installer leaves it
+    here = tmp / "installed"
+    (here / "ComfyUI").mkdir(parents=True)
+    (here / "ComfyUI" / "main.py").write_text("", encoding="utf-8")
+    (here / "venv" / "bin").mkdir(parents=True)
+    (here / "venv" / "bin" / "python").write_text("", encoding="utf-8")
+    for name in ("install.bat", "start.bat"):
+        (here / name).write_text("", encoding="utf-8")
+
+    found = comfyboot.find(here)
+    check(found.installed and found.startable,
+          "a normal install is found, and can be started from here")
+    check(found.python == here / "venv" / "bin" / "python",
+          f"…using the venv the installer built, not whatever python is first "
+          f"on PATH ({found.python})")
+    said = comfyboot.advice(found, "http://127.0.0.1:8188")
+    check("只是現在沒有在跑" in said, "…and the advice says it is installed, just not running")
+    check("start.bat" in said, "…naming this project's own start script")
+    check("run_nvidia_gpu" not in said,
+          "…and never a file from a different install layout")
+
+    # -- never installed
+    bare = tmp / "bare"
+    bare.mkdir(parents=True)
+    for name in ("install.bat", "start.bat"):
+        (bare / name).write_text("", encoding="utf-8")
+    missing = comfyboot.find(bare)
+    check(not missing.installed, "a machine without ComfyUI is reported as such")
+    said = comfyboot.advice(missing, "http://127.0.0.1:8188")
+    check("還沒有安裝" in said and "install.bat" in said,
+          "…and is told to run the installer, which fetches ComfyUI for them")
+    check("幫我啟動" not in said,
+          "…and is not offered a start button for something that is not there")
+
+    # -- neither: a Docker or remote setup, where both answers would be wrong
+    nowhere = tmp / "nowhere"
+    nowhere.mkdir(parents=True)
+    said = comfyboot.advice(comfyboot.find(nowhere), "http://comfy:8188")
+    check("docker" in said.lower(),
+          f"…and a setup with no scripts at all is pointed at compose ({said[:26]})")
+
+    # Starting something that is not there must refuse, not run a guess.
+    refused = ""
+    try:
+        comfyboot.start(comfyboot.find(bare))
+    except comfyboot.StartError as exc:
+        refused = str(exc)
+    check("找不到" in refused, f"starting a missing ComfyUI refuses ({refused[:20]})")
+
+
 def test_comfy_down_message() -> None:
     """The failure every user hits first, in words they can act on.
 
@@ -7942,6 +8005,7 @@ async def main() -> int:
     test_dimensions()
     await test_graphs()
     await test_validator()
+    test_comfy_boot(TMP / "comfyboot")
     test_comfy_down_message()
     test_minimax_h3_graph()
     await test_video_fallback()

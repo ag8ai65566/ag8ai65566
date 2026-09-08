@@ -56,6 +56,7 @@ import upscalers
 import wfimport
 import workflow
 import comfy_client
+import comfyboot
 from comfy_client import ComfyClient, ComfyError
 from fastapi import Body, FastAPI, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
@@ -4182,19 +4183,53 @@ async def prompt_preview(payload: dict = Body(...)) -> JSONResponse:
 # -- health & files ----------------------------------------------------------
 
 
+@app.post("/api/comfy/start")
+async def comfy_start() -> JSONResponse:
+    """Start ComfyUI, so the user never has to find a file to double-click.
+
+    Only when it is where this project's own installer puts it and there is an
+    interpreter to run it with. Anywhere else, the honest answer is the advice
+    text, not a guess at a command line.
+    """
+    found = comfyboot.find()
+    if not found.startable:
+        raise HTTPException(400, comfyboot.advice(found, config.COMFY_URL))
+    try:
+        await client.node_classes(refresh=True)
+        return JSONResponse({"already": True, "message": "ComfyUI 本來就在跑了。"})
+    except Exception:  # noqa: BLE001 - not running is the expected case here
+        pass
+    try:
+        await asyncio.to_thread(comfyboot.start, found, config.COMFY_ARGS)
+    except comfyboot.StartError as exc:
+        raise HTTPException(400, str(exc)) from exc
+    return JSONResponse({
+        "already": False,
+        "message": "開起來了。第一次載入模型會花一兩分鐘 —— "
+                   "上面那條橫幅會自己消失，消失了就可以按生成。",
+        "comfy": str(found.comfy),
+    })
+
+
 @app.get("/api/health")
 async def health() -> JSONResponse:
     try:
         classes = await client.node_classes()
         comfy_ok, detail = True, f"{len(classes)} node types"
+        comfy_where = None
     except Exception as exc:  # noqa: BLE001
         # The header shows this. "ComfyUI is not running, start it like this"
-        # belongs there more than a Python class name does.
-        comfy_ok, detail = False, comfy_client.explain(exc, config.COMFY_URL)
+        # belongs there more than a Python class name does - and the "like
+        # this" has to name files this install actually has, which means
+        # looking rather than guessing.
+        comfy_where = comfyboot.find()
+        comfy_ok = False
+        detail = comfyboot.advice(comfy_where, config.COMFY_URL)
     installed = [m.id for m in registry.MODELS if models.model_status(m)["installed"]]
     return JSONResponse(
         {
-            "comfy": {"url": config.COMFY_URL, "ok": comfy_ok, "detail": detail},
+            "comfy": {"url": config.COMFY_URL, "ok": comfy_ok, "detail": detail,
+                      **({"install": comfy_where.public()} if comfy_where else {})},
             "models_dir": str(config.MODELS_DIR),
             "installed": installed,
             "default_model": effective_default().id,
