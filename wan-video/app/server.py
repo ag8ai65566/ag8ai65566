@@ -23,6 +23,7 @@ import uuid
 from pathlib import Path
 
 import artists
+import assemble
 import charpacks
 import civitai
 import claims
@@ -47,6 +48,7 @@ import shortdrama
 import styles
 import refs as refslib
 import registry
+import runner as runner_mod
 import tags
 import training
 import updates
@@ -73,6 +75,11 @@ _background: set[asyncio.Task] = set()
 
 
 UPLOAD_MODEL_ID = "user-upload"
+# A joined episode is its own kind of thing: no model made it, and it must not
+# borrow the name of the one that made its shots. It is also not the same as an
+# imported file, because deleting the shots it was built from does not
+# invalidate it - it is a finished, independent file.
+ASSEMBLY_MODEL_ID = "drama-assembly"
 
 # Caps on an imported still. Not about disk - a decompression bomb is a small
 # file that becomes gigabytes of pixels in memory, and a keyframe has no reason
@@ -88,6 +95,8 @@ def model_label(record: library.Record) -> str:
     # meaning what it says.
     if record.model_id == UPLOAD_MODEL_ID:
         return "（你自己匯入的圖）"
+    if record.model_id == ASSEMBLY_MODEL_ID:
+        return "（整集接起來的成品）"
     if record.kind in ("image", "comic"):
         model = images.resolve(record.model_id)
         return model.label if model else record.model_id
@@ -1960,7 +1969,9 @@ async def update_drama(project_id: str, payload: dict = Body(default={})
         project.delivery = shortdrama.DeliverySpec(
             width=max(1, int(d.get("width") or project.delivery.width)),
             height=max(1, int(d.get("height") or project.delivery.height)),
-            fps=max(1, int(d.get("fps") or project.delivery.fps)))
+            fps=max(1, int(d.get("fps") or project.delivery.fps)),
+            fit=(str(d.get("fit") or project.delivery.fit)
+                 if str(d.get("fit") or project.delivery.fit) in assemble.FITS else ""))
     if isinstance(payload.get("keyframes"), dict):
         k = payload["keyframes"]
         want = str(k.get("model_id") or project.keyframes.model_id)
@@ -2021,14 +2032,10 @@ async def update_drama(project_id: str, payload: dict = Body(default={})
                 scene=str(raw.get("scene") or ""),
                 extra=str(raw.get("extra") or ""),
                 note=str(raw.get("note") or ""),
-                # Never from the browser. See the docstring.
-                keyframe_jobs=list(prior.keyframe_jobs) if prior else [],
-                endframe_jobs=list(prior.endframe_jobs) if prior else [],
-                video_jobs=list(prior.video_jobs) if prior else [],
-                active_keyframe=prior.active_keyframe if prior else "",
-                active_endframe=prior.active_endframe if prior else "",
-                active_video=prior.active_video if prior else "",
-            ))
+            # Attempts and acceptances are never from the browser - they are
+            # copied from the stored shot, every stage of them. See the
+            # docstring, and Shot.carry_over for why it is a loop.
+            ).carry_over(prior))
         project.shots = shots
         shortdrama.normalise(project)
 
@@ -2078,6 +2085,447 @@ async def drama_shot(project_id: str, shot_id: str) -> JSONResponse:
                          "video": shortdrama.video_prompt(shot)})
 
 
+RUNS = runner_mod.Runs(config.OUTPUT_DIR / ".drama-run.json")
+RUNS.load()
+
+
+@app.get("/api/drama/{project_id}/run")
+async def run_status(project_id: str) -> JSONResponse:
+    """What a run would do, and what one in flight has done so far."""
+    project = _drama_or_404(project_id)
+    jobs = _drama_jobs(project)
+    # Only this project's run. The runner holds one at a time, and showing
+    # another project's summary under these shots would be a lie about what
+    # was queued - it was the first thing this panel got wrong.
+    current = RUNS.current
+    mine = current is not None and current.project == project_id
+    return JSONResponse({
+        "run": current.public() if mine else {"active": False},
+        "other_run": (current.public() if current is not None and not mine
+                      else None),
+        "keyframe_todo": [s.no for s in runner_mod.shots_needing(project, jobs, "keyframe")],
+        "video_todo": [s.no for s in runner_mod.shots_needing(project, jobs, "video")],
+        "video_blocked": runner_mod.blocked_reason(project, jobs, "video"),
+        "max_per_run": runner_mod.MAX_PER_RUN,
+    })
+
+
+@app.post("/api/drama/{project_id}/run/stop")
+async def run_stop(project_id: str) -> JSONResponse:
+    _drama_or_404(project_id)
+    return JSONResponse({"stopped": RUNS.stop(), "run": RUNS.public()})
+
+
+@app.post("/api/drama/{project_id}/run")
+async def run_episode(project_id: str, payload: dict = Body(default={})) -> JSONResponse:
+    """Queue one pass over the whole episode.
+
+    Deliberately two passes rather than one: keyframes, then the user picks,
+    then videos. See runner.py for why nothing is accepted automatically.
+    """
+    project = _drama_or_404(project_id)
+    payload = payload if isinstance(payload, dict) else {}
+    stage = str(payload.get("stage") or "keyframe")
+    if stage not in ("keyframe", "video"):
+        raise HTTPException(400, f"不認識的階段：{stage}")
+    if RUNS.current and RUNS.current.active:
+        raise HTTPException(409, "已經有一輪在排了。等它排完，或按「停止」。")
+
+    per_shot = max(1, min(int(payload.get("per_shot") or 2), 4))
+    jobs = _drama_jobs(project)
+    if reason := runner_mod.blocked_reason(project, jobs, stage):
+        raise HTTPException(400, reason)
+    todo = runner_mod.shots_needing(project, jobs, stage)
+    if not todo:
+        raise HTTPException(
+            400, "每顆鏡頭都已經有採用的" + ("影片" if stage == "video" else "關鍵幀") + "了。")
+    if len(todo) * per_shot > runner_mod.MAX_PER_RUN:
+        raise HTTPException(
+            400,
+            f"{len(todo)} 顆鏡頭 × 一次 {per_shot} 個 = {len(todo) * per_shot} 個工作，"
+            f"超過一輪的上限 {runner_mod.MAX_PER_RUN}。把「一次幾個」調低，"
+            "或分批跑。")
+
+    # Freeze the plan before submitting anything. A run lasts as long as
+    # generating does, and editing shot 12 halfway through must not mean the
+    # first half of the episode used one version of the project and the second
+    # half another, with nothing recording it.
+    tasks, refusals = _plan_run(project, jobs, stage, per_shot)
+    if not tasks:
+        raise HTTPException(
+            400,
+            "這一輪沒有可以排的工作。" + (refusals[0].reason if refusals else ""))
+
+    run = RUNS.start(project.id, stage, per_shot, tasks)
+    # Shots that cannot run are known now, not twenty minutes in.
+    run.failures.extend(refusals)
+    RUNS.save()
+    asyncio.create_task(_drive_run(project.id, run))
+    return JSONResponse({"run": run.public()})
+
+
+def _plan_run(project, jobs: dict, stage: str, per_shot: int
+              ) -> tuple[list, list]:
+    """Build every task's payload up front, and collect what cannot be built.
+
+    Doing it here rather than at submission time means a shot that can never
+    work - no motion written, a route this app has no graph for - is reported
+    the moment the button is pressed, instead of after the shots before it have
+    already taken twenty minutes of GPU.
+    """
+    tasks, refusals = [], []
+    for shot in runner_mod.shots_needing(project, jobs, stage):
+        try:
+            payload = (_keyframe_payload(project, shot) if stage == "keyframe"
+                       else _video_payload(project, jobs, shot))
+        except HTTPException as exc:
+            refusals.append(runner_mod.Failure(shot.no, str(exc.detail)))
+            continue
+        for _ in range(per_shot):
+            tasks.append(runner_mod.Task(shot.id, shot.no, stage, dict(payload)))
+    return tasks, refusals
+
+
+async def _drive_run(project_id: str, run) -> None:
+    """Submit the frozen plan, recording what fails instead of stopping.
+
+    One shot failing is not a reason to abandon the other nineteen - and the
+    reason it failed is usually the same for all of them, which is much easier
+    to see from a list at the end than from one error and silence.
+
+    Jobs go in a few at a time rather than all at once. There is one worker, so
+    a full queue is not faster; it only means someone who wants to try a single
+    shot waits behind the whole episode, and that "stop" arrives too late to
+    stop anything.
+
+    The project is read only to record job ids against shots. Everything the
+    jobs are made from was decided in `_plan_run`, so an edit made while this
+    is running lands on the next run, not on the second half of this one.
+    """
+    submitted: list[str] = []
+    refused: set[str] = set()
+    for task in run.tasks:
+        if run.stopped:
+            break
+        # A shot that already failed does not get its remaining candidates
+        # attempted: the reason is the same every time, and three copies of it
+        # in the failure list tell the user nothing extra.
+        if task.shot_id in refused:
+            continue
+        project = DRAMAS.get(project_id)
+        if project is None:
+            run.message = "專案不見了。"
+            break
+        await _wait_for_room(run, submitted)
+        if run.stopped:
+            break
+        try:
+            job_id = await (_queue_keyframe(task.payload) if task.stage == "keyframe"
+                            else _queue_video(task.payload))
+        except HTTPException as exc:
+            run.failures.append(runner_mod.Failure(task.shot_no, str(exc.detail)))
+            refused.add(task.shot_id)
+            RUNS.save()
+            continue
+        except Exception as exc:                                  # noqa: BLE001
+            run.failures.append(runner_mod.Failure(task.shot_no, str(exc)))
+            refused.add(task.shot_id)
+            RUNS.save()
+            continue
+        submitted.append(job_id)
+        shot = project.shot(task.shot_id)
+        if shot is not None:
+            attempts = shot.jobs_for(task.stage)
+            if job_id not in attempts:
+                attempts.append(job_id)
+            DRAMAS.save()
+        run.queued += 1
+        RUNS.save()
+    run.finished = time.time()
+    if not run.message:
+        run.message = (f"這一輪送了 {run.queued} 個工作"
+                       + (f"，其中 {len(run.failures)} 顆有問題" if run.failures else "")
+                       + "。到每顆鏡頭挑一個採用。")
+    RUNS.save()
+
+
+async def _wait_for_room(run, submitted: list[str]) -> None:
+    """Block until fewer than WINDOW of this run's jobs are still unfinished.
+
+    Counts only jobs this run submitted. A job the user started by hand is
+    their business, and stalling the episode because of it would be wrong -
+    though it does share the same single worker, so it will be waited on
+    anyway, just not counted against the window.
+    """
+    waited = 0.0
+    while not run.stopped:
+        pending = 0
+        for job_id in submitted:
+            record = lib.get(job_id)
+            if record is not None and record.status in ("queued", "running"):
+                pending += 1
+        if pending < runner_mod.WINDOW:
+            return
+        if waited > runner_mod.SLOT_TIMEOUT_SECONDS:
+            # A job that never finishes would otherwise leave this loop running
+            # for as long as the app does. Stopping says so; carrying on would
+            # mean quietly abandoning the window and flooding the queue.
+            run.stopped = True
+            run.message = ("等了很久前面的工作都沒有跑完，這一輪先停下來。"
+                           "到素材庫看看是不是有工作卡住了。")
+            RUNS.save()
+            return
+        await asyncio.sleep(runner_mod.POLL_SECONDS)
+        waited += runner_mod.POLL_SECONDS
+
+
+def _keyframe_payload(project, shot) -> dict:
+    """Everything one keyframe job needs, resolved now rather than at submit.
+
+    The style recipe is merged here too: a recipe swapped mid-run would
+    otherwise apply to the back half of the episode only.
+    """
+    built = shortdrama.keyframe_prompt(project, shot)
+    model = images.get(project.keyframes.model_id)
+    if project.keyframes.style_id:
+        merged = promptmerge.apply_recipe(
+            built["prompt"], "", project.keyframes.style_id,
+            model_id=project.keyframes.model_id,
+            tag_style=model.tag_style if model else "danbooru")
+        if merged is not None:
+            built["prompt"], built["negative"] = merged.prompt, merged.negative
+    return {
+        "model": project.keyframes.model_id,
+        "prompt": built["prompt"], "negative": built.get("negative") or "",
+        "width": project.keyframes.width, "height": project.keyframes.height,
+        "batch": 1, "seed": -1,
+        "loras": [{"name": n, "strength": 1.0, "strength_clip": 1.0}
+                  for n in built.get("loras") or []],
+    }
+
+
+async def _queue_keyframe(payload: dict) -> str:
+    """Submit one frozen keyframe payload through the ordinary image path."""
+    response = await image_generate(dict(payload))
+    return json.loads(bytes(response.body))["id"]
+
+
+def _video_payload(project, jobs: dict, shot) -> dict:
+    """Everything one video job needs, including which file it starts from.
+
+    The source is pinned to the accepted keyframe *as it is now*. Accepting a
+    different take while the run is going changes the next run, not this one.
+    """
+    method = shortdrama.METHODS.get(shot.method)
+    if method is not None and method.needs_endframe:
+        # Sending just the keyframe would produce a perfectly good video that
+        # is not the one asked for, and nothing downstream would notice.
+        raise HTTPException(
+            400,
+            "「首尾幀」要把兩張圖送進另一種工作流，這個 app 還沒有那個工作流。"
+            "把這顆改成「圖生影片」，或到 ComfyUI 用官方首尾幀範本生成後掛回來。")
+    job_id = shot.active_for("keyframe")
+    record = jobs.get(job_id) if job_id else None
+    output = getattr(record, "output", None) if record else None
+    path = (config.OUTPUT_DIR / output) if output else None
+    if not path or not path.is_file():
+        raise HTTPException(400, "找不到採用的關鍵幀檔案")
+    motion = shortdrama.video_prompt(shot)["prompt"]
+    if not motion:
+        raise HTTPException(400, "還沒填「影片怎麼動」")
+    route = project.route(shot.method)
+    if route is None:
+        raise HTTPException(400, f"「{shot.method}」沒有設定路線")
+    return {"source": output, "prompt": motion, "model": route.model_id,
+            "seconds": shot.seconds}
+
+
+async def _queue_video(payload: dict) -> str:
+    """Submit one frozen video payload through the ordinary video path."""
+    path = config.OUTPUT_DIR / str(payload.get("source") or "")
+    if not path.is_file():
+        # The file was there when the run was planned. Someone has cleared the
+        # library since, and saying so beats a failure from inside ffmpeg.
+        raise HTTPException(400, "採用的關鍵幀檔案在這一輪開始之後不見了")
+
+    class _Upload:
+        """The shape /api/generate's UploadFile parameter is used through."""
+
+        filename = path.name
+
+        async def read(self) -> bytes:
+            return path.read_bytes()
+
+    response = await generate(
+        image=_Upload(), prompt=str(payload.get("prompt") or ""),
+        model=str(payload.get("model") or ""),
+        seconds=float(payload.get("seconds") or 0.0), seed=-1)
+    return json.loads(bytes(response.body))["id"]
+
+
+@app.get("/api/drama/{project_id}/assemble")
+async def assemble_status(project_id: str) -> JSONResponse:
+    """Can this project be joined into one file yet, and with what."""
+    project = _drama_or_404(project_id)
+    jobs = _drama_jobs(project)
+    ready, missing = _assemble_segments(project, jobs)
+    ffmpeg = assemble.find_ffmpeg(config.REPO_DIR)
+    ffprobe = assemble.find_ffprobe(ffmpeg)
+    # Measuring is a subprocess per shot, so it happens off the event loop and
+    # only when there is a plausible chance of joining.
+    if ready and ffmpeg and not missing:
+        await asyncio.to_thread(_measure, ready, ffmpeg, ffprobe)
+    odd = assemble.off_ratio(ready, project.delivery.width, project.delivery.height)
+    unknown = assemble.unmeasured(ready)
+    can = bool(ready) and not missing and bool(ffmpeg) and not (
+        odd and not project.delivery.fit)
+    return JSONResponse({
+        "ready": [s.public() for s in ready],
+        "missing": missing,
+        "can": can,
+        "ffmpeg": ffmpeg,
+        "ffmpeg_version": assemble.version(ffmpeg) if ffmpeg else "",
+        "ffprobe": ffprobe,
+        "ffprobe_version": assemble.version(ffprobe) if ffprobe else "",
+        "how_to_get": "" if ffmpeg else assemble.HOW_TO_GET,
+        "delivery": project.delivery.public(),
+        # The shape question, and whether it has been answered.
+        "off_ratio": odd,
+        "unmeasured": unknown,
+        "fit": project.delivery.fit,
+        "fit_options": assemble.FITS,
+        "needs_fit": bool(odd) and not project.delivery.fit,
+    })
+
+
+def _measure(segments: list, ffmpeg: str, ffprobe: str) -> None:
+    """Fill in what each accepted file actually is. Blocking; run in a thread."""
+    for segment in segments:
+        if segment.media is None:
+            try:
+                segment.media = assemble.probe_cached(
+                    segment.path, ffprobe=ffprobe, ffmpeg=ffmpeg)
+            except assemble.AssembleError:
+                segment.media = None
+
+
+def _assemble_segments(project, jobs) -> tuple[list, list[int]]:
+    """The accepted videos in shot order, and which shots have none.
+
+    Order is the shot list's, not the library's: a shot regenerated later is
+    still the same shot, and sorting by creation time would silently reorder
+    the episode.
+    """
+    ready, missing = [], []
+    for shot in project.shots:
+        job_id = shot.active_for("video")
+        record = jobs.get(job_id) if job_id else None
+        output = getattr(record, "output", None) if record else None
+        path = (config.OUTPUT_DIR / output) if output else None
+        if path and path.is_file():
+            ready.append(assemble.Segment(path, shot.seconds, shot.no))
+        else:
+            missing.append(shot.no)
+    return ready, missing
+
+
+@app.post("/api/drama/{project_id}/assemble")
+async def assemble_episode(project_id: str, payload: dict = Body(default={})) -> JSONResponse:
+    """Join every accepted shot into one playable file."""
+    project = _drama_or_404(project_id)
+    payload = payload if isinstance(payload, dict) else {}
+    jobs = _drama_jobs(project)
+    ready, missing = _assemble_segments(project, jobs)
+    if missing:
+        raise HTTPException(
+            400,
+            f"還有 {len(missing)} 顆鏡頭沒有採用的影片"
+            f"（第 {'、'.join(str(n) for n in missing[:8])} 顆"
+            + ("…" if len(missing) > 8 else "") + "）。每一顆都要先採用一支。")
+    if not ready:
+        raise HTTPException(400, "這個專案還沒有鏡頭。")
+    ffmpeg = assemble.find_ffmpeg(config.REPO_DIR)
+    if not ffmpeg:
+        raise HTTPException(400, assemble.HOW_TO_GET)
+    ffprobe = assemble.find_ffprobe(ffmpeg)
+
+    # A fit sent with the press is the user answering the question below, so it
+    # is remembered rather than applied once and forgotten.
+    if str(payload.get("fit") or "") in assemble.FITS:
+        project.delivery.fit = str(payload["fit"])
+        DRAMAS.save()
+
+    await asyncio.to_thread(_measure, ready, ffmpeg, ffprobe)
+    odd = assemble.off_ratio(ready, project.delivery.width, project.delivery.height)
+    if odd and not project.delivery.fit:
+        # Both answers lose something, so this is not a default to pick quietly:
+        # one crops faces out of frame, the other adds bars. The user chooses
+        # once and the choice is kept.
+        raise HTTPException(
+            400,
+            f"有 {len(odd)} 顆鏡頭的比例跟交付尺寸不一樣"
+            f"（第 {'、'.join(str(n) for n in odd[:6])} 顆）。"
+            f"要「{assemble.FITS['cover']}」還是「{assemble.FITS['contain']}」？"
+            "在下面選一個再按一次。")
+    fit = project.delivery.fit or "contain"
+
+    record = library.Record(
+        id=uuid.uuid4().hex[:12],
+        model_id=ASSEMBLY_MODEL_ID,
+        prompt=f"{project.title or '短劇'} 完整成品".strip(),
+        kind="video",
+        status="running",
+        source_name=project.title,
+        width=project.delivery.width, height=project.delivery.height,
+        fps=project.delivery.fps,
+        created=time.time(),
+        # Enough provenance to answer "where did this come from" a month later,
+        # without needing the project to still exist in the same shape.
+        settings={
+            "origin": "assemble", "project": project.id,
+            "project_title": project.title,
+            "shots": len(ready),
+            "shot_numbers": [s.shot_no for s in ready],
+            "sources": [s.path.name for s in ready],
+            "fit": fit,
+            "ffmpeg": assemble.version(ffmpeg),
+            "ffprobe": assemble.version(ffprobe),
+            "measured": bool(ffprobe),
+        },
+    )
+    lib.add(record)
+
+    def progress(value: float, message: str) -> None:
+        record._progress = value
+        record.message = message
+
+    try:
+        result = await asyncio.to_thread(
+            assemble.build, ready,
+            config.OUTPUT_DIR / f"{record.id}.mp4",
+            width=project.delivery.width, height=project.delivery.height,
+            fps=project.delivery.fps, ffmpeg=ffmpeg, ffprobe=ffprobe,
+            fit=fit,
+            workdir=config.OUTPUT_DIR / ".assemble" / record.id,
+            on_progress=progress)
+    except assemble.AssembleError as exc:
+        record.status = "error"
+        record.message = str(exc)
+        lib.save()
+        raise HTTPException(400, str(exc)) from exc
+
+    record.status = "done"
+    record.message = ""
+    record._progress = 1.0
+    record.outputs = [result["file"]]
+    record.output = result["file"]
+    record.length = int(result["seconds"] * project.delivery.fps)
+    record.finished = time.time()
+    record.settings = {**record.settings, **result}
+    lib.save()
+    return JSONResponse({"job": record.id, **result})
+
+
 @app.post("/api/drama/{project_id}/shot/{shot_id}/upload")
 async def drama_upload(project_id: str, shot_id: str,
                        image: UploadFile,
@@ -2098,7 +2546,8 @@ async def drama_upload(project_id: str, shot_id: str,
     if stage not in ("keyframe", "endframe"):
         # Not "video": an uploaded clip has no frames this app produced and
         # nothing downstream can re-derive, and letting one in would make
-        # "已採用影片" mean two different things.
+        # "已採用影片" mean two different things. Audio has its own endpoint,
+        # because it is not an image and must not be run through PIL.
         raise HTTPException(400, f"只能匯入關鍵幀或結束幀，不能匯入 {stage}")
 
     data = await image.read()
@@ -2209,6 +2658,70 @@ async def drama_upload(project_id: str, shot_id: str,
                          "accepted": not replaced, "note": note})
 
 
+AUDIO_SUFFIXES = (".wav", ".mp3", ".flac", ".m4a", ".ogg", ".opus")
+MAX_AUDIO_BYTES = 60_000_000
+
+
+@app.post("/api/drama/{project_id}/shot/{shot_id}/audio")
+async def drama_audio(project_id: str, shot_id: str,
+                      audio: UploadFile) -> JSONResponse:
+    """Attach a sound file to a shot, for the routes that take one.
+
+    S2V and MiniMax H3 are audio-driven: the sound is an *input*, and the lip
+    movement is generated to match it. So the file has to reach the shot before
+    the video is generated, not be laid over it afterwards.
+
+    Uploaded rather than generated: this app has no text-to-speech, and has
+    never run one. See docs for the candidates.
+    """
+    project = _drama_or_404(project_id)
+    shot = _shot_or_404(project, shot_id)
+    name = audio.filename or "audio"
+    if not name.lower().endswith(AUDIO_SUFFIXES):
+        raise HTTPException(
+            400, f"要是聲音檔（{'、'.join(AUDIO_SUFFIXES)}），你給的是 {name}")
+    data = await audio.read()
+    if not data:
+        raise HTTPException(400, "這個檔案是空的")
+    if len(data) > MAX_AUDIO_BYTES:
+        raise HTTPException(
+            400, f"檔案太大（{len(data)/1e6:.0f}MB）。一句台詞不會這麼大。")
+
+    record = library.Record(
+        id=uuid.uuid4().hex[:12],
+        model_id=UPLOAD_MODEL_ID,
+        prompt=f"（匯入的音檔）{name}",
+        kind="audio",
+        status="done",
+        source_name=name,
+        created=time.time(), finished=time.time(),
+        settings={"origin": "upload", "original_filename": name,
+                  "import_stage": "audio"},
+    )
+    suffix = Path(name).suffix.lower()
+    stored = f"{record.id}{suffix}"
+    config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    (config.OUTPUT_DIR / stored).write_bytes(data)
+    record.outputs = [stored]
+    record.output = stored
+    lib.add(record)
+
+    attempts = shot.jobs_for("audio")
+    if record.id not in attempts:
+        attempts.append(record.id)
+    if not shot.active_for("audio"):
+        shot.set_active("audio", record.id)
+    DRAMAS.save()
+
+    note = ""
+    if shot.method != "s2v" and not shot.dialogue:
+        note = ("這顆鏡頭的生成方式不是「說話（音訊驅動）」，"
+                "所以這個音檔目前只會被記著，不會進生成 —— "
+                "要讓它驅動口型，把生成方式改成 S2V。")
+    return JSONResponse({**_drama_payload(project), "imported": record.id,
+                         "note": note})
+
+
 @app.post("/api/drama/{project_id}/shot/{shot_id}/attach")
 async def drama_attach(project_id: str, shot_id: str,
                        payload: dict = Body(default={})) -> JSONResponse:
@@ -2225,7 +2738,7 @@ async def drama_attach(project_id: str, shot_id: str,
     payload = payload if isinstance(payload, dict) else {}
     stage = str(payload.get("stage") or "")
     job_id = str(payload.get("job") or "")
-    if stage not in ("keyframe", "endframe", "video"):
+    if stage not in ("keyframe", "endframe", "video", "audio"):
         raise HTTPException(400, f"不認識的階段：{stage}")
     if job_id not in lib.records:
         raise HTTPException(404, "找不到這個生成工作")
@@ -2250,7 +2763,7 @@ async def drama_accept(project_id: str, shot_id: str,
     payload = payload if isinstance(payload, dict) else {}
     stage = str(payload.get("stage") or "")
     job_id = str(payload.get("job") or "")
-    if stage not in ("keyframe", "endframe", "video"):
+    if stage not in ("keyframe", "endframe", "video", "audio"):
         raise HTTPException(400, f"不認識的階段：{stage}")
     if job_id and job_id not in shot.jobs_for(stage):
         raise HTTPException(400, "這個工作不屬於這顆鏡頭的這個階段")

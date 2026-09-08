@@ -223,6 +223,13 @@ class DeliverySpec:
     width: int = 1080
     height: int = 1920
     fps: int = 24
+    # What to do with a shot that is not this shape: "cover" crops, "contain"
+    # letterboxes. Empty means the user has not been asked, which is the right
+    # starting state - both answers throw something away, and which loss is
+    # acceptable is not a default worth burying. Nothing asks until a shot
+    # actually is the wrong shape, so most projects never see the question.
+    # No migration: empty is exactly what an older project means here.
+    fit: str = ""
 
     @property
     def ratio(self) -> float:
@@ -230,7 +237,7 @@ class DeliverySpec:
 
     def public(self) -> dict:
         return {"width": self.width, "height": self.height, "fps": self.fps,
-                "ratio": round(self.ratio, 4)}
+                "fit": self.fit, "ratio": round(self.ratio, 4)}
 
 
 @dataclass
@@ -297,18 +304,41 @@ class Shot:
     keyframe_jobs: list[str] = field(default_factory=list)
     endframe_jobs: list[str] = field(default_factory=list)
     video_jobs: list[str] = field(default_factory=list)
+    # STAGES has listed "audio" since the first version, but the fields behind
+    # it were never added - so a dialogue shot had a stage the data model could
+    # not hold. S2V and H3 both take sound as an input, so this is where it goes.
+    audio_jobs: list[str] = field(default_factory=list)
     active_keyframe: str = ""   # the accepted take, set only by an explicit act
     active_endframe: str = ""
     active_video: str = ""
+    active_audio: str = ""
     note: str = ""
 
     def jobs_for(self, stage: str) -> list[str]:
         return {"keyframe": self.keyframe_jobs, "endframe": self.endframe_jobs,
-                "video": self.video_jobs}.get(stage, [])
+                "video": self.video_jobs, "audio": self.audio_jobs}.get(stage, [])
 
     def active_for(self, stage: str) -> str:
         return {"keyframe": self.active_keyframe, "endframe": self.active_endframe,
-                "video": self.active_video}.get(stage, "")
+                "video": self.active_video,
+                "audio": self.active_audio}.get(stage, "")
+
+    def carry_over(self, prior: "Shot | None") -> "Shot":
+        """Take every stage's attempts and acceptance from the stored shot.
+
+        The browser edits the shot *table* - seconds, cast, prompts - and must
+        never be the source of generation bookkeeping: a stale tab would
+        otherwise wipe a finished render on its next save. Written as a loop
+        over STAGES rather than a list of fields on purpose. The audio stage
+        was added and the copy of it was forgotten, which meant an uploaded
+        sound file survived exactly until the next time anything was saved.
+        """
+        if prior is None:
+            return self
+        for stage in STAGES:
+            self.jobs_for(stage)[:] = list(prior.jobs_for(stage))
+            self.set_active(stage, prior.active_for(stage))
+        return self
 
     def set_active(self, stage: str, job_id: str) -> None:
         if stage == "keyframe":
@@ -317,6 +347,8 @@ class Shot:
             self.active_endframe = job_id
         elif stage == "video":
             self.active_video = job_id
+        elif stage == "audio":
+            self.active_audio = job_id
 
     def public(self) -> dict:
         return asdict(self)
@@ -425,7 +457,7 @@ def shot_state(shot: Shot, jobs: dict) -> dict:
             "active_done": bool(active and status_of(active) == "done"),
         }
 
-    stages = {s: stage_state(s) for s in ("keyframe", "endframe", "video")}
+    stages = {s: stage_state(s) for s in STAGES}
     if stages["video"]["active_done"]:
         phase = "done"
     # "Review" outranks "running": if one take has finished, there is something
@@ -817,6 +849,22 @@ def check_claims(project: Project, *, installed: set[str] | None = None
                 "先知道總比排完二十顆才發現好。",
                 kind="INTEGRITY"))
 
+    # -- methods this app has no graph for, whatever model they point at.
+    # A first/last-frame shot needs two pictures fed to a different graph, and
+    # this app builds neither. Generating it anyway would send only the first
+    # frame through the ordinary image-to-video path - the user would get a
+    # video, it would not be the one they asked for, and nothing would say so.
+    flf = [s.no for s in shots if METHODS.get(s.method, METHODS["i2v"]).needs_endframe]
+    if flf:
+        out.append(Finding(
+            "no-flf-graph", claims.WARN,
+            f"{len(flf)} 顆鏡頭用「首尾幀」，這個 app 還不能生成這種。",
+            "首尾幀要把兩張圖送進另一種工作流，本頁沒有 —— "
+            "生成的時候會直接擋下來，不會偷偷只拿第一張去生成一段普通的圖生影片。"
+            "現在的做法：改成「圖生影片」，或到 ComfyUI 用官方首尾幀範本手動生成，"
+            "再把結果掛回這顆鏡頭。",
+            shots=flf, kind="INTEGRITY"))
+
     # -- models on disk
     if installed is not None:
         for method in sorted(project.methods_used):
@@ -1082,7 +1130,8 @@ class ProjectStore:
                     delivery=DeliverySpec(
                         width=int(delivery.get("width") or 1080),
                         height=int(delivery.get("height") or 1920),
-                        fps=int(delivery.get("fps") or 24)),
+                        fps=int(delivery.get("fps") or 24),
+                        fit=str(delivery.get("fit") or "")),
                     keyframes=KeyframeProfile(
                         model_id=keyframes.get("model_id") or "noobai",
                         width=int(keyframes.get("width") or 832),

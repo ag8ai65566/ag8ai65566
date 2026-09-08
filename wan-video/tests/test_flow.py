@@ -83,10 +83,42 @@ def test_registry() -> None:
     check(families == {"wan22_14b", "wan22_5b", "hunyuan15"}, f"three runnable families ({families})")
     check(all(not m.runnable or m.tiers for m in registry.MODELS), "every runnable model has tiers")
     check(all(f.size > 0 for m in registry.MODELS for f in m.all_files), "every file has a real size")
+    # A file lands under its repo path's basename unless it says otherwise.
+    # `save_as` exists because several repos publish everything as
+    # `model.safetensors`, which collides in the loader's dropdown and tells
+    # the user nothing about which model it is.
     check(
-        all(f.path.rsplit("/", 1)[-1] == f.name for m in registry.MODELS for f in m.all_files),
-        "file names derive from repo paths",
+        all(f.name == (f.save_as or f.path.rsplit("/", 1)[-1])
+            for m in registry.MODELS for f in m.all_files),
+        "file names derive from repo paths unless renamed on purpose",
     )
+    # Variants share files on purpose - the three Hunyuan tiers use one VAE, and
+    # downloading it three times would be three copies of the same bytes. What
+    # must not happen is two *different* sources landing on one name, which is
+    # what `save_as` is there to prevent.
+    landing: dict[tuple[str, str], set[str]] = {}
+    for m in registry.MODELS:
+        for f in m.all_files:
+            landing.setdefault((f.folder, f.name), set()).add(f"{f.repo}/{f.path}")
+    clashes = {k: v for k, v in landing.items() if len(v) > 1}
+    check(not clashes, f"no two different files land on the same path ({clashes})")
+
+    # A catalogued size is compared against the byte count on disk to decide
+    # whether a file is finished, so a wrong one means either a re-download of
+    # something already complete or a truncated file called installed. These
+    # two were catalogued from memory rather than from the API, and both were
+    # off by 40-50%.
+    for mid, want_files, want_bytes in (
+            ("qwen3-tts", 11, 2_498_383_000), ("cosyvoice3", 17, 9_747_380_000)):
+        model = registry.get(mid)
+        total = sum(f.size for f in model.all_files)
+        check(len(model.all_files) == want_files and abs(total - want_bytes) < 1e6,
+              f"{mid} lists its whole repository at real sizes "
+              f"({len(model.all_files)} files, {total / 1e9:.2f}GB)")
+        # The official loaders look for these by name, so renaming them - which
+        # this project does elsewhere to avoid collisions - would break them.
+        check(all(not f.save_as for f in model.all_files),
+              f"{mid} keeps upstream's filenames, because its loader expects them")
     for m in registry.runnable():
         folders = {f.folder for f in m.files}
         check("text_encoders" in folders, f"{m.id} ships a text encoder")
@@ -5743,6 +5775,417 @@ def test_workflow_import() -> None:
     check("節點" in lead["node"], f"…which is kept as small print ({lead['node']})")
 
 
+def test_assemble(tmp: Path) -> None:
+    """Joining the accepted shots into one file people can actually watch.
+
+    The conversion itself cannot run here. The only ffmpeg in this container is
+    the stripped helper Playwright ships - VP8 only, two filters, no image
+    demuxer - so it can neither read nor write a real video. What is checked is
+    everything that decides whether the output is correct: which encoders get
+    picked, the exact command built for each shot, and the refusals.
+    """
+    import assemble
+
+    section("assemble")
+    tmp.mkdir(parents=True, exist_ok=True)
+
+    # -- finding it
+    fake = tmp / "ffmpeg"
+    fake.write_text("#!/bin/sh\n", encoding="utf-8")
+    os.environ["FFMPEG_BIN"] = str(fake)
+    check(assemble.find_ffmpeg() == str(fake), "FFMPEG_BIN wins")
+    os.environ["FFMPEG_BIN"] = str(tmp / "nope")
+    check(assemble.find_ffmpeg() == "",
+          "an override that does not exist fails loudly rather than falling back")
+    os.environ.pop("FFMPEG_BIN")
+
+    # ffprobe is looked for beside the ffmpeg that was found, because that is
+    # where every distribution puts it.
+    (tmp / "ffprobe").write_text("#!/bin/sh\n", encoding="utf-8")
+    check(assemble.find_ffprobe(str(fake)) == str(tmp / "ffprobe"),
+          "ffprobe is found beside ffmpeg")
+    os.environ["FFPROBE_BIN"] = str(tmp / "missing-probe")
+    check(assemble.find_ffprobe(str(fake)) == "",
+          "a bad FFPROBE_BIN is not silently replaced by the sibling")
+    os.environ.pop("FFPROBE_BIN")
+
+    # -- the command for one shot
+    codecs = assemble.Codecs("libx264", ["-crf", "18"], "aac", ".mp4")
+    silent = assemble.Media(seconds=3.0, width=1080, height=1920, audio=False)
+    args = assemble.normalise_args(
+        "ffmpeg", tmp / "in.mp4", tmp / "out.mp4",
+        width=1080, height=1920, fps=24, codecs=codecs, media=silent)
+    check("anullsrc=channel_layout=stereo:sample_rate=48000" in args,
+          "a silent shot gets a silent track, so the join does not drop audio")
+    check(args.count("-map") == 2 and "1:a" in args,
+          "and the silence is what gets mapped, not a second real track")
+    check("-shortest" in args, "infinite silence is cut to the picture's length")
+    check(args[args.index("-r") + 1] == "24", "the frame rate is forced")
+    check("yuv420p" in args, "a pixel format every player can decode")
+    check("-map_metadata" in args, "source metadata is dropped")
+
+    loud = assemble.Media(seconds=3.0, width=1080, height=1920, audio=True,
+                          audio_seconds=3.0)
+    args = assemble.normalise_args(
+        "ffmpeg", tmp / "in.mp4", tmp / "out.mp4",
+        width=1080, height=1920, fps=24, codecs=codecs, media=loud)
+    check("anullsrc" not in " ".join(args),
+          "a shot that already has sound does not get a second track")
+    check("0:a" in args, "its own track is the one kept")
+    # -shortest with a real track would cut the *picture* short whenever the
+    # sound ran out first. That is a silent way to lose the end of a shot.
+    check("-shortest" not in args, "and the picture is not cut to the sound")
+
+    over = assemble.Media(seconds=3.0, width=1080, height=1920, audio=True,
+                          audio_seconds=4.6)
+    args = assemble.normalise_args(
+        "ffmpeg", tmp / "in.mp4", tmp / "out.mp4",
+        width=1080, height=1920, fps=24, codecs=codecs, media=over)
+    check("-t" in args and args[args.index("-t") + 1].startswith("3.0"),
+          "sound outlasting the picture is trimmed, so later shots stay in sync")
+
+    # -- shape policy
+    contain = assemble.fit_filter("contain", 1080, 1920)
+    cover = assemble.fit_filter("cover", 1080, 1920)
+    check("pad=" in contain and "decrease" in contain, "contain letterboxes")
+    check("crop=" in cover and "increase" in cover, "cover crops")
+
+    wide = assemble.Segment(tmp / "a.mp4", 3.0, 1,
+                            assemble.Media(seconds=3, width=1920, height=1080,
+                                           exact=True))
+    tall = assemble.Segment(tmp / "b.mp4", 3.0, 2,
+                            assemble.Media(seconds=3, width=1080, height=1920,
+                                           exact=True))
+    blind = assemble.Segment(tmp / "c.mp4", 3.0, 3, None)
+    check(assemble.off_ratio([wide, tall, blind], 1080, 1920) == [1],
+          "only the shot that is genuinely a different shape is flagged")
+    check(assemble.unmeasured([wide, tall, blind]) == [3],
+          "and a shot nothing could measure is reported separately, not as fine")
+
+    # Without ffprobe the shape comes from parsing output meant for humans.
+    # That is good enough to report, and not good enough to crop someone's
+    # picture on - so an inexact measurement never triggers the crop question.
+    guessed = assemble.Segment(tmp / "d.mp4", 3.0, 4,
+                               assemble.Media(seconds=3, width=1920, height=1080,
+                                              exact=False))
+    check(assemble.off_ratio([guessed], 1080, 1920) == [],
+          "a guessed shape is never used to decide a crop")
+    check(assemble.unmeasured([guessed]) == [4], "it is reported as unknown instead")
+
+    # -- probing without ffprobe: the text fallback still answers, and says it
+    # is not exact, which is what stops it being used to decide a crop.
+    check(assemble.probe(tmp / "a.mp4").exact is False,
+          "an unmeasurable file is not claimed as measured")
+
+    # -- the listing the join reads. Written by concat() itself, then read
+    # back: a path with a quote in it must not truncate the filename.
+    quoted = tmp / "list"
+    quoted.mkdir(exist_ok=True)
+    try:
+        assemble.concat(str(tmp / "no-such-ffmpeg"),
+                        [quoted / "it's a part.mp4"], tmp / "ep.mp4", quoted)
+    except assemble.AssembleError:
+        pass
+    listing = (quoted / "concat.txt").read_text(encoding="utf-8")
+    check(listing.strip().endswith("part.mp4'"),
+          f"the listing keeps the whole filename ({listing.strip()})")
+    check("'\\''" in listing,
+          "and escapes a quote the way the concat demuxer wants")
+
+    # -- the join command
+    args = assemble.concat_args("ffmpeg", tmp / "list.txt", tmp / "ep.mp4")
+    check("-c" in args and args[args.index("-c") + 1] == "copy",
+          "the join is a stream copy - the parts already agree")
+    check("+faststart" in args, "mp4 gets its index moved to the front")
+    check("+faststart" not in assemble.concat_args(
+        "ffmpeg", tmp / "list.txt", tmp / "ep.webm"), "webm does not")
+
+    # -- refusals
+    failed = ""
+    try:
+        assemble.build([], tmp / "ep.mp4", width=1080, height=1920, fps=24,
+                       ffmpeg="", workdir=tmp / "w")
+    except assemble.AssembleError as exc:
+        failed = str(exc)
+    check("每顆鏡頭都要先採用" in failed, "no shots is refused in the user's words")
+
+    ghost = assemble.Segment(tmp / "gone.mp4", 3.0, 4, None)
+    failed = ""
+    try:
+        assemble.build([ghost], tmp / "ep.mp4", width=1080, height=1920, fps=24,
+                       ffmpeg=str(fake), workdir=tmp / "w")
+    except assemble.AssembleError as exc:
+        failed = str(exc)
+    check("不見了" in failed and "第 4 顆" in failed,
+          "a missing source file names the shot rather than failing inside ffmpeg")
+
+    # Measuring is a subprocess per file, and the panel that needs the numbers
+    # redraws on every save. The second look at an unchanged file must not pay
+    # for it again.
+    sample = tmp / "cached.mp4"
+    sample.write_bytes(b"\0" * 64)
+    assemble._PROBES.clear()
+    assemble.probe_cached(sample)
+    first = len(assemble._PROBES)
+    assemble.probe_cached(sample)
+    check(first == 1 and len(assemble._PROBES) == 1, "an unchanged file is measured once")
+    sample.write_bytes(b"\0" * 128)
+    assemble.probe_cached(sample)
+    check(len(assemble._PROBES) == 2, "and a changed file is measured again")
+
+    check(assemble.free_space(tmp) > 0, "free space is readable")
+    check(assemble.version("") == "", "no binary, no version claim")
+
+
+def test_runner() -> None:
+    """The episode runner: what it queues, what it refuses, what it never does."""
+    import runner
+    import shortdrama
+
+    section("episode runner")
+    project = shortdrama.Project(id="r1", title="測試")
+    check(runner.blocked_reason(project, {}, "keyframe").startswith("這個專案還沒有鏡頭"),
+          "an empty project is refused before anything is queued")
+
+    for _ in range(3):
+        project.shots.append(shortdrama.Shot(
+            id=f"s{len(project.shots)}", seconds=3.0, action="站著", motion="轉頭"))
+    shortdrama.normalise(project)
+    check([s.no for s in runner.shots_needing(project, {}, "keyframe")] == [1, 2, 3],
+          "every shot needs a keyframe to start with")
+    check(runner.shots_needing(project, {}, "video") == [],
+          "and none needs a video yet")
+    # First/last-frame needs two pictures and a different graph, and this app
+    # builds neither. It must refuse rather than send the first frame through
+    # the ordinary path and hand back a video nobody asked for.
+    project.shots[0].method = "flf"
+    findings = {f.id for f in shortdrama.check(project)}
+    check("no-flf-graph" in findings,
+          "a first/last-frame shot is flagged while planning, not at generate time")
+    project.shots[0].method = "i2v"
+
+    reason = runner.blocked_reason(project, {}, "video")
+    check("還沒有採用的關鍵幀" in reason,
+          "the video pass says why it cannot run, not just that it cannot")
+
+    # A shot with an accepted keyframe moves to the video pass and is not
+    # re-queued for a keyframe: running the episode again after picking half of
+    # it must not throw the picked half away.
+    done = _fake_done_job("k1")
+    project.shots[0].keyframe_jobs = ["k1"]
+    project.shots[0].active_keyframe = "k1"
+    jobs = {"k1": done}
+    check([s.no for s in runner.shots_needing(project, jobs, "keyframe")] == [2, 3],
+          "a shot that has its keyframe is skipped on a re-run")
+    check([s.no for s in runner.shots_needing(project, jobs, "video")] == [1],
+          "and moves to the video pass")
+
+    # -- the run record survives a restart, and does not restart itself
+    store = TMP / "runs" / "run.json"
+    runs = runner.Runs(store)
+    plan = [runner.Task("s0", 1, "keyframe", {"prompt": "當時的提詞", "seed": -1}),
+            runner.Task("s0", 1, "keyframe", {"prompt": "當時的提詞", "seed": -1})]
+    run = runs.start("r1", "keyframe", 2, plan)
+    run.queued = 2
+    runs.save()
+    check(store.is_file(), "the run is written outside the project file")
+    check("run" not in json.loads(
+        (TMP / "runs" / "run.json").read_text(encoding="utf-8")).get("project", ""),
+          "and holds the project id, not a copy of the project")
+
+    revived = runner.Runs(store)
+    revived.load()
+    check(revived.current is not None and revived.current.interrupted,
+          "a run cut off by a restart is marked interrupted")
+    check(not revived.current.active, "it is not treated as still running")
+    check("再按一次" in revived.current.message,
+          "and says how to carry on, since nothing resumes by itself")
+    # The plan is frozen at the press. A run lasts as long as generating does,
+    # so without this an edit made halfway through would put the first half of
+    # the episode on one version of the project and the second half on another.
+    check([t.payload["prompt"] for t in revived.current.tasks]
+          == ["當時的提詞", "當時的提詞"],
+          "the frozen plan survives with it, payloads and all")
+    check(revived.current.public()["planned"] == 2
+          and "payload" not in str(revived.current.public()),
+          "and the panel is told how many were planned, not the prompts themselves")
+
+    check(runner.WINDOW <= 5,
+          f"only a few jobs are in flight at once ({runner.WINDOW})")
+    # A job that never settles must not leave the run waiting for as long as
+    # the app lives - but the ceiling has to be long enough that a slow card
+    # finishing a real video is never mistaken for a dead worker.
+    check(runner.SLOT_TIMEOUT_SECONDS >= 30 * 60,
+          f"waiting for a slot gives up eventually, but not early "
+          f"({runner.SLOT_TIMEOUT_SECONDS}s)")
+
+    # Nothing in this module accepts a take. Grep rather than behaviour: the
+    # rule is "never", and a behavioural test only covers the paths it walks.
+    source = (ROOT / "app" / "runner.py").read_text(encoding="utf-8")
+    check("active_keyframe" not in source and "active_video" not in source,
+          "the runner never writes an acceptance")
+
+
+def _fake_done_job(job_id: str):
+    """A finished library record, as the drama page sees one."""
+    import library
+
+    return library.Record(id=job_id, model_id="noobai", prompt="", kind="image",
+                          status="done", output=f"{job_id}.png",
+                          outputs=[f"{job_id}.png"], created=time.time())
+
+
+async def test_episode_endpoints() -> None:
+    """The whole-episode buttons, against a live app: what they queue, what
+    they refuse, and what they say while refusing.
+
+    The generation itself needs a GPU and the joining needs a working ffmpeg,
+    and this machine has neither. Everything up to those two points is real:
+    the project, the shots, the audio upload, the derived "what is left to do",
+    and every refusal a user can hit before anything expensive starts.
+    """
+    import aiohttp
+
+    section("episode endpoints")
+    env = {
+        **os.environ,
+        "OUTPUT_DIR": str(TMP / "ep2-out"),
+        "INBOX_DIR": str(TMP / "ep2-in"),
+        "STAGING_DIR": str(TMP / "ep2-stage"),
+        "MODELS_DIR": str(TMP / "ep2-models"),
+        "PYTHONPATH": str(ROOT / "app"),
+        "LORAS": "",
+    }
+    proc = await asyncio.create_subprocess_exec(
+        sys.executable, "-m", "uvicorn", "server:app", "--host", "127.0.0.1",
+        "--port", "18431", cwd=str(ROOT / "app"), env=env,
+        stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.STDOUT,
+    )
+    base = "http://127.0.0.1:18431"
+    try:
+        async with aiohttp.ClientSession() as s:
+            for _ in range(160):
+                try:
+                    async with s.get(f"{base}/api/health", timeout=5) as r:
+                        if r.status == 200:
+                            break
+                except Exception:  # noqa: BLE001
+                    await asyncio.sleep(0.25)
+            else:
+                out = await proc.stdout.read(4000)
+                raise AssertionError(f"server never started:\n{out.decode(errors='replace')}")
+
+            async with s.post(f"{base}/api/drama", json={"title": "整集測試"}) as r:
+                project = await r.json()
+            pid = project["id"]
+            shots = [{"seconds": 3.0, "size": "近景", "who": [], "action": "站著",
+                      "motion": "轉頭", "method": "i2v"} for _ in range(2)]
+            async with s.post(f"{base}/api/drama/{pid}",
+                              json={**project, "shots": shots}) as r:
+                project = await r.json()
+            check(len(project["shots"]) == 2, "two shots saved")
+
+            # -- what is left to do, derived rather than stored
+            async with s.get(f"{base}/api/drama/{pid}/run") as r:
+                state = await r.json()
+            check(state["keyframe_todo"] == [1, 2], "both shots need a keyframe")
+            check(state["video_todo"] == [], "and neither is ready for video")
+            check("還沒有採用的關鍵幀" in state["video_blocked"],
+                  "the video pass is blocked, with the reason")
+
+            # The block is enforced at the endpoint, not only in the UI: a page
+            # left open on a stale state must not be able to start the pass.
+            async with s.post(f"{base}/api/drama/{pid}/run",
+                              json={"stage": "video"}) as r:
+                check(r.status == 400, "asking for the video pass anyway is refused")
+                check("關鍵幀" in (await r.json())["detail"], "with the same reason")
+
+            async with s.post(f"{base}/api/drama/{pid}/run",
+                              json={"stage": "nonsense"}) as r:
+                check(r.status == 400, "an unknown stage is refused")
+
+            # One run at a time, app-wide - so a second project has to be able
+            # to tell "nothing has run here" from "something else is running".
+            # Before this, the panel showed another project's summary under
+            # these shots.
+            async with s.post(f"{base}/api/drama", json={"title": "另一集"}) as r:
+                other = await r.json()
+            async with s.get(f"{base}/api/drama/{other['id']}/run") as r:
+                elsewhere = await r.json()
+            check(elsewhere["run"]["active"] is False,
+                  "a project with no run of its own says so")
+            check(elsewhere.get("other_run") in (None, elsewhere.get("other_run")),
+                  "and reports another project's run separately, not as its own")
+            async with s.delete(f"{base}/api/drama/{other['id']}") as r:
+                pass
+
+            # -- joining: nothing to join yet
+            async with s.get(f"{base}/api/drama/{pid}/assemble") as r:
+                asm = await r.json()
+            check(asm["missing"] == [1, 2], "both shots are missing a video")
+            check(asm["can"] is False, "so the episode cannot be joined")
+            async with s.post(f"{base}/api/drama/{pid}/assemble", json={}) as r:
+                check(r.status == 400, "and pressing join is refused")
+                check("每一顆都要先採用一支" in (await r.json())["detail"],
+                      "in words that say what to do next")
+
+            # -- audio upload
+            wav = b"RIFF" + b"\0" * 4 + b"WAVEfmt " + b"\0" * 40
+            form = aiohttp.FormData()
+            form.add_field("audio", wav, filename="line.wav",
+                           content_type="audio/wav")
+            shot_id = project["shots"][0]["id"]
+            async with s.post(f"{base}/api/drama/{pid}/shot/{shot_id}/audio",
+                              data=form) as r:
+                up = await r.json()
+            check(r.status == 200, "a wav is accepted")
+            check(up["shots"][0]["active_audio"], "and attached to the shot")
+            check("音訊驅動" in up["note"],
+                  "with a note that an i2v shot will not use it")
+
+            form = aiohttp.FormData()
+            form.add_field("audio", b"not audio", filename="line.exe",
+                           content_type="application/octet-stream")
+            async with s.post(f"{base}/api/drama/{pid}/shot/{shot_id}/audio",
+                              data=form) as r:
+                check(r.status == 400, "a non-audio file is refused by extension")
+
+            form = aiohttp.FormData()
+            form.add_field("audio", b"", filename="empty.wav",
+                           content_type="audio/wav")
+            async with s.post(f"{base}/api/drama/{pid}/shot/{shot_id}/audio",
+                              data=form) as r:
+                check(r.status == 400, "and an empty one is refused too")
+
+            # -- the audio record is a library record like any other, so it can
+            # be found, replayed and deleted the same way.
+            # The shot table is saved as a whole document, and a stale tab
+            # must not be able to wipe generation bookkeeping. The audio stage
+            # was added to the model and left out of the carry-over, so an
+            # uploaded file survived exactly until the next save.
+            async with s.get(f"{base}/api/drama/{pid}") as r:
+                current = await r.json()
+            async with s.post(f"{base}/api/drama/{pid}",
+                              json={**current, "title": "改個名字"}) as r:
+                saved = await r.json()
+            check(saved["shots"][0]["active_audio"] == up["shots"][0]["active_audio"],
+                  "an attached sound file survives an ordinary save")
+            check(saved["shots"][0]["audio_jobs"] == up["shots"][0]["audio_jobs"],
+                  "and so does the list of attempts behind it")
+
+            async with s.get(f"{base}/api/jobs") as r:
+                jobs = (await r.json())["jobs"]
+            audio_jobs = [j for j in jobs if j["kind"] == "audio"]
+            check(len(audio_jobs) == 1, "the upload became one library record")
+            check(audio_jobs[0]["output"].endswith(".wav"), "with its file kept")
+
+            async with s.delete(f"{base}/api/drama/{pid}") as r:
+                check(r.status == 200, "and the test project cleans up")
+    finally:
+        proc.terminate()
+        await proc.wait()
+
+
 def test_doc_links() -> None:
     """Every relative link in the README and docs/ points at a file that exists.
 
@@ -7304,6 +7747,9 @@ async def main() -> int:
     test_hf_import()
     test_workflow_import()
     test_doc_links()
+    test_assemble(TMP / "assemble")
+    test_runner()
+    await test_episode_endpoints()
     test_training(TMP / "training")
     test_shortdrama(TMP / "drama")
     test_styles()

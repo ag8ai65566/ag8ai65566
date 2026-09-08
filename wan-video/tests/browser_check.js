@@ -513,6 +513,47 @@ function crc32(buf) {
   check(!(await page.textContent('#sdhealth')).includes('沒辦法從這個 app 生成'),
     '…and the warning goes away when the route is runnable again');
 
+  // ---- 整集: one press per stage, and joining the result ----
+  // The generation itself needs a GPU and the join needs a working ffmpeg, so
+  // what is checked here is everything up to those two: what the panel says is
+  // left to do, which single button is live, and that each refusal names its
+  // reason. This project's one shot already has an accepted keyframe from the
+  // upload above, which puts the panel on its middle step.
+  await page.click('#sdshots .splan'); await page.waitForTimeout(600);
+  const epStep = await page.textContent('#sdstep');
+  check(epStep.includes('現在這一步'),
+    'the episode panel names one step to do now -> ' + epStep.replace(/\s+/g,' ').slice(0,40));
+  check(epStep.includes('影片候選'),
+    '…which is the video pass, because the keyframe is already picked');
+  check(await page.isDisabled('#sdrunkf'),
+    'the keyframe pass is not offered when nothing needs one');
+  check(!await page.isDisabled('#sdrunvid'), 'the video pass is the live button');
+  check(await page.isDisabled('#sdjoin'),
+    'joining is not offered before every shot has an accepted video');
+  check(!await page.isVisible('#sdfitrow'),
+    'the crop question stays out of the way until a shot is the wrong shape');
+
+  // A run with no video model installed must attempt the shot and report the
+  // failure against it, rather than failing silently.
+  await page.click('#sdrunvid'); await page.waitForTimeout(7000);
+  const ranNote = await page.textContent('#sdrunnote');
+  check(ranNote.includes('有問題的鏡頭') || ranNote.includes('排好了'),
+    'a run reports what happened per shot -> ' + ranNote.replace(/\s+/g,' ').slice(0,46));
+  check(ranNote.includes('第 1 顆'), '…naming the shot it belongs to');
+
+  // A shot can be given a sound file, and is told plainly when its route will
+  // not use one.
+  check(await page.isVisible('#sdaudio'), 'a shot can take an audio file');
+  const wavPath = require('path').join(require('os').tmpdir(), 'bc-line.wav');
+  const head = Buffer.alloc(44);
+  head.write('RIFF', 0); head.write('WAVE', 8); head.write('fmt ', 12); head.write('data', 36);
+  require('fs').writeFileSync(wavPath, Buffer.concat([head, Buffer.alloc(800)]));
+  await page.setInputFiles('#sdaudiofile', wavPath); await page.waitForTimeout(2500);
+  const audioNote = await page.textContent('#sdplannote');
+  check(audioNote.includes('音訊驅動'),
+    'and an i2v shot is told the file will not drive anything -> '
+    + audioNote.replace(/\s+/g,' ').slice(0,40));
+
   await page.click('#sddel'); await page.waitForTimeout(1000);
   check(!await page.isVisible('#sdbody'), 'deleting the project closes the pipeline');
 

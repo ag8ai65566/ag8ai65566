@@ -11,6 +11,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 WAN_REPO = "Comfy-Org/Wan_2.2_ComfyUI_Repackaged"
+# Spelled once each: they appear on a dozen files apiece further down.
+QWEN_TTS_REPO = "Qwen/Qwen3-TTS-12Hz-0.6B-CustomVoice"
+COSY_REPO = "FunAudioLLM/Fun-CosyVoice3-0.5B-2512"
 HY_REPO = "Comfy-Org/HunyuanVideo_1.5_repackaged"
 GGUF_REPO = "QuantStack/Wan2.2-I2V-A14B-GGUF"
 LTX25_REPO = "Lightricks/LTX-2.5"
@@ -342,6 +345,110 @@ MODELS: list[ModelDef] = [
              "附的 relight LoRA 會把角色的光線重打成場景的光線，不加會像貼上去的。"
              "下載完在 ComfyUI（:8188）用 Workflow → Browse Templates → Wan 2.2 Animate。",
     ),
+    # -- text to speech. Downloadable and catalogued; NOT generatable from
+    # here. This app has no TTS pipeline and has never run one, so these are
+    # `files_only` for the same reason LTX and H3 are: the honest state is
+    # "here are the weights and where the official code is", not a button.
+    #
+    # Chosen after a round with a second model. Both are Apache 2.0 - which
+    # matters more than it sounds, because two popular alternatives are not:
+    # IndexTTS is a custom bilibili licence with use restrictions, and F5-TTS's
+    # code is MIT while its Chinese weights are CC-BY-NC.
+    # Both entries list the *whole* repository, at its real byte sizes read
+    # from the Hugging Face API. Two reasons, both learned the hard way here:
+    # a single weights file is not a loadable model - Qwen3-TTS needs its
+    # tokenizer and its speech tokenizer, CosyVoice3 needs its flow, hift and
+    # ONNX tokenisers - and both projects' official instructions are a
+    # whole-repo snapshot_download, so anything less is this project inventing
+    # a subset. The filenames are kept exactly as upstream publishes them,
+    # because the official loaders look for them by name.
+    ModelDef(
+        id="qwen3-tts",
+        label="Qwen3-TTS 0.6B CustomVoice — 中文語音（只下載檔案）",
+        family="files_only",
+        vram_gb=8,
+        files=[
+            ModelFile(QWEN_TTS_REPO, "model.safetensors",
+                      "tts/qwen3-tts", 1_811_626_576),
+            ModelFile(QWEN_TTS_REPO, "config.json", "tts/qwen3-tts", 4_908),
+            ModelFile(QWEN_TTS_REPO, "generation_config.json",
+                      "tts/qwen3-tts", 245),
+            ModelFile(QWEN_TTS_REPO, "preprocessor_config.json",
+                      "tts/qwen3-tts", 127),
+            ModelFile(QWEN_TTS_REPO, "tokenizer_config.json",
+                      "tts/qwen3-tts", 7_344),
+            ModelFile(QWEN_TTS_REPO, "vocab.json", "tts/qwen3-tts", 2_776_833),
+            ModelFile(QWEN_TTS_REPO, "merges.txt", "tts/qwen3-tts", 1_671_839),
+            # The speech tokeniser is what turns audio into the tokens the
+            # model predicts. Without it there is nothing to decode.
+            ModelFile(QWEN_TTS_REPO, "speech_tokenizer/model.safetensors",
+                      "tts/qwen3-tts/speech_tokenizer", 682_293_092),
+            ModelFile(QWEN_TTS_REPO, "speech_tokenizer/config.json",
+                      "tts/qwen3-tts/speech_tokenizer", 2_336),
+            ModelFile(QWEN_TTS_REPO, "speech_tokenizer/configuration.json",
+                      "tts/qwen3-tts/speech_tokenizer", 76),
+            ModelFile(QWEN_TTS_REPO, "speech_tokenizer/preprocessor_config.json",
+                      "tts/qwen3-tts/speech_tokenizer", 234),
+        ],
+        tiers={},
+        supports_lora=False,
+        note="**短劇的台詞要有聲音就需要這個。** 內建音色，不需要參考音訊 —— "
+             "所以不會用到任何真實人物的聲音。Apache 2.0，支援中文等十種語言。"
+             "整包約 2.5GB（權重 1.8GB ＋ 語音 tokenizer 0.68GB ＋ 詞表）—— "
+             "**少一個都跑不起來**，所以這裡列的是官方倉庫的全部檔案。"
+             "官方沒有公布保證的最低顯存數字，0.6B 屬於消費級跑得動的尺寸，"
+             "但這是尺寸推論不是官方保證。"
+             "**這個 app 不會跑它** —— 官方程式在 "
+             "github.com/QwenLM/Qwen3-TTS，社群也有 ComfyUI 節點（非官方，"
+             "有相依衝突的回報）。生成好的音檔用短劇分頁每顆鏡頭的「上傳音檔」掛上去。",
+    ),
+    ModelDef(
+        id="cosyvoice3",
+        label="Fun-CosyVoice3 0.5B — 中文語音、可複製音色（只下載檔案）",
+        family="files_only",
+        vram_gb=8,
+        files=[
+            ModelFile(COSY_REPO, "llm.pt", "tts/cosyvoice3", 2_024_669_519),
+            ModelFile(COSY_REPO, "llm.rl.pt", "tts/cosyvoice3", 2_024_682_701),
+            ModelFile(COSY_REPO, "flow.pt", "tts/cosyvoice3", 1_329_116_148),
+            ModelFile(COSY_REPO, "flow.decoder.estimator.fp32.onnx",
+                      "tts/cosyvoice3", 1_326_216_933),
+            ModelFile(COSY_REPO, "hift.pt", "tts/cosyvoice3", 83_202_622),
+            ModelFile(COSY_REPO, "campplus.onnx", "tts/cosyvoice3", 28_303_423),
+            ModelFile(COSY_REPO, "speech_tokenizer_v3.onnx",
+                      "tts/cosyvoice3", 969_451_503),
+            ModelFile(COSY_REPO, "speech_tokenizer_v3.batch.onnx",
+                      "tts/cosyvoice3", 969_451_579),
+            ModelFile(COSY_REPO, "cosyvoice3.yaml", "tts/cosyvoice3", 6_934),
+            ModelFile(COSY_REPO, "config.json", "tts/cosyvoice3", 2),
+            ModelFile(COSY_REPO, "configuration.json", "tts/cosyvoice3", 47),
+            ModelFile(COSY_REPO, "CosyVoice-BlankEN/model.safetensors",
+                      "tts/cosyvoice3/CosyVoice-BlankEN", 988_097_824),
+            ModelFile(COSY_REPO, "CosyVoice-BlankEN/config.json",
+                      "tts/cosyvoice3/CosyVoice-BlankEN", 659),
+            ModelFile(COSY_REPO, "CosyVoice-BlankEN/generation_config.json",
+                      "tts/cosyvoice3/CosyVoice-BlankEN", 242),
+            ModelFile(COSY_REPO, "CosyVoice-BlankEN/tokenizer_config.json",
+                      "tts/cosyvoice3/CosyVoice-BlankEN", 1_287),
+            ModelFile(COSY_REPO, "CosyVoice-BlankEN/vocab.json",
+                      "tts/cosyvoice3/CosyVoice-BlankEN", 2_776_833),
+            ModelFile(COSY_REPO, "CosyVoice-BlankEN/merges.txt",
+                      "tts/cosyvoice3/CosyVoice-BlankEN", 1_402_109),
+        ],
+        tiers={},
+        supports_lora=False,
+        note="另一條中文 TTS 路線，Apache 2.0，支援中文方言、零樣本音色複製、"
+             "情緒與語速指令。官方有公布中文 CER 與音色相似度評測 —— "
+             "那是**模型作者自己的測試**，本專案沒有重現。"
+             "**整包約 9.7GB**，比 Qwen3-TTS 大很多：官方的安裝方式是把整個倉庫"
+             "snapshot_download 下來，所以這裡列的是全部檔案，沒有替你挑。"
+             "（`llm.rl.pt` 和 `speech_tokenizer_v3.batch.onnx` 看起來是替代版本，"
+             "但官方沒說哪些可以不下載，本專案不猜。）"
+             "**這個 app 不會跑它** —— 官方程式在 github.com/FunAudioLLM/CosyVoice，"
+             "還需要它的 GitHub 原始碼和 submodule。"
+             "**音色複製只用在虛構角色、你自己的聲音，或你有明確授權的參考音。**",
+    ),
+
     # MiniMax H3. Added after a round with a second model; we agreed on the
     # shape - files_only, FL2VA only, and the licence shown before the download
     # button rather than under it.

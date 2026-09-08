@@ -896,6 +896,41 @@
         </div>
       </div>
 
+      <!-- 整集：一次排完，以及接成一支檔案 -->
+      <div class="card step" style="margin-top:12px">
+        <h3>整集</h3>
+        <!-- One step is live at a time. The other two buttons stay on the page
+             but greyed, so the order is visible without being a maze. -->
+        <div class="s" id="sdstep" style="margin-bottom:6px"></div>
+        <div class="row" style="gap:8px;flex-wrap:wrap;align-items:center">
+          <button class="go" id="sdrunkf">① 排完所有關鍵幀</button>
+          <button class="go" id="sdrunvid">② 排完所有影片</button>
+          <label class="f" style="max-width:120px">一次幾個
+            <select id="sdrunn" aria-label="每顆鏡頭一次生幾個">
+              <option value="1">1 個</option>
+              <option value="2" selected>2 個</option>
+              <option value="3">3 個</option>
+              <option value="4">4 個</option>
+            </select></label>
+          <button class="ghost tiny hidden" id="sdrunstop">停止</button>
+          <div class="spacer"></div>
+          <button class="go" id="sdjoin">③ 接成一支影片</button>
+        </div>
+        <div class="s" id="sdrunnote" style="margin-top:6px"></div>
+        <!-- Only appears when a shot is genuinely the wrong shape. Both answers
+             throw something away, so it is asked rather than defaulted. -->
+        <div class="row hidden" id="sdfitrow" style="margin-top:6px;gap:6px;align-items:center">
+          <span class="s">比例不一樣的鏡頭要怎麼處理？</span>
+          <select id="sdfit" aria-label="比例不一樣時怎麼處理">
+            <option value="">（先選一個）</option>
+            <option value="cover">裁切填滿（不留黑邊，邊緣會被切掉）</option>
+            <option value="contain">完整放入（不切畫面，會有黑邊）</option>
+          </select>
+        </div>
+        <div class="s" id="sdjoinnote" style="margin-top:4px"></div>
+        <div class="s" id="sdtools" style="margin-top:4px;opacity:.7"></div>
+      </div>
+
       <!-- 健康度 -->
       <div class="card step" style="margin-top:12px">
         <h3>分鏡健康度</h3>
@@ -4905,6 +4940,11 @@ function renderDramaBody() {
 
   renderDramaPost();
   wireDramaBody();
+  // The episode panel is the one part that cannot be drawn from `p` alone: what
+  // still needs doing is a join against the job library, so it comes from the
+  // server. This used to sit in wireDrama(), which runs once when the tab is
+  // wired - i.e. before any project is open - so the panel was always blank.
+  refreshRun();
 }
 
 // Escape, then allow **bold** only. Anything user-typed reaches this.
@@ -5224,6 +5264,9 @@ async function planShot(shotId) {
         ? `<button class="ghost tiny" id="sdtoend">生結束幀</button>
            <label class="chk"><input type="file" id="sdupendfile" accept="image/*" hidden>
              <button class="ghost tiny" id="sdupend">結束幀用我自己的圖</button></label>` : ''}
+      <label class="chk" title="這顆鏡頭的台詞音檔（S2V 用它驅動口型）">
+        <input type="file" id="sdaudiofile" accept="audio/*" hidden>
+        <button class="ghost tiny" id="sdaudio">上傳音檔</button></label>
       <button class="ghost tiny" id="sdsplit" title="在這顆後面插一顆一樣場景、一樣角色的空鏡頭">拆成下一顆</button>
       <button class="ghost tiny" id="sdplanclose">收起</button>
     </div>
@@ -5353,6 +5396,15 @@ async function planShot(shotId) {
 
   const genVid = $('#sdgenvid');
   if (genVid) genVid.onclick = async () => {
+    // Sending only the keyframe for a first/last-frame shot would produce a
+    // perfectly good video that is not the one asked for, and nothing after
+    // this point would notice the difference.
+    const meth = SD.methods[shot.method];
+    if (meth && meth.needs_endframe) {
+      genStatus('「首尾幀」要把兩張圖送進另一種工作流，這個 app 還沒有那個工作流。'
+                + '把這顆改成「圖生影片」，或到 ComfyUI 用官方首尾幀範本生成後掛回來。', true);
+      return;
+    }
     const route = d.plan.route;
     const model = (MODELS || []).find((m) => m.id === (route && route.model_id));
     if (!model || !model.runnable) {
@@ -5433,6 +5485,39 @@ async function planShot(shotId) {
   };
   upload('keyframe', 'sdup', 'sdupfile');
   upload('endframe', 'sdupend', 'sdupendfile');
+
+  // Audio is an *input* for the audio-driven routes: S2V and H3 generate the
+  // lip movement to match the sound, so it has to arrive before the video is
+  // made, not be laid over it afterwards.
+  const audioBtn = $('#sdaudio'), audioFile = $('#sdaudiofile');
+  if (audioBtn && audioFile) {
+    audioBtn.onclick = (e) => { e.preventDefault(); audioFile.click(); };
+    audioFile.onchange = async () => {
+      const chosen = audioFile.files && audioFile.files[0];
+      if (!chosen) return;
+      audioBtn.disabled = true;
+      $('#sdplannote').textContent = '上傳中…';
+      try {
+        const body = new FormData();
+        body.append('audio', chosen);
+        const r = await fetch(
+          `/api/drama/${encodeURIComponent(p.id)}/shot/${encodeURIComponent(shotId)}/audio`,
+          { method: 'POST', body });
+        const d = await r.json();
+        if (!r.ok) throw new Error(d.detail || r.statusText);
+        SD.open = d;
+        renderDramaBody();
+        await planShot(shotId);
+        $('#sdplannote').innerHTML = d.note
+          ? `<span class="warn">${esc(d.note)}</span>`
+          : '音檔已經掛到這顆鏡頭上。';
+      } catch (err) {
+        $('#sdplannote').innerHTML = `<span class="bad">${esc(err.message)}</span>`;
+      }
+      audioBtn.disabled = false;
+      audioFile.value = '';
+    };
+  }
   // The step that was missing entirely: without it the video stage could never
   // gain an attempt through the UI, so "已採用影片 x/y" could never move and the
   // page promised a progress bar it had no way to fill.
@@ -5739,6 +5824,191 @@ function wireDrama() {
     await saveDrama(true);
   };
   $('#sdsave').onclick = () => saveDrama(false);
+
+  // -- the whole episode at once
+  const runNote = (html, bad) => {
+    $('#sdrunnote').innerHTML = bad ? `<span class="bad">${esc(html)}</span>` : html;
+  };
+  const startRun = (stage) => async () => {
+    const btn = $(stage === 'video' ? '#sdrunvid' : '#sdrunkf');
+    btn.disabled = true;
+    try {
+      const r = await fetch(`/api/drama/${encodeURIComponent(SD.open.id)}/run`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ stage, per_shot: +$('#sdrunn').value || 2 }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      runNote(`排入中… 共 ${d.run.total} 個工作。`);
+      watchRun();
+    } catch (e) { runNote(e.message, true); }
+    btn.disabled = false;
+  };
+  $('#sdrunkf').onclick = startRun('keyframe');
+  $('#sdrunvid').onclick = startRun('video');
+  $('#sdrunstop').onclick = async () => {
+    await fetch(`/api/drama/${encodeURIComponent(SD.open.id)}/run/stop`, { method: 'POST' });
+    watchRun();
+  };
+
+  $('#sdfit').onchange = async () => {
+    // Remembered on the project, not held in the page: the same answer applies
+    // to every later join, and re-asking it every time would be noise.
+    SD.open.delivery.fit = $('#sdfit').value;
+    await saveDrama(true);
+  };
+
+  $('#sdjoin').onclick = async () => {
+    const btn = $('#sdjoin');
+    btn.disabled = true;
+    $('#sdjoinnote').textContent = '接起來中…（每一顆都要先轉成交付規格，會花一點時間）';
+    try {
+      const r = await fetch(`/api/drama/${encodeURIComponent(SD.open.id)}/assemble`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fit: $('#sdfit').value || '' }),
+      });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      const drift = Math.abs(d.seconds - d.planned_seconds);
+      $('#sdjoinnote').innerHTML =
+        `<b class="ok">接好了。</b>${d.shots} 顆鏡頭，${d.seconds} 秒`
+        + (drift > 0.5 ? `（分鏡表寫的是 ${d.planned_seconds} 秒）` : '')
+        + ` · ${d.codecs.video}/${d.codecs.audio} · `
+        + `<a href="/outputs/${esc(d.file)}" target="_blank" rel="noopener">開啟</a>`
+        + '　它也在「素材庫」裡。';
+      refreshJobs(true);
+    } catch (e) {
+      $('#sdjoinnote').innerHTML = `<span class="bad">${esc(e.message).replace(/\n/g, '<br>')}</span>`;
+      refreshJoinable();
+    }
+    btn.disabled = false;
+  };
+}
+
+// What the joining step can see: whether there is an ffmpeg, whether any shot
+// is the wrong shape, and what the tools actually are. Kept out of refreshRun
+// because it costs a probe per shot - it only runs when joining is plausible.
+async function refreshJoinable() {
+  if (!SD.open) return null;
+  let d;
+  try {
+    d = await (await fetch(`/api/drama/${encodeURIComponent(SD.open.id)}/assemble`)).json();
+  } catch { return null; }
+  const fitRow = $('#sdfitrow');
+  if (fitRow) fitRow.classList.toggle('hidden', !(d.off_ratio || []).length);
+  const fit = $('#sdfit');
+  if (fit && d.fit !== undefined) fit.value = d.fit || '';
+  const tools = $('#sdtools');
+  if (tools) {
+    tools.innerHTML = d.ffmpeg
+      ? `工具：${esc((d.ffmpeg_version || d.ffmpeg).slice(0, 60))}`
+        + (d.ffprobe ? '' : '　<span class="warn">沒有 ffprobe —— 每顆鏡頭的實際尺寸和音軌只能用比較不可靠的方式讀，'
+                            + '所以比例不一致時一律用「完整放入」，不會替你裁切。</span>')
+      : '';
+  }
+  const note = [];
+  if (!d.ffmpeg) note.push(esc(d.how_to_get).replace(/\n/g, '<br>'));
+  if ((d.off_ratio || []).length) {
+    note.push(`有 ${d.off_ratio.length} 顆鏡頭的比例跟交付尺寸不一樣（第 ${
+      d.off_ratio.slice(0, 6).join('、')} 顆）。`
+      + (d.fit ? `會用「${d.fit === 'cover' ? '裁切填滿' : '完整放入'}」處理。`
+               : '<b>先在下面選一個處理方式。</b>'));
+  }
+  if ((d.unmeasured || []).length) {
+    note.push(`<span class="warn">有 ${d.unmeasured.length} 顆鏡頭量不出實際尺寸`
+      + (d.ffprobe ? '' : '（因為沒有 ffprobe）')
+      + `，所以不會替它們裁切，只會等比例縮放後放入。</span>`);
+  }
+  // `can` is false while the shape question is unanswered, which is the point:
+  // the button comes back the moment the selector below it is answered.
+  const join = $('#sdjoin');
+  if (join) join.disabled = !d.can;
+  if (note.length && !(d.missing || []).length) $('#sdjoinnote').innerHTML = note.join('<br>');
+  return d;
+}
+
+// Poll a run in flight. Stops itself when it finishes, so opening the tab twice
+// cannot leave two timers updating the same panel.
+let runWatch = null;
+async function refreshRun() {
+  if (!SD.open) return;
+  let d;
+  try {
+    d = await (await fetch(`/api/drama/${encodeURIComponent(SD.open.id)}/run`)).json();
+  } catch { return; }
+  const run = d.run || {};
+  const stop = $('#sdrunstop');
+  if (stop) stop.classList.toggle('hidden', !run.active);
+  const bits = [];
+  if (run.active || run.finished) {
+    bits.push(`<b>${run.stage === 'video' ? '影片' : '關鍵幀'}</b>：`
+      + `已排 ${run.queued}/${run.total}${run.active ? '…' : ''}`);
+    // The plan was frozen when the button was pressed. Editing a shot now is
+    // allowed - it just lands on the next run - and that has to be said,
+    // because otherwise a change that appears to do nothing looks like a bug.
+    if (run.active) {
+      bits.push('<span style="opacity:.8">這一輪用的是按下去當時的設定。'
+        + '現在改鏡頭沒關係，改的東西會用在下一輪。</span>');
+    }
+    if (run.message) bits.push(esc(run.message));
+    if ((run.failures || []).length) {
+      bits.push('<b class="bad">有問題的鏡頭：</b>'
+        + run.failures.slice(0, 4).map((f) =>
+            `第 ${f.shot_no} 顆（${esc(f.reason).slice(0, 60)}）`).join('、'));
+    }
+  }
+  // One run at a time, app-wide. If it belongs to another project, say so -
+  // otherwise this panel looks idle and the button that refuses to start looks
+  // broken.
+  if (d.other_run && d.other_run.active) {
+    bits.push('<span class="warn">現在有另一個專案正在排工作，'
+      + '那一輪跑完（或按它的「停止」）之後才能排這一個。</span>');
+  }
+  if (d.video_blocked) bits.push(`<span style="opacity:.8">影片還不能排：${esc(d.video_blocked)}</span>`);
+  else if ((d.video_todo || []).length) bits.push(`可以排影片的鏡頭：${d.video_todo.length} 顆`);
+  if ((d.keyframe_todo || []).length) bits.push(`還沒有採用關鍵幀的：${d.keyframe_todo.length} 顆`);
+  $('#sdrunnote').innerHTML = bits.join('<br>')
+    || '每顆鏡頭都排好也挑好了。可以按「接成一支影片」。';
+
+  // One step is live at a time. Three enabled buttons in a row is three ways to
+  // get it wrong; the disabled ones stay visible so the order is still legible.
+  const kfLeft = (d.keyframe_todo || []).length;
+  const vidLeft = (d.video_todo || []).length;
+  const step = kfLeft ? 'keyframe' : (d.video_blocked ? 'pick' : (vidLeft ? 'video' : 'join'));
+  $('#sdstep').innerHTML = {
+    keyframe: `<b>現在這一步：</b>先替 ${kfLeft} 顆鏡頭生關鍵幀候選（按 ①）。`,
+    pick: '<b>現在這一步：</b>到上面的分鏡表，每顆鏡頭挑一張關鍵幀採用。',
+    video: `<b>現在這一步：</b>替 ${vidLeft} 顆鏡頭生影片候選（按 ②），生完再一顆一顆挑。`,
+    join: '<b>現在這一步：</b>每顆都挑好了 —— 按 ③ 接成一支影片。',
+  }[step];
+  const busy = run.active || !!(d.other_run && d.other_run.active);
+  const vid = $('#sdrunvid');
+  if (vid) vid.disabled = !!d.video_blocked || busy || !vidLeft;
+  const kf = $('#sdrunkf');
+  if (kf) kf.disabled = busy || !kfLeft;
+  const join = $('#sdjoin');
+  if (join) join.disabled = step !== 'join';
+  if (step === 'join') refreshJoinable();
+  else { const row = $('#sdfitrow'); if (row) row.classList.add('hidden'); }
+  return run;
+}
+
+function watchRun() {
+  if (runWatch) clearInterval(runWatch);
+  let ticks = 0;
+  runWatch = setInterval(async () => {
+    ticks++;
+    const run = await refreshRun();
+    // Four hours. A run now lasts as long as the generating does - it feeds
+    // jobs in a few at a time rather than dumping them - so the old 45-minute
+    // ceiling would have stopped watching an episode that was still going.
+    if (!run || !run.active || ticks > 4800) {
+      clearInterval(runWatch);
+      runWatch = null;
+      if (SD.open) { SD.open = await (await fetch(
+        `/api/drama/${encodeURIComponent(SD.open.id)}`)).json(); renderDramaBody(); }
+    }
+  }, 3000);
 }
 
 /* ---------- style library: recipes, quality presets, one-click merge ------ */
