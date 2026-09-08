@@ -44,7 +44,7 @@ from pathlib import Path
 import claims
 import registry
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 
 
 # -- format constants ---------------------------------------------------------
@@ -281,7 +281,13 @@ class Shot:
     size: str = "近景"
     who: list[str] = field(default_factory=list)
     speaker: str = ""           # which of `who` is talking; S2V drives them
-    action: str = ""
+    # Two prompts, two fields. A still wants a frozen instant ("hand resting on
+    # his shoulder"); a video wants change over time ("she walks over and puts
+    # her hand on his shoulder"). One field served both and could only ever be
+    # right for one of them - the video handoff even carried a comment saying
+    # it sent motion while it was sending the still's description.
+    action: str = ""            # keyframe: the pose, state and mood in frame
+    motion: str = ""            # video: what moves, and how the camera moves
     dialogue: str = ""
     method: str = "i2v"
     scene: str = ""
@@ -760,6 +766,22 @@ def check_claims(project: Project, *, installed: set[str] | None = None
             "0.7 這種數字沒有依據，要自己試。",
             level=claims.WARN))
 
+    # A shot with no motion prompt still generates - the fallback sees to that -
+    # but it is being driven by a description of a frozen instant, which is not
+    # the same instruction. Said as INFO, and without claiming the clip will
+    # come out static: an I2V model can find movement in the picture itself.
+    silent = [s.no for s in shots if not (s.motion or "").strip() and (s.action or "").strip()]
+    if silent:
+        out.append(_claim_finding(
+            "no-motion", "video.motion_prompt",
+            f"{len(silent)} 顆鏡頭還沒填「影片怎麼動」。",
+            f"第 {'、'.join(str(n) for n in silent[:8])} 顆"
+            + ("…" if len(silent) > 8 else "")
+            + "。目前會暫時拿「關鍵幀姿勢」那一欄當影片指令 —— "
+            "那一欄寫的是**凝固的一瞬間**，不是時間上的變化。"
+            "要指定走路、伸手、轉身或運鏡，就填「影片怎麼動」。",
+            level=claims.INFO))
+
     no_costume = [c.name for c in project.cast if c.key in used and not c.costume]
     if no_costume and styled:
         out.append(_claim_finding(
@@ -884,6 +906,25 @@ def dialect_for(model_id: str) -> str:
     return model.tag_style if model else "danbooru"
 
 
+def video_prompt(shot: Shot) -> dict:
+    """What to tell the video model, and whether it is really a motion prompt.
+
+    `motion` when it is filled, `action` when it is not. The fallback exists for
+    backwards compatibility, not as a recommendation: a v2 project's `action`
+    was written to describe a still, and handing a still's description to a
+    video model is how you get a clip that holds the pose.
+
+    `extra` is deliberately not included. It is the keyframe's supplement -
+    light, expression, props - and it was being appended to the video prompt
+    too, which meant the split only went half way.
+    """
+    text = (shot.motion or "").strip()
+    if text:
+        return {"prompt": text, "from": "motion", "fallback": False}
+    return {"prompt": (shot.action or "").strip(), "from": "action",
+            "fallback": bool((shot.action or "").strip())}
+
+
 def keyframe_prompt(project: Project, shot: Shot) -> dict:
     """Compose the still-image prompt for one shot.
 
@@ -976,6 +1017,21 @@ def _route_from(raw: dict) -> Route:
     )
 
 
+def _migrate_v2(raw: dict) -> dict:
+    """Version 2 had one `action` meaning both the pose and the movement.
+
+    The old value is left in `action` and `motion` starts empty - deliberately
+    not copied. We do not know whether a given v2 shot was written as a frozen
+    pose or as a movement, and copying it would present a guess as a completed
+    migration. The video step falls back to `action` at read time instead, so
+    nothing breaks and nothing is invented.
+    """
+    shots = []
+    for shot in raw.get("shots") or []:
+        shots.append({**shot, "motion": shot.get("motion") or ""})
+    return {"shots": shots}
+
+
 def _migrate_v1(raw: dict) -> dict:
     """Version 1 stored one `model` plus `fps` for the whole episode.
 
@@ -1014,8 +1070,11 @@ class ProjectStore:
                 continue
             try:
                 raw = json.loads(line)
-                if int(raw.get("schema_version") or 1) < 2:
+                version = int(raw.get("schema_version") or 1)
+                if version < 2:
                     raw = {**raw, **_migrate_v1(raw)}
+                if version < 3:
+                    raw = {**raw, **_migrate_v2(raw)}
                 delivery = raw.get("delivery") or {}
                 keyframes = raw.get("keyframes") or {}
                 project = Project(

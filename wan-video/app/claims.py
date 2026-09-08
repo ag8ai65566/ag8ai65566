@@ -365,6 +365,23 @@ CLAIMS: tuple[Claim, ...] = (
     ),
 
     Claim(
+        id="video.motion_prompt",
+        text="圖生影片是「輸入圖當第一幀，文字說明要怎麼動」——"
+             "所以影片的提詞要寫時間上的變化，不是靜態畫面的描述。",
+        evidence_kind=OFFICIAL_SPEC,
+        source="Runway 的官方提示指南把輸入圖定位為第一幀，"
+               "把文字 prompt 定位為動作、運鏡與時間進程",
+        urls=("https://academy.runwayml.com/guides/prompting-guide",
+              "https://help.runwayml.com/hc/en-us/articles/"
+              "48324313115155-Image-to-Video-Prompting-Guide"),
+        checked="2026-09-07",
+        scope="圖生影片（I2V）這一步的提詞",
+        limits="**不代表沒填就一定不會動。** I2V 模型會從圖片本身的動勢"
+               "自行產生變化，甚至可能跟文字要求衝突。"
+               "這條講的是提詞該怎麼寫，不是空白會怎樣。",
+        policy=INFO,
+    ),
+    Claim(
         id="consistency.multi_lora_bleed",
         text="同一張圖同時全域載入兩個角色 LoRA，可能讓兩人的臉、髮型或服裝互相混合，"
              "或讓其中一個角色失去辨識度。",

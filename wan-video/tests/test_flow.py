@@ -5142,6 +5142,60 @@ def test_shortdrama(tmp: Path) -> None:
     check(talky.route("s2v").model_id != talky.route("i2v").model_id,
           "…precisely because the two routes are different checkpoints")
 
+    # -- one field cannot describe both a frozen instant and a change over
+    # time. `action` fed the keyframe *and* the video prompt, so it could only
+    # ever be right for one of them - and the video handoff carried a comment
+    # claiming it sent motion while it sent the still's description.
+    check(sd.SCHEMA_VERSION == 3, f"schema is v3 ({sd.SCHEMA_VERSION})")
+    posed = sd.Shot(action="hand resting on his shoulder",
+                    motion="she walks over and places her hand on his shoulder")
+    got = sd.video_prompt(posed)
+    check(got["prompt"] == posed.motion and got["from"] == "motion",
+          "a filled motion field is what the video step is told")
+    check(not got["fallback"], "…and that is not a fallback")
+    legacy = sd.Shot(action="hand resting on his shoulder")
+    got = sd.video_prompt(legacy)
+    check(got["prompt"] == legacy.action and got["fallback"],
+          "an empty motion falls back to action, and says it is falling back")
+    empty = sd.video_prompt(sd.Shot())
+    check(empty["prompt"] == "" and not empty["fallback"],
+          "…and a shot with neither is not reported as a fallback")
+
+    # `extra` describes the still. Sending it to the video was the half of the
+    # split that had been missed.
+    proj = sd.Project(id="split", routes=sd.default_routes(),
+                      shots=[sd.Shot(seconds=3.2, size="近景", action="standing still",
+                                     motion="she turns around", extra="dim rim light")])
+    sd.normalise(proj)
+    shot = proj.shots[0]
+    check("dim rim light" in sd.keyframe_prompt(proj, shot)["prompt"],
+          "the keyframe prompt carries the shot's extra")
+    check("dim rim light" not in sd.video_prompt(shot)["prompt"],
+          "…and the video prompt does not - it is a description of the still")
+    check("standing still" not in sd.video_prompt(shot)["prompt"],
+          "…nor the keyframe's pose, once motion is filled")
+
+    missing_motion = {f.id: f for f in sd.check(proj)}
+    check("no-motion" not in missing_motion, "a shot with motion is not flagged")
+    proj.shots[0].motion = ""
+    flagged = {f.id: f for f in sd.check(proj)}
+    check("no-motion" in flagged, f"…and one without it is ({sorted(flagged)})")
+    check(flagged["no-motion"].level == claims.INFO,
+          "…as INFO: the fallback still generates, it is just the wrong instruction")
+    motion_claim = claims.get("video.motion_prompt")
+    check(motion_claim.evidence_kind == claims.OFFICIAL_SPEC,
+          "the claim rests on the vendor's own prompting guide")
+    check("不代表沒填就一定不會動" in motion_claim.limits,
+          "…and its limits refuse to claim an empty motion means a static clip")
+
+    # -- migrating a v2 project must not guess. v2's `action` meant both things,
+    # and copying it into `motion` would present a guess as a finished migration.
+    migrated = sd._migrate_v2({"shots": [{"id": "s1", "action": "walking to the door"}]})
+    check(migrated["shots"][0]["motion"] == "",
+          "a migrated v2 shot gets an empty motion, not a copy of its action")
+    check(migrated["shots"][0]["action"] == "walking to the door",
+          "…and keeps the original action untouched")
+
     # -- two character LoRAs on one still. Published research names this
     # failure (concept confusion / concept vanishing / identity loss), so it is
     # the project's first PEER_REVIEWED claim - and the trigger is the LoRAs,
@@ -5370,8 +5424,11 @@ def test_shortdrama(tmp: Path) -> None:
     check(moved.shots[0].id, "…and its shots get stable ids on the way in")
     old_store.save()
     reread = json.loads(legacy.read_text(encoding="utf-8").splitlines()[0])
-    check(reread["schema_version"] == 2 and "model" not in reread,
-          "saving writes v2 only - two sources of truth on disk would drift")
+    check(reread["schema_version"] == sd.SCHEMA_VERSION and "model" not in reread,
+          f"saving writes the current schema only (v{sd.SCHEMA_VERSION}) - "
+          "two sources of truth on disk would drift")
+    check(all(s.get("motion") == "" for s in reread["shots"]),
+          "…and a migrated shot is written with an empty motion, not a guess")
 
     check(again.delete(made.id) and again.get(made.id) is None, "delete works")
 

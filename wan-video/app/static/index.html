@@ -4777,6 +4777,9 @@ function collectDrama() {
       speaker: row.querySelector('.sp').value,
       scene: row.querySelector('.sc').value.trim(),
       action: row.querySelector('.sa').value.trim(),
+      // Not in the wide table - it is edited in the shot's own panel, same as
+      // `extra` - so it comes from the in-memory shot rather than the DOM.
+      motion: s.motion || '',
       dialogue: row.querySelector('.sd2').value.trim(),
       method: row.querySelector('.sm2').value,
       extra: s.extra || '', note: s.note || '',
@@ -4887,13 +4890,39 @@ async function planShot(shotId) {
     ${stageBlock('endframe', '結束幀')}
     ${stageBlock('video', '影片')}
     <div class="row" style="margin-top:8px;gap:6px;flex-wrap:wrap;align-items:center">
-      <label class="f" style="flex:1;min-width:220px">這顆特有的補充提詞
+      <label class="f" style="flex:1;min-width:260px">影片怎麼動（人物動作／環境／運鏡）
+        <input type="text" id="sdmotion" aria-label="影片怎麼動"
+          value="${esc(shot.motion || '')}"
+          placeholder="她走過去，把手放到他肩膀上；鏡頭緩慢推近…"
+          style="width:100%"></label>
+      <button class="ghost tiny" id="sdmotionsave">存</button>
+    </div>
+    <div class="s">
+      <b>這一欄跟分鏡表的「動作／情緒」是兩回事。</b>
+      「動作／情緒」寫的是<b>關鍵幀那一瞬間長什麼樣</b>（<code>hand resting on his shoulder</code>）；
+      這一欄寫的是<b>從那一幀開始怎麼變化</b>（<code>she walks over and places her hand on his shoulder</code>）。
+      一顆鏡頭先寫<b>一個主要動作</b>就好 —— 走過去 → 拍肩 → 說話，拆開比較好控制。
+      ${d.video && d.video.fallback
+        ? '<br><span class="warn">這顆還沒填，目前會暫時拿「動作／情緒」當影片指令 —— '
+          + '那是靜態描述，影片可能只維持姿勢。</span>' : ''}
+    </div>
+    ${(shot.who || []).length > 1 ? `<div class="s" style="margin-top:4px">
+      多人鏡頭請直接寫<b>角色名字或觸發詞</b>，不要只寫「他／她」——
+      點一下插入：${(shot.who || []).map((k) => {
+        const c = (p.cast || []).find((x) => x.key === k);
+        if (!c) return '';
+        const token = c.trigger || c.name;
+        return `<button class="ghost tiny" data-ins="${esc(token)}">${esc(c.name)}</button>`;
+      }).join(' ')}</div>` : ''}
+    <div class="row" style="margin-top:8px;gap:6px;flex-wrap:wrap;align-items:center">
+      <label class="f" style="flex:1;min-width:220px">這顆特有的補充提詞（只給關鍵幀）
         <input type="text" id="sdextra" aria-label="這顆特有的補充提詞"
           value="${esc(shot.extra || '')}" placeholder="光線、表情細節、道具、只有這顆有的狀態…"
           style="width:100%"></label>
       <button class="ghost tiny" id="sdextrasave">存補充提詞</button>
     </div>
-    <div class="s">景別、場景、動作涵蓋不到的東西放這裡。它會接在提詞最後面。</div>
+    <div class="s">景別、場景、動作涵蓋不到的東西放這裡。
+      它只會接在<b>關鍵幀</b>提詞最後面，不會送進影片。</div>
     <div class="row" style="margin-top:8px;flex-wrap:wrap">
       <button class="ghost tiny" id="sdtoimg">生關鍵幀（帶到圖片分頁）</button>
       <label class="chk">
@@ -4906,6 +4935,7 @@ async function planShot(shotId) {
         ? `<button class="ghost tiny" id="sdtoend">生結束幀</button>
            <label class="chk"><input type="file" id="sdupendfile" accept="image/*" hidden>
              <button class="ghost tiny" id="sdupend">結束幀用我自己的圖</button></label>` : ''}
+      <button class="ghost tiny" id="sdsplit" title="在這顆後面插一顆一樣場景、一樣角色的空鏡頭">拆成下一顆</button>
       <button class="ghost tiny" id="sdplanclose">收起</button>
     </div>
     <div class="s">「用我自己的圖」= 你已經有想要的畫面了，直接拿它當這顆鏡頭的起點，
@@ -4944,6 +4974,45 @@ async function planShot(shotId) {
     await saveDrama(true);
     planShot(shotId);
   };
+  const saveField = (inputId, key) => async () => {
+    const target = (SD.open.shots || []).find((x) => x.id === shotId);
+    if (!target) return;
+    target[key] = $('#' + inputId).value.trim();
+    await saveDrama(true);
+    planShot(shotId);
+  };
+  $('#sdmotionsave').onclick = saveField('sdmotion', 'motion');
+  // Insert a character's own token rather than linting pronouns afterwards: on
+  // two people of the same gender "she touches her shoulder" is genuinely
+  // ambiguous, and a regex cannot tell that apart from the cases that are fine.
+  box.querySelectorAll('[data-ins]').forEach((b) => b.onclick = () => {
+    const el = $('#sdmotion');
+    const at = el.selectionStart ?? el.value.length;
+    const token = b.dataset.ins;
+    el.value = el.value.slice(0, at) + (at && el.value[at - 1] !== ' ' ? ' ' : '')
+             + token + el.value.slice(at);
+    el.focus();
+    el.selectionStart = el.selectionEnd = at + token.length + 1;
+  });
+  // Splitting a shot is the fix that works today - for a beat that is too long
+  // and for two character LoRAs fighting each other - so it gets a button
+  // rather than a paragraph telling the user to do it by hand.
+  const split = $('#sdsplit');
+  if (split) split.onclick = async () => {
+    const shots = SD.open.shots || [];
+    const i = shots.findIndex((x) => x.id === shotId);
+    if (i < 0) return;
+    const from = shots[i];
+    shots.splice(i + 1, 0, {
+      id: '', seconds: from.seconds, size: from.size,
+      // Same place, same people, same method: what changes is the beat.
+      who: [...(from.who || [])], speaker: '', scene: from.scene || '',
+      action: '', motion: '', dialogue: '', method: from.method || 'i2v',
+      extra: from.extra || '', note: '',
+    });
+    await saveDrama(true);
+  };
+
   $('#sdtoimg').onclick = hand('keyframe');
 
   // Bring your own still. This is image-to-video's most natural use and the
@@ -4997,10 +5066,12 @@ async function planShot(shotId) {
       const blob = await (await fetch(src)).blob();
       pick(new File([blob], src.split('/').pop() || 'keyframe.png',
                     { type: blob.type || 'image/png' }));
-      // The motion prompt is the shot's action, not the still's description -
-      // the video model is being told what should *happen*, not what is there.
-      if (!$('#prompt').value.trim()) {
-        $('#prompt').value = [shot.action, shot.extra].filter(Boolean).join(', ');
+      // The motion prompt, resolved server-side: `motion` when it is filled,
+      // `action` only as a backwards-compatible fallback. `extra` is not
+      // included - it describes the still, and sending it here was the half of
+      // the split that had been missed.
+      if (!$('#prompt').value.trim() && d.video) {
+        $('#prompt').value = d.video.prompt || '';
       }
       // The model picker only lists runnable models, so a route pointing at a
       // files-only model (S2V, Animate) has nothing to select. Say that out
@@ -5283,7 +5354,7 @@ function wireDrama() {
     // continuity mistake gets in.
     SD.open.shots.push({ id: '', seconds: SD.format.shot_median || 3.2, size: '近景',
       who: last.who || [], speaker: '', scene: last.scene || '', action: '',
-      dialogue: '', method: 'i2v', extra: '', note: '' });
+      motion: '', dialogue: '', method: 'i2v', extra: '', note: '' });
     await saveDrama(true);
   };
   $('#sdsave').onclick = () => saveDrama(false);

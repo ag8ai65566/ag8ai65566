@@ -1907,6 +1907,7 @@ async def update_drama(project_id: str, payload: dict = Body(default={})
                 who=[str(w) for w in (raw.get("who") or [])],
                 speaker=str(raw.get("speaker") or ""),
                 action=str(raw.get("action") or ""),
+                motion=str(raw.get("motion") or ""),
                 dialogue=str(raw.get("dialogue") or ""),
                 method=str(raw.get("method") or "i2v"),
                 scene=str(raw.get("scene") or ""),
@@ -1961,7 +1962,12 @@ async def drama_shot(project_id: str, shot_id: str) -> JSONResponse:
     jobs = _drama_jobs(project)
     return JSONResponse({**built, "shot": shot.public(),
                          "state": shortdrama.shot_state(shot, jobs),
-                         "plan": shortdrama.shot_plan(project, shot)})
+                         "plan": shortdrama.shot_plan(project, shot),
+                         # What the video step will actually be told, and
+                         # whether that is the motion field or a fallback to the
+                         # keyframe's description. The browser should not have
+                         # to re-derive a rule that lives in shortdrama.py.
+                         "video": shortdrama.video_prompt(shot)})
 
 
 @app.post("/api/drama/{project_id}/shot/{shot_id}/upload")

@@ -358,6 +358,48 @@ function crc32(buf) {
   check(planTxt.includes('1boy') && !planTxt.includes('1girl'),
     'a male-only shot opens with 1boy, not 1girl -> ' + planTxt.replace(/\s+/g,' ').slice(0,64));
   check(planTxt.includes('還沒有嘗試'), 'the shot shows it has no attempts yet');
+  // The two prompts. `action` describes a frozen instant and fed the video step
+  // as well, so it could only ever be right for one of them.
+  const planTxt2 = await page.textContent('#sdplan');
+  check(planTxt2.includes('影片怎麼動'), 'the shot panel has its own motion field');
+  check(planTxt2.includes('是兩回事'),
+    'and says outright that it is not the same as the shot table\'s action column');
+  check(planTxt2.includes('暫時拿'),
+    'and warns while the shot is still falling back to the pose description');
+  await page.fill('#sdmotion', 'she walks over and puts her hand on his shoulder');
+  await page.click('#sdmotionsave');
+  await page.waitForTimeout(1400);
+  await page.click('#sdshots .splan');
+  await page.waitForTimeout(1000);
+  check((await page.inputValue('#sdmotion')).includes('walks over'),
+    'the motion survives a save and a reopen');
+  check(!(await page.textContent('#sdplan')).includes('暫時拿'),
+    'and the fallback warning goes once it is filled');
+
+  // Splitting is the fix that works today, for a beat that is too long and for
+  // two character LoRAs fighting each other, so it is a button.
+  const rowsBefore = await page.evaluate(() =>
+    document.querySelectorAll('#sdshots tr[data-si]').length);
+  await page.click('#sdsplit');
+  await page.waitForTimeout(1600);
+  const rowsAfter = await page.evaluate(() =>
+    document.querySelectorAll('#sdshots tr[data-si]').length);
+  check(rowsAfter === rowsBefore + 1,
+    `"split into the next shot" adds one (${rowsBefore} -> ${rowsAfter})`);
+  const scenes = await page.evaluate(() =>
+    [...document.querySelectorAll('#sdshots .sc')].map((el) => el.value));
+  check(scenes.length > 1 && scenes[0] === scenes[1],
+    `…carrying the scene over, since that is what does not change (${JSON.stringify(scenes)})`);
+  // Leave the shot list as it was found: a later block counts the shots, and a
+  // test that quietly changes the fixture for the next one is its own bug.
+  await page.evaluate(() => document.querySelectorAll('#sdshots .sdel')[1].click());
+  await page.waitForTimeout(1500);
+  check(await page.evaluate(() =>
+    document.querySelectorAll('#sdshots tr[data-si]').length) === rowsBefore,
+    'and the split can be undone, leaving the list as it was');
+  await page.click('#sdshots .splan');
+  await page.waitForTimeout(1000);
+
   // `extra` was a field the data model saved and the UI could not reach.
   await page.fill('#sdextra', 'dim rim light, holding a knife');
   await page.click('#sdextrasave'); await page.waitForTimeout(1300);
