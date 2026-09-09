@@ -5049,6 +5049,22 @@ function wireQuick() {
     drop.classList.add('has');
     quickNote();
   };
+  // A job left running from before this page was loaded. `detached` counts:
+  // ComfyUI is still working on it and `reattach` on the server will collect
+  // it, so the panel should be showing that rather than nothing.
+  const earlier = P.get('qkjob', '');
+  if (earlier) {
+    fetch(`/api/jobs/${encodeURIComponent(earlier)}`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => {
+        if (!j) { P.set('qkjob', ''); return; }
+        if (['queued', 'running', 'detached'].includes(j.status)) watchQuick(earlier);
+        else if (j.status === 'done' && j.output) watchQuick(earlier);
+        else P.set('qkjob', '');
+      })
+      .catch(() => {});
+  }
+
   drop.onclick = () => file.click();
   file.onchange = () => { if (file.files && file.files[0]) show(file.files[0]); };
   drop.ondragover = (e) => { e.preventDefault(); drop.classList.add('over'); };
@@ -5083,6 +5099,10 @@ async function quickGenerate() {
     const d = await r.json();
     if (!r.ok) throw new Error(d.detail || r.statusText);
     quickNote('<span class="ok">排進去了。</span>下面會顯示進度，跑完直接可以看。');
+    // Remembered, because on a card smaller than the model a shot takes
+    // long enough that people reload, switch tabs, or come back later -
+    // and the panel used to go blank while the job carried on unseen.
+    P.set('qkjob', d.id);
     watchQuick(d.id);
   } catch (e) {
     quickNote(`<span class="bad">${esc(e.message).replace(/\n/g, '<br>')}</span>`);
@@ -5102,6 +5122,7 @@ function watchQuick(jobId) {
     if (!out) return;
     if (j.status === 'done' && j.output) {
       clearInterval(QK.watch); QK.watch = null;
+      P.set('qkjob', '');
       out.innerHTML = `<video src="/outputs/${esc(j.output)}" controls playsinline
           style="max-width:100%;border-radius:12px"></video>
         <div class="s" style="margin-top:4px">也在「素材庫」裡。再打一句指令就可以生下一段。</div>`;
@@ -5110,6 +5131,7 @@ function watchQuick(jobId) {
     }
     if (j.status === 'error') {
       clearInterval(QK.watch); QK.watch = null;
+      P.set('qkjob', '');
       out.innerHTML = `<div class="errbox">${esc(j.message || '生成失敗')}</div>`;
       return;
     }

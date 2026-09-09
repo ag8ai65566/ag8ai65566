@@ -7602,6 +7602,66 @@ async def test_review_regressions() -> None:
         await comfy_runner.cleanup()
 
 
+def test_progress_phases() -> None:
+    """The bar and the message have to describe the whole job, not the sampler.
+
+    Reported from a real machine: the page sat on "生成中 100%" with a full bar
+    and looked frozen. It was not frozen. Only the sampler emits `progress`
+    events, so when sampling finished the message stopped changing - and the
+    VAE decode and the video encode that come afterwards took longer than the
+    sampling had, because the card is smaller than the model.
+    """
+    import registry
+    import server
+    import workflow
+
+    section("progress through the whole job")
+    model = registry.get("hy15-480p")
+    params = registry.GenParams.defaults_for(model)
+    graph = workflow.build(model, params, image_name="a.png", prompt="p", seed=1,
+                           width=528, height=768,
+                           available_nodes={"CreateVideo", "SaveVideo"},
+                           filename_prefix="t/p")
+
+    check(server.SAMPLING_CEILING < 1.0,
+          f"sampling cannot fill the bar on its own ({server.SAMPLING_CEILING})")
+
+    # Every node in a graph this app built should have something to say.
+    unnamed = [n for n in graph if server._phase_for(graph, n) is None]
+    check(not unnamed, f"every node in a built graph names a phase ({unnamed})")
+
+    by_class = {n["class_type"]: node_id for node_id, n in graph.items()}
+    decode = by_class.get("VAEDecode") or by_class.get("VAEDecodeTiled")
+    check(decode is not None, f"the graph has a decode step ({sorted(by_class)[:4]}…)")
+    text, at = server._phase_for(graph, decode)
+    check("解碼" in text, f"…and it is described as decoding, not as 100% ({text[:12]})")
+    check(at > server.SAMPLING_CEILING,
+          f"…and sits past the sampling range, so the bar still moves ({at})")
+    check("爆" in text or "最久" in text,
+          "…and warns that this is the slow step on a small card")
+
+    save_text, save_at = server._phase_for(graph, by_class["SaveVideo"])
+    check(save_at > at, f"saving is later still ({save_at} vs {at})")
+    check(save_at < 1.0, "…and 100% is reserved for actually being finished")
+
+    # An imported graph has no entry in the table; its own titles are used.
+    foreign = {"9": {"class_type": "SomeCustomNode", "inputs": {},
+                     "_meta": {"title": "Fancy Upscale"}}}
+    got = server._phase_for(foreign, "9")
+    check(got is not None and "Fancy Upscale" in got[0],
+          f"an unknown node falls back to its own title ({got})")
+    check(server._phase_for(foreign, "nope") is None,
+          "and a node that is not in the graph says nothing rather than guessing")
+
+    # The client has to actually report node changes, or none of this fires.
+    import inspect
+
+    from comfy_client import ComfyClient
+    src = inspect.getsource(ComfyClient.run)
+    check("on_node" in src and 'data.get("node") is not None' in src,
+          "the client reports which node started, not only when the job ends")
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -8463,6 +8523,7 @@ async def main() -> int:
     await test_civitai()
     await test_lora_download()
     await test_review_regressions()
+    test_progress_phases()
     await test_reattach()
     await test_object_info_cache_invalidation()
     test_webp_classification()

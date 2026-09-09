@@ -280,7 +280,8 @@ class ComfyClient:
                     raise ComfyError(f"ComfyUI rejected the graph ({r.status}): {text}")
                 return json.loads(text)["prompt_id"]
 
-    async def run(self, graph: dict, on_progress=None, on_queued=None) -> list[OutputFile]:
+    async def run(self, graph: dict, on_progress=None, on_queued=None,
+                  on_node=None) -> list[OutputFile]:
         """Queue the graph and wait for it, reporting progress as 0.0-1.0.
 
         `on_queued` is called with ComfyUI's prompt id the instant the graph is
@@ -320,6 +321,14 @@ class ComfyClient:
                     if kind == "progress" and on_progress:
                         maximum = data.get("max") or 1
                         on_progress(data.get("value", 0) / maximum)
+                    elif kind == "executing" and data.get("node") is not None:
+                        # Which node ComfyUI has moved on to. Only the sampler
+                        # reports a percentage, so without this the message sat
+                        # at "生成中 100%" through the VAE decode and the video
+                        # encode - which on a card too small for the model is
+                        # the slowest part of the whole job. It looked frozen.
+                        if on_node:
+                            on_node(str(data["node"]))
                     elif kind == "execution_error":
                         raise ComfyError(
                             f"{data.get('node_type')}: {data.get('exception_message')}"

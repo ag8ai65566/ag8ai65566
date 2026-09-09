@@ -242,6 +242,44 @@ async def reattacher() -> None:
         await asyncio.sleep(15)
 
 
+# What each kind of node is doing, in words, and roughly how far through the
+# job it is. Only the sampler reports a percentage, so everything after it used
+# to leave the message reading "生成中 100%" - on a 10GB card decoding 121
+# frames takes longer than the sampling did, and the page looked frozen for all
+# of it. The sampler is also capped below 1.0 here so that 100% can only ever
+# mean finished.
+PHASE_BY_CLASS = {
+    "VAEDecode": ("解碼影片…（顯存小的話這步最久，也最容易爆）", 0.88),
+    "VAEDecodeTiled": ("分塊解碼影片…（顯存小的話這步最久）", 0.88),
+    "VAEDecodeAudio": ("解碼聲音…", 0.90),
+    "CreateVideo": ("組成影片…", 0.94),
+    "SaveVideo": ("存檔…", 0.97),
+    "SaveAnimatedWEBP": ("存檔…", 0.97),
+    "SaveWEBM": ("存檔…", 0.97),
+    "RIFE VFI": ("補幀…", 0.92),
+    "FILM VFI": ("補幀…", 0.92),
+    "ImageUpscaleWithModel": ("放大…", 0.92),
+    "UNETLoader": ("載入模型…（第一次會比較久）", 0.04),
+    "CheckpointLoaderSimple": ("載入模型…（第一次會比較久）", 0.04),
+    "UnetLoaderGGUF": ("載入模型…（第一次會比較久）", 0.04),
+    "CLIPLoader": ("載入文字編碼器…", 0.06),
+    "VAELoader": ("載入 VAE…", 0.07),
+}
+# Sampling is most of the work but not all of it, so its own 0-100% is mapped
+# into this range instead of reaching 1.0.
+SAMPLING_CEILING = 0.85
+
+
+def _phase_for(graph: dict, node_id: str) -> tuple[str, float] | None:
+    """A human phase for the node ComfyUI just started, if we know one."""
+    node = (graph or {}).get(node_id) or {}
+    phase = PHASE_BY_CLASS.get(str(node.get("class_type") or ""))
+    if phase:
+        return phase
+    title = ((node.get("_meta") or {}).get("title") or "").strip()
+    return (f"{title}…", 0.0) if title else None
+
+
 async def _store_outputs(record: library.Record, files) -> None:
     """Download ComfyUI's output files and file them under this job's id."""
     record.outputs = []
@@ -405,9 +443,22 @@ async def run_job(record: library.Record, image_bytes: bytes,
     if problems := await client.validate(graph):
         raise ComfyError("工作流程與這台 ComfyUI 不相容：\n- " + "\n- ".join(problems))
 
+    # Sampling never claims the whole bar: there is a decode and an encode
+    # after it, and on a small card the decode is the longest part.
     def progress(value: float) -> None:
-        record._progress = value
+        record._progress = min(value, 1.0) * SAMPLING_CEILING
         record.message = f"生成中 {value * 100:.0f}%"
+
+    def node_started(node_id: str) -> None:
+        phase = _phase_for(graph, node_id)
+        if not phase:
+            return
+        text, at = phase
+        record.message = text
+        # Never go backwards: a branched graph finishes nodes out of order,
+        # and a bar that jumps back reads as something having gone wrong.
+        if at:
+            record._progress = max(record._progress or 0.0, at)
 
     def queued(prompt_id: str) -> None:
         # Written down and saved immediately. From here ComfyUI owns a job
@@ -417,7 +468,8 @@ async def run_job(record: library.Record, image_bytes: bytes,
         lib.save()
 
     record.message = "載入模型…（第一次會比較久）"
-    files = await client.run(graph, on_progress=progress, on_queued=queued)
+    files = await client.run(graph, on_progress=progress, on_queued=queued,
+                             on_node=node_started)
     if not files:
         raise ComfyError("ComfyUI 沒有回傳任何輸出檔案")
 
