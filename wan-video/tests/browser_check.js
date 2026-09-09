@@ -681,9 +681,15 @@ function crc32(buf) {
   require('fs').writeFileSync(wavPath, Buffer.concat([head, Buffer.alloc(800)]));
   await page.setInputFiles('#sdaudiofile', wavPath); await page.waitForTimeout(2500);
   const audioNote = await page.textContent('#sdplannote');
-  check(audioNote.includes('音訊驅動'),
-    'and an i2v shot is told the file will not drive anything -> '
-    + audioNote.replace(/\s+/g,' ').slice(0,40));
+  // It used to say "switch this shot to S2V and the file will drive the lips",
+  // which pointed at a route this app has no graph for - and never mentioned
+  // the one thing the file actually does. Nothing runnable here takes sound as
+  // an input, so an uploaded take is the shot's soundtrack at the join.
+  check(audioNote.includes('合成整集') && audioNote.includes('不會進生成'),
+    'and the shot is told where the file will be used, and where it will not -> '
+    + audioNote.replace(/\s+/g,' ').slice(0,44));
+  check(!audioNote.includes('S2V') && !audioNote.includes('**'),
+    'without pointing at a mode that cannot run here, and with no stray markdown');
 
   await page.click('#sddel'); await page.waitForTimeout(1000);
   check(!await page.isVisible('#sdbody'), 'deleting the project closes the pipeline');

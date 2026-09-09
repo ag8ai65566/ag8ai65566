@@ -104,6 +104,11 @@ class OutputFile:
     type: str
 
 
+# Seconds between websocket pings while waiting for a generation. See the
+# comment at the ws_connect call: this has to outlast a cold model load.
+WS_HEARTBEAT = 600.0
+
+
 class ComfyClient:
     def __init__(self, base_url: str) -> None:
         self.base = base_url.rstrip("/")
@@ -275,14 +280,35 @@ class ComfyClient:
                     raise ComfyError(f"ComfyUI rejected the graph ({r.status}): {text}")
                 return json.loads(text)["prompt_id"]
 
-    async def run(self, graph: dict, on_progress=None) -> list[OutputFile]:
-        """Queue the graph and wait for it, reporting progress as 0.0-1.0."""
+    async def run(self, graph: dict, on_progress=None, on_queued=None) -> list[OutputFile]:
+        """Queue the graph and wait for it, reporting progress as 0.0-1.0.
+
+        `on_queued` is called with ComfyUI's prompt id the instant the graph is
+        accepted, before any waiting. The caller persists it, because from that
+        moment ComfyUI owns a job that will finish whether or not this app is
+        still listening - and without the id there is no way back to it. A
+        user watched that happen: the wait timed out, the render completed, and
+        the finished file sat in ComfyUI's output folder with nothing here
+        knowing it existed.
+        """
         ws_url = self.base.replace("https://", "wss://").replace("http://", "ws://")
+        prompt_id = ""
         async with aiohttp.ClientSession() as session:
             async with session.ws_connect(
-                f"{ws_url}/ws?clientId={self.client_id}", heartbeat=30
+                # Long, on purpose. `heartbeat=30` sends a ping every 30s and
+                # gives up if no pong comes back - but ComfyUI loading a model
+                # bigger than the card blocks its event loop for minutes at a
+                # time, so it cannot answer, and aiohttp raised a TimeoutError
+                # on a run that was proceeding perfectly well. On a 10GB card
+                # loading 21.5GB of weights that is every single generation.
+                # A blocked event loop is what a big load looks like, not a
+                # dead connection; `reattach` in server.py is what covers a
+                # genuinely dead one.
+                f"{ws_url}/ws?clientId={self.client_id}", heartbeat=WS_HEARTBEAT
             ) as ws:
                 prompt_id = await self.queue(graph)
+                if on_queued:
+                    on_queued(prompt_id)
                 async for msg in ws:
                     if msg.type is not aiohttp.WSMsgType.TEXT:
                         continue
@@ -305,7 +331,32 @@ class ComfyClient:
 
         return await self.outputs(prompt_id)
 
-    async def outputs(self, prompt_id: str) -> list[OutputFile]:
+    async def collect(self, prompt_id: str) -> list[OutputFile]:
+        """The outputs of a job this app stopped watching, if it has finished.
+
+        Returns [] while it is still queued or running, so the caller can keep
+        checking. Raises only if ComfyUI says the job itself failed.
+        """
+        if not prompt_id:
+            return []
+        return await self.outputs(prompt_id, missing_ok=True)
+
+    async def pending(self, prompt_id: str) -> bool:
+        """Is this job still in ComfyUI's queue, running or waiting?"""
+        if not prompt_id:
+            return False
+        async with aiohttp.ClientSession() as s:
+            async with s.get(f"{self.base}/queue", timeout=30) as r:
+                r.raise_for_status()
+                queue = await r.json()
+        for key in ("queue_running", "queue_pending"):
+            for item in queue.get(key) or []:
+                # Entries are [number, prompt_id, graph, extra, outputs].
+                if isinstance(item, list) and len(item) > 1 and item[1] == prompt_id:
+                    return True
+        return False
+
+    async def outputs(self, prompt_id: str, missing_ok: bool = False) -> list[OutputFile]:
         async with aiohttp.ClientSession() as s:
             async with s.get(f"{self.base}/history/{prompt_id}", timeout=60) as r:
                 r.raise_for_status()
@@ -315,6 +366,11 @@ class ComfyClient:
         status = entry.get("status", {})
         if status.get("status_str") == "error":
             raise ComfyError(f"execution failed: {json.dumps(status)[:500]}")
+        # `missing_ok` is for reattaching to a job this app stopped watching:
+        # not in the history yet means still queued or running, which is a
+        # "check again later", not a failure.
+        if missing_ok and not entry:
+            return []
 
         files: list[OutputFile] = []
         # Output keys vary by save node (images / videos / gifs), so scan them all.

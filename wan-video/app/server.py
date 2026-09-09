@@ -156,13 +156,15 @@ async def startup() -> None:
     models.on_change = client.invalidate
     models.start()
     app.state.worker = asyncio.create_task(worker())
+    app.state.reattacher = asyncio.create_task(reattacher())
 
 
 @app.on_event("shutdown")
 async def shutdown() -> None:
     lib.save()
     book.flush()
-    for task in (getattr(app.state, "worker", None), models.stop()):
+    for task in (getattr(app.state, "worker", None),
+                 getattr(app.state, "reattacher", None), models.stop()):
         if task:
             task.cancel()
 
@@ -195,17 +197,115 @@ async def worker() -> None:
         except (ComfyError, workflow.UnsupportedModel) as exc:
             record.status, record.message = "error", str(exc)
         except Exception as exc:  # noqa: BLE001 - never kill the worker
-            record.status = "error"
-            # `explain` turns a connection failure into "ComfyUI is not
-            # running, here is how to start it". Anything it does not
-            # recognise still falls back to the class name and the message.
-            record.message = comfy_client.explain(exc, config.COMFY_URL)
-            traceback.print_exc()
+            # A job ComfyUI accepted is ComfyUI's now: it will finish whether
+            # or not this app was still listening. Losing the connection - or
+            # timing out because ComfyUI's HTTP thread was blocked loading a
+            # 21GB model - is not a reason to throw that away. A user waited a
+            # long time, got a timeout, and the render was going the whole time
+            # with nothing here left to collect it.
+            if record.prompt_id:
+                record.status = "detached"
+                record.message = (
+                    "這個 app 等不下去了，但 ComfyUI 那邊還在跑（或已經跑完）。"
+                    "沒有取消，也不用重按 —— 跑完會自己出現。")
+                traceback.print_exc()
+            else:
+                record.status = "error"
+                # `explain` turns a connection failure into "ComfyUI is not
+                # running, here is how to start it". Anything it does not
+                # recognise still falls back to the class name and the message.
+                record.message = comfy_client.explain(exc, config.COMFY_URL)
+                traceback.print_exc()
         finally:
-            record.finished = time.time()
+            # A detached job has not finished - something else is still doing
+            # it - so it must not be stamped with an end time.
+            if record.status != "detached":
+                record.finished = time.time()
             running.discard(job_id)
             lib.save()
             queue.task_done()
+
+
+async def reattacher() -> None:
+    """Keep checking for jobs ComfyUI finished while this app was not looking.
+
+    A background loop rather than something the user has to press: the whole
+    point is that they already waited once. Cheap - it does nothing at all
+    unless a job is actually detached.
+    """
+    while True:
+        try:
+            if any(r.status == "detached" for r in lib.records.values()):
+                await reattach()
+        except Exception:  # noqa: BLE001 - this loop must never die
+            traceback.print_exc()
+        await asyncio.sleep(15)
+
+
+async def _store_outputs(record: library.Record, files) -> None:
+    """Download ComfyUI's output files and file them under this job's id."""
+    record.outputs = []
+    for index, f in enumerate(files):
+        data = await client.download(f)
+        suffix = Path(f.filename).suffix or (".png" if record.kind == "image" else ".mp4")
+        name = f"{record.id}{'' if index == 0 else f'-{index + 1}'}{suffix}"
+        (config.OUTPUT_DIR / name).write_bytes(data)
+        record.outputs.append(name)
+    record.output = record.outputs[0] if record.outputs else None
+
+
+async def reattach() -> int:
+    """Collect jobs ComfyUI finished while this app was not listening.
+
+    The case this exists for: the wait times out (ComfyUI's HTTP thread blocks
+    while it loads a model bigger than the card, which on a 10GB card is every
+    time), the job is marked `detached`, and ComfyUI carries on and finishes
+    it. Without this the file sits in ComfyUI's output folder forever and the
+    user is told to press generate again - re-running a render that already
+    succeeded, which on that hardware is another long wait.
+
+    Returns how many jobs were picked up. Safe to call repeatedly.
+    """
+    picked = 0
+    for record in list(lib.records.values()):
+        if record.status != "detached" or not record.prompt_id:
+            continue
+        try:
+            files = await client.collect(record.prompt_id)
+        except ComfyError as exc:
+            record.status, record.message = "error", str(exc)
+            record.finished = time.time()
+            picked += 1
+            continue
+        except Exception:  # noqa: BLE001 - ComfyUI down again; try later
+            continue
+        if not files:
+            try:
+                if not await client.pending(record.prompt_id):
+                    # Not in the queue and not in the history: ComfyUI was
+                    # restarted and the job went with it. Say that, rather
+                    # than leaving it "still running" forever.
+                    record.status = "error"
+                    record.message = (
+                        "ComfyUI 那邊已經沒有這個工作了（它可能被重開過）。"
+                        "這一顆要重新生成。")
+                    record.finished = time.time()
+                    picked += 1
+            except Exception:  # noqa: BLE001
+                pass
+            continue
+        try:
+            await _store_outputs(record, files)
+        except Exception as exc:  # noqa: BLE001 - keep it detached and retry
+            record.message = f"抓結果的時候失敗了，會再試：{exc}"
+            continue
+        record.status, record.message = "done", ""
+        record._progress = 1.0
+        record.finished = time.time()
+        picked += 1
+    if picked:
+        lib.save()
+    return picked
 
 
 async def run_job(record: library.Record, image_bytes: bytes,
@@ -309,20 +409,20 @@ async def run_job(record: library.Record, image_bytes: bytes,
         record._progress = value
         record.message = f"生成中 {value * 100:.0f}%"
 
+    def queued(prompt_id: str) -> None:
+        # Written down and saved immediately. From here ComfyUI owns a job
+        # that will finish whether or not this app is still listening, and
+        # this id is the only way back to it - see `_reattach`.
+        record.prompt_id = prompt_id
+        lib.save()
+
     record.message = "載入模型…（第一次會比較久）"
-    files = await client.run(graph, on_progress=progress)
+    files = await client.run(graph, on_progress=progress, on_queued=queued)
     if not files:
         raise ComfyError("ComfyUI 沒有回傳任何輸出檔案")
 
     record.message = "下載結果…"
-    record.outputs = []
-    for index, f in enumerate(files):
-        data = await client.download(f)
-        suffix = Path(f.filename).suffix or (".png" if record.kind == "image" else ".mp4")
-        name = f"{record.id}{'' if index == 0 else f'-{index + 1}'}{suffix}"
-        (config.OUTPUT_DIR / name).write_bytes(data)
-        record.outputs.append(name)
-    record.output = record.outputs[0]
+    await _store_outputs(record, files)
 
 
 # -- model availability ------------------------------------------------------

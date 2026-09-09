@@ -7602,6 +7602,77 @@ async def test_review_regressions() -> None:
         await comfy_runner.cleanup()
 
 
+async def test_reattach() -> None:
+    """Work ComfyUI finished while this app was not listening is collected.
+
+    The failure this exists for, reported from a real machine: a 10GB card,
+    HunyuanVideo, a long wait, then "等 ComfyUI 回應等太久了". ComfyUI blocks
+    its HTTP thread while it loads a model bigger than the card, the wait timed
+    out, and the job was marked failed - while ComfyUI carried on and finished
+    the render. The prompt id was a local variable, so there was no way back to
+    it: the file sat in ComfyUI's output folder and the user was told to press
+    generate again, i.e. to re-run a render that had already succeeded.
+    """
+    import config
+    import library
+    import server
+    from comfy_client import ComfyClient
+
+    section("reattaching to a job comfyui kept doing")
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    saved_client = server.client
+    try:
+        server.client = ComfyClient(url)
+
+        def detached(job_id: str) -> library.Record:
+            record = library.Record(id=job_id, model_id="hy15-480p", prompt="p",
+                                    kind="video", status="detached",
+                                    prompt_id="fake-prompt-1")
+            server.lib.records[job_id] = record
+            return record
+
+        # -- still in ComfyUI's queue: leave it alone and keep waiting
+        fake.fail = "queued"
+        waiting = detached("rj-wait")
+        check(await server.reattach() == 0, "a job still in the queue is not touched")
+        check(waiting.status == "detached", "…and stays detached rather than failing")
+
+        # -- finished while nobody was looking: collect it
+        fake.fail = None
+        done = detached("rj-done")
+        picked = await server.reattach()
+        check(picked >= 1, f"a finished job is picked up ({picked})")
+        check(done.status == "done", f"…and marked done, not failed ({done.status})")
+        check(bool(done.output), f"…with the file fetched and filed ({done.output})")
+        check((config.OUTPUT_DIR / done.output).is_file(),
+              "…and the file really is on disk")
+        check(done.message == "", "…with the 'still running' notice cleared")
+
+        # -- ComfyUI was restarted and the job went with it: say so once
+        fake.fail = "vanished"
+        gone = detached("rj-gone")
+        await server.reattach()
+        check(gone.status == "error", f"a job ComfyUI no longer has is an error ({gone.status})")
+        check("重開" in gone.message and "重新生成" in gone.message,
+              f"…explaining why and what to do ({gone.message[:20]})")
+
+        # The link is what makes all of this possible, so it must be written
+        # down the moment ComfyUI accepts the graph - not at the end.
+        import inspect
+        src = inspect.getsource(server.run_job)
+        check("on_queued=queued" in src, "run_job registers the queued callback")
+        check("record.prompt_id = prompt_id" in src and "lib.save()" in src,
+              "…and the id is persisted straight away, not kept in a local")
+        check("prompt_id" in {f for f in library.Record.__dataclass_fields__},
+              "…into a real field, so `asdict` writes it without being told")
+    finally:
+        server.client = saved_client
+        for job_id in ("rj-wait", "rj-done", "rj-gone"):
+            server.lib.records.pop(job_id, None)
+        await runner.cleanup()
+
+
 async def test_object_info_cache_invalidation() -> None:
     """Downloading a model must not leave validate() blind to it."""
     import registry
@@ -8392,6 +8463,7 @@ async def main() -> int:
     await test_civitai()
     await test_lora_download()
     await test_review_regressions()
+    await test_reattach()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

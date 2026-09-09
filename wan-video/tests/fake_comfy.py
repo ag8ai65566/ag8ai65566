@@ -142,6 +142,7 @@ class FakeComfy:
                 web.post("/interrupt", self.interrupt),
                 web.get("/ws", self.ws),
                 web.get("/history/{pid}", self.history),
+                web.get("/queue", self.queue),
                 web.get("/view", self.view),
             ]
         )
@@ -204,7 +205,15 @@ class FakeComfy:
                 break
         return ws
 
+    async def queue(self, _req):
+        """What ComfyUI is still working on. `queued` makes a job look pending."""
+        pending = [[0, "fake-prompt-1", {}, {}, []]] if self.fail == "queued" else []
+        return web.json_response({"queue_running": [], "queue_pending": pending})
+
     async def history(self, _req):
+        # "queued" means the job has not reached the history yet: still going.
+        if self.fail in ("queued", "vanished"):
+            return web.json_response({})
         outputs = {} if self.fail == "no_output" else {
             "15": {
                 "images": [{"filename": "anim_00001.png", "subfolder": "wan", "type": "output"}],

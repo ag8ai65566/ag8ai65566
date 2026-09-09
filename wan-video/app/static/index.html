@@ -1599,7 +1599,10 @@ function openLightbox(src) {
 }
 
 /* ---------- gallery ---------- */
-const TAG = { queued:['排隊中',''], running:['生成中','run'], done:['完成','done'], error:['失敗','err'] };
+// `detached` is not a failure: this app stopped waiting, ComfyUI did not
+// stop working. It becomes `done` on its own once the file is collected.
+const TAG = { queued:['排隊中',''], running:['生成中','run'], done:['完成','done'],
+              detached:['ComfyUI 還在跑','run'], error:['失敗','err'] };
 
 function itemHtml(j, big) {
   const [text, cls] = TAG[j.status] || [j.status, ''];
@@ -1640,6 +1643,7 @@ function itemHtml(j, big) {
       ${j.status === 'running' ? `<div class="bar"><i style="width:${j.progress*100}%"></i></div>`:''}
       ${j.message && j.status !== 'error' ? `<div class="s">${esc(j.message)}</div>`:''}
       ${j.status === 'error' ? `<div class="errbox">${esc(j.message)}</div>`:''}
+      ${j.status === 'detached' ? `<div class="banner warn">${esc(j.message)}</div>`:''}
       <div class="acts">
         <button class="ghost tiny" data-star="${j.id}">${j.starred ? '★':'☆'}</button>
         ${j.outputs && j.outputs.length > 1

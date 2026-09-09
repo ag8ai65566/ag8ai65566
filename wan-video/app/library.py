@@ -53,6 +53,12 @@ class Record:
     started: float | None = None
     finished: float | None = None
     starred: bool = False
+    # ComfyUI's own id for this job. Remembered the moment the graph is
+    # accepted, because it is the only way back to work that ComfyUI is still
+    # doing after this app has stopped waiting for it. Without it, a timeout
+    # threw the link away: ComfyUI finished the render, wrote the file, and
+    # nothing here ever went to collect it.
+    prompt_id: str = ""
 
 
 class Library:
