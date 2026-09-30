@@ -156,14 +156,26 @@ def context_pack(run):
     return pack
 
 
+def frozen(run, name, source):
+    """本次任務的輸入在第一次使用時複製到 <run>/frozen/，之後各階段都讀這份，
+    模板或規則中途改版也不會讓同一個任務前後收到不同的依據。"""
+    f = run / "frozen" / name
+    if not f.exists():
+        write(f, source() if callable(source) else read(source))
+    return read(f)
+
+
 def build_prompt(run, stage):
     kind = run.name.split("-")[2]
+    limits = lambda: ("## Sudowrite 欄位上限與必填（sudowrite-fields.json）\n\n```json\n"
+                      + read(FIELDS_FILE) + "\n```\n")
     fill = {
         "{{context}}": context_pack(run),
-        "{{brief}}": read(run / "brief.md"),
-        "{{schema}}": read(FRAMEWORK / "templates" / f"dossier-{kind}.md"),
-        "{{rubric}}": read(FRAMEWORK / "prompts" / "rubric.md"),
-        "{{rules}}": read(FRAMEWORK / "prompts" / "shared-rules.md"),
+        "{{brief}}": frozen(run, "brief.md", run / "brief.md"),
+        "{{schema}}": frozen(run, f"dossier-{kind}.md", FRAMEWORK / "templates" / f"dossier-{kind}.md")
+                      + "\n\n" + frozen(run, "sudowrite-fields.md", limits),
+        "{{rubric}}": frozen(run, "rubric.md", FRAMEWORK / "prompts" / "rubric.md"),
+        "{{rules}}": frozen(run, "shared-rules.md", FRAMEWORK / "prompts" / "shared-rules.md"),
     }
     if stage == "review":
         fill["{{target}}"] = read(run / "claude-draft.md")
@@ -471,10 +483,12 @@ def verdict(run):
     f = run / "gpt-verify.md"
     if not f.exists():
         return None
-    first = next((l.strip().strip("*#` ") for l in read(f).splitlines() if l.strip()), "")
+    lines = read(f).splitlines()
+    first = lines[0].rstrip() if lines else ""  # 第一行必須剛好是這兩個字，不接受 **粗體** 或前置空行
     return first if first in ("APPROVE", "CHANGES") else "INVALID"
 
 
+MERGE_RECORD = re.compile(r"^## (合併紀錄|Merge (Record|Log|Notes))\b", re.M)
 REQUIRED_FOR_PROMOTE = ["brief.md", "claude-draft.md", "gpt-draft.md", "claude-review.md",
                         "gpt-review.md", "final.md", "gpt-verify.md"]
 
@@ -494,6 +508,8 @@ def cmd_promote(args):
         missing = [n for n in REQUIRED_FOR_PROMOTE if not (run / n).exists()]
         if missing:
             die(f"流程還沒走完，缺：{', '.join(missing)}")
+        if not MERGE_RECORD.search(text):
+            die("final.md 沒有合併紀錄段落（## 合併紀錄 / ## Merge Record）")
         v = verdict(run)
         if v != "APPROVE":
             die(f"GPT 驗收結果是 {v}（gpt-verify.md 第一行必須剛好是 APPROVE）")
@@ -550,7 +566,19 @@ def cmd_export(args):
             continue
         label = str(f.relative_to(proj / "bible"))
         meta = front_matter(text)
-        section = meta.get("sw_section") or {v: k for k, v in SECTION_DIR.items()}.get(f.parent.name, "Story")
+        section = meta.get("sw_section") or {v: k for k, v in SECTION_DIR.items()}.get(f.parent.name)
+        if section not in SECTION_DIR:
+            errors.append(f"{label}：sw_section「{section}」不是 Characters / Worldbuilding / Story")
+            continue
+        present = {m.group(1) for m in SW_SECTION.finditer(text)}
+        for fld in spec["required"].get(section, []):
+            if fld not in present:
+                errors.append(f"{label}：缺 [SW] {fld} 段落")
+            elif not fields.get(fld):
+                errors.append(f"{label}：[SW] {fld} 是必填，不能留白")
+        for fld in spec["optional"].get(section, []):
+            if fld not in present:
+                errors.append(f"{label}：缺 [SW] {fld} 段落（可以留白，但段落要在）")
         for d in sw_duplicates(text):
             errors.append(f"{label}：[SW] {d} 出現不只一次（後面的會蓋掉前面的）")
         for name, body in fields.items():
@@ -558,17 +586,19 @@ def cmd_export(args):
                 errors.append(f"{label} · {name}：還是模板的佔位文字")
             if name not in known:
                 warnings.append(f"{label} · {name}：不是已知欄位（自訂特質就沒問題；拼錯請修正）")
-        if section in ("Characters", "Worldbuilding"):
-            if not fields.get("Name"):
-                errors.append(f"{label}：缺 [SW] Name")
-            elif meta.get("name") and fields["Name"] != meta["name"]:
-                warnings.append(f"{label}：[SW] Name「{fields['Name']}」和 front matter 的 name「{meta['name']}」不一致")
+        if section in ("Characters", "Worldbuilding") and fields.get("Name") and fields["Name"] != meta.get("name"):
+            # front matter 的 name 是正式名稱；bible 檔名、Other Names 都以它為準
+            errors.append(f"{label}：[SW] Name「{fields['Name']}」和 front matter 的 name「{meta.get('name')}」不一致")
         cards.setdefault(section, []).append((f, meta, fields, label))
 
-    for fld in spec["story_fields"]:
-        have = [lab for _, _, fields, lab in cards["Story"] if fields.get(fld)]
-        if len(have) > 1:
-            warnings.append(f"Story · {fld}：{len(have)} 份設定都有內容（{', '.join(have)}），Sudowrite 只能用一份，請指定採用版本")
+    # Story 只能有一份有效設定：多份時由 front matter「active: true」指定採用哪一份
+    if len(cards["Story"]) > 1:
+        active = [c for c in cards["Story"] if c[1].get("active", "").lower() == "true"]
+        if len(active) != 1:
+            names = ", ".join(lab for *_, lab in cards["Story"])
+            errors.append(f"Story 有 {len(cards['Story'])} 份（{names}），請在採用的那份 front matter 寫 active: true（只能一份）")
+        else:
+            cards["Story"] = active
 
     lines = [f"# Sudowrite 貼上單 — {args.slug}",
              f"_產生時間 {dt.datetime.now():%Y-%m-%d %H:%M}。字數是本地估算：英文按單字、中日韓字元每字算 1"
@@ -643,7 +673,7 @@ def run_state(run):
              ("gpt-verify.md", "G驗")]
     marks = " ".join(("●" if (run / f).exists() else "○") + label for f, label in steps)
     v = verdict(run)
-    return marks + {"APPROVE": " ✅APPROVE", "CHANGES": " ↺CHANGES", None: ""}[v]
+    return marks + {"APPROVE": " ✅APPROVE", "CHANGES": " ↺CHANGES", "INVALID": " ⚠驗收格式不合", None: ""}[v]
 
 
 def cmd_status(args):
