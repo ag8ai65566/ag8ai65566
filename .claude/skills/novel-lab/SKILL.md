@@ -42,11 +42,20 @@ Sudowrite 欄位與上限在 `novel-lab/framework/sudowrite-fields.json`，Sudow
    最多來回 2 次，還不同意就把雙方立場並列給使用者決定。
 
 5. **收錄與匯出。** `APPROVE` 後 `lab.py promote <run>`，再 `lab.py export <slug>`
-   （超過上限會 exit 2，要回頭縮短）。
+   （⛔ 超過 Sudowrite 官方上限會 exit 2，要回頭縮短；⚠ 超過建議長度只是提醒）。
+   產出：`export/characters.csv`、`export/worldbuilding.csv`（Sudowrite 官方 CSV 格式）、
+   `export/cards/*.csv`（單張）、`export/sudowrite-paste.md`（Story 欄位與逐欄內容）。
 
 6. **回報。** 用使用者的語言，簡短給：這次產出的重點（3–5 行）、雙方主要分歧與怎麼決定、
-   「待確認」問題、貼上單路徑 `novel-lab/projects/<slug>/export/sudowrite-paste.md`
-   以及要貼到 Sudowrite 的哪個欄位。然後 commit 並 push 到目前的開發分支。
+   「待確認」問題、要匯入或貼上的檔案與 Sudowrite 裡的位置（新卡片用 CSV 匯入；
+   更新既有卡片請逐欄貼上，因為重複匯入可能產生重複卡片）。然後 commit 並 push 到目前的開發分支。
+
+## 改框架本身
+
+框架（模板、規則、流程）的修改也要和 GPT 商擬：改完跑 `lab.py framework-review`，
+依 GPT 的回覆（第一行 AGREE / AGREE-WITH-CHANGES / DISAGREE）調整，再回報使用者。
+`novel-lab/docs/reviews/` 裡若只有 `*.to-gpt.md` 而沒有對應的回覆，代表上一次審查還沒完成，
+GPT 可以連線時先補跑。
 
 ## GPT 連不上時（exit 3）
 

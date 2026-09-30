@@ -1,0 +1,36 @@
+{
+  "_about": "Sudowrite Story Bible 欄位與上限。hard = Sudowrite 官方公布的上限（超過會被擋或截斷）；soft = 本框架的建議值（Sudowrite 沒公布，但卡片太長時 Characters/Worldbuilding 會最先被擠出上下文）。字數算法：每個中日韓字元算 1、每個英文單字算 1。來源見 docs/sudowrite-2026-09.md，查核日 2026-09-30。",
+
+  "hard_limits_words": {
+    "Braindump": 4000,
+    "Synopsis": 4000,
+    "Style Examples": 1000
+  },
+  "hard_limits_chars": {
+    "Portrait Appearance": 2500
+  },
+  "soft_limits_words": {
+    "Genre": 80,
+    "Style": 120,
+    "Personality": 400,
+    "Background": 500,
+    "Physical Description": 200,
+    "Dialogue Style": 250,
+    "Motivation": 200,
+    "Relationships": 350,
+    "Secrets": 250,
+    "Description": 450,
+    "Rules": 350,
+    "Sensory Details": 200,
+    "Story Hooks": 250
+  },
+
+  "story_fields": ["Braindump", "Genre", "Style", "Synopsis"],
+  "character_columns": ["Name", "Role", "Pronouns", "Groups", "Other Names", "Personality",
+                        "Background", "Physical Description", "Dialogue Style"],
+  "worldbuilding_columns": ["Name", "Role", "Other Names", "Description"],
+
+  "hide_in_sudowrite": ["Secrets"],
+
+  "export_order": ["story", "characters", "world"]
+}
