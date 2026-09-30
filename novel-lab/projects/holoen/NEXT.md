@@ -1,29 +1,31 @@
-# 接續步驟（給下一個 session 的 Claude）
+# 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
-狀態（2026-09-30）：Kronii 與 Calli 的 **Claude 初稿已完成**（`claude-draft.md`），研究筆記在
-`claude-research.md`。GPT 還沒參與：上一個 session 沒有 OpenAI 連線。使用者**不採用人工轉貼**。
+狀態（2026-09-30 11:50 UTC）：
+- **Kronii、Calli**：兩邊初稿、互審、Claude 合併（`final.md`）都完成。GPT 驗收因 Codex 額度用完而失敗，
+  沒有 `gpt-verify.md` → 重跑 verify。
+- **Kiara、Ina、Gura、Ame**（runs `20260930-1113-*`）：Claude 研究筆記與初稿完成。GPT 盲寫批次因額度失敗 → 重跑 draft。
+- **框架**：GPT 第 4 次追蹤檢查因額度失敗 → 重跑（上一輪審查檔 `docs/reviews/gpt-framework-review-20260930-1123.md`）。
+- Codex/ChatGPT 額度訊息：「try again at 4:13 PM」（容器時區 UTC → 16:13 UTC）。已排 send_later 於 16:20 UTC。
 
-作者已定案（寫在 project.md「最高原則」）：**真實第一**（粗口、挑逗梗照原樣保留，不清理）、
-**不分時期**、**Role 一律 Protagonist**、卡片寫完整但重點在前。兩份 Claude 初稿已依此修改。
-給 GPT 的專案說明在 `framework/prompts/gpt-brief.md`，每次呼叫 GPT 都會自動附上。
-
-GPT 連線：用 `codex login --device-auth` 以使用者的 ChatGPT 帳號登入（見 SKILL.md），不需要 API 金鑰。
-照 `/novel-lab` 流程接續：
+作者定案（寫在 project.md「最高原則」）：真實第一（粗口、挑逗梗照原樣保留）、不分時期、Role 一律 Protagonist、
+卡片寫完整但重點在前。GPT 連線：`codex login --device-auth`（使用者的 ChatGPT 帳號，見 SKILL.md）。
 
 ```bash
-L="python3 novel-lab/tools/lab.py"
-K=novel-lab/projects/holoen/runs/20260930-0704-character-Ouro-Kronii
-C=novel-lab/projects/holoen/runs/20260930-0704-character-Mori-Calliope
+L="python3 novel-lab/tools/lab.py"; R=novel-lab/projects/holoen/runs
+K=$R/20260930-0704-character-Ouro-Kronii; C=$R/20260930-0704-character-Mori-Calliope
+KI=$R/20260930-1113-character-Takanashi-Kiara; IN=$R/20260930-1113-character-Ninomae-Inanis
+GU=$R/20260930-1113-character-Gawr-Gura; AM=$R/20260930-1113-character-Watson-Amelia
 
-$L doctor                       # 必須顯示「透過 Codex CLI」或「直接呼叫 OpenAI Responses API」
-$L framework-review             # 上一版框架的 GPT 審查還沒做，先補；依回覆調整框架
-$L gpt $K $C draft              # GPT 盲寫（批次；project.md 設了 web_search: live）
-# 讀 gpt-draft.md（Claude 初稿已完成，現在可以讀），寫兩份 claude-review.md；同時：
-$L gpt $K $C review             # GPT 審 Claude 的初稿
-# 合併成 final.md（英文；Other Names 不要放常見字，如 Time、Dad、your boy）
-$L gpt $K $C verify             # 第一行 APPROVE 才收錄；CHANGES 就修改再驗（最多 2 輪）
-$L promote $K && $L promote $C
-$L export holoen                # → export/characters.csv、cards/、sudowrite-paste.md
+$L doctor                                   # 必須顯示「會透過 Codex CLI 呼叫 GPT」
+$L gpt $K $C verify                         # APPROVE → promote；CHANGES → 修 final.md 再 verify
+$L framework-review --followup novel-lab/docs/reviews/gpt-framework-review-20260930-1123.md --changes "批次先 freeze_all 並拒絕 gpt-brief 版本不同；export 驗證 kind 與 sw_section 對應"
+$L gpt $KI $IN $GU $AM draft                # GPT 盲寫（四人一批；若太長失敗就兩人一批）
+# 讀 gpt-draft.md → 寫各自的 claude-review.md；同時：
+$L gpt $KI $IN $GU $AM review
+# 合併 final.md（照 Kronii/Calli 的 final.md 格式：證據標記、逐條來源、合併紀錄）
+$L gpt $KI $IN $GU $AM verify
+$L promote <run>   # 每個 APPROVE 的
+$L export holoen
 ```
 
-回報給使用者時用中文摘要。之後擴充到其他成員時，名單見 `project.md`，同一代的成員用批次一起跑。
+回報給使用者時用中文摘要。之後的成員名單見 project.md。
