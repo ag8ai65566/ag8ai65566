@@ -359,10 +359,10 @@ Clips are cited by their YouTube titles unless a timestamp is given. No recordin
 - C22 X posts (written): https://x.com/moricalliope/status/2051275164588114146 (2026-05, "hey deadbeats"); https://x.com/moricalliope/status/1905101192319086671 and https://x.com/moricalliope/status/1907038471929413823 (2025, >B} grins)
 - C23 Know Your Meme: https://knowyourmeme.com/memes/people/mori-calliope
 - C25 Kiara's wiki page, §Takamori (secondary): https://virtualyoutuber.fandom.com/wiki/Takanashi_Kiara
+- C26 Ricky's name: TV Tropes (secondary; search snippet only) https://tvtropes.org/pmwiki/pmwiki.php/Characters/HololiveMoriCalliopeCh ; clip "The real reason behind Calli naming her scythe Ricky [Calli & Ironmouse]" https://www.youtube.com/watch?v=4LJlaUhejmQ
 - C27 Kobo and swearing: "Calli Accidentally Taught Kobo Swear Words…" https://www.youtube.com/watch?v=fbvfzMI_9SY ; "Kobo really loves to Repeat Calli's swear words !!!" https://www.youtube.com/watch?v=EsVzRzloKsY
 - C28 TAKO∞TAKOVER credits (official hololive account; lyrics by Calliope): https://piapro.jp/t/a6Xp
 - C29 "Q" (Calliope Mori × Gawr Gura × DECO*27, 2022-02-03): https://www.youtube.com/watch?v=aetXqd9B8WE
-- C26 Ricky's name: TV Tropes (secondary; search snippet only) https://tvtropes.org/pmwiki/pmwiki.php/Characters/HololiveMoriCalliopeCh ; clip "The real reason behind Calli naming her scythe Ricky [Calli & Ironmouse]" https://www.youtube.com/watch?v=4LJlaUhejmQ
 
 ---
 
