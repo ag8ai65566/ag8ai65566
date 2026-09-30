@@ -13,10 +13,14 @@ sw_section: Characters
 >   reference transcription, not an audio check made here.
 > - **[Adaptation]** an author decision for this project.
 > - **[Unverified]** reported, but no reliable source was found.
+> - **[Audio-checked]** heard in an archived recording by Claude's audio check (I29; machine transcription
+>   read in context, timestamp given).
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (I#) are listed under Sources.
 >
-> **Audio status:** no recording was audio-checked by ear. The strongest voice evidence here is **I3**:
+> **Audio status:** on 2026-09-30 Claude checked about an hour of archived recordings (I29: the 2026 chat
+> stream behind the I3 captions, and the 2022 Nintendo Direct). Items heard there are marked
+> [Audio-checked]. Other voice evidence is **I3**:
 > YouTube auto-captions of about four hours of her own 2026 chat streams, plus captions of a pun
 > compilation (I8). These are machine transcriptions: no speaker labels, and approximate. Other [Observed]
 > items rest on a clip or stream **title**, which shows that a moment happened, not how it sounded, or
@@ -59,8 +63,10 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
    suffer"), then collapses into giggles. [Observed I2 §Quotes, secondary]
 4. When she notices she's rambling, she apologizes and steers back ("Sorry, I went on a little
    tangent." / "Anyways,"). [Observed I3 captions]
-5. When she makes a mistake, she fires the "Forgetty Beam" so everyone forgets it. [Observed I2
-   §Miscellaneous, secondary; I9 clip title]
+5. When she makes a mistake, she invokes the "Forgetty Beam!" bit and asks chat to forget it (a joke,
+   not a real memory power). [Observed I2 §Miscellaneous, secondary; I9 clip title]
+11. When she talks about a design she made (her Monster Hunter Wilds collab outfits), she explains it
+    through specific visual features and gets expansive. [Official I6]
 6. When chat invents WAH acronyms, she decides which are canon, and labels the lewd one: "That's the
    Forbidden WAH. We don't say that in public." [Observed I2 §WAH, secondary]
 7. When she's sleepy, her patience thins; otherwise she rarely gets tilted ("If I'm tired I have a short
@@ -98,8 +104,9 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
   - "Humu humu" / "Hmm" → an active-listening tic that began in voice calls; the wiki says it
     "disappeared unless Ina acknowledges it" → rare now. [Observed I2 §Miscellaneous, secondary; I4]
     [Official I22, video title]
-  - "Warau na!" ("Don't laugh!") → chat laughing at her. [Observed I2 §Quotes, secondary]
-  - "Oh, crab." → minced oath. [Observed I2 §Quotes, secondary]
+  - "Warau na!" ("Don't laugh!") → chat laughing at her. [Observed I2 §Quotes, secondary; the quote list
+    gives no source, so it stays off the card]
+  - "Oh, crab." → minced oath. [Observed I2 §Quotes, secondary; off the card for the same reason]
   - "I only have one brain cell" → self-deprecation → occasional. [Observed I2 §Miscellaneous; I3]
   - "Another gold trophy for Ninomanyo Inya'nis!" → an old Mario Kart bit chat still quotes. [Observed I2
     §Quotes; I13 clip title]
@@ -124,9 +131,11 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
   know," "yeah," "really," "um," "I guess," "I mean," "maybe," "probably," "right?". Connectors:
   "Anyways," "By the way," "Hold on," "We'll see." Positive words: "wonderful wonderful," "cute,"
   "genius." Mild exclamations: "Oh boy," "Oh my goodness," "Yay," "huzzah!" [Observed I3 captions]
-- **Profanity:** essentially none. She "usually never swears," and members treat a rare "damn" as
-  shocking [Observed I15 clip titles]. Her crude side runs through wink-level lines and puns (above). A
-  scene that gives her Kiara's or Calli's swearing is out of character.
+- **Profanity:** her ordinary speech favors mild exclamations: she has said she "usually never swears,"
+  and a rare "damn" from her made headlines in clips [Observed I15 clip titles]; about an hour of checked
+  audio had no swearing in her own words [Audio-checked I29]. Sharper language and bawdy wordplay turn up
+  in specific exchanges (above). Constant swearing in Kiara's or Calli's register would be out of
+  character; an occasional sharp word is not.
 - **Laughs, noises:** small giggles mid-sentence, gasps, the occasional snort, a throat-clear before a
   joke; "Mhm." "Hmm." "Ooh." while listening; voice cracks on high-energy words ("WAH," "tomorrow!").
   Written: "Ahaha," "hehe…hehehe," and kaomoji ("> w <)b", "; w;"). [Observed I3 captions; I9 clip
@@ -150,9 +159,13 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
     secondary]
   - Surprise can break the calm with a sharp, higher reaction or a crack; she has acknowledged the
     famous crack herself. [Official I18]
-  - Provisional direction: soft, gentle, mid-to-low speaking voice, unhurried; an occasional low, slow,
-    ominous "priestess" cadence as a bit. Keep the crack exceptional, not on every exclamation.
-  - Exact pitch, speed and accent: not specified.
+  - Measured (I29, 2026 chat): median pitch 223–232 Hz, in the middle of the six files measured the same
+    way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz), so "mid" rather than "low"; the slowest talker
+    of the six, about 81–95 words per minute of speech (Kronii 120–127, Calli 161–186). Approximate values
+    for relative comparison.
+  - Provisional direction: soft and gentle; a low, slow "priestess" cadence as an occasional bit (the
+    delivery of that bit was not checked). Keep the crack exceptional, not on every exclamation.
+  - Exact accent: not specified.
 - **Sounds off:**
   - Heavy profanity; sneering or cruel humor.
   - Loud sustained shouting or bratty energy.
@@ -180,14 +193,15 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 | Priestess / lore | Low, slow, ominous, then back to normal | "Despite how I look, I'm totally a normal human girl and a priestess of the Ancient Ones!" (I7) |
 
 ### Sample Lines
-1. "WAH! Good morning, afternoon, evening, everyone. Could this be Tako time? It is indeed Tako time." (verbatim, combined I1/I3)
-2. "I'll bonk you. With a crowbar. Don't do it." (I2 §Quotes)
-3. "The squid said he'd be right back. He had to squid-dle away." (Style demo: a flat pun, no signal)
-4. "Sorry, I went on a little tangent. Anyways." (verbatim I3)
-5. "Forgetty Beam! You saw nothing." (Style demo, built on I2)
-6. "We should draw a conclusion. I brought a pen." (Style demo, GPT)
-7. "That's the Forbidden WAH. We don't say that in public." (I2 §WAH, secondary)
-8. "Hope you guys have a wonderful rest of the morning, afternoon, evening. Until next time. Bye-bye. Bye-bye." (verbatim I3)
+Real lines first; Style demos after.
+1. "Good morning, afternoon, evening, everyone. Could this be Tako time?" … "It is indeed Tako time." (Audio-checked I29, 0:02:43 and 0:03:03)
+2. "I'm still in my jammies right now. I literally woke up and turned on stream." (Audio-checked I29)
+3. "Sorry, I got a little excited there." (Audio-checked I29, right after the "TOMORROW?!" outburst)
+4. "Anyways, I do have to start getting ready soon." (Audio-checked I29)
+5. "I'll bonk you. With a crowbar. Don't do it." (I2 §Quotes; I4 clip)
+6. "That's the Forbidden WAH. We don't say that in public." (I2 §WAH, secondary)
+7. "Is she wearing heels? Just asking for a friend." (I2 §Quotes, secondary)
+8. "We should draw a conclusion. I brought a pen." (Style demo, GPT)
 
 ## Appearance Anchors (original outfit)
 - 157 cm; long purple hair falling below her knees; squishy, tentacle-like side locks fading to yellow
@@ -221,7 +235,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Ouro Kronii | Serendipity partner (2026; "Octo'Clock") | A pun duo; they share Korean; Ina: "I get to... keep Kronii... all to myself... hehe" | [Official I7] [Observed Kronii file K8 §Miscellaneous] |
+| Ouro Kronii | Serendipity partner (interview 2026-06-04; unit name "Octo'Clock" in a 2026-06-24 short, I30) | A pun duo; they share Korean; Ina: "I get to... keep Kronii... all to myself... hehe" | [Official I7] [Observed Kronii file K8 §Miscellaneous] |
 | Takanashi Kiara | Myth genmate ("TakoTori") | Duo concert 2026; Kiara encouraged her dance work; Kiara groans at her puns; Ina is the first to message Kiara when she's down; Kiara once "fired" her over the chicken incident | [Official I20] [Observed I2 §Personality; Kiara file T2 §KFP] |
 | Mori Calliope | Myth genmate | Favorite pun target ("Every freaking time, Ina."); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
 | Watson Amelia (affiliate) | Myth genmate | Ina designed Bubba; the patient foil to Ame's salty gremlin; "Ame... Ame is British." | [Observed I2 §Personality, §Miscellaneous and §Quotes] |
@@ -229,18 +243,22 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her | [Observed I2 §Miscellaneous; I14] [Official I6] |
 | Houshou Marine | JP senior | Admired artist-performer ("Marine-senpai") | [Official I18] |
 | Shiranui Flare | JP senior | Gave her the nickname "Ore no Ina" | [Observed I2 nickname list] |
-| Hakos Baelz, Cecilia Immergreen | Collaborators | Ina and CC calmly mess with a terrified Bae in horror Minecraft | [Observed clip, per Claude's research; Unverified locator] |
 
 ## Arc
-Unapproved story proposal; not part of the baseline card. Her own song stories offer sourced options: in
+- **Starting point:** the current public persona (September 2026), as on the card.
+- **Turning points:** not established; no story has been chosen.
+- **End point:** open.
+- **Card update points:** update only after a chosen story event changes her allegiance, knowledge or
+  relationships.
+- **Sourced story options:** her own song stories offer sourced options: in
 MECONOPSIS, duty to the Ancient Ones conflicts with protecting the people around her [Official I7b]; in
 TAKO∞TAKOVER, the audience helps enact a deliberately unsettling collective transformation [Official
 I19]. A story must choose one before it changes her card.
 
 ## Story Engine
 - Trouble she brings: deadpan puns at serious moments; eldritch powers treated as mundane; mock-tyrant
-  punishments for chat; tangents that derail plans; unnerving calm in a horror scene.
-- Scene seeds (optional premises):
+  punishments for chat; tangents that derail plans.
+- Scene seeds ([Unverified] proposed fiction, awaiting author approval):
   1. The Ancient Ones whisper something important in the middle of a pun.
   2. AO-chan refuses to cooperate.
   3. During a solemn supernatural briefing, her accurate but badly timed pun splits the group. (GPT)
@@ -248,10 +266,14 @@ I19]. A story must choose one before it changes her card.
   5. Someone squishes her hair.
 
 ## Secrets & Foreshadowing
-(none; lore mysteries like "Past Ina" and the Watcher are open lore, not hidden facts)
+- **Truth:** none assigned. Lore mysteries like "Past Ina" and the Watcher are open lore, not hidden facts.
+- **Who knows what:** not applicable.
+- **What readers know:** her public persona only.
+- **Surface behavior or clues allowed on the card:** only the public behavior above.
+- **When and how to reveal:** not applicable.
 
 ## Intimacy & Boundaries (non-explicit)
-Not applicable (real-performer persona; not speculated).
+(None.)
 
 ## Hard Facts (continuity)
 - Birthday May 20; height 157 cm; debut 2020-09-13; unit hololive -Myth-; illustrator Kuroboshi Kouhaku
@@ -295,6 +317,11 @@ audio-checked by ear.
 - I26 Official *re:VISION* page: https://hololive.hololivepro.com/en/music/695/
 - I27 Audience discussion of her voice (secondary reception): https://www.reddit.com/r/Hololive/comments/js0cd5/
 - I28 COVER branding (2026-09): https://coveredge.cover-corp.com/en/list/6814
+- I29 Claude's audio check (2026-09-30), archived recordings via archive.ragtag.moe, whisper small.en +
+  Praat; windows, method and short quotes: `novel-lab/projects/holoen/research/audio-check/ina.md`.
+  Streams: we8TkYC7__0 (chat, 2026-05-13), EHpxi7khHb0 (Nintendo Direct watchalong, 2022-02-09)
+- I30 "#holoSerendipity It's Time for Octo'Clock!" (Kronii's channel, 2026-06-24; the unit name):
+  https://www.youtube.com/watch?v=KmczU8q1oqE
 
 ---
 
@@ -314,7 +341,7 @@ hololive, hololive -Myth-, Myth, hololive English (former branch name)
 Ina, Ina'nis, Inya, Ninomanyo Inya'nis, 一伊那尓栖
 
 ## [SW] Personality
-Ina is a priestess of the Ancient Ones who treats tentacles and eldritch whispers as completely normal; in practice she is a gentle, laid-back hermit who loves rolling around on the floor. She drops puns flat, with no setup, lets them sit, and giggles to herself while chat groans "INAFF"; she enjoys the groan more than the laugh. When chat misbehaves or someone squishes her hair, she threatens to bonk them with a crowbar in the sweetest voice; when chat teases her, she plays the stern overlord for a beat, then collapses into giggles. She wanders into tangents and apologizes her way back out. When she slips up, she fires a "Forgetty Beam" so everyone forgets. Her patience is nearly endless unless she's sleepy. She draws alongside her viewers instead of lecturing them, gushes in detail about things she loves, and takes on demanding stage work; her quiet is never passivity. She is the first to message a friend who's down, and she is sincere in short, gentle ways: "Live without regrets." She loves food and gacha and dislikes bugs, boredom and cucumbers.
+Ina is a priestess of the Ancient Ones who treats tentacles and eldritch whispers as completely normal; in practice she is a gentle, laid-back hermit who loves rolling around on the floor. She drops puns flat, with no setup, lets them sit, and giggles to herself while chat groans "INAFF"; she enjoys the groan more than the laugh. When chat misbehaves or someone squishes her hair, she threatens to bonk them with a crowbar in the sweetest voice; when chat teases her, she plays the stern overlord for a beat, then collapses into giggles. She wanders into tangents and apologizes her way back out. When she slips up, she calls a "Forgetty Beam!" and tells chat to forget it. Her patience is nearly endless unless she's sleepy. She draws alongside her viewers instead of lecturing them, explains her own designs through specific details, and takes on demanding stage work; her quiet is never passivity. She is the first to message a friend who's down, and she is sincere in short, gentle ways: "Live without regrets." She loves food and gacha and dislikes bugs, boredom and cucumbers.
 
 ## [SW] Background
 Ina is an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles, and began hearing Ancient Whispers. The book is now her floating companion, AO-chan. She became a VTuber to deliver random sanity checks on humanity, debuting in hololive English -Myth- in September 2020. She is also an illustrator who drew Myth's intro art and mascots. Her fans are the Tentacult, each one a Takodachi, after the little purple mascot she designed. Her songs tell darker stories about her priestess duty. She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, and she partners with Ouro Kronii. Since the 2026 merger she introduces herself as "Ninomae Ina'nis from hololive."
@@ -323,16 +350,16 @@ Ina is an ordinary girl, despite how she looks, who picked up a strange book, ga
 Ina is 157 cm tall, with long purple hair falling below her knees, squishy tentacle-like side locks fading to yellow tips, purple flaps on her head like a dumbo octopus's fins, and bluish-purple eyes. In her original outfit she wears a golden tiara, a sleeveless purple-and-yellow dress and small white wings at her waist, and she can show a golden halo. Large purple tentacles float behind her, and her book AO-chan hovers nearby. In horror games she hugs a pink stuffed rabbit named Burrito.
 
 ## [SW] Dialogue Style
-Soft, unhurried English full of gentle hedges ("like," "I think," "you know," "I guess," "maybe," "right?"), with micro-pauses, restarts and meandering tangents she closes with "Anyways." Puns arrive flat and unannounced, and the next line carries on as if nothing happened. She threatens sweetly and gives over-formal mock-tyrant speeches to chat, then breaks into giggles. She almost never swears; a rare "damn" shocks people. Her crude side is wink-level innuendo and puns, like the "Forbidden WAH" she says we don't say in public. She uses mild exclamations ("Oh boy," "Oh my goodness," "Yay"), calls fans "Takodachi," "you guys" or "chat," calls members by short names ("Calli," "Biboo," "CC"), and uses someone's full name as a mock-serious scold. She sprinkles in a little Japanese ("yabe," "kusa," "warau na"). Style demo: "The squid said he'd be right back. He had to squid-dle away."
+Soft, unhurried English full of gentle hedges ("like," "I think," "you know," "I guess," "maybe," "right?"), with micro-pauses, restarts and meandering tangents she closes with "Anyways." Puns arrive flat and unannounced, and the next line carries on as if nothing happened. She threatens sweetly and gives over-formal mock-tyrant speeches to chat, then breaks into giggles. Her ordinary speech favors mild exclamations and she rarely swears; her bawdy side comes out in wordplay and wink-level lines ("Is she wearing heels? Just asking for a friend."), like the "Forbidden WAH" she says we don't say in public. She uses mild exclamations ("Oh boy," "Oh my goodness," "Yay"), calls fans "Takodachi," "you guys" or "chat," calls members by short names ("Calli," "Biboo," "CC"), and uses someone's full name as a mock-serious scold. She sprinkles in a little Japanese ("yabe," "kusa"). Her own words: "I'm still in my jammies right now. I literally woke up and turned on stream." "Anyways, I do have to start getting ready soon."
 
 ## [SW] Catchphrases
-"WAH!" (opening, excitement, sometimes a droopy one at the end); "Good morning, afternoon, evening, everyone." (greeting); "Could this be Tako time? It is indeed Tako time." (stream opening); "INAFF" (the groan her puns earn); "I'll bonk you. With a crowbar. Don't do it." (chat misbehaving or hair-squishing); "Forgetty Beam!" (after a slip); "Humu humu" (listening; rare now); "Warau na!" (don't laugh at me); "Oh, crab." (minced oath); "That's the Forbidden WAH. We don't say that in public." (chat's lewd WAH acronym); "TOMORROW?!" (startled callback); "I'm just a normal girl!" (denying anything is unusual); "Wooden shovel" (greeting with Bijou); "Live without regrets." (sincere); "Hope you guys have a wonderful rest of the morning, afternoon, evening. Until next time. Bye-bye. Bye-bye." (sign-off)
+"WAH!" (opening, excitement, sometimes a droopy one at the end); "Good morning, afternoon, evening, everyone." (greeting); "Could this be Tako time? It is indeed Tako time." (stream opening); "INAFF" (the groan her puns earn); "I'll bonk you. With a crowbar. Don't do it." (chat misbehaving or hair-squishing); "Forgetty Beam!" (after a slip); "Humu humu" (listening hum); "That's the Forbidden WAH. We don't say that in public." (chat's lewd WAH acronym); "TOMORROW?!" then "Sorry, I got a little excited there." (startled outburst and apology); "I'm just a normal girl!" (denying anything is unusual); "Wooden shovel" (greeting with Bijou); "Live without regrets." (sincere); "Hope you guys have a wonderful rest of the morning, afternoon, evening. Until next time. Bye-bye. Bye-bye." (sign-off)
 
 ## [SW] Voice & Delivery
-A quiet, calm, unhurried voice with small pauses. She laughs in little ways: quick giggles mid-sentence, tiny gasps, the occasional snort. She hums "Mhm" and "Hmm" while listening. Puns come out flat and quick, followed by a silence. Genuine surprise breaks the calm with a sharp, higher reaction that can crack ("TOMORROW?!"); keep the crack for real surprises. Her threats are sweet-voiced and dead calm. Sincere lines get quieter and shorter. For lore moments she can drop into a low, slow, ominous priestess cadence before snapping back to normal. In horror she is often unnervingly calm.
+A quiet, calm voice in the middle of the pitch range, and the slowest pace among her Myth genmates, with small pauses. She laughs in little ways: quick giggles mid-sentence, tiny gasps, the occasional snort. She hums "Mhm" and "Hmm" while listening. Puns come out flat and quick, followed by a silence. Genuine surprise breaks the calm with a sharp, higher reaction that can crack ("TOMORROW?!"); keep the crack for real surprises. Her threats are sweet-voiced and dead calm. Sincere lines get quieter and shorter. For a lore bit she can put on a slow, ominous priestess voice before snapping back to normal.
 
 ## [SW] Motivation
-Ina wants to deliver her sanity checks on humanity, which mostly means giving people a better day, making art, growing as a performer, and landing one more pun than anyone can stand.
+In her lore, Ina delivers sanity checks on humanity. In her own public words, she wants to give her viewers a better day, make art and music, grow as a performer and give back through charity, and she will always land one more pun than anyone can stand.
 
 ## [SW] Relationships
 Ouro Kronii: her 2026 performance partner; they trade puns and share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner who encourages her stage work and groans at her puns; Ina is the first to message Kiara when she's down. Mori Calliope: her favorite pun target ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow sea creature (UMISEA); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy whose collab outfit Ina designed. Houshou Marine: a senior artist she admires.
@@ -372,8 +399,22 @@ Ouro Kronii: her 2026 performance partner; they trade puns and share Korean, and
   - Voice: "mid-to-low" is provisional; the card says quiet and calm (I27, I2).
 - **Innuendo lines:** kept in the file with their status (the Forbidden WAH, heels, "no chests," the
   keyboard incident); the card carries the Forbidden WAH line and a description of the register.
-- **Pending:** GPT's review of Claude's draft (Codex limit until 21:21 UTC). Its points will be merged
-  here before verification.
+- **GPT's review of Claude's draft (applied after the first merge):**
+  - "Warau na!" and "Oh, crab." left the card (wiki quote list without a source); they stay in the file.
+  - The official greeting and the spoken opening are separate; Sample Line 1 is no longer a composite.
+  - Unsupported acoustic certainty removed: the general horror calm, the low ominous cadence as a fact,
+    the Bijou impression as a measurement. The crack stays an occasional reaction.
+  - Profanity reworded so it is not an innocence rule.
+  - Forgetty Beam is a bit, not a memory power; Motivation separates the lore premise from her stated
+    priorities (I6).
+  - Octo'Clock cited to its own source (I30), not the June 4 interview; the unsourced Bae/CC row removed.
+  - Structure completed (boundary, Arc, Secrets, seeds labeled as proposals, "(None.)"); "squid-dle"
+    replaced by real lines.
+- **Author decisions and audio check (2026-09-30):** real dialogue preferred; Claude checked archived
+  recordings (I29). Verified: the spoken opening and sign-off, "I literally woke up and turned on stream,"
+  the "like" rate (1 in 36 words), the Nintendo Direct outburst and apology, the "Hell Flame" epithet, the
+  slow pace. Real lines replace the Style demos on the card; one sourced bawdy line ("Is she wearing
+  heels?") is on the card, as the author asked.
 - **Left to the author:** whether a story uses one of her song narratives as literal continuity.
 
 ## Open Questions
