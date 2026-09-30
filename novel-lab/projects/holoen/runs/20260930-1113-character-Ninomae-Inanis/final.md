@@ -225,7 +225,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Takanashi Kiara | Myth genmate ("TakoTori") | Duo concert 2026; Kiara encouraged her dance work; Kiara groans at her puns; Ina is the first to message Kiara when she's down; Kiara once "fired" her over the chicken incident | [Official I20] [Observed I2 §Personality; Kiara file T2 §KFP] |
 | Mori Calliope | Myth genmate | Favorite pun target ("Every freaking time, Ina."); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
 | Watson Amelia (affiliate) | Myth genmate | Ina designed Bubba; the patient foil to Ame's salty gremlin; "Ame... Ame is British." | [Observed I2 §Personality, §Miscellaneous and §Quotes] |
-| Gawr Gura (graduated) | Myth genmate ("UMISEA" with Aqua, Marine, Chloe) | Shared history; prank war (per Claude's research, not re-sourced here [Unverified]) | [Observed I2 §Relationships] |
+| Gawr Gura (graduated) | Myth genmate ("UMISEA" with Aqua, Marine, Chloe) | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
 | Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her | [Observed I2 §Miscellaneous; I14] [Official I6] |
 | Houshou Marine | JP senior | Admired artist-performer ("Marine-senpai") | [Official I18] |
 | Shiranui Flare | JP senior | Gave her the nickname "Ore no Ina" | [Observed I2 nickname list] |
@@ -335,7 +335,7 @@ A quiet, calm, unhurried voice with small pauses. She laughs in little ways: qui
 Ina wants to deliver her sanity checks on humanity, which mostly means giving people a better day, making art, growing as a performer, and landing one more pun than anyone can stand.
 
 ## [SW] Relationships
-Ouro Kronii: her 2026 performance partner; they trade puns and share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner who encourages her stage work and groans at her puns; Ina is the first to message Kiara when she's down. Mori Calliope: her favorite pun target ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): shared Myth history. Koseki Bijou: "wooden shovel" buddy whose collab outfit Ina designed. Houshou Marine: a senior artist she admires.
+Ouro Kronii: her 2026 performance partner; they trade puns and share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner who encourages her stage work and groans at her puns; Ina is the first to message Kiara when she's down. Mori Calliope: her favorite pun target ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow sea creature (UMISEA); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy whose collab outfit Ina designed. Houshou Marine: a senior artist she admires.
 
 ## [SW] Secrets
 (none)

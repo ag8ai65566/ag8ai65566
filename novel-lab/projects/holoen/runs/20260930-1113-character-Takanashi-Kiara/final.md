@@ -253,7 +253,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Mori Calliope | Myth genmate | Kiara long called Calli her "wife" and coined "TakaMori"; Calli rebuffed her and calls her "kusotori" ("shitbird"). They toned the ship down in 2021 and stay close; they play "Mom" and "Dad" to Kobo | [Observed T2 §Takamori, secondary; T14 title] |
 | Ninomae Ina'nis | Myth genmate ("TakoTori") | Duo concert 2026; Kiara "fired" Ina over the 2020 chicken incident; Ina is the first to message her when she's down | [Official T11, T12] [Observed T2 §KFP; T22 §Personality, secondary] |
 | Watson Amelia (affiliate) | Myth genmate | Kiara's EN oshi ("#1 Ame gosling"), credited for help with 3D productions; Ame made HOLOTALK intro material | [Observed T2 §Likes and dislikes] [Official T9] |
-| Gawr Gura (graduated) | Myth genmate | German lessons where Kiara taught her German swears and rickrolled her; "GURA YOU LITTLE SHIT" | [Observed T15; T2 §Miscellaneous] [Official T16] |
+| Gawr Gura (graduated) | Myth genmate | German lessons where Kiara taught her German swears and rickrolled her; Gura's 2020 Minecraft prank filled KFP's back room with chickens; "GURA YOU LITTLE SHIT" | [Observed T15; T2 §Miscellaneous and §KFP] [Official T16] |
 | Koseki Bijou | Advent junior; 2026 Serendipity partner | Practical encouragement for stage work; shared "6 7" meme | [Official T10] |
 | Kobo Kanaeru | Collaborator | Kobo calls her "Mommy Kiwawa"; Kiara and Calli play her "Mom" and "Dad" | [Observed T5-gNEWWDKlTM8 clip title; T2 §Takamori] |
 | Raora Panthera | Justice member | The "Doom" incident | [Observed T2 §Quotes; T6] |
@@ -361,7 +361,7 @@ Fast and chatty, with sudden accelerations and strong stresses. Excitement bring
 Kiara wants to own a fast-food empire and keep KFP growing. She wants to entertain the people who support her, make communication across languages possible, and make ambitious performances work, and she hopes new people will keep joining KFP.
 
 ## [SW] Relationships
-Mori Calliope: Myth genmate whom Kiara long called her "wife" (TakaMori); Calli rebuffs her and calls her "kusotori," and together they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori), the calm counterweight; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi. Gawr Gura (graduated): Kiara taught her German and German swears; "GURA YOU LITTLE SHIT." Koseki Bijou: junior she encourages; they share the "6 7" meme. Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii: Kiara was a fan before Kronii debuted. Usada Pekora: her oshi and favorite senior.
+Mori Calliope: Myth genmate whom Kiara long called her "wife" (TakaMori); Calli rebuffs her and calls her "kusotori," and together they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori), the calm counterweight; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi. Gawr Gura (graduated): Kiara taught her German and German swears; Gura once filled KFP's back room with chickens; "GURA YOU LITTLE SHIT." Koseki Bijou: junior she encourages; they share the "6 7" meme. Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii: Kiara was a fan before Kronii debuted. Usada Pekora: her oshi and favorite senior.
 
 ## [SW] Secrets
 (none)

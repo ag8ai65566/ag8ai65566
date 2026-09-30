@@ -262,8 +262,8 @@ This map records public exchanges only. Ship names are fan terms. No private fee
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Takanashi Kiara | Myth genmate | Calli calls her "kusotori" ("shitty bird") and usually rebuffs her, while supporting "TakaMori." They play "Mom" and "Dad" to Kobo. | [Observed C7; C25 §Takamori, secondary] |
-| Ninomae Ina'nis | Myth genmate | Ina designed Death Sensei. Running bit: a shinigami afraid of a tako. | [Observed C4 §Mascot and fans, secondary; C21-eRObYMLdPfw clip title] |
-| Gawr Gura (graduated) | Myth genmate | "Bone Bros." The "Dad" joke started around Gura. | [Observed C4 §Relationships, secondary] |
+| Ninomae Ina'nis | Myth genmate | Ina designed Death Sensei. Running bit: a shinigami afraid of a tako. Calli wrote the lyrics for Ina's TAKO∞TAKOVER. | [Observed C4 §Mascot and fans, secondary; C21-eRObYMLdPfw clip title] [Official C28] |
+| Gawr Gura (graduated) | Myth genmate | "Bone Bros." The "Dad" joke started around Gura. They sang "Q" together (2022). | [Observed C4 §Relationships, secondary] [Official C29] |
 | Watson Amelia (affiliate) | Myth genmate | Ame pranks and scares her, e.g. with a surprise "ara ara." | [Observed C21-a03HNAHiwpM clip title] |
 | IRyS, Hakos Baelz | CHADCast cohosts | A chaotic podcast trio. Bae calls her "Cori Malliope." | [Observed C12; C4 nickname list, secondary] |
 | Gigi Murin | Frequent collaborator ("Grem Reaper," fan term) | Gigi ragebaits and teases her. Per the wiki, Calli only came to like how her own name sounds once Gigi started saying it. | [Observed C4 §Relationships and §Name, secondary; C21-wug0DWFeDXM clip title] |
@@ -360,6 +360,8 @@ Clips are cited by their YouTube titles unless a timestamp is given. No recordin
 - C23 Know Your Meme: https://knowyourmeme.com/memes/people/mori-calliope
 - C25 Kiara's wiki page, §Takamori (secondary): https://virtualyoutuber.fandom.com/wiki/Takanashi_Kiara
 - C27 Kobo and swearing: "Calli Accidentally Taught Kobo Swear Words…" https://www.youtube.com/watch?v=fbvfzMI_9SY ; "Kobo really loves to Repeat Calli's swear words !!!" https://www.youtube.com/watch?v=EsVzRzloKsY
+- C28 TAKO∞TAKOVER credits (official hololive account; lyrics by Calliope): https://piapro.jp/t/a6Xp
+- C29 "Q" (Calliope Mori × Gawr Gura × DECO*27, 2022-02-03): https://www.youtube.com/watch?v=aetXqd9B8WE
 - C26 Ricky's name: TV Tropes (secondary; search snippet only) https://tvtropes.org/pmwiki/pmwiki.php/Characters/HololiveMoriCalliopeCh ; clip "The real reason behind Calli naming her scythe Ricky [Calli & Ironmouse]" https://www.youtube.com/watch?v=4LJlaUhejmQ
 
 ---
@@ -401,7 +403,7 @@ A low speaking voice. Her comic rhythm often runs forceful entrance, conversatio
 Calli wants to keep improving her music, reach bigger stages and make work people remember, and in her lore that is how she harvests souls. She wants her Dead Beats to take care of themselves first and to look after the people around them.
 
 ## [SW] Relationships
-Takanashi Kiara: Myth genmate. Calli calls her "kusotori" and usually rebuffs her; together they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei; the running joke is a shinigami scared of a tako. Gawr Gura (graduated): her "Bone Bros" partner, where the Dad joke started. Watson Amelia (affiliate): pranks and scares her. IRyS and Hakos Baelz: her chaotic CHADCast cohosts; Bae calls her "Cori Malliope." Gigi Murin: frequent collaborator who ragebaits her. Kobo Kanaeru: calls her "Uncle Dad" and picks up and repeats her swear words. Koseki Bijou ("Biboo"): a junior whose skill Calli openly admires. Shiori Novella: 2026 performance partner who calls her "Mor Mori"; they chase absurd premises together. Ouro Kronii ("Kronster"): deadpan sparring partner, with a running joke about their 1 cm height difference. Hoshimachi Suisei: a Japanese senpai she's starstruck by.
+Takanashi Kiara: Myth genmate. Calli calls her "kusotori" and usually rebuffs her; together they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei; the running joke is a shinigami scared of a tako, and Calli wrote the lyrics for Ina's song TAKO∞TAKOVER. Gawr Gura (graduated): her "Bone Bros" partner, where the Dad joke started; they sang "Q" together. Watson Amelia (affiliate): pranks and scares her. IRyS and Hakos Baelz: her chaotic CHADCast cohosts; Bae calls her "Cori Malliope." Gigi Murin: frequent collaborator who ragebaits her. Kobo Kanaeru: calls her "Uncle Dad" and picks up and repeats her swear words. Koseki Bijou ("Biboo"): a junior whose skill Calli openly admires. Shiori Novella: 2026 performance partner who calls her "Mor Mori"; they chase absurd premises together. Ouro Kronii ("Kronster"): deadpan sparring partner, with a running joke about their 1 cm height difference. Hoshimachi Suisei: a Japanese senpai she's starstruck by.
 
 ## [SW] Secrets
 (none)
@@ -472,6 +474,8 @@ Takanashi Kiara: Myth genmate. Calli calls her "kusotori" and usually rebuffs he
   accidental innuendo and a deliberate tease (C4 §Quotes, §Miscellaneous); a timid side with people
   she meets for the first time, such as senpai (C4 §Personality), replacing the unsourced Japanese
   delivery claim.
+- **Cross-file consistency pass (after verify round 1):** added two sourced facts that the Ina and Gura
+  files carry: Calli wrote the lyrics for Ina's TAKO∞TAKOVER (C28) and sang "Q" with Gura (C29).
 - **Disagreement resolved:**
   - GPT wanted current-only Groups; Claude wanted her history in it. Resolution: "hololive English
     (former branch name)" stays in Groups for name matching, labeled as former. Kept Mowi and Miss Mori
