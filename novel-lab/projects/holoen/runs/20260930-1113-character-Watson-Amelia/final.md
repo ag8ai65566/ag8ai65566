@@ -286,10 +286,10 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 - Scene seeds ([Unverified] proposed fiction, awaiting author approval):
   1. She rejects a suggested solution because it leaves one clue unexplained, then has to test her
      alternative. (GPT)
-  2. She "time-travels" into a genmate's stream as an announcer.
+  2. She "calls in from the past" to a genmate's stream as a bit, playing the announcer.
   3. A ground-pound opportunity during a solemn ceremony.
   4. A locked room offers an obvious solution that would destroy the evidence she wants to keep. (GPT)
-  5. Bubba goes missing, and the #1 detective is lost in her own office.
+  5. Her Bubba plush goes missing, and the #1 detective can't find it on her own desk.
 
 ## Secrets & Foreshadowing
 - **Truth:** none assigned.

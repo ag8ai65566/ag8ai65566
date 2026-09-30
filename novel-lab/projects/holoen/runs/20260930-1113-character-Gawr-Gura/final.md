@@ -275,9 +275,9 @@ and SNOTCast are fan or collab names.
 - Trouble she brings: confident wrong answers; boasts that collapse; pranks on genmates; hunger that
   derails plans; jinxing things by saying they'll be fine.
 - Scene seeds ([Unverified] proposed fiction, awaiting author approval):
-  1. A genuine emergency, and the "apex predator" is the first to scream.
+  1. A horror-game jump scare, and the "apex predator" is the first to scream.
   2. Someone asks her age for the record; the number changes every time.
-  3. Bloop escapes the bubble.
+  3. Her Bloop plush goes missing from the desk and she stages a dramatic search on stream.
   4. She presents a dubious seaside shortcut with total confidence, and Ame insists on testing it. (GPT)
   5. She's asked to explain a joke she refuses to explain.
 

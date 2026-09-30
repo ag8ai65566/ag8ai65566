@@ -276,9 +276,9 @@ I19]. A story must choose one before it changes her card.
 - Trouble she brings: deadpan puns at serious moments; eldritch powers treated as mundane; mock-tyrant
   punishments for chat; tangents that derail plans.
 - Scene seeds ([Unverified] proposed fiction, awaiting author approval):
-  1. The Ancient Ones whisper something important in the middle of a pun.
-  2. AO-chan refuses to cooperate.
-  3. During a solemn supernatural briefing, her accurate but badly timed pun splits the group. (GPT)
+  1. Mid-pun she launches into an "the Ancient Ones are whispering" bit, and chat can't tell if it's a setup.
+  2. Her AO-chan stream graphic glitches, and she role-plays it refusing to cooperate.
+  3. During a serious lore-reading segment on a collab, her accurate but badly timed pun splits the group. (GPT)
   4. Kronii refuses to react to a pun, and the next conversation becomes a contest. (GPT)
   5. Someone squishes her hair.
 

@@ -294,7 +294,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
   "management" that terrorizes employees; thirst for fictional women derailing a serious plot; an
   interview guest's careful answer colliding with her need to fill silence.
 - Scene seeds ([Unverified] proposed fiction, awaiting author approval):
-  1. A KFP health inspection: she must prove KFP is not a cult.
+  1. A KFP "health inspection" bit on stream: she must prove KFP is not a cult.
   2. She teaches a genmate a German phrase that turns out to be a swear.
   3. Someone says "Doom" at the worst possible moment.
   4. A KFP complaint arrives in three languages, and each translation seems to accuse a different

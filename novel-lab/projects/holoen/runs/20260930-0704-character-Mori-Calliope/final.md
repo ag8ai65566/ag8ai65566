@@ -316,7 +316,8 @@ This map records public exchanges only. Ship names are fan terms. No private fee
   2. A rehearsal has time for one last take, and her preferred revision would cut a collaborator's
      best moment.
   3. A chat meme keeps derailing a serious moment she is trying to hold together.
-  4. Death Sensei checks her soul quota. She has to prove streaming counts as reaping.
+  4. On stream she runs a mock "soul quota audit" with her Death Sensei plush and has to argue that
+     streaming counts as reaping (a bit; nobody reaps anything).
   5. Shiori pitches an absurd framing for a serious performance, and Calli catches herself defending it.
 
 ## Secrets & Foreshadowing
