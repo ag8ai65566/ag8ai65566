@@ -74,6 +74,16 @@ Scenes → Draft 寫正文。Style 不從別處生成，但影響所有正文。
 - **上下文不夠時的丟棄順序**：Worldbuilding → Characters → 前一章 → 連結的大綱摘要 →
   Genre → Key Details → Tone → Style → 前文 → 選取的文字。
 
+### GPT 審查時補充確認的官方細節（2026-09-30）
+- Synopsis **空白**時，原本依賴它的功能會改讀 Braindump → 還沒定稿就讓 Synopsis 真的空著，不要貼提醒文字。
+- `{{characters_raw}}`／`{{worldbuilding_raw}}` 會跳過相關性篩選，但**仍然不包含隱藏的內容** →
+  外掛也拿不到被隱藏的 Secrets。
+- 生成紀錄（History）上的 chiclets 可以看出這次實際用了哪些上下文 → 用 Scenes 底線確認有被認出來，
+  生成後再用 chiclets 檢查需要的卡片有沒有被帶入。
+- **卡片與特質預設全部可見**；CSV 匯入不帶隱藏設定 → Secrets 要在匯入後、第一次用 AI 前手動隱藏。
+- 中文字數：Braindump／Synopsis 的 4,000 words 是官方上限，但**中文怎麼計數官方沒公布**；
+  本框架「每個中文字算 1」只是保守估算。
+
 ## 四、字數上限
 
 Sudowrite 以英文 word 計。中文怎麼算官方沒說，我們保守地把每個中文字當一個 word。
@@ -91,6 +101,7 @@ Sudowrite 以英文 word 計。中文怎麼算官方沒說，我們保守地把�
 | Genre、Style、Scenes、Extra Instructions | 官方沒公布（**未證實**） | — |
 
 框架在 `framework/sudowrite-fields.json` 另外訂了「建議長度」（soft），超過只警告不擋。
+中文內容超過官方上限時只顯示「本地估算可能超限、平台計數待確認」，不直接擋下。
 
 ## 五、匯入與匯出
 

@@ -8,6 +8,7 @@
   gpt <run-dir> [<run-dir> ...] <stage>            讓 GPT 做某一階段（draft / review / verify / free）；
                                                    多個 run 會打包成一次呼叫（批次）
   split <stage> <reply.md>                         把人工轉貼回來的批次回覆拆回各 run
+  pack <run-dir> [...]                             產生本次任務的固定資料包 context.md（兩邊盲稿共用）
   promote <run-dir>                                把 final.md 收進專案的 bible/
   export <slug>                                    檢查字數上限並產生 Sudowrite 貼上單
   status [slug]                                    列出專案與每次 run 的進度
@@ -19,6 +20,7 @@ GPT 只允許 GPT-6 家族的 Astra / Sol，推理強度只允許 high 以上（
 
 import argparse
 import datetime as dt
+import hashlib
 import json
 import os
 import re
@@ -113,22 +115,50 @@ def cmd_brief(args):
     print(run.relative_to(ROOT.parent))
 
 
-def bible_context(proj, limit_chars=24000):
-    """把 project.md 和既有 bible 串成上下文，讓兩個模型對同一份設定工作。"""
-    parts = [f"# project.md\n\n{read(proj / 'project.md')}"]
-    for f in sorted((proj / "bible").rglob("*.md")):
-        parts.append(f"# bible/{f.relative_to(proj / 'bible')}\n\n{read(f)}")
-    ctx = "\n\n---\n\n".join(parts)
-    if len(ctx) > limit_chars:
-        ctx = ctx[:limit_chars] + "\n\n…（bible 過長已截斷；需要時請到檔案裡查）"
-    return ctx
+CONTEXT_BUDGET = 60000  # 字元；超過時整份檔案不附上並列出，不會切掉半張卡
+
+
+def sha(text):
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:12]
+
+
+def context_pack(run):
+    """本次任務的固定資料包。第一次使用時產生並存成 <run>/context.md，之後每個階段、
+    GPT 和 Claude 都讀同一份，確保兩份盲稿根據相同的設定。"""
+    f = run / "context.md"
+    if f.exists():
+        return read(f)
+    proj = run.parent.parent
+    brief = read(run / "brief.md")
+    bible = sorted((proj / "bible").rglob("*.md"))
+
+    def related(p):
+        name = front_matter(read(p)).get("name") or p.stem
+        return bool(name) and name in brief
+
+    files = [proj / "project.md"] + [p for p in bible if related(p)] + [p for p in bible if not related(p)]
+    parts, listed, omitted, used = [], [], [], 0
+    for i, p in enumerate(files):
+        text, rel = read(p), p.relative_to(proj)
+        block = f"# {rel}（sha256 {sha(text)}）\n\n{text}"
+        if i and used + len(block) > CONTEXT_BUDGET:
+            omitted.append(f"- {rel}")
+            continue
+        parts.append(block)
+        listed.append(f"- {rel}（sha256 {sha(text)}）")
+        used += len(block)
+    head = "## 本資料包包含的檔案\n" + "\n".join(listed)
+    if omitted:
+        head += "\n\n## 因篇幅沒有附上的檔案（需要時在「待確認」提出）\n" + "\n".join(omitted)
+    pack = head + "\n\n---\n\n" + "\n\n---\n\n".join(parts)
+    write(f, pack)
+    return pack
 
 
 def build_prompt(run, stage):
-    proj = run.parent.parent
     kind = run.name.split("-")[2]
     fill = {
-        "{{context}}": bible_context(proj),
+        "{{context}}": context_pack(run),
         "{{brief}}": read(run / "brief.md"),
         "{{schema}}": read(FRAMEWORK / "templates" / f"dossier-{kind}.md"),
         "{{rubric}}": read(FRAMEWORK / "prompts" / "rubric.md"),
@@ -250,6 +280,8 @@ def prepare_run(run, stage):
         die(f"{run.name}：verify 需要先有 final.md")
     out = run / STAGES[stage]
     prompt = build_prompt(run, stage)
+    if stage == "verify":  # 驗收綁定這一版 final.md；之後改過就要重新驗收
+        write(run / "verify-target.sha256", sha(read(run / "final.md")) + "\n")
     if out.exists():  # 例如 CHANGES 之後重新驗收：保留上一輪，不覆蓋
         n = 1
         while (old := out.with_name(f"{out.stem}.{n}.md")).exists():
@@ -321,6 +353,16 @@ def cmd_gpt(args):
         print(f"✓ {out.relative_to(ROOT.parent)}（{via} · {model} · {args.effort}）")
 
 
+def cmd_pack(args):
+    for name in args.runs:
+        run = Path(name).resolve()
+        if not (run / "brief.md").exists():
+            die(f"{run} 不是 run 目錄（缺 brief.md）")
+        existed = (run / "context.md").exists()
+        context_pack(run)
+        print(f"{'已存在' if existed else '✓ 產生'} {(run / 'context.md').relative_to(ROOT.parent)}")
+
+
 def cmd_split(args):
     """人工轉貼的批次回覆：把貼回來的整份回覆拆回各 run。"""
     reply = Path(args.reply).resolve()
@@ -342,7 +384,7 @@ def cmd_split(args):
 
 
 REVIEW_FILES = ["README.md", "framework/prompts/shared-rules.md", "framework/prompts/rubric.md",
-                "framework/prompts/gpt-brief.md",
+                "framework/prompts/gpt-brief.md", "tools/lab.py",
                 "framework/templates/dossier-character.md", "framework/templates/dossier-world.md",
                 "framework/templates/dossier-idea.md", "framework/sudowrite-fields.json",
                 "docs/sudowrite-2026-09.md"]
@@ -352,7 +394,14 @@ def cmd_framework_review(args):
     """框架本身也要和 GPT 商擬：把關鍵檔案打包成一份自足的提示送給 GPT。"""
     check_model(args.model, args.effort)
     files = "\n\n".join(f"## `{name}`\n\n````\n{read(ROOT / name)}\n````" for name in REVIEW_FILES)
-    prompt = read(FRAMEWORK / "prompts" / "gpt-framework-review.md").replace("{{files}}", files)
+    if args.followup:
+        # 追蹤審查：只確認上一輪的必改有沒有處理好，不重新全面審查
+        prompt = (read(FRAMEWORK / "prompts" / "gpt-framework-followup.md")
+                  .replace("{{previous}}", read(Path(args.followup)))
+                  .replace("{{changes}}", args.changes or "（見檔案）")
+                  .replace("{{files}}", files))
+    else:
+        prompt = read(FRAMEWORK / "prompts" / "gpt-framework-review.md").replace("{{files}}", files)
     out = ROOT / "docs" / "reviews" / f"gpt-framework-review-{dt.datetime.now():%Y%m%d-%H%M}.md"
     via, model = ask_gpt(prompt, out, args.model, args.effort)
     print(f"✓ {out.relative_to(ROOT.parent)}（{via} · {model} · {args.effort}）")
@@ -375,13 +424,20 @@ def cmd_doctor(_args):
 # ---------------------------------------------------------------- 收錄與匯出
 
 SW_SECTION = re.compile(r"^## \[SW\] (.+?)\s*$", re.M)
-EMPTY = {"（無）", "(無)", "（none）", "(none)", "無", "none", "N/A", "（交給 Sudowrite 生成）"}
+EMPTY = {"（無）", "(無)", "（none）", "(none)", "無", "none", "None", "NONE", "N/A", "n/a", "NA",
+         "不適用", "（不適用）", "無此設定", "沒有找到證據", "Not applicable", "(not applicable)",
+         "（交給 Sudowrite 生成）"}
 CJK = re.compile(r"[぀-ヿ㐀-鿿가-힯豈-﫿]")
 SECTION_DIR = {"Characters": "characters", "Worldbuilding": "world", "Story": "story"}
 
 
+def sw_duplicates(text):
+    names = [m.group(1) for m in SW_SECTION.finditer(text)]
+    return sorted({n for n in names if names.count(n) > 1})
+
+
 def sw_fields(text):
-    """抓出 `## [SW] 欄位名` 的段落 → {欄位名: 內容}；「（無）」視為空白。"""
+    """抓出 `## [SW] 欄位名` 的段落 → {欄位名: 內容}；「（無）」「None」等視為空白。"""
     marks = list(SW_SECTION.finditer(text))
     out = {}
     for i, m in enumerate(marks):
@@ -410,12 +466,16 @@ def front_matter(text):
 
 
 def verdict(run):
-    """gpt-verify.md 第一個非空行：APPROVE / CHANGES / None。"""
+    """gpt-verify.md 第一個非空行（去掉 Markdown 符號）必須剛好是 APPROVE 或 CHANGES。"""
     f = run / "gpt-verify.md"
     if not f.exists():
         return None
     first = next((l.strip().strip("*#` ") for l in read(f).splitlines() if l.strip()), "")
-    return "APPROVE" if first.upper().startswith("APPROVE") else "CHANGES"
+    return first if first in ("APPROVE", "CHANGES") else "INVALID"
+
+
+REQUIRED_FOR_PROMOTE = ["brief.md", "claude-draft.md", "gpt-draft.md", "claude-review.md",
+                        "gpt-review.md", "final.md", "gpt-verify.md"]
 
 
 def cmd_promote(args):
@@ -423,9 +483,22 @@ def cmd_promote(args):
     final = run / "final.md"
     if not final.exists():
         die("沒有 final.md")
-    if verdict(run) != "APPROVE" and not args.force:
-        die("GPT 還沒 APPROVE（gpt-verify.md 第一行）。確定要收錄請加 --force")
     text = read(final)
+    if args.force:
+        if not args.reason:
+            die("--force 要附 --reason \"作者裁決的理由\"；這會記成作者裁決，不算 GPT 核准")
+        with (run / "author-decision.md").open("a", encoding="utf-8") as f:
+            f.write(f"- {dt.datetime.now():%Y-%m-%d %H:%M} 作者裁決收錄 final.md（sha256 {sha(text)}）：{args.reason}\n")
+    else:
+        missing = [n for n in REQUIRED_FOR_PROMOTE if not (run / n).exists()]
+        if missing:
+            die(f"流程還沒走完，缺：{', '.join(missing)}")
+        v = verdict(run)
+        if v != "APPROVE":
+            die(f"GPT 驗收結果是 {v}（gpt-verify.md 第一行必須剛好是 APPROVE）")
+        target = run / "verify-target.sha256"
+        if not target.exists() or read(target).strip() != sha(text):
+            die("final.md 在 GPT 驗收之後被改過，請重新跑 verify")
     meta = front_matter(text)
     sub = SECTION_DIR.get(meta.get("sw_section", ""))
     if not sub:
@@ -449,38 +522,72 @@ def write_csv(path, base_cols, rows):
             w.writerow([r.get(c, "") for c in cols])
 
 
+def template_placeholders():
+    """模板裡的 <…> 佔位文字；出現在成品裡代表沒填。"""
+    out = set()
+    for t in (FRAMEWORK / "templates").glob("dossier-*.md"):
+        out |= set(re.findall(r"<[^<>\n]{2,}>", read(t)))
+    return out
+
+
 def cmd_export(args):
     proj = project_dir(args.slug)
     spec = json.loads(read(FIELDS_FILE))
     hard_w, hard_c, soft_w = spec["hard_limits_words"], spec["hard_limits_chars"], spec["soft_limits_words"]
     hidden = set(spec["hide_in_sudowrite"])
+    known = (set(spec["character_columns"]) | set(spec["worldbuilding_columns"]) | set(spec["story_fields"])
+             | set(hard_w) | set(hard_c) | set(soft_w) | hidden)
+    placeholders = template_placeholders()
+    errors, warnings = [], []
     cards = {"Story": [], "Characters": [], "Worldbuilding": []}
+
+    # ---- 先驗證，全部通過才寫檔
     for f in sorted((proj / "bible").rglob("*.md")):
         text = read(f)
         fields = sw_fields(text)
-        if fields:
-            meta = front_matter(text)
-            section = meta.get("sw_section") or {v: k for k, v in SECTION_DIR.items()}.get(f.parent.name, "Story")
-            cards.setdefault(section, []).append((f, meta, fields))
+        if not fields:
+            continue
+        label = str(f.relative_to(proj / "bible"))
+        meta = front_matter(text)
+        section = meta.get("sw_section") or {v: k for k, v in SECTION_DIR.items()}.get(f.parent.name, "Story")
+        for d in sw_duplicates(text):
+            errors.append(f"{label}：[SW] {d} 出現不只一次（後面的會蓋掉前面的）")
+        for name, body in fields.items():
+            if body and (any(ph in body for ph in placeholders) or (body.startswith("<") and body.endswith(">"))):
+                errors.append(f"{label} · {name}：還是模板的佔位文字")
+            if name not in known:
+                warnings.append(f"{label} · {name}：不是已知欄位（自訂特質就沒問題；拼錯請修正）")
+        if section in ("Characters", "Worldbuilding"):
+            if not fields.get("Name"):
+                errors.append(f"{label}：缺 [SW] Name")
+            elif meta.get("name") and fields["Name"] != meta["name"]:
+                warnings.append(f"{label}：[SW] Name「{fields['Name']}」和 front matter 的 name「{meta['name']}」不一致")
+        cards.setdefault(section, []).append((f, meta, fields, label))
 
-    errors, warnings = [], []
+    for fld in spec["story_fields"]:
+        have = [lab for _, _, fields, lab in cards["Story"] if fields.get(fld)]
+        if len(have) > 1:
+            warnings.append(f"Story · {fld}：{len(have)} 份設定都有內容（{', '.join(have)}），Sudowrite 只能用一份，請指定採用版本")
+
     lines = [f"# Sudowrite 貼上單 — {args.slug}",
-             f"_產生時間 {dt.datetime.now():%Y-%m-%d %H:%M}。字數：中日韓字元每字算 1、英文每字算 1。"
-             f"⛔ = 超過 Sudowrite 官方上限；⚠ = 超過本框架建議長度。_", ""]
+             f"_產生時間 {dt.datetime.now():%Y-%m-%d %H:%M}。字數是本地估算：英文按單字、中日韓字元每字算 1"
+             f"（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。"
+             f"⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_", ""]
     guide = {
-        "Story": "貼到 Story Bible 對應的欄位（Braindump、Genre、Style、Synopsis）。",
+        "Story": "貼到 Story Bible 對應的欄位（Braindump、Genre、Style、Synopsis）。還沒定稿的欄位保持空白。",
         "Characters": ("用 CSV 匯入：Story Bible 的 Characters 標題旁 ••• → Import → CSV。"
                        "`characters.csv` 是全部角色；只想加一個新角色就用 `cards/` 裡那一個的 CSV。"
-                       "Sudowrite 沒說重複匯入會不會合併，**更新既有角色時請逐欄貼上**，不要再匯入一次。"),
+                       "Sudowrite 沒說重複匯入會不會合併，**更新既有角色時請逐欄貼上**，不要再匯入一次。"
+                       "**Secrets 不會自動隱藏**：匯入後、第一次用 AI 功能前，請手動按眼睛圖示隱藏。"),
         "Worldbuilding": ("用 CSV 匯入：Story Bible 的 Worldbuilding 標題旁 ••• → Import → CSV。"
-                          "`worldbuilding.csv` 是全部元素；單一元素在 `cards/`。更新既有元素請逐欄貼上。"),
+                          "`worldbuilding.csv` 是全部元素；單一元素在 `cards/`。更新既有元素請逐欄貼上。"
+                          "Secrets 匯入後請手動隱藏。"),
     }
     for section in ("Story", "Characters", "Worldbuilding"):
         if not cards.get(section):
             continue
         lines += [f"# {section}", guide[section], ""]
-        for f, meta, fields in cards[section]:
-            label = f"{f.relative_to(proj / 'bible')}"
+        for f, meta, fields, label in cards[section]:
             lines.append(f"## {meta.get('name', f.stem)}")
             lines.append(f"_來源：bible/{label}_\n")
             for name, body in fields.items():
@@ -489,8 +596,12 @@ def cmd_export(args):
                 n = count_words(body)
                 flag = ""
                 if name in hard_w and n > hard_w[name]:
-                    flag = f" ⛔ 超過官方上限 {hard_w[name]}"
-                    errors.append(f"{label} · {name}：{n}/{hard_w[name]}")
+                    if CJK.search(body):
+                        flag = f" ⚠ 本地保守估算 {n} 超過 {hard_w[name]}（平台實際計數待確認）"
+                        warnings.append(f"{label} · {name}：本地估算 {n}/{hard_w[name]}，平台計數待確認")
+                    else:
+                        flag = f" ⛔ 超過官方上限 {hard_w[name]}"
+                        errors.append(f"{label} · {name}：{n}/{hard_w[name]}")
                 elif name in hard_c and len(body) > hard_c[name]:
                     flag = f" ⛔ 超過官方上限 {hard_c[name]} 字元"
                     errors.append(f"{label} · {name}：{len(body)}/{hard_c[name]} 字元")
@@ -498,27 +609,31 @@ def cmd_export(args):
                     flag = f" ⚠ 超過建議 {soft_w[name]}"
                     warnings.append(f"{label} · {name}：{n}/{soft_w[name]}")
                 cap = hard_w.get(name) or soft_w.get(name)
-                hide = "（匯入後請按眼睛圖示隱藏）" if name in hidden else ""
+                hide = "（CSV 不帶隱藏設定：匯入後請手動按眼睛圖示隱藏）" if name in hidden else ""
                 lines.append(f"### {name}（{n}{'/' + str(cap) if cap else ''}）{flag}{hide}")
                 lines.append("```text\n" + body + "\n```\n")
 
+    if warnings:
+        print("⚠ 提醒：\n  " + "\n  ".join(warnings))
+    if errors:
+        print("⛔ 有錯誤，這次沒有寫出任何匯出檔：\n  " + "\n  ".join(errors))
+        sys.exit(2)
+
+    # ---- 通過驗證：清掉舊成品再寫，避免殘留已刪除的卡片
     exp = proj / "export"
+    if exp.exists():
+        shutil.rmtree(exp)
     write(exp / "sudowrite-paste.md", "\n".join(lines))
     made = ["sudowrite-paste.md"]
     for section, fname, key in (("Characters", "characters.csv", "character_columns"),
                                 ("Worldbuilding", "worldbuilding.csv", "worldbuilding_columns")):
         entries = cards.get(section, [])
         if entries:
-            write_csv(exp / fname, spec[key], [fields for _, _, fields in entries])
-            for f, _, fields in entries:
+            write_csv(exp / fname, spec[key], [fields for _, _, fields, _ in entries])
+            for f, _, fields, _ in entries:
                 write_csv(exp / "cards" / f"{section.lower()}-{f.stem}.csv", spec[key], [fields])
             made.append(f"{fname}（{len(entries)} 張，另有單張 CSV 在 cards/）")
     print(f"✓ {exp.relative_to(ROOT.parent)}/ → {', '.join(made)}")
-    if warnings:
-        print("⚠ 超過建議長度（可以匯入，但 Sudowrite 上下文不夠時會先被擠掉）：\n  " + "\n  ".join(warnings))
-    if errors:
-        print("⛔ 超過 Sudowrite 官方上限，必須縮短：\n  " + "\n  ".join(errors))
-        sys.exit(2)
 
 
 def run_state(run):
@@ -557,16 +672,21 @@ def main():
     s.add_argument("--model", default=DEFAULT_MODEL); s.add_argument("--effort", default=DEFAULT_EFFORT)
     s.set_defaults(fn=cmd_gpt)
 
+    s = sub.add_parser("pack"); s.add_argument("runs", nargs="+"); s.set_defaults(fn=cmd_pack)
+
     s = sub.add_parser("split"); s.add_argument("stage"); s.add_argument("reply")
     s.set_defaults(fn=cmd_split)
 
     s = sub.add_parser("promote"); s.add_argument("run"); s.add_argument("--force", action="store_true")
+    s.add_argument("--reason", help="--force 時必填：作者裁決的理由")
     s.set_defaults(fn=cmd_promote)
 
     s = sub.add_parser("export"); s.add_argument("slug"); s.set_defaults(fn=cmd_export)
     s = sub.add_parser("status"); s.add_argument("slug", nargs="?"); s.set_defaults(fn=cmd_status)
     s = sub.add_parser("doctor"); s.set_defaults(fn=cmd_doctor)
     s = sub.add_parser("framework-review")
+    s.add_argument("--followup", help="上一輪審查的檔案；只確認必改是否處理")
+    s.add_argument("--changes", help="這一輪改了什麼（簡述）")
     s.add_argument("--model", default=DEFAULT_MODEL); s.add_argument("--effort", default=DEFAULT_EFFORT)
     s.set_defaults(fn=cmd_framework_review)
 

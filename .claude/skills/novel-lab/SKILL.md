@@ -27,7 +27,9 @@ Sudowrite 欄位與上限在 `novel-lab/framework/sudowrite-fields.json`，Sudow
 1. **盲寫初稿（平行）。** 先用背景指令跑 `lab.py gpt <run> draft`，同時我照
    `novel-lab/framework/templates/dossier-<kind>.md` 寫 `<run>/claude-draft.md`。
    **寫完自己的稿子之前不可以讀 gpt-draft.md**——兩份稿子要真的獨立，合併才有意義。
-   先讀 `novel-lab/framework/prompts/shared-rules.md` 與專案的 project.md、bible。
+   先讀 `novel-lab/framework/prompts/shared-rules.md`，以及 **`<run>/context.md`**（lab.py 在第一次
+   呼叫 GPT 時產生的固定資料包：project.md＋相關 bible 的完整檔案與雜湊；兩份盲稿必須根據同一份）。
+   背景指令剛啟動時 context.md 可能還沒寫出，可以先跑 `lab.py pack <run>` 產生。
    research 類要用 WebSearch 查證並附來源（GPT 那邊會自動開啟即時網路搜尋）。
 
 2. **互審（平行）。** 背景跑 `lab.py gpt <run> review`（GPT 審我的稿），
@@ -41,7 +43,8 @@ Sudowrite 欄位與上限在 `novel-lab/framework/sudowrite-fields.json`，Sudow
 4. **GPT 驗收。** `lab.py gpt <run> verify`。第一行是 `CHANGES` 就修 final.md 再驗收；
    最多來回 2 次，還不同意就把雙方立場並列給使用者決定。
 
-5. **收錄與匯出。** `APPROVE` 後 `lab.py promote <run>`，再 `lab.py export <slug>`
+5. **收錄與匯出。** `APPROVE` 後 `lab.py promote <run>`（會檢查流程檔案齊全、第一行剛好是 APPROVE、
+   final.md 在驗收後沒被改過；作者裁決才用 `--force --reason "理由"`），再 `lab.py export <slug>`
    （⛔ 超過 Sudowrite 官方上限會 exit 2，要回頭縮短；⚠ 超過建議長度只是提醒）。
    產出：`export/characters.csv`、`export/worldbuilding.csv`（Sudowrite 官方 CSV 格式）、
    `export/cards/*.csv`（單張）、`export/sudowrite-paste.md`（Story 欄位與逐欄內容）。
@@ -53,9 +56,9 @@ Sudowrite 欄位與上限在 `novel-lab/framework/sudowrite-fields.json`，Sudow
 ## 改框架本身
 
 框架（模板、規則、流程）的修改也要和 GPT 商擬：改完跑 `lab.py framework-review`，
-依 GPT 的回覆（第一行 AGREE / AGREE-WITH-CHANGES / DISAGREE）調整，再回報使用者。
-`novel-lab/docs/reviews/` 裡若只有 `*.to-gpt.md` 而沒有對應的回覆，代表上一次審查還沒完成，
-GPT 可以連線時先補跑。
+依 GPT 的回覆（第一行 AGREE / AGREE-WITH-CHANGES / DISAGREE）調整；修改後跑
+`lab.py framework-review --followup <上一輪審查檔> --changes "改了什麼"` 讓 GPT 確認必改都處理了
+（第一行 APPROVE / CHANGES），再回報使用者。
 
 ## GPT 連不上時（exit 3）
 
