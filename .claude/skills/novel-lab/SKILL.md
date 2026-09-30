@@ -11,7 +11,8 @@ Sudowrite 欄位與上限在 `novel-lab/framework/sudowrite-fields.json`，Sudow
 
 ## 大前提（不可違反）
 
-- **每一次任務都要和 GPT 協作。** GPT 只能是 GPT-6 家族的 Astra 或 Sol，推理強度 high 以上；
+- **每一次任務都要和 GPT 協作。** GPT 只能是 GPT-6 家族的 Astra 或 Sol，推理強度 high 以上
+  （作者定案：初稿 xhigh，審稿／驗收／框架審查 high；lab.py 已是這個預設）；
   `lab.py` 會硬性檢查。GPT 呼叫失敗時不可以改用其他模型，也不可以跳過 GPT 自己做完——
   改走人工轉貼（見下）或停下來告訴使用者。
 - **不寫露骨的成人內容。** 那部分由 Sudowrite 處理；我們只做非露骨的角色化定位，

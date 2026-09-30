@@ -41,7 +41,14 @@ ALLOWED_MODEL = re.compile(r"^gpt-6(\.\d+)?-(astra|sol)$")
 ALLOWED_EFFORTS = ("high", "xhigh", "max", "ultra")
 DEFAULT_MODEL = os.environ.get("NOVEL_LAB_GPT_MODEL", "gpt-6-astra")
 FALLBACK_MODEL = "gpt-6.1-sol"
-DEFAULT_EFFORT = os.environ.get("NOVEL_LAB_GPT_EFFORT", "xhigh")
+# 作者定案（2026-09-30）：寫初稿用 xhigh；審稿、驗收、框架審查用 high（都在「high 以上」的範圍內，省額度）
+STAGE_EFFORT = {"draft": "xhigh", "free": "xhigh", "review": "high", "verify": "high", "framework": "high"}
+EFFORT_OVERRIDE = os.environ.get("NOVEL_LAB_GPT_EFFORT")  # 設了就全部階段都用它
+DEFAULT_EFFORT = EFFORT_OVERRIDE or STAGE_EFFORT["draft"]
+
+
+def effort_for(stage, explicit=None):
+    return explicit or EFFORT_OVERRIDE or STAGE_EFFORT[stage]
 
 KINDS = {
     "character": "角色調查",
@@ -356,6 +363,7 @@ def cmd_gpt(args):
         die(f"用法：gpt <run> [<run> ...] <stage>；stage 必須是 {', '.join(STAGES)}")
     if not names:
         die("至少要一個 run 目錄")
+    args.effort = effort_for(stage, args.effort)
     check_model(args.model, args.effort)
     runs = [Path(n).resolve() for n in names]
     # 考據類，或 project.md 寫了 web_search: live 的專案（例如以真人為基礎、資訊常變的角色），用即時搜尋
@@ -424,6 +432,7 @@ REVIEW_FILES = ["README.md", "framework/prompts/shared-rules.md", "framework/pro
 
 def cmd_framework_review(args):
     """框架本身也要和 GPT 商擬：把關鍵檔案打包成一份自足的提示送給 GPT。"""
+    args.effort = effort_for("framework", args.effort)
     check_model(args.model, args.effort)
     files = "\n\n".join(f"## `{name}`\n\n````\n{read(ROOT / name)}\n````" for name in REVIEW_FILES)
     if args.followup:
@@ -440,7 +449,8 @@ def cmd_framework_review(args):
 
 
 def cmd_doctor(_args):
-    print(f"預設模型 {DEFAULT_MODEL} · 推理 {DEFAULT_EFFORT} · 備援 {FALLBACK_MODEL}")
+    print(f"預設模型 {DEFAULT_MODEL} · 推理 " + ", ".join(f"{k}={effort_for(k)}" for k in STAGE_EFFORT)
+          + f" · 備援 {FALLBACK_MODEL}")
     check_model(DEFAULT_MODEL, DEFAULT_EFFORT)
     print(f"codex CLI：{shutil.which('codex') or '未安裝（npm i -g @openai/codex）'}")
     for env in ("OPENAI_API_KEY", "CODEX_ACCESS_TOKEN"):
@@ -726,7 +736,8 @@ def main():
     s.set_defaults(fn=cmd_brief)
 
     s = sub.add_parser("gpt"); s.add_argument("items", nargs="+", metavar="<run> [<run> ...] <stage>")
-    s.add_argument("--model", default=DEFAULT_MODEL); s.add_argument("--effort", default=DEFAULT_EFFORT)
+    s.add_argument("--model", default=DEFAULT_MODEL)
+    s.add_argument("--effort", default=None, help="預設依階段：draft=xhigh，review/verify=high")
     s.set_defaults(fn=cmd_gpt)
 
     s = sub.add_parser("pack"); s.add_argument("runs", nargs="+"); s.set_defaults(fn=cmd_pack)
@@ -744,7 +755,8 @@ def main():
     s = sub.add_parser("framework-review")
     s.add_argument("--followup", help="上一輪審查的檔案；只確認必改是否處理")
     s.add_argument("--changes", help="這一輪改了什麼（簡述）")
-    s.add_argument("--model", default=DEFAULT_MODEL); s.add_argument("--effort", default=DEFAULT_EFFORT)
+    s.add_argument("--model", default=DEFAULT_MODEL)
+    s.add_argument("--effort", default=None, help="預設 high")
     s.set_defaults(fn=cmd_framework_review)
 
     args = p.parse_args()

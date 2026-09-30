@@ -67,7 +67,7 @@
 ## GPT 的設定
 
 - 只允許 **GPT-6 Astra**（預設）或 **GPT-6.1 Sol**（Astra 失敗時的備援），推理強度只允許
-  **high／xhigh／max／ultra**（預設 xhigh）。`tools/lab.py` 會硬性檢查，不符合就拒絕執行，
+  **high／xhigh／max／ultra**。作者定案（2026-09-30，省額度）：**寫初稿用 xhigh，審稿、驗收、框架審查用 high**。`tools/lab.py` 會硬性檢查，不符合就拒絕執行，
   也不會自動降級到其他模型。
 - 考據類任務會開啟 GPT 的即時網路搜尋。
 - 連線方式（`python3 novel-lab/tools/lab.py doctor` 可以檢查）：
