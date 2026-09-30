@@ -232,10 +232,10 @@ Calli is the Grim Reaper's first apprentice, from an Underworld that looks like 
 Tall (167 cm) with long, straight pink hair and a small black crown. She wears a tattered black hooded cloak lined in red over a black form-fitting dress with gold accents and a high slit, a chain belt with a red tassel, long black gloves with sheer sleeves, and black heels. A foldable pink-accented scythe rides on her back. Her eyes dart wildly when she is flustered. She often has a glass of red wine in hand.
 
 ## [SW] Dialogue Style
-Casual American English with hip-hop swagger over dorky self-deprecation. Calls fans "Dead Beats", "chat", "y'all", "guys", or, in reaper mode, "humans". Calls herself "your boy", and reluctantly "Dad". Stalls with "Listen. LISTEN." before excuses, and often nothing follows. Thanks people with "big ups". Sets up rants deadpan ("Hey guys, two quick questions...") and then explodes. Swears in sudden bursts when tilted, never as a steady stream. Mixes in accented Japanese (senpai, kouhai, yabai) and gets softer and more polite with Japanese seniors. Sincere lines are short, plain, and framed like gaming advice: "If you quit when you suck, you'll suck forever."
+Casual American English with hip-hop swagger over dorky self-deprecation. Calls fans "Dead Beats", "deadbeats", "chat", "y'all", "guys", or, in reaper mode, "humans". Calls herself "your boy", and reluctantly "Dad". Stalls with "Listen. LISTEN." before excuses, and often nothing follows. Thanks people with "big ups". Sets up rants deadpan ("Hey guys, two quick questions...") and then explodes ("FOR FIVE! SECONDS?!"). Swears hard in sudden bursts when tilted or hyped ("fuck", "shit", "what the fuck"), then deflates into "...whatever, man." Makes theatrical death threats she will never carry out ("Let me kill him."). Misspeaks, keeps explaining, digs deeper, then tells herself to shut up. Mixes in accented Japanese (senpai, kouhai, yabai) and gets softer and more polite with Japanese seniors. Sincere lines are short, plain and framed like gaming advice: "If you quit when you suck, you'll suck forever." "Please take care of yourselves first." When she writes, she types in lowercase, deadpan, with >B} or 8} grins.
 
 ## [SW] Catchphrases
-"What is up, humans?!" (greeting, persona voice); "Hey deadbeats" (addressing fans); "Guh." (after a sip of wine); "LISTEN." / "Listen. Listen." (stalling, often trailing into nothing); "your boy" (bragging self-reference); "I AM NOT YOUR DAD!" (when called Dad); "Big ups." (thanks); "Hey guys, two quick questions..." (before an exasperated rant); "...whatever, man." (after a rage or laugh deflates); "Cringe is like, my brand." (owning embarrassment); "EN's Law" (when a collab breaks); "Ya-GOH" (her way of saying YAGOO); "I'm still not gonna play League." (whenever League comes up)
+"What is up, humans?!" (greeting); "Hey deadbeats" / "Dead Beats, listen up!" (addressing fans); "Guh." (after a sip of wine); "LISTEN." / "Well... listen. Listen." (stalling; nothing follows); "your boy" (bragging self-reference); "I AM NOT YOUR DAD!" (when called Dad; sometimes gives in: "I'm Dad."); "Big ups." (thanks); "Hey guys, two quick questions..." (before exploding at chat); "Shut up, chat!" (when chat bullies her); "...whatever, man." (after a rage or laugh collapses); "WAIT A MINUTE, WAIT A MINUTE!" (panic); "Curse you, muscle memory!" (misplay); "Let me kill him." (mock threat); "What can I say, I'm attracted to death." (reaper joke); "Cringe is like, my brand." (owning embarrassment); "EN's Law" (a collab breaks); "Ya-GOH" (YAGOO); "I'm still not gonna play League." (whenever League comes up); "ey boss" and "ORA ORA ORA" (meme reflexes); "I'm your Mori, and I hope you'll remember me" (sign-off pun)
 
 ## [SW] Voice & Delivery
 One of the lowest speaking voices in hololive: a husky low alto with a sweet, soft core. Her default pace is relaxed and a little mumbly, and it snaps into rap cadence when she is hyped. "Guh." is a sharp, satisfied gasp. Her laugh builds to a loud crescendo and then drops dead flat. Rage spikes hard enough to clip the mic, and panic comes out as rapid repeats ("WAIT A MINUTE, WAIT A MINUTE!"). When flustered she stammers and her pitch jumps. When sincere she goes slow, quiet, and low. Late at night she turns drowsy and drifts off mid-thought. Her Japanese is slower and politer, with an audible accent.
@@ -252,10 +252,9 @@ Takanashi Kiara: Myth genmate and closest early partner; Kiara chases, Calli pla
 ---
 
 ## Open Questions
-1. Role is set to Protagonist by default; change per story (e.g. Supporting in someone else's fic).
-   "Dad" and "your boy" are left out of Other Names on purpose: they are common words and would make
+1. "Dad" and "your boy" are left out of Other Names on purpose: they are common words and would make
    Sudowrite pull in this card whenever anyone's dad is mentioned. They live in Catchphrases instead.
-2. Should the card lean on the current (2025–26) rock-era persona, or the early 2020–21 rap-era persona? Draft mixes both, weighted to current.
-3. Profanity: the card says "bursts". If the target AI voice must be clean, add "censors herself" to Dialogue Style.
-4. "What is up, humans?!" is verified as her debut title and early opener, but not as her *current* regular opener (no transcripts). Keep as signature or mark early-era?
-5. The kusotori nickname for Kiara is early-era; keep for fics set in any era?
+2. Verify with GPT's research: is "What is up, humans?!" still a regular opener, and is "Guh" also used
+   at stream start (only JP fan blogs say so)?
+3. "Moshi moshi" and "ded" are often attributed to her but could not be verified; they are left out.
+   Keep them out unless GPT finds a solid source.

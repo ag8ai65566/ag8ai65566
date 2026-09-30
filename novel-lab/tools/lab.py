@@ -214,6 +214,8 @@ def via_api(prompt, out, model, effort, live_search=False):
 def ask_gpt(prompt, out, model, effort, live_search=False):
     """回傳實際用的 (via, model)。沒有任何連線方式時改成人工轉貼模式（exit 3）。"""
     check_model(model, effort)
+    # 每次呼叫都先附上專案說明，讓 GPT 知道整個專案在做什麼、自己的角色是什麼
+    prompt = read(FRAMEWORK / "prompts" / "gpt-brief.md") + "\n\n---\n\n" + prompt
     tries = [model] + ([FALLBACK_MODEL] if model != FALLBACK_MODEL else [])
     errors = []
     use_codex = codex_ready()
@@ -340,6 +342,7 @@ def cmd_split(args):
 
 
 REVIEW_FILES = ["README.md", "framework/prompts/shared-rules.md", "framework/prompts/rubric.md",
+                "framework/prompts/gpt-brief.md",
                 "framework/templates/dossier-character.md", "framework/templates/dossier-world.md",
                 "framework/templates/dossier-idea.md", "framework/sudowrite-fields.json",
                 "docs/sudowrite-2026-09.md"]

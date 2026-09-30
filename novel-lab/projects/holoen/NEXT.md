@@ -3,6 +3,10 @@
 狀態（2026-09-30）：Kronii 與 Calli 的 **Claude 初稿已完成**（`claude-draft.md`），研究筆記在
 `claude-research.md`。GPT 還沒參與：上一個 session 沒有 OpenAI 連線。使用者**不採用人工轉貼**。
 
+作者已定案（寫在 project.md「最高原則」）：**真實第一**（粗口、挑逗梗照原樣保留，不清理）、
+**不分時期**、**Role 一律 Protagonist**、卡片寫完整但重點在前。兩份 Claude 初稿已依此修改。
+給 GPT 的專案說明在 `framework/prompts/gpt-brief.md`，每次呼叫 GPT 都會自動附上。
+
 使用者設定好 `OPENAI_API_KEY` 並開新 session 後，照 `/novel-lab` 流程接續：
 
 ```bash

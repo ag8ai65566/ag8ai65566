@@ -3,6 +3,7 @@
 這個資料夾是作者的小說設定工作台。你（GPT）和 Claude 是兩人小組：每次任務都是
 盲寫初稿 → 互審 → Claude 合併 → 你驗收。每次呼叫的提示會說明你現在在哪一個階段。
 
+- **先讀專案說明：`framework/prompts/gpt-brief.md`**（這個專案在做什麼、你的角色、品質標準；每次呼叫也會附上）
 - 規則：`framework/prompts/shared-rules.md`（分工界線、寫法、輸出格式）
 - 評分表：`framework/prompts/rubric.md`
 - 各類成品的格式：`framework/templates/dossier-*.md`
