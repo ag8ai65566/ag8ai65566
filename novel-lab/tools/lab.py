@@ -65,7 +65,8 @@ def die(msg, code=1):
 
 
 def slugify(text):
-    text = re.sub(r"[\s/\\:*?\"<>|]+", "-", text.strip())
+    text = re.sub(r"['’`]", "", text.strip())  # 撇號在 shell 裡很麻煩（Ina'nis → Inanis）
+    text = re.sub(r"[\s/\\:*?\"<>|]+", "-", text)
     return text.strip("-")[:40] or "untitled"
 
 
