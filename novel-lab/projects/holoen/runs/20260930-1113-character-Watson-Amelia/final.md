@@ -34,7 +34,7 @@ sw_section: Characters
 ## One-line Concept
 Hololive's self-proclaimed #1 time-traveling detective: a stumbling, filler-heavy gamer gremlin with
 "sweetness and saltiness." She turns an innocent line into a mom joke, screeches like "the final breath
-of a dying squeaky toy" when she loses, and does everything "her own way," hints be damned. [Official A1]
+of a dying squeaky toy" when she loses, and often insists on doing things "her own way." [Official A1]
 [Observed A2 §Personality, secondary; A5]
 
 ## Core Drive
@@ -43,17 +43,18 @@ of a dying squeaky toy" when she loses, and does everything "her own way," hints
   - To crack every case and game her own way, and to make entertaining experiments and new formats for
     herself and her viewers. [Official A12] [Observed A2]
 - **Need / wound / lie / deepest fear:** Not applicable (existing public persona). None is assigned.
+- **Boundary and breaking point:** Not established.
 - **Values shown in public:** stubborn self-reliance ("the 'Ame Way' is too strong, [and too] stubborn,"
   2024 [Official A4, via news]); fairness in her own bits: she won't time-travel to cheat at games ("That's
   not fair!") [Observed A2 §Time travel, secondary]; plain wishes for her audience ("I hope you stay safe,
   you stay healthy, you take care of yourself first") [Observed A2 §Quotes].
 
 ## Core Contradiction
-Sweet and supportive (she watches her genmates' streams, helps Gura in Minecraft and fixes everyone's
-tech) and also "Gremlin Mode": greedy, prideful and unsportsmanlike in competitive games. She has a filter,
+Sweet and supportive (she watches her genmates' streams, helps Gura in Minecraft and helps with
+technical problems) and also "Gremlin Mode": greedy, prideful and unsportsmanlike in competitive games. She has a filter,
 but "most of the outrageous things that are caught in her filter end up being said out loud regardless."
-She claims to hate high-pitched noises and makes the loudest screech in Myth. A detective who is constantly
-lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes, secondary]
+She claims to hate high-pitched noises, yet her own screech is high-pitched. A detective who often gets
+lost and often ignores hints. [Observed A2 §Personality and §Likes and dislikes, secondary]
 
 ## Behavioral Traits
 1. When a game hands her an innocent line, she twists it into a crude joke; most famously "Nothing beats
@@ -70,8 +71,8 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
    mistake plainly ("That was a bad play on my part."). She trash-talks chat ("I bet I could 1v1 at least
    80% of you and kick your ass"). No "ping" excuse was detected in that window's transcript.
    [ASR A23, OE-BmnlBKJ8 0:43:17, 1:13:47, 1:08:00, 1:00:33, 1:14:44, 0:44:49; both models agree]
-4. When chat gives hints, she ignores them and does it her own way; she will retry an awkward method many
-   times rather than take the easy route (the Outer Wilds Sun Station landings). [Observed A2 §Quotes; A9]
+4. When chat gives hints, she can ignore them and persist with her own approach; she has retried an
+   awkward method many times rather than take the easy route (the Outer Wilds Sun Station landings). [Observed A2 §Quotes; A9]
    [Official A4]
 5. When she sees a chance to prank a friend or chat, she takes it (darkening her shaders and claiming she
    "fixed" them). [Observed A2 §Personality]
@@ -140,7 +141,7 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
   - "Oh, my tiddie hurts... Wait, why did I say that out loud?" [A2 §Quotes]
   - Teasing innuendo with friends, e.g. "Nice view from here" under Gura on a ladder. [Observed A10,
     secondary]
-- **Vocabulary / fillers:** very frequent "okay" (often "ahkay"), "oh," "like," "uh," "yeah"; "all right"
+- **Vocabulary / fillers:** very frequent "okay" (about 65 an hour in A23, first-model count), "oh," "like," "uh," "yeah"; "all right"
   to move on; "oh yeah" when she recovers a lost thought; "oops, I'm stupid"; "what the heck"; cute words
   ("doggies," "yummy," "wormies," "poopy"). [Observed A3 captions; A2 §Quotes]
 - **Laughs, noises:**
@@ -152,7 +153,7 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
     sentence. [Observed A2 §Miscellaneous; A16] [Official A12]
 - **Code-switching:**
   - American English is her default. A fake British accent is a recurring bit ("ello luvs," "hello
-    mates") from her debut "cover identity," always an obvious put-on. [Observed A2 §Miscellaneous; A3]
+    mates") from her debut "cover identity," played as a put-on in the cited moments. [Observed A2 §Miscellaneous; A3]
   - Simple Japanese phrases and honorifics ("Marine-senpai," "Roboco-senpai"); she practiced katakana on
     stream. Don't write long Japanese from her. [Observed A2 §Quotes; A17 titles]
 - **How she addresses people:** "you guys" by default; "chat" occasionally; "Teamates" (one m, official)
@@ -168,12 +169,11 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
 - **Timbre / pitch / pace (for voice performance):**
   - Secondary: a light, playful speaking voice; for the ground-pound joke she dropped into "a slightly
     lower-pitched and 'gremlin-like' voice." [Observed A2 §Personality]
-  - Measured (A23; Mario, VALORANT and 2024 chat windows): median pitch about 248–276 Hz, in the upper
-    group of the six files measured the same way, with Gura and Kiara (Kronii 177–188 Hz, Ina 223–232 Hz);
-    about 114–133 words per minute of speech, a middle pace: slower than Calli (161–186) and Kiara, faster
-    than Ina (81–95). The stumbling comes from restarts and fillers more than from raw speed. [ASR A23]
-  - Provisional: trips over itself, with fast bursts when excited or tilted; sincere lines lower, slower
-    and plainer; as an announcer, clean, bright and a little theatrical.
+  - Measured (A23; Mario, VALORANT and 2024 chat windows, with game audio mixed in): median pitch about
+    248–276 Hz; about 114–133 words per minute of speech. For comparison only, Calli's chat windows measured
+    161–186 and Ina's 81–95. Sample results; they do not establish a general ranking. [ASR A23]
+  - Provisional (not on the card): fast bursts when excited or tilted; sincere lines lower, slower and
+    plainer; as an announcer, clean, bright and a little theatrical.
   - Exact pitch and accent beyond "American by default": not specified.
 - **Sounds off:**
   - Polished, serene idol phrasing without stumbles; "chat" as her default address.
@@ -191,13 +191,15 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
 | Opening | Fast "hello" burst, then a tangent | "hello hello hello... how's everybody doing" (verbatim A3) |
-| Losing / tilted | Quiet "ahkay...", escalating repeated question, explosion, sheepish apology or screech | "Why do my team die so fast? How do they die so fast?" / "This game fucking sucks. It sucks. I'm done. I'm done." (ASR A23); "YOU THINK I WON'T DO IT!? FUCK YOU! ...sorry. Didn't mean it." (A2 §Quotes, censored in source) |
+| Losing / tilted | Quiet "okay...", escalating repeated question, explosion, sheepish apology or screech | "Why do my team die so fast? How do they die so fast?" / "This game fucking sucks. It sucks. I'm done. I'm done." (ASR A23); "YOU THINK I WON'T DO IT!? FUCK YOU! ...sorry. Didn't mean it." (A2 §Quotes, censored in source) |
 | Spectating after she dies | Caster-style play-by-play of a teammate's round | "Let's see if she can pull off a 1v4, full health. 15 seconds left on the clock." (ASR A23, OE-BmnlBKJ8 0:33:43) |
 | Excuse mode | Fast, indignant | "It's the ping! He's rubber-banding!" (A2 §Quotes) |
 | Flustered after a blurt | Fast, higher denial | "Wait, why did I say that out loud?" (A2 §Quotes) |
 | Crude joke | Innocent setup, then a lower "gremlin-like" voice | "Nothing beats a ground pound... that's actually what I did to your mom last night!" (A5; A2 §Personality) |
 | Stubborn retry | Plan → failure → objection → another attempt | "I know there's an easier way. I'm trying to make this way work." (Style demo, GPT) |
 | Hyped | Elongated vowels, sing-song | "Wahoooo!" / "Woohoo!" (A11, A8) |
+| Ordinary chat | Filler-heavy, "okay" every few lines, schedule talk and thank-yous | "Anyways, uh, then after that we have Valorant, and that's it. Okay, thank you for watching, I'll see you guys next time!" (ASR A23, 6VBQyNHxlR8 1:37:00–1:37:03) |
+| Tired | Not established in reviewed material | — |
 | Sincere | Lower, slower, plainer, still a little self-mocking | "I do think that everything is gonna turn out okay." (A4) |
 | Announcer | Clean, bright, slightly theatrical | "This is Amelia Watson signing off. Until next time. Bye!" (A8) |
 
@@ -228,7 +230,7 @@ Real lines first; Style demos after.
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
-| Lore | Born circa the early 1920s and thrown forward in time; the pocket watch holds a time crystal; time travel makes loud screeching noises and can cause headaches; she won't use it to cheat | [Observed A2 §Time travel, secondary] |
+| Lore (secondary-reported; original statements and continuity scope unverified; outside the baseline) | Born circa the early 1920s and thrown forward in time; the pocket watch holds a time crystal; time travel makes loud screeching noises and can cause headaches; she won't use it to cheat | [Observed A2 §Time travel, secondary] |
 | Lore | Became an idol "just out of interest" after rumors of unusual beings in hololive; trains reflexes with shooters and her mind with puzzle games | [Official A1] |
 | 2020-09-13 JST | Debuts in hololive English -Myth- ("The Investigation Begins"), briefly undercover with a fake British accent | [Official A1] [Observed A3-MXrFrkIlE-0; A2 §Miscellaneous] |
 | 2020-09-16 | Reveals she is a time traveler (first Fall Guys stream) | [Observed A2 §Time travel; A10 locator] |
@@ -239,7 +241,8 @@ Real lines first; Style demos after.
 | 2023-01-19 | ChikuTaku song on sale | [Official A13b] |
 | 2023-01-24 | ChikuTaku game released (concept and shared project management, with a credited team) | [Official A13] |
 | 2024-09-30 | Concludes regular activities; remains a hololive affiliate | [Official A4] |
-| 2025–2026 | Occasional appearances: Kiara's concerts, announcer at Zeta's birthday live (2025-11), a call "from 2021" at Calli's charity karaoke (2026-02), a guest spot and duet at Kronii's 3D birthday live (2026-03) | [Observed A8, A19; Kronii file K33] |
+| 2026-03 | Guest spot at Kronii's 3D birthday live | [Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711] |
+| 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |
 
 ## Relationship Map
 Public exchanges only. Ship and unit names are fan terms. No private feelings are implied.
@@ -247,7 +250,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Gawr Gura (graduated) | Myth genmate ("AmeSame") | Close friends per the wiki; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
-| Mori Calliope | Myth genmate | Ame loves messing with Calli (a surprise "ara ara" scare); Clubhouse 51 games | [Observed A6 clip title; A20] |
+| Mori Calliope | Myth genmate | Clubhouse 51 games [Observed A20]. [Unverified, title only: a surprise "ara ara" scare] | [A20; A6 clip title] |
 | Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her ("Ina... prepare to get fucked!", a PvP threat; wording inferred from a censored title) | [Observed A2 §Mascots and fans and §Quotes; A14] |
 | Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material; "Kiara like, threw herself at me… she hugged me!" | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
 | Ouro Kronii | Promise member ("Time Duo") | Time traveler vs. Warden of Time; Ame guested at Kronii's 2026 3D birthday live | [Observed A2 §Relationships; Kronii file K33] |
@@ -261,8 +264,11 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
   ended 2024-09-30).
 - **Turning points:** not established; no story has been chosen.
 - **End point:** open.
-- **Card update points:** update after a chosen story event. Time-travel mechanics beyond the documented
-  lore (costs, paradox rules, alternate Ames) need an author decision before they become plot facts.
+- **Card update points:** update after a chosen story event. The baseline has only the official
+  time-traveler identity and pocket watch; the secondary-reported mechanics (birth era, displacement,
+  crystal, sound, headaches) and anything further (costs, paradox rules, alternate Ames) need an author
+  decision before they become plot facts. A story set before September 2024 needs a consistent revision
+  of Groups, Background and later appearances together.
 
 ## Story Engine
 - Trouble she brings: insists on her own method; tech "fixes" that are pranks; salty rage that ends in an
@@ -352,25 +358,25 @@ Ame, Amelia, Amelia Watson, Amechan, Gremlin Ame, ワトソン・アメリア
 Ame is hololive's self-proclaimed #1 detective and a competitive gamer gremlin, all sweetness and saltiness. When a game hands her an innocent line, she can twist it into a crude joke; she has a filter, but much of what it catches comes out anyway, and she audits herself a second too late. When she loses, she can get salty, blame the ping, her team or the game, escalate into rage or a gremlin screech, and then deflate into an apology or own the bad play. When she's dead in a round, she narrates her teammate's play like a caster. She tends to insist on her own method, retrying an awkward approach again and again rather than taking the easy route. She pranks friends and chat when she gets the chance, and she also helps with technical problems, watches her genmates' streams and takes on ambitious projects with a team behind her. She coos over doggies, laughs off dark moments before saying something plainly sincere, and reads superchats with rapid stacks of thank-yous. She won't use time travel to cheat. She loves iced tea, doggies, puzzle games, shooters and Outer Wilds; she hates onions, soda, loud high-pitched noises (despite her own screech) and the Bee Movie.
 
 ## [SW] Background
-Ame is a time-traveling detective and a hololive affiliate: she concluded her regular activities on September 30, 2024, and now appears only for individual events. She carries a pocket watch that lets her travel through time. After hearing rumors about the unusual beings in hololive, she became an idol just out of interest, training her reflexes with shooters and her mind with puzzle games. She debuted in hololive English -Myth- in September 2020, briefly undercover with a fake British accent, and her fans are the Teamates. Her mascot is Bubba, a small dog. She built her own 3D and VR setups for her genmates, came up with and co-managed the ChikuTaku rhythm game, and hosted a charity stream. Since 2024 she has appeared at Kiara's concerts, as an announcer at Zeta's birthday live (November 2025), and as a guest at Kronii's 3D birthday live (March 2026).
+Ame is a time-traveling detective and a hololive affiliate: she concluded her regular activities on September 30, 2024, and appears at individually announced events. She carries a pocket watch that lets her travel through time. After hearing rumors about the unusual beings in hololive, she became an idol just out of interest, training her reflexes with shooters and her mind with puzzle games. She debuted in hololive English -Myth- in September 2020, briefly undercover with a fake British accent, and her fans are the Teamates. Her mascot is Bubba, a small dog. She built her own 3D and VR setups for her genmates, came up with and co-managed the ChikuTaku rhythm game, and hosted a charity stream. She was a guest at Kronii's 3D birthday live in March 2026.
 
 ## [SW] Physical Description
 Ame is 150 cm tall, with light-blonde hair falling below her shoulders and blue eyes. In her original outfit she wears a checked deerstalker with a gear-decorated magnifying-glass hairpin, a white blouse with a short red tie printed with a mustache, a checked skirt carrying her golden pocket watch, a detective coat with a stethoscope, and syringes of her concoction strapped to her left leg. Bubba, her small dog, rides along in later outfits.
 
 ## [SW] Dialogue Style
-Stumbling English that restarts mid-sentence and drops thoughts, then recovers them. Fillers everywhere: "okay," "oh," "like," "uh," "yeah," and "all right" to move on. She calls her audience "you guys," only sometimes "chat," and "Teamates" on big occasions. She sets up something sweet and innocent, then twists it crude (mom jokes, lewd-adjacent quips) as if nothing happened. Her anger swearing escalates through repeated questions into a shout and ends in a sheepish apology. She builds in threes to a shouted third line, uses detective and time-traveler branding as punchlines, and slips into a put-on British accent as a bit. Cute words sit beside the crude ones: "doggies," "yummy." Lines of hers: "you see this clock? … you guys can't tell anybody, but I'm actually a time traveler." "Why do my team die so fast?" "This game fucking sucks. It sucks. I'm done. I'm done."
+Stumbling English that restarts mid-sentence and drops thoughts, then recovers them. Fillers everywhere: "okay," "oh," "like," "uh," "yeah," and "all right" to move on. She calls her audience "you guys," only sometimes "chat," and "Teamates" on big occasions. She sets up something sweet and innocent, then twists it crude (mom jokes, lewd-adjacent quips) as if nothing happened. Her anger swearing can escalate through repeated questions into a shout and may end in an apology or an admission of a bad play. She builds in threes to a shouted third line, uses detective and time-traveler branding as punchlines, and slips into a put-on British accent as a bit. Cute words sit beside the crude ones: "doggies," "yummy." Lines of hers: "you see this clock? … you guys can't tell anybody, but I'm actually a time traveler." "Why do my team die so fast?" "This game fucking sucks. It sucks. I'm done. I'm done."
 
 ## [SW] Catchphrases
 "Test test, Hello~ Amelia Watson! #1 Detective at your service!" (her profile greeting); "That's funny cause uh, you guys know that's actually what I did to your mom last night." (answering the game's "Nothing beats a ground pound."; her signature crude joke); "It's elementary, right?" (puzzles); "It's the ping! He's rubber-banding!" (excuse for losing); "It's not cheating, I got stuck, what do you want me to do?" (accused of cheating); "I'm gonna do it my way!" (refusing hints); "Wait, why did I say that out loud?" (after a blurt); "Don't look, stahp!" (embarrassed); "NEHEHEHEHE!" (gremlin laugh); "Wadyameeeeean?" (disbelief); "It's just like Minecraft!" (any block game); "My tummy hurts!" (running complaint); "Make money, get bitches." (crude well-wishing); "cute cute cute" (doggies, pickups); "Alright, bye-bye!" (sign-off); "This is Amelia Watson signing off. Until next time. Bye!" (announcer sign-off)
 
 ## [SW] Voice & Delivery
-A light, playful voice in the higher range of her genmates, at a middling pace that trips over itself with restarts and fillers and speeds up in bursts. For crude jokes it drops into a lower, "gremlin-like" tone. Her gremlin screech is a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy. She has several laughs: a natural giggle, the gremlin cackle, an exaggerated evil laugh and a deliberately flat fake laugh. She hiccups often on stream, separate from her laughing. In a rage she can start quiet and climb to a shout, then deflate. Sincere lines are lower, slower and plainer. As an announcer she is clean, bright and a little theatrical.
+A light, playful voice that trips over itself with restarts and fillers. For crude jokes it has dropped into a lower, "gremlin-like" tone. Her gremlin screech has been described as a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy; she also has a gremlin cackle. She hiccups often on stream, separate from her laughing.
 
 ## [SW] Motivation
 Ame wants to crack every case and every game her own way, make entertaining experiments for her Teamates, and help her friends, whether that means fixing their tech, building something new with them or raising money for a good cause.
 
 ## [SW] Relationships
-Gawr Gura (graduated): her close friend and Fish Tank co-host; the two prank each other, and Ame teases her with lewd-adjacent quips. Mori Calliope: Ame loves messing with her, including scaring her with a surprise "ara ara." Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi and invited her back to her concerts. Ouro Kronii: her "Time Duo" counterpart, time traveler against the Warden of Time; Ame guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs.
+Gawr Gura (graduated): her close friend and Fish Tank co-host; the two prank each other, and Ame teases her with lewd-adjacent quips. Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi and credits her help with 3D productions. Ouro Kronii: her "Time Duo" counterpart, time traveler against the Warden of Time; Ame guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs.
 
 ## [SW] Secrets
 (none)
@@ -426,12 +432,26 @@ Gawr Gura (graduated): her close friend and Fish Tank co-host; the two prank eac
   and in VALORANT: blaming her team, "This game fucking sucks… I'm done," trash talk at chat, owning a bad
   play, and caster-style narration while spectating. "Bitch." (Mario, 0:50:03) was dropped: the second
   model heard different words. Real lines replace the Style demos on the card.
+- **Verify round 1 (GPT: CHANGES), applied:**
+  - Universal rules bounded everywhere: she helps with technical problems, can persist despite hints, and
+    may apologize or own a bad play; "loudest screech in Myth" removed.
+  - Voice: laugh variants beyond the wiki's gremlin laugh, rage/sincere/announcer acoustics and the pace
+    ranking left the card; "ahkay" and "always a put-on" removed from research; pitch figures are
+    sample results.
+  - Appearances: only the Kronii 3D birthday live (with locator) is on the card; the other reported
+    appearances are [Unverified locators]. "Appears at individually announced events."
+  - Boundary line, an ordinary-chat row (A23) and a tired row ("Not established") added.
+  - Secondary-reported time-travel mechanics labeled as such and kept out of the baseline.
+  - Open Questions rewritten: which quotes are corroborated and which stay unverified; story-dated
+    versions revise Groups, Background and appearances together.
+  - Sweep: Calli's "ara ara" scare (A6, title only) left the card.
 - **Left to the author:** how much time-travel lore a story treats as literal.
 
 ## Open Questions
-1. The wiki censors several of her angry and crude lines; the card writes them out (authenticity rule).
-   Should they be confirmed against the VODs first?
-2. Status framing: the card says she "concluded her regular activities but remained a hololive
-   affiliate." For stories set before September 2024, drop that sentence.
+1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage
+   and trash-talk lines. Still unverified and off the card: the wiki-censored rage lines ("YOU THINK I
+   WON'T DO IT!?…", "watch your goddamn tone," "YOU BITCH!…") and the Ina PvP threat (censored title).
+2. Status framing: the baseline card is affiliate status after 2024-09-30. A pre-September-2024 story needs
+   a story-dated revision of Groups, Background and later appearances together.
 3. No recording was audio-checked by ear. Should the gremlin screech, "NEHEHE" and the ground-pound
    delivery get an audio check before a voice model is trained on them?

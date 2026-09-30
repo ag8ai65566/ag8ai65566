@@ -25,7 +25,8 @@ sw_section: Characters
 > independent listening verification. Those items are marked [ASR]. Other voice evidence is **G3**:
 > YouTube auto-captions of the 12
 > streams listed under G3, read by Claude's research. They are machine
-> transcriptions: no speaker labels, approximate, and strong swears are masked. Other [Observed] items rest
+> transcriptions: no speaker labels, approximate, and strong swears are masked. G3 quotes without a stream
+> ID rest mainly on G2 §Quotes; their G3 frequency is an unverified estimate. Other [Observed] items rest
 > on a clip or stream **title** (the uploader's description of a moment; it neither
 > proves exactly what happened nor how it sounded); on **secondary
 > timestamp indexes** (G11, HoloIndex); or on **secondary transcriptions** (the G2 wiki is cited as "G2
@@ -103,7 +104,8 @@ voice delivering deadpan lewd jokes. [Observed G2 §Personality and §Quotes, se
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
   - "You can't be mad at me... I'm cute." → deflecting blame → common. [Observed G2 §Quotes; G3]
   - "What do you mean!?" → outraged echo of chat → common. [Observed G2 §Quotes; G3]
-  - "I'm hungry. Is anybody else hungry?" → any lull → common. [Observed G2 §Quotes; G3]
+  - "I'm hungry. Is anybody else hungry?" → when bringing up hunger → common (estimate). [Observed G2
+    §Quotes; G3]
   - "Hoocha!" → her own sound effect for any quick, intense move ("if you do a karate kick you go
     hoocha") → occasional. [Observed G2 §Quotes; G3-xo3z5bEYTE8 captions; G9 thread]
   - "Oh nyo!" → things going wrong, cat-ified → occasional. [Observed G2 §Quotes; G9 clip title]
@@ -126,7 +128,7 @@ voice delivering deadpan lewd jokes. [Observed G2 §Personality and §Quotes, se
   - "What is simp? Do you mean shrimp?" → the origin of "shrimps," which she retells herself.
     [ASR G18, 2024 birthday, 1:15:30]
   - "GLORY TO GAWRSTOTZKA!" → Papers, Please. [Observed G2 §Quotes]
-  - "ara ara" → an occasional performed Japanese bit, not her default voice. [Observed G10 clip title]
+  - [Unverified, title only; off the card] "ara ara" as a performed Japanese bit. [G10 clip title]
   - "Screw you! It's my stream!" → tilted at chat. [Observed G2 §Quotes]
 - **Crude and innuendo lines** (non-explicit; kept under the project's authenticity rule). Wording per
   G2 §Quotes (secondary; no timestamps) unless noted. The wiki says she "occasionally makes lewd jokes"
@@ -147,7 +149,7 @@ voice delivering deadpan lewd jokes. [Observed G2 §Personality and §Quotes, se
 - **Profanity:** mostly softened ("what the heck," "freaking," "dang," "shoot," "screw you," "shut up,"
   "stupid"), often delivered cutely. Under gaming pressure it gets harder: "Oh, what the hell?" and "Yo
   bastard!" [ASR G18, Resident Evil 2, 3:03:15 and 3:01:47; both models agree]; the first model also wrote
-  "Damn." and "god damn", which the second model did not confirm. The f-word is documented in a
+  "Damn." and "god damn", which the second model did not confirm. Whether she says "fuck" is [Unverified] here: it is claimed by a
   compilation from the same stream [Observed G11, secondary]; it was not in the 45 minutes checked. Neither
   sanitized nor constant.
 - **Address terms:** "you guys" (by far the most), "everybody," "chumbuds" (official fan name),
@@ -168,10 +170,10 @@ voice delivering deadpan lewd jokes. [Observed G2 §Personality and §Quotes, se
 - **Timbre / pitch / pace (for voice performance):**
   - Secondary descriptions: a relatively high voice with clear pronunciation [Observed G14, listener
     guide]; a soft, cute voice [Observed G3; G2].
-  - Measured (G18, chat and horror windows): median pitch about 245–270 Hz, the highest group of the six
-    files measured the same way, with Ame (Kronii 177–188 Hz); about 120–140 words per minute of speech in
-    2024 chat (Calli 161–186, Ina 81–95). Approximate values for relative comparison. (The earlier
-    caption-timing estimate is withdrawn.)
+  - Measured (G18; chat and horror windows, with game audio mixed in): median pitch about 245–270 Hz
+    (Kronii's chat windows 177–188 Hz); about 120–140 words per minute of speech in the 2024 chat. Sample
+    results only; they do not establish a general ranking among genmates. (The earlier caption-timing
+    estimate is withdrawn.)
   - Provisional: long pauses, sudden loud peaks in horror or rage that drop straight back.
   - Singing: clean and controlled. [Observed G2 §Miscellaneous (debut "Ride on Time")]
   - Exact pitch and accent: not specified.
@@ -238,13 +240,16 @@ Real lines first; Style demos after.
 | 2026-09-30 | Alum; her history stays part of Myth's shared memory | [Adaptation] |
 
 ## Relationship Map
-Public exchanges only. Ship and unit names are fan terms. No private feelings are implied.
+Public exchanges only. No private feelings are implied. Names are marked one by one: UMISEA is an
+official ocean-themed unit announced 2021-09-21 with Minato Aqua, Houshou Marine and Ninomae Ina'nis
+(G19); her participation is historical since her 2025 graduation. Bone Bros, AmeSame, SameTori, Gawrlic
+and SNOTCast are fan or collab names.
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Watson Amelia (affiliate) | Myth genmate ("AmeSame") | Close friends; The Fish Tank talk show with staged arguments; Gura gets embarrassed when Ame praises her | [Observed G2 §Likes and dislikes and §Relationships; G6] |
 | Mori Calliope | Myth genmate ("Bone Bros") | Pranks, bickering and duets; co-vocalists on "Q" | [Observed G2 §Relationships] [Official G15] |
-| Ninomae Ina'nis | Myth genmate ("UMISEA" with Marine, Aqua and Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] |
+| Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] |
 | Takanashi Kiara | Myth genmate ("SameTori") | Kiara calls her "Goobidiba" and taught her Japanese and German (and German swears); Gura once filled KFP's back room with chickens | [Observed G2 infobox; G13; Kiara file T2 §KFP] |
 | Murasaki Shion | JP senior ("Gawrlic") | A mock love letter ("STOP CALLING ME CRINGE"); Gura's birthday song made Shion gush | [Observed G2 §Quotes and §Gura's antics] |
 | Sakura Miko | JP senior | Calls her "George" | [Observed G2 infobox] |
@@ -256,8 +261,9 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
   card date.
 - **Turning points:** not established; no story has been chosen.
 - **End point:** open.
-- **Card update points:** for a story set before May 2025, drop the graduation sentence from Background;
-  otherwise update only after a chosen story event.
+- **Card update points:** the present baseline is graduated. A story set before May 2025 needs a
+  consistent story-date revision across Groups, Background, relationships (e.g. Ame's affiliate status)
+  and events, not just one deleted sentence; otherwise update only after a chosen story event.
 
 ## Story Engine
 - Trouble she brings: confident wrong answers; boasts that collapse; pranks on genmates; hunger that
@@ -290,8 +296,9 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
   "Goomba" and "Apex Predator" are left out of Other Names because they would match unrelated text.
   [Observed G2 infobox]
 - Likes: salmon, pizza, fast food, strawberry cake, rhythm games, cowboy and wild-west things, the banjo.
-  Dislikes: hot sand, wearing pants; her biggest fear is people hearing her stomach noises. [Observed G2
-  §Likes and dislikes]
+  Dislikes: hot sand, wearing pants. [Observed G2 §Likes and dislikes] (The wiki also reports her saying
+  that her biggest fear is people hearing her stomach noises: one public quip, not a fear hierarchy, and
+  not a continuity fact.)
 
 ## Sources (checked 2026-09-30)
 Clips are cited by their YouTube titles unless captions or a timestamp are named. No recording was
@@ -321,6 +328,7 @@ audio-checked by ear.
 - G15 "Q" (Calliope Mori × Gawr Gura × DECO*27, 2022-02-03): https://www.youtube.com/watch?v=aetXqd9B8WE
 - G16 Dead Space 3 with Ina (clip, 2021-08-02): https://www.youtube.com/watch?v=mWGU5kG9NbM
 - G17 UMISEA release (official): https://hololive.hololivepro.com/en/music/domination-all-the-world-is-an-ocean/
+- G19 Official announcement of the unit UMISEA (2021-09-21; Minato Aqua, Houshou Marine, Ninomae Ina'nis, Gawr Gura): https://hololive.hololivepro.com/news/20210921-1-9/
 
 ---
 
@@ -349,19 +357,19 @@ Gura is a hololive alum: she graduated from hololive -Myth- on May 1, 2025. She 
 Gura is small, 141 cm, with white-silver hair streaked with blue, short pigtails tied with shark-face hair ties, cyan eyes and sharp shark teeth. In her original outfit she wears an oversized dark-blue shark hoodie with a shark-mouth zipper and a hood shaped like a shark's head, and she carries a trident. Her cyan shark tail is stitched up after a rock fell on it.
 
 ## [SW] Dialogue Style
-Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; under gaming pressure it gets harder ("what the hell," "Yo, bastard!") and the f-word comes out. Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait, wait." "Bro, you cooked."
+Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; under gaming pressure it gets harder ("what the hell," "Yo, bastard!"). Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait, wait." "Bro, you cooked."
 
 ## [SW] Catchphrases
-"hello hello hello" (opening); "Domo!! Sa-me desu!! Have you had shark thoughts today?" (formal intro); "a" (her debut word and meme; rare); "Shark fact!" (opening with real or made-up trivia); "You can't be mad at me... I'm cute." (deflecting blame); "What do you mean!?" (outraged echo of chat); "I'm hungry. Is anybody else hungry?" (any lull); "Hoocha!" (sound effect for any quick move); "Oh nyo!" (cat-ified "oh no"); "Shaaaaark!" (hype); "Parkour!" (jumps and escapes); "Ka-chow!" (Cars reference); "It's Gooba!" (her own nickname); "hydrodynamic" (when teased about being flat); "I'm pettan, and I'm proud, okay?" and "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (deadpan lewd one-liners); "What is simp? Do you mean shrimp?" (why her members are shrimps); "ara ara" (an occasional performed bit); "I won't eat you. Maybe." (harmless shark menace); "BAN PANTS!" (running joke); "goodbye goodbye goodbye, good night" (sign-off); "Take care and be kind to yourselves." (sincere sign-off)
+"hello hello hello" (opening); "Domo!! Sa-me desu!! Have you had shark thoughts today?" (published profile greeting); "a" (her debut word and meme; rare); "Shark fact!" (opening with real or made-up trivia); "You can't be mad at me... I'm cute." (deflecting blame); "What do you mean!?" (outraged echo of chat); "I'm hungry. Is anybody else hungry?" (when bringing up hunger); "Hoocha!" (sound effect for any quick move); "Oh nyo!" (cat-ified "oh no"); "Shaaaaark!" (hype); "Parkour!" (jumps and escapes); "Ka-chow!" (Cars reference); "It's Gooba!" (her own nickname); "hydrodynamic" (when teased about being flat); "I'm pettan, and I'm proud, okay?" and "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (deadpan lewd one-liners); "What is simp? Do you mean shrimp?" (why her members are shrimps); "I won't eat you. Maybe." (harmless shark menace); "BAN PANTS!" (running joke); "goodbye goodbye goodbye, good night" (sign-off); "Take care and be kind to yourselves." (sincere sign-off)
 
 ## [SW] Voice & Delivery
-A soft, cute, relatively high voice with clear pronunciation, at a moderate pace with long pauses, small self-corrections and repeated words. Teasing comes out deadpan and slow; pompous brags get an over-formal delivery. Horror and rage bring sudden loud peaks (screams, short repeated "no no no," quick bargaining) that drop right back to calm, sometimes with an apology. She hums while she plays. Her laugh can tip into hiccups. Praise shrinks her voice. Sincere lines slow down further, with short, plain sentences. Her singing is clean and controlled, steadier than her talking voice.
+A soft, cute, relatively high voice with clear pronunciation, at a moderate pace with long pauses, small self-corrections and repeated words. Teasing comes out deadpan and slow; pompous brags get an over-formal delivery. Horror and rage bring sudden loud peaks (screams, short repeated "no no no," quick bargaining), and she can drop back to calm quickly, sometimes with an apology. She hums while she plays. Her laugh can tip into hiccups. Sincere lines are short and plain. Her singing is clean and controlled, steadier than her talking voice.
 
 ## [SW] Motivation
 Gura wants to have fun on land (games, songs, snacks) and share it with her chumbuds, while convincing everyone she's a fearsome apex predator.
 
 ## [SW] Relationships
-Watson Amelia (affiliate): her close friend and Fish Tank co-host; they argue on purpose, and Ame's sudden praise embarrasses her. Mori Calliope: her "Bone Bros" partner in pranks, bickering and duets. Ninomae Ina'nis: fellow sea creature who drew a chibi Bloop and promises "the wrath of Ina" to anyone who makes Gura cry. Takanashi Kiara: calls her "Goobidiba" and taught her Japanese and German, swears included; Gura once filled Kiara's KFP back room with chickens. Murasaki Shion: senpai she wrote a mock love letter to. Sakura Miko: calls her "George."
+Watson Amelia (affiliate): her close friend and Fish Tank co-host; they argue on purpose, and Ame's sudden praise embarrasses her. Mori Calliope: her "Bone Bros" partner in pranks, bickering and duets. Ninomae Ina'nis: fellow member of the ocean-themed unit UMISEA (2021) who drew a chibi Bloop and promises "the wrath of Ina" to anyone who makes Gura cry. Takanashi Kiara: calls her "Goobidiba" and taught her Japanese and German, swears included; Gura once filled Kiara's KFP back room with chickens. Murasaki Shion: senpai she wrote a mock love letter to. Sakura Miko: calls her "George."
 
 ## [SW] Secrets
 (none)
@@ -370,7 +378,7 @@ Watson Amelia (affiliate): her close friend and Fish Tank co-host; they argue on
 
 ## Merge Record
 - **Structure and evidence:** the Kronii/Calli format: audio-status note, wiki cited by section
-  (G2 §…), Style demos marked, frequency labels as estimates. Claude's captions of 31 streams (G3) carry
+  (G2 §…), Style demos marked, frequency labels as estimates. Claude's captions of 12 streams (G3) carry
   the openers, fillers, sign-offs and "I'm cute."
 - **From GPT (adopted):**
   - The Fish Tank as a documented format and her embarrassment at Ame's praise (G6), with "a big ol'
@@ -385,12 +393,13 @@ Watson Amelia (affiliate): her close friend and Fish Tank co-host; they argue on
   horror recovery, sign-off care lines, triplets, sound effects, the crude one-liners, the Gawrstotzka
   and BAN PANTS bits, Bloop, age, lore, and relationships.
 - **Corrected while merging:**
-  - UMISEA removed from Groups (a collab release, not her group); kept in Relationships.
+  - UMISEA kept out of Groups, which lists her current status; described in Relationships as an official
+    2021 unit (corrected in verify round 1; G19).
   - "Apex Predator" removed from Other Names (would match unrelated text).
   - "Senpai tax" with Kronii and IRyS, and "Fauna's oshi is Gura," are not in the wiki. They rest on
     clip titles or nothing, so they are marked [Unverified] and left the card.
-  - Voice: "childlike" softened to "soft, cute, relatively high" (G14, G3); words per minute kept as a
-    provisional estimate.
+  - Voice: "childlike" softened to "soft, cute, relatively high" (G14, G3); the caption-based words per
+    minute was later withdrawn (see below).
   - Graduation facts are limited to the date and the farewell; no reasons are given.
 - **Crude and innuendo lines:** kept in the file with wording per G2 §Quotes and their status; the card
   describes the register ("crude, lewd one-liners in a deadpan, innocent voice").
@@ -410,12 +419,25 @@ Watson Amelia (affiliate): her close friend and Fish Tank co-host; they argue on
   recordings (G18). Verified: the triple hello, the Mortuary Assistant taunt and bargaining, the humming,
   the pants context at the wiki's timestamp, the shrimp origin, and the softened swears. Real lines now
   replace most Style demos, and two sourced lewd one-liners are on the card, as the author asked.
-- **Left to the author:** for stories set before May 2025, drop the graduation sentence.
+- **Verify round 1 (GPT: CHANGES), applied:**
+  - "The f-word comes out" left the card; "fuck" is [Unverified] until found in a transcript (an audio
+    search of the rest of the Resident Evil 2 stream is under way). "ara ara" (G10, title only) left the
+    card.
+  - Voice: "praise shrinks her voice" removed (embarrassment stays in Personality); calm returns "can"
+    come quickly; pitch figures are sample results, not a ranking.
+  - UMISEA marked as an official 2021 unit (G19), with her participation historical; names marked one by
+    one.
+  - Corpus: 12 streams throughout; G3 quotes without a stream ID are estimates resting mainly on G2; the
+    stale "words per minute kept" note corrected.
+  - Hunger "when bringing up hunger"; the stomach-noise fear is a quip, not a Hard Fact; the profile
+    greeting is labeled "published profile greeting."
+  - Story-dated versions need a consistent revision of Groups, Background, relationships and events.
+- **Left to the author:** whether and how to make a story-dated (pre-2025) version of the card.
 
 ## Open Questions
 1. The card says the f-word "comes out" under real gaming pressure (G11). Is that the right level, or
    should it be stronger or weaker?
-2. Graduated: the Background ends with her graduation. For fiction set before 2025, drop that sentence
-   per story.
-3. "Domo!! Sa-me desu!!" is official but not a verified on-stream habit. Should it stay in Catchphrases as
-   the formal intro?
+2. Graduated: the baseline card is post-graduation. Fiction set before 2025 needs a story-dated revision
+   of Groups, Background, relationships and events together.
+3. "Domo!! Sa-me desu!!" is her published profile greeting (G1), not a verified on-stream habit; the card
+   labels it that way.
