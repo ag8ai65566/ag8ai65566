@@ -21,14 +21,14 @@ sw_section: Characters
 > **Audio status:** on 2026-09-30 Claude checked about 2 hours of archived 2026 recordings (T23). The audio
 > was machine-transcribed and acoustically measured; transcripts were reviewed in context, without
 > independent listening verification. Those items are marked [ASR]. The other main voice evidence is
-> **T3**: YouTube auto-captions of her own September 2026 streams, counted by Claude's research (13
-> streams listed; the word counts come from 11 of them, 2026-09-17 to 09-29, about 58 hours; the sign-off
-> count from 12, 2026-09-06 to 09-29; per-stream intervals were not recorded). Captions are machine transcriptions: they have no speaker labels, mishear words
+> **T3**: YouTube auto-captions of her own September 2026 streams read by Claude's research (13 streams
+> listed). The analyzed intervals and counting method were not recorded, so **T3's counts are withdrawn**;
+> only its quoted lines are used, and frequency words ("common," "often") are estimates. Captions are machine transcriptions: they have no speaker labels, mishear words
 > ("Kikkeriki" comes out as "Kicky wobble"), and mask strong swears as "[ __ ]". Other [Observed] items
 > rest on a clip or stream **title** (the uploader's description of a moment; it neither
 > proves exactly what happened nor how it sounded), or on a
-> **secondary transcription** (the T2 wiki is cited as "T2 §Section"). Counts come from T3. Other
-> frequency labels are estimates. Delivery notes marked **provisional** are direction for the voice
+> **secondary transcription** (the T2 wiki is cited as "T2 §Section"). Frequency labels are
+> estimates. Delivery notes marked **provisional** are direction for the voice
 > model, not documented facts.
 
 ## One-line Concept
@@ -63,9 +63,9 @@ choreography. [Official T9, T11] [Observed T21]
    recovers with a joke. [Observed T3 captions; T5-GzJMlHwZBPA captions]
 2. When a stream starts, she crows "Kikkeriki!" and usually goes straight into chit-chat or a tangent
    she wants to tell before she forgets ("Do you want to hear a tangent to start?"). Superchat readings
-   turn into talk streams. [Observed T3 captions, 23 "tangent" hits; T2 §Miscellaneous, secondary]
+   turn into talk streams. [Observed T3 captions; T2 §Miscellaneous, secondary]
 3. When she's proud of herself, or roasting herself, she talks about "Wawa" in the third person.
-   [Observed T3 captions, about 150 hits]
+   [Observed T3 captions] [ASR T23: "Wawa, Wawa, Wawa" at -5P17BxVZTE 2:39:41, both models]
 4. When she finds a fictional woman attractive, she calls her "my wife" and narrates her thirst over the
    top ("Tell my wife Krystal that I love her."). [Observed T3 captions; T4 stream titles]
 5. When chat misbehaves, she plays the KFP manager: threatens to fire people or send them to the Usual
@@ -90,22 +90,23 @@ choreography. [Official T9, T11] [Observed T21]
   - "Welcome to KFP, are you here to order or to apply for a job?" (official tagline). [Official T1]
   - "Where are my day one members? Assemble." (opening call-out, 2026-09-27). [Observed T3 captions]
   - **Sign-off ritual:** schedule reminder, then "In German we say ___" (often a joke: "In German we
-    say bye-bye," "In German we say bomb. No, in German we say—"), then "Good night." / "Bye-bye." 9 of
-    12 sampled September 2026 streams include the German line. Forgetting it is itself a bit ("Did I
+    say bye-bye," "In German we say bomb. No, in German we say—"), then "Good night." / "Bye-bye." The German line
+    appears often in her September 2026 sign-offs (estimate; the count was withdrawn). Forgetting it is itself a bit ("Did I
     forget to say 'and in German we say'? How could I?"). [Observed T3 captions]
   - "Auf Wiedersehen": her classic ending catchphrase. [Observed T2 §Miscellaneous, secondary]
     [Official T13, licensed product text]
   - "Thank you for watching my cute chicken(s)." [Observed T3 captions]
 - **Catchphrases & bits (verbatim → trigger → frequency):**
-  - "Oh my god." → any reaction → very common (395 caption hits, about 6.8 per hour). [Observed T3]
+  - "Oh my god." → any reaction → very common (estimate). [Observed T3] [ASR T23]
   - "Okay. Okay. Okay." / "Wait. WAIT." / "Anyway, anyway, anyway." → stalling, panic, closing a topic →
     very common (estimate from T3).
-  - "Okie dokie." → acknowledging, wrapping up → common (16 hits). [Observed T3]
+  - "Okie dokie." → acknowledging, wrapping up → recurring (estimate). [Observed T3]
   - "Look at Wawa using words. Oh my god. So proud." / "It's a rare Wawa sighting." → third-person
     self-praise or self-roast → very common in 2026. [Observed T3]
-  - "What the fuck?" / "Holy fuck" / "What the hell?" → game surprise or unfairness → very common (about
-    290 "what the…" hits, masked f-words included). [Observed T3; the f-word is inferred from the mask
-    and context]
+  - "What the fuck?" / "Holy fuck" / "What the hell?" → game surprise or unfairness → common (estimate).
+    [Observed T3, where strong swears are masked as unidentified "[ __ ]" tokens] [ASR T23: "What the
+    fuck is there?", "What the fuck am I supposed to do with 16?", "Yeah, like what the fuck? What do you
+    mean?"; both models agree]
   - "You little shit!" → protest at a collaborator; her own short is titled "GURA YOU LITTLE SHIT."
     [Official T16, her upload] [Observed T2 §Quotes, secondary]
   - "Can Wawa swear less? Rhetorical question." / "I wonder how many people realize I'm swearing right
@@ -138,8 +139,8 @@ choreography. [Official T9, T11] [Observed T21]
   - "Calli goes to The Pink Vice, gets drunk, sees a stripper she likes… realizes the next day the
     stripper was me"
   - "We're starting off with a... kind of lewd one."
-  - "When I get a useless item… I will put it on my ass and stick it all the way in there because that is
-    where it belongs."
+  - A crude joke about disposing of a useless game item anatomically. 【Sudowrite 處理】 (the wording is
+    explicit and is not quoted here)
   - "I'm an innocent maiden." (ironic)
 - **Vocabulary / fillers:**
   - Fillers: "you know," "I mean," "actually," "honestly," "come on," "let's go," "yay," "woohoo,"
@@ -149,8 +150,8 @@ choreography. [Official T9, T11] [Observed T21]
   - Loanwords: "sugoi," "Mamma mia." [Observed T3]
   - KFP workplace vocabulary: orders, employees, complaints, firing. [Official T1] [Observed T18]
 - **Profanity:** frequent and casual: "fuck," "fucking," "what the fuck," "holy shit," "shit," "ass,"
-  "damn it," "hell." Roughly eight masked "[ __ ]" tokens per hour in the 2026 captions (the masked words
-  are inferred); the audio transcripts confirm the words in her own speech: "everybody is fucking good at
+  "damn it," "hell." The 2026 captions contain many masked "[ __ ]" tokens (unidentified censored words);
+  the audio transcripts give the actual words in her own speech: "everybody is fucking good at
   making Miis," "Holy shit, they're all cracked," "It's like tiny in size, but it's so fucking heavy,"
   "Damn. Damn!", and in DOOM "Vault dwellers? What the fuck is there? The wasteland?" and "16 of them. 16.
   What the fuck am I supposed to do with 16?" [ASR T23, -5P17BxVZTE 2:42:58, 2:43:03, 2:37:42, 1:08:57;
@@ -176,9 +177,8 @@ choreography. [Official T9, T11] [Observed T21]
   - "Oida" is on the wiki as her favorite German word but was not found in the 2026 captions
     [Unverified as a current habit].
 - **How she addresses people:** chat = "chat" (often "Chat, chat, chat, chat" when she needs help),
-  "you guys" (180 hits), "guys" (316), "y'all" (32), "everybody" (116), "my cute chicken(s)"; fans are
-  KFP employees. Fans call her "Tenchou" (store manager); she almost never says it herself in 2026 (0
-  caption hits). [Observed T3] [Official T1] [Observed T2 §KFP]
+  "you guys," "guys," "y'all," "everybody," "my cute chicken(s)"; fans are KFP employees. Fans call her
+  "Tenchou" (store manager); it was not found in her own speech in the sampled 2026 captions. [Observed T3] [Official T1] [Observed T2 §KFP]
 - **Rhythm & rhetoric:** fast, self-interrupting restarts ("I— I'll go— I'll go and check"); triple
   repetition ("Will I die? Will I die? Will I die?"); flag a tangent, then derail into it; self-praise
   and self-insult in one breath ("Do you think I'm cute? I think I'm really cute." then "Why am I so
@@ -189,10 +189,10 @@ choreography. [Official T9, T11] [Observed T21]
     cries; ordinary conversation stays intelligible rather than constantly shouted. [Observed T19,
     secondary]
   - Singing: powerful and high. [Observed T8, fan comments quoted there]
-  - Measured (T23, 2026 windows): median pitch about 245–300 Hz, upper-middle among the six files
-    measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz); about 133–179 words per
-    minute of speech, one of the two fastest talkers with Calli (Ina 81–95). Approximate values for
-    relative comparison; game audio can push the pitch figures up.
+  - Measured (T23; three 2026 windows, with game audio mixed in): median pitch about 245–300 Hz (the
+    closing talk 244 Hz); 91–179 words per minute of speech depending on context (DOOM play 91, Slay the
+    Spire chat 133–179). Sample results only: they do not establish a stable ranking among genmates or
+    how her pitch changes with emotion.
   - Provisional direction: bright and chatty; contained, slower questions in interview mode.
   - Exact accent: not specified. No regional accent spelling.
 - **Sounds off:**
@@ -256,7 +256,7 @@ Real lines first; Style demos after.
 | 2020-11 | HOLOTALK begins as a bilingual interview show | [Official T9] [Observed T21] |
 | 2020-12-10 | Channel briefly terminated, then restored; "#PhoenixDown" re-debut with a mock-amnesia bit ("Who's Calli?") | [Observed T2 §2020 and §Takamori; T5-le72UNZAbQI] |
 | 2021-03 | German lesson with Gura; the German "HoloDE Debüt" stream | [Observed T15; T2 §2021] |
-| 2021-09 | She and Calli announce they will tone down the TakaMori ship; they stay close friends | [Observed T2 §Takamori] |
+| 2021-09 | She and Calli announce they will tone down the TakaMori ship | [Observed T2 §Takamori] |
 | 2025-11-16 | Raora's "Doom" on her stream becomes a meme | [Observed T6] |
 | 2026-02-08 | 2nd album *Vogelfrei* | [Observed T2 §2026; T8] |
 | 2026-03 | Bilingual show HoloEN REWIND begins | [Observed T2 §HoloEN REWIND] |
@@ -269,8 +269,8 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Mori Calliope | Myth genmate | Kiara long called Calli her "wife" and coined "TakaMori"; Calli rebuffed her and calls her "kusotori" ("shitbird"). They announced in 2021 that they would tone the ship down (the wiki adds that they remain close friends); they play "Mom" and "Dad" to Kobo as a performed family bit | [Observed T2 §Takamori, secondary; T14 title] |
-| Ninomae Ina'nis | Myth genmate ("TakoTori") | Duo concert 2026; Kiara "fired" Ina over the 2020 chicken incident; Ina is the first to message her when she's down | [Official T11, T12] [Observed T2 §KFP; T22 §Personality, secondary] |
+| Mori Calliope | Myth genmate | Kiara long called Calli her "wife" and coined "TakaMori"; Calli rebuffed her and calls her "kusotori" ("shitbird"). They announced in 2021 that they would tone the ship down (the wiki adds that "the two remain close friends"; a secondary statement, not a documented current relationship); they play "Mom" and "Dad" to Kobo as a performed family bit | [Observed T2 §Takamori, secondary; T14 title] |
+| Ninomae Ina'nis | Myth genmate ("TakoTori") | Duo concert 2026; Kiara "fired" Ina over the 2020 chicken incident. Ina's wiki page reports that Ina is the first to message Kiara when she's down (a secondary account, not on the card) | [Official T11, T12] [Observed T2 §KFP; T22 §Personality, secondary] |
 | Watson Amelia (affiliate) | Myth genmate | Kiara's EN oshi ("#1 Ame gosling"), credited for help with 3D productions; Ame made HOLOTALK intro material | [Observed T2 §Likes and dislikes] [Official T9] |
 | Gawr Gura (graduated) | Myth genmate | German lessons where Kiara taught her German swears and rickrolled her; Gura's 2020 Minecraft prank filled KFP's back room with chickens; "GURA YOU LITTLE SHIT" | [Observed T15; T2 §Miscellaneous and §KFP] [Official T16] |
 | Koseki Bijou | Advent junior; 2026 Serendipity partner | Practical encouragement for stage work; shared "6 7" meme | [Official T10] |
@@ -317,6 +317,9 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 - Nicknames: Kiwawa, Wawa, Tenchou (by fans), Kusotori (by Calli), Kibaba (grandma persona). Frogiwawa is
   officially a different character. [Observed T2 infobox, §Lore, §KFP, secondary]
 - She doesn't drink. [Observed T2 §Likes and dislikes]
+- Preferences on the card: fast food, hats, dislike of scary stuff, Pekora as her favorite senior
+  [Observed T2 §Likes and dislikes]; hates sand ("I HATE SAND!…") [Observed T2 §Quotes]; hates the font
+  Comic Sans [Observed T2 §Miscellaneous]. All secondary.
 
 ## Sources (checked 2026-09-30)
 Clips are cited by their YouTube titles unless captions or a timestamp are named. No recording was
@@ -326,7 +329,8 @@ audio-checked by ear.
   used: infobox (nicknames), §Personality, §Appearance, §Debut, §2020, §2021, §2026, §HoloEN REWIND,
   §Mascot and fans, §Relationships, §Quotes, §Lore, §KFP, §Likes and dislikes, §Takamori,
   §Miscellaneous: https://virtualyoutuber.fandom.com/wiki/Takanashi_Kiara
-- T3 Her own streams, English auto-captions (September 2026): https://www.youtube.com/watch?v= + oF7Z1rvaUfo, j4-uVkepyLk, E_DcfRLPyl0, hWtX2a2sBqs, 94Y3lKsAaTk, Cxc7q7WF_7Y, 8m-SZcqEN4c, PtbDj9jg380, tqhnbaXa63w, itScMyEA0O4, j-3Cg5lQt-I, Kr5SOpX7Tfk, wtXEmIwSe_w
+- T3 Her own streams, English auto-captions (September 2026; counts withdrawn because the analyzed
+  intervals were not recorded; quoted lines only): https://www.youtube.com/watch?v= + oF7Z1rvaUfo, j4-uVkepyLk, E_DcfRLPyl0, hWtX2a2sBqs, 94Y3lKsAaTk, Cxc7q7WF_7Y, 8m-SZcqEN4c, PtbDj9jg380, tqhnbaXa63w, itScMyEA0O4, j-3Cg5lQt-I, Kr5SOpX7Tfk, wtXEmIwSe_w
 - T4 Channel feed (titles): https://www.youtube.com/feeds/videos.xml?channel_id=UCHsx4Hqa-1ORjQTh9TYDhww
 - T5 Clips and streams (https://www.youtube.com/watch?v=<ID>): GzJMlHwZBPA (boss rage, captions), eivcnjk6yeE (Mumei kikkeriki), 3aie_i5Er8s (KFP 101 Ep.03, captions), le72UNZAbQI (2020 revival), jwGiJnsdQn0 (Doom), gNEWWDKlTM8 (Mommy Kiwawa), K7NNBucs3zc (German with Cecilia)
 - T6 Know Your Meme, "Raora's Doom": https://knowyourmeme.com/memes/raoras-doom
@@ -382,13 +386,13 @@ Fast, chatty, self-interrupting English that restarts mid-word, repeats short wo
 "Kikkeriki!" (phoenix cry opening a stream or hyping people up); "Welcome to KFP, are you here to order or to apply for a job?" (manager greeting); "In German we say ___" (sign-off lesson that often turns into a joke, e.g. "In German we say auf wiedersehen."), then "Good night." / "Bye-bye."; "Thank you for watching, my cute chickens" (sign-off); "Oh my god." (any reaction); "Okay. Okay. Okay." / "Wait. WAIT." (stalling, panic); "Okie dokie." (wrapping up); "Look at Wawa..." / "Wawa, Wawa, Wawa" (third-person self-talk); "What the fuck?" (game surprise); "You little shit!" (protest at a collaborator); "Doom? DOOM? What do you mean, Doom?" (exaggerated callback to Raora's "Doom"); "the Usual Room" (punishment for employees); "You can't get me down, I'm a phoenix!" (after a setback); "danke schön" (thanking donors); "I'm an innocent maiden." (said with irony)
 
 ## [SW] Voice & Delivery
-Fast and chatty, one of the quickest talkers among her genmates, with sudden accelerations and strong stresses; her pitch sits in the upper-middle range and climbs when she's excited. Excitement brings sharp cries and loud laughter that can break into a sentence, while her ordinary speech stays intelligible rather than constantly shouted. Under pressure she loops short words, with short screams at deaths and outbursts in mid-sentence. In hosting mode her questions become contained and she leaves room for the answer. Sincere lines drop the bits entirely. Her German comes out in the sign-off lesson and, fast, in a real rage. Her singing voice is powerful and high.
+Energetic and highly changeable, chatty and self-interrupting. Excitement brings sharp, birdlike cries and conspicuous laughter that can break into a sentence, while her ordinary speech stays intelligible rather than constantly shouted. Her gaming reactions are emphatic: looped short words, short screams at deaths, all-caps outbursts in mid-sentence. In hosting mode her questions become contained and she leaves room for the answer. Sincere lines drop the bits entirely. German comes out in the sign-off lesson and sometimes in rage. Her singing voice is powerful and high.
 
 ## [SW] Motivation
 Kiara wants to own a fast-food empire and keep KFP growing. She wants to entertain the people who support her, make communication across languages possible, and make ambitious performances work, and she hopes new people will keep joining KFP.
 
 ## [SW] Relationships
-Mori Calliope: Myth genmate whom Kiara long called her "wife" (TakaMori), a public bit they toned down in 2021; Calli rebuffs her and calls her "kusotori," and together they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori), the first to message Kiara when she's down; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi. Gawr Gura (graduated): Kiara taught her German and German swears, and Gura once filled KFP's back room with chickens. Koseki Bijou: junior she encourages; they share the "6 7" meme. Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii: Kiara was a fan before Kronii debuted. Usada Pekora: her oshi and favorite senior.
+Mori Calliope: Myth genmate whom Kiara long called her "wife" (TakaMori), a public bit they toned down in 2021; Calli rebuffs her and calls her "kusotori," and together they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026); Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi. Gawr Gura (graduated): Kiara taught her German and German swears, and Gura once filled KFP's back room with chickens. Koseki Bijou: junior she encourages; they share the "6 7" meme. Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii: Kiara was a fan before Kronii debuted. Usada Pekora: her oshi and favorite senior.
 
 ## [SW] Secrets
 (none)
@@ -433,6 +437,7 @@ Mori Calliope: Myth genmate whom Kiara long called her "wife" (TakaMori), a publ
 - **GPT's review of Claude's draft (applied after the first merge):**
   - Caption evidence made auditable as far as the research notes allow (T3 manifest note); masked
     "[ __ ]" tokens are marked as inferred, and the ASR check now confirms the words in her speech.
+    (Superseded in verify round 1: T3 counts withdrawn; masked tokens are unidentified.)
   - Frequency inflation removed: no "every few sentences," no "runs at full volume," "often" for the
     German sign-off.
   - Profanity no longer "aimed at objects rather than people": she can aim playful insults at
@@ -452,6 +457,19 @@ Mori Calliope: Myth genmate whom Kiara long called her "wife" (TakaMori), a publ
   "It's so cute!" / "You're so cute!", but the second model heard different words at all five places
   checked (at one of them, Japanese), so the finding, its card catchphrase and the Personality sentence
   were removed. "Damn it, damn it." (1:07:12) was also dropped; "Damn. Damn!" (1:08:57) agrees.
+- **Verify round 1 (GPT: CHANGES), applied:**
+  - T3 caption counts withdrawn (intervals and method not recorded): the hit counts, hourly rates and
+    "9 of 12" sign-off figure are gone; masked "[ __ ]" tokens are described as unidentified; the actual
+    words come from T23 (both models).
+  - Voice: T23 measurements are stated as sample results (91–179 words per minute by context); the
+    genmate speed ranking, pitch-with-excitement and "fast German rage" left the card; the contrast
+    between emphatic gaming reactions and attentive hosting stays.
+  - Relationships: "they stay close friends" is quoted as the wiki's statement; Ina "the first to message
+    her when she's down" is attributed to Ina's wiki page and left the card, which now describes Ina
+    through their duo concert and the chicken-incident bit.
+  - The explicit object-insertion quote became a non-graphic description marked 【Sudowrite 處理】.
+  - Each preference on the card is mapped under Hard Facts (T2 §Likes and dislikes, §Quotes,
+    §Miscellaneous).
 - **Left to the author:** whether any crude line should be quoted verbatim on the card; which outfit a
   story uses.
 

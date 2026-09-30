@@ -1,0 +1,5 @@
+CHANGES
+
+1. **[SW] Personality and Relationships; Voice Profile → Title-only reports still become established preferences, interactions or speech.** The card says she hates the “6 7” meme, Gigi ragebaits her, and Amelia pranks and scares her, while the mapped support for these specific claims is clip titles. Voice Profile likewise lists “ey boss” and “ORA ORA ORA” as verbatim meme reflexes despite title-only provenance. The dossier’s introductory caveat does not carry into the exported card. → Corroborate each retained claim through a contextual transcript, checked recording, or identifiable secondary account. Pending verification, remove the “6 7” dislike, retain Gigi and Amelia with their supported collaborator/genmate descriptions, and move the two title-derived utterances into **Unverified** research leads. Preserve the supported profanity, innuendo, performed cuteness and ASR-backed dialogue.
+
+This unresolved evidence-to-export issue requires author adjudication under the stated two-round limit.
