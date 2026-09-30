@@ -23,6 +23,9 @@
     然後 `promote --force --reason "作者指示 GPT 只審一輪"`，`export holoen`。
 - **IRyS、Nerissa Ravencroft**（作者：世界觀做完後接著做）：runs `20260930-2334-character-IRyS`、
   `20260930-2334-character-Nerissa-Ravencroft` 已建立；音檔 jobsG 轉寫中；Claude 研究與初稿進行中。
+- **ElevenLabs v4 交接（作者 2026-09-30 問）**：指南 `novel-lab/docs/elevenlabs-v4.md`；六人表演表
+  `export/elevenlabs/<名字>.md`（原創聲音描述、起始設定、腳本習慣、情境標籤、招牌聲音、IPA、不要做的事、示範）。
+  **不複製成員本人聲音**（ElevenLabs Use Policy §5、COVER 規範）。IRyS／Nerissa 的表演表等她們的聲音段落完成後補。
 - **近期權重**（作者定案，已寫進 project.md）：描述現在的預設說話方式時，近期直播權重較高；
   早期梗保留為共同記憶。六人都已照此檢查（Ame 換上 2024 台詞、Calli 招呼語順序、Gura 以 2024 為預設）。
 - 下一步（額度允許時）：Council/Promise 其他成員，或繼續用音檔補強既有六人（例如 Kronii 的 GWAK、
