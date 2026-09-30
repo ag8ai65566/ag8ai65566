@@ -18,8 +18,8 @@ sw_section: Characters
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (I#) are listed under Sources.
 >
-> **Audio status:** on 2026-09-30 Claude checked about an hour of archived recordings (I29: the 2026 chat
-> stream behind the I3 captions, and the 2022 Nintendo Direct). The audio was machine-transcribed
+> **Audio status:** on 2026-09-30 Claude checked about two hours of archived recordings (I29: the 2026 chat
+> stream behind the I3 captions, the 2022 Nintendo Direct, and the 2021 *Ender Lilies* #3 stream). The audio was machine-transcribed
 > and acoustically measured; transcripts were reviewed in context, without independent listening
 > verification. Those items are marked [ASR]. Other voice evidence is **I3**:
 > YouTube auto-captions of about four hours of her own 2026 chat streams, plus captions of a pun
@@ -70,7 +70,9 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
 11. When she talks about a design she made (her Monster Hunter Wilds collab outfits), she explains it
     through specific visual features and gets expansive. [Official I6]
 6. When chat invents WAH acronyms, she decides which are canon, and labels the lewd one: "That's the
-   Forbidden WAH. We don't say that in public." [Observed I2 §WAH, secondary]
+   Forbidden WAH. We don't say that in public." [Observed I2 §WAH, secondary] [ASR I29, 4k_oLA5zeaI
+   0:04:50: the bit is confirmed; the second model hears "the forbidden one" where the first hears "the
+   forbidden wah"]
 7. When she's sleepy, her patience thins; otherwise she rarely gets tilted ("If I'm tired I have a short
    fuse sometimes, but sleep fixes a lot of things."). The wiki calls her patience "near-infinite."
    [Observed I4 clip; I2 §Personality, secondary]
@@ -124,7 +126,10 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
   I2 §Quotes or §WAH (secondary). The wiki gives no context or date for the quotes, and no audio was
   checked.
   - "That's the Forbidden WAH. We don't say that in public." ("We Are Horny"; the alternative reading
-    is "We Are Hololive"; canonized in *Ender Lilies* #3.) [I2 §WAH]
+    is "We Are Hololive"; canonized in *Ender Lilies* #3.) [I2 §WAH] The audio of that stream has her
+    say that someone added "a fourth [WAH] with a different caption, and… that's the forbidden wah. We
+    don't say that in public." [ASR I29, 4k_oLA5zeaI 0:04:50; "We don't say that in public" agrees in both
+    models]
   - "Is she wearing heels? Just asking for a friend."
   - "No chest? I guess Takos are known for no chests."
   - The keyboard incident: a sentence about moving a large keyboard was cut off, and it produced an
@@ -163,8 +168,9 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
     famous crack herself. [Official I18]
   - Measured (I29, 2026 chat): median pitch 223–232 Hz, in the middle of the six files measured the same
     way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz), so "mid" rather than "low"; the slowest talker
-    of the six, about 81–95 words per minute of speech (Kronii 120–127, Calli 161–186). Approximate values
-    for relative comparison.
+    of the six in chat, about 81–95 words per minute of speech (Kronii 120–127, Calli 161–186). A 2021 game
+    stream measures 210–214 Hz and 68–116 words per minute (its opening chat 116), so her pace varies more
+    than the 2026 chat suggests. Approximate values for relative comparison.
   - Provisional direction: soft and gentle; a low, slow "priestess" cadence as an occasional bit (the
     delivery of that bit was not checked). Keep the crack exceptional, not on every exclamation.
   - Exact accent: not specified.
@@ -201,7 +207,7 @@ Real lines first; Style demos after.
 3. "Sorry, I got a little excited there." (ASR I29, right after the "TOMORROW?!" outburst)
 4. "Anyways, I do have to start getting ready soon." (ASR I29)
 5. "I'll bonk you. With a crowbar. Don't do it." (I2 §Quotes; I4 clip)
-6. "That's the Forbidden WAH. We don't say that in public." (I2 §WAH, secondary)
+6. "That's the Forbidden WAH. We don't say that in public." (I2 §WAH, secondary; the bit and "We don't say that in public" confirmed in ASR I29, 4k_oLA5zeaI 0:04:50)
 7. "Is she wearing heels? Just asking for a friend." (I2 §Quotes, secondary)
 8. "We should draw a conclusion. I brought a pen." (Style demo, GPT)
 
@@ -321,7 +327,8 @@ audio-checked by ear.
 - I28 COVER branding (2026-09): https://coveredge.cover-corp.com/en/list/6814
 - I29 Claude's audio check (2026-09-30), archived recordings via archive.ragtag.moe, whisper small.en +
   Praat; windows, method and short quotes: `novel-lab/projects/holoen/research/audio-check/ina.md`.
-  Streams: we8TkYC7__0 (chat, 2026-05-13), EHpxi7khHb0 (Nintendo Direct watchalong, 2022-02-09)
+  Streams: we8TkYC7__0 (chat, 2026-05-13), EHpxi7khHb0 (Nintendo Direct watchalong, 2022-02-09),
+  4k_oLA5zeaI (*Ender Lilies* #3, 2021-08-28)
 - I30 "#holoSerendipity It's Time for Octo'Clock!" (Kronii's channel, 2026-06-24; the unit name):
   https://www.youtube.com/watch?v=KmczU8q1oqE
 
@@ -358,7 +365,7 @@ Soft, unhurried English full of gentle hedges ("like," "I think," "you know," "I
 "WAH!" (opening, excitement, sometimes a droopy one at the end); "Good morning, afternoon, evening, everyone." (greeting); "Could this be Tako time? It is indeed Tako time." (stream opening); "INAFF" (the groan her puns earn); "I'll bonk you. With a crowbar. Don't do it." (chat misbehaving or hair-squishing); "Forgetty Beam!" (after a slip); "Humu humu" (listening hum); "That's the Forbidden WAH. We don't say that in public." (chat's lewd WAH acronym); "TOMORROW?!" then "Sorry, I got a little excited there." (startled outburst and apology); "I'm just a normal girl!" (denying anything is unusual); "Wooden shovel" (greeting with Bijou); "Live without regrets." (sincere); "Hope you guys have a wonderful rest of the morning, afternoon, evening. Until next time. Bye-bye. Bye-bye." (sign-off)
 
 ## [SW] Voice & Delivery
-A quiet, calm voice in the middle of the pitch range, and the slowest pace among her Myth genmates, with small pauses. She laughs in little ways: quick giggles mid-sentence, tiny gasps, the occasional snort. She hums "Mhm" and "Hmm" while listening. Puns come out flat and quick, followed by a silence. Genuine surprise breaks the calm with a sharp, higher reaction that can crack ("TOMORROW?!"); keep the crack for real surprises. Her threats are sweet-voiced and dead calm. Sincere lines get quieter and shorter. For a lore bit she can put on a slow, ominous priestess voice before snapping back to normal.
+A quiet, calm voice in the middle of the pitch range, and in casual talk usually the slowest pace among her Myth genmates, with small pauses. She laughs in little ways: quick giggles mid-sentence, tiny gasps, the occasional snort. She hums "Mhm" and "Hmm" while listening. Puns come out flat and quick, followed by a silence. Genuine surprise breaks the calm with a sharp, higher reaction that can crack ("TOMORROW?!"); keep the crack for real surprises. Her threats are sweet-voiced and dead calm. Sincere lines get quieter and shorter. For a lore bit she can put on a slow, ominous priestess voice before snapping back to normal.
 
 ## [SW] Motivation
 In her lore, Ina delivers sanity checks on humanity. In her own public words, she wants to give her viewers a better day, make art and music, grow as a performer and give back through charity, and she will always land one more pun than anyone can stand.
@@ -415,7 +422,8 @@ Ouro Kronii: her 2026 performance partner; they trade puns and share Korean, and
 - **Author decisions and audio check (2026-09-30):** real dialogue preferred; Claude checked archived
   recordings (I29). Verified: the spoken opening and sign-off, "I literally woke up and turned on stream,"
   the "like" rate (1 in 36 words), the Nintendo Direct outburst and apology, the "Hell Flame" epithet, the
-  slow pace. Real lines replace the Style demos on the card; one sourced bawdy line ("Is she wearing
+  slow pace in chat (a 2021 game stream runs faster at its opening), and the Forbidden WAH bit in
+  *Ender Lilies* #3 (the second model hears "the forbidden one"; the rest of the line agrees). Real lines replace the Style demos on the card; one sourced bawdy line ("Is she wearing
   heels?") is on the card, as the author asked.
 - **Left to the author:** whether a story uses one of her song narratives as literal continuity.
 

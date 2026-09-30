@@ -27,14 +27,16 @@ rate; the horror window is mostly quiet play.
 
 | Claim in the file | Result (in the machine transcript) | Evidence (ASR, archived audio) |
 |---|---|---|
-| "that's on me" / "that was my bad" when she misplays (wiki K8, stream 6WFU2wzPKfA t=5981) | **"That was my bad" confirmed** (twice). "That's on me" was not detected in this window's transcript. | "Oh, okay. That was my bad." [1:39:01](https://youtu.be/6WFU2wzPKfA?t=5941); "Okay, okay. That was my bad" [1:40:41](https://youtu.be/6WFU2wzPKfA?t=6041); 2026: "whoops my bad" [1:39:33](https://youtu.be/tdLRQtJ3kkY?t=5973) |
-| Greeting "Kroniichiwa!" | **Consistent.** A stack of hellos, then the greeting (whisper writes it as the ordinary word "Konnichiwa"), then "Yay". Exact pun form not provable from a machine transcript. | "Hello. Hello. Hello. Hello." [0:06:04](https://youtu.be/tdLRQtJ3kkY?t=364) → greeting [0:07:17](https://youtu.be/tdLRQtJ3kkY?t=437) → "Yay, oh, yeah, yippee" [0:07:20](https://youtu.be/tdLRQtJ3kkY?t=440) |
+| "that's on me" / "that was my bad" when she misplays (wiki K8, stream 6WFU2wzPKfA t=5981) | **"That was my bad" confirmed** once by both models; a second first-model hit at 1:39:01 was not confirmed by the second model. "That's on me" was not detected in this window's transcript. | "Okay, okay. That was my bad" [1:40:41](https://youtu.be/6WFU2wzPKfA?t=6041); 2026: "whoops my bad" [1:39:33](https://youtu.be/tdLRQtJ3kkY?t=5973) |
+| Greeting "Kroniichiwa!" | **Consistent.** A stack of hellos, then the greeting (whisper writes it as the ordinary word "Konnichiwa"), then "Yay". Exact pun form not provable from a machine transcript. | "Hello… hello!" [0:07:10](https://youtu.be/tdLRQtJ3kkY?t=430) → greeting [0:07:17](https://youtu.be/tdLRQtJ3kkY?t=437) → "Yay, oh, yeah, yippee" [0:07:20](https://youtu.be/tdLRQtJ3kkY?t=440) |
 | "Yay" was treated as title vocabulary only (removed from the card in verify round 1) | **Overturned: "Yay!" is a spoken habit.** 21 hits in about 2 hours of audio, plus "Yippee!". Its tone (flat or ironic) cannot be read from a transcript. | "Yay!" [1:04:37](https://youtu.be/tdLRQtJ3kkY?t=3877), [1:10:25](https://youtu.be/tdLRQtJ3kkY?t=4225); horror stream "Yay!" [2:33:47](https://youtu.be/esjpYSrvjB4?t=9227); "Yippee! Oh, man! I've been so productive every single day." [0:10:45](https://youtu.be/tdLRQtJ3kkY?t=645) |
 | Swears when startled or frustrated | **Not observed in these samples.** The only hits were superchats she read aloud ("you'd be damn right", "Why the hell are you so pretty"). Her swearing rests on the clip titles (K32); it is not constant. | — |
 | GWAK when scared | **Not checkable here.** Whisper does not write squawks; the 45-minute horror window shows fright in words instead. | "Oh my god, that hand scared me" [2:41:44](https://youtu.be/esjpYSrvjB4?t=9704) |
 | Low speaking register | **Confirmed, relative.** Lowest median F0 of the six Myth/Kronii/Calli files measured the same way (chat 177–188 Hz; Calli 197–214 Hz; Gura and Ame about 250–270 Hz). | table above |
 
 ## New material (ASR-transcribed short lines)
+
+Lines not listed in the second-model check at the end of this file are first-model transcriptions only.
 
 - Fear narrated deadpan: "I'm scared that one day I'm gonna run through here and then… they're gonna be
   like, oh, yeah, you thought it was safe, right?" [2:02:51](https://youtu.be/esjpYSrvjB4?t=7371)
@@ -44,3 +46,23 @@ rate; the horror window is mostly quiet play.
   setup is really good anyway" [2:52:06](https://youtu.be/tdLRQtJ3kkY?t=10326)
 - Game-planning narration: stacked "yeah, yeah, yeah…" and "okay, and then…" while routing
   ([2:35:15](https://youtu.be/esjpYSrvjB4?t=9315)).
+
+## Second-model check (whisper medium.en)
+
+Each line below was cut from the archived audio (a window of about 24–60 s around the first model's
+timestamp) and transcribed again by a larger model. "Agrees" means the second model produced the same
+words; it is still machine transcription, not listening. Lines that did not agree were removed from
+the character card.
+
+| First model (small.en) | Link | Second model (medium.en), excerpt | Verdict |
+|---|---|---|---|
+| "Oh, okay. That was my bad." | [1:39:19](https://youtu.be/6WFU2wzPKfA?t=5959) | "Okay. Who else? Who else? Oh. Okay, let's go." | **Not confirmed** (the second model hears game shouting here); the 1:40:41 instance is the one used |
+| "Okay, okay. That was my bad" | [1:40:41](https://youtu.be/6WFU2wzPKfA?t=6041) | "Okay, that was my bad. Getting impatient." | Agrees |
+| "I'm scared that one day I'm gonna run through here and then you know that they're gonna be like, oh, yeah, you thought it was safe, right?" | [2:02:52](https://youtu.be/esjpYSrvjB4?t=7372) | "bloody and scary I'm scared that one day I'm gonna run through here and then and then you know they're gonna be like oh yeah you thought it was safe right it's …" | Agrees |
+| "Oh my god, that hand scared me" | [2:41:44](https://youtu.be/esjpYSrvjB4?t=9704) | "Okay Oh my god, that hand scared me. What is this?" | Agrees |
+| "Hello. Hello. Hello. Hello." | [0:06:04](https://youtu.be/tdLRQtJ3kkY?t=364) | "I'm almost there, hold on. I will" | **Not confirmed** (window caught different words); the hellos before the greeting at 0:07:17 are confirmed instead |
+| "Konnichiwa Yay, oh, yeah, yippee" | [0:07:17](https://youtu.be/tdLRQtJ3kkY?t=437) | "uh, uh, hello! Kedlanichiwa! Yay! Oh yay, yippee! Woohoo! Yeah! How" | **Agrees on the sequence** (hellos → greeting → "Yay! Oh yay, yippee! Woohoo!"); both models misspell the greeting word |
+| "Yippee! Oh, man! I've been so productive every single day." | [0:10:45](https://youtu.be/tdLRQtJ3kkY?t=645) | "I will die? Yippee! Oh man! I've been so productive every single day. I do productive" | Agrees |
+| "I'm so funny. I can't read this." | [0:14:46](https://youtu.be/tdLRQtJ3kkY?t=886) | "week before... Oh, I'm so funny, I can't read this. Oh!" | Agrees |
+| "Yay!" | [1:04:37](https://youtu.be/tdLRQtJ3kkY?t=3877) | "by the police. Yay! Uh, and V-Faction," | Agrees |
+| "Yay!" | [1:10:25](https://youtu.be/tdLRQtJ3kkY?t=4225) | "bunch thank you yay and her can" | Agrees |

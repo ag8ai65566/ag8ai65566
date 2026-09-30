@@ -14,7 +14,9 @@ def stats(v):
             'range_p10_p90_semitones': round(st(q(90)) - st(q(10)), 1)}
 out = {}
 for f in sorted(glob.glob('trans/*.json')):
-    r = json.load(open(f))
+    try: r = json.load(open(f))
+    except Exception: continue
+    if "pitch_f" in r and "--force" not in sys.argv: print(f.split("/")[-1][:-5], r["pitch_f"], "wpm", r["wpm_speech"]); continue
     wav = f"audio/{f.split('/')[-1][:-5]}.wav"
     try: snd = parselmouth.Sound(wav)
     except Exception: continue

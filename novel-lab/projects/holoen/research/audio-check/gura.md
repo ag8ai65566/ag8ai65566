@@ -33,14 +33,36 @@ windows include game voices; only lines that are clearly hers are quoted.
 | Humming (HoloIndex 1:00:16) | **Confirmed.** Sung nonsense syllables. | "Oh, deey, oh, deey…" [1:00:22](https://youtu.be/_aeIw9DJnBw?t=3622) |
 | Triumphant laugh (HoloIndex 2:40:44) | **Confirmed, with the line before it.** | "You don't scare me. Cheap party city lady. I see better makeup on clowns these days. Ha, ha, ha, ha." [2:40:44](https://youtu.be/_aeIw9DJnBw?t=9644) |
 | "BAN PANTS!" (DMC3, stream time 9:57:37 cited by the wiki) | **Context confirmed**: the pants question, "If you could get away with not wearing pants, would you?", "Pants are stupid". The chant itself comes out as "…pants and pants and pants", consistent with "ban pants" but not provable. | [9:58:19](https://youtu.be/54ysrFu09hA?t=35899), [9:58:50](https://youtu.be/54ysrFu09hA?t=35930), [9:59:01](https://youtu.be/54ysrFu09hA?t=35941) |
-| Swearing mostly softened; harder under gaming pressure | **Consistent.** Resident Evil 2 (45 min): "Damn.", "god damn", "what the hell", "Bastards"; no f-word in this window (the f-word evidence stays with the compilation, G11). 2024 chat: "what the heck", "freaking". | "Yo Bastards… god damn, no" [3:01:47](https://youtu.be/JELLJ3osUUQ?t=10907); "oh what the hell" [3:02:16](https://youtu.be/JELLJ3osUUQ?t=10936) |
+| Swearing mostly softened; harder under gaming pressure | **Consistent.** Resident Evil 2 (45 min): "what the hell" and "Yo bastard!" (both models); "Damn." and "god damn" (first model only); no f-word in this window (the f-word evidence stays with the compilation, G11). 2024 chat: "what the heck", "freaking". | "Yo bastard!" [3:01:47](https://youtu.be/JELLJ3osUUQ?t=10907); "Oh, what the hell?" [3:03:15](https://youtu.be/JELLJ3osUUQ?t=10995) |
 | Triplets / stacked words | **Confirmed.** | "Okay, okay, wait, okay, wait, wait, wait." [0:01:47](https://youtu.be/JUvdnKuBMDQ?t=107) |
 | Sign-off with care lines and stacked goodbyes | **Partly.** The 2022 horror stream ended warmly but plainly. | "Thank you guys for hanging with me today. I appreciate it. I'll see you tomorrow… Have a nice day" [3:48:58](https://youtu.be/_aeIw9DJnBw?t=13738) |
 | Relatively high voice | **Confirmed, relative.** Median F0 about 248–270 Hz, the highest group with Ame (Kronii 177–188 Hz). Chat pace about 122–139 words per minute of speech. | table above |
 
 ## New material (ASR-transcribed short lines)
 
+Lines not listed in the second-model check at the end of this file are first-model transcriptions only.
+
 - "hey do you want to know a really stupid fact about me" [0:03:29](https://youtu.be/_aeIw9DJnBw?t=209)
 - "You don't scare me. Cheap party city lady. I see better makeup on clowns these days."
 - "Bro, you cooked." (2024 birthday, about a fan project) [0:01:20](https://youtu.be/JUvdnKuBMDQ?t=80)
 - "Well, I don't usually wear pants." [9:57:56](https://youtu.be/54ysrFu09hA?t=35876)
+
+## Second-model check (whisper medium.en)
+
+Each line below was cut from the archived audio (a window of about 24–60 s around the first model's
+timestamp) and transcribed again by a larger model. "Agrees" means the second model produced the same
+words; it is still machine transcription, not listening. Lines that did not agree were removed from
+the character card.
+
+| First model (small.en) | Link | Second model (medium.en), excerpt | Verdict |
+|---|---|---|---|
+| "Well, I don't usually wear pants." | [9:57:56](https://youtu.be/54ysrFu09hA?t=35876) | "shark girl anatomy. Well, I don't usually wear pants. Uh...I don't usually" | Agrees |
+| "If you could get away with not wearing pants, would you?" | [9:58:19](https://youtu.be/54ysrFu09hA?t=35899) | "me rephrase that. If you could get away with not wearing pants, would you? Yes Yes, you" | Agrees |
+| "Damn. Wait, what? This is the third floor." | [2:56:18](https://youtu.be/JELLJ3osUUQ?t=10578) | "Here. He flinched! I'm gonna get you, Michael. You're gonna be" | **Not confirmed** (the second model heard different words); "Damn." dropped |
+| "Yo Bastards, bullets on you, god damn, no" | [3:01:47](https://youtu.be/JELLJ3osUUQ?t=10907) | "No, no, no, no, no. Yo bastard! Stop, put your hands" | **Partly**: "Yo bastard!" agrees; "god damn" is not confirmed and was removed from the card |
+| "oh what the hell" | [3:03:15](https://youtu.be/JELLJ3osUUQ?t=10995) | "sorry I'm sorry. Oh what the hell? You telling me" | Agrees |
+| "Bro, you cooked." | [0:01:20](https://youtu.be/JUvdnKuBMDQ?t=80) | "Featuring all of you! Bro, you cooked. A lot" | Agrees |
+| "Okay, okay, wait, okay, wait, wait, wait." | [0:01:47](https://youtu.be/JUvdnKuBMDQ?t=107) | "jumpscare. Is that me? Okay, okay wait, okay wait wait" | Agrees |
+| "What is simp? Do you mean shrimp?" | [1:15:34](https://youtu.be/JUvdnKuBMDQ?t=4534) | "it? Oh yeah, simp. What is simp? Do you mean shrimp? Cute! Wait," | Agrees |
+| "Hello, hello, hello, how's this one, oh yeah, oh yeah" | [0:06:37](https://youtu.be/_aeIw9DJnBw?t=397) | "Gain... How much gain do we need? Hello? Hello? Hello? How's this one? What's that again?" | Agrees on "Hello? Hello? Hello? How's this one?"; the trailing "oh yeah, oh yeah" is not confirmed |
+| "You don't scare me. Cheap party city lady. I see better makeup on clowns these days." | [2:40:44](https://youtu.be/_aeIw9DJnBw?t=9644) | "very, uh huh. You don't scare me, cheap party city lady. I see better makeup on clowns these days. Okay, does anyone" | Agrees |

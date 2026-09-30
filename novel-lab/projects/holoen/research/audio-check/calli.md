@@ -34,8 +34,28 @@ reactions are quoted.
 
 ## New material (ASR-transcribed short lines)
 
+Lines not listed in the second-model check at the end of this file are first-model transcriptions only.
+
 - Settling in: "I'm here I got my yum-yum drink" [0:05:08](https://youtu.be/76-YKpxYL4g?t=308); "I'm really just not
   very organized. I'm gonna be honest with you guys" [0:05:25](https://youtu.be/76-YKpxYL4g?t=325)
 - Irritation: "Oh my god. I'm gonna lose it. What an annoying guy." [1:02:20](https://youtu.be/76-YKpxYL4g?t=3740)
 - Sign-off: "I'll catch you guys on the flip side" … "I guess I'm out of here. All right, take care everybody.
   I'll see you soon. Goodbye"
+
+## Second-model check (whisper medium.en)
+
+Each line below was cut from the archived audio (a window of about 24–60 s around the first model's
+timestamp) and transcribed again by a larger model. "Agrees" means the second model produced the same
+words; it is still machine transcription, not listening. Lines that did not agree were removed from
+the character card.
+
+| First model (small.en) | Link | Second model (medium.en), excerpt | Verdict |
+|---|---|---|---|
+| "I'm here I got my yum-yum drink" | [0:05:08](https://youtu.be/76-YKpxYL4g?t=308) | "I'm here I got my yum yum drink it's the I" | Agrees |
+| "I'm really just not very organized. I'm gonna be honest with you guys" | [0:05:27](https://youtu.be/76-YKpxYL4g?t=327) | "Where's my BGM? I'm really just not very organized. I'm gonna be honest with you guys I'm really just" | Agrees |
+| "Oh my god. I'm gonna lose it. What an annoying guy." | [1:02:20](https://youtu.be/76-YKpxYL4g?t=3740) | "in the world Oh my god, I'm gonna lose it What an annoying guy Flame spirit hat" | Agrees |
+| "Fucking adorable." | [1:28:37](https://youtu.be/76-YKpxYL4g?t=5317) | "fluff her hair and adorable I don't like" | **Not confirmed** (second model: "and adorable"); removed from the card |
+| "But I'll catch you guys on the flip side" | [4:45:37](https://youtu.be/76-YKpxYL4g?t=17137) | "this evening says busy busy but I'll catch you guys on the flipside yeah I'll" | Agrees ("flipside" written as one word) |
+| "All right. Take care everybody. I'll see you soon Goodbye Bye I'm out" | [4:46:25](https://youtu.be/76-YKpxYL4g?t=17185) | "Yeah, I guess I'm out of here all right take care everybody. I'll see you soon Goodbye, and bye" | Agrees |
+| "is she gonna climb up the slide I knew it kids love doing this shit oh my god" | [1:32:30](https://youtu.be/y0WsNvXOdns?t=5550) | "hoops up there is she gonna climb up the slide I knew it kids love doing this shit oh my god yeah oh my" | Agrees |
+| "Let's try it again. Let's try this shit." | [1:59:06](https://youtu.be/y0WsNvXOdns?t=7146) | "a platformer. Okay. Let's try it again. Let's try this shit again. Retry, okay." | Agrees |

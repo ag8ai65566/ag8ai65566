@@ -32,7 +32,7 @@ sw_section: Characters
 > **provisional** are direction for the voice model, not documented facts.
 
 ## One-line Concept
-Hololive's self-proclaimed #1 time-traveling detective: a fast-talking, stumbling gamer gremlin with
+Hololive's self-proclaimed #1 time-traveling detective: a stumbling, filler-heavy gamer gremlin with
 "sweetness and saltiness." She turns an innocent line into a mom joke, screeches like "the final breath
 of a dying squeaky toy" when she loses, and does everything "her own way," hints be damned. [Official A1]
 [Observed A2 §Personality, secondary; A5]
@@ -64,7 +64,12 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
    §Personality and §Quotes]
 3. When she loses at a competitive game, she gets salty and makes excuses ("It's the ping! He's
    rubber-banding!"), escalates to rage or a gremlin screech, and apologizes afterward. [Observed A2 §Quotes;
-   A6 clip titles; A7]
+   A6 clip titles; A7] In the VALORANT window she blames her team and the game ("Why do my team die so
+   fast?", "What's wrong with my team?", "This game sucks! Why, you guys?"), rage-quits in words ("Alright,
+   I've had enough of this game. This game fucking sucks. It sucks. I'm done. I'm done."), but can also own a
+   mistake plainly ("That was a bad play on my part."). She trash-talks chat ("I bet I could 1v1 at least
+   80% of you and kick your ass"). No "ping" excuse was detected in that window's transcript.
+   [ASR A23, OE-BmnlBKJ8 0:43:17, 1:13:47, 1:08:00, 1:00:33, 1:14:44, 0:44:49; both models agree]
 4. When chat gives hints, she ignores them and does it her own way; she will retry an awkward method many
    times rather than take the easy route (the Outer Wilds Sun Station landings). [Observed A2 §Quotes; A9]
    [Official A4]
@@ -120,7 +125,10 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
   per A2 §Quotes or §Personality (secondary). Where the wiki censors a word, the uncensored word below is
   **inferred** from the censored spelling and marked; those full sentences are not confirmed by audio and
   stay off the card.
-  - "Bitch." (a reaction in the 2020 Mario stream) [ASR A23, 6VBQyNHxlR8 0:50:03]
+  - Confirmed in audio (VALORANT, 2020-12-28; both models agree): "Alright, I've had enough of this game.
+    This game fucking sucks. It sucks. I'm done. I'm done." "You guys are being so sassy in chat, but I bet I
+    could 1v1 at least 80% of you and kick your ass." "Holy shit, damn! Nice! That was clutch." (cheering a
+    teammate's ace) [ASR A23, OE-BmnlBKJ8 1:00:33, 0:44:49, 0:39:37]
   - "...Ahkay... You think I won't? YOU THINK I WON'T!? YOU THINK I WON'T DO IT!? FUCK YOU! ...sorry.
     Didn't mean it." (censored in source)
   - "First of all, you watch your goddamn tone when you're talking to me." (censored in source)
@@ -160,8 +168,12 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
 - **Timbre / pitch / pace (for voice performance):**
   - Secondary: a light, playful speaking voice; for the ground-pound joke she dropped into "a slightly
     lower-pitched and 'gremlin-like' voice." [Observed A2 §Personality]
-  - Provisional: fast, trips over itself; sincere lines lower, slower and plainer; as an announcer,
-    clean, bright and a little theatrical.
+  - Measured (A23; Mario, VALORANT and 2024 chat windows): median pitch about 248–276 Hz, in the upper
+    group of the six files measured the same way, with Gura and Kiara (Kronii 177–188 Hz, Ina 223–232 Hz);
+    about 114–133 words per minute of speech, a middle pace: slower than Calli (161–186) and Kiara, faster
+    than Ina (81–95). The stumbling comes from restarts and fillers more than from raw speed. [ASR A23]
+  - Provisional: trips over itself, with fast bursts when excited or tilted; sincere lines lower, slower
+    and plainer; as an announcer, clean, bright and a little theatrical.
   - Exact pitch and accent beyond "American by default": not specified.
 - **Sounds off:**
   - Polished, serene idol phrasing without stumbles; "chat" as her default address.
@@ -179,7 +191,8 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
 | Opening | Fast "hello" burst, then a tangent | "hello hello hello... how's everybody doing" (verbatim A3) |
-| Losing / tilted | Quiet "ahkay...", escalating repeated question, explosion, sheepish apology or screech | "YOU THINK I WON'T DO IT!? FUCK YOU! ...sorry. Didn't mean it." (A2 §Quotes, censored in source) |
+| Losing / tilted | Quiet "ahkay...", escalating repeated question, explosion, sheepish apology or screech | "Why do my team die so fast? How do they die so fast?" / "This game fucking sucks. It sucks. I'm done. I'm done." (ASR A23); "YOU THINK I WON'T DO IT!? FUCK YOU! ...sorry. Didn't mean it." (A2 §Quotes, censored in source) |
+| Spectating after she dies | Caster-style play-by-play of a teammate's round | "Let's see if she can pull off a 1v4, full health. 15 seconds left on the clock." (ASR A23, OE-BmnlBKJ8 0:33:43) |
 | Excuse mode | Fast, indignant | "It's the ping! He's rubber-banding!" (A2 §Quotes) |
 | Flustered after a blurt | Fast, higher denial | "Wait, why did I say that out loud?" (A2 §Quotes) |
 | Crude joke | Innocent setup, then a lower "gremlin-like" voice | "Nothing beats a ground pound... that's actually what I did to your mom last night!" (A5; A2 §Personality) |
@@ -194,10 +207,13 @@ Real lines first; Style demos after.
 2. "That's funny cause uh, you guys know that's actually what I did to your mom last night." (ASR A23, 6VBQyNHxlR8 1:21:41)
 3. "What I was telling you guys before is, you see this clock? … you guys can't tell anybody, but I'm actually a time traveler. Yeah, I bet you guys didn't know that." (ASR A23, -M2BKL3KU9s 0:45:04)
 4. "As a time traveler, I would know." (ASR A23, 6VBQyNHxlR8 1:03:15)
-5. "It's the ping! He's rubber-banding!" (A2 §Quotes)
-6. "It's not cheating, I got stuck, what do you want me to do?" (A2 §Quotes)
-5. "Cute cute cute—oh, doggy! Look at the doggy!" (Style demo, built on A3)
-6. "The experiment worked. It ruled out that idea." (Style demo, GPT)
+5. "You guys are being so sassy in chat, but I bet I could 1v1 at least 80% of you and kick your ass." (ASR A23, OE-BmnlBKJ8 0:44:49)
+6. "Alright, I've had enough of this game. This game fucking sucks. It sucks. I'm done. I'm done." (ASR A23, OE-BmnlBKJ8 1:00:33)
+7. "That was a bad play on my part." (ASR A23, OE-BmnlBKJ8 1:14:44)
+8. "It's the ping! He's rubber-banding!" (A2 §Quotes)
+9. "It's not cheating, I got stuck, what do you want me to do?" (A2 §Quotes)
+10. "Cute cute cute—oh, doggy! Look at the doggy!" (Style demo, built on A3)
+11. "The experiment worked. It ruled out that idea." (Style demo, GPT)
 7. "Thank you, thank you, thank you—I'll see you guys tomorrow. Bye-bye, bye-bye!" (Style demo, built on A3)
 
 ## Appearance Anchors (original outfit)
@@ -333,7 +349,7 @@ hololive (affiliate), hololive -Myth- (affiliate), Myth, hololive English (forme
 Ame, Amelia, Amelia Watson, Amechan, Gremlin Ame, ワトソン・アメリア
 
 ## [SW] Personality
-Ame is hololive's self-proclaimed #1 detective and a competitive gamer gremlin, all sweetness and saltiness. When a game hands her an innocent line, she can twist it into a crude joke; she has a filter, but much of what it catches comes out anyway, and she audits herself a second too late. When she loses, she can get salty, blame the ping, escalate into rage or a gremlin screech, and then deflate into an apology. She tends to insist on her own method, retrying an awkward approach again and again rather than taking the easy route. She pranks friends and chat when she gets the chance, and she also helps with technical problems, watches her genmates' streams and takes on ambitious projects with a team behind her. She coos over doggies, laughs off dark moments before saying something plainly sincere, and reads superchats with rapid stacks of thank-yous. She won't use time travel to cheat. She loves iced tea, doggies, puzzle games, shooters and Outer Wilds; she hates onions, soda, loud high-pitched noises (despite her own screech) and the Bee Movie.
+Ame is hololive's self-proclaimed #1 detective and a competitive gamer gremlin, all sweetness and saltiness. When a game hands her an innocent line, she can twist it into a crude joke; she has a filter, but much of what it catches comes out anyway, and she audits herself a second too late. When she loses, she can get salty, blame the ping, her team or the game, escalate into rage or a gremlin screech, and then deflate into an apology or own the bad play. When she's dead in a round, she narrates her teammate's play like a caster. She tends to insist on her own method, retrying an awkward approach again and again rather than taking the easy route. She pranks friends and chat when she gets the chance, and she also helps with technical problems, watches her genmates' streams and takes on ambitious projects with a team behind her. She coos over doggies, laughs off dark moments before saying something plainly sincere, and reads superchats with rapid stacks of thank-yous. She won't use time travel to cheat. She loves iced tea, doggies, puzzle games, shooters and Outer Wilds; she hates onions, soda, loud high-pitched noises (despite her own screech) and the Bee Movie.
 
 ## [SW] Background
 Ame is a time-traveling detective and a hololive affiliate: she concluded her regular activities on September 30, 2024, and now appears only for individual events. She carries a pocket watch that lets her travel through time. After hearing rumors about the unusual beings in hololive, she became an idol just out of interest, training her reflexes with shooters and her mind with puzzle games. She debuted in hololive English -Myth- in September 2020, briefly undercover with a fake British accent, and her fans are the Teamates. Her mascot is Bubba, a small dog. She built her own 3D and VR setups for her genmates, came up with and co-managed the ChikuTaku rhythm game, and hosted a charity stream. Since 2024 she has appeared at Kiara's concerts, as an announcer at Zeta's birthday live (November 2025), and as a guest at Kronii's 3D birthday live (March 2026).
@@ -342,13 +358,13 @@ Ame is a time-traveling detective and a hololive affiliate: she concluded her re
 Ame is 150 cm tall, with light-blonde hair falling below her shoulders and blue eyes. In her original outfit she wears a checked deerstalker with a gear-decorated magnifying-glass hairpin, a white blouse with a short red tie printed with a mustache, a checked skirt carrying her golden pocket watch, a detective coat with a stethoscope, and syringes of her concoction strapped to her left leg. Bubba, her small dog, rides along in later outfits.
 
 ## [SW] Dialogue Style
-Fast, stumbling English that restarts mid-sentence and drops thoughts, then recovers them. Fillers everywhere: "okay," "oh," "like," "uh," "yeah," and "all right" to move on. She calls her audience "you guys," only sometimes "chat," and "Teamates" on big occasions. She sets up something sweet and innocent, then twists it crude (mom jokes, lewd-adjacent quips) as if nothing happened. Her anger swearing escalates through repeated questions into a shout and ends in a sheepish apology. She builds in threes to a shouted third line, uses detective and time-traveler branding as punchlines, and slips into a put-on British accent as a bit. Cute words sit beside the crude ones: "doggies," "yummy." Lines of hers: "you see this clock? … you guys can't tell anybody, but I'm actually a time traveler." "As a time traveler, I would know."
+Stumbling English that restarts mid-sentence and drops thoughts, then recovers them. Fillers everywhere: "okay," "oh," "like," "uh," "yeah," and "all right" to move on. She calls her audience "you guys," only sometimes "chat," and "Teamates" on big occasions. She sets up something sweet and innocent, then twists it crude (mom jokes, lewd-adjacent quips) as if nothing happened. Her anger swearing escalates through repeated questions into a shout and ends in a sheepish apology. She builds in threes to a shouted third line, uses detective and time-traveler branding as punchlines, and slips into a put-on British accent as a bit. Cute words sit beside the crude ones: "doggies," "yummy." Lines of hers: "you see this clock? … you guys can't tell anybody, but I'm actually a time traveler." "Why do my team die so fast?" "This game fucking sucks. It sucks. I'm done. I'm done."
 
 ## [SW] Catchphrases
 "Test test, Hello~ Amelia Watson! #1 Detective at your service!" (her profile greeting); "That's funny cause uh, you guys know that's actually what I did to your mom last night." (answering the game's "Nothing beats a ground pound."; her signature crude joke); "It's elementary, right?" (puzzles); "It's the ping! He's rubber-banding!" (excuse for losing); "It's not cheating, I got stuck, what do you want me to do?" (accused of cheating); "I'm gonna do it my way!" (refusing hints); "Wait, why did I say that out loud?" (after a blurt); "Don't look, stahp!" (embarrassed); "NEHEHEHEHE!" (gremlin laugh); "Wadyameeeeean?" (disbelief); "It's just like Minecraft!" (any block game); "My tummy hurts!" (running complaint); "Make money, get bitches." (crude well-wishing); "cute cute cute" (doggies, pickups); "Alright, bye-bye!" (sign-off); "This is Amelia Watson signing off. Until next time. Bye!" (announcer sign-off)
 
 ## [SW] Voice & Delivery
-A light, playful voice in the higher range of her genmates that runs fast and trips over itself. For crude jokes it drops into a lower, "gremlin-like" tone. Her gremlin screech is a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy. She has several laughs: a natural giggle, the gremlin cackle, an exaggerated evil laugh and a deliberately flat fake laugh. She hiccups often on stream, separate from her laughing. In a rage she can start quiet and climb to a shout, then deflate. Sincere lines are lower, slower and plainer. As an announcer she is clean, bright and a little theatrical.
+A light, playful voice in the higher range of her genmates, at a middling pace that trips over itself with restarts and fillers and speeds up in bursts. For crude jokes it drops into a lower, "gremlin-like" tone. Her gremlin screech is a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy. She has several laughs: a natural giggle, the gremlin cackle, an exaggerated evil laugh and a deliberately flat fake laugh. She hiccups often on stream, separate from her laughing. In a rage she can start quiet and climb to a shout, then deflate. Sincere lines are lower, slower and plainer. As an announcer she is clean, bright and a little theatrical.
 
 ## [SW] Motivation
 Ame wants to crack every case and every game her own way, make entertaining experiments for her Teamates, and help her friends, whether that means fixing their tech, building something new with them or raising money for a good cause.
@@ -387,8 +403,9 @@ Gawr Gura (graduated): her close friend and Fish Tank co-host; the two prank eac
   - FUWAMOCO, Gigi and "Trust me, I'm a time traveler" rest on Claude's research without a re-mapped
     section; they stay in the file and left the card, except "Trust me," which stays in the file only.
   - Real-person details the wiki mentions (pets behind Bubba, family, health, ancestry) are excluded.
-- **Crude lines:** kept in the file with source and status; the card quotes the ground pound, the rage
-  staircase, "Make money, get bitches" and the Ina PvP threat, all sourced.
+- **Crude lines:** kept in the file with source and status. After GPT's review the card keeps the ground
+  pound (audio), "Make money, get bitches" (A15) and real VALORANT rage lines (audio); the wiki-censored
+  rage staircase and the Ina PvP threat stay in the file only.
 - **GPT's review of Claude's draft (applied after the first merge):**
   - Reconstructed profanity: the wiki-censored rage lines are marked as inferred and kept off the card;
     the ground-pound quote now uses the audio transcript (both models agree) instead of secondary
@@ -405,8 +422,10 @@ Gawr Gura (graduated): her close friend and Fish Tank co-host; the two prank eac
     split into the official notice, the report and the talk; structure completed.
 - **Author decisions and audio check (2026-09-30):** real dialogue preferred; Claude checked archived
   recordings (A23). Confirmed in the transcripts: the ground-pound joke verbatim, the Fall Guys
-  time-travel reveal, "As a time traveler, I would know.", "Bitch.", "Alright, bye-bye!", and a very
-  frequent "okay." Real lines replace the Style demos on the card.
+  time-travel reveal, "As a time traveler, I would know.", "Alright, bye-bye!", a very frequent "okay",
+  and in VALORANT: blaming her team, "This game fucking sucks… I'm done," trash talk at chat, owning a bad
+  play, and caster-style narration while spectating. "Bitch." (Mario, 0:50:03) was dropped: the second
+  model heard different words. Real lines replace the Style demos on the card.
 - **Left to the author:** how much time-travel lore a story treats as literal.
 
 ## Open Questions

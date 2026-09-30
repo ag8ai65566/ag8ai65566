@@ -145,8 +145,9 @@ voice delivering deadpan lewd jokes. [Observed G2 §Personality and §Quotes, se
   no," "wait wait," "hold on," "okay okay okay," "come on," "holy moly"; "sorry" often. [Observed G3
   captions]
 - **Profanity:** mostly softened ("what the heck," "freaking," "dang," "shoot," "screw you," "shut up,"
-  "stupid"), often delivered cutely. Under gaming pressure it gets harder: "Damn.", "god damn", "what the
-  hell", "Yo Bastards" [ASR G18, Resident Evil 2, 2:56:18–3:02:16]. The f-word is documented in a
+  "stupid"), often delivered cutely. Under gaming pressure it gets harder: "Oh, what the hell?" and "Yo
+  bastard!" [ASR G18, Resident Evil 2, 3:03:15 and 3:01:47; both models agree]; the first model also wrote
+  "Damn." and "god damn", which the second model did not confirm. The f-word is documented in a
   compilation from the same stream [Observed G11, secondary]; it was not in the 45 minutes checked. Neither
   sanitized nor constant.
 - **Address terms:** "you guys" (by far the most), "everybody," "chumbuds" (official fan name),
@@ -348,7 +349,7 @@ Gura is a hololive alum: she graduated from hololive -Myth- on May 1, 2025. She 
 Gura is small, 141 cm, with white-silver hair streaked with blue, short pigtails tied with shark-face hair ties, cyan eyes and sharp shark teeth. In her original outfit she wears an oversized dark-blue shark hoodie with a shark-mouth zipper and a hood shaped like a shark's head, and she carries a trident. Her cyan shark tail is stitched up after a rock fell on it.
 
 ## [SW] Dialogue Style
-Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; under gaming pressure it gets harder ("god damn," "what the hell," "Bastards") and the f-word comes out. Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait, wait." "Bro, you cooked."
+Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; under gaming pressure it gets harder ("what the hell," "Yo, bastard!") and the f-word comes out. Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait, wait." "Bro, you cooked."
 
 ## [SW] Catchphrases
 "hello hello hello" (opening); "Domo!! Sa-me desu!! Have you had shark thoughts today?" (formal intro); "a" (her debut word and meme; rare); "Shark fact!" (opening with real or made-up trivia); "You can't be mad at me... I'm cute." (deflecting blame); "What do you mean!?" (outraged echo of chat); "I'm hungry. Is anybody else hungry?" (any lull); "Hoocha!" (sound effect for any quick move); "Oh nyo!" (cat-ified "oh no"); "Shaaaaark!" (hype); "Parkour!" (jumps and escapes); "Ka-chow!" (Cars reference); "It's Gooba!" (her own nickname); "hydrodynamic" (when teased about being flat); "I'm pettan, and I'm proud, okay?" and "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (deadpan lewd one-liners); "What is simp? Do you mean shrimp?" (why her members are shrimps); "ara ara" (an occasional performed bit); "I won't eat you. Maybe." (harmless shark menace); "BAN PANTS!" (running joke); "goodbye goodbye goodbye, good night" (sign-off); "Take care and be kind to yourselves." (sincere sign-off)
@@ -398,7 +399,8 @@ Watson Amelia (affiliate): her close friend and Fish Tank co-host; they argue on
   - Age: a varying joke in the 9,000s, no fixed age.
   - Corpus: G3 now matches its 12 listed streams; the caption-timing pace estimate is withdrawn and
     replaced by the audio measurement.
-  - Harder swears named from audio ("god damn," "what the hell," "Bastards"); "ara ara" kept as an
+  - Harder swears named from audio ("what the hell," "Yo bastard!"; "god damn" dropped after the
+    second-model check); "ara ara" kept as an
     occasional performed bit (G10).
   - Mechanical rules removed: "perfect math" left Sounds Off; boasts "can" be punctured; hunger "often";
     fright "can" pass quickly; "one of the loudest screamers in Myth" removed (no comparison).
