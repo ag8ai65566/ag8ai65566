@@ -369,7 +369,7 @@ def cmd_doctor(_args):
     elif os.environ.get("OPENAI_API_KEY"):
         print("→ 會直接呼叫 OpenAI Responses API")
     else:
-        print("→ 沒有連線方式：gpt 指令會改成產生 to-gpt.md 讓你手動轉貼")
+        print("→ 沒有連線方式。用 ChatGPT 帳號登入：codex login --device-auth（不需要 API 金鑰）")
 
 
 # ---------------------------------------------------------------- 收錄與匯出

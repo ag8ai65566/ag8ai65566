@@ -7,7 +7,8 @@
 **不分時期**、**Role 一律 Protagonist**、卡片寫完整但重點在前。兩份 Claude 初稿已依此修改。
 給 GPT 的專案說明在 `framework/prompts/gpt-brief.md`，每次呼叫 GPT 都會自動附上。
 
-使用者設定好 `OPENAI_API_KEY` 並開新 session 後，照 `/novel-lab` 流程接續：
+GPT 連線：用 `codex login --device-auth` 以使用者的 ChatGPT 帳號登入（見 SKILL.md），不需要 API 金鑰。
+照 `/novel-lab` 流程接續：
 
 ```bash
 L="python3 novel-lab/tools/lab.py"

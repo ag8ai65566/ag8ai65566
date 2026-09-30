@@ -67,7 +67,11 @@
   也不會自動降級到其他模型。
 - 考據類任務會開啟 GPT 的即時網路搜尋。
 - 連線方式（`python3 novel-lab/tools/lab.py doctor` 可以檢查）：
-  1. **Codex CLI**：雲端環境設定了 `OPENAI_API_KEY` 或 `CODEX_ACCESS_TOKEN` 時自動登入使用。
+  1. **Codex CLI + ChatGPT 帳號（推薦，不用 API 金鑰）**：Claude 會執行 `codex login --device-auth`
+     並給你一組代碼。你在 ChatGPT「設定 → 安全性」打開「裝置代碼登入」，到
+     https://auth.openai.com/codex/device 輸入代碼即可，用的是你 ChatGPT 方案的 Codex 額度。
+     雲端 session 結束後登入就消失，下個 session 要再登入一次。
+     雲端環境若設定了 `OPENAI_API_KEY` 或 `CODEX_ACCESS_TOKEN`，也會自動用它們登入。
   2. **OpenAI API**：有 `OPENAI_API_KEY` 但沒有 Codex CLI 時直接呼叫。
   3. **人工轉貼**：兩者都沒有時，會產生 `*.to-gpt.md`，你貼到 ChatGPT／Codex
      （選 GPT-6 Astra、Extra High），再把回覆貼回給 Claude。

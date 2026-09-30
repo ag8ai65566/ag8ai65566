@@ -60,9 +60,14 @@ GPT 可以連線時先補跑。
 ## GPT 連不上時（exit 3）
 
 `lab.py gpt` 找不到 Codex 登入或 `OPENAI_API_KEY` 時，會把完整提示寫成 `*.to-gpt.md` 並以
-exit 3 結束。**使用者不採用人工轉貼（2026-09-30 表明）**：這時先把 Claude 這邊能做的做完
-（初稿、審稿），commit 並 push，然後停下來請使用者在雲端環境設定 `OPENAI_API_KEY` 後開新 session
-接續。不要把 `*.to-gpt.md` 丟給使用者，也不要因為 GPT 連不上就自己把 GPT 的部分寫掉。
+exit 3 結束。**使用者不採用人工轉貼（2026-09-30 表明）**，也不需要 API 金鑰。處理方式是**用使用者的
+ChatGPT 帳號登入 Codex**（雲端容器每個 session 都要重做一次）：
+1. 背景執行 `codex login --device-auth > <scratchpad>/codex-login.log 2>&1`，讀出網址與一次性代碼
+   （15 分鐘內有效）。
+2. 請使用者：ChatGPT「設定 → 安全性」打開「裝置代碼登入」→ 開啟 https://auth.openai.com/codex/device
+   → 輸入代碼。背景指令結束並顯示 "Successfully logged in" 就完成了。
+3. `lab.py doctor` 確認「會透過 Codex CLI 呼叫 GPT」後繼續流程。
+不要把 `*.to-gpt.md` 丟給使用者，也不要因為 GPT 連不上就自己把 GPT 的部分寫掉。
 多個角色同一階段請用批次：`lab.py gpt <run1> <run2> … <stage>`。
 
 ## check（一致性檢查）
