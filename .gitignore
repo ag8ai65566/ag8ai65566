@@ -15,3 +15,6 @@ data/restaurants.json
 
 # scraper page dumps (contain your logged-in view)
 scraper/dump/
+
+# python
+__pycache__/
