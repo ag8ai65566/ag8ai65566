@@ -5,7 +5,9 @@
 
   new-project <slug> [--title T] [--lang zh-TW]   建立一個小說專案
   brief <slug> <kind> <text...> [--name N]         把一句話的需求變成一次「調查」(run)
-  gpt <run-dir> <stage>                            讓 GPT 做某一階段（draft / review / verify / free）
+  gpt <run-dir> [<run-dir> ...] <stage>            讓 GPT 做某一階段（draft / review / verify / free）；
+                                                   多個 run 會打包成一次呼叫（批次）
+  split <stage> <reply.md>                         把人工轉貼回來的批次回覆拆回各 run
   promote <run-dir>                                把 final.md 收進專案的 bible/
   export <slug>                                    檢查字數上限並產生 Sudowrite 貼上單
   status [slug]                                    列出專案與每次 run 的進度
@@ -236,32 +238,103 @@ def ask_gpt(prompt, out, model, effort, live_search=False):
     sys.exit(3)
 
 
-def cmd_gpt(args):
-    run = Path(args.run).resolve()
+def prepare_run(run, stage):
+    """檢查 run 目錄並把上一輪的輸出改名保留，回傳 (輸出路徑, 提示)。"""
     if not (run / "brief.md").exists():
         die(f"{run} 不是 run 目錄（缺 brief.md）")
-    if args.stage not in STAGES:
-        die(f"stage 必須是 {', '.join(STAGES)}")
-    check_model(args.model, args.effort)
-    if args.stage == "review" and not (run / "claude-draft.md").exists():
-        die("review 需要先有 claude-draft.md")
-    if args.stage == "verify" and not (run / "final.md").exists():
-        die("verify 需要先有 final.md")
-    out = run / STAGES[args.stage]
-    prompt = build_prompt(run, args.stage)
+    if stage == "review" and not (run / "claude-draft.md").exists():
+        die(f"{run.name}：review 需要先有 claude-draft.md")
+    if stage == "verify" and not (run / "final.md").exists():
+        die(f"{run.name}：verify 需要先有 final.md")
+    out = run / STAGES[stage]
+    prompt = build_prompt(run, stage)
     if out.exists():  # 例如 CHANGES 之後重新驗收：保留上一輪，不覆蓋
         n = 1
         while (old := out.with_name(f"{out.stem}.{n}.md")).exists():
             n += 1
         out.rename(old)
-    live = run.name.split("-")[2] == "research"
-    via, model = ask_gpt(prompt, out, args.model, args.effort, live_search=live)
-    log = run / "gpt-log.jsonl"
-    with log.open("a", encoding="utf-8") as f:
-        f.write(json.dumps({"stage": args.stage, "via": via, "model": model, "effort": args.effort,
+    return out, prompt
+
+
+def log_gpt(run, stage, via, model, effort):
+    with (run / "gpt-log.jsonl").open("a", encoding="utf-8") as f:
+        f.write(json.dumps({"stage": stage, "via": via, "model": model, "effort": effort,
                             "at": dt.datetime.now().isoformat(timespec="seconds")},
                            ensure_ascii=False) + "\n")
-    print(f"✓ {out.relative_to(ROOT.parent)}（{via} · {model} · {args.effort}）")
+
+
+BATCH_OPEN = "<<<RUN: {name}>>>"
+BATCH_CLOSE = "<<<END RUN>>>"
+
+
+def batch_prompt(items):
+    head = (f"# 批次任務：以下有 {len(items)} 個互相獨立的任務\n\n"
+            "請依序完成每一個。每個任務的完整輸出前後要加上標記，標記要單獨一行、逐字照抄：\n\n"
+            + "\n".join(f"- 任務 {i + 1}：開頭 `{BATCH_OPEN.format(name=run.name)}`，結尾 `{BATCH_CLOSE}`"
+                        for i, (run, _, _) in enumerate(items))
+            + "\n\n標記之外不要寫任何東西。每個任務都要完整輸出，不要因為篇幅而省略或合併。\n")
+    body = "\n\n".join(f"{'=' * 20} 任務 {i + 1}：{run.name} {'=' * 20}\n\n{prompt}"
+                       for i, (run, _, prompt) in enumerate(items))
+    return head + "\n\n" + body
+
+
+def split_batch(text, items):
+    """把批次回覆依標記拆回各 run；缺任何一段就整批不寫入。"""
+    parts = {}
+    for run, out, _ in items:
+        m = re.search(re.escape(BATCH_OPEN.format(name=run.name)) + r"\s*\n(.*?)\n\s*" + re.escape(BATCH_CLOSE),
+                      text, re.S)
+        if not m or not m.group(1).strip():
+            die(f"批次回覆裡找不到 {run.name} 的段落（標記 {BATCH_OPEN.format(name=run.name)}）")
+        parts[out] = m.group(1).strip() + "\n"
+    for out, body in parts.items():
+        write(out, body)
+
+
+def cmd_gpt(args):
+    *names, stage = args.items
+    if stage not in STAGES:
+        die(f"用法：gpt <run> [<run> ...] <stage>；stage 必須是 {', '.join(STAGES)}")
+    if not names:
+        die("至少要一個 run 目錄")
+    check_model(args.model, args.effort)
+    runs = [Path(n).resolve() for n in names]
+    live = any(r.name.split("-")[2] == "research" for r in runs)
+    if len(runs) == 1:
+        out, prompt = prepare_run(runs[0], stage)
+        via, model = ask_gpt(prompt, out, args.model, args.effort, live_search=live)
+        log_gpt(runs[0], stage, via, model, args.effort)
+        print(f"✓ {out.relative_to(ROOT.parent)}（{via} · {model} · {args.effort}）")
+        return
+    if len({r.parent for r in runs}) != 1:
+        die("批次的 run 必須屬於同一個專案")
+    items = [(r, *prepare_run(r, stage)) for r in runs]
+    raw = runs[0].parent / f"_batch-{dt.datetime.now():%Y%m%d-%H%M}-{stage}.md"
+    via, model = ask_gpt(batch_prompt(items), raw, args.model, args.effort, live_search=live)
+    split_batch(read(raw), items)
+    for run, out, _ in items:
+        log_gpt(run, stage, via, model, args.effort)
+        print(f"✓ {out.relative_to(ROOT.parent)}（{via} · {model} · {args.effort}）")
+
+
+def cmd_split(args):
+    """人工轉貼的批次回覆：把貼回來的整份回覆拆回各 run。"""
+    reply = Path(args.reply).resolve()
+    text = read(reply)
+    names = re.findall(r"<<<RUN: (.+?)>>>", text)
+    if not names:
+        die("回覆裡沒有任何 <<<RUN: …>>> 標記")
+    runs_dir = reply.parent if reply.parent.name == "runs" else None
+    items = []
+    for name in dict.fromkeys(names):
+        run = (runs_dir / name) if runs_dir else next(PROJECTS.glob(f"*/runs/{name}"), None)
+        if not run or not run.is_dir():
+            die(f"找不到 run 目錄 {name}")
+        items.append((run, run / STAGES[args.stage], ""))
+    split_batch(text, items)
+    for run, out, _ in items:
+        log_gpt(run, args.stage, "manual", "（使用者轉貼）", "（使用者轉貼）")
+        print(f"✓ {out.relative_to(ROOT.parent)}")
 
 
 REVIEW_FILES = ["README.md", "framework/prompts/shared-rules.md", "framework/prompts/rubric.md",
@@ -459,7 +532,7 @@ def cmd_status(args):
     for proj in projects:
         n = len(list((proj / "bible").rglob("*.md")))
         print(f"\n■ {proj.name}（bible {n} 份）")
-        for run in sorted((proj / "runs").iterdir()):
+        for run in sorted(r for r in (proj / "runs").iterdir() if r.is_dir()):
             print(f"  {run.name}\n    {run_state(run)}")
 
 
@@ -475,9 +548,12 @@ def main():
     s.add_argument("text", nargs="+"); s.add_argument("--name")
     s.set_defaults(fn=cmd_brief)
 
-    s = sub.add_parser("gpt"); s.add_argument("run"); s.add_argument("stage")
+    s = sub.add_parser("gpt"); s.add_argument("items", nargs="+", metavar="<run> [<run> ...] <stage>")
     s.add_argument("--model", default=DEFAULT_MODEL); s.add_argument("--effort", default=DEFAULT_EFFORT)
     s.set_defaults(fn=cmd_gpt)
+
+    s = sub.add_parser("split"); s.add_argument("stage"); s.add_argument("reply")
+    s.set_defaults(fn=cmd_split)
 
     s = sub.add_parser("promote"); s.add_argument("run"); s.add_argument("--force", action="store_true")
     s.set_defaults(fn=cmd_promote)
