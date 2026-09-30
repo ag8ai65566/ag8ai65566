@@ -165,17 +165,29 @@ def frozen(run, name, source):
     return read(f)
 
 
+def freeze_all(run):
+    """一次凍結本任務的全部輸入（資料包、brief、模板、欄位上限、規則、評分表、各階段提示、
+    給 GPT 的專案說明），確保兩份盲稿與之後每個階段都根據同一個版本。"""
+    kind = run.name.split("-")[2]
+    context_pack(run)
+    frozen(run, "brief.md", run / "brief.md")
+    frozen(run, f"dossier-{kind}.md", FRAMEWORK / "templates" / f"dossier-{kind}.md")
+    frozen(run, "sudowrite-fields.md", lambda: ("## Sudowrite 欄位上限與必填（sudowrite-fields.json）\n\n```json\n"
+                                                + read(FIELDS_FILE) + "\n```\n"))
+    for name in ("rubric.md", "shared-rules.md", "gpt-brief.md", "gpt-draft.md", "gpt-review.md", "gpt-verify.md"):
+        frozen(run, name, FRAMEWORK / "prompts" / name)
+
+
 def build_prompt(run, stage):
     kind = run.name.split("-")[2]
-    limits = lambda: ("## Sudowrite 欄位上限與必填（sudowrite-fields.json）\n\n```json\n"
-                      + read(FIELDS_FILE) + "\n```\n")
+    freeze_all(run)
     fill = {
         "{{context}}": context_pack(run),
-        "{{brief}}": frozen(run, "brief.md", run / "brief.md"),
-        "{{schema}}": frozen(run, f"dossier-{kind}.md", FRAMEWORK / "templates" / f"dossier-{kind}.md")
-                      + "\n\n" + frozen(run, "sudowrite-fields.md", limits),
-        "{{rubric}}": frozen(run, "rubric.md", FRAMEWORK / "prompts" / "rubric.md"),
-        "{{rules}}": frozen(run, "shared-rules.md", FRAMEWORK / "prompts" / "shared-rules.md"),
+        "{{brief}}": frozen(run, "brief.md", None),
+        "{{schema}}": frozen(run, f"dossier-{kind}.md", None),
+        "{{limits}}": frozen(run, "sudowrite-fields.md", None),
+        "{{rubric}}": frozen(run, "rubric.md", None),
+        "{{rules}}": frozen(run, "shared-rules.md", None),
     }
     if stage == "review":
         fill["{{target}}"] = read(run / "claude-draft.md")
@@ -188,7 +200,7 @@ def build_prompt(run, stage):
         fill["{{reviews}}"] = "\n\n".join(reviews) or "（無）"
     if stage == "free":
         return read(run / "to-gpt.free.md")
-    prompt = read(FRAMEWORK / "prompts" / f"gpt-{stage}.md")
+    prompt = frozen(run, f"gpt-{stage}.md", None)
     for k, v in fill.items():
         prompt = prompt.replace(k, v)
     return prompt
@@ -254,11 +266,11 @@ def via_api(prompt, out, model, effort, live_search=False):
     return served
 
 
-def ask_gpt(prompt, out, model, effort, live_search=False):
+def ask_gpt(prompt, out, model, effort, live_search=False, brief=None):
     """回傳實際用的 (via, model)。沒有任何連線方式時改成人工轉貼模式（exit 3）。"""
     check_model(model, effort)
-    # 每次呼叫都先附上專案說明，讓 GPT 知道整個專案在做什麼、自己的角色是什麼
-    prompt = read(FRAMEWORK / "prompts" / "gpt-brief.md") + "\n\n---\n\n" + prompt
+    # 每次呼叫都先附上專案說明（任務裡用凍結的版本），讓 GPT 知道專案在做什麼、自己的角色是什麼
+    prompt = (brief or read(FRAMEWORK / "prompts" / "gpt-brief.md")) + "\n\n---\n\n" + prompt
     tries = [model] + ([FALLBACK_MODEL] if model != FALLBACK_MODEL else [])
     errors = []
     use_codex = codex_ready()
@@ -351,7 +363,8 @@ def cmd_gpt(args):
     live = proj_live or any(r.name.split("-")[2] == "research" for r in runs)
     if len(runs) == 1:
         out, prompt = prepare_run(runs[0], stage)
-        via, model = ask_gpt(prompt, out, args.model, args.effort, live_search=live)
+        via, model = ask_gpt(prompt, out, args.model, args.effort, live_search=live,
+                             brief=frozen(runs[0], "gpt-brief.md", None))
         log_gpt(runs[0], stage, via, model, args.effort)
         print(f"✓ {out.relative_to(ROOT.parent)}（{via} · {model} · {args.effort}）")
         return
@@ -359,7 +372,8 @@ def cmd_gpt(args):
         die("批次的 run 必須屬於同一個專案")
     items = [(r, *prepare_run(r, stage)) for r in runs]
     raw = runs[0].parent / f"_batch-{dt.datetime.now():%Y%m%d-%H%M}-{stage}.md"
-    via, model = ask_gpt(batch_prompt(items), raw, args.model, args.effort, live_search=live)
+    via, model = ask_gpt(batch_prompt(items), raw, args.model, args.effort, live_search=live,
+                         brief=frozen(runs[0], "gpt-brief.md", None))
     split_batch(read(raw), items)
     for run, out, _ in items:
         log_gpt(run, stage, via, model, args.effort)
@@ -372,7 +386,7 @@ def cmd_pack(args):
         if not (run / "brief.md").exists():
             die(f"{run} 不是 run 目錄（缺 brief.md）")
         existed = (run / "context.md").exists()
-        context_pack(run)
+        freeze_all(run)
         print(f"{'已存在' if existed else '✓ 產生'} {(run / 'context.md').relative_to(ROOT.parent)}")
 
 
@@ -484,7 +498,7 @@ def verdict(run):
     if not f.exists():
         return None
     lines = read(f).splitlines()
-    first = lines[0].rstrip() if lines else ""  # 第一行必須剛好是這兩個字，不接受 **粗體** 或前置空行
+    first = lines[0] if lines else ""  # 第一行必須剛好是這兩個字，不接受 **粗體** 或前置空行
     return first if first in ("APPROVE", "CHANGES") else "INVALID"
 
 
@@ -562,21 +576,24 @@ def cmd_export(args):
     for f in sorted((proj / "bible").rglob("*.md")):
         text = read(f)
         fields = sw_fields(text)
-        if not fields:
-            continue
         label = str(f.relative_to(proj / "bible"))
         meta = front_matter(text)
+        if not fields:
+            if meta.get("sw_section"):
+                errors.append(f"{label}：宣告了 sw_section「{meta['sw_section']}」卻沒有任何 [SW] 段落")
+            continue
         section = meta.get("sw_section") or {v: k for k, v in SECTION_DIR.items()}.get(f.parent.name)
         if section not in SECTION_DIR:
             errors.append(f"{label}：sw_section「{section}」不是 Characters / Worldbuilding / Story")
             continue
         present = {m.group(1) for m in SW_SECTION.finditer(text)}
-        for fld in spec["required"].get(section, []):
+        kind = meta.get("kind") or {"Characters": "character", "Worldbuilding": "world", "Story": "idea"}[section]
+        for fld in spec["required"].get(kind, []):
             if fld not in present:
                 errors.append(f"{label}：缺 [SW] {fld} 段落")
             elif not fields.get(fld):
                 errors.append(f"{label}：[SW] {fld} 是必填，不能留白")
-        for fld in spec["optional"].get(section, []):
+        for fld in spec["optional"].get(kind, []):
             if fld not in present:
                 errors.append(f"{label}：缺 [SW] {fld} 段落（可以留白，但段落要在）")
         for d in sw_duplicates(text):

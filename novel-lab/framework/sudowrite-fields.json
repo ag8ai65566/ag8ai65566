@@ -34,16 +34,18 @@
 
   "hide_in_sudowrite": ["Secrets"],
 
-  "_required_about": "required = 必須有這個 [SW] 段落而且有內容；optional = 段落必須存在，但可以留白（寫「（無）」「不適用」等）。缺段落一律算錯。",
+  "_required_about": "依成品類型（front matter 的 kind）：required = 必須有這個 [SW] 段落而且有內容；optional = 段落必須存在，但可以留白（寫「（無）」「不適用」等）。缺段落一律算錯。清單要和 templates/dossier-*.md 一致。",
   "required": {
-    "Characters": ["Name", "Role", "Pronouns", "Personality", "Background", "Physical Description", "Dialogue Style"],
-    "Worldbuilding": ["Name", "Role", "Description"],
-    "Story": ["Braindump", "Genre", "Style"]
+    "character": ["Name", "Role", "Pronouns", "Personality", "Background", "Physical Description", "Dialogue Style"],
+    "world": ["Name", "Role", "Description"],
+    "research": ["Name", "Role", "Description"],
+    "idea": ["Braindump", "Genre", "Style"]
   },
   "optional": {
-    "Characters": ["Groups", "Other Names", "Motivation", "Relationships", "Secrets"],
-    "Worldbuilding": ["Other Names"],
-    "Story": ["Synopsis"]
+    "character": ["Groups", "Other Names", "Catchphrases", "Voice & Delivery", "Motivation", "Relationships", "Secrets"],
+    "world": ["Other Names", "Rules", "Sensory Details", "Secrets"],
+    "research": ["Other Names", "Sensory Details"],
+    "idea": ["Synopsis"]
   },
 
   "export_order": ["story", "characters", "world"]

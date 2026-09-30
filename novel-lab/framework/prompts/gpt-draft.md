@@ -23,3 +23,5 @@
 ## 輸出格式（照這份 schema 填滿）
 
 {{schema}}
+
+{{limits}}
