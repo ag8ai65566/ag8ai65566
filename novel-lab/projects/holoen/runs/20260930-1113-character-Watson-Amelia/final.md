@@ -14,13 +14,19 @@ sw_section: Characters
 >   reference transcription, not an audio check made here.
 > - **[Adaptation]** an author decision for this project.
 > - **[Unverified]** reported, but no reliable source was found.
+> - **[ASR]** archived audio, machine-transcribed (whisper small.en; A23) and read in context by Claude;
+>   lines used on the card were re-transcribed by a second model (medium.en). Not a listening check.
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (A#) are listed under Sources.
 >
-> **Audio status:** no recording was audio-checked by ear. The voice evidence rests on **A3** (YouTube
-> auto-captions of three of her streams read by Claude's research; machine transcription, approximate),
-> **A8** (captions of a 2025 announcer appearance), clip or stream **titles**, which show that a moment
-> happened, not how it sounded, and **secondary transcriptions** (the A2 wiki is cited as "A2 §Section").
+> **Audio status:** on 2026-09-30 Claude checked about 3 hours of archived recordings (A23: the 2020 Super
+> Mario Odyssey stream in full, the Fall Guys time-travel reveal, a VALORANT stream and her 2024
+> anniversary stream). The audio was machine-transcribed and acoustically measured; transcripts were
+> reviewed in context, without independent listening verification. Those items are marked [ASR]. Other
+> voice evidence: **A3** (YouTube auto-captions of three of her streams), **A8** (captions of a 2025
+> announcer appearance), clip or stream **titles** (the uploader's description of a moment; it neither
+> proves exactly what happened nor how it sounded), and **secondary transcriptions** (the A2 wiki is
+> cited as "A2 §Section").
 > The wiki censors some swears ("F***ED", "b****es"); per the project's authenticity rule they are
 > written out here, marked "(censored in source)". Frequency labels are estimates. Delivery notes marked
 > **provisional** are direction for the voice model, not documented facts.
@@ -83,11 +89,14 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
     tomorrow—bye-bye, bye-bye." [Observed A3-Hp10iDUOR9Q captions]
   - Announcer appearance (2025): "This is Amelia Watson, number one time traveling detective." / "This is
     Amelia Watson signing off. Until next time. Bye!" [Observed A8 captions]
-  - No fixed branded sign-off exists; don't invent one.
+  - No fixed branded sign-off was established in the reviewed material; don't invent one. Heard in 2020:
+    "Alright, bye-bye!" [ASR A23, 6VBQyNHxlR8 1:37:11]
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
-  - "Nothing beats a ground pound." → "That's actually what I did to your mom last night!" → the
-    signature crude joke (Super Mario Odyssey, 2020-09-28); it spreads to any stomp or pound in later
-    games → recurring. [Observed A5; A2 §Quotes]
+  - The ground pound: the game's tutorial text says "Nothing beats a ground pound." and she answers,
+    "That's funny cause uh, you guys know that's actually what I did to your mom last night." then laughs
+    and says "Sorry. It's late." [ASR A23, 6VBQyNHxlR8 1:21:39–1:21:49; both models agree] It became her
+    signature crude joke and spreads to any stomp or pound in later games → recurring. [Observed A5; A2
+    §Quotes]
   - "Don't say ground pounding." → self-aware callback (2025 announcer role). [Observed A8 captions]
   - "It's elementary, right?" → puzzles, detective jokes → occasional. [Official A1]
   - "It's the piiiing!" / "It's the ping! He's rubber-banding!" → excuse for an online loss → recurring.
@@ -108,7 +117,10 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
     section not re-mapped]
   - "cute cute cute" → pickups, doggies. [Observed A3 captions]
 - **Crude lines, anger swearing and innuendo** (non-explicit; kept under the authenticity rule). Wording
-  per A2 §Quotes or §Personality (secondary), with the wiki's censoring removed and marked.
+  per A2 §Quotes or §Personality (secondary). Where the wiki censors a word, the uncensored word below is
+  **inferred** from the censored spelling and marked; those full sentences are not confirmed by audio and
+  stay off the card.
+  - "Bitch." (a reaction in the 2020 Mario stream) [ASR A23, 6VBQyNHxlR8 0:50:03]
   - "...Ahkay... You think I won't? YOU THINK I WON'T!? YOU THINK I WON'T DO IT!? FUCK YOU! ...sorry.
     Didn't mean it." (censored in source)
   - "First of all, you watch your goddamn tone when you're talking to me." (censored in source)
@@ -157,7 +169,8 @@ lost and refuses every hint. [Observed A2 §Personality and §Likes and dislikes
   - A flawless detective who deduces everything at once.
   - Mean-spirited cruelty with no apology; constant anger that erases her helpful side.
   - A hiccup or screech in every sentence.
-  - Any explanation of her 2024 status change; describing her as graduated or on a regular schedule.
+  - Describing her as graduated, as staff, or as streaming on a regular schedule; inventing a private
+    explanation for the 2024 change (the public status is explained above).
   - An invented branded sign-off; unlimited time travel that solves any scene.
 
 ### Tone Shifts
@@ -176,10 +189,13 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 | Announcer | Clean, bright, slightly theatrical | "This is Amelia Watson signing off. Until next time. Bye!" (A8) |
 
 ### Sample Lines
+Real lines first; Style demos after.
 1. "Test test, Hello~ Amelia Watson! #1 Detective at your service!" (verbatim A1)
-2. "Nothing beats a ground pound. ...That's actually what I did to your mom last night!" (A5; A2 §Quotes)
-3. "It's the ping! He's rubber-banding! It's not cheating, I got stuck, what do you want me to do?" (A2 §Quotes, combined)
-4. "Okay—ahkay—wait, what was I saying? Oh yeah. The case." (Style demo, built on A3)
+2. "That's funny cause uh, you guys know that's actually what I did to your mom last night." (ASR A23, 6VBQyNHxlR8 1:21:41)
+3. "What I was telling you guys before is, you see this clock? … you guys can't tell anybody, but I'm actually a time traveler. Yeah, I bet you guys didn't know that." (ASR A23, -M2BKL3KU9s 0:45:04)
+4. "As a time traveler, I would know." (ASR A23, 6VBQyNHxlR8 1:03:15)
+5. "It's the ping! He's rubber-banding!" (A2 §Quotes)
+6. "It's not cheating, I got stuck, what do you want me to do?" (A2 §Quotes)
 5. "Cute cute cute—oh, doggy! Look at the doggy!" (Style demo, built on A3)
 6. "The experiment worked. It ruled out that idea." (Style demo, GPT)
 7. "Thank you, thank you, thank you—I'll see you guys tomorrow. Bye-bye, bye-bye!" (Style demo, built on A3)
@@ -204,7 +220,8 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 | 2020-12 | Repeated Sun Station landing attempts in Outer Wilds, later her favorite game | [Observed A9; A2 §Likes and dislikes] |
 | 2021-04-01 | Smol Ame appears (April Fools) | [Observed A2 §Smol Ame] |
 | 2021-05 | The Fish Tank talk show with Gura | [Observed Gura file G6] |
-| 2023-01 | ChikuTaku song and rhythm game (concept and project management) | [Official A13] |
+| 2023-01-19 | ChikuTaku song on sale | [Official A13b] |
+| 2023-01-24 | ChikuTaku game released (concept and shared project management, with a credited team) | [Official A13] |
 | 2024-09-30 | Concludes regular activities; remains a hololive affiliate | [Official A4] |
 | 2025–2026 | Occasional appearances: Kiara's concerts, announcer at Zeta's birthday live (2025-11), a call "from 2021" at Calli's charity karaoke (2026-02), a guest spot and duet at Kronii's 3D birthday live (2026-03) | [Observed A8, A19; Kronii file K33] |
 
@@ -213,9 +230,9 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Gawr Gura (graduated) | Myth genmate ("AmeSame") | Closest banter partner; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
+| Gawr Gura (graduated) | Myth genmate ("AmeSame") | Close friends per the wiki; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
 | Mori Calliope | Myth genmate | Ame loves messing with Calli (a surprise "ara ara" scare); Clubhouse 51 games | [Observed A6 clip title; A20] |
-| Ninomae Ina'nis | Myth genmate | Ina designed Bubba; Ina is the patient foil; "Ina... prepare to get fucked!" | [Observed A2 §Mascots and fans and §Quotes; A14] |
+| Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her ("Ina... prepare to get fucked!", a PvP threat; wording inferred from a censored title) | [Observed A2 §Mascots and fans and §Quotes; A14] |
 | Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material; "Kiara like, threw herself at me… she hugged me!" | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
 | Ouro Kronii | Promise member ("Time Duo") | Time traveler vs. Warden of Time; Ame guested at Kronii's 2026 3D birthday live | [Observed A2 §Relationships; Kronii file K33] |
 | Akai Haato (Haachama) | JP senior | Clubhouse 51 games ("AMECHAMA") | [Observed A21] |
@@ -224,25 +241,34 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Gigi Murin | Justice member | ENreco roleplay (Jyonathan) | [Observed A2 infobox and §Relationships, per Claude's research] |
 
 ## Arc
-Unapproved story proposal; not part of the baseline card. Time-travel mechanics beyond the documented lore
-(costs, paradox rules, alternate Ames) need an author decision before they become plot facts.
+- **Starting point:** the public persona; on the card date she is a hololive affiliate (regular activities
+  ended 2024-09-30).
+- **Turning points:** not established; no story has been chosen.
+- **End point:** open.
+- **Card update points:** update after a chosen story event. Time-travel mechanics beyond the documented
+  lore (costs, paradox rules, alternate Ames) need an author decision before they become plot facts.
 
 ## Story Engine
-- Trouble she brings: refuses every hint; tech "fixes" that are pranks; salty rage that ends in an
+- Trouble she brings: insists on her own method; tech "fixes" that are pranks; salty rage that ends in an
   apology; time-travel "spoilers"; a filter that fails at the worst moment; a stubborn method she won't
   abandon.
-- Scene seeds (optional premises):
-  1. A genuine mystery in the office: she ignores every clue and solves it anyway.
+- Scene seeds ([Unverified] proposed fiction, awaiting author approval):
+  1. She rejects a suggested solution because it leaves one clue unexplained, then has to test her
+     alternative. (GPT)
   2. She "time-travels" into a genmate's stream as an announcer.
   3. A ground-pound opportunity during a solemn ceremony.
   4. A locked room offers an obvious solution that would destroy the evidence she wants to keep. (GPT)
   5. Bubba goes missing, and the #1 detective is lost in her own office.
 
 ## Secrets & Foreshadowing
-(none)
+- **Truth:** none assigned.
+- **Who knows what:** not applicable.
+- **What readers know:** her public persona only.
+- **Surface behavior or clues allowed on the card:** only the public behavior above.
+- **When and how to reveal:** not applicable.
 
 ## Intimacy & Boundaries (non-explicit)
-Not applicable (real-performer persona; not speculated).
+(None.)
 
 ## Hard Facts (continuity)
 - Birthday January 6 (Sherlock Holmes's speculative birthday); height 150 cm; debut 2020-09-13 JST;
@@ -252,17 +278,19 @@ Not applicable (real-performer persona; not speculated).
 - Alternate personas (excluded from name matching unless a story uses them): Smol Ame, Armando Watson,
   Jyonathan Watson, Bee Ame. [Observed A2 infobox and §Smol Ame]
 - Excluded on purpose: real-person details (pets behind the mascot, family, health, ancestry) that the
-  wiki mentions, and a fan clip titled with a slur (never reproduce).
+  wiki mentions.
 
 ## Sources (checked 2026-09-30)
-Clips are cited by their YouTube titles unless captions or a timestamp are named. No recording was
-audio-checked by ear.
+Clips are cited by their YouTube titles unless captions or a timestamp are named. No recording was checked
+by listening; A23 is a machine transcription of archived audio.
 - A1 Official profile: https://hololive.hololivepro.com/en/talents/watson-amelia/
 - A2 Virtual YouTuber Wiki, current revision read through its API on 2026-09-30 (secondary; some quotes
   censored). Sections used: infobox (nicknames), §Personality, §Appearance, §Mascots and fans,
   §Relationships, §Quotes, §Time travel, §Smol Ame, §Likes and dislikes, §Miscellaneous: https://virtualyoutuber.fandom.com/wiki/Watson_Amelia
 - A3 Her streams, auto-captions: debut https://youtu.be/MXrFrkIlE-0 ; Super Mario Odyssey #1 https://youtu.be/Hp10iDUOR9Q ; "4 Years of AME" https://youtu.be/OAmx8R0HuF4
-- A4 COVER notice (2024-09-20): https://cover-corp.com/en/news/detail/20240920-01 ; her quotes via https://www.anitrendz.com/news/2024/09/20/hololive-englishs-watson-amelia-to-end-channel-activities-remain-an-affiliate ; "A Short Talk" https://www.youtube.com/watch?v=MPb3HMp5clg
+- A4 COVER notice (2024-09-20; official status): https://cover-corp.com/en/news/detail/20240920-01
+- A4b Secondary report quoting her talk (Anime Trending, 2024-09-20): https://www.anitrendz.com/news/2024/09/20/hololive-englishs-watson-amelia-to-end-channel-activities-remain-an-affiliate
+- A4c Her public talk, "A Short Talk": https://www.youtube.com/watch?v=MPb3HMp5clg
 - A5 Know Your Meme, "Nothing beats a ground pound": https://knowyourmeme.com/memes/nothing-beats-a-ground-pound
 - A6 Clip titles (fan-written): gremlin https://www.youtube.com/watch?v=4uvSx-9g26k , https://www.youtube.com/watch?v=eRcKRHqgnCo ; laughs https://www.youtube.com/watch?v=zLdLMOfRx0c ; rage https://www.youtube.com/watch?v=Ji_4TOjInVw ; Calli "ara ara" https://www.youtube.com/watch?v=a03HNAHiwpM
 - A7 VALORANT "Toxic Detective" (2020-12-29): https://www.youtube.com/watch?v=OE-BmnlBKJ8 ; complaint compilation record (secondary): https://ckworks.jp/vinforadar/video/kirinuki/SmuYH3e63UU
@@ -272,6 +300,7 @@ audio-checked by ear.
 - A11 Her channel titles: https://www.youtube.com/@WatsonAmelia/streams
 - A12 Crunchyroll interview (2022-08-06): https://www.crunchyroll.com/pl/news/interviews/2022/8/6/interview-amelia-watson-talks-about-the-ways-vtubing-connects-us-all
 - A13 ChikuTaku (official game page and credits, 2023-01-24): https://watsonamelia.itch.io/chikutaku
+- A13b ChikuTaku song (official music page, on sale 2023-01-19): https://hololive.hololivepro.com/en/music/254/
 - A14 "Ina… prepare to GET F*CKED" (clip title, censored): https://www.youtube.com/watch?v=r9dWcBRPLHY
 - A15 "Make money, get bitches" (secondary archive): https://knowyourmeme.com/videos/421281-watson-amelia
 - A16 Hic compilation (2024-10-02): https://www.youtube.com/watch?v=TgZNbhW6U-U
@@ -280,6 +309,10 @@ audio-checked by ear.
 - A19 Kiara 2025 concert: https://www.youtube.com/watch?v=NMewnZ9uGS8 ; Kiara 2026 birthday: https://www.youtube.com/watch?v=40Rh4ydSTvU ; Kronii birthday duet: https://www.youtube.com/watch?v=nKM5F4eezo4
 - A20 Clubhouse 51 with Calli (2021-01-10): https://www.youtube.com/watch?v=6BhqaJSimhA
 - A21 AMECHAMA Clubhouse 51 (2020-10-27): https://www.youtube.com/watch?v=hQunAHddfdk
+- A23 Claude's audio check (2026-09-30), archived recordings via archive.ragtag.moe, whisper small.en +
+  Praat; windows, method and short quotes: `novel-lab/projects/holoen/research/audio-check/ame.md`.
+  Streams: 6VBQyNHxlR8 (Super Mario Odyssey, 2020-09-28), -M2BKL3KU9s (Fall Guys, 2020-09-16), OE-BmnlBKJ8
+  (VALORANT "Toxic Detective," 2020-12-28), OAmx8R0HuF4 (4 Years of AME, 2024-09-13)
 - A22 Membership video ("Become an Investigator today," 2020-09-25): https://www.youtube.com/watch?v=pimxVr2fP9U
 
 ---
@@ -294,34 +327,34 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive (affiliate), hololive -Myth-, Myth, hololive English (former branch name)
+hololive (affiliate), hololive -Myth- (affiliate), Myth, hololive English (former branch name)
 
 ## [SW] Other Names
 Ame, Amelia, Amelia Watson, Amechan, Gremlin Ame, ワトソン・アメリア
 
 ## [SW] Personality
-Ame is hololive's self-proclaimed #1 detective and a competitive gamer gremlin, all sweetness and saltiness. When a game hands her an innocent line, she twists it into a crude joke; she has a filter, but whatever it catches usually comes out anyway, and she audits herself a second too late ("Wait, why did I say that out loud?"). When she loses, she gets salty, blames the ping, escalates into rage or a gremlin screech, and then apologizes. She ignores hints and does things her own way, retrying an awkward method again and again rather than taking the easy route, even when she's hopelessly lost. She pranks friends and chat whenever she gets the chance, and she's also the one who fixes everyone's tech, watches her genmates' streams and takes on ambitious projects with a team behind her. She says "cute cute cute" at every doggy, laughs off dark moments before saying something plainly sincere, and reads superchats with rapid stacks of thank-yous. She won't use time travel to cheat. She loves iced tea, doggies, puzzle games, shooters and Outer Wilds; she hates onions, soda, loud high-pitched noises (despite her own screech) and the Bee Movie.
+Ame is hololive's self-proclaimed #1 detective and a competitive gamer gremlin, all sweetness and saltiness. When a game hands her an innocent line, she can twist it into a crude joke; she has a filter, but much of what it catches comes out anyway, and she audits herself a second too late. When she loses, she can get salty, blame the ping, escalate into rage or a gremlin screech, and then deflate into an apology. She tends to insist on her own method, retrying an awkward approach again and again rather than taking the easy route. She pranks friends and chat when she gets the chance, and she also helps with technical problems, watches her genmates' streams and takes on ambitious projects with a team behind her. She coos over doggies, laughs off dark moments before saying something plainly sincere, and reads superchats with rapid stacks of thank-yous. She won't use time travel to cheat. She loves iced tea, doggies, puzzle games, shooters and Outer Wilds; she hates onions, soda, loud high-pitched noises (despite her own screech) and the Bee Movie.
 
 ## [SW] Background
-Ame is a time-traveling detective, born around the early 1920s and thrown forward in time, who carries a pocket watch with a time crystal; time travel makes loud screeching noises and gives her headaches. After hearing rumors about the unusual beings in hololive, she became an idol just out of interest, training her reflexes with shooters and her mind with puzzle games. She debuted in hololive English -Myth- in September 2020, briefly undercover with a fake British accent, and her fans are the Teamates. Her mascot is Bubba, a small dog. She built her own 3D and VR setups for her genmates, co-created the ChikuTaku rhythm game, and ran hololive's first charity stream. In September 2024 she concluded her regular activities but remained a hololive affiliate, and she still turns up now and then: at Kiara's concerts, as an announcer at Zeta's birthday live, and as a guest at Kronii's 2026 birthday live.
+Ame is a time-traveling detective and a hololive affiliate: she concluded her regular activities on September 30, 2024, and now appears only for individual events. She carries a pocket watch that lets her travel through time. After hearing rumors about the unusual beings in hololive, she became an idol just out of interest, training her reflexes with shooters and her mind with puzzle games. She debuted in hololive English -Myth- in September 2020, briefly undercover with a fake British accent, and her fans are the Teamates. Her mascot is Bubba, a small dog. She built her own 3D and VR setups for her genmates, came up with and co-managed the ChikuTaku rhythm game, and hosted a charity stream. Since 2024 she has appeared at Kiara's concerts, as an announcer at Zeta's birthday live (November 2025), and as a guest at Kronii's 3D birthday live (March 2026).
 
 ## [SW] Physical Description
 Ame is 150 cm tall, with light-blonde hair falling below her shoulders and blue eyes. In her original outfit she wears a checked deerstalker with a gear-decorated magnifying-glass hairpin, a white blouse with a short red tie printed with a mustache, a checked skirt carrying her golden pocket watch, a detective coat with a stethoscope, and syringes of her concoction strapped to her left leg. Bubba, her small dog, rides along in later outfits.
 
 ## [SW] Dialogue Style
-Fast, stumbling English that restarts mid-sentence and drops thoughts, then recovers them ("I was going to say something else but I forgot—oh yeah"). Fillers everywhere: "okay" (often "ahkay"), "oh," "like," "uh," "yeah," and "all right" to move on. She calls her audience "you guys," only sometimes "chat," and "Teamates" on big occasions. She sets up something sweet and innocent, then twists it crude (mom jokes, lewd-adjacent quips) as if nothing happened. Her anger swearing escalates through repeated questions into caps ("YOU THINK I WON'T DO IT!? FUCK YOU!") and ends in a sheepish "sorry. Didn't mean it." She builds in threes to a shouted third line, uses detective and time-traveler branding as punchlines, and slips into an obviously fake British accent ("ello luvs"). Cute words sit beside the crude ones: "doggies," "yummy," "cute cute cute." Style demo: "Okay—ahkay—wait, what was I saying? Oh yeah. The case."
+Fast, stumbling English that restarts mid-sentence and drops thoughts, then recovers them. Fillers everywhere: "okay," "oh," "like," "uh," "yeah," and "all right" to move on. She calls her audience "you guys," only sometimes "chat," and "Teamates" on big occasions. She sets up something sweet and innocent, then twists it crude (mom jokes, lewd-adjacent quips) as if nothing happened. Her anger swearing escalates through repeated questions into a shout and ends in a sheepish apology. She builds in threes to a shouted third line, uses detective and time-traveler branding as punchlines, and slips into a put-on British accent as a bit. Cute words sit beside the crude ones: "doggies," "yummy." Lines of hers: "you see this clock? … you guys can't tell anybody, but I'm actually a time traveler." "As a time traveler, I would know."
 
 ## [SW] Catchphrases
-"Test test, Hello~ Amelia Watson! #1 Detective at your service!" (formal intro); "Nothing beats a ground pound." / "That's actually what I did to your mom last night!" (signature crude joke); "It's elementary, right?" (puzzles); "It's the ping! He's rubber-banding!" (excuse for losing); "It's not cheating, I got stuck, what do you want me to do?" (accused of cheating); "I'm gonna do it my way!" (refusing hints); "Wait, why did I say that out loud?" (after a blurt); "Don't look, stahp!" (embarrassed); "NEHEHEHEHE!" (gremlin laugh); "Wadyameeeeean?" (disbelief); "It's just like Minecraft!" (any block game); "My tummy hurts!" (running complaint); "Make money, get bitches." (crude well-wishing); "cute cute cute" (doggies, pickups); "bye-bye, bye-bye" (sign-off); "This is Amelia Watson signing off. Until next time. Bye!" (announcer sign-off)
+"Test test, Hello~ Amelia Watson! #1 Detective at your service!" (her profile greeting); "That's funny cause uh, you guys know that's actually what I did to your mom last night." (answering the game's "Nothing beats a ground pound."; her signature crude joke); "It's elementary, right?" (puzzles); "It's the ping! He's rubber-banding!" (excuse for losing); "It's not cheating, I got stuck, what do you want me to do?" (accused of cheating); "I'm gonna do it my way!" (refusing hints); "Wait, why did I say that out loud?" (after a blurt); "Don't look, stahp!" (embarrassed); "NEHEHEHEHE!" (gremlin laugh); "Wadyameeeeean?" (disbelief); "It's just like Minecraft!" (any block game); "My tummy hurts!" (running complaint); "Make money, get bitches." (crude well-wishing); "cute cute cute" (doggies, pickups); "Alright, bye-bye!" (sign-off); "This is Amelia Watson signing off. Until next time. Bye!" (announcer sign-off)
 
 ## [SW] Voice & Delivery
-A light, playful voice that runs fast and trips over itself. For crude jokes it drops into a lower, "gremlin-like" tone. Her gremlin screech is a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy. She has several laughs: a natural giggle, the gremlin "Nehehe," an exaggerated evil laugh and a deliberately flat fake laugh. She hiccups often on stream, separate from her laughing. In a rage she starts quiet ("ahkay...") and climbs through repeated questions to a shout, then deflates into an apology. Sincere lines are lower, slower and plainer. As an announcer she is clean, bright and a little theatrical. Her British accent is always an obvious put-on.
+A light, playful voice in the higher range of her genmates that runs fast and trips over itself. For crude jokes it drops into a lower, "gremlin-like" tone. Her gremlin screech is a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy. She has several laughs: a natural giggle, the gremlin cackle, an exaggerated evil laugh and a deliberately flat fake laugh. She hiccups often on stream, separate from her laughing. In a rage she can start quiet and climb to a shout, then deflate. Sincere lines are lower, slower and plainer. As an announcer she is clean, bright and a little theatrical.
 
 ## [SW] Motivation
 Ame wants to crack every case and every game her own way, make entertaining experiments for her Teamates, and help her friends, whether that means fixing their tech, building something new with them or raising money for a good cause.
 
 ## [SW] Relationships
-Gawr Gura (graduated): her closest banter partner and Fish Tank co-host; the two prank each other endlessly, and Ame teases her with lewd-adjacent quips. Mori Calliope: Ame loves messing with her, including scaring her with a surprise "ara ara." Ninomae Ina'nis: the patient foil who designed Bubba; Ame once promised to get her "fucked" in a PvP game. Takanashi Kiara: calls Ame her EN oshi and keeps inviting her back to her concerts. Ouro Kronii: her "Time Duo" counterpart, time traveler against the Warden of Time; Ame guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs.
+Gawr Gura (graduated): her close friend and Fish Tank co-host; the two prank each other, and Ame teases her with lewd-adjacent quips. Mori Calliope: Ame loves messing with her, including scaring her with a surprise "ara ara." Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi and invited her back to her concerts. Ouro Kronii: her "Time Duo" counterpart, time traveler against the Warden of Time; Ame guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs.
 
 ## [SW] Secrets
 (none)
@@ -356,8 +389,24 @@ Gawr Gura (graduated): her closest banter partner and Fish Tank co-host; the two
   - Real-person details the wiki mentions (pets behind Bubba, family, health, ancestry) are excluded.
 - **Crude lines:** kept in the file with source and status; the card quotes the ground pound, the rage
   staircase, "Make money, get bitches" and the Ina PvP threat, all sourced.
-- **Pending:** GPT's review of Claude's draft (Codex limit until 21:21 UTC). Its points will be merged
-  here before verification.
+- **GPT's review of Claude's draft (applied after the first merge):**
+  - Reconstructed profanity: the wiki-censored rage lines are marked as inferred and kept off the card;
+    the ground-pound quote now uses the audio transcript (both models agree) instead of secondary
+    wording; the composite sample line was split.
+  - Ina: a blunt competitive taunt, not a "promise."
+  - Time travel: the identity and pocket watch stay; the 1920s birth, crystal, headaches and sound moved
+    to secondary lore in this file.
+  - ChikuTaku dates split (song 2023-01-19, game 2023-01-24); "hololive's first charity stream" reduced
+    to "hosted a charity stream."
+  - Affiliate status first in Background; appearances listed as completed events; Groups mark her as an
+    affiliate; Sounds Off no longer forbids explaining the public status.
+  - Universal gremlin rules bounded ("can," "tends to"); "closest" ranking removed; seed 1 replaced.
+  - "ahkay" and "always an obvious put-on" removed; no-sign-off wording softened; slur note removed; A4
+    split into the official notice, the report and the talk; structure completed.
+- **Author decisions and audio check (2026-09-30):** real dialogue preferred; Claude checked archived
+  recordings (A23). Confirmed in the transcripts: the ground-pound joke verbatim, the Fall Guys
+  time-travel reveal, "As a time traveler, I would know.", "Bitch.", "Alright, bye-bye!", and a very
+  frequent "okay." Real lines replace the Style demos on the card.
 - **Left to the author:** how much time-travel lore a story treats as literal.
 
 ## Open Questions
