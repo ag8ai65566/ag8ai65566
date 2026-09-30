@@ -101,7 +101,7 @@ Source key used below: [official]=hololive site/interviews; [WP]=Wikipedia https
 - Musical/sing-song: elongated "Ina inaa~~", "Tako bout inacent inaff…" (W) and "Ina Ina iinaaa~" (chant).
 
 ### 2.9 Code-switching
-- Mostly English with sparse Japanese: reaction words (yabe, kusa, seiso, hazukashii, warau na, kouhai). She reads Japanese chat and sometimes answers in Japanese; clip titles: "Ina Forgot That She is Holo EN For a Sec" (with Moona), "Ina Is Too Good at Her Japanese Class", "Ina wasn't happy even when praised for her Japanese accent", "Ina Talks About How Subjects Work Differently in Japanese and English" [clip titles; e.g., https://www.youtube.com/watch?v=3NLqFAtWPC4 , https://www.youtube.com/watch?v=e54zUyVED18 , https://www.youtube.com/watch?v=baK8QfpWLO8]. Her goals list includes "improving her Japanese" [wiki].
+- Mostly English with sparse Japanese: reaction words (yabe, kusa, seiso, hazukashii, warau na, kouhai). She reads Japanese chat and sometimes answers in Japanese; clip titles: "Ina Forgot That She is Holo EN For a Sec" (with Moona), "Ina wasn't happy even when praised for her Japanese accent", "Ina Talks About How Subjects Work Differently in Japanese and English" [clip titles; e.g., https://www.youtube.com/watch?v=3NLqFAtWPC4 , https://www.youtube.com/watch?v=baK8QfpWLO8]. Her goals list includes "improving her Japanese" [wiki].
 - Some stream titles/tags are bilingual (#マイクラ肝試し2026, #タコタイム). Korean: occasional (with Kronii, Bae debate on konbini) [clip titles https://www.youtube.com/watch?v=d5UqZc72Qas , https://www.youtube.com/watch?v=URdlDI_XGZA].
 - Name order: surname first even in English — "Ninomae Ina'nis" [wiki].
 
