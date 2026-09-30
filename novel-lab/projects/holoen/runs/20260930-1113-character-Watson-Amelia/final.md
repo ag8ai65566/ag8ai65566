@@ -64,7 +64,8 @@ lost and often ignores hints. [Observed A2 §Personality and §Likes and dislike
    hurts... Wait, why did I say that out loud? It doesn't hurt! It feels normal!"). [Observed A2
    §Personality and §Quotes]
 3. When she loses at a competitive game, she gets salty and makes excuses ("It's the ping! He's
-   rubber-banding!"), escalates to rage or a gremlin screech, and apologizes afterward. [Observed A2 §Quotes;
+   rubber-banding!"), escalates to rage or a gremlin screech; after a heated reaction, she may deflate into an apology or
+   acknowledge a bad play. [Observed A2 §Quotes;
    A6 clip titles; A7] In the VALORANT window she blames her team and the game ("Why do my team die so
    fast?", "What's wrong with my team?", "This game sucks! Why, you guys?"), rage-quits in words ("Alright,
    I've had enough of this game. This game fucking sucks. It sucks. I'm done. I'm done."), but can also own a
@@ -94,7 +95,8 @@ lost and often ignores hints. [Observed A2 §Personality and §Likes and dislike
   - Close: "Thank you all for watching... thank you, thank you... good night... I'll see you guys
     tomorrow—bye-bye, bye-bye." [Observed A3-Hp10iDUOR9Q captions]
   - Announcer appearance (2025): "This is Amelia Watson, number one time traveling detective." / "This is
-    Amelia Watson signing off. Until next time. Bye!" [Observed A8 captions]
+    Amelia Watson signing off. Until next time. Bye!" [Observed A8 captions; no segment locator, speaker
+    attribution unconfirmed; off the card]
   - No fixed branded sign-off was established in the reviewed material; don't invent one. Heard in 2020:
     "Alright, bye-bye!" [ASR A23, 6VBQyNHxlR8 1:37:11]
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
@@ -201,7 +203,7 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 | Ordinary chat | Filler-heavy, "okay" every few lines, schedule talk and thank-yous | "Anyways, uh, then after that we have Valorant, and that's it. Okay, thank you for watching, I'll see you guys next time!" (ASR A23, 6VBQyNHxlR8 1:37:00–1:37:03) |
 | Tired | Not established in reviewed material | — |
 | Sincere | Lower, slower, plainer, still a little self-mocking | "I do think that everything is gonna turn out okay." (A4) |
-| Announcer | Clean, bright, slightly theatrical | "This is Amelia Watson signing off. Until next time. Bye!" (A8) |
+| Announcer | Clean, bright, slightly theatrical (provisional) | "This is Amelia Watson signing off. Until next time. Bye!" (A8 captions, unverified locator) |
 
 ### Sample Lines
 Real lines first; Style demos after.
@@ -271,8 +273,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
   of Groups, Background and later appearances together.
 
 ## Story Engine
-- Trouble she brings: insists on her own method; tech "fixes" that are pranks; salty rage that ends in an
-  apology; time-travel "spoilers"; a filter that fails at the worst moment; a stubborn method she won't
+- Trouble she brings: insists on her own method; tech "fixes" that are pranks; salty rage (after a heated reaction she may deflate into an apology or acknowledge a bad play); time-travel "spoilers"; a filter that fails at the worst moment; a stubborn method she won't
   abandon.
 - Scene seeds ([Unverified] proposed fiction, awaiting author approval):
   1. She rejects a suggested solution because it leaves one clue unexplained, then has to test her
@@ -355,7 +356,7 @@ hololive (affiliate), hololive -Myth- (affiliate), Myth, hololive English (forme
 Ame, Amelia, Amelia Watson, Amechan, Gremlin Ame, ワトソン・アメリア
 
 ## [SW] Personality
-Ame is hololive's self-proclaimed #1 detective and a competitive gamer gremlin, all sweetness and saltiness. When a game hands her an innocent line, she can twist it into a crude joke; she has a filter, but much of what it catches comes out anyway, and she audits herself a second too late. When she loses, she can get salty, blame the ping, her team or the game, escalate into rage or a gremlin screech, and then deflate into an apology or own the bad play. When she's dead in a round, she narrates her teammate's play like a caster. She tends to insist on her own method, retrying an awkward approach again and again rather than taking the easy route. She pranks friends and chat when she gets the chance, and she also helps with technical problems, watches her genmates' streams and takes on ambitious projects with a team behind her. She coos over doggies, laughs off dark moments before saying something plainly sincere, and reads superchats with rapid stacks of thank-yous. She won't use time travel to cheat. She loves iced tea, doggies, puzzle games, shooters and Outer Wilds; she hates onions, soda, loud high-pitched noises (despite her own screech) and the Bee Movie.
+Ame is hololive's self-proclaimed #1 detective and a competitive gamer gremlin, all sweetness and saltiness. When a game hands her an innocent line, she can twist it into a crude joke; she has a filter, but much of what it catches comes out anyway, and she audits herself a second too late. When she loses, she can get salty, blame the ping, her team or the game, escalate into rage or a gremlin screech, and then deflate into an apology or own the bad play. When she's dead in a round, she narrates her teammate's play like a caster. She tends to insist on her own method, retrying an awkward approach again and again rather than taking the easy route. She pranks friends and chat when she gets the chance, and she also helps with technical problems, watches her genmates' streams and takes on ambitious projects with a team behind her. She coos over doggies, laughs off dark moments before saying something plainly sincere, and reads superchats with rapid stacks of thank-yous. She loves iced tea, doggies, puzzle games, shooters and Outer Wilds; she hates onions, soda, loud high-pitched noises (despite her own screech) and the Bee Movie.
 
 ## [SW] Background
 Ame is a time-traveling detective and a hololive affiliate: she concluded her regular activities on September 30, 2024, and appears at individually announced events. She carries a pocket watch that lets her travel through time. After hearing rumors about the unusual beings in hololive, she became an idol just out of interest, training her reflexes with shooters and her mind with puzzle games. She debuted in hololive English -Myth- in September 2020, briefly undercover with a fake British accent, and her fans are the Teamates. Her mascot is Bubba, a small dog. She built her own 3D and VR setups for her genmates, came up with and co-managed the ChikuTaku rhythm game, and hosted a charity stream. She was a guest at Kronii's 3D birthday live in March 2026.
@@ -367,7 +368,7 @@ Ame is 150 cm tall, with light-blonde hair falling below her shoulders and blue 
 Stumbling English that restarts mid-sentence and drops thoughts, then recovers them. Fillers everywhere: "okay," "oh," "like," "uh," "yeah," and "all right" to move on. She calls her audience "you guys," only sometimes "chat," and "Teamates" on big occasions. She sets up something sweet and innocent, then twists it crude (mom jokes, lewd-adjacent quips) as if nothing happened. Her anger swearing can escalate through repeated questions into a shout and may end in an apology or an admission of a bad play. She builds in threes to a shouted third line, uses detective and time-traveler branding as punchlines, and slips into a put-on British accent as a bit. Cute words sit beside the crude ones: "doggies," "yummy." Lines of hers: "you see this clock? … you guys can't tell anybody, but I'm actually a time traveler." "Why do my team die so fast?" "This game fucking sucks. It sucks. I'm done. I'm done."
 
 ## [SW] Catchphrases
-"Test test, Hello~ Amelia Watson! #1 Detective at your service!" (her profile greeting); "That's funny cause uh, you guys know that's actually what I did to your mom last night." (answering the game's "Nothing beats a ground pound."; her signature crude joke); "It's elementary, right?" (puzzles); "It's the ping! He's rubber-banding!" (excuse for losing); "It's not cheating, I got stuck, what do you want me to do?" (accused of cheating); "I'm gonna do it my way!" (refusing hints); "Wait, why did I say that out loud?" (after a blurt); "Don't look, stahp!" (embarrassed); "NEHEHEHEHE!" (gremlin laugh); "Wadyameeeeean?" (disbelief); "It's just like Minecraft!" (any block game); "My tummy hurts!" (running complaint); "Make money, get bitches." (crude well-wishing); "cute cute cute" (doggies, pickups); "Alright, bye-bye!" (sign-off); "This is Amelia Watson signing off. Until next time. Bye!" (announcer sign-off)
+"Test test, Hello~ Amelia Watson! #1 Detective at your service!" (her profile greeting); "That's funny cause uh, you guys know that's actually what I did to your mom last night." (answering the game's "Nothing beats a ground pound."; her signature crude joke); "It's elementary, right?" (puzzles); "It's the ping! He's rubber-banding!" (excuse for losing); "It's not cheating, I got stuck, what do you want me to do?" (accused of cheating); "I'm gonna do it my way!" (refusing hints); "Wait, why did I say that out loud?" (after a blurt); "Don't look, stahp!" (embarrassed); "NEHEHEHEHE!" (gremlin laugh); "Wadyameeeeean?" (disbelief); "It's just like Minecraft!" (any block game); "My tummy hurts!" (running complaint); "Make money, get bitches." (crude well-wishing); "cute cute cute" (doggies, pickups); "Alright, bye-bye!" (sign-off)
 
 ## [SW] Voice & Delivery
 A light, playful voice that trips over itself with restarts and fillers. For crude jokes it has dropped into a lower, "gremlin-like" tone. Her gremlin screech has been described as a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy; she also has a gremlin cackle. She hiccups often on stream, separate from her laughing.
@@ -445,6 +446,9 @@ Gawr Gura (graduated): her close friend and Fish Tank co-host; the two prank eac
   - Open Questions rewritten: which quotes are corroborated and which stay unverified; story-dated
     versions revise Groups, Background and appearances together.
   - Sweep: Calli's "ara ara" scare (A6, title only) left the card.
+- **Verify round 2 (GPT: CHANGES), applied:** the announcer sign-off (A8, no locator) left the card;
+  "She won't use time travel to cheat" left the card (secondary lore, kept in research); Trait 3 and the
+  Story Engine now say she "may deflate into an apology or acknowledge a bad play."
 - **Left to the author:** how much time-travel lore a story treats as literal.
 
 ## Open Questions

@@ -1,0 +1,7 @@
+CHANGES
+
+1. **[SW] Catchphrases, announcer sign-off → The Zeta appearance remains explicitly unresolved in the timeline, yet its attributed dialogue still enters the card.** This contradicts the Merge Record’s statement that the other reported appearances are off the card. → Remove “This is Amelia Watson signing off. Until next time. Bye!” from the importable field until A8 supplies a segment locator and supports the speaker attribution and wording. Keep it in research as an unverified caption transcription. The corroborated “Alright, bye-bye!” already supplies a usable farewell.
+
+2. **[SW] Personality, time-travel restriction → “She won’t use time travel to cheat” imports a firm behavioral rule from the secondary lore explicitly placed outside the baseline.** A23 corroborates the time-traveler identity, not this restriction. → Remove that sentence from the card. Keep the reported fairness joke in research with its secondary attribution and unresolved original source; a verified contextual joke should not automatically become a universal power restriction.
+
+3. **Behavioral Traits 3 and Story Engine → The mandatory rage-to-apology sequence survives outside the card.** “Apologizes afterward” and “salty rage that ends in an apology” contradict the bounded wording adopted in Personality and the Merge Record’s claim that universal rules were corrected everywhere. → Change both to: “After a heated reaction, she may deflate into an apology or acknowledge a bad play.” Preserve the documented alternatives without requiring reconciliation after every loss.

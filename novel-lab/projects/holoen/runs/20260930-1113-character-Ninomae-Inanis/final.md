@@ -8,7 +8,9 @@ sw_section: Characters
 
 > Scope: official lore and publicly shown persona only, checked 2026-09-30. Nothing about the performer
 > behind the avatar. Evidence labels:
-> - **[Official]** official profile, site, announcement or interview.
+> - **[Official]** COVER's own profile, site, announcement or publication.
+> - **[Observed—published interview]** her answers in a third-party interview (the publisher's framing is
+>   not official lore).
 > - **[Observed]** public stream, clip or post; "(secondary)" means the wording comes from a wiki or
 >   reference transcription, not an audio check made here.
 > - **[Adaptation]** an author decision for this project.
@@ -34,7 +36,7 @@ sw_section: Characters
 A priestess of the Ancient Ones who controls tentacles and hears eldritch whispers, and treats all of it
 as completely ordinary. She is a soft-spoken, floor-loving hermit who drops puns so flat that chat can
 only answer "INAFF", and she enjoys the groan more than the laugh. [Official I1] [Observed I2
-§Personality and §Miscellaneous, secondary] [Official I18]
+§Personality and §Miscellaneous, secondary] [Observed—published interview I18]
 
 ## Core Drive
 - **Want:**
@@ -54,12 +56,12 @@ isn't destroyed yet — the priestess is busy rolling around on the floor!" She 
 yet makes sweet-voiced crowbar threats and mock-tyrant speeches to chat. She is calm, yet full of small
 giggles and the occasional voice crack. Her quietness is not passivity: the puns are chosen
 provocations, and she takes on demanding stage work. [Observed I2 §Personality and §Quotes, secondary]
-[Official I18, I20]
+[Observed—published interview I18] [Official I20]
 
 ## Behavioral Traits
 1. When a pun occurs to her, she delivers it flat and quick, with no setup, lets it sit, then maybe
    giggles to herself; chat answers "INAFF." She has said she enjoys the groan. [Observed I8 captions;
-   I2 §Miscellaneous] [Official I18]
+   I2 §Miscellaneous] [Observed—published interview I18]
 2. When chat misbehaves, or someone squishes her hair, she threatens to bonk them with a crowbar in a
    sweet voice: "Don't do it." [Observed I2 §Quotes, secondary; I4 clip]
 3. When chat teases her, she plays the stern overlord for a beat ("your brothers... your sisters... will
@@ -69,7 +71,7 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
 5. When she makes a mistake, she invokes the "Forgetty Beam!" bit and asks chat to forget it (a joke,
    not a real memory power). [Observed I2 §Miscellaneous, secondary; I9 clip title]
 11. When she talks about a design she made (her Monster Hunter Wilds collab outfits), she explains it
-    through specific visual features and gets expansive. [Official I6]
+    through specific visual features and gets expansive. [Observed—published interview I6]
 6. When chat invents WAH acronyms, she decides which are canon, and labels the lewd one: "That's the
    Forbidden WAH. We don't say that in public." [Observed I2 §WAH, secondary] [ASR I29, 4k_oLA5zeaI
    0:04:50: the bit is confirmed; the second model hears "the forbidden one" where the first hears "the
@@ -77,9 +79,9 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
 7. When she's sleepy, her patience thins; otherwise she rarely gets tilted ("If I'm tired I have a short
    fuse sometimes, but sleep fixes a lot of things."). The wiki calls her patience "near-infinite."
    [Observed I4 clip; I2 §Personality, secondary]
-8. When she draws for viewers, she treats it as learning alongside them, not lecturing. [Official I18]
+8. When she draws for viewers, she treats it as learning alongside them, not lecturing. [Observed—published interview I18]
 9. When an interviewer asks a practical question, she may give an exaggerated answer first and then the
-   real one ("Five and a half years!!"). [Official I19]
+   real one ("Five and a half years!!"). [Observed—published interview I19]
 10. Kiara's account, as reported by the wiki: Ina is the first to message Kiara when Kiara is down.
     [Observed I2 §Personality, secondary] A single reported anecdote, not a general rule; off the card.
 
@@ -120,7 +122,7 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
   - "TOMORROW?!" → her startled reaction at a 2022 Nintendo Direct, now a callback. [Observed I23,
     locator 50:05 from a community glossary, not checked by ear; I2 §Quotes "(Long pause) Tomorrow!"]
   - "I'm just a normal girl!" / "Despite how I look, I'm totally a normal human girl and a priestess of
-    the Ancient Ones!" → denying anything is unusual. [Official I19, I7]
+    the Ancient Ones!" → denying anything is unusual. [Observed—published interview I19] [Official I7]
   - "Sorry, tentacles very big." → dry apology gag. [Observed I3 captions]
   - "I raised this chat." / "I'm seiso, if you say so." → quotes. [Observed I2 §Quotes, secondary]
 - **Innuendo and teasing lines** (non-explicit; kept under the project's authenticity rule). Wording per
@@ -153,7 +155,7 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
 - **Code-switching:** English-dominant, with sparse Japanese reaction words: "yabe," "kusa," "seiso,"
   "hazukashii," "warau na," "kouhai." She reads and sometimes answers Japanese chat, and she is
   improving her Japanese. She shares Korean with Kronii. [Observed I2 §Quotes and §Likes and dislikes;
-  Kronii file K8 §Miscellaneous, secondary] "Marine-senpai" for a senior she admires. [Official I18]
+  Kronii file K8 §Miscellaneous, secondary] "Marine-senpai" for a senior she admires. [Observed—published interview I18]
 - **How she addresses people:** "you guys," "everyone," "chat," and fans as "Takodachi" (the official fan
   name is the Tentacult). Members by first or short name ("Calli," "Kiara," "Ame," "Gura," "Kronii,"
   "Bae," "Biboo," "CC"); a full name signals a mock-serious scold. New members are "kouhais." She gives
@@ -168,7 +170,7 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
     I27, secondary] Koseki Bijou impersonates her by pitching her own voice down. [Observed I2,
     secondary]
   - Surprise can break the calm with a sharp, higher reaction or a crack; she has acknowledged the
-    famous crack herself. [Official I18]
+    famous crack herself. [Observed—published interview I18]
   - Measured (I29, 2026 chat): median pitch 223–232 Hz, in the middle of the six files measured the same
     way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz), so "mid" rather than "low"; about 81–95 words
     per minute of speech in that one 2026 chat stream (Kronii 120–127, Calli 161–186 in their chat
@@ -235,11 +237,11 @@ Real lines first; Style demos after.
 | Ongoing | Illustrator: drew Myth's intro art; designed the Takodachi [I2 §Mascot and fans], Bubba [Ame file A2 §Mascots and fans] and Death Sensei [Calli file C4 §Mascot and fans] (the wiki says all Myth mascots except Bloop); she drew chibi Bloop artwork, but Bloop's original design is not hers [Gura file G2] | [Observed I2 §Miscellaneous and §Mascot and fans, secondary] |
 | 2021-08 | The WAH acronyms begin (*Ender Lilies* streams) | [Observed I2 §WAH] |
 | 2022-02 | Nintendo Direct "TOMORROW?!" reaction | [Observed I23] |
-| 2024 | MECONOPSIS and TEMARI; she discusses MECONOPSIS's conflict between duty and protecting others | [Official I1 music list, I7b] |
+| 2024 | MECONOPSIS and TEMARI; she discusses MECONOPSIS's conflict between duty and protecting others | [Official I1 music list] [Observed—published interview I7b] |
 | 2026-02-02 | First EP "re:VISION" | [Official I26] |
 | 2026-03-27/28 | "Drawn to Dawn" duo concert with Kiara (Los Angeles) | [Official I20, I21] |
 | 2026-06-04 | Serendipity interview and partnership with Kronii | [Official I7] |
-| 2026 | TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope | [Official I19, I25] |
+| 2026 | TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope | [Observed—published interview I19] [Official I25] |
 | 2026-09-07 | Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- | [Official I28] [Observed I10] |
 
 ## Relationship Map
@@ -255,8 +257,8 @@ fan or collab nicknames.
 | Mori Calliope | Myth genmate | Favorite pun target ("Every freaking time, Ina."); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
 | Watson Amelia (affiliate) | Myth genmate | Ina designed Bubba; the patient foil to Ame's salty gremlin; "Ame... Ame is British." | [Observed I2 §Personality, §Miscellaneous and §Quotes] |
 | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
-| Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her | [Observed I2 §Miscellaneous; I14] [Official I6] |
-| Houshou Marine | JP senior | Admired artist-performer ("Marine-senpai") | [Official I18] |
+| Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her | [Observed I2 §Miscellaneous; I14] [Observed—published interview I6] |
+| Houshou Marine | JP senior | Admired artist-performer ("Marine-senpai") | [Observed—published interview I18] |
 | Shiranui Flare | JP senior | Gave her the nickname "Ore no Ina" | [Observed I2 nickname list] |
 
 ## Arc
@@ -266,8 +268,8 @@ fan or collab nicknames.
 - **Card update points:** update only after a chosen story event changes her allegiance, knowledge or
   relationships.
 - **Sourced story options:** her own song stories offer sourced options: in
-MECONOPSIS, duty to the Ancient Ones conflicts with protecting the people around her [Official I7b]; in
-TAKO∞TAKOVER, the audience helps enact a deliberately unsettling collective transformation [Official
+MECONOPSIS, duty to the Ancient Ones conflicts with protecting the people around her [Observed—published interview I7b]; in
+TAKO∞TAKOVER, the audience helps enact a deliberately unsettling collective transformation [Observed—published interview
 I19]. A story must choose one before it changes her card.
 
 ## Story Engine
@@ -361,7 +363,7 @@ Ina, Ina'nis, Inya, Ninomanyo Inya'nis, 一伊那尓栖
 Ina is a priestess of the Ancient Ones who treats tentacles and eldritch whispers as completely normal; in practice she is a gentle, laid-back hermit who loves rolling around on the floor. She drops puns flat, with no setup, lets them sit, and giggles to herself while chat groans "INAFF"; she enjoys the groan more than the laugh. When chat misbehaves or someone squishes her hair, she threatens to bonk them with a crowbar in the sweetest voice; when chat teases her, she plays the stern overlord for a beat, then collapses into giggles. She wanders into tangents and apologizes her way back out. When she slips up, she calls a "Forgetty Beam!" and tells chat to forget it. Her patience is nearly endless unless she's sleepy. She draws alongside her viewers instead of lecturing them, explains her own designs through specific details, and takes on demanding stage work; her quiet is never passivity. She supports her genmates' work in public, designing their mascots and outfits and sharing the stage, and she is sincere in short, gentle ways: "Live without regrets." She loves food and gacha and dislikes bugs, boredom and cucumbers.
 
 ## [SW] Background
-Ina is an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles, and began hearing Ancient Whispers. The book is now her floating companion, AO-chan. She became a VTuber to deliver random sanity checks on humanity, debuting in hololive English -Myth- in September 2020. She is also an illustrator who drew Myth's intro art and mascots. Her fans are the Tentacult, each one a Takodachi, after the little purple mascot she designed. Her songs tell darker stories about her priestess duty. She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, and she partners with Ouro Kronii. Since the 2026 merger she introduces herself as "Ninomae Ina'nis from hololive."
+Ina is an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles, and began hearing Ancient Whispers. The book is now her floating companion, AO-chan. She became a VTuber to deliver random sanity checks on humanity, debuting in hololive English -Myth- in September 2020. She drew Myth's intro art and designed Takodachi, Bubba and Death Sensei. Her fans are the Tentacult, each one a Takodachi, after the little purple mascot she designed. Her songs tell darker stories about her priestess duty. She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, and she partners with Ouro Kronii. Since the 2026 merger she introduces herself as "Ninomae Ina'nis from hololive."
 
 ## [SW] Physical Description
 Ina is 157 cm tall, with long purple hair falling below her knees, squishy tentacle-like side locks fading to yellow tips, purple flaps on her head like a dumbo octopus's fins, and bluish-purple eyes. In her original outfit she wears a golden tiara, a sleeveless purple-and-yellow dress and small white wings at her waist, and she can show a golden halo. Large purple tentacles float behind her, and her book AO-chan hovers nearby. In horror games she hugs a pink stuffed rabbit named Burrito.
@@ -370,10 +372,10 @@ Ina is 157 cm tall, with long purple hair falling below her knees, squishy tenta
 Soft, unhurried English full of gentle hedges ("like," "I think," "you know," "I guess," "maybe," "right?"), with micro-pauses, restarts and meandering tangents she closes with "Anyways." Puns arrive flat and unannounced, and the next line carries on as if nothing happened. She threatens sweetly and gives over-formal mock-tyrant speeches to chat, then breaks into giggles. Her ordinary speech favors mild exclamations and she rarely swears; her bawdy side comes out in wordplay and wink-level lines, like the "Forbidden WAH" she says we don't say in public. She uses mild exclamations ("Oh boy," "Oh my goodness," "Yay"), calls fans "Takodachi," "you guys" or "chat," calls members by short names ("Calli," "Biboo," "CC"), and uses someone's full name as a mock-serious scold. She sprinkles in a little Japanese ("yabe," "kusa"). Her own words: "I'm still in my jammies right now. I literally woke up and turned on stream." "Anyways, I do have to start getting ready soon."
 
 ## [SW] Catchphrases
-"WAH!" (opening, excitement, sometimes a droopy one at the end); "Good morning, afternoon, evening, everyone." (greeting); "Could this be Tako time?" … "It is indeed Tako time." (stream opening, two lines apart); "INAFF" (the groan her puns earn); "I'll bonk you. With a crowbar. Don't do it." (chat misbehaving or hair-squishing); "Forgetty Beam!" (after a slip); "Humu humu" (listening hum); "We don't say that in public." (about the Forbidden WAH, chat's lewd acronym); "TOMORROW?!" then "Sorry, I got a little excited there." (startled outburst and apology); "I'm just a normal girl!" (denying anything is unusual); "Wooden shovel" (greeting with Bijou); "Live without regrets." (sincere); "Hope you guys have a wonderful rest of the morning, afternoon, evening. Until next time. Bye-bye. Bye-bye." (sign-off)
+"WAH!" (opening, excitement, sometimes a droopy one at the end); "Good morning, afternoon, evening, everyone." (greeting); "Could this be Tako time?" … "It is indeed Tako time." (stream opening, two lines apart); "INAFF" (the groan her puns earn); "I'll bonk you. With a crowbar. Don't do it." (chat misbehaving or hair-squishing); "Forgetty Beam!" (after a slip); "Humu humu" (listening hum); "We don't say that in public." (about the Forbidden WAH, chat's lewd acronym); "TOMORROW?!" then "Sorry, I got a little excited there." (startled outburst and apology); "I'm just a normal girl!" (denying anything is unusual); "Wooden shovel" (greeting with Bijou); "Live without regrets." (sincere); "Hope you guys have a wonderful rest of the morning, afternoon, evening." / "Until next time." / "Bye-bye. Bye-bye." (farewell components)
 
 ## [SW] Voice & Delivery
-A quiet, calm voice in the middle of the pitch range, unhurried in casual talk, with small pauses. She laughs in little ways: quick giggles mid-sentence and tiny gasps. She hums "Mhm" and "Hmm" while listening. Puns come out flat, followed by a silence. Genuine surprise can break the calm with a sharp, higher reaction ("TOMORROW?!"), and her voice has cracked in such moments. Her threats are sweet-voiced and calm.
+A quiet, calm voice, unhurried in casual talk, with small pauses. She laughs in little ways: quick giggles mid-sentence and tiny gasps. She hums "Mhm" and "Hmm" while listening. Puns come out flat, followed by a silence. Genuine surprise can break the calm with a sharp, higher reaction ("TOMORROW?!"), and her voice has cracked in such moments. Her threats are sweet-voiced and calm.
 
 ## [SW] Motivation
 In her lore, Ina delivers sanity checks on humanity. In her own public words, she wants to give her viewers a better day, make art and music, grow as a performer and give back through charity, and she loves groan-inducing wordplay.
@@ -447,6 +449,10 @@ Ouro Kronii: her 2026 performance partner; they trade puns and share Korean, and
   - UMISEA marked as an official 2021 unit (I31); unit and nickname statuses given one by one.
   - Boundary line added; mascot credit made specific (Takodachi, Bubba, Death Sensei; chibi Bloop art vs.
     the original Bloop design).
+- **Verify round 2 (GPT: CHANGES), applied:** the card's Background names the mascots she designed
+  (Takodachi, Bubba, Death Sensei); "in the middle of the pitch range" left the card; the farewell is
+  quoted as separate components; third-party interviews (I6, I7b, I18, I19) are labeled
+  [Observed—published interview], with [Official] kept for COVER publications.
 - **Left to the author:** whether a story uses one of her song narratives as literal continuity.
 
 ## Open Questions
