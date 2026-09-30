@@ -19,8 +19,9 @@ sw_section: Characters
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (G#) are listed under Sources.
 >
-> **Audio status:** on 2026-09-30 Claude checked about 2 hours of archived recordings (G18: The Mortuary
-> Assistant 2022, Resident Evil 2 2021, the DMC3 marathon 2021 and her 2024 birthday chat). The audio was
+> **Audio status:** on 2026-09-30 Claude checked about 6 hours of archived recordings (G18: The Mortuary
+> Assistant 2022, the whole Resident Evil 2 stream 2021, the DMC3 marathon 2021 and her 2024 birthday
+> chat). The audio was
 > machine-transcribed and acoustically measured; transcripts were reviewed in context, without
 > independent listening verification. Those items are marked [ASR]. Other voice evidence is **G3**:
 > YouTube auto-captions of the 12
@@ -147,11 +148,15 @@ voice delivering deadpan lewd jokes. [Observed G2 §Personality and §Quotes, se
   no," "wait wait," "hold on," "okay okay okay," "come on," "holy moly"; "sorry" often. [Observed G3
   captions]
 - **Profanity:** mostly softened ("what the heck," "freaking," "dang," "shoot," "screw you," "shut up,"
-  "stupid"), often delivered cutely. Under gaming pressure it gets harder: "Oh, what the hell?" and "Yo
-  bastard!" [ASR G18, Resident Evil 2, 3:03:15 and 3:01:47; both models agree]; the first model also wrote
-  "Damn." and "god damn", which the second model did not confirm. Whether she says "fuck" is [Unverified] here: it is claimed by a
-  compilation from the same stream [Observed G11, secondary]; it was not in the 45 minutes checked. Neither
-  sanitized nor constant.
+  "stupid"), often delivered cutely. Under gaming pressure it gets harder: "Oh, what the hell?", "Yo
+  bastard!", "Oh my god, shit shit", "You bastard. Yeah, get him, Leon." [ASR G18, Resident Evil 2,
+  3:03:15, 3:01:47, 1:28:29, 1:56:16; both models agree]. "Fuck": while riffing on an in-game memo, both
+  models hear an f-word from her, but they disagree on the words around it ("Who wants to fuck up these
+  badly?" / "Who else is fucking with you badly?") [ASR G18, 1:05:27]. The transcript's one clear "get me
+  the fuck out of here" (3:42:48) is a game character's line, not hers. So "fuck" is attested but rare in
+  the 4.4 hours of that stream (the compilation G11 claims the same stream). Lines the second model did
+  not confirm are not used ("Damn.", "god damn", "No, damn it", and a "shit … bitch" line at 3:54:07).
+  Neither sanitized nor constant.
 - **Address terms:** "you guys" (by far the most), "everybody," "chumbuds" (official fan name),
   "chumbies," "shrimps" (members, from her "simp? Do you mean shrimp?" moment), "stinkies" (2024), and
   game re-skins ("my gamblers"). [Official G1, G12] [Observed G3; G2 §Mascots and fans]
@@ -204,14 +209,15 @@ The middle column is provisional voice direction (not checked against audio) unl
 
 ### Sample Lines
 Real lines first; Style demos after.
-1. "Hello, hello, hello, how's this one, oh yeah, oh yeah." (ASR G18)
-2. "You don't scare me. Cheap party city lady. I see better makeup on clowns these days. Ha, ha, ha, ha." (ASR G18)
+1. "Hello? Hello? Hello? How's this one?" (ASR G18, _aeIw9DJnBw 0:06:37)
+2. "You don't scare me. Cheap party city lady. I see better makeup on clowns these days." (ASR G18, _aeIw9DJnBw 2:40:44)
 3. "What is simp? Do you mean shrimp?" (ASR G18)
 4. "Okay, okay, wait, okay, wait, wait, wait." (ASR G18)
 5. "Bro, you cooked." (ASR G18, 2024)
-6. "You can't be mad at me. I'm cute." (verbatim G3 captions)
-7. "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (G2 §Quotes, secondary)
-8. "That jump was fine. The landing had an attitude." (Style demo, GPT)
+6. "Come on Leon, say it with a bit more oomph. Say it like it's really bothering you, Leon." (after the game's Leon says "Son of a bitch"; ASR G18, JELLJ3osUUQ 1:38:48, both models)
+7. "You can't be mad at me. I'm cute." (verbatim G3 captions)
+8. "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (G2 §Quotes, secondary)
+9. "That jump was fine. The landing had an attitude." (Style demo, GPT)
 
 ## Appearance Anchors (original outfit)
 - Very short (141 cm). White, light-silver hair with baby-blue and cobalt strands; short pigtails tied
@@ -310,7 +316,7 @@ audio-checked by ear.
   antics, §Miscellaneous: https://virtualyoutuber.fandom.com/wiki/Gawr_Gura
 - G18 Claude's audio check (2026-09-30), archived recordings via archive.ragtag.moe, whisper small.en +
   Praat; windows, method and short quotes: `novel-lab/projects/holoen/research/audio-check/gura.md`.
-  Streams: _aeIw9DJnBw (The Mortuary Assistant, 2022-08-10), JELLJ3osUUQ (Resident Evil 2, 2021-03-30),
+  Streams: _aeIw9DJnBw (The Mortuary Assistant, 2022-08-10), JELLJ3osUUQ (Resident Evil 2, 2021-03-30, in full),
   54ysrFu09hA (Devil May Cry 3, 2021-05-24), JUvdnKuBMDQ (2024 birthday chat)
 - G3 Her streams, auto-captions (https://www.youtube.com/watch?v=<ID>): dBK0gKW61NU (debut), xo3z5bEYTE8 (ASK GURA, "hoocha"), JUvdnKuBMDQ (2024 birthday, "I'm cute", "stinkies"), 97w16cYskVI, fp_tHKAjhyU, soxPA0d4Afc, 29UwCwTyOqc (2.0), 4y4Vgl5XDIE, qhTP_DIrSA8 (Balatro), kmLBOT9Sz3Y (MiSide), 3pS6f3_veik, EAdh6m3E3UI (graduation mini live)
 - G4 Wikipedia: https://en.wikipedia.org/wiki/Gawr_Gura
@@ -357,7 +363,7 @@ Gura is a hololive alum: she graduated from hololive -Myth- on May 1, 2025. She 
 Gura is small, 141 cm, with white-silver hair streaked with blue, short pigtails tied with shark-face hair ties, cyan eyes and sharp shark teeth. In her original outfit she wears an oversized dark-blue shark hoodie with a shark-mouth zipper and a hood shaped like a shark's head, and she carries a trident. Her cyan shark tail is stitched up after a rock fell on it.
 
 ## [SW] Dialogue Style
-Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; under gaming pressure it gets harder ("what the hell," "Yo, bastard!"). Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait, wait." "Bro, you cooked."
+Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; under gaming pressure it gets harder ("what the hell," "shit," "you bastard"), and "fuck" can slip out, rarely. Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait, wait." "Come on Leon, say it with a bit more oomph. Say it like it's really bothering you, Leon."
 
 ## [SW] Catchphrases
 "hello hello hello" (opening); "Domo!! Sa-me desu!! Have you had shark thoughts today?" (published profile greeting); "a" (her debut word and meme; rare); "Shark fact!" (opening with real or made-up trivia); "You can't be mad at me... I'm cute." (deflecting blame); "What do you mean!?" (outraged echo of chat); "I'm hungry. Is anybody else hungry?" (when bringing up hunger); "Hoocha!" (sound effect for any quick move); "Oh nyo!" (cat-ified "oh no"); "Shaaaaark!" (hype); "Parkour!" (jumps and escapes); "Ka-chow!" (Cars reference); "It's Gooba!" (her own nickname); "hydrodynamic" (when teased about being flat); "I'm pettan, and I'm proud, okay?" and "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (deadpan lewd one-liners); "What is simp? Do you mean shrimp?" (why her members are shrimps); "I won't eat you. Maybe." (harmless shark menace); "BAN PANTS!" (running joke); "goodbye goodbye goodbye, good night" (sign-off); "Take care and be kind to yourselves." (sincere sign-off)
@@ -432,11 +438,16 @@ Watson Amelia (affiliate): her close friend and Fish Tank co-host; they argue on
   - Hunger "when bringing up hunger"; the stomach-noise fear is a quip, not a Hard Fact; the profile
     greeting is labeled "published profile greeting."
   - Story-dated versions need a consistent revision of Groups, Background, relationships and events.
+- **Audio search after verify round 1:** the whole Resident Evil 2 stream (4.4 hours) was transcribed.
+  "Fuck" is attested once in her own speech (both models hear an f-word at 1:05:27; the surrounding words
+  differ), so the card says it "can slip out, rarely"; the stream's clearest "fuck" is a game character's
+  line. New confirmed lines: "Oh my god, shit shit," "You bastard. Yeah, get him, Leon," and her critique
+  of Leon's "Son of a bitch" delivery. Sample lines 1–2 trimmed to the words both models agree on.
 - **Left to the author:** whether and how to make a story-dated (pre-2025) version of the card.
 
 ## Open Questions
-1. The card says the f-word "comes out" under real gaming pressure (G11). Is that the right level, or
-   should it be stronger or weaker?
+1. "Fuck" is attested once in the 4.4-hour Resident Evil 2 audio (both models hear it; the surrounding
+   words differ). The card calls it rare. Should a story use it at that level?
 2. Graduated: the baseline card is post-graduation. Fiction set before 2025 needs a story-dated revision
    of Groups, Background, relationships and events together.
 3. "Domo!! Sa-me desu!!" is her published profile greeting (G1), not a verified on-stream habit; the card
