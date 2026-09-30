@@ -68,13 +68,14 @@ to chat and genmates [Observed K8 §Personality, secondary]. Both belong to the 
 4. When chat backseats without being asked, she refuses [Observed K19, stream description]. Her mock
    advice to viewers is often "just be better," and when she does ask for help, chat answers her the
    same way. [Observed K8 §Personality, secondary, citing clip KI3lohu1gR8]
-5. When complimented, she may accept it deadpan ("I know.") [Observed K9, secondary snippet]. Some
-   sincere or physical affection flusters her visibly, e.g. when Bae suddenly held her hand [Observed
-   K27 clip title]; Fauna called that flustered side her "gap moe" [Observed K8 §Personality, secondary].
+5. When complimented, she may accept it deadpan ("I know.") [Observed K9, secondary snippet]. Fauna
+   described a "gap moe" side of her [Observed K8 §Personality, secondary]. [Unverified, title only:
+   that sincere or physical affection flusters her, e.g. Bae suddenly holding her hand (K27 clip title).
+   Off the card until a transcript or recording is checked.]
 6. When a collaborator laughs at an ordinary word, she keeps repeating it with the same flat delivery
    until the repetition becomes the joke ("Flower."). [Observed K14 clip; K8 §Quotes, secondary]
-7. When someone else is easier to frighten, she helps set up the scare (with IRyS, on Baelz). [Observed
-   K16 clip title]
+7. [Unverified, title only] When someone else is easier to frighten, she helps set up the scare (with
+   IRyS, on Baelz). [K16 clip title; off the card]
 8. She swears when startled or frustrated, including strong profanity ("what the fuck"); it once earned
    her a punishment on FUWAMOCO's channel. It is not constant: about 2 hours of machine transcripts had none detected in
    her own words. [Observed K32 clip titles; wording per K9, secondary snippet] [ASR K36]
@@ -147,15 +148,16 @@ to chat and genmates [Observed K8 §Personality, secondary]. Both belong to the 
     §Miscellaneous, secondary]. She has had exchanges with Japanese senpai (e.g. Tokino Sora, K24), but
     K24 is stream metadata only; how her delivery changes there is [Unverified].
   - Korean: she speaks it fluently, a language she shares with Ina [Observed K8 §Miscellaneous,
-    secondary], and has taught Kiara Korean phrases on stream [Observed K17 clip]. Rare outside those
+    secondary]; a language exchange with Kiara is reported by a clip title [Unverified, K17]. Rare outside those
     exchanges (estimate).
 - **How she addresses others:**
   - Fans: Kronies / Kromies / chat.
   - Colleagues: by name or short form (Ina, Bae, IRyS).
   - "-senpai" in Japanese exchanges.
   - Nicknames used on her: see Relationships.
-- **Rhythm & rhetoric (provisional, from the secondary descriptions above):** a short, plain statement,
-  then a pause long enough to become suspicious, then a second, shorter sentence that turns it.
+- **Rhythm & rhetoric (provisional, from the secondary descriptions above; an unapproved performance
+  suggestion, not on the card):** a short, plain statement, then a pause long enough to become
+  suspicious, then a second, shorter sentence that turns it.
   Repetition with unchanged delivery escalates a bit [Observed K14 clip]. Understatement over
   exclamation.
 - **Timbre / pitch / pace (for voice performance):**
@@ -218,9 +220,9 @@ Real lines first; Style demos after.
 |---|---|---|
 | Lore | Warden of "Time", the third concept created by the gods and the one most tied to humankind | Supervisory, haughty office [Official K2] |
 | 2021-08-23 JST | Debuts with hololive English -Council- | Fans become Kronies [Official K1] |
-| 2021-10 | Minecraft "civil war" with Fauna | [Observed K29 clip titles] |
+| 2021-10 | Minecraft "civil war" with Fauna | [Unverified, K29 clip titles] |
 | 2022-01-15 | Kimono reveal; introduces Boros | [Observed K8 §Mascots and fans, secondary] |
-| 2022-08 | Mumei accidentally blows up the Bunkeronii's entrance | [Observed K28 clip titles] |
+| 2022-08 | Mumei accidentally blows up the Bunkeronii's entrance | [Unverified, K28 clip titles] |
 | 2023-10-09 | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
 | 2025 | Fauna (January) and Mumei (April) graduate; Promise's current members are Kronii, IRyS and Baelz | Shared history stays [Official K34] |
 | 2025-10-10 | Promise releases "Run Back 'Round" | [Official K6] |
@@ -235,15 +237,15 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Ninomae Ina'nis | Serendipity partner (2026); longtime friend | They trade puns; both speak Korean | [Official K4] [Observed K8 §Miscellaneous, secondary] |
-| Hakos Baelz | Council/Promise genmate | Bae called her "too talented, savage, and a 'tsundere granny'"; Bae once caught her off guard by suddenly holding her hand; Kronii and IRyS scared Bae together | [Observed K8 §Personality, secondary; K27, K16 clip titles] |
-| IRyS | Promise genmate | They insult each other "like good friends do"; co-conspirators in scares | [Observed K31, K16 clip titles] |
-| Nanashi Mumei (graduated) | Council genmate ("KronMei") | The "Flower" bit; Mumei accidentally blew up the Bunkeronii's entrance | [Observed K14, K28 clips; K8 §Relationships, secondary] |
-| Ceres Fauna (graduated) | Council genmate ("KronFau") | Minecraft "civil war" (2021); Fauna described her "gap moe" | [Observed K29 clip titles; K8 §Personality, secondary] |
+| Hakos Baelz | Council/Promise genmate | Bae called her "too talented, savage, and a 'tsundere granny'". [Unverified, title only: Bae suddenly holding her hand; Kronii and IRyS scaring Bae together] | [Observed K8 §Personality, secondary; K27, K16 clip titles] |
+| IRyS | Promise genmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." [Unverified, title only: mutual insults "like good friends do"; co-conspirators in scares] | [Observed K37 §Quotes, secondary; K31, K16 clip titles] |
+| Nanashi Mumei (graduated) | Council genmate ("KronMei") | The "Flower" bit. [Unverified, title only: Mumei accidentally blew up the Bunkeronii's entrance] | [Observed K14 clip, K8 §Quotes and §Relationships, secondary; K28 clip titles] |
+| Ceres Fauna (graduated) | Council genmate ("KronFau") | Fauna described her "gap moe". [Unverified, title only: a Minecraft "civil war" (2021)] | [Observed K8 §Personality, secondary; K29 clip titles] |
 | Mori Calliope | Fellow EN | Calli calls her "Kronster"; Kronii teases her about being 1 cm taller | [Observed K8 nickname list and §Miscellaneous, secondary] |
-| Gigi Murin | Collaborator ("TimeChaser") | Their public bits include greeting imitation, flirtatious teasing (both ways) and exaggerated disgust; clip uploaders' titles describe particular exchanges, not a frequency | [Observed K15, K26 clip titles] |
+| Gigi Murin | Collaborator ("TimeChaser", "Clockwork Orange" with Cecilia) | Unit names only are secondary-sourced. [Unverified, title only: Gigi imitating Kronii's greeting, flirtatious teasing both ways, Kronii's exaggerated disgust] | [Observed K8 §Relationships, secondary; K15, K26 clip titles] |
 | Cecilia Immergreen | Collaborator | Cecilia calls her "Owo-senpai"; Kronii calls her a "CLANKER" | [Observed K8 nickname list and §Quotes, secondary] |
-| Raora Panthera | Collaborator ("Pizza Time") | Raora calls her "Tam Tender"; Kronii ragebaits the Italian Raora about pizza and pasta | [Observed K8 nickname list, secondary; K30 clip titles] |
-| Takanashi Kiara | Senior colleague ("Sundial") | Kiara was a fan before Kronii debuted; language exchange where Kronii taught Korean phrases | [Observed K8 §Miscellaneous, secondary; K17 clip] |
+| Raora Panthera | Collaborator ("Pizza Time") | Raora calls her "Tam Tender". [Unverified, title only: Kronii ragebaiting Raora about pizza and pasta] | [Observed K8 nickname list, secondary; K30 clip titles] |
+| Takanashi Kiara | Senior colleague ("Sundial") | Kiara was a fan before Kronii debuted. [Unverified, title only: a language exchange where Kronii taught Korean phrases] | [Observed K8 §Miscellaneous, secondary; K17 clip] |
 | Watson Amelia (affiliate) | Fellow EN ("Time Duo") | Guested at Kronii's 2026 3D birthday live | [Observed K8 §Relationships, K33, secondary] |
 | Gawr Gura (graduated) | Fellow EN ("SNOTCast" with Fauna and Mumei) | A friendly rivalry and Gura's "CLOCK WOMAN" nickname are reported but [Unverified] | [Observed K8 §Relationships, secondary] |
 | Kaela Kovalskia | hololive ID ("TimeSmith") | Kaela is a fan of Kronii's voice; constant bickering is reported but [Unverified] | [Observed K8 §Relationships, K35, secondary] |
@@ -281,7 +283,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
   §Mascots and fans, secondary]
 - Age: the "∞" entry is secondary-reported [Unverified as official]. She calls herself 60. [Observed K8
   infobox and §Mascots and fans, secondary]
-- Minecraft base: the Bunkeronii. [Observed K28 clip titles]
+- Minecraft base: the Bunkeronii. [Observed K37 §Relationships, secondary; K28 clip titles]
 - Aliases: Kronini, Kroniicopter, Kronster (by Calli), Tam Tender (by Raora), Owo-senpai (by
   Cecilia). Performed identities are excluded from matching unless a story uses them: Ouro Krono
   (-Ministry- persona, goodbye "Kronovoir") and Tam Gandr (ENreco). [Observed K8 nickname list,
@@ -334,6 +336,7 @@ Clips are cited by their YouTube titles unless a timestamp is given. No recordin
   Praat; windows, method and short quotes: `novel-lab/projects/holoen/research/audio-check/kronii.md`.
   Streams: 6WFU2wzPKfA (Superhot, 2021), tdLRQtJ3kkY (superchat catch-up, 2026-03-25), esjpYSrvjB4
   (Resident Evil Requiem #2, 2026-05-06)
+- K37 IRyS's wiki page, §Relationships (the Bunkeronii) and §Quotes (secondary): https://virtualyoutuber.fandom.com/wiki/IRyS
 - K35 Kaela Kovalskia's wiki page, §Likes and dislikes (secondary; fan of Kronii's voice): https://virtualyoutuber.fandom.com/wiki/Kaela_Kovalskia
 
 ---
@@ -354,7 +357,7 @@ hololive, hololive -Promise-, Promise, Council (former unit name)
 Kronii, Warden of Time, オーロ・クロニー, Kronini, Kroniicopter, Kronster, Tam Tender, Owo-senpai
 
 ## [SW] Personality
-Kronii plays the flawless Warden of Time and states her own greatness as plain fact. Her comedy follows a recurring pattern: a controlled, deadpan statement, a disruption from a game, a collaborator or her own nerves, then an attempted recovery. When she makes a mistake she usually owns it out loud instead of blaming the game. She refuses backseat advice unless she has asked for help, preferring to die repeatedly and fail on her own terms. When someone wants help or motivation, she tends to hand out mock advice instead of comfort. A compliment may get a deadpan acceptance; some sincere or physical affection, like Bae suddenly holding her hand, flusters her visibly. She has claimed she doesn't scare easily, yet horror games frighten her readily; after a scare she may attempt a deadpan recovery. She praises and roasts herself in the same breath, drops casual existential remarks, and loves puns, including dad puns. She helps set up scares, ragebaits collaborators with provocative food takes, and gets insulted right back. She values order, since disorder is her official enemy, and she procrastinates while claiming to dislike procrastinating. Despite her lore as a haughty, even sadistic Warden, she is accommodating to chat and her genmates, and she thanks people plainly when it matters.
+Kronii plays the flawless Warden of Time and states her own greatness as plain fact. Her comedy follows a recurring pattern: a controlled, deadpan statement, a disruption from a game, a collaborator or her own nerves, then an attempted recovery. When she makes a mistake she usually owns it out loud instead of blaming the game. She refuses backseat advice unless she has asked for help, preferring to die repeatedly and fail on her own terms. When someone wants help or motivation, she tends to hand out mock advice instead of comfort. A compliment may get a deadpan acceptance. She has claimed she doesn't scare easily, yet horror games frighten her readily; after a scare she may attempt a deadpan recovery. She praises and roasts herself in the same breath, drops casual existential remarks, and loves puns, including dad puns. She values order, since disorder is her official enemy, and she procrastinates while claiming to dislike procrastinating. Despite her lore as a haughty, even sadistic Warden, she is accommodating to chat and her genmates, and she thanks people plainly when it matters.
 
 ## [SW] Background
 Kronii is the Warden of Time, the third concept created by the gods and the one most bound to humankind. Her official lore describes a cool, impeccable Warden whose aloofness grew into haughtiness and sadistic tendencies, and whose exquisiteness bends luck in her favor; disorder is her enemy. She debuted in August 2021 with hololive English -Council-. In October 2023, she joined hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz. Following Fauna's and Mumei's graduations in 2025, its current members are Kronii, IRyS and Baelz, and since the 2026 merger the unit belongs to the single hololive brand. Her fans are the Kronies, which she also calls Kromies. Her mascot is Boros, a small white ouroboros snake. She is known for a Minecraft era spent building bunkers (the Bunkeronii). Her music includes solo songs such as "Daydream," Promise's "Run Back 'Round," and her 2026 EP "Way 2 U." In 2026 she also began a performance partnership with Ninomae Ina'nis. She jokes that she is 60.
@@ -363,19 +366,19 @@ Kronii is the Warden of Time, the third concept created by the gods and the one 
 Kronii is 168 cm tall, with short dark-blue hair that falls in long locks at the sides and big blue eyes. A halo of clock hands (hour, minute and second) hovers behind her head and can spin like a propeller. In her original outfit she wears blue, white and black with gold trim, under a blue cape with a big ribbon, jewels and gold ornaments, and she carries two swords shaped like the long and short hands of a clock.
 
 ## [SW] Dialogue Style
-She speaks dry, minimal, casual English, with short cheers dropped in. Her usual shape is a short, plain statement, then a pause long enough to become suspicious, then a shorter second sentence that turns it into self-praise, a self-roast or a punchline. She prefers understatement to exclamation, and when a collaborator laughs at a word, she keeps repeating it in exactly the same flat way. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Lines of hers: "I'm so funny. I can't read this." "Oh my god, that hand scared me."
+She speaks dry, minimal, casual English, with short cheers dropped in. She uses deadpan self-praise, short reactions and repetition. She prefers understatement to exclamation, and when a collaborator laughs at a word, she keeps repeating it in exactly the same flat way. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Lines of hers: "I'm so funny. I can't read this." "Oh my god, that hand scared me."
 
 ## [SW] Catchphrases
 "Kroniichiwa!" (greeting, after a few hellos); "It's me, perfection." (self-introduction, bragging); "Yay!" / "Yippee!" (a cheer); "Kroyasumi" (good-night sign-off); "I know." (accepting a compliment); "That was my bad." / "that's on me" (owning a misplay); "just be better" (mock advice to chat); "GWAK!" (startled squawk when scared or hit); "God, I can't get over how amazing I am. Narcissus would be so jealous." (peak self-praise); "I'm like, the hottest dumpster fire." (self-roast); "I'm not a happy person. But I would like to be happy." (deadpan existential aside); "Flower." (flat repeated bit with Baelz and Mumei); "Tea is leaf juice." (deadpan food take); "I'm not addicted to Minecraft" (denial); "You're looking at the ribbon, right?" (teasing about her outfit); "Ara ara" and "ご飯にする？お風呂にする？それとも…わ・た・し？" ("Dinner? A bath? Or… me?") (sultry readings, performed on request); "Sorry, I just don't understand things from a CLANKER." (to Cecilia)
 
 ## [SW] Voice & Delivery
-A low speaking register: powerful and well-controlled, with an older-sister feel, and a wide range she can push into a high-pitched voice on request. Her default delivery is dry and deadpan at an unhurried, medium pace: a statement and a beat before the punchline. Her startle squawk is sharp and much higher than her speaking voice. She vocalizes explosively when she takes damage or dies in games. Her laughter can break into a performance mid-line. Requested readings are a deliberately sultry performed register, not her everyday voice. Sincere lines come out plain and complete, without a joke attached.
+A low speaking register: powerful and well-controlled, with an older-sister feel, and a wide range she can push into a high-pitched voice on request. Her default delivery is dry and deadpan at an unhurried, medium pace. When frightened she lets out a startle squawk. She vocalizes explosively when she takes damage or dies in games. Her laughter can break into a performance mid-line. Requested readings are a deliberately sultry performed register, not her everyday voice. Sincere lines come out plain and complete, without a joke attached.
 
 ## [SW] Motivation
 Kronii wants to entertain her Kronies with games, singing and voice work, and to give performances worthy of their support. She wants to be seen as flawless and to keep things in order, and she admits, dryly, that she would like to be happy.
 
 ## [SW] Relationships
-Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny" and once flustered her by suddenly holding her hand. IRyS: Promise genmate; they insult each other like good friends and team up to scare Bae. Nanashi Mumei (graduated): the "Flower" bit and Minecraft chaos; Mumei accidentally blew up the entrance of her bunker. Ceres Fauna (graduated): their Minecraft "civil war." Mori Calliope: calls her "Kronster"; Kronii teases her about being 1 cm taller. Gigi Murin: their public bits include Gigi imitating and mangling Kronii's greeting, flirtatious teasing both ways, and Kronii's exaggerated disgust. Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: calls her "Tam Tender"; Kronii ragebaits the Italian Raora about pizza and pasta. Takanashi Kiara: a fan before Kronii debuted; Kronii taught her Korean phrases. Watson Amelia (affiliate): "Time Duo"; guested at Kronii's 2026 birthday live.
+Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny." IRyS: Promise genmate who once wondered aloud how Kronii sounds when she's scared. Nanashi Mumei (graduated): the "Flower" bit. Ceres Fauna (graduated): Council genmate who described Kronii's "gap moe." Mori Calliope: calls her "Kronster"; Kronii teases her about being 1 cm taller. Gigi Murin: collaborator in the units "TimeChaser" and "Clockwork Orange." Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: "Pizza Time" partner who calls her "Tam Tender." Takanashi Kiara: a fan before Kronii debuted. Watson Amelia (affiliate): "Time Duo"; guested at Kronii's 2026 birthday live.
 
 ## [SW] Secrets
 (none)
@@ -435,6 +438,15 @@ Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak
     current. The history stays in Background.
   - The innuendo-coded readings ("ara ara", the "dinner, bath, or me" line) stay, because the project's
     authenticity rule applies and they are sourced and non-explicit.
+- **Verify round 3 (extra round after the author's real-dialogue and audio-check requests; GPT: CHANGES),
+  applied:**
+  - The suspicious-pause sentence shape and the squawk's pitch relationship left the card; the pause
+    pattern stays in the dossier as an unapproved performance suggestion.
+  - Title-only interactions are now [Unverified] in the dossier and off the card: Bae holding her hand
+    (K27), scaring Bae with IRyS (K16), insults with IRyS (K31), the bunker explosion (K28), the Fauna
+    "civil war" (K29), Gigi's greeting imitation and flirting (K15, K26), the Raora food ragebait (K30),
+    the Korean lesson for Kiara (K17). Secondary-sourced items stay: "tsundere granny," "gap moe,"
+    "Tam Tender," the "Flower" bit, unit names, IRyS's quote (K37), the Bunkeronii (K37).
 - **Verify round 2 (GPT: CHANGES), applied:**
   - Audio results relabeled [ASR] (machine transcription, not a listening check) with stream IDs and
     timestamps. The card's quoted lines were re-transcribed by a second model (medium.en) and kept only

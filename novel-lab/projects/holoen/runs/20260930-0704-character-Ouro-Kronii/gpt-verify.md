@@ -1,0 +1,7 @@
+CHANGES
+
+1. **[SW] Dialogue Style; [SW] Voice & Delivery → Provisional delivery instructions become established characteristics.** The dossier explicitly labels the suspiciously long pause followed by a shorter sentence as provisional, but Dialogue Style calls it her “usual shape.” Similarly, the card specifies the squawk’s pitch relationship without a documented listening or measurement result for that sound. → Keep the supported low register and dry delivery. Replace the sentence-pattern claim with “She uses deadpan self-praise, short reactions and repetition.” Keep the detailed pause pattern and pitch instructions in the dossier as unapproved performance suggestions until verified.
+
+2. **[SW] Personality and Relationships; corresponding dossier entries → Title-only descriptions still become confirmed behavior.** Examples include Bae’s hand-holding reaction (K27), Gigi’s reciprocal flirting and exaggerated disgust (K26), and Raora food ragebait (K30). The introductory caveat explicitly says these titles do not establish what happened, but that limitation disappears from the export. → Supply a contextual transcript, checked recording, or identifiable secondary account describing each retained interaction. Until then, mark the title-derived details **Unverified** in the dossier and remove those details from the card. Preserve independently sourced material—for example, Raora’s “Tam Tender” nickname and Bae’s secondary-reported characterization.
+
+These unresolved evidence-to-export issues require author adjudication under the stated two-round limit.
