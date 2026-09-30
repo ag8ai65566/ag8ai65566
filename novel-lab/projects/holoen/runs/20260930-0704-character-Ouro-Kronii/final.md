@@ -442,6 +442,9 @@ Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak
     current. The history stays in Background.
   - The innuendo-coded readings ("ara ara", the "dinner, bath, or me" line) stay, because the project's
     authenticity rule applies and they are sourced and non-explicit.
+- **Recency weighting (author decision, 2026-09-30):** her card already leans on 2026 evidence (the
+  2026 opener with hellos, "Kroniichiwa" and "Yay!", and the 2026 real lines); 2021 items ("That was my
+  bad," the GWAK clips) stay as shared memory backed by the current wiki.
 - **Verify round 4 (confirmation after round 3; GPT: CHANGES), applied, then a full sweep by Claude:**
   - Title-only speech and delivery left the card and are [Unverified] in the dossier: "I'm not addicted to
     Minecraft" (K21), "Ara ara" as a requested sultry reading (K13), laughter breaking into a
