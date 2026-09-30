@@ -1,6 +1,6 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
-狀態（2026-09-30 22:55 UTC）：
+狀態（2026-09-30 23:40 UTC）：
 - **作者定案（新）**：以真實性為主，卡片優先用**真實台詞**（含粗口、挑逗）；音檔由 Claude 自己核對。
 - **音檔核對已完成**（六人）：報告在 `research/audio-check/<名字>.md`，工具在 `novel-lab/tools/audiocheck/`。
   - 方法：ragtag 直播存檔 → whisper small.en 轉寫 + Praat 量音高 → **上卡片的句子再用 medium.en 第二模型核對**。
@@ -12,6 +12,17 @@
   - Kiara：GPT APPROVE 收錄。
   - Kronii、Calli、Ina、Ame：作者裁決 (b) 收錄（`--force`，記在各 run 的 `author-decision.md`，不算 GPT 核准）。
   - Gura：Claude 比照作者對上述四人的裁決收錄（第 2 輪上限、意見已照改），作者可推翻。
+- **世界觀（2026-09-30 作者指示）**：13 張世界觀卡草稿完成（runs `20260930-2309-world-*`，各有 claude-draft.md）：
+  hololive、VTuber Persona and Lore（最重要：她們知道自己是有人設的實況主）、Streaming Life、hololive -Myth-、
+  hololive -Promise-、TakaMori、TakoTori、AmeSame、Bone Bros、Time and Death、Time Duo、Octo'Clock、Myth Pairs。
+  六張角色卡已改成人設框架（"a VTuber whose lore… makes her…"、"her avatar…"）並更新 Relationships；
+  Kronii 聲音描述更正（K8 其實有寫深嗓音／音域廣）。這些改動在 runs 的 final.md，**還沒重新收錄**。
+  - 作者指示：GPT 只審一輪。`runs/20260930-2309-world-hololive/to-gpt.free.md` 已備好（13 張卡＋角色卡改動）。
+  - **Codex 額度 02:22 UTC 重置**；send_later `trig_012rQiQwJKBepLjf73cYGMgw` 在 02:27 UTC 叫醒這個 session。
+  - 審完：意見併進各 world run 的 final.md（claude-draft.md → final.md，加 Merge Record），六張角色卡也一起，
+    然後 `promote --force --reason "作者指示 GPT 只審一輪"`，`export holoen`。
+- **IRyS、Nerissa Ravencroft**（作者：世界觀做完後接著做）：runs `20260930-2334-character-IRyS`、
+  `20260930-2334-character-Nerissa-Ravencroft` 已建立；音檔 jobsG 轉寫中；Claude 研究與初稿進行中。
 - **近期權重**（作者定案，已寫進 project.md）：描述現在的預設說話方式時，近期直播權重較高；
   早期梗保留為共同記憶。六人都已照此檢查（Ame 換上 2024 台詞、Calli 招呼語順序、Gura 以 2024 為預設）。
 - 下一步（額度允許時）：Council/Promise 其他成員，或繼續用音檔補強既有六人（例如 Kronii 的 GWAK、

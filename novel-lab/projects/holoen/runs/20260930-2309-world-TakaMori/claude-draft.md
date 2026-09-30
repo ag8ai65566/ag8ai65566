@@ -63,6 +63,15 @@ Relationship (pair).
   an ice mage, they riff on their own song: "Fire and ice, yeah. Fire and ice, death and life." When the
   split screen separates them: "Oh, double Takamori." [ASR S6, nE12CyKbaX8 0:07:49, 0:08:01, 0:22:36,
   0:13:28; both models agree; who said which line is not separable from the transcript]
+- **Heard at the finale (ASR, S6; Calli's channel, 2025-05-02):** they bicker over an idiom like a long
+  married pair. One mangles it ("glass stones in stone houses or whatever. I forget the term"), they argue
+  over what it even means ("Okay, how about this? Don't cast stones when your body's made of glass."), and
+  it ends with "I don't know that one. All right. All right. Well then, whatever. We don't need any of these
+  metaphors." Calli, asked her favorite of the studio's co-op games: "I'm an edgelord, Kiara. I like A Way
+  Out the best… but you know me, I'm edgy, but I still love power, friendship and stuff." Wrapping up:
+  "Split screen game finished by Takamori… because Takamori will always get together for these ones,
+  right?" "Let's play more in the future." Earlier in the ending: "We got published together."
+  "Together." [ASR S6, 2X8h7UI28mE 4:42:57–4:44:30, 4:36:00, 4:40:50, 4:31:35; both models agree]
 - **How often (archive, S1):** mentions of each other in titles and descriptions: 33 (2020), 38 (2021),
   12 (2022), 22 (2023), 9 (2024), 9 (2025). Fewer than the first two years, but still one of the most
   steady pairs. [Observed S1; counts by Claude]
@@ -123,7 +132,8 @@ Mori Calliope, Takanashi Kiara; Kobo Kanaeru (their "kid" bit); Myth.
   https://virtualyoutuber.fandom.com/wiki/Takanashi_Kiara
 - S3 Mori Calliope wiki page, §Quotes, §Personality (secondary): https://virtualyoutuber.fandom.com/wiki/Mori_Calliope
 - S4 Siliconera on "Fire N Ice": https://www.siliconera.com/calliope-mori-and-kiara-takanashi-finally-released-a-song-together/
-- S6 Claude's audio check (2026-09-30): nE12CyKbaX8 0:00–0:25 (Kiara's channel, 2025-04-06), archived
+- S6 Claude's audio check (2026-09-30): nE12CyKbaX8 0:00–0:25 (Kiara's channel, 2025-04-06) and
+  2X8h7UI28mE, last 15 minutes (Calli's channel, 2025-05-02), archived
   via archive.ragtag.moe, whisper small.en, lines re-checked with medium.en. Machine transcription, not
   listening; speakers are not labeled. Lines about the members' families or where they live were heard
   and deliberately left out (project rule).
@@ -142,7 +152,7 @@ Relationship
 Takamori, Calli and Kiara, Kiara and Calli, kusotori
 
 ## [SW] Description
-Mori Calliope and Takanashi Kiara, Myth's founding double act. In 2020 Kiara declared a crush on the reaper who can never keep a phoenix dead, called Calli her "wife" and named the ship "TakaMori"; Calli rebuffed her and nicknamed her "kusotori" (shitbird) while quietly supporting the hashtag. Calli made and narrated Kiara's debut intro. In 2021 they toned the ship down. What remains in 2026 is a settled, affectionate long friendship with fewer collabs and the rhythm of an old married couple: bickering on autopilot, nostalgia about the early days, complaints that are really affection. Kiara says the love out loud and explains that Calli "actually does like me a lot but is just really bad at expressing herself"; Calli deflects, then snaps "What do you mean?! I love Kiara!" when someone suggests they're only friends "now." They sang "Fire N Ice" together (2023), Kiara threw a watch party for Calli's 2025 concert, and in 2025 they played a co-op series they titled "takamori split screen nostalgia." They also play "Mom" and "Dad" to Kobo Kanaeru; in 2025, when Kobo appeared in their chat, they told her "Go to bed!" and "Sorry Kobo, you can't be part of this because it's two players only," and when their game gave them fire and ice powers they riffed, "Fire and ice, death and life."
+Mori Calliope and Takanashi Kiara, Myth's founding double act. In 2020 Kiara declared a crush on the reaper who can never keep a phoenix dead, called Calli her "wife" and named the ship "TakaMori"; Calli rebuffed her and nicknamed her "kusotori" (shitbird) while quietly supporting the hashtag. Calli made and narrated Kiara's debut intro. In 2021 they toned the ship down. What remains in 2026 is a settled, affectionate long friendship with fewer collabs and the rhythm of an old married couple: bickering on autopilot, nostalgia about the early days, complaints that are really affection. Kiara says the love out loud and explains that Calli "actually does like me a lot but is just really bad at expressing herself"; Calli deflects, then snaps "What do you mean?! I love Kiara!" when someone suggests they're only friends "now." They sang "Fire N Ice" together (2023), Kiara threw a watch party for Calli's 2025 concert, and in 2025 they played a co-op series they titled "takamori split screen nostalgia." They also play "Mom" and "Dad" to Kobo Kanaeru; in 2025, when Kobo appeared in their chat, they told her "Go to bed!" and "Sorry Kobo, you can't be part of this because it's two players only," and when their game gave them fire and ice powers they riffed, "Fire and ice, death and life." At the end of that series they bickered over a mangled idiom ("glass stones in stone houses or whatever") until one gave up: "Whatever. We don't need any of these metaphors," and signed off: "Takamori will always get together for these ones, right?"
 
 ## [SW] Rules
 The romance was a performed bit and is past tense; no real romance or intimacy is written. Kiara is openly affectionate; Calli is gruff in words and loyal in actions, and "kusotori" is a term of endearment by now. Collabs are occasional events, not daily; when they meet, it feels like no time has passed.
