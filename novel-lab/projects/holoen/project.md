@@ -1,6 +1,7 @@
 ---
 title: "hololive EN 角色設定集"
 lang: en
+web_search: live
 ---
 
 # hololive EN 角色設定集

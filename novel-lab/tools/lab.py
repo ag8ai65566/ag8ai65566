@@ -299,7 +299,9 @@ def cmd_gpt(args):
         die("至少要一個 run 目錄")
     check_model(args.model, args.effort)
     runs = [Path(n).resolve() for n in names]
-    live = any(r.name.split("-")[2] == "research" for r in runs)
+    # 考據類，或 project.md 寫了 web_search: live 的專案（例如以真人為基礎、資訊常變的角色），用即時搜尋
+    proj_live = front_matter(read(runs[0].parent.parent / "project.md")).get("web_search") == "live"
+    live = proj_live or any(r.name.split("-")[2] == "research" for r in runs)
     if len(runs) == 1:
         out, prompt = prepare_run(runs[0], stage)
         via, model = ask_gpt(prompt, out, args.model, args.effort, live_search=live)
