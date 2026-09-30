@@ -689,7 +689,10 @@ def cmd_export(args):
     # ---- 通過驗證：清掉舊成品再寫，避免殘留已刪除的卡片
     exp = proj / "export"
     if exp.exists():
-        shutil.rmtree(exp)
+        for p in exp.iterdir():
+            if p.name == "elevenlabs":  # 手寫的 ElevenLabs 表演表，不是匯出產物，保留
+                continue
+            shutil.rmtree(p) if p.is_dir() else p.unlink()
     write(exp / "sudowrite-paste.md", "\n".join(lines))
     made = ["sudowrite-paste.md"]
     for section, fname, key in (("Characters", "characters.csv", "character_columns"),
