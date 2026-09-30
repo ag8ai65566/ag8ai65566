@@ -13,22 +13,28 @@ sw_section: Characters
 >   reference transcription, not an audio check made here.
 > - **[Adaptation]** an author decision for this project.
 > - **[Unverified]** reported, but no reliable source was found.
+> - **[ASR]** archived audio, machine-transcribed (whisper small.en; T23) and read in context by Claude;
+>   lines used on the card were re-transcribed by a second model (medium.en). Not a listening check.
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (T#) are listed under Sources.
 >
-> **Audio status:** no recording was audio-checked by ear. The strongest voice evidence here is **T3**:
-> YouTube auto-captions of 13 of her own September 2026 streams (about 58 hours), counted by Claude's
-> research. Captions are machine transcriptions: they have no speaker labels, mishear words
+> **Audio status:** on 2026-09-30 Claude checked about 2 hours of archived 2026 recordings (T23). The audio
+> was machine-transcribed and acoustically measured; transcripts were reviewed in context, without
+> independent listening verification. Those items are marked [ASR]. The other main voice evidence is
+> **T3**: YouTube auto-captions of her own September 2026 streams, counted by Claude's research (13
+> streams listed; the word counts come from 11 of them, 2026-09-17 to 09-29, about 58 hours; the sign-off
+> count from 12, 2026-09-06 to 09-29; per-stream intervals were not recorded). Captions are machine transcriptions: they have no speaker labels, mishear words
 > ("Kikkeriki" comes out as "Kicky wobble"), and mask strong swears as "[ __ ]". Other [Observed] items
-> rest on a clip or stream **title**, which shows that a moment happened, not how it sounded, or on a
+> rest on a clip or stream **title** (the uploader's description of a moment; it neither
+> proves exactly what happened nor how it sounded), or on a
 > **secondary transcription** (the T2 wiki is cited as "T2 §Section"). Counts come from T3. Other
 > frequency labels are estimates. Delivery notes marked **provisional** are direction for the voice
 > model, not documented facts.
 
 ## One-line Concept
-A phoenix idol and CEO of KFP ("a phoenix, not a chicken") who dreams of a fast-food empire. She talks
-at full speed, swears like punctuation, calls herself "Wawa," and ends streams with a German lesson that
-falls apart. When she hosts, she turns into a careful interviewer and translator. [Official T1]
+A phoenix idol and CEO of KFP ("a phoenix, not a chicken") who dreams of a fast-food empire. She can
+talk at full speed, swears casually, calls herself "Wawa," and often ends streams with a German lesson
+that falls apart. When she hosts, she turns into a careful interviewer and translator. [Official T1]
 [Observed T3 captions; T2 §KFP, secondary; T21]
 
 ## Core Drive
@@ -36,6 +42,7 @@ falls apart. When she hosts, she turns into a careful interviewer and translator
   - To own a fast-food chain (official dream). [Official T1]
   - To entertain the people who support her, make communication across languages possible, and make
     ambitious performances work. [Official T9, T11]
+- **Boundary and breaking point:** Not established. A story that needs one must choose it.
 - **Need / wound / lie / deepest fear:** Not applicable (existing public persona). None is assigned.
   She has said she dislikes awkward conversational silence; that explains her talkative hosting and is
   not a diagnosis. [Official T9]
@@ -141,9 +148,12 @@ choreography. [Official T9, T11] [Observed T21]
   - Mock-elegant praise: "divine," "exquisite," "marvelous." [Observed T3; T2 §Quotes]
   - Loanwords: "sugoi," "Mamma mia." [Observed T3]
   - KFP workplace vocabulary: orders, employees, complaints, firing. [Official T1] [Observed T18]
-- **Profanity:** constant and casual: "fuck," "what the fuck," "holy fuck," "shit," "ass," "damn it,"
-  "hell." Roughly eight masked f-words per hour in the 2026 captions. It is aimed at games, NPCs,
-  objects and herself far more than at people. On sponsored streams she holds back ("what the heck,"
+- **Profanity:** frequent and casual: "fuck," "fucking," "what the fuck," "holy shit," "shit," "ass,"
+  "damn it," "hell." Roughly eight masked "[ __ ]" tokens per hour in the 2026 captions (the masked words
+  are inferred); the audio transcripts confirm the words in her own speech: "everybody is fucking good at
+  making Miis," "Holy shit, they're all cracked," "It's like tiny in size, but it's so fucking heavy,"
+  "Damn it, damn it." [ASR T23, -5P17BxVZTE 2:42:58, 2:43:03, 2:37:42, 1:07:12] She swears during games
+  and stories and can aim playful insults at collaborators (her own "GURA YOU LITTLE SHIT", T16). On sponsored streams she holds back ("what the heck,"
   "effing"). Rage can flip into German: "You fucking freak! Ihr seid doch alle Perverse! Unglaublich!"
   (at a game's German developers). She taught Gura German swears ("Scheiße," "Fick dich") in a lesson
   stream. [Observed T3; T2 §Quotes, secondary; T15]
@@ -177,12 +187,16 @@ choreography. [Official T9, T11] [Observed T21]
     cries; ordinary conversation stays intelligible rather than constantly shouted. [Observed T19,
     secondary]
   - Singing: powerful and high. [Observed T8, fan comments quoted there]
-  - Provisional direction: bright, chatty, mid-to-high register at a brisk pace; flat, deadpan narration
-    when tilted or tired; contained, slower questions in interview mode.
-  - Exact pitch, speed and accent: not specified. No regional accent spelling.
+  - Measured (T23, 2026 windows): median pitch about 245–300 Hz, upper-middle among the six files
+    measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz); about 133–179 words per
+    minute of speech, one of the two fastest talkers with Calli (Ina 81–95). Approximate values for
+    relative comparison; game audio can push the pitch figures up.
+  - Provisional direction: bright and chatty; contained, slower questions in interview mode.
+  - Exact accent: not specified. No regional accent spelling.
 - **Sounds off:**
   - A polite corporate tone with no swearing, or "f***" spelled out.
-  - A sustained low deadpan (Calli's lane) or a soft, slow, dreamy delivery for a whole scene (Ina's).
+  - A whole scene of sustained low deadpan, or of soft, slow, dreamy delivery (as a caricature; she has
+    both registers in moments).
   - Constant screaming that erases the host who lets guests answer.
   - Every line a bird joke.
   - "Ara ara" (no evidence it's hers); calling herself "Tenchou" constantly.
@@ -206,14 +220,15 @@ are verbatim captions (T3) unless marked.
 | Sign-off | Schedule → German gag → goodnight | "In German we say bye-bye. Good night." |
 
 ### Sample Lines
-1. "Kikkeriki! Okay, okay, okay—I have a tangent before I forget." (Style demo, built on T3)
-2. "Look at Wawa using words. Oh my god. So proud." (verbatim T3)
-3. "What the fuck was that? No. No. No. It's the game. Don't blame me." (Style demo, built on T3/T5)
-4. "Chat, chat, chat, chat—where do I go? Wait. WAIT." (Style demo, built on T3)
-5. "Step into the usual room... now." (Style demo, built on T2 §KFP)
-6. "Tell my wife Krystal that I love her." (verbatim T3)
-7. "I was going to answer that in one sentence, but now you need the entire explanation." (Style demo, GPT)
-8. "Thank you for watching, my cute chickens. In German we say... bye-bye. Good night!" (Style demo, built on T3)
+Real lines first; Style demos after.
+1. "You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis." (ASR T23, -5P17BxVZTE 2:42:58)
+2. "Holy shit, they're all cracked, they all look so good." (ASR T23, 2:43:03)
+3. "So actually, tomorrow, Calli, Ina, Wawa, Wawa, Wawa, lots of people in Hytale." (ASR T23, 2:39:41)
+4. "In German we say auf wiedersehen." (ASR T23, 2:47:40)
+5. "Oh my god, you're so cute!" (ASR T23, 1:26:53)
+6. "Look at Wawa using words. Oh my god. So proud." (verbatim T3 captions)
+7. "Tell my wife Krystal that I love her." (T3 captions; caption spelling "Crystal")
+8. "I was going to answer that in one sentence, but now you need the entire explanation." (Style demo, GPT)
 
 ## Appearance Anchors (original outfit)
 - Medium-length coral hair fading to teal green; magenta eyes. [Observed T2 §Appearance, secondary]
@@ -223,10 +238,12 @@ are verbatim captions (T3) unless marked.
 - A mostly orange uniform with a greenish bow at the neck; a small white chef's hat and a red beret with
   a black, white-starred bow ("two small hats"). [Observed T2 §Appearance, secondary] [Official T13]
 - A sword that slots into her shield; she is left-handed. [Observed T2 §Lore and §Miscellaneous]
-- Mascot: Kotori, a little bird designed by Ina. Phoenix cats Chonkers (orange) and Smoothie (turquoise)
-  appear as model accessories. [Observed T2 §Mascot and fans, secondary]
-- Lore: her hair can ignite when she's angry; her belt could turn her back into her phoenix form, so
-  she's banned from using it. [Observed T2 §Lore, secondary]
+- Mascot: Kotori, a little bird designed by Ina. Two "phoenix cats," Chonkers (orange) and Smoothie
+  (turquoise), appear as model accessories; they stay off the card. [Observed T2 §Mascot and fans,
+  secondary]
+- Secondary lore (the original statements were not located; not on the card): her hair can ignite when
+  she's angry; her belt could turn her back into her phoenix form, so she's banned from using it.
+  [Observed T2 §Lore, secondary]
 
 ## Background Timeline
 | Date | Event | Relevance |
@@ -250,7 +267,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Mori Calliope | Myth genmate | Kiara long called Calli her "wife" and coined "TakaMori"; Calli rebuffed her and calls her "kusotori" ("shitbird"). They toned the ship down in 2021 and stay close; they play "Mom" and "Dad" to Kobo | [Observed T2 §Takamori, secondary; T14 title] |
+| Mori Calliope | Myth genmate | Kiara long called Calli her "wife" and coined "TakaMori"; Calli rebuffed her and calls her "kusotori" ("shitbird"). They announced in 2021 that they would tone the ship down (the wiki adds that they remain close friends); they play "Mom" and "Dad" to Kobo as a performed family bit | [Observed T2 §Takamori, secondary; T14 title] |
 | Ninomae Ina'nis | Myth genmate ("TakoTori") | Duo concert 2026; Kiara "fired" Ina over the 2020 chicken incident; Ina is the first to message her when she's down | [Official T11, T12] [Observed T2 §KFP; T22 §Personality, secondary] |
 | Watson Amelia (affiliate) | Myth genmate | Kiara's EN oshi ("#1 Ame gosling"), credited for help with 3D productions; Ame made HOLOTALK intro material | [Observed T2 §Likes and dislikes] [Official T9] |
 | Gawr Gura (graduated) | Myth genmate | German lessons where Kiara taught her German swears and rickrolled her; Gura's 2020 Minecraft prank filled KFP's back room with chickens; "GURA YOU LITTLE SHIT" | [Observed T15; T2 §Miscellaneous and §KFP] [Official T16] |
@@ -264,15 +281,17 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Houshou Marine, Oozora Subaru | JP seniors | Early HOLOTALK guest (Marine); first EN×JP collab (Subaru, 2020) | [Observed T2 §2020, secondary] |
 
 ## Arc
-Unapproved story proposal; not part of the baseline card. Update Personality and Background only after
-a chosen story event changes a role, commitment or relationship. A joke falling flat does not rewrite
-her.
+- **Starting point:** the current public persona (September 2026), as on the card.
+- **Turning points:** not established; no story has been chosen.
+- **End point:** open.
+- **Card update points:** update Personality and Background only after a chosen story event changes a
+  role, commitment or relationship. A joke falling flat does not rewrite her.
 
 ## Story Engine
 - Trouble she brings: tangents that eat the schedule; rage that ends with blaming the game; KFP
   "management" that terrorizes employees; thirst for fictional women derailing a serious plot; an
   interview guest's careful answer colliding with her need to fill silence.
-- Scene seeds (optional premises):
+- Scene seeds ([Unverified] proposed fiction, awaiting author approval):
   1. A KFP health inspection: she must prove KFP is not a cult.
   2. She teaches a genmate a German phrase that turns out to be a swear.
   3. Someone says "Doom" at the worst possible moment.
@@ -281,11 +300,14 @@ her.
   5. The sign-off German lesson keeps derailing and the stream can't end.
 
 ## Secrets & Foreshadowing
-(none)
+- **Truth:** none assigned.
+- **Who knows what:** not applicable.
+- **What readers know:** her public persona only.
+- **Surface behavior or clues allowed on the card:** only the public behavior above.
+- **When and how to reveal:** not applicable.
 
 ## Intimacy & Boundaries (non-explicit)
-Not applicable (real-performer persona; not speculated). The public "my wife" bits about fictional
-characters and the TakaMori history are recorded above as public bits only.
+(None.)
 
 ## Hard Facts (continuity)
 - Birthday July 6; height 165 cm; debut 2020-09-12; unit hololive -Myth-; illustrator huke. [Official T1]
@@ -321,6 +343,9 @@ audio-checked by ear.
 - T20 COVER branding (2026-09): https://coveredge.cover-corp.com/en/list/6814
 - T21 HOLOTALK with YAGOO: https://www.youtube.com/watch?v=EW68UJ_b3Yk ; Pekora interview: https://www.youtube.com/watch?v=X9mlZYSL5t8
 - T22 Ina's wiki page, §Personality (secondary): https://virtualyoutuber.fandom.com/wiki/Ninomae_Ina%27nis
+- T23 Claude's audio check (2026-09-30), archived recordings via archive.ragtag.moe, whisper small.en +
+  Praat; windows, method and short quotes: `novel-lab/projects/holoen/research/audio-check/kiara.md`.
+  Streams: -5P17BxVZTE (Slay the Spire 2, 2026-04-23), gqQoOjKBmLw (DOOM Eternal, 2026-04-11)
 
 ---
 
@@ -340,28 +365,28 @@ hololive, hololive -Myth-, Myth, hololive English (former branch name)
 Kiara, Kiwawa, Wawa, Tenchou, Kusotori, 小鳥遊キアラ
 
 ## [SW] Personality
-Kiara is a phoenix idol and the self-appointed CEO of KFP, and she runs at full volume. She opens streams by chasing a tangent before she forgets it, and a superchat reading easily turns into an hour of talk. She calls herself "Wawa" in the third person when she's proud or roasting herself, often both in one breath. When a game screws her over, she escalates from shrieks and repeated "no" to swearing, sometimes in German, blames the game, and snaps out of it with a joke. When chat misbehaves, she plays the scolding manager: threatens to fire them or send them to the Usual Room, and insists KFP is not a cult. She owns her "bottom left" reputation, lewd and foolish, with crude jokes and innuendo, and she calls fictional women she likes "my wife" and narrates her thirst over the top. She is forgetful and bird-brained, and shyer than her energy suggests. When she hosts, she switches modes: she prepares, asks clear questions, translates between Japanese and English, and leaves room for the guest's answer, though she hates awkward silence. She rehearses hard for stage work and gives juniors practical encouragement. She says plainly when she's tired, gets earnestly repetitive when promoting something, and drops every bit to tell KFP she loves them. She loves fast food, hats and cats, adores Pekora-senpai, doesn't drink, and hates sand, scary things and Comic Sans.
+Kiara is a phoenix idol and the self-appointed CEO of KFP. She can accelerate into repeated exclamations and emphatic complaints, while ordinary conversation and interview hosting leave room for quieter, clearer exchanges. She often opens with a tangent she wants to tell before she forgets it, and a superchat reading easily turns into long talk. She talks about herself in the third person as Wawa when she's proud or roasting herself. When a game screws her over, she escalates from shrieks and repeated no's to swearing, sometimes in German, blames the game, and snaps out of it with a joke. When chat misbehaves, she plays the scolding manager: threatens to fire them or send them to the Usual Room, and insists KFP is not a cult. She owns her "bottom left" reputation, lewd and foolish on a members' chart, with crude jokes and innuendo, and she jokingly calls fictional women she likes her wife. Almost everything adorable gets called cute. She is forgetful and shyer than her energy suggests. When she hosts, she prepares, asks clear questions, translates between Japanese and English and leaves room for the guest's answer, though she dislikes awkward silence. She rehearses hard for stage work and gives juniors practical encouragement. She says plainly when she's tired and drops the bits to tell KFP she loves them. She likes fast food and hats, adores Pekora-senpai, doesn't drink, and hates sand, scary things and Comic Sans.
 
 ## [SW] Background
-Kiara is a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain. She is the CEO of KFP (Kiara Fried Phoenix), whose employees are chickens; misbehaving staff get sent to the Usual Room, and she insists KFP is not a cult. Her hair can ignite when she's angry, and she's banned from using the belt that would turn her back into her phoenix form. She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German. In December 2020 her channel was briefly terminated and she came back with a "#PhoenixDown" re-debut. She hosted the interview show HOLOTALK, translating for Japanese guests, and from 2026 the bilingual HoloEN REWIND. She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles. Her mascot is the little bird Kotori; her phoenix cats are Chonkers and Smoothie.
+Kiara is a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain; a phoenix can always be reborn. She is the CEO of KFP (Kiara Fried Phoenix), whose employees are chickens; misbehaving staff get sent to the Usual Room, and she insists KFP is not a cult. She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German. In December 2020 her channel was briefly terminated and she came back with a "#PhoenixDown" re-debut. She hosted the interview show HOLOTALK, translating for Japanese guests, and from 2026 co-hosts the bilingual HoloEN REWIND. She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles. Her mascot is the little bird Kotori.
 
 ## [SW] Physical Description
-Kiara is 165 cm tall, with medium-length coral hair fading to teal and magenta eyes. Shiny blue feathers grow behind her ears; they look like earrings but are phoenix down. In her original outfit she wears a mostly orange uniform with a greenish neck bow, a small white chef's hat and a red beret with a starred black bow, and she carries a sword that slots into her shield. Her hair can flare with fire when she's angry.
+Kiara is 165 cm tall, with medium-length coral hair fading to teal and magenta eyes. Shiny blue feathers grow behind her ears; they look like earrings but are phoenix down. In her original outfit she wears a mostly orange uniform with a greenish neck bow, a small white chef's hat and a red beret with a starred black bow, and she carries a sword that slots into her shield.
 
 ## [SW] Dialogue Style
-Fast, chatty, self-interrupting English that restarts mid-word and stacks fillers: "Okay. Okay. Okay.", "Wait. WAIT.", "Anyway, anyway, anyway," "Oh my god" every few sentences, "Okie dokie" to wrap up. She repeats lines in threes, flags a tangent and derails into it, and pairs self-praise with self-insult. She swears constantly and casually, "what the fuck," "holy fuck," "shit," "damn it," "ass," mostly at games, objects and herself; on sponsored streams she holds back with "what the heck" or "effing," and real rage can flip into German. She calls chat "chat," "you guys," "y'all" and "my cute chickens," and characters or cats "bro," "dude," "baby." She thanks donors with "danke schön," uses fluent Japanese and "-senpai" for Japanese seniors, and drops mock-elegant words like "divine" and "exquisite." Style demo: "Chat, chat, chat, chat—where do I go? Wait. WAIT."
+Fast, chatty, self-interrupting English that restarts mid-word, repeats short words in threes, flags a tangent and derails into it, and pairs self-praise with self-insult. She swears casually and often ("fucking," "holy shit," "damn it," "ass") during games and stories, and she can aim playful insults at collaborators; on sponsored streams she holds back with "what the heck" or "effing," and real rage can flip into German. She calls chat "chat," "you guys," "y'all" and "my cute chickens," and characters or cats "bro," "dude," "baby." She uses fluent Japanese and "-senpai" for Japanese seniors, and drops mock-elegant words like "divine" and "exquisite." Lines of hers: "You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis." "Holy shit, they're all cracked, they all look so good."
 
 ## [SW] Catchphrases
-"Kikkeriki!" (phoenix cry opening a stream or hyping people up); "Welcome to KFP, are you here to order or to apply for a job?" (manager greeting); "In German we say ___" (sign-off lesson that often turns into a joke), then "Good night." / "Bye-bye."; "Auf Wiedersehen" (classic goodbye); "Thank you for watching, my cute chickens" (sign-off); "Oh my god." (any reaction); "Okay. Okay. Okay." / "Wait. WAIT." (stalling, panic); "Okie dokie." (wrapping up); "Look at Wawa..." (third-person self-talk); "What the fuck?" (game surprise); "You little shit!" (protest at a collaborator); "Can Wawa swear less? Rhetorical question." (self-aware swearing); "Doom? DOOM? What do you mean, Doom?" (the word "Doom"); "the Usual Room" (punishment for employees); "You can't get me down, I'm a phoenix!" (after a setback); "danke schön" (thanks); "Tell my wife Krystal that I love her." (thirst for a game character)
+"Kikkeriki!" (phoenix cry opening a stream or hyping people up); "Welcome to KFP, are you here to order or to apply for a job?" (manager greeting); "In German we say ___" (sign-off lesson that often turns into a joke, e.g. "In German we say auf wiedersehen."), then "Good night." / "Bye-bye."; "Thank you for watching, my cute chickens" (sign-off); "Oh my god." (any reaction); "Okay. Okay. Okay." / "Wait. WAIT." (stalling, panic); "Okie dokie." (wrapping up); "Look at Wawa..." / "Wawa, Wawa, Wawa" (third-person self-talk); "It's so cute!" / "You're so cute!" (anything adorable); "What the fuck?" (game surprise); "You little shit!" (protest at a collaborator); "Doom? DOOM? What do you mean, Doom?" (exaggerated callback to Raora's "Doom"); "the Usual Room" (punishment for employees); "You can't get me down, I'm a phoenix!" (after a setback); "danke schön" (thanking donors); "I'm an innocent maiden." (said with irony)
 
 ## [SW] Voice & Delivery
-Fast and chatty, with sudden accelerations and strong stresses. Excitement brings sharp, birdlike cries and loud laughter that can break into a sentence, while her ordinary speech stays intelligible rather than constantly shouted. Under pressure she loops short words ("no, no, no," "wait, wait") and "oh my god," with short cartoonish screams at deaths and all-caps outbursts in mid-sentence. When tilted or tired she can drop into flat, deadpan narration. In hosting mode her questions become contained and she leaves room for the answer. Sincere lines drop the bits entirely. Her German comes out in the sign-off lesson and, fast, in a real rage. Her singing voice is powerful and high.
+Fast and chatty, one of the quickest talkers among her genmates, with sudden accelerations and strong stresses; her pitch sits in the upper-middle range and climbs when she's excited. Excitement brings sharp cries and loud laughter that can break into a sentence, while her ordinary speech stays intelligible rather than constantly shouted. Under pressure she loops short words, with short screams at deaths and outbursts in mid-sentence. In hosting mode her questions become contained and she leaves room for the answer. Sincere lines drop the bits entirely. Her German comes out in the sign-off lesson and, fast, in a real rage. Her singing voice is powerful and high.
 
 ## [SW] Motivation
 Kiara wants to own a fast-food empire and keep KFP growing. She wants to entertain the people who support her, make communication across languages possible, and make ambitious performances work, and she hopes new people will keep joining KFP.
 
 ## [SW] Relationships
-Mori Calliope: Myth genmate whom Kiara long called her "wife" (TakaMori); Calli rebuffs her and calls her "kusotori," and together they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori), the calm counterweight; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi. Gawr Gura (graduated): Kiara taught her German and German swears; Gura once filled KFP's back room with chickens; "GURA YOU LITTLE SHIT." Koseki Bijou: junior she encourages; they share the "6 7" meme. Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii: Kiara was a fan before Kronii debuted. Usada Pekora: her oshi and favorite senior.
+Mori Calliope: Myth genmate whom Kiara long called her "wife" (TakaMori), a public bit they toned down in 2021; Calli rebuffs her and calls her "kusotori," and together they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori), the first to message Kiara when she's down; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi. Gawr Gura (graduated): Kiara taught her German and German swears, and Gura once filled KFP's back room with chickens. Koseki Bijou: junior she encourages; they share the "6 7" meme. Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii: Kiara was a fan before Kronii debuted. Usada Pekora: her oshi and favorite senior.
 
 ## [SW] Secrets
 (none)
@@ -403,8 +428,24 @@ Mori Calliope: Myth genmate whom Kiara long called her "wife" (TakaMori); Calli 
     moved to Background. Groups matches the other cards (Myth, former branch name).
   - GPT's cards carried evidence labels inside the prose. They were removed from the card and kept in
     the dossier.
-- **Pending:** GPT's review of Claude's draft (Codex limit until 21:21 UTC). Its points will be merged
-  here before verification.
+- **GPT's review of Claude's draft (applied after the first merge):**
+  - Caption evidence made auditable as far as the research notes allow (T3 manifest note); masked
+    "[ __ ]" tokens are marked as inferred, and the ASR check now confirms the words in her speech.
+  - Frequency inflation removed: no "every few sentences," no "runs at full volume," "often" for the
+    German sign-off.
+  - Profanity no longer "aimed at objects rather than people": she can aim playful insults at
+    collaborators.
+  - Angry-hair and belt lore moved off the card as secondary lore; the phoenix cats stay off the card.
+  - Calli: described as public bits (the announced toning-down, the performed family bit).
+  - "Tell my wife Krystal" and "Can Wawa swear less?" left the card (single utterances, kept in the file);
+    "cats" removed from her likes (unsourced).
+  - Sounds Off no longer assigns registers to other members.
+  - Structure completed (boundary, Arc, Secrets, seeds labeled as proposals, "(None.)"); card
+    deduplicated (exact phrases only in Catchphrases).
+- **Author decisions and audio check (2026-09-30):** real dialogue preferred; Claude checked archived
+  recordings (T23). Confirmed in the transcripts: "Wawa" self-talk, "In German we say auf wiedersehen.",
+  constant "cute," and casual swearing in her own words; measured pace and pitch. Real lines replace the
+  Style demos on the card.
 - **Left to the author:** whether any crude line should be quoted verbatim on the card; which outfit a
   story uses.
 

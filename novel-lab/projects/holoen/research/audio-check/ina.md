@@ -2,7 +2,10 @@
 
 Method: short windows from the public stream archive archive.ragtag.moe (YouTube blocks this
 environment), transcribed with faster-whisper small.en, pitch measured with Praat (100–600 Hz, word
-intervals only). Tools and limits: `novel-lab/tools/audiocheck/README.md`. Machine transcription, read
+intervals only). Tools and limits: `novel-lab/tools/audiocheck/README.md`. **This is not a listening check**: the audio was
+machine-transcribed and acoustically measured, and the transcripts were reviewed in context. Lines used on
+the character card were re-transcribed by a second model (whisper medium.en) and compared (see the end of
+this file). Machine transcription, read
 in context; it drops some fillers and does not write "WAH" reliably or non-speech sounds. The 2026 chat
 stream (we8TkYC7__0) is the same stream Claude's earlier caption study (I3) used, so this is an audio
 cross-check of those caption quotes.
@@ -18,7 +21,7 @@ cross-check of those caption quotes.
 
 ## Claims checked
 
-| Claim in the file | Result | Evidence (audio) |
+| Claim in the file | Result (in the machine transcript) | Evidence (ASR, archived audio) |
 |---|---|---|
 | Opening: "Good morning, afternoon, evening, everyone." → "Could this be Tako time?" → "It is indeed Tako time." | **Confirmed** (whisper spells it "taco time"). The caption quote was right. | [0:02:43](https://youtu.be/we8TkYC7__0?t=163), "it is indeed taco time" [0:03:03](https://youtu.be/we8TkYC7__0?t=183) |
 | Sign-off: "have a wonderful rest of the morning, afternoon, evening… until next time" with "We'll see." | **Confirmed.** | "Anyways, I do have to start getting ready soon." [1:35:17](https://youtu.be/we8TkYC7__0?t=5717); "have a wonderful rest of the morning afternoon evening" [1:36:42](https://youtu.be/we8TkYC7__0?t=5802); "we'll see… anyway thank you until next time" [1:37:06](https://youtu.be/we8TkYC7__0?t=5826) |
@@ -29,7 +32,7 @@ cross-check of those caption quotes.
 | Profanity near zero | **Consistent.** No swearing in her own words in these windows (the only "hell" hits are "Hell Flame"). | — |
 | Soft, unhurried voice | **Confirmed, relative.** The slowest speaker of the six (81–95 words per minute of speech); median F0 223–232 Hz, in the middle of the group (Kronii 177–188, Gura and Ame about 250–270). "Mid-to-low" is therefore too low; "mid" fits. | table above |
 
-## New material (audio-verified short lines)
+## New material (ASR-transcribed short lines)
 
 - "I literally woke up and turned on stream." [1:35:30](https://youtu.be/we8TkYC7__0?t=5730)
 - "Anyways, I do have to start getting ready soon." [1:35:17](https://youtu.be/we8TkYC7__0?t=5717)

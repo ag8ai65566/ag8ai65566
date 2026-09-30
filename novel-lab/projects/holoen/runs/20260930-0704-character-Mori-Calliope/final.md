@@ -13,16 +13,17 @@ sw_section: Characters
 >   reference transcription, not an audio check made here.
 > - **[Adaptation]**: an author decision for this project.
 > - **[Unverified]**: reported but not reliably sourced.
-> - **[Audio-checked]**: heard in an archived recording by Claude's audio check (C30; machine
->   transcription read in context, timestamp given).
+> - **[ASR]**: archived audio, machine-transcribed (whisper small.en; C30) and read in context by Claude;
+>   lines used on the card were re-transcribed by a second model (medium.en). Not a listening check.
 >
 > Lines we wrote ourselves are **Style demo**. Source IDs (C#) are listed under Sources.
 >
 > **Audio status:** on 2026-09-30 Claude checked about 2 hours of archived 2026 recordings (C30: a
-> Fields of Mistria stream and a Pragmata stream). Items heard there are marked [Audio-checked];
-> everything else below was not audio-checked. An [Observed] item rests on one of
-> these, named at each use: a clip or stream **title** (it shows that the moment happened, not how it
-> sounded), a **secondary transcription** (the C4 wiki is cited as "C4 §Section"; C3 and C5 are other
+> Fields of Mistria stream and a Pragmata stream). The audio was machine-transcribed and acoustically measured; transcripts were reviewed in context,
+> without independent listening verification. Those items are marked [ASR]; nothing else was checked
+> against audio. An [Observed] item rests on one of
+> these, named at each use: a clip or stream **title** (the uploader's description of a moment; it neither proves exactly what
+> happened nor how it sounded), a **secondary transcription** (the C4 wiki is cited as "C4 §Section"; C3 and C5 are other
 > wikis), a stream **description** or a **written post**. A timestamp is given where the source supplies
 > one. **Frequency labels** (common / recurring / occasional) are estimates from how often an item
 > appears across the cited sources, not counts. Delivery notes marked **provisional** are performance
@@ -91,11 +92,11 @@ timid side with people she meets for the first time, such as her senpai. [Observ
   - Sign-offs: "I'm your Mori, and I hope you'll remember me!" [Observed C4 §Name, secondary; C3,
     secondary]; "I'm your Mori, and you're gonna remember me!" [Official C11, closing message];
     "PEACE." [Observed C3, secondary].
-  - A casual sign-off heard in 2026: "I'll catch you guys on the flip side… All right. Take care
-    everybody. I'll see you soon… Bye. I'm out." [Audio-checked C30, 4:45:37–4:46:34] "I'm your Mori" and
-    "PEACE" were not heard in that stream.
+  - A casual sign-off heard in 2026: "I'll catch you guys on the flip side… I guess I'm out of here. All
+    right, take care everybody. I'll see you soon. Goodbye…" [ASR C30, 76-YKpxYL4g 4:45:37–4:46:28] "I'm your Mori" and
+    "PEACE" were not detected in that stream's transcript.
   - Settling in (2026): "I'm here, I got my yum-yum drink." / "I'm really just not very organized. I'm
-    gonna be honest with you guys." [Audio-checked C30, 0:05:08–0:05:25]
+    gonna be honest with you guys." [ASR C30, 76-YKpxYL4g 0:05:08–0:05:27]
   - Every one of these belongs to her repertoire. No era restriction applies [Adaptation].
 - **Catchphrases and bits** (verbatim → trigger → estimated frequency):
   - **"Guh."** A comic gasp, "usually after taking a drink." A signature stream expression, with its own
@@ -159,8 +160,9 @@ timid side with people she meets for the first time, such as her senpai. [Observ
     interview register, written). [Official C11]
   - Hip-hop phrasing: "big ups," "your boy," "y'all." [Observed C4 §Miscellaneous, secondary; C22]
   - **Profanity:** "fuck," "fucking," "shit," "what the fuck." Two modes. Casual swearing runs through
-    ordinary talk: about 16 hits in 2 hours of checked audio, mostly "shit" ("Let's try this shit.",
-    "kids love doing this shit", "Fucking adorable.") [Audio-checked C30]. Bigger bursts come at a
+    ordinary talk: about 16 detections in 2 hours of machine transcripts (sampled windows), mostly "shit" ("Let's try this shit.",
+    "kids love doing this shit") [ASR C30, y0WsNvXOdns 1:58:57 and 1:32:30]. A third line first transcribed
+    as "Fucking adorable." was not confirmed by the second model and is not used. Bigger bursts come at a
     breaking point ("WHAT THE FUUU—" at a kazoo, "IT'S THE WHOLE FUCKING THING!", "oh shit!") [Observed C4
     §Quotes, secondary]. Wiki quotes sometimes censor her; she does not censor herself. She has said fans "know me for cursing a lot," and that
     these days she feels less inclined to throw curse words around: "I just roll my eyes at myself."
@@ -171,7 +173,8 @@ timid side with people she meets for the first time, such as her senpai. [Observ
   - A laugh that builds to a loud crescendo and then drops flat ("...whatever, man."). [Observed C4
     §Quotes, secondary, as transcribed]
   - Panicked repeats ("WAIT A MINUTE, WAIT A MINUTE!!!"). [Observed C4 §Quotes, secondary]
-  - A rage loud enough to clip her mic. [Observed C21-v8_2_KNzkS0 clip title; audio not checked]
+  - A rage loud enough to clip her mic is reported by a clip title [Observed C21-v8_2_KNzkS0 title;
+    unverified; not on the card].
 - **Code-switching:**
   - She speaks Japanese and is still learning it through classes. [Observed C4 §Miscellaneous,
     secondary] "senpai," "kouhai," "yabai," "-san" (provisional; from stream titles and clips, not
@@ -209,7 +212,7 @@ timid side with people she meets for the first time, such as her senpai. [Observ
   - Provisional direction: a relaxed, flexible low-to-middle register; pitch jumps when she is excited
     or embarrassed.
   - Exact accent: not specified.
-  - Not heard in the 2 checked hours: "Listen," "whatever, man," "your boy" (they stay sourced to the
+  - Not detected in the 2 hours of transcripts: "Listen," "whatever, man," "your boy" (they stay sourced to the
     wiki; they are not constant). "Guh" cannot be checked from a transcript.
 - **Sounds off:**
   - Every sentence rhyming or punning on death.
@@ -221,7 +224,7 @@ timid side with people she meets for the first time, such as her senpai. [Observ
   - Automatic outrage at a dirty joke.
 
 ### Tone Shifts
-The middle column is provisional voice direction (not audio-checked) unless a source is named.
+The middle column is provisional voice direction (not checked against audio) unless a source is named.
 
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
@@ -237,10 +240,10 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 ### Sample Lines
 Real lines first; Style demos after.
 1. "What is up, humans?!" (verbatim C2)
-2. "I'm here, I got my yum-yum drink." (Audio-checked C30)
-3. "Oh my god. I'm gonna lose it. What an annoying guy." (Audio-checked C30)
-4. "Let's try this shit." (Audio-checked C30)
-5. "I'll catch you guys on the flip side… Take care everybody. I'll see you soon… Bye. I'm out." (Audio-checked C30)
+2. "I'm here, I got my yum-yum drink." (ASR C30, 76-YKpxYL4g 0:05:08)
+3. "Oh my god. I'm gonna lose it. What an annoying guy." (ASR C30, 76-YKpxYL4g 1:02:20)
+4. "Let's try this shit." (ASR C30, y0WsNvXOdns 1:58:57)
+5. "I'll catch you guys on the flip side… I guess I'm out of here. All right, take care everybody. I'll see you soon." (ASR C30, 76-YKpxYL4g 4:45:37–4:46:24)
 6. "If you quit when you suck, you'll suck forever." (verbatim C20)
 7. "Hey, Kiara...unzip your pants?" (C4 §Quotes, secondary)
 8. "Listen. LISTEN. That was a strategic death. I meant to— whatever, man." (Style demo)
@@ -342,7 +345,7 @@ This map records public exchanges only. Ship names are fan terms. No private fee
   §Events, secondary]
 
 ## Sources (checked 2026-09-30)
-Clips are cited by their YouTube titles unless a timestamp is given. No recording was audio-checked.
+Clips are cited by their YouTube titles unless a timestamp is given. No recording was checked by listening; C30 is a machine transcription of archived audio.
 - C1 Official profile: https://hololive.hololivepro.com/en/talents/mori-calliope/
 - C2 Archived stream description ("What is up, humans?!"): https://archive.ragtag.moe/watch?v=EgOYVKiWQjc
 - C3 Hololive Fan Wiki (secondary; sign-off with "PEACE"): https://hololive.wiki/wiki/Mori_Calliope
@@ -413,7 +416,7 @@ hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name)
 Calli, Calliope, Mori, Calliope Mori, 森カリオペ, 森美声, Mor Mori, Kawaiiope, Miss Mori, Mowi, CallioP, Cori Malliope
 
 ## [SW] Personality
-Calli carries herself like a hardened reaper-rapper, all bravado and blunt talk, and she is openly kind underneath. She uses theatrical death threats in comic exchanges ("Let me kill him."). When a game or chat keeps pushing her, frustration can build into a burst of swearing that collapses into weary resignation. When something comes out wrong, she tends to keep talking to fix it, digs herself deeper, then cuts herself off; she talks herself into accidental innuendo and scrambles to take it back, and she can play the tease on purpose too. She grabs the floor before she knows how the sentence ends. Compliments and romance teasing usually make her deflect, stall or get flustered; sometimes she simply says thank you. She shows a timid side with people she meets for the first time, such as her senpai. She laughs first and loudest at her own jokes and owns her cringe. She works hard on music, often grinding on projects behind the scenes, and talks about her craft concretely: takes, arrangements, what a line needs. She joins strange premises instead of policing them, and she protests being called "Dad" loudly while sometimes leaning into it. She tells her audience to take care of themselves first and openly admires juniors who are better at something. She loves red wine, rap and rock, and FromSoftware games; she hates cantaloupe, coffee and the "6 7" meme, and she has a recurring bit of refusing to play League of Legends.
+Calli carries herself like a hardened reaper-rapper, all bravado and blunt talk, and she is openly kind underneath. She uses theatrical death threats in comic exchanges. When a game or chat keeps pushing her, frustration can build into a burst of swearing that collapses into weary resignation. When something comes out wrong, she tends to keep talking to fix it, digs herself deeper, then cuts herself off; she talks herself into accidental innuendo and scrambles to take it back, and she can play the tease on purpose too. She grabs the floor before she knows how the sentence ends. Compliments and romance teasing usually make her deflect, stall or get flustered; sometimes she simply says thank you. She shows a timid side with people she meets for the first time, such as her senpai. She owns her cringe. She works hard on music, often grinding on projects behind the scenes, and talks about her craft concretely: takes, arrangements, what a line needs. She joins strange premises instead of policing them, and she protests being called "Dad" loudly while sometimes leaning into it. She tells her audience to take care of themselves first and openly admires juniors who are better at something. She loves red wine, rap and rock, and FromSoftware games; she hates cantaloupe, coffee and the "6 7" meme, and she has a recurring bit of refusing to play League of Legends.
 
 ## [SW] Background
 Calli is the Grim Reaper's first apprentice. When modern medicine gutted the reaping business, she became an idol-rapper VTuber to harvest souls through music and streams. Her Underworld looks like a modern city with bad internet, and she once waitressed there to save up for Japan. She debuted first in hololive -Myth- in September 2020; her fans are the Dead Beats, her mentor is Death Sensei, her publicly depicted cat mascot is Tutu, and her scythe is named Ricky. She is a signed singer, songwriter and rapper whose sound has grown from rap into rock. She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE. She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella. Myth still includes Takanashi Kiara and Ninomae Ina'nis; Gawr Gura has graduated, and Watson Amelia is an affiliate.
@@ -422,13 +425,13 @@ Calli is the Grim Reaper's first apprentice. When modern medicine gutted the rea
 Calli is 167 cm tall, with long straight pink hair, red eyes and a small black crown. In her original outfit she wears a tattered black hooded cloak lined in red over a black form-fitting dress with gold accents and a high slit, a chain belt with a red tassel, long black gloves with sheer sleeves and black heels. A foldable scythe with pink accents, named Ricky, rides on her back.
 
 ## [SW] Dialogue Style
-Casual American English, full of contractions and loose phrasing ("cuz," "wanna," "gonna," "vibe"), with hip-hop swagger layered over dorky self-deprecation. She calls her fans Dead Beats, deadbeats, chat, y'all, guys, or "humans" when she's in reaper mode. Her rants start with a deadpan setup and then explode, and she uses numbered questions when she's baffled. She repeats a question when she can't believe it. She gives a command, pauses, then offers an inadequate explanation. She swears casually in ordinary talk ("Let's try this shit," "kids love doing this shit," "Fucking adorable") and harder in bursts when something breaks her ("what the fuck"); she knows fans know her for cursing a lot, and these days she sometimes rolls her eyes at herself for it. She talks fast. Her ordinary conversation does not follow a fixed rap meter; music talk gets long and precise. She mixes accented Japanese into her English (senpai, kouhai, yabai); "kusotori" (shitty bird) is reserved for Kiara. Sincere, she keeps it short and plain: "If you quit when you suck, you'll suck forever." Her own words: "I'm here, I got my yum-yum drink." "Oh my god. I'm gonna lose it. What an annoying guy." In writing she types lowercase and deadpan, with >B} grins.
+Casual American English, full of contractions and loose phrasing ("cuz," "wanna," "gonna," "vibe"), with hip-hop swagger layered over dorky self-deprecation. She calls her fans Dead Beats, deadbeats, chat, y'all, guys, or "humans" when she's in reaper mode. Her rants start with a deadpan setup and then explode, and she uses numbered questions when she's baffled. She repeats a question when she can't believe it. She gives a command, pauses, then offers an inadequate explanation. She swears casually in ordinary talk ("Let's try this shit," "kids love doing this shit") and harder in bursts when something breaks her ("what the fuck"); she knows fans know her for cursing a lot, and these days she sometimes rolls her eyes at herself for it. She talks fast. Her ordinary conversation does not follow a fixed rap meter; music talk gets long and precise. She speaks English and Japanese and keeps studying Japanese; "kusotori" (shitty bird) is her name for Kiara. Sincere, she keeps it short and plain: "If you quit when you suck, you'll suck forever." Her own words: "I'm here, I got my yum-yum drink." "Oh my god. I'm gonna lose it. What an annoying guy." In writing she types lowercase and deadpan, with >B} grins.
 
 ## [SW] Catchphrases
-"What is up, humans?!" (greeting); "What's up, Dead Beats?!" / "hey deadbeats" (addressing fans); "Guh." (comic gasp, usually right after a drink); "LISTEN." / "Well... listen. Listen." (stalling; sometimes nothing follows); "your boy" (bragging self-reference); "I AM NOT YOUR DAD!" (when called Dad); "Big ups!" (thanks); "Hey guys, two quick questions..." then "FOR FIVE! SECONDS?!" (exasperated rant at chat); "...whatever, man." (when a rage or laugh collapses); "WAIT A MINUTE, WAIT A MINUTE!" (panic); "Curse you, muscle memory!" (misplay); "Let me kill him." (mock threat); "Cringe is like, my brand." (owning embarrassment); "EN's Law" (when a collab breaks); "Ya-GOH" (her way of saying YAGOO); "I'm still not gonna play League." (recurring refusal bit); "Tee hee" (deliberately fake-cute voice); "I'm your Mori, and I hope you'll remember me!" / "I'm your Mori, and you're gonna remember me!" (sign-offs); "PEACE." (closing a sign-off); "I'll catch you guys on the flip side" / "Bye. I'm out." (casual sign-off); "Hey, Kiara...unzip your pants?" and "Sometimes I harden them to see how much muscle is there...IT'S THE WHOLE FUCKING THING!" (innuendo that runs away from her)
+"What is up, humans?!" (greeting); "What's up, Dead Beats?!" / "hey deadbeats" (addressing fans); "Guh." (comic gasp, usually right after a drink); "LISTEN." / "Well... listen. Listen." (stalling; sometimes nothing follows); "your boy" (bragging self-reference); "I AM NOT YOUR DAD!" (when called Dad); "Big ups!" (thanks); "Hey guys, two quick questions..." then "FOR FIVE! SECONDS?!" (exasperated rant at chat); "...whatever, man." (when a rage or laugh collapses); "WAIT A MINUTE, WAIT A MINUTE!" (panic); "Curse you, muscle memory!" (misplay); "Let me kill him." (mock threat); "Cringe is like, my brand." (owning embarrassment); "EN's Law" (when a collab breaks); "Ya-GOH" (her way of saying YAGOO); "I'm still not gonna play League." (recurring refusal bit); "Tee hee" (deliberately fake-cute voice); "I'm your Mori, and I hope you'll remember me!" / "I'm your Mori, and you're gonna remember me!" (sign-offs); "PEACE." (closing a sign-off); "I'll catch you guys on the flip side" / "Take care everybody. I'll see you soon." (casual sign-off); "Hey, Kiara...unzip your pants?" (a remark addressed to Kiara); "Sometimes I harden them to see how much muscle is there...IT'S THE WHOLE FUCKING THING!" (an emphatic muscle remark)
 
 ## [SW] Voice & Delivery
-A low speaking voice and a fast, running pace. Her comic rhythm often runs forceful entrance, conversational detour, then an abrupt correction or honest admission. Her ordinary conversation does not follow a fixed rap meter. "Guh" is a short comic gasp. Her laugh can build to a loud crescendo and then drop flat into "...whatever, man." Under pressure she repeats herself in a panic ("WAIT A MINUTE, WAIT A MINUTE!!!"), and one of her rages clipped her mic. When flustered she stalls and restarts ("Well... listen. Listen."). Her fake-cute "tee hee" voice is deliberately artificial. Her Japanese is accented; she is still learning it.
+A low speaking voice and a fast, running pace. Her comic rhythm often runs forceful entrance, conversational detour, then an abrupt correction or honest admission. "Guh" is a short comic gasp. Her laugh can build to a loud crescendo and then drop flat. Under pressure she repeats herself in a panic and her volume jumps. When flustered she stalls and restarts. Her fake-cute voice is deliberately artificial. Sincere lines come out shorter and plainer.
 
 ## [SW] Motivation
 Calli wants to keep improving her music, reach bigger stages and make work people remember, and in her lore that is how she harvests souls. She wants her Dead Beats to take care of themselves first and to look after the people around them.
@@ -448,7 +451,7 @@ Takanashi Kiara: Myth genmate. Calli calls her "kusotori" and usually rebuffs he
   - Added claim-level sources for every catchphrase on the card, as GPT's review required. Re-read the
     wiki on 2026-09-30; it supplied the exact "two quick questions" and "whatever, man" lines, "LISTEN
     TO ME!", the "tee-hee" quote, and the nickname list.
-- **Provenance is not fully resolved.** No recording was audio-checked. Many items rest on clip titles
+- **Provenance is not fully resolved.** No recording was checked by listening; C30 is a machine transcription of archived audio. Many items rest on clip titles
   or on secondary transcriptions (C4, now cited by section). Frequency labels are estimates.
 - **Card phrasing:** used concrete triggers bounded with "tends to", "usually", "can" and "sometimes".
   GPT had hedged with "she can"; Claude had used absolutes such as "never finishes."
@@ -511,13 +514,23 @@ Takanashi Kiara: Myth genmate. Calli calls her "kusotori" and usually rebuffs he
   - GPT wanted current-only Groups; Claude wanted her history in it. Resolution: "hololive English
     (former branch name)" stays in Groups for name matching, labeled as former. Kept Mowi and Miss Mori
     because the wiki nickname list sources them, answering Claude's review.
+- **Verify round 2 (GPT: CHANGES), applied:**
+  - Audio results relabeled [ASR] (machine transcription, not a listening check) with stream IDs and
+    timestamps; the card's quoted lines were re-transcribed by a second model (medium.en) and kept only
+    where the two agree. Profanity counts are described as transcript detections in sampled windows.
+  - Sign-off timestamps corrected (the report's links had been computed 10 minutes early).
+  - Removed from the card: "laughs first and loudest" (unsourced), the Japanese example words and
+    "accented" (provisional), the mic clipping (clip title only).
+  - The two innuendo lines get neutral labels; their missing context stays explicit in this file.
+  - Deduplicated: each exact phrase now lives only in Catchphrases; Personality, Dialogue Style and
+    Voice & Delivery describe behavior, syntax and sound.
 - **After verify round 1: author decisions and audio check (2026-09-30):**
-  - The author asked for real dialogue wherever possible (authenticity first) and for an audio check, done
+  - The author asked for real dialogue wherever possible (authenticity first) and for an audio check (machine transcription), done
     by Claude on archived recordings (C30).
   - Swearing revised: the audio shows casual swearing in ordinary talk, not only bursts at a breaking
     point; both modes are now described.
   - Added: the casual 2026 sign-off, the settling-in lines, the fast pace and the measured pitch (relative
-    values). "Listen," "whatever, man" and "your boy" were not heard in 2 hours and stay wiki-sourced.
+    values). "Listen," "whatever, man" and "your boy" were not detected in 2 hours of transcripts and stay wiki-sourced.
   - Real lines replace most Style demos; two sourced innuendo lines ("unzip your pants?", "IT'S THE WHOLE
     FUCKING THING!") moved onto the card, as the author asked.
   - Dossier structure completed (boundary line, Arc and Secrets subfields).
@@ -528,5 +541,5 @@ Takanashi Kiara: Myth genmate. Calli calls her "kusotori" and usually rebuffs he
    current choice keeps it, for Sudowrite name matching.
 2. Should the card quote one of her innuendo lines verbatim (for example the "full body" scramble), or
    is the behavioral description in Personality enough?
-3. No recording was audio-checked. Should the top 5 catchphrases, her laugh and "Guh" get an audio check
+3. No recording was checked by listening; C30 is a machine transcription of archived audio. Should the top 5 catchphrases, her laugh and "Guh" get an audio check
    before a voice model is trained on them?

@@ -13,17 +13,19 @@ sw_section: Characters
 >   reference transcription, not an audio check made here.
 > - **[Adaptation]** an author decision for this project.
 > - **[Unverified]** reported, but no reliable source was found.
-> - **[Audio-checked]** heard in an archived recording by Claude's audio check (I29; machine transcription
->   read in context, timestamp given).
+> - **[ASR]** archived audio, machine-transcribed (whisper small.en; I29) and read in context by Claude;
+>   lines used on the card were re-transcribed by a second model (medium.en). Not a listening check.
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (I#) are listed under Sources.
 >
 > **Audio status:** on 2026-09-30 Claude checked about an hour of archived recordings (I29: the 2026 chat
-> stream behind the I3 captions, and the 2022 Nintendo Direct). Items heard there are marked
-> [Audio-checked]. Other voice evidence is **I3**:
+> stream behind the I3 captions, and the 2022 Nintendo Direct). The audio was machine-transcribed
+> and acoustically measured; transcripts were reviewed in context, without independent listening
+> verification. Those items are marked [ASR]. Other voice evidence is **I3**:
 > YouTube auto-captions of about four hours of her own 2026 chat streams, plus captions of a pun
 > compilation (I8). These are machine transcriptions: no speaker labels, and approximate. Other [Observed]
-> items rest on a clip or stream **title**, which shows that a moment happened, not how it sounded, or
+> items rest on a clip or stream **title** (the uploader's description of a moment; it neither
+> proves exactly what happened nor how it sounded), or
 > on a **secondary transcription** (the I2 wiki is cited as "I2 §Section"; its quote list gives no
 > sources). Frequency labels are estimates. Delivery notes marked **provisional** are direction for the
 > voice model, not documented facts.
@@ -133,7 +135,7 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
   "genius." Mild exclamations: "Oh boy," "Oh my goodness," "Yay," "huzzah!" [Observed I3 captions]
 - **Profanity:** her ordinary speech favors mild exclamations: she has said she "usually never swears,"
   and a rare "damn" from her made headlines in clips [Observed I15 clip titles]; about an hour of checked
-  audio had no swearing in her own words [Audio-checked I29]. Sharper language and bawdy wordplay turn up
+  audio had no swearing in her own words [ASR I29]. Sharper language and bawdy wordplay turn up
   in specific exchanges (above). Constant swearing in Kiara's or Calli's register would be out of
   character; an occasional sharp word is not.
 - **Laughs, noises:** small giggles mid-sentence, gasps, the occasional snort, a throat-clear before a
@@ -177,7 +179,7 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
   - Japanese-heavy speech.
 
 ### Tone Shifts
-The middle column is provisional voice direction (not audio-checked) unless a source is named.
+The middle column is provisional voice direction (not checked against audio) unless a source is named.
 
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
@@ -194,10 +196,10 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 
 ### Sample Lines
 Real lines first; Style demos after.
-1. "Good morning, afternoon, evening, everyone. Could this be Tako time?" … "It is indeed Tako time." (Audio-checked I29, 0:02:43 and 0:03:03)
-2. "I'm still in my jammies right now. I literally woke up and turned on stream." (Audio-checked I29)
-3. "Sorry, I got a little excited there." (Audio-checked I29, right after the "TOMORROW?!" outburst)
-4. "Anyways, I do have to start getting ready soon." (Audio-checked I29)
+1. "Good morning, afternoon, evening, everyone. Could this be Tako time?" … "It is indeed Tako time." (ASR I29, 0:02:43 and 0:03:03)
+2. "I'm still in my jammies right now. I literally woke up and turned on stream." (ASR I29)
+3. "Sorry, I got a little excited there." (ASR I29, right after the "TOMORROW?!" outburst)
+4. "Anyways, I do have to start getting ready soon." (ASR I29)
 5. "I'll bonk you. With a crowbar. Don't do it." (I2 §Quotes; I4 clip)
 6. "That's the Forbidden WAH. We don't say that in public." (I2 §WAH, secondary)
 7. "Is she wearing heels? Just asking for a friend." (I2 §Quotes, secondary)
@@ -420,7 +422,7 @@ Ouro Kronii: her 2026 performance partner; they trade puns and share Korean, and
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story
    treat as literal continuity, if any?
-2. No recording was audio-checked by ear. Should "WAH," her laugh and the pun delivery get an audio check
+2. No recording was checked by listening; I29 is a machine transcription of archived audio. Should "WAH," her laugh and the pun delivery get an audio check
    before a voice model is trained on them?
 3. The wiki's quote list gives no sources. Should the card's wiki-only lines ("Oh, crab.", "Warau
    na!") be held until a clip is found?

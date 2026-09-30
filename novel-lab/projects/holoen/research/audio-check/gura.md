@@ -2,7 +2,10 @@
 
 Method: short windows from the public stream archive archive.ragtag.moe (YouTube blocks this
 environment), transcribed with faster-whisper small.en, pitch measured with Praat (100–600 Hz, word
-intervals only). Tools and limits: `novel-lab/tools/audiocheck/README.md`. Machine transcription, read
+intervals only). Tools and limits: `novel-lab/tools/audiocheck/README.md`. **This is not a listening check**: the audio was
+machine-transcribed and acoustically measured, and the transcripts were reviewed in context. Lines used on
+the character card were re-transcribed by a second model (whisper medium.en) and compared (see the end of
+this file). Machine transcription, read
 in context; it drops some fillers and does not write screams, humming or laughter reliably. Horror-game
 windows include game voices; only lines that are clearly hers are quoted.
 
@@ -22,7 +25,7 @@ windows include game voices; only lines that are clearly hers are quoted.
 
 ## Claims checked
 
-| Claim in the file | Result | Evidence (audio) |
+| Claim in the file | Result (in the machine transcript) | Evidence (ASR, archived audio) |
 |---|---|---|
 | Opener "hello hello hello" | **Confirmed** (2022). | "Hello, hello, hello, how's this one, oh yeah, oh yeah" [0:06:37](https://youtu.be/_aeIw9DJnBw?t=397) |
 | "Shrimp" for members, from "simp? Do you mean shrimp?" | **Confirmed**: she retells it herself in 2024. | "What is simp? Do you mean shrimp?" [1:15:30](https://youtu.be/JUvdnKuBMDQ?t=4530) |
@@ -35,7 +38,7 @@ windows include game voices; only lines that are clearly hers are quoted.
 | Sign-off with care lines and stacked goodbyes | **Partly.** The 2022 horror stream ended warmly but plainly. | "Thank you guys for hanging with me today. I appreciate it. I'll see you tomorrow… Have a nice day" [3:48:58](https://youtu.be/_aeIw9DJnBw?t=13738) |
 | Relatively high voice | **Confirmed, relative.** Median F0 about 248–270 Hz, the highest group with Ame (Kronii 177–188 Hz). Chat pace about 122–139 words per minute of speech. | table above |
 
-## New material (audio-verified short lines)
+## New material (ASR-transcribed short lines)
 
 - "hey do you want to know a really stupid fact about me" [0:03:29](https://youtu.be/_aeIw9DJnBw?t=209)
 - "You don't scare me. Cheap party city lady. I see better makeup on clowns these days."

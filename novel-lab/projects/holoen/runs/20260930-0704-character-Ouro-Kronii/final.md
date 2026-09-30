@@ -13,16 +13,17 @@ sw_section: Characters
 >   reference transcription, not an audio check made here.
 > - **[Adaptation]** an author decision for this project.
 > - **[Unverified]** reported, but no reliable source was found.
-> - **[Audio-checked]** heard in an archived recording by Claude's audio check (K36; machine transcription
->   read in context, timestamp given).
+> - **[ASR]** archived audio, machine-transcribed (whisper small.en; K36) and read in context by Claude;
+>   lines used on the card were re-transcribed by a second model (medium.en). Not a listening check.
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (K#) are listed under Sources.
 >
 > **Audio status:** on 2026-09-30 Claude checked about 2 hours of archived recordings (K36: a 2021
-> Superhot window, a 2026 superchat stream and a 2026 horror stream). Items heard there are marked
-> [Audio-checked]; everything else below was not audio-checked. An [Observed] item rests on one of
-> three things, named at each use: a clip or stream **title** (the clip shows that the moment happened,
-> not how it sounded), a **secondary transcription** (K8 wiki sections are named as "K8 §Section"; K9 is
+> Superhot window, a 2026 superchat stream and a 2026 horror stream). The audio was machine-transcribed and acoustically measured; transcripts were reviewed in context,
+> without independent listening verification. Those items are marked [ASR]; nothing else was checked
+> against audio. An [Observed] item rests on one of
+> three things, named at each use: a clip or stream **title** (the uploader's description of a moment; it neither proves exactly what
+> happened nor how it sounded), a **secondary transcription** (K8 wiki sections are named as "K8 §Section"; K9 is
 > search-result snippets only), or a stream **description**. A timestamp is given where the source
 > supplies one. **Frequency labels** (common / recurring / occasional) are estimates from how often an
 > item appears across the cited sources, not counts. Delivery notes marked **provisional** are
@@ -60,9 +61,10 @@ to chat and genmates [Observed K8 §Personality, secondary]. Both belong to the 
    recovery. She has said on stream that the squawk isn't fake: she has "always screamed like that."
    She has claimed she doesn't scare easily, yet horror games frighten her readily. [Observed K8
    §Miscellaneous, secondary; K10, K12b clip titles]
-3. When she misplays, she usually owns it out loud: "Oh, okay. That was my bad." [Audio-checked K36,
-   Superhot 1:39:01 and 1:40:41; 2026: "whoops my bad"]. The wiki also gives "that's on me" [Observed K8
-   §Personality, secondary]; it was not heard in the checked window.
+3. When she misplays, she usually owns it out loud: "Okay, that was my bad." [ASR K36, 6WFU2wzPKfA
+   1:40:41, both models; a second instance at 1:39:01 was not confirmed by the second model; 2026:
+   "whoops my bad", tdLRQtJ3kkY 1:39:33]. The wiki also gives "that's on me" [Observed K8
+   §Personality, secondary]; it was not detected in the checked transcript.
 4. When chat backseats without being asked, she refuses [Observed K19, stream description]. Her mock
    advice to viewers is often "just be better," and when she does ask for help, chat answers her the
    same way. [Observed K8 §Personality, secondary, citing clip KI3lohu1gR8]
@@ -74,8 +76,8 @@ to chat and genmates [Observed K8 §Personality, secondary]. Both belong to the 
 7. When someone else is easier to frighten, she helps set up the scare (with IRyS, on Baelz). [Observed
    K16 clip title]
 8. She swears when startled or frustrated, including strong profanity ("what the fuck"); it once earned
-   her a punishment on FUWAMOCO's channel. It is not constant: about 2 hours of checked audio had none in
-   her own words. [Observed K32 clip titles; wording per K9, secondary snippet] [Audio-checked K36]
+   her a punishment on FUWAMOCO's channel. It is not constant: about 2 hours of machine transcripts had none detected in
+   her own words. [Observed K32 clip titles; wording per K9, secondary snippet] [ASR K36]
 9. When it matters, she thanks people plainly, without a joke attached. [Official K4]
 
 ## Voice Profile
@@ -84,18 +86,19 @@ to chat and genmates [Observed K8 §Personality, secondary]. Both belong to the 
     the stress on "wa" [Observed K9, secondary snippet; audio not checked].
   - "Kroyasumi": a good-night sign-off [Observed K12 clip]; styled "KroYasumi~" on an official card
     [Official K18].
-  - Stream opener (2026): a stack of hellos, the greeting, then "Yay": "Hello. Hello. Hello. Hello." →
-    greeting → "Yay, oh, yeah, yippee". [Audio-checked K36, 0:06:04–0:07:20; whisper writes the greeting as
-    "Konnichiwa", so the exact pun form is not provable from the transcript]
+  - Stream opener (2026): a few hellos, the greeting, then cheers: "Hello… hello!" → greeting → "Yay! Oh,
+    yay, yippee! Woohoo!" [ASR K36, tdLRQtJ3kkY 0:07:10–0:07:25; the two models write the greeting as
+    "Konnichiwa" and "Kedlanichiwa", so both hear a greeting but the exact pun form is not provable]
   - Other routine goodbyes: [Unverified]. "Heya" appears only in stream titles, not as verified speech.
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
   - "It's me, perfection." → self-introduction / bragging → common. [Official K1]
   - "GWAK!" → startle or damage → common in horror and action games. [Observed K8 §Quotes and
     §Miscellaneous, secondary; K10, K11, K12b clip titles]
   - "That was my bad" / "that's on me" → own misplay → common per the wiki ("phrases that she says
-    often"). "That was my bad" [Audio-checked K36]; "that's on me" [Observed K8 §Personality, secondary]
-  - "Yay!" / "Yippee!" → something good happens, or a flat, ironic cheer → common (21 "Yay" in about 2
-    hours of checked audio). [Audio-checked K36] Tone cannot be read from a transcript.
+    often"). "That was my bad" [ASR K36]; "that's on me" [Observed K8 §Personality, secondary]
+  - "Yay!" / "Yippee!" → a cheer → common (21 "Yay" detected in about 2 hours of machine transcripts).
+    [ASR K36, tdLRQtJ3kkY 1:04:37, 1:10:25; esjpYSrvjB4 2:33:47] Whether it is flat, ironic or cheerful
+    cannot be read from a transcript; that interpretation is [Unverified].
   - "just be better" → mock advice to viewers → recurring per the wiki ("often"). [Observed K8
     §Personality, secondary]
   - "I know." → accepting a compliment → occasional (estimate). [Observed K9, secondary snippet]
@@ -127,7 +130,7 @@ to chat and genmates [Observed K8 §Personality, secondary]. Both belong to the 
   - Casual internet English. Her own stream titles use "yap," "rizz" and "ragebait"; those three are
     written title vocabulary only (no spoken examples found), so they stay off the card. "Yay" is spoken
     too (see above).
-  - Stacked "yeah, yeah, yeah…" and "okay, and then…" while planning a route in a game. [Audio-checked
+  - Stacked "yeah, yeah, yeah…" and "okay, and then…" while planning a route in a game. [ASR
     K36]
   - Fans: "Kronies," and "Kromies" (from "homie"), which she uses herself. [Observed K8 §Mascots and
     fans, secondary]
@@ -174,7 +177,7 @@ to chat and genmates [Observed K8 §Personality, secondary]. Both belong to the 
   - A blanket ban on sincerity, profanity or teasing innuendo.
 
 ### Tone Shifts
-The middle column is provisional voice direction (not audio-checked) unless a source is named.
+The middle column is provisional voice direction (not checked against audio) unless a source is named.
 
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
@@ -190,11 +193,11 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 ### Sample Lines
 Real lines first; Style demos after.
 1. "Kroniichiwa! It's me, perfection." (verbatim K1)
-2. "Oh, okay. That was my bad." (Audio-checked K36)
-3. "I'm scared that one day I'm gonna run through here and then… they're gonna be like, oh, yeah, you thought it was safe, right?" (Audio-checked K36, horror stream)
-4. "Oh my god, that hand scared me." (Audio-checked K36)
-5. "I'm so funny. I can't read this." (Audio-checked K36, reading her own journal aloud)
-6. "Yippee! Oh, man! I've been so productive every single day." (Audio-checked K36)
+2. "Okay, that was my bad." (ASR K36, 6WFU2wzPKfA 1:40:41)
+3. "I'm scared that one day I'm gonna run through here and then… they're gonna be like, oh, yeah, you thought it was safe, right?" (ASR K36, esjpYSrvjB4 2:02:51)
+4. "Oh my god, that hand scared me." (ASR K36, esjpYSrvjB4 2:41:44)
+5. "I'm so funny. I can't read this." (ASR K36, tdLRQtJ3kkY 0:14:46, reading her own journal aloud)
+6. "Yippee! Oh, man! I've been so productive every single day." (ASR K36, tdLRQtJ3kkY 0:10:45)
 7. "I'm like, the hottest dumpster fire." (verbatim, secondary K8)
 8. "Chat wants motivation? Okay. Just be better." (Style demo, built on K8 §Personality)
 9. "GWAK! …I wasn't scared. That was a greeting." (Style demo)
@@ -237,7 +240,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Nanashi Mumei (graduated) | Council genmate ("KronMei") | The "Flower" bit; Mumei accidentally blew up the Bunkeronii's entrance | [Observed K14, K28 clips; K8 §Relationships, secondary] |
 | Ceres Fauna (graduated) | Council genmate ("KronFau") | Minecraft "civil war" (2021); Fauna described her "gap moe" | [Observed K29 clip titles; K8 §Personality, secondary] |
 | Mori Calliope | Fellow EN | Calli calls her "Kronster"; Kronii teases her about being 1 cm taller | [Observed K8 nickname list and §Miscellaneous, secondary] |
-| Gigi Murin | Collaborator ("TimeChaser") | Gigi imitates and distorts her greeting and flirts with her constantly; Kronii usually answers with exaggerated disgust and has occasionally flirted back | [Observed K15, K26 clip titles] |
+| Gigi Murin | Collaborator ("TimeChaser") | Their public bits include greeting imitation, flirtatious teasing (both ways) and exaggerated disgust; clip uploaders' titles describe particular exchanges, not a frequency | [Observed K15, K26 clip titles] |
 | Cecilia Immergreen | Collaborator | Cecilia calls her "Owo-senpai"; Kronii calls her a "CLANKER" | [Observed K8 nickname list and §Quotes, secondary] |
 | Raora Panthera | Collaborator ("Pizza Time") | Raora calls her "Tam Tender"; Kronii ragebaits the Italian Raora about pizza and pasta | [Observed K8 nickname list, secondary; K30 clip titles] |
 | Takanashi Kiara | Senior colleague ("Sundial") | Kiara was a fan before Kronii debuted; language exchange where Kronii taught Korean phrases | [Observed K8 §Miscellaneous, secondary; K17 clip] |
@@ -258,7 +261,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 - Scene seeds (optional premises):
   1. She referees a speedrun and discovers that her own timing call was wrong.
   2. Horror game night: she promises she doesn't scare, and the GWAK count climbs.
-  3. Gigi's relentless flirting meets Kronii's wall of disgust; who breaks first?
+  3. Gigi's flirting meets Kronii's wall of disgust; who breaks first?
   4. A viewer begs for motivation; the mock advice turns out to be the most useful thing they've heard.
   5. Disorder, her official enemy, shows up as a genmate's chaotic build right next to the Bunkeronii.
 
@@ -285,7 +288,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
   §Name and §Miscellaneous, secondary]
 
 ## Sources (checked 2026-09-30)
-Clips are cited by their YouTube titles unless a timestamp is given. No recording was audio-checked.
+Clips are cited by their YouTube titles unless a timestamp is given. No recording was checked by listening; K36 is a machine transcription of archived audio.
 - K1 Official profile: https://hololive.hololivepro.com/en/talents/ouro-kronii/
 - K2 Council-era official lore: https://connecttheworld.hololivepro.com/
 - K3 Promise formation: https://hololivepro.com/news_en/20231009-01-43/
@@ -351,28 +354,28 @@ hololive, hololive -Promise-, Promise, Council (former unit name)
 Kronii, Warden of Time, オーロ・クロニー, Kronini, Kroniicopter, Kronster, Tam Tender, Owo-senpai
 
 ## [SW] Personality
-Kronii plays the flawless Warden of Time and states her own greatness as plain fact. Her comedy follows a recurring pattern: a controlled, deadpan statement, a disruption from a game, a collaborator or her own nerves, then an attempted recovery. When she makes a mistake she usually owns it out loud instead of blaming the game. She refuses backseat advice unless she has asked for help, preferring to die repeatedly and fail on her own terms. When someone wants help or motivation, she tends to hand out mock advice ("just be better") instead of comfort. A compliment may get a deadpan "I know."; some sincere or physical affection, like Bae suddenly holding her hand, flusters her visibly. She has claimed she doesn't scare easily, yet horror games frighten her readily; a sudden scare can interrupt her composure with a squawk, and she may then attempt a deadpan recovery. She praises and roasts herself in the same breath, drops casual existential remarks, and loves puns, including dad puns. She helps set up scares, ragebaits collaborators with provocative food takes, and gets insulted right back. She values order, since disorder is her official enemy, and she procrastinates while claiming to dislike procrastinating. Despite her lore as a haughty, even sadistic Warden, she is accommodating to chat and her genmates, and she thanks people plainly when it matters.
+Kronii plays the flawless Warden of Time and states her own greatness as plain fact. Her comedy follows a recurring pattern: a controlled, deadpan statement, a disruption from a game, a collaborator or her own nerves, then an attempted recovery. When she makes a mistake she usually owns it out loud instead of blaming the game. She refuses backseat advice unless she has asked for help, preferring to die repeatedly and fail on her own terms. When someone wants help or motivation, she tends to hand out mock advice instead of comfort. A compliment may get a deadpan acceptance; some sincere or physical affection, like Bae suddenly holding her hand, flusters her visibly. She has claimed she doesn't scare easily, yet horror games frighten her readily; after a scare she may attempt a deadpan recovery. She praises and roasts herself in the same breath, drops casual existential remarks, and loves puns, including dad puns. She helps set up scares, ragebaits collaborators with provocative food takes, and gets insulted right back. She values order, since disorder is her official enemy, and she procrastinates while claiming to dislike procrastinating. Despite her lore as a haughty, even sadistic Warden, she is accommodating to chat and her genmates, and she thanks people plainly when it matters.
 
 ## [SW] Background
-Kronii is the Warden of Time, the third concept created by the gods and the one most bound to humankind. Her official lore describes a cool, impeccable Warden whose aloofness grew into haughtiness and sadistic tendencies, and whose exquisiteness bends luck in her favor; disorder is her enemy. She debuted in August 2021 with hololive English -Council-. In October 2023, she joined hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz. Following Fauna's and Mumei's graduations in 2025, its current members are Kronii, IRyS and Baelz, and since the 2026 merger the unit belongs to the single hololive brand. Her fans are the Kronies, which she also calls Kromies. Her mascot is Boros, a small white ouroboros snake. She is known for a Minecraft era spent building bunkers (the Bunkeronii). Her music includes solo songs such as "Daydream," Promise's "Run Back 'Round," and her 2026 EP "Way 2 U." In 2026 she also began a performance partnership with Ninomae Ina'nis. Her age is often given as infinite, and she calls herself 60.
+Kronii is the Warden of Time, the third concept created by the gods and the one most bound to humankind. Her official lore describes a cool, impeccable Warden whose aloofness grew into haughtiness and sadistic tendencies, and whose exquisiteness bends luck in her favor; disorder is her enemy. She debuted in August 2021 with hololive English -Council-. In October 2023, she joined hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz. Following Fauna's and Mumei's graduations in 2025, its current members are Kronii, IRyS and Baelz, and since the 2026 merger the unit belongs to the single hololive brand. Her fans are the Kronies, which she also calls Kromies. Her mascot is Boros, a small white ouroboros snake. She is known for a Minecraft era spent building bunkers (the Bunkeronii). Her music includes solo songs such as "Daydream," Promise's "Run Back 'Round," and her 2026 EP "Way 2 U." In 2026 she also began a performance partnership with Ninomae Ina'nis. She jokes that she is 60.
 
 ## [SW] Physical Description
 Kronii is 168 cm tall, with short dark-blue hair that falls in long locks at the sides and big blue eyes. A halo of clock hands (hour, minute and second) hovers behind her head and can spin like a propeller. In her original outfit she wears blue, white and black with gold trim, under a blue cape with a big ribbon, jewels and gold ornaments, and she carries two swords shaped like the long and short hands of a clock.
 
 ## [SW] Dialogue Style
-She speaks dry, minimal, casual English, and she says "Yay!" and "Yippee!" a lot, cheerful or flat. Her usual shape is a short, plain statement, then a pause long enough to become suspicious, then a shorter second sentence that turns it into self-praise, a self-roast or a punchline. She prefers understatement to exclamation, and when a collaborator laughs at a word, she keeps repeating it in exactly the same flat way. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Her own words: "Oh, okay. That was my bad." "I'm so funny. I can't read this." "Oh my god, that hand scared me."
+She speaks dry, minimal, casual English, with short cheers dropped in. Her usual shape is a short, plain statement, then a pause long enough to become suspicious, then a shorter second sentence that turns it into self-praise, a self-roast or a punchline. She prefers understatement to exclamation, and when a collaborator laughs at a word, she keeps repeating it in exactly the same flat way. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Lines of hers: "I'm so funny. I can't read this." "Oh my god, that hand scared me."
 
 ## [SW] Catchphrases
-"Hello. Hello. Hello." then "Kroniichiwa!" (opening a stream); "It's me, perfection." (self-introduction, bragging); "Yay!" / "Yippee!" (something good, or a flat cheer); "Kroyasumi" (good-night sign-off); "I know." (accepting a compliment); "That was my bad." / "that's on me" (owning a misplay); "just be better" (mock advice to chat); "GWAK!" (startled squawk when scared or hit); "God, I can't get over how amazing I am. Narcissus would be so jealous." (peak self-praise); "I'm like, the hottest dumpster fire." (self-roast); "I'm not a happy person. But I would like to be happy." (deadpan existential aside); "Flower." (flat repeated bit with Baelz and Mumei); "Tea is leaf juice." (deadpan food take); "I'm not addicted to Minecraft" (denial); "You're looking at the ribbon, right?" (teasing about her outfit); "Ara ara" and "ご飯にする？お風呂にする？それとも…わ・た・し？" ("Dinner? A bath? Or… me?") (sultry readings, performed on request); "Sorry, I just don't understand things from a CLANKER." (to Cecilia)
+"Kroniichiwa!" (greeting, after a few hellos); "It's me, perfection." (self-introduction, bragging); "Yay!" / "Yippee!" (a cheer); "Kroyasumi" (good-night sign-off); "I know." (accepting a compliment); "That was my bad." / "that's on me" (owning a misplay); "just be better" (mock advice to chat); "GWAK!" (startled squawk when scared or hit); "God, I can't get over how amazing I am. Narcissus would be so jealous." (peak self-praise); "I'm like, the hottest dumpster fire." (self-roast); "I'm not a happy person. But I would like to be happy." (deadpan existential aside); "Flower." (flat repeated bit with Baelz and Mumei); "Tea is leaf juice." (deadpan food take); "I'm not addicted to Minecraft" (denial); "You're looking at the ribbon, right?" (teasing about her outfit); "Ara ara" and "ご飯にする？お風呂にする？それとも…わ・た・し？" ("Dinner? A bath? Or… me?") (sultry readings, performed on request); "Sorry, I just don't understand things from a CLANKER." (to Cecilia)
 
 ## [SW] Voice & Delivery
-A low speaking register: powerful and well-controlled, with an older-sister feel, and a wide range she can push into a high-pitched voice on request. Her default delivery is dry and deadpan at an unhurried, medium pace: a statement and a beat before the punchline. A sudden scare can interrupt her composure with a squawk ("GWAK!"), sharp and much higher than her speaking voice; she may then attempt a deadpan recovery. She vocalizes explosively when she takes damage or dies in games. Her laughter can break into a performance mid-line. Requested readings like "ara ara" are a deliberately sultry performed register, not her everyday voice. Sincere lines come out plain and complete, without a joke attached.
+A low speaking register: powerful and well-controlled, with an older-sister feel, and a wide range she can push into a high-pitched voice on request. Her default delivery is dry and deadpan at an unhurried, medium pace: a statement and a beat before the punchline. Her startle squawk is sharp and much higher than her speaking voice. She vocalizes explosively when she takes damage or dies in games. Her laughter can break into a performance mid-line. Requested readings are a deliberately sultry performed register, not her everyday voice. Sincere lines come out plain and complete, without a joke attached.
 
 ## [SW] Motivation
 Kronii wants to entertain her Kronies with games, singing and voice work, and to give performances worthy of their support. She wants to be seen as flawless and to keep things in order, and she admits, dryly, that she would like to be happy.
 
 ## [SW] Relationships
-Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny" and once flustered her by suddenly holding her hand. IRyS: Promise genmate; they insult each other like good friends and team up to scare Bae. Nanashi Mumei (graduated): the "Flower" bit and Minecraft chaos; Mumei accidentally blew up the entrance of her bunker. Ceres Fauna (graduated): their Minecraft "civil war." Mori Calliope: calls her "Kronster"; Kronii teases her about being 1 cm taller. Gigi Murin: mangles her greeting and flirts with her constantly; Kronii usually answers with exaggerated disgust and has occasionally flirted back. Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: calls her "Tam Tender"; Kronii ragebaits the Italian Raora about pizza and pasta. Takanashi Kiara: a fan before Kronii debuted; Kronii taught her Korean phrases. Watson Amelia (affiliate): "Time Duo"; guested at Kronii's 2026 birthday live.
+Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny" and once flustered her by suddenly holding her hand. IRyS: Promise genmate; they insult each other like good friends and team up to scare Bae. Nanashi Mumei (graduated): the "Flower" bit and Minecraft chaos; Mumei accidentally blew up the entrance of her bunker. Ceres Fauna (graduated): their Minecraft "civil war." Mori Calliope: calls her "Kronster"; Kronii teases her about being 1 cm taller. Gigi Murin: their public bits include Gigi imitating and mangling Kronii's greeting, flirtatious teasing both ways, and Kronii's exaggerated disgust. Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: calls her "Tam Tender"; Kronii ragebaits the Italian Raora about pizza and pasta. Takanashi Kiara: a fan before Kronii debuted; Kronii taught her Korean phrases. Watson Amelia (affiliate): "Time Duo"; guested at Kronii's 2026 birthday live.
 
 ## [SW] Secrets
 (none)
@@ -383,7 +386,7 @@ Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak
 - **Structure and evidence:** GPT's four-way evidence labels and its core voice model ("controlled
   statement → disruption → attempted recovery") were adopted, now worded as a recurring pattern rather
   than a fixed loop. Claim-level sources were added for every catchphrase that reaches the card.
-- **Provenance is not fully resolved.** No recording was audio-checked. Many items rest on clip titles
+- **Provenance is not fully resolved.** No recording was checked by listening; K36 is a machine transcription of archived audio. Many items rest on clip titles
   or on secondary transcriptions (the K8 wiki, now cited by section; K9 search snippets). Frequency
   labels are estimates. The labels above say which is which.
 - **Card phrasing:** there were three options: GPT's hedged "she can…", Claude's absolute "every / usually
@@ -432,15 +435,26 @@ Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak
     current. The history stays in Background.
   - The innuendo-coded readings ("ara ara", the "dinner, bath, or me" line) stay, because the project's
     authenticity rule applies and they are sourced and non-explicit.
+- **Verify round 2 (GPT: CHANGES), applied:**
+  - Audio results relabeled [ASR] (machine transcription, not a listening check) with stream IDs and
+    timestamps. The card's quoted lines were re-transcribed by a second model (medium.en) and kept only
+    where the two agree: one "That was my bad" instance and the four-hello stack were not confirmed and
+    were dropped or rewritten. Negative findings are worded as "not detected in these transcripts."
+  - "Yay" / "Yippee" stay as transcribed cheers; the flat or ironic reading is marked [Unverified].
+  - Gigi: bounded description of the public bits; clip titles are uploaders' descriptions, not
+    frequencies.
+  - The infinite age left the card (official provenance unresolved); "calls herself 60" stays as a joke.
+  - Deduplicated: each exact phrase lives only in Catchphrases; Personality, Dialogue Style and Voice &
+    Delivery describe behavior, syntax and sound.
 - **After verify round 1: author decisions and audio check (2026-09-30):**
-  - The author asked for real dialogue wherever possible (authenticity first) and for an audio check, done
+  - The author asked for real dialogue wherever possible (authenticity first) and for an audio check (machine transcription), done
     by Claude on archived recordings (K36).
-  - Audio-checked and added: "That was my bad" (the wiki's timestamp; "that's on me" was not heard
+  - Checked by ASR and added: "That was my bad" (the wiki's timestamp; "that's on me" was not detected
     there), the opener stack "Hello. Hello. Hello." → greeting → "Yay", and "Yay!" / "Yippee!" as a
     spoken habit. "Yay" had been removed in round 1 as title-only vocabulary; the audio overturns that.
   - Real lines replace most Style demos in Sample Lines and the card's Dialogue Style.
   - Measured voice values (pitch, pace) added to the dossier as approximate, relative values.
-  - Swearing: none heard in her own words in about 2 hours of audio, so the card now says it is not
+  - Swearing: none detected in her own words in about 2 hours of transcripts, so the card now says it is not
     constant.
   - The "Dinner? A bath? Or… me?" reading moved onto the card beside "ara ara" (requested, sourced,
     non-explicit).
@@ -451,6 +465,6 @@ Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:
    keep it, for Sudowrite name matching.)
-2. No recording was audio-checked. Is an audio audit of the top 5 catchphrases, the GWAK and her
+2. No recording was checked by listening; K36 is a machine transcription of archived audio. Is an audio audit of the top 5 catchphrases, the GWAK and her
    swearing register worth doing before a voice model is trained on them?
 3. Pick a baseline outfit if a story needs one (original, maid, captain, 3D "goddess").
