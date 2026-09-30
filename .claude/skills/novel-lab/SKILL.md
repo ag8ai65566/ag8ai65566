@@ -60,9 +60,10 @@ GPT 可以連線時先補跑。
 ## GPT 連不上時（exit 3）
 
 `lab.py gpt` 找不到 Codex 登入或 `OPENAI_API_KEY` 時，會把完整提示寫成 `*.to-gpt.md` 並以
-exit 3 結束。這時告訴使用者：把那個檔案的內容貼到 ChatGPT／Codex（選 GPT-6 Astra，
-推理 Extra High），再把回覆貼回對話；我把回覆存成對應的檔案（gpt-draft.md 等）後繼續。
-不要因為 GPT 連不上就自己把 GPT 的部分也寫掉。
+exit 3 結束。**使用者不採用人工轉貼（2026-09-30 表明）**：這時先把 Claude 這邊能做的做完
+（初稿、審稿），commit 並 push，然後停下來請使用者在雲端環境設定 `OPENAI_API_KEY` 後開新 session
+接續。不要把 `*.to-gpt.md` 丟給使用者，也不要因為 GPT 連不上就自己把 GPT 的部分寫掉。
+多個角色同一階段請用批次：`lab.py gpt <run1> <run2> … <stage>`。
 
 ## check（一致性檢查）
 
