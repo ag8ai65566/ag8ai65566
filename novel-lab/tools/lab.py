@@ -370,6 +370,11 @@ def cmd_gpt(args):
         return
     if len({r.parent for r in runs}) != 1:
         die("批次的 run 必須屬於同一個專案")
+    for r in runs:
+        freeze_all(r)
+    if len({frozen(r, "gpt-brief.md", None) for r in runs}) > 1:
+        # 每個任務凍結的專案說明不同時不能合批，否則有任務會收到別的版本（在動到任何輸出檔之前檢查）
+        die("這些 run 凍結的 gpt-brief.md 版本不同，請分開呼叫（不要合批）")
     items = [(r, *prepare_run(r, stage)) for r in runs]
     raw = runs[0].parent / f"_batch-{dt.datetime.now():%Y%m%d-%H%M}-{stage}.md"
     via, model = ask_gpt(batch_prompt(items), raw, args.model, args.effort, live_search=live,
@@ -587,7 +592,11 @@ def cmd_export(args):
             errors.append(f"{label}：sw_section「{section}」不是 Characters / Worldbuilding / Story")
             continue
         present = {m.group(1) for m in SW_SECTION.finditer(text)}
-        kind = meta.get("kind") or {"Characters": "character", "Worldbuilding": "world", "Story": "idea"}[section]
+        kind = meta.get("kind")
+        allowed = {"Characters": {"character"}, "Worldbuilding": {"world", "research"}, "Story": {"idea"}}[section]
+        if kind not in allowed:
+            errors.append(f"{label}：kind「{kind}」和 sw_section「{section}」對不上（應為 {' / '.join(sorted(allowed))}）")
+            continue
         for fld in spec["required"].get(kind, []):
             if fld not in present:
                 errors.append(f"{label}：缺 [SW] {fld} 段落")
