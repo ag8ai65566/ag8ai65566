@@ -196,7 +196,7 @@ Transcript-based (auto-captions read locally, quoted briefly): https://www.youtu
 Clip-title-only: see URLs inline above (Vaan Ch., Random Tako, Sashimi Clips, Takomachi Ch., etc.).
 
 ## 7. Gaps / unverified
-- No transcript obtained for drawing, karaoke, horror or tilt moments (YouTube rate-limited); those rows rest on titles and wiki.
+- No transcript obtained for drawing, karaoke, horror or tilt moments (YouTube auto-caption download was rate-limited/bot-blocked; a final retry on a drawing stream also failed); those rows rest on titles and wiki. A follow-up pass could retry on https://www.youtube.com/watch?v=KRiNBzIrvqU (Inacademy: Drawing), https://www.youtube.com/watch?v=3edvIFyB8-4 (DRAWING 101), https://www.youtube.com/watch?v=9G8nfmcM0lU (2026 birthday stream), https://www.youtube.com/watch?v=8JcF4fJ0Xuc (merger-thoughts clip).
 - WAH-at-every-opener, "Ina Ina ii na" current use, "Yabe!" frequency, "kusotori" direction, member nicknames both ways, and all "(W)" quotes are unverified beyond the wiki.
 - Kaomoji quoted from Ina's tweets are from wiki citations/search snippets.
 - Real-person material seen in sources (audition story, family events, health, location, education) was deliberately NOT used.
