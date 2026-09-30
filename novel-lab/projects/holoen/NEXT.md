@@ -1,19 +1,21 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
-狀態（2026-09-30 22:20 UTC）：
+狀態（2026-09-30 22:55 UTC）：
 - **作者定案（新）**：以真實性為主，卡片優先用**真實台詞**（含粗口、挑逗）；音檔由 Claude 自己核對。
 - **音檔核對已完成**（六人）：報告在 `research/audio-check/<名字>.md`，工具在 `novel-lab/tools/audiocheck/`。
   - 方法：ragtag 直播存檔 → whisper small.en 轉寫 + Praat 量音高 → **上卡片的句子再用 medium.en 第二模型核對**。
   - 檔案一律標 [ASR]，並寫「machine-transcribed … without independent listening verification」。不是人耳聽寫。
   - 第二模型推翻的句子已從卡片移除（Kronii 一處 hellos、Calli "Fucking adorable."、Kiara 整串 "so cute"、
     "Damn it"、Gura "god damn"/"Damn."、Ame "Bitch."）。
-- **GPT 驗收狀態（2026-09-30 22:20 UTC）**：
-  - Kronii、Calli：跑到第 4 輪仍 CHANGES（每輪都再挑出幾個「只靠剪輯標題」的細節）。第 4 輪意見已全部照改，
-    並由 Claude 全面清查剪輯標題證據。**停在這裡等作者裁決**：(a) 再送一輪 GPT、或 (b) 作者裁決收錄
-    `lab.py promote <run> --force --reason "…"`。
-  - Kiara、Ina、Ame：第 1 輪 CHANGES 已修，**第 2 輪 verify 已送出**。
-  - Gura：第 1 輪 CHANGES 已修；f-word 正用音檔掃 Resident Evil 2 整場（jobsE），有結果再送第 2 輪。
-- APPROVE → `promote` → `export holoen`。
+- **gen-1 Myth ＋ Kronii、Calli 六人全部收錄（2026-09-30 22:53 UTC）**，已匯出：
+  `export/characters.csv`（6 張）、`export/sudowrite-paste.md`、`export/cards/*.csv`。
+  - Kiara：GPT APPROVE 收錄。
+  - Kronii、Calli、Ina、Ame：作者裁決 (b) 收錄（`--force`，記在各 run 的 `author-decision.md`，不算 GPT 核准）。
+  - Gura：Claude 比照作者對上述四人的裁決收錄（第 2 輪上限、意見已照改），作者可推翻。
+- **近期權重**（作者定案，已寫進 project.md）：描述現在的預設說話方式時，近期直播權重較高；
+  早期梗保留為共同記憶。六人都已照此檢查（Ame 換上 2024 台詞、Calli 招呼語順序、Gura 以 2024 為預設）。
+- 下一步（額度允許時）：Council/Promise 其他成員，或繼續用音檔補強既有六人（例如 Kronii 的 GWAK、
+  Calli 的笑聲，這些 whisper 寫不出來，需要別的方法）。
 - **框架**：GPT 已 APPROVE（`docs/reviews/gpt-framework-review-20260930-1621.md`）。
 - 作者定案：初稿 xhigh，審稿／驗收 high（lab.py 預設已是如此）。
 

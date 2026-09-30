@@ -43,6 +43,12 @@ transcribed in full; its low p10 pitch reflects game audio that slipped into wor
 
 Lines not listed in the second-model check at the end of this file are first-model transcriptions only.
 
+- 2024 (her last regular period): "I'm four years old! I can barely talk!" [0:06:01](https://youtu.be/OAmx8R0HuF4?t=361);
+  "I had to learn how to do so many things to make the intro." [0:06:37](https://youtu.be/OAmx8R0HuF4?t=397);
+  "Yeah, quick maths, gains for your brains." [0:57:55](https://youtu.be/OAmx8R0HuF4?t=3475);
+  "I'm gonna connect the world with my fist. I'm gonna connect the world by force."
+  [0:58:16](https://youtu.be/OAmx8R0HuF4?t=3496)
+
 - Caster-style narration while spectating a teammate: "Let's see if she can pull off a 1v4, full health.
   15 seconds left on the clock." [0:33:43](https://youtu.be/OE-BmnlBKJ8?t=2023)
 - Cheering a teammate's ace: "Holy shit, damn! Nice! That was clutch."
@@ -68,6 +74,11 @@ the character card.
 | "As a time traveler, I would know." | [1:03:16](https://youtu.be/6VBQyNHxlR8?t=3796) | "dinosaurs have feathers. As a time traveler, I would know. What is that?" | Agrees |
 | "Nothing beats a ground pound. That's funny cause uh, you guys know that's actually what I did to your mom last night." | [1:21:39](https://youtu.be/6VBQyNHxlR8?t=4899) | "in the road nothing beats a ground pound that's funny because uh you guys know that's actually what i did to your mom last night sorry it's late" | Agrees |
 | "Alright, bye-bye!" | [1:37:11](https://youtu.be/6VBQyNHxlR8?t=5831) | "Okay. All right. Bye. Bye Bye" | Agrees ("All right. Bye. Bye bye") |
+| "I'm four years old! I can barely talk!" | [0:06:01](https://youtu.be/OAmx8R0HuF4?t=361) | "by year, really. I'm four years old. I can barely talk. Yahoo! 6.9 out" | Agrees |
+| "I had to learn how to do so many things to make the intro." | [0:06:37](https://youtu.be/OAmx8R0HuF4?t=397) | "kind of did I had to learn how to do so many things to make the intro like I learned" | Agrees |
+| "I think this is lore that you've never heard before but I am like 95% sure that I was the one who brought up, like, having schedules." | [0:09:24](https://youtu.be/OAmx8R0HuF4?t=564) | "Alright, well, shall we start off strong with some karaoke already? I have a few songs. I mean, they're mostly songs you guys have heard before, I'm pretty sure…" | **Not located** (the window caught the lines after it); not used |
+| "Yeah, quick maths, gains for your brains." | [0:57:55](https://youtu.be/OAmx8R0HuF4?t=3475) | "Waaahaha! Easy... Yeah, quick maths. Gains for your brains. Anyways... Umm... We" | Agrees |
+| "I'm gonna connect the world with my fist. I'm gonna connect the world by force." | [0:58:16](https://youtu.be/OAmx8R0HuF4?t=3496) | "world how about connect the world i'm gonna connect the world with my fist i'm gonna connect the world by force" | Agrees |
 | "Let's see if she can pull off a 1v4. Full health. 10, 15 seconds left on the clock." | [0:33:43](https://youtu.be/OE-BmnlBKJ8?t=2023) | "teapot. It's Raze again. Let's see if she can pull off a 1v4 full health. 15 seconds left on the clock, but bomb is" | Agrees (second model omits "10") |
 | "Holy shit, damn! Nice! I was clutch." | [0:39:37](https://youtu.be/OE-BmnlBKJ8?t=2377) | "on our team! Holy shit, damn! Nice! That was clutch. Okay, I'm gonna..." | Agrees, except the second model hears "That was clutch" (first: "I was clutch"); the file uses "That was clutch." |
 | "Why do my team die so fast?" | [0:43:17](https://youtu.be/OE-BmnlBKJ8?t=2597) | "Why do my team die so fast? How do they" | Agrees |
