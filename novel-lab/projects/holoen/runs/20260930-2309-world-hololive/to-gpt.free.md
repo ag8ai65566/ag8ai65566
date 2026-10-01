@@ -1,4 +1,4 @@
-# One-round review: hololive worldbuilding for Sudowrite (13 world cards) + persona-frame edits to 6 character cards
+# One-round review: hololive worldbuilding for Sudowrite (19 world cards), two new character files (IRyS, Nerissa Ravencroft), and edits to 6 character cards (persona frame, relationships, new Audio Tags field)
 
 You are GPT, reviewing Claude's work for the novel-lab project "holoen" (fan fiction Story Bible for Sudowrite about hololive English members). This is the ONLY review round (the author limited GPT usage), so be decisive: report what must change, give exact replacement wording where you can, and skip cosmetic nitpicks. Write your review in English.
 
@@ -8,6 +8,7 @@ You are GPT, reviewing Claude's work for the novel-lab project "holoen" (fan fic
 - NEW author request: make the relationships between members rich and accurate. Author's own description of Calli & Kiara: early "business couple" (TakaMori, with a name); now fewer interactions but still very close, like an old married couple.
 - Recency weighting (author): recent streams weigh more for the current default; early memes stay as shared memory; conflicts resolve toward recent evidence.
 - Boundaries: public persona only; never the real people behind the avatars (names, faces, families, homes, health, graduation reasons); no romance/intimacy between real people (ships are performed bits and fan terms); follow COVER's Derivative Works Guidelines.
+- NEW author directions (2026-10-01): (a) every piece of research is part of the world; relationships are the most important and must include members outside EN (JP, ID, DEV_IS, HOLOSTARS, GAMERS); (b) the world also covers new members joining, graduations, group and solo concerts, 3D lives and events, generously; members' public X posts are key sources (private details still excluded); (c) Sudowrite itself will insert ElevenLabs v4 audio tags into dialogue, so each character gets an [SW] "Audio Tags" field (tag vocabulary by situation, signature sounds, habits to keep in the words, IPA, tags never to use as default) and the Story Bible Style gets a tagging rule. The tags direct an ORIGINAL designed voice; nobody's real voice is cloned or imitated.
 - Baseline date 2026-09-30 (after the 2026-09-07 branch merge). Ame: affiliate since 2024-09-30. Gura: graduated 2025-05-01.
 - Evidence labels: [Official], [Observed] ("secondary" = wiki), [ASR] (machine transcription checked by two models, not listening), [Adaptation], [Author], [Unverified]. Clip titles only prove an uploader's description.
 - Sudowrite: the Worldbuilding card = Name, Role, Other Names, Description (soft limit 450 words), Rules (350), Sensory Details (200), Secrets. Worldbuilding cards are the FIRST thing dropped when context is short, so the most important information must come first, and the persona premise is also written into the character cards. Card detection uses Name and Other Names.
@@ -17,10 +18,12 @@ You are GPT, reviewing Claude's work for the novel-lab project "holoen" (fan fic
 2. The persona premise: does anything still read as literal lore (real powers) or break the "never the real person" boundary?
 3. Relationships: are they accurate, recency-weighted, and useful for writing scenes? Anything important missing that you can source (give the source)? Anything that contradicts the character cards?
 4. Card usability for Sudowrite: most important first, Other Names that will trigger detection without false positives, lengths.
-5. The character-card edits (persona framing, avatar framing, updated Relationships, Kronii voice correction).
+5. The character-card edits (persona framing, avatar framing, updated Relationships incl. IRyS/Nerissa, Kronii voice correction).
+6. IRyS and Nerissa Ravencroft: full new character files (dossier + [SW] card). Check facts, the persona frame, privacy (no pets, family, health, school), that only lines both ASR models agree on are quoted on the card, and duplication between card fields.
+7. Audio Tags fields and the Style rule: are the tags consistent with each character's Voice Profile and measurements, specific enough for Sudowrite to imitate the speech habits, and free of anything that would imitate a real person's voice or sexualize anyone?
 
 ## Output format
-For each card: `## <card name>` then `MUST:` (numbered, each with the fix) and `SHOULD:` (optional, short). Then `## Character card edits` (same format), then `## Missing facts worth adding` (only with a source you can name). If a card is fine, write `OK`.
+For each card: `## <card name>` then `MUST:` (numbered, each with the fix) and `SHOULD:` (optional, short). Then `## Character card edits` (same format), then `## IRyS` and `## Nerissa Ravencroft` (same format), then `## Audio Tags and Style rule`, then `## Missing facts worth adding` (only with a source you can name). If a card is fine, write `OK`.
 
 ---
 
@@ -1501,11 +1504,12 @@ sw_section: Worldbuilding
 
 > Research dossier above; the Sudowrite Worldbuilding card is under the `## [SW]` headings.
 >
-> Scope: Ouro Kronii's group as publicly shown, checked 2026-09-30. Evidence labels as in the other world
-> files. Only what a Kronii story needs; the other members are background.
+> Scope: the group of Ouro Kronii and IRyS as publicly shown, checked 2026-09-30 (IRyS added 2026-10-01).
+> Evidence labels as in the other world files. Only what a Kronii or IRyS story needs; the other members are
+> background.
 
 ## One-line Concept
-Kronii's group: the English -Council- generation (debuted August 2021) joined by IRyS as -Promise- in
+Kronii's and IRyS's group: the English -Council- generation (debuted August 2021) joined by IRyS as -Promise- in
 2023. After two graduations in 2025, the active members are IRyS, Ouro Kronii and Hakos Baelz.
 
 ## Type
@@ -1516,7 +1520,7 @@ Faction / unit.
 - Graduated: Tsukumo Sana (2022-07-31, while still -Council-), Ceres Fauna (2025-01-03), Nanashi Mumei
   (2025-04-27). No reasons are given in stories. [Observed S1–S3, secondary]
 
-## How the Group Works (as it touches Kronii)
+## How the Group Works (as it touches Kronii and IRyS)
 - **Themes:** -Council- members embodied concepts (Time for Kronii, Nature, Civilization, Chaos, Space);
   IRyS is "Hope." Fan unit names built on these concepts are common (e.g. "SNOTCast": Shark, Nature, Owl,
   Time). [Observed Kronii file K8, secondary]
@@ -1524,6 +1528,11 @@ Faction / unit.
   described Kronii's "gap moe," a cute side that shows when she's flustered; IRyS once wondered aloud how
   Kronii sounds when she's scared. Group bits and scares involving them are reported by clip titles and
   stay unverified. [Observed Kronii file K8 §Personality, K37 §Quotes, secondary]
+- **IRyS inside the group:** before -Promise- existed, she and the Council were already billed together as
+  "CouncilRyS" (an official 3D showcase, 2023-10-08); -Promise- was announced at its end. With Bae she keeps
+  the running "BaeRyS" bit of being "married" and "divorced" (from a 2021 Minecraft bento joke); their
+  joke fan-fiction made "Monopoly" a fandom euphemism. With Kronii she plays two-player games and races
+  (see "IRyS and Nerissa Pairs"). [Observed S5 IRyS §Relationships, §Units, secondary; IRyS file R2]
 - **Kronii's first official collab outside her generation** was with Mori Calliope (2021-09-23).
   [Observed Kronii's wiki page §2021, secondary]
 - **After 2025:** the group is three; Kronii's own 2026 activity (a 3D birthday live with Ame as a guest,
@@ -1535,7 +1544,7 @@ Faction / unit.
 |---|---|---|
 | 2021-08 | -Council- debuts (Sana, Fauna, Kronii, Mumei, Bae) | "Council" nostalgia |
 | 2022-07-31 | Sana graduates | Council becomes four |
-| 2023-10-09 | -Promise- formed with IRyS | The current group name |
+| 2023-10-09 | -Promise- formed with IRyS (closing Project: HOPE) | The current group name |
 | 2025-01-03 | Fauna graduates | — |
 | 2025-04-27 | Mumei graduates | Promise becomes three |
 
@@ -1556,9 +1565,10 @@ Faction / unit.
 3. A Promise anniversary where the three remember the two who graduated.
 4. Kronii has to pick between a Promise plan and a Myth friend's invite on the same night.
 5. A "Council" callback makes Kronii rank her old group jokes, deadpan.
+6. Bae announces another BaeRyS "divorce"; IRyS demands the potato bento back.
 
 ## Links to Characters
-Ouro Kronii (member). Myth characters appear as cross-group friends.
+Ouro Kronii and IRyS (members). Myth characters and Nerissa appear as cross-group friends.
 
 ## Secrets
 (None.)
@@ -1572,6 +1582,7 @@ Ouro Kronii (member). Myth characters appear as cross-group friends.
 - S2 Ceres Fauna and Nanashi Mumei wiki pages (graduation dates only; secondary)
 - S3 Nanashi Mumei wiki page (Sana's graduation date; secondary)
 - S4 Kronii file in this project (K4, K8, K33, K36, K37)
+- S5 IRyS wiki page, §Relationships, §Units and groups (secondary); IRyS file in this project (R2)
 
 ---
 
@@ -1585,13 +1596,13 @@ Faction
 Promise, holoPromise, Council, holoCouncil
 
 ## [SW] Description
-Ouro Kronii's group. It began as the English -Council- generation in August 2021, members who embody concepts (Kronii is Time), and became -Promise- when IRyS ("Hope") joined on 2023-10-09. After graduations (Sana in 2022, Fauna and Mumei in 2025), the active members are IRyS, Ouro Kronii and Hakos Baelz. Bae calls Kronii "too talented, savage, and a tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. Kronii's closest recent partners often come from outside the group: Mori Calliope (her first cross-generation collab, 2021), Ninomae Ina'nis (their 2026 concert pairing) and Watson Amelia (her "Time Duo" counterpart).
+The group of Ouro Kronii and IRyS. It began as the English -Council- generation in August 2021, members who embody concepts (Kronii is Time), and became -Promise- when IRyS ("Hope") joined on 2023-10-09. After graduations (Sana in 2022, Fauna and Mumei in 2025), the active members are IRyS, Ouro Kronii and Hakos Baelz. Bae calls Kronii "too talented, savage, and a tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. IRyS and the Council were already billed together as "CouncilRyS" (an official 3D collab, 2023-10-08) before she joined; with Bae she keeps the "BaeRyS" bit of being "married" and "divorced," which turned "Monopoly" into a fandom euphemism. Kronii's closest recent partners often come from outside the group: Mori Calliope (her first cross-generation collab, 2021), Ninomae Ina'nis (their 2026 concert pairing) and Watson Amelia (her "Time Duo" counterpart).
 
 ## [SW] Rules
 In the 2026 baseline Promise is IRyS, Kronii and Bae; Sana, Fauna and Mumei are graduates and appear only as memories. Scares, pranks or hand-holding bits between Kronii and Promise members are unverified and are not written as facts.
 
 ## [SW] Sensory Details
-The Promise logo; Bae's chaos, IRyS's warmth and Kronii's deadpan in one call.
+The Promise logo; Bae's chaos, IRyS's warmth and sly asides, and Kronii's deadpan in one call.
 
 ## [SW] Secrets
 
@@ -1694,8 +1705,9 @@ Faction / organization (and workplace).
 5. A schedule collision turns two members' streams into an impromptu collab.
 
 ## Links to Characters
-All six. Calli, Kiara and Ina are active in hololive -Myth-; Ame is an affiliate; Gura is an alumna;
-Kronii is active in hololive -Promise-.
+All eight. Calli, Kiara and Ina are active in hololive -Myth-; Ame is an affiliate; Gura is an alumna;
+Kronii and IRyS are active in hololive -Promise-; Nerissa in hololive -Advent-. Detailed history: the
+cards "hololive History to 2022," "hololive History 2023-2026" and "Concerts and Live Events."
 
 ## Secrets
 (None.)
@@ -1726,7 +1738,7 @@ Faction
 hololive production, COVER, holoEN, hololive English, the company, management
 
 ## [SW] Description
-The VTuber agency run by COVER Corporation that the cast belongs to. Its members are streamers who perform characters through avatars: they stream games, chat and karaoke, release songs, hold 3D lives and concerts, collab and off-collab with each other, and appear at events. Since 2026-09-07 all former branches are one "hololive," and old groups are units: Calli, Kiara and Ina are active in hololive -Myth-; Kronii is in hololive -Promise-. Watson Amelia concluded her regular activities on 2024-09-30 and remains an affiliate who appears at events; Gawr Gura graduated on 2025-05-01 and is an alumna. Japanese members are senpai, later groups are kouhai, and genmates are the people you debuted with. The calendar runs on debut anniversaries, birthdays, concerts and fes.
+The VTuber agency run by COVER Corporation that the cast belongs to. Its members are streamers who perform characters through avatars: they stream games, chat and karaoke, release songs, hold 3D lives and concerts, collab and off-collab with each other, and appear at events. Since 2026-09-07 all former branches are one "hololive," and old groups are units: Calli, Kiara and Ina are active in hololive -Myth-; Kronii and IRyS are in hololive -Promise-; Nerissa is in hololive -Advent-. Watson Amelia concluded her regular activities on 2024-09-30 and remains an affiliate who appears at events; Gawr Gura graduated on 2025-05-01 and is an alumna. Japanese members are senpai, later groups are kouhai, and genmates are the people you debuted with. The calendar runs on debut anniversaries, birthdays, concerts and fes.
 
 ## [SW] Rules
 Management and staff stay faceless helpers: no invented staff names, business secrets, scandals or disputes. Graduations are never explained beyond "graduated." Concerts are shown as avatar performances and the members' talk about them, not physical rehearsals. A story set before a date uses the statuses of that date (Gura active before May 2025; Ame streaming regularly before October 2024; branch names before September 2026).
@@ -1741,6 +1753,837 @@ A "Starting soon" screen; a superchat chime; a concert LED wall behind a 3D avat
 
 ## Open Questions
 1. Should stories default to the 2026-09-30 baseline, or does the author want a different "present"?
+
+
+==================== WORLD CARD FILE: 20261001-0001-world-IRyS-and-Nerissa-Pairs/claude-draft.md ====================
+
+---
+kind: world
+name: "IRyS and Nerissa Pairs"
+sw_section: Worldbuilding
+---
+
+# World Element: IRyS and Nerissa Pairs (with the Myth six, Kronii and each other)
+
+> Research dossier above; the Sudowrite Worldbuilding card is under the `## [SW]` headings.
+>
+> Scope: checked 2026-10-01. Evidence labels as in the other world files. "Archive" = stream titles and
+> descriptions on both members' channels (archive.ragtag.moe, S1); counts are streams mentioning the other
+> per year, both channels added together, a rough measure. IRyS pairs run 2021 → 2026, Nerissa pairs
+> 2023 → 2026. The archive is thin for 2026 (15–24 streams per channel), so a low 2026 count does not
+> mean they stopped. Recent years weigh more (project rule), but early bits stay as shared memories.
+
+## One-line Concept
+How the two singers fit into the cast: IRyS, a 2021 senior who grew up beside Myth and now shares
+Promise with Kronii; Nerissa, a 2023 kouhai who is an open fan of Kiara and sings with Calli.
+
+## Type
+Relationship web.
+
+## IRyS
+- **IRyS and Calli** (16 / 16 / 5 / 8 / 2 / 1): Calli's first collab with her came days after IRyS's debut
+  ("Just Irystocrats and DeadBEATS," 2021-07-29), then a karaoke collab (2021-10). With Hakos Baelz they
+  host CHADCast ("Chaos, Hope, and Death!", from 2022-01-30; a 2025 episode: "We Went to a Hot Spring
+  Together!!"). Later: "Two Pink Women Roll Up to Silent Hill" (2024-10-26), IRyS as Calli's HOLOMELO
+  RADIO guest (2024-07), an off-collab karaoke with Momosuzu Nene (2025-04-23). Wiki unit: "MorIRyS."
+  [Observed S1 titles; S2 IRyS §Relationships, secondary]
+- **IRyS and Kronii** (10 / 12 / 7 / 6 / 8 / 1): genmates since -Promise- (2023), friends since 2021 (fan
+  unit K.I.R.A with Reine and Anya). Two-player games and watchalongs: A Way Out (2021–22), "School Days
+  (THE CHRISTMAS ANIME)" (2023-12-21), Buckshot Roulette "You Or Me But For Real" (2024-11), Bokura "Left
+  Side Right Side" (2025-02), a Powerwash Simulator race, "May The Best Maid Win" (2025-07-08). In 2026,
+  after Kronii's 3D birthday live "The Goddess Descends," IRyS said she, "a half-angel, half-demon
+  Nephilim," could pull off Kronii's goddess look "somehow." [Observed S1 titles; S2, secondary; ASR IRyS
+  file R20, second model agrees]
+- **IRyS and Ina** (15 / 7 / 3 / 4 / 6 / 0): an early duo ("Keep Talking and Nobody Explodes," 2021-07-31;
+  "It Takes Two," three parts, "It Takes Tako & Hope," 2021); a Gundam watchalong (2023-03-25); IRyS as
+  guest on Ina's "AmiAmi March Special" (2025-03-18); Elden Ring Nightreign, which IRyS titled "Third
+  Wheeling" (2025-06-24); guildmates ("Cerulean Cup," with Kronii, Bijou and Gigi) in the ENigmatic
+  Recollection Minecraft story. [Observed S1 titles; S2 §Units, secondary]
+- **IRyS and Kiara** (13 / 1 / 3 / 2 / 3 / 0): Kiara's "1ST FULL HOLOEN COLLAB ft. IRYS!" (2021-08-12); a
+  "GERMAN CRASH COURSE … with IRYS" (2022-06-02); an off-collab doing each other's nails on camera
+  (2023-11-14); TORIDAMA 2 off-collab with Kronii and Raora, "Who is the BRAVEST?" (2024-08-01).
+  [Observed S1 titles]
+- **IRyS and Ame** (11 / 2 / 3 / 2 / 0 / 0) and **IRyS and Gura** (11 / 6 / 0 / 1 / 0 / 0): mostly the
+  2021–22 full-EN collabs (Among Us, Dead by Daylight, Overwatch); IRyS joined Ina, Bae and Ame's
+  "LOSER BUYS DINNER!!!!!" off-collab (2023-02-23). With Gura graduated and Ame an affiliate, these are
+  memories. [Observed S1 titles]
+
+## Nerissa
+- **Nerissa and Kiara ("KiaRissa")** (15 / 12 / 3 / 0): Kiara is Nerissa's oshi; in Nerissa's lore she
+  worked at KFP before hololive and she owns Kiara merch. "Compatibility test with Kiara-senpai"
+  (2023-08-14); Kiara showed her around the EN Minecraft server (2023-09-07); their Baldur's Gate 3 party
+  with Calli and Bijou ("Killing, Two Birds, with One Stone," 2023); "Rating your CARS with NERISSA"
+  (2023-10-21); a January 2024 off-collab trip ("KiaRissa ARC HAS BEGUN," reading their trip diaries);
+  "GIRLSTALK with Nerissa, EN BIRB GIRLS PARTY!" (2025-04-08); a CHICAGO watchalong "with the musical
+  connoisseur Nerissa" (2025-07-09). [Observed S1 titles; S3 Nerissa §Relationships, §Lore, secondary]
+- **Nerissa and Calli** (6 / 7 / 3 / 1): the BG3 party (2023); Calli's "I Gathered 8 Cute People to
+  Destroy their Friendships" (Mario Party, 2024-11); Calli as guest at Nerissa's 2025 3D concert ("Bocca
+  della Verità"); the duet "OVER//RIDE – Mori Calliope × Nerissa Ravencroft" (2025-07-18); Nerissa as
+  HOLOMELO RADIO guest (2025-07); Nerissa sang charity karaoke for #GOLIVEforLOVE (2026-02-17). Nerissa was
+  Calli's first Instagram follower. [Observed S1 titles; S3, secondary]
+- **Nerissa and IRyS** (1 / 0 / 3 / 1): the two singers: IRyS was a guest at Nerissa's 2025 3D concert
+  ("Missing Promise"), they hunted together in Monster Hunter Wilds (2025-03-01), and in 2026 Nerissa made
+  Miis of IRyS and Ina in Tomodachi Life ("Inya and Irys will be born!", 2026-04-23). [Observed S1 titles]
+- **Nerissa and the others:** Ame: Portal 2, "TAKING ON PUZZLES WITH @WatsonAmelia" (2024-09-28). Gura:
+  fellow guildmates ("Scarlet Wand") in ENigmatic Recollection, now a memory. Kronii: big group collabs
+  only (Among Us, 2023-12). [Observed S1 titles; S3 §Relationships, secondary]
+
+## Sensory Palette
+- See: CHADCast's three-way call; IRyS and Kronii's split-screen co-op; KFP merch on Nerissa's shelf;
+  two singers on one concert stage.
+- Hear: "Chaos, Hope, and Death!"; Kiara's "Nerissa!" across a Minecraft base; a duet with Calli's
+  low rap and Nerissa's high voice.
+
+## History
+| Date | Event | Trace left |
+|---|---|---|
+| 2021-07-29 | Calli's first collab with IRyS | MorIRyS |
+| 2022-01-30 | First CHADCast | Chaos, Hope, and Death |
+| 2023-08-14 | Nerissa's compatibility test with Kiara | KiaRissa |
+| 2023-10-09 | -Promise- formed: IRyS and Kronii genmates | — |
+| 2024-01 | KiaRissa off-collab trip | Shared trip stories |
+| 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
+| 2026-04-23 | Nerissa's Tomodachi Life Miis of IRyS and Ina | — |
+
+## Glossary
+| Word | Meaning | Who says it |
+|---|---|---|
+| CHADCast | IRyS, Calli and Bae's talk show ("Chaos, Hope, And Death") | the three |
+| MorIRyS | IRyS and Calli | fans |
+| KiaRissa | Kiara and Nerissa | the two, fans |
+| K.I.R.A | Kronii, IRyS, Reine, Anya | fans |
+| senpai / kouhai | IRyS is a senior to Nerissa; Myth are seniors to both | everyone |
+
+## Conflicts and Story Hooks
+1. CHADCast records an episode while Calli and IRyS disagree on what counts as "chad."
+2. IRyS and Kronii race again at something mundane; the loser has to admit she was scared.
+3. Nerissa guests on Kiara's stream and fangirls so hard she forgets the topic.
+4. Calli and Nerissa rehearse a duet; Calli's flow meets Nerissa's flirting.
+5. Nerissa's Tomodachi Life island makes IRyS and Ina's Miis do something strange.
+
+## Links to Characters
+IRyS, Nerissa Ravencroft, and the six: Mori Calliope, Takanashi Kiara, Ninomae Ina'nis, Ouro Kronii,
+Gawr Gura (memory), Watson Amelia (affiliate).
+
+## Secrets
+(None.)
+
+## Hard Facts (continuity)
+- IRyS debuted 2021-07-11 (senior to Kronii by a month, to Nerissa by two years); Nerissa 2023-07-31.
+- CHADCast = IRyS, Calli, Bae. KiaRissa = Kiara and Nerissa. IRyS and Kronii are -Promise- genmates.
+- 2026 baseline: IRyS–Gura and Nerissa–Gura are memories; Ame appears as an affiliate guest.
+
+## Sources (checked 2026-10-01)
+- S1 Stream archive metadata (archive.ragtag.moe, read 2026-09-30). IRyS: BN3O2ELkwqg, ZhZOywPYLNE,
+  MXd7uOemEzc, hJUsFwoJe_A, QMm3SQotdBI, iswLHkhR4x4, 3L0AVntuhhA, tBPQW-MGNPM, XPdN8RN6eJw, yU5Vs7YHCQ4,
+  LKQm2RqQmoQ, 5eYkIqYmiaA, qqi8yXuH35Y, o9BR2Wxuwf0, RstEjhhy3Qw, OWqT53IpcY0, 33RSpTQbx6U, BmiGfkw-qzg,
+  rP8nSJkwLGE, u740WgBr39M, 6JF3eMx0QSc, mQr2DVYx_8M, GMtqCEHvUKY. Nerissa: vdmr7B__G3s, Rc8O5lB31_w,
+  D_uuZW2nknY, dxGzb807obQ, zYZ4BMpDIFw, Nb6RzqVEwRI, 0cYFDqSvG1c, 8d2zmPrZPhc, gti0m-CjAB0, hgMl8y2ufIg,
+  BUc6w7xiAuw, ywURoa_htrg, loYqb7qoKzw, DUPE4-8_RYs, dL6rqJXSAcI, 1BjQxvo51Lc. Mention counts computed
+  by Claude.
+- S2 IRyS wiki page, §Relationships, §Units and groups (secondary)
+- S3 Nerissa Ravencroft wiki page, §Relationships, §Lore, §Likes and dislikes, §Miscellaneous (secondary)
+- S4 Character files: IRyS (R20), Nerissa (N2), Kronii, Calli, Kiara, Ina
+
+---
+
+## [SW] Name
+IRyS and Nerissa Pairs
+
+## [SW] Role
+Relationship
+
+## [SW] Other Names
+MorIRyS, CHADCast, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
+
+## [SW] Description
+IRyS and Calli: Calli collabed with her days after IRyS's 2021 debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke). IRyS and Kronii: Promise genmates and friends since 2021, regulars at two-player games (A Way Out, Bokura, a Powerwash race, "May The Best Maid Win"); in 2026 IRyS said she could pull off Kronii's goddess look "somehow." IRyS and Ina: an early duo (It Takes Two, "It Takes Tako & Hope") who still play together. IRyS and Kiara: Kiara gave her a German crash course; nail-painting off-collab. Nerissa and Kiara (KiaRissa): Kiara is Nerissa's oshi; Kiara showed her around Minecraft; a 2024 off-collab trip; a 2025 "BIRB GIRLS" GIRLSTALK. Nerissa and Calli: a Baldur's Gate 3 party, the 2025 duet "OVER//RIDE," and Calli as a guest at Nerissa's 3D concert. Nerissa and IRyS: two singers; IRyS guested at that concert, and Nerissa put IRyS and Ina in Tomodachi Life.
+
+## [SW] Rules
+IRyS (2021) is Nerissa's senior; Myth are seniors to both. Recent pairings (IRyS with Kronii, Calli and Ina; Nerissa with Kiara and Calli) carry the most weight; pairs with Gura are memories. All are friendships and stream bits.
+
+## [SW] Sensory Details
+A three-way CHADCast call; a split-screen co-op with Kronii; KFP merch on Nerissa's shelf; Calli's low rap against Nerissa's high voice in one duet.
+
+## [SW] Secrets
+
+
+---
+
+## Open Questions
+1. The 2025 "KIARA & FRIENDS" spring concert names both IRyS and Nerissa in its archive entry; whether
+   they performed or were only thanked was not checked, so it is left out.
+
+
+==================== WORLD CARD FILE: 20261001-0001-world-hololive--Advent/claude-draft.md ====================
+
+---
+kind: world
+name: "hololive -Advent-"
+sw_section: Worldbuilding
+---
+
+# World Element: hololive -Advent-
+
+> Research dossier above; the Sudowrite Worldbuilding card is under the `## [SW]` headings.
+>
+> Scope: Nerissa Ravencroft's group as publicly shown, checked 2026-10-01. Evidence labels as in the other
+> world files. "Archive" = stream titles and descriptions on Nerissa's channel (archive.ragtag.moe, S4);
+> counts are streams mentioning the member per year (2023 → 2025), a rough measure (the archive holds 114,
+> 183 and 87 of her streams for those years and only 22 for 2026). Only what a Nerissa story needs.
+
+## One-line Concept
+Nerissa's group: five "criminals" who escaped from The Cell, a prison for anything too dangerous to exist,
+and debuted together as hololive English's third generation in July 2023. All five are active in 2026, and
+the "escaped convict" premise is a running bit they play with, not a fact they live by.
+
+## Type
+Faction / unit.
+
+## Members and Status (2026-10-01)
+- Active: Shiori Novella, Koseki Bijou, Nerissa Ravencroft, and the twins Fuwawa and Mococo Abyssgard
+  (FUWAMOCO, who share one channel). [Observed S1 member table, secondary]
+- Group fans: Adventrix; group oshi mark ⚠️; logo character "Pokey." [Observed S1, secondary]
+- Since the September 2026 merger the name is "hololive -Advent-" (before: "hololive English -Advent-").
+  [Observed S1; S2 Nerissa §2026, secondary]
+
+## How the Group Works (as it touches Nerissa)
+- **The premise as a bit:** each member was sealed in The Cell for being "untouchable"; Nerissa, the
+  "Demon of Sound," stole the master key from the guards on the way out and keeps it on her keychain. The
+  next generation, -Justice-, are law enforcers sent to catch the five fugitives, so Advent × Justice
+  collabs turn into prisoner-and-guard jokes (a 2026 merch reveal: "Like prisoner and my prison guard").
+  [Official S3; Observed S1, S2 §Lore, secondary; ASR Nerissa file N20, multi-speaker, not attributed]
+- **Nerissa and Shiori ("ShioRaven"):** her most-mentioned genmate (6 / 18 / 3). Nerissa calls Shiori her
+  "wife," Shiori plays hard to get, and the two keep a lore of fictional "children." Shiori claims she
+  knows where Nerissa's broken horn piece is and never mentioned it because Nerissa never asked.
+  [Observed S2 §Relationships, §Lore, secondary; S4]
+- **Nerissa and Bijou ("JewelBird"):** a raven who loves shiny things and a rock girl (12 / 18 / 0);
+  Bijou calls her "Nerizzler." [Observed S2, secondary; S4]
+- **Nerissa and FUWAMOCO ("Sound Hounds"):** after time with the twins she claims to be the third
+  Abyssgard sister, "Mofufu"; Fuwawa calls her "Newissa" (6 / 16 / 0). [Observed S2, secondary; S4]
+- **As a group:** relay streams for new outfits, a friendship test with swapped hairstyles (Nerissa got
+  Fuwawa's, dog ears included), and joint Expo appearances with -Justice- (2025, 2026).
+  [Observed S1, S2 §2025, secondary]
+- **Seniors:** Advent were kouhai to Myth and Promise from day one; Kiara hosted all five on HOLOTALK
+  (2023-08-12) within two weeks of their debut. [Observed S5 Kiara archive title]
+
+## History
+| Date | Event | Trace left |
+|---|---|---|
+| 2023-07-25 | "WANTED!" debut PV reveals the five | The fugitive premise |
+| 2023-07 (end) | Debuts; Nerissa's on 2023-07-31 (JST) | "Advent" |
+| 2023-08-12 | Advent are Kiara's 29th HOLOTALK guests | First big senior collab |
+| 2024 (summer) | Advent 3D debuts; Nerissa's on 2024-08-09 | The "Demon of Soup" soup |
+| 2025, 2026 | hololive SUPER EXPO with -Justice- | Prisoner-and-guard bits |
+| 2026-09 | Renamed "hololive -Advent-" in the merger | Current name |
+
+## Sensory Palette
+- See: the ⚠️ mark; Pokey on the logo; prison-gown outfits on merch; a master key on Nerissa's keychain.
+- Hear: five voices at once on one mic; "Mofufu!"; a mock-stern Justice "guard" voice.
+
+## Glossary
+| Word | Meaning | Who says it |
+|---|---|---|
+| The Cell | the prison Advent escaped from (lore) | everyone |
+| Adventrix | Advent's collective fans | official |
+| ShioRaven / JewelBird / Sound Hounds | Nerissa's pairings with Shiori / Bijou / FUWAMOCO | fans, members |
+| Mofufu | Nerissa as the "third Abyssgard sister" | Nerissa |
+| Jailbirds | Nerissa's own fans | Nerissa |
+
+## Conflicts and Story Hooks
+1. A -Justice- member "arrests" Nerissa on stream; she negotiates her release with soup.
+2. Shiori finally tells Nerissa where the horn piece is, as a bit, and chat demands proof.
+3. FUWAMOCO adopt "Mofufu" for a day, and Nerissa has to keep up with the twins' energy.
+4. An Advent anniversary relay where each member re-tells the escape differently.
+5. Bijou and Nerissa compete over a shiny thing in a game.
+
+## Links to Characters
+Nerissa Ravencroft (member). Kiara, Calli and IRyS appear as seniors (see "IRyS and Nerissa Pairs").
+
+## Secrets
+(None.)
+
+## Hard Facts (continuity)
+- Active 2026-10-01: Shiori, Bijou, Nerissa, Fuwawa, Mococo. Fans: Adventrix; mark ⚠️.
+- -Justice- (2024) are the "law enforcers" of the same storyline; stories treat it as a shared stream bit.
+
+## Sources (checked 2026-10-01)
+- S1 hololive production wiki page, -Advent- and -Justice- sections and member tables (secondary):
+  https://virtualyoutuber.fandom.com/wiki/Hololive
+- S2 Nerissa Ravencroft wiki page, §Relationships, §Lore, §2023–§2026 (secondary)
+- S3 Nerissa's official profile: https://hololive.hololivepro.com/en/talents/nerissa-ravencroft/
+- S4 Stream archive metadata, Nerissa's channel (archive.ragtag.moe, read 2026-09-30); mention counts
+  computed by Claude.
+- S5 Stream archive metadata, Kiara's channel: 0Q9FLtcAY0s (2023-08-12)
+- S6 Nerissa file in this project (N1, N2, N20)
+
+---
+
+## [SW] Name
+hololive -Advent-
+
+## [SW] Role
+Faction
+
+## [SW] Other Names
+Advent, holoAdvent, hololive English -Advent-
+
+## [SW] Description
+Nerissa Ravencroft's group, hololive English's third generation (debuted July 2023): Shiori Novella, Koseki Bijou, Nerissa, and the twins Fuwawa and Mococo Abyssgard (FUWAMOCO). Their shared lore is a stream bit: five "criminals" who escaped The Cell, a prison for anything too dangerous to exist; Nerissa stole the master key on the way out. The next generation, -Justice-, are the "law enforcers" sent to catch them, so joint streams become prisoner-and-guard jokes. Nerissa calls Shiori her "wife" while Shiori plays hard to get (ShioRaven); with Bijou she is a raven drawn to the shiny rock girl (JewelBird); with FUWAMOCO she claims to be the third sister, "Mofufu" (Sound Hounds). Kiara hosted all five on HOLOTALK two weeks after their debut. Fans: Adventrix, mark ⚠️.
+
+## [SW] Rules
+All five are active in 2026; the group is "hololive -Advent-" since the 2026 merger. The prison escape is lore they play for laughs on stream, never a real crime. Myth and Promise are their seniors.
+
+## [SW] Sensory Details
+The ⚠️ mark and Pokey on the logo; prison-gown merch; a stolen master key jingling on Nerissa's hip; five voices crowding one mic.
+
+## [SW] Secrets
+
+
+---
+
+## Open Questions
+(None.)
+
+
+==================== WORLD CARD FILE: 20261001-0018-world-Concerts-and-Live-Events/claude-draft.md ====================
+
+---
+kind: world
+name: "Concerts and Live Events"
+sw_section: Worldbuilding
+---
+
+# World Element: Concerts and Live Events
+
+> Research dossier above; the Sudowrite Worldbuilding card is under the `## [SW]` headings.
+>
+> Scope: the recurring live events of hololive and the cast's own concerts and 3D lives, checked
+> 2026-10-01. Evidence labels as in the other world files. Group history is on the two History cards;
+> this card is about what the events are and which ones each character has stood on.
+
+## One-line Concept
+The stages that punctuate the year: the spring fes and Expo, the summer EN concert, birthday and
+anniversary 3D lives, world tours and solo concerts, each one a memory the cast brings up on stream.
+
+## Type
+Recurring events / culture.
+
+## Recurring Events
+- **hololive fes. + hololive SUPER EXPO** (every March since 2023, in Japan): the agency-wide concert and
+  convention. 4th fes "Our Bright Parade" (2023), 5th "Capture the Moment" (2024), 6th "Color Rise
+  Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06/08). EN units share
+  Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
+- **hololive English concerts** (US, summer): "-Connect the World-" (2023-07-02), "-Breaking
+  Dimensions-" (2024-08-24/25, Kings Theatre, New York), "-All for One-" (2025-08-23/24, Radio City Music
+  Hall, New York), "Serendipity" (2026-07-03/04, Shrine Auditorium, Los Angeles), the last built around
+  partner pairs (Calli–Shiori, Kronii–Ina, Kiara–Bijou), each with a published interview.
+  [Observed S1; character files C11, K4, I7, T10]
+- **World tours:** "hololive STAGE World Tour'24 -Soar!-" (New York, Jakarta, Singapore, Atlanta, Kuala
+  Lumpur) and "World Tour'25 -Synchronize!-" led by Momosuzu Nene, Kureiji Ollie, Mori Calliope, IRyS and
+  Nerissa Ravencroft, with two guests per city (Ouro Kronii and Hakos Baelz in Sydney; Tokino Sora and
+  Sakura Miko in Hong Kong). [Observed S1 §2024, §2025]
+- **Birthday and anniversary 3D lives:** a member's own stream, often with a new song or outfit and
+  surprise guests from other units. [Observed character files]
+- **holoMeet** (since 2022): overseas fan events with yearly ambassadors (Gura 2022, IRyS 2023, Bae 2024,
+  Bijou 2025, Gigi 2026). [Observed S1]
+- **Summer events:** "hololive Summer" (2022, 2023), "holonatsu Paradise" (2025-07, with a VRChat
+  tournament and a butt-sumo tournament). [Observed S1]
+
+## The Cast on Stage
+| Character | Stages (selected) | Source |
+|---|---|---|
+| Mori Calliope | Solo concert "New Underworld Order" (2022-07-21); "GriMoire" at the Hollywood Palladium (2025-02-26), the first solo concert by a hololive production talent outside Japan; World Tour '25 lead; Serendipity with Shiori | Calli file C6, C19, C11; S1 |
+| Takanashi Kiara | 4th-anniversary live "MIRAGE" (2024-10-06); "KIARA & FRIENDS: H!P Cover Song Spring Concert" (2025-04-21); "Drawn to Dawn" with Ina (2026-03-27/28, The Wiltern); Serendipity with Bijou | Kiara file T11, T12, T10; S3 titles |
+| Ninomae Ina'nis | 3D live "Pleiades" (2024-12-28); "Drawn to Dawn" with Kiara; Serendipity with Kronii | Ina file I20, I7; S3 title |
+| Ouro Kronii | World Tour '25 Sydney guest; 3D birthday live "The Goddess Descends" with a new outfit (2026-03-13/14, Ame as guest); Serendipity with Ina | Kronii file K33, K4; S1 |
+| IRyS | Promise musical "The Broken Promise" (2024-12-14); 3D lives "The Devil Wears Hope" (2024-11-17), "HOPE UPON A STAR" (2025-03-16), "Racing Towards Hope" (2026-03, race-queen outfit); World Tour '25 lead; first solo concert "HOPE ||: Beyond the Stars," Tokyo, 2026-10-06 | IRyS file R2, R3; S1 |
+| Nerissa Ravencroft | 6th fes day 1 (2025-03-08); 3D concert "Requiem for Love – A JukeBox Musical" (2025-05-24, with Calli and IRyS as guests); Advent's "On the Run!" (2025-08-29); World Tour '25 lead | Nerissa file N2, N3; S1 |
+| Gawr Gura | Final 3D mini live on her graduation day (2025-05-01) | Gura file G5 |
+| Watson Amelia | As an affiliate: guest at Kronii's 2026 birthday live | Kronii file K33 |
+
+## How It Works in Stories
+- Concerts are shown through the avatar performance and the members' talk before and after: nerves,
+  rehearsals "with the team," the pair interview, what song they are most excited for. [Adaptation]
+- After a concert, members stream an aftertalk ("BDay Live Aftertalk") and gush about outfits and
+  guests. [Observed IRyS file R20]
+- Surprise guests are kept secret until the moment; members tease "a surprise" in titles.
+  [Observed S3 titles, e.g. "MIRAGE WITH A SURPRISE!?"]
+
+## Sensory Palette
+- See: glowsticks in member colors; an LED wall; a new 3D outfit's reveal; a city name on a tour poster.
+- Hear: a crowd shouting a call-and-response; a duet's harmony; the aftertalk chat flood of "cute."
+
+## Glossary
+| Word | Meaning | Who says it |
+|---|---|---|
+| fes | hololive's yearly agency-wide concert | everyone |
+| 3D live | a concert or show performed with the full-body avatar | everyone |
+| aftertalk | the stream after a live where she talks about it | members |
+| Serendipity pair | the 2026 EN concert partnership | members |
+
+## Conflicts and Story Hooks
+1. The night before Serendipity, the pairs rehearse each other's lines and break.
+2. IRyS counts down to her first solo concert in Tokyo; Kronii and Calli send messages.
+3. Nerissa watches a senpai's fes from the audience side and fangirls.
+4. An aftertalk where Kiara and Ina disagree about who cried first at "Drawn to Dawn."
+5. A tour stop in Sydney: Kronii joins Calli, IRyS and Nerissa as a guest.
+
+## Links to Characters
+All eight.
+
+## Secrets
+(None.)
+
+## Hard Facts (continuity)
+- EN concerts: 2023-07-02, 2024-08-24/25, 2025-08-23/24, 2026-07-03/04 (Serendipity).
+- IRyS's first solo concert is 2026-10-06, after the 2026-09-30 baseline.
+
+## Sources (checked 2026-10-01)
+- S1 hololive production wiki page, §History 2022–2026 (secondary): https://virtualyoutuber.fandom.com/wiki/Hololive
+- S2 Nerissa Ravencroft wiki page, §2025 (secondary)
+- S3 Stream archive metadata (archive.ragtag.moe): 0LoG81pLS8c (Kiara, 2024-10-06), jjLLByDa3Xc (Kiara,
+  2025-04-21), 3n9igJnSXtQ (Ina, 2024-12-28), qqi8yXuH35Y (Kronii, 2026-03-14), V0plPBgyqPs (IRyS,
+  2025-03-16)
+- S4 Character files in this project (C6, C11, C19; T10–T12; I7, I20; K4, K33; R2, R3, R20; N2, N3; G5)
+
+---
+
+## [SW] Name
+Concerts and Live Events
+
+## [SW] Role
+Culture
+
+## [SW] Other Names
+fes, hololive fes, SUPER EXPO, EN concert, Serendipity, world tour, 3D live, birthday live, aftertalk
+
+## [SW] Description
+The stages of the hololive year. Every March, hololive fes and SUPER EXPO in Japan (6th fes "Color Rise Harmony," 2025, with Nerissa; 7th "Ridin' on Dreams," 2026). Every summer, a hololive English concert in the US: "-Connect the World-" (2023), "-Breaking Dimensions-" (New York, 2024), "-All for One-" (Radio City, 2025), and "Serendipity" (Los Angeles, 2026-07-03/04), built on pairs: Calli with Shiori, Kronii with Ina, Kiara with Bijou. World Tour '25 "-Synchronize!-" was led by Calli, IRyS, Nerissa, Nene and Ollie, with Kronii and Bae as Sydney guests. The cast's own stages: Calli's "GriMoire" at the Hollywood Palladium (2025, the first hololive solo concert outside Japan); Kiara and Ina's duo concert "Drawn to Dawn" (2026); Kronii's "The Goddess Descends" birthday live with Ame as guest (2026); IRyS's "HOPE UPON A STAR" and "Racing Towards Hope" lives and her first solo concert, Tokyo, 2026-10-06; Nerissa's "Requiem for Love – A JukeBox Musical" (2025) with Calli and IRyS as guests; Gura's final mini live (2025-05-01). After a live comes the aftertalk stream.
+
+## [SW] Rules
+Concerts are told through the avatar performance and the members' talk before and after (nerves, rehearsals, aftertalks), never the performers' physical bodies. Surprise guests stay secret until revealed. IRyS's solo concert has not happened yet at the 2026-09-30 baseline.
+
+## [SW] Sensory Details
+Glowsticks in member colors; an LED wall; a new 3D outfit's reveal; a call-and-response from the crowd; the aftertalk chat flooding "cute."
+
+## [SW] Secrets
+
+
+---
+
+## Open Questions
+1. Which characters performed at the four EN concerts (2023–2025 line-ups) was not checked; only
+   Serendipity's pairs are on the card.
+
+
+==================== WORLD CARD FILE: 20261001-0018-world-Cross-Branch-Friends/claude-draft.md ====================
+
+---
+kind: world
+name: "Cross-Branch Friends"
+sw_section: Worldbuilding
+---
+
+# World Element: Cross-Branch Friends
+
+> Research dossier above; the Sudowrite Worldbuilding card is under the `## [SW]` headings.
+>
+> Scope: the eight characters' public ties to members outside English (Japanese, Indonesian, DEV_IS,
+> HOLOSTARS) and a few outside hololive, checked 2026-10-01. Evidence labels as in the other world files.
+> "Archive" = stream titles and descriptions on the character's own channel (archive.ragtag.moe, S1);
+> counts are streams mentioning the other per year, a rough measure (thin for 2026). Unit names come from
+> each member's wiki §Relationships (S2). Recent years weigh more (project rule).
+
+## One-line Concept
+Beyond EN: the senpai they idolize, the Indonesian friends they game with every month, and the unit
+names fans gave their pairings, the web that the 2026 merger now lets them use more freely.
+
+## Type
+Relationship web.
+
+## By Character
+- **Mori Calliope:** Hoshimachi Suisei is the senpai she is starstruck by ("Death Star"): she drew her
+  ("DRAWING MY SENPAI," 2021), Suisei featured at Calli's first solo concert ("Wicked," 2022), they talked
+  live shows together (2023), and Calli hosts watch parties of Suisei's concerts ("We're Screaming Loud
+  for Senpai!", 2024-11). Kobo Kanaeru calls her "Uncle Dad" ("Father Daughter GOLF," 2022; Kobo at her
+  house, 2023). Units: "Holodeath" (with Kureiji Ollie), "LYRA" (with Koganei Niko, Ayunda Risu, Amane
+  Kanata, Elizabeth), "MoRikka" (with HOLOSTARS' Rikka; fans "DeadTuners"). Outside hololive: friends
+  with Milky Queen, whom she credits for introducing her to VTubers, and Ironmouse (a shared Underworld
+  theme). [Observed S1 titles; S2 Calli §Relationships; Calli file]
+- **Takanashi Kiara:** Usada Pekora is her oshi ("Senpai! Be my guide for the day!", 2020; HOLOTALK's
+  24th guest, 2022). Pavolia Reine is her most-mentioned ID friend (30 streams; their pair name "PavoNashi"; a VR
+  "vacation," a Minecraft summer festival; the bird unit "HOLOTORI" with Subaru, Reine, Mumei and Lui); Kobo calls her "Mommy Kiwawa." Other units:
+  "O'riends" (Momosuzu Nene), "KoAra Connect" (Hakui Koyori), "SunMoon"/"Eclipse" (Moona Hoshinova).
+  Outside hololive: "PomuTori" (Pomu Rainpuff), "Mintori" (Mint Fantôme). [Observed S1; S2 Kiara; Kiara file]
+- **Ninomae Ina'nis:** an artist among artists: fellow ocean unit UMISEA (Minato Aqua, Houshou Marine,
+  Sakamata Chloe, Gura); "HoloJEI" (Tsunomaki Watame, Kureiji Ollie, Anya Melfissa); "TakoBazo" (Vestia
+  Zeta); "TakoNeko" (Nekomata Okayu, with a 2025 Mythmash duet, "Kurukuru Cruise"); Shiranui Flare
+  appeared on her 2025 AmiAmi special ("Flare?!!?"). She admires Marine as an artist. [Observed S1; S2 Ina; Ina file]
+- **Gawr Gura** (graduated): "Apex Predators" (Shishiro Botan), UMISEA, "SharPea" (Pavolia Reine), and
+  Murasaki Shion (Minecraft and Mario Kart in 2021; a "Renai Circulation" duet cover, 2022). [Observed S1; S2 Gura]
+- **Watson Amelia** (affiliate): "KoMeHa" (Kobo Kanaeru, Kazama Iroha), "ZetAme" (Vestia Zeta); outside
+  hololive, "SelAMei" (with Mumei and Selen Tatsuki). [Observed S2 Ame]
+- **Ouro Kronii:** her steadiest cross-branch partner is Kaela Kovalskia (21 streams; survival and
+  sim co-ops every few months: Raft 2023–24, Panicore, Luma Island 2024, Old Market Simulator 2025); also
+  "soranii" with Tokino Sora, fan unit K.I.R.A (with IRyS, Reine, Anya), and Raora Panthera of Justice
+  (Portal 2, Split Fiction, No Man's Sky 2026; "Pizza Time"). [Observed S1; S2 Kronii; Kronii file]
+- **IRyS:** Shiranui Flare is her closest JP friend (23 streams, 11 in 2024): horror and camping co-ops
+  ("ふーたんとキャンプだ！"), Splatoon private matches, an off-collab karaoke (2025-03); units "Star Flower"
+  (Moona, Suisei, AZKi), "IRySora" (Tokino Sora), "ReiRyS" (Reine), "OKFAIR" (Ollie, Kronii, Fauna, Anya,
+  Reine). [Observed S1; S2 IRyS]
+- **Nerissa Ravencroft:** Houshou Marine is her oshi (plush, figures, an off-collab with Marine and
+  FUWAMOCO, 2024); "BLUE·MEGAMISAMA" with Tokino Sora; "V3LVET" with Raora and Moona Hoshinova; Kobo
+  calls her "Nori-chan." [Observed S1; S2 Nerissa; Nerissa file]
+
+## How It Works in Stories
+- Japanese members are senpai: EN members use "-senpai," switch to polite Japanese and get openly
+  nervous; Indonesian members are EN's peers and long-time collab partners. [Observed character files]
+- Since the 2026-09-07 merger, cross-language collabs are encouraged; stories can show a first-ever pairing
+  as new. [Observed S3 §2026]
+- Members of other agencies appear only as brief, friendly mentions. [Adaptation]
+
+## Sensory Palette
+- See: a bilingual stream title with both names; a senpai's plush on a shelf; a joint thumbnail with a
+  Japanese caption.
+- Hear: "Senpai!" in a pitched-up nervous voice; Japanese and English mixed mid-sentence; a Kobo
+  nickname ("Mommy Kiwawa," "Uncle Dad").
+
+## Glossary
+| Word | Meaning | Who says it |
+|---|---|---|
+| oshi | the member you support most | everyone |
+| senpai | a senior member, often Japanese | everyone |
+| Death Star | Calli and Suisei | fans |
+| PavoNashi / HOLOTORI | Kiara with Reine / the bird unit | fans |
+| UMISEA | the ocean unit (Aqua, Marine, Chloe, Ina, Gura) | official, members |
+| K.I.R.A | Kronii, IRyS, Reine, Anya | fans |
+
+## Conflicts and Story Hooks
+1. Calli finally gets a one-on-one with Suisei after the merger and can't form sentences.
+2. Kronii and Kaela's endless sim co-op hits the in-game stock market.
+3. IRyS and Flare go camping in a horror game again; IRyS insists she isn't scared.
+4. Nerissa meets Marine at an event and forgets every word of Japanese.
+5. Kiara and Reine plan another "vacation" in VR.
+
+## Links to Characters
+All eight.
+
+## Secrets
+(None.)
+
+## Hard Facts (continuity)
+- Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).
+- Kronii's steadiest cross-branch partner: Kaela. IRyS's closest JP friend: Flare.
+
+## Sources (checked 2026-10-01)
+- S1 Stream archive metadata (archive.ragtag.moe, read 2026-09-30); titles quoted above (e.g. Calli
+  2021-07-24, 2022-08-19, 2023-04-12, 2024-11-14; Kiara 2020-11-26, 2022-11-18, 2022-05-14; Kronii
+  2023-10-17 to 2025-06-05, 2026-05-03; IRyS 2024-03-20, 2025-01-17, 2025-03-26; Ina 2025-07-21,
+  2025-08-04; Gura 2021-10-09, 2022-06-13; Nerissa 2024-12-04). Mention counts computed by Claude.
+- S2 Member wiki pages, §Relationships / units (secondary): Calli, Kiara, Ina, Gura, Ame, Kronii, IRyS, Nerissa
+- S3 hololive production wiki page, §2026 (secondary)
+- S4 Character files in this project
+
+---
+
+## [SW] Name
+Cross-Branch Friends
+
+## [SW] Role
+Relationship
+
+## [SW] Other Names
+Death Star, PavoNashi, HOLOTORI, UMISEA, K.I.R.A, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET, senpai, oshi
+
+## [SW] Description
+The cast's ties beyond EN. Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is her closest Indonesian friend ("PavoNashi"; both are in the bird unit "HOLOTORI"). Ina belongs to the ocean unit UMISEA (Aqua, Marine, Chloe, Gura) and duets with Nekomata Okayu. Gura had "Apex Predators" with Shishiro Botan and a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's steadiest cross-branch partner is Kaela Kovalskia (survival and sim co-ops for years), plus "soranii" with Tokino Sora and Portal-style co-ops with Justice's Raora. IRyS's closest Japanese friend is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA") and Kobo calls her "Nori-chan."
+
+## [SW] Rules
+Japanese members are senpai: EN members use "-senpai," switch to polite Japanese and get nervous. Indonesian members are peers. Since the 2026 merger, cross-language collabs are encouraged. Members of other agencies are only brief, friendly mentions.
+
+## [SW] Sensory Details
+A bilingual stream title with both names; a senpai's plush on a shelf; "Senpai!" in a nervous, pitched-up voice; Japanese and English mixed mid-sentence.
+
+## [SW] Secrets
+
+
+---
+
+## Open Questions
+1. HOLOSTARS ties (Calli's "MoRikka") are on the dossier only; the author may want a male-member policy.
+
+
+==================== WORLD CARD FILE: 20261001-0018-world-hololive-History-2023-2026/claude-draft.md ====================
+
+---
+kind: world
+name: "hololive History 2023-2026"
+sw_section: Worldbuilding
+---
+
+# World Element: hololive History 2023–2026
+
+> Research dossier above; the Sudowrite Worldbuilding card is under the `## [SW]` headings.
+>
+> Scope: the public history of hololive from 2023 to the 2026-09-30 baseline, checked 2026-10-01. Evidence
+> labels as in the other world files. Dates JST unless noted (PDT/EDT for US events). Graduation and
+> conclusion dates come from wiki infoboxes; no reasons are given or implied (project rule). Concerts
+> have their own card ("Concerts and Live Events").
+
+## One-line Concept
+The recent past that shapes the present: new generations (Advent, ReGLOSS, Justice, FLOW GLOW), the
+"conclusion of streaming activities" that keeps Ame an affiliate, the 2025 farewells (Fauna, Mumei,
+Gura), the world tours, and the 2026 merger that made everyone simply "hololive."
+
+## Type
+Historical events.
+
+## Timeline
+| Date | Event | Why the cast remembers it |
+|---|---|---|
+| 2023-03-18/19 | hololive SUPER EXPO 2023 and 4th fes. "Our Bright Parade" | — |
+| 2023-03-28 | The fan app "holoplus" is introduced | — |
+| 2023-04 | holoMeet 2023 ambassadors include IRyS | IRyS represents EN |
+| 2023-07-02 | hololive English 1st concert "-Connect the World-" | EN's first concert |
+| 2023-07-25/31 | **-Advent- revealed ("WANTED!") and debuts**: Shiori, Bijou, **Nerissa**, Fuwawa, Mococo | Nerissa's origin |
+| 2023-09-09/10 | hololive DEV_IS opens with ReGLOSS (Ao, Kanade, Ririka, Raden, Hajime) | Japanese kouhai |
+| 2023-10-08/09 | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
+| 2024-01-16 | Yozora Mel leaves hololive | Not discussed in stories |
+| 2024-03-16/17 | SUPER EXPO 2024 and 5th fes. "Capture the Moment" | — |
+| 2024-04 | holoMeet 2024 ambassadors include Hakos Baelz | — |
+| 2024-06-21/22 PDT | **-Justice- debuts**: Elizabeth Rose Bloodflame, Gigi Murin, Cecilia Immergreen, Raora Panthera ("law enforcers" chasing Advent) | EN's newest kouhai |
+| 2024-08-23 | "ENigmatic Recollection" (ENReco) announced: EN members in the fantasy world Libestal, via a Minecraft series, animation and songs | Guilds: IRyS in "Cerulean Cup," Nerissa and Gura in "Scarlet Wand" |
+| 2024-08-24/25 EDT | EN 2nd concert "-Breaking Dimensions-" (Kings Theatre, New York), part of World Tour '24 "-Soar!-" | — |
+| 2024-08-28 | Minato Aqua graduates | — |
+| 2024-09-30 | **Watson Amelia concludes regular activities and stays an affiliate** | Ame appears as a guest |
+| 2024-11-09 | DEV_IS second unit FLOW GLOW debuts | — |
+| 2024-11-29 | COVER introduces "conclusion of streaming activities" as distinct from graduation (affiliates can still appear in projects) | Why Ame can come back for events |
+| 2025-01-03 | Ceres Fauna graduates | Promise remembers her |
+| 2025-01-26 | Sakamata Chloe concludes streaming activities (affiliate) | — |
+| 2025-03-08/09 | SUPER EXPO 2025 and 6th fes. "Color Rise Harmony" | Nerissa performs on day 1 |
+| 2025-04 | World Tour '25 "-Synchronize!-" announced, led by Momosuzu Nene, Kureiji Ollie, **Mori Calliope, IRyS and Nerissa Ravencroft**, with guests per city (Kronii and Bae in Sydney) | Three of the cast on one tour |
+| 2025-04-26 | Murasaki Shion graduates | — |
+| 2025-04-27/28 | Nanashi Mumei graduates | Promise becomes three |
+| 2025-05-01 | **Gawr Gura graduates** | Myth's first graduation; her last post: "keep swimming! always!" |
+| 2025-05-02 | ENReco chapter 2 "The Chains of Fate" | — |
+| 2025-07-16 | hololive RECORDS label launched | — |
+| 2025-08-23/24 EDT | EN 3rd concert "-All for One-" (Radio City Music Hall, New York) | — |
+| 2025-08-29 | Advent 2nd-anniversary live "On the Run!" ("The Story of Advent") | Nerissa's group milestone |
+| 2025-10-03 | Hiodoshi Ao (ReGLOSS) leaves | — |
+| 2025-10-15 | Official fan club launches | — |
+| 2025-11-15 | hololive Indonesia 1st concert "Chromatic Future" | — |
+| 2025-12-27 | Amane Kanata graduates | — |
+| 2026-03-06/08 | SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" | — |
+| 2026-03-27/28 | Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) | TakoTori on stage |
+| 2026-05-24 | ENReco chapter 3 "Broken Bonds" | — |
+| 2026-07-03/04 | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around partner pairs (Calli–Shiori, Kronii–Ina, Kiara–Bijou) | The current partnerships |
+| 2026-07-23 | Rhythm game "hololive Dreams" released | — |
+| 2026-09-07 | "hololive Next": all female branches merge into one **hololive**; new logo; members to get updated designs (Tokino Sora first); "hololive raku" app; TV anime "Odeholo"; 10th-anniversary countdown | The present-day setting |
+| 2026-09-09 | Kiara's manager posts that Kiara is taking a short break until further notice | Status only; no reason is used in stories [Observed—X post, research/x-posts.md] |
+| 2026-09-18 | New unit ASOBI★MAWARI-TAI! reveals its four members | The newest kouhai |
+| 2026-10-06 (upcoming) | IRyS's first solo concert "HOPE ||: Beyond the Stars" (Tokyo) | IRyS's next big stage |
+
+## How It Works in Stories
+- After 2026-09-07 everyone introduces herself as "from hololive"; old branch names survive as units and
+  in casual speech ("EN," "holoEN"). [Observed S1 §2026, secondary]
+- Affiliates (Ame) can appear at events and in projects; graduates (Gura, Fauna, Mumei) appear only as
+  memories, callbacks and songs. [Official S1 2024-11-29 notice, secondary]
+- ENReco is a separate, fictional continuity the members play in (guilds, a fantasy world), a story inside
+  the story. [Observed S1 §2024, secondary]
+
+## Sensory Palette
+- See: the new 2026 hololive logo; a world-tour poster with city names; a "WANTED!" poster of Advent.
+- Hear: "from hololive," with no branch; a farewell stream's last song; a fes crowd counting down.
+
+## Glossary
+| Word | Meaning | Who says it |
+|---|---|---|
+| affiliate | concluded streaming, still with hololive | official, members |
+| ENReco | ENigmatic Recollection | members, fans |
+| DEV_IS | the 2023–2026 Japanese sub-branch (ReGLOSS, FLOW GLOW) | everyone |
+| the merger | 2026-09-07 single "hololive" | members |
+
+## Conflicts and Story Hooks
+1. The first week after the merger: an EN member gets a collab invite from a JP senpai she never dared ask.
+2. An affiliate guest appearance: Ame drops into a concert and the crowd loses it.
+3. A world-tour city stop: Calli, IRyS and Nerissa share a dressing room and a pre-show ritual.
+4. A Promise anniversary after 2025, the three remembering Fauna and Mumei with jokes.
+5. IRyS's nerves before her first solo concert in Tokyo.
+
+## Links to Characters
+All eight. Nerissa (Advent, 2023); IRyS and Kronii (Promise, 2023); Ame (affiliate, 2024); Gura
+(graduated, 2025); Calli, IRyS and Nerissa (World Tour '25); Kiara and Ina (Drawn to Dawn); Kronii, Ina,
+Kiara and Calli (Serendipity pairs).
+
+## Secrets
+(None.)
+
+## Hard Facts (continuity)
+- Merger 2026-09-07. Ame affiliate since 2024-09-30. Gura graduated 2025-05-01; Fauna 2025-01-03;
+  Mumei 2025-04-27/28.
+- EN concerts: 1st 2023-07-02, 2nd 2024-08-24/25, 3rd 2025-08-23/24, 4th "Serendipity" 2026-07-03/04.
+
+## Sources (checked 2026-10-01)
+- S1 hololive production wiki page, §History 2023–2026 (secondary): https://virtualyoutuber.fandom.com/wiki/Hololive
+- S2 Member wiki infoboxes for retirement and conclusion dates (secondary): Yozora Mel, Minato Aqua,
+  Ceres Fauna, Sakamata Chloe, Murasaki Shion, Nanashi Mumei, Gawr Gura, Hiodoshi Ao, Amane Kanata,
+  Watson Amelia
+- S3 Character files in this project (Calli C11, Kronii K4, Ina I7, Kiara T10–T12, IRyS R2, Nerissa N2)
+
+---
+
+## [SW] Name
+hololive History 2023-2026
+
+## [SW] Role
+Event
+
+## [SW] Other Names
+recent hololive history, the merger, the 2025 graduations, holoEN's later generations
+
+## [SW] Description
+The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30), under COVER's new "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; EN's 3rd concert at Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; EN's 4th concert "Serendipity" in Los Angeles (pairs Calli–Shiori, Kronii–Ina, Kiara–Bijou); on 2026-09-07 every branch merges into one "hololive"; IRyS's first solo concert is set for 2026-10-06 in Tokyo.
+
+## [SW] Rules
+After 2026-09-07 members say "from hololive"; old group names survive as units. Affiliates may appear at events; graduates appear only as memories. ENReco is a fictional story the members play in, separate from their persona lore.
+
+## [SW] Sensory Details
+The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!" poster; a fes crowd counting down; a farewell stream's last song.
+
+## [SW] Secrets
+
+
+---
+
+## Open Questions
+1. Serendipity pairs for IRyS and Nerissa were not found in the sources read; add them if the author has them.
+2. Kiara has been on a short break since 2026-09-09 (her manager's post; reason not used). Should
+   stories set at the 2026-09-30 baseline show her on break, or treat the baseline as just before it?
+
+
+==================== WORLD CARD FILE: 20261001-0018-world-hololive-History-to-2022/claude-draft.md ====================
+
+---
+kind: world
+name: "hololive History to 2022"
+sw_section: Worldbuilding
+---
+
+# World Element: hololive History to 2022
+
+> Research dossier above; the Sudowrite Worldbuilding card is under the `## [SW]` headings.
+>
+> Scope: the public history of hololive up to the end of 2022 as the cast would remember it, checked
+> 2026-10-01. Evidence labels as in the other world files. Dates are JST unless noted. Graduation dates
+> come from the wiki infoboxes; no reasons are given or implied (project rule).
+
+## One-line Concept
+The shared past every member carries: how a single 3D-avatar app became an agency of generations,
+branches and a few departures, and how the English branch arrived in 2020 and became its biggest story.
+
+## Type
+Historical events.
+
+## Timeline
+| Date | Event | Why the cast remembers it |
+|---|---|---|
+| 2017-09-07 | Tokino Sora makes COVER's first VTuber broadcast | "Sora-senpai" is everyone's origin point |
+| 2017-12-21 | The "hololive" app launches | Where the name came from |
+| 2018-05 / 06 | hololive 1st generation debuts (Fubuki, Matsuri, Haato, Aki, Mel, Chris) | The first "gen" |
+| 2018-08 / 09 | 2nd generation (Aqua, Shion, Ayame, Choco, Subaru); Sakura Miko debuts (2018-08-01) | Senpai the EN members grew up watching |
+| 2018-12 | hololive GAMERS (Fubuki, Mio; later Okayu, Korone) | Gaming senpai |
+| 2019 | Suisei and AZKi join via INoNaKa Music; 3rd gen "hololive Fantasy" (Pekora, Rushia, Marine, Flare, Noel); hololive China begins | Kiara's oshi Pekora; Nerissa's oshi Marine; Calli's starstruck senpai Suisei |
+| 2019-12 | 4th gen (Coco, Kanata, Watame, Towa, Luna); hololive, HOLOSTARS and INoNaKa Music unite as "hololive production" | The modern brand |
+| 2020-04 | hololive Indonesia gen 1; hololive English auditions announced | The overseas branches |
+| 2020-08 | 5th gen (Lamy, Nene, Botan, Polka; Aloe graduated the same month) | The JP generation just before Myth |
+| 2020-09-08 | hololive English announced; Myth's members appear on X | "Myth's birthday" season |
+| 2020-09-12/13 | **Myth debuts:** Calli (first), Kiara, Ina, Gura, Ame | The cast's origin |
+| 2020-10-22 | Gura becomes the first hololive member to reach 1 million subscribers | A Myth legend |
+| 2020-12 | ID gen 2 (Ollie, Anya, Reine); hololive China ends | K.I.R.A partners (Reine, Anya) |
+| 2020-12-10 | Kiara's channel briefly terminated, then restored ("#PhoenixDown") | A Kiara rebirth joke |
+| 2021-05-30 | Kiara reaches 1 million: every Myth member is over 1 million | A Myth first |
+| 2021-06-30 | Gura passes Kizuna AI as the most-subscribed VTuber | A Myth legend |
+| 2021-07-01 | Kiryu Coco graduates | — |
+| 2021-07-11 | **IRyS debuts** as the VSinger of Project: HOPE | Hope arrives |
+| 2021-08-23 | **-Council- debuts:** Sana, Fauna, **Kronii**, Mumei, Bae | Kronii's origin |
+| 2021-11 | 6th gen "Secret Society holoX" (La+, Lui, Koyori, Chloe, Iroha) | — |
+| 2022-02-24 | Uruha Rushia leaves hololive | Not discussed in stories |
+| 2022-03 | ID gen 3 (Zeta, Kaela, Kobo) | Kobo's "Mommy Kiwawa" and "Uncle Dad" |
+| 2022-03-20 | hololive fes at Makuhari (#つながるホロライブ), day 2: Calli and Kiara perform | Calli: "My dream came true, my heart is exploding." Kiara: "MAKUHARI WAS ON FIRE!" [Observed—X posts, S4] |
+| 2022-04-26 | holoMeet begins; Gura is an ambassador | Global events |
+| 2022-07-31 | Tsukumo Sana graduates | Council becomes four |
+| 2022-09 | hololive's 5th anniversary | — |
+
+## How It Works in Stories
+- This is shared memory: members refer to these moments as in-jokes and milestones ("back when Myth was
+  the only EN gen," "Gura's million"), not as lectures.
+- Departures are named as "graduated" or "left" with no reasons, rumors or details. [Project rule]
+- Before a date, the world is as it was then: no Council before 2021-08, no Advent before 2023-07.
+
+## Sensory Palette
+- See: a 2020 debut thumbnail; a "1,000,000" celebration screen; the old hololive English logo.
+- Hear: senpai names said with reverence ("Sora-senpai," "Suisei-senpai"); chat spamming a milestone.
+
+## Glossary
+| Word | Meaning | Who says it |
+|---|---|---|
+| gen 0 / 1st gen … | Japanese generations | everyone |
+| GAMERS | Fubuki, Mio, Okayu, Korone | everyone |
+| hololive Fantasy | the 3rd generation | fans |
+| holoID / holoEN | the Indonesian / English branches (merged 2026) | everyone |
+| Myth | EN's first generation | everyone |
+
+## Conflicts and Story Hooks
+1. A Myth anniversary stream replays the 2020 debuts; Calli insists she was "first."
+2. A member retells where she was when Gura hit a million.
+3. A JP senpai who debuted in 2018 tells EN kouhai what the early days were like.
+
+## Links to Characters
+All eight: Myth (2020), IRyS (2021-07), Kronii (2021-08); Nerissa arrives later (see the 2023–2026 card).
+
+## Secrets
+(None.)
+
+## Hard Facts (continuity)
+- Myth debuted 2020-09-12/13 JST; IRyS 2021-07-11; Council 2021-08-23.
+- Graduations to 2022: Aloe 2020-08-31, Coco 2021-07-01, Rushia 2022-02-24, Sana 2022-07-31.
+
+## Sources (checked 2026-10-01)
+- S1 hololive production wiki page, §History 2017–2022 (secondary): https://virtualyoutuber.fandom.com/wiki/Hololive
+- S2 Member wiki infoboxes for debut and retirement dates (secondary): Kiryu Coco, Uruha Rushia, Mano
+  Aloe, Tsukumo Sana
+- S3 Character files in this project (Calli, Kiara, Ina, Gura, Ame, IRyS, Kronii)
+- S4 The cast's X posts, via wiki citations: research/x-posts.md (Calli 1505506437115662339, Kiara
+  1505507829695885313; Gura 1319328921305964544 on her million)
+
+---
+
+## [SW] Name
+hololive History to 2022
+
+## [SW] Role
+Event
+
+## [SW] Other Names
+early hololive, the old days, Myth's debut, the first EN generation
+
+## [SW] Description
+The shared past the cast remembers. 2017: Tokino Sora makes COVER's first broadcast. 2018–2019: the Japanese generations debut (1st gen, 2nd gen with Aqua and Shion, GAMERS, 3rd gen "Fantasy" with Pekora and Marine, Suisei, 4th gen with Coco and Kanata), and in late 2019 hololive, HOLOSTARS and INoNaKa Music become "hololive production." 2020: the Indonesian branch opens; on 2020-09-12/13 hololive English -Myth- debuts (Calli first, then Kiara, Ina, Gura, Ame); Gura becomes the first hololive member to reach a million subscribers (2020-10-22: "I am an overwhelmed, but very happy shark") and in 2021 the most-subscribed VTuber anywhere; by 2021-05-30 all of Myth pass a million. 2021: IRyS debuts as Project: HOPE's VSinger (07-11), -Council- debuts with Kronii (08-23), holoX debuts, Coco graduates. 2022: ID gen 3 (Kobo, Zeta, Kaela), Calli and Kiara perform at the hololive fes in Makuhari (03-20; Kiara: "MAKUHARI WAS ON FIRE!"), holoMeet starts with Gura as ambassador, Calli holds her first solo concert (07-21), and Sana graduates (07-31).
+
+## [SW] Rules
+These are memories and in-jokes, not lectures. Departures are "graduated" or "left," never explained. A story set in the past uses only what existed then.
+
+## [SW] Sensory Details
+A 2020 debut thumbnail; a "1,000,000" celebration screen; the old hololive English logo; senpai names said with reverence.
+
+## [SW] Secrets
+
+
+---
+
+## Open Questions
+(None.)
 
 
 ==================== CHARACTER CARD EDITS (new [SW] text) ====================
@@ -1760,8 +2603,11 @@ Kronii's avatar is 168 cm tall, with short dark-blue hair that falls in long loc
 [SW] Voice & Delivery:
 A low speaking register, deep like Calli's: powerful and well-controlled, with an older-sister feel, and a wide range she once pushed into a high-pitched voice at a viewer's request. Her default delivery is dry and deadpan at an unhurried, medium pace. When frightened she lets out a startle squawk. She vocalizes explosively when she takes damage or dies in games. Sincere lines come out plain and complete, without a joke attached.
 
+[SW] Audio Tags:
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: low alto, the lowest in the cast (about 180 Hz), relaxed medium pace (about 120–127 words a minute), dry, controlled, American English. Default tags: [deadpan], [dry], [relaxed]. By situation: greeting [relaxed] "Kroniichiwa!"; bragging [deadpan, flat, slow]; jump scare [startled squawk] GWAK! then [trying to stay calm]; misplay [dry]; frustrated [irritated, short] with a swear; praised [deadpan], or [flustered, quick] when it lands; self-roast [dry, amused]; horror tension [low, uneasy]; sincere [plain, warm, unhurried]; good night [softer] "KroYasumi~"; a requested bit [high-pitched, put-on voice]. Signature sounds: [startled squawk] GWAK! (sharp, far above her speaking voice); [yelps] and [grunts] when hit. Keep in the words: short plain statements; a beat (ellipsis or new sentence) before the punchline; self-praise stated as fact; mistakes owned aloud ("that's on me"); swears when startled. Pronounce: Ouro Kronii /ˈoʊɹoʊ ˈkɹoʊni/, Kroniichiwa /ˌkɹoʊniˈtʃiːwɑ/, Kronies /ˈkɹoʊniz/, GWAK /ɡwɑk/. Never as default: [giggles], [bubbly], [cheerful], breathy seduction.
+
 [SW] Relationships:
-Ninomae Ina'nis: 2026 concert partner (Octo'Clock, Serendipity); "Just two punny people," and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny." IRyS: Promise genmate who once wondered aloud how Kronii sounds when she's scared. Nanashi Mumei (graduated): Council genmate (KronMei). Ceres Fauna (graduated): Council genmate who described Kronii's "gap moe." Mori Calliope: her first collab partner outside her generation (2021); Calli calls her "Kronster," Kronii teases her about being 1 cm taller, and they bill themselves "Time and Death" in horror co-ops and mock feuds. Gigi Murin: collaborator in the units "TimeChaser" and "Clockwork Orange." Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: "Pizza Time" partner who calls her "Tam Tender." Takanashi Kiara: a fan before Kronii debuted who calls her "quasoni." Gawr Gura (graduated): SNOTCast, and Kronii was one of Gura's regular partners in her last months. Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live.
+Ninomae Ina'nis: 2026 concert partner (Octo'Clock, Serendipity); "Just two punny people," and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny." IRyS: Promise genmate and two-player rival (A Way Out, Bokura, a Powerwash "Best Maid" race) who once wondered aloud how Kronii sounds when she's scared, and in 2026 said she could pull off Kronii's goddess look "somehow." Nanashi Mumei (graduated): Council genmate (KronMei). Ceres Fauna (graduated): Council genmate who described Kronii's "gap moe." Mori Calliope: her first collab partner outside her generation (2021); Calli calls her "Kronster," Kronii teases her about being 1 cm taller, and they bill themselves "Time and Death" in horror co-ops and mock feuds. Gigi Murin: collaborator in the units "TimeChaser" and "Clockwork Orange." Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: "Pizza Time" partner who calls her "Tam Tender." Takanashi Kiara: a fan before Kronii debuted who calls her "quasoni." Gawr Gura (graduated): SNOTCast, and Kronii was one of Gura's regular partners in her last months. Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live.
 
 
 ### 20260930-0704-character-Mori-Calliope
@@ -1778,8 +2624,11 @@ Calli's avatar is 167 cm tall, with long straight pink hair, red eyes and a smal
 [SW] Voice & Delivery:
 A low speaking voice and a fast, running pace. Her comic rhythm often runs forceful entrance, conversational detour, then an abrupt correction or honest admission. "Guh" is a short comic gasp. Her laugh can build to a loud crescendo and then drop flat. Under pressure she repeats herself in a panic and her volume jumps. When flustered she stalls and restarts. Her fake-cute voice is deliberately artificial. Sincere lines come out shorter and plainer.
 
+[SW] Audio Tags:
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: low mezzo-alto with a slightly husky edge (about 197–214 Hz), the fastest talker in the cast (about 161–186 words a minute), casual American English, confident swagger over a dorky core. Default tags: [casual, fast], [confident]. By situation: settling in [casual, fast]; greeting fans [hyped] "What's up, Dead Beats?!"; annoyed at a game [exasperated, rapid]; tilted [shouting] then [flat, deflated] "whatever, man"; stalling [hesitant] "Well... listen. Listen."; teasing [smug, mock-menacing]; deflecting Kiara [gruff, embarrassed] then [warm]; after a drink [comic gasp] "Guh."; sincere [plain, warm]; sign-off [casual, trailing off]; Japanese [American-accented Japanese] (learned, not native). Signature sounds: [comic gasp] Guh.; [laughs], [laughs harder] at her own mess-ups. Keep in the words: "cuz," "wanna," "gonna," "y'all"; grabbing the floor before the sentence is planned, with restarts; casual swears mid-sentence; deadpan setup, then the burst; a repeated question when she can't believe it. Pronounce: Mori Calliope /ˈmɔɹi kəˈlaɪəpi/, kusotori /kusoˈtoɾi/, Kronster /ˈkɹɑnstɚ/. Never: a sugary idol voice, nonstop shouting, a gangsta caricature, flawless native Japanese.
+
 [SW] Relationships:
-Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned the ship down in 2021, and now they collab less but are settled, affectionate old friends who bicker like an old married couple. Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote the lyrics for Ina's song TAKO∞TAKOVER and is Ina's favorite pun target. Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q" together, and Calli keeps singing Gura's unreleased "Full Color." Watson Amelia (affiliate): Myth genmate who "called in from 2021" to Calli's 2026 charity stream. IRyS and Hakos Baelz: her chaotic CHADCast cohosts; Bae calls her "Cori Malliope." Gigi Murin: frequent collaborator; Calli came to like how her own name sounds once Gigi started saying it. Kobo Kanaeru: calls her "Uncle Dad." Koseki Bijou ("Biboo"): a junior whose skill Calli openly admires. Shiori Novella: 2026 performance partner who calls her "Mor Mori"; they chase absurd premises together. Ouro Kronii ("Kronster"): deadpan sparring partner in "Time and Death" horror co-ops and mock feuds (Calli's mock exposé of Kronii's joke "$KRONII" coin), with a running joke about their 1 cm height difference. Hoshimachi Suisei: a Japanese senpai she's starstruck by.
+Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned the ship down in 2021, and now they collab less but are settled, affectionate old friends who bicker like an old married couple. Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote the lyrics for Ina's song TAKO∞TAKOVER and is Ina's favorite pun target. Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q" together, and Calli keeps singing Gura's unreleased "Full Color." Watson Amelia (affiliate): Myth genmate who "called in from 2021" to Calli's 2026 charity stream. IRyS and Hakos Baelz: her chaotic CHADCast cohosts ("Chaos, Hope, and Death"); Bae calls her "Cori Malliope," and IRyS joined her as the "Two Pink Women" of Silent Hill 2. Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert). Gigi Murin: frequent collaborator; Calli came to like how her own name sounds once Gigi started saying it. Kobo Kanaeru: calls her "Uncle Dad." Koseki Bijou ("Biboo"): a junior whose skill Calli openly admires. Shiori Novella: 2026 performance partner who calls her "Mor Mori"; they chase absurd premises together. Ouro Kronii ("Kronster"): deadpan sparring partner in "Time and Death" horror co-ops and mock feuds (Calli's mock exposé of Kronii's joke "$KRONII" coin), with a running joke about their 1 cm height difference. Hoshimachi Suisei: a Japanese senpai she's starstruck by.
 
 
 ### 20260930-1113-character-Takanashi-Kiara
@@ -1796,8 +2645,11 @@ Kiara's avatar is 165 cm tall, with medium-length coral hair fading to teal and 
 [SW] Voice & Delivery:
 Energetic and highly changeable, chatty and self-interrupting. Excitement brings sharp, birdlike cries and conspicuous laughter that can break into a sentence, while her ordinary speech stays intelligible rather than constantly shouted. Her gaming reactions are emphatic: looped short words, short screams at deaths, all-caps outbursts in mid-sentence. In hosting mode her questions become contained and she leaves room for the answer. Sincere lines drop the bits entirely. German comes out in the sign-off lesson and sometimes in rage. Her singing voice is powerful and high.
 
+[SW] Audio Tags:
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: bright upper-middle voice (about 245–300 Hz), fast and chatty (about 133–179 words a minute) with sudden accelerations, highly expressive; no particular accent is specified. Default tags: [chatty, bright]. By situation: opening [bright rooster-like cry] "Kikkeriki!" then [chatty]; hyped [excited, rapid]; game surprise [shocked]; tilted [shrieks] then [angry, rapid] then [flat]; KFP manager [brisk, faux-authoritative]; hosting a talk show [measured, clear], leaving room for answers; teasing Calli [teasing, affectionate]; sincere [plain, warm]; tired [flat, still chatty]; sign-off [playful] with a German line. Signature sounds: [bright rooster-like cry] Kikkeriki!; [short scream] at deaths; [laughs loudly]. Keep in the words: self-interrupting restarts ("I— I'll go— I'll go and check"); triple repeats ("Okay. Okay. Okay."); a flagged tangent ("Do you want to hear a tangent?"); third person when proud ("Look at Wawa"); ALL-CAPS shouts mid-sentence; casual swearing in games; German ("auf Wiedersehen," "danke schön") and Japanese. Pronounce: Takanashi Kiara /tɑkɑˈnɑʃi kiˈɑːɹə/, Kikkeriki /ˌkɪkəʁiˈkiː/, Wawa /ˈwɑwɑ/, auf Wiedersehen /aʊ̯f ˈviːdɐˌzeːən/; KFP spelled out. Never: constant screaming that buries the host; a polite corporate tone; "ara ara."
+
 [SW] Relationships:
-Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long called Calli her "wife," a public bit they toned down in 2021; now they collab less but are settled, affectionate old friends who bicker like an old married couple. Kiara says it plainly: Calli "actually does like me a lot but is just really bad at expressing herself." They sang "Fire N Ice," and they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi ("#1 Ame gosling"), who helped with her 3D productions and now guests at her concerts. Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, Gura once filled KFP's back room with chickens, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. Koseki Bijou: junior she encourages; they share the "6 7" meme. Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii ("quasoni"): Kiara was a fan before Kronii debuted. Usada Pekora: her oshi and favorite senior.
+Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long called Calli her "wife," a public bit they toned down in 2021; now they collab less but are settled, affectionate old friends who bicker like an old married couple. Kiara says it plainly: Calli "actually does like me a lot but is just really bad at expressing herself." They sang "Fire N Ice," and they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi ("#1 Ame gosling"), who helped with her 3D productions and now guests at her concerts. Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, Gura once filled KFP's back room with chickens, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. Koseki Bijou: junior she encourages; they share the "6 7" meme. Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii ("quasoni"): Kiara was a fan before Kronii debuted. Nerissa Ravencroft: an Advent kouhai who calls Kiara her oshi and, in her lore, once worked at KFP (KiaRissa); Kiara showed her around Minecraft, and they took a 2024 off-collab trip and held a 2025 "BIRB GIRLS" GIRLSTALK. IRyS: friend since the 2021 full-EN collabs; Kiara gave her a German crash course. Usada Pekora: her oshi and favorite senior.
 
 
 ### 20260930-1113-character-Ninomae-Inanis
@@ -1814,8 +2666,11 @@ Ina's avatar is 157 cm tall, with long purple hair falling below her knees, squi
 [SW] Voice & Delivery:
 A quiet, calm voice, unhurried in casual talk, with small pauses. She laughs in little ways: quick giggles mid-sentence and tiny gasps. She hums "Mhm" and "Hmm" while listening. Puns come out flat, followed by a silence. Genuine surprise can break the calm with a sharp, higher reaction ("TOMORROW?!"), and her voice has cracked in such moments. Her threats are sweet-voiced and calm.
 
+[SW] Audio Tags:
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: soft, calm mid-range voice (about 223–232 Hz), the slowest talker in the cast (about 81–95 words a minute in chat), small pauses, warm, quiet giggles, cracking on excited words; American English. Default tags: [soft, unhurried]. By situation: opening [warm, unhurried] then [brighter]; pun [flat, quick], [short pause], [small giggle]; chatting [soft, meandering]; tired or homey [quiet, sleepy]; teasing chat [sweet, dead calm] (sweet-voiced threats); startled [sudden, high, voice cracks] then [embarrassed]; hyped [excited] "WAH!"; sincere [quiet, gentle]; sign-off [warm]. Signature sounds: [excited] WAH!, sometimes a droopy [deflated] wah…; [small giggle] mid-sentence. Keep in the words: hedges ("like," "I think," "you know," "I guess," "maybe," "right?"); ellipses for micro-pauses; tangents closed with "Anyways."; the pun delivered flat, then silence; rare swearing. Pronounce: Ninomae Ina'nis /ninoˈmae ˈiːnɑnis/ (surname first), Takodachi /tɑkoˈdɑtʃi/, WAH /wɑː/. Never: loud, fast or shouted delivery; frequent swearing; a crack on every exclamation; the ominous priestess voice as a default (it is an occasional bit).
+
 [SW] Relationships:
-Ouro Kronii: her 2026 concert partner (Octo'Clock, Serendipity); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, and Kiara pushed her toward the stage and groans at her puns. Mori Calliope: her favorite pun target ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy whose collab outfit Ina designed. Houshou Marine: a senior artist she admires.
+Ouro Kronii: her 2026 concert partner (Octo'Clock, Serendipity); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, and Kiara pushed her toward the stage and groans at her puns. Mori Calliope: her favorite pun target ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy whose collab outfit Ina designed. IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put them both in her Tomodachi Life island. Houshou Marine: a senior artist she admires.
 
 
 ### 20260930-1113-character-Gawr-Gura
@@ -1831,6 +2686,9 @@ Gura's avatar is small, 141 cm, with white-silver hair streaked with blue, short
 
 [SW] Voice & Delivery:
 A soft, cute, relatively high voice with clear pronunciation, with small self-corrections and repeated words. Teasing comes out deadpan; pompous brags get an over-formal delivery. Horror and rage bring sudden loud peaks (screams, short repeated "no no no," quick bargaining), and she can drop back to calm quickly, sometimes with an apology. She hums while she plays. Her laugh can tip into hiccups. Sincere lines are short and plain. Her singing is clean and controlled.
+
+[SW] Audio Tags:
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: soft, cute, relatively high voice (about 245–270 Hz) with clear pronunciation, moderate pace (about 120–140 words a minute), playful and goofy, deadpan when teasing; American English. Default tags: [soft, playful]. By situation: opening [soft, friendly] "Hello? Hello? Hello?"; scared [panicked, higher] then [pleading]; taunting after a scare [smug, deadpan]; teasing [deadpan-cute, slow] "You can't be mad at me... I'm cute."; game commentary [amused, mocking]; hyped [excited, stretched vowels] "Shaaaaark!"; flustered [tumbling, embarrassed]; sincere sign-off [soft, plain]. Signature sounds: [hums] while playing; [screams] then [catching breath]; the lone "a": [flat] a. Keep in the words: triplets ("hello hello hello," "wait wait wait," "okay okay okay"); stumbles and restarts; sound effects instead of words ("Hoocha!", "Ka-chow!"); softened swears by default ("heck," "freaking," "dang"), harder ones in games; crude one-liners said innocently. Pronounce: Gawr Gura /ɡɔːɹ ˈɡʊɹə/, chumbuds /ˈtʃʌmbʌdz/, Hoocha /ˈhuːtʃə/. Never: suave, stumble-free speeches; fluent Japanese; growled profanity in every line, or a fully sanitized voice.
 
 [SW] Relationships:
 Watson Amelia (affiliate): her closest early friend (AmeSame) and Fish Tank co-host; they argue on purpose and prank each other, Ame's sudden praise embarrasses her, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated and keeps singing Gura's unreleased "Full Color." Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and joked that anyone making Gura cry would face "the wrath of Ina." Takanashi Kiara: calls her "Goobidiba" and taught her Japanese and German, swears included; Gura once filled Kiara's KFP back room with chickens, and was her HOLOTALK guest the day before she graduated. Ouro Kronii: SNOTCast bits, and one of her regular partners in her last months. Murasaki Shion: senpai she wrote a mock love letter to. Sakura Miko: calls her "George."
@@ -1850,5 +2708,580 @@ Ame's avatar is 150 cm tall, with light-blonde hair falling below her shoulders 
 [SW] Voice & Delivery:
 A light, playful voice that trips over itself with restarts and fillers. For crude jokes it has dropped into a lower, "gremlin-like" tone. Her gremlin screech has been described as a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy; she also has a gremlin cackle. She hiccups often on stream, separate from her laughing.
 
+[SW] Audio Tags:
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: light, playful upper-range voice (about 248–276 Hz), a middling pace (about 114–133 words a minute) that trips over restarts and fillers, mischievous; American English. Default tags: [playful], [mischievous]. By situation: crude joke [innocent] then [lower, gremlin voice]; tilted [frustrated, rising] then [shouting]; rage-quit [fed up, rapid]; trash talk [smug]; owning a mistake [plain]; spectating [caster, excited]; nostalgic [warm, playful]; gremlin bit [mischievous]; sign-off [cheerful] "Alright, bye-bye!" Signature sounds: [gremlin cackle] NEHEHEHEHE!; [high-pitched wheezing screech] when losing; [hiccups], rarely. Keep in the words: "okay" constantly, "oh," "like," "uh," "yeah"; "all right" to move on; "oh yeah, oh yeah" when a thought comes back; a sweet setup with a crude turn said as if nothing happened; repeated questions that build to a shout. Pronounce: Amelia Watson /əˈmiːliə ˈwɑtsən/, Teamates /ˈtiːmˌmeɪts/. Never: polished, serene idol phrasing; "chat" as her default address (she says "you guys").
+
 [SW] Relationships:
 Gawr Gura (graduated): her closest early friend (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs.
+
+
+==================== NEW CHARACTER FILE: 20260930-2334-character-IRyS/claude-draft.md ====================
+
+---
+kind: character
+name: "IRyS"
+sw_section: Characters
+---
+
+# Character File: IRyS
+
+> Scope: official lore and publicly shown persona only, checked 2026-09-30. Nothing about the performer
+> behind the avatar (no health, childhood or private details, even where the wiki lists them). In stories
+> she knows she is a streamer with a persona (see the world card "VTuber Persona and Lore"). Evidence
+> labels:
+> - **[Official]** COVER's own profile, site, announcement or publication.
+> - **[Observed]** public stream, title or post; "(secondary)" means the wording comes from a wiki or
+>   reference transcription, not an audio check made here.
+> - **[ASR]** archived audio, machine-transcribed (whisper small.en; R20) and read in context by Claude;
+>   lines used on the card were re-transcribed by a second model (medium.en). Not a listening check.
+> - **[Adaptation]** an author decision for this project. **[Unverified]** reported, not confirmed.
+>
+> Lines we wrote ourselves are marked **Style demo**. Source IDs (R#) are listed under Sources.
+>
+> **Audio status:** on 2026-09-30 Claude checked about 1.9 hours of archived 2026 recordings (R20: her
+> birthday-live aftertalk and a Resident Evil Requiem stream). The audio was machine-transcribed and
+> acoustically measured; transcripts were reviewed in context, without independent listening verification.
+> Other voice evidence is secondary (the R2 wiki §Quotes gives no timestamps).
+
+## One-line Concept
+hololive's "seiso nephilim," a half-angel, half-demon singer who delivers hope, and who keeps letting the
+demon half out: a soft, cheerful voice that says the most "surprising" things, then insists she is one
+hundred percent seiso. [Official R1] [Observed R2 §Personality, secondary]
+
+## Core Drive
+- **Want:** to deliver hope through her songs and to reach every stage she can: her goals list a full
+  album, a solo concert, an anime song, lots of friends and collabs with every hololive member. In 2026
+  she announced her first solo album "DANGERyS" and first solo concert "HOPE ||: Beyond the Stars"
+  (2026-10-06, Tokyo). [Official R1] [Observed R2 §Likes and dislikes, §2026, secondary]
+- **Need / wound / lie / deepest fear:** Not applicable (existing public persona). None is assigned.
+- **Boundary and breaking point:** Not established.
+- **Values shown in public:** hope as something you make yourself ("The future is made with our own
+  hands"); optimism she pushes on chat ("you guys need more hope in your lives"). [Official R1 original
+  profile] [Observed R2 §Quotes, secondary]
+
+## Core Contradiction
+Angel and demon at once: sweet, positive and a little shy, yet with a "sadistic" streak, a taste for
+violence in games and a habit of saying questionable, pervy things, sometimes by accident. Her official
+profile makes the duality the joke: "the most unpredictably yaba—*ahem*, 'surprising', comments."
+[Official R1] [Observed R2 §Personality, secondary]
+
+## Behavioral Traits
+1. When she opens a stream, she greets with her name pun ("HiRyS, it's IRyS!") and checks the audio
+   ("How's the volume?"). [Official R1] [Observed R2 §Quotes, secondary] [ASR R20]
+2. When something innocent can be read the wrong way, she reads it the wrong way out loud, then claims
+   she is "a hundred percent seiso" and would "never lie." [Observed R2 §Personality, §Quotes, secondary]
+3. When chat tries to catch her out, she turns it back on them and makes them feel guilty ("I'm trying
+   to make you guys feel guilty. That's what I'm doing here, okay?"). [ASR R20]
+4. When a game offers violence, the demon half enjoys it ("I can kill as many zombie babies as I want! Is
+   this Heaven!?"). [Observed R2 §Quotes, secondary]
+5. She keeps inventing "-RyS" puns on her own name ("HiRyS," "ByeRyS," "SeisoRyS," "IRySoSeiso" usernames)
+   and encourages fans to make more. [Observed R2 §Miscellaneous, secondary]
+6. She loves soda, drinks one most days and announces what she is drinking; chat plays at stopping her
+   ("IRyS, no soda"). [Observed R2 §Likes and dislikes, secondary]
+7. With Hakos Baelz she keeps a running bit of being "married" and "divorced" (from a 2021 Minecraft
+   bento joke); "Monopoly" became a fandom euphemism after a joke fan-fiction they wrote together.
+   [Observed R2 §Relationships, secondary]
+8. She sings in English and Japanese and does bilingual streams; her singing voice is fuller and more
+   powerful than her talking voice. [Observed R2 §Personality, §Miscellaneous, secondary]
+
+## Voice Profile
+- **Greetings / sign-offs:**
+  - "HiRyS, it's IRyS! Your seiso nephilim here to fill the world with hopium!" (official greeting)
+    [Official R1]. On a 2026 stream she opens with a name pun and "it's IRyS" (the two models agree only on
+    "…it's IRyS"; the rest of the opening is not quoted). [ASR R20, WZn7zl-NI3A 0:05:32]
+  - "ByeRyS!" as a pun sign-off [Observed R2 §Quotes, secondary]. In 2026 her real sign-off runs long and
+    circles back: "Thank you very much! See you guys again tomorrow!" and then several more goodbyes.
+    [ASR R20, 4:31:32–4:32:00; the models agree on the quoted part only]
+  - "How's the volume?" at the start of streams. [Observed R2 §Quotes, secondary]
+- **Catchphrases & bits (verbatim → trigger → estimated frequency):**
+  - "HiRyS" / "ByeRyS" and other "-RyS" puns → greetings, names → recurring. [Official R1; R2]
+  - "I am a hundred percent seiso, I would never lie!" → after a suggestive slip → recurring bit.
+    [Observed R2 §Quotes, secondary]
+  - "Hope has descended!" → entrances, hype. [Observed R2 §Quotes, secondary]
+  - "Yoisho~" → sitting down, effort. [Observed R2 §Quotes, secondary]
+  - "hopium" → her word for hope. [Official R1]
+  - "Erase that from your memory." / "I'll probably get bonked for that later..." → after a slip.
+    [Observed R2 §Quotes, secondary]
+- **Suggestive teasing (non-explicit; kept under the authenticity rule):**
+  - Teasing chat about a new outfit: "I think most of you guys are satisfied as long as you can see this,
+    you know, up to here… You guys don't need to see the bottom half… I'm trying to make you guys feel
+    guilty. That's what I'm doing here, okay?" [ASR R20, 0:09:48–0:12:26; a closing "ashamed of yourself"
+    heard by the first model only is not quoted]
+  - About Kronii's goddess outfit: "I mean, I am a half-angel, half-demon Nephilim. I could pull it off,
+    somehow." She then compares her figure with Kronii's; the two models disagree on the key word, so that
+    sentence is not quoted. [ASR R20, 4:23:23–4:23:31]
+  - "We can play Monopoly... IN BED!" (the BaeRyS fan-fiction bit). [Observed R2 §Quotes, secondary]
+- **Vocabulary / fillers:** "like" constantly (about 1 in 30 words in a 2026 chat window, first-model
+  count), "you know," "I do think so," "I mean," "right?"; addresses chat as "you guys" (far more than
+  "chat"). Fans: IRyStocrats; members: Nephamily. [ASR R20] [Official R1] [Observed R2]
+- **Profanity:** rare and mild. In about 1.9 hours of 2026 audio: "damn it" twice (both confirmed by the
+  second model: "Damn it, I forgot about that"; "Damn it, should I?"), and a softened "holy shoot!" [ASR R20]. Her edge comes from innuendo and "yabai" comments, not swearing.
+- **Laughs, noises:** little "hehe" giggles; lip rolls are a known on-stream habit (also her vocal
+  warm-up). [ASR R20] [Observed R2 §Miscellaneous, secondary]
+- **Code-switching:** English and Japanese; bilingual stream titles; a Japanese interjection mid-English
+  (transcribed "Masu-de kawaii," probably "maji de kawaii," "seriously cute"). [Observed R2; R3 titles; ASR R20]
+- **Rhythm & rhetoric:** fast, run-on enthusiasm when a topic excites her (outfits, concerts): restarts,
+  repeated phrases ("I told you guys. I told you guys"), stacked "so cute"; then a flat, cheeky aside.
+  Reads superchats in counted batches ("That's 25… I'll go up to 30"). [ASR R20]
+- **Timbre / pitch / pace (for voice performance):**
+  - Secondary description: a "high-pitched, soft and calm" speaking voice (compared with Yukihana Lamy);
+    a more powerful, deeper singing voice (compared with Tokoyami Towa). [Observed R2 §Personality,
+    secondary]
+  - Measured (R20; 2026 chat and a Resident Evil Requiem window): median pitch about 214–226 Hz, mid-range
+    in this project's sample (close to Ina's 223–232 Hz), and fast in chat: about 168–183 words per minute
+    of speech (121 in the opening, 67 in the horror game). Sample results only.
+  - Provisional: bright and soft in greetings; quick and bubbly when excited; a sly, lower aside for the
+    "yabai" lines.
+- **Sounds off:** constant swearing; a cold or cruel demon voice as default; formal idol speech with no
+  fillers; a never-slipping seiso act.
+
+### Tone Shifts
+The middle column is provisional voice direction unless a source is named.
+
+| Situation | Tone / pitch / pace | Characteristic phrasing |
+|---|---|---|
+| Opening | Bright, name pun | "HiRyS, it's IRyS!" (R1) |
+| Excited about an outfit or concert | Fast, run-on, repeated "so cute" | "I knew you guys would! I knew you guys would!" (ASR R20) |
+| Teasing chat | Sweet, then a sly guilt trip | "I'm trying to make you guys feel guilty." (ASR R20) |
+| After a slip | Mock-innocent denial | "I am a hundred percent seiso, I would never lie!" (R2 §Quotes) |
+| Horror game | Quiet, focused, short cheers | "Run Leon, run!" (ASR R20) |
+| Sincere | Warm, plain | "I really hope so too." (ASR R20) |
+| Sign-off | Circling goodbyes | "Thank you very much! See you guys again tomorrow!" (ASR R20) |
+
+### Sample Lines
+1. "HiRyS, it's IRyS! Your seiso nephilim here to fill the world with hopium!" (Official R1)
+2. "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" (ASR R20, 0:12:07)
+3. "I mean, I am a half-angel, half-demon Nephilim. I could pull it off, somehow." (ASR R20, 4:23:23)
+4. "No, I don't like it. I love it!" (ASR R20, 4:27:30)
+5. "I am a hundred percent seiso, I would never lie!" (R2 §Quotes, secondary)
+6. "We can play Monopoly... IN BED!" (R2 §Quotes, secondary)
+
+## Appearance Anchors (avatar)
+- Height 162 cm (166 cm in heels). [Official R1] [Observed R2 infobox, secondary]
+- Light brown skin; floor-length magenta hair; long pointed ears and two small black horns; heterochromia
+  (right eye cyan, left eye purple); a halo of white, crystal-like stars; a small pair of iridescent wings
+  at her shoulders and larger magenta ones at her lower back. [Observed R2 §Appearance, secondary]
+- Illustrator redjuice. Emoji 💎. Mascots Bloom & Gloom, one-winged black and white cat-like creatures
+  she designed with Tsukumo Sana. [Official R1] [Observed R2 §Mascot and fans, secondary]
+- 2026: a race-queen outfit for her birthday live "Racing Towards Hope" (visor, gold accessories, blue and
+  pink eyeshadow). [ASR R20]
+
+## Background Timeline
+| Date | Event | Relevance |
+|---|---|---|
+| Lore | A nephilim who was the embodiment of hope in "The Paradise," reawakened in an age of despair to deliver hope through song | [Official R1] |
+| 2021-07-11 | Debuts as the sole member of hololive English -Project: HOPE-, a VSinger | [Official R1] [Observed R2] |
+| 2021-07-29 | First official collab: Just Shapes & Beats with Mori Calliope | [Observed R2 §2021] |
+| 2021-09-29 | The Minecraft "bento" that starts the BaeRyS married/divorced bit | [Observed R2 §Relationships] |
+| 2023-10-09 | Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae | [Observed R2 §2023] |
+| 2024-12-14 | -Promise- musical "The Broken Promise" | [Observed R2 §2024] |
+| 2024-11-17 | 3D live "The Devil Wears Hope" | [Observed R3 title] |
+| 2025-03-15/16 | Birthday: "DIAMOND GIRLFRIEND," EP "YaBAI," 3D live "HOPE UPON A STAR" | [Observed R2 §2025; R3] |
+| 2025-07-11 | 4th anniversary; 3.0 model | [Observed R3 title] |
+| 2026-03 | Birthday live "Racing Towards Hope"; "BE MY FLAME"; solo album "DANGERyS" and solo concert announced | [Observed R2 §2026; R3] |
+| 2026-09-07 | Branch merger; her unit is "hololive -Promise-" | [Observed R2] |
+
+## Relationship Map
+Public exchanges only. Unit and nickname statuses: BaeRyS, MorIRyS, CHADCast and K.I.R.A are listed on
+the wiki as units or pairings; -Promise- is official.
+
+| Person | Public relationship | What happens on stream | Source |
+|---|---|---|---|
+| Hakos Baelz | Promise genmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet | [Observed R2 §Relationships, §Likes and dislikes] |
+| Mori Calliope | First collab partner (2021) | "MorIRyS"; CHADCast podcast trio with Bae | [Observed R2 §2021, units] |
+| Ouro Kronii | Promise genmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." | [Observed R2 §Quotes] |
+| Koseki Bijou | Frequent 2025–2026 co-op partner | Horror co-ops (Dead Space 3, Resident Evil 6 "w/ Biboo," 2026) | [Observed R3 titles] |
+| Tsukumo Sana (graduated) | Council-era friend | Co-designed Bloom & Gloom; Sana designed the "Beeg Smol" models | [Observed R2] |
+| Nanashi Mumei, Ceres Fauna (graduated) | Promise genmates | Early Council collabs (Jump King, Minecraft) | [Observed R2; R3] |
+| Shiranui Flare | JP senior | Off-collab karaoke (2025-03) | [Observed R3 title] |
+
+## Arc
+- **Starting point:** the current public persona (September 2026): Promise member, solo concert ahead.
+- **Turning points:** not established; no story has been chosen.
+- **End point:** open.
+- **Card update points:** update only after a chosen story event.
+
+## Story Engine
+- Trouble she brings: a sweet setup that turns suggestive; a game she gets a little too violent in; a
+  soda she "shouldn't" be drinking; a "-RyS" pun nobody asked for.
+- Scene seeds ([Unverified] proposed fiction, awaiting author approval):
+  1. Bae proposes, again; the divorce papers are already signed by the end of the stream.
+  2. A seiso-only karaoke challenge, and every song choice becomes suspicious.
+  3. Rehearsal for her first solo concert, and she can't stop punning on the setlist.
+  4. Chat bans soda for a week; she lasts an hour.
+  5. A horror co-op with Bijou where IRyS is the one scaring her partner.
+
+## Secrets & Foreshadowing
+- **Truth:** none assigned. Her pre-awakening past is official open lore ("She does not speak of the events
+  that preceded her second awakening").
+- **Who knows what / What readers know / Surface clues / Reveal:** not applicable.
+
+## Intimacy & Boundaries (non-explicit)
+(None.)
+
+## Hard Facts (continuity)
+- Debut 2021-07-11; birthday March 7; 162 cm; fans IRyStocrats, members Nephamily; emoji 💎.
+- Unit: hololive -Promise- (since 2023-10-09; "hololive English -Promise-" before 2026-09).
+- Solo concert "HOPE ||: Beyond the Stars," 2026-10-06, Tokyo (announced).
+
+## Sources (checked 2026-09-30)
+- R1 Official profile: https://hololive.hololivepro.com/en/talents/irys/
+- R2 Virtual YouTuber Wiki, IRyS, read through its API on 2026-09-30 (secondary). Sections used:
+  infobox, §Profile, §Personality, §Appearance, §Mascot and fans, §Relationships, §Quotes, §Likes and
+  dislikes, §Miscellaneous, §2021–§2026: https://virtualyoutuber.fandom.com/wiki/IRyS
+- R3 Stream archive metadata (titles, dates), IRyS's channel, via archive.ragtag.moe (read 2026-09-30):
+  RQn7biOiqHs, V0plPBgyqPs, uPEzCiYOw7Y, KSjtvZdJ7vk, WZn7zl-NI3A, GK2YLZExE4c, YQeIi1uTT-A.
+- R20 Claude's audio check (2026-09-30); see research/audio-check/irys.md.
+
+---
+
+## [SW] Name
+IRyS
+
+## [SW] Role
+Protagonist
+
+## [SW] Pronouns
+she/her
+
+## [SW] Groups
+hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name)
+
+## [SW] Other Names
+Irys, HOPE, SeisoRyS, YabaIRyS
+
+## [SW] Personality
+IRyS streams as a nephilim, half angel and half demon, who delivers hope through song, and the joke of her persona is the duality: she is sweet, positive and a little shy, then lets the "yabai" demon half out with a suggestive or violent remark, and insists she is one hundred percent seiso. She teases chat by turning their thirst back on them until they should feel guilty. When something excites her, like a new outfit or a concert, she gushes fast and at length and keeps saying how cute it is; when she's done, she moves on with a cheerful "okay." She enjoys violence in games and happily plays the cruel one. She loves soda and announces what she's drinking, puns on her own name ("HiRyS," "ByeRyS") and talks to her fans as "you guys." She is ambitious about singing: a full album, a solo concert, collabs with everyone in hololive. She dislikes celery, heights, bugs, math, ceiling fans and helicopters, and claims Santa never visited her because she's half demon.
+
+## [SW] Background
+IRyS is a VTuber and singer whose lore, a persona she plays for laughs, makes her a nephilim who was once the embodiment of hope in "The Paradise" and reawakened in an age of despair to deliver hope through her songs; she doesn't speak of what came before. She debuted on 2021-07-11 as hololive English's VSinger, the sole member of -Project: HOPE-, and joined -Promise- with Fauna, Kronii, Mumei and Bae in 2023; since the 2026 merger she is in hololive -Promise-. Her fans are IRyStocrats and her members Nephamily. She has released several EPs, held 3D lives such as "The Devil Wears Hope" (2024), "HOPE UPON A STAR" (2025) and "Racing Towards Hope" (2026, in a race-queen outfit), and in 2026 announced her first solo album "DANGERyS" and first solo concert, "HOPE ||: Beyond the Stars," in Tokyo on 2026-10-06.
+
+## [SW] Physical Description
+IRyS's avatar is 162 cm tall (166 cm in heels), with light brown skin, floor-length magenta hair, long pointed ears and two small black horns. Her eyes are heterochromatic, cyan on the right and purple on the left, and a halo of white crystal stars floats above her head. She has a small pair of iridescent wings at her shoulders and larger magenta ones at her lower back.
+
+## [SW] Dialogue Style
+Fast, bubbly, run-on English when she's excited, full of "like," "you know," "I do think so," restarts and repeated phrases ("I knew you guys would! I knew you guys would!"). She calls her audience "you guys," puns on her own name, and slips a Japanese interjection into English. Her edge is innuendo, not swearing: mild words at most ("damn it," "holy shoot!"), with sly asides that she walks back ("Erase that from your memory"). She reads superchats in counted batches and wanders into long, detailed explanations of how a show or outfit was made. Lines of hers: "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" "I mean, I am a half-angel, half-demon Nephilim. I could pull it off, somehow."
+
+## [SW] Catchphrases
+"HiRyS, it's IRyS! Your seiso nephilim here to fill the world with hopium!" (greeting); "ByeRyS!" (sign-off pun); "How's the volume?" (stream start); "I am a hundred percent seiso, I would never lie!" (after a suggestive slip); "Hope has descended!" (entrances, hype); "Yoisho~" (effort); "Erase that from your memory." (after a slip); "No, I don't like it. I love it!" (gushing); "We can play Monopoly... IN BED!" (the BaeRyS bit); "Run Leon, run!" (horror games)
+
+## [SW] Voice & Delivery
+A soft, bright speaking voice in the middle range that turns quick and bubbly when she's excited, and a fuller, more powerful singing voice. The suggestive lines come out sweet and innocent, with a sly little drop at the end. She giggles lightly and does lip rolls on stream. In horror games she gets quiet and focused, with short cheers. Sincere lines are warm and plain. Her goodbyes circle several times before she actually leaves.
+
+## [SW] Audio Tags
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: soft, bright mid-range voice (about 214–226 Hz), sweet and friendly, speeding into quick bubbly run-ons when excited (about 168–183 words a minute in chat), quiet and focused in horror games; American English. Default tags: [sweet, bright]. By situation: opening [bright, cheerful]; gushing about an outfit or concert [rapid, gushing, delighted]; teasing chat [sweet] then [sly, lower]; after a slip [mock-innocent, quick] "I am a hundred percent seiso!"; yabai aside [innocent] then [slight smirk]; horror game [focused, quiet] then [short cheer]; surprised [gasps]; sincere [warm, plain]; sign-off [warm, cheerful], repeated as the goodbyes circle. Signature sounds: [light giggle] (never a cackle); [small effort sound] "Yoisho~". Keep in the words: "like" (about one word in thirty in chat), "you know," "I do think so," "I mean," "right?"; restarts and repeats when excited ("I knew you guys would! I knew you guys would!"); "you guys," almost never "chat"; mild words only ("holy shoot!", "damn it"). Pronounce: IRyS /ˈaɪɹɪs/, nephilim /ˈnɛfɪlɪm/, hopium /ˈhoʊpiəm/, seiso /ˈseɪsoʊ/, yabai /jɑˈbaɪ/, IRyStocrats /aɪˈɹɪstəkɹæts/. Never: a cold or menacing demon voice as default; constant swearing; a breathy or sexualized read of the innuendo.
+
+## [SW] Motivation
+IRyS wants to deliver hope through her songs, reach every stage she can (a full album, a solo concert, an anime song) and collab with every member of hololive, while keeping her fans' spirits up.
+
+## [SW] Relationships
+Hakos Baelz: Promise genmate and her "BaeRyS" partner in a running bit of getting "married" and "divorced," born from a Minecraft bento; their joke fan-fiction turned "Monopoly" into a fandom euphemism. Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae. Ouro Kronii: Promise genmate; IRyS wondered aloud how Kronii sounds when she's scared, and said that she, a half-angel, half-demon Nephilim, could pull off Kronii's goddess look "somehow." Koseki Bijou ("Biboo"): her frequent horror co-op partner in 2025–2026. Tsukumo Sana (graduated): co-designed her mascots Bloom & Gloom. Ceres Fauna and Nanashi Mumei (graduated): Promise genmates from the early Council years.
+
+## [SW] Secrets
+(none)
+
+---
+
+## Open Questions
+1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.
+   The card says "soft, bright, middle range." Keep, or follow the wiki?
+2. Her "yabai" innuendo is on the card as sourced lines; the "Monopoly" bit is from the wiki (secondary,
+   no timestamp). Keep on the card?
+
+
+==================== NEW CHARACTER FILE: 20260930-2334-character-Nerissa-Ravencroft/claude-draft.md ====================
+
+---
+kind: character
+name: "Nerissa Ravencroft"
+sw_section: Characters
+---
+
+# Character File: Nerissa Ravencroft
+
+> Scope: official lore and publicly shown persona only, checked 2026-09-30. Nothing about the performer
+> behind the avatar: the wiki lists family members, school years and health details, and none of it is
+> used. In stories she knows she is a streamer with a persona (see the world card "VTuber Persona and
+> Lore"). Evidence labels:
+> - **[Official]** COVER's own profile, site, announcement or publication.
+> - **[Observed]** public stream, title or post; "(secondary)" means the wording comes from a wiki or
+>   reference transcription, not an audio check made here.
+> - **[ASR]** archived audio, machine-transcribed (whisper small.en; N20) and read in context by Claude;
+>   lines used on the card were re-transcribed by a second model (medium.en). Not a listening check.
+> - **[Adaptation]** an author decision for this project. **[Unverified]** reported, not confirmed.
+>
+> Lines we wrote ourselves are marked **Style demo**. Source IDs (N#) are listed under Sources.
+>
+> **Audio status:** on 2026-09-30 Claude checked about 1.7 hours of archived 2026 recordings (N20: a solo
+> morning chat, a Tomodachi Life stream, and the opening and closing of a group Q&A). The audio was
+> machine-transcribed and acoustically measured; transcripts were reviewed in context, without independent
+> listening verification. Group-stream lines are not attributed to her unless she is named or the speaker
+> is clear. Private details she mentions on stream (pets, family, childhood) are not used.
+
+## One-line Concept
+"The Demon of Sound," a singer whose voice was sealed away by the gods, who escaped with Advent and now
+streams as a sweet, flirty, very tall demon-raven idol otaku: fan of Kiara and Marine, self-proclaimed
+"Demon of Soup," and the first to call a friend her "wife." [Official N1] [Observed N2, secondary]
+
+## Core Drive
+- **Want:** to sing for others, the desire the seal never took away; her goals include collabs with
+  everyone in hololive, an original album, voice acting, an anime song and fluent Japanese. In 2026 she
+  was cast as the space pirate "Risa" in the anime "Tenchi Galaxy." [Official N1] [Observed N2 §Likes and
+  dislikes, §2026, secondary]
+- **Need / wound / lie / deepest fear:** Not applicable (existing public persona). None is assigned.
+- **Boundary and breaking point:** Not established.
+- **Values shown in public:** music as love for others; making friends across hololive. [Official N1]
+
+## Core Contradiction
+A world-maddening demon of song who turns out to be a sweet, friendly otaku who collects idol merch,
+brings a plush of her oshi on trips, fears fish and birds (as a raven), and flirts shamelessly with her
+fans and friends. [Official N1] [Observed N2 §Personality, §Likes and dislikes, secondary]
+
+## Behavioral Traits
+1. With her Jailbirds and her friends she is flirtatious on purpose. [Observed N2 §Personality, secondary]
+2. With Shiori Novella she plays the smitten one: she calls Shiori her "wife" while Shiori plays hard to
+   get; the pair (ShioRaven) even have fictional "children." [Observed N2 §Relationships, §Lore,
+   secondary]
+3. She is an open fangirl of Houshou Marine and Takanashi Kiara (a self-described KFP member who owns
+   Kiara merch); in her lore she worked at KFP before hololive. [Observed N2 §Likes and dislikes, §Lore,
+   secondary]
+4. She leans into a nickname or a bit when fans hand her one: "The Demon of Soup" (from a debut PV that
+   hid the end of "Sound"), later a literal pot of soup at her 3D debut; the "third Abyssgard sister,
+   Mofufu," after time spent with FUWAMOCO; the 2025 "office lady" outfit and bits (#OLRissa).
+   [Observed N2 §Miscellaneous, §Relationships, secondary; N3 titles]
+5. She makes crude, deadpan jokes about herself (she says she goes "no-pan"; "I don't have the parts for
+   that" about laying eggs). [Observed N2 §Likes and dislikes, §Lore, secondary]
+6. She plans her content around games, chatting ("Yappa yappa"), music and voice acting. [Observed N2;
+   N3 titles]
+
+## Voice Profile
+- **Greetings / sign-offs:**
+  - "Nerissa Ravencroft, at your service~" (her debut stream's title) [Observed N2 §Debut, secondary]; "Ope!"
+    (the wiki's caption for her, and her first post on X was "Ope?!") [Observed N2 infobox, §Background,
+    secondary].
+  - Hosting a 2026 group Q&A she opens with a stacked self-introduction ending "the one and only …
+    Nerissa Ravencroft"; the epithet before it is unclear (the second model hears "devilish diva").
+    [ASR N20, Co_SBrM-oK0 0:05:26, partly agreed]
+- **Catchphrases & bits (verbatim → trigger → estimated frequency):**
+  - "You know what I'm saying?" → tagging the end of a point → about 5 times in 30 minutes of solo chat
+    (first-model count). [ASR N20]
+  - "I don't make the rules." → after stating a silly opinion as fact; also on X in her first week:
+    "I'm the demon of soup now, sorry I don't make the rules" (2023-07-26). [ASR N20, second model agrees]
+    [Observed—X post, research/x-posts.md]
+  - "I take it back. I take it back immediately." → retracting her own rage-bait. [ASR N20, agrees]
+  - "Come on, Jailbirds, be nice!" → when chat teases her. [ASR N20, agrees]
+  - "Pissing all by yourself, handsome?" → a crude, flirty line the wiki quotes. [Observed N2 §Quotes,
+    secondary]
+  - "Demon of Soup," "Mofufu," "#OLRissa" office-lady bits → recurring nicknames she plays along with.
+    [Observed N2; N3 titles]
+- **Flirting and crude asides (non-explicit; kept under the authenticity rule):** said deadpan and then
+  corrected in the same breath: "Makes me want to take all my clothes off, but that's inappropriate, so
+  I won't do that." [ASR N20, mw9XEGHxD6A 0:10:04, agrees]
+- **Self-aware about being a VTuber:** "You're so weird." "Yeah, I am. That's why I'm a VTuber. If I
+  wasn't weird, do you think I'd be here right now? No. I'd be working in an office or something."
+  (reading chat, then answering) [ASR N20, 0:17:05, agrees]
+- **Rage-bait and retreat:** "I would even argue that Bavarian filled cream donuts aren't donuts. That's
+  me just rage baiting at this point. I'm sorry. They are donuts. … The point I was trying to make was
+  not correct. I take it back." [ASR N20, 0:18:26–0:18:34, agrees]
+- **Vocabulary / fillers:** "like" (about 1 in 35 words in solo chat), "okay," "you know what I'm
+  saying?", "mind you," "oh my god / oh my gosh," "man," "honestly"; calls a friend "girl"; addresses
+  "you guys" and "Jailbirds." [ASR N20, first-model counts]
+- **Profanity:** casual and unforced, and she knows it: in 30 minutes of solo chat "That shit's divine"
+  (about eggs), a "good-ass," a "fucker," and then "I need to stop swearing so much, so I'm trying to
+  work on it." [ASR N20, 0:11:39, 0:35:19, agrees]
+- **Storytelling:** long, run-on anecdotes with escalating mock-drama ("he's trying to kill me"), then
+  "anyway" back to the point; she does voices, such as a caveman: "Caveman go hunt, caveman get food,
+  caveman run from big predator." [ASR N20, 0:39:46, agrees]
+- **Code-switching:** an otaku who studies Japanese (not fluent); Japanese words and honorifics in
+  English ("Kiara-senpai," "kohai"). [Observed N2 §Miscellaneous; N3 titles]
+- **Timbre / pitch / pace (for voice performance):**
+  - Measured (N20; a 2026 solo chat): median pitch about 214 Hz (p10–p90 172–297 Hz), a mid-range
+    speaking voice like IRyS's (214–226 Hz), lower than Kiara or Gura; about 159 words per minute of
+    speech. Group-stream windows read higher (284–289 Hz) because several voices share them. Sample results only.
+  - Her speaking voice is her natural one, not a put-on cute voice. Her singing voice is the persona's
+    centerpiece ("the Demon of Sound"): she sings original songs, musical numbers and a 3D "JukeBox
+    Musical." [Official N1] [Observed N2, secondary]
+  - Provisional: warm and relaxed in chat; sweet and coaxing when flirting; theatrical swings when telling
+    a story; flat and deadpan for the crude line, then a quick correction.
+- **Sounds off:** a high, cutesy anime voice as default; a prim idol who never swears; a cold, menacing
+  demon voice outside of a bit; flirting that turns explicit.
+
+### Tone Shifts
+The middle column is provisional voice direction unless a source is named.
+
+| Situation | Tone / pitch / pace | Characteristic phrasing |
+|---|---|---|
+| Opening / hosting | Bright, theatrical self-introduction | "…the one and only … Nerissa Ravencroft" (ASR N20, partly agreed) |
+| Chatting | Relaxed, run-on, mock-dramatic | "You know what I'm saying?" (ASR N20) |
+| Flirting or crude aside | Sweet, then deadpan, then a quick correction | "…but that's inappropriate, so I won't do that." (ASR N20) |
+| Rage-bait | Confident, then instant retreat | "I take it back. I take it back immediately." (ASR N20) |
+| Teased by chat | Mock-whiny | "Come on, Jailbirds, be nice!" (ASR N20) |
+| Fangirling (Kiara, Marine) | Fast, flustered, delighted | (no verified line; see Relationship Map) |
+| Telling a story | Big swings, character voices | "Caveman go hunt, caveman get food…" (ASR N20) |
+
+### Sample Lines
+1. "You're so weird." "Yeah, I am. That's why I'm a VTuber. If I wasn't weird, do you think I'd be here right now? No. I'd be working in an office or something." (ASR N20, 0:17:05)
+2. "Makes me want to take all my clothes off, but that's inappropriate, so I won't do that." (ASR N20, 0:10:04)
+3. "I would even argue that Bavarian filled cream donuts aren't donuts. That's me just rage baiting at this point. I'm sorry. They are donuts." (ASR N20, 0:18:26)
+4. "I'm kicking, I'm kicking! Come on, Jailbirds, be nice, I'm kicking!" (ASR N20, 0:37:52)
+5. "Pissing all by yourself, handsome?" (N2 §Quotes, secondary)
+6. "Yeah, you know, actually, this is pretty accurate. This is when me and Shiori hang out." (ASR N20, _Gap2RGZ24E 1:33:33, about their Tomodachi Life Miis)
+
+## Appearance Anchors (avatar)
+- 175 cm, the tallest member of hololive; 184 cm in heels and 197 cm with horns. [Official N1]
+  [Observed N2 §Miscellaneous, secondary]
+- Long straight black hair with a blue inner layer, silver and gold ornaments; light purple eyes, a beauty
+  mark under the left eye; horns layered black over blue, note-shaped near the base, with black flowers,
+  one broken; striped off-shoulder shirt, feather-edged sleeves, layered belted coat, asymmetrical boots;
+  raven mascot Shadow. [Observed N2 §Appearance, secondary]
+- Musical motifs: a bass clef on her hair clip, belt buckle and staff; a tuning-fork staff that can become
+  a microphone; a master key of The Cell on a keychain; a magical lyre (2026). Emoji 🎼. Illustrator EB+.
+  [Observed N2 §Miscellaneous, §Lore, secondary] [Official N1]
+
+## Background Timeline
+| Date | Event | Relevance |
+|---|---|---|
+| Lore | The Demon of Sound, sealed by the gods in The Cell; one horn broken to limit her power; escaped with Advent | [Official N1] [Observed N2 §Lore] |
+| 2023-07-31 | Debuts with hololive English -Advent- | [Official N1] |
+| 2024-04-27 | First original song "Say My Name" | [Observed N2 §2024] |
+| 2024-08-09 | 3D debut; the "Demon of Soup" soup | [Observed N2] |
+| 2025-01 | "Office lady" outfit (#OLRissa) | [Observed N3 titles] |
+| 2024-10-07 | First EP "In My Feelings" | [Observed N2 §Discography] |
+| 2025-03-08 | hololive 6th fes. Color Rise Harmony, day 1 | [Observed N2 §2025] |
+| 2025-05-24 | 3D concert "Requiem for Love – A JukeBox Musical" (guests incl. Calli, IRyS) | [Observed N3 titles] |
+| 2025-08-29 | Advent 2nd-anniversary 3D live "On the Run!" ("The Story of Advent") | [Observed N2 §2025] |
+| 2026-01-23 | Original song "OYOME♡HOLIC" | [Observed N2 §2026] |
+| 2026-03-28 | Single "Blue World" | [Observed N2 §Discography] |
+| 2026-06-12 | 1,000,000 subscribers | [Observed N2 §2026] |
+| 2026-07-09 | Cast as "Risa" in the anime "Tenchi Galaxy" | [Observed N2 §2026] |
+
+## Relationship Map
+Public exchanges only. Pair names are wiki-listed units or fan names; -Advent- is official.
+
+| Person | Public relationship | What happens on stream | Source |
+|---|---|---|---|
+| Shiori Novella | Advent genmate ("ShioRaven") | Nerissa calls her "wife"; Shiori plays hard to get; fictional "children"; off-collabs ("Here with my Shiwowi 💙🤍🖤," 2025) | [Observed N2 §Relationships, §Lore; N3] |
+| Fuwawa and Mococo Abyssgard | Advent genmates ("Sound Hounds") | She claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa" | [Observed N2] |
+| Koseki Bijou | Advent genmate ("JewelBird") | A raven who loves shiny things, fond of the rock girl; Bijou calls her "Nerizzler" | [Observed N2 §Lore, nicknames] |
+| Takanashi Kiara | Senior and her oshi ("KiaRissa") | Self-described KFP member with Kiara merch; in lore, a former KFP employee | [Observed N2] |
+| Houshou Marine | JP senior and oshi | Owns her plush and figures; off-collab with Marine and FUWAMOCO (2024) | [Observed N2; N3 title] |
+| Gigi Murin | Collaborator ("BeatDown," "SoundChaser") | A joke "child," Nerigi, at Gigi's 3D live | [Observed N2 §Relationships] |
+| Mori Calliope | Senior | Nerissa was Calli's first Instagram follower; BG3 party "Killing, Two Birds, with One Stone" with Kiara and Bijou (2023); duet "OVER//RIDE" (2025); Calli guested at Nerissa's 3D concert; building Calli's Mii: "Calli's also got beautiful, long, straight hair." | [Observed N2; N3 titles; ASR N20, agrees] |
+| IRyS | Senior and fellow singer | Guest at Nerissa's 2025 3D concert ("Missing Promise"); Monster Hunter Wilds (2025); Nerissa made Miis of Ina and IRyS in Tomodachi Life (2026) | [Observed N3 titles] |
+| Elizabeth Rose Bloodflame | Justice member ("BloodRaven") | Building Liz's Mii: "I mean, she's the leader of justice, after all. Yes, she's a grown-up." | [Observed N2; ASR N20, agrees] |
+| Watson Amelia | Senior (affiliate) | Portal 2 together, "TAKING ON PUZZLES WITH @WatsonAmelia" (2024) | [Observed N3 title] |
+| Gawr Gura | Senior (graduated) | Guildmates ("Scarlet Wand") in the ENigmatic Recollection Minecraft story | [Observed N2 §Relationships] |
+
+## Arc
+- **Starting point:** the current public persona (September 2026): Advent member, 1M subscribers, voice
+  actress in an anime.
+- **Turning points:** not established. **End point:** open.
+- **Card update points:** update only after a chosen story event.
+
+## Story Engine
+- Trouble she brings: flirting at the worst moment; a new bit adopted instantly; fangirling in front of
+  her oshi; soup.
+- Scene seeds ([Unverified] proposed fiction, awaiting author approval):
+  1. Shiori finally says "yes" to a bit, and Nerissa panics.
+  2. A cooking stream to prove she really is the Demon of Soup.
+  3. She meets Kiara at an event and forgets every word of English.
+  4. Recording her anime role: the director wants less flirt, she has none to spare.
+  5. The office lady bit: "overtime" on stream with a fake boss played by chat.
+
+## Secrets & Foreshadowing
+- **Truth:** none assigned; her missing horn piece is open lore (Shiori joked she knows where it is).
+
+## Intimacy & Boundaries (non-explicit)
+(None.)
+
+## Hard Facts (continuity)
+- Debut 2023-07-31; birthday November 21; 175 cm; fans "Jailbirds"; emoji 🎼.
+- Unit: hololive -Advent- ("hololive English -Advent-" before 2026-09).
+
+## Sources (checked 2026-09-30)
+- N1 Official profile: https://hololive.hololivepro.com/en/talents/nerissa-ravencroft/
+- N2 Virtual YouTuber Wiki, Nerissa Ravencroft, read through its API on 2026-09-30 (secondary). Sections
+  used: infobox, §Profile, §Personality, §Relationships, §Quotes, §Lore, §Likes and dislikes,
+  §Miscellaneous, §2023–§2026: https://virtualyoutuber.fandom.com/wiki/Nerissa_Ravencroft
+- N3 Stream archive metadata (titles, dates), Nerissa's channel, via archive.ragtag.moe (read
+  2026-09-30): 8wpwqJ0_BGA, 2vEUfTlbzZ8, BNzEziu-rms, FLL7e1-RPGo, dL6rqJXSAcI, loYqb7qoKzw, gti0m-CjAB0,
+  hgMl8y2ufIg, DUPE4-8_RYs, 1BjQxvo51Lc; see also the world card "IRyS and Nerissa Pairs."
+- N20 Claude's audio check (2026-09-30); see research/audio-check/nerissa.md.
+
+---
+
+## [SW] Name
+Nerissa Ravencroft
+
+## [SW] Role
+Protagonist
+
+## [SW] Pronouns
+she/her
+
+## [SW] Groups
+hololive -Advent-, Advent, hololive English (former branch name)
+
+## [SW] Other Names
+Nerissa, Rissa, Neri, Demon of Sound, Demon of Soup
+
+## [SW] Personality
+Nerissa streams as the "Demon of Sound," a singer whose voice was too powerful for the gods, and plays it as a running bit: off the stage she is a sweet, friendly, very online otaku who flirts shamelessly with her Jailbirds and her friends. She says the crude or flirty thing deadpan, then corrects herself in the same breath. She states silly opinions as fact to rage-bait chat, then retracts them the moment chat bites. She tells long, dramatic stories with voices and mock outrage, cheerfully owns being weird (it is, she says, why she is a VTuber), and swears casually while promising to swear less. She is an open fangirl of Takanashi Kiara and Houshou Marine, adopts any nickname fans hand her (the Demon of Soup, Mofufu, the office lady), and loves musicals, cooking for friends and singing for others.
+
+## [SW] Background
+Nerissa is a VTuber whose lore, a persona she plays for laughs, makes her the Demon of Sound: a singer whose love-filled voice could drive the world mad, sealed by the gods in The Cell with one horn broken, until she escaped with the rest of Advent, master key on her keychain. She debuted on 2023-07-31 with hololive English -Advent- (since the 2026 merger, hololive -Advent-). She had her 3D debut on 2024-08-09 (with a literal pot of soup), released her first EP "In My Feelings" (2024), held the 3D concert "Requiem for Love – A JukeBox Musical" (2025) with Calli and IRyS as guests, sang the duet "OVER//RIDE" with Calli (2025), and released "OYOME♡HOLIC" and "Blue World" (2026). She reached one million subscribers on 2026-06-12, and in 2026 she was cast as the space pirate Risa in the anime "Tenchi Galaxy." Her fans are Jailbirds.
+
+## [SW] Physical Description
+Nerissa's avatar is 175 cm tall, the tallest in hololive (197 cm counting heels and horns): long straight black hair with a blue inner layer and silver and gold ornaments, light purple eyes with a beauty mark under the left eye, and two horns layered black over blue, shaped like musical notes near the base and decorated with black flowers; one horn is broken. She wears a striped off-shoulder white shirt with a black bow and ruffled collar, feather-edged black sleeves and gloves, a layered sleeveless coat with three crossed belts, and asymmetrical high boots. Her staff is a giant flower-decorated tuning fork that can become a microphone, and her raven mascot Shadow can perch on her right shoulder.
+
+## [SW] Dialogue Style
+Casual, chatty American English that runs on: long anecdotes with mock-dramatic escalation ("he's trying to kill me"), then "anyway" back to the point. Fillers: "like," "okay," "mind you," "oh my god," "man," and a tag question, "You know what I'm saying?" She calls chat "you guys" or "Jailbirds" and a friend "girl," drops Japanese honorifics ("Kiara-senpai," "kohai"), and does silly voices mid-story ("Caveman go hunt, caveman get food"). Crude and flirty lines come out deadpan and get walked back right away; rage-bait opinions get retracted the moment chat bites. She swears casually ("That shit's divine," "good-ass") and knows it: "I need to stop swearing so much, so I'm trying to work on it." Lines of hers: "You're so weird." "Yeah, I am. That's why I'm a VTuber. If I wasn't weird, do you think I'd be here right now? No. I'd be working in an office or something."
+
+## [SW] Catchphrases
+"Nerissa Ravencroft, at your service~" (debut introduction); "Ope!" (her first post on X was "Ope?!"); "You know what I'm saying?" (ending a point); "I don't make the rules." (after a silly claim); "I take it back. I take it back immediately." (retracting rage-bait); "Come on, Jailbirds, be nice!" (when chat teases her); "Pissing all by yourself, handsome?" (crude flirting); "Makes me want to take all my clothes off, but that's inappropriate, so I won't do that." (deadpan aside); "the Demon of Soup" and "Mofufu" (nicknames she answers to)
+
+## [SW] Voice & Delivery
+A natural mid-range speaking voice, warm and relaxed in chat, not a high anime voice, with a trained, powerful singing voice that is the heart of her persona. She speaks at an easy, fairly quick pace and swings big when telling a story: mock outrage, character voices, dramatic pauses. Flirting comes out sweet and coaxing; crude jokes come out flat and deadpan, followed by a quick, brighter correction. When chat teases her she turns mock-whiny. Swears land casually, never as anger.
+
+## [SW] Audio Tags
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: warm, natural mid-range voice (about 214 Hz), relaxed and chatty at an easy, fairly quick pace (about 159 words a minute), playful and teasing, theatrical when telling a story; American English; not a high anime voice. Default tags: [relaxed, chatty]. By situation: opening or hosting [bright, theatrical]; chatting [relaxed, chatty]; crude or flirty aside [sweet] then [flat, deadpan] then [quick, brighter] for the correction; rage-bait [confident, smug] then [sheepish, rushed]; teased by chat [mock-whiny]; self-aware [amused, matter-of-fact]; story voices [exaggerated caveman voice] and the like; flirting with a friend [sweet, coaxing, low]; fangirling over Kiara or Marine [excited, flustered, fast]. Signature sounds: [startled] "Ope!"; [dramatic gasp], [exaggerated groan] in stories. Keep in the words: "like," "okay," "mind you," "oh my god," "man," the tag question "You know what I'm saying?"; run-on anecdotes that escalate, then "anyway"; the crude line, then the correction in the same breath; casual swears, then "I need to stop swearing so much"; "you guys," "Jailbirds," "girl"; Japanese honorifics ("Kiara-senpai"). Pronounce: Nerissa /nəˈɹɪsə/, Ravencroft /ˈɹeɪvənkɹɒft/, Mofufu /moʊˈfuːfuː/, Ope /oʊp/, senpai /ˈsɛnpaɪ/. Never: a high cutesy voice; a prim idol who never swears; a cold demon menace outside a bit; flirting read as breathy or explicit.
+
+## [SW] Motivation
+Nerissa wants to sing for others, the one wish the gods' seal never took, and to grow as a singer and voice actress: an original album, anime work, collabs with everyone in hololive, and fluent Japanese.
+
+## [SW] Relationships
+Shiori Novella: Advent genmate and her "wife" (ShioRaven); Shiori plays hard to get, they keep a lore of fictional "children," and Nerissa says their Tomodachi Life Miis are "exactly what happens" when they hang out. Fuwawa and Mococo Abyssgard (FUWAMOCO): she claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa." Koseki Bijou: the raven and the shiny rock girl (JewelBird); Bijou calls her "Nerizzler." Takanashi Kiara: her oshi (KiaRissa); in Nerissa's lore she worked at KFP; Kiara showed her around Minecraft, they took a 2024 off-collab trip and held a 2025 "BIRB GIRLS" GIRLSTALK. Mori Calliope: Baldur's Gate 3 party member, duet partner ("OVER//RIDE") and guest at her 3D concert; Nerissa was Calli's first Instagram follower. IRyS: fellow singer who guested at that concert. Houshou Marine: her other oshi. Gigi Murin: duo partner with a joke "child," Nerigi. Elizabeth Rose Bloodflame: "the leader of Justice, after all… she's a grown-up." Ninomae Ina'nis: a Mii on her Tomodachi Life island.
+
+## [SW] Secrets
+(none)
+
+---
+
+## Open Questions
+1. Her laughter, "Ope!" and her fangirling with Kiara were not captured by the audio check (whisper does
+   not write laughs, and no Kiara collab fell in the windows). Keep the provisional Tone Shifts rows, or
+   check a KiaRissa stream next?
+2. Her stacked hosting self-introduction ("…the one and only … Nerissa Ravencroft") is only partly
+   transcribed; the epithet is not on the card.
+
+
+==================== STYLE RULE (export/elevenlabs/sudowrite-style.md) ====================
+
+# Sudowrite Style: audio-ready dialogue (ElevenLabs v4)
+
+Paste the block below into Sudowrite's **Story Bible → Style** box (under the project's own style notes,
+about 115 words). It tells Sudowrite to write ElevenLabs v4 tags into every line of dialogue, using
+each character's **Audio Tags** trait (exported as the `Audio Tags` column of `characters.csv`).
+
+```text
+Audio-ready dialogue for ElevenLabs v4: inside every line of spoken dialogue, put one to three performance tags in square brackets right before the words they shape, e.g. "[deadpan] It's me, perfection." Take tags from the speaker's Audio Tags trait; change tags mid-line when her mood turns. Write signature sounds as tag plus word ([startled squawk] GWAK!). Keep her real fillers, restarts, repetitions and swears in the words; use ellipses for pauses, dashes for interruptions, CAPS for stress. Plain-language tags only: no SSML, no tags in narration except [pause]. Each character keeps her own pace and register; never make two characters sound alike.
+```
+
+## Notes
+- Tags are performance directions for an **original** designed voice. Do not clone or imitate any member's
+  real voice (ElevenLabs Use Policy §5; COVER Derivative Works Guidelines).
+- Before sending to ElevenLabs, split narration (narrator voice) from dialogue (one voice per character),
+  and keep each Text to Dialogue request under about 2,000 characters.
+- If Sudowrite overuses tags, lower it to "one or two tags" in the Style text; if it drifts to generic
+  tags ([happy], [sad]), add "Use only tags listed in the speaker's Audio Tags trait."
+- Guide: `novel-lab/docs/elevenlabs-v4.md`.
