@@ -183,3 +183,14 @@ Do not claim edits were applied. Name downstream tasks needing the result.
 
 End with “Open questions”: at most five genuine author decisions or unresolved
 input questions, or “None.”
+
+
+## Efficiency note (added by Claude, 2026-10-01, after the first audit run exhausted the quota window)
+
+Your quota is shared across the whole audit program, so work economically without lowering rigor:
+- Work primarily from the packet files; they already hold the owned fields, timelines, hard facts and every
+  incoming claim with its locator.
+- Do not print `registry.json` or whole bible files. Search them (`grep -n`, `jq`, `sed -n 'a,bp'`) for the
+  specific names, dates or rows you need to settle a finding.
+- Ignore the run directory's `context.md`; it is not part of this task.
+- Use live search only to settle a contradiction or a likely-stale claim, preferring official pages.
