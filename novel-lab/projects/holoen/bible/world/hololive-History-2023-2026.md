@@ -35,10 +35,12 @@ Historical events.
 | 2024-03-16/17 | SUPER EXPO 2024 and 5th fes. "Capture the Moment" | — |
 | 2024-04 | holoMeet 2024 ambassadors include Hakos Baelz | — |
 | 2024-06-21/22 PDT | **-Justice- debuts**: Elizabeth Rose Bloodflame, Gigi Murin, Cecilia Immergreen, Raora Panthera ("law enforcers" chasing Advent) | EN's newest kouhai |
+| 2024-08-02/10 PDT | Advent 3D debuts (JST dates one day later): Shiori (08-02), Bijou (08-03), Nerissa (08-09), FUWAMOCO (08-10, with Okayu and Korone cameos) | genmates as guests |
 | 2024-08-23 | "ENigmatic Recollection" (ENReco) announced: EN members in the fantasy world Libestal, via a Minecraft series, animation and songs | Guilds: IRyS in "Cerulean Cup," Nerissa and Gura in "Scarlet Wand" |
 | 2024-08-23 EDT | World Tour '24 "-Soar!-" opens at Anime NYC (Javits Center) with Kiara, Ina and Bae among seven performers; it ends in Taipei on 2025-01-18 | — |
 | 2024-08-24/25 EDT | EN 2nd concert "-Breaking Dimensions-" (Kings Theatre, New York), a separate event | — |
 | 2024-08-28 | Minato Aqua graduates | — |
+| 2024-10-12 | FUWAMOCO reach 1,000,000 subscribers, first in Advent; VTuber of the Year at the VTuber Awards (2024-12) | — |
 | 2024-09-30 | **Watson Amelia concludes regular activities and stays an affiliate** | Ame appears as a guest |
 | 2024-11-09 | DEV_IS second unit FLOW GLOW debuts (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi) | — |
 | 2024-11-29 | Two months after Ame's change of status, COVER names it: "conclusion of streaming activities," distinct from graduation (affiliates can still appear in projects) | Why Ame can come back for events |
@@ -50,8 +52,9 @@ Historical events.
 | 2025-04-27 (04-28 JST) | Nanashi Mumei graduates | Promise becomes three |
 | 2025-05-01 | **Gawr Gura graduates** | Myth's first graduation; her last post: "keep swimming! always!" |
 | 2025-05-02 | ENReco chapter 2 "The Chains of Fate" | — |
+| 2025-07-05 | hololive night at Dodger Stadium, Los Angeles, the second hololive–Dodgers collaboration: Ina, IRyS and Bijou | a stadium sing-along |
 | 2025-07-16 | hololive RECORDS label launched | — |
-| 2025-08-23/24 EDT | EN 3rd concert "-All for One-" (Radio City Music Hall, New York) | — |
+| 2025-08-23/24 EDT | EN 3rd concert "-All for One-" (Radio City Music Hall, New York): day 1 opens with the all-member "All for One," followed by Advent's "Genesis"; Justice's first stage as a group | all fifteen EN members on one stage |
 | 2025-08-29 | Advent 2nd-anniversary live "On the Run!" ("The Story of Advent") | Nerissa's group milestone |
 | 2025-10-03 | Hiodoshi Ao (ReGLOSS) leaves | — |
 | 2025-10-15 | Official fan club launches | — |
@@ -60,7 +63,8 @@ Historical events.
 | 2026-03-06/08 | SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" | — |
 | 2026-03-27/28 | Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) | TakoTori on stage |
 | 2026-05-24 | ENReco chapter 3 "Broken Bonds" | — |
-| 2026-07-03/04 | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around partner pairs (Calli–Shiori, Kronii–Ina, Kiara–Bijou) | The current partnerships |
+| 2026-07-03/04 | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around partner pairs (Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Bae, Nerissa–Elizabeth, FUWAMOCO–Raora) | The current partnerships |
+| 2026-07/08 | Shiori's original motion comic "Into The Void" (with Elizabeth, Gigi, Nerissa); Advent's 3rd-anniversary 3D live "Bound by Fate"; FUWAMOCO announce their first album (08-29) | — |
 | 2026-07-23 | Rhythm game "hololive Dreams" released | — |
 | 2026-09-07 | "hololive Next": the female-talent branches unify under **hololive**; new logo; members to get updated designs (Tokino Sora first); "hololive raku" app; TV anime "Odeholo"; 10th-anniversary countdown | The present-day setting |
 | 2026-09-18 | New unit ASOBI★MAWARI-TAI! reveals its four members (Hyakuto Kyoko, Achichi Mela, Suzuna Tsuzuri, Sorashina Sopia) | — |
@@ -95,7 +99,7 @@ Historical events.
 5. IRyS's nerves before her first solo concert in Tokyo.
 
 ## Links to Characters
-All ten. Nerissa (Advent, 2023); Fauna and Mumei (graduated 2025); IRyS and Kronii (Promise, 2023); Ame (affiliate, 2024); Gura
+All fourteen. Advent (Nerissa, Shiori, Bijou, Fuwawa, Mococo; 2023); Fauna and Mumei (graduated 2025); IRyS and Kronii (Promise, 2023); Ame (affiliate, 2024); Gura
 (graduated, 2025); Calli, IRyS and Nerissa (World Tour '25); Kiara and Ina (Drawn to Dawn); Kronii, Ina,
 Kiara and Calli (Serendipity pairs).
 
@@ -128,7 +132,7 @@ Event
 recent hololive history, the merger, the 2025 graduations, holoEN's later generations
 
 ## [SW] Description
-The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; EN's 3rd concert at Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; EN's 4th concert "Serendipity" in Los Angeles (pairs Calli–Shiori, Kronii–Ina, Kiara–Bijou); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
+The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05); EN's 3rd concert at Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; EN's 4th concert "Serendipity" in Los Angeles (pairs Calli–Shiori, Kronii–Ina, Kiara–Bijou); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
 
 ## [SW] Rules
 After 2026-09-07 members say "from hololive"; old group names survive as units. Affiliates may appear at events; graduates appear only as memories. ENReco is a fictional story the members play in, separate from their persona lore.
@@ -154,6 +158,9 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
 - **2026-10-01, author decision:** Kiara is not written as on a break; her 2026-09-09 break notice is not used
   in stories.
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
+- **2026-10-01, cast expansion (author: Advent, and complete the world):** Advent members and events added
+  (official -All for One- report, Serendipity interviews, archive metadata; see "Advent Pairs" and "FUWAMOCO").
+- **2026-10-01, from GPT one-round review of the Advent cast edits (runs/20261001-0549-world-Advent-Pairs/gpt-free.md, high):** concert opening corrected (day one opened with the all-member "All for One," then "Genesis"); 3D debut dates labeled PDT; missing fact adopted: hololive night at Dodger Stadium (2025-07-05; https://hololive.hololivepro.com/en/news/20250731-01-353/).
 
 ## Open Questions
 (None. Serendipity pairs for IRyS and Nerissa were found: see "Concerts and Live Events.")

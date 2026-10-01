@@ -1,1 +1,2 @@
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 dd1e7e596402）：作者裁決：GPT 一輪審查（runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md）已合併，依作者指示只審一輪；作者 2026-10-01 下令加入 Fauna 與 Mumei
+- 2026-10-01 10:17 作者裁決收錄 final.md（sha256 8b6bb0af69b5）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.

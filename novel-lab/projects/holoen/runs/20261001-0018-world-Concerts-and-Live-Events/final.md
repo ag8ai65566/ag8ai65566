@@ -48,6 +48,8 @@ Recurring events / culture.
   Bijou 2025, Gigi 2026). [Observed S1]
 - **Summer events:** "hololive Summer" (2022, 2023), "holonatsu Paradise" (2025-07, with a VRChat
   tournament and a butt-sumo tournament). [Observed S1]
+- **hololive night at Dodger Stadium (2025-07-05, Los Angeles):** the second hololive–Dodgers
+  collaboration, starring Ina, IRyS and Bijou, with a stadium sing-along during the game. [Official, https://hololive.hololivepro.com/en/news/20250731-01-353/]
 
 ## The Cast on Stage
 | Character | Stages (selected) | Source |
@@ -124,7 +126,7 @@ Culture
 fes, hololive fes, SUPER EXPO, EN concert, Serendipity, world tour, 3D live, birthday live, aftertalk
 
 ## [SW] Description
-The stages of the hololive year. Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-," New York; 2025 "-All for One-," Radio City; 2026 "Serendipity," Los Angeles, July 3–4, built on pairs including Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Bae, Nerissa–Elizabeth and FUWAMOCO–Raora); world tours (World Tour '24 "-Soar!-" with Kiara, Ina and Bae among seven performers, with Kronii and Nerissa at pre-concert panels; World Tour '25 "-Synchronize!-" led by Calli, IRyS, Nerissa, Nene and Ollie, with Kronii and Bae as Sydney guests); birthday and anniversary 3D lives; holoMeet. The cast's own stages: Calli's "GriMoire" at the Hollywood Palladium (2025, the first hololive solo concert outside Japan); Kiara and Ina's duo concert "Drawn to Dawn" (2026); Kronii's "The Goddess Descends" birthday live with Ame as guest (March 2026); IRyS's "HOPE UPON A STAR" and "Racing Towards Hope" lives and her first solo concert, Tokyo, 2026-10-06; Nerissa's "Requiem for Love – A JukeBox Musical" (2025) with Calli and IRyS as guests; Gura's final mini live (2025-05-01); FUWAMOCO's first birthday concert (2025) and Advent's anniversary lives "On the Run!" (2025) and "Bound by Fate" (2026). A member may stream an aftertalk afterward.
+The stages of the hololive year. Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-," New York; 2025 "-All for One-," Radio City; 2026 "Serendipity," Los Angeles, July 3–4, built on pairs including Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Bae, Nerissa–Elizabeth and FUWAMOCO–Raora); world tours (World Tour '24 "-Soar!-" with Kiara, Ina and Bae among seven performers, with Kronii and Nerissa at pre-concert panels; World Tour '25 "-Synchronize!-" led by Calli, IRyS, Nerissa, Nene and Ollie, with Kronii and Bae as Sydney guests); birthday and anniversary 3D lives; holoMeet. The cast's own stages: Calli's "GriMoire" at the Hollywood Palladium (2025, the first hololive solo concert outside Japan); Kiara and Ina's duo concert "Drawn to Dawn" (2026); Kronii's "The Goddess Descends" birthday live with Ame as guest (March 2026); IRyS's "HOPE UPON A STAR" and "Racing Towards Hope" lives and her first solo concert, Tokyo, 2026-10-06; Nerissa's "Requiem for Love – A JukeBox Musical" (2025) with Calli and IRyS as guests; Gura's final mini live (2025-05-01); hololive night at Dodger Stadium with Ina, IRyS and Bijou (2025-07-05); FUWAMOCO's first birthday concert (2025) and Advent's anniversary lives "On the Run!" (2025) and "Bound by Fate" (2026). A member may stream an aftertalk afterward.
 
 ## [SW] Rules
 Concerts are told through the avatar performance and the members' talk before and after (nerves, rehearsals, interviews, aftertalks), never the performers' physical bodies. Some guests are announced, others are surprises. US concert dates are local time; streamed lives may differ by a day between the Americas and Japan. IRyS's solo concert has not happened yet at the 2026-09-30 baseline.
@@ -154,6 +156,7 @@ Glowsticks in member colors; an LED wall; a new 3D outfit's reveal; a call-and-r
   Claude).
 - **2026-10-01, cast expansion (author: Advent, and complete the world):** Advent members and events added
   (official -All for One- report, Serendipity interviews, archive metadata; see "Advent Pairs" and "FUWAMOCO").
+- **2026-10-01, from GPT one-round review of the Advent cast edits (runs/20261001-0549-world-Advent-Pairs/gpt-free.md, high):** missing fact adopted: hololive night at Dodger Stadium (2025-07-05; https://hololive.hololivepro.com/en/news/20250731-01-353/).
 
 ## Open Questions
 1. Which characters performed at the four EN concerts (2023–2025 line-ups) was not checked; only

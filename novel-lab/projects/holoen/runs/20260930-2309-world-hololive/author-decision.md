@@ -1,2 +1,3 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 0762528c74bd）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 2ddbdfbfac4b）：作者裁決：加入 Fauna 與 Mumei 後的關係與世界觀連動修改（含 GPT 一輪審查的修正），依作者指示只審一輪
+- 2026-10-01 10:17 作者裁決收錄 final.md（sha256 8e6b7daf8e52）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.

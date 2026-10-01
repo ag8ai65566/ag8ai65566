@@ -1,5 +1,5 @@
 # Sudowrite 貼上單 — holoen
-_產生時間 2026-10-01 05:42。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
+_產生時間 2026-10-01 10:17。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
 
 # Characters
 用 CSV 匯入：Story Bible 的 Characters 標題旁 ••• → Import → CSV。`characters.csv` 是全部角色；只想加一個新角色就用 `cards/` 裡那一個的 CSV。Sudowrite 沒說重複匯入會不會合併，**更新既有角色時請逐欄貼上**，不要再匯入一次。**Secrets 不會自動隱藏**：匯入後、第一次用 AI 功能前，請手動按眼睛圖示隱藏。
@@ -72,9 +72,82 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Fauna wants to win humans over and lead them back to nature. As a streamer she wanted to comfort her Saplings, sing, learn Japanese, collab with her genmates in person, speedrun games and voice-act in a game, and to finish what she started, like the World Tree.
 ```
 
-### Relationships（244/350）
+### Relationships（280/350）
 ```text
-Nanashi Mumei (graduated 2025): Council and Promise genmate and recurring collaborator. Their public comedy includes Fauna's exaggerated protective and possessive bits ("return to nature"); Mumei's macabre humor complicates the apparent protector/protected roles. They premiered their original duet "It's Not a Phase" at the 2024 English concert (released 2024-12-22), and one of Fauna's last streams was the two of them reading Wikipedia talk-page fights. Hakos Baelz: genmate who called her "a natural mama" at debut; her horror partner ("BAE & FAUNA'S MONTH OF HORRORS," 2022; an Amnesia: The Bunker off-collab, 2023). Ouro Kronii: genmate; they defused bombs speaking only in ASMR (2021), and Fauna praised Kronii's "gap moe." IRyS: Promise unitmate from 2023 and an earlier CouncilRyS collaborator; Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Tsukumo Sana (graduated 2022): Council genmate who designed the "Beeg Smol" models; Fauna encouraged fans to support her while mixing praise with a disgust joke. Gawr Gura: Fauna's hololive oshi; Mario Kart, a Dark Souls race, and drawing hololive members from memory four days before Fauna graduated. Takanashi Kiara: Myth senior; "KIWAWA vs FAWNA" (2022); Fauna was Kiara's HOLOTALK guest a week before graduating. Kaela Kovalskia (ID): Phasmophobia and Minecraft together. -Justice-: kouhai she made play a board game she invented (2024); Silent Hill 2 with Gigi Murin. Shirogane Noel: a JP senior she admires. Nerissa Ravencroft: Advent kouhai; with Shiori they sang "Lonely in Gorgeous" at the 2024 English concert, and Nerissa greets her on X as "Fauna-senpai!!!"
+Nanashi Mumei (graduated 2025): Council and Promise genmate and recurring collaborator. Their public comedy includes Fauna's exaggerated protective and possessive bits ("return to nature"); Mumei's macabre humor complicates the apparent protector/protected roles. They premiered their original duet "It's Not a Phase" at the 2024 English concert (released 2024-12-22), and one of Fauna's last streams was the two of them reading Wikipedia talk-page fights. Hakos Baelz: genmate who called her "a natural mama" at debut; her horror partner ("BAE & FAUNA'S MONTH OF HORRORS," 2022; an Amnesia: The Bunker off-collab, 2023). Ouro Kronii: genmate; they defused bombs speaking only in ASMR (2021), and Fauna praised Kronii's "gap moe." IRyS: Promise unitmate from 2023 and an earlier CouncilRyS collaborator; Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Tsukumo Sana (graduated 2022): Council genmate who designed the "Beeg Smol" models; Fauna encouraged fans to support her while mixing praise with a disgust joke. Gawr Gura: Fauna's hololive oshi; Mario Kart, a Dark Souls race, and drawing hololive members from memory four days before Fauna graduated. Takanashi Kiara: Myth senior; "KIWAWA vs FAWNA" (2022); Fauna was Kiara's HOLOTALK guest a week before graduating. Kaela Kovalskia (ID): Phasmophobia and Minecraft together. -Justice-: kouhai she made play a board game she invented (2024); Silent Hill 2 with Gigi Murin. Shirogane Noel: a JP senior she admires. Nerissa Ravencroft: Advent kouhai; with Shiori they sang "Lonely in Gorgeous" at the 2024 English concert, and Nerissa greets her on X as "Fauna-senpai!!!" Koseki Bijou: "Coach Fauna" in Bijou's Hitman runs and a "Sweaty TryHard Gamers" squad with Bae and Kaela. FUWAMOCO: helped on the World Tree's last day (2024-12-31). Shiori Novella: the third voice of "Lonely in Gorgeous."
+```
+
+## Fuwawa Abyssgard
+_來源：bible/characters/Fuwawa-Abyssgard.md_
+
+### Name（2）
+```text
+Fuwawa Abyssgard
+```
+
+### Role（1）
+```text
+Protagonist
+```
+
+### Pronouns（2）
+```text
+she/her
+```
+
+### Groups（10）
+```text
+FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Advent
+```
+
+### Other Names（8）
+```text
+Fuwawa, Fuwa-chan, Fuwa-nee, The Fluffy One, Fluffy One
+```
+
+### Personality（149/400）
+```text
+Fuwawa streams as "The Fluffy One," the older twin demonic guard dog whose duty is to calmly look after her little sister Mococo and their mascot Pero, a calm that never lasts. She is a sweet, gentle, bouncy airhead who says odd things with total confidence ("Refridgator!", math "stops" at zero), is poor at spelling and math, mixes up left and right, and is clumsy at games, all of which she wears happily because she is "exceptionally cute." She teases Mococo, sometimes too much, and plays an "evil twin" role in their public comedy; she also hosts solo streams, such as Hitman. The official profile calls her bouncy, boisterous and chatty. She loves visual novels, retro games, cute girls, Japanese sweets and her oshi Houshou Marine, sings and dances seriously, and her pep talks emphasize compassion, confidence and self-acceptance. Her mission, with Mococo, is to protect the Ruffians' smiles.
+```
+
+### Background（144/500）
+```text
+Fuwawa is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Fluffy One," the older of two twin demonic guard dogs from the Northwest Passage in the demon world, sealed in The Cell "for being a pain in the godly behind," whose duty is to look after her little sister Mococo and Pero, their dog mascot. She debuted with Mococo as FUWAMOCO on 2023-07-31 in hololive English -Advent-, sharing one channel. Together they won "VTuber of the Year" at the 2024 VTuber Awards, reached one million subscribers first in Advent, made their 3D debut in August 2024, held a birthday concert in 2025, sang a TV anime ending theme in 2026, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album. Her color is blue.
+```
+
+### Physical Description（83/200）
+```text
+Fuwawa's avatar is 155 cm tall, with long blonde hair streaked light blue and gathered in small side pigtails, bright pink eyes, fluffy dog ears and a collar. She wears a pastel-blue headband and hairclips, one shaped like a white bandage with a blue center that mirrors her twin's pink one. Blue is always her color, so people can tell her from Mococo, who is otherwise her identical twin. Pero, "The Great Perroccino," their small, muscular fictional dog mascot, appears in their bits.
+```
+
+### Dialogue Style（151/250）
+```text
+Soft, sweet, chatty English that narrates what she is doing and asks everyone to agree ("…right?"), with plenty of "okay," "maybe," "you know" and strings of "no, no, no." She says odd things with total confidence ("Refridgator!"), punctuates everything with "bau bau," calls her sister "Moco-chan" even in English, and talks to her "Ruffians" (sometimes "Wuffians": she can turn an R into a W). She is politely sneaky ("Hello, ma'am. Nice day, ma'am."), pleads cutely for food ("Can I have one? I like one."), teases a little too hard as the "evil twin," and gives warm pep talks ("be the main character of the gym") while leaving the official Pup Talks to Mococo. She does not swear and dislikes dirty jokes. With Mococo she finishes sentences in sync. Her pep talks emphasize compassion, confidence and self-acceptance. Lines of hers: "Should I run? Is running suspicious?" "I'm blending in right now, right?"
+```
+
+### Catchphrases（60/250）
+```text
+"Bau bau!" (everything); "I'm not a chihuahua, I'm Fuwawa!" (introduction); "Hello hello bau bau!" (the twins' opening); "Moco-chan" (her sister, always); "Ruffians" (her fans); "Oh my gosh!"; "Refridgator!" (her own word); "Zero is where the math stops." (on math); "How about we get you all nice and fluffy~?" (official line); "No support is small."; "protect your smile" (the twins' mission)
+```
+
+### Voice & Delivery（69/250）
+```text
+A very high, soft, sweet and fluffy voice, gentle and a little airy, that bounces up when she is excited and goes mock-stern for her "evil twin" teasing. She narrates at an unhurried pace, asks "…right?" as she goes, strings "no, no, no" when things go wrong, and sometimes softens an R into a W. With Mococo the two voices overlap and land on the same word at once.
+```
+
+### Audio Tags（183/350）
+```text
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): very high, soft, sweet voice, unhurried and chatty, bouncy and boisterous when excited; American English with Japanese words. Default tags: [soft, sweet]. By situation: introduction [bright, sing-song]; chatting [gentle, chatty]; sneaking [whispering, polite]; wanting something [pleading, cute]; confident nonsense [proud, certain]; teasing Mococo [sweetly mischievous]; panicking [rapid, flustered] for "no, no, no"; cheering someone on [warm, encouraging]; sign-off [warm, cheerful]. With people (provisional, drawn from Relationships): Mococo [doting, teasing]; Nerissa [playful] ("Newissa"); Marine [starstruck]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [cheerful] bau bau!; [sneezes] (tag only). Keep in the words: "okay," "…right?", "maybe," "you know," "oh my gosh," "Moco-chan," "Ruffians"; no swearing. Pronunciation guide (provisional, untested): Fuwawa /fuˈwɑwɑ/, Abyssgard /ˈæbɪsɡɑɹd/ ("AB-iss-gard"), bau /baʊ/, Ruffians /ˈɹʌfiənz/, sometimes "Wuffians." Not as default: a low or husky voice, brisk efficiency, swearing. A genuinely cold "evil twin" only as an obvious bit.
+```
+
+### Motivation（53/200）
+```text
+In her lore, Fuwawa's job as a guard dog is to protect your smile and to look after Mococo and Pero. As an idol she and Mococo chase a list of more than a hundred dreams: a solo concert, singing with her oshi Houshou Marine, anime songs, figures, and making every Ruffian smile.
+```
+
+### Relationships（155/350）
+```text
+Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; Mococo says Fuwawa is dependable and calms her down; they finish each other's sentences ("FUWAMOCO sync") and sometimes argue; Fuwawa loved being called "Fuwa-nee" once. Pero, "The Great Perroccino": their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Advent: Shiori (Pen Pups; they mistook a cow for her), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Fuwawa calls her "Newissa," and Nerissa claims to be the third sister, "Mofufu"). Mori Calliope: "FUWAMOCALLI," a collaboration name the twins say they particularly like. Watson Amelia: "Detective Dogs." Ouro Kronii: "WatchDog." Nanashi Mumei (graduated 2025): "Fuwamoomco" (Overwatch). Raora Panthera: their 2026 Serendipity trio partner, who drew them a shikishi before her debut. Gigi Murin and Mori Calliope: "2 Creatures + 1 Reaper," defusing bombs (2026). Houshou Marine: her oshi (a Touhou off-collab). Shirakami Fubuki and Hakui Koyori ("FUWAMOKOYO"): horror and Lethal Company partners.
 ```
 
 ## Gawr Gura
@@ -145,9 +218,9 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Gura wants to have fun (games, songs, snacks) and share it with her chumbuds. Her apex-predator boasting is a persona bit; games, songs and audience interaction drive her public activities.
 ```
 
-### Relationships（212/350）
+### Relationships（226/350）
 ```text
-Watson Amelia (affiliate): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; they argue on purpose and prank each other, Ame's sudden praise embarrasses her, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert." Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and joked that anyone making Gura cry would face "the wrath of Ina." Takanashi Kiara: calls her "Goobidiba" and taught her Japanese and German, swears included; Gura once filled Kiara's KFP back room with chickens, and was her HOLOTALK guest the day before she graduated. Ouro Kronii: SNOTCast bits, and one of her regular partners in her last months. Murasaki Shion: senpai she wrote a mock love letter to. Sakura Miko: calls her "George." Ceres Fauna: a Council kouhai whose oshi was Gura; they raced in Dark Souls and drew hololive members from memory together days before Fauna graduated. Nanashi Mumei: a Council kouhai (#gumei); they did a "ROOM REVIEW" together in Mumei's last week.
+Watson Amelia (affiliate): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; they argue on purpose and prank each other, Ame's sudden praise embarrasses her, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert." Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and joked that anyone making Gura cry would face "the wrath of Ina." Takanashi Kiara: calls her "Goobidiba" and taught her Japanese and German, swears included; Gura once filled Kiara's KFP back room with chickens, and was her HOLOTALK guest the day before she graduated. Ouro Kronii: SNOTCast bits, and one of her regular partners in her last months. Murasaki Shion: senpai she wrote a mock love letter to. Sakura Miko: calls her "George." Ceres Fauna: a Council kouhai whose oshi was Gura; they raced in Dark Souls and drew hololive members from memory together days before Fauna graduated. Nanashi Mumei: a Council kouhai (#gumei); they did a "ROOM REVIEW" together in Mumei's last week. Shiori Novella and Nerissa Ravencroft: her "Scarlet Wand" guildmates in the ENigmatic Recollection story.
 ```
 
 ## IRyS
@@ -218,9 +291,155 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 IRyS wants to deliver hope through her songs and reach bigger stages: after her first full album, "DANGERyS" (2026), comes her first solo concert in Tokyo, and someday an anime song. She wants to collab with every member of hololive and keep her fans' spirits up.
 ```
 
-### Relationships（205/350）
+### Relationships（226/350）
 ```text
-Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting "married" and "divorced" (born from a Minecraft bento; their joke fan-fiction made "Monopoly" a fandom euphemism), and a creative partner: at their 2026 Serendipity duo stage IRyS said she leans on Bae's "strong vision" when she's indecisive, and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable; they call their dynamic "a can of worms." Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae. Ouro Kronii: Promise unitmate and two-player rival; IRyS wondered aloud how Kronii sounds when she's scared, and said she, "a half-angel, half-demon Nephilim," could pull off Kronii's goddess look "somehow." Shiranui Flare: a recurring Japanese collaborator (horror camping, Splatoon matches, karaoke). Ninomae Ina'nis: an early duo partner (It Takes Two) who still games with her. Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert. Koseki Bijou ("Biboo"): her frequent horror co-op partner in 2025–2026. Tsukumo Sana (graduated): co-designed her mascots Bloom & Gloom. Ceres Fauna (graduated 2025): Promise unitmate and Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Nanashi Mumei (graduated 2025): Promise unitmate; they played Overwatch together during Mumei's farewell week.
+Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting "married" and "divorced" (born from a Minecraft bento; their joke fan-fiction made "Monopoly" a fandom euphemism), and a creative partner: at their 2026 Serendipity duo stage IRyS said she leans on Bae's "strong vision" when she's indecisive, and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable; they call their dynamic "a can of worms." Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae. Ouro Kronii: Promise unitmate and two-player rival; IRyS wondered aloud how Kronii sounds when she's scared, and said she, "a half-angel, half-demon Nephilim," could pull off Kronii's goddess look "somehow." Shiranui Flare: a recurring Japanese collaborator (horror camping, Splatoon matches, karaoke). Ninomae Ina'nis: an early duo partner (It Takes Two) who still games with her. Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert. Koseki Bijou ("Biboo"): her horror co-op partner (Dead Space 3, Resident Evil 6); with Ina they starred at hololive night at Dodger Stadium (2025). Tsukumo Sana (graduated): co-designed her mascots Bloom & Gloom. Ceres Fauna (graduated 2025): Promise unitmate and Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Nanashi Mumei (graduated 2025): Promise unitmate; they played Overwatch together during Mumei's farewell week. Shiori Novella: Monster Hunter Wilds and PEAK (2025).
+```
+
+## Koseki Bijou
+_來源：bible/characters/Koseki-Bijou.md_
+
+### Name（2）
+```text
+Koseki Bijou
+```
+
+### Role（1）
+```text
+Protagonist
+```
+
+### Pronouns（2）
+```text
+she/her
+```
+
+### Groups（9）
+```text
+hololive -Advent-, hololive English -Advent- (former branch name), Advent
+```
+
+### Other Names（10）
+```text
+Bijou, Biboo, Koseki, Beebs, Beejoe, Lil'Rock, Jewel of Emotions, Oobib
+```
+
+### Personality（184/400）
+```text
+Bijou, "Biboo," streams as the Jewel of Emotions, a tiny crystal girl made of every human feeling, and plays it as a bubbly, friendly, easily excited gremlin: she speaks fluent Gen Alpha meme ("skibidi," "rizz," "gyatt," "67"), blurts jokes that get her affectionately teased, and "collects moms" by getting seniors to agree to mother her. She tackles difficult action games (FromSoft games, Hollow Knight) and sets additional challenges after clearing them; she generally stays collected, but also performs mock outrage. She deliberately replaces profanity with "beep," including when reading game text, says "dang it!" for frustration, and asks Pebbles to avoid profanity too. She treats hard work like a boss fight she runs at "over and over again," loves to share her gaming with others, and keeps her lore as running bits: an evil twin, Oobib; an "Ascended" emotionless form; a habit of saying she eats her fans, who respawn. Her streams open with a moai head until she calls "Kira kira, Koseki!" She sometimes gives a hard-G name a J sound as a running joke ("Jerudo") and is proud of her small size.
+```
+
+### Background（163/500）
+```text
+Bijou is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Jewel of Emotions," a gem formed under immense pressure from every human emotion, beautiful and filthy alike, whose brilliance drove the greedy to fight over her until she was imprisoned in secret; good emotions make her shine brighter. She debuted on 2023-07-30 with hololive English -Advent- alongside Shiori Novella, Nerissa Ravencroft and FUWAMOCO, having auditioned with a modded Undertale fight starring Mori Calliope. She made her 3D debut on 2024-08-03 (PDT), released the original songs "Prism no Mahou" ("Prism Magic," 2024) and "ROCK IN!" (2025), starred with Ina and IRyS at hololive night at Dodger Stadium (2025), sang a solo and two group numbers at the 2025 English concert -All for One-, and was paired with Takanashi Kiara at the 2026 Serendipity concert. Her fans are Pebbles, her mascot is GEOW, and her emoji is the moai 🗿.
+```
+
+### Physical Description（99/200）
+```text
+Bijou's avatar is 140 cm tall, with long silvery-purple hair, darker purple eyes and a dark purple crown. Metallic pink wings rise from her back, and purple gemstones grow on her body: a large jewel on her chest that changes color with her mood (blue when sad, rainbow when happy), small gems under her right eye and on the backs of her hands. Her feet are encased in gemstone shoes. Her avatar imagery includes floating crystals and a katana; crystal-to-weapon transformations belong to her lore and visual effects. Her small rabbit-like mascot GEOW has a jewel on its forehead.
+```
+
+### Dialogue Style（176/250）
+```text
+Bright, bubbly English with "okay," "yeah," and runs of "yes, yes, yes"; she talks to "everyone" and "Pebbles," gives them playful orders ("Make a heart!"), and repeats words for emphasis ("over here, over here"). She deliberately replaces profanity with "beep," even mid-sentence ("don't be super beeping early"), and frustration is "dang it!" She speaks Gen Alpha and gamer slang ("rage baited," "mogging," "67"), calls superchats "super rock rock," and laughs in quick "ha ha ha" bursts and "hehehe" giggles. In games she is calm and steady, with mock outrage ("Everyone's dumb!"), deadpan cover-ups ("You saw nothing. I saw nothing."), small brags and wordplay that collapses ("That made more sense in my head"). Mock-solemn lore lines come out straight ("…worthy sacrifice, I will remember you"; "No, I was eeping"). She sometimes turns a hard-G name into a J as a joke ("Jerudo"), refers to herself as "Biboo," and is learning Japanese. Lines of hers: "Welcome to my birthday world! We're gonna save the city!" "Well, yes, I am. We've established this." "Managing my resources like a pro."
+```
+
+### Catchphrases（66/250）
+```text
+"Kira kira, Koseki!" (transformation command); "BIBOO BIBOO!" (greeting); "Moai Moai Kyun~!" (her debut line); "dang it!" (frustration); "beep" (in place of any swear); "Rock rock!" (her answer to "bau bau"); "super rock rock" (superchats); "TEEHEE~" (mischief); "Bweh." (deflated); "You saw nothing. I saw nothing." (covering something up); "…worthy sacrifice, I will remember you." (mock solemn); "I hope you'll feel my radiance!" (official line); ":D" (in writing)
+```
+
+### Voice & Delivery（81/250）
+```text
+A small, bright, bubbly voice, high and quick when she is excited or hosting, with sudden bursts of squeaky "ha ha ha" laughter and "hehehe" giggles. Under pressure she goes calm and flat rather than loud, so her mock outrage and mock-solemn lore lines land as jokes. She hums and scats to fill quiet stretches in games, says "beep" in the exact rhythm of the swear it replaces, and now and then turns a hard-G name into a J on purpose.
+```
+
+### Audio Tags（214/350）
+```text
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative; the sampled recordings mix in game audio): small, bright, high voice, quick when chatting, quiet and steady while gaming; American English. Default tags: [bright, bubbly]. By situation: opening [excited, bouncy]; hosting Pebbles [playful, commanding]; mock solemn [grave, theatrical] then [giggles]; calm gaming [focused, calm]; mock outrage [indignant, fast]; caught out [deadpan]; small win [delighted]; frustrated [mildly annoyed] "dang it!"; sincere thanks [warm]; sign-off [cheerful, quick]. With people (provisional, drawn from Relationships): Shiori [cheeky]; Kiara [hyped, meme-y]; Kaela [comfortable, playful]; IRyS [excited teammate]; FUWAMOCO [silly]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [squeaky laugh] ha ha ha ha; [giggles] hehehe; [censoring herself] beep; [deflated] bweh; [humming] (tag only). Keep in the words: "okay," "yeah," "yes, yes, yes," "everyone," "Pebbles," "oh my gosh," "oh no," "wow," Gen Alpha slang; she replaces swears with "beep." Pronunciation guide (provisional, untested): Bijou /biˈʒuː/ ("bi-joo"), Biboo /ˈbiːbuː/, Koseki /koʊˈsɛki/, Gerudo as "Jerudo" /dʒəˈɹuːdoʊ/ (her quirk, on purpose). Not as default: swearing, a deep or growly voice, rage. Oobib's "evil" voice only as an obvious bit.
+```
+
+### Motivation（59/200）
+```text
+In her lore, Bijou shines brighter when she meets people's good emotions. As a streamer she wants to appear in a video game and land a voice-acting role, to collab with every hololive member at least once, to perform her original songs on stage, and to grow a community of millions of Pebbles, all while keeping her streams profanity-free.
+```
+
+### Relationships（253/350）
+```text
+Shiori Novella: Advent's "glorious leader" in Bijou's affectionate bit (Goth Rock; a "Gyatt Review"; GAGA with Gigi and Cecilia). Nerissa Ravencroft: the raven drawn to her shine (JewelBird); Bijou named her "Nerizzler," and Nerissa named Bijou's evil twin "Oobib." FUWAMOCO: "Diamond Dogs" since an Overcooked 2 collab in their first weeks; her "Rock rock!" parodies their "bau bau." Kaela Kovalskia (ID): "Grindstone" (Kaela calls her "Beejoe"): Raft, Minecraft, Split Fiction, and with Raora "Graondstone." Mori Calliope: she auditioned with an Undertale fight starring Calli; "TombStone"; a 24-hour charity stream together (2025) and Warhammer painting (2026). Takanashi Kiara: her 2026 Serendipity partner ("Rocku Wawa"), who calls her a "hidden gem" and encouraged her through hard choreography for a song with Kiara and Ame; Bijou admires Kiara's "confidence," and they keep saying "67." IRyS: her horror co-op partner (Dead Space 3, Resident Evil 6); with Ina, they headlined hololive night at Dodger Stadium (2025). Hakos Baelz: "BaeBi" (a 2024 sleepover marathon). Nanashi Mumei (graduated 2025): "Stone Age"; Mumei rated her a loss at arm wrestling because "she is a rock." Ninomae Ina'nis: "TakoRocky," Monster Hunter partner who designed their collab outfits. Watson Amelia: Overwatch and Apex (2023). Ceres Fauna (graduated 2025): her Hitman "coach." Ouro Kronii: Lethal Company and Yu-Gi-Oh. -Justice-: GAGA with Gigi and Cecilia; Graondstone with Raora; "I'm Your Treasure Box" with Cecilia and Raora at the 2025 concert. Kureiji Ollie ("GraveStone"), Akai Haato ("Red Stone"), Regis Altare (HOLOSTARS): game partners. Ichijou Ririka (ReGLOSS): Smash Bros. with a loser's punishment and Monster Hunter.
+```
+
+## Mococo Abyssgard
+_來源：bible/characters/Mococo-Abyssgard.md_
+
+### Name（2）
+```text
+Mococo Abyssgard
+```
+
+### Role（1）
+```text
+Protagonist
+```
+
+### Pronouns（2）
+```text
+she/her
+```
+
+### Groups（10）
+```text
+FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Advent
+```
+
+### Other Names（7）
+```text
+Mococo, Moco-chan, Mogogo, Mogojyan, The Fuzzy One
+```
+
+### Personality（158/400）
+```text
+Mococo streams as "The Fuzzy One," the younger twin demonic guard dog who spent her prison time on anime and games and joined the escape "just for the heck of it." On stream she is energetic, optimistic and especially friendly, the twin who raises everyone's spirits with "Mococo Pup Talks" ("Not tomorrow! Today!"), and insists on her real nicknames (Moco-chan, Mogogo, Mogojyan). She brings energetic reactions and earnest Pup Talks to the duo, keeps recurring show segments moving ("hashtag hashtag FWMCMORNING"), and sometimes argues with Fuwawa. Most of her streams are shared with her sister, though she has also streamed solo. She gets overexcited, can be stubborn, and has a big heart. She sneezes on stream so often that fans keep count. She loves underground idols, denpa songs, visual novels, roguelikes and her oshi Omaru Polka, dislikes scary things yet plays horror games with her sister, and wants every Ruffian to keep going "one step forward a day."
+```
+
+### Background（153/500）
+```text
+Mococo is a hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Fuzzy One," the younger of two twin demonic guard dogs from the demon world, sealed in The Cell "for being a pain in the godly behind," who spent her prison time watching anime and playing games and joined the escape "just for the heck of it," barking at the guards and throwing Pero, the twins' dog mascot, at them. She debuted with her older twin Fuwawa as FUWAMOCO on 2023-07-31 in hololive English -Advent-, sharing one channel and the morning show FUWAMOCO MORNING. Together they won "VTuber of the Year" at the 2024 VTuber Awards, made their 3D debut in August 2024, sang a TV anime ending theme in 2026, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album. Her color is pink.
+```
+
+### Physical Description（77/200）
+```text
+Mococo's avatar is 155 cm tall, with short blonde hair streaked pink, pointed dog ears with white tufts and a collar. She wears a black and pink jacket and headphones, with light-pink X-shaped hairpins and a white-and-pink bandage clip that mirrors her twin's blue one. Pink is always her color, so people can tell her from Fuwawa, who is otherwise her identical twin. Pero, "The Great Perroccino," their small, muscular fictional dog mascot, appears in their bits.
+```
+
+### Dialogue Style（139/250）
+```text
+Bright, quick, earnest English with "bau bau" everywhere, short exclamations ("Whæt?", "Haeh?", "This is good!") and, now and then, a drawn-out vowel at the end of a word (fans spell it "Noæ!"). She gives Pup Talks that build step by step to a cheer ("Not tomorrow! Today!"; "That means you're unstoppable!"), keeps the show running ("hashtag hashtag FWMCMORNING"), and insists on her real nicknames, Moco-chan, Mogogo and Mogojyan. She refers to herself by name ("What about Mococo?"; "I'm not silly. I'm Mococo!"), gets overexcited, and sneezes mid-sentence. She calls her sister "Fuwawa," mixes in Japanese words she loves, and does not swear. With Fuwawa she finishes sentences in sync and argues a little. Her Pup Talks turn small daily efforts into an encouraging picture of cumulative progress. Lines of hers: "I'm the danger!" "If I die, I die."
+```
+
+### Catchphrases（62/250）
+```text
+"Bau bau!" (everything); "I'm not Fuwawa, I'm Mococo!" (introduction); "Hello hello bau bau!" (the twins' opening); "Ehehe, it's play time, whether you're ready or not!" (official line); "Not tomorrow! Today!" (Pup Talk); "That means you're unstoppable!" (Pup Talk); "Whæt?" (surprise); "Noæ!" (after a sneeze); "What about Mococo?"; "I'm the danger!"; "hashtag hashtag FWMCMORNING" (the show); "Moco-chan, Mogogo, Mogojyan" (her only nicknames)
+```
+
+### Voice & Delivery（78/250）
+```text
+A very high, bright, energetic voice, a little squeaky, quick when she is excited and warmly earnest in her Pup Talks, which build to a cheer. A drawn-out vowel sometimes tails a word (fans spell it "Noæ," "Whæt?"; the exact sound is unverified), and frequent sneezes are followed by an embarrassed squeak. In horror games she goes nervous and quiet, then charges in. With Fuwawa the two voices overlap and land on the same word at once.
+```
+
+### Audio Tags（196/350）
+```text
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): very high, bright, energetic voice, quick and earnest; American English with Japanese words. Default tags: [bright, energetic]. By situation: introduction [bright, comic timing]; Pup Talk [earnest, encouraging] building to [cheering]; surprised [squeaky]; after a sneeze [embarrassed, small]; running the show [bright, brisk]; overexcited [rapid, excited]; scared in a game [nervous, quiet] then [reckless]. With people (provisional, drawn from Relationships): Fuwawa [close, a little bossy]; Polka [starstruck]; Gigi [playful]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [sneezes] (tag only), then [embarrassed] Noæ!; [giggles] ehehe; [cheerful] bau bau! Keep in the words: "bau bau," "Whæt?", "Fuwawa," her own name, "Ruffians," Pup Talk phrasing; no swearing. Pronunciation guide (provisional, untested): Mococo /moʊˈkoʊkoʊ/, Mogogo /moʊˈɡoʊɡoʊ/, Mogojyan /moʊɡoʊˈdʒɑn/, Abyssgard /ˈæbɪsɡɑɹd/; "æ" in fan spellings is not IPA, so write the word plainly ("No") and let the vowel be drawn out. Not as default: a low or lazy voice, sarcasm in Pup Talks, swearing.
+```
+
+### Motivation（48/200）
+```text
+In her lore, Mococo is a guard dog whose job is to protect your smile (and to make a little chaos). As an idol she and Fuwawa chase their list of more than a hundred dreams, and she wants every Ruffian to keep going one step a day.
+```
+
+### Relationships（122/350）
+```text
+Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: the twins' fictional dog mascot; in the prison-break lore, Mococo throws Pero at the guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who once hijacked FUWAMOCO MORNING as a prank. Raora Panthera: their 2026 Serendipity trio partner. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO").
 ```
 
 ## Mori Calliope
@@ -291,9 +510,9 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Calli wants to keep improving her music, reach bigger stages and make work people remember, and in her lore that is how she harvests souls. She wants her Dead Beats to take care of themselves first and to look after the people around them.
 ```
 
-### Relationships（306/350）
+### Relationships（348/350）
 ```text
-Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned the ship down in 2021, and now they collab less but are settled, affectionate old friends who bicker like an old married couple. Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote the lyrics for Ina's song TAKO∞TAKOVER and is a recurring target of Ina's puns. Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q" together, and Calli performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert "The Show Goes On!" Watson Amelia (affiliate): Myth genmate who "called in from 2021" to Calli's 2026 charity stream. IRyS and Hakos Baelz: her chaotic CHADCast cohosts ("Chaos, Hope, and Death"); Bae calls her "Cori Malliope," and IRyS joined her as the "Two Pink Women" of Silent Hill 2. Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert). Gigi Murin: frequent collaborator; Calli came to like how her own name sounds once Gigi started saying it. Kobo Kanaeru: calls her "Uncle Dad." Koseki Bijou ("Biboo"): a junior whose skill Calli openly admires. Shiori Novella: her partner for the 2026 Serendipity concert who calls her "Mor Mori"; they chase absurd premises together. Ouro Kronii ("Kronster"): deadpan sparring partner in "Time and Death" horror co-ops and mock feuds (Calli's mock exposé of Kronii's joke "$KRONII" coin), with a running joke about their 1 cm height difference. Hoshimachi Suisei: a Japanese senpai she's starstruck by ("Death Star"). Rikka (HOLOSTARS): they released "spiral tones" together (MoRikka). Koganei Niko, Ayunda Risu, Amane Kanata and Elizabeth: her "LYRA" remix cover of "III." Nanashi Mumei (graduated 2025): her "ANATOMY REVIEW" drawing-stream partner (2022).
+Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned the ship down in 2021, and now they collab less but are settled, affectionate old friends who bicker like an old married couple. Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote the lyrics for Ina's song TAKO∞TAKOVER and is a recurring target of Ina's puns. Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q" together, and Calli performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert "The Show Goes On!" Watson Amelia (affiliate): Myth genmate who "called in from 2021" to Calli's 2026 charity stream. IRyS and Hakos Baelz: her chaotic CHADCast cohosts ("Chaos, Hope, and Death"); Bae calls her "Cori Malliope," and IRyS joined her as the "Two Pink Women" of Silent Hill 2. Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert). Gigi Murin: frequent collaborator; Calli came to like how her own name sounds once Gigi started saying it. Kobo Kanaeru: calls her "Uncle Dad." Koseki Bijou ("Biboo," "TombStone"): a junior whose skill Calli openly admires; Bijou auditioned with an Undertale fight starring Calli, and they ran a 24-hour charity stream together (2025). Shiori Novella: her partner for the 2026 Serendipity concert who calls her "Mor Mori"; they chase absurd premises together (a kids'-movie deep-dive, 2024), and Calli admits she is "a little obsessed with her." Ouro Kronii ("Kronster"): deadpan sparring partner in "Time and Death" horror co-ops and mock feuds (Calli's mock exposé of Kronii's joke "$KRONII" coin), with a running joke about their 1 cm height difference. Hoshimachi Suisei: a Japanese senpai she's starstruck by ("Death Star"). Rikka (HOLOSTARS): they released "spiral tones" together (MoRikka). Koganei Niko, Ayunda Risu, Amane Kanata and Elizabeth: her "LYRA" remix cover of "III." Nanashi Mumei (graduated 2025): her "ANATOMY REVIEW" drawing-stream partner (2022). FUWAMOCO: "FUWAMOCALLI," a pair name the twins particularly like.
 ```
 
 ## Nanashi Mumei
@@ -364,9 +583,9 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Mumei records human history so it isn't forgotten, though she forgets things herself. As a streamer she wanted to grow: a song in a rhythm game, learning Japanese again, collabs with her senpai, new skills like guitar, and a 3D live, which she held in 2024.
 ```
 
-### Relationships（282/350）
+### Relationships（291/350）
 ```text
-Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring collaborator; their comedy includes Fauna's exaggerated protective, possessive bits ("return to nature"), complicated by Mumei's macabre humor; they premiered their duet "It's Not a Phase" at the 2024 English concert. Hakos Baelz: genmate and a recurring collab partner (Mad-Lib theatre in 2021, Overwatch in 2025). Ouro Kronii ("KronMei"): genmate and frequent partner, from "The Grim Adventures of Mumei and Kronii!" (2021) to a "Donut Hole" cover duet (2025-04). IRyS: Promise unitmate from 2023; they played Overwatch together in Mumei's farewell week, then R.E.P.O. with all of Promise (2025-04-24). Tsukumo Sana (graduated 2022): Council genmate who sent a recorded message for Mumei's 2022 birthday. Takanashi Kiara: fellow bird of HOLOTORI, who calls her "Moomsies"; they sang a DECO*27 song together at the 4th fes. (2023), and Mumei was Kiara's HOLOTALK guest in her last week. Gawr Gura: a "#gumei" voice challenge (2023) and a "ROOM REVIEW" in Mumei's last week. Watson Amelia: Overwatch, VR field trips, and "ANIMALS" in Ame's last regular week. Ninomae Ina'nis: fellow artist, drawing collabs. Mori Calliope: "ANATOMY REVIEW." Nerissa Ravencroft: "EMO HOURS" (2023), "Beyond the way" with Kiara at the 2024 concert, "SAD GIRL HOURS" (2025). Koseki Bijou ("Stone Age"): Portal 2 and Marvel Rivals; at arm wrestling Mumei rates her a loss because "she is a rock." Gigi Murin: Echo Point Nova as "A Towl and a Gremlin." Cecilia Immergreen: "Automatowl," who calls her "Myumyei." FUWAMOCO ("Fuwamoomco"): Overwatch. JP: Takane Lui ("Q&A With Bird Sisters"), Tokoyami Towa (calls her "Mumi-chan"), Akai Haato (Minecraft); Inugami Korone (a duet cover in her last week) and Okayu, Nene and Koyori, guests at "Outside the Box."
+Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring collaborator; their comedy includes Fauna's exaggerated protective, possessive bits ("return to nature"), complicated by Mumei's macabre humor; they premiered their duet "It's Not a Phase" at the 2024 English concert. Hakos Baelz: genmate and a recurring collab partner (Mad-Lib theatre in 2021, Overwatch in 2025). Ouro Kronii ("KronMei"): genmate and frequent partner, from "The Grim Adventures of Mumei and Kronii!" (2021) to a "Donut Hole" cover duet (2025-04). IRyS: Promise unitmate from 2023; they played Overwatch together in Mumei's farewell week, then R.E.P.O. with all of Promise (2025-04-24). Tsukumo Sana (graduated 2022): Council genmate who sent a recorded message for Mumei's 2022 birthday. Takanashi Kiara: fellow bird of HOLOTORI, who calls her "Moomsies"; they sang a DECO*27 song together at the 4th fes. (2023), and Mumei was Kiara's HOLOTALK guest in her last week. Gawr Gura: a "#gumei" voice challenge (2023) and a "ROOM REVIEW" in Mumei's last week. Watson Amelia: Overwatch, VR field trips, and "ANIMALS" in Ame's last regular week. Ninomae Ina'nis: fellow artist, drawing collabs. Mori Calliope: "ANATOMY REVIEW." Nerissa Ravencroft: "EMO HOURS" (2023), "Beyond the way" with Kiara at the 2024 concert, "SAD GIRL HOURS" (2025). Koseki Bijou ("Stone Age"): Portal 2 and Marvel Rivals; at arm wrestling Mumei rates her a loss because "she is a rock." Gigi Murin: Echo Point Nova as "A Towl and a Gremlin." Cecilia Immergreen: "Automatowl," who calls her "Myumyei." FUWAMOCO ("Fuwamoomco"): Overwatch. JP: Takane Lui ("Q&A With Bird Sisters"), Tokoyami Towa (calls her "Mumi-chan"), Akai Haato (Minecraft); Inugami Korone (a duet cover in her last week) and Okayu, Nene and Koyori, guests at "Outside the Box." Shiori Novella: B-movie watchalongs (Neil Breen, Kung Pow; 2025).
 ```
 
 ## Nerissa Ravencroft
@@ -437,9 +656,9 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Nerissa wants to sing for audiences, develop her music and acting, collaborate across hololive and improve her Japanese. Her lore echoes this ambition through the Demon of Sound's desire to sing.
 ```
 
-### Relationships（233/350）
+### Relationships（247/350）
 ```text
-Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit (ShioRaven); Shiori plays hard to get, and the two keep a joke lore of fictional "children." Fuwawa and Mococo Abyssgard (FUWAMOCO): she claims, as a bit, to be the third sister, "Mofufu"; Fuwawa calls her "Newissa." Koseki Bijou: the raven and the shiny rock girl (JewelBird); Bijou calls her "Nerizzler." Takanashi Kiara: her oshi (KiaRissa); in Nerissa's lore she worked at KFP; Kiara showed her around Minecraft, they took a 2024 off-collab trip and held a 2025 "BIRB GIRLS" GIRLSTALK. Mori Calliope: Baldur's Gate 3 party member, duet partner ("OVER//RIDE") and guest at her 3D concert; Nerissa was Calli's first Instagram follower. IRyS: fellow singer who guested at that concert. Elizabeth Rose Bloodflame: her "mortal enemy (lore)" from Justice and her 2026 Serendipity duet partner; they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai"). Moona Hoshinova: she sings on Moona's "100%" (2025). Houshou Marine: her other oshi. Gigi Murin: duo partner with a joke "child," Nerigi. Nanashi Mumei (graduated 2025): "emo hours" partner (2023, 2025); with Kiara they sang "Beyond the way" at the 2024 English concert. Ceres Fauna (graduated 2025): the senpai she excitedly replied to on her first day on X ("Fauna-senpai!!!"); with Shiori they sang "Lonely in Gorgeous" at the same concert.
+Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit (ShioRaven); Shiori plays hard to get, and the two keep a joke lore of fictional "children." Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she claims, as a bit, to be the third sister, "Mofufu"; Fuwawa calls her "Newissa." Koseki Bijou: the raven and the shiny rock girl (JewelBird); Bijou calls her "Nerizzler," and Nerissa named Bijou's evil twin "Oobib." Takanashi Kiara: her oshi (KiaRissa); in Nerissa's lore she worked at KFP; Kiara showed her around Minecraft, they took a 2024 off-collab trip and held a 2025 "BIRB GIRLS" GIRLSTALK. Mori Calliope: Baldur's Gate 3 party member, duet partner ("OVER//RIDE") and guest at her 3D concert; Nerissa was Calli's first Instagram follower. IRyS: fellow singer who guested at that concert. Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) from Justice and her 2026 Serendipity duet partner; they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai"). Moona Hoshinova: she sings on Moona's "100%" (2025). Houshou Marine: her other oshi. Gigi Murin: duo partner with a joke "child," Nerigi. Nanashi Mumei (graduated 2025): "emo hours" partner (2023, 2025); with Kiara they sang "Beyond the way" at the 2024 English concert. Ceres Fauna (graduated 2025): the senpai she excitedly replied to on her first day on X ("Fauna-senpai!!!"); with Shiori they sang "Lonely in Gorgeous" at the same concert.
 ```
 
 ## Ninomae Ina'nis
@@ -510,9 +729,9 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Ina delivers sanity checks on humanity. In her own public words, she wants to give her viewers a better day, make art and music, grow as a performer and give back through charity, and she loves groan-inducing wordplay.
 ```
 
-### Relationships（182/350）
+### Relationships（222/350）
 ```text
-Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'Clock); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, Ina credits Kiara's support with helping her gain confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy whose collab outfit Ina designed. IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put them both in her Tomodachi Life island. Houshou Marine: a senior artist she admires. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025).
+Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'Clock); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, Ina credits Kiara's support with helping her gain confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at hololive night at Dodger Stadium (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put them both in her Tomodachi Life island. Houshou Marine: a senior artist she admires. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024) and "MONSTER" with Kronii and Gigi at the 2025 English concert. FUWAMOCO: "SHALLYS" with Cecilia at the same concert.
 ```
 
 ## Ouro Kronii
@@ -583,9 +802,82 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Kronii wants to entertain her Kronies with games, singing and voice work, and to give performances worthy of their support. She plays at being flawless, and her Warden persona treats disorder as an enemy, and she admits, dryly, that she would like to be happy.
 ```
 
-### Relationships（252/350）
+### Relationships（283/350）
 ```text
-Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'Clock); "Just two punny people," and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny." IRyS: Promise genmate and two-player rival (A Way Out, Bokura, a Powerwash "Best Maid" race) who once wondered aloud how Kronii sounds when she's scared, and in 2026 said she could pull off Kronii's goddess look "somehow." Nanashi Mumei (graduated 2025): Council genmate and frequent partner (KronMei), from "The Grim Adventures of Mumei and Kronii!" (2021) to a "Donut Hole" cover duet in Mumei's last month (2025). Ceres Fauna (graduated 2025): Council genmate who described Kronii's "gap moe"; they once defused bombs speaking only in ASMR. Mori Calliope: her first collab partner outside her generation (2021); Calli calls her "Kronster," Kronii teases her about being 1 cm taller, and they bill themselves "Time and Death" in horror co-ops and mock feuds. Kaela Kovalskia: a recurring cross-branch co-op partner for years (Raft, Luma Island, Old Market Simulator) and her partner at a 2024 World Tour panel. Gigi Murin: collaborator in the units "TimeChaser" and "Clockwork Orange." Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: "Pizza Time" partner who calls her "Tam Tender." Takanashi Kiara: a fan before Kronii debuted who calls her "quasoni." Gawr Gura (graduated): SNOTCast, and Kronii was one of Gura's regular partners in her last months. Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live.
+Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'Clock); "Just two punny people," and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny." IRyS: Promise genmate and two-player rival (A Way Out, Bokura, a Powerwash "Best Maid" race) who once wondered aloud how Kronii sounds when she's scared, and in 2026 said she could pull off Kronii's goddess look "somehow." Nanashi Mumei (graduated 2025): Council genmate and frequent partner (KronMei), from "The Grim Adventures of Mumei and Kronii!" (2021) to a "Donut Hole" cover duet in Mumei's last month (2025). Ceres Fauna (graduated 2025): Council genmate who described Kronii's "gap moe"; they once defused bombs speaking only in ASMR. Mori Calliope: her first collab partner outside her generation (2021); Calli calls her "Kronster," Kronii teases her about being 1 cm taller, and they bill themselves "Time and Death" in horror co-ops and mock feuds. Kaela Kovalskia: a recurring cross-branch co-op partner for years (Raft, Luma Island, Old Market Simulator) and her partner at a 2024 World Tour panel. Gigi Murin: collaborator in the units "TimeChaser" and "Clockwork Orange." Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: "Pizza Time" partner who calls her "Tam Tender." Takanashi Kiara: a fan before Kronii debuted who calls her "quasoni." Gawr Gura (graduated): SNOTCast, and Kronii was one of Gura's regular partners in her last months. Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live. Shiori Novella: they hosted "Rating Your Clocks" together (2025), and they sang "MONSTER" with Ina and Gigi at the 2025 English concert. Koseki Bijou: Lethal Company and Yu-Gi-Oh collabs. FUWAMOCO: "WatchDog."
+```
+
+## Shiori Novella
+_來源：bible/characters/Shiori-Novella.md_
+
+### Name（2）
+```text
+Shiori Novella
+```
+
+### Role（1）
+```text
+Protagonist
+```
+
+### Pronouns（2）
+```text
+she/her
+```
+
+### Groups（9）
+```text
+hololive -Advent-, hololive English -Advent- (former branch name), Advent
+```
+
+### Other Names（8）
+```text
+Shiori, Shiorin, The Archiver, Shiori Novella, Shiori~n
+```
+
+### Personality（174/400）
+```text
+Shiori streams as "The Archiver," a bookish fugitive with forbidden knowledge, and plays it with a cheerful, dorky, slightly unhinged energy: she calls herself "a whacky, sleepy eepy girl" with "ditzy what-is-she-talking-about energy." Cozy chats swerve into strange tangents (anatomy, parasites, cannibalism, childhood cartoons with adult subtexts) until chat reaches for the "bonk" emote. She teases the people she is close to, especially her genmates, plays hard to get when Nerissa calls her "wife," and guards lore secrets (where Nerissa's horn is) as a running joke. Under the edge she is sweet and supportive: she credits fan artists in her outros, has a soft spot for animals, and says plainly how much she appreciates her viewers. She is a hands-on creator who edits her own vlogs, writes community posts like a public diary, made an original motion comic, and runs odd review and "educational" streams. She loves mysteries, Sherlock Holmes, horror co-ops and whimsical-creepy art, though she would rather watch someone else play the truly scary games; when a jump scare lands, she screams.
+```
+
+### Background（150/500）
+```text
+Shiori is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Archiver," driven by a thirst for knowledge, who turns favorite stories and memories into bookmarks; imprisoned in The Cell for forbidden knowledge found in a story (which, in the lore, turned half her hair grey), she planned and executed Advent's prison break. She debuted on 2023-07-30 with hololive English -Advent- alongside Koseki Bijou, Nerissa Ravencroft and FUWAMOCO, narrates the group's lore videos, and is jokingly called its leader. She made her 3D debut on 2024-08-02 (PDT), sang at the 2024 and 2025 English concerts, released her first original song "Monsters and Men" on 2026-02-15, was paired with Mori Calliope at the 2026 Serendipity concert, and began her original motion comic "Into The Void" in July 2026. Her fans are Novelites; her mascot is Yorick.
+```
+
+### Physical Description（72/200）
+```text
+Shiori's avatar is 163 cm tall, with mid-length two-tone hair, black on one side and white on the other, held by sharp shuriken-like hairpins, and bright, glowing light-yellow eyes. She wears a dark purple and black jacket over a dress with "dripping" edges, long fingerless gloves and two rings on each hand. Yorick, a small, sad black sphere with long arms and four spikes on its head, rides on her right shoulder.
+```
+
+### Dialogue Style（185/250）
+```text
+Fast, chatty English that stacks reactions and restarts mid-thought, full of "like," "actually," "kind of," "sort of," "genuinely" and "if that makes sense"; she talks to "guys," rarely "chat." She defends her lore with a straight face ("In my defense, guys, they trespassed"; "It was not my fault everyone got sacrificed, okay?"), thirsts at game characters as a goofy bit ("Is that a vampire?"), cheers creators on ("I'm so happy for you"), and admits she would rather watch someone else play the scary games. Exclamations: "whoa," "ooh," "oh my god," "oh heavens," "oh shoot," "oh fudge." Her profanity is situational and can include "fuck" ("what the hell," "it pisses me off"); once, moderating a troll, she snapped "Go fuck yourself" and added at once, "I'm so sorry. I shouldn't say that." She teases her genmates, keeps lore secrets as a joke, and calls viewers with Japanese honorifics now and then. Lines of hers: "I would love to watch someone else play this. I would be too scared to play this myself." "I'm really bad at remembering names." "That's dead, guys. I defeated my first chimera."
+```
+
+### Catchphrases（84/250）
+```text
+"Shiori~n!" (greeting); "Shiori Novella here at your service!" (introduction); "In my defense…" (defending a lore bit); "For the record, I did not sacrifice anyone." (her running sacrifice joke); "Don't you think that's a wonderful story?" (her official line); "I would be too scared to play this myself." (scary games); "Whoa, wait, who is that hot thing?" (a handsome character); "I'm so happy for you." (cheering someone on); "Aw, it's okay! There, there!" (comforting); "Oh nyo..." (dismay); "Alright, bye guys! See you later!" (sign-off)
+```
+
+### Voice & Delivery（79/250）
+```text
+A clear, mid-high, chatty voice that runs fast when she is excited, piling reactions on top of each other, then drops into a flat, deadpan aside for lore jokes. Her teasing has a playful lilt, and her thirst bits stay goofy rather than sultry. Horror makes her nervous and quiet until a jump scare, when she lets out an ear-piercing, horror-movie scream. Sincere thanks come out warm and plain. When annoyed she snaps quickly and apologizes even more quickly.
+```
+
+### Audio Tags（214/350）
+```text
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative; the sampled recordings mix in other voices): clear, mid-high voice, fast and chatty, deadpan for lore asides; American English. Default tags: [bright, chatty]. By situation: opening [bright, quick]; excited commentary [rapid, excited]; lore defense [deadpan, mock-innocent]; thirst bit [teasing, goofy]; tangent [rambling, amused]; horror [nervous, quiet] then [screams]; comforting [gentle, warm]; cheering someone [warm, delighted]; annoyed [snappy] then [apologetic, quick]; sign-off [warm, quick]. With people (provisional, drawn from Relationships): Nerissa [teasing, playing hard to get]; Bijou [amused, big-sister]; FUWAMOCO [playful]; Calli [dry, conspiratorial]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [ear-piercing scream] (tag only); [intrigued] ooooh; [startled] whoa. Keep in the words: "like," "actually," "kind of," "sort of," "genuinely," "if that makes sense," "guys," "in my defense," "for the record," "oh my god," "oh heavens," "oh shoot"; profanity situational and can include strong words. Pronunciation guide (provisional, untested): Shiori /ʃiˈoʊɹi/, Novella /noʊˈvɛlə/, Novelites /ˈnɑvəliːts/ ("novel-eets"), Yorick /ˈjɔɹɪk/. Not as default: a slow, ominous villain voice, formal speech, constant swearing. Never a seductive read of the thirst bits.
+```
+
+### Motivation（49/200）
+```text
+In her lore, Shiori archives stories and memories worth saving. As a creator she wants to make fun memories with people and keep them, to make things with her own hands (vlogs, games, comics, music), and to keep surprising people, from improving her vocal stamina to a ghost-hunting vlog.
+```
+
+### Relationships（244/350）
+```text
+Nerissa Ravencroft: Advent genmate and partner in the performed ShioRaven "wife" bit; Shiori plays hard to get. Their fictional daughter and the secret of Nerissa's horn piece belong to their shared character jokes. Koseki Bijou: genmate who calls her "our glorious leader" (Goth Rock; a "Gyatt Review"). FUWAMOCO: genmates who once mistook a Minecraft cow for her (Pen Pups). Mori Calliope: her 2026 Serendipity duo partner, who admits she is "a little obsessed with her"; Shiori admires Calli's "work ethic and boundaries," and they bond over dark taste and absurd deep-dives. Takanashi Kiara: hosted Advent on HOLOTALK; an occult handcam off-collab ("#shiotori"). Ouro Kronii: they hosted "Rating Your Clocks" together (2025) and sang "MONSTER" with Ina and Gigi at the 2025 concert. IRyS: Monster Hunter Wilds and PEAK (2025). Ceres Fauna (graduated 2025): with Nerissa, "Lonely in Gorgeous" at the 2024 English concert. Nanashi Mumei (graduated 2025): B-movie watchalongs. Ninomae Ina'nis: a "Rate Your Fears" nightmare talk. Watson Amelia: a VRChat aquarium visit with "Ame Senpai." Gigi Murin, Cecilia Immergreen, Elizabeth Rose Bloodflame (-Justice-, Advent's in-story "guards"): GAGA with Bijou, Gigi and Cecilia; Gigi, Elizabeth and Nerissa voice her motion comic "Into The Void." Vestia Zeta (ID): "GreyScaleX," an official duo unit with "Purrfect Pair" merchandise (2026). Pavolia Reine and Airani Iofi (ID) with Gigi: the "Fanfic Club." HOLOSTARS: Machina X Flayon ("Goth Pilot"), Jurard T Rexford and Regis Altare in co-op games. Inugami Korone: the senior whose clips first led her to hololive.
 ```
 
 ## Takanashi Kiara
@@ -656,9 +948,9 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her KFP persona, Kiara plays the ambitious fast-food CEO; as a performer, she wants to entertain, connect audiences across languages and deliver ambitious shows, and she hopes new people will keep joining KFP.
 ```
 
-### Relationships（329/350）
+### Relationships（339/350）
 ```text
-Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long called Calli her "wife," a public bit they toned down in 2021; now they collab less but are settled, affectionate old friends who bicker like an old married couple. Kiara says it plainly: Calli "actually does like me a lot but is just really bad at expressing herself." They sang "Fire N Ice," and they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi ("#1 Ame gosling"), who helped with her 3D productions and now guests at her concerts. Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, Gura once filled KFP's back room with chickens, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. Koseki Bijou: junior she encourages and her partner for the 2026 Serendipity concert; they share the "6 7" meme. Pavolia Reine: a recurring Indonesian collaborator ("PavoNashi"; a VR "vacation"; the bird unit HOLOTORI). Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii ("quasoni"): Kiara was a fan before Kronii debuted. Nerissa Ravencroft: an Advent kouhai who calls Kiara her oshi and, in her lore, once worked at KFP (KiaRissa); Kiara showed her around Minecraft, and they took a 2024 off-collab trip and held a 2025 "BIRB GIRLS" GIRLSTALK. IRyS: friend since the 2021 full-EN collabs; Kiara gave her a German crash course. Usada Pekora: her oshi and favorite senior. Nanashi Mumei (graduated 2025): a fellow bird of HOLOTORI whom she calls "Moomsies"; they sang a DECO*27 song together at the 2023 fes. and "Beyond the way" with Nerissa at the 2024 English concert, and she was HOLOTALK's 33rd guest. Ceres Fauna (graduated 2025): "KIWAWA vs FAWNA," and HOLOTALK's 32nd guest a week before she left.
+Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long called Calli her "wife," a public bit they toned down in 2021; now they collab less but are settled, affectionate old friends who bicker like an old married couple. Kiara says it plainly: Calli "actually does like me a lot but is just really bad at expressing herself." They sang "Fire N Ice," and they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi ("#1 Ame gosling"), who helped with her 3D productions and now guests at her concerts. Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, Gura once filled KFP's back room with chickens, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. Koseki Bijou: junior she encourages and her partner for the 2026 Serendipity concert ("Rocku Wawa"); they share the "6 7" meme. Shiori Novella: an occult handcam off-collab ("#shiotori," 2024). Pavolia Reine: a recurring Indonesian collaborator ("PavoNashi"; a VR "vacation"; the bird unit HOLOTORI). Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera: cast the infamous "Doom." Cecilia Immergreen: German-speaking partner. Ouro Kronii ("quasoni"): Kiara was a fan before Kronii debuted. Nerissa Ravencroft: an Advent kouhai who calls Kiara her oshi and, in her lore, once worked at KFP (KiaRissa); Kiara showed her around Minecraft, and they took a 2024 off-collab trip and held a 2025 "BIRB GIRLS" GIRLSTALK. IRyS: friend since the 2021 full-EN collabs; Kiara gave her a German crash course. Usada Pekora: her oshi and favorite senior. Nanashi Mumei (graduated 2025): a fellow bird of HOLOTORI whom she calls "Moomsies"; they sang a DECO*27 song together at the 2023 fes. and "Beyond the way" with Nerissa at the 2024 English concert, and she was HOLOTALK's 33rd guest. Ceres Fauna (graduated 2025): "KIWAWA vs FAWNA," and HOLOTALK's 32nd guest a week before she left.
 ```
 
 ## Watson Amelia
@@ -729,13 +1021,46 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Ame wants to crack every case and every game her own way, make entertaining experiments for her Teamates, and help her friends, whether that means fixing their tech, building something new with them or raising money for a good cause.
 ```
 
-### Relationships（162/350）
+### Relationships（189/350）
 ```text
-Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs. Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week.
+Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs. Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week. FUWAMOCO: "Detective Dogs" (Escape Simulator, 2024: "blondes can solve any puzzle"). Shiori Novella: a VRChat aquarium visit with "Ame Senpai" (2024). Koseki Bijou: Overwatch and Apex (2023).
 ```
 
 # Worldbuilding
 用 CSV 匯入：Story Bible 的 Worldbuilding 標題旁 ••• → Import → CSV。`worldbuilding.csv` 是全部元素；單一元素在 `cards/`。更新既有元素請逐欄貼上。Secrets 匯入後請手動隱藏。
+
+## Advent Pairs
+_來源：bible/world/Advent-Pairs.md_
+
+### Name（2）
+```text
+Advent Pairs
+```
+
+### Role（1）
+```text
+Relationship
+```
+
+### Other Names（16）
+```text
+ShioRaven, Goth Rock, Pen Pups, JewelBird, Diamond Dogs, Sound Hounds, Grindstone, GAGA, FUWAMOCALLI, Rocku Wawa, GreyScaleX
+```
+
+### Description（270/450）
+```text
+Inside Advent: Nerissa calls Shiori her "wife" while Shiori plays hard to get and guards the secret of Nerissa's horn (ShioRaven); Bijou calls Shiori "our glorious leader," and they collaborated on "Gyatt Review" (Goth Rock); FUWAMOCO joke that Shiori is a cow because of her black-and-white hair (Pen Pups). Bijou and Nerissa are a shiny gem and a raven (JewelBird; "Nerizzler," and "Oobib," Bijou's evil twin, named by Nerissa); Bijou and the twins are Diamond Dogs, and Nerissa claims to be their third sister, "Mofufu." With seniors: Mori Calliope starred in Bijou's audition mod and did a 24-hour charity stream with her, shares "FUWAMOCALLI" with the twins (a collaboration name they say they particularly like), and was Shiori's 2026 concert partner; Kiara hosted all five on HOLOTALK, encouraged Bijou through hard choreography, and partnered her in 2026 ("Rocku Wawa"); IRyS is Bijou's horror co-op partner, and Bijou, Ina and IRyS starred at hololive night at Dodger Stadium (2025); Shiori and Kronii hosted "Rating Your Clocks" together in March 2025. With -Justice-, their in-story "guards": Gigi and Cecilia form the quartet GAGA with Bijou and Shiori, Raora sang with FUWAMOCO in 2026, and Elizabeth is Nerissa's "mortal enemy" in their lore and her duo partner. Beyond EN: Bijou and Kaela Kovalskia's Grindstone collabs include Raft, Minecraft and Split Fiction; Vestia Zeta and Shiori are the official duo GreyScaleX ("Purrfect Pair" merchandise, 2026); Pavolia Reine and Airani Iofi join Shiori and Gigi in the "Fanfic Club"; FUWAMOCO's oshi are Houshou Marine and Omaru Polka. HOLOSTARS EN: Machina X Flayon and Shiori are "Goth Pilot," and Regis Altare games with Bijou and Shiori.
+```
+
+### Rules（64/350）
+```text
+Collaboration and unit names identify public creative partnerships; some are member-used or official, while others are fan labels. The "wife," fictional-family and "mortal enemy" roles are performed jokes or lore and establish no private romantic relationship. Advent's fugitives and Justice's guards belong to their shared fictional storyline. A collab joined by some members is not a whole-generation event; name only those who took part.
+```
+
+### Sensory Details（39/200）
+```text
+A moai head opening to reveal Bijou; pink and blue paws; a two-tone head of hair; a raven feather on a jewel; five voices talking at once; "bau bau," "Shiori~n!", and a "beep" where a swear should be.
+```
 
 ## AmeSame
 _來源：bible/world/AmeSame.md_
@@ -821,9 +1146,9 @@ Culture
 fes, hololive fes, SUPER EXPO, EN concert, Serendipity, world tour, 3D live, birthday live, aftertalk
 ```
 
-### Description（214/450）
+### Description（245/450）
 ```text
-The stages of the hololive year. Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-," New York; 2025 "-All for One-," Radio City; 2026 "Serendipity," Los Angeles, July 3–4, built on pairs including Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Bae and Nerissa–Elizabeth); world tours (World Tour '24 "-Soar!-" with Kiara, Ina and Bae among seven performers, with Kronii and Nerissa at pre-concert panels; World Tour '25 "-Synchronize!-" led by Calli, IRyS, Nerissa, Nene and Ollie, with Kronii and Bae as Sydney guests); birthday and anniversary 3D lives; holoMeet. The cast's own stages: Calli's "GriMoire" at the Hollywood Palladium (2025, the first hololive solo concert outside Japan); Kiara and Ina's duo concert "Drawn to Dawn" (2026); Kronii's "The Goddess Descends" birthday live with Ame as guest (March 2026); IRyS's "HOPE UPON A STAR" and "Racing Towards Hope" lives and her first solo concert, Tokyo, 2026-10-06; Nerissa's "Requiem for Love – A JukeBox Musical" (2025) with Calli and IRyS as guests; Gura's final mini live (2025-05-01). A member may stream an aftertalk afterward.
+The stages of the hololive year. Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-," New York; 2025 "-All for One-," Radio City; 2026 "Serendipity," Los Angeles, July 3–4, built on pairs including Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Bae, Nerissa–Elizabeth and FUWAMOCO–Raora); world tours (World Tour '24 "-Soar!-" with Kiara, Ina and Bae among seven performers, with Kronii and Nerissa at pre-concert panels; World Tour '25 "-Synchronize!-" led by Calli, IRyS, Nerissa, Nene and Ollie, with Kronii and Bae as Sydney guests); birthday and anniversary 3D lives; holoMeet. The cast's own stages: Calli's "GriMoire" at the Hollywood Palladium (2025, the first hololive solo concert outside Japan); Kiara and Ina's duo concert "Drawn to Dawn" (2026); Kronii's "The Goddess Descends" birthday live with Ame as guest (March 2026); IRyS's "HOPE UPON A STAR" and "Racing Towards Hope" lives and her first solo concert, Tokyo, 2026-10-06; Nerissa's "Requiem for Love – A JukeBox Musical" (2025) with Calli and IRyS as guests; Gura's final mini live (2025-05-01); hololive night at Dodger Stadium with Ina, IRyS and Bijou (2025-07-05); FUWAMOCO's first birthday concert (2025) and Advent's anniversary lives "On the Run!" (2025) and "Bound by Fate" (2026). A member may stream an aftertalk afterward.
 ```
 
 ### Rules（59/350）
@@ -854,9 +1179,9 @@ Relationship
 Death Star, MoRikka, LYRA, Holodeath, PavoNashi, HOLOTORI, UMISEA, HoloJEI, TakoNeko, K.I.R.A, OKFAIR, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET
 ```
 
-### Description（231/450）
+### Description（326/450）
 ```text
-The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones" ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu. Gura had "Apex Predators" with Shishiro Botan and a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan." Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (she hosted a Q&A with Lui titled "Q&A With Bird Sisters") and recorded a duet cover with Inugami Korone in her last week.
+The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones" ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu. Gura had "Apex Predators" with Shishiro Botan and a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan." Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (she hosted a Q&A with Lui titled "Q&A With Bird Sisters") and recorded a duet cover with Inugami Korone in her last week. Of Advent: Bijou and Kaela Kovalskia are "Grindstone" (Kaela calls her "Beejoe"; Raft, Minecraft, Split Fiction), with Kureiji Ollie ("GraveStone"), Akai Haato ("Red Stone") and Ichijou Ririka (ReGLOSS; Smash Bros.) as game partners; Shiori and Vestia Zeta are the official duo "GreyScaleX" (the X is silent; "Purrfect Pair" merchandise, 2026), Pavolia Reine and Airani Iofi join her "Fanfic Club," and she found hololive through Inugami Korone's clips; FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou.
 ```
 
 ### Rules（43/350）
@@ -867,6 +1192,39 @@ Senpai and kouhai describe relative seniority, not language or nationality; form
 ### Sensory Details（21/200）
 ```text
 A bilingual stream title with both names; a senpai's plush on a shelf; a starstruck "Senpai!"; Japanese and English mixed mid-sentence.
+```
+
+## FUWAMOCO
+_來源：bible/world/FUWAMOCO.md_
+
+### Name（1）
+```text
+FUWAMOCO
+```
+
+### Role（1）
+```text
+Faction
+```
+
+### Other Names（9）
+```text
+FWMC, Fuwawa and Mococo, Abyssgard twins, FUWAMOCO MORNING, Pero
+```
+
+### Description（234/450）
+```text
+FUWAMOCO are the twin demonic guard dogs of hololive -Advent-, Fuwawa (older, blue) and Mococo (younger, pink), who share one channel and usually one microphone; their mission is "to protect your smile." They open with "Hello hello bau bau!", each insists she is not the other (Fuwawa is "not a chihuahua"), and they punctuate everything with "bau bau," demon-dog for nearly anything. They often say the same thing at the same time ("FUWAMOCO sync") and are embarrassed by it. Fuwawa is the airheaded big sister who teases Mococo and plays an "evil twin" in their comedy; Mococo brings energetic reactions and earnest Pup Talks and keeps the show's segments moving, and the two sometimes argue. Pero, "The Great Perroccino," is their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Their show FUWAMOCO MORNING's regular format is Monday, Wednesday and Friday, with segments like "Pero Sighting," "Doggie of the Day" and a "Misunderstanding Corner." Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"; after the 2026 concert they spent their days off in Los Angeles with Nerissa, Elizabeth, Kobo and Zeta), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (their 2026 concert trio), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo). Together they talk fast and echo each other ("Right! … Exactly.").
+```
+
+### Rules（79/350）
+```text
+Two separate people: Fuwawa and Mococo are never one character, though both voices are very high and close. A line belongs to one twin unless they speak in sync. "Bau bau" can mean anything; its meaning comes from tone. Their demon-world origin is a performed persona, and Pero is a fictional mascot, not a real animal in the story. A collab one twin joins alone (such as Fuwawa's 2026 trio with Calli and Gigi) is not a FUWAMOCO appearance.
+```
+
+### Sensory Details（38/200）
+```text
+Pink and blue side by side; paw prints; two voices from one microphone saying the same word at once; "bau bau" in every tone; a sudden sneeze; Pero, the tiny, muscular mascot, turning up where nobody expects him.
 ```
 
 ## Fauna and Mumei Pairs
@@ -1184,9 +1542,9 @@ Premise
 VTuber lore, hololive persona, kayfabe, in-character, canonically
 ```
 
-### Description（146/450）
+### Description（167/450）
 ```text
-The core premise of every story: the cast are hololive talents, streamers who perform characters through avatars. Their lore (a reaper, an immortal phoenix, a priestess of the Ancient Ones, a shark from Atlantis, a time-traveling detective, the Warden of Time, a half-angel half-demon nephilim, the Demon of Sound, a druidic kirin, a forgetful owl who guards civilization) is a persona and a running joke, not a fact of the story world, and they know it. They slip into the persona for bits ("canonically, I'm immortal"), break it casually to talk about food, games or work, and step out of it completely when something sincere needs saying. Their friendships, nicknames, songs, concerts and collabs are real parts of their lives. Off stream they are shown as their avatar selves and called by their talent names; nothing about the real people behind the avatars is ever described.
+The core premise of every story: the cast are hololive talents, streamers who perform characters through avatars. Their lore (a reaper, an immortal phoenix, a priestess of the Ancient Ones, a shark from Atlantis, a time-traveling detective, the Warden of Time, a half-angel half-demon nephilim, the Demon of Sound, a druidic kirin, a forgetful owl who guards civilization, an archiver who broke out of a prison for forbidden things, a gem born from human emotion, twin demonic guard dogs) is a persona and a running joke, not a fact of the story world, and they know it. They slip into the persona for bits ("canonically, I'm immortal"), break it casually to talk about food, games or work, and step out of it completely when something sincere needs saying. Their friendships, nicknames, songs, concerts and collabs are real parts of their lives. Off stream they are shown as their avatar selves and called by their talent names; nothing about the real people behind the avatars is ever described.
 ```
 
 ### Rules（129/350）
@@ -1212,14 +1570,14 @@ hololive -Advent-
 Faction
 ```
 
-### Other Names（5）
+### Other Names（8）
 ```text
-Advent, holoAdvent, hololive English -Advent-
+Advent, holoAdvent, hololive English -Advent-, Adventrix, The Cell
 ```
 
-### Description（146/450）
+### Description（236/450）
 ```text
-Nerissa Ravencroft's group, hololive English's third generation (debuted July 2023): Shiori Novella, Koseki Bijou, Nerissa, and the twins Fuwawa and Mococo Abyssgard (FUWAMOCO). Their shared lore is a stream bit: five "criminals" who escaped The Cell, a prison for anything too dangerous to exist; in the story Nerissa took the master key she wears on her keychain. The next generation, -Justice-, are the "law enforcers" sent to catch them, so joint streams can use prisoner-and-guard jokes; Nerissa calls Elizabeth her "mortal enemy (lore)" and sang with her as a duo at the 2026 Serendipity concert. Nerissa calls Shiori her "wife" while Shiori plays hard to get (ShioRaven); with Bijou she is a raven drawn to the shiny rock girl (JewelBird); with FUWAMOCO she claims to be the third sister, "Mofufu" (Sound Hounds). Kiara hosted all five on HOLOTALK two weeks after their debut. Fans: Adventrix, mark ⚠️.
+hololive English's third generation (debuted July 2023), now "hololive -Advent-": Shiori Novella, the Archiver who planned the escape and narrates the group's lore (fans' pick as unofficial leader); Koseki Bijou ("Biboo"), a tiny gem made of human emotion who says "beep" in place of swears; Nerissa Ravencroft, the Demon of Sound; and the twin demonic guard dogs Fuwawa and Mococo Abyssgard (FUWAMOCO), who share one channel. Their shared lore is a stream bit: five "criminals" who escaped The Cell, a prison for anything too dangerous to exist; Nerissa took the master key she wears on her keychain. The next generation, -Justice-, are the "law enforcers" sent to catch them, so joint streams can use prisoner-and-guard jokes. Inside the group: Nerissa calls Shiori her "wife" while Shiori plays hard to get (ShioRaven); Bijou calls Shiori "our glorious leader" (Goth Rock); Nerissa is the raven drawn to Bijou's shine (JewelBird) and the self-declared third Abyssgard sister, "Mofufu" (Sound Hounds); Bijou and the twins are Diamond Dogs; the twins once mistook a Minecraft cow for Shiori. Milestones: 3D debuts in August 2024 (and an Advent 3D collab on 08-17), FUWAMOCO's "VTuber of the Year" (2024), "Genesis" at the 2025 English concert, anniversary lives "On the Run!" (2025) and "Bound by Fate" (2026), and 2026 Serendipity pairs Shiori–Calli, Bijou–Kiara, Nerissa–Elizabeth and FUWAMOCO–Raora. Kiara hosted all five on HOLOTALK two weeks after their debut. Fans: Adventrix, mark ⚠️.
 ```
 
 ### Rules（54/350）
@@ -1316,9 +1674,9 @@ Event
 recent hololive history, the merger, the 2025 graduations, holoEN's later generations
 ```
 
-### Description（160/450）
+### Description（172/450）
 ```text
-The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; EN's 3rd concert at Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; EN's 4th concert "Serendipity" in Los Angeles (pairs Calli–Shiori, Kronii–Ina, Kiara–Bijou); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
+The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05); EN's 3rd concert at Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; EN's 4th concert "Serendipity" in Los Angeles (pairs Calli–Shiori, Kronii–Ina, Kiara–Bijou); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
 ```
 
 ### Rules（36/350）

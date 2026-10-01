@@ -1,5 +1,28 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-01，Advent 完成）：
+- **Advent 全員完成並收錄（作者 2026-10-01 下令）**：角色卡 Shiori Novella、Koseki Bijou、Fuwawa Abyssgard、
+  Mococo Abyssgard（Nerissa 先前已完成）；新世界觀卡 `FUWAMOCO`（雙胞胎單位／共用頻道）、`Advent Pairs`
+  （團內與跨分部關係網）；`hololive -Advent-` 卡改寫成整團。
+  - GPT 一輪審查 `runs/20261001-0549-world-Advent-Pairs/gpt-free.md`（high），逐條併進各卡 Merge Record，
+    作者裁決收錄（`--force`）。主要更正：Shiori–Kronii 是「一起主持 Rating Your Clocks」（不寫誰的時鐘）；
+    "2 Creatures + 1 Reaper" 只有 Fuwawa；Pero 一律寫成虛構吉祥物；子集合作不算全團（R.E.P.O. 時 Nerissa
+    只是 "in Bird Spirit"）；存檔次數不寫成關係排名；Mococo 的「比較聰明／黏人」刪除；"æ" 是粉絲拼法不是 IPA；
+    混音錄音的音高數字不進 Audio Tags；3D 日期標 PDT；-All for One- 首日先全員 "All for One" 再 "Genesis"。
+  - 新增事實（官方頁查證）：GreyScaleX "Purrfect Pair" 周邊（2026-09-05 開賣）、hololive night（Dodger
+    Stadium，2025-07-05，Ina／IRyS／Bijou）、Kiara 陪 Bijou 練難編舞（Serendipity 訪談 04）、
+    Advent 3D 聯動（2024-08-17 PDT）。
+  - 隱私：健康、家人、住處、睡眠等一律不寫；Mococo 的休息公告比照 Kiara 不寫。
+  - 連動修改並重新收錄：Calli、Kiara、Kronii、Gura、Ina、Ame、IRyS、Fauna、Mumei、Nerissa 的 Relationships；
+    VTuber Persona、hololive、History 2023-2026、Concerts、Cross-Branch 世界觀卡。
+  - 音檔報告：`research/audio-check/shiori.md`、`bijou.md`、`fuwamoco.md`（兩模型核對；只引用兩模型一致的片段）。
+  - 表演表：`export/elevenlabs/Shiori-Novella.md`、`Koseki-Bijou.md`、`Fuwawa-Abyssgard.md`、`Mococo-Abyssgard.md`。
+  - 匯出：`export/characters.csv`（14 張）、`export/worldbuilding.csv`（22 張）。
+- **已完成成員**：Myth 五人、Kronii、IRyS、Fauna、Mumei、Advent 五人（含 Nerissa）。其餘成員（Justice 等）等作者下令。
+- **下一步候選**（作者下令前不做新成員）：Mococo 缺乾淨的個人說話樣本（只有薄的 2025 個人台和雙人台）；
+  Shiori 可補一段純雜談窗口；Bijou 可補一段雜談窗口。
+
+（以下為較早的狀態紀錄）
 狀態（2026-10-01 06:40 UTC）：
 - **Ceres Fauna、Nanashi Mumei 完成並收錄（作者 2026-10-01 下令）**：角色卡＋`Fauna and Mumei Pairs` 世界觀卡。
   GPT 一輪審查 `runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md`（high）已逐條併進 Merge Record，

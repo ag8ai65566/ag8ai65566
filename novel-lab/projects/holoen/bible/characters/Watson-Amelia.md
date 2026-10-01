@@ -388,7 +388,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Ame wants to crack every case and every game her own way, make entertaining experiments for her Teamates, and help her friends, whether that means fixing their tech, building something new with them or raising money for a good cause.
 
 ## [SW] Relationships
-Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs. Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week.
+Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs. Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week. FUWAMOCO: "Detective Dogs" (Escape Simulator, 2024: "blondes can solve any puzzle"). Shiori Novella: a VRChat aquarium visit with "Ame Senpai" (2024). Koseki Bijou: Overwatch and Apex (2023).
 
 ## [SW] Secrets
 (none)
@@ -477,6 +477,9 @@ Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeS
   spoken interjections and nonverbal tags.
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** Relationships gained Fauna/Mumei lines from
   the world card "Fauna and Mumei Pairs" (archive titles there).
+- **2026-10-01, cast expansion (author: Advent, and complete everyone's relationship web):** Relationships gained
+  Advent lines from the archive metadata, the official -All for One- report and the Serendipity interviews
+  (sources in the world card "Advent Pairs" and the Advent character files).
 
 ## Open Questions
 1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage

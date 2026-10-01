@@ -1,0 +1,1 @@
+- 2026-10-01 10:17 作者裁決收錄 final.md（sha256 65d87ad37465）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.

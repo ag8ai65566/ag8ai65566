@@ -69,7 +69,8 @@ Faction / unit.
 | 2023-07-25 | "WANTED!" debut PV reveals the five | The fugitive premise |
 | 2023-07 (end) | Debuts; Nerissa's on 2023-07-31 (JST) | "Advent" |
 | 2023-08-12 | Advent are Kiara's 29th HOLOTALK guests | First big senior collab |
-| 2024-08-02/10 | 3D debuts: Shiori 08-02, Bijou 08-03, Nerissa 08-09, FUWAMOCO 08-10 | genmates as guests |
+| 2024-08-02/10 PDT | 3D debuts: Shiori 08-02, Bijou 08-03, Nerissa 08-09, FUWAMOCO 08-10 (JST one day later) | genmates as guests |
+| 2024-08-17 PDT | Advent's 3D collaboration stream | official 3D showcase schedule |
 | 2024-12 | FUWAMOCO win "VTuber of the Year" at the VTuber Awards | — |
 | 2025, 2026 | hololive SUPER EXPO with -Justice- | Prisoner-and-guard bits |
 | 2025-08-23 | -All for One- opens with all of EN, then Advent's "Genesis" | [Official S9] |
@@ -137,7 +138,7 @@ Faction
 Advent, holoAdvent, hololive English -Advent-, Adventrix, The Cell
 
 ## [SW] Description
-hololive English's third generation (debuted July 2023), now "hololive -Advent-": Shiori Novella, the Archiver who planned the escape and narrates the group's lore (fans' pick as unofficial leader); Koseki Bijou ("Biboo"), a tiny gem made of human emotion who never swears; Nerissa Ravencroft, the Demon of Sound; and the twin demonic guard dogs Fuwawa and Mococo Abyssgard (FUWAMOCO), who share one channel. Their shared lore is a stream bit: five "criminals" who escaped The Cell, a prison for anything too dangerous to exist; Nerissa took the master key she wears on her keychain. The next generation, -Justice-, are the "law enforcers" sent to catch them, so joint streams can use prisoner-and-guard jokes. Inside the group: Nerissa calls Shiori her "wife" while Shiori plays hard to get (ShioRaven); Bijou calls Shiori "our glorious leader" (Goth Rock); Nerissa is the raven drawn to Bijou's shine (JewelBird) and the self-declared third Abyssgard sister, "Mofufu" (Sound Hounds); Bijou and the twins are Diamond Dogs; the twins once mistook a Minecraft cow for Shiori. Milestones: 3D debuts in August 2024, FUWAMOCO's "VTuber of the Year" (2024), "Genesis" at the 2025 English concert, anniversary lives "On the Run!" (2025) and "Bound by Fate" (2026), and 2026 Serendipity pairs Shiori–Calli, Bijou–Kiara, Nerissa–Elizabeth and FUWAMOCO–Raora. Kiara hosted all five on HOLOTALK two weeks after their debut. Fans: Adventrix, mark ⚠️.
+hololive English's third generation (debuted July 2023), now "hololive -Advent-": Shiori Novella, the Archiver who planned the escape and narrates the group's lore (fans' pick as unofficial leader); Koseki Bijou ("Biboo"), a tiny gem made of human emotion who says "beep" in place of swears; Nerissa Ravencroft, the Demon of Sound; and the twin demonic guard dogs Fuwawa and Mococo Abyssgard (FUWAMOCO), who share one channel. Their shared lore is a stream bit: five "criminals" who escaped The Cell, a prison for anything too dangerous to exist; Nerissa took the master key she wears on her keychain. The next generation, -Justice-, are the "law enforcers" sent to catch them, so joint streams can use prisoner-and-guard jokes. Inside the group: Nerissa calls Shiori her "wife" while Shiori plays hard to get (ShioRaven); Bijou calls Shiori "our glorious leader" (Goth Rock); Nerissa is the raven drawn to Bijou's shine (JewelBird) and the self-declared third Abyssgard sister, "Mofufu" (Sound Hounds); Bijou and the twins are Diamond Dogs; the twins once mistook a Minecraft cow for Shiori. Milestones: 3D debuts in August 2024 (and an Advent 3D collab on 08-17), FUWAMOCO's "VTuber of the Year" (2024), "Genesis" at the 2025 English concert, anniversary lives "On the Run!" (2025) and "Bound by Fate" (2026), and 2026 Serendipity pairs Shiori–Calli, Bijou–Kiara, Nerissa–Elizabeth and FUWAMOCO–Raora. Kiara hosted all five on HOLOTALK two weeks after their debut. Fans: Adventrix, mark ⚠️.
 
 ## [SW] Rules
 All five are active in 2026; the group is "hololive -Advent-" since the 2026 merger. The prison escape is lore they play for laughs on stream, never a real crime. "Wife," fictional children and the third-sister claim are performed character jokes, not private relationships or real family ties. Myth and Promise are their seniors.
@@ -164,6 +165,7 @@ The ⚠️ mark and Pokey on the logo; prison-gown merch; the master-key accesso
   members' roles, the escape retold, Shiori/Bijou/FUWAMOCO pairs (details in "Advent Pairs" and "FUWAMOCO"),
   3D debut dates, FUWAMOCO's award, -All for One- (S9), "Breakout," the Serendipity pairs (S7, S10);
   Description rewritten.
+- **2026-10-01, from GPT one-round review of the Advent cast edits (runs/20261001-0549-world-Advent-Pairs/gpt-free.md, high):** "who never swears" replaced by her stated practice (she says "beep"); 3D dates labeled PDT; the Advent 3D collaboration stream (2024-08-17 PDT, official schedule https://hololive.hololivepro.com/en/news/20240712-01-90/) added.
 
 ## Open Questions
 (None.)

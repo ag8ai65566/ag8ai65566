@@ -1,3 +1,4 @@
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 f4aa5738fe90）：Claude 比照作者 2026-09-30 對 Kronii/Calli/Ina/Ame 的裁決(b) 收錄：GPT 驗收第 2 輪（上限）意見已全部照改，並依作者的近期權重原則調整；不算 GPT 核准，作者可推翻
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 bfc3fce8474d）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 7f167e7ab5dd）：作者裁決：加入 Fauna 與 Mumei 後的關係與世界觀連動修改（含 GPT 一輪審查的修正），依作者指示只審一輪
+- 2026-10-01 10:17 作者裁決收錄 final.md（sha256 63318484e38e）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.

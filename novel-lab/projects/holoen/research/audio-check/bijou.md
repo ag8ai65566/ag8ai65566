@@ -19,13 +19,18 @@ the table. Remarks in the RE4 close about dreams, a friend's visit and chores ar
 | close2026 | [【RESIDENT EVIL 4】Where's Biboo going? bingo?](https://youtu.be/adiHNkjKMV0) | [5:58:31–6:10:31](https://youtu.be/adiHNkjKMV0?t=21511) | 8.2 | 1174 | 143.9 | 280 Hz | 217–423 Hz |
 | game45_2026 | [【RESIDENT EVIL 4】Where's Biboo going? bingo?](https://youtu.be/adiHNkjKMV0) | [1:00:00–1:45:00](https://youtu.be/adiHNkjKMV0?t=3600) | 28.5 | 1497 | 52.6 | 282 Hz | 167–433 Hz |
 
+An extra window was transcribed after the card was written (first model only): Idol Showdown,
+[tR-21zKCBFM 0:30:00–1:10:00](https://youtu.be/tR-21zKCBFM?t=1800), 881 words in 40 minutes, much of it game
+text read aloud; no pitch figure (game audio dominates). It has "beep" three more times and no profanity
+detected; it adds no quoted lines and is not used on the card.
+
 "Words/min of speech" = words ÷ minutes inside whisper's speech segments. About 1.2 hours used.
 
 ## Claims checked
 
 | Claim in the file | Result (in the machine transcript) | Evidence (ASR, archived audio) |
 |---|---|---|
-| Never swears; says "beep" (KB2) | **Confirmed.** No swear words in about 1.2 hours; "beep" six times, including "don't be super beeping early" and a "beep box." | [6:05:33](https://youtu.be/adiHNkjKMV0?t=21933) |
+| Never swears; says "beep" (KB2) | **Consistent with her stated practice; no profanity detected in the sampled windows** (about 1.2 hours); "beep" six times, including "don't be super beeping early" and a "beep box." | [6:05:33](https://youtu.be/adiHNkjKMV0?t=21933) |
 | "super rock rock" for superchats | **Detected (first model).** Eleven times in the 12-minute close. | throughout the close |
 | Calm in hard games (KB2) | **Consistent.** 53 words per minute of speech in RE4, with mock outrage rather than rage ("This place is a circus! Everyone's dumb!"). | [1:27:21](https://youtu.be/adiHNkjKMV0?t=5241) |
 | Childlike, bubbly host | **Confirmed.** "Welcome to my birthday world! We're gonna save the city!"; repeated orders ("over here" five times, "Make a heart!"). | [0:05:38](https://youtu.be/_C5x0uq-xOw?t=338); [0:10:40](https://youtu.be/_C5x0uq-xOw?t=640) |
