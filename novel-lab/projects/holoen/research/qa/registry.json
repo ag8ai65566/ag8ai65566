@@ -1,7 +1,7 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "27a616e",
+ "commit": "0941b71",
  "files": {
   "bible/characters/Cecilia-Immergreen.md": "06f3cf1723321906e1a0d55f80624d5ee431acc43016dbe0a844b6acb7f9bcfa",
   "bible/characters/Ceres-Fauna.md": "58177a0ddea108b22eb080586981aa488344fed46d7cdb29bfbd867c2753f261",
@@ -173,9 +173,9 @@
    ],
    "status": "She has no supernatural abilities; her lore is a performed persona. Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025.",
    "status_interval": {
-    "state_at_baseline": "active",
+    "state_at_baseline": "graduated",
     "debut": null,
-    "graduated": null,
+    "graduated": "2025-05-01",
     "regular_activities_concluded": null,
     "source": "bible/characters/Gawr-Gura.md › Background"
    }
@@ -526,7 +526,7 @@
     "state_at_baseline": "affiliate",
     "debut": null,
     "graduated": null,
-    "regular_activities_concluded": "September 30, 2024",
+    "regular_activities_concluded": "2024-09-30",
     "source": "bible/characters/Watson-Amelia.md › Background"
    }
   }

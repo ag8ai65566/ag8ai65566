@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 27a616e.
+Snapshot: git 0941b71.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|Takanashi Kiara|hololive -Myth-|Ninomae Ina'nis|Mori Calliope|Cori Malliope|Calliope Mori|Last Writes|Rocku Wawa|Octo'clock|Kawaiiope|Miss Mori|Calliope|Kusotori|Mor Mori|Tenchou|CallioP|Ina'nis|Kiwawa|小鳥遊キアラ|森カリオペ|一伊那尓栖|Kiara|Calli|Wawa|Mori|Inya|LYRA|Mowi|Ina)(
+Matched names: nomanyo Inya'nis|Takanashi Kiara|Ninomae Ina'nis|hololive -Myth-|Mori Calliope|Cori Malliope|Calliope Mori|Last Writes|Octo'clock|Rocku Wawa|Kawaiiope|Miss Mori|Calliope|Kusotori|Mor Mori|CallioP|Ina'nis|Tenchou|小鳥遊キアラ|Kiwawa|森カリオペ|Calli|一伊那尓栖|Kiara|Inya|Mori|Mowi|LYRA|Wawa|Ina)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO and sang "I'm Your Treasure Box" with Bijou and Raora.

@@ -145,6 +145,15 @@ def load(proj):
     return files
 
 
+def iso(d):
+    """'May 1, 2025' → '2025-05-01'; ISO dates pass through."""
+    import datetime
+    try:
+        return datetime.datetime.strptime(d, "%B %d, %Y").strftime("%Y-%m-%d")
+    except ValueError:
+        return d
+
+
 def split_list(s):
     return [x.strip() for x in re.split(r",\s*", s or "") if x.strip()]
 
@@ -172,15 +181,16 @@ def build_registry(files, commit):
             bg = sw.get("Background", "")
             status = re.split(r"(?<=\.)\s", bg, maxsplit=2)[:2]
             debut = re.search(r"debuted on (\d{4}-\d{2}-\d{2})", bg)
-            grad = re.search(r"graduated on (\d{4}-\d{2}-\d{2})", bg)
-            concluded = re.search(r"concluded her regular activities on ([A-Z][a-z]+ \d{1,2}, \d{4}|\d{4}-\d{2}-\d{2})", bg)
+            when = r"([A-Z][a-z]+ \d{1,2}, \d{4}|\d{4}-\d{2}-\d{2})"
+            grad = re.search(r"graduated (?:from [^.;:]+? )?on " + when, bg)
+            concluded = re.search(r"concluded her regular activities on " + when, bg)
             state = "graduated" if grad else "affiliate" if "affiliate" in bg[:300] else "active"
             reg["cast"].append({"name": d["name"], "file": d["path"], "other_names": split_list(sw.get("Other Names")),
                                 "groups": split_list(sw.get("Groups")), "status": " ".join(status),
                                 "status_interval": {"state_at_baseline": state,
                                                     "debut": debut.group(1) if debut else None,
-                                                    "graduated": grad.group(1) if grad else None,
-                                                    "regular_activities_concluded": concluded.group(1) if concluded else None,
+                                                    "graduated": iso(grad.group(1)) if grad else None,
+                                                    "regular_activities_concluded": iso(concluded.group(1)) if concluded else None,
                                                     "source": f"{d['path']} › Background"}})
         else:
             reg["world"].append({"name": d["name"], "file": d["path"], "role": sw.get("Role"),

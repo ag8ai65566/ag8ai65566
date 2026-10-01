@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 27a616e.
+Snapshot: git 0941b71.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: rissa Ravencroft|hololive -Advent-|Jewel of Emotions|Fuwawa Abyssgard|Mococo Abyssgard|The Fluffy One|Demon of Sound|Shiori Novella|The Fuzzy One|Demon of Soup|The Archiver|Koseki Bijou|Last Writes|Fluffy One|Rocku Wawa|Bloodraven|Moco-chan|Fuwa-chan|FUWAMOCO|Mogojyan|Shiori~n|Fuwa-nee|Lil'Rock|Nerissa|Shiorin|Advent|Mococo|Koseki|Mogogo|Beejoe|Shiori|Fuwawa|Oobib|B.F.F|Bijou|Rissa|Beebs|Biboo|Neri)(
+Matched names: rissa Ravencroft|Jewel of Emotions|hololive -Advent-|Fuwawa Abyssgard|Mococo Abyssgard|Demon of Sound|Shiori Novella|The Fluffy One|Demon of Soup|The Fuzzy One|Koseki Bijou|The Archiver|Last Writes|Bloodraven|Fluffy One|Rocku Wawa|Fuwa-chan|Moco-chan|Shiori~n|Fuwa-nee|Mogojyan|FUWAMOCO|Lil'Rock|Shiorin|Nerissa|Shiori|Mococo|Beejoe|Mogogo|Advent|Koseki|Fuwawa|Biboo|Bijou|Oobib|Rissa|Beebs|B.F.F|Neri)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO and sang "I'm Your Treasure Box" with Bijou and Raora.
