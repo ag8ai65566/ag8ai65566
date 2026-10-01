@@ -27,7 +27,8 @@ Unit / shared channel / running show.
   accounts (unused solo channels exist); on X, Fuwawa signs alone with 🩵 and Mococo with 🩷.
   [Observed S1 Fuwawa §Miscellaneous, secondary]
 - **The opening:** "Hello hello bau bau! / I'm not a chihuahua, I'm Fuwawa! / I'm not Fuwawa, I'm Mococo! /
-  Together we're... / FUWAMOCO! Bau bau bau!" [Observed S1 §Quotes, secondary; ASR check pending, S20]
+  Together we're... / FUWAMOCO! Bau bau bau!" [Observed S1 §Quotes, secondary; not detected in the sampled
+  2026 chat opening, S20]
 - **"Bau bau":** demon-dog language that means many things depending on tone; a fan tracker counted about
   270,000 "bau"s from the two in their first year (Fuwawa about 162,000, Mococo about 108,000).
   [Observed S1 §Lore, secondary]
@@ -37,12 +38,26 @@ Unit / shared channel / running show.
   younger, energetic, sensitive one who gives Pup Talks and is the smarter of the two. They argue
   sometimes; Fuwawa has a "sister complex"; Mococo rarely streams without her. [Observed S1 Fuwawa,
   Mococo §Personality, secondary]
+- **How they sound together (2026 duo chat):** fast alternation and echoing: one twin finishes or confirms
+  the other's line ("yeah" about once every 40 words; "Right! … Exactly."), and one undercuts the other
+  ("I'm a donut pro, okay?" … "That's a lie," the second model hears). Both voices measure very high
+  (medians about 401–410 Hz across three windows) and cannot be told apart by transcription, so duo lines
+  stay unattributed. Casual "bau" was not transcribed in these windows (the models may not write it).
+  [ASR S20]
 - **Early joke:** "Fuwawa doesn't exist," because only Mococo could join the first Advent Minecraft collab
   (they had one PC); Shiori joked Mococo was hallucinating her. They "corrected" it on their show.
   [Observed S1 §Miscellaneous, secondary]
 - **Pero ("The Great Perroccino"):** their pet, mascot and self-proclaimed mentor, 25 cm, "two bones, the
   rest pure muscle"; they call him "nasty"; he hijacked their show twice and gets a birthday stream every
   8 August. [Observed S1 Mococo §Pero, secondary]
+
+## After Serendipity (2026)
+In a July 2026 after-party chat they recalled their concert trip with Advent and Justice: off days with
+Nerissa, Elizabeth, Kobo Kanaeru and Vestia Zeta, a theme park's Star Wars area ("Did we see any princesses?
+No. … But Chewbacca is basically a princess."), a shopping run with Nerissa, an American breakfast where
+the milkshake's metal cup confused Elizabeth, and their pitches for the next concert venue ("The moon!") or
+an endurance concert on a cruise ship ("They need to put us in charge." "Right! … Exactly."). [ASR S20,
+YDP2JT3gce4 0:31:51, 2:08:10, 2:12:03; both models on the quoted spans]
 
 ## FUWAMOCO MORNING
 A short morning show on Fridays, Wednesdays and Mondays (F-W-M), from 2023-07-31: hololive news and
@@ -146,10 +161,10 @@ Faction
 FUWAMOCO, FWMC, Fuwawa and Mococo, the twins, Abyssgard twins, FUWAMOCO MORNING, Pero
 
 ## [SW] Description
-FUWAMOCO are the twin demonic guard dogs of hololive -Advent-, Fuwawa (older, blue) and Mococo (younger, pink), who share one channel and usually one microphone; their mission is "to protect your smile." They open with "Hello hello bau bau!", each insists she is not the other (Fuwawa is "not a chihuahua"), and they punctuate everything with "bau bau," demon-dog for nearly anything. They often say the same thing at the same time ("FUWAMOCO sync") and are embarrassed by it. Fuwawa is the airheaded, teasing big sister who is braver alone; Mococo the energetic, sensitive one who gives Pup Talks and rarely streams without her. Their pet and mascot Pero ("The Great Perroccino") is small, muscular and "nasty," and once hijacked their show. They host FUWAMOCO MORNING on Fridays, Wednesdays and Mondays, with segments like "Pero Sighting," "Doggie of the Day" and a "Misunderstanding Corner." Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI"), to Raora Panthera (their 2026 concert trio), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo).
+FUWAMOCO are the twin demonic guard dogs of hololive -Advent-, Fuwawa (older, blue) and Mococo (younger, pink), who share one channel and usually one microphone; their mission is "to protect your smile." They open with "Hello hello bau bau!", each insists she is not the other (Fuwawa is "not a chihuahua"), and they punctuate everything with "bau bau," demon-dog for nearly anything. They often say the same thing at the same time ("FUWAMOCO sync") and are embarrassed by it. Fuwawa is the airheaded, teasing big sister who is braver alone; Mococo the energetic, sensitive one who gives Pup Talks and rarely streams without her. Their pet and mascot Pero ("The Great Perroccino") is small, muscular and "nasty," and once hijacked their show. They host FUWAMOCO MORNING on Fridays, Wednesdays and Mondays, with segments like "Pero Sighting," "Doggie of the Day" and a "Misunderstanding Corner." Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"; after the 2026 concert they spent their days off in Los Angeles with Nerissa, Elizabeth, Kobo and Zeta), to Mori Calliope ("FUWAMOCALLI"), to Raora Panthera (their 2026 concert trio), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo). Together they talk fast and echo each other ("Right! … Exactly.").
 
 ## [SW] Rules
-Two separate people with different voices: Fuwawa and Mococo are never one character. A line belongs to one twin unless they speak in sync. "Bau bau" can mean anything; its meaning comes from tone. Their demon-world origin is a performed persona.
+Two separate people: Fuwawa and Mococo are never one character, though both voices are very high and close. A line belongs to one twin unless they speak in sync. "Bau bau" can mean anything; its meaning comes from tone. Their demon-world origin is a performed persona.
 
 ## [SW] Sensory Details
 Pink and blue side by side; paw prints; two voices from one microphone saying the same word at once; "bau bau" in every tone; a sudden sneeze; a tiny, muscular dog where nobody expects him.

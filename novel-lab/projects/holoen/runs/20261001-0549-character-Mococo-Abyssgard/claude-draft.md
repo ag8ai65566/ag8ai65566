@@ -25,7 +25,11 @@ sw_section: Characters
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (MC#) are listed under Sources.
 >
-> **Audio status:** VOICE_STATUS
+> **Audio status:** on 2026-10-01 Claude checked a 2025 solo stream (MC20: "MOCOCO SOLO" Phasmophobia) and
+> about 1 hour of a 2026 duo chat (shared with Fuwawa; see research/audio-check/fuwamoco.md). The solo stream is
+> quiet and partly about feeling unwell, so it yields almost no usable lines; the voice notes below rest
+> mainly on the wiki's descriptions and on the duo windows, where the two voices cannot be separated by
+> transcription. Not a listening check.
 
 ## One-line Concept
 "The Fuzzy One," the younger, rambunctious twin demonic guard dog who spent her time in prison watching
@@ -66,7 +70,58 @@ the most earnest pep talks in the generation. [Official MC1] [Observed MC2 §Per
    FWMCMORNING." [Observed MC2 FUWAMOCO MORNING, secondary]
 
 ## Voice Profile
-VOICE_PROFILE
+- **Greetings / sign-offs:**
+  - Solo introduction: "I'm not... Fuwawa, I'm Mococo! ... FUWAMOCO! ... Bau bau!"; the wiki's caption is
+    "I'm not Fuwawa, I'm Mococœ!" [Observed MC2 §Quotes, infobox, secondary]
+  - The duo opening is on the FUWAMOCO card. On the morning show: "Please tweet your thoughts to the hashtag,
+    hashtag FWMCMORNING," saying the symbol aloud. [Observed MC2 FUWAMOCO MORNING, secondary]
+- **Catchphrases & bits (verbatim → trigger → estimated frequency):**
+  - "Bau bau!" (fans counted about 108,000 of hers in her first year). [Observed MC2 §Lore, secondary]
+  - Pup Talks: "Not tomorrow! Today!"; "Even if things don't get going your way, you get back up and do your
+    best. And you know what that means? That means you're unstoppable!"; "One step forward a day is 7 steps
+    a week! And eventually, that will amount to something amazing." [Observed MC2 §Quotes, secondary]
+  - Small exclamations: "Whæt?", "Haeh?", "This is good!", "What about Mococo?", "I'm not silly. (pause)
+    I'm Mococo!", "I'm the danger!" [Observed MC2 §Quotes, secondary]
+  - "If I die, I die." → charging into a scary room. [ASR MC20, Sxx4UW3XKnc 0:57:47, first model]
+- **Vocabulary / fillers:** wiki-described rather than measured: "okay," "yeah," Japanese words she loves
+  ("komorebi," "isshoukenmei"), and her nicknames for herself. [Observed MC2 §Likes, secondary]
+- **Profanity:** none described or heard. [Observed MC2] [ASR MC20]
+- **Speech trait:** vowel epenthesis: she adds a small schwa to some words, especially at the end of o-words
+  and in "what" ("Noæ!", "I'm Mococoæ!", "Whæt?"); clippers spell it with "æ." [Observed MC2
+  §Miscellaneous, secondary]
+- **Laughs, noises:** frequent on-stream sneezes, about seven times as often as Fuwawa's (her 500th was
+  celebrated in January 2025), followed by a squeaky "Noæ!"; "ehehe" (her official line opens with it).
+  [Observed MC2 §Miscellaneous; MC6] [Official MC1]
+- **Code-switching:** English and Japanese; she reads "#" aloud as "hashtag." [Observed MC2, secondary]
+- **Rhythm & rhetoric:** quick, bright and earnest; she builds a Pup Talk step by step to a cheer ("That
+  means you're unstoppable!"); she keeps the show on schedule. [Observed MC2, secondary]
+- **Timbre / pitch / pace (for voice performance):**
+  - Measured (MC20): her quiet 2025 solo stream and the 2026 duo windows both measure very high (medians
+    about 360–430 Hz), but the solo sample is thin and the duo mixes both twins, so treat this only as "very
+    high, like Fuwawa." [ASR MC20]
+  - Provisional (interpretation): a very high, bright, energetic voice, a little squeaky, with the "æ" tail
+    on some words; earnest and warm in Pup Talks.
+- **Sounds off:** a low or lazy voice; sarcasm in a Pup Talk; swearing; calling her anything but her name or
+  her three nicknames.
+
+### Tone Shifts
+The middle column is provisional voice direction unless a source is named.
+
+| Situation | Tone / pitch / pace | Characteristic phrasing |
+|---|---|---|
+| Introduction | Bright, a beat of comic timing | "I'm not... Fuwawa, I'm Mococo!" (MC2) |
+| Pup Talk | Earnest, building, then a cheer | "That means you're unstoppable!" (MC2) |
+| Surprised | Squeaky, with the "æ" tail | "Whæt?" (MC2) |
+| After a sneeze | Small, embarrassed | "Noæ!" (MC2) |
+| Running the show | Bright, efficient | "Please tweet your thoughts to the hashtag, hashtag FWMCMORNING." (MC2) |
+| Scared in a game | Nervous, then reckless | "If I die, I die." (ASR MC20) |
+
+### Sample Lines
+1. "I'm not... Fuwawa, I'm Mococo! ... FUWAMOCO! ... Bau bau!" (MC2 §Quotes, secondary)
+2. "Not tomorrow! Today!" (MC2 §Quotes, secondary)
+3. "One step forward a day is 7 steps a week! And eventually, that will amount to something amazing." (MC2 §Quotes, secondary)
+4. "I'm not silly. ... I'm Mococo!" (MC2 §Quotes, secondary)
+5. "Ehehe, it's play time, whether you're ready or not!" (Official MC1)
 
 ## Appearance Anchors (avatar)
 - 155 cm. Short blonde hair with pink streaks; pointed dog ears with white tufts; a black and pink jacket,
@@ -167,16 +222,16 @@ Mococo is a hololive member. She has no supernatural abilities; her lore is a pe
 Mococo's avatar is 155 cm tall, with short blonde hair streaked pink, pointed dog ears with white tufts and a collar. She wears a black and pink jacket and headphones, with light-pink X-shaped hairpins and a white-and-pink bandage clip that mirrors her twin's blue one. Pink is always her color, so people can tell her from Fuwawa, who is otherwise her identical twin. Their small, muscular pet dog Pero is often nearby.
 
 ## [SW] Dialogue Style
-SW_DIALOGUE
+Bright, quick, earnest English with "bau bau" everywhere, short exclamations ("Whæt?", "Haeh?", "This is good!") and, now and then, a small "æ" tail on a word ("Noæ!"). She gives Pup Talks that build step by step to a cheer ("Not tomorrow! Today!"; "That means you're unstoppable!"), keeps the show running ("hashtag hashtag FWMCMORNING"), and insists on her real nicknames, Moco-chan, Mogogo and Mogojyan. She refers to herself by name ("What about Mococo?"; "I'm not silly. I'm Mococo!"), gets overexcited, and sneezes mid-sentence. She calls her sister "Fuwawa," mixes in Japanese words she loves, and does not swear. With Fuwawa she finishes sentences in sync and argues a little. Lines of hers: "I'm the danger!" "One step forward a day is 7 steps a week!"
 
 ## [SW] Catchphrases
-SW_CATCH
+"Bau bau!" (everything); "I'm not Fuwawa, I'm Mococo!" (introduction); "Hello hello bau bau!" (the twins' opening); "Ehehe, it's play time, whether you're ready or not!" (official line); "Not tomorrow! Today!" (Pup Talk); "That means you're unstoppable!" (Pup Talk); "Whæt?" (surprise); "Noæ!" (after a sneeze); "What about Mococo?"; "I'm the danger!"; "hashtag hashtag FWMCMORNING" (the show); "Moco-chan, Mogogo, Mogojyan" (her only nicknames)
 
 ## [SW] Voice & Delivery
-SW_VOICE
+A very high, bright, energetic voice, a little squeaky, quick when she is excited and warmly earnest in her Pup Talks, which build to a cheer. A small schwa tail sometimes rounds off a word ("Noæ," "Whæt?"), and frequent sneezes are followed by an embarrassed squeak. In horror games she goes nervous and quiet, then charges in. With Fuwawa the two voices overlap and land on the same word at once.
 
 ## [SW] Audio Tags
-SW_AUDIO
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (descriptions and thin samples, not synthesis targets): very high, bright, energetic voice, quick and earnest; American English with Japanese words. Default tags: [bright, energetic]. By situation: introduction [bright, comic timing]; Pup Talk [earnest, encouraging] building to [cheering]; surprised [squeaky]; after a sneeze [embarrassed, small]; running the show [bright, brisk]; overexcited [rapid, excited]; scared in a game [nervous, quiet] then [reckless]. With people (provisional, drawn from Relationships): Fuwawa [close, a little bossy]; Polka [starstruck]; Gigi [playful]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [sneezes] (tag only), then [embarrassed] Noæ!; [giggles] ehehe; [cheerful] bau bau! Keep in the words: "bau bau," "Whæt?", "Fuwawa," her own name, "Ruffians," Pup Talk phrasing; no swearing. Pronunciation guide (provisional, untested): Mococo /moʊˈkoʊkoʊ/, Mogogo /moʊˈɡoʊɡoʊ/, Mogojyan /moʊɡoʊˈdʒɑn/, Abyssgard /ˈæbɪsɡɑɹd/, "æ" tail as a short schwa. Not as default: a low or lazy voice, sarcasm in Pup Talks, swearing.
 
 ## [SW] Motivation
 In her lore, Mococo is a guard dog whose job is to protect your smile (and to make a little chaos). As an idol she and Fuwawa chase their list of more than a hundred dreams, and she wants every Ruffian to keep going one step a day.
@@ -190,4 +245,7 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo leans on Fuw
 ---
 
 ## Open Questions
-1. OPEN_Q
+1. There is no clean solo sample of Mococo's ordinary speech in the archive window used (her 2025 solo is
+   quiet and partly about feeling unwell; the duo mixes both twins). Her voice notes rest on the wiki. Look
+   for a 2026 solo segment later?
+2. Her September 2026 break (health) is not written, by analogy with the author's Kiara decision. Confirm?
