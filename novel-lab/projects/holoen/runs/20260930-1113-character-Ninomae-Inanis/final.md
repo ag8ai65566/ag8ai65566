@@ -381,7 +381,7 @@ A quiet, calm voice, unhurried in casual talk, with small pauses. She laughs in 
 In her lore, Ina delivers sanity checks on humanity. In her own public words, she wants to give her viewers a better day, make art and music, grow as a performer and give back through charity, and she loves groan-inducing wordplay.
 
 ## [SW] Relationships
-Ouro Kronii: her 2026 concert partner (Octo'Clock, Serendipity); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, and Kiara pushed her toward the stage and groans at her puns. Mori Calliope: her favorite pun target ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy whose collab outfit Ina designed. Houshou Marine: a senior artist she admires.
+Ouro Kronii: her 2026 concert partner (Octo'Clock, Serendipity); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, and Kiara pushed her toward the stage and groans at her puns. Mori Calliope: her favorite pun target ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy whose collab outfit Ina designed. IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put them both in her Tomodachi Life island. Houshou Marine: a senior artist she admires.
 
 ## [SW] Secrets
 (none)
@@ -456,6 +456,8 @@ Ouro Kronii: her 2026 concert partner (Octo'Clock, Serendipity); "two punny peop
 - **Recency weighting (author decision, 2026-09-30):** most of her voice evidence is already from 2026
   (I3 captions, the 2026 chat audio); "Humu humu" is marked "rare now" on the card, per the wiki.
 - **Left to the author:** whether a story uses one of her song narratives as literal continuity.
+- **2026-10-01, cast expansion (author decision to add IRyS and Nerissa):** the Relationships card gained
+  IRyS/Nerissa lines drawn from the world card "IRyS and Nerissa Pairs" (stream archive titles S1 there).
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

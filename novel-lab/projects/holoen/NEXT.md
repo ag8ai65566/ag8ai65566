@@ -1,6 +1,21 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
-狀態（2026-09-30 23:40 UTC）：
+狀態（2026-10-01 00:20 UTC）：
+- **作者新指示（2026-10-01，已寫進 project.md）**：
+  1. 世界觀要大量補：人際關係（含 JP／ID／GAMERS 等其他分部）、新成員加入、團體／個人演唱會、
+     3D、Expo／fes 等活動都是共同記憶；X 公開發文是關鍵來源。GPT 額度 0 時 Claude 自己盡量完善。
+  2. 目標是 EN 全員，但**名單外的成員等作者下令**（目前已下令：IRyS、Nerissa）。
+  3. **Sudowrite 會自己加 ElevenLabs 標籤**：要把每個角色影響「聲音」的一切（說話方式、性格、口癖、
+     口音、語速、音域、笑聲、招牌聲音、情境轉換、發音）完整教給 Sudowrite。
+     計畫：角色卡加一個 [SW] 欄位「Audio Tags」（情境→標籤、招牌聲音、發音、不要做的），
+     故事層 Style 加標籤格式規則；export 也輸出。內容來源＝`export/elevenlabs/<名字>.md`。
+- **待辦順序**：Nerissa 聲音段落 → 02:27 GPT 審世界觀一輪（含 IRyS/Nerissa 與新卡）→ 合併、收錄、匯出
+  → 世界觀擴充（hololive 大事年表：出道／畢業／演唱會／活動；跨分部關係卡）→ Audio Tags 欄位與八人內容。
+- 新世界觀卡（2026-10-01）：`hololive -Advent-`、`IRyS and Nerissa Pairs`（runs `20261001-0001-world-*`）；
+  `hololive -Promise-` 改成涵蓋 IRyS。Kiara／Calli／Kronii／Ina 的 Relationships 已加 IRyS／Nerissa（final.md）。
+- IRyS：草稿完成（runs `20260930-2334-character-IRyS`），音檔報告 `research/audio-check/irys.md`，
+  表演表 `export/elevenlabs/IRyS.md`。`lab.py export` 現在會保留 `export/elevenlabs/`。
+
 - **作者定案（新）**：以真實性為主，卡片優先用**真實台詞**（含粗口、挑逗）；音檔由 Claude 自己核對。
 - **音檔核對已完成**（六人）：報告在 `research/audio-check/<名字>.md`，工具在 `novel-lab/tools/audiocheck/`。
   - 方法：ragtag 直播存檔 → whisper small.en 轉寫 + Praat 量音高 → **上卡片的句子再用 medium.en 第二模型核對**。
