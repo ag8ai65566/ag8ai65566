@@ -14,6 +14,7 @@ sw_section: Characters
 > 卡片欄位分工（避免重複）：Personality＝遇到壓力、反駁、失敗時怎麼選擇與行動；
 > Motivation＝目前的目標與優先順序；Dialogue Style＝句法、措辭、回應方式、對不同對象的語氣；
 > Catchphrases＝有來源的固定短句與觸發情境；Voice & Delivery＝停頓、重音、笑聲、速度與情緒變化；
+> Audio Tags＝給 Sudowrite 在對白裡加 ElevenLabs v4 標籤用的詞彙表（情境→標籤、招牌聲音、發音、禁用標籤）；
 > Relationships＝對特定人的期待、互動方式與張力；Secrets＝需要控制可見性的真相。
 
 ## 一句話定位
@@ -147,6 +148,11 @@ sw_section: Characters
 ## [SW] Voice & Delivery
 <音色、音高、語速、笑聲、語氣詞，以及不同情緒下聲音怎麼變。Sudowrite 寫對白動作時會用到，
 之後給 AI 聲音演出也用這欄。沒有特別的就寫「（無）」>
+
+## [SW] Audio Tags
+<給 ElevenLabs v4 的標籤詞彙（英文）：基準聲音（音域、語速、口音；原創聲音，不模仿真人）；預設標籤；
+情境→標籤（例 jump scare [startled squawk] GWAK!）；招牌聲音；要寫進字裡的習慣；名字與專有名詞的 IPA；
+不能當預設的標籤。沒有聲音演出需求就寫「（無）」>
 
 ## [SW] Motivation
 <想要什麼、為什麼、怕什麼>

@@ -18,6 +18,7 @@
     "Dialogue Style": 250,
     "Catchphrases": 250,
     "Voice & Delivery": 250,
+    "Audio Tags": 350,
     "Motivation": 200,
     "Relationships": 350,
     "Secrets": 250,
@@ -42,7 +43,7 @@
     "idea": ["Braindump", "Genre", "Style"]
   },
   "optional": {
-    "character": ["Groups", "Other Names", "Catchphrases", "Voice & Delivery", "Motivation", "Relationships", "Secrets"],
+    "character": ["Groups", "Other Names", "Catchphrases", "Voice & Delivery", "Audio Tags", "Motivation", "Relationships", "Secrets"],
     "world": ["Other Names", "Rules", "Sensory Details", "Secrets"],
     "research": ["Other Names", "Sensory Details"],
     "idea": ["Synopsis"]

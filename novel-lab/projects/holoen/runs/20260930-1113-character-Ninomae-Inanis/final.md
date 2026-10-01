@@ -377,6 +377,9 @@ Soft, unhurried English full of gentle hedges ("like," "I think," "you know," "I
 ## [SW] Voice & Delivery
 A quiet, calm voice, unhurried in casual talk, with small pauses. She laughs in little ways: quick giggles mid-sentence and tiny gasps. She hums "Mhm" and "Hmm" while listening. Puns come out flat, followed by a silence. Genuine surprise can break the calm with a sharp, higher reaction ("TOMORROW?!"), and her voice has cracked in such moments. Her threats are sweet-voiced and calm.
 
+## [SW] Audio Tags
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: soft, calm mid-range voice (about 223–232 Hz), the slowest talker in the cast (about 81–95 words a minute in chat), small pauses, warm, quiet giggles, cracking on excited words; American English. Default tags: [soft, unhurried]. By situation: opening [warm, unhurried] then [brighter]; pun [flat, quick], [short pause], [small giggle]; chatting [soft, meandering]; tired or homey [quiet, sleepy]; teasing chat [sweet, dead calm] (sweet-voiced threats); startled [sudden, high, voice cracks] then [embarrassed]; hyped [excited] "WAH!"; sincere [quiet, gentle]; sign-off [warm]. Signature sounds: [excited] WAH!, sometimes a droopy [deflated] wah…; [small giggle] mid-sentence. Keep in the words: hedges ("like," "I think," "you know," "I guess," "maybe," "right?"); ellipses for micro-pauses; tangents closed with "Anyways."; the pun delivered flat, then silence; rare swearing. Pronounce: Ninomae Ina'nis /ninoˈmae ˈiːnɑnis/ (surname first), Takodachi /tɑkoˈdɑtʃi/, WAH /wɑː/. Never: loud, fast or shouted delivery; frequent swearing; a crack on every exclamation; the ominous priestess voice as a default (it is an occasional bit).
+
 ## [SW] Motivation
 In her lore, Ina delivers sanity checks on humanity. In her own public words, she wants to give her viewers a better day, make art and music, grow as a performer and give back through charity, and she loves groan-inducing wordplay.
 
@@ -458,6 +461,9 @@ Ouro Kronii: her 2026 concert partner (Octo'Clock, Serendipity); "two punny peop
 - **Left to the author:** whether a story uses one of her song narratives as literal continuity.
 - **2026-10-01, cast expansion (author decision to add IRyS and Nerissa):** the Relationships card gained
   IRyS/Nerissa lines drawn from the world card "IRyS and Nerissa Pairs" (stream archive titles S1 there).
+- **2026-10-01, Audio Tags (author decision: Sudowrite adds the ElevenLabs v4 tags):** new [SW] Audio Tags
+  field built from this file's Voice Profile, Tone Shifts and audio-check measurements (see
+  `export/elevenlabs/<name>.md`); no new facts.
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

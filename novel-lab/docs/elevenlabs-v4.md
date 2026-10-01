@@ -59,12 +59,16 @@
 1. **做聲音**：每個角色在 Voice Design 用表演表的描述做一個原創聲音，選最符合「音域和能量」的那個；
    存成 `holoen-<名字>`。旁白另外做一個中性聲音。
 2. **寫故事**：在 Sudowrite 正常寫。角色卡的 Dialogue Style 已經要求她們的口頭禪和說話習慣。
-3. **轉成朗讀腳本**（這一步最關鍵）：把一場戲轉成「誰說哪一句＋標籤」的格式：
+3. **轉成朗讀腳本**（這一步最關鍵）。作者定案（2026-10-01）：**由 Sudowrite 在寫故事時直接加標籤**。
+   做法：角色卡有一個 **Audio Tags** 欄位（每個角色的基準聲音、情境→標籤、招牌聲音、要寫進字裡的習慣、
+   IPA、禁用標籤），匯出在 `characters.csv` 的 `Audio Tags` 欄；Story Bible 的 Style 貼上
+   `projects/holoen/export/elevenlabs/sudowrite-style.md` 那段規則。Sudowrite 就會在每句對白前加標籤。
+   人工或 Claude 再檢查一次時，照下面的原則：
    - 每句台詞前加上該角色、該情境的標籤（查表演表的 Tone Shifts 對照）；
    - 保留、甚至補強她的習慣：重複、自我打斷、填充詞、停頓；
    - 招牌聲音寫成標籤＋擬聲字；專有名詞加 IPA；
    - 旁白和台詞分開。
-   這一步可以請 Claude 依表演表自動做（之後可以寫成 `lab.py` 的指令）。
+   Sudowrite 加得不好的地方，可以請 Claude 依表演表修。
 4. **生成**：多人場景用 Text to Dialogue（每次 2,000 字元以內），單人長段用 Text to Speech 或 Studio；
    同一場景盡量一次生成，讓 v4 讀到上下文。每段生成幾個版本挑最好的；需要一致時用 seed。
 5. **聽了再調**：太平淡→Stability 往下調、標籤寫得更具體（例如 `[deadpan, flat, a beat before the punchline]`）；

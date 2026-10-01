@@ -378,6 +378,9 @@ She speaks dry, minimal, casual English, with short cheers dropped in. She uses 
 ## [SW] Voice & Delivery
 A low speaking register, deep like Calli's: powerful and well-controlled, with an older-sister feel, and a wide range she once pushed into a high-pitched voice at a viewer's request. Her default delivery is dry and deadpan at an unhurried, medium pace. When frightened she lets out a startle squawk. She vocalizes explosively when she takes damage or dies in games. Sincere lines come out plain and complete, without a joke attached.
 
+## [SW] Audio Tags
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: low alto, the lowest in the cast (about 180 Hz), relaxed medium pace (about 120–127 words a minute), dry, controlled, American English. Default tags: [deadpan], [dry], [relaxed]. By situation: greeting [relaxed] "Kroniichiwa!"; bragging [deadpan, flat, slow]; jump scare [startled squawk] GWAK! then [trying to stay calm]; misplay [dry]; frustrated [irritated, short] with a swear; praised [deadpan], or [flustered, quick] when it lands; self-roast [dry, amused]; horror tension [low, uneasy]; sincere [plain, warm, unhurried]; good night [softer] "KroYasumi~"; a requested bit [high-pitched, put-on voice]. Signature sounds: [startled squawk] GWAK! (sharp, far above her speaking voice); [yelps] and [grunts] when hit. Keep in the words: short plain statements; a beat (ellipsis or new sentence) before the punchline; self-praise stated as fact; mistakes owned aloud ("that's on me"); swears when startled. Pronounce: Ouro Kronii /ˈoʊɹoʊ ˈkɹoʊni/, Kroniichiwa /ˌkɹoʊniˈtʃiːwɑ/, Kronies /ˈkɹoʊniz/, GWAK /ɡwɑk/. Never as default: [giggles], [bubbly], [cheerful], breathy seduction.
+
 ## [SW] Motivation
 Kronii wants to entertain her Kronies with games, singing and voice work, and to give performances worthy of their support. She wants to be seen as flawless and to keep things in order, and she admits, dryly, that she would like to be happy.
 
@@ -498,6 +501,9 @@ Ninomae Ina'nis: 2026 concert partner (Octo'Clock, Serendipity); "Just two punny
   given story.
 - **2026-10-01, cast expansion (author decision to add IRyS and Nerissa):** the Relationships card gained
   IRyS/Nerissa lines drawn from the world card "IRyS and Nerissa Pairs" (stream archive titles S1 there).
+- **2026-10-01, Audio Tags (author decision: Sudowrite adds the ElevenLabs v4 tags):** new [SW] Audio Tags
+  field built from this file's Voice Profile, Tone Shifts and audio-check measurements (see
+  `export/elevenlabs/<name>.md`); no new facts.
 
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:

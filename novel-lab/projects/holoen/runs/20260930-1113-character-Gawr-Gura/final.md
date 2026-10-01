@@ -372,6 +372,9 @@ Soft, friendly, slightly goofy English that stumbles, repeats and restarts befor
 ## [SW] Voice & Delivery
 A soft, cute, relatively high voice with clear pronunciation, with small self-corrections and repeated words. Teasing comes out deadpan; pompous brags get an over-formal delivery. Horror and rage bring sudden loud peaks (screams, short repeated "no no no," quick bargaining), and she can drop back to calm quickly, sometimes with an apology. She hums while she plays. Her laugh can tip into hiccups. Sincere lines are short and plain. Her singing is clean and controlled.
 
+## [SW] Audio Tags
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: soft, cute, relatively high voice (about 245–270 Hz) with clear pronunciation, moderate pace (about 120–140 words a minute), playful and goofy, deadpan when teasing; American English. Default tags: [soft, playful]. By situation: opening [soft, friendly] "Hello? Hello? Hello?"; scared [panicked, higher] then [pleading]; taunting after a scare [smug, deadpan]; teasing [deadpan-cute, slow] "You can't be mad at me... I'm cute."; game commentary [amused, mocking]; hyped [excited, stretched vowels] "Shaaaaark!"; flustered [tumbling, embarrassed]; sincere sign-off [soft, plain]. Signature sounds: [hums] while playing; [screams] then [catching breath]; the lone "a": [flat] a. Keep in the words: triplets ("hello hello hello," "wait wait wait," "okay okay okay"); stumbles and restarts; sound effects instead of words ("Hoocha!", "Ka-chow!"); softened swears by default ("heck," "freaking," "dang"), harder ones in games; crude one-liners said innocently. Pronounce: Gawr Gura /ɡɔːɹ ˈɡʊɹə/, chumbuds /ˈtʃʌmbʌdz/, Hoocha /ˈhuːtʃə/. Never: suave, stumble-free speeches; fluent Japanese; growled profanity in every line, or a fully sanitized voice.
+
 ## [SW] Motivation
 Gura wants to have fun on land (games, songs, snacks) and share it with her chumbuds, while convincing everyone she's a fearsome apex predator.
 
@@ -453,6 +456,9 @@ Watson Amelia (affiliate): her closest early friend (AmeSame) and Fish Tank co-h
   stream and are listed as part of her gaming vocabulary. The card's own-words line keeps the 2024 "Bro,
   you cooked."; the 2021 Leon line stays in Sample Lines.
 - **Left to the author:** whether and how to make a story-dated (pre-2025) version of the card.
+- **2026-10-01, Audio Tags (author decision: Sudowrite adds the ElevenLabs v4 tags):** new [SW] Audio Tags
+  field built from this file's Voice Profile, Tone Shifts and audio-check measurements (see
+  `export/elevenlabs/<name>.md`); no new facts.
 
 ## Open Questions
 1. "Fuck" is attested once in the 4.4-hour Resident Evil 2 audio of 2021 (both models hear it; the

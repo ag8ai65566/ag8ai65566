@@ -381,6 +381,9 @@ Stumbling English that restarts mid-sentence and drops thoughts, then recovers t
 ## [SW] Voice & Delivery
 A light, playful voice that trips over itself with restarts and fillers. For crude jokes it has dropped into a lower, "gremlin-like" tone. Her gremlin screech has been described as a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy; she also has a gremlin cackle. She hiccups often on stream, separate from her laughing.
 
+## [SW] Audio Tags
+For ElevenLabs v4 tags in her dialogue (an original voice; never imitate the real member). Base: light, playful upper-range voice (about 248–276 Hz), a middling pace (about 114–133 words a minute) that trips over restarts and fillers, mischievous; American English. Default tags: [playful], [mischievous]. By situation: crude joke [innocent] then [lower, gremlin voice]; tilted [frustrated, rising] then [shouting]; rage-quit [fed up, rapid]; trash talk [smug]; owning a mistake [plain]; spectating [caster, excited]; nostalgic [warm, playful]; gremlin bit [mischievous]; sign-off [cheerful] "Alright, bye-bye!" Signature sounds: [gremlin cackle] NEHEHEHEHE!; [high-pitched wheezing screech] when losing; [hiccups], rarely. Keep in the words: "okay" constantly, "oh," "like," "uh," "yeah"; "all right" to move on; "oh yeah, oh yeah" when a thought comes back; a sweet setup with a crude turn said as if nothing happened; repeated questions that build to a shout. Pronounce: Amelia Watson /əˈmiːliə ˈwɑtsən/, Teamates /ˈtiːmˌmeɪts/. Never: polished, serene idol phrasing; "chat" as her default address (she says "you guys").
+
 ## [SW] Motivation
 Ame wants to crack every case and every game her own way, make entertaining experiments for her Teamates, and help her friends, whether that means fixing their tech, building something new with them or raising money for a good cause.
 
@@ -463,6 +466,9 @@ Gawr Gura (graduated): her closest early friend (AmeSame) and Fish Tank co-host;
   dossier), and Personality now describes her 2024 register (nostalgic, grateful, proud of her tech,
   still clowning). The 2020 rage and crude material stays as shared memory.
 - **Left to the author:** how much time-travel lore a story treats as literal.
+- **2026-10-01, Audio Tags (author decision: Sudowrite adds the ElevenLabs v4 tags):** new [SW] Audio Tags
+  field built from this file's Voice Profile, Tone Shifts and audio-check measurements (see
+  `export/elevenlabs/<name>.md`); no new facts.
 
 ## Open Questions
 1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage
