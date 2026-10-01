@@ -44,6 +44,7 @@ Historical events.
 | 2021-11 | 6th gen "Secret Society holoX" (La+, Lui, Koyori, Chloe, Iroha) | — |
 | 2022-02-24 | Uruha Rushia leaves hololive | Not discussed in stories |
 | 2022-03 | ID gen 3 (Zeta, Kaela, Kobo) | Kobo's "Mommy Kiwawa" and "Uncle Dad" |
+| 2022-03-20 | hololive fes at Makuhari (#つながるホロライブ), day 2: Calli and Kiara perform | Calli: "My dream came true, my heart is exploding." Kiara: "MAKUHARI WAS ON FIRE!" [Observed—X posts, S4] |
 | 2022-04-26 | holoMeet begins; Gura is an ambassador | Global events |
 | 2022-07-31 | Tsukumo Sana graduates | Council becomes four |
 | 2022-09 | hololive's 5th anniversary | — |
@@ -87,6 +88,8 @@ All eight: Myth (2020), IRyS (2021-07), Kronii (2021-08); Nerissa arrives later 
 - S2 Member wiki infoboxes for debut and retirement dates (secondary): Kiryu Coco, Uruha Rushia, Mano
   Aloe, Tsukumo Sana
 - S3 Character files in this project (Calli, Kiara, Ina, Gura, Ame, IRyS, Kronii)
+- S4 The cast's X posts, via wiki citations: research/x-posts.md (Calli 1505506437115662339, Kiara
+  1505507829695885313; Gura 1319328921305964544 on her million)
 
 ---
 
@@ -100,7 +103,7 @@ Event
 early hololive, the old days, Myth's debut, the first EN generation
 
 ## [SW] Description
-The shared past the cast remembers. 2017: Tokino Sora makes COVER's first broadcast. 2018–2019: the Japanese generations debut (1st gen, 2nd gen with Aqua and Shion, GAMERS, 3rd gen "Fantasy" with Pekora and Marine, Suisei, 4th gen with Coco and Kanata), and in late 2019 hololive, HOLOSTARS and INoNaKa Music become "hololive production." 2020: the Indonesian branch opens; on 2020-09-12/13 hololive English -Myth- debuts (Calli first, then Kiara, Ina, Gura, Ame); Gura becomes the first hololive member to reach a million subscribers (2020-10-22) and in 2021 the most-subscribed VTuber anywhere; by 2021-05-30 all of Myth pass a million. 2021: IRyS debuts as Project: HOPE's VSinger (07-11), -Council- debuts with Kronii (08-23), holoX debuts, Coco graduates. 2022: ID gen 3 (Kobo, Zeta, Kaela), holoMeet starts with Gura as ambassador, and Sana graduates (07-31).
+The shared past the cast remembers. 2017: Tokino Sora makes COVER's first broadcast. 2018–2019: the Japanese generations debut (1st gen, 2nd gen with Aqua and Shion, GAMERS, 3rd gen "Fantasy" with Pekora and Marine, Suisei, 4th gen with Coco and Kanata), and in late 2019 hololive, HOLOSTARS and INoNaKa Music become "hololive production." 2020: the Indonesian branch opens; on 2020-09-12/13 hololive English -Myth- debuts (Calli first, then Kiara, Ina, Gura, Ame); Gura becomes the first hololive member to reach a million subscribers (2020-10-22: "I am an overwhelmed, but very happy shark") and in 2021 the most-subscribed VTuber anywhere; by 2021-05-30 all of Myth pass a million. 2021: IRyS debuts as Project: HOPE's VSinger (07-11), -Council- debuts with Kronii (08-23), holoX debuts, Coco graduates. 2022: ID gen 3 (Kobo, Zeta, Kaela), Calli and Kiara perform at the hololive fes in Makuhari (03-20; Kiara: "MAKUHARI WAS ON FIRE!"), holoMeet starts with Gura as ambassador, Calli holds her first solo concert (07-21), and Sana graduates (07-31).
 
 ## [SW] Rules
 These are memories and in-jokes, not lectures. Departures are "graduated" or "left," never explained. A story set in the past uses only what existed then.

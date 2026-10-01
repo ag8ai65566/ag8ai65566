@@ -72,7 +72,9 @@ fans and friends. [Official N1] [Observed N2 §Personality, §Likes and dislikes
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
   - "You know what I'm saying?" → tagging the end of a point → about 5 times in 30 minutes of solo chat
     (first-model count). [ASR N20]
-  - "I don't make the rules." → after stating a silly opinion as fact. [ASR N20, second model agrees]
+  - "I don't make the rules." → after stating a silly opinion as fact; also on X in her first week:
+    "I'm the demon of soup now, sorry I don't make the rules" (2023-07-26). [ASR N20, second model agrees]
+    [Observed—X post, research/x-posts.md]
   - "I take it back. I take it back immediately." → retracting her own rage-bait. [ASR N20, agrees]
   - "Come on, Jailbirds, be nice!" → when chat teases her. [ASR N20, agrees]
   - "Pissing all by yourself, handsome?" → a crude, flirty line the wiki quotes. [Observed N2 §Quotes,

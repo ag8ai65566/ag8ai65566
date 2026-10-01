@@ -314,6 +314,8 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 ## Hard Facts (continuity)
 - Birthday July 6; height 165 cm; debut 2020-09-12; unit hololive -Myth-; illustrator huke. [Official T1]
 - Fans: KFP ("employees"); hashtags #kfp #キアライブ (streams). [Official T1]
+- Status: on 2026-09-09 her manager posted that she is taking a short break until further notice; the
+  reason is not used. [Observed—X post 2097694155048939686, research/x-posts.md]
 - Nicknames: Kiwawa, Wawa, Tenchou (by fans), Kusotori (by Calli), Kibaba (grandma persona). Frogiwawa is
   officially a different character. [Observed T2 infobox, §Lore, §KFP, secondary]
 - She doesn't drink. [Observed T2 §Likes and dislikes]
@@ -488,3 +490,4 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
    the continuous persona (no eras).
 3. No recording was audio-checked by ear. Should the laugh, the Kikkeriki and a rage sequence get an
    audio check before a voice model is trained on them?
+4. Kiara has been on a short break since 2026-09-09. Should baseline stories show her on break?
