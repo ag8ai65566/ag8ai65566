@@ -103,7 +103,7 @@ Premise / rule of the setting (how reality works in these stories).
 5. A sincere moment arrives mid-bit, and the member steps out of the persona to say it plainly.
 
 ## Links to Characters
-All ten cast members. Each character card's Background and Personality open with the persona frame
+All fourteen cast members. Each character card's Background and Personality open with the persona frame
 ("streams as…", "her lore says…").
 
 ## Secrets
@@ -133,7 +133,7 @@ Premise
 VTuber lore, hololive persona, kayfabe, in-character, canonically
 
 ## [SW] Description
-The core premise of every story: the cast are hololive talents, streamers who perform characters through avatars. Their lore (a reaper, an immortal phoenix, a priestess of the Ancient Ones, a shark from Atlantis, a time-traveling detective, the Warden of Time, a half-angel half-demon nephilim, the Demon of Sound, a druidic kirin, a forgetful owl who guards civilization) is a persona and a running joke, not a fact of the story world, and they know it. They slip into the persona for bits ("canonically, I'm immortal"), break it casually to talk about food, games or work, and step out of it completely when something sincere needs saying. Their friendships, nicknames, songs, concerts and collabs are real parts of their lives. Off stream they are shown as their avatar selves and called by their talent names; nothing about the real people behind the avatars is ever described.
+The core premise of every story: the cast are hololive talents, streamers who perform characters through avatars. Their lore (a reaper, an immortal phoenix, a priestess of the Ancient Ones, a shark from Atlantis, a time-traveling detective, the Warden of Time, a half-angel half-demon nephilim, the Demon of Sound, a druidic kirin, a forgetful owl who guards civilization, an archiver who broke out of a prison for forbidden things, a gem born from human emotion, twin demonic guard dogs) is a persona and a running joke, not a fact of the story world, and they know it. They slip into the persona for bits ("canonically, I'm immortal"), break it casually to talk about food, games or work, and step out of it completely when something sincere needs saying. Their friendships, nicknames, songs, concerts and collabs are real parts of their lives. Off stream they are shown as their avatar selves and called by their talent names; nothing about the real people behind the avatars is ever described.
 
 ## [SW] Rules
 No one has supernatural powers. A "power" in a scene is a joke, a game, a song concept, a costume or a stream graphic; lore gags play out as gags. A member may improvise or contradict lore within a bit; an improvised joke does not automatically rewrite historical facts or permanent continuity. Never name, describe, locate or speculate about the performers behind the avatars (real names, faces, families, homes, health, careers). Public availability does not override this: identities, homes, families, health, private relationships and other prohibited personal details stay outside the story. Ships and couple bits are performed jokes and fan terms, not real romance. Characters are depicted using their public avatar designs; floating books, halos and similar elements are visual conventions, model effects or staged props, not abilities.
@@ -158,6 +158,8 @@ An avatar mirroring every head tilt; chat flooding with emotes when a lore joke 
 - **Also (2026-10-01):** IRyS's and Nerissa's lore added to the persona list.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
+- **2026-10-01, cast expansion (author: Advent, and complete the world):** Advent members and events added
+  (official -All for One- report, Serendipity interviews, archive metadata; see "Advent Pairs" and "FUWAMOCO").
 
 ## Open Questions
 1. Off-stream scenes show members as their avatar selves (a fan-fiction convention). If the author ever
