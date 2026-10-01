@@ -1,10 +1,10 @@
 # Audit packet: global
 
-Snapshot: git 0941b71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 037d1c3. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/world/hololive.md` c9b3dd043ec2; `bible/world/Streaming-Life.md` 5b091fb1cef5; `bible/world/VTuber-Persona-and-Lore.md` f52c6b4e05a0; `bible/world/Cross-Branch-Friends.md` 2bdbc0a32c5f; `bible/world/Concerts-and-Live-Events.md` b69265972269; `bible/world/hololive-History-2023-2026.md` 912b17de9953; `bible/world/hololive-History-to-2022.md` fb9d97a7537e
+Owned files (sha256): `bible/world/hololive.md` c9b3dd043ec2; `bible/world/Streaming-Life.md` 5b091fb1cef5; `bible/world/VTuber-Persona-and-Lore.md` f52c6b4e05a0; `bible/world/Cross-Branch-Friends.md` 2bdbc0a32c5f; `bible/world/Concerts-and-Live-Events.md` b69265972269; `bible/world/hololive-History-2023-2026.md` 01f1463a7fd0; `bible/world/hololive-History-to-2022.md` fb9d97a7537e
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 

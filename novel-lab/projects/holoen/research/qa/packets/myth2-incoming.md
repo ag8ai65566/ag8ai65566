@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 0941b71.
+Snapshot: git 037d1c3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|City Pop Shark|Amelia Watson|Watson Amelia|Gremlin Ame|Gawr Gura|Same-chan|ワトソン・アメリア|Goobidiba|Samegaki|Amechan|がうる・ぐら|Amelia|Gooba|Myth|Goob|Gura|Ame)(
+Matched names: lolive -Myth-|City Pop Shark|Amelia Watson|Watson Amelia|Gremlin Ame|Same-chan|Gawr Gura|Goobidiba|ワトソン・アメリア|Samegaki|Amechan|Amelia|がうる・ぐら|Gooba|Goob|Myth|Gura|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -200,8 +200,8 @@ Matched names: lolive -Myth-|City Pop Shark|Amelia Watson|Watson Amelia|Gremlin 
 
 ### from TakaMori
 - `bible/world/TakaMori.md › [SW] Description`: It began as Myth's founding double act: in 2020 Kiara declared a crush on Calli and named the ship "TakaMori," a persona joke pairing an immortal phoenix with a reaper who could never keep her dead; Kiara called Calli her "wife," and Calli rebuffed her as "kusotori"
-- `bible/world/TakaMori.md › How It Works`: - **Recent milestones (archive, S1):** an off-collab "Reunion & Gaming!! #takamori" and a karaoke collab (2022-06); off-collabs in 2023 (a Rubik's cube stream, "TAKAMORI OFF-COLLAB" with Kobo, doing each other's nails on camera with IRyS); their duet "Fire N Ice" (2023-12-14; lyrics by Calli and TeddyLoid); Kiara's off-collab watch party "cheering Calli on!!!" for Calli's GriMoire concert (2025-02-27); a four-part Split Fiction co-op series in April–May 2025, titled by them "takamori split screen nostalgia," "Perfectly In Sync with @TakanashiKiara," "thumbnail teetee manifestation into gameplay teetee" and "Saving the World with @TakanashiKiara"; Myth's 5th anniversary collab (2025-09-13) and the 6th anniversary live (2026-09-19).
-- `bible/world/TakaMori.md › History`: | 2026-09-19 | Myth 6th anniversary live together | Still side by side |
+- `bible/world/TakaMori.md › How It Works`: - **Recent milestones (archive, S1):** an off-collab "Reunion & Gaming!! #takamori" and a karaoke collab (2022-06); off-collabs in 2023 (a Rubik's cube stream, "TAKAMORI OFF-COLLAB" with Kobo, doing each other's nails on camera with IRyS); their duet "Fire N Ice" (2023-12-14; lyrics by Calli and TeddyLoid); Kiara's off-collab watch party "cheering Calli on!!!" for Calli's GriMoire concert (2025-02-27); a four-part Split Fiction co-op series in April–May 2025, titled by them "takamori split screen nostalgia," "Perfectly In Sync with @TakanashiKiara," "thumbnail teetee manifestation into gameplay teetee" and "Saving the World with @TakanashiKiara"; Myth's 5th anniversary collab (2025-09-13) and the announced 6th anniversary live (2026-09-19; not verified as held).
+- `bible/world/TakaMori.md › History`: | 2026-09-19 (announced) | Myth 6th anniversary live announced with both | Still side by side |
 
 ### from TakoTori
 - `bible/world/TakoTori.md › [SW] Description`: Takanashi Kiara and Ninomae Ina'nis, Myth's gas pedal and brake.

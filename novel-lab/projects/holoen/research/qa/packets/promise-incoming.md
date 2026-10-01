@@ -1,9 +1,9 @@
 # Audit packet: promise (incoming claims)
 
-Snapshot: git 0941b71.
+Snapshot: git 037d1c3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden of Time|Mother Nature|Nanashi Mumei|Kroniicopter|Ceres Fauna|Ouro Kronii|Gamer Kirin|Octo'clock|Ceres-chan|Tam Tender|Owo-senpai|Mumi-chan|Moomsies|YabaIRyS|SeisoRyS|オーロ・クロニー|Kronster|Moomers|Myumyei|Kronini|Promise|Council|Meimei|Faufau|Kronii|BaeRyS|Fauna|Fawna|Mumei|Irys|Moom|IRyS|Towl)(
+Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden of Time|Nanashi Mumei|Mother Nature|Kroniicopter|Ceres Fauna|Ouro Kronii|Gamer Kirin|Tam Tender|Ceres-chan|Owo-senpai|Octo'clock|Mumi-chan|SeisoRyS|オーロ・クロニー|Kronster|YabaIRyS|Moomsies|Kronini|Myumyei|Promise|Council|Moomers|BaeRyS|Faufau|Kronii|Meimei|Fauna|Fawna|Mumei|IRyS|Moom|Towl|Irys)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: IRyS and Bijou: Elden Ring Nightreign.
@@ -211,7 +211,7 @@ Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Hard Facts`: - Kiara's EN oshi: Ame. Kiara's names: "Goobidiba" (Gura), "quasoni" (Kronii).
 
 ### from TakaMori
-- `bible/world/TakaMori.md › How It Works`: - **Recent milestones (archive, S1):** an off-collab "Reunion & Gaming!! #takamori" and a karaoke collab (2022-06); off-collabs in 2023 (a Rubik's cube stream, "TAKAMORI OFF-COLLAB" with Kobo, doing each other's nails on camera with IRyS); their duet "Fire N Ice" (2023-12-14; lyrics by Calli and TeddyLoid); Kiara's off-collab watch party "cheering Calli on!!!" for Calli's GriMoire concert (2025-02-27); a four-part Split Fiction co-op series in April–May 2025, titled by them "takamori split screen nostalgia," "Perfectly In Sync with @TakanashiKiara," "thumbnail teetee manifestation into gameplay teetee" and "Saving the World with @TakanashiKiara"; Myth's 5th anniversary collab (2025-09-13) and the 6th anniversary live (2026-09-19).
+- `bible/world/TakaMori.md › How It Works`: - **Recent milestones (archive, S1):** an off-collab "Reunion & Gaming!! #takamori" and a karaoke collab (2022-06); off-collabs in 2023 (a Rubik's cube stream, "TAKAMORI OFF-COLLAB" with Kobo, doing each other's nails on camera with IRyS); their duet "Fire N Ice" (2023-12-14; lyrics by Calli and TeddyLoid); Kiara's off-collab watch party "cheering Calli on!!!" for Calli's GriMoire concert (2025-02-27); a four-part Split Fiction co-op series in April–May 2025, titled by them "takamori split screen nostalgia," "Perfectly In Sync with @TakanashiKiara," "thumbnail teetee manifestation into gameplay teetee" and "Saving the World with @TakanashiKiara"; Myth's 5th anniversary collab (2025-09-13) and the announced 6th anniversary live (2026-09-19; not verified as held).
 
 ### from VTuber Persona and Lore
 - `bible/world/VTuber-Persona-and-Lore.md › [SW] Description`: Their lore (a reaper, an immortal phoenix, a priestess of the Ancient Ones, a shark from Atlantis, a time-traveling detective, the Warden of Time, a half-angel half-demon nephilim, the Demon of Sound, a druidic kirin, a forgetful owl who guards civilization, an archiver who broke out of a prison for forbidden things, a gem born from human emotion, twin demonic guard dogs, Justice's queen, gremlin, ancient automaton and big-cat artist sent to catch Advent) is a persona and a running joke, not a fact of the story world, and they know it.

@@ -1,10 +1,10 @@
 # Audit packet: myth1
 
-Snapshot: git 0941b71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 037d1c3. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Mori-Calliope.md` 1088c5a2d234; `bible/characters/Takanashi-Kiara.md` ba9ade5f8263; `bible/characters/Ninomae-Inanis.md` eb77b9fad141; `bible/world/TakaMori.md` f08b309972f0; `bible/world/TakoTori.md` 7d9f6437b8ed; `bible/world/Myth-and-Kronii-Other-Pairs.md` 12e7d39a7dbb
+Owned files (sha256): `bible/characters/Mori-Calliope.md` 1088c5a2d234; `bible/characters/Takanashi-Kiara.md` f07ae401975f; `bible/characters/Ninomae-Inanis.md` eb77b9fad141; `bible/world/TakaMori.md` e9cf098194f5; `bible/world/TakoTori.md` 7d9f6437b8ed; `bible/world/Myth-and-Kronii-Other-Pairs.md` 12e7d39a7dbb
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -117,7 +117,7 @@ Owned files (sha256): `bible/characters/Mori-Calliope.md` 1088c5a2d234; `bible/c
 | 2023 | Off-collabs; "Fire N Ice" duet (2023-12-14) | Their song |
 | 2025-02-27 | Kiara's watch party for Calli's GriMoire concert | Cheering from the crowd |
 | 2025-04/05 | Split Fiction series ("takamori split screen nostalgia") | Nostalgic co-op |
-| 2026-09-19 | Myth 6th anniversary live together | Still side by side |
+| 2026-09-19 (announced) | Myth 6th anniversary live announced with both | Still side by side |
 **Dossier · Hard Facts (continuity):**
 - "TakaMori" was named by Kiara (2020); toned down in 2021; they remain close friends.
 - Kobo's "parents" bit: Kiara "Mom," Calli "Dad"; "not married, Kobo is adopted."

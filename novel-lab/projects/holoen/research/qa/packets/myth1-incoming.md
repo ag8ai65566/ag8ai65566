@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 0941b71.
+Snapshot: git 037d1c3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|Takanashi Kiara|Ninomae Ina'nis|hololive -Myth-|Mori Calliope|Cori Malliope|Calliope Mori|Last Writes|Octo'clock|Rocku Wawa|Kawaiiope|Miss Mori|Calliope|Kusotori|Mor Mori|CallioP|Ina'nis|Tenchou|小鳥遊キアラ|Kiwawa|森カリオペ|Calli|一伊那尓栖|Kiara|Inya|Mori|Mowi|LYRA|Wawa|Ina)(
+Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Takanashi Kiara|Mori Calliope|Calliope Mori|Cori Malliope|Last Writes|Octo'clock|Rocku Wawa|Kawaiiope|Miss Mori|Kusotori|Mor Mori|Calliope|Ina'nis|Tenchou|CallioP|小鳥遊キアラ|Kiwawa|Calli|一伊那尓栖|森カリオペ|Kiara|Inya|Mowi|Mori|LYRA|Wawa|Ina)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO and sang "I'm Your Treasure Box" with Bijou and Raora.
@@ -411,7 +411,7 @@ Matched names: nomanyo Inya'nis|Takanashi Kiara|Ninomae Ina'nis|hololive -Myth-|
 - `bible/world/hololive--Myth.md › History`: | 2025-04-30 | Myth relay "one last time" with Calli, Kiara, Ina and Gura before Gura's graduation | Gura's farewell with Myth |
 - `bible/world/hololive--Myth.md › History`: | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 - `bible/world/hololive--Myth.md › History`: | 2026-02 | Kiara's album includes "Blue & Gold," a tribute to Gura and Ame | Remembering the two |
-- `bible/world/hololive--Myth.md › History`: | 2026-09-19 | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina) | The current three on stage |
+- `bible/world/hololive--Myth.md › History`: | 2026-09-19 (announced) | Myth 6th Anniversary 3D LIVE "Seasons From Within" announced with Calli, Kiara and Ina (S3, an official hololive English post); not verified as held | The current three, as announced |
 
 ### from hololive -Promise-
 - `bible/world/hololive--Promise.md › How the Group Works`: - **Kronii's first official collab outside her generation** was with Mori Calliope (2021-09-23). [Observed Kronii's wiki page §2021, secondary]

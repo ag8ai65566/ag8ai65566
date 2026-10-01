@@ -1,10 +1,10 @@
 # Audit packet: myth2
 
-Snapshot: git 0941b71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 037d1c3. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Gawr-Gura.md` 7c0664d13e30; `bible/characters/Watson-Amelia.md` 6f5acefd0577; `bible/world/hololive--Myth.md` 2b3bc4123a1f; `bible/world/AmeSame.md` 03602b5cf2fd; `bible/world/Bone-Bros.md` 3456a63d5263
+Owned files (sha256): `bible/characters/Gawr-Gura.md` 7c0664d13e30; `bible/characters/Watson-Amelia.md` 6f5acefd0577; `bible/world/hololive--Myth.md` e102fb95cdc7; `bible/world/AmeSame.md` 03602b5cf2fd; `bible/world/Bone-Bros.md` 3456a63d5263
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -90,7 +90,7 @@ Owned files (sha256): `bible/characters/Gawr-Gura.md` 7c0664d13e30; `bible/chara
 | 2025-07 | MYTHMASH: each active member releases a duet with a Japanese senpai (#mythmashchemythtry) | Cross-branch songs |
 | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 | 2026-02 | Kiara's album includes "Blue & Gold," a tribute to Gura and Ame | Remembering the two |
-| 2026-09-19 | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina) | The current three on stage |
+| 2026-09-19 (announced) | Myth 6th Anniversary 3D LIVE "Seasons From Within" announced with Calli, Kiara and Ina (S3, an official hololive English post); not verified as held | The current three, as announced |
 **Dossier · Hard Facts (continuity):**
 - Debut 12–13 September 2020; Ame affiliate 2024-09-30; Gura graduated 2025-05-01.
 - 2026 baseline: three active; Ame appears as a guest; Gura is remembered, not written as streaming.
