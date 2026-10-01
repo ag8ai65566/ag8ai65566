@@ -90,8 +90,8 @@ Faction / organization (and workplace).
 5. A schedule collision turns two members' streams into an impromptu collab.
 
 ## Links to Characters
-All fourteen. Calli, Kiara and Ina are active in hololive -Myth-; Ame is an affiliate; Gura is an alumna;
-Kronii and IRyS are active in hololive -Promise-, where Fauna and Mumei are alumnae; Nerissa, Shiori, Bijou, Fuwawa and Mococo in hololive -Advent-. Detailed history: the
+All eighteen. Calli, Kiara and Ina are active in hololive -Myth-; Ame is an affiliate; Gura is an alumna;
+Kronii and IRyS are active in hololive -Promise-, where Fauna and Mumei are alumnae; Nerissa, Shiori, Bijou, Fuwawa and Mococo in hololive -Advent-; Elizabeth, Gigi, Cecilia and Raora in hololive -Justice-. Detailed history: the
 cards "hololive History to 2022," "hololive History 2023-2026" and "Concerts and Live Events."
 
 ## Secrets
@@ -148,6 +148,9 @@ A "Starting soon" screen; a superchat chime; a concert LED wall behind a 3D avat
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
 - **2026-10-01, cast expansion (author: Advent, and complete the world):** Advent members and events added
   (official -All for One- report, Serendipity interviews, archive metadata; see "Advent Pairs" and "FUWAMOCO").
+- **2026-10-01, cast expansion (author: Justice, and complete the world):** Justice members and events added
+  (official -All for One- report, Serendipity interviews 03/06/07, official profiles, archive metadata; see
+  "hololive -Justice-" and "Justice Pairs").
 
 ## Open Questions
 (None. The baseline date 2026-09-30 is fixed by the author.)

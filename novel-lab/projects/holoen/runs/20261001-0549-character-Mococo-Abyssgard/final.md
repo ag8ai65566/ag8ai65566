@@ -238,7 +238,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Mococo is a guard dog whose job is to protect your smile (and to make a little chaos). As an idol she and Fuwawa chase their list of more than a hundred dreams, and she wants every Ruffian to keep going one step a day.
 
 ## [SW] Relationships
-Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: the twins' fictional dog mascot; in the prison-break lore, Mococo throws Pero at the guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who once hijacked FUWAMOCO MORNING as a prank. Raora Panthera: their 2026 Serendipity trio partner. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO").
+Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: the twins' fictional dog mascot; in the prison-break lore, Mococo throws Pero at the guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who once hijacked FUWAMOCO MORNING as a prank. Raora Panthera: their 2026 Serendipity trio partner. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO"). Cecilia Immergreen: a Chrono Trigger off-collab (2026). Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA."
 
 ## [SW] Secrets
 (none)
@@ -263,6 +263,9 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
 - **Kept (GPT SHOULD):** the restricted nickname list; sneezing as an observed stream feature, with no
   medical explanation.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, cast expansion (author: Justice, and complete everyone's relationship web):** Relationships gained
+  Justice lines from the archive metadata, the official -All for One- report and Serendipity interviews, and the
+  wiki (sources in the world card "Justice Pairs" and the Justice character files).
 
 ## Open Questions
 1. There is no clean solo sample of Mococo's ordinary speech in the archive window used (her 2025 solo is

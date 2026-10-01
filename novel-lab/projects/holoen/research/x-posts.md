@@ -37,6 +37,16 @@ They are not quoted here. Status facts that matter for continuity are noted with
 - **FUWAMOCO (Fuwawa and Mococo, one account):** 🐾 with 🩵 (Fuwawa) or 🩷 (Mococo) to show who is
   writing, "BAU BAU⤴︎⤴︎", "NAU‼️", bilingual English/Japanese posts, decorated headers
   ("⋱ 🩵 BIG ANNOUNCEMENT 🩷 ⋰"), and "protect your smile."
+- **Elizabeth Rose Bloodflame:** a queen's proclamations ("By royal decree, my sweet Rosarians…",
+  "OH~HOHOHO! YOUR QUEEN DEMANDS…"), British greetings ("Ello sweethearts! ❤️"), sometimes a Japanese line
+  beside the English, ❤️ and 💄, and warm thanks to "my beautiful Bloodflame Kingdom."
+- **Gigi Murin:** lowercase and text-speak ("about 2 retweet a crazy tweet hope every1 is ready for it"),
+  keyboard smashes ("AJSKGLDSFHFJLSADK!@!@!@!@!!!!!"), stretched shouting ("GOOD NIGHT GREMSSSSS"), "eepy,"
+  "yaaay," and drawings of grems.
+- **Cecilia Immergreen:** "hiya!", "YAY🍵", all-caps rants ("I HATE CLEANING I HATE IT SO MUCH…"), posts
+  signed by her fictional assistant "Updatilia," and lore jokes with hashtags (#LizIsInnocent).
+- **Raora Panthera:** "Mamma mia," "GRAZIE!!!", "RAOOOOOO," "CHATTINI," cat emoji 😻🐱 and kaomoji (˶ˆ꒳ˆ˵),
+  #CiaoRaora; art posts and thanks in capitals.
 
 ## Posts by member
 
@@ -159,7 +169,46 @@ They are not quoted here. Status facts that matter for continuity are noted with
   or Mogojyan! 🐾🩷" — 1867064352312004758, 1880058985405116579
 - 2025-01-29: Mococo's 500th on-stream sneeze, celebrated — 1884524226482446494
 - 2026-08-29: first album "FUWAMOCO à la mode" on pre-order, "hand signed by us!!" — 2093673258273091760
-- 2026-09-10: "Who knew that '2 Creatures + 1 Reaper' is so good at dismantling bombs together? 💣✨" (with Gigi
+- 2026-09-10: "Who knew that '2 Creatures + 1 Reaper' is so good at dismantling bombs together? 💣✨" (Fuwawa's post, with Gigi
   and Calli) — 2098079499527352809
 - (A 2026-09-13 post about a break exists; health details are outside this project's scope, and by analogy
   with the author's Kiara decision it is not used on the cards.)
+
+### Elizabeth Rose Bloodflame (@ERBloodflame)
+- 2024-06-19: "WE INTERRUPT SLEEPS FOR BREAKING NEWS ‼️‼️‼️ OH~HOHOHO! YOUR QUEEN DEMANDS YOU USE THE HASHTAG
+  #JusticeSketchbook…" (she drew herself in a penguin onesie) — 1803562950512214311
+- 2024-08-04: "By royal decree, my sweet Rosarians, our party grows grander!" (the "Seven!" karaoke series
+  begins) — 1820097778024059044
+- 2025-03-15: 500k: "Rosarians! My beautiful Bloodflame Kingdom; We did it ❤️ Together onwards and upwards"
+  — 1901100373705658370
+- 2025-07-28 (@hololive_En): "Huzzah! @ERBloodflame's sub-channel has just been announced!" — 1949998311550881831
+- (A 2026-09 post announcing a short break exists; per the author's rule it is not used on the cards.)
+
+### Gigi Murin (@gigimurin)
+- 2024-06-18: "AJSKGLDSFHFJLSADK!@!@!@!@!!!!! #holoJustice" (first post) — 1803261982189273111
+- 2024-06-19: "MEET POPO!!!! MY PARTNER IN CRI--- i mean.. JUSTICE!" — 1803569516259242039
+- 2024-07-15: "good night grems!!! i present to you!!! a grem in a crop top and jeans." — 1812771542444466679
+- 2024-11-12: "about 2 retweet a crazy tweet hope every1 is ready for it" — 1856512308346007707
+- 2024-12-14 (@VTuberAwards): Most Chaotic VTuber of the Year, "Congratulations to @gigimurin!" — 1868088110363431075
+
+### Cecilia Immergreen (@ceciliaimgreen)
+- 2024-06-18: "This test is too hard!! Hi please help me! #holoJustice" (first post) — 1803262204558348370
+- 2024-11 (as "Updatilia"): "Cecilia (not me) is currently working on something and keeps telling me she is
+  hungry and wants food, alas I can't cook." — 1853242045877399803
+- 2025-01-01: "I did the Live2D rigging for my own New Year's Kimono!!!!!! YAY🍵" — 1874585455590777321
+- 2026-05-09: "I HATE CLEANING I HATE IT SO MUCH…" — 2052700201979113492
+- 2026-06-16: "rare image of me when I was being FORCED BY JUSTICE to work as a maid (not current Justice.
+  #LizIsInnocent )" — 2066950787855741238
+- (Posts in 2026-07/08 about a break and its reasons are private matters and are not used.)
+
+### Raora Panthera (@raorapanthera)
+- 2024-06-18: "Thighs are Justice!#holoJustice" (first post) and "NEITHER AM I.. 😼" (not human) —
+  1803262114947363058, 1803262748832440512
+- 2024-11-16: "CHATTINI, THANK YOU FOR 400k!!!! 💕 Mamma mia, what a milestone!!!!😻✨ #CiaoRaora" — 1857829897017897381
+- 2024-12-14 (@VTuberAwards): Best Art VTuber of the Year — 1868074873555399135
+- 2026-01-05: she designed the Monster Hunter Wilds collaboration outfits for Gigi and herself ("Thank you
+  CAPCOM for this amazing opportunity!!!") — 2008340143938183214
+- 2026-01-10: "RAOOOOOO THANK YOU FOR 600K SUBSCRIBERS!!!! … GRAZIE!!!!" — 2010073664537141285
+- 2026-01-29: "this big cat is a SNOW LEOPARD!" — 2016712202389246238
+- (Posts about a 2025–2026 break and its reasons are private matters and are not used.)
+
