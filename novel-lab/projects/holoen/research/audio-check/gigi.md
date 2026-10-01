@@ -9,8 +9,8 @@ this file). Transcription does not write laughs reliably. Measurements describe 
 ASR segmentation; game audio, music and other speakers prevent treating them as isolated vocal measurements.
 
 All windows are from 2026. The 13 Sentinels window mixes in voiced game characters (its pitch and pace are
-not hers alone) and no line from it is used. Remarks in the chat about a trip and a sponsored eSIM segment
-are left out.
+not hers alone) and no line from it is used. Only in-scope public performance material is used; a sponsored segment
+is left out.
 
 ## Windows measured
 

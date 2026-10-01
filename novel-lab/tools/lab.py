@@ -722,6 +722,16 @@ def cmd_export(args):
              f"_產生時間 {dt.datetime.now():%Y-%m-%d %H:%M}。字數是本地估算：英文按單字、中日韓字元每字算 1"
              f"（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。"
              f"⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_", ""]
+    # 聲音用的 Style 區塊放最前面：照這份貼上單走的人第一步就會貼到（GPT 專案諮詢 2026-10-01，P0）
+    style_md = proj / "export" / "elevenlabs" / "sudowrite-style.md"
+    style_block = re.search(r"```text\n(.*?)\n```", read(style_md), re.S) if style_md.exists() else None
+    if style_block:
+        body = style_block.group(1).strip()
+        lines += ["# Style — paste this block first",
+                  f"貼到 Story Bible → **Style**（{count_words(body)} 字；故事本身的文風說明可以接在後面，合計超過約 120 字時請檢查）。"
+                  "它教 Sudowrite 用每個角色的 **Audio Tags** 特質在對白裡寫 ElevenLabs v4 標籤。"
+                  "說明與注意事項見 `elevenlabs/sudowrite-style.md`。", "",
+                  "```text\n" + body + "\n```", ""]
     guide = {
         "Story": "貼到 Story Bible 對應的欄位（Braindump、Genre、Style、Synopsis）。還沒定稿的欄位保持空白。",
         "Characters": ("用 CSV 匯入：Story Bible 的 Characters 標題旁 ••• → Import → CSV。"

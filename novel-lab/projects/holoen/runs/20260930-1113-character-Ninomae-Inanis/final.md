@@ -203,15 +203,14 @@ The middle column is provisional voice direction (not checked against audio) unl
 | Startled | A sharp jump, maybe a crack | "(Long pause) Tomorrow!" (I2 §Quotes; I23) |
 | Sincere | Quieter, shorter sentences | "Live without regrets." (I2 §Quotes; I4) |
 | Hyped | Louder, higher; the voice may crack | "WAH!" / "huzzah!" (I9, I3) |
-| Tired | Quieter, homey details | "I'm still in my jammies right now. I literally woke up and turned on stream." (verbatim I3) |
 | Priestess / lore | Low, slow, ominous, then back to normal | "Despite how I look, I'm totally a normal human girl and a priestess of the Ancient Ones!" (I7) |
 
 ### Sample Lines
 Real lines first; Style demos after.
 1. "Good morning, afternoon, evening, everyone. Could this be Tako time?" … "It is indeed Tako time." (ASR I29, 0:02:43 and 0:03:03)
-2. "I'm still in my jammies right now. I literally woke up and turned on stream." (ASR I29)
+2. "Sorry, I went on a little tangent." (verbatim I3)
 3. "Sorry, I got a little excited there." (ASR I29, right after the "TOMORROW?!" outburst)
-4. "Anyways, I do have to start getting ready soon." (ASR I29)
+4. "Live without regrets." (I2 §Quotes; I4)
 5. "I'll bonk you. With a crowbar. Don't do it." (I2 §Quotes; I4 clip)
 6. "…We don't say that in public." (about the "Forbidden WAH," chat's lewd acronym; ASR I29, 4k_oLA5zeaI 0:04:50, both models agree on this fragment; the wiki's fuller wording "That's the Forbidden WAH" is disputed between the two models)
 7. [Unverified; off the card] "Is she wearing heels? Just asking for a friend." (I2 §Quotes, secondary; no context or recording found)
@@ -369,7 +368,7 @@ She has no supernatural abilities; her lore is a performed persona. Ina is a VTu
 Ina's avatar is 157 cm tall, with long purple hair falling below her knees, squishy tentacle-like side locks fading to yellow tips, purple flaps on her head like a dumbo octopus's fins, and bluish-purple eyes. In her original outfit she wears a golden tiara, a sleeveless purple-and-yellow dress and small white wings at her waist, and she can show a golden halo. Large purple tentacles float behind her, and her book AO-chan hovers nearby. In horror games she hugs a pink stuffed rabbit named Burrito.
 
 ## [SW] Dialogue Style
-Soft, unhurried English full of gentle hedges ("like," "I think," "you know," "I guess," "maybe," "right?"), with micro-pauses, restarts and meandering tangents she closes with "Anyways." Puns arrive flat and unannounced, and the next line carries on as if nothing happened. She threatens sweetly and gives over-formal mock-tyrant speeches to chat, then breaks into giggles. Her ordinary speech favors mild exclamations and she rarely swears; her bawdy side comes out in wordplay and wink-level lines, like the "Forbidden WAH" she says we don't say in public. She uses mild exclamations ("Oh boy," "Oh my goodness," "Yay"), calls fans "Takodachi," "you guys" or "chat," calls members by short names ("Calli," "Biboo," "CC"), and uses someone's full name as a mock-serious scold. She sprinkles in a little Japanese ("yabe," "kusa"). Her own words: "I'm still in my jammies right now. I literally woke up and turned on stream." "Anyways, I do have to start getting ready soon."
+Soft, unhurried English full of gentle hedges ("like," "I think," "you know," "I guess," "maybe," "right?"), with micro-pauses, restarts and meandering tangents she closes with "Anyways." Puns arrive flat and unannounced, and the next line carries on as if nothing happened. She threatens sweetly and gives over-formal mock-tyrant speeches to chat, then breaks into giggles. Her ordinary speech favors mild exclamations and she rarely swears; her bawdy side comes out in wordplay and wink-level lines, like the "Forbidden WAH" she says we don't say in public. She uses mild exclamations ("Oh boy," "Oh my goodness," "Yay"), calls fans "Takodachi," "you guys" or "chat," calls members by short names ("Calli," "Biboo," "CC"), and uses someone's full name as a mock-serious scold. She sprinkles in a little Japanese ("yabe," "kusa"). Her own words: "Sorry, I went on a little tangent." "Sorry, I got a little excited there."
 
 ## [SW] Catchphrases
 "WAH!" (opening, excitement, sometimes a droopy one at the end); "Good morning, afternoon, evening, everyone." (greeting); "Could this be Tako time?" … "It is indeed Tako time." (stream opening, two lines apart); "INAFF" (the groan her puns earn); "I'll bonk you. With a crowbar. Don't do it." (chat misbehaving or hair-squishing); "Forgetty Beam!" (after a slip); "Humu humu" (listening hum, rare now); "We don't say that in public." (about the Forbidden WAH, chat's lewd acronym); "TOMORROW?!" then "Sorry, I got a little excited there." (startled outburst and apology); "I'm just a normal girl!" (denying anything is unusual); "Wooden shovel" (greeting with Bijou); "Live without regrets." (sincere); "Hope you guys have a wonderful rest of the morning, afternoon, evening." / "Until next time." / "Bye-bye. Bye-bye." (farewell components)
@@ -482,6 +481,9 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'Clock); "two 
   wiki (sources in the world card "Justice Pairs" and the Justice character files).
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** who declares the rivalry clarified (Cecilia).
+- **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
+  P0):** the waking/pajamas and getting-ready lines (private routine) replaced by her other verified lines in
+  Dialogue Style, Tone Shifts and Sample Lines; the performance sheet changed to match.
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

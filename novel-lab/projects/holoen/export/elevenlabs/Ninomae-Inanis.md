@@ -27,7 +27,7 @@ excited words."
 | Opening | `[warm, unhurried]` → `[brighter]` | "Good morning, afternoon, evening, everyone. Could this be Tako time?" |
 | Pun | `[flat, quick]` → `[short pause]` → `[small giggle]` | (the pun, then silence) |
 | Chatting | `[soft, meandering]` | "Sorry, I went on a little tangent." |
-| Tired / homey | `[quiet, sleepy]` | "I'm still in my jammies right now. I literally woke up and turned on stream." |
+| Mock-scold | `[sweet, dead calm]` | "…We don't say that in public." (about the "Forbidden WAH") |
 | Teasing chat | `[sweet, dead calm]` | "I'll bonk you. With a crowbar. Don't do it." |
 | Startled | `[sudden, high, voice cracks]` → `[embarrassed]` | "TOMORROW?!" … "Sorry, I got a little excited there." |
 | Hyped | `[excited]` | "WAH!" |
@@ -49,6 +49,6 @@ excited words."
 ## 8. Example
 ```
 [warm, unhurried] Good morning, afternoon, evening, everyone. [brighter] Could this be Tako time?
-[quiet, sleepy] I'm still in my jammies right now… I literally woke up and turned on stream.
-[soft] Anyways, I do have to start getting ready soon.
+[soft, meandering] Sorry, I went on a little tangent. Anyways…
+[sweet, dead calm] …We don't say that in public.
 ```

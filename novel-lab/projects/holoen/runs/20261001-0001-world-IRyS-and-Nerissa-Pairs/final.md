@@ -54,7 +54,7 @@ Relationship web.
   worked at KFP before hololive and she owns Kiara merch. "Compatibility test with Kiara-senpai"
   (2023-08-14); Kiara showed her around the EN Minecraft server (2023-09-07); their Baldur's Gate 3 party
   with Calli and Bijou ("Killing, Two Birds, with One Stone," 2023); "Rating your CARS with NERISSA"
-  (2023-10-21); a January 2024 off-collab trip ("KiaRissa ARC HAS BEGUN," reading their trip diaries);
+  (2023-10-21);
   "GIRLSTALK with Nerissa, EN BIRB GIRLS PARTY!" (2025-04-08); a CHICAGO watchalong "with the musical
   connoisseur Nerissa" (2025-07-09). [Observed S1 titles; S3 Nerissa §Relationships, §Lore, secondary]
 - **Nerissa and Calli** (6 / 7 / 3 / 1): the BG3 party (2023); Calli's "I Gathered 8 Cute People to
@@ -82,7 +82,6 @@ Relationship web.
 | 2022-01-30 | First CHADCast | Chaos, Hope, and Death |
 | 2023-08-14 | Nerissa's compatibility test with Kiara | KiaRissa |
 | 2023-10-09 | -Promise- formed: IRyS and Kronii genmates | — |
-| 2024-01 | KiaRissa off-collab trip | Shared trip stories |
 | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
 | 2026-04-23 | Nerissa's Tomodachi Life Miis of IRyS and Ina | — |
 
@@ -138,7 +137,7 @@ Relationship
 MorIRyS, CHADCast, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
 
 ## [SW] Description
-IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IRyS's debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke). IRyS and Kronii: Promise unitmates since 2023 and friends since 2021, regulars at two-player games (A Way Out, Bokura, a Powerwash race, "May The Best Maid Win"); in 2026 IRyS said she could pull off Kronii's goddess look "somehow." IRyS and Ina: an early duo (It Takes Two, "It Takes Tako & Hope") who still play together. IRyS and Kiara: Kiara gave her a German crash course; nail-painting off-collab. Nerissa and Kiara (KiaRissa): Kiara is Nerissa's oshi; Kiara showed her around Minecraft; a 2024 off-collab trip; a 2025 "BIRB GIRLS" GIRLSTALK. Nerissa and Calli: a Baldur's Gate 3 party, the 2025 duet "OVER//RIDE," and Calli as a guest at Nerissa's 3D concert. Nerissa and IRyS: two singers; IRyS guested at that concert, and Nerissa put IRyS and Ina in Tomodachi Life.
+IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IRyS's debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke). IRyS and Kronii: Promise unitmates since 2023 and friends since 2021, regulars at two-player games (A Way Out, Bokura, a Powerwash race, "May The Best Maid Win"); in 2026 IRyS said she could pull off Kronii's goddess look "somehow." IRyS and Ina: an early duo (It Takes Two, "It Takes Tako & Hope") who still play together. IRyS and Kiara: Kiara gave her a German crash course; nail-painting off-collab. Nerissa and Kiara (KiaRissa): Kiara is Nerissa's oshi; Kiara showed her around Minecraft; a 2025 "BIRB GIRLS" GIRLSTALK. Nerissa and Calli: a Baldur's Gate 3 party, the 2025 duet "OVER//RIDE," and Calli as a guest at Nerissa's 3D concert. Nerissa and IRyS: two singers; IRyS guested at that concert, and Nerissa put IRyS and Ina in Tomodachi Life.
 
 ## [SW] Rules
 IRyS (2021) is Nerissa's senior; Myth are seniors to both. Recent pairings (IRyS with Kronii, Calli and Ina; Nerissa with Kiara and Calli) carry the most weight; pairs with Gura are memories. All are friendships and stream bits.
@@ -161,6 +160,8 @@ A three-way CHADCast call; a split-screen co-op with Kronii; KFP merch on Neriss
 - **Not adopted here:** GPT suggested dropping the counts; they stay in the dossier only, labeled as rough
   measures, and are not on the card.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
+  P0):** the 2024 off-collab trip removed (private travel is outside scope); the public GIRLSTALK collab kept.
 
 ## Open Questions
 1. The 2025 "KIARA & FRIENDS" spring concert names both IRyS and Nerissa in its archive entry; whether

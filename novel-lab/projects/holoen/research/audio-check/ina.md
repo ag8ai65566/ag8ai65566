@@ -27,7 +27,7 @@ cross-check of those caption quotes.
 |---|---|---|
 | Opening: "Good morning, afternoon, evening, everyone." → "Could this be Tako time?" → "It is indeed Tako time." | **Confirmed** (whisper spells it "taco time"). The caption quote was right. | [0:02:43](https://youtu.be/we8TkYC7__0?t=163), "it is indeed taco time" [0:03:03](https://youtu.be/we8TkYC7__0?t=183) |
 | Sign-off: "have a wonderful rest of the morning, afternoon, evening… until next time" with "We'll see." | **Confirmed.** | "Anyways, I do have to start getting ready soon." [1:35:17](https://youtu.be/we8TkYC7__0?t=5717); "have a wonderful rest of the morning afternoon evening" [1:36:42](https://youtu.be/we8TkYC7__0?t=5802); "we'll see… anyway thank you until next time" [1:37:06](https://youtu.be/we8TkYC7__0?t=5826) |
-| "I'm still in my jammies right now. I literally woke up and turned on stream." (caption quote) | **Confirmed verbatim.** | [1:35:26](https://youtu.be/we8TkYC7__0?t=5726) |
+| [a private-routine line; redacted 2026-10-01 and not used on the card] | **Confirmed verbatim.** | [1:35:26](https://youtu.be/we8TkYC7__0?t=5726) |
 | "like" as a constant hedge (about 1 in 33 words from captions) | **Consistent.** 103 hits in about 3,700 transcribed words (1 in 36); whisper tends to drop fillers, so this is a floor. "I think" about 20 times an hour. | chat windows |
 | "TOMORROW?!" at the 2022 Nintendo Direct (locator 50:05) | **Confirmed as a moment**: an "Oh" at 50:09, an outburst whisper does not transcribe, then her apology. | "Sorry, I got a little excited there" [0:50:27](https://youtu.be/EHpxi7khHb0?t=3027) |
 | Silly epithets on her own name ("Hell Flame Ninomae Ina'nis") | **Confirmed in context** (playing with a chat suggestion). | "Can I also be hell flame nino-…" [0:40:00](https://youtu.be/we8TkYC7__0?t=2400); "I should call this outfit the hell flame outfit" [0:40:12](https://youtu.be/we8TkYC7__0?t=2412) |
@@ -39,7 +39,6 @@ cross-check of those caption quotes.
 
 Lines not listed in the second-model check at the end of this file are first-model transcriptions only.
 
-- "I literally woke up and turned on stream." [1:35:30](https://youtu.be/we8TkYC7__0?t=5730)
 - "Anyways, I do have to start getting ready soon." [1:35:17](https://youtu.be/we8TkYC7__0?t=5717)
 - "Sorry, I got a little excited there" (after the Nintendo Direct outburst) [0:50:27](https://youtu.be/EHpxi7khHb0?t=3027)
 
@@ -57,5 +56,5 @@ the character card.
 | "good morning afternoon evening everyone could this be tako time" | [0:02:43](https://youtu.be/we8TkYC7__0?t=163) | "Good morning, afternoon, evening, everyone. Could this be taco time? How's everyone doing" | Agrees ("tako" written as "taco") |
 | "it is indeed tako time" | [0:03:03](https://youtu.be/we8TkYC7__0?t=183) | "was sleep well? It is indeed taco time. Busy?" | Agrees ("tako" written as "taco") |
 | "Anyways, I do have to start getting ready soon." | [1:35:17](https://youtu.be/we8TkYC7__0?t=5717) | "Anyways, I do have to start getting ready soon, but I'm still" | Agrees |
-| "I'm still in my jammies right now. I literally woke up and turned on stream." | [1:35:26](https://youtu.be/we8TkYC7__0?t=5726) | "Soon. But I'm still... I'm still in my jammies right now. I literally woke up and turned on stream. But" | Agrees |
+| [a private-routine line; redacted 2026-10-01 and not used on the card] | [1:35:26](https://youtu.be/we8TkYC7__0?t=5726) | (redacted) | Agrees |
 | "have a wonderful rest of the morning afternoon evening" | [1:36:54](https://youtu.be/we8TkYC7__0?t=5814) | "Hope you guys have a wonderful rest of the morning, afternoon, evening. I'll see you" | Agrees |

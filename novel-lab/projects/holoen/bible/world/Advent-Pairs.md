@@ -53,7 +53,7 @@ Relationship web.
   missing; the archived description does not list the participants). [Observed S1]
 
 ## With Myth
-- **Mori Calliope:** Bijou auditioned with an Undertale mod starring Calli and replayed it with her
+- **Mori Calliope:** Bijou played her Undertale mod starring Calli with her on stream
   (2023-08-12); "TombStone" (Bijou), a 24-hour charity stream together (2025-06-29), Warhammer painting
   (2026); "FUWAMOCALLI," a collaboration name the twins say they particularly like; Fuwawa alone joined Calli
   and Gigi Murin for a 2026 BOMBANANA collab ("2 Creatures + 1 Reaper"); Shiori was Calli's 2026 Serendipity partner (Calli,
@@ -196,7 +196,7 @@ Relationship
 ShioRaven, Goth Rock, Pen Pups, JewelBird, Diamond Dogs, Sound Hounds, Grindstone, GAGA, FUWAMOCALLI, Rocku Wawa, GreyScaleX
 
 ## [SW] Description
-Inside Advent: Nerissa calls Shiori her "wife" while Shiori plays hard to get and guards the secret of Nerissa's horn (ShioRaven); Bijou calls Shiori "our glorious leader," and they collaborated on "Gyatt Review" (Goth Rock); FUWAMOCO joke that Shiori is a cow because of her black-and-white hair (Pen Pups). Bijou and Nerissa are a shiny gem and a raven (JewelBird; "Nerizzler," and "Oobib," Bijou's evil twin, named by Nerissa); Bijou and the twins are Diamond Dogs, and Nerissa claims to be their third sister, "Mofufu." With seniors: Mori Calliope starred in Bijou's audition mod and did a 24-hour charity stream with her, shares "FUWAMOCALLI" with the twins (a collaboration name they say they particularly like), and was Shiori's 2026 concert partner; Kiara hosted all five on HOLOTALK, encouraged Bijou through hard choreography, and partnered her in 2026 ("Rocku Wawa"); IRyS is Bijou's horror co-op partner, and Bijou, Ina and IRyS starred at hololive night at Dodger Stadium (2025); Shiori and Kronii hosted "Rating Your Clocks" together in March 2025. With -Justice-, their in-story "guards": Gigi and Cecilia form the quartet GAGA with Bijou and Shiori, Raora sang with FUWAMOCO in 2026, and Elizabeth is Nerissa's "mortal enemy" in their lore and her duo partner. Beyond EN: Bijou and Kaela Kovalskia's Grindstone collabs include Raft, Minecraft and Split Fiction; Vestia Zeta and Shiori are the official duo GreyScaleX ("Purrfect Pair" merchandise, 2026); Pavolia Reine and Airani Iofi join Shiori and Gigi in the "Fanfic Club"; FUWAMOCO's oshi are Houshou Marine and Omaru Polka. HOLOSTARS EN: Machina X Flayon and Shiori are "Goth Pilot," and Regis Altare games with Bijou and Shiori.
+Inside Advent: Nerissa calls Shiori her "wife" while Shiori plays hard to get and guards the secret of Nerissa's horn (ShioRaven); Bijou calls Shiori "our glorious leader," and they collaborated on "Gyatt Review" (Goth Rock); FUWAMOCO joke that Shiori is a cow because of her black-and-white hair (Pen Pups). Bijou and Nerissa are a shiny gem and a raven (JewelBird; "Nerizzler," and "Oobib," Bijou's evil twin, named by Nerissa); Bijou and the twins are Diamond Dogs, and Nerissa claims to be their third sister, "Mofufu." With seniors: Mori Calliope starred in Bijou's Undertale mod and did a 24-hour charity stream with her, shares "FUWAMOCALLI" with the twins (a collaboration name they say they particularly like), and was Shiori's 2026 concert partner; Kiara hosted all five on HOLOTALK, encouraged Bijou through hard choreography, and partnered her in 2026 ("Rocku Wawa"); IRyS is Bijou's horror co-op partner, and Bijou, Ina and IRyS starred at hololive night at Dodger Stadium (2025); Shiori and Kronii hosted "Rating Your Clocks" together in March 2025. With -Justice-, their in-story "guards": Gigi and Cecilia form the quartet GAGA with Bijou and Shiori, Raora sang with FUWAMOCO in 2026, and Elizabeth is Nerissa's "mortal enemy" in their lore and her duo partner. Beyond EN: Bijou and Kaela Kovalskia's Grindstone collabs include Raft, Minecraft and Split Fiction; Vestia Zeta and Shiori are the official duo GreyScaleX ("Purrfect Pair" merchandise, 2026); Pavolia Reine and Airani Iofi join Shiori and Gigi in the "Fanfic Club"; FUWAMOCO's oshi are Houshou Marine and Omaru Polka. HOLOSTARS EN: Machina X Flayon and Shiori are "Goth Pilot," and Regis Altare games with Bijou and Shiori.
 
 ## [SW] Rules
 Collaboration and unit names identify public creative partnerships; some are member-used or official, while others are fan labels. The "wife," fictional-family and "mortal enemy" roles are performed jokes or lore and establish no private romantic relationship. Advent's fugitives and Justice's guards belong to their shared fictional storyline. A collab joined by some members is not a whole-generation event; name only those who took part.
@@ -234,6 +234,8 @@ A moai head opening to reveal Bijou; pink and blue paws; a two-tone head of hair
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, Justice cross-card sync (GPT xhigh review of the Justice cards, runs/20261001-1032-*):** the
   FUWAMOCO–Raora Serendipity unit named B.F.F (official Serendipity report, day 2: "Inu Neko. Seishun Massakari").
+- **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
+  P0):** Bijou's audition history removed (outside scope).
 
 ## Open Questions
 (None.)
