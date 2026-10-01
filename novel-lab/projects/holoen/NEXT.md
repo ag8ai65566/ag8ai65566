@@ -1,16 +1,15 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
-狀態（2026-10-01 04:00 UTC）：
-- **GPT 世界觀唯一一輪審查進行中**（04:00 起）：審查包 `runs/20260930-2309-world-hololive/to-gpt.free.md`
-  （19 張世界觀卡＋IRyS、Nerissa 完整檔＋六人卡改動含 Audio Tags＋Style 規則）。產出 `gpt-free.md`。
-  之後：意見併進各 run 的 final.md（world 19 張、character 8 張），`promote --force --reason "作者指示 GPT 只審一輪"`，
-  `export holoen`。
-- 新增世界觀卡（runs `20261001-*`）：hololive -Advent-、IRyS and Nerissa Pairs、hololive History to 2022、
-  hololive History 2023-2026、Concerts and Live Events、Cross-Branch Friends。
-- X 發文：`research/x-posts.md`（wiki 引用的本人帳號貼文；健康／公司內部／家人一律排除）。
-  Kiara 2026-09-09 起短期休息（只記狀態，不寫原因；已列為待作者決定）。
-- Audio Tags（新 [SW] 欄位，八人都有）＋ `export/elevenlabs/sudowrite-style.md`（貼進 Style）。
-- Nerissa：草稿、音檔報告 `research/audio-check/nerissa.md`、表演表都完成。
+狀態（2026-10-01 04:20 UTC）：
+- **完成並收錄（作者裁決，GPT 只審一輪）**：19 張世界觀卡＋8 個角色（Myth 五人、Kronii、IRyS、Nerissa）。
+  GPT 審查 `runs/20260930-2309-world-hololive/gpt-free.md`（high）；意見已逐卡併進 final.md 的 Merge Record。
+  已匯出：`export/characters.csv`（8 張，含 Audio Tags 欄）、`export/worldbuilding.csv`（19 張）、
+  `export/sudowrite-paste.md`、`export/cards/`；`export/elevenlabs/` 八人表演表＋`sudowrite-style.md`（Style 規則）。
+- 審查後新增的官方來源：Serendipity 訪談（IRyS–Bae、Nerissa–Elizabeth）、World Tour '24 官方報告、
+  DANGERyS（2026-07-12 發售）、In My Feelings（2024-08-08）、Moona "100%"（2025-02-16）、ASOBI★MAWARI-TAI!。
+- **待作者決定**：Kiara 2026-09-09 起短期休息（只記狀態）；基準日的故事要不要寫她休息中？
+- **下一步候選**（作者下令前不做新成員）：繼續擴充世界觀（更多跨分部關係、X 發文、各成員演唱會細節）；
+  用音檔補強既有角色（Kiara–Nerissa 的 KiaRissa 台詞、各人的笑聲）。
 
 - **作者新指示（2026-10-01，已寫進 project.md）**：
   1. 世界觀要大量補：人際關係（含 JP／ID／GAMERS 等其他分部）、新成員加入、團體／個人演唱會、
@@ -20,8 +19,6 @@
      口音、語速、音域、笑聲、招牌聲音、情境轉換、發音）完整教給 Sudowrite。
      計畫：角色卡加一個 [SW] 欄位「Audio Tags」（情境→標籤、招牌聲音、發音、不要做的），
      故事層 Style 加標籤格式規則；export 也輸出。內容來源＝`export/elevenlabs/<名字>.md`。
-- **待辦順序**：Nerissa 聲音段落 → 02:27 GPT 審世界觀一輪（含 IRyS/Nerissa 與新卡）→ 合併、收錄、匯出
-  → 世界觀擴充（hololive 大事年表：出道／畢業／演唱會／活動；跨分部關係卡）→ Audio Tags 欄位與八人內容。
 - 新世界觀卡（2026-10-01）：`hololive -Advent-`、`IRyS and Nerissa Pairs`（runs `20261001-0001-world-*`）；
   `hololive -Promise-` 改成涵蓋 IRyS。Kiara／Calli／Kronii／Ina 的 Relationships 已加 IRyS／Nerissa（final.md）。
 - IRyS：草稿完成（runs `20260930-2334-character-IRyS`），音檔報告 `research/audio-check/irys.md`，
