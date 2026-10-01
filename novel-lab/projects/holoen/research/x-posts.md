@@ -29,6 +29,14 @@ They are not quoted here. Status facts that matter for continuity are noted with
   milestone thanks ("WooHoo!!🥳").
 - **Nerissa Ravencroft:** "Ope?!", "~" at the end of lines, 🐦‍⬛💙, answers fans' lore questions in
   detail (horns, height, the lyre), and the same shrug as on stream: "sorry I don't make the rules."
+- **Shiori Novella:** posts little herself in the wiki's citations (her first post was a single image);
+  her streams' descriptions carry her voice instead: tidy hashtag lists (#ShiorinOnAir, #dankvella), credits
+  for every artist, and plugs ("Make sure to dress her up well" for her Chibivella plushie).
+- **Koseki Bijou:** ALL CAPS and stretched letters ("THANK U FOR 700K PEBBLES! … YAAAAAAAAAAAAAAAAAAY"),
+  ":D", 🗿, wrestling and meme quotes ("YOU CAN'T SEE ME, MY TIME IS NOW!!"), "PEBBLES TOGETHER STRONG!!"
+- **FUWAMOCO (Fuwawa and Mococo, one account):** 🐾 with 🩵 (Fuwawa) or 🩷 (Mococo) to show who is
+  writing, "BAU BAU⤴︎⤴︎", "NAU‼️", bilingual English/Japanese posts, decorated headers
+  ("⋱ 🩵 BIG ANNOUNCEMENT 🩷 ⋰"), and "protect your smile."
 
 ## Posts by member
 
@@ -131,3 +139,27 @@ They are not quoted here. Status facts that matter for continuity are noted with
 - 2026-03-27: "Hehe, I was @moricalliope first follower on insta 💙" — 2037348000872432100
 - 2026-06-28: "my base height is 175cm, my heels are 9cm making me 184cm with shoes on, and my horns add an extra
   13cm and bring me to around 197cm" — 2071129323856359834
+
+### Shiori Novella (@shiorinovella)
+- 2023-07-25: first post, a single image — 1684036360154349570
+
+### Koseki Bijou (@kosekibijou)
+- 2023-07-25: "Have you heard of the critically defamed fugitive group hololive English -Advent-? With a press
+  of the subscribe button you can support the entirety o[f]…" (her first post) — 1684036223554420736
+- 2023-07-25: "It's okay! I can fly!!! 💜 Please do a beeg yeet~" — 1684039837169614848
+- 2023-12-13: "THANK YOU FOR 500k!! 🗿🗿🗿🗿🗿🗿 … PEBBLES TOGETHER STRONG!! :D" — 1734828521657372909
+- 2024-06-02: "AHHH~ It feel so good to be back to ELDEN WING :D ALSO THANK YOU FOR 600K PEBBLES!" — 1797159760904757760
+- 2025-03-22: "YOU CAN'T SEE ME, MY TIME IS NOW!! THANKS FOR 800K!!!!!!!!!! 🔥🗿✨💜" — 1903632818145526093
+
+### FUWAMOCO (@fuwamoco_en; Fuwawa and Mococo)
+- 2023-07-25: "BAU BAU!! 🐾✨" (first post) — 1684036647678275586
+- 2023-08-07: "Here is all 100+ of our #FUWAMOCO dreams and goals in FUWAMOCO colors! 🐾🩵🩷" — 1688390033534001152
+- 2023-08-18: "Thank you for 500K RUFFIANS … We'll continue to protect your smile!" — 1692562625966817577
+- 2024-12-12 and 2025-01-17 (Mococo): "please call me by my name or one of my three nicknames, Moco-chan, Mogogo,
+  or Mogojyan! 🐾🩷" — 1867064352312004758, 1880058985405116579
+- 2025-01-29: Mococo's 500th on-stream sneeze, celebrated — 1884524226482446494
+- 2026-08-29: first album "FUWAMOCO à la mode" on pre-order, "hand signed by us!!" — 2093673258273091760
+- 2026-09-10: "Who knew that '2 Creatures + 1 Reaper' is so good at dismantling bombs together? 💣✨" (with Gigi
+  and Calli) — 2098079499527352809
+- (A 2026-09-13 post about a break exists; health details are outside this project's scope, and by analogy
+  with the author's Kiara decision it is not used on the cards.)

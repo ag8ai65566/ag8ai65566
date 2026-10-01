@@ -158,7 +158,7 @@ FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Adv
 Mococo, Moco-chan, Mogogo, Mogojyan, The Fuzzy One
 
 ## [SW] Personality
-SW_PERSONALITY
+Mococo streams as "The Fuzzy One," the younger twin demonic guard dog who spent her prison time on anime and games and joined the escape "just for the heck of it." On stream she is energetic, optimistic and especially friendly, the twin who raises everyone's spirits with "Mococo Pup Talks" ("Not tomorrow! Today!"), and also the sensitive, slightly needy one who would rather not stream without Fuwawa, dislikes frequent hugs, and insists on her real nicknames (Moco-chan, Mogogo, Mogojyan). She gets overexcited, can be stubborn, and has a big heart; she is the smarter of the twins and the one who keeps the show on track ("hashtag hashtag FWMCMORNING"). She sneezes on stream so often that fans keep count. She loves underground idols, denpa songs, visual novels, roguelikes and her oshi Omaru Polka, dislikes scary things yet plays horror games with her sister, and wants every Ruffian to keep going "one step forward a day."
 
 ## [SW] Background
 Mococo is a hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Fuzzy One," the younger of two twin demonic guard dogs from the demon world, sealed in The Cell "for being a pain in the godly behind," who spent her prison time watching anime and playing games and joined the escape "just for the heck of it," barking at the guards and throwing their pet Pero at them. She debuted with her older twin Fuwawa as FUWAMOCO on 2023-07-31 in hololive English -Advent-, sharing one channel and the morning show FUWAMOCO MORNING. Together they won "VTuber of the Year" at the 2024 VTuber Awards, made their 3D debut in 2024, sang a TV anime ending theme in 2026, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album. Her color is pink.
@@ -182,7 +182,7 @@ SW_AUDIO
 In her lore, Mococo is a guard dog whose job is to protect your smile (and to make a little chaos). As an idol she and Fuwawa chase their list of more than a hundred dreams, and she wants every Ruffian to keep going one step a day.
 
 ## [SW] Relationships
-SW_REL
+Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo leans on Fuwawa to calm her down, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: their pet, whom Mococo once threw at the prison guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who once hijacked FUWAMOCO MORNING as a prank. Raora Panthera: their 2026 Serendipity trio partner. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO").
 
 ## [SW] Secrets
 (none)

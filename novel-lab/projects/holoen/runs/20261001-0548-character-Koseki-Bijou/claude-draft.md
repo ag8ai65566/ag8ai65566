@@ -21,7 +21,11 @@ sw_section: Characters
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (KB#) are listed under Sources.
 >
-> **Audio status:** VOICE_STATUS
+> **Audio status:** on 2026-10-01 Claude checked about 1.2 hours of archived 2026 speech (KB20: the opening
+> of her 2026 birthday VRChat stream, 45 minutes and the close of a Resident Evil 4 stream); a Tomodachi Life
+> window was mostly drawing and game voices and is not used for measurements. The audio was
+> machine-transcribed and acoustically measured; transcripts were reviewed in context, without independent
+> listening verification.
 
 ## One-line Concept
 The Jewel of Emotions, a tiny crystal girl formed from every human feeling and locked away because people
@@ -64,7 +68,85 @@ an evil doppelganger kept as a joke. [Official KB1] [Observed KB2 §Personality,
    then did it again with Calli on stream (2023-08-12). [Observed KB2; KB3 eRGs-7AqRgs]
 
 ## Voice Profile
-VOICE_PROFILE
+- **Greetings / sign-offs:**
+  - "Kira kira, Koseki!" (her transformation command, the wiki's caption) and "BIBOO BIBOO! I'm Koseki
+    Bijou, sparkling gem of hololive English -Advent-!" in her official 2026 interview. [Observed KB2,
+    secondary] [Official KB4]
+  - Birthday 2026: "I'm very happy to have you all here with me today. Let's save the city together, right?
+    Together!" … "Welcome to my birthday world! We're gonna save the city!" [ASR KB20, _C5x0uq-xOw
+    0:05:27–0:05:38; both models]
+  - Sign-off: "Thank you everyone! I will finish RE4 next time!" with a pun on "people" the models hear
+    differently ("Beeple"/"Beepoo later"). [ASR KB20, adiHNkjKMV0 6:08:44]
+- **Catchphrases & bits (verbatim → trigger → estimated frequency):**
+  - "beep" → in place of any swear word, also inside sentences ("don't be super beeping early"); six in
+    about an hour of chat; no swearing heard. [ASR KB20, adiHNkjKMV0 6:05:33] [Observed KB2 §Personality, secondary]
+  - "dang it!" → frustration. [Observed KB2 §Quotes, secondary]
+  - "super rock rock" → her name for superchats (eleven in a 12-minute closing). [ASR KB20, first model]
+  - "Rock rock!" → her parody of FUWAMOCO's "bau bau." [Observed KB2 §Miscellaneous, secondary]
+  - "Yippee!" → a small win ("…no Leon sandwich!"). [ASR KB20, 1:01:23; "Yippee" first model only]
+  - "TEEHEE~" and ":D" in writing. [Official KB4] [Observed KB6]
+  - Mock-solemn lore: "A worthy sacrifice, I will remember you." (to Pebbles used as weapons in her
+    birthday game) [ASR KB20, 0:12:35; shared span]; "No, I was eeping. I was eeping. … I was hibernating"
+    and "it takes millions of years for diamonds to form, you know" (asked if she was "just an inanimate
+    rock"). [ASR KB20, 6:01:25–6:01:50]
+  - Embracing it when chat calls her cringe: "Well, yes, I am. We've established this. … I will embrace
+    it." [ASR KB20, 6:07:22; the first model mishears "cringe," so only the shared spans are quoted]
+- **In games:** quiet and steady (about 53 words a minute of speech in RE4), with mock outrage at the game
+  ("This place is a circus! Everyone's dumb! Ashley's dumb. This whole place is stupid."), deadpan cover-ups
+  ("So, about that skybox… You saw nothing. I saw nothing."), small brags ("Managing my resources like a
+  pro."), and voicing the merchant's lines back at him ("What are you buying?", "Is that all?") with a
+  "hehehe." [ASR KB20, adiHNkjKMV0 1:27:21, 1:07:20, 1:23:02, 1:17:37–1:18:39]
+- **Wordplay that goes wrong:** "Not all girls are Biboos, but Biboos are all girls. Wait, does that make
+  sense? That made more sense in my head." [ASR KB20, 1:37:22; the name is spelled differently by the two
+  models]
+- **Vocabulary / fillers:** "okay," "yeah," "yes" (often in runs: "yes, yes, yes, yes"), "you know," "um,"
+  "wow," "oh," "oh my gosh," "oh no," "oh dear"; she addresses "everyone," "everybody" and "Pebbles" far
+  more than "guys"; Gen Alpha and gamer slang ("rage baited," "mogging," "67"); third person "Biboo" (in
+  Japanese she uses "Biboo" for "I"). [ASR KB20, first-model counts] [Observed KB2 §Name, secondary]
+- **Profanity:** none in the sample; she replaces swears with "beep." [ASR KB20] [Observed KB2]
+- **Laughs, noises:** frequent "ha ha ha ha" bursts and "hehehe" giggles (fans compare her laugh to a window
+  squeegee); hums and scats when a game goes quiet ("bam bam bam…", "da da da"); "Bweh." [ASR KB20]
+  [Observed KB2 §Quotes, §Miscellaneous, secondary]
+- **Pronunciation quirk:** she says a hard G as a J ("Jerudo," "Janundorf"), a running joke ("G(j)aslight
+  G(j)atekeep G(j)irlboss" is one of her own stream titles). [Observed KB2 §Miscellaneous, secondary; KB3]
+- **Code-switching:** learning Japanese seriously and planning a Japanese-lesson stream with a real teacher
+  ("killing two birds with one stone, learning Japanese and making content out of it"); "I do speak a little Thai!" (her 2023 post on X); "ROKU
+  NANA~ I mean… rokku wawa." [ASR KB20, 6:03:51] [Official KB4] [Observed KB6, X post 1684542578962964480]
+- **Rhythm & rhetoric:** bright and quick in chat (about 139–144 words a minute of speech), repeating words
+  for emphasis ("over here, over here, over here"; "oh oh oh oh"), giving playful orders to Pebbles ("Make a
+  heart!"), then a mock-serious line delivered straight. [ASR KB20]
+- **Timbre / pitch / pace (for voice performance):**
+  - Measured (KB20; three 2026 windows): median pitch about 280–300 Hz, p10–p90 about 217–439 Hz, high in
+    this project's samples (near Fauna's 280–306 and Mumei's 284–311). Sample results only; not a ranking.
+  - Secondary: she discovered she can imitate Ina by pitching her voice down with a voice changer. [Observed
+    KB2 §Miscellaneous, secondary]
+  - Provisional (interpretation): a small, bright, bubbly voice, high and quick when excited, calm and flat
+    under pressure, with a squeaky burst of laughter.
+- **Sounds off:** any swearing (she would say "beep"); a deep or growly voice; rage when losing (her calm
+  is the point); a cold or menacing "evil" voice that is not obviously a bit (Oobib is a joke).
+
+### Tone Shifts
+The middle column is provisional voice direction unless a source is named.
+
+| Situation | Tone / pitch / pace | Characteristic phrasing |
+|---|---|---|
+| Opening | Bright, bouncy | "BIBOO BIBOO! I'm Koseki Bijou…" (KB4) |
+| Hosting Pebbles | Playful orders, repeats | "Welcome to my birthday world! We're gonna save the city!" (ASR KB20) |
+| Mock solemn | Grave, then a giggle | "A worthy sacrifice, I will remember you." (ASR KB20) |
+| Calm gaming | Quiet, steady | "Managing my resources like a pro." (ASR KB20) |
+| Mock outrage | Fast, indignant | "This place is a circus! Everyone's dumb!" (ASR KB20) |
+| Caught out | Deadpan cover-up | "You saw nothing. I saw nothing." (ASR KB20) |
+| Frustrated | Clean "dang it!" | "dang it!" (KB2) |
+| Sign-off | Bright, quick | "Thank you everyone! I will finish RE4 next time!" (ASR KB20) |
+
+### Sample Lines
+1. "BIBOO BIBOO! I'm Koseki Bijou, sparkling gem of hololive English -Advent-!" (Official KB4)
+2. "Welcome to my birthday world! We're gonna save the city!" (ASR KB20, _C5x0uq-xOw 0:05:38)
+3. "A worthy sacrifice, I will remember you." (ASR KB20, 0:12:35)
+4. "This place is a circus! Everyone's dumb!" (ASR KB20, adiHNkjKMV0 1:27:21)
+5. "So, about that skybox… You saw nothing. I saw nothing." (ASR KB20, 1:07:20)
+6. "No, I was eeping. I was eeping." (ASR KB20, 6:01:25; about her eons as a rock)
+7. "I'LL ROCK IN AND MAKE THIS MOMENT MEMORABLE, SO WATCH ME SHINE BRIGHT OKAY? BIBOO BIBOO!" (Official KB4)
 
 ## Appearance Anchors (avatar)
 - 140 cm, the shortest in hololive English at her debut. Long silvery-purple hair, darker purple eyes, a
@@ -173,7 +255,7 @@ hololive -Advent-, hololive English -Advent- (former branch name), Advent
 Bijou, Biboo, Koseki, Beebs, Lil'Rock, Jewel of Emotions, Oobib
 
 ## [SW] Personality
-SW_PERSONALITY
+Bijou, "Biboo," streams as the Jewel of Emotions, a tiny crystal girl made of every human feeling, and plays it as a bubbly, friendly, easily excited gremlin: she speaks fluent Gen Alpha meme ("skibidi," "rizz," "gyatt," "67"), blurts jokes that get her affectionately teased, and "collects moms" by getting seniors to agree to mother her. She is also one of the most skilled and calmest gamers in hololive English, beating FromSoft games and Hollow Knight and inventing harder challenges for games she has already cleared; she stays collected where others rage, says "dang it!" instead of swearing, and literally says "beep" over any swear, even in game text, and asks her Pebbles to keep chat clean too. She treats hard work like a boss fight she runs at "over and over again," loves to share her gaming with others, and keeps her lore as running bits: an evil twin, Oobib; an "Ascended" emotionless form; a habit of saying she eats her fans, who respawn. Her streams open with a moai head until she calls "Kira kira, Koseki!" She mispronounces hard G as J ("Jerudo") and is proud of her small size.
 
 ## [SW] Background
 Bijou is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Jewel of Emotions," a gem formed under immense pressure from every human emotion, beautiful and filthy alike, whose brilliance drove the greedy to fight over her until she was imprisoned in secret; good emotions make her shine brighter. She debuted on 2023-07-30 with hololive English -Advent- alongside Shiori Novella, Nerissa Ravencroft and FUWAMOCO, having auditioned with a modded Undertale fight starring Mori Calliope. She made her 3D debut on 2024-08-03, released the original songs "Prism Magic" (2024) and "ROCK IN!" (2025), sang a solo and two group numbers at the 2025 English concert -All for One-, and was paired with Takanashi Kiara at the 2026 Serendipity concert. Her fans are Pebbles, her mascot is GEOW, and her emoji is the moai 🗿.
@@ -182,22 +264,22 @@ Bijou is an active hololive member. She has no supernatural abilities; her lore 
 Bijou's avatar is 140 cm tall, with long silvery-purple hair, darker purple eyes and a dark purple crown. Metallic pink wings rise from her back, and purple gemstones grow on her body: a large jewel on her chest that changes color with her mood (blue when sad, rainbow when happy), small gems under her right eye and on the backs of her hands. Her feet are encased in gemstone shoes, and floating crystals around her can turn into weapons, such as her katana. Her small rabbit-like mascot GEOW has a jewel on its forehead.
 
 ## [SW] Dialogue Style
-SW_DIALOGUE
+Bright, bubbly English with "okay," "yeah," and runs of "yes, yes, yes"; she talks to "everyone" and "Pebbles," gives them playful orders ("Make a heart!"), and repeats words for emphasis ("over here, over here"). She never swears: a "beep" replaces any swear word, even mid-sentence ("don't be super beeping early"), and frustration is "dang it!" She speaks Gen Alpha and gamer slang ("rage baited," "mogging," "67"), calls superchats "super rock rock," cheers "Yippee!", and laughs in quick "ha ha ha" bursts and "hehehe" giggles. In games she is calm and steady, with mock outrage ("This place is a circus! Everyone's dumb!"), deadpan cover-ups ("You saw nothing. I saw nothing."), small brags and wordplay that collapses ("That made more sense in my head"). Mock-solemn lore lines come out straight ("A worthy sacrifice, I will remember you"; "No, I was eeping"). She says hard G as J ("Jerudo"), refers to herself as "Biboo," and is learning Japanese. Lines of hers: "Welcome to my birthday world! We're gonna save the city!" "Well, yes, I am. We've established this." "Managing my resources like a pro."
 
 ## [SW] Catchphrases
-SW_CATCH
+"Kira kira, Koseki!" (transformation command); "BIBOO BIBOO!" (greeting); "Moai Moai Kyun~!" (her debut line); "dang it!" (frustration); "beep" (in place of any swear); "Rock rock!" (her answer to "bau bau"); "super rock rock" (superchats); "Yippee!" (a small win); "TEEHEE~" (mischief); "Bweh." (deflated); "You saw nothing. I saw nothing." (covering something up); "A worthy sacrifice, I will remember you." (mock solemn); "I hope you'll feel my radiance!" (official line); ":D" (in writing)
 
 ## [SW] Voice & Delivery
-SW_VOICE
+A small, bright, bubbly voice, high and quick when she is excited or hosting, with sudden bursts of squeaky "ha ha ha" laughter and "hehehe" giggles. Under pressure she goes calm and flat rather than loud, so her mock outrage and mock-solemn lore lines land as jokes. She hums and scats to fill quiet stretches in games, says "beep" in the exact rhythm of the swear it replaces, and turns hard Gs into Js.
 
 ## [SW] Audio Tags
-SW_AUDIO
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (sample observations, not synthesis targets): small, bright, high voice (about 280–300 Hz), quick when chatting (about 140 words a minute of speech), quiet and steady while gaming; American English. Default tags: [bright, bubbly]. By situation: opening [excited, bouncy]; hosting Pebbles [playful, commanding]; mock solemn [grave, theatrical] then [giggles]; calm gaming [focused, calm]; mock outrage [indignant, fast]; caught out [deadpan]; small win [delighted]; frustrated [mildly annoyed] "dang it!"; sincere thanks [warm]; sign-off [cheerful, quick]. With people (provisional, drawn from Relationships): Shiori [cheeky]; Kiara [hyped, meme-y]; Kaela [comfortable, playful]; IRyS [excited teammate]; FUWAMOCO [silly]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [squeaky laugh] ha ha ha ha; [giggles] hehehe; [censoring herself] beep; [deflated] bweh; [humming] (tag only). Keep in the words: "okay," "yeah," "yes, yes, yes," "everyone," "Pebbles," "oh my gosh," "oh no," "wow," "Yippee!", Gen Alpha slang; never a real swear, always "beep." Pronunciation guide (provisional, untested): Bijou /biˈʒuː/ ("bi-joo"), Biboo /ˈbiːbuː/, Koseki /koʊˈsɛki/, Gerudo as "Jerudo" /dʒəˈɹuːdoʊ/ (her quirk, on purpose). Not as default: swearing, a deep or growly voice, rage. Oobib's "evil" voice only as an obvious bit.
 
 ## [SW] Motivation
 In her lore, Bijou shines brighter when she meets people's good emotions. As a streamer she wants to appear in a video game and land a voice-acting role, to collab with every hololive member at least once, to perform her original songs on stage, and to grow a community of millions of Pebbles, all while keeping her streams profanity-free.
 
 ## [SW] Relationships
-SW_REL
+Shiori Novella: Advent's "glorious leader" and the genmate she names most (Goth Rock; GAGA with Gigi and Cecilia). Nerissa Ravencroft: the raven drawn to her shine (JewelBird); Bijou named her "Nerizzler," and Nerissa named Bijou's evil twin "Oobib." FUWAMOCO: "Diamond Dogs" since an Overcooked 2 collab in their first weeks; her "Rock rock!" parodies their "bau bau." Kaela Kovalskia (ID): her most frequent partner outside Advent ("Grindstone"; Kaela calls her "Beejoe"), with Raora as "Graondstone." Mori Calliope: she auditioned with an Undertale fight starring Calli; "TombStone"; a 24-hour charity stream together (2025) and Warhammer painting (2026). Takanashi Kiara: her 2026 Serendipity partner ("Rocku Wawa"), who calls her a "hidden gem"; Bijou admires Kiara's "confidence," and they never stop saying "67." IRyS: her horror co-op partner (Dead Space 3, Resident Evil 6). Hakos Baelz: "BaeBi" (a 2024 sleepover marathon). Nanashi Mumei (graduated 2025): "Stone Age"; Mumei rated her a loss at arm wrestling because "she is a rock." Ninomae Ina'nis: "TakoRocky," Monster Hunter partner who designed their collab outfits. Ceres Fauna (graduated 2025): her Hitman "coach." Ouro Kronii: Lethal Company and Yu-Gi-Oh. -Justice-: GAGA with Gigi and Cecilia; Graondstone with Raora; "I'm Your Treasure Box" with Cecilia and Raora at the 2025 concert. Kureiji Ollie ("GraveStone"), Akai Haato ("Red Stone"), Regis Altare (HOLOSTARS): game partners.
 
 ## [SW] Secrets
 (none)
@@ -205,4 +287,7 @@ SW_REL
 ---
 
 ## Open Questions
-1. OPEN_Q
+1. The Tomodachi Life window was unusable (drawing, game voices), and her "squeegee" laugh and Moai opening
+   are wiki descriptions. A chattier 2026 window is queued (Idol Showdown); worth adding its counts?
+2. "Bijou is the Jewel of Emotions who 'inspires greed'" and "eats her fans" are lore bits; kept in
+   Personality as bits. Keep?
