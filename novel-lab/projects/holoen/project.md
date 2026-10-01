@@ -73,6 +73,9 @@ web_search: live
 - 停止活動、保留 affiliate：Watson Amelia（2024-09-30 起）
 - 已完成（2026-10-01）：Myth 五人、Ouro Kronii、IRyS、Nerissa Ravencroft、Ceres Fauna、Nanashi Mumei。
   其餘成員等作者下令。
+- 作者下令（2026-10-01）：做 **Advent 整團**（Shiori Novella、Koseki Bijou、FUWAMOCO 的 Fuwawa Abyssgard 與
+  Mococo Abyssgard；Nerissa 已完成），並**補完所有人物的關係網和世界觀**。額度用完時務必設定時間自動繼續。
+  FUWAMOCO 是雙胞胎、同一頻道：聲音不同，所以做兩張角色卡，另做一張 FUWAMOCO 世界觀卡。
 
 ## 已定案的硬設定
 - （收錄進 bible 後，重要的硬事實抄一行在這裡）
