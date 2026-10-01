@@ -88,8 +88,9 @@ Faction / organization (and workplace).
 5. A schedule collision turns two members' streams into an impromptu collab.
 
 ## Links to Characters
-All six. Calli, Kiara and Ina are active in hololive -Myth-; Ame is an affiliate; Gura is an alumna;
-Kronii is active in hololive -Promise-.
+All eight. Calli, Kiara and Ina are active in hololive -Myth-; Ame is an affiliate; Gura is an alumna;
+Kronii and IRyS are active in hololive -Promise-; Nerissa in hololive -Advent-. Detailed history: the
+cards "hololive History to 2022," "hololive History 2023-2026" and "Concerts and Live Events."
 
 ## Secrets
 (None.)
@@ -120,7 +121,7 @@ Faction
 hololive production, COVER, holoEN, hololive English, the company, management
 
 ## [SW] Description
-The VTuber agency run by COVER Corporation that the cast belongs to. Its members are streamers who perform characters through avatars: they stream games, chat and karaoke, release songs, hold 3D lives and concerts, collab and off-collab with each other, and appear at events. Since 2026-09-07 all former branches are one "hololive," and old groups are units: Calli, Kiara and Ina are active in hololive -Myth-; Kronii is in hololive -Promise-. Watson Amelia concluded her regular activities on 2024-09-30 and remains an affiliate who appears at events; Gawr Gura graduated on 2025-05-01 and is an alumna. Japanese members are senpai, later groups are kouhai, and genmates are the people you debuted with. The calendar runs on debut anniversaries, birthdays, concerts and fes.
+The VTuber agency run by COVER Corporation that the cast belongs to. Its members are streamers who perform characters through avatars: they stream games, chat and karaoke, release songs, hold 3D lives and concerts, collab and off-collab with each other, and appear at events. Since 2026-09-07 all former branches are one "hololive," and old groups are units: Calli, Kiara and Ina are active in hololive -Myth-; Kronii and IRyS are in hololive -Promise-; Nerissa is in hololive -Advent-. Watson Amelia concluded her regular activities on 2024-09-30 and remains an affiliate who appears at events; Gawr Gura graduated on 2025-05-01 and is an alumna. Japanese members are senpai, later groups are kouhai, and genmates are the people you debuted with. The calendar runs on debut anniversaries, birthdays, concerts and fes.
 
 ## [SW] Rules
 Management and staff stay faceless helpers: no invented staff names, business secrets, scandals or disputes. Graduations are never explained beyond "graduated." Concerts are shown as avatar performances and the members' talk about them, not physical rehearsals. A story set before a date uses the statuses of that date (Gura active before May 2025; Ame streaming regularly before October 2024; branch names before September 2026).
