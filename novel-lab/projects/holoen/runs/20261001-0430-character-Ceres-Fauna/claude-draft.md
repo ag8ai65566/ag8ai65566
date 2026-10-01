@@ -21,7 +21,10 @@ sw_section: Characters
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (F#) are listed under Sources.
 >
-> **Audio status:** VOICE_STATUS
+> **Audio status:** on 2026-10-01 Claude checked about 2.9 hours of archived 2024 recordings (F20: a
+> solo chatting stream, a superchat catch-up, the Mouthwashing horror game and a World Tree build). The audio
+> was machine-transcribed and acoustically measured; transcripts were reviewed in context, without independent
+> listening verification.
 
 ## One-line Concept
 The Keeper of Nature, a druidic kirin "four and a half billion" years old, who streams as the softest,
@@ -60,7 +63,96 @@ is unacceptable, and has "a reputation for turning people into trees." [Official
    and Fauna's "MONTH OF HORRORS," 2022). [Official F1] [Observed F3 titles]
 
 ## Voice Profile
-VOICE_PROFILE
+- **Greetings / sign-offs:**
+  - "Konfauna~ Your gaming idol kirin Ceres Fauna is here!" (official greeting) [Official F1]; "Konfauna!"
+    [Observed F2 §Quotes, secondary]. Neither was heard in the sampled 2024 opening, which starts mid-setup
+    with soft hellos while she fixes her background music. [ASR F20, iIBywcAIMD0 0:00–0:04]
+  - Sign-off (2024-10-24): "…we will be back to Fauna Standard Time. I promise. Thank you so much for
+    hanging out, and I will see you tomorrow. Wish me luck." [ASR F20, 3:27:56–3:28:14; the models agree on
+    these spans only]. Her last post on X: "LOVE & PEACE / Love, Fauna". [Observed F2, secondary]
+- **Catchphrases & bits (verbatim → trigger → estimated frequency):**
+  - "return to nature" → when Mumei is upset or a human strays; an invitation and a threat → recurring.
+    [Observed F2 §Personality, secondary]
+  - "uuuu" → embarrassed or flustered → frequent ("Uuu~" is the wiki's caption for her). [Observed F2, secondary]
+  - "I'm not that old! Only four and a half... four and a half billion." → age jokes. [Observed F2 §Quotes, secondary]
+  - Sweet reassurance with an ominous tail: "Mother Nature would never betray you... right?" [Observed F2
+    §Quotes, secondary]
+  - "Evil Fauna" → a bit with a "sultry deep voice" ("No! Don't fall! You guys would fall too easily to
+    Evil Fauna."). [Observed F2 §Quotes, secondary]
+  - "Fauna Standard Time" → her lateness; said when late: "It's okay. We can celebrate… I'm always on
+    time." (celebrating 900,000 subscribers after the fact) [ASR F20, 0:46:20]
+  - Spells and Fauna Mart → superchat reading: "If you heard your name, you will now be the recipient of my
+    next spell," a spell to make you spend money at her shop, then "It's not a scam! Fauna Mart is real!"
+    [ASR F20, TzW6VRf4KjQ 0:45:36, 0:49:09]
+  - "I am not the keeper of jet packs." → refusing a Sapling's request ("So how can you guys get a jet pack
+    if I don't even have one?"). [ASR F20, 3:24:38]
+  - "Plant them, plant them…" → a little chant after a long list of Sapling names. [ASR F20, TzW6VRf4KjQ 0:45:26]
+  - A flat, fake "ha ha… ha ha ha ha" after her own pun ("Ha ha, I'm so…"; the models disagree on the
+    pun word, humerus/humorous, so it is not quoted). [ASR F20, 1:12:53]
+- **Yandere / possessive bit (performed, non-explicit):** "I'm not going anywhere, until I win you back.
+  I'll be here, streaming, changing your heart, day by day. Until, you finally decide to return to your
+  origins." [Observed F2 §Quotes, secondary]. With Mumei the protectiveness turns into possessive jealousy
+  as a running bit. [Observed F2 §Personality, secondary]
+- **Improvised drama:** love speeches to "Forklift-chan" ("Why is this so dramatic?! Here you are, my love,
+  my Forklift-chan."), an impassioned speech over a dramatic track ("you just have to sound impassioned!"),
+  "Oh no, OH NOOOOO!! I'm once again arrested for pangolin crimes!" [Observed F2 §Quotes, secondary]. Grand
+  deadpan: "I will be the sole arbitrator of YouTube monetization." [ASR F20, 0:42:06]. About a murder-mystery
+  collab: "I just wanted to use the gun… it would be dramatic and funny." [ASR F20, 3:20:24; shared spans]
+- **Reading game text:** in the 2024 horror game she reads the characters' dialogue aloud in their voices,
+  swearing included, between her own quiet reactions. [ASR F20, 9_Ue4fOMNP8]
+- **Vocabulary / fillers:** "like" constantly (about 1 word in 40 in chat, 1 in 30 while building), "I don't
+  know" (17 times in a 40-minute chat window; 60 in about 15,000 transcribed words), often as a soft
+  sentence ending; "I guess," "kind of," "actually," "honestly," "wait," "okay." Exclamations: "oh no" (8
+  in 45 minutes of horror), "oh gosh," "oh my gosh." Fans: Saplings. [ASR F20, first-model counts]
+- **Profanity:** her own words in the sample stay mild ("dang," "what the heck," "oh my gosh"); the strong
+  words in the horror window are game dialogue she read aloud. Her edge comes from sweet threats, not
+  swearing. [ASR F20]
+- **Laughs, noises:** soft giggles; "uuuu" when flustered; the fake "ha ha ha" after her puns. [F2; ASR F20]
+- **Code-switching:** English with Japanese thanks during superchats ("Arigatou gozaimasu. Thank you.");
+  learning Japanese was a stated goal; JP members call her "Ceres-chan." [ASR F20] [Official F1] [F2 §Trivia]
+- **Rhythm & rhetoric:** unhurried, meandering stories that circle back with "I don't know" and "I guess";
+  superchats read as quick, rhythmic lists of names and thank-yous (62 "thank you"s in the 12-minute closing
+  window), with a sung "Happy Birthday" when a Sapling asks. [ASR F20]
+- **Timbre / pitch / pace (for voice performance):**
+  - Self-description: "I'm pretty soft-spoken. And talking in my head voice like this does not strain my
+    voice at all." [ASR F20, 1:14:21]. Secondary: soft-spoken and comforting, with a voice tone fans compare
+    with Yukihana Lamy's. [Observed F2 §Personality, secondary]
+  - Measured (F20; four 2024 windows): median pitch about 280–306 Hz (283–300 in chat, 293 while building,
+    306 in the horror game); in the cleaner windows p10–p90 is about 210–445 Hz. High in this project's
+    samples, near Kiara's (245–300 Hz) and above IRyS's (214–226 Hz). About 105–120 words per minute of
+    speech in chat and building, 92 in the horror game, about 154 in the closing superchat list. Sample
+    results only; not a ranking.
+  - Provisional: a soft, light, airy head voice; unhurried; whisper-close for ASMR; sweet-but-ominous for
+    threats; a deliberately deeper, sultry "Evil Fauna" as a comic bit.
+- **Sounds off:** loud, brash shouting as a default; frequent strong swearing; a truly cold or menacing
+  voice (her threats stay sweet); fast, clipped speech outside superchat lists; a sexualized read of "Evil
+  Fauna" or of ASMR.
+
+### Tone Shifts
+The middle column is provisional voice direction unless a source is named.
+
+| Situation | Tone / pitch / pace | Characteristic phrasing |
+|---|---|---|
+| Opening | Soft, cheerful | "Konfauna~ Your gaming idol kirin Ceres Fauna is here!" (F1) |
+| Cozy chat | Unhurried, meandering, "I don't know" endings | "I'm pretty soft-spoken." (ASR F20) |
+| Sweet threat | Same soft voice, ominous tail | "return to nature" (F2) |
+| Evil Fauna | Deliberately deeper and sultry, theatrical | "You guys would fall too easily to Evil Fauna." (F2) |
+| Flustered | "uuuu," giggles | (F2) |
+| Improvised drama | Impassioned, mock-tragic | "Here you are, my love, my Forklift-chan." (F2) |
+| Horror game | Murmured "oh no," "oh gosh"; reads game lines in character voices | (ASR F20) |
+| Superchats | Quick, rhythmic names and thank-yous; spells | "If you heard your name, you will now be the recipient of my next spell." (ASR F20) |
+| Deadpan bit | Flat, grandiose | "I will be the sole arbitrator of YouTube monetization." (ASR F20) |
+| Sign-off | Warm, a promise | "Thank you so much for hanging out, and I will see you tomorrow." (ASR F20) |
+
+### Sample Lines
+1. "Konfauna~ Your gaming idol kirin Ceres Fauna is here!" (Official F1)
+2. "I was ready to be a kirin because that's what I am. But if they need me to be a giraffe, I guess I can
+   do that" (ASR F20, 0:56:01; when something called her a "gaming idol giraffe")
+3. "So how can you guys get a jet pack if I don't even have one? I am not the keeper of jet packs." (ASR F20, 3:24:38)
+4. "It's not a scam! Fauna Mart is real!" (ASR F20, TzW6VRf4KjQ 0:49:09)
+5. "Me. I'll be the mean manager." (ASR F20, TzW6VRf4KjQ 0:55:28; asked who would want the role)
+6. "I'm not going anywhere, until I win you back." (F2 §Quotes, secondary)
+7. "No! Don't fall! You guys would fall too easily to Evil Fauna." (F2 §Quotes, secondary)
 
 ## Appearance Anchors (avatar)
 - 164 cm. Wavy light-green hair fading to blue-green at the tips, decorated with white five-petal flowers;
@@ -163,31 +255,31 @@ hololive English -Council-, hololive English -Promise-, hololive alum
 Fauna, Faufau, Keeper of Nature, Mother Nature, Gamer Kirin, Ceres-chan
 
 ## [SW] Personality
-SW_PERSONALITY
+Fauna streams as the Keeper of Nature, a druidic kirin four and a half billion years old, and plays the lore for laughs: she is the softest, most comforting presence in the room, and she uses that same soft voice to suggest you "return to nature," threaten to turn you into a tree, or let "Evil Fauna" out with a deeper, sultry voice. She is protective of her Saplings and of Mumei to the point of a possessive, yandere bit, yet gets embarrassed easily ("uuuu"). She commits to huge, patient projects (a Minecraft World Tree built over more than a hundred hours) and long playthroughs, loves horror games, cursed memes, animals and cats, and spins absurd improvised dramas out of games (a love monologue for a forklift, "pangolin crimes" in a zoo). She runs late and jokes that she is "always on time" on "Fauna Standard Time." Sincere moments are plain and warm: she thanks every Sapling she can by name.
 
 ## [SW] Background
-SW_BACKGROUND
+She has no supernatural abilities; her lore is a performed persona. Fauna is a VTuber whose lore, a persona she plays for laughs, makes her the Keeper of "Nature," the second concept created by the gods: a druid with kirin blood whose horns are tree branches, who came online to win humans over and lead them back to nature. She debuted on 2021-08-23 with hololive English -Council-, joined -Promise- with IRyS, Kronii, Mumei and Bae in 2023, won VTuber Awards for ASMR and for chatting streams, sang at the first hololive English concert (2023) and in Promise's musical "The Broken Promise" (2024), finished her Minecraft World Tree on 2024-12-31, reached one million subscribers on 2024-12-27, and graduated on 2025-01-03. Her fans are Saplings, her members Faunatics, and her mascot is Nemu, a sleepy kirin.
 
 ## [SW] Physical Description
 Fauna's avatar is 164 cm tall, with wavy light-green hair that fades to blue-green at the tips and is decorated with small white five-petal flowers, and horns like leafy tree branches (kirin horns, not deer antlers). Her eyes are yellow, with a beauty mark under the right one. She wears a short blue dress with golden ornaments under a white overcoat lined with pink flowers and closed with a blue bow, a golden belt set with green roses and water-drop gems, one long white sock and a golden bangle on the other ankle, and she goes barefoot. A golden apple sometimes floats at her hand; her sleepy kirin mascot Nemu may be curled up nearby.
 
 ## [SW] Dialogue Style
-SW_DIALOGUE
+Soft, meandering English that circles with "like," "I guess," "kind of" and "actually," and often trails off on a gentle "I don't know." She talks to her Saplings warmly and, now and then, as their slightly spooky goddess: sweet reassurances with an ominous "...right?" at the end, invitations to "return to nature," spells cast on chat, a shop she insists is "not a scam." She commits fully to absurd bits and improvised drama, from love speeches to a forklift to grand deadpan ("I will be the sole arbitrator of YouTube monetization"), and laughs a flat, fake "ha ha ha" at her own puns. In games she reads the dialogue aloud in the characters' voices; scared, she murmurs "oh no," "oh gosh." Her own swearing stays mild ("dang," "what the heck"). She reads superchats as quick, rhythmic lists of names and thank-yous, adds "arigatou gozaimasu," and sings happy birthday when asked. Lines of hers: "I am not the keeper of jet packs." "I was ready to be a kirin because that's what I am. But if they need me to be a giraffe, I guess I can do that." "Me. I'll be the mean manager."
 
 ## [SW] Catchphrases
-SW_CATCH
+"Konfauna~ Your gaming idol kirin Ceres Fauna is here!" (official greeting); "Konfauna!" (greeting); "return to nature" (her invitation and threat, above all to Mumei); "uuuu" (embarrassed); "four and a half billion" (her age, when called old); "Evil Fauna" (her sultry-voiced alter ego bit); "Fauna Standard Time" (her lateness) and "I'm always on time." (said when late); "It's not a scam! Fauna Mart is real!" (her shop bit); "If you heard your name, you will now be the recipient of my next spell." (while reading superchats); "I am not the keeper of jet packs." (refusing a request); "Plant them, plant them…" (a chant after a list of names); "Thank you so much for hanging out, and I will see you tomorrow." (sign-off); "LOVE & PEACE" (her last post)
 
 ## [SW] Voice & Delivery
-SW_VOICE
+A soft, light, mid-high speaking voice (she describes herself as soft-spoken and talking in her head voice) that stays gentle even when she is excited, at an unhurried, meandering pace. Her comfort voice drops to a whisper for ASMR. Her mischief comes out sweet: a threat or a "return to nature" in the same soothing tone, and for "Evil Fauna" a deliberately deeper, sultry voice. When flustered she trails into "uuuu" and small giggles; when scared she murmurs "oh no" rather than shouting, and she reads game dialogue aloud in the characters' voices. Reading superchats she speeds up into a warm, rhythmic list of names and thank-yous.
 
 ## [SW] Audio Tags
-SW_AUDIO
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (sample observations, not synthesis targets): soft, light, airy head voice, high in this project's samples (about 280–306 Hz), unhurried and meandering (about 105–120 words a minute in chat), quick only in superchat lists; American English. Default tags: [soft, gentle]. By situation: opening [soft, cheerful]; cozy chat [soft, meandering]; sweet threat or "return to nature" [sweetly] then [softly ominous]; Evil Fauna bit [deeper, sultry, theatrical], kept comic; flustered [embarrassed]; improvised drama [mock-dramatic, impassioned]; horror game [nervous, murmuring]; reading game dialogue [in a character voice]; superchat list [quick, rhythmic, warm]; grand deadpan [deadpan]; ASMR [whispering, close]; sincere [warm, plain]; sign-off [warm, cheerful]. With people (direction drawn from Relationships): Mumei [sweet, possessive]; Bae [amused, calm]; Kronii [teasing]; Gura [giggly, fangirling]; Justice and other kouhai [gentle, mischievous senpai]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [flustered whine] uuuu; [soft giggle]; [flat, fake laugh] ha ha ha (after her own pun); [quiet gasp]. Keep in the words: "like," "I don't know" (often as a soft sentence ending), "I guess," "kind of," "actually," "oh no," "oh gosh," "oh my gosh"; her own swearing stays mild ("dang," "what the heck"). Pronunciation guide (provisional, untested): Ceres /ˈsɪəɹiːz/, Fauna /ˈfɔːnə/, kirin /ˈkɪɹɪn/, Konfauna /kɑnˈfɔːnə/, Nemu /ˈnɛmu/. Not as default: loud shouting, constant swearing, a cold menacing voice. Never a sexualized read of Evil Fauna or of ASMR.
 
 ## [SW] Motivation
 In her lore, Fauna wants to win humans over and lead them back to nature. As a streamer she wanted to comfort her Saplings, sing, learn Japanese, collab with her genmates in person, speedrun games and voice-act in a game, and to finish what she started, like the World Tree.
 
 ## [SW] Relationships
-SW_REL
+Nanashi Mumei (graduated 2025): Council and Promise genmate; Fauna's protectiveness of her became a possessive, yandere bit, inviting Mumei to "return to nature" whenever she was upset, while Mumei's own dark side left it unclear who needed protecting from whom; one of Fauna's last streams was the two of them reading Wikipedia talk-page fights (2024-12). Hakos Baelz: genmate who called her "a natural mama" at debut; her horror partner ("BAE & FAUNA'S MONTH OF HORRORS," 2022; an Amnesia: The Bunker off-collab, 2023). Ouro Kronii: genmate; they defused bombs speaking only in ASMR (2021), and Fauna praised Kronii's "gap moe." IRyS: Promise genmate and Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Tsukumo Sana (graduated 2022): designed Council's "Beeg Smol" models; Fauna told fans to give Sana love "even though she's a little bit... disgusting." Gawr Gura: Fauna's hololive oshi; Mario Kart, a Dark Souls race, and drawing hololive members from memory four days before Fauna graduated. Takanashi Kiara: Myth senior; "KIWAWA vs FAWNA" (2022); Fauna was Kiara's HOLOTALK guest a week before graduating. Kaela Kovalskia (ID): Phasmophobia and Minecraft together. -Justice-: kouhai she made play a board game she invented (2024); Silent Hill 2 with Gigi Murin. Shirogane Noel: a JP senior she admires. Nerissa Ravencroft: Advent kouhai who greeted her on X as "Fauna-senpai!!!"
 
 ## [SW] Secrets
 (none)
@@ -195,4 +287,8 @@ SW_REL
 ---
 
 ## Open Questions
-1. OPEN_Q
+1. Her official greeting ("Konfauna~ Your gaming idol kirin Ceres Fauna is here!") was not heard in the
+   sampled 2024 opening, which began mid-setup. Kept on the card as her greeting; confirm.
+2. "Evil Fauna," the yandere lines and the forklift dramas come from the wiki's quote list (secondary, no
+   timestamps). They are kept as bits, with full sentences quoted only in the dossier and in two Sample
+   Lines. Keep?
