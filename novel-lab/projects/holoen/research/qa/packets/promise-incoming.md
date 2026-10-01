@@ -1,9 +1,9 @@
 # Audit packet: promise (incoming claims)
 
-Snapshot: git 037d1c3.
+Snapshot: git d128361.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden of Time|Nanashi Mumei|Mother Nature|Kroniicopter|Ceres Fauna|Ouro Kronii|Gamer Kirin|Tam Tender|Ceres-chan|Owo-senpai|Octo'clock|Mumi-chan|SeisoRyS|オーロ・クロニー|Kronster|YabaIRyS|Moomsies|Kronini|Myumyei|Promise|Council|Moomers|BaeRyS|Faufau|Kronii|Meimei|Fauna|Fawna|Mumei|IRyS|Moom|Towl|Irys)(
+Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden of Time|Nanashi Mumei|Mother Nature|Kroniicopter|Gamer Kirin|Ouro Kronii|Ceres Fauna|Ceres-chan|Octo'clock|Owo-senpai|Tam Tender|Mumi-chan|Moomsies|SeisoRyS|オーロ・クロニー|YabaIRyS|Kronster|Moomers|Council|Kronini|Myumyei|Promise|Meimei|Kronii|Faufau|BaeRyS|Fawna|Fauna|Mumei|Irys|Towl|Moom|IRyS)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: IRyS and Bijou: Elden Ring Nightreign.

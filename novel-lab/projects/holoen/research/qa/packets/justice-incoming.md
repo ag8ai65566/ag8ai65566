@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git 037d1c3.
+Snapshot: git d128361.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Immerhater|Bloodraven|Erby Berby|Autofister|Gigi Murin|Elizabeth|Da Fister|Gi Murin|Cecilia|Justice|Lizzie|GeeGee|G Pain|B.F.F|Raora|Ceci|Rara|LYRA|Cece|Gigi|Liz)(
+Matched names: e Artist with the God Eyes|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Bloodraven|Erby Berby|Gigi Murin|Immerhater|Autofister|Elizabeth|Da Fister|Gi Murin|Cecilia|Justice|Lizzie|GeeGee|G Pain|Raora|B.F.F|Rara|Cece|LYRA|Gigi|Ceci|Liz)(
 
 ### from Ceres Fauna
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Cecilia Immergreen: a book and shoujo-manga tropes ranking (2024; "Green Women").

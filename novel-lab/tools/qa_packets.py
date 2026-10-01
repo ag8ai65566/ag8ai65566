@@ -309,6 +309,101 @@ def write_packets(cohort, files, qa, reg_path, commit):
     return out
 
 
+
+REF_SHORT = {"Hakos Baelz": ["Bae", "Baelz"], "Kobo Kanaeru": ["Kobo"], "Vestia Zeta": ["Zeta"],
+             "Kureiji Ollie": ["Ollie"], "Kaela Kovalskia": ["Kaela"], "Moona Hoshinova": ["Moona"],
+             "Ayunda Risu": ["Risu"], "Anya Melfissa": ["Anya"], "Pavolia Reine": ["Reine"],
+             "Airani Iofifteen": ["Iofi"], "Ookami Mio": ["Mio"], "Tsunomaki Watame": ["Watame"],
+             "Oozora Subaru": ["Subaru"], "Houshou Marine": ["Marine"], "Inugami Korone": ["Korone"],
+             "Omaru Polka": ["Polka"], "Nekomata Okayu": ["Okayu"], "Akai Haato": ["Haachama"],
+             "Hoshimachi Suisei": ["Suisei"], "Usada Pekora": ["Pekora"], "Tokino Sora": ["Sora"],
+             "Tsukumo Sana": ["Sana"], "Crimzon Ruze": ["Ruze"], "Banzoin Hakka": ["Hakka"],
+             "Koganei Niko": ["Niko"], "Amane Kanata": ["Kanata"]}
+
+
+def person_patterns(files):
+    pats = {}
+    for stem in qa_packets_cast(files):
+        d = files[stem]
+        words = {d["name"]} | set(SHORT.get(stem, [])) - {"FUWAMOCO"}
+        pats[d["name"]] = re.compile(r"(?<![\w-])(" + "|".join(re.escape(w) for w in sorted(words, key=len, reverse=True)) + r")(?![\w-])")
+    for name in REFERENCE_ONLY:
+        words = {name} | set(REF_SHORT.get(name, []))
+        pats[name] = re.compile(r"(?<![\w-])(" + "|".join(re.escape(w) for w in sorted(words, key=len, reverse=True)) + r")(?![\w-])")
+    return pats
+
+
+def qa_packets_cast(files):
+    return [stem for stem, d in files.items() if d["kind"] == "characters"]
+
+
+def all_claims(files):
+    """Every [SW] sentence (consistency fields) and dossier row/bullet, with locator."""
+    for stem, d in files.items():
+        for fld in CONSISTENCY_FIELDS:
+            for sent in SENT.split(d["sw"].get(fld) or ""):
+                if sent.strip():
+                    yield f"{d['path']} › [SW] {fld}", sent.strip()
+        for section, item in dossier_items(d["text"]):
+            yield f"{d['path']} › {section}", item
+
+
+def bridge_packets(files, reg, qa, commit):
+    out = {}
+    # events: registry rows grouped by month, plus status intervals
+    ev = ["# Bridge packet: events", "", f"Snapshot: git {commit}. Every dated row from every bible file's dossier",
+          "tables (registry events), grouped by month; then each cast member's status interval. Locators are files;",
+          "search the file for the row text to see its context.", "", "## Status intervals (from Background)", ""]
+    for c in reg["cast"]:
+        si = c["status_interval"]
+        ev.append(f"- {c['name']}: {si['state_at_baseline']}; debut {si['debut'] or '?'}; graduated {si['graduated'] or '—'}; "
+                  f"regular activities concluded {si['regular_activities_concluded'] or '—'} (`{si['source']}`)")
+    ev += ["", "## Dated rows by month", ""]
+    by = {}
+    for e in reg["events"]:
+        key = e["date"][:7] if re.match(r"\d{4}-\d{2}", e["date"]) else (e["date"][:4] if re.match(r"\d{4}", e["date"]) else "undated/lore")
+        by.setdefault(key, []).append(e)
+    for key in sorted(by):
+        ev.append(f"### {key}")
+        for e in by[key]:
+            ev.append(f"- {e['date']} [{e['precision']}{', ' + e['zone'] if e['zone'] else ''}] {e['text']} — `{e['file']}`"
+                      + (f" ({e['evidence']})" if e["evidence"] else ""))
+        ev.append("")
+    out["events.md"] = "\n".join(ev)
+    # ties: claims naming two people, grouped by pair
+    pats = person_patterns(files)
+    cast_names = {files[s]["name"] for s in qa_packets_cast(files)}
+    pairs, groups = {}, {}
+    for loc, text in all_claims(files):
+        who = sorted(n for n, p in pats.items() if p.search(text))
+        if len(who) > 3:  # group claims appear once, not under every pair
+            if any(w in cast_names for w in who):
+                groups[f"- `{loc}` [{', '.join(who)}]: {text}"] = True
+            continue
+        for i in range(len(who)):
+            for j in range(i + 1, len(who)):
+                a, b = who[i], who[j]
+                if a in cast_names or b in cast_names:
+                    pairs.setdefault((a, b), []).append(f"- `{loc}`: {text}")
+    for name, sel in (("ties-cast.md", lambda a, b: a in cast_names and b in cast_names),
+                      ("ties-external.md", lambda a, b: not (a in cast_names and b in cast_names))):
+        lines = [f"# Bridge packet: ties ({'cast × cast' if name == 'ties-cast.md' else 'cast × reference-only people'})", "",
+                 f"Snapshot: git {commit}. Every [SW] sentence and dossier row/bullet that names both people, grouped by",
+                 "pair (names and short names matched; a sentence naming three people appears under each pair).", ""]
+        for (a, b) in sorted(k for k in pairs if sel(*k)):
+            lines.append(f"### {a} × {b}")
+            lines += sorted(set(pairs[(a, b)]))
+            lines.append("")
+        out[name] = "\n".join(lines)
+    out["ties-groups.md"] = "\n".join(["# Bridge packet: ties (claims naming four or more people)", "",
+                                        f"Snapshot: git {commit}. Each listed once with the people it names.", ""] + sorted(groups))
+    res = []
+    for name, text in out.items():
+        (qa / "packets" / name).write_text(text, encoding="utf-8")
+        res.append({"packet": f"research/qa/packets/{name}", "chars": len(text), "sha256": hashlib.sha256(text.encode()).hexdigest()})
+        print(f"bridge {name}: {len(text):,} chars")
+    return res
+
 def main():
     if len(sys.argv) != 2:
         sys.exit(__doc__)
@@ -329,6 +424,7 @@ def main():
         manifest["packets"][cohort] = {"owns": [files[x]["path"] for x in COHORTS[cohort]["characters"] + COHORTS[cohort]["world"]],
                                        "parts": parts}
         print(f"packet {cohort}: " + ", ".join(f"{p['packet'].split('/')[-1]} {p['chars']:,}" for p in parts))
+    manifest["packets"]["bridge"] = {"parts": bridge_packets(files, reg, qa, commit)}
     (qa / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
 
 if __name__ == "__main__":
