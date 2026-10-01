@@ -23,7 +23,12 @@ sw_section: Characters
 >
 > Lines we wrote ourselves are marked **Style demo**. Source IDs (EB#) are listed under Sources.
 >
-> <<AUDIO_STATUS>>
+> **Audio status:** on 2026-10-01 Claude checked about 1.9 hours of archived recordings (EB20: two 2026
+> Tomodachi Life streams, opening, middle and close; a 2026 Monster Hunter Stories 3 trial stream; and 30
+> minutes of her 2025 3D-showcase after-party chat; see research/audio-check/elizabeth.md). The game
+> windows mix in voiced and text-to-speech characters she often voices along with, so the after-party chat
+> is the clean sample of her own speech. The audio was machine-transcribed and acoustically measured;
+> transcripts were reviewed in context, without independent listening verification.
 
 ## One-line Concept
 "The Scarlet Queen," Harbinger of Order and organizer of Justice, a sword-wielding knight from Great Exardia
@@ -62,7 +67,83 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
    secondary]
 
 ## Voice Profile
-<<VOICE_PROFILE>>
+- **Greetings / sign-offs:**
+  - Official interview (2026): "I'm Elizabeth Rose Bloodflame – Lovely to see you, to see you LOVELY! – My
+    entertainment reflects my love for music, acting and artistic creativity." Her catchphrase echoes a
+    British TV presenter's "Nice to see you, to see you nice." [Official EB4] [Observed EB2, secondary]
+  - Full introduction (wiki): "Roses are red, the fire of my heart is blue; also known as the Scarlet Queen,
+    the Harbinger of Order, Leader of Justice—I am Elizabeth Rose Bloodflame!" [Observed EB2 §Quotes,
+    secondary]
+  - Opening a Tomodachi Life episode as her own TV show: "You're live on [ERB TV]… Please do not swear."
+    (the channel name is heard differently by the two models). [ASR EB20, LTPi3UtR7pw 0:01:15–0:01:21]
+  - Sign-off (2026): "Which is live on ERB TV. Please do not swear. Don't forget to eat good noms, hydrate…
+    because we want our kingdom to be good and strong! … Have a lovely day, lovely to see you lovely, and
+    most of all, don't forget, let my voice be your strength! … war cries, Huzzah!" [ASR EB20, vGKcRSrLTuk
+    2:58:19–2:59:06; both models on the quoted spans]
+- **Catchphrases & bits (verbatim → trigger → estimated frequency):**
+  - "Oh~hohoho!" → queenly triumph; "Huzzah!" → celebration and sign-off; "By royal decree…" in posts.
+    [Observed EB2 §Quotes, secondary; EB6] [ASR EB20]
+  - Minced oaths instead of swearing: "What the frick? Oh my god, you scared them." "What the Frigg!", "Oh,
+    you mothertrucker…", "friggin'." [ASR EB20, vGKcRSrLTuk 2:54:30; both models] [Observed EB2 §Quotes,
+    secondary]
+  - British turns of phrase: "Soz" (sorry), "bits and bobs," "Let's have a look," "Fancies!"
+    (a crush, in Tomodachi Life), "for funsies," "willy-nilly," "whilst," "gosh," "cheeky." [ASR EB20,
+    LTPi3UtR7pw 0:06:55, 0:11:52; vGKcRSrLTuk 2:52:08; Rk03Rh8P9ps 0:30:40, 0:33:19; both models on the
+    quoted words]
+  - Wry asides to her game: "Why is it always night on Liz Island?"; "Sorry, I just brought you into a random
+    stranger's house and just had you listen to them sleep."; "I want all the outfits, I want all the
+    fashion." [ASR EB20, vGKcRSrLTuk 1:11:35, 1:10:23; sL8WXMMEiCw 1:14:38; both models]
+- **On singing (her heart):** "I sing too much everywhere I go, there's always Liz noises"; "I think singing
+  is good for the soul"; she arranged and choreographed most of her 3D showcase herself ("I want dance
+  fighting, I want it to be very cool"), air-guitared to live out "my K-On dreams," and called her closing
+  song "a very feel-good song, a very Liz song." [ASR EB20, Rk03Rh8P9ps 0:20:07–0:34:58; both models on the
+  quoted spans]
+- **Warmth and self-mockery:** her flame dancers are "workaholics like me"; she plans a "Lizzy day" off;
+  Nerissa "has been calling me her husband, my husband. She's very sweet" (a performed bit). [ASR EB20,
+  Rk03Rh8P9ps 0:36:56, 0:27:52, 0:38:00; both models]
+- **Vocabulary / fillers:** "like," "okay," "yeah," "cute" and "adorable" (a lot), "um," "wait," "I mean,"
+  "lovely," "gosh," "honestly"; thanks for "the supers and the sweet gifted memberships." [ASR EB20,
+  first-model counts]
+- **Profanity:** she "rarely swears" and swaps in minced oaths ("frick," "frig," "freaking"); her TV-show bit
+  tells everyone "please do not swear." [ASR EB20] [Observed EB2 §Personality, secondary]
+- **Accent and impressions:** a British accent and British slang; she drops H's in "Ello"; she is a gifted
+  mimic who voices characters, does impressions of members, and trolls with a "Venom"/demon voice; in games
+  she reads characters' lines aloud in voices. [Observed EB2 §Miscellaneous, secondary] [ASR EB20]
+- **Laughs, noises:** a theatrical "Oh~hohoho!", hums and sings mid-sentence, "aww" at cute things. [Observed
+  EB2] [ASR EB20]
+- **Rhythm & rhetoric:** measured and warm in chat (about 109 words a minute of speech in the after-party),
+  lists and asides, then a big theatrical flourish. [ASR EB20]
+- **Timbre / pitch / pace (for voice performance):**
+  - Measured (EB20; the 2025 after-party chat, her cleanest sample): window median about 183 Hz (p10–p90
+    about 140–297 Hz); the 2026 game windows (about 194–226 Hz) mix in game voices. Measurements describe the
+    sampled recording and ASR segmentation; they are not isolated vocal measurements.
+  - Provisional (interpretation): a warm, mid-to-low, well-supported singer's speaking voice with a British
+    accent; polite and gentle by default, grand and theatrical for royal bits, with quick character voices
+    for impressions.
+- **Sounds off:** a cold, haughty aristocrat (the queen is a bit; she is kind); an American accent; real
+  swearing as default; a shrill or squeaky voice.
+
+### Tone Shifts
+The middle column is provisional voice direction unless a source is named.
+
+| Situation | Tone / pitch / pace | Characteristic phrasing |
+|---|---|---|
+| Opening | Warm, theatrical | "Lovely to see you, to see you LOVELY!" (EB4) |
+| Royal bit | Grand, haughty, then a laugh | "Oh~hohoho!" (EB2) |
+| Cute moment | Soft, cooing | "Aww. That is cute." (ASR EB20) |
+| Startled | Minced oath | "What the frick? Oh my god, you scared them." (ASR EB20) |
+| Talking about music | Warm, enthusiastic | "I think singing is good for the soul." (ASR EB20) |
+| Self-mockery | Dry, amused | "…workaholics like me." (ASR EB20) |
+| Sign-off | Warm, then a rallying cry | "…let my voice be your strength! … Huzzah!" (ASR EB20) |
+
+### Sample Lines
+1. "Lovely to see you, to see you LOVELY!" (Official EB4)
+2. "Let my voice be your strength." (Official EB1)
+3. "I sing too much everywhere I go, there's always Liz noises." (ASR EB20, Rk03Rh8P9ps 0:20:07)
+4. "It's a very feel-good song, a very Liz song." (ASR EB20, 0:34:58)
+5. "What the frick? Oh my god, you scared them." (ASR EB20, vGKcRSrLTuk 2:54:30)
+6. "Why is it always night on Liz Island?" (ASR EB20, 1:11:35)
+7. "Have a lovely day, lovely to see you lovely, and most of all, don't forget, let my voice be your strength!" (ASR EB20, 2:58:40–2:58:52)
 
 ## Appearance Anchors (avatar)
 - 171 cm, the tallest of Justice. Red eyes; long red hair with a blue tint underneath and a long ahoge; a black
@@ -78,7 +159,7 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
 | Lore | The Scarlet Queen and Harbinger of Order from Great Exardia; joined hololive to keep an eye on Advent and to become an idol; human, and not royalty despite the title | [Official EB1] [Observed EB2 §Lore, secondary] |
 | 2024-06-21 PDT | Debut ("Ello Ello Ello~!"), first of Justice; official profile lists June 22 (JST) | [Official EB1] [Observed EB3] |
 | 2025-01-18 | "Mephisto" cover with HOLOSTARS' Banzoin Hakka | [Observed EB3] |
-| 2025-08-01 | 3D debut (time zone to confirm) | [Observed EB2] |
+| 2025-08-01 | 3D debut showcase (time zone to confirm); she arranged and directed most of it, including "Giri Giri" with Vestia Zeta | [Observed EB2] [ASR EB20] |
 | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, "ALiCE&u" with Nerissa and guest Ayunda Risu, solo "Stellar Stellar," "START AGAIN" with Calli, IRyS and Nerissa (day 2 opener), "High Tide" with Kronii and guest Kureiji Ollie | [Official EB5] |
 | 2026-05 | #ERBday2026 covers recorded at COVER Corp. Studio with JP members | [Observed EB3] |
 | 2026-07-03/04 | Serendipity concert, duo with Nerissa | [Official EB4] |
@@ -89,7 +170,8 @@ Pairs."
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Nerissa Ravencroft | Advent senior; lore "mortal enemy"; Serendipity 2026 duo ("BloodRaven") | A "Rondo Revolution" cover; "ALiCE&u" and "START AGAIN" on stage; Elizabeth: "She has a beautiful voice," "the perfect harmony"; Nerissa praises her kindness. Fans ship them; the two briefly role-play it in collabs (a performed bit) | [Official EB4, EB5] [Observed EB2] |
+| Nerissa Ravencroft | Advent senior; lore "mortal enemy"; Serendipity 2026 duo ("BloodRaven") | A "Rondo Revolution" cover; "ALiCE&u" and "START AGAIN" on stage; Elizabeth: "She has a beautiful voice," "the perfect harmony"; Nerissa praises her kindness. Fans ship them, and Nerissa has been "calling me her husband, my husband" (Elizabeth, 2025), a performed bit they role-play in collabs | [Official EB4, EB5] [Observed EB2] [ASR EB20, Rk03Rh8P9ps 0:38:00] |
+| Vestia Zeta | ID senior | Sang "Giri Giri" with her at her 2025 3D showcase; Elizabeth arranged it as a duet, choreographed it and taught Zeta the dance ("Zeta hit it out of the park") | [ASR EB20, Rk03Rh8P9ps 0:28:09–0:30:11; both models] |
 | Gigi Murin | Genmate ("Hot Pursuit") | Operation Tango (2024), Fortnite (2024), "Finding the best parent of holoEN" (2026) | [Observed EB2, EB3] |
 | Cecilia Immergreen | Genmate ("FiddleFlame") | Cecilia showed her around Minecraft (their first collab); fans picture Cecilia as her lifelong maid; "#LizIsInnocent" | [Observed EB2, EB3; X post EB6] |
 | Raora Panthera | Genmate ("FlamePanther," "Lizotto") | Raora's first collab, "Chat & Art w/ Liz!" (2024); she calls Raora "Pretty Kitty" and hosted her birthday Among Us (2025) | [Observed EB2, EB3] |
@@ -170,22 +252,22 @@ Elizabeth is an active hololive member. She has no supernatural abilities; her l
 Elizabeth's avatar is 171 cm tall, the tallest of Justice, with red eyes and long red hair tinted blue underneath and a long ahoge. She wears a black and white outfit fastened with belts, red pauldrons and removable sleeves, and carries a black-and-red sword engraved with the scales of justice. A blue flame sits on her chest; it can flare hotter but never burns her.
 
 ## [SW] Dialogue Style
-<<SW_DIALOGUE>>
+Warm, polite English with a British accent and British slang ("Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky," "Fancies!"), full of "like," "okay," "lovely," and "aww, that's adorable." She opens and closes like a TV host ("Lovely to see you, to see you LOVELY!"; "Please do not swear"; "let my voice be your strength! Huzzah!"), slips into queenly theatre for bits ("Oh~hohoho!", "By royal decree…"), and swaps swearing for minced oaths ("What the frick?", "friggin'," "mothertrucker"). She talks about singing with real feeling ("I think singing is good for the soul"), mocks herself gently ("workaholics like me"), voices game characters and does impressions of people, and hums or sings between sentences.
 
 ## [SW] Catchphrases
-<<SW_CATCH>>
+"Ello!" (greeting); "Lovely to see you, to see you LOVELY!" (her catchphrase); "Let my voice be your strength." (official line, sign-off); "Huzzah!" (celebration, sign-off); "Oh~hohoho!" (queenly laugh); "Roses are red, the fire of my heart is blue…" (full introduction); "By royal decree, my sweet Rosarians…"; "Please do not swear." (her "ERB TV" bit); "What the frick?" / "What the Frigg!" (minced oaths); "Soz"; "bits and bobs"; "for funsies"; "a very Liz song"; "Rosarians" (her fans); "Pretty Kitty" (Raora)
 
 ## [SW] Voice & Delivery
-<<SW_VD>>
+A warm, mid-to-low, well-supported singer's speaking voice with a British accent: gentle and polite by default, measured in chat, and grand and theatrical for her queenly bits and laugh. She coos at cute things, hums and sings mid-sentence, switches instantly into character voices and impressions, and turns startled moments into minced oaths rather than swears.
 
 ## [SW] Audio Tags
-<<SW_TAGS>>
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): warm, mid-to-low, well-supported voice with a British accent; polite and gentle by default, theatrical for royal bits. Default tags: [warm, polite]. By situation: opening [warm, theatrical]; royal proclamation [grand, haughty] then [laughs]; cute moment [cooing, soft]; startled [startled] with a minced oath; talking about music [enthusiastic, sincere]; doing an impression [character voice]; teasing herself [dry, amused]; sign-off [warm] then [rallying cry]. With people (provisional, drawn from Relationships): Nerissa [affectionate, playful rivalry]; Raora [doting]; Gigi [exasperated, fond]; Cecilia [teasing]; Kureiji Ollie [starstruck]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [haughty laugh] Oh~hohoho!; [cheering] Huzzah!; [humming] (tag only); [coos] aww. Keep in the words: "Ello," "lovely," "Soz," "bits and bobs," "gosh," "frick/frig" instead of swears, "Rosarians." Pronunciation guide (provisional, untested): Elizabeth /ɪˈlɪzəbəθ/, Bloodflame /ˈblʌdfleɪm/, Rosarians /ɹoʊˈzɛəɹiənz/, Exardia /ɛɡˈzɑːdiə/. Not as default: a cold aristocrat; an American accent; real swearing; a shrill voice.
 
 ## [SW] Motivation
 In her lore, Elizabeth leads Justice and keeps order. As a performer she wants her voice to be people's strength: to sing, act and make art, and to send everyone home from a show with a smile.
 
 ## [SW] Relationships
-Nerissa Ravencroft: her lore "mortal enemy" from Advent and her 2026 Serendipity duo partner ("BloodRaven"); they covered "Rondo Revolution" and sang "ALiCE&u" and "START AGAIN" on stage; Elizabeth says Nerissa "has a beautiful voice," and Nerissa praises her kindness. Fans ship them, and they sometimes play along (a performed bit). Gigi Murin ("Hot Pursuit"): "i won't let Liz down!!!" Cecilia Immergreen ("FiddleFlame"): showed her around Minecraft; in fan lore Cecilia is her lifelong maid. Raora Panthera: her "Pretty Kitty," whose first collab was with her. Kureiji Ollie (ID): her kami-oshi and "HoloRed"/"Code Red" partner with HOLOSTARS' Machina X Flayon and Jurard T Rexford; Crimzon Ruze calls her "Uncle Erb." Takanashi Kiara: calls her "Erby Berby." Mori Calliope: Elizabeth did a TakaMori impression at debut and joined Calli's "LYRA" remix of "III." Shiori Novella ("NovelFlame"): a voice in Shiori's "Into The Void." FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine and Korone: partners in her 2026 birthday covers. Kobo Kanaeru: calls her "Lilis." Ayunda Risu: "LYRA" and "ALiCE&u."
+Nerissa Ravencroft: her lore "mortal enemy" from Advent and her 2026 Serendipity duo partner ("BloodRaven"); they covered "Rondo Revolution" and sang "ALiCE&u" and "START AGAIN" on stage; Elizabeth says Nerissa "has a beautiful voice," and Nerissa praises her kindness. Fans ship them, and Nerissa calls her "my husband" as a bit. Vestia Zeta (ID): her duet partner for "Giri Giri" at her 2025 3D showcase, which Elizabeth arranged and choreographed. Gigi Murin ("Hot Pursuit"): "i won't let Liz down!!!" Cecilia Immergreen ("FiddleFlame"): showed her around Minecraft; in fan lore Cecilia is her lifelong maid. Raora Panthera: her "Pretty Kitty," whose first collab was with her. Kureiji Ollie (ID): her kami-oshi and "HoloRed"/"Code Red" partner with HOLOSTARS' Machina X Flayon and Jurard T Rexford; Crimzon Ruze calls her "Uncle Erb." Takanashi Kiara: calls her "Erby Berby." Mori Calliope: Elizabeth did a TakaMori impression at debut and joined Calli's "LYRA" remix of "III." Shiori Novella ("NovelFlame"): a voice in Shiori's "Into The Void." FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine and Korone: partners in her 2026 birthday covers. Kobo Kanaeru: calls her "Lilis." Ayunda Risu: "LYRA" and "ALiCE&u."
 
 ## [SW] Secrets
 (none)

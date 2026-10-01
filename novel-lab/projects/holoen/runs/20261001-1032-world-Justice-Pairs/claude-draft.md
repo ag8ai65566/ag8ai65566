@@ -112,7 +112,7 @@ Relationship web.
   Kaela lives in her basement); Kureiji Ollie is Elizabeth's "kami-oshi" (HoloRed and "Code Red" collabs,
   guest at -All for One-), and Ollie did a chat-and-art collab with Raora (2024-09-06); Moona Hoshinova with Raora
   ("V3LVET"); Anya Melfissa visited Raora (2025-02-11); Vestia Zeta and Haachama in a Mario Party off-collab with
-  Raora (2024-10-08); Ayunda Risu with Elizabeth ("LYRA," "ALiCE&u"); Pavolia Reine and Airani Iofi with Gigi
+  Raora (2024-10-08); Ayunda Risu with Elizabeth ("LYRA," "ALiCE&u"); Vestia Zeta sang "Giri Giri" with Elizabeth at her 2025 3D showcase, which Elizabeth arranged and choreographed [ASR, Elizabeth file EB20]; Pavolia Reine and Airani Iofi with Gigi
   in the "Fanfic Club"; Kobo Kanaeru calls Elizabeth "Lilis." [Observed S1; S2] [Official S6]
 - **JP:** Elizabeth's 2026 birthday covers, recorded at COVER's studio, featured Oozora Subaru; Roboco, Tokino
   Sora and Yuzuki Choco; Houshou Marine and Inugami Korone; FUWAMOCO with Polka, Nene, Watame and Iroha; her
