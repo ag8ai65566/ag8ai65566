@@ -1,5 +1,22 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-01 10:35 UTC，Justice 進行中）：
+- **作者新指示**：Advent 之後做 Justice；GPT 全部 xhigh；GPT 額度用完時 Claude 繼續做；雙方額度用完都排程回來；
+  想辦法把 GPT 的長處用到最大（做法寫在 project.md）。
+- 排程：Claude 自動續做 `trig_01V2bEJdsw5EnZpMBaPKL4tQ`（每小時 :20）；GPT 重跑 send_later `trig_015aKJi4ANzUxSwwRBKEtvUX`
+  （15:01 UTC）。Justice 全部收錄、匯出、推送後刪除前者並用中文回報。
+- GPT 研究（runs `20261001-1021-research-Justice-Research-{World,ERB-Gigi,Cecilia-Raora}`，提示在各自的
+  to-gpt.free.md）：第一次三個並行，10:28 額度用完、沒有產出；待重跑清單在 `novel-lab/.gpt-quota.json`
+  （不進 git；若遺失就照上面三個 run 依序重跑 `lab.py gpt <run> free`）。重置 14:58 UTC。
+- Claude 已完成：四人 wiki（scratchpad wiki_*）、官方檔案（catch line、生日、身高、出道日、原創曲）、Serendipity
+  訪談 03／06／07、存檔標題（rtmeta.json 的 erb/gigi/cecilia/raora）、合作次數（pairs_jus.json）；
+  音檔 jobsL（每人 2026 開場 15 分、雜談 30 分、遊戲 30 分、結尾 10 分）轉寫中。
+- 隱私（不寫）：Raora 2025-11 起的手術休養、Cecilia 2026-07 起的休息與家庭事由、Elizabeth 2026-09 的半休、
+  性向、試鏡次數、母語／國籍說法（口音只當聲音特徵寫）。
+- 下一步：音檔第二模型核對 → 四張角色卡 + `Justice Pairs` 世界觀卡 + 改寫 `hololive -Justice-`（若無則新建）
+  + 所有人關係網補 Justice → GPT 研究結果併入 → GPT xhigh 審一輪 → 合併、收錄、匯出、表演表、推送。
+
+（以下為較早的狀態紀錄）
 狀態（2026-10-01，Advent 完成）：
 - **Advent 全員完成並收錄（作者 2026-10-01 下令）**：角色卡 Shiori Novella、Koseki Bijou、Fuwawa Abyssgard、
   Mococo Abyssgard（Nerissa 先前已完成）；新世界觀卡 `FUWAMOCO`（雙胞胎單位／共用頻道）、`Advent Pairs`

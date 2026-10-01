@@ -42,7 +42,11 @@ web_search: live
   共同記憶。早期與近期證據衝突時以近期為準，並在調查檔案註明是哪個時期、怎麼變。
   已畢業／轉為 affiliate 的成員，以最後一段活躍期為「近期」。
 - **Role 一律 Protagonist**（作者定案）。
-- GPT 推理強度（作者定案，省額度）：寫初稿 Extra High，審稿與驗收 High。
+- GPT 推理強度（作者定案 2026-10-01，取代先前的「審稿 High」）：**所有階段一律 Extra High（xhigh）**，提高審查力度與準確性。
+- 發揮 GPT 的長處（作者 2026-10-01 要求；Claude 的做法）：GPT 擅長即時網路搜尋、逐條核對來源、找出缺漏與矛盾。
+  所以每團開工時先給 GPT 一個**獨立查證研究**任務（`framework/prompts/gpt-research-sourced.md`：每條附開過的網址、
+  分官方／一手／二手、關係只寫具體合作、稽核既有卡片裡提到這團的句子），Claude 同時做存檔、wiki、雙模型音檔與卡片；
+  草稿完成後 GPT 仍只審**一輪**（xhigh、逐條核對）。研究任務要**依序跑、不要並行**（並行會一起被額度中斷）。
 - **完整優先**：卡片可以寫到建議長度上限附近，把有來源的口癖、語氣、互動盡量放進去；
   但最重要的資訊放在每欄最前面（Sudowrite 上下文不夠時會先丟角色卡）。
 
@@ -52,7 +56,9 @@ web_search: live
 - 世界觀不只人際關係，也包括：新成員加入、畢業、團體與個人演唱會、3D 直播、Expo／fes 等活動、
   官方企劃與重大公告。這些都是角色的「共同記憶」，**不要吝嗇，盡量完善**。
 - 成員在 X（Twitter）的公開發文是關鍵來源（只用公開帖文；短引文；不碰私人生活細節）。
-- GPT 額度用完時，Claude 自己盡量完善，不必等。
+- GPT 額度用完時，Claude 自己盡量完善，不必等。`lab.py` 會以 exit 75 結束並把重置時間與待重跑指令寫進
+  `novel-lab/.gpt-quota.json`；Claude 用 send_later 排在重置時間回來跑 `lab.py gpt-resume`（依序重跑）。
+  Claude 自己的額度用完時，靠每小時一次的自動續做排程回來（作者 2026-10-01：雙方額度用完都要排程，時間到就繼續）。
 - 目標是完成 EN 全體成員；**目前名單以外的成員要等作者下令才做**。
 
 ## 聲音（給 Sudowrite 加 ElevenLabs 標籤，作者 2026-10-01 定案）
@@ -73,6 +79,8 @@ web_search: live
 - 停止活動、保留 affiliate：Watson Amelia（2024-09-30 起）
 - 已完成（2026-10-01）：Myth 五人、Ouro Kronii、IRyS、Ceres Fauna、Nanashi Mumei、**Advent 全員**（Shiori Novella、
   Koseki Bijou、Nerissa Ravencroft、Fuwawa Abyssgard、Mococo Abyssgard）。其餘成員（Justice 等）等作者下令。
+- 作者下令（2026-10-01）：Advent 做完後接著做 **Justice**（Elizabeth Rose Bloodflame、Gigi Murin、Cecilia Immergreen、
+  Raora Panthera），同樣補完所有人的關係網與世界觀。成員宣布的休息、手術、家庭緊急事件等一律不寫。
 - 作者下令（2026-10-01）：做 **Advent 整團**（Shiori Novella、Koseki Bijou、FUWAMOCO 的 Fuwawa Abyssgard 與
   Mococo Abyssgard；Nerissa 已完成），並**補完所有人物的關係網和世界觀**。額度用完時務必設定時間自動繼續。
   FUWAMOCO 是雙胞胎、同一頻道：聲音不同，所以做兩張角色卡，另做一張 FUWAMOCO 世界觀卡。

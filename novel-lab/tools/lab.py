@@ -24,6 +24,7 @@ import hashlib
 import json
 import os
 import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -41,8 +42,11 @@ ALLOWED_MODEL = re.compile(r"^gpt-6(\.\d+)?-(astra|sol)$")
 ALLOWED_EFFORTS = ("high", "xhigh", "max", "ultra")
 DEFAULT_MODEL = os.environ.get("NOVEL_LAB_GPT_MODEL", "gpt-6-astra")
 FALLBACK_MODEL = "gpt-6.1-sol"
-# 作者定案（2026-09-30）：寫初稿用 xhigh；審稿、驗收、框架審查用 high（都在「high 以上」的範圍內，省額度）
-STAGE_EFFORT = {"draft": "xhigh", "free": "xhigh", "review": "high", "verify": "high", "framework": "high"}
+# 作者定案（2026-10-01，取代 2026-09-30 的「審稿 high」）：提高 GPT 審查力度與準確性，所有階段一律 xhigh
+STAGE_EFFORT = {"draft": "xhigh", "free": "xhigh", "review": "xhigh", "verify": "xhigh", "framework": "xhigh"}
+# GPT 額度用完時寫這個檔（不進 git）：重置時間＋待重跑的指令，讓 Claude 排程在重置後回來
+QUOTA_FILE = ROOT / ".gpt-quota.json"
+QUOTA_EXIT = 75  # EX_TEMPFAIL：額度用完，稍後重跑即可
 EFFORT_OVERRIDE = os.environ.get("NOVEL_LAB_GPT_EFFORT")  # 設了就全部階段都用它
 DEFAULT_EFFORT = EFFORT_OVERRIDE or STAGE_EFFORT["draft"]
 
@@ -273,6 +277,59 @@ def via_api(prompt, out, model, effort, live_search=False):
     return served
 
 
+def quota_reset_time(err):
+    """從 codex 的「try again at 4:13 PM.」或「try again at Oct 1st, 2026 2:22 AM.」算出重置時間（UTC）。"""
+    m = re.search(r"try again at (.+?)\.?\s*$", err.strip().splitlines()[-1] if err.strip() else "")
+    if not m:
+        m = re.search(r"try again at ([^\n]+?)\.(?:\s|$)", err)
+    if not m:
+        return None
+    raw = re.sub(r"(\d)(st|nd|rd|th),", r"\1,", m.group(1).strip())
+    now = dt.datetime.now().astimezone()
+    for fmt in ("%b %d, %Y %I:%M %p", "%I:%M %p"):
+        try:
+            t = dt.datetime.strptime(raw, fmt)
+        except ValueError:
+            continue
+        if fmt == "%I:%M %p":
+            t = now.replace(hour=t.hour, minute=t.minute, second=0, microsecond=0)
+            if t < now:
+                t += dt.timedelta(days=1)
+        else:
+            t = t.replace(tzinfo=now.tzinfo)
+        return t.astimezone(dt.timezone.utc)
+    return None
+
+
+def record_quota(err):
+    """額度用完：記下重置時間與這次的指令（累加，不重複），然後以 QUOTA_EXIT 結束。"""
+    reset = quota_reset_time(err)
+    data = json.loads(read(QUOTA_FILE)) if QUOTA_FILE.exists() else {"pending": []}
+    cmd = "python3 novel-lab/tools/lab.py " + " ".join(shlex.quote(a) for a in sys.argv[1:])
+    if cmd not in data["pending"]:
+        data["pending"].append(cmd)
+    data["reset_utc"] = reset.isoformat(timespec="minutes") if reset else None
+    data["noted_at"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="minutes")
+    write(QUOTA_FILE, json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+    print(f"⏸ GPT 額度用完；重置時間 {data['reset_utc'] or '未知（看下面的訊息）'}。"
+          f"待重跑的指令記在 {QUOTA_FILE.relative_to(ROOT.parent)}。\n"
+          f"GPT_QUOTA_RESET_UTC={data['reset_utc'] or ''}\n\n{err[-600:]}", file=sys.stderr)
+    sys.exit(QUOTA_EXIT)
+
+
+def clear_pending():
+    """這次指令成功了：從待重跑清單移除；清單空了就刪檔。"""
+    if not QUOTA_FILE.exists():
+        return
+    data = json.loads(read(QUOTA_FILE))
+    cmd = "python3 novel-lab/tools/lab.py " + " ".join(shlex.quote(a) for a in sys.argv[1:])
+    data["pending"] = [c for c in data["pending"] if c != cmd]
+    if data["pending"]:
+        write(QUOTA_FILE, json.dumps(data, ensure_ascii=False, indent=2) + "\n")
+    else:
+        QUOTA_FILE.unlink()
+
+
 def ask_gpt(prompt, out, model, effort, live_search=False, brief=None):
     """回傳實際用的 (via, model)。沒有任何連線方式時改成人工轉貼模式（exit 3）。"""
     check_model(model, effort)
@@ -285,10 +342,15 @@ def ask_gpt(prompt, out, model, effort, live_search=False, brief=None):
         try:
             if use_codex:
                 via_codex(prompt, out, m, effort, live_search)
+                clear_pending()
                 return "codex", m
             if os.environ.get("OPENAI_API_KEY"):
-                return "api", via_api(prompt, out, m, effort, live_search)
+                served = via_api(prompt, out, m, effort, live_search)
+                clear_pending()
+                return "api", served
         except RuntimeError as e:
+            if "usage limit" in str(e).lower() or "insufficient_quota" in str(e):  # 同一個帳號的額度，換模型也沒用
+                record_quota(str(e))
             errors.append(str(e))
             continue
         break
@@ -391,6 +453,26 @@ def cmd_gpt(args):
     for run, out, _ in items:
         log_gpt(run, stage, via, model, args.effort)
         print(f"✓ {out.relative_to(ROOT.parent)}（{via} · {model} · {args.effort}）")
+
+
+def cmd_gpt_resume(args):
+    """額度重置後：依清單順序一次跑一個待重跑的 GPT 指令（不並行，避免一起中斷），遇到額度用完就停。"""
+    if not QUOTA_FILE.exists():
+        print("沒有待重跑的 GPT 指令")
+        return
+    data = json.loads(read(QUOTA_FILE))
+    reset = data.get("reset_utc")
+    if reset and not args.now and dt.datetime.fromisoformat(reset) > dt.datetime.now(dt.timezone.utc):
+        print(f"⏸ 額度還沒重置（{reset}）；GPT_QUOTA_RESET_UTC={reset}", file=sys.stderr)
+        sys.exit(QUOTA_EXIT)
+    for cmd in list(data["pending"]):
+        print(f"▶ {cmd}", flush=True)
+        r = subprocess.run(shlex.split(cmd), cwd=ROOT.parent)
+        if r.returncode == QUOTA_EXIT:
+            sys.exit(QUOTA_EXIT)  # record_quota 已寫好新的重置時間
+        if r.returncode != 0:
+            print(f"✗ 失敗（exit {r.returncode}），保留在清單裡：{cmd}", file=sys.stderr)
+    print("✓ 待重跑清單處理完")
 
 
 def cmd_pack(args):
@@ -740,8 +822,12 @@ def main():
 
     s = sub.add_parser("gpt"); s.add_argument("items", nargs="+", metavar="<run> [<run> ...] <stage>")
     s.add_argument("--model", default=DEFAULT_MODEL)
-    s.add_argument("--effort", default=None, help="預設依階段：draft=xhigh，review/verify=high")
+    s.add_argument("--effort", default=None, help="預設全部 xhigh（作者 2026-10-01）")
     s.set_defaults(fn=cmd_gpt)
+
+    s = sub.add_parser("gpt-resume", help="額度重置後依序重跑 .gpt-quota.json 裡的指令")
+    s.add_argument("--now", action="store_true", help="不檢查重置時間")
+    s.set_defaults(fn=cmd_gpt_resume)
 
     s = sub.add_parser("pack"); s.add_argument("runs", nargs="+"); s.set_defaults(fn=cmd_pack)
 
@@ -759,7 +845,7 @@ def main():
     s.add_argument("--followup", help="上一輪審查的檔案；只確認必改是否處理")
     s.add_argument("--changes", help="這一輪改了什麼（簡述）")
     s.add_argument("--model", default=DEFAULT_MODEL)
-    s.add_argument("--effort", default=None, help="預設 high")
+    s.add_argument("--effort", default=None, help="預設 xhigh")
     s.set_defaults(fn=cmd_framework_review)
 
     args = p.parse_args()

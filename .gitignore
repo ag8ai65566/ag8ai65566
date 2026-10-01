@@ -18,3 +18,4 @@ scraper/dump/
 
 # python
 __pycache__/
+novel-lab/.gpt-quota.json
