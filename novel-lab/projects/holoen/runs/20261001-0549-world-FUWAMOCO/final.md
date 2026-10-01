@@ -79,7 +79,7 @@ secondary]
   Amelia (Escape Simulator, 2024-09-24); "WatchDog" with Ouro Kronii; "Fuwamoomco" with Nanashi Mumei
   (Overwatch, 2025-03-01); they helped Ceres Fauna on her last World Tree stream (2024-12-31); Kiara hosted
   them on HOLOTALK (2023). [Observed S1; S3; Mumei, Calli, Kiara archives]
-- **Justice:** Raora Panthera, their Serendipity 2026 trio partner, drew them a shikishi before her debut
+- **Justice:** Raora Panthera, their Serendipity 2026 unit partner in B.F.F, drew them a shikishi before her debut
   and gave it "with big tears in her eyes"; Gigi ("GigiMoco") and Cecilia ("Cecemoco," a Chrono Trigger
   off-collab in 2026). [Official S4] [Observed S1; S3]
 - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi);
@@ -100,7 +100,7 @@ secondary]
 | 2025-02-02 | First birthday 3D concert | — |
 | 2025-08-23/24 | -All for One-: "HOT DUCK!" with Bijou and Subaru; their version of "Howling"; "Lifetime Showtime"; "SHALLYS" with Ina and Cecilia | [Official S5] |
 | 2026-04-02 | "Mekurumeku Rendezvous," a TV anime ending theme | their first TV anime song |
-| 2026-07-03/04 | Serendipity concert, trio with Raora | [Official S4] |
+| 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Raora ("Inu Neko. Seishun Massakari") | [Official S4; Serendipity report] |
 | 2026-08-29 | First album "FUWAMOCO à la mode" announced | hand-signed copies |
 
 ## Sensory Palette
@@ -162,7 +162,7 @@ Faction
 FWMC, Fuwawa and Mococo, Abyssgard twins, FUWAMOCO MORNING, Pero
 
 ## [SW] Description
-FUWAMOCO are the twin demonic guard dogs of hololive -Advent-, Fuwawa (older, blue) and Mococo (younger, pink), who share one channel and usually one microphone; their mission is "to protect your smile." They open with "Hello hello bau bau!", each insists she is not the other (Fuwawa is "not a chihuahua"), and they punctuate everything with "bau bau," demon-dog for nearly anything. They often say the same thing at the same time ("FUWAMOCO sync") and are embarrassed by it. Fuwawa is the airheaded big sister who teases Mococo and plays an "evil twin" in their comedy; Mococo brings energetic reactions and earnest Pup Talks and keeps the show's segments moving, and the two sometimes argue. Pero, "The Great Perroccino," is their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Their show FUWAMOCO MORNING's regular format is Monday, Wednesday and Friday, with segments like "Pero Sighting," "Doggie of the Day" and a "Misunderstanding Corner." Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"; after the 2026 concert they spent their days off in Los Angeles with Nerissa, Elizabeth, Kobo and Zeta), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (their 2026 concert trio), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo). Together they talk fast and echo each other ("Right! … Exactly.").
+FUWAMOCO are the twin demonic guard dogs of hololive -Advent-, Fuwawa (older, blue) and Mococo (younger, pink), who share one channel and usually one microphone; their mission is "to protect your smile." They open with "Hello hello bau bau!", each insists she is not the other (Fuwawa is "not a chihuahua"), and they punctuate everything with "bau bau," demon-dog for nearly anything. They often say the same thing at the same time ("FUWAMOCO sync") and are embarrassed by it. Fuwawa is the airheaded big sister who teases Mococo and plays an "evil twin" in their comedy; Mococo brings energetic reactions and earnest Pup Talks and keeps the show's segments moving, and the two sometimes argue. Pero, "The Great Perroccino," is their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Their show FUWAMOCO MORNING's regular format is Monday, Wednesday and Friday, with segments like "Pero Sighting," "Doggie of the Day" and a "Misunderstanding Corner." Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"; after the 2026 concert they spent their days off in Los Angeles with Nerissa, Elizabeth, Kobo and Zeta), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo). Together they talk fast and echo each other ("Right! … Exactly.").
 
 ## [SW] Rules
 Two separate people: Fuwawa and Mococo are never one character, though both voices are very high and close. A line belongs to one twin unless they speak in sync. "Bau bau" can mean anything; its meaning comes from tone. Their demon-world origin is a performed persona, and Pero is a fictional mascot, not a real animal in the story. A collab one twin joins alone (such as Fuwawa's 2026 trio with Calli and Gigi) is not a FUWAMOCO appearance.
@@ -195,6 +195,8 @@ Pink and blue side by side; paw prints; two voices from one microphone saying th
   - privacy: the scope note uses the general statement; the "one PC" detail and the "mental health" gloss
     on the walk segment removed; "FUWAMOCALLI" as a name the twins "particularly like".
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, Justice cross-card sync (GPT xhigh review of the Justice cards, runs/20261001-1032-*):** the
+  FUWAMOCO–Raora Serendipity unit named B.F.F (official Serendipity report, day 2: "Inu Neko. Seishun Massakari").
 
 ## Open Questions
 (None.)

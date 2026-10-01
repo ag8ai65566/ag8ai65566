@@ -1,1 +1,2 @@
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 7c7171f368d9）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
+- 2026-10-01 16:13 作者裁決收錄 final.md（sha256 1dd1f93292c2）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.

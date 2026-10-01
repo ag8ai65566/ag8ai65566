@@ -8,8 +8,7 @@ the character card were re-transcribed by a second model (whisper medium.en) and
 this file). Transcription does not write laughs reliably. Measurements describe the sampled recording and
 ASR segmentation; game audio, music and other speakers prevent treating them as isolated vocal measurements.
 
-All windows are from 2026 (May–June, before a summer break that is not written per the author's rule). In
-one Zelda window she talks about her family; that stretch is personal and not used.
+All windows are from 2026 (May–June). Only in-scope public performance material is used.
 
 ## Windows measured
 
@@ -37,7 +36,7 @@ one Zelda window she talks about her family; that stretch is personal and not us
 
 Lines not listed in the second-model check at the end of this file are first-model transcriptions only.
 
-- Runs of repeated words when fixing her setup: "okay, okay, okay…", "perfect, perfect, perfect…". [0:11:13](https://youtu.be/UhXQ7dxDltk?t=673)
+- Runs of repeated words when fixing her setup: "okay, okay, okay…", "perfect, perfect, perfect…" (first model only; not quoted on the card). [0:11:13](https://youtu.be/UhXQ7dxDltk?t=673)
 - A pun on Kronii while drawing Orochimaru ("Orokroni Senpai"; spelling differs between models). [0:40:53](https://youtu.be/UhXQ7dxDltk?t=2453)
 - The day after the CCGG 3D live: "I'm so tired, but in like a happy relief type of way." [0:07:49](https://youtu.be/UhXQ7dxDltk?t=469)
 
@@ -53,7 +52,7 @@ the character card.
 | "Come then, die by my hands, you foolish mortals" | [2:31:19](https://youtu.be/PryFPuyr9Lg?t=9079) | "activate it? Yes. Come then, die by my hands, you foolish mortals! Ow. Okay, I" | Agrees |
 | "Well, it's over for me. It's over for me." | [2:31:59](https://youtu.be/PryFPuyr9Lg?t=9119) | "He's here. Ow. It's over for me. I'm dead. It's over for me. The world's" | Agrees ("It's over for me") |
 | "No, I will not die, I shall not perish" | [2:33:25](https://youtu.be/PryFPuyr9Lg?t=9205) | "to activate this No, I will not die I shall not perish I'm gonna use" | Agrees |
-| "Well, thank you very much for spending time with me today and listening to me be a little bit weird. A little bit weird. What else is new? Shut up." | [2:37:04](https://youtu.be/PryFPuyr9Lg?t=9424) | "very interesting question well thank you very much for spending time with me today and been listening to me be a little bit weird a little bit weird what else i…" | Agrees |
+| "Well, thank you very much for spending time with me today and listening to me be a little bit weird. A little bit weird. What else is new? Shut up." | [2:37:04](https://youtu.be/PryFPuyr9Lg?t=9424) | "very interesting question well thank you very much for spending time with me today and been listening to me be a little bit weird a little bit weird what else i…" | **Shared spans only** ("thank you very much for spending time with me today and"; "listening to me be a little bit weird. A little bit weird."); the excerpt cuts off, so "What else is new? Shut up." is not quoted (corrected 2026-10-01 after GPT's review) |
 | "Hello, everyone. It's me, Cecilia Immergreen" | [0:04:48](https://youtu.be/UhXQ7dxDltk?t=288) | "and streamed yet again. Hello everyone, it's me Cecilia and we have" | **Shared span only** ("Hello, everyone, it's me"); her name is misheard by both |
 | "we did it yippee type shit" | [0:07:58](https://youtu.be/UhXQ7dxDltk?t=478) | "like ah, yeah did it we did it yippee type shit Yeah," | Agrees |
 | "maybe skipper skipper the stream just as much as I skipper skipper the filler" | [0:08:26](https://youtu.be/UhXQ7dxDltk?t=506) | "maybe skip this stream maybe skipper skipper this stream just as much as I skipper skipper the filter may fill" | Agrees ("skipper skipper") |

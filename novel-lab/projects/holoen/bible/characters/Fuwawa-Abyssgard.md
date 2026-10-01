@@ -150,7 +150,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2025-02-02 | First birthday 3D concert, with Advent and JP guests | [Observed FW3 ouQF2A1l_cI] |
 | 2025-08-23/24 | -All for One-: "HOT DUCK!", "Howling," "Lifetime Showtime," "SHALLYS" | [Official FW5] |
 | 2026-04 | "Mekurumeku Rendezvous," a TV anime ending theme | [Observed FW3 vSwxof0K8lk] |
-| 2026-07-03/04 | Serendipity concert, trio with Raora Panthera | [Official FW4] |
+| 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Mococo and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) | [Official FW4; Serendipity report] |
 | 2026-08-29 | First album "FUWAMOCO à la mode" announced | [Observed FW2 §2026; X via wiki] |
 
 ## Relationship Map
@@ -245,7 +245,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Fuwawa's job as a guard dog is to protect your smile and to look after Mococo and Pero. As an idol she and Mococo chase a list of more than a hundred dreams: a solo concert, singing with her oshi Houshou Marine, anime songs, figures, and making every Ruffian smile.
 
 ## [SW] Relationships
-Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; Mococo says Fuwawa is dependable and calms her down; they finish each other's sentences ("FUWAMOCO sync") and sometimes argue; Fuwawa loved being called "Fuwa-nee" once. Pero, "The Great Perroccino": their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Advent: Shiori (Pen Pups; they mistook a cow for her), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Fuwawa calls her "Newissa," and Nerissa claims to be the third sister, "Mofufu"). Mori Calliope: "FUWAMOCALLI," a collaboration name the twins say they particularly like. Watson Amelia: "Detective Dogs." Ouro Kronii: "WatchDog." Nanashi Mumei (graduated 2025): "Fuwamoomco" (Overwatch). Raora Panthera: their 2026 Serendipity trio partner, who drew them a shikishi before her debut. Gigi Murin and Mori Calliope: "2 Creatures + 1 Reaper," defusing bombs (2026). Houshou Marine: her oshi (a Touhou off-collab). Shirakami Fubuki and Hakui Koyori ("FUWAMOKOYO"): horror and Lethal Company partners.
+Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; Mococo says Fuwawa is dependable and calms her down; they finish each other's sentences ("FUWAMOCO sync") and sometimes argue; Fuwawa loved being called "Fuwa-nee" once. Pero, "The Great Perroccino": their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Advent: Shiori (Pen Pups; they mistook a cow for her), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Fuwawa calls her "Newissa," and Nerissa claims to be the third sister, "Mofufu"). Mori Calliope: "FUWAMOCALLI," a collaboration name the twins say they particularly like. Watson Amelia: "Detective Dogs." Ouro Kronii: "WatchDog." Nanashi Mumei (graduated 2025): "Fuwamoomco" (Overwatch). Raora Panthera: their 2026 Serendipity unit partner in B.F.F, who drew them a shikishi before her debut. Gigi Murin and Mori Calliope: "2 Creatures + 1 Reaper," defusing bombs (2026). Houshou Marine: her oshi (a Touhou off-collab). Shirakami Fubuki and Hakui Koyori ("FUWAMOKOYO"): horror and Lethal Company partners. Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity. Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA."
 
 ## [SW] Secrets
 (none)
@@ -269,6 +269,13 @@ Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; 
 - **Missing facts adopted:** her official line "How about we get you all nice and fluffy~?" (FW1).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **Follow-up (2026-10-01):** 3D debut labeled PDT; the last "pet Pero" in Background changed to mascot.
+- **2026-10-01, cast expansion (author: Justice, and complete everyone's relationship web):** Relationships gained
+  Justice lines from the archive metadata, the official -All for One- report and Serendipity interviews, and the
+  wiki (sources in the world card "Justice Pairs" and the Justice character files).
+- **2026-10-01, Justice cross-card sync (GPT xhigh review of the Justice cards, runs/20261001-1032-*):** the
+  FUWAMOCO–Raora Serendipity unit named B.F.F (official Serendipity report, day 2: "Inu Neko. Seishun Massakari").
+- **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
+  gpt-free.md, xhigh) and the Justice character reviews:** "hijacked" clarified as a guest-host impersonation bit; Gigi's two songs with the twins added.
 
 ## Open Questions
 1. (Resolved 2026-10-01, from the GPT review: the solo measurements stay in the dossier with the recording

@@ -5,8 +5,9 @@
 > Derivative Works Guidelines). Raora is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, Italian accent, soft, warm, cheerful mid-high voice; friendly and gently
-rambling; bubbly and quick when excited; a playful little roar; mock-stern for her rules, then a giggle."
+"Perfect audio quality. Young woman, Italian accent, warm, cheerful mid-high voice; friendly and gently
+rambling; brighter and quicker when excited; a playful little roar; mock-stern for her rules; playful
+complaints when a game goes wrong."
 - Register basis: qualitative; see `research/audio-check/raora.md`. Keep the accent natural, never a
   cartoon "Italian."
 
@@ -15,7 +16,8 @@ rambling; bubbly and quick when excited; a playful little roar; mock-stern for h
 - Pace comes from the designed voice plus `[rambling, warm]` or `[bubbly, quick]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script
-- Italian words: "Ciao ciao!", "mamma mia," "grazie"; "guys" more than "chat"; "you know," "honestly," "yeah."
+- "Ciao ciao!" (her titles and posts add "mamma mia," "grazie"); "guys" more than "chat"; "you know,"
+  "honestly," "yeah." Keep her fillers and self-corrections; never invent grammar mistakes.
 - Motto: "big cat means big trouble" (official: "…capish?").
 - Mock-stern rules for her Chattini: "Hear me out." "First, you guys have no rights." "No, thank you. I
   refuse."
@@ -28,13 +30,13 @@ rambling; bubbly and quick when excited; a playful little roar; mock-stern for h
 | Greeting | `[bright]` → `[playful roar]` | "Ciao ciao! … RAAAOO!!!" (official interview) |
 | Chatting | `[rambling, warm]` | "I'm sure you guys like my cooking shorts because they are made with so much love." |
 | Covering a slip | `[mock-innocent, quick]` | "That was totally intentional, everyone." |
-| Laying down a rule | `[mock-stern]` → `[giggles]` | "First, you guys have no rights." |
+| Laying down a rule | `[mock-stern]` | "First, you guys have no rights." |
+| A game going wrong | `[flustered, complaining]` | "I'll be honest. I'm a hater now." |
 | Something cute | `[squealing, soft]` | "This makes me so emotional. She's so cute." |
 | Pasta | `[firm, theatrical]` | "No break-a da pasta!" (wiki, secondary) |
 | Sign-off | `[warm, playful]` | "…and remember, big cat means big trouble." |
 
-With people (provisional): FUWAMOCO `[starstruck, sweet]`; Gigi `[playful]`; Cecilia `[warm]`; Kaela
-`[teasing]`; Kiara `[excited]`.
+With people (provisional): FUWAMOCO `[starstruck, sweet]`; Gigi `[playful]`; Cecilia `[warm]`.
 
 ## 5. Signature sounds
 - `[playful roar] RAAAOO!` (spoken).
@@ -44,13 +46,14 @@ With people (provisional): FUWAMOCO `[starstruck, sweet]`; Gigi `[playful]`; Cec
 - Raora `/ɹaˈɔːɹa/` · Panthera `/pænˈθɛɹə/` · Chattini `/tʃəˈtiːni/` (unverified) · ciao `/tʃaʊ/`
 
 ## 7. Don't
-- An "Italian" caricature; sarcasm; heavy swearing; a menacing growl.
+- An "Italian" caricature or invented grammar errors; sarcasm as the default (it is occasional and playful);
+  heavy swearing; a menacing growl; a giggle after every line.
 
 ## 8. Example
 ```
 [bright] Ciao ciao, Chattini! [playful roar] RAAAOO!
 [mock-innocent, quick] Whoopsie. That was totally intentional, that was totally intentional, everyone.
-[mock-stern] Okay, okay, okay, okay. Hear me out. [giggles] No, thank you. I refuse.
+[mock-stern] Okay, okay, okay, okay. Hear me out. … No, thank you. I refuse.
 [squealing, soft] This makes me so emotional. She's so cute.
 [warm, playful] And remember, big cat means big trouble.
 ```

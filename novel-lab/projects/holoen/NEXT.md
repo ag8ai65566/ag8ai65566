@@ -1,5 +1,28 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-01 16:30 UTC，Justice 完成並收錄；下一階段：GPT 專案諮詢與重任務）：
+- **Justice 完成**：四張角色卡（Elizabeth Rose Bloodflame、Gigi Murin、Cecilia Immergreen、Raora Panthera）、世界觀卡
+  `hololive -Justice-`、`Justice Pairs`；GPT 三輪 xhigh 逐條核對審查（`runs/20261001-1032-character-Elizabeth-Rose-Bloodflame/gpt-free.md`
+  ＝Liz＋Gigi，`…-Cecilia-Immergreen/gpt-free.md`＝Cecilia＋Raora，`…-world-hololive--Justice/gpt-free.md`＝世界觀卡＋其他卡的 Justice diff）
+  已逐條併進各卡 Merge Record，作者裁決收錄（`--force`）。合併腳本在 scratchpad `fill/merge_{erb,gigi,cec,rao,wjus,wpairs}.py`、
+  `fill/cast_jus2.py`、`cast_jus3.py`、`cross_bff.py`、`cross_lyra.py`（scratchpad 不進 git、容器回收就消失；以各 run 的 final.md 與 bible 為準）。
+  - 主要更正：3D showcase 是 08-01/02/08/09 PDT（不是 08-09/10），08-16 PDT 團體 3D 聯動；Serendipity 官方 unit 名（Autofister、Bloodraven、
+    B.F.F 等七組）與客串曲；LYRA 是五人 "III" remix 翻唱；Cecilia 出道的聊天室遊戲是 nullrefrepro 實作；Raora／Cecilia 出道美術分工
+    有方向性；"Uncle Erb" 改成 Liz 自己標題的「Nephew」叔姪梗；Cecemoco＝Cecilia＋Mococo；只引用兩模型一致的片段（Gigi 的 but/and、
+    Cecilia 的 sign-off、Raora 的 "Hear me out" 都切成共同片段）；Gigi／Cecilia／Raora 的預設語氣改得不單一（不是一直大叫／一直挖苦／一直笑）。
+  - 連動修改並重新收錄 21 張既有卡（Calli 的 Relationships 壓到 349／350 字）。
+  - 表演表：`export/elevenlabs/{Elizabeth-Rose-Bloodflame,Gigi-Murin,Cecilia-Immergreen,Raora-Panthera}.md` 已依合併後的卡更新。
+  - 匯出：`export/characters.csv`（18 張）、`export/worldbuilding.csv`（24 張）。
+- **作者新指示（2026-10-01 16:00）**：作者重置了 GPT 額度，另有一張重置券（10/4 到期），10/4 前盡量用滿但要合理有效率；讓 GPT 了解專案全貌、
+  設計流程、和 Claude 討論怎麼交付給作者最好。做法寫在 project.md。
+- **GPT 待跑**：`runs/20261001-1557-check-Project-Consult`（第 1 輪：A 交付形式、B 到 10/4 的流程、C 跨卡／結構問題、D 問題）。16:05 額度用完，
+  重置 20:27 UTC；send_later `trig_01KjXFjeULyTFPxWgxZhmZSL`（20:29）回來跑 `lab.py gpt-resume`。
+- **下一步**：讀 GPT 第 1 輪提案 → Claude 寫第 2 輪回覆（同一 run 的新 to-gpt.free.md 或新 run）→ GPT 定案 → 依序跑議定的重任務
+  （全卷交叉一致性審計、舊卡近期補完、世界年表完整性）→ 合併、收錄、匯出、推送、中文回報。Hakos Baelz、Tsukumo Sana 等作者下令。
+- 排程：Claude 自動續做 `trig_01V2bEJdsw5EnZpMBaPKL4tQ`（每小時 :20，提示已改成這一階段）。
+
+（以下為較早的狀態紀錄）
+
 狀態（2026-10-01 14:00 UTC，Justice：草稿完成，等 GPT 審查）：
 - **作者新指示**：Advent 之後做 Justice；GPT 全部 xhigh；GPT 額度用完時 Claude 繼續做；雙方額度用完都排程回來；
   想辦法把 GPT 的長處用到最大（做法寫在 project.md）。

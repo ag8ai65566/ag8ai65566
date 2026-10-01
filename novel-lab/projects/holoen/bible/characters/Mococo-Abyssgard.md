@@ -141,7 +141,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2024-08-10 PDT | 3D debut | [Observed MC2 §2024] |
 | 2025-01-29 | 500th on-stream sneeze, celebrated on X | [Observed MC6] |
 | 2025-08-23/24 | -All for One- with Fuwawa | [Official MC5] |
-| 2026-07-03/04 | Serendipity concert, trio with Raora Panthera | [Official MC4] |
+| 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Fuwawa and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) | [Official MC4; Serendipity report] |
 
 ## Relationship Map
 Public exchanges only. Shared FUWAMOCO relationships are on the world card "FUWAMOCO"; these are the ones
@@ -154,7 +154,7 @@ that belong to Mococo or define her.
 | Gigi Murin | Justice kouhai ("GigiMoco," "bauBau") | Collabs from 2024; Gigi and Cecilia hosted FUWAMOCO MORNING #167 in the twins' place as a prank (2025) | [Observed MC2, secondary; MC3] |
 | Cecilia Immergreen | Justice kouhai ("Cecemoco") | The twins had hoped for a robot-girl member before Cecilia's debut; a Chrono Trigger off-collab (2026-04-25) | [Observed MC2; MC3 GmcYjV6aTuA] |
 | Ouro Kronii | Senior ("WatchDog," with Fuwawa) | Among Us, Team Fortress 2, 7 Days to Die (2023–24) | [Observed MC2; MC3] |
-| Raora Panthera | Justice kouhai; Serendipity 2026 trio | Raora drew the twins a shikishi portrait before her debut and gave it "with big tears in her eyes" | [Official MC4] |
+| Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Raora drew the twins a shikishi portrait before her debut and gave it "with big tears in her eyes" | [Official MC4] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their
@@ -238,7 +238,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Mococo is a guard dog whose job is to protect your smile (and to make a little chaos). As an idol she and Fuwawa chase their list of more than a hundred dreams, and she wants every Ruffian to keep going one step a day.
 
 ## [SW] Relationships
-Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: the twins' fictional dog mascot; in the prison-break lore, Mococo throws Pero at the guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who once hijacked FUWAMOCO MORNING as a prank. Raora Panthera: their 2026 Serendipity trio partner. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO").
+Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: the twins' fictional dog mascot; in the prison-break lore, Mococo throws Pero at the guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Cecilia is also Mococo's Chrono Trigger partner, including 2026 off-collabs; Gigi sang "Bright Tonight" and "MAKE IT, BREAK IT" with the twins. Raora Panthera: their 2026 Serendipity unit partner in B.F.F. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO"). Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA."
 
 ## [SW] Secrets
 (none)
@@ -263,6 +263,14 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
 - **Kept (GPT SHOULD):** the restricted nickname list; sneezing as an observed stream feature, with no
   medical explanation.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, cast expansion (author: Justice, and complete everyone's relationship web):** Relationships gained
+  Justice lines from the archive metadata, the official -All for One- report and Serendipity interviews, and the
+  wiki (sources in the world card "Justice Pairs" and the Justice character files).
+- **2026-10-01, Justice cross-card sync (GPT xhigh review of the Justice cards, runs/20261001-1032-*):** the
+  FUWAMOCO–Raora Serendipity unit named B.F.F (official Serendipity report, day 2: "Inu Neko. Seishun Massakari").
+- **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
+  gpt-free.md, xhigh) and the Justice character reviews:** Cecilia's two entries merged; Chrono Trigger kept Mococo-only; Gigi's songs with the twins
+  added.
 
 ## Open Questions
 1. There is no clean solo sample of Mococo's ordinary speech in the archive window used (her 2025 solo is

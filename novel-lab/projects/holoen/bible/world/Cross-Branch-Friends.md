@@ -26,8 +26,8 @@ Relationship web.
   ("DRAWING MY SENPAI," 2021), Suisei featured at Calli's first solo concert ("Wicked," 2022), they talked
   live shows together (2023), and Calli hosts watch parties of Suisei's concerts ("We're Screaming Loud
   for Senpai!", 2024-11). Kobo Kanaeru calls her "Uncle Dad" ("Father Daughter GOLF," 2022; an in-person
-  cooking-and-gaming collab, 2023). Units: "Holodeath" (with Kureiji Ollie); "LYRA," a dated collaboration with Koganei Niko,
-  Ayunda Risu, Amane Kanata and Elizabeth for a remix cover of "III" (Kanata has since graduated); "MoRikka"
+  cooking-and-gaming collab, 2023). Units: "Holodeath" (with Kureiji Ollie); "LYRA," a five-singer cover of "III" with Koganei Niko,
+  Ayunda Risu, Amane Kanata and Elizabeth (Kanata has since graduated); "MoRikka"
   with HOLOSTARS' Rikka (their song "spiral tones," 2021; fans "DeadTuners") [Official music entry S5]. Outside hololive: friends
   with Milky Queen, whom she credits for introducing her to VTubers, and Ironmouse (a shared Underworld
   theme). [Observed S1 titles; S2 Calli §Relationships; Calli file]
@@ -100,7 +100,7 @@ Relationship web.
 5. Kiara and Reine plan another "vacation" in VR.
 
 ## Links to Characters
-All fourteen.
+All eighteen.
 
 ## Secrets
 (None.)
@@ -133,7 +133,7 @@ Relationship
 Death Star, MoRikka, LYRA, Holodeath, PavoNashi, HOLOTORI, UMISEA, HoloJEI, TakoNeko, K.I.R.A, OKFAIR, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET
 
 ## [SW] Description
-The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones" ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu. Gura had "Apex Predators" with Shishiro Botan and a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan." Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (she hosted a Q&A with Lui titled "Q&A With Bird Sisters") and recorded a duet cover with Inugami Korone in her last week. Of Advent: Bijou and Kaela Kovalskia are "Grindstone" (Kaela calls her "Beejoe"; Raft, Minecraft, Split Fiction), with Kureiji Ollie ("GraveStone"), Akai Haato ("Red Stone") and Ichijou Ririka (ReGLOSS; Smash Bros.) as game partners; Shiori and Vestia Zeta are the official duo "GreyScaleX" (the X is silent; "Purrfect Pair" merchandise, 2026), Pavolia Reine and Airani Iofi join her "Fanfic Club," and she found hololive through Inugami Korone's clips; FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou.
+The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones" ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix cover as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu. Gura had "Apex Predators" with Shishiro Botan and a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan." Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (she hosted a Q&A with Lui titled "Q&A With Bird Sisters") and recorded a duet cover with Inugami Korone in her last week. Of Advent: Bijou and Kaela Kovalskia are "Grindstone" (Kaela calls her "Beejoe"; Raft, Minecraft, Split Fiction), with Kureiji Ollie ("GraveStone"), Akai Haato ("Red Stone") and Ichijou Ririka (ReGLOSS; Smash Bros.) as game partners; Shiori and Vestia Zeta are the official duo "GreyScaleX" (the X is silent; "Purrfect Pair" merchandise, 2026), Pavolia Reine and Airani Iofi join her "Fanfic Club," and she found hololive through Inugami Korone's clips; FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou. Of Justice: Kureiji Ollie is Elizabeth's kami-oshi, and Elizabeth plays with her and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit); Elizabeth's 2026 birthday covers featured Subaru, Roboco, Sora, Choco, Marine, Korone, Polka, Nene, Watame and Iroha; Kaela Kovalskia appears in Raora's fictional basement bit ("SMITTEN"); Raora played Clubhouse Games with Haachama and Super Mario Party with Haachama and Zeta, and is "RaoRiRi" with Ririka; Cecilia plays games with Tokino Sora; at Serendipity, Kobo Kanaeru, Vestia Zeta and Tsunomaki Watame sang with Elizabeth, Gigi, Cecilia and Raora.
 
 ## [SW] Rules
 Senpai and kouhai describe relative seniority, not language or nationality; forms of address and levels of formality vary by relationship. Unit lineups belong to their period: graduates and affiliates are not current regular partners. Members of other agencies are only brief, friendly mentions.
@@ -167,6 +167,17 @@ A bilingual stream title with both names; a senpai's plush on a shelf; a starstr
 - **2026-10-01, cast expansion (author: Advent, and complete the world):** Advent members and events added
   (official -All for One- report, Serendipity interviews, archive metadata; see "Advent Pairs" and "FUWAMOCO").
 - **2026-10-01, from GPT one-round review of the Advent cast edits (runs/20261001-0549-world-Advent-Pairs/gpt-free.md, high):** the archive-derived ranking ("most frequent documented partner") replaced by concrete activities; GreyScaleX identified as an official duo (official shop, 2026-09-05); Ririka (ReGLOSS) and the Fanfic Club carried into the exported Description.
+- **2026-10-01, cast expansion (author: Justice, and complete the world):** Justice members and events added
+  (official -All for One- report, Serendipity interviews 03/06/07, official profiles, archive metadata; see
+  "hololive -Justice-" and "Justice Pairs").
+- **2026-10-01, Justice cross-card sync (GPT xhigh review of the Justice cards, runs/20261001-1032-*):** LYRA is a
+  five-singer cover of "III" (Amane Kanata, Koganei Niko, Mori Calliope, Ayunda Risu, Elizabeth), per the mix
+  engineer's credits (https://www.foriio.com/works/2122478), not Calli's remix.
+- **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
+  gpt-free.md, xhigh), with facts checked by Claude against the official Serendipity report and 3D schedule:** fixed "HoloRed" roster replaced by varying lineups; "Uncle Erb" as Ruze's word dropped (Elizabeth's own
+  title calls Ruze her "Nephew"); "OkaGigi" dropped from the card (no shared activity sourced); the Haachama/Zeta
+  off-collab kept (Claude read its archive title, HLnalLS97i4) and the Marine/Korone cover kept (credits read by
+  Claude, iwnHChZq0N8); Serendipity guest ties added.
 
 ## Open Questions
 (None.)

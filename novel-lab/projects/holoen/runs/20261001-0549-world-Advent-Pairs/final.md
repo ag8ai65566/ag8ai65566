@@ -94,8 +94,8 @@ Relationship web.
   Shiori's "Into The Void" (2026). [Observed S2; S1]
 - **Cecilia Immergreen:** GAGA; "Cecemoco"; a Walking Dead off-collab with Bijou (2025) and a Chrono Trigger
   off-collab with FUWAMOCO (2026). [Observed S1]
-- **Raora Panthera:** "Graondstone" with Bijou and Kaela; FUWAMOCO's 2026 Serendipity trio partner, who
-  drew them a shikishi before her debut. [Official S6] [Observed S1]
+- **Raora Panthera:** "Graondstone" with Bijou and Kaela; FUWAMOCO's 2026 Serendipity unit partner (B.F.F),
+  who drew them a shikishi before her debut. [Official S6] [Observed S1]
 - **Elizabeth Rose Bloodflame:** Nerissa's "mortal enemy" in their lore (a performed rivalry) and 2026 duo
   partner; "NovelFlame" and
   "BloodQuill" with Shiori; in the "Into The Void" cast. [Observed S1; Advent card]
@@ -232,6 +232,8 @@ A moai head opening to reveal Bijou; pink and blue paws; a two-tone head of hair
   Ina, IRyS and Bijou (S8); Kiara's encouragement through hard choreography (S4, interview04); Advent's 3D
   collaboration stream, 2024-08-17 PDT (S9).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, Justice cross-card sync (GPT xhigh review of the Justice cards, runs/20261001-1032-*):** the
+  FUWAMOCO–Raora Serendipity unit named B.F.F (official Serendipity report, day 2: "Inu Neko. Seishun Massakari").
 
 ## Open Questions
 (None.)

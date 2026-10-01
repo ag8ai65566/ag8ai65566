@@ -8,8 +8,7 @@ the character card were re-transcribed by a second model (whisper medium.en) and
 this file). Transcription does not write laughs reliably. Measurements describe the sampled recording and
 ASR segmentation; game audio, music and other speakers prevent treating them as isolated vocal measurements.
 
-All windows are from 2026. Much of the April chatting stream concerns health, family, money and personal
-history; those stretches are private and are not used or summarized here. The Pragmata window mixes in game
+All windows are from 2026. Only in-scope public performance material is used. The Pragmata window mixes in game
 voices (a child character), which lifts its pitch figures.
 
 ## Windows measured

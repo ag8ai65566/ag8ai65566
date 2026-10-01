@@ -19,7 +19,7 @@ quick to switch into playful character voices."
 
 ## 3. Write these habits into the script
 - British words: "Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky,"
-  "lovely."
+  "lovely"; plenty of "like" and "okay."
 - Minced oaths, not swears: "What the frick?", "What the Frigg!", "friggin'," "mothertrucker."
 - TV-host framing: "Lovely to see you, to see you LOVELY!"; "Please do not swear."; "let my voice be your
   strength! … Huzzah!"
@@ -30,15 +30,17 @@ quick to switch into playful character voices."
 | Situation | Tags | Line |
 |---|---|---|
 | Opening | `[warm, theatrical]` | "Lovely to see you, to see you LOVELY!" (official interview) |
+| Impression | `[character voice]` | (style demo) a game character or a senior's line |
 | Royal proclamation | `[grand, haughty]` → `[laughs]` | "By royal decree, my sweet Rosarians…" (her post) |
-| Cute moment | `[cooing, soft]` | (style demo) "Aww, that is adorable." |
+| Cute moment | `[soft, cooing]` | (style demo) "Aww, that's adorable." |
 | Startled | `[startled]` | "What the frick? Oh my god, you scared them." |
-| About singing | `[enthusiastic, sincere]` | "I think singing is good for the soul." |
+| About singing | `[enthusiastic, sincere]` | "…singing is good for the soul." |
 | Teasing herself | `[dry, amused]` | (style demo) "Workaholic? Me? Never." |
 | Sign-off | `[warm]` → `[rallying cry]` | "…let my voice be your strength! … Huzzah!" |
 
-With people (provisional): Nerissa `[affectionate, playful rivalry]`; Raora `[doting]`; Gigi
-`[exasperated, fond]`; Cecilia `[teasing]`; Kureiji Ollie `[starstruck]`.
+Default: `[warm, conversational]`; save the royal flourish for bits.
+
+With people (provisional): Nerissa `[affectionate, playful rivalry]`; Kureiji Ollie `[admiring]`.
 
 ## 5. Signature sounds
 - `[haughty laugh] Oh~hohoho!` and `[cheering] Huzzah!` (spoken).
@@ -56,7 +58,7 @@ With people (provisional): Nerissa `[affectionate, playful rivalry]`; Raora `[do
 [warm, theatrical] Ello, Rosarians! Lovely to see you, to see you lovely!
 [enthusiastic, sincere] I sing too much everywhere I go, there's always Liz noises.
 [startled] What the frick? Oh my god, you scared them.
-[dry, amused] Why is it always night on Liz Island?
+[dry, amused] Sorry, I just brought you into a random stranger's house and just had you listen to them sleep.
 [warm] Have a lovely day, lovely to see you lovely, and most of all, don't forget, let my voice be your strength! [cheering] Huzzah!
 ```
 (Lines 2–5 are hers, quoted only where both transcripts agree; "Ello, Rosarians!" in line 1 is a style demo

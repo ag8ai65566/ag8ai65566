@@ -54,20 +54,21 @@ Historical events.
 | 2025-05-02 | ENReco chapter 2 "The Chains of Fate" | — |
 | 2025-07-05 | hololive night at Dodger Stadium, Los Angeles, the second hololive–Dodgers collaboration: Ina, IRyS and Bijou | a stadium sing-along |
 | 2025-07-16 | hololive RECORDS label launched | — |
-| 2025-08-01/02/09/10 | Justice 3D debuts: Elizabeth, Gigi, Cecilia ("Wind-Up"), Raora ("Gacha×Gacha ADVENTURE!") | Justice's first group stage follows at -All for One- |
-| 2025-11-16 | Raora's friendly-fire "Doom" spell in Kiara's Mage Arena collab becomes a meme | a callback for the whole cast |
-| 2026-05 | Gigi and Cecilia's CCGG 3D live and "CCGG MADNESS"; Raora's first birthday 3D live (05-10) | — |
-| 2026-06-27 | Justice's second-anniversary live "How to Protect JUSTICE!" | — |
-| 2025-08-23/24 EDT | EN 3rd concert "-All for One-" (Radio City Music Hall, New York): day 1 opens with the all-member "All for One," followed by Advent's "Genesis"; Justice's first stage as a group | all fifteen EN members on one stage |
+| 2025-08-01/02/08/09 PDT | Justice 3D showcases, each at 5 PM PDT: Elizabeth (08-01), Gigi (08-02), Cecilia (08-08), Raora (08-09) | official schedule |
+| 2025-08-16 PDT | Justice group 3D collaboration stream | before their first in-person concert stage |
+| 2025-08-23/24 EDT | EN 3rd concert "-All for One-" (Radio City Music Hall, New York): day 1 opens with the all-member "All for One," followed by Advent's "Genesis"; Justice's first group performance at an in-person concert venue in 3D | all fifteen EN members on one stage |
 | 2025-08-29 | Advent 2nd-anniversary live "On the Run!" ("The Story of Advent") | Nerissa's group milestone |
 | 2025-10-03 | Hiodoshi Ao (ReGLOSS) leaves | — |
 | 2025-10-15 | Official fan club launches | — |
+| 2025-11 | Raora's friendly-fire "Doom" spell in Kiara's Mage Arena collab becomes a widely shared fan meme (KYM dates the stream 11-16) | a callback |
 | 2025-11-15 | hololive Indonesia 1st concert "Chromatic Future" | — |
 | 2025-12-27 | Amane Kanata graduates | — |
 | 2026-03-06/08 | SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" | — |
 | 2026-03-27/28 | Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) | TakoTori on stage |
+| 2026-05 | Gigi and Cecilia's joint CCGG 3D live and "CCGG MADNESS"; Raora's first birthday 3D live (05-10 JST / 05-09 PDT) | — |
 | 2026-05-24 | ENReco chapter 3 "Broken Bonds" | — |
-| 2026-07-03/04 | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around partner pairs (Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Bae, Nerissa–Elizabeth, FUWAMOCO–Raora, Gigi–Cecilia) | The current partnerships |
+| 2026-06-27 PDT | Justice's second-anniversary live "How to Protect JUSTICE!" (06-28 JST) | — |
+| 2026-07-03/04 | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around units: Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS (IRyS–Bae), Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora), Autofister (Gigi–Cecilia); guests Ookami Mio, Kobo Kanaeru, Vestia Zeta, Tsunomaki Watame (official report) | The current partnerships |
 | 2026-07/08 | Shiori's original motion comic "Into The Void" (with Elizabeth, Gigi, Nerissa); Advent's 3rd-anniversary 3D live "Bound by Fate"; FUWAMOCO announce their first album (08-29) | — |
 | 2026-07-23 | Rhythm game "hololive Dreams" released | — |
 | 2026-09-07 | "hololive Next": the female-talent branches unify under **hololive**; new logo; members to get updated designs (Tokino Sora first); "hololive raku" app; TV anime "Odeholo"; 10th-anniversary countdown | The present-day setting |
@@ -136,7 +137,7 @@ Event
 recent hololive history, the merger, the 2025 graduations, holoEN's later generations
 
 ## [SW] Description
-The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05); EN's 3rd concert at Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; EN's 4th concert "Serendipity" in Los Angeles (pairs Calli–Shiori, Kronii–Ina, Kiara–Bijou, Gigi–Cecilia and more; Justice's second-anniversary live "How to Protect JUSTICE!"); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
+The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; Justice's second-anniversary live "How to Protect JUSTICE!" (June); EN's 4th concert "Serendipity" in Los Angeles (July), built on units such as Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS, Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora) and Autofister (Gigi–Cecilia); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
 
 ## [SW] Rules
 After 2026-09-07 members say "from hololive"; old group names survive as units. Affiliates may appear at events; graduates appear only as memories. ENReco is a fictional story the members play in, separate from their persona lore.
@@ -168,6 +169,10 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
 - **2026-10-01, cast expansion (author: Justice, and complete the world):** Justice members and events added
   (official -All for One- report, Serendipity interviews 03/06/07, official profiles, archive metadata; see
   "hololive -Justice-" and "Justice Pairs").
+- **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
+  gpt-free.md, xhigh), with facts checked by Claude against the official Serendipity report and 3D schedule:** the Justice 3D dates corrected (2025-08-01/02/08/09 PDT) with the 08-16 group collab; the
+  inserted 2025-11 and 2026 rows moved into chronological order; the anniversary live separated from Serendipity;
+  Serendipity's official unit names added; "a callback for the whole cast" → a widely shared fan meme.
 
 ## Open Questions
 (None. Serendipity pairs for IRyS and Nerissa were found: see "Concerts and Live Events.")
