@@ -1,5 +1,23 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-01 06:40 UTC）：
+- **Ceres Fauna、Nanashi Mumei 完成並收錄（作者 2026-10-01 下令）**：角色卡＋`Fauna and Mumei Pairs` 世界觀卡。
+  GPT 一輪審查 `runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md`（high）已逐條併進 Merge Record，
+  作者裁決收錄（`--force`）。音檔報告 `research/audio-check/fauna.md`、`mumei.md`（兩模型核對；
+  Fauna 一段會員限定音檔誤抓後未使用）；表演表 `export/elevenlabs/Ceres-Fauna.md`、`Nanashi-Mumei.md`。
+  - 連動修改並重新收錄：8 張既有角色卡的 Relationships、Promise／hololive／Cross-Branch／兩張 History／
+    Concerts／VTuber Persona 世界觀卡。GPT 指出並已更正：Mumei「最後一場個人遊戲台」說法錯誤
+    （04-22 與 IRyS 的 Overwatch 之後還有 04-24 Promise R.E.P.O.）、"Bae's most frequent partner" 改為
+    recurring、Lui 的 "bird sisters" 是標題不是台詞、Cecilia／Gigi 分開、"sultry" 從所有演出指示移除。
+  - 新增事實（官方頁查證）：Fauna＆Mumei 原創合唱 "It's Not a Phase"（-Breaking Dimensions- 2024-08-24 首演，
+    2024-12-22 發售）；Breaking Dimensions 的 Kiara–Mumei–Nerissa、Fauna–Shiori–Nerissa 三人曲；
+    Mumei 與 Korone 合唱翻唱（2025-04-23）、"Outside the Box" 的 JP 來賓（Okayu、Korone、Nene、Koyori）。
+  - 未採納（理由寫在 Merge Record）："I'm always on time" 保留（第二模型全文有）；IPA 保留並標 provisional
+    （與其他八張卡一致，作者要求教發音）。
+  - 匯出：`export/characters.csv`（10 張）、`export/worldbuilding.csv`（20 張）。
+- **已完成成員**：Myth 五人、Kronii、IRyS、Nerissa、Fauna、Mumei。其餘成員等作者下令。
+
+（以下為較早的狀態紀錄）
 狀態（2026-10-01 04:20 UTC）：
 - **完成並收錄（作者裁決，GPT 只審一輪）**：19 張世界觀卡＋8 個角色（Myth 五人、Kronii、IRyS、Nerissa）。
   GPT 審查 `runs/20260930-2309-world-hololive/gpt-free.md`（high）；意見已逐卡併進 final.md 的 Merge Record。

@@ -54,10 +54,14 @@ Relationship web.
   (Moona, Suisei, AZKi), "IRySora" (Tokino Sora), "ReiRyS" (Reine), "OKFAIR" (Ollie, Kronii, Fauna, Anya,
   Reine). [Observed S1; S2 IRyS]
 - **Ceres Fauna** (graduated): her first official collab outside her generation was with Pavolia Reine
-  (Clubhouse 51, 2021); Kaela Kovalskia was a recurring partner ("Fearless & Fearful vs Ghosts," an ID
-  Minecraft server tour); she admired Shirogane Noel. [Observed S1; Fauna file F2]
-- **Nanashi Mumei** (graduated): HOLOTORI with Kiara, Subaru, Reine and Lui ("Bird Sisters" Q&A with Lui,
-  2025); drawing collabs with Airani Iofi; Minecraft "Peace & Love with HAACHAMA" (2025); Tokoyami Towa calls
+  (Clubhouse 51, 2021-10-12, per the wiki; Minecraft "WITH REINE," 2022-01-19, ronEFZPwxqc); Kaela
+  Kovalskia was a recurring partner ("Fearless & Fearful vs Ghosts," an ID Minecraft server tour); she
+  admired Shirogane Noel. [Observed S1; Fauna file F2 §2021, §Trivia, secondary]
+- **Nanashi Mumei** (graduated): HOLOTORI with Kiara, Subaru, Reine and Lui ("【MUMEI + LUI】Q&A With Bird
+  Sisters !!!," 2025-04-19, fEO6kSCseE0); drawing collabs with Airani Iofi ("Doodles with IOFI," 2022-04-14,
+  2dWx7xg48xc; "SWIMSUITS!! with IOFI!," 2023-01-30, XCXF08GMUHY); a duet cover of "とんとんまーえ！" with
+  Inugami Korone (2025-04-23, P6GLC_HnCUU), and Okayu, Korone, Nene and Koyori as guests at her 3D live
+  "Outside the Box" (2024-08-05, gl7CwlEg2ZI); Minecraft "Peace & Love with HAACHAMA" (2025); Tokoyami Towa calls
   her "Mumi-chan." [Observed S1; Mumei file M2]
 - **Nerissa Ravencroft:** Houshou Marine is her oshi (plush, figures, an off-collab with Marine and
   FUWAMOCO, 2024); "BLUE·MEGAMISAMA" with Tokino Sora; "V3LVET" with Raora and Moona Hoshinova; Kobo
@@ -129,7 +133,7 @@ Relationship
 Death Star, MoRikka, LYRA, Holodeath, PavoNashi, HOLOTORI, UMISEA, HoloJEI, TakoNeko, K.I.R.A, OKFAIR, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET
 
 ## [SW] Description
-The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones" ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu. Gura had "Apex Predators" with Shishiro Botan and a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan." Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (Lui calls them bird sisters).
+The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones" ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu. Gura had "Apex Predators" with Shishiro Botan and a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan." Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (she hosted a Q&A with Lui titled "Q&A With Bird Sisters") and recorded a duet cover with Inugami Korone in her last week.
 
 ## [SW] Rules
 Senpai and kouhai describe relative seniority, not language or nationality; forms of address and levels of formality vary by relationship. Unit lineups belong to their period: graduates and affiliates are not current regular partners. Members of other agencies are only brief, friendly mentions.
@@ -157,6 +161,9 @@ A bilingual stream title with both names; a senpai's plush on a shelf; a starstr
   was removed.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
+- **2026-10-01, from the Fauna/Mumei GPT review (runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md):** Lui's "bird sisters" now cited as a stream
+  title, not speech (GPT's wording); archive IDs added for the Reine and Iofi claims; the Korone duet cover
+  and "Outside the Box" JP guests added (checked by Claude in the archive metadata).
 
 ## Open Questions
 (None.)

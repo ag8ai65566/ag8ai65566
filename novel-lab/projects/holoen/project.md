@@ -71,7 +71,8 @@ web_search: live
 - Justice：Elizabeth Rose Bloodflame、Gigi Murin、Cecilia Immergreen、Raora Panthera
 - 已畢業：Gawr Gura、Tsukumo Sana、Ceres Fauna、Nanashi Mumei
 - 停止活動、保留 affiliate：Watson Amelia（2024-09-30 起）
-- 已完成（2026-10-01）：Myth 五人、Ouro Kronii、IRyS、Nerissa Ravencroft。其餘成員等作者下令。
+- 已完成（2026-10-01）：Myth 五人、Ouro Kronii、IRyS、Nerissa Ravencroft、Ceres Fauna、Nanashi Mumei。
+  其餘成員等作者下令。
 
 ## 已定案的硬設定
 - （收錄進 bible 後，重要的硬事實抄一行在這裡）

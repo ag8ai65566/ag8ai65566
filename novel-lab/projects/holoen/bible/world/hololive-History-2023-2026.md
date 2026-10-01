@@ -95,7 +95,7 @@ Historical events.
 5. IRyS's nerves before her first solo concert in Tokyo.
 
 ## Links to Characters
-All eight. Nerissa (Advent, 2023); IRyS and Kronii (Promise, 2023); Ame (affiliate, 2024); Gura
+All ten. Nerissa (Advent, 2023); Fauna and Mumei (graduated 2025); IRyS and Kronii (Promise, 2023); Ame (affiliate, 2024); Gura
 (graduated, 2025); Calli, IRyS and Nerissa (World Tour '25); Kiara and Ina (Drawn to Dawn); Kronii, Ina,
 Kiara and Calli (Serendipity pairs).
 
@@ -153,6 +153,7 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, author decision:** Kiara is not written as on a break; her 2026-09-09 break notice is not used
   in stories.
+- **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
 
 ## Open Questions
 (None. Serendipity pairs for IRyS and Nerissa were found: see "Concerts and Live Events.")

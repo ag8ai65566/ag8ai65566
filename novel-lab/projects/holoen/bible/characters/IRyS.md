@@ -177,7 +177,7 @@ the wiki as units or pairings; -Promise- is official.
 | Ouro Kronii | Promise genmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." | [Observed R2 §Quotes] |
 | Koseki Bijou | Frequent 2025–2026 co-op partner | Horror co-ops (Dead Space 3, Resident Evil 6 "w/ Biboo," 2026) | [Observed R3 titles] |
 | Tsukumo Sana (graduated) | Council-era friend | Co-designed Bloom & Gloom; Sana designed the "Beeg Smol" models | [Observed R2] |
-| Nanashi Mumei, Ceres Fauna (graduated) | Promise genmates | Early Council collabs (Jump King, Minecraft) | [Observed R2; R3] |
+| Nanashi Mumei, Ceres Fauna (graduated) | Promise unitmates | Early Council collabs (Jump King, Minecraft) | [Observed R2; R3] |
 | Shiranui Flare | JP senior | Off-collab karaoke (2025-03) | [Observed R3 title] |
 
 ## Arc
@@ -262,7 +262,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 IRyS wants to deliver hope through her songs and reach bigger stages: after her first full album, "DANGERyS" (2026), comes her first solo concert in Tokyo, and someday an anime song. She wants to collab with every member of hololive and keep her fans' spirits up.
 
 ## [SW] Relationships
-Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting "married" and "divorced" (born from a Minecraft bento; their joke fan-fiction made "Monopoly" a fandom euphemism), and a creative partner: at their 2026 Serendipity duo stage IRyS said she leans on Bae's "strong vision" when she's indecisive, and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable; they call their dynamic "a can of worms." Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae. Ouro Kronii: Promise unitmate and two-player rival; IRyS wondered aloud how Kronii sounds when she's scared, and said she, "a half-angel, half-demon Nephilim," could pull off Kronii's goddess look "somehow." Shiranui Flare: a recurring Japanese collaborator (horror camping, Splatoon matches, karaoke). Ninomae Ina'nis: an early duo partner (It Takes Two) who still games with her. Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert. Koseki Bijou ("Biboo"): her frequent horror co-op partner in 2025–2026. Tsukumo Sana (graduated): co-designed her mascots Bloom & Gloom. Ceres Fauna and Nanashi Mumei (graduated): Promise unitmates from the early years.
+Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting "married" and "divorced" (born from a Minecraft bento; their joke fan-fiction made "Monopoly" a fandom euphemism), and a creative partner: at their 2026 Serendipity duo stage IRyS said she leans on Bae's "strong vision" when she's indecisive, and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable; they call their dynamic "a can of worms." Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae. Ouro Kronii: Promise unitmate and two-player rival; IRyS wondered aloud how Kronii sounds when she's scared, and said she, "a half-angel, half-demon Nephilim," could pull off Kronii's goddess look "somehow." Shiranui Flare: a recurring Japanese collaborator (horror camping, Splatoon matches, karaoke). Ninomae Ina'nis: an early duo partner (It Takes Two) who still games with her. Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert. Koseki Bijou ("Biboo"): her frequent horror co-op partner in 2025–2026. Tsukumo Sana (graduated): co-designed her mascots Bloom & Gloom. Ceres Fauna (graduated 2025): Promise unitmate and Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Nanashi Mumei (graduated 2025): Promise unitmate; they played Overwatch together during Mumei's farewell week.
 
 ## [SW] Secrets
 (none)
@@ -289,6 +289,10 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **SHOULD adopted:** exact catchphrases kept in Catchphrases; quotes reduced elsewhere. The 2026 written
   greeting "HiRyS, iiiit's IRyS" added from the official interview.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, cast expansion (author: add Fauna and Mumei):** Relationships gained Fauna/Mumei lines from
+  the world card "Fauna and Mumei Pairs" (archive titles there).
+- **2026-10-01, from the Fauna/Mumei GPT review (runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md):** the Mumei line corrected (GPT's wording):
+  the 2025-04-22 Overwatch collab was not her last game stream (Promise R.E.P.O. followed on 04-24).
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

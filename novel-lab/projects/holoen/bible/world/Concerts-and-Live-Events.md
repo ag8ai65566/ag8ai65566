@@ -26,7 +26,9 @@ Recurring events / culture.
   Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06/08). EN units share
   Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
 - **hololive English concerts** (US, summer): "-Connect the World-" (2023-07-02), "-Breaking
-  Dimensions-" (2024-08-24/25, Kings Theatre, New York), "-All for One-" (2025-08-23/24, Radio City Music
+  Dimensions-" (2024-08-24/25, Kings Theatre, New York; Fauna and Mumei premiered their duet "It's Not a
+  Phase"; Kiara, Mumei and Nerissa sang "Beyond the way"; Fauna, Shiori and Nerissa "Lonely in Gorgeous"
+  [Official S8]), "-All for One-" (2025-08-23/24, Radio City Music
   Hall, New York), "Serendipity" (2026-07-03/04, Shrine Auditorium, Los Angeles), the last built around
   partner pairs (among them Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Hakos Baelz and
   Nerissa–Elizabeth Rose Bloodflame), each with a published interview. Dates are US local time.
@@ -85,7 +87,7 @@ Recurring events / culture.
 5. A tour stop in Sydney: Kronii joins Calli, IRyS and Nerissa as a guest.
 
 ## Links to Characters
-All eight.
+All ten (Fauna and Mumei: the 2023 EN concert, 4th fes., Mumei's 2024 3D birthday live "Outside the Box" and 6th fes.).
 
 ## Secrets
 (None.)
@@ -103,6 +105,7 @@ All eight.
 - S5 Official Serendipity interview, IRyS and Bae (2026-06-05): https://serendipity.hololivepro.com/news/interview02
 - S6 Official Serendipity interview, Nerissa and Elizabeth (2026-06-12): https://serendipity.hololivepro.com/news/interview07/
 - S7 Official post-event report, World Tour '24 (2025-02-17): https://hololive.hololivepro.com/en/news/20250217-01-128/
+- S8 Official concert report, -Breaking Dimensions-: https://hololive.hololivepro.com/en/events/breaking-dimensions/
 - S4 Character files in this project (C6, C11, C19; T10–T12; I7, I20; K4, K33; R2, R3, R20; N2, N3; G5)
 
 ---
@@ -141,6 +144,10 @@ Glowsticks in member colors; an LED wall; a new 3D outfit's reveal; a call-and-r
 - **SHOULD adopted:** recurring formats first in the card; the longer ledger stays in the dossier. The
   2022 fes. is named "Link Your Wish."
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
+- **2026-10-01, from the Fauna/Mumei GPT review (runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md, missing facts):** the -Breaking Dimensions-
+  pairings with Fauna, Mumei, Kiara, Shiori and Nerissa added from the official report (S8, checked by
+  Claude).
 
 ## Open Questions
 1. Which characters performed at the four EN concerts (2023–2025 line-ups) was not checked; only
