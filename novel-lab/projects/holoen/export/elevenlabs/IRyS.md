@@ -14,7 +14,7 @@ into a sly, lower, teasing aside."
 - Her singing voice is fuller and more powerful than her talking voice; this sheet covers speech only.
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **45** (bubbly, but the sweet base must stay steady). Similarity **75**.
+- `eleven_v4`. Stability **45%** (API `0.45`) (bubbly, but the sweet base must stay steady). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rapid, gushing]` or `[focused, quiet]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script

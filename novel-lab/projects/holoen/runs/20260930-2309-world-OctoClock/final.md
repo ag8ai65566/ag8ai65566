@@ -93,10 +93,10 @@ Octo'Clock
 Relationship
 
 ## [SW] Other Names
-Ina and Kronii, Kronii and Ina
+Ina and Kronii, Kronii and Ina, Octo'clock, Octo'Clock
 
 ## [SW] Description
-Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4) under the name "Octo'Clock." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had met in person, found matching jackets and shared interests, and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
+Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4) under the name "Octo'Clock" (the official report spells it "Octo'clock"), performing "Bad Apple." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had met in person, found matching jackets and shared interests, and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
 
 ## [SW] Rules
 Ina's claim on Kronii is a sweet joke, not romance. Their humor is dueling puns and deadpan; their work ethic is serious. Their stream collabs before 2026 were occasional (group numbers, FGO, R.E.P.O.), alongside shared stage work.
@@ -117,6 +117,9 @@ Purple and deep blue; a tentacle and a clock hand on one poster; matching jacket
   whole concert); the "sweetest voice" line marked as performance direction, not observed delivery.
 - **SHOULD adopted:** the matching-jacket anecdote kept, framed as their telling.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** both spellings added to Other Names (the official report writes "Octo'clock"; Kronii's short
+  "Octo'Clock"); their Serendipity song "Bad Apple" added to the Description.
 
 ## Open Questions
 (None.)

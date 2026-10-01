@@ -64,11 +64,11 @@ Historical events.
 | 2025-11-15 | hololive Indonesia 1st concert "Chromatic Future" | — |
 | 2025-12-27 | Amane Kanata graduates | — |
 | 2026-03-06/08 | SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" | — |
-| 2026-03-27/28 | Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) | TakoTori on stage |
+| 2026-03-27/28 PDT | Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) | TakoTori on stage |
 | 2026-05 | Gigi and Cecilia's joint CCGG 3D live and "CCGG MADNESS"; Raora's first birthday 3D live (05-10 JST / 05-09 PDT) | — |
 | 2026-05-24 | ENReco chapter 3 "Broken Bonds" | — |
 | 2026-06-27 PDT | Justice's second-anniversary live "How to Protect JUSTICE!" (06-28 JST) | — |
-| 2026-07-03/04 | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around units: Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS (IRyS–Bae), Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora), Autofister (Gigi–Cecilia); guests Ookami Mio, Kobo Kanaeru, Vestia Zeta, Tsunomaki Watame (official report) | The current partnerships |
+| 2026-07-03/04 PDT | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around units: Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS (IRyS–Bae), Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora), Autofister (Gigi–Cecilia); guests Ookami Mio, Kobo Kanaeru, Vestia Zeta, Tsunomaki Watame (official report) | The current partnerships |
 | 2026-07/08 | Shiori's original motion comic "Into The Void" (with Elizabeth, Gigi, Nerissa); Advent's 3rd-anniversary 3D live "Bound by Fate"; FUWAMOCO announce their first album (08-29) | — |
 | 2026-07-23 | Rhythm game "hololive Dreams" released | — |
 | 2026-09-07 | "hololive Next": the female-talent branches unify under **hololive**; new logo; members to get updated designs (Tokino Sora first); "hololive raku" app; TV anime "Odeholo"; 10th-anniversary countdown | The present-day setting |
@@ -173,6 +173,8 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
   gpt-free.md, xhigh), with facts checked by Claude against the official Serendipity report and 3D schedule:** the Justice 3D dates corrected (2025-08-01/02/08/09 PDT) with the 08-16 group collab; the
   inserted 2025-11 and 2026 rows moved into chronological order; the anniversary live separated from Serendipity;
   Serendipity's official unit names added; "a callback for the whole cast" → a widely shared fan meme.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** Drawn to Dawn and Serendipity rows zoned PDT (the card is JST unless noted).
 
 ## Open Questions
 (None. Serendipity pairs for IRyS and Nerissa were found: see "Concerts and Live Events.")

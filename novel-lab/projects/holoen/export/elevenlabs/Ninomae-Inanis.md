@@ -12,7 +12,7 @@ excited words."
   minute of speech; a 2021 game stream ran faster). [ASR I29]
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **60** (calm consistency). Similarity **75**. v4 has no speed slider: slowness
+- `eleven_v4`. Stability **60%** (API `0.60`) (calm consistency). Similarity **75%** (API `0.75`). v4 has no speed slider: slowness
   comes from the designed voice, `[unhurried]` and punctuation.
 
 ## 3. Write these habits into the script

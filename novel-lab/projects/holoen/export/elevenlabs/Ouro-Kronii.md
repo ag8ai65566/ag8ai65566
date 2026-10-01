@@ -13,7 +13,7 @@ of breaking into laughter."
   at a medium pace (≈120–127 words per minute of speech). [ASR K36]
 
 ## 2. Settings (starting points; adjust by ear)
-- Model `eleven_v4`. Stability **55** (deadpan needs consistency; drop to 45 for horror scenes). Similarity **75**.
+- Model `eleven_v4`. Stability **55%** (API `0.55`) (deadpan needs consistency; drop to 45% for horror scenes). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
 - Short, plain statements; understatement over exclamation. Self-praise stated as fact ("It's me, perfection.").

@@ -12,7 +12,7 @@ playful, childlike energy."
   not used as targets here (see `research/audio-check/bijou.md`).
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **45** (bubbly swings, but the calm gaming voice must hold). Similarity **75**.
+- `eleven_v4`. Stability **45%** (API `0.45`) (bubbly swings, but the calm gaming voice must hold). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[excited, bouncy]` or `[focused, calm]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script

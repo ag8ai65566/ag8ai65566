@@ -2,3 +2,4 @@
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 9749e1d50a40）：作者裁決：加入 Fauna 與 Mumei 後的關係與世界觀連動修改（含 GPT 一輪審查的修正），依作者指示只審一輪
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 7fcc9156819d）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 b1a1a319e2db）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
+- 2026-10-01 20:58 作者裁決收錄 final.md（sha256 a87383909b3a）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).

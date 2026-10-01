@@ -42,7 +42,7 @@ Relationship web.
   [Observed S1; Kronii file K8]
 - **IRyS:** Promise unitmate from 2023 (CouncilRyS before that). "IRyS VS FAUNA SWITCH SPORTS BATTLE OF THE
   CENTURY" (2022); in Mumei's farewell week, "【OVERWATCH 2】 the final stream !!! with @IRyS" (2025-04-22)
-  and R.E.P.O. with all of Promise (2025-04-24, F_EVW5Ig5QE); a guest at Mumei's "Outside the Box" (2024).
+  and a Promise R.E.P.O. collab with IRyS, Kronii and Bae during Mumei's farewell week (2025-04-24, F_EVW5Ig5QE); a guest at Mumei's "Outside the Box" (2024).
   [Observed S1]
 - **Kiara:** Mumei and Kiara are birds in HOLOTORI (with Subaru, Reine and Lui): "BUILDER BIRBS" (2021),
   "Kiwawa & Mumeiwi" (2022), a DECO*27 song together on the 4th fes. holo*27 stage (2023), "two smol
@@ -140,7 +140,7 @@ Relationship
 Fauna and Mumei, Mumei and Fauna, It's Not a Phase, KronMei, gumei, Fauna and Gura, Mumei and Kiara, Mumei and Kronii
 
 ## [SW] Description
-Fauna and Mumei, Council's nature and civilization, collaborated during Council's debut week and remained recurring creative partners. Their public comedy includes Fauna's exaggerated protective and possessive bits ("return to nature") and Mumei's unexpectedly macabre responses. They premiered their original duet "It's Not a Phase" at the 2024 English concert (released 2024-12-22), and one of Fauna's last streams was the two of them reading Wikipedia talk-page fights (2024-12). With the cast: Mumei and Kronii (KronMei) were frequent partners, including a "Donut Hole" cover duet (2025-04); Fauna and Kronii defused bombs speaking only in ASMR (2021). IRyS was their Promise unitmate; she and Mumei played Overwatch in Mumei's farewell week, then R.E.P.O. with all of Promise. Mumei and Kiara are birds of HOLOTORI; Kiara calls her "Moomsies" and hosted both on HOLOTALK before they left. Gura was Fauna's oshi; they drew hololive members from memory four days before Fauna graduated, and Gura and Mumei did a "ROOM REVIEW" together in Mumei's last week. Mumei also drew with Ina, did "Anatomy Review" with Calli, played with Ame in Ame's last regular week, and held "emo hours" with Nerissa; at the 2024 concert Mumei sang with Kiara and Nerissa, and Fauna with Shiori and Nerissa. Beyond EN, Mumei recorded a duet cover with Inugami Korone in her last week.
+Fauna and Mumei, Council's nature and civilization, collaborated during Council's debut week and remained recurring creative partners. Their public comedy includes Fauna's exaggerated protective and possessive bits ("return to nature") and Mumei's unexpectedly macabre responses. They premiered their original duet "It's Not a Phase" at the 2024 English concert (released 2024-12-22), and one of Fauna's last streams was the two of them reading Wikipedia talk-page fights (2024-12). With the cast: Mumei and Kronii (KronMei) were frequent partners, including a "Donut Hole" cover duet (2025-04); Fauna and Kronii defused bombs speaking only in ASMR (2021). IRyS was their Promise unitmate; she and Mumei played Overwatch in Mumei's farewell week, then a Promise R.E.P.O. collab with IRyS, Kronii and Bae. Mumei and Kiara are birds of HOLOTORI; Kiara calls her "Moomsies" and hosted both on HOLOTALK before they left. Gura was Fauna's oshi; they drew hololive members from memory four days before Fauna graduated, and Gura and Mumei did a "ROOM REVIEW" together in Mumei's last week. Mumei also drew with Ina, did "Anatomy Review" with Calli, played with Ame in Ame's last regular week, and held "emo hours" with Nerissa; at the 2024 concert Mumei sang with Kiara and Nerissa, and Fauna with Shiori and Nerissa. Beyond EN, Mumei recorded a duet cover with Inugami Korone in her last week.
 
 ## [SW] Rules
 Fauna graduated on 2025-01-03 and Mumei on 2025-04-27 (04-28 JST); by this project's continuity rule, after those dates they appear only as memories and callbacks. Fauna's possessiveness and "return to nature" are performed bits. All of these are friendships.
@@ -171,6 +171,8 @@ On-screen avatar imagery pairs green hair and branch-shaped horns with brown fea
 - **Missing facts adopted (checked by Claude 2026-10-01):** "It's Not a Phase" (S6, S7), the Breaking
   Dimensions trios with Nerissa (S6), the Korone duet cover and "Outside the Box" guests (S1).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "R.E.P.O. with all of Promise" → the session's roster (IRyS, Kronii, Bae; Fauna had graduated).
 
 ## Open Questions
 (None.)

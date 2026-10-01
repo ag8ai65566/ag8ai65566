@@ -208,7 +208,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Advent
+FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Advent, B.F.F
 
 ## [SW] Other Names
 Mococo, Moco-chan, Mogogo, Mogojyan, The Fuzzy One
@@ -238,7 +238,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Mococo is a guard dog whose job is to protect your smile (and to make a little chaos). As an idol she and Fuwawa chase their list of more than a hundred dreams, and she wants every Ruffian to keep going one step a day.
 
 ## [SW] Relationships
-Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: the twins' fictional dog mascot; in the prison-break lore, Mococo throws Pero at the guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Cecilia is also Mococo's Chrono Trigger partner, including 2026 off-collabs; Gigi sang "Bright Tonight" and "MAKE IT, BREAK IT" with the twins. Raora Panthera: their 2026 Serendipity unit partner in B.F.F. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO"). Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA."
+Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: the twins' fictional dog mascot; in the prison-break lore, Mococo throws Pero at the guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Cecilia is also Mococo's Chrono Trigger partner, including 2026 off-collabs; Gigi sang "Bright Tonight" and "MAKE IT, BREAK IT" with the twins. Raora Panthera: their 2026 Serendipity unit partner in B.F.F. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO"). Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA." Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
 
 ## [SW] Secrets
 (none)
@@ -271,6 +271,10 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** Cecilia's two entries merged; Chrono Trigger kept Mococo-only; Gigi's songs with the twins
   added.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "B.F.F" (official Serendipity unit with Raora) added to Groups.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** Mio's "Dottabatta Chindouchuu" stage with Ina added (official report).
 
 ## Open Questions
 1. There is no clean solo sample of Mococo's ordinary speech in the archive window used (her 2025 solo is

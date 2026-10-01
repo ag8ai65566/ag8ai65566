@@ -15,7 +15,7 @@ sudden high screech; says dark jokes in the same cute, cheerful tone."
 - Her singing voice is a separate register; this sheet covers speech only.
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **45** (scattered and spontaneous, but the soft base must hold). Similarity **75**.
+- `eleven_v4`. Stability **45%** (API `0.45`) (scattered and spontaneous, but the soft base must hold). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[quick, scattered]` or `[murmuring, focused]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script

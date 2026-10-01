@@ -12,7 +12,7 @@ laughter, warm when sincere."
   per minute of speech). [ASR T23] Her card gives no accent; German lines come out native in v4 (cross-language generation uses a native accent). [Official T1]
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **35** (big swings). Similarity **75**.
+- `eleven_v4`. Stability **35%** (API `0.35`) (big swings). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
 - Self-interrupting restarts ("I— I'll go— I'll go and check"); triple repetition ("Okay. Okay. Okay.").

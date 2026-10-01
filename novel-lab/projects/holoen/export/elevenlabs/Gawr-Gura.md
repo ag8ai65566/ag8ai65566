@@ -3,7 +3,7 @@
 > Built from `bible/characters/Gawr-Gura.md` (2026-09-30). Original designed voice matched only to
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Gura graduated on 2025-05-01; in the 2026 baseline she appears in
-> memories and pre-2025 stories. Guide: `novel-lab/docs/elevenlabs-v4.md`.
+> memories and in stories set before her 2025-05-01 graduation. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, neutral American accent, soft, cute, relatively high voice with clear
@@ -13,7 +13,7 @@ games and hum while playing."
   per minute of speech in 2024 chat). [ASR G18]
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **45**. Similarity **75**.
+- `eleven_v4`. Stability **45%** (API `0.45`). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
 - Triplets: "hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye."

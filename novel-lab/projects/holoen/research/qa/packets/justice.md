@@ -1,0 +1,159 @@
+# Audit packet: justice
+
+Snapshot: git 6a9212f. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
+any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
+
+Owned files (sha256): `bible/characters/Elizabeth-Rose-Bloodflame.md` acb10e5c529d; `bible/characters/Gigi-Murin.md` 211875ad4315; `bible/characters/Cecilia-Immergreen.md` 06f3cf172332; `bible/characters/Raora-Panthera.md` 5b0fe89511e5; `bible/world/hololive--Justice.md` df1164544e49; `bible/world/Justice-Pairs.md` b2f0b86e432f
+
+## 1. Owned files (consistency fields, dossier timelines and hard facts)
+
+### Elizabeth Rose Bloodflame — `bible/characters/Elizabeth-Rose-Bloodflame.md`
+**[SW] Groups:** hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven
+**[SW] Other Names:** Elizabeth, Liz, ERB, Lizzie, Erby Berby, Lady Bloodflame, The Scarlet Queen
+**[SW] Background:** Elizabeth is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Scarlet Queen" and organizer of Justice; secondary-reported lore adds that she is the Harbinger of Order, a human knight from Great Exardia (not actually royalty) whose sword is Thorn, who joined hololive to keep an eye on Advent and to become an idol. She debuted first of her generation on 2024-06-21 (PDT) in hololive English -Justice-, held her 3D showcase on 2025-08-01 (PDT), sang at the 2025 English concert ("ALiCE&u" with Nerissa and Ayunda Risu, a solo "Stellar Stellar," and the day-two opener "START AGAIN" with Calli, IRyS and Nerissa), invited guests from several branches to her 2026 birthday live, and at the 2026 Serendipity concert sang "HELP!!" with Kobo Kanaeru and Hakos Baelz and formed the unit Bloodraven with Nerissa Ravencroft ("Cruel Angel's Thesis"). Her representative color is red; her fans are the Rosarians of the Bloodflame Kingdom.
+**[SW] Relationships:** Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026 unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution" and shared the 2025 stages "ALiCE&u" (with Ayunda Risu) and "START AGAIN" (with Calli and IRyS); Elizabeth says Nerissa "has a beautiful voice," Nerissa praises her kindness, and Nerissa calls her "my husband" as a performed bit. Vestia Zeta (ID): her duet partner for "Giri Giri" at her 2025 3D showcase, which Elizabeth arranged and choreographed. Gigi Murin: her Operation Tango partner (Gigi titled her stream "i won't let Liz down!!!"). Cecilia Immergreen: introduced her to Minecraft; Cecilia's lore joke says an older Justice made her a maid ("#LizIsInnocent"). Raora Panthera: an early duo partner ("Chat & Art w/ Liz!"), whom she calls "Pretty Kitty." Kobo Kanaeru and Hakos Baelz: "HELP!!" at Serendipity. Kureiji Ollie (ID): her kami-oshi and "Code Red" partner (PEAK with HOLOSTARS' Machina X Flayon and Jurard T Rexford; "High Tide" on stage with Kronii); Crimzon Ruze (HOLOSTARS) is her "Nephew" in a Marvel Rivals uncle–nephew bit. Banzoin Hakka (HOLOSTARS): a "Mephisto" duet she produced and arranged. Mori Calliope: the LYRA cover of "III" with Amane Kanata, Koganei Niko and Ayunda Risu. Shiori Novella: credited in Shiori's non-canon motion comic "Into The Void." Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests: FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine and Korone.
+**Dossier · Background Timeline:**
+| Date | Event | Relevance |
+|---|---|---|
+| Lore | The Scarlet Queen and Harbinger of Order from Great Exardia; joined hololive to keep an eye on Advent and to become an idol; human, and not royalty despite the title | [Official EB1] [Observed EB2 §Lore, secondary] |
+| 2024-06-21 PDT | Debut ("Ello Ello Ello~!"), first of Justice; official profile lists June 22 (JST) | [Official EB1] [Observed EB3] |
+| 2025-01-18 | "Mephisto" cover with HOLOSTARS' Banzoin Hakka | [Observed EB3] |
+| 2025-08-01 PDT | 3D showcase (5 PM PDT); she arranged and directed most of it, including "Giri Giri" with Vestia Zeta | [Official EB7] [ASR EB20] |
+| 2025-08-16 PDT | Justice 3D collaboration stream | [Official EB7] |
+| 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, "ALiCE&u" with Nerissa and guest Ayunda Risu, solo "Stellar Stellar," "START AGAIN" with Calli, IRyS and Nerissa (day 2 opener), "High Tide" with Kronii and guest Kureiji Ollie | [Official EB5] |
+| 2026-05 | 2026 birthday live with guests from several branches; the performances were released as cover videos ("Live from COVER Corp. Studio") | [Observed EB3, archived credits] |
+| 2026-07-03/04 PDT | Serendipity: "HELP!!" with Kobo Kanaeru and Hakos Baelz (day 1); unit Bloodraven with Nerissa, "Cruel Angel's Thesis" (day 2); "SUPERNOVA SUPER GIRL" and "ABOVE BELOW" with Justice | [Official EB4, EB8] |
+**Dossier · Hard Facts (continuity):**
+- Debut 2024-06-21 PDT (June 22 JST); birthday April 25; 171 cm; color red; fans Rosarians; sword Thorn.
+- Unit: hololive -Justice- (2024–), "hololive -Justice-" since the 2026-09 merger.
+
+### Gigi Murin — `bible/characters/Gigi-Murin.md`
+**[SW] Groups:** hololive -Justice-, hololive English -Justice- (former branch name), Justice, Autofister, CCGG
+**[SW] Other Names:** Gigi, Gi Murin, G Pain, GeeGee, Da Fister, The Free-spirited Chaser
+**[SW] Background:** Gigi is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Free-spirited Chaser," a mischievous gremlin "born and raised under the flag of Freedom" who chases targets on instinct and struggles with memorizing directions; secondary-reported lore places her in Freesia and frames the pursuit of Advent as another chance for fun. She debuted on 2024-06-21 (PDT) in hololive English -Justice-, won the 2024 Most Chaotic VTuber award, held her 3D showcase on 2025-08-02 (PDT), and sang at the 2025 English concert (solo "Wonky Monkey," "Countach" with Hakos Baelz and Kureiji Ollie, "MONSTER" with Ina, Kronii and Shiori, "III" with Nerissa). She performs original songs: "I'll still be here" (presented on her 2025 birthday), "Bright Tonight" with IRyS, Kronii and FUWAMOCO (2025), and "enough" (2026). She and Cecilia Immergreen perform together as Autofister, also called CCGG: in 2026 they released "CCGG MADNESS" (Gigi helped with the lyrics and designed the chibi models) and sang it at the Serendipity concert, where Gigi also sang "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO. Her representative color is orange; her fans are grems; her fictional mascot is Popo, a kakapo.
+**[SW] Relationships:** Cecilia Immergreen: her genmate and Autofister partner (also called CCGG): "CCGG MADNESS" (Gigi helped with the lyrics and designed the chibi models), Cuphead, Shadowverse and Serendipity; Cecilia calls her "idiot" (and "FREAK" in wiki transcriptions) yet says she "doesn't easily get rattled and is very dependable"; Gigi says Cecilia is "good at getting stuff done"; they met before debut. Raora Panthera: MapleStory, Monster Hunter and a food tier list; Raora designed both their Monster Hunter Wilds collaboration outfits. Elizabeth Rose Bloodflame: her Operation Tango partner (Gigi's stream title: "i won't let Liz down!!!"). Mori Calliope: Mouthwashing, Fast Food Simulator, R.E.P.O. and The Boba Teashop; the League of Legends campaign; with Fuwawa, "2 Creatures + 1 Reaper" (Fuwawa's post). Ouro Kronii: Fatal Fury and Hytale; "MONSTER" with Kronii, Ina and Shiori. IRyS, Kronii and FUWAMOCO: "Bright Tonight." Vestia Zeta (ID) and FUWAMOCO: "MAKE IT, BREAK IT" at Serendipity. Hakos Baelz and Kureiji Ollie (ID): "Countach" on stage. Takanashi Kiara: Reanimal ("ULTRA ORANGE WILL LIGHT THE WAY!!") and Eden Eternal with Shiori; Kiara calls her "GeeGee." Watson Amelia: knights in a fictional ENReco marriage storyline. Shiori Novella and Koseki Bijou: GAGA with Cecilia (Trine 5, Heave Ho, Phasmophobia); Shiori is also in the Fanfic Club with Gigi, Pavolia Reine and Airani Iofifteen, and cast her in the non-canon motion comic "Into The Void." Nerissa Ravencroft: "III" on stage; she helped with the "CCGG MADNESS" lyrics. Mococo: with Cecilia, guest-hosted FUWAMOCO MORNING #167 as a prank. Ceres Fauna: Silent Hill 2 and The Coughing Baby Award Show. Nanashi Mumei: Echo Point Nova.
+**Dossier · Background Timeline:**
+| Date | Event | Relevance |
+|---|---|---|
+| Lore | A gremlin "Chaser" from Freesia, "born and raised under the flag of Freedom" | [Official GG1] |
+| 2024-06-21 PDT | Debut ("GG STANDS FOR GIGI!"), second of Justice; official profile lists June 22 (JST) | [Official GG1] [Observed GG3] |
+| 2024-09-21 | Sings "September" 120 times in an eight-hour unarchived karaoke | [Observed GG2, secondary] |
+| 2024-12-14 | VTuber Awards: Most Chaotic VTuber | [Observed GG6; secondary reporting] |
+| 2025-08-02 PDT | 3D showcase (5 PM PDT; Aug 3 00:00 UTC) | [Official GG8] |
+| 2025-08-16 PDT | Justice 3D collaboration stream | [Official GG8] |
+| 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, "Countach" with Bae and guest Kureiji Ollie, "MONSTER" with Ina, Kronii and Shiori, solo "Wonky Monkey," "III" with Nerissa | [Official GG5] |
+| 2025-10-18 | First original song "I'll still be here" presented (digital release 10-20) | [Official GG7] [Observed GG2] |
+| 2025-12-22 | "Bright Tonight" with IRyS, Kronii and FUWAMOCO released | [Official GG7] |
+| 2026-05 | CCGG 3D live with Cecilia; "CCGG MADNESS" MV (05-17; digital 05-29) | [Official GG1, GG7] [Observed GG3] |
+| 2026-06-25 | Original MV "enough" | [Observed GG3] |
+| 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice and "CCGG MADNESS" as Autofister with Cecilia (day 1); "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO, and "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official GG4, GG9] |
+**Dossier · Hard Facts (continuity):**
+- Debut 2024-06-21 PDT (June 22 JST); birthday October 18; 153 cm; color orange; fans grems (lowercase);
+  mascot Popo, a kakapo (fictional mascot); "Most Chaotic VTuber" 2024 (secondary reporting).
+- 3D showcase 2025-08-02 PDT; Autofister with Cecilia (unit name in the official Serendipity report).
+- Unit: hololive -Justice- (2024–), "hololive -Justice-" since the 2026-09 merger.
+
+### Cecilia Immergreen — `bible/characters/Cecilia-Immergreen.md`
+**[SW] Groups:** hololive -Justice-, hololive English -Justice- (former branch name), Justice, Autofister, CCGG
+**[SW] Other Names:** Cecilia, Ceci, Cece, Immerhater, The Ancient Automaton
+**[SW] Background:** Cecilia is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Ancient Automaton," a clockwork maid built long ago for eternal servitude who now does the bare minimum, cooks mostly potatoes and pours herself into crafty hobbies; secondary-reported lore places her origin in Immerheim, and in a public joke she blamed her maid duties on an earlier Justice. She debuted on 2024-06-22 (PDT) in hololive English -Justice- with a chat-controlled game and a violin performance, and held her 3D showcase on 2025-08-08 (PDT). Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO and sang "I'm Your Treasure Box" with Bijou and Raora. She and Gigi Murin perform together as Autofister, also called CCGG: "CCGG MADNESS" (2026; Cecilia wrote the lyrics and directed it), a 2026 3D live, and the Serendipity concert, where she also sang "Break It Down" with Vestia Zeta and Shiori Novella and "Cloudy Sheep" with Tsunomaki Watame and Mori Calliope. Her representative color is green; her fans are Otomos.
+**[SW] Relationships:** Gigi Murin: her genmate and Autofister partner (also called CCGG): "CCGG MADNESS" (Cecilia wrote the lyrics; Gigi helped and designed the chibi models), a 2026 3D live, Cuphead, a Shadowverse match and Serendipity; she calls Gigi "idiot" and "FREAK" yet says Gigi "doesn't easily get rattled and is very dependable," and Gigi says she is "good at getting stuff done"; they met before debut. Raora Panthera ("Raviolin"): an early Minecraft partner; Raora illustrated Cecilia's debut ending screen and sweeping scene, Cecilia animated Raora's ending screen and mascot stinger, and Raora helped design the Otomo. Elizabeth Rose Bloodflame ("FiddleFlame"): Cecilia showed her around Minecraft; her "#LizIsInnocent" joke clears Liz of the old maid-service story (fans still draw Cecilia as Liz's maid). Takanashi Kiara: a German-speaking senior ("EterniTea"; "HoloEU" with Raora). Ninomae Ina'nis: a joking rival; Stranger of Paradise, and "SHALLYS" with FUWAMOCO on stage. Koseki Bijou and Shiori Novella: GAGA with Gigi (Trine 5, Heave Ho, Phasmophobia); Walking Dead watchalongs and Elden Ring with Bijou; "I'm Your Treasure Box" with Bijou and Raora. Vestia Zeta (ID) and Shiori: "Break It Down" at Serendipity. Tsunomaki Watame (JP) and Mori Calliope: "Cloudy Sheep" at Serendipity. Mococo Abyssgard ("Cecemoco"): Chrono Trigger; with Gigi she guest-hosted FUWAMOCO MORNING #167. Gawr Gura: Keep Talking and Nobody Explodes, The Forest. IRyS and Bijou: Elden Ring Nightreign. Nanashi Mumei ("Automatowl"): Halo co-op. Ouro Kronii: Kronii has called her "CLANKER"; she calls Kronii "Owo-senpai"; "Clockwork Orange" with Gigi. Ceres Fauna ("Green Women"): a shoujo-tropes ranking. Tokino Sora (JP): Minecraft and Super Mario 3D World.
+**Dossier · Background Timeline:**
+| Date | Event | Relevance |
+|---|---|---|
+| Lore | An ancient automaton built for eternal servitude (official); secondary lore places her origin in Immerheim; in a public joke she attributed her maid duties to an earlier Justice | [Official CI1] [X post CI6, secondary] |
+| 2024-06-22 PDT | Debut ("It's wind-up time!!"), with a chat-controlled game (implemented by nullrefrepro per the credits; Raora drew the ending screen and sweeping art) and a violin performance; official profile lists June 23 (JST) | [Official CI1] [Observed CI3] |
+| 2025-08-08 PDT | 3D showcase (5 PM PDT; Aug 9 09:00 JST) | [Official CI7] |
+| 2025-08-16 PDT | Justice 3D collaboration stream | [Official CI7] |
+| 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice; "Wind-Up," the first Justice solo; "SHALLYS" with Ina and FUWAMOCO (on violin); "I'm Your Treasure Box" with Bijou and Raora | [Official CI5] |
+| 2026-05 | CCGG 3D live with Gigi (after-talk 05-20, secondary archive evidence); "CCGG MADNESS" MV (05-17; digital 05-29) | [Official CI1] [Observed CI3 1rIXU_4xGvY, bTxEGwMOQQI] |
+| 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice, "CCGG MADNESS" as Autofister with Gigi, "Break It Down" with Vestia Zeta and Shiori, "Cloudy Sheep" with Tsunomaki Watame and Calli (day 1); "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official CI4, CI8] |
+**Dossier · Hard Facts (continuity):**
+- Debut 2024-06-22 PDT (June 23 JST); birthday November 11; 162 cm; color green; fans Otomos; plays violin.
+- Unit: hololive -Justice- (2024–), "hololive -Justice-" since the 2026-09 merger; Autofister/CCGG with Gigi
+  (the "ccgg" name appears in 2025 titles; Autofister in the 2026 official report).
+- 3D showcase 2025-08-08 PDT.
+
+### Raora Panthera — `bible/characters/Raora-Panthera.md`
+**[SW] Groups:** hololive -Justice-, hololive English -Justice- (former branch name), Justice, B.F.F
+**[SW] Other Names:** Raora, Rao, Rara, The Artist with the God Eyes
+**[SW] Background:** Raora is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Artist with the God Eyes," a big cat whose all-seeing eyes make her suspect sketches uncannily accurate; in secondary-recorded lore she comes from the Romance Empire, abandoned a FUWAMOCO pursuit for crane games and left reporting duties for idol work. She debuted on 2024-06-22 (PDT) in hololive English -Justice-, won Best Art VTuber at the 2024 VTuber Awards, and held her 3D showcase on 2025-08-09 (PDT); later that month, at the 2025 English concert, she sang her original "Gacha×Gacha ADVENTURE!," "Neko Kaburi-Na" with Ina, Shiori and Oozora Subaru, and "I'm Your Treasure Box" with Bijou and Cecilia. She held her first birthday 3D live in May 2026, and at the 2026 Serendipity concert she formed the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari") and sang "What an amazing swing" with Tsunomaki Watame and Takanashi Kiara. Her representative color is pink; her fans are the Chattini.
+**[SW] Relationships:** FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu Neko. Seishun Massakari"); before debut she drew them a shikishi portrait and gave it "with big tears in her eyes," and they call her their "precious cat kouhai." Gigi Murin ("RPGG"): MapleStory, Monster Hunter Wilds and a food tier list; Raora designed both their Monster Hunter Wilds collaboration outfits. Cecilia Immergreen ("Raviolin"): an early Minecraft partner; Raora illustrated Cecilia's debut ending screen and sweeping scene, Cecilia animated Raora's ending screen and mascot stinger, and Raora helped design the Otomo. Elizabeth Rose Bloodflame: joined her early "Chat & Art" collab and calls her "Pretty Kitty." Kaela Kovalskia ("SMITTEN"): co-op partner; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement; with Koseki Bijou they are "Graondstone." Koseki Bijou: her "assistant" in a cooking off-collab (the stream title's word); "I'm Your Treasure Box" with Bijou and Cecilia. Ouro Kronii ("Pizza Time"): Portal 2 and Backrooms Cleanup Crew; in ENReco Raora called Kronii's character "Tam Tender." Takanashi Kiara: "HoloEU" with Cecilia; an Italian lesson, a proposed Kiara outfit on her "Raora's Clawset" art stream, the "Doom" in Kiara's Mage Arena collab, and "What an amazing swing" with Tsunomaki Watame at Serendipity. Ninomae Ina'nis, Shiori Novella and Oozora Subaru (JP): "Neko Kaburi-Na" on stage; Puyo Puyo Tetris 2 with Ina. Nerissa Ravencroft and Moona Hoshinova ("V3LVET"): Raft and Monster Hunter Wilds; Clubhouse Games with Nerissa. Mori Calliope and Gigi: Elden Ring Nightreign. Akai Haato (JP): Clubhouse Games; with Vestia Zeta (ID), a Super Mario Party off-collab. Inugami Korone: a senior she has named as her VTuber inspiration.
+**Dossier · Background Timeline:**
+| Date | Event | Relevance |
+|---|---|---|
+| Lore | A big cat from the Romance Empire who prepares Justice's criminal reports; sent after FUWAMOCO, she got distracted by crane games | [Official RP1] [Observed RP2 §Lore] |
+| 2024-06-22 PDT | Debut ("I've got my eyes on you 🐱 mamma mia"), last of Justice; official profile lists June 23 (JST) | [Official RP1] [Observed RP3] |
+| 2024-12-14 | VTuber Awards: Best Art VTuber | [Observed RP6; secondary report] |
+| 2025-08-09 PDT | 3D showcase (5 PM PDT; Aug 10 09:00 JST) | [Official RP8] |
+| 2025-08-16 PDT | Justice 3D collaboration stream | [Official RP8] |
+| 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, solo "Gacha x Gacha ADVENTURE!," "Neko Kaburi-Na" with Ina, Shiori and guest Oozora Subaru, "I'm Your Treasure Box" with Bijou and Cecilia | [Official RP5] |
+| 2025-11-16 | The "Doom" spell in Kiara's Mage Arena collab | [Observed RP7] |
+| 2026-05-10 | First birthday 3D live concert (secondary archive evidence, w37yVSXhV_c) | [Observed RP3] |
+| 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice (day 1); the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari"), "What an amazing swing" with Tsunomaki Watame and Kiara, and "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official RP4, RP9] |
+**Dossier · Hard Facts (continuity):**
+- Debut 2024-06-22 PDT (June 23 JST); birthday May 11; 155 cm; color pink; fans Chattini (Chattino, Chattina);
+  "Best Art VTuber" 2024 (secondary report).
+- 3D showcase 2025-08-09 PDT. Official music list: "Gacha×Gacha ADVENTURE!" and "Draw" (Draw's premiere
+  and release dates not yet established). Serendipity unit: B.F.F with FUWAMOCO.
+- Unit: hololive -Justice- (2024–), "hololive -Justice-" since the 2026-09 merger.
+
+### hololive -Justice- — `bible/world/hololive--Justice.md`
+**[SW] Other Names:** Justice, holoJustice, hololive English -Justice-
+**[SW] Description:** hololive English's fourth generation (debuted June 2024), now "hololive -Justice-": Elizabeth Rose Bloodflame, the "Scarlet Queen" with a British accent, who organizes the group and sings; Gigi Murin, a loud, chaotic gremlin "Chaser"; Cecilia Immergreen, a sarcastic ancient automaton maid who hates working and plays violin; and Raora Panthera, a cheerful big-cat artist with an Italian accent who loves pizza. In their shared lore they are law enforcers sent to catch Advent's escaped "criminals," working from a headquarters in the clouds, The Lookout, whose Panscope telescope can observe distant places; the pursuit supplies staged rivalries and Advent × Justice collab jokes rather than arrests. Their first group stream was titled "Ello! Hi! Hallo! Ciao!", and "Justice! Just like that!" recurs in their stream titles. Elizabeth coordinates the group; Gigi and Cecilia trade comic provocations, with the teasing running both ways, and Raora often joins in laughing. Milestones: the songs "ABOVE BELOW" (2024) and "SUPERNOVA SUPER GIRL" (2026); individual 3D showcases on August 1, 2, 8 and 9, 2025 (PDT) and a group 3D stream on August 16; their first in-person concert performance in 3D at the 2025 English concert; at the 2026 Serendipity concert the units Autofister (Gigi and Cecilia), Bloodraven (Elizabeth and Nerissa) and B.F.F (Raora and FUWAMOCO), with Elizabeth also singing alongside Kobo Kanaeru and Hakos Baelz, Cecilia alongside Vestia Zeta and Shiori and alongside Tsunomaki Watame and Calli, Gigi with Zeta and FUWAMOCO, and Raora with Watame and Kiara; and the second-anniversary live "How to Protect JUSTICE!" (2026). Fans: Rosarians, grems, Otomos, Chattini.
+**[SW] Rules:** At the 2026-09-30 baseline, all four remain members of Justice; the group is "hololive -Justice-" since the 2026 merger. The manhunt is lore they play for laughs, never real policing; Advent and Justice are friends and frequent collaborators. Each member speaks English with her own accent (British, American, German, Italian; the character cards teach each voice). Myth, Promise and Advent are their seniors.
+**Dossier · History:**
+| Date | Event | Trace left |
+|---|---|---|
+| 2024-06-18 | Announcement video "The Mission Begins!" | the manhunt premise |
+| 2024-06-21/22 PDT | Debuts: Elizabeth (06-21 8 PM), Gigi (06-21 8:45 PM), Cecilia (06-22 8 PM), Raora (06-22 8:45 PM); official profiles list June 22/23 (JST) | "ABOVE BELOW" released; first collab "Ello! Hi! Hallo! Ciao!" (06-22 9:30 PM PDT) |
+| 2024-06–07 | Content Warning, Chained Together, Left 4 Dead 2, a Justice Minecraft server and "Justice HQ" | the group's first weeks |
+| 2024-07-21/22 | "Advent VS Justice" in Party Animals | the rivalry as a game |
+| 2024-10-31/11-01 | "Justice's Haunted VR Investigation" in VRChat, with Advent visitors; chibi 3D models | Halloween tradition |
+| 2024-12-28 | Half-year anniversary (New Year outfits announced, shown 2025-01-01) | — |
+| 2025-01-31 | "ADVENT VS JUSTICE" Murky Divers with all nine | — |
+| 2025-03-08 | Justice hosted a watchalong of hololive 6th fes. (Expo 2025) Stage 1 ("FIRST STAGE with JUSTICE!") | [Observed S4 nEV7T8peRcw] |
+| 2025-06-20 | First anniversary, "Operation DECODE" | — |
+| 2025-08-01/02/08/09 PDT | Individual 3D showcases, each at 5 PM PDT: Elizabeth (08-01), Gigi (08-02), Cecilia (08-08), Raora (08-09) | [Official S7] |
+| 2025-08-16 PDT | Justice group 3D collaboration stream (5 PM PDT) | [Official S7] |
+| 2025-08-23 EDT | -All for One-: Justice's first group performance at an in-person concert venue in 3D ("ABOVE BELOW"); Cecilia's "Wind-Up" was the first Justice solo number of that concert; see the member files for their other stages | [Official S3] |
+| 2026-02-20/22 JST | GeoGuessr: Elizabeth, Gigi and Cecilia trained (02-20) and represented Justice against Advent (02-22), with Bijou hosting/commentating | [Observed, secondary event roster] |
+| 2026-05 | CCGG (Gigi and Cecilia) joint 3D live (secondary event coverage) and "CCGG MADNESS"; Raora's first birthday 3D live (05-10 JST / 05-09 PDT; secondary metadata) | — |
+| 2026-06-27 PDT | Second-anniversary live "How to Protect JUSTICE!" (06-28 JST) | [Official S1 video list] |
+| 2026-07-03/04 PDT | Serendipity: day 1 "SUPERNOVA SUPER GIRL" (Justice); Autofister (Gigi & Cecilia, "CCGG MADNESS"); "HELP!!" (Kobo Kanaeru with Bae and Elizabeth); "Break It Down" (Vestia Zeta with Shiori and Cecilia); "Cloudy Sheep" (Tsunomaki Watame with Calli and Cecilia). Day 2: the Advent+Justice medley ("Rebellion," "ABOVE BELOW"); Bloodraven (Nerissa & Elizabeth, "Cruel Angel's Thesis"); "MAKE IT, BREAK IT" (Zeta, FUWAMOCO and Gigi); "What an amazing swing" (Watame with Kiara and Raora); B.F.F (FUWAMOCO & Raora, "Inu Neko. Seishun Massakari") | [Official S6, S8] |
+| 2026-08/09 | Official -Justice- merch tie-ins: Bandai Namco Amusement America pop-up (2026-08-27), Pinfinity AR pins (2026-09-30) | [Official S1 news] |
+
+Group songs: "ABOVE BELOW" (2024), its "-Far East Remix-," "RENEGADE," "SUPERNOVA SUPER GIRL" (2026; the
+concert report spells it "SUPERGIRL"). The
+"#AdVSJus Motion Comic" (Advent vs Justice) ran to at least five episodes. [Official S1 music and video lists]
+**Dossier · Hard Facts (continuity):**
+- Debuts 2024-06-21/22 PDT (June 22/23 JST); 3D showcases 2025-08-01/02/08/09 PDT; group 3D collab 2025-08-16
+  PDT; members' colors: Elizabeth red, Gigi orange, Cecilia green, Raora pink. All four remain members at the
+  baseline.
+- Serendipity 2026 units (official billing): Autofister, Bloodraven, B.F.F.
+- The manhunt is lore played as a bit; Justice and Advent are friends and frequent collaborators.
+
+### Justice Pairs — `bible/world/Justice-Pairs.md`
+**[SW] Other Names:** CCGG, Autofister, Bloodraven, B.F.F, RPGG, Raviolin, FiddleFlame, FlamePanther, HoloEU, TimeChaser, Grem Reaper
+**[SW] Description:** Inside Justice: Gigi and Cecilia are an officially billed duo, Autofister (also CCGG), with the song "CCGG MADNESS," a joint 2026 3D live and a Serendipity unit; a secondary transcription has Cecilia's "Ew! Get away from me, you FREAK!", yet she says Gigi "doesn't easily get rattled and is very dependable," and Gigi says Cecilia is "good at getting stuff done." Gigi and Raora collaborate in Monster Hunter and food-ranking streams, and Raora designed Monster Hunter collaboration outfits for both of them. Gigi and Elizabeth cooperate in Operation Tango (Gigi's title: "i won't let Liz down!!!"). Cecilia and Raora play Minecraft together; Raora illustrated Cecilia's debut ending screen and Cecilia animated Raora's. Elizabeth and Raora held a chat-and-art collab in June 2024, and Elizabeth titled Raora's birthday stream "Happy Birthday Pretty Kitty!"; Cecilia showed Elizabeth around Minecraft, and a lore post blames Cecilia's old maid duties on an earlier Justice, not Elizabeth's. With Advent, their in-story "targets": Elizabeth is Nerissa's lore "mortal enemy" and her Bloodraven partner ("Cruel Angel's Thesis"); Gigi and Cecilia form GAGA with Shiori and Bijou; Raora and FUWAMOCO are the unit B.F.F; Graondstone names Raora, Bijou and Kaela Kovalskia. With seniors: Gigi repeatedly uses Calli's full name and jokes about getting her into League of Legends; within HoloEU, Raora teaches Kiara Italian and Cecilia speaks German with her; Cecilia plays up a rivalry with Ina; Kronii is Raora's "Pizza Time" collaborator and Gigi's Fatal Fury and Hytale partner, and secondary accounts record Kronii's "CLANKER" joke and Cecilia's "Owo-senpai"; Automatowl names Cecilia and Mumei. Beyond EN: Elizabeth plays with Kureiji Ollie and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit) and sang LYRA's "III" with FLOW GLOW's Koganei Niko; Kaela appears in Raora's fictional basement bit; Elizabeth records covers with JP members; Cecilia plays games with Tokino Sora; at Serendipity, Elizabeth sang with Kobo Kanaeru, Gigi and Cecilia with Vestia Zeta, and Cecilia and Raora with Tsunomaki Watame.
+**[SW] Rules:** Collaboration and unit names identify public creative partnerships: Autofister, Bloodraven and B.F.F are official concert billing, Grem Reaper and Pizza Time appear in member stream titles, and the rest are secondary labels. Unit labels such as GAGA, Graondstone, Automatowl, HoloEU and Cecemoco name combinations of members, never one person. "Wife," "husband," fictional children, the maid backstory, the uncle–nephew bit and "mortal enemy" are performed jokes or lore and establish no private relationship. The manhunt between Justice and Advent is shared fiction. Name only the members who took part in a collab.
+**Dossier · History:**
+| Date | Event | Trace left |
+|---|---|---|
+| 2024-06-26 | Raora's first collab, "Chat & Art w/ Liz!" | FlamePanther |
+| 2024-07-03 | Cecilia and Raora's Minecraft duo | Raviolin |
+| 2024-07-19 | Cecilia shows Elizabeth around Minecraft | FiddleFlame |
+| 2024-07-21/22 | Advent VS Justice, Party Animals | the rivalry as a game |
+| 2025-01-31 | Murky Divers, Advent × Justice (all nine) | — |
+| 2025-08-16 PDT | Justice group 3D collab (after the individual showcases 08-01/02/08/09 PDT) | official schedule |
+| 2025-08-23/24 EDT | -All for One-: "ALiCE&u," "START AGAIN," "High Tide" (Elizabeth); "Countach," "MONSTER," "III," "Wonky Monkey" (Gigi); "Wind-Up," "SHALLYS," "I'm Your Treasure Box" (Cecilia); "Gacha×Gacha ADVENTURE!," "Neko Kaburi-Na," "I'm Your Treasure Box" (Raora) | [Official S6] |
+| 2026-05 | CCGG 3D live, "CCGG MADNESS" | Gigi and Cecilia's unit |
+| 2026-07-03/04 PDT | Serendipity: units Autofister (Gigi & Cecilia), Bloodraven (Nerissa & Elizabeth), B.F.F (FUWAMOCO & Raora); guests' songs with Justice members: "HELP!!" (Kobo, Bae, Elizabeth), "Break It Down" (Zeta, Shiori, Cecilia), "Cloudy Sheep" (Watame, Calli, Cecilia), "MAKE IT, BREAK IT" (Zeta, FUWAMOCO, Gigi), "What an amazing swing" (Watame, Kiara, Raora) | [Official S3, S7] |
+**Dossier · Hard Facts (continuity):**
+- Serendipity 2026 units with Justice members (official billing): Autofister (Gigi & Cecilia), Bloodraven
+  (Nerissa & Elizabeth), B.F.F (FUWAMOCO & Raora).
+- "CCGG MADNESS" is Gigi and Cecilia's original song (2026); GAGA is a quartet; "2 Creatures + 1 Reaper" is a
+  Fuwawa collab, not a FUWAMOCO one.
+
+Incoming claims continue in `justice-incoming.md`.

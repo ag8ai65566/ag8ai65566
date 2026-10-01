@@ -26,8 +26,8 @@ Faction / organization (and workplace).
   female-talent branches (hololive, hololive English, hololive Indonesia, hololive DEV_IS) under a single
   "hololive," an organizational and branding change it described as removing regional limits; members had
   already collaborated across branches for years; former groups keep their names as units (hololive -Myth-, -Promise-, -Advent-, -Justice-).
-  Promotion is now done for all members in Japanese, Indonesian and English. [Observed S2 §2026,
-  secondary, citing the hololive Next broadcast of 2026-09-07; project.md]
+  Promotion is now done for all members in Japanese, Indonesian and English. [Official S6] [Observed S2
+  §2026, secondary, citing the hololive Next broadcast of 2026-09-07; project.md]
 - **Member status:** active talents; **affiliates** who concluded their general activities but remain
   with hololive and appear at individual events (Watson Amelia since 2024-09-30); **graduates** who left
   (Gawr Gura on 2025-05-01; in Promise, Ceres Fauna 2025-01-03 and Nanashi Mumei 2025-04-27). Graduates
@@ -110,6 +110,8 @@ cards "hololive History to 2022," "hololive History 2023-2026" and "Concerts and
   graduation (see Gura file G5)
 - S4 COVER Derivative Works Guidelines: https://hololivepro.com/en/terms/
 - S5 Serendipity concert site: https://serendipity.hololivepro.com/
+- S6 Official announcement (2026-09-07), "Renewal 2: One 'hololive' Beyond Regional and Group Boundaries":
+  https://hololive.hololivepro.com/en/news/20260907-01-234/
 
 ---
 
@@ -153,6 +155,10 @@ A "Starting soon" screen; a superchat chime; a concert LED wall behind a 3D avat
   "hololive -Justice-" and "Justice Pairs").
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh), with facts checked by Claude against the official Serendipity report and 3D schedule:** "All eighteen" → "All eighteen project cast members" (an internal cast count, not hololive's size).
+- **2026-10-01, P1 fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md):** the
+  2026-09-07 restructuring now cites COVER's official announcement (S6, read by Claude 2026-10-01: "we will
+  transcend regional and group boundaries and bring everything together as one 'hololive'"); the wiki stays
+  as secondary detail.
 
 ## Open Questions
 (None. The baseline date 2026-09-30 is fixed by the author.)

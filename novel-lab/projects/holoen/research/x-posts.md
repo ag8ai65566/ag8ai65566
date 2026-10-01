@@ -11,8 +11,8 @@ They are not quoted here. Status facts that matter for continuity are noted with
 
 ## How each of them writes on X (for stories where a character posts)
 - **Mori Calliope:** casual, lowercase-ish when joking ("doko the hell am i"), big formal headers for
-  announcements ("{{ ANNOUNCEMENT - NEW SONG }}", "♡✿{{ TONIGHT'S STREAM }}✿♡"); her emoticons are **:}**,
-  **8}** and **B(+)**; mixes Japanese ("20万チャンネル登録者ありがとね〜"); sincere milestone posts drop the
+  announcements ("{{ ANNOUNCEMENT - NEW SONG }}", "♡✿{{ TONIGHT'S STREAM }}✿♡"); her emoticons are **:}**
+  and **8}**; mixes Japanese ("20万チャンネル登録者ありがとね〜"); sincere milestone posts drop the
   persona ("I can't even be gangster or funny about this").
 - **Takanashi Kiara:** ALL-CAPS excitement ("MAKUHARI WAS ON FIRE!", "AYOOOOOOOOOOOOOOO"), runs of emoji
   (🎉😭😤🧐), KFP corporate bits ("A letter of absence from your CEO," "making kfp proud since 9000 BCE"),
@@ -68,7 +68,6 @@ They are not quoted here. Status facts that matter for continuity are noted with
   outfit reveal." — 1640737337536831488
 - 2025-09-25: "fun fact, this was the first game I wanted to play after my debut. 5 years late but, we run
   it? 8}" — 1971203323660583362
-- 2026-03-28: "I finally found out!!!! B(+)" — 2037900845707383246
 
 ### Takanashi Kiara (@takanashikiara)
 - 2020-09-08: "Me? Crazy?... how would you get that idea?" — 1303538520359796737

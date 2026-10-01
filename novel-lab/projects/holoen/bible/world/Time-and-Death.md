@@ -100,7 +100,7 @@ Time and Death
 Relationship
 
 ## [SW] Other Names
-Calli and Kronii, Kronii and Calli, Kronster
+Calli and Kronii, Kronii and Calli
 
 ## [SW] Description
 Mori Calliope and Ouro Kronii, the reaper and the Warden of Time: two low-voiced, deadpan sparring partners. Kronii's first official collaboration partner outside her own generation was Calli (2021). Calli calls her "Kronster"; their avatar heights are 168 cm and 167 cm, and Kronii never lets her forget the one centimeter. They billed themselves "Time and Death" in horror co-ops (Devour, the Backrooms, Lethal Company, The Outlast Trials) and share a cowboy TTRPG and a Powerwash "Get Your Shrek On." Their humor is mock feuds: when Kronii streamed a joke promotion of a made-up "$KRONII" coin in 2025, Calli answered with a mock exposé, "Exposing the Lies of $KRONII Coin" (a parody, not a real coin). They have collaborated repeatedly in horror and chaotic multiplayer games.
@@ -126,6 +126,9 @@ Black and deep blue; two tall avatars side by side, a scythe next to a clock; tw
 - **Also:** "the English branch's two deep voices" replaced by "low-voiced" (no ranking; IRyS and Nerissa
   now overlap their measured ranges).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "Kronster" removed from Other Names: it is Calli's nickname for Kronii and stays on Kronii's card, so it
+  no longer pulls in this pair card too.
 
 ## Open Questions
 (None.)

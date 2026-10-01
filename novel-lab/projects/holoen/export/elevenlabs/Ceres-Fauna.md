@@ -15,8 +15,8 @@ playfulness; can drop to a quiet whisper."
 - Her singing voice is a separate register; this sheet covers speech only.
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **55** (her calm default should stay steady; lower it only for the drama bits).
-  Similarity **75**.
+- `eleven_v4`. Stability **55%** (API `0.55`) (her calm default should stay steady; lower it only for the drama bits).
+  Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[soft, meandering]` or `[quick, rhythmic]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script

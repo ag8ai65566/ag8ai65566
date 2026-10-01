@@ -14,7 +14,7 @@ swings when telling a story."
 - Not a high, cutesy anime voice. Her singing voice is the persona's centerpiece; this sheet covers speech.
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **40** (she swings between deadpan, coaxing and mock outrage). Similarity **75**.
+- `eleven_v4`. Stability **40%** (API `0.40`) (she swings between deadpan, coaxing and mock outrage). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
 - "like," "okay," "mind you," "oh my god," "man," and the tag question "You know what I'm saying?"

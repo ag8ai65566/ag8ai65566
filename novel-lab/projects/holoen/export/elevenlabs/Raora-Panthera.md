@@ -12,7 +12,7 @@ complaints when a game goes wrong."
   cartoon "Italian."
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **50** (warm and even). Similarity **75**.
+- `eleven_v4`. Stability **50%** (API `0.50`) (warm and even). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rambling, warm]` or `[bubbly, quick]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script

@@ -1,2 +1,3 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 8e70e7c30733）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 868b885b2057）：作者裁決：加入 Fauna 與 Mumei 後的關係與世界觀連動修改（含 GPT 一輪審查的修正），依作者指示只審一輪
+- 2026-10-01 20:58 作者裁決收錄 final.md（sha256 fb9d97a7537e）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).

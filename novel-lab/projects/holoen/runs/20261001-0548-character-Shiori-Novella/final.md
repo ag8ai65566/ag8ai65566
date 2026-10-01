@@ -238,7 +238,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Advent-, hololive English -Advent- (former branch name), Advent
+hololive -Advent-, hololive English -Advent- (former branch name), Advent, Last Writes
 
 ## [SW] Other Names
 Shiori, Shiorin, The Archiver, Shiori Novella, Shiori~n
@@ -268,7 +268,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Shiori archives stories and memories worth saving. As a creator she wants to make fun memories with people and keep them, to make things with her own hands (vlogs, games, comics, music), and to keep surprising people, from improving her vocal stamina to a ghost-hunting vlog.
 
 ## [SW] Relationships
-Nerissa Ravencroft: Advent genmate and partner in the performed ShioRaven "wife" bit; Shiori plays hard to get. Their fictional daughter and the secret of Nerissa's horn piece belong to their shared character jokes. Koseki Bijou: genmate who calls her "our glorious leader" (Goth Rock; a "Gyatt Review"). FUWAMOCO: genmates who once mistook a Minecraft cow for her (Pen Pups). Mori Calliope: her 2026 Serendipity duo partner, who admits she is "a little obsessed with her"; Shiori admires Calli's "work ethic and boundaries," and they bond over dark taste and absurd deep-dives. Takanashi Kiara: hosted Advent on HOLOTALK; an occult handcam off-collab ("#shiotori"). Ouro Kronii: they hosted "Rating Your Clocks" together (2025) and sang "MONSTER" with Ina and Gigi at the 2025 concert. IRyS: Monster Hunter Wilds and PEAK (2025). Ceres Fauna (graduated 2025): with Nerissa, "Lonely in Gorgeous" at the 2024 English concert. Nanashi Mumei (graduated 2025): B-movie watchalongs. Ninomae Ina'nis: a "Rate Your Fears" nightmare talk. Watson Amelia: a VRChat aquarium visit with "Ame Senpai." Gigi Murin, Cecilia Immergreen, Elizabeth Rose Bloodflame (-Justice-, Advent's in-story "guards"): GAGA with Bijou, Gigi and Cecilia; Gigi, Elizabeth ("NovelFlame") and Nerissa voice her non-canon motion comic "Into The Void." Raora Panthera: a 2024 outfit-design collab and Blood Typers with Kronii and Bijou (2025). Cecilia and Vestia Zeta: "Break It Down" at Serendipity. Vestia Zeta (ID): "GreyScaleX," an official duo unit with "Purrfect Pair" merchandise (2026). Pavolia Reine and Airani Iofi (ID) with Gigi: the "Fanfic Club." HOLOSTARS: Machina X Flayon ("Goth Pilot"), Jurard T Rexford and Regis Altare in co-op games. Inugami Korone: the senior whose clips first led her to hololive.
+Nerissa Ravencroft: Advent genmate and partner in the performed ShioRaven "wife" bit; Shiori plays hard to get. Their fictional daughter and the secret of Nerissa's horn piece belong to their shared character jokes. Koseki Bijou: genmate who calls her "our glorious leader" (Goth Rock; a "Gyatt Review"). FUWAMOCO: genmates who once mistook a Minecraft cow for her (Pen Pups). Mori Calliope: her 2026 Serendipity partner in Last Writes ("When My Devil Rises"), who admits she is "a little obsessed with her"; Shiori admires Calli's "work ethic and boundaries," and they bond over dark taste and absurd deep-dives. Takanashi Kiara: hosted Advent on HOLOTALK; an occult handcam off-collab ("#shiotori"). Ouro Kronii: they hosted "Rating Your Clocks" together (2025) and sang "MONSTER" with Ina and Gigi at the 2025 concert. IRyS: Monster Hunter Wilds and PEAK (2025). Ceres Fauna (graduated 2025): with Nerissa, "Lonely in Gorgeous" at the 2024 English concert. Nanashi Mumei (graduated 2025): B-movie watchalongs. Ninomae Ina'nis: a "Rate Your Fears" nightmare talk. Watson Amelia: a VRChat aquarium visit with "Ame Senpai." Gigi Murin, Cecilia Immergreen, Elizabeth Rose Bloodflame (-Justice-, Advent's in-story "guards"): GAGA with Bijou, Gigi and Cecilia; Gigi, Elizabeth ("NovelFlame") and Nerissa voice her non-canon motion comic "Into The Void." Raora Panthera: a 2024 outfit-design collab and Blood Typers with Kronii and Bijou (2025). Cecilia and Vestia Zeta: "Break It Down" at Serendipity. Vestia Zeta (ID): "GreyScaleX," an official duo unit with "Purrfect Pair" merchandise (2026). Pavolia Reine and Airani Iofi (ID) with Gigi: the "Fanfic Club." HOLOSTARS: Machina X Flayon ("Goth Pilot"), Jurard T Rexford and Regis Altare in co-op games. Inugami Korone: the senior whose clips first led her to hololive.
 
 ## [SW] Secrets
 (none)
@@ -298,6 +298,8 @@ Nerissa Ravencroft: Advent genmate and partner in the performed ShioRaven "wife"
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** NovelFlame merged into the Into The Void entry (marked non-canon); Raora's Blood Typers roster
   and "Break It Down" (official Serendipity report) added.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "Last Writes" (official Serendipity unit with Calli) added to Groups and Relationships.
 
 ## Open Questions
 1. The sampled 2026 windows include a showcase with trailer audio and a co-op stream with viewers; counts are

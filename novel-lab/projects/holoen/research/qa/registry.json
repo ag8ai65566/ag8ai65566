@@ -1,0 +1,5874 @@
+{
+ "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
+ "baseline": "2026-09-30",
+ "commit": "6a9212f",
+ "files": {
+  "bible/characters/Cecilia-Immergreen.md": "06f3cf1723321906e1a0d55f80624d5ee431acc43016dbe0a844b6acb7f9bcfa",
+  "bible/characters/Ceres-Fauna.md": "58177a0ddea108b22eb080586981aa488344fed46d7cdb29bfbd867c2753f261",
+  "bible/characters/Elizabeth-Rose-Bloodflame.md": "acb10e5c529df6a381be0dd849dad65a6509a736f756529538f9b05fd84ff936",
+  "bible/characters/Fuwawa-Abyssgard.md": "5a7714bacf71e2fb704cf7cc2fdb3c2e25220220e8d40edee644d2a391c51d8d",
+  "bible/characters/Gawr-Gura.md": "7c0664d13e3014ac4d9bdc8043cb8e5998cc2ee5e1e78f36ca8982038bc57111",
+  "bible/characters/Gigi-Murin.md": "211875ad4315b65ed22f92af9b76b97b4a49a972fa9a06102c191bf61dc90824",
+  "bible/characters/IRyS.md": "a87383909b3a3308dbac97fdb365c5d995f7df6392768ddc3de639c3d43db110",
+  "bible/characters/Koseki-Bijou.md": "17cfde0ea295ce6bdfca0ee5e9b9ab544797f11bfe235cb1e5857ad01e732916",
+  "bible/characters/Mococo-Abyssgard.md": "f3c8a69c24b09726078761ad4f8617e0d903410473b16d1f7485399c471f4e1d",
+  "bible/characters/Mori-Calliope.md": "1088c5a2d234cbdb66e3470a77349896b2b9f4af3a298592e249d0ac68bce922",
+  "bible/characters/Nanashi-Mumei.md": "301fc74cc46140cbef3a75ff1b7e1ee214ecabd0047416d41d570e513791b19b",
+  "bible/characters/Nerissa-Ravencroft.md": "32ba28f5fa050c844a7ce68f2b058b2ce5dc12da5e5a8290fdc05cc226eba91f",
+  "bible/characters/Ninomae-Inanis.md": "eb77b9fad141dfbf425bf9f0d071579e82fd356de5cc8782336326601a42e3f4",
+  "bible/characters/Ouro-Kronii.md": "231a45be34e00bc2d5ec9d7aab5f9cba06084ee622068989156e83ad57e24f8e",
+  "bible/characters/Raora-Panthera.md": "5b0fe89511e5775d72afd10d059b5f32e47d6f802a958e91ee585965562197e9",
+  "bible/characters/Shiori-Novella.md": "b58865cce2de54e2e47dd69931d9e1fb006147331be13a4c0eef8d2ad74b3666",
+  "bible/characters/Takanashi-Kiara.md": "ba9ade5f8263935540b6c117b622e7438bf8833f867d7d345925c6f186cbef40",
+  "bible/characters/Watson-Amelia.md": "6f5acefd057751a8d4b5839097449cb40a87acb554c3e0767bc9bae6071e8a71",
+  "bible/world/Advent-Pairs.md": "a29ce6fb65652a2f3ae7dbce419f730ca865108a6f8d886d4a5f1c97b03e6775",
+  "bible/world/AmeSame.md": "03602b5cf2fd19d1fa524636a54d0af12f84d27e928ad6d6b558931a31b6360b",
+  "bible/world/Bone-Bros.md": "3456a63d52637b62b6c0e00e4961d7f469a52be8eb5d6bf792e331d5e83c2bdb",
+  "bible/world/Concerts-and-Live-Events.md": "b69265972269674b542b42cacc092e22803865b5fd5a5d134442be158a14b7b0",
+  "bible/world/Cross-Branch-Friends.md": "2bdbc0a32c5fc96f984c34d71525245d7f411eb57dc353b892bb9b940af075b0",
+  "bible/world/FUWAMOCO.md": "6a2b52537e6334152e0096e0deaa07291355ca5a1dc6282a22894999a985b754",
+  "bible/world/Fauna-and-Mumei-Pairs.md": "537910125c8df50e45997f2e88e7d10b8fe947f02690132a5ffe540a26808fa7",
+  "bible/world/IRyS-and-Nerissa-Pairs.md": "78df543313607b5f6ea8de02023d7f6d51d29fa0b56a6bafb36ca581bae0b459",
+  "bible/world/Justice-Pairs.md": "b2f0b86e432f2216851b75da2a9a289d2ca7f46eb552b93e0487ea884508aeaf",
+  "bible/world/Myth-and-Kronii-Other-Pairs.md": "12e7d39a7dbba46febc88e046b03cd8fcab96ec2cd1e1a690d0cd90223b18fda",
+  "bible/world/OctoClock.md": "5f0169e12e8b7e1daf0ee4e25d59ab371f65076c2bfaf71b54ffe630dc0483d9",
+  "bible/world/Streaming-Life.md": "5b091fb1cef5daa9dc040ddfdd304fd3d45c0799021268cff3e7de71ef90db61",
+  "bible/world/TakaMori.md": "f08b309972f08369237c383e0cbb2eadf207c0cd9fb7c66b4ef32c167bef0c78",
+  "bible/world/TakoTori.md": "7d9f6437b8eddda327832763bb81f8c9cc94b768d28c2842c00be6124928529c",
+  "bible/world/Time-Duo.md": "329fef0a8daa8d64cda9db111093e237037ca163d6014c601a5254011258d6a5",
+  "bible/world/Time-and-Death.md": "e1239bb9b6264defe6b070bb2d6a6d2b43539b191f835a133857822ccf646ac5",
+  "bible/world/VTuber-Persona-and-Lore.md": "f52c6b4e05a010ec1b56ea6ffdc69036bfe22b0dbecf9ee546d14773ff8e3105",
+  "bible/world/hololive--Advent.md": "86f13cba43a6dd61773c47009b0bca61fd56d67197f2515b9664e521f3461684",
+  "bible/world/hololive--Justice.md": "df1164544e49f40bf597d28c3833c996181d7fa58368541c87201a8757ae4222",
+  "bible/world/hololive--Myth.md": "2b3bc4123a1ffb55329852858f5e0d7e1fd23b2110c455496febb51e91dc971b",
+  "bible/world/hololive--Promise.md": "0d2fcd380c0a1e0908442d1ba9259b8ac035544dd37ea5144e038fb032b26740",
+  "bible/world/hololive-History-2023-2026.md": "912b17de9953d799e2d3f4aedc0151d7918e81ba7f35c70f8a391ea10fb63e98",
+  "bible/world/hololive-History-to-2022.md": "fb9d97a7537e801c5fc5606308d3e8e3d7d1c967225e1b175699f07ca1f08272",
+  "bible/world/hololive.md": "c9b3dd043ec2861d175d295c4c7be488fc7dca8b3f4b513fb2bcdaa8cf264fa2"
+ },
+ "cast": [
+  {
+   "name": "Cecilia Immergreen",
+   "file": "bible/characters/Cecilia-Immergreen.md",
+   "other_names": [
+    "Cecilia",
+    "Ceci",
+    "Cece",
+    "Immerhater",
+    "The Ancient Automaton"
+   ],
+   "groups": [
+    "hololive -Justice-",
+    "hololive English -Justice- (former branch name)",
+    "Justice",
+    "Autofister",
+    "CCGG"
+   ],
+   "status": "Cecilia is an active hololive member. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2024-06-22",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Cecilia-Immergreen.md › Background"
+   }
+  },
+  {
+   "name": "Ceres Fauna",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "other_names": [
+    "Fauna",
+    "Faufau",
+    "Fawna",
+    "Keeper of Nature",
+    "Mother Nature",
+    "Gamer Kirin",
+    "Ceres-chan"
+   ],
+   "groups": [
+    "hololive alum",
+    "hololive English -Promise- (graduated)",
+    "hololive English -Council- (former unit)"
+   ],
+   "status": "Fauna is a hololive alum: she graduated on 2025-01-03. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "graduated",
+    "debut": "2021-08-23",
+    "graduated": "2025-01-03",
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Ceres-Fauna.md › Background"
+   }
+  },
+  {
+   "name": "Elizabeth Rose Bloodflame",
+   "file": "bible/characters/Elizabeth-Rose-Bloodflame.md",
+   "other_names": [
+    "Elizabeth",
+    "Liz",
+    "ERB",
+    "Lizzie",
+    "Erby Berby",
+    "Lady Bloodflame",
+    "The Scarlet Queen"
+   ],
+   "groups": [
+    "hololive -Justice-",
+    "hololive English -Justice- (former branch name)",
+    "Justice",
+    "Bloodraven"
+   ],
+   "status": "Elizabeth is an active hololive member. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": null,
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Elizabeth-Rose-Bloodflame.md › Background"
+   }
+  },
+  {
+   "name": "Fuwawa Abyssgard",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "other_names": [
+    "Fuwawa",
+    "Fuwa-chan",
+    "Fuwa-nee",
+    "The Fluffy One",
+    "Fluffy One"
+   ],
+   "groups": [
+    "FUWAMOCO",
+    "hololive -Advent-",
+    "hololive English -Advent- (former branch name)",
+    "Advent",
+    "B.F.F"
+   ],
+   "status": "Fuwawa is an active hololive member. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": null,
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Fuwawa-Abyssgard.md › Background"
+   }
+  },
+  {
+   "name": "Gawr Gura",
+   "file": "bible/characters/Gawr-Gura.md",
+   "other_names": [
+    "Gura",
+    "Gooba",
+    "Goob",
+    "Goobidiba",
+    "Same-chan",
+    "Samegaki",
+    "City Pop Shark",
+    "がうる・ぐら"
+   ],
+   "groups": [
+    "hololive -Myth- (graduated)",
+    "hololive alum",
+    "Myth",
+    "hololive English (former branch name)"
+   ],
+   "status": "She has no supernatural abilities; her lore is a performed persona. Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": null,
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Gawr-Gura.md › Background"
+   }
+  },
+  {
+   "name": "Gigi Murin",
+   "file": "bible/characters/Gigi-Murin.md",
+   "other_names": [
+    "Gigi",
+    "Gi Murin",
+    "G Pain",
+    "GeeGee",
+    "Da Fister",
+    "The Free-spirited Chaser"
+   ],
+   "groups": [
+    "hololive -Justice-",
+    "hololive English -Justice- (former branch name)",
+    "Justice",
+    "Autofister",
+    "CCGG"
+   ],
+   "status": "Gigi is an active hololive member. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2024-06-21",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Gigi-Murin.md › Background"
+   }
+  },
+  {
+   "name": "IRyS",
+   "file": "bible/characters/IRyS.md",
+   "other_names": [
+    "Irys",
+    "SeisoRyS",
+    "YabaIRyS"
+   ],
+   "groups": [
+    "hololive -Promise-",
+    "Promise",
+    "hololive English -Project: HOPE- (former)",
+    "hololive English (former branch name)",
+    "BaeRyS"
+   ],
+   "status": "She has no supernatural abilities; her lore is a performed persona. IRyS is a VTuber and singer whose lore, a persona she plays for laughs, makes her a nephilim who was once the embodiment of hope in \"The Paradise\" and reawakened in an age of despair to deliver hope through her songs; she doesn't speak of what came before.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2021-07-11",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/IRyS.md › Background"
+   }
+  },
+  {
+   "name": "Koseki Bijou",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "other_names": [
+    "Bijou",
+    "Biboo",
+    "Koseki",
+    "Beebs",
+    "Beejoe",
+    "Lil'Rock",
+    "Jewel of Emotions",
+    "Oobib"
+   ],
+   "groups": [
+    "hololive -Advent-",
+    "hololive English -Advent- (former branch name)",
+    "Advent",
+    "Rocku Wawa"
+   ],
+   "status": "Bijou is an active hololive member. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2023-07-30",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Koseki-Bijou.md › Background"
+   }
+  },
+  {
+   "name": "Mococo Abyssgard",
+   "file": "bible/characters/Mococo-Abyssgard.md",
+   "other_names": [
+    "Mococo",
+    "Moco-chan",
+    "Mogogo",
+    "Mogojyan",
+    "The Fuzzy One"
+   ],
+   "groups": [
+    "FUWAMOCO",
+    "hololive -Advent-",
+    "hololive English -Advent- (former branch name)",
+    "Advent",
+    "B.F.F"
+   ],
+   "status": "Mococo is a hololive member. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": null,
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Mococo-Abyssgard.md › Background"
+   }
+  },
+  {
+   "name": "Mori Calliope",
+   "file": "bible/characters/Mori-Calliope.md",
+   "other_names": [
+    "Calli",
+    "Calliope",
+    "Mori",
+    "Calliope Mori",
+    "森カリオペ",
+    "森美声",
+    "Mor Mori",
+    "Kawaiiope",
+    "Miss Mori",
+    "Mowi",
+    "CallioP",
+    "Cori Malliope"
+   ],
+   "groups": [
+    "hololive",
+    "hololive -Myth-",
+    "Myth",
+    "CHADCast",
+    "hololive English (former branch name)",
+    "Last Writes"
+   ],
+   "status": "She has no supernatural abilities; her lore is a performed persona. Calli is a VTuber whose lore, a persona she plays for laughs, makes her the Grim Reaper's first apprentice: when modern medicine gutted the reaping business, she became an idol-rapper VTuber to harvest souls through music and streams.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": null,
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Mori-Calliope.md › Background"
+   }
+  },
+  {
+   "name": "Nanashi Mumei",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "other_names": [
+    "Mumei",
+    "Moom",
+    "Moomers",
+    "Meimei",
+    "Moomsies",
+    "Mumi-chan",
+    "Myumyei",
+    "Guardian of Civilization",
+    "Towl"
+   ],
+   "groups": [
+    "hololive alum",
+    "hololive English -Promise- (graduated)",
+    "hololive English -Council- (former unit)",
+    "HOLOTORI"
+   ],
+   "status": "Mumei is a hololive alum: she graduated on 2025-04-27 (04-28 JST). She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "graduated",
+    "debut": "2021-08-23",
+    "graduated": "2025-04-27",
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Nanashi-Mumei.md › Background"
+   }
+  },
+  {
+   "name": "Nerissa Ravencroft",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "other_names": [
+    "Nerissa",
+    "Rissa",
+    "Neri",
+    "Demon of Sound",
+    "Demon of Soup"
+   ],
+   "groups": [
+    "hololive -Advent-",
+    "Advent",
+    "hololive English (former branch name)",
+    "Bloodraven"
+   ],
+   "status": "She has no supernatural abilities; her lore is a performed persona. Nerissa is a VTuber whose lore, a persona she plays for laughs, makes her the Demon of Sound: a singer whose love-filled voice could drive the world mad, sealed by the gods in The Cell with one horn broken, until she escaped with the rest of Advent, master key on her keychain.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2023-07-31",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Nerissa-Ravencroft.md › Background"
+   }
+  },
+  {
+   "name": "Ninomae Ina'nis",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "other_names": [
+    "Ina",
+    "Ina'nis",
+    "Inya",
+    "Ninomanyo Inya'nis",
+    "一伊那尓栖"
+   ],
+   "groups": [
+    "hololive",
+    "hololive -Myth-",
+    "Myth",
+    "hololive English (former branch name)",
+    "Octo'clock"
+   ],
+   "status": "She has no supernatural abilities; her lore is a performed persona. Ina is a VTuber whose lore, a persona she plays gently and for laughs, makes her an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles and began hearing Ancient Whispers; the book is her floating companion, AO-chan.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": null,
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Ninomae-Inanis.md › Background"
+   }
+  },
+  {
+   "name": "Ouro Kronii",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "other_names": [
+    "Kronii",
+    "Warden of Time",
+    "オーロ・クロニー",
+    "Kronini",
+    "Kroniicopter",
+    "Kronster",
+    "Tam Tender",
+    "Owo-senpai"
+   ],
+   "groups": [
+    "hololive",
+    "hololive -Promise-",
+    "Promise",
+    "Council (former unit name)",
+    "Octo'clock"
+   ],
+   "status": "She has no supernatural abilities; her lore is a performed persona. Kronii is a VTuber whose lore, a persona she plays deadpan, makes her the Warden of Time, the third concept created by the gods and the one most bound to humankind.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": null,
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Ouro-Kronii.md › Background"
+   }
+  },
+  {
+   "name": "Raora Panthera",
+   "file": "bible/characters/Raora-Panthera.md",
+   "other_names": [
+    "Raora",
+    "Rao",
+    "Rara",
+    "The Artist with the God Eyes"
+   ],
+   "groups": [
+    "hololive -Justice-",
+    "hololive English -Justice- (former branch name)",
+    "Justice",
+    "B.F.F"
+   ],
+   "status": "Raora is an active hololive member. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2024-06-22",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Raora-Panthera.md › Background"
+   }
+  },
+  {
+   "name": "Shiori Novella",
+   "file": "bible/characters/Shiori-Novella.md",
+   "other_names": [
+    "Shiori",
+    "Shiorin",
+    "The Archiver",
+    "Shiori Novella",
+    "Shiori~n"
+   ],
+   "groups": [
+    "hololive -Advent-",
+    "hololive English -Advent- (former branch name)",
+    "Advent",
+    "Last Writes"
+   ],
+   "status": "Shiori is an active hololive member. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2023-07-30",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Shiori-Novella.md › Background"
+   }
+  },
+  {
+   "name": "Takanashi Kiara",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "other_names": [
+    "Kiara",
+    "Kiwawa",
+    "Wawa",
+    "Tenchou",
+    "Kusotori",
+    "小鳥遊キアラ"
+   ],
+   "groups": [
+    "hololive",
+    "hololive -Myth-",
+    "Myth",
+    "hololive English (former branch name)",
+    "Rocku Wawa"
+   ],
+   "status": "She has no supernatural abilities; her lore is a performed persona. Kiara is a VTuber whose lore, a persona she plays for laughs, makes her a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain; a phoenix can always be reborn.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": null,
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Takanashi-Kiara.md › Background"
+   }
+  },
+  {
+   "name": "Watson Amelia",
+   "file": "bible/characters/Watson-Amelia.md",
+   "other_names": [
+    "Ame",
+    "Amelia",
+    "Amelia Watson",
+    "Amechan",
+    "Gremlin Ame",
+    "ワトソン・アメリア"
+   ],
+   "groups": [
+    "hololive (affiliate)",
+    "hololive -Myth- (affiliate)",
+    "Myth",
+    "hololive English (former branch name)"
+   ],
+   "status": "She has no supernatural abilities; her lore is a performed persona. Ame is a VTuber and a hololive affiliate: she concluded her regular activities on September 30, 2024, and appears at individually announced events.",
+   "status_interval": {
+    "state_at_baseline": "affiliate",
+    "debut": null,
+    "graduated": null,
+    "regular_activities_concluded": "September 30, 2024",
+    "source": "bible/characters/Watson-Amelia.md › Background"
+   }
+  }
+ ],
+ "world": [
+  {
+   "name": "Advent Pairs",
+   "file": "bible/world/Advent-Pairs.md",
+   "role": "Relationship",
+   "other_names": [
+    "ShioRaven",
+    "Goth Rock",
+    "Pen Pups",
+    "JewelBird",
+    "Diamond Dogs",
+    "Sound Hounds",
+    "Grindstone",
+    "GAGA",
+    "FUWAMOCALLI",
+    "Rocku Wawa",
+    "GreyScaleX",
+    "Last Writes"
+   ]
+  },
+  {
+   "name": "AmeSame",
+   "file": "bible/world/AmeSame.md",
+   "role": "Relationship",
+   "other_names": [
+    "Ame and Gura",
+    "Gura and Ame",
+    "The Fish Tank",
+    "amesame"
+   ]
+  },
+  {
+   "name": "Bone Bros",
+   "file": "bible/world/Bone-Bros.md",
+   "role": "Relationship",
+   "other_names": [
+    "Calli and Gura",
+    "Gura and Calli"
+   ]
+  },
+  {
+   "name": "Concerts and Live Events",
+   "file": "bible/world/Concerts-and-Live-Events.md",
+   "role": "Culture",
+   "other_names": [
+    "fes",
+    "hololive fes",
+    "SUPER EXPO",
+    "EN concert",
+    "Serendipity",
+    "world tour",
+    "3D live",
+    "birthday live",
+    "aftertalk"
+   ]
+  },
+  {
+   "name": "Cross-Branch Friends",
+   "file": "bible/world/Cross-Branch-Friends.md",
+   "role": "Relationship",
+   "other_names": [
+    "Death Star",
+    "MoRikka",
+    "LYRA",
+    "Holodeath",
+    "PavoNashi",
+    "HOLOTORI",
+    "UMISEA",
+    "HoloJEI",
+    "TakoNeko",
+    "K.I.R.A",
+    "OKFAIR",
+    "Star Flower",
+    "IRySora",
+    "soranii",
+    "Apex Predators",
+    "KoMeHa",
+    "BLUE·MEGAMISAMA",
+    "V3LVET"
+   ]
+  },
+  {
+   "name": "FUWAMOCO",
+   "file": "bible/world/FUWAMOCO.md",
+   "role": "Faction",
+   "other_names": [
+    "FWMC",
+    "Fuwawa and Mococo",
+    "Abyssgard twins",
+    "FUWAMOCO MORNING",
+    "Pero"
+   ]
+  },
+  {
+   "name": "Fauna and Mumei Pairs",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "role": "Relationship",
+   "other_names": [
+    "Fauna and Mumei",
+    "Mumei and Fauna",
+    "It's Not a Phase",
+    "KronMei",
+    "gumei",
+    "Fauna and Gura",
+    "Mumei and Kiara",
+    "Mumei and Kronii"
+   ]
+  },
+  {
+   "name": "IRyS and Nerissa Pairs",
+   "file": "bible/world/IRyS-and-Nerissa-Pairs.md",
+   "role": "Relationship",
+   "other_names": [
+    "MorIRyS",
+    "CHADCast",
+    "KiaRissa",
+    "IRyS and Kronii",
+    "IRyS and Ina",
+    "Nerissa and Calli",
+    "Nerissa and IRyS"
+   ]
+  },
+  {
+   "name": "Justice Pairs",
+   "file": "bible/world/Justice-Pairs.md",
+   "role": "Relationship",
+   "other_names": [
+    "CCGG",
+    "Autofister",
+    "Bloodraven",
+    "B.F.F",
+    "RPGG",
+    "Raviolin",
+    "FiddleFlame",
+    "FlamePanther",
+    "HoloEU",
+    "TimeChaser",
+    "Grem Reaper"
+   ]
+  },
+  {
+   "name": "Myth and Kronii: Other Pairs",
+   "file": "bible/world/Myth-and-Kronii-Other-Pairs.md",
+   "role": "Relationship",
+   "other_names": [
+    "Kiara and Ame",
+    "Ame and Kiara",
+    "Kiara and Gura",
+    "Gura and Kiara",
+    "Calli and Ina",
+    "Ina and Calli",
+    "Calli and Ame",
+    "Ame and Calli",
+    "Ina and Ame",
+    "Ame and Ina",
+    "Ina and Gura",
+    "Gura and Ina",
+    "Kiara and Kronii",
+    "Kronii and Kiara",
+    "Gura and Kronii",
+    "Kronii and Gura"
+   ]
+  },
+  {
+   "name": "Octo'Clock",
+   "file": "bible/world/OctoClock.md",
+   "role": "Relationship",
+   "other_names": [
+    "Ina and Kronii",
+    "Kronii and Ina",
+    "Octo'clock",
+    "Octo'Clock"
+   ]
+  },
+  {
+   "name": "Streaming Life",
+   "file": "bible/world/Streaming-Life.md",
+   "role": "Culture",
+   "other_names": [
+    "hololive livestream",
+    "hololive collab",
+    "off-collab",
+    "offcollab",
+    "superchat",
+    "supa",
+    "akasupa",
+    "members-only stream",
+    "unarchived karaoke"
+   ]
+  },
+  {
+   "name": "TakaMori",
+   "file": "bible/world/TakaMori.md",
+   "role": "Relationship",
+   "other_names": [
+    "Takamori",
+    "TakaMori",
+    "Calli and Kiara",
+    "Kiara and Calli"
+   ]
+  },
+  {
+   "name": "TakoTori",
+   "file": "bible/world/TakoTori.md",
+   "role": "Relationship",
+   "other_names": [
+    "Kiara and Ina",
+    "Ina and Kiara",
+    "Drawn to Dawn"
+   ]
+  },
+  {
+   "name": "Time Duo",
+   "file": "bible/world/Time-Duo.md",
+   "role": "Relationship",
+   "other_names": [
+    "Ame and Kronii",
+    "Kronii and Ame"
+   ]
+  },
+  {
+   "name": "Time and Death",
+   "file": "bible/world/Time-and-Death.md",
+   "role": "Relationship",
+   "other_names": [
+    "Calli and Kronii",
+    "Kronii and Calli"
+   ]
+  },
+  {
+   "name": "VTuber Persona and Lore",
+   "file": "bible/world/VTuber-Persona-and-Lore.md",
+   "role": "Premise",
+   "other_names": [
+    "VTuber lore",
+    "hololive persona",
+    "kayfabe",
+    "in-character",
+    "canonically"
+   ]
+  },
+  {
+   "name": "hololive -Advent-",
+   "file": "bible/world/hololive--Advent.md",
+   "role": "Faction",
+   "other_names": [
+    "Advent",
+    "holoAdvent",
+    "hololive English -Advent-",
+    "Adventrix",
+    "The Cell"
+   ]
+  },
+  {
+   "name": "hololive -Justice-",
+   "file": "bible/world/hololive--Justice.md",
+   "role": "Faction",
+   "other_names": [
+    "Justice",
+    "holoJustice",
+    "hololive English -Justice-"
+   ]
+  },
+  {
+   "name": "hololive -Myth-",
+   "file": "bible/world/hololive--Myth.md",
+   "role": "Faction",
+   "other_names": [
+    "Myth",
+    "holoMyth",
+    "HoloMyth",
+    "hololive -Myth-",
+    "hololive English first generation"
+   ]
+  },
+  {
+   "name": "hololive -Promise-",
+   "file": "bible/world/hololive--Promise.md",
+   "role": "Faction",
+   "other_names": [
+    "hololive -Promise-",
+    "holoPromise",
+    "hololive Council",
+    "holoCouncil",
+    "CouncilRyS",
+    "BaeRyS"
+   ]
+  },
+  {
+   "name": "hololive History 2023-2026",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "role": "Event",
+   "other_names": [
+    "recent hololive history",
+    "the merger",
+    "the 2025 graduations",
+    "holoEN's later generations"
+   ]
+  },
+  {
+   "name": "hololive History to 2022",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "role": "Event",
+   "other_names": [
+    "early hololive",
+    "Myth's debut"
+   ]
+  },
+  {
+   "name": "hololive",
+   "file": "bible/world/hololive.md",
+   "role": "Faction",
+   "other_names": [
+    "hololive production",
+    "COVER",
+    "holoEN",
+    "hololive English"
+   ]
+  }
+ ],
+ "units": [
+  {
+   "unit": "hololive -Myth-",
+   "members": [
+    "Mori Calliope",
+    "Takanashi Kiara",
+    "Ninomae Ina'nis",
+    "Gawr Gura",
+    "Watson Amelia"
+   ],
+   "evidence": "official"
+  },
+  {
+   "unit": "hololive -Promise- (from 2023-10; earlier Council and Project: HOPE)",
+   "members": [
+    "IRyS",
+    "Ouro Kronii",
+    "Hakos Baelz",
+    "Ceres Fauna",
+    "Nanashi Mumei"
+   ],
+   "evidence": "official"
+  },
+  {
+   "unit": "hololive -Advent-",
+   "members": [
+    "Shiori Novella",
+    "Koseki Bijou",
+    "Nerissa Ravencroft",
+    "Fuwawa Abyssgard",
+    "Mococo Abyssgard"
+   ],
+   "evidence": "official"
+  },
+  {
+   "unit": "hololive -Justice-",
+   "members": [
+    "Elizabeth Rose Bloodflame",
+    "Gigi Murin",
+    "Cecilia Immergreen",
+    "Raora Panthera"
+   ],
+   "evidence": "official"
+  },
+  {
+   "unit": "Last Writes",
+   "members": [
+    "Mori Calliope",
+    "Shiori Novella"
+   ],
+   "evidence": "official Serendipity billing, 2026"
+  },
+  {
+   "unit": "Octo'clock",
+   "members": [
+    "Ninomae Ina'nis",
+    "Ouro Kronii"
+   ],
+   "evidence": "official Serendipity billing, 2026"
+  },
+  {
+   "unit": "Rocku Wawa",
+   "members": [
+    "Takanashi Kiara",
+    "Koseki Bijou"
+   ],
+   "evidence": "official Serendipity billing, 2026"
+  },
+  {
+   "unit": "BaeRyS",
+   "members": [
+    "Hakos Baelz",
+    "IRyS"
+   ],
+   "evidence": "official Serendipity billing, 2026"
+  },
+  {
+   "unit": "Bloodraven",
+   "members": [
+    "Nerissa Ravencroft",
+    "Elizabeth Rose Bloodflame"
+   ],
+   "evidence": "official Serendipity billing, 2026"
+  },
+  {
+   "unit": "B.F.F",
+   "members": [
+    "Fuwawa Abyssgard",
+    "Mococo Abyssgard",
+    "Raora Panthera"
+   ],
+   "evidence": "official Serendipity billing, 2026"
+  },
+  {
+   "unit": "Autofister (also CCGG)",
+   "members": [
+    "Gigi Murin",
+    "Cecilia Immergreen"
+   ],
+   "evidence": "official Serendipity billing and shop, 2026"
+  },
+  {
+   "unit": "LYRA",
+   "members": [
+    "Amane Kanata",
+    "Koganei Niko",
+    "Mori Calliope",
+    "Ayunda Risu",
+    "Elizabeth Rose Bloodflame"
+   ],
+   "evidence": "mix engineer's credits (a remix-version cover of \"III\")"
+  }
+ ],
+ "credits": [
+  {
+   "work": "LYRA \"III\" remix-version cover",
+   "credited": [
+    "Amane Kanata",
+    "Koganei Niko",
+    "Mori Calliope",
+    "Ayunda Risu",
+    "Elizabeth Rose Bloodflame"
+   ],
+   "role": "vocals",
+   "evidence": "mix engineer's credits (foriio 2122478)"
+  },
+  {
+   "work": "Cecilia's debut stream",
+   "credited": [
+    "Raora Panthera"
+   ],
+   "role": "ending screen and sweeping-scene art",
+   "evidence": "archived debut credits p_ZQs-kgUKI"
+  },
+  {
+   "work": "Cecilia's debut stream",
+   "credited": [
+    "nullrefrepro"
+   ],
+   "role": "chat-game implementation",
+   "evidence": "archived debut credits p_ZQs-kgUKI"
+  },
+  {
+   "work": "Raora's debut stream",
+   "credited": [
+    "Cecilia Immergreen"
+   ],
+   "role": "ending-screen and mascot-stinger animation",
+   "evidence": "archived debut credits JW7j8tKMOfY"
+  },
+  {
+   "work": "CCGG MADNESS",
+   "credited": [
+    "Cecilia Immergreen"
+   ],
+   "role": "lyrics, direction, vocals",
+   "evidence": "archived MV credits bTxEGwMOQQI"
+  },
+  {
+   "work": "CCGG MADNESS",
+   "credited": [
+    "Gigi Murin"
+   ],
+   "role": "vocals, lyrics help, chibi-model design",
+   "evidence": "archived MV credits bTxEGwMOQQI"
+  },
+  {
+   "work": "CCGG MADNESS",
+   "credited": [
+    "Nerissa Ravencroft"
+   ],
+   "role": "lyrics help",
+   "evidence": "archived MV credits bTxEGwMOQQI"
+  },
+  {
+   "work": "Mephisto (duet cover)",
+   "credited": [
+    "Elizabeth Rose Bloodflame",
+    "Banzoin Hakka"
+   ],
+   "role": "vocals; Elizabeth produced and arranged",
+   "evidence": "archived credits jqFPgcMt_Jo"
+  },
+  {
+   "work": "Bright Tonight",
+   "credited": [
+    "IRyS",
+    "Ouro Kronii",
+    "Fuwawa Abyssgard",
+    "Mococo Abyssgard",
+    "Gigi Murin"
+   ],
+   "role": "vocals (group release 2025-12-22)",
+   "evidence": "official music page 685"
+  },
+  {
+   "work": "Into The Void (non-canon motion comic)",
+   "credited": [
+    "Shiori Novella",
+    "Elizabeth Rose Bloodflame",
+    "Gigi Murin",
+    "Nerissa Ravencroft",
+    "Mori Calliope (episode 2)"
+   ],
+   "role": "voice cast",
+   "evidence": "archived episode credits"
+  },
+  {
+   "work": "Wind-Up",
+   "credited": [
+    "Cecilia Immergreen"
+   ],
+   "role": "composition and lyrics, with production help from Aethoro",
+   "evidence": "creator interview (Siliconera)"
+  },
+  {
+   "work": "enough",
+   "credited": [
+    "Gigi Murin",
+    "FLAVORFOLEY"
+   ],
+   "role": "vocals; composition, arrangement and mixing by FLAVORFOLEY",
+   "evidence": "archived MV credits 3m15lUh0WP4"
+  }
+ ],
+ "reference_only": [
+  "Hakos Baelz",
+  "Tsukumo Sana",
+  "Kobo Kanaeru",
+  "Vestia Zeta",
+  "Kureiji Ollie",
+  "Kaela Kovalskia",
+  "Moona Hoshinova",
+  "Ayunda Risu",
+  "Anya Melfissa",
+  "Pavolia Reine",
+  "Airani Iofifteen",
+  "Ookami Mio",
+  "Tsunomaki Watame",
+  "Oozora Subaru",
+  "Houshou Marine",
+  "Inugami Korone",
+  "Omaru Polka",
+  "Momosuzu Nene",
+  "Kazama Iroha",
+  "Roboco",
+  "Tokino Sora",
+  "Yuzuki Choco",
+  "Nekomata Okayu",
+  "Shirakami Fubuki",
+  "Hakui Koyori",
+  "Akai Haato",
+  "Hoshimachi Suisei",
+  "Usada Pekora",
+  "Shiranui Flare",
+  "AZKi",
+  "Amane Kanata",
+  "Natsuiro Matsuri",
+  "Ichijou Ririka",
+  "Koganei Niko",
+  "Hiodoshi Ao",
+  "Machina X Flayon",
+  "Jurard T Rexford",
+  "Crimzon Ruze",
+  "Gavis Bettel",
+  "Banzoin Hakka",
+  "Josuiji Shinri",
+  "Arurandeisu",
+  "Astel Leda",
+  "Octavio",
+  "Regis Altare",
+  "Rikka",
+  "Shirogane Noel"
+ ],
+ "aliases": {
+  "cecilia immergreen": [
+   "Cecilia Immergreen"
+  ],
+  "cecilia": [
+   "Cecilia Immergreen"
+  ],
+  "ceci": [
+   "Cecilia Immergreen"
+  ],
+  "cece": [
+   "Cecilia Immergreen"
+  ],
+  "immerhater": [
+   "Cecilia Immergreen"
+  ],
+  "the ancient automaton": [
+   "Cecilia Immergreen"
+  ],
+  "ceres fauna": [
+   "Ceres Fauna"
+  ],
+  "fauna": [
+   "Ceres Fauna"
+  ],
+  "faufau": [
+   "Ceres Fauna"
+  ],
+  "fawna": [
+   "Ceres Fauna"
+  ],
+  "keeper of nature": [
+   "Ceres Fauna"
+  ],
+  "mother nature": [
+   "Ceres Fauna"
+  ],
+  "gamer kirin": [
+   "Ceres Fauna"
+  ],
+  "ceres-chan": [
+   "Ceres Fauna"
+  ],
+  "elizabeth rose bloodflame": [
+   "Elizabeth Rose Bloodflame"
+  ],
+  "elizabeth": [
+   "Elizabeth Rose Bloodflame"
+  ],
+  "liz": [
+   "Elizabeth Rose Bloodflame"
+  ],
+  "erb": [
+   "Elizabeth Rose Bloodflame"
+  ],
+  "lizzie": [
+   "Elizabeth Rose Bloodflame"
+  ],
+  "erby berby": [
+   "Elizabeth Rose Bloodflame"
+  ],
+  "lady bloodflame": [
+   "Elizabeth Rose Bloodflame"
+  ],
+  "the scarlet queen": [
+   "Elizabeth Rose Bloodflame"
+  ],
+  "fuwawa abyssgard": [
+   "Fuwawa Abyssgard"
+  ],
+  "fuwawa": [
+   "Fuwawa Abyssgard"
+  ],
+  "fuwa-chan": [
+   "Fuwawa Abyssgard"
+  ],
+  "fuwa-nee": [
+   "Fuwawa Abyssgard"
+  ],
+  "the fluffy one": [
+   "Fuwawa Abyssgard"
+  ],
+  "fluffy one": [
+   "Fuwawa Abyssgard"
+  ],
+  "gawr gura": [
+   "Gawr Gura"
+  ],
+  "gura": [
+   "Gawr Gura"
+  ],
+  "gooba": [
+   "Gawr Gura"
+  ],
+  "goob": [
+   "Gawr Gura"
+  ],
+  "goobidiba": [
+   "Gawr Gura"
+  ],
+  "same-chan": [
+   "Gawr Gura"
+  ],
+  "samegaki": [
+   "Gawr Gura"
+  ],
+  "city pop shark": [
+   "Gawr Gura"
+  ],
+  "がうる・ぐら": [
+   "Gawr Gura"
+  ],
+  "gigi murin": [
+   "Gigi Murin"
+  ],
+  "gigi": [
+   "Gigi Murin"
+  ],
+  "gi murin": [
+   "Gigi Murin"
+  ],
+  "g pain": [
+   "Gigi Murin"
+  ],
+  "geegee": [
+   "Gigi Murin"
+  ],
+  "da fister": [
+   "Gigi Murin"
+  ],
+  "the free-spirited chaser": [
+   "Gigi Murin"
+  ],
+  "irys": [
+   "IRyS",
+   "IRyS"
+  ],
+  "seisorys": [
+   "IRyS"
+  ],
+  "yabairys": [
+   "IRyS"
+  ],
+  "koseki bijou": [
+   "Koseki Bijou"
+  ],
+  "bijou": [
+   "Koseki Bijou"
+  ],
+  "biboo": [
+   "Koseki Bijou"
+  ],
+  "koseki": [
+   "Koseki Bijou"
+  ],
+  "beebs": [
+   "Koseki Bijou"
+  ],
+  "beejoe": [
+   "Koseki Bijou"
+  ],
+  "lil'rock": [
+   "Koseki Bijou"
+  ],
+  "jewel of emotions": [
+   "Koseki Bijou"
+  ],
+  "oobib": [
+   "Koseki Bijou"
+  ],
+  "mococo abyssgard": [
+   "Mococo Abyssgard"
+  ],
+  "mococo": [
+   "Mococo Abyssgard"
+  ],
+  "moco-chan": [
+   "Mococo Abyssgard"
+  ],
+  "mogogo": [
+   "Mococo Abyssgard"
+  ],
+  "mogojyan": [
+   "Mococo Abyssgard"
+  ],
+  "the fuzzy one": [
+   "Mococo Abyssgard"
+  ],
+  "mori calliope": [
+   "Mori Calliope"
+  ],
+  "calli": [
+   "Mori Calliope"
+  ],
+  "calliope": [
+   "Mori Calliope"
+  ],
+  "mori": [
+   "Mori Calliope"
+  ],
+  "calliope mori": [
+   "Mori Calliope"
+  ],
+  "森カリオペ": [
+   "Mori Calliope"
+  ],
+  "森美声": [
+   "Mori Calliope"
+  ],
+  "mor mori": [
+   "Mori Calliope"
+  ],
+  "kawaiiope": [
+   "Mori Calliope"
+  ],
+  "miss mori": [
+   "Mori Calliope"
+  ],
+  "mowi": [
+   "Mori Calliope"
+  ],
+  "calliop": [
+   "Mori Calliope"
+  ],
+  "cori malliope": [
+   "Mori Calliope"
+  ],
+  "nanashi mumei": [
+   "Nanashi Mumei"
+  ],
+  "mumei": [
+   "Nanashi Mumei"
+  ],
+  "moom": [
+   "Nanashi Mumei"
+  ],
+  "moomers": [
+   "Nanashi Mumei"
+  ],
+  "meimei": [
+   "Nanashi Mumei"
+  ],
+  "moomsies": [
+   "Nanashi Mumei"
+  ],
+  "mumi-chan": [
+   "Nanashi Mumei"
+  ],
+  "myumyei": [
+   "Nanashi Mumei"
+  ],
+  "guardian of civilization": [
+   "Nanashi Mumei"
+  ],
+  "towl": [
+   "Nanashi Mumei"
+  ],
+  "nerissa ravencroft": [
+   "Nerissa Ravencroft"
+  ],
+  "nerissa": [
+   "Nerissa Ravencroft"
+  ],
+  "rissa": [
+   "Nerissa Ravencroft"
+  ],
+  "neri": [
+   "Nerissa Ravencroft"
+  ],
+  "demon of sound": [
+   "Nerissa Ravencroft"
+  ],
+  "demon of soup": [
+   "Nerissa Ravencroft"
+  ],
+  "ninomae ina'nis": [
+   "Ninomae Ina'nis"
+  ],
+  "ina": [
+   "Ninomae Ina'nis"
+  ],
+  "ina'nis": [
+   "Ninomae Ina'nis"
+  ],
+  "inya": [
+   "Ninomae Ina'nis"
+  ],
+  "ninomanyo inya'nis": [
+   "Ninomae Ina'nis"
+  ],
+  "一伊那尓栖": [
+   "Ninomae Ina'nis"
+  ],
+  "ouro kronii": [
+   "Ouro Kronii"
+  ],
+  "kronii": [
+   "Ouro Kronii"
+  ],
+  "warden of time": [
+   "Ouro Kronii"
+  ],
+  "オーロ・クロニー": [
+   "Ouro Kronii"
+  ],
+  "kronini": [
+   "Ouro Kronii"
+  ],
+  "kroniicopter": [
+   "Ouro Kronii"
+  ],
+  "kronster": [
+   "Ouro Kronii"
+  ],
+  "tam tender": [
+   "Ouro Kronii"
+  ],
+  "owo-senpai": [
+   "Ouro Kronii"
+  ],
+  "raora panthera": [
+   "Raora Panthera"
+  ],
+  "raora": [
+   "Raora Panthera"
+  ],
+  "rao": [
+   "Raora Panthera"
+  ],
+  "rara": [
+   "Raora Panthera"
+  ],
+  "the artist with the god eyes": [
+   "Raora Panthera"
+  ],
+  "shiori novella": [
+   "Shiori Novella",
+   "Shiori Novella"
+  ],
+  "shiori": [
+   "Shiori Novella"
+  ],
+  "shiorin": [
+   "Shiori Novella"
+  ],
+  "the archiver": [
+   "Shiori Novella"
+  ],
+  "shiori~n": [
+   "Shiori Novella"
+  ],
+  "takanashi kiara": [
+   "Takanashi Kiara"
+  ],
+  "kiara": [
+   "Takanashi Kiara"
+  ],
+  "kiwawa": [
+   "Takanashi Kiara"
+  ],
+  "wawa": [
+   "Takanashi Kiara"
+  ],
+  "tenchou": [
+   "Takanashi Kiara"
+  ],
+  "kusotori": [
+   "Takanashi Kiara"
+  ],
+  "小鳥遊キアラ": [
+   "Takanashi Kiara"
+  ],
+  "watson amelia": [
+   "Watson Amelia"
+  ],
+  "ame": [
+   "Watson Amelia"
+  ],
+  "amelia": [
+   "Watson Amelia"
+  ],
+  "amelia watson": [
+   "Watson Amelia"
+  ],
+  "amechan": [
+   "Watson Amelia"
+  ],
+  "gremlin ame": [
+   "Watson Amelia"
+  ],
+  "ワトソン・アメリア": [
+   "Watson Amelia"
+  ],
+  "advent pairs": [
+   "Advent Pairs"
+  ],
+  "shioraven": [
+   "Advent Pairs"
+  ],
+  "goth rock": [
+   "Advent Pairs"
+  ],
+  "pen pups": [
+   "Advent Pairs"
+  ],
+  "jewelbird": [
+   "Advent Pairs"
+  ],
+  "diamond dogs": [
+   "Advent Pairs"
+  ],
+  "sound hounds": [
+   "Advent Pairs"
+  ],
+  "grindstone": [
+   "Advent Pairs"
+  ],
+  "gaga": [
+   "Advent Pairs"
+  ],
+  "fuwamocalli": [
+   "Advent Pairs"
+  ],
+  "rocku wawa": [
+   "Advent Pairs"
+  ],
+  "greyscalex": [
+   "Advent Pairs"
+  ],
+  "last writes": [
+   "Advent Pairs"
+  ],
+  "amesame": [
+   "AmeSame",
+   "AmeSame"
+  ],
+  "ame and gura": [
+   "AmeSame"
+  ],
+  "gura and ame": [
+   "AmeSame"
+  ],
+  "the fish tank": [
+   "AmeSame"
+  ],
+  "bone bros": [
+   "Bone Bros"
+  ],
+  "calli and gura": [
+   "Bone Bros"
+  ],
+  "gura and calli": [
+   "Bone Bros"
+  ],
+  "concerts and live events": [
+   "Concerts and Live Events"
+  ],
+  "fes": [
+   "Concerts and Live Events"
+  ],
+  "hololive fes": [
+   "Concerts and Live Events"
+  ],
+  "super expo": [
+   "Concerts and Live Events"
+  ],
+  "en concert": [
+   "Concerts and Live Events"
+  ],
+  "serendipity": [
+   "Concerts and Live Events"
+  ],
+  "world tour": [
+   "Concerts and Live Events"
+  ],
+  "3d live": [
+   "Concerts and Live Events"
+  ],
+  "birthday live": [
+   "Concerts and Live Events"
+  ],
+  "aftertalk": [
+   "Concerts and Live Events"
+  ],
+  "cross-branch friends": [
+   "Cross-Branch Friends"
+  ],
+  "death star": [
+   "Cross-Branch Friends"
+  ],
+  "morikka": [
+   "Cross-Branch Friends"
+  ],
+  "lyra": [
+   "Cross-Branch Friends"
+  ],
+  "holodeath": [
+   "Cross-Branch Friends"
+  ],
+  "pavonashi": [
+   "Cross-Branch Friends"
+  ],
+  "holotori": [
+   "Cross-Branch Friends"
+  ],
+  "umisea": [
+   "Cross-Branch Friends"
+  ],
+  "holojei": [
+   "Cross-Branch Friends"
+  ],
+  "takoneko": [
+   "Cross-Branch Friends"
+  ],
+  "k.i.r.a": [
+   "Cross-Branch Friends"
+  ],
+  "okfair": [
+   "Cross-Branch Friends"
+  ],
+  "star flower": [
+   "Cross-Branch Friends"
+  ],
+  "irysora": [
+   "Cross-Branch Friends"
+  ],
+  "soranii": [
+   "Cross-Branch Friends"
+  ],
+  "apex predators": [
+   "Cross-Branch Friends"
+  ],
+  "komeha": [
+   "Cross-Branch Friends"
+  ],
+  "blue·megamisama": [
+   "Cross-Branch Friends"
+  ],
+  "v3lvet": [
+   "Cross-Branch Friends"
+  ],
+  "fuwamoco": [
+   "FUWAMOCO"
+  ],
+  "fwmc": [
+   "FUWAMOCO"
+  ],
+  "fuwawa and mococo": [
+   "FUWAMOCO"
+  ],
+  "abyssgard twins": [
+   "FUWAMOCO"
+  ],
+  "fuwamoco morning": [
+   "FUWAMOCO"
+  ],
+  "pero": [
+   "FUWAMOCO"
+  ],
+  "fauna and mumei pairs": [
+   "Fauna and Mumei Pairs"
+  ],
+  "fauna and mumei": [
+   "Fauna and Mumei Pairs"
+  ],
+  "mumei and fauna": [
+   "Fauna and Mumei Pairs"
+  ],
+  "it's not a phase": [
+   "Fauna and Mumei Pairs"
+  ],
+  "kronmei": [
+   "Fauna and Mumei Pairs"
+  ],
+  "gumei": [
+   "Fauna and Mumei Pairs"
+  ],
+  "fauna and gura": [
+   "Fauna and Mumei Pairs"
+  ],
+  "mumei and kiara": [
+   "Fauna and Mumei Pairs"
+  ],
+  "mumei and kronii": [
+   "Fauna and Mumei Pairs"
+  ],
+  "irys and nerissa pairs": [
+   "IRyS and Nerissa Pairs"
+  ],
+  "morirys": [
+   "IRyS and Nerissa Pairs"
+  ],
+  "chadcast": [
+   "IRyS and Nerissa Pairs"
+  ],
+  "kiarissa": [
+   "IRyS and Nerissa Pairs"
+  ],
+  "irys and kronii": [
+   "IRyS and Nerissa Pairs"
+  ],
+  "irys and ina": [
+   "IRyS and Nerissa Pairs"
+  ],
+  "nerissa and calli": [
+   "IRyS and Nerissa Pairs"
+  ],
+  "nerissa and irys": [
+   "IRyS and Nerissa Pairs"
+  ],
+  "justice pairs": [
+   "Justice Pairs"
+  ],
+  "ccgg": [
+   "Justice Pairs"
+  ],
+  "autofister": [
+   "Justice Pairs"
+  ],
+  "bloodraven": [
+   "Justice Pairs"
+  ],
+  "b.f.f": [
+   "Justice Pairs"
+  ],
+  "rpgg": [
+   "Justice Pairs"
+  ],
+  "raviolin": [
+   "Justice Pairs"
+  ],
+  "fiddleflame": [
+   "Justice Pairs"
+  ],
+  "flamepanther": [
+   "Justice Pairs"
+  ],
+  "holoeu": [
+   "Justice Pairs"
+  ],
+  "timechaser": [
+   "Justice Pairs"
+  ],
+  "grem reaper": [
+   "Justice Pairs"
+  ],
+  "myth and kronii: other pairs": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "kiara and ame": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "ame and kiara": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "kiara and gura": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "gura and kiara": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "calli and ina": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "ina and calli": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "calli and ame": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "ame and calli": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "ina and ame": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "ame and ina": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "ina and gura": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "gura and ina": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "kiara and kronii": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "kronii and kiara": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "gura and kronii": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "kronii and gura": [
+   "Myth and Kronii: Other Pairs"
+  ],
+  "octo'clock": [
+   "Octo'Clock",
+   "Octo'Clock",
+   "Octo'Clock"
+  ],
+  "ina and kronii": [
+   "Octo'Clock"
+  ],
+  "kronii and ina": [
+   "Octo'Clock"
+  ],
+  "streaming life": [
+   "Streaming Life"
+  ],
+  "hololive livestream": [
+   "Streaming Life"
+  ],
+  "hololive collab": [
+   "Streaming Life"
+  ],
+  "off-collab": [
+   "Streaming Life"
+  ],
+  "offcollab": [
+   "Streaming Life"
+  ],
+  "superchat": [
+   "Streaming Life"
+  ],
+  "supa": [
+   "Streaming Life"
+  ],
+  "akasupa": [
+   "Streaming Life"
+  ],
+  "members-only stream": [
+   "Streaming Life"
+  ],
+  "unarchived karaoke": [
+   "Streaming Life"
+  ],
+  "takamori": [
+   "TakaMori",
+   "TakaMori",
+   "TakaMori"
+  ],
+  "calli and kiara": [
+   "TakaMori"
+  ],
+  "kiara and calli": [
+   "TakaMori"
+  ],
+  "takotori": [
+   "TakoTori"
+  ],
+  "kiara and ina": [
+   "TakoTori"
+  ],
+  "ina and kiara": [
+   "TakoTori"
+  ],
+  "drawn to dawn": [
+   "TakoTori"
+  ],
+  "time duo": [
+   "Time Duo"
+  ],
+  "ame and kronii": [
+   "Time Duo"
+  ],
+  "kronii and ame": [
+   "Time Duo"
+  ],
+  "time and death": [
+   "Time and Death"
+  ],
+  "calli and kronii": [
+   "Time and Death"
+  ],
+  "kronii and calli": [
+   "Time and Death"
+  ],
+  "vtuber persona and lore": [
+   "VTuber Persona and Lore"
+  ],
+  "vtuber lore": [
+   "VTuber Persona and Lore"
+  ],
+  "hololive persona": [
+   "VTuber Persona and Lore"
+  ],
+  "kayfabe": [
+   "VTuber Persona and Lore"
+  ],
+  "in-character": [
+   "VTuber Persona and Lore"
+  ],
+  "canonically": [
+   "VTuber Persona and Lore"
+  ],
+  "hololive -advent-": [
+   "hololive -Advent-"
+  ],
+  "advent": [
+   "hololive -Advent-"
+  ],
+  "holoadvent": [
+   "hololive -Advent-"
+  ],
+  "hololive english -advent-": [
+   "hololive -Advent-"
+  ],
+  "adventrix": [
+   "hololive -Advent-"
+  ],
+  "the cell": [
+   "hololive -Advent-"
+  ],
+  "hololive -justice-": [
+   "hololive -Justice-"
+  ],
+  "justice": [
+   "hololive -Justice-"
+  ],
+  "holojustice": [
+   "hololive -Justice-"
+  ],
+  "hololive english -justice-": [
+   "hololive -Justice-"
+  ],
+  "hololive -myth-": [
+   "hololive -Myth-",
+   "hololive -Myth-"
+  ],
+  "myth": [
+   "hololive -Myth-"
+  ],
+  "holomyth": [
+   "hololive -Myth-",
+   "hololive -Myth-"
+  ],
+  "hololive english first generation": [
+   "hololive -Myth-"
+  ],
+  "hololive -promise-": [
+   "hololive -Promise-",
+   "hololive -Promise-"
+  ],
+  "holopromise": [
+   "hololive -Promise-"
+  ],
+  "hololive council": [
+   "hololive -Promise-"
+  ],
+  "holocouncil": [
+   "hololive -Promise-"
+  ],
+  "councilrys": [
+   "hololive -Promise-"
+  ],
+  "baerys": [
+   "hololive -Promise-"
+  ],
+  "hololive history 2023-2026": [
+   "hololive History 2023-2026"
+  ],
+  "recent hololive history": [
+   "hololive History 2023-2026"
+  ],
+  "the merger": [
+   "hololive History 2023-2026"
+  ],
+  "the 2025 graduations": [
+   "hololive History 2023-2026"
+  ],
+  "holoen's later generations": [
+   "hololive History 2023-2026"
+  ],
+  "hololive history to 2022": [
+   "hololive History to 2022"
+  ],
+  "early hololive": [
+   "hololive History to 2022"
+  ],
+  "myth's debut": [
+   "hololive History to 2022"
+  ],
+  "hololive": [
+   "hololive"
+  ],
+  "hololive production": [
+   "hololive"
+  ],
+  "cover": [
+   "hololive"
+  ],
+  "holoen": [
+   "hololive"
+  ],
+  "hololive english": [
+   "hololive"
+  ]
+ },
+ "events": [
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "An ancient automaton built for eternal servitude (official); secondary lore places her origin in Immerheim; in a public joke she attributed her maid duties to an earlier Justice",
+   "evidence": "[Official CI1] [X post CI6, secondary]",
+   "file": "bible/characters/Cecilia-Immergreen.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-06-22 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Debut (\"It's wind-up time!!\"), with a chat-controlled game (implemented by nullrefrepro per the credits; Raora drew the ending screen and sweeping art) and a violin performance; official profile lists June 23 (JST)",
+   "evidence": "[Official CI1] [Observed CI3]",
+   "file": "bible/characters/Cecilia-Immergreen.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-08 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D showcase (5 PM PDT; Aug 9 09:00 JST)",
+   "evidence": "[Official CI7]",
+   "file": "bible/characters/Cecilia-Immergreen.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-16 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Justice 3D collaboration stream",
+   "evidence": "[Official CI7]",
+   "file": "bible/characters/Cecilia-Immergreen.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-23/24 EDT",
+   "precision": "day-range",
+   "zone": "EDT",
+   "text": "-All for One-: \"ABOVE BELOW\" with Justice; \"Wind-Up,\" the first Justice solo; \"SHALLYS\" with Ina and FUWAMOCO (on violin); \"I'm Your Treasure Box\" with Bijou and Raora",
+   "evidence": "[Official CI5]",
+   "file": "bible/characters/Cecilia-Immergreen.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05",
+   "precision": "month",
+   "zone": null,
+   "text": "CCGG 3D live with Gigi (after-talk 05-20, secondary archive evidence); \"CCGG MADNESS\" MV (05-17; digital 05-29)",
+   "evidence": "[Official CI1] [Observed CI3 1rIXU_4xGvY, bTxEGwMOQQI]",
+   "file": "bible/characters/Cecilia-Immergreen.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Serendipity: \"SUPERNOVA SUPER GIRL\" with Justice, \"CCGG MADNESS\" as Autofister with Gigi, \"Break It Down\" with Vestia Zeta and Shiori, \"Cloudy Sheep\" with Tsunomaki Watame and Calli (day 1); \"ABOVE BELOW\" in the Advent+Justice medley (day 2)",
+   "evidence": "[Official CI4, CI8]",
+   "file": "bible/characters/Cecilia-Immergreen.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Keeper of \"Nature,\" the second concept created by the gods; a druid with kirin blood",
+   "evidence": "[Official F1]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-08-23 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debuts with hololive English -Council- (first post on X: \"oh deer\")",
+   "evidence": "[Official F1] [Observed F4]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-05-14",
+   "precision": "day",
+   "zone": null,
+   "text": "First original song \"Let Me Stay Here\"",
+   "evidence": "[Observed F2 §2022]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-10",
+   "precision": "month",
+   "zone": null,
+   "text": "\"BAE & FAUNA'S MONTH OF HORRORS\"",
+   "evidence": "[Observed F4, F3]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-03-19",
+   "precision": "day",
+   "zone": null,
+   "text": "3D idol costume at hololive 4th fes. (day 2)",
+   "evidence": "[Observed F2 §2023]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-07-02",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive English 1st concert \"-Connect the World-\"",
+   "evidence": "[Observed F2 §2023]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-10-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Joins hololive English -Promise-",
+   "evidence": "[Official]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-24/25",
+   "precision": "day-range",
+   "zone": null,
+   "text": "hololive English 2nd concert -Breaking Dimensions-: premieres \"It's Not a Phase\" with Mumei and sings \"Mayonaka no Door\" solo (day 1); \"Lonely in Gorgeous\" with Shiori and Nerissa (day 2)",
+   "evidence": "[Official F5]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-14",
+   "precision": "day",
+   "zone": null,
+   "text": "-Promise- musical \"The Broken Promise\"",
+   "evidence": "[Observed F2 §2024]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-22",
+   "precision": "day",
+   "zone": null,
+   "text": "\"It's Not a Phase\" (Mumei & Fauna) released",
+   "evidence": "[Official F6]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-27",
+   "precision": "day",
+   "zone": null,
+   "text": "1,000,000 subscribers; Kiara's HOLOTALK guest the same day",
+   "evidence": "[Observed F2; F3 title]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-31",
+   "precision": "day",
+   "zone": null,
+   "text": "The World Tree is complete",
+   "evidence": "[Observed F3 title]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-01-03",
+   "precision": "day",
+   "zone": null,
+   "text": "Graduates; last post on X: \"LOVE & PEACE / Love, Fauna\"",
+   "evidence": "[Observed F2, secondary]",
+   "file": "bible/characters/Ceres-Fauna.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "The Scarlet Queen and Harbinger of Order from Great Exardia; joined hololive to keep an eye on Advent and to become an idol; human, and not royalty despite the title",
+   "evidence": "[Official EB1] [Observed EB2 §Lore, secondary]",
+   "file": "bible/characters/Elizabeth-Rose-Bloodflame.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-06-21 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Debut (\"Ello Ello Ello~!\"), first of Justice; official profile lists June 22 (JST)",
+   "evidence": "[Official EB1] [Observed EB3]",
+   "file": "bible/characters/Elizabeth-Rose-Bloodflame.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-01-18",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Mephisto\" cover with HOLOSTARS' Banzoin Hakka",
+   "evidence": "[Observed EB3]",
+   "file": "bible/characters/Elizabeth-Rose-Bloodflame.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-01 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D showcase (5 PM PDT); she arranged and directed most of it, including \"Giri Giri\" with Vestia Zeta",
+   "evidence": "[Official EB7] [ASR EB20]",
+   "file": "bible/characters/Elizabeth-Rose-Bloodflame.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-16 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Justice 3D collaboration stream",
+   "evidence": "[Official EB7]",
+   "file": "bible/characters/Elizabeth-Rose-Bloodflame.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-23/24 EDT",
+   "precision": "day-range",
+   "zone": "EDT",
+   "text": "-All for One-: \"ABOVE BELOW\" with Justice, \"ALiCE&u\" with Nerissa and guest Ayunda Risu, solo \"Stellar Stellar,\" \"START AGAIN\" with Calli, IRyS and Nerissa (day 2 opener), \"High Tide\" with Kronii and guest Kureiji Ollie",
+   "evidence": "[Official EB5]",
+   "file": "bible/characters/Elizabeth-Rose-Bloodflame.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05",
+   "precision": "month",
+   "zone": null,
+   "text": "2026 birthday live with guests from several branches; the performances were released as cover videos (\"Live from COVER Corp. Studio\")",
+   "evidence": "[Observed EB3, archived credits]",
+   "file": "bible/characters/Elizabeth-Rose-Bloodflame.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Serendipity: \"HELP!!\" with Kobo Kanaeru and Hakos Baelz (day 1); unit Bloodraven with Nerissa, \"Cruel Angel's Thesis\" (day 2); \"SUPERNOVA SUPER GIRL\" and \"ABOVE BELOW\" with Justice",
+   "evidence": "[Official EB4, EB8]",
+   "file": "bible/characters/Elizabeth-Rose-Bloodflame.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Twin demonic guard dog from the Northwest Passage in the demon world; sealed in The Cell \"for being a pain in the godly behind\"",
+   "evidence": "[Official FW1] [Observed FW2 §Lore]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-07-31 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debuts with Mococo as FUWAMOCO in hololive English -Advent-",
+   "evidence": "[Official FW1]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-12",
+   "precision": "month",
+   "zone": null,
+   "text": "VTuber Awards: \"League of Their Own\" (as FUWAMOCO)",
+   "evidence": "[Observed FW2 §Awards]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-07-31",
+   "precision": "day",
+   "zone": null,
+   "text": "First original song \"Born to be 'BAU'DOL☆★\"",
+   "evidence": "[Observed FW2 §2024]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-10 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D debut with a wrestling segment and cameos by Okayu and Korone",
+   "evidence": "[Observed FW2 §2024]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-10-12",
+   "precision": "day",
+   "zone": null,
+   "text": "FUWAMOCO reach 1,000,000 subscribers, first in Advent",
+   "evidence": "[Observed FW2 §2024]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12",
+   "precision": "month",
+   "zone": null,
+   "text": "VTuber Awards: \"VTuber of the Year\" (as FUWAMOCO)",
+   "evidence": "[Observed FW2 §Awards]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-02-02",
+   "precision": "day",
+   "zone": null,
+   "text": "First birthday 3D concert, with Advent and JP guests",
+   "evidence": "[Observed FW3 ouQF2A1l_cI]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-23/24",
+   "precision": "day-range",
+   "zone": null,
+   "text": "-All for One-: \"HOT DUCK!\", \"Howling,\" \"Lifetime Showtime,\" \"SHALLYS\"",
+   "evidence": "[Official FW5]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-04",
+   "precision": "month",
+   "zone": null,
+   "text": "\"Mekurumeku Rendezvous,\" a TV anime ending theme",
+   "evidence": "[Observed FW3 vSwxof0K8lk]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Serendipity: the unit B.F.F with Mococo and Raora Panthera (\"Inu Neko. Seishun Massakari,\" day 2)",
+   "evidence": "[Official FW4; Serendipity report]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-08-29",
+   "precision": "day",
+   "zone": null,
+   "text": "First album \"FUWAMOCO à la mode\" announced",
+   "evidence": "[Observed FW2 §2026; X via wiki]",
+   "file": "bible/characters/Fuwawa-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Descendant of Atlantis (now ruins); swam to land because it was \"so boring down there\"; bought her clothes at a beachside store, paying in seashells; talks to marine life",
+   "evidence": "[Official G1] [Observed G2 §Lore]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Age jokes put her \"somewhere in the 9,000s,\" with varying numbers across exchanges (9,361, 9,927, 9,485…); no fixed age is adopted. June 20 marks her arrival on land, not a remembered birthday",
+   "evidence": "[Observed G2 §Gura's age and §Lore]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-09-13 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debuts in hololive English -Myth-, 12 minutes late, first word \"a\"; sings city pop and becomes \"City Pop Shark\"",
+   "evidence": "[Official G1] [Observed G2 §Miscellaneous; G4]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-12 / 2021-03",
+   "precision": "month-range",
+   "zone": null,
+   "text": "Japanese and German lessons with Kiara",
+   "evidence": "[Observed G13]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-05",
+   "precision": "month",
+   "zone": null,
+   "text": "The Fish Tank talk show with Ame",
+   "evidence": "[Observed G6]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-06-22",
+   "precision": "day",
+   "zone": null,
+   "text": "Original song \"REFLECT\"",
+   "evidence": "[Observed G2 §2021; G4]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-02-03",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Q\" with Mori Calliope (DECO*27)",
+   "evidence": "[Official G15]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-09",
+   "precision": "month",
+   "zone": null,
+   "text": "\"2.0\" model update",
+   "evidence": "[Observed G3]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-05-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Graduates; final 3D mini live; last post \"keep swimming! always! 💙\"",
+   "evidence": "[Official G5] [Observed G3, G2]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Alum; her history stays part of Myth's shared memory",
+   "evidence": "[Adaptation]",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "A gremlin \"Chaser\" from Freesia, \"born and raised under the flag of Freedom\"",
+   "evidence": "[Official GG1]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-06-21 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Debut (\"GG STANDS FOR GIGI!\"), second of Justice; official profile lists June 22 (JST)",
+   "evidence": "[Official GG1] [Observed GG3]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-09-21",
+   "precision": "day",
+   "zone": null,
+   "text": "Sings \"September\" 120 times in an eight-hour unarchived karaoke",
+   "evidence": "[Observed GG2, secondary]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-14",
+   "precision": "day",
+   "zone": null,
+   "text": "VTuber Awards: Most Chaotic VTuber",
+   "evidence": "[Observed GG6; secondary reporting]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-02 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D showcase (5 PM PDT; Aug 3 00:00 UTC)",
+   "evidence": "[Official GG8]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-16 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Justice 3D collaboration stream",
+   "evidence": "[Official GG8]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-23/24 EDT",
+   "precision": "day-range",
+   "zone": "EDT",
+   "text": "-All for One-: \"ABOVE BELOW\" with Justice, \"Countach\" with Bae and guest Kureiji Ollie, \"MONSTER\" with Ina, Kronii and Shiori, solo \"Wonky Monkey,\" \"III\" with Nerissa",
+   "evidence": "[Official GG5]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-10-18",
+   "precision": "day",
+   "zone": null,
+   "text": "First original song \"I'll still be here\" presented (digital release 10-20)",
+   "evidence": "[Official GG7] [Observed GG2]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-12-22",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Bright Tonight\" with IRyS, Kronii and FUWAMOCO released",
+   "evidence": "[Official GG7]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05",
+   "precision": "month",
+   "zone": null,
+   "text": "CCGG 3D live with Cecilia; \"CCGG MADNESS\" MV (05-17; digital 05-29)",
+   "evidence": "[Official GG1, GG7] [Observed GG3]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-25",
+   "precision": "day",
+   "zone": null,
+   "text": "Original MV \"enough\"",
+   "evidence": "[Observed GG3]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Serendipity: \"SUPERNOVA SUPER GIRL\" with Justice and \"CCGG MADNESS\" as Autofister with Cecilia (day 1); \"MAKE IT, BREAK IT\" with Vestia Zeta and FUWAMOCO, and \"ABOVE BELOW\" in the Advent+Justice medley (day 2)",
+   "evidence": "[Official GG4, GG9]",
+   "file": "bible/characters/Gigi-Murin.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "A nephilim who was the embodiment of hope in \"The Paradise,\" reawakened in an age of despair to deliver hope through song",
+   "evidence": "[Official R1]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-07-11",
+   "precision": "day",
+   "zone": null,
+   "text": "Debuts as the sole member of hololive English -Project: HOPE-, a VSinger",
+   "evidence": "[Official R1] [Observed R2]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-07-29",
+   "precision": "day",
+   "zone": null,
+   "text": "First official collab: Just Shapes & Beats with Mori Calliope",
+   "evidence": "[Observed R2 §2021]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-09-29",
+   "precision": "day",
+   "zone": null,
+   "text": "The Minecraft \"bento\" that starts the BaeRyS married/divorced bit",
+   "evidence": "[Observed R2 §Relationships]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-10-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae",
+   "evidence": "[Observed R2 §2023]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-14",
+   "precision": "day",
+   "zone": null,
+   "text": "-Promise- musical \"The Broken Promise\"",
+   "evidence": "[Observed R2 §2024]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11-17",
+   "precision": "day",
+   "zone": null,
+   "text": "3D live \"The Devil Wears Hope\"",
+   "evidence": "[Observed R3 title]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-03-15/16",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Birthday: \"DIAMOND GIRLFRIEND,\" EP \"YaBAI,\" 3D live \"HOPE UPON A STAR\"",
+   "evidence": "[Observed R2 §2025; R3]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-07-11",
+   "precision": "day",
+   "zone": null,
+   "text": "4th anniversary; 3.0 model",
+   "evidence": "[Observed R3 title]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03",
+   "precision": "month",
+   "zone": null,
+   "text": "Birthday live \"Racing Towards Hope\"; \"BE MY FLAME\"; solo album \"DANGERyS\" and solo concert announced",
+   "evidence": "[Observed R2 §2026; R3]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Branch merger; her unit is \"hololive -Promise-\"",
+   "evidence": "[Observed R2]",
+   "file": "bible/characters/IRyS.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Jewel of Emotions; imprisoned in secret after people fought over her; lured in with cake",
+   "evidence": "[Official KB1] [Observed KB2 §Lore]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-07-30 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debuts with hololive English -Advent- (\"Moai Moai Kyun~!\")",
+   "evidence": "[Official KB1] [Observed KB3]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-08-12",
+   "precision": "day",
+   "zone": null,
+   "text": "An Undertale mod starring Calli, played with Calli on stream",
+   "evidence": "[Observed KB3]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-03 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D debut; first performs \"Prism no Mahou\" (\"Prism Magic\")",
+   "evidence": "[Observed KB2 §2024] [Official KB7]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-17 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Advent's 3D collaboration stream",
+   "evidence": "[Official KB7]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-11",
+   "precision": "day",
+   "zone": null,
+   "text": "#BAEBISleepOver with Hakos Baelz",
+   "evidence": "[Observed KB3]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-10-06 / 10-08",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"Prism no Mahou\" music video (10-06) and release (10-08)",
+   "evidence": "[Observed KB2 §2024] [Official KB8]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-06-29",
+   "precision": "day",
+   "zone": null,
+   "text": "\"THAT'S WILD?!\" 24-hour charity stream with Calli (Wildlife Warriors Worldwide)",
+   "evidence": "[Observed Calli archive J5u2aGUrNq8]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-07-05",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive night at Dodger Stadium with Ina and IRyS: a stadium sing-along and the first VTuber stream from the stadium",
+   "evidence": "[Official KB9]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-23/24",
+   "precision": "day-range",
+   "zone": null,
+   "text": "-All for One-: \"HOT DUCK!\" with FUWAMOCO and Subaru; solo \"Dead Ma'am's Chest\"; \"I'm Your Treasure Box\" with Cecilia and Raora",
+   "evidence": "[Official KB5]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-11-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Second original song \"ROCK IN!\" and a 3D live",
+   "evidence": "[Observed KB2 §2025]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-03/04",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Serendipity concert, duo with Takanashi Kiara (\"Rocku Wawa\")",
+   "evidence": "[Official KB4]",
+   "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Younger twin demonic guard dog; in the prison break she barked at the guards and threw Pero at them",
+   "evidence": "[Official MC1] [Observed MC2 §Lore]",
+   "file": "bible/characters/Mococo-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-07-31 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debuts with Fuwawa as FUWAMOCO",
+   "evidence": "[Official MC1]",
+   "file": "bible/characters/Mococo-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-07-31",
+   "precision": "day",
+   "zone": null,
+   "text": "FUWAMOCO MORNING pilot",
+   "evidence": "[Observed MC2]",
+   "file": "bible/characters/Mococo-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-10 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D debut",
+   "evidence": "[Observed MC2 §2024]",
+   "file": "bible/characters/Mococo-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-01-29",
+   "precision": "day",
+   "zone": null,
+   "text": "500th on-stream sneeze, celebrated on X",
+   "evidence": "[Observed MC6]",
+   "file": "bible/characters/Mococo-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-23/24",
+   "precision": "day-range",
+   "zone": null,
+   "text": "-All for One- with Fuwawa",
+   "evidence": "[Official MC5]",
+   "file": "bible/characters/Mococo-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Serendipity: the unit B.F.F with Fuwawa and Raora Panthera (\"Inu Neko. Seishun Massakari,\" day 2)",
+   "evidence": "[Official MC4; Serendipity report]",
+   "file": "bible/characters/Mococo-Abyssgard.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "She is the Grim Reaper's first apprentice. Modern medicine hurt the reaping business, so she turned to VTubing to harvest souls.",
+   "evidence": "Her central premise [Official C1]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "She comes from an Underworld that looks like a modern city; she blamed debut lag on its bad internet. She waitressed there to save up for a trip to Japan.",
+   "evidence": "Secondary lore [Observed C4 §Lore and §Miscellaneous]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-09-12",
+   "precision": "day",
+   "zone": null,
+   "text": "She debuts first in hololive English -Myth-. Her fans become the Dead Beats.",
+   "evidence": "[Official C1] [Observed C4 §Debut]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-04",
+   "precision": "month",
+   "zone": null,
+   "text": "She signs with EMI Records / Universal Music Japan.",
+   "evidence": "[Observed C4 §2022, secondary]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022",
+   "precision": "year",
+   "zone": null,
+   "text": "CHADCast begins with IRyS and Hakos Baelz.",
+   "evidence": "[Observed C12]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-07-21",
+   "precision": "day",
+   "zone": null,
+   "text": "Her solo concert \"New Underworld Order.\"",
+   "evidence": "[Official C6]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-09-05",
+   "precision": "day",
+   "zone": null,
+   "text": "Tutu, a cat, is added to her model as a toggle.",
+   "evidence": "[Observed C4 §Mascot and fans, secondary]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-02-26",
+   "precision": "day",
+   "zone": null,
+   "text": "\"GriMoire\" at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent.",
+   "evidence": "[Official C19]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-02-06",
+   "precision": "day",
+   "zone": null,
+   "text": "Her third major album, \"DISASTERPIECE.\"",
+   "evidence": "[Official C16]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-10",
+   "precision": "day",
+   "zone": null,
+   "text": "Serendipity interview and partnership with Shiori Novella.",
+   "evidence": "[Official C11]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "The branches merge into one \"hololive.\" Her unit is now hololive -Myth-.",
+   "evidence": "[Official C17, C1]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Guardian of \"Civilization,\" the concept made by mankind rather than the gods; chose an owl form; has forgotten her name and age",
+   "evidence": "[Official M1] [Observed M2 §Lore]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-08-23 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debuts with hololive English -Council- (first post on X: \"oh man\")",
+   "evidence": "[Official M1] [Observed M4]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-01-17",
+   "precision": "day",
+   "zone": null,
+   "text": "First original song \"A New Start\"",
+   "evidence": "[Observed M2 §2022]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-03-18/19",
+   "precision": "day-range",
+   "zone": null,
+   "text": "3D idol costume and main 3D model at hololive 4th fes.; sang a DECO*27 song with Kiara on the holo*27 stage",
+   "evidence": "[Observed M2 §2023; M4]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-10-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Joins hololive English -Promise-",
+   "evidence": "[Official]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-10-10",
+   "precision": "day",
+   "zone": null,
+   "text": "Second original song \"mumei\"",
+   "evidence": "[Observed M2 §2023]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-01-26",
+   "precision": "day",
+   "zone": null,
+   "text": "1,000,000 subscribers, the first of Council/Promise",
+   "evidence": "[Observed M2 §2024]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-05",
+   "precision": "day",
+   "zone": null,
+   "text": "3D birthday live \"Outside the Box\"; guests Gura, IRyS, Bae, Nekomata Okayu, Inugami Korone, Momosuzu Nene, Hakui Koyori",
+   "evidence": "[Observed M3 title, description]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-24",
+   "precision": "day",
+   "zone": null,
+   "text": "-Breaking Dimensions- day 1: premieres \"It's Not a Phase\" with Fauna; \"Beyond the way\" with Kiara and Nerissa; day 2: her original \"A New Start\"",
+   "evidence": "[Official M5]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-22",
+   "precision": "day",
+   "zone": null,
+   "text": "\"It's Not a Phase\" (Mumei & Fauna) released",
+   "evidence": "[Official M6]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-02-14",
+   "precision": "day",
+   "zone": null,
+   "text": "3.0 Live2D model",
+   "evidence": "[Observed M2 §2025]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-03-09",
+   "precision": "day",
+   "zone": null,
+   "text": "6th fes. \"Color Rise Harmony,\" day 2",
+   "evidence": "[Observed M2 §2025]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-04",
+   "precision": "month",
+   "zone": null,
+   "text": "A farewell month of collabs across hololive: Overwatch with IRyS (04-22), a cover of \"とんとんまーえ！\" with Inugami Korone (04-23), Promise R.E.P.O. with IRyS, Kronii and Bae (04-24); last chatting stream with calls (04-26); 3D graduation stream (04-27, 04-28 JST)",
+   "evidence": "[Observed M2; M3 titles]",
+   "file": "bible/characters/Nanashi-Mumei.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "The Demon of Sound, sealed by the gods in The Cell; one horn broken to limit her power; escaped with Advent",
+   "evidence": "[Official N1] [Observed N2 §Lore]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-07-31",
+   "precision": "day",
+   "zone": null,
+   "text": "Debuts with hololive English -Advent-",
+   "evidence": "[Official N1]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-04-27",
+   "precision": "day",
+   "zone": null,
+   "text": "First original song \"Say My Name\"",
+   "evidence": "[Observed N2 §2024]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-09",
+   "precision": "day",
+   "zone": null,
+   "text": "3D debut; the \"Demon of Soup\" soup",
+   "evidence": "[Observed N2]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-08",
+   "precision": "day",
+   "zone": null,
+   "text": "First EP \"In My Feelings\"",
+   "evidence": "[Official N22]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-01",
+   "precision": "month",
+   "zone": null,
+   "text": "\"Office lady\" outfit (#OLRissa)",
+   "evidence": "[Observed N3 titles]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-03-08",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive 6th fes. Color Rise Harmony, day 1",
+   "evidence": "[Observed N2 §2025]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-05-24",
+   "precision": "day",
+   "zone": null,
+   "text": "3D concert \"Requiem for Love – A JukeBox Musical\" (guests incl. Calli, IRyS)",
+   "evidence": "[Observed N3 titles]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-29",
+   "precision": "day",
+   "zone": null,
+   "text": "Advent 2nd-anniversary 3D live \"On the Run!\" (\"The Story of Advent\")",
+   "evidence": "[Observed N2 §2025]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-01-23",
+   "precision": "day",
+   "zone": null,
+   "text": "Original song \"OYOME♡HOLIC\"",
+   "evidence": "[Observed N2 §2026]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-28",
+   "precision": "day",
+   "zone": null,
+   "text": "Single \"Blue World\"",
+   "evidence": "[Observed N2 §Discography]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-12",
+   "precision": "day",
+   "zone": null,
+   "text": "1,000,000 subscribers",
+   "evidence": "[Observed N2 §2026]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Cast as \"Risa\" in the anime \"Tenchi Galaxy\"",
+   "evidence": "[Observed N2 §2026]",
+   "file": "bible/characters/Nerissa-Ravencroft.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Picked up a strange book, gained tentacle powers and began hearing Ancient Whispers; VTubes \"to deliver random sanity checks on humanity, as an ordinary girl\"",
+   "evidence": "[Official I1]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-09-13",
+   "precision": "day",
+   "zone": null,
+   "text": "Debuts in hololive English -Myth-",
+   "evidence": "[Official I1]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-08",
+   "precision": "month",
+   "zone": null,
+   "text": "The WAH acronyms begin (*Ender Lilies* streams)",
+   "evidence": "[Observed I2 §WAH]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-02",
+   "precision": "month",
+   "zone": null,
+   "text": "Nintendo Direct \"TOMORROW?!\" reaction",
+   "evidence": "[Observed I23]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "MECONOPSIS and TEMARI; she discusses MECONOPSIS's conflict between duty and protecting others",
+   "evidence": "[Official I1 music list] [Observed—published interview I7b]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-02-02",
+   "precision": "day",
+   "zone": null,
+   "text": "First EP \"re:VISION\"",
+   "evidence": "[Official I26]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-27/28",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"Drawn to Dawn\" duo concert with Kiara (Los Angeles)",
+   "evidence": "[Official I20, I21]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-04",
+   "precision": "day",
+   "zone": null,
+   "text": "Serendipity interview and partnership with Kronii",
+   "evidence": "[Official I7]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026",
+   "precision": "year",
+   "zone": null,
+   "text": "TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope",
+   "evidence": "[Observed—published interview I19] [Official I25]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Branches merge; she is \"Ninomae Ina'nis from hololive,\" unit hololive -Myth-",
+   "evidence": "[Official I28] [Observed I10]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Warden of \"Time\", the third concept created by the gods and the one most tied to humankind",
+   "evidence": "Supervisory, haughty office [Official K2]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-08-23 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debuts with hololive English -Council-",
+   "evidence": "Fans become Kronies [Official K1]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-10",
+   "precision": "month",
+   "zone": null,
+   "text": "Minecraft \"civil war\" with Fauna",
+   "evidence": "[Unverified, K29 clip titles]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-01-15",
+   "precision": "day",
+   "zone": null,
+   "text": "Kimono reveal; introduces Boros",
+   "evidence": "[Observed K8 §Mascots and fans, secondary]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-08",
+   "precision": "month",
+   "zone": null,
+   "text": "Mumei accidentally blows up the Bunkeronii's entrance",
+   "evidence": "[Unverified, K28 clip titles]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-10-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz",
+   "evidence": "[Official K3]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "Fauna (January) and Mumei (April) graduate; Promise's current members are Kronii, IRyS and Baelz",
+   "evidence": "Shared history stays [Official K34]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-10-10",
+   "precision": "day",
+   "zone": null,
+   "text": "Promise releases \"Run Back 'Round\"",
+   "evidence": "[Official K6]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-13",
+   "precision": "day",
+   "zone": null,
+   "text": "3D birthday live; Watson Amelia guests",
+   "evidence": "[Observed K33, secondary, stream t=1711]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-04",
+   "precision": "day",
+   "zone": null,
+   "text": "Serendipity interview and partnership with Ina",
+   "evidence": "Puns, appreciation, performance goals [Official K4]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-08-23",
+   "precision": "day",
+   "zone": null,
+   "text": "EP \"Way 2 U\" (five tracks, including the earlier \"Daydream\")",
+   "evidence": "Adds to earlier solo music [Official K7]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Branches merge into one \"hololive\"; unit is hololive -Promise-",
+   "evidence": "[Official K5, K1]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "A big cat from the Romance Empire who prepares Justice's criminal reports; sent after FUWAMOCO, she got distracted by crane games",
+   "evidence": "[Official RP1] [Observed RP2 §Lore]",
+   "file": "bible/characters/Raora-Panthera.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-06-22 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Debut (\"I've got my eyes on you 🐱 mamma mia\"), last of Justice; official profile lists June 23 (JST)",
+   "evidence": "[Official RP1] [Observed RP3]",
+   "file": "bible/characters/Raora-Panthera.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-14",
+   "precision": "day",
+   "zone": null,
+   "text": "VTuber Awards: Best Art VTuber",
+   "evidence": "[Observed RP6; secondary report]",
+   "file": "bible/characters/Raora-Panthera.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-09 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D showcase (5 PM PDT; Aug 10 09:00 JST)",
+   "evidence": "[Official RP8]",
+   "file": "bible/characters/Raora-Panthera.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-16 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Justice 3D collaboration stream",
+   "evidence": "[Official RP8]",
+   "file": "bible/characters/Raora-Panthera.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-23/24 EDT",
+   "precision": "day-range",
+   "zone": "EDT",
+   "text": "-All for One-: \"ABOVE BELOW\" with Justice, solo \"Gacha x Gacha ADVENTURE!,\" \"Neko Kaburi-Na\" with Ina, Shiori and guest Oozora Subaru, \"I'm Your Treasure Box\" with Bijou and Cecilia",
+   "evidence": "[Official RP5]",
+   "file": "bible/characters/Raora-Panthera.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-11-16",
+   "precision": "day",
+   "zone": null,
+   "text": "The \"Doom\" spell in Kiara's Mage Arena collab",
+   "evidence": "[Observed RP7]",
+   "file": "bible/characters/Raora-Panthera.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05-10",
+   "precision": "day",
+   "zone": null,
+   "text": "First birthday 3D live concert (secondary archive evidence, w37yVSXhV_c)",
+   "evidence": "[Observed RP3]",
+   "file": "bible/characters/Raora-Panthera.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Serendipity: \"SUPERNOVA SUPER GIRL\" with Justice (day 1); the unit B.F.F with FUWAMOCO (\"Inu Neko. Seishun Massakari\"), \"What an amazing swing\" with Tsunomaki Watame and Kiara, and \"ABOVE BELOW\" in the Advent+Justice medley (day 2)",
+   "evidence": "[Official RP4, RP9]",
+   "file": "bible/characters/Raora-Panthera.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "The Archiver; imprisoned in The Cell for forbidden knowledge; masterminded Advent's prison break",
+   "evidence": "[Official SN1] [Observed SN2 §Lore]",
+   "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-07-30 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debuts with hololive English -Advent- (\"Shiori~n!\")",
+   "evidence": "[Official SN1]",
+   "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-08-12",
+   "precision": "day",
+   "zone": null,
+   "text": "Advent on Kiara's HOLOTALK",
+   "evidence": "[Observed SN3; Kiara archive]",
+   "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-02 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D debut \"A New Chapter Begins!\" with Nerissa, Bijou and FUWAMOCO as guests",
+   "evidence": "[Observed SN3 tIKQMFtbgOA]",
+   "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-25",
+   "precision": "day",
+   "zone": null,
+   "text": "-Breaking Dimensions-: \"Lonely in Gorgeous\" with Fauna and Nerissa",
+   "evidence": "[Official, Concerts card S8]",
+   "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-29",
+   "precision": "day",
+   "zone": null,
+   "text": "Advent 2nd-anniversary 3D live \"On the Run!\"",
+   "evidence": "[Observed SN2 §2025]",
+   "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-02-15",
+   "precision": "day",
+   "zone": null,
+   "text": "First original song \"Monsters and Men\"",
+   "evidence": "[Observed SN2 Discography]",
+   "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-03/04",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Serendipity concert, duo with Mori Calliope",
+   "evidence": "[Official SN4]",
+   "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-30",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Into The Void\" motion comic begins",
+   "evidence": "[Observed SN3]",
+   "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Phoenix idol who dreams of owning a fast-food chain; reborn from her ashes",
+   "evidence": "[Official T1]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "CEO of KFP (Kiara Fried Phoenix); employees are chickens; the Usual Room; she denies KFP is a cult",
+   "evidence": "[Observed T2 §KFP, secondary]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-09-12",
+   "precision": "day",
+   "zone": null,
+   "text": "Debuts in hololive English -Myth-, speaking English, Japanese and German",
+   "evidence": "[Official T1] [Observed T2 §Debut]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-11",
+   "precision": "month",
+   "zone": null,
+   "text": "HOLOTALK begins as a bilingual interview show",
+   "evidence": "[Official T9] [Observed T21]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-12-10",
+   "precision": "day",
+   "zone": null,
+   "text": "Channel briefly terminated, then restored; \"#PhoenixDown\" re-debut with a mock-amnesia bit (\"Who's Calli?\")",
+   "evidence": "[Observed T2 §2020 and §Takamori; T5-le72UNZAbQI]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-03",
+   "precision": "month",
+   "zone": null,
+   "text": "German lesson with Gura; the German \"HoloDE Debüt\" stream",
+   "evidence": "[Observed T15; T2 §2021]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-09",
+   "precision": "month",
+   "zone": null,
+   "text": "She and Calli announce they will tone down the TakaMori ship",
+   "evidence": "[Observed T2 §Takamori]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-11-16",
+   "precision": "day",
+   "zone": null,
+   "text": "Raora's \"Doom\" on her stream becomes a meme",
+   "evidence": "[Observed T6]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-02-08",
+   "precision": "day",
+   "zone": null,
+   "text": "2nd album *Vogelfrei*",
+   "evidence": "[Observed T2 §2026; T8]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03",
+   "precision": "month",
+   "zone": null,
+   "text": "Bilingual show HoloEN REWIND begins",
+   "evidence": "[Observed T2 §HoloEN REWIND]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-27/28",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"Drawn to Dawn\" duo concert with Ina (The Wiltern, Los Angeles)",
+   "evidence": "[Official T11, T12]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06",
+   "precision": "month",
+   "zone": null,
+   "text": "Serendipity interview and partnership with Koseki Bijou",
+   "evidence": "[Official T10]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Branches merge; unit is hololive -Myth-",
+   "evidence": "[Official T20, T1]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore (secondary-reported; original statements and continuity scope unverified; outside the baseline)",
+   "precision": "lore",
+   "zone": null,
+   "text": "Born circa the early 1920s and thrown forward in time; the pocket watch holds a time crystal; time travel makes loud screeching noises and can cause headaches; she won't use it to cheat",
+   "evidence": "[Observed A2 §Time travel, secondary]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Became an idol \"just out of interest\" after rumors of unusual beings in hololive; trains reflexes with shooters and her mind with puzzle games",
+   "evidence": "[Official A1]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-09-13 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debuts in hololive English -Myth- (\"The Investigation Begins\"), briefly undercover with a fake British accent",
+   "evidence": "[Official A1] [Observed A3-MXrFrkIlE-0; A2 §Miscellaneous]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-09-16",
+   "precision": "day",
+   "zone": null,
+   "text": "Reveals she is a time traveler (first Fall Guys stream)",
+   "evidence": "[Observed A2 §Time travel; A10 locator]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-09-28",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Nothing beats a ground pound\" (Super Mario Odyssey)",
+   "evidence": "[Observed A5]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-12",
+   "precision": "month",
+   "zone": null,
+   "text": "Repeated Sun Station landing attempts in Outer Wilds, later her favorite game",
+   "evidence": "[Observed A9; A2 §Likes and dislikes]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-04-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Smol Ame appears (April Fools)",
+   "evidence": "[Observed A2 §Smol Ame]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-05",
+   "precision": "month",
+   "zone": null,
+   "text": "The Fish Tank talk show with Gura",
+   "evidence": "[Observed Gura file G6]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-01-19",
+   "precision": "day",
+   "zone": null,
+   "text": "ChikuTaku song on sale",
+   "evidence": "[Official A13b]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-01-24",
+   "precision": "day",
+   "zone": null,
+   "text": "ChikuTaku game released (concept and shared project management, with a credited team)",
+   "evidence": "[Official A13]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-09-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Concludes regular activities; remains a hololive affiliate",
+   "evidence": "[Official A4]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03",
+   "precision": "month",
+   "zone": null,
+   "text": "Guest spot at Kronii's 3D birthday live",
+   "evidence": "[Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025–2026",
+   "precision": "year-range",
+   "zone": null,
+   "text": "Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call \"from 2021\" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card",
+   "evidence": "[A8, A19]",
+   "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-07-25",
+   "precision": "day",
+   "zone": null,
+   "text": "\"WANTED!\" PV reveals the five",
+   "evidence": "fugitive premise",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-07-29/30 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Debuts (Shiori, Bijou, Nerissa, FUWAMOCO)",
+   "evidence": "\"The Sweet Escape,\" the first group collab",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-08-12",
+   "precision": "day",
+   "zone": null,
+   "text": "HOLOTALK with Kiara; Bijou's Undertale replay with Calli",
+   "evidence": "senior ties",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-08-02 → 08-10 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D debuts (Shiori 08-02, Bijou 08-03, Nerissa 08-09, FUWAMOCO 08-10; JST dates are one day later)",
+   "evidence": "genmates as guests [Official S9]",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-08-17 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Advent's 3D collaboration stream",
+   "evidence": "[Official S9]",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-07-05",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive night at Dodger Stadium: Bijou with Ina and IRyS",
+   "evidence": "[Official S8]",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-23/24",
+   "precision": "day-range",
+   "zone": null,
+   "text": "-All for One-: \"Genesis\" as five, and pair stages across EN",
+   "evidence": "—",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-29",
+   "precision": "day",
+   "zone": null,
+   "text": "\"On the Run!\" 2nd-anniversary 3D live",
+   "evidence": "\"The Story of Advent\"",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-07-03/04",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Serendipity: Shiori–Calli, Bijou–Kiara, FUWAMOCO–Raora, Nerissa–Elizabeth",
+   "evidence": "official interviews",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2026",
+   "precision": "year",
+   "zone": null,
+   "text": "\"Bound by Fate,\" 3rd-anniversary 3D live",
+   "evidence": "—",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-09-05",
+   "precision": "day",
+   "zone": null,
+   "text": "GreyScaleX (Shiori and Zeta) \"Purrfect Pair\" merchandise opens",
+   "evidence": "[Official S7]",
+   "file": "bible/world/Advent-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2020",
+   "precision": "year",
+   "zone": null,
+   "text": "Constant collabs and pranks",
+   "evidence": "The \"AmeSame\" name",
+   "file": "bible/world/AmeSame.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-05",
+   "precision": "month",
+   "zone": null,
+   "text": "The Fish Tank talk show",
+   "evidence": "Staged-argument comedy",
+   "file": "bible/world/AmeSame.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-06",
+   "precision": "month",
+   "zone": null,
+   "text": "An off-collab; unarchived karaoke",
+   "evidence": "—",
+   "file": "bible/world/AmeSame.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-09-29",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Looking at our old DMs\"",
+   "evidence": "Their last duo stream before Ame stepped back",
+   "file": "bible/world/AmeSame.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-05-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Gura graduates",
+   "evidence": "—",
+   "file": "bible/world/AmeSame.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-02",
+   "precision": "month",
+   "zone": null,
+   "text": "Kiara's \"Blue & Gold\" tribute",
+   "evidence": "The colors as a memory",
+   "file": "bible/world/AmeSame.md",
+   "section": "History"
+  },
+  {
+   "date": "2020–2021",
+   "precision": "year-range",
+   "zone": null,
+   "text": "Constant collabs, pranks and bickering",
+   "evidence": "\"Bone Bros\"",
+   "file": "bible/world/Bone-Bros.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-02-03",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Q\" (with DECO*27)",
+   "evidence": "Their duet",
+   "file": "bible/world/Bone-Bros.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-09",
+   "precision": "month",
+   "zone": null,
+   "text": "Calli performs Gura's \"Full Color\" at Myth's 4th-anniversary concert \"The Show Goes On!\"",
+   "evidence": "Carrying her song",
+   "file": "bible/world/Bone-Bros.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-04-30",
+   "precision": "day",
+   "zone": null,
+   "text": "\"One Last Minecraft Trip.\" (Myth relay)",
+   "evidence": "Last duo moments on stream",
+   "file": "bible/world/Bone-Bros.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-05-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Gura graduates",
+   "evidence": "—",
+   "file": "bible/world/Bone-Bros.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-07-31 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Debut (\"who let the dogs out?!\") and FUWAMOCO MORNING pilot",
+   "evidence": "\"BAU BAU!! 🐾✨\" (first post)",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-12",
+   "precision": "month",
+   "zone": null,
+   "text": "VTuber Awards: \"League of Their Own\"",
+   "evidence": "—",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-07-31",
+   "precision": "day",
+   "zone": null,
+   "text": "First original song \"Born to be 'BAU'DOL☆★\"",
+   "evidence": "—",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-08-10 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "3D debut: a wrestling segment supervised by DDT Pro-Wrestling, Okayu and Korone cameos",
+   "evidence": "\"Lifetime Showtime\" full version",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-10-12",
+   "precision": "day",
+   "zone": null,
+   "text": "1,000,000 subscribers, first in Advent",
+   "evidence": "—",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-12",
+   "precision": "month",
+   "zone": null,
+   "text": "VTuber Awards: \"VTuber of the Year\"",
+   "evidence": "—",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-02-02",
+   "precision": "day",
+   "zone": null,
+   "text": "First birthday 3D concert",
+   "evidence": "—",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-23/24",
+   "precision": "day-range",
+   "zone": null,
+   "text": "-All for One-: \"HOT DUCK!\" with Bijou and Subaru; their version of \"Howling\"; \"Lifetime Showtime\"; \"SHALLYS\" with Ina and Cecilia",
+   "evidence": "[Official S5]",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-04-02",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Mekurumeku Rendezvous,\" a TV anime ending theme",
+   "evidence": "their first TV anime song",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Serendipity: the unit B.F.F with Raora (\"Inu Neko. Seishun Massakari\")",
+   "evidence": "[Official S4; Serendipity report]",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-08-29",
+   "precision": "day",
+   "zone": null,
+   "text": "First album \"FUWAMOCO à la mode\" announced",
+   "evidence": "hand-signed copies",
+   "file": "bible/world/FUWAMOCO.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-08-23",
+   "precision": "day",
+   "zone": null,
+   "text": "Council debuts",
+   "evidence": "Five concepts",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-08-25",
+   "precision": "day",
+   "zone": null,
+   "text": "Fauna and Mumei's first co-op",
+   "evidence": "Don't Starve Together: \"Surviving in the wilderness with Mumei!\"",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-09-13",
+   "precision": "day",
+   "zone": null,
+   "text": "Minecraft together",
+   "evidence": "\"Adventuring with Mumei!\"",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-03-19",
+   "precision": "day",
+   "zone": null,
+   "text": "Mumei sings with Kiara on the 4th fes. stage",
+   "evidence": "HOLOTORI",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-10-09",
+   "precision": "day",
+   "zone": null,
+   "text": "-Promise- formed",
+   "evidence": "—",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-08-24",
+   "precision": "day",
+   "zone": null,
+   "text": "\"It's Not a Phase\" premiered at -Breaking Dimensions-",
+   "evidence": "their duet (released 2024-12-22)",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-12-27",
+   "precision": "day",
+   "zone": null,
+   "text": "Fauna on Kiara's HOLOTALK",
+   "evidence": "—",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-01-03",
+   "precision": "day",
+   "zone": null,
+   "text": "Fauna graduates",
+   "evidence": "—",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-04",
+   "precision": "month",
+   "zone": null,
+   "text": "Mumei's farewell month: \"Donut Hole\" with Kronii (04-11), Overwatch with IRyS (04-22), HOLOTALK (04-22), a Korone duet cover (04-23), Promise R.E.P.O. (04-24), Gura's room review",
+   "evidence": "—",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-04-27",
+   "precision": "day",
+   "zone": null,
+   "text": "Mumei graduates (04-28 JST)",
+   "evidence": "—",
+   "file": "bible/world/Fauna-and-Mumei-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-07-29",
+   "precision": "day",
+   "zone": null,
+   "text": "Calli's first collab with IRyS",
+   "evidence": "MorIRyS",
+   "file": "bible/world/IRyS-and-Nerissa-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-01-30",
+   "precision": "day",
+   "zone": null,
+   "text": "First CHADCast",
+   "evidence": "Chaos, Hope, and Death",
+   "file": "bible/world/IRyS-and-Nerissa-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-08-14",
+   "precision": "day",
+   "zone": null,
+   "text": "Nerissa's compatibility test with Kiara",
+   "evidence": "KiaRissa",
+   "file": "bible/world/IRyS-and-Nerissa-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-10-09",
+   "precision": "day",
+   "zone": null,
+   "text": "-Promise- formed: IRyS and Kronii genmates",
+   "evidence": "—",
+   "file": "bible/world/IRyS-and-Nerissa-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "Nerissa's 3D concert with Calli and IRyS as guests; \"OVER//RIDE\" duet",
+   "evidence": "Calli × Nerissa",
+   "file": "bible/world/IRyS-and-Nerissa-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-04-23",
+   "precision": "day",
+   "zone": null,
+   "text": "Nerissa's Tomodachi Life Miis of IRyS and Ina",
+   "evidence": "—",
+   "file": "bible/world/IRyS-and-Nerissa-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-06-26",
+   "precision": "day",
+   "zone": null,
+   "text": "Raora's first collab, \"Chat & Art w/ Liz!\"",
+   "evidence": "FlamePanther",
+   "file": "bible/world/Justice-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-07-03",
+   "precision": "day",
+   "zone": null,
+   "text": "Cecilia and Raora's Minecraft duo",
+   "evidence": "Raviolin",
+   "file": "bible/world/Justice-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-07-19",
+   "precision": "day",
+   "zone": null,
+   "text": "Cecilia shows Elizabeth around Minecraft",
+   "evidence": "FiddleFlame",
+   "file": "bible/world/Justice-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-07-21/22",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Advent VS Justice, Party Animals",
+   "evidence": "the rivalry as a game",
+   "file": "bible/world/Justice-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-01-31",
+   "precision": "day",
+   "zone": null,
+   "text": "Murky Divers, Advent × Justice (all nine)",
+   "evidence": "—",
+   "file": "bible/world/Justice-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-16 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Justice group 3D collab (after the individual showcases 08-01/02/08/09 PDT)",
+   "evidence": "official schedule",
+   "file": "bible/world/Justice-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-23/24 EDT",
+   "precision": "day-range",
+   "zone": "EDT",
+   "text": "-All for One-: \"ALiCE&u,\" \"START AGAIN,\" \"High Tide\" (Elizabeth); \"Countach,\" \"MONSTER,\" \"III,\" \"Wonky Monkey\" (Gigi); \"Wind-Up,\" \"SHALLYS,\" \"I'm Your Treasure Box\" (Cecilia); \"Gacha×Gacha ADVENTURE!,\" \"Neko Kaburi-Na,\" \"I'm Your Treasure Box\" (Raora)",
+   "evidence": "[Official S6]",
+   "file": "bible/world/Justice-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-05",
+   "precision": "month",
+   "zone": null,
+   "text": "CCGG 3D live, \"CCGG MADNESS\"",
+   "evidence": "Gigi and Cecilia's unit",
+   "file": "bible/world/Justice-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Serendipity: units Autofister (Gigi & Cecilia), Bloodraven (Nerissa & Elizabeth), B.F.F (FUWAMOCO & Raora); guests' songs with Justice members: \"HELP!!\" (Kobo, Bae, Elizabeth), \"Break It Down\" (Zeta, Shiori, Cecilia), \"Cloudy Sheep\" (Watame, Calli, Cecilia), \"MAKE IT, BREAK IT\" (Zeta, FUWAMOCO, Gigi), \"What an amazing swing\" (Watame, Kiara, Raora)",
+   "evidence": "[Official S3, S7]",
+   "file": "bible/world/Justice-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2020-11-15",
+   "precision": "day",
+   "zone": null,
+   "text": "Gura's chicken prank on KFP",
+   "evidence": "KFP lore",
+   "file": "bible/world/Myth-and-Kronii-Other-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-09",
+   "precision": "month",
+   "zone": null,
+   "text": "UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later)",
+   "evidence": "Ocean unit",
+   "file": "bible/world/Myth-and-Kronii-Other-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-09-22",
+   "precision": "day",
+   "zone": null,
+   "text": "Ame on HOLOTALK",
+   "evidence": "Kiara's oshi as guest",
+   "file": "bible/world/Myth-and-Kronii-Other-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-04-26/30",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Kronii's and Kiara's last collabs with Gura",
+   "evidence": "Farewells",
+   "file": "bible/world/Myth-and-Kronii-Other-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-01-08",
+   "precision": "day",
+   "zone": null,
+   "text": "\"TAKO∞TAKOVER\" digital release (lyrics by Calli)",
+   "evidence": "Ina × Calli",
+   "file": "bible/world/Myth-and-Kronii-Other-Pairs.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-02-25",
+   "precision": "day",
+   "zone": null,
+   "text": "Ame's surprise karaoke off-collab (with Ina, Kronii, Fauna, Mumei)",
+   "evidence": "—",
+   "file": "bible/world/OctoClock.md",
+   "section": "History"
+  },
+  {
+   "date": "2023–2024",
+   "precision": "year-range",
+   "zone": null,
+   "text": "FGO streams on Ina's channel",
+   "evidence": "A shared game",
+   "file": "bible/world/OctoClock.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-06-04",
+   "precision": "day",
+   "zone": null,
+   "text": "Official Serendipity interview",
+   "evidence": "Their own words",
+   "file": "bible/world/OctoClock.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-06-24",
+   "precision": "day",
+   "zone": null,
+   "text": "\"It's Time for Octo'Clock!\" short",
+   "evidence": "The unit name",
+   "file": "bible/world/OctoClock.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-07-03/04",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Serendipity concert, Los Angeles",
+   "evidence": "Their stage pairing",
+   "file": "bible/world/OctoClock.md",
+   "section": "History"
+  },
+  {
+   "date": "2020",
+   "precision": "year",
+   "zone": null,
+   "text": "Myth's first year: frequent collabs across time zones",
+   "evidence": "Collab-heavy early memories",
+   "file": "bible/world/Streaming-Life.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-06",
+   "precision": "month",
+   "zone": null,
+   "text": "Myth's first off-collab with all five present",
+   "evidence": "Off-collabs as special events",
+   "file": "bible/world/Streaming-Life.md",
+   "section": "History"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "Myth relay for Gura's farewell",
+   "evidence": "\"One last time\" streams",
+   "file": "bible/world/Streaming-Life.md",
+   "section": "History"
+  },
+  {
+   "date": "2020-09",
+   "precision": "month",
+   "zone": null,
+   "text": "Kiara declares the crush on Calli's 2nd stream; \"TakaMori\" named",
+   "evidence": "The ship name",
+   "file": "bible/world/TakaMori.md",
+   "section": "History"
+  },
+  {
+   "date": "2020-12",
+   "precision": "month",
+   "zone": null,
+   "text": "Kiara's amnesia re-debut: \"Who's Calli?\"",
+   "evidence": "Running gag",
+   "file": "bible/world/TakaMori.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-09",
+   "precision": "month",
+   "zone": null,
+   "text": "Flirt-and-rebuff routine toned down; still close friends",
+   "evidence": "Nicknames and couple jokes remain callbacks",
+   "file": "bible/world/TakaMori.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-06",
+   "precision": "month",
+   "zone": null,
+   "text": "\"Reunion & Gaming!! #takamori\" off-collab; karaoke collab",
+   "evidence": "In-person reunion",
+   "file": "bible/world/TakaMori.md",
+   "section": "History"
+  },
+  {
+   "date": "2023",
+   "precision": "year",
+   "zone": null,
+   "text": "Off-collabs; \"Fire N Ice\" duet (2023-12-14)",
+   "evidence": "Their song",
+   "file": "bible/world/TakaMori.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-02-27",
+   "precision": "day",
+   "zone": null,
+   "text": "Kiara's watch party for Calli's GriMoire concert",
+   "evidence": "Cheering from the crowd",
+   "file": "bible/world/TakaMori.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-04/05",
+   "precision": "month-range",
+   "zone": null,
+   "text": "Split Fiction series (\"takamori split screen nostalgia\")",
+   "evidence": "Nostalgic co-op",
+   "file": "bible/world/TakaMori.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-09-19",
+   "precision": "day",
+   "zone": null,
+   "text": "Myth 6th anniversary live together",
+   "evidence": "Still side by side",
+   "file": "bible/world/TakaMori.md",
+   "section": "History"
+  },
+  {
+   "date": "2020-11",
+   "precision": "month",
+   "zone": null,
+   "text": "The KFP chicken incident; Kiara \"fires\" Ina",
+   "evidence": "KFP lore",
+   "file": "bible/world/TakoTori.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-03-04",
+   "precision": "day",
+   "zone": null,
+   "text": "\"TAKOTORI OFFCOLLAB!!\"",
+   "evidence": "The pair name in their own titles",
+   "file": "bible/world/TakoTori.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-11-23",
+   "precision": "day",
+   "zone": null,
+   "text": "Duo concert announced",
+   "evidence": "—",
+   "file": "bible/world/TakoTori.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-03-27/28",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"Drawn to Dawn,\" the Wiltern, LA",
+   "evidence": "Their first concert as a duo",
+   "file": "bible/world/TakoTori.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-04-24",
+   "precision": "day",
+   "zone": null,
+   "text": "\"GETCHA!\" cover",
+   "evidence": "—",
+   "file": "bible/world/TakoTori.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-08",
+   "precision": "month",
+   "zone": null,
+   "text": "Kronii's announcement; \"a certain time lord\" joke",
+   "evidence": "The lore rivalry",
+   "file": "bible/world/Time-Duo.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-04-08",
+   "precision": "day",
+   "zone": null,
+   "text": "5D Chess (\"I Don't Understand\")",
+   "evidence": "A time-travel game, fittingly",
+   "file": "bible/world/Time-Duo.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-09",
+   "precision": "month",
+   "zone": null,
+   "text": "Backrooms and DRG in Ame's last week",
+   "evidence": "—",
+   "file": "bible/world/Time-Duo.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-03-13",
+   "precision": "day",
+   "zone": null,
+   "text": "Ame guests at Kronii's 3D birthday live",
+   "evidence": "The affiliate's cameo",
+   "file": "bible/world/Time-Duo.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-09-23",
+   "precision": "day",
+   "zone": null,
+   "text": "Orcs Must Die! 3: Kronii's first cross-generation collab",
+   "evidence": "The friendship's start",
+   "file": "bible/world/Time-and-Death.md",
+   "section": "History"
+  },
+  {
+   "date": "2023",
+   "precision": "year",
+   "zone": null,
+   "text": "Frequent horror and TTRPG co-ops; \"Time and Death Say Howdy to Ghosts\"",
+   "evidence": "The duo's name",
+   "file": "bible/world/Time-and-Death.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-09-22",
+   "precision": "day",
+   "zone": null,
+   "text": "Escape the Backrooms with Ame",
+   "evidence": "One of Ame's last collabs",
+   "file": "bible/world/Time-and-Death.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-01",
+   "precision": "month",
+   "zone": null,
+   "text": "The \"$KRONII\" coin bit and Calli's mock exposé",
+   "evidence": "Mock feud",
+   "file": "bible/world/Time-and-Death.md",
+   "section": "History"
+  },
+  {
+   "date": "2020-09",
+   "precision": "month",
+   "zone": null,
+   "text": "Myth debuts with official lore profiles",
+   "evidence": "Lore bits still in use",
+   "file": "bible/world/VTuber-Persona-and-Lore.md",
+   "section": "History"
+  },
+  {
+   "date": "2021–2026",
+   "precision": "year-range",
+   "zone": null,
+   "text": "Lore grows through jokes, songs and events",
+   "evidence": "\"Canonically\" callbacks",
+   "file": "bible/world/VTuber-Persona-and-Lore.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Branches merge; COVER says it will update members' designs to fit their personalities, activities and future directions",
+   "evidence": "Lore and looks can change officially",
+   "file": "bible/world/VTuber-Persona-and-Lore.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-07-25",
+   "precision": "day",
+   "zone": null,
+   "text": "\"WANTED!\" debut PV reveals the five",
+   "evidence": "The fugitive premise",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-07 (end)",
+   "precision": "month",
+   "zone": null,
+   "text": "Debuts; Nerissa's on 2023-07-31 (JST)",
+   "evidence": "\"Advent\"",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-08-12",
+   "precision": "day",
+   "zone": null,
+   "text": "Advent are Kiara's 29th HOLOTALK guests",
+   "evidence": "First big senior collab",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-08-02/10 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "3D debuts: Shiori 08-02, Bijou 08-03, Nerissa 08-09, FUWAMOCO 08-10 (JST one day later)",
+   "evidence": "genmates as guests",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-08-17 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Advent's 3D collaboration stream",
+   "evidence": "official 3D showcase schedule",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-12",
+   "precision": "month",
+   "zone": null,
+   "text": "FUWAMOCO win \"VTuber of the Year\" at the VTuber Awards",
+   "evidence": "—",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2025, 2026",
+   "precision": "year",
+   "zone": null,
+   "text": "hololive SUPER EXPO with -Justice-",
+   "evidence": "Prisoner-and-guard bits",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-23",
+   "precision": "day",
+   "zone": null,
+   "text": "-All for One- opens with all of EN, then Advent's \"Genesis\"",
+   "evidence": "[Official S9]",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-29",
+   "precision": "day",
+   "zone": null,
+   "text": "2nd-anniversary 3D live \"On the Run!\" with \"The Story of Advent\" (five chapters, five songs)",
+   "evidence": "—",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-01-26",
+   "precision": "day",
+   "zone": null,
+   "text": "Group song \"Breakout\"",
+   "evidence": "—",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-07-03/04",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Serendipity pairs: Shiori–Calli, Bijou–Kiara, Nerissa–Elizabeth, FUWAMOCO–Raora",
+   "evidence": "[Official S7, S10]",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2026",
+   "precision": "year",
+   "zone": null,
+   "text": "3rd-anniversary live \"Bound by Fate\" (linked from Nerissa's official profile)",
+   "evidence": "—",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-09",
+   "precision": "month",
+   "zone": null,
+   "text": "Renamed \"hololive -Advent-\" in the merger",
+   "evidence": "Current name",
+   "file": "bible/world/hololive--Advent.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-06-18",
+   "precision": "day",
+   "zone": null,
+   "text": "Announcement video \"The Mission Begins!\"",
+   "evidence": "the manhunt premise",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-06-21/22 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Debuts: Elizabeth (06-21 8 PM), Gigi (06-21 8:45 PM), Cecilia (06-22 8 PM), Raora (06-22 8:45 PM); official profiles list June 22/23 (JST)",
+   "evidence": "\"ABOVE BELOW\" released; first collab \"Ello! Hi! Hallo! Ciao!\" (06-22 9:30 PM PDT)",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-06–07",
+   "precision": "month-range",
+   "zone": null,
+   "text": "Content Warning, Chained Together, Left 4 Dead 2, a Justice Minecraft server and \"Justice HQ\"",
+   "evidence": "the group's first weeks",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-07-21/22",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"Advent VS Justice\" in Party Animals",
+   "evidence": "the rivalry as a game",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-10-31/11-01",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"Justice's Haunted VR Investigation\" in VRChat, with Advent visitors; chibi 3D models",
+   "evidence": "Halloween tradition",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-12-28",
+   "precision": "day",
+   "zone": null,
+   "text": "Half-year anniversary (New Year outfits announced, shown 2025-01-01)",
+   "evidence": "—",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-01-31",
+   "precision": "day",
+   "zone": null,
+   "text": "\"ADVENT VS JUSTICE\" Murky Divers with all nine",
+   "evidence": "—",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-03-08",
+   "precision": "day",
+   "zone": null,
+   "text": "Justice hosted a watchalong of hololive 6th fes. (Expo 2025) Stage 1 (\"FIRST STAGE with JUSTICE!\")",
+   "evidence": "[Observed S4 nEV7T8peRcw]",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-06-20",
+   "precision": "day",
+   "zone": null,
+   "text": "First anniversary, \"Operation DECODE\"",
+   "evidence": "—",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-01/02/08/09 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Individual 3D showcases, each at 5 PM PDT: Elizabeth (08-01), Gigi (08-02), Cecilia (08-08), Raora (08-09)",
+   "evidence": "[Official S7]",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-16 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Justice group 3D collaboration stream (5 PM PDT)",
+   "evidence": "[Official S7]",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-08-23 EDT",
+   "precision": "day",
+   "zone": "EDT",
+   "text": "-All for One-: Justice's first group performance at an in-person concert venue in 3D (\"ABOVE BELOW\"); Cecilia's \"Wind-Up\" was the first Justice solo number of that concert; see the member files for their other stages",
+   "evidence": "[Official S3]",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-02-20/22 JST",
+   "precision": "day-range",
+   "zone": "JST",
+   "text": "GeoGuessr: Elizabeth, Gigi and Cecilia trained (02-20) and represented Justice against Advent (02-22), with Bijou hosting/commentating",
+   "evidence": "[Observed, secondary event roster]",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-05",
+   "precision": "month",
+   "zone": null,
+   "text": "CCGG (Gigi and Cecilia) joint 3D live (secondary event coverage) and \"CCGG MADNESS\"; Raora's first birthday 3D live (05-10 JST / 05-09 PDT; secondary metadata)",
+   "evidence": "—",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-06-27 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Second-anniversary live \"How to Protect JUSTICE!\" (06-28 JST)",
+   "evidence": "[Official S1 video list]",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Serendipity: day 1 \"SUPERNOVA SUPER GIRL\" (Justice); Autofister (Gigi & Cecilia, \"CCGG MADNESS\"); \"HELP!!\" (Kobo Kanaeru with Bae and Elizabeth); \"Break It Down\" (Vestia Zeta with Shiori and Cecilia); \"Cloudy Sheep\" (Tsunomaki Watame with Calli and Cecilia). Day 2: the Advent+Justice medley (\"Rebellion,\" \"ABOVE BELOW\"); Bloodraven (Nerissa & Elizabeth, \"Cruel Angel's Thesis\"); \"MAKE IT, BREAK IT\" (Zeta, FUWAMOCO and Gigi); \"What an amazing swing\" (Watame with Kiara and Raora); B.F.F (FUWAMOCO & Raora, \"Inu Neko. Seishun Massakari\")",
+   "evidence": "[Official S6, S8]",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-08/09",
+   "precision": "month-range",
+   "zone": null,
+   "text": "Official -Justice- merch tie-ins: Bandai Namco Amusement America pop-up (2026-08-27), Pinfinity AR pins (2026-09-30)",
+   "evidence": "[Official S1 news]",
+   "file": "bible/world/hololive--Justice.md",
+   "section": "History"
+  },
+  {
+   "date": "2020-09-12/13",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Myth debuts; Calli narrates Kiara's debut intro",
+   "evidence": "Kiara's intro art, Calli's narration",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2020–2021",
+   "precision": "year-range",
+   "zone": null,
+   "text": "Near-constant collabs: Minecraft, Among Us, games across time zones",
+   "evidence": "The \"first year\" memories",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-10-31",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Myth or Treat\" (lyrics by Calli)",
+   "evidence": "First group song",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-06-28",
+   "precision": "day",
+   "zone": null,
+   "text": "First off-collab with all five together (\"Together At Last\")",
+   "evidence": "A treasured in-person memory",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-09-30",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Non-Fiction\" MV",
+   "evidence": "Group song",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-09-13",
+   "precision": "day",
+   "zone": null,
+   "text": "3rd anniversary relay (#Myth3YearRelay), e.g. a homemade Family Feud with all five",
+   "evidence": "Anniversary relays",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-06",
+   "precision": "month",
+   "zone": null,
+   "text": "Myth One-Block Minecraft series",
+   "evidence": "A recent full-group project",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-09",
+   "precision": "month",
+   "zone": null,
+   "text": "4th anniversary song and voice pack; Ame's last week includes a Myth collab",
+   "evidence": "Ame's farewell to regular streaming",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-04-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Myth relay \"one last time\" with Calli, Kiara, Ina and Gura before Gura's graduation",
+   "evidence": "Gura's farewell with Myth",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-07",
+   "precision": "month",
+   "zone": null,
+   "text": "MYTHMASH: each active member releases a duet with a Japanese senpai (#mythmashchemythtry)",
+   "evidence": "Cross-branch songs",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-09-13",
+   "precision": "day",
+   "zone": null,
+   "text": "5th anniversary collab with announcements (Calli, Kiara, Ina)",
+   "evidence": "New anniversary hats",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-02",
+   "precision": "month",
+   "zone": null,
+   "text": "Kiara's album includes \"Blue & Gold,\" a tribute to Gura and Ame",
+   "evidence": "Remembering the two",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-09-19",
+   "precision": "day",
+   "zone": null,
+   "text": "Myth 6th Anniversary 3D LIVE \"Seasons From Within\" (Calli, Kiara, Ina)",
+   "evidence": "The current three on stage",
+   "file": "bible/world/hololive--Myth.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-08",
+   "precision": "month",
+   "zone": null,
+   "text": "-Council- debuts (Sana, Fauna, Kronii, Mumei, Bae)",
+   "evidence": "\"Council\" nostalgia",
+   "file": "bible/world/hololive--Promise.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-07-31",
+   "precision": "day",
+   "zone": null,
+   "text": "Sana graduates",
+   "evidence": "Council becomes four",
+   "file": "bible/world/hololive--Promise.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-10-08 PDT / 10-09 JST",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "-Promise- formed with IRyS (closing Project: HOPE)",
+   "evidence": "The current group name",
+   "file": "bible/world/hololive--Promise.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-01-03",
+   "precision": "day",
+   "zone": null,
+   "text": "Fauna graduates",
+   "evidence": "—",
+   "file": "bible/world/hololive--Promise.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-04-27",
+   "precision": "day",
+   "zone": null,
+   "text": "Mumei graduates",
+   "evidence": "Promise becomes three",
+   "file": "bible/world/hololive--Promise.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-03-18/19",
+   "precision": "day-range",
+   "zone": null,
+   "text": "hololive SUPER EXPO 2023 and 4th fes. \"Our Bright Parade\"",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2023-03-28",
+   "precision": "day",
+   "zone": null,
+   "text": "The fan app \"holoplus\" is introduced",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2023-04",
+   "precision": "month",
+   "zone": null,
+   "text": "holoMeet 2023 ambassadors include IRyS",
+   "evidence": "IRyS represents EN",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2023-07-02",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive English 1st concert \"-Connect the World-\"",
+   "evidence": "EN's first concert",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2023-07-25/31",
+   "precision": "day-range",
+   "zone": null,
+   "text": "**-Advent- revealed (\"WANTED!\") and debuts**: Shiori, Bijou, **Nerissa**, Fuwawa, Mococo",
+   "evidence": "Nerissa's origin",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2023-09-09/10",
+   "precision": "day-range",
+   "zone": null,
+   "text": "hololive DEV_IS opens with ReGLOSS (Ao, Kanade, Ririka, Raden, Hajime)",
+   "evidence": "Japanese kouhai",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2023-10-08/09",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"CouncilRyS\" 3D showcase; **-Promise- formed** (IRyS joins the Council)",
+   "evidence": "Kronii's and IRyS's group",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-01-16",
+   "precision": "day",
+   "zone": null,
+   "text": "Yozora Mel leaves hololive",
+   "evidence": "Not discussed in stories",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-03-16/17",
+   "precision": "day-range",
+   "zone": null,
+   "text": "SUPER EXPO 2024 and 5th fes. \"Capture the Moment\"",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-04",
+   "precision": "month",
+   "zone": null,
+   "text": "holoMeet 2024 ambassadors include Hakos Baelz",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-06-21/22 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "**-Justice- debuts**: Elizabeth Rose Bloodflame, Gigi Murin, Cecilia Immergreen, Raora Panthera (\"law enforcers\" chasing Advent)",
+   "evidence": "EN's newest kouhai",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-08-02/10 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Advent 3D debuts (JST dates one day later): Shiori (08-02), Bijou (08-03), Nerissa (08-09), FUWAMOCO (08-10, with Okayu and Korone cameos)",
+   "evidence": "genmates as guests",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-08-23",
+   "precision": "day",
+   "zone": null,
+   "text": "\"ENigmatic Recollection\" (ENReco) announced: EN members in the fantasy world Libestal, via a Minecraft series, animation and songs",
+   "evidence": "Guilds: IRyS in \"Cerulean Cup,\" Nerissa and Gura in \"Scarlet Wand\"",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-08-23 EDT",
+   "precision": "day",
+   "zone": "EDT",
+   "text": "World Tour '24 \"-Soar!-\" opens at Anime NYC (Javits Center) with Kiara, Ina and Bae among seven performers; it ends in Taipei on 2025-01-18",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-08-24/25 EDT",
+   "precision": "day-range",
+   "zone": "EDT",
+   "text": "EN 2nd concert \"-Breaking Dimensions-\" (Kings Theatre, New York), a separate event",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-08-28",
+   "precision": "day",
+   "zone": null,
+   "text": "Minato Aqua graduates",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-10-12",
+   "precision": "day",
+   "zone": null,
+   "text": "FUWAMOCO reach 1,000,000 subscribers, first in Advent; VTuber of the Year at the VTuber Awards (2024-12)",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-09-30",
+   "precision": "day",
+   "zone": null,
+   "text": "**Watson Amelia concludes regular activities and stays an affiliate**",
+   "evidence": "Ame appears as a guest",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-11-09",
+   "precision": "day",
+   "zone": null,
+   "text": "DEV_IS second unit FLOW GLOW debuts (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi)",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2024-11-29",
+   "precision": "day",
+   "zone": null,
+   "text": "Two months after Ame's change of status, COVER names it: \"conclusion of streaming activities,\" distinct from graduation (affiliates can still appear in projects)",
+   "evidence": "Why Ame can come back for events",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-01-03",
+   "precision": "day",
+   "zone": null,
+   "text": "Ceres Fauna graduates",
+   "evidence": "Promise remembers her",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-01-26",
+   "precision": "day",
+   "zone": null,
+   "text": "Sakamata Chloe concludes streaming activities (affiliate)",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-03-08/09",
+   "precision": "day-range",
+   "zone": null,
+   "text": "SUPER EXPO 2025 and 6th fes. \"Color Rise Harmony\"",
+   "evidence": "Nerissa performs on day 1",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-04",
+   "precision": "month",
+   "zone": null,
+   "text": "World Tour '25 \"-Synchronize!-\" announced, led by Momosuzu Nene, Kureiji Ollie, **Mori Calliope, IRyS and Nerissa Ravencroft**, with guests per city (Kronii and Bae in Sydney)",
+   "evidence": "Three of the cast on one tour",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-04-26",
+   "precision": "day",
+   "zone": null,
+   "text": "Murasaki Shion graduates",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-04-27 (04-28 JST)",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Nanashi Mumei graduates",
+   "evidence": "Promise becomes three",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-05-01",
+   "precision": "day",
+   "zone": null,
+   "text": "**Gawr Gura graduates**",
+   "evidence": "Myth's first graduation; her last post: \"keep swimming! always!\"",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-05-02",
+   "precision": "day",
+   "zone": null,
+   "text": "ENReco chapter 2 \"The Chains of Fate\"",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-07-05",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive night at Dodger Stadium, Los Angeles, the second hololive–Dodgers collaboration: Ina, IRyS and Bijou",
+   "evidence": "a stadium sing-along",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-07-16",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive RECORDS label launched",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-08-01/02/08/09 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Justice 3D showcases, each at 5 PM PDT: Elizabeth (08-01), Gigi (08-02), Cecilia (08-08), Raora (08-09)",
+   "evidence": "official schedule",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-08-16 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Justice group 3D collaboration stream",
+   "evidence": "before their first in-person concert stage",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-08-23/24 EDT",
+   "precision": "day-range",
+   "zone": "EDT",
+   "text": "EN 3rd concert \"-All for One-\" (Radio City Music Hall, New York): day 1 opens with the all-member \"All for One,\" followed by Advent's \"Genesis\"; Justice's first group performance at an in-person concert venue in 3D",
+   "evidence": "all fifteen EN members on one stage",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-08-29",
+   "precision": "day",
+   "zone": null,
+   "text": "Advent 2nd-anniversary live \"On the Run!\" (\"The Story of Advent\")",
+   "evidence": "Nerissa's group milestone",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-10-03",
+   "precision": "day",
+   "zone": null,
+   "text": "Hiodoshi Ao (ReGLOSS) leaves",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-10-15",
+   "precision": "day",
+   "zone": null,
+   "text": "Official fan club launches",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-11",
+   "precision": "month",
+   "zone": null,
+   "text": "Raora's friendly-fire \"Doom\" spell in Kiara's Mage Arena collab becomes a widely shared fan meme (KYM dates the stream 11-16)",
+   "evidence": "a callback",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-11-15",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive Indonesia 1st concert \"Chromatic Future\"",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2025-12-27",
+   "precision": "day",
+   "zone": null,
+   "text": "Amane Kanata graduates",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-03-06/08",
+   "precision": "day-range",
+   "zone": null,
+   "text": "SUPER EXPO 2026 and 7th fes. \"Ridin' on Dreams\"",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-03-27/28 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "Kiara and Ina's duo concert \"Drawn to Dawn\" (Los Angeles)",
+   "evidence": "TakoTori on stage",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-05",
+   "precision": "month",
+   "zone": null,
+   "text": "Gigi and Cecilia's joint CCGG 3D live and \"CCGG MADNESS\"; Raora's first birthday 3D live (05-10 JST / 05-09 PDT)",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-05-24",
+   "precision": "day",
+   "zone": null,
+   "text": "ENReco chapter 3 \"Broken Bonds\"",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-06-27 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Justice's second-anniversary live \"How to Protect JUSTICE!\" (06-28 JST)",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-07-03/04 PDT",
+   "precision": "day-range",
+   "zone": "PDT",
+   "text": "**EN 4th concert \"Serendipity\"** (Shrine Auditorium, Los Angeles), built around units: Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS (IRyS–Bae), Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora), Autofister (Gigi–Cecilia); guests Ookami Mio, Kobo Kanaeru, Vestia Zeta, Tsunomaki Watame (official report)",
+   "evidence": "The current partnerships",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-07/08",
+   "precision": "month-range",
+   "zone": null,
+   "text": "Shiori's original motion comic \"Into The Void\" (with Elizabeth, Gigi, Nerissa); Advent's 3rd-anniversary 3D live \"Bound by Fate\"; FUWAMOCO announce their first album (08-29)",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-07-23",
+   "precision": "day",
+   "zone": null,
+   "text": "Rhythm game \"hololive Dreams\" released",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "\"hololive Next\": the female-talent branches unify under **hololive**; new logo; members to get updated designs (Tokino Sora first); \"hololive raku\" app; TV anime \"Odeholo\"; 10th-anniversary countdown",
+   "evidence": "The present-day setting",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-09-18",
+   "precision": "day",
+   "zone": null,
+   "text": "New unit ASOBI★MAWARI-TAI! reveals its four members (Hyakuto Kyoko, Achichi Mela, Suzuna Tsuzuri, Sorashina Sopia)",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-09-24/25",
+   "precision": "day-range",
+   "zone": null,
+   "text": "ASOBI★MAWARI-TAI! debut",
+   "evidence": "The newest kouhai at the baseline",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-10-06 (upcoming)",
+   "precision": "day",
+   "zone": null,
+   "text": "IRyS's first solo concert \"HOPE",
+   "evidence": "",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2017-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Tokino Sora makes COVER's first VTuber broadcast",
+   "evidence": "\"Sora-senpai\" is everyone's origin point",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2017-12-21",
+   "precision": "day",
+   "zone": null,
+   "text": "The \"hololive\" app launches",
+   "evidence": "Where the name came from",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2018-05 / 06",
+   "precision": "month-range",
+   "zone": null,
+   "text": "hololive 1st generation debuts (Fubuki, Matsuri, Haato, Aki, Mel, Chris)",
+   "evidence": "The first \"gen\"",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2018-08 / 09",
+   "precision": "month-range",
+   "zone": null,
+   "text": "2nd generation (Aqua, Shion, Ayame, Choco, Subaru); Sakura Miko debuts (2018-08-01)",
+   "evidence": "Senpai the EN members grew up watching",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2018-12",
+   "precision": "month",
+   "zone": null,
+   "text": "hololive GAMERS (Fubuki, Mio; later Okayu, Korone)",
+   "evidence": "Gaming senpai",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2018-11-15",
+   "precision": "day",
+   "zone": null,
+   "text": "AZKi debuts under COVER's management",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2019-05-19",
+   "precision": "day",
+   "zone": null,
+   "text": "AZKi and Hoshimachi Suisei (formerly independent) join under the INoNaKa Music label; Suisei moves to hololive's main branch on 2019-12-01",
+   "evidence": "Calli's starstruck senpai Suisei",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2019-06 / 09",
+   "precision": "month-range",
+   "zone": null,
+   "text": "HOLOSTARS, COVER's male group, starts (1st gen, incl. Rikka); 2nd gen in December",
+   "evidence": "Calli's MoRikka partner",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2019",
+   "precision": "year",
+   "zone": null,
+   "text": "3rd gen \"hololive Fantasy\" (Pekora, Rushia, Marine, Flare, Noel); hololive China begins",
+   "evidence": "Kiara's oshi Pekora; Nerissa's oshi Marine; Calli's starstruck senpai Suisei",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2019-12",
+   "precision": "month",
+   "zone": null,
+   "text": "4th gen (Coco, Kanata, Watame, Towa, Luna); hololive, HOLOSTARS and INoNaKa Music unite as \"hololive production\"",
+   "evidence": "The modern brand",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2020-04",
+   "precision": "month",
+   "zone": null,
+   "text": "hololive Indonesia gen 1; hololive English auditions announced",
+   "evidence": "The overseas branches",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2020-08",
+   "precision": "month",
+   "zone": null,
+   "text": "5th gen (Lamy, Nene, Botan, Polka; Aloe graduated the same month)",
+   "evidence": "The JP generation just before Myth",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2020-09-08",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive English announced; Myth's members appear on X",
+   "evidence": "\"Myth's birthday\" season",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2020-09-12/13",
+   "precision": "day-range",
+   "zone": null,
+   "text": "**Myth debuts:** Calli (first), Kiara, Ina, Gura, Ame",
+   "evidence": "The cast's origin",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2020-10-22",
+   "precision": "day",
+   "zone": null,
+   "text": "Gura becomes the first hololive member to reach 1 million subscribers",
+   "evidence": "A Myth legend",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2020-12",
+   "precision": "month",
+   "zone": null,
+   "text": "ID gen 2 (Ollie, Anya, Reine); hololive China ends",
+   "evidence": "K.I.R.A partners (Reine, Anya)",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2020-12-10",
+   "precision": "day",
+   "zone": null,
+   "text": "Kiara's channel briefly terminated, then restored (\"#PhoenixDown\")",
+   "evidence": "A Kiara rebirth joke",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2021-05-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Kiara reaches 1 million: every Myth member is over 1 million",
+   "evidence": "A Myth first",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2021-06-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Gura passes Kizuna AI as the most-subscribed VTuber",
+   "evidence": "A Myth legend",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2021-07-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Kiryu Coco graduates",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2021-07-11",
+   "precision": "day",
+   "zone": null,
+   "text": "**IRyS debuts** as the VSinger of Project: HOPE",
+   "evidence": "Hope arrives",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2021-08-23",
+   "precision": "day",
+   "zone": null,
+   "text": "**-Council- debuts:** Sana, Fauna, **Kronii**, Mumei, Bae",
+   "evidence": "Kronii's origin",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2021-11",
+   "precision": "month",
+   "zone": null,
+   "text": "6th gen \"Secret Society holoX\" (La+, Lui, Koyori, Chloe, Iroha)",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2022-02-24",
+   "precision": "day",
+   "zone": null,
+   "text": "Uruha Rushia leaves hololive",
+   "evidence": "Not discussed in stories",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2022-03",
+   "precision": "month",
+   "zone": null,
+   "text": "ID gen 3 (Zeta, Kaela, Kobo)",
+   "evidence": "Kobo's \"Mommy Kiwawa\" and \"Uncle Dad\"",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2022-03-20",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive 3rd fes. \"Link Your Wish\" at Makuhari (#つながるホロライブ), day 2: Calli and Kiara perform",
+   "evidence": "Calli: \"My dream came true, my heart is exploding.\" Kiara: \"MAKUHARI WAS ON FIRE!\" [Observed—X posts, S4]",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2022-04-26",
+   "precision": "day",
+   "zone": null,
+   "text": "holoMeet begins; Gura is an ambassador",
+   "evidence": "Global events",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2022-03-19",
+   "precision": "day",
+   "zone": null,
+   "text": "HOLOSTARS announces the unit UPROAR!!",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2022-07-18/23",
+   "precision": "day-range",
+   "zone": null,
+   "text": "HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts",
+   "evidence": "Calli and Kronii's WARS partners Magni and Vesper",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2022-07-31",
+   "precision": "day",
+   "zone": null,
+   "text": "Tsukumo Sana graduates",
+   "evidence": "Council becomes four",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2022-09",
+   "precision": "month",
+   "zone": null,
+   "text": "hololive's 5th anniversary",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2020-09",
+   "precision": "month",
+   "zone": null,
+   "text": "hololive English -Myth- debuts (first EN generation)",
+   "evidence": "Myth anniversaries every September",
+   "file": "bible/world/hololive.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-08",
+   "precision": "month",
+   "zone": null,
+   "text": "-Council- debuts (Kronii's generation)",
+   "evidence": "Council → Promise",
+   "file": "bible/world/hololive.md",
+   "section": "History"
+  },
+  {
+   "date": "2023-10-09",
+   "precision": "day",
+   "zone": null,
+   "text": "-Promise- formed (IRyS joins the remaining Council)",
+   "evidence": "Kronii's group name",
+   "file": "bible/world/hololive.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-09-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Watson Amelia concludes general activities, stays an affiliate",
+   "evidence": "Occasional guest appearances",
+   "file": "bible/world/hololive.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-05-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Gawr Gura graduates",
+   "evidence": "Alumna; remembered in songs and anniversaries",
+   "file": "bible/world/hololive.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-07-03/04",
+   "precision": "day-range",
+   "zone": null,
+   "text": "hololive English 4th concert \"Serendipity\" (LA)",
+   "evidence": "Partner pairs (e.g. Kronii and Ina)",
+   "file": "bible/world/hololive.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "The female-talent branches unify under \"hololive\"",
+   "evidence": "Groups become units",
+   "file": "bible/world/hololive.md",
+   "section": "History"
+  }
+ ],
+ "alias_collisions": {}
+}

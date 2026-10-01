@@ -12,7 +12,7 @@ teasing lilt; can let out a piercing horror-movie scream."
   players, so their numbers are not used as targets here (see `research/audio-check/shiori.md`).
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **40** (fast swings between excitement and deadpan). Similarity **75**.
+- `eleven_v4`. Stability **40%** (API `0.40`) (fast swings between excitement and deadpan). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rapid, excited]` or `[deadpan]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script

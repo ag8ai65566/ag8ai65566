@@ -215,7 +215,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Advent
+FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Advent, B.F.F
 
 ## [SW] Other Names
 Fuwawa, Fuwa-chan, Fuwa-nee, The Fluffy One, Fluffy One
@@ -245,7 +245,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Fuwawa's job as a guard dog is to protect your smile and to look after Mococo and Pero. As an idol she and Mococo chase a list of more than a hundred dreams: a solo concert, singing with her oshi Houshou Marine, anime songs, figures, and making every Ruffian smile.
 
 ## [SW] Relationships
-Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; Mococo says Fuwawa is dependable and calms her down; they finish each other's sentences ("FUWAMOCO sync") and sometimes argue; Fuwawa loved being called "Fuwa-nee" once. Pero, "The Great Perroccino": their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Advent: Shiori (Pen Pups; they mistook a cow for her), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Fuwawa calls her "Newissa," and Nerissa claims to be the third sister, "Mofufu"). Mori Calliope: "FUWAMOCALLI," a collaboration name the twins say they particularly like. Watson Amelia: "Detective Dogs." Ouro Kronii: "WatchDog." Nanashi Mumei (graduated 2025): "Fuwamoomco" (Overwatch). Raora Panthera: their 2026 Serendipity unit partner in B.F.F, who drew them a shikishi before her debut. Gigi Murin and Mori Calliope: "2 Creatures + 1 Reaper," defusing bombs (2026). Houshou Marine: her oshi (a Touhou off-collab). Shirakami Fubuki and Hakui Koyori ("FUWAMOKOYO"): horror and Lethal Company partners. Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity. Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA."
+Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; Mococo says Fuwawa is dependable and calms her down; they finish each other's sentences ("FUWAMOCO sync") and sometimes argue; Fuwawa loved being called "Fuwa-nee" once. Pero, "The Great Perroccino": their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Advent: Shiori (Pen Pups; they mistook a cow for her), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Fuwawa calls her "Newissa," and Nerissa claims to be the third sister, "Mofufu"). Mori Calliope: "FUWAMOCALLI," a collaboration name the twins say they particularly like. Watson Amelia: "Detective Dogs." Ouro Kronii: "WatchDog." Nanashi Mumei (graduated 2025): "Fuwamoomco" (Overwatch). Raora Panthera: their 2026 Serendipity unit partner in B.F.F, who drew them a shikishi before her debut. Gigi Murin and Mori Calliope: "2 Creatures + 1 Reaper," defusing bombs (2026). Houshou Marine: her oshi (a Touhou off-collab). Shirakami Fubuki and Hakui Koyori ("FUWAMOKOYO"): horror and Lethal Company partners. Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity. Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA." Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
 
 ## [SW] Secrets
 (none)
@@ -276,6 +276,10 @@ Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; 
   FUWAMOCO–Raora Serendipity unit named B.F.F (official Serendipity report, day 2: "Inu Neko. Seishun Massakari").
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** "hijacked" clarified as a guest-host impersonation bit; Gigi's two songs with the twins added.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "B.F.F" (official Serendipity unit with Raora) added to Groups.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** Mio's "Dottabatta Chindouchuu" stage with Ina added (official report).
 
 ## Open Questions
 1. (Resolved 2026-10-01, from the GPT review: the solo measurements stay in the dossier with the recording

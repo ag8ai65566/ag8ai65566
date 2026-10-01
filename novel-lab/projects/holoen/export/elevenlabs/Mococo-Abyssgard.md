@@ -16,7 +16,7 @@ on her own name."
   and airier.
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **40** (energetic, with quick jumps into a cheer). Similarity **75**.
+- `eleven_v4`. Stability **40%** (API `0.40`) (energetic, with quick jumps into a cheer). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rapid, excited]` or `[earnest, encouraging]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script

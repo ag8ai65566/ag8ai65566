@@ -232,7 +232,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name)
+hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS
 
 ## [SW] Other Names
 Irys, SeisoRyS, YabaIRyS
@@ -262,7 +262,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 IRyS wants to deliver hope through her songs and reach bigger stages: after her first full album, "DANGERyS" (2026), comes her first solo concert in Tokyo, and someday an anime song. She wants to collab with every member of hololive and keep her fans' spirits up.
 
 ## [SW] Relationships
-Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting "married" and "divorced" (born from a Minecraft bento; their joke fan-fiction made "Monopoly" a fandom euphemism), and a creative partner: at their 2026 Serendipity duo stage IRyS said she leans on Bae's "strong vision" when she's indecisive, and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable; they call their dynamic "a can of worms." Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae. Ouro Kronii: Promise unitmate and two-player rival; IRyS wondered aloud how Kronii sounds when she's scared, and said she, "a half-angel, half-demon Nephilim," could pull off Kronii's goddess look "somehow." Shiranui Flare: a recurring Japanese collaborator (horror camping, Splatoon matches, karaoke). Ninomae Ina'nis: an early duo partner (It Takes Two) who still games with her. Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert. Koseki Bijou ("Biboo"): her horror co-op partner (Dead Space 3, Resident Evil 6); with Ina they starred at hololive night at Dodger Stadium (2025). Tsukumo Sana (graduated): co-designed her mascots Bloom & Gloom. Ceres Fauna (graduated 2025): Promise unitmate and Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Nanashi Mumei (graduated 2025): Promise unitmate; they played Overwatch together during Mumei's farewell week. Shiori Novella: Monster Hunter Wilds and PEAK (2025). Gigi Murin: a "Cerulean Cup" guildmate in the ENigmatic Recollection story. Cecilia Immergreen: Elden Ring Nightreign with Bijou (2025). Gigi Murin, Ouro Kronii and FUWAMOCO: "Bright Tonight" (2025). Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
+Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting "married" and "divorced" (born from a Minecraft bento; their joke fan-fiction made "Monopoly" a fandom euphemism), and a creative partner: at their 2026 Serendipity duo stage IRyS said she leans on Bae's "strong vision" when she's indecisive, and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable; they call their dynamic "a can of worms." Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae. Ouro Kronii: Promise unitmate and two-player rival; IRyS wondered aloud how Kronii sounds when she's scared, and said she, "a half-angel, half-demon Nephilim," could pull off Kronii's goddess look "somehow." Shiranui Flare: a recurring Japanese collaborator (horror camping, Splatoon matches, karaoke). Ninomae Ina'nis: an early duo partner (It Takes Two) who still games with her. Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert. Koseki Bijou ("Biboo"): her horror co-op partner (Dead Space 3, Resident Evil 6); with Ina they starred at hololive night at Dodger Stadium (2025). Tsukumo Sana (graduated): co-designed her mascots Bloom & Gloom. Ceres Fauna (graduated 2025): Promise unitmate and Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Nanashi Mumei (graduated 2025): Promise unitmate; they played Overwatch together during Mumei's farewell week. Shiori Novella: Monster Hunter Wilds and PEAK (2025). Gigi Murin: a "Cerulean Cup" guildmate in the ENigmatic Recollection story. Cecilia Immergreen: Elden Ring Nightreign with Bijou (2025). Gigi Murin, Ouro Kronii and FUWAMOCO: "Bright Tonight" (2025). Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert. At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
 
 ## [SW] Secrets
 (none)
@@ -303,6 +303,10 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** Bijou added to the Nightreign session; "Bright Tonight" (official release, 2025-12-22) and
   "START AGAIN" (official -All for One- report) added.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "BaeRyS" (official Serendipity unit with Bae) added to Groups.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** BaeRyS's "LUVATORRRRRY!" and Mio's "Night Loop" with IRyS and Bijou added (official report).
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

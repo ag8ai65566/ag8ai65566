@@ -1,0 +1,184 @@
+{
+ "built_at": "2026-10-01T20:59Z",
+ "commit": "6a9212f",
+ "baseline": "2026-09-30",
+ "files": {
+  "bible/characters/Cecilia-Immergreen.md": "06f3cf1723321906e1a0d55f80624d5ee431acc43016dbe0a844b6acb7f9bcfa",
+  "bible/characters/Ceres-Fauna.md": "58177a0ddea108b22eb080586981aa488344fed46d7cdb29bfbd867c2753f261",
+  "bible/characters/Elizabeth-Rose-Bloodflame.md": "acb10e5c529df6a381be0dd849dad65a6509a736f756529538f9b05fd84ff936",
+  "bible/characters/Fuwawa-Abyssgard.md": "5a7714bacf71e2fb704cf7cc2fdb3c2e25220220e8d40edee644d2a391c51d8d",
+  "bible/characters/Gawr-Gura.md": "7c0664d13e3014ac4d9bdc8043cb8e5998cc2ee5e1e78f36ca8982038bc57111",
+  "bible/characters/Gigi-Murin.md": "211875ad4315b65ed22f92af9b76b97b4a49a972fa9a06102c191bf61dc90824",
+  "bible/characters/IRyS.md": "a87383909b3a3308dbac97fdb365c5d995f7df6392768ddc3de639c3d43db110",
+  "bible/characters/Koseki-Bijou.md": "17cfde0ea295ce6bdfca0ee5e9b9ab544797f11bfe235cb1e5857ad01e732916",
+  "bible/characters/Mococo-Abyssgard.md": "f3c8a69c24b09726078761ad4f8617e0d903410473b16d1f7485399c471f4e1d",
+  "bible/characters/Mori-Calliope.md": "1088c5a2d234cbdb66e3470a77349896b2b9f4af3a298592e249d0ac68bce922",
+  "bible/characters/Nanashi-Mumei.md": "301fc74cc46140cbef3a75ff1b7e1ee214ecabd0047416d41d570e513791b19b",
+  "bible/characters/Nerissa-Ravencroft.md": "32ba28f5fa050c844a7ce68f2b058b2ce5dc12da5e5a8290fdc05cc226eba91f",
+  "bible/characters/Ninomae-Inanis.md": "eb77b9fad141dfbf425bf9f0d071579e82fd356de5cc8782336326601a42e3f4",
+  "bible/characters/Ouro-Kronii.md": "231a45be34e00bc2d5ec9d7aab5f9cba06084ee622068989156e83ad57e24f8e",
+  "bible/characters/Raora-Panthera.md": "5b0fe89511e5775d72afd10d059b5f32e47d6f802a958e91ee585965562197e9",
+  "bible/characters/Shiori-Novella.md": "b58865cce2de54e2e47dd69931d9e1fb006147331be13a4c0eef8d2ad74b3666",
+  "bible/characters/Takanashi-Kiara.md": "ba9ade5f8263935540b6c117b622e7438bf8833f867d7d345925c6f186cbef40",
+  "bible/characters/Watson-Amelia.md": "6f5acefd057751a8d4b5839097449cb40a87acb554c3e0767bc9bae6071e8a71",
+  "bible/world/Advent-Pairs.md": "a29ce6fb65652a2f3ae7dbce419f730ca865108a6f8d886d4a5f1c97b03e6775",
+  "bible/world/AmeSame.md": "03602b5cf2fd19d1fa524636a54d0af12f84d27e928ad6d6b558931a31b6360b",
+  "bible/world/Bone-Bros.md": "3456a63d52637b62b6c0e00e4961d7f469a52be8eb5d6bf792e331d5e83c2bdb",
+  "bible/world/Concerts-and-Live-Events.md": "b69265972269674b542b42cacc092e22803865b5fd5a5d134442be158a14b7b0",
+  "bible/world/Cross-Branch-Friends.md": "2bdbc0a32c5fc96f984c34d71525245d7f411eb57dc353b892bb9b940af075b0",
+  "bible/world/FUWAMOCO.md": "6a2b52537e6334152e0096e0deaa07291355ca5a1dc6282a22894999a985b754",
+  "bible/world/Fauna-and-Mumei-Pairs.md": "537910125c8df50e45997f2e88e7d10b8fe947f02690132a5ffe540a26808fa7",
+  "bible/world/IRyS-and-Nerissa-Pairs.md": "78df543313607b5f6ea8de02023d7f6d51d29fa0b56a6bafb36ca581bae0b459",
+  "bible/world/Justice-Pairs.md": "b2f0b86e432f2216851b75da2a9a289d2ca7f46eb552b93e0487ea884508aeaf",
+  "bible/world/Myth-and-Kronii-Other-Pairs.md": "12e7d39a7dbba46febc88e046b03cd8fcab96ec2cd1e1a690d0cd90223b18fda",
+  "bible/world/OctoClock.md": "5f0169e12e8b7e1daf0ee4e25d59ab371f65076c2bfaf71b54ffe630dc0483d9",
+  "bible/world/Streaming-Life.md": "5b091fb1cef5daa9dc040ddfdd304fd3d45c0799021268cff3e7de71ef90db61",
+  "bible/world/TakaMori.md": "f08b309972f08369237c383e0cbb2eadf207c0cd9fb7c66b4ef32c167bef0c78",
+  "bible/world/TakoTori.md": "7d9f6437b8eddda327832763bb81f8c9cc94b768d28c2842c00be6124928529c",
+  "bible/world/Time-Duo.md": "329fef0a8daa8d64cda9db111093e237037ca163d6014c601a5254011258d6a5",
+  "bible/world/Time-and-Death.md": "e1239bb9b6264defe6b070bb2d6a6d2b43539b191f835a133857822ccf646ac5",
+  "bible/world/VTuber-Persona-and-Lore.md": "f52c6b4e05a010ec1b56ea6ffdc69036bfe22b0dbecf9ee546d14773ff8e3105",
+  "bible/world/hololive--Advent.md": "86f13cba43a6dd61773c47009b0bca61fd56d67197f2515b9664e521f3461684",
+  "bible/world/hololive--Justice.md": "df1164544e49f40bf597d28c3833c996181d7fa58368541c87201a8757ae4222",
+  "bible/world/hololive--Myth.md": "2b3bc4123a1ffb55329852858f5e0d7e1fd23b2110c455496febb51e91dc971b",
+  "bible/world/hololive--Promise.md": "0d2fcd380c0a1e0908442d1ba9259b8ac035544dd37ea5144e038fb032b26740",
+  "bible/world/hololive-History-2023-2026.md": "912b17de9953d799e2d3f4aedc0151d7918e81ba7f35c70f8a391ea10fb63e98",
+  "bible/world/hololive-History-to-2022.md": "fb9d97a7537e801c5fc5606308d3e8e3d7d1c967225e1b175699f07ca1f08272",
+  "bible/world/hololive.md": "c9b3dd043ec2861d175d295c4c7be488fc7dca8b3f4b513fb2bcdaa8cf264fa2"
+ },
+ "packets": {
+  "myth1": {
+   "owns": [
+    "bible/characters/Mori-Calliope.md",
+    "bible/characters/Takanashi-Kiara.md",
+    "bible/characters/Ninomae-Inanis.md",
+    "bible/world/TakaMori.md",
+    "bible/world/TakoTori.md",
+    "bible/world/Myth-and-Kronii-Other-Pairs.md"
+   ],
+   "parts": [
+    {
+     "packet": "research/qa/packets/myth1.md",
+     "chars": 25056,
+     "sha256": "26dd82e0fddc761b2044883011cb6b87221f51632ca13b30d3b1c0d61ed1a004"
+    },
+    {
+     "packet": "research/qa/packets/myth1-incoming.md",
+     "chars": 100305,
+     "sha256": "68d657dc7b7e743ba6034e45d5d1734c9a43e6f4b6fe954fe4760cb1f17a6007"
+    }
+   ]
+  },
+  "myth2": {
+   "owns": [
+    "bible/characters/Gawr-Gura.md",
+    "bible/characters/Watson-Amelia.md",
+    "bible/world/hololive--Myth.md",
+    "bible/world/AmeSame.md",
+    "bible/world/Bone-Bros.md"
+   ],
+   "parts": [
+    {
+     "packet": "research/qa/packets/myth2.md",
+     "chars": 18025,
+     "sha256": "076110e9a800fa7af3d3b1b587af5299dcccf25421ec7ac05c954b2fd0743666"
+    },
+    {
+     "packet": "research/qa/packets/myth2-incoming.md",
+     "chars": 56628,
+     "sha256": "d8172a7236486c9c8af7f80bfb9f36c3e278116cd740c65e26b82f6fa3299276"
+    }
+   ]
+  },
+  "promise": {
+   "owns": [
+    "bible/characters/Ouro-Kronii.md",
+    "bible/characters/IRyS.md",
+    "bible/characters/Ceres-Fauna.md",
+    "bible/characters/Nanashi-Mumei.md",
+    "bible/world/hololive--Promise.md",
+    "bible/world/Time-Duo.md",
+    "bible/world/Time-and-Death.md",
+    "bible/world/OctoClock.md",
+    "bible/world/Fauna-and-Mumei-Pairs.md",
+    "bible/world/IRyS-and-Nerissa-Pairs.md"
+   ],
+   "parts": [
+    {
+     "packet": "research/qa/packets/promise.md",
+     "chars": 34182,
+     "sha256": "fa29f3d3636f019eee5dc64ed7ec884809466fd35740e3fb9eff065a9ce4e274"
+    },
+    {
+     "packet": "research/qa/packets/promise-incoming.md",
+     "chars": 58029,
+     "sha256": "9ba916fd1808d2b8670dae251e4c3f9599743dbd7eb0442d80519e57a3b69f62"
+    }
+   ]
+  },
+  "advent": {
+   "owns": [
+    "bible/characters/Shiori-Novella.md",
+    "bible/characters/Koseki-Bijou.md",
+    "bible/characters/Nerissa-Ravencroft.md",
+    "bible/characters/Fuwawa-Abyssgard.md",
+    "bible/characters/Mococo-Abyssgard.md",
+    "bible/world/hololive--Advent.md",
+    "bible/world/Advent-Pairs.md",
+    "bible/world/FUWAMOCO.md"
+   ],
+   "parts": [
+    {
+     "packet": "research/qa/packets/advent.md",
+     "chars": 32665,
+     "sha256": "6caabfe8ab7e5f88055d5601426a990c330799b166d2dd3e7441d5aed0279ca9"
+    },
+    {
+     "packet": "research/qa/packets/advent-incoming.md",
+     "chars": 70911,
+     "sha256": "924ef3b4ee07d56b6d1298f671e740c65ffd8fe741c8cfbbf667ed2f1ed8be4b"
+    }
+   ]
+  },
+  "justice": {
+   "owns": [
+    "bible/characters/Elizabeth-Rose-Bloodflame.md",
+    "bible/characters/Gigi-Murin.md",
+    "bible/characters/Cecilia-Immergreen.md",
+    "bible/characters/Raora-Panthera.md",
+    "bible/world/hololive--Justice.md",
+    "bible/world/Justice-Pairs.md"
+   ],
+   "parts": [
+    {
+     "packet": "research/qa/packets/justice.md",
+     "chars": 30885,
+     "sha256": "7e4975c0cd7d2c7ddce7798272a5a3ad70f23cd40e252182f2103df244de51dc"
+    },
+    {
+     "packet": "research/qa/packets/justice-incoming.md",
+     "chars": 39175,
+     "sha256": "ba5cadbfc91bd843322526561605a03d84407213a9ebc44c7d55715a6626d373"
+    }
+   ]
+  },
+  "global": {
+   "owns": [
+    "bible/world/hololive.md",
+    "bible/world/Streaming-Life.md",
+    "bible/world/VTuber-Persona-and-Lore.md",
+    "bible/world/Cross-Branch-Friends.md",
+    "bible/world/Concerts-and-Live-Events.md",
+    "bible/world/hololive-History-2023-2026.md",
+    "bible/world/hololive-History-to-2022.md"
+   ],
+   "parts": [
+    {
+     "packet": "research/qa/packets/global.md",
+     "chars": 28025,
+     "sha256": "c8d85e255be3f1287989e51abe470c0827ef22a3dc27292dfe358296899fd202"
+    }
+   ]
+  }
+ }
+}

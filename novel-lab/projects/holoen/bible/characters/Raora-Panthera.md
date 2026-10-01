@@ -238,7 +238,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Justice-, hololive English -Justice- (former branch name), Justice
+hololive -Justice-, hololive English -Justice- (former branch name), Justice, B.F.F
 
 ## [SW] Other Names
 Raora, Rao, Rara, The Artist with the God Eyes
@@ -307,6 +307,8 @@ FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu 
   Evidence labels inside the exported [SW] fields (provenance stays in the dossier; light attributions are
   used where a quote is secondary).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "B.F.F" (official Serendipity unit) added to Groups.
 
 ## Open Questions
 1. Resolved: 3D showcase 2025-08-09 PDT (RP8).

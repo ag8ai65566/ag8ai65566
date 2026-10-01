@@ -1,1 +1,2 @@
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 9c0d1dd0a9f8）：作者裁決：GPT 一輪審查（runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md）已合併，依作者指示只審一輪；作者 2026-10-01 下令加入 Fauna 與 Mumei
+- 2026-10-01 20:58 作者裁決收錄 final.md（sha256 537910125c8d）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).

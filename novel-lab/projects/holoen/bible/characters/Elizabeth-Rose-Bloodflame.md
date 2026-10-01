@@ -243,7 +243,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Justice-, hololive English -Justice- (former branch name), Justice
+hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven
 
 ## [SW] Other Names
 Elizabeth, Liz, ERB, Lizzie, Erby Berby, Lady Bloodflame, The Scarlet Queen
@@ -311,6 +311,8 @@ Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026
   Crimzon Ruze's word is unsupported; Elizabeth's own title calls Ruze her "Nephew," so the card uses the uncle–nephew
   bit and "Uncle Erb" left Other Names; the HOLOSTARS lineups are described as varying.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "Bloodraven" (official Serendipity unit with Nerissa) added to Groups.
 
 ## Open Questions
 (None.)

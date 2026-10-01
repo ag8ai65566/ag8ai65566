@@ -106,7 +106,7 @@ hololive -Promise-
 Faction
 
 ## [SW] Other Names
-hololive -Promise-, holoPromise, hololive Council, holoCouncil, CouncilRyS
+hololive -Promise-, holoPromise, hololive Council, holoCouncil, CouncilRyS, BaeRyS
 
 ## [SW] Description
 The group of Ouro Kronii and IRyS, hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline. It grew from the English -Council- generation (August 2021), whose personas were themed around concepts (Kronii is Time); Sana graduated from Council in 2022, before Promise existed. IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and a recurring collaborator with Bae) graduated in 2025. Bae calls Kronii "too talented, savage, and a tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. IRyS and Bae keep the "BaeRyS" bit of being "married" and "divorced," which turned "Monopoly" into a fandom euphemism, and they are also creative partners: paired for the 2026 Serendipity concert, IRyS leans on Bae's "strong vision" when she's indecisive, Bae admires IRyS's humor that makes everyone comfortable, and they call their dynamic "a can of worms" and "Complicated."
@@ -136,6 +136,8 @@ The Promise logo; Bae's chaos, IRyS's warmth and sly asides, and Kronii's deadpa
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
 - **2026-10-01, from the Fauna/Mumei GPT review (runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md):** "Bae's most frequent partner" replaced by
   "a recurring collaborator with Bae" (the counts measured one channel's metadata, not a ranking).
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "BaeRyS" (IRyS and Bae, official Serendipity unit) added to Other Names.
 
 ## Open Questions
 (None.)

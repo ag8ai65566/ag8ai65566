@@ -12,7 +12,7 @@ for the punchline; soft and plain when sincere."
   characters and is not used.
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **35** (big, sudden swings). Similarity **75**.
+- `eleven_v4`. Stability **35%** (API `0.35`) (big, sudden swings). Similarity **75%** (API `0.75`).
 - Default tags `[animated, conversational]`; escalate only for a specific bit. Pace comes from the designed
   voice plus `[chatty, quick]` or `[deadpan]`; v4 has no speed slider.
 

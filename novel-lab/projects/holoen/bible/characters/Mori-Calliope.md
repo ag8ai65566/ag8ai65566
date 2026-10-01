@@ -411,7 +411,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name)
+hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
 
 ## [SW] Other Names
 Calli, Calliope, Mori, Calliope Mori, 森カリオペ, 森美声, Mor Mori, Kawaiiope, Miss Mori, Mowi, CallioP, Cori Malliope
@@ -582,6 +582,8 @@ Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusot
   350 words.
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
   P0):** Bijou's audition history removed (outside scope); the public mod stream kept.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "Last Writes" (official Serendipity unit with Shiori) added to Groups.
 
 ## Open Questions
 1. Should Groups keep "hololive English (former branch name)", or be current-only as GPT prefers? The

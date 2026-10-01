@@ -14,7 +14,7 @@ quick to switch into playful character voices."
   `research/audio-check/elizabeth.md`).
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **50** (warm and steady, with theatrical peaks). Similarity **75**.
+- `eleven_v4`. Stability **50%** (API `0.50`) (warm and steady, with theatrical peaks). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[warm, polite]` or `[grand, theatrical]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script

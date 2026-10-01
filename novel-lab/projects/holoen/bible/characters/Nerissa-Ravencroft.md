@@ -233,7 +233,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Advent-, Advent, hololive English (former branch name)
+hololive -Advent-, Advent, hololive English (former branch name), Bloodraven
 
 ## [SW] Other Names
 Nerissa, Rissa, Neri, Demon of Sound, Demon of Soup
@@ -263,7 +263,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Nerissa wants to sing for audiences, develop her music and acting, collaborate across hololive and improve her Japanese. Her lore echoes this ambition through the Demon of Sound's desire to sing.
 
 ## [SW] Relationships
-Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit (ShioRaven); Shiori plays hard to get, and the two keep a joke lore of fictional "children." Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she claims, as a bit, to be the third sister, "Mofufu"; Fuwawa calls her "Newissa." Koseki Bijou: the raven and the shiny rock girl (JewelBird); Bijou calls her "Nerizzler," and Nerissa named Bijou's evil twin "Oobib." Takanashi Kiara: her oshi (KiaRissa); in Nerissa's lore she worked at KFP; Kiara showed her around Minecraft, and they held a 2025 "BIRB GIRLS" GIRLSTALK. Mori Calliope: Baldur's Gate 3 party member, duet partner ("OVER//RIDE") and guest at her 3D concert; Nerissa was Calli's first Instagram follower. IRyS: fellow singer who guested at that concert. Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) from Justice and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai"). Moona Hoshinova: she sings on Moona's "100%" (2025). Houshou Marine: her other oshi. Gigi Murin: duo partner with a joke "child," Nerigi. Nanashi Mumei (graduated 2025): "emo hours" partner (2023, 2025); with Kiara they sang "Beyond the way" at the 2024 English concert. Ceres Fauna (graduated 2025): the senpai she excitedly replied to on her first day on X ("Fauna-senpai!!!"); with Shiori they sang "Lonely in Gorgeous" at the same concert. Cecilia Immergreen: Unravel Two (2024; "AutoTune," a secondary pair name). Raora Panthera: Clubhouse Games (2024); with Moona, Raft and Monster Hunter Wilds as "V3LVET" (2025).
+Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit (ShioRaven); Shiori plays hard to get, and the two keep a joke lore of fictional "children." Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she claims, as a bit, to be the third sister, "Mofufu"; Fuwawa calls her "Newissa." Koseki Bijou: the raven and the shiny rock girl (JewelBird); Bijou calls her "Nerizzler," and Nerissa named Bijou's evil twin "Oobib." Takanashi Kiara: her oshi (KiaRissa); in Nerissa's lore she worked at KFP; Kiara showed her around Minecraft, and they held a 2025 "BIRB GIRLS" GIRLSTALK. Mori Calliope: Baldur's Gate 3 party member, duet partner ("OVER//RIDE") and guest at her 3D concert; Nerissa was Calli's first Instagram follower. IRyS: fellow singer who guested at that concert. Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) from Justice and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai"). Moona Hoshinova: she sings on Moona's "100%" (2025). Houshou Marine: her other oshi. Gigi Murin: duo partner with a joke "child," Nerigi. Nanashi Mumei (graduated 2025): "emo hours" partner (2023, 2025); with Kiara they sang "Beyond the way" at the 2024 English concert. Ceres Fauna (graduated 2025): the senpai she excitedly replied to on her first day on X ("Fauna-senpai!!!"); with Shiori they sang "Lonely in Gorgeous" at the same concert. Cecilia Immergreen: Unravel Two (2024; "AutoTune," a secondary pair name). Raora Panthera: Clubhouse Games (2024); with Moona, Raft and Monster Hunter Wilds as "V3LVET" (2025). Kobo Kanaeru (ID): "BLUE CLAPPER" with Nerissa and Kronii at Serendipity.
 
 ## [SW] Secrets
 (none)
@@ -304,6 +304,10 @@ Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit
   sessions; "AutoTune" labeled secondary.
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
   P0):** the 2024 off-collab trip and "on trips" removed (private travel is outside scope).
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "Bloodraven" (official Serendipity unit with Elizabeth) added to Groups.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** Kobo's "BLUE CLAPPER" stage with Nerissa and Kronii added (official report).
 
 ## Open Questions
 1. Her laughter, "Ope!" and her fangirling with Kiara were not captured by the audio check (whisper does

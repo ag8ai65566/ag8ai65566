@@ -12,7 +12,7 @@ able to burst into loud laughter or shouting."
   per minute of speech). [ASR C30]
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **40** (she swings from deadpan to bursts). Similarity **75**.
+- `eleven_v4`. Stability **40%** (API `0.40`) (she swings from deadpan to bursts). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
 - Contractions and loose phrasing: "cuz," "wanna," "gonna"; "y'all," "chat," "Dead Beats."

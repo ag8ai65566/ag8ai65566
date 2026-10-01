@@ -353,7 +353,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive, hololive -Myth-, Myth, hololive English (former branch name)
+hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
 
 ## [SW] Other Names
 Ina, Ina'nis, Inya, Ninomanyo Inya'nis, 一伊那尓栖
@@ -383,7 +383,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Ina delivers sanity checks on humanity. In her own public words, she wants to give her viewers a better day, make art and music, grow as a performer and give back through charity, and she loves groan-inducing wordplay.
 
 ## [SW] Relationships
-Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'Clock); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, Ina credits Kiara's support with helping her gain confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at hololive night at Dodger Stadium (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put them both in her Tomodachi Life island. Houshou Marine: a senior artist she admires. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024) and "MONSTER" with Kronii and Gigi at the 2025 English concert. FUWAMOCO: "SHALLYS" with Cecilia at the same concert. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry with Ina. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025).
+Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, Ina credits Kiara's support with helping her gain confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at hololive night at Dodger Stadium (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put them both in her Tomodachi Life island. Houshou Marine: a senior artist she admires. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024) and "MONSTER" with Kronii and Gigi at the 2025 English concert. FUWAMOCO: "SHALLYS" with Cecilia at the same concert. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry with Ina. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025). Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with Ina and FUWAMOCO at Serendipity.
 
 ## [SW] Secrets
 (none)
@@ -484,6 +484,10 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'Clock); "two 
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
   P0):** the waking/pajamas and getting-ready lines (private routine) replaced by her other verified lines in
   Dialogue Style, Tone Shifts and Sample Lines; the performance sheet changed to match.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** "Octo'clock" (the official report's spelling) added to Groups; their "Bad Apple" stage named.
+- **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
+  checked by Claude against the official Serendipity report and announcements:** Mio's "Dottabatta Chindouchuu" stage with Ina and FUWAMOCO added (official report).
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

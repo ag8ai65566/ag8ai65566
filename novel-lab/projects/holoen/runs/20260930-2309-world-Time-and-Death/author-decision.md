@@ -1,1 +1,2 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 5ac7a6232540）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
+- 2026-10-01 20:58 作者裁決收錄 final.md（sha256 e1239bb9b626）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
