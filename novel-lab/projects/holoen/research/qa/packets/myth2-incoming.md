@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 6a9212f.
+Snapshot: git 27a616e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|City Pop Shark|Amelia Watson|Watson Amelia|Gremlin Ame|Same-chan|Goobidiba|Gawr Gura|ワトソン・アメリア|Samegaki|Amechan|Amelia|がうる・ぐら|Gooba|Gura|Myth|Goob|Ame)(
+Matched names: lolive -Myth-|City Pop Shark|Watson Amelia|Amelia Watson|Gremlin Ame|Gawr Gura|Same-chan|Goobidiba|ワトソン・アメリア|Samegaki|Amechan|がうる・ぐら|Amelia|Gooba|Myth|Goob|Gura|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
