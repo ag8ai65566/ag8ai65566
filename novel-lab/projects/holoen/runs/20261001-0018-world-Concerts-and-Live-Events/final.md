@@ -85,7 +85,7 @@ Recurring events / culture.
 5. A tour stop in Sydney: Kronii joins Calli, IRyS and Nerissa as a guest.
 
 ## Links to Characters
-All eight.
+All ten (Fauna and Mumei: the 2023 EN concert, 4th fes., Mumei's 2024 3D birthday live "Outside the Box" and 6th fes.).
 
 ## Secrets
 (None.)
@@ -141,6 +141,7 @@ Glowsticks in member colors; an LED wall; a new 3D outfit's reveal; a call-and-r
 - **SHOULD adopted:** recurring formats first in the card; the longer ledger stays in the dossier. The
   2022 fes. is named "Link Your Wish."
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
 
 ## Open Questions
 1. Which characters performed at the four EN concerts (2023–2025 line-ups) was not checked; only

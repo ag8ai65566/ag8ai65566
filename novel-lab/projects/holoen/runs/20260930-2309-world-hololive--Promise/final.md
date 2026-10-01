@@ -79,7 +79,7 @@ Faction / unit.
 6. Bae announces another BaeRyS "divorce"; IRyS demands the potato bento back.
 
 ## Links to Characters
-Ouro Kronii and IRyS (members). Myth characters and Nerissa appear as cross-group friends.
+Ouro Kronii and IRyS (members); Ceres Fauna and Nanashi Mumei (graduated 2025; see "Fauna and Mumei Pairs"). Myth characters and Nerissa appear as cross-group friends.
 
 ## Secrets
 (None.)
@@ -109,7 +109,7 @@ Faction
 hololive -Promise-, holoPromise, hololive Council, holoCouncil, CouncilRyS
 
 ## [SW] Description
-The group of Ouro Kronii and IRyS, hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline. It grew from the English -Council- generation (August 2021), whose personas were themed around concepts (Kronii is Time); Sana graduated from Council in 2022, before Promise existed. IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna and Mumei graduated in 2025. Bae calls Kronii "too talented, savage, and a tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. IRyS and Bae keep the "BaeRyS" bit of being "married" and "divorced," which turned "Monopoly" into a fandom euphemism, and they are also creative partners: paired for the 2026 Serendipity concert, IRyS leans on Bae's "strong vision" when she's indecisive, Bae admires IRyS's humor that makes everyone comfortable, and they call their dynamic "a can of worms" and "Complicated."
+The group of Ouro Kronii and IRyS, hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline. It grew from the English -Council- generation (August 2021), whose personas were themed around concepts (Kronii is Time); Sana graduated from Council in 2022, before Promise existed. IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and Bae's most frequent partner) graduated in 2025. Bae calls Kronii "too talented, savage, and a tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. IRyS and Bae keep the "BaeRyS" bit of being "married" and "divorced," which turned "Monopoly" into a fandom euphemism, and they are also creative partners: paired for the 2026 Serendipity concert, IRyS leans on Bae's "strong vision" when she's indecisive, Bae admires IRyS's humor that makes everyone comfortable, and they call their dynamic "a can of worms" and "Complicated."
 
 ## [SW] Rules
 At the 2026 baseline Promise is IRyS, Kronii and Bae; Fauna and Mumei are Promise graduates and Sana a Council graduate, appearing only as memories. Unit names (Council, Promise) describe groups, not real powers or concepts.
@@ -133,6 +133,7 @@ The Promise logo; Bae's chaos, IRyS's warmth and sly asides, and Kronii's deadpa
 - **SHOULD adopted:** Other Names now "hololive -Promise-," "holoPromise," "hololive Council,"
   "holoCouncil," "CouncilRyS" instead of the bare words.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
 
 ## Open Questions
 (None.)

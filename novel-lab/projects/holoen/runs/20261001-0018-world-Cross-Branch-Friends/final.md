@@ -53,6 +53,12 @@ Relationship web.
   ("ふーたんとキャンプだ！"), Splatoon private matches, an off-collab karaoke (2025-03); units "Star Flower"
   (Moona, Suisei, AZKi), "IRySora" (Tokino Sora), "ReiRyS" (Reine), "OKFAIR" (Ollie, Kronii, Fauna, Anya,
   Reine). [Observed S1; S2 IRyS]
+- **Ceres Fauna** (graduated): her first official collab outside her generation was with Pavolia Reine
+  (Clubhouse 51, 2021); Kaela Kovalskia was a recurring partner ("Fearless & Fearful vs Ghosts," an ID
+  Minecraft server tour); she admired Shirogane Noel. [Observed S1; Fauna file F2]
+- **Nanashi Mumei** (graduated): HOLOTORI with Kiara, Subaru, Reine and Lui ("Bird Sisters" Q&A with Lui,
+  2025); drawing collabs with Airani Iofi; Minecraft "Peace & Love with HAACHAMA" (2025); Tokoyami Towa calls
+  her "Mumi-chan." [Observed S1; Mumei file M2]
 - **Nerissa Ravencroft:** Houshou Marine is her oshi (plush, figures, an off-collab with Marine and
   FUWAMOCO, 2024); "BLUE·MEGAMISAMA" with Tokino Sora; "V3LVET" with Raora and Moona Hoshinova; Kobo
   calls her "Nori-chan." With Moona she has a released song, "100% (feat. Nerissa Ravencroft)"
@@ -90,7 +96,7 @@ Relationship web.
 5. Kiara and Reine plan another "vacation" in VR.
 
 ## Links to Characters
-All eight.
+All ten.
 
 ## Secrets
 (None.)
@@ -123,7 +129,7 @@ Relationship
 Death Star, MoRikka, LYRA, Holodeath, PavoNashi, HOLOTORI, UMISEA, HoloJEI, TakoNeko, K.I.R.A, OKFAIR, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET
 
 ## [SW] Description
-The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones" ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu. Gura had "Apex Predators" with Shishiro Botan and a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan."
+The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones" ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu. Gura had "Apex Predators" with Shishiro Botan and a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan." Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (Lui calls them bird sisters).
 
 ## [SW] Rules
 Senpai and kouhai describe relative seniority, not language or nationality; forms of address and levels of formality vary by relationship. Unit lineups belong to their period: graduates and affiliates are not current regular partners. Members of other agencies are only brief, friendly mentions.
@@ -150,6 +156,7 @@ A bilingual stream title with both names; a senpai's plush on a shelf; a starstr
 - **Author direction (2026-10-01):** HOLOSTARS relationships are in scope; the male-member open question
   was removed.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
 
 ## Open Questions
 (None.)
