@@ -8,7 +8,7 @@
 "Perfect audio quality. Young adult woman, neutral American accent, light and playful upper-range voice,
 middling pace that trips over itself with restarts and fillers, mischievous, can drop into a lower gremlin
 voice for jokes, high-pitched wheezing screech when losing."
-- Register basis: upper group (≈248–276 Hz), middle pace (≈114–133 words per minute of speech). [ASR A23]
+- Register basis (sample observations from the audio check, not synthesis targets): upper range (≈248–276 Hz), middle pace (≈114–133 words per minute of speech). [ASR A23]
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **40**. Similarity **75**.
@@ -38,7 +38,7 @@ voice for jokes, high-pitched wheezing screech when losing."
 - Gremlin laugh "NEHEHEHEHE!": `[gremlin cackle] NEHEHEHEHE!`
 - Screech: `[high-pitched wheezing screech]`; hiccups: `[hiccups]` (not in every sentence).
 
-## 6. Pronunciation (test)
+## 6. Pronunciation (provisional; test)
 - Amelia Watson `/əˈmiːliə ˈwɑtsən/` · Teamates `/ˈtiːmˌmeɪts/`
 
 ## 7. Don't

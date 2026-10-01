@@ -164,10 +164,10 @@ to chat and genmates [Observed K8 §Personality, secondary]. Both belong to the 
   exclamation.
 - **Timbre / pitch / pace (for voice performance):**
   - Secondary description: her voice is "powerful and well-controlled, giving off an 'older sister'
-    vibe" [Observed K8 §Personality, secondary]. "A deep voice comparable to Mori Calliope," "a wide
-    vocal range" and a high-pitched voice on a viewer's request were not found in the current K8
-    revision (2026-09-30) [Unverified; off the card]. Card wording "a low speaking register" rests on the
-    K36 measurement below.
+    vibe" [Observed K8 §Personality, secondary]. The same passage says: "While she has a deep voice comparable to Mori
+    Calliope, she also has a wide vocal-range; she once produced a high-pitched voice by a viewer's
+    request" (linking https://youtu.be/J6VCN6o18mE). [Observed K8 §Personality, secondary] Card wording
+    "a low speaking register" is also supported by the K36 measurement below.
   - Measured (K36, chat windows): median pitch 177–188 Hz, the lowest of the six files measured the same
     way (Calli 197–214 Hz; Gura and Ame about 250–270 Hz); about 120–127 words per minute of speech,
     mid-paced (Calli 161–186, Ina 81–95). Approximate values for relative comparison.
@@ -364,10 +364,10 @@ Kronii, Warden of Time, オーロ・クロニー, Kronini, Kroniicopter, Kronste
 Kronii plays the flawless Warden of Time and states her own greatness as plain fact. Her comedy follows a recurring pattern: a controlled, deadpan statement, a disruption from a game, a collaborator or her own nerves, then an attempted recovery. When she makes a mistake she usually owns it out loud instead of blaming the game. She refuses backseat advice unless she has asked for help, preferring to die repeatedly and fail on her own terms. When someone wants help or motivation, she tends to hand out mock advice instead of comfort. A compliment may get a deadpan acceptance. She has claimed she doesn't scare easily, yet horror games frighten her readily; after a scare she may attempt a deadpan recovery. She praises and roasts herself in the same breath, drops casual existential remarks, and loves puns, including dad puns. She values order, since disorder is her official enemy, and she procrastinates while claiming to dislike procrastinating. Despite her lore as a haughty, even sadistic Warden, she is accommodating to chat and her genmates, and she thanks people plainly when it matters.
 
 ## [SW] Background
-Kronii is the Warden of Time, the third concept created by the gods and the one most bound to humankind. Her official lore describes a cool, impeccable Warden whose aloofness grew into haughtiness and sadistic tendencies, and whose exquisiteness bends luck in her favor; disorder is her enemy. She debuted in August 2021 with hololive English -Council-. In October 2023, she joined hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz. Following Fauna's and Mumei's graduations in 2025, its current members are Kronii, IRyS and Baelz, and since the 2026 merger the unit belongs to the single hololive brand. Her fans are the Kronies, which she also calls Kromies. Her mascot is Boros, a small white ouroboros snake. She is known for a Minecraft era spent building bunkers (the Bunkeronii). Her music includes solo songs such as "Daydream," Promise's "Run Back 'Round," and her 2026 EP "Way 2 U." In 2026 she also began a performance partnership with Ninomae Ina'nis. She jokes that she is 60.
+She has no supernatural abilities; her lore is a performed persona. Kronii is a VTuber whose lore, a persona she plays deadpan, makes her the Warden of Time, the third concept created by the gods and the one most bound to humankind. Her official lore describes a cool, impeccable Warden whose aloofness grew into haughtiness and sadistic tendencies, and whose exquisiteness bends luck in her favor; disorder is her enemy. She debuted in August 2021 with hololive English -Council-. In October 2023, she joined hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz. Following Fauna's and Mumei's graduations in 2025, its current members are Kronii, IRyS and Baelz, and since the 2026 merger the unit belongs to the single hololive brand. Her fans are the Kronies, which she also calls Kromies. Her mascot is Boros, a small white ouroboros snake. She is known for a Minecraft era spent building bunkers (the Bunkeronii). Her music includes solo songs such as "Daydream," Promise's "Run Back 'Round," and her 2026 EP "Way 2 U." In 2026 she also began a performance partnership with Ninomae Ina'nis. She jokes that she is 60.
 
 ## [SW] Physical Description
-Kronii is 168 cm tall, with short dark-blue hair that falls in long locks at the sides and big blue eyes. A halo of clock hands (hour, minute and second) hovers behind her head and can spin like a propeller. In her original outfit she wears blue, white and black with gold trim, under a blue cape with a big ribbon, jewels and gold ornaments, and she carries two swords shaped like the long and short hands of a clock.
+Kronii's avatar is 168 cm tall, with short dark-blue hair that falls in long locks at the sides and big blue eyes. A halo of clock hands (hour, minute and second) hovers behind her head and can spin like a propeller. In her original outfit she wears blue, white and black with gold trim, under a blue cape with a big ribbon, jewels and gold ornaments, and she carries two swords shaped like the long and short hands of a clock.
 
 ## [SW] Dialogue Style
 She speaks dry, minimal, casual English, with short cheers dropped in. She uses deadpan self-praise, short reactions and repetition. She prefers understatement to exclamation,. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Lines of hers: "I'm so funny. I can't read this." "Oh my god, that hand scared me."
@@ -376,13 +376,16 @@ She speaks dry, minimal, casual English, with short cheers dropped in. She uses 
 "Kroniichiwa!" (greeting, after a few hellos); "It's me, perfection." (self-introduction, bragging); "Yay!" / "Yippee!" (a cheer); "KroYasumi~" (good night); "I know." (accepting a compliment); "That was my bad." / "that's on me" (owning a misplay); "just be better" (mock advice to chat); "GWAK!" (startled squawk when scared or hit); "God, I can't get over how amazing I am. Narcissus would be so jealous." (peak self-praise); "I'm like, the hottest dumpster fire." (self-roast); "I'm not a happy person. But I would like to be happy." (deadpan existential aside); "Flower." (a quoted bit); "Tea is leaf juice." (deadpan food take); "You're looking at the ribbon, right?" (teasing about her outfit); "ご飯にする？お風呂にする？それとも…わ・た・し？" ("Dinner? A bath? Or… me?") (a flirty line); "Sorry, I just don't understand things from a CLANKER." (to Cecilia)
 
 ## [SW] Voice & Delivery
-A low speaking register: powerful and well-controlled, with an older-sister feel. Her default delivery is dry and deadpan at an unhurried, medium pace. When frightened she lets out a startle squawk. She vocalizes explosively when she takes damage or dies in games. Sincere lines come out plain and complete, without a joke attached.
+A low speaking register, powerful and well-controlled, with an older-sister feel, and a wide range she once pushed into a high-pitched voice at a viewer's request. Her default delivery is dry and deadpan at an unhurried, medium pace. When frightened she lets out a startle squawk. She vocalizes explosively when she takes damage or dies in games. Sincere lines come out plain and complete, without a joke attached.
+
+## [SW] Audio Tags
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (sample observations, not synthesis targets): low alto (about 180 Hz in sampled chat), relaxed medium pace (about 120–127 words a minute), dry, controlled, American English. Default tags: [deadpan], [dry], [relaxed]. By situation: greeting [relaxed] "Kroniichiwa!"; bragging [deadpan, flat, slow]; jump scare [startled squawk] GWAK! then [trying to stay calm]; misplay [dry]; frustrated [irritated, short] with a swear; praised [deadpan], or [flustered, quick] when it lands; self-roast [dry, amused]; horror tension [low, uneasy]; sincere [plain, warm, unhurried]; good night [softer] "KroYasumi~"; a requested bit [high-pitched, put-on voice]. With people (direction drawn from Relationships): Calli [dry, sparring, smug]; Ina [warm, punny]; IRyS [competitive, deadpan teasing]; Bae [put-upon, dry]; Kaela [easygoing]; a Japanese senpai [polite, a little stiff]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [startled squawk] GWAK! (sharp, far above her speaking voice); [yelps] and [grunts] when hit. Keep in the words: short plain statements; a beat (ellipsis or new sentence) before the punchline; self-praise stated as fact; mistakes owned aloud ("that's on me"); swears when startled. Pronunciation guide (provisional, untested): Ouro Kronii /ˈoʊɹoʊ ˈkɹoʊni/, Kroniichiwa /ˌkɹoʊniˈtʃiːwɑ/, Kronies /ˈkɹoʊniz/, GWAK /ɡwɑk/. Not as default: [giggles], [bubbly], [cheerful] or breathy seduction; a brief, flat-cheerful "Yay!" is in range.
 
 ## [SW] Motivation
-Kronii wants to entertain her Kronies with games, singing and voice work, and to give performances worthy of their support. She wants to be seen as flawless and to keep things in order, and she admits, dryly, that she would like to be happy.
+Kronii wants to entertain her Kronies with games, singing and voice work, and to give performances worthy of their support. She plays at being flawless, and her Warden persona treats disorder as an enemy, and she admits, dryly, that she would like to be happy.
 
 ## [SW] Relationships
-Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny." IRyS: Promise genmate who once wondered aloud how Kronii sounds when she's scared. Nanashi Mumei (graduated): Council genmate (KronMei). Ceres Fauna (graduated): Council genmate who described Kronii's "gap moe." Mori Calliope: calls her "Kronster"; Kronii teases her about being 1 cm taller. Gigi Murin: collaborator in the units "TimeChaser" and "Clockwork Orange." Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: "Pizza Time" partner who calls her "Tam Tender." Takanashi Kiara: a fan before Kronii debuted. Watson Amelia (affiliate): "Time Duo"; guested at Kronii's 2026 birthday live.
+Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'Clock); "Just two punny people," and both speak Korean. Hakos Baelz: genmate who calls her a "tsundere granny." IRyS: Promise genmate and two-player rival (A Way Out, Bokura, a Powerwash "Best Maid" race) who once wondered aloud how Kronii sounds when she's scared, and in 2026 said she could pull off Kronii's goddess look "somehow." Nanashi Mumei (graduated): Council genmate (KronMei). Ceres Fauna (graduated): Council genmate who described Kronii's "gap moe." Mori Calliope: her first collab partner outside her generation (2021); Calli calls her "Kronster," Kronii teases her about being 1 cm taller, and they bill themselves "Time and Death" in horror co-ops and mock feuds. Kaela Kovalskia: a recurring cross-branch co-op partner for years (Raft, Luma Island, Old Market Simulator) and her partner at a 2024 World Tour panel. Gigi Murin: collaborator in the units "TimeChaser" and "Clockwork Orange." Cecilia Immergreen: calls her "Owo-senpai"; Kronii calls her a "CLANKER." Raora Panthera: "Pizza Time" partner who calls her "Tam Tender." Takanashi Kiara: a fan before Kronii debuted who calls her "quasoni." Gawr Gura (graduated): SNOTCast, and Kronii was one of Gura's regular partners in her last months. Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live.
 
 ## [SW] Secrets
 (none)
@@ -442,6 +445,12 @@ Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak
     current. The history stays in Background.
   - The innuendo-coded readings ("ara ara", the "dinner, bath, or me" line) stay, because the project's
     authenticity rule applies and they are sourced and non-explicit.
+- **World integration (author request, 2026-09-30):** the card now frames the lore as a persona
+  ("a VTuber whose lore… makes her the Warden of Time"; "Kronii's avatar is…"), in line with the new world
+  card "VTuber Persona and Lore." Relationships updated from the world research (Calli "Time and Death,"
+  Ina "Octo'Clock," Ame "Time Duo," Kiara's "quasoni," Gura's last months). **Correction:** Claude had
+  wrongly written in round 4 that K8 no longer mentions her deep voice, wide range and high-pitched voice
+  on request; the current K8 §Personality does. Those details are restored to Voice & Delivery.
 - **Recency weighting (author decision, 2026-09-30):** her card already leans on 2026 evidence (the
   2026 opener with hellos, "Kroniichiwa" and "Yay!", and the 2026 real lines); 2021 items ("That was my
   bad," the GWAK clips) stay as shared memory backed by the current wiki.
@@ -449,8 +458,8 @@ Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak
   - Title-only speech and delivery left the card and are [Unverified] in the dossier: "I'm not addicted to
     Minecraft" (K21), "Ara ara" as a requested sultry reading (K13), laughter breaking into a
     performance (K23); "KroYasumi~" now rests on the official card spelling (K18) without a delivery claim.
-  - "A wide range … high-pitched voice on request" and "a deep voice comparable to Calli" were not found in
-    the current K8 revision; removed from the card.
+  - "A wide range … high-pitched voice on request" and "a deep voice comparable to Calli" were wrongly
+    reported as missing from K8 here (corrected on 2026-09-30, see below).
   - Story Engine: "rejecting unsolicited gameplay advice unless she asks"; ragebait kept only as an
     unapproved proposal.
   - The "Flower" context (repeated flatly with Baelz and Mumei, K14) is title-only: the card keeps the
@@ -490,6 +499,18 @@ Ninomae Ina'nis: performance partner since 2026; they trade puns, and both speak
   - Dossier structure completed (boundary line, Arc and Secrets subfields).
 - **Left to the author:** whether to adopt either optional arc; which alternate outfit to use in a
   given story.
+- **2026-10-01, cast expansion (author decision to add IRyS and Nerissa):** the Relationships card gained
+  IRyS/Nerissa lines drawn from the world card "IRyS and Nerissa Pairs" (stream archive titles S1 there).
+- **2026-10-01, Audio Tags (author decision: Sudowrite adds the ElevenLabs v4 tags):** new [SW] Audio Tags
+  field built from this file's Voice Profile, Tone Shifts and audio-check measurements (see
+  `export/elevenlabs/<name>.md`); no new facts.
+- **2026-10-01, GPT one-round review (runs/20260930-2309-world-hololive/gpt-free.md, 2026-10-01, high):** "no supernatural abilities; her lore is a performed persona" now opens
+  Background; Motivation framed through the Warden persona; Voice & Delivery describes her own register (no "like
+  Calli's"); Ina as the Serendipity partner for that concert; Kaela Kovalskia added.
+- **2026-10-01, Audio Tags per GPT's review:** measurements framed as sample observations (no cast-wide
+  rankings); tags labeled proposed directions to test with an original voice; "Never" lists softened to
+  "Not as default" where the evidence shows range; IPA marked provisional; signature sounds split into
+  spoken interjections and nonverbal tags.
 
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:

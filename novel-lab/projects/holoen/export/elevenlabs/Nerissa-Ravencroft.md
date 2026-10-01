@@ -6,10 +6,10 @@
 > Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young adult woman, neutral American accent, warm natural mid-range voice,
+"Perfect audio quality. Young adult woman, neutral American accent, warm, relaxed mid-range voice,
 relaxed and chatty, playful and teasing, can turn sweet and coaxing or flat and deadpan, big theatrical
 swings when telling a story."
-- Register basis: mid pitch (≈214 Hz median in a 2026 solo chat, 172–297 Hz) and an easy, fairly quick
+- Register basis (sample observations from the audio check, not synthesis targets): mid pitch (≈214 Hz median in a 2026 solo chat, 172–297 Hz) and an easy, fairly quick
   pace (≈159 words per minute of speech). [ASR N20]
 - Not a high, cutesy anime voice. Her singing voice is the persona's centerpiece; this sheet covers speech.
 
@@ -27,7 +27,7 @@ swings when telling a story."
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Opening / hosting | `[bright, theatrical]` | "Nerissa Ravencroft, at your service~" (debut introduction) |
+| Opening / hosting | `[bright, theatrical]` | "Hiya Darlings, this is the Devilish Diva, the one and only Nerissa Ravencroft!" (official written introduction, 2026) |
 | Chatting | `[relaxed, chatty]` | "You know what I'm saying?" |
 | Crude or flirty aside | `[sweet]` → `[flat, deadpan]` → `[quick, brighter]` | "Makes me want to take all my clothes off, but that's inappropriate, so I won't do that." |
 | Rage-bait | `[confident, smug]` → `[sheepish, rushed]` | "That's me just rage baiting at this point. I'm sorry. They are donuts." |
@@ -41,7 +41,7 @@ swings when telling a story."
 - "Ope!": `[startled] Ope!` (short, a little sheepish).
 - Mock-dramatic gasps and groans in stories: `[dramatic gasp]`, `[exaggerated groan]`.
 
-## 6. Pronunciation (test)
+## 6. Pronunciation (provisional; test)
 - Nerissa `/nəˈɹɪsə/` · Ravencroft `/ˈɹeɪvənkɹɒft/` · Mofufu `/moʊˈfuːfuː/` · Ope `/oʊp/` ·
   senpai `/ˈsɛnpaɪ/` · kohai `/ˈkoʊhaɪ/`
 

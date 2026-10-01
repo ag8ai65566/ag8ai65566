@@ -8,7 +8,7 @@
 "Perfect audio quality. Young adult woman, neutral English accent, bright upper-mid voice,
 fast and chatty with sudden accelerations, highly expressive, prone to sharp excited cries and loud
 laughter, warm when sincere."
-- Register basis: upper-middle pitch (≈245–300 Hz, game audio inflates it) and fast in chat (≈133–179 words
+- Register basis (sample observations from the audio check, not synthesis targets): upper-middle pitch (≈245–300 Hz, game audio inflates it) and fast in chat (≈133–179 words
   per minute of speech). [ASR T23] Her card gives no accent; German lines come out native in v4 (cross-language generation uses a native accent). [Official T1]
 
 ## 2. Settings (starting points)
@@ -39,7 +39,7 @@ laughter, warm when sincere."
 - "Kikkeriki!": `[bright rooster-like cry] Kikkeriki!`
 - Short cartoonish screams at deaths: `[short scream]`; loud laughter: `[laughs loudly]`.
 
-## 6. Pronunciation (test)
+## 6. Pronunciation (provisional; test)
 - Takanashi Kiara `/tɑkɑˈnɑʃi kiˈɑːɹə/` · Kikkeriki `/ˌkɪkəʁiˈkiː/` · Wawa `/ˈwɑwɑ/` ·
   auf Wiedersehen `/aʊ̯f ˈviːdɐˌzeːən/` · KFP spelled out.
 

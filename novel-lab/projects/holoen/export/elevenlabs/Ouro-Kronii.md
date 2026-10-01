@@ -9,7 +9,7 @@
 "Perfect audio quality. Young adult woman, neutral American accent, low alto speaking voice, dry and
 deadpan, relaxed medium pace, controlled and a little smoky, capable of a sudden high startled squawk and
 of breaking into laughter."
-- Register basis: in the project's measurements she is the lowest of the six (median ≈177–188 Hz in chat)
+- Register basis (sample observations from the audio check, not synthesis targets): low (median ≈177–188 Hz in chat)
   at a medium pace (≈120–127 words per minute of speech). [ASR K36]
 
 ## 2. Settings (starting points; adjust by ear)
@@ -40,7 +40,7 @@ of breaking into laughter."
 - GWAK: `[startled squawk] GWAK!` (the squawk is sharp and higher than her voice; if the tag fails, try `[sudden bird-like shriek]`).
 - Explosive noises when hit in games: `[yelps]`, `[grunts]`.
 
-## 6. Pronunciation (test with your voice)
+## 6. Pronunciation (provisional; test with your voice)
 - Ouro Kronii `/ˈoʊɹoʊ ˈkɹoʊni/` · Kroniichiwa `/ˌkɹoʊniˈtʃiːwɑ/` · Kronies `/ˈkɹoʊniz/` · GWAK `/ɡwɑk/`
 
 ## 7. Don't

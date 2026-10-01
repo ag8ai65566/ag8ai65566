@@ -9,7 +9,7 @@
 "Perfect audio quality. Young woman, neutral American accent, soft, cute, relatively high voice with clear
 pronunciation, moderate pace, playful and a little goofy, deadpan when teasing, able to scream in horror
 games and hum while playing."
-- Register basis: relatively high (≈245–270 Hz in chat and horror windows), moderate pace (≈120–140 words
+- Register basis (sample observations from the audio check, not synthesis targets): relatively high (≈245–270 Hz in chat and horror windows), moderate pace (≈120–140 words
   per minute of speech in 2024 chat). [ASR G18]
 
 ## 2. Settings (starting points)
@@ -38,7 +38,7 @@ games and hum while playing."
 ## 5. Signature sounds
 - `[hums]` while playing; `[screams]` then `[catching breath]`; the single "a" (her debut meme): `[flat] a.`
 
-## 6. Pronunciation (test both)
+## 6. Pronunciation (provisional; test both)
 - Gawr Gura `/ɡɔːɹ ˈɡʊɹə/` or `/ɡaʊɹ ˈɡuːɹɑ/` · chumbuds `/ˈtʃʌmbʌdz/` · Hoocha `/ˈhuːtʃə/`
 
 ## 7. Don't

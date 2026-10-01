@@ -9,7 +9,7 @@
 "Perfect audio quality. Young adult woman, neutral American accent, soft and bright mid-range voice,
 sweet and friendly, speeds up into quick bubbly run-on sentences when excited, light giggles, can drop
 into a sly, lower, teasing aside."
-- Register basis: mid pitch (≈214–226 Hz in 2026 chat and a horror game), and fast when excited (≈168–183
+- Register basis (sample observations from the audio check, not synthesis targets): mid pitch (≈214–226 Hz in 2026 chat and a horror game), and fast when excited (≈168–183
   words per minute of speech in chat; ≈67 while focused on a horror game). [ASR R20]
 - Her singing voice is fuller and more powerful than her talking voice; this sheet covers speech only.
 
@@ -21,13 +21,13 @@ into a sly, lower, teasing aside."
 - "like" often (about one word in thirty in chat), "you know," "I do think so," "I mean," "right?"
 - Restarts and repeats when excited: "I knew you guys would! I knew you guys would!"
 - Talks to "you guys," almost never "chat."
-- Mild words only ("holy shoot!"); the edge is innuendo delivered sweetly, then denied.
+- Strong profanity is uncommon in the sampled streams ("holy shoot!", "damn it"); her usual edge is innuendo delivered sweetly, then denied.
 - Goodbyes that circle several times before she leaves.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Opening | `[bright, cheerful]` | "HiRyS, it's IRyS! Your seiso nephilim here to fill the world with hopium!" (official greeting) |
+| Opening | `[bright, cheerful]` | "HiRyS, iiiit's IRyS! … Your seiso nephilim here to fill the world with hopium!" (official written greetings) |
 | Gushing about an outfit | `[rapid, gushing, delighted]` | "I'm glad you guys liked the outfit. I knew you guys would!" |
 | Teasing chat | `[sweet]` → `[sly, lower]` | "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" |
 | After a slip | `[mock-innocent, quick]` | "I am a hundred percent seiso, I would never lie!" (wiki quote) |
@@ -42,7 +42,7 @@ into a sly, lower, teasing aside."
 - Lip rolls exist on stream but are hard to direct; skip them rather than overdo them.
 - "Yoisho~": `[small effort sound] Yoisho~`.
 
-## 6. Pronunciation (test)
+## 6. Pronunciation (provisional; test)
 - IRyS `/ˈaɪɹɪs/` · nephilim `/ˈnɛfɪlɪm/` · hopium `/ˈhoʊpiəm/` · seiso `/ˈseɪsoʊ/` · yabai `/jɑˈbaɪ/` ·
   IRyStocrats `/aɪˈɹɪstəkɹæts/`
 

@@ -8,7 +8,7 @@
 "Perfect audio quality. Young adult woman, casual American accent, low mezzo-alto voice with a slightly
 husky edge, fast and loose conversational pace, confident swagger, dorky and self-deprecating underneath,
 able to burst into loud laughter or shouting."
-- Register basis: second-lowest of the six (≈197–214 Hz in chat) and the fastest talker (≈161–186 words
+- Register basis (sample observations from the audio check, not synthesis targets): low (≈197–214 Hz in chat) and fast (≈161–186 words
   per minute of speech). [ASR C30]
 
 ## 2. Settings (starting points)
@@ -38,7 +38,7 @@ able to burst into loud laughter or shouting."
 - "Guh." after a drink: `[comic gasp] Guh.`
 - Laughs first at her own mess-ups: `[laughs]`, `[laughs harder]`.
 
-## 6. Pronunciation (test)
+## 6. Pronunciation (provisional; test)
 - Mori Calliope `/ˈmɔɹi kəˈlaɪəpi/` · kusotori `/kusoˈtoɾi/` · Kronster `/ˈkɹɑnstɚ/`
 
 ## 7. Don't

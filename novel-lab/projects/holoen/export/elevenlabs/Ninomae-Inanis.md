@@ -8,7 +8,7 @@
 "Perfect audio quality. Young adult woman, neutral American accent, soft and calm mid-range voice,
 slow unhurried pace with small pauses, gentle and warm, quiet little giggles, occasionally cracking on
 excited words."
-- Register basis: mid pitch (≈223–232 Hz in 2026 chat) and the slowest talker in chat (≈81–95 words per
+- Register basis (sample observations from the audio check, not synthesis targets): mid pitch (≈223–232 Hz in 2026 chat) and slow in chat (≈81–95 words per
   minute of speech; a 2021 game stream ran faster). [ASR I29]
 
 ## 2. Settings (starting points)
@@ -38,7 +38,7 @@ excited words."
 - "WAH!": `[excited] WAH!` (sometimes a droopy one at the end: `[deflated] wah…`)
 - Small giggles mid-sentence: `[small giggle]`.
 
-## 6. Pronunciation (test)
+## 6. Pronunciation (provisional; test)
 - Ninomae Ina'nis `/ninoˈmae ˈiːnɑnis/` (she says her name surname-first) · Takodachi `/tɑkoˈdɑtʃi/` ·
   WAH `/wɑː/`
 
