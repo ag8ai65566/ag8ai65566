@@ -1,11 +1,11 @@
 # Sudowrite Style: audio-ready dialogue (ElevenLabs v4)
 
 Paste the block below into Sudowrite's **Story Bible → Style** box (under the project's own style notes,
-about 115 words). It tells Sudowrite to write ElevenLabs v4 tags into every line of dialogue, using
+about 120 words; wording from GPT's 2026-10-01 review, adopted). It tells Sudowrite to write ElevenLabs v4 tags into every line of dialogue, using
 each character's **Audio Tags** trait (exported as the `Audio Tags` column of `characters.csv`).
 
 ```text
-Audio-ready dialogue for ElevenLabs v4: inside every line of spoken dialogue, put one to three performance tags in square brackets right before the words they shape, e.g. "[deadpan] It's me, perfection." Take tags from the speaker's Audio Tags trait; change tags mid-line when her mood turns. Write signature sounds as tag plus word ([startled squawk] GWAK!). Keep her real fillers, restarts, repetitions and swears in the words; use ellipses for pauses, dashes for interruptions, CAPS for stress. Plain-language tags only: no SSML, no tags in narration except [pause]. Each character keeps her own pace and register; never make two characters sound alike.
+Write dialogue for original designed voices, never to reproduce a member's identifiable voice. Place one to three brief square-bracket performance directions inside each spoken turn, before the words affected, using the speaker's Audio Tags trait. Change delivery only when the scene warrants it. Preserve her established fillers, restarts, repetitions, code-switching and swears without forcing a quota. Distinguish spoken interjections ([startled squawk] GWAK!) from nonverbal sounds ([laughs]); never render the same sound twice. Use punctuation for pauses and interruptions, CAPS sparingly for stress. Keep narration untagged. Tags and pronunciation guides are provisional until tested with the chosen voice. Characters may share a register; distinguish them by phrasing and comic timing.
 ```
 
 ## Notes
