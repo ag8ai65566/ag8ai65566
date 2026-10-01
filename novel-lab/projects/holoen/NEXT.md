@@ -1,6 +1,17 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
-狀態（2026-10-01 00:20 UTC）：
+狀態（2026-10-01 04:00 UTC）：
+- **GPT 世界觀唯一一輪審查進行中**（04:00 起）：審查包 `runs/20260930-2309-world-hololive/to-gpt.free.md`
+  （19 張世界觀卡＋IRyS、Nerissa 完整檔＋六人卡改動含 Audio Tags＋Style 規則）。產出 `gpt-free.md`。
+  之後：意見併進各 run 的 final.md（world 19 張、character 8 張），`promote --force --reason "作者指示 GPT 只審一輪"`，
+  `export holoen`。
+- 新增世界觀卡（runs `20261001-*`）：hololive -Advent-、IRyS and Nerissa Pairs、hololive History to 2022、
+  hololive History 2023-2026、Concerts and Live Events、Cross-Branch Friends。
+- X 發文：`research/x-posts.md`（wiki 引用的本人帳號貼文；健康／公司內部／家人一律排除）。
+  Kiara 2026-09-09 起短期休息（只記狀態，不寫原因；已列為待作者決定）。
+- Audio Tags（新 [SW] 欄位，八人都有）＋ `export/elevenlabs/sudowrite-style.md`（貼進 Style）。
+- Nerissa：草稿、音檔報告 `research/audio-check/nerissa.md`、表演表都完成。
+
 - **作者新指示（2026-10-01，已寫進 project.md）**：
   1. 世界觀要大量補：人際關係（含 JP／ID／GAMERS 等其他分部）、新成員加入、團體／個人演唱會、
      3D、Expo／fes 等活動都是共同記憶；X 公開發文是關鍵來源。GPT 額度 0 時 Claude 自己盡量完善。
