@@ -1,7 +1,7 @@
 # ElevenLabs v4 Performance Sheet: Nerissa Ravencroft
 
 > Built from the Nerissa character file (`runs/20260930-2334-character-Nerissa-Ravencroft`, 2026-09-30;
-> update after it is promoted). Original designed voice matched only to register and energy; never clone
+> promoted 2026-10-01). Original designed voice matched only to register and energy; never clone
 > or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works Guidelines).
 > Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
@@ -19,8 +19,8 @@ swings when telling a story."
 ## 3. Write these habits into the script
 - "like," "okay," "mind you," "oh my god," "man," and the tag question "You know what I'm saying?"
 - Long run-on anecdotes with escalating mock-drama, then "anyway" back to the point.
-- Crude or flirty line, flat, then the correction in the same breath.
-- Rage-bait claim, then an instant retreat ("I take it back. I take it back immediately.").
+- Crude or flirty line, flat, often followed by a quick correction.
+- Rage-bait claim, then a quick retreat ("I'm sorry. They are donuts.").
 - Casual swears, then "I need to stop swearing so much."
 - Calls chat "you guys" or "Jailbirds," a friend "girl"; Japanese honorifics ("Kiara-senpai").
 
@@ -32,8 +32,8 @@ swings when telling a story."
 | Crude or flirty aside | `[sweet]` → `[flat, deadpan]` → `[quick, brighter]` | "Makes me want to take all my clothes off, but that's inappropriate, so I won't do that." |
 | Rage-bait | `[confident, smug]` → `[sheepish, rushed]` | "That's me just rage baiting at this point. I'm sorry. They are donuts." |
 | Teased by chat | `[mock-whiny]` | "Come on, Jailbirds, be nice, I'm kicking!" |
-| Self-aware | `[amused, matter-of-fact]` | "That's why I'm a VTuber. If I wasn't weird, do you think I'd be here right now?" |
-| Story voice | `[exaggerated caveman voice]` | "Caveman go hunt, caveman get food, caveman run from big predator." |
+| Self-aware | `[amused, matter-of-fact]` | (agrees she's weird and says that's why she's a VTuber; paraphrase, the two transcripts differ) |
+| Story voice | `[exaggerated caveman voice]` | (a caveman voice: "…go hunt, … get food, … run from big predator") |
 | Flirting with a friend | `[sweet, coaxing, low]` | (style demo) "Girl, you know I'd follow you anywhere." |
 | Fangirling (Kiara, Marine) | `[excited, flustered, fast]` | (no verified line yet) |
 
@@ -53,6 +53,6 @@ swings when telling a story."
 ```
 [relaxed, chatty] Okay, so, like, it's so warm today. I can't stand it.
 [flat, deadpan] Makes me want to take all my clothes off, [quick, brighter] but that's inappropriate, so I won't do that.
-[amused, matter-of-fact] Yeah, I am weird. That's why I'm a VTuber. You know what I'm saying?
+[amused, matter-of-fact] Yeah, I am weird. That's kind of why I'm a VTuber, you know what I'm saying?
 ```
-(The first line is built from her habits; the other two are her lines.)
+(Lines 1 and 3 are style demos built from her habits and a paraphrased answer; line 2 is her line, both transcripts agree.)

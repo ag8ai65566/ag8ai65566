@@ -1,7 +1,7 @@
 # ElevenLabs v4 Performance Sheet: IRyS
 
 > Built from the IRyS character file (`runs/20260930-2334-character-IRyS`, 2026-09-30; update after it is
-> promoted to `bible/characters/IRyS.md`). Original designed voice matched only to register and energy;
+> promoted to `bible/characters/IRyS.md`; promoted 2026-10-01). Original designed voice matched only to register and energy;
 > never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
@@ -19,7 +19,7 @@ into a sly, lower, teasing aside."
 
 ## 3. Write these habits into the script
 - "like" often (about one word in thirty in chat), "you know," "I do think so," "I mean," "right?"
-- Restarts and repeats when excited: "I knew you guys would! I knew you guys would!"
+- Restarts and repeats when excited: "It's so cute. It's so cute."
 - Talks to "you guys," almost never "chat."
 - Strong profanity is uncommon in the sampled streams ("holy shoot!", "damn it"); her usual edge is innuendo delivered sweetly, then denied.
 - Goodbyes that circle several times before she leaves.
@@ -30,15 +30,15 @@ into a sly, lower, teasing aside."
 | Opening | `[bright, cheerful]` | "HiRyS, iiiit's IRyS! … Your seiso nephilim here to fill the world with hopium!" (official written greetings) |
 | Gushing about an outfit | `[rapid, gushing, delighted]` | "I'm glad you guys liked the outfit. I knew you guys would!" |
 | Teasing chat | `[sweet]` → `[sly, lower]` | "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" |
-| After a slip | `[mock-innocent, quick]` | "I am a hundred percent seiso, I would never lie!" (wiki quote) |
-| Yabai aside | `[innocent]` → `[slight smirk]` | "I mean, I am a half-angel, half-demon Nephilim. I could pull it off, somehow." |
+| After a slip | `[mock-innocent, quick]` | (claims to be "a hundred percent seiso"; the full wiki line is unverified by audio) |
+| Yabai aside | `[innocent]` → `[slight smirk]` | "…a half-angel, half-demon Nephilim… could pull it off somehow" (shared spans only) |
 | Horror game | `[focused, quiet]` → `[short cheer]` | "Run Leon, run!" |
 | Surprised | `[gasps]` | "Price, 120 million dollars, holy shoot!" |
 | Sincere | `[warm, plain]` | "I really hope so too." |
 | Sign-off | `[warm, cheerful]`, repeated | "Thank you very much! See you guys again tomorrow!" |
 
 ## 5. Signature sounds
-- Light giggles: `[light giggle]` (not a cackle).
+- Light giggles: `[light giggle]` (usually, rather than a cackle).
 - Lip rolls exist on stream but are hard to direct; skip them rather than overdo them.
 - "Yoisho~": `[small effort sound] Yoisho~`.
 
@@ -52,9 +52,9 @@ into a sly, lower, teasing aside."
 
 ## 8. Example
 ```
-[bright, cheerful] HiRyS, it's IRyS! Your seiso nephilim here to fill the world with hopium!
-[rapid, gushing] Okay, okay, so, like, the outfit? I knew you guys would like it. I knew you guys would!
+[bright, cheerful] HiRyS, iiiit's IRyS! Your seiso nephilim here to fill the world with hopium!
+[rapid, gushing] Okay, okay, so, like, the outfit? I knew you guys would like it. It's so cute. It's so cute!
 [sweet] You guys don't need to see the bottom half. [sly, lower] I'm trying to make you guys feel guilty. That's what I'm doing here, okay?
 [warm, cheerful] Thank you very much! See you guys again tomorrow!
 ```
-(Line 2 is a style demo built from her habits; the others are her lines.)
+(Line 2 is a style demo built from her habits; line 1 is her official written greeting; the others are her lines, quoted only where both transcripts agree.)
