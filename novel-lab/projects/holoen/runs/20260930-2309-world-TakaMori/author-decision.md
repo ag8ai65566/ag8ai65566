@@ -1,2 +1,3 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 af29a140bb65）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-01 04:30 作者裁決收錄 final.md（sha256 f08b309972f0）：作者裁決 2026-10-01：Kiara 不寫成休息中
+- 2026-10-01 21:08 作者裁決收錄 final.md（sha256 e9cf098194f5）：Author decision (2026-10-01): CONSULT-P2-001 (Myth 6th-anniversary live marked as announced, not verified as held) and break notes generalized per the author's rule.

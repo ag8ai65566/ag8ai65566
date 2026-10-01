@@ -57,7 +57,7 @@ Faction / unit (a friend group with a shared history).
 | 2025-07 | MYTHMASH: each active member releases a duet with a Japanese senpai (#mythmashchemythtry) | Cross-branch songs |
 | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 | 2026-02 | Kiara's album includes "Blue & Gold," a tribute to Gura and Ame | Remembering the two |
-| 2026-09-19 | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina) | The current three on stage |
+| 2026-09-19 (announced) | Myth 6th Anniversary 3D LIVE "Seasons From Within" announced with Calli, Kiara and Ina (S3, an official hololive English post); not verified as held | The current three, as announced |
 
 ## Sensory Palette
 - See: five member colors in a row (black, orange, purple, blue, gold); fanart of all five; the Myth logo.
@@ -131,11 +131,12 @@ Five member colors in a row (black, orange, purple, blue, gold); five voices tal
   "every group scene feels like a reunion" rule removed; the invented silence at Ame's or Gura's name
   removed (dossier and Sensory Details); "gen 1" replaced by "hololive English first generation."
 - **SHOULD adopted:** the comic roles marked as flexible; "everyone protects the shark" dropped.
-- **Also:** the 6th-anniversary live is described as announced with the three; Kiara's 2026-09-09 break
-  (research/x-posts.md) means her participation is not confirmed here.
+- **Also:** the 6th-anniversary live is described as announced with the three; whether it was held is not
+  verified here.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
-- **2026-10-01, author decision:** Kiara is not written as on a break; her 2026-09-09 break notice is not used
-  in stories.
+- **2026-10-01, author decision:** an announced break is not written (author's rule); Kiara is written as active.
+- **2026-10-01, CONSULT-P2-001 and scope tidy-up:** break notices are no longer dated or described in process notes
+  (the author's rule is simply that announced breaks are not written).
 
 ## Open Questions
 1. The "big sister / little shark" shorthand is Claude's summary of the group dynamic. Keep, reword or

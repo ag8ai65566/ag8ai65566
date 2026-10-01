@@ -92,7 +92,7 @@ They are not quoted here. Status facts that matter for continuity are noted with
 - 2025-10-29: "Oh and look my twitch acc name is just 'kiara' now, how chic 😏😎" — 1983363520982069666
 - 2026-01-28: 50,000 followers on Twitch; "tomorrow we will play (T)Witcher! lol" — 2016639311190409528
 - 2026-04-02: "Ultra Orange" — 2039518036638441649
-- (A 2026-09-09 manager notice about a break exists; by author decision 2026-10-01 it is not used.)
+- (Announced breaks are not written, by the author's rule.)
 
 ### Ninomae Ina'nis (@ninomaeinanis)
 - 2020-09-08: "Don't tease me! I'm not a bad tako." — 1303528142632411138
@@ -170,8 +170,7 @@ They are not quoted here. Status facts that matter for continuity are noted with
 - 2026-08-29: first album "FUWAMOCO à la mode" on pre-order, "hand signed by us!!" — 2093673258273091760
 - 2026-09-10: "Who knew that '2 Creatures + 1 Reaper' is so good at dismantling bombs together? 💣✨" (Fuwawa's post, with Gigi
   and Calli) — 2098079499527352809
-- (A 2026-09-13 post about a break exists; health details are outside this project's scope, and by analogy
-  with the author's Kiara decision it is not used on the cards.)
+- (Announced breaks are not written, by the author's rule.)
 
 ### Elizabeth Rose Bloodflame (@ERBloodflame)
 - 2024-06-19: "WE INTERRUPT SLEEPS FOR BREAKING NEWS ‼️‼️‼️ OH~HOHOHO! YOUR QUEEN DEMANDS YOU USE THE HASHTAG
@@ -181,7 +180,7 @@ They are not quoted here. Status facts that matter for continuity are noted with
 - 2025-03-15: 500k: "Rosarians! My beautiful Bloodflame Kingdom; We did it ❤️ Together onwards and upwards"
   — 1901100373705658370
 - 2025-07-28 (@hololive_En): "Huzzah! @ERBloodflame's sub-channel has just been announced!" — 1949998311550881831
-- (A 2026-09 post announcing a short break exists; per the author's rule it is not used on the cards.)
+- (Announced breaks are not written, by the author's rule.)
 
 ### Gigi Murin (@gigimurin)
 - 2024-06-18: "AJSKGLDSFHFJLSADK!@!@!@!@!!!!! #holoJustice" (first post) — 1803261982189273111
@@ -198,7 +197,7 @@ They are not quoted here. Status facts that matter for continuity are noted with
 - 2026-05-09: "I HATE CLEANING I HATE IT SO MUCH…" — 2052700201979113492
 - 2026-06-16: "rare image of me when I was being FORCED BY JUSTICE to work as a maid (not current Justice.
   #LizIsInnocent )" — 2066950787855741238
-- (Posts in 2026-07/08 about a break and its reasons are private matters and are not used.)
+- (Announced breaks are not written, by the author's rule.)
 
 ### Raora Panthera (@raorapanthera)
 - 2024-06-18: "Thighs are Justice!#holoJustice" (first post) and "NEITHER AM I.. 😼" (not human) —
@@ -209,5 +208,5 @@ They are not quoted here. Status facts that matter for continuity are noted with
   CAPCOM for this amazing opportunity!!!") — 2008340143938183214
 - 2026-01-10: "RAOOOOOO THANK YOU FOR 600K SUBSCRIBERS!!!! … GRAZIE!!!!" — 2010073664537141285
 - 2026-01-29: "this big cat is a SNOW LEOPARD!" — 2016712202389246238
-- (Posts about a 2025–2026 break and its reasons are private matters and are not used.)
+- (Announced breaks are not written, by the author's rule.)
 

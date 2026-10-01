@@ -486,8 +486,7 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
   rankings); tags labeled proposed directions to test with an original voice; "Never" lists softened to
   "Not as default" where the evidence shows range; IPA marked provisional; signature sounds split into
   spoken interjections and nonverbal tags.
-- **2026-10-01, author decision:** Kiara is not written as on a break; her 2026-09-09 break notice is not used
-  in stories.
+- **2026-10-01, author decision:** an announced break is not written (author's rule); Kiara is written as active.
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** Relationships gained Fauna/Mumei lines from
   the world card "Fauna and Mumei Pairs" (archive titles there).
 - **2026-10-01, from the Fauna/Mumei GPT review (runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md, missing facts):** the 2024 "Beyond the way"
@@ -505,6 +504,8 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
   uses on stream (no mother-tongue claims).
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Rocku Wawa" (official Serendipity unit with Bijou) added to Groups; their song named.
+- **2026-10-01, CONSULT-P2-001 and scope tidy-up:** break notices are no longer dated or described in process notes
+  (the author's rule is simply that announced breaks are not written).
 
 ## Open Questions
 1. Should the card quote one crude line verbatim (for example "I'm an innocent maiden." as irony), or is
