@@ -95,8 +95,8 @@ profile makes the duality the joke: "the most unpredictably yaba—*ahem*, 'surp
 - **Vocabulary / fillers:** "like" constantly (about 1 in 30 words in a 2026 chat window, first-model
   count), "you know," "I do think so," "I mean," "right?"; addresses chat as "you guys" (far more than
   "chat"). Fans: IRyStocrats; members: Nephamily. [ASR R20] [Official R1] [Observed R2]
-- **Profanity:** rare and mild. In about 1.9 hours of 2026 audio: "damn it" twice, and a softened "holy
-  shoot!" [ASR R20]. Her edge comes from innuendo and "yabai" comments, not swearing.
+- **Profanity:** rare and mild. In about 1.9 hours of 2026 audio: "damn it" twice (both confirmed by the
+  second model: "Damn it, I forgot about that"; "Damn it, should I?"), and a softened "holy shoot!" [ASR R20]. Her edge comes from innuendo and "yabai" comments, not swearing.
 - **Laughs, noises:** little "hehe" giggles; lip rolls are a known on-stream habit (also her vocal
   warm-up). [ASR R20] [Observed R2 §Miscellaneous, secondary]
 - **Code-switching:** English and Japanese; bilingual stream titles; a Japanese interjection mid-English
