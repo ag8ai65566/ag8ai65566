@@ -62,20 +62,20 @@ the character card.
 
 | First model (small.en) | Link | Second model (medium.en), excerpt | Verdict |
 |---|---|---|---|
-| "Well, I don't usually wear pants." | [9:57:56](https://youtu.be/54ysrFu09hA?t=35876) | "shark girl anatomy. Well, I don't usually wear pants. Uh...I don't usually" | Agrees |
-| "If you could get away with not wearing pants, would you?" | [9:58:19](https://youtu.be/54ysrFu09hA?t=35899) | "me rephrase that. If you could get away with not wearing pants, would you? Yes Yes, you" | Agrees |
+| "Well, I don't usually wear pants." | [9:57:56](https://youtu.be/54ysrFu09hA?t=35876) | "shark girl anatomy. Well, I don't usually wear pants. Uh...I don't usually" | **Shared span (computed):** whole line |
+| "If you could get away with not wearing pants, would you?" | [9:58:19](https://youtu.be/54ysrFu09hA?t=35899) | "me rephrase that. If you could get away with not wearing pants, would you? Yes Yes, you" | **Shared span (computed):** whole line |
 | "Please tell me it's down this alleyway. Shit." | [0:23:31](https://youtu.be/JELLJ3osUUQ?t=1411) | "We're gonna go down this alleyway. Please tell me it's down this alleyway. Yeah," | **Not confirmed**: the second model has the sentence but no "Shit." |
 | "You know who you are, you bastard. Who wants to fuck up these badly?" | [1:05:25](https://youtu.be/JELLJ3osUUQ?t=3925) | "this right now! You know who you are, you bastard? Who else is fucking with you badly? You don't know" | **Agrees on an f-word, not on the words**: second model "You know who you are, you bastard? Who else is fucking with you badly?" (she is riffing on an in-game memo) |
 | "oh my god that shit shit" | [1:28:29](https://youtu.be/JELLJ3osUUQ?t=5309) | "something on like my... no? Oh my god shit shit" | Agrees ("Oh my god shit shit") |
 | "come on Leon say it with a bit more oomph say it like it's really bothering you Leon" | [1:38:48](https://youtu.be/JELLJ3osUUQ?t=5928) | "Come on Leo, say it with a bit more. Say it with a bit more oomph. Say it like it's really bothering you, Leon." | Agrees (after the game's "Son of a bitch") |
-| "You bastard. Yeah, get him Leon, get him Leon" | [1:56:16](https://youtu.be/JELLJ3osUUQ?t=6976) | "go from behind. You bastard. Yeah, get him, Leon. Get him, Leon. Whoa, baby! Back" | Agrees |
+| "You bastard. Yeah, get him Leon, get him Leon" | [1:56:16](https://youtu.be/JELLJ3osUUQ?t=6976) | "go from behind. You bastard. Yeah, get him, Leon. Get him, Leon. Whoa, baby! Back" | **Shared span (computed):** whole line |
 | "Damn. Wait, what? This is the third floor." | [2:56:18](https://youtu.be/JELLJ3osUUQ?t=10578) | "Here. He flinched! I'm gonna get you, Michael. You're gonna be" | **Not confirmed** (the second model heard different words); "Damn." dropped |
 | "Yo Bastards, bullets on you, god damn, no" | [3:01:47](https://youtu.be/JELLJ3osUUQ?t=10907) | "No, no, no, no, no. Yo bastard! Stop, put your hands" | **Partly**: "Yo bastard!" agrees; "god damn" is not confirmed and was removed from the card |
-| "oh what the hell" | [3:03:15](https://youtu.be/JELLJ3osUUQ?t=10995) | "sorry I'm sorry. Oh what the hell? You telling me" | Agrees |
+| "oh what the hell" | [3:03:15](https://youtu.be/JELLJ3osUUQ?t=10995) | "sorry I'm sorry. Oh what the hell? You telling me" | **Shared span (computed):** whole line |
 | "I really don't like that shit wasted a bullet bitch" | [3:54:07](https://youtu.be/JELLJ3osUUQ?t=14047) | "They're so fast, they're gonna kick my butt! I really don't like that." | **Not confirmed** (second model: "I really don't like that." without the swears) |
 | "No, damn it" | [4:11:48](https://youtu.be/JELLJ3osUUQ?t=15108) | "Hi Marvin! Marvin, please die with" | **Not confirmed** (second model: "Marvin, please die with one bullet.") |
-| "Bro, you cooked." | [0:01:20](https://youtu.be/JUvdnKuBMDQ?t=80) | "Featuring all of you! Bro, you cooked. A lot" | Agrees |
-| "Okay, okay, wait, okay, wait, wait, wait." | [0:01:47](https://youtu.be/JUvdnKuBMDQ?t=107) | "jumpscare. Is that me? Okay, okay wait, okay wait wait" | Agrees |
-| "What is simp? Do you mean shrimp?" | [1:15:34](https://youtu.be/JUvdnKuBMDQ?t=4534) | "it? Oh yeah, simp. What is simp? Do you mean shrimp? Cute! Wait," | Agrees |
+| "Bro, you cooked." | [0:01:20](https://youtu.be/JUvdnKuBMDQ?t=80) | "Featuring all of you! Bro, you cooked. A lot" | **Shared span (computed):** whole line |
+| "Okay, okay, wait, okay, wait, wait, wait." | [0:01:47](https://youtu.be/JUvdnKuBMDQ?t=107) | "jumpscare. Is that me? Okay, okay wait, okay wait wait" | **Partial (computed):** shared runs "okay okay wait okay wait wait" |
+| "What is simp? Do you mean shrimp?" | [1:15:34](https://youtu.be/JUvdnKuBMDQ?t=4534) | "it? Oh yeah, simp. What is simp? Do you mean shrimp? Cute! Wait," | **Shared span (computed):** whole line |
 | "Hello, hello, hello, how's this one, oh yeah, oh yeah" | [0:06:37](https://youtu.be/_aeIw9DJnBw?t=397) | "Gain... How much gain do we need? Hello? Hello? Hello? How's this one? What's that again?" | Agrees on "Hello? Hello? Hello? How's this one?"; the trailing "oh yeah, oh yeah" is not confirmed |
-| "You don't scare me. Cheap party city lady. I see better makeup on clowns these days." | [2:40:44](https://youtu.be/_aeIw9DJnBw?t=9644) | "very, uh huh. You don't scare me, cheap party city lady. I see better makeup on clowns these days. Okay, does anyone" | Agrees |
+| "You don't scare me. Cheap party city lady. I see better makeup on clowns these days." | [2:40:44](https://youtu.be/_aeIw9DJnBw?t=9644) | "very, uh huh. You don't scare me, cheap party city lady. I see better makeup on clowns these days. Okay, does anyone" | **Shared span (computed):** whole line |

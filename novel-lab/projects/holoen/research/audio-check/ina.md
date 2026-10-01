@@ -52,9 +52,9 @@ the character card.
 | First model (small.en) | Link | Second model (medium.en), excerpt | Verdict |
 |---|---|---|---|
 | "a fourth wah with a different caption and that's the forbidden wah. We don't say that in public." | [0:04:52](https://youtu.be/4k_oLA5zeaI?t=292) | "a separate... Separate... A fourth... Fourth... With a different caption, and... That's the forbidden one. We don't say that in public. We are whole..." | **Agrees on the bit, not the word**: the second model hears "the forbidden one" where the first hears "the forbidden wah" |
-| "Sorry, I got a little excited there" | [0:50:27](https://youtu.be/EHpxi7khHb0?t=3027) | "Sorry, I got a little excited there. Cute?" | Agrees |
+| "Sorry, I got a little excited there" | [0:50:27](https://youtu.be/EHpxi7khHb0?t=3027) | "Sorry, I got a little excited there. Cute?" | **Shared span (computed):** whole line |
 | "good morning afternoon evening everyone could this be tako time" | [0:02:43](https://youtu.be/we8TkYC7__0?t=163) | "Good morning, afternoon, evening, everyone. Could this be taco time? How's everyone doing" | Agrees ("tako" written as "taco") |
 | "it is indeed tako time" | [0:03:03](https://youtu.be/we8TkYC7__0?t=183) | "was sleep well? It is indeed taco time. Busy?" | Agrees ("tako" written as "taco") |
-| "Anyways, I do have to start getting ready soon." | [1:35:17](https://youtu.be/we8TkYC7__0?t=5717) | "Anyways, I do have to start getting ready soon, but I'm still" | Agrees |
-| [a private-routine line; redacted 2026-10-01 and not used on the card] | [1:35:26](https://youtu.be/we8TkYC7__0?t=5726) | (redacted) | Agrees |
-| "have a wonderful rest of the morning afternoon evening" | [1:36:54](https://youtu.be/we8TkYC7__0?t=5814) | "Hope you guys have a wonderful rest of the morning, afternoon, evening. I'll see you" | Agrees |
+| "Anyways, I do have to start getting ready soon." | [1:35:17](https://youtu.be/we8TkYC7__0?t=5717) | "Anyways, I do have to start getting ready soon, but I'm still" | **Shared span (computed):** whole line |
+| [a private-routine line; redacted 2026-10-01 and not used on the card] | [1:35:26](https://youtu.be/we8TkYC7__0?t=5726) | (redacted) | **No shared run of 3+ words (computed)**; do not quote |
+| "have a wonderful rest of the morning afternoon evening" | [1:36:54](https://youtu.be/we8TkYC7__0?t=5814) | "Hope you guys have a wonderful rest of the morning, afternoon, evening. I'll see you" | **Shared span (computed):** whole line |

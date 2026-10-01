@@ -199,7 +199,7 @@ The middle column is provisional voice direction (not checked against audio) unl
 Real lines first; Style demos after.
 1. "Kroniichiwa! It's me, perfection." (verbatim K1)
 2. "Okay, that was my bad." (ASR K36, 6WFU2wzPKfA 1:40:41)
-3. "I'm scared that one day I'm gonna run through here and then… they're gonna be like, oh, yeah, you thought it was safe, right?" (ASR K36, esjpYSrvjB4 2:02:51)
+3. "I'm scared that one day I'm gonna run through here and then" … "they're gonna be like, oh, yeah, you thought it was safe, right?" (ASR K36, esjpYSrvjB4 2:02:51; two shared spans)
 4. "Oh my god, that hand scared me." (ASR K36, esjpYSrvjB4 2:41:44)
 5. "I'm so funny. I can't read this." (ASR K36, tdLRQtJ3kkY 0:14:46, reading her own journal aloud)
 6. "Yippee! Oh, man! I've been so productive every single day." (ASR K36, tdLRQtJ3kkY 0:10:45)
@@ -528,6 +528,8 @@ Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "B
   checked by Claude against the official Serendipity report and announcements:** "Octo'clock" (the official report's spelling) added to Groups; their "Bad Apple" stage named.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** Kobo's "BLUE CLAPPER" stage with Kronii and Nerissa added (official report).
+- **2026-10-01, CONSULT-P1-006 (GPT project consult):** the audio report now names the exact shared span for every
+  quoted line; sample line 3 quotes its two shared spans separately instead of one stitched quote.
 
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:

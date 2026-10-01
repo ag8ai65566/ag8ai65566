@@ -1,5 +1,21 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-01 21:05 UTC，GPT 專案諮詢完成，全卷審計進行中）：
+- **諮詢**：第 1 輪 `runs/20261001-1557-check-Project-Consult/gpt-free.md`（交付形式、到 10/4 的流程、跨卡問題），第 2 輪
+  `runs/20261001-2050-check-Project-Consult-R2/gpt-free.md`（同意＋審計 prompt＋驗證規格）。P0（試鏡經歷、私人旅行、
+  母語、Ina 的起床／睡衣句、貼上單缺 Style 區塊）與大部分 P1 已修並收錄；處置一律記在 `research/qa/resolutions.md`。
+- **工具**：`tools/qa_packets.py holoen`（registry.json、各組 packets、manifest.json）；`tools/release.py validate|stamp-sheets|build holoen`
+  （V01–V25；需要審查的檢查在對應審計檔出現前一律 fail）；`framework/prompts/gpt-cohort-audit.md`、`gpt-bridge-audit.md`。
+- **GPT 佇列（依序，不並行）**：六個 cohort 審計 `runs/20261001-2100-check-QA-cohort-{advent,global,justice,myth1,myth2,promise}`
+  （scratchpad `queue.py` + `cohort_queue.txt`；額度用完時剩下的會自動加進 `.gpt-quota.json`）。之後：bridge events／ties
+  （`mk_audit.py bridge events|ties`）→ 06 近期補完 → 08 年表＋X → 09 聲音 → 10 發佈候選 → 11 驗收。
+- **合併規則**：每份審計輸出複製成 `research/qa/audit-<cohort>.md`（validator 以此認定已審），逐條寫進卡的 Merge Record 與
+  ledger，收錄 `--force`，重建 packets。注意：Elizabeth、Raora 的 final.md 之後有直接修改，**不要再重跑** merge_erb.py／merge_rao.py。
+- **待辦（Claude）**：Kronii 音檔報告改成明確共同片段（CONSULT-P1-006）；Myth 六週年 live 查證（P2-001）；Mococo 個人窗口（P1-007）；
+  表演表在聲音審計後 `stamp-sheets`。Hakos Baelz、Tsukumo Sana 等作者下令。
+
+（以下為較早的狀態紀錄）
+
 狀態（2026-10-01 16:30 UTC，Justice 完成並收錄；下一階段：GPT 專案諮詢與重任務）：
 - **Justice 完成**：四張角色卡（Elizabeth Rose Bloodflame、Gigi Murin、Cecilia Immergreen、Raora Panthera）、世界觀卡
   `hololive -Justice-`、`Justice Pairs`；GPT 三輪 xhigh 逐條核對審查（`runs/20261001-1032-character-Elizabeth-Rose-Bloodflame/gpt-free.md`

@@ -49,22 +49,22 @@ the character card.
 
 | First model (small.en) | Link | Second model (medium.en), excerpt | Verdict |
 |---|---|---|---|
-| "Come then, die by my hands, you foolish mortals" | [2:31:19](https://youtu.be/PryFPuyr9Lg?t=9079) | "activate it? Yes. Come then, die by my hands, you foolish mortals! Ow. Okay, I" | Agrees |
+| "Come then, die by my hands, you foolish mortals" | [2:31:19](https://youtu.be/PryFPuyr9Lg?t=9079) | "activate it? Yes. Come then, die by my hands, you foolish mortals! Ow. Okay, I" | **Shared span (computed):** whole line |
 | "Well, it's over for me. It's over for me." | [2:31:59](https://youtu.be/PryFPuyr9Lg?t=9119) | "He's here. Ow. It's over for me. I'm dead. It's over for me. The world's" | Agrees ("It's over for me") |
-| "No, I will not die, I shall not perish" | [2:33:25](https://youtu.be/PryFPuyr9Lg?t=9205) | "to activate this No, I will not die I shall not perish I'm gonna use" | Agrees |
+| "No, I will not die, I shall not perish" | [2:33:25](https://youtu.be/PryFPuyr9Lg?t=9205) | "to activate this No, I will not die I shall not perish I'm gonna use" | **Shared span (computed):** whole line |
 | "Well, thank you very much for spending time with me today and listening to me be a little bit weird. A little bit weird. What else is new? Shut up." | [2:37:04](https://youtu.be/PryFPuyr9Lg?t=9424) | "very interesting question well thank you very much for spending time with me today and been listening to me be a little bit weird a little bit weird what else i…" | **Shared spans only** ("thank you very much for spending time with me today and"; "listening to me be a little bit weird. A little bit weird."); the excerpt cuts off, so "What else is new? Shut up." is not quoted (corrected 2026-10-01 after GPT's review) |
 | "Hello, everyone. It's me, Cecilia Immergreen" | [0:04:48](https://youtu.be/UhXQ7dxDltk?t=288) | "and streamed yet again. Hello everyone, it's me Cecilia and we have" | **Shared span only** ("Hello, everyone, it's me"); her name is misheard by both |
-| "we did it yippee type shit" | [0:07:58](https://youtu.be/UhXQ7dxDltk?t=478) | "like ah, yeah did it we did it yippee type shit Yeah," | Agrees |
+| "we did it yippee type shit" | [0:07:58](https://youtu.be/UhXQ7dxDltk?t=478) | "like ah, yeah did it we did it yippee type shit Yeah," | **Shared span (computed):** whole line |
 | "maybe skipper skipper the stream just as much as I skipper skipper the filler" | [0:08:26](https://youtu.be/UhXQ7dxDltk?t=506) | "maybe skip this stream maybe skipper skipper this stream just as much as I skipper skipper the filter may fill" | Agrees ("skipper skipper") |
-| "In German he says" | [0:35:28](https://youtu.be/UhXQ7dxDltk?t=2128) | "says in English. In German he says, shuten doppelgänger, shuten," | Agrees |
-| "every cool story needs a trio" | [0:36:45](https://youtu.be/UhXQ7dxDltk?t=2205) | "dynamic trio, because every cool story needs a trio. So we have..." | Agrees |
+| "In German he says" | [0:35:28](https://youtu.be/UhXQ7dxDltk?t=2128) | "says in English. In German he says, shuten doppelgänger, shuten," | **Shared span (computed):** whole line |
+| "every cool story needs a trio" | [0:36:45](https://youtu.be/UhXQ7dxDltk?t=2205) | "dynamic trio, because every cool story needs a trio. So we have..." | **Shared span (computed):** whole line |
 | "don't tell me" | [0:39:48](https://youtu.be/UhXQ7dxDltk?t=2388) | "later on and it's I don't have any kobashi" | **Disagrees** on the attempts at the name; "don't tell me" not quoted |
-| "oh my god I'm so smart it's kabuto" | [0:39:57](https://youtu.be/UhXQ7dxDltk?t=2397) | "Kabuto! Is it Kabuto? Oh my god, I'm so smart. It's Kabuto. And he's" | Agrees |
+| "oh my god I'm so smart it's kabuto" | [0:39:57](https://youtu.be/UhXQ7dxDltk?t=2397) | "Kabuto! Is it Kabuto? Oh my god, I'm so smart. It's Kabuto. And he's" | **Shared span (computed):** whole line |
 | "It's Orokroni Senpai, Oroshimaru." | [0:41:08](https://youtu.be/UhXQ7dxDltk?t=2468) | "are his hands. It's Orochroni Senpai Oroshimaru. This is our" | Agrees on the pun ("Orochroni" / "Orokroni" Senpai); spelling differs; not quoted |
-| "Wow, he's just like me." | [0:44:55](https://youtu.be/UhXQ7dxDltk?t=2695) | "he's really smart wow he's just like me and he has" | Agrees |
+| "Wow, he's just like me." | [0:44:55](https://youtu.be/UhXQ7dxDltk?t=2695) | "he's really smart wow he's just like me and he has" | **Shared span (computed):** whole line |
 | "Calculated. I knew that there was gonna be another heart and that's why I did that" | [1:00:53](https://youtu.be/wZLK-gSqZnY?t=3653) | "A cal- a calculated mistake. I knew that there was gonna be another heart. Aaand that's why I did that. Duh! Dun" | Agrees on "calculated mistake … I knew that there was gonna be another heart … that's why I did that" |
-| "My memory is really good." | [1:01:20](https://youtu.be/wZLK-gSqZnY?t=3680) | "up i remember my memory is really good and then i" | Agrees |
-| "Okay, okay, okay, okay, okay, easy, easy, easy, easy, easy." | [1:01:24](https://youtu.be/wZLK-gSqZnY?t=3684) | "went up here okay okay okay okay okay okay okay easy easy easy easy I just" | Agrees |
+| "My memory is really good." | [1:01:20](https://youtu.be/wZLK-gSqZnY?t=3680) | "up i remember my memory is really good and then i" | **Shared span (computed):** whole line |
+| "Okay, okay, okay, okay, okay, easy, easy, easy, easy, easy." | [1:01:24](https://youtu.be/wZLK-gSqZnY?t=3684) | "went up here okay okay okay okay okay okay okay easy easy easy easy I just" | **Partial (computed):** shared runs "okay okay okay okay okay easy easy easy easy" |
 | "Come on, Princess, I'll protect you!" | [1:06:22](https://youtu.be/wZLK-gSqZnY?t=3982) | "Do you think if I fall off a cliff," | **Disagrees**; not used |
-| "Wrong way, Princess, wrong way!" | [1:06:54](https://youtu.be/wZLK-gSqZnY?t=4014) | "wrong way princess wrong way she's so bad" | Agrees |
+| "Wrong way, Princess, wrong way!" | [1:06:54](https://youtu.be/wZLK-gSqZnY?t=4014) | "wrong way princess wrong way she's so bad" | **Shared span (computed):** whole line |
 | "She's so bad at back-seating." | [1:07:03](https://youtu.be/wZLK-gSqZnY?t=4023) | "way princess wrong way she's so bad at back seeding oh my" | Agrees ("back seeding" spelling) |

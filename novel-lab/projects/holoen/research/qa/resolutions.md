@@ -17,7 +17,7 @@ Source of the CONSULT-* findings: `runs/20261001-1557-check-Project-Consult/gpt-
 | CONSULT-P1-003 | OctoClock "Bad Apple"; Kobo's "BLUE CLAPPER" with Kronii and Nerissa | applied | snapshot commit |
 | CONSULT-P1-004 | Official Serendipity units missing from Groups / world aliases | applied (Last Writes, Octo'clock, Rocku Wawa, BaeRyS, Bloodraven, B.F.F; Autofister already present) | snapshot commit |
 | CONSULT-P1-005 | 2026-09-07 restructuring relied on a wiki | applied (official announcement cited on "hololive") | snapshot commit |
-| CONSULT-P1-006 | Kronii ASR report: "Agrees" rows that differ lexically | pending (task 07: explicit approved spans) | — |
+| CONSULT-P1-006 | Kronii ASR report: "Agrees" rows that differ lexically | applied (Kronii rows rewritten by hand; all 151 other bare "Agrees" rows given computed shared spans by `tools/asr_spans.py`; 36 partial rows listed in `research/audio-check/partial-spans.md` for task 09) | this commit |
 | CONSULT-P1-007 | Mococo: sparse solo evidence; speaker attribution | pending (task 07 window; task 09) | — |
 | CONSULT-P1-008 | Performance sheets: settings scale; stale-sheet hashes | scale applied (UI % and API decimals); hashes pending (task 10 release builder) | snapshot commit |
 | CONSULT-P2-001 | Myth sixth-anniversary live missing from shared timeline | pending (verify, then propagate; task 08) | — |

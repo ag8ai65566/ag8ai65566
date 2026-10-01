@@ -50,19 +50,20 @@ Lines not listed in the second-model check at the end of this file are first-mod
 ## Second-model check (whisper medium.en)
 
 Each line below was cut from the archived audio (a window of about 24–60 s around the first model's
-timestamp) and transcribed again by a larger model. "Agrees" means the second model produced the same
+timestamp) and transcribed again by a larger model. Verdicts name the exact shared span (corrected 2026-10-01
+after the GPT project consult: a bare "Agrees" is not enough). "Agrees" formerly meant the second model produced the same
 words; it is still machine transcription, not listening. Lines that did not agree were removed from
 the character card.
 
 | First model (small.en) | Link | Second model (medium.en), excerpt | Verdict |
 |---|---|---|---|
 | "Oh, okay. That was my bad." | [1:39:19](https://youtu.be/6WFU2wzPKfA?t=5959) | "Okay. Who else? Who else? Oh. Okay, let's go." | **Not confirmed** (the second model hears game shouting here); the 1:40:41 instance is the one used |
-| "Okay, okay. That was my bad" | [1:40:41](https://youtu.be/6WFU2wzPKfA?t=6041) | "Okay, that was my bad. Getting impatient." | Agrees |
-| "I'm scared that one day I'm gonna run through here and then you know that they're gonna be like, oh, yeah, you thought it was safe, right?" | [2:02:52](https://youtu.be/esjpYSrvjB4?t=7372) | "bloody and scary I'm scared that one day I'm gonna run through here and then and then you know they're gonna be like oh yeah you thought it was safe right it's …" | Agrees |
-| "Oh my god, that hand scared me" | [2:41:44](https://youtu.be/esjpYSrvjB4?t=9704) | "Okay Oh my god, that hand scared me. What is this?" | Agrees |
+| "Okay, okay. That was my bad" | [1:40:41](https://youtu.be/6WFU2wzPKfA?t=6041) | "Okay, that was my bad. Getting impatient." | **Shared span:** "that was my bad" (the lead-in differs: "Okay, okay." / "Okay,") |
+| "I'm scared that one day I'm gonna run through here and then you know that they're gonna be like, oh, yeah, you thought it was safe, right?" | [2:02:52](https://youtu.be/esjpYSrvjB4?t=7372) | "bloody and scary I'm scared that one day I'm gonna run through here and then and then you know they're gonna be like oh yeah you thought it was safe right it's …" | **Shared spans:** "I'm scared that one day I'm gonna run through here and then" … "they're gonna be like, oh, yeah, you thought it was safe, right?" (the middle differs: "you know that" / "and then you know") |
+| "Oh my god, that hand scared me" | [2:41:44](https://youtu.be/esjpYSrvjB4?t=9704) | "Okay Oh my god, that hand scared me. What is this?" | **Shared span:** "Oh my god, that hand scared me" |
 | "Hello. Hello. Hello. Hello." | [0:06:04](https://youtu.be/tdLRQtJ3kkY?t=364) | "I'm almost there, hold on. I will" | **Not confirmed** (window caught different words); the hellos before the greeting at 0:07:17 are confirmed instead |
 | "Konnichiwa Yay, oh, yeah, yippee" | [0:07:17](https://youtu.be/tdLRQtJ3kkY?t=437) | "uh, uh, hello! Kedlanichiwa! Yay! Oh yay, yippee! Woohoo! Yeah! How" | **Agrees on the sequence** (hellos → greeting → "Yay! Oh yay, yippee! Woohoo!"); both models misspell the greeting word |
-| "Yippee! Oh, man! I've been so productive every single day." | [0:10:45](https://youtu.be/tdLRQtJ3kkY?t=645) | "I will die? Yippee! Oh man! I've been so productive every single day. I do productive" | Agrees |
-| "I'm so funny. I can't read this." | [0:14:46](https://youtu.be/tdLRQtJ3kkY?t=886) | "week before... Oh, I'm so funny, I can't read this. Oh!" | Agrees |
-| "Yay!" | [1:04:37](https://youtu.be/tdLRQtJ3kkY?t=3877) | "by the police. Yay! Uh, and V-Faction," | Agrees |
-| "Yay!" | [1:10:25](https://youtu.be/tdLRQtJ3kkY?t=4225) | "bunch thank you yay and her can" | Agrees |
+| "Yippee! Oh, man! I've been so productive every single day." | [0:10:45](https://youtu.be/tdLRQtJ3kkY?t=645) | "I will die? Yippee! Oh man! I've been so productive every single day. I do productive" | **Shared span:** "Yippee! Oh, man! I've been so productive every single day." |
+| "I'm so funny. I can't read this." | [0:14:46](https://youtu.be/tdLRQtJ3kkY?t=886) | "week before... Oh, I'm so funny, I can't read this. Oh!" | **Shared span:** "I'm so funny" / "I can't read this" (punctuation normalized) |
+| "Yay!" | [1:04:37](https://youtu.be/tdLRQtJ3kkY?t=3877) | "by the police. Yay! Uh, and V-Faction," | **Shared span:** "Yay" |
+| "Yay!" | [1:10:25](https://youtu.be/tdLRQtJ3kkY?t=4225) | "bunch thank you yay and her can" | **Shared span:** "Yay" |
