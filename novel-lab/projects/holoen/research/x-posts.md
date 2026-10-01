@@ -75,8 +75,7 @@ They are not quoted here. Status facts that matter for continuity are noted with
 - 2025-10-29: "Oh and look my twitch acc name is just 'kiara' now, how chic 😏😎" — 1983363520982069666
 - 2026-01-28: 50,000 followers on Twitch; "tomorrow we will play (T)Witcher! lol" — 2016639311190409528
 - 2026-04-02: "Ultra Orange" — 2039518036638441649
-- **Status note:** on 2026-09-09 her manager posted that she is taking a short break until further notice.
-  The reason is not used in this project. (2097694155048939686)
+- (A 2026-09-09 manager notice about a break exists; by author decision 2026-10-01 it is not used.)
 
 ### Ninomae Ina'nis (@ninomaeinanis)
 - 2020-09-08: "Don't tease me! I'm not a bad tako." — 1303528142632411138

@@ -7,7 +7,7 @@
   `export/sudowrite-paste.md`、`export/cards/`；`export/elevenlabs/` 八人表演表＋`sudowrite-style.md`（Style 規則）。
 - 審查後新增的官方來源：Serendipity 訪談（IRyS–Bae、Nerissa–Elizabeth）、World Tour '24 官方報告、
   DANGERyS（2026-07-12 發售）、In My Feelings（2024-08-08）、Moona "100%"（2025-02-16）、ASOBI★MAWARI-TAI!。
-- **待作者決定**：Kiara 2026-09-09 起短期休息（只記狀態）；基準日的故事要不要寫她休息中？
+- **作者裁決（2026-10-01）**：Kiara 不寫成休息中（2026-09-09 的公告不用）。
 - **下一步候選**（作者下令前不做新成員）：繼續擴充世界觀（更多跨分部關係、X 發文、各成員演唱會細節）；
   用音檔補強既有角色（Kiara–Nerissa 的 KiaRissa 台詞、各人的笑聲）。
 

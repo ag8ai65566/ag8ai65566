@@ -51,7 +51,7 @@ paired an immortal phoenix with a reaper who could never keep her dead. [Author;
   (2025-02-27); a four-part Split Fiction co-op series in April–May 2025, titled by them "takamori split
   screen nostalgia," "Perfectly In Sync with @TakanashiKiara," "thumbnail teetee manifestation into
   gameplay teetee" and "Saving the World with @TakanashiKiara"; Myth's 5th anniversary collab
-  (2025-09-13) and the announced 6th anniversary live (2026-09-19; Kiara announced a break on 09-09).
+  (2025-09-13) and the 6th anniversary live (2026-09-19).
 - **Heard in 2025 (ASR, S6):** in the first Split Fiction stream (Kiara's channel, 2025-04-06) the
   "parents" bit is alive: when Kobo shows up in chat, they tell her "Hi Kobo, go to bed! … What are you
   doing out of bed? Go to bed!", wish her a happy anniversary, and apologize: "Sorry Kobo, you can't be part
@@ -90,7 +90,7 @@ paired an immortal phoenix with a reaper who could never keep her dead. [Author;
 | 2023 | Off-collabs; "Fire N Ice" duet (2023-12-14) | Their song |
 | 2025-02-27 | Kiara's watch party for Calli's GriMoire concert | Cheering from the crowd |
 | 2025-04/05 | Split Fiction series ("takamori split screen nostalgia") | Nostalgic co-op |
-| 2026-09-19 | Myth 6th anniversary live announced with both (Kiara's part unconfirmed after her 09-09 break) | — |
+| 2026-09-19 | Myth 6th anniversary live together | Still side by side |
 
 ## Glossary
 | Word | Meaning | Who says it |
@@ -171,6 +171,8 @@ Black and orange side by side in a split-screen co-op; Kiara's "CALLI!" at full 
   Calli because it addresses Kiara).
 - **SHOULD adopted:** "kusotori" removed from Other Names (it would load this card in unrelated Kiara scenes).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-01, author decision:** Kiara is not written as on a break; her 2026-09-09 break notice is not used
+  in stories.
 
 ## Open Questions
 1. The "old married couple" rhythm is the author's description; the evidence above supports its pieces
