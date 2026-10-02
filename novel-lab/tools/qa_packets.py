@@ -21,11 +21,10 @@ ROOT = Path(__file__).resolve().parent.parent
 CAP = 55000  # soft cap per packet; GPT reads packets as files, so ~45k (consult) is a target, not a limit
 
 COHORTS = {
-    # Myth is split in two so each packet stays under the cap.
-    "myth1": {
-        "characters": ["Mori-Calliope", "Takanashi-Kiara", "Ninomae-Inanis"],
-        "world": ["TakaMori", "TakoTori", "Myth-and-Kronii-Other-Pairs"],
-    },
+    # Myth is split four ways so each audit (packet inline in the prompt) fits one GPT quota window.
+    "myth1": {"characters": ["Mori-Calliope"], "world": ["TakaMori"]},
+    "myth3": {"characters": ["Takanashi-Kiara"], "world": ["Myth-and-Kronii-Other-Pairs"]},
+    "myth4": {"characters": ["Ninomae-Inanis"], "world": ["TakoTori"]},
     "myth2": {
         "characters": ["Gawr-Gura", "Watson-Amelia"],
         "world": ["hololive--Myth", "AmeSame", "Bone-Bros"],
@@ -206,6 +205,13 @@ def build_registry(files, commit):
 
 
 GENERIC = {"the", "liz", "cc", "ame"}  # aliases too ambiguous to match on their own (short names cover Ame)
+# World-card aliases that name the agency or a generic streaming practice. They match almost every sentence,
+# so they are kept out of incoming-claim retrieval; status and dated events are covered by the registry and
+# the bridge packets (a Global audit run exhausted its quota window on these matches, 2026-10-02).
+GENERIC_WORLD = {"hololive", "hololive english", "holoen", "hololive production", "cover", "off-collab",
+                 "offcollab", "superchat", "supa", "akasupa", "in-character", "canonically", "kayfabe",
+                 "members-only stream", "unarchived karaoke", "hololive persona", "hololive livestream",
+                 "hololive collab", "early hololive", "vtuber lore"}
 
 
 def cohort_patterns(cohort, files):
@@ -222,6 +228,7 @@ def cohort_patterns(cohort, files):
     for stem in COHORTS[cohort]["world"]:  # owned world cards' names and aliases (ADVENT audit, CONSULT-R2-001)
         words.add(files[stem]["name"])
         words |= {a for a in split_list(files[stem]["sw"].get("Other Names")) if len(a) > 3 and a.lower() not in GENERIC}
+    words = {w for w in words if w.lower() not in GENERIC_WORLD}
     if not words:
         return None
     return re.compile(r"(?<![\w-])(" + "|".join(re.escape(w) for w in sorted(words, key=len, reverse=True)) + r")(?![\w-])", re.I)

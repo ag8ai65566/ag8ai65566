@@ -185,12 +185,20 @@ End with “Open questions”: at most five genuine author decisions or unresolv
 input questions, or “None.”
 
 
-## Efficiency note (added by Claude, 2026-10-01, after the first audit run exhausted the quota window)
+## Run budget (added by Claude, 2026-10-02; supersedes the 2026-10-01 efficiency note)
 
-Your quota is shared across the whole audit program, so work economically without lowering rigor:
-- Work primarily from the packet files; they already hold the owned fields, timelines, hard facts and every
-  incoming claim with its locator.
-- Do not print `registry.json` or whole bible files. Search them (`grep -n`, `jq`, `sed -n 'a,bp'`) for the
-  specific names, dates or rows you need to settle a finding.
+One audit must finish inside one quota window (about 200k tokens). On 2026-10-02 a run exceeded the window
+part-way through and returned nothing, so the budget below is binding. Every tool call re-sends the whole
+conversation, so the number of tool calls drives cost far more than the size of what you read.
+- **Your inputs are inline below** (the packet: owned fields, dossier timelines, hard facts and every incoming
+  claim with its `file › field` locator). Do not re-open the packet files or print whole bible files.
+- **Snapshot:** your working directory is a clean checkout of the packets' snapshot commit, made by Claude for
+  this run. Do not run git and do not compute or compare hashes; procedure step 1 is satisfied by this note.
+  Report the snapshot commit in Coverage.
+- **Budget:** about 12 tool calls in total, including web searches. Batch all local lookups into a few shell
+  commands (`grep -n -e A -e B -e C file1 file2 …`). Use at most 6 live web searches, only to settle a
+  contradiction or a likely-stale claim, official pages first.
+- Line numbers are optional; the exact old text is mandatory (Claude's merge matches exact text).
+- If the budget runs short, stop investigating and report the open items as further-evidence rows in Merge
+  handoff rather than leaving the audit unfinished. A complete audit with disclosed limits beats a lost one.
 - Ignore the run directory's `context.md`; it is not part of this task.
-- Use live search only to settle a contradiction or a likely-stale claim, preferring official pages.

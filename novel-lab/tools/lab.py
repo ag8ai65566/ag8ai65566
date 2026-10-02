@@ -241,15 +241,49 @@ def codex_ready():
     return False
 
 
+def snapshot_worktree():
+    """GPT 讀的是乾淨的 HEAD 快照（git worktree），不會看到 Claude 同時在改的檔案或 git diff。"""
+    top = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--show-toplevel"], capture_output=True, text=True)
+    if top.returncode != 0 or os.environ.get("NOVEL_LAB_SNAPSHOT") == "0":
+        return None, ROOT
+    import tempfile
+    wt = Path(tempfile.mkdtemp(prefix="novel-lab-snap-"))
+    subprocess.run(["git", "-C", top.stdout.strip(), "worktree", "prune"], capture_output=True)
+    r = subprocess.run(["git", "-C", top.stdout.strip(), "worktree", "add", "--detach", str(wt), "HEAD"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        return None, ROOT
+    return (top.stdout.strip(), wt), wt / ROOT.relative_to(top.stdout.strip())
+
+
 def via_codex(prompt, out, model, effort, live_search=False):
-    cmd = ["codex", "exec", "-m", model, "-c", f'model_reasoning_effort="{effort}"',
+    snap, cwd = snapshot_worktree()
+    cmd = ["codex", "exec", "--json", "-m", model, "-c", f'model_reasoning_effort="{effort}"',
            "-c", f'web_search="{"live" if live_search else "cached"}"',
            "-s", "read-only", "--skip-git-repo-check", "--ephemeral",
-           "-C", str(ROOT), "-o", str(out), "-"]
-    r = subprocess.run(cmd, input=prompt, capture_output=True, text=True)
+           "-C", str(cwd), "-o", str(out), "-"]
+    try:
+        r = subprocess.run(cmd, input=prompt, capture_output=True, text=True)
+    finally:
+        if snap:
+            subprocess.run(["git", "-C", snap[0], "worktree", "remove", "--force", str(snap[1])], capture_output=True)
+    # 事件記錄（工具呼叫、token 用量），失敗時也留下，方便調整每次任務的大小
+    out.with_name(out.stem + ".events.jsonl").write_text(r.stdout, encoding="utf-8")
     if r.returncode != 0 or not out.exists() or not out.read_text(encoding="utf-8").strip():
-        tail = (r.stderr or r.stdout)[-1500:]
-        raise RuntimeError(f"codex exec 失敗（{model}/{effort}）：\n{tail}")
+        errors = []
+        for line in r.stdout.splitlines():
+            try:
+                ev = json.loads(line)
+            except ValueError:
+                continue
+            if not isinstance(ev, dict):
+                continue
+            err = ev.get("error")
+            msg = ev.get("message") or (err.get("message") if isinstance(err, dict) else err)
+            if msg and ("error" in str(ev.get("type", "")) or "failed" in str(ev.get("type", ""))):
+                errors.append(str(msg))
+        tail = ((r.stderr or "")[-1200:] + ("\n" + "\n".join(errors[-2:]) if errors else "")).strip()
+        raise RuntimeError(f"codex exec 失敗（{model}/{effort}）：\n{tail[-1500:]}")
 
 
 def via_api(prompt, out, model, effort, live_search=False):
