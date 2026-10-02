@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git c06ffa3.
+Snapshot: git b0fa88b.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Gura and Calli|City Pop Shark|Amelia Watson|Watson Amelia|The Fish Tank|Ame and Gura|Gura and Ame|Gremlin Ame|ワトソン・アメリア|Goobidiba|Gawr Gura|Same-chan|Bone Bros|holoMyth|HoloMyth|Samegaki|AmeSame|amesame|Amechan|Amelia|がうる・ぐら|Gooba|Myth|Gura|Goob|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Gura and Calli|City Pop Shark|Watson Amelia|Amelia Watson|The Fish Tank|Ame and Gura|Gura and Ame|Gremlin Ame|Goobidiba|ワトソン・アメリア|Same-chan|Gawr Gura|Bone Bros|HoloMyth|Samegaki|holoMyth|Amechan|amesame|AmeSame|Amelia|がうる・ぐら|Gooba|Goob|Gura|Myth|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.

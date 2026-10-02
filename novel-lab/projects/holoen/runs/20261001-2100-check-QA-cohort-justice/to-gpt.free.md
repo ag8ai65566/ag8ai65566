@@ -189,9 +189,9 @@ part-way through and returned nothing, so the budget below is binding. Every too
 conversation, so the number of tool calls drives cost far more than the size of what you read.
 - **Your inputs are inline below** (the packet: owned fields, dossier timelines, hard facts and every incoming
   claim with its `file › field` locator). Do not re-open the packet files or print whole bible files.
-- **Snapshot:** your working directory is a clean checkout of the packets' snapshot commit, made by Claude for
-  this run. Do not run git and do not compute or compare hashes; procedure step 1 is satisfied by this note.
-  Report the snapshot commit in Coverage.
+- **Snapshot:** your working directory is a copy of the project taken when this run started (no `runs/`, no
+  git); the inline packet was rebuilt from the same files a moment before. Do not compute or compare hashes;
+  procedure step 1 is satisfied by this note. Report the packet's snapshot line in Coverage.
 - **Budget:** about 12 tool calls in total, including web searches. Batch all local lookups into a few shell
   commands (`grep -n -e A -e B -e C file1 file2 …`). Use at most 6 live web searches, only to settle a
   contradiction or a likely-stale claim, official pages first.
@@ -437,7 +437,7 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 ```json
 {
  "baseline": "2026-09-30",
- "commit": "c06ffa3",
+ "commit": "b0fa88b",
  "cast": [
   {
    "name": "Cecilia Immergreen",
@@ -629,7 +629,7 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 
 # Audit packet: justice
 
-Snapshot: git c06ffa3. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git b0fa88b. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
@@ -791,10 +791,10 @@ Incoming claims continue in `justice-incoming.md`.
 
 # Audit packet: justice (incoming claims)
 
-Snapshot: git c06ffa3.
+Snapshot: git b0fa88b.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|FiddleFlame|holoJustice|Gigi Murin|Bloodraven|Immerhater|TimeChaser|Erby Berby|Autofister|Da Fister|Elizabeth|Gi Murin|Raviolin|Justice|Cecilia|Lizzie|GeeGee|HoloEU|G Pain|Raora|B.F.F|Cece|Gigi|Ceci|Rara|LYRA|RPGG|CCGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|Grem Reaper|holoJustice|Bloodraven|Autofister|Gigi Murin|Erby Berby|TimeChaser|Immerhater|Da Fister|Elizabeth|Gi Murin|Raviolin|Justice|Cecilia|GeeGee|G Pain|HoloEU|Lizzie|B.F.F|Raora|Ceci|Cece|RPGG|Rara|LYRA|CCGG|Gigi|Liz)(
 
 ### from Ceres Fauna
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Cecilia Immergreen: a book and shoujo-manga tropes ranking (2024; "Green Women").

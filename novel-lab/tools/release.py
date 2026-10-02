@@ -47,7 +47,8 @@ WORLD_ORDER = ["VTuber-Persona-and-Lore", "hololive", "Streaming-Life",
 COHORT_AUDITS = [f"research/qa/audit-{c}.md" for c in qa_packets.COHORTS]
 ATTEST = {
     "V10": ["research/qa/audit-bridge-events.md"],
-    "V11": ["research/qa/audit-bridge-ties.md"],
+    # Cast-to-cast ties are compared from both sides inside the cohort audits; the bridge pass adds external people.
+    "V11": ["research/qa/audit-bridge-ties-external.md"] + COHORT_AUDITS,
     "V12": COHORT_AUDITS,
     "V13": ["research/qa/voice-delivery.md"],
     "V14": COHORT_AUDITS,

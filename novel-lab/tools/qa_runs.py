@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """QA audit runs: create GPT audit runs with their inputs inline, and merge an audit's findings into the cards.
 
-    python3 tools/qa_runs.py make cohort myth1       # or: make bridge events
+    python3 tools/qa_runs.py make cohort myth1       # or: make bridge events | bridge ties-external
+    python3 tools/qa_runs.py prepare <run>           # (lab.py calls this before a QA run) rebuild + rewrite
     python3 tools/qa_runs.py apply research/qa/audit-myth1.md [--dry]
     python3 tools/qa_runs.py promote-changed --reason "Author decision (...): ..."
 
-`make` refreshes an existing QA run that has no gpt-free.md yet instead of creating a new one. Regenerate the
-prompt (and commit the packets) right before the run, so the inline packet matches the snapshot GPT reads.
+`make` refreshes an existing QA run that has no gpt-free.md yet instead of creating a new one, and records
+qa.json so that `lab.py gpt <run> free` rebuilds the packets and the inline prompt right before the call;
+GPT then reads a copy of the same working tree, so the inline packet always matches what it can open.
 `apply` replaces each finding's exact old text in the latest run of the named card (`C/` = characters,
 `W/` = world), appends a Merge Record note, and lists rows it could not apply (handle those by hand).
 """
@@ -46,11 +48,25 @@ def run_of(stem):
     return Path(c[-1]) if c else None
 
 
-def make(kind, name):
+BRIDGE_NOTES = {
+    "ties-external": """## Scope of this ties pass (Claude, 2026-10-02)
+
+This pass covers **external participants**: people without a card (JP/ID members, DEV_IS, guests, alumni of
+other branches) as they appear across all cohorts, using the packet `ties-external.md`. Cast-to-cast pairs and
+claims naming more than three people were already compared from both sides by the seven cohort audits, whose
+packets hold every outgoing and incoming claim for their members (see `research/qa/audit-*.md`); a separate
+cast-ties pass would repeat that work and does not fit the remaining quota. If you see a cross-cohort tie
+problem the cohort audits could not have caught, report it here; say in Merge handoff whether a further pass
+is needed and what it would cover.
+""",
+}
+
+
+def make(kind, name, run=None):
     pending = [r for r in sorted(RUNS.glob(f"*-check-QA-{kind}-{name}")) if not (r / "gpt-free.md").exists()]
-    if pending:
+    if run is None and pending:
         run = pending[-1]
-    else:
+    elif run is None:
         subprocess.run([sys.executable, str(ROOT / "tools" / "lab.py"), "brief", "holoen", "check",
                         f"QA {kind} audit: {name}", "--name", f"QA-{kind}-{name}"], capture_output=True, text=True)
         run = sorted(RUNS.glob(f"*-check-QA-{kind}-{name}"))[-1]
@@ -59,6 +75,9 @@ def make(kind, name):
     has_inc = (ROOT / inc).exists()
     pkt = pk + (f" (owned material) and {inc} (incoming claims); both are inline below" if has_inc else " (inline below)")
     tpl = read(f"framework/prompts/gpt-{kind}-audit.md")
+    if kind == "bridge" and name in BRIDGE_NOTES:
+        tpl = tpl.replace("Bridge: {{bridge}} — must be events or ties", "Bridge: ties (external participants only)")
+        tpl += "\n\n" + BRIDGE_NOTES[name].rstrip("\n")
     tpl = (tpl.replace("{{cohort}}", name).replace("{{bridge}}", name).replace("{{packet_path}}", pkt)
            .replace("{{registry_path}}", "projects/holoen/research/qa/registry.json").replace("{{rules}}", RULES))
     assert "{{" not in tpl, re.findall(r"\{\{\w+\}\}", tpl)
@@ -88,6 +107,7 @@ def make(kind, name):
         parts += ["", f"### {inc}", "", read(inc)]
     text = "\n".join(parts) + "\n"
     (run / "to-gpt.free.md").write_text(text, encoding="utf-8")
+    (run / "qa.json").write_text(json.dumps({"kind": kind, "name": name}) + "\n", encoding="utf-8")
     print(f"{run.relative_to(ROOT)} {len(text):,} chars")
 
 
@@ -152,10 +172,21 @@ def promote_changed(reason):
                                 "--force", "--reason", reason], check=True)
 
 
+def prepare(run):
+    """Called by `lab.py gpt <run> free` for QA runs: rebuild packets, then rewrite the inline prompt."""
+    run = Path(run).resolve()
+    q = json.loads((run / "qa.json").read_text(encoding="utf-8"))
+    subprocess.run([sys.executable, str(ROOT / "tools" / "qa_packets.py"), "holoen"], check=True,
+                   stdout=subprocess.DEVNULL)
+    make(q["kind"], q["name"], run)
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
     if len(a) == 3 and a[0] == "make" and a[1] in ("cohort", "bridge"):
         make(a[1], a[2])
+    elif len(a) == 2 and a[0] == "prepare":
+        prepare(a[1])
     elif len(a) >= 2 and a[0] == "apply":
         apply(a[1], "--dry" in a)
     elif len(a) == 3 and a[0] == "promote-changed" and a[1] == "--reason":

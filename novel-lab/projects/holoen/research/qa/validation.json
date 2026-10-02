@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-02T02:15Z",
- "snapshot": "b7ba3f3c50db8586d3a14a6e834a9225f804a2e8d45b9894726409af673d7487",
+ "checked_at": "2026-10-02T02:18Z",
+ "snapshot": "5d83014bf45376a14384fe1a33f128ca9a54c0a545db288d956a3c8ffbb6f15d",
  "blocking_failures": [
   "V10",
   "V11",
@@ -20,7 +20,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot b7ba3f3c50db8586d3a14a6e834a9225f804a2e8d45b9894726409af673d7487",
+    "snapshot 5d83014bf45376a14384fe1a33f128ca9a54c0a545db288d956a3c8ffbb6f15d",
     "66 inputs"
    ],
    "finding_ids": []
@@ -119,7 +119,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-bridge-ties.md"
+    "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },

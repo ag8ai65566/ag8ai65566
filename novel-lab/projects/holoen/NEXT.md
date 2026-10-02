@@ -1,19 +1,23 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
-狀態（2026-10-02 02:30 UTC，全卷審計進行中）：
+狀態（2026-10-02 03:00 UTC，全卷審計進行中）：
 - **完成**：Advent cohort 審計（`research/qa/audit-advent.md`）已全部合併、收錄、匯出、推送；ledger 有 ADVENT-* 處置。
   另做 CLAUDE-SCOPE-002：流程紀錄（Merge Record、音檔報告、NEXT/project、舊草稿與提示副本）不再寫出被排除的具體私事。
 - **GPT 額度**：Global 審計跑到一半撞上限（約 20 萬 tokens、無產出）→ 重置 2026-10-02 06:29 UTC。改進：
-  1. `lab.py` 的 GPT 一律在 HEAD 的乾淨 worktree 快照跑（看不到 Claude 進行中的修改），並記 `gpt-free.events.jsonl`（工具呼叫與 token）。
+  1. `lab.py` 的 GPT 在開跑當下工作目錄的副本裡跑（不含 runs/、git，看不到之後的修改），並記 `gpt-free.events.jsonl`（工具呼叫與 token）。
   2. 審計提示把 packet、project.md、shared-rules、ledger、registry 摘錄**內嵌**，並訂「約 12 次工具呼叫、最多 6 次搜尋」的預算。
   3. Global 的 incoming 去掉泛用別名（hololive、off-collab…），110k→51k 字；Myth1 拆成 myth1（Calli）、myth3（Kiara）、myth4（Ina）。
-- **工具**：`tools/qa_runs.py make cohort|bridge <name>`（產生／刷新審計 run，跑前要重做並 commit packets）、
-  `apply <audit.md> [--dry]`（照審計表的 exact old text 改 runs 的 final.md＋Merge Record）、`promote-changed --reason`。
-- **GPT 佇列**（`.gpt-quota.json`，依序）：global → justice → myth1 → myth3 → myth4 → myth2 → promise。每次開跑前先
-  `python3 novel-lab/tools/qa_packets.py holoen`＋`qa_runs.py make cohort <name>`（對所有待跑的）＋commit，再 `lab.py gpt-resume --now`。
-- **之後**：bridge events（＋ties-external）；ties-cast 與 cohort 審計重疊（每對成員的雙向說法已在兩邊 cohort 的 incoming 裡），
-  建議不跑或只跑 cohort 審計標出的未決項 → 06 近期補完 → 08 年表＋X → 09 聲音 → 10 `release.py build` → 11 驗收。
-- **待辦（Claude）**：Mococo 個人窗口（CONSULT-P1-007，task 07/09）；表演表在聲音審計後 `stamp-sheets`。Hakos Baelz、Tsukumo Sana 等作者下令。
+- **工具**：`tools/qa_runs.py make cohort|bridge <name>`（建立 QA run 並寫 qa.json）、`apply <audit.md> [--dry]`（照審計表的
+  exact old text 改 runs 的 final.md＋Merge Record）、`promote-changed --reason`。有 qa.json 的 run，`lab.py gpt <run> free`
+  開跑前會自動重建 packets、重寫內嵌提示，GPT 讀的是當下工作目錄的副本（不含 runs/、git），所以合併中途也不會錯位。
+- **GPT 佇列**（`.gpt-quota.json`，依序）：global → justice → myth1 → myth3 → myth4 → myth2 → promise → bridge events →
+  bridge ties-external。額度重置後直接 `setsid nohup python3 novel-lab/tools/lab.py gpt-resume --now &`。
+- **ties 的調整**：成員之間的關係（ties-cast）與多人聲明（ties-groups）已在各 cohort 審計的 incoming／outgoing 兩邊都比對過，
+  不再另跑；bridge ties 只跑外部人物（ties-external）。V11 改為需要 ties-external＋七份 cohort 審計（`tools/release.py`）。
+  提示裡請 GPT 若不同意就在 Merge handoff 說明。
+- **之後**：06 近期補完 → 08 年表＋X → 09 聲音 → 10 `release.py build` → 11 驗收。
+- **Mococo（CONSULT-P1-007）**：已查整個頻道存檔，沒有其他可歸屬的單人窗口；聲音指示維持暫定（報告與卡已寫明）。
+- **待辦（Claude）**：表演表在聲音審計後 `stamp-sheets`。Hakos Baelz、Tsukumo Sana 等作者下令。
 
 （以下為較早的狀態紀錄）
 

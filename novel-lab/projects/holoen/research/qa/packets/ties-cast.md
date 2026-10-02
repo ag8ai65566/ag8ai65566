@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git c06ffa3. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git b0fa88b. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### Cecilia Immergreen × Elizabeth Rose Bloodflame

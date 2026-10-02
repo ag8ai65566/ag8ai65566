@@ -241,23 +241,20 @@ def codex_ready():
     return False
 
 
-def snapshot_worktree():
-    """GPT 讀的是乾淨的 HEAD 快照（git worktree），不會看到 Claude 同時在改的檔案或 git diff。"""
-    top = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--show-toplevel"], capture_output=True, text=True)
-    if top.returncode != 0 or os.environ.get("NOVEL_LAB_SNAPSHOT") == "0":
+def snapshot_copy():
+    """GPT 讀的是開跑當下工作目錄的副本（不含 runs/、不含 git）：Claude 之後再改檔不會影響這一輪，
+    內嵌在提示裡的 packet 也和 GPT 能打開的檔案一致。"""
+    if os.environ.get("NOVEL_LAB_SNAPSHOT") == "0":
         return None, ROOT
     import tempfile
-    wt = Path(tempfile.mkdtemp(prefix="novel-lab-snap-"))
-    subprocess.run(["git", "-C", top.stdout.strip(), "worktree", "prune"], capture_output=True)
-    r = subprocess.run(["git", "-C", top.stdout.strip(), "worktree", "add", "--detach", str(wt), "HEAD"],
-                       capture_output=True, text=True)
-    if r.returncode != 0:
-        return None, ROOT
-    return (top.stdout.strip(), wt), wt / ROOT.relative_to(top.stdout.strip())
+    tmp = Path(tempfile.mkdtemp(prefix="novel-lab-snap-"))
+    skip = {".git", "runs", "models", "__pycache__", ".gpt-quota.json"}
+    shutil.copytree(ROOT, tmp / ROOT.name, ignore=lambda d, names: [n for n in names if n in skip])
+    return tmp, tmp / ROOT.name
 
 
 def via_codex(prompt, out, model, effort, live_search=False):
-    snap, cwd = snapshot_worktree()
+    snap, cwd = snapshot_copy()
     cmd = ["codex", "exec", "--json", "-m", model, "-c", f'model_reasoning_effort="{effort}"',
            "-c", f'web_search="{"live" if live_search else "cached"}"',
            "-s", "read-only", "--skip-git-repo-check", "--ephemeral",
@@ -266,7 +263,7 @@ def via_codex(prompt, out, model, effort, live_search=False):
         r = subprocess.run(cmd, input=prompt, capture_output=True, text=True)
     finally:
         if snap:
-            subprocess.run(["git", "-C", snap[0], "worktree", "remove", "--force", str(snap[1])], capture_output=True)
+            shutil.rmtree(snap, ignore_errors=True)
     # 事件記錄（工具呼叫、token 用量），失敗時也留下，方便調整每次任務的大小
     out.with_name(out.stem + ".events.jsonl").write_text(r.stdout, encoding="utf-8")
     if r.returncode != 0 or not out.exists() or not out.read_text(encoding="utf-8").strip():
@@ -466,6 +463,9 @@ def cmd_gpt(args):
     proj_live = front_matter(read(runs[0].parent.parent / "project.md")).get("web_search") == "live"
     live = proj_live or any(r.name.split("-")[2] == "research" for r in runs)
     if len(runs) == 1:
+        if stage == "free" and (runs[0] / "qa.json").exists():
+            # QA 審計：開跑前重建 packets 並重寫內嵌提示，讓內容和這一輪的快照一致
+            subprocess.run([sys.executable, str(ROOT / "tools" / "qa_runs.py"), "prepare", str(runs[0])], check=True)
         out, prompt = prepare_run(runs[0], stage)
         via, model = ask_gpt(prompt, out, args.model, args.effort, live_search=live,
                              brief=frozen(runs[0], "gpt-brief.md", None))
