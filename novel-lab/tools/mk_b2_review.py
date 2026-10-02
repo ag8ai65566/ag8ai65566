@@ -118,7 +118,7 @@ if __name__ == "__main__":
           "Lamy, Botan and Vivi added to the other cast cards (listed at the end). Run C covered Marine, Noel and "
           "Lamy's own cards.",
           lines_about(PAT_JP2, "Lines about Marine, Noel, Lamy, Botan and Vivi on the other cast cards "
-                               "(2026-10-02; promoted ahead of this review)"))
+                               "(2026-10-02; part promoted ahead of this review, all confirmed by it)"))
     build("E", ["Laplus-Darknesss", "Takane-Lui", "Hakui-Koyori"],
           "This is run E of four: La+, Lui and Koyori. Run F covers Chloe, Iroha, the world card \"holoX\" and the "
           "cross-card lines about holoX.")
@@ -126,4 +126,4 @@ if __name__ == "__main__":
           "This is run F of four: Chloe, Iroha, the world card \"holoX\" and the lines about the holoX members "
           "added to the other cast cards (listed at the end). Run E covered La+, Lui and Koyori's own cards.",
           lines_about(PAT_HX, "Lines about the holoX members on the other cast cards "
-                              "(2026-10-02; promoted ahead of this review)"))
+                              "(2026-10-02; part promoted ahead of this review, all confirmed by it)"))

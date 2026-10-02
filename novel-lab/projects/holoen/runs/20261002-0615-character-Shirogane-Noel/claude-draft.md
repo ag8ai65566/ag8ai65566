@@ -139,6 +139,7 @@ Public exchanges only.
 | Mori Calliope | — | HOLOYOI #02 with Flare (2023) | [NO5] |
 | FUWAMOCO, Hakos Baelz | — | "Yuru Holo" team Mario Kart (2023); FUWAMOCO danced to "Très Bien Night" (2025) | [NO5] |
 | Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [NO5] |
+| Ceres Fauna (graduated) | EN kouhai | Named her as a JP senior she admires and wanted to collab with | [Fauna file, secondary] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: past 2 million subscribers, a hololive Fantasy concert and a
@@ -214,7 +215,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Noel came to the VTuber world to train and grow stronger. As a streamer she wants to have fun with her knights and her friends, keep improving as a singer and keep Flare close.
 
 ## [SW] Relationships
-Houshou Marine: hololive Fantasy, "Onee-san Gumi" with Shiranui Flare and "Yakamashi Musume"; 3rd-gen R.E.P.O. (2025). Yukihana Lamy: "Yakamashi Musume" with Inugami Korone and Marine; drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an earphone sponsorship collab (2025). Hakui Koyori: "NoeKoyo" baseball (2025) and Blue Journey (2023). Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "Très Bien Night" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025). Shiranui Flare: her partner ("NoeFure").
+Houshou Marine: hololive Fantasy, "Onee-san Gumi" with Shiranui Flare and "Yakamashi Musume"; 3rd-gen R.E.P.O. (2025). Yukihana Lamy: "Yakamashi Musume" with Inugami Korone and Marine; drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an earphone sponsorship collab (2025). Hakui Koyori: "NoeKoyo" baseball (2025) and Blue Journey (2023). Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "Très Bien Night" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025). Shiranui Flare: her partner ("NoeFure"). Ceres Fauna (graduated 2025): an EN kouhai who, by secondary accounts, admired her and hoped to collab.
 
 ## [SW] Secrets
 (none)

@@ -147,6 +147,7 @@ Public exchanges only.
 | FUWAMOCO | — | Touhou off-collab (2024-04-30); Mario Party with Nerissa (2024); watched her solo concert (2024); danced to "Chatter Chatter" (2026) | [MA5] |
 | Nerissa Ravencroft | — | Mario Party Superstars off-collab with FUWAMOCO (2024); a dance short to her song | [MA5] |
 | Elizabeth Rose Bloodflame | — | Sang "IT'S LOVE" with her and Korone for Elizabeth's 2026 birthday | [MA5] |
+| Nakiri Ayame | 2nd-gen senior | Secondary accounts say Ayame admires her | [Ayame file, secondary] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: past 4 million subscribers, a hololive Fantasy concert, a duet
@@ -222,7 +223,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Marine wants a real pirate ship to sail with her crew in search of treasure, and in the end to find that the treasure was the journey and the friends. As a streamer and idol she wants to entertain everyone, keep singing and growing, and look after hololive's juniors.
 
 ## [SW] Relationships
-Shirogane Noel: hololive Fantasy and "Onee-san Gumi" with Shiranui Flare; Bara☆Dice, Yakamashi Musume. Hoshimachi Suisei: "Chatter Chatter" (2026). Yukihana Lamy: Yakamashi Musume, holoWitches. Kikirara Vivi: "MVP" with Usada Pekora. Hakui Koyori: the "pink-haired pair." La+ Darknesss: "#MariLa+" (2025). Takane Lui: "SSS." Sakamata Chloe (affiliate): UMISEA, holoWitches. Kazama Iroha: Bara☆Dice. Nekomata Okayu: HoLOGSS, MOMAS. Takanashi Kiara: her first HOLOTALK guest (2020); dance shorts. Mori Calliope: English lesson #01 (2022), Mario Kart, a house-party off-collab (2023). Hakos Baelz: Mario Kart and the house party; played Marine's horror game with Mumei. Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; "SHINKIRO" with Gura. FUWAMOCO: a Touhou off-collab and Mario Party with Nerissa (2024). Nerissa Ravencroft: that Mario Party off-collab. Elizabeth Rose Bloodflame: "IT'S LOVE" for her 2026 birthday.
+Shirogane Noel: hololive Fantasy and "Onee-san Gumi" with Shiranui Flare; Bara☆Dice, Yakamashi Musume. Hoshimachi Suisei: "Chatter Chatter" (2026). Yukihana Lamy: Yakamashi Musume, holoWitches. Kikirara Vivi: "MVP" with Usada Pekora. Hakui Koyori: the "pink-haired pair." La+ Darknesss: "#MariLa+" (2025). Takane Lui: "SSS." Sakamata Chloe (affiliate): UMISEA, holoWitches. Kazama Iroha: Bara☆Dice. Nekomata Okayu: HoLOGSS, MOMAS. Takanashi Kiara: her first HOLOTALK guest (2020); dance shorts. Mori Calliope: English lesson #01 (2022), Mario Kart, a house-party off-collab (2023). Hakos Baelz: Mario Kart and the house party; played Marine's horror game with Mumei. Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; "SHINKIRO" with Gura. FUWAMOCO: a Touhou off-collab and Mario Party with Nerissa (2024). Nerissa Ravencroft: that Mario Party off-collab. Elizabeth Rose Bloodflame: "IT'S LOVE" for her 2026 birthday. Nakiri Ayame: a second-generation senior who, by secondary accounts, admires her.
 
 ## [SW] Secrets
 (none)

@@ -187,6 +187,9 @@ public labels from a secondary reference; song credits are official.
 | Amane Kanata | "KanatAZ" (secondary label) | A collaborator associated with KanatAZ | [AZ2, secondary] |
 | Kazama Iroha | "AzuIro" (secondary label) | Frequent partner since 2022; their original "AZUIRO BESTIE DAYS" (2025-09-18) | [AZ2] [Official AZ10] |
 | Nekomata Okayu, Nakiri Ayame | — | No direct pair; Ayame was on her 2023 Sports Festival white team (Ayame's stream description) | [AZ4 tHP7bd8Jtm0] |
+| Hakui Koyori, Yukihana Lamy | "KoZMy" | A trio formed in 2025; a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata | [Koyori file KO4] [Lamy file LM2] |
+| Sakamata Chloe (affiliate) | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [Chloe file CH4] |
+| La+ Darknesss | — | Games and an ASMR "evaluation" (2025) | [La+ file LA4] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: her 8th birthday live "Cross Over," a new unit (RosaMiA),
@@ -279,7 +282,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 AZKi wants to keep creating memorable music that touches her Pioneers' hearts, on stage and in her units, and to enjoy what she loves to the fullest, from maps to puns.
 
 ## [SW] Relationships
-Hoshimachi Suisei: labelmate since INoNaKa Music and 0th-generation partner ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with Suisei and Moona Hoshinova ("story time," 2022); IRyS covered AZKi's "Inochi" (2021); R.E.P.O. (2025); "A Cruel Angel's Thesis" at AZKi's 2026 birthday live. FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live. Takanashi Kiara: HOLOTALK's 13th guest (2021); the 2023 Sports Festival white team. Mori Calliope: her English lesson with IRyS and Tsunomaki Watame (2022); AZKi's "Orpheus" dance short (2025). Hakos Baelz: GeoGuessr (2023). Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team. Ninomae Ina'nis and Kronii: R.E.P.O. "JP & EN" (2025). Tokino Sora: her SorAZ partner. Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025). Nakiri Ayame: 2023 Sports Festival teammate.
+Hoshimachi Suisei: labelmate since INoNaKa Music and 0th-generation partner ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with Suisei and Moona Hoshinova ("story time," 2022); IRyS covered AZKi's "Inochi" (2021); R.E.P.O. (2025); "A Cruel Angel's Thesis" at AZKi's 2026 birthday live. FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live. Takanashi Kiara: HOLOTALK's 13th guest (2021); the 2023 Sports Festival white team. Mori Calliope: her English lesson with IRyS and Tsunomaki Watame (2022); AZKi's "Orpheus" dance short (2025). Hakos Baelz: GeoGuessr (2023). Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team. Ninomae Ina'nis and Kronii: R.E.P.O. "JP & EN" (2025). Tokino Sora: her SorAZ partner. Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025). Nakiri Ayame: 2023 Sports Festival teammate. Hakui Koyori and Yukihana Lamy: "KoZMy" (2025), and a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata. Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024). La+ Darknesss: games (2025).
 
 ## [SW] Secrets
 (none)
@@ -312,6 +315,7 @@ Hoshimachi Suisei: labelmate since INoNaKa Music and 0th-generation partner ("AS
     short (lXLBb9IVraI, 2025-10-09) and the 2023 Sports Festival white team with Ayame and Kiara (tHP7bd8Jtm0,
     Ayame's description lists AZKi).
   - The audio report's second-model excerpts are trimmed to the needed performance spans.
+- **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi), reciprocal ties:** Koyori and Lamy (KoZMy, KALAZ), Chloe (Kanaken) and La+ added (sources in the new member files).
 
 ## Open Questions
 1. IRyS appears in the archived Cross Over short metadata ("A Cruel Angel's Thesis"); attach the primary short

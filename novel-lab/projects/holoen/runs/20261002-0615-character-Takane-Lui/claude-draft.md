@@ -149,6 +149,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Nakiri Ayame | "Onikan" | Games together (2025) | [LU4] |
 | Shishiro Botan | "BLT," "InuTakaShishiRam" | Units with Towa; with Korone and Watame | [LU2] |
 | Houshou Marine | "SSS" | With Yuzuki Choco | [LU2] |
+| Yukihana Lamy | NePoX | NePoLaBo × holoX events (2026) | [Lamy file] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: holoX's first concert behind her, "Soar" danced across the
@@ -229,7 +230,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Lui wants to keep holoX running and her people happy, and to grow as an artist: a live-band concert of her own songs, tie-ups, overseas concerts and fan meetings, a show of her own, and a place in her fans' everyday lives.
 
 ## [SW] Relationships
-La+ Darknesss: holoX's founder, whom Lui reins in and covers for. Sakamata Chloe (affiliate since 2025): the intern she used to keep in line. Hakui Koyori and Kazama Iroha: holoX; Iroha calls her "Lui-nee." Takanashi Kiara: welcomed her into HOLOTORI on her debut day; a Wario off-collab (2023). Nanashi Mumei (graduated): her HOLOTORI "Bird Sister" ("Q&A With Bird Sisters," 2025). Mori Calliope: practiced English with her (2021–2022) and had her on "HOLOYOI" (2023). FUWAMOCO: "TWIN DAY WITH LUI" (2023). Hakos Baelz: "BAE-GEMITE DOMINATION" (2023) and a "FEAST" dance. IRyS and Ouro Kronii: Minecraft (2022). Watson Amelia: Apex (2022). Nekomata Okayu: "Shaccho," a Harry Potter watch-along club and game predictions. Nakiri Ayame: "Onikan." Shishiro Botan: "BLT" and "InuTakaShishiRam." Houshou Marine: "SSS."
+La+ Darknesss: holoX's founder, whom Lui reins in and covers for. Sakamata Chloe (affiliate since 2025): the intern she used to keep in line. Hakui Koyori and Kazama Iroha: holoX; Iroha calls her "Lui-nee." Takanashi Kiara: welcomed her into HOLOTORI on her debut day; a Wario off-collab (2023). Nanashi Mumei (graduated): her HOLOTORI "Bird Sister" ("Q&A With Bird Sisters," 2025). Mori Calliope: practiced English with her (2021–2022) and had her on "HOLOYOI" (2023). FUWAMOCO: "TWIN DAY WITH LUI" (2023). Hakos Baelz: "BAE-GEMITE DOMINATION" (2023) and a "FEAST" dance. IRyS and Ouro Kronii: Minecraft (2022). Watson Amelia: Apex (2022). Nekomata Okayu: "Shaccho," a Harry Potter watch-along club and game predictions. Nakiri Ayame: "Onikan." Shishiro Botan: "BLT" and "InuTakaShishiRam." Houshou Marine: "SSS." Yukihana Lamy: NePoX (2026). Nerissa Ravencroft, Koseki Bijou, Gigi Murin and Raora Panthera: dance shorts to her "Soar" (2026).
 
 ## [SW] Secrets
 (none)

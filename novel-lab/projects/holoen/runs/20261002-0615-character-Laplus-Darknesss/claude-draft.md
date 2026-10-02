@@ -143,6 +143,8 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Nekomata Okayu | "Dorobo Kensetsu" | A 3D lie-detector challenge (2026) | [LA2] [LA4] |
 | Nakiri Ayame, Hoshimachi Suisei, Shishiro Botan | — | holoGTA and poker (2024) | [LA4] |
 | AZKi | — | Games and an ASMR "evaluation" (2025); AZKi danced to her songs | [LA4] |
+| Houshou Marine | "#MariLa+" | A sponsored collab (2025); a cover with Marine and Koyori (2025) | [Marine file] [KO4] |
+| Yukihana Lamy, Shishiro Botan | NePoX | NePoLaBo × holoX events (2026) | [Lamy file] [Botan file] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: holoX's first concert, a Tochigi ambassadorship, her first
@@ -218,7 +220,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, La+ wants to conquer the world with her secret society. As a streamer and artist she wants to win, to be taken seriously (not as a child) and to be recognized as an artist in her own right.
 
 ## [SW] Relationships
-Takane Lui: holoX's executive officer, who actually runs things and reins her in. Hakui Koyori and Kazama Iroha: holoX ("Irohasu" with Iroha). Sakamata Chloe (affiliate since 2025): the former intern. Takanashi Kiara: "Glow in the Dark" (Mythmash) and "FAKE HEART" (2025), and an off-collab (2023). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: danced to "Onee-sama♡Love Call" (2026). Cecilia Immergreen: teases her as "onee-sama" in a short (2026). Nerissa Ravencroft: holoGTA (2024). Nekomata Okayu: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Nakiri Ayame, Hoshimachi Suisei, Shishiro Botan: holoGTA and poker (2024). AZKi: games (2025).
+Takane Lui: holoX's executive officer, who actually runs things and reins her in. Hakui Koyori and Kazama Iroha: holoX ("Irohasu" with Iroha). Sakamata Chloe (affiliate since 2025): the former intern. Takanashi Kiara: "Glow in the Dark" (Mythmash) and "FAKE HEART" (2025), and an off-collab (2023). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: danced to "Onee-sama♡Love Call" (2026). Cecilia Immergreen: teases her as "onee-sama" in a short (2026). Nerissa Ravencroft: holoGTA (2024). Nekomata Okayu: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Nakiri Ayame, Hoshimachi Suisei, Shishiro Botan: holoGTA and poker (2024). AZKi: games (2025). Houshou Marine: "#MariLa+," a sponsored collab, and a cover with Koyori (2025). Yukihana Lamy and Shishiro Botan: NePoX (2026).
 
 ## [SW] Secrets
 (none)

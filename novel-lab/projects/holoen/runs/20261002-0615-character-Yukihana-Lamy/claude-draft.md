@@ -211,7 +211,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Lamy left her snowy home to bring the smiles she found in hololive's streams to others. As a streamer she wants to take on every challenge, give hololive a boost, stand on stage with her senpai and keep her Yukimin company.
 
 ## [SW] Relationships
-Shishiro Botan: 5th-gen genmate and NePoLaBo partner; horror runs where Lamy panics and Botan enjoys it. AZKi: "KALAZ" with Amane Kanata and "KoZMy" with Hakui Koyori. Hakui Koyori: KoZMy (2025) and a 2026 off-collab to name their duo. Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone, and Blue Journey; Marine is also in holoWitches. La+ Darknesss, Takane Lui and Kazama Iroha: NePoX, NePoLaBo × holoX events. Ninomae Ina'nis: Minecraft festivals and a server "date" (2021), and a guest at Ina's 3D live "Pleides" (2024).
+Shishiro Botan: 5th-gen genmate and NePoLaBo partner; horror runs where Lamy panics and Botan enjoys it. AZKi: "KALAZ" with Amane Kanata and "KoZMy" with Hakui Koyori. Hakui Koyori: KoZMy (2025) and a 2026 off-collab to name their duo. Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone, and Blue Journey; Marine is also in holoWitches. La+ Darknesss, Takane Lui and Kazama Iroha: NePoX, NePoLaBo × holoX events. Ninomae Ina'nis: Minecraft festivals and a server "date" (2021), and a guest at Ina's 3D live "Pleides" (2024). Sakamata Chloe (affiliate): Rust with Amane Kanata (2022).
 
 ## [SW] Secrets
 (none)

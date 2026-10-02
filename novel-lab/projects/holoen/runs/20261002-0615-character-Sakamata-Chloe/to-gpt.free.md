@@ -660,7 +660,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Iroha left her mountain home to see and learn about the world and guards holoX to make a living. As a streamer she wants to clear what she starts, keep training ("Kazama in training"), grow as a singer and protect her friends.
 
 ## [SW] Relationships
-AZKi: "AzuIro," her steady duo (covers, off-collab "summer camps," Cuphead, a Minecraft village). La+ Darknesss: holoX's founder, "La+-dono"; a cover (2024). Takane Lui: "Lui-nee"; a cover (2024). Hakui Koyori: holoX; her early "seiso" pair. Sakamata Chloe (affiliate since 2025): a cover on Chloe's last day (2025). Hoshimachi Suisei: Hoshimatic Project; coached her at Puyo Puyo Tetris (2023). Yukihana Lamy and Shishiro Botan: NePoX. Takanashi Kiara: a guest at Kiara's 3D lives (2024, 2025) and dance shorts (2025). Watson Amelia (affiliate): "KoMeHa" with Kobo Kanaeru (VALORANT, 2022). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: a cookie-quiz off-collab (2024). Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" for her 2026 birthday, with FUWAMOCO.
+AZKi: "AzuIro," her steady duo (covers, off-collab "summer camps," Cuphead, a Minecraft village). La+ Darknesss: holoX's founder, "La+-dono"; a cover (2024). Takane Lui: "Lui-nee"; a cover (2024). Hakui Koyori: holoX; her early "seiso" pair. Sakamata Chloe (affiliate since 2025): a cover on Chloe's last day (2025). Hoshimachi Suisei: Hoshimatic Project; coached her at Puyo Puyo Tetris (2023). Yukihana Lamy and Shishiro Botan: NePoX. Takanashi Kiara: a guest at Kiara's 3D lives (2024, 2025) and dance shorts (2025). Watson Amelia (affiliate): "KoMeHa" with Kobo Kanaeru (VALORANT, 2022). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: a cookie-quiz off-collab (2024). Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" for her 2026 birthday, with FUWAMOCO. Houshou Marine: Bara☆Dice.
 
 ## [SW] Secrets
 (none)
@@ -964,7 +964,7 @@ A tiny horned founder with silver hair, oversized sleeves and shackles, a crow b
    memories?
 
 
-## Lines about the holoX members on the other cast cards (2026-10-02; promoted ahead of this review)
+## Lines about the holoX members on the other cast cards (2026-10-02; part promoted ahead of this review, all confirmed by it)
 
 ### Mori Calliope
 Relationships field (exported):
@@ -982,14 +982,14 @@ Dossier rows (with sources):
 
 ### Gawr Gura
 Relationships field (exported):
-La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
-
+La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022). Houshou Marine: UMISEA and "SHINKIRO" ("GuraMarine"); Sakamata Chloe joined UMISEA later, per the wiki.
 Dossier rows (with sources):
 | La+ Darknesss, Kazama Iroha, Shishiro Botan | JP members | HOLO ENGLISH LESSON #02 with La+ and Iroha (Calli's stream, 2022-03-04); "Apex Predators," a wiki-listed pair name with Botan | [S1 X492n37brRU] [Botan file, secondary] |
+| Houshou Marine, Sakamata Chloe | UMISEA | "SHINKIRO" with Marine ("GuraMarine"); Chloe joined the unit later per the wiki | [Marine file MA2, MA5] [Chloe file CH2, secondary] |
 
 ### Watson Amelia
 Relationships field (exported):
-Kazama Iroha: "KoMeHa" with Kobo Kanaeru (VALORANT, 2022).
+Kazama Iroha: "KoMeHa" with Kobo Kanaeru (VALORANT, 2022). Takane Lui: Apex with Airani Iofifteen (2022).
 
 Dossier rows (with sources):
 | Kazama Iroha, Takane Lui | JP members | "KoMeHa" with Iroha and Kobo Kanaeru (VALORANT, 2022-06-04); Apex with Lui and Iofi (2022) | [S1 tGVhLibbYL0; world card "holoX"] |
@@ -1036,7 +1036,6 @@ Dossier rows (with sources):
 Relationships field (exported):
 Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests: FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine and Korone.
 
-
 ### Cecilia Immergreen
 Relationships field (exported):
 La+ Darknesss: Cecilia teased her as "onee-sama" in a 2026 short.
@@ -1054,9 +1053,37 @@ Natsuiro Matsuri: "Kakumei Dualism" at the 2026 fes. holoX: Sakamata Chloe ("Cra
 Dossier rows (with sources):
 | Secret Society holoX (Lui, Chloe, Koyori) | JP kouhai | The EN-server Minecraft tour with Mumei, Lui and Chloe (2022-02-12); BAE-GEMITE DOMINATION #4 with Koyori and Nene (2023-04-22) and #5 with Lui and Chloe (2023-04-29); a Suika Game challenge and the "Crazy Scary Holy Fantasy" cover with Chloe (2023-10-30); KHAOS KITCHEN taste testers Koyori, Calli and Subaru (2023-11-24) | [HB3 S-d80w5gs-c, WwjB7QSmQng, z4-5Hq5AKG4, p9_oBCK0olg, 9EAIDwXj4Jk, NdLiUW-nUlk] |
 
+### Hoshimachi Suisei
+Relationships field (exported):
+Hakui Koyori, Sakamata Chloe and Kazama Iroha: her Hoshimatic Project; she coached Iroha at Puyo Puyo Tetris (2023). La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA and poker (2024).
+
+Dossier rows (with sources):
+| Hakui Koyori, Sakamata Chloe, Kazama Iroha | Hoshimatic Project | Her idol-group practice unit (2023–), "BEEP BEEP" (2026); she coached Iroha at Puyo Puyo Tetris (2023) | [Koyori file KO2] [Chloe file] [Iroha file IR4] |
+| La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | holoGTA and poker (2024) | [La+ file LA4] |
+
 ### AZKi
 Relationships field (exported):
-Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025).
+Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025). Hakui Koyori and Yukihana Lamy: "KoZMy" (2025), and a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata. Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024). La+ Darknesss: games (2025).
+
 Dossier rows (with sources):
 | Kazama Iroha | "AzuIro" (secondary label) | Frequent partner since 2022; their original "AZUIRO BESTIE DAYS" (2025-09-18) | [AZ2] [Official AZ10] |
+| Hakui Koyori, Yukihana Lamy | "KoZMy" | A trio formed in 2025; a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata | [Koyori file KO4] [Lamy file LM2] |
+| Sakamata Chloe (affiliate) | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [Chloe file CH4] |
+| La+ Darknesss | — | Games and an ASMR "evaluation" (2025) | [La+ file LA4] |
+
+### Nakiri Ayame
+Relationships field (exported):
+La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA and poker (2024). Takane Lui: "Onikan"; games together (2025).
+Dossier rows (with sources):
+| La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | holoGTA and poker (2024) | [La+ file LA4] |
+| Takane Lui | "Onikan" | Games together (2025) | [Lui file LU4] |
+
+### Nekomata Okayu
+Relationships field (exported):
+Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: "Shaccho"; Harry Potter watch-alongs (2025). (Pair names come from secondary references.)
+
+Dossier rows (with sources):
+| Hakui Koyori | — | A lateral-thinking puzzle collab (2025); played Okayu's game (2025) | [Koyori file KO4] |
+| La+ Darknesss | "Dorobo Kensetsu" | A 3D lie-detector challenge (2026) | [La+ file LA2, LA4] |
+| Takane Lui | "Shaccho" | Harry Potter watch-alongs (2025); predictions before a 2026 Nintendo Direct | [Lui file LU4] |
 

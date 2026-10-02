@@ -227,6 +227,7 @@ Public exchanges only.
 | FUWAMOCO | — | Touhou off-collab (2024-04-30); Mario Party with Nerissa (2024); watched her solo concert (2024); danced to "Chatter Chatter" (2026) | [MA5] |
 | Nerissa Ravencroft | — | Mario Party Superstars off-collab with FUWAMOCO (2024); a dance short to her song | [MA5] |
 | Elizabeth Rose Bloodflame | — | Sang "IT'S LOVE" with her and Korone for Elizabeth's 2026 birthday | [MA5] |
+| Nakiri Ayame | 2nd-gen senior | Secondary accounts say Ayame admires her | [Ayame file, secondary] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: past 4 million subscribers, a hololive Fantasy concert, a duet
@@ -302,7 +303,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Marine wants a real pirate ship to sail with her crew in search of treasure, and in the end to find that the treasure was the journey and the friends. As a streamer and idol she wants to entertain everyone, keep singing and growing, and look after hololive's juniors.
 
 ## [SW] Relationships
-Shirogane Noel: hololive Fantasy and "Onee-san Gumi" with Shiranui Flare; Bara☆Dice, Yakamashi Musume. Hoshimachi Suisei: "Chatter Chatter" (2026). Yukihana Lamy: Yakamashi Musume, holoWitches. Kikirara Vivi: "MVP" with Usada Pekora. Hakui Koyori: the "pink-haired pair." La+ Darknesss: "#MariLa+" (2025). Takane Lui: "SSS." Sakamata Chloe (affiliate): UMISEA, holoWitches. Kazama Iroha: Bara☆Dice. Nekomata Okayu: HoLOGSS, MOMAS. Takanashi Kiara: her first HOLOTALK guest (2020); dance shorts. Mori Calliope: English lesson #01 (2022), Mario Kart, a house-party off-collab (2023). Hakos Baelz: Mario Kart and the house party; played Marine's horror game with Mumei. Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; "SHINKIRO" with Gura. FUWAMOCO: a Touhou off-collab and Mario Party with Nerissa (2024). Nerissa Ravencroft: that Mario Party off-collab. Elizabeth Rose Bloodflame: "IT'S LOVE" for her 2026 birthday.
+Shirogane Noel: hololive Fantasy and "Onee-san Gumi" with Shiranui Flare; Bara☆Dice, Yakamashi Musume. Hoshimachi Suisei: "Chatter Chatter" (2026). Yukihana Lamy: Yakamashi Musume, holoWitches. Kikirara Vivi: "MVP" with Usada Pekora. Hakui Koyori: the "pink-haired pair." La+ Darknesss: "#MariLa+" (2025). Takane Lui: "SSS." Sakamata Chloe (affiliate): UMISEA, holoWitches. Kazama Iroha: Bara☆Dice. Nekomata Okayu: HoLOGSS, MOMAS. Takanashi Kiara: her first HOLOTALK guest (2020); dance shorts. Mori Calliope: English lesson #01 (2022), Mario Kart, a house-party off-collab (2023). Hakos Baelz: Mario Kart and the house party; played Marine's horror game with Mumei. Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; "SHINKIRO" with Gura. FUWAMOCO: a Touhou off-collab and Mario Party with Nerissa (2024). Nerissa Ravencroft: that Mario Party off-collab. Elizabeth Rose Bloodflame: "IT'S LOVE" for her 2026 birthday. Nakiri Ayame: a second-generation senior who, by secondary accounts, admires her.
 
 ## [SW] Secrets
 (none)
@@ -581,6 +582,7 @@ Public exchanges only.
 | Mori Calliope | — | HOLOYOI #02 with Flare (2023) | [NO5] |
 | FUWAMOCO, Hakos Baelz | — | "Yuru Holo" team Mario Kart (2023); FUWAMOCO danced to "Très Bien Night" (2025) | [NO5] |
 | Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [NO5] |
+| Ceres Fauna (graduated) | EN kouhai | Named her as a JP senior she admires and wanted to collab with | [Fauna file, secondary] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: past 2 million subscribers, a hololive Fantasy concert and a
@@ -656,7 +658,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Noel came to the VTuber world to train and grow stronger. As a streamer she wants to have fun with her knights and her friends, keep improving as a singer and keep Flare close.
 
 ## [SW] Relationships
-Houshou Marine: hololive Fantasy, "Onee-san Gumi" with Shiranui Flare and "Yakamashi Musume"; 3rd-gen R.E.P.O. (2025). Yukihana Lamy: "Yakamashi Musume" with Inugami Korone and Marine; drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an earphone sponsorship collab (2025). Hakui Koyori: "NoeKoyo" baseball (2025) and Blue Journey (2023). Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "Très Bien Night" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025). Shiranui Flare: her partner ("NoeFure").
+Houshou Marine: hololive Fantasy, "Onee-san Gumi" with Shiranui Flare and "Yakamashi Musume"; 3rd-gen R.E.P.O. (2025). Yukihana Lamy: "Yakamashi Musume" with Inugami Korone and Marine; drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an earphone sponsorship collab (2025). Hakui Koyori: "NoeKoyo" baseball (2025) and Blue Journey (2023). Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "Très Bien Night" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025). Shiranui Flare: her partner ("NoeFure"). Ceres Fauna (graduated 2025): an EN kouhai who, by secondary accounts, admired her and hoped to collab.
 
 ## [SW] Secrets
 (none)
@@ -1007,7 +1009,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Lamy left her snowy home to bring the smiles she found in hololive's streams to others. As a streamer she wants to take on every challenge, give hololive a boost, stand on stage with her senpai and keep her Yukimin company.
 
 ## [SW] Relationships
-Shishiro Botan: 5th-gen genmate and NePoLaBo partner; horror runs where Lamy panics and Botan enjoys it. AZKi: "KALAZ" with Amane Kanata and "KoZMy" with Hakui Koyori. Hakui Koyori: KoZMy (2025) and a 2026 off-collab to name their duo. Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone, and Blue Journey; Marine is also in holoWitches. La+ Darknesss, Takane Lui and Kazama Iroha: NePoX, NePoLaBo × holoX events. Ninomae Ina'nis: Minecraft festivals and a server "date" (2021), and a guest at Ina's 3D live "Pleides" (2024).
+Shishiro Botan: 5th-gen genmate and NePoLaBo partner; horror runs where Lamy panics and Botan enjoys it. AZKi: "KALAZ" with Amane Kanata and "KoZMy" with Hakui Koyori. Hakui Koyori: KoZMy (2025) and a 2026 off-collab to name their duo. Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone, and Blue Journey; Marine is also in holoWitches. La+ Darknesss, Takane Lui and Kazama Iroha: NePoX, NePoLaBo × holoX events. Ninomae Ina'nis: Minecraft festivals and a server "date" (2021), and a guest at Ina's 3D live "Pleides" (2024). Sakamata Chloe (affiliate): Rust with Amane Kanata (2022).
 
 ## [SW] Secrets
 (none)

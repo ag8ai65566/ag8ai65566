@@ -949,7 +949,7 @@ Crimson twintails under a gold-trimmed pirate hat; silver hair over black knight
 1. Lamy's EN ties in the archive are all with Ina; keep her section short?
 
 
-## Lines about Marine, Noel, Lamy, Botan and Vivi on the other cast cards (2026-10-02; promoted ahead of this review)
+## Lines about Marine, Noel, Lamy, Botan and Vivi on the other cast cards (2026-10-02; part promoted ahead of this review, all confirmed by it)
 
 ### Mori Calliope
 Relationships field (exported):
@@ -975,8 +975,12 @@ Dossier rows (with sources):
 | Yukihana Lamy, Shishiro Botan, Kikirara Vivi, Shirogane Noel | JP members | Lamy: the Minecraft "Usaken Summer Festival" (2021-06-27), an EN-server "date" (2021-10-20) and a guest at "Pleides" (2024-12-28); Botan: a guest at "EVERMORE" (2025-05-21); Vivi: R.E.P.O. (2025-06-02); Noel and Vivi: Mumei's Gartic Phone (2025-04-14) | [S1 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ, I-J11Da5ONY, grBU9Dl09Ds, OMDzBQohAf8] |
 
 ### Gawr Gura
+Relationships field (exported):
+Houshou Marine: UMISEA and "SHINKIRO" ("GuraMarine"); Sakamata Chloe joined UMISEA later, per the wiki. Shishiro Botan: "Apex Predators," a secondary pair name.
+
 Dossier rows (with sources):
 | La+ Darknesss, Kazama Iroha, Shishiro Botan | JP members | HOLO ENGLISH LESSON #02 with La+ and Iroha (Calli's stream, 2022-03-04); "Apex Predators," a wiki-listed pair name with Botan | [S1 X492n37brRU] [Botan file, secondary] |
+| Houshou Marine, Sakamata Chloe | UMISEA | "SHINKIRO" with Marine ("GuraMarine"); Chloe joined the unit later per the wiki | [Marine file MA2, MA5] [Chloe file CH2, secondary] |
 
 ### IRyS
 Relationships field (exported):
@@ -1004,10 +1008,11 @@ Dossier rows (with sources):
 
 ### Nanashi Mumei
 Relationships field (exported):
-Shirogane Noel and Kikirara Vivi: her Gartic Phone EN + ID + JP collab (2025).
+Shirogane Noel and Kikirara Vivi: her Gartic Phone EN + ID + JP collab (2025). Houshou Marine: Mumei played Marine's horror game with Bae (2023).
 
 Dossier rows (with sources):
 | Sakamata Chloe, Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Chloe and Lui on Mumei's EN-server Minecraft tour with Bae (2022-02-12); Marine's horror game with Bae (2023-08-23); Noel and Vivi in Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 50tBPC5c2zM, RY1GkF4jMls, OMDzBQohAf8] |
+| Houshou Marine | — | Played Marine's horror game with Bae (2023) | [Marine file MA5] |
 
 ### Koseki Bijou
 Relationships field (exported):
@@ -1026,35 +1031,52 @@ Dossier rows (with sources):
 
 ### Mococo Abyssgard
 Relationships field (exported):
-Houshou Marine: a Touhou off-collab and Mario Party with Nerissa (2024). Kikirara Vivi: #holoREPO (2025).
+Houshou Marine: a Touhou off-collab and Mario Party with Nerissa (2024). Kikirara Vivi: #holoREPO (2025). Shirogane Noel: a team Mario Kart event (2023).
 
 Dossier rows (with sources):
 | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
+| Shirogane Noel | — | "Yuru Holo" team Mario Kart with Bae (2023) | [Noel file NO5] |
 
 ### Elizabeth Rose Bloodflame
 Relationships field (exported):
-Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests: FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine and Korone.
+Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests: FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine and Korone. Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025).
 
 Dossier rows (with sources):
 | Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 OMDzBQohAf8] |
+| Shirogane Noel, Kikirara Vivi | — | Gartic Phone EN + ID + JP (2025) | [Noel file NO5] [Vivi file VI5] |
 
 ### Hakos Baelz
 Relationships field (exported):
-Houshou Marine: Mario Kart, a house party and Marine's horror game. Kikirara Vivi: #holoREPO (2025).
+Houshou Marine: Mario Kart, a house party and Marine's horror game. Kikirara Vivi: #holoREPO (2025). Shirogane Noel: a team Mario Kart event with FUWAMOCO (2023). Shishiro Botan: BAE-GEMITE DOMINATION #2 with Oozora Subaru (2023).
 
 Dossier rows (with sources):
 | Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25) | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] |
+| Shirogane Noel, Shishiro Botan | — | "Yuru Holo" team Mario Kart with FUWAMOCO (Noel, 2023); BAE-GEMITE DOMINATION #2 with Oozora Subaru (Botan, 2023) | [Noel file NO5] [Botan file BO5] |
 
 ### Hoshimachi Suisei
+Relationships field (exported):
+Houshou Marine: "Chatter Chatter" (2026). Shirogane Noel: a fellow Shiranui Kensetsu member. La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA and poker (2024).
+
 Dossier rows (with sources):
 | Shiranui Flare, Omaru Polka, Miko, Shirogane Noel | "Shiranui Kensetsu" | Suisei is its PR director; R.E.P.O. "work shift" (2026) | [SU2] [SU4] |
+| Houshou Marine | "Chatter Chatter" (2026); holoALICE, MOMAS | A duet with an original anime MV | [Marine file MA4] |
+| Shirogane Noel | Shiranui Kensetsu | The Minecraft construction company with Flare, Polka and Miko | [Noel file NO2, secondary] |
+| La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | holoGTA and poker (2024) | [La+ file LA4] |
+
+### AZKi
+Relationships field (exported):
+Hakui Koyori and Yukihana Lamy: "KoZMy" (2025), and a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata.
+Dossier rows (with sources):
+| Hakui Koyori, Yukihana Lamy | "KoZMy" | A trio formed in 2025; a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata | [Koyori file KO4] [Lamy file LM2] |
 
 ### Nakiri Ayame
 Relationships field (exported):
-Houshou Marine: a third-generation junior whom secondary accounts say Ayame admires. (Pair and unit names other than official song credits come from secondary references.)
+Houshou Marine: a third-generation junior whom secondary accounts say Ayame admires. La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA and poker (2024). Shirogane Noel: an earphone collab (2025). (Pair and unit names other than official song credits come from secondary references.)
 
 Dossier rows (with sources):
 | Houshou Marine | a 3rd-generation junior she admires (secondary) | — | [AY2, secondary] |
+| La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | holoGTA and poker (2024) | [La+ file LA4] |
+| Shirogane Noel | — | An Audio-Technica earphone collab (2025) | [Noel file NO4] |
 
 ### Nekomata Okayu
 Relationships field (exported):
