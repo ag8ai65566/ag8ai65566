@@ -968,7 +968,7 @@ A tiny horned founder with silver hair, oversized sleeves and shackles, a crow b
 
 ### Mori Calliope
 Relationships field (exported):
-Marine, Noel, Botan and holoX (La+, Lui, Chloe, Iroha): her English-lesson and HOLOYOI guests (2022–2023).
+Marine, Noel, Botan, AZKi and holoX (La+, Lui, Chloe, Iroha): her English-lesson and HOLOYOI guests (2022–2023).
 
 Dossier rows (with sources):
 | Secret Society holoX (La+, Lui, Chloe, Iroha) | JP kouhai | English practice with Lui (2021-12-27); HOLO ENGLISH LESSON #02 with La+, Iroha and Gura (2022-03-04) and #04 with Lui and Chloe (2022-04-16); HOLOYOI #01 with Lui and Chloe (2023-03-23); dance shorts to Lui's songs | [S1 X492n37brRU, YrZ4baKOT1c, UuL_nORzfNM; world card "holoX"] |
@@ -1012,7 +1012,7 @@ Dossier rows (with sources):
 
 ### Nanashi Mumei
 Relationships field (exported):
-Takanashi Kiara: fellow bird of HOLOTORI, who calls her "Moomsies"; they sang a DECO*27 song together at the 4th fes. (2023), and Kiara hosted Mumei as HOLOTALK's 33rd guest on 2025-04-22. JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft. Sakamata Chloe: Mumei's EN-server Minecraft tour with Lui and Bae (2022).
+Takanashi Kiara: fellow bird of HOLOTORI, who calls her "Moomsies"; they sang a DECO*27 song together at the 4th fes. (2023), and Kiara hosted Mumei as HOLOTALK's 33rd guest on 2025-04-22. JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft; Nakiri Ayame: the 2023 Sports Festival white team. Sakamata Chloe: Mumei's EN-server Minecraft tour with Lui and Bae (2022).
 Dossier rows (with sources):
 | Takane Lui, Tokoyami Towa, Akai Haato | JP seniors | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
 | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP seniors | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |

@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git 200e559. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 9fd1ef3. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Moona Hoshinova
@@ -9,9 +9,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Airani Iofifteen × Gigi Murin
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Airani Iofi (ID), Pavolia Reine (ID) | "Fanfic Club" with Gigi | Monster Hunter Wilds with Iofi and Jurard (2025) | [Observed SN2; SN3] |
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Pavolia Reine and Airani Iofi (ID) with Gigi: the "Fanfic Club."
-
-### Akai Haato × Nekomata Okayu
-- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft.
 
 ### Anya Melfissa × Mori Calliope
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2024-09-15 | A pop-up Mario Party with Mori Calliope, Anya Melfissa and Hiodoshi Ao (archived metadata) | [OK4 WnKCmQ2iXww] |
@@ -174,7 +171,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Fuwawa-Abyssgard.md › Background Timeline`: | 2024-08-10 PDT | 3D debut with a wrestling segment and cameos by Okayu and Korone | [Observed FW2 §2024] |
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Nekomata Okayu: secondary accounts report her enthusiasm for FUWAMOCO and her appearance with Korone at their 3D debut; archived metadata documents the twins' 2025 watch-along of her concert.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Nekomata Okayu: secondary accounts report her enthusiasm for FUWAMOCO and her appearance with Korone at their 3D debut; archived metadata documents the twins' 2025 watch-along of her concert.
-- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft.
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: FUWAMOCO: secondary accounts report Okayu's enthusiasm for the twins and her appearance with Korone at their 3D debut (2024); archived metadata documents the twins' 2025 watch-along of her concert.
 - `bible/world/FUWAMOCO.md › History`: | 2024-08-10 PDT | 3D debut: a wrestling segment supervised by DDT Pro-Wrestling, Okayu and Korone cameos | "Lifetime Showtime" full version |
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2024-08-10 PDT | FUWAMOCO's 3D debut, Okayu and Korone cameos | FUWAMOCO–Okayu |
@@ -322,7 +318,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Ninomae Ina'nis × Ookami Mio
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with Ina and FUWAMOCO at Serendipity.
 
 ### Ninomae Ina'nis × Oozora Subaru
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Shiori Novella, Oozora Subaru (JP) | Advent senior; JP senior | "Neko Kaburi-Na" with Ina at -All for One- (2025) | [Official RP5] |

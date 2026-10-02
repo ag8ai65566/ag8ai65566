@@ -11,3 +11,6 @@
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 a3e8c2f37f97）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 - 2026-10-02 07:49 作者裁決收錄 final.md（sha256 3db5c9167a2c）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (span candidates resolved for the voice audit; no stitched or first-model-only words)
 - 2026-10-02 07:49 作者裁決收錄 final.md（sha256 55a92f4a3659）：Author decision (2026-10-02): quotation span notes recorded in the Merge Record
+- 2026-10-02 08:24 作者裁決收錄 final.md（sha256 868f481032dc）：Author decision (2026-10-02): relationship-web coverage, reciprocal ties on cards at the length limit (clauses tightened, no facts removed except the bento aside kept in IRyS's timeline)
+- 2026-10-02 08:25 作者裁決收錄 final.md（sha256 7d848de30333）：Author decision (2026-10-02): relationship-web coverage (AZKi named back; clauses tightened)
+- 2026-10-02 08:25 作者裁決收錄 final.md（sha256 05478a75823f）：Author decision (2026-10-02): relationship-web coverage (length trim)

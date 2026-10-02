@@ -953,7 +953,7 @@ Crimson twintails under a gold-trimmed pirate hat; silver hair over black knight
 
 ### Mori Calliope
 Relationships field (exported):
-Marine, Noel, Botan and holoX (La+, Lui, Chloe, Iroha): her English-lesson and HOLOYOI guests (2022–2023).
+Marine, Noel, Botan, AZKi and holoX (La+, Lui, Chloe, Iroha): her English-lesson and HOLOYOI guests (2022–2023).
 
 Dossier rows (with sources):
 | Houshou Marine, Shirogane Noel, Shishiro Botan | JP seniors | HOLO ENGLISH LESSON #01 with Marine, Ina and Fubuki (2022-02-19); Mario Kart with Marine, Bae and Reine (2021-12-25); a house-party off-collab with Marine and Bae and a playthrough of Marine's horror game (2023-08-14); HOLOYOI #02 with Noel and Flare (2023-04-20) and #03 with Botan and Subaru (2023-05-18) | [S1 bfUEbp3xk4o, Tpzbfccp_ZM, DY5VThfehW8, Mf-sAjsuSig, wyrLR1CC1Co, EatMZc1N3VM] |
@@ -968,8 +968,7 @@ Dossier rows (with sources):
 
 ### Ninomae Inanis
 Relationships field (exported):
-Houshou Marine: a senior artist she admires. Yukihana Lamy: Minecraft festivals and a server "date" (2021), a guest at "Pleides" (2024). Shishiro Botan: a guest at "EVERMORE" (2025). Kikirara Vivi: R.E.P.O. (2025).
-
+Houshou Marine: a senior artist she admires. Yukihana Lamy: Minecraft festivals and a server "date" (2021) and a "Pleides" guest (2024). Shishiro Botan: an "EVERMORE" guest (2025). Kikirara Vivi: R.E.P.O. (2025).
 Dossier rows (with sources):
 | Houshou Marine | JP senior | Admired artist-performer ("Marine-senpai") | [Observed—published interview I18] |
 | Yukihana Lamy, Shishiro Botan, Kikirara Vivi, Shirogane Noel | JP members | Lamy: the Minecraft "Usaken Summer Festival" (2021-06-27), an EN-server "date" (2021-10-20) and a guest at "Pleides" (2024-12-28); Botan: a guest at "EVERMORE" (2025-05-21); Vivi: R.E.P.O. (2025-06-02); Noel and Vivi: Mumei's Gartic Phone (2025-04-14) | [S1 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ, I-J11Da5ONY, grBU9Dl09Ds, OMDzBQohAf8] |
@@ -1008,7 +1007,7 @@ Dossier rows (with sources):
 
 ### Nanashi Mumei
 Relationships field (exported):
-Shirogane Noel and Kikirara Vivi: her Gartic Phone EN + ID + JP collab (2025). Houshou Marine: Mumei played Marine's horror game with Bae (2023).
+Shirogane Noel, Kikirara Vivi and Elizabeth Rose Bloodflame: her Gartic Phone EN + ID + JP collab (2025). Houshou Marine: Marine's horror game, played with Bae (2023).
 Dossier rows (with sources):
 | Sakamata Chloe, Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Chloe and Lui on Mumei's EN-server Minecraft tour with Bae (2022-02-12); Marine's horror game with Bae (2023-08-23); Noel and Vivi in Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 50tBPC5c2zM, RY1GkF4jMls, OMDzBQohAf8] |
 | Houshou Marine | — | Played Marine's horror game with Bae (2023) | [Marine file MA5] |

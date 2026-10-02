@@ -5,21 +5,21 @@ column's member. One-way ties are listed below: a coverage question, not automat
 
 | | Calli | Kiara | Ina | Gura | Ame | Kronii | IRyS | Fauna | Mumei | Bae | Shiori | Bijou | Nerissa | Fuwawa | Mococo | Elizabeth | Gigi | Cecilia | Raora | Suisei | AZKi | Ayame | Okayu |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| **Calli** | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  |  | ✓ |
-| **Kiara** | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| **Ina** | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ |  |  |  | ✓ |
+| **Calli** | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |
+| **Kiara** | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Ina** | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 | **Gura** | ✓ | ✓ | ✓ | — | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |  | ✓ |  |  |  |  | ✓ | ✓ | ✓ |  |  |  |
-| **Ame** | ✓ | ✓ | ✓ | ✓ | — | ✓ |  |  | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  | ✓ | ✓ |  |  |  | ✓ |  |
-| **Kronii** | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  |  |  |
-| **IRyS** | ✓ | ✓ | ✓ |  |  | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  |  |
+| **Ame** | ✓ | ✓ | ✓ | ✓ | — | ✓ |  |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  |  |  | ✓ |  |
+| **Kronii** | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |  |  |
+| **IRyS** | ✓ | ✓ | ✓ |  |  | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |
 | **Fauna** |  | ✓ |  | ✓ |  | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  |  |  |  |  |
-| **Mumei** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |
+| **Mumei** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |
 | **Bae** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |
 | **Shiori** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  |  |  |
 | **Bijou** | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |  |  |  |
 | **Nerissa** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |  |
-| **Fuwawa** | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |
-| **Mococo** | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |
+| **Fuwawa** | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Mococo** | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
 | **Elizabeth** | ✓ | ✓ |  |  |  | ✓ | ✓ |  | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ |  | ✓ |  |  |
 | **Gigi** | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |  |  |  | ✓ |
 | **Cecilia** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |  | ✓ | ✓ |
@@ -29,21 +29,6 @@ column's member. One-way ties are listed below: a coverage question, not automat
 | **Ayame** |  | ✓ | ✓ |  | ✓ |  | ✓ |  | ✓ |  |  |  | ✓ | ✓ | ✓ |  |  | ✓ |  | ✓ | ✓ | — | ✓ |
 | **Okayu** | ✓ | ✓ | ✓ |  |  |  | ✓ |  | ✓ | ✓ |  |  |  | ✓ | ✓ |  | ✓ | ✓ |  | ✓ |  | ✓ | — |
 
-## One-way ties (16)
+## One-way ties (1)
 
-- AZKi names Mori Calliope; Mori Calliope's Relationships does not name AZKi.
-- AZKi names Ninomae Ina'nis; Ninomae Ina'nis's Relationships does not name AZKi.
-- AZKi names Ouro Kronii; Ouro Kronii's Relationships does not name AZKi.
-- Cecilia Immergreen names Mori Calliope; Mori Calliope's Relationships does not name Cecilia Immergreen.
-- Elizabeth Rose Bloodflame names Nanashi Mumei; Nanashi Mumei's Relationships does not name Elizabeth Rose Bloodflame.
-- Elizabeth Rose Bloodflame names Takanashi Kiara; Takanashi Kiara's Relationships does not name Elizabeth Rose Bloodflame.
-- Hoshimachi Suisei names Ninomae Ina'nis; Ninomae Ina'nis's Relationships does not name Hoshimachi Suisei.
-- Nakiri Ayame names Fuwawa Abyssgard; Fuwawa Abyssgard's Relationships does not name Nakiri Ayame.
-- Nakiri Ayame names IRyS; IRyS's Relationships does not name Nakiri Ayame.
-- Nakiri Ayame names Mococo Abyssgard; Mococo Abyssgard's Relationships does not name Nakiri Ayame.
-- Nakiri Ayame names Nanashi Mumei; Nanashi Mumei's Relationships does not name Nakiri Ayame.
-- Nakiri Ayame names Ninomae Ina'nis; Ninomae Ina'nis's Relationships does not name Nakiri Ayame.
-- Nekomata Okayu names IRyS; IRyS's Relationships does not name Nekomata Okayu.
-- Nerissa Ravencroft names Watson Amelia; Watson Amelia's Relationships does not name Nerissa Ravencroft.
 - Raora Panthera names IRyS; IRyS's Relationships does not name Raora Panthera.
-- Raora Panthera names Mori Calliope; Mori Calliope's Relationships does not name Raora Panthera.

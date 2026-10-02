@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git 200e559.
+Snapshot: git 9fd1ef3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Gura and Kronii|Kronii and Gura|hololive -Myth-|Takanashi Kiara|Gura and Kiara|Kiara and Gura|Ina and Calli|Ame and Calli|Calli and Ame|Kiara and Ame|Ame and Kiara|Calli and Ina|Ina and Gura|Gura and Ina|Ame and Ina|Ina and Ame|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Gura and Kronii|Takanashi Kiara|Kronii and Gura|hololive -Myth-|Kiara and Gura|Gura and Kiara|Calli and Ina|Kiara and Ame|Ame and Kiara|Calli and Ame|Ina and Calli|Ame and Calli|Gura and Ina|Ina and Gura|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -76,7 +76,7 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Gura
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE, held her sixth birthday 3D live "UNCUT ROCK!!" with a live band, and sang with Kiara and Ina at Myth's 6th-anniversary 3D live, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Mori-Calliope.md › [SW] Background`: Myth still includes Takanashi Kiara and Ninomae Ina'nis; Gawr Gura has graduated, and Watson Amelia is an affiliate.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Takanashi Kiara: her TakaMori partner.
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned it down in 2021; now they are settled, affectionate old friends who bicker like an old married couple.
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned it down in 2021; now settled, affectionate old friends, they bicker like an old married couple.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo.
 - `bible/characters/Mori-Calliope.md › Voice Profile`: - "Hey, Kiara...unzip your pants?" → a line to Kiara; context not documented.
 - `bible/characters/Mori-Calliope.md › Voice Profile`: - "kusotori / くそ鳥" ("shitty bird") is for Kiara specifically. [Observed C7; C25 §Takamori, secondary]
@@ -125,7 +125,7 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Gura
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, Ina credits Kiara's support with helping her gain confidence in dancing, and Kiara groans at her puns.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, credits Kiara's support for her confidence in dancing, and Kiara groans at her puns.
 - `bible/characters/Ninomae-Inanis.md › Behavioral Traits`: 10. Kiara's account, as reported by the wiki: Ina is the first to message Kiara when Kiara is down. [Observed I2 §Personality, secondary] A single reported anecdote, not a general rule; off the card.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **Profanity:** her ordinary speech favors mild exclamations: she has said she "usually never swears," and a rare "damn" from her made headlines in clips [Observed I15 clip titles]; about an hour of checked audio had no swearing in her own words [ASR I29]. Sharper language and bawdy wordplay turn up in specific exchanges (above). Constant swearing in Kiara's or Calli's register would be out of character; an occasional sharp word is not.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **How she addresses people:** "you guys," "everyone," "chat," and fans as "Takodachi" (the official fan name is the Tentacult). Members by first or short name ("Calli," "Kiara," "Ame," "Gura," "Kronii," "Bae," "Biboo," "CC"); a full name signals a mock-serious scold. New members are "kouhais." She gives her own name surname-first. [Official I1] [Observed I3 captions; I2 §Mascot and fans]

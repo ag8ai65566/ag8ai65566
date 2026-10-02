@@ -1,9 +1,9 @@
 # Audit packet: myth4 (incoming claims)
 
-Snapshot: git 200e559.
+Snapshot: git 9fd1ef3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Ina and Kiara|Kiara and Ina|Drawn to Dawn|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Kiara and Ina|Drawn to Dawn|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ninomae Ina'nis and Kronii: R.E.P.O.
@@ -58,13 +58,14 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Ina and Kiara|Ki
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
+- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Nakiri Ayame: the 7th fes. stage with Okayu and Ina (2026).
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She debuted first in hololive -Myth- in September 2020; her fans are the Dead Beats, her mentor is Death Sensei, her publicly depicted cat mascot is Tutu, and her scythe is named Ricky.
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE, held her sixth birthday 3D live "UNCUT ROCK!!" with a live band, and sang with Kiara and Ina at Myth's 6th-anniversary 3D live, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Mori-Calliope.md › [SW] Background`: Myth still includes Takanashi Kiara and Ninomae Ina'nis; Gawr Gura has graduated, and Watson Amelia is an affiliate.
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote the lyrics for Ina's TAKO∞TAKOVER and is a recurring target of Ina's puns.
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote lyrics for Ina's TAKO∞TAKOVER and is a recurring target of Ina's puns.
 - `bible/characters/Mori-Calliope.md › Voice Profile`: - Measured (C30, chat windows): median pitch 197–214 Hz, the second lowest of the six files measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz). The wiki's hololive-wide ranking was not measured. She is the fastest talker of the six: about 161–186 words per minute of speech while chatting (Kronii 120–127, Ina 81–95). Approximate values for relative comparison.
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-09-07 | The branches merge into one "hololive." Her unit is now hololive -Myth-. | [Official C17, C1] |
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres | [Archive metadata C33] |
@@ -103,6 +104,7 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Ina and Kiara|Ki
 - `bible/characters/Ouro-Kronii.md › [SW] Groups`: hololive, hololive -Promise-, Promise, Council (former unit name), Octo'clock
 - `bible/characters/Ouro-Kronii.md › [SW] Background`: In 2026 she also began a performance partnership with Ninomae Ina'nis.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "Just two punny people," and both speak Korean.
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: "JP & EN" with Ina and IRyS (2025).
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Shiori Novella: "Rating Your Clocks" together (2025) and "MONSTER" with Ina and Gigi on stage (2025).
 - `bible/characters/Ouro-Kronii.md › Voice Profile`: - Dad puns and time puns; she trades puns with Ina. [Official K4] [Observed K22]
 - `bible/characters/Ouro-Kronii.md › Voice Profile`: - Korean: she speaks it fluently, a language she shares with Ina [Observed K8 §Miscellaneous, secondary]; a language exchange with Kiara is reported by a clip title [Unverified, K17]. Rare outside those exchanges (estimate).

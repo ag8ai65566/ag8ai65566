@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git 200e559.
+Snapshot: git 9fd1ef3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|FiddleFlame|holoJustice|Erby Berby|TimeChaser|Autofister|Immerhater|Gigi Murin|Bloodraven|Da Fister|Elizabeth|Raviolin|Gi Murin|Justice|Cecilia|Lizzie|G Pain|GeeGee|HoloEU|Raora|B.F.F|CCGG|Rara|RPGG|Ceci|LYRA|Gigi|Cece|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|holoJustice|FiddleFlame|Grem Reaper|TimeChaser|Erby Berby|Gigi Murin|Autofister|Bloodraven|Immerhater|Elizabeth|Da Fister|Raviolin|Gi Murin|Justice|Cecilia|GeeGee|G Pain|Lizzie|HoloEU|Raora|B.F.F|CCGG|Cece|Gigi|Ceci|LYRA|Rara|RPGG|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -23,7 +23,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Mori Calliope: "2 Creatures + 1 Reaper," defusing bombs (2026).
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity.
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA."
-- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Hakos Baelz: Gigi's 2025 Spring Party with FUWAMOCO and Bae; FUWAMOCO danced to "bae-senpai's new song SNAKE EYES"
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Hakos Baelz: Gigi's 2025 Spring Party; FUWAMOCO danced to "bae-senpai's new song SNAKE EYES"
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: IRyS, Gigi and Kronii: "Bright Tonight"
 - `bible/characters/Fuwawa-Abyssgard.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Mococo and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) | [Official FW4; Serendipity report] |
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Gigi Murin, Mori Calliope | Kouhai and senior | "2 Creatures + 1 Reaper," a rare bomb-defusing collab (2026-09) | [Observed FUWAMOCO X post via wiki, FW6] |
@@ -88,7 +88,8 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Hakos Baelz | Promise senior | Archived metadata: Gigi's 2025 Spring Party with FUWAMOCO and Bae (2025-03-31); a FUWAMOCO short dancing to "bae-senpai's new song SNAKE EYES" (2026-03-20) | [Bae file HB3, HB5, HB8, HB20] |
 
 ### from Mori Calliope
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Gigi Murin ("Grem Reaper," a shared title): horror and job-simulator collabs; Calli came to like her own name once Gigi kept using it.
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Gigi Murin ("Grem Reaper," a shared title): horror, job-simulator and, with Raora Panthera, Elden Ring Nightreign collabs; Calli came to like her own name once Gigi kept using it.
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Cecilia Immergreen: "Cloudy Sheep" at Serendipity.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Elizabeth, Koganei Niko, Ayunda Risu and Amane Kanata: fellow LYRA vocalists ("III").
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Gigi Murin | Frequent collaborator ("Grem Reaper," fan term) | Per the wiki, Calli only came to like how her own name sounds once Gigi started saying it. [Unverified, title only: Gigi ragebaiting and teasing her] | [Observed C4 §Relationships and §Name, secondary; C21-wug0DWFeDXM clip title] |
 
@@ -102,6 +103,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Gigi Murin: Echo Point Nova as "A Towl and a Gremlin."
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Cecilia Immergreen: Halo co-op ("Automatowl").
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Raora Panthera: a joint drawing stream (2025).
+- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Shirogane Noel, Kikirara Vivi and Elizabeth Rose Bloodflame: her Gartic Phone EN + ID + JP collab (2025).
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Gigi Murin | Justice kouhai | Echo Point Nova as "A Towl and a Gremlin" (2024-10-15, QA7OA1ew5HI) | [Observed M3] |
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai ("Automatowl"; calls her "Myumyei") | Joined, with Gigi, Mumei's alphabet tier list (2025) | [Observed M2; M3] |
 
@@ -124,9 +126,9 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |
 
 ### from Ninomae Ina'nis
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shiori Novella: a "Rate Your Fears" nightmare talk (2024) and "MONSTER" with Kronii and Gigi at the 2025 English concert.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: FUWAMOCO: "SHALLYS" with Cecilia at the same concert.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry with Ina.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025).
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: FUWAMOCO: "SHALLYS" with Cecilia on the same stage.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025).
 
 ### from Ouro Kronii
@@ -155,6 +157,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Raora Panthera and Cecilia Immergreen: "HoloEU"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gigi Murin: Reanimal ("Ultra Orange").
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Elizabeth Rose Bloodflame: Kiara calls her "Erby Berby."
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "Doom? DOOM? What do you mean, Doom?" → Raora's "Doom" (2025-11-16), now a callback she reacts to with mock trauma. [Observed T2 §Quotes, secondary; T6; T5-jwGiJnsdQn0 clip title]
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2025-11-16 | Raora's "Doom" on her stream becomes a meme | [Observed T6] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Raora Panthera | Justice member | The "Doom" incident | [Observed T2 §Quotes; T6] |

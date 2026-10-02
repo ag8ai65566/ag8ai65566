@@ -1,6 +1,6 @@
 # Audit packet: jp
 
-Snapshot: git 200e559. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 9fd1ef3. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
@@ -170,7 +170,7 @@ Owned files (sha256): `bible/characters/Hoshimachi-Suisei.md` edb3ed903aea; `bib
   STAGE 4 Suisei (with Calli, Kronii, Bijou, Nerissa).
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azu-chan|Azukichi|TakoNeko|Sui-chan|Okanyan|AZKichi|AzuAzu|Yo-san|FWMCAZ|Suisei|AS_tar|Okayun|Okayu|Ayame|Ojou|AZKi|AZAZ)(
+Matched names: Ki and FUWAMOCO|Virtual Diva AZKi|Hoshimachi Suisei|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azukichi|Azu-chan|TakoNeko|Sui-chan|AZKichi|Okanyan|Yo-san|AzuAzu|FWMCAZ|Okayun|AS_tar|Suisei|Okayu|Ayame|AZKi|Ojou|AZAZ)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
@@ -184,6 +184,7 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: AZKi: a FUWAMOCO-themed GeoGuessr collaboration ("FWMCAZ"); secondary records also document a singing stream with Minato Aqua and the twins' guest appearance at her 2025 birthday live.
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Nekomata Okayu: secondary accounts report her enthusiasm for FUWAMOCO and her appearance with Korone at their 3D debut; archived metadata documents the twins' 2025 watch-along of her concert.
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Hoshimachi Suisei: Puyo Puyo coaching (2026).
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Nakiri Ayame: the 7th fes. stage (2026).
 - `bible/characters/Fuwawa-Abyssgard.md › Background Timeline`: | 2024-08-10 PDT | 3D debut with a wrestling segment and cameos by Okayu and Korone | [Observed FW2 §2024] |
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
 
@@ -203,6 +204,7 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Hoshimachi Suisei, AZKi, Nekomata Okayu | JP seniors | "High Tide" with Suisei, IRyS and Moona (2024) and a "Moonlight" dance cover (2025); GeoGuessr with AZKi (2023); team kart events with Okayu (2023, 2024) | [Suisei file SU8, S1] [AZKi file AZ5] [Okayu file OK4] |
 
 ### from IRyS
+- `bible/characters/IRyS.md › [SW] Relationships`: Nekomata Okayu and Nakiri Ayame: Okayu's 2025 New Year Game Festival team.
 - `bible/characters/IRyS.md › [SW] Relationships`: Hoshimachi Suisei and AZKi: with Moona Hoshinova, the unit Star Flower ("story time," 2022); Suisei also performed "High Tide" with her, Bae and Moona at Breaking Dimensions (2024).
 - `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise genmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
 
@@ -214,15 +216,17 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: AZKi: a FUWAMOCO-themed GeoGuessr collaboration ("FWMCAZ"); secondary records also document a singing stream with Minato Aqua and the twins' guest appearance at her 2025 birthday live.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Nekomata Okayu: secondary accounts report her enthusiasm for FUWAMOCO and her appearance with Korone at their 3D debut; archived metadata documents the twins' 2025 watch-along of her concert.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Hoshimachi Suisei: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026).
+- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Nakiri Ayame: the 7th fes. stage with Okayu and Ina (2026).
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
 
 ### from Mori Calliope
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Hoshimachi Suisei: her collaborator on "Wicked"
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Hoshimachi Suisei: "Wicked" and, per archived uploads, "CapSule"
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Nekomata Okayu: Mario Party (2024, archived).
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Marine, Noel, Botan, AZKi and holoX (La+, Lui, Chloe, Iroha): her English-lesson and HOLOYOI guests (2022–2023).
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Hoshimachi Suisei | JP senpai ("Death Star," fan-wiki pair name, dossier only) | "CapSule" (2022-04-04, archived upload M85xU-tbQ6c) and "Wicked feat. Mori Calliope" (2022); Suisei sang "Wicked" at New Underworld Order. The fan-wiki "starstruck" reaction and a reported Suisei guest spot at "UNCUT ROCK!!" (2026-04-04) were not verified in review and stay out of exported fields. | [Observed C4 §Relationships, secondary; C21-jlzD-jHtv9Y clip title] |
 
 ### from Nanashi Mumei
-- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft.
+- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft; Nakiri Ayame: the 2023 Sports Festival white team.
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Hoshimachi Suisei: a #bibbidibachallenge short (2024).
 - `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2024-08-05 | 3D birthday live "Outside the Box"; guests Gura, IRyS, Bae, Nekomata Okayu, Inugami Korone, Momosuzu Nene, Hakui Koyori | [Observed M3 title, description] |
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP seniors | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
@@ -235,13 +239,19 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Ame | [Ayame file AY4] |
 
 ### from Ninomae Ina'nis
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Nekomata Okayu: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025).
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Hoshimachi Suisei: "BIBBIDIBA"
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Nekomata Okayu ("TakoNeko," a secondary pair name): "Kurukuru Cruise"
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: (2025) and her 2025 New Year Game Festival team, with Nakiri Ayame.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: AZKi: R.E.P.O.
+
+### from Ouro Kronii
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: AZKi: R.E.P.O.
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Archived episode records list HOLOTALK guests including Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ Darknesss ("Glow in the Dark") and Sakamata Chloe ("WILDCARD").
 
 ### from Watson Amelia
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Nakiri Ayame: a 2023 Sports Festival white-team teammate.
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Nakiri Ayame and Nerissa Ravencroft: 2023 Sports Festival white-team teammates.
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Nerissa | [Ayame file AY4] |
 
 ### from Advent Pairs

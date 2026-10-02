@@ -12,3 +12,4 @@
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 9da0b903d851）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 540a543cbaf8）：Author decision (2026-10-02): Hakos Baelz added; Calli Relationships trimmed to the 350-word limit
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 bb514a5131fd）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
+- 2026-10-02 08:24 作者裁決收錄 final.md（sha256 df7222d16f11）：Author decision (2026-10-02): relationship-web coverage, reciprocal ties on cards at the length limit (clauses tightened, no facts removed except the bento aside kept in IRyS's timeline)

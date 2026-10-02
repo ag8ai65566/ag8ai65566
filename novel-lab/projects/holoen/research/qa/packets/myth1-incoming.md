@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 200e559.
+Snapshot: git 9fd1ef3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Calliope Mori|Mori Calliope|Last Writes|Kawaiiope|Miss Mori|TakaMori|Mor Mori|Calliope|CHADCast|Takamori|CallioP|森カリオペ|Calli|Mowi|LYRA|Mori)(
+Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Cori Malliope|Calliope Mori|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|Takamori|TakaMori|CHADCast|Calliope|Mor Mori|CallioP|森カリオペ|Calli|Mori|LYRA|Mowi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -122,7 +122,7 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Calli
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **Profanity:** her ordinary speech favors mild exclamations: she has said she "usually never swears," and a rare "damn" from her made headlines in clips [Observed I15 clip titles]; about an hour of checked audio had no swearing in her own words [ASR I29]. Sharper language and bawdy wordplay turn up in specific exchanges (above). Constant swearing in Kiara's or Calli's register would be out of character; an occasional sharp word is not.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **How she addresses people:** "you guys," "everyone," "chat," and fans as "Takodachi" (the official fan name is the Tentacult). Members by first or short name ("Calli," "Kiara," "Ame," "Gura," "Kronii," "Bae," "Biboo," "CC"); a full name signals a mock-serious scold. New members are "kouhais." She gives her own name surname-first. [Official I1] [Observed I3 captions; I2 §Mascot and fans]
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - Measured (I29, 2026 chat): median pitch 223–232 Hz, in the middle of the six files measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz), so "mid" rather than "low"; about 81–95 words per minute of speech in that one 2026 chat stream (Kronii 120–127, Calli 161–186 in their chat windows). A 2021 game stream measures 210–214 Hz and 68–116 words per minute (its opening chat 116). Sample results only; they do not establish a general ranking among genmates.
@@ -159,7 +159,7 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Calli
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German.
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Mori Calliope: her TakaMori partner.
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Kiara declared a crush in 2020 and long called Calli her "wife," a public bit they toned down in 2021; now they are settled, affectionate old friends who bicker like an old married couple.
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Kiara declared a crush in 2020 and long called Calli her "wife," a public bit they toned down in 2021; now settled, affectionate old friends, they bicker like an old married couple.
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Kiara says it plainly: Calli "actually does like me a lot but is just really bad at expressing herself."
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "When I first met all of them, the one that struck me was Calli... I was like, 'Damn, she hot, what a hot-ass chick!'"
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "Calli goes to The Pink Vice, gets drunk, sees a stripper she likes… realizes the next day the stripper was me"

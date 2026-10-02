@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 200e559.
+Snapshot: git 9fd1ef3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|VTuber Persona and Lore|recent hololive history|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|SUPER EXPO|EN concert|world tour|Death Star|the merger|Holodeath|PavoNashi|aftertalk|HOLOTORI|HoloJEI|MoRikka|K.I.R.A|IRySora|3D live|soranii|UMISEA|V3LVET|KoMeHa|OKFAIR|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|world tour|EN concert|the merger|SUPER EXPO|Death Star|PavoNashi|Holodeath|aftertalk|HOLOTORI|3D live|HoloJEI|K.I.R.A|IRySora|soranii|MoRikka|V3LVET|UMISEA|KoMeHa|OKFAIR|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -139,7 +139,8 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE, held her sixth birthday 3D live "UNCUT ROCK!!" with a live band, and sang with Kiara and Ina at Myth's 6th-anniversary 3D live, which premiered the Myth song "THIS IS MYTH."
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Shiori Novella: her partner for the 2026 Serendipity concert who calls her "Mor Mori"; they chase absurd premises together, and Calli admits she is "a little obsessed with her."
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Shiori Novella: her 2026 Serendipity partner, who calls her "Mor Mori"; they chase absurd premises, and Calli admits she is "a little obsessed with her."
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Cecilia Immergreen: "Cloudy Sheep" at Serendipity.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: (MoRikka).
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Elizabeth, Koganei Niko, Ayunda Risu and Amane Kanata: fellow LYRA vocalists ("III").
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-04-04 JST | Sixth birthday 3D live "UNCUT ROCK!!" with a live band, plus a members-only encore | [Archive metadata C32] |
@@ -175,7 +176,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with Ina and FUWAMOCO at Serendipity.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity.
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-06-04 | Serendipity interview and partnership with Kronii | [Official I7] |
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Ouro Kronii | Serendipity partner (interview 2026-06-04; unit name "Octo'Clock" in a 2026-06-24 short, I30) | A pun duo; they share Korean; Ina: "I get to... keep Kronii... all to myself... hehe" | [Official I7] [Observed Kronii file K8 §Miscellaneous] |
@@ -184,7 +185,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 
 ### from Ouro Kronii
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "Just two punny people," and both speak Korean.
-- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kaela Kovalskia: a recurring cross-branch co-op partner for years (Raft, Luma Island, Old Market Simulator) and her partner at a 2024 World Tour panel.
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kaela Kovalskia: a co-op partner for years (Raft, Luma Island, Old Market Simulator) and at a 2024 World Tour panel.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii and Nerissa at Serendipity.
 - `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2026-03-13 | 3D birthday live; Watson Amelia guests; she releases the single "Way 2 U" and announces an EP of the same name | [Observed K33, secondary, stream t=1711; K38, secondary] |
@@ -218,7 +219,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH."
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Koseki Bijou: junior she encourages and her partner for the 2026 Serendipity concert ("Rocku Wawa,"
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Koseki Bijou: junior she encourages and her 2026 Serendipity partner ("Rocku Wawa,"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Pavolia Reine (ID) and Takane Lui: the bird unit HOLOTORI ("PavoNashi" with Reine).
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): a fellow bird of HOLOTORI whom she calls "Moomsies"; they sang a DECO*27 song together at the 2023 fes. and "Beyond the way" with Nerissa at the 2024 English concert.
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-06 | Serendipity interview and partnership with Koseki Bijou | [Official T10] |

@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 200e559.
+Snapshot: git 9fd1ef3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Fuwawa and Mococo|Jewel of Emotions|Mococo Abyssgard|FUWAMOCO MORNING|Fuwawa Abyssgard|Abyssgard twins|Demon of Sound|Shiori Novella|The Fluffy One|The Fuzzy One|Demon of Soup|Diamond Dogs|Koseki Bijou|Sound Hounds|The Archiver|Advent Pairs|Last Writes|FUWAMOCALLI|GreyScaleX|Rocku Wawa|Fluffy One|holoAdvent|Bloodraven|Grindstone|JewelBird|Adventrix|Goth Rock|Moco-chan|ShioRaven|Fuwa-chan|Mogojyan|Fuwa-nee|FUWAMOCO|Pen Pups|The Cell|Lil'Rock|Shiori~n|Shiorin|Nerissa|Beejoe|Mogogo|Shiori|Fuwawa|Mococo|Advent|Koseki|B.F.F|Rissa|Oobib|Beebs|Biboo|Bijou|Neri|FWMC|Pero|GAGA)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|hololive -Advent-|Jewel of Emotions|Fuwawa Abyssgard|Mococo Abyssgard|FUWAMOCO MORNING|Abyssgard twins|Demon of Sound|The Fluffy One|Shiori Novella|Demon of Soup|The Fuzzy One|The Archiver|Advent Pairs|Koseki Bijou|Diamond Dogs|Sound Hounds|Last Writes|FUWAMOCALLI|GreyScaleX|holoAdvent|Grindstone|Rocku Wawa|Fluffy One|Bloodraven|Goth Rock|Adventrix|JewelBird|Fuwa-chan|ShioRaven|Moco-chan|FUWAMOCO|Fuwa-nee|The Cell|Pen Pups|Mogojyan|Shiori~n|Lil'Rock|Nerissa|Shiorin|Mococo|Fuwawa|Mogogo|Beejoe|Advent|Shiori|Koseki|Rissa|Biboo|Oobib|Beebs|Bijou|B.F.F|Neri|Pero|FWMC|GAGA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -135,11 +135,10 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Fuwa
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella.
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"; "BLUE CLAPPER" with Bijou, 2024; "Here Comes the CHADCast," 2026); Bae sang "R x R x R" with her (2025), and IRyS joined her as the "Two Pink Women" of Silent Hill 2.
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"; "BLUE CLAPPER" with Bijou, 2024; "Here Comes the CHADCast," 2026); Bae sang "R x R x R" with her (2025); IRyS joined her as the "Two Pink Women" of Silent Hill 2.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert).
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Koseki Bijou ("Biboo,"
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: "TombStone"): a junior whose skill Calli admires; they played Bijou's Undertale mod starring Calli and ran a 24-hour charity stream together (2025).
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Shiori Novella: her partner for the 2026 Serendipity concert who calls her "Mor Mori"; they chase absurd premises together, and Calli admits she is "a little obsessed with her."
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Shiori Novella: her 2026 Serendipity partner, who calls her "Mor Mori"; they chase absurd premises, and Calli admits she is "a little obsessed with her."
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: FUWAMOCO: "FUWAMOCALLI," a pair name the twins favor.
 - `bible/characters/Mori-Calliope.md › Behavioral Traits`: 7. When a strange premise comes up, she joins it and even starts it, instead of policing it (her collaboration with Shiori). [Official C11]
 - `bible/characters/Mori-Calliope.md › Voice Profile`: - Juniors: by name or short form, e.g. "Biboo." [Official C9]
@@ -182,11 +181,11 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Fuwa
 
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at hololive night at Dodger Stadium (2025).
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put them both in her Tomodachi Life island.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shiori Novella: a "Rate Your Fears" nightmare talk (2024) and "MONSTER" with Kronii and Gigi at the 2025 English concert.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: FUWAMOCO: "SHALLYS" with Cecilia at the same concert.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put both on her Tomodachi Life island.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025).
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: FUWAMOCO: "SHALLYS" with Cecilia on the same stage.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025).
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with Ina and FUWAMOCO at Serendipity.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - "Wooden shovel" → a nonsense pass-phrase and customary greeting with Koseki Bijou. [Observed I2 §Miscellaneous; I14 clip title]
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **How she addresses people:** "you guys," "everyone," "chat," and fans as "Takodachi" (the official fan name is the Tentacult). Members by first or short name ("Calli," "Kiara," "Ame," "Gura," "Kronii," "Bae," "Biboo," "CC"); a full name signals a mock-serious scold. New members are "kouhais." She gives her own name surname-first. [Official I1] [Observed I3 captions; I2 §Mascot and fans]
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - Secondary reception: a quiet, calm conversational presence with small chuckles and hums. [Observed I27, secondary] Koseki Bijou impersonates her by pitching her own voice down. [Observed I2, secondary]
@@ -194,7 +193,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Fuwa
 
 ### from Ouro Kronii
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Shiori Novella: "Rating Your Clocks" together (2025) and "MONSTER" with Ina and Gigi on stage (2025).
-- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Koseki Bijou: Lethal Company and Yu-Gi-Oh collabs.
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Koseki Bijou: Lethal Company and Yu-Gi-Oh.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: FUWAMOCO: "WatchDog."
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii and Nerissa at Serendipity.
 - `bible/characters/Ouro-Kronii.md › Behavioral Traits`: 8. She swears when startled or frustrated, including strong profanity ("what the fuck"); it once earned her a punishment on FUWAMOCO's channel. It is not constant: about 2 hours of machine transcripts had none detected in her own words. [Observed K32 clip titles; wording per K9, secondary snippet] [ASR K36]
@@ -226,7 +225,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Fuwa
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Koseki Bijou: junior she encourages and her partner for the 2026 Serendipity concert ("Rocku Wawa,"
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Koseki Bijou: junior she encourages and her 2026 Serendipity partner ("Rocku Wawa,"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Shiori Novella: an occult handcam off-collab ("#shiotori," 2024).
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Nerissa Ravencroft: an Advent kouhai who calls Kiara her oshi and, in her lore, once worked at KFP (KiaRissa); they held a 2025 "BIRB GIRLS"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): a fellow bird of HOLOTORI whom she calls "Moomsies"; they sang a DECO*27 song together at the 2023 fes. and "Beyond the way" with Nerissa at the 2024 English concert.
@@ -238,6 +237,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Fuwa
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: FUWAMOCO: "Detective Dogs"
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Shiori Novella: a VRChat aquarium visit with "Ame Senpai"
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Koseki Bijou: Overwatch and Apex (2023).
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Nakiri Ayame and Nerissa Ravencroft: 2023 Sports Festival white-team teammates.
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | FUWAMOCO | Advent members ("Detective Dogs") | Puzzle collab | [Observed A2, per Claude's research] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Nerissa | [Ayame file AY4] |
 

@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 200e559.
+Snapshot: git 9fd1ef3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|City Pop Shark|Calli and Gura|The Fish Tank|Amelia Watson|Watson Amelia|Ame and Gura|Gura and Ame|Gremlin Ame|Goobidiba|Same-chan|Gawr Gura|ワトソン・アメリア|Bone Bros|holoMyth|Samegaki|HoloMyth|AmeSame|Amechan|amesame|Amelia|がうる・ぐら|Gooba|Gura|Goob|Myth|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Gura and Calli|Calli and Gura|The Fish Tank|Watson Amelia|Amelia Watson|Ame and Gura|Gura and Ame|Gremlin Ame|ワトソン・アメリア|Same-chan|Goobidiba|Bone Bros|Gawr Gura|holoMyth|HoloMyth|Samegaki|Amechan|amesame|AmeSame|がうる・ぐら|Amelia|Gooba|Myth|Goob|Gura|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -59,7 +59,7 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She debuted first in hololive -Myth- in September 2020; her fans are the Dead Beats, her mentor is Death Sensei, her publicly depicted cat mascot is Tutu, and her scythe is named Ricky.
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE, held her sixth birthday 3D live "UNCUT ROCK!!" with a live band, and sang with Kiara and Ina at Myth's 6th-anniversary 3D live, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Mori-Calliope.md › [SW] Background`: Myth still includes Takanashi Kiara and Ninomae Ina'nis; Gawr Gura has graduated, and Watson Amelia is an affiliate.
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote the lyrics for Ina's TAKO∞TAKOVER and is a recurring target of Ina's puns.
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote lyrics for Ina's TAKO∞TAKOVER and is a recurring target of Ina's puns.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q," and Calli performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Watson Amelia (affiliate): Myth genmate who "called in from 2021" to Calli's 2026 charity stream.
 - `bible/characters/Mori-Calliope.md › Voice Profile`: - Measured (C30, chat windows): median pitch 197–214 Hz, the second lowest of the six files measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz). The wiki's hololive-wide ranking was not measured. She is the fastest talker of the six: about 161–186 words per minute of speech while chatting (Kronii 120–127, Ina 81–95). Approximate values for relative comparison.
@@ -140,7 +140,7 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German.
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal.
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Watson Amelia (affiliate): her EN oshi ("#1 Ame gosling"), who helped with her 3D productions and now guests at her concerts.
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Watson Amelia (affiliate): her EN oshi ("#1 Ame gosling"), who helped with her 3D productions and guests at her concerts.
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "You little shit!" → protest at a collaborator; her own short is titled "GURA YOU LITTLE SHIT." [Official T16, her upload] [Observed T2 §Quotes, secondary]
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - **Profanity:** frequent and casual: "fuck," "fucking," "what the fuck," "holy shit," "shit," "ass," "damn it," "hell." The 2026 captions contain many masked "[ __ ]" tokens (unidentified censored words); the audio transcripts give the actual words in her own speech: "everybody is fucking good at making Miis," "Holy shit, they're all cracked," "It's like tiny in size, but it's so fucking heavy," "Damn. Damn!", and in DOOM "Vault dwellers? What the fuck is there? The wasteland?" and "16 of them. 16. What the fuck am I supposed to do with 16?" [ASR T23, -5P17BxVZTE 2:42:58, 2:43:03, 2:37:42, 1:08:57; gqQoOjKBmLw 1:36:06, 1:40:19; both models agree] She swears during games and stories and can aim playful insults at collaborators (her own "GURA YOU LITTLE SHIT", T16). On sponsored streams she holds back ("what the heck," "effing"). Rage can flip into German: "You fucking freak! Ihr seid doch alle Perverse! Unglaublich!" (at a game's German developers). She taught Gura German swears ("Scheiße," "Fick dich") in a lesson stream. [Observed T3; T2 §Quotes, secondary; T15]
