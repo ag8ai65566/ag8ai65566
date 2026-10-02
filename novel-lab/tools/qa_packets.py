@@ -47,6 +47,15 @@ COHORTS = {
         "characters": ["Hoshimachi-Suisei", "AZKi", "Nakiri-Ayame", "Nekomata-Okayu"],
         "world": ["JP-Senpai-Pairs"],
     },
+    # Batch 2 by author order (2026-10-02, third and fourth orders).
+    "jp2": {
+        "characters": ["Houshou-Marine", "Shirogane-Noel", "Yukihana-Lamy", "Shishiro-Botan", "Kikirara-Vivi"],
+        "world": ["JP-Senpai-Pairs-2"],
+    },
+    "holox": {
+        "characters": ["Laplus-Darknesss", "Takane-Lui", "Hakui-Koyori", "Sakamata-Chloe", "Kazama-Iroha"],
+        "world": ["holoX"],
+    },
     "global": {
         "characters": [],
         "world": ["hololive", "Streaming-Life", "VTuber-Persona-and-Lore", "Cross-Branch-Friends",
@@ -65,6 +74,9 @@ SHORT = {
     "Cecilia-Immergreen": ["Cecilia"], "Raora-Panthera": ["Raora"], "Hakos-Baelz": ["Bae", "Baelz", "Hakos"],
     "Hoshimachi-Suisei": ["Suisei", "Sui-chan"], "AZKi": ["AZKi"], "Nakiri-Ayame": ["Ayame"],
     "Nekomata-Okayu": ["Okayu"],
+    "Houshou-Marine": ["Marine"], "Shirogane-Noel": ["Noel"], "Yukihana-Lamy": ["Lamy"], "Shishiro-Botan": ["Botan"],
+    "Kikirara-Vivi": ["Vivi"], "Laplus-Darknesss": ["La+", "Laplus"], "Takane-Lui": ["Lui"], "Hakui-Koyori": ["Koyori"],
+    "Sakamata-Chloe": ["Chloe"], "Kazama-Iroha": ["Iroha"],
 }
 UNIT_WORDS = {"myth2": ["Myth"], "promise": ["Promise", "Council"], "advent": ["Advent"], "justice": ["Justice"]}
 
@@ -106,13 +118,13 @@ CREDITS = [
 # People outside the cast who appear in relationship claims (reference only: no cards).
 REFERENCE_ONLY = ["Tsukumo Sana", "Kobo Kanaeru", "Vestia Zeta", "Kureiji Ollie", "Kaela Kovalskia",
                   "Moona Hoshinova", "Ayunda Risu", "Anya Melfissa", "Pavolia Reine", "Airani Iofifteen",
-                  "Ookami Mio", "Tsunomaki Watame", "Oozora Subaru", "Houshou Marine", "Inugami Korone",
-                  "Omaru Polka", "Momosuzu Nene", "Kazama Iroha", "Roboco", "Tokino Sora", "Yuzuki Choco",
-                  "Shirakami Fubuki", "Hakui Koyori", "Akai Haato",
+                  "Ookami Mio", "Tsunomaki Watame", "Oozora Subaru", "Inugami Korone",
+                  "Omaru Polka", "Momosuzu Nene", "Roboco", "Tokino Sora", "Yuzuki Choco",
+                  "Shirakami Fubuki", "Akai Haato",
                   "Usada Pekora", "Shiranui Flare", "Amane Kanata", "Natsuiro Matsuri", "Ichijou Ririka",
                   "Koganei Niko", "Hiodoshi Ao", "Machina X Flayon", "Jurard T Rexford", "Crimzon Ruze",
                   "Gavis Bettel", "Banzoin Hakka", "Josuiji Shinri", "Arurandeisu", "Astel Leda", "Octavio",
-                  "Regis Altare", "Rikka", "Shirogane Noel"]
+                  "Regis Altare", "Rikka"]
 
 DATE = re.compile(r"^(?P<d>\d{4}(?:-\d{2}(?:-\d{2})?)?)(?P<rest>[^|]*)$")
 
@@ -339,7 +351,7 @@ REF_SHORT = {"Kobo Kanaeru": ["Kobo"], "Vestia Zeta": ["Zeta"],
              "Kureiji Ollie": ["Ollie"], "Kaela Kovalskia": ["Kaela"], "Moona Hoshinova": ["Moona"],
              "Ayunda Risu": ["Risu"], "Anya Melfissa": ["Anya"], "Pavolia Reine": ["Reine"],
              "Airani Iofifteen": ["Iofi"], "Ookami Mio": ["Mio"], "Tsunomaki Watame": ["Watame"],
-             "Oozora Subaru": ["Subaru"], "Houshou Marine": ["Marine"], "Inugami Korone": ["Korone"],
+             "Oozora Subaru": ["Subaru"], "Inugami Korone": ["Korone"],
              "Omaru Polka": ["Polka"], "Akai Haato": ["Haachama"],
              "Usada Pekora": ["Pekora"], "Tokino Sora": ["Sora"],
              "Tsukumo Sana": ["Sana"], "Crimzon Ruze": ["Ruze"], "Banzoin Hakka": ["Hakka"],

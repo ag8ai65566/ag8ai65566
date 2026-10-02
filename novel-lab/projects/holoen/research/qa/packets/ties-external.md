@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git ce6fd81. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git ab771ae. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### Airani Iofifteen × Gigi Murin
@@ -21,6 +21,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Ceres Fauna × Kaela Kovalskia
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Koseki Bijou: "Coach Fauna" in Bijou's Hitman runs and a "Sweaty TryHard Gamers" squad with Bae and Kaela.
+- `bible/world/Cross-Branch-Friends.md › By Character`: - **Ceres Fauna** (graduated): her first official collab outside her generation was with Pavolia Reine (Clubhouse 51, 2021-10-12, per the wiki; Minecraft "WITH REINE," 2022-01-19, ronEFZPwxqc); Kaela Kovalskia was a recurring partner ("Fearless & Fearful vs Ghosts," an ID Minecraft server tour); she admired Shirogane Noel. [Observed S1; Fauna file F2 §2021, §Trivia, secondary]
+
+### Ceres Fauna × Pavolia Reine
+- `bible/world/Cross-Branch-Friends.md › By Character`: - **Ceres Fauna** (graduated): her first official collab outside her generation was with Pavolia Reine (Clubhouse 51, 2021-10-12, per the wiki; Minecraft "WITH REINE," 2022-01-19, ronEFZPwxqc); Kaela Kovalskia was a recurring partner ("Fearless & Fearful vs Ghosts," an ID Minecraft server tour); she admired Shirogane Noel. [Observed S1; Fauna file F2 §2021, §Trivia, secondary]
 
 ### Ceres Fauna × Tsukumo Sana
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Tsukumo Sana | Council genmate (graduated 2022) | Sana designed the Council's "Beeg Smol" models; Fauna: "Go give [Sana] lots of love because she deserves it, even though she's a little bit... disgusting." | [Observed F2 §Quotes, secondary] |
@@ -33,12 +37,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Gavis Bettel × Shiori Novella
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Shiori Novella | Advent senior ("NovelFlame," "BloodQuill," secondary) | Credited in Shiori's non-canon motion comic "Into The Void" (2026); R.E.P.O. with Shiori, Flayon, Jurard and Gavis Bettel (2025) | [Observed EB2, EB3] |
 
-### Gawr Gura × Houshou Marine
-- `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] |
-- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu.
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
-
 ### Gawr Gura × Pavolia Reine
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Gawr Gura** (graduated): "Apex Predators" (Shishiro Botan), UMISEA, "SharPea" (Pavolia Reine), and Murasaki Shion (Minecraft and Mario Kart in 2021; a "Renai Circulation" duet cover, 2022). [Observed S1; S2 Gura]
 
@@ -49,22 +47,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Gigi Murin × Vestia Zeta
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity.
 - `bible/characters/Gigi-Murin.md › [SW] Background`: (Gigi helped with the lyrics and designed the chibi models) and sang it at the Serendipity concert, where Gigi also sang "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO.
-
-### Houshou Marine × Mococo Abyssgard
-- `bible/characters/Fuwawa-Abyssgard.md › Core Drive`: - **Want:** with Mococo, to protect the Ruffians' smiles; their debut list held more than a hundred goals (sing with Houshou Marine, a solo concert, an anime song, a scale figure). [Official FW1, FW4] [Observed FW2 §Hopes and dreams, secondary]
-
-### Houshou Marine × Nerissa Ravencroft
-- `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 4. Nerissa meets Marine at an event and forgets every word of Japanese.
-
-### Houshou Marine × Ninomae Ina'nis
-- `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] |
-- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu.
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
-
-### Houshou Marine × Takanashi Kiara
-- `bible/characters/Nerissa-Ravencroft.md › Behavioral Traits`: 3. She is an open fangirl of Houshou Marine and Takanashi Kiara (a self-described KFP member); in her lore she worked at KFP before hololive. [Observed N2 §Likes and dislikes, §Lore, secondary]
-- `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: | Fangirling (Kiara, Marine) | Fast, flustered, delighted | (no verified line; see Relationship Map) |
 
 ### IRyS × Inugami Korone
 - `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2025-04 | A farewell month of collabs across hololive: Overwatch with IRyS (04-22), a cover of "とんとんまーえ！" with Inugami Korone (04-23), Promise R.E.P.O. with IRyS, Kronii and Bae (04-24); last chatting stream with calls (04-26); 3D graduation stream (04-27, 04-28 JST) | [Observed M2; M3 titles] |
@@ -88,6 +70,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Promise.md › Members and Status`: - Council history: Tsukumo Sana graduated from -Council- on 2022-07-31, before Promise existed; she was never a Promise member. IRyS and the four remaining Council members formed Promise in October 2023.
 
 ### Inugami Korone × Nanashi Mumei
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP seniors | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: Beyond EN, Mumei recorded a duet cover with Inugami Korone in her last week.
 
 ### Inugami Korone × Ouro Kronii
@@ -158,6 +141,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Momosuzu Nene × Mori Calliope
 - `bible/world/IRyS-and-Nerissa-Pairs.md › IRyS`: - **IRyS and Calli** (16 / 16 / 5 / 8 / 2 / 1): Calli's first collab with her came on July 29, 2021, eighteen days after IRyS's debut ("Just Irystocrats and DeadBEATS"), then a karaoke collab (2021-10). With Hakos Baelz they host CHADCast ("Chaos, Hope, and Death!", from 2022-01-30; a 2025 episode: "We Went to a Hot Spring Together!!"). Later: "Two Pink Women Roll Up to Silent Hill" (2024-10-26), IRyS as Calli's HOLOMELO RADIO guest (2024-07), an off-collab karaoke with Momosuzu Nene (2025-04-23). Wiki unit: "MorIRyS." [Observed S1 titles; S2 IRyS §Relationships, secondary]
+
+### Momosuzu Nene × Nanashi Mumei
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP seniors | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
 
 ### Moona Hoshinova × Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |

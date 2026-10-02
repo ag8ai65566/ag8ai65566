@@ -45,8 +45,9 @@ joke from one ruthless game of Project Winter. [Official SU1] [Observed SU2 §Pe
   focus rather than panic. [Observed SU4 titles] [ASR SU20]
 - **Values shown in public:** craft and self-reliance (as an indie VTuber she drew her own original design and
   edited her own videos); staying part of hololive while running her own studio: in a June 2026 chat she
-  explained that since setting up her personal agency she has said yes to members' concert invitations, so
-  nobody thinks "Sui-chan won't do things with hololive members anymore." [Observed SU2 §Miscellaneous,
+  explained that since setting up her personal agency she has said yes to members' concert invitations, so that
+  nobody assumes she has stopped working with hololive members, and that she wants to appear at the lives of
+  members whose stages she has not yet joined. [Observed SU2 §Miscellaneous,
   secondary] [ASR SU20, GQMY5Vl9Dfk 1:14:20–1:15:40, her own account]
 
 ## Core Contradiction
@@ -64,8 +65,8 @@ voice that sold out her friends without remorse in a game of Project Winter, a b
    daisuki na hanashi desu," "this is a story about loving Tales"); Tales of the Abyss is her favorite, and she
    jokingly quotes its "Ore wa warukunē!" ("It's not my fault!") when she blames chat for a mistake.
    [ASR SU20]
-4. Blames chat with mock innocence: "Iya iya iya, watashi wa warukunai yo" ("No, no, no, I'm not the bad one")
-   when chat talks her into something. [ASR SU20]
+4. Blames chat with mock innocence when chat talks her into something: "Iya iya iya, watashi wa warukunai"
+   ("No, no, no, I'm not the bad one") … "Komento-ran ga yarette ittan da" ("Chat told me to do it"). [ASR SU20]
 5. The "forever 18" bit lives on in chat even after her official profile dropped it (2024): asked whether she is
    of a certain generation, she answers "Sui-chan wa jūhassai da yo" ("Sui-chan is eighteen"). [Observed SU2
    §2024] [ASR SU20]
@@ -86,12 +87,14 @@ voice that sold out her friends without remorse in a game of Project Winter, a b
   - "Sui-chan wa~ kyō mo kawaii~" → greeting, praise, her shorts. [ASR SU20] [Observed SU4]
   - "Hi, honey!" → an English line she popularized in a Duolingo stream; other members copy her delivery.
     [Observed SU2 §Miscellaneous, secondary]
-  - "Iya iya iya, watashi wa warukunai yo" … "Ore wa warukunē" → blaming chat for a mistake. [ASR SU20]
+  - "Iya iya iya, watashi wa warukunai" … "Komento-ran ga yarette ittan da" … "Ore wa warukunē" → blaming chat
+    for a mistake. [ASR SU20; both models on each span]
   - "Sui-chan wa jūhassai da yo" → the forever-18 bit. [ASR SU20]
 - **Vocabulary / fillers:** "nanka," "mā," "ne," "sa"; "chotto matte" ("wait a sec"); she talks about herself
   as "Sui-chan" and uses "watashi" in plain talk; quick "e?" reactions. [ASR SU20, first-model counts in
   research/audio-check/suisei.md]
-- **Profanity:** light; mock-rough boy-speech for a joke ("ore wa warukunē"). [ASR SU20]
+- **Profanity:** light; mock-rough boy-speech for a joke ("ore wa warukunē"), and "ore" when she talks to
+  herself in a game. [ASR SU20]
 - **Language:** streams in Japanese; occasional English words and lines ("Hi, honey!"); with the English cast
   she speaks Japanese with English phrases mixed in, and members like Calli address her as "senpai."
   [Observed SU2] [S1 titles]
@@ -101,7 +104,8 @@ voice that sold out her friends without remorse in a game of Project Winter, a b
   with stretched vowels for the sing-song signature line; she narrates her own reactions in the third person.
   [ASR SU20]
 - **Timbre / pitch / pace (for voice performance):**
-  - Measured (SU20; two 2026 chat windows): window medians about 245–262 Hz (p10–p90 about 162–493 Hz).
+  - Measured (SU20; two 2026 chat windows): window medians about 245–262 Hz (p10–p90 about 162–493 Hz); in a
+    2026 Resident Evil window about 268 Hz. The Rhythm Heaven window (game music and voiced cues) is not used.
     Measurements describe the sampled recording and ASR segmentation; they are not isolated vocal measurements.
   - Provisional (interpretation): a clear, bright mid-high voice, polished and confident; playful and sing-song
     for her signature line, crisp and focused when she is gaming. A listening check would still need to establish
@@ -116,7 +120,7 @@ The middle column is provisional voice direction unless a source is named.
 |---|---|---|
 | Opening | Bright, polished, then sing-song | Official introduction, then "Sui-chan wa~ kyō mo kawaii~" (SU1; ASR SU20) |
 | Chatting about games | Quick, enthusiastic, tangents | "Kore wa Teiruzu ga daisuki na hanashi desu." (ASR SU20) |
-| Caught in a mistake | Mock-innocent, then mock-rough | "Iya iya iya, watashi wa warukunai yo" … "Ore wa warukunē" (ASR SU20) |
+| Caught in a mistake | Mock-innocent, then mock-rough | "Iya iya iya, watashi wa warukunai" … "Ore wa warukunē" (ASR SU20) |
 | Age joke | Breezy, firm | "Sui-chan wa jūhassai da yo." (ASR SU20) |
 | Competitive game | Focused, clipped | **Style demo:** "Mō ikkai. Kondo wa kateru." ("One more. I'll win this time.") |
 | With a senpai or kouhai on stage | Warm, encouraging | **Style demo:** "Daijōbu, issho ni ikō!" ("It's fine, let's go together!") |
@@ -124,10 +128,11 @@ The middle column is provisional voice direction unless a source is named.
 ### Sample Lines
 1. "A shooting star that appeared from diamonds in the rough; I'm the virtual idol Hoshimachi Suisei!" (Official SU1)
 2. "スイちゃんは〜今日も可愛い〜" — "Sui-chan wa~ kyō mo kawaii~" ("Sui-chan is cute today too~") (ASR SU20, GQMY5Vl9Dfk 0:04:27)
-3. "いやいやいや、私は悪くないよ" — "Iya iya iya, watashi wa warukunai yo" ("No, no, no, I'm not the bad one") (ASR SU20, 0:05:39)
+3. "いやいやいや、私は悪くない" — "Iya iya iya, watashi wa warukunai" ("No, no, no, I'm not the bad one") … "コメント欄がやれって言ったんだ" — "Komento-ran ga yarette ittan da" ("Chat told me to do it") (ASR SU20, 0:05:39–0:05:46; two shared spans)
 4. "俺は悪くねぇ" — "Ore wa warukunē" ("It's not my fault"; a Tales of the Abyss line) (ASR SU20, 0:05:48)
 5. "スイちゃんは18歳だよ" — "Sui-chan wa jūhassai da yo" ("Sui-chan is eighteen") (ASR SU20, 0:12:43)
 6. "これはテイルズが大好きな話です" — "Kore wa Teiruzu ga daisuki na hanashi desu" ("This is a story about loving Tales") (ASR SU20, 0:15:45)
+7. "私テイルズシリーズで一番好きですから、アビスが" — "Watashi Teiruzu shirīzu de ichiban suki desu kara, Abisu ga" ("Abyss is my favorite in the whole Tales series") (ASR SU20, 0:15:36)
 
 ## Appearance Anchors (avatar)
 - 160 cm; illustrator Teshima Nari (her original design was drawn by herself). Light blue hair in a side
@@ -151,8 +156,8 @@ The middle column is provisional voice direction unless a source is named.
 | 2023-01-20 | First VTuber on THE FIRST TAKE ("Stellar Stellar") | [Observed SU2] |
 | 2023-11 | Starts "Hoshimatic Project" | [Observed SU2] |
 | 2024-07-05 | hololive night at Dodger Stadium with Usada Pekora and Gawr Gura | [Official SU7] |
-| 2024-08-24/25 | "High Tide" with IRyS, Moona and Hakos Baelz at the English concert -Breaking Dimensions- | [Official SU8] |
 | 2024-08-02 | Introduces herself as a "virtual idol"; profile drops "forever 18" | [Observed SU2] |
+| 2024-08-24/25 | "High Tide" with IRyS, Moona and Hakos Baelz at the English concert -Breaking Dimensions- | [Official SU8] |
 | 2024-11 to 12 | First live tour "Spectra of Nova" (Saitama, Osaka, Fukuoka); Calli, FUWAMOCO and Elizabeth hold a watch party | [Observed SU2] [S1 YtVleZxIiNc] |
 | 2025-02-01 | "SuperNova" at the Nippon Budokan | [Observed SU2] |
 | 2025 | "I don't care" and "Bloom in the night" for Mobile Suit Gundam GQuuuuuuX; miComet's "Lollipop" (10-02) | [Observed SU2] |
@@ -259,10 +264,10 @@ Suisei is an active hololive member in Japan. She has no supernatural abilities;
 Suisei's avatar is 160 cm tall, with light blue hair in a side ponytail tied with a dark striped blue ribbon, blue eyes, and a black plaid cap topped with a small crown. She wears a grey plaid dress uniform with a ruffled dark-blue skirt panel, asymmetrical socks and black shoes. Her mark is a comet (☄️); on her 2026 arena tour she wears a blue crop top with white see-through sleeves and a frilled white skirt.
 
 ## [SW] Dialogue Style
-Streams in Japanese: quick, fluent and confident, with "nanka," "mā," "ne" and "chotto matte" ("wait a sec"). She talks about herself as "Sui-chan" and stretches her signature line into a sing-song "Sui-chan wa~ kyō mo kawaii~." She reacts with a quick "e?", blames chat in mock innocence ("Iya iya iya, watashi wa warukunai yo," "No, no, no, I'm not the bad one"), throws in a mock-rough Tales of the Abyss quote ("Ore wa warukunē," "It's not my fault"), and answers age questions with "Sui-chan wa jūhassai da yo" ("Sui-chan is eighteen"). She laughs a bright "ha ha ha" at herself. With the English cast she mixes Japanese with short English phrases, such as her famous "Hi, honey!" When a story renders her speech in English or Chinese, keep the third-person "Sui-chan" and the sing-song cuteness on top of a crisp, competitive core.
+Streams in Japanese: quick, fluent and confident, with "nanka," "mā," "ne" and "chotto matte" ("wait a sec"). She talks about herself as "Sui-chan" and stretches her signature line into a sing-song "Sui-chan wa~ kyō mo kawaii~." She reacts with a quick "e?", blames chat in mock innocence ("Iya iya iya, watashi wa warukunai," "No, no, no, I'm not the bad one"; "Chat told me to do it"), throws in a mock-rough Tales of the Abyss quote ("Ore wa warukunē," "It's not my fault"), and answers age questions with "Sui-chan wa jūhassai da yo" ("Sui-chan is eighteen"). She laughs a bright "ha ha ha" at herself. With the English cast she mixes Japanese with short English phrases, such as her famous "Hi, honey!" When a story renders her speech in English or Chinese, keep the third-person "Sui-chan" and the sing-song cuteness on top of a crisp, competitive core.
 
 ## [SW] Catchphrases
-"A shooting star that appeared from diamonds in the rough; I'm the virtual idol Hoshimachi Suisei!" (official introduction); "Sui-chan wa~ kyō mo kawaii~" ("Sui-chan is cute today too~"); "Hi, honey!"; "Iya iya iya, watashi wa warukunai yo" ("I'm not the bad one"); "Ore wa warukunē" ("It's not my fault," a Tales of the Abyss line); "Sui-chan wa jūhassai da yo" ("Sui-chan is eighteen"). Her fans are the Hoshiyomi (Stargazers).
+"A shooting star that appeared from diamonds in the rough; I'm the virtual idol Hoshimachi Suisei!" (official introduction); "Sui-chan wa~ kyō mo kawaii~" ("Sui-chan is cute today too~"); "Hi, honey!"; "Iya iya iya, watashi wa warukunai" ("I'm not the bad one"); "Ore wa warukunē" ("It's not my fault," a Tales of the Abyss line); "Sui-chan wa jūhassai da yo" ("Sui-chan is eighteen"). Her fans are the Hoshiyomi (Stargazers).
 
 ## [SW] Voice & Delivery
 Provisional direction for an original designed voice: a clear, bright mid-high voice, polished and confident; quick and fluent in chat, sing-song and stretched for her signature cute line, crisp and clipped when she is competing. Her laugh is a bright, punchy "ha ha ha." Keep the cuteness as a performance on top of a self-assured core; the "psychopath" bit is a joke, never a cold default.

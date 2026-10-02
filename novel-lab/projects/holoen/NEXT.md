@@ -1,5 +1,17 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-02 06:28 UTC）：**JP 四人完成初稿**（Suisei、AZKi、Ayame、Okayu ＋ JP Senpai Pairs）：卡片、
+音檔報告（research/audio-check/{suisei,azki,ayame,okayu}.md，日語兩模型、引句全部核對）、表演表（export/elevenlabs/）。
+GPT 一輪審查已排在 Bae 之後：A＝Suisei＋AZKi（Suisei run 的 to-gpt.free.md），B＝Ayame＋Okayu＋JP Pairs＋EN 回填句
+（Ayame run）；重建用 `tools/mk_jp_review.py`。審查回來 → 併入 → final.md → promote（連同 Bae 與 EN 回填）。
+第二批（Marine、Noel、Lamy、Botan、Vivi ＋ holoX 五人 ＋ holoX 卡 ＋ JP Senpai Pairs 2）：run 資料夾已建、COHORTS
+加 `jp2`、`holox`；La+ 的 stem 用 `Laplus-Darknesss`（避免「+」）。研究資料在 scratchpad `jp2/`。Chloe 已於
+2025-01-26 結束一般活動、保留 affiliate（同 Ame 處理）。
+
+狀態（2026-10-02 06:12 UTC）：**作者第三則命令**：JP 四人之後做 Marine、Noel、Lamy、Botan 與 holoX 全員
+（La+、Lui、Koyori、Chloe、Iroha）＋ holoX 世界觀卡；不要閒下來。研究抓取在 scratchpad `jp2/`（fetch2.sh：
+wiki、日文維基、官方頁、ragtag）。四人做完 → 立刻開下一批；GPT 審查依批次排隊（每批兩到三人一輪）。
+
 狀態（2026-10-02 05:50 UTC）：**作者下令加入 hololive JP 的 Suisei、AZKi、Ayame、Okayu**（完整卡＋表演表＋關係網）。
 - runs：`20261002-0529-character-{Hoshimachi-Suisei,AZKi,Nakiri-Ayame,Nekomata-Okayu}`、`20261002-0529-world-JP-Senpai-Pairs`。
   COHORTS 新增 `jp`（四人＋JP-Senpai-Pairs）；release 的 CAST_ORDER/WORLD_ORDER 已加。

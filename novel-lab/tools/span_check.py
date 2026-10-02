@@ -9,6 +9,8 @@ tables must lie inside a span the reports approve (a whole shared line, a comput
 named in a "Partly agrees" verdict; case, punctuation and apostrophes normalized). Quotes that do not are listed with file and line. An ellipsis (…) inside a quote splits it into
 separate quotes, so "A … B" passes only when A and B are each shared; stitching them is still for review.
 A report row gates only the files that cite its video (a performance sheet counts its card's citations).
+Japanese quotations (eight or more kana/kanji) are compared by six-character runs instead of five-word runs, with
+katakana folded to hiragana and punctuation, spaces and long-vowel marks dropped; romanized glosses are not gated.
 """
 import re
 import sys
@@ -20,6 +22,13 @@ ROOT = Path(__file__).resolve().parent.parent
 def norm(s):
     s = s.lower().replace("’", "'").replace("‘", "'")
     return " ".join(re.sub(r"[^a-z0-9 ]+", " ", s.replace("'", "")).split())  # apostrophes dropped: Mii's = Miis
+
+
+def cjk(s):
+    """Japanese text for comparison: katakana folded to hiragana; only kana and kanji kept (no long-vowel marks)."""
+    s = "".join(chr(ord(c) - 0x60) if "ァ" <= c <= "ヶ" else c for c in s)
+    s = s.translate(str.maketrans("ぁぃぅぇぉ", "あいうえお"))  # ねぇ = ねえ: a spelling variant, not a wording change
+    return "".join(re.findall(r"[\u3041-\u3096\u3400-\u4dbf\u4e00-\u9fff々]", s))
 
 
 def rows_of(proj):
@@ -34,7 +43,8 @@ def rows_of(proj):
                 vid = re.search(r"(?:youtu\.be/|[?&]v=)([\w-]{11})", cells[1])
                 rows.append({"report": f.name, "ts": re.sub(r"\]\(.*", "", cells[1]).strip("["),
                              "vid": vid.group(1) if vid else "",
-                             "first": norm(cells[0]), "second": norm(cells[2]), "verdict": cells[-1]})
+                             "first": norm(cells[0]), "second": norm(cells[2]), "verdict": cells[-1],
+                             "first_j": cjk(cells[0])})
     return rows
 
 
@@ -49,12 +59,13 @@ def outside_spans(project):
     proj = ROOT / "projects" / project
     rows = rows_of(proj)
     approved = approved_spans(rows)
+    approved_j = approved_spans(rows, cjk)
     # Gate only the rows the reports mark as partial; whole-line and hand-judged rows are approved as written.
     # (A strict both-model check of every row needs the full second-model text, which the tables truncate.)
     partial = [r for r in rows if r["verdict"].startswith(("**Partial (computed):**", "**Partly", "**Not confirmed",
                                                            "**Disagrees", "**Agrees on the bit"))]
     files = sorted((proj / "bible").rglob("*.md")) + sorted((proj / "export" / "elevenlabs").glob("*.md"))
-    quote_re = re.compile(r"[\"“]([^\"”]{12,400})[\"”]")
+    quote_re = re.compile(r"[\"“「]([^\"”」]{6,400})[\"”」]")
     found = []
     for f in files:
         text = f.read_text(encoding="utf-8")
@@ -88,6 +99,14 @@ def outside_spans(project):
         for n, line in units:
             for q in quote_re.findall(line):
                 for piece in re.split(r"…|\.\.\.", q):
+                    pj = cjk(piece)
+                    if len(pj) >= 8:  # Japanese: six-character runs
+                        grams = {pj[i:i + 6] for i in range(len(pj) - 5)}
+                        hits = [r for r in gating if any(g in r["first_j"] for g in grams)]
+                        if hits and not any(pj in a for a in approved_j):
+                            best = max(hits, key=lambda r: sum(g in r["first_j"] for g in grams))
+                            found.append((str(f.relative_to(proj)), n, piece.strip(), best))
+                        continue
                     p = norm(piece)
                     words = p.split()
                     if len(words) < 5:
@@ -100,16 +119,16 @@ def outside_spans(project):
     return found
 
 
-def approved_spans(rows):
+def approved_spans(rows, fold=norm):
     """Text a card may quote: whole lines judged shared (computed, or "Agrees" with a documented spelling note),
     the computed shared runs of partial rows, and the quoted shared parts named in a "Partly agrees" verdict."""
     out = []
     for r in rows:
         v = r["verdict"]
         if v.startswith(("**Shared span (computed):** whole line", "Agrees")):
-            out.append(r["first"])
+            out.append(r["first"] if fold is norm else r["first_j"])
         elif v.startswith(("**Partial (computed):**", "**Partly", "**Shared span")) or "agrees" in v.lower():
-            out += [norm(x) for x in re.findall(r'"([^"]{3,})"', v)]
+            out += [fold(x) for x in re.findall(r'"([^"]{3,})"', v)]
     return [a for a in out if a]
 
 

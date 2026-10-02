@@ -41,12 +41,14 @@ CAST_ORDER = ["Mori-Calliope", "Takanashi-Kiara", "Ninomae-Inanis", "Gawr-Gura",
               "IRyS", "Ouro-Kronii", "Ceres-Fauna", "Nanashi-Mumei", "Hakos-Baelz",
               "Shiori-Novella", "Koseki-Bijou", "Nerissa-Ravencroft", "Fuwawa-Abyssgard", "Mococo-Abyssgard",
               "Elizabeth-Rose-Bloodflame", "Gigi-Murin", "Cecilia-Immergreen", "Raora-Panthera",
-              "Hoshimachi-Suisei", "AZKi", "Nakiri-Ayame", "Nekomata-Okayu"]
+              "Hoshimachi-Suisei", "AZKi", "Nakiri-Ayame", "Nekomata-Okayu", "Houshou-Marine", "Shirogane-Noel",
+              "Yukihana-Lamy", "Shishiro-Botan", "Kikirara-Vivi", "Laplus-Darknesss", "Takane-Lui", "Hakui-Koyori",
+              "Sakamata-Chloe", "Kazama-Iroha"]
 WORLD_ORDER = ["VTuber-Persona-and-Lore", "hololive", "Streaming-Life",
                "hololive--Myth", "hololive--Promise", "hololive--Advent", "hololive--Justice", "FUWAMOCO",
                "TakaMori", "TakoTori", "AmeSame", "Bone-Bros", "Myth-and-Kronii-Other-Pairs", "Time-Duo",
                "Time-and-Death", "OctoClock", "Fauna-and-Mumei-Pairs", "IRyS-and-Nerissa-Pairs", "Hakos-Baelz-Pairs", "Advent-Pairs",
-               "Justice-Pairs", "JP-Senpai-Pairs", "Cross-Branch-Friends", "Concerts-and-Live-Events", "hololive-History-to-2022",
+               "Justice-Pairs", "JP-Senpai-Pairs", "JP-Senpai-Pairs-2", "holoX", "Cross-Branch-Friends", "Concerts-and-Live-Events", "hololive-History-to-2022",
                "hololive-History-2023-2026"]
 assert set(CAST_ORDER) == set(ROSTER_CHARS) and set(WORLD_ORDER) == set(ROSTER_WORLD), \
     "CAST_ORDER/WORLD_ORDER must list exactly the COHORTS roster (tools/qa_packets.py)"

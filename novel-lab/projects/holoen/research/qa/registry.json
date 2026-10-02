@@ -1,7 +1,7 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "ce6fd81",
+ "commit": "ab771ae",
  "files": {
   "bible/characters/Cecilia-Immergreen.md": "08daa7f89c8096d908d5e98fe5a69c3a848c047698e803aaec54680f560dfeb5",
   "bible/characters/Ceres-Fauna.md": "58177a0ddea108b22eb080586981aa488344fed46d7cdb29bfbd867c2753f261",
@@ -1099,16 +1099,13 @@
   "Ookami Mio",
   "Tsunomaki Watame",
   "Oozora Subaru",
-  "Houshou Marine",
   "Inugami Korone",
   "Omaru Polka",
   "Momosuzu Nene",
-  "Kazama Iroha",
   "Roboco",
   "Tokino Sora",
   "Yuzuki Choco",
   "Shirakami Fubuki",
-  "Hakui Koyori",
   "Akai Haato",
   "Usada Pekora",
   "Shiranui Flare",
@@ -1127,8 +1124,7 @@
   "Astel Leda",
   "Octavio",
   "Regis Altare",
-  "Rikka",
-  "Shirogane Noel"
+  "Rikka"
  ],
  "aliases": {
   "cecilia immergreen": [

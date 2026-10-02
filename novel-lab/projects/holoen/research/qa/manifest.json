@@ -1,6 +1,6 @@
 {
- "built_at": "2026-10-02T05:30Z",
- "commit": "ce6fd81",
+ "built_at": "2026-10-02T06:16Z",
+ "commit": "ab771ae",
  "baseline": "2026-09-30",
  "files": {
   "bible/characters/Cecilia-Immergreen.md": "08daa7f89c8096d908d5e98fe5a69c3a848c047698e803aaec54680f560dfeb5",
@@ -56,12 +56,12 @@
     {
      "packet": "research/qa/packets/myth1.md",
      "chars": 11002,
-     "sha256": "85dfc8a2f2261bfd49f1c9a2e28141b818ecd96a44bb81a6ac8bf46da9880717"
+     "sha256": "6cd90800d6284b929abfd49594ebc8afa1c5e2d10978f5919f3997e69161c697"
     },
     {
      "packet": "research/qa/packets/myth1-incoming.md",
      "chars": 69593,
-     "sha256": "34dd31fe655f3a8f03533fac8add32c86be18f94996002260c365056ddeab256"
+     "sha256": "b1756bad5fe9809898a19920eb79f676c75997438d14ada5c59762a348882077"
     }
    ]
   },
@@ -74,12 +74,12 @@
     {
      "packet": "research/qa/packets/myth3.md",
      "chars": 8996,
-     "sha256": "b869f5cbc22bf4b8da3d55eaec440b96632268704fe431edcd9925bbffecac05"
+     "sha256": "5033bc23c1818aa5c54044ca1d4175da10533ec10dc379ee1364cbad578db213"
     },
     {
      "packet": "research/qa/packets/myth3-incoming.md",
      "chars": 69909,
-     "sha256": "ef7a2a71d0ea2ecbb20412fa8f290b13e548d80a006dcbc2b9c50d7996213ca5"
+     "sha256": "5b0a7025604e3501261bf88241f76b465a3c9ac3d45ba56ae70dddbc9fcda792"
     }
    ]
   },
@@ -92,7 +92,7 @@
     {
      "packet": "research/qa/packets/myth4.md",
      "chars": 54616,
-     "sha256": "cbac497e78c180d8d10afc89be3f4c001bb7c040002a88d59084f49ac9dc41aa"
+     "sha256": "60a2bf55e30bab4debf160f4cf87fe98e8ae3a142ce9fdd2cbbb79f6df538749"
     }
    ]
   },
@@ -108,12 +108,12 @@
     {
      "packet": "research/qa/packets/myth2.md",
      "chars": 18329,
-     "sha256": "dd463c58208153e5fa2ebe1446fff149d7788b659ac54aaefb41f208efbca972"
+     "sha256": "d90ad36bab6633d5057d9724a30203a6684635847ba4597bf69e9e8d3ee86ccf"
     },
     {
      "packet": "research/qa/packets/myth2-incoming.md",
      "chars": 58778,
-     "sha256": "103a786c7f9386086128eb2f969c26751a026d153560138acececcf199c326c0"
+     "sha256": "b86e0e99a8db880d7a4c8fcb099e0dd9ca993f041901ec1d48604c2bf7ea0761"
     }
    ]
   },
@@ -134,12 +134,12 @@
     {
      "packet": "research/qa/packets/promise.md",
      "chars": 34348,
-     "sha256": "9dbe80068e6e59577c67e3c92d08b737cfff099b0e55b5972c2c624057f97b74"
+     "sha256": "b8f9307d59b794eb14a1f897082a344e2a2c81aaf231eb4a34cf7beee22f42ff"
     },
     {
      "packet": "research/qa/packets/promise-incoming.md",
      "chars": 60148,
-     "sha256": "539031df011c239db3954c84294467dacf977c063c09e465abba5949cebfc421"
+     "sha256": "6a0dfc3db228941beec93dc45c1505e19293b15294af2b87d1374549cb4c5207"
     }
    ]
   },
@@ -158,12 +158,12 @@
     {
      "packet": "research/qa/packets/advent.md",
      "chars": 32514,
-     "sha256": "7279ce3882b51567a103fc49dae538a37546a19619e3c69ed3a5415ecbc24a6f"
+     "sha256": "47bf5a1a3f5934898b482e8cc4827099adbf8c07c32be1567a53a58a83ef7aa5"
     },
     {
      "packet": "research/qa/packets/advent-incoming.md",
      "chars": 71497,
-     "sha256": "35b41aab57d722b04fa3202633cc63055bd2c7cd5b79a39fa549d80b8432e944"
+     "sha256": "721718a4f82bd316e94c6c89d52f54f689a30b9ae5c646255a112c6ed0ef3ada"
     }
    ]
   },
@@ -180,12 +180,12 @@
     {
      "packet": "research/qa/packets/justice.md",
      "chars": 30837,
-     "sha256": "8d725f4d02900757dd0bd2bb409ae08c34691dc277e0143988226bc96ec70d90"
+     "sha256": "c10c75be31cb695b8b7b9c4f93b26bfe3f827236f6adb7eca258b2ce0660c6a6"
     },
     {
      "packet": "research/qa/packets/justice-incoming.md",
      "chars": 39284,
-     "sha256": "a194b38a4a98863b79fc30950b051e307f1f2c58e51609051d4fecaa73aa17bb"
+     "sha256": "8098ab7ecbf80a2d37a2a0f71b4a7beea11eeac5554bcf0af28b0b0d5a16e60e"
     }
    ]
   },
@@ -195,7 +195,27 @@
     {
      "packet": "research/qa/packets/jp.md",
      "chars": 457,
-     "sha256": "ddc02e84e73ed6f498c8a4568a80e5ad4243b4cf0c1fcfe6a7fb7f4e8fbda0d4"
+     "sha256": "1c9972324e7ca467572bafcba522c447dea31b5f30c670365aa854f696be11fb"
+    }
+   ]
+  },
+  "jp2": {
+   "owns": [],
+   "parts": [
+    {
+     "packet": "research/qa/packets/jp2.md",
+     "chars": 458,
+     "sha256": "5a9a5a0d486d63844abde55792c83356c47d01cff6b6fb0ec21c88e801abe13d"
+    }
+   ]
+  },
+  "holox": {
+   "owns": [],
+   "parts": [
+    {
+     "packet": "research/qa/packets/holox.md",
+     "chars": 460,
+     "sha256": "01a920c05bcee44a8cd6b5e521c8faee18177b255830416578f494957cd96d06"
     }
    ]
   },
@@ -213,12 +233,12 @@
     {
      "packet": "research/qa/packets/global.md",
      "chars": 28146,
-     "sha256": "e10e643c275c19cc22a93e30163e0b450cc28ae97a85e0f0fc10a52a561d29db"
+     "sha256": "fb2165b3181a041b21c4b54b971e1e0b0e8ab0152e6106d7629663056ed35769"
     },
     {
      "packet": "research/qa/packets/global-incoming.md",
      "chars": 55027,
-     "sha256": "bfd846616d98aa8f1d6e5481159ba02ccaba843cc4fd4a72fc202699b7047327"
+     "sha256": "9519ecf38cfbd727a2cc1377e119329b7a63650205644e56205f51744a818748"
     }
    ]
   },
@@ -227,22 +247,22 @@
     {
      "packet": "research/qa/packets/events.md",
      "chars": 71118,
-     "sha256": "502038c6c587d62e43683d766a17e60c53f09059b70e20b47e57244f2f361ab2"
+     "sha256": "d7efff7ef05741ad4e16547d2cfc3d66d54513a950c9f1bab93af388aab49b36"
     },
     {
      "packet": "research/qa/packets/ties-cast.md",
      "chars": 195624,
-     "sha256": "a3d2492d913489cfff5d4ee5cc95053d7d0a1483fe750492c4e01e1540645864"
+     "sha256": "3af455aaabe138d4440ffcfc6d268850219647a604a5709a0b753a2700dbddbb"
     },
     {
      "packet": "research/qa/packets/ties-external.md",
-     "chars": 30680,
-     "sha256": "07bdc3ec8a6d58e2c93926e2059a1b482b19ff1eb5bb8fdc1f80fbbf6d6b41b0"
+     "chars": 28944,
+     "sha256": "04bde0fec52dcc195be2f8ae3598441ab89931c20a3a2038c344d77b2671e757"
     },
     {
      "packet": "research/qa/packets/ties-groups.md",
-     "chars": 89979,
-     "sha256": "4621f832969bd02eddf89045f9c95ca05f035c1a76b04d2e8031758219db6aeb"
+     "chars": 88786,
+     "sha256": "c12ec8cbda7cf4b5366474575bfbfb129614cd62bd0e4784eb9816fe65db7d86"
     }
    ]
   }
