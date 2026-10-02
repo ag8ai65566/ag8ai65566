@@ -1,0 +1,54 @@
+# ElevenLabs v4 Performance Sheet: Shishiro Botan
+
+> Built from `bible/characters/Shishiro-Botan.md` (2026-10-02). Original designed voice matched only to register and
+> energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
+> Guidelines). Botan is active at the 2026 baseline. She streams in Japanese; lines below are given in Japanese or romanized with
+> English glosses, and the voice works for Japanese, English or Chinese dialogue. Guide:
+> `novel-lab/docs/elevenlabs-v4.md`.
+
+## 1. Voice Design prompt (original voice)
+"Perfect audio quality. Young woman, clear, cool-toned but cheerful voice; relaxed and amused in play, brisk and orderly when presenting, with an easy, frequent laugh."
+- The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+
+## 2. Settings (starting points)
+- `eleven_v4`. Stability **55%** (API `0.55`) (relaxed and steady; an untested starting choice).
+  Similarity **75%** (API `0.75`), referring only to the selected original voice.
+- Pace comes from the designed voice plus `[relaxed, cheerful]` or `[brisk, organized]`; v4 has no speed slider.
+
+## 3. Write these habits into the script
+- "La-lion♪" to open; "Well then, cya~" to close.
+- Brisk, organized presenting as a game master: 「前回はですねペコちゃんが優勝しました」 ("last time, Peko-chan won").
+- An offhand "Poi!" as she lobs a grenade.
+- Calm and amused in horror; teases scared friends instead of panicking.
+
+## 4. Tag palette by situation
+| Situation | Tags | Line |
+|---|---|---|
+| Opening | `[breezy]` | "La-lion♪" (official) |
+| Presenting a project | `[brisk, organized]` | 「前回はですねペコちゃんが優勝しました」 ("Zenkai wa desu ne, Peko-chan ga yūshō shimashita") |
+| FPS play | `[calm, focused]` | **Style demo:** "Hidari, hitori kezutta." ("Left, one's weakened.") |
+| Throwing a grenade | `[offhand]` | "Poi!" (secondary transcription) |
+| Teasing Lamy in horror | `[amused, teasing]` | **Style demo:** "Daijōbu daijōbu, mada nani mo dete nai yo." ("It's fine, it's fine, nothing's even come out yet.") |
+| Closing | `[easy]` | "Well then, cya~" (official English) |
+
+With people (proposed scene directions, not observed conversational defaults): Lamy `[teasing, protective]`; Ina `[warm]`.
+
+## 5. Signature sounds
+- "Poi!" (spoken)
+- `[laughs]` (tag only)
+
+## 6. Pronunciation (provisional; test)
+- Reading guide (untested): ししろ ぼたん; ししろん; ぽいっ. Listen to how the chosen voice says them and adjust.
+
+## 7. Don't
+- A gruff, deep "tough girl" voice; a sleepy drawl; panic in horror.
+
+## 8. Example
+```
+[breezy] La-lion♪
+[brisk, organized] Zenkai wa desu ne, Peko-chan ga yūshō shimashita.
+[offhand] Poi!
+[amused, teasing] Daijōbu daijōbu, mada nani mo dete nai yo.
+```
+(Line 1 is her official greeting; line 2 is her line, quoted only where both transcripts agree; line 3 is her
+grenade call as a secondary transcription; line 4 is a style demo.)

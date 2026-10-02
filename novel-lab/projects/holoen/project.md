@@ -85,6 +85,8 @@ web_search: live
 - 已畢業：Gawr Gura、Tsukumo Sana、Ceres Fauna、Nanashi Mumei
 - 停止活動、保留 affiliate：Watson Amelia（2024-09-30 起）
 - hololive JP（作者指定，2026-10-02）：Hoshimachi Suisei、AZKi（0th gen）、Nakiri Ayame（2nd gen）、Nekomata Okayu（GAMERS）
+  ——四人已收錄（2026-10-02，GPT 一輪 A／B 後作者裁決）。第二批（Marine、Noel、Lamy、Botan、Vivi、holoX 五人）卡片與表演表
+  已完成，GPT 一輪 C–F 排隊中，審查後收錄。
 - 已完成（2026-10-01）：Myth 五人、Ouro Kronii、IRyS、Ceres Fauna、Nanashi Mumei、**Advent 全員**（Shiori Novella、
   Koseki Bijou、Nerissa Ravencroft、Fuwawa Abyssgard、Mococo Abyssgard）、**Justice 全員**（Elizabeth Rose Bloodflame、Gigi Murin、
   Cecilia Immergreen、Raora Panthera；2026-10-01）。

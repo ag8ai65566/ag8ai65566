@@ -1,5 +1,21 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-02 08:00 UTC）：**JP 四人全部收錄**（A＝Suisei＋AZKi、B＝Ayame＋Okayu＋JP Senpai Pairs，一輪 GPT 後
+作者裁決收錄；EN 回填句依 B 的審查修正：Calli 的 Suisei 生日 live 嘉賓刪除、Kiara 的 HOLOTALK 標成存檔紀錄、
+Ina/Cross-Branch 只留「Kurukuru Cruise」、IRyS 的 High Tide 補 Moona、FUWAMOCO 的 AZKi/Okayu 句帶來源層級、
+Gura 的 Dodgers 措辭、Gigi 的 Okayu 節慶互動、Mumei 的 HOLOTALK 改日期；TakoNeko 別名歸 JP Senpai Pairs）。
+- **第二批**（Marine、Noel、Lamy、Botan、Vivi ＋ holoX 五人 ＋ holoX 卡 ＋ JP Senpai Pairs 2）：卡片、音檔報告
+  （research/audio-check/{marine,noel,lamy,botan,vivi,laplus,lui,koyori,chloe,iroha}.md）、表演表（export/elevenlabs/，
+  只用兩模型共有的引句、官方句與標明的 style demo）都完成；EN 卡的回填句已一起收錄（promotions.md 註明「GPT 輪次待跑」）。
+- **GPT 佇列**（`.gpt-quota.json`，11:31 UTC 重置後依序）：C＝Marine＋Noel＋Lamy（Marine run）→ D＝Botan＋Vivi＋
+  JP Senpai Pairs 2＋回填句（Botan run）→ E＝La+＋Lui＋Koyori（La+ run）→ F＝Chloe＋Iroha＋holoX＋回填句（Chloe run）
+  → 之後才是 global → justice → myth1 → myth3 → myth4 → myth2 → promise → bridge events → ties-external。
+  重建提示：`python3 tools/mk_b2_review.py`。審查回來 → 併進 claude-draft → 寫 final.md（Merge Record）→
+  `lab.py promote <run> --force --reason "Author decision (2026-10-02): … run C/D/E/F …"` → promote-changed →
+  export → `qa_packets.py holoen` → validate → commit/push。
+- 已知：V18（表演表都還沒 stamp，等 09 聲音審計後 `release.py stamp-sheets`）；V13 的 Fauna:85 是舊的 span 候選；
+  V08 baerys 別名（Bae 合併時已知）。
+
 狀態（2026-10-02 06:28 UTC）：**JP 四人完成初稿**（Suisei、AZKi、Ayame、Okayu ＋ JP Senpai Pairs）：卡片、
 音檔報告（research/audio-check/{suisei,azki,ayame,okayu}.md，日語兩模型、引句全部核對）、表演表（export/elevenlabs/）。
 GPT 一輪審查已排在 Bae 之後：A＝Suisei＋AZKi（Suisei run 的 to-gpt.free.md），B＝Ayame＋Okayu＋JP Pairs＋EN 回填句
