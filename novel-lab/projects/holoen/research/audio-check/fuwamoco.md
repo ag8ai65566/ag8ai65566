@@ -37,6 +37,32 @@ titles are shortened below for the same reason.
 
 "Words/min of speech" = words ÷ minutes inside whisper's speech segments.
 
+## Speaker attribution (kept separate from transcript agreement)
+
+Two ASR models agreeing on words says nothing about **who** spoke, and neither does a pitch median. Attribution
+here rests only on the stream itself:
+- **Fuwawa solo windows** (L93K3U4Hrjg): the stream is billed "FUWAWA SOLO" and has a single host; lines from it
+  are attributed to Fuwawa.
+- **Mococo solo windows** (Sxx4UW3XKnc): billed "MOCOCO SOLO", single host; attributed to Mococo.
+- **Duo windows** (YDP2JT3gce4): both twins on one microphone; **no line is attributed** to either twin, and
+  turn-taking ("one says…, the other answers…") is not inferred from the transcript.
+
+## Further solo-window search for Mococo (2026-10-02, CONSULT-P1-007)
+
+Claude listed all 771 FUWAMOCO entries in the archive (archive.ragtag.moe; 2026 coverage is incomplete) and
+looked for another window where Mococo speaks alone. Titles naming Mococo alone, and what the audio showed:
+- 2026-05-27 "ENIGMATIC RECOLLECTION … 【MOCOCO POV】" (AQ80hyGfzxI): a multi-member role-play event; other
+  members' voices run through the opening (0:05–0:15) and closing (2:09–2:21) windows, so lines cannot be
+  attributed to her. Not used.
+- 2024-06-26 "THE GAME OF SISYPHUS … MOCOCO vs fluffy fuwawa 【MOCOCO POV】" (hbIXj998i_Y): her twin is present
+  (she talks to and about her during the race), and speech is sparse (335 words in 15 min). Not used.
+- 2024-02-03 "MOCOCO'S BIRTHDAY 2024" (JNpjKuB1ybY): mostly singing (no lyrics are used), with her twin taking
+  part in the talk between songs. Not used.
+
+Result: the 2025 solo stream remains the only attributable Mococo window. Her performance directions stay
+**provisional** (wiki descriptions plus the thin solo sample) until a clean window is available; test them with
+the designed voice. No new quotations or measurements were added to her card from this search.
+
 ## Claims checked
 
 | Claim | Result (in the machine transcript) | Evidence (ASR, archived audio) |
@@ -46,7 +72,7 @@ titles are shortened below for the same reason.
 | Very high voices | **Measured:** Fuwawa solo medians 330–406 Hz; Mococo's quiet 2025 solo 359–423 Hz (thin sample); duo 401–410 Hz (the combined recording; not assignable to either twin). Measurements describe the sampled recording and ASR segmentation, not isolated voices. Not a ranking. | tables above |
 | Fuwawa: chatty, polite, confident nonsense (wiki) | **Consistent.** "Hello, ma'am. Nice day, ma'am." "Should I run? Is running suspicious?" "I'm blending in right now, right?"; "okay" 42, "right?" 34, "maybe" 21 in about an hour. | [0:12:13](https://youtu.be/L93K3U4Hrjg?t=733); [1:12:32](https://youtu.be/L93K3U4Hrjg?t=4352) |
 | Fuwawa defers Pup Talks to Mococo | **Confirmed.** After her own gym pep talk ("…be the main character of the gym") she says Moco-chan is "just better suited for it." Her description of her own voice differs between the models and is not quoted. | [5:48:33](https://youtu.be/L93K3U4Hrjg?t=20913); [5:52:55](https://youtu.be/L93K3U4Hrjg?t=21175) |
-| Duo echo / "sync" (wiki) | **Consistent.** "yeah" about once every 40 words; "Right! … Exactly."; "Did we see any princesses? No. No. No princesses." | [2:12:18](https://youtu.be/YDP2JT3gce4?t=7938); [0:31:51](https://youtu.be/YDP2JT3gce4?t=1911) |
+| Duo echo / "sync" (wiki) | **Consistent.** "yeah" about once every 40 words; brief echoing confirmations (separate words, not joined into a quote; speakers not attributed); "But Chewbacca is basically a princess. Chewbacca is the princess." (shared span) | [2:12:18](https://youtu.be/YDP2JT3gce4?t=7938); [0:31:51](https://youtu.be/YDP2JT3gce4?t=1911) |
 | Mococo's vowel tail, sneezes (wiki) | **Not detectable** by transcription. Kept from the wiki. | — |
 | No swearing | **Consistent** in all windows. | — |
 

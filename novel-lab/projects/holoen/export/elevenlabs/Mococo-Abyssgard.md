@@ -11,7 +11,9 @@
 squeaky; quick when excited; warm and earnest when encouraging someone, building to a cheer; comic timing
 on her own name."
 - Register basis: qualitative only. Her solo sample is thin and the duo recordings mix both twins, so no
-  numbers are used (see `research/audio-check/fuwamoco.md`). Her notes rest mainly on wiki descriptions.
+  numbers are used (see `research/audio-check/fuwamoco.md`). Her notes rest mainly on wiki descriptions; a
+  2026-10-02 search of the archived channel found no other window where she can be heard alone, so treat every
+  direction here as provisional and settle it in your own voice tests.
 - Design her voice as clearly distinct from Fuwawa's (see §7): brighter and squeakier, where Fuwawa is softer
   and airier.
 

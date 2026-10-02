@@ -398,7 +398,7 @@ Source of the CONSULT-* findings: `runs/20261001-1557-check-Project-Consult/gpt-
 | CONSULT-P1-004 | Official Serendipity units missing from Groups / world aliases | applied (Last Writes, Octo'clock, Rocku Wawa, BaeRyS, Bloodraven, B.F.F; Autofister already present) | snapshot commit |
 | CONSULT-P1-005 | 2026-09-07 restructuring relied on a wiki | applied (official announcement cited on "hololive") | snapshot commit |
 | CONSULT-P1-006 | Kronii ASR report: "Agrees" rows that differ lexically | applied (Kronii rows rewritten by hand; all 151 other bare "Agrees" rows given computed shared spans by `tools/asr_spans.py`; 36 partial rows listed in `research/audio-check/partial-spans.md` for task 09) | this commit |
-| CONSULT-P1-007 | Mococo: sparse solo evidence; speaker attribution | pending (task 07 window; task 09) | — |
+| CONSULT-P1-007 | Mococo: sparse solo evidence; speaker attribution | task 07 part applied: whole-channel archive search found no other attributable solo window (2026 "MOCOCO POV" is a multi-member role-play; 2024 candidates include her twin); attribution basis now stated separately in research/audio-check/fuwamoco.md; card and sheet say directions stay provisional. Quotation gate stays with task 09 | this commit |
 | CONSULT-P1-008 | Performance sheets: settings scale; stale-sheet hashes | scale applied (UI % and API decimals); hashes pending (task 10 release builder) | snapshot commit |
 | CONSULT-P2-001 | Myth sixth-anniversary live missing from shared timeline | applied as "announced, not verified as held" on Myth and TakaMori (only an announcement post is cited; no official event page or archive found by Claude 2026-10-01); propagation to History/Concerts waits for task 08 evidence | this commit |
 | CONSULT-P2-002 | Audio Tags boilerplate before the distinguishing cue | deferred (task 09, all 18 cards at once) | — |
@@ -437,7 +437,7 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 ```json
 {
  "baseline": "2026-09-30",
- "commit": "c8c7c08",
+ "commit": "c06ffa3",
  "cast": [
   {
    "name": "Cecilia Immergreen",
@@ -629,7 +629,7 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 
 # Audit packet: justice
 
-Snapshot: git c8c7c08. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git c06ffa3. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
@@ -791,10 +791,10 @@ Incoming claims continue in `justice-incoming.md`.
 
 # Audit packet: justice (incoming claims)
 
-Snapshot: git c8c7c08.
+Snapshot: git c06ffa3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|holoJustice|Grem Reaper|FiddleFlame|Erby Berby|Immerhater|TimeChaser|Gigi Murin|Autofister|Bloodraven|Elizabeth|Da Fister|Raviolin|Gi Murin|Justice|Cecilia|GeeGee|HoloEU|G Pain|Lizzie|Raora|B.F.F|CCGG|Rara|Ceci|Gigi|LYRA|Cece|RPGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|FiddleFlame|holoJustice|Gigi Murin|Bloodraven|Immerhater|TimeChaser|Erby Berby|Autofister|Da Fister|Elizabeth|Gi Murin|Raviolin|Justice|Cecilia|Lizzie|GeeGee|HoloEU|G Pain|Raora|B.F.F|Cece|Gigi|Ceci|Rara|LYRA|RPGG|CCGG|Liz)(
 
 ### from Ceres Fauna
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Cecilia Immergreen: a book and shoujo-manga tropes ranking (2024; "Green Women").

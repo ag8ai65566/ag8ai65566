@@ -1,6 +1,6 @@
 {
- "built_at": "2026-10-02T02:03Z",
- "commit": "c8c7c08",
+ "built_at": "2026-10-02T02:15Z",
+ "commit": "c06ffa3",
  "baseline": "2026-09-30",
  "files": {
   "bible/characters/Cecilia-Immergreen.md": "71a657c0b76975dbf2a37a2ac4ebdd1d39abecdffe536c7f29219b2836ba71f4",
@@ -11,7 +11,7 @@
   "bible/characters/Gigi-Murin.md": "b738bbb718384a1461e1f3132740e608b8560f13655312bb40ae26a60338b21a",
   "bible/characters/IRyS.md": "a87383909b3a3308dbac97fdb365c5d995f7df6392768ddc3de639c3d43db110",
   "bible/characters/Koseki-Bijou.md": "83bb9fa8eaeb6efa40f7621fd7410b164fb3ce24cf048c922d31293f6f261aa2",
-  "bible/characters/Mococo-Abyssgard.md": "e1290a30cae5916c017998dceb272c4beed3a59dbfd6370940ec1487f39143a7",
+  "bible/characters/Mococo-Abyssgard.md": "93bff4173364895aca8f9e7bb022f155944034f599d49b4129a70bd4df27329d",
   "bible/characters/Mori-Calliope.md": "1d1db639dda35fbe4ac65753e29d58cd84641c38692fab616a00c73c204a4c6d",
   "bible/characters/Nanashi-Mumei.md": "6e7d1d1f7ba0a1affb062ed802936b2f50bcc0c23cca1e498259484f76b73792",
   "bible/characters/Nerissa-Ravencroft.md": "c0292858811c87917d1150d0c58f2ecb8a9647b2ccbbf887a4f8917a8b345bf4",
@@ -56,12 +56,12 @@
     {
      "packet": "research/qa/packets/myth1.md",
      "chars": 10044,
-     "sha256": "dd9746d257d7514644181fa5d9151e5b1ed4d3bda11fea9cb3b0f91fdb07f7cd"
+     "sha256": "009441fd5faa31afec98fc22dcd5b977199d7b242c4d05cfb747411b3741bfa6"
     },
     {
      "packet": "research/qa/packets/myth1-incoming.md",
      "chars": 67815,
-     "sha256": "c2bdce34d04511ad35d16edec27262e64f2f53edb43d25df21996c82baad4fa9"
+     "sha256": "bc5317c8ac26f3861c3bf62edf7d1546393579940e5f1470d1c3e8ddab0a32aa"
     }
    ]
   },
@@ -74,12 +74,12 @@
     {
      "packet": "research/qa/packets/myth3.md",
      "chars": 8580,
-     "sha256": "7809840a5849e1a87866bd0f2448cc2b147229d4bcd1c32985df42bd7f54ec0e"
+     "sha256": "07ccddf7ab07d39a3b6e4adc6041d81b9c500b0ec048098ce6cf149be8764a7c"
     },
     {
      "packet": "research/qa/packets/myth3-incoming.md",
      "chars": 68168,
-     "sha256": "3ff3634fa2514e8d6a72c9fb0955c6eed53fb821285d482ec288c136fe63934f"
+     "sha256": "34aefce610141e9c30e8cae3eadb8cdc3170e670fc2e6c0b6758289f9df41b9a"
     }
    ]
   },
@@ -92,7 +92,7 @@
     {
      "packet": "research/qa/packets/myth4.md",
      "chars": 51729,
-     "sha256": "d0af4f46508d15fdc251dc7800105398ca78dd07bd1e38eeef60a7ea5b51dfc1"
+     "sha256": "060d90b534855649e243315a678107efb4b377eb1245da1165d406e2105444f7"
     }
    ]
   },
@@ -108,12 +108,12 @@
     {
      "packet": "research/qa/packets/myth2.md",
      "chars": 18120,
-     "sha256": "9a2615e75899a288494373d22ea31e9d8c969542a4df7b1012546d5be8aae252"
+     "sha256": "f65be0eeaabe43ce9c871ac9b64881dbf89cef831f1995561e0c110f3c6c65f0"
     },
     {
      "packet": "research/qa/packets/myth2-incoming.md",
      "chars": 56000,
-     "sha256": "29ac4c880ca5cc6d61a872ab99fcdbcaa4913c1d9ab46cd877430ba37621becd"
+     "sha256": "26eb0e18776cda42536f1cba6bb184a0534a4641d26b244a5dbc7b8583544dd7"
     }
    ]
   },
@@ -134,12 +134,12 @@
     {
      "packet": "research/qa/packets/promise.md",
      "chars": 34182,
-     "sha256": "89b1a79b5dd39cfd4501b31355aaa3dfd28ebf304d37ab8c2e8e9eab5a2e155b"
+     "sha256": "0dda91d2b66a2f6fd69644f8389e8e85b2d354cc9c8dd23f6e08bf029fb76ede"
     },
     {
      "packet": "research/qa/packets/promise-incoming.md",
      "chars": 59907,
-     "sha256": "7ffc25aae69c83a2bdcc553ed1339cac1452b55050cce0b2313cc56c574791a0"
+     "sha256": "b873c3066f42a4272989ec012b10d73b15c957fc98eac12713da0b131c370ae4"
     }
    ]
   },
@@ -158,12 +158,12 @@
     {
      "packet": "research/qa/packets/advent.md",
      "chars": 32514,
-     "sha256": "e7ef8a301ed115b53f0c3e71beb2b7dea31139c30bb9265d20059fb6825ac971"
+     "sha256": "efc83b6f913ee71aabfc1c65c5ea8d4aa1fed5f5defcd4e0468e637a22931b9e"
     },
     {
      "packet": "research/qa/packets/advent-incoming.md",
      "chars": 71297,
-     "sha256": "da288f492fbcc64f7624ab3a0b56eecb1bbee26b727acd2882f6f3e5cd4604ec"
+     "sha256": "6b3595e6f24b2932f909d659d323a2845705fab87448ac8603c1e8e3a892dad1"
     }
    ]
   },
@@ -180,12 +180,12 @@
     {
      "packet": "research/qa/packets/justice.md",
      "chars": 30837,
-     "sha256": "70c31798aeec01d55847ad635f5b8721632d47ab36a55f84ca31ae8c8bff8a11"
+     "sha256": "90da8540021c66da69e0b28f1c46f9d9f5f6edda2794fae025e5c90030fb21dc"
     },
     {
      "packet": "research/qa/packets/justice-incoming.md",
      "chars": 39284,
-     "sha256": "606172a125cc00d61b30b8c743f86f0e42e7609cb3085190c7bf02e7f95d35a2"
+     "sha256": "4828b2b5965a2f624472cc4511c3f4e2e98385dbbda002422d06011897502b53"
     }
    ]
   },
@@ -203,12 +203,12 @@
     {
      "packet": "research/qa/packets/global.md",
      "chars": 28020,
-     "sha256": "4ce2638706bf8b8629361e466b616cac021f2837b277e23b121e9be6f7abc5f1"
+     "sha256": "dba333d99889a91e913d26f2ce31843df97fc86ece408f6d72dcc53f1476f68b"
     },
     {
      "packet": "research/qa/packets/global-incoming.md",
      "chars": 51321,
-     "sha256": "b5dc718306280fef7c0a9a2cb028558235196f13851d5464e12730bf35865faa"
+     "sha256": "a32788115cc1ee5323266ff83a5384f7ba90f34517c3dc3256be5b5e6a62785a"
     }
    ]
   },
@@ -217,22 +217,22 @@
     {
      "packet": "research/qa/packets/events.md",
      "chars": 68175,
-     "sha256": "258dd897c5502d4209bd0e1243dea54669ad8b215e51897fc735082250ab2ec7"
+     "sha256": "c71f134290211c7ab6ac216112f948bfdbc94ea77c06d30687a5848d83500f76"
     },
     {
      "packet": "research/qa/packets/ties-cast.md",
      "chars": 177026,
-     "sha256": "a3a60641b60365f0fe0d87e24f9ca8385ae8035f0b201bdcfa8192a50eac4266"
+     "sha256": "459313c5153184aaa7bbe1eeafa6b3d8db0b855aa8f0d49b80efec156a14478c"
     },
     {
      "packet": "research/qa/packets/ties-external.md",
      "chars": 37605,
-     "sha256": "27eba9d368d433c063d80fec9b09be94c30166b4081beef2cc0f2d7b210ad256"
+     "sha256": "deab2d553100a6aebb413c5de474aaca63ee54837c2d8948717c4f02a6b8cacd"
     },
     {
      "packet": "research/qa/packets/ties-groups.md",
      "chars": 97716,
-     "sha256": "b9f4ff94e81fe05ee166716cc33711dce1318536b566eb79cd8746892829ea64"
+     "sha256": "27e93a7d96cec87afe1292a490ccd528028928ad5ee45879a03625a99c43da03"
     }
    ]
   }

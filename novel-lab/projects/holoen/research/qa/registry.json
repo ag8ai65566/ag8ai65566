@@ -1,7 +1,7 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "c8c7c08",
+ "commit": "c06ffa3",
  "files": {
   "bible/characters/Cecilia-Immergreen.md": "71a657c0b76975dbf2a37a2ac4ebdd1d39abecdffe536c7f29219b2836ba71f4",
   "bible/characters/Ceres-Fauna.md": "58177a0ddea108b22eb080586981aa488344fed46d7cdb29bfbd867c2753f261",
@@ -11,7 +11,7 @@
   "bible/characters/Gigi-Murin.md": "b738bbb718384a1461e1f3132740e608b8560f13655312bb40ae26a60338b21a",
   "bible/characters/IRyS.md": "a87383909b3a3308dbac97fdb365c5d995f7df6392768ddc3de639c3d43db110",
   "bible/characters/Koseki-Bijou.md": "83bb9fa8eaeb6efa40f7621fd7410b164fb3ce24cf048c922d31293f6f261aa2",
-  "bible/characters/Mococo-Abyssgard.md": "e1290a30cae5916c017998dceb272c4beed3a59dbfd6370940ec1487f39143a7",
+  "bible/characters/Mococo-Abyssgard.md": "93bff4173364895aca8f9e7bb022f155944034f599d49b4129a70bd4df27329d",
   "bible/characters/Mori-Calliope.md": "1d1db639dda35fbe4ac65753e29d58cd84641c38692fab616a00c73c204a4c6d",
   "bible/characters/Nanashi-Mumei.md": "6e7d1d1f7ba0a1affb062ed802936b2f50bcc0c23cca1e498259484f76b73792",
   "bible/characters/Nerissa-Ravencroft.md": "c0292858811c87917d1150d0c58f2ecb8a9647b2ccbbf887a4f8917a8b345bf4",

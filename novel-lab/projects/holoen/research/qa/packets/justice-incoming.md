@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git c8c7c08.
+Snapshot: git c06ffa3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|holoJustice|Grem Reaper|FiddleFlame|Erby Berby|Immerhater|TimeChaser|Gigi Murin|Autofister|Bloodraven|Elizabeth|Da Fister|Raviolin|Gi Murin|Justice|Cecilia|GeeGee|HoloEU|G Pain|Lizzie|Raora|B.F.F|CCGG|Rara|Ceci|Gigi|LYRA|Cece|RPGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|FiddleFlame|holoJustice|Gigi Murin|Bloodraven|Immerhater|TimeChaser|Erby Berby|Autofister|Da Fister|Elizabeth|Gi Murin|Raviolin|Justice|Cecilia|Lizzie|GeeGee|HoloEU|G Pain|Raora|B.F.F|Cece|Gigi|Ceci|Rara|LYRA|RPGG|CCGG|Liz)(
 
 ### from Ceres Fauna
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Cecilia Immergreen: a book and shoujo-manga tropes ranking (2024; "Green Women").

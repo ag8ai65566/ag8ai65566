@@ -2,3 +2,4 @@
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 1dd1f93292c2）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 f3c8a69c24b0）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 e1290a30cae5）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
+- 2026-10-02 02:15 作者裁決收錄 final.md（sha256 93bff4173364）：Author decision (2026-10-02): CONSULT-P1-007, Mococo solo-window search recorded; voice directions stay provisional

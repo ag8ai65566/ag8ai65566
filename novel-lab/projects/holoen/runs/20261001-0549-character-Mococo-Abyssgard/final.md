@@ -26,7 +26,9 @@ sw_section: Characters
 > about 1 hour of a 2026 duo chat (shared with Fuwawa; see research/audio-check/fuwamoco.md). The solo stream is
 > quiet and partly about private matters (not used), so it yields almost no usable lines; the voice notes below rest
 > mainly on the wiki's descriptions and on the duo windows, where the two voices cannot be separated by
-> transcription. Not a listening check.
+> transcription. Not a listening check. On 2026-10-02 Claude searched the whole archived FUWAMOCO channel for
+> another window where she speaks alone and found none that can be attributed to her (a 2026 "MOCOCO POV" stream
+> is a multi-member role-play; the 2024 candidates include her twin), so her voice directions stay provisional.
 
 ## One-line Concept
 "The Fuzzy One," the younger, rambunctious twin demonic guard dog who spent her time in prison watching
@@ -274,8 +276,13 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
   checked by Claude against the official Serendipity report and announcements:** Mio's "Dottabatta Chindouchuu" stage with Ina added (official report).
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied CLAUDE-SCOPE-001
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
+- **2026-10-02, CONSULT-P1-007 (solo evidence and speaker attribution):** whole-channel archive search for another
+  attributable solo window found none (research/audio-check/fuwamoco.md, "Further solo-window search"); the audio
+  report now states the attribution basis separately from transcript agreement. Voice directions stay provisional;
+  no lines or measurements added.
 
 ## Open Questions
-1. There is no clean solo sample of Mococo's ordinary speech in the archive window used (her 2025 solo is
-   quiet and thin; the duo mixes both twins). Her voice notes rest on the wiki. Look
-   for a 2026 solo segment later?
+1. There is no clean solo sample of Mococo's ordinary speech in the archive (her 2025 solo is quiet and
+   thin; the duo mixes both twins; the 2026-10-02 search of the whole archived channel found no other
+   attributable window). Her voice notes rest on the wiki and stay provisional; test them with the
+   designed voice.

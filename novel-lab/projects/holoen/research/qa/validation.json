@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-02T02:03Z",
- "snapshot": "aed1ac2c367de41e7dc557792d1854e48563dad4dd58348f525dddf3bfd54afc",
+ "checked_at": "2026-10-02T02:15Z",
+ "snapshot": "b7ba3f3c50db8586d3a14a6e834a9225f804a2e8d45b9894726409af673d7487",
  "blocking_failures": [
   "V10",
   "V11",
@@ -20,7 +20,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot aed1ac2c367de41e7dc557792d1854e48563dad4dd58348f525dddf3bfd54afc",
+    "snapshot b7ba3f3c50db8586d3a14a6e834a9225f804a2e8d45b9894726409af673d7487",
     "66 inputs"
    ],
    "finding_ids": []

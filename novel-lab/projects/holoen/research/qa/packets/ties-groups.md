@@ -1,6 +1,6 @@
 # Bridge packet: ties (claims naming four or more people)
 
-Snapshot: git c8c7c08. Each listed once with the people it names.
+Snapshot: git c06ffa3. Each listed once with the people it names.
 
 - `bible/characters/Cecilia-Immergreen.md › Background Timeline` [Gigi Murin, Mori Calliope, Shiori Novella, Tsunomaki Watame, Vestia Zeta]: | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice, "CCGG MADNESS" as Autofister with Gigi, "Break It Down" with Vestia Zeta and Shiori, "Cloudy Sheep" with Tsunomaki Watame and Calli (day 1); "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official CI4, CI8] |
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map` [Gawr Gura, Hakos Baelz, IRyS, Koseki Bijou]: | Gawr Gura, IRyS, Hakos Baelz | Seniors | Keep Talking and Nobody Explodes and The Forest with Gura (2025); Elden Ring Nightreign with IRyS and Bijou (2025); "BratTea" with Bae (secondary) | [Observed CI2, CI3] |
