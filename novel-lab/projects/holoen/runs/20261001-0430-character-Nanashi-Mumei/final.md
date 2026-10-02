@@ -347,6 +347,7 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
   Kronii and Bae (archive F_EVW5Ig5QE).
 - **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
   span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
+- **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the Mad-Lib theatre (p_vaBM3sjro, 2021-09-10, "ft. Hakos Baelz") and the 2025-04-24 R.E.P.O. "PROMISE COLLAB" (F_EVW5Ig5QE; its description names IRyS, Kronii and Bae) were confirmed by Claude in the archive's metadata, which the reviewer could not open; no change.
 
 ## Open Questions
 1. Wiki quote lines ("Civilization is temporary…", the "moom" verb) are secondary, without timestamps; the

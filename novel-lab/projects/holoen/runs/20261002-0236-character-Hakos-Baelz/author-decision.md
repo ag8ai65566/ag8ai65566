@@ -1,0 +1,1 @@
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 bf9f4b49eeab）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude

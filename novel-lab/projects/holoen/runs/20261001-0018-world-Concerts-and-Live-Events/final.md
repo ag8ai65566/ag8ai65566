@@ -72,7 +72,7 @@ Recurring events / culture.
 | Nerissa Ravencroft | 6th fes day 1 (2025-03-08); 3D concert "Requiem for Love – A JukeBox Musical" (2025-05-24, with Calli and IRyS as guests); Advent's "On the Run!" (2025-08-29); World Tour '24 panels with Elizabeth (Atlanta, Kuala Lumpur); World Tour '25 lead; Serendipity with Elizabeth | Nerissa file N2, N3; S1 |
 | Gawr Gura | Final 3D mini live on her graduation day (2025-05-01) | Gura file G5 |
 | Watson Amelia | As an affiliate: guest at Kronii's 2026 birthday live | Kronii file K33 |
-| Hakos Baelz | -Breaking Dimensions- (2024): "Our Promise," "BLUE CLAPPER" with Calli, IRyS and Bijou, solo "GEKIRIN," "High Tide"; -All for One- (2025): "R x R x R" with Calli, "Countach" with Gigi and Ollie, solo "La Roja (Arrange ver.)"; birthday 3D lives "-KAGURA- Dance of the Gods" (2025) and "ReCOLOR" (2026); final solo act at the 2026 fes ("Idol," her own choreography; her account); Serendipity: BaeRyS with IRyS, "HELP!!" with Kobo and Elizabeth; first solo concert "REGALIA" announced for 2026-12-01 (after the baseline) | S8, S9, S11; Bae file HB2, HB7, HB20 |
+| Hakos Baelz | -Breaking Dimensions- (2024): "Our Promise," "BLUE CLAPPER" with Calli, IRyS and Bijou, solo "GEKIRIN," "High Tide"; -All for One- (2025): "R x R x R" with Calli, "Countach" with Gigi and Ollie, solo "La Roja (Arrange ver.)"; birthday 3D lives "-KAGURA- Dance of the Gods" (2025) and "ReCOLOR" (2026); "Idol" as the final solo number of STAGE 3 at the 2026 fes (secondary setlist; the choreography and breakdance finale are her account); Serendipity: BaeRyS with IRyS, "HELP!!" with Kobo and Elizabeth; first solo concert "REGALIA" scheduled for 2026-12-01 (after the baseline; official announcement) | S8, S9, S11; Bae file HB2, HB7, HB11, HB12, HB20 |
 
 ## How It Works in Stories
 - Concerts are shown through the avatar performance and the members' talk before and after: nerves,
@@ -180,6 +180,7 @@ Glowsticks in member colors; an LED wall; a new 3D outfit's reveal; a call-and-r
   from the official report added to the dossier and Description.
 - **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** Calli's "UNCUT ROCK!!" birthday 3D live, Kiara's 2026 birthday 3D live and Myth's "Seasons From Within" added.
 - **2026-10-02, cast expansion (author: add Hakos Baelz):** Bae's stages from the official -Breaking Dimensions- and -All for One- reports added; a Bae row in The Cast on Stage.
+- **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** Bae's fes solo is scoped to STAGE 3 ("Idol," the final solo number of that stage; Stage 4 followed on another day); REGALIA's date cites the official announcement (https://hololive.hololivepro.com/en/news/20260928-01-412/); the KAGURA and ReCOLOR birthday lives remain wiki-sourced entries pending their production pages.
 
 ## Open Questions
 1. Which characters performed at the four EN concerts (2023–2025 line-ups) was not checked; only

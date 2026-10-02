@@ -9,3 +9,5 @@
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 42a05e475b44）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 9398b6643d78）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
 - 2026-10-02 03:25 作者裁決收錄 final.md（sha256 247674a90936）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 9da0b903d851）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 540a543cbaf8）：Author decision (2026-10-02): Hakos Baelz added; Calli Relationships trimmed to the 350-word limit

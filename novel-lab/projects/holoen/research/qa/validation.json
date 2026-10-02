@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-02T04:20Z",
- "snapshot": "e29a6c891d7ce427b210a5bc7fa2d3ebb62a02fc21b40b9268849b682adaebcf",
+ "checked_at": "2026-10-02T07:02Z",
+ "snapshot": "2cde1945adc8f784b4c145af8cfa66621ba08bb15df50c63d5523a8d77e9beb3",
  "blocking_failures": [
   "V02",
   "V10",
@@ -21,8 +21,8 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot e29a6c891d7ce427b210a5bc7fa2d3ebb62a02fc21b40b9268849b682adaebcf",
-    "67 inputs"
+    "snapshot 2cde1945adc8f784b4c145af8cfa66621ba08bb15df50c63d5523a8d77e9beb3",
+    "73 inputs"
    ],
    "finding_ids": []
   },
@@ -33,11 +33,11 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "characters 18/19",
-    "world 24/25",
-    "sheets 19/19",
-    "sheet/card mismatch: ['Hakos-Baelz']",
-    "roster vs bible: ['Hakos-Baelz', 'Hakos-Baelz-Pairs']"
+    "characters 19/33",
+    "world 25/28",
+    "sheets 23/33",
+    "sheet/card mismatch: ['AZKi', 'Hoshimachi-Suisei', 'Nakiri-Ayame', 'Nekomata-Okayu']",
+    "roster vs bible: ['AZKi', 'Hakui-Koyori', 'Hoshimachi-Suisei', 'Houshou-Marine', 'JP-Senpai-Pairs', 'JP-Senpai-Pairs-2', 'Kazama-Iroha', 'Kikirara-Vivi', 'Laplus-Darknesss', 'Nakiri-Ayame', 'Nekomata-Okayu', 'Sakamata-Chloe', 'Shirogane-Noel', 'Shishiro-Botan', 'Takane-Lui', 'Yukihana-Lamy', 'holoX']"
    ],
    "finding_ids": []
   },
@@ -89,21 +89,22 @@
   {
    "check_id": "V08",
    "title": "Alias ownership",
-   "status": "pass",
+   "status": "warn",
    "severity": "warn",
    "locator": null,
-   "evidence": [],
+   "evidence": [
+    "baerys: ['Hakos Baelz Pairs', 'hololive -Promise-']",
+    "chadcast: ['Hakos Baelz Pairs', 'IRyS and Nerissa Pairs']"
+   ],
    "finding_ids": []
   },
   {
    "check_id": "V09",
    "title": "Units and retrieval coverage",
-   "status": "warn",
+   "status": "pass",
    "severity": "warn",
    "locator": null,
-   "evidence": [
-    "IRyS: Groups lacks CHADCast"
-   ],
+   "evidence": [],
    "finding_ids": []
   },
   {
@@ -124,8 +125,8 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "relationship web: 16 one-way ties (coverage, not errors; tools/web_check.py)",
-    "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-global.md"
+    "relationship web: 5 one-way ties (coverage, not errors; tools/web_check.py)",
+    "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
@@ -136,7 +137,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-global.md"
+    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
@@ -154,7 +155,7 @@
     "bible/characters/IRyS.md:90 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
     "bible/characters/IRyS.md:130 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty.\"",
     "bible/characters/IRyS.md:138 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
-    "bible/characters/Nanashi-Mumei.md:272 quotes past a shared ASR span (mumei.md 0:26:39): \"), brags that she has never been scared of anything, and admits most of EN could beat her at arm wrestling. Caffeine makes her loud and spontaneous; surprise makes her screech. She loves drawing, rhythm and simulation games, shooters like Overwatch and DOOM, Vocaloid and\"",
+    "bible/characters/IRyS.md:249 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
     "bible/characters/Ninomae-Inanis.md:75 quotes past a shared ASR span (ina.md 0:04:52): \"That's the Forbidden WAH. We don't say that in public.\"",
     "bible/characters/Ninomae-Inanis.md:131 quotes past a shared ASR span (ina.md 0:04:52): \"That's the Forbidden WAH. We don't say that in public.\"",
     "bible/characters/Ninomae-Inanis.md:131 quotes past a shared ASR span (ina.md 0:04:52): \"a fourth [WAH] with a different caption, and\"",
@@ -165,6 +166,7 @@
     "bible/characters/Ouro-Kronii.md:201 quotes past a shared ASR span (kronii.md 1:39:19): \"Okay, that was my bad.\"",
     "bible/characters/Shiori-Novella.md:255 quotes past a shared ASR span (shiori.md 2:23:16): \"I'm really bad at remembering names.\"",
     "bible/characters/Takanashi-Kiara.md:226 quotes past a shared ASR span (kiara.md 2:42:58): \"You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis.\"",
+    "bible/characters/Takanashi-Kiara.md:387 quotes past a shared ASR span (kiara.md 2:42:58): \"You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis.\"",
     "export/elevenlabs/Ceres-Fauna.md:40 quotes past a shared ASR span (fauna.md 0:45:36): \"If you heard your name, you will now be the recipient of my next spell.\"",
     "export/elevenlabs/Fuwawa-Abyssgard.md:64 quotes past a shared ASR span (fuwamoco.md 5:55:28): \"It was a lot of fun! Bau bau!\"",
     "export/elevenlabs/IRyS.md:32 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
@@ -189,11 +191,10 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "3 automated candidates for semantic review",
-    "Takanashi-Kiara · Relationships: …nesian collaborator (\"PavoNashi\"; a VR \"vacation\"; the bird unit HOLOTORI). Ko…",
+    "2 automated candidates for semantic review",
     "Cross-Branch-Friends · Rules: …ibe relative seniority, not language or nationality; forms of address and levels …",
     "hololive · Description: …buted earlier or later, not language or nationality; formality varies by relation…",
-    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-global.md"
+    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
@@ -204,7 +205,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-global.md"
+    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
@@ -241,6 +242,7 @@
     "Mori-Calliope: no source hash (run stamp-sheets after reviewing the sheet)",
     "Gigi-Murin: no source hash (run stamp-sheets after reviewing the sheet)",
     "IRyS: no source hash (run stamp-sheets after reviewing the sheet)",
+    "Hakos-Baelz: no source hash (run stamp-sheets after reviewing the sheet)",
     "Gawr-Gura: no source hash (run stamp-sheets after reviewing the sheet)",
     "Raora-Panthera: no source hash (run stamp-sheets after reviewing the sheet)",
     "Koseki-Bijou: no source hash (run stamp-sheets after reviewing the sheet)",

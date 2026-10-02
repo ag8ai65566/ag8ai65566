@@ -261,7 +261,7 @@ and SNOTCast are fan or collab names.
 | Sakura Miko | JP senior | Calls her "George" | [Observed G2 infobox] |
 | Ceres Fauna, Nanashi Mumei, Ouro Kronii | Council members ("SNOTCast") | Shared podcast-style collabs; Kronii rivalry and "senpai tax" bits are reported but [Unverified] (title-level only) | [Observed G2 §Relationships; G8b titles] |
 | IRyS | Promise member | Sincere praise of IRyS's new look (clip title) | [Observed G8b title] |
-| Hakos Baelz | Council kouhai | An Urban Dictionary Challenge with Kronii and Mumei (2022-08-20, Bae's stream) | [Bae file HB3, HB5, HB8, HB20] |
+| Hakos Baelz | Council kouhai | An Urban Dictionary Challenge with Kronii and Mumei (2022-08-20, Bae's stream; archived metadata jWvpe0Hs5wI) | [Bae file HB3, HB5, HB8, HB20] |
 
 ## Arc
 - **Starting point:** the public persona as of her graduation (May 2025); she is a hololive alum on the
@@ -482,6 +482,7 @@ Watson Amelia (affiliate): a close Myth friend and frequent early collaborator (
   span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 - **2026-10-02, cast expansion (author: add Hakos Baelz, and complete everyone's relationship web):** Relationships gained Bae (sources in Bae's file, HB3/HB5/HB8/HB20, and the world card "Hakos Baelz Pairs").
 - **2026-10-02, cast expansion (author: add Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu):** Suisei added (hololive night at Dodger Stadium, 2024-07-05; official post-event report, news 20240731-01-92).
+- **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the reviewer could not open the Urban Dictionary Challenge page and asked to omit it pending access; Claude confirmed the stream (jWvpe0Hs5wI, 2022-08-20, "w/ Kronii, Mumei and Gura") in the archive's metadata, so it stays.
 
 ## Open Questions
 1. "Fuck" is attested once in the 4.4-hour Resident Evil 2 audio of 2021 (both models hear it; the

@@ -5,3 +5,4 @@
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 4a52aba0c4f4）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 83bb9fa8eaeb）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 d45528c816b9）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 d519e3581238）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)

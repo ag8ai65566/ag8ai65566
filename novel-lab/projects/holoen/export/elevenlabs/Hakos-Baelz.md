@@ -8,21 +8,25 @@
 "Perfect audio quality. Young woman, Australian accent, bright, punchy mid-range voice; fast, loud and
 run-on when telling a story; louder and higher for jokes, flat and deadpan for a dry 'bruh'; warm and sincere
 when cheering someone on."
-- Register basis: 2026 chat windows measured lower than most of her kouhai (window medians about 200–233 Hz;
-  `research/audio-check/bae.md`). Keep the accent natural, never a caricature.
+- Register and energy are creative choices for an original voice; the recording measurements in
+  `research/audio-check/bae.md` are not synthesis targets. The accent is a secondary description of her public
+  delivery: keep it natural, never a caricature.
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **40%** (API `0.40`) (she swings between loud storytelling, deadpan and warmth).
-  Similarity **75%** (API `0.75`).
+- `eleven_v4`. Stability **40%** (API `0.40`) and Similarity **75%** (API `0.75`) are untested starting
+  choices (she swings between loud storytelling, deadpan and warmth); Similarity refers only to the selected
+  original voice.
 - Pace comes from the designed voice plus `[energetic, fast]` or `[warm, sincere]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script
-- "like," "yeah," "okay," "oh my god," "That's crazy"; "senpai" for seniors even in English.
-- Thanking gifts: "thank you so much" plus "boom, boom, boom."
+- "like," "yeah," "okay," "oh my god," "crazy" (first-model word counts, not quotations); "senpai" for seniors
+  even in English.
+- Thanking gifts: rhythmic, repeated thanks ("thank you so much").
+- Sign-off: "okey dokey" … "bye-bye" (two short spans both transcripts share).
 - Small failures blamed on sabotage: "It was sabotage." "It's a conspiracy."
 - Answering her own questions: "Who would think that's a good idea? Me."
 - A flat "bruh" for absurdity; warm "You're doing great" for someone who is struggling.
-- Casual swearing ("damn," "God damn it," "hell yeah").
+- Casual swearing: "hell yeah" (shared span); milder curses are first-model observations only.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
@@ -40,12 +44,12 @@ With people (provisional): IRyS `[bickering, affectionate]`; Kronii `[teasing]`;
 `[loud, chaotic]`; Bijou `[playful]`.
 
 ## 5. Signature sounds
-- "boom, boom, boom" (spoken, while thanking).
-- `[laughs]`, `[gasps]` (tag only).
+- "Bruh." (spoken, deadpan).
+- `[laughs]`, `[gasps]` (tag only; proposed performance choices, not listening observations).
 
-## 6. Pronunciation (provisional; test)
-- Baelz `/bɛlz/` ("bells"; many members say `/beɪlz/`) · Hakos `/ˈheɪkɒs/` ("hake-oss") · Bae `/beɪ/` ·
-  Febaerary `/ˈfɛbeɪˌɛɹi/` (unverified)
+## 6. Pronunciation
+- Untested: listen to how the chosen voice says "Baelz," "Hakos," "Bae" and "Febaerary" and adjust the spelling
+  in the script if needed. No phonetic guide is given until a listening check exists.
 
 ## 7. Don't
 - A slow, sleepy or breathy default; cruelty; a villain voice outside a clear bit; an accent caricature; a
@@ -59,5 +63,5 @@ With people (provisional): IRyS `[bickering, affectionate]`; Kronii `[teasing]`;
 [deadpan] Bruh.
 [warm, sincere] Everything gets better. If you're at the bottom, you can only go up. You're doing great.
 ```
-(Line 1 is a style demo built on her official greeting; line 4 is a wiki-listed word; the rest are her lines,
-quoted only where both transcripts agree.)
+(Line 1 is a shortened official greeting; line 4 is a wiki-listed word; the rest are her lines, quoted only
+where both transcripts agree. The delivery tags are proposed performance directions.)

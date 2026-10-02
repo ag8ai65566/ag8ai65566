@@ -4,3 +4,4 @@
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 301fc74cc461）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 6e7d1d1f7ba0）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 17f0f87a8f52）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 ff4d7ad1baf5）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)

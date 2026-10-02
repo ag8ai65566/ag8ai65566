@@ -268,7 +268,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Robocosan | JP senior | Horror collab with "Roboco-senpai" | [Observed A17 title] |
 | FUWAMOCO | Advent members ("Detective Dogs") | Puzzle collab | [Observed A2, per Claude's research] |
 | Gigi Murin | Justice member | ENreco roleplay (Jyonathan) | [Observed A2 infobox and §Relationships, per Claude's research] |
-| Hakos Baelz | Council kouhai | Bathroom reviews ("#BaethingAme," 2022), a VRChat Holoween escape-room behind-the-scenes (2022), an Apex off-collab ("2 players. 1 champion.," 2023) | [Bae file HB3, HB5, HB8, HB20] |
+| Hakos Baelz | Council kouhai | Archived metadata: "BATHROOM REVIEWS" ("#BaethingAme," 2022-05-07), a VRChat Holoween escape-room behind-the-scenes (2022), an Apex off-collab ("2 players. 1 champion.," 2023) | [Bae file HB3, HB5, HB8, HB20] |
 
 ## Arc
 - **Starting point:** the public persona; on the card date she is a hololive affiliate (regular activities
@@ -489,6 +489,7 @@ Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeS
 - **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
   span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 - **2026-10-02, cast expansion (author: add Hakos Baelz, and complete everyone's relationship web):** Relationships gained Bae (sources in Bae's file, HB3/HB5/HB8/HB20, and the world card "Hakos Baelz Pairs").
+- **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the reviewer could not open the bathroom-reviews page; Claude confirmed it (bU49U1cQ02o, 2022-05-07, "≪BATHROOM REVIEWS≫ bath time with AME!") in the archive's metadata, so it stays; the other entries are attributed to archived metadata.
 
 ## Open Questions
 1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage

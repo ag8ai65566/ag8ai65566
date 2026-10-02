@@ -191,7 +191,7 @@ archive KB3; the archive thins out from late 2025), a rough measure, not a ranki
 | Mori Calliope | Senior ("TombStone") | An Undertale mod starring Calli, played together (2023); BG3 as "Killing, Two Birds, with One Stone" (2023); 24-hour charity stream (2025); Warhammer painting (2026); Calli's channel mentions her 29 times | [Observed KB2; KB3; Calli archive] |
 | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" | [Official KB4] [Observed KB3; Kiara archive] |
 | IRyS | Senior | Her frequent horror co-op partner: Resident Evil 6 "LAS CHICAS GUAPAS" (2026-04-29), Dead Space 3 (2026-01); Overwatch "Please carry me Senpai!!" (2023) | [Observed KB3; IRyS archive] |
-| Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024); Bae built a Bijou Mii in Tomodachi Life (2026) | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] |
+| Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] |
 | Nanashi Mumei | Senior (graduated 2025; "Stone Age") | Portal 2 co-op (2023); Marvel Rivals in Mumei's last week (2025-04-23); Mumei rated her a loss at arm wrestling because "she is a rock" | [Observed KB3; Mumei file] |
 | Ninomae Ina'nis | Senior ("TakoRocky") | Monster Hunter (2023–2025); Ina designed their Monster Hunter Wilds collab outfits (2025-12) | [Observed KB3; X post via wiki] |
 | Ceres Fauna | Senior (graduated 2025) | "Coach" Fauna in Hitman (2023, 2024); PlateUp! as "The Sweaty TryHard Gamers" | [Observed KB3] |
@@ -331,6 +331,7 @@ Shiori Novella: Advent's "glorious leader" in Bijou's affectionate bit (Goth Roc
 - **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
   span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 - **2026-10-02, cast expansion (author: add Hakos Baelz, and complete everyone's relationship web):** Bae entry extended ("BLUE CLAPPER" with the CHADCast trio, 2024) (sources in Bae's file, HB3/HB5/HB8/HB20, and the world card "Hakos Baelz Pairs").
+- **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the Bijou Mii (2026) is removed: the supporting audio was a disputed game-voice comparison.
 
 ## Open Questions
 1. The Tomodachi Life window was unusable (drawing, game voices), and her "squeegee" laugh and Moai opening
