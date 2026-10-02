@@ -1,0 +1,30 @@
+# Scene setup and date worksheet
+
+Every scene: give Sudowrite the scene date, name every participant explicitly, and name the world elements
+that matter (for example FUWAMOCO, Serendipity). Detection underlines show which cards Sudowrite recognized;
+recognition does not guarantee every trait is used.
+
+The cards describe the cast at the 2026-09-30 baseline. For a scene set earlier, state the date and each
+member's status at that date in the scene text, and mute later facts in a project copy before generating.
+This worksheet does not change Sudowrite's context by itself.
+
+| Member | State at 2026-09-30 | Debut | Graduated | Regular activities concluded |
+|---|---|---|---|---|
+| Cecilia Immergreen | active | 2024-06-22 | — | — |
+| Ceres Fauna | graduated | 2021-08-23 | 2025-01-03 | — |
+| Elizabeth Rose Bloodflame | active | 2024-06-21 | — | — |
+| Fuwawa Abyssgard | active | 2023-07-31 | — | — |
+| Gawr Gura | graduated | — | 2025-05-01 | — |
+| Gigi Murin | active | 2024-06-21 | — | — |
+| IRyS | active | 2021-07-11 | — | — |
+| Koseki Bijou | active | 2023-07-30 | — | — |
+| Mococo Abyssgard | active | 2023-07-31 | — | — |
+| Mori Calliope | active | — | — | — |
+| Nanashi Mumei | graduated | 2021-08-23 | 2025-04-27 | — |
+| Nerissa Ravencroft | active | 2023-07-31 | — | — |
+| Ninomae Ina'nis | active | — | — | — |
+| Ouro Kronii | active | — | — | — |
+| Raora Panthera | active | 2024-06-22 | — | — |
+| Shiori Novella | active | 2023-07-30 | — | — |
+| Takanashi Kiara | active | — | — | — |
+| Watson Amelia | affiliate | — | — | 2024-09-30 |

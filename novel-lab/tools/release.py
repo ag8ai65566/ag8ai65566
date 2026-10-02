@@ -102,7 +102,7 @@ class Results:
         return [r for r in self.items if r["status"] == "fail" and r["severity"] == "block"]
 
 
-def check_all(proj, phase, package=None):
+def check_all(proj, phase, package=None, building=False):
     R = Results()
     spec = json.loads(lab.read(lab.FIELDS_FILE))
     cards = load_cards(proj)
@@ -334,6 +334,8 @@ def check_all(proj, phase, package=None):
                 "sudowrite/worldbuilding.csv", "sudowrite/paste.md", "sudowrite/style.txt", "sudowrite/scene-setup.md",
                 "performance/pronunciation.tsv", "performance/voice-map.example.json", "performance/test-results.csv",
                 "reference/sources-and-claims.jsonl", "reference/coverage.md"]
+        if building:  # the builder writes manifest.json last, recording this validation
+            need.remove("manifest.json")
         missing = [n for n in need if not (package / n).exists()]
         R.add("V22", "fail" if missing else "pass", "block", "Package integrity", [f"missing {missing}"] if missing else ["layout complete"])
         R.add("V23", "pass" if (package / "CHANGELOG.md").exists() else "fail", "block", "Changelog and supporting views")
@@ -501,7 +503,7 @@ def cmd_build(args):
     (pkg / "CHANGELOG.md").write_text("\n".join(ch) + "\n", encoding="utf-8")
     (pkg / "00-START-HERE.md").write_text(START_HERE.format(rev=rev, baseline=BASELINE,
                                                             draft="（草稿候選版，尚未通過全部檢查）" if args.draft else ""), encoding="utf-8")
-    R2, snapshot2, _ = check_all(proj, "candidate", package=pkg)
+    R2, snapshot2, _ = check_all(proj, "candidate", package=pkg, building=True)
     val = write_validation(proj, R2, snapshot2, "candidate", out=pkg / "validation.json")
     commit = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--short", "HEAD"], capture_output=True, text=True).stdout.strip()
     dirty = bool(subprocess.run(["git", "-C", str(ROOT), "status", "--porcelain"], capture_output=True, text=True).stdout.strip())
