@@ -88,11 +88,11 @@ web_search: live
   Koseki Bijou、Nerissa Ravencroft、Fuwawa Abyssgard、Mococo Abyssgard）、**Justice 全員**（Elizabeth Rose Bloodflame、Gigi Murin、
   Cecilia Immergreen、Raora Panthera；2026-10-01）。尚未做：Hakos Baelz、Tsukumo Sana（等作者下令）。
 - 作者下令（2026-10-01）：Advent 做完後接著做 **Justice**（Elizabeth Rose Bloodflame、Gigi Murin、Cecilia Immergreen、
-  Raora Panthera），同樣補完所有人的關係網與世界觀。成員宣布的休息、手術、家庭緊急事件等一律不寫。
+  Raora Panthera），同樣補完所有人的關係網與世界觀。成員宣布的休息與其原因一律不寫。
 - 作者下令（2026-10-01）：做 **Advent 整團**（Shiori Novella、Koseki Bijou、FUWAMOCO 的 Fuwawa Abyssgard 與
   Mococo Abyssgard；Nerissa 已完成），並**補完所有人物的關係網和世界觀**。額度用完時務必設定時間自動繼續。
   FUWAMOCO 是雙胞胎、同一頻道：聲音不同，所以做兩張角色卡，另做一張 FUWAMOCO 世界觀卡。
-  比照 Kiara 的裁決：Mococo 2026-09 的休息公告不寫（不寫成休息中）。
+  宣布的休息一律不寫（也不寫成休息中）。
 
 ## 已定案的硬設定
 - （收錄進 bible 後，重要的硬事實抄一行在這裡）

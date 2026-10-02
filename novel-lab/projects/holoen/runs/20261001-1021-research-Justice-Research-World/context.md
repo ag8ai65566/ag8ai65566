@@ -121,7 +121,7 @@ web_search: live
 - 作者下令（2026-10-01）：做 **Advent 整團**（Shiori Novella、Koseki Bijou、FUWAMOCO 的 Fuwawa Abyssgard 與
   Mococo Abyssgard；Nerissa 已完成），並**補完所有人物的關係網和世界觀**。額度用完時務必設定時間自動繼續。
   FUWAMOCO 是雙胞胎、同一頻道：聲音不同，所以做兩張角色卡，另做一張 FUWAMOCO 世界觀卡。
-  比照 Kiara 的裁決：Mococo 2026-09 的休息公告不寫（不寫成休息中）。
+  宣布的休息一律不寫（也不寫成休息中）。
 
 ## 已定案的硬設定
 - （收錄進 bible 後，重要的硬事實抄一行在這裡）

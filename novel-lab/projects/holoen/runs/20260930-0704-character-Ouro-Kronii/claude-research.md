@@ -11,8 +11,8 @@ Real-person details (IRL friends/family, nationality, health, event appearance) 
 ## 1. Status & basics
 - **Active.** Streams 2026-09-24 ("Just Finding Excuse To Play"), 2026-09-27 ("Reading Before I Go",
   superchat catch-up). No graduation announcement; a 2026-08-25 clip has her raising graduation only as a
-  "what if" (chat panicked). Short breaks in 2026; return stream 2026-07-27 "Guess Who's Back... Again...
-  And Sick...". 2026-09-07 branch merger (CBR); official site lists **hololive -Promise-**.
+  "what if" (chat panicked).
+  2026-09-07 branch merger (CBR); official site lists **hololive -Promise-**.
 - Debut 2021-08-22/23 in hololive English -Council- (with Sana, Fauna, Mumei, Baelz). 2023-10-09 → -Promise-
   with IRyS. Sana left 2022; Fauna graduated 2025-01; Mumei graduated 2025-04-28. Remaining -Promise-:
   IRyS, Kronii, Baelz.

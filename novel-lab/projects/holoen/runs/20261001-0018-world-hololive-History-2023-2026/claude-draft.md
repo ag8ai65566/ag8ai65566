@@ -62,7 +62,6 @@ Historical events.
 | 2026-07-03/04 | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around partner pairs (Calli–Shiori, Kronii–Ina, Kiara–Bijou) | The current partnerships |
 | 2026-07-23 | Rhythm game "hololive Dreams" released | — |
 | 2026-09-07 | "hololive Next": all female branches merge into one **hololive**; new logo; members to get updated designs (Tokino Sora first); "hololive raku" app; TV anime "Odeholo"; 10th-anniversary countdown | The present-day setting |
-| 2026-09-09 | Kiara's manager posts that Kiara is taking a short break until further notice | Status only; no reason is used in stories [Observed—X post, research/x-posts.md] |
 | 2026-09-18 | New unit ASOBI★MAWARI-TAI! reveals its four members | The newest kouhai |
 | 2026-10-06 (upcoming) | IRyS's first solo concert "HOPE ||: Beyond the Stars" (Tokyo) | IRyS's next big stage |
 
@@ -140,5 +139,4 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
 
 ## Open Questions
 1. Serendipity pairs for IRyS and Nerissa were not found in the sources read; add them if the author has them.
-2. Kiara has been on a short break since 2026-09-09 (her manager's post; reason not used). Should
-   stories set at the 2026-09-30 baseline show her on break, or treat the baseline as just before it?
+2. (Removed: a status question outside the project's scope; the author decided announced breaks are not written.)

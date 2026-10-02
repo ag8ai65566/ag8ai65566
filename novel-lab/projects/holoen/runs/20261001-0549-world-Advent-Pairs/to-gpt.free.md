@@ -620,7 +620,7 @@ sw_section: Characters
 > 2026-09-30 baseline; her recent streams (2025–2026) set her default manner, per the project's recency
 > rule. She shares the FUWAMOCO channel with her twin, Mococo; what the two do as a unit is on the world
 > card "FUWAMOCO," and this file covers Fuwawa herself. Nothing about the performer behind the avatar:
-> health (including a 2026 surgery and hiatus), home, sleep and family details told on stream are
+> health, home, sleep and family details told on stream are
 > deliberately left out. "Mama Puppy" and "Papa Puppy" are lore-framed parents; they are kept out too,
 > because the stories told about them are personal. In stories she knows she is a streamer with a persona
 > (see the world card "VTuber Persona and Lore"). Evidence labels:

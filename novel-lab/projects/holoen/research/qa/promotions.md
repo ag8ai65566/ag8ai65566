@@ -43,7 +43,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 
 ## 20260930-1113-character-Takanashi-Kiara
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 415492d57d94）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
-- 2026-10-01 04:30 作者裁決收錄 final.md（sha256 14ecd04293d2）：作者裁決 2026-10-01：Kiara 不寫成休息中
+- 2026-10-01 04:30 作者裁決收錄 final.md（sha256 14ecd04293d2）：作者裁決 2026-10-01：依範圍規則，宣布的休息不寫
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 c36decc37285）：作者裁決：加入 Fauna 與 Mumei 後的關係與世界觀連動修改（含 GPT 一輪審查的修正），依作者指示只審一輪
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 6dc7d915e9f9）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 88a09fedce91）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
@@ -77,7 +77,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 
 ## 20260930-2309-world-TakaMori
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 af29a140bb65）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
-- 2026-10-01 04:30 作者裁決收錄 final.md（sha256 f08b309972f0）：作者裁決 2026-10-01：Kiara 不寫成休息中
+- 2026-10-01 04:30 作者裁決收錄 final.md（sha256 f08b309972f0）：作者裁決 2026-10-01：依範圍規則，宣布的休息不寫
 - 2026-10-01 21:08 作者裁決收錄 final.md（sha256 e9cf098194f5）：Author decision (2026-10-01): CONSULT-P2-001 (Myth 6th-anniversary live marked as announced, not verified as held) and break notes generalized per the author's rule.
 
 ## 20260930-2309-world-TakoTori
@@ -105,7 +105,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 
 ## 20260930-2309-world-hololive--Myth
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 a8b6659e3057）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
-- 2026-10-01 04:30 作者裁決收錄 final.md（sha256 2b3bc4123a1f）：作者裁決 2026-10-01：Kiara 不寫成休息中
+- 2026-10-01 04:30 作者裁決收錄 final.md（sha256 2b3bc4123a1f）：作者裁決 2026-10-01：依範圍規則，宣布的休息不寫
 - 2026-10-01 21:08 作者裁決收錄 final.md（sha256 e102fb95cdc7）：Author decision (2026-10-01): CONSULT-P2-001 (Myth 6th-anniversary live marked as announced, not verified as held) and break notes generalized per the author's rule.
 
 ## 20260930-2309-world-hololive--Promise
@@ -156,7 +156,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 
 ## 20261001-0018-world-hololive-History-2023-2026
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 cac46457599b）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
-- 2026-10-01 04:30 作者裁決收錄 final.md（sha256 9ac204d2f677）：作者裁決 2026-10-01：Kiara 不寫成休息中
+- 2026-10-01 04:30 作者裁決收錄 final.md（sha256 9ac204d2f677）：作者裁決 2026-10-01：依範圍規則，宣布的休息不寫
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 c95f663108e2）：作者裁決：加入 Fauna 與 Mumei 後的關係與世界觀連動修改（含 GPT 一輪審查的修正），依作者指示只審一輪
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 49a2aeaa39fd）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 2d39285e21c7）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.

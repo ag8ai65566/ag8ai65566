@@ -1,5 +1,22 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-02 02:30 UTC，全卷審計進行中）：
+- **完成**：Advent cohort 審計（`research/qa/audit-advent.md`）已全部合併、收錄、匯出、推送；ledger 有 ADVENT-* 處置。
+  另做 CLAUDE-SCOPE-002：流程紀錄（Merge Record、音檔報告、NEXT/project、舊草稿與提示副本）不再寫出被排除的具體私事。
+- **GPT 額度**：Global 審計跑到一半撞上限（約 20 萬 tokens、無產出）→ 重置 2026-10-02 06:29 UTC。改進：
+  1. `lab.py` 的 GPT 一律在 HEAD 的乾淨 worktree 快照跑（看不到 Claude 進行中的修改），並記 `gpt-free.events.jsonl`（工具呼叫與 token）。
+  2. 審計提示把 packet、project.md、shared-rules、ledger、registry 摘錄**內嵌**，並訂「約 12 次工具呼叫、最多 6 次搜尋」的預算。
+  3. Global 的 incoming 去掉泛用別名（hololive、off-collab…），110k→51k 字；Myth1 拆成 myth1（Calli）、myth3（Kiara）、myth4（Ina）。
+- **工具**：`tools/qa_runs.py make cohort|bridge <name>`（產生／刷新審計 run，跑前要重做並 commit packets）、
+  `apply <audit.md> [--dry]`（照審計表的 exact old text 改 runs 的 final.md＋Merge Record）、`promote-changed --reason`。
+- **GPT 佇列**（`.gpt-quota.json`，依序）：global → justice → myth1 → myth3 → myth4 → myth2 → promise。每次開跑前先
+  `python3 novel-lab/tools/qa_packets.py holoen`＋`qa_runs.py make cohort <name>`（對所有待跑的）＋commit，再 `lab.py gpt-resume --now`。
+- **之後**：bridge events（＋ties-external）；ties-cast 與 cohort 審計重疊（每對成員的雙向說法已在兩邊 cohort 的 incoming 裡），
+  建議不跑或只跑 cohort 審計標出的未決項 → 06 近期補完 → 08 年表＋X → 09 聲音 → 10 `release.py build` → 11 驗收。
+- **待辦（Claude）**：Mococo 個人窗口（CONSULT-P1-007，task 07/09）；表演表在聲音審計後 `stamp-sheets`。Hakos Baelz、Tsukumo Sana 等作者下令。
+
+（以下為較早的狀態紀錄）
+
 狀態（2026-10-01 21:05 UTC，GPT 專案諮詢完成，全卷審計進行中）：
 - **諮詢**：第 1 輪 `runs/20261001-1557-check-Project-Consult/gpt-free.md`（交付形式、到 10/4 的流程、跨卡問題），第 2 輪
   `runs/20261001-2050-check-Project-Consult-R2/gpt-free.md`（同意＋審計 prompt＋驗證規格）。P0（試鏡經歷、私人旅行、
@@ -54,8 +71,7 @@
   `runs/20261001-1032-world-hololive--Justice/to-gpt.free.md`（兩張世界觀卡＋其他卡的 Justice 修改 diff）。
   原本的研究任務（`20261001-1021-research-*`）因草稿已先完成而改由審查涵蓋（審查同時查證與補缺漏），不再跑。
   若 `novel-lab/.gpt-quota.json` 遺失：依序跑 `python3 novel-lab/tools/lab.py gpt <上面三個 run> free`。
-- 隱私（不寫）：Raora 2025-11 起的手術休養、Cecilia 2026-07 起的休息與家庭事由、Elizabeth 2026-09 的半休、
-  性向、試鏡次數、旅行、母語／國籍說法（口音只當聲音特徵寫）。
+- 隱私（不寫）：休息及其原因、健康、家人、性向、試鏡、旅行、母語／國籍說法（口音只當聲音特徵寫）。
 - 下一步：GPT 審查 → 逐條併進 final.md（Merge Record）→ `promote --force` → `export holoen` → 四份 ElevenLabs
   表演表 → NEXT.md／project.md → 推送 → 刪除每小時排程 → 中文回報。
 
@@ -72,7 +88,7 @@
   - 新增事實（官方頁查證）：GreyScaleX "Purrfect Pair" 周邊（2026-09-05 開賣）、hololive night（Dodger
     Stadium，2025-07-05，Ina／IRyS／Bijou）、Kiara 陪 Bijou 練難編舞（Serendipity 訪談 04）、
     Advent 3D 聯動（2024-08-17 PDT）。
-  - 隱私：健康、家人、住處、睡眠等一律不寫；Mococo 的休息公告比照 Kiara 不寫。
+  - 隱私：健康、家人、住處、睡眠、宣布的休息等一律不寫。
   - 連動修改並重新收錄：Calli、Kiara、Kronii、Gura、Ina、Ame、IRyS、Fauna、Mumei、Nerissa 的 Relationships；
     VTuber Persona、hololive、History 2023-2026、Concerts、Cross-Branch 世界觀卡。
   - 音檔報告：`research/audio-check/shiori.md`、`bijou.md`、`fuwamoco.md`（兩模型核對；只引用兩模型一致的片段）。
@@ -108,7 +124,7 @@
   `export/sudowrite-paste.md`、`export/cards/`；`export/elevenlabs/` 八人表演表＋`sudowrite-style.md`（Style 規則）。
 - 審查後新增的官方來源：Serendipity 訪談（IRyS–Bae、Nerissa–Elizabeth）、World Tour '24 官方報告、
   DANGERyS（2026-07-12 發售）、In My Feelings（2024-08-08）、Moona "100%"（2025-02-16）、ASOBI★MAWARI-TAI!。
-- **作者裁決（2026-10-01）**：Kiara 不寫成休息中（2026-09-09 的公告不用）。
+- **作者裁決（2026-10-01）**：宣布的休息一律不寫，也不寫成休息中。
 - **下一步候選**（作者下令前不做新成員）：繼續擴充世界觀（更多跨分部關係、X 發文、各成員演唱會細節）；
   用音檔補強既有角色（Kiara–Nerissa 的 KiaRissa 台詞、各人的笑聲）。
 

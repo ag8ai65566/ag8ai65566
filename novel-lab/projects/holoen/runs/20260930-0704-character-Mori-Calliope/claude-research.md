@@ -186,7 +186,7 @@ verbatim stream opener could be confirmed.
 8. https://x.com/moricalliope/status/2051275164588114146 (2026-05; search-result text)
 9. https://vortexgaming.io/en/postdetail/836495 (2026-05)
 10. https://metaversesokuhou.blog.jp/archives/30936327.html (2026-05-16)
-11. https://www.sportskeeda.com/us/streamers/news-what-happened-mori-calliope-vtuber-s-recent-updates-explored-announces-indefinite-hiatus (snippet)
+11. (source removed: outside the project's scope)
 12. https://cover-corp.com/en/news/detail/20250416-01 (2025-04-16)
 13. https://en.wikipedia.org/wiki/Amelia_Watson_(streamer)
 14. https://ogiuemaniax.com/tag/mori-calliope/ (2026-09-13); https://ogiuemaniax.com/2026/09/11/happy-6th-anniversary-to-hololive-myth/
