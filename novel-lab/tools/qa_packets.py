@@ -407,6 +407,24 @@ def bridge_packets(files, reg, qa, commit):
         print(f"bridge {name}: {len(text):,} chars")
     return res
 
+PROMOTIONS_HEAD = """# Promotion provenance (holoen)
+
+Every promotion into `bible/` is an **author decision** recorded by `lab.py promote` (the author's standing rule:
+GPT reviews each card one round only, then the author decides). This is not GPT approval and not source
+verification; the evidence level of each claim stays as labeled in the card. Exported from
+`runs/*/author-decision.md`, newest runs last.
+"""
+
+
+def write_promotions(proj, qa):
+    """Rebuild research/qa/promotions.md from every run's author-decision.md (runs/ is not delivered)."""
+    out = [PROMOTIONS_HEAD]
+    for d in sorted((proj / "runs").glob("*/author-decision.md")):
+        out.append(f"\n## {d.parent.name}\n" + d.read_text(encoding="utf-8").rstrip("\n") + "\n")
+    (qa / "promotions.md").write_text("".join(out), encoding="utf-8")
+    return len(out) - 1
+
+
 def main():
     if len(sys.argv) != 2:
         sys.exit(__doc__)
@@ -428,6 +446,7 @@ def main():
                                        "parts": parts}
         print(f"packet {cohort}: " + ", ".join(f"{p['packet'].split('/')[-1]} {p['chars']:,}" for p in parts))
     manifest["packets"]["bridge"] = {"parts": bridge_packets(files, reg, qa, commit)}
+    print(f"promotions: {write_promotions(proj, qa)} runs")
     (qa / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1), encoding="utf-8")
 
 if __name__ == "__main__":

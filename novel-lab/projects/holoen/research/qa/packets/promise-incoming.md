@@ -1,9 +1,9 @@
 # Audit packet: promise (incoming claims)
 
-Snapshot: git 9d0d86e.
+Snapshot: git 46b3466.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Calli and Kronii|Nerissa and IRyS|It's Not a Phase|hololive Council|Keeper of Nature|Mumei and Kronii|Kronii and Calli|Mumei and Fauna|Mumei and Kiara|IRyS and Kronii|Fauna and Mumei|Ame and Kronii|Warden of Time|Kronii and Ame|Ina and Kronii|Kronii and Ina|Time and Death|Fauna and Gura|Mother Nature|Nanashi Mumei|IRyS and Ina|Kroniicopter|holoPromise|holoCouncil|Ouro Kronii|Ceres Fauna|Gamer Kirin|Tam Tender|Octo'Clock|Octo'clock|CouncilRyS|Ceres-chan|Owo-senpai|Mumi-chan|SeisoRyS|KiaRissa|CHADCast|オーロ・クロニー|Moomsies|YabaIRyS|Time Duo|Kronster|MorIRyS|Promise|Moomers|Myumyei|Council|KronMei|Kronini|Meimei|Faufau|BaeRyS|Kronii|Fauna|gumei|Fawna|Mumei|IRyS|Irys|Towl|Moom)(
+Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Nerissa and IRyS|hololive Council|Calli and Kronii|Keeper of Nature|It's Not a Phase|Kronii and Calli|Mumei and Kronii|Mumei and Kiara|IRyS and Kronii|Mumei and Fauna|Fauna and Mumei|Fauna and Gura|Time and Death|Warden of Time|Ina and Kronii|Kronii and Ina|Kronii and Ame|Ame and Kronii|Nanashi Mumei|Mother Nature|Kroniicopter|IRyS and Ina|holoCouncil|Gamer Kirin|Ouro Kronii|Ceres Fauna|holoPromise|Tam Tender|Ceres-chan|CouncilRyS|Owo-senpai|Octo'Clock|Octo'clock|Mumi-chan|Moomsies|KiaRissa|YabaIRyS|Time Duo|CHADCast|SeisoRyS|Kronster|オーロ・クロニー|Kronini|KronMei|Council|Promise|Myumyei|Moomers|MorIRyS|Kronii|BaeRyS|Meimei|Faufau|Fawna|Fauna|Mumei|gumei|IRyS|Moom|Towl|Irys)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: IRyS and Bijou: Elden Ring Nightreign.

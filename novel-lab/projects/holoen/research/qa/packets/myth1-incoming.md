@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 9d0d86e.
+Snapshot: git 46b3466.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Ninomanyo Inya'nis|Kiara and Kronii|Kronii and Kiara|hololive -Myth-|Calli and Kiara|Kiara and Calli|Gura and Kronii|Kronii and Gura|Takanashi Kiara|Ninomae Ina'nis|Gura and Kiara|Kiara and Gura|Ina and Calli|Ame and Calli|Calli and Ina|Calliope Mori|Drawn to Dawn|Ame and Kiara|Kiara and Ame|Kiara and Ina|Calli and Ame|Cori Malliope|Mori Calliope|Ina and Kiara|Ina and Gura|Gura and Ina|Last Writes|Ina and Ame|Ame and Ina|Octo'clock|Rocku Wawa|Kawaiiope|Miss Mori|Kusotori|Calliope|Mor Mori|TakaMori|Takamori|TakoTori|Tenchou|Ina'nis|CallioP|Kiwawa|小鳥遊キアラ|一伊那尓栖|Calli|Kiara|森カリオペ|LYRA|Mori|Mowi|Wawa|Inya|Ina)(
+Matched names: th and Kronii: Other Pairs|Ninomanyo Inya'nis|Kiara and Kronii|Kronii and Kiara|Ninomae Ina'nis|hololive -Myth-|Calli and Kiara|Kiara and Calli|Kronii and Gura|Takanashi Kiara|Gura and Kronii|Kiara and Gura|Gura and Kiara|Mori Calliope|Calli and Ina|Calli and Ame|Ina and Calli|Ame and Calli|Drawn to Dawn|Calliope Mori|Kiara and Ame|Cori Malliope|Ina and Kiara|Kiara and Ina|Ame and Kiara|Ina and Gura|Gura and Ina|Ina and Ame|Ame and Ina|Last Writes|Rocku Wawa|Octo'clock|Miss Mori|Kawaiiope|TakoTori|Calliope|Mor Mori|Kusotori|Takamori|TakaMori|CallioP|Tenchou|Ina'nis|小鳥遊キアラ|Kiwawa|森カリオペ|一伊那尓栖|Calli|Kiara|LYRA|Inya|Wawa|Mowi|Mori|Ina)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO and sang "I'm Your Treasure Box" with Bijou and Raora.
