@@ -139,7 +139,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | La+ Darknesss | holoX founder | Covers "Day by Days" (2022) and "Bōken no Sho ga Kiemashita!" (2025) | [CH4] |
 | Kazama Iroha | holoX | Group streams; the 3rd-anniversary Q&A (2024) | [CH4] |
 | AZKi | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [CH4] [CH2] |
-| Houshou Marine | UMISEA; holoWitches | A game about Marine's treasure ship (2023) | [CH2] [CH4] |
+| Houshou Marine | UMISEA (official 2023 roster); holoWitches | A game about Marine's treasure ship (2023) | [CH2] [CH4] |
 | Hoshimachi Suisei | Hoshimatic Project | Part of her farewell video series (2025) | [CH2] [CH4] |
 | Yukihana Lamy | — | Rust with Kanata and Lamy (2022) | [CH4] |
 | Shishiro Botan | — | An Overwatch 2 team with IRyS, Lui and Towa (2023) | [CH5] |
@@ -148,7 +148,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Mori Calliope | — | HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023) | [CH5] |
 | Nanashi Mumei (graduated) | — | The EN Minecraft tour (2022) | [CH5] |
 | IRyS | — | Overwatch 2 team (2023); Among Us (2023) | [CH5] |
-| Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA (wiki-listed) | The ocean unit, joined by Chloe later per the wiki | [CH2 §Relationships, secondary] |
+| Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | The ocean unit's official 2023 roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/] |
 
 ## Arc
 - **Starting point:** the public persona; on the card date she is a hololive affiliate (regular activities ended
@@ -226,7 +226,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Chloe works as holoX's cleaner and does what she is told. As a streamer and artist she wanted to make music (composing, writing and singing), to hold a solo concert on a big stage, and to keep her Handlers laughing; since 2025 she is an affiliate.
 
 ## [SW] Relationships
-Takane Lui: the executive officer who kept her in line ("LuiChlo"; Calli's English lesson and HOLOYOI together). Hakui Koyori: "KoyoChlo," a duo that kept forming and disbanding, ending with a last collab and covers in January 2025. La+ Darknesss: covers together (2022, 2025). Kazama Iroha: holoX. AZKi: "Kanaken" with Amane Kanata (Minecraft, a 3D live, 2024). Houshou Marine: UMISEA and holoWitches. Hoshimachi Suisei: Hoshimatic Project. Yukihana Lamy: Rust (2022). Shishiro Botan: an Overwatch 2 team (2023). Takanashi Kiara: "WILDCARD" (2025) and an origami off-collab (2023). Hakos Baelz: the EN Minecraft tour (2022), BAE-GEMITE DOMINATION and "Crazy Scary Holy Fantasy" (2023). Mori Calliope: HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023). Nanashi Mumei (graduated): the EN Minecraft tour (2022). IRyS: Overwatch 2 and Among Us (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA, per the wiki.
+Takane Lui: the executive officer who kept her in line ("LuiChlo"; Calli's English lesson and HOLOYOI together). Hakui Koyori: "KoyoChlo," a duo that kept forming and disbanding, ending with a last collab and covers in January 2025. La+ Darknesss: covers together (2022, 2025). Kazama Iroha: holoX. AZKi: "Kanaken" with Amane Kanata (Minecraft, a 3D live, 2024). Houshou Marine: UMISEA and holoWitches. Hoshimachi Suisei: Hoshimatic Project. Yukihana Lamy: Rust (2022). Shishiro Botan: an Overwatch 2 team (2023). Takanashi Kiara: "WILDCARD" (2025) and an origami off-collab (2023). Hakos Baelz: the EN Minecraft tour (2022), BAE-GEMITE DOMINATION and "Crazy Scary Holy Fantasy" (2023). Mori Calliope: HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023). Nanashi Mumei (graduated): the EN Minecraft tour (2022). IRyS: Overwatch 2 and Among Us (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster).
 
 ## [SW] Secrets
 (none)
@@ -239,5 +239,5 @@ Takane Lui: the executive officer who kept her in line ("LuiChlo"; Calli's Engli
   Claude's two-model Japanese audio check (CH20, research/audio-check/chloe.md).
 
 ## Open Questions
-1. UMISEA's inclusion of Chloe rests on the wiki's unit lists (Chloe and Marine pages); no UMISEA stream with
-   Chloe was found in the archive metadata. Keep it as a wiki-listed tie?
+1. Resolved before review: Chloe's UMISEA membership rests on the official 2023 roster (as merged on the Marine
+   and Gura cards in run D).

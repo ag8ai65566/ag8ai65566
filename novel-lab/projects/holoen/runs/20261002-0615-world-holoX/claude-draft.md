@@ -64,7 +64,8 @@ Unit / generation (lore group with five persona roles; four active at the baseli
   with Chloe ("Crazy Scary Holy Fantasy," 2023); dances to Lui's songs. [S1]
 - **IRyS, Ouro Kronii:** Minecraft elytra hunting with Lui and Kaela (2022). [S1]
 - **Watson Amelia (affiliate):** "KoMeHa" with Iroha and Kobo Kanaeru; Apex with Lui and Iofi (2022). [S1] [S3]
-- **Ninomae Ina'nis, Gawr Gura (graduated):** UMISEA with Chloe, Minato Aqua and Houshou Marine. [S3]
+- **Ninomae Ina'nis, Gawr Gura (graduated):** UMISEA with Chloe, Minato Aqua and Houshou Marine (official 2023
+  roster). [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/]
 - **Others:** Lui's 2026 song "Soar" was danced by IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO
   (2026 shorts); Cecilia teased La+ as "onee-sama" (2026 short); Nerissa met La+ in holoGTA (2024). [S1]
 
