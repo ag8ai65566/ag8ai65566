@@ -168,9 +168,9 @@ on the world card "JP Senpai Pairs."
 | Murasaki Shion, Minato Aqua | "Manji-gumi" | 2nd-generation unit | [AY2] |
 | Inugami Korone | "Onigashima Combi" | — | [AY2] |
 | Houshou Marine | a 3rd-generation junior she admires (secondary) | — | [AY2, secondary] |
-| La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | holoGTA and poker (2024) | [La+ file LA4] |
+| La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | All four streamed holoGTA (2024-09); Ayame was not in the m HOLD'EM poker collab | [AY4 1iz9AxcgvPg] [Sammy roster] |
 | Takane Lui | "Onikan" | Games together (2025) | [Lui file LU4] |
-| Shirogane Noel | — | An Audio-Technica earphone collab (2025) | [Noel file NO4] |
+| Shirogane Noel | — | An Audio-Technica sponsored stream (2025-07-11, archived metadata) | [Noel file NO4 cpUnHgEveX8] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a new outfit (February), 7th fes on stage, Anime NYC in
@@ -251,7 +251,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Ayame wants her stream to be a warm place where she and her viewers smile and have fun together, and she gives her best to singing and games; her stated dreams are her own songs and a solo concert.
 
 ## [SW] Relationships
-Takanashi Kiara: her 23rd HOLOTALK guest (2022, archived metadata) and a 2023 Sports Festival white-team teammate. Nekomata Okayu: "OKFAMS" (secondary); Okayu's 2025 New Year Game Festival team, and 7th fes STAGE 1 together. Hoshimachi Suisei, Ninomae Ina'nis, IRyS and Cecilia Immergreen: listed among the members of Okayu's 2025 New Year Game Festival team; Ina and FUWAMOCO shared her 7th fes stage. AZKi, Nanashi Mumei, Watson Amelia and Nerissa Ravencroft: the 2023 Sports Festival white team. Shirakami Fubuki and Ookami Mio: AyaFubuMi (a reported 2025 anime opening); Fubuki created her companion Poyoyo; FAMS with Oozora Subaru (AyaSuba). Murasaki Shion and Minato Aqua: Manji-gumi. Inugami Korone: "Onigashima Combi." Houshou Marine: a third-generation junior whom secondary accounts say Ayame admires. La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA and poker (2024). Takane Lui: "Onikan"; games together (2025). Shirogane Noel: an earphone collab (2025). (Pair and unit names other than official song credits come from secondary references.)
+Takanashi Kiara: her 23rd HOLOTALK guest (2022, archived metadata) and a 2023 Sports Festival white-team teammate. Nekomata Okayu: "OKFAMS" (secondary); Okayu's 2025 New Year Game Festival team, and 7th fes STAGE 1 together. Hoshimachi Suisei, Ninomae Ina'nis, IRyS and Cecilia Immergreen: listed among the members of Okayu's 2025 New Year Game Festival team; Ina and FUWAMOCO shared her 7th fes stage. AZKi, Nanashi Mumei, Watson Amelia and Nerissa Ravencroft: the 2023 Sports Festival white team. Shirakami Fubuki and Ookami Mio: AyaFubuMi (a reported 2025 anime opening); Fubuki created her companion Poyoyo; FAMS with Oozora Subaru (AyaSuba). Murasaki Shion and Minato Aqua: Manji-gumi. Inugami Korone: "Onigashima Combi." Houshou Marine: a third-generation junior whom secondary accounts say Ayame admires. La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA (2024). Takane Lui: "Onikan"; games together (2025). Shirogane Noel: an Audio-Technica sponsored stream (2025-07-11). (Pair and unit names other than official song credits come from secondary references.)
 
 ## [SW] Secrets
 (none)
@@ -279,6 +279,7 @@ Takanashi Kiara: her 23rd HOLOTALK guest (2022, archived metadata) and a 2023 Sp
     Nerissa and AZKi, and the title 「白組優勝だあああ」 celebrates the win).
   - The performance sheet no longer uses a measured register basis or compares her with Suisei.
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi), reciprocal ties:** La+, Suisei and Botan (holoGTA, poker), Lui ("Onikan") and Noel (earphone collab) added (sources in the new member files).
+- **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the poker claim is removed (publisher roster: Suisei, La+, Botan, Fubuki); holoGTA stays (verified by Claude in the local archive titles); the Noel sponsorship is dated.
 
 ## Open Questions
 1. Ayame's English-cast ties are team events and shared stages only; enough for her card, or leave it there?

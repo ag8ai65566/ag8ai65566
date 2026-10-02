@@ -1,9 +1,9 @@
 # Audit packet: promise (incoming claims)
 
-Snapshot: git 6545e34.
+Snapshot: git 10e222e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Hakos Baelz Pairs|Nerissa and Calli|Kronii and Calli|Keeper of Nature|hololive Council|Calli and Kronii|Mumei and Kronii|It's Not a Phase|Nerissa and IRyS|Mumei and Fauna|IRyS and Kronii|Fauna and Mumei|Mumei and Kiara|Bae and Cecilia|Ina and Kronii|Fauna and Gura|Kronii and Ame|Time and Death|Warden of Time|Kronii and Ina|Ame and Kronii|Bae and Kronii|Mother Nature|Bae and Calli|Nanashi Mumei|Kroniicopter|Bae and IRyS|IRyS and Ina|Ceres Fauna|Ouro Kronii|Gamer Kirin|holoPromise|holoCouncil|Hakos Baelz|Octo'Clock|Octo'clock|Tam Tender|CouncilRyS|Owo-senpai|Ceres-chan|Mumi-chan|CHADCast|YabaIRyS|Rat Idol|オーロ・クロニー|Kronster|SeisoRyS|Time Duo|Moomsies|KiaRissa|Council|Promise|Kronini|MorIRyS|Myumyei|BratTea|KronMei|Moomers|Meimei|Faufau|BaeRyS|Kronii|Fawna|gumei|Baelz|BaeBi|Hakos|Fauna|Mumei|Moom|IRyS|Towl|Irys|Bae)(
+Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Hakos Baelz Pairs|hololive Council|Nerissa and IRyS|Keeper of Nature|It's Not a Phase|Calli and Kronii|Mumei and Kronii|Kronii and Calli|Fauna and Mumei|IRyS and Kronii|Bae and Cecilia|Mumei and Fauna|Mumei and Kiara|Fauna and Gura|Time and Death|Ina and Kronii|Warden of Time|Kronii and Ame|Ame and Kronii|Kronii and Ina|Bae and Kronii|Nanashi Mumei|Mother Nature|Bae and Calli|Bae and IRyS|Kroniicopter|IRyS and Ina|Gamer Kirin|Ouro Kronii|Hakos Baelz|holoCouncil|Ceres Fauna|holoPromise|Ceres-chan|Octo'clock|Tam Tender|Owo-senpai|Octo'Clock|CouncilRyS|Mumi-chan|Kronster|SeisoRyS|KiaRissa|Moomsies|CHADCast|オーロ・クロニー|YabaIRyS|Time Duo|Rat Idol|Promise|Kronini|MorIRyS|KronMei|Moomers|Myumyei|BratTea|Council|BaeRyS|Meimei|Kronii|Faufau|Fawna|BaeBi|gumei|Hakos|Baelz|Fauna|Mumei|Moom|Irys|Towl|IRyS|Bae)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
@@ -114,6 +114,20 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers | [MA5] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Nanashi Mumei (graduated) | — | Played the horror game featuring Marine with Bae (2023) | [MA5 RY1GkF4jMls] |
 
+### from Kikirara Vivi
+- `bible/characters/Kikirara-Vivi.md › [SW] Background`: Archived metadata records her with the English cast in R.E.P.O. with FUWAMOCO and Bae (2025-05-25), in a separate R.E.P.O. session on Ina's stream (2025-06-02) and in Mumei's Gartic Phone collaboration with Noel, Kronii, Ina and Elizabeth (2025); a secondary archive records FUWAMOCO and Bijou watching FLOW GLOW's debut.
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Shirogane Noel: Mumei's Gartic Phone collab (2025).
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: FUWAMOCO: watched FLOW GLOW's debut with Bijou (2024, secondary archive); R.E.P.O. with Bae (2025-05-25).
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Hakos Baelz: that R.E.P.O. session.
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone (2025).
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Nanashi Mumei (graduated): hosted that Gartic Phone collab.
+- `bible/characters/Kikirara-Vivi.md › Voice Profile`: - **Language:** streams in Japanese (a voice feature only); archived metadata records R.E.P.O. with FUWAMOCO and Bae (2025-05-25), a separate R.E.P.O. session on Ina's stream (2025-06-02) and Mumei's Gartic Phone collab with Noel, Kronii, Ina and Elizabeth (2025). [VI5]
+- `bible/characters/Kikirara-Vivi.md › Background Timeline`: | 2025-04-14 | Gartic Phone EN + ID + JP collab with Mumei, Kronii, Ina, Elizabeth and Noel | [VI5 OMDzBQohAf8] |
+- `bible/characters/Kikirara-Vivi.md › Background Timeline`: | 2025-05-25 | #holoREPO with FUWAMOCO, Bae, Roboco, Towa and Hajime | [VI5 Z5cpzbdsLDE, TgMVtjXW2Ms] |
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Hakos Baelz | — | #holoREPO (2025) | [VI5] |
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [VI5] |
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Nanashi Mumei (graduated) | — | Hosted that Gartic Phone collab (2025) | [VI5] |
+
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Background`: (2025), starred with Ina and IRyS at hololive night at Dodger Stadium (2025), sang a solo and two group numbers at the 2025 English concert -All for One-, and was paired with Takanashi Kiara at the 2026 Serendipity concert.
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: IRyS: her horror co-op partner (Dead Space 3, Resident Evil 6); with Ina, they headlined hololive night at Dodger Stadium (2025).
@@ -139,7 +153,6 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Ceres Fauna (graduated): FUWAMOCO helped on the World Tree's last day (2024-12-31).
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Ouro Kronii | Senior ("WatchDog," with Fuwawa) | Among Us, Team Fortress 2, 7 Days to Die (2023–24) | [Observed MC2; MC3] |
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Hakos Baelz | Promise senior | Archived metadata: Gigi's 2025 Spring Party with FUWAMOCO and Bae (2025-03-31); a FUWAMOCO short dancing to "bae-senpai's new song SNAKE EYES" (2026-03-20) | [Bae file HB3, HB5, HB8, HB20] |
-- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Shirogane Noel | — | "Yuru Holo" team Mario Kart with Bae (2023) | [Noel file NO5] |
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
@@ -181,8 +194,8 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Takanashi Kiara: her oshi (KiaRissa); in Nerissa's lore she worked at KFP; Kiara showed her around Minecraft, and they held a 2025 "BIRB GIRLS"
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: IRyS: fellow singer who guested at that concert.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): "emo hours" partner (2023, 2025); with Kiara they sang "Beyond the way" at the 2024 English concert.
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Ceres Fauna (graduated 2025): the senpai she excitedly replied to on her first day on X ("Fauna-senpai!!!"); with Shiori they sang "Lonely in Gorgeous" at the same concert.
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Nerissa and Kronii at Serendipity.
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Ceres Fauna (graduated 2025): "Fauna-senpai!!!" on her first day on X; with Shiori they sang "Lonely in Gorgeous" at the same concert.
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii at Serendipity.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Ninomae Ina'nis: on her Tomodachi Life island with IRyS.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Nakiri Ayame, Nanashi Mumei and Watson Amelia: the 2023 Sports Festival white team.
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: - Measured (N20; a 2026 solo chat): median pitch about 214 Hz (p10–p90 172–297 Hz), a mid-range speaking voice like IRyS's (214–226 Hz), lower than Kiara or Gura; about 159 words per minute of speech. Group-stream windows read higher (284–289 Hz) because several voices share them. Sample results only.
@@ -200,6 +213,7 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Hakos Baelz: a K/DA "POP/STARS" cover with Moona Hoshinova and Ayunda Risu (2023), a stream art lesson (2024) and Ina's AmiAmi special (2025).
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **Code-switching:** English-dominant, with sparse Japanese reaction words: "yabe," "kusa," "seiso," "hazukashii," "warau na," "kouhai." She reads and sometimes answers Japanese chat, and she is improving her Japanese. She shares Korean with Kronii. [Observed I2 §Quotes and §Likes and dislikes; Kronii file K8 §Miscellaneous, secondary] "Marine-senpai" for a senior she admires. [Observed—published interview I18]
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **How she addresses people:** "you guys," "everyone," "chat," and fans as "Takodachi" (the official fan name is the Tentacult). Members by first or short name ("Calli," "Kiara," "Ame," "Gura," "Kronii," "Bae," "Biboo," "CC"); a full name signals a mock-serious scold. New members are "kouhais." She gives her own name surname-first. [Official I1] [Observed I3 captions; I2 §Mascot and fans]
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - Measured (I29, 2026 chat): median pitch 223–232 Hz, in the middle of the six files measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz), so "mid" rather than "low"; about 81–95 words per minute of speech in that one 2026 chat stream (Kronii 120–127, Calli 161–186 in their chat windows). A 2021 game stream measures 210–214 Hz and 68–116 words per minute (its opening chat 116). Sample results only; they do not establish a general ranking among genmates.
@@ -234,12 +248,21 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 - `bible/characters/Shirogane-Noel.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT"
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025).
-- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Ceres Fauna (graduated 2025): an EN kouhai who, by secondary accounts, admired her and hoped to collab.
 - `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2023 | Calli's HOLOYOI #02 with Flare (04-20); first solo album "NOESANPO" (official digital release 11-25; birthday merchandise orders opened 11-24); a "Yuru Holo" team Mario Kart event with FUWAMOCO and Bae among the participants (12-12) | [NO5] [Official music 359] |
 - `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | FUWAMOCO, Hakos Baelz | — | Participants in the "Yuru Holo" team Mario Kart event (2023; not necessarily one team); FUWAMOCO danced to "TREVIAN KNIGHT" (2025-09-30) | [NO5 Evg-T2BUIDM, 8RjOCCH2sac] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [NO5] |
-- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Ceres Fauna (graduated) | EN kouhai | Secondary accounts (Fauna's wiki trivia) say Fauna admired her and wanted to collab | [Fauna file F2, secondary] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Ceres Fauna (graduated) | EN kouhai | Secondary accounts (Fauna's wiki trivia) say Fauna admired her and wanted to collab; not verified in review and no collab recorded, so it stays out of the exported fields | [Fauna file F2, secondary] |
+
+### from Shishiro Botan
+- `bible/characters/Shishiro-Botan.md › [SW] Background`: Archived metadata and secondary concert reports record her with the English cast in Left 4 Dead 2 (2022) and an Overwatch 2 team (2023) with IRyS, on Calli's HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and as a guest at Ina's birthday 3D live "EVERMORE"
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: IRyS: Left 4 Dead 2 with Lui and Korone (2022) and an Overwatch 2 team with Lui, Sakamata Chloe and Tokoyami Towa (2023).
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Hakos Baelz: BAE-GEMITE DOMINATION #2 with Subaru (2023).
+- `bible/characters/Shishiro-Botan.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her on Calli's HOLOYOI #03 and Bae's BAE-GEMITE DOMINATION #2 (2023), both with Oozora Subaru. [BO5]
+- `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2022-04-24 | Left 4 Dead 2 with IRyS, Takane Lui and Inugami Korone | [BO5 K1wStJxm4F0] |
+- `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2023 | BAE-GEMITE DOMINATION #2 with Bae and Subaru (04-08); HOLOYOI #03 with Calli and Subaru (05-18); an Overwatch 2 team with IRyS, Lui, Chloe and Towa (08) | [BO5] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | IRyS | — | Left 4 Dead 2 with Lui and Korone (2022); the Overwatch 2 team with Lui, Chloe and Towa (2023) | [BO5 K1wStJxm4F0, roWKpgZsjR4] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Hakos Baelz | — | BAE-GEMITE DOMINATION #2 with Subaru (2023) | [BO5] |
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Ouro Kronii ("quasoni"): Kiara was a fan before Kronii debuted.
@@ -318,6 +341,26 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 
 ### from FUWAMOCO
 - `bible/world/FUWAMOCO.md › Shared Relationships`: - **Myth and Promise:** "FUWAMOCALLI" with Mori Calliope (a twin game show and Smash in 2023, a tea party, an off-collab karaoke in 2024); Fuwawa also joined Mori Calliope and Gigi Murin for a 2026 BOMBANANA collab ("2 Creatures + 1 Reaper"; Fuwawa's post, not a twin appearance); "Detective Dogs" with Watson Amelia (Escape Simulator, 2024-09-24); "WatchDog" with Ouro Kronii; "Fuwamoomco" with Nanashi Mumei (Overwatch, 2025-03-01); they helped Ceres Fauna on her last World Tree stream (2024-12-31); Kiara hosted them on HOLOTALK (2023). [Observed S1; S3; Mumei, Calli, Kiara archives]
+
+### from JP Senpai Pairs 2
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Other Names`: Marine and Kiara, Noel and Calliope, Lamy and Ina, Botan and IRyS, Vivi and FUWAMOCO
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Marine was the first guest of Kiara's talk show HOLOTALK (2020), joined Calli's first English lesson with Ina (2022), played Mario Kart with Calli and Bae (2021) and joined their house-party off-collab (2023), joined off-collabs with FUWAMOCO and Nerissa (2024), and was a guest at Ina's 3D live "Pleides"
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA.
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Botan played Left 4 Dead 2 and Overwatch 2 with IRyS, was on HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and guested at Ina's 2025 birthday live.
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Vivi, a FLOW GLOW member, played R.E.P.O. with FUWAMOCO and Bae and, separately, on Ina's stream, and Gartic Phone with Mumei, Kronii, Ina and Elizabeth (2025).
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Mori Calliope:** Calli's HOLO ENGLISH LESSON #01 with Ina and Fubuki (2022-02-19); Mario Kart with Bae and Pavolia Reine (2021-12-25); an off-collab "House Party with Marine & Bae" (2023-08-14); Calli played "Truth of Beauty Witch," the horror game featuring Marine, on her own stream (2023); dance shorts to Marine's songs. [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Hakos Baelz, Nanashi Mumei (graduated):** Bae played the horror game featuring Marine with Mumei (2023-08-23; a game connection, not a collab with Marine); Bae was at the house party with Marine; dance covers. [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Shirogane Noel with the cast`: - **FUWAMOCO, Hakos Baelz:** a "Yuru Holo" team Mario Kart event (2023-12-12); FUWAMOCO danced to Noel's "TREVIAN KNIGHT" (2025). [S1] [Official music 622]
+- `bible/world/JP-Senpai-Pairs-2.md › Shirogane Noel with the cast`: - **Nanashi Mumei, Ina, Kronii, Elizabeth (and Kikirara Vivi):** Mumei's Gartic Phone EN + ID + JP collab (2025-04-14). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **IRyS:** Left 4 Dead 2 with Lui and Inugami Korone (2022-04-24); an Overwatch 2 team for Holizontal JAM with Lui, Chloe and Towa (2023-08). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **Mori Calliope, Hakos Baelz:** HOLOYOI #03 and BAE-GEMITE DOMINATION #2, both with Oozora Subaru (2023). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Kikirara Vivi with the cast`: - **FUWAMOCO, Hakos Baelz:** #holoREPO with Roboco, Towa and Hajime (2025-05-25). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Kikirara Vivi with the cast`: - **Mumei, Kronii, Ina, Elizabeth:** Mumei's Gartic Phone EN + ID + JP collab (2025-04-14). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2022 | Calli's English lesson #01; HOLOTALK #22; Left 4 Dead 2 | Marine; Noel; Botan, IRyS |
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2023 | HOLOYOI #02 and #03; BAE-GEMITE DOMINATION #2; the horror game featuring Marine; Overwatch 2 team; Blue Journey | Noel, Botan, Calli, Bae; Calli, Bae, Mumei; Botan, IRyS |
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2025 | Gartic Phone EN + ID + JP (04-14); #holoREPO (05-25); R.E.P.O. on Ina's stream (06-02); Ina's "EVERMORE" | Noel, Vivi; Vivi, Bae, FUWAMOCO; Vivi, Ina; Botan |
+- `bible/world/JP-Senpai-Pairs-2.md › Conflicts and Story Hooks`: 3. Vivi does stage makeup for Bae before a R.E.P.O. rematch.
 
 ### from JP Senpai Pairs
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024).

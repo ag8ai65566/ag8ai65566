@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git 6545e34.
+Snapshot: git 10e222e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|holoJustice|Grem Reaper|Bloodraven|Immerhater|TimeChaser|Autofister|Gigi Murin|Erby Berby|Da Fister|Elizabeth|Gi Murin|Raviolin|Justice|Cecilia|Lizzie|G Pain|GeeGee|HoloEU|B.F.F|Raora|Rara|Gigi|RPGG|Ceci|LYRA|Cece|CCGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|holoJustice|Grem Reaper|FiddleFlame|Gigi Murin|TimeChaser|Immerhater|Bloodraven|Autofister|Erby Berby|Elizabeth|Da Fister|Raviolin|Gi Murin|Cecilia|Justice|G Pain|HoloEU|Lizzie|GeeGee|B.F.F|Raora|RPGG|CCGG|Rara|LYRA|Ceci|Cece|Gigi|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -68,6 +68,13 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/IRyS.md › [SW] Relationships`: Cecilia Immergreen: Elden Ring Nightreign with Bijou (2025).
 - `bible/characters/IRyS.md › [SW] Relationships`: Gigi Murin, Ouro Kronii and FUWAMOCO: "Bright Tonight"
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
+
+### from Kikirara Vivi
+- `bible/characters/Kikirara-Vivi.md › [SW] Background`: Archived metadata records her with the English cast in R.E.P.O. with FUWAMOCO and Bae (2025-05-25), in a separate R.E.P.O. session on Ina's stream (2025-06-02) and in Mumei's Gartic Phone collaboration with Noel, Kronii, Ina and Elizabeth (2025); a secondary archive records FUWAMOCO and Bijou watching FLOW GLOW's debut.
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone (2025).
+- `bible/characters/Kikirara-Vivi.md › Voice Profile`: - **Language:** streams in Japanese (a voice feature only); archived metadata records R.E.P.O. with FUWAMOCO and Bae (2025-05-25), a separate R.E.P.O. session on Ina's stream (2025-06-02) and Mumei's Gartic Phone collab with Noel, Kronii, Ina and Elizabeth (2025). [VI5]
+- `bible/characters/Kikirara-Vivi.md › Background Timeline`: | 2025-04-14 | Gartic Phone EN + ID + JP collab with Mumei, Kronii, Ina, Elizabeth and Noel | [VI5 OMDzBQohAf8] |
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [VI5] |
 
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Shiori Novella: Advent's "glorious leader" in Bijou's affectionate bit (Goth Rock; a "Gyatt Review"; GAGA with Gigi and Cecilia).
@@ -245,6 +252,13 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 ### from IRyS and Nerissa Pairs
 - `bible/world/IRyS-and-Nerissa-Pairs.md › IRyS`: - **IRyS and Ina** (15 / 7 / 3 / 4 / 6 / 0): an early duo ("Keep Talking and Nobody Explodes," 2021-07-31; "It Takes Two," three parts, "It Takes Tako & Hope," 2021); a Gundam watchalong (2023-03-25); IRyS as guest on Ina's "AmiAmi March Special" (2025-03-18); Elden Ring Nightreign, which IRyS titled "Third Wheeling" (2025-06-24); guildmates ("Cerulean Cup," with Kronii, Bijou and Gigi) in the ENigmatic Recollection Minecraft story. [Observed S1 titles; S2 §Units, secondary]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › IRyS`: - **IRyS and Kiara** (13 / 1 / 3 / 2 / 3 / 0): Kiara's "1ST FULL HOLOEN COLLAB ft. IRYS!" (2021-08-12); a "GERMAN CRASH COURSE … with IRYS" (2022-06-02); an off-collab doing each other's nails on camera (2023-11-14); TORIDAMA 2 off-collab with Kronii and Raora, "Who is the BRAVEST?" (2024-08-01). [Observed S1 titles]
+
+### from JP Senpai Pairs 2
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Vivi, a FLOW GLOW member, played R.E.P.O. with FUWAMOCO and Bae and, separately, on Ina's stream, and Gartic Phone with Mumei, Kronii, Ina and Elizabeth (2025).
+- `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Elizabeth Rose Bloodflame:** "IT'S LOVE" with Marine and Inugami Korone for Elizabeth's 2026 birthday. [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Shirogane Noel with the cast`: - **Nanashi Mumei, Ina, Kronii, Elizabeth (and Kikirara Vivi):** Mumei's Gartic Phone EN + ID + JP collab (2025-04-14). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Kikirara Vivi with the cast`: - **Mumei, Kronii, Ina, Elizabeth:** Mumei's Gartic Phone EN + ID + JP collab (2025-04-14). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2026 | "Chatter Chatter"; Elizabeth's birthday cover | Marine, Suisei; Marine |
 
 ### from JP Senpai Pairs
 - `bible/world/JP-Senpai-Pairs.md › Hoshimachi Suisei with the cast`: - **Mori Calliope ("Death Star," secondary):** Calli's own card describes her as starstruck by Suisei (secondary; the pair name and reaction stay here in the dossier). Calli's original "CapSule" with Suisei (2022-04-04) and Suisei's "Wicked feat. Mori Calliope" (single "TEMPLATE / Wicked," 2022); Suisei sang "Wicked" with Calli at Calli's first solo concert "New Underworld Order" (2022-07-21). Calli drew Suisei on stream (2021), watched Suisei's 2nd concert with Ina (2023-02-20), held a "Talkin' Live Shows" collab with her (2023-04-12) and watched the "Spectra of Nova" tour opener with FUWAMOCO and Elizabeth (2024-11-14). In a June 2026 chat Suisei mentioned having already talked about "the one with Calliope" among her recent stage appearances. [S1] [S2 Suisei §Relationships, secondary] [Suisei file SU20]

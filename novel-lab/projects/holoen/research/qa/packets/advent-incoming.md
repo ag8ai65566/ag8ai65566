@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 6545e34.
+Snapshot: git 10e222e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|hololive -Advent-|Jewel of Emotions|Fuwawa Abyssgard|FUWAMOCO MORNING|Mococo Abyssgard|Abyssgard twins|Demon of Sound|The Fluffy One|Shiori Novella|Demon of Soup|The Fuzzy One|Advent Pairs|The Archiver|Sound Hounds|Diamond Dogs|Koseki Bijou|Last Writes|FUWAMOCALLI|Rocku Wawa|Bloodraven|Grindstone|GreyScaleX|holoAdvent|Fluffy One|Goth Rock|Fuwa-chan|JewelBird|ShioRaven|Moco-chan|Adventrix|The Cell|Lil'Rock|FUWAMOCO|Mogojyan|Pen Pups|Shiori~n|Fuwa-nee|Shiorin|Nerissa|Shiori|Mogogo|Mococo|Beejoe|Koseki|Fuwawa|Advent|B.F.F|Oobib|Biboo|Rissa|Bijou|Beebs|GAGA|Neri|FWMC|Pero)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|hololive -Advent-|Fuwawa and Mococo|Fuwawa Abyssgard|Mococo Abyssgard|FUWAMOCO MORNING|Abyssgard twins|Shiori Novella|Demon of Sound|The Fluffy One|Demon of Soup|The Fuzzy One|Koseki Bijou|Diamond Dogs|Advent Pairs|Sound Hounds|The Archiver|Last Writes|FUWAMOCALLI|Rocku Wawa|Fluffy One|Bloodraven|Grindstone|holoAdvent|GreyScaleX|ShioRaven|Adventrix|Goth Rock|JewelBird|Fuwa-chan|Moco-chan|FUWAMOCO|Shiori~n|The Cell|Lil'Rock|Mogojyan|Pen Pups|Fuwa-nee|Nerissa|Shiorin|Beejoe|Fuwawa|Mogogo|Shiori|Koseki|Advent|Mococo|B.F.F|Biboo|Rissa|Oobib|Bijou|Beebs|Neri|GAGA|FWMC|Pero)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -50,7 +50,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: (with Calli and IRyS); Elizabeth says Nerissa "has a beautiful voice,"
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Nerissa praises her kindness, and Nerissa calls her "my husband" as a performed bit.
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Shiori Novella: credited in Shiori's non-canon motion comic "Into The Void."
-- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests: FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine and Korone.
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests (secondary set list) included FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine, Korone and Nerissa.
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Core Drive`: - **Values shown in public:** discipline, kindness and manners; looking out for others (Nerissa: "She's always looking out for me, even though I'm the senpai"). [Official EB1, EB4]
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Behavioral Traits`: 2. Voice mimicry and impressions as pranks: she voiced the Advent members in Justice's introduction video, surprised Mori Calliope at her debut with a TakaMori skit, and trolls hololive and HOLOSTARS members with a "Venom"/demon voice. [Observed EB2 §Personality, §Miscellaneous, secondary]
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Voice Profile`: - **Warmth and self-mockery:** she jokes about her flame dancers' work ethic; Nerissa "has been calling me her husband, my husband. She's very sweet" (a performed bit). [ASR EB20, Rk03Rh8P9ps 0:36:56, 0:27:52, 0:38:00; both models]
@@ -108,7 +108,6 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | Advent kouhai | Gigi's 2025 Spring Party with FUWAMOCO and Bae; a 2026 dance short to "bae-senpai's new song SNAKE EYES" (archived 2026-03-20) | [Observed HB8] |
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Nerissa Ravencroft, Shiori Novella | Later EN kouhai | Shared EN projects: the 2024 "Mind Craft" cover with all then-active EN members; a 2026 behind-the-scenes video by Kaela with Bae and Nerissa (secondary metadata) | [secondary HB13] |
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25) | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] |
-- `bible/characters/Hakos-Baelz.md › Relationship Map`: | Shirogane Noel, Shishiro Botan | — | "Yuru Holo" team Mario Kart with FUWAMOCO (Noel, 2023); BAE-GEMITE DOMINATION #2 with Oozora Subaru (Botan, 2023) | [Noel file NO5] [Botan file BO5] |
 
 ### from Hoshimachi Suisei
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: FUWAMOCO: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026).
@@ -141,6 +140,16 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/IRyS.md › [SW] Relationships`: At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
 - `bible/characters/IRyS.md › Relationship Map`: | Koseki Bijou | Frequent 2025–2026 co-op partner | Horror co-ops (Dead Space 3, Resident Evil 6 "w/ Biboo," 2026) | [Observed R3 titles] |
 - `bible/characters/IRyS.md › Story Engine`: 5. A horror co-op with Bijou where IRyS is the one scaring her partner.
+
+### from Kikirara Vivi
+- `bible/characters/Kikirara-Vivi.md › [SW] Background`: Archived metadata records her with the English cast in R.E.P.O. with FUWAMOCO and Bae (2025-05-25), in a separate R.E.P.O. session on Ina's stream (2025-06-02) and in Mumei's Gartic Phone collaboration with Noel, Kronii, Ina and Elizabeth (2025); a secondary archive records FUWAMOCO and Bijou watching FLOW GLOW's debut.
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: FUWAMOCO: watched FLOW GLOW's debut with Bijou (2024, secondary archive); R.E.P.O. with Bae (2025-05-25).
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Koseki Bijou: watched FLOW GLOW's debut with FUWAMOCO.
+- `bible/characters/Kikirara-Vivi.md › Voice Profile`: - **Language:** streams in Japanese (a voice feature only); archived metadata records R.E.P.O. with FUWAMOCO and Bae (2025-05-25), a separate R.E.P.O. session on Ina's stream (2025-06-02) and Mumei's Gartic Phone collab with Noel, Kronii, Ina and Elizabeth (2025). [VI5]
+- `bible/characters/Kikirara-Vivi.md › Background Timeline`: | 2025-05-25 | #holoREPO with FUWAMOCO, Bae, Roboco, Towa and Hajime | [VI5 Z5cpzbdsLDE, TgMVtjXW2Ms] |
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | FUWAMOCO | — | Watched FLOW GLOW's debut (2024-11-09, secondary archive); #holoREPO (2025-05-25) | [VI5] |
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Koseki Bijou | — | Watched FLOW GLOW's debut with FUWAMOCO (2024) | [VI5] |
+- `bible/characters/Kikirara-Vivi.md › Story Engine`: 1. Vivi does FUWAMOCO's stage makeup and charges them "Vivi prices."
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
@@ -323,6 +332,18 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - IRyS debuted 2021-07-11 (senior to Kronii by a month, to Nerissa by two years); Nerissa 2023-07-31.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - CHADCast = IRyS, Calli, Bae. KiaRissa = Kiara and Nerissa. IRyS and Kronii are -Promise- genmates.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - 2026 baseline: IRyS–Gura and Nerissa–Gura are memories; Ame appears as an affiliate guest.
+
+### from JP Senpai Pairs 2
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Other Names`: Marine and Kiara, Noel and Calliope, Lamy and Ina, Botan and IRyS, Vivi and FUWAMOCO
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Marine was the first guest of Kiara's talk show HOLOTALK (2020), joined Calli's first English lesson with Ina (2022), played Mario Kart with Calli and Bae (2021) and joined their house-party off-collab (2023), joined off-collabs with FUWAMOCO and Nerissa (2024), and was a guest at Ina's 3D live "Pleides"
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Vivi, a FLOW GLOW member, played R.E.P.O. with FUWAMOCO and Bae and, separately, on Ina's stream, and Gartic Phone with Mumei, Kronii, Ina and Elizabeth (2025).
+- `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **FUWAMOCO, Nerissa Ravencroft:** Marine joined a Touhou off-collab with FUWAMOCO (2024-04-30) and a Mario Party Superstars off-collab with Nerissa and FUWAMOCO (2024-06-17); FUWAMOCO's watch-along of Marine's solo concert (2024-12-07) and a "Chatter Chatter" dance short (2026); Nerissa danced to "I'm Your Treasure Box." [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Shirogane Noel with the cast`: - **FUWAMOCO, Hakos Baelz:** a "Yuru Holo" team Mario Kart event (2023-12-12); FUWAMOCO danced to Noel's "TREVIAN KNIGHT" (2025). [S1] [Official music 622]
+- `bible/world/JP-Senpai-Pairs-2.md › Kikirara Vivi with the cast`: - **FUWAMOCO, Koseki Bijou:** watched FLOW GLOW's debut together (2024-11-09; a secondary archive record), a watch-along of Vivi's debut rather than a collab with her. [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Kikirara Vivi with the cast`: - **FUWAMOCO, Hakos Baelz:** #holoREPO with Roboco, Towa and Hajime (2025-05-25). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2024 | Off-collabs with FUWAMOCO and Nerissa; Ina's "Pleides" | Marine; Lamy, Marine |
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2025 | Gartic Phone EN + ID + JP (04-14); #holoREPO (05-25); R.E.P.O. on Ina's stream (06-02); Ina's "EVERMORE" | Noel, Vivi; Vivi, Bae, FUWAMOCO; Vivi, Ina; Botan |
+- `bible/world/JP-Senpai-Pairs-2.md › Conflicts and Story Hooks`: 1. Marine invites FUWAMOCO onto her "ship"; Noel insists on guarding the deck.
 
 ### from JP Senpai Pairs
 - `bible/world/JP-Senpai-Pairs.md › [SW] Other Names`: AS_tar, FWMCAZ, TakoNeko, Suisei and Calli, Okayu and Ina, AZKi and FUWAMOCO, Ayame and Kiara

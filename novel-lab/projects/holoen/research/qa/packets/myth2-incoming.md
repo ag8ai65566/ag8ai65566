@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 6545e34.
+Snapshot: git 10e222e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Calli and Gura|Gura and Calli|Watson Amelia|Amelia Watson|The Fish Tank|Gura and Ame|Ame and Gura|Gremlin Ame|Gawr Gura|Same-chan|Bone Bros|Goobidiba|ワトソン・アメリア|Samegaki|holoMyth|HoloMyth|amesame|AmeSame|Amechan|がうる・ぐら|Amelia|Gooba|Goob|Myth|Gura|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|City Pop Shark|Calli and Gura|Watson Amelia|The Fish Tank|Amelia Watson|Ame and Gura|Gura and Ame|Gremlin Ame|Goobidiba|ワトソン・アメリア|Bone Bros|Gawr Gura|Same-chan|HoloMyth|holoMyth|Samegaki|amesame|Amechan|AmeSame|Amelia|がうる・ぐら|Gooba|Gura|Goob|Myth|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -98,7 +98,7 @@ Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Ca
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Mori Calliope | Myth senior | "ANATOMY REVIEW" streams (with Calli and Sana, 2022; solo, 2025) | [Observed M3] |
 
 ### from Nerissa Ravencroft
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): a fellow "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): a "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Nakiri Ayame, Nanashi Mumei and Watson Amelia: the 2023 Sports Festival white team.
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: - Measured (N20; a 2026 solo chat): median pitch about 214 Hz (p10–p90 172–297 Hz), a mid-range speaking voice like IRyS's (214–226 Hz), lower than Kiara or Gura; about 159 words per minute of speech. Group-stream windows read higher (284–289 Hz) because several voices share them. Sample results only.
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Watson Amelia | Senior (affiliate) | Portal 2 together, "TAKING ON PUZZLES WITH @WatsonAmelia" (2024) | [Observed N3 title] |
@@ -140,6 +140,10 @@ Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Ca
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Watson Amelia: a VRChat aquarium visit with "Ame Senpai."
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Gawr Gura (graduated): a fellow "Scarlet Wand" guildmate in ENigmatic Recollection, with Nerissa.
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Watson Amelia | Senior | "Ame Senpai's Aquarium Visit" in VRChat (2024-12-02) | [Observed SN3] |
+
+### from Shishiro Botan
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label.
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Gawr Gura (graduated) | "Apex Predators" (a secondary-listed pair label) | A joint Apex session is not established here | [BO2] |
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa
@@ -207,6 +211,12 @@ Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Ca
 - `bible/world/IRyS-and-Nerissa-Pairs.md › IRyS`: - **IRyS and Ame** (11 / 2 / 3 / 2 / 0 / 0) and **IRyS and Gura** (11 / 6 / 0 / 1 / 0 / 0): mostly the 2021–22 full-EN collabs (Among Us, Dead by Daylight, Overwatch); IRyS joined Ina, Bae and Ame's "LOSER BUYS DINNER!!!!!" off-collab (2023-02-23). With Gura graduated and Ame an affiliate, these are memories. [Observed S1 titles]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Nerissa`: - **Nerissa and the others:** Ame: Portal 2, "TAKING ON PUZZLES WITH @WatsonAmelia" (2024-09-28). Gura: fellow guildmates ("Scarlet Wand") in ENigmatic Recollection, now a memory. Kronii: an Among Us group collab (2023-12) is the example found. [Observed S1 titles; S3 §Relationships, secondary]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - 2026 baseline: IRyS–Gura and Nerissa–Gura are memories; Ame appears as an affiliate guest.
+
+### from JP Senpai Pairs 2
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA.
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Ninomae Ina'nis, Gawr Gura:** UMISEA, the ocean unit (official 2023 roster: Minato Aqua, Marine, Sakamata Chloe, Gura and Ina); Calli's English lesson #01 (Ina); a guest at Ina's "Pleides" (2024); "SHINKIRO" with Gura (anime MV on Marine's channel, 2023-11-12, credited to both). The "GuraMarine" pair name is wiki-listed only. [Official UMISEA roster] [S1 9ehwhQJ50gs, 3n9igJnSXtQ] [S2 Marine §Relationships, secondary]
+- `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **Takanashi Kiara, Gawr Gura:** "Usada Kensetsu" (Kiara) and "Apex Predators" (Gura) are secondary-listed names; a joint Apex session is not established. [S2 Botan, secondary]
 
 ### from JP Senpai Pairs
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024).

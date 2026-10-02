@@ -1,9 +1,9 @@
 # Audit packet: jp (incoming claims)
 
-Snapshot: git 6545e34.
+Snapshot: git 10e222e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: rtual Diva AZKi|Hoshimachi Suisei|AZKi and FUWAMOCO|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Sui-chan|Azu-chan|Azukichi|TakoNeko|AZKichi|Okanyan|Okayun|Suisei|FWMCAZ|AzuAzu|AS_tar|Yo-san|Okayu|Ayame|AZKi|Ojou|AZAZ)(
+Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|TakoNeko|Sui-chan|Azukichi|Azu-chan|Okanyan|AZKichi|FWMCAZ|AS_tar|Okayun|AzuAzu|Suisei|Yo-san|Okayu|Ayame|Ojou|AZKi|AZAZ)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
@@ -100,6 +100,10 @@ Matched names: rtual Diva AZKi|Hoshimachi Suisei|AZKi and FUWAMOCO|Suisei and Ca
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Hoshimachi Suisei | "Shiranui Kensetsu" (Shiraken) | A Minecraft construction company with Flare, Polka and Miko | [NO2] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nakiri Ayame | — | An Audio-Technica earphone collab (2025) | [NO4] |
 
+### from Shishiro Botan
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss and Hoshimachi Suisei: holoGTA and the m HOLD'EM poker collab with Shirakami Fubuki (2024); Nakiri Ayame: holoGTA (2024).
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); the m HOLD'EM poker collab (2024-12) was La+, Suisei, Botan and Shirakami Fubuki, not Ayame | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
+
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Archived episode records list HOLOTALK guests including Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ Darknesss ("Glow in the Dark") and Sakamata Chloe ("WILDCARD").
 
@@ -146,6 +150,10 @@ Matched names: rtual Diva AZKi|Hoshimachi Suisei|AZKi and FUWAMOCO|Suisei and Ca
 - `bible/world/Hakos-Baelz-Pairs.md › BaeRyS`: - **On stage:** "High Tide" with Moona Hoshinova and Hoshimachi Suisei at -Breaking Dimensions- (2024); the official unit BaeRyS at Serendipity (2026), "LUVATORRRRRY!", their first duo stage. [Official S3]
 - `bible/world/Hakos-Baelz-Pairs.md › Beyond EN`: - Kobo Kanaeru ("HELP!!"), Kureiji Ollie ("Countach," HoloEarth; Bae's joking "other mom"), Ookami Mio (her joking "mom"), Natsuiro Matsuri ("Kakumei Dualism" at the 2026 fes), Moona Hoshinova and Hoshimachi Suisei ("High Tide"), Usada Pekora and Ayunda Risu ("holorodents," secondary), Kaela Kovalskia (Lethal Company). [Official S3] [S2, secondary] [Bae file HB20]
 - `bible/world/Hakos-Baelz-Pairs.md › Hard Facts`: - Concert pairings: "BLUE CLAPPER" (Calli, IRyS, Bae, Bijou; 2024); "High Tide" (IRyS, Bae, Moona, Suisei; 2024); "R x R x R" (Calli & Bae; 2025); "Countach" (Bae, Gigi, Ollie; 2025); "HELP!!" (Kobo, Bae, Elizabeth; 2026).
+
+### from JP Senpai Pairs 2
+- `bible/world/JP-Senpai-Pairs-2.md › Among themselves`: - With the first four: Marine and Suisei released "Chatter Chatter" (2026); Marine gave Okayu the nickname "Okanyan" (Okayu's official profile); Noel and Suisei are in "Shiranui Kensetsu" (official unit roster); Noel and Ayame did an Audio-Technica sponsored stream (2025-07-11); Botan streamed holoGTA with Suisei and Ayame (2024) and joined the m HOLD'EM poker collab with Suisei (2024); Lamy and AZKi are in KoZMy (with Koyori) and, per secondary references, KALAZ (with Amane Kanata). The wiki's holoALICE, MOMAS and HoLOGSS labels were not verified in review. [S2] [S1] [Official]
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2026 | "Chatter Chatter"; Elizabeth's birthday cover | Marine, Suisei; Marine |
 
 ### from Justice Pairs
 - `bible/world/Justice-Pairs.md › Beyond EN`: - **JP:** Elizabeth's 2026 birthday covers, recorded at COVER's studio, featured Oozora Subaru; Roboco, Tokino Sora and Yuzuki Choco; Houshou Marine and Inugami Korone ("IT'S LOVE," iwnHChZq0N8, credits read by Claude); FUWAMOCO with Polka, Nene, Watame and Iroha; her 2026 "Yona Yona Dance" cover mixed branches (Natsuiro Matsuri, Hiodoshi Ao, Ollie and HOLOSTARS members). Cecilia played Minecraft and Super Mario 3D World with Tokino Sora (2025-02); Raora played Clubhouse Games with Haachama (2024-08-16), sang "Neko Kaburi-Na" with Ina, Shiori and guest Subaru at -All for One-, is "RaoRiRi" with Ichijou Ririka; "OkaGigi" is a secondary-documented name for Gigi and Nekomata Okayu, with no concrete shared activity sourced (dossier only). Tsunomaki Watame sang "Cloudy Sheep" with Calli and Cecilia and "What an amazing swing" with Kiara and Raora at Serendipity. FLOW GLOW: Koganei Niko sang with Elizabeth in LYRA. [Observed S1; S2] [Official S6, S7]

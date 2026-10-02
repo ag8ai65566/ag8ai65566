@@ -141,7 +141,7 @@ Public exchanges only.
 | Mori Calliope | — | HOLOYOI #02 with Flare (2023) | [NO5] |
 | FUWAMOCO, Hakos Baelz | — | Participants in the "Yuru Holo" team Mario Kart event (2023; not necessarily one team); FUWAMOCO danced to "TREVIAN KNIGHT" (2025-09-30) | [NO5 Evg-T2BUIDM, 8RjOCCH2sac] |
 | Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [NO5] |
-| Ceres Fauna (graduated) | EN kouhai | Secondary accounts (Fauna's wiki trivia) say Fauna admired her and wanted to collab | [Fauna file F2, secondary] |
+| Ceres Fauna (graduated) | EN kouhai | Secondary accounts (Fauna's wiki trivia) say Fauna admired her and wanted to collab; not verified in review and no collab recorded, so it stays out of the exported fields | [Fauna file F2, secondary] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a hololive Fantasy concert and a new original song behind her.
@@ -220,7 +220,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Noel came to the VTuber world to train and grow stronger. As a streamer she wants to have fun with her knights and her friends and keep improving as a singer.
 
 ## [SW] Relationships
-Houshou Marine: hololive Fantasy genmate; the units Bara☆Dice and "Yakamashi Musume" (with Yukihana Lamy and Inugami Korone, per archived metadata); 3rd-gen R.E.P.O. (2025). Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy. Yukihana Lamy: Yakamashi Musume and drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an Audio-Technica sponsorship collab (2025). Hakui Koyori: "#ノエこよ," a Power Pros baseball exhibition (2025), and Blue Journey (2023). Takane Lui and Kazama Iroha: Bara☆Dice. Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025). Ceres Fauna (graduated 2025): an EN kouhai who, by secondary accounts, admired her and hoped to collab.
+Houshou Marine: hololive Fantasy genmate; the units Bara☆Dice and "Yakamashi Musume" (with Yukihana Lamy and Inugami Korone, per archived metadata); 3rd-gen R.E.P.O. (2025). Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy. Yukihana Lamy: Yakamashi Musume and drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an Audio-Technica sponsorship collab (2025). Hakui Koyori: "#ノエこよ," a Power Pros baseball exhibition (2025), and Blue Journey (2023). Takane Lui and Kazama Iroha: Bara☆Dice. Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025).
 
 ## [SW] Secrets
 (none)
@@ -248,6 +248,7 @@ Houshou Marine: hololive Fantasy genmate; the units Bara☆Dice and "Yakamashi M
     "secondary accounts" label (Fauna's card is aligned to it).
   - Not applied: the conservative physical description (the card's description is Claude's own reading of the
     official key art, labelled as such).
+- **2026-10-02, GPT review run D (cross-card), merged by Claude:** the Fauna admiration is out of the exported Relationships (run D could not recover the wiki source; aligned with Fauna's card); the dossier keeps it as an unverified secondary lead.
 
 ## Open Questions
 1. Resolved: the official English title is "TREVIAN KNIGHT" (official music page 622).

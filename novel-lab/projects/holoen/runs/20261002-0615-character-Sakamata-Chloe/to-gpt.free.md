@@ -984,10 +984,10 @@ Dossier rows (with sources):
 
 ### Gawr Gura
 Relationships field (exported):
-La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022). Houshou Marine: UMISEA and "SHINKIRO" ("GuraMarine"); Sakamata Chloe joined UMISEA later, per the wiki.
+La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022). Houshou Marine: UMISEA and "SHINKIRO" (2023); UMISEA's official 2023 roster also includes Sakamata Chloe.
 Dossier rows (with sources):
 | La+ Darknesss, Kazama Iroha, Shishiro Botan | JP members | HOLO ENGLISH LESSON #02 with La+ and Iroha (Calli's stream, 2022-03-04); "Apex Predators," a wiki-listed pair name with Botan | [S1 X492n37brRU] [Botan file, secondary] |
-| Houshou Marine, Sakamata Chloe | UMISEA | "SHINKIRO" with Marine ("GuraMarine"); Chloe joined the unit later per the wiki | [Marine file MA2, MA5] [Chloe file CH2, secondary] |
+| Houshou Marine, Sakamata Chloe | UMISEA (official 2023 roster: Aqua, Marine, Chloe, Gura, Ina) | "SHINKIRO" with Marine (anime MV on Marine's channel, 2023-11-12, credited to both; the "GuraMarine" pair name is wiki-listed only) | [Marine file MA4 9ehwhQJ50gs] [Official UMISEA roster] |
 
 ### Watson Amelia
 Relationships field (exported):
@@ -997,10 +997,10 @@ Dossier rows (with sources):
 
 ### IRyS
 Relationships field (exported):
-Shishiro Botan, Takane Lui and Sakamata Chloe: an Overwatch 2 team (2023); Hakui Koyori: Splatoon 3 and Among Us.
+Shishiro Botan, Takane Lui, Sakamata Chloe and Tokoyami Towa: an Overwatch 2 team (2023); Hakui Koyori: Splatoon 3 and Among Us.
 
 Dossier rows (with sources):
-| Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 (2022-10-03) and Among Us (2023-05-08) with Koyori and Chloe; Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
+| Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 (2022-10-03) and Among Us (2023-05-08) with Koyori and Chloe; Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
 
 ### Nerissa Ravencroft
 Relationships field (exported):
@@ -1034,7 +1034,7 @@ Dossier rows (with sources):
 
 ### Elizabeth Rose Bloodflame
 Relationships field (exported):
-Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests: FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine and Korone.
+Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests (secondary set list) included FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine, Korone and Nerissa.
 
 ### Cecilia Immergreen
 Relationships field (exported):
@@ -1054,27 +1054,27 @@ Dossier rows (with sources):
 
 ### Hoshimachi Suisei
 Relationships field (exported):
-Hakui Koyori, Sakamata Chloe and Kazama Iroha: her Hoshimatic Project; she coached Iroha at Puyo Puyo Tetris (2023). La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA and poker (2024).
+Hakui Koyori, Sakamata Chloe and Kazama Iroha: her Hoshimatic Project; she coached Iroha at Puyo Puyo Tetris (2023). La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA (2024); La+, Botan and Shirakami Fubuki: the m HOLD'EM poker collab (2024).
 
 Dossier rows (with sources):
 | Hakui Koyori, Sakamata Chloe, Kazama Iroha | Hoshimatic Project | Her idol-group practice unit (2023–), "BEEP BEEP" (2026); she coached Iroha at Puyo Puyo Tetris (2023) | [Koyori file KO2] [Chloe file] [Iroha file IR4] |
-| La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | holoGTA and poker (2024) | [La+ file LA4] |
+| La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | All four streamed holoGTA (2024-09); the m HOLD'EM poker collab (2024-12) was Suisei, La+, Botan and Shirakami Fubuki | [SU4 2v4DYYf7hB0] [Sammy roster] |
 
 ### AZKi
 Relationships field (exported):
-Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025). Hakui Koyori and Yukihana Lamy: "KoZMy" (2025), and a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata. Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024). La+ Darknesss: games (2025).
+Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025). Hakui Koyori and Yukihana Lamy: "KoZMy" (2025; secondary references), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary). Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024). La+ Darknesss: games (2025).
 
 Dossier rows (with sources):
 | Kazama Iroha | "AzuIro" (secondary label) | Frequent partner since 2022; their original "AZUIRO BESTIE DAYS" (2025-09-18) | [AZ2] [Official AZ10] |
-| Hakui Koyori, Yukihana Lamy | "KoZMy" | A trio formed in 2025; a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata | [Koyori file KO4] [Lamy file LM2] |
+| Hakui Koyori, Yukihana Lamy | "KoZMy" (secondary references; a 2025-08-03 "KoZMy 結成⁉" collab title) | A 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026-02-03, not a KoZMy event); Lamy is also in "KALAZ" with Amane Kanata (secondary) | [Koyori file KO4 lvgC3pW-LVA, 1HQL3WJPBHA] [Lamy file LM2] |
 | Sakamata Chloe (affiliate) | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [Chloe file CH4] |
 | La+ Darknesss | — | Games and an ASMR "evaluation" (2025) | [La+ file LA4] |
 
 ### Nakiri Ayame
 Relationships field (exported):
-La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA and poker (2024). Takane Lui: "Onikan"; games together (2025).
+La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA (2024). Takane Lui: "Onikan"; games together (2025).
 Dossier rows (with sources):
-| La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | holoGTA and poker (2024) | [La+ file LA4] |
+| La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | All four streamed holoGTA (2024-09); Ayame was not in the m HOLD'EM poker collab | [AY4 1iz9AxcgvPg] [Sammy roster] |
 | Takane Lui | "Onikan" | Games together (2025) | [Lui file LU4] |
 
 ### Nekomata Okayu

@@ -22,6 +22,7 @@ card says PDT; a US-evening debut is the next day in JST).
 | Hoshimachi Suisei | active | 2018-03-22 | — | — |
 | Houshou Marine | active | 2019-08-11 | — | — |
 | IRyS | active | 2021-07-11 | — | — |
+| Kikirara Vivi | active | 2024-11-09 | — | — |
 | Koseki Bijou | active | 2023-07-30 | — | — |
 | Mococo Abyssgard | active | 2023-07-31 | — | — |
 | Mori Calliope | active | 2020-09-12 | — | — |
@@ -34,6 +35,7 @@ card says PDT; a US-evening debut is the next day in JST).
 | Raora Panthera | active | 2024-06-22 | — | — |
 | Shiori Novella | active | 2023-07-30 | — | — |
 | Shirogane Noel | active | 2019-08-08 | — | — |
+| Shishiro Botan | active | 2020-08-14 | — | — |
 | Takanashi Kiara | active | 2020-09-12 | — | — |
 | Watson Amelia | affiliate | 2020-09-13 | — | 2024-09-30 |
 | Yukihana Lamy | active | 2020-08-12 | — | — |
