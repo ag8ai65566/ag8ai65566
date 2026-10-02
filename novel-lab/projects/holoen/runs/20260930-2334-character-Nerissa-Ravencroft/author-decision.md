@@ -7,3 +7,4 @@
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 3ba3f75ca2a8）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 01:53 作者裁決收錄 final.md（sha256 37cacac19837）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 c0292858811c）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
+- 2026-10-02 02:20 作者裁決收錄 final.md（sha256 e54431198c0c）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)

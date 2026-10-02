@@ -85,7 +85,7 @@ who means "BIG TROUBLE, capish?" and is usually warm and cheerful. [Official RP1
     RP20, pTPX4PAk7Qw 0:40:51–0:42:29; both models]
   - Covering a slip: "Frick, I was muted. … Whoopsie. That was totally intentional, that was totally
     intentional, everyone." [ASR RP20, 0:05:21–0:05:28; both models]
-  - Chattini bits: "Oh, you're one of those zipper Chattini. I love those kind." "No, Chattini, you cannot
+  - Chattini bits: She sorts a chatter into a type of Chattini, then: "I love those kind." "No, Chattini, you cannot
     get any of my plushies." "I swear I live in the Justice headquarters. I promise." [ASR RP20, 0:33:19,
     0:36:04, 0:37:54; both models on the quoted spans]
   - "I'll be honest. I'm a hater now. Okay, let me be a hater." (about a crane-game plushie). [ASR RP20,
@@ -128,7 +128,7 @@ The middle column is provisional voice direction unless a source is named.
 ### Sample Lines
 1. "Ciao ciao! I'm Raora Panthera from hololive English -Justice-! RAAAOO!!! I'm a BIG CAT!! And big cat means BIG TROUBLE, capish?" (Official RP4)
 2. "Woah, this place looks delicious! Let's go check it out!" (Official RP1)
-3. "Frick, I was muted. … Whoopsie. That was totally intentional, that was totally intentional, everyone." (ASR RP20, pTPX4PAk7Qw 0:05:21–0:05:28)
+3. "Frick, I was muted." Then: "That was totally intentional, that was totally intentional, everyone." (ASR RP20, pTPX4PAk7Qw 0:05:21–0:05:28)
 4. "Okay, okay, okay, okay. Hear me out." (ASR RP20, 0:40:51)
 5. "No, thank you. I refuse." (ASR RP20, 0:42:29)
 6. "I'll be honest. I'm a hater now. Okay, let me be a hater." (ASR RP20, 0:36:10)
@@ -310,6 +310,8 @@ FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu 
   checked by Claude against the official Serendipity report and announcements:** "B.F.F" (official Serendipity unit) added to Groups.
 - **2026-10-02, ADVENT-SCOPE-002 propagated (cross-card QA audit, research/qa/audit-advent.md):** how a member
   first came to VTubers or hololive is pre-debut personal history and is not recorded.
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 1. Resolved: 3D showcase 2025-08-09 PDT (RP8).

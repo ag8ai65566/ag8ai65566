@@ -132,7 +132,7 @@ The middle column is provisional voice direction unless a source is named.
 3. "I would even argue that Bavarian filled cream donuts aren't donuts." … "I'm sorry. They are donuts." (ASR N20, 0:18:26; two separate shared spans, the rage-bait label between them omitted)
 4. "I'm kicking, I'm kicking! Come on, Jailbirds, be nice, I'm kicking!" (ASR N20, 0:37:52)
 5. "Pissing all by yourself, handsome?" (N2 §Quotes, secondary)
-6. "Yeah, you know, actually, this is pretty accurate. This is when me and Shiori hang out." (ASR N20, _Gap2RGZ24E 1:33:33, about their Tomodachi Life Miis)
+6. "This is when me and Shiori hang out." (ASR N20, _Gap2RGZ24E 1:33:33, about their Tomodachi Life Miis, which she has just called pretty accurate)
 
 ## Appearance Anchors (avatar)
 - 175 cm, the tallest member of hololive; 184 cm in heels and 197 cm with horns. [Official N1]
@@ -310,6 +310,8 @@ Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md). Per the audit's merge
   handoff, the N20 rage-bait quotation in Voice Profile and Sample Lines no longer joins separated ASR runs; each
   quotation is now a separate span both models share (same fix in the performance sheet).
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 1. Her laughter, "Ope!" and her fangirling with Kiara were not captured by the audio check (whisper does

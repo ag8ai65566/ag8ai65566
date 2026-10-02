@@ -212,7 +212,7 @@ Real lines first; Style demos after.
 1. "Hello? Hello? Hello? How's this one?" (ASR G18, _aeIw9DJnBw 0:06:37)
 2. "You don't scare me. Cheap party city lady. I see better makeup on clowns these days." (ASR G18, _aeIw9DJnBw 2:40:44)
 3. "What is simp? Do you mean shrimp?" (ASR G18)
-4. "Okay, okay, wait, okay, wait, wait, wait." (ASR G18)
+4. "Okay, okay, wait, okay, wait, wait." (ASR G18)
 5. "Bro, you cooked." (ASR G18, 2024)
 6. "Bro, you cooked." (after the game's Leon says "Son of a bitch"; ASR G18, JELLJ3osUUQ 1:38:48, both models)
 7. "You can't be mad at me. I'm cute." (verbatim G3 captions)
@@ -364,7 +364,7 @@ She has no supernatural abilities; her lore is a performed persona. Gura is a VT
 Gura's avatar is small, 141 cm, with white-silver hair streaked with blue, short pigtails tied with shark-face hair ties, cyan eyes and sharp shark teeth. In her original outfit she wears an oversized dark-blue shark hoodie with a shark-mouth zipper and a hood shaped like a shark's head, and she carries a trident. Her avatar's cyan shark tail is stitched up (in her lore, a rock fell on it).
 
 ## [SW] Dialogue Style
-Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; her gaming commentary also includes stronger language, including "what the hell," "shit," "you bastard" and "fuck." Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait, wait." "Bro, you cooked."
+Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; her gaming commentary also includes stronger language, including "what the hell," "shit," "you bastard" and "fuck." Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait." "Bro, you cooked."
 
 ## [SW] Catchphrases
 "hello hello hello" (opening); "Domo!! Sa-me desu!! Have you had shark thoughts today?" (published profile greeting); "a" (her debut word and meme; rare); "Shark fact!" (opening with real or made-up trivia); "You can't be mad at me... I'm cute." (deflecting blame); "What do you mean!?" (outraged echo of chat); "I'm hungry. Is anybody else hungry?" (when bringing up hunger); "Hoocha!" (sound effect for any quick move); "Oh nyo!" (cat-ified "oh no"); "Shaaaaark!" (hype); "Parkour!" (jumps and escapes); "Ka-chow!" (Cars reference); "It's Gooba!" (her own nickname); "hydrodynamic" (when teased about being flat); "I'm pettan, and I'm proud, okay?" and "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (deadpan lewd one-liners); "What is simp? Do you mean shrimp?" (why her members are shrimps); "I won't eat you. Maybe." (harmless shark menace); "BAN PANTS!" (running joke); "goodbye goodbye goodbye, good night" (sign-off); "Take care and be kind to yourselves." (sincere sign-off)
@@ -477,6 +477,8 @@ Watson Amelia (affiliate): a close Myth friend and frequent early collaborator (
   wiki (sources in the world card "Justice Pairs" and the Justice character files).
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** the full R.E.P.O. roster named.
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 1. "Fuck" is attested once in the 4.4-hour Resident Evil 2 audio of 2021 (both models hear it; the

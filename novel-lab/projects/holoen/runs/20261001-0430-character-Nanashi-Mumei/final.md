@@ -151,7 +151,7 @@ The middle column is provisional voice direction unless a source is named.
 3. "It's okay not to know stuff sometimes. Yeah, unless you're me. Exactly, unless you're me." (ASR M20, 1:24:35)
 4. "Good job homo sapien." (ASR M20, 0:26:17)
 5. "I'm too poor. No money." (ASR M20, 5xL_7PGd3rk 2:07:07)
-6. "Okay, are we ready? Are we bracing ourselves? We got our tissue box nearby." (ASR M20, 0:11:33; before
+6. "Okay, are we ready? Are we bracing ourselves?" (ASR M20, 0:11:33; before
    reading her genmates' questions)
 7. "Civilization is temporary, humanity is temporary, you are all going to die one day!" (M2 §Quotes, secondary)
 
@@ -279,7 +279,7 @@ Mumei is a hololive alum: she graduated on 2025-04-27 (04-28 JST). She has no su
 Mumei's avatar is 156 cm tall, with long light-brown hair in a high ponytail, tied with a black band and two brown feathers standing up in a V, and brown eyes with a yellow gradient. She dresses like a fantasy adventurer: a white puff-sleeved blouse under a brown, gold-trimmed corset, a short red ruffled skirt with a brown outer skirt, mismatched black stockings with thigh straps, a brown and beige feathered cape lined in teal, fingerless gloves, and a belt hung with a lantern, a pouch and a small dagger. Her paper-bag mascot Friend, with a drawn mouth and a cross-shaped plaster, sometimes floats beside her.
 
 ## [SW] Dialogue Style
-Soft, quick, scattered English that runs on with "okay," "I guess," "you know" and "I don't know," then cuts itself off with "anyways" or "sorry" and starts again; she repeats words in threes and fours ("okay, okay, okay"; a dozen "bye-bye"s). She says macabre things in the same cute tone as everything else, and grand ones as the guardian, flatly, as if they were obvious, often undercut a beat later. She cheers with "yippee" and "hooray," often sarcastically ("I love talking about myself. Yippee, yippee. Hooray."), and reacts in games with short bright words: "uh oh," "oh shoot," "oh dear," "oh no," "nice," "yay," "owie owie owie!" Her swearing is mild ("shoot," "heck"). She drops Japanese into games (calling herself "yowai," weak), and her superchat routine includes a spoken gavel, "don don!" Lines of hers: "It's okay not to know stuff sometimes. Yeah, unless you're me." "I'm too poor. No money." "Okay, are we ready? Are we bracing ourselves? We got our tissue box nearby."
+Soft, quick, scattered English that runs on with "okay," "I guess," "you know" and "I don't know," then cuts itself off with "anyways" or "sorry" and starts again; she repeats words in threes and fours ("okay, okay, okay"; a dozen "bye-bye"s). She says macabre things in the same cute tone as everything else, and grand ones as the guardian, flatly, as if they were obvious, often undercut a beat later. She cheers with "yippee" and "hooray," often sarcastically ("I love talking about myself. Yippee, yippee. Hooray."), and reacts in games with short bright words: "uh oh," "oh shoot," "oh dear," "oh no," "nice," "yay," "owie owie owie!" Her swearing is mild ("shoot," "heck"). She drops Japanese into games (calling herself "yowai," weak), and her superchat routine includes a spoken gavel, "don don!" Lines of hers: "It's okay not to know stuff sometimes. Yeah, unless you're me." "I'm too poor. No money." "Okay, are we ready? Are we bracing ourselves?"
 
 ## [SW] Catchphrases
 "Oh hi! Hoo's this? Nanashi Mumei!" (official greeting); "Oh hi!" (greeting); "don don!" (her spoken gavel when thanking superchats); "I'm moomin'" and "Today we moom" (her verb, moom); "Civilization is temporary" (the macabre guardian bit); "I decide everything for humanity." (guardian authority); "…but what do I know? Everything." (after giving her opinion); "Yippee… hooray" (cheering, often sarcastic); "Oh dear" (mild dismay); "Owie! Owie! Owie!" (hurt in a game); "Good job homo sapien." (praising humans); "Goodbye for now. I'll see you probably tomorrow, probably tomorrow." (sign-off, followed by many "bye-bye"s); ":D" (in writing)
@@ -345,6 +345,8 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "R.E.P.O. with all of Promise" (ambiguous after Fauna's graduation) → the session's roster: IRyS,
   Kronii and Bae (archive F_EVW5Ig5QE).
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 1. Wiki quote lines ("Civilization is temporary…", the "moom" verb) are secondary, without timestamps; the

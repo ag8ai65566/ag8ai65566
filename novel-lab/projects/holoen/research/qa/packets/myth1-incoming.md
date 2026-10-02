@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git b0fa88b.
+Snapshot: git 520755e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori Malliope|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|Mor Mori|Calliope|Takamori|TakaMori|CallioP|Calli|森カリオペ|Mowi|LYRA|Mori)(
+Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Cori Malliope|Mori Calliope|Calliope Mori|Last Writes|Miss Mori|Kawaiiope|Takamori|Calliope|TakaMori|Mor Mori|CallioP|森カリオペ|Calli|Mori|LYRA|Mowi)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: (2026; Cecilia wrote the lyrics and directed it), a 2026 3D live, and the Serendipity concert, where she also sang "Break It Down" with Vestia Zeta and Shiori Novella and "Cloudy Sheep" with Tsunomaki Watame and Mori Calliope.
@@ -111,7 +111,7 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "When I first met all of them, the one that struck me was Calli... I was like, 'Damn, she hot, what a hot-ass chick!'"
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "Calli goes to The Pink Vice, gets drunk, sees a stripper she likes… realizes the next day the stripper was me"
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - She uses German, English and Japanese on stream; she has said her English is not perfect and has corrected Calli's Japanese; she learned some Korean in 2022. [Observed T2 §Miscellaneous, secondary]
-- `bible/characters/Takanashi-Kiara.md › Voice Profile`: 3. "So actually, tomorrow, Calli, Ina, Wawa, Wawa, Wawa, lots of people in Hytale." (ASR T23, 2:39:41)
+- `bible/characters/Takanashi-Kiara.md › Voice Profile`: 3. "So actually, tomorrow, Calli, Ina, Wawa…" (ASR T23, 2:39:41; she goes on to "lots of people in Hytale")
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2020-12-10 | Channel briefly terminated, then restored; "#PhoenixDown" re-debut with a mock-amnesia bit ("Who's Calli?") | [Observed T2 §2020 and §Takamori; T5-le72UNZAbQI] |
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2021-09 | She and Calli announce they will tone down the TakaMori ship | [Observed T2 §Takamori] |
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-09-07 | Branches merge; unit is hololive -Myth- | [Official T20, T1] |

@@ -253,16 +253,20 @@ def check_all(proj, phase, package=None):
           "Units and retrieval coverage", bad9 + det9)
 
     # Review-attested checks
-    def attested(cid, title, severity="block", extra=None):
+    def attested(cid, title, severity="block", extra=None, auto_fail=None):
         need = ATTEST[cid]
         missing = [p for p in need if not (proj / p).exists()]
-        det = (extra or []) + ([f"review pending: {', '.join(missing)}"] if missing else [f"reviewed in {', '.join(need)}"])
-        R.add(cid, "fail" if missing else "pass", severity, title, det)
+        det = (auto_fail or []) + (extra or []) + (
+            [f"review pending: {', '.join(missing)}"] if missing else [f"reviewed in {', '.join(need)}"])
+        R.add(cid, "fail" if missing or auto_fail else "pass", severity, title, det)
 
     attested("V10", "Dates, zones and status")
     attested("V11", "Participants and directional facts")
     attested("V12", "Evidence records")
-    attested("V13", "Quotations and ASR")
+    import span_check
+    spans = [f"{f}:{n} quotes past a shared ASR span ({r['report']} {r['ts']}): \"{q}\""
+             for f, n, q, r in span_check.outside_spans(proj.name)]
+    attested("V13", "Quotations and ASR", auto_fail=spans)
     cand = []
     for stem, c in cards.items():
         for k, v in c["fields"].items():

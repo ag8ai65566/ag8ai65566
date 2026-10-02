@@ -101,7 +101,7 @@ lost and often ignores hints. [Observed A2 §Personality and §Likes and dislike
     "Alright, bye-bye!" [ASR A23, 6VBQyNHxlR8 1:37:11]
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
   - The ground pound: the game's tutorial text says "Nothing beats a ground pound." and she answers,
-    "That's funny cause uh, you guys know that's actually what I did to your mom last night." then laughs
+    "…you guys know that's actually what I did to your mom last night." then laughs
     and says "Sorry. It's late." [ASR A23, 6VBQyNHxlR8 1:21:39–1:21:49; both models agree] It became her
     signature crude joke and spreads to any stomp or pound in later games → recurring. [Observed A5; A2
     §Quotes]
@@ -214,8 +214,8 @@ The middle column is provisional voice direction (not audio-checked) unless a so
 ### Sample Lines
 Real lines first; Style demos after.
 1. "Test test, Hello~ Amelia Watson! #1 Detective at your service!" (verbatim A1)
-2. "That's funny cause uh, you guys know that's actually what I did to your mom last night." (ASR A23, 6VBQyNHxlR8 1:21:41)
-3. "What I was telling you guys before is, you see this clock? … you guys can't tell anybody, but I'm actually a time traveler. Yeah, I bet you guys didn't know that." (ASR A23, -M2BKL3KU9s 0:45:04)
+2. "…you guys know that's actually what I did to your mom last night." (ASR A23, 6VBQyNHxlR8 1:21:41)
+3. "…you guys can't tell anybody, but I'm actually…" and then, "a time traveler." (ASR A23, -M2BKL3KU9s 0:45:04)
 4. "As a time traveler, I would know." (ASR A23, 6VBQyNHxlR8 1:03:15)
 5. "You guys are being so sassy in chat, but I bet I could 1v1 at least 80% of you and kick your ass." (ASR A23, OE-BmnlBKJ8 0:44:49)
 6. "Alright, I've had enough of this game. This game fucking sucks. It sucks. I'm done. I'm done." (ASR A23, OE-BmnlBKJ8 1:00:33)
@@ -376,7 +376,7 @@ Ame's avatar is 150 cm tall, with light-blonde hair falling below her shoulders 
 Stumbling English that restarts mid-sentence and drops thoughts, then recovers them. Fillers everywhere: "okay," "oh," "like," "uh," "yeah," and "all right" to move on. She calls her audience "you guys," only sometimes "chat," and "Teamates" on big occasions. She sets up something sweet and innocent, then twists it crude (mom jokes, lewd-adjacent quips) as if nothing happened. Her anger swearing can escalate through repeated questions into a shout and may end in an apology or an admission of a bad play. She builds in threes to a shouted third line, uses detective and time-traveler branding as punchlines, and slips into a put-on British accent as a bit. Cute words sit beside the crude ones: "doggies," "yummy." Lines of hers: "I'm gonna connect the world with my fist. I'm gonna connect the world by force." "I'm four years old! I can barely talk!" "This game fucking sucks. It sucks. I'm done. I'm done."
 
 ## [SW] Catchphrases
-"Test test, Hello~ Amelia Watson! #1 Detective at your service!" (her profile greeting); "That's funny cause uh, you guys know that's actually what I did to your mom last night." (answering the game's "Nothing beats a ground pound."; her signature crude joke); "It's elementary, right?" (puzzles); "It's the ping! He's rubber-banding!" (excuse for losing); "It's not cheating, I got stuck, what do you want me to do?" (accused of cheating); "I'm gonna do it my way!" (refusing hints); "Wait, why did I say that out loud?" (after a blurt); "Don't look, stahp!" (embarrassed); "NEHEHEHEHE!" (gremlin laugh); "Wadyameeeeean?" (disbelief); "It's just like Minecraft!" (any block game); "My tummy hurts!" (running complaint); "Make money, get bitches." (crude well-wishing); "cute cute cute" (doggies, pickups); "Alright, bye-bye!" (sign-off)
+"Test test, Hello~ Amelia Watson! #1 Detective at your service!" (her profile greeting); "…you guys know that's actually what I did to your mom last night." (answering the game's "Nothing beats a ground pound."; her signature crude joke); "It's elementary, right?" (puzzles); "It's the ping! He's rubber-banding!" (excuse for losing); "It's not cheating, I got stuck, what do you want me to do?" (accused of cheating); "I'm gonna do it my way!" (refusing hints); "Wait, why did I say that out loud?" (after a blurt); "Don't look, stahp!" (embarrassed); "NEHEHEHEHE!" (gremlin laugh); "Wadyameeeeean?" (disbelief); "It's just like Minecraft!" (any block game); "My tummy hurts!" (running complaint); "Make money, get bitches." (crude well-wishing); "cute cute cute" (doggies, pickups); "Alright, bye-bye!" (sign-off)
 
 ## [SW] Voice & Delivery
 A light, playful voice that trips over itself with restarts and fillers. For crude jokes it has dropped into a lower, "gremlin-like" tone. Her gremlin screech has been described as a cross between a high-pitched wheeze, a reptilian screech and the final breath of a dying squeaky toy; she also has a gremlin cackle. She hiccups often on stream, separate from her laughing.
@@ -485,6 +485,8 @@ Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeS
   wiki (sources in the world card "Justice Pairs" and the Justice character files).
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** the ENReco marriage kept as role-play; the pair name labeled secondary.
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage

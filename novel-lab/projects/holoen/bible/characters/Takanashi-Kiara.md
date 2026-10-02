@@ -223,9 +223,9 @@ are verbatim captions (T3) unless marked.
 
 ### Sample Lines
 Real lines first; Style demos after.
-1. "You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis." (ASR T23, -5P17BxVZTE 2:42:58)
+1. "You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis." (ASR T23, -5P17BxVZTE 2:42:58; the second model spells it "Mii's", a punctuation difference only)
 2. "Holy shit, they're all cracked, they all look so good." (ASR T23, 2:43:03)
-3. "So actually, tomorrow, Calli, Ina, Wawa, Wawa, Wawa, lots of people in Hytale." (ASR T23, 2:39:41)
+3. "So actually, tomorrow, Calli, Ina, Wawa…" (ASR T23, 2:39:41; she goes on to "lots of people in Hytale")
 4. "In German we say auf wiedersehen." (ASR T23, 2:47:40)
 5. "Vault dwellers? What the fuck is there? The wasteland? Is this Fallout references in my Doom game?" (ASR T23, gqQoOjKBmLw 1:36:06)
 6. "Look at Wawa using words. Oh my god. So proud." (verbatim T3 captions)
@@ -506,6 +506,8 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
   checked by Claude against the official Serendipity report and announcements:** "Rocku Wawa" (official Serendipity unit with Bijou) added to Groups; their song named.
 - **2026-10-01, CONSULT-P2-001 and scope tidy-up:** break notices are no longer dated or described in process notes
   (the author's rule is simply that announced breaks are not written).
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 1. Should the card quote one crude line verbatim (for example "I'm an innocent maiden." as irony), or is

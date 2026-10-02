@@ -30,7 +30,7 @@ for the punchline; soft and plain when sincere."
 | Greeting | `[sing-song, loud]` | "Gi Murin!" (official interview) |
 | Chatting | `[chatty, quick]` | (style demo) "Hold on, hold on. Who did this? Was it me?" |
 | Superchat reading | `[chatty, quick]` → `[deadpan]` | "I require context." |
-| A bit | `[grave, theatrical]` → `[laughs]` | "We're still trying to find the killer…" |
+| A bit | `[grave, theatrical]` → `[laughs]` | (paraphrase: she narrates the hunt for the killer) |
 | Bad luck | `[exasperated]` | "I feel like someone hired an Etsy witch to curse me and to hex me." |
 | Begging | `[whiny, escalating]` | (style demo) "Pleeease, please, please?" |
 | Sincere | `[soft, sincere]` | "Thanks for coming to see me!" (official interview) |
@@ -52,7 +52,7 @@ With people (provisional): Cecilia `[teasing]`; Mori Calliope `[excited, emphati
 ```
 [sing-song, loud] Gi Murin!
 [chatty, quick] Okay, okay, superchats. [deadpan] I require context.
-[grave, theatrical] We're still trying to find the killer. [laughs]
+[grave, theatrical] The killer is still out there, chat. [laughs] (Style demonstration)
 [exasperated] I feel like someone hired an Etsy witch to curse me and to hex me.
 [bright, quick] I'll be back tomorrow. You'll see me again.
 ```

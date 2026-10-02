@@ -243,7 +243,7 @@ Real lines first; Style demos after.
 2. "I'm here, I got my yum-yum drink." (ASR C30, 76-YKpxYL4g 0:05:08)
 3. "Oh my god. I'm gonna lose it. What an annoying guy." (ASR C30, 76-YKpxYL4g 1:02:20)
 4. "Let's try this shit." (ASR C30, y0WsNvXOdns 1:58:57)
-5. "I'll catch you guys on the flip side… I guess I'm out of here. All right, take care everybody. I'll see you soon." (ASR C30, 76-YKpxYL4g 4:45:37–4:46:24)
+5. "I'll catch you guys on the flip side." Then: "All right, take care everybody. I'll see you soon." (ASR C30, 76-YKpxYL4g 4:45:37–4:46:24)
 6. "If you quit when you suck, you'll suck forever." (verbatim C20)
 7. "Hey, Kiara...unzip your pants?" (C4 §Quotes, secondary)
 8. "Listen. LISTEN. That was a strategic death. I meant to— whatever, man." (Style demo)
@@ -583,6 +583,8 @@ Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusot
   P0):** a pre-debut detail about Bijou removed (outside scope); the public mod stream kept.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Last Writes" (official Serendipity unit with Shiori) added to Groups.
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 1. Should Groups keep "hololive English (former branch name)", or be current-only as GPT prefers? The

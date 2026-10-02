@@ -77,7 +77,7 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
   - Opening a Tomodachi Life episode as her own TV show, "ERBTV" (the name is on her official birthday
     merch; the models spell it differently): "You're live on…" … "Please do not swear." [ASR EB20,
     LTPi3UtR7pw 0:01:15–0:01:21] [Official, ERBTV mug listing]
-  - Sign-off (2026): "…please do not swear. Don't forget to eat good noms, hydrate…" … "Have a lovely day,
+  - Sign-off (2026): "…please do not swear." "Don't forget to eat good noms, hydrate…" … "Have a lovely day,
     lovely to see you lovely, and most of all, don't forget, let my voice be your strength!" … "…war cries,
     Huzzah!" [ASR EB20, vGKcRSrLTuk 2:58:19–2:59:06; only the spans both models share are quoted]
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
@@ -96,7 +96,7 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
 - **On singing (her heart):** "I sing too much everywhere I go, there's always Liz noises"; "…singing
   is good for the soul"; she arranged and choreographed most of her 3D showcase herself ("I want dance
   fighting, I want it to be very cool"), air-guitared to live out "my K-On dreams," and called her closing
-  song "a very feel-good song, a very Liz song." [ASR EB20, Rk03Rh8P9ps 0:20:07–0:34:58; both models on the
+  song a "very feel-good song, a very Liz song." [ASR EB20, Rk03Rh8P9ps 0:20:07–0:34:58; both models on the
   quoted spans]
 - **Warmth and self-mockery:** she jokes about her flame dancers' work ethic; 
   Nerissa "has been calling me her husband, my husband. She's very sweet" (a performed bit). [ASR EB20,
@@ -140,7 +140,7 @@ The middle column is provisional voice direction unless a source is named.
 1. "Lovely to see you, to see you LOVELY!" (Official EB4)
 2. "Let my voice be your strength." (Official EB1)
 3. "I sing too much everywhere I go, there's always Liz noises." (ASR EB20, Rk03Rh8P9ps 0:20:07)
-4. "It's a very feel-good song, a very Liz song." (ASR EB20, 0:34:58)
+4. "…very feel-good song, a very Liz song." (ASR EB20, 0:34:58)
 5. "What the frick? Oh my god, you scared them." (ASR EB20, vGKcRSrLTuk 2:54:30)
 6. "Sorry, I just brought you into a random stranger's house and just had you listen to them sleep." (ASR EB20, vGKcRSrLTuk 1:10:23)
 7. "Have a lovely day, lovely to see you lovely, and most of all, don't forget, let my voice be your strength!" (ASR EB20, 2:58:40–2:58:52)
@@ -315,6 +315,8 @@ Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026
   checked by Claude against the official Serendipity report and announcements:** "Bloodraven" (official Serendipity unit with Nerissa) added to Groups.
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-QUOTE-002, ADVENT-SCOPE-001
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 (None.)

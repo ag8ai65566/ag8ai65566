@@ -1,9 +1,9 @@
 # Audit packet: promise (incoming claims)
 
-Snapshot: git b0fa88b.
+Snapshot: git 520755e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Calli and Kronii|hololive Council|Kronii and Calli|Nerissa and IRyS|It's Not a Phase|Mumei and Kronii|Keeper of Nature|Mumei and Kiara|Mumei and Fauna|Fauna and Mumei|IRyS and Kronii|Time and Death|Fauna and Gura|Kronii and Ame|Warden of Time|Kronii and Ina|Ina and Kronii|Ame and Kronii|Nanashi Mumei|Mother Nature|Kroniicopter|IRyS and Ina|Gamer Kirin|holoCouncil|Ceres Fauna|Ouro Kronii|holoPromise|CouncilRyS|Owo-senpai|Tam Tender|Ceres-chan|Octo'Clock|Octo'clock|Mumi-chan|YabaIRyS|Time Duo|Moomsies|Kronster|CHADCast|SeisoRyS|オーロ・クロニー|KiaRissa|MorIRyS|Promise|KronMei|Myumyei|Kronini|Moomers|Council|Kronii|BaeRyS|Meimei|Faufau|Fauna|Mumei|gumei|Fawna|IRyS|Moom|Towl|Irys)(
+Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Keeper of Nature|It's Not a Phase|Calli and Kronii|Kronii and Calli|hololive Council|Mumei and Kronii|Nerissa and IRyS|IRyS and Kronii|Fauna and Mumei|Mumei and Fauna|Mumei and Kiara|Time and Death|Fauna and Gura|Warden of Time|Kronii and Ina|Ina and Kronii|Kronii and Ame|Ame and Kronii|Mother Nature|Nanashi Mumei|IRyS and Ina|Kroniicopter|Ouro Kronii|Ceres Fauna|holoCouncil|Gamer Kirin|holoPromise|CouncilRyS|Tam Tender|Ceres-chan|Octo'clock|Octo'Clock|Owo-senpai|Mumi-chan|KiaRissa|YabaIRyS|Moomsies|Kronster|Time Duo|CHADCast|オーロ・クロニー|SeisoRyS|KronMei|Council|Myumyei|Moomers|Promise|MorIRyS|Kronini|BaeRyS|Kronii|Meimei|Faufau|Mumei|Fawna|gumei|Fauna|Irys|Towl|IRyS|Moom)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: IRyS and Bijou: Elden Ring Nightreign.
@@ -109,7 +109,7 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 
 ### from Raora Panthera
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Ouro Kronii ("Pizza Time"): Portal 2 and Backrooms Cleanup Crew; in ENReco Raora called Kronii's character "Tam Tender."
-- `bible/characters/Raora-Panthera.md › Voice Profile`: - Chattini bits: "Oh, you're one of those zipper Chattini. I love those kind." "No, Chattini, you cannot get any of my plushies." "I swear I live in the Justice headquarters. I promise." [ASR RP20, 0:33:19, 0:36:04, 0:37:54; both models on the quoted spans]
+- `bible/characters/Raora-Panthera.md › Voice Profile`: - Chattini bits: She sorts a chatter into a type of Chattini, then: "I love those kind." "No, Chattini, you cannot get any of my plushies." "I swear I live in the Justice headquarters. I promise." [ASR RP20, 0:33:19, 0:36:04, 0:37:54; both models on the quoted spans]
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Ouro Kronii | Promise senior ("Pizza Time") | Portal 2 (2024-11-26, "w/ KRONII!! #PizzaTime"), Backrooms Cleanup Crew (2026); in ENReco she called Kronii's character "Tam Tender" (secondary transcription) | [Observed RP2, RP3; Kronii file] |
 
 ### from Shiori Novella

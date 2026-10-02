@@ -24,7 +24,7 @@ voice for jokes, high-pitched wheezing screech when losing."
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Crude joke | `[innocent]` → `[lower, gremlin voice]` | "That's funny cause uh, you guys know that's actually what I did to your mom last night." |
+| Crude joke | `[innocent]` → `[lower, gremlin voice]` | "…you guys know that's actually what I did to your mom last night." |
 | Tilted | `[frustrated, rising]` → `[shouting]` | "Why do my team die so fast? How do they die so fast?" |
 | Rage-quit | `[fed up, rapid]` | "This game fucking sucks. It sucks. I'm done. I'm done." |
 | Trash talk | `[smug]` | "I bet I could 1v1 at least 80% of you and kick your ass." |
@@ -47,7 +47,8 @@ voice for jokes, high-pitched wheezing screech when losing."
 
 ## 8. Example
 ```
-[innocent] Nothing beats a ground pound. [lower, gremlin voice] That's funny cause uh, you guys know that's actually what I did to your mom last night.
+[innocent, reading] Nothing beats a ground pound.
+[lower, gremlin voice] Uh, you guys know that's actually what I did to your mom last night.
 [gremlin cackle] NEHEHEHEHE!
 [cheerful] Alright, bye-bye!
 ```

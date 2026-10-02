@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git b0fa88b. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 520755e. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### Cecilia Immergreen × Elizabeth Rose Bloodflame
@@ -600,7 +600,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote the lyrics for Ina's song TAKO∞TAKOVER and is a recurring target of Ina's puns.
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Mori Calliope | Myth genmate | Favorite pun target ("Every freaking time, Ina."); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song.
-- `bible/characters/Takanashi-Kiara.md › Voice Profile`: 3. "So actually, tomorrow, Calli, Ina, Wawa, Wawa, Wawa, lots of people in Hytale." (ASR T23, 2:39:41)
+- `bible/characters/Takanashi-Kiara.md › Voice Profile`: 3. "So actually, tomorrow, Calli, Ina, Wawa…" (ASR T23, 2:39:41; she goes on to "lots of people in Hytale")
 - `bible/characters/Watson-Amelia.md › Voice Profile`: - Measured (A23; Mario, VALORANT and 2024 chat windows, with game audio mixed in): median pitch about 248–276 Hz; about 114–133 words per minute of speech. For comparison only, Calli's chat windows measured 161–186 and Ina's 81–95. Sample results; they do not establish a general ranking. [ASR A23]
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: The cast's own stages: Calli's "GriMoire" at the Hollywood Palladium (2025, the first hololive solo concert outside Japan); Kiara and Ina's duo concert "Drawn to Dawn"
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Conflicts and Story Hooks`: 3. Calli writes lyrics for Ina and Ina draws the cover; each critiques the other's draft.

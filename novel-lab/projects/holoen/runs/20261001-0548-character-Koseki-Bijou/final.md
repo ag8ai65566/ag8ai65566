@@ -88,7 +88,7 @@ an evil doppelganger kept as a joke. [Official KB1] [Observed KB2 §Personality,
   - "TEEHEE~" and ":D" in writing. [Official KB4] [Observed KB6]
   - Mock-solemn lore: "…worthy sacrifice, I will remember you." (to Pebbles used as weapons in her
     birthday game) [ASR KB20, 0:12:35; shared span]; "No, I was eeping. I was eeping. … I was hibernating"
-    and "it takes millions of years for diamonds to form, you know" (asked if she was "just an inanimate
+    and "it takes millions of years for diamonds to form" (asked if she was "just an inanimate
     rock"). [ASR KB20, 6:01:25–6:01:50]
   - Embracing it when chat calls her cringe: "Well, yes, I am. We've established this. … I will embrace
     it." [ASR KB20, 6:07:22; the first model mishears "cringe," so only the shared spans are quoted]
@@ -328,6 +328,8 @@ Shiori Novella: Advent's "glorious leader" in Bijou's affectionate bit (Goth Roc
   checked by Claude against the official Serendipity report and announcements:** Rocku Wawa's song and Mio's "Night Loop" added (official report).
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-DATE-001
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 1. The Tomodachi Life window was unusable (drawing, game voices), and her "squeegee" laugh and Moai opening

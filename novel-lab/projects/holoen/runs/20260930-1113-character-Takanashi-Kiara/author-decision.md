@@ -7,3 +7,4 @@
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 ba9ade5f8263）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-01 21:08 作者裁決收錄 final.md（sha256 f07ae401975f）：Author decision (2026-10-01): CONSULT-P2-001 (Myth 6th-anniversary live marked as announced, not verified as held) and break notes generalized per the author's rule.
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 1d87f23af867）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
+- 2026-10-02 02:20 作者裁決收錄 final.md（sha256 1462fb3877aa）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)

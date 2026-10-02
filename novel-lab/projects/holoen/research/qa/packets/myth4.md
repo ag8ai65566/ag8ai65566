@@ -1,6 +1,6 @@
 # Audit packet: myth4
 
-Snapshot: git b0fa88b. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 520755e. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
@@ -55,7 +55,7 @@ Owned files (sha256): `bible/characters/Ninomae-Inanis.md` e6d610ae1262; `bible/
 - Kiara "fired" Ina over the 2020 chicken incident (a KFP bit).
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Drawn to Dawn|Ina and Kiara|Kiara and Ina|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Kiara and Ina|Drawn to Dawn|Ina and Kiara|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO and sang "I'm Your Treasure Box" with Bijou and Raora.
@@ -141,7 +141,7 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Drawn to Dawn|In
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German.
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles.
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal; Kiara once "fired" her over a chicken incident.
-- `bible/characters/Takanashi-Kiara.md › Voice Profile`: 3. "So actually, tomorrow, Calli, Ina, Wawa, Wawa, Wawa, lots of people in Hytale." (ASR T23, 2:39:41)
+- `bible/characters/Takanashi-Kiara.md › Voice Profile`: 3. "So actually, tomorrow, Calli, Ina, Wawa…" (ASR T23, 2:39:41; she goes on to "lots of people in Hytale")
 - `bible/characters/Takanashi-Kiara.md › Appearance Anchors`: - Mascot: Kotori, a little bird designed by Ina. Two "phoenix cats," Chonkers (orange) and Smoothie (turquoise), appear as model accessories; they stay off the card. [Observed T2 §Mascot and fans, secondary]
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-03-27/28 | "Drawn to Dawn" duo concert with Ina (The Wiltern, Los Angeles) | [Official T11, T12] |
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-09-07 | Branches merge; unit is hololive -Myth- | [Official T20, T1] |

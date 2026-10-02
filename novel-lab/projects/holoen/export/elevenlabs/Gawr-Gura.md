@@ -27,7 +27,7 @@ games and hum while playing."
 | Situation | Tags | Line |
 |---|---|---|
 | Opening | `[soft, friendly]` | "Hello? Hello? Hello? How's this one?" |
-| Scared | `[panicked, higher]` → `[pleading]` | "Okay, okay, wait, okay, wait, wait, wait." |
+| Scared | `[panicked, higher]` → `[pleading]` | "Okay, okay, wait, okay, wait, wait." |
 | Taunting after a scare | `[smug, deadpan]` | "You don't scare me. Cheap party city lady. I see better makeup on clowns these days." |
 | Teasing | `[deadpan-cute, slow]` | "You can't be mad at me... I'm cute." |
 | Game commentary | `[amused, mocking]` | "Come on Leon, say it with a bit more oomph." |
@@ -48,6 +48,6 @@ games and hum while playing."
 ## 8. Example
 ```
 [soft, friendly] Hello? Hello? Hello? How's this one?
-[panicked, higher] Okay, okay, wait, okay, wait, wait, wait.
+[panicked, higher] Okay, okay, wait, okay, wait, wait.
 [smug, deadpan] You don't scare me. Cheap party city lady.
 ```

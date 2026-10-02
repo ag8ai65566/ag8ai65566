@@ -6,3 +6,4 @@
 - 2026-10-01 20:52 作者裁決收錄 final.md（sha256 6934f80a8c2e）：Author decision (2026-10-01): scope fixes (P0) from the GPT project consult; private trips, audition history, mother-tongue and private-routine details removed.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 1088c5a2d234）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 1d1db639dda3）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
+- 2026-10-02 02:20 作者裁決收錄 final.md（sha256 42a05e475b44）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)

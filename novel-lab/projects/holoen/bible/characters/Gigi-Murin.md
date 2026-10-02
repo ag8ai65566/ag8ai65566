@@ -122,7 +122,7 @@ The middle column is provisional voice direction unless a source is named.
 | Opening | Loud, sing-song | "Gi Murin!" (GG4) |
 | Chatting | Animated, run-on | "…talks about absolutely nothing for 20 minutes…" (GG4) |
 | Superchat reading | Fast, chatty, quick deadpan | "I require context." (ASR GG20) |
-| Mock crime scene | Grave, then a laugh | "We're still trying to find the killer…" (ASR GG20) |
+| Mock crime scene | Grave, then a laugh | Narrates the hunt for the killer (paraphrase; the two models differ mid-line, ASR GG20) |
 | Begging | Childish whine, escalating | "PPEEWEASEEEEE!!!!" (GG2) |
 | Losing | Outraged, loud | "Why?! WHY, WHY, WHY?!" (GG2) |
 | Sincere | Soft, plain | "Thanks for coming to see me!" (GG4) |
@@ -319,6 +319,8 @@ Cecilia Immergreen: her genmate and Autofister partner (also called CCGG): "CCGG
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-TIE-002
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
+- **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
+  span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
 
 ## Open Questions
 1. Resolved: 3D showcase 2025-08-02 PDT (GG8).
