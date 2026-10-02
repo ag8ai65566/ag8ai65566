@@ -8,6 +8,9 @@
   quota stop (exit 75). On a quota stop it sleeps until the reset (plus two minutes) and continues.
 - After each successful run it commits the run directory (and any packet files the QA prepare step rebuilt)
   and pushes to the current branch. A failed command is logged and skipped, not retried.
+- The container is suspended when the session is idle, which kills background processes; keep the session
+  alive with a harness-tracked watcher (`while pgrep -f gpt_autorun.py; do sleep 30; done`, re-armed when its
+  two-hour limit ends). An interrupted run stays pending and is rerun from the start.
 - Stops when the list is empty or only failed commands remain. Merging results is Claude's job, on the
   author's word (author order 2026-10-02).
 """
@@ -30,7 +33,7 @@ def log(msg):
 
 
 def other_gpt_running():
-    r = subprocess.run(["pgrep", "-f", "lab.py gpt "], capture_output=True, text=True)
+    r = subprocess.run(["pgrep", "-f", r"^python3 \S*lab\.py gpt "], capture_output=True, text=True)
     return bool(r.stdout.strip())
 
 
@@ -79,7 +82,8 @@ def main():
             time.sleep(secs)
             continue
         cmd = todo[0]
-        label = Path(shlex.split(cmd)[4]).name if len(shlex.split(cmd)) > 4 else cmd
+        args = shlex.split(cmd)
+        label = Path(args[3]).name if len(args) > 4 else cmd  # python3 novel-lab/tools/lab.py gpt <run> free
         log(f"▶ {label}")
         r = subprocess.run(shlex.split(cmd), cwd=REPO)
         if r.returncode == QUOTA_EXIT:
