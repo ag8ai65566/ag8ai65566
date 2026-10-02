@@ -60,7 +60,7 @@ quite smart." [Observed IR2 §Personality, secondary; IR4 fhc67kDKU94 title]
    Minecraft village). [IR4]
 5. Carries a katana named Chakimaru and travels with her tanuki companion Pokobee. [Observed IR2 §Miscellaneous,
    §Mascot, secondary] [Official IR1]
-6. The last of holoX to reach a million subscribers (2024-11-19), which put all of holoX past the mark. [Observed
+6. The last of holoX to reach a million subscribers (2024-11-19, archived title wWj-ndyFmXc), which put all of holoX past the mark. [Observed
    IR2 §2024, secondary]
 
 ## Voice Profile
@@ -123,7 +123,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2025 | AzuIro off-collab "summer camp" (Cuphead, 08); "A letter only you can read" (06-15); a guest at Kiara's birthday live and dance shorts with Kiara (07) | [IR4] [IR5] [Observed IR2] |
 | 2026-04-29 | holoX's first concert, "First MISSION" | [Official IR6] |
 | 2026-05-19 | Sings "CHA-LA HEAD-CHA-LA" with Elizabeth for her birthday, with Watame, Nene, Polka and FUWAMOCO | [IR5 xylll7Mp0jk] |
-| 2026-06-18 | Ninth original song, "Kamazuki Entropy" | [Observed IR2] |
+| 2026-06-18 | Ninth original song, 「風向きエントロピー」 ("Kazamuki Entropy") | [IR4 RDobidAdBCA, official upload] [Observed IR2] |
 
 ## Relationship Map
 Public exchanges only. Group ties are on the world card "holoX."
@@ -200,7 +200,7 @@ Iroha, Iroha-dono, Gozaru, Gozaru-chan
 Iroha is Secret Society holoX's bodyguard and "insurance policy," a samurai from a remote mountain village who set out with her tanuki companion Pokobee to see the world and now guards holoX to earn her keep. Her signature is the samurai ending "de gozaru"; she calls friends "-dono" and, in 2026 streams, often calls herself "Gozaru." Fans call her "seiso" (proper), which she does not claim; on stream she is cheerful, earnest and competitive, a self-admitted muscle brain who charges ahead, chants "yoshi yoshi yoshi yoshi" when things work, argues back when chat teases her, and laughs off her own blunders. She sticks with long games to the end, is loyal to holoX and is half of the duo AzuIro with AZKi.
 
 ## [SW] Background
-Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-30 as the fifth and last member of Secret Society holoX, became the last of holoX to pass a million subscribers (2024), which put the whole group over the mark, and has released nine original songs, the latest "Kamazuki Entropy" (2026). She formed the duo AzuIro with AZKi (covers, off-collab "summer camps," a shared Minecraft village), joined Suisei's Hoshimatic Project and sang at holoX's first concert, "First MISSION" (2026-04-29). With the English cast she took Calli's English lesson with La+ and Gura (2022), played VALORANT with Ame and Kobo Kanaeru as "KoMeHa," hosted FUWAMOCO's sister battle in a cookie-quiz off-collab with AZKi (2024), appeared at Kiara's 3D lives (2024, 2025) and sang "CHA-LA HEAD-CHA-LA" for Elizabeth's 2026 birthday.
+Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-30 as the fifth and last member of Secret Society holoX, became the last of holoX to pass a million subscribers (2024-11-19, archived stream title), which put the whole group over the mark, and has released nine original songs, the latest 「風向きエントロピー」 ("Kazamuki Entropy," 2026). She formed the duo AzuIro with AZKi (covers, off-collab "summer camps," a shared Minecraft village), joined Suisei's Hoshimatic Project and sang at holoX's first concert, "First MISSION" (2026-04-29). With the English cast she took Calli's English lesson with La+ and Gura (2022), played VALORANT with Ame and Kobo Kanaeru as "KoMeHa," hosted FUWAMOCO's sister battle in a cookie-quiz off-collab with AZKi (2024), appeared at Kiara's 3D lives (2024, 2025) and sang "CHA-LA HEAD-CHA-LA" for Elizabeth's 2026 birthday.
 
 ## [SW] Physical Description
 Iroha's avatar is 156 cm tall, with short blonde hair in a ponytail tied with a leafy ribbon and blue eyes. She wears a short white jacket with blue and yellow details, a belt hung with red cord, a teal skirt, black fingerless gloves and a kimono-like outer jacket the color of her hair, trimmed in blue and green, with a katana named Chakimaru on her back, white thigh-highs and samurai sandals. Pokobee, a small tanuki, travels with her.
