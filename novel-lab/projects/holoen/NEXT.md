@@ -6,6 +6,10 @@
   Kiara、Ina、Kronii、IRyS）。第二批回填句已收錄，GPT D/F 會一起核對（mk_b2_review 自動帶入）。
 - 新增 QA 審計 run：`20261002-0751-check-QA-cohort-{jp,jp2,holox}`，排在佇列最後（開跑前自動用 bible 重建 packet）。
 - 草稿發佈包 r01-draft 重建（23 位＋26 張世界卡）；START-HERE 列出第二批「還沒收錄」。
+- **09 聲音審計**（V13/V19，表演表 stamp 的前提）：`framework/prompts/gpt-voice-audit.md`＋`tools/mk_voice_audit.py`。
+  v1（Myth＋Promise）、v2（Advent＋Justice）已排在 F 之後；v3（JP 十四人）等第二批收錄後
+  `python3 tools/mk_voice_audit.py v3` 再插進佇列。結果合併到 `research/qa/voice-delivery.md`（逐條處置），
+  卡片欄位走 run 的 final.md＋promote，表演表直接改，attestation 為 OK 的表用 `release.py stamp-sheets` 蓋章。
 
 狀態（2026-10-02 08:00 UTC）：**JP 四人全部收錄**（A＝Suisei＋AZKi、B＝Ayame＋Okayu＋JP Senpai Pairs，一輪 GPT 後
 作者裁決收錄；EN 回填句依 B 的審查修正：Calli 的 Suisei 生日 live 嘉賓刪除、Kiara 的 HOLOTALK 標成存檔紀錄、
