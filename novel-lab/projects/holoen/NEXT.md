@@ -1,5 +1,14 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-02 12:31 UTC）：第二批審查 C、D 已併入並收錄（Marine、Noel、Lamy、Botan、Vivi、JP Senpai Pairs 2；
+共 28 位、27 張世界卡）。E 跑到一半撞 GPT 額度，重置 16:42 UTC，send_later 16:43 會叫醒、重開 gpt-resume
+（log：scratchpad gpt_resume7.log）。佇列：E（La+ run）→ F（Chloe run）→ 聲音 v1、v2 → QA 審計 12 項。
+- 合併方法：scratchpad `merge/`（apply.py、各卡 *.py、d_cross.py）；GPT 打不開的連結先用本地 rtmeta／rtjp／rtjp2
+  標題核對，查得到就保留並在 Merge Record 寫影片 ID。
+- E、F 的提示已依 C、D 的修正重建（La+ 草稿的 poker 名單、#マリラプ 已改）。F 合併後：`mk_voice_audit.py v3` 建 v3
+  並插進佇列（放在 QA 審計前）。
+- DEV_IS 在 2026-09-07 官方改組（run D）：Vivi 卡已改；hololive.md 的「hololive DEV_IS」分支描述留給 global 審計。
+
 狀態（2026-10-02 07:55 UTC）：等 GPT 額度（11:31 UTC 重置；send_later 11:32 會叫醒、開跑 gpt-resume）。這段時間做完：
 - 引句範圍：32 個 span 候選全部處理（`span_check.py` 0 筆；V13 只剩等 09 聲音審計）；V14 自動候選 0 筆。
 - 關係網：JP 四人 ↔ EN、第二批 ↔ JP 四人/EN 的回填互指，one-way 29 → 16 → 1（08:25 再壓縮上限卡的句子補齊；只剩 Raora→IRyS，IRyS 沒空間。原本剩下的在 350 字上限的卡：Calli、
