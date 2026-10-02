@@ -1,7 +1,7 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "1e3399f",
+ "commit": "f02f10f",
  "files": {
   "bible/characters/Cecilia-Immergreen.md": "08daa7f89c8096d908d5e98fe5a69c3a848c047698e803aaec54680f560dfeb5",
   "bible/characters/Ceres-Fauna.md": "58177a0ddea108b22eb080586981aa488344fed46d7cdb29bfbd867c2753f261",
@@ -70,7 +70,7 @@
     "debut": "2024-06-22",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Cecilia-Immergreen.md › Background"
+    "source": "bible/characters/Cecilia-Immergreen.md › Background (debut: Background)"
    }
   },
   {
@@ -96,7 +96,7 @@
     "debut": "2021-08-23",
     "graduated": "2025-01-03",
     "regular_activities_concluded": null,
-    "source": "bible/characters/Ceres-Fauna.md › Background"
+    "source": "bible/characters/Ceres-Fauna.md › Background (debut: Background)"
    }
   },
   {
@@ -123,7 +123,7 @@
     "debut": "2024-06-21",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Elizabeth-Rose-Bloodflame.md › Background"
+    "source": "bible/characters/Elizabeth-Rose-Bloodflame.md › Background (debut: Background)"
    }
   },
   {
@@ -149,7 +149,7 @@
     "debut": "2023-07-31",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Fuwawa-Abyssgard.md › Background"
+    "source": "bible/characters/Fuwawa-Abyssgard.md › Background (debut: Background)"
    }
   },
   {
@@ -174,10 +174,10 @@
    "status": "She has no supernatural abilities; her lore is a performed persona. Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025.",
    "status_interval": {
     "state_at_baseline": "graduated",
-    "debut": null,
+    "debut": "2020-09-13",
     "graduated": "2025-05-01",
     "regular_activities_concluded": null,
-    "source": "bible/characters/Gawr-Gura.md › Background"
+    "source": "bible/characters/Gawr-Gura.md › Background (debut: Hard Facts / Background Timeline)"
    }
   },
   {
@@ -204,7 +204,7 @@
     "debut": "2024-06-21",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Gigi-Murin.md › Background"
+    "source": "bible/characters/Gigi-Murin.md › Background (debut: Background)"
    }
   },
   {
@@ -228,7 +228,7 @@
     "debut": "2021-07-11",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/IRyS.md › Background"
+    "source": "bible/characters/IRyS.md › Background (debut: Background)"
    }
   },
   {
@@ -256,7 +256,7 @@
     "debut": "2023-07-30",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Koseki-Bijou.md › Background"
+    "source": "bible/characters/Koseki-Bijou.md › Background (debut: Background)"
    }
   },
   {
@@ -282,7 +282,7 @@
     "debut": "2023-07-31",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Mococo-Abyssgard.md › Background"
+    "source": "bible/characters/Mococo-Abyssgard.md › Background (debut: Background)"
    }
   },
   {
@@ -313,10 +313,10 @@
    "status": "She has no supernatural abilities; her lore is a performed persona. Calli is a VTuber whose lore, a persona she plays for laughs, makes her the Grim Reaper's first apprentice: when modern medicine gutted the reaping business, she became an idol-rapper VTuber to harvest souls through music and streams.",
    "status_interval": {
     "state_at_baseline": "active",
-    "debut": null,
+    "debut": "2020-09-12",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Mori-Calliope.md › Background"
+    "source": "bible/characters/Mori-Calliope.md › Background (debut: Hard Facts / Background Timeline)"
    }
   },
   {
@@ -345,7 +345,7 @@
     "debut": "2021-08-23",
     "graduated": "2025-04-27",
     "regular_activities_concluded": null,
-    "source": "bible/characters/Nanashi-Mumei.md › Background"
+    "source": "bible/characters/Nanashi-Mumei.md › Background (debut: Background)"
    }
   },
   {
@@ -370,7 +370,7 @@
     "debut": "2023-07-31",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Nerissa-Ravencroft.md › Background"
+    "source": "bible/characters/Nerissa-Ravencroft.md › Background (debut: Background)"
    }
   },
   {
@@ -393,10 +393,10 @@
    "status": "She has no supernatural abilities; her lore is a performed persona. Ina is a VTuber whose lore, a persona she plays gently and for laughs, makes her an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles and began hearing Ancient Whispers; the book is her floating companion, AO-chan.",
    "status_interval": {
     "state_at_baseline": "active",
-    "debut": null,
+    "debut": "2020-09-13",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Ninomae-Inanis.md › Background"
+    "source": "bible/characters/Ninomae-Inanis.md › Background (debut: Hard Facts / Background Timeline)"
    }
   },
   {
@@ -422,10 +422,10 @@
    "status": "She has no supernatural abilities; her lore is a performed persona. Kronii is a VTuber whose lore, a persona she plays deadpan, makes her the Warden of Time, the third concept created by the gods and the one most bound to humankind.",
    "status_interval": {
     "state_at_baseline": "active",
-    "debut": null,
+    "debut": "2021-08-23",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Ouro-Kronii.md › Background"
+    "source": "bible/characters/Ouro-Kronii.md › Background (debut: Hard Facts / Background Timeline)"
    }
   },
   {
@@ -449,7 +449,7 @@
     "debut": "2024-06-22",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Raora-Panthera.md › Background"
+    "source": "bible/characters/Raora-Panthera.md › Background (debut: Background)"
    }
   },
   {
@@ -474,7 +474,7 @@
     "debut": "2023-07-30",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Shiori-Novella.md › Background"
+    "source": "bible/characters/Shiori-Novella.md › Background (debut: Background)"
    }
   },
   {
@@ -498,10 +498,10 @@
    "status": "She has no supernatural abilities; her lore is a performed persona. Kiara is a VTuber whose lore, a persona she plays for laughs, makes her a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain; a phoenix can always be reborn.",
    "status_interval": {
     "state_at_baseline": "active",
-    "debut": null,
+    "debut": "2020-09-12",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Takanashi-Kiara.md › Background"
+    "source": "bible/characters/Takanashi-Kiara.md › Background (debut: Hard Facts / Background Timeline)"
    }
   },
   {
@@ -524,10 +524,10 @@
    "status": "She has no supernatural abilities; her lore is a performed persona. Ame is a VTuber and a hololive affiliate: she concluded her regular activities on September 30, 2024, and appears at individually announced events.",
    "status_interval": {
     "state_at_baseline": "affiliate",
-    "debut": null,
+    "debut": "2020-09-13",
     "graduated": null,
     "regular_activities_concluded": "2024-09-30",
-    "source": "bible/characters/Watson-Amelia.md › Background"
+    "source": "bible/characters/Watson-Amelia.md › Background (debut: Hard Facts / Background Timeline)"
    }
   }
  ],

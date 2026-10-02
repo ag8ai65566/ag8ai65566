@@ -94,7 +94,7 @@ fans and friends. [Official N1] [Observed N2 §Personality, §Likes and dislikes
   saying?", "mind you," "oh my god / oh my gosh," "man," "honestly"; calls a friend "girl"; addresses
   "you guys" and "Jailbirds." [ASR N20, first-model counts]
 - **Profanity:** casual and unforced, and she knows it: in 30 minutes of solo chat "That shit's divine"
-  (about eggs), a "good-ass," a "fucker," and then "I need to stop swearing so much, so I'm trying to
+  (about eggs), a "good-ass," a "fucker," and then "I need to stop swearing so much, so…" "…I'm trying to
   work on it." [ASR N20, 0:11:39, 0:35:19, agrees]
 - **Storytelling:** long, run-on anecdotes with escalating mock-drama ("he's trying to kill me"), then
   "anyway" back to the point; she does voices, such as a caveman voice ("…go hunt, … get food, … run from big predator";

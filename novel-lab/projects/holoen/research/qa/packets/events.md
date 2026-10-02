@@ -1,29 +1,29 @@
 # Bridge packet: events
 
-Snapshot: git 1e3399f. Every dated row from every bible file's dossier
+Snapshot: git f02f10f. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
 ## Status intervals (from Background)
 
-- Cecilia Immergreen: active; debut 2024-06-22; graduated —; regular activities concluded — (`bible/characters/Cecilia-Immergreen.md › Background`)
-- Ceres Fauna: graduated; debut 2021-08-23; graduated 2025-01-03; regular activities concluded — (`bible/characters/Ceres-Fauna.md › Background`)
-- Elizabeth Rose Bloodflame: active; debut 2024-06-21; graduated —; regular activities concluded — (`bible/characters/Elizabeth-Rose-Bloodflame.md › Background`)
-- Fuwawa Abyssgard: active; debut 2023-07-31; graduated —; regular activities concluded — (`bible/characters/Fuwawa-Abyssgard.md › Background`)
-- Gawr Gura: graduated; debut ?; graduated 2025-05-01; regular activities concluded — (`bible/characters/Gawr-Gura.md › Background`)
-- Gigi Murin: active; debut 2024-06-21; graduated —; regular activities concluded — (`bible/characters/Gigi-Murin.md › Background`)
-- IRyS: active; debut 2021-07-11; graduated —; regular activities concluded — (`bible/characters/IRyS.md › Background`)
-- Koseki Bijou: active; debut 2023-07-30; graduated —; regular activities concluded — (`bible/characters/Koseki-Bijou.md › Background`)
-- Mococo Abyssgard: active; debut 2023-07-31; graduated —; regular activities concluded — (`bible/characters/Mococo-Abyssgard.md › Background`)
-- Mori Calliope: active; debut ?; graduated —; regular activities concluded — (`bible/characters/Mori-Calliope.md › Background`)
-- Nanashi Mumei: graduated; debut 2021-08-23; graduated 2025-04-27; regular activities concluded — (`bible/characters/Nanashi-Mumei.md › Background`)
-- Nerissa Ravencroft: active; debut 2023-07-31; graduated —; regular activities concluded — (`bible/characters/Nerissa-Ravencroft.md › Background`)
-- Ninomae Ina'nis: active; debut ?; graduated —; regular activities concluded — (`bible/characters/Ninomae-Inanis.md › Background`)
-- Ouro Kronii: active; debut ?; graduated —; regular activities concluded — (`bible/characters/Ouro-Kronii.md › Background`)
-- Raora Panthera: active; debut 2024-06-22; graduated —; regular activities concluded — (`bible/characters/Raora-Panthera.md › Background`)
-- Shiori Novella: active; debut 2023-07-30; graduated —; regular activities concluded — (`bible/characters/Shiori-Novella.md › Background`)
-- Takanashi Kiara: active; debut ?; graduated —; regular activities concluded — (`bible/characters/Takanashi-Kiara.md › Background`)
-- Watson Amelia: affiliate; debut ?; graduated —; regular activities concluded 2024-09-30 (`bible/characters/Watson-Amelia.md › Background`)
+- Cecilia Immergreen: active; debut 2024-06-22; graduated —; regular activities concluded — (`bible/characters/Cecilia-Immergreen.md › Background (debut: Background)`)
+- Ceres Fauna: graduated; debut 2021-08-23; graduated 2025-01-03; regular activities concluded — (`bible/characters/Ceres-Fauna.md › Background (debut: Background)`)
+- Elizabeth Rose Bloodflame: active; debut 2024-06-21; graduated —; regular activities concluded — (`bible/characters/Elizabeth-Rose-Bloodflame.md › Background (debut: Background)`)
+- Fuwawa Abyssgard: active; debut 2023-07-31; graduated —; regular activities concluded — (`bible/characters/Fuwawa-Abyssgard.md › Background (debut: Background)`)
+- Gawr Gura: graduated; debut 2020-09-13; graduated 2025-05-01; regular activities concluded — (`bible/characters/Gawr-Gura.md › Background (debut: Hard Facts / Background Timeline)`)
+- Gigi Murin: active; debut 2024-06-21; graduated —; regular activities concluded — (`bible/characters/Gigi-Murin.md › Background (debut: Background)`)
+- IRyS: active; debut 2021-07-11; graduated —; regular activities concluded — (`bible/characters/IRyS.md › Background (debut: Background)`)
+- Koseki Bijou: active; debut 2023-07-30; graduated —; regular activities concluded — (`bible/characters/Koseki-Bijou.md › Background (debut: Background)`)
+- Mococo Abyssgard: active; debut 2023-07-31; graduated —; regular activities concluded — (`bible/characters/Mococo-Abyssgard.md › Background (debut: Background)`)
+- Mori Calliope: active; debut 2020-09-12; graduated —; regular activities concluded — (`bible/characters/Mori-Calliope.md › Background (debut: Hard Facts / Background Timeline)`)
+- Nanashi Mumei: graduated; debut 2021-08-23; graduated 2025-04-27; regular activities concluded — (`bible/characters/Nanashi-Mumei.md › Background (debut: Background)`)
+- Nerissa Ravencroft: active; debut 2023-07-31; graduated —; regular activities concluded — (`bible/characters/Nerissa-Ravencroft.md › Background (debut: Background)`)
+- Ninomae Ina'nis: active; debut 2020-09-13; graduated —; regular activities concluded — (`bible/characters/Ninomae-Inanis.md › Background (debut: Hard Facts / Background Timeline)`)
+- Ouro Kronii: active; debut 2021-08-23; graduated —; regular activities concluded — (`bible/characters/Ouro-Kronii.md › Background (debut: Hard Facts / Background Timeline)`)
+- Raora Panthera: active; debut 2024-06-22; graduated —; regular activities concluded — (`bible/characters/Raora-Panthera.md › Background (debut: Background)`)
+- Shiori Novella: active; debut 2023-07-30; graduated —; regular activities concluded — (`bible/characters/Shiori-Novella.md › Background (debut: Background)`)
+- Takanashi Kiara: active; debut 2020-09-12; graduated —; regular activities concluded — (`bible/characters/Takanashi-Kiara.md › Background (debut: Hard Facts / Background Timeline)`)
+- Watson Amelia: affiliate; debut 2020-09-13; graduated —; regular activities concluded 2024-09-30 (`bible/characters/Watson-Amelia.md › Background (debut: Hard Facts / Background Timeline)`)
 
 ## Dated rows by month
 

@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-02T03:32Z",
- "snapshot": "d2532ea7f9b91649604f9fa54ffa47d743b1628982d040e69e82303c52bf12ee",
+ "checked_at": "2026-10-02T04:20Z",
+ "snapshot": "e29a6c891d7ce427b210a5bc7fa2d3ebb62a02fc21b40b9268849b682adaebcf",
  "blocking_failures": [
   "V02",
   "V10",
@@ -21,7 +21,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot d2532ea7f9b91649604f9fa54ffa47d743b1628982d040e69e82303c52bf12ee",
+    "snapshot e29a6c891d7ce427b210a5bc7fa2d3ebb62a02fc21b40b9268849b682adaebcf",
     "67 inputs"
    ],
    "finding_ids": []
@@ -147,10 +147,6 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "bible/characters/Cecilia-Immergreen.md:61 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
-    "bible/characters/Cecilia-Immergreen.md:92 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
-    "bible/characters/Cecilia-Immergreen.md:129 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
-    "bible/characters/Cecilia-Immergreen.md:259 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
     "bible/characters/Ceres-Fauna.md:85 quotes past a shared ASR span (fauna.md 0:45:36): \"If you heard your name, you will now be the recipient of my next spell,\"",
     "bible/characters/Ceres-Fauna.md:147 quotes past a shared ASR span (fauna.md 0:45:36): \"If you heard your name, you will now be the recipient of my next spell.\"",
     "bible/characters/IRyS.md:54 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
@@ -169,11 +165,6 @@
     "bible/characters/Ouro-Kronii.md:201 quotes past a shared ASR span (kronii.md 1:39:19): \"Okay, that was my bad.\"",
     "bible/characters/Shiori-Novella.md:255 quotes past a shared ASR span (shiori.md 2:23:16): \"I'm really bad at remembering names.\"",
     "bible/characters/Takanashi-Kiara.md:226 quotes past a shared ASR span (kiara.md 2:42:58): \"You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis.\"",
-    "bible/world/Justice-Pairs.md:173 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
-    "bible/world/Justice-Pairs.md:238 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
-    "bible/world/hololive--Justice.md:56 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
-    "export/elevenlabs/Cecilia-Immergreen.md:36 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
-    "export/elevenlabs/Cecilia-Immergreen.md:57 quotes past a shared ASR span (shiori.md 2:25:37): \"Well, thank you very much for spending time with me today and\"",
     "export/elevenlabs/Ceres-Fauna.md:40 quotes past a shared ASR span (fauna.md 0:45:36): \"If you heard your name, you will now be the recipient of my next spell.\"",
     "export/elevenlabs/Fuwawa-Abyssgard.md:64 quotes past a shared ASR span (fuwamoco.md 5:55:28): \"It was a lot of fun! Bau bau!\"",
     "export/elevenlabs/IRyS.md:32 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",

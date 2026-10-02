@@ -6,7 +6,8 @@ recognition does not guarantee every trait is used.
 
 The cards describe the cast at the 2026-09-30 baseline. For a scene set earlier, state the date and each
 member's status at that date in the scene text, and mute later facts in a project copy before generating.
-This worksheet does not change Sudowrite's context by itself.
+This worksheet does not change Sudowrite's context by itself. Dates are as written on each card (JST unless the
+card says PDT; a US-evening debut is the next day in JST).
 
 | Member | State at 2026-09-30 | Debut | Graduated | Regular activities concluded |
 |---|---|---|---|---|
@@ -14,17 +15,17 @@ This worksheet does not change Sudowrite's context by itself.
 | Ceres Fauna | graduated | 2021-08-23 | 2025-01-03 | — |
 | Elizabeth Rose Bloodflame | active | 2024-06-21 | — | — |
 | Fuwawa Abyssgard | active | 2023-07-31 | — | — |
-| Gawr Gura | graduated | — | 2025-05-01 | — |
+| Gawr Gura | graduated | 2020-09-13 | 2025-05-01 | — |
 | Gigi Murin | active | 2024-06-21 | — | — |
 | IRyS | active | 2021-07-11 | — | — |
 | Koseki Bijou | active | 2023-07-30 | — | — |
 | Mococo Abyssgard | active | 2023-07-31 | — | — |
-| Mori Calliope | active | — | — | — |
+| Mori Calliope | active | 2020-09-12 | — | — |
 | Nanashi Mumei | graduated | 2021-08-23 | 2025-04-27 | — |
 | Nerissa Ravencroft | active | 2023-07-31 | — | — |
-| Ninomae Ina'nis | active | — | — | — |
-| Ouro Kronii | active | — | — | — |
+| Ninomae Ina'nis | active | 2020-09-13 | — | — |
+| Ouro Kronii | active | 2021-08-23 | — | — |
 | Raora Panthera | active | 2024-06-22 | — | — |
 | Shiori Novella | active | 2023-07-30 | — | — |
-| Takanashi Kiara | active | — | — | — |
-| Watson Amelia | affiliate | — | — | 2024-09-30 |
+| Takanashi Kiara | active | 2020-09-12 | — | — |
+| Watson Amelia | affiliate | 2020-09-13 | — | 2024-09-30 |

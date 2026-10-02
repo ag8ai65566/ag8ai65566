@@ -181,6 +181,12 @@ def build_registry(files, commit):
             bg = sw.get("Background", "")
             status = re.split(r"(?<=\.)\s", bg, maxsplit=2)[:2]
             debut = re.search(r"\bdebuted\b[^.]*?\bon (\d{4}-\d{2}-\d{2})", bg)
+            debut_src = "Background"
+            if not debut:  # cards whose Background says only "in September 2020": use Hard Facts, then the timeline
+                dossier = d["text"].split("\n## [SW] Name")[0]
+                debut = (re.search(r"\b[Dd]ebut (\d{4}-\d{2}-\d{2})", d["sec"].get("Hard Facts (continuity)", "")) or
+                         re.search(r"^\| (\d{4}-\d{2}-\d{2})[^|]*\| (?:She )?[Dd]ebuts?\b", dossier, re.M))
+                debut_src = "Hard Facts / Background Timeline"
             when = r"([A-Z][a-z]+ \d{1,2}, \d{4}|\d{4}-\d{2}-\d{2})"
             grad = re.search(r"graduated (?:from [^.;:]+? )?on " + when, bg)
             concluded = re.search(r"concluded her regular activities on " + when, bg)
@@ -191,7 +197,8 @@ def build_registry(files, commit):
                                                     "debut": debut.group(1) if debut else None,
                                                     "graduated": iso(grad.group(1)) if grad else None,
                                                     "regular_activities_concluded": iso(concluded.group(1)) if concluded else None,
-                                                    "source": f"{d['path']} › Background"}})
+                                                    "source": f"{d['path']} › Background"
+                                                              + (f" (debut: {debut_src})" if debut else "")}})
         else:
             reg["world"].append({"name": d["name"], "file": d["path"], "role": sw.get("Role"),
                                  "other_names": split_list(sw.get("Other Names"))})

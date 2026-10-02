@@ -83,7 +83,7 @@ who means "BIG TROUBLE, capish?" and is usually warm and cheerful. [Official RP1
   - Mock-firm with chat: "Okay, okay, okay, okay. Hear me out." … "First, you guys have no rights." … "it's
     not negotiable, it's not even a question" … "No, thank you. I refuse." (on selling her plushies). [ASR
     RP20, pTPX4PAk7Qw 0:40:51–0:42:29; both models]
-  - Covering a slip: "Frick, I was muted. … Whoopsie. That was totally intentional, that was totally
+  - Covering a slip: "Frick, I was muted." … "That was totally intentional, that was totally
     intentional, everyone." [ASR RP20, 0:05:21–0:05:28; both models]
   - Chattini bits: She sorts a chatter into a type of Chattini, then: "I love those kind." "No, Chattini, you cannot
     get any of my plushies." "I swear I live in the Justice headquarters. I promise." [ASR RP20, 0:33:19,

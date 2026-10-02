@@ -1,16 +1,14 @@
-# 從這裡開始 — holoen r01（草稿候選版，尚未通過全部檢查）
+# 從這裡開始 — holoen {rev}{draft}
 
 這是給作者的使用指南：資料在哪裡、每個檔案放進 Sudowrite 的哪一格、寫作時怎麼用、怎麼交給 ElevenLabs 配音、
-之後怎麼更新。基準日 2026-09-30；這一版有 **18 張角色卡**、**24 張世界觀卡**、18 份 ElevenLabs 表演表，
+之後怎麼更新。基準日 {baseline}；這一版有 **{nchar} 張角色卡**、**{nworld} 張世界觀卡**、{nchar} 份 ElevenLabs 表演表，
 全部是完整卡（沒有精簡版）。檢查結果在 `validation.json`；**實際匯入和配音只有你能測（runtime untested）**，
 請先做第 3 節的十分鐘測試。
-
-> 這一版還沒收錄：Hakos Baelz、Hakos Baelz Pairs（審查完成後在下一版加入；到時只要匯入 `sudowrite/cards/` 裡這幾張的 CSV，不用重匯整包）。
-
+{pending}
 ## 1. 資料在哪裡拿
 
 - 位置：GitHub repo `ag8ai65566/ag8ai65566`，分支 `claude/sudowrite-novel-framework-2cmja7`，資料夾
-  `novel-lab/projects/holoen/delivery/holoen-2026-09-30-r01…/`（資料夾名稱就是版本號；`-draft` 結尾的是草稿）。
+  `novel-lab/projects/holoen/delivery/holoen-2026-09-30-{rev}…/`（資料夾名稱就是版本號；`-draft` 結尾的是草稿）。
 - 下載整包：GitHub 網頁切到這個分支 → 綠色 **Code** 按鈕 → **Download ZIP**，解壓後進到上面的資料夾。
   只要單一檔案：打開檔案 → 右上角 **Download raw file**。
 - 只拿發佈資料夾（`delivery/…`）裡的東西：它有版本號、檢查結果和每個檔案的雜湊。`export/` 是工作中的最新輸出，
@@ -39,9 +37,9 @@ Relationships, Secrets`。每個角色的 Role 都是 Protagonist。`Secrets` �
 
 ## 3. 第一次：先在測試專案做十分鐘匯入測試
 
-1. 新建專案 `holoen-r01-smoke`（可丟棄）。不要在你正在寫的專案裡測匯入。
-2. Characters 匯入 `sudowrite/characters.csv`，確認 **18 張**；Worldbuilding 匯入 `sudowrite/worldbuilding.csv`，
-   確認 **24 個**。每個合併 CSV 只匯入一次。
+1. 新建專案 `holoen-{rev}-smoke`（可丟棄）。不要在你正在寫的專案裡測匯入。
+2. Characters 匯入 `sudowrite/characters.csv`，確認 **{nchar} 張**；Worldbuilding 匯入 `sudowrite/worldbuilding.csv`，
+   確認 **{nworld} 個**。每個合併 CSV 只匯入一次。
 3. 打開 Fuwawa、Mococo 和另一個角色：雙胞胎是兩張卡、`Role` 是 Protagonist、自訂特質（含 `Audio Tags`）有內容。
    找一個多行或有標點的欄位，和 `sudowrite/paste.md` 對照。打開 FUWAMOCO 和一張 History 卡。
 4. 把 `sudowrite/style.txt` 貼到 Style。Genre 填 `Light comic fantasy`，Braindump 填
@@ -52,7 +50,7 @@ Relationships, Secrets`。每個角色的 Role 都是 Protagonist。`Secrets` �
 6. 看兩人和 FUWAMOCO 有沒有出現**偵測底線**（Sudowrite 認得這張卡的記號）。
 7. 生成最短的一段，檢查：說話的人分得開、對白裡有 `[...]` 表演標籤、敘述沒有標籤。生成後在 History 的
    小標籤（chiclets）看這次實際帶入了哪些卡。
-8. 結果寫進 `performance/test-results.csv`（版本 r01、用的模型）。測試專案先留著，有問題方便排查。
+8. 結果寫進 `performance/test-results.csv`（版本 {rev}、用的模型）。測試專案先留著，有問題方便排查。
 
 ## 4. 正式開寫：你的專案怎麼設定
 
@@ -78,7 +76,7 @@ Relationships, Secrets`。每個角色的 Role 都是 Protagonist。`Secrets` �
   大合照場景（演唱會、全員合作）把重點放在幾位說話的人，其他人一句帶過。
 - **暱稱**：卡片的 Other Names 已收錄常用稱呼（例 Bae、Gura、Biboo、Moom），內文可以直接用；但新場景第一次
   出現時仍建議用全名。
-- **時間點**：卡片描述的是 2026-09-30 的狀態（例：Gura、Fauna、Mumei 已畢業，只以回憶出現；Ame 是 affiliate，
+- **時間點**：卡片描述的是 {baseline} 的狀態（例：Gura、Fauna、Mumei 已畢業，只以回憶出現；Ame 是 affiliate，
   可以客串）。寫更早的時間點時，查 `sudowrite/scene-setup.md` 的狀態表，在場景裡寫明當時的狀態；
   必要時在**專案副本**裡隱藏之後才發生的特質。
 - **關係與梗**：Relationships 欄只寫公開的合作與梗；BaeRyS 的「結婚／離婚」、TakaMori 的「夫妻」這類都是

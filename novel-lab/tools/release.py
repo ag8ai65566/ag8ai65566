@@ -38,15 +38,17 @@ ROSTER_CHARS = sorted({s for c in qa_packets.COHORTS.values() for s in c["charac
 ROSTER_WORLD = sorted({s for c in qa_packets.COHORTS.values() for s in c["world"]})
 EXPECT = {"characters": len(ROSTER_CHARS), "world": len(ROSTER_WORLD), "sheets": len(ROSTER_CHARS)}
 CAST_ORDER = ["Mori-Calliope", "Takanashi-Kiara", "Ninomae-Inanis", "Gawr-Gura", "Watson-Amelia",
-              "IRyS", "Ouro-Kronii", "Ceres-Fauna", "Nanashi-Mumei",
+              "IRyS", "Ouro-Kronii", "Ceres-Fauna", "Nanashi-Mumei", "Hakos-Baelz",
               "Shiori-Novella", "Koseki-Bijou", "Nerissa-Ravencroft", "Fuwawa-Abyssgard", "Mococo-Abyssgard",
               "Elizabeth-Rose-Bloodflame", "Gigi-Murin", "Cecilia-Immergreen", "Raora-Panthera"]
 WORLD_ORDER = ["VTuber-Persona-and-Lore", "hololive", "Streaming-Life",
                "hololive--Myth", "hololive--Promise", "hololive--Advent", "hololive--Justice", "FUWAMOCO",
                "TakaMori", "TakoTori", "AmeSame", "Bone-Bros", "Myth-and-Kronii-Other-Pairs", "Time-Duo",
-               "Time-and-Death", "OctoClock", "Fauna-and-Mumei-Pairs", "IRyS-and-Nerissa-Pairs", "Advent-Pairs",
+               "Time-and-Death", "OctoClock", "Fauna-and-Mumei-Pairs", "IRyS-and-Nerissa-Pairs", "Hakos-Baelz-Pairs", "Advent-Pairs",
                "Justice-Pairs", "Cross-Branch-Friends", "Concerts-and-Live-Events", "hololive-History-to-2022",
                "hololive-History-2023-2026"]
+assert set(CAST_ORDER) == set(ROSTER_CHARS) and set(WORLD_ORDER) == set(ROSTER_WORLD), \
+    "CAST_ORDER/WORLD_ORDER must list exactly the COHORTS roster (tools/qa_packets.py)"
 COHORT_AUDITS = [f"research/qa/audit-{c}.md" for c in qa_packets.COHORTS]
 ATTEST = {
     "V10": ["research/qa/audit-bridge-events.md"],
@@ -400,7 +402,7 @@ def cmd_stamp(args):
 
 def pronunciation_rows(cards):
     rows = []
-    for stem in CAST_ORDER:
+    for stem in (s for s in CAST_ORDER if s in cards):
         at = cards[stem]["fields"].get("Audio Tags", "")
         m = re.search(r"Pronunciation guide \(provisional, untested\): (.*?)(?:\. Not as default|\.$)", at)
         if not m:
@@ -463,6 +465,8 @@ def cmd_build(args):
     (pkg / "sudowrite" / "scene-setup.md").write_text(SCENE_SETUP.format(table="\n".join(status_lines)), encoding="utf-8")
     (pkg / "performance" / "sheets").mkdir(parents=True)
     for p in (exp / "elevenlabs").glob("*.md"):
+        if p.stem in ROSTER_CHARS and p.stem not in cards:
+            continue  # a sheet ships only with its card
         shutil.copy2(p, pkg / "performance" / "sheets" / p.name)
     with open(pkg / "performance" / "pronunciation.tsv", "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, delimiter="\t")
@@ -471,7 +475,7 @@ def cmd_build(args):
     (pkg / "performance" / "voice-map.example.json").write_text(json.dumps(
         {"_about": "Example only: map each character to an ORIGINAL designed voice you created (never a clone).",
          "narrator": "<your narrator voice_id>",
-         **{cards[s]["fields"]["Name"]: "<original designed voice_id>" for s in CAST_ORDER}}, ensure_ascii=False, indent=1), encoding="utf-8")
+         **{cards[s]["fields"]["Name"]: "<original designed voice_id>" for s in CAST_ORDER if s in cards}}, ensure_ascii=False, indent=1), encoding="utf-8")
     with open(pkg / "performance" / "test-results.csv", "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["test", "release", "date", "tester", "model_or_voice", "settings", "observations", "outcome"])
@@ -486,9 +490,12 @@ def cmd_build(args):
             for item in reg[k]:
                 fh.write(json.dumps({"kind": k, **item}, ensure_ascii=False) + "\n")
     cov = ["# Coverage (generated)", "", "| Member | Relationships words | Quoted lines in Dialogue Style | Open questions | World cards naming her |", "|---|---|---|---|---|"]
-    idx = ["# Index", "", f"Release {rev} · baseline {BASELINE} · {EXPECT['characters']} characters · {EXPECT['world']} world elements · full cards (no compact variants).", "",
+    in_chars = [s for s in CAST_ORDER if s in cards]
+    in_world = [s for s in WORLD_ORDER if s in cards]
+    missing = [s for s in CAST_ORDER + WORLD_ORDER if s not in cards]
+    idx = ["# Index", "", f"Release {rev} · baseline {BASELINE} · {len(in_chars)} characters · {len(in_world)} world elements · full cards (no compact variants).", "",
            "## Characters (Myth → Promise/Council → Advent → Justice)", "", "| Member | Status | Units (Groups) | Card | Performance sheet | World cards naming her |", "|---|---|---|---|---|---|"]
-    for stem in CAST_ORDER:
+    for stem in in_chars:
         c = cards[stem]
         f = c["fields"]
         first = f["Name"].split()[0]
@@ -509,9 +516,12 @@ def cmd_build(args):
         diff = field_diff(prev[-1] / "reference" / "bible", cards)
         ch = [f"# Changelog — {rev}", "", f"Field-level changes since {prev[-1].name}:", ""] + (diff or ["- none"])
     else:
-        ch = [f"# Changelog — {rev}", "", f"Initial release: {EXPECT['characters']} character cards and {EXPECT['world']} world elements (all new)."]
+        ch = [f"# Changelog — {rev}", "", f"Initial release: {len(in_chars)} character cards and {len(in_world)} world elements (all new)."]
     (pkg / "CHANGELOG.md").write_text("\n".join(ch) + "\n", encoding="utf-8")
-    (pkg / "00-START-HERE.md").write_text(START_HERE.format(rev=rev, baseline=BASELINE, nchar=EXPECT["characters"], nworld=EXPECT["world"],
+    pending = ("\n> 這一版還沒收錄：" + "、".join(s.replace("-", " ") for s in missing) + "（審查完成後在下一版加入；到時只要匯入 `sudowrite/cards/` 裡"
+               "這幾張的 CSV，不用重匯整包）。\n" if missing else "")
+    (pkg / "00-START-HERE.md").write_text(START_HERE.format(rev=rev, baseline=BASELINE, nchar=len(in_chars), nworld=len(in_world),
+                                                            pending=pending,
                                                             draft="（草稿候選版，尚未通過全部檢查）" if args.draft else ""), encoding="utf-8")
     R2, snapshot2, _ = check_all(proj, "candidate", package=pkg, building=True)
     val = write_validation(proj, R2, snapshot2, "candidate", out=pkg / "validation.json")
@@ -538,51 +548,13 @@ recognition does not guarantee every trait is used.
 
 The cards describe the cast at the 2026-09-30 baseline. For a scene set earlier, state the date and each
 member's status at that date in the scene text, and mute later facts in a project copy before generating.
-This worksheet does not change Sudowrite's context by itself.
+This worksheet does not change Sudowrite's context by itself. Dates are as written on each card (JST unless the
+card says PDT; a US-evening debut is the next day in JST).
 
 {table}
 """
 
-START_HERE = """# 從這裡開始 — holoen {rev}{draft}
-
-基準日 {baseline}。這一版有 **{nchar} 張角色卡**、**{nworld} 張世界觀卡**、{nchar} 份 ElevenLabs 表演表。全部用完整卡（沒有精簡版）。
-狀態：**靜態檢查通過與否見 `validation.json`；實際匯入和配音測試尚未執行（runtime untested）。**
-索引：`01-INDEX.md`。改動：`CHANGELOG.md`。檔案雜湊與狀態：`manifest.json`。
-
-## 1. 十分鐘匯入測試（請在新的、可丟棄的專案做）
-1. 新建專案 `holoen-{rev}-smoke`。不要在你正在寫的專案裡測重複匯入。
-2. Story Bible → Characters 標題旁 `•••` → Import → 上傳 `sudowrite/characters.csv`，確認 **{nchar} 張**。
-   Worldbuilding 同樣匯入 `sudowrite/worldbuilding.csv`，確認 **{nworld} 個**。每個合併 CSV 只匯入一次。
-3. 打開 Fuwawa、Mococo 和另一個角色：雙胞胎是兩張卡、`Role` 是 Protagonist、自訂特質（含 `Audio Tags`）有內容。
-   找一個多行或有標點的欄位，和 `sudowrite/paste.md` 對照。打開 FUWAMOCO 和一張 History 卡。
-4. 確認 Secrets 都是空的（這一版全空；以後若有內容，生成前要先按眼睛圖示隱藏）。
-5. 把 `sudowrite/style.txt` 貼到 Style。測試用：Genre 填 `Light comic fantasy`，Braindump 填
-   `Fuwawa Abyssgard and Mococo Abyssgard compare a map inside a fictional game.`，Synopsis 留白；設定第三人稱、過去式。
-6. 新建一個章節／場景：`Scene date: 2026-09-30. Fuwawa Abyssgard and Mococo Abyssgard, the members of FUWAMOCO,
-   compare a map inside a fictional game. Keep their speaking turns distinct.`
-7. 看兩人和 FUWAMOCO 有沒有出現偵測底線；沒有就記下來，檢查名稱與可見性後再試。
-8. 生成最短的一段：說話者分得開、對白有可用的表演標籤、敘述沒有標籤。把匯入和生成的結果分開記在
-   `performance/test-results.csv`（含版本 {rev} 和使用的模型）。有問題就保留這個測試專案方便排查。
-
-## 2. 三行原創聲音測試（ElevenLabs v4）
-用兩個**你自己設計的原創聲音**（不要複製或模仿成員的真實聲音），A/B/A 輪流。以下是風格示範，不是引用：
-```text
-A: [calm] We can check the map again.
-B: [startled] Ah! That door moved.
-A: [laughs] Fuwawa, Mococo—your turn.
-```
-選 `eleven_v4`，用對應表演表的起始設定（UI 用百分比，API 用小數）。每行一個 turn、各自指定聲音。
-聽：聲音分配對不對、語氣有沒有變、標籤有沒有被唸出來、笑聲有沒有重複、名字發音。
-要測 IPA 的話，在另一份音訊稿裡**直接取代**那個名字，不要再附加一次發音。結果寫具體觀察，不要寫「全部通過」。
-
-## 3. 寫作與歷史場景
-每個場景寫明日期、登場的人（全名）、相關的世界觀元素。寫過去的時間點時，參考 `sudowrite/scene-setup.md`
-的狀態表，並在專案副本裡先拿掉之後才發生的事。
-
-## 4. 更新與回報
-之後的版本請照 `CHANGELOG.md` 逐欄更新既有卡片（保留你自己的修改）；不要假設重複匯入 CSV 會合併。
-回報問題時附：版本號、哪張卡哪個欄位、測試結果、最小重現步驟。測試紀錄放在發佈資料夾外面。
-"""
+START_HERE = (ROOT / "framework" / "templates" / "start-here-zh.md").read_text(encoding="utf-8")
 
 
 def main():

@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 1e3399f.
+Snapshot: git f02f10f.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Mori Calliope|Cori Malliope|Calliope Mori|Last Writes|Miss Mori|Kawaiiope|CHADCast|Mor Mori|Calliope|TakaMori|Takamori|CallioP|森カリオペ|Calli|Mori|Mowi|LYRA)(
+Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Mori Calliope|Cori Malliope|Calliope Mori|Last Writes|Kawaiiope|Miss Mori|CHADCast|TakaMori|Mor Mori|Takamori|Calliope|CallioP|Calli|森カリオペ|Mori|LYRA|Mowi)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: (2026; Cecilia wrote the lyrics and directed it), a 2026 3D live, and the Serendipity concert, where she also sang "Break It Down" with Vestia Zeta and Shiori Novella and "Cloudy Sheep" with Tsunomaki Watame and Mori Calliope.

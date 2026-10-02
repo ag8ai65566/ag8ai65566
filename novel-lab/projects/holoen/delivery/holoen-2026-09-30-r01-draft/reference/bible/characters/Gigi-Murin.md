@@ -86,8 +86,7 @@ surroundings! Don't lose anything!": chaos on the surface, a soft, dutiful strea
     WHY, WHY?!", "DON'T TELL LIZ!" [Observed GG2 §Quotes, secondary]
   - "MORI CALLIOPE!", an emphatic callout. [Observed GG2 §Quotes, §Miscellaneous, secondary]
   - "Huh? But it was funny! Don't get mad at me!" (official line). [Official GG1]
-- **Comedy in the moment:** a blurred merch preview becomes a crime scene ("We're still trying to find the
-  killer, so the victim has been … their face has been blurred out of consideration for their family");
+- **Comedy in the moment:** a blurred merch preview becomes a crime scene (she narrates the hunt for the killer, and "their face has been blurred out of consideration for their family");
   bad luck becomes a hex ("I feel like someone hired an Etsy witch to curse me and to hex me"); fan lore gets
   a straight-faced answer ("Yes, make sure to keep your tails clean, everyone. No one likes a dirty, stinky
   tail."). [ASR GG20, LgDuyqoaqT4 0:13:46, 0:14:20, 1:15:40; both models]

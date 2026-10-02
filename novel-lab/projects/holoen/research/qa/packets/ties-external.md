@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git 1e3399f. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git f02f10f. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Mori Calliope

@@ -1,6 +1,6 @@
 # Bridge packet: ties (claims naming four or more people)
 
-Snapshot: git 1e3399f. Each listed once with the people it names.
+Snapshot: git f02f10f. Each listed once with the people it names.
 
 - `bible/characters/Cecilia-Immergreen.md › Background Timeline` [Gigi Murin, Mori Calliope, Shiori Novella, Tsunomaki Watame, Vestia Zeta]: | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice, "CCGG MADNESS" as Autofister with Gigi, "Break It Down" with Vestia Zeta and Shiori, "Cloudy Sheep" with Tsunomaki Watame and Calli (day 1); "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official CI4, CI8] |
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map` [Gigi Murin, Koseki Bijou, Raora Panthera, Shiori Novella, Vestia Zeta]: | Koseki Bijou, Shiori Novella | Advent; GAGA (Gem, Archiver, Gremlin, Automaton) with Gigi | GAGA: Trine 5, Heave Ho (2024), Phasmophobia (2025); Walking Dead watchalongs and Elden Ring with Bijou (2025); "I'm Your Treasure Box" with Bijou and Raora (not Shiori); "Break It Down" with Shiori and Zeta at Serendipity | [Observed CI2, CI3] [Official CI5, CI8] |
