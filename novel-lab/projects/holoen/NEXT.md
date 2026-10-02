@@ -1,6 +1,6 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
-狀態（2026-10-02 03:00 UTC，全卷審計進行中）：
+狀態（2026-10-02 02:30 UTC，全卷審計進行中；GPT 額度 06:29 UTC 重置，send_later 06:31 自動開跑）：
 - **完成**：Advent cohort 審計（`research/qa/audit-advent.md`）已全部合併、收錄、匯出、推送；ledger 有 ADVENT-* 處置。
   另做 CLAUDE-SCOPE-002：流程紀錄（Merge Record、音檔報告、NEXT/project、舊草稿與提示副本）不再寫出被排除的具體私事。
 - **GPT 額度**：Global 審計跑到一半撞上限（約 20 萬 tokens、無產出）→ 重置 2026-10-02 06:29 UTC。改進：
@@ -15,7 +15,12 @@
 - **ties 的調整**：成員之間的關係（ties-cast）與多人聲明（ties-groups）已在各 cohort 審計的 incoming／outgoing 兩邊都比對過，
   不再另跑；bridge ties 只跑外部人物（ties-external）。V11 改為需要 ties-external＋七份 cohort 審計（`tools/release.py`）。
   提示裡請 GPT 若不同意就在 Merge handoff 說明。
-- **之後**：06 近期補完 → 08 年表＋X → 09 聲音 → 10 `release.py build` → 11 驗收。
+- **06 近期補完：Claude 已做完**（省一個 GPT 窗口）：`research/refresh/myth-kronii-20260930.md`。Myth 六週年 3D live
+  "Seasons From Within"（2026-09-19 PDT）確認已舉行＋新曲 "THIS IS MYTH"（CONSULT-P2-001 結案）、Calli "UNCUT ROCK!!"、
+  Kiara 生日 3D、Kronii "STORM" 等；5 個證據不足的候選暫不收。GPT 會在 Myth 各 cohort 審計裡複核。
+- **引句**：`tools/span_check.py` 掃出 23 處超出兩模型共同片段的引句，已修（CLAUDE-QUOTE-001）；V13 之後會自動擋。
+- **交付預覽**：`delivery/holoen-2026-09-30-r01-draft/`（草稿，審計完成後重建正式版）。
+- **之後**：08 年表＋X → 09 聲音 → 10 `release.py build` → 11 驗收。
 - **Mococo（CONSULT-P1-007）**：已查整個頻道存檔，沒有其他可歸屬的單人窗口；聲音指示維持暫定（報告與卡已寫明）。
 - **待辦（Claude）**：表演表在聲音審計後 `stamp-sheets`。Hakos Baelz、Tsukumo Sana 等作者下令。
 
