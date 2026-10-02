@@ -1,10 +1,10 @@
 # Audit packet: promise
 
-Snapshot: git 520755e. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git eaed6b9. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Ouro-Kronii.md` fd6dfc4140b5; `bible/characters/IRyS.md` a87383909b3a; `bible/characters/Ceres-Fauna.md` 58177a0ddea1; `bible/characters/Nanashi-Mumei.md` 17f0f87a8f52; `bible/world/hololive--Promise.md` 0d2fcd380c0a; `bible/world/Time-Duo.md` 329fef0a8daa; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` 5f0169e12e8b; `bible/world/Fauna-and-Mumei-Pairs.md` 537910125c8d; `bible/world/IRyS-and-Nerissa-Pairs.md` 2d7d1c266294
+Owned files (sha256): `bible/characters/Ouro-Kronii.md` a8491838a6b5; `bible/characters/IRyS.md` a87383909b3a; `bible/characters/Ceres-Fauna.md` 58177a0ddea1; `bible/characters/Nanashi-Mumei.md` 17f0f87a8f52; `bible/world/hololive--Promise.md` 0d2fcd380c0a; `bible/world/Time-Duo.md` 329fef0a8daa; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` 5f0169e12e8b; `bible/world/Fauna-and-Mumei-Pairs.md` 537910125c8d; `bible/world/IRyS-and-Nerissa-Pairs.md` 2d7d1c266294
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -24,7 +24,8 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` fd6dfc4140b5; `bible/cha
 | 2023-10-09 | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
 | 2025 | Fauna (January) and Mumei (April) graduate; Promise's current members are Kronii, IRyS and Baelz | Shared history stays [Official K34] |
 | 2025-10-10 | Promise releases "Run Back 'Round" | [Official K6] |
-| 2026-03-13 | 3D birthday live; Watson Amelia guests | [Observed K33, secondary, stream t=1711] |
+| 2026-03-13 | 3D birthday live; Watson Amelia guests; she releases the single "Way 2 U" and announces an EP of the same name | [Observed K33, secondary, stream t=1711; K38, secondary] |
+| 2026-05-08 | Single "STORM" (later on the EP) | [Observed K38, secondary] |
 | 2026-06-04 | Serendipity interview and partnership with Ina | Puns, appreciation, performance goals [Official K4] |
 | 2026-08-23 | EP "Way 2 U" (five tracks, including the earlier "Daydream") | Adds to earlier solo music [Official K7] |
 | 2026-09-07 | Branches merge into one "hololive"; unit is hololive -Promise- | [Official K5, K1] |

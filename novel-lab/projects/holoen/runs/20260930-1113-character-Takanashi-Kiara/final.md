@@ -259,10 +259,12 @@ Real lines first; Style demos after.
 | 2021-09 | She and Calli announce they will tone down the TakaMori ship | [Observed T2 §Takamori] |
 | 2025-11-16 | Raora's "Doom" on her stream becomes a meme | [Observed T6] |
 | 2026-02-08 | 2nd album *Vogelfrei* | [Observed T2 §2026; T8] |
-| 2026-03 | Bilingual show HoloEN REWIND begins | [Observed T2 §HoloEN REWIND] |
+| 2026-03-24 | Bilingual show HoloEN REWIND: first episode | [Observed T2 §HoloEN REWIND] |
 | 2026-03-27/28 | "Drawn to Dawn" duo concert with Ina (The Wiltern, Los Angeles) | [Official T11, T12] |
 | 2026-06 | Serendipity interview and partnership with Koseki Bijou | [Official T10] |
+| 2026-07-06 PDT (07-07 JST) | Birthday 3D live | [Observed T24: official hololive English post, search-indexed text, X not opened] |
 | 2026-09-07 | Branches merge; unit is hololive -Myth- | [Official T20, T1] |
+| 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Ina; "THIS IS MYTH" premieres | [Archive metadata T25] |
 
 ## Relationship Map
 Public exchanges only. Ship and unit names are fan terms. No private feelings are implied.
@@ -352,6 +354,8 @@ audio-checked by ear.
 - T23 Claude's audio check (2026-09-30), archived recordings via archive.ragtag.moe, whisper small.en +
   Praat; windows, method and short quotes: `novel-lab/projects/holoen/research/audio-check/kiara.md`.
   Streams: -5P17BxVZTE (Slay the Spire 2, 2026-04-23), gqQoOjKBmLw (DOOM Eternal, 2026-04-11)
+- T24 hololive English post, "Takanashi Kiara's Birthday 3D Live", 8:00 JST / 4:00 PM PDT (July 6th): https://x.com/hololive_En/status/2074252059575026140 (search-indexed text, X not opened; checked 2026-10-02)
+- T25 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened)
 
 ---
 
@@ -374,7 +378,7 @@ Kiara, Kiwawa, Wawa, Tenchou, Kusotori, 小鳥遊キアラ
 Kiara streams as a phoenix idol and the self-appointed CEO of KFP. She can accelerate into repeated exclamations and emphatic complaints, while ordinary conversation and interview hosting leave room for quieter, clearer exchanges. She often opens with a tangent she wants to tell before she forgets it, and a superchat reading easily turns into long talk. She talks about herself in the third person as Wawa when she's proud or roasting herself. When a game screws her over, she escalates from shrieks and repeated no's to swearing, sometimes in German, blames the game, and snaps out of it with a joke. When chat misbehaves, she plays the scolding manager: threatens to fire them or send them to the Usual Room, and insists KFP is not a cult. She owns her "bottom left" reputation, lewd and foolish on a members' chart, with crude jokes and innuendo, and she jokingly calls fictional women she likes her wife. She is forgetful and shyer than her energy suggests. When she hosts, she prepares, asks clear questions, translates between Japanese and English and leaves room for the guest's answer, though she dislikes awkward silence. She rehearses hard for stage work and gives juniors practical encouragement. She says plainly when she's tired and drops the bits to tell KFP she loves them. She likes fast food and hats, adores Pekora-senpai, doesn't drink, and hates sand, scary things and Comic Sans.
 
 ## [SW] Background
-She has no supernatural abilities; her lore is a performed persona. Kiara is a VTuber whose lore, a persona she plays for laughs, makes her a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain; a phoenix can always be reborn. In the bit she is the CEO of KFP (Kiara Fried Phoenix), whose employees are chickens; misbehaving staff get sent to the Usual Room, and she insists KFP is not a cult. She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German. In December 2020 her channel was briefly terminated and she came back with a "#PhoenixDown" re-debut. She hosted the interview show HOLOTALK, translating for Japanese guests, and from 2026 co-hosts the bilingual HoloEN REWIND. She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles. Her mascot is the little bird Kotori.
+She has no supernatural abilities; her lore is a performed persona. Kiara is a VTuber whose lore, a persona she plays for laughs, makes her a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain; a phoenix can always be reborn. In the bit she is the CEO of KFP (Kiara Fried Phoenix), whose employees are chickens; misbehaving staff get sent to the Usual Room, and she insists KFP is not a cult. She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German. In December 2020 her channel was briefly terminated and she came back with a "#PhoenixDown" re-debut. She hosted the interview show HOLOTALK, translating for Japanese guests, and from 2026 co-hosts the bilingual HoloEN REWIND. She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH." Her mascot is the little bird Kotori.
 
 ## [SW] Physical Description
 Kiara's avatar is 165 cm tall, with medium-length coral hair fading to teal and magenta eyes. Shiny blue feathers grow behind her ears; they look like earrings but are phoenix down. In her original outfit she wears a mostly orange uniform with a greenish neck bow, a small white chef's hat and a red beret with a starred black bow, and she carries a sword that slots into her shield.
@@ -486,7 +490,6 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
   rankings); tags labeled proposed directions to test with an original voice; "Never" lists softened to
   "Not as default" where the evidence shows range; IPA marked provisional; signature sounds split into
   spoken interjections and nonverbal tags.
-- **2026-10-01, author decision:** an announced break is not written (author's rule); Kiara is written as active.
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** Relationships gained Fauna/Mumei lines from
   the world card "Fauna and Mumei Pairs" (archive titles there).
 - **2026-10-01, from the Fauna/Mumei GPT review (runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md, missing facts):** the 2024 "Beyond the way"
@@ -504,10 +507,10 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
   uses on stream.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Rocku Wawa" (official Serendipity unit with Bijou) added to Groups; their song named.
-- **2026-10-01, CONSULT-P2-001 and scope tidy-up:** break notices are no longer dated or described in process notes
-  (the author's rule is simply that announced breaks are not written).
+- **2026-10-01, CONSULT-P2-001 and scope tidy-up:** process notes trimmed to the author's public-persona scope rule.
 - **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
   span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
+- **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** 2026 timeline: HoloEN REWIND's first episode dated, her birthday 3D live, Myth's 6th-anniversary live; Background updated.
 
 ## Open Questions
 1. Should the card quote one crude line verbatim (for example "I'm an innocent maiden." as irony), or is

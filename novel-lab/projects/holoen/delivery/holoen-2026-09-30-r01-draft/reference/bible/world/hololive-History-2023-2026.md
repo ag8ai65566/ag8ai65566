@@ -73,6 +73,7 @@ Historical events.
 | 2026-07-23 | Rhythm game "hololive Dreams" released | — |
 | 2026-09-07 | "hololive Next": the female-talent branches unify under **hololive**; new logo; members to get updated designs (Tokino Sora first); "hololive raku" app; TV anime "Odeholo"; 10th-anniversary countdown | The present-day setting |
 | 2026-09-18 | New unit ASOBI★MAWARI-TAI! reveals its four members (Hyakuto Kyoko, Achichi Mela, Suzuna Tsuzuri, Sorashina Sopia) | — |
+| 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" | — |
 | 2026-09-24/25 | ASOBI★MAWARI-TAI! debut | The newest kouhai at the baseline |
 | 2026-10-06 (upcoming) | IRyS's first solo concert "HOPE ||: Beyond the Stars" (Tokyo) | IRyS's next big stage |
 
@@ -124,6 +125,7 @@ Kiara and Calli (Serendipity pairs).
 - S4 Official World Tour '24 post-event report: https://hololive.hololivepro.com/en/news/20250217-01-128/
 - S5 Official ASOBI★MAWARI-TAI! page: https://hololive.hololivepro.com/special/22482/
 - S3 Character files in this project (Calli C11, Kronii K4, Ina I7, Kiara T10–T12, IRyS R2, Nerissa N2)
+- S6 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened).
 
 ---
 
@@ -155,13 +157,10 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
   the character files and X posts.
 - **From GPT one-round review (runs/20260930-2309-world-hololive/gpt-free.md, 2026-10-01, high), adopted:** "Breaking Dimensions was part of World Tour '24" removed (the tour's New York
   show was a separate event on 2024-08-23; official report S4); ASOBI★MAWARI-TAI!'s debut (2026-09-24/25,
-  official page S5) added; "every branch merges" corrected to the female-talent branches; (a status note
-  later superseded by the author's rule that announced breaks are not written) and the question about moving the
-  baseline removed; Mumei dated
+  official page S5) added; "every branch merges" corrected to the female-talent branches; the question about moving the baseline removed; Mumei dated
   2025-04-27 (04-28 JST); Ame's status change and COVER's later naming of it separated.
 - **SHOULD adopted:** FLOW GLOW members named.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
-- **2026-10-01, author decision:** an announced break is not written (author's rule); Kiara is written as active.
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
 - **2026-10-01, cast expansion (author: Advent, and complete the world):** Advent members and events added
   (official -All for One- report, Serendipity interviews, archive metadata; see "Advent Pairs" and "FUWAMOCO").
@@ -175,10 +174,10 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
   Serendipity's official unit names added; "a callback for the whole cast" → a widely shared fan meme.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** Drawn to Dawn and Serendipity rows zoned PDT (the card is JST unless noted).
-- **2026-10-01, CONSULT-P2-001 and scope tidy-up:** break notices are no longer dated or described in process notes
-  (the author's rule is simply that announced breaks are not written).
+- **2026-10-01, CONSULT-P2-001 and scope tidy-up:** process notes trimmed to the author's public-persona scope rule.
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-SCOPE-004
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
+- **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** Myth's 6th-anniversary 3D live added (CONSULT-P2-001).
 
 ## Open Questions
 (None. Serendipity pairs for IRyS and Nerissa were found: see "Concerts and Live Events.")

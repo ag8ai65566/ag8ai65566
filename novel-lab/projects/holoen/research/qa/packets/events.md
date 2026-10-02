@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git 520755e. Every dated row from every bible file's dossier
+Snapshot: git eaed6b9. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
@@ -489,12 +489,12 @@ search the file for the row text to see its context.
 - 2025-12-27 [day] Amane Kanata graduates — `bible/world/hololive-History-2023-2026.md` (—)
 
 ### 2026
-- 2026 [year] TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope — `bible/characters/Ninomae-Inanis.md` ([Observed—published interview I19] [Official I25])
 - 2026 [year] "Bound by Fate," 3rd-anniversary 3D live — `bible/world/Advent-Pairs.md` (—)
 - 2026 [year] 3rd-anniversary live "Bound by Fate" (linked from Nerissa's official profile) — `bible/world/hololive--Advent.md` (—)
 
 ### 2026-01
 - 2026-01-23 [day] Original song "OYOME♡HOLIC" — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2 §2026])
+- 2026-01-06/07 [day-range] TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope (released; the wiki dates it 01-06 in its history and 01-07 in its discography) — `bible/characters/Ninomae-Inanis.md` ([Observed—published interview I19] [Official I25])
 - 2026-01-08 [day] "TAKO∞TAKOVER" digital release (lyrics by Calli) — `bible/world/Myth-and-Kronii-Other-Pairs.md` (Ina × Calli)
 - 2026-01-26 [day] Group song "Breakout" — `bible/world/hololive--Advent.md` (—)
 
@@ -509,10 +509,11 @@ search the file for the row text to see its context.
 
 ### 2026-03
 - 2026-03 [month] Birthday live "Racing Towards Hope"; "BE MY FLAME"; solo album "DANGERyS" and solo concert announced — `bible/characters/IRyS.md` ([Observed R2 §2026; R3])
+- 2026-03-31 PDT [day, PDT] April Fools "new VTuber debut" as Bonelliope Mori, "a bone-fide idol" — `bible/characters/Mori-Calliope.md` ([Observed C31, secondary])
 - 2026-03-28 [day] Single "Blue World" — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2 §Discography])
 - 2026-03-27/28 [day-range] "Drawn to Dawn" duo concert with Kiara (Los Angeles) — `bible/characters/Ninomae-Inanis.md` ([Official I20, I21])
-- 2026-03-13 [day] 3D birthday live; Watson Amelia guests — `bible/characters/Ouro-Kronii.md` ([Observed K33, secondary, stream t=1711])
-- 2026-03 [month] Bilingual show HoloEN REWIND begins — `bible/characters/Takanashi-Kiara.md` ([Observed T2 §HoloEN REWIND])
+- 2026-03-13 [day] 3D birthday live; Watson Amelia guests; she releases the single "Way 2 U" and announces an EP of the same name — `bible/characters/Ouro-Kronii.md` ([Observed K33, secondary, stream t=1711; K38, secondary])
+- 2026-03-24 [day] Bilingual show HoloEN REWIND: first episode — `bible/characters/Takanashi-Kiara.md` ([Observed T2 §HoloEN REWIND])
 - 2026-03-27/28 [day-range] "Drawn to Dawn" duo concert with Ina (The Wiltern, Los Angeles) — `bible/characters/Takanashi-Kiara.md` ([Official T11, T12])
 - 2026-03 [month] Guest spot at Kronii's 3D birthday live — `bible/characters/Watson-Amelia.md` ([Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711])
 - 2026-03-27/28 [day-range] "Drawn to Dawn," the Wiltern, LA — `bible/world/TakoTori.md` (Their first concert as a duo)
@@ -522,6 +523,7 @@ search the file for the row text to see its context.
 
 ### 2026-04
 - 2026-04 [month] "Mekurumeku Rendezvous," a TV anime ending theme — `bible/characters/Fuwawa-Abyssgard.md` ([Observed FW3 vSwxof0K8lk])
+- 2026-04-04 JST [day, JST] Sixth birthday 3D live "UNCUT ROCK!!" with a live band, plus a members-only encore — `bible/characters/Mori-Calliope.md` ([Archive metadata C32])
 - 2026-04-02 [day] "Mekurumeku Rendezvous," a TV anime ending theme — `bible/world/FUWAMOCO.md` (their first TV anime song)
 - 2026-04-23 [day] Nerissa's Tomodachi Life Miis of IRyS and Ina — `bible/world/IRyS-and-Nerissa-Pairs.md` (—)
 - 2026-04-24 [day] "GETCHA!" cover — `bible/world/TakoTori.md` (—)
@@ -530,6 +532,7 @@ search the file for the row text to see its context.
 - 2026-05 [month] CCGG 3D live with Gigi (after-talk 05-20, secondary archive evidence); "CCGG MADNESS" MV (05-17; digital 05-29) — `bible/characters/Cecilia-Immergreen.md` ([Official CI1] [Observed CI3 1rIXU_4xGvY, bTxEGwMOQQI])
 - 2026-05 [month] 2026 birthday live with guests from several branches; the performances were released as cover videos ("Live from COVER Corp. Studio") — `bible/characters/Elizabeth-Rose-Bloodflame.md` ([Observed EB3, archived credits])
 - 2026-05 [month] CCGG 3D live with Cecilia; "CCGG MADNESS" MV (05-17; digital 05-29) — `bible/characters/Gigi-Murin.md` ([Official GG1, GG7] [Observed GG3])
+- 2026-05-08 [day] Single "STORM" (later on the EP) — `bible/characters/Ouro-Kronii.md` ([Observed K38, secondary])
 - 2026-05-10 [day] First birthday 3D live concert (secondary archive evidence, w37yVSXhV_c) — `bible/characters/Raora-Panthera.md` ([Observed RP3])
 - 2026-05 [month] CCGG 3D live, "CCGG MADNESS" — `bible/world/Justice-Pairs.md` (Gigi and Cecilia's unit)
 - 2026-05 [month] CCGG (Gigi and Cecilia) joint 3D live (secondary event coverage) and "CCGG MADNESS"; Raora's first birthday 3D live (05-10 JST / 05-09 PDT; secondary metadata) — `bible/world/hololive--Justice.md` (—)
@@ -538,6 +541,7 @@ search the file for the row text to see its context.
 
 ### 2026-06
 - 2026-06-25 [day] Original MV "enough" — `bible/characters/Gigi-Murin.md` ([Observed GG3])
+- 2026-06-30 [day] Wins the overall ranking at Kizuna Ai's "Kizuna Ai Cup 2026" (Among Us 3D, Fall Guys) — `bible/characters/Mori-Calliope.md` ([Observed C31, secondary])
 - 2026-06-10 [day] Serendipity interview and partnership with Shiori Novella. — `bible/characters/Mori-Calliope.md` ([Official C11])
 - 2026-06-12 [day] 1,000,000 subscribers — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2 §2026])
 - 2026-06-04 [day] Serendipity interview and partnership with Kronii — `bible/characters/Ninomae-Inanis.md` ([Official I7])
@@ -555,10 +559,12 @@ search the file for the row text to see its context.
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: "SUPERNOVA SUPER GIRL" with Justice and "CCGG MADNESS" as Autofister with Cecilia (day 1); "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO, and "ABOVE BELOW" in the Advent+Justice medley (day 2) — `bible/characters/Gigi-Murin.md` ([Official GG4, GG9])
 - 2026-07-03/04 [day-range] Serendipity concert, duo with Takanashi Kiara ("Rocku Wawa") — `bible/characters/Koseki-Bijou.md` ([Official KB4])
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: the unit B.F.F with Fuwawa and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) — `bible/characters/Mococo-Abyssgard.md` ([Official MC4; Serendipity report])
+- 2026-07-24 [day] TOHO animation announces her as the English dub voice of Kou Tousetsu in *Though I Am an Inept Villainess* — `bible/characters/Mori-Calliope.md` ([Observed C31, secondary; TOHO animation post not opened])
 - 2026-07-09 [day] Cast as "Risa" in the anime "Tenchi Galaxy" — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2 §2026])
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: "SUPERNOVA SUPER GIRL" with Justice (day 1); the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari"), "What an amazing swing" with Tsunomaki Watame and Kiara, and "ABOVE BELOW" in the Advent+Justice medley (day 2) — `bible/characters/Raora-Panthera.md` ([Official RP4, RP9])
 - 2026-07-03/04 [day-range] Serendipity concert, duo with Mori Calliope — `bible/characters/Shiori-Novella.md` ([Official SN4])
 - 2026-07-30 [day] "Into The Void" motion comic begins — `bible/characters/Shiori-Novella.md` ([Observed SN3])
+- 2026-07-06 PDT (07-07 JST) [day, PDT] Birthday 3D live — `bible/characters/Takanashi-Kiara.md` ([Observed T24: official hololive English post, search-indexed text, X not opened])
 - 2026-07-03/04 [day-range] Serendipity: Shiori–Calli, Bijou–Kiara, FUWAMOCO–Raora, Nerissa–Elizabeth — `bible/world/Advent-Pairs.md` (official interviews)
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: the unit B.F.F with Raora ("Inu Neko. Seishun Massakari") — `bible/world/FUWAMOCO.md` ([Official S4; Serendipity report])
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: units Autofister (Gigi & Cecilia), Bloodraven (Nerissa & Elizabeth), B.F.F (FUWAMOCO & Raora); guests' songs with Justice members: "HELP!!" (Kobo, Bae, Elizabeth), "Break It Down" (Zeta, Shiori, Cecilia), "Cloudy Sheep" (Watame, Calli, Cecilia), "MAKE IT, BREAK IT" (Zeta, FUWAMOCO, Gigi), "What an amazing swing" (Watame, Kiara, Raora) — `bible/world/Justice-Pairs.md` ([Official S3, S7])
@@ -580,16 +586,21 @@ search the file for the row text to see its context.
 - 2026-09-30 [day] Alum; her history stays part of Myth's shared memory — `bible/characters/Gawr-Gura.md` ([Adaptation])
 - 2026-09-07 [day] Branch merger; her unit is "hololive -Promise-" — `bible/characters/IRyS.md` ([Observed R2])
 - 2026-09-07 [day] The branches merge into one "hololive." Her unit is now hololive -Myth-. — `bible/characters/Mori-Calliope.md` ([Official C17, C1])
+- 2026-09-19 PDT [day, PDT] Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres — `bible/characters/Mori-Calliope.md` ([Archive metadata C33])
 - 2026-09-07 [day] Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- — `bible/characters/Ninomae-Inanis.md` ([Official I28] [Observed I10])
+- 2026-09-19 PDT [day, PDT] Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres — `bible/characters/Ninomae-Inanis.md` ([Archive metadata I32])
 - 2026-09-07 [day] Branches merge into one "hololive"; unit is hololive -Promise- — `bible/characters/Ouro-Kronii.md` ([Official K5, K1])
 - 2026-09-07 [day] Branches merge; unit is hololive -Myth- — `bible/characters/Takanashi-Kiara.md` ([Official T20, T1])
+- 2026-09-19 PDT [day, PDT] Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Ina; "THIS IS MYTH" premieres — `bible/characters/Takanashi-Kiara.md` ([Archive metadata T25])
 - 2026-09-05 [day] GreyScaleX (Shiori and Zeta) "Purrfect Pair" merchandise opens — `bible/world/Advent-Pairs.md` ([Official S7])
-- 2026-09-19 (announced) [day] Myth 6th anniversary live announced with both — `bible/world/TakaMori.md` (Still side by side)
+- 2026-09-19 PDT [day, PDT] Myth 6th anniversary 3D live "Seasons From Within": a Calli–Kiara duet cover and the new Myth song "THIS IS MYTH" — `bible/world/TakaMori.md` (Still side by side [S7])
+- 2026-09-19 PDT [day, PDT] At Myth's 6th-anniversary 3D live "Seasons From Within" the two sang a duet cover of "September" — `bible/world/TakoTori.md` (Setlist, secondary [S7])
 - 2026-09-07 [day] Branches merge; COVER says it will update members' designs to fit their personalities, activities and future directions — `bible/world/VTuber-Persona-and-Lore.md` (Lore and looks can change officially)
 - 2026-09 [month] Renamed "hololive -Advent-" in the merger — `bible/world/hololive--Advent.md` (Current name)
-- 2026-09-19 (announced) [day] Myth 6th Anniversary 3D LIVE "Seasons From Within" announced with Calli, Kiara and Ina (S3, an official hololive English post); not verified as held — `bible/world/hololive--Myth.md` (The current three, as announced)
+- 2026-09-19 PDT (09-20 JST) [day, PDT] Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover — `bible/world/hololive--Myth.md` (The current three on stage together [S3, S4; S5])
 - 2026-09-07 [day] "hololive Next": the female-talent branches unify under **hololive**; new logo; members to get updated designs (Tokino Sora first); "hololive raku" app; TV anime "Odeholo"; 10th-anniversary countdown — `bible/world/hololive-History-2023-2026.md` (The present-day setting)
 - 2026-09-18 [day] New unit ASOBI★MAWARI-TAI! reveals its four members (Hyakuto Kyoko, Achichi Mela, Suzuna Tsuzuri, Sorashina Sopia) — `bible/world/hololive-History-2023-2026.md` (—)
+- 2026-09-19 PDT [day, PDT] Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" — `bible/world/hololive-History-2023-2026.md` (—)
 - 2026-09-24/25 [day-range] ASOBI★MAWARI-TAI! debut — `bible/world/hololive-History-2023-2026.md` (The newest kouhai at the baseline)
 - 2026-09-07 [day] The female-talent branches unify under "hololive" — `bible/world/hololive.md` (Groups become units)
 

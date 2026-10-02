@@ -1,3 +1,4 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 a8b6659e3057）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-01 04:30 作者裁決收錄 final.md（sha256 2b3bc4123a1f）：作者裁決 2026-10-01：依範圍規則，宣布的休息不寫
 - 2026-10-01 21:08 作者裁決收錄 final.md（sha256 e102fb95cdc7）：Author decision (2026-10-01): CONSULT-P2-001 (Myth 6th-anniversary live marked as announced, not verified as held) and break notes generalized per the author's rule.
+- 2026-10-02 02:28 作者裁決收錄 final.md（sha256 ef5715a5ecbe）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)

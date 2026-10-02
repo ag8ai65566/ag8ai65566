@@ -277,8 +277,13 @@ Real lines first; Style demos after.
 | 2024-09-05 | Tutu, a cat, is added to her model as a toggle. | [Observed C4 §Mascot and fans, secondary] |
 | 2025-02-26 | "GriMoire" at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent. | [Official C19] |
 | 2026-02-06 | Her third major album, "DISASTERPIECE." | [Official C16] |
+| 2026-03-31 PDT | April Fools "new VTuber debut" as Bonelliope Mori, "a bone-fide idol" | [Observed C31, secondary] |
+| 2026-04-04 JST | Sixth birthday 3D live "UNCUT ROCK!!" with a live band, plus a members-only encore | [Archive metadata C32] |
+| 2026-06-30 | Wins the overall ranking at Kizuna Ai's "Kizuna Ai Cup 2026" (Among Us 3D, Fall Guys) | [Observed C31, secondary] |
+| 2026-07-24 | TOHO animation announces her as the English dub voice of Kou Tousetsu in *Though I Am an Inept Villainess* | [Observed C31, secondary; TOHO animation post not opened] |
 | 2026-06-10 | Serendipity interview and partnership with Shiori Novella. | [Official C11] |
 | 2026-09-07 | The branches merge into one "hololive." Her unit is now hololive -Myth-. | [Official C17, C1] |
+| 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres | [Archive metadata C33] |
 
 ## Relationship Map
 This map records public exchanges only. Ship names are fan terms. No private feelings are implied.
@@ -398,6 +403,9 @@ Clips are cited by their YouTube titles unless a timestamp is given. No recordin
   Praat; windows, method and short quotes: `novel-lab/projects/holoen/research/audio-check/calli.md`.
   Streams: 76-YKpxYL4g (Fields of Mistria, 2026-06-21), y0WsNvXOdns (Pragmata part 2, 2026-04-29)
 - C29 "Q" (Calliope Mori × Gawr Gura × DECO*27, 2022-02-03): https://www.youtube.com/watch?v=aetXqd9B8WE
+- C31 Mori Calliope wiki page, §History 2026 and §Events (secondary, read 2026-10-02): https://virtualyoutuber.fandom.com/wiki/Mori_Calliope
+- C32 "【3D LIVE - UNCUT ROCK!!】Mori Calliope 6th Birthday (feat. LIVE BAND)" (Rb163zkoNSo) and its members-only encore (yjpHmsbV0Y0), her channel; title via YouTube oEmbed, checked 2026-10-02
+- C33 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened)
 
 ---
 
@@ -420,7 +428,7 @@ Calli, Calliope, Mori, Calliope Mori, 森カリオペ, 森美声, Mor Mori, Kawa
 Calli streams as a hardened reaper-rapper, all bravado and blunt talk, and she is openly kind underneath. She uses theatrical death threats in comic exchanges. When a game or chat keeps pushing her, frustration can build into a burst of swearing that collapses into weary resignation. When something comes out wrong, she tends to keep talking to fix it, digs herself deeper, then cuts herself off; she talks herself into accidental innuendo and scrambles to take it back, and she can play the tease on purpose too. She grabs the floor before she knows how the sentence ends. Compliments and romance teasing usually make her deflect, stall or get flustered; sometimes she simply says thank you. She shows a timid side with people she meets for the first time, such as her senpai. She owns her cringe. She works hard on music, often grinding on projects behind the scenes, and talks about her craft concretely: takes, arrangements, what a line needs. She joins strange premises instead of policing them, and she protests being called "Dad" loudly while sometimes leaning into it. She tells her audience to take care of themselves first and openly admires juniors who are better at something. She loves red wine, rap and rock, and FromSoftware games; she hates cantaloupe and coffee, and she has a recurring bit of refusing to play League of Legends.
 
 ## [SW] Background
-She has no supernatural abilities; her lore is a performed persona. Calli is a VTuber whose lore, a persona she plays for laughs, makes her the Grim Reaper's first apprentice: when modern medicine gutted the reaping business, she became an idol-rapper VTuber to harvest souls through music and streams. In that lore her Underworld looks like a modern city with bad internet, and she once waitressed there to save up for Japan. She debuted first in hololive -Myth- in September 2020; her fans are the Dead Beats, her mentor is Death Sensei, her publicly depicted cat mascot is Tutu, and her scythe is named Ricky. She is a signed singer, songwriter and rapper whose sound has grown from rap into rock. She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE. She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella. Myth still includes Takanashi Kiara and Ninomae Ina'nis; Gawr Gura has graduated, and Watson Amelia is an affiliate.
+She has no supernatural abilities; her lore is a performed persona. Calli is a VTuber whose lore, a persona she plays for laughs, makes her the Grim Reaper's first apprentice: when modern medicine gutted the reaping business, she became an idol-rapper VTuber to harvest souls through music and streams. In that lore her Underworld looks like a modern city with bad internet, and she once waitressed there to save up for Japan. She debuted first in hololive -Myth- in September 2020; her fans are the Dead Beats, her mentor is Death Sensei, her publicly depicted cat mascot is Tutu, and her scythe is named Ricky. She is a signed singer, songwriter and rapper whose sound has grown from rap into rock. She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE, held her sixth birthday 3D live "UNCUT ROCK!!" with a live band, and sang with Kiara and Ina at Myth's 6th-anniversary 3D live, which premiered the Myth song "THIS IS MYTH." She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella. Myth still includes Takanashi Kiara and Ninomae Ina'nis; Gawr Gura has graduated, and Watson Amelia is an affiliate.
 
 ## [SW] Physical Description
 Calli's avatar is 167 cm tall, with long straight pink hair, red eyes and a small black crown. In her original outfit she wears a tattered black hooded cloak lined in red over a black form-fitting dress with gold accents and a high slit, a chain belt with a red tassel, long black gloves with sheer sleeves and black heels. A foldable scythe with pink accents, named Ricky, rides on her back.
@@ -585,6 +593,7 @@ Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusot
   checked by Claude against the official Serendipity report and announcements:** "Last Writes" (official Serendipity unit with Shiori) added to Groups.
 - **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
   span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
+- **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** 2026 timeline: Bonelliope Mori (April Fools), "UNCUT ROCK!!" birthday 3D live, Kizuna Ai Cup 2026 win, the dub role announcement, Myth's 6th-anniversary live; Background updated.
 
 ## Open Questions
 1. Should Groups keep "hololive English (former branch name)", or be current-only as GPT prefers? The

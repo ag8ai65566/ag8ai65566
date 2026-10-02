@@ -1,10 +1,10 @@
 # Audit packet: myth2
 
-Snapshot: git 520755e. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git eaed6b9. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Gawr-Gura.md` 849e726f477e; `bible/characters/Watson-Amelia.md` fd0a407583ba; `bible/world/hololive--Myth.md` e102fb95cdc7; `bible/world/AmeSame.md` 03602b5cf2fd; `bible/world/Bone-Bros.md` 3456a63d5263
+Owned files (sha256): `bible/characters/Gawr-Gura.md` 849e726f477e; `bible/characters/Watson-Amelia.md` fd0a407583ba; `bible/world/hololive--Myth.md` ef5715a5ecbe; `bible/world/AmeSame.md` 03602b5cf2fd; `bible/world/Bone-Bros.md` 3456a63d5263
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -73,7 +73,7 @@ Owned files (sha256): `bible/characters/Gawr-Gura.md` 849e726f477e; `bible/chara
 
 ### hololive -Myth- — `bible/world/hololive--Myth.md`
 **[SW] Other Names:** Myth, holoMyth, HoloMyth, hololive -Myth-, hololive English first generation
-**[SW] Description:** At the September 2026 baseline, Calli, Kiara and Ina are active members of hololive -Myth-; Ame is an affiliate and Gura is a graduate. All five belong to Myth's shared history. hololive's first English generation debuted 12–13 September 2020: Mori Calliope, Takanashi Kiara, Ninomae Ina'nis, Gawr Gura and Watson Amelia. They grew up on stream together: a chaotic first year of near-daily collabs, then a bond built around songs, anniversaries, relays and concerts. Calli wrote the lyrics for their first song and often plays the grumbling big sister; Kiara cheers loudest and hosts; Ina, the calm one, designed the Myth mascots except Bloop; Ame is often the gremlin and tech helper; Gura is the goofy little shark. Ame concluded her regular activities on 2024-09-30 and still guests at events; Gura graduated on 2025-05-01 after a last Myth relay "one last time." On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within."
+**[SW] Description:** At the September 2026 baseline, Calli, Kiara and Ina are active members of hololive -Myth-; Ame is an affiliate and Gura is a graduate. All five belong to Myth's shared history. hololive's first English generation debuted 12–13 September 2020: Mori Calliope, Takanashi Kiara, Ninomae Ina'nis, Gawr Gura and Watson Amelia. They grew up on stream together: a chaotic first year of near-daily collabs, then a bond built around songs, anniversaries, relays and concerts. Calli wrote the lyrics for their first song and often plays the grumbling big sister; Kiara cheers loudest and hosts; Ina, the calm one, designed the Myth mascots except Bloop; Ame is often the gremlin and tech helper; Gura is the goofy little shark. Ame concluded her regular activities on 2024-09-30 and still guests at events; Gura graduated on 2025-05-01 after a last Myth relay "one last time." On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
 **[SW] Rules:** At the 2026 baseline Calli, Kiara and Ina are the active members; Ame can appear as an affiliate guest; Gura appears as a memory or callback, never as a current streamer. Early Myth (2020–21) was collab-heavy. Membership status says nothing about how often they talk privately. The gremlin, tech-helper and cheerleader roles are flexible comic roles, not fixed.
 **Dossier · History:**
 | Date | Event | Trace left |
@@ -90,7 +90,7 @@ Owned files (sha256): `bible/characters/Gawr-Gura.md` 849e726f477e; `bible/chara
 | 2025-07 | MYTHMASH: each active member releases a duet with a Japanese senpai (#mythmashchemythtry) | Cross-branch songs |
 | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 | 2026-02 | Kiara's album includes "Blue & Gold," a tribute to Gura and Ame | Remembering the two |
-| 2026-09-19 (announced) | Myth 6th Anniversary 3D LIVE "Seasons From Within" announced with Calli, Kiara and Ina (S3, an official hololive English post); not verified as held | The current three, as announced |
+| 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
 **Dossier · Hard Facts (continuity):**
 - Debut 12–13 September 2020; Ame affiliate 2024-09-30; Gura graduated 2025-05-01.
 - 2026 baseline: three active; Ame appears as a guest; Gura is remembered, not written as streaming.

@@ -12,7 +12,7 @@ sw_section: Worldbuilding
 > "Archive" = stream titles and descriptions on the members' YouTube channels (archive.ragtag.moe, S4); it
 > does not hold Twitch streams and thins out in 2026. Pair details live on the world card "Justice Pairs";
 > each member has her own character file. Private matters (health, family, breaks and their reasons) are
-> outside scope and are not recorded; announced breaks are not written (author's decision, 2026-10-01).
+> outside scope and are not recorded.
 
 ## One-line Concept
 Four "law enforcers" from beyond the clouds, sent to bring in Advent's escaped "criminals," who debuted as

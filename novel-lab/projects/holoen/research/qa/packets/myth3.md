@@ -1,17 +1,17 @@
 # Audit packet: myth3
 
-Snapshot: git 520755e. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git eaed6b9. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Takanashi-Kiara.md` 1462fb3877aa; `bible/world/Myth-and-Kronii-Other-Pairs.md` 12e7d39a7dbb
+Owned files (sha256): `bible/characters/Takanashi-Kiara.md` 76104e360380; `bible/world/Myth-and-Kronii-Other-Pairs.md` 12e7d39a7dbb
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
 ### Takanashi Kiara — `bible/characters/Takanashi-Kiara.md`
 **[SW] Groups:** hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa
 **[SW] Other Names:** Kiara, Kiwawa, Wawa, Tenchou, Kusotori, 小鳥遊キアラ
-**[SW] Background:** She has no supernatural abilities; her lore is a performed persona. Kiara is a VTuber whose lore, a persona she plays for laughs, makes her a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain; a phoenix can always be reborn. In the bit she is the CEO of KFP (Kiara Fried Phoenix), whose employees are chickens; misbehaving staff get sent to the Usual Room, and she insists KFP is not a cult. She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German. In December 2020 her channel was briefly terminated and she came back with a "#PhoenixDown" re-debut. She hosted the interview show HOLOTALK, translating for Japanese guests, and from 2026 co-hosts the bilingual HoloEN REWIND. She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles. Her mascot is the little bird Kotori.
+**[SW] Background:** She has no supernatural abilities; her lore is a performed persona. Kiara is a VTuber whose lore, a persona she plays for laughs, makes her a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain; a phoenix can always be reborn. In the bit she is the CEO of KFP (Kiara Fried Phoenix), whose employees are chickens; misbehaving staff get sent to the Usual Room, and she insists KFP is not a cult. She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German. In December 2020 her channel was briefly terminated and she came back with a "#PhoenixDown" re-debut. She hosted the interview show HOLOTALK, translating for Japanese guests, and from 2026 co-hosts the bilingual HoloEN REWIND. She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH." Her mascot is the little bird Kotori.
 **[SW] Relationships:** Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long called Calli her "wife," a public bit they toned down in 2021; now they collab less but are settled, affectionate old friends who bicker like an old married couple. Kiara says it plainly: Calli "actually does like me a lot but is just really bad at expressing herself." They sang "Fire N Ice," and they play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal; Kiara once "fired" her over a chicken incident. Watson Amelia (affiliate): her EN oshi ("#1 Ame gosling"), who helped with her 3D productions and now guests at her concerts. Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, Gura once filled KFP's back room with chickens, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. Koseki Bijou: junior she encourages and her partner for the 2026 Serendipity concert ("Rocku Wawa," "Tententengoku Jigokukoku"); they share the "6 7" meme. Shiori Novella: an occult handcam off-collab ("#shiotori," 2024). Pavolia Reine: a recurring Indonesian collaborator ("PavoNashi"; a VR "vacation"; the bird unit HOLOTORI). Kobo Kanaeru: calls her "Mommy Kiwawa." Raora Panthera and Cecilia Immergreen: "HoloEU" (Italian lessons, German chats); Raora's friendly-fire "Doom" in Kiara's Mage Arena collab became a meme. Gigi Murin: Reanimal ("Ultra Orange"). Ouro Kronii ("quasoni"): Kiara was a fan before Kronii debuted. Nerissa Ravencroft: an Advent kouhai who calls Kiara her oshi and, in her lore, once worked at KFP (KiaRissa); Kiara showed her around Minecraft, and they held a 2025 "BIRB GIRLS" GIRLSTALK. IRyS: friend since the 2021 full-EN collabs; Kiara gave her a German crash course. Usada Pekora: her oshi and favorite senior. Nanashi Mumei (graduated 2025): a fellow bird of HOLOTORI whom she calls "Moomsies"; they sang a DECO*27 song together at the 2023 fes. and "Beyond the way" with Nerissa at the 2024 English concert. Ceres Fauna (graduated 2025): "KIWAWA vs FAWNA," and HOLOTALK's 32nd guest a week before she left.
 **Dossier · Background Timeline:**
 | Date | Event | Relevance |
@@ -25,10 +25,12 @@ Owned files (sha256): `bible/characters/Takanashi-Kiara.md` 1462fb3877aa; `bible
 | 2021-09 | She and Calli announce they will tone down the TakaMori ship | [Observed T2 §Takamori] |
 | 2025-11-16 | Raora's "Doom" on her stream becomes a meme | [Observed T6] |
 | 2026-02-08 | 2nd album *Vogelfrei* | [Observed T2 §2026; T8] |
-| 2026-03 | Bilingual show HoloEN REWIND begins | [Observed T2 §HoloEN REWIND] |
+| 2026-03-24 | Bilingual show HoloEN REWIND: first episode | [Observed T2 §HoloEN REWIND] |
 | 2026-03-27/28 | "Drawn to Dawn" duo concert with Ina (The Wiltern, Los Angeles) | [Official T11, T12] |
 | 2026-06 | Serendipity interview and partnership with Koseki Bijou | [Official T10] |
+| 2026-07-06 PDT (07-07 JST) | Birthday 3D live | [Observed T24: official hololive English post, search-indexed text, X not opened] |
 | 2026-09-07 | Branches merge; unit is hololive -Myth- | [Official T20, T1] |
+| 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Ina; "THIS IS MYTH" premieres | [Archive metadata T25] |
 **Dossier · Hard Facts (continuity):**
 - Birthday July 6; height 165 cm; debut 2020-09-12; unit hololive -Myth-; illustrator huke. [Official T1]
 - Fans: KFP ("employees"); hashtags #kfp #キアライブ (streams). [Official T1]

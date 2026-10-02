@@ -1,30 +1,30 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "520755e",
+ "commit": "eaed6b9",
  "files": {
-  "bible/characters/Cecilia-Immergreen.md": "71a657c0b76975dbf2a37a2ac4ebdd1d39abecdffe536c7f29219b2836ba71f4",
+  "bible/characters/Cecilia-Immergreen.md": "08daa7f89c8096d908d5e98fe5a69c3a848c047698e803aaec54680f560dfeb5",
   "bible/characters/Ceres-Fauna.md": "58177a0ddea108b22eb080586981aa488344fed46d7cdb29bfbd867c2753f261",
-  "bible/characters/Elizabeth-Rose-Bloodflame.md": "5deb302e763a86e67d2063061f13f529534c9a966066a2f8ab3c7f5039f925ac",
+  "bible/characters/Elizabeth-Rose-Bloodflame.md": "364c68ad077f5b25734dbec6fa960884d73e1fe46cc7d6cf80ff02f57adc674d",
   "bible/characters/Fuwawa-Abyssgard.md": "5a7714bacf71e2fb704cf7cc2fdb3c2e25220220e8d40edee644d2a391c51d8d",
   "bible/characters/Gawr-Gura.md": "849e726f477e96fcab97b54473c642ad45aab9b75a570c2f0d46269f81c7f117",
   "bible/characters/Gigi-Murin.md": "5469aa8dac983af0d90a374f9562a2103000996a4a62ed4cc7608114b3106f2c",
   "bible/characters/IRyS.md": "a87383909b3a3308dbac97fdb365c5d995f7df6392768ddc3de639c3d43db110",
   "bible/characters/Koseki-Bijou.md": "d45528c816b9bcf32e0abf532304fc0dfbf841a5505cfdac55a49aaf9224dac4",
   "bible/characters/Mococo-Abyssgard.md": "93bff4173364895aca8f9e7bb022f155944034f599d49b4129a70bd4df27329d",
-  "bible/characters/Mori-Calliope.md": "42a05e475b44bdda3360058e9a53e8ae4bd6d73f0950f876e68ca6a6cd356475",
+  "bible/characters/Mori-Calliope.md": "9398b6643d78238d191ba7e519dfe35080356785ce5e3bdf2e1dd93af2512c3c",
   "bible/characters/Nanashi-Mumei.md": "17f0f87a8f528dc9820c1733a432a65f8b973ebcf75139a885dae4420c19d666",
   "bible/characters/Nerissa-Ravencroft.md": "e54431198c0c1c7bf0bd8fefb1eea2ea09cc69c0f808b83c0b2688c6483da3b9",
-  "bible/characters/Ninomae-Inanis.md": "e6d610ae126294ea73b4cb3332ef57ecbf8335a13da299face3ab4c827825fc3",
-  "bible/characters/Ouro-Kronii.md": "fd6dfc4140b55cc0b642f7fad7ddfef5749f29a86ecaf3c97ac9ac25fad40207",
-  "bible/characters/Raora-Panthera.md": "c0fe040210e80c5677fb59c3f57ee9daed693f53be566fef85a98ffccbf7e410",
+  "bible/characters/Ninomae-Inanis.md": "cf7d5e3ad59d89bafab8606b5806891aded6aa8d863151f571f2656486b2c695",
+  "bible/characters/Ouro-Kronii.md": "a8491838a6b5571e606169e6803ce05e95eee50c1bcf9dba1c3d19721d4bac28",
+  "bible/characters/Raora-Panthera.md": "afe5af6e6966c914f227b644523a62323e54a4c595c52259d0ef563c3c5e8854",
   "bible/characters/Shiori-Novella.md": "6a572d71de24f6e31299a18457d73ce27c08b8124d34203f1c213c84873868e7",
-  "bible/characters/Takanashi-Kiara.md": "1462fb3877aac23468fa6095a04b2ac633d07cae0d44ea75ef1e60b870dbbc20",
+  "bible/characters/Takanashi-Kiara.md": "76104e360380e676a2552b2b5cbeef9a3e51be05e1b1ede0000e865c6a2da281",
   "bible/characters/Watson-Amelia.md": "fd0a407583baab41cd3a729b5596900f659b181ae7367d35f3f8a991bf6ec18f",
   "bible/world/Advent-Pairs.md": "bea1ef142554b21fe45ec4cdd1782bf38da5105cd275dd46582e349390ff5ce2",
   "bible/world/AmeSame.md": "03602b5cf2fd19d1fa524636a54d0af12f84d27e928ad6d6b558931a31b6360b",
   "bible/world/Bone-Bros.md": "3456a63d52637b62b6c0e00e4961d7f469a52be8eb5d6bf792e331d5e83c2bdb",
-  "bible/world/Concerts-and-Live-Events.md": "b69265972269674b542b42cacc092e22803865b5fd5a5d134442be158a14b7b0",
+  "bible/world/Concerts-and-Live-Events.md": "81d47b96ddbf50254b411a2934420a75f2b099962cf9cc3dfee37bf15d0b308d",
   "bible/world/Cross-Branch-Friends.md": "5c8af2373b5c9730ba60d9d5f1ddd1fcf5985700712142fbb12a67db4750eeb7",
   "bible/world/FUWAMOCO.md": "04201c0f84719e6a345afa8b29cba539736d1ac23572f32a1ae440ba62ba501f",
   "bible/world/Fauna-and-Mumei-Pairs.md": "537910125c8df50e45997f2e88e7d10b8fe947f02690132a5ffe540a26808fa7",
@@ -33,16 +33,16 @@
   "bible/world/Myth-and-Kronii-Other-Pairs.md": "12e7d39a7dbba46febc88e046b03cd8fcab96ec2cd1e1a690d0cd90223b18fda",
   "bible/world/OctoClock.md": "5f0169e12e8b7e1daf0ee4e25d59ab371f65076c2bfaf71b54ffe630dc0483d9",
   "bible/world/Streaming-Life.md": "5b091fb1cef5daa9dc040ddfdd304fd3d45c0799021268cff3e7de71ef90db61",
-  "bible/world/TakaMori.md": "e9cf098194f50d7e3e3f10c0878a8c41c18ef2f5f33c4270625ba3f84ca6a373",
-  "bible/world/TakoTori.md": "7d9f6437b8eddda327832763bb81f8c9cc94b768d28c2842c00be6124928529c",
+  "bible/world/TakaMori.md": "a25e152cb2853aff3f594aec14de5c731cfc6879d388312dd066cbf8a8f8b5af",
+  "bible/world/TakoTori.md": "ebf69f1c30ab2f4bd0ab5ac3e4698540fd29b21fcc368a73e15c736bc49138a5",
   "bible/world/Time-Duo.md": "329fef0a8daa8d64cda9db111093e237037ca163d6014c601a5254011258d6a5",
   "bible/world/Time-and-Death.md": "e1239bb9b6264defe6b070bb2d6a6d2b43539b191f835a133857822ccf646ac5",
   "bible/world/VTuber-Persona-and-Lore.md": "f52c6b4e05a010ec1b56ea6ffdc69036bfe22b0dbecf9ee546d14773ff8e3105",
   "bible/world/hololive--Advent.md": "e7f7200a8cf51af6f44191eccbee3c4ad425d8bb7447d885778e36d9d8b56b52",
-  "bible/world/hololive--Justice.md": "df1164544e49f40bf597d28c3833c996181d7fa58368541c87201a8757ae4222",
-  "bible/world/hololive--Myth.md": "e102fb95cdc78347af3fff663350224d0c9fc62dd1f9fa5b1e5ff9cf2218f3f0",
+  "bible/world/hololive--Justice.md": "2c7e406dec23e441fe727a02ade320029d8d3e2063a934fe279b67baa26b939e",
+  "bible/world/hololive--Myth.md": "ef5715a5ecbe97b21dfb9f61f08241d7d94983bb0d808bebe42a6f561be01e04",
   "bible/world/hololive--Promise.md": "0d2fcd380c0a1e0908442d1ba9259b8ac035544dd37ea5144e038fb032b26740",
-  "bible/world/hololive-History-2023-2026.md": "996f74728666c273e8c25ddf37b1f894b38b605afcf4ed220cce053f809eb09d",
+  "bible/world/hololive-History-2023-2026.md": "727f1bd3bcb3009d90d021cbba2e4f771d52d08aaadda5d71fafba4ed9831d5a",
   "bible/world/hololive-History-to-2022.md": "fb9d97a7537e801c5fc5606308d3e8e3d7d1c967225e1b175699f07ca1f08272",
   "bible/world/hololive.md": "c9b3dd043ec2861d175d295c4c7be488fc7dca8b3f4b513fb2bcdaa8cf264fa2"
  },
@@ -2936,6 +2936,42 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2026-03-31 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "April Fools \"new VTuber debut\" as Bonelliope Mori, \"a bone-fide idol\"",
+   "evidence": "[Observed C31, secondary]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-04-04 JST",
+   "precision": "day",
+   "zone": "JST",
+   "text": "Sixth birthday 3D live \"UNCUT ROCK!!\" with a live band, plus a members-only encore",
+   "evidence": "[Archive metadata C32]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Wins the overall ranking at Kizuna Ai's \"Kizuna Ai Cup 2026\" (Among Us 3D, Fall Guys)",
+   "evidence": "[Observed C31, secondary]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-24",
+   "precision": "day",
+   "zone": null,
+   "text": "TOHO animation announces her as the English dub voice of Kou Tousetsu in *Though I Am an Inept Villainess*",
+   "evidence": "[Observed C31, secondary; TOHO animation post not opened]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "2026-06-10",
    "precision": "day",
    "zone": null,
@@ -2950,6 +2986,15 @@
    "zone": null,
    "text": "The branches merge into one \"hololive.\" Her unit is now hololive -Myth-.",
    "evidence": "[Official C17, C1]",
+   "file": "bible/characters/Mori-Calliope.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-19 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Myth 6th Anniversary 3D LIVE \"Seasons From Within\" with Kiara and Ina; the Myth song \"THIS IS MYTH\" premieres",
+   "evidence": "[Archive metadata C33]",
    "file": "bible/characters/Mori-Calliope.md",
    "section": "Background Timeline"
   },
@@ -3260,10 +3305,10 @@
    "section": "Background Timeline"
   },
   {
-   "date": "2026",
-   "precision": "year",
+   "date": "2026-01-06/07",
+   "precision": "day-range",
    "zone": null,
-   "text": "TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope",
+   "text": "TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope (released; the wiki dates it 01-06 in its history and 01-07 in its discography)",
    "evidence": "[Observed—published interview I19] [Official I25]",
    "file": "bible/characters/Ninomae-Inanis.md",
    "section": "Background Timeline"
@@ -3274,6 +3319,15 @@
    "zone": null,
    "text": "Branches merge; she is \"Ninomae Ina'nis from hololive,\" unit hololive -Myth-",
    "evidence": "[Official I28] [Observed I10]",
+   "file": "bible/characters/Ninomae-Inanis.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-19 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Myth 6th Anniversary 3D LIVE \"Seasons From Within\" with Calli and Kiara; \"THIS IS MYTH\" premieres",
+   "evidence": "[Archive metadata I32]",
    "file": "bible/characters/Ninomae-Inanis.md",
    "section": "Background Timeline"
   },
@@ -3353,8 +3407,17 @@
    "date": "2026-03-13",
    "precision": "day",
    "zone": null,
-   "text": "3D birthday live; Watson Amelia guests",
-   "evidence": "[Observed K33, secondary, stream t=1711]",
+   "text": "3D birthday live; Watson Amelia guests; she releases the single \"Way 2 U\" and announces an EP of the same name",
+   "evidence": "[Observed K33, secondary, stream t=1711; K38, secondary]",
+   "file": "bible/characters/Ouro-Kronii.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05-08",
+   "precision": "day",
+   "zone": null,
+   "text": "Single \"STORM\" (later on the EP)",
+   "evidence": "[Observed K38, secondary]",
    "file": "bible/characters/Ouro-Kronii.md",
    "section": "Background Timeline"
   },
@@ -3629,10 +3692,10 @@
    "section": "Background Timeline"
   },
   {
-   "date": "2026-03",
-   "precision": "month",
+   "date": "2026-03-24",
+   "precision": "day",
    "zone": null,
-   "text": "Bilingual show HoloEN REWIND begins",
+   "text": "Bilingual show HoloEN REWIND: first episode",
    "evidence": "[Observed T2 §HoloEN REWIND]",
    "file": "bible/characters/Takanashi-Kiara.md",
    "section": "Background Timeline"
@@ -3656,11 +3719,29 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2026-07-06 PDT (07-07 JST)",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Birthday 3D live",
+   "evidence": "[Observed T24: official hololive English post, search-indexed text, X not opened]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "2026-09-07",
    "precision": "day",
    "zone": null,
    "text": "Branches merge; unit is hololive -Myth-",
    "evidence": "[Official T20, T1]",
+   "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-19 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Myth 6th Anniversary 3D LIVE \"Seasons From Within\" with Calli and Ina; \"THIS IS MYTH\" premieres",
+   "evidence": "[Archive metadata T25]",
    "file": "bible/characters/Takanashi-Kiara.md",
    "section": "Background Timeline"
   },
@@ -4484,11 +4565,11 @@
    "section": "History"
   },
   {
-   "date": "2026-09-19 (announced)",
+   "date": "2026-09-19 PDT",
    "precision": "day",
-   "zone": null,
-   "text": "Myth 6th anniversary live announced with both",
-   "evidence": "Still side by side",
+   "zone": "PDT",
+   "text": "Myth 6th anniversary 3D live \"Seasons From Within\": a Calli–Kiara duet cover and the new Myth song \"THIS IS MYTH\"",
+   "evidence": "Still side by side [S7]",
    "file": "bible/world/TakaMori.md",
    "section": "History"
   },
@@ -4534,6 +4615,15 @@
    "zone": null,
    "text": "\"GETCHA!\" cover",
    "evidence": "—",
+   "file": "bible/world/TakoTori.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-09-19 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "At Myth's 6th-anniversary 3D live \"Seasons From Within\" the two sang a duet cover of \"September\"",
+   "evidence": "Setlist, secondary [S7]",
    "file": "bible/world/TakoTori.md",
    "section": "History"
   },
@@ -5015,11 +5105,11 @@
    "section": "History"
   },
   {
-   "date": "2026-09-19 (announced)",
+   "date": "2026-09-19 PDT (09-20 JST)",
    "precision": "day",
-   "zone": null,
-   "text": "Myth 6th Anniversary 3D LIVE \"Seasons From Within\" announced with Calli, Kiara and Ina (S3, an official hololive English post); not verified as held",
-   "evidence": "The current three, as announced",
+   "zone": "PDT",
+   "text": "Myth 6th Anniversary 3D LIVE \"Seasons From Within\" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song \"THIS IS MYTH,\" whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover",
+   "evidence": "The current three on stage together [S3, S4; S5]",
    "file": "bible/world/hololive--Myth.md",
    "section": "History"
   },
@@ -5505,6 +5595,15 @@
    "precision": "day",
    "zone": null,
    "text": "New unit ASOBI★MAWARI-TAI! reveals its four members (Hyakuto Kyoko, Achichi Mela, Suzuna Tsuzuri, Sorashina Sopia)",
+   "evidence": "—",
+   "file": "bible/world/hololive-History-2023-2026.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2026-09-19 PDT",
+   "precision": "day",
+   "zone": "PDT",
+   "text": "Myth 6th Anniversary 3D LIVE \"Seasons From Within\" (Calli, Kiara, Ina); new Myth song \"THIS IS MYTH\"",
    "evidence": "—",
    "file": "bible/world/hololive-History-2023-2026.md",
    "section": "Timeline"

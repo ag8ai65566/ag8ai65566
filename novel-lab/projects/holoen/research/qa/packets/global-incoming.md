@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 520755e.
+Snapshot: git eaed6b9.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|VTuber Persona and Lore|recent hololive history|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|SUPER EXPO|Death Star|the merger|EN concert|world tour|aftertalk|Holodeath|PavoNashi|HOLOTORI|TakoNeko|IRySora|3D live|MoRikka|HoloJEI|soranii|K.I.R.A|OKFAIR|UMISEA|V3LVET|KoMeHa|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|Myth's debut|hololive fes|Star Flower|Serendipity|the merger|Death Star|EN concert|SUPER EXPO|world tour|Holodeath|PavoNashi|aftertalk|TakoNeko|HOLOTORI|IRySora|HoloJEI|MoRikka|K.I.R.A|3D live|soranii|KoMeHa|V3LVET|UMISEA|OKFAIR|LYRA)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: (2026; Cecilia wrote the lyrics and directed it), a 2026 3D live, and the Serendipity concert, where she also sang "Break It Down" with Vestia Zeta and Shiori Novella and "Cloudy Sheep" with Tsunomaki Watame and Mori Calliope.
@@ -80,11 +80,14 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Mococo-Abyssgard.md › Arc`: - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their first album.
 
 ### from Mori Calliope
+- `bible/characters/Mori-Calliope.md › [SW] Background`: She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE, held her sixth birthday 3D live "UNCUT ROCK!!" with a live band, and sang with Kiara and Ina at Myth's 6th-anniversary 3D live, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Shiori Novella: her partner for the 2026 Serendipity concert who calls her "Mor Mori"; they chase absurd premises together, and Calli admits she is "a little obsessed with her."
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Hoshimachi Suisei: a Japanese senpai she's starstruck by ("Death Star").
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Rikka (HOLOSTARS): they released "spiral tones" together (MoRikka).
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Elizabeth Rose Bloodflame, Koganei Niko, Ayunda Risu and Amane Kanata: fellow LYRA vocalists on a "III" remix cover.
+- `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-04-04 JST | Sixth birthday 3D live "UNCUT ROCK!!" with a live band, plus a members-only encore | [Archive metadata C32] |
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-06-10 | Serendipity interview and partnership with Shiori Novella. | [Official C11] |
+- `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres | [Archive metadata C33] |
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Shiori Novella | 2026 Serendipity partner | Shiori calls her "Mor Mori." Together they pursue absurd premises. | [Official C11] |
 
 ### from Nanashi Mumei
@@ -106,10 +109,12 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |
 
 ### from Ninomae Ina'nis
+- `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with Ina and FUWAMOCO at Serendipity.
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-06-04 | Serendipity interview and partnership with Kronii | [Official I7] |
+- `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Ouro Kronii | Serendipity partner (interview 2026-06-04; unit name "Octo'Clock" in a 2026-06-24 short, I30) | A pun duo; they share Korean; Ina: "I get to... keep Kronii... all to myself... hehe" | [Official I7] [Observed Kronii file K8 §Miscellaneous] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
 
@@ -118,7 +123,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kaela Kovalskia: a recurring cross-branch co-op partner for years (Raft, Luma Island, Old Market Simulator) and her partner at a 2024 World Tour panel.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii and Nerissa at Serendipity.
-- `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2026-03-13 | 3D birthday live; Watson Amelia guests | [Observed K33, secondary, stream t=1711] |
+- `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2026-03-13 | 3D birthday live; Watson Amelia guests; she releases the single "Way 2 U" and announces an EP of the same name | [Observed K33, secondary, stream t=1711; K38, secondary] |
 - `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2026-06-04 | Serendipity interview and partnership with Ina | Puns, appreciation, performance goals [Official K4] |
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Ninomae Ina'nis | Serendipity partner (2026); longtime friend | They trade puns; both speak Korean | [Official K4] [Observed K8 §Miscellaneous, secondary] |
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Watson Amelia (affiliate) | Fellow EN ("Time Duo") | Guested at Kronii's 2026 3D birthday live | [Observed K8 §Relationships, K33, secondary] |
@@ -147,10 +152,13 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Shiori-Novella.md › Arc`: - **Starting point:** active member at the 2026 baseline: her first original song, the Serendipity duo with Calli, "Into The Void."
 
 ### from Takanashi Kiara
+- `bible/characters/Takanashi-Kiara.md › [SW] Background`: She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Koseki Bijou: junior she encourages and her partner for the 2026 Serendipity concert ("Rocku Wawa,"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Pavolia Reine: a recurring Indonesian collaborator ("PavoNashi"; a VR "vacation"; the bird unit HOLOTORI).
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): a fellow bird of HOLOTORI whom she calls "Moomsies"; they sang a DECO*27 song together at the 2023 fes. and "Beyond the way" with Nerissa at the 2024 English concert.
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-06 | Serendipity interview and partnership with Koseki Bijou | [Official T10] |
+- `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-07-06 PDT (07-07 JST) | Birthday 3D live | [Observed T24: official hololive English post, search-indexed text, X not opened] |
+- `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Ina; "THIS IS MYTH" premieres | [Archive metadata T25] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Koseki Bijou | Advent junior; 2026 Serendipity partner | Practical encouragement for stage work; shared "6 7" meme | [Official T10] |
 
 ### from Watson Amelia
@@ -214,6 +222,13 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/world/OctoClock.md › History`: | 2026-07-03/04 | Serendipity concert, Los Angeles | Their stage pairing |
 - `bible/world/OctoClock.md › Hard Facts`: - Serendipity: 2026-07-03/04, Shrine Auditorium, Los Angeles.
 
+### from TakaMori
+- `bible/world/TakaMori.md › How It Works`: - **Recent milestones (archive, S1):** an off-collab "Reunion & Gaming!! #takamori" and a karaoke collab (2022-06); off-collabs in 2023 (a Rubik's cube stream, "TAKAMORI OFF-COLLAB" with Kobo, doing each other's nails on camera with IRyS); their duet "Fire N Ice" (2023-12-14; lyrics by Calli and TeddyLoid); Kiara's off-collab watch party "cheering Calli on!!!" for Calli's GriMoire concert (2025-02-27); a four-part Split Fiction co-op series in April–May 2025, titled by them "takamori split screen nostalgia," "Perfectly In Sync with @TakanashiKiara," "thumbnail teetee manifestation into gameplay teetee" and "Saving the World with @TakanashiKiara"; Myth's 5th anniversary collab (2025-09-13) and the 6th anniversary 3D live "Seasons From Within" (2026-09-19 PDT), where the two sang a duet cover together (setlist, secondary S7) and premiered "THIS IS MYTH" with Ina.
+- `bible/world/TakaMori.md › History`: | 2026-09-19 PDT | Myth 6th anniversary 3D live "Seasons From Within": a Calli–Kiara duet cover and the new Myth song "THIS IS MYTH" | Still side by side [S7] |
+
+### from TakoTori
+- `bible/world/TakoTori.md › History`: | 2026-09-19 PDT | At Myth's 6th-anniversary 3D live "Seasons From Within" the two sang a duet cover of "September" | Setlist, secondary [S7] |
+
 ### from Time Duo
 - `bible/world/Time-Duo.md › [SW] Description`: Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends."
 - `bible/world/Time-Duo.md › How It Works`: - **2026:** Ame guested at Kronii's March 2026 birthday live, "The Goddess Descends" (2026-03-13 in the Americas, 03-14 in Japan; "Fall in Grace" in an earlier note refers to the same broadcast). [Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711; S3 §2026, secondary]
@@ -235,8 +250,8 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/world/hololive--Justice.md › Hard Facts`: - Serendipity 2026 units (official billing): Autofister, Bloodraven, B.F.F.
 
 ### from hololive -Myth-
-- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within."
-- `bible/world/hololive--Myth.md › History`: | 2026-09-19 (announced) | Myth 6th Anniversary 3D LIVE "Seasons From Within" announced with Calli, Kiara and Ina (S3, an official hololive English post); not verified as held | The current three, as announced |
+- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
+- `bible/world/hololive--Myth.md › History`: | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
 - `bible/world/hololive--Myth.md › Conflicts and Story Hooks`: 4. The 6th anniversary 3D live: nerves, rehearsal jokes, a message for the absent two.
 
 ### from hololive -Promise-

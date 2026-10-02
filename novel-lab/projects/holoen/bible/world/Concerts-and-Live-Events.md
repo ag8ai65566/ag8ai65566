@@ -64,9 +64,9 @@ Recurring events / culture.
 ## The Cast on Stage
 | Character | Stages (selected) | Source |
 |---|---|---|
-| Mori Calliope | Solo concert "New Underworld Order" (2022-07-21); "GriMoire" at the Hollywood Palladium (2025-02-26), the first solo concert by a hololive production talent outside Japan; World Tour '25 lead; Serendipity with Shiori | Calli file C6, C19, C11; S1 |
-| Takanashi Kiara | 4th-anniversary live "MIRAGE" (2024-10-06); "KIARA & FRIENDS: H!P Cover Song Spring Concert" (2025-04-21); "Drawn to Dawn" with Ina (2026-03-27/28, The Wiltern); World Tour '24 performer; Serendipity with Bijou | Kiara file T11, T12, T10; S3 titles |
-| Ninomae Ina'nis | 3D live "Pleiades" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii | Ina file I20, I7; S3 title |
+| Mori Calliope | Solo concert "New Underworld Order" (2022-07-21); "GriMoire" at the Hollywood Palladium (2025-02-26), the first solo concert by a hololive production talent outside Japan; World Tour '25 lead; Serendipity with Shiori; 6th birthday 3D live "UNCUT ROCK!!" with a live band (2026-04-04 JST); Myth's 6th-anniversary 3D live "Seasons From Within" (2026-09-19 PDT) | Calli file C6, C19, C11; S1 |
+| Takanashi Kiara | 4th-anniversary live "MIRAGE" (2024-10-06); "KIARA & FRIENDS: H!P Cover Song Spring Concert" (2025-04-21); "Drawn to Dawn" with Ina (2026-03-27/28, The Wiltern); World Tour '24 performer; Serendipity with Bijou; birthday 3D live (2026-07-06 PDT); "Seasons From Within" | Kiara file T11, T12, T10; S3 titles |
+| Ninomae Ina'nis | 3D live "Pleiades" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
 | Ouro Kronii | World Tour '24 Singapore pre-concert panel with Kaela Kovalskia; World Tour '25 Sydney guest; 3D birthday live "The Goddess Descends" with a new outfit (2026-03-13/14, Ame as guest); Serendipity with Ina | Kronii file K33, K4; S1 |
 | IRyS | Promise musical "The Broken Promise" (2024-12-14); 3D lives "The Devil Wears Hope" (2024-11-17), "HOPE UPON A STAR" (2025-03-16), "Racing Towards Hope" (2026-03, race-queen outfit); World Tour '25 lead; Serendipity with Hakos Baelz; first solo concert "HOPE ||: Beyond the Stars," Tokyo, 2026-10-06 | IRyS file R2, R3; S1 |
 | Nerissa Ravencroft | 6th fes day 1 (2025-03-08); 3D concert "Requiem for Love – A JukeBox Musical" (2025-05-24, with Calli and IRyS as guests); Advent's "On the Run!" (2025-08-29); World Tour '24 panels with Elizabeth (Atlanta, Kuala Lumpur); World Tour '25 lead; Serendipity with Elizabeth | Nerissa file N2, N3; S1 |
@@ -124,6 +124,9 @@ All eighteen (Justice: -All for One-, Serendipity, their 3D and anniversary live
 - S11 Official Serendipity concert report: https://hololive.hololivepro.com/en/events/serendipity/
 - S10 Official Serendipity interviews, FUWAMOCO & Raora (interview03), Kiara & Bijou (interview04), Calliope & Shiori (interview05), Gigi & Cecilia (interview06)
 - S4 Character files in this project (C6, C11, C19; T10–T12; I7, I20; K4, K33; R2, R3, R20; N2, N3; G5)
+- S12 Calli's sixth birthday 3D live: channel titles "【3D LIVE - UNCUT ROCK!!】Mori Calliope 6th Birthday (feat. LIVE BAND)" (Rb163zkoNSo) and the members-only encore (yjpHmsbV0Y0), via YouTube oEmbed, checked 2026-10-02 (archive metadata; date from her 6th birthday and secondary reports).
+- S13 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened).
+- S14 Kiara's 2026 birthday 3D live: official hololive English post, "Takanashi Kiara's Birthday 3D Live", 4:00 PM PDT (July 6th) (https://x.com/hololive_En/status/2074252059575026140; search-indexed text, X not opened).
 
 ---
 
@@ -174,6 +177,7 @@ Glowsticks in member colors; an LED wall; a new 3D outfit's reveal; a call-and-r
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh), with facts checked by Claude against the official Serendipity report and 3D schedule:** "first group stage" and "first Justice solo" qualified; the Serendipity units and guest stages
   from the official report added to the dossier and Description.
+- **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** Calli's "UNCUT ROCK!!" birthday 3D live, Kiara's 2026 birthday 3D live and Myth's "Seasons From Within" added.
 
 ## Open Questions
 1. Which characters performed at the four EN concerts (2023–2025 line-ups) was not checked; only

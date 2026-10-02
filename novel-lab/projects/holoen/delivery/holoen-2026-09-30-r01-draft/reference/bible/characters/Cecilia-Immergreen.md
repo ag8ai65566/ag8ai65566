@@ -9,8 +9,7 @@ sw_section: Characters
 > Scope: official lore and publicly shown persona only, checked 2026-10-01. Cecilia is active at the
 > 2026-09-30 baseline; her recent streams (2025–2026) set her default manner, per the project's recency
 > rule. Nothing about the performer behind the avatar: private-life information (breaks and their reasons,
-> health, family, auditions and the like) is outside scope and is not recorded here; by the author's rule
-> (2026-10-01) an announced break is not written. In stories she knows she is a streamer with a persona (see
+> health, family, auditions and the like) is outside scope and is not recorded here. In stories she knows she is a streamer with a persona (see
 > the world card "VTuber Persona and Lore"). Evidence labels:
 > - **[Official]** COVER's own profile, site, announcement or publication.
 > - **[Observed]** public stream, title or post; "(secondary)" means the wording comes from a wiki or

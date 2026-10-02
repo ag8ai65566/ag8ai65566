@@ -5,3 +5,4 @@
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 52411df7ec8b）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 231a45be34e0）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-01 21:06 作者裁決收錄 final.md（sha256 fd6dfc4140b5）：Author decision (2026-10-01): CONSULT-P1-006, Kronii's sample line quotes its two shared ASR spans separately.
+- 2026-10-02 02:28 作者裁決收錄 final.md（sha256 a8491838a6b5）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)

@@ -1,10 +1,10 @@
 # Audit packet: global
 
-Snapshot: git 520755e. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git eaed6b9. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/world/hololive.md` c9b3dd043ec2; `bible/world/Streaming-Life.md` 5b091fb1cef5; `bible/world/VTuber-Persona-and-Lore.md` f52c6b4e05a0; `bible/world/Cross-Branch-Friends.md` 5c8af2373b5c; `bible/world/Concerts-and-Live-Events.md` b69265972269; `bible/world/hololive-History-2023-2026.md` 996f74728666; `bible/world/hololive-History-to-2022.md` fb9d97a7537e
+Owned files (sha256): `bible/world/hololive.md` c9b3dd043ec2; `bible/world/Streaming-Life.md` 5b091fb1cef5; `bible/world/VTuber-Persona-and-Lore.md` f52c6b4e05a0; `bible/world/Cross-Branch-Friends.md` 5c8af2373b5c; `bible/world/Concerts-and-Live-Events.md` 81d47b96ddbf; `bible/world/hololive-History-2023-2026.md` 727f1bd3bcb3; `bible/world/hololive-History-to-2022.md` fb9d97a7537e
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -130,6 +130,7 @@ Owned files (sha256): `bible/world/hololive.md` c9b3dd043ec2; `bible/world/Strea
 | 2026-07-23 | Rhythm game "hololive Dreams" released | — |
 | 2026-09-07 | "hololive Next": the female-talent branches unify under **hololive**; new logo; members to get updated designs (Tokino Sora first); "hololive raku" app; TV anime "Odeholo"; 10th-anniversary countdown | The present-day setting |
 | 2026-09-18 | New unit ASOBI★MAWARI-TAI! reveals its four members (Hyakuto Kyoko, Achichi Mela, Suzuna Tsuzuri, Sorashina Sopia) | — |
+| 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" | — |
 | 2026-09-24/25 | ASOBI★MAWARI-TAI! debut | The newest kouhai at the baseline |
 | 2026-10-06 (upcoming) | IRyS's first solo concert "HOPE ||: Beyond the Stars" (Tokyo) | IRyS's next big stage |
 **Dossier · Hard Facts (continuity):**

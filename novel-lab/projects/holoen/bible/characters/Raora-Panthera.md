@@ -10,7 +10,7 @@ sw_section: Characters
 > 2026-09-30 baseline; her recent streams (2026) set her default manner, per the project's recency rule.
 > Nothing about the performer behind the avatar: private-life information (health, breaks and their
 > reasons, family, language background, training and the like) is outside scope and is not recorded here,
-> including what the wiki lists; by the author's rule (2026-10-01) an announced break is not written. Her
+> including what the wiki lists. Her
 > Italian accent and Italian words are recorded only as voice features. In stories she knows she is a
 > streamer with a persona (see the world card "VTuber Persona and Lore"). Evidence labels:
 > - **[Official]** COVER's own profile, site, announcement or publication.

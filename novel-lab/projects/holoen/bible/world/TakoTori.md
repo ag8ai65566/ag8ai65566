@@ -59,6 +59,7 @@ Relationship (pair) and official concert pairing.
 | 2025-11-23 | Duo concert announced | — |
 | 2026-03-27/28 | "Drawn to Dawn," the Wiltern, LA | Their first concert as a duo |
 | 2026-04-24 | "GETCHA!" cover | — |
+| 2026-09-19 PDT | At Myth's 6th-anniversary 3D live "Seasons From Within" the two sang a duet cover of "September" | Setlist, secondary [S7] |
 
 ## Glossary
 | Word | Meaning | Who says it |
@@ -93,6 +94,7 @@ Takanashi Kiara, Ninomae Ina'nis; Gawr Gura (the chicken prank); Myth.
 - S4 Takanashi Kiara wiki page, §KFP, §Lore, §Mascot and fans (secondary)
 - S5 Ninomae Ina'nis wiki page, §Personality (secondary)
 - S6 Drawn to Dawn concert page: https://hololive.hololivepro.com/en/events/drawn-to-dawn/
+- S7 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened); setlist (secondary): https://holopick.net/article/4ef36c79-7079-4140-90db-c299245874ed
 
 ---
 
@@ -127,6 +129,7 @@ Orange and purple under concert lights; Kiara's hype countdown with Ina's calm "
   replaced with Ina's own account (Kiara's support helped her gain confidence in dancing), also in Ina's card.
 - **SHOULD kept:** the gas-pedal/brake comparison and mutual support.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** their "September" duet cover at the 6th-anniversary live (secondary setlist).
 
 ## Open Questions
 (None.)

@@ -240,8 +240,9 @@ Real lines first; Style demos after.
 | 2026-02-02 | First EP "re:VISION" | [Official I26] |
 | 2026-03-27/28 | "Drawn to Dawn" duo concert with Kiara (Los Angeles) | [Official I20, I21] |
 | 2026-06-04 | Serendipity interview and partnership with Kronii | [Official I7] |
-| 2026 | TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope | [Observed—published interview I19] [Official I25] |
+| 2026-01-06/07 | TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope (released; the wiki dates it 01-06 in its history and 01-07 in its discography) | [Observed—published interview I19] [Official I25] |
 | 2026-09-07 | Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- | [Official I28] [Observed I10] |
+| 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
 
 ## Relationship Map
 Public exchanges only. No private feelings are implied. Unit and pairing names are marked one by one:
@@ -340,6 +341,7 @@ audio-checked by ear.
 - I30 "#holoSerendipity It's Time for Octo'Clock!" (Kronii's channel, 2026-06-24; the unit name):
   https://www.youtube.com/watch?v=KmczU8q1oqE
 - I31 Official announcement of the unit UMISEA (2021-09-21; Minato Aqua, Houshou Marine, Ninomae Ina'nis, Gawr Gura): https://hololive.hololivepro.com/news/20210921-1-9/
+- I32 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened)
 
 ---
 
@@ -362,7 +364,7 @@ Ina, Ina'nis, Inya, Ninomanyo Inya'nis, 一伊那尓栖
 Ina streams as a priestess of the Ancient Ones who treats tentacles and eldritch whispers as completely normal; in practice she is a gentle, laid-back hermit who loves rolling around on the floor. She drops puns flat, with no setup, lets them sit, and giggles to herself while chat groans "INAFF"; she enjoys the groan more than the laugh. When chat misbehaves or someone squishes her hair, she threatens to bonk them with a crowbar in the sweetest voice; when chat teases her, she plays the stern overlord for a beat, then collapses into giggles. She wanders into tangents and apologizes her way back out. When she slips up, she calls a "Forgetty Beam!" and tells chat to forget it. Her patience is nearly endless unless she's sleepy. She draws alongside her viewers instead of lecturing them, explains her own designs through specific details, and takes on demanding stage work; her quiet is never passivity. She supports her genmates' work in public, designing their mascots and outfits and sharing the stage, and she is sincere in short, gentle ways: "Live without regrets." She loves food and gacha and dislikes bugs, boredom and cucumbers.
 
 ## [SW] Background
-She has no supernatural abilities; her lore is a performed persona. Ina is a VTuber whose lore, a persona she plays gently and for laughs, makes her an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles and began hearing Ancient Whispers; the book is her floating companion, AO-chan. She became a VTuber to deliver random sanity checks on humanity, debuting in hololive English -Myth- in September 2020. She drew Myth's intro art and designed Takodachi, Bubba and Death Sensei. Her fans are the Tentacult, each one a Takodachi, after the little purple mascot she designed. Her songs tell darker stories about her priestess duty. She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, and she partners with Ouro Kronii. Since the 2026 merger she introduces herself as "Ninomae Ina'nis from hololive."
+She has no supernatural abilities; her lore is a performed persona. Ina is a VTuber whose lore, a persona she plays gently and for laughs, makes her an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles and began hearing Ancient Whispers; the book is her floating companion, AO-chan. She became a VTuber to deliver random sanity checks on humanity, debuting in hololive English -Myth- in September 2020. She drew Myth's intro art and designed Takodachi, Bubba and Death Sensei. Her fans are the Tentacult, each one a Takodachi, after the little purple mascot she designed. Her songs tell darker stories about her priestess duty. She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii. Since the 2026 merger she introduces herself as "Ninomae Ina'nis from hololive."
 
 ## [SW] Physical Description
 Ina's avatar is 157 cm tall, with long purple hair falling below her knees, squishy tentacle-like side locks fading to yellow tips, purple flaps on her head like a dumbo octopus's fins, and bluish-purple eyes. In her original outfit she wears a golden tiara, a sleeveless purple-and-yellow dress and small white wings at her waist, and she can show a golden halo. Large purple tentacles float behind her, and her book AO-chan hovers nearby. In horror games she hugs a pink stuffed rabbit named Burrito.
@@ -488,6 +490,7 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
   checked by Claude against the official Serendipity report and announcements:** "Octo'clock" (the official report's spelling) added to Groups; their "Bad Apple" stage named.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** Mio's "Dottabatta Chindouchuu" stage with Ina and FUWAMOCO added (official report).
+- **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** TAKO∞TAKOVER dated; Myth's 6th-anniversary live; Background updated.
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

@@ -51,7 +51,8 @@ paired an immortal phoenix with a reaper who could never keep her dead. [Author;
   (2025-02-27); a four-part Split Fiction co-op series in April–May 2025, titled by them "takamori split
   screen nostalgia," "Perfectly In Sync with @TakanashiKiara," "thumbnail teetee manifestation into
   gameplay teetee" and "Saving the World with @TakanashiKiara"; Myth's 5th anniversary collab
-  (2025-09-13) and the announced 6th anniversary live (2026-09-19; not verified as held).
+  (2025-09-13) and the 6th anniversary 3D live "Seasons From Within" (2026-09-19 PDT), where the two sang a
+  duet cover together (setlist, secondary S7) and premiered "THIS IS MYTH" with Ina.
 - **Heard in 2025 (ASR, S6):** in the first Split Fiction stream (Kiara's channel, 2025-04-06) the
   "parents" bit is alive: when Kobo shows up in chat, they tell her "Hi Kobo, go to bed! … What are you
   doing out of bed? Go to bed!", wish her a happy anniversary, and apologize: "Sorry Kobo, you can't be part
@@ -90,7 +91,7 @@ paired an immortal phoenix with a reaper who could never keep her dead. [Author;
 | 2023 | Off-collabs; "Fire N Ice" duet (2023-12-14) | Their song |
 | 2025-02-27 | Kiara's watch party for Calli's GriMoire concert | Cheering from the crowd |
 | 2025-04/05 | Split Fiction series ("takamori split screen nostalgia") | Nostalgic co-op |
-| 2026-09-19 (announced) | Myth 6th anniversary live announced with both | Still side by side |
+| 2026-09-19 PDT | Myth 6th anniversary 3D live "Seasons From Within": a Calli–Kiara duet cover and the new Myth song "THIS IS MYTH" | Still side by side [S7] |
 
 ## Glossary
 | Word | Meaning | Who says it |
@@ -135,6 +136,7 @@ Mori Calliope, Takanashi Kiara; Kobo Kanaeru (their "kid" bit); Myth.
   and deliberately left out (project rule).
 - S5 Author's description (2026-09-30): early business couple with a name; fewer interactions now but
   still very close; like an old married couple.
+- S7 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened); setlist (secondary): https://holopick.net/article/4ef36c79-7079-4140-90db-c299245874ed
 
 ---
 
@@ -171,9 +173,8 @@ Black and orange side by side in a split-screen co-op; Kiara's "CALLI!" at full 
   Calli because it addresses Kiara).
 - **SHOULD adopted:** "kusotori" removed from Other Names (it would load this card in unrelated Kiara scenes).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
-- **2026-10-01, author decision:** an announced break is not written (author's rule); Kiara is written as active.
-- **2026-10-01, CONSULT-P2-001 and scope tidy-up:** break notices are no longer dated or described in process notes
-  (the author's rule is simply that announced breaks are not written).
+- **2026-10-01, CONSULT-P2-001 and scope tidy-up:** process notes trimmed to the author's public-persona scope rule.
+- **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** the 6th-anniversary live confirmed as held (CONSULT-P2-001); their duet cover there (secondary setlist).
 
 ## Open Questions
 1. The "old married couple" rhythm is the author's description; the evidence above supports its pieces

@@ -2,3 +2,4 @@
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 acb10e5c529d）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 4161dd43cc01）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 5deb302e763a）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 02:28 作者裁決收錄 final.md（sha256 364c68ad077f）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)

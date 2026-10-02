@@ -229,7 +229,8 @@ Real lines first; Style demos after.
 | 2023-10-09 | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
 | 2025 | Fauna (January) and Mumei (April) graduate; Promise's current members are Kronii, IRyS and Baelz | Shared history stays [Official K34] |
 | 2025-10-10 | Promise releases "Run Back 'Round" | [Official K6] |
-| 2026-03-13 | 3D birthday live; Watson Amelia guests | [Observed K33, secondary, stream t=1711] |
+| 2026-03-13 | 3D birthday live; Watson Amelia guests; she releases the single "Way 2 U" and announces an EP of the same name | [Observed K33, secondary, stream t=1711; K38, secondary] |
+| 2026-05-08 | Single "STORM" (later on the EP) | [Observed K38, secondary] |
 | 2026-06-04 | Serendipity interview and partnership with Ina | Puns, appreciation, performance goals [Official K4] |
 | 2026-08-23 | EP "Way 2 U" (five tracks, including the earlier "Daydream") | Adds to earlier solo music [Official K7] |
 | 2026-09-07 | Branches merge into one "hololive"; unit is hololive -Promise- | [Official K5, K1] |
@@ -342,6 +343,7 @@ Clips are cited by their YouTube titles unless a timestamp is given. No recordin
   (Resident Evil Requiem #2, 2026-05-06)
 - K37 IRyS's wiki page, §Relationships (the Bunkeronii) and §Quotes (secondary): https://virtualyoutuber.fandom.com/wiki/IRyS
 - K35 Kaela Kovalskia's wiki page, §Likes and dislikes (secondary; fan of Kronii's voice): https://virtualyoutuber.fandom.com/wiki/Kaela_Kovalskia
+- K38 Ouro Kronii wiki page, §History 2026 and §Discography (secondary, read 2026-10-02): https://virtualyoutuber.fandom.com/wiki/Ouro_Kronii
 
 ---
 
@@ -530,6 +532,7 @@ Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "B
   checked by Claude against the official Serendipity report and announcements:** Kobo's "BLUE CLAPPER" stage with Kronii and Nerissa added (official report).
 - **2026-10-01, CONSULT-P1-006 (GPT project consult):** the audio report now names the exact shared span for every
   quoted line; sample line 3 quotes its two shared spans separately instead of one stitched quote.
+- **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** the "Way 2 U" single at her birthday live and the "STORM" single added.
 
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:
