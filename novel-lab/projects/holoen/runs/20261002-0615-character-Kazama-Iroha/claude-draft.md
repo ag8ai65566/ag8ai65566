@@ -119,7 +119,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2021-11-30 | Debut, the fifth and last of holoX | [Official IR1] [Observed IR2] |
 | 2022 | Calli's English lesson #02 with La+ and Gura (03-04); VALORANT with Ame and Kobo Kanaeru ("KoMeHa," 06-04) | [IR5] |
 | 2023 | AzuIro: GeoGuessr on a "Kazama map" AZKi made, covers and a first off-collab (08); Puyo Puyo Tetris coaching from Suisei (04); Hoshimatic Project (11-) | [IR4] [Observed IR2] |
-| 2024 | Originals "Mahou Shoujo☆Magical GOZARU" and "Dreamy Sky" (06); a cookie-battle off-collab with FUWAMOCO (10-27); a guest at Kiara's 4th-anniversary live (10-06); 1 million subscribers (11-19) | [Observed IR2] [IR4] [IR5] |
+| 2024 | Originals "Mahou Shoujo☆Magical GOZARU" and "Dreamy Sky" (06); a cookie-battle off-collab on her channel, presented with AZKi, with FUWAMOCO as the challengers (10-27, JgOwJ7m89Lk); a guest at Kiara's 4th-anniversary live (10-06); 1 million subscribers (11-19) | [Observed IR2] [IR4] [IR5] |
 | 2025 | AzuIro off-collab "summer camp" (Cuphead, 08); "A letter only you can read" (06-15); a guest at Kiara's birthday live and dance shorts with Kiara (07) | [IR4] [IR5] [Observed IR2] |
 | 2026-04-29 | holoX's first concert, "First MISSION" | [Official IR6] |
 | 2026-05-19 | Sings "CHA-LA HEAD-CHA-LA" with Elizabeth for her birthday, with Watame, Nene, Polka and FUWAMOCO | [IR5 xylll7Mp0jk] |
@@ -140,7 +140,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Takanashi Kiara | — | A guest at Kiara's 3D lives (2024, 2025); "TASTY" dance shorts (2025) | [IR5] |
 | Watson Amelia (affiliate) | "KoMeHa" with Kobo Kanaeru | VALORANT (2022) | [IR5] [IR2] |
 | Mori Calliope, Gawr Gura (graduated) | — | HOLO ENGLISH LESSON #02 (2022) | [IR5] |
-| FUWAMOCO | — | A prefecture cookie-battle off-collab (2024); "CHA-LA HEAD-CHA-LA" for Elizabeth (2026) | [IR4] [IR5] |
+| FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" for Elizabeth with Watame, Nene and Polka (2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
 | Elizabeth Rose Bloodflame | — | Sang "CHA-LA HEAD-CHA-LA" for Elizabeth's 2026 birthday | [IR5] |
 
 ## Arc
@@ -200,7 +200,7 @@ Iroha, Iroha-dono, Gozaru, Gozaru-chan
 Iroha is Secret Society holoX's bodyguard and "insurance policy," a samurai from a remote mountain village who set out with her tanuki companion Pokobee to see the world and now guards holoX to earn her keep. Her signature is the samurai ending "de gozaru"; she calls friends "-dono" and, in 2026 streams, often calls herself "Gozaru." Fans call her "seiso" (proper), which she does not claim; on stream she is cheerful, earnest and competitive, a self-admitted muscle brain who charges ahead, chants "yoshi yoshi yoshi yoshi" when things work, argues back when chat teases her, and laughs off her own blunders. She sticks with long games to the end, is loyal to holoX and is half of the duo AzuIro with AZKi.
 
 ## [SW] Background
-Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-30 as the fifth and last member of Secret Society holoX, became the last of holoX to pass a million subscribers (2024), which put the whole group over the mark, and has released nine original songs, the latest "Kamazuki Entropy" (2026). She formed the duo AzuIro with AZKi (covers, off-collab "summer camps," a shared Minecraft village), joined Suisei's Hoshimatic Project and sang at holoX's first concert, "First MISSION" (2026-04-29). With the English cast she took Calli's English lesson with La+ and Gura (2022), played VALORANT with Ame and Kobo Kanaeru as "KoMeHa," battled FUWAMOCO in a cookie quiz off-collab (2024), appeared at Kiara's 3D lives (2024, 2025) and sang "CHA-LA HEAD-CHA-LA" for Elizabeth's 2026 birthday.
+Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-30 as the fifth and last member of Secret Society holoX, became the last of holoX to pass a million subscribers (2024), which put the whole group over the mark, and has released nine original songs, the latest "Kamazuki Entropy" (2026). She formed the duo AzuIro with AZKi (covers, off-collab "summer camps," a shared Minecraft village), joined Suisei's Hoshimatic Project and sang at holoX's first concert, "First MISSION" (2026-04-29). With the English cast she took Calli's English lesson with La+ and Gura (2022), played VALORANT with Ame and Kobo Kanaeru as "KoMeHa," hosted FUWAMOCO's sister battle in a cookie-quiz off-collab with AZKi (2024), appeared at Kiara's 3D lives (2024, 2025) and sang "CHA-LA HEAD-CHA-LA" for Elizabeth's 2026 birthday.
 
 ## [SW] Physical Description
 Iroha's avatar is 156 cm tall, with short blonde hair in a ponytail tied with a leafy ribbon and blue eyes. She wears a short white jacket with blue and yellow details, a belt hung with red cord, a teal skirt, black fingerless gloves and a kimono-like outer jacket the color of her hair, trimmed in blue and green, with a katana named Chakimaru on her back, white thigh-highs and samurai sandals. Pokobee, a small tanuki, travels with her.
