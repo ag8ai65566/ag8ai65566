@@ -7,20 +7,19 @@
 > `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, clear and warm mid-range singer's voice with careful diction; measured
+"Perfect audio quality. Young woman, clear and warm mid-range singer's voice; poised
 and friendly when she talks, a playful lilt for jokes, a bright shout of triumph when she wins a guessing game."
-- Register basis: a 2026 RPG window measured about 244 Hz median (`research/audio-check/azki.md`); her April
-  Fools "new VTuber" act ran much higher, so do not design from it.
+- The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 
 ## 2. Settings (starting points)
-- `eleven_v4`. Stability **50%** (API `0.50`) (measured, poised delivery with occasional bursts).
+- `eleven_v4`. Stability **50%** (API `0.50`) (poised delivery with occasional bursts; an untested starting choice).
   Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[warm, clear]` or `[focused, quick]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script
 - A soft "hai" to close a topic; a drawn-out "e~?" when surprised; "chotto chotto" when flustered.
 - Grand narration of her own losses: "Senryakuteki tettai" ("strategic retreat").
-- "Guess!" when locking in an answer; "Yuka!" / "Tenjō!" ("Floor!" / "Ceiling!") for strong feelings.
+- 「ゲース！」 ("Gēsu!") when locking in an answer; "Yuka!" / "Tenjō!" ("Floor!" / "Ceiling!") for strong feelings.
 - Puns and mock-villain flourishes, then a giggle.
 
 ## 4. Tag palette by situation
@@ -33,13 +32,14 @@ and friendly when she talks, a playful lilt for jokes, a bright shout of triumph
 | A shop price | `[indignant, playful]` | "Bottakuri!" |
 | Overwhelmed | `[overjoyed]` | "Yuka!" (official word) |
 
-With people (provisional): Suisei `[relaxed, teasing]`; FUWAMOCO `[cheerful, big-sister]`; IRyS `[friendly]`.
+With people (proposed scene directions, not observed conversational defaults): Suisei `[relaxed, teasing]`;
+FUWAMOCO `[cheerful]`; IRyS `[friendly]`.
 
 ## 5. Signature sounds
 - `[giggles]` (tag only); "e~?" (spoken).
 
 ## 6. Pronunciation (provisional; test)
-- AZKi `/ˈɑzuki/` ("ah-zoo-kee") · Kaitakusha `/kaɪˈtɑkuʃɑ/`
+- Reading guide (untested): あずき; かいたくしゃ. Listen to how the chosen voice says them and adjust.
 
 ## 7. Don't
 - A cold, aloof diva; constant shouting; a babyish voice.

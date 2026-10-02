@@ -1,5 +1,5 @@
 # Sudowrite 貼上單 — holoen
-_產生時間 2026-10-02 07:02。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
+_產生時間 2026-10-02 07:12。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
 
 # Style — paste this block first
 貼到 Story Bible → **Style**（109 字；故事本身的文風說明可以接在後面，合計超過約 120 字時請檢查）。它教 Sudowrite 用每個角色的 **Audio Tags** 特質在對白裡寫 ElevenLabs v4 標籤。說明與注意事項見 `elevenlabs/sudowrite-style.md`。
@@ -10,6 +10,79 @@ Write dialogue for original designed voices, never to reproduce a member's ident
 
 # Characters
 用 CSV 匯入：Story Bible 的 Characters 標題旁 ••• → Import → CSV。`characters.csv` 是全部角色；只想加一個新角色就用 `cards/` 裡那一個的 CSV。Sudowrite 沒說重複匯入會不會合併，**更新既有角色時請逐欄貼上**，不要再匯入一次。**Secrets 不會自動隱藏**：匯入後、第一次用 AI 功能前，請手動按眼睛圖示隱藏。
+
+## AZKi
+_來源：bible/characters/AZKi.md_
+
+### Name（1）
+```text
+AZKi
+```
+
+### Role（1）
+```text
+Protagonist
+```
+
+### Pronouns（2）
+```text
+she/her
+```
+
+### Groups（12）
+```text
+hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
+```
+
+### Other Names（8）
+```text
+AZKichi, Azukichi, Azu-chan, AZAZ, AzuAzu, Virtual Diva AZKi
+```
+
+### Personality（141/400）
+```text
+AZKi is the "Virtual Diva," a songstress "reborn into the virtual world to fabricate a new world," and a singer and songwriter who keeps "creating memorable music"; she headlined "Departure" at Pia Arena MM in 2025. Behind the mythic introduction she is playful and warm: she loves puns, cries "Floor!" or "Ceiling!" when an emotion hits hard, and, in a secondary transcription, answered Tokino Sora's accidental prank with "kono yarō" ("you bastard"). She is a GeoGuessr ace who calls out "Gēsu!" ("Guess!") as she locks in an answer, reads maps for fun, and played a FUWAMOCO-themed map with the twins. Fan summaries describe her comforting fellow members and going deep on what she loves (Key visual novels, anime); she dances other members' songs in her shorts. She dislikes horror, bugs, cilantro and very sweet food, and plays horror games anyway.
+```
+
+### Background（149/500）
+```text
+AZKi is an active member of hololive Generation 0. She has no supernatural abilities; her lore is a performed persona. She debuted in 2018 as "Virtual Diva AZKi," joined hololive production's music label INoNaKa Music with Hoshimachi Suisei in 2019, and transferred to hololive's main group in April 2022 (secondary historical reference). Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA. She headlined "Departure" at Pia Arena MM in 2025 and held her 8th birthday live, "Cross Over," on 2026-07-01. With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
+```
+
+### Physical Description（70/200）
+```text
+AZKi's avatar is 158 cm tall, with long dark hair streaked and lined with pink, light purple eyes and a floral hairpin. She wears a long dress with a partly pink skirt and a light beige half jacket on one side, with dark boots trimmed with pink triangle zippers. Her fan mark is ⚒️, for her fans, the Pioneers; in 2026 she also has a little-devil outfit with horns and wings.
+```
+
+### Dialogue Style（104/250）
+```text
+Streams in Japanese with a gentle, friendly register, reacting with a drawn-out "e~?" and introducing herself in the third person ("Virtual Diva AZKi, the songstress of the virtual world"). A playful streak runs under the poise: puns, mock-villain flourishes ("Tremble at this word count"), grand retreats in games ("Senryakuteki tettai," "strategic retreat"), "Bottakuri!" ("Rip-off!") at shop prices, 「ゲース！」 in GeoGuessr, "Floor!" or "Ceiling!" when moved, and a flustered "chotto chotto" when chat knows too much. Careful diction and soft giggles are provisional performance choices. When a story renders her speech in English or Chinese, keep the poised diva voice cracking into playfulness.
+```
+
+### Catchphrases（99/250）
+```text
+「こんあずきー！」 ("Kon-AZKi!", official Japanese greeting); "I'm the Virtual Diva AZKi! I love music and singing!" (official); "This moment is key, this is AZKi!" (official); 「ゲース！」 ("Gēsu!", gloss "Guess!", GeoGuessr); "Yuka!" ("Floor!") and "Tenjō!" ("Ceiling!") for strong emotions (official words); "kono yarō" ("you bastard," a secondary transcription, to Tokino Sora's accidental prank); 「戦略的撤退」 ("Senryakuteki tettai," "Strategic retreat"); "Bottakuri!" ("Rip-off!"); 「この文字数に恐怖するがいい」 ("Tremble at this word count"). Her fans are the Pioneers (Kaitakusha). The English glosses are ours.
+```
+
+### Voice & Delivery（49/250）
+```text
+Provisional direction for an original designed voice: a clear, warm mid-range singer's voice, poised when she presents, lifting into a playful lilt for puns and jokes, quick and focused in a GeoGuessr round with a bright shout on "Gēsu!" Cold or aloof delivery is not the proposed default.
+```
+
+### Audio Tags（147/350）
+```text
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): clear, warm mid-range voice; poised and friendly by default. Default tags: [warm, clear]. By situation: introduction [poised, diva]; GeoGuessr [focused, quick] then [triumphant] on "Gēsu!"; a pun [playful] then [giggles]; overwhelmed by a moment [overjoyed] ("Floor!"); a prank [mock-indignant]; comforting someone [soft, gentle]; horror game [nervous]. With people (proposed scene directions, not observed conversational defaults): Suisei [relaxed, teasing]; FUWAMOCO [cheerful]; IRyS [friendly]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [giggles] (tag only); "e~?" (spoken). Keep in the words: "Gēsu," "yuka," "tenjō," "Kaitakusha." Reading guide (untested): あずき; かいたくしゃ. Not as default: cold or aloof delivery; constant shouting; a babyish voice.
+```
+
+### Motivation（31/200）
+```text
+AZKi wants to keep creating memorable music that touches her Pioneers' hearts, on stage and in her units, and to enjoy what she loves to the fullest, from maps to puns.
+```
+
+### Relationships（156/350）
+```text
+Hoshimachi Suisei: labelmate since INoNaKa Music and 0th-generation partner ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with Suisei and Moona Hoshinova ("story time," 2022); IRyS covered AZKi's "Inochi" (2021); R.E.P.O. (2025); "A Cruel Angel's Thesis" at AZKi's 2026 birthday live. FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live. Takanashi Kiara: HOLOTALK's 13th guest (2021); the 2023 Sports Festival white team. Mori Calliope: her English lesson with IRyS and Tsunomaki Watame (2022); AZKi's "Orpheus" dance short (2025). Hakos Baelz: GeoGuessr (2023). Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team. Ninomae Ina'nis and Kronii: R.E.P.O. "JP & EN" (2025). Tokino Sora: her SorAZ partner. Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025). Nakiri Ayame: 2023 Sports Festival teammate.
+```
 
 ## Cecilia Immergreen
 _來源：bible/characters/Cecilia-Immergreen.md_
@@ -520,6 +593,79 @@ In her lore, Bae is Chaos itself, a chairperson who would rather break the rules
 ### Relationships（235/350）
 ```text
 IRyS: her BaeRyS partner in a performed "married and divorced" routine that fan references trace to a Minecraft bento exchange; covers, off-collabs, "Here Comes the CHADCast" and "LUVATORRRRRY!" at Serendipity; Bae calls IRyS "the very first senpai I had ever met," and IRyS calls their dynamic "a can of worms." Mori Calliope and IRyS: her CHADCast cohosts; "BLUE CLAPPER" with them and Koseki Bijou (2024); "R x R x R" with Calli (2025); secondary references record her nickname "Cori Malliope." Ouro Kronii: Promise genmate; Sandwich Review, Digimon Survive, Fortnite; "Dance Monkey" in Sydney (2025). Ceres Fauna (graduated): genmate and horror partner (Amnesia, 2022–2023). Nanashi Mumei (graduated): genmate; BAE-CADEMY, off-collabs, Overwatch 2. Tsukumo Sana: a graduated Council genmate. Koseki Bijou: "BaeBi," a 2024 sleepover marathon, We Were Here. Cecilia Immergreen: "BratTea"; by Bae's account a coffee-versus-tea debate, a 2026 fes talk and Resident Evil together. Gigi Murin: "Countach" with Kureiji Ollie (2025); a Midsummer Night's Dream reading. Elizabeth Rose Bloodflame and Kobo Kanaeru: "HELP!!" at Serendipity. Raora Panthera: Mario Party on Bae's 24-hour stream. FUWAMOCO: Gigi's 2025 Spring Party; they danced to "SNAKE EYES." Takanashi Kiara: Keep Talking and Nobody Explodes (2021). Ninomae Ina'nis: a K/DA cover and an art lesson. Watson Amelia: bathroom reviews and Apex. Gawr Gura: the Urban Dictionary Challenge. Usada Pekora: "HIDE & SEEK" (2023). Ookami Mio and Ollie: her joking "moms" (secondary). Natsuiro Matsuri: "Kakumei Dualism" at the 2026 fes.
+```
+
+## Hoshimachi Suisei
+_來源：bible/characters/Hoshimachi-Suisei.md_
+
+### Name（2）
+```text
+Hoshimachi Suisei
+```
+
+### Role（1）
+```text
+Protagonist
+```
+
+### Pronouns（2）
+```text
+she/her
+```
+
+### Groups（20）
+```text
+hololive, hololive 0th Generation, Star Flower, Death Star, miComet, Hoshimatic Project, Shiranui Kensetsu, Startend, AS_tar, MOMAS, Midnight Grand Orchestra
+```
+
+### Other Names（4）
+```text
+Suisei, Sui-chan, Suicopath, Hoshimachi
+```
+
+### Personality（167/400）
+```text
+Suisei is hololive's virtual idol, "a shooting star that appeared from diamonds in the rough," with a stadium-sized dream: after the Nippon Budokan, the Tokyo Dome. She is polished, confident and competitive, and calls herself cute in the third person ("Sui-chan wa~ kyō mo kawaii~," "Sui-chan is cute today too"). Fans also know her as "Suicopath," a nickname associated with her Project Winter performance; her ruthless play there became a recurring comic persona. She plays to win: Tetris, Mario Kart, long Resident Evil runs. She is a devoted Tales fan (Tales of the Abyss is her favorite) who gets carried off on tangents, blames chat with mock innocence when something goes wrong ("I'm not the bad one"), and keeps the "forever 18" joke going. She is self-reliant and a builder of projects: her own tours, the Hoshimatic Project idol group, her music unit, and since 2026 her own studio for solo work, while she says she tries to accept hololive members' stage invitations when her schedule permits.
+```
+
+### Background（187/500）
+```text
+Suisei is an active member of hololive Generation 0. She has no supernatural abilities; her persona is a virtual idol, not a fantasy creature. She debuted on 2018-03-22 as an independent VTuber who, by secondary accounts, drew her own design and edited her own videos, joined hololive production's music label INoNaKa Music with AZKi in 2019, and moved to hololive on 2019-12-01. A singer with original songs such as "Stellar Stellar," "GHOST," "Bibbidiba" and "Prima Donna," she was the first VTuber on THE FIRST TAKE (2023), sang for Mobile Suit Gundam GQuuuuuuX (2025), headlined the Nippon Budokan ("SuperNova," 2025), and is on her 2026 arena tour "Once Upon a Stellar." In 2026 she set up her own management agency, Studio STELLAR, for her solo work, staying in hololive for collabs and group activities. With the English cast she made "CapSule" and "Wicked" with Calli (2022) and sang "Wicked" at Calli's first solo concert, sings with IRyS, AZKi and Moona as Star Flower, sang "High Tide" and "BIBBIDIBA" at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024).
+```
+
+### Physical Description（79/200）
+```text
+Suisei's avatar is 160 cm tall, with light blue hair in a side ponytail tied with a dark striped blue ribbon, blue eyes, and a black plaid cap topped with a small crown. She wears a grey plaid dress uniform with a ruffled dark-blue skirt panel, asymmetrical socks and black shoes. Her mark is a comet (☄️). (On her 2026 arena tour she wears a separate costume: a blue crop top with white see-through sleeves and a frilled white skirt.)
+```
+
+### Dialogue Style（118/250）
+```text
+Streams in Japanese: quick, fluent and confident, with "nanka," "mā," "ne" and "chotto matte" ("wait a sec"). She talks about herself as "Sui-chan," stretches her signature cute line into a sing-song, reacts with a quick "e?", blames chat in mock innocence when chat talked her into something, throws in a mock-rough Tales of the Abyss quote, and answers age questions with the forever-18 bit. English appears in short phrases (she used English when addressing Calliope at New Underworld Order). Laughter and emotional coloring are provisional choices for the original voice, not documented habits. When a story renders her speech in English or Chinese, keep the third-person "Sui-chan" and the sing-song cuteness on top of a crisp, competitive core.
+```
+
+### Catchphrases（159/250）
+```text
+「彗星のごとく現れたスターの原石！バーチャルアイドルの星街すいせいでーす！」 ("A shooting star that appeared from diamonds in the rough; I'm the virtual idol Hoshimachi Suisei!", official introduction); 「スイちゃんは〜今日も可愛い〜」 ("Sui-chan wa~ kyō mo kawaii~," "Sui-chan is cute today too~"); 「いやいやいや、私は悪くない」 ("Iya iya iya, watashi wa warukunai," "No, no, no, I'm not the bad one"); 「俺は悪くねぇ」 ("Ore wa warukunē," "It's not my fault," a Tales of the Abyss line); 「スイちゃんは18歳だよ」 ("Sui-chan wa jūhassai da yo," "Sui-chan is eighteen"); "Hi, honey!" (a secondary transcription associated with her Duolingo stream). Her fans are the Hoshiyomi (Stargazers). The English glosses are ours.
+```
+
+### Voice & Delivery（64/250）
+```text
+Provisional direction for an original designed voice: a clear, bright mid-high voice, polished and confident; quick and fluent in chat, sing-song and stretched for her signature cute line, crisp and clipped when she is competing; a bright laugh as a performance choice. Keep the cuteness as a performance on top of a self-assured core; the "psychopath" bit is a joke, never a cold default.
+```
+
+### Audio Tags（160/350）
+```text
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): clear, bright mid-high voice; quick and confident by default. Default tags: [bright, confident]. By situation: introduction [polished, idol-bright]; signature line [sing-song, playful]; chatting about games [quick, enthusiastic]; caught in a mistake [mock-innocent] then [mock-gruff]; competitive game [focused, clipped]; a social-deduction betrayal [sweet] then [deadpan]; cheering a kouhai [warm]. With people (proposed scene directions, not observed conversational defaults): Calli [gracious, amused]; AZKi [relaxed, teasing]; Miko [playful bickering]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [laughs] (tag only); "e?" (spoken). Keep in the words: "Sui-chan," "kawaii," "chotto matte," "Hi, honey!" Reading guide (untested): ほしまち すいせい; すいちゃん; ほしよみ. Not as default: a breathy or babyish voice; a cold, menacing read; mumbling.
+```
+
+### Motivation（49/200）
+```text
+Suisei aims to perform at the Tokyo Dome and to expand her work as a solo artist. Running her own studio, she also wants hololive members and fans to see that she is still one of them, so she tries to accept their stage invitations when her schedule permits.
+```
+
+### Relationships（195/350）
+```text
+Mori Calliope: "Death Star"; Calli is openly starstruck by her; collaborators on "CapSule" and "Wicked" (2022), including their performance at Calli's concert New Underworld Order, and Calli hosted a watch party of Suisei's first tour. AZKi: 0th-generation labelmate since INoNaKa Music ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with AZKi and Moona Hoshinova ("story time," 2022); "High Tide" with IRyS, Moona and Hakos Baelz at the 2024 English concert. Ninomae Ina'nis and Gawr Gura (graduated): "BIBBIDIBA" with Moona at that concert; Gura and Usada Pekora were the faces of hololive night at Dodger Stadium with her (2024). Takanashi Kiara: HOLOTALK #8 and a Tales of Arise discussion (2021); a dance-challenge short (2025). Hakos Baelz: a "Moonlight" dance cover (2025). FUWAMOCO: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026). Nanashi Mumei (graduated): a #bibbidibachallenge short (2024). Nerissa Ravencroft: a "BIBIDEBA" dance short (2024). Koseki Bijou: watched her Fortnite concert on stream (2026). Nekomata Okayu: "MOMAS"; Okayu's 2025 New Year Game Festival team with Nakiri Ayame, Ina, IRyS and Cecilia, among others. Sakura Miko: her miComet partner. Shiranui Flare: "Shiranui Kensetsu," where Suisei is the PR director.
 ```
 
 ## IRyS

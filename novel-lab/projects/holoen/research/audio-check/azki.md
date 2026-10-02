@@ -61,16 +61,19 @@ Not used: remarks in the April Fools stream about her family and childhood, and 
 
 | First model (small) | At | Second model (medium), excerpt | Verdict |
 |---|---|---|---|
-| "バーチャルディーバーあずき、仮想世界の歌姫です" | [0:06:36](https://youtu.be/Y5BPxMCI6oU?t=396) | "自己紹介していきたいなと思います よろしくお願いしますバーチャルディーバーあずき 仮想世界のうたひめです音楽と歌うことが大大大大好きです時間や場所空間を飛び越えて出会う 輝いた才能と一緒に新しい世界を作るために 転生した仮想サイト" | **Shared span (computed):** whole line (same reading; the models spell a word differently) |
-| "ちょっとちょっとなんでそんなみんな情報を持ってるの" | [0:08:05](https://youtu.be/Y5BPxMCI6oU?t=485) | "ディス化されてる?え、だじゃれ好きそう?え、ちょっとちょっと、なんでそんなみんな情報を持ってるの?はい、改めまして、あずきと申します。呼び方は、ぜひあずきちまずちゃんとか呼んでもらえたら嬉しいです。年齢は18歳 過去永遠" | **Shared span (computed):** whole line (kana/kanji folded) |
-| "ダジャレも好きなんです" | [0:09:30](https://youtu.be/Y5BPxMCI6oU?t=570) | "好きなもの好きなものは最初のプロフィールでも言ったんですけど音楽歌うこと曲作り映画アニメ鑑賞旅行美味しいものを食べる料理する寝る地図を見るなんで?なんで?え、ダジャーレ、あ、ダジャーレ" | **Not confirmed** by the second model; not quoted |
-| "パクチー！いや、一番嫌い！いらない！" | [0:12:09](https://youtu.be/Y5BPxMCI6oU?t=729) | "作詞作曲したりとかも好きですまたあのもすごい好き苦手なものパクチーいや一番嫌いいらない激甘なものもうすごい砂糖がダイレクトなやつがちょっと苦手ですあと虫あとホラーさっきホラーゲーム苦手そうって書かれてたんですけど" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "バーチャルディーバーあずき、仮想世界の歌姫です" | [0:06:36](https://youtu.be/Y5BPxMCI6oU?t=396) | "…バーチャルディーバーあずき 仮想世界のうたひめです音楽と歌うことが大大大大好きです…" | **Shared span (computed):** whole line (same reading; the models spell a word differently) |
+| "ちょっとちょっとなんでそんなみんな情報を持ってるの" | [0:08:05](https://youtu.be/Y5BPxMCI6oU?t=485) | "…え、ちょっとちょっと、なんでそんなみんな情報を持ってるの?…" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "ダジャレも好きなんです" | [0:09:30](https://youtu.be/Y5BPxMCI6oU?t=570) | "…地図を見るなんで?なんで?え、ダジャーレ、あ、ダジャーレ" | **Not confirmed** by the second model; not quoted |
+| "パクチー！いや、一番嫌い！いらない！" | [0:12:09](https://youtu.be/Y5BPxMCI6oU?t=729) | "…苦手なものパクチーいや一番嫌いいらない激甘なもの…" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "この文字数に恐怖するがいい" | [0:17:10](https://youtu.be/Y5BPxMCI6oU?t=1030) | "同時 に 大好き でこの 世界 に 行っ て き たので アズキ の 頑張っ て 小さい 頃 から今 まで に 影響 を 受け て き たアーティスト さん 音楽 編 歴 を まとめ て き まし た の で みんな さんこの 文字 数 に 恐怖 する が いいはい こちらうわぁ" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "戦略的撤退" | [0:21:58](https://youtu.be/ZlaE59NgPpg?t=1318) | "2回目にして終わってない終わってないよまだ戦略的撤退いや恐ろしい夢だったなとこれみんなみんな生きてるみんな生きてるみんな生きてるねセーブ" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "いやー恐ろしい夢だったなぁ" | [0:22:04](https://youtu.be/ZlaE59NgPpg?t=1324) | "戦略的撤退!いやー恐ろしい夢だったなーとこれみんなーみんな生きてる、みんな生きてるみんな生きてるねセーブなんもなかったんやご視聴ありがとうございました" | **Partial (computed):** shared run "いや恐ろしい夢だったな"; only that part is quoted |
-| "ぼったくり" | [0:31:25](https://youtu.be/ZlaE59NgPpg?t=1885) | "はえぇーお金!やば!ぼったくり、ぼったくり、ぼったくりです、ぼったくりの店え、てことは宿もさ、戦う何がある?ウッズマーケットウッズマーケット宿ご視聴ありがとうございました" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "ぼったくり" | [0:31:25](https://youtu.be/ZlaE59NgPpg?t=1885) | "…お金!やば!ぼったくり、ぼったくり、ぼったくりです、ぼったくりの店…" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "アズ魔王じゃないです" | [0:33:39](https://youtu.be/ZlaE59NgPpg?t=2019) | "へぇはぁアズ魔王じゃないです 魔王はアズ魔王じゃないですこの世界でアズノでしょ? え?待って何も別にできない?もうできなさそうんー?えぇーえ、これ" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "ゲス" | [0:11:01](https://youtu.be/3ri2_FG67uY?t=661) | "動かなくてもいけるかもしれん高く見積もるといいよいいよいいよいいよよしよし残しませんいけっすいや、1分はね意外とすぐ過ぎ去るからなこう来てるからこう来てるからここか?寝台、寝台高いいねいいねいいですよヨシウが生きてる" | **Partial (computed):** shared run "す"; only that part is quoted |
 | "予習が生きてる" | [0:11:23](https://youtu.be/3ri2_FG67uY?t=683) | "いいねいいねいいですよ 予習が生きてるよしどんどんこの感じで全駅をゲスしていきたいと思う行くぞ!ケイオーダガヤマは、ケイオーダガヤマは、玉の、玉、玉…" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "ゲース" | [0:15:50](https://youtu.be/3ri2_FG67uY?t=950) | "このフォル…このロゴのマック古いかえ、井の頭線…これ聖歯かここでしょ!ゲース!オーケーイ!ちょ、みんな…見てください!みなさん!ちょっと…え、ちょ、余臭が生きてるわ余臭…余臭って大事コマバー東大前待って、このレー…この…この…K.O.いろがしらせんこ…こ…" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "鮮やかな満点を取っていきます" | [0:16:23](https://youtu.be/3ri2_FG67uY?t=983) | "池農部 駒場東大前鮮やかな満点を取っていきますみなさん待ってKO戦ってここだけ?そんなことないここ、あれ?KO戦ってここ、ここここ渋谷からゆっくりやる" | **Shared span (computed):** whole line (kana/kanji folded) |
+
+Second-model excerpts are trimmed to the span needed for each line ("…" marks cuts); out-of-scope
+personal material was removed after GPT's 2026-10-02 review.

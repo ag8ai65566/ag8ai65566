@@ -60,13 +60,16 @@ Not used: long stretches of the chat about family, childhood games, a trip home 
 
 | First model (small) | At | Second model (medium), excerpt | Verdict |
 |---|---|---|---|
-| "スイちゃんは今日も可愛い" | [0:04:27](https://youtu.be/GQMY5Vl9Dfk?t=267) | "スイセイのごとく現れたスターの現実バーチャルアイデルの星町スイセイですスイちゃんは今日も可愛いみんなありがとうということで本日は雑談をしていこうと思います結構久しぶりじゃないかなって思うんですけれども最近やっぱりゲームの配信特に長編のバイオハザードをやっていたのでこういう雑談だけ" | **Shared span (computed):** whole line (kana/kanji folded) |
-| "いやいやいや、私は悪くないよ" | [0:05:39](https://youtu.be/GQMY5Vl9Dfk?t=339) | "いやいやいや、私は悪くない、だって、コメント欄が言ったんだ。コメント欄が。やれって言ったんだ。俺は悪くねえ、俺は悪くねえ。ということでみなさん、じゃ、雑談するんですけど、まずさ、エターニアのリマスターが来んだって。エターニアのリマスターが来んだってよ。すごくないか?パターンが来る" | **Partial (computed):** shared run "いやいやいや私は悪くない"; only that part is quoted |
-| "コメント欄がやれって言ったんだ" | [0:05:42](https://youtu.be/GQMY5Vl9Dfk?t=342) | "いやいやいや、私は悪くない、だって、コメント欄が言ったんだ、コメント欄が。やれって言ったんだ。俺は悪くね、俺は悪くね。ということで、みなさんじゃ雑談するんですけど、まずさ、エターニアのリマスターが来んだって。エターニアのリマスターが来んだってよ。すごくないか。びっくりしちゃった初" | **Shared span (computed):** whole line (kana/kanji folded) |
-| "俺は悪くねぇ" | [0:05:48](https://youtu.be/GQMY5Vl9Dfk?t=348) | "コメント欄が言ったんだ。コメント欄が。やれって言ったんだ。俺は悪くねえ。俺は悪くねえ。ということでみなさん、じゃ、雑談するんですけど、まずさ、エターニアのリマスターが来んだって。エターニアのリマスターが来んだってよ。すごくないか。びっくりしちゃった。いや、あれ初情報だよね。前々か" | **Shared span (computed):** whole line (same reading; the models spell a word differently) |
-| "スイちゃんは18歳だよ" | [0:12:41](https://youtu.be/GQMY5Vl9Dfk?t=761) | "日曜日システムエターニアからなんだスイちゃん同年代の香りがぷんぷんする?スイちゃんは18歳だよ18って今は8歳18って8歳だよデステニーとかファンタジア最後いや実はデステニーね実はちょっとしかかじってないの一応ちょっとプレイはしたんだけどなんかその友達しかもお姉ちゃんの友達ご視聴" | **Shared span (computed):** whole line (kana/kanji folded) |
-| "アビスはね、私テイルズシリーズで一番好きですから" | [0:15:36](https://youtu.be/GQMY5Vl9Dfk?t=936) | "命を取り戻すアビス一択やいやアビスはねアビスはね私テイルズシリーズで一番好きですからアビスがエタリアやりてぇなぁこれって何の話ですかこれはテイルズが大好きな話ですてんぺしと君をそろ" | **Shared span (computed):** whole line (kana/kanji folded) |
-| "これはテイルズが大好きな話です" | [0:15:44](https://youtu.be/GQMY5Vl9Dfk?t=944) | "テイルズシリーズで一番好きですから アビスがエタリアやりてぇなぁ こうやって何の話ですかこれはテイルズが大好きな話です先生テンペシト君をそろそろ 救ってあげてくださいマザーシップタイトル剥奪された テンペシト君ですかどうして" | **Shared span (computed):** whole line (kana/kanji folded) |
-| "カリオペとのやつを話したか" | [1:12:51](https://youtu.be/GQMY5Vl9Dfk?t=4371) | "日で結構出たと思うんですけど それって全部話したっけカリオペトのやつを話したか キャナデのやつも話したかだいたい話したかんで一人出演出てるね まあこれにもねまあ理由がありましてうん 今年おととしがもうなんか忙ししすぎて" | **Shared span (computed):** whole line (kana/kanji folded) |
-| "スイちゃんじゃあもうホロメン絡まないのかな" | [1:14:19](https://youtu.be/GQMY5Vl9Dfk?t=4459) | "人事務所を作りました人事務所でバリバリキビキビやっていくぜってなったらエイスイちゃんじゃあもうホロメンと絡まないのかなホロメンとのコラボとかなくなっていするのかなみたいなそういう機由があったりするんじゃないかなと思ってだからそうではないぞというねそうはならないんだぞというそういう" | **Partial (computed):** shared run "すいちゃんじゃあもうほろめん"; only that part is quoted |
-| "今までまだ出たことがない人のライブは誘ってくださったらなるべく出たいなと思って" | [1:15:41](https://youtu.be/GQMY5Vl9Dfk?t=4541) | "もありまぁ誘っていただけた いただけて嬉しいということもありあと今までまだ出て出たことがない人のライブは誘ってくださったらなるべく出たいなぁと思って あのスケジュールが合わなかったらあのやむなくごとりはしてるんだけどなるべく出たいなぁと思って 出ているんですけれどもはじめのやつ" | **Partial (computed):** shared run "出たことがない人のらいぶは誘ってくださったらなるべく出たいな"; only that part is quoted |
+| "スイちゃんは今日も可愛い" | [0:04:27](https://youtu.be/GQMY5Vl9Dfk?t=267) | "…星町スイセイですスイちゃんは今日も可愛いみんなありがとう…" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "いやいやいや、私は悪くないよ" | [0:05:39](https://youtu.be/GQMY5Vl9Dfk?t=339) | "いやいやいや、私は悪くない、だって、コメント欄が言ったんだ。コメント欄が。やれって言ったんだ。俺は悪くねえ、俺は悪くねえ。…" | **Partial (computed):** shared run "いやいやいや私は悪くない"; only that part is quoted |
+| "コメント欄がやれって言ったんだ" | [0:05:42](https://youtu.be/GQMY5Vl9Dfk?t=342) | "いやいやいや、私は悪くない、だって、コメント欄が言ったんだ、コメント欄が。やれって言ったんだ。俺は悪くね、俺は悪くね。…" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "俺は悪くねぇ" | [0:05:48](https://youtu.be/GQMY5Vl9Dfk?t=348) | "…コメント欄が言ったんだ。コメント欄が。やれって言ったんだ。俺は悪くねえ。俺は悪くねえ。…" | **Shared span (computed):** whole line (same reading; the models spell a word differently) |
+| "スイちゃんは18歳だよ" | [0:12:41](https://youtu.be/GQMY5Vl9Dfk?t=761) | "…スイちゃん同年代の香りがぷんぷんする?スイちゃんは18歳だよ18って今は8歳18って8歳だよ…" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "アビスはね、私テイルズシリーズで一番好きですから" | [0:15:36](https://youtu.be/GQMY5Vl9Dfk?t=936) | "…アビスはねアビスはね私テイルズシリーズで一番好きですからアビスが…" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "これはテイルズが大好きな話です" | [0:15:44](https://youtu.be/GQMY5Vl9Dfk?t=944) | "…これって何の話ですかこれはテイルズが大好きな話です…" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "カリオペとのやつを話したか" | [1:12:51](https://youtu.be/GQMY5Vl9Dfk?t=4371) | "…それって全部話したっけカリオペトのやつを話したか キャナデのやつも話したか…" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "スイちゃんじゃあもうホロメン絡まないのかな" | [1:14:19](https://youtu.be/GQMY5Vl9Dfk?t=4459) | "…人事務所を作りました…スイちゃんじゃあもうホロメンと絡まないのかなホロメンとのコラボとかなくなっていするのかな…" | **Partial (computed):** shared run "すいちゃんじゃあもうほろめん"; only that part is quoted |
+| "今までまだ出たことがない人のライブは誘ってくださったらなるべく出たいなと思って" | [1:15:41](https://youtu.be/GQMY5Vl9Dfk?t=4541) | "…今までまだ出て出たことがない人のライブは誘ってくださったらなるべく出たいなぁと思って あのスケジュールが合わなかったらあのやむなくごとりはしてるんだけど…" | **Partial (computed):** shared run "出たことがない人のらいぶは誘ってくださったらなるべく出たいな"; only that part is quoted |
+
+Second-model excerpts are trimmed to the span needed for each line ("…" marks cuts); out-of-scope
+personal material was removed after GPT's 2026-10-02 review.

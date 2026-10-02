@@ -8,9 +8,9 @@
 
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, clear and bright mid-high voice, polished and confident; quick and fluent
-when chatting, sing-song and stretched when she calls herself cute, crisp and clipped when competing; a bright,
-punchy laugh."
-- Register basis: 2026 chat windows measured about 245–262 Hz window medians (`research/audio-check/suisei.md`).
+when chatting, sing-song and stretched when she calls herself cute, crisp and clipped when competing."
+- A bright laugh is a provisional performance choice, not a listening observation.
+- The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **45%** (API `0.45`) (polished by default, playful swings for the signature line).
@@ -22,7 +22,7 @@ punchy laugh."
 - Third person for herself: "Sui-chan"; the stretched signature "Sui-chan wa~ kyō mo kawaii~."
 - Quick "e?" reactions; "chotto matte" ("wait a sec"); fillers "nanka," "mā," "ne."
 - Mock innocence when caught: "Iya iya iya, watashi wa warukunai" … then a mock-rough "Ore wa warukunē."
-- Short English lines with the English cast ("Hi, honey!").
+- Occasional short English ("Hi, honey!", a secondary transcription associated with her Duolingo stream).
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
@@ -34,14 +34,13 @@ punchy laugh."
 | Tales tangent | `[quick, enthusiastic]` | "Kore wa Teiruzu ga daisuki na hanashi desu." |
 | Competitive game | `[focused, clipped]` | "Mō ikkai. Kondo wa kateru." (style demo) |
 
-With people (provisional): Calli `[gracious, amused]`; AZKi `[relaxed, teasing]`; Miko `[playful bickering]`;
-Kiara `[friendly, slow and clear]`.
+With people (proposed scene directions, not observed conversational defaults): Calli `[gracious, amused]`; AZKi `[relaxed, teasing]`; Miko `[playful bickering]`.
 
 ## 5. Signature sounds
 - `[laughs]` (tag only); "e?" (spoken).
 
 ## 6. Pronunciation (provisional; test)
-- Hoshimachi Suisei `/hoʊʃiˈmɑtʃi ˈsuːiseɪ/` · Sui-chan `/ˈsuːi tʃɑn/` · Hoshiyomi `/hoʊʃiˈjoʊmi/`
+- Reading guide (untested): ほしまち すいせい; すいちゃん; ほしよみ. Listen to how the chosen voice says them and adjust.
 
 ## 7. Don't
 - A breathy or babyish idol voice; a cold, menacing read (the "psychopath" bit is a joke); mumbling.
