@@ -267,7 +267,11 @@ def check_all(proj, phase, package=None, building=False):
         R.add(cid, "fail" if missing or auto_fail else "pass", severity, title, det)
 
     attested("V10", "Dates, zones and status")
-    attested("V11", "Participants and directional facts")
+    import web_check
+    _f, _cast, _names = web_check.web(proj.name)
+    oneway = sorted((a, b) for a in _cast for b in _names[a] if a not in _names[b])
+    attested("V11", "Participants and directional facts",
+             extra=[f"relationship web: {len(oneway)} one-way ties (coverage, not errors; tools/web_check.py)"])
     attested("V12", "Evidence records")
     import span_check
     spans = [f"{f}:{n} quotes past a shared ASR span ({r['report']} {r['ts']}): \"{q}\""
