@@ -177,6 +177,7 @@ Pairs."
 | Nerissa Ravencroft, Moona Hoshinova | Seniors ("V3LVET," secondary) | Clubhouse Games with Nerissa (2024-12-09); Raft with both (2025-02-06); Monster Hunter Wilds as V3LVET (Nerissa's title, 2025-03-25) | [Observed RP2, RP3; Nerissa archive] |
 | Akai Haato, Vestia Zeta, Anya Melfissa | JP and ID seniors | Clubhouse Games with Haachama; a Mario Party off-collab with Zeta and Haachama; Anya's visit (2025) | [Observed RP3] |
 | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) | [Bae file HB3, HB5, HB8, HB20] |
+| Takane Lui | holoX senior | A dance short to Lui's "Soar" (2026) | [world card "holoX"] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: her first birthday live, Serendipity with FUWAMOCO, Pokémon,
@@ -316,6 +317,7 @@ FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu 
 - **2026-10-02, cast expansion (author: add Hakos Baelz, and complete everyone's relationship web):** Relationships gained Bae (sources in Bae's file, HB3/HB5/HB8/HB20, and the world card "Hakos Baelz Pairs").
 - **2026-10-02, relationship web (tools/web_check.py):** Gura and Mumei added to Relationships, mirroring the tie already on the other card (same evidence there).
 - **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the Amber Coin lineup is spelled out (Raora, Bae, Kiara and Mumei; secondary) so it does not imply IRyS.
+- **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi):** Lui added to the dossier ("Soar" short). (sources: the new member files, "JP Senpai Pairs 2" and "holoX".)
 
 ## Open Questions
 1. Resolved: 3D showcase 2025-08-09 PDT (RP8).
