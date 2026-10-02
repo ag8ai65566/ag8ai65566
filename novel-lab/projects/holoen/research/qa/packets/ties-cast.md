@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git d128361. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 9d0d86e. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### Cecilia Immergreen × Elizabeth Rose Bloodflame
@@ -16,10 +16,12 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Cecilia Immergreen × Gigi Murin
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: (Cecilia wrote the lyrics; Gigi helped and designed the chibi models), a 2026 3D live, Cuphead, a Shadowverse match and Serendipity; she calls Gigi "idiot" and "FREAK" yet says Gigi "doesn't easily get rattled and is very dependable," and Gigi says she is "good at getting stuff done"; they met before debut.
+- `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: FUWAMOCO: Cecilia and Gigi guest-hosted FUWAMOCO MORNING #167.
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity.
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Cecilia Immergreen | Genmate; Autofister (unit name in the official report), also associated with CCGG | "CCGG MADNESS" (2026) and Serendipity; Cuphead off-collab (2025), Shadowverse match (2025); Cecilia calls her "idiot" (official interview) and "FREAK" (secondary transcription), admires that she "doesn't easily get rattled"; Gigi: "She's good at getting stuff done." Met before debut | [Official GG4] [Observed GG2, GG3] |
 - `bible/characters/Gigi-Murin.md › [SW] Relationships`: (Gigi helped with the lyrics and designed the chibi models), Cuphead, Shadowverse and Serendipity; Cecilia calls her "idiot"
 - `bible/characters/Gigi-Murin.md › [SW] Relationships`: (and "FREAK" in wiki transcriptions) yet says she "doesn't easily get rattled and is very dependable"; Gigi says Cecilia is "good at getting stuff done"; they met before debut.
+- `bible/characters/Gigi-Murin.md › [SW] Relationships`: FUWAMOCO: Gigi and Cecilia guest-hosted FUWAMOCO MORNING #167 as a prank.
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Gigi Murin | Justice kouhai ("GigiMoco," "bauBau") | Collabs from 2024; Gigi and Cecilia hosted FUWAMOCO MORNING #167 in the twins' place as a prank (2025) | [Observed MC2, secondary; MC3] |
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Cecilia is also Mococo's Chrono Trigger partner, including 2026 off-collabs; Gigi sang "Bright Tonight" and "MAKE IT, BREAK IT" with the twins.
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai ("Automatowl"; calls her "Myumyei") | Joined, with Gigi, Mumei's alphabet tier list (2025) | [Observed M2; M3] |
@@ -42,13 +44,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Cecilia Immergreen | Genmate ("Raviolin," secondary) | Minecraft duo in the first weeks (secondary archive evidence); Raora illustrated Cecilia's debut ending screen and sweeping scene, and Cecilia animated Raora's ending screen and mascot stinger (archived debut credits); she helped design the Otomo (secondary); "I'm Your Treasure Box" with Bijou at -All for One- | [Observed RP2, RP3 JW7j8tKMOfY, p_ZQs-kgUKI] [Official RP5] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Koseki Bijou | Advent senior ("Graondstone") | A cooking off-collab with Bijou as "my assistant" (2024; the stream title's wording); Monster Hunter Wilds (2025); "I'm Your Treasure Box" with Cecilia (2025) | [Observed RP3] [Official RP5] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Koseki Bijou: her "assistant" in a cooking off-collab (the stream title's word); "I'm Your Treasure Box" with Bijou and Cecilia.
-- `bible/world/Advent-Pairs.md › With -Justice-`: - **Cecilia Immergreen:** GAGA; "Cecemoco"; a Walking Dead off-collab with Bijou (2025) and a Chrono Trigger off-collab with FUWAMOCO (2026). [Observed S1]
+- `bible/world/Advent-Pairs.md › With -Justice-`: - **Cecilia Immergreen:** GAGA; "Cecemoco"; a Walking Dead off-collab with Bijou (2025) and a Chrono Trigger off-collab with Mococo (2026). [Observed S1]
 - `bible/world/hololive--Justice.md › How the Group Works`: - **In practice:** the pursuit supplies staged rivalries and collab jokes rather than arrests. Raora was sent after FUWAMOCO and got lost in crane games; Cecilia's plan was to dig a hole (Bijou can fly) or to give Advent rooms full of their favorite things and then remove the doors. Advent × Justice collabs use cop-and-robber jokes. [Observed S2 §Lore, secondary; S4]
 
 ### Cecilia Immergreen × Mococo Abyssgard
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Mococo / FUWAMOCO | Advent ("GigiMoco," "bauBau"; secondary) | Secondary accounts: with Cecilia, a guest-host prank on FUWAMOCO MORNING #167 (2025-07-28); "Bright Tonight" (2025) and "MAKE IT, BREAK IT" with Zeta at Serendipity (2026) with both twins | [Observed GG2; Mococo file] [Official GG7, GG9] |
-- `bible/characters/Gigi-Murin.md › [SW] Relationships`: Mococo: with Cecilia, guest-hosted FUWAMOCO MORNING #167 as a prank.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Cecilia is also Mococo's Chrono Trigger partner, including 2026 off-collabs; Gigi sang "Bright Tonight" and "MAKE IT, BREAK IT" with the twins.
+- `bible/world/Advent-Pairs.md › With -Justice-`: - **Cecilia Immergreen:** GAGA; "Cecemoco"; a Walking Dead off-collab with Bijou (2025) and a Chrono Trigger off-collab with Mococo (2026). [Observed S1]
 
 ### Cecilia Immergreen × Mori Calliope
 - `bible/characters/Ouro-Kronii.md › Hard Facts`: - Aliases: Kronini, Kroniicopter, Kronster (by Calli), Tam Tender (by Raora), Owo-senpai (by Cecilia). Performed identities are excluded from matching unless a story uses them: Ouro Krono (-Ministry- persona, goodbye "Kronovoir") and Tam Gandr (ENreco). [Observed K8 nickname list, §Name and §Miscellaneous, secondary]
@@ -340,7 +342,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Gigi Murin × Mococo Abyssgard
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | FUWAMOCO (both twins) | Advent | With Gigi, guest-hosted FUWAMOCO MORNING #167 (secondary); "SHALLYS" with Ina at -All for One-; the twins had hoped for a robot-maid member before she debuted | [Observed CI2; Mococo file] [Official CI5] |
-- `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Mococo Abyssgard ("Cecemoco"): Chrono Trigger; with Gigi she guest-hosted FUWAMOCO MORNING #167.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Cecilia is also Mococo's Chrono Trigger partner, including 2026 off-collabs; Gigi sang "Bright Tonight" and "MAKE IT, BREAK IT" with the twins.
 
 ### Gigi Murin × Mori Calliope
@@ -415,7 +416,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2021-07-29 | Calli's first collab with IRyS | MorIRyS |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IRyS's debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke).
-- `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. A world-tour city stop: Calli, IRyS and Nerissa share a dressing room and a pre-show ritual.
+- `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. During a fictional public tour panel, Calli, IRyS and Nerissa compare their stage personas.
 
 ### IRyS × Nerissa Ravencroft
 - `bible/characters/IRyS.md › [SW] Relationships`: Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert.
@@ -428,7 +429,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Nerissa`: - **Nerissa and IRyS** (1 / 0 / 3 / 1): the two singers: IRyS was a guest at Nerissa's 2025 3D concert ("Missing Promise"), they hunted together in Monster Hunter Wilds (2025-03-01), and in 2026 Nerissa made Miis of IRyS and Ina in Tomodachi Life ("Inya and Irys will be born!", 2026-04-23). [Observed S1 titles]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: Nerissa and IRyS: two singers; IRyS guested at that concert, and Nerissa put IRyS and Ina in Tomodachi Life.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Rules`: IRyS (2021) is Nerissa's senior; Myth are seniors to both.
-- `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. A world-tour city stop: Calli, IRyS and Nerissa share a dressing room and a pre-show ritual.
+- `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. During a fictional public tour panel, Calli, IRyS and Nerissa compare their stage personas.
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 | "ENigmatic Recollection" (ENReco) announced: EN members in the fantasy world Libestal, via a Minecraft series, animation and songs | Guilds: IRyS in "Cerulean Cup," Nerissa and Gura in "Scarlet Wand" |
 
 ### IRyS × Ninomae Ina'nis
@@ -482,6 +483,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: IRyS: friend since the 2021 full-EN collabs; Kiara gave her a German crash course.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Kiara: Kiara gave her a German crash course; nail-painting off-collab.
 
+### Koseki Bijou × Mococo Abyssgard
+- `bible/world/Advent-Pairs.md › With -Justice-`: - **Cecilia Immergreen:** GAGA; "Cecemoco"; a Walking Dead off-collab with Bijou (2025) and a Chrono Trigger off-collab with Mococo (2026). [Observed S1]
+
 ### Koseki Bijou × Mori Calliope
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Mori Calliope: they played Bijou's Undertale mod starring Calli together (2023); "TombStone"; a 24-hour charity stream together (2025) and Warhammer painting (2026).
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Koseki Bijou | Junior collaborator | Calli calls her "Biboo" and openly admires her skill. | [Official C9] |
@@ -499,7 +503,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Koseki Bijou: the raven and the shiny rock girl (JewelBird); Bijou calls her "Nerizzler," and Nerissa named Bijou's evil twin "Oobib."
 - `bible/characters/Shiori-Novella.md › Background Timeline`: | 2024-08-02 PDT | 3D debut "A New Chapter Begins!" with Nerissa, Bijou and FUWAMOCO as guests | [Observed SN3 tIKQMFtbgOA] |
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Koseki Bijou | Genmate ("Goth Rock," "GAGA") | Bijou's most-mentioned genmate on her own channel (46 streams); a "Gyatt Review" (2024), an offline conbini-snack collab with Nerissa and Bijou (2024) | [Observed SN2; SN3; Bijou archive] |
-- `bible/characters/Shiori-Novella.md › [SW] Background`: She debuted on 2023-07-30 with hololive English -Advent- alongside Koseki Bijou, Nerissa Ravencroft and FUWAMOCO, narrates the group's lore videos, and is jokingly called its leader.
 - `bible/world/Advent-Pairs.md › History`: | 2023-07-29/30 PDT | Debuts (Shiori, Bijou, Nerissa, FUWAMOCO) | "The Sweet Escape," the first group collab |
 - `bible/world/Advent-Pairs.md › History`: | 2024-08-02 → 08-10 PDT | 3D debuts (Shiori 08-02, Bijou 08-03, Nerissa 08-09, FUWAMOCO 08-10; JST dates are one day later) | genmates as guests [Official S9] |
 - `bible/world/Advent-Pairs.md › Inside Advent`: - **Bijou and Nerissa ("JewelBird"):** a raven and a shiny rock; Bijou named her "Nerizzler," Nerissa named Bijou's evil twin "Oobib" by reading a mirrored "LIVE BIBOO REACTION" box. [Observed S2, secondary]
@@ -590,7 +593,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Nerissa`: - **Nerissa and Calli** (6 / 7 / 3 / 1): the BG3 party (2023); Calli's "I Gathered 8 Cute People to Destroy their Friendships" (Mario Party, 2024-11); Calli as guest at Nerissa's 2025 3D concert ("Bocca della Verità"); the duet "OVER//RIDE – Mori Calliope × Nerissa Ravencroft" (2025-07-18); Nerissa as HOLOMELO RADIO guest (2025-07); Nerissa sang charity karaoke for #GOLIVEforLOVE (2026-02-17). Nerissa was Calli's first Instagram follower. [Observed S1 titles; S3, secondary]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: Nerissa and Calli: a Baldur's Gate 3 party, the 2025 duet "OVER//RIDE," and Calli as a guest at Nerissa's 3D concert.
-- `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. A world-tour city stop: Calli, IRyS and Nerissa share a dressing room and a pre-show ritual.
+- `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. During a fictional public tour panel, Calli, IRyS and Nerissa compare their stage personas.
 
 ### Mori Calliope × Ninomae Ina'nis
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate | Ina designed Death Sensei. Calli wrote the lyrics for Ina's TAKO∞TAKOVER. [Unverified, title only: a running bit of a shinigami afraid of a tako] | [Observed C4 §Mascot and fans, secondary] [Official C28] [C21-eRObYMLdPfw clip title] |
@@ -751,7 +754,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | Fauna, Shiori and Nerissa sang "Lonely in Gorgeous" at -Breaking Dimensions- (2024-08-25); a 2023 reply from Nerissa on X: "Fauna-senpai!!! My Raven companion is named Shadow~" | [Official F5] [Observed—X post via wiki citation, research/x-posts.md] |
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Nerissa Ravencroft: Advent kouhai; with Shiori they sang "Lonely in Gorgeous" at the 2024 English concert, and Nerissa greets her on X as "Fauna-senpai!!!"
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Shiori Novella and Nerissa Ravencroft: her "Scarlet Wand" guildmates in the ENigmatic Recollection story.
-- `bible/characters/Koseki-Bijou.md › [SW] Background`: She debuted on 2023-07-30 with hololive English -Advent- alongside Shiori Novella, Nerissa Ravencroft and FUWAMOCO.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit).
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shiori Novella | Advent genmate ("ShioRaven") | Nerissa calls her "wife"; Shiori plays hard to get; fictional "children"; off-collabs ("Here with my Shiwowi 💙🤍🖤," 2025) | [Observed N2 §Relationships, §Lore; N3] |
 - `bible/characters/Nerissa-Ravencroft.md › Story Engine`: 1. Shiori finally says "yes" to a bit, and Nerissa panics.

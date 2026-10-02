@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git d128361.
+Snapshot: git 9d0d86e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|City Pop Shark|Watson Amelia|Amelia Watson|Gremlin Ame|Same-chan|Gawr Gura|Goobidiba|ワトソン・アメリア|Samegaki|Amechan|Amelia|がうる・ぐら|Gooba|Goob|Gura|Myth|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Gura and Calli|City Pop Shark|Watson Amelia|The Fish Tank|Amelia Watson|Gura and Ame|Ame and Gura|Gremlin Ame|Goobidiba|ワトソン・アメリア|Gawr Gura|Bone Bros|Same-chan|Samegaki|holoMyth|HoloMyth|amesame|AmeSame|Amechan|Amelia|がうる・ぐら|Gooba|Myth|Goob|Gura|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -105,6 +105,7 @@ Matched names: lolive -Myth-|City Pop Shark|Watson Amelia|Amelia Watson|Gremlin 
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal; Kiara once "fired" her over a chicken incident.
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Watson Amelia (affiliate): her EN oshi ("#1 Ame gosling"), who helped with her 3D productions and now guests at her concerts.
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, Gura once filled KFP's back room with chickens, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
+- `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "You little shit!" → protest at a collaborator; her own short is titled "GURA YOU LITTLE SHIT." [Official T16, her upload] [Observed T2 §Quotes, secondary]
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - **Profanity:** frequent and casual: "fuck," "fucking," "what the fuck," "holy shit," "shit," "ass," "damn it," "hell." The 2026 captions contain many masked "[ __ ]" tokens (unidentified censored words); the audio transcripts give the actual words in her own speech: "everybody is fucking good at making Miis," "Holy shit, they're all cracked," "It's like tiny in size, but it's so fucking heavy," "Damn. Damn!", and in DOOM "Vault dwellers? What the fuck is there? The wasteland?" and "16 of them. 16. What the fuck am I supposed to do with 16?" [ASR T23, -5P17BxVZTE 2:42:58, 2:43:03, 2:37:42, 1:08:57; gqQoOjKBmLw 1:36:06, 1:40:19; both models agree] She swears during games and stories and can aim playful insults at collaborators (her own "GURA YOU LITTLE SHIT", T16). On sponsored streams she holds back ("what the heck," "effing"). Rage can flip into German: "You fucking freak! Ihr seid doch alle Perverse! Unglaublich!" (at a game's German developers). She taught Gura German swears ("Scheiße," "Fick dich") in a lesson stream. [Observed T3; T2 §Quotes, secondary; T15]
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2021-03 | German lesson with Gura; the German "HoloDE Debüt" stream | [Observed T15; T2 §2021] |
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-09-07 | Branches merge; unit is hololive -Myth- | [Official T20, T1] |
@@ -159,7 +160,6 @@ Matched names: lolive -Myth-|City Pop Shark|Watson Amelia|Amelia Watson|Gremlin 
 
 ### from Justice Pairs
 - `bible/world/Justice-Pairs.md › With Myth`: - **Gawr Gura (graduated):** Keep Talking and Nobody Explodes and The Forest with Cecilia (2025-02); R.E.P.O. with Raora, Kiara and Kronii (2025-04-13). **Watson Amelia (affiliate):** in ENReco's role-play story, Gigi's Gonathon and Ame's Jyonathan marry (secondary; "ClueChaser"); Borderlands 2 with Cecilia, Gigi and Mumei (2024-08-09). [Observed S1; S2]
-- `bible/world/Justice-Pairs.md › Beyond EN`: - **JP:** Elizabeth's 2026 birthday covers, recorded at COVER's studio, featured Oozora Subaru; Roboco, Tokino Sora and Yuzuki Choco; Houshou Marine and Inugami Korone ("IT'S LOVE," iwnHChZq0N8, credits read by Claude); FUWAMOCO with Polka, Nene, Watame and Iroha; her 2026 "Yona Yona Dance" cover mixed branches (Natsuiro Matsuri, Hiodoshi Ao, Ollie and HOLOSTARS members). Cecilia played Minecraft and Super Mario 3D World with Tokino Sora (2025-02); Raora played Clubhouse Games with Haachama (2024-08-16), sang "Neko Kaburi-Na" with Ina, Shiori and guest Subaru at -All for One-, is "RaoRiRi" with Ichijou Ririka, and both she and Gigi were inspired by Inugami Korone (Raora) and the Myth debuts (Gigi); "OkaGigi" is a secondary-documented name for Gigi and Nekomata Okayu, with no concrete shared activity sourced (dossier only). Tsunomaki Watame sang "Cloudy Sheep" with Calli and Cecilia and "What an amazing swing" with Kiara and Raora at Serendipity. FLOW GLOW: Koganei Niko sang with Elizabeth in LYRA. [Observed S1; S2] [Official S6, S7]
 
 ### from Myth and Kronii: Other Pairs
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Other Names`: Kiara and Ame, Ame and Kiara, Kiara and Gura, Gura and Kiara, Calli and Ina, Ina and Calli, Calli and Ame, Ame and Calli, Ina and Ame, Ame and Ina, Ina and Gura, Gura and Ina, Kiara and Kronii, Kronii and Kiara, Gura and Kronii, Kronii and Gura
@@ -239,7 +239,7 @@ Matched names: lolive -Myth-|City Pop Shark|Watson Amelia|Amelia Watson|Gremlin 
 
 ### from hololive -Advent-
 - `bible/world/hololive--Advent.md › [SW] Rules`: Myth and Promise are their seniors.
-- `bible/world/hololive--Advent.md › How the Group Works`: - **Seniors:** Advent were kouhai to Myth and Promise from day one; Kiara hosted all five on HOLOTALK (2023-08-12) within two weeks of their debut. [Observed S5 Kiara archive title]
+- `bible/world/hololive--Advent.md › How the Group Works`: - **Seniors:** Advent debuted after Myth, Project: HOPE and Council; the latter two were later organized as Promise. Kiara hosted all five on HOLOTALK (2023-08-12) within two weeks of their debut. [Observed S5 Kiara archive title]
 
 ### from hololive -Justice-
 - `bible/world/hololive--Justice.md › [SW] Rules`: Myth, Promise and Advent are their seniors.

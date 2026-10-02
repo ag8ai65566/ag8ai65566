@@ -141,8 +141,7 @@ Relationship web.
   2026 "Yona Yona Dance" cover mixed branches (Natsuiro Matsuri, Hiodoshi Ao, Ollie and HOLOSTARS members).
   Cecilia played Minecraft and Super Mario 3D World with Tokino Sora (2025-02); Raora played Clubhouse Games
   with Haachama (2024-08-16), sang "Neko Kaburi-Na" with Ina, Shiori and guest Subaru at -All for One-, is
-  "RaoRiRi" with Ichijou Ririka, and both she and Gigi were inspired by Inugami Korone (Raora) and the Myth
-  debuts (Gigi); "OkaGigi" is a secondary-documented name for Gigi and Nekomata Okayu, with no concrete shared activity sourced
+  "RaoRiRi" with Ichijou Ririka; "OkaGigi" is a secondary-documented name for Gigi and Nekomata Okayu, with no concrete shared activity sourced
   (dossier only). Tsunomaki Watame sang "Cloudy Sheep" with Calli and Cecilia and "What an amazing swing" with
   Kiara and Raora at Serendipity. FLOW GLOW: Koganei Niko sang with Elizabeth in LYRA. [Observed S1; S2]
   [Official S6, S7]
@@ -275,6 +274,8 @@ An orange hoodie beside a green dress; a red sword and a violin-lance; a pink ca
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "B.F.F" (official Serendipity unit) added to Other Names.
+- **2026-10-02, ADVENT-SCOPE-002 propagated (cross-card QA audit, research/qa/audit-advent.md):** how a member
+  first came to VTubers or hololive is pre-debut personal history and is not recorded.
 
 ## Open Questions
 1. Partly resolved: Autofister, Bloodraven and B.F.F are official billing; Grem Reaper and Pizza Time appear in

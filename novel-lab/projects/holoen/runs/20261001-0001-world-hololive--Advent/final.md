@@ -23,7 +23,7 @@ Mococo, FUWAMOCO). The "escaped convict" premise is a running bit they play with
 ## Type
 Faction / unit.
 
-## Members and Status (2026-10-01)
+## Members and Status (2026-09-30 baseline)
 - Members: Shiori Novella (the Archiver; narrator of their lore videos and the fans' pick as unofficial
   leader), Koseki Bijou (the Jewel of Emotions; "Biboo"), Nerissa Ravencroft (the Demon of Sound), and the
   twins Fuwawa and Mococo Abyssgard (FUWAMOCO, who share one channel). [Official S8] [Observed S1 member
@@ -60,7 +60,7 @@ Faction / unit.
 - **As a group:** relay streams for new outfits, a friendship test with swapped hairstyles (Nerissa got
   Fuwawa's, dog ears included), and joint Expo appearances with -Justice- (2025, 2026).
   [Observed S1, S2 §2025, secondary]
-- **Seniors:** Advent were kouhai to Myth and Promise from day one; Kiara hosted all five on HOLOTALK
+- **Seniors:** Advent debuted after Myth, Project: HOPE and Council; the latter two were later organized as Promise. Kiara hosted all five on HOLOTALK
   (2023-08-12) within two weeks of their debut. [Observed S5 Kiara archive title]
 
 ## History
@@ -108,7 +108,7 @@ across Myth and Promise appear as friends (see "Advent Pairs," "FUWAMOCO," "IRyS
 (None.)
 
 ## Hard Facts (continuity)
-- Active 2026-10-01: Shiori, Bijou, Nerissa, Fuwawa, Mococo. Fans: Adventrix; mark ⚠️.
+- Active at the 2026-09-30 baseline: Shiori, Bijou, Nerissa, Fuwawa, Mococo. Fans: Adventrix; mark ⚠️.
 - -Justice- (2024) are the "law enforcers" of the same storyline; stories treat it as a shared stream bit.
 
 ## Sources (checked 2026-10-01)
@@ -166,6 +166,8 @@ The ⚠️ mark and Pokey on the logo; prison-gown merch; the master-key accesso
   3D debut dates, FUWAMOCO's award, -All for One- (S9), "Breakout," the Serendipity pairs (S7, S10);
   Description rewritten.
 - **2026-10-01, from GPT one-round review of the Advent cast edits (runs/20261001-0549-world-Advent-Pairs/gpt-free.md, high):** "who never swears" replaced by her stated practice (she says "beep"); 3D dates labeled PDT; the Advent 3D collaboration stream (2024-08-17 PDT, official schedule https://hololive.hololivepro.com/en/news/20240712-01-90/) added.
+- **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-STATUS-001, ADVENT-UNIT-001
+  (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

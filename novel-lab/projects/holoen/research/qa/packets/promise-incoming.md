@@ -1,9 +1,9 @@
 # Audit packet: promise (incoming claims)
 
-Snapshot: git d128361.
+Snapshot: git 9d0d86e.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden of Time|Nanashi Mumei|Mother Nature|Kroniicopter|Gamer Kirin|Ouro Kronii|Ceres Fauna|Ceres-chan|Octo'clock|Owo-senpai|Tam Tender|Mumi-chan|Moomsies|SeisoRyS|オーロ・クロニー|YabaIRyS|Kronster|Moomers|Council|Kronini|Myumyei|Promise|Meimei|Kronii|Faufau|BaeRyS|Fawna|Fauna|Mumei|Irys|Towl|Moom|IRyS)(
+Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Calli and Kronii|Nerissa and IRyS|It's Not a Phase|hololive Council|Keeper of Nature|Mumei and Kronii|Kronii and Calli|Mumei and Fauna|Mumei and Kiara|IRyS and Kronii|Fauna and Mumei|Ame and Kronii|Warden of Time|Kronii and Ame|Ina and Kronii|Kronii and Ina|Time and Death|Fauna and Gura|Mother Nature|Nanashi Mumei|IRyS and Ina|Kroniicopter|holoPromise|holoCouncil|Ouro Kronii|Ceres Fauna|Gamer Kirin|Tam Tender|Octo'Clock|Octo'clock|CouncilRyS|Ceres-chan|Owo-senpai|Mumi-chan|SeisoRyS|KiaRissa|CHADCast|オーロ・クロニー|Moomsies|YabaIRyS|Time Duo|Kronster|MorIRyS|Promise|Moomers|Myumyei|Council|KronMei|Kronini|Meimei|Faufau|BaeRyS|Kronii|Fauna|gumei|Fawna|Mumei|IRyS|Irys|Towl|Moom)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: IRyS and Bijou: Elden Ring Nightreign.
@@ -70,6 +70,7 @@ Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Ouro Kronii | Senior ("WatchDog," with Fuwawa) | Among Us, Team Fortress 2, 7 Days to Die (2023–24) | [Observed MC2; MC3] |
 
 ### from Mori Calliope
+- `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"); Bae calls her "Cori Malliope," and IRyS joined her as the "Two Pink Women" of Silent Hill 2.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Ouro Kronii ("Kronster"): deadpan sparring partner in "Time and Death" horror co-ops and mock feuds (Calli's mock exposé of Kronii's joke "$KRONII" coin), with a running joke about their 1 cm height difference.
@@ -81,12 +82,14 @@ Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden
 
 ### from Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Background`: (2025) with Calli and IRyS as guests, sang the duet "OVER//RIDE" with Calli (2025), and released "OYOME♡HOLIC" and "Blue World"
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Takanashi Kiara: her oshi (KiaRissa); in Nerissa's lore she worked at KFP; Kiara showed her around Minecraft, and they held a 2025 "BIRB GIRLS"
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: IRyS: fellow singer who guested at that concert.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): "emo hours" partner (2023, 2025); with Kiara they sang "Beyond the way" at the 2024 English concert.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Ceres Fauna (graduated 2025): the senpai she excitedly replied to on her first day on X ("Fauna-senpai!!!"); with Shiori they sang "Lonely in Gorgeous" at the same concert.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Nerissa and Kronii at Serendipity.
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: - Measured (N20; a 2026 solo chat): median pitch about 214 Hz (p10–p90 172–297 Hz), a mid-range speaking voice like IRyS's (214–226 Hz), lower than Kiara or Gura; about 159 words per minute of speech. Group-stream windows read higher (284–289 Hz) because several voices share them. Sample results only.
 - `bible/characters/Nerissa-Ravencroft.md › Background Timeline`: | 2025-05-24 | 3D concert "Requiem for Love – A JukeBox Musical" (guests incl. Calli, IRyS) | [Observed N3 titles] |
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takanashi Kiara | Senior and her oshi ("KiaRissa") | Self-described KFP member; in lore, a former KFP employee | [Observed N2] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | IRyS | Senior and fellow singer | Guest at Nerissa's 2025 3D concert ("Missing Promise"); Monster Hunter Wilds (2025); Nerissa made Miis of Ina and IRyS in Tomodachi Life (2026) | [Observed N3 titles] |
 
 ### from Ninomae Ina'nis
@@ -106,6 +109,7 @@ Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden
 
 ### from Raora Panthera
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Ouro Kronii ("Pizza Time"): Portal 2 and Backrooms Cleanup Crew; in ENReco Raora called Kronii's character "Tam Tender."
+- `bible/characters/Raora-Panthera.md › Voice Profile`: - Chattini bits: "Oh, you're one of those zipper Chattini. I love those kind." "No, Chattini, you cannot get any of my plushies." "I swear I live in the Justice headquarters. I promise." [ASR RP20, 0:33:19, 0:36:04, 0:37:54; both models on the quoted spans]
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Ouro Kronii | Promise senior ("Pizza Time") | Portal 2 (2024-11-26, "w/ KRONII!! #PizzaTime"), Backrooms Cleanup Crew (2026); in ENReco she called Kronii's character "Tam Tender" (secondary transcription) | [Observed RP2, RP3; Kronii file] |
 
 ### from Shiori Novella
@@ -122,6 +126,7 @@ Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Ouro Kronii ("quasoni"): Kiara was a fan before Kronii debuted.
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Nerissa Ravencroft: an Advent kouhai who calls Kiara her oshi and, in her lore, once worked at KFP (KiaRissa); Kiara showed her around Minecraft, and they held a 2025 "BIRB GIRLS"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: IRyS: friend since the 2021 full-EN collabs; Kiara gave her a German crash course.
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): a fellow bird of HOLOTORI whom she calls "Moomsies"; they sang a DECO*27 song together at the 2023 fes. and "Beyond the way" with Nerissa at the 2024 English concert.
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Ceres Fauna (graduated 2025): "KIWAWA vs FAWNA," and HOLOTALK's 32nd guest a week before she left.
@@ -220,13 +225,14 @@ Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden
 
 ### from hololive -Advent-
 - `bible/world/hololive--Advent.md › [SW] Rules`: Myth and Promise are their seniors.
-- `bible/world/hololive--Advent.md › How the Group Works`: - **Seniors:** Advent were kouhai to Myth and Promise from day one; Kiara hosted all five on HOLOTALK (2023-08-12) within two weeks of their debut. [Observed S5 Kiara archive title]
+- `bible/world/hololive--Advent.md › How the Group Works`: - **Seniors:** Advent debuted after Myth, Project: HOPE and Council; the latter two were later organized as Promise. Kiara hosted all five on HOLOTALK (2023-08-12) within two weeks of their debut. [Observed S5 Kiara archive title]
 
 ### from hololive -Justice-
 - `bible/world/hololive--Justice.md › [SW] Rules`: Myth, Promise and Advent are their seniors.
 
 ### from hololive -Myth-
 - `bible/world/hololive--Myth.md › Members and Status`: - Watson Amelia: concluded general activities 2024-09-30; affiliate; guests at genmates' events (Kiara's concerts 2025 and 2026, Kronii's 2026 live, a 2026 "call from 2021" in Calli's charity stream). [Observed Ame file A23; Ame's wiki page §2025–§2026, secondary]
+- `bible/world/hololive--Myth.md › How the Group Works`: - **Protectiveness:** Ina says anyone who makes Gura cry will "face the wrath of Ina," and extends the promise to all the English members (tears of joy excepted). [Observed S2 Gura §Gura's antics, secondary]
 
 ### from hololive History 2023-2026
 - `bible/world/hololive-History-2023-2026.md › [SW] Description`: The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup,"
@@ -242,7 +248,7 @@ Matched names: ardian of Civilization|hololive -Promise-|Keeper of Nature|Warden
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-07-03/04 PDT | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around units: Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS (IRyS–Bae), Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora), Autofister (Gigi–Cecilia); guests Ookami Mio, Kobo Kanaeru, Vestia Zeta, Tsunomaki Watame (official report) | The current partnerships |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-10-06 (upcoming) | IRyS's first solo concert "HOPE ||: Beyond the Stars" (Tokyo) | IRyS's next big stage |
 - `bible/world/hololive-History-2023-2026.md › How It Works in Stories`: - Affiliates (Ame) can appear at events and in projects; graduates (Gura, Fauna, Mumei) appear only as memories, callbacks and songs. [Official S1 2024-11-29 notice, secondary]
-- `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. A world-tour city stop: Calli, IRyS and Nerissa share a dressing room and a pre-show ritual.
+- `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. During a fictional public tour panel, Calli, IRyS and Nerissa compare their stage personas.
 - `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 4. A Promise anniversary after 2025, the three remembering Fauna and Mumei with jokes.
 - `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 5. IRyS's nerves before her first solo concert in Tokyo.
 - `bible/world/hololive-History-2023-2026.md › Hard Facts`: - Merger 2026-09-07. Ame affiliate since 2024-09-30. Gura graduated 2025-05-01; Fauna 2025-01-03; Mumei 2025-04-27 (04-28 JST).

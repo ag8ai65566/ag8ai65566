@@ -10,9 +10,7 @@ sw_section: Characters
 > 2026-09-30 baseline; her recent streams (2025–2026) set her default manner, per the project's recency
 > rule. She shares the FUWAMOCO channel with her twin, Fuwawa; what the two do as a unit is on the world card
 > "FUWAMOCO," and this file covers Mococo herself. Nothing about the performer behind the avatar:
-> private-life information is outside scope and is not recorded here; by analogy with the author's decision
-> for Kiara (2026-10-01) she is not written as being on a break [Adaptation]. "Mama Puppy" and "Papa Puppy"
-> are kept out for the same reason. In stories she knows she is a streamer with a persona (see the world card "VTuber
+> private-life information is outside scope and is not recorded here. In stories she knows she is a streamer with a persona (see the world card "VTuber
 > Persona and Lore"). Evidence labels:
 > - **[Official]** COVER's own profile, site, announcement or publication.
 > - **[Observed]** public stream, title or post; "(secondary)" means the wording comes from a wiki or
@@ -253,8 +251,7 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
   - "the smarter of the twins," "slightly needy" and "would rather not stream without Fuwawa" removed from the
     concept, Core Contradiction, Personality and traits; GPT's replacement wording used ("She brings energetic
     reactions and earnest Pup Talks to the duo…");
-  - the scope note uses the general privacy statement and names no private matter; Open Question 2 closed (the
-    author's Kiara decision already settles the break);
+  - the scope note uses the general privacy statement and names no private matter; Open Question 2 closed under the author's public-persona scope rule;
   - "One step forward a day…" labeled a secondary wiki transcription in the dossier and paraphrased on the card;
   - "æ" described as fan spelling, not IPA; the pronunciation guide no longer equates it with a schwa;
   - "If I die, I die" marked as both ASR models agree (it is in the MC20 table) and used on the card;
@@ -275,6 +272,8 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
   checked by Claude against the official Serendipity report and announcements:** "B.F.F" (official Serendipity unit with Raora) added to Groups.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** Mio's "Dottabatta Chindouchuu" stage with Ina added (official report).
+- **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied CLAUDE-SCOPE-001
+  (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 
 ## Open Questions
 1. There is no clean solo sample of Mococo's ordinary speech in the archive window used (her 2025 solo is

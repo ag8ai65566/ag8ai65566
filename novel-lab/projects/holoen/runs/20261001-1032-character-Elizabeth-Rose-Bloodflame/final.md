@@ -98,7 +98,7 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
   fighting, I want it to be very cool"), air-guitared to live out "my K-On dreams," and called her closing
   song "a very feel-good song, a very Liz song." [ASR EB20, Rk03Rh8P9ps 0:20:07–0:34:58; both models on the
   quoted spans]
-- **Warmth and self-mockery:** her flame dancers are "workaholics like me"; she plans a "Lizzy day" off;
+- **Warmth and self-mockery:** she jokes about her flame dancers' work ethic; 
   Nerissa "has been calling me her husband, my husband. She's very sweet" (a performed bit). [ASR EB20,
   Rk03Rh8P9ps 0:36:56, 0:27:52, 0:38:00; both models]
 - **Vocabulary / fillers:** "like," "okay," "yeah," "cute" and "adorable" (a lot), "um," "wait," "I mean,"
@@ -133,7 +133,7 @@ The middle column is provisional voice direction unless a source is named.
 | Cute moment | Soft, cooing | (warm reaction; style demo) "Aww, that's adorable." |
 | Startled | Minced oath | "What the frick? Oh my god, you scared them." (ASR EB20) |
 | Talking about music | Warm, enthusiastic | "…singing is good for the soul." (ASR EB20) |
-| Self-mockery | Dry, amused | "…workaholics like me." (ASR EB20) |
+| Self-mockery | Dry, amused | A joke about her flame dancers' work ethic. (Paraphrase; ASR EB20) |
 | Sign-off | Warm, then a rallying cry | "…let my voice be your strength! … Huzzah!" (ASR EB20) |
 
 ### Sample Lines
@@ -258,7 +258,7 @@ Elizabeth is an active hololive member. She has no supernatural abilities; her l
 Elizabeth's avatar is 171 cm tall, the tallest of Justice, with red eyes, long red hair tinted blue underneath and a long ahoge. She wears a black and white outfit fastened with belts, red pauldrons and removable sleeves, and carries a black-and-red sword engraved with the scales of justice. A blue flame effect sits on her chest and can flare.
 
 ## [SW] Dialogue Style
-Warm, polite English with a British accent and British slang ("Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky," "Fancies!"), full of "like," "okay" and "lovely," and warm reactions to anything cute. She opens and closes like a TV host ("Lovely to see you, to see you LOVELY!"; "Please do not swear"; "…let my voice be your strength!" and, a moment later, "Huzzah!"), and slips into queenly theatre for bits ("Oh~hohoho!", "By royal decree…" in her posts). Her sampled streams use minced oaths ("What the frick?"; the wiki adds "What the Frigg!" and "Oh, you mothertrucker…"). She talks about singing with real feeling ("singing is good for the soul"; "a very Liz song"), mocks herself gently (her flame dancers are "workaholics like me"), voices game characters and does impressions. Most of the time she simply chats warmly; save the royal flourish for bits.
+Warm, polite English with a British accent and British slang ("Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky," "Fancies!"), full of "like," "okay" and "lovely," and warm reactions to anything cute. She opens and closes like a TV host ("Lovely to see you, to see you LOVELY!"; "Please do not swear"; "…let my voice be your strength!" and, a moment later, "Huzzah!"), and slips into queenly theatre for bits ("Oh~hohoho!", "By royal decree…" in her posts). Her sampled streams use minced oaths ("What the frick?"; the wiki adds "What the Frigg!" and "Oh, you mothertrucker…"). She talks about singing with real feeling ("singing is good for the soul"; "a very Liz song"), jokes about her flame dancers' work ethic, voices game characters and does impressions. Most of the time she simply chats warmly; save the royal flourish for bits.
 
 ## [SW] Catchphrases
 "Ello!" (greeting); "Lovely to see you, to see you LOVELY!" (her catchphrase); "Let my voice be your strength." (official line, sign-off); "Huzzah!" (celebration, sign-off); "Oh~hohoho!" (queenly laugh); "Roses are red, the fire of my heart is blue…" (the start of her introduction); "By royal decree, my sweet Rosarians…" (in posts); "Please do not swear." (her "ERBTV" bit); "What the frick?" (a minced oath); "Soz"; "bits and bobs"; "for funsies"; "a very Liz song"; "Rosarians" (her fans)
@@ -313,6 +313,8 @@ Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Bloodraven" (official Serendipity unit with Nerissa) added to Groups.
+- **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-QUOTE-002, ADVENT-SCOPE-001
+  (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

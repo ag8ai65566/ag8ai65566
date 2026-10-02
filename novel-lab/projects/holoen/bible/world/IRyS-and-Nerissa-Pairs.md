@@ -51,7 +51,7 @@ Relationship web.
 
 ## Nerissa
 - **Nerissa and Kiara ("KiaRissa")** (15 / 12 / 3 / 0): Kiara is Nerissa's oshi; in Nerissa's lore she
-  worked at KFP before hololive and she owns Kiara merch. "Compatibility test with Kiara-senpai"
+  worked at KFP before hololive . "Compatibility test with Kiara-senpai"
   (2023-08-14); Kiara showed her around the EN Minecraft server (2023-09-07); their Baldur's Gate 3 party
   with Calli and Bijou ("Killing, Two Birds, with One Stone," 2023); "Rating your CARS with NERISSA"
   (2023-10-21);
@@ -162,6 +162,8 @@ A three-way CHADCast call; a split-screen co-op with Kronii; KFP merch on Neriss
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
   P0):** the 2024 off-collab trip removed (private travel is outside scope); the public GIRLSTALK collab kept.
+- **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-SCOPE-003
+  (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 
 ## Open Questions
 1. The 2025 "KIARA & FRIENDS" spring concert names both IRyS and Nerissa in its archive entry; whether

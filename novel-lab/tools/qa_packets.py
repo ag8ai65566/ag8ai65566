@@ -180,7 +180,7 @@ def build_registry(files, commit):
         if d["kind"] == "characters":
             bg = sw.get("Background", "")
             status = re.split(r"(?<=\.)\s", bg, maxsplit=2)[:2]
-            debut = re.search(r"debuted on (\d{4}-\d{2}-\d{2})", bg)
+            debut = re.search(r"\bdebuted\b[^.]*?\bon (\d{4}-\d{2}-\d{2})", bg)
             when = r"([A-Z][a-z]+ \d{1,2}, \d{4}|\d{4}-\d{2}-\d{2})"
             grad = re.search(r"graduated (?:from [^.;:]+? )?on " + when, bg)
             concluded = re.search(r"concluded her regular activities on " + when, bg)
@@ -219,9 +219,12 @@ def cohort_patterns(cohort, files):
             if d["name"] in u["members"]:
                 words.add(re.sub(r"\s*\(.*", "", u["unit"]))
     words |= set(UNIT_WORDS.get(cohort, []))
+    for stem in COHORTS[cohort]["world"]:  # owned world cards' names and aliases (ADVENT audit, CONSULT-R2-001)
+        words.add(files[stem]["name"])
+        words |= {a for a in split_list(files[stem]["sw"].get("Other Names")) if len(a) > 3 and a.lower() not in GENERIC}
     if not words:
         return None
-    return re.compile(r"(?<![\w-])(" + "|".join(re.escape(w) for w in sorted(words, key=len, reverse=True)) + r")(?![\w-])")
+    return re.compile(r"(?<![\w-])(" + "|".join(re.escape(w) for w in sorted(words, key=len, reverse=True)) + r")(?![\w-])", re.I)
 
 
 def dossier_items(text):

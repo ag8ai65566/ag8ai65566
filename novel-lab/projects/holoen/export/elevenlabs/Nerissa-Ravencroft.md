@@ -30,7 +30,7 @@ swings when telling a story."
 | Opening / hosting | `[bright, theatrical]` | "Hiya Darlings, this is the Devilish Diva, the one and only Nerissa Ravencroft!" (official written introduction, 2026) |
 | Chatting | `[relaxed, chatty]` | "You know what I'm saying?" |
 | Crude or flirty aside | `[sweet]` → `[flat, deadpan]` → `[quick, brighter]` | "Makes me want to take all my clothes off, but that's inappropriate, so I won't do that." |
-| Rage-bait | `[confident, smug]` → `[sheepish, rushed]` | "That's me just rage baiting at this point. I'm sorry. They are donuts." |
+| Rage-bait | `[confident, smug]` → `[sheepish, rushed]` | "I'm sorry. They are donuts." |
 | Teased by chat | `[mock-whiny]` | "Come on, Jailbirds, be nice, I'm kicking!" |
 | Self-aware | `[amused, matter-of-fact]` | (agrees she's weird and says that's why she's a VTuber; paraphrase, the two transcripts differ) |
 | Story voice | `[exaggerated caveman voice]` | (a caveman voice: "…go hunt, … get food, … run from big predator") |

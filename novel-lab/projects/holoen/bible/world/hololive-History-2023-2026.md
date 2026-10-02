@@ -99,7 +99,7 @@ Historical events.
 ## Conflicts and Story Hooks
 1. The first week after the merger: an EN member gets a collab invite from a JP senpai she never dared ask.
 2. An affiliate guest appearance: Ame drops into a concert and the crowd loses it.
-3. A world-tour city stop: Calli, IRyS and Nerissa share a dressing room and a pre-show ritual.
+3. During a fictional public tour panel, Calli, IRyS and Nerissa compare their stage personas.
 4. A Promise anniversary after 2025, the three remembering Fauna and Mumei with jokes.
 5. IRyS's nerves before her first solo concert in Tokyo.
 
@@ -177,6 +177,8 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
   checked by Claude against the official Serendipity report and announcements:** Drawn to Dawn and Serendipity rows zoned PDT (the card is JST unless noted).
 - **2026-10-01, CONSULT-P2-001 and scope tidy-up:** break notices are no longer dated or described in process notes
   (the author's rule is simply that announced breaks are not written).
+- **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-SCOPE-004
+  (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 
 ## Open Questions
 (None. Serendipity pairs for IRyS and Nerissa were found: see "Concerts and Live Events.")

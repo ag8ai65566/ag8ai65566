@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git d128361. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 9d0d86e. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Mori Calliope
@@ -128,7 +128,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
 
 ### Houshou Marine × Takanashi Kiara
-- `bible/characters/Nerissa-Ravencroft.md › Behavioral Traits`: 3. She is an open fangirl of Houshou Marine and Takanashi Kiara (a self-described KFP member who owns Kiara merch); in her lore she worked at KFP before hololive. [Observed N2 §Likes and dislikes, §Lore, secondary]
+- `bible/characters/Nerissa-Ravencroft.md › Behavioral Traits`: 3. She is an open fangirl of Houshou Marine and Takanashi Kiara (a self-described KFP member); in her lore she worked at KFP before hololive. [Observed N2 §Likes and dislikes, §Lore, secondary]
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: | Fangirling (Kiara, Marine) | Fast, flustered, delighted | (no verified line; see Relationship Map) |
 
 ### IRyS × Kaela Kovalskia
@@ -142,9 +142,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Inugami Korone × Nanashi Mumei
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: Beyond EN, Mumei recorded a duet cover with Inugami Korone in her last week.
-
-### Inugami Korone × Shiori Novella
-- `bible/characters/Shiori-Novella.md › Relationship Map`: | Inugami Korone | JP senior | Shiori first discovered hololive through untranslated Korone clips | [Observed SN2 §Background, secondary] |
 
 ### Kaela Kovalskia × Koseki Bijou
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Kaela Kovalskia | ID senior ("SMITTEN"; "Graondstone" with Bijou; secondary) | Lethal Company, Don't Starve Together, Buckshot Roulette, PEAK; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement (secondary) | [Observed RP2, RP3] |

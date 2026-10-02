@@ -1,1 +1,2 @@
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 211875ad4315）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
+- 2026-10-02 01:52 作者裁決收錄 final.md（sha256 b738bbb71838）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)

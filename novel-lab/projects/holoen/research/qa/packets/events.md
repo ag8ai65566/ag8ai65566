@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git d128361. Every dated row from every bible file's dossier
+Snapshot: git 9d0d86e. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
@@ -8,13 +8,13 @@ search the file for the row text to see its context.
 
 - Cecilia Immergreen: active; debut 2024-06-22; graduated —; regular activities concluded — (`bible/characters/Cecilia-Immergreen.md › Background`)
 - Ceres Fauna: graduated; debut 2021-08-23; graduated 2025-01-03; regular activities concluded — (`bible/characters/Ceres-Fauna.md › Background`)
-- Elizabeth Rose Bloodflame: active; debut ?; graduated —; regular activities concluded — (`bible/characters/Elizabeth-Rose-Bloodflame.md › Background`)
-- Fuwawa Abyssgard: active; debut ?; graduated —; regular activities concluded — (`bible/characters/Fuwawa-Abyssgard.md › Background`)
+- Elizabeth Rose Bloodflame: active; debut 2024-06-21; graduated —; regular activities concluded — (`bible/characters/Elizabeth-Rose-Bloodflame.md › Background`)
+- Fuwawa Abyssgard: active; debut 2023-07-31; graduated —; regular activities concluded — (`bible/characters/Fuwawa-Abyssgard.md › Background`)
 - Gawr Gura: graduated; debut ?; graduated 2025-05-01; regular activities concluded — (`bible/characters/Gawr-Gura.md › Background`)
 - Gigi Murin: active; debut 2024-06-21; graduated —; regular activities concluded — (`bible/characters/Gigi-Murin.md › Background`)
 - IRyS: active; debut 2021-07-11; graduated —; regular activities concluded — (`bible/characters/IRyS.md › Background`)
 - Koseki Bijou: active; debut 2023-07-30; graduated —; regular activities concluded — (`bible/characters/Koseki-Bijou.md › Background`)
-- Mococo Abyssgard: active; debut ?; graduated —; regular activities concluded — (`bible/characters/Mococo-Abyssgard.md › Background`)
+- Mococo Abyssgard: active; debut 2023-07-31; graduated —; regular activities concluded — (`bible/characters/Mococo-Abyssgard.md › Background`)
 - Mori Calliope: active; debut ?; graduated —; regular activities concluded — (`bible/characters/Mori-Calliope.md › Background`)
 - Nanashi Mumei: graduated; debut 2021-08-23; graduated 2025-04-27; regular activities concluded — (`bible/characters/Nanashi-Mumei.md › Background`)
 - Nerissa Ravencroft: active; debut 2023-07-31; graduated —; regular activities concluded — (`bible/characters/Nerissa-Ravencroft.md › Background`)
@@ -309,7 +309,7 @@ search the file for the row text to see its context.
 - 2024-08-10 PDT [day, PDT] 3D debut — `bible/characters/Mococo-Abyssgard.md` ([Observed MC2 §2024])
 - 2024-08-05 [day] 3D birthday live "Outside the Box"; guests Gura, IRyS, Bae, Nekomata Okayu, Inugami Korone, Momosuzu Nene, Hakui Koyori — `bible/characters/Nanashi-Mumei.md` ([Observed M3 title, description])
 - 2024-08-24 [day] -Breaking Dimensions- day 1: premieres "It's Not a Phase" with Fauna; "Beyond the way" with Kiara and Nerissa; day 2: her original "A New Start" — `bible/characters/Nanashi-Mumei.md` ([Official M5])
-- 2024-08-09 [day] 3D debut; the "Demon of Soup" soup — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2])
+- 2024-08-09 PDT [day, PDT] 3D debut; the "Demon of Soup" soup — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2])
 - 2024-08-08 [day] First EP "In My Feelings" — `bible/characters/Nerissa-Ravencroft.md` ([Official N22])
 - 2024-08-02 PDT [day, PDT] 3D debut "A New Chapter Begins!" with Nerissa, Bijou and FUWAMOCO as guests — `bible/characters/Shiori-Novella.md` ([Observed SN3 tIKQMFtbgOA])
 - 2024-08-25 [day] -Breaking Dimensions-: "Lonely in Gorgeous" with Fauna and Nerissa — `bible/characters/Shiori-Novella.md` ([Official, Concerts card S8])

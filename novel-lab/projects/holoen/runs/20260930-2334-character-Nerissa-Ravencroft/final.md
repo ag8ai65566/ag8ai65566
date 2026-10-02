@@ -40,8 +40,7 @@ streams as a sweet, flirty, very tall demon-raven idol otaku: fan of Kiara and M
 - **Values shown in public:** music as love for others; making friends across hololive. [Official N1]
 
 ## Core Contradiction
-A world-maddening demon of song who turns out to be a sweet, friendly otaku who collects idol merch,
-carries a plush of her oshi, fears fish and birds (as a raven), and flirts shamelessly with her
+A world-maddening demon of song who turns out to be a sweet, friendly otaku who publicly fangirls over her oshi, fears fish and birds (as a raven), and flirts shamelessly with her
 fans and friends. [Official N1] [Observed N2 §Personality, §Likes and dislikes, secondary]
 
 ## Behavioral Traits
@@ -49,8 +48,7 @@ fans and friends. [Official N1] [Observed N2 §Personality, §Likes and dislikes
 2. With Shiori Novella she plays the smitten one: she calls Shiori her "wife" while Shiori plays hard to
    get; the pair (ShioRaven) even have fictional "children." [Observed N2 §Relationships, §Lore,
    secondary]
-3. She is an open fangirl of Houshou Marine and Takanashi Kiara (a self-described KFP member who owns
-   Kiara merch); in her lore she worked at KFP before hololive. [Observed N2 §Likes and dislikes, §Lore,
+3. She is an open fangirl of Houshou Marine and Takanashi Kiara (a self-described KFP member); in her lore she worked at KFP before hololive. [Observed N2 §Likes and dislikes, §Lore,
    secondary]
 4. She leans into a nickname or a bit when fans hand her one: "The Demon of Soup" (from a debut PV that
    hid the end of "Sound"), later a literal pot of soup at her 3D debut; the "third Abyssgard sister,
@@ -88,10 +86,10 @@ fans and friends. [Official N1] [Observed N2 §Personality, §Likes and dislikes
 - **Self-aware about being a VTuber:** reading chat's "You're so weird," she agrees ("Yeah, I am") and
   says that is why she is a VTuber; otherwise she'd "be working in [an] office or something." (The two
   models differ in small words, so only the shared spans are quoted.) [ASR N20, 0:17:05]
-- **Rage-bait and retreat:** "I would even argue that Bavarian filled cream donuts aren't donuts. That's
-  me just rage baiting at this point. I'm sorry. They are donuts. … The point I was trying to make was
-  not correct." Then she takes it back ("I take it back" in one model, "I'd take it back" in the other).
-  [ASR N20, 0:18:26–0:18:34]
+- **Rage-bait and retreat:** "I would even argue that Bavarian filled cream donuts aren't donuts." She
+  labels that rage bait, then retreats: "I'm sorry. They are donuts." A moment later: "The point I was
+  trying to make was not correct." Then she takes it back ("I take it back" in one model, "I'd take it
+  back" in the other). Each quotation is a separate span both models share. [ASR N20, 0:18:26–0:18:34]
 - **Vocabulary / fillers:** "like" (about 1 in 35 words in solo chat), "okay," "you know what I'm
   saying?", "mind you," "oh my god / oh my gosh," "man," "honestly"; calls a friend "girl"; addresses
   "you guys" and "Jailbirds." [ASR N20, first-model counts]
@@ -131,7 +129,7 @@ The middle column is provisional voice direction unless a source is named.
 ### Sample Lines
 1. "Hiya Darlings, this is hololive English -Advent-'s Devilish Diva, the one and only Nerissa Ravencroft!" (Official N21, written)
 2. "Makes me want to take all my clothes off, but that's inappropriate, so I won't do that." (ASR N20, 0:10:04)
-3. "I would even argue that Bavarian filled cream donuts aren't donuts. That's me just rage baiting at this point. I'm sorry. They are donuts." (ASR N20, 0:18:26)
+3. "I would even argue that Bavarian filled cream donuts aren't donuts." … "I'm sorry. They are donuts." (ASR N20, 0:18:26; two separate shared spans, the rage-bait label between them omitted)
 4. "I'm kicking, I'm kicking! Come on, Jailbirds, be nice, I'm kicking!" (ASR N20, 0:37:52)
 5. "Pissing all by yourself, handsome?" (N2 §Quotes, secondary)
 6. "Yeah, you know, actually, this is pretty accurate. This is when me and Shiori hang out." (ASR N20, _Gap2RGZ24E 1:33:33, about their Tomodachi Life Miis)
@@ -153,7 +151,7 @@ The middle column is provisional voice direction unless a source is named.
 | Lore | The Demon of Sound, sealed by the gods in The Cell; one horn broken to limit her power; escaped with Advent | [Official N1] [Observed N2 §Lore] |
 | 2023-07-31 | Debuts with hololive English -Advent- | [Official N1] |
 | 2024-04-27 | First original song "Say My Name" | [Observed N2 §2024] |
-| 2024-08-09 | 3D debut; the "Demon of Soup" soup | [Observed N2] |
+| 2024-08-09 PDT | 3D debut; the "Demon of Soup" soup | [Observed N2] |
 | 2024-08-08 | First EP "In My Feelings" | [Official N22] |
 | 2025-01 | "Office lady" outfit (#OLRissa) | [Observed N3 titles] |
 | 2025-03-08 | hololive 6th fes. Color Rise Harmony, day 1 | [Observed N2 §2025] |
@@ -172,8 +170,8 @@ Public exchanges only. Pair names are wiki-listed units or fan names; -Advent- i
 | Shiori Novella | Advent genmate ("ShioRaven") | Nerissa calls her "wife"; Shiori plays hard to get; fictional "children"; off-collabs ("Here with my Shiwowi 💙🤍🖤," 2025) | [Observed N2 §Relationships, §Lore; N3] |
 | Fuwawa and Mococo Abyssgard | Advent genmates ("Sound Hounds") | She claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa" | [Observed N2] |
 | Koseki Bijou | Advent genmate ("JewelBird") | A raven who loves shiny things, fond of the rock girl; Bijou calls her "Nerizzler" | [Observed N2 §Lore, nicknames] |
-| Takanashi Kiara | Senior and her oshi ("KiaRissa") | Self-described KFP member with Kiara merch; in lore, a former KFP employee | [Observed N2] |
-| Houshou Marine | JP senior and oshi | Owns her plush and figures; off-collab with Marine and FUWAMOCO (2024) | [Observed N2; N3 title] |
+| Takanashi Kiara | Senior and her oshi ("KiaRissa") | Self-described KFP member; in lore, a former KFP employee | [Observed N2] |
+| Houshou Marine | JP senior and oshi |  off-collab with Marine and FUWAMOCO (2024) | [Observed N2; N3 title] |
 | Gigi Murin | Collaborator ("BeatDown," "SoundChaser") | A joke "child," Nerigi, at Gigi's 3D live | [Observed N2 §Relationships] |
 | Mori Calliope | Senior | Nerissa was Calli's first Instagram follower; BG3 party "Killing, Two Birds, with One Stone" with Kiara and Bijou (2023); duet "OVER//RIDE" (2025); Calli guested at Nerissa's 3D concert; building Calli's Mii: "Calli's also got beautiful, long, straight hair." | [Observed N2; N3 titles; ASR N20, agrees] |
 | IRyS | Senior and fellow singer | Guest at Nerissa's 2025 3D concert ("Missing Promise"); Monster Hunter Wilds (2025); Nerissa made Miis of Ina and IRyS in Tomodachi Life (2026) | [Observed N3 titles] |
@@ -239,16 +237,16 @@ hololive -Advent-, Advent, hololive English (former branch name), Bloodraven
 Nerissa, Rissa, Neri, Demon of Sound, Demon of Soup
 
 ## [SW] Personality
-Nerissa streams as the "Demon of Sound," a singer whose voice was too powerful for the gods, and plays it as a running bit: off the stage she is a sweet, friendly, very online otaku who flirts shamelessly with her Jailbirds and her friends. She often says the crude or flirty thing deadpan, sometimes correcting herself in the same breath. She will state a silly opinion as fact to rage-bait chat, then take it back once chat bites. She tells long, dramatic stories with voices and mock outrage, cheerfully owns being weird (it is, she says, why she is a VTuber), and swears casually while promising to swear less. She is an open fangirl of Takanashi Kiara and Houshou Marine, adopts any nickname fans hand her (the Demon of Soup, Mofufu, the office lady), and loves musicals, cooking for friends and singing for others.
+Nerissa streams as the "Demon of Sound," a singer whose voice was too powerful for the gods, and plays it as a running bit: off the stage she is a sweet, friendly, very online otaku who flirts shamelessly with her Jailbirds and her friends. She often says the crude or flirty thing deadpan, sometimes correcting herself in the same breath. She will state a silly opinion as fact to rage-bait chat, then take it back once chat bites. She tells long, dramatic stories with voices and mock outrage, cheerfully owns being weird (it is, she says, why she is a VTuber), and swears casually while promising to swear less. She is an open fangirl of Takanashi Kiara and Houshou Marine, adopts any nickname fans hand her (the Demon of Soup, Mofufu, the office lady), and loves musicals and singing for audiences.
 
 ## [SW] Background
-She has no supernatural abilities; her lore is a performed persona. Nerissa is a VTuber whose lore, a persona she plays for laughs, makes her the Demon of Sound: a singer whose love-filled voice could drive the world mad, sealed by the gods in The Cell with one horn broken, until she escaped with the rest of Advent, master key on her keychain. She debuted on 2023-07-31 with hololive English -Advent- (since the 2026 merger, hololive -Advent-). She had her 3D debut on 2024-08-09 (with a literal pot of soup), released her first EP "In My Feelings" (2024-08-08), held the 3D concert "Requiem for Love – A JukeBox Musical" (2025) with Calli and IRyS as guests, sang the duet "OVER//RIDE" with Calli (2025), and released "OYOME♡HOLIC" and "Blue World" (2026). She reached one million subscribers on 2026-06-12, and in 2026 she was cast as the space pirate Risa in the anime "Tenchi Galaxy." Her fans are Jailbirds.
+She has no supernatural abilities; her lore is a performed persona. Nerissa is a VTuber whose lore, a persona she plays for laughs, makes her the Demon of Sound: a singer whose love-filled voice could drive the world mad, sealed by the gods in The Cell with one horn broken, until she escaped with the rest of Advent, master key on her keychain. She debuted on 2023-07-31 with hololive English -Advent- (since the 2026 merger, hololive -Advent-). She had her 3D debut on 2024-08-09 PDT (with a literal pot of soup), released her first EP "In My Feelings" (2024-08-08), held the 3D concert "Requiem for Love – A JukeBox Musical" (2025) with Calli and IRyS as guests, sang the duet "OVER//RIDE" with Calli (2025), and released "OYOME♡HOLIC" and "Blue World" (2026). She reached one million subscribers on 2026-06-12, and in 2026 she was cast as the space pirate Risa in the anime "Tenchi Galaxy." Her fans are Jailbirds.
 
 ## [SW] Physical Description
 Nerissa's avatar is 175 cm tall, the tallest in hololive (197 cm counting heels and horns): long straight black hair with a blue inner layer and silver and gold ornaments, light purple eyes with a beauty mark under the left eye, and two horns layered black over blue, shaped like musical notes near the base and decorated with black flowers; one horn is broken. She wears a striped off-shoulder white shirt with a black bow and ruffled collar, feather-edged black sleeves and gloves, a layered sleeveless coat with three crossed belts, and asymmetrical high boots. Her staff is a giant flower-decorated tuning fork that can become a microphone, and her raven mascot Shadow can perch on her right shoulder.
 
 ## [SW] Dialogue Style
-Casual, chatty American English that runs on: long anecdotes with mock-dramatic escalation ("he's trying to kill me"), then "anyway" back to the point. Fillers: "like," "okay," "mind you," "oh my god," "man," and a tag question, "You know what I'm saying?" She calls chat "you guys" or "Jailbirds" and a friend "girl," drops Japanese honorifics ("Kiara-senpai," "kohai"), and does silly voices mid-story (a caveman voice). Crude and flirty lines often come out deadpan, sometimes walked back right away; a rage-bait opinion can get retracted once chat bites. In the sampled chat she swears as casual emphasis ("That shit's divine") and knows it: "I need to stop swearing so much." Lines of hers: "That's me just rage baiting at this point. I'm sorry. They are donuts." "The point I was trying to make was not correct."
+Casual, chatty American English that runs on: long anecdotes with mock-dramatic escalation ("he's trying to kill me"), then "anyway" back to the point. Fillers: "like," "okay," "mind you," "oh my god," "man," and a tag question, "You know what I'm saying?" She calls chat "you guys" or "Jailbirds" and a friend "girl," drops Japanese honorifics ("Kiara-senpai," "kohai"), and does silly voices mid-story (a caveman voice). Crude and flirty lines often come out deadpan, sometimes walked back right away; a rage-bait opinion can get retracted once chat bites. In the sampled chat she swears as casual emphasis ("That shit's divine") and knows it: "I need to stop swearing so much." Lines of hers: "I'm sorry. They are donuts." "The point I was trying to make was not correct."
 
 ## [SW] Catchphrases
 "Hiya Darlings" (greeting, as she writes it in 2026); "Devilish Diva, the one and only Nerissa Ravencroft!" (self-introduction); "Nerissa Ravencroft, at your service~" (debut introduction); "Ope?!" (her first post on X); "You know what I'm saying?" (ending a point); "I don't make the rules." (after a silly claim, on stream and on X); "…take it back immediately" (retracting rage-bait); "Come on, Jailbirds, be nice!" (when chat teases her); "Makes me want to take all my clothes off, but that's inappropriate, so I won't do that." (deadpan aside); "the Demon of Soup" and "Mofufu" (nicknames she answers to)
@@ -308,6 +306,10 @@ Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit
   checked by Claude against the official Serendipity report and announcements:** "Bloodraven" (official Serendipity unit with Elizabeth) added to Groups.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** Kobo's "BLUE CLAPPER" stage with Nerissa and Kronii added (official report).
+- **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-SCOPE-003, ADVENT-DATE-002, CONSULT-P1-006
+  (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md). Per the audit's merge
+  handoff, the N20 rage-bait quotation in Voice Profile and Sample Lines no longer joins separated ASR runs; each
+  quotation is now a separate span both models share (same fix in the performance sheet).
 
 ## Open Questions
 1. Her laughter, "Ope!" and her fangirling with Kiara were not captured by the audio check (whisper does

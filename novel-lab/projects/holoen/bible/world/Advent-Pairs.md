@@ -93,7 +93,7 @@ Relationship web.
   (Shiori), "GigiMoco" (Mococo); Gigi and Cecilia hijacked FUWAMOCO MORNING #167; Gigi voices a role in
   Shiori's "Into The Void" (2026). [Observed S2; S1]
 - **Cecilia Immergreen:** GAGA; "Cecemoco"; a Walking Dead off-collab with Bijou (2025) and a Chrono Trigger
-  off-collab with FUWAMOCO (2026). [Observed S1]
+  off-collab with Mococo (2026). [Observed S1]
 - **Raora Panthera:** "Graondstone" with Bijou and Kaela; FUWAMOCO's 2026 Serendipity unit partner (B.F.F),
   who drew them a shikishi before her debut. [Official S6] [Observed S1]
 - **Elizabeth Rose Bloodflame:** Nerissa's "mortal enemy" in their lore (a performed rivalry) and 2026 duo
@@ -110,8 +110,7 @@ Relationship web.
 - **JP:** FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo); they game with Shirakami
   Fubuki and Hakui Koyori ("FUWAMOKOYO"); Okayu and Korone made cameos at their 3D debut; Oozora Subaru sang
   "HOT DUCK!" with Bijou and the twins; Akai Haato and Bijou are "Red Stone"; Ichijou Ririka (ReGLOSS,
-  originally DEV_IS) played Smash Bros. with Bijou with a loser's punishment; Shiori found hololive through
-  Inugami Korone's clips. [Observed S1; S2]
+  originally DEV_IS) played Smash Bros. with Bijou with a loser's punishment. [Observed S1; S2]
 - **HOLOSTARS EN:** Machina X Flayon and Shiori ("Goth Pilot"); Regis Altare games with Bijou and Shiori;
   Jurard T Rexford in Shiori's Monster Hunter collab. [Observed S2; S1]
 
@@ -238,6 +237,8 @@ A moai head opening to reveal Bijou; pink and blue paws; a two-tone head of hair
   P0):** Bijou's audition history removed (outside scope).
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Last Writes" (Calli and Shiori, official Serendipity unit) added to Other Names.
+- **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-SCOPE-002, ADVENT-TIE-001
+  (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

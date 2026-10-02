@@ -39,8 +39,7 @@ Unit / shared channel / running show.
   segments moving, and sometimes argues with Fuwawa. Most of their streams are shared, though each has
   also streamed solo. [Observed S1 Fuwawa, Mococo §Personality, secondary; S3 titles]
 - **How they sound together (2026 duo chat):** fast alternation and echoing: one twin finishes or confirms
-  the other's line ("yeah" about once every 40 words; "Right! … Exactly."), and one undercuts the other
-  ("I'm a donut pro, okay?" … "That's a lie," the second model hears). The combined recording has
+  the other's line (the first model counts "yeah" about once every 40 words). Individual speaker turns remain unverified. The combined recording has
   window medians of 401–410 Hz; these measurements cannot be assigned separately to either twin, and
   transcription cannot tell the voices apart, so duo lines stay unattributed. Casual "bau" was not transcribed in these windows (the models may not write it).
   [ASR S20]
@@ -52,10 +51,7 @@ Unit / shared channel / running show.
   8 August. [Observed S1 Mococo §Pero, secondary]
 
 ## After Serendipity (2026)
-In a July 2026 after-party chat they pitched venues for the next concert ("The moon!") and an endurance concert
-on a cruise ship ("They need to put us in charge." "Right! … Exactly."). [ASR S20, YDP2JT3gce4 2:08:10,
-2:12:03; both models on the quoted spans] Their off days around the concert are private travel and are not
-recorded.
+In a July 2026 after-party chat, FUWAMOCO joked about future concert venues and an endurance concert on a cruise ship. [ASR S20, YDP2JT3gce4 2:08:10–2:12:18; paraphrase; individual speakers unverified] 
 
 ## FUWAMOCO MORNING
 A short morning show whose regular format is Fridays, Wednesdays and Mondays (F-W-M), from 2023-07-31: hololive news and
@@ -160,7 +156,7 @@ Faction
 FWMC, Fuwawa and Mococo, Abyssgard twins, FUWAMOCO MORNING, Pero
 
 ## [SW] Description
-FUWAMOCO are the twin demonic guard dogs of hololive -Advent-, Fuwawa (older, blue) and Mococo (younger, pink), who share one channel and usually one microphone; their mission is "to protect your smile." They open with "Hello hello bau bau!", each insists she is not the other (Fuwawa is "not a chihuahua"), and they punctuate everything with "bau bau," demon-dog for nearly anything. They often say the same thing at the same time ("FUWAMOCO sync") and are embarrassed by it. Fuwawa is the airheaded big sister who teases Mococo and plays an "evil twin" in their comedy; Mococo brings energetic reactions and earnest Pup Talks and keeps the show's segments moving, and the two sometimes argue. Pero, "The Great Perroccino," is their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Their show FUWAMOCO MORNING's regular format is Monday, Wednesday and Friday, with segments like "Pero Sighting," "Doggie of the Day" and a "Misunderstanding Corner." Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo). Together they talk fast and echo each other ("Right! … Exactly.").
+FUWAMOCO are the twin demonic guard dogs of hololive -Advent-, Fuwawa (older, blue) and Mococo (younger, pink), who share one channel and usually one microphone; their mission is "to protect your smile." They open with "Hello hello bau bau!", each insists she is not the other (Fuwawa is "not a chihuahua"), and they punctuate everything with "bau bau," demon-dog for nearly anything. They often say the same thing at the same time ("FUWAMOCO sync") and are embarrassed by it. Fuwawa is the airheaded big sister who teases Mococo and plays an "evil twin" in their comedy; Mococo brings energetic reactions and earnest Pup Talks and keeps the show's segments moving, and the two sometimes argue. Pero, "The Great Perroccino," is their fictional dog mascot and self-proclaimed mentor; they call him "nasty" in their public bits. Their show FUWAMOCO MORNING's regular format is Monday, Wednesday and Friday, with segments like "Pero Sighting," "Doggie of the Day" and a "Misunderstanding Corner." Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo). Together they alternate turns and echo brief confirmations.
 
 ## [SW] Rules
 Two separate people: Fuwawa and Mococo are never one character, though both voices are very high and close. A line belongs to one twin unless they speak in sync. "Bau bau" can mean anything; its meaning comes from tone. Their demon-world origin is a performed persona, and Pero is a fictional mascot, not a real animal in the story. A collab one twin joins alone (such as Fuwawa's 2026 trio with Calli and Gigi) is not a FUWAMOCO appearance.
@@ -198,6 +194,8 @@ Pink and blue side by side; paw prints; two voices from one microphone saying th
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
   P0):** the post-concert days off and travel removed from the dossier and Description (private trips are
   outside scope); the after-party's concert-venue jokes kept.
+- **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-QUOTE-001, CONSULT-P0-002
+  (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

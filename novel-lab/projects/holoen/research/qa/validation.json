@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-01T21:04Z",
- "snapshot": "a351dbc46615dcded80f68849c0d9bed742fcfb8b5e784da1742816559c88fae",
+ "checked_at": "2026-10-02T01:53Z",
+ "snapshot": "707a4ab1be377880226053fb76535a21aef895414c15a0afdfb4f5640d7bd8f6",
  "blocking_failures": [
   "V10",
   "V11",
@@ -20,7 +20,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot a351dbc46615dcded80f68849c0d9bed742fcfb8b5e784da1742816559c88fae",
+    "snapshot 707a4ab1be377880226053fb76535a21aef895414c15a0afdfb4f5640d7bd8f6",
     "66 inputs"
    ],
    "finding_ids": []
@@ -130,7 +130,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-global.md"
+    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
@@ -156,7 +156,7 @@
     "Takanashi-Kiara · Relationships: …nesian collaborator (\"PavoNashi\"; a VR \"vacation\"; the bird unit HOLOTORI). Ko…",
     "Cross-Branch-Friends · Rules: …ibe relative seniority, not language or nationality; forms of address and levels …",
     "hololive · Description: …buted earlier or later, not language or nationality; formality varies by relation…",
-    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-global.md"
+    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
@@ -167,7 +167,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-global.md"
+    "review pending: research/qa/audit-myth1.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
