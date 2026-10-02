@@ -7,3 +7,4 @@
 - 2026-10-01 21:06 作者裁決收錄 final.md（sha256 fd6dfc4140b5）：Author decision (2026-10-01): CONSULT-P1-006, Kronii's sample line quotes its two shared ASR spans separately.
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 a8491838a6b5）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 0086a28d0993）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 a0ec6ae3904a）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending

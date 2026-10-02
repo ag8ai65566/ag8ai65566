@@ -4,3 +4,4 @@
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 e1290a30cae5）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 02:15 作者裁決收錄 final.md（sha256 93bff4173364）：Author decision (2026-10-02): CONSULT-P1-007, Mococo solo-window search recorded; voice directions stay provisional
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 a8f030f0433d）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 4ef0b40f8613）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round

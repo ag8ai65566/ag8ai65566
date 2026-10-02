@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-02T07:02Z",
- "snapshot": "2cde1945adc8f784b4c145af8cfa66621ba08bb15df50c63d5523a8d77e9beb3",
+ "checked_at": "2026-10-02T07:36Z",
+ "snapshot": "c7fe3381e026f5ae6139a80411cd87a14f8911a58672b6af8222fd21fdfc0d04",
  "blocking_failures": [
   "V02",
   "V10",
@@ -21,8 +21,8 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 2cde1945adc8f784b4c145af8cfa66621ba08bb15df50c63d5523a8d77e9beb3",
-    "73 inputs"
+    "snapshot c7fe3381e026f5ae6139a80411cd87a14f8911a58672b6af8222fd21fdfc0d04",
+    "78 inputs"
    ],
    "finding_ids": []
   },
@@ -33,11 +33,10 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "characters 19/33",
-    "world 25/28",
+    "characters 23/33",
+    "world 26/28",
     "sheets 23/33",
-    "sheet/card mismatch: ['AZKi', 'Hoshimachi-Suisei', 'Nakiri-Ayame', 'Nekomata-Okayu']",
-    "roster vs bible: ['AZKi', 'Hakui-Koyori', 'Hoshimachi-Suisei', 'Houshou-Marine', 'JP-Senpai-Pairs', 'JP-Senpai-Pairs-2', 'Kazama-Iroha', 'Kikirara-Vivi', 'Laplus-Darknesss', 'Nakiri-Ayame', 'Nekomata-Okayu', 'Sakamata-Chloe', 'Shirogane-Noel', 'Shishiro-Botan', 'Takane-Lui', 'Yukihana-Lamy', 'holoX']"
+    "roster vs bible: ['Hakui-Koyori', 'Houshou-Marine', 'JP-Senpai-Pairs-2', 'Kazama-Iroha', 'Kikirara-Vivi', 'Laplus-Darknesss', 'Sakamata-Chloe', 'Shirogane-Noel', 'Shishiro-Botan', 'Takane-Lui', 'Yukihana-Lamy', 'holoX']"
    ],
    "finding_ids": []
   },
@@ -125,7 +124,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "relationship web: 5 one-way ties (coverage, not errors; tools/web_check.py)",
+    "relationship web: 29 one-way ties (coverage, not errors; tools/web_check.py)",
     "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
@@ -155,7 +154,7 @@
     "bible/characters/IRyS.md:90 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
     "bible/characters/IRyS.md:130 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty.\"",
     "bible/characters/IRyS.md:138 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
-    "bible/characters/IRyS.md:249 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
+    "bible/characters/IRyS.md:250 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
     "bible/characters/Ninomae-Inanis.md:75 quotes past a shared ASR span (ina.md 0:04:52): \"That's the Forbidden WAH. We don't say that in public.\"",
     "bible/characters/Ninomae-Inanis.md:131 quotes past a shared ASR span (ina.md 0:04:52): \"That's the Forbidden WAH. We don't say that in public.\"",
     "bible/characters/Ninomae-Inanis.md:131 quotes past a shared ASR span (ina.md 0:04:52): \"a fourth [WAH] with a different caption, and\"",
@@ -166,7 +165,7 @@
     "bible/characters/Ouro-Kronii.md:201 quotes past a shared ASR span (kronii.md 1:39:19): \"Okay, that was my bad.\"",
     "bible/characters/Shiori-Novella.md:255 quotes past a shared ASR span (shiori.md 2:23:16): \"I'm really bad at remembering names.\"",
     "bible/characters/Takanashi-Kiara.md:226 quotes past a shared ASR span (kiara.md 2:42:58): \"You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis.\"",
-    "bible/characters/Takanashi-Kiara.md:387 quotes past a shared ASR span (kiara.md 2:42:58): \"You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis.\"",
+    "bible/characters/Takanashi-Kiara.md:389 quotes past a shared ASR span (kiara.md 2:42:58): \"You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis.\"",
     "export/elevenlabs/Ceres-Fauna.md:40 quotes past a shared ASR span (fauna.md 0:45:36): \"If you heard your name, you will now be the recipient of my next spell.\"",
     "export/elevenlabs/Fuwawa-Abyssgard.md:64 quotes past a shared ASR span (fuwamoco.md 5:55:28): \"It was a lot of fun! Bau bau!\"",
     "export/elevenlabs/IRyS.md:32 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
@@ -237,6 +236,7 @@
    "locator": null,
    "evidence": [
     "Ouro-Kronii: no source hash (run stamp-sheets after reviewing the sheet)",
+    "Nakiri-Ayame: no source hash (run stamp-sheets after reviewing the sheet)",
     "Watson-Amelia: no source hash (run stamp-sheets after reviewing the sheet)",
     "Elizabeth-Rose-Bloodflame: no source hash (run stamp-sheets after reviewing the sheet)",
     "Mori-Calliope: no source hash (run stamp-sheets after reviewing the sheet)",
@@ -252,8 +252,11 @@
     "Fuwawa-Abyssgard: no source hash (run stamp-sheets after reviewing the sheet)",
     "Nerissa-Ravencroft: no source hash (run stamp-sheets after reviewing the sheet)",
     "Shiori-Novella: no source hash (run stamp-sheets after reviewing the sheet)",
+    "Nekomata-Okayu: no source hash (run stamp-sheets after reviewing the sheet)",
     "Ceres-Fauna: no source hash (run stamp-sheets after reviewing the sheet)",
     "Cecilia-Immergreen: no source hash (run stamp-sheets after reviewing the sheet)",
+    "Hoshimachi-Suisei: no source hash (run stamp-sheets after reviewing the sheet)",
+    "AZKi: no source hash (run stamp-sheets after reviewing the sheet)",
     "Nanashi-Mumei: no source hash (run stamp-sheets after reviewing the sheet)"
    ],
    "finding_ids": []

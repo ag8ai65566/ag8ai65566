@@ -253,6 +253,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Watson Amelia (affiliate) | Fellow EN ("Time Duo") | Guested at Kronii's 2026 3D birthday live | [Observed K8 §Relationships, K33, secondary] |
 | Gawr Gura (graduated) | Fellow EN ("SNOTCast" with Fauna and Mumei) | A friendly rivalry and Gura's "CLOCK WOMAN" nickname are reported but [Unverified] | [Observed K8 §Relationships, secondary] |
 | Kaela Kovalskia | hololive ID ("TimeSmith") | Kaela is a fan of Kronii's voice; constant bickering is reported but [Unverified] | [Observed K8 §Relationships, K35, secondary] |
+| Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) | [S1 OMDzBQohAf8; world card "holoX"] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026), as on the card.
@@ -536,6 +537,7 @@ Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "B
 - **2026-10-02, cast expansion (author: add Hakos Baelz, and complete everyone's relationship web):** Bae entry extended (collabs; the leap-year lore) (sources in Bae's file, HB3/HB5/HB8/HB20, and the world card "Hakos Baelz Pairs").
 - **2026-10-02, relationship web (tools/web_check.py):** Elizabeth added to Relationships, mirroring the tie already on the other card (same evidence there).
 - **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** "tsundere granny" is now an attributed paraphrase from Kronii's wiki page (the reviewer could not find its source; Claude located it there); Fortnite stays (Claude confirmed yA8-ALtC4IY and 0mbr6HbgH9E, 2024-06-18, in the archive's metadata); "Dance Monkey" in Sydney (2025-07-12, official World Tour '25 report) added; the leap years stay as fan-recorded lore; the Shiori clause was shortened for length.
+- **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi):** Lui, Noel and Vivi added to the dossier (elytra hunting; Gartic Phone); the Relationships field is at its limit. (sources: the new member files, "JP Senpai Pairs 2" and "holoX".)
 
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:

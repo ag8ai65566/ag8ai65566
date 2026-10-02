@@ -9,8 +9,9 @@
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, soft and cute mid-high voice with a playful, mock-haughty edge; chatty and
 unhurried, dissolving into quick giggles; shaky and breathless when frightened."
-- Register basis: 2026 chat windows measured about 244–263 Hz window medians, higher when scared
-  (`research/audio-check/ayame.md`).
+- Giggles are a provisional performance choice (secondary description), not a listening observation.
+- This is an original voice-design choice. Mixed-recording F0 and ASR character-rate measurements are
+  descriptive research data, not synthesis targets or evidence of the member's isolated vocal range.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **40%** (API `0.40`) (giggles and mood swings). Similarity **75%** (API `0.75`).
@@ -25,20 +26,23 @@ unhurried, dissolving into quick giggles; shaky and breathless when frightened."
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Greeting | `[bright, playful]` | "Konnakiri!" |
+| Greeting | `[bright, playful]` | "Konnakiri!" (secondary transcription) |
 | The oni act | `[mock-haughty]` | "Yo da yo!" |
 | Opening a stream | `[polite, careful]` | "Kikoete orimasu deshō ka?" |
 | Teasing chat | `[pouting]` | "Urusai!" … "Komatta hitotachi." |
 | Horror game | `[scared, shaky]` | "Ima odorokasaretara hontō ni shinzō ga tomarisō." |
+| FPS clutch | `[focused, quick]` | **Style demo:** "Mikata, ikeru yo!" ("Team, we can do this!") |
 | A bad pun | `[giggles]` → `[laughs harder]` | (tag only) |
 
-With people (provisional): Fubuki and Mio `[comfortable, giggly]`; Okayu `[teasing]`; Kiara `[polite, excited]`.
+With people (proposed scene directions, not observed conversational defaults): Fubuki and Mio `[comfortable, giggly]`;
+Okayu `[teasing]`; Kiara `[polite, excited]`.
 
 ## 5. Signature sounds
-- `[giggles]` (tag only); "Mō~" (spoken).
+- `[giggles]` (tag only); **Style demo:** "Mō~" (spoken).
 
 ## 6. Pronunciation (provisional; test)
-- Nakiri Ayame `/nɑˈkiɾi ɑˈjɑmeɪ/` · Konnakiri `/kɔnːɑˈkiɾi/` · Yo (余) `/joʊ/`
+- Japanese reading: なきり あやめ; こんなきり; 余＝よ. Regional accent and pitch-accent patterns are unverified.
+  Listen to how the chosen voice says them and adjust.
 
 ## 7. Don't
 - A cruel or menacing oni; a cold, superior read; a monotone.
@@ -51,4 +55,5 @@ With people (provisional): Fubuki and Mio `[comfortable, giggly]`; Okayu `[teasi
 [scared, shaky] Koe ga furuechau.
 [scared, shaky] Ima odorokasaretara hontō ni shinzō ga tomarisō.
 ```
-(Line 2 is her greeting from the wiki; lines 1, 3–5 are her lines, quoted only where both transcripts agree.)
+(Line 2 is her greeting as a secondary transcription; lines 1, 3–5 are her lines, quoted only where both
+transcripts agree.)

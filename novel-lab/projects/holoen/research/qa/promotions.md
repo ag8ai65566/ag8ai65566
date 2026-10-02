@@ -17,6 +17,9 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 42a05e475b44）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 9398b6643d78）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
 - 2026-10-02 03:25 作者裁決收錄 final.md（sha256 247674a90936）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 9da0b903d851）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 540a543cbaf8）：Author decision (2026-10-02): Hakos Baelz added; Calli Relationships trimmed to the 350-word limit
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 bb514a5131fd）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 
 ## 20260930-0704-character-Ouro-Kronii
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 2707b4804e67）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -27,6 +30,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 231a45be34e0）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-01 21:06 作者裁決收錄 final.md（sha256 fd6dfc4140b5）：Author decision (2026-10-01): CONSULT-P1-006, Kronii's sample line quotes its two shared ASR spans separately.
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 a8491838a6b5）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 0086a28d0993）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 a0ec6ae3904a）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
 
 ## 20260930-1113-character-Gawr-Gura
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 f4aa5738fe90）：Claude 比照作者 2026-09-30 對 Kronii/Calli/Ina/Ame 的裁決(b) 收錄：GPT 驗收第 2 輪（上限）意見已全部照改，並依作者的近期權重原則調整；不算 GPT 核准，作者可推翻
@@ -35,6 +40,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 63318484e38e）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 7c0664d13e30）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 849e726f477e）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 b809cfd9f005）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 6268d365f280）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 
 ## 20260930-1113-character-Ninomae-Inanis
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 c3bf69115852）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -46,6 +53,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 eb77b9fad141）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 e6d610ae1262）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 cf7d5e3ad59d）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 c9ebd2d07005）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 a3e8c2f37f97）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 
 ## 20260930-1113-character-Takanashi-Kiara
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 415492d57d94）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -59,6 +68,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 1d87f23af867）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 1462fb3877aa）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 76104e360380）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 27ab127fd035）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 a326e685de9c）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 
 ## 20260930-1113-character-Watson-Amelia
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 da6369c7127a）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -67,6 +78,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 02d1c11e6e6a）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 6f5acefd0577）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 fd0a407583ba）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 4d86a9de6246）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 8b29c94c18bf）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
 
 ## 20260930-2309-world-AmeSame
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 03602b5cf2fd）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -124,6 +137,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 89cb26ccb973）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 ba2a5086b75e）：作者裁決：加入 Fauna 與 Mumei 後的關係與世界觀連動修改（含 GPT 一輪審查的修正），依作者指示只審一輪
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 0d2fcd380c0a）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 b80a53219f8b）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
 
 ## 20260930-2334-character-IRyS
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 4fb35ef5dc61）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -132,6 +146,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 b1a1a319e2db）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 a87383909b3a）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 03:25 作者裁決收錄 final.md（sha256 ca4a07b6409d）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 6e89a2b3a2b5）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 455cf050e61d）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 
 ## 20260930-2334-character-Nerissa-Ravencroft
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 aa61d24bfbcb）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -145,6 +161,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 c0292858811c）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 e54431198c0c）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 03:25 作者裁決收錄 final.md（sha256 3b7fd567d1a4）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 267a35492abd）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 4cbc997cf804）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
 
 ## 20261001-0001-world-IRyS-and-Nerissa-Pairs
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 9d957e0dc2fc）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -162,6 +180,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 065cb805c3f3）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 b69265972269）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 81d47b96ddbf）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 34b069a05751）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
 
 ## 20261001-0018-world-Cross-Branch-Friends
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 e0a5a871eef9）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -169,6 +188,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 eec560331722）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 2bdbc0a32c5f）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 5c8af2373b5c）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 ebb238c5b4ff）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:36 作者裁決收錄 final.md（sha256 4a199ef93413）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged by Claude (Ina–Okayu wording; TakoNeko alias moved to JP Senpai Pairs)
 
 ## 20261001-0018-world-hololive-History-2023-2026
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 cac46457599b）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -190,6 +211,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 dd1e7e596402）：作者裁決：GPT 一輪審查（runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md）已合併，依作者指示只審一輪；作者 2026-10-01 下令加入 Fauna 與 Mumei
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 8b6bb0af69b5）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 58177a0ddea1）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 e684eb396bdb）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
 
 ## 20261001-0430-character-Nanashi-Mumei
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 2d65ddb23b31）：作者裁決：GPT 一輪審查（runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md）已合併，依作者指示只審一輪；作者 2026-10-01 下令加入 Fauna 與 Mumei
@@ -198,6 +220,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 301fc74cc461）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 6e7d1d1f7ba0）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 17f0f87a8f52）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 ff4d7ad1baf5）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 8fdccfa046e7）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 
 ## 20261001-0454-world-Fauna-and-Mumei-Pairs
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 9c0d1dd0a9f8）：作者裁決：GPT 一輪審查（runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md）已合併，依作者指示只審一輪；作者 2026-10-01 下令加入 Fauna 與 Mumei
@@ -211,17 +235,22 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 4a52aba0c4f4）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 83bb9fa8eaeb）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 d45528c816b9）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 d519e3581238）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 f9061dbceadf）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
 
 ## 20261001-0548-character-Shiori-Novella
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 35fa2b9aac3f）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 599b4dcced02）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 b58865cce2de）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 6a572d71de24）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 0773076743c2）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
 
 ## 20261001-0549-character-Fuwawa-Abyssgard
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 65d87ad37465）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 1d8ef2cb9efd）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 5a7714bacf71）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 084178fbc8b1）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 146c23efc666）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 
 ## 20261001-0549-character-Mococo-Abyssgard
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 7c7171f368d9）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
@@ -229,6 +258,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 f3c8a69c24b0）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 e1290a30cae5）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 02:15 作者裁決收錄 final.md（sha256 93bff4173364）：Author decision (2026-10-02): CONSULT-P1-007, Mococo solo-window search recorded; voice directions stay provisional
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 a8f030f0433d）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 4ef0b40f8613）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 
 ## 20261001-0549-world-Advent-Pairs
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 18860e863164）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
@@ -248,6 +279,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 06f3cf172332）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 71a657c0b769）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 08daa7f89c80）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 10c90fbb548b）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 2769d3a88d2e）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
 
 ## 20261001-1032-character-Elizabeth-Rose-Bloodflame
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 5772b6460730）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
@@ -255,12 +288,15 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 4161dd43cc01）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 5deb302e763a）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 364c68ad077f）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 00ae9f6cc0a8）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
 
 ## 20261001-1032-character-Gigi-Murin
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 211875ad4315）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 b738bbb71838）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 5469aa8dac98）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 03:25 作者裁決收錄 final.md（sha256 f3005a7454f9）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 ab8c6a8cde9f）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 4d8a32d14e88）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
 
 ## 20261001-1032-character-Raora-Panthera
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 59e230bd08cd）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
@@ -270,6 +306,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 c0fe040210e8）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 afe5af6e6966）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
 - 2026-10-02 03:25 作者裁決收錄 final.md（sha256 a45c1daaccb3）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 088a4ef3ad46）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 0f153278cd7f）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
 
 ## 20261001-1032-world-Justice-Pairs
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 ef62a1174aa6）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
@@ -279,3 +317,25 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 ## 20261001-1032-world-hololive--Justice
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 df1164544e49）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 2c7e406dec23）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+
+## 20261002-0236-character-Hakos-Baelz
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 bf9f4b49eeab）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 7f5e7fdb1941）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
+
+## 20261002-0236-world-Hakos-Baelz-Pairs
+- 2026-10-02 07:02 作者裁決收錄 final.md（sha256 62cc8028a666）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude
+
+## 20261002-0529-character-AZKi
+- 2026-10-02 07:12 作者裁決收錄 final.md（sha256 c26b0089a9fc）：Author decision (2026-10-02): Hoshimachi Suisei and AZKi added to the cast; GPT reviews each card one round only (run A), merged by Claude
+
+## 20261002-0529-character-Hoshimachi-Suisei
+- 2026-10-02 07:12 作者裁決收錄 final.md（sha256 812a7171957f）：Author decision (2026-10-02): Hoshimachi Suisei and AZKi added to the cast; GPT reviews each card one round only (run A), merged by Claude
+
+## 20261002-0529-character-Nakiri-Ayame
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 523267b57dd5）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude
+
+## 20261002-0529-character-Nekomata-Okayu
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 97457c9edaf6）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude
+
+## 20261002-0529-world-JP-Senpai-Pairs
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 15ee00e65441）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude

@@ -10,3 +10,4 @@
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 e54431198c0c）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 03:25 作者裁決收錄 final.md（sha256 3b7fd567d1a4）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 267a35492abd）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:34 作者裁決收錄 final.md（sha256 4cbc997cf804）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
