@@ -9,6 +9,7 @@
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, clear, bright, youthful voice with a sporty edge; earnest and polite in samurai mode, quick, loud and pumped when competing, laughing easily at her own mistakes."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **45%** (API `0.45`) (earnest by default, pumped when competing; an untested starting choice).
@@ -32,7 +33,7 @@
 
 With people (proposed scene directions, not observed conversational defaults): AZKi `[relaxed, playful]`; La+ `[patient, teasing]`; Kiara `[excited]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "de gozaru" (spoken, as a set piece); "Oi!" (spoken)
 - `[laughs]` (tag only)
 

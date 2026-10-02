@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 9fd1ef3.
+Snapshot: git 6545e34.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Cori Malliope|Calliope Mori|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|Takamori|TakaMori|CHADCast|Calliope|Mor Mori|CallioP|森カリオペ|Calli|Mori|LYRA|Mowi)(
+Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Cori Malliope|Mori Calliope|Calliope Mori|Last Writes|Kawaiiope|Miss Mori|CHADCast|Takamori|TakaMori|Mor Mori|Calliope|CallioP|森カリオペ|Calli|Mowi|Mori|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -83,6 +83,15 @@ Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Cori Malliope|Calli
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Mori Calliope | "Death Star" | Calli is openly starstruck by her (Calli's file); "CapSule" and "Wicked" (2022); Suisei sang "Wicked" at Calli's first solo concert, New Underworld Order; by Suisei's own account a guest at "UNCUT ROCK!!" (2026); a "Talkin' Live Shows" collab (2023); Calli's watch party of her first tour (2024-11-14) | [S1] [ASR SU20] [SU2 §Relationships] |
 - `bible/characters/Hoshimachi-Suisei.md › Story Engine`: 1. Calli asks Suisei to rehearse "Wicked" one more time and cannot stop saying "senpai."
 
+### from Houshou Marine
+- `bible/characters/Houshou-Marine.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's first HOLOTALK guest (2020), on Calli's first English lesson (2022), at an off-collab house party with Calli and Bae (2023), in off-collabs with FUWAMOCO and Nerissa (2024) and as a guest at Ina's "Pleides"
+- `bible/characters/Houshou-Marine.md › [SW] Background`: (2024); she features in the horror game "Truth of Beauty Witch," which Calli, and Bae with Mumei, played, and she sang for Elizabeth's 2026 birthday.
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Mori Calliope: Calli's English lesson #01 (2022), Mario Kart (2021) and a house-party off-collab with Bae (2023).
+- `bible/characters/Houshou-Marine.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her as a guest on Calli's first English lesson (2022) and Kiara's first HOLOTALK (2020), and joining off-collabs with Calli and Bae (2023), FUWAMOCO and Nerissa (2024). [MA5]
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2022-02-19 | Calli's HOLO ENGLISH LESSON #01 with Ina and Fubuki | [MA5 bfUEbp3xk4o] |
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2023-08 | The horror game "Truth of Beauty Witch -Marine's treasure ship-" features her (Calli played it 08-14; Bae with Mumei 08-23); an off-collab house party with Calli and Bae (08-14) | [Observed MA2 §Events] [MA5 Mf-sAjsuSig, RY1GkF4jMls, DY5VThfehW8] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Mori Calliope | — | English lesson #01 (2022); Mario Kart with Bae and Reine (2021); a house-party off-collab with Bae (2023); Calli played the horror game featuring Marine on her own stream (2023) | [MA5 bfUEbp3xk4o, X3pHIQAvpYU, DY5VThfehW8, Mf-sAjsuSig] |
+
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Groups`: hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast
 - `bible/characters/IRyS.md › [SW] Relationships`: Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae.
@@ -153,6 +162,14 @@ Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Cori Malliope|Calli
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Mori Calliope | Senior; Serendipity 2026 duo ("Last Writes") | Calli's "#DEEP" kids'-movie talk (2024-01-09) and Stardew Valley (2024-12-20); in the official interview Calli is "a little obsessed with her" and Shiori admires Calli's "work ethic and boundaries"; their dynamic: "Unhinged" (Calli) | [Official SN4] [Observed Calli archive] |
 - `bible/characters/Shiori-Novella.md › Arc`: - **Starting point:** active member at the 2026 baseline: her first original song, the Serendipity duo with Calli, "Into The Void."
 - `bible/characters/Shiori-Novella.md › Story Engine`: 3. Calli and Shiori record a "deep-dive" on a kids' cartoon that goes too far; the manager bonks both.
+
+### from Shirogane Noel
+- `bible/characters/Shirogane-Noel.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Mori Calliope: HOLOYOI #02 with Flare (2023).
+- `bible/characters/Shirogane-Noel.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her as Kiara's 22nd HOLOTALK guest (2022) and a guest with Flare on Calli's HOLOYOI #02 (2023). [NO5]
+- `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2023 | Calli's HOLOYOI #02 with Flare (04-20); first solo album "NOESANPO" (official digital release 11-25; birthday merchandise orders opened 11-24); a "Yuru Holo" team Mario Kart event with FUWAMOCO and Bae among the participants (12-12) | [NO5] [Official music 359] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Mori Calliope | — | HOLOYOI #02 with Flare (2023) | [NO5] |
+- `bible/characters/Shirogane-Noel.md › Story Engine`: 2. "Drinking Knight with Noel" welcomes Calli as a guest and turns into a cooking contest.
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa

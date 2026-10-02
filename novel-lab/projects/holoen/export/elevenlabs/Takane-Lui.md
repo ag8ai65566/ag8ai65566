@@ -9,6 +9,7 @@
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool, clipped executive tone for effect, undone by a cute sparkle; flustered laughter after a blunder."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **55%** (API `0.55`) (calm and warm by default; an untested starting choice).
@@ -33,7 +34,7 @@
 
 With people (proposed scene directions, not observed conversational defaults): La+ `[exasperated, fond]`; Kiara `[bright, friendly]`; Mumei `[gentle, sisterly]`; Okayu `[teasing]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Ko!☆" (spoken)
 - `[laughs]` (tag only); `[screams]` (tag only)
 

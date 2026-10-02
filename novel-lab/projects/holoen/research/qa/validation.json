@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-02T08:25Z",
- "snapshot": "8603baaf09ed2333c39dc7566c6e60109af8a743513de7f9c653bc09bcaf5e41",
+ "checked_at": "2026-10-02T12:13Z",
+ "snapshot": "6102598095e7edbdd162fc907915a6c545ff5e11db09070f01979e9cbce767e5",
  "blocking_failures": [
   "V02",
   "V10",
@@ -21,8 +21,8 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 8603baaf09ed2333c39dc7566c6e60109af8a743513de7f9c653bc09bcaf5e41",
-    "88 inputs"
+    "snapshot 6102598095e7edbdd162fc907915a6c545ff5e11db09070f01979e9cbce767e5",
+    "91 inputs"
    ],
    "finding_ids": []
   },
@@ -33,11 +33,11 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "characters 23/33",
+    "characters 26/33",
     "world 26/28",
     "sheets 33/33",
-    "sheet/card mismatch: ['Hakui-Koyori', 'Houshou-Marine', 'Kazama-Iroha', 'Kikirara-Vivi', 'Laplus-Darknesss', 'Sakamata-Chloe', 'Shirogane-Noel', 'Shishiro-Botan', 'Takane-Lui', 'Yukihana-Lamy']",
-    "roster vs bible: ['Hakui-Koyori', 'Houshou-Marine', 'JP-Senpai-Pairs-2', 'Kazama-Iroha', 'Kikirara-Vivi', 'Laplus-Darknesss', 'Sakamata-Chloe', 'Shirogane-Noel', 'Shishiro-Botan', 'Takane-Lui', 'Yukihana-Lamy', 'holoX']"
+    "sheet/card mismatch: ['Hakui-Koyori', 'Kazama-Iroha', 'Kikirara-Vivi', 'Laplus-Darknesss', 'Sakamata-Chloe', 'Shishiro-Botan', 'Takane-Lui']",
+    "roster vs bible: ['Hakui-Koyori', 'JP-Senpai-Pairs-2', 'Kazama-Iroha', 'Kikirara-Vivi', 'Laplus-Darknesss', 'Sakamata-Chloe', 'Shishiro-Botan', 'Takane-Lui', 'holoX']"
    ],
    "finding_ids": []
   },
@@ -125,7 +125,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "relationship web: 1 one-way ties (coverage, not errors; tools/web_check.py)",
+    "relationship web: 3 one-way ties (coverage, not errors; tools/web_check.py)",
     "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
@@ -212,15 +212,18 @@
     "Hakos-Baelz: no source hash (run stamp-sheets after reviewing the sheet)",
     "Gawr-Gura: no source hash (run stamp-sheets after reviewing the sheet)",
     "Raora-Panthera: no source hash (run stamp-sheets after reviewing the sheet)",
+    "Houshou-Marine: no source hash (run stamp-sheets after reviewing the sheet)",
     "Koseki-Bijou: no source hash (run stamp-sheets after reviewing the sheet)",
     "Ninomae-Inanis: no source hash (run stamp-sheets after reviewing the sheet)",
     "Takanashi-Kiara: no source hash (run stamp-sheets after reviewing the sheet)",
     "Mococo-Abyssgard: no source hash (run stamp-sheets after reviewing the sheet)",
+    "Shirogane-Noel: no source hash (run stamp-sheets after reviewing the sheet)",
     "Fuwawa-Abyssgard: no source hash (run stamp-sheets after reviewing the sheet)",
     "Nerissa-Ravencroft: no source hash (run stamp-sheets after reviewing the sheet)",
     "Shiori-Novella: no source hash (run stamp-sheets after reviewing the sheet)",
     "Nekomata-Okayu: no source hash (run stamp-sheets after reviewing the sheet)",
     "Ceres-Fauna: no source hash (run stamp-sheets after reviewing the sheet)",
+    "Yukihana-Lamy: no source hash (run stamp-sheets after reviewing the sheet)",
     "Cecilia-Immergreen: no source hash (run stamp-sheets after reviewing the sheet)",
     "Hoshimachi-Suisei: no source hash (run stamp-sheets after reviewing the sheet)",
     "AZKi: no source hash (run stamp-sheets after reviewing the sheet)",

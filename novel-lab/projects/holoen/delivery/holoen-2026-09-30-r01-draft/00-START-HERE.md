@@ -1,11 +1,11 @@
 # 從這裡開始 — holoen r01（草稿候選版，尚未通過全部檢查）
 
 這是給作者的使用指南：資料在哪裡、每個檔案放進 Sudowrite 的哪一格、寫作時怎麼用、怎麼交給 ElevenLabs 配音、
-之後怎麼更新。基準日 2026-09-30；這一版有 **23 張角色卡**、**26 張世界觀卡**、23 份 ElevenLabs 表演表，
+之後怎麼更新。基準日 2026-09-30；這一版有 **26 張角色卡**、**26 張世界觀卡**、26 份 ElevenLabs 表演表，
 全部是完整卡（沒有精簡版）。檢查結果在 `validation.json`；**實際匯入和配音只有你能測（runtime untested）**，
 請先做第 3 節的十分鐘測試。
 
-> 這一版還沒收錄：Houshou Marine、Shirogane Noel、Yukihana Lamy、Shishiro Botan、Kikirara Vivi、La+ Darknesss、Takane Lui、Hakui Koyori、Sakamata Chloe、Kazama Iroha、JP Senpai Pairs 2、holoX（審查完成後在下一版加入；到時只要匯入 `sudowrite/cards/` 裡這幾張的 CSV，不用重匯整包）。
+> 這一版還沒收錄：Shishiro Botan、Kikirara Vivi、La+ Darknesss、Takane Lui、Hakui Koyori、Sakamata Chloe、Kazama Iroha、JP Senpai Pairs 2、holoX（審查完成後在下一版加入；到時只要匯入 `sudowrite/cards/` 裡這幾張的 CSV，不用重匯整包）。
 
 ## 1. 資料在哪裡拿
 
@@ -40,7 +40,7 @@ Relationships, Secrets`。每個角色的 Role 都是 Protagonist。`Secrets` �
 ## 3. 第一次：先在測試專案做十分鐘匯入測試
 
 1. 新建專案 `holoen-r01-smoke`（可丟棄）。不要在你正在寫的專案裡測匯入。
-2. Characters 匯入 `sudowrite/characters.csv`，確認 **23 張**；Worldbuilding 匯入 `sudowrite/worldbuilding.csv`，
+2. Characters 匯入 `sudowrite/characters.csv`，確認 **26 張**；Worldbuilding 匯入 `sudowrite/worldbuilding.csv`，
    確認 **26 個**。每個合併 CSV 只匯入一次。
 3. 打開 Fuwawa、Mococo 和另一個角色：雙胞胎是兩張卡、`Role` 是 Protagonist、自訂特質（含 `Audio Tags`）有內容。
    找一個多行或有標點的欄位，和 `sudowrite/paste.md` 對照。打開 FUWAMOCO 和一張 History 卡。

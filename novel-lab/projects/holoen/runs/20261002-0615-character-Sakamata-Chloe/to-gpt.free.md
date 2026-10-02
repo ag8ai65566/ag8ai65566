@@ -393,6 +393,7 @@ All windows are from 2024, her last full year of regular activities (she conclud
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, small, soft, high and slightly airy voice that chatters fast, giggles and teases; panicky squeaks in horror."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **45%** (API `0.45`) (quick and playful; an untested starting choice).
@@ -416,7 +417,7 @@ All windows are from 2024, her last full year of regular activities (she conclud
 
 With people (proposed scene directions, not observed conversational defaults): Koyori `[bickering, fond]`; Lui `[whiny, sheepish]`; Kiara `[shy, excited]`; seniors `[teasing]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Bakku bakku baku~" (spoken)
 - `[giggles]` (tag only); `[gasps]` (tag only)
 
@@ -748,6 +749,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, clear, bright, youthful voice with a sporty edge; earnest and polite in samurai mode, quick, loud and pumped when competing, laughing easily at her own mistakes."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **45%** (API `0.45`) (earnest by default, pumped when competing; an untested starting choice).
@@ -771,7 +773,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 
 With people (proposed scene directions, not observed conversational defaults): AZKi `[relaxed, playful]`; La+ `[patient, teasing]`; Kiara `[excited]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "de gozaru" (spoken, as a set piece); "Oi!" (spoken)
 - `[laughs]` (tag only)
 
@@ -968,7 +970,7 @@ A tiny horned founder with silver hair, oversized sleeves and shackles, a crow b
 
 ### Mori Calliope
 Relationships field (exported):
-Marine, Noel, Botan, AZKi and holoX (La+, Lui, Chloe, Iroha): her English-lesson and HOLOYOI guests (2022–2023).
+English-lesson guests Marine, AZKi, La+, Iroha, Lui and Chloe (2022); HOLOYOI guests Lui, Chloe, Noel and Botan (2023).
 
 Dossier rows (with sources):
 | Secret Society holoX (La+, Lui, Chloe, Iroha) | JP kouhai | English practice with Lui (2021-12-27); HOLO ENGLISH LESSON #02 with La+, Iroha and Gura (2022-03-04) and #04 with Lui and Chloe (2022-04-16); HOLOYOI #01 with Lui and Chloe (2023-03-23); dance shorts to Lui's songs | [S1 X492n37brRU, YrZ4baKOT1c, UuL_nORzfNM; world card "holoX"] |

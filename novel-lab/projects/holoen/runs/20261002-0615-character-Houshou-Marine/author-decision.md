@@ -1,0 +1,1 @@
+- 2026-10-02 12:13 作者裁決收錄 final.md（sha256 499212948bf5）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude

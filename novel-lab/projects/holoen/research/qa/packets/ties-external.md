@@ -1,7 +1,12 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git 9fd1ef3. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 6545e34. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
+
+### AZKi × Amane Kanata
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | AZKi | "KALAZ" with Amane Kanata (secondary); "KoZMy" | Units with AZKi | [LM2] [hololiveinfo KALAZ entry] |
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi.
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: "KoZMy" with Hakui Koyori, and "KALAZ" with Amane Kanata (secondary).
 
 ### AZKi × Moona Hoshinova
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2022-12-31 | "story time" as Star Flower with AZKi, Moona Hoshinova and IRyS | [Official SU6] |
@@ -9,6 +14,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Airani Iofifteen × Gigi Murin
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Airani Iofi (ID), Pavolia Reine (ID) | "Fanfic Club" with Gigi | Monster Hunter Wilds with Iofi and Jurard (2025) | [Observed SN2; SN3] |
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Pavolia Reine and Airani Iofi (ID) with Gigi: the "Fanfic Club."
+
+### Amane Kanata × Yukihana Lamy
+- `bible/characters/AZKi.md › Relationship Map`: | Hakui Koyori, Yukihana Lamy | "KoZMy" | A trio formed in 2025; a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata | [Koyori file KO4] [Lamy file LM2] |
+- `bible/characters/AZKi.md › [SW] Relationships`: (2025), and a 3D karaoke with Koyori (2026); Lamy is also in "KALAZ" with Amane Kanata.
 
 ### Anya Melfissa × Mori Calliope
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2024-09-15 | A pop-up Mario Party with Mori Calliope, Anya Melfissa and Hiodoshi Ao (archived metadata) | [OK4 WnKCmQ2iXww] |
@@ -32,15 +41,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Mococo / FUWAMOCO | Advent ("GigiMoco," "bauBau"; secondary) | Secondary accounts: with Cecilia, a guest-host prank on FUWAMOCO MORNING #167 (2025-07-28); "Bright Tonight" (2025) and "MAKE IT, BREAK IT" with Zeta at Serendipity (2026) with both twins | [Observed GG2; Mococo file] [Official GG7, GG9] |
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Cecilia and Vestia Zeta: "Break It Down" at Serendipity.
 
-### Ceres Fauna × Kaela Kovalskia
-- `bible/world/Cross-Branch-Friends.md › By Character`: - **Ceres Fauna** (graduated): her first official collab outside her generation was with Pavolia Reine (Clubhouse 51, 2021-10-12, per the wiki; Minecraft "WITH REINE," 2022-01-19, ronEFZPwxqc); Kaela Kovalskia was a recurring partner ("Fearless & Fearful vs Ghosts," an ID Minecraft server tour); she admired Shirogane Noel. [Observed S1; Fauna file F2 §2021, §Trivia, secondary]
-
-### Ceres Fauna × Pavolia Reine
-- `bible/world/Cross-Branch-Friends.md › By Character`: - **Ceres Fauna** (graduated): her first official collab outside her generation was with Pavolia Reine (Clubhouse 51, 2021-10-12, per the wiki; Minecraft "WITH REINE," 2022-01-19, ronEFZPwxqc); Kaela Kovalskia was a recurring partner ("Fearless & Fearful vs Ghosts," an ID Minecraft server tour); she admired Shirogane Noel. [Observed S1; Fauna file F2 §2021, §Trivia, secondary]
-
 ### Ceres Fauna × Tsukumo Sana
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Tsukumo Sana | Council genmate (graduated 2022) | Sana designed the Council's "Beeg Smol" models; Fauna: "Go give [Sana] lots of love because she deserves it, even though she's a little bit... disgusting." | [Observed F2 §Quotes, secondary] |
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Tsukumo Sana (graduated 2022): Council genmate who designed the "Beeg Smol" models; Fauna encouraged fans to support her while mixing praise with a disgust joke.
+
+### Elizabeth Rose Bloodflame × Inugami Korone
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Elizabeth Rose Bloodflame | — | "IT'S LOVE" cover with Elizabeth and Korone for Elizabeth's 2026 birthday (2026-05-12) | [MA5 iwnHChZq0N8] |
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "IT'S LOVE" with Korone for Elizabeth's 2026 birthday.
 
 ### Elizabeth Rose Bloodflame × Kobo Kanaeru
 - `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: BaeRyS with IRyS ("LUVATORRRRRY!"), "HELP!!" with Kobo Kanaeru and Elizabeth Rose Bloodflame (day 1) | [Official HB4, HB5] |
@@ -107,14 +114,16 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Hiodoshi Ao × Hoshimachi Suisei
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hoshimachi Suisei | "MOMAS" | With Sakura Miko, Houshou Marine and Hiodoshi Ao; PlateUp! on her 2025 team | [OK2] [OK4] |
-- `bible/world/JP-Senpai-Pairs.md › Among the four`: - **Suisei and Okayu:** "MOMAS" (secondary) with Sakura Miko, Houshou Marine and Hiodoshi Ao. [S2]
+
+### Hiodoshi Ao × Houshou Marine
+- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Nekomata Okayu | "MOMAS" (secondary label) | With Sakura Miko, Houshou Marine and Hiodoshi Ao; on Okayu's 2025 New Year Game Festival team (secondary roster) | [SU2] [S1] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hoshimachi Suisei | "MOMAS" | With Sakura Miko, Houshou Marine and Hiodoshi Ao; PlateUp! on her 2025 team | [OK2] [OK4] |
 
 ### Hiodoshi Ao × Mori Calliope
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2024-09-15 | A pop-up Mario Party with Mori Calliope, Anya Melfissa and Hiodoshi Ao (archived metadata) | [OK4 WnKCmQ2iXww] |
 
 ### Hiodoshi Ao × Nekomata Okayu
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Nekomata Okayu | "MOMAS" (secondary label) | With Sakura Miko, Houshou Marine and Hiodoshi Ao; on Okayu's 2025 New Year Game Festival team (secondary roster) | [SU2] [S1] |
-- `bible/world/JP-Senpai-Pairs.md › Among the four`: - **Suisei and Okayu:** "MOMAS" (secondary) with Sakura Miko, Houshou Marine and Hiodoshi Ao. [S2]
 
 ### Hoshimachi Suisei × Moona Hoshinova
 - `bible/characters/AZKi.md › Background Timeline`: | 2022-12-31 | "story time" as Star Flower with Suisei, Moona Hoshinova and IRyS | [Official AZ6] |
@@ -122,13 +131,12 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Hakos-Baelz-Pairs.md › BaeRyS`: - **On stage:** "High Tide" with Moona Hoshinova and Hoshimachi Suisei at -Breaking Dimensions- (2024); the official unit BaeRyS at Serendipity (2026), "LUVATORRRRRY!", their first duo stage. [Official S3]
 
 ### Hoshimachi Suisei × Omaru Polka
-- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Shiranui Flare, Omaru Polka, Miko, Shirogane Noel | "Shiranui Kensetsu" | Suisei is its PR director; R.E.P.O. "work shift" (2026) | [SU2] [SU4] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Hoshimachi Suisei | "Shiranui Kensetsu" (Shiraken) | A Minecraft construction company with Flare, Polka and Miko | [NO2] |
 
 ### Hoshimachi Suisei × Rikka
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
 
 ### Hoshimachi Suisei × Shiranui Flare
-- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Shiranui Flare, Omaru Polka, Miko, Shirogane Noel | "Shiranui Kensetsu" | Suisei is its PR director; R.E.P.O. "work shift" (2026) | [SU2] [SU4] |
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Shiranui Flare: "Shiranui Kensetsu," where Suisei is the PR director.
 
 ### Hoshimachi Suisei × Usada Pekora
@@ -136,8 +144,21 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2024-07-05 | hololive night at Dodger Stadium | Suisei, Gura, Pekora |
 - `bible/world/JP-Senpai-Pairs.md › Hoshimachi Suisei with the cast`: - **Gawr Gura (graduated):** Suisei, Gura and Usada Pekora were the three faces of "hololive night" at Dodger Stadium (2024-07-05), on the big screen at the first pitch and in the drone show. [Official S4]
 
+### Houshou Marine × Inugami Korone
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Yukihana Lamy | "Yakamashi Musume" with Korone and Marine | Drinking-talk collabs (2025) | [NO2] [NO4] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Houshou Marine, Shirogane Noel | "Yakamashi Musume" with Inugami Korone; Blue Journey | Yakamashi talk collabs | [LM2] [Noel file] |
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone (archived metadata), and Blue Journey; Marine is also in holoWitches.
+
+### Houshou Marine × Oozora Subaru
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Oozora Subaru | JP seniors | Early HOLOTALK guest (Marine); first EN×JP collab (Subaru, 2020) | [Observed T2 §2020, secondary] |
+
+### Houshou Marine × Shiranui Flare
+- `bible/characters/Shirogane-Noel.md › [SW] Background`: She debuted on 2019-08-08 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Houshou Marine.
+
+### Houshou Marine × Usada Pekora
+- `bible/characters/Shirogane-Noel.md › [SW] Background`: She debuted on 2019-08-08 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Houshou Marine.
+
 ### IRyS × Kaela Kovalskia
-- `bible/characters/Ouro-Kronii.md › Relationship Map`: | Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) | [S1 OMDzBQohAf8; world card "holoX"] |
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Kronii's steadiest cross-branch partner: Kaela. IRyS's closest JP friend: Flare.
 
 ### IRyS × Kobo Kanaeru
@@ -180,15 +201,22 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Inugami Korone × Ninomae Ina'nis
 - `bible/characters/Nekomata-Okayu.md › [SW] Background`: With the English cast she released "Kurukuru Cruise" with Ninomae Ina'nis (2025); secondary accounts document her appearing with Korone in FUWAMOCO's 3D debut (2024), and the twins hosted a 2025 watch-along of her concert.
 
+### Inugami Korone × Shirogane Noel
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Shirogane Noel: hololive Fantasy genmate; the units Bara☆Dice and Yakamashi Musume (with Lamy and Inugami Korone, per archived metadata).
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Houshou Marine, Shirogane Noel | "Yakamashi Musume" with Inugami Korone; Blue Journey | Yakamashi talk collabs | [LM2] [Noel file] |
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone (archived metadata), and Blue Journey; Marine is also in holoWitches.
+
+### Inugami Korone × Yukihana Lamy
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Shirogane Noel: hololive Fantasy genmate; the units Bara☆Dice and Yakamashi Musume (with Lamy and Inugami Korone, per archived metadata).
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Yukihana Lamy | "Yakamashi Musume" with Korone and Marine | Drinking-talk collabs (2025) | [NO2] [NO4] |
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: (with Yukihana Lamy and Inugami Korone, per archived metadata); 3rd-gen R.E.P.O.
+
 ### Kaela Kovalskia × Koseki Bijou
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Kaela Kovalskia | ID senior ("SMITTEN"; "Graondstone" with Bijou; secondary) | Lethal Company, Don't Starve Together, Buckshot Roulette, PEAK; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement (secondary) | [Observed RP2, RP3] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Kaela Kovalskia ("SMITTEN"): co-op partner; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement; with Koseki Bijou they are "Graondstone."
 - `bible/world/Advent-Pairs.md › Conflicts and Story Hooks`: 3. Kaela and Bijou build something enormous in silence while chat panics.
 - `bible/world/Advent-Pairs.md › With -Justice-`: - **Raora Panthera:** "Graondstone" with Bijou and Kaela; FUWAMOCO's 2026 Serendipity unit partner (B.F.F), who drew them a shikishi before her debut. [Official S6] [Observed S1]
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Of Advent: Bijou and Kaela Kovalskia are "Grindstone"
-
-### Kaela Kovalskia × Nanashi Mumei
-- `bible/characters/Ouro-Kronii.md › Relationship Map`: | Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) | [S1 OMDzBQohAf8; world card "holoX"] |
 
 ### Kaela Kovalskia × Nerissa Ravencroft
 - `bible/world/Hakos-Baelz-Pairs.md › With Advent`: - **Shiori Novella, Nerissa Ravencroft:** shared EN projects rather than duo collabs: the 2024 "Mind Craft" cover with all then-active EN members; with Nerissa, a 2026 behind-the-scenes video by Kaela Kovalskia (secondary metadata). [S7, secondary]
@@ -228,6 +256,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii and Nerissa at Serendipity.
 
 ### Kobo Kanaeru × Takanashi Kiara
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Takanashi Kiara | Her first HOLOTALK guest (2020-11-20) | A "MIRAGE" dance short (2024-10-23); "III" with Kobo in a 3D short (2024-05-20) | [MA5 3HwaqbdKO1s, tzVgzvV0cVo, I8DEx4MomOA] |
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Kobo Kanaeru | Collaborator | "Uncle Dad" / "Dad" bits; Calli and Kiara play "Dad" and "Mom" to her. [Unverified, title only: Kobo picking up and repeating Calli's swear words] | [Observed C14; C25 §Takamori, secondary; C27 clip titles] |
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Takanashi Kiara | Myth genmate | Calli calls her "kusotori" ("shitty bird") and usually rebuffs her, while supporting "TakaMori." They play "Mom" and "Dad" to Kobo. | [Observed C7; C25 §Takamori, secondary] |
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo.
@@ -326,6 +355,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Ninomae Ina'nis × Shiranui Flare
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Shiranui Flare | JP senior | Gave her the nickname "Ore no Ina" | [Observed I2 nickname list] |
 
+### Omaru Polka × Shirogane Noel
+- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Shirogane Noel | Shiranui Kensetsu | The Minecraft construction company with Flare, Polka and Miko | [Noel file NO2, secondary] |
+
+### Omaru Polka × Yukihana Lamy
+- `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2026 | Her collaboration sake "Yukiyozuki" with Meiri Shurui (04); an off-collab with Koyori titled to name their duo (03); a NePoLaBo 3D party (04-29); NePoX events with holoX announced for 09-26/27 (Nene, Polka, Lamy, Botan, La+, Lui, Koyori, Iroha); "Snowlight Stories" (official digital release 08-13) | [LM4 Zi8R63ee0Fs, Ekdsnb2aWY4, Ml1tM8S40p0] [Official NePoX page] [Official music 792] [Brewery page] |
+- `bible/world/hololive-History-to-2022.md › Timeline`: | 2020-08 | 5th gen (Lamy, Nene, Botan, Polka; Aloe graduated the same month) | The JP generation just before Myth |
+
 ### Ookami Mio × Takanashi Kiara
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: At Serendipity: "Tententengoku Jigokukoku" with Kiara as Rocku Wawa, and "Night Loop" with Ookami Mio (GAMERS) and IRyS.
 
@@ -339,6 +375,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Oozora Subaru × Shiori Novella
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Shiori Novella, Oozora Subaru (JP) | Advent senior; JP senior | "Neko Kaburi-Na" with Ina at -All for One- (2025) | [Official RP5] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Ninomae Ina'nis, Shiori Novella and Oozora Subaru (JP): "Neko Kaburi-Na" on stage; Puyo Puyo Tetris 2 with Ina.
+
+### Oozora Subaru × Shirogane Noel
+- `bible/characters/Hakos-Baelz.md › Relationship Map`: | Shirogane Noel, Shishiro Botan | — | "Yuru Holo" team Mario Kart with FUWAMOCO (Noel, 2023); BAE-GEMITE DOMINATION #2 with Oozora Subaru (Botan, 2023) | [Noel file NO5] [Botan file BO5] |
 
 ### Ouro Kronii × Regis Altare
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-07-18/23 | HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts | Calli and Kronii's WARS partners Magni and Vesper |
@@ -357,6 +396,14 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Shirakami Fubuki × Watson Amelia
 - `bible/characters/Nakiri-Ayame.md › [SW] Background`: "melting" and "Hanafubuki"; with Shirakami Fubuki and Ookami Mio as AyaFubuMi she performed "Ame Tokimeki Koimoyō," reported as a 2025 anime opening theme.
+
+### Shiranui Flare × Shirogane Noel
+- `bible/characters/Houshou-Marine.md › [SW] Background`: She debuted on 2019-08-11 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Shirogane Noel; secondary reporting records 3 million subscribers in 2024 and 4 million in 2025.
+- `bible/characters/Shirogane-Noel.md › Behavioral Traits`: 4. "NoeFure" with Shiranui Flare: their pair label appears in Noel's own stream titles (Elden Ring Nightreign, a puzzle game, a meal collab, a fes. medley). Any mock-jealous exchanges are performed on-stream comedy, not evidence of a private relationship. [NO4 titles] [Observed NO2 §Personality, secondary]
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy.
+
+### Shirogane Noel × Usada Pekora
+- `bible/characters/Houshou-Marine.md › [SW] Background`: She debuted on 2019-08-11 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Shirogane Noel; secondary reporting records 3 million subscribers in 2024 and 4 million in 2025.
 
 ### Takanashi Kiara × Tsunomaki Watame
 - `bible/characters/Raora-Panthera.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice (day 1); the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari"), "What an amazing swing" with Tsunomaki Watame and Kiara, and "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official RP4, RP9] |

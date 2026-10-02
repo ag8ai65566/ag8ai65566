@@ -9,6 +9,7 @@
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, clear, cool-toned but cheerful voice; relaxed and amused in play, brisk and orderly when presenting, with an easy, frequent laugh."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **55%** (API `0.55`) (relaxed and steady; an untested starting choice).
@@ -33,7 +34,7 @@
 
 With people (proposed scene directions, not observed conversational defaults): Lamy `[teasing, protective]`; Ina `[warm]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Poi!" (spoken)
 - `[laughs]` (tag only)
 

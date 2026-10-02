@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 9fd1ef3.
+Snapshot: git 6545e34.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|hololive -Advent-|Jewel of Emotions|Fuwawa Abyssgard|Mococo Abyssgard|FUWAMOCO MORNING|Abyssgard twins|Demon of Sound|The Fluffy One|Shiori Novella|Demon of Soup|The Fuzzy One|The Archiver|Advent Pairs|Koseki Bijou|Diamond Dogs|Sound Hounds|Last Writes|FUWAMOCALLI|GreyScaleX|holoAdvent|Grindstone|Rocku Wawa|Fluffy One|Bloodraven|Goth Rock|Adventrix|JewelBird|Fuwa-chan|ShioRaven|Moco-chan|FUWAMOCO|Fuwa-nee|The Cell|Pen Pups|Mogojyan|Shiori~n|Lil'Rock|Nerissa|Shiorin|Mococo|Fuwawa|Mogogo|Beejoe|Advent|Shiori|Koseki|Rissa|Biboo|Oobib|Beebs|Bijou|B.F.F|Neri|Pero|FWMC|GAGA)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|hololive -Advent-|Jewel of Emotions|Fuwawa Abyssgard|FUWAMOCO MORNING|Mococo Abyssgard|Abyssgard twins|Demon of Sound|The Fluffy One|Shiori Novella|Demon of Soup|The Fuzzy One|Advent Pairs|The Archiver|Sound Hounds|Diamond Dogs|Koseki Bijou|Last Writes|FUWAMOCALLI|Rocku Wawa|Bloodraven|Grindstone|GreyScaleX|holoAdvent|Fluffy One|Goth Rock|Fuwa-chan|JewelBird|ShioRaven|Moco-chan|Adventrix|The Cell|Lil'Rock|FUWAMOCO|Mogojyan|Pen Pups|Shiori~n|Fuwa-nee|Shiorin|Nerissa|Shiori|Mogogo|Mococo|Beejoe|Koseki|Fuwawa|Advent|B.F.F|Oobib|Biboo|Rissa|Bijou|Beebs|GAGA|Neri|FWMC|Pero)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -121,6 +121,16 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Nerissa Ravencroft | kouhai | A "BIBIDEBA" dance short (2024-11-04) | [S1 JZ1Sfotw7tE] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Koseki Bijou | kouhai | Watched her Fortnite concert on stream ("THE SUISEI CONCERT IN FORTNITE?!", 2026) | [S1 AhGrt2gr5pc] |
 
+### from Houshou Marine
+- `bible/characters/Houshou-Marine.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's first HOLOTALK guest (2020), on Calli's first English lesson (2022), at an off-collab house party with Calli and Bae (2023), in off-collabs with FUWAMOCO and Nerissa (2024) and as a guest at Ina's "Pleides"
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: FUWAMOCO: a Touhou off-collab and Mario Party Superstars with Nerissa (2024).
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Nerissa Ravencroft: that Mario Party off-collab.
+- `bible/characters/Houshou-Marine.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her as a guest on Calli's first English lesson (2022) and Kiara's first HOLOTALK (2020), and joining off-collabs with Calli and Bae (2023), FUWAMOCO and Nerissa (2024). [MA5]
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2024 | 3 million subscribers (01-10, secondary); album "Ahoy!! You're All Pirates♡!" (10-16); a Touhou off-collab with FUWAMOCO (04-30) and Mario Party with FUWAMOCO and Nerissa; a solo concert (12); a guest at Ina's "Pleides" (12-28) | [Observed MA2] [MA5 x7gRHgQ0yI0, FLL7e1-RPGo, 3n9igJnSXtQ] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | FUWAMOCO | — | Joined their Touhou off-collab (2024-04-30); Mario Party with Nerissa (2024); watched her solo concert (2024); danced to "Chatter Chatter" (2026) (secondary and archived records) | [MA5 x7gRHgQ0yI0] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Nerissa Ravencroft | — | Mario Party Superstars off-collab with FUWAMOCO (2024); a "Marine's treasure box" dance short (2024) | [MA5 FLL7e1-RPGo, Lo9q4WJrcM4] |
+- `bible/characters/Houshou-Marine.md › Story Engine`: 1. Marine recruits FUWAMOCO as cabin girls for a "voyage" that never leaves the studio.
+
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert.
 - `bible/characters/IRyS.md › [SW] Relationships`: Koseki Bijou ("Biboo"): her horror co-op partner (Dead Space 3, Resident Evil 6); with Ina they starred at hololive night at Dodger Stadium (2025).
@@ -180,7 +190,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/Nekomata-Okayu.md › Story Engine`: 1. FUWAMOCO put Okayu on trial for eating their snacks; she pleads guilty before they finish the charge.
 
 ### from Ninomae Ina'nis
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at hololive night at Dodger Stadium (2025).
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at Dodger Stadium's hololive night (2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put both on her Tomodachi Life island.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: FUWAMOCO: "SHALLYS" with Cecilia on the same stage.
@@ -222,6 +232,13 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/Raora-Panthera.md › Arc`: - **Starting point:** active at the 2026 baseline: her first birthday live, Serendipity with FUWAMOCO, Pokémon, Pragmata and Hytale streams.
 - `bible/characters/Raora-Panthera.md › Story Engine`: 1. Raora's suspect sketch of Advent is so cute nobody can arrest them.
 - `bible/characters/Raora-Panthera.md › Hard Facts`: - 3D showcase 2025-08-09 PDT. Official music list: "Gacha×Gacha ADVENTURE!" and "Draw" (Draw's premiere and release dates not yet established). Serendipity unit: B.F.F with FUWAMOCO.
+
+### from Shirogane Noel
+- `bible/characters/Shirogane-Noel.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT"
+- `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2023 | Calli's HOLOYOI #02 with Flare (04-20); first solo album "NOESANPO" (official digital release 11-25; birthday merchandise orders opened 11-24); a "Yuru Holo" team Mario Kart event with FUWAMOCO and Bae among the participants (12-12) | [NO5] [Official music 359] |
+- `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | FUWAMOCO, Hakos Baelz | — | Participants in the "Yuru Holo" team Mario Kart event (2023; not necessarily one team); FUWAMOCO danced to "TREVIAN KNIGHT" (2025-09-30) | [NO5 Evg-T2BUIDM, 8RjOCCH2sac] |
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa

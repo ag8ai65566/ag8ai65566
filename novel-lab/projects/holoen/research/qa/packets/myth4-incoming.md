@@ -1,9 +1,9 @@
 # Audit packet: myth4 (incoming claims)
 
-Snapshot: git 9fd1ef3.
+Snapshot: git 6545e34.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Kiara and Ina|Drawn to Dawn|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Drawn to Dawn|Ina and Kiara|Kiara and Ina|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ninomae Ina'nis and Kronii: R.E.P.O.
@@ -42,6 +42,14 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2024-08-24/25 | "High Tide" with IRyS, Moona and Hakos Baelz, and "BIBBIDIBA" with Moona, Ina and Gura, at the English concert -Breaking Dimensions- | [Official SU8] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Gawr Gura (graduated) | hololive night | The three faces of hololive night at Dodger Stadium with Pekora (2024); "BIBBIDIBA" with Moona and Ina at -Breaking Dimensions- (2024) | [Official SU7, SU8] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Ninomae Ina'nis | — | "BIBBIDIBA" with Moona and Gura at -Breaking Dimensions- (2024); Okayu's 2025 New Year Game Festival team (secondary) | [Official SU8] [S1] |
+
+### from Houshou Marine
+- `bible/characters/Houshou-Marine.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's first HOLOTALK guest (2020), on Calli's first English lesson (2022), at an off-collab house party with Calli and Bae (2023), in off-collabs with FUWAMOCO and Nerissa (2024) and as a guest at Ina's "Pleides"
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides"
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2022-02-19 | Calli's HOLO ENGLISH LESSON #01 with Ina and Fubuki | [MA5 bfUEbp3xk4o] |
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2024 | 3 million subscribers (01-10, secondary); album "Ahoy!! You're All Pirates♡!" (10-16); a Touhou off-collab with FUWAMOCO (04-30) and Mario Party with FUWAMOCO and Nerissa; a solo concert (12); a guest at Ina's "Pleides" (12-28) | [Observed MA2] [MA5 x7gRHgQ0yI0, FLL7e1-RPGo, 3n9igJnSXtQ] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Minato Aqua (graduated) | UMISEA | The ocean unit's official roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | English lesson #01 with Ina (2022); a guest at Ina's 3D live "Pleides" (2024); "SHINKIRO" with Gura (anime MV 2023-11-12, credited "宝鐘マリン・Gawr Gura") | [MA5 3n9igJnSXtQ] [MA4 9ehwhQJ50gs] |
 
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: Ninomae Ina'nis: an early duo partner (It Takes Two) who still games with her.
@@ -125,6 +133,12 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Ninomae Ina'nis: a "Rate Your Fears" nightmare talk.
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Ninomae Ina'nis | Senior | "Rate Your Fears: Nightmare Discussion" (2024-04-24) | [Observed SN3] |
 
+### from Shirogane Noel
+- `bible/characters/Shirogane-Noel.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025).
+- `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [NO5] |
+
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German.
@@ -146,6 +160,17 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/characters/Watson-Amelia.md › Voice Profile`: - Measured (A23; Mario, VALORANT and 2024 chat windows, with game audio mixed in): median pitch about 248–276 Hz; about 114–133 words per minute of speech. For comparison only, Calli's chat windows measured 161–186 and Ina's 81–95. Sample results; they do not establish a general ranking. [ASR A23]
 - `bible/characters/Watson-Amelia.md › Appearance Anchors`: - Mascot: Bubba, a small dog designed by Ina. [Observed A2 §Mascots and fans]
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her ("Ina... prepare to get fucked!", a PvP threat; wording inferred from a censored title) | [Observed A2 §Mascots and fans and §Quotes; A14] |
+
+### from Yukihana Lamy
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: Archived metadata records her with the English cast at Ina's Minecraft festival and a Minecraft collab billed as a "date"
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2021), and as a guest at Ina's 3D live "Pleides"
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Ninomae Ina'nis: a Minecraft festival and a Minecraft collab billed as a "date"
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: (2021), and a guest at Ina's 3D live "Pleides"
+- `bible/characters/Yukihana-Lamy.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her at Ina's Minecraft festival and a Minecraft collab billed as a "date" (2021) and as a guest at Ina's 2024 3D live. [LM5]
+- `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2021 | Ina's Usaken Summer Festival (06-27) and an EN-server Minecraft "date" with Ina (10-20) | [LM5] |
+- `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2024 | Originals "Hatsukoi Pâtissière," "Watashi wo amayakasunara" and "Lamy's Baribari Workout"; a guest at Ina's 3D live "Pleides" (12-28) | [Observed LM2] [LM5] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Ninomae Ina'nis | — | A Minecraft festival appearance and a Minecraft collab billed as a "date" (2021); a guest at Ina's "Pleides" 3D live (2024) | [LM5 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ] |
+- `bible/characters/Yukihana-Lamy.md › Story Engine`: 1. Lamy hosts a "Snack Yuki no Hana" night and Ina draws the regulars.
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › [SW] Description`: With seniors: Mori Calliope starred in Bijou's Undertale mod and did a 24-hour charity stream with her, shares "FUWAMOCALLI" with the twins (a collaboration name they say they particularly like), and was Shiori's 2026 concert partner; Kiara hosted all five on HOLOTALK, encouraged Bijou through hard choreography, and partnered her in 2026 ("Rocku Wawa"); IRyS is Bijou's horror co-op partner, and Bijou, Ina and IRyS starred at hololive night at Dodger Stadium (2025); Shiori and Kronii hosted "Rating Your Clocks" together in March 2025.

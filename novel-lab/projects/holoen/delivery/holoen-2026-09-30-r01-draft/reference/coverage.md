@@ -2,14 +2,14 @@
 
 | Member | Relationships words | Quoted lines in Dialogue Style | Open questions | World cards naming her |
 |---|---|---|---|---|
-| Mori Calliope | 347 | 12 | 3 | 7 |
+| Mori Calliope | 348 | 12 | 3 | 7 |
 | Takanashi Kiara | 345 | 18 | 3 | 4 |
 | Ninomae Ina'nis | 349 | 21 | 3 | 3 |
 | Gawr Gura | 316 | 33 | 3 | 4 |
 | Watson Amelia | 257 | 14 | 3 | 4 |
 | IRyS | 343 | 10 | 2 | 11 |
 | Ouro Kronii | 348 | 3 | 3 | 5 |
-| Ceres Fauna | 305 | 17 | 1 | 1 |
+| Ceres Fauna | 308 | 17 | 1 | 1 |
 | Nanashi Mumei | 347 | 25 | 1 | 1 |
 | Hakos Baelz | 313 | 13 | 2 | 5 |
 | Shiori Novella | 277 | 26 | 2 | 8 |
@@ -25,3 +25,6 @@
 | AZKi | 193 | 10 | 1 | 3 |
 | Nakiri Ayame | 153 | 12 | 1 | 1 |
 | Nekomata Okayu | 174 | 11 | 2 | 2 |
+| Houshou Marine | 224 | 4 | 1 | 3 |
+| Shirogane Noel | 168 | 4 | 1 | 0 |
+| Yukihana Lamy | 128 | 4 | 1 | 0 |

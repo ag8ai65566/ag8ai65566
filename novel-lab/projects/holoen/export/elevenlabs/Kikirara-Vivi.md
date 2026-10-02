@@ -9,6 +9,7 @@
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, bright, slightly husky, girlish voice; lively, frank and fast in banter, deliberately flat for a deadpan retort, loud screams in horror, warm and sincere with her fans."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **40%** (API `0.40`) (lively, with deliberate flat turns; an untested starting choice).
@@ -32,7 +33,7 @@
 
 With people (proposed scene directions, not observed conversational defaults): Pekora `[adoring, excited]`; Marine `[playful]`; FUWAMOCO `[cheerful]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Ōi!" (spoken, deadpan)
 - `[laughs]` (tag only); `[screams]` (tag only)
 

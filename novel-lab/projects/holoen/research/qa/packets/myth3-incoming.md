@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git 9fd1ef3.
+Snapshot: git 6545e34.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Gura and Kronii|Takanashi Kiara|Kronii and Gura|hololive -Myth-|Kiara and Gura|Gura and Kiara|Calli and Ina|Kiara and Ame|Ame and Kiara|Calli and Ame|Ina and Calli|Ame and Calli|Gura and Ina|Ina and Gura|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Takanashi Kiara|Kronii and Gura|Gura and Kronii|hololive -Myth-|Gura and Kiara|Kiara and Gura|Kiara and Ame|Calli and Ame|Ame and Kiara|Calli and Ina|Ina and Calli|Ame and Calli|Gura and Ina|Ina and Gura|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -55,6 +55,15 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Gura
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2021-04-17 | Kiara's HOLOTALK, 8th guest ("cometori") | [S1 a6DjP7NYwUE] |
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2024-08-24/25 | "High Tide" with IRyS, Moona and Hakos Baelz, and "BIBBIDIBA" with Moona, Ina and Gura, at the English concert -Breaking Dimensions- | [Official SU8] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Takanashi Kiara | "cometori" (the HOLOTALK title's hashtag) | HOLOTALK #8 and a Tales of Arise discussion (2021); a #tastychallenge dance short (2025-08-25, archived metadata 3PZedEMs_VM) | [S1] |
+
+### from Houshou Marine
+- `bible/characters/Houshou-Marine.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's first HOLOTALK guest (2020), on Calli's first English lesson (2022), at an off-collab house party with Calli and Bae (2023), in off-collabs with FUWAMOCO and Nerissa (2024) and as a guest at Ina's "Pleides"
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Takanashi Kiara: her first HOLOTALK guest (2020) and dance shorts ("MIRAGE,"
+- `bible/characters/Houshou-Marine.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her as a guest on Calli's first English lesson (2022) and Kiara's first HOLOTALK (2020), and joining off-collabs with Calli and Bae (2023), FUWAMOCO and Nerissa (2024). [MA5]
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2020-11-20 | First guest on Kiara's "HOLOTALK" | [MA5 3HwaqbdKO1s] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Minato Aqua (graduated) | UMISEA | The ocean unit's official roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Takanashi Kiara | Her first HOLOTALK guest (2020-11-20) | A "MIRAGE" dance short (2024-10-23); "III" with Kobo in a 3D short (2024-05-20) | [MA5 3HwaqbdKO1s, tzVgzvV0cVo, I8DEx4MomOA] |
+- `bible/characters/Houshou-Marine.md › Story Engine`: 2. Kiara invites Marine back to HOLOTALK and Marine takes over as host.
 
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: Takanashi Kiara: a friend since 2021 who gave her a German crash course.
@@ -156,6 +165,14 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Gura
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Takanashi Kiara: hosted Advent on HOLOTALK; an occult handcam off-collab ("#shiotori").
 - `bible/characters/Shiori-Novella.md › Background Timeline`: | 2023-08-12 | Advent on Kiara's HOLOTALK | [Observed SN3; Kiara archive] |
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Takanashi Kiara | Senior | HOLOTALK (2023); an occult handcam off-collab "#shiotori" (2024-07-12); Eden Eternal (2024) | [Observed Kiara archive] |
+
+### from Shirogane Noel
+- `bible/characters/Shirogane-Noel.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Takanashi Kiara: her 22nd HOLOTALK guest (2022).
+- `bible/characters/Shirogane-Noel.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her as Kiara's 22nd HOLOTALK guest (2022) and a guest with Flare on Calli's HOLOYOI #02 (2023). [NO5]
+- `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2022 | Originals "Lyrical Monster" and "Ours"; Kiara's 22nd HOLOTALK guest (03-05) | [Observed NO2] [NO5] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Takanashi Kiara | — | Her 22nd HOLOTALK guest (2022) | [NO5] |
+- `bible/characters/Shirogane-Noel.md › Story Engine`: 1. Noel offers to be Kiara's bodyguard knight at a concert and gets lost backstage.
 
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Groups`: hololive (affiliate), hololive -Myth- (affiliate), Myth, hololive English (former branch name)

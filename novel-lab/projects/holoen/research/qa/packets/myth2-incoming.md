@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 9fd1ef3.
+Snapshot: git 6545e34.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Gura and Calli|Calli and Gura|The Fish Tank|Watson Amelia|Amelia Watson|Ame and Gura|Gura and Ame|Gremlin Ame|ワトソン・アメリア|Same-chan|Goobidiba|Bone Bros|Gawr Gura|holoMyth|HoloMyth|Samegaki|Amechan|amesame|AmeSame|がうる・ぐら|Amelia|Gooba|Myth|Goob|Gura|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Calli and Gura|Gura and Calli|Watson Amelia|Amelia Watson|The Fish Tank|Gura and Ame|Ame and Gura|Gremlin Ame|Gawr Gura|Same-chan|Bone Bros|Goobidiba|ワトソン・アメリア|Samegaki|holoMyth|HoloMyth|amesame|AmeSame|Amechan|がうる・ぐら|Amelia|Gooba|Goob|Myth|Gura|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -44,6 +44,12 @@ Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Gu
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2024-08-24/25 | "High Tide" with IRyS, Moona and Hakos Baelz, and "BIBBIDIBA" with Moona, Ina and Gura, at the English concert -Breaking Dimensions- | [Official SU8] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Gawr Gura (graduated) | hololive night | The three faces of hololive night at Dodger Stadium with Pekora (2024); "BIBBIDIBA" with Moona and Ina at -Breaking Dimensions- (2024) | [Official SU7, SU8] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Ninomae Ina'nis | — | "BIBBIDIBA" with Moona and Gura at -Breaking Dimensions- (2024); Okayu's 2025 New Year Game Festival team (secondary) | [Official SU8] [S1] |
+
+### from Houshou Marine
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides"
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: (2024); "SHINKIRO" with Gura (2023).
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Minato Aqua (graduated) | UMISEA | The ocean unit's official roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | English lesson #01 with Ina (2022); a guest at Ina's 3D live "Pleides" (2024); "SHINKIRO" with Gura (anime MV 2023-11-12, credited "宝鐘マリン・Gawr Gura") | [MA5 3n9igJnSXtQ] [MA4 9ehwhQJ50gs] |
 
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Takanashi Kiara: her 2026 Serendipity partner ("Rocku Wawa"), who calls her a "hidden gem" and encouraged her through hard choreography for a song with Kiara and Ame; Bijou admires Kiara's "confidence," and they keep saying "67."

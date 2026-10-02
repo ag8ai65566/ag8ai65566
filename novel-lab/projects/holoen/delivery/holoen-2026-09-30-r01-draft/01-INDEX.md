@@ -1,6 +1,6 @@
 # Index
 
-Release r01 · baseline 2026-09-30 · 23 characters · 26 world elements · full cards (no compact variants).
+Release r01 · baseline 2026-09-30 · 26 characters · 26 world elements · full cards (no compact variants).
 
 ## Characters (Myth → Promise/Council → Advent → Justice → hololive JP)
 
@@ -29,6 +29,9 @@ Release r01 · baseline 2026-09-30 · 23 characters · 26 world elements · full
 | AZKi | active | hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA | `reference/bible/characters/AZKi.md` | `performance/sheets/AZKi.md` | JP Senpai Pairs, Cross-Branch Friends, hololive History to 2022 |
 | Nakiri Ayame | active | hololive, hololive 2nd Generation, FAMS, AyaFubuMi, AyaSuba, Manji-gumi, OKFAMS | `reference/bible/characters/Nakiri-Ayame.md` | `performance/sheets/Nakiri-Ayame.md` | JP Senpai Pairs |
 | Nekomata Okayu | active | hololive, hololive GAMERS, OkaKoro, SMOK, OKFAMS, MOMAS, TakoNeko, SubaOka | `reference/bible/characters/Nekomata-Okayu.md` | `performance/sheets/Nekomata-Okayu.md` | JP Senpai Pairs, Cross-Branch Friends |
+| Houshou Marine | active | hololive, hololive 3rd generation, hololive Fantasy, UMISEA, holoWitches, Bara☆Dice, Yakamashi Musume, Blue Journey | `reference/bible/characters/Houshou-Marine.md` | `performance/sheets/Houshou-Marine.md` | FUWAMOCO, Advent Pairs, Cross-Branch Friends |
+| Shirogane Noel | active | hololive, hololive 3rd generation, hololive Fantasy, NoeFure, Bara☆Dice, Shiranui Kensetsu, Yakamashi Musume, Blue Journey | `reference/bible/characters/Shirogane-Noel.md` | `performance/sheets/Shirogane-Noel.md` | — |
+| Yukihana Lamy | active | hololive, hololive 5th generation, NePoLaBo, KALAZ, KoZMy, Yakamashi Musume, holoWitches, NePoX, Blue Journey | `reference/bible/characters/Yukihana-Lamy.md` | `performance/sheets/Yukihana-Lamy.md` | — |
 
 ## World elements (premise → units → relationships → events)
 

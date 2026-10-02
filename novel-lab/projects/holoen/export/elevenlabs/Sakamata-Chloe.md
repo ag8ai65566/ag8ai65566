@@ -9,6 +9,7 @@
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, small, soft, high and slightly airy voice that chatters fast, giggles and teases; panicky squeaks in horror."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **45%** (API `0.45`) (quick and playful; an untested starting choice).
@@ -32,7 +33,7 @@
 
 With people (proposed scene directions, not observed conversational defaults): Koyori `[bickering, fond]`; Lui `[whiny, sheepish]`; Kiara `[shy, excited]`; seniors `[teasing]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Bakku bakku baku~" (spoken)
 - `[giggles]` (tag only); `[gasps]` (tag only)
 

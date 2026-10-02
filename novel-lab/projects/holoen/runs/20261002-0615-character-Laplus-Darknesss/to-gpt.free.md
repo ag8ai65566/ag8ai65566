@@ -388,6 +388,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, small, bright, bratty voice that puffs itself up into a grand villain register and cracks into a loud whine when teased or beaten; quick and cocky when winning, with a smug cackle."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **40%** (API `0.40`) (grand, then whiny; an untested starting choice).
@@ -412,7 +413,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 
 With people (proposed scene directions, not observed conversational defaults): Lui `[whiny, dependent]`; Kiara `[competitive, friendly]`; seniors `[indignant]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Yes My Dark!" (spoken)
 - `[cackles]` (tag only)
 
@@ -754,6 +755,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool, clipped executive tone for effect, undone by a cute sparkle; flustered laughter after a blunder."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **55%** (API `0.55`) (calm and warm by default; an untested starting choice).
@@ -778,7 +780,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 
 With people (proposed scene directions, not observed conversational defaults): La+ `[exasperated, fond]`; Kiara `[bright, friendly]`; Mumei `[gentle, sisterly]`; Okayu `[teasing]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Ko!☆" (spoken)
 - `[laughs]` (tag only); `[screams]` (tag only)
 
@@ -1116,6 +1118,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, bright, clear, well-enunciated mid-high voice in presenter mode; quick and cheerful, leaping upward into squeals when excited and full screams when scared; sly and playful when teasing."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
+- Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **40%** (API `0.40`) (wide swings from presenter calm to squeals; an untested starting choice).
@@ -1140,7 +1143,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 
 With people (proposed scene directions, not observed conversational defaults): Chloe `[bickering, fond]`; Marine `[giddy]`; FUWAMOCO `[bubbly]`; La+ `[teasing]`.
 
-## 5. Signature sounds
+## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Konkoyo!" (spoken)
 - `[giggles]` (tag only); `[screams]` (tag only)
 

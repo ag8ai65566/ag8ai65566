@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git 9fd1ef3.
+Snapshot: git 6545e34.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|holoJustice|FiddleFlame|Grem Reaper|TimeChaser|Erby Berby|Gigi Murin|Autofister|Bloodraven|Immerhater|Elizabeth|Da Fister|Raviolin|Gi Murin|Justice|Cecilia|GeeGee|G Pain|Lizzie|HoloEU|Raora|B.F.F|CCGG|Cece|Gigi|Ceci|LYRA|Rara|RPGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|holoJustice|Grem Reaper|Bloodraven|Immerhater|TimeChaser|Autofister|Gigi Murin|Erby Berby|Da Fister|Elizabeth|Gi Murin|Raviolin|Justice|Cecilia|Lizzie|G Pain|GeeGee|HoloEU|B.F.F|Raora|Rara|Gigi|RPGG|Ceci|LYRA|Cece|CCGG|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -57,6 +57,11 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 ### from Hoshimachi Suisei
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Nekomata Okayu: "MOMAS"; Okayu's 2025 New Year Game Festival team with Nakiri Ayame, Ina, IRyS and Cecilia, among others.
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2024-11 to 12 | First live tour "Spectra of Nova" (Saitama, Osaka, Fukuoka); Calli, FUWAMOCO and Elizabeth hold a watch party | [Observed SU2] [S1 YtVleZxIiNc] |
+
+### from Houshou Marine
+- `bible/characters/Houshou-Marine.md › [SW] Background`: (2024); she features in the horror game "Truth of Beauty Witch," which Calli, and Bae with Mumei, played, and she sang for Elizabeth's 2026 birthday.
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "IT'S LOVE" with Korone for Elizabeth's 2026 birthday.
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Elizabeth Rose Bloodflame | — | "IT'S LOVE" cover with Elizabeth and Korone for Elizabeth's 2026 birthday (2026-05-12) | [MA5 iwnHChZq0N8] |
 
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: Gigi Murin: a "Cerulean Cup" guildmate in the ENigmatic Recollection story.
@@ -153,6 +158,12 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Shiori-Novella.md › Behavioral Traits`: 3. She is a self-made producer: she records and edits her own vlogs, writes community posts "like some public diary," makes distinctive titles, thumbnails and overlays, and in 2026 released "Into The Void," a four-part original motion comic voiced by herself, Elizabeth, Gigi and Nerissa. [Official SN4] [Observed SN2; SN3 kEoFVaHsy_U, 3qrQ4KcvUb4]
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Gigi Murin, Cecilia Immergreen, Elizabeth Rose Bloodflame | Justice kouhai ("NovelGrem," "GAGA," "NovelFlame") | Lethal Company as GAGA (2024); Project Zomboid with Zeta and Gigi (2025); Elizabeth and Gigi in her "Into The Void" cast (2026) | [Observed SN2; SN3] |
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Airani Iofi (ID), Pavolia Reine (ID) | "Fanfic Club" with Gigi | Monster Hunter Wilds with Iofi and Jurard (2025) | [Observed SN2; SN3] |
+
+### from Shirogane Noel
+- `bible/characters/Shirogane-Noel.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025).
+- `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [NO5] |
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Raora Panthera and Cecilia Immergreen: "HoloEU"

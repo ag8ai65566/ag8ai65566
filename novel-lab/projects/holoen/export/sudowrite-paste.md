@@ -1,5 +1,5 @@
 # Sudowrite 貼上單 — holoen
-_產生時間 2026-10-02 08:25。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
+_產生時間 2026-10-02 12:13。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
 
 # Style — paste this block first
 貼到 Story Bible → **Style**（109 字；故事本身的文風說明可以接在後面，合計超過約 120 字時請檢查）。它教 Sudowrite 用每個角色的 **Audio Tags** 特質在對白裡寫 ElevenLabs v4 標籤。說明與注意事項見 `elevenlabs/sudowrite-style.md`。
@@ -225,9 +225,9 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Fauna wants to win humans over and lead them back to nature. As a streamer she wanted to comfort her Saplings, sing, learn Japanese, collab with her genmates in person, speedrun games and voice-act in a game, and to finish what she started, like the World Tree.
 ```
 
-### Relationships（305/350）
+### Relationships（308/350）
 ```text
-Nanashi Mumei (graduated 2025): Council and Promise genmate and recurring collaborator. Their public comedy includes Fauna's exaggerated protective and possessive bits ("return to nature"); Mumei's macabre humor complicates the apparent protector/protected roles. They premiered their original duet "It's Not a Phase" at the 2024 English concert (released 2024-12-22), and one of Fauna's last streams was the two of them reading Wikipedia talk-page fights. Hakos Baelz: genmate who, per a fan reference, praised her maternal persona at debut; her horror partner ("BAE & FAUNA'S MONTH OF HORRORS," 2022; an Amnesia: The Bunker off-collab, 2023). Ouro Kronii: genmate; they defused bombs speaking only in ASMR (2021), and Fauna praised Kronii's "gap moe." IRyS: Promise unitmate from 2023 and an earlier CouncilRyS collaborator; Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Tsukumo Sana (graduated 2022): Council genmate who designed the "Beeg Smol" models; Fauna encouraged fans to support her while mixing praise with a disgust joke. Gawr Gura: Fauna's hololive oshi; Mario Kart, a Dark Souls race, and drawing hololive members from memory four days before Fauna graduated. Takanashi Kiara: Myth senior; "KIWAWA vs FAWNA" (2022); Fauna was Kiara's HOLOTALK guest a week before graduating. Kaela Kovalskia (ID): Phasmophobia and Minecraft together. -Justice-: kouhai she made play a board game she invented (2024). Shirogane Noel: a JP senior she admires. Nerissa Ravencroft: Advent kouhai; with Shiori they sang "Lonely in Gorgeous" at the 2024 English concert, and Nerissa greets her on X as "Fauna-senpai!!!" Koseki Bijou: "Coach Fauna" in Bijou's Hitman runs and a "Sweaty TryHard Gamers" squad with Bae and Kaela. FUWAMOCO: helped on the World Tree's last day (2024-12-31). Shiori Novella: the third voice of "Lonely in Gorgeous." Cecilia Immergreen: a book and shoujo-manga tropes ranking (2024; "Green Women"). Gigi Murin: Silent Hill 2 and the 2024 Coughing Baby Award Show ("FruitPunch," a secondary pair name).
+Nanashi Mumei (graduated 2025): Council and Promise genmate and recurring collaborator. Their public comedy includes Fauna's exaggerated protective and possessive bits ("return to nature"); Mumei's macabre humor complicates the apparent protector/protected roles. They premiered their original duet "It's Not a Phase" at the 2024 English concert (released 2024-12-22), and one of Fauna's last streams was the two of them reading Wikipedia talk-page fights. Hakos Baelz: genmate who, per a fan reference, praised her maternal persona at debut; her horror partner ("BAE & FAUNA'S MONTH OF HORRORS," 2022; an Amnesia: The Bunker off-collab, 2023). Ouro Kronii: genmate; they defused bombs speaking only in ASMR (2021), and Fauna praised Kronii's "gap moe." IRyS: Promise unitmate from 2023 and an earlier CouncilRyS collaborator; Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Tsukumo Sana (graduated 2022): Council genmate who designed the "Beeg Smol" models; Fauna encouraged fans to support her while mixing praise with a disgust joke. Gawr Gura: Fauna's hololive oshi; Mario Kart, a Dark Souls race, and drawing hololive members from memory four days before Fauna graduated. Takanashi Kiara: Myth senior; "KIWAWA vs FAWNA" (2022); Fauna was Kiara's HOLOTALK guest a week before graduating. Kaela Kovalskia (ID): Phasmophobia and Minecraft together. -Justice-: kouhai she made play a board game she invented (2024). Shirogane Noel: a JP senior she admires, by secondary accounts. Nerissa Ravencroft: Advent kouhai; with Shiori they sang "Lonely in Gorgeous" at the 2024 English concert, and Nerissa greets her on X as "Fauna-senpai!!!" Koseki Bijou: "Coach Fauna" in Bijou's Hitman runs and a "Sweaty TryHard Gamers" squad with Bae and Kaela. FUWAMOCO: helped on the World Tree's last day (2024-12-31). Shiori Novella: the third voice of "Lonely in Gorgeous." Cecilia Immergreen: a book and shoujo-manga tropes ranking (2024; "Green Women"). Gigi Murin: Silent Hill 2 and the 2024 Coughing Baby Award Show ("FruitPunch," a secondary pair name).
 ```
 
 ## Elizabeth Rose Bloodflame
@@ -668,6 +668,79 @@ Suisei aims to perform at the Tokyo Dome and to expand her work as a solo artist
 Mori Calliope: "Death Star"; Calli is openly starstruck by her; collaborators on "CapSule" and "Wicked" (2022), including their performance at Calli's concert New Underworld Order, and Calli hosted a watch party of Suisei's first tour. AZKi: 0th-generation labelmate since INoNaKa Music ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with AZKi and Moona Hoshinova ("story time," 2022); "High Tide" with IRyS, Moona and Hakos Baelz at the 2024 English concert. Ninomae Ina'nis and Gawr Gura (graduated): "BIBBIDIBA" with Moona at that concert; Gura and Usada Pekora were fellow featured talents in the July 5, 2024 hololive night collaboration with the Los Angeles Dodgers. Takanashi Kiara: HOLOTALK #8 and a Tales of Arise discussion (2021); a dance-challenge short (2025). Hakos Baelz: a "Moonlight" dance cover (2025). FUWAMOCO: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026). Nanashi Mumei (graduated): a #bibbidibachallenge short (2024). Nerissa Ravencroft: a "BIBIDEBA" dance short (2024). Koseki Bijou: watched her Fortnite concert on stream (2026). Nekomata Okayu: "MOMAS"; Okayu's 2025 New Year Game Festival team with Nakiri Ayame, Ina, IRyS and Cecilia, among others. Sakura Miko: her miComet partner. Shiranui Flare: "Shiranui Kensetsu," where Suisei is the PR director. Hakui Koyori, Sakamata Chloe and Kazama Iroha: her Hoshimatic Project; she coached Iroha at Puyo Puyo Tetris (2023). Houshou Marine: "Chatter Chatter" (2026). Shirogane Noel: a fellow Shiranui Kensetsu member. La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA and poker (2024).
 ```
 
+## Houshou Marine
+_來源：bible/characters/Houshou-Marine.md_
+
+### Name（2）
+```text
+Houshou Marine
+```
+
+### Role（1）
+```text
+Protagonist
+```
+
+### Pronouns（2）
+```text
+she/her
+```
+
+### Groups（14）
+```text
+hololive, hololive 3rd generation, hololive Fantasy, UMISEA, holoWitches, Bara☆Dice, Yakamashi Musume, Blue Journey
+```
+
+### Other Names（10）
+```text
+Marine, Senchō, Senchou, Sencho, Maririn, 宝鐘マリン
+```
+
+### Personality（138/400）
+```text
+Marine is hololive's self-proclaimed pirate captain: in her official lore she loves jewels, treasure and money and is saving up as a VTuber for a real pirate ship, wearing her pirate outfit as "cosplay" until then. Her official persona combines a captain's bravado, an older-sister manner and teasing: she playfully mocks seniors and viewers alike, and her crude, risqué jokes keep their teasing register (suggestive, never explicit). When a game surprises her she reacts loudly; in one sampled race she repeated requests to wait, then told herself "let's calm down for a sec." She talks back to games in a rough comic register and insists she is seventeen while everyone teases her about it. She discusses publicly announced hololive projects and on-stream happenings, organizes collaborations, and sings and dances as an idol. She calls herself "Senchō," the Captain.
+```
+
+### Background（154/500）
+```text
+Marine is an active member of hololive's 3rd generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2019-08-11 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Shirogane Noel; secondary reporting records 3 million subscribers in 2024 and 4 million in 2025. She released the album "Ahoy!! You're All Pirates♡!" (2024), held a solo concert (2024), performed in hololive Fantasy's "#OperationHeartfulCuties" concert (2026), released "Chatter Chatter" with Suisei (2026) and the single "Kyapi" (2026). Archived metadata records her with the English cast as Kiara's first HOLOTALK guest (2020), on Calli's first English lesson (2022), at an off-collab house party with Calli and Bae (2023), in off-collabs with FUWAMOCO and Nerissa (2024) and as a guest at Ina's "Pleides" (2024); she features in the horror game "Truth of Beauty Witch," which Calli, and Bae with Mumei, played, and she sang for Elizabeth's 2026 birthday.
+```
+
+### Physical Description（74/200）
+```text
+Marine's avatar is 150 cm tall, with crimson-red twintails tied with ribbons, a black gold-trimmed pirate hat with a plume, an eyepatch and heterochromatic gold and red eyes. She wears a red cropped vest with gold buttons and a red collar bow, a long black captain's coat with gold trim and anchor-badged red cuffs slung over her shoulders, a red pleated miniskirt, dark thigh-highs and red-and-brown heeled boots. Kumarine, a bear, is her mascot.
+```
+
+### Dialogue Style（103/250）
+```text
+Streams in Japanese: "Ahoy!" to open, "Senchō" for herself, and a sign-off the wiki transcribes as "Shukkō!" ("set sail"). Rapid, emphatic delivery is available for game reactions, and pace and volume vary with the scene: in one sampled race she piled up requests to wait, then ordered herself to calm down. She argues with the game in a rough comic register, teases, and can flip into a sugary idol voice for a bit. When a story renders her speech in English or Chinese, keep the pirate-captain bravado and the self-aware jokes; documented teasing, profanity and crude jokes keep their register, but nothing explicit.
+```
+
+### Catchphrases（65/250）
+```text
+"Ahoy! Captain of the Houshou Pirates, Houshou Marine here!" (official English profile wording); 「ヨーソロー」 ("yōsorō," official; localized "Keep 'er steady!"); "Shukkō!" ("set sail," a secondary transcription of her sign-off); 「一回落ち着こうよ」 ("ikkai ochitsukō yo," "let's calm down for a sec," shared ASR span); "Senchō" (the Captain, herself); "Houshou no Ichimi" (her crew, the fans).
+```
+
+### Voice & Delivery（58/250）
+```text
+Provisional direction for an original designed voice: a bright, brassy, mature-sounding mid-high voice; rapid and emphatic in game reactions, with pace and volume following the scene; able to flip into a cutesy idol voice or a full singing voice. Loud laughter and startled shrieks are provisional performance choices, not listening observations. Not as default: quiet, sleepy or reserved.
+```
+
+### Audio Tags（150/350）
+```text
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, brassy mid-high voice. Default tags: [energetic, brassy]. By situation: opening [bright, theatrical]; startled in a game [panicked, rapid]; arguing with a game [rough, comic]; teasing [mischievous]; idol mode [cutesy, sweet]; heartfelt thanks [warm]. With people (proposed scene directions, not observed conversational defaults): Pekora [bickering, fond]; Suisei [playful]; Kiara [playful, teasing]; FUWAMOCO [doting]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; laughter and shrieks are provisional choices): "Ahoy!" (spoken); [cackles] (tag only); [shrieks] (tag only). Keep in the words: "Ahoy," "Senchō," "yōsorō." Reading guide (untested): ほうしょう まりん; せんちょう; ようそろー. Not as default: quiet, shy or slow delivery.
+```
+
+### Motivation（50/200）
+```text
+In her lore, Marine wants a real pirate ship to sail with her crew in search of treasure, and in the end to find that the treasure was the journey and the friends. As a streamer and idol she wants to entertain everyone and keep singing, dancing and organizing collaborations.
+```
+
+### Relationships（224/350）
+```text
+Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2026 Pekora coached her at Mario Tennis ("Pekoach"). Shirogane Noel: hololive Fantasy genmate; the units Bara☆Dice and Yakamashi Musume (with Lamy and Inugami Korone, per archived metadata). Hoshimachi Suisei: "Chatter Chatter" (2026). Yukihana Lamy: Yakamashi Musume, holoWitches and Blue Journey. Hakui Koyori: "#頭ピンク組," the pink-haired pair of their archived titles (a race and a talk testing whether they are alike, 2025); Blue Journey. La+ Darknesss: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Takane Lui and Kazama Iroha: Bara☆Dice. Sakamata Chloe (affiliate): UMISEA and holoWitches. Nekomata Okayu: Marine gave her the nickname "Okanyan" (Okayu's official profile). Takanashi Kiara: her first HOLOTALK guest (2020) and dance shorts ("MIRAGE," "III," 2024). Mori Calliope: Calli's English lesson #01 (2022), Mario Kart (2021) and a house-party off-collab with Bae (2023). Hakos Baelz: that Mario Kart and house party; Bae and Mumei played the horror game featuring Marine (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides" (2024); "SHINKIRO" with Gura (2023). FUWAMOCO: a Touhou off-collab and Mario Party Superstars with Nerissa (2024). Nerissa Ravencroft: that Mario Party off-collab. Elizabeth Rose Bloodflame: "IT'S LOVE" with Korone for Elizabeth's 2026 birthday. Nakiri Ayame: a second-generation senior.
+```
+
 ## IRyS
 _來源：bible/characters/IRyS.md_
 
@@ -955,9 +1028,9 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Calli wants to keep improving her music, reach bigger stages and make work people remember, and in her lore that is how she harvests souls. She wants her Dead Beats to take care of themselves first and to look after the people around them.
 ```
 
-### Relationships（347/350）
+### Relationships（348/350）
 ```text
-Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned it down in 2021; now settled, affectionate old friends, they bicker like an old married couple. Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote lyrics for Ina's TAKO∞TAKOVER and is a recurring target of Ina's puns. Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q," and Calli performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert. Watson Amelia (affiliate): Myth genmate who "called in from 2021" to Calli's 2026 charity stream. IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"; "BLUE CLAPPER" with Bijou, 2024; "Here Comes the CHADCast," 2026); Bae sang "R x R x R" with her (2025); IRyS joined her as the "Two Pink Women" of Silent Hill 2. Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert). Gigi Murin ("Grem Reaper," a shared title): horror, job-simulator and, with Raora Panthera, Elden Ring Nightreign collabs; Calli came to like her own name once Gigi kept using it. Kobo Kanaeru: "Uncle Dad." Koseki Bijou ("Biboo," "TombStone"): a junior whose skill Calli admires; they played her Undertale mod starring Calli and ran a 24-hour charity stream (2025). Shiori Novella: her 2026 Serendipity partner, who calls her "Mor Mori"; they chase absurd premises, and Calli admits she is "a little obsessed with her." Ouro Kronii ("Kronster"): deadpan sparring partner in "Time and Death" horror co-ops and mock feuds. Hoshimachi Suisei: "Wicked" and, per archived uploads, "CapSule" (2022). Cecilia Immergreen: "Cloudy Sheep" at Serendipity. Nekomata Okayu: Mario Party (2024, archived). Rikka (HOLOSTARS): "spiral tones" (MoRikka). Elizabeth, Koganei Niko, Ayunda Risu and Amane Kanata: fellow LYRA vocalists ("III"). Nanashi Mumei (graduated 2025): her "ANATOMY REVIEW" drawing-stream partner (2022). FUWAMOCO: "FUWAMOCALLI," a pair name the twins favor. Marine, Noel, Botan, AZKi and holoX (La+, Lui, Chloe, Iroha): her English-lesson and HOLOYOI guests (2022–2023).
+Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned it down in 2021; now settled, affectionate old friends, they bicker like an old married couple. Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote lyrics for Ina's TAKO∞TAKOVER and is a recurring target of Ina's puns. Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q," and Calli performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert. Watson Amelia (affiliate): Myth genmate who "called in from 2021" to Calli's 2026 charity stream. IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"; "BLUE CLAPPER" with Bijou, 2024; "Here Comes the CHADCast," 2026); Bae sang "R x R x R" with her (2025); IRyS joined her as the "Two Pink Women" of Silent Hill 2. Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert). Gigi Murin ("Grem Reaper," a shared title): horror, job-simulator and, with Raora Panthera, Elden Ring Nightreign collabs; Calli came to like her own name once Gigi kept using it. Kobo Kanaeru: "Uncle Dad." Koseki Bijou ("Biboo," "TombStone"): a junior whose skill Calli admires; they played her Undertale mod starring Calli and ran a 24-hour charity stream (2025). Shiori Novella: her 2026 Serendipity partner, who calls her "Mor Mori"; they chase absurd premises, and Calli admits she is "a little obsessed with her." Ouro Kronii ("Kronster"): deadpan sparring partner in "Time and Death" horror co-ops and mock feuds. Hoshimachi Suisei: "Wicked" and, per archived uploads, "CapSule" (2022). Cecilia Immergreen: "Cloudy Sheep" at Serendipity. Nekomata Okayu: Mario Party (2024, archived). Rikka (HOLOSTARS): "spiral tones" (MoRikka). Elizabeth, Koganei Niko, Ayunda Risu and Amane Kanata: fellow LYRA vocalists ("III"). Nanashi Mumei (graduated 2025): her "ANATOMY REVIEW" drawing-stream partner (2022). FUWAMOCO: "FUWAMOCALLI," a pair name the twins favor. English-lesson guests Marine, AZKi, La+, Iroha, Lui and Chloe (2022); HOLOYOI guests Lui, Chloe, Noel and Botan (2023).
 ```
 
 ## Nakiri Ayame
@@ -1322,7 +1395,7 @@ In her lore, Ina delivers sanity checks on humanity. In her own public words, sh
 
 ### Relationships（349/350）
 ```text
-Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, credits Kiara's support for her confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at hololive night at Dodger Stadium (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put both on her Tomodachi Life island. Houshou Marine: a senior artist she admires. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025). FUWAMOCO: "SHALLYS" with Cecilia on the same stage. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025). Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity. Hoshimachi Suisei: "BIBBIDIBA" (2024). Hakos Baelz: a K/DA "POP/STARS" cover with Moona Hoshinova and Ayunda Risu (2023), a stream art lesson (2024) and Ina's AmiAmi special (2025). Nekomata Okayu ("TakoNeko," a secondary pair name): "Kurukuru Cruise" (2025) and her 2025 New Year Game Festival team, with Nakiri Ayame. Yukihana Lamy: Minecraft festivals and a server "date" (2021) and a "Pleides" guest (2024). Shishiro Botan: an "EVERMORE" guest (2025). Kikirara Vivi: R.E.P.O. (2025). AZKi: R.E.P.O. "JP & EN" (2025).
+Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, credits Kiara's support for her confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at Dodger Stadium's hololive night (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put both on her Tomodachi Life island. Houshou Marine: a senior artist she admires. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025). FUWAMOCO: "SHALLYS" with Cecilia on the same stage. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025). Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity. Hoshimachi Suisei: "BIBBIDIBA" (2024). Hakos Baelz: a K/DA "POP/STARS" cover with Moona Hoshinova and Ayunda Risu (2023), a stream art lesson (2024) and Ina's AmiAmi special (2025). Nekomata Okayu ("TakoNeko," a secondary pair name): "Kurukuru Cruise" (2025) and her 2025 New Year Game Festival team, with Nakiri Ayame. Yukihana Lamy: a Minecraft festival and "date"-billed collab (2021) and a "Pleides" guest (2024). Shishiro Botan: an "EVERMORE" guest (2025). Kikirara Vivi: R.E.P.O. (2025). AZKi: R.E.P.O. "JP & EN" (2025).
 ```
 
 ## Ouro Kronii
@@ -1544,6 +1617,79 @@ In her lore, Shiori archives stories and memories worth saving. As a creator she
 Nerissa Ravencroft: Advent genmate and partner in the performed ShioRaven "wife" bit; Shiori plays hard to get. Their fictional daughter and the secret of Nerissa's horn piece belong to their shared character jokes. Koseki Bijou: genmate who calls her "our glorious leader" (Goth Rock; a "Gyatt Review"). FUWAMOCO: genmates who once mistook a Minecraft cow for her (Pen Pups). Mori Calliope: her 2026 Serendipity partner in Last Writes ("When My Devil Rises"), who admits she is "a little obsessed with her"; Shiori admires Calli's "work ethic and boundaries," and they bond over dark taste and absurd deep-dives. Takanashi Kiara: hosted Advent on HOLOTALK; an occult handcam off-collab ("#shiotori"). Ouro Kronii: they hosted "Rating Your Clocks" together (2025) and sang "MONSTER" with Ina and Gigi at the 2025 concert. IRyS: Monster Hunter Wilds and PEAK (2025). Ceres Fauna (graduated 2025): with Nerissa, "Lonely in Gorgeous" at the 2024 English concert. Nanashi Mumei (graduated 2025): B-movie watchalongs. Ninomae Ina'nis: a "Rate Your Fears" nightmare talk. Watson Amelia: a VRChat aquarium visit with "Ame Senpai." Gigi Murin, Cecilia Immergreen, Elizabeth Rose Bloodflame (-Justice-, Advent's in-story "guards"): GAGA with Bijou, Gigi and Cecilia; Gigi, Elizabeth ("NovelFlame") and Nerissa voice her non-canon motion comic "Into The Void." Raora Panthera: a 2024 outfit-design collab and Blood Typers with Kronii and Bijou (2025). Cecilia and Vestia Zeta: "Break It Down" at Serendipity. Vestia Zeta (ID): "GreyScaleX," an official duo unit with "Purrfect Pair" merchandise (2026). Pavolia Reine and Airani Iofi (ID) with Gigi: the "Fanfic Club." HOLOSTARS: Machina X Flayon ("Goth Pilot"), Jurard T Rexford and Regis Altare in co-op games. Gawr Gura (graduated): a fellow "Scarlet Wand" guildmate in ENigmatic Recollection, with Nerissa.
 ```
 
+## Shirogane Noel
+_來源：bible/characters/Shirogane-Noel.md_
+
+### Name（2）
+```text
+Shirogane Noel
+```
+
+### Role（1）
+```text
+Protagonist
+```
+
+### Pronouns（2）
+```text
+she/her
+```
+
+### Groups（15）
+```text
+hololive, hololive 3rd generation, hololive Fantasy, NoeFure, Bara☆Dice, Shiranui Kensetsu, Yakamashi Musume, Blue Journey
+```
+
+### Other Names（11）
+```text
+Noel, Danchou, Danchō, Noel-danchou, Noel Deluxe, 白銀ノエル
+```
+
+### Personality（114/400）
+```text
+Noel is hololive Fantasy's silver-haired knight, the "Danchou" (commander) of her viewers' knight order: easy-going and fluffy, but with the dangerous habit of trying to solve every problem with muscle, and in her lore she came to the VTuber world to train among the "stronk." She is wholesome and eager, with a cheerful voice that surprises people who expect a warrior. She uses muscle-themed greetings, recaps her week on her "Sunday Muscle" morning chat, recommends games with enthusiasm, hosts a public drinking-talk collab format with friends and releases ASMR works. With her genmate Shiranui Flare she shares the pair label "NoeFure"; any mock-jealous exchanges about Flare are performed on-stream comedy, not a private relationship.
+```
+
+### Background（123/500）
+```text
+Noel is an active member of hololive's 3rd generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2019-08-08 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Houshou Marine. She released the originals "Lyrical Monster" and "Ours" (2022), her first album "NOESANPO" (2023), "TREVIAN KNIGHT" (2025) and "KAGAMI YO KAGAMI" (2026), and sang at hololive Fantasy's "#OperationHeartfulCuties" concert (2026). Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
+```
+
+### Physical Description（54/200）
+```text
+Noel's avatar is 158 cm tall, with shoulder-length silver hair, a braid, a black-and-gold metal headband and green eyes. She wears black, gold-edged armor on one shoulder and both arms, a long white surcoat with navy trim and a heraldic panel, leather belts and pouches, and armored steel boots, and carries a flanged mace.
+```
+
+### Dialogue Style（85/250）
+```text
+Streams in Japanese in a cheerful, chatty voice, calling herself "Danchou" and her viewers "danin-san." She uses muscle-themed greetings (the official 「こんまっする〜」), recaps her week with old-fashioned endings (「まぁ色々ありましたな」, "well, quite a lot happened"), recommends games eagerly, and plays up mock jealousy about Flare as a comedy bit. When a story renders her speech in English or Chinese, keep the muscle puns, the "Danchou" self-reference and the soft voice under the armor.
+```
+
+### Catchphrases（60/250）
+```text
+"All hustle, all muscle! Shirogane Noel's here!" (official English profile wording); 「こんまっする〜」 ("konmassuru," official muscle-themed greeting); "Konbanmassuru~" ("Good Musclevening~") and "Ohamassuru" (good morning) (secondary transcriptions); 「まぁ色々ありましたな」 ("mā iroiro arimashita na," shared ASR span); "Danchou" (herself, the commander); "danin-san" (her knights, the viewers); "Sunday Muscle" (her Sunday-morning chat).
+```
+
+### Voice & Delivery（49/250）
+```text
+Provisional direction for an original designed voice: a soft, girlish, warm voice, higher than her armor suggests; bubbly and eager in chat. Flustered wailing when she loses, a bright laugh and a gentler older-sister register are provisional performance choices, not listening observations. Not as default: gruff, cold or sultry.
+```
+
+### Audio Tags（148/350）
+```text
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): soft, girlish, warm voice. Default tags: [cheerful, warm]. By situation: greeting [hearty, bright]; recapping the week [chatty, relaxed]; recommending something [eager]; losing a game [flustered, wailing]; the mock-jealous Flare bit [mock-jealous, pouty]; older-sister mode [gentle, lower]. With people (proposed scene directions, not observed conversational defaults): Flare [playful, fond]; Marine [bickering, playful]; Pekora [competitive]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; the laugh is a provisional choice): "Konmassuru~" (spoken); [laughs] (tag only). Keep in the words: "Danchou," "massuru," "danin-san." Reading guide (untested): しろがね のえる; だんちょう; こんまっする. Not as default: a gruff warrior or a cold voice.
+```
+
+### Motivation（34/200）
+```text
+In her lore, Noel came to the VTuber world to train and grow stronger. As a streamer she wants to have fun with her knights and her friends and keep improving as a singer.
+```
+
+### Relationships（168/350）
+```text
+Houshou Marine: hololive Fantasy genmate; the units Bara☆Dice and "Yakamashi Musume" (with Yukihana Lamy and Inugami Korone, per archived metadata); 3rd-gen R.E.P.O. (2025). Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy. Yukihana Lamy: Yakamashi Musume and drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an Audio-Technica sponsorship collab (2025). Hakui Koyori: "#ノエこよ," a Power Pros baseball exhibition (2025), and Blue Journey (2023). Takane Lui and Kazama Iroha: Bara☆Dice. Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025). Ceres Fauna (graduated 2025): an EN kouhai who, by secondary accounts, admired her and hoped to collab.
+```
+
 ## Takanashi Kiara
 _來源：bible/characters/Takanashi-Kiara.md_
 
@@ -1688,6 +1834,79 @@ Ame wants to crack every case and every game her own way, make entertaining expe
 ### Relationships（257/350）
 ```text
 Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs. Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week. FUWAMOCO: "Detective Dogs" (Escape Simulator, 2024: "blondes can solve any puzzle"). Shiori Novella: a VRChat aquarium visit with "Ame Senpai" (2024). Koseki Bijou: Overwatch and Apex (2023). Gigi Murin: in the ENigmatic Recollection role-play story Gigi's knight Gonathon married Ame's Jyonathan ("ClueChaser," a secondary pair name). Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024). Hakos Baelz: bathroom reviews and a Holoween escape-room behind-the-scenes (2022), and an Apex off-collab (2023). Kazama Iroha: "KoMeHa" with Kobo Kanaeru (VALORANT, 2022). Takane Lui: Apex with Airani Iofifteen (2022). Nakiri Ayame and Nerissa Ravencroft: 2023 Sports Festival white-team teammates.
+```
+
+## Yukihana Lamy
+_來源：bible/characters/Yukihana-Lamy.md_
+
+### Name（2）
+```text
+Yukihana Lamy
+```
+
+### Role（1）
+```text
+Protagonist
+```
+
+### Pronouns（2）
+```text
+she/her
+```
+
+### Groups（13）
+```text
+hololive, hololive 5th generation, NePoLaBo, KALAZ, KoZMy, Yakamashi Musume, holoWitches, NePoX, Blue Journey
+```
+
+### Other Names（8）
+```text
+Lamy, Lamy-mama, Wamy, 雪花ラミィ
+```
+
+### Personality（101/400）
+```text
+Lamy is a snow elf accompanied by her little snow spirit Daifuku; her official profile says her serious manner conceals a sheltered, scatterbrained side. Fans call her "Lamy-mama" (secondary). She calls herself "Lamy" and moves between formal thanks and casual banter: in her public evening-chat ("banshaku") streams she shows her snacks, invites a toast with her Yukimin and talks through the week, and she has a collaboration sake, "Yukiyozuki." She loves cozy slow-life games, joins group server events, and sets herself challenges, including things she is not good at. Secondary accounts describe her scared reactions in horror games with Shishiro Botan.
+```
+
+### Background（145/500）
+```text
+Lamy is an active member of hololive's 5th generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2020-08-12 in hololive's 5th generation with Shishiro Botan, Omaru Polka and Momosuzu Nene (with whom she forms NePoLaBo). She sang in the "Blue Journey" project with Marine, Noel, Koyori and Sakura Miko (2023), joined "Magical Girl holoWitches!" (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi. Her originals include "Hatsukoi Pâtissière" (2024), "Yoppara Music !" (2025) and "Snowlight Stories" (2026), and her first album, "Fleur de neige," was announced for January 2027. Archived metadata records her with the English cast at Ina's Minecraft festival and a Minecraft collab billed as a "date" (2021), and as a guest at Ina's 3D live "Pleides" (2024).
+```
+
+### Physical Description（78/200）
+```text
+Lamy's avatar is 158 cm tall, with long light-blue hair, a heart-shaped ahoge, small side braids, pointed elf ears and golden eyes, under a white beret with a blue snow flower. She wears a white blouse with a blue ribbon, a light-blue fur-trimmed coat patterned with snowflakes worn off the shoulders, a brown belt, a white skirt fading to blue, snow-patterned white thigh-highs and brown boots. Daifuku, a tiny polar-bear-like snow spirit in a pot, keeps her company.
+```
+
+### Dialogue Style（108/250）
+```text
+Streams in Japanese in a soft, polite voice, calling herself "Lamy." In a sampled June 2026 evening chat she moves from formal thanks (「今週も、皆様、お疲れ様でございました」, "thank you all for your hard work this week, too") to quick, casual banter and invites a toast (「とりあえず、乾杯しないと何も始まらない」, "nothing starts until we toast first"). When a story renders her speech in English or Chinese, keep the third-person "Lamy," the formal-to-casual contrast and her warmth; never play her as a drunk caricature.
+```
+
+### Catchphrases（69/250）
+```text
+"Lamyoohoo!" (official); "Konlamy desu" (secondary transcription of her greeting); 「とりあえず、乾杯しないと何も始まらない」 ("toriaezu, kanpai shinai to nani mo hajimaranai," shared ASR span); 「今週も、皆様、お疲れ様でございました」 ("konshū mo, minasama, otsukaresama de gozaimashita," shared ASR span); "Lamy" (herself); "Yukimin" (her fans, the Snowfolk).
+```
+
+### Voice & Delivery（48/250）
+```text
+Provisional direction for an original designed voice: a soft, bright, gentle voice with a refined, polite surface that turns quick and cheerful in banter. A soft, airy giggle, motherly comfort and breathy, squeaky fright are independent design choices, not listening observations. Never cold, harsh or a slurred caricature.
+```
+
+### Audio Tags（148/350）
+```text
+Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): soft, bright, gentle voice. Default tags: [gentle, cheerful]. By situation: greeting [sweet, bright]; formal thanks [warm, formal]; banter [casual, quick]; comforting [motherly, soft]; a frightening game [panicked, squeaky]; flustered [shy]. With people (proposed scene directions, not observed conversational defaults): Botan during a frightening game [panicked, seeking reassurance]; Koyori [giggly]; Nene [playful]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; giggles and gasps are provisional choices): "Kanpai!" (spoken); [giggles] (tag only); [gasps] (tag only). Keep in the words: "Lamy," "Yukimin," "kanpai." Reading guide (untested): ゆきはな らみぃ; ゆきみん. No regional accent is assigned. Not as default: a cold or harsh voice, or slurred speech.
+```
+
+### Motivation（40/200）
+```text
+In her lore, hololive's streams made Lamy smile, and she wants to pass that on. As a streamer she wants to take on every challenge, give hololive a boost, stand on stage with her senpai and keep her Yukimin company.
+```
+
+### Relationships（128/350）
+```text
+Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror runs where Lamy is scared and Botan stays calm. Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo (a 3D party, 2026); "Magamaga's" with Nene (secondary). AZKi: "KoZMy" with Hakui Koyori, and "KALAZ" with Amane Kanata (secondary). Hakui Koyori: KoZMy (2025) and a March 2026 off-collab titled to name their duo. Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone (archived metadata), and Blue Journey; Marine is also in holoWitches. La+ Darknesss, Takane Lui, Kazama Iroha and Hakui Koyori: NePoX, the 2026 NePoLaBo × holoX events. Ninomae Ina'nis: a Minecraft festival and a Minecraft collab billed as a "date" (2021), and a guest at Ina's 3D live "Pleides" (2024). Sakamata Chloe (affiliate): Rust with Amane Kanata (2022).
 ```
 
 # Worldbuilding

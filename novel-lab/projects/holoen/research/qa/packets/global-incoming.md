@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 9fd1ef3.
+Snapshot: git 6545e34.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|world tour|EN concert|the merger|SUPER EXPO|Death Star|PavoNashi|Holodeath|aftertalk|HOLOTORI|3D live|HoloJEI|K.I.R.A|IRySora|soranii|MoRikka|V3LVET|UMISEA|KoMeHa|OKFAIR|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|SUPER EXPO|Death Star|the merger|EN concert|world tour|aftertalk|Holodeath|PavoNashi|HOLOTORI|MoRikka|K.I.R.A|soranii|HoloJEI|IRySora|3D live|UMISEA|KoMeHa|OKFAIR|V3LVET|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -109,6 +109,14 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Mori Calliope | "Death Star" | Calli is openly starstruck by her (Calli's file); "CapSule" and "Wicked" (2022); Suisei sang "Wicked" at Calli's first solo concert, New Underworld Order; by Suisei's own account a guest at "UNCUT ROCK!!" (2026); a "Talkin' Live Shows" collab (2023); Calli's watch party of her first tour (2024-11-14) | [S1] [ASR SU20] [SU2 §Relationships] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | AZKi | 0th gen; "AS_tar" (formerly "Ex-INNK") | Labelmates at INoNaKa Music; Star Flower; an AS_tar horror off-collab (2026-05-18) and "Going My Way" (official credit AZKi & Hoshimachi Suisei, 2026) | [SU2] [SU4] [Official SU11] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | IRyS | Star Flower | "story time" (2022); "High Tide" (2024); IRyS covered "GHOST" (2021); on Okayu's 2025 New Year Game Festival team (secondary roster) | [Official SU6, SU8] [S1] |
+
+### from Houshou Marine
+- `bible/characters/Houshou-Marine.md › [SW] Groups`: hololive, hololive 3rd generation, hololive Fantasy, UMISEA, holoWitches, Bara☆Dice, Yakamashi Musume, Blue Journey
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Sakamata Chloe (affiliate): UMISEA and holoWitches.
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides"
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Sakamata Chloe (affiliate) | UMISEA; holoWitches | Chloe played Marine's horror game (2023) | [MA2] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Minato Aqua (graduated) | UMISEA | The ocean unit's official roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | English lesson #01 with Ina (2022); a guest at Ina's 3D live "Pleides" (2024); "SHINKIRO" with Gura (anime MV 2023-11-12, credited "宝鐘マリン・Gawr Gura") | [MA5 3n9igJnSXtQ] [MA4 9ehwhQJ50gs] |
 
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
@@ -237,6 +245,13 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Ouro Kronii | Promise member ("Time Duo") | Time traveler vs. Warden of Time; Ame guested at Kronii's 2026 3D birthday live | [Observed A2 §Relationships; Kronii file K33] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Kazama Iroha, Takane Lui | JP members | "KoMeHa" with Iroha and Kobo Kanaeru (VALORANT, 2022-06-04); Apex with Lui and Iofi (2022) | [S1 tGVhLibbYL0; world card "holoX"] |
+
+### from Yukihana Lamy
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2021), and as a guest at Ina's 3D live "Pleides"
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: (2021), and a guest at Ina's 3D live "Pleides"
+- `bible/characters/Yukihana-Lamy.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her at Ina's Minecraft festival and a Minecraft collab billed as a "date" (2021) and as a guest at Ina's 2024 3D live. [LM5]
+- `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2024 | Originals "Hatsukoi Pâtissière," "Watashi wo amayakasunara" and "Lamy's Baribari Workout"; a guest at Ina's 3D live "Pleides" (12-28) | [Observed LM2] [LM5] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Ninomae Ina'nis | — | A Minecraft festival appearance and a Minecraft collab billed as a "date" (2021); a guest at Ina's "Pleides" 3D live (2024) | [LM5 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › With Myth`: - **Mori Calliope:** Bijou played her Undertale mod starring Calli with her on stream (2023-08-12); "TombStone" (Bijou), a 24-hour charity stream together (2025-06-29), Warhammer painting (2026); "FUWAMOCALLI," a collaboration name the twins say they particularly like; Fuwawa alone joined Calli and Gigi Murin for a 2026 BOMBANANA collab ("2 Creatures + 1 Reaper"); Shiori was Calli's 2026 Serendipity partner (Calli, officially: "I am a little obsessed with her"; their dynamic: "Unhinged"). [Official S4] [Observed S1]

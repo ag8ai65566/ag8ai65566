@@ -1,31 +1,34 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "9fd1ef3",
+ "commit": "6545e34",
  "files": {
   "bible/characters/AZKi.md": "bc7717aedd7384d0a76af9f930c934aca1fbc63782bd7283f02eda6a098bbf69",
   "bible/characters/Cecilia-Immergreen.md": "1a7023b73db21444e4a016f37dfd28775a01d57ac9e21defdf5b8df37fe8491e",
-  "bible/characters/Ceres-Fauna.md": "e684eb396bdb20dcc641081d181cfa61181435580fd13354ecabe28bc09322bb",
+  "bible/characters/Ceres-Fauna.md": "4d63075ff5b123d71626b8c4342e286ea6d88ffd8ec6d0f400d9a5ac70ba5269",
   "bible/characters/Elizabeth-Rose-Bloodflame.md": "878727a84a0a763abd0e108678471c1db091f5c5941c2e8fadd09d2d78950582",
   "bible/characters/Fuwawa-Abyssgard.md": "1c23f61a054849c7ba90b9f698a653c4d1fb7526f1298bf9dc303ffd91ae41a4",
   "bible/characters/Gawr-Gura.md": "8a34e369b670788c58217bb79be4d4bd6b62b3d6bdb8b043c1bfa6fa60ccdeef",
   "bible/characters/Gigi-Murin.md": "4d8a32d14e884e082b60a5dc04023f168cfdfd6b3c72acf67ad934340dd1e486",
   "bible/characters/Hakos-Baelz.md": "a6b3877663d67a3e2df3c672cd4cdc1d1e21dd4ce6e778be7cb838c2b1d6ef79",
   "bible/characters/Hoshimachi-Suisei.md": "edb3ed903aea17983437ce517d8d2cd4b1b060570200363f88e0eb0008c6f53b",
+  "bible/characters/Houshou-Marine.md": "499212948bf569b4ffb30fb39242a1ec63976d24532b37e1dc48f0ed8899e3f2",
   "bible/characters/IRyS.md": "14aa627b32298c740425850efe57dbf32d085583e2920e2e3b9bf4454f9ee6a4",
   "bible/characters/Koseki-Bijou.md": "9ee667f3293911da1e0bec5d533b00c6d5830582468f3f8092fb29e9c69ed269",
   "bible/characters/Mococo-Abyssgard.md": "b15e71171df283862852a31c5fd036268c5e6c44b216f91e9f359467a5f4eb0f",
-  "bible/characters/Mori-Calliope.md": "df7222d16f11f6f3b00edaf0af042b84a03bcf8a8a6d61bd1494f8ad623c79e0",
+  "bible/characters/Mori-Calliope.md": "fa27059d7339592feb8fe4cd46dbf00eeabb5ce64eccf4fb59deb9375e4d5e1f",
   "bible/characters/Nakiri-Ayame.md": "2cb9232e35c8974edfb42b30c4b0f6366ff42e4efa085de9d85b94c7f0ee55b4",
   "bible/characters/Nanashi-Mumei.md": "b62812e9d982973f29d79c30caf38b56d9c7fb4003c867a2af00f6348f122a01",
   "bible/characters/Nekomata-Okayu.md": "63e5fed4346b3ac5adcf5742f4ac9cfb7ce87b4b6c274c008b47c5465ac11cf8",
   "bible/characters/Nerissa-Ravencroft.md": "a56024df9cfdcd21042c21632ed9c3ce70e0d06176c320007ea14c47afdc202a",
-  "bible/characters/Ninomae-Inanis.md": "05478a75823f44a27306ad398a2aae81e4e395c5eb0b51928c2f5fc0baf3fb83",
+  "bible/characters/Ninomae-Inanis.md": "e53ab65d2fcd105b7e169767276f0b81087ccd585ab1bc7043c048766c3c7696",
   "bible/characters/Ouro-Kronii.md": "e28417b894a9516999a0ea922b52088937192d2f2a22ef6ccb254d240b198e70",
   "bible/characters/Raora-Panthera.md": "0f153278cd7f7d14305164b804fbf2b49c14a3ba63416115b85c7f7c21529679",
   "bible/characters/Shiori-Novella.md": "17e6e4e846ecf9163246fde34efc12e18ad5b3e5e22f9beb5bdb6d87fe0fa5ae",
+  "bible/characters/Shirogane-Noel.md": "ff8ebb28f4bf7a37de61fb54740cbbe20e3ef59a02a0b79c24fbc24503a23840",
   "bible/characters/Takanashi-Kiara.md": "ad3b92c6d66c26c276b4239e6c24f954d8d04f19845458bfba46fd2921cbdd76",
   "bible/characters/Watson-Amelia.md": "2021dc901c54e53010da9cdbd0aedb75011318cd9e5ce9ca269e027d0116aa53",
+  "bible/characters/Yukihana-Lamy.md": "b7309e3862592efce8b1e8ecd5d795461e3616e06cfc2ead170a38cdde123ab6",
   "bible/world/Advent-Pairs.md": "bea1ef142554b21fe45ec4cdd1782bf38da5105cd275dd46582e349390ff5ce2",
   "bible/world/AmeSame.md": "03602b5cf2fd19d1fa524636a54d0af12f84d27e928ad6d6b558931a31b6360b",
   "bible/world/Bone-Bros.md": "3456a63d52637b62b6c0e00e4961d7f469a52be8eb5d6bf792e331d5e83c2bdb",
@@ -300,6 +303,36 @@
     "graduated": null,
     "regular_activities_concluded": null,
     "source": "bible/characters/Hoshimachi-Suisei.md › Background (debut: Background)"
+   }
+  },
+  {
+   "name": "Houshou Marine",
+   "file": "bible/characters/Houshou-Marine.md",
+   "other_names": [
+    "Marine",
+    "Senchō",
+    "Senchou",
+    "Sencho",
+    "Maririn",
+    "宝鐘マリン"
+   ],
+   "groups": [
+    "hololive",
+    "hololive 3rd generation",
+    "hololive Fantasy",
+    "UMISEA",
+    "holoWitches",
+    "Bara☆Dice",
+    "Yakamashi Musume",
+    "Blue Journey"
+   ],
+   "status": "Marine is an active member of hololive's 3rd generation. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2019-08-11",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Houshou-Marine.md › Background (debut: Background)"
    }
   },
   {
@@ -627,6 +660,36 @@
    }
   },
   {
+   "name": "Shirogane Noel",
+   "file": "bible/characters/Shirogane-Noel.md",
+   "other_names": [
+    "Noel",
+    "Danchou",
+    "Danchō",
+    "Noel-danchou",
+    "Noel Deluxe",
+    "白銀ノエル"
+   ],
+   "groups": [
+    "hololive",
+    "hololive 3rd generation",
+    "hololive Fantasy",
+    "NoeFure",
+    "Bara☆Dice",
+    "Shiranui Kensetsu",
+    "Yakamashi Musume",
+    "Blue Journey"
+   ],
+   "status": "Noel is an active member of hololive's 3rd generation. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2019-08-08",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Shirogane-Noel.md › Background (debut: Background)"
+   }
+  },
+  {
    "name": "Takanashi Kiara",
    "file": "bible/characters/Takanashi-Kiara.md",
    "other_names": [
@@ -677,6 +740,35 @@
     "graduated": null,
     "regular_activities_concluded": "2024-09-30",
     "source": "bible/characters/Watson-Amelia.md › Background (debut: Hard Facts / Background Timeline)"
+   }
+  },
+  {
+   "name": "Yukihana Lamy",
+   "file": "bible/characters/Yukihana-Lamy.md",
+   "other_names": [
+    "Lamy",
+    "Lamy-mama",
+    "Wamy",
+    "雪花ラミィ"
+   ],
+   "groups": [
+    "hololive",
+    "hololive 5th generation",
+    "NePoLaBo",
+    "KALAZ",
+    "KoZMy",
+    "Yakamashi Musume",
+    "holoWitches",
+    "NePoX",
+    "Blue Journey"
+   ],
+   "status": "Lamy is an active member of hololive's 5th generation. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2020-08-12",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Yukihana-Lamy.md › Background (debut: Background)"
    }
   }
  ],
@@ -1487,6 +1579,27 @@
   "hoshimachi": [
    "Hoshimachi Suisei"
   ],
+  "houshou marine": [
+   "Houshou Marine"
+  ],
+  "marine": [
+   "Houshou Marine"
+  ],
+  "senchō": [
+   "Houshou Marine"
+  ],
+  "senchou": [
+   "Houshou Marine"
+  ],
+  "sencho": [
+   "Houshou Marine"
+  ],
+  "maririn": [
+   "Houshou Marine"
+  ],
+  "宝鐘マリン": [
+   "Houshou Marine"
+  ],
   "irys": [
    "IRyS",
    "IRyS"
@@ -1729,6 +1842,27 @@
   "shiori~n": [
    "Shiori Novella"
   ],
+  "shirogane noel": [
+   "Shirogane Noel"
+  ],
+  "noel": [
+   "Shirogane Noel"
+  ],
+  "danchou": [
+   "Shirogane Noel"
+  ],
+  "danchō": [
+   "Shirogane Noel"
+  ],
+  "noel-danchou": [
+   "Shirogane Noel"
+  ],
+  "noel deluxe": [
+   "Shirogane Noel"
+  ],
+  "白銀ノエル": [
+   "Shirogane Noel"
+  ],
   "takanashi kiara": [
    "Takanashi Kiara"
   ],
@@ -1770,6 +1904,21 @@
   ],
   "ワトソン・アメリア": [
    "Watson Amelia"
+  ],
+  "yukihana lamy": [
+   "Yukihana Lamy"
+  ],
+  "lamy": [
+   "Yukihana Lamy"
+  ],
+  "lamy-mama": [
+   "Yukihana Lamy"
+  ],
+  "wamy": [
+   "Yukihana Lamy"
+  ],
+  "雪花ラミィ": [
+   "Yukihana Lamy"
   ],
   "advent pairs": [
    "Advent Pairs"
@@ -3503,6 +3652,96 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2019-08-11",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut, hololive 3rd generation (hololive Fantasy)",
+   "evidence": "[Official MA1]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-11-20",
+   "precision": "day",
+   "zone": null,
+   "text": "First guest on Kiara's \"HOLOTALK\"",
+   "evidence": "[MA5 3HwaqbdKO1s]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-02-19",
+   "precision": "day",
+   "zone": null,
+   "text": "Calli's HOLO ENGLISH LESSON #01 with Ina and Fubuki",
+   "evidence": "[MA5 bfUEbp3xk4o]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-08",
+   "precision": "month",
+   "zone": null,
+   "text": "The horror game \"Truth of Beauty Witch -Marine's treasure ship-\" features her (Calli played it 08-14; Bae with Mumei 08-23); an off-collab house party with Calli and Bae (08-14)",
+   "evidence": "[Observed MA2 §Events] [MA5 Mf-sAjsuSig, RY1GkF4jMls, DY5VThfehW8]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "3 million subscribers (01-10, secondary); album \"Ahoy!! You're All Pirates♡!\" (10-16); a Touhou off-collab with FUWAMOCO (04-30) and Mario Party with FUWAMOCO and Nerissa; a solo concert (12); a guest at Ina's \"Pleides\" (12-28)",
+   "evidence": "[Observed MA2] [MA5 x7gRHgQ0yI0, FLL7e1-RPGo, 3n9igJnSXtQ]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-05-05",
+   "precision": "day",
+   "zone": null,
+   "text": "4 million subscribers (secondary reporting; the official shop's 4-million merchandise confirms the milestone, not the date)",
+   "evidence": "[Observed MA2 §2025]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-01-17/18",
+   "precision": "day-range",
+   "zone": null,
+   "text": "hololive Fantasy concert \"#OperationHeartfulCuties,\" K-Arena Yokohama",
+   "evidence": "[Observed MA2 §2025–2026] [Official announcement]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-02-28",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Chatter Chatter\" with Hoshimachi Suisei: anime MV (official digital release 2026-03-01)",
+   "evidence": "[MA4 di9NZ6ja_mE] [Official music 711]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-10",
+   "precision": "day",
+   "zone": null,
+   "text": "Mario Tennis with Pekora as her coach (\"Pekoach\")",
+   "evidence": "[MA4 GWZrQZ6leZI]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-08",
+   "precision": "month",
+   "zone": null,
+   "text": "7th anniversary and a new 3D costume (08-11); single \"Kyapi\" (08-12)",
+   "evidence": "[Observed MA2 §2026, §Discography]",
+   "file": "bible/characters/Houshou-Marine.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "Lore",
    "precision": "lore",
    "zone": null,
@@ -4772,6 +5011,60 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2019-08-08",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut, hololive 3rd generation (hololive Fantasy)",
+   "evidence": "[Official NO1]",
+   "file": "bible/characters/Shirogane-Noel.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022",
+   "precision": "year",
+   "zone": null,
+   "text": "Originals \"Lyrical Monster\" and \"Ours\"; Kiara's 22nd HOLOTALK guest (03-05)",
+   "evidence": "[Observed NO2] [NO5]",
+   "file": "bible/characters/Shirogane-Noel.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023",
+   "precision": "year",
+   "zone": null,
+   "text": "Calli's HOLOYOI #02 with Flare (04-20); first solo album \"NOESANPO\" (official digital release 11-25; birthday merchandise orders opened 11-24); a \"Yuru Holo\" team Mario Kart event with FUWAMOCO and Bae among the participants (12-12)",
+   "evidence": "[NO5] [Official music 359]",
+   "file": "bible/characters/Shirogane-Noel.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "#ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); \"TREVIAN KNIGHT\" (official digital release 08-16), which FUWAMOCO danced to (09-30)",
+   "evidence": "[NO4] [NO5] [Official music 622]",
+   "file": "bible/characters/Shirogane-Noel.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-01-17/18",
+   "precision": "day-range",
+   "zone": null,
+   "text": "hololive Fantasy concert \"#OperationHeartfulCuties,\" K-Arena Yokohama",
+   "evidence": "[Observed NO2] [Official announcement]",
+   "file": "bible/characters/Shirogane-Noel.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-08",
+   "precision": "month",
+   "zone": null,
+   "text": "Original song \"KAGAMI YO KAGAMI\" (official digital release 08-16)",
+   "evidence": "[Official music 796]",
+   "file": "bible/characters/Shirogane-Noel.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "Lore",
    "precision": "lore",
    "zone": null,
@@ -5021,6 +5314,69 @@
    "text": "Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call \"from 2021\" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card",
    "evidence": "[A8, A19]",
    "file": "bible/characters/Watson-Amelia.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-08-12",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut, hololive 5th generation",
+   "evidence": "[Official LM1]",
+   "file": "bible/characters/Yukihana-Lamy.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021",
+   "precision": "year",
+   "zone": null,
+   "text": "Ina's Usaken Summer Festival (06-27) and an EN-server Minecraft \"date\" with Ina (10-20)",
+   "evidence": "[LM5]",
+   "file": "bible/characters/Yukihana-Lamy.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023",
+   "precision": "year",
+   "zone": null,
+   "text": "\"Blue Journey\" music project with Marine, Noel, Koyori and Sakura Miko",
+   "evidence": "[Koyori file; Observed LM2]",
+   "file": "bible/characters/Yukihana-Lamy.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "Originals \"Hatsukoi Pâtissière,\" \"Watashi wo amayakasunara\" and \"Lamy's Baribari Workout\"; a guest at Ina's 3D live \"Pleides\" (12-28)",
+   "evidence": "[Observed LM2] [LM5]",
+   "file": "bible/characters/Yukihana-Lamy.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "Joins \"Magical Girl holoWitches!\" (04–05); \"Yoppara Music!\" (official digital release 08-13); a \"KoZMy 結成⁉\" collab with AZKi and Koyori (08-03; secondary listings give its first anniversary in 2026-08)",
+   "evidence": "[Observed LM2] [Official music 609] [Koyori file lvgC3pW-LVA]",
+   "file": "bible/characters/Yukihana-Lamy.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026",
+   "precision": "year",
+   "zone": null,
+   "text": "Her collaboration sake \"Yukiyozuki\" with Meiri Shurui (04); an off-collab with Koyori titled to name their duo (03); a NePoLaBo 3D party (04-29); NePoX events with holoX announced for 09-26/27 (Nene, Polka, Lamy, Botan, La+, Lui, Koyori, Iroha); \"Snowlight Stories\" (official digital release 08-13)",
+   "evidence": "[LM4 Zi8R63ee0Fs, Ekdsnb2aWY4, Ml1tM8S40p0] [Official NePoX page] [Official music 792] [Brewery page]",
+   "file": "bible/characters/Yukihana-Lamy.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-08-15",
+   "precision": "day",
+   "zone": null,
+   "text": "First album \"Fleur de neige\" announced for 2027-01-27 (after the baseline)",
+   "evidence": "[Observed LM2]",
+   "file": "bible/characters/Yukihana-Lamy.md",
    "section": "Background Timeline"
   },
   {

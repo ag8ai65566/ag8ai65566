@@ -20,6 +20,7 @@ card says PDT; a US-evening debut is the next day in JST).
 | Gigi Murin | active | 2024-06-21 | — | — |
 | Hakos Baelz | active | 2021-08-23 | — | — |
 | Hoshimachi Suisei | active | 2018-03-22 | — | — |
+| Houshou Marine | active | 2019-08-11 | — | — |
 | IRyS | active | 2021-07-11 | — | — |
 | Koseki Bijou | active | 2023-07-30 | — | — |
 | Mococo Abyssgard | active | 2023-07-31 | — | — |
@@ -32,5 +33,7 @@ card says PDT; a US-evening debut is the next day in JST).
 | Ouro Kronii | active | 2021-08-23 | — | — |
 | Raora Panthera | active | 2024-06-22 | — | — |
 | Shiori Novella | active | 2023-07-30 | — | — |
+| Shirogane Noel | active | 2019-08-08 | — | — |
 | Takanashi Kiara | active | 2020-09-12 | — | — |
 | Watson Amelia | affiliate | 2020-09-13 | — | 2024-09-30 |
+| Yukihana Lamy | active | 2020-08-12 | — | — |
