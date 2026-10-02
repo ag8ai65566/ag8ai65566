@@ -148,8 +148,8 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Nerissa, Bijou, Gigi, Raora | kouhai | Danced to "Soar" (2026 shorts) | [LU5] |
 | Nekomata Okayu | "Shaccho" | Harry Potter watch-alongs for Okayu (2025); predictions before a 2026 Nintendo Direct; Dorobo Kensetsu | [LU4] [ASR LU20] [LU2] |
 | Nakiri Ayame | "Onikan" | Games together (2025) | [LU4] |
-| Shishiro Botan | "BLT," "InuTakaShishiRam" | Units with Towa; with Korone and Watame | [LU2] |
-| Houshou Marine | "SSS" | With Yuzuki Choco | [LU2] |
+| Shishiro Botan | "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame | A Minecraft collab under that name (2023-04-18, archived title); Left 4 Dead 2 with IRyS and Korone (2022); the 2023 Overwatch 2 team. The wiki's "BLT" with Towa was not found in the archive titles | [LU2] [Botan file 4-NEM2HrUVA, K1wStJxm4F0] |
+| Houshou Marine | Bara☆Dice (Bandai credits, with Flare, Noel, Nene and Iroha) | The wiki's "SSS" with Yuzuki Choco was not found in the archive titles | [LU2] [Bandai credits] |
 | Yukihana Lamy | NePoX | NePoLaBo × holoX events (2026) | [Lamy file] |
 
 ## Arc
@@ -201,7 +201,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive, Secret Society holoX, holoX, HOLOTORI, BLT, SSS, InuTakaShishiRam, Dorobo Kensetsu, NePoX
+hololive, Secret Society holoX, holoX, HOLOTORI, Bara☆Dice, InuTakaShishiRam, Dorobo Kensetsu, NePoX
 
 ## [SW] Other Names
 Lui, Lui-nee, The XO, Lui Lui
@@ -231,7 +231,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Lui wants to keep holoX running and her people happy, and to grow as an artist: a live-band concert of her own songs, tie-ups, overseas concerts and fan meetings, a show of her own, and a place in her fans' everyday lives.
 
 ## [SW] Relationships
-La+ Darknesss: holoX's founder, whom Lui reins in and covers for. Sakamata Chloe (affiliate since 2025): the intern she used to keep in line. Hakui Koyori and Kazama Iroha: holoX; Iroha calls her "Lui-nee." Takanashi Kiara: welcomed her into HOLOTORI on her debut day; a Wario off-collab (2023). Nanashi Mumei (graduated): her HOLOTORI "Bird Sister" ("Q&A With Bird Sisters," 2025). Mori Calliope: practiced English with her (2021–2022) and had her on "HOLOYOI" (2023). FUWAMOCO: "TWIN DAY WITH LUI" (2023). Hakos Baelz: "BAE-GEMITE DOMINATION" (2023) and a "FEAST" dance. IRyS and Ouro Kronii: Minecraft (2022). Watson Amelia: Apex (2022). Nekomata Okayu: "Shaccho," a Harry Potter watch-along club and game predictions. Nakiri Ayame: "Onikan." Shishiro Botan: "BLT" and "InuTakaShishiRam." Houshou Marine: "SSS." Yukihana Lamy: NePoX (2026). Nerissa Ravencroft, Koseki Bijou, Gigi Murin and Raora Panthera: dance shorts to her "Soar" (2026).
+La+ Darknesss: holoX's founder, whom Lui reins in and covers for. Sakamata Chloe (affiliate since 2025): the intern she used to keep in line. Hakui Koyori and Kazama Iroha: holoX; Iroha calls her "Lui-nee." Takanashi Kiara: welcomed her into HOLOTORI on her debut day; a Wario off-collab (2023). Nanashi Mumei (graduated): her HOLOTORI "Bird Sister" ("Q&A With Bird Sisters," 2025). Mori Calliope: practiced English with her (2021–2022) and had her on "HOLOYOI" (2023). FUWAMOCO: "TWIN DAY WITH LUI" (2023). Hakos Baelz: "BAE-GEMITE DOMINATION" (2023) and a "FEAST" dance. IRyS and Ouro Kronii: Minecraft (2022). Watson Amelia: Apex (2022). Nekomata Okayu: "Shaccho," a Harry Potter watch-along club and game predictions. Nakiri Ayame: "Onikan." Shishiro Botan: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame; Left 4 Dead 2 with IRyS (2022). Houshou Marine and Kazama Iroha: Bara☆Dice. Yukihana Lamy: NePoX (2026). Nerissa Ravencroft, Koseki Bijou, Gigi Murin and Raora Panthera: dance shorts to her "Soar" (2026).
 
 ## [SW] Secrets
 (none)

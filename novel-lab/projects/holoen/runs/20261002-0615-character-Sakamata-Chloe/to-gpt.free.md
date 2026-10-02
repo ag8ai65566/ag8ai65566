@@ -874,8 +874,8 @@ Unit / generation (lore group with five persona roles; four active at the baseli
 - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s,
   Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project with Koyori, Chloe and Iroha. Okayu: "Dorobo
   Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+
-  (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "BLT" with Lui and Tokoyami Towa. Marine: "SSS"
-  with Lui and Yuzuki Choco; UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
+  (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine:
+  Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
 
 ## History
 | Date | Event | Who |
