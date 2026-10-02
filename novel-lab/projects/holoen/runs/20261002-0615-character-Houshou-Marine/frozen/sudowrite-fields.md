@@ -1,0 +1,58 @@
+## Sudowrite 欄位上限與必填（sudowrite-fields.json）
+
+```json
+{
+  "_about": "Sudowrite Story Bible 欄位與上限。hard = Sudowrite 官方公布的上限（超過會被擋或截斷）；soft = 本框架的建議值（Sudowrite 沒公布，但卡片太長時 Characters/Worldbuilding 會最先被擠出上下文）。平台上限的單位是 words（官方公布）；本框架的字數是**本地估算**：英文按單字，中日韓字元每字算 1（保守估計，Sudowrite 實際怎麼算中文未公布）。中文內容超過平台上限時只警告。來源見 docs/sudowrite-2026-09.md，查核日 2026-09-30。",
+
+  "hard_limits_words": {
+    "Braindump": 4000,
+    "Synopsis": 4000,
+    "Style Examples": 1000
+  },
+  "hard_limits_chars": {
+    "Portrait Appearance": 2500
+  },
+  "soft_limits_words": {
+    "Genre": 80,
+    "Style": 120,
+    "Personality": 400,
+    "Background": 500,
+    "Physical Description": 200,
+    "Dialogue Style": 250,
+    "Catchphrases": 250,
+    "Voice & Delivery": 250,
+    "Audio Tags": 350,
+    "Motivation": 200,
+    "Relationships": 350,
+    "Secrets": 250,
+    "Description": 450,
+    "Rules": 350,
+    "Sensory Details": 200,
+    "Story Hooks": 250
+  },
+
+  "story_fields": ["Braindump", "Genre", "Style", "Synopsis"],
+  "character_columns": ["Name", "Role", "Pronouns", "Groups", "Other Names", "Personality",
+                        "Background", "Physical Description", "Dialogue Style"],
+  "worldbuilding_columns": ["Name", "Role", "Other Names", "Description"],
+
+  "hide_in_sudowrite": ["Secrets"],
+
+  "_required_about": "依成品類型（front matter 的 kind）：required = 必須有這個 [SW] 段落而且有內容；optional = 段落必須存在，但可以留白（寫「（無）」「不適用」等）。缺段落一律算錯。清單要和 templates/dossier-*.md 一致。",
+  "required": {
+    "character": ["Name", "Role", "Pronouns", "Personality", "Background", "Physical Description", "Dialogue Style"],
+    "world": ["Name", "Role", "Description"],
+    "research": ["Name", "Role", "Description"],
+    "idea": ["Braindump", "Genre", "Style"]
+  },
+  "optional": {
+    "character": ["Groups", "Other Names", "Catchphrases", "Voice & Delivery", "Audio Tags", "Motivation", "Relationships", "Secrets"],
+    "world": ["Other Names", "Rules", "Sensory Details", "Secrets"],
+    "research": ["Other Names", "Sensory Details"],
+    "idea": ["Synopsis"]
+  },
+
+  "export_order": ["story", "characters", "world"]
+}
+
+```
