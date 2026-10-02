@@ -8,7 +8,7 @@ sw_section: Worldbuilding
 
 > Research dossier above; the Sudowrite Worldbuilding card is under the `## [SW]` headings.
 >
-> Scope: the group of Ouro Kronii and IRyS as publicly shown, checked 2026-09-30 (IRyS added 2026-10-01).
+> Scope: the group of IRyS, Ouro Kronii and Hakos Baelz as publicly shown, checked 2026-09-30 (IRyS added 2026-10-01, Bae 2026-10-02).
 > Evidence labels as in the other world files. Only what a Kronii or IRyS story needs; the other members are
 > background.
 
@@ -30,16 +30,17 @@ Faction / unit.
 - **Themes:** -Council- members' personas were themed around concepts (Time for Kronii, Nature,
   Civilization, Chaos, Space); IRyS's persona is "Hope." Fan unit names built on these concepts are common (e.g. "SNOTCast": Shark, Nature, Owl,
   Time). [Observed Kronii file K8, secondary]
-- **Kronii inside the group:** Bae calls her "too talented, savage, and a 'tsundere granny'"; Fauna
+- **Kronii inside the group:** per Kronii's wiki page (secondary), Bae described her as too talented, savage and a "tsundere granny"; Fauna
   described Kronii's "gap moe," a cute side that shows when she's flustered; IRyS once wondered aloud how
   Kronii sounds when she's scared. Group bits and scares involving them are reported by clip titles and
   stay unverified. [Observed Kronii file K8 §Personality, K37 §Quotes, secondary]
 - **IRyS inside the group:** before -Promise- existed, she and the Council were already billed together as
   "CouncilRyS" (an official 3D showcase, 2023-10-08 PDT / 10-09 JST); -Promise- was announced at its end. With Bae she keeps
-  the running "BaeRyS" bit of being "married" and "divorced" (from a 2021 Minecraft bento joke); their
-  joke fan-fiction made "Monopoly" a fandom euphemism. With Kronii she plays two-player games and races
+  the performed "BaeRyS" routine of being "married" and "divorced" (fan references trace it to a Minecraft bento
+  exchange); per the IRyS wiki page (secondary), a joke fan-fiction made "Monopoly" a fandom euphemism. With Kronii she plays two-player games and races
   (see "IRyS and Nerissa Pairs"). [Observed S5 IRyS §Relationships, §Units, secondary; IRyS file R2]
-- **IRyS and Bae at Serendipity (2026):** paired for the 4th concert, their first stage as a duo. IRyS:
+- **IRyS and Bae at Serendipity (2026):** paired for the 4th concert, their first stage as a duo. In their
+  pre-concert interview (2026-06-05), IRyS:
   Bae "always has a strong vision" for projects, so when IRyS is "indecisive or wishy-washy" she turns to
   Bae's opinion, and she admires Bae's creativity; Bae: IRyS was "the very first senpai I had ever met,"
   and she admires IRyS's "easy-going nature and natural humor" that makes everyone "laugh and feel
@@ -109,7 +110,7 @@ Faction
 hololive -Promise-, holoPromise, hololive Council, holoCouncil, CouncilRyS, BaeRyS
 
 ## [SW] Description
-The group of Ouro Kronii and IRyS, hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline. It grew from the English -Council- generation (August 2021), whose personas were themed around concepts (Kronii is Time); Sana graduated from Council in 2022, before Promise existed. IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and a recurring collaborator with Bae) graduated in 2025. Bae calls Kronii "too talented, savage, and a tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. IRyS and Bae keep the "BaeRyS" bit of being "married" and "divorced," which turned "Monopoly" into a fandom euphemism, and they are also creative partners: paired for the 2026 Serendipity concert, IRyS leans on Bae's "strong vision" when she's indecisive, Bae admires IRyS's humor that makes everyone comfortable, and they call their dynamic "a can of worms" and "Complicated."
+hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline. It grew from the English -Council- generation (August 2021), whose personas were themed around concepts (Kronii is Time); Sana graduated from Council in 2022, before Promise existed. IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and a recurring collaborator with Bae) graduated in 2025. All five sang their unit song "Our Promise" at the 2024 English concert and staged the musical "The Broken Promise" (December 2024). Bae has described Kronii as a "tsundere granny" (per the wiki); Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. IRyS and Bae keep up the performed "BaeRyS" routine of being "married" and "divorced," and they are also creative partners: in a pre-concert interview for Serendipity (2026), IRyS said she leans on Bae's "strong vision" when she's indecisive, Bae said she admires IRyS's humor that makes everyone comfortable, and IRyS called their dynamic "a can of worms" ("Complicated XD," Bae answered).
 
 ## [SW] Rules
 At the 2026 baseline Promise is IRyS, Kronii and Bae; Fauna and Mumei are Promise graduates and Sana a Council graduate, appearing only as memories. Unit names (Council, Promise) describe groups, not real powers or concepts.
@@ -138,6 +139,8 @@ The Promise logo; Bae's chaos, IRyS's warmth and sly asides, and Kronii's deadpa
   "a recurring collaborator with Bae" (the counts measured one channel's metadata, not a ranking).
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "BaeRyS" (IRyS and Bae, official Serendipity unit) added to Other Names.
+- **2026-10-02, cast expansion (author: add Hakos Baelz):** Bae is now a cast character (her file and "Hakos Baelz Pairs"); the opening no longer reads as Kronii's and IRyS's group only; "Our Promise" (official -Breaking Dimensions- report) and the musical added.
+- **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the scope names IRyS, Kronii and Bae; "tsundere granny" is an attributed paraphrase from Kronii's wiki page; the BaeRyS bento origin and the "Monopoly" euphemism carry secondary labels and the euphemism is off the exported field; the interview statements are dated to the 2026-06-05 pre-concert interview and attributed per speaker; "The Broken Promise" is dated to December 2024 (an exact primary date was not opened; a 2024-12-17 watch-along by Elizabeth confirms it by then). Sana stays a former Council member, never in Promise.
 
 ## Open Questions
 (None.)

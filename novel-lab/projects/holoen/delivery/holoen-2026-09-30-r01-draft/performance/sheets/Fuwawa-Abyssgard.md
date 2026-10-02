@@ -61,7 +61,8 @@ With people (provisional): Mococo `[doting, teasing]`; Nerissa `[playful]` ("New
 [whispering, polite] Hello, ma'am. Nice day, ma'am.
 [nervous, giggly] Should I run? Is running suspicious?
 [warm, encouraging] So go do that, go to the gym and be the main character of the gym.
-[warm, cheerful] It was a lot of fun! Bau bau!
+[warm, cheerful] It was a lot of fun!
+[playful] Bau bau!
 ```
-(Line 1 combines the twins' opening and her introduction as the wiki transcribes them; the closing "Bau bau!"
+(Line 1 combines the twins' opening and her introduction as the wiki transcribes them; the closing "Bau bau!" line
 is a style demo; the rest are her lines, quoted only where both transcripts agree.)

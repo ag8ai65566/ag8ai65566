@@ -11,17 +11,22 @@ card says PDT; a US-evening debut is the next day in JST).
 
 | Member | State at 2026-09-30 | Debut | Graduated | Regular activities concluded |
 |---|---|---|---|---|
+| AZKi | active | 2018-11-15 | — | — |
 | Cecilia Immergreen | active | 2024-06-22 | — | — |
 | Ceres Fauna | graduated | 2021-08-23 | 2025-01-03 | — |
 | Elizabeth Rose Bloodflame | active | 2024-06-21 | — | — |
 | Fuwawa Abyssgard | active | 2023-07-31 | — | — |
 | Gawr Gura | graduated | 2020-09-13 | 2025-05-01 | — |
 | Gigi Murin | active | 2024-06-21 | — | — |
+| Hakos Baelz | active | 2021-08-23 | — | — |
+| Hoshimachi Suisei | active | 2018-03-22 | — | — |
 | IRyS | active | 2021-07-11 | — | — |
 | Koseki Bijou | active | 2023-07-30 | — | — |
 | Mococo Abyssgard | active | 2023-07-31 | — | — |
 | Mori Calliope | active | 2020-09-12 | — | — |
+| Nakiri Ayame | active | 2018-09-03 | — | — |
 | Nanashi Mumei | graduated | 2021-08-23 | 2025-04-27 | — |
+| Nekomata Okayu | active | 2019-04-06 | — | — |
 | Nerissa Ravencroft | active | 2023-07-31 | — | — |
 | Ninomae Ina'nis | active | 2020-09-13 | — | — |
 | Ouro Kronii | active | 2021-08-23 | — | — |

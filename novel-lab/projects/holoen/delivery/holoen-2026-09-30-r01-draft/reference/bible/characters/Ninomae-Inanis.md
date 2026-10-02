@@ -72,8 +72,8 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
    not a real memory power). [Observed I2 §Miscellaneous, secondary; I9 clip title]
 11. When she talks about a design she made (her Monster Hunter Wilds collab outfits), she explains it
     through specific visual features and gets expansive. [Observed—published interview I6]
-6. When chat invents WAH acronyms, she decides which are canon, and labels the lewd one: "That's the
-   Forbidden WAH. We don't say that in public." [Observed I2 §WAH, secondary] [ASR I29, 4k_oLA5zeaI
+6. When chat invents WAH acronyms, she decides which are canon, and labels the lewd one the
+   "Forbidden WAH": "…We don't say that in public." [Observed I2 §WAH, secondary] [ASR I29, 4k_oLA5zeaI
    0:04:50: the bit is confirmed; the second model hears "the forbidden one" where the first hears "the
    forbidden wah"]
 7. When she's sleepy, her patience thins; otherwise she rarely gets tilted ("If I'm tired I have a short
@@ -128,10 +128,9 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
 - **Innuendo and teasing lines** (non-explicit; kept under the project's authenticity rule). Wording per
   I2 §Quotes or §WAH (secondary). The wiki gives no context or date for the quotes, and no audio was
   checked.
-  - "That's the Forbidden WAH. We don't say that in public." ("We Are Horny"; the alternative reading
-    is "We Are Hololive"; canonized in *Ender Lilies* #3.) [I2 §WAH] The audio of that stream has her
-    say that someone added "a fourth [WAH] with a different caption, and… that's the forbidden wah. We
-    don't say that in public." [ASR I29, 4k_oLA5zeaI 0:04:50; "We don't say that in public" agrees in both
+  - The "Forbidden WAH" (the wiki's label for chat's lewd acronym; the alternative reading is "We Are
+    Hololive"; canonized in *Ender Lilies* #3) [I2 §WAH]. The audio of that stream has her describe a fourth
+    WAH "with a different caption," then "…We don't say that in public." [ASR I29, 4k_oLA5zeaI 0:04:50; "We don't say that in public" agrees in both
     models]
   - "Is she wearing heels? Just asking for a friend."
   - "No chest? I guess Takos are known for no chests."
@@ -260,6 +259,8 @@ fan or collab nicknames.
 | Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her | [Observed I2 §Miscellaneous; I14] [Observed—published interview I6] |
 | Houshou Marine | JP senior | Admired artist-performer ("Marine-senpai") | [Observed—published interview I18] |
 | Shiranui Flare | JP senior | Gave her the nickname "Ore no Ina" | [Observed I2 nickname list] |
+| Hakos Baelz | Promise kouhai | Archived metadata: the K/DA "POP/STARS" cover with Moona and Ayunda Risu (2023); a BAE-CADEMY art lesson with "Ina-sensei" (2024); Ina's AmiAmi special featuring Bae (2025-05-29); World Tour '24 together | [Bae file HB3, HB5, HB8, HB20] |
+| Yukihana Lamy, Shishiro Botan, Kikirara Vivi, Shirogane Noel | JP members | Lamy: the Minecraft "Usaken Summer Festival" (2021-06-27), an EN-server "date" (2021-10-20) and a guest at "Pleides" (2024-12-28); Botan: a guest at "EVERMORE" (2025-05-21); Vivi: R.E.P.O. (2025-06-02); Noel and Vivi: Mumei's Gartic Phone (2025-04-14) | [S1 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ, I-J11Da5ONY, grBU9Dl09Ds, OMDzBQohAf8] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026), as on the card.
@@ -385,7 +386,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Ina delivers sanity checks on humanity. In her own public words, she wants to give her viewers a better day, make art and music, grow as a performer and give back through charity, and she loves groan-inducing wordplay.
 
 ## [SW] Relationships
-Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, Ina credits Kiara's support with helping her gain confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at hololive night at Dodger Stadium (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put them both in her Tomodachi Life island. Houshou Marine: a senior artist she admires. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024) and "MONSTER" with Kronii and Gigi at the 2025 English concert. FUWAMOCO: "SHALLYS" with Cecilia at the same concert. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry with Ina. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025). Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with Ina and FUWAMOCO at Serendipity.
+Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, Ina credits Kiara's support with helping her gain confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at hololive night at Dodger Stadium (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put them both in her Tomodachi Life island. Houshou Marine: a senior artist she admires. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024) and "MONSTER" with Kronii and Gigi at the 2025 English concert. FUWAMOCO: "SHALLYS" with Cecilia at the same concert. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry with Ina. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025). Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with Ina and FUWAMOCO at Serendipity. Hakos Baelz: a K/DA "POP/STARS" cover with Moona Hoshinova and Ayunda Risu (2023), an art lesson on Bae's stream (2024) and Ina's AmiAmi special with Bae (2025). Nekomata Okayu: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025). Yukihana Lamy: Minecraft festivals and a server "date" (2021), a guest at "Pleides" (2024). Shishiro Botan: a guest at "EVERMORE" (2025). Kikirara Vivi: R.E.P.O. (2025).
 
 ## [SW] Secrets
 (none)
@@ -491,6 +492,12 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** Mio's "Dottabatta Chindouchuu" stage with Ina and FUWAMOCO added (official report).
 - **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** TAKO∞TAKOVER dated; Myth's 6th-anniversary live; Background updated.
+- **2026-10-02, cast expansion (author: add Hakos Baelz, and complete everyone's relationship web):** Relationships gained Bae (sources in Bae's file, HB3/HB5/HB8/HB20, and the world card "Hakos Baelz Pairs").
+- **2026-10-02, cast expansion (author: add Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu):** Okayu added ("TakoNeko"; "Kurukuru Cruise," archive t7lNu-p_ANs, 2025-08-04).
+- **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the Bae events are attributed to archived stream metadata and the art lesson dated (2024).
+- **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi):** Lamy, Botan, Vivi and Noel added (Minecraft, 3D-live guests, R.E.P.O., Gartic Phone). (sources: the new member files, "JP Senpai Pairs 2" and "holoX".)
+- **2026-10-02, GPT review of the JP cast additions (run B):** Okayu clause limited to the one verified song (official music page 604); unspecified "duets" and the "Mythmash" label removed; "TakoNeko" labelled secondary.
+- **2026-10-02, quotation spans (Claude, ahead of the voice audit):** the "Forbidden WAH" bit now quotes only the fragment both ASR models share ("…We don't say that in public."); "Forbidden WAH" is the wiki's label, not a quotation; the explicit acronym expansion is dropped.
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

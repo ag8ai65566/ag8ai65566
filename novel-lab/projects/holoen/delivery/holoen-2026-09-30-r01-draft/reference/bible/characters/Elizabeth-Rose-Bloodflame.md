@@ -185,6 +185,7 @@ Pairs."
 | Kobo Kanaeru, Ayunda Risu | ID seniors | "HELP!!" with Kobo and Hakos Baelz at Serendipity (2026); Kobo calls her "Lilis" (secondary); LYRA and "ALiCE&u" with Risu | [Observed EB2] [Official EB5, EB8] |
 | Banzoin Hakka (HOLOSTARS) | Duet partner | A "Mephisto" cover (2025-01-18); archived credits list Elizabeth's production and vocal-arrangement work | [Observed EB3, archived credits] |
 | Yona Yona Dance cast | Cross-branch cover (2026-03-17) | With Kureiji Ollie, Natsuiro Matsuri, Hiodoshi Ao (ReGLOSS), and HOLOSTARS' Josuiji Shinri, Arurandeisu, Astel Leda and Octavio | [Observed EB3, archived credits] |
+| Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 OMDzBQohAf8] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: Serendipity with Nerissa, her birthday covers with JP
@@ -316,6 +317,7 @@ Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 - **2026-10-02, quotation spans (task 09 preparation, `tools/span_check.py`):** quotations that ran past the
   span both ASR models share were trimmed to that span, split into separate shared quotations, or paraphrased.
+- **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi):** Noel and Vivi added to the dossier (Gartic Phone). (sources: the new member files, "JP Senpai Pairs 2" and "holoX".)
 
 ## Open Questions
 (None.)

@@ -64,6 +64,7 @@ ATTEST = {
     "V19": ["research/qa/voice-delivery.md"],
     "V25": ["research/qa/release-acceptance.md"],
 }
+DISPLAY = {"Laplus-Darknesss": "La+ Darknesss", "Ninomae-Inanis": "Ninomae Ina'nis"}  # stems that are not the name
 PRIVACY = re.compile(r"(?i)\b(surgery|hospital|illness|diagnos\w*|hiatus|semi-break|family emergenc\w*|"
                      r"her (mother|father|mom|dad|parents?|brother)|nationality|native (language|speaker)|"
                      r"audition\w*|vacation|days off|off-collab trip|boyfriend|girlfriend|apartment|jammies)\b")
@@ -521,7 +522,7 @@ def cmd_build(args):
     else:
         ch = [f"# Changelog — {rev}", "", f"Initial release: {len(in_chars)} character cards and {len(in_world)} world elements (all new)."]
     (pkg / "CHANGELOG.md").write_text("\n".join(ch) + "\n", encoding="utf-8")
-    pending = ("\n> 這一版還沒收錄：" + "、".join(s.replace("-", " ") for s in missing) + "（審查完成後在下一版加入；到時只要匯入 `sudowrite/cards/` 裡"
+    pending = ("\n> 這一版還沒收錄：" + "、".join(DISPLAY.get(s, s.replace("-", " ")) for s in missing) + "（審查完成後在下一版加入；到時只要匯入 `sudowrite/cards/` 裡"
                "這幾張的 CSV，不用重匯整包）。\n" if missing else "")
     (pkg / "00-START-HERE.md").write_text(START_HERE.format(rev=rev, baseline=BASELINE, nchar=len(in_chars), nworld=len(in_world),
                                                             pending=pending,

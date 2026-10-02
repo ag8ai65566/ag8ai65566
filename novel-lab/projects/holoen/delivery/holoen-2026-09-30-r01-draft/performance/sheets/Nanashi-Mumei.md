@@ -58,9 +58,10 @@ sudden high screech; says dark jokes in the same cute, cheerful tone."
 ```
 [soft, caught off guard] Oh hi! Hoo's this? Nanashi Mumei!
 [quick, scattered] Okay, okay, okay, so today we're, um, wait. Where was I? Sorry. Anyways.
-[mock-grand, deadpan] I decide everything for humanity. [light, matter-of-fact] Civilization is temporary, after all.
+[mock-grand, deadpan] I decide everything for humanity.
+[light, matter-of-fact] Civilization is temporary, after all.
 [soft, matter-of-fact] It's okay not to know stuff sometimes. Yeah, unless you're me.
-[warm, sing-song] Goodbye for now. I'll see you probably tomorrow, probably tomorrow. Bye-bye, bye-bye!
+[warm, sing-song] Goodbye for now. I'll see you probably tomorrow, probably tomorrow.
 ```
-(Line 2 and the second half of line 3 are style demos built from her habits; line 1 is her official
-written greeting; the others are her lines, quoted only where both transcripts agree.)
+(Lines 2 and 4 are style demos built from her habits; line 1 is her official written greeting; the others are
+her lines, quoted only where both transcripts agree.)
