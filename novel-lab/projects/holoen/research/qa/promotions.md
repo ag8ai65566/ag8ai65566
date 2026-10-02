@@ -55,6 +55,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 cf7d5e3ad59d）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 c9ebd2d07005）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 a3e8c2f37f97）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged into EN relationship lines by Claude; also carries the batch-2 mirror lines (Marine, Noel, Lamy, Botan, holoX, Vivi), pending their GPT round
+- 2026-10-02 07:49 作者裁決收錄 final.md（sha256 3db5c9167a2c）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (span candidates resolved for the voice audit; no stitched or first-model-only words)
+- 2026-10-02 07:49 作者裁決收錄 final.md（sha256 55a92f4a3659）：Author decision (2026-10-02): quotation span notes recorded in the Merge Record
 
 ## 20260930-1113-character-Takanashi-Kiara
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 415492d57d94）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -126,6 +128,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 8e6b7daf8e52）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 a897ebb677d2）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 c9b3dd043ec2）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
+- 2026-10-02 07:50 作者裁決收錄 final.md（sha256 e80cfcc0d0d0）：Author decision (2026-10-02): scope wording (senpai/kouhai definition without language or nationality terms)
 
 ## 20260930-2309-world-hololive--Myth
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 a8b6659e3057）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -190,6 +193,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 5c8af2373b5c）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 ebb238c5b4ff）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
 - 2026-10-02 07:36 作者裁決收錄 final.md（sha256 4a199ef93413）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged by Claude (Ina–Okayu wording; TakoNeko alias moved to JP Senpai Pairs)
+- 2026-10-02 07:50 作者裁決收錄 final.md（sha256 dea16db64500）：Author decision (2026-10-02): scope wording (senpai/kouhai definition without language or nationality terms)
 
 ## 20261001-0018-world-hololive-History-2023-2026
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 cac46457599b）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -244,6 +248,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 b58865cce2de）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 6a572d71de24）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 0773076743c2）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-02 07:49 作者裁決收錄 final.md（sha256 f5ce53d184e5）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (span candidates resolved for the voice audit; no stitched or first-model-only words)
+- 2026-10-02 07:49 作者裁決收錄 final.md（sha256 17e6e4e846ec）：Author decision (2026-10-02): quotation span notes recorded in the Merge Record
 
 ## 20261001-0549-character-Fuwawa-Abyssgard
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 65d87ad37465）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.

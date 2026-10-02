@@ -9,7 +9,7 @@ sw_section: Characters
 > Scope: official lore and publicly shown persona only, checked 2026-10-02. Lui is an active hololive member
 > (Japan, Secret Society holoX) at the 2026-09-30 baseline; added to the cast by author order (2026-10-02, holoX
 > in full). Her recent streams (2026) set her default manner, per the project's recency rule. Nothing about the
-> performer behind the avatar: private-life information (family, home, health, audition history, outings and
+> performer behind the avatar: private-life information (family, home, health, private history, outings and
 > the like) is outside scope and is not recorded here, including what the wiki lists or what she mentions in
 > chats. She streams in Japanese; that is recorded as the language of her performance only. In stories she knows
 > she is a streamer with a persona (see the world card "VTuber Persona and Lore"). Evidence labels:

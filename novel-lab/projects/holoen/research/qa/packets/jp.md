@@ -1,6 +1,6 @@
 # Audit packet: jp
 
-Snapshot: git 5d5a66f. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 12abb1f. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
@@ -170,7 +170,7 @@ Owned files (sha256): `bible/characters/Hoshimachi-Suisei.md` 812a7171957f; `bib
   STAGE 4 Suisei (with Calli, Kronii, Bijou, Nerissa).
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|TakoNeko|Sui-chan|Azu-chan|Azukichi|Okanyan|AZKichi|AzuAzu|Okayun|FWMCAZ|AS_tar|Yo-san|Suisei|Okayu|Ayame|AZKi|Ojou|AZAZ)(
+Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|TakoNeko|Azukichi|Azu-chan|Sui-chan|Okanyan|AZKichi|Suisei|Okayun|Yo-san|AzuAzu|FWMCAZ|AS_tar|Ayame|Okayu|Ojou|AZAZ|AZKi)(
 
 ### from Fuwawa Abyssgard
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: AZKi: a FUWAMOCO-themed GeoGuessr collaboration ("FWMCAZ"); secondary records also document a singing stream with Minato Aqua and the twins' guest appearance at her 2025 birthday live.
@@ -228,7 +228,7 @@ Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Ca
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **IRyS:** Shiranui Flare is a recurring collaborator (23 streams, 11 in 2024): horror and camping co-ops ("ふーたんとキャンプだ！"), Splatoon private matches, an off-collab karaoke (2025-03); units "Star Flower" (Moona, Suisei, AZKi), "IRySora" (Tokino Sora), "ReiRyS" (Reine), "OKFAIR" (Ollie, Kronii, Fauna, Anya, Reine). [Observed S1; S2 IRyS]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Nanashi Mumei** (graduated): HOLOTORI with Kiara, Subaru, Reine and Lui ("【MUMEI + LUI】Q&A With Bird Sisters !!!," 2025-04-19, fEO6kSCseE0); drawing collabs with Airani Iofi ("Doodles with IOFI," 2022-04-14, 2dWx7xg48xc; "SWIMSUITS!! with IOFI!," 2023-01-30, XCXF08GMUHY); a duet cover of "とんとんまーえ！" with Inugami Korone (2025-04-23, P6GLC_HnCUU), and Okayu, Korone, Nene and Koyori as guests at her 3D live "Outside the Box" (2024-08-05, gl7CwlEg2ZI); Minecraft "Peace & Love with HAACHAMA" (2025); Tokoyami Towa calls her "Mumi-chan." [Observed S1; Mumei file M2]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Hakos Baelz:** secondary references record her performed maternal-role jokes with Ookami Mio and Kureiji Ollie (her "mom" and "another mom"); with Ollie she sang "Countach" (with Gigi, -All for One- 2025) and played HoloEarth (2024); "HELP!!" with Kobo Kanaeru and Elizabeth at Serendipity (2026); "High Tide" with IRyS, Moona Hoshinova and Hoshimachi Suisei (-Breaking Dimensions- 2024); "Kakumei Dualism" with Natsuiro Matsuri in STAGE 3 of the 2026 fes (a secondary setlist; also her after-talk); Reanimal with Tokoyami Towa (2026); Lethal Company with Kaela Kovalskia (2023–24). Units (secondary): "holorodents" with Usada Pekora and Ayunda Risu; "RoBaelz" with HOLOSTARS' Yukoku Roberu. [Bae file HB2, HB3, HB5, HB20]
-- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first), not language or nationality; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
+- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first) and nothing else; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
 - `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 1. Calli hosts another watch party for Suisei's concert and loses her composure on the high note.
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).
 

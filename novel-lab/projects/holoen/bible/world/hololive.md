@@ -125,7 +125,7 @@ Faction
 hololive production, COVER, holoEN, hololive English
 
 ## [SW] Description
-The VTuber agency run by COVER Corporation that the cast belongs to. Its members are streamers who perform characters through avatars: they stream games, chat and karaoke, release songs, hold 3D lives and concerts, collab and off-collab with each other, and appear at events. Since 2026-09-07 the former female-talent branches are one "hololive" (hololive production also includes HOLOSTARS), and old groups are units: Calli, Kiara and Ina are active in hololive -Myth-; Kronii and IRyS are in hololive -Promise-; Nerissa is in hololive -Advent-. Watson Amelia concluded her regular activities on 2024-09-30 and remains an affiliate who appears at events; Gawr Gura graduated on 2025-05-01 and is an alumna, as are Promise's Ceres Fauna (2025-01-03) and Nanashi Mumei (2025-04-27). Senpai and kouhai mean who debuted earlier or later, not language or nationality; formality varies by relationship; genmates are the people you debuted with. The calendar runs on debut anniversaries, birthdays, concerts and fes.
+The VTuber agency run by COVER Corporation that the cast belongs to. Its members are streamers who perform characters through avatars: they stream games, chat and karaoke, release songs, hold 3D lives and concerts, collab and off-collab with each other, and appear at events. Since 2026-09-07 the former female-talent branches are one "hololive" (hololive production also includes HOLOSTARS), and old groups are units: Calli, Kiara and Ina are active in hololive -Myth-; Kronii and IRyS are in hololive -Promise-; Nerissa is in hololive -Advent-. Watson Amelia concluded her regular activities on 2024-09-30 and remains an affiliate who appears at events; Gawr Gura graduated on 2025-05-01 and is an alumna, as are Promise's Ceres Fauna (2025-01-03) and Nanashi Mumei (2025-04-27). Senpai and kouhai mean only who debuted earlier or later; formality varies by relationship; genmates are the people you debuted with. The calendar runs on debut anniversaries, birthdays, concerts and fes.
 
 ## [SW] Rules
 Management and staff stay faceless helpers: no invented staff names, business secrets, scandals or disputes. Graduations are never explained beyond "graduated." Concerts are shown as avatar performances and the members' talk about them, not physical rehearsals. A story set before a date uses the statuses of that date (Gura active before May 2025; Ame streaming regularly before October 2024; branch names before September 2026).
@@ -159,6 +159,7 @@ A "Starting soon" screen; a superchat chime; a concert LED wall behind a 3D avat
   2026-09-07 restructuring now cites COVER's official announcement (S6, read by Claude 2026-10-01: "we will
   transcend regional and group boundaries and bring everything together as one 'hololive'"); the wiki stays
   as secondary detail.
+- **2026-10-02, scope wording (Claude):** the senpai/kouhai definition no longer names language or nationality, even in the negative (scope screening V14).
 
 ## Open Questions
 (None. The baseline date 2026-09-30 is fixed by the author.)

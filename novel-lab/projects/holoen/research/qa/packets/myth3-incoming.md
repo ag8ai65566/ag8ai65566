@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git 5d5a66f.
+Snapshot: git 12abb1f.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Kronii and Gura|Gura and Kronii|Takanashi Kiara|hololive -Myth-|Gura and Kiara|Kiara and Gura|Ina and Calli|Ame and Kiara|Calli and Ame|Ame and Calli|Calli and Ina|Kiara and Ame|Ina and Gura|Gura and Ina|Ame and Ina|Ina and Ame|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|hololive -Myth-|Gura and Kronii|Kronii and Gura|Takanashi Kiara|Kiara and Gura|Gura and Kiara|Kiara and Ame|Ame and Kiara|Ame and Calli|Calli and Ame|Calli and Ina|Ina and Calli|Ina and Gura|Gura and Ina|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -200,7 +200,7 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Kron
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI").
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Takanashi Kiara:** Usada Pekora is her oshi ("Senpai! Be my guide for the day!", 2020; HOLOTALK's 24th guest, 2022). Pavolia Reine is a recurring collaborator on her channel (30 streams; their pair name "PavoNashi"; a VR "vacation," a Minecraft summer festival; the bird unit "HOLOTORI" with Subaru, Reine, Mumei and Lui); Kobo calls her "Mommy Kiwawa." Other units: "O'riends" (Momosuzu Nene), "KoAra Connect" (Hakui Koyori), "SunMoon"/"Eclipse" (Moona Hoshinova). Outside hololive: "PomuTori" (Pomu Rainpuff), "Mintori" (Mint Fantôme). [Observed S1; S2 Kiara; Kiara file]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Nanashi Mumei** (graduated): HOLOTORI with Kiara, Subaru, Reine and Lui ("【MUMEI + LUI】Q&A With Bird Sisters !!!," 2025-04-19, fEO6kSCseE0); drawing collabs with Airani Iofi ("Doodles with IOFI," 2022-04-14, 2dWx7xg48xc; "SWIMSUITS!! with IOFI!," 2023-01-30, XCXF08GMUHY); a duet cover of "とんとんまーえ！" with Inugami Korone (2025-04-23, P6GLC_HnCUU), and Okayu, Korone, Nene and Koyori as guests at her 3D live "Outside the Box" (2024-08-05, gl7CwlEg2ZI); Minecraft "Peace & Love with HAACHAMA" (2025); Tokoyami Towa calls her "Mumi-chan." [Observed S1; Mumei file M2]
-- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first), not language or nationality; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
+- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first) and nothing else; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
 - `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 5. Kiara and Reine plan another "vacation" in VR.
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).
 

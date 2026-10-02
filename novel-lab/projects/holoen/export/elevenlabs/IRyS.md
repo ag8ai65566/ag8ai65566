@@ -54,7 +54,8 @@ into a sly, lower, teasing aside."
 ```
 [bright, cheerful] HiRyS, iiiit's IRyS! Your seiso nephilim here to fill the world with hopium!
 [rapid, gushing] It's so cute. It's so cute!
-[sweet] …don't need to see the bottom half. [sly, lower] I'm trying to make you guys feel guilty. That's what I'm doing here, okay?
+[sweet] …don't need to see the bottom half.
+[sly, lower] I'm trying to make you guys feel guilty. That's what I'm doing here, okay?
 [warm, cheerful] Thank you very much! See you guys again tomorrow!
 ```
-(Line 2 is a style demo built from her habits; line 1 is her official written greeting; the others are her lines, quoted only where both transcripts agree.)
+(Line 2 is a style demo built from her habits; line 1 is her official written greeting; the others are her lines, quoted only where both transcripts agree; lines 3 and 4 are separate moments, not one utterance.)

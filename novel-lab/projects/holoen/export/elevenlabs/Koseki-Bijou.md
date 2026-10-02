@@ -58,9 +58,9 @@ IRyS `[excited teammate]`; FUWAMOCO `[silly]`.
 ```
 [excited, bouncy] BIBOO BIBOO! I'm Koseki Bijou, sparkling gem of hololive English -Advent-!
 [playful, commanding] Welcome to my birthday world! We're gonna save the city!
-[grave, theatrical] A worthy sacrifice, I will remember you. [giggles]
+[grave, theatrical] …Worthy sacrifice, I will remember you. [giggles]
 [deadpan] You saw nothing. I saw nothing.
 [cheerful, quick] Thank you everyone! I will finish RE4 next time!
 ```
-(Line 1 is her official introduction; "A" at the start of line 3 is added for readability; the rest are her
-lines, quoted only where both transcripts agree.)
+(Line 1 is her official introduction; the rest are her lines, quoted only where both transcripts agree (line 3
+starts mid-sentence).)

@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git 5d5a66f. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 12abb1f. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Moona Hoshinova

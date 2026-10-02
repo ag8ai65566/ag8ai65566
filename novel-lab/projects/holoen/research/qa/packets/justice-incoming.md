@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git 5d5a66f.
+Snapshot: git 12abb1f.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|holoJustice|FiddleFlame|Grem Reaper|Gigi Murin|Erby Berby|Autofister|TimeChaser|Immerhater|Bloodraven|Elizabeth|Da Fister|Gi Murin|Raviolin|Justice|Cecilia|GeeGee|Lizzie|HoloEU|G Pain|Raora|B.F.F|Gigi|Ceci|Rara|CCGG|RPGG|LYRA|Cece|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|holoJustice|FiddleFlame|Grem Reaper|TimeChaser|Bloodraven|Gigi Murin|Autofister|Erby Berby|Immerhater|Elizabeth|Da Fister|Raviolin|Gi Murin|Cecilia|Justice|GeeGee|HoloEU|G Pain|Lizzie|Raora|B.F.F|Gigi|LYRA|Cece|Ceci|CCGG|RPGG|Rara|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.

@@ -3,3 +3,4 @@
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 8e6b7daf8e52）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 a897ebb677d2）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 c9b3dd043ec2）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
+- 2026-10-02 07:50 作者裁決收錄 final.md（sha256 e80cfcc0d0d0）：Author decision (2026-10-02): scope wording (senpai/kouhai definition without language or nationality terms)

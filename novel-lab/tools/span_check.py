@@ -97,7 +97,10 @@ def outside_spans(project):
         if para:
             units.append((start, " ".join(para)))
         for n, line in units:
-            for q in quote_re.findall(line):
+            for qm in quote_re.finditer(line):
+                q = qm.group(1)
+                if re.match(r"\s*[(\[](?:[Oo]fficial|written)", line[qm.end():qm.end() + 20]):
+                    continue  # labelled official or written text right after the quote: not an ASR quotation
                 for piece in re.split(r"…|\.\.\.", q):
                     pj = cjk(piece)
                     if len(pj) >= 8:  # Japanese: six-character runs

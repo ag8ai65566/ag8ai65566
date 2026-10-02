@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 5d5a66f.
+Snapshot: git 12abb1f.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Mori Calliope|Cori Malliope|Calliope Mori|Last Writes|Kawaiiope|Miss Mori|Calliope|CHADCast|TakaMori|Takamori|Mor Mori|CallioP|森カリオペ|Calli|Mowi|LYRA|Mori)(
+Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Cori Malliope|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|CHADCast|Mor Mori|Takamori|Calliope|TakaMori|CallioP|Calli|森カリオペ|LYRA|Mori|Mowi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -232,7 +232,7 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Mori Calliope|Cori 
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix cover as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa."
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Mori Calliope:** Hoshimachi Suisei is the senpai she is starstruck by ("Death Star"): she drew her ("DRAWING MY SENPAI," 2021), Suisei featured at Calli's first solo concert ("Wicked," 2022), they talked live shows together (2023), and Calli hosts watch parties of Suisei's concerts ("We're Screaming Loud for Senpai!", 2024-11). Kobo Kanaeru calls her "Uncle Dad" ("Father Daughter GOLF," 2022; an in-person cooking-and-gaming collab, 2023). Units: "Holodeath" (with Kureiji Ollie); "LYRA," a five-singer cover of "III" with Koganei Niko, Ayunda Risu, Amane Kanata and Elizabeth (Kanata has since graduated); "MoRikka" with HOLOSTARS' Rikka (their song "spiral tones," 2021; fans "DeadTuners") [Official music entry S5]. Outside hololive: friends with Milky Queen and Ironmouse (a shared Underworld theme). [Observed S1 titles; S2 Calli §Relationships; Calli file]
-- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first), not language or nationality; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
+- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first) and nothing else; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
 - `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 1. Calli hosts another watch party for Suisei's concert and loses her composure on the high note.
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).
 

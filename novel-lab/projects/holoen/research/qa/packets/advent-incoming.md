@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 5d5a66f.
+Snapshot: git 12abb1f.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|hololive -Advent-|Fuwawa and Mococo|Mococo Abyssgard|Fuwawa Abyssgard|FUWAMOCO MORNING|Abyssgard twins|Shiori Novella|Demon of Sound|The Fluffy One|Demon of Soup|The Fuzzy One|Koseki Bijou|The Archiver|Advent Pairs|Sound Hounds|Diamond Dogs|Last Writes|FUWAMOCALLI|Rocku Wawa|GreyScaleX|holoAdvent|Fluffy One|Grindstone|Bloodraven|Moco-chan|ShioRaven|Goth Rock|JewelBird|Fuwa-chan|Adventrix|Pen Pups|FUWAMOCO|Mogojyan|Lil'Rock|Shiori~n|The Cell|Fuwa-nee|Shiorin|Nerissa|Beejoe|Mogogo|Mococo|Fuwawa|Shiori|Koseki|Advent|Bijou|Rissa|Biboo|B.F.F|Oobib|Beebs|Neri|Pero|FWMC|GAGA)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|Jewel of Emotions|hololive -Advent-|Mococo Abyssgard|Fuwawa Abyssgard|FUWAMOCO MORNING|Abyssgard twins|The Fluffy One|Shiori Novella|Demon of Sound|The Fuzzy One|Demon of Soup|Diamond Dogs|Koseki Bijou|Sound Hounds|The Archiver|Advent Pairs|FUWAMOCALLI|Last Writes|Rocku Wawa|holoAdvent|Grindstone|Bloodraven|GreyScaleX|Fluffy One|ShioRaven|JewelBird|Fuwa-chan|Adventrix|Goth Rock|Moco-chan|Lil'Rock|Shiori~n|Fuwa-nee|The Cell|Pen Pups|Mogojyan|FUWAMOCO|Nerissa|Shiorin|Mococo|Koseki|Mogogo|Advent|Shiori|Beejoe|Fuwawa|Rissa|Bijou|Oobib|Beebs|Biboo|B.F.F|Pero|GAGA|FWMC|Neri)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -261,7 +261,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|holo
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: (Kaela calls her "Beejoe"; Raft, Minecraft, Split Fiction), with Kureiji Ollie ("GraveStone"), Akai Haato ("Red Stone") and Ichijou Ririka (ReGLOSS; Smash Bros.) as game partners; Shiori and Vestia Zeta are the official duo "GreyScaleX"
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: (the X is silent; "Purrfect Pair" merchandise, 2026), Pavolia Reine and Airani Iofi join her "Fanfic Club"; FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou.
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Nerissa Ravencroft:** Houshou Marine is her oshi (an off-collab with Marine and FUWAMOCO, 2024); "BLUE·MEGAMISAMA" with Tokino Sora; "V3LVET" with Raora and Moona Hoshinova; Kobo calls her "Nori-chan." With Moona she has a released song, "100% (feat. Nerissa Ravencroft)" (2025-02-16) [Official S7]. [Observed S1; S2 Nerissa; Nerissa file]
-- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first), not language or nationality; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
+- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first) and nothing else; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
 - `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 4. Nerissa meets Marine at an event and forgets every word of Japanese.
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).
 

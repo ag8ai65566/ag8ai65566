@@ -72,8 +72,8 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
    not a real memory power). [Observed I2 §Miscellaneous, secondary; I9 clip title]
 11. When she talks about a design she made (her Monster Hunter Wilds collab outfits), she explains it
     through specific visual features and gets expansive. [Observed—published interview I6]
-6. When chat invents WAH acronyms, she decides which are canon, and labels the lewd one: "That's the
-   Forbidden WAH. We don't say that in public." [Observed I2 §WAH, secondary] [ASR I29, 4k_oLA5zeaI
+6. When chat invents WAH acronyms, she decides which are canon, and labels the lewd one the
+   "Forbidden WAH": "…We don't say that in public." [Observed I2 §WAH, secondary] [ASR I29, 4k_oLA5zeaI
    0:04:50: the bit is confirmed; the second model hears "the forbidden one" where the first hears "the
    forbidden wah"]
 7. When she's sleepy, her patience thins; otherwise she rarely gets tilted ("If I'm tired I have a short
@@ -128,10 +128,9 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
 - **Innuendo and teasing lines** (non-explicit; kept under the project's authenticity rule). Wording per
   I2 §Quotes or §WAH (secondary). The wiki gives no context or date for the quotes, and no audio was
   checked.
-  - "That's the Forbidden WAH. We don't say that in public." ("We Are Horny"; the alternative reading
-    is "We Are Hololive"; canonized in *Ender Lilies* #3.) [I2 §WAH] The audio of that stream has her
-    say that someone added "a fourth [WAH] with a different caption, and… that's the forbidden wah. We
-    don't say that in public." [ASR I29, 4k_oLA5zeaI 0:04:50; "We don't say that in public" agrees in both
+  - The "Forbidden WAH" (the wiki's label for chat's lewd acronym; the alternative reading is "We Are
+    Hololive"; canonized in *Ender Lilies* #3) [I2 §WAH]. The audio of that stream has her describe a fourth
+    WAH "with a different caption," then "…We don't say that in public." [ASR I29, 4k_oLA5zeaI 0:04:50; "We don't say that in public" agrees in both
     models]
   - "Is she wearing heels? Just asking for a friend."
   - "No chest? I guess Takos are known for no chests."
@@ -498,6 +497,7 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
 - **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the Bae events are attributed to archived stream metadata and the art lesson dated (2024).
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi):** Lamy, Botan, Vivi and Noel added (Minecraft, 3D-live guests, R.E.P.O., Gartic Phone). (sources: the new member files, "JP Senpai Pairs 2" and "holoX".)
 - **2026-10-02, GPT review of the JP cast additions (run B):** Okayu clause limited to the one verified song (official music page 604); unspecified "duets" and the "Mythmash" label removed; "TakoNeko" labelled secondary.
+- **2026-10-02, quotation spans (Claude, ahead of the voice audit):** the "Forbidden WAH" bit now quotes only the fragment both ASR models share ("…We don't say that in public."); "Forbidden WAH" is the wiki's label, not a quotation; the explicit acronym expansion is dropped.
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

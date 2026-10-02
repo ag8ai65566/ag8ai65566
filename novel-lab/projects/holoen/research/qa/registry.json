@@ -1,7 +1,7 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "5d5a66f",
+ "commit": "12abb1f",
  "files": {
   "bible/characters/AZKi.md": "c26b0089a9fc150765f8764e9e4f692456c6b4b306c736e8e2e3ba96907d817f",
   "bible/characters/Cecilia-Immergreen.md": "2769d3a88d2ea46e3db0de80a82e164161a3d51c26cfb6876153c6821c763296",
@@ -20,17 +20,17 @@
   "bible/characters/Nanashi-Mumei.md": "8fdccfa046e76ba7f1c00a18babac55144504bdaa088a1e4c34e43b4bb926786",
   "bible/characters/Nekomata-Okayu.md": "97457c9edaf6e69918fbcc275629e71d7685e5b26dcf083dae63353251e76147",
   "bible/characters/Nerissa-Ravencroft.md": "4cbc997cf804a4048634d23e20b73ca2a9c9d42d3780309e2fd4c8f550af9ab2",
-  "bible/characters/Ninomae-Inanis.md": "a3e8c2f37f977ef975aace79959be439e22d631dbb0b47505772d871d1db62bf",
+  "bible/characters/Ninomae-Inanis.md": "55a92f4a365913e2573eb1fb4e9741002cd365e468bc9a8f73ef0575e1089e87",
   "bible/characters/Ouro-Kronii.md": "a0ec6ae3904ac8ba9262cb774e6614ffa34b84694cbc36923b06b57d5dc1cb43",
   "bible/characters/Raora-Panthera.md": "0f153278cd7f7d14305164b804fbf2b49c14a3ba63416115b85c7f7c21529679",
-  "bible/characters/Shiori-Novella.md": "0773076743c2c3f479cd565bcfa2cff0865ad7b4813acb2746bfd1c186b0c780",
+  "bible/characters/Shiori-Novella.md": "17e6e4e846ecf9163246fde34efc12e18ad5b3e5e22f9beb5bdb6d87fe0fa5ae",
   "bible/characters/Takanashi-Kiara.md": "a326e685de9c972304ba8209c402574be6957c4a8e45d0124263cacd7f7f7dd2",
   "bible/characters/Watson-Amelia.md": "8b29c94c18bf1c2ce757899319ad57ebea538c5e0710a7521649da9d3c1d1e66",
   "bible/world/Advent-Pairs.md": "bea1ef142554b21fe45ec4cdd1782bf38da5105cd275dd46582e349390ff5ce2",
   "bible/world/AmeSame.md": "03602b5cf2fd19d1fa524636a54d0af12f84d27e928ad6d6b558931a31b6360b",
   "bible/world/Bone-Bros.md": "3456a63d52637b62b6c0e00e4961d7f469a52be8eb5d6bf792e331d5e83c2bdb",
   "bible/world/Concerts-and-Live-Events.md": "34b069a05751704848dc042745054c2d4566d1cdd7ba0696661c190a8f563f2f",
-  "bible/world/Cross-Branch-Friends.md": "4a199ef934132350c5b706826ddd71e4ddb258ccfd894360c27097d22f83cc94",
+  "bible/world/Cross-Branch-Friends.md": "dea16db64500b3dd4f226646b42fe1845afba3290991e126b07b744d3522990d",
   "bible/world/FUWAMOCO.md": "04201c0f84719e6a345afa8b29cba539736d1ac23572f32a1ae440ba62ba501f",
   "bible/world/Fauna-and-Mumei-Pairs.md": "537910125c8df50e45997f2e88e7d10b8fe947f02690132a5ffe540a26808fa7",
   "bible/world/Hakos-Baelz-Pairs.md": "62cc8028a666ca2e416c754d587a661a1e39cf29ce707ed233be26b5ea83aa46",
@@ -51,7 +51,7 @@
   "bible/world/hololive--Promise.md": "b80a53219f8be4ac88e0a359f1c838cdfec3bff119ae86cf0c8b9dc464070e90",
   "bible/world/hololive-History-2023-2026.md": "727f1bd3bcb3009d90d021cbba2e4f771d52d08aaadda5d71fafba4ed9831d5a",
   "bible/world/hololive-History-to-2022.md": "fb9d97a7537e801c5fc5606308d3e8e3d7d1c967225e1b175699f07ca1f08272",
-  "bible/world/hololive.md": "c9b3dd043ec2861d175d295c4c7be488fc7dca8b3f4b513fb2bcdaa8cf264fa2"
+  "bible/world/hololive.md": "e80cfcc0d0d03d9e5b473d43a422e1d43600fba83d205e80e997ce0158f27f9b"
  },
  "cast": [
   {
