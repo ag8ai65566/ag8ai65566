@@ -73,10 +73,12 @@ limited"; first filed with Iroha as holoX's "seiso" (proper) pair, she turned ou
     "Koyo-colored" = pink. [Official KO1]
   - "Joshu-kun" ("assistants") → how she addresses chat. [Official KO1] [ASR KO20]
 - **Vocabulary / fillers:** see research/audio-check/koyori.md (2026 windows).
-- **Profanity:** cheeky rather than crude. [Observed KO2]
+- **Profanity:** cheeky rather than crude (secondary); the sampled windows do not establish her overall habits.
+  [Observed KO2]
 - **Language:** streams in Japanese; with the English cast she has guested on FUWAMOCO's English-language
   morning show and played with them, Bae, IRyS and others. [KO5]
-- **Laughs, noises:** a bubbly giggle (ASR renders it "うふふふふふ"); screams. [ASR KO20] [Official KO1]
+- **Laughs, noises:** a giggle the first model renders "うふふふふふ" and screams; their sound on this card is a
+  provisional design choice, not a listening observation. [ASR KO20] [Official KO1]
 - **Rhythm & rhetoric:** a news anchor's segment transitions, then a tumble of excited explanation that climbs in
   pitch. [ASR KO20]
 - **Timbre / pitch / pace (for voice performance):**
@@ -214,7 +216,7 @@ Streams in Japanese with a presenter's polish: "Konkoyo!" to open, crisp segment
 "Konkoyo!" (official greeting, "Ayo, this is Koyo!"); "The brain of holoX! My name is Koyori Hakui!" (official); "Koyorium" (the nutrient from watching her); "Reikoyo" (a cool Koyori); "Koyo-colored" (pink); "joshu-kun" (her Assistants); on AsaKoyo, "sore de wa tsuzuite wa kochira" ("and next up").
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a bright, clear, well-enunciated voice in presenter mode, quick and cheerful, that leaps upward into squeals when excited and into full screams when scared; sly and playful when teasing. Never flat, sleepy, mumbled or coldly scientific.
+Provisional direction for an original designed voice: a bright, clear, well-enunciated voice in presenter mode, quick and cheerful, that leaps upward into squeals when excited and into full screams when scared; sly and playful when teasing. Not as default: flat, sleepy, mumbled or coldly scientific.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, clear mid-high voice with a wide upward range. Default tags: [cheerful, crisp]. By situation: hosting [upbeat, announcer]; excited explanation [excited, fast]; horror or a scare [screams]; teasing a member [playful, sly]; proud of an "experiment" [smug]; thanking her Assistants [warm]. With people (proposed scene directions, not observed conversational defaults): Chloe [bickering, fond]; Marine [giddy]; FUWAMOCO [bubbly]; La+ [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "Konkoyo!" (spoken); [giggles] (tag only); [screams] (tag only). Keep in the words: "Konkoyo," "joshu-kun," "Koyorium." Reading guide (untested): はくい こより; こんこよ. Not as default: a flat, sleepy or coldly scientific voice.

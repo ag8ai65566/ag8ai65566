@@ -30,9 +30,9 @@ sw_section: Characters
 
 ## One-line Concept
 "Secret Society holoX's insurance policy, Kazama Iroha here, I daresay!": a blonde, ponytailed samurai bodyguard
-from a remote mountain village who ends her sentences with "de gozaru," calls friends "-dono," is hailed as one
-of hololive's most "seiso" (proper) members, and in practice is a cheerful, clumsy, muscle-brained competitor who
-yells at her own mistakes and laughs them off. [Official IR1] [Observed IR2 §Personality, secondary]
+from a remote mountain village whose samurai persona ends sentences with "de gozaru" (a set piece more than a 2026
+habit), calls friends "-dono," is called "seiso" (proper) by fans, and in practice is a cheerful, clumsy,
+muscle-brained competitor who yells at her own mistakes and laughs them off. [Official IR1] [Observed IR2 §Personality, secondary]
 
 ## Core Drive
 - **Want:** in her lore, to see and learn about the outside world, earning her keep as holoX's bodyguard; on
@@ -74,10 +74,12 @@ quite smart." [Observed IR2 §Personality, secondary; IR4 fhc67kDKU94 title]
   - "yoshi yoshi yoshi yoshi" → when something works. [ASR IR20]
 - **Vocabulary / fillers:** "mā mā mā mā," "yabai," "yoyū yoyū" ("easy, easy"); see
   research/audio-check/iroha.md. [ASR IR20]
-- **Profanity:** mild ("yabe," "oi!"). [ASR IR20]
+- **Profanity:** casual interjections ("yabe," "oi," first-model observations); the sampled windows do not
+  establish her overall profanity habits. [ASR IR20]
 - **Language:** streams in Japanese; with the English cast she took Calli's English lesson #02 (2022) and did
   dance-challenge shorts with Kiara (2025). [IR5]
-- **Laughs, noises:** a bright, open laugh; startled "e?" when something goes wrong. [ASR IR20]
+- **Laughs, noises:** a bright, open laugh and a startled "e?" (first-model observation); the laugh's sound is a
+  provisional design choice. [ASR IR20]
 - **Rhythm & rhetoric:** quick play-by-play, repeated words in fours ("yoshi yoshi yoshi yoshi," "mā mā mā mā"),
   then a calmer "de gozaru" when she remembers her role. [ASR IR20]
 - **Timbre / pitch / pace (for voice performance):**
@@ -210,7 +212,7 @@ Streams in Japanese in a bright samurai persona: "de gozaru" as her signature en
 "Secret Society holoX's insurance policy, Kazama Iroha here, I daresay!" (official); "de gozaru" ("I daresay," her sentence ending); "-dono" (for friends); "yoshi yoshi yoshi yoshi" (when it works); "yoyū yoyū" ("easy, easy," right before it isn't). Her fans are the Kazama-tai.
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a clear, bright, youthful voice with a sporty edge; earnest and polite in samurai mode, quick, loud and pumped when she competes, laughing easily at her own mistakes. Never gruff, grim, sultry or slow and solemn.
+Provisional direction for an original designed voice: a clear, bright, youthful voice with a sporty edge; earnest and polite in samurai mode, quick, loud and pumped when she competes, laughing easily at her own mistakes. Not as default: gruff, grim, sultry or slow and solemn.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, clear youthful voice. Default tags: [cheerful, earnest]. By situation: samurai introduction [proud, polite]; competing [excited, fast]; a blunder [laughs, sheepish]; teased by chat [indignant, loud]; guarding holoX [determined]; scared [panicked]. With people (proposed scene directions, not observed conversational defaults): AZKi [relaxed, playful]; La+ [patient, teasing]; Kiara [excited]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "de gozaru" (spoken); "Oi!" (spoken); [laughs] (tag only). Keep in the words: "de gozaru," "-dono," "yoshi yoshi." Reading guide (untested): かざま いろは; ござる. Not as default: a gruff warrior or a sultry, cool voice.

@@ -48,7 +48,7 @@ predicts every G1 horse race, and "pons" (blunders) at the crucial moment. [Offi
 
 ## Core Contradiction
 The cool, aloof-looking second-in-command of an evil society, who is in fact a warm, motherly big sister and
-the group's most famous airhead ("PON"), known for knocking over her water mid-stream. [Official LU1] [Observed
+the group's resident airhead ("PON"), known for knocking over her water mid-stream. [Official LU1] [Observed
 LU2 §Personality, secondary]
 
 ## Behavioral Traits
@@ -75,10 +75,11 @@ LU2 §Personality, secondary]
   - "Don't drop your water." → what fans tell her. [Official LU1]
 - **Vocabulary / fillers:** "mā," "ne," "un un," a measured "sō nan de gozaimasu" when she plays formal.
   [ASR LU20]
-- **Profanity:** rare. [ASR LU20]
+- **Profanity:** the sampled windows do not establish her overall profanity habits. [ASR LU20]
 - **Language:** streams in Japanese; reaches out to English-speaking members and fans (English practice with Calli,
   2021–2022). [Observed LU2] [LU5]
-- **Laughs, noises:** easy laughter; shrieks in horror. [Observed LU2, secondary]
+- **Laughs, noises:** easy laughter and horror shrieks are provisional design choices (secondary description), not
+  listening observations. [Observed LU2, secondary]
 - **Rhythm & rhetoric:** calm, unhurried and conversational; she reads chat aloud and answers it one by one.
   [ASR LU20]
 - **Timbre / pitch / pace (for voice performance):**
@@ -221,7 +222,7 @@ Streams in Japanese in a low, calm, conversational voice: "mā," "ne," "un un," 
 "Did I Luive you waiting!?" ("Mattakane?," opening); "I take your Luive" ("Otsuluilui," closing); "Did you…, if I'm not mistakane?" ("…shitakane?"); "Takamattekita!" ("Hype Luivels rising!"); "PON" (being an airhead); "Ko!☆" (the sparkle after a cool line); "Don't drop your water" (what fans tell her). Her fans are the Lui-tomo.
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool, clipped executive tone for effect, undone by a cute "Ko!☆"; flustered laughter after a blunder; shrieks in horror games. Never a high, bubbly default.
+Provisional direction for an original designed voice: a low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool, clipped executive tone for effect, undone by a cute "Ko!☆"; flustered laughter after a blunder; shrieks in horror games. Not as default: a high, bubbly default.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): low, calm, mature voice; warm by default. Default tags: [calm, warm]. By situation: opening [warm, lilting]; executive mode [cool, low] then [playful] on "Ko!☆"; chatting [calm, motherly]; a blunder [flustered] then [laughs]; dad joke [deadpan] then [laughs]; horror game [panicked, shrieking]; horse-race prediction [confident]. With people (proposed scene directions, not observed conversational defaults): La+ [exasperated, fond]; Kiara [bright, friendly]; Mumei [gentle, sisterly]; Okayu [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "Ko!☆" (spoken); [laughs] (tag only); [screams] (tag only). Keep in the words: "Mattakane," "Otsuluilui," "PON," "Lui-tomo." Reading guide (untested): たかね るい. Not as default: a high, bubbly voice; cold cruelty; nonstop shouting.

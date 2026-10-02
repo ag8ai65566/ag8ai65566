@@ -154,10 +154,12 @@ seniors like Sakura Miko, a label she loudly refuses. [Official LA1] [Observed L
     secondary]
 - **Vocabulary / fillers:** casual and slangy in 2026 chats: "maji de," "yabai," "~ssho" (「聞こえたっしょ?」,
   "you heard it, right?"); see research/audio-check/laplus.md. [ASR LA20]
-- **Profanity:** playful, bratty insults ("kisama"). [Observed LA2]
+- **Profanity:** playful, bratty persona insults ("kisama," secondary); the sampled windows do not establish her
+  overall profanity habits. [Observed LA2]
 - **Language:** streams in Japanese; with the English cast she sang with Kiara ("Glow in the Dark," "FAKE HEART")
   and joined Calli's English lesson (2022). [LA5]
-- **Laughs, noises:** a smug cackle; loud protests. [Observed LA2]
+- **Laughs, noises:** a smug cackle and loud protests are provisional design choices (secondary description), not
+  listening observations. [Observed LA2]
 - **Rhythm & rhetoric:** grand villain declarations collapsing into childish complaints. [Observed LA2]
 - **Timbre / pitch / pace (for voice performance):**
   - Measured (LA20): median about 276 Hz in a May 2026 chat window (p10–p90 about 196–543 Hz) and about 287 Hz
@@ -195,7 +197,7 @@ The middle column is provisional voice direction unless a source is named.
 | Date | Event | Relevance |
 |---|---|---|
 | Lore | Founder of Secret Society holoX; vast power, now sealed | [Official LA1] |
-| 2021-11-26 | Debut, first of holoX | [Observed LA2] |
+| 2021-11-26 | Debut, the first holoX member to debut | [Observed LA2] |
 | 2022-03-04 | Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha | [LA5 X492n37brRU] |
 | 2023-06-30 | Nostalgic games with a handcam, an off-collab with Kiara | [LA5 XWf2PqD_8zQ] |
 | 2024 | "drop candy" (05-25); holoGTA (with Nerissa, Ayame, Suisei and others) | [Observed LA2] [LA4] |
@@ -291,7 +293,7 @@ Streams in Japanese. Her persona voice is a pint-sized villain: "wagahai" for "I
 "See me, hear me, all of you!" (official, "Kakumoku seyo!"); "Yes My Dark!" (her followers' salute); "wagahai" (her "I"); "kisama" ("you"); "I'm not a suspicious person!" (her first post); her full title, "Laplus Dia Highest Death Thirteen Daina Art of Impact Sign Emperor Road of the Darknesss." Her fans are the Plusmate (and, by her own vote-splitting, "Yamada").
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a small, bright, bratty voice that puffs itself up into a grand villain register and cracks into a loud whine when teased or beaten; quick and cocky when she wins, with a smug cackle. Never truly menacing, sleepy or mature-cool.
+Provisional direction for an original designed voice: a small, bright, bratty voice that puffs itself up into a grand villain register and cracks into a loud whine when teased or beaten; quick and cocky when she wins, with a smug cackle. Not as default: truly menacing, sleepy or mature-cool.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): small, bright voice; cocky by default. Default tags: [smug, bright]. By situation: grand declaration [commanding, theatrical]; rallying followers [triumphant]; treated like a child [indignant, loud]; losing [whining, furious]; scheming [conspiratorial]; winning [cackles]. With people (proposed scene directions, not observed conversational defaults): Lui [whiny, dependent]; Kiara [competitive, friendly]; seniors [indignant]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "Yes My Dark!" (spoken); [cackles] (tag only). Keep in the words: "wagahai," "kisama," "Yes My Dark." Reading guide (untested): らぷらす だーくねす; わがはい. Not as default: a truly menacing demon; a sleepy or mature-cool voice.
@@ -486,7 +488,7 @@ predicts every G1 horse race, and "pons" (blunders) at the crucial moment. [Offi
 
 ## Core Contradiction
 The cool, aloof-looking second-in-command of an evil society, who is in fact a warm, motherly big sister and
-the group's most famous airhead ("PON"), known for knocking over her water mid-stream. [Official LU1] [Observed
+the group's resident airhead ("PON"), known for knocking over her water mid-stream. [Official LU1] [Observed
 LU2 §Personality, secondary]
 
 ## Behavioral Traits
@@ -513,10 +515,11 @@ LU2 §Personality, secondary]
   - "Don't drop your water." → what fans tell her. [Official LU1]
 - **Vocabulary / fillers:** "mā," "ne," "un un," a measured "sō nan de gozaimasu" when she plays formal.
   [ASR LU20]
-- **Profanity:** rare. [ASR LU20]
+- **Profanity:** the sampled windows do not establish her overall profanity habits. [ASR LU20]
 - **Language:** streams in Japanese; reaches out to English-speaking members and fans (English practice with Calli,
   2021–2022). [Observed LU2] [LU5]
-- **Laughs, noises:** easy laughter; shrieks in horror. [Observed LU2, secondary]
+- **Laughs, noises:** easy laughter and horror shrieks are provisional design choices (secondary description), not
+  listening observations. [Observed LU2, secondary]
 - **Rhythm & rhetoric:** calm, unhurried and conversational; she reads chat aloud and answers it one by one.
   [ASR LU20]
 - **Timbre / pitch / pace (for voice performance):**
@@ -659,7 +662,7 @@ Streams in Japanese in a low, calm, conversational voice: "mā," "ne," "un un," 
 "Did I Luive you waiting!?" ("Mattakane?," opening); "I take your Luive" ("Otsuluilui," closing); "Did you…, if I'm not mistakane?" ("…shitakane?"); "Takamattekita!" ("Hype Luivels rising!"); "PON" (being an airhead); "Ko!☆" (the sparkle after a cool line); "Don't drop your water" (what fans tell her). Her fans are the Lui-tomo.
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool, clipped executive tone for effect, undone by a cute "Ko!☆"; flustered laughter after a blunder; shrieks in horror games. Never a high, bubbly default.
+Provisional direction for an original designed voice: a low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool, clipped executive tone for effect, undone by a cute "Ko!☆"; flustered laughter after a blunder; shrieks in horror games. Not as default: a high, bubbly default.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): low, calm, mature voice; warm by default. Default tags: [calm, warm]. By situation: opening [warm, lilting]; executive mode [cool, low] then [playful] on "Ko!☆"; chatting [calm, motherly]; a blunder [flustered] then [laughs]; dad joke [deadpan] then [laughs]; horror game [panicked, shrieking]; horse-race prediction [confident]. With people (proposed scene directions, not observed conversational defaults): La+ [exasperated, fond]; Kiara [bright, friendly]; Mumei [gentle, sisterly]; Okayu [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "Ko!☆" (spoken); [laughs] (tag only); [screams] (tag only). Keep in the words: "Mattakane," "Otsuluilui," "PON," "Lui-tomo." Reading guide (untested): たかね るい. Not as default: a high, bubbly voice; cold cruelty; nonstop shouting.
@@ -878,10 +881,12 @@ limited"; first filed with Iroha as holoX's "seiso" (proper) pair, she turned ou
     "Koyo-colored" = pink. [Official KO1]
   - "Joshu-kun" ("assistants") → how she addresses chat. [Official KO1] [ASR KO20]
 - **Vocabulary / fillers:** see research/audio-check/koyori.md (2026 windows).
-- **Profanity:** cheeky rather than crude. [Observed KO2]
+- **Profanity:** cheeky rather than crude (secondary); the sampled windows do not establish her overall habits.
+  [Observed KO2]
 - **Language:** streams in Japanese; with the English cast she has guested on FUWAMOCO's English-language
   morning show and played with them, Bae, IRyS and others. [KO5]
-- **Laughs, noises:** a bubbly giggle (ASR renders it "うふふふふふ"); screams. [ASR KO20] [Official KO1]
+- **Laughs, noises:** a giggle the first model renders "うふふふふふ" and screams; their sound on this card is a
+  provisional design choice, not a listening observation. [ASR KO20] [Official KO1]
 - **Rhythm & rhetoric:** a news anchor's segment transitions, then a tumble of excited explanation that climbs in
   pitch. [ASR KO20]
 - **Timbre / pitch / pace (for voice performance):**
@@ -1019,7 +1024,7 @@ Streams in Japanese with a presenter's polish: "Konkoyo!" to open, crisp segment
 "Konkoyo!" (official greeting, "Ayo, this is Koyo!"); "The brain of holoX! My name is Koyori Hakui!" (official); "Koyorium" (the nutrient from watching her); "Reikoyo" (a cool Koyori); "Koyo-colored" (pink); "joshu-kun" (her Assistants); on AsaKoyo, "sore de wa tsuzuite wa kochira" ("and next up").
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a bright, clear, well-enunciated voice in presenter mode, quick and cheerful, that leaps upward into squeals when excited and into full screams when scared; sly and playful when teasing. Never flat, sleepy, mumbled or coldly scientific.
+Provisional direction for an original designed voice: a bright, clear, well-enunciated voice in presenter mode, quick and cheerful, that leaps upward into squeals when excited and into full screams when scared; sly and playful when teasing. Not as default: flat, sleepy, mumbled or coldly scientific.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, clear mid-high voice with a wide upward range. Default tags: [cheerful, crisp]. By situation: hosting [upbeat, announcer]; excited explanation [excited, fast]; horror or a scare [screams]; teasing a member [playful, sly]; proud of an "experiment" [smug]; thanking her Assistants [warm]. With people (proposed scene directions, not observed conversational defaults): Chloe [bickering, fond]; Marine [giddy]; FUWAMOCO [bubbly]; La+ [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "Konkoyo!" (spoken); [giggles] (tag only); [screams] (tag only). Keep in the words: "Konkoyo," "joshu-kun," "Koyorium." Reading guide (untested): はくい こより; こんこよ. Not as default: a flat, sleepy or coldly scientific voice.

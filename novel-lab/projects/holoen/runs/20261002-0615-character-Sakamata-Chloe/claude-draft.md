@@ -77,10 +77,12 @@ practice is soft, chatty and accident-prone, teases everyone and cannot keep a s
   - "Sakamata" → how she refers to herself. [ASR CH20] [Observed CH2]
 - **Vocabulary / fillers:** sentences trailing in a drawn-out "~sā" ("zutto sā," "mecha kinchō shite sā");
   "muzui" ("tough") for hard questions; see research/audio-check/chloe.md. [ASR CH20]
-- **Profanity:** playful teasing rather than swearing. [Observed CH2]
+- **Profanity:** playful teasing (secondary); the sampled windows do not establish her overall profanity habits.
+  [Observed CH2]
 - **Language:** streamed in Japanese; she used basic English on the EN Minecraft server tour (2022) and in Calli's
   English lesson #04 (2022), and wrote her original song "Hurt you" in English (2022). [CH4] [CH5] [Observed CH2]
-- **Laughs, noises:** a soft "fufufu," a breathy giggle. [ASR CH20]
+- **Laughs, noises:** a soft "fufufu" (first-model rendering) and a breathy giggle are provisional design choices,
+  not listening observations. [ASR CH20]
 - **Rhythm & rhetoric:** quick, run-on chatter that turns a small question into a poll of chat. [ASR CH20]
 - **Timbre / pitch / pace (for voice performance):**
   - Measured (CH20): in a 2024 chat window, median about 301 Hz (p10–p90 about 217–482 Hz, 14 semitones) and
@@ -215,7 +217,7 @@ Streamed in Japanese in quick, soft, run-on chatter that trails off in a drawn-o
 "Chomp, chomp, chomp! It's time to eat!" (official opening, "Bakku bakku baku~"); "Thanks for the food" (official closing, gochisōsama); "shiikuin" (Handlers, her viewers); "Sakamata" (how she refers to herself); "KoyoChlo" (her duo with Koyori).
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a small, soft, high and slightly airy voice that chatters fast, giggles and teases; panicky squeaks in horror; noticeably deeper, fuller and more mature when she sings. Never a cool, mature speaking voice, a menacing "cleaner" or slow, careful speech.
+Provisional direction for an original designed voice: a small, soft, high and slightly airy voice that chatters fast, giggles and teases; panicky squeaks in horror; noticeably deeper, fuller and more mature when she sings. Not as default: a cool, mature speaking voice, a menacing "cleaner" or slow, careful speech.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): small, soft, high voice; quick and playful by default. Default tags: [soft, playful]. By situation: opening [bright, hungry]; chatting [fast, casual]; teasing [mischievous, giggly]; denying blame [innocent]; horror [panicked, squeaky]; singing [mature, heartfelt]. With people (proposed scene directions, not observed conversational defaults): Koyori [bickering, fond]; Lui [whiny, sheepish]; Kiara [shy, excited]; seniors [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "Bakku bakku baku~" (spoken); [giggles] (tag only); [gasps] (tag only). Keep in the words: "Sakamata," "shiikuin," "bakku bakku." Reading guide (untested): さかまた くろえ. Not as default: a cool, mature or menacing voice.
@@ -233,7 +235,7 @@ Takane Lui: the executive officer who kept her in line ("LuiChlo"; Calli's Engli
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add holoX in full): official profile
-  (CH1), wiki (CH2, by section; personal-habit notes deliberately excluded), archive metadata (CH4, CH5) and
+  (CH1), wiki (CH2, by section; private details deliberately excluded), archive metadata (CH4, CH5) and
   Claude's two-model Japanese audio check (CH20, research/audio-check/chloe.md).
 
 ## Open Questions

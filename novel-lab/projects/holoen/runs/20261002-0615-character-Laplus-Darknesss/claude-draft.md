@@ -74,10 +74,12 @@ seniors like Sakura Miko, a label she loudly refuses. [Official LA1] [Observed L
     secondary]
 - **Vocabulary / fillers:** casual and slangy in 2026 chats: "maji de," "yabai," "~ssho" (「聞こえたっしょ?」,
   "you heard it, right?"); see research/audio-check/laplus.md. [ASR LA20]
-- **Profanity:** playful, bratty insults ("kisama"). [Observed LA2]
+- **Profanity:** playful, bratty persona insults ("kisama," secondary); the sampled windows do not establish her
+  overall profanity habits. [Observed LA2]
 - **Language:** streams in Japanese; with the English cast she sang with Kiara ("Glow in the Dark," "FAKE HEART")
   and joined Calli's English lesson (2022). [LA5]
-- **Laughs, noises:** a smug cackle; loud protests. [Observed LA2]
+- **Laughs, noises:** a smug cackle and loud protests are provisional design choices (secondary description), not
+  listening observations. [Observed LA2]
 - **Rhythm & rhetoric:** grand villain declarations collapsing into childish complaints. [Observed LA2]
 - **Timbre / pitch / pace (for voice performance):**
   - Measured (LA20): median about 276 Hz in a May 2026 chat window (p10–p90 about 196–543 Hz) and about 287 Hz
@@ -115,7 +117,7 @@ The middle column is provisional voice direction unless a source is named.
 | Date | Event | Relevance |
 |---|---|---|
 | Lore | Founder of Secret Society holoX; vast power, now sealed | [Official LA1] |
-| 2021-11-26 | Debut, first of holoX | [Observed LA2] |
+| 2021-11-26 | Debut, the first holoX member to debut | [Observed LA2] |
 | 2022-03-04 | Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha | [LA5 X492n37brRU] |
 | 2023-06-30 | Nostalgic games with a handcam, an off-collab with Kiara | [LA5 XWf2PqD_8zQ] |
 | 2024 | "drop candy" (05-25); holoGTA (with Nerissa, Ayame, Suisei and others) | [Observed LA2] [LA4] |
@@ -211,7 +213,7 @@ Streams in Japanese. Her persona voice is a pint-sized villain: "wagahai" for "I
 "See me, hear me, all of you!" (official, "Kakumoku seyo!"); "Yes My Dark!" (her followers' salute); "wagahai" (her "I"); "kisama" ("you"); "I'm not a suspicious person!" (her first post); her full title, "Laplus Dia Highest Death Thirteen Daina Art of Impact Sign Emperor Road of the Darknesss." Her fans are the Plusmate (and, by her own vote-splitting, "Yamada").
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a small, bright, bratty voice that puffs itself up into a grand villain register and cracks into a loud whine when teased or beaten; quick and cocky when she wins, with a smug cackle. Never truly menacing, sleepy or mature-cool.
+Provisional direction for an original designed voice: a small, bright, bratty voice that puffs itself up into a grand villain register and cracks into a loud whine when teased or beaten; quick and cocky when she wins, with a smug cackle. Not as default: truly menacing, sleepy or mature-cool.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): small, bright voice; cocky by default. Default tags: [smug, bright]. By situation: grand declaration [commanding, theatrical]; rallying followers [triumphant]; treated like a child [indignant, loud]; losing [whining, furious]; scheming [conspiratorial]; winning [cackles]. With people (proposed scene directions, not observed conversational defaults): Lui [whiny, dependent]; Kiara [competitive, friendly]; seniors [indignant]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "Yes My Dark!" (spoken); [cackles] (tag only). Keep in the words: "wagahai," "kisama," "Yes My Dark." Reading guide (untested): らぷらす だーくねす; わがはい. Not as default: a truly menacing demon; a sleepy or mature-cool voice.
