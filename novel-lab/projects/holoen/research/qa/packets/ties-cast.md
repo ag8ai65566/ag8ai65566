@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git f02f10f. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git ce6fd81. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### Cecilia Immergreen × Elizabeth Rose Bloodflame
@@ -297,6 +297,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and joked that anyone making Gura cry would face "the wrath of Ina."
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and promised "the wrath of Ina" to anyone who makes Gura cry; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina promised "the wrath of Ina" to anyone who makes Gura cry.
@@ -749,6 +750,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" | — |
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-03-20 | hololive 3rd fes. "Link Your Wish" at Makuhari (#つながるホロライブ), day 2: Calli and Kiara perform | Calli: "My dream came true, my heart is exploding." Kiara: "MAKUHARI WAS ON FIRE!" [Observed—X posts, S4] |
+- `bible/world/hololive.md › How It Works`: - **Seniority:** senpai and kouhai describe relative seniority (who debuted first), not language or nationality; forms of address and levels of formality vary by relationship. Many EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora). [Observed character files]
 
 ### Mori Calliope × Watson Amelia
 - `bible/characters/Gawr-Gura.md › [SW] Background`: She hosted The Fish Tank with Watson Amelia and sang "Q" with Mori Calliope.

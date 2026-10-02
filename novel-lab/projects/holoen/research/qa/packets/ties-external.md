@@ -1,10 +1,7 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git f02f10f. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git ce6fd81. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
-
-### AZKi × Mori Calliope
-- `bible/world/hololive-History-to-2022.md › Timeline`: | 2019-05-19 | AZKi and Hoshimachi Suisei (formerly independent) join under the INoNaKa Music label; Suisei moves to hololive's main branch on 2019-12-01 | Calli's starstruck senpai Suisei |
 
 ### Airani Iofifteen × Gigi Murin
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Airani Iofi (ID), Pavolia Reine (ID) | "Fanfic Club" with Gigi | Monster Hunter Wilds with Iofi and Jurard (2025) | [Observed SN2; SN3] |
@@ -39,6 +36,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Gawr Gura × Houshou Marine
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
 
 ### Gawr Gura × Pavolia Reine
@@ -52,15 +50,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity.
 - `bible/characters/Gigi-Murin.md › [SW] Background`: (Gigi helped with the lyrics and designed the chibi models) and sang it at the Serendipity concert, where Gigi also sang "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO.
 
-### Hoshimachi Suisei × Mori Calliope
-- `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 1. Calli hosts another watch party for Suisei's concert and loses her composure on the high note.
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
-- `bible/world/hololive-History-to-2022.md › Timeline`: | 2019-05-19 | AZKi and Hoshimachi Suisei (formerly independent) join under the INoNaKa Music label; Suisei moves to hololive's main branch on 2019-12-01 | Calli's starstruck senpai Suisei |
-
-### Hoshimachi Suisei × Ninomae Ina'nis
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
-
 ### Houshou Marine × Mococo Abyssgard
 - `bible/characters/Fuwawa-Abyssgard.md › Core Drive`: - **Want:** with Mococo, to protect the Ruffians' smiles; their debut list held more than a hundred goals (sing with Houshou Marine, a solo concert, an anime song, a scale figure). [Official FW1, FW4] [Observed FW2 §Hopes and dreams, secondary]
 
@@ -70,6 +59,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Houshou Marine × Ninomae Ina'nis
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and duets with Nekomata Okayu.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
 
 ### Houshou Marine × Takanashi Kiara
@@ -85,8 +75,14 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### IRyS × Momosuzu Nene
 - `bible/world/IRyS-and-Nerissa-Pairs.md › IRyS`: - **IRyS and Calli** (16 / 16 / 5 / 8 / 2 / 1): Calli's first collab with her came on July 29, 2021, eighteen days after IRyS's debut ("Just Irystocrats and DeadBEATS"), then a karaoke collab (2021-10). With Hakos Baelz they host CHADCast ("Chaos, Hope, and Death!", from 2022-01-30; a 2025 episode: "We Went to a Hot Spring Together!!"). Later: "Two Pink Women Roll Up to Silent Hill" (2024-10-26), IRyS as Calli's HOLOMELO RADIO guest (2024-07), an off-collab karaoke with Momosuzu Nene (2025-04-23). Wiki unit: "MorIRyS." [Observed S1 titles; S2 IRyS §Relationships, secondary]
 
+### IRyS × Moona Hoshinova
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower").
+
 ### IRyS × Ookami Mio
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: At Serendipity: "Tententengoku Jigokukoku" with Kiara as Rocku Wawa, and "Night Loop" with Ookami Mio (GAMERS) and IRyS.
+
+### IRyS × Shiranui Flare
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower").
 
 ### IRyS × Tsukumo Sana
 - `bible/world/hololive--Promise.md › Members and Status`: - Council history: Tsukumo Sana graduated from -Council- on 2022-07-31, before Promise existed; she was never a Promise member. IRyS and the four remaining Council members formed Promise in October 2023.
@@ -187,6 +183,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Tsunomaki Watame (JP), Mori Calliope | Cross-branch; senior | "Cloudy Sheep" at Serendipity (2026) | [Official CI8] |
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Tsunomaki Watame (JP) and Mori Calliope: "Cloudy Sheep" at Serendipity.
 
+### Mori Calliope × Usada Pekora
+- `bible/world/hololive.md › How It Works`: - **Seniority:** senpai and kouhai describe relative seniority (who debuted first), not language or nationality; forms of address and levels of formality vary by relationship. Many EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora). [Observed character files]
+
 ### Mori Calliope × Vestia Zeta
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |
 
@@ -239,6 +238,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Takanashi Kiara × Usada Pekora
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI").
+- `bible/world/hololive.md › How It Works`: - **Seniority:** senpai and kouhai describe relative seniority (who debuted first), not language or nationality; forms of address and levels of formality vary by relationship. Many EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora). [Observed character files]
 
 ### Takanashi Kiara × Vestia Zeta
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |

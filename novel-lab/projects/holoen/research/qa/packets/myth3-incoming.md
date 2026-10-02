@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git f02f10f.
+Snapshot: git ce6fd81.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Kronii and Gura|Takanashi Kiara|hololive -Myth-|Gura and Kronii|Kiara and Gura|Gura and Kiara|Calli and Ame|Kiara and Ame|Calli and Ina|Ame and Calli|Ame and Kiara|Ina and Calli|Ina and Gura|Gura and Ina|Ame and Ina|Ina and Ame|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura and Kronii|Kronii and Gura|Takanashi Kiara|hololive -Myth-|Gura and Kiara|Kiara and Gura|Ame and Kiara|Ina and Calli|Ame and Calli|Kiara and Ame|Calli and Ame|Calli and Ina|Ina and Gura|Gura and Ina|Ame and Ina|Ina and Ame|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Takanashi Kiara: a German-speaking senior ("EterniTea"; "HoloEU" with Raora).

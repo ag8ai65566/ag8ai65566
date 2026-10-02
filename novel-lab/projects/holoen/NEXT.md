@@ -1,5 +1,15 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-02 05:50 UTC）：**作者下令加入 hololive JP 的 Suisei、AZKi、Ayame、Okayu**（完整卡＋表演表＋關係網）。
+- runs：`20261002-0529-character-{Hoshimachi-Suisei,AZKi,Nakiri-Ayame,Nekomata-Okayu}`、`20261002-0529-world-JP-Senpai-Pairs`。
+  COHORTS 新增 `jp`（四人＋JP-Senpai-Pairs）；release 的 CAST_ORDER/WORLD_ORDER 已加。
+- 研究：wiki（fandom API）、日文維基、官方頁、ragtag 檔案（EN 與 JP 頻道）；EN 卡的回填（Calli、Kiara、Ina、IRyS、
+  Fuwawa、Mococo、Gura、Gigi）已寫進各 run 的 final.md（Merge Record 有記），跟 Bae 的回填一起等 promote。
+- 音檔：scratchpad `jp/`（多語 small＋medium，`jacheck.py`、`jconfirm.py`、`jstats.py`）；2026 年 16 個窗口。
+  私事（家人、童年、旅行、受傷、生病、計程車等日常）一律不引用不摘要。
+- 待辦：四張卡寫完 → audio-check 報告（research/audio-check/{suisei,azki,ayame,okayu}.md）→ 表演表 →
+  GPT 一輪審查（兩個 run：Suisei+AZKi、Ayame+Okayu+JP Pairs），排在 Bae 之後。
+
 狀態（2026-10-02 04:25 UTC）：**作者使用指南完成**（d21f6ee）。`framework/templates/start-here-zh.md` 是發佈包的
 00-START-HERE（中文：下載位置、檔案→Sudowrite 位置、十分鐘測試、寫作設定、ElevenLabs、更新、常見問題）；草稿包
 `delivery/holoen-2026-09-30-r01-draft` 已重建（18/24，Bae 收錄前不放她的表演表，START-HERE 會寫「這一版還沒收錄」）。

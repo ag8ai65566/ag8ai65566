@@ -40,12 +40,13 @@ EXPECT = {"characters": len(ROSTER_CHARS), "world": len(ROSTER_WORLD), "sheets":
 CAST_ORDER = ["Mori-Calliope", "Takanashi-Kiara", "Ninomae-Inanis", "Gawr-Gura", "Watson-Amelia",
               "IRyS", "Ouro-Kronii", "Ceres-Fauna", "Nanashi-Mumei", "Hakos-Baelz",
               "Shiori-Novella", "Koseki-Bijou", "Nerissa-Ravencroft", "Fuwawa-Abyssgard", "Mococo-Abyssgard",
-              "Elizabeth-Rose-Bloodflame", "Gigi-Murin", "Cecilia-Immergreen", "Raora-Panthera"]
+              "Elizabeth-Rose-Bloodflame", "Gigi-Murin", "Cecilia-Immergreen", "Raora-Panthera",
+              "Hoshimachi-Suisei", "AZKi", "Nakiri-Ayame", "Nekomata-Okayu"]
 WORLD_ORDER = ["VTuber-Persona-and-Lore", "hololive", "Streaming-Life",
                "hololive--Myth", "hololive--Promise", "hololive--Advent", "hololive--Justice", "FUWAMOCO",
                "TakaMori", "TakoTori", "AmeSame", "Bone-Bros", "Myth-and-Kronii-Other-Pairs", "Time-Duo",
                "Time-and-Death", "OctoClock", "Fauna-and-Mumei-Pairs", "IRyS-and-Nerissa-Pairs", "Hakos-Baelz-Pairs", "Advent-Pairs",
-               "Justice-Pairs", "Cross-Branch-Friends", "Concerts-and-Live-Events", "hololive-History-to-2022",
+               "Justice-Pairs", "JP-Senpai-Pairs", "Cross-Branch-Friends", "Concerts-and-Live-Events", "hololive-History-to-2022",
                "hololive-History-2023-2026"]
 assert set(CAST_ORDER) == set(ROSTER_CHARS) and set(WORLD_ORDER) == set(ROSTER_WORLD), \
     "CAST_ORDER/WORLD_ORDER must list exactly the COHORTS roster (tools/qa_packets.py)"
@@ -494,7 +495,7 @@ def cmd_build(args):
     in_world = [s for s in WORLD_ORDER if s in cards]
     missing = [s for s in CAST_ORDER + WORLD_ORDER if s not in cards]
     idx = ["# Index", "", f"Release {rev} · baseline {BASELINE} · {len(in_chars)} characters · {len(in_world)} world elements · full cards (no compact variants).", "",
-           "## Characters (Myth → Promise/Council → Advent → Justice)", "", "| Member | Status | Units (Groups) | Card | Performance sheet | World cards naming her |", "|---|---|---|---|---|---|"]
+           "## Characters (Myth → Promise/Council → Advent → Justice → hololive JP)", "", "| Member | Status | Units (Groups) | Card | Performance sheet | World cards naming her |", "|---|---|---|---|---|---|"]
     for stem in in_chars:
         c = cards[stem]
         f = c["fields"]

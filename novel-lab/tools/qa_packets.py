@@ -42,6 +42,11 @@ COHORTS = {
         "characters": ["Elizabeth-Rose-Bloodflame", "Gigi-Murin", "Cecilia-Immergreen", "Raora-Panthera"],
         "world": ["hololive--Justice", "Justice-Pairs"],
     },
+    # hololive JP members added by author order (2026-10-02): full cards, ties to the EN cast.
+    "jp": {
+        "characters": ["Hoshimachi-Suisei", "AZKi", "Nakiri-Ayame", "Nekomata-Okayu"],
+        "world": ["JP-Senpai-Pairs"],
+    },
     "global": {
         "characters": [],
         "world": ["hololive", "Streaming-Life", "VTuber-Persona-and-Lore", "Cross-Branch-Friends",
@@ -58,6 +63,8 @@ SHORT = {
     "Fuwawa-Abyssgard": ["Fuwawa", "FUWAMOCO"], "Mococo-Abyssgard": ["Mococo", "FUWAMOCO"],
     "Elizabeth-Rose-Bloodflame": ["Elizabeth", "Liz"], "Gigi-Murin": ["Gigi"],
     "Cecilia-Immergreen": ["Cecilia"], "Raora-Panthera": ["Raora"], "Hakos-Baelz": ["Bae", "Baelz", "Hakos"],
+    "Hoshimachi-Suisei": ["Suisei", "Sui-chan"], "AZKi": ["AZKi"], "Nakiri-Ayame": ["Ayame"],
+    "Nekomata-Okayu": ["Okayu"],
 }
 UNIT_WORDS = {"myth2": ["Myth"], "promise": ["Promise", "Council"], "advent": ["Advent"], "justice": ["Justice"]}
 
@@ -96,13 +103,13 @@ CREDITS = [
     {"work": "Wind-Up", "credited": ["Cecilia Immergreen"], "role": "composition and lyrics, with production help from Aethoro", "evidence": "creator interview (Siliconera)"},
     {"work": "enough", "credited": ["Gigi Murin", "FLAVORFOLEY"], "role": "vocals; composition, arrangement and mixing by FLAVORFOLEY", "evidence": "archived MV credits 3m15lUh0WP4"},
 ]
-# People outside the 18-member cast who appear in relationship claims (reference only: no cards).
+# People outside the cast who appear in relationship claims (reference only: no cards).
 REFERENCE_ONLY = ["Tsukumo Sana", "Kobo Kanaeru", "Vestia Zeta", "Kureiji Ollie", "Kaela Kovalskia",
                   "Moona Hoshinova", "Ayunda Risu", "Anya Melfissa", "Pavolia Reine", "Airani Iofifteen",
                   "Ookami Mio", "Tsunomaki Watame", "Oozora Subaru", "Houshou Marine", "Inugami Korone",
                   "Omaru Polka", "Momosuzu Nene", "Kazama Iroha", "Roboco", "Tokino Sora", "Yuzuki Choco",
-                  "Nekomata Okayu", "Shirakami Fubuki", "Hakui Koyori", "Akai Haato", "Hoshimachi Suisei",
-                  "Usada Pekora", "Shiranui Flare", "AZKi", "Amane Kanata", "Natsuiro Matsuri", "Ichijou Ririka",
+                  "Shirakami Fubuki", "Hakui Koyori", "Akai Haato",
+                  "Usada Pekora", "Shiranui Flare", "Amane Kanata", "Natsuiro Matsuri", "Ichijou Ririka",
                   "Koganei Niko", "Hiodoshi Ao", "Machina X Flayon", "Jurard T Rexford", "Crimzon Ruze",
                   "Gavis Bettel", "Banzoin Hakka", "Josuiji Shinri", "Arurandeisu", "Astel Leda", "Octavio",
                   "Regis Altare", "Rikka", "Shirogane Noel"]
@@ -333,8 +340,8 @@ REF_SHORT = {"Kobo Kanaeru": ["Kobo"], "Vestia Zeta": ["Zeta"],
              "Ayunda Risu": ["Risu"], "Anya Melfissa": ["Anya"], "Pavolia Reine": ["Reine"],
              "Airani Iofifteen": ["Iofi"], "Ookami Mio": ["Mio"], "Tsunomaki Watame": ["Watame"],
              "Oozora Subaru": ["Subaru"], "Houshou Marine": ["Marine"], "Inugami Korone": ["Korone"],
-             "Omaru Polka": ["Polka"], "Nekomata Okayu": ["Okayu"], "Akai Haato": ["Haachama"],
-             "Hoshimachi Suisei": ["Suisei"], "Usada Pekora": ["Pekora"], "Tokino Sora": ["Sora"],
+             "Omaru Polka": ["Polka"], "Akai Haato": ["Haachama"],
+             "Usada Pekora": ["Pekora"], "Tokino Sora": ["Sora"],
              "Tsukumo Sana": ["Sana"], "Crimzon Ruze": ["Ruze"], "Banzoin Hakka": ["Hakka"],
              "Koganei Niko": ["Niko"], "Amane Kanata": ["Kanata"]}
 

@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git f02f10f.
+Snapshot: git ce6fd81.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|world tour|Death Star|the merger|EN concert|SUPER EXPO|PavoNashi|Holodeath|aftertalk|HOLOTORI|TakoNeko|MoRikka|HoloJEI|soranii|IRySora|K.I.R.A|3D live|V3LVET|UMISEA|KoMeHa|OKFAIR|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|Death Star|world tour|the merger|SUPER EXPO|EN concert|Holodeath|PavoNashi|aftertalk|HOLOTORI|TakoNeko|MoRikka|soranii|IRySora|3D live|K.I.R.A|HoloJEI|V3LVET|OKFAIR|KoMeHa|UMISEA|LYRA)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: (2026; Cecilia wrote the lyrics and directed it), a 2026 3D live, and the Serendipity concert, where she also sang "Break It Down" with Vestia Zeta and Shiori Novella and "Cloudy Sheep" with Tsunomaki Watame and Mori Calliope.
