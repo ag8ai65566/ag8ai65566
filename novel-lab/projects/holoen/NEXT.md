@@ -1,5 +1,10 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-02 04:25 UTC）：**作者使用指南完成**（d21f6ee）。`framework/templates/start-here-zh.md` 是發佈包的
+00-START-HERE（中文：下載位置、檔案→Sudowrite 位置、十分鐘測試、寫作設定、ElevenLabs、更新、常見問題）；草稿包
+`delivery/holoen-2026-09-30-r01-draft` 已重建（18/24，Bae 收錄前不放她的表演表，START-HERE 會寫「這一版還沒收錄」）。
+Bae 收錄後要刪掉 r01-draft 重建一次。span_check 改成只拿卡片有引用的影片來比對（`--write` 重產 span-candidates，40→31）。
+
 狀態（2026-10-02 04:00 UTC）：**作者下令加入 Hakos Baelz、不做 Tsukumo Sana**（2026-10-02）。
 - **Bae 已起草**：角色卡 `runs/20261002-0236-character-Hakos-Baelz/claude-draft.md`、世界觀卡
   `runs/20261002-0236-world-Hakos-Baelz-Pairs/claude-draft.md`、表演表 `export/elevenlabs/Hakos-Baelz.md`、
