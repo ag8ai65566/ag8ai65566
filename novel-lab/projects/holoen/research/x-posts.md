@@ -15,7 +15,7 @@ They are not quoted here. Status facts that matter for continuity are noted with
   and **8}**; mixes Japanese ("20万チャンネル登録者ありがとね〜"); sincere milestone posts drop the
   persona ("I can't even be gangster or funny about this").
 - **Takanashi Kiara:** ALL-CAPS excitement ("MAKUHARI WAS ON FIRE!", "AYOOOOOOOOOOOOOOO"), runs of emoji
-  (🎉😭😤🧐), KFP corporate bits ("A letter of absence from your CEO," "making kfp proud since 9000 BCE"),
+  (🎉😭😤🧐), KFP corporate bits ("making kfp proud since 9000 BCE"),
   bilingual English/Japanese posts, kaomoji (|ω･)│), and tagging a genmate to "fire" her.
 - **Ninomae Ina'nis:** soft and short, kaomoji (; w ; ), > w <)b), puns ("We Are Houtside 🐙👍"), the 🐙
   emoji, playful name twists ("Ninomanyo Inya'nis ✌️").
@@ -86,7 +86,6 @@ They are not quoted here. Status facts that matter for continuity are noted with
 - 2022-01-04: "making kfp proud since 9000 BCE" — 1478502246677688321
 - 2022-03-20 (hololive fes at Makuhari): "MAKUHARI WAS ON FIRE! … Seeing so many people cheer for me & my
   music was a dream come true." — 1505507829695885313
-- 2024-01-18: "A letter of absence from your CEO" — 1747947334221103395
 - 2024-06-09: new "FEVER NIGHT" outfit; announces "Myth 1 Block Minecraft" — 1799917374017007688
 - 2025-02-28: "AYOOOOOOOOOOOOOOO NEW FEVER NIGHT WAWA JUST DROPPED" — 1895603573372903904
 - 2025-10-29: "Oh and look my twitch acc name is just 'kiara' now, how chic 😏😎" — 1983363520982069666

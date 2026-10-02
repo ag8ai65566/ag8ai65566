@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 46b3466.
+Snapshot: git 3959a7f.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|Jewel of Emotions|hololive -Advent-|FUWAMOCO MORNING|Fuwawa Abyssgard|Mococo Abyssgard|Abyssgard twins|Shiori Novella|The Fluffy One|Demon of Sound|Demon of Soup|The Fuzzy One|Advent Pairs|Diamond Dogs|The Archiver|Koseki Bijou|Sound Hounds|FUWAMOCALLI|Last Writes|Rocku Wawa|Grindstone|Bloodraven|holoAdvent|Fluffy One|GreyScaleX|Moco-chan|ShioRaven|Goth Rock|Adventrix|JewelBird|Fuwa-chan|Fuwa-nee|Mogojyan|The Cell|FUWAMOCO|Shiori~n|Lil'Rock|Pen Pups|Shiorin|Nerissa|Advent|Koseki|Beejoe|Mogogo|Shiori|Mococo|Fuwawa|Oobib|B.F.F|Biboo|Rissa|Bijou|Beebs|FWMC|Pero|GAGA|Neri)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewel of Emotions|Fuwawa and Mococo|Fuwawa Abyssgard|Mococo Abyssgard|FUWAMOCO MORNING|Abyssgard twins|The Fluffy One|Shiori Novella|Demon of Sound|Demon of Soup|The Fuzzy One|The Archiver|Koseki Bijou|Sound Hounds|Advent Pairs|Diamond Dogs|Last Writes|FUWAMOCALLI|holoAdvent|Grindstone|Bloodraven|Fluffy One|Rocku Wawa|GreyScaleX|JewelBird|Fuwa-chan|Moco-chan|Adventrix|Goth Rock|ShioRaven|Pen Pups|Lil'Rock|FUWAMOCO|Shiori~n|Mogojyan|Fuwa-nee|The Cell|Nerissa|Shiorin|Mogogo|Fuwawa|Koseki|Mococo|Shiori|Advent|Beejoe|Beebs|Oobib|B.F.F|Rissa|Bijou|Biboo|FWMC|Neri|Pero|GAGA)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO and sang "I'm Your Treasure Box" with Bijou and Raora.

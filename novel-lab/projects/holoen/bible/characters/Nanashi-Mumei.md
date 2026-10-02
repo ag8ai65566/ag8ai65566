@@ -332,7 +332,7 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
 - **Not adopted, with reason:** the provisional IPA guide stays in Audio Tags, marked "provisional,
   untested," as on the eight cards already promoted and because the author asked for pronunciation to be
   taught. The farewell-period note that superchats would be read off stream is left out (its stated
-  reason is a health detail).
+  reason is private).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, cast expansion (author: Advent, and complete everyone's relationship web):** Relationships gained
   Advent lines from the archive metadata, the official -All for One- report and the Serendipity interviews

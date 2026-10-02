@@ -186,14 +186,14 @@ Pink and blue side by side; paw prints; two voices from one microphone saying th
     and "smarter" removed;
   - (SHOULD) FUWAMOCO MORNING described as a regular Monday/Wednesday/Friday format, not a hard rule;
   - archive counts kept only as counts limited to the searched archive, not "most-mentioned";
-  - privacy: the scope note uses the general statement; the "one PC" detail and the "mental health" gloss
+  - privacy: the scope note uses the general statement; the "one PC" detail and a private-life gloss
     on the walk segment removed; "FUWAMOCALLI" as a name the twins "particularly like".
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, Justice cross-card sync (GPT xhigh review of the Justice cards, runs/20261001-1032-*):** the
   FUWAMOCO–Raora Serendipity unit named B.F.F (official Serendipity report, day 2: "Inu Neko. Seishun Massakari").
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
-  P0):** the post-concert days off and travel removed from the dossier and Description (private trips are
-  outside scope); the after-party's concert-venue jokes kept.
+  P0):** private-life material removed from the dossier and Description (outside scope); the after-party's
+  concert-venue jokes kept.
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-QUOTE-001, CONSULT-P0-002
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 

@@ -10,7 +10,7 @@ small.en can turn Japanese speech into English words, so Japanese phrases below 
 windows include game voices and teammates; only lines that are clearly hers are quoted.
 
 All windows are from March–April 2025, her last active period before she graduated on 2025-04-27 (04-28
-JST), which this project weights highest. Stories in the Q&A about her family, school and illnesses are
+JST), which this project weights highest. Personal stories in the Q&A are
 outside the project's scope and are not used. A planned window from an earlier chatting
 stream (fLxgC-r6w1E) could not be fetched from the archive; the Q&A's opening and closing were used
 instead.

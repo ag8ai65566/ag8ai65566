@@ -321,7 +321,7 @@ Shiori Novella: Advent's "glorious leader" in Bijou's affectionate bit (Goth Roc
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** the Justice ties merged into one entry; "assistant" is the stream title's word.
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
-  P0):** audition history removed (outside scope); the public 2023 stream of her Undertale mod with Calli kept.
+  P0):** a pre-debut detail removed (outside scope); the public 2023 stream of her Undertale mod with Calli kept.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Rocku Wawa" (official Serendipity unit with Kiara) added to Groups.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),

@@ -13,6 +13,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 7fd590b8e0ab）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:52 作者裁決收錄 final.md（sha256 6934f80a8c2e）：Author decision (2026-10-01): scope fixes (P0) from the GPT project consult; private trips, audition history, mother-tongue and private-routine details removed.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 1088c5a2d234）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
+- 2026-10-02 01:56 作者裁決收錄 final.md（sha256 1d1db639dda3）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 
 ## 20260930-0704-character-Ouro-Kronii
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 2707b4804e67）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -38,6 +39,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 e132b0701c7a）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:52 作者裁決收錄 final.md（sha256 f658687c1531）：Author decision (2026-10-01): scope fixes (P0) from the GPT project consult; private trips, audition history, mother-tongue and private-routine details removed.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 eb77b9fad141）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
+- 2026-10-02 01:56 作者裁決收錄 final.md（sha256 e6d610ae1262）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 
 ## 20260930-1113-character-Takanashi-Kiara
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 415492d57d94）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -48,6 +50,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 20:52 作者裁決收錄 final.md（sha256 bf0d68187cb6）：Author decision (2026-10-01): scope fixes (P0) from the GPT project consult; private trips, audition history, mother-tongue and private-routine details removed.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 ba9ade5f8263）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-01 21:08 作者裁決收錄 final.md（sha256 f07ae401975f）：Author decision (2026-10-01): CONSULT-P2-001 (Myth 6th-anniversary live marked as announced, not verified as held) and break notes generalized per the author's rule.
+- 2026-10-02 01:56 作者裁決收錄 final.md（sha256 1d87f23af867）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 
 ## 20260930-1113-character-Watson-Amelia
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 da6369c7127a）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -126,6 +129,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 32ba28f5fa05）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 3ba3f75ca2a8）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 01:53 作者裁決收錄 final.md（sha256 37cacac19837）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
+- 2026-10-02 01:56 作者裁決收錄 final.md（sha256 c0292858811c）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 
 ## 20261001-0001-world-IRyS-and-Nerissa-Pairs
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 9d957e0dc2fc）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -175,6 +179,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 1fc6bdc14d06）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 b771c05fb43f）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 301fc74cc461）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
+- 2026-10-02 01:56 作者裁決收錄 final.md（sha256 6e7d1d1f7ba0）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 
 ## 20261001-0454-world-Fauna-and-Mumei-Pairs
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 9c0d1dd0a9f8）：作者裁決：GPT 一輪審查（runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md）已合併，依作者指示只審一輪；作者 2026-10-01 下令加入 Fauna 與 Mumei
@@ -186,6 +191,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 20:52 作者裁決收錄 final.md（sha256 651d7960b819）：Author decision (2026-10-01): scope fixes (P0) from the GPT project consult; private trips, audition history, mother-tongue and private-routine details removed.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 17cfde0ea295）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 4a52aba0c4f4）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
+- 2026-10-02 01:56 作者裁決收錄 final.md（sha256 83bb9fa8eaeb）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 
 ## 20261001-0548-character-Shiori-Novella
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 35fa2b9aac3f）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
@@ -216,6 +222,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 387fc8142902）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:52 作者裁決收錄 final.md（sha256 6a2b52537e63）：Author decision (2026-10-01): scope fixes (P0) from the GPT project consult; private trips, audition history, mother-tongue and private-routine details removed.
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 7fcf05c1c394）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
+- 2026-10-02 01:56 作者裁決收錄 final.md（sha256 04201c0f8471）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 
 ## 20261001-1032-character-Cecilia-Immergreen
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 06f3cf172332）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
@@ -234,6 +241,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 59e230bd08cd）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 5b0fe89511e5）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 74c919c8de88）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
+- 2026-10-02 01:56 作者裁決收錄 final.md（sha256 284ef84ad0d9）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 
 ## 20261001-1032-world-Justice-Pairs
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 ef62a1174aa6）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.

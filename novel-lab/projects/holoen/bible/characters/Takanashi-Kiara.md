@@ -500,8 +500,8 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** Gigi's entry given its activity (Reanimal, 2026).
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
-  P0):** the 2024 off-collab trip removed (private travel); "German (native)" replaced by the languages she
-  uses on stream (no mother-tongue claims).
+  P0):** private-life material removed (outside scope); a language claim replaced by the languages she
+  uses on stream.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Rocku Wawa" (official Serendipity unit with Bijou) added to Groups; their song named.
 - **2026-10-01, CONSULT-P2-001 and scope tidy-up:** break notices are no longer dated or described in process notes

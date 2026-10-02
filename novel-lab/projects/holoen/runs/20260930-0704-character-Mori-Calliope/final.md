@@ -482,8 +482,7 @@ Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusot
   - The wine glass as a permanent prop.
   - "Never finishes" absolutes.
   - The "alto" and "rap cadence when hyped" claims.
-  - The categorical sleep-skipping claim. She is now described as grinding on projects, per the wiki's
-    "often not sleeping for long periods", softened.
+  - A categorical private-habit claim; she is now described only as grinding on projects.
   - Performed-persona aliases from Other Names.
 - **"Guh":** GPT asked to drop the drinking trigger. The wiki says "usually after taking a drink", so
   the card keeps "usually right after a drink" as the most common trigger rather than the only one.
@@ -581,7 +580,7 @@ Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusot
   Reaper" tied to the shared stream title; LYRA described as a "III" remix cover with five vocalists. Field kept at
   350 words.
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
-  P0):** Bijou's audition history removed (outside scope); the public mod stream kept.
+  P0):** a pre-debut detail about Bijou removed (outside scope); the public mod stream kept.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Last Writes" (official Serendipity unit with Shiori) added to Groups.
 

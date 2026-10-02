@@ -292,7 +292,7 @@ FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu 
   - "Big Cat" and "Pretty Kitty" removed from Other Names (poor matching triggers; kept in dialogue and
     in Elizabeth's entry); lore introduced as secondary-recorded; the God Eyes glow an avatar effect;
   - "Gacha×Gacha ADVENTURE!" no longer said to premiere at the 3D debut (performed at -All for One-);
-  - Voice & Delivery opens "Provisional direction…"; the health/family note in the audio status and report
+  - Voice & Delivery opens "Provisional direction…"; the private-life note in the audio status and report
     replaced by "Only in-scope public performance material is used";
   - 3D showcase 2025-08-09 PDT and the 2025-08-16 PDT group 3D collab (official schedule, RP8).
 - **Missing facts adopted (checked by Claude against official pages and archive titles, 2026-10-01):** the

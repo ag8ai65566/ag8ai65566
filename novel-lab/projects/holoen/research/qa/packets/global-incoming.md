@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 46b3466.
+Snapshot: git 3959a7f.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: loEN's later generations|hololive History 2023-2026|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|members-only stream|hololive production|hololive livestream|unarchived karaoke|hololive persona|hololive English|BLUE·MEGAMISAMA|hololive collab|Streaming Life|Apex Predators|early hololive|birthday live|Myth's debut|hololive fes|in-character|VTuber lore|Serendipity|canonically|Star Flower|SUPER EXPO|off-collab|the merger|world tour|Death Star|EN concert|offcollab|aftertalk|PavoNashi|Holodeath|superchat|HOLOTORI|hololive|TakoNeko|kayfabe|soranii|IRySora|akasupa|MoRikka|K.I.R.A|HoloJEI|3D live|holoEN|KoMeHa|V3LVET|OKFAIR|UMISEA|COVER|LYRA|supa)(
+Matched names: loEN's later generations|hololive History 2023-2026|hololive History to 2022|Concerts and Live Events|VTuber Persona and Lore|recent hololive history|Cross-Branch Friends|the 2025 graduations|hololive livestream|hololive production|members-only stream|unarchived karaoke|hololive English|hololive persona|BLUE·MEGAMISAMA|hololive collab|early hololive|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|in-character|Serendipity|canonically|VTuber lore|Star Flower|SUPER EXPO|EN concert|Death Star|off-collab|the merger|world tour|Holodeath|superchat|offcollab|aftertalk|PavoNashi|TakoNeko|HOLOTORI|hololive|MoRikka|3D live|IRySora|kayfabe|soranii|akasupa|HoloJEI|K.I.R.A|OKFAIR|V3LVET|UMISEA|KoMeHa|holoEN|COVER|LYRA|supa)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Groups`: hololive -Justice-, hololive English -Justice- (former branch name), Justice, Autofister, CCGG

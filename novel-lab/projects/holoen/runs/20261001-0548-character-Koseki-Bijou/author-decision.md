@@ -3,3 +3,4 @@
 - 2026-10-01 20:52 作者裁決收錄 final.md（sha256 651d7960b819）：Author decision (2026-10-01): scope fixes (P0) from the GPT project consult; private trips, audition history, mother-tongue and private-routine details removed.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 17cfde0ea295）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 4a52aba0c4f4）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
+- 2026-10-02 01:56 作者裁決收錄 final.md（sha256 83bb9fa8eaeb）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed

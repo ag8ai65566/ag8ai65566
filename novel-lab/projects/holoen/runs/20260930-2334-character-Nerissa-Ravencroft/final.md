@@ -301,7 +301,7 @@ Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit
   gpt-free.md, xhigh) and the Justice character reviews:** Bloodraven named (official Serendipity billing); Moona attached only to the Raft and V3LVET
   sessions; "AutoTune" labeled secondary.
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
-  P0):** the 2024 off-collab trip and "on trips" removed (private travel is outside scope).
+  P0):** private-life material removed (outside scope).
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Bloodraven" (official Serendipity unit with Elizabeth) added to Groups.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),

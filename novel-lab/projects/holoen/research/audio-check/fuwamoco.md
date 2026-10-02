@@ -9,8 +9,8 @@ the cards were re-transcribed by a second model (whisper medium.en) and compared
 The twins share one channel and usually one microphone, and transcription cannot tell their voices apart. So
 this report uses three kinds of windows: a 2026 **Fuwawa solo** stream (Hitman), a 2025 **Mococo solo**
 stream (Phasmophobia), and a 2026 **duo** after-party chat whose lines stay unattributed. Parts of both solo
-streams concern health and absences; those parts are outside the project's scope, are not quoted, and the
-stream titles are shortened below for the same reason. Remarks about where they live are not used.
+streams touch on personal matters outside the project's scope; those parts are not quoted, and the stream
+titles are shortened below for the same reason.
 
 ## Windows measured
 

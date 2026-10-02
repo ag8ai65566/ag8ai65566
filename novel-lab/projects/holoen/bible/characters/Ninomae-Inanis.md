@@ -482,7 +482,7 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh) and the Justice character reviews:** who declares the rivalry clarified (Cecilia).
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
-  P0):** the waking/pajamas and getting-ready lines (private routine) replaced by her other verified lines in
+  P0):** lines about private routine replaced by her other verified lines in
   Dialogue Style, Tone Shifts and Sample Lines; the performance sheet changed to match.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "Octo'clock" (the official report's spelling) added to Groups; their "Bad Apple" stage named.
