@@ -1,5 +1,7 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-02 17:05 UTC）：**作者命令：GPT 負責規劃之後所有審查、找新資料、規劃 Sudowrite＋ElevenLabs 工作流；Claude 週額度快到，結果出來先不合併，等作者下令。**計畫與佇列見 `GPT-PROGRAM.md`；`tools/gpt_autorun.py` 在背景跨額度重置跑完 25 個任務並逐一提交推送（log：scratchpad `gpt_autorun.log`）。排程喚醒時只確認 driver 還活著（`pgrep -f gpt_autorun`），沒在跑且佇列非空就重開，其他事都不做。
+
 狀態（2026-10-02 12:31 UTC）：第二批審查 C、D 已併入並收錄（Marine、Noel、Lamy、Botan、Vivi、JP Senpai Pairs 2；
 共 28 位、27 張世界卡）。E 跑到一半撞 GPT 額度，重置 16:42 UTC，send_later 16:43 會叫醒、重開 gpt-resume
 （log：scratchpad gpt_resume7.log）。佇列：E（La+ run）→ F（Chloe run）→ 聲音 v1、v2 → QA 審計 12 項。
