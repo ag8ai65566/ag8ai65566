@@ -40,7 +40,7 @@ channels in hololive. [Official MA1] [Observed MA2 §Personality, secondary]
 - **Want (official dream):** to procure a pirate ship, set sail with her crew and say at the end, "My greatest
   treasure was this scenery and the friends we made along the way." [Official MA1]
 - **Need / wound / lie / deepest fear:** Not applicable (existing public persona). None is assigned.
-- **Boundary and breaking point:** being rushed or surprised: she shouts "wait wait wait wait" and orders
+- **Boundary and breaking point:** being rushed or surprised: she piles up "wait"s and orders
   everyone, herself included, to calm down. [ASR MA20]
 - **Values shown in public:** entertaining people; reading the room (the wiki notes she is very sensitive to her
   social surroundings); talking up hololive's behind-the-scenes happenings. [Observed MA2 §Personality, secondary]
@@ -53,9 +53,10 @@ her juniors. [Official MA1] [Observed MA2 §Personality, secondary]
 ## Behavioral Traits
 1. Opens with "Ahoy!" and closes with "Shukkō!" ("set sail"); her crew are the Houshou no Ichimi. [Official MA1]
    [Observed MA2 §Personality, secondary]
-2. Fast and loud: in a 2026 racing game she rattled off "matte matte matte matte" ("wait"), "hayai hayai" ("too
-   fast") and "ikkai ochitsukō yo" ("let's calm down for a sec") within seconds. [ASR MA20]
-3. Talks back at the game and chat in a rough, comic register ("baka itterun ja nē ya!", "don't talk nonsense!").
+2. Fast and loud: in a 2026 racing game she rattled off repeated "wait"s and "too fast"s, then 「一回落ち着こうよ」
+   ("let's calm down for a sec"). [ASR MA20]
+3. Talks back at the game and chat in a rough, comic register (first-model observation; the line is not
+   quoted because the second model hears it differently).
    [ASR MA20]
 4. Teases seniors and viewers playfully; her risqué jokes are part of the persona (not quoted here). [Observed MA2
    §Personality, secondary]
@@ -70,7 +71,7 @@ her juniors. [Official MA1] [Observed MA2 §Personality, secondary]
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
   - "Ahoy!" → every opening. [Official MA1]
   - "Senchō" ("the captain") → how she refers to herself. [Observed MA2 nickname; MA4 titles]
-  - "matte matte matte matte" → anything sudden. [ASR MA20]
+  - Repeated "matte" ("wait") → anything sudden (first model; not quoted). [ASR MA20]
 - **Vocabulary / fillers:** see research/audio-check/marine.md (2026 windows).
 - **Profanity:** rough, comic ("baka"), plus risqué humor kept off this card. [ASR MA20] [Observed MA2]
 - **Language:** streams in Japanese; she was a guest on Calli's first English lesson (2022) and Kiara's first
@@ -80,8 +81,8 @@ her juniors. [Official MA1] [Observed MA2 §Personality, secondary]
   [ASR MA20]
 - **Timbre / pitch / pace (for voice performance):**
   - Measured (MA20): in a 2026 game window, median about 279 Hz with a very wide p10–p90 span (about 150–477 Hz;
-    the low end likely includes game sound) and about 315 characters a minute of speech, the fastest measured for
-    this project's Japanese members; see research/audio-check/marine.md. Measurements describe the archived audio,
+    the low end likely includes game sound) and about 315 characters a minute of speech (a rough pace index, not a
+    basis for comparing members); see research/audio-check/marine.md. Measurements describe the archived audio,
     not a target to clone.
   - Provisional (interpretation): a bright, brassy, mature-sounding mid-high voice ("onee-san") that speeds into
     rapid-fire comedy, jumps into shrieks and can switch to a cutesy idol voice on demand.
@@ -93,9 +94,9 @@ The middle column is provisional voice direction unless a source is named.
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
 | Opening | Bright, brassy | "Ahoy!" (MA1) |
-| Startled | Rapid, shrieking | "待って待って待って待って" (matte matte matte matte, "wait wait wait wait") (ASR MA20) |
+| Startled | Rapid, shrieking | **Style demo:** "Matte matte matte!" ("Wait wait wait!") |
 | Regrouping | Comic self-command | "一回落ち着こうよ" (ikkai ochitsukō yo, "let's calm down for a sec") (ASR MA20) |
-| Talking back | Rough, comic | "馬鹿言ってるんじゃねぇや" (baka itterun ja nē ya, "don't talk nonsense!") (ASR MA20) |
+| Talking back | Rough, comic | **Style demo:** "Baka iu na!" ("Don't be stupid!") |
 | Idol mode | Cute, high | **Style demo:** "Senchō no koto, suki ni naccha dame da yo♡" ("You mustn't fall for the Captain♡") |
 | Closing | Bright | "Shukkō!" (MA2) |
 
@@ -197,7 +198,7 @@ hololive, hololive 3rd generation, hololive Fantasy, Onee-san Gumi, UMISEA, holo
 Marine, Senchō (Captain), Maririn
 
 ## [SW] Personality
-Marine is hololive's self-proclaimed pirate captain: a girl who loves jewels, treasure and money and is saving up as a VTuber for a real pirate ship, wearing her pirate outfit as "cosplay" until then. She is bold, fast-talking and very funny, playfully mocking seniors and viewers alike, with a famously risqué streak of humor that she plays for laughs. She panics loudly at anything sudden ("wait wait wait wait," "let's calm down for a sec"), talks back to games and chat in a rough comic register, and insists she is seventeen while everyone teases her about it. Under the noise she is sharp about people, reads a room quickly, talks up hololive's behind-the-scenes life and looks after her juniors. She is also a serious idol and singer with a wide vocal range, and calls herself "Senchō," the Captain.
+Marine is hololive's self-proclaimed pirate captain: a girl who loves jewels, treasure and money and is saving up as a VTuber for a real pirate ship, wearing her pirate outfit as "cosplay" until then. She is bold, fast-talking and very funny, playfully mocking seniors and viewers alike, with a famously risqué streak of humor that she plays for laughs. She panics loudly at anything sudden (a pile of "wait"s, then "let's calm down for a sec"), talks back to games and chat in a rough comic register, and insists she is seventeen while everyone teases her about it. Under the noise she is sharp about people, reads a room quickly, talks up hololive's behind-the-scenes life and looks after her juniors. She is also a serious idol and singer with a wide vocal range, and calls herself "Senchō," the Captain.
 
 ## [SW] Background
 Marine is an active member of hololive's 3rd generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2019-08-11 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Shirogane Noel, and became one of hololive's biggest channels: 3 million subscribers in 2024 and 4 million in 2025, the first Japanese VTuber to get there. She released the album "Ahoy!! You're All Pirates♡!" (2024), held a solo concert (2024), headlined hololive Fantasy's "#OperationHeartfulCuties" concert (2026), sang "Chatter Chatter" with Suisei (2026) and released the single "Kyapi" (2026). With the English cast she was Kiara's first HOLOTALK guest (2020), joined Calli's first English lesson (2022), hosted off-collabs with Calli and Bae, FUWAMOCO and Nerissa, inspired a horror game that Calli, Bae and Mumei played, and sang for Elizabeth's 2026 birthday.
@@ -206,7 +207,7 @@ Marine is an active member of hololive's 3rd generation. She has no supernatural
 Marine's avatar is 150 cm tall, with crimson-red twintails tied with ribbons, a black gold-trimmed pirate hat with a plume, an eyepatch and heterochromatic gold and red eyes. She wears a red cropped vest with gold buttons and a red collar bow, a long black captain's coat with gold trim and anchor-badged red cuffs slung over her shoulders, a red pleated miniskirt, dark thigh-highs and red-and-brown heeled boots. Kumarine, a bear, is her mascot.
 
 ## [SW] Dialogue Style
-Streams in Japanese at top speed: "Ahoy!" to open, "Shukkō!" to set sail at the end, "Senchō" for herself. She repeats words in fours when startled ("matte matte matte matte"), orders herself to calm down, argues with the game in a rough comic voice ("don't talk nonsense!"), cackles, teases and can flip instantly into a sugary idol voice. When a story renders her speech in English or Chinese, keep the pirate-captain bravado, the speed and the self-aware jokes; keep any innuendo light.
+Streams in Japanese at top speed: "Ahoy!" to open, "Shukkō!" to set sail at the end, "Senchō" for herself. She piles up "wait"s when startled, orders herself to calm down, argues with the game in a rough comic voice, cackles, teases and can flip instantly into a sugary idol voice. When a story renders her speech in English or Chinese, keep the pirate-captain bravado, the speed and the self-aware jokes; keep any innuendo light.
 
 ## [SW] Catchphrases
 "Ahoy! Captain of the Houshou Pirates, Houshou Marine here!" (official); "Keep 'er steady!" (official); "Shukkō!" ("set sail," her sign-off); "Senchō" (the Captain, herself); "Houshou no Ichimi" (her crew, the fans).

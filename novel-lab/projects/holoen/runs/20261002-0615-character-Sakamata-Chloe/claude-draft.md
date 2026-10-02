@@ -84,8 +84,8 @@ practice is soft, chatty and accident-prone, teases everyone and cannot keep a s
 - **Rhythm & rhetoric:** quick, run-on chatter that turns a small question into a poll of chat. [ASR CH20]
 - **Timbre / pitch / pace (for voice performance):**
   - Measured (CH20): in a 2024 chat window, median about 301 Hz (p10–p90 about 217–482 Hz, 14 semitones) and
-    about 309 characters a minute of speech, the highest and fastest of the holoX members checked for this
-    project; see research/audio-check/chloe.md. Measurements describe the archived audio, not a target to clone.
+    about 309 characters a minute of speech (a rough pace index, not a basis for comparing members); see
+    research/audio-check/chloe.md. Measurements describe the archived audio, not a target to clone.
   - Provisional (interpretation): a small, soft, high and slightly airy voice that chatters fast and
     teases; deeper and fuller when singing.
 - **Sounds off:** a cool, mature speaking voice; a cold, menacing "cleaner"; slow, careful speech.
@@ -96,7 +96,7 @@ The middle column is provisional voice direction unless a source is named.
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
 | Opening | Bright, hungry | "Chomp, chomp, chomp! It's time to eat!" (CH1) |
-| Chatting | Soft, fast, run-on | "おじさんっていつからおじさんなの" (ojisan tte itsu kara ojisan na no, "when does an ojisan become an ojisan?") (ASR CH20) |
+| Chatting | Soft, fast, run-on | Polling chat about "ojisan": 「いつからおじさんなの」 (itsu kara ojisan na no, "since when is someone an ojisan?") (ASR CH20, the shared part of the line) |
 | Teasing a member | Sly, giggly | **Style demo:** "Ē~, sore Sakamata no sei ja nai yo?" ("Huh~, that's not Sakamata's fault, is it?") |
 | Horror | Squeaking, panicked | [gasps] |
 | Singing | Mature, full | (her original songs) |
@@ -104,8 +104,7 @@ The middle column is provisional voice direction unless a source is named.
 
 ### Sample Lines
 1. "Chomp, chomp, chooomp!" (Official CH1)
-2. "おじさんっていつからおじさんなの" (ojisan tte itsu kara ojisan na no, "when does an ojisan become an ojisan?")
-   (ASR CH20, 2024 chat)
+2. 「いただきまーす」 (itadakimāsu, "let's eat!") (ASR CH20, opening a 2024 chat)
 
 ## Appearance Anchors (avatar)
 - 148 cm; illustrator Parsley. Medium-length wavy gray hair with a black ahoge and a braided section streaked with

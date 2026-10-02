@@ -35,6 +35,26 @@ def reading(s):
     return norm("".join(x["hira"] for x in pykakasi.kakasi().convert(s)))
 
 
+def excerpt(medium, key, margin=6):
+    """The part of the second model's text around `key` (normalized), so the report never carries the rest of the
+    clip (which may hold out-of-scope personal remarks). Falls back to the first 60 characters."""
+    from jconfirm import norm
+    idx, chars = [], []
+    for i, c in enumerate(medium):
+        n = norm(c)
+        if n:
+            idx.append(i)
+            chars.append(n)
+    flat = "".join(chars)
+    k = norm(key)
+    pos = flat.find(k) if k else -1
+    if pos < 0:
+        return medium[:60] + "…"
+    a, b = idx[pos], idx[min(pos + len(k), len(idx)) - 1] + 1
+    lo, hi = max(0, a - margin), min(len(medium), b + margin)
+    return ("…" if lo else "") + medium[lo:hi] + ("…" if hi < len(medium) else "")
+
+
 def ts(sec):
     sec = int(sec)
     return f"{sec // 3600}:{sec % 3600 // 60:02d}:{sec % 60:02d}"
@@ -71,7 +91,7 @@ def main(who, name, claims, out, confirms):
         for r in json.load(open(c)):
             if r['who'] != who:
                 continue
-            ex = r['medium'][:140].replace('|', '｜')
+            ex = excerpt(r['medium'], r['expect'] if r['verbatim'] else (r.get('shared') or r['expect'])).replace('|', '｜')
             same_reading = not r['verbatim'] and reading(r['expect']) in reading(r['medium'])
             if r['verbatim']:
                 v = "**Shared span (computed):** whole line (kana/kanji folded)"

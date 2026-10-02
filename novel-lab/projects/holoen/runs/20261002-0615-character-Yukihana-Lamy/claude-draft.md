@@ -70,7 +70,7 @@ good!") between refined sentences. [Official LM1] [Observed LM2 §Personality, s
   - Opening (wiki): "Konlamy desu." [Observed LM2 caption, secondary]
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
   - "Lamy" in the third person → constant. [ASR LM20]
-  - The toast: "とりあえず乾杯しないと何も始まらない" ("nothing starts until we toast first") → banshaku streams.
+  - The toast: 「とりあえず、乾杯しないと何も始まらない」 ("nothing starts until we toast first") → banshaku streams.
     [ASR LM20]
   - "Yukimin" → her fans. [Official LM1]
 - **Vocabulary / fillers:** "sā," "nē," "mā mā mā," "umē"; see research/audio-check/lamy.md. [ASR LM20]
@@ -94,15 +94,15 @@ The middle column is provisional voice direction unless a source is named.
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
 | Opening | Bright, sweet | "Lamyoohoo!" (LM1) |
-| Toast | Warm, formal-cheerful | "今週も、皆様、お疲れ様でございました" (konshū mo, minasama, otsukaresama de gozaimashita, "thank you all for your hard work this week too") (ASR LM20) |
-| Banshaku banter | Quick, casual | "とりあえず乾杯しないと何も始まらない" (toriaezu kanpai shinai to nani mo hajimaranai, "nothing starts until we toast first") (ASR LM20) |
+| Toast | Warm, formal-cheerful | 「今週も、皆様、お疲れ様でございました」 (konshū mo, minasama, otsukaresama de gozaimashita, "thank you all for your hard work this week too") (ASR LM20; same reading in both models) |
+| Banshaku banter | Quick, casual | 「とりあえず、乾杯しないと何も始まらない」 (toriaezu, kanpai shinai to nani mo hajimaranai, "nothing starts until we toast first") (ASR LM20) |
 | Horror | Panicked, squeaky | [gasps] |
 | Motherly | Gentle, soft | **Style demo:** "Daijōbu, Lamy ga tsuiteru kara ne." ("It's all right, Lamy's here with you.") |
 
 ### Sample Lines
 1. "Lamyoohoo!" (Official LM1)
-2. "とりあえず乾杯しないと何も始まらない" (toriaezu kanpai shinai to nani mo hajimaranai, "nothing starts until we
-   toast first") (ASR LM20, June 2026)
+2. 「とりあえず、乾杯しないと何も始まらない」 (toriaezu, kanpai shinai to nani mo hajimaranai, "nothing starts until
+   we toast first") (ASR LM20, June 2026)
 
 ## Appearance Anchors (avatar)
 - 158 cm; illustrator Rin☆Yuu. Long light-blue hair with a heart-shaped ahoge and small side braids, pointed elf
@@ -196,7 +196,7 @@ Lamy is an active member of hololive's 5th generation. She has no supernatural a
 Lamy's avatar is 158 cm tall, with long light-blue hair, a heart-shaped ahoge, small side braids, pointed elf ears and golden eyes, under a white beret with a blue snow flower. She wears a white blouse with a blue ribbon, a light-blue fur-trimmed coat patterned with snowflakes worn off the shoulders, a brown belt, a white skirt fading to blue, snow-patterned white thigh-highs and brown boots. Daifuku, a tiny polar-bear-like snow spirit in a pot, keeps her company.
 
 ## [SW] Dialogue Style
-Streams in Japanese in a soft, polite voice, calling herself "Lamy": formal set phrases ("thank you all for your hard work this week") slide into quick, casual banter and a satisfied "so good!" over her snacks, and every evening chat starts with a toast ("nothing starts until we toast first"). Shy and flustered at first, then bold; squeaking in horror. When a story renders her speech in English or Chinese, keep the third-person "Lamy," the polite-to-casual slide and her warmth; never play her as a drunk caricature.
+Streams in Japanese in a soft, polite voice, calling herself "Lamy": formal set phrases ("thank you all for your hard work this week too") slide into quick, casual banter and a satisfied "so good!" over her snacks, and every evening chat starts with a toast ("nothing starts until we toast first"). Shy and flustered at first, then bold; squeaking in horror. When a story renders her speech in English or Chinese, keep the third-person "Lamy," the polite-to-casual slide and her warmth; never play her as a drunk caricature.
 
 ## [SW] Catchphrases
 "Lamyoohoo!" (official); "Konlamy desu" (her greeting, wiki-recorded); "Lamy" (herself); "kanpai!" and "nothing starts until we toast first" (her evening chats); "Yukimin" (her fans, the Snowfolk).

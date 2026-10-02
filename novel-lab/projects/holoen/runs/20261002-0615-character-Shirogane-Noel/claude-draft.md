@@ -72,7 +72,7 @@ secondary; NO4 titles]
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
   - "-massuru" endings (konbanmassuru, ohamassuru) → greetings. [Observed NO2; NO4 titles]
   - "Danchou" → herself. [NO4 titles] [ASR NO20]
-  - Old-fashioned sentence endings when she narrates the week: "まぁ色々ありましたな" ("well, a lot happened").
+  - Old-fashioned sentence endings when she narrates the week: 「まぁ色々ありましたな」 ("well, a lot happened").
     [ASR NO20]
 - **Vocabulary / fillers:** "sō," "nē," "nanka," a drawn-out "un"; see research/audio-check/noel.md. [ASR NO20]
 - **Profanity:** essentially none; cheerful. [ASR NO20]
@@ -95,16 +95,15 @@ The middle column is provisional voice direction unless a source is named.
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
 | Opening | Bright, hearty | "All hustle, all muscle!" (NO1) |
-| Recapping the week | Chatty, old-fashioned | "今週ね、何があったかと言いますと、まぁ色々ありましたな" (konshū ne, nani ga atta ka to iimasu to, mā iroiro arimashita na, "so this week, what happened was… well, a lot happened") (ASR NO20) |
-| Recommending a game | Eager | "いやぜひみなさんもやってみて欲しい" (iya zehi minasan mo yatte mite hoshii, "really, I want you all to try it too") (ASR NO20) |
+| Recapping the week | Chatty, old-fashioned | 「まぁ色々ありましたな」 (mā iroiro arimashita na, "well, a lot happened, I'd say") (ASR NO20) |
+| Recommending a game | Eager | **Style demo:** "Zehi minna mo yatte mite!" ("You all should try it too!") |
 | Losing a game | Flustered, wailing | **Style demo:** "Danchou no kinniku ga tarinakatta…!" ("Danchou's muscles weren't enough…!") |
 | Flare with someone else | Mock-jealous | **Style demo:** "Furea wa danchou no da yo!?" ("Flare is mine, you know!?") |
 | Older-sister mode | Lower, gentle | (Observed NO2) |
 
 ### Sample Lines
 1. "All hustle, all muscle! Shirogane Noel's here!" (Official NO1)
-2. "いやぜひみなさんもやってみて欲しい" (iya zehi minasan mo yatte mite hoshii, "really, I want you all to try it
-   too") (ASR NO20, 2026)
+2. 「まぁ色々ありましたな」 (mā iroiro arimashita na, "well, a lot happened, I'd say") (ASR NO20, June 2026)
 
 ## Appearance Anchors (avatar)
 - 158 cm; illustrator Watao. Shoulder-length silver hair with a braid, a black-and-gold metal headband and green
@@ -200,7 +199,7 @@ Noel is an active member of hololive's 3rd generation. She has no supernatural a
 Noel's avatar is 158 cm tall, with shoulder-length silver hair, a braid, a black-and-gold metal headband and green eyes. She wears black, gold-edged armor on one shoulder and both arms, a long white surcoat with navy trim and a heraldic panel, leather belts and pouches, and armored steel boots, and carries a flanged mace.
 
 ## [SW] Dialogue Style
-Streams in Japanese in a cheerful, chatty, girlish voice, calling herself "Danchou" and her viewers "danin-san." She puns on muscle ("Konbanmassuru~," "Ohamassuru"), recaps her week with old-fashioned endings ("well, a lot happened, I'd say"), recommends games eagerly ("really, I want you all to try it too"), wails when she loses and mock-pouts when Flare plays with others. When a story renders her speech in English or Chinese, keep the muscle puns, the "Danchou" self-reference and the soft voice under the armor.
+Streams in Japanese in a cheerful, chatty, girlish voice, calling herself "Danchou" and her viewers "danin-san." She puns on muscle ("Konbanmassuru~," "Ohamassuru"), recaps her week with old-fashioned endings ("well, a lot happened, I'd say"), recommends games eagerly, wails when she loses and mock-pouts when Flare plays with others. When a story renders her speech in English or Chinese, keep the muscle puns, the "Danchou" self-reference and the soft voice under the armor.
 
 ## [SW] Catchphrases
 "All hustle, all muscle! Shirogane Noel's here!" (official); "Konbanmassuru~" ("Good Musclevening~"); "Ohamassuru" (good morning); "Danchou" (herself, the commander); "danin-san" (her knights, the viewers); "Sunday Muscle" (her Sunday-morning chat).

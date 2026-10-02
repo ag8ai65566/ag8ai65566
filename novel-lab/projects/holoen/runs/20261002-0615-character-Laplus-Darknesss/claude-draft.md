@@ -49,8 +49,10 @@ A self-declared demon overlord who stands 139 cm, wears shackles and is treated 
 seniors like Sakura Miko, a label she loudly refuses. [Official LA1] [Observed LA2 §Personality, secondary]
 
 ## Behavioral Traits
-1. Speaks like a villain: "wagahai" for "I" (an archaic, arrogant pronoun) and "kisama" for "you." [Observed LA2
-   §Personality, §Miscellaneous, secondary]
+1. Speaks like a villain in persona moments: "wagahai" for "I" (an archaic, arrogant pronoun) and "kisama" for
+   "you" (wiki). In two 2026 windows (a chat and a fan-greeting stream) she said plain "watashi" in casual talk and
+   "wagahai" was not heard, so the villain register reads as a set piece. [Observed LA2 §Personality,
+   §Miscellaneous, secondary] [ASR LA20]
 2. Smug and bratty, and loud when she loses or feels mistreated; seniors tease her as a child. [Observed LA2
    §Personality, secondary]
 3. Turns fan votes into bits: when fans chose her fan name, she split "Yamada" into two options so it would win
@@ -70,14 +72,17 @@ seniors like Sakura Miko, a label she loudly refuses. [Official LA1] [Observed L
   - "Wagahai" / "kisama" → always. [Observed LA2]
   - "I'm not a suspicious person!" ("Wagahai ayashii mono de nai zo," her first post). [Observed LA2 §Background,
     secondary]
-- **Vocabulary / fillers:** see research/audio-check/laplus.md (2026 windows).
+- **Vocabulary / fillers:** casual and slangy in 2026 chats: "maji de," "yabai," "~ssho" (「聞こえたっしょ?」,
+  "you heard it, right?"); see research/audio-check/laplus.md. [ASR LA20]
 - **Profanity:** playful, bratty insults ("kisama"). [Observed LA2]
 - **Language:** streams in Japanese; with the English cast she sang with Kiara ("Glow in the Dark," "FAKE HEART")
   and joined Calli's English lesson (2022). [LA5]
 - **Laughs, noises:** a smug cackle; loud protests. [Observed LA2]
 - **Rhythm & rhetoric:** grand villain declarations collapsing into childish complaints. [Observed LA2]
 - **Timbre / pitch / pace (for voice performance):**
-  - Measured (LA20): see research/audio-check/laplus.md.
+  - Measured (LA20): median about 276 Hz in a May 2026 chat window (p10–p90 about 196–543 Hz) and about 287 Hz
+    in a January 2026 fan-greeting stream; about 235–247 characters a minute of speech; see
+    research/audio-check/laplus.md. Measurements describe the archived audio, not a target to clone.
   - Provisional (interpretation): a small, bright, bratty voice that puffs itself up into a grand villain register
     and cracks into a whine when teased.
 - **Sounds off:** a truly menacing demon; a soft, sleepy default; a mature, cool voice.
@@ -96,6 +101,8 @@ The middle column is provisional voice direction unless a source is named.
 ### Sample Lines
 1. "See me, hear me, all of you!" (Official LA1)
 2. "I'm not a suspicious person!" (LA2, her first post, secondary)
+3. 「これが配信者よ」 (kore ga haishinsha yo, "this is what a streamer is!") (ASR LA20, May 2026, showing off her
+   new setup)
 
 ## Appearance Anchors (avatar)
 - 139 cm; illustrator Mishima Kurone. Long silvery hair with a purple lock and a braided bang, large black horns
@@ -197,8 +204,7 @@ La+ is an active member of Secret Society holoX. She has no supernatural abiliti
 La+'s avatar is 139 cm tall, with long silvery hair, a purple lock and a braided bang, large black horns striped in purple above pointed ears, and yellow eyes. She wears a dark purple dress with a yellow tie and oversized sleeves that swallow her hands, one purple legging and short boots, with a star-tipped purple tail and shackles at her neck, sleeves and ankles. A crow keeps her company.
 
 ## [SW] Dialogue Style
-Streams in Japanese as a pint-sized villain: "wagahai" for "I," "kisama" for "you," grand declarations ("See me, hear me, all of you!") and "Yes My Dark!" from her followers, then a fast, loud, bratty turn the moment someone teases her or she loses. She protests, sulks, cackles when she wins and narrates her own schemes. When a story renders her speech in English or Chinese, keep the archaic villain "I" (in Chinese, 吾輩) against a small, indignant voice.
-
+Streams in Japanese. Her persona voice is a pint-sized villain: "wagahai" for "I," "kisama" for "you," grand declarations ("See me, hear me, all of you!") and "Yes My Dark!" from her followers. In everyday 2026 chats she talks casually, with plain "watashi," "maji de," "yabai" and "~ssho" ("you heard it, right?"), and turns fast, loud and bratty the moment someone teases her or she loses. She protests, sulks, cackles when she wins and narrates her own schemes. When a story renders her speech in English or Chinese, keep the archaic villain "I" (in Chinese, 吾輩) for persona moments against a small, indignant voice.
 ## [SW] Catchphrases
 "See me, hear me, all of you!" (official, "Kakumoku seyo!"); "Yes My Dark!" (her followers' salute); "wagahai" (her "I"); "kisama" ("you"); "I'm not a suspicious person!" (her first post); her full title, "Laplus Dia Highest Death Thirteen Daina Art of Impact Sign Emperor Road of the Darknesss." Her fans are the Plusmate (and, by her own vote-splitting, "Yamada").
 

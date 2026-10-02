@@ -50,10 +50,10 @@ smartest, and whose 2026 kanji-game title insists, "You may not believe it, but 
 quite smart." [Observed IR2 §Personality, secondary; IR4 fhc67kDKU94 title]
 
 ## Behavioral Traits
-1. Samurai speech: "de gozaru" ("I daresay") at the end of sentences, "-dono" for friends ("La+-dono"), and at
-   times "Gozaru" for herself. [Official IR1] [Observed IR2 §Miscellaneous, secondary; IR4 titles] [ASR IR20]
-2. Laughs off her own blunders in the moment: "まあそういうポンコツもあるよね" ("well, sometimes you're a dud like
-   that"). [ASR IR20]
+1. Samurai speech: "de gozaru" ("I daresay") is her signature sentence ending and "-dono" her honorific for friends
+   ("La+-dono"); in two 2026 game streams she rarely used the ending and more often called herself "Gozaru" in the
+   third person ("Gozaru wa…"). [Official IR1] [Observed IR2 §Miscellaneous, secondary; IR4 titles] [ASR IR20]
+2. Laughs off her own blunders in the moment (in a 2026 kanji game, after mixing up two characters). [ASR IR20]
 3. Competitive and loud when she plays: "yoshi yoshi yoshi yoshi" when it goes right, a "yabai" spiral when it
    doesn't, and she argues back at chat when it teases her. [ASR IR20]
 4. A steady duo partner: "AzuIro" with AZKi (covers, off-collab "summer camps," Cuphead endurance, a shared
@@ -68,7 +68,8 @@ quite smart." [Observed IR2 §Personality, secondary; IR4 fhc67kDKU94 title]
   - Official self-introduction: "Secret Society holoX's insurance policy, Kazama Iroha here, I daresay!"
     [Official IR1]
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
-  - "de gozaru" → constant, a sentence ending. [Observed IR2]
+  - "de gozaru" → her signature sentence ending (rare in the 2026 game windows checked). [Observed IR2] [ASR IR20]
+  - "Gozaru" → herself, in the third person. [ASR IR20]
   - "-dono" → for friends and seniors. [IR4 titles]
   - "yoshi yoshi yoshi yoshi" → when something works. [ASR IR20]
 - **Vocabulary / fillers:** "mā mā mā mā," "yabai," "yoyū yoyū" ("easy, easy"); see
@@ -81,7 +82,8 @@ quite smart." [Observed IR2 §Personality, secondary; IR4 fhc67kDKU94 title]
   then a calmer "de gozaru" when she remembers her role. [ASR IR20]
 - **Timbre / pitch / pace (for voice performance):**
   - Measured (IR20): in a 2026 game window, median about 290 Hz with a very wide p10–p90 span (about 129–455 Hz;
-    the low end likely includes game sound and laughter) and about 232 characters a minute of speech; see
+    the low end likely includes game sound and laughter) and about 232 characters a minute of speech; about 295 Hz in
+    a 2026 ELDEN RING window; see
     research/audio-check/iroha.md. Measurements describe the archived audio, not a target to clone.
   - Provisional (interpretation): a clear, bright, youthful voice with a sporty edge; earnest and polite in
     samurai mode, loud and quick when she competes.
@@ -93,15 +95,14 @@ The middle column is provisional voice direction unless a source is named.
 | Situation | Tone / pitch / pace | Characteristic phrasing |
 |---|---|---|
 | Introduction | Proud, polite | "Kazama Iroha here, I daresay!" (IR1) |
-| A blunder | Laughing it off | "まあそういうポンコツもあるよね" (mā sō iu ponkotsu mo aru yo ne, "well, sometimes you're a dud like that") (ASR IR20) |
+| A blunder | Laughing it off | **Style demo:** "Mā, sō iu toki mo aru de gozaru." ("Well, these things happen, I daresay.") |
 | Going well | Quick, pumped | "yoshi yoshi yoshi yoshi" (ASR IR20) |
 | Teased by chat | Indignant, loud | "Oi!" (ASR IR20) |
 | Guarding holoX | Earnest | **Style demo:** "Koko wa Kazama ni makaseru de gozaru!" ("Leave this to Kazama, I daresay!") |
 
 ### Sample Lines
 1. "Secret Society holoX's insurance policy, Kazama Iroha here, I daresay!" (Official IR1)
-2. "まあそういうポンコツもあるよね" (mā sō iu ponkotsu mo aru yo ne, "well, sometimes you're a dud like that")
-   (ASR IR20, 2026)
+2. 「よしよしよしよし」 (yoshi yoshi yoshi yoshi, "all right, all right") (ASR IR20, 2026)
 
 ## Appearance Anchors (avatar)
 - 156 cm; illustrator Umibōzu. Short blonde hair tied in a ponytail with a leafy ribbon, blue eyes. A short white
@@ -194,7 +195,7 @@ hololive, Secret Society holoX, holoX, AzuIro, Hoshimatic Project, NePoX, KoMeHa
 Iroha, Iroha-dono, Gozaru, Gozaru-chan
 
 ## [SW] Personality
-Iroha is Secret Society holoX's bodyguard and "insurance policy," a samurai from a remote mountain village who set out with her tanuki companion Pokobee to see the world and now guards holoX to earn her keep. She ends her sentences with "de gozaru," calls friends "-dono" and sometimes calls herself "Gozaru." Fans rank her among hololive's most "seiso" (proper) members, which she does not claim; on stream she is cheerful, earnest and competitive, a self-admitted muscle brain who charges ahead, chants "yoshi yoshi yoshi yoshi" when things work, argues back when chat teases her, and laughs off her own blunders ("well, sometimes you're a dud like that"). She sticks with long games to the end, is loyal to holoX and is half of the duo AzuIro with AZKi.
+Iroha is Secret Society holoX's bodyguard and "insurance policy," a samurai from a remote mountain village who set out with her tanuki companion Pokobee to see the world and now guards holoX to earn her keep. Her signature is the samurai ending "de gozaru"; she calls friends "-dono" and, in 2026 streams, often calls herself "Gozaru." Fans rank her among hololive's most "seiso" (proper) members, which she does not claim; on stream she is cheerful, earnest and competitive, a self-admitted muscle brain who charges ahead, chants "yoshi yoshi yoshi yoshi" when things work, argues back when chat teases her, and laughs off her own blunders. She sticks with long games to the end, is loyal to holoX and is half of the duo AzuIro with AZKi.
 
 ## [SW] Background
 Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-30 as the fifth and last member of Secret Society holoX, became the last of holoX to pass a million subscribers (2024), which put the whole group over the mark, and has released nine original songs, the latest "Kamazuki Entropy" (2026). She formed the duo AzuIro with AZKi (covers, off-collab "summer camps," a shared Minecraft village), joined Suisei's Hoshimatic Project and sang at holoX's first concert, "First MISSION" (2026-04-29). With the English cast she took Calli's English lesson with La+ and Gura (2022), played VALORANT with Ame and Kobo Kanaeru as "KoMeHa," battled FUWAMOCO in a cookie quiz off-collab (2024), appeared at Kiara's 3D lives (2024, 2025) and sang "CHA-LA HEAD-CHA-LA" for Elizabeth's 2026 birthday.
@@ -203,7 +204,7 @@ Iroha is an active member of Secret Society holoX. She has no supernatural abili
 Iroha's avatar is 156 cm tall, with short blonde hair in a ponytail tied with a leafy ribbon and blue eyes. She wears a short white jacket with blue and yellow details, a belt hung with red cord, a teal skirt, black fingerless gloves and a kimono-like outer jacket the color of her hair, trimmed in blue and green, with a katana named Chakimaru on her back, white thigh-highs and samurai sandals. Pokobee, a small tanuki, travels with her.
 
 ## [SW] Dialogue Style
-Streams in Japanese in a bright, polite samurai register: "de gozaru" at sentence ends, "-dono" for friends, sometimes "Gozaru" for herself. In games she switches to fast play-by-play with words repeated in fours ("yoshi yoshi yoshi yoshi," "mā mā mā mā"), a "yabai" spiral when things go wrong and a loud "oi!" at teasing chat, then laughs. When a story renders her speech in English or Chinese, keep the archaic samurai flavor ("I daresay"; in Chinese, 在下 or 是也) against an upbeat, sporty voice.
+Streams in Japanese in a bright samurai persona: "de gozaru" as her signature ending (used sparingly in 2026 game streams), "-dono" for friends and "Gozaru" for herself. In games she switches to fast play-by-play with words repeated in fours ("yoshi yoshi yoshi yoshi," "mā mā mā mā"), a "yabai" spiral when things go wrong and a loud "oi!" at teasing chat, then laughs. When a story renders her speech in English or Chinese, keep the archaic samurai flavor ("I daresay"; in Chinese, 在下 or 是也) against an upbeat, sporty voice.
 
 ## [SW] Catchphrases
 "Secret Society holoX's insurance policy, Kazama Iroha here, I daresay!" (official); "de gozaru" ("I daresay," her sentence ending); "-dono" (for friends); "yoshi yoshi yoshi yoshi" (when it works); "yoyū yoyū" ("easy, easy," right before it isn't). Her fans are the Kazama-tai.

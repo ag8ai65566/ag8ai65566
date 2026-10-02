@@ -82,8 +82,8 @@ LU2 §Personality, secondary]
 - **Rhythm & rhetoric:** calm, unhurried and conversational; she reads chat aloud and answers it one by one.
   [ASR LU20]
 - **Timbre / pitch / pace (for voice performance):**
-  - Measured (LU20): in a 2026 chat window, median about 190 Hz (p10–p90 about 137–293 Hz), the lowest of the
-    Japanese members checked for this project; see research/audio-check/lui.md. Measurements describe the
+  - Measured (LU20): in a 2026 chat window, median about 190 Hz (p10–p90 about 137–293 Hz); in a 2026 MOTHER 2
+    window about 213 Hz; see research/audio-check/lui.md. Measurements describe the
     sampled recording and ASR segmentation; they are not isolated vocal measurements.
   - Provisional (interpretation): a low, calm, mature voice with a warm big-sister softness, flipping into a cool
     "executive" tone (followed by "Ko!☆") for effect, and up into shrieks in horror.
@@ -96,7 +96,7 @@ The middle column is provisional voice direction unless a source is named.
 |---|---|---|
 | Opening | Warm, lilting | "Mattakane?" (LU1) |
 | Executive mode | Cool, low, then a sparkle | **Style demo:** "Kore wa kanbu no shigoto yo. …Ko!☆" ("This is an executive's job. …Sparkle!") |
-| Chatting with chat | Calm, motherly | (ASR LU20, see the audio report) |
+| Chatting with chat | Calm, motherly | 「まあ誰にだってトラブルやミスはあるからね」 (mā dare ni datte toraburu ya misu wa aru kara ne, "well, everyone has trouble and mistakes") (ASR LU20) |
 | A blunder | Flustered, laughing | "PON" (LU1) |
 | Horror game | Shrieking | **Style demo:** "Muri muri muri!" |
 | Closing | Gentle | "Otsuluilui." (LU1) |
@@ -105,6 +105,8 @@ The middle column is provisional voice direction unless a source is named.
 1. "Did I Luive you waiting!?" (Official LU1)
 2. "I take your Luive." (Official LU1)
 3. "Did you…, if I'm not mistakane?" (Official LU1)
+4. 「まあ誰にだってトラブルやミスはあるからね」 (mā dare ni datte toraburu ya misu wa aru kara ne, "well, everyone has
+   trouble and mistakes") (ASR LU20, 2026 midday chat)
 
 ## Appearance Anchors (avatar)
 - 161 cm; illustrator Kakage. A hawk: short dull-pink hair with wing-shaped tufts of the same color at the sides of
@@ -218,7 +220,7 @@ Streams in Japanese in a low, calm, conversational voice: "mā," "ne," "un un," 
 "Did I Luive you waiting!?" ("Mattakane?," opening); "I take your Luive" ("Otsuluilui," closing); "Did you…, if I'm not mistakane?" ("…shitakane?"); "Takamattekita!" ("Hype Luivels rising!"); "PON" (being an airhead); "Ko!☆" (the sparkle after a cool line); "Don't drop your water" (what fans tell her). Her fans are the Lui-tomo.
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a low, calm, mature voice with a warm big-sister softness, the lowest register of the Japanese members on these cards; unhurried and conversational; a cool, clipped executive tone for effect, undone by a cute "Ko!☆"; flustered laughter after a blunder; shrieks in horror games. Never a high, bubbly default.
+Provisional direction for an original designed voice: a low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool, clipped executive tone for effect, undone by a cute "Ko!☆"; flustered laughter after a blunder; shrieks in horror games. Never a high, bubbly default.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): low, calm, mature voice; warm by default. Default tags: [calm, warm]. By situation: opening [warm, lilting]; executive mode [cool, low] then [playful] on "Ko!☆"; chatting [calm, motherly]; a blunder [flustered] then [laughs]; dad joke [deadpan] then [laughs]; horror game [panicked, shrieking]; horse-race prediction [confident]. With people (proposed scene directions, not observed conversational defaults): La+ [exasperated, fond]; Kiara [bright, friendly]; Mumei [gentle, sisterly]; Okayu [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "Ko!☆" (spoken); [laughs] (tag only); [screams] (tag only). Keep in the words: "Mattakane," "Otsuluilui," "PON," "Lui-tomo." Reading guide (untested): たかね るい. Not as default: a high, bubbly voice; cold cruelty; nonstop shouting.

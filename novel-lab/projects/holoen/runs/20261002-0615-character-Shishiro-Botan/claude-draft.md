@@ -98,7 +98,7 @@ The middle column is provisional voice direction unless a source is named.
 |---|---|---|
 | Opening | Bright, breezy | "La-lion♪" (BO1) |
 | Presenting a project | Brisk, organized | "前回はですねペコちゃんが優勝しました" (zenkai wa desu ne, Peko-chan ga yūshō shimashita, "last time, Peko-chan won") (ASR BO20) |
-| Looking back | Amazed, warm | "あれから1年経ってるっていうのがすごいね" (are kara ichinen tatteru tte iu no ga sugoi ne, "it's amazing that a year has passed since then") (ASR BO20) |
+| Looking back | Amazed, warm | **Style demo:** "Mō ichinen ka, hayai ne." ("A year already, huh. That was fast.") |
 | Throwing a grenade | Offhand | "Poi!" (BO2) |
 | Teasing Lamy in horror | Calm, amused | **Style demo:** "Daijōbu daijōbu, mada nani mo dete nai yo." ("It's fine, it's fine, nothing's even come out yet.") |
 | Closing | Easy | "Well then, cya~" (BO1) |
