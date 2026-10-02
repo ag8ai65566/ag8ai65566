@@ -2,7 +2,7 @@
 
 狀態（2026-10-02 07:55 UTC）：等 GPT 額度（11:31 UTC 重置；send_later 11:32 會叫醒、開跑 gpt-resume）。這段時間做完：
 - 引句範圍：32 個 span 候選全部處理（`span_check.py` 0 筆；V13 只剩等 09 聲音審計）；V14 自動候選 0 筆。
-- 關係網：JP 四人 ↔ EN、第二批 ↔ JP 四人/EN 的回填互指，one-way 29 → 16（剩下的都在 350 字上限的卡：Calli、
+- 關係網：JP 四人 ↔ EN、第二批 ↔ JP 四人/EN 的回填互指，one-way 29 → 16 → 1（08:25 再壓縮上限卡的句子補齊；只剩 Raora→IRyS，IRyS 沒空間。原本剩下的在 350 字上限的卡：Calli、
   Kiara、Ina、Kronii、IRyS）。第二批回填句已收錄，GPT D/F 會一起核對（mk_b2_review 自動帶入）。
 - 新增 QA 審計 run：`20261002-0751-check-QA-cohort-{jp,jp2,holox}`，排在佇列最後（開跑前自動用 bible 重建 packet）。
 - 草稿發佈包 r01-draft 重建（23 位＋26 張世界卡）；START-HERE 列出第二批「還沒收錄」。
