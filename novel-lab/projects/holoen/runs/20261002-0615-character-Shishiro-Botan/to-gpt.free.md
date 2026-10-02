@@ -1009,7 +1009,6 @@ Dossier rows (with sources):
 ### Nanashi Mumei
 Relationships field (exported):
 Shirogane Noel and Kikirara Vivi: her Gartic Phone EN + ID + JP collab (2025). Houshou Marine: Mumei played Marine's horror game with Bae (2023).
-
 Dossier rows (with sources):
 | Sakamata Chloe, Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Chloe and Lui on Mumei's EN-server Minecraft tour with Bae (2022-02-12); Marine's horror game with Bae (2023-08-23); Noel and Vivi in Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 50tBPC5c2zM, RY1GkF4jMls, OMDzBQohAf8] |
 | Houshou Marine | — | Played Marine's horror game with Bae (2023) | [Marine file MA5] |
@@ -1017,14 +1016,12 @@ Dossier rows (with sources):
 ### Koseki Bijou
 Relationships field (exported):
 Kikirara Vivi: Bijou watched FLOW GLOW's debut with FUWAMOCO (2024).
-
 Dossier rows (with sources):
 | Kikirara Vivi | DEV_IS kouhai | Bijou watched FLOW GLOW's debut with FUWAMOCO (2024-11-08) | [S1 gAj77STI2oc] |
 
 ### Fuwawa Abyssgard
 Relationships field (exported):
 Houshou Marine: her oshi (a Touhou off-collab). Shirogane Noel: a team Mario Kart event (2023). Kikirara Vivi: #holoREPO (2025).
-
 Dossier rows (with sources):
 | Houshou Marine | Her oshi | A Touhou off-collab (2024-04-30); Marine's solo concert watchalong (2024-12-07); a guest at their birthday concert (2025) | [Observed FW2; FW3] |
 | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
@@ -1032,7 +1029,6 @@ Dossier rows (with sources):
 ### Mococo Abyssgard
 Relationships field (exported):
 Houshou Marine: a Touhou off-collab and Mario Party with Nerissa (2024). Kikirara Vivi: #holoREPO (2025). Shirogane Noel: a team Mario Kart event (2023).
-
 Dossier rows (with sources):
 | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
 | Shirogane Noel | — | "Yuru Holo" team Mario Kart with Bae (2023) | [Noel file NO5] |
@@ -1040,7 +1036,6 @@ Dossier rows (with sources):
 ### Elizabeth Rose Bloodflame
 Relationships field (exported):
 Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests: FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine and Korone. Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025).
-
 Dossier rows (with sources):
 | Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 OMDzBQohAf8] |
 | Shirogane Noel, Kikirara Vivi | — | Gartic Phone EN + ID + JP (2025) | [Noel file NO5] [Vivi file VI5] |
@@ -1048,7 +1043,6 @@ Dossier rows (with sources):
 ### Hakos Baelz
 Relationships field (exported):
 Houshou Marine: Mario Kart, a house party and Marine's horror game. Kikirara Vivi: #holoREPO (2025). Shirogane Noel: a team Mario Kart event with FUWAMOCO (2023). Shishiro Botan: BAE-GEMITE DOMINATION #2 with Oozora Subaru (2023).
-
 Dossier rows (with sources):
 | Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25) | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] |
 | Shirogane Noel, Shishiro Botan | — | "Yuru Holo" team Mario Kart with FUWAMOCO (Noel, 2023); BAE-GEMITE DOMINATION #2 with Oozora Subaru (Botan, 2023) | [Noel file NO5] [Botan file BO5] |

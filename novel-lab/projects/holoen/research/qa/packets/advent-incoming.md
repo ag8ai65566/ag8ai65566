@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 12abb1f.
+Snapshot: git 200e559.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|Jewel of Emotions|hololive -Advent-|Mococo Abyssgard|Fuwawa Abyssgard|FUWAMOCO MORNING|Abyssgard twins|The Fluffy One|Shiori Novella|Demon of Sound|The Fuzzy One|Demon of Soup|Diamond Dogs|Koseki Bijou|Sound Hounds|The Archiver|Advent Pairs|FUWAMOCALLI|Last Writes|Rocku Wawa|holoAdvent|Grindstone|Bloodraven|GreyScaleX|Fluffy One|ShioRaven|JewelBird|Fuwa-chan|Adventrix|Goth Rock|Moco-chan|Lil'Rock|Shiori~n|Fuwa-nee|The Cell|Pen Pups|Mogojyan|FUWAMOCO|Nerissa|Shiorin|Mococo|Koseki|Mogogo|Advent|Shiori|Beejoe|Fuwawa|Rissa|Bijou|Oobib|Beebs|Biboo|B.F.F|Pero|GAGA|FWMC|Neri)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Fuwawa and Mococo|Jewel of Emotions|Mococo Abyssgard|FUWAMOCO MORNING|Fuwawa Abyssgard|Abyssgard twins|Demon of Sound|Shiori Novella|The Fluffy One|The Fuzzy One|Demon of Soup|Diamond Dogs|Koseki Bijou|Sound Hounds|The Archiver|Advent Pairs|Last Writes|FUWAMOCALLI|GreyScaleX|Rocku Wawa|Fluffy One|holoAdvent|Bloodraven|Grindstone|JewelBird|Adventrix|Goth Rock|Moco-chan|ShioRaven|Fuwa-chan|Mogojyan|Fuwa-nee|FUWAMOCO|Pen Pups|The Cell|Lil'Rock|Shiori~n|Shiorin|Nerissa|Beejoe|Mogogo|Shiori|Fuwawa|Mococo|Advent|Koseki|B.F.F|Rissa|Oobib|Beebs|Biboo|Bijou|Neri|FWMC|Pero|GAGA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -98,6 +98,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|Jewe
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Mori Calliope and IRyS: her CHADCast cohosts; "BLUE CLAPPER" with them and Koseki Bijou (2024); "R x R x R" with Calli (2025); secondary references record her nickname "Cori Malliope."
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Koseki Bijou: "BaeBi," a 2024 sleepover marathon, We Were Here.
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: FUWAMOCO: Gigi's 2025 Spring Party; they danced to "SNAKE EYES."
+- `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Shirogane Noel: a team Mario Kart event with FUWAMOCO (2023).
 - `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2024-08-24/25 | -Breaking Dimensions-: "Our Promise" with Promise; "BLUE CLAPPER" with Calli, IRyS and Koseki Bijou; solo "GEKIRIN"; "High Tide" with IRyS, Moona Hoshinova and Hoshimachi Suisei | [Official HB5] |
 - `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2024-11-25 | "#BaeTV24" 24-hour stream with collabs (IRyS and Raora; Kronii, Bijou and Gigi) | [Observed HB3] |
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Mori Calliope | Myth senior; CHADCast cohost | The CHADCast podcast with IRyS (archived from January 2022) and the song "Here Comes the CHADCast" (2026-09-01); "BLUE CLAPPER" with IRyS and Bijou (2024); the "R x R x R" duo at -All for One- (2025); a GriMoire watch-along (2025). Secondary references record the nickname "Cori Malliope" and that Bae calls her "sister" because they share a Live2D rigger | [Official HB5, HB9] [Observed HB3; HB2, secondary; Calli file] |
@@ -107,6 +108,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|Jewe
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | Advent kouhai | Gigi's 2025 Spring Party with FUWAMOCO and Bae; a 2026 dance short to "bae-senpai's new song SNAKE EYES" (archived 2026-03-20) | [Observed HB8] |
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Nerissa Ravencroft, Shiori Novella | Later EN kouhai | Shared EN projects: the 2024 "Mind Craft" cover with all then-active EN members; a 2026 behind-the-scenes video by Kaela with Bae and Nerissa (secondary metadata) | [secondary HB13] |
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25) | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] |
+- `bible/characters/Hakos-Baelz.md › Relationship Map`: | Shirogane Noel, Shishiro Botan | — | "Yuru Holo" team Mario Kart with FUWAMOCO (Noel, 2023); BAE-GEMITE DOMINATION #2 with Oozora Subaru (Botan, 2023) | [Noel file NO5] [Botan file BO5] |
 
 ### from Hoshimachi Suisei
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: FUWAMOCO: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026).
@@ -237,6 +239,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|Jewe
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Shiori Novella: a VRChat aquarium visit with "Ame Senpai"
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Koseki Bijou: Overwatch and Apex (2023).
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | FUWAMOCO | Advent members ("Detective Dogs") | Puzzle collab | [Observed A2, per Claude's research] |
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Nerissa | [Ayame file AY4] |
 
 ### from Concerts and Live Events
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-,"

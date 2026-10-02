@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 12abb1f.
+Snapshot: git 200e559.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Cori Malliope|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|CHADCast|Mor Mori|Takamori|Calliope|TakaMori|CallioP|Calli|森カリオペ|LYRA|Mori|Mowi)(
+Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Calliope Mori|Mori Calliope|Last Writes|Kawaiiope|Miss Mori|TakaMori|Mor Mori|Calliope|CHADCast|Takamori|CallioP|森カリオペ|Calli|Mowi|LYRA|Mori)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.

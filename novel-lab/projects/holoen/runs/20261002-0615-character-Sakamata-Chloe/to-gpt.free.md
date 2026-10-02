@@ -990,7 +990,6 @@ Dossier rows (with sources):
 ### Watson Amelia
 Relationships field (exported):
 Kazama Iroha: "KoMeHa" with Kobo Kanaeru (VALORANT, 2022). Takane Lui: Apex with Airani Iofifteen (2022).
-
 Dossier rows (with sources):
 | Kazama Iroha, Takane Lui | JP members | "KoMeHa" with Iroha and Kobo Kanaeru (VALORANT, 2022-06-04); Apex with Lui and Iofi (2022) | [S1 tGVhLibbYL0; world card "holoX"] |
 
@@ -1004,7 +1003,6 @@ Dossier rows (with sources):
 ### Nerissa Ravencroft
 Relationships field (exported):
 La+ Darknesss: holoGTA (2024) and a dance short to her "Onee-sama♡Love Call" (2026); Takane Lui: a "Soar" dance short (2026).
-
 Dossier rows (with sources):
 | Takane Lui, La+ Darknesss | JP members | Dance shorts to Lui's "Soar" (2026) and La+'s "Onee-sama♡Love Call" (2026); holoGTA with La+ (2024) | [S1 l5fGacH2i-o, ZINB546CMEw; world card "holoX"] |
 
@@ -1039,7 +1037,6 @@ Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests: FUWAMOCO, Po
 ### Cecilia Immergreen
 Relationships field (exported):
 La+ Darknesss: Cecilia teased her as "onee-sama" in a 2026 short.
-
 Dossier rows (with sources):
 | La+ Darknesss | holoX senior | Cecilia teased La+ as "onee-sama" in a 2026 short | [S1 tqF0_rYGW20] |
 
