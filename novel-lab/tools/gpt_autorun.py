@@ -85,7 +85,12 @@ def main():
         args = shlex.split(cmd)
         label = Path(args[3]).name if len(args) > 4 else cmd  # python3 novel-lab/tools/lab.py gpt <run> free
         log(f"▶ {label}")
-        r = subprocess.run(shlex.split(cmd), cwd=REPO)
+        r = subprocess.Popen(shlex.split(cmd), cwd=REPO)
+        try:  # commit the inputs the run freezes at start, so the tree stays clean while it runs
+            r.wait(timeout=90)
+        except subprocess.TimeoutExpired:
+            commit_push(f"{label} inputs")
+            r.wait()
         if r.returncode == QUOTA_EXIT:
             after = json.loads(QUOTA.read_text(encoding="utf-8")) if QUOTA.exists() else {}
             if not after.get("reset_utc"):
