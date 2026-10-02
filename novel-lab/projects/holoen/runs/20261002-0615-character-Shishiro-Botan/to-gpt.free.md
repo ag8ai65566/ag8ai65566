@@ -632,13 +632,13 @@ Vivi is an active member of FLOW GLOW (hololive DEV_IS). She has no supernatural
 Vivi's avatar is 161 cm tall, with long twin tails that fade from pink to purple, black sparkle-patterned bows and blue eyes. She wears a cream off-shoulder top with oversized purple sleeves over a black crop top, baggy purple cargo pants with one leg pulled up over patterned tights, black lace-up boots with pink laces, and a quilted black heart-shaped bag full of makeup brushes at her hip.
 
 ## [SW] Dialogue Style
-Streams in Japanese with a Kansai-style lilt ("~yan," "~nen," "akan," "honma"): frank, quick and funny, bantering with chat, then a flat, deliberately emotionless "Ōi!" as her retort. She teases ("I'll charge you for that") and turns sincere when thanking her fans. When a story renders her speech in English or Chinese, keep a casual regional flavor without caricature, the frankness and the deadpan "Ōi."
+Streams in Japanese with regional dialect endings ("~yan," "~nen," "akan," "honma"): frank, quick and funny, bantering with chat, then a flat, deliberately emotionless "Ōi!" as her retort. She teases ("I'll charge you for that") and turns sincere when thanking her fans. When a story renders her speech in English or Chinese, keep a casual regional flavor without caricature, the frankness and the deadpan "Ōi."
 
 ## [SW] Catchphrases
 "Hol'up, 'cus you're in for a transformation!" (official); "Nnnnnn~ Vivi!!!" (her opening); "Ōi!" (her deadpan retort); "okane toru de" ("I'll charge you for that"); "Vivid" (her fans).
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a bright, slightly husky, girlish voice with a regional lilt; lively, frank and fast in banter; deliberately flat for her "Ōi!" retort; loud screams in horror; warm and sincere with her fans. Never prim, slow and breathy by default, or coolly aloof.
+Provisional direction for an original designed voice: a bright, slightly husky, girlish voice; lively, frank and fast in banter; deliberately flat for her "Ōi!" retort; loud screams in horror; warm and sincere with her fans. Never prim, slow and breathy by default, or coolly aloof.
 
 ## [SW] Audio Tags
 Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, slightly husky girlish voice. Default tags: [lively, frank]. By situation: opening [theatrical, rising]; retort [deadpan]; teasing chat [playful, coy]; horror [screams]; first-time gaming [flustered]; thanking fans [warm, sincere]. With people (proposed scene directions, not observed conversational defaults): Pekora [adoring, excited]; Marine [playful]; FUWAMOCO [cheerful]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): "Ōi!" (spoken, deadpan); [laughs] (tag only). Keep in the words: "Ōi," "okane toru de," "Vivid." Reading guide (untested): ききらら ゔぃゔぃ. Not as default: prim standard speech or a breathy whisper.

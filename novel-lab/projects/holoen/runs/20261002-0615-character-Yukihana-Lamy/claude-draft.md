@@ -52,7 +52,7 @@ good!") between refined sentences. [Official LM1] [Observed LM2 §Personality, s
 
 ## Behavioral Traits
 1. Refers to herself as "Lamy" and mixes formal politeness ("o-tsukaresama de gozaimashita") with casual,
-   Kansai-tinged slang ("hona," "chū koto de," "umē") as a chat warms up. [ASR LM20]
+   casual slang ("hona," "chū koto de," "umē") as a chat warms up. [ASR LM20]
 2. Hosts "banshaku" (evening-drink) chat streams: she presents her snacks, toasts chat ("kanpai") and talks
    through the week. [LM4 titles] [ASR LM20]
 3. Gentle and motherly ("Lamy-mama"), shy and easily flustered at first, then surprisingly bold. [Observed LM2
