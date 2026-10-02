@@ -172,6 +172,8 @@ def frozen(run, name, source):
     模板或規則中途改版也不會讓同一個任務前後收到不同的依據。"""
     f = run / "frozen" / name
     if not f.exists():
+        if source is None:  # free-stage runs built by a tool (QA, voice, research) freeze the shared prompt on first use
+            source = FRAMEWORK / "prompts" / name
         write(f, source() if callable(source) else read(source))
     return read(f)
 

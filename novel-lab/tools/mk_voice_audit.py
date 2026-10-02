@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """Build the task-09 voice and performance audit runs (one GPT quota window each).
 
-    python3 tools/mk_voice_audit.py v1 v2        # or v3 once the batch-2 cards are promoted
+    python3 tools/mk_voice_audit.py v1 v2 v3     # v4 once the holoX cards are promoted (runs E and F merged)
 
 v1: Myth and Promise (Calli, Kiara, Ina, Gura, Ame, Kronii, IRyS, Fauna, Mumei, Bae)
 v2: Advent and Justice (Shiori, Bijou, Nerissa, Fuwawa, Mococo, Elizabeth, Gigi, Cecilia, Raora)
-v3: hololive JP (Suisei, AZKi, Ayame, Okayu, Marine, Noel, Lamy, Botan, Vivi, La+, Lui, Koyori, Chloe, Iroha)
+v3: hololive JP (Suisei, AZKi, Ayame, Okayu, Marine, Noel, Lamy, Botan, Vivi)
+v4: Secret Society holoX (La+, Lui, Koyori, Chloe, Iroha), after runs E and F are merged
 
 Each run gets a run directory `runs/<stamp>-check-QA-voice-<group>/` with to-gpt.free.md; inputs are read from
 the bible and export/elevenlabs/ at build time, so rebuild right before queueing if cards changed. The result
@@ -28,8 +29,9 @@ GROUPS = {
                                   "Mococo-Abyssgard", "Elizabeth-Rose-Bloodflame", "Gigi-Murin", "Cecilia-Immergreen",
                                   "Raora-Panthera"]),
     "v3": ("hololive JP", ["Hoshimachi-Suisei", "AZKi", "Nakiri-Ayame", "Nekomata-Okayu", "Houshou-Marine",
-                           "Shirogane-Noel", "Yukihana-Lamy", "Shishiro-Botan", "Kikirara-Vivi", "Laplus-Darknesss",
-                           "Takane-Lui", "Hakui-Koyori", "Sakamata-Chloe", "Kazama-Iroha"]),
+                           "Shirogane-Noel", "Yukihana-Lamy", "Shishiro-Botan", "Kikirara-Vivi"]),
+    "v4": ("Secret Society holoX", ["Laplus-Darknesss", "Takane-Lui", "Hakui-Koyori", "Sakamata-Chloe",
+                                    "Kazama-Iroha"]),
 }
 VOICE = ["Name", "Dialogue Style", "Catchphrases", "Voice & Delivery", "Audio Tags"]
 
