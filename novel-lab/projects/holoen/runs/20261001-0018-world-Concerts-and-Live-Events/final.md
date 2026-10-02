@@ -27,11 +27,11 @@ Recurring events / culture.
   Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
 - **hololive English concerts** (US, summer): "-Connect the World-" (2023-07-02), "-Breaking
   Dimensions-" (2024-08-24/25, Kings Theatre, New York; Fauna and Mumei premiered their duet "It's Not a
-  Phase"; Kiara, Mumei and Nerissa sang "Beyond the way"; Fauna, Shiori and Nerissa "Lonely in Gorgeous"
+  Phase"; Kiara, Mumei and Nerissa sang "Beyond the way"; Fauna, Shiori and Nerissa "Lonely in Gorgeous"; Promise's unit song "Our Promise"; "BLUE CLAPPER" by the CHADCast trio (Calli, IRyS, Bae) with Bijou; Bae's solo "GEKIRIN"; "High Tide" by IRyS, Bae, Moona Hoshinova and Hoshimachi Suisei
   [Official S8]), "-All for One-" (2025-08-23/24, Radio City Music
   Hall, New York; all fifteen EN members: Advent's "Genesis"; "HOT DUCK!" by Bijou, FUWAMOCO and Oozora
   Subaru; "MONSTER" by Ina, Kronii, Shiori and Gigi; "SHALLYS" by Ina, FUWAMOCO and Cecilia; Shiori's
-  "AKUMA" and "Suspect" with Kiara and Ayunda Risu; Bijou's solo "Dead Ma'am's Chest"; Justice's first group performance at an in-person concert venue in 3D, "ABOVE BELOW"; Cecilia's "Wind-Up," the first Justice solo number of that concert, Raora's "Gacha×Gacha ADVENTURE!," Elizabeth's "Stellar Stellar" and Gigi's "Wonky Monkey"; "ALiCE&u" by Nerissa, Elizabeth and Ayunda Risu; "I'm Your Treasure Box" by Bijou, Cecilia and Raora [Official S9]), "Serendipity" (2026-07-03/04, Shrine Auditorium, Los Angeles), the last built around
+  "AKUMA" and "Suspect" with Kiara and Ayunda Risu; Bijou's solo "Dead Ma'am's Chest"; Justice's first group performance at an in-person concert venue in 3D, "ABOVE BELOW"; "R x R x R" by Calli and Bae; "Countach" by Bae, Gigi and guest Kureiji Ollie; Bae's solo "La Roja (Arrange ver.)"; Cecilia's "Wind-Up," the first Justice solo number of that concert, Raora's "Gacha×Gacha ADVENTURE!," Elizabeth's "Stellar Stellar" and Gigi's "Wonky Monkey"; "ALiCE&u" by Nerissa, Elizabeth and Ayunda Risu; "I'm Your Treasure Box" by Bijou, Cecilia and Raora [Official S9]), "Serendipity" (2026-07-03/04, Shrine Auditorium, Los Angeles), the last built around
   partner pairs (among them Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Hakos Baelz and
   Nerissa–Elizabeth Rose Bloodflame, FUWAMOCO–Raora and Gigi–Cecilia), each with a published interview. Official report (S11): units Last Writes (Calli & Shiori, "When My Devil Rises"), Octo'clock (Ina & Kronii,
   "Bad Apple"), Rocku Wawa (Kiara & Bijou, "Tententengoku Jigokukoku"), BaeRyS (IRyS & Bae, "LUVATORRRRRY!"),
@@ -72,6 +72,7 @@ Recurring events / culture.
 | Nerissa Ravencroft | 6th fes day 1 (2025-03-08); 3D concert "Requiem for Love – A JukeBox Musical" (2025-05-24, with Calli and IRyS as guests); Advent's "On the Run!" (2025-08-29); World Tour '24 panels with Elizabeth (Atlanta, Kuala Lumpur); World Tour '25 lead; Serendipity with Elizabeth | Nerissa file N2, N3; S1 |
 | Gawr Gura | Final 3D mini live on her graduation day (2025-05-01) | Gura file G5 |
 | Watson Amelia | As an affiliate: guest at Kronii's 2026 birthday live | Kronii file K33 |
+| Hakos Baelz | -Breaking Dimensions- (2024): "Our Promise," "BLUE CLAPPER" with Calli, IRyS and Bijou, solo "GEKIRIN," "High Tide"; -All for One- (2025): "R x R x R" with Calli, "Countach" with Gigi and Ollie, solo "La Roja (Arrange ver.)"; birthday 3D lives "-KAGURA- Dance of the Gods" (2025) and "ReCOLOR" (2026); final solo act at the 2026 fes ("Idol," her own choreography; her account); Serendipity: BaeRyS with IRyS, "HELP!!" with Kobo and Elizabeth; first solo concert "REGALIA" announced for 2026-12-01 (after the baseline) | S8, S9, S11; Bae file HB2, HB7, HB20 |
 
 ## How It Works in Stories
 - Concerts are shown through the avatar performance and the members' talk before and after: nerves,
@@ -178,6 +179,7 @@ Glowsticks in member colors; an LED wall; a new 3D outfit's reveal; a call-and-r
   gpt-free.md, xhigh), with facts checked by Claude against the official Serendipity report and 3D schedule:** "first group stage" and "first Justice solo" qualified; the Serendipity units and guest stages
   from the official report added to the dossier and Description.
 - **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** Calli's "UNCUT ROCK!!" birthday 3D live, Kiara's 2026 birthday 3D live and Myth's "Seasons From Within" added.
+- **2026-10-02, cast expansion (author: add Hakos Baelz):** Bae's stages from the official -Breaking Dimensions- and -All for One- reports added; a Bae row in The Cast on Stage.
 
 ## Open Questions
 1. Which characters performed at the four EN concerts (2023–2025 line-ups) was not checked; only

@@ -52,7 +52,7 @@ With people (provisional): FUWAMOCO `[starstruck, sweet]`; Gigi `[playful]`; Cec
 ## 8. Example
 ```
 [bright] Ciao ciao, Chattini! [playful roar] RAAAOO!
-[mock-innocent, quick] Whoopsie. That was totally intentional, that was totally intentional, everyone.
+[mock-innocent, quick] That was totally intentional, that was totally intentional, everyone.
 [mock-stern] Okay, okay, okay, okay. Hear me out. … No, thank you. I refuse.
 [squealing, soft] This makes me so emotional. She's so cute.
 [warm, playful] And remember, big cat means big trouble.

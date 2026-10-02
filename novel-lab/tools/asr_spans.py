@@ -51,6 +51,10 @@ def main():
         changed = 0
         for n, line in enumerate(lines):
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
+            if line.startswith("|") and len(cells) >= 4 and cells[-1].startswith("**Partial (computed):**"):
+                # already converted on an earlier run: keep it in the report, so re-running never drops rows
+                report.append(f"- `{f.name}` {cells[1]}: first model {cells[0]} → {cells[-1].split(':** ', 1)[-1]}")
+                continue
             if not line.startswith("|") or len(cells) < 4 or cells[-1] != "Agrees":
                 continue
             first, second = cells[0], cells[-2]

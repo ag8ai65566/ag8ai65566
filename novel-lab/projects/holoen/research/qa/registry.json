@@ -1,23 +1,23 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "eaed6b9",
+ "commit": "1e3399f",
  "files": {
   "bible/characters/Cecilia-Immergreen.md": "08daa7f89c8096d908d5e98fe5a69c3a848c047698e803aaec54680f560dfeb5",
   "bible/characters/Ceres-Fauna.md": "58177a0ddea108b22eb080586981aa488344fed46d7cdb29bfbd867c2753f261",
   "bible/characters/Elizabeth-Rose-Bloodflame.md": "364c68ad077f5b25734dbec6fa960884d73e1fe46cc7d6cf80ff02f57adc674d",
   "bible/characters/Fuwawa-Abyssgard.md": "5a7714bacf71e2fb704cf7cc2fdb3c2e25220220e8d40edee644d2a391c51d8d",
   "bible/characters/Gawr-Gura.md": "849e726f477e96fcab97b54473c642ad45aab9b75a570c2f0d46269f81c7f117",
-  "bible/characters/Gigi-Murin.md": "5469aa8dac983af0d90a374f9562a2103000996a4a62ed4cc7608114b3106f2c",
-  "bible/characters/IRyS.md": "a87383909b3a3308dbac97fdb365c5d995f7df6392768ddc3de639c3d43db110",
+  "bible/characters/Gigi-Murin.md": "f3005a7454f9ff660b64eb1c8bf87e65aba13c8e445eec9f9ac9db879fca51d8",
+  "bible/characters/IRyS.md": "ca4a07b6409d80db7163edf8b8b083d46bc0680d9e2c38bc70351a8e0619a4d6",
   "bible/characters/Koseki-Bijou.md": "d45528c816b9bcf32e0abf532304fc0dfbf841a5505cfdac55a49aaf9224dac4",
   "bible/characters/Mococo-Abyssgard.md": "93bff4173364895aca8f9e7bb022f155944034f599d49b4129a70bd4df27329d",
-  "bible/characters/Mori-Calliope.md": "9398b6643d78238d191ba7e519dfe35080356785ce5e3bdf2e1dd93af2512c3c",
+  "bible/characters/Mori-Calliope.md": "247674a90936d0caa0c2eafadf09405fb0f61db9b22f15811314cf73e18de7a8",
   "bible/characters/Nanashi-Mumei.md": "17f0f87a8f528dc9820c1733a432a65f8b973ebcf75139a885dae4420c19d666",
-  "bible/characters/Nerissa-Ravencroft.md": "e54431198c0c1c7bf0bd8fefb1eea2ea09cc69c0f808b83c0b2688c6483da3b9",
+  "bible/characters/Nerissa-Ravencroft.md": "3b7fd567d1a47a44b76c970b77b9a13d7f046dbe74268d4699ddd5be824313f9",
   "bible/characters/Ninomae-Inanis.md": "cf7d5e3ad59d89bafab8606b5806891aded6aa8d863151f571f2656486b2c695",
   "bible/characters/Ouro-Kronii.md": "a8491838a6b5571e606169e6803ce05e95eee50c1bcf9dba1c3d19721d4bac28",
-  "bible/characters/Raora-Panthera.md": "afe5af6e6966c914f227b644523a62323e54a4c595c52259d0ef563c3c5e8854",
+  "bible/characters/Raora-Panthera.md": "a45c1daaccb322a37db49dc28294666f944c4e8f197c20229e403070edbf43e5",
   "bible/characters/Shiori-Novella.md": "6a572d71de24f6e31299a18457d73ce27c08b8124d34203f1c213c84873868e7",
   "bible/characters/Takanashi-Kiara.md": "76104e360380e676a2552b2b5cbeef9a3e51be05e1b1ede0000e865c6a2da281",
   "bible/characters/Watson-Amelia.md": "fd0a407583baab41cd3a729b5596900f659b181ae7367d35f3f8a991bf6ec18f",
@@ -928,6 +928,15 @@
    "evidence": "official Serendipity billing, 2026"
   },
   {
+   "unit": "CHADCast",
+   "members": [
+    "Mori Calliope",
+    "IRyS",
+    "Hakos Baelz"
+   ],
+   "evidence": "official music entry (\"Here Comes the CHADCast,\" 2026)"
+  },
+  {
    "unit": "Bloodraven",
    "members": [
     "Nerissa Ravencroft",
@@ -1077,7 +1086,6 @@
   }
  ],
  "reference_only": [
-  "Hakos Baelz",
   "Tsukumo Sana",
   "Kobo Kanaeru",
   "Vestia Zeta",

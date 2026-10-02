@@ -33,7 +33,10 @@ BASELINE = "2026-09-30"
 VOICE_FIELDS = ["Name", "Dialogue Style", "Catchphrases", "Voice & Delivery", "Audio Tags"]
 CUSTOM_TRAITS = {"Catchphrases", "Voice & Delivery", "Audio Tags", "Motivation", "Relationships", "Secrets",
                  "Rules", "Sensory Details"}
-EXPECT = {"characters": 18, "world": 24, "sheets": 18}
+# The roster is defined once, in qa_packets.COHORTS; the release must contain exactly those cards and sheets.
+ROSTER_CHARS = sorted({s for c in qa_packets.COHORTS.values() for s in c["characters"]})
+ROSTER_WORLD = sorted({s for c in qa_packets.COHORTS.values() for s in c["world"]})
+EXPECT = {"characters": len(ROSTER_CHARS), "world": len(ROSTER_WORLD), "sheets": len(ROSTER_CHARS)}
 CAST_ORDER = ["Mori-Calliope", "Takanashi-Kiara", "Ninomae-Inanis", "Gawr-Gura", "Watson-Amelia",
               "IRyS", "Ouro-Kronii", "Ceres-Fauna", "Nanashi-Mumei",
               "Shiori-Novella", "Koseki-Bijou", "Nerissa-Ravencroft", "Fuwawa-Abyssgard", "Mococo-Abyssgard",
@@ -129,10 +132,13 @@ def check_all(proj, phase, package=None, building=False):
     det = [f"characters {len(chars)}/{EXPECT['characters']}", f"world {len(world)}/{EXPECT['world']}",
            f"sheets {len(sheets)}/{EXPECT['sheets']}"]
     bad = (len(chars) != EXPECT["characters"] or len(world) != EXPECT["world"] or len(sheets) != EXPECT["sheets"]
-           or set(sheets) != set(chars) or not {"Fuwawa-Abyssgard", "Mococo-Abyssgard"} <= set(chars))
+           or set(sheets) != set(chars) or not {"Fuwawa-Abyssgard", "Mococo-Abyssgard"} <= set(chars)
+           or set(chars) != set(ROSTER_CHARS) or set(world) != set(ROSTER_WORLD))
     names = {v["fields"].get("Name") for v in cards.values()}
     leaked = [n for n in qa_packets.REFERENCE_ONLY if n in names]
     det += [f"sheet/card mismatch: {sorted(set(sheets) ^ set(chars))}"] if set(sheets) != set(chars) else []
+    det += [f"roster vs bible: {sorted(set(ROSTER_CHARS + ROSTER_WORLD) ^ (set(chars) | set(world)))}"] \
+        if set(chars) != set(ROSTER_CHARS) or set(world) != set(ROSTER_WORLD) else []
     det += [f"reference-only people with cards: {leaked}"] if leaked else []
     R.add("V02", "fail" if bad or leaked else "pass", "block", "Authorized inventory", det)
 
@@ -476,7 +482,7 @@ def cmd_build(args):
             for item in reg[k]:
                 fh.write(json.dumps({"kind": k, **item}, ensure_ascii=False) + "\n")
     cov = ["# Coverage (generated)", "", "| Member | Relationships words | Quoted lines in Dialogue Style | Open questions | World cards naming her |", "|---|---|---|---|---|"]
-    idx = ["# Index", "", f"Release {rev} · baseline {BASELINE} · 18 characters · 24 world elements · full cards (no compact variants).", "",
+    idx = ["# Index", "", f"Release {rev} · baseline {BASELINE} · {EXPECT['characters']} characters · {EXPECT['world']} world elements · full cards (no compact variants).", "",
            "## Characters (Myth → Promise/Council → Advent → Justice)", "", "| Member | Status | Units (Groups) | Card | Performance sheet | World cards naming her |", "|---|---|---|---|---|---|"]
     for stem in CAST_ORDER:
         c = cards[stem]
@@ -499,9 +505,9 @@ def cmd_build(args):
         diff = field_diff(prev[-1] / "reference" / "bible", cards)
         ch = [f"# Changelog — {rev}", "", f"Field-level changes since {prev[-1].name}:", ""] + (diff or ["- none"])
     else:
-        ch = [f"# Changelog — {rev}", "", "Initial release: 18 character cards and 24 world elements (all new)."]
+        ch = [f"# Changelog — {rev}", "", f"Initial release: {EXPECT['characters']} character cards and {EXPECT['world']} world elements (all new)."]
     (pkg / "CHANGELOG.md").write_text("\n".join(ch) + "\n", encoding="utf-8")
-    (pkg / "00-START-HERE.md").write_text(START_HERE.format(rev=rev, baseline=BASELINE,
+    (pkg / "00-START-HERE.md").write_text(START_HERE.format(rev=rev, baseline=BASELINE, nchar=EXPECT["characters"], nworld=EXPECT["world"],
                                                             draft="（草稿候選版，尚未通過全部檢查）" if args.draft else ""), encoding="utf-8")
     R2, snapshot2, _ = check_all(proj, "candidate", package=pkg, building=True)
     val = write_validation(proj, R2, snapshot2, "candidate", out=pkg / "validation.json")
@@ -511,7 +517,7 @@ def cmd_build(args):
     ledger = lab.read(proj / "research" / "qa" / "resolutions.md")
     manifest = {"release": rev, "draft": args.draft, "baseline": BASELINE,
                 "built_at": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "commit": commit, "dirty_worktree": dirty,
-                "snapshot": snapshot2, "counts": {"characters": 18, "world": 24, "sheets": 18},
+                "snapshot": snapshot2, "counts": dict(EXPECT),
                 "promotion": "author decisions (research/qa/promotions.md); GPT reviewed each card one round; not GPT approval",
                 "unresolved_findings": [l.split("|")[1].strip() for l in ledger.splitlines() if "| pending" in l or "| deferred" in l],
                 "runtime_tests": "not_run (statically validated; runtime untested)",
@@ -535,14 +541,14 @@ This worksheet does not change Sudowrite's context by itself.
 
 START_HERE = """# 從這裡開始 — holoen {rev}{draft}
 
-基準日 {baseline}。這一版有 **18 張角色卡**、**24 張世界觀卡**、18 份 ElevenLabs 表演表。全部用完整卡（沒有精簡版）。
+基準日 {baseline}。這一版有 **{nchar} 張角色卡**、**{nworld} 張世界觀卡**、{nchar} 份 ElevenLabs 表演表。全部用完整卡（沒有精簡版）。
 狀態：**靜態檢查通過與否見 `validation.json`；實際匯入和配音測試尚未執行（runtime untested）。**
 索引：`01-INDEX.md`。改動：`CHANGELOG.md`。檔案雜湊與狀態：`manifest.json`。
 
 ## 1. 十分鐘匯入測試（請在新的、可丟棄的專案做）
 1. 新建專案 `holoen-{rev}-smoke`。不要在你正在寫的專案裡測重複匯入。
-2. Story Bible → Characters 標題旁 `•••` → Import → 上傳 `sudowrite/characters.csv`，確認 **18 張**。
-   Worldbuilding 同樣匯入 `sudowrite/worldbuilding.csv`，確認 **24 個**。每個合併 CSV 只匯入一次。
+2. Story Bible → Characters 標題旁 `•••` → Import → 上傳 `sudowrite/characters.csv`，確認 **{nchar} 張**。
+   Worldbuilding 同樣匯入 `sudowrite/worldbuilding.csv`，確認 **{nworld} 個**。每個合併 CSV 只匯入一次。
 3. 打開 Fuwawa、Mococo 和另一個角色：雙胞胎是兩張卡、`Role` 是 Protagonist、自訂特質（含 `Audio Tags`）有內容。
    找一個多行或有標點的欄位，和 `sudowrite/paste.md` 對照。打開 FUWAMOCO 和一張 History 卡。
 4. 確認 Secrets 都是空的（這一版全空；以後若有內容，生成前要先按眼睛圖示隱藏）。

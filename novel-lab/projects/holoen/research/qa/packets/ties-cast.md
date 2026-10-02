@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git eaed6b9. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 1e3399f. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### Cecilia Immergreen × Elizabeth Rose Bloodflame
@@ -97,6 +97,16 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Gura:** Gura is Fauna's hololive oshi; Mario Kart ("GOOWA FWANA RACING," 2021), a Dark Souls race (2024) and "Drawing Hololive Members From Memory with @GawrGura!" (2024-12-30). Mumei and Gura: "【VOICE CHALLENGE】in the same room? 💙🤎 #gumei" (2023) and a "ROOM REVIEW" (2025-04-21). [Observed S2 §Likes; S1]
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: Gura was Fauna's oshi; they drew hololive members from memory four days before Fauna graduated, and Gura and Mumei did a "ROOM REVIEW" together in Mumei's last week.
 
+### Ceres Fauna × IRyS
+- `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2023-10-09 | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
+- `bible/characters/Ouro-Kronii.md › [SW] Background`: In October 2023, she joined hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz.
+- `bible/world/hololive--Promise.md › How the Group Works`: - **Kronii inside the group:** Bae calls her "too talented, savage, and a 'tsundere granny'"; Fauna described Kronii's "gap moe," a cute side that shows when she's flustered; IRyS once wondered aloud how Kronii sounds when she's scared. Group bits and scares involving them are reported by clip titles and stay unverified. [Observed Kronii file K8 §Personality, K37 §Quotes, secondary]
+- `bible/world/hololive--Promise.md › [SW] Description`: Bae calls Kronii "too talented, savage, and a tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared.
+- `bible/world/hololive--Promise.md › [SW] Description`: IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and a recurring collaborator with Bae) graduated in 2025.
+
+### Ceres Fauna × Koseki Bijou
+- `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Koseki Bijou: "Coach Fauna" in Bijou's Hitman runs and a "Sweaty TryHard Gamers" squad with Bae and Kaela.
+
 ### Ceres Fauna × Nanashi Mumei
 - `bible/characters/Ceres-Fauna.md › Background Timeline`: | 2024-12-22 | "It's Not a Phase" (Mumei & Fauna) released | [Official F6] |
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Nanashi Mumei | Council/Promise genmate (6 / 14 / 3 / 4) | Recurring collaborator from debut week (Don't Starve Together, 2021-08-25); their comedy includes Fauna's exaggerated protective and possessive bits ("return to nature"); their original duet "It's Not a Phase" premiered at -Breaking Dimensions- (2024-08-24) and was released 2024-12-22; one of her last streams: "Mumei and Fauna investigate infighting on Wikipedia Talk Pages" (2024-12-20) | [Observed F2 §Personality, secondary; F3] [Official F5, F6] |
@@ -104,12 +114,16 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Their public comedy includes Fauna's exaggerated protective and possessive bits ("return to nature"); Mumei's macabre humor complicates the apparent protector/protected roles.
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Ceres Fauna, Nanashi Mumei, Ouro Kronii | Council members ("SNOTCast") | Shared podcast-style collabs; Kronii rivalry and "senpai tax" bits are reported but [Unverified] (title-level only) | [Observed G2 §Relationships; G8b titles] |
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Ceres Fauna, Nanashi Mumei | Promise alumnae ("FruitPunch"; "A Towl and a Gremlin"; secondary) | Fauna: The Coughing Baby Award Show; Mumei: Echo Point Nova | [Observed GG2, GG3] |
+- `bible/characters/IRyS.md › Background Timeline`: | 2023-10-09 | Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae | [Observed R2 §2023] |
 - `bible/characters/IRyS.md › Relationship Map`: | Nanashi Mumei, Ceres Fauna (graduated) | Promise unitmates | Early Council collabs (Jump King, Minecraft) | [Observed R2; R3] |
+- `bible/characters/IRyS.md › [SW] Background`: She debuted on 2021-07-11 as hololive English's VSinger, the sole member of -Project: HOPE-, and joined -Promise- with Fauna, Kronii, Mumei and Bae in 2023; since the 2026 merger she is in hololive -Promise-.
 - `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2024-12-22 | "It's Not a Phase" (Mumei & Fauna) released | [Official M6] |
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Ceres Fauna | Genmate (4 / 30 / 26 / 4) | Recurring collaborator; their comedy includes Fauna's exaggerated protective and possessive bits; their duet "It's Not a Phase" (premiered 2024-08-24, released 2024-12-22); "Mumei and Fauna investigate infighting on Wikipedia Talk Pages" (2024-12-20) | [Observed M2; M3; Fauna file] [Official M5, M6] |
 - `bible/characters/Nanashi-Mumei.md › Story Engine`: 3. Fauna tries to "return Mumei to nature" during a shooter match.
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring collaborator; their comedy includes Fauna's exaggerated protective, possessive bits ("return to nature"), complicated by Mumei's macabre humor; they premiered their duet "It's Not a Phase" at the 2024 English concert.
+- `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2023-10-09 | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Gawr Gura (graduated) | Fellow EN ("SNOTCast" with Fauna and Mumei) | A friendly rivalry and Gura's "CLOCK WOMAN" nickname are reported but [Unverified] | [Observed K8 §Relationships, secondary] |
+- `bible/characters/Ouro-Kronii.md › [SW] Background`: In October 2023, she joined hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz.
 - `bible/world/Fauna-and-Mumei-Pairs.md › Conflicts and Story Hooks`: 1. (Before 2025) Fauna tries to "return Mumei to nature" during a shooter match; Mumei screeches.
 - `bible/world/Fauna-and-Mumei-Pairs.md › Fauna and Mumei`: - **Each other** (Mumei's channel 4 / 30 / 26 / 4; Fauna's 6 / 14 / 3 / 4, 2021 → 2024): Council genmates who collaborated in debut week (Don't Starve Together, "Surviving in the wilderness with Mumei!", 2021-08-25) and stayed recurring creative partners (Minecraft, "Adventuring with Mumei!", 2021-09-13). The wiki describes Fauna as protective of Mumei "to the point of possessiveness and extreme jealousy," inviting her to "return to nature" when she is upset, while Mumei's own darker side later made it unclear "who needs to be protected from whom" (a later characterization, secondary). They premiered their original duet "It's Not a Phase" at -Breaking Dimensions- (2024-08-24; released 2024-12-22), revealed their fourth outfits the same weekend (2024-02), and one of Fauna's last streams was "Mumei and Fauna investigate infighting on Wikipedia Talk Pages" (2024-12-20). [Observed S2 Fauna §Personality, S3 Mumei §Personality, §2024, secondary; S1] [Official S6, S7]
 - `bible/world/Fauna-and-Mumei-Pairs.md › Hard Facts`: - Fauna graduated 2025-01-03; Mumei 2025-04-27 (04-28 JST). After those dates they appear only as memories.
@@ -122,6 +136,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: With the cast: Mumei and Kronii (KronMei) were frequent partners, including a "Donut Hole" cover duet (2025-04); Fauna and Kronii defused bombs speaking only in ASMR (2021).
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Rules`: Fauna graduated on 2025-01-03 and Mumei on 2025-04-27 (04-28 JST); by this project's continuity rule, after those dates they appear only as memories and callbacks.
 - `bible/world/hololive--Promise.md › Members and Status`: - Graduated from Promise: Ceres Fauna (2025-01-03), Nanashi Mumei (2025-04-27; 04-28 in Japan time). No reasons are given in stories. [Observed S1–S3, secondary]
+- `bible/world/hololive--Promise.md › [SW] Description`: IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and a recurring collaborator with Bae) graduated in 2025.
 - `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 4. A Promise anniversary after 2025, the three remembering Fauna and Mumei with jokes.
 
 ### Ceres Fauna × Nerissa Ravencroft
@@ -134,9 +149,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Ouro Kronii | Genmate (6 / 8 / 6 / 2) | Fauna described Kronii's "gap moe"; "Defusing bombs with Kronii but we can only speak in ASMR" (2021); Bread & Fred (2023) | [Observed Kronii file K8; F3] |
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Ouro Kronii: genmate; they defused bombs speaking only in ASMR (2021), and Fauna praised Kronii's "gap moe."
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Ceres Fauna, Nanashi Mumei, Ouro Kronii | Council members ("SNOTCast") | Shared podcast-style collabs; Kronii rivalry and "senpai tax" bits are reported but [Unverified] (title-level only) | [Observed G2 §Relationships; G8b titles] |
+- `bible/characters/IRyS.md › Background Timeline`: | 2023-10-09 | Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae | [Observed R2 §2023] |
+- `bible/characters/IRyS.md › [SW] Background`: She debuted on 2021-07-11 as hololive English's VSinger, the sole member of -Project: HOPE-, and joined -Promise- with Fauna, Kronii, Mumei and Bae in 2023; since the 2026 merger she is in hololive -Promise-.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Ceres Fauna (graduated 2025): Council genmate who described Kronii's "gap moe"; they once defused bombs speaking only in ASMR.
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Kronii:** Mumei and Kronii ("KronMei") collaborated often (Mumei's channel 5 / 27 / 25 / 1 / 2): "The Grim Adventures of Mumei and Kronii!" (2021), We Were Here Forever (2022), Untitled Goose Game (2025-02), and a "Donut Hole" cover MV together (2025-04-11). Fauna and Kronii: "Defusing bombs with Kronii but we can only speak in ASMR" (2021), Bread & Fred (2023); Fauna described Kronii's "gap moe." [Observed S1; Kronii file K8]
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: With the cast: Mumei and Kronii (KronMei) were frequent partners, including a "Donut Hole" cover duet (2025-04); Fauna and Kronii defused bombs speaking only in ASMR (2021).
+- `bible/world/hololive--Promise.md › How the Group Works`: - **Kronii inside the group:** Bae calls her "too talented, savage, and a 'tsundere granny'"; Fauna described Kronii's "gap moe," a cute side that shows when she's flustered; IRyS once wondered aloud how Kronii sounds when she's scared. Group bits and scares involving them are reported by clip titles and stay unverified. [Observed Kronii file K8 §Personality, K37 §Quotes, secondary]
+- `bible/world/hololive--Promise.md › [SW] Description`: Bae calls Kronii "too talented, savage, and a tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared.
 
 ### Ceres Fauna × Shiori Novella
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | Fauna, Shiori and Nerissa sang "Lonely in Gorgeous" at -Breaking Dimensions- (2024-08-25); a 2023 reply from Nerissa on X: "Fauna-senpai!!! My Raven companion is named Shadow~" | [Official F5] [Observed—X post via wiki citation, research/x-posts.md] |
@@ -238,8 +257,12 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/FUWAMOCO.md › How the Twins Work Together`: - **Early joke:** "Fuwawa doesn't exist," because only Mococo joined the first Advent Minecraft collab; Shiori joked Mococo was hallucinating her. They "corrected" it on their show. [Observed S1 §Miscellaneous, secondary]
 
 ### Gawr Gura × IRyS
+- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Gawr Gura, IRyS, Hakos Baelz | Seniors | Keep Talking and Nobody Explodes and The Forest with Gura (2025); Elden Ring Nightreign with IRyS and Bijou (2025); "BratTea" with Bae (secondary) | [Observed CI2, CI3] |
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: - Measured (N20; a 2026 solo chat): median pitch about 214 Hz (p10–p90 172–297 Hz), a mid-range speaking voice like IRyS's (214–226 Hz), lower than Kiara or Gura; about 159 words per minute of speech. Group-stream windows read higher (284–289 Hz) because several voices share them. Sample results only.
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 | "ENigmatic Recollection" (ENReco) announced: EN members in the fantasy world Libestal, via a Minecraft series, animation and songs | Guilds: IRyS in "Cerulean Cup," Nerissa and Gura in "Scarlet Wand" |
+
+### Gawr Gura × Koseki Bijou
+- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Gawr Gura, IRyS, Hakos Baelz | Seniors | Keep Talking and Nobody Explodes and The Forest with Gura (2025); Elden Ring Nightreign with IRyS and Bijou (2025); "BratTea" with Bae (secondary) | [Observed CI2, CI3] |
 
 ### Gawr Gura × Mori Calliope
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert."
@@ -401,6 +424,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gigi Murin: in the ENigmatic Recollection role-play story Gigi's knight Gonathon married Ame's Jyonathan ("ClueChaser," a secondary pair name).
 
 ### IRyS × Koseki Bijou
+- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Gawr Gura, IRyS, Hakos Baelz | Seniors | Keep Talking and Nobody Explodes and The Forest with Gura (2025); Elden Ring Nightreign with IRyS and Bijou (2025); "BratTea" with Bae (secondary) | [Observed CI2, CI3] |
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: IRyS and Bijou: Elden Ring Nightreign.
 - `bible/characters/IRyS.md › Story Engine`: 5. A horror co-op with Bijou where IRyS is the one scaring her partner.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at hololive night at Dodger Stadium (2025).
@@ -415,8 +439,19 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 1. CHADCast records an episode while Calli and IRyS disagree on what counts as "chad."
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2021-07-29 | Calli's first collab with IRyS | MorIRyS |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
+- `bible/world/IRyS-and-Nerissa-Pairs.md › IRyS`: - **IRyS and Calli** (16 / 16 / 5 / 8 / 2 / 1): Calli's first collab with her came on July 29, 2021, eighteen days after IRyS's debut ("Just Irystocrats and DeadBEATS"), then a karaoke collab (2021-10). With Hakos Baelz they host CHADCast ("Chaos, Hope, and Death!", from 2022-01-30; a 2025 episode: "We Went to a Hot Spring Together!!"). Later: "Two Pink Women Roll Up to Silent Hill" (2024-10-26), IRyS as Calli's HOLOMELO RADIO guest (2024-07), an off-collab karaoke with Momosuzu Nene (2025-04-23). Wiki unit: "MorIRyS." [Observed S1 titles; S2 IRyS §Relationships, secondary]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IRyS's debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke).
 - `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. During a fictional public tour panel, Calli, IRyS and Nerissa compare their stage personas.
+
+### IRyS × Nanashi Mumei
+- `bible/characters/Ceres-Fauna.md › [SW] Background`: She debuted on 2021-08-23 with hololive English -Council-, joined -Promise- with IRyS, Kronii, Mumei and Bae in 2023, won VTuber Awards for ASMR and for chatting streams, sang at both hololive English concerts (2023, and 2024, where she and Mumei premiered their duet "It's Not a Phase") and in Promise's musical "The Broken Promise"
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | IRyS | Promise unitmate from 2023 (CouncilRyS before that) | They played Overwatch together in Mumei's farewell week ("【OVERWATCH 2】 the final stream !!! with @IRyS," 2025-04-22); a Promise R.E.P.O. collab with IRyS, Kronii and Bae two days later; a guest at "Outside the Box" | [Observed M3] |
+- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: IRyS: Promise unitmate from 2023; they played Overwatch together in Mumei's farewell week, then a Promise R.E.P.O. collab with IRyS, Kronii and Bae (2025-04-24).
+- `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2023-10-09 | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
+- `bible/characters/Ouro-Kronii.md › [SW] Background`: In October 2023, she joined hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz.
+- `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **IRyS:** Promise unitmate from 2023 (CouncilRyS before that). "IRyS VS FAUNA SWITCH SPORTS BATTLE OF THE CENTURY" (2022); in Mumei's farewell week, "【OVERWATCH 2】 the final stream !!! with @IRyS" (2025-04-22) and a Promise R.E.P.O. collab with IRyS, Kronii and Bae during Mumei's farewell week (2025-04-24, F_EVW5Ig5QE); a guest at Mumei's "Outside the Box" (2024). [Observed S1]
+- `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: IRyS was their Promise unitmate; she and Mumei played Overwatch in Mumei's farewell week, then a Promise R.E.P.O. collab with IRyS, Kronii and Bae.
+- `bible/world/hololive--Promise.md › [SW] Description`: IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and a recurring collaborator with Bae) graduated in 2025.
 
 ### IRyS × Nerissa Ravencroft
 - `bible/characters/IRyS.md › [SW] Relationships`: Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert.
@@ -429,6 +464,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Nerissa`: - **Nerissa and IRyS** (1 / 0 / 3 / 1): the two singers: IRyS was a guest at Nerissa's 2025 3D concert ("Missing Promise"), they hunted together in Monster Hunter Wilds (2025-03-01), and in 2026 Nerissa made Miis of IRyS and Ina in Tomodachi Life ("Inya and Irys will be born!", 2026-04-23). [Observed S1 titles]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: Nerissa and IRyS: two singers; IRyS guested at that concert, and Nerissa put IRyS and Ina in Tomodachi Life.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Rules`: IRyS (2021) is Nerissa's senior; Myth are seniors to both.
+- `bible/world/hololive--Promise.md › How the Group Works`: - **IRyS inside the group:** before -Promise- existed, she and the Council were already billed together as "CouncilRyS" (an official 3D showcase, 2023-10-08 PDT / 10-09 JST); -Promise- was announced at its end. With Bae she keeps the running "BaeRyS" bit of being "married" and "divorced" (from a 2021 Minecraft bento joke); their joke fan-fiction made "Monopoly" a fandom euphemism. With Kronii she plays two-player games and races (see "IRyS and Nerissa Pairs"). [Observed S5 IRyS §Relationships, §Units, secondary; IRyS file R2]
 - `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. During a fictional public tour panel, Calli, IRyS and Nerissa compare their stage personas.
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 | "ENigmatic Recollection" (ENReco) announced: EN members in the fantasy world Libestal, via a Minecraft series, animation and songs | Guilds: IRyS in "Cerulean Cup," Nerissa and Gura in "Scarlet Wand" |
 
@@ -449,25 +485,34 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2025-07-05 | hololive night at Dodger Stadium, Los Angeles, the second hololive–Dodgers collaboration: Ina, IRyS and Bijou | a stadium sing-along |
 
 ### IRyS × Ouro Kronii
+- `bible/characters/Ceres-Fauna.md › [SW] Background`: She debuted on 2021-08-23 with hololive English -Council-, joined -Promise- with IRyS, Kronii, Mumei and Bae in 2023, won VTuber Awards for ASMR and for chatting streams, sang at both hololive English concerts (2023, and 2024, where she and Mumei premiered their duet "It's Not a Phase") and in Promise's musical "The Broken Promise"
 - `bible/characters/Gigi-Murin.md › Background Timeline`: | 2025-12-22 | "Bright Tonight" with IRyS, Kronii and FUWAMOCO released | [Official GG7] |
 - `bible/characters/Gigi-Murin.md › [SW] Background`: (presented on her 2025 birthday), "Bright Tonight" with IRyS, Kronii and FUWAMOCO (2025), and "enough"
 - `bible/characters/Gigi-Murin.md › [SW] Relationships`: IRyS, Kronii and FUWAMOCO: "Bright Tonight."
 - `bible/characters/IRyS.md › Relationship Map`: | Ouro Kronii | Promise genmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." | [Observed R2 §Quotes] |
 - `bible/characters/IRyS.md › [SW] Relationships`: Ouro Kronii: Promise unitmate and two-player rival; IRyS wondered aloud how Kronii sounds when she's scared, and said she, "a half-angel, half-demon Nephilim," could pull off Kronii's goddess look "somehow."
+- `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2025-04 | A farewell month of collabs across hololive: Overwatch with IRyS (04-22), a cover of "とんとんまーえ！" with Inugami Korone (04-23), Promise R.E.P.O. with IRyS, Kronii and Bae (04-24); last chatting stream with calls (04-26); 3D graduation stream (04-27, 04-28 JST) | [Observed M2; M3 titles] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | IRyS | Promise unitmate from 2023 (CouncilRyS before that) | They played Overwatch together in Mumei's farewell week ("【OVERWATCH 2】 the final stream !!! with @IRyS," 2025-04-22); a Promise R.E.P.O. collab with IRyS, Kronii and Bae two days later; a guest at "Outside the Box" | [Observed M3] |
+- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: IRyS: Promise unitmate from 2023; they played Overwatch together in Mumei's farewell week, then a Promise R.E.P.O. collab with IRyS, Kronii and Bae (2025-04-24).
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Hakos Baelz | Council/Promise genmate | Bae called her "too talented, savage, and a 'tsundere granny'". [Unverified, title only: Bae suddenly holding her hand; Kronii and IRyS scaring Bae together] | [Observed K8 §Personality, secondary; K27, K16 clip titles] |
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | IRyS | Promise genmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." [Unverified, title only: mutual insults "like good friends do"; co-conspirators in scares] | [Observed K37 §Quotes, secondary; K31, K16 clip titles] |
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: IRyS: Promise genmate and two-player rival (A Way Out, Bokura, a Powerwash "Best Maid" race) who once wondered aloud how Kronii sounds when she's scared, and in 2026 said she could pull off Kronii's goddess look "somehow."
 - `bible/world/Concerts-and-Live-Events.md › Conflicts and Story Hooks`: 2. IRyS counts down to her first solo concert in Tokyo; Kronii and Calli send messages.
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Kronii's steadiest cross-branch partner: Kaela. IRyS's closest JP friend: Flare.
+- `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **IRyS:** Promise unitmate from 2023 (CouncilRyS before that). "IRyS VS FAUNA SWITCH SPORTS BATTLE OF THE CENTURY" (2022); in Mumei's farewell week, "【OVERWATCH 2】 the final stream !!! with @IRyS" (2025-04-22) and a Promise R.E.P.O. collab with IRyS, Kronii and Bae during Mumei's farewell week (2025-04-24, F_EVW5Ig5QE); a guest at Mumei's "Outside the Box" (2024). [Observed S1]
+- `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: IRyS was their Promise unitmate; she and Mumei played Overwatch in Mumei's farewell week, then a Promise R.E.P.O. collab with IRyS, Kronii and Bae.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 2. IRyS and Kronii race again at something mundane; the loser has to admit she was scared.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - IRyS debuted 2021-07-11 (senior to Kronii by a month, to Nerissa by two years); Nerissa 2023-07-31.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2023-10-09 | -Promise- formed: IRyS and Kronii genmates | — |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Kronii: Promise unitmates since 2023 and friends since 2021, regulars at two-player games (A Way Out, Bokura, a Powerwash race, "May The Best Maid Win"); in 2026 IRyS said she could pull off Kronii's goddess look "somehow."
 - `bible/world/hololive--Promise.md › Conflicts and Story Hooks`: 2. IRyS tries to get Kronii to admit she was scared.
 - `bible/world/hololive--Promise.md › Hard Facts`: - Unverified title-only bits (Bae holding Kronii's hand, scaring Bae with IRyS) are not facts.
+- `bible/world/hololive--Promise.md › How the Group Works`: - **IRyS inside the group:** before -Promise- existed, she and the Council were already billed together as "CouncilRyS" (an official 3D showcase, 2023-10-08 PDT / 10-09 JST); -Promise- was announced at its end. With Bae she keeps the running "BaeRyS" bit of being "married" and "divorced" (from a 2021 Minecraft bento joke); their joke fan-fiction made "Monopoly" a fandom euphemism. With Kronii she plays two-player games and races (see "IRyS and Nerissa Pairs"). [Observed S5 IRyS §Relationships, §Units, secondary; IRyS file R2]
+- `bible/world/hololive--Promise.md › How the Group Works`: - **Kronii inside the group:** Bae calls her "too talented, savage, and a 'tsundere granny'"; Fauna described Kronii's "gap moe," a cute side that shows when she's flustered; IRyS once wondered aloud how Kronii sounds when she's scared. Group bits and scares involving them are reported by clip titles and stay unverified. [Observed Kronii file K8 §Personality, K37 §Quotes, secondary]
 - `bible/world/hololive--Promise.md › How the Group Works`: - **Themes:** -Council- members' personas were themed around concepts (Time for Kronii, Nature, Civilization, Chaos, Space); IRyS's persona is "Hope." Fan unit names built on these concepts are common (e.g. "SNOTCast": Shark, Nature, Owl, Time). [Observed Kronii file K8, secondary]
 - `bible/world/hololive--Promise.md › Members and Status`: - Active: IRyS, Ouro Kronii, Hakos Baelz. [Observed S1 member table]
 - `bible/world/hololive--Promise.md › One-line Concept`: 2023. After two graduations in 2025, the active members are IRyS, Ouro Kronii and Hakos Baelz.
+- `bible/world/hololive--Promise.md › [SW] Description`: Bae calls Kronii "too talented, savage, and a tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared.
 - `bible/world/hololive--Promise.md › [SW] Description`: The group of Ouro Kronii and IRyS, hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline.
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2023-10-08/09 | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
 - `bible/world/hololive.md › History`: | 2023-10-09 | -Promise- formed (IRyS joins the remaining Council) | Kronii's group name |
@@ -720,11 +765,18 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Ina:** fellow artists; Mumei's drawing collabs with Ina (2023-01; "doodles with @NinomaeInanis," 2025-04-21). [Observed S1]
 
 ### Nanashi Mumei × Ouro Kronii
+- `bible/characters/Ceres-Fauna.md › [SW] Background`: She debuted on 2021-08-23 with hololive English -Council-, joined -Promise- with IRyS, Kronii, Mumei and Bae in 2023, won VTuber Awards for ASMR and for chatting streams, sang at both hololive English concerts (2023, and 2024, where she and Mumei premiered their duet "It's Not a Phase") and in Promise's musical "The Broken Promise"
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Ceres Fauna, Nanashi Mumei, Ouro Kronii | Council members ("SNOTCast") | Shared podcast-style collabs; Kronii rivalry and "senpai tax" bits are reported but [Unverified] (title-level only) | [Observed G2 §Relationships; G8b titles] |
+- `bible/characters/IRyS.md › Background Timeline`: | 2023-10-09 | Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae | [Observed R2 §2023] |
+- `bible/characters/IRyS.md › [SW] Background`: She debuted on 2021-07-11 as hololive English's VSinger, the sole member of -Project: HOPE-, and joined -Promise- with Fauna, Kronii, Mumei and Bae in 2023; since the 2026 merger she is in hololive -Promise-.
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | IRyS | Promise unitmate from 2023 (CouncilRyS before that) | They played Overwatch together in Mumei's farewell week ("【OVERWATCH 2】 the final stream !!! with @IRyS," 2025-04-22); a Promise R.E.P.O. collab with IRyS, Kronii and Bae two days later; a guest at "Outside the Box" | [Observed M3] |
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Ouro Kronii | Genmate ("KronMei"; 5 / 27 / 25 / 1 / 2) | "The Grim Adventures of Mumei and Kronii!" (Minecraft, 2021); We Were Here Forever; Untitled Goose Game (2025); a "Donut Hole" cover MV together (2025-04-11) | [Observed M3; Kronii channel] |
+- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: IRyS: Promise unitmate from 2023; they played Overwatch together in Mumei's farewell week, then a Promise R.E.P.O. collab with IRyS, Kronii and Bae (2025-04-24).
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Ouro Kronii ("KronMei"): genmate and frequent partner, from "The Grim Adventures of Mumei and Kronii!"
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): Council genmate and frequent partner (KronMei), from "The Grim Adventures of Mumei and Kronii!"
+- `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **IRyS:** Promise unitmate from 2023 (CouncilRyS before that). "IRyS VS FAUNA SWITCH SPORTS BATTLE OF THE CENTURY" (2022); in Mumei's farewell week, "【OVERWATCH 2】 the final stream !!! with @IRyS" (2025-04-22) and a Promise R.E.P.O. collab with IRyS, Kronii and Bae during Mumei's farewell week (2025-04-24, F_EVW5Ig5QE); a guest at Mumei's "Outside the Box" (2024). [Observed S1]
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Kronii:** Mumei and Kronii ("KronMei") collaborated often (Mumei's channel 5 / 27 / 25 / 1 / 2): "The Grim Adventures of Mumei and Kronii!" (2021), We Were Here Forever (2022), Untitled Goose Game (2025-02), and a "Donut Hole" cover MV together (2025-04-11). Fauna and Kronii: "Defusing bombs with Kronii but we can only speak in ASMR" (2021), Bread & Fred (2023); Fauna described Kronii's "gap moe." [Observed S1; Kronii file K8]
+- `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: IRyS was their Promise unitmate; she and Mumei played Overwatch in Mumei's farewell week, then a Promise R.E.P.O. collab with IRyS, Kronii and Bae.
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: With the cast: Mumei and Kronii (KronMei) were frequent partners, including a "Donut Hole" cover duet (2025-04); Fauna and Kronii defused bombs speaking only in ASMR (2021).
 
 ### Nanashi Mumei × Shiori Novella
@@ -753,6 +805,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Nerissa and Kronii at Serendipity.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii and Nerissa at Serendipity.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - IRyS debuted 2021-07-11 (senior to Kronii by a month, to Nerissa by two years); Nerissa 2023-07-31.
+- `bible/world/hololive--Promise.md › How the Group Works`: - **IRyS inside the group:** before -Promise- existed, she and the Council were already billed together as "CouncilRyS" (an official 3D showcase, 2023-10-08 PDT / 10-09 JST); -Promise- was announced at its end. With Bae she keeps the running "BaeRyS" bit of being "married" and "divorced" (from a 2021 Minecraft bento joke); their joke fan-fiction made "Monopoly" a fandom euphemism. With Kronii she plays two-player games and races (see "IRyS and Nerissa Pairs"). [Observed S5 IRyS §Relationships, §Units, secondary; IRyS file R2]
 
 ### Nerissa Ravencroft × Raora Panthera
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |

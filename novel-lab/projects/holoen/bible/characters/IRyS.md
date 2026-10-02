@@ -88,7 +88,7 @@ profile makes the duality the joke: "the most unpredictably yaba—*ahem*, 'surp
     [Observed R2 §Quotes, secondary]
 - **Suggestive teasing (non-explicit; kept under the authenticity rule):**
   - Teasing chat about a new outfit: "I think most of you guys are satisfied as long as you can see this…
-    up to here… You guys don't need to see the bottom half… I'm trying to make you guys feel
+    up to here… …don't need to see the bottom half… I'm trying to make you guys feel
     guilty. That's what I'm doing here, okay?" [ASR R20, 0:09:48–0:12:26; a closing "ashamed of yourself"
     heard by the first model only is not quoted]
   - About Kronii's goddess outfit, she calls herself "a half-angel, half-demon Nephilim" who "could pull it

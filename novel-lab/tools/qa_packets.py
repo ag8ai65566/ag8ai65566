@@ -30,9 +30,9 @@ COHORTS = {
         "world": ["hololive--Myth", "AmeSame", "Bone-Bros"],
     },
     "promise": {
-        "characters": ["Ouro-Kronii", "IRyS", "Ceres-Fauna", "Nanashi-Mumei"],
+        "characters": ["Ouro-Kronii", "IRyS", "Ceres-Fauna", "Nanashi-Mumei", "Hakos-Baelz"],
         "world": ["hololive--Promise", "Time-Duo", "Time-and-Death", "OctoClock", "Fauna-and-Mumei-Pairs",
-                  "IRyS-and-Nerissa-Pairs"],
+                  "IRyS-and-Nerissa-Pairs", "Hakos-Baelz-Pairs"],
     },
     "advent": {
         "characters": ["Shiori-Novella", "Koseki-Bijou", "Nerissa-Ravencroft", "Fuwawa-Abyssgard", "Mococo-Abyssgard"],
@@ -57,7 +57,7 @@ SHORT = {
     "Shiori-Novella": ["Shiori"], "Koseki-Bijou": ["Bijou", "Biboo"], "Nerissa-Ravencroft": ["Nerissa"],
     "Fuwawa-Abyssgard": ["Fuwawa", "FUWAMOCO"], "Mococo-Abyssgard": ["Mococo", "FUWAMOCO"],
     "Elizabeth-Rose-Bloodflame": ["Elizabeth", "Liz"], "Gigi-Murin": ["Gigi"],
-    "Cecilia-Immergreen": ["Cecilia"], "Raora-Panthera": ["Raora"],
+    "Cecilia-Immergreen": ["Cecilia"], "Raora-Panthera": ["Raora"], "Hakos-Baelz": ["Bae", "Baelz", "Hakos"],
 }
 UNIT_WORDS = {"myth2": ["Myth"], "promise": ["Promise", "Council"], "advent": ["Advent"], "justice": ["Justice"]}
 
@@ -74,6 +74,7 @@ UNITS = [
     {"unit": "Octo'clock", "members": ["Ninomae Ina'nis", "Ouro Kronii"], "evidence": "official Serendipity billing, 2026"},
     {"unit": "Rocku Wawa", "members": ["Takanashi Kiara", "Koseki Bijou"], "evidence": "official Serendipity billing, 2026"},
     {"unit": "BaeRyS", "members": ["Hakos Baelz", "IRyS"], "evidence": "official Serendipity billing, 2026"},
+    {"unit": "CHADCast", "members": ["Mori Calliope", "IRyS", "Hakos Baelz"], "evidence": "official music entry (\"Here Comes the CHADCast,\" 2026)"},
     {"unit": "Bloodraven", "members": ["Nerissa Ravencroft", "Elizabeth Rose Bloodflame"], "evidence": "official Serendipity billing, 2026"},
     {"unit": "B.F.F", "members": ["Fuwawa Abyssgard", "Mococo Abyssgard", "Raora Panthera"], "evidence": "official Serendipity billing, 2026"},
     {"unit": "Autofister (also CCGG)", "members": ["Gigi Murin", "Cecilia Immergreen"], "evidence": "official Serendipity billing and shop, 2026"},
@@ -96,7 +97,7 @@ CREDITS = [
     {"work": "enough", "credited": ["Gigi Murin", "FLAVORFOLEY"], "role": "vocals; composition, arrangement and mixing by FLAVORFOLEY", "evidence": "archived MV credits 3m15lUh0WP4"},
 ]
 # People outside the 18-member cast who appear in relationship claims (reference only: no cards).
-REFERENCE_ONLY = ["Hakos Baelz", "Tsukumo Sana", "Kobo Kanaeru", "Vestia Zeta", "Kureiji Ollie", "Kaela Kovalskia",
+REFERENCE_ONLY = ["Tsukumo Sana", "Kobo Kanaeru", "Vestia Zeta", "Kureiji Ollie", "Kaela Kovalskia",
                   "Moona Hoshinova", "Ayunda Risu", "Anya Melfissa", "Pavolia Reine", "Airani Iofifteen",
                   "Ookami Mio", "Tsunomaki Watame", "Oozora Subaru", "Houshou Marine", "Inugami Korone",
                   "Omaru Polka", "Momosuzu Nene", "Kazama Iroha", "Roboco", "Tokino Sora", "Yuzuki Choco",
@@ -320,7 +321,7 @@ def write_packets(cohort, files, qa, reg_path, commit):
 
 
 
-REF_SHORT = {"Hakos Baelz": ["Bae", "Baelz"], "Kobo Kanaeru": ["Kobo"], "Vestia Zeta": ["Zeta"],
+REF_SHORT = {"Kobo Kanaeru": ["Kobo"], "Vestia Zeta": ["Zeta"],
              "Kureiji Ollie": ["Ollie"], "Kaela Kovalskia": ["Kaela"], "Moona Hoshinova": ["Moona"],
              "Ayunda Risu": ["Risu"], "Anya Melfissa": ["Anya"], "Pavolia Reine": ["Reine"],
              "Airani Iofifteen": ["Iofi"], "Ookami Mio": ["Mio"], "Tsunomaki Watame": ["Watame"],
@@ -439,6 +440,12 @@ def main():
     commit = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--short", "HEAD"], capture_output=True,
                             text=True).stdout.strip()
     files = load(proj)
+    for c, own in COHORTS.items():  # a member added to the roster before her card is promoted is skipped, not fatal
+        for k in ("characters", "world"):
+            missing = [s for s in own[k] if s not in files]
+            if missing:
+                print(f"note: {c} {k} not in bible yet (skipped): {', '.join(missing)}")
+                own[k] = [s for s in own[k] if s in files]
     qa = proj / "research" / "qa"
     (qa / "packets").mkdir(parents=True, exist_ok=True)
     reg = build_registry(files, commit)

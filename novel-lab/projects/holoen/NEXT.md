@@ -1,5 +1,20 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-02 04:00 UTC）：**作者下令加入 Hakos Baelz、不做 Tsukumo Sana**（2026-10-02）。
+- **Bae 已起草**：角色卡 `runs/20261002-0236-character-Hakos-Baelz/claude-draft.md`、世界觀卡
+  `runs/20261002-0236-world-Hakos-Baelz-Pairs/claude-draft.md`、表演表 `export/elevenlabs/Hakos-Baelz.md`、
+  音檔報告 `research/audio-check/bae.md`（2026 年 5 個窗口、兩模型核對；私事段落不用）。13 張成員卡＋Promise、Concerts、
+  Cross-Branch Friends 已加 Bae 的關係（在 runs 的 final.md，**尚未收錄**）。工具：COHORTS（promise 加 Bae＋Pairs）、
+  SHORT、REFERENCE_ONLY、CHADCast 單位；release 的張數改由 COHORTS 推導（V02 在 Bae 收錄前會 fail，正常）。
+- **GPT 佇列第一個是 Bae 的一輪 xhigh 主張核對**（`runs/20261002-0236-character-Hakos-Baelz/to-gpt.free.md`；
+  重建用 scratchpad `mk_bae_review.py`）。結果出來後：逐條併進兩張草稿 → 複製成兩個 run 的 final.md（Merge Record 記處置）→
+  其他卡的 Bae 修改一起處理 → `qa_runs.py promote-changed --reason "Author decision (2026-10-02): Hakos Baelz added…"`、
+  兩張新卡用 `lab.py promote <run> --force` → export → qa_packets → validate（V02 應轉 pass）→ commit/push。
+- 之後佇列照舊：global → justice → myth1 → myth3 → myth4 → myth2 → promise（含 Bae）→ bridge events → ties-external。
+- **span_check 強化**：會抓跨行引句與表演表範例區塊；`asr_spans.py` 重跑不再丟掉舊的部分一致列。
+  無法機械判定的 40 句列在 `research/qa/span-candidates.md`，交給 09 聲音審計。嚴格的「兩模型全文比對」需要把第二模型
+  全文存進 repo（待辦）。
+
 狀態（2026-10-02 02:30 UTC，全卷審計進行中；GPT 額度 06:29 UTC 重置，send_later 06:31 自動開跑）：
 - **完成**：Advent cohort 審計（`research/qa/audit-advent.md`）已全部合併、收錄、匯出、推送；ledger 有 ADVENT-* 處置。
   另做 CLAUDE-SCOPE-002：流程紀錄（Merge Record、音檔報告、NEXT/project、舊草稿與提示副本）不再寫出被排除的具體私事。

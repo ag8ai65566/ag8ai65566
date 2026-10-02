@@ -53,8 +53,8 @@ into a sly, lower, teasing aside."
 ## 8. Example
 ```
 [bright, cheerful] HiRyS, iiiit's IRyS! Your seiso nephilim here to fill the world with hopium!
-[rapid, gushing] Okay, okay, so, like, the outfit? I knew you guys would like it. It's so cute. It's so cute!
-[sweet] You guys don't need to see the bottom half. [sly, lower] I'm trying to make you guys feel guilty. That's what I'm doing here, okay?
+[rapid, gushing] It's so cute. It's so cute!
+[sweet] …don't need to see the bottom half. [sly, lower] I'm trying to make you guys feel guilty. That's what I'm doing here, okay?
 [warm, cheerful] Thank you very much! See you guys again tomorrow!
 ```
 (Line 2 is a style demo built from her habits; line 1 is her official written greeting; the others are her lines, quoted only where both transcripts agree.)

@@ -1,8 +1,9 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-02T02:28Z",
- "snapshot": "9340cc63eba69f59532005464d5586284c2a8ca6e0ec5beb9ab47b900adc25d8",
+ "checked_at": "2026-10-02T03:30Z",
+ "snapshot": "5443b3696947d4882a02edbc737860d9426cc65b9ca31da7ba41ccb330ff4606",
  "blocking_failures": [
+  "V02",
   "V10",
   "V11",
   "V12",
@@ -20,21 +21,23 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 9340cc63eba69f59532005464d5586284c2a8ca6e0ec5beb9ab47b900adc25d8",
-    "66 inputs"
+    "snapshot 5443b3696947d4882a02edbc737860d9426cc65b9ca31da7ba41ccb330ff4606",
+    "67 inputs"
    ],
    "finding_ids": []
   },
   {
    "check_id": "V02",
    "title": "Authorized inventory",
-   "status": "pass",
+   "status": "fail",
    "severity": "block",
    "locator": null,
    "evidence": [
-    "characters 18/18",
-    "world 24/24",
-    "sheets 18/18"
+    "characters 18/19",
+    "world 24/25",
+    "sheets 19/19",
+    "sheet/card mismatch: ['Hakos-Baelz']",
+    "roster vs bible: ['Hakos-Baelz', 'Hakos-Baelz-Pairs']"
    ],
    "finding_ids": []
   },
@@ -95,10 +98,12 @@
   {
    "check_id": "V09",
    "title": "Units and retrieval coverage",
-   "status": "pass",
+   "status": "warn",
    "severity": "warn",
    "locator": null,
-   "evidence": [],
+   "evidence": [
+    "IRyS: Groups lacks CHADCast"
+   ],
    "finding_ids": []
   },
   {
@@ -141,6 +146,46 @@
    "severity": "block",
    "locator": null,
    "evidence": [
+    "bible/characters/Cecilia-Immergreen.md:61 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
+    "bible/characters/Cecilia-Immergreen.md:92 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
+    "bible/characters/Cecilia-Immergreen.md:129 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
+    "bible/characters/Cecilia-Immergreen.md:259 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
+    "bible/characters/Ceres-Fauna.md:85 quotes past a shared ASR span (fauna.md 0:45:36): \"If you heard your name, you will now be the recipient of my next spell,\"",
+    "bible/characters/Ceres-Fauna.md:147 quotes past a shared ASR span (fauna.md 0:45:36): \"If you heard your name, you will now be the recipient of my next spell.\"",
+    "bible/characters/IRyS.md:54 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
+    "bible/characters/IRyS.md:70 quotes past a shared ASR span (irys.md 0:05:37): \"HiRyS, iiiit's IRyS from hololive English -Promise-! I am (probably) the embodiment of HOPE, a seiso half angel – half demon nephilim here to bring hope to the world through song!!\"",
+    "bible/characters/IRyS.md:90 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
+    "bible/characters/IRyS.md:130 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty.\"",
+    "bible/characters/IRyS.md:138 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
+    "bible/characters/Nanashi-Mumei.md:272 quotes past a shared ASR span (mumei.md 0:26:39): \"), brags that she has never been scared of anything, and admits most of EN could beat her at arm wrestling. Caffeine makes her loud and spontaneous; surprise makes her screech. She loves drawing, rhythm and simulation games, shooters like Overwatch and DOOM, Vocaloid and\"",
+    "bible/characters/Ninomae-Inanis.md:75 quotes past a shared ASR span (ina.md 0:04:52): \"That's the Forbidden WAH. We don't say that in public.\"",
+    "bible/characters/Ninomae-Inanis.md:131 quotes past a shared ASR span (ina.md 0:04:52): \"That's the Forbidden WAH. We don't say that in public.\"",
+    "bible/characters/Ninomae-Inanis.md:131 quotes past a shared ASR span (ina.md 0:04:52): \"a fourth [WAH] with a different caption, and\"",
+    "bible/characters/Ninomae-Inanis.md:131 quotes past a shared ASR span (ina.md 0:04:52): \"that's the forbidden wah. We don't say that in public.\"",
+    "bible/characters/Ninomae-Inanis.md:131 quotes past a shared ASR span (ina.md 0:04:52): \"We don't say that in public\"",
+    "bible/characters/Ninomae-Inanis.md:215 quotes past a shared ASR span (ina.md 0:04:52): \"We don't say that in public.\"",
+    "bible/characters/Ouro-Kronii.md:64 quotes past a shared ASR span (kronii.md 1:39:19): \"Okay, that was my bad.\"",
+    "bible/characters/Ouro-Kronii.md:201 quotes past a shared ASR span (kronii.md 1:39:19): \"Okay, that was my bad.\"",
+    "bible/characters/Shiori-Novella.md:255 quotes past a shared ASR span (shiori.md 2:23:16): \"I'm really bad at remembering names.\"",
+    "bible/characters/Takanashi-Kiara.md:226 quotes past a shared ASR span (kiara.md 2:42:58): \"You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis.\"",
+    "bible/world/Justice-Pairs.md:173 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
+    "bible/world/Justice-Pairs.md:238 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
+    "bible/world/hololive--Justice.md:56 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
+    "export/elevenlabs/Cecilia-Immergreen.md:36 quotes past a shared ASR span (fuwamoco.md 1:11:16): \"Ew! Get away from me, you FREAK!\"",
+    "export/elevenlabs/Cecilia-Immergreen.md:57 quotes past a shared ASR span (shiori.md 2:25:37): \"Well, thank you very much for spending time with me today and\"",
+    "export/elevenlabs/Ceres-Fauna.md:40 quotes past a shared ASR span (fauna.md 0:45:36): \"If you heard your name, you will now be the recipient of my next spell.\"",
+    "export/elevenlabs/Fuwawa-Abyssgard.md:64 quotes past a shared ASR span (fuwamoco.md 5:55:28): \"It was a lot of fun! Bau bau!\"",
+    "export/elevenlabs/IRyS.md:32 quotes past a shared ASR span (irys.md 0:12:07): \"I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
+    "export/elevenlabs/IRyS.md:57 quotes past a shared ASR span (irys.md 0:12:07): \"don't need to see the bottom half.   I'm trying to make you guys feel guilty. That's what I'm doing here, okay?\"",
+    "export/elevenlabs/Koseki-Bijou.md:61 quotes past a shared ASR span (bijou.md 0:12:35): \"A worthy sacrifice, I will remember you.\"",
+    "export/elevenlabs/Nanashi-Mumei.md:61 quotes past a shared ASR span (mumei.md 0:19:41): \"I decide everything for humanity.   Civilization is temporary, after all.\"",
+    "export/elevenlabs/Nanashi-Mumei.md:63 quotes past a shared ASR span (mumei.md 1:31:02): \"Goodbye for now. I'll see you probably tomorrow, probably tomorrow. Bye-bye, bye-bye!\"",
+    "export/elevenlabs/Ninomae-Inanis.md:30 quotes past a shared ASR span (ina.md 0:04:52): \"We don't say that in public.\"",
+    "export/elevenlabs/Ninomae-Inanis.md:53 quotes past a shared ASR span (ina.md 0:04:52): \"We don't say that in public.\"",
+    "export/elevenlabs/Ouro-Kronii.md:21 quotes past a shared ASR span (kronii.md 1:39:19): \"Okay, that was my bad.\"",
+    "export/elevenlabs/Ouro-Kronii.md:31 quotes past a shared ASR span (kronii.md 1:39:19): \"Okay, that was my bad.\"",
+    "export/elevenlabs/Ouro-Kronii.md:53 quotes past a shared ASR span (kronii.md 1:39:19): \"Okay, that was my bad.\"",
+    "export/elevenlabs/Takanashi-Kiara.md:53 quotes past a shared ASR span (kiara.md 2:42:58): \"You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis.\"",
     "review pending: research/qa/voice-delivery.md"
    ],
    "finding_ids": []

@@ -88,7 +88,7 @@ profile makes the duality the joke: "the most unpredictably yaba—*ahem*, 'surp
     [Observed R2 §Quotes, secondary]
 - **Suggestive teasing (non-explicit; kept under the authenticity rule):**
   - Teasing chat about a new outfit: "I think most of you guys are satisfied as long as you can see this…
-    up to here… You guys don't need to see the bottom half… I'm trying to make you guys feel
+    up to here… …don't need to see the bottom half… I'm trying to make you guys feel
     guilty. That's what I'm doing here, okay?" [ASR R20, 0:09:48–0:12:26; a closing "ashamed of yourself"
     heard by the first model only is not quoted]
   - About Kronii's goddess outfit, she calls herself "a half-angel, half-demon Nephilim" who "could pull it
@@ -172,7 +172,7 @@ the wiki as units or pairings; -Promise- is official.
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Hakos Baelz | Promise genmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet | [Observed R2 §Relationships, §Likes and dislikes] |
+| Hakos Baelz | Promise genmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; "Gisneyland" and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
 | Mori Calliope | First collab partner (2021) | "MorIRyS"; CHADCast podcast trio with Bae | [Observed R2 §2021, units] |
 | Ouro Kronii | Promise genmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." | [Observed R2 §Quotes] |
 | Koseki Bijou | Frequent 2025–2026 co-op partner | Horror co-ops (Dead Space 3, Resident Evil 6 "w/ Biboo," 2026) | [Observed R3 titles] |
@@ -232,7 +232,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS
+hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast
 
 ## [SW] Other Names
 Irys, SeisoRyS, YabaIRyS
@@ -307,6 +307,8 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
   checked by Claude against the official Serendipity report and announcements:** "BaeRyS" (official Serendipity unit with Bae) added to Groups.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** BaeRyS's "LUVATORRRRRY!" and Mio's "Night Loop" with IRyS and Bijou added (official report).
+- **2026-10-02, cast expansion (author: add Hakos Baelz, and complete everyone's relationship web):** Bae entry extended ("High Tide" with Moona and Suisei, 2024; covers and off-collabs) (sources in Bae's file, HB3/HB5/HB8/HB20, and the world card "Hakos Baelz Pairs").
+- **2026-10-02:** "CHADCast" added to Groups (official music entry "Here Comes the CHADCast"; Calli's and Bae's Groups already list it).
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

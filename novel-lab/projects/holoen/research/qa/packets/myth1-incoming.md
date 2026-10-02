@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git eaed6b9.
+Snapshot: git 1e3399f.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Cori Malliope|Mori Calliope|Calliope Mori|Last Writes|Kawaiiope|Miss Mori|Takamori|TakaMori|Mor Mori|Calliope|CallioP|森カリオペ|Calli|Mowi|Mori|LYRA)(
+Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Mori Calliope|Cori Malliope|Calliope Mori|Last Writes|Miss Mori|Kawaiiope|CHADCast|Mor Mori|Calliope|TakaMori|Takamori|CallioP|森カリオペ|Calli|Mori|Mowi|LYRA)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: (2026; Cecilia wrote the lyrics and directed it), a 2026 3D live, and the Serendipity concert, where she also sang "Break It Down" with Vestia Zeta and Shiori Novella and "Cloudy Sheep" with Tsunomaki Watame and Mori Calliope.
@@ -203,6 +203,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Cori Malliope|Mori 
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Nerissa`: - **Nerissa and Kiara ("KiaRissa")** (15 / 12 / 3 / 0): Kiara is Nerissa's oshi; in Nerissa's lore she worked at KFP before hololive . "Compatibility test with Kiara-senpai" (2023-08-14); Kiara showed her around the EN Minecraft server (2023-09-07); their Baldur's Gate 3 party with Calli and Bijou ("Killing, Two Birds, with One Stone," 2023); "Rating your CARS with NERISSA" (2023-10-21); "GIRLSTALK with Nerissa, EN BIRB GIRLS PARTY!" (2025-04-08); a CHICAGO watchalong "with the musical connoisseur Nerissa" (2025-07-09). [Observed S1 titles; S3 Nerissa §Relationships, §Lore, secondary]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Nerissa`: - **Nerissa and Calli** (6 / 7 / 3 / 1): the BG3 party (2023); Calli's "I Gathered 8 Cute People to Destroy their Friendships" (Mario Party, 2024-11); Calli as guest at Nerissa's 2025 3D concert ("Bocca della Verità"); the duet "OVER//RIDE – Mori Calliope × Nerissa Ravencroft" (2025-07-18); Nerissa as HOLOMELO RADIO guest (2025-07); Nerissa sang charity karaoke for #GOLIVEforLOVE (2026-02-17). Nerissa was Calli's first Instagram follower. [Observed S1 titles; S3, secondary]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2021-07-29 | Calli's first collab with IRyS | MorIRyS |
+- `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2022-01-30 | First CHADCast | Chaos, Hope, and Death |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 1. CHADCast records an episode while Calli and IRyS disagree on what counts as "chad."
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 4. Calli and Nerissa rehearse a duet; Calli's flow meets Nerissa's flirting.

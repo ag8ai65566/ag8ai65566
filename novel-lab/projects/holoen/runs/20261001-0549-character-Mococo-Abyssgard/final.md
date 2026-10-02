@@ -155,6 +155,7 @@ that belong to Mococo or define her.
 | Cecilia Immergreen | Justice kouhai ("Cecemoco") | The twins had hoped for a robot-girl member before Cecilia's debut; a Chrono Trigger off-collab (2026-04-25) | [Observed MC2; MC3 GmcYjV6aTuA] |
 | Ouro Kronii | Senior ("WatchDog," with Fuwawa) | Among Us, Team Fortress 2, 7 Days to Die (2023–24) | [Observed MC2; MC3] |
 | Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Raora drew the twins a shikishi portrait before her debut and gave it "with big tears in her eyes" | [Official MC4] |
+| Hakos Baelz | Promise senior | Gigi's "Spring Party" collab with FUWAMOCO and Bae (2025-03-31); a FUWAMOCO short dancing to "bae-senpai's new song SNAKE EYES" (2026-03-20) | [Bae file HB3, HB5, HB8, HB20] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their
@@ -238,7 +239,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Mococo is a guard dog whose job is to protect your smile (and to make a little chaos). As an idol she and Fuwawa chase their list of more than a hundred dreams, and she wants every Ruffian to keep going one step a day.
 
 ## [SW] Relationships
-Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: the twins' fictional dog mascot; in the prison-break lore, Mococo throws Pero at the guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Cecilia is also Mococo's Chrono Trigger partner, including 2026 off-collabs; Gigi sang "Bright Tonight" and "MAKE IT, BREAK IT" with the twins. Raora Panthera: their 2026 Serendipity unit partner in B.F.F. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO"). Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA." Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
+Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa" (she refused to repeat "Fuwa-nee"), and is embarrassed by their "FUWAMOCO sync." Pero: the twins' fictional dog mascot; in the prison-break lore, Mococo throws Pero at the guards. Advent: Shiori (Pen Pups), Bijou (Diamond Dogs), Nerissa (Sound Hounds; Nerissa's "Mofufu" bit). Omaru Polka: her oshi (Phasmophobia with Fubuki and Polka; a guest at their birthday concert). Gigi Murin ("GigiMoco," "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Cecilia is also Mococo's Chrono Trigger partner, including 2026 off-collabs; Gigi sang "Bright Tonight" and "MAKE IT, BREAK IT" with the twins. Raora Panthera: their 2026 Serendipity unit partner in B.F.F. Ouro Kronii: "WatchDog." Mori Calliope: "FUWAMOCALLI." Watson Amelia: "Detective Dogs." Nanashi Mumei (graduated 2025): "Fuwamoomco." Hakui Koyori: a FUWAMOCO MORNING guest host ("FUWAMOKOYO"). Elizabeth Rose Bloodflame: the twins sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA." Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity. Hakos Baelz: a 2025 spring collab with Gigi; FUWAMOCO danced to "bae-senpai's new song SNAKE EYES" (2026).
 
 ## [SW] Secrets
 (none)
@@ -280,6 +281,7 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
   attributable solo window found none (research/audio-check/fuwamoco.md, "Further solo-window search"); the audio
   report now states the attribution basis separately from transcript agreement. Voice directions stay provisional;
   no lines or measurements added.
+- **2026-10-02, cast expansion (author: add Hakos Baelz, and complete everyone's relationship web):** Relationships gained Bae (sources in Bae's file, HB3/HB5/HB8/HB20, and the world card "Hakos Baelz Pairs").
 
 ## Open Questions
 1. There is no clean solo sample of Mococo's ordinary speech in the archive (her 2025 solo is quiet and

@@ -92,8 +92,8 @@ timid side with people she meets for the first time, such as her senpai. [Observ
   - Sign-offs: "I'm your Mori, and I hope you'll remember me!" [Observed C4 §Name, secondary; C3,
     secondary]; "I'm your Mori, and you're gonna remember me!" [Official C11, closing message];
     "PEACE." [Observed C3, secondary].
-  - A casual sign-off heard in 2026: "I'll catch you guys on the flip side… I guess I'm out of here. All
-    right, take care everybody. I'll see you soon. Goodbye…" [ASR C30, 76-YKpxYL4g 4:45:37–4:46:28] "I'm your Mori" and
+  - A casual sign-off heard in 2026: "I'll catch you guys on the flip side." … "All right, take care
+    everybody. I'll see you soon. Goodbye…" [ASR C30, 76-YKpxYL4g 4:45:37–4:46:28] "I'm your Mori" and
     "PEACE" were not detected in that stream's transcript.
   - Settling in (2026): "I'm here, I got my yum-yum drink." / "I'm really just not very organized. I'm
     gonna be honest with you guys." [ASR C30, 76-YKpxYL4g 0:05:08–0:05:27]

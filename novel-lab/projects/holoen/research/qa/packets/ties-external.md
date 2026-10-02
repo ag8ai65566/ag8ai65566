@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git eaed6b9. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 1e3399f. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Mori Calliope
@@ -22,10 +22,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Mococo / FUWAMOCO | Advent ("GigiMoco," "bauBau"; secondary) | Secondary accounts: with Cecilia, a guest-host prank on FUWAMOCO MORNING #167 (2025-07-28); "Bright Tonight" (2025) and "MAKE IT, BREAK IT" with Zeta at Serendipity (2026) with both twins | [Observed GG2; Mococo file] [Official GG7, GG9] |
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Cecilia and Vestia Zeta: "Break It Down" at Serendipity.
 
-### Ceres Fauna × Hakos Baelz
-- `bible/characters/Ceres-Fauna.md › Behavioral Traits`: 6. She knows "surprisingly deep" cursed memes and plays horror games often, alone and with friends (Bae's and Fauna's "MONTH OF HORRORS," 2022). [Official F1] [Observed F3 titles]
-- `bible/characters/Ceres-Fauna.md › Story Engine`: 5. A horror game with Bae where Fauna is calm and Bae is not, until the jump scare.
-- `bible/characters/Ouro-Kronii.md › Behavioral Traits`: 5. When complimented, she may accept it deadpan ("I know.") [Observed K9, secondary snippet]. Fauna described a "gap moe" side of her [Observed K8 §Personality, secondary]. [Unverified, title only: that sincere or physical affection flusters her, e.g. Bae suddenly holding her hand (K27 clip title). Off the card until a transcript or recording is checked.]
+### Ceres Fauna × Kaela Kovalskia
+- `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Koseki Bijou: "Coach Fauna" in Bijou's Hitman runs and a "Sweaty TryHard Gamers" squad with Bae and Kaela.
 
 ### Ceres Fauna × Tsukumo Sana
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Tsukumo Sana | Council genmate (graduated 2022) | Sana designed the Council's "Beeg Smol" models; Fauna: "Go give [Sana] lots of love because she deserves it, even though she's a little bit... disgusting." | [Observed F2 §Quotes, secondary] |
@@ -54,59 +52,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity.
 - `bible/characters/Gigi-Murin.md › [SW] Background`: (Gigi helped with the lyrics and designed the chibi models) and sang it at the Serendipity concert, where Gigi also sang "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO.
 
-### Hakos Baelz × IRyS
-- `bible/characters/IRyS.md › [SW] Relationships`: (born from a Minecraft bento; their joke fan-fiction made "Monopoly" a fandom euphemism), and a creative partner: at their 2026 Serendipity duo stage IRyS said she leans on Bae's "strong vision" when she's indecisive, and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable; they call their dynamic "a can of worms."
-- `bible/characters/Mori-Calliope.md › Background Timeline`: | 2022 | CHADCast begins with IRyS and Hakos Baelz. | [Observed C12] |
-- `bible/characters/Mori-Calliope.md › Relationship Map`: | IRyS, Hakos Baelz | CHADCast cohosts | A chaotic podcast trio. Bae calls her "Cori Malliope." | [Observed C12; C4 nickname list, secondary] |
-- `bible/characters/Mori-Calliope.md › [SW] Background`: She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella.
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"); Bae calls her "Cori Malliope," and IRyS joined her as the "Two Pink Women" of Silent Hill 2.
-- `bible/characters/Ouro-Kronii.md › Behavioral Traits`: 7. [Unverified, title only] When someone else is easier to frighten, she helps set up the scare (with IRyS, on Baelz). [K16 clip title; off the card]
-- `bible/characters/Ouro-Kronii.md › Relationship Map`: | Hakos Baelz | Council/Promise genmate | Bae called her "too talented, savage, and a 'tsundere granny'". [Unverified, title only: Bae suddenly holding her hand; Kronii and IRyS scaring Bae together] | [Observed K8 §Personality, secondary; K27, K16 clip titles] |
-- `bible/characters/Ouro-Kronii.md › Voice Profile`: - Colleagues: by name or short form (Ina, Bae, IRyS).
-- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | IRyS | Promise musical "The Broken Promise" (2024-12-14); 3D lives "The Devil Wears Hope" (2024-11-17), "HOPE UPON A STAR" (2025-03-16), "Racing Towards Hope" (2026-03, race-queen outfit); World Tour '25 lead; Serendipity with Hakos Baelz; first solo concert "HOPE ||: Beyond the Stars," Tokyo, 2026-10-06 | IRyS file R2, R3; S1 |
-- `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IRyS's debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke).
-- `bible/world/hololive--Promise.md › Conflicts and Story Hooks`: 6. Bae announces another BaeRyS "divorce"; IRyS demands the potato bento back.
-- `bible/world/hololive--Promise.md › Hard Facts`: - Unverified title-only bits (Bae holding Kronii's hand, scaring Bae with IRyS) are not facts.
-- `bible/world/hololive--Promise.md › How the Group Works`: - **IRyS and Bae at Serendipity (2026):** paired for the 4th concert, their first stage as a duo. IRyS: Bae "always has a strong vision" for projects, so when IRyS is "indecisive or wishy-washy" she turns to Bae's opinion, and she admires Bae's creativity; Bae: IRyS was "the very first senpai I had ever met," and she admires IRyS's "easy-going nature and natural humor" that makes everyone "laugh and feel comfortable." Their unit dynamic, in their words: "a can of worms lol" (IRyS), "Complicated XD" (Bae). [Official S6]
-- `bible/world/hololive--Promise.md › Members and Status`: - Active: IRyS, Ouro Kronii, Hakos Baelz. [Observed S1 member table]
-- `bible/world/hololive--Promise.md › One-line Concept`: 2023. After two graduations in 2025, the active members are IRyS, Ouro Kronii and Hakos Baelz.
-- `bible/world/hololive--Promise.md › [SW] Description`: IRyS and Bae keep the "BaeRyS" bit of being "married" and "divorced," which turned "Monopoly" into a fandom euphemism, and they are also creative partners: paired for the 2026 Serendipity concert, IRyS leans on Bae's "strong vision" when she's indecisive, Bae admires IRyS's humor that makes everyone comfortable, and they call their dynamic "a can of worms" and "Complicated."
-- `bible/world/hololive--Promise.md › [SW] Description`: The group of Ouro Kronii and IRyS, hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline.
-
-### Hakos Baelz × Koseki Bijou
-- `bible/characters/IRyS.md › [SW] Relationships`: At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
-- `bible/world/Advent-Pairs.md › With Promise`: - **Hakos Baelz:** "BaeBi" with Bijou (#BAEBISleepOver, 2024-08-11). [Observed S1]
-
-### Hakos Baelz × Mori Calliope
-- `bible/characters/IRyS.md › Relationship Map`: | Mori Calliope | First collab partner (2021) | "MorIRyS"; CHADCast podcast trio with Bae | [Observed R2 §2021, units] |
-- `bible/characters/IRyS.md › [SW] Relationships`: Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae.
-- `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IRyS's debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke).
-
-### Hakos Baelz × Nanashi Mumei
-- `bible/characters/Ouro-Kronii.md › Relationship Map`: | Nanashi Mumei (graduated) | Council genmate ("KronMei") | [Unverified, title only: the "Flower" bit with Mumei and Baelz; Mumei accidentally blowing up the Bunkeronii's entrance] | [Observed K14 clip, K8 §Quotes and §Relationships, secondary; K28 clip titles] |
-- `bible/characters/Ouro-Kronii.md › Voice Profile`: - "Flower." → quote [Observed K8 §Quotes, secondary]; the flat, repeated Minecraft bit with Baelz and Mumei is [Unverified, K14 clip title; off the card].
-
-### Hakos Baelz × Nerissa Ravencroft
-- `bible/characters/Elizabeth-Rose-Bloodflame.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: "HELP!!" with Kobo Kanaeru and Hakos Baelz (day 1); unit Bloodraven with Nerissa, "Cruel Angel's Thesis" (day 2); "SUPERNOVA SUPER GIRL" and "ABOVE BELOW" with Justice | [Official EB4, EB8] |
-
-### Hakos Baelz × Ninomae Ina'nis
-- `bible/characters/Ouro-Kronii.md › Voice Profile`: - Colleagues: by name or short form (Ina, Bae, IRyS).
-- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 EDT | World Tour '24 "-Soar!-" opens at Anime NYC (Javits Center) with Kiara, Ina and Bae among seven performers; it ends in Taipei on 2025-01-18 | — |
-
-### Hakos Baelz × Ouro Kronii
-- `bible/characters/Ouro-Kronii.md › Relationship Map`: | Hakos Baelz | Council/Promise genmate | Bae called her "too talented, savage, and a 'tsundere granny'". [Unverified, title only: Bae suddenly holding her hand; Kronii and IRyS scaring Bae together] | [Observed K8 §Personality, secondary; K27, K16 clip titles] |
-- `bible/world/hololive--Promise.md › Conflicts and Story Hooks`: 1. Kronii and Bae dare each other through a horror game; the "tsundere granny" line comes back.
-- `bible/world/hololive--Promise.md › Hard Facts`: - Unverified title-only bits (Bae holding Kronii's hand, scaring Bae with IRyS) are not facts.
-- `bible/world/hololive--Promise.md › Members and Status`: - Active: IRyS, Ouro Kronii, Hakos Baelz. [Observed S1 member table]
-- `bible/world/hololive--Promise.md › One-line Concept`: 2023. After two graduations in 2025, the active members are IRyS, Ouro Kronii and Hakos Baelz.
-- `bible/world/hololive--Promise.md › [SW] Description`: The group of Ouro Kronii and IRyS, hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline.
-
-### Hakos Baelz × Shiori Novella
-- `bible/characters/Mori-Calliope.md › [SW] Background`: She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella.
-
-### Hakos Baelz × Takanashi Kiara
-- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 EDT | World Tour '24 "-Soar!-" opens at Anime NYC (Javits Center) with Kiara, Ina and Bae among seven performers; it ends in Taipei on 2025-01-18 | — |
-
 ### Hoshimachi Suisei × Mori Calliope
 - `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 1. Calli hosts another watch party for Suisei's concert and loses her composure on the high note.
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
@@ -131,8 +76,14 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nerissa-Ravencroft.md › Behavioral Traits`: 3. She is an open fangirl of Houshou Marine and Takanashi Kiara (a self-described KFP member); in her lore she worked at KFP before hololive. [Observed N2 §Likes and dislikes, §Lore, secondary]
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: | Fangirling (Kiara, Marine) | Fast, flustered, delighted | (no verified line; see Relationship Map) |
 
+### IRyS × Inugami Korone
+- `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2025-04 | A farewell month of collabs across hololive: Overwatch with IRyS (04-22), a cover of "とんとんまーえ！" with Inugami Korone (04-23), Promise R.E.P.O. with IRyS, Kronii and Bae (04-24); last chatting stream with calls (04-26); 3D graduation stream (04-27, 04-28 JST) | [Observed M2; M3 titles] |
+
 ### IRyS × Kaela Kovalskia
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Kronii's steadiest cross-branch partner: Kaela. IRyS's closest JP friend: Flare.
+
+### IRyS × Momosuzu Nene
+- `bible/world/IRyS-and-Nerissa-Pairs.md › IRyS`: - **IRyS and Calli** (16 / 16 / 5 / 8 / 2 / 1): Calli's first collab with her came on July 29, 2021, eighteen days after IRyS's debut ("Just Irystocrats and DeadBEATS"), then a karaoke collab (2021-10). With Hakos Baelz they host CHADCast ("Chaos, Hope, and Death!", from 2022-01-30; a 2025 episode: "We Went to a Hot Spring Together!!"). Later: "Two Pink Women Roll Up to Silent Hill" (2024-10-26), IRyS as Calli's HOLOMELO RADIO guest (2024-07), an off-collab karaoke with Momosuzu Nene (2025-04-23). Wiki unit: "MorIRyS." [Observed S1 titles; S2 IRyS §Relationships, secondary]
 
 ### IRyS × Ookami Mio
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: At Serendipity: "Tententengoku Jigokukoku" with Kiara as Rocku Wawa, and "Night Loop" with Ookami Mio (GAMERS) and IRyS.
@@ -143,7 +94,11 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Inugami Korone × Nanashi Mumei
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: Beyond EN, Mumei recorded a duet cover with Inugami Korone in her last week.
 
+### Inugami Korone × Ouro Kronii
+- `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2025-04 | A farewell month of collabs across hololive: Overwatch with IRyS (04-22), a cover of "とんとんまーえ！" with Inugami Korone (04-23), Promise R.E.P.O. with IRyS, Kronii and Bae (04-24); last chatting stream with calls (04-26); 3D graduation stream (04-27, 04-28 JST) | [Observed M2; M3 titles] |
+
 ### Kaela Kovalskia × Koseki Bijou
+- `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Koseki Bijou: "Coach Fauna" in Bijou's Hitman runs and a "Sweaty TryHard Gamers" squad with Bae and Kaela.
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Kaela Kovalskia | ID senior ("SMITTEN"; "Graondstone" with Bijou; secondary) | Lethal Company, Don't Starve Together, Buckshot Roulette, PEAK; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement (secondary) | [Observed RP2, RP3] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Kaela Kovalskia ("SMITTEN"): co-op partner; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement; with Koseki Bijou they are "Graondstone."
 - `bible/world/Advent-Pairs.md › Conflicts and Story Hooks`: 3. Kaela and Bijou build something enormous in silence while chat panics.
@@ -204,6 +159,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Mococo Abyssgard × Vestia Zeta
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Mococo / FUWAMOCO | Advent ("GigiMoco," "bauBau"; secondary) | Secondary accounts: with Cecilia, a guest-host prank on FUWAMOCO MORNING #167 (2025-07-28); "Bright Tonight" (2025) and "MAKE IT, BREAK IT" with Zeta at Serendipity (2026) with both twins | [Observed GG2; Mococo file] [Official GG7, GG9] |
+
+### Momosuzu Nene × Mori Calliope
+- `bible/world/IRyS-and-Nerissa-Pairs.md › IRyS`: - **IRyS and Calli** (16 / 16 / 5 / 8 / 2 / 1): Calli's first collab with her came on July 29, 2021, eighteen days after IRyS's debut ("Just Irystocrats and DeadBEATS"), then a karaoke collab (2021-10). With Hakos Baelz they host CHADCast ("Chaos, Hope, and Death!", from 2022-01-30; a 2025 episode: "We Went to a Hot Spring Together!!"). Later: "Two Pink Women Roll Up to Silent Hill" (2024-10-26), IRyS as Calli's HOLOMELO RADIO guest (2024-07), an off-collab karaoke with Momosuzu Nene (2025-04-23). Wiki unit: "MorIRyS." [Observed S1 titles; S2 IRyS §Relationships, secondary]
 
 ### Moona Hoshinova × Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |

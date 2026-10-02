@@ -16,6 +16,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 1d1db639dda3）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 42a05e475b44）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 9398b6643d78）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+- 2026-10-02 03:25 作者裁決收錄 final.md（sha256 247674a90936）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
 
 ## 20260930-0704-character-Ouro-Kronii
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 2707b4804e67）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -130,6 +131,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 7fcc9156819d）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 b1a1a319e2db）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 a87383909b3a）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
+- 2026-10-02 03:25 作者裁決收錄 final.md（sha256 ca4a07b6409d）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
 
 ## 20260930-2334-character-Nerissa-Ravencroft
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 aa61d24bfbcb）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -142,6 +144,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:53 作者裁決收錄 final.md（sha256 37cacac19837）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 c0292858811c）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 e54431198c0c）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 03:25 作者裁決收錄 final.md（sha256 3b7fd567d1a4）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
 
 ## 20261001-0001-world-IRyS-and-Nerissa-Pairs
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 9d957e0dc2fc）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -257,6 +260,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 211875ad4315）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 b738bbb71838）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 5469aa8dac98）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 03:25 作者裁決收錄 final.md（sha256 f3005a7454f9）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
 
 ## 20261001-1032-character-Raora-Panthera
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 59e230bd08cd）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
@@ -265,6 +269,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:56 作者裁決收錄 final.md（sha256 284ef84ad0d9）：Author decision (2026-10-02): scope rule applied to process notes (CLAUDE-SCOPE-002); no card facts changed
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 c0fe040210e8）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 afe5af6e6966）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+- 2026-10-02 03:25 作者裁決收錄 final.md（sha256 a45c1daaccb3）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)
 
 ## 20261001-1032-world-Justice-Pairs
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 ef62a1174aa6）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.

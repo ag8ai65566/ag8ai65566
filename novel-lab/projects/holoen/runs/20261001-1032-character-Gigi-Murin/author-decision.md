@@ -1,3 +1,4 @@
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 211875ad4315）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 b738bbb71838）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 02:20 作者裁決收錄 final.md（sha256 5469aa8dac98）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (task 09 preparation, tools/span_check.py)
+- 2026-10-02 03:25 作者裁決收錄 final.md（sha256 f3005a7454f9）：Author decision (2026-10-02): quotations trimmed to the span both ASR models share (CLAUDE-QUOTE-002, tools/span_check.py with wrapped quotes and sheet examples)

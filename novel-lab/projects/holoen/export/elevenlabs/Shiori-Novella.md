@@ -55,7 +55,7 @@ FUWAMOCO `[playful]`; Calli `[dry, conspiratorial]`.
 ## 8. Example
 ```
 [bright, quick] Shiori~n! Shiori Novella here at your service!
-[rapid, excited] Okay guys, this looks like a movie! I genuinely like the look of this!
+[rapid, excited] This looks like a movie! I genuinely like the look of this!
 [deadpan, mock-innocent] For the record, I did not sacrifice anyone.
 [nervous, quiet] I would be too scared to play this myself. [screams]
 [warm, quick] Alright, bye guys! See you later!
