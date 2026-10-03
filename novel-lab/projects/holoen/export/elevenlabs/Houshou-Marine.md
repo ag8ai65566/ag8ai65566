@@ -6,7 +6,7 @@
 > English glosses, and the voice works for Japanese, English or Chinese dialogue. Guide:
 > `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
+## 1. Voice Design prompt (original voice; provisional design choices)
 "Perfect audio quality. Young woman, bright, brassy, mature-sounding mid-high voice; rapid-fire and comic, jumping into shrieks when startled and loud cackles; switches on demand to a cutesy idol voice."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 - Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
@@ -42,7 +42,7 @@ With people (proposed scene directions, not observed conversational defaults): P
 - Reading guide (untested): ほうしょう まりん; せんちょう; ようそろー; しゅっこう. Listen to how the chosen voice says them and adjust.
 
 ## 7. Don't
-- Quiet, shy, slow or sleepy delivery; explicit humor.
+- Not as default: quiet, shy, slow or sleepy delivery. Pace and volume follow the scene. Keep humor non-explicit.
 
 ## 8. Example
 ```

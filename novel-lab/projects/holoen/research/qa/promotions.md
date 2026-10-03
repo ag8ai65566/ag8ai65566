@@ -411,6 +411,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 07:53 作者裁決收錄 final.md（sha256 bc7717aedd73）：Author decision (2026-10-02): reciprocal relationship ties for the JP four and the batch-2 members (relationship-web coverage); batch-2 lines are confirmed in GPT review runs D/F, the JP-four lines in the cohort audits
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 c20b3db68385）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 43a20fa4bb7c）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 0c0824dad8fa）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 
 ## 20261002-0529-character-Hoshimachi-Suisei
 - 2026-10-02 07:12 作者裁決收錄 final.md（sha256 812a7171957f）：Author decision (2026-10-02): Hoshimachi Suisei and AZKi added to the cast; GPT reviews each card one round only (run A), merged by Claude
@@ -418,17 +419,20 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 7f32820252c9）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 101adc6666c0）：Author decision (2026-10-03): cross-card lines corrected by the run E review (FUWAMOKOYO, m HOLD'EM wording, Glow in the Dark release date); one GPT round, merged by Claude.
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 fe2efe4e6a7e）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 db89149d5b8a）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 
 ## 20261002-0529-character-Nakiri-Ayame
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 523267b57dd5）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude
 - 2026-10-02 07:53 作者裁決收錄 final.md（sha256 2cb9232e35c8）：Author decision (2026-10-02): reciprocal relationship ties for the JP four and the batch-2 members (relationship-web coverage); batch-2 lines are confirmed in GPT review runs D/F, the JP-four lines in the cohort audits
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 c82646952259）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 6ed39914583c）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 36dc3ae46208）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 
 ## 20261002-0529-character-Nekomata-Okayu
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 97457c9edaf6）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude
 - 2026-10-02 07:53 作者裁決收錄 final.md（sha256 63e5fed4346b）：Author decision (2026-10-02): reciprocal relationship ties for the JP four and the batch-2 members (relationship-web coverage); batch-2 lines are confirmed in GPT review runs D/F, the JP-four lines in the cohort audits
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 acf231f9cad3）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 b9a7672c4ba2）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 
 ## 20261002-0529-world-JP-Senpai-Pairs
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 15ee00e65441）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude
@@ -439,6 +443,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 ## 20261002-0615-character-Houshou-Marine
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 499212948bf5）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 b611ca66c501）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 6faafe4d0552）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 
 ## 20261002-0615-character-Kazama-Iroha
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 8c6cee008a7a）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run F) merged by Claude; promoted.
@@ -446,6 +451,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 
 ## 20261002-0615-character-Kikirara-Vivi
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 21bf60dbf920）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 838e6bd0a87c）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 
 ## 20261002-0615-character-Laplus-Darknesss
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 665ffca4b0d3）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run E) merged by Claude; promoted.
@@ -457,10 +463,12 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 ## 20261002-0615-character-Shirogane-Noel
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 ff8ebb28f4bf）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 fa254fc26dbd）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 4a0cc2ac86b1）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 
 ## 20261002-0615-character-Shishiro-Botan
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 936bfc763af7）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 06d44f3cce81）：Author decision (2026-10-03): cross-card lines corrected by the run E review (FUWAMOKOYO, m HOLD'EM wording, Glow in the Dark release date); one GPT round, merged by Claude.
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 034bcb1e2f4a）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 
 ## 20261002-0615-character-Takane-Lui
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 3ef5bf38be6e）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run E) merged by Claude; promoted.
@@ -468,6 +476,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 
 ## 20261002-0615-character-Yukihana-Lamy
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 b7309e386259）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 711f2cdc71c6）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 
 ## 20261002-0615-world-JP-Senpai-Pairs-2
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 851a28351159）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude

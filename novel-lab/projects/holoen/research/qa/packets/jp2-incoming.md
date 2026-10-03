@@ -1,9 +1,9 @@
 # Audit packet: jp2 (incoming claims)
 
-Snapshot: git 82b1713.
+Snapshot: git 0c79d83.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: el and Calliope|Vivi and FUWAMOCO|JP Senpai Pairs 2|Marine and Kiara|Botan and IRyS|Shirogane Noel|Shishiro Botan|Houshou Marine|Kikirara Vivi|Yukihana Lamy|Lamy and Ina|Noel-danchou|Noel Deluxe|Lamy-mama|Shishiron|Shishiro|綺々羅々ヴィヴィ|Danchou|Maririn|Senchou|Danchō|Sencho|Marine|Senchō|宝鐘マリン|白銀ノエル|雪花ラミィ|Botan|獅白ぼたん|Wamy|Noel|Lamy|Vivi)(
+Matched names: vi and FUWAMOCO|Noel and Calliope|JP Senpai Pairs 2|Marine and Kiara|Shirogane Noel|Shishiro Botan|Botan and IRyS|Houshou Marine|Yukihana Lamy|Kikirara Vivi|Noel-danchou|Lamy and Ina|Noel Deluxe|Lamy-mama|Shishiron|Shishiro|綺々羅々ヴィヴィ|Danchou|Senchou|Maririn|Senchō|Sencho|Danchō|Marine|Botan|白銀ノエル|獅白ぼたん|宝鐘マリン|雪花ラミィ|Noel|Wamy|Lamy|Vivi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy"

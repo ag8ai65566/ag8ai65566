@@ -52,6 +52,24 @@ Shared guide (`docs/elevenlabs-v4.md`), revised per v1:
 | V2-037 | Applied. The kana guides for Shiori, Bijou, Fuwawa and Mococo are provisional and untested. |
 | V2-038 | Applied. Wiki-only catchphrases are labelled "SECONDARY transcription, wiki; not audio-verified" on the twins' cards. The repeated instances in Dialogue Style are labelled as wiki transcriptions. |
 
-## v3: the JP nine; v4: holoX
+## v3: the JP nine (runs/20261002-1657-check-QA-voice-v3)
 
-Pending. v3 has landed. v4 is queued in GPT and runs after the 2026-10-04 quota reset.
+GPT attested the Noel and Lamy cards and sheets as OK. The other seven were OK after the listed findings.
+
+| IDs | Disposition |
+|---|---|
+| V3-001 (Suisei) | Applied. The two "warukunai" remarks are separate ASR excerpts with their own timestamps, in §3 and §4. |
+| V3-002, V3-003 (Suisei) | Applied. The English introduction is official profile wording. "Hi, honey!" keeps its secondary label in the exported Audio Tags. |
+| V3-004 – V3-006 (AZKi) | Applied. Her self-naming comes from the April Fools 2026 debut parody, not habitual third-person speech; the dossier note is aligned. The §8 note restores the parody context, and the palette rows are labelled "debut parody". The giggle after a flourish is optional and provisional (§3, §4, §5). |
+| V3-007, V3-008 (Ayame) | Applied. "Urusai!" and "Komatta hitotachi." are separate excerpts in §3, §4, §8, the card's Dialogue Style and its palette table. The §8 note is renumbered. "Yo da yo!" carries its secondary label in §3 and §4. |
+| V3-009, V3-010 (Ayame, Okayu) | Applied. "Kawayo" is documented viewer vocabulary, not her required filler. Both cards' reading guides are marked provisional and untested. |
+| V3-011, V3-012 (Okayu) | Applied. "Nori de" is one sampled occurrence. §7 lists defaults to avoid, not absolute bans. |
+| V3-013 (Marine) | Applied. §7 lists defaults to avoid. Pace and volume follow the scene. |
+| V3-014 (Botan) | Applied to the sheet and the card's Voice & Delivery: a proposed horror-scene direction informed by secondary descriptions. |
+| V3-015 (Vivi) | Applied. Line 1 is a Style demo adapted from archived title wording. |
+| Merge handoff 3 (shared guide) | Already satisfied by the v1 revision of `docs/elevenlabs-v4.md`: measurements are research context, not synthesis targets, and nonverbal sounds are tag-only. |
+| Harmonization (Claude) | The VOICE-V2-001 Audio Tags opening and sheet §1 heading were applied to all nine, so the 2026 JP cards use the same provisional wording as the EN cast. |
+
+## v4: holoX
+
+Pending. The audit is queued in GPT and runs after the 2026-10-04 quota reset.

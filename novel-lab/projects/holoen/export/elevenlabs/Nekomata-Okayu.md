@@ -6,7 +6,7 @@
 > English glosses, and the voice works for Japanese, English or Chinese dialogue. Guide:
 > `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
+## 1. Voice Design prompt (original voice; provisional design choices)
 "Perfect audio quality. Young woman, soft, relaxed, boyish voice; lazy and warm, unhurried with trailing vowels,
 a playful purr when teasing, a laugh that climbs high."
 - The climbing laugh follows a secondary description; the purr is an original performance choice. Neither is a
@@ -20,7 +20,7 @@ a playful purr when teasing, a laugh that climbs high."
 
 ## 3. Write these habits into the script
 - "Boku" for "I"; "Mogu mogu~ Okayu~!" to greet; "Onigiryā" for her fans.
-- "Nori de" (by vibes); "Rettsura gō!"; a repeated "nya" when a move feels good.
+- "Nori de" ("by vibes") appears in one sampled game opening; use it as a situational example. "Rettsura gō!" is a documented start cue; repeated "nya" is documented during play.
 - Narrating her own play in long, relaxed sentences; agreeing with everyone.
 - Flirty teasing kept light and non-explicit.
 
@@ -46,7 +46,7 @@ Ina `[mellow]`; FUWAMOCO `[fond senpai, teasing]`.
   check. Listen to how the chosen voice says them and adjust.
 
 ## 7. Don't
-- A high, sugary voice; harsh or aggressive delivery; explicit flirting.
+- Not as default: a high, sugary voice or harsh, aggressive delivery. Stronger reactions follow the scene. Keep flirting non-explicit.
 
 ## 8. Example
 ```

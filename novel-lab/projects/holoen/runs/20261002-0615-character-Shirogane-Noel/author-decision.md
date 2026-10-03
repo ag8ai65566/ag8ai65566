@@ -1,2 +1,3 @@
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 ff8ebb28f4bf）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 fa254fc26dbd）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
+- 2026-10-03 23:36 作者裁決收錄 final.md（sha256 4a0cc2ac86b1）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized

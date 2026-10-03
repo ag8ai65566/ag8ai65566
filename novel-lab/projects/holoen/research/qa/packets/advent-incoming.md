@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 82b1713.
+Snapshot: git 0c79d83.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewel of Emotions|Fuwawa and Mococo|FUWAMOCO MORNING|Mococo Abyssgard|Fuwawa Abyssgard|Abyssgard twins|Demon of Sound|The Fluffy One|Shiori Novella|Demon of Soup|The Fuzzy One|Koseki Bijou|Sound Hounds|The Archiver|Advent Pairs|Diamond Dogs|FUWAMOCALLI|Last Writes|holoAdvent|Grindstone|Bloodraven|GreyScaleX|Rocku Wawa|Fluffy One|Fuwa-chan|Goth Rock|JewelBird|Adventrix|ShioRaven|Moco-chan|The Cell|Lil'Rock|FUWAMOCO|Pen Pups|Mogojyan|Shiori~n|Fuwa-nee|Nerissa|Shiorin|Mogogo|Fuwawa|Mococo|Shiori|Advent|Beejoe|Koseki|Bijou|Rissa|Biboo|Oobib|B.F.F|Beebs|Neri|Pero|GAGA|FWMC)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|hololive -Advent-|Fuwawa and Mococo|FUWAMOCO MORNING|Fuwawa Abyssgard|Mococo Abyssgard|Abyssgard twins|Demon of Sound|Shiori Novella|The Fluffy One|The Fuzzy One|Demon of Soup|Diamond Dogs|Advent Pairs|Koseki Bijou|The Archiver|Sound Hounds|Last Writes|FUWAMOCALLI|holoAdvent|GreyScaleX|Bloodraven|Fluffy One|Rocku Wawa|Grindstone|Fuwa-chan|Goth Rock|ShioRaven|Adventrix|JewelBird|Moco-chan|Fuwa-nee|FUWAMOCO|Shiori~n|Pen Pups|Mogojyan|The Cell|Lil'Rock|Nerissa|Shiorin|Shiori|Beejoe|Koseki|Mococo|Fuwawa|Advent|Mogogo|Beebs|Biboo|B.F.F|Oobib|Rissa|Bijou|Pero|FWMC|Neri|GAGA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.

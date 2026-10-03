@@ -6,7 +6,7 @@
 > English glosses, and the voice works for Japanese, English or Chinese dialogue. Guide:
 > `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
+## 1. Voice Design prompt (original voice; provisional design choices)
 "Perfect audio quality. Young woman, soft and cute mid-high voice with a playful, mock-haughty edge; chatty and
 unhurried, dissolving into quick giggles; shaky and breathless when frightened."
 - Giggles are a provisional performance choice (secondary description), not a listening observation.
@@ -18,18 +18,18 @@ unhurried, dissolving into quick giggles; shaky and breathless when frightened."
 - Pace comes from the designed voice plus `[playful, warm]` or `[scared, shaky]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script
-- "Yo" (余) for "I" and "ningen-sama" for her viewers; "Konnakiri!" and "Yo da yo!".
+- "Yo" (余) for "I" and "ningen-sama" for her viewers; "Konnakiri!" and "Yo da yo!" (secondary transcription; not audio-verified).
 - Polite at first ("Kikoete orimasu deshō ka?"), casual within minutes ("maji de," "meccha").
-- Pouting scolds: "Urusai!" … "Komatta hitotachi."
+- Pouting scolds: "Urusai!"; separately, "Komatta hitotachi." (two ASR excerpts, not one spoken turn).
 - In horror: "Koe ga furuechau," "Ochitsuite, ochitsuite."
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
 | Greeting | `[bright, playful]` | "Konnakiri!" (secondary transcription) |
-| The oni act | `[mock-haughty]` | "Yo da yo!" |
+| The oni act | `[mock-haughty]` | "Yo da yo!" (secondary transcription; not verified by the two-model audio check) |
 | Opening a stream | `[polite, careful]` | "Kikoete orimasu deshō ka?" |
-| Teasing chat | `[pouting]` | "Urusai!" … "Komatta hitotachi." |
+| Teasing chat | `[pouting]` | "Urusai!" (ASR); separately, "Komatta hitotachi." (ASR) |
 | Horror game | `[scared, shaky]` | "Ima odorokasaretara hontō ni shinzō ga tomarisō." |
 | FPS clutch | `[focused, quick]` | **Style demo:** "Mikata, ikeru yo!" ("Team, we can do this!") |
 | A bad pun | `[giggles]` → `[laughs harder]` | (tag only) |
@@ -51,9 +51,10 @@ Okayu `[teasing]`; Kiara `[polite, excited]`.
 ```
 [polite, careful] Kikoete orimasu deshō ka?
 [bright, playful] Konnakiri!
-[pouting] Urusai! … Komatta hitotachi.
+[pouting] Urusai!
+[pouting] Komatta hitotachi.
 [scared, shaky] Koe ga furuechau.
 [scared, shaky] Ima odorokasaretara hontō ni shinzō ga tomarisō.
 ```
-(Line 2 is her greeting as a secondary transcription; lines 1, 3–5 are her lines, quoted only where both
-transcripts agree.)
+(Line 2 is her greeting as a secondary transcription. Lines 1 and 3–6 are separate shared ASR excerpts, not one
+conversation. Their delivery tags are proposed performance directions, not listening findings.)
