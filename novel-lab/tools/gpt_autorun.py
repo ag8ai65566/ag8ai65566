@@ -41,8 +41,9 @@ def git(*args, check=False):
     return subprocess.run(["git", *args], cwd=REPO, capture_output=True, text=True, check=check)
 
 
-def commit_push(label):
-    git("add", "-A", "novel-lab/projects")
+def commit_push(label, run=None):
+    # only the run directory: Claude may be merging other files at the same time (author order 2026-10-03)
+    git("add", "-A", str(run) if run else "novel-lab/projects/holoen/runs")
     if not git("diff", "--cached", "--quiet").returncode:
         return
     msg = (f"holoen: GPT output {label} (unattended queue, merge pending author order)\n\n"
@@ -89,7 +90,7 @@ def main():
         try:  # commit the inputs the run freezes at start, so the tree stays clean while it runs
             r.wait(timeout=90)
         except subprocess.TimeoutExpired:
-            commit_push(f"{label} inputs")
+            commit_push(f"{label} inputs", args[3])
             r.wait()
         if r.returncode == QUOTA_EXIT:
             after = json.loads(QUOTA.read_text(encoding="utf-8")) if QUOTA.exists() else {}
@@ -102,7 +103,7 @@ def main():
             log(f"✗ exit {r.returncode}: {label} (skipped)")
             continue
         log(f"✓ {label}")
-        commit_push(label)
+        commit_push(label, args[3])
 
 
 if __name__ == "__main__":
