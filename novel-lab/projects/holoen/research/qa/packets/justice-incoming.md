@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git d91f322.
+Snapshot: git d2dfb9b.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|holoJustice|FiddleFlame|Autofister|Bloodraven|Erby Berby|Immerhater|TimeChaser|Gigi Murin|Da Fister|Elizabeth|Raviolin|Gi Murin|Justice|Cecilia|GeeGee|Lizzie|HoloEU|G Pain|B.F.F|Raora|LYRA|RPGG|CCGG|Rara|Gigi|Cece|Ceci|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|FiddleFlame|holoJustice|Gigi Murin|Erby Berby|Autofister|Bloodraven|Immerhater|TimeChaser|Elizabeth|Da Fister|Raviolin|Gi Murin|Justice|Cecilia|Lizzie|HoloEU|GeeGee|G Pain|Raora|B.F.F|LYRA|Ceci|Gigi|RPGG|Cece|Rara|CCGG|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -83,6 +83,10 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Koseki-Bijou.md › Background Timeline`: | 2025-08-23/24 | -All for One-: "HOT DUCK!" with FUWAMOCO and Subaru; solo "Dead Ma'am's Chest"; "I'm Your Treasure Box" with Cecilia and Raora | [Official KB5] |
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Kaela Kovalskia (ID) | Friend ("Grindstone"; Kaela calls her "Beejoe") | Grindstone collabs include Raft and Minecraft (2023), Split Fiction (2025) and PEAK as "Graondstone" with Raora (archive counts 10 / 23 / 11 / 0) | [Observed KB2; KB3] |
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Cecilia Immergreen, Raora Panthera, Gigi Murin | Justice kouhai | GAGA (with Shiori and Gigi); Graondstone (with Kaela and Raora); a Walking Dead off-collab watchalong with Cecilia (2025) | [Observed KB2; KB3] |
+
+### from La+ Darknesss
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Cecilia Immergreen: an "ONEE-SAMA!" short about her (2026).
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | FUWAMOCO, Cecilia Immergreen | kouhai | Archived shorts: FUWAMOCO performing to "Onee-sama♡Love Call" (2026); Cecilia's short titled "ONEE-SAMA!" (2026; a title, not verified dialogue) | [LA5] |
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Groups`: FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Advent, B.F.F
@@ -180,6 +184,10 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2025-11-16 | Raora's "Doom" on her stream becomes a meme | [Observed T6] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Raora Panthera | Justice member | The "Doom" incident | [Observed T2 §Quotes; T6] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Cecilia Immergreen | Justice member | German-speaking duo; they slip into German together | [Observed T5-K7NNBucs3zc clip title; T2 §Relationships] |
+
+### from Takane Lui
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: Nerissa Ravencroft, Koseki Bijou, Gigi Murin and Raora Panthera: animated "Soar" shorts (2026).
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Nerissa, Bijou, Gigi, Raora | kouhai | Their channels posted animated "Soar" shorts crediting external motion creators (2026) | [LU5] |
 
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gigi Murin: in the ENigmatic Recollection role-play story Gigi's knight Gonathon married Ame's Jyonathan ("ClueChaser," a secondary pair name).

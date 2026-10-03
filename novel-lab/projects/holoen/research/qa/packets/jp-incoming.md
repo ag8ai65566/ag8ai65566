@@ -1,9 +1,9 @@
 # Audit packet: jp (incoming claims)
 
-Snapshot: git d91f322.
+Snapshot: git d2dfb9b.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azu-chan|Azukichi|Sui-chan|TakoNeko|Okanyan|AZKichi|Okayun|FWMCAZ|Yo-san|AS_tar|Suisei|AzuAzu|Okayu|Ayame|Ojou|AZKi|AZAZ)(
+Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azukichi|Azu-chan|Sui-chan|TakoNeko|Okanyan|AZKichi|AS_tar|Suisei|FWMCAZ|AzuAzu|Okayun|Yo-san|Ayame|Okayu|AZAZ|AZKi|Ojou)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
@@ -36,6 +36,18 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Moona Hoshinova (ID), Hoshimachi Suisei (JP), Usada Pekora (JP), Ayunda Risu (ID) | Cross-branch | "High Tide" with IRyS, Moona and Suisei (2024); "HIDE & SEEK 〜Nakayoku Kenkashina〜" with Pekora (2023); "holorodents" with Pekora and Risu (secondary) | [Official HB5, HB9] [Observed HB2] |
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Hoshimachi Suisei, AZKi, Nekomata Okayu | JP seniors | "High Tide" with Suisei, IRyS and Moona (2024) and a "Moonlight" dance cover (2025); GeoGuessr with AZKi (2023); team kart events with Okayu (2023, 2024) | [Suisei file SU8, S1] [AZKi file AZ5] [Okayu file OK4] |
 
+### from Hakui Koyori
+- `bible/characters/Hakui-Koyori.md › [SW] Background`: She sang in "Blue Journey" with Marine, Noel, Lamy, Botan, Lui and Sakura Miko (2023); secondary records place her in Suisei's Hoshimatic Project from 2023; archived 2025 collabs bill her, AZKi and Lamy as "KoZMy."
+- `bible/characters/Hakui-Koyori.md › [SW] Relationships`: AZKi and Yukihana Lamy: "KoZMy"
+- `bible/characters/Hakui-Koyori.md › [SW] Relationships`: (archived 2025 titles); a 3D karaoke with AZKi (2026); a #ラミこよ off-collab with Lamy (2026).
+- `bible/characters/Hakui-Koyori.md › [SW] Relationships`: Hoshimachi Suisei: Hoshimatic Project (secondary).
+- `bible/characters/Hakui-Koyori.md › [SW] Relationships`: Nekomata Okayu: a lateral-thinking puzzle collab she hosted (2025).
+- `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2025 | Weekly Famitsu column launched (07-17); archived collabs bill Koyori, AZKi and Lamy as "KoZMy" (08-03, 08-20); "pink-haired pair" talk with Marine | [KO7] [KO4 lvgC3pW-LVA, oxWPvsUb_3Y] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Hoshimachi Suisei | Hoshimatic Project | Idol-group practice unit (2023–), "BEEP BEEP" (2026) | [KO2] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Nekomata Okayu | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07); plays Okayu's game (2025) | [KO4 PtjqrNUOSWA] |
+- `bible/characters/Hakui-Koyori.md › Story Engine`: 2. A KoZMy horror night in which Koyori volunteers AZKi and Lamy as test subjects.
+
 ### from Houshou Marine
 - `bible/characters/Houshou-Marine.md › [SW] Background`: (2024), held a solo concert (2024), performed in hololive Fantasy's "#OperationHeartfulCuties" concert (2026), released "Chatter Chatter" with Suisei (2026) and the single "Kyapi"
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Hoshimachi Suisei: "Chatter Chatter"
@@ -57,6 +69,16 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Hoshimachi Suisei: Bijou watched her Fortnite concert on stream (2026).
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hoshimachi Suisei | JP senior | Watched her Fortnite concert on stream ("THE SUISEI CONCERT IN FORTNITE?!", 2026) | [Suisei file S1 AhGrt2gr5pc] |
+
+### from La+ Darknesss
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Nerissa Ravencroft, Nakiri Ayame, Hoshimachi Suisei and Shishiro Botan: fellow holoGTA participants (2024).
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Suisei, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024).
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Nekomata Okayu: a 3D lie-detector challenge (2026); secondary references group them in "Dorobo Kensetsu."
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: AZKi: games and an ASMR "evaluation"
+- `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2026-05-19 | A 3D lie-detector "challenge" to Nekomata Okayu | [LA4 F3i30BIJmtY] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Nekomata Okayu | "Dorobo Kensetsu" (secondary) | A 3D lie-detector challenge (2026, archived metadata) | [LA2] [LA4] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Nakiri Ayame, Hoshimachi Suisei, Shishiro Botan | — | Fellow holoGTA participants (2024-09; each archive establishes participation, not specific exchanges); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki (publisher roster, not Ayame; a joint broadcast is not established) | [LA4 swqXHi1Z4ew, QLHSm3rpG8k] [Sammy announcement] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | AZKi | — | Games and an ASMR "evaluation" (2025); AZKi danced to her songs | [LA4] |
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: AZKi: a FUWAMOCO-themed GeoGuessr collaboration ("FWMCAZ"); secondary records also document a singing stream with Minato Aqua and the twins' guest appearance at her 2025 birthday live.
@@ -101,11 +123,19 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nakiri Ayame | — | An Audio-Technica earphone collab (2025) | [NO4] |
 
 ### from Shishiro Botan
-- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss and Hoshimachi Suisei: holoGTA and the m HOLD'EM poker collab with Shirakami Fubuki (2024); Nakiri Ayame: holoGTA (2024).
-- `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); the m HOLD'EM poker collab (2024-12) was La+, Suisei, Botan and Shirakami Fubuki, not Ayame | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss and Hoshimachi Suisei: holoGTA and, with Shirakami Fubuki, the m HOLD'EM poker collaboration (2024); Nakiri Ayame: holoGTA (2024).
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki, not Ayame (publisher roster; a joint broadcast is not established) | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Archived episode records list HOLOTALK guests including Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ Darknesss ("Glow in the Dark") and Sakamata Chloe ("WILDCARD").
+
+### from Takane Lui
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: Nekomata Okayu: Harry Potter watch-alongs (2025); secondary references list both in "Dorobo Kensetsu."
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: Nakiri Ayame: "Onikan"
+- `bible/characters/Takane-Lui.md › Behavioral Traits`: 5. Predicted game announcements before a 2026 Nintendo Direct; the first model renders her name for Nekomata Okayu as 「シャッチョ」 ("Shaccho"), unconfirmed by the second model, so it is not quoted. [ASR LU20, first model only] [Observed LU4 titles]
+- `bible/characters/Takane-Lui.md › Background Timeline`: | 2025 | EP "Lieblings"; Code Geass ambassador (June, secondary); "Q&A With Bird Sisters" with Mumei (04-19); Harry Potter watch-alongs with Okayu; "FEAST" dance short with Bae (07-11) | [Observed LU2] [LU5] [LU4 Lj0MZFpHitQ, 5TUiccnytQA] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Nekomata Okayu | — | Harry Potter watch-alongs (2025); predictions before a 2026 Nintendo Direct; "Dorobo Kensetsu" (secondary); "Shaccho" is a first-model rendering only | [LU4] [ASR LU20] [LU2] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Nakiri Ayame | "Onikan" (archived titles) | Games and a sponsored collab billed おにかん (2025-08-09) | [LU4 YXaDmUXPSGo] |
 
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Nakiri Ayame and Nerissa Ravencroft: 2023 Sports Festival white-team teammates.

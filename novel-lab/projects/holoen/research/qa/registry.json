@@ -1,22 +1,24 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "d91f322",
+ "commit": "d2dfb9b",
  "files": {
   "bible/characters/AZKi.md": "c20b3db68385dff12143e870b86804d9b9b5d04f8c5cb64b4357b2c35d8236a2",
   "bible/characters/Cecilia-Immergreen.md": "1a7023b73db21444e4a016f37dfd28775a01d57ac9e21defdf5b8df37fe8491e",
   "bible/characters/Ceres-Fauna.md": "f739f518fb7cd83c19ffc575a6890990ea06f16299ca84f7e25d855958efe271",
   "bible/characters/Elizabeth-Rose-Bloodflame.md": "b0e0e589f540946b3220ff4a08429c8011d0c527e6349ff42abc7c89ac1fda0c",
-  "bible/characters/Fuwawa-Abyssgard.md": "82a36237de1b48c271d732f13a608717cf20469035447e46212fb8396276d156",
+  "bible/characters/Fuwawa-Abyssgard.md": "258cd852ef95c3a79ea1b23db6cabc72291de7e263cd22591fc09fceb3254866",
   "bible/characters/Gawr-Gura.md": "7435656193f205608af7a9a7a7b784f0c6aaa32202a9027904151f0a109104e7",
   "bible/characters/Gigi-Murin.md": "4d8a32d14e884e082b60a5dc04023f168cfdfd6b3c72acf67ad934340dd1e486",
   "bible/characters/Hakos-Baelz.md": "9dc8b9d13d93b0c56721130df231eba7e89ca2e3562bbcc829b15a64a2b5d18a",
-  "bible/characters/Hoshimachi-Suisei.md": "7f32820252c98289caf9a887876e523b9a3032e650f649cb7b4e1c6815a2b9c7",
+  "bible/characters/Hakui-Koyori.md": "b129e84b71f9a1abcf9bb8cff66c7bb15bd3b7be0481179ce622533df7287a5a",
+  "bible/characters/Hoshimachi-Suisei.md": "101adc6666c05f62e2b41a9cd01fca0cec534b0147a69c5e6faf5536bbbac63f",
   "bible/characters/Houshou-Marine.md": "b611ca66c50163fa90e5a6015806c29aff84f371f59818d4e6a08c208eed907b",
   "bible/characters/IRyS.md": "1c2d26e55d0282d0199044b0ad8cb9a7e55a00e4707460ee4f6978b492ebfeb9",
   "bible/characters/Kikirara-Vivi.md": "21bf60dbf9204012f00b3fdc356cd2d7e435c1c294d6ab48ce9d35882b51fb1d",
   "bible/characters/Koseki-Bijou.md": "bdb081c5ae65ff29f060e3c26baa8fe96fbe627e4215c494a63f509448687037",
-  "bible/characters/Mococo-Abyssgard.md": "5044c35d109bd4deb84cc8670d321006d2e6158794a24ac1ff167e5c933b4a79",
+  "bible/characters/Laplus-Darknesss.md": "665ffca4b0d336d74559219f0cb4d0d4fbecdf1c0179ab33c23d14b5a0a5247d",
+  "bible/characters/Mococo-Abyssgard.md": "e3ea165fb7d90b9af194377c2282f456c42002a34c4e8065f511990a486a1776",
   "bible/characters/Mori-Calliope.md": "fa27059d7339592feb8fe4cd46dbf00eeabb5ce64eccf4fb59deb9375e4d5e1f",
   "bible/characters/Nakiri-Ayame.md": "c82646952259bc845300c292527b72574cd18c0425df5c74fbd4bddfb9f41b8e",
   "bible/characters/Nanashi-Mumei.md": "30153c6be3bc18484c3d24cfbbdc73495f29c8bd28fd5e2aa67ed5c507f5d6f8",
@@ -27,8 +29,9 @@
   "bible/characters/Raora-Panthera.md": "0f153278cd7f7d14305164b804fbf2b49c14a3ba63416115b85c7f7c21529679",
   "bible/characters/Shiori-Novella.md": "17e6e4e846ecf9163246fde34efc12e18ad5b3e5e22f9beb5bdb6d87fe0fa5ae",
   "bible/characters/Shirogane-Noel.md": "fa254fc26dbde629e8eb4d5f1d732425899bcd0dbb228f97dc65f2c08a7ddaed",
-  "bible/characters/Shishiro-Botan.md": "936bfc763af708ccd9415ab9137ec2c5eadec8b23366dba4ef71fa6c4d645c47",
-  "bible/characters/Takanashi-Kiara.md": "ad3b92c6d66c26c276b4239e6c24f954d8d04f19845458bfba46fd2921cbdd76",
+  "bible/characters/Shishiro-Botan.md": "06d44f3cce8193784f6dc90624badd3f9c1b3d9cc24bde34b452f708881bfeb9",
+  "bible/characters/Takanashi-Kiara.md": "9018e513052bdfbfafabf5ab9544186c3f3b5cd4ad093ceb6dd7ccdfcdfa18c4",
+  "bible/characters/Takane-Lui.md": "3ef5bf38be6e1175099a6405ade2d56c0e852983b165cbf283884f58052ba65e",
   "bible/characters/Watson-Amelia.md": "2021dc901c54e53010da9cdbd0aedb75011318cd9e5ce9ca269e027d0116aa53",
   "bible/characters/Yukihana-Lamy.md": "b7309e3862592efce8b1e8ecd5d795461e3616e06cfc2ead170a38cdde123ab6",
   "bible/world/Advent-Pairs.md": "bea1ef142554b21fe45ec4cdd1782bf38da5105cd275dd46582e349390ff5ce2",
@@ -278,6 +281,33 @@
    }
   },
   {
+   "name": "Hakui Koyori",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "other_names": [
+    "Koyori",
+    "Koyo",
+    "Koyorin",
+    "博衣こより"
+   ],
+   "groups": [
+    "hololive",
+    "Secret Society holoX",
+    "holoX",
+    "Hoshimatic Project",
+    "KoZMy",
+    "NePoX",
+    "Blue Journey"
+   ],
+   "status": "Koyori is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2021-11-28",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Hakui-Koyori.md › Background (debut: Background)"
+   }
+  },
+  {
    "name": "Hoshimachi Suisei",
    "file": "bible/characters/Hoshimachi-Suisei.md",
    "other_names": [
@@ -411,6 +441,30 @@
     "graduated": null,
     "regular_activities_concluded": null,
     "source": "bible/characters/Koseki-Bijou.md › Background (debut: Background)"
+   }
+  },
+  {
+   "name": "La+ Darknesss",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "other_names": [
+    "La+",
+    "Laplus",
+    "YMD",
+    "ラプラス・ダークネス"
+   ],
+   "groups": [
+    "hololive",
+    "Secret Society holoX",
+    "holoX",
+    "NePoX"
+   ],
+   "status": "La+ is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2021-11-26",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Laplus-Darknesss.md › Background (debut: Background)"
    }
   },
   {
@@ -767,6 +821,35 @@
     "graduated": null,
     "regular_activities_concluded": null,
     "source": "bible/characters/Takanashi-Kiara.md › Background (debut: Hard Facts / Background Timeline)"
+   }
+  },
+  {
+   "name": "Takane Lui",
+   "file": "bible/characters/Takane-Lui.md",
+   "other_names": [
+    "Lui",
+    "Lui-nee",
+    "Lui Lui",
+    "鷹嶺ルイ",
+    "ルイルイ"
+   ],
+   "groups": [
+    "hololive",
+    "Secret Society holoX",
+    "holoX",
+    "HOLOTORI",
+    "Bara☆Dice",
+    "Blue Journey",
+    "InuTakaShishiRam",
+    "NePoX"
+   ],
+   "status": "Lui is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2021-11-27",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Takane-Lui.md › Background (debut: Background)"
    }
   },
   {
@@ -1629,6 +1712,21 @@
   "rat idol": [
    "Hakos Baelz"
   ],
+  "hakui koyori": [
+   "Hakui Koyori"
+  ],
+  "koyori": [
+   "Hakui Koyori"
+  ],
+  "koyo": [
+   "Hakui Koyori"
+  ],
+  "koyorin": [
+   "Hakui Koyori"
+  ],
+  "博衣こより": [
+   "Hakui Koyori"
+  ],
   "hoshimachi suisei": [
    "Hoshimachi Suisei"
   ],
@@ -1710,6 +1808,21 @@
   ],
   "oobib": [
    "Koseki Bijou"
+  ],
+  "la+ darknesss": [
+   "La+ Darknesss"
+  ],
+  "la+": [
+   "La+ Darknesss"
+  ],
+  "laplus": [
+   "La+ Darknesss"
+  ],
+  "ymd": [
+   "La+ Darknesss"
+  ],
+  "ラプラス・ダークネス": [
+   "La+ Darknesss"
   ],
   "mococo abyssgard": [
    "Mococo Abyssgard"
@@ -1972,6 +2085,24 @@
   ],
   "小鳥遊キアラ": [
    "Takanashi Kiara"
+  ],
+  "takane lui": [
+   "Takane Lui"
+  ],
+  "lui": [
+   "Takane Lui"
+  ],
+  "lui-nee": [
+   "Takane Lui"
+  ],
+  "lui lui": [
+   "Takane Lui"
+  ],
+  "鷹嶺ルイ": [
+   "Takane Lui"
+  ],
+  "ルイルイ": [
+   "Takane Lui"
   ],
   "watson amelia": [
    "Watson Amelia"
@@ -3534,6 +3665,105 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2021-11-28",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut, third of holoX",
+   "evidence": "[Official KO1] [Observed KO2]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-06-16",
+   "precision": "day",
+   "zone": null,
+   "text": "First original song \"WAO!!\" (official music page); the wiki also dates her 3D debut here (not verified in review)",
+   "evidence": "[Official music page] [Observed KO2]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023",
+   "precision": "year",
+   "zone": null,
+   "text": "\"Blue Journey\" with Marine, Noel, Lamy, Botan, Lui and Sakura Miko (07-08; official roster); 1 million subscribers (09-24, secondary); Hoshimatic Project (from 11, secondary)",
+   "evidence": "[Blue Journey roster] [Observed KO2]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-04-22",
+   "precision": "day",
+   "zone": null,
+   "text": "\"BAE-GEMITE DOMINATION\" episode 4 with Bae and Momosuzu Nene",
+   "evidence": "[KO5 WwjB7QSmQng]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "Lethal Company with FUWAMOCO and Fubuki (03-09); FUWAMOCO Morning episode 90 guest, billed #FUWAMOKOYO (04-26); a guest at Mumei's first 3D live (08-05)",
+   "evidence": "[KO5 XR1PEtj15kE, gCYXKgYcFmk, gl7CwlEg2ZI]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-01-14",
+   "precision": "day",
+   "zone": null,
+   "text": "The last \"KoyoChlo\" collab before Chloe's graduation; its description says the \"#こよクロ disband!\" gag was born in two-player co-op games; the duet cover 「一番の宝物」 followed (2025-01-28)",
+   "evidence": "[KO4 mxIoysy6gJ4, nCPHzr_iF7s]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "Weekly Famitsu column launched (07-17); archived collabs bill Koyori, AZKi and Lamy as \"KoZMy\" (08-03, 08-20); \"pink-haired pair\" talk with Marine",
+   "evidence": "[KO7] [KO4 lvgC3pW-LVA, oxWPvsUb_3Y]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-24",
+   "precision": "day",
+   "zone": null,
+   "text": "#ラミこよ off-collab with Lamy, proposing to choose a duo name (no final name established)",
+   "evidence": "[Lamy channel Zi8R63ee0Fs]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-04-29",
+   "precision": "day",
+   "zone": null,
+   "text": "holoX's first in-person unit concert, \"First MISSION\"",
+   "evidence": "[Official KO6]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-12",
+   "precision": "day",
+   "zone": null,
+   "text": "Second album \"Chemical Spark\" and first solo concert \"Dream Spark\" (2026-12-22) announced",
+   "evidence": "[Observed KO2]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-20",
+   "precision": "day",
+   "zone": null,
+   "text": "A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours",
+   "evidence": "[KO3]",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "2018-03-22",
    "precision": "day",
    "zone": null,
@@ -4125,6 +4355,114 @@
    "text": "Serendipity concert, duo with Takanashi Kiara (\"Rocku Wawa\")",
    "evidence": "[Official KB4]",
    "file": "bible/characters/Koseki-Bijou.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "Founder of Secret Society holoX; vast power, now sealed",
+   "evidence": "[Official LA1]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-11-26",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut, the first holoX member to debut",
+   "evidence": "[Observed LA2]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-03-04",
+   "precision": "day",
+   "zone": null,
+   "text": "Calli's \"HOLO ENGLISH LESSON #02\" with Gura and Iroha",
+   "evidence": "[LA5 X492n37brRU]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-06-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Nostalgic games with a handcam, an off-collab on Kiara's channel (archived title and description)",
+   "evidence": "[LA5 XWf2PqD_8zQ]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "\"drop candy\" (05-25); holoGTA participant (her archive establishes participation; other members' own archives place them in the same event)",
+   "evidence": "[Observed LA2] [LA4 swqXHi1Z4ew]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-04-08",
+   "precision": "day",
+   "zone": null,
+   "text": "\"FAKE HEART,\" a cover with Kiara",
+   "evidence": "[LA5 yspJ9xmGRfw]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-07-27/28",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"Glow in the Dark,\" a Mythmash single with Kiara (official digital release 2025-07-28); a joint stream",
+   "evidence": "[Official music 600] [LA5 v5RKZXNuVyw] [LA4]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-12",
+   "precision": "month",
+   "zone": null,
+   "text": "holoX's 4th anniversary (\"Gyouan Xdeath,\" \"Secret ORDER\")",
+   "evidence": "[Observed LA2]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-04-29",
+   "precision": "day",
+   "zone": null,
+   "text": "holoX's first in-person unit concert, \"First MISSION\" (La+, Lui, Koyori, Iroha)",
+   "evidence": "[Official LA6]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05-03",
+   "precision": "day",
+   "zone": null,
+   "text": "Tochigi Future Ambassador",
+   "evidence": "[Official LA3]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05-19",
+   "precision": "day",
+   "zone": null,
+   "text": "A 3D lie-detector \"challenge\" to Nekomata Okayu",
+   "evidence": "[LA4 F3i30BIJmtY]",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05-25/26",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"Onee-sama♡Love Call\" (official digital release 2026-05-26); album \"Project Y.M.A.\" announced",
+   "evidence": "[Official music 753] [Observed LA2]",
+   "file": "bible/characters/Laplus-Darknesss.md",
    "section": "Background Timeline"
   },
   {
@@ -5457,6 +5795,105 @@
    "text": "Myth 6th Anniversary 3D LIVE \"Seasons From Within\" with Calli and Ina; \"THIS IS MYTH\" premieres",
    "evidence": "[Archive metadata T25]",
    "file": "bible/characters/Takanashi-Kiara.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "Lore",
+   "precision": "lore",
+   "zone": null,
+   "text": "holoX's executive officer and point of contact",
+   "evidence": "[Official LU1]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-11-27",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut, second of holoX; HOLOTORI membership (the wiki places Kiara's welcome beside the 11-26 reveal)",
+   "evidence": "[Observed LU2] [Official HOLOTORI roster 2023]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-12-27",
+   "precision": "day",
+   "zone": null,
+   "text": "English practice with Mori Calliope",
+   "evidence": "[LU5 i2wLH4O92-0]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022",
+   "precision": "year",
+   "zone": null,
+   "text": "Calli's English lesson #04 with Chloe; an EN-server Minecraft tour with Mumei, Bae and Chloe; Minecraft with IRyS, Kronii and Kaela",
+   "evidence": "[LU5]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023",
+   "precision": "year",
+   "zone": null,
+   "text": "HOLOYOI ep. 1 with Chloe (Calli's show, 03-23); a Wario off-collab with Kiara (01-15); BAE-GEMITE #5 with Bae and Chloe (04-29); \"TWIN DAY WITH LUI\" with FUWAMOCO (11-25); Blue Journey (official roster)",
+   "evidence": "[LU5 UuL_nORzfNM, cVJefDjefUs, z4-5Hq5AKG4, MbqO5OPuT80] [Blue Journey roster]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "First album \"Liberty\" (official digital release 06-12); 1 million subscribers (11-16, secondary)",
+   "evidence": "[Official music 434] [Observed LU2]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "EP \"Lieblings\"; Code Geass ambassador (June, secondary); \"Q&A With Bird Sisters\" with Mumei (04-19); Harry Potter watch-alongs with Okayu; \"FEAST\" dance short with Bae (07-11)",
+   "evidence": "[Observed LU2] [LU5] [LU4 Lj0MZFpHitQ, 5TUiccnytQA]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-12-01",
+   "precision": "day",
+   "zone": null,
+   "text": "holoX's 4th anniversary: \"Gyouan Xdeath,\" album \"Secret ORDER\"",
+   "evidence": "[Observed LU2]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-04-29",
+   "precision": "day",
+   "zone": null,
+   "text": "holoX's first in-person unit concert \"First MISSION\" (\"I feel like we gave it everything I got!\")",
+   "evidence": "[Official LU6]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-11",
+   "precision": "day",
+   "zone": null,
+   "text": "EP \"The LEGENDARY\" with \"Soar\" (official digital release of \"Soar\" 06-12); 1st live \"REBELLION\" (2026-12-16) and a BAYFM78 radio programme (from 07-03) announced; EN members' channels posted animated \"Soar\" shorts crediting external motion creators",
+   "evidence": "[Official LU7] [Official music 760] [LU4] [LU5]",
+   "file": "bible/characters/Takane-Lui.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-08-01",
+   "precision": "day",
+   "zone": null,
+   "text": "A \"rare\" La+ and Lui talk with new outfits",
+   "evidence": "[LU4]",
+   "file": "bible/characters/Takane-Lui.md",
    "section": "Background Timeline"
   },
   {

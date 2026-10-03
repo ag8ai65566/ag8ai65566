@@ -17,39 +17,38 @@
 - Pace comes from the designed voice plus `[smug, bright]` or `[commanding, theatrical]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script
-- "Wagahai" is her persona set piece; in 2026 chats she mostly says "watashi."
-- Casual and slangy in chat: "maji de," "yabai," "~ssho" (「聞こえたっしょ?」, "you heard that, right?").
-- Rallies her followers with "Yes My Dark!"
-- Insists she is not a child; whines and fumes when she loses.
+- "Wagahai" is persona vocabulary; the two sampled 2026 windows contain "watashi" and no detected "wagahai" (two windows cannot set a frequency).
+- Casual and slangy in chat: "maji de," "yabai," "~ssho" (「聞こえたっしょ」, "you heard that, right?").
+- Her followers answer her call with "Yes My Dark!"; it is their line, not hers.
+- Indignant protests when teased and a whine when she loses are provisional choices for suitable scenes.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Opening | `[commanding, theatrical]` | "See me, hear me, all of you!" (official English) |
+| Opening | `[commanding, theatrical]` | 「貴様ら、刮目せよ！！」 ("Kisama-ra, katsumoku seyo!!"; official introduction, officially "See me, hear me, all of you!") |
 | Showing off | `[smug, bright]` | 「これが配信者よ」 ("Kore ga haishinsha yo," "this is what a streamer is!") |
-| Checking with chat | `[casual]` | 「聞こえたっしょ?」 ("Kikoeta ssho?", "you heard that, right?") |
+| Checking with chat | `[casual]` | 「聞こえたっしょ」 ("Kikoeta ssho," "you heard that, right?") |
 | Treated like a child | `[indignant, loud]` | **Style demo:** "Wagahai wa kodomo ja nai!" ("I am not a child!") |
 | Losing a game | `[whining, furious]` | **Style demo:** "Kisama~!" ("You~!") |
-| Rallying followers | `[triumphant]` | "Yes My Dark!" (secondary transcription) |
 
 With people (proposed scene directions, not observed conversational defaults): Lui `[whiny, dependent]`; Kiara `[competitive, friendly]`; seniors `[indignant]`.
 
 ## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
-- "Yes My Dark!" (spoken)
-- `[cackles]` (tag only)
+- `[cackles]` (tag only; a provisional choice)
+- "Yes My Dark!" belongs to her followers; do not give it to her as a signature line
 
 ## 6. Pronunciation (provisional; test)
-- Reading guide (untested): らぷらす だーくねす; わがはい; きさま. Listen to how the chosen voice says them and adjust.
+- Reading guide (untested): らぷらす だーくねす; わがはい; きさま; かつもくせよ. Listen to how the chosen voice says them and adjust.
 
 ## 7. Don't
 - A truly menacing demon; a sleepy or mature-cool voice.
 
 ## 8. Example
 ```
-[commanding, theatrical] See me, hear me, all of you!
+[commanding, theatrical] Kisama-ra, katsumoku seyo!!
 [smug, bright] Kore ga haishinsha yo!
 [indignant, loud] Wagahai wa kodomo ja nai!
-[triumphant] Yes My Dark!
+[casual] Kikoeta ssho?
 ```
-(Line 1 is her official English introduction; line 2 is her line, quoted only where both transcripts agree;
-line 3 is a style demo; line 4 is her followers' call as a secondary transcription.)
+(Line 1 is her official Japanese introduction; lines 2 and 4 are her lines, quoted only where both transcripts
+agree; line 3 is a style demo.)

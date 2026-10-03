@@ -44,7 +44,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 | Calls Nekomata Okayu "Shaccho"; predicted game announcements together before a Nintendo Direct | **Observed** (the model writes 「シャッチョ」). | [0:09:15](https://youtu.be/wOHSGHgT5Aw?t=555) |
 | Answers chat one comment at a time | **Observed** in the 2026 midday chat. | [0:10:27](https://youtu.be/wOHSGHgT5Aw?t=627) |
 | Saturday RPG streams (MOTHER 2, 2026) | **Observed**: a first playthrough, reacting to each new area. | [0:10:26](https://youtu.be/gN91npViT-k?t=626) |
-| Easy laughter, rare profanity | **Observed**; no swearing in either window; laughter is not reliably transcribed. | — |
+| Easy laughter, rare profanity | **Undetermined**: one automatic swear-pattern match occurred in the game window and its meaning was not validated; overall profanity habits remain undetermined; laughter is not reliably transcribed (run E review, 2026-10-03). | — |
 
 ## Second model (whisper medium) on quoted lines
 

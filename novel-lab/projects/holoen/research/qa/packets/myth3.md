@@ -1,10 +1,10 @@
 # Audit packet: myth3
 
-Snapshot: git d91f322. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git d2dfb9b. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Takanashi-Kiara.md` ad3b92c6d66c; `bible/world/Myth-and-Kronii-Other-Pairs.md` 12e7d39a7dbb
+Owned files (sha256): `bible/characters/Takanashi-Kiara.md` 9018e513052b; `bible/world/Myth-and-Kronii-Other-Pairs.md` 12e7d39a7dbb
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 

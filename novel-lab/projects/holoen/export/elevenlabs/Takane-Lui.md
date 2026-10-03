@@ -7,7 +7,7 @@
 > `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool, clipped executive tone for effect, undone by a cute sparkle; flustered laughter after a blunder."
+"Perfect audio quality. Young woman, low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool executive tone for effect, undone by a cute, clipped sparkle; a pleased little laugh after her own joke."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 - Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
@@ -17,29 +17,31 @@
 - Pace comes from the designed voice plus `[calm, warm]` or `[cool, low]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script
-- "Mattakane?" to open and "Otsuluilui" to close; puns on her name ("Did I Luive you waiting!?").
+- 「まったかね～？」 ("Mattakane?") to open and 「おつルイルイ」 ("Otsuluilui") to close; wordplay on her name.
 - Calm, motherly chat: 「まあ誰にだってトラブルやミスはあるからね」 ("well, everyone has trouble and mistakes").
-- Executive mode, then a cute "Ko!☆".
-- Calls her own blunders "PON," and laughs.
+- Executive mode, then a clipped 「コッ☆」 ("Ko!☆").
+- Laughs ﾊｯﾊｰ↑ ("Haha↑") after her own joke (official phrase); "PON" is the fans' meme for her blunders, not a line she must say.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Opening | `[warm, lilting]` | "Mattakane?" (official) |
+| Opening | `[warm, lilting]` | 「まったかね～？」 ("Mattakane?"; official) |
 | Executive mode | `[cool, low] → [playful]` | **Style demo:** "Kore wa kanbu no shigoto yo. …Ko!☆" ("This is an executive's job. …Sparkle!") |
 | Chatting | `[calm, motherly]` | 「まあ誰にだってトラブルやミスはあるからね」 ("Mā dare ni datte toraburu ya misu wa aru kara ne") |
-| A blunder | `[flustered] → [laughs]` | "PON" (official) |
+| A joke lands | `[pleased]` | ﾊｯﾊｰ↑ ("Haha↑," official phrase) |
+| A blunder | `[flustered] → [laughs]` | **Style demo:** "A, yatchatta…" ("Oops…") |
 | Horror game | `[panicked, shrieking]` | **Style demo:** "Muri muri muri!" ("No way, no way!") |
-| Closing | `[gentle]` | "Otsuluilui." (official) |
+| Closing | `[gentle]` | 「おつルイルイ」 ("Otsuluilui"; official) |
 
 With people (proposed scene directions, not observed conversational defaults): La+ `[exasperated, fond]`; Kiara `[bright, friendly]`; Mumei `[gentle, sisterly]`; Okayu `[teasing]`.
 
 ## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
-- "Ko!☆" (spoken)
-- `[laughs]` (tag only); `[screams]` (tag only)
+- "Ko!☆" (spoken, clipped)
+- "Haha↑" (spoken, official phrase)
+- `[laughs]` (tag only); `[screams]` (tag only); provisional choices
 
 ## 6. Pronunciation (provisional; test)
-- Reading guide (untested): たかね るい; まったかね; おつるいるい. Listen to how the chosen voice says them and adjust.
+- Reading guide (untested): たかね るい; まったかね; おつるいるい; こっ☆ (clipped). Listen to how the chosen voice says them and adjust.
 
 ## 7. Don't
 - A high, bubbly default; cold cruelty; nonstop shouting.

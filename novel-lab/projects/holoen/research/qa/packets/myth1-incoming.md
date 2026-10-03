@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git d91f322.
+Snapshot: git d2dfb9b.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Calliope Mori|Mori Calliope|Cori Malliope|Last Writes|Kawaiiope|Miss Mori|Takamori|Calliope|Mor Mori|TakaMori|CHADCast|CallioP|Calli|森カリオペ|Mowi|LYRA|Mori)(
+Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Cori Malliope|Calliope Mori|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|Calliope|CHADCast|Mor Mori|TakaMori|Takamori|CallioP|森カリオペ|Calli|LYRA|Mori|Mowi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -72,6 +72,11 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Calliope Mori|Mori 
 - `bible/characters/Hakos-Baelz.md › Story Engine`: 2. BaeRyS "divorce" proceedings, with Calli presiding as CHADCast judge.
 - `bible/characters/Hakos-Baelz.md › Hard Facts`: - Official stage units: BaeRyS with IRyS (Serendipity 2026); CHADCast trio with Calli and IRyS.
 
+### from Hakui Koyori
+- `bible/characters/Hakui-Koyori.md › [SW] Background`: In 2023 she joined Bae's "BAE-GEMITE DOMINATION" with Momosuzu Nene and tasted Bae's "KHAOS KITCHEN" curry with Calli and Oozora Subaru.
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Hakos Baelz | — | "BAE-GEMITE DOMINATION" episode 4 with Nene (2023-04-22); a "KHAOS KITCHEN" taste tester with Calli and Oozora Subaru (2023-11-24) | [KO5 WwjB7QSmQng, NdLiUW-nUlk] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Mori Calliope | — | The same KHAOS KITCHEN episode (2023-11-24); not in BAE-GEMITE DOMINATION #4 | [KO5 NdLiUW-nUlk] |
+
 ### from Hoshimachi Suisei
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Background`: With the English cast she made "CapSule" and "Wicked" with Calli (2022) and sang "Wicked" at Calli's first solo concert, sings with IRyS, AZKi and Moona as Star Flower, sang "High Tide" and "BIBBIDIBA" at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024).
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Mori Calliope: "Death Star"; Calli is openly starstruck by her; collaborators on "CapSule" and "Wicked"
@@ -108,6 +113,13 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Calliope Mori|Mori 
 - `bible/characters/Koseki-Bijou.md › Background Timeline`: | 2025-06-29 | "THAT'S WILD?!" 24-hour charity stream with Calli (Wildlife Warriors Worldwide) | [Observed Calli archive J5u2aGUrNq8] |
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Mori Calliope | Senior ("TombStone") | An Undertale mod starring Calli, played together (2023); BG3 as "Killing, Two Birds, with One Stone" (2023); 24-hour charity stream (2025); Warhammer painting (2026); Calli's channel mentions her 29 times | [Observed KB2; KB3; Calli archive] |
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] |
+
+### from La+ Darknesss
+- `bible/characters/Laplus-Darknesss.md › [SW] Background`: (2025) with Takanashi Kiara, a nostalgic-games off-collab on Kiara's channel (2023), and Mori Calliope's English lesson #02 with Gawr Gura and Kazama Iroha (2022).
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022).
+- `bible/characters/Laplus-Darknesss.md › Voice Profile`: - **Language:** streams in Japanese; with the English cast she sang with Kiara ("Glow in the Dark," "FAKE HEART") and joined Calli's English lesson (2022). [LA5]
+- `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2022-03-04 | Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha | [LA5 X492n37brRU] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Mori Calliope | — | HOLO ENGLISH LESSON #02 (2022) | [LA5] |
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Mori Calliope: "FUWAMOCALLI."
@@ -199,6 +211,17 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Calliope Mori|Mori 
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Kobo Kanaeru | Collaborator | Kobo calls her "Mommy Kiwawa"; Kiara and Calli play her "Mom" and "Dad" | [Observed T5-gNEWWDKlTM8 clip title; T2 §Takamori] |
 - `bible/characters/Takanashi-Kiara.md › Hard Facts`: - Birthday July 6; height 165 cm; debut 2020-09-12; unit hololive -Myth-; illustrator huke. [Official T1]
 - `bible/characters/Takanashi-Kiara.md › Hard Facts`: - Nicknames: Kiwawa, Wawa, Tenchou (by fans), Kusotori (by Calli), Kibaba (grandma persona). Frogiwawa is officially a different character. [Observed T2 infobox, §Lore, §KFP, secondary]
+
+### from Takane Lui
+- `bible/characters/Takane-Lui.md › [SW] Background`: With the English cast, archived metadata records English practice with Mori Calliope (2021), Calli's lesson #04 with Chloe (2022), Calli's "HOLOYOI" episode 1 with Chloe (2023), a Wario off-collab with Kiara (2023), "TWIN DAY WITH LUI" with FUWAMOCO (2023), Hakos Baelz's "BAE-GEMITE DOMINATION" episode 5 with Chloe (2023) and "Q&A With Bird Sisters" with Mumei (2025).
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: Mori Calliope: English practice (2021), lesson #04 (2022), "HOLOYOI"
+- `bible/characters/Takane-Lui.md › Voice Profile`: - **Language:** streams in Japanese; reaches out to English-speaking members and fans (English practice with Calli, 2021–2022). [Observed LU2] [LU5]
+- `bible/characters/Takane-Lui.md › Background Timeline`: | 2021-12-27 | English practice with Mori Calliope | [LU5 i2wLH4O92-0] |
+- `bible/characters/Takane-Lui.md › Background Timeline`: | 2022 | Calli's English lesson #04 with Chloe; an EN-server Minecraft tour with Mumei, Bae and Chloe; Minecraft with IRyS, Kronii and Kaela | [LU5] |
+- `bible/characters/Takane-Lui.md › Background Timeline`: | 2023 | HOLOYOI ep. 1 with Chloe (Calli's show, 03-23); a Wario off-collab with Kiara (01-15); BAE-GEMITE #5 with Bae and Chloe (04-29); "TWIN DAY WITH LUI" with FUWAMOCO (11-25); Blue Journey (official roster) | [LU5 UuL_nORzfNM, cVJefDjefUs, z4-5Hq5AKG4, MbqO5OPuT80] [Blue Journey roster] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Sakamata Chloe (affiliate) | holoX intern | Lui reined her in; shows with Calli and Bae together (2022–2023) | [LU2] [LU5] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Mori Calliope | English teacher | English practice (2021), lesson #04 (2022), HOLOYOI (2023); Calli danced to Lui's songs (2025, 2026) | [LU5] |
+- `bible/characters/Takane-Lui.md › Story Engine`: 3. Calli's English lesson, round two: Lui answers in perfect textbook English and then says "Ko!☆".
 
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Groups`: hololive (affiliate), hololive -Myth- (affiliate), Myth, hololive English (former branch name)

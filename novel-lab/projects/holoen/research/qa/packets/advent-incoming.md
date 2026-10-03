@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git d91f322.
+Snapshot: git d2dfb9b.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewel of Emotions|Fuwawa and Mococo|Mococo Abyssgard|FUWAMOCO MORNING|Fuwawa Abyssgard|Abyssgard twins|Demon of Sound|The Fluffy One|Shiori Novella|Demon of Soup|The Fuzzy One|Sound Hounds|Koseki Bijou|Diamond Dogs|Advent Pairs|The Archiver|Last Writes|FUWAMOCALLI|Grindstone|Rocku Wawa|Bloodraven|Fluffy One|holoAdvent|GreyScaleX|Goth Rock|Adventrix|JewelBird|Fuwa-chan|Moco-chan|ShioRaven|Lil'Rock|FUWAMOCO|Pen Pups|Shiori~n|Mogojyan|Fuwa-nee|The Cell|Shiorin|Nerissa|Mococo|Fuwawa|Advent|Koseki|Shiori|Mogogo|Beejoe|Bijou|B.F.F|Rissa|Beebs|Biboo|Oobib|Neri|GAGA|FWMC|Pero)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Fuwawa and Mococo|Jewel of Emotions|Fuwawa Abyssgard|FUWAMOCO MORNING|Mococo Abyssgard|Abyssgard twins|The Fluffy One|Demon of Sound|Shiori Novella|The Fuzzy One|Demon of Soup|Advent Pairs|Diamond Dogs|The Archiver|Koseki Bijou|Sound Hounds|FUWAMOCALLI|Last Writes|GreyScaleX|Bloodraven|Rocku Wawa|Grindstone|holoAdvent|Fluffy One|Fuwa-chan|Adventrix|Moco-chan|JewelBird|ShioRaven|Goth Rock|Fuwa-nee|Pen Pups|The Cell|Shiori~n|Mogojyan|FUWAMOCO|Lil'Rock|Shiorin|Nerissa|Shiori|Mogogo|Advent|Fuwawa|Beejoe|Koseki|Mococo|Oobib|Rissa|Bijou|Biboo|Beebs|B.F.F|FWMC|Neri|GAGA|Pero)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -109,6 +109,15 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewe
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Nerissa Ravencroft, Shiori Novella | Later EN kouhai | Shared EN projects: the 2024 "Mind Craft" cover with all then-active EN members; a 2026 behind-the-scenes video by Kaela with Bae and Nerissa (secondary metadata) | [secondary HB13] |
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25) | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] |
 
+### from Hakui Koyori
+- `bible/characters/Hakui-Koyori.md › [SW] Background`: With the English cast, archived titles and descriptions record Lethal Company with FUWAMOCO and Shirakami Fubuki (2024), a FUWAMOCO Morning guest spot billed "FUWAMOKOYO"
+- `bible/characters/Hakui-Koyori.md › [SW] Background`: (2024), and guest appearances at FUWAMOCO's birthday concert (2025) and Mumei's first 3D live (2024).
+- `bible/characters/Hakui-Koyori.md › [SW] Relationships`: FUWAMOCO: "FUWAMOKOYO" on FUWAMOCO Morning (2024), Lethal Company with them and Shirakami Fubuki (2024), their birthday concert (2025).
+- `bible/characters/Hakui-Koyori.md › Voice Profile`: - **Language:** streams in Japanese; with the English cast she has guested on FUWAMOCO's English-language morning show and played with them, Bae, IRyS and others. [KO5]
+- `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2024 | Lethal Company with FUWAMOCO and Fubuki (03-09); FUWAMOCO Morning episode 90 guest, billed #FUWAMOKOYO (04-26); a guest at Mumei's first 3D live (08-05) | [KO5 XR1PEtj15kE, gCYXKgYcFmk, gl7CwlEg2ZI] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | FUWAMOCO | "FUWAMOKOYO" (Koyori and the twins; FUWAMOCO Morning title) | FUWAMOCO Morning guest (2024-04-26); separately, Lethal Company with Shirakami Fubuki (2024-03-09); a guest at their birthday concert (2025) | [KO5 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI] |
+- `bible/characters/Hakui-Koyori.md › Story Engine`: 1. Koyori "interviews" FUWAMOCO for AsaKoyo and keeps scoring their answers like lab data.
+
 ### from Hoshimachi Suisei
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: FUWAMOCO: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026).
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Nerissa Ravencroft: a "BIBIDEBA" dance short (2024).
@@ -150,6 +159,12 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewe
 - `bible/characters/Kikirara-Vivi.md › Relationship Map`: | FUWAMOCO | — | Watched FLOW GLOW's debut (2024-11-09, secondary archive); #holoREPO (2025-05-25) | [VI5] |
 - `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Koseki Bijou | — | Watched FLOW GLOW's debut with FUWAMOCO (2024) | [VI5] |
 - `bible/characters/Kikirara-Vivi.md › Story Engine`: 1. Vivi does FUWAMOCO's stage makeup and charges them "Vivi prices."
+
+### from La+ Darknesss
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: FUWAMOCO: archived shorts of them performing to "Onee-sama♡Love Call"
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Nerissa Ravencroft, Nakiri Ayame, Hoshimachi Suisei and Shishiro Botan: fellow holoGTA participants (2024).
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | FUWAMOCO, Cecilia Immergreen | kouhai | Archived shorts: FUWAMOCO performing to "Onee-sama♡Love Call" (2026); Cecilia's short titled "ONEE-SAMA!" (2026; a title, not verified dialogue) | [LA5] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Nerissa Ravencroft | — | holoGTA (2024) | [LA4] |
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
@@ -258,6 +273,16 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewe
 - `bible/characters/Takanashi-Kiara.md › Behavioral Traits`: 7. When stage work gets demanding, she rehearses rather than coasting on enthusiasm, and she guides the audience through calls. She gives juniors practical encouragement (Bijou). [Official T10, T11]
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-06 | Serendipity interview and partnership with Koseki Bijou | [Official T10] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Koseki Bijou | Advent junior; 2026 Serendipity partner | Practical encouragement for stage work; shared "6 7" meme | [Official T10] |
+
+### from Takane Lui
+- `bible/characters/Takane-Lui.md › [SW] Background`: With the English cast, archived metadata records English practice with Mori Calliope (2021), Calli's lesson #04 with Chloe (2022), Calli's "HOLOYOI" episode 1 with Chloe (2023), a Wario off-collab with Kiara (2023), "TWIN DAY WITH LUI" with FUWAMOCO (2023), Hakos Baelz's "BAE-GEMITE DOMINATION" episode 5 with Chloe (2023) and "Q&A With Bird Sisters" with Mumei (2025).
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: FUWAMOCO: "TWIN DAY WITH LUI"
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: Nerissa Ravencroft, Koseki Bijou, Gigi Murin and Raora Panthera: animated "Soar" shorts (2026).
+- `bible/characters/Takane-Lui.md › Behavioral Traits`: 6. Loves twins (her official likes), which made "TWIN DAY WITH LUI" with FUWAMOCO (2023). [Official LU1] [LU5]
+- `bible/characters/Takane-Lui.md › Background Timeline`: | 2023 | HOLOYOI ep. 1 with Chloe (Calli's show, 03-23); a Wario off-collab with Kiara (01-15); BAE-GEMITE #5 with Bae and Chloe (04-29); "TWIN DAY WITH LUI" with FUWAMOCO (11-25); Blue Journey (official roster) | [LU5 UuL_nORzfNM, cVJefDjefUs, z4-5Hq5AKG4, MbqO5OPuT80] [Blue Journey roster] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | FUWAMOCO | — | "TWIN DAY WITH LUI" (2023); danced to "Soar" (2026) | [LU5] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Nerissa, Bijou, Gigi, Raora | kouhai | Their channels posted animated "Soar" shorts crediting external motion creators (2026) | [LU5] |
+- `bible/characters/Takane-Lui.md › Story Engine`: 2. Lui hosts FUWAMOCO for "Twin Day" again and can't stop smiling.
 
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: FUWAMOCO: "Detective Dogs"

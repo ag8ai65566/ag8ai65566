@@ -285,7 +285,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Houshou Marine, Oozora Subaru | JP seniors | Early HOLOTALK guest (Marine); first EN×JP collab (Subaru, 2020) | [Observed T2 §2020, secondary] |
 | Hakos Baelz | Promise kouhai | Keep Talking and Nobody Explodes (2021-09-24), which fan references call Bae's first official collab outside Council; World Tour '24 performers together; ENReco guildmates ("Amber Coin," secondary) | [Bae file HB3, HB5, HB8, HB20] |
 | Houshou Marine, Shirogane Noel | JP seniors | HOLOTALK's first guest Marine ("#marinarasauce," 2020-11-20) and 22nd guest Noel (2022-03-05); a "MIRAGE" dance short with Marine (2024) | [S1 3HwaqbdKO1s, toe_PmrDWBU, tzVgzvV0cVo] |
-| Secret Society holoX | JP kouhai | HOLOTORI with Lui and Mumei; La+: "FAKE HEART" (2025-04-08), the Mythmash single "Glow in the Dark" (2025-07-27) and an off-collab (2023-06-30); Chloe: an origami off-collab (2023-11-22) and the "WILDCARD" cover (2025-01-25); Iroha: guest at her 3D lives (2024, 2025) and #TASTYchallenge shorts (2025); Koyori: a "MIRAGE" dance short (2024) | [S1; world card "holoX"] |
+| Secret Society holoX | JP kouhai | HOLOTORI with Lui and Mumei; La+: "FAKE HEART" (2025-04-08), the Mythmash single "Glow in the Dark" (premiere 2025-07-27; official digital release 2025-07-28) and an off-collab (2023-06-30); Chloe: an origami off-collab (2023-11-22) and the "WILDCARD" cover (2025-01-25); Iroha: guest at her 3D lives (2024, 2025) and #TASTYchallenge shorts (2025); Koyori: a "MIRAGE" dance short (2024) | [S1; world card "holoX"] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026), as on the card.
@@ -520,6 +520,7 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi):** Marine, Noel and holoX added (HOLOTALK, HOLOTORI, La+ and Chloe songs); clauses merged and shortened for length (the Ina chicken incident and the Raora "Doom" meme stay in the dossier rows). (sources: the new member files, "JP Senpai Pairs 2" and "holoX".)
 - **2026-10-02, GPT review of the JP cast additions (run B):** HOLOTALK guest list labelled as archived episode records; Fauna's episode dated "December 2024, before graduating" (archive RMvdq3JQ2n0) instead of a relative interval; "KIWAWA vs FAWNA" left in the dossier until its stream is attached.
 - **2026-10-02, relationship-web coverage (Claude):** Elizabeth ("Erby Berby," as on her card) named back; clauses tightened for length.
+- **2026-10-03, GPT review of the holoX cards (run E, La+/Lui/Koyori), merged by Claude:** the official digital release date of "Glow in the Dark" (2025-07-28) is added beside the premiere.
 
 ## Open Questions
 1. Should the card quote one crude line verbatim (for example "I'm an innocent maiden." as irony), or is

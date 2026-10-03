@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git d91f322.
+Snapshot: git d2dfb9b.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Kronii and Gura|Takanashi Kiara|Gura and Kronii|hololive -Myth-|Gura and Kiara|Kiara and Gura|Kiara and Ame|Ina and Calli|Ame and Kiara|Calli and Ina|Calli and Ame|Ame and Calli|Gura and Ina|Ina and Gura|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|hololive -Myth-|Gura and Kronii|Kronii and Gura|Takanashi Kiara|Kiara and Gura|Gura and Kiara|Ina and Calli|Ame and Calli|Calli and Ame|Calli and Ina|Ame and Kiara|Kiara and Ame|Ina and Gura|Gura and Ina|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -50,6 +50,10 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Kron
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree with IRyS on #BaeTV24 (2024); "Amber Coin" guildmates in ENReco: Raora, Bae, Kiara and Mumei (secondary) | [Observed HB3; HB2] |
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Takanashi Kiara | Myth senior | Keep Talking and Nobody Explodes (2021), which fan references call Bae's first official collab outside Council; World Tour '24 together; "Amber Coin" in ENReco (secondary) | [Observed HB3; HB2, secondary] [Official HB6] |
 
+### from Hakui Koyori
+- `bible/characters/Hakui-Koyori.md › [SW] Relationships`: Takanashi Kiara: a "MIRAGE" dance short (2024).
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Takanashi Kiara | — | A "MIRAGE" dance-challenge short on Kiara's channel (2024-12-27) | [KO5 xXwi19krZ68] |
+
 ### from Hoshimachi Suisei
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Takanashi Kiara: HOLOTALK #8 and a Tales of Arise discussion (2021); a dance-challenge short (2025).
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2021-04-17 | Kiara's HOLOTALK, 8th guest ("cometori") | [S1 a6DjP7NYwUE] |
@@ -78,6 +82,16 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Kron
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" | [Official KB4] [Observed KB3; Kiara archive] |
 - `bible/characters/Koseki-Bijou.md › Arc`: - **Starting point:** active member at the 2026 baseline: a 900K+ channel, two original songs, the Serendipity duo with Kiara.
 - `bible/characters/Koseki-Bijou.md › Story Engine`: 2. Kiara and Biboo try to stop saying "67" for an entire collab.
+
+### from La+ Darknesss
+- `bible/characters/Laplus-Darknesss.md › [SW] Background`: (2025) with Takanashi Kiara, a nostalgic-games off-collab on Kiara's channel (2023), and Mori Calliope's English lesson #02 with Gawr Gura and Kazama Iroha (2022).
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Takanashi Kiara: "Glow in the Dark"
+- `bible/characters/Laplus-Darknesss.md › Voice Profile`: - **Language:** streams in Japanese; with the English cast she sang with Kiara ("Glow in the Dark," "FAKE HEART") and joined Calli's English lesson (2022). [LA5]
+- `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2023-06-30 | Nostalgic games with a handcam, an off-collab on Kiara's channel (archived title and description) | [LA5 XWf2PqD_8zQ] |
+- `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2025-04-08 | "FAKE HEART," a cover with Kiara | [LA5 yspJ9xmGRfw] |
+- `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2025-07-27/28 | "Glow in the Dark," a Mythmash single with Kiara (official digital release 2025-07-28); a joint stream | [Official music 600] [LA5 v5RKZXNuVyw] [LA4] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Takanashi Kiara | — | "Glow in the Dark" and "FAKE HEART" (2025); an off-collab (2023) | [LA5] |
+- `bible/characters/Laplus-Darknesss.md › Story Engine`: 1. La+ demands that Kiara address her as "Your Darknesss" for a whole duet rehearsal.
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
@@ -178,6 +192,15 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Kron
 - `bible/characters/Shishiro-Botan.md › [SW] Background`: (2025); Kiara is a fellow member of the Minecraft "Usada Kensetsu"
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu"
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Takanashi Kiara | "Usada Kensetsu" (Usaken) | The Minecraft construction company of Pekora's circle | [BO2] |
+
+### from Takane Lui
+- `bible/characters/Takane-Lui.md › [SW] Background`: She debuted on 2021-11-27 as the second member of Secret Society holoX, hololive's sixth Japanese generation, and belongs to the bird unit HOLOTORI, whose documented 2023 lineup was Lui, Takanashi Kiara, Oozora Subaru, Pavolia Reine and Nanashi Mumei.
+- `bible/characters/Takane-Lui.md › [SW] Background`: With the English cast, archived metadata records English practice with Mori Calliope (2021), Calli's lesson #04 with Chloe (2022), Calli's "HOLOYOI" episode 1 with Chloe (2023), a Wario off-collab with Kiara (2023), "TWIN DAY WITH LUI" with FUWAMOCO (2023), Hakos Baelz's "BAE-GEMITE DOMINATION" episode 5 with Chloe (2023) and "Q&A With Bird Sisters" with Mumei (2025).
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: Takanashi Kiara: HOLOTORI; a Wario off-collab (2023).
+- `bible/characters/Takane-Lui.md › Background Timeline`: | 2021-11-27 | Debut, second of holoX; HOLOTORI membership (the wiki places Kiara's welcome beside the 11-26 reveal) | [Observed LU2] [Official HOLOTORI roster 2023] |
+- `bible/characters/Takane-Lui.md › Background Timeline`: | 2023 | HOLOYOI ep. 1 with Chloe (Calli's show, 03-23); a Wario off-collab with Kiara (01-15); BAE-GEMITE #5 with Bae and Chloe (04-29); "TWIN DAY WITH LUI" with FUWAMOCO (11-25); Blue Journey (official roster) | [LU5 UuL_nORzfNM, cVJefDjefUs, z4-5Hq5AKG4, MbqO5OPuT80] [Blue Journey roster] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Takanashi Kiara | HOLOTORI | Fellow HOLOTORI member (the wiki dates Kiara's welcome to the reveal); a Wario off-collab (2023-01-15) | [LU2] [LU5 cVJefDjefUs] |
+- `bible/characters/Takane-Lui.md › Story Engine`: 1. A historical HOLOTORI scene with Kiara and Mumei; Lui keeps the agenda, then knocks over the water.
 
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Groups`: hololive (affiliate), hololive -Myth- (affiliate), Myth, hololive English (former branch name)

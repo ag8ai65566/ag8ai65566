@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git d91f322.
+Snapshot: git d2dfb9b.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: loEN's later generations|hololive History 2023-2026|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|Myth's debut|hololive fes|Star Flower|Serendipity|the merger|world tour|EN concert|Death Star|SUPER EXPO|Holodeath|PavoNashi|aftertalk|HOLOTORI|MoRikka|IRySora|HoloJEI|3D live|soranii|K.I.R.A|V3LVET|UMISEA|KoMeHa|OKFAIR|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|Death Star|world tour|SUPER EXPO|EN concert|the merger|PavoNashi|Holodeath|aftertalk|HOLOTORI|K.I.R.A|IRySora|HoloJEI|soranii|MoRikka|3D live|OKFAIR|V3LVET|UMISEA|KoMeHa|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -98,6 +98,12 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Kobo Kanaeru (ID) | Cross-branch | "Ai ni" at the World Tour '24 Taipei finale (2025-01-18); "HELP!!" with Elizabeth at Serendipity (2026) | [Official HB6, HB5] |
 - `bible/characters/Hakos-Baelz.md › Arc`: - **Starting point:** active at the 2026 baseline: a busy 2026 (the "ReCOLOR" birthday live and "SNAKE EYES," the final solo at fes, Serendipity with IRyS), preparing her first solo concert "REGALIA" and album "Mirror Mirror."
 - `bible/characters/Hakos-Baelz.md › Hard Facts`: - Official stage units: BaeRyS with IRyS (Serendipity 2026); CHADCast trio with Calli and IRyS.
+
+### from Hakui Koyori
+- `bible/characters/Hakui-Koyori.md › [SW] Background`: (2024), and guest appearances at FUWAMOCO's birthday concert (2025) and Mumei's first 3D live (2024).
+- `bible/characters/Hakui-Koyori.md › [SW] Relationships`: Nanashi Mumei (graduated): a guest at her first 3D live (2024).
+- `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2024 | Lethal Company with FUWAMOCO and Fubuki (03-09); FUWAMOCO Morning episode 90 guest, billed #FUWAMOKOYO (04-26); a guest at Mumei's first 3D live (08-05) | [KO5 XR1PEtj15kE, gCYXKgYcFmk, gl7CwlEg2ZI] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Nanashi Mumei (graduated) | — | A guest at Mumei's first 3D live, "Outside the Box" (2024) | [KO5] |
 
 ### from Hoshimachi Suisei
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, Death Star, miComet, Hoshimatic Project, Shiranui Kensetsu, Startend, AS_tar, MOMAS, Midnight Grand Orchestra
@@ -245,7 +251,17 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Ina; "THIS IS MYTH" premieres | [Archive metadata T25] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Koseki Bijou | Advent junior; 2026 Serendipity partner | Practical encouragement for stage work; shared "6 7" meme | [Official T10] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Hakos Baelz | Promise kouhai | Keep Talking and Nobody Explodes (2021-09-24), which fan references call Bae's first official collab outside Council; World Tour '24 performers together; ENReco guildmates ("Amber Coin," secondary) | [Bae file HB3, HB5, HB8, HB20] |
-- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Secret Society holoX | JP kouhai | HOLOTORI with Lui and Mumei; La+: "FAKE HEART" (2025-04-08), the Mythmash single "Glow in the Dark" (2025-07-27) and an off-collab (2023-06-30); Chloe: an origami off-collab (2023-11-22) and the "WILDCARD" cover (2025-01-25); Iroha: guest at her 3D lives (2024, 2025) and #TASTYchallenge shorts (2025); Koyori: a "MIRAGE" dance short (2024) | [S1; world card "holoX"] |
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Secret Society holoX | JP kouhai | HOLOTORI with Lui and Mumei; La+: "FAKE HEART" (2025-04-08), the Mythmash single "Glow in the Dark" (premiere 2025-07-27; official digital release 2025-07-28) and an off-collab (2023-06-30); Chloe: an origami off-collab (2023-11-22) and the "WILDCARD" cover (2025-01-25); Iroha: guest at her 3D lives (2024, 2025) and #TASTYchallenge shorts (2025); Koyori: a "MIRAGE" dance short (2024) | [S1; world card "holoX"] |
+
+### from Takane Lui
+- `bible/characters/Takane-Lui.md › [SW] Groups`: hololive, Secret Society holoX, holoX, HOLOTORI, Bara☆Dice, Blue Journey, InuTakaShishiRam, NePoX
+- `bible/characters/Takane-Lui.md › [SW] Background`: She debuted on 2021-11-27 as the second member of Secret Society holoX, hololive's sixth Japanese generation, and belongs to the bird unit HOLOTORI, whose documented 2023 lineup was Lui, Takanashi Kiara, Oozora Subaru, Pavolia Reine and Nanashi Mumei.
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: Takanashi Kiara: HOLOTORI; a Wario off-collab (2023).
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: Nanashi Mumei (graduated): HOLOTORI; "Q&A With Bird Sisters"
+- `bible/characters/Takane-Lui.md › Background Timeline`: | 2021-11-27 | Debut, second of holoX; HOLOTORI membership (the wiki places Kiara's welcome beside the 11-26 reveal) | [Observed LU2] [Official HOLOTORI roster 2023] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Takanashi Kiara | HOLOTORI | Fellow HOLOTORI member (the wiki dates Kiara's welcome to the reveal); a Wario off-collab (2023-01-15) | [LU2] [LU5 cVJefDjefUs] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Nanashi Mumei (graduated) | HOLOTORI; "Bird Sisters" | "Q&A With Bird Sisters" (2025); the EN Minecraft tour (2022) | [LU5] |
+- `bible/characters/Takane-Lui.md › Story Engine`: 1. A historical HOLOTORI scene with Kiara and Mumei; Lui keeps the agenda, then knocks over the water.
 
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Background`: She was a guest at Kronii's 3D birthday live in March 2026.

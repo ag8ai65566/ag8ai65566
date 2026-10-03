@@ -156,7 +156,7 @@ that belong to Mococo or define her.
 | Ouro Kronii | Senior ("WatchDog," with Fuwawa) | Among Us, Team Fortress 2, 7 Days to Die (2023–24) | [Observed MC2; MC3] |
 | Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Raora drew the twins a shikishi portrait before her debut and gave it "with big tears in her eyes" | [Official MC4] |
 | Hakos Baelz | Promise senior | Archived metadata: Gigi's 2025 Spring Party with FUWAMOCO and Bae (2025-03-31); a FUWAMOCO short dancing to "bae-senpai's new song SNAKE EYES" (2026-03-20) | [Bae file HB3, HB5, HB8, HB20] |
-| Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori and Fubuki (Lethal Company 2024; Koyori on FUWAMOCO Morning ep. 90, 2024-04-26; a guest at their 2025 birthday concert); "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab with Iroha (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
+| Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori (FUWAMOCO Morning ep. 90, 2024-04-26); Lethal Company with Koyori and Fubuki (2024-03-09); Koyori a guest at their 2025 birthday concert; "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab with Iroha (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
 | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
 | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
 
@@ -294,6 +294,7 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
 - **2026-10-02, cast expansion (author: add Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu), reciprocal ties:** Suisei ("Chatter Chatter" short, Puyo Puyo coaching) added (source in Suisei's file).
 - **2026-10-02, relationship-web coverage (Claude):** Ayame (shared 7th fes. stage, 2026) named back.
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the Marine events carry the archived-metadata label (Touhou verified by Claude in the local archive, x7gRHgQ0yI0); the duplicate Noel dossier row removed; Fuwawa's oshi claim is not transferred.
+- **2026-10-03, GPT review of the holoX cards (run E, La+/Lui/Koyori), merged by Claude:** "FUWAMOKOYO" (the twins and Koyori, a FUWAMOCO Morning title) is separated from the four-person Lethal Company with Shirakami Fubuki (archived titles gCYXKgYcFmk, XR1PEtj15kE).
 
 ## Open Questions
 1. There is no clean solo sample of Mococo's ordinary speech in the archive (her 2025 solo is quiet and

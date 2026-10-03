@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git d91f322.
+Snapshot: git d2dfb9b.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Calli and Gura|Gura and Calli|Watson Amelia|Amelia Watson|The Fish Tank|Ame and Gura|Gura and Ame|Gremlin Ame|Goobidiba|Same-chan|Gawr Gura|Bone Bros|ワトソン・アメリア|Samegaki|HoloMyth|holoMyth|amesame|AmeSame|Amechan|Amelia|がうる・ぐら|Gooba|Myth|Gura|Goob|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Gura and Calli|Calli and Gura|The Fish Tank|Amelia Watson|Watson Amelia|Gura and Ame|Ame and Gura|Gremlin Ame|Same-chan|Bone Bros|ワトソン・アメリア|Gawr Gura|Goobidiba|Samegaki|holoMyth|HoloMyth|amesame|AmeSame|Amechan|がうる・ぐら|Amelia|Gooba|Gura|Goob|Myth|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -56,6 +56,12 @@ Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Ca
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Watson Amelia: Overwatch and Apex (2023).
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" | [Official KB4] [Observed KB3; Kiara archive] |
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Watson Amelia | Senior | Overwatch and Apex collabs (2023) | [Observed KB3 7MtuoPeC4tE; Ame archive] |
+
+### from La+ Darknesss
+- `bible/characters/Laplus-Darknesss.md › [SW] Background`: (2025) with Takanashi Kiara, a nostalgic-games off-collab on Kiara's channel (2023), and Mori Calliope's English lesson #02 with Gawr Gura and Kazama Iroha (2022).
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022).
+- `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2022-03-04 | Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha | [LA5 X492n37brRU] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Gawr Gura (graduated) | — | The same English lesson (2022) | [LA5] |
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Watson Amelia: "Detective Dogs."
@@ -162,6 +168,10 @@ Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Ca
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate | Kiara's EN oshi ("#1 Ame gosling"), credited for help with 3D productions; Ame made HOLOTALK intro material | [Observed T2 §Likes and dislikes] [Official T9] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate | German lessons where Kiara taught her German swears and rickrolled her; Gura's 2020 Minecraft prank filled KFP's back room with chickens; "GURA YOU LITTLE SHIT" | [Observed T15; T2 §Miscellaneous and §KFP] [Official T16] |
 - `bible/characters/Takanashi-Kiara.md › Hard Facts`: - Birthday July 6; height 165 cm; debut 2020-09-12; unit hololive -Myth-; illustrator huke. [Official T1]
+
+### from Takane Lui
+- `bible/characters/Takane-Lui.md › [SW] Relationships`: Watson Amelia (affiliate): Apex with Iofi (2022).
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Watson Amelia (affiliate) | — | Apex with Airani Iofifteen (2022-01-19) | [LU5 Mory0I9vXtI] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › With Myth`: - **Takanashi Kiara:** hosted all five on HOLOTALK; an occult handcam off-collab with Shiori ("#shiotori," 2024-07-12); Baldur's Gate 3 with Bijou, Calli and Nerissa ("Killing, Two Birds, with One Stone," 2023); Bijou was her 2026 Serendipity partner ("Rocku Wawa," and a running "67" joke); Bijou recalls Kiara as "really encouraging and helpful" when Kiara asked her to perform a song with Kiara and Ame whose choreography was one of the hardest she had learned. [Official S4] [Observed S1]

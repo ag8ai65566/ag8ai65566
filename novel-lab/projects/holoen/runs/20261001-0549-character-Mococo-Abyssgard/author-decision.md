@@ -8,3 +8,4 @@
 - 2026-10-02 07:53 作者裁決收錄 final.md（sha256 56d1b761a41e）：Author decision (2026-10-02): reciprocal relationship ties for the JP four and the batch-2 members (relationship-web coverage); batch-2 lines are confirmed in GPT review runs D/F, the JP-four lines in the cohort audits
 - 2026-10-02 08:24 作者裁決收錄 final.md（sha256 b15e71171df2）：Author decision (2026-10-02): relationship-web coverage, reciprocal ties on cards at the length limit (clauses tightened, no facts removed except the bento aside kept in IRyS's timeline)
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 5044c35d109b）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
+- 2026-10-03 23:14 作者裁決收錄 final.md（sha256 e3ea165fb7d9）：Author decision (2026-10-03): cross-card lines corrected by the run E review (FUWAMOKOYO, m HOLD'EM wording, Glow in the Dark release date); one GPT round, merged by Claude.

@@ -17,29 +17,29 @@
 - Pace comes from the designed voice plus `[cheerful, crisp]` or `[excited, fast]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script
-- "Konkoyo!" to open; "joshu-kun" (assistants) for her viewers.
+- 「こんこよ～！」 ("Konkoyo~!") to open; 「助手くん」 ("joshu-kun," assistants) for her viewers; 「こよりちゃん」 for herself.
 - Crisp segment transitions on her news show: 「それでは続いてはこちら」 ("and next up").
-- Speeds up and rises when explaining something that excites her.
-- Experiments and "Koyorium" as running jokes; teasing stays playful.
+- Invites viewers warmly: 「ぜひぜひ見てみてください」 ("please do take a look").
+- Excited explanations may speed up and rise (a provisional direction); experiments and 「コヨリニウム」 ("koyoriniumu") are running jokes.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Opening | `[bright, cheerful]` | "Konkoyo!" (official) |
+| Opening | `[bright, cheerful]` | 「こんこよ～！」 ("Konkoyo~!"; official) |
 | Hosting | `[upbeat, announcer]` | 「それでは続いてはこちら」 ("Sore de wa tsuzuite wa kochira," "and next up") |
+| Inviting viewers | `[warm, upbeat]` | 「ぜひぜひ見てみてください」 ("Zehi zehi mite mite kudasai," "please do take a look") |
 | Teasing a member | `[playful, sly]` | **Style demo:** "Kore mo kenkyū no tame dakara ne?" ("It's all for research, okay?") |
 | Proud of an experiment | `[smug]` | **Style demo:** "Fufun, kanpeki na jikken kekka!" ("Heh, perfect results!") |
 | A scare | `[screams]` | (tag only) |
-| Thanking her assistants | `[warm]` | **Style demo:** "Joshu-kun, itsumo arigatō ne." ("Thanks as always, assistants.") |
 
 With people (proposed scene directions, not observed conversational defaults): Chloe `[bickering, fond]`; Marine `[giddy]`; FUWAMOCO `[bubbly]`; La+ `[teasing]`.
 
 ## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Konkoyo!" (spoken)
-- `[giggles]` (tag only); `[screams]` (tag only)
+- `[giggles]` (tag only; the recorded giggle is a first-model observation, so this is a provisional choice); `[screams]` (tag only)
 
 ## 6. Pronunciation (provisional; test)
-- Reading guide (untested): はくい こより; こんこよ; じょしゅくん. Listen to how the chosen voice says them and adjust.
+- Reading guide (untested): はくい こより; こんこよ; じょしゅくん; こよりにうむ. Listen to how the chosen voice says them and adjust.
 
 ## 7. Don't
 - A flat, sleepy, mumbled or coldly scientific voice.
@@ -48,8 +48,8 @@ With people (proposed scene directions, not observed conversational defaults): C
 ```
 [bright, cheerful] Konkoyo!
 [upbeat, announcer] Sore de wa tsuzuite wa kochira.
+[warm, upbeat] Zehi zehi mite mite kudasai!
 [playful, sly] Kore mo kenkyū no tame dakara ne?
-[smug] Fufun, kanpeki na jikken kekka!
 ```
-(Line 1 is her official greeting; line 2 is her line, quoted only where both transcripts agree; lines 3–4 are
-style demos.)
+(Line 1 is her official greeting; lines 2 and 3 are her lines, quoted only where both transcripts agree; line 4 is a
+style demo.)
