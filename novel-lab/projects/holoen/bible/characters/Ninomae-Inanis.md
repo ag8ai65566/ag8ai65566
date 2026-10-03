@@ -82,7 +82,7 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
 8. When she draws for viewers, she treats it as learning alongside them, not lecturing. [Observed—published interview I18]
 9. When an interviewer asks a practical question, she may give an exaggerated answer first and then the
    real one ("Five and a half years!!"). [Observed—published interview I19]
-
+- **Credit where it is due:** when an interviewer attributed the TAKO∞TAKOVER video's artwork to her, she redirected credit to tellingbones (art direction, character design, animation) and described her own part as the concept and broad creative direction. [Secondary NEW-R1-012, edited interview]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -187,6 +187,7 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
   - Treating quietness as helplessness.
   - Making her permanently innocent of bawdy humor (the Forbidden WAH exists).
   - Japanese-heavy speech.
+- **Crowd-leading mode:** at Drawn to Dawn she opened the second day (2026-03-28 PDT) with TAKO∞TAKOVER's live debut, built around audience calls and responses. [Official NEW-R1-014]
 
 ### Tone Shifts
 The middle column is provisional voice direction (not checked against audio) unless a source is named.
@@ -241,6 +242,7 @@ Real lines first; Style demos after.
 | 2026-01-08 (digital release; zone unspecified) | Digital release of TAKO∞TAKOVER; lyrics by Mori Calliope. I19 discusses its deliberately unsettling takeover story. | [Observed—published interview I19] [Official I25; digital release: https://hololive.hololivepro.com/en/music/693/, checked 2026-10-03] |
 | 2026-09-07 | Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- | [Official I28] [Observed I10] |
 | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
+| 2026-09-19 | Original single "Stardust Capsule" (hololive catalogue CVRD-824). | [Official NEW-R1-011] |
 
 ## Relationship Map
 Public exchanges only. No private feelings are implied. Unit and pairing names are marked one by one:
@@ -255,7 +257,7 @@ fan or collab nicknames.
 | Mori Calliope | Myth genmate | Favorite pun target (Calli's exasperated reaction to Ina's puns); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
 | Watson Amelia (affiliate) | Myth genmate | Ina designed Bubba; the patient foil to Ame's salty gremlin; "Ame... Ame is British." | [Observed I2 §Personality, §Miscellaneous and §Quotes] |
 | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
-| Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her | [Observed I2 §Miscellaneous; I14] [Observed—published interview I6] |
+| Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her Their Monster Hunter Wilds outfit project: Bijou chose Gore Magala; Ina settled on Nu Udra after considering Uth Duna, used Capcom's reference materials, and joked about preparing an absurdly long justification for changing her monster. | [Observed I2 §Miscellaneous; I14] [Observed—published interview I6] [Secondary NEW-R1-013] |
 | Houshou Marine | JP senior; UMISEA (official 2023 roster) | Admired artist-performer ("Marine-senpai," 2022 interview, not reopened in review); Marine guested at "Pleides" (2024) | [Observed—published interview I18] [Official UMISEA roster] [S1 3n9igJnSXtQ] |
 | Shiranui Flare | JP senior | Gave her the nickname "Ore no Ina" | [Observed I2 nickname list] |
 | Hakos Baelz | Promise kouhai | Archived metadata: the K/DA "POP/STARS" cover with Moona and Ayunda Risu (2023); a BAE-CADEMY art lesson with "Ina-sensei" (2024); Ina's AmiAmi special featuring Bae (2025-05-29); World Tour '24 together | [Bae file HB3, HB5, HB8, HB20] |
@@ -344,6 +346,10 @@ audio-checked by ear.
 - I32 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened)
 
 ---
+- NEW-R1-011 (GPT research R1, checked 2026-10-03) "Stardust Capsule" release page (OFFICIAL): https://hololive.hololivepro.com/en/music/824/
+- NEW-R1-012 (GPT research R1, checked 2026-10-03) Siliconera interview (SECONDARY, edited interview): https://www.siliconera.com/interview-hololive-vtuber-ninomae-inanis-talks-about-her-concert-and-ep/
+- NEW-R1-014 (GPT research R1, checked 2026-10-03) Drawn to Dawn concert report (OFFICIAL): https://hololive.hololivepro.com/en/events/drawn-to-dawn/
+- NEW-R1-015 (GPT research R1, checked 2026-10-03) Drawn to Dawn interview (OFFICIAL): https://drawn-to-dawn.hololivepro.com/news/09.html
 
 ## [SW] Name
 Ninomae Ina'nis
@@ -361,7 +367,7 @@ hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clo
 Ina, Ina'nis, Inya, Ninomanyo Inya'nis, 一伊那尓栖
 
 ## [SW] Personality
-Ina streams as a priestess of the Ancient Ones who treats tentacles and eldritch whispers as completely normal; in practice she is a gentle, laid-back hermit who loves rolling around on the floor. She drops puns flat, with no setup, lets them sit, and giggles to herself while chat groans "INAFF"; she enjoys the groan more than the laugh. When chat misbehaves or someone squishes her hair, she threatens to bonk them with a crowbar in the sweetest voice; when chat teases her, she plays the stern overlord for a beat, then collapses into giggles. She wanders into tangents and apologizes her way back out. When she slips up, she calls a "Forgetty Beam!" and tells chat to forget it. Her patience is nearly endless unless she's sleepy. She draws alongside her viewers instead of lecturing them, explains her own designs through specific details, and takes on demanding stage work; her quiet is never passivity. She supports her genmates' work in public, designing their mascots and outfits and sharing the stage, and she is sincere in short, gentle ways: "Live without regrets." She loves food and gacha and dislikes bugs, boredom and cucumbers.
+Ina streams as a priestess of the Ancient Ones who treats tentacles and eldritch whispers as completely normal; in practice she is a gentle, laid-back hermit who loves rolling around on the floor. She drops puns flat, with no setup, lets them sit, and giggles to herself while chat groans "INAFF"; she enjoys the groan more than the laugh. When chat misbehaves or someone squishes her hair, she threatens to bonk them with a crowbar in the sweetest voice; when chat teases her, she plays the stern overlord for a beat, then collapses into giggles. She wanders into tangents and apologizes her way back out. When she slips up, she calls a "Forgetty Beam!" and tells chat to forget it. Her patience is nearly endless unless she's sleepy. She draws alongside her viewers instead of lecturing them, explains her own designs through specific details, and takes on demanding stage work; her quiet is never passivity. She supports her genmates' work in public, designing their mascots and outfits and sharing the stage, and she is sincere in short, gentle ways: "Live without regrets." She loves food and gacha and dislikes bugs, boredom and cucumbers. She has said that creative projects and performances let her express thoughts and feelings she finds harder to put into conversation, and that people's specific reactions encourage her to make more.
 
 ## [SW] Background
 She has no supernatural abilities; her lore is a performed persona. Ina is a VTuber whose lore, a persona she plays gently and for laughs, makes her an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles and began hearing Ancient Whispers; the book is her floating companion, AO-chan. She became a VTuber to deliver random sanity checks on humanity, debuting in hololive English -Myth- in September 2020. She drew Myth's intro art and designed Takodachi, Bubba and Death Sensei. Her fans are the Tentacult, each one a Takodachi, after the little purple mascot she designed. Her songs tell darker stories about her priestess duty. She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii. Since the 2026 merger she introduces herself as "Ninomae Ina'nis from hololive."
@@ -502,6 +508,7 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-017, VOICE-V1-018, VOICE-V1-019 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-DATE-001 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:CLAUDE-SCOPE-002, myth3:MYTH-DATE-002, myth3:MYTH-QUOTE-001, myth3:MYTH-SCOPE-001 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
+- **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-011 ("Stardust Capsule"), NEW-R1-012 (credits tellingbones), NEW-R1-013 (Bijou outfit project), NEW-R1-014 (crowd-leading TAKO∞TAKOVER debut), NEW-R1-015 (self-stated reason for creating, in Personality). FIX-R1-001 was already applied by the myth1 audit.
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

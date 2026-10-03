@@ -11,3 +11,5 @@
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 bdb081c5ae65）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 8ecae76ba297）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-03 23:32 作者裁決收錄 final.md（sha256 78a66375b060）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
+- 2026-10-03 23:52 作者裁決收錄 final.md（sha256 c6cad9655876）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
+- 2026-10-03 23:53 作者裁決收錄 final.md（sha256 17c8183f814e）：Author decision (2026-10-03): new-material research R2 (Promise) merged by Claude

@@ -170,7 +170,7 @@ partners, so the cast's channels and the wiki fill in.
 | Nerissa Ravencroft | Genmate ("ShioRaven") | Nerissa calls her "wife"; Shiori plays hard to get; a fictional daughter, "Beatrice Niori World Destroyer Novella"; Shiori knows where Nerissa's horn piece is; a hedge maze and fishing collabs (7 / 2 / 1 / 2) | [Observed SN2 §Relationships, §Lore, secondary; SN3] |
 | Koseki Bijou | Genmate ("Goth Rock," "GAGA") | Bijou's most-mentioned genmate on her own channel (46 streams); a "Gyatt Review" (2024), an offline conbini-snack collab with Nerissa and Bijou (2024) | [Observed SN2; SN3; Bijou archive] |
 | FUWAMOCO | Genmates ("Pen Pups") | The twins once mistook a Minecraft cow for her (her black-and-white coloring); she joked Mococo was hallucinating Fuwawa | [Observed SN2 §Miscellaneous; FUWAMOCO wiki, secondary] |
-| Mori Calliope | Senior; Serendipity 2026 duo ("Last Writes") | Calli's "#DEEP" kids'-movie talk (2024-01-09) and Stardew Valley (2024-12-20); in the official interview Calli is "a little obsessed with her" and Shiori admires Calli's "work ethic and boundaries"; their dynamic: "Unhinged" (Calli) | [Official SN4] [Observed Calli archive] |
+| Mori Calliope | Senior; Serendipity 2026 duo ("Last Writes") | Calli's "#DEEP" kids'-movie talk (2024-01-09) and Stardew Valley (2024-12-20); in the official interview Calli is "a little obsessed with her" and Shiori admires Calli's "work ethic and boundaries"; their dynamic: "Unhinged" (Calli) In their June 2026 interview Calli credits Shiori with encouraging her to pursue personally interesting content over trends. | [Official SN4] [Observed Calli archive] [Official, Serendipity interview05] |
 | Takanashi Kiara | Senior | HOLOTALK (2023); an occult handcam off-collab "#shiotori" (2024-07-12); Eden Eternal (2024) | [Observed Kiara archive] |
 | Ouro Kronii | Senior | They hosted "Whip It Out! Rating Your Clocks with @OuroKronii" together (2025-03-27; viewers' submissions); Blood Typers (2025) | [Observed SN3; Kronii archive] |
 | Nanashi Mumei | Senior (graduated 2025) | B-movie watchalongs (Neil Breen, 2025-02-26; Kung Pow, 2025-04-11), Left 4 Dead 2 (2024) | [Observed SN3] |
@@ -305,6 +305,7 @@ Nerissa Ravencroft: Advent genmate and partner in the performed ShioRaven "wife"
 - **2026-10-02, relationship web (tools/web_check.py):** Gura added to Relationships, mirroring the tie already on the other card (same evidence there).
 - **2026-10-02, quotation spans (Claude, ahead of the voice audit):** "…really bad at remembering names" quoted without the first-model-only "I'm."
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-002, VOICE-V2-011, VOICE-V2-014, VOICE-V2-017, VOICE-V2-037 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
+- **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
 
 ## Open Questions
 1. The sampled 2026 windows include a showcase with trailer audio and a co-op stream with viewers; counts are

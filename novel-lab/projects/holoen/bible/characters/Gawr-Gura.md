@@ -242,6 +242,7 @@ Real lines first; Style demos after.
 | 2021-06-22 | Original song "REFLECT" | [Observed G2 §2021; G4] |
 | 2022-02-03 | "Q" with Mori Calliope (DECO*27) | [Official G15] |
 | 2024-09 | "2.0" model update | [Observed G3] |
+| 2025-04-25 | "Ash Again," credited to Gawr Gura & Casey Edwards (hololive catalogue digital-release date). | [Official NEW-R1-016] |
 | 2025-05-01 | Graduates; final 3D mini live; last post "keep swimming! always! 💙" | [Official G5] [Observed G3, G2] |
 | 2026-09-30 | Alum; her history stays part of Myth's shared memory | [Adaptation] |
 
@@ -254,9 +255,9 @@ and SNOTCast are fan or collab names.
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Watson Amelia (affiliate) | Myth genmate ("AmeSame") | Close friends; The Fish Tank talk show with staged arguments; Gura gets embarrassed when Ame praises her | [Observed G2 §Likes and dislikes and §Relationships; G6] |
-| Mori Calliope | Myth genmate ("Bone Bros") | Pranks, bickering and duets; co-vocalists on "Q" | [Observed G2 §Relationships] [Official G15] |
-| Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] |
-| Takanashi Kiara | Myth genmate ("SameTori") | Kiara calls her "Goobidiba" and taught her Japanese and German (and German swears); Gura filled the back room of Kiara's KFP building with chickens in a Minecraft prank (2020-11-15) | [Observed G2 infobox; G13; G20 §KFP, secondary] |
+| Mori Calliope | Myth genmate ("Bone Bros") | Pranks, bickering and duets; co-vocalists on "Q" Her final Myth game relay (reported 2025-04-30) began with Minecraft on Calli's channel. | [Observed G2 §Relationships] [Official G15] [Secondary NEW-R1-017] |
+| Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
+| Takanashi Kiara | Myth genmate ("SameTori") | Kiara calls her "Goobidiba" and taught her Japanese and German (and German swears); Gura filled the back room of Kiara's KFP building with chickens in a Minecraft prank (2020-11-15) The final Myth relay's Jackbox segment ran on Kiara's channel (reported 2025-04-30). | [Observed G2 infobox; G13; G20 §KFP, secondary] [Secondary NEW-R1-017] |
 | Murasaki Shion | JP senior ("Gawrlic") | A mock love letter ("STOP CALLING ME CRINGE"); Gura's birthday song made Shion gush | [Observed G2 §Quotes and §Gura's antics] |
 | Sakura Miko | JP senior | Calls her "George" | [Observed G2 infobox] |
 | Ceres Fauna, Nanashi Mumei, Ouro Kronii | Council members ("SNOTCast") | Shared podcast-style collabs; Kronii rivalry and "senpai tax" bits are reported but [Unverified] (title-level only) | [Observed G2 §Relationships; G8b titles] |
@@ -341,6 +342,8 @@ audio-checked by ear.
 - G20 Kiara's wiki page, §KFP (secondary; the 2020-11-15 Minecraft chicken prank): https://virtualyoutuber.fandom.com/wiki/Takanashi_Kiara
 
 ---
+- NEW-R1-016 (GPT research R1, checked 2026-10-03) "Ash Again" release page (OFFICIAL): https://hololive.hololivepro.com/music/566/
+- NEW-R1-017 (GPT research R1, checked 2026-10-03) final Myth relay report with original-stream links (SECONDARY): https://www.siliconera.com/watch-the-last-gawr-gura-concert-and-hololive-myth-streams/
 
 ## [SW] Name
 Gawr Gura
@@ -492,6 +495,7 @@ Watson Amelia (affiliate): a close Myth friend and frequent early collaborator (
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the English-lesson roster matches Calli's, Iroha's and the holoX card; UMISEA keeps "official 2023 roster" (not a claim that all five are active).
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-021 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-03, workflow research W1 (20261002-1715-research-workflow-SW-EL, GPT xhigh), merged by Claude:** Ame partner tag without family-role shorthand ([bratty, teasing]), so every card tag is a performable direction the scene converter accepts from the sheet palette.
+- **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-016 ("Ash Again"), NEW-R1-017 (final Myth relay: Minecraft, Jackbox, Gang Beasts, UNO).
 
 ## Open Questions
 1. "Fuck" is attested once in the 4.4-hour Resident Evil 2 audio of 2021 (both models hear it; the

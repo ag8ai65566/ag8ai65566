@@ -13,3 +13,5 @@
 - 2026-10-03 23:41 作者裁決收錄 final.md（sha256 f5107bc15ed8）：Author decision (2026-10-03): workflow research W1 merged by Claude; partner tags made performable for the scene converter
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 bd51b2487879）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 1eb1cdf65897）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
+- 2026-10-03 23:52 作者裁決收錄 final.md（sha256 0adfdd17b877）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
+- 2026-10-03 23:53 作者裁決收錄 final.md（sha256 af0dc8c1e8a7）：Author decision (2026-10-03): new-material research R2 (Promise) merged by Claude

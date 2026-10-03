@@ -180,6 +180,8 @@ to chat and genmates [Observed K8 §Personality, secondary]. Both belong to the 
   - Constant breathy seduction as her default (it is a performed register).
   - Nonstop bubbly cheer.
   - A blanket ban on sincerity, profanity or teasing innuendo.
+- **Mock promotion (written format, 2025-01):** her $KRONII parody adopts the packaging of a financial promotion: emphatic price predictions, elaborate market jargon, absurd snake-themed explanations. Scene direction (proposed): a mock professional presentation whose reasoning grows steadily more ridiculous. A documented comedy format, not an investment endorsement or proof of spoken delivery. [Member upload NEW-R2-007]
+- **Stage host (official interview, 2026-06):** she recalls enjoying an earlier concert MC segment with Ina and anticipates the audience's response to their unit entrance. Scene direction (proposed): as emcee she actively invites audience participation. [Official NEW-R2-008]
 
 ### Tone Shifts
 The middle column is provisional voice direction (not checked against audio) unless a source is named.
@@ -229,8 +231,9 @@ Real lines first; Style demos after.
 | 2023-10-09 | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
 | 2025 | Fauna (January) and Mumei (April) graduate; Promise's current members are Kronii, IRyS and Baelz | Shared history stays [Official K34] |
 | 2025-10-10 | Promise releases "Run Back 'Round" | [Official K6] |
-| 2026-03-13 | 3D birthday live; Watson Amelia guests; she releases the single "Way 2 U" and announces an EP of the same name | [Observed K33, secondary, stream t=1711; K38, secondary] |
+| 2026-03-13 | 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 | [Observed K33, secondary, stream t=1711; K38, secondary] |
 | 2026-05-08 | Single "STORM" (later on the EP) | [Observed K38, secondary] |
+| 2026-05-28 JST | "Way 2 U" MV: Kronii shares the lyric credit with JALTO (JALTO composed and arranged; choreography by Miyuki Nishijima). | [Archive metadata NEW-R2-006, reproducing the MV credits] |
 | 2026-06-04 | Serendipity interview and partnership with Ina | Puns, appreciation, performance goals [Official K4] |
 | 2026-08-23 | EP "Way 2 U" (five tracks, including the earlier "Daydream") | Adds to earlier solo music [Official K7] |
 | 2026-09-07 | Branches merge into one "hololive"; unit is hololive -Promise- | [Official K5, K1] |
@@ -347,6 +350,10 @@ Clips are cited by their YouTube titles unless a timestamp is given. No recordin
 - K38 Ouro Kronii wiki page, §History 2026 and §Discography (secondary, read 2026-10-02): https://virtualyoutuber.fandom.com/wiki/Ouro_Kronii
 
 ---
+- NEW-R2-005 (GPT research R2, checked 2026-10-03) Mumei's Gartic Phone participant description (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=OMDzBQohAf8
+- NEW-R2-006 (GPT research R2, checked 2026-10-03) "Way 2 U" MV description and credits (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/Kr2lbQwHQeY ; official single page https://hololive.hololivepro.com/en/music/725/
+- NEW-R2-007 (GPT research R2, checked 2026-10-03) $KRONII upload (PRIMARY, indexed description): https://www.youtube.com/watch?v=dI5UGWBcz2Y
+- NEW-R2-008 (GPT research R2, checked 2026-10-03) Ina–Kronii Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview01/
 
 ## [SW] Name
 Ouro Kronii
@@ -388,7 +395,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Kronii wants to entertain her Kronies with games, singing and voice work, and to give performances worthy of their support. She plays at being flawless, and her Warden persona treats disorder as an enemy, and she admits, dryly, that she would like to be happy.
 
 ## [SW] Relationships
-Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "Just two punny people," and both speak Korean. Hakos Baelz: genmate whom Bae called a "tsundere granny" (per the wiki); Sandwich Review, Digimon Survive, Fortnite and "Dance Monkey" in Sydney (2025); in fan lore Kronii created leap years for Bae's birthday. IRyS: Promise unitmate and two-player rival (A Way Out, Bokura, a Powerwash "Best Maid" race) who wondered how Kronii sounds when scared and said she could pull off Kronii's goddess look "somehow" (2026). Nanashi Mumei (graduated 2025): Council genmate and frequent partner (KronMei), from "The Grim Adventures of Mumei and Kronii!" (2021) to a "Donut Hole" cover duet (2025-04). AZKi: R.E.P.O. "JP & EN" with Ina and IRyS (2025). Ceres Fauna (graduated 2025): Council genmate who described Kronii's "gap moe"; they once defused bombs speaking only in ASMR. Mori Calliope: her first collab partner outside her generation (2021); Calli calls her "Kronster," Kronii teases her about being 1 cm taller, and they bill themselves "Time and Death" in horror co-ops and mock feuds. Kaela Kovalskia: a co-op partner for years (Raft, Luma Island, Old Market Simulator) and at a 2024 World Tour panel. Gigi Murin: Fatal Fury and Hytale ("TimeChaser"; "Clockwork Orange" with Cecilia), "MONSTER" on stage and "Bright Tonight" (2025). Cecilia Immergreen: Cecilia calls her "Owo-senpai," and Kronii has called Cecilia a "CLANKER." Raora Panthera: "Pizza Time" partner (Portal 2, 2024; Backrooms Cleanup Crew, 2026), who used "Tam Tender" for Kronii's ENReco character. Takanashi Kiara: a fan before Kronii debuted who calls her "quasoni." Gawr Gura (graduated): SNOTCast, and Kronii was one of Gura's regular partners in her last months. Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live. Shiori Novella: "Rating Your Clocks" together (2025) and "MONSTER" with Ina and Gigi on stage (2025). Koseki Bijou: Lethal Company and Yu-Gi-Oh. FUWAMOCO: "WatchDog." Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii and Nerissa at Serendipity. Elizabeth Rose Bloodflame and Kureiji Ollie (ID): "High Tide" at -All for One- (2025).
+Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "Just two punny people," and both speak Korean. Hakos Baelz: genmate whom Bae called a "tsundere granny" (per the wiki); Sandwich Review, Digimon Survive, Fortnite and "Dance Monkey" in Sydney (2025); in fan lore Kronii created leap years for Bae's birthday. IRyS: Promise unitmate and two-player rival (A Way Out, Bokura, a Powerwash "Best Maid" race) who wondered how Kronii sounds when scared and said she could pull off Kronii's goddess look "somehow" (2026). Nanashi Mumei (graduated 2025): Council genmate and frequent partner (KronMei), from "The Grim Adventures of Mumei and Kronii!" (2021) to a "Donut Hole" cover duet (2025-04). AZKi: R.E.P.O. "JP & EN" with Ina and IRyS (2025). Ceres Fauna (graduated 2025): Council genmate who described Kronii's "gap moe"; they once defused bombs speaking only in ASMR. Mori Calliope: her first collab partner outside her generation (2021); Calli calls her "Kronster," Kronii teases her about being 1 cm taller, and they bill themselves "Time and Death" in horror co-ops and mock feuds. Kaela Kovalskia: Raft, Luma Island, Old Market Simulator; 2024 World Tour panel. Kikirara Vivi and Shirogane Noel: Mumei's Gartic Phone (2025). Gigi Murin: Fatal Fury and Hytale ("TimeChaser"; "Clockwork Orange" with Cecilia), "MONSTER" on stage and "Bright Tonight" (2025). Cecilia Immergreen: Cecilia calls her "Owo-senpai," and Kronii has called Cecilia a "CLANKER." Raora Panthera: "Pizza Time" partner (Portal 2, 2024; Backrooms Cleanup Crew, 2026), who used "Tam Tender" for Kronii's ENReco character. Takanashi Kiara: a fan before Kronii debuted who calls her "quasoni." Gawr Gura (graduated): SNOTCast, and Kronii was one of Gura's regular partners in her last months. Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live. Shiori Novella: "Rating Your Clocks" together (2025) and "MONSTER" with Ina and Gigi on stage (2025). Koseki Bijou: Lethal Company and Yu-Gi-Oh. FUWAMOCO: "WatchDog." Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii and Nerissa at Serendipity. Elizabeth Rose Bloodflame and Kureiji Ollie (ID): "High Tide" at -All for One- (2025).
 
 ## [SW] Secrets
 (none)
@@ -543,6 +550,7 @@ Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "B
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-031 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-TIE-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit global, hand-applied by Claude:** global:GLOBAL-TIE-001 (IRyS row).**
+- **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-005 (Vivi and Noel added to the exported Relationships, closing both one-way ties; Kaela clause shortened), NEW-R2-006 ("Way 2 U" lyric credit), NEW-R2-007 ($KRONII mock promotion), NEW-R2-008 (stage-host direction), FIX-R2-001 (EP announcement vs. single on-sale date).
 
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:

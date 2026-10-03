@@ -143,6 +143,7 @@ Public exchanges only.
 | Kazama Iroha | — | Caravan Stories (2023) | [Iroha file] |
 | Sakamata Chloe (affiliate) | — | Rust with Kanata (2022-09); a self-knowledge quiz collab (2025-01-18) | [Chloe file z55R0Z8_qk0] [LM4 9DMCTQDpBos] |
 | Ninomae Ina'nis | — | A Minecraft festival appearance and a Minecraft collab billed as a "date" (2021); a guest at Ina's "Pleides" 3D live (2024) | [LM5 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ] |
+| Hakos Baelz | EN (Promise) | Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers); a shared recording project. | [Secondary, dengekionline 202609/89494] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: six years in, a ninth original song out and a first album
@@ -247,6 +248,7 @@ Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describ
     Stories" carry official digital dates; the Yukiyozuki sake is named with its brewery (no quantities).
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** no finding (card and sheet attested OK); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Resolved: both are kept, "Lamyoohoo!" as the official greeting and "Konlamy desu" as a labelled secondary

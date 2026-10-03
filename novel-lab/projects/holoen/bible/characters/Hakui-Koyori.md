@@ -148,7 +148,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Shishiro Botan | NePoX; Blue Journey | NePoLaBo × holoX events (official 2026 roster); Blue Journey (official roster) | [KO2] [NePoX roster] [Blue Journey roster] |
 | Nekomata Okayu | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07); plays Okayu's game (2025) | [KO4 PtjqrNUOSWA] |
 | FUWAMOCO | "FUWAMOKOYO" (Koyori and the twins; FUWAMOCO Morning title) | FUWAMOCO Morning guest (2024-04-26); separately, Lethal Company with Shirakami Fubuki (2024-03-09); a guest at their birthday concert (2025) | [KO5 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI] |
-| Hakos Baelz | — | "BAE-GEMITE DOMINATION" episode 4 with Nene (2023-04-22); a "KHAOS KITCHEN" taste tester with Calli and Oozora Subaru (2023-11-24) | [KO5 WwjB7QSmQng, NdLiUW-nUlk] |
+| Hakos Baelz | — | "BAE-GEMITE DOMINATION" episode 4 with Nene (2023-04-22); a "KHAOS KITCHEN" taste tester with Calli and Oozora Subaru (2023-11-24) Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers). | [KO5 WwjB7QSmQng, NdLiUW-nUlk] [Secondary, dengekionline 202609/89494] |
 | Mori Calliope | — | The same KHAOS KITCHEN episode (2023-11-24); not in BAE-GEMITE DOMINATION #4 | [KO5 NdLiUW-nUlk] |
 | Nanashi Mumei (graduated) | — | A guest at Mumei's first 3D live, "Outside the Box" (2024) | [KO5] |
 | IRyS | — | Splatoon 3 with Watame and Korone (2022-10-03) and an Among Us lobby with Chloe and others (2023-05-08) | [KO5 Xoma7oWsMcM, VwqdwQx5cog] |
@@ -266,6 +266,7 @@ La+ Darknesss: holoX's founder; a sponsored "#stons" collab (2024) and a cover w
     KoyoChlo collab and its "disband" gag (mxIoysy6gJ4 description), #stons (lz37xE9ED1I), the 2026 3D karaoke with
     AZKi (1HQL3WJPBHA; four performers, not a KoZMy event), the Okayu puzzle collab (PtjqrNUOSWA), Among Us on
     IRyS's channel (VwqdwQx5cog) and the MIRAGE short on Kiara's channel (xXwi19krZ68).
+- **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Resolved: the Famitsu column is 「よちよちゲーマー博衣こよりのゲームラボ」 (Famitsu announcement, KO7).

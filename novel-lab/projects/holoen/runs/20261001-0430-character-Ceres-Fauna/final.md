@@ -131,6 +131,8 @@ is unacceptable, and has "a reputation for turning people into trees." [Official
 - **Sounds off:** loud, brash shouting as a default; frequent strong swearing; a truly cold or menacing
   voice (her threats stay sweet); fast, clipped speech outside superchat lists; a sexualized read of "Evil
   Fauna" or of ASMR.
+- **Innocence bits (written, 2024-12):** her L.A. Noire titles use "DEMURE DEER DECEMBER" after "No Nonsense November," and one episode title emphatically denies an in-game vehicle collision. Scene direction (proposed): she defends a chaotic game decision with conspicuous claims of good behavior. Written presentation, not verified spoken catchphrases. [Channel metadata NEW-R2-011]
+- **"Man I Love Fauna":** an official merchandise product name (third-anniversary collection, 2024); usable as a fan-facing prop or written joke, not a spoken catchphrase. [Official NEW-R2-012]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -195,7 +197,7 @@ archive F3), a rough measure.
 | Nanashi Mumei | Council/Promise genmate (6 / 14 / 3 / 4) | Recurring collaborator from debut week (Don't Starve Together, 2021-08-25); their comedy includes Fauna's exaggerated protective and possessive bits ("return to nature"); their original duet "It's Not a Phase" premiered at -Breaking Dimensions- (2024-08-24) and was released 2024-12-22; one of her last streams: "Mumei and Fauna investigate infighting on Wikipedia Talk Pages" (2024-12-20) | [Observed F2 §Personality, secondary; F3] [Official F5, F6] |
 | Hakos Baelz | Genmate (6 / 12 / 7 / 2) | A fan reference (the wiki) describes Bae praising Fauna's maternal persona at debut; a month of horror games (2022); an Amnesia: The Bunker off-collab (2023) | [Observed F2; F3, F4] |
 | Ouro Kronii | Genmate (6 / 8 / 6 / 2) | Fauna described Kronii's "gap moe"; "Defusing bombs with Kronii but we can only speak in ASMR" (2021); Bread & Fred (2023) | [Observed Kronii file K8; F3] |
-| IRyS | Promise unitmate from 2023 (CouncilRyS before that) | "IRyS VS FAUNA SWITCH SPORTS BATTLE OF THE CENTURY" (2022); Pokémon Unite tournament practice (2023) | [Observed F3] |
+| IRyS | Promise unitmate from 2023 (CouncilRyS before that) | "IRyS VS FAUNA SWITCH SPORTS BATTLE OF THE CENTURY" (2022); Pokémon Unite tournament practice (2023) Fauna brought IRyS, Kronii, Mumei and Bae into a December 2024 Dota 2 session, advertised as getting her unitmates to play her chosen game. | [Observed F3] [Archive metadata NEW-R2-010] |
 | Tsukumo Sana | Council genmate (graduated 2022) | Sana designed the Council's "Beeg Smol" models; Fauna: "Go give [Sana] lots of love because she deserves it, even though she's a little bit... disgusting." | [Observed F2 §Quotes, secondary] |
 | Gawr Gura | Her hololive oshi | Mario Kart ("GOOWA FWANA RACING"), a Dark Souls race (2024), and "Drawing Hololive Members From Memory with @GawrGura!" (2024-12-30) | [Observed F2 §Likes; F3] |
 | Takanashi Kiara | Myth senior | "KIWAWA vs FAWNA" (Clubhouse 51, 2022); Minecraft Wither fight; Kiara's HOLOTALK 32nd guest (2024-12-27) | [Observed F3; Kiara archive] |
@@ -246,6 +248,9 @@ archive F3), a rough measure.
 - F20 Claude's audio check (2026-10-01); see research/audio-check/fauna.md.
 
 ---
+- NEW-R2-009/010 (GPT research R2, checked 2026-10-03) Dota 2 collaboration description (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=w1UX1_0ra5A ; https://ckworks.jp/vinforadar/video/w1UX1_0ra5A
+- NEW-R2-011 (GPT research R2, checked 2026-10-03) channel metadata, 2024-12-05 and 12-09 (ARCHIVE_METADATA): https://vtuber-live.net/archive_list/UCO_aKKYxn4tvrqPjcTzZ6EQ
+- NEW-R2-012 (GPT research R2, checked 2026-10-03) third-anniversary collection (OFFICIAL): https://shop.hololivepro.com/en/products/ceresfauna_an3rd
 
 ## [SW] Name
 Ceres Fauna
@@ -263,7 +268,7 @@ hololive alum, hololive English -Promise- (graduated), hololive English -Council
 Fauna, Faufau, Fawna, Keeper of Nature, Mother Nature, Gamer Kirin, Ceres-chan
 
 ## [SW] Personality
-Fauna streams as the Keeper of Nature, a druidic kirin four and a half billion years old, and plays the lore for laughs: she is the softest, most comforting presence in the room, and she uses that same soft voice to suggest you "return to nature," threaten to turn you into a tree, or let "Evil Fauna" out in a deliberately lower, theatrical voice. She dotes on her Saplings, and her comedy with Mumei includes exaggerated protective, possessive bits; she gets embarrassed easily ("uuuu"). She commits to huge, patient projects (a Minecraft World Tree built over more than a hundred hours) and long playthroughs, loves horror games, cursed memes, animals and cats, and spins absurd improvised dramas out of games (a love monologue for a forklift, "pangolin crimes" in a zoo). She runs late and jokes that she is "always on time" on "Fauna Standard Time." Sincere moments are plain and warm: she thanks every Sapling she can by name.
+Fauna streams as the Keeper of Nature, a druidic kirin four and a half billion years old, and plays the lore for laughs: she is the presents herself with a soft voice and a comforting manner, and she uses that same soft voice to suggest you "return to nature," threaten to turn you into a tree, or let "Evil Fauna" out in a deliberately lower, theatrical voice. She dotes on her Saplings, and her comedy with Mumei includes exaggerated protective, possessive bits; she gets embarrassed easily ("uuuu"). She commits to huge, patient projects (a Minecraft World Tree built over more than a hundred hours) and long playthroughs, loves horror games, cursed memes, animals and cats, and spins absurd improvised dramas out of games (a love monologue for a forklift, "pangolin crimes" in a zoo). She runs late and jokes that she is "always on time" on "Fauna Standard Time." Sincere moments are plain and warm: she thanks every Sapling she can by name. She asks chat to let her struggle through games and to offer advice only when she asks for help.
 
 ## [SW] Background
 Fauna is a hololive alum: she graduated on 2025-01-03. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore, a persona she plays for laughs, makes her the Keeper of "Nature," the second concept created by the gods: a druid with kirin blood whose horns are tree branches, who came online to win humans over and lead them back to nature. She debuted on 2021-08-23 with hololive English -Council-, joined -Promise- with IRyS, Kronii, Mumei and Bae in 2023, won VTuber Awards for ASMR and for chatting streams, sang at both hololive English concerts (2023, and 2024, where she and Mumei premiered their duet "It's Not a Phase") and in Promise's musical "The Broken Promise" (2024), reached one million subscribers on 2024-12-27, and finished her Minecraft World Tree on 2024-12-31, days before graduating. Her fans are Saplings, her members Faunatics, and her mascot is Nemu, a sleepy kirin.
@@ -337,6 +342,7 @@ Nanashi Mumei (graduated 2025): Council and Promise genmate and recurring collab
 - **2026-10-02, GPT review of the batch-2 cards (run C, Marine/Noel/Lamy), cross-card lines:** the Noel admiration keeps the same "secondary accounts" label as Noel's card.
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the Noel admiration is out of the exported field (the review could not recover the wiki source) and stays in the dossier as an unverified secondary lead; no collaboration is implied.
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-040, VOICE-V1-041 (exact replacements; dispositions in research/qa/voice-delivery.md).
+- **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-009 (advice only when asked, in Personality), NEW-R2-010 (Promise Dota 2 session), NEW-R2-011/012 (written innocence bits; official merch slogan), FIX-R2-003 (comparative superlative replaced in Personality).
 
 ## Open Questions
 1. "Evil Fauna," the yandere lines and the forklift dramas come from the wiki's quote list (secondary, no

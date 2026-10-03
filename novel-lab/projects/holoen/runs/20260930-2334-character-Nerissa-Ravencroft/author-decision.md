@@ -17,3 +17,4 @@
 - 2026-10-03 23:32 作者裁決收錄 final.md（sha256 25b64efe3a3b）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
 - 2026-10-03 23:33 作者裁決收錄 final.md（sha256 5a9dbf1bbb82）：Author decision (2026-10-03): task-09 voice audit v2 follow-up (VOICE-V2-004 a–c, Gigi accent note) merged by Claude
 - 2026-10-03 23:41 作者裁決收錄 final.md（sha256 6b5f428092af）：Author decision (2026-10-03): workflow research W1 merged by Claude; partner tags made performable for the scene converter
+- 2026-10-03 23:52 作者裁決收錄 final.md（sha256 0f91ae0daff0）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude

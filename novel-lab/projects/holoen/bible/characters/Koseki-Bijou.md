@@ -190,10 +190,10 @@ archive KB3; the archive thins out from late 2025), a rough measure, not a ranki
 | Kaela Kovalskia (ID) | Friend ("Grindstone"; Kaela calls her "Beejoe") | Grindstone collabs include Raft and Minecraft (2023), Split Fiction (2025) and PEAK as "Graondstone" with Raora (archive counts 10 / 23 / 11 / 0) | [Observed KB2; KB3] |
 | Mori Calliope | Senior ("TombStone") | An Undertale mod starring Calli, played together (2023); BG3 as "Killing, Two Birds, with One Stone" (2023); 24-hour charity stream (2025); Warhammer painting (2026); Calli's channel mentions her 29 times | [Observed KB2; KB3; Calli archive] |
 | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" | [Official KB4] [Observed KB3; Kiara archive] |
-| IRyS | Senior | Her frequent horror co-op partner: Resident Evil 6 "LAS CHICAS GUAPAS" (2026-04-29), Dead Space 3 (2026-01); Overwatch "Please carry me Senpai!!" (2023) | [Observed KB3; IRyS archive] |
+| IRyS | Senior | Her frequent horror co-op partner: Resident Evil 6 "LAS CHICAS GUAPAS" (2026-04-29), Dead Space 3 (2026-01); Overwatch "Please carry me Senpai!!" (2023) IRyS hosted a joint *Gundam 0080* watchalong (2026-09-05). | [Observed KB3; IRyS archive] [Archive metadata, holosubs IRyS listing] |
 | Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] |
 | Nanashi Mumei | Senior (graduated 2025; "Stone Age") | Portal 2 co-op (2023); Marvel Rivals in Mumei's last week (2025-04-23); Mumei rated her a loss at arm wrestling because "she is a rock" | [Observed KB3; Mumei file] |
-| Ninomae Ina'nis | Senior ("TakoRocky") | Monster Hunter (2023–2025); Ina designed their Monster Hunter Wilds collab outfits (2025-12) | [Observed KB3; X post via wiki] |
+| Ninomae Ina'nis | Senior ("TakoRocky") | Monster Hunter (2023–2025); Ina designed their Monster Hunter Wilds collab outfits (2025-12) Monster Hunter Wilds outfit project: Bijou chose Gore Magala, Ina Nu Udra. | [Observed KB3; X post via wiki] [Secondary, Siliconera interview] |
 | Ceres Fauna | Senior (graduated 2025) | "Coach" Fauna in Hitman (2023, 2024); PlateUp! as "The Sweaty TryHard Gamers" | [Observed KB3] |
 | Ouro Kronii | Senior | Lethal Company (2023), Yu-Gi-Oh (2025), Blood Typers (2025) | [Observed KB3] |
 | Cecilia Immergreen, Raora Panthera, Gigi Murin | Justice kouhai | GAGA (with Shiori and Gigi); Graondstone (with Kaela and Raora); a Walking Dead off-collab watchalong with Cecilia (2025) | [Observed KB2; KB3] |
@@ -339,6 +339,8 @@ Shiori Novella: Advent's "glorious leader" in Bijou's affectionate bit (Goth Roc
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the FLOW GLOW debut watch-along is dated 2024-11-09 (official schedule) and described as watching Vivi's debut.
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** Takane Lui added to the exported field (her channel's animated "Soar" short, PavvvJo2VFc, 2026, archived metadata), closing a one-way tie.
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-003, VOICE-V2-037 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
+- **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
+- **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** the IRyS watchalong propagated (dossier Relationship Map).
 
 ## Open Questions
 1. The Tomodachi Life window was unusable (drawing, game voices), and her "squeegee" laugh and Moai opening

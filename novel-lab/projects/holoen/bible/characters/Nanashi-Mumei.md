@@ -128,6 +128,7 @@ secondary]
     chatting; a sudden high screech; flat, cheerful delivery for the macabre lines.
 - **Sounds off:** a booming or aggressive voice; heavy swearing; a deep, sinister villain voice for her
   dark jokes (the joke is that she says them cutely); constant high energy.
+- **Mock entitlement (written, 2025-03):** an Overwatch title makes her graduation the reason viewers must watch her chosen game. Scene direction (proposed): she turns a sentimental occasion into a mock entitlement to do something ordinary she enjoys. Establishes the written joke, not its spoken phrasing. [Archive metadata NEW-R2-015]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -180,6 +181,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2024-08-24 | -Breaking Dimensions- day 1: premieres "It's Not a Phase" with Fauna; "Beyond the way" with Kiara and Nerissa; day 2: her original "A New Start" | [Official M5] |
 | 2024-12-22 | "It's Not a Phase" (Mumei & Fauna) released | [Official M6] |
 | 2025-02-14 | 3.0 Live2D model | [Observed M2 §2025] |
+| 2025-03 | Spring covers: YOASOBI's "IDOL" (its description uses the written owl pun "idowl ! ~") and "Gravity" (original by Yoko Kanno, Maaya Sakamoto and Troy). | [Archive metadata NEW-R2-014] |
 | 2025-03-09 | 6th fes. "Color Rise Harmony," day 2 | [Observed M2 §2025] |
 | 2025-04 | A farewell month of collabs across hololive: Overwatch with IRyS (04-22), a cover of "とんとんまーえ！" with Inugami Korone (04-23), Promise R.E.P.O. with IRyS, Kronii and Bae (04-24); last chatting stream with calls (04-26); 3D graduation stream (04-27, 04-28 JST) | [Observed M2; M3 titles] |
 
@@ -189,7 +191,7 @@ archive M3), a rough measure.
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Hakos Baelz | Genmate (4 / 31 / 27 / 5 / 3; a metadata count, not a ranking) | A recurring collab partner: Mad-Lib theatre (2021), an off-collab "I Found A Rat In My House!!!" (2024), "bae wants to play!!!" (Overwatch 2, 2025) | [Observed M3] |
+| Hakos Baelz | Genmate (4 / 31 / 27 / 5 / 3; a metadata count, not a ranking) | A recurring collab partner: Mad-Lib theatre (2021), an off-collab "I Found A Rat In My House!!!" (2024), "bae wants to play!!!" (Overwatch 2, 2025) A cover of Kana Nishino's "Best Friend" during Mumei's final active week (2025-04-25 JST); Bae's upload credits both singers and uses the pair label "preYdator." | [Observed M3] [Archive metadata NEW-R2-013] |
 | Ceres Fauna | Genmate (4 / 30 / 26 / 4) | Recurring collaborator; their comedy includes Fauna's exaggerated protective and possessive bits; their duet "It's Not a Phase" (premiered 2024-08-24, released 2024-12-22); "Mumei and Fauna investigate infighting on Wikipedia Talk Pages" (2024-12-20) | [Observed M2; M3; Fauna file] [Official M5, M6] |
 | Ouro Kronii | Genmate ("KronMei"; 5 / 27 / 25 / 1 / 2) | "The Grim Adventures of Mumei and Kronii!" (Minecraft, 2021); We Were Here Forever; Untitled Goose Game (2025); a "Donut Hole" cover MV together (2025-04-11) | [Observed M3; Kronii channel] |
 | Tsukumo Sana | Council genmate (graduated 2022) | Human: Fall Flat (2021); Sana sent a prerecorded message for Mumei's 2022 birthday | [Observed M2 §Miscellaneous; M3] |
@@ -255,6 +257,9 @@ archive M3), a rough measure.
 - M20 Claude's audio check (2026-10-01); see research/audio-check/mumei.md.
 
 ---
+- NEW-R2-013 (GPT research R2, checked 2026-10-03) "Best Friend" cover title and credits (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=3n1AThmEii8
+- NEW-R2-014 (GPT research R2, checked 2026-10-03) "IDOL" and "Gravity" uploads (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=Apgmr-SggVQ ; https://ckworks.jp/vinforadar/video/XQnqXqWQ4Is
+- NEW-R2-015 (GPT research R2, checked 2026-10-03) Overwatch title (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=_5EYVTNbKUA
 
 ## [SW] Name
 Nanashi Mumei
@@ -360,6 +365,7 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-044, VOICE-V1-047, VOICE-V1-048 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-ALIAS-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-013 ("Best Friend" with Bae; "preYdator" in a member upload), NEW-R2-014 (spring 2025 covers), NEW-R2-015 (graduation as mock entitlement). FIX-R2-002 was already applied by the justice audit.
 
 ## Open Questions
 1. Wiki quote lines ("Civilization is temporary…", the "moom" verb) are secondary, without timestamps; the

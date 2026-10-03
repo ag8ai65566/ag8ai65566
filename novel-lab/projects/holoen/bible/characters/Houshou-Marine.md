@@ -151,7 +151,7 @@ Public exchanges only.
 | Minato Aqua (graduated) | UMISEA | The ocean unit's official roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster] |
 | Takanashi Kiara | Her first HOLOTALK guest (2020-11-20) | A "MIRAGE" dance short (2024-10-23); "III" with Kobo in a 3D short (2024-05-20) | [MA5 3HwaqbdKO1s, tzVgzvV0cVo, I8DEx4MomOA] |
 | Mori Calliope | — | English lesson #01 (2022); Mario Kart with Bae and Reine (2021); a house-party off-collab with Bae (2023); Calli played the horror game featuring Marine on her own stream (2023) | [MA5 bfUEbp3xk4o, X3pHIQAvpYU, DY5VThfehW8, Mf-sAjsuSig] |
-| Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers | [MA5] |
+| Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers). | [MA5] [Secondary, dengekionline 202609/89494] |
 | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | English lesson #01 with Ina (2022); a guest at Ina's 3D live "Pleides" (2024); "SHINKIRO" with Gura (anime MV 2023-11-12, credited "宝鐘マリン・Gawr Gura") | [MA5 3n9igJnSXtQ] [MA4 9ehwhQJ50gs] |
 | Nanashi Mumei (graduated) | — | Played the horror game featuring Marine with Bae (2023) | [MA5 RY1GkF4jMls] |
 | FUWAMOCO | — | Joined their Touhou off-collab (2024-04-30); Mario Party with Nerissa (2024); watched her solo concert (2024); danced to "Chatter Chatter" (2026) (secondary and archived records) | [MA5 x7gRHgQ0yI0] |
@@ -275,6 +275,7 @@ Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2
 - **2026-10-02, GPT review run D (cross-card), merged by Claude:** MVP restored to Groups and Relationships: run D found an
   archived 2026 performance record naming Marine, Vivi and Pekora (secondary record).
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** no card finding (sheet: VOICE-V3-013); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Her official profile and wiki include explicit lines; the card keeps them out and leaves explicit material to

@@ -126,6 +126,7 @@ her genmates' antics." [Official HB1 (original lore)] [Observed HB2 §Personalit
     check would still need to establish timbre, laughter and accent details.
 - **Sounds off:** a slow, sleepy or breathy default; cruelty; a menacing villain voice outside a clear bit; an
   accent caricature.
+- **Entrance demand (written, 2026-06):** her official Serendipity self-introduction includes "WITNESS ME!!!" beside her Chaos and idol-rat identities. Performance option for an original designed voice: a theatrical demand for attention when she makes a deliberate entrance. Written, not an audio-verified catchphrase. [Official NEW-R2-020]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -187,8 +188,11 @@ The middle column is provisional voice direction unless a source is named.
 | 2026-04 | Resident Evil series with Cecilia (her account); the "Liar Dancer" cover; the mock rival feud | [ASR HB20] |
 | 2026-07-03/04 PDT | Serendipity: BaeRyS with IRyS ("LUVATORRRRRY!"), "HELP!!" with Kobo Kanaeru and Elizabeth Rose Bloodflame (day 1) | [Official HB4, HB5] |
 | 2026-08 | 5th anniversary: her 1st concert "REGALIA" (2026-12-01, after the baseline) and 2nd album "Mirror Mirror" announced (timing per a contemporaneous secondary report); original "I found me" | [Official HB7] [Observed HB2] |
+| 2026-08-23 | Announced: "I found me," with lyrics by Bae (composition and arrangement by Tomomichi Takuma of Dream Monster), and her second album "Mirror Mirror," scheduled for 2026-11-02 (after the baseline: an announcement only). | [Official NEW-R2-017] |
 | 2026-09-01 | "Here Comes the CHADCast," released with Mori Calliope and IRyS | [Official HB9] |
+| 2026-09-03 | [Secondary, pending primary confirmation] Reported casting as Monami Ichikawa in *Sucker for Love: Crush Landing*; a September playthrough on her channel is also reported. | [Secondary NEW-R2-018] |
 | 2026-09-07 | Branches merge into one "hololive"; her unit is hololive -Promise- | [Official HB1] |
+| 2026-09-28 | "PARADISE!", the hololive Dreams area theme: animated MV; Bae shares the vocal credit with Omaru Polka, Houshou Marine, Yukihana Lamy, Hakui Koyori, Kobo Kanaeru and Ichijou Ririka. Also announced that day: "REGALIA" at Kanadevia Hall, scheduled for 2026-12-01 (after the baseline: an announcement only). | [Secondary NEW-R2-019, press-release reproduction] [Official, 20260928-02-16] |
 
 ## Relationship Map
 Public exchanges only. Group-wide ties are on "hololive -Promise-"; her ties with the whole cast are on
@@ -200,7 +204,7 @@ Public exchanges only. Group-wide ties are on "hololive -Promise-"; her ties wit
 | Mori Calliope | Myth senior; CHADCast cohost | The CHADCast podcast with IRyS (archived from January 2022) and the song "Here Comes the CHADCast" (2026-09-01); "BLUE CLAPPER" with IRyS and Bijou (2024); the "R x R x R" duo at -All for One- (2025); a GriMoire watch-along (2025). Secondary references record the nickname "Cori Malliope" and that Bae calls her "sister" because they share a Live2D rigger | [Official HB5, HB9] [Observed HB3; HB2, secondary; Calli file] |
 | Ouro Kronii | Council/Promise genmate | Per Kronii's wiki page (secondary), Bae described her as too talented, savage and a "tsundere granny"; Sandwich Review (2022), Digimon Survive ("takronii and agubae," 2022), Fortnite (2024-06-18, archived), UNO on #BaeTV24 (2024); "Dance Monkey" as Promise at the World Tour '25 Sydney show (2025); fan-recorded lore credits Kronii with creating leap years for Bae | [Observed HB3; Kronii file; HB2 §Lore, secondary] [Official HB10] |
 | Ceres Fauna | Council/Promise genmate (graduated 2025-01-03) | A fan reference (Fauna's wiki page) describes Bae praising Fauna's maternal persona at debut; "BAE & FAUNA'S MONTH OF HORRORS" (2022, Amnesia on Fauna's channel) and an Amnesia: The Bunker off-collab (2023); Lethal Company "sweaty gang" with Kaela and Bijou (2024); "MUFAUBAE" with Mumei (secondary) | [Observed HB3, HB8; Fauna file; HB2, secondary] |
-| Nanashi Mumei | Council/Promise genmate (graduated 2025-04-27/28) | A fan reference (Mumei's wiki page) records Bae describing her voice as the cutest in Council at debut; "preYdator" (secondary); BAE-CADEMY anatomy lesson (2024), WarioWare and ASMR off-collabs (2024), the Urban Dictionary Challenge (2022), Overwatch 2 (2025); Mumei's farewell-week collab with IRyS and Kronii (2025) | [Observed HB3; HB8; Mumei file; secondary] |
+| Nanashi Mumei | Council/Promise genmate (graduated 2025-04-27/28) | A fan reference (Mumei's wiki page) records Bae describing her voice as the cutest in Council at debut; "preYdator" (secondary); BAE-CADEMY anatomy lesson (2024), WarioWare and ASMR off-collabs (2024), the Urban Dictionary Challenge (2022), Overwatch 2 (2025); Mumei's farewell-week collab with IRyS and Kronii (2025) Bae hosted their "Best Friend" cover (2025-04-25 JST), using "preYdator" in the title; the description thanks Mumei for their friendship in writing. | [Observed HB3; HB8; Mumei file; secondary] [Archive metadata NEW-R2-016] |
 | Koseki Bijou | Advent kouhai; "BaeBi" | Archived titles use "baebis" and "BAEBISleepover": We Were Here Expeditions (2023), a JoJo watch-along (2024), the "#BAEBISleepover" (2024-08-11/12), UNO on #BaeTV24; "BLUE CLAPPER" on stage (2024) | [Observed HB3] [Official HB5] |
 | Cecilia Immergreen | Justice kouhai; "BratTea" (secondary-reference name) | In her 2026 streams Bae describes their coffee-versus-tea debate, a 2026 fes venue talk together and Resident Evil collaborations, and jokes that Cecilia calls her "senpai" when she wants something (her account) | [ASR HB20] [Cecilia file, secondary] |
 | Gigi Murin | Justice kouhai | "Countach" with Kureiji Ollie at -All for One- (2025); a "BAE THEATRE" dramatic reading of A Midsummer Night's Dream (2025); UNO on #BaeTV24; Gigi's 2025 Spring Party with FUWAMOCO and Bae | [Official HB5] [Observed HB3; HB8] |
@@ -216,9 +220,10 @@ Public exchanges only. Group-wide ties are on "hololive -Promise-"; her ties wit
 | Natsuiro Matsuri (JP) | JP senior | "Kakumei Dualism" together in STAGE 3 of the 2026 fes (secondary setlist; also her after-talk, where she says she took the T.M.Revolution part) | [HB12, secondary] [ASR HB20] |
 | Moona Hoshinova (ID), Hoshimachi Suisei (JP), Usada Pekora (JP), Ayunda Risu (ID) | Cross-branch | "High Tide" with IRyS, Moona and Suisei (2024); "HIDE & SEEK 〜Nakayoku Kenkashina〜" with Pekora (2023); "holorodents" with Pekora and Risu (secondary) | [Official HB5, HB9] [Observed HB2] |
 | Nerissa Ravencroft, Shiori Novella | Later EN kouhai | Shared EN projects: the 2024 "Mind Craft" cover with all then-active EN members; a 2026 behind-the-scenes video by Kaela with Bae and Nerissa (secondary metadata) | [secondary HB13] |
-| Secret Society holoX (Lui, Chloe, Koyori) | JP kouhai | The EN-server Minecraft tour with Mumei, Lui and Chloe (2022-02-12); BAE-GEMITE DOMINATION #4 with Koyori and Nene (2023-04-22) and #5 with Lui and Chloe (2023-04-29); a Suika Game challenge and the "Crazy Scary Holy Fantasy" cover with Chloe (2023-10-30); KHAOS KITCHEN taste testers Koyori, Calli and Subaru (2023-11-24) | [HB3 S-d80w5gs-c, WwjB7QSmQng, z4-5Hq5AKG4, p9_oBCK0olg, 9EAIDwXj4Jk, NdLiUW-nUlk] |
-| Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25) | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] |
+| Secret Society holoX (Lui, Chloe, Koyori) | JP kouhai | The EN-server Minecraft tour with Mumei, Lui and Chloe (2022-02-12); BAE-GEMITE DOMINATION #4 with Koyori and Nene (2023-04-22) and #5 with Lui and Chloe (2023-04-29); a Suika Game challenge and the "Crazy Scary Holy Fantasy" cover with Chloe (2023-10-30); KHAOS KITCHEN taste testers Koyori, Calli and Subaru (2023-11-24) Koyori is a co-credited singer on "PARADISE!" (2026-09-28). | [HB3 S-d80w5gs-c, WwjB7QSmQng, z4-5Hq5AKG4, p9_oBCK0olg, 9EAIDwXj4Jk, NdLiUW-nUlk] [Secondary NEW-R2-019] |
+| Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25) Co-credited singers on "PARADISE!" (2026-09-28). | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] [Secondary NEW-R2-019] |
 | Hoshimachi Suisei, AZKi, Nekomata Okayu | JP seniors | "High Tide" with Suisei, IRyS and Moona (2024) and a "Moonlight" dance cover (2025); GeoGuessr with AZKi (2023); team kart events with Okayu (2023, 2024) | [Suisei file SU8, S1] [AZKi file AZ5] [Okayu file OK4] |
+| Yukihana Lamy | JP senior | Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28); a shared recording project, not a particular conversation. | [Secondary NEW-R2-019] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a busy 2026 (the "ReCOLOR" birthday live and "SNAKE EYES,"
@@ -283,6 +288,11 @@ Public exchanges only. Group-wide ties are on "hololive -Promise-"; her ties wit
   after-talk), 2pn5_pZu8Q4 (2026-04-27 Tomodachi Life); research/audio-check/bae.md
 
 ---
+- NEW-R2-016 (GPT research R2, checked 2026-10-03) "Best Friend" cover (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=3n1AThmEii8
+- NEW-R2-017 (GPT research R2, checked 2026-10-03) official announcement and credits (OFFICIAL): https://hololivepro.com/news/20260823-01-299/
+- NEW-R2-018 (GPT research R2, checked 2026-10-03) casting report (SECONDARY, published 2026-09-27): https://www.dlcompare.com/gaming-news/hakos-baelz-voices-monami-in-sucker-for-love-crush-landing-84594
+- NEW-R2-019 (GPT research R2, checked 2026-10-03) "PARADISE!" release text (SECONDARY, press-release reproduction): https://dengekionline.com/article/202609/89494 ; REGALIA announcement (OFFICIAL): https://hololivepro.com/news_en/20260928-02-16/
+- NEW-R2-020 (GPT research R2, checked 2026-10-03) Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview02
 
 ## [SW] Name
 Hakos Baelz
@@ -368,6 +378,7 @@ IRyS: her BaeRyS partner in a performed "married and divorced" routine that fan 
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the two BAE-GEMITE episode rosters are kept separate in the exported field.
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-049 (Australian accent unassigned pending an in-scope listening check; secondary description kept), with the matching sheet edit; dispositions in research/qa/voice-delivery.md.
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-TIE-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-016 ("Best Friend" with Mumei), NEW-R2-017 ("I found me" lyrics; "Mirror Mirror" announced), NEW-R2-018 (reported game casting, secondary and pending), NEW-R2-019 ("PARADISE!" with Marine, Lamy, Koyori and others; REGALIA announced), NEW-R2-020 (written entrance line).
 
 ## Open Questions
 1. Her 2026 fes stages (the STAGE 3 closing solo "Idol" and "Kakumei Dualism" with Natsuiro Matsuri) rest on the

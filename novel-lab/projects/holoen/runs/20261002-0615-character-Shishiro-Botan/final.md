@@ -143,7 +143,7 @@ Public exchanges only.
 | Kazama Iroha | — | Built the roof of Botan's Minecraft shop (2023) | [Iroha file] |
 | Sakamata Chloe (affiliate) | — | The 2023 Overwatch 2 team | [BO5] |
 | La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki, not Ayame (publisher roster; a joint broadcast is not established) | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
-| Takanashi Kiara | "Usada Kensetsu" (Usaken) | The Minecraft construction company of Pekora's circle | [BO2] |
+| Takanashi Kiara | "Usada Kensetsu" (Usaken) | The Minecraft construction company of Pekora's circle Archived metadata dates an Usaken summer-festival planning and building collab with Kiara (2021-06-07). | [BO2] [Archive metadata, ckworks q_IXZIRCbwI] |
 | Gawr Gura (graduated) | "Apex Predators" (a secondary-listed pair label) | A joint Apex session is not established here | [BO2] |
 | IRyS | — | Left 4 Dead 2 with Lui and Korone (2022); the Overwatch 2 team with Lui, Chloe and Towa (2023) | [BO5 K1wStJxm4F0, roWKpgZsjR4] |
 | Mori Calliope | — | HOLOYOI #03 with Subaru (2023) | [BO5] |
@@ -253,6 +253,7 @@ Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; secondary accounts describe
     excluded private topics.
 - **2026-10-03, GPT review of the holoX cards (run E, La+/Lui/Koyori), merged by Claude:** the m HOLD'EM wording follows the publisher roster, not a confirmed four-person broadcast.
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-014 propagated to Voice & Delivery (sheet: VOICE-V3-014); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
 
 ## Open Questions
 1. "Apex Predators" (with Gura) is a secondary-listed pair label; no Gura stream naming Botan was found in the

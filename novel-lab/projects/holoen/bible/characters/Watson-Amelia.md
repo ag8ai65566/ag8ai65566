@@ -270,6 +270,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Hakos Baelz | Council kouhai | Archived metadata: "BATHROOM REVIEWS" ("#BaethingAme," 2022-05-07), a VRChat Holoween escape-room behind-the-scenes (2022), an Apex off-collab ("2 players. 1 champion.," 2023) | [Bae file HB3, HB5, HB8, HB20] |
 | Kazama Iroha, Takane Lui | JP members | "KoMeHa" with Iroha and Kobo Kanaeru (VALORANT, 2022-06-04); Apex with Lui and Iofi (2022-01-19) | [S1 tGVhLibbYL0, Mory0I9vXtI] |
 | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Nerissa | [Ayame file AY4] |
+| Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
 
 ## Arc
 - **Starting point:** the public persona; on the card date she is a hololive affiliate (regular activities
@@ -349,6 +350,7 @@ by listening; A23 is a machine transcription of archived audio.
 - A22 Membership video ("Become an Investigator today," 2020-09-25): https://www.youtube.com/watch?v=pimxVr2fP9U
 
 ---
+- NEW-R1-018 (GPT research R1, checked 2026-10-03) Kiara–Bijou Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview04/
 
 ## [SW] Name
 Watson Amelia
@@ -499,6 +501,7 @@ Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeS
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-026, VOICE-V1-027, VOICE-V1-030 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-03, workflow research W1 (20261002-1715-research-workflow-SW-EL, GPT xhigh), merged by Claude:** Kronii partner tag shortened to a performable direction ([fond, a little embarrassed]), so every card tag is a performable direction the scene converter accepts from the sheet palette.
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-018 (a song performance with Bijou and Kiara, undated).
 
 ## Open Questions
 1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage

@@ -119,6 +119,7 @@ profile makes the duality the joke: "the most unpredictably yaba—*ahem*, 'surp
     "yabai" lines.
 - **Sounds off:** constant swearing; a cold or cruel demon voice as default; formal idol speech with no
   fillers; a never-slipping seiso act.
+- **Singing as shared work (official interview, 2026-06):** she describes enjoying learning how her singing works alongside other performers, and names tongue-twisting passages in a concert number as a rehearsal challenge. Scene direction (proposed): give her a concrete passage to work through with a partner. [Official NEW-R2-003]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -164,6 +165,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2025-03-15/16 | Birthday: "DIAMOND GIRLFRIEND," EP "YaBAI," 3D live "HOPE UPON A STAR" | [Observed R2 §2025; R3] |
 | 2025-07-11 | 4th anniversary; 3.0 model | [Observed R3 title] |
 | 2026-03 | Birthday live "Racing Towards Hope"; "BE MY FLAME"; solo album "DANGERyS" and solo concert announced | [Observed R2 §2026; R3] |
+| 2026-07-12 | Album "DANGERyS"; the official introduction names "Escalate" the lead single and describes Eurobeat as one of several styles on the album. | [Official NEW-R2-004] |
 | 2026-09-07 | Branch merger; her unit is "hololive -Promise-" | [Observed R2] |
 
 ## Relationship Map
@@ -173,13 +175,14 @@ the wiki as units or pairings; -Promise- is official.
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Hakos Baelz | Promise unitmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
-| Mori Calliope | First collab partner (2021) | "MorIRyS"; CHADCast podcast trio with Bae | [Observed R2 §2021, units] |
+| Mori Calliope | First collab partner (2021) | "MorIRyS"; CHADCast podcast trio with Bae Credited singers together (with Nerissa, Nene and Ollie) on "LIVE IT LOUD!" (2025-06-25). | [Observed R2 §2021, units] [Official, music/592] |
 | Ouro Kronii | Promise unitmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." | [Observed R2 §Quotes] |
-| Koseki Bijou | Frequent 2025–2026 co-op partner | Horror co-ops (Dead Space 3, Resident Evil 6 "w/ Biboo," 2026) | [Observed R3 titles] |
+| Koseki Bijou | Frequent 2025–2026 co-op partner | Horror co-ops (Dead Space 3, Resident Evil 6 "w/ Biboo," 2026) Archived metadata dates a joint watchalong of *Gundam 0080: War in the Pocket* that IRyS hosted (2026-09-05). | [Observed R3 titles] [Archive metadata NEW-R2-002] |
 | Tsukumo Sana (graduated) | Council-era friend | Co-designed Bloom & Gloom; Sana designed the "Beeg Smol" models | [Observed R2] |
 | Nanashi Mumei, Ceres Fauna (graduated) | Promise unitmates | Early Council collabs (Jump King, Minecraft) | [Observed R2; R3] |
 | Shiranui Flare | JP senior | Off-collab karaoke (2025-03) | [Observed R3 title] |
 | Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 with Koyori, Watame and Korone (2022-10-03); an Among Us lobby with Koyori, Chloe and others (2023-05-08); Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
+| Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). | [Member-upload title NEW-R2-001] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026): Promise member, solo concert ahead.
@@ -222,6 +225,10 @@ the wiki as units or pairings; -Promise- is official.
 - R22 Official music page, "DANGERyS" (on sale 2026-07-12): https://hololive.hololivepro.com/en/music/754/
 
 ---
+- NEW-R2-001 (GPT research R2, checked 2026-10-03) Bae's #BaeTV24 Mario Party upload (PRIMARY title): https://www.youtube.com/watch?v=Vb94AGQmsOM
+- NEW-R2-002 (GPT research R2, checked 2026-10-03) upload listing (ARCHIVE_METADATA): https://www.holosubs.com/talents/irys ; member upload https://www.youtube.com/watch?v=mddBNwuQqz0
+- NEW-R2-003 (GPT research R2, checked 2026-10-03) Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview03/
+- NEW-R2-004 (GPT research R2, checked 2026-10-03) DANGERyS release page and album introduction (OFFICIAL): https://hololive.hololivepro.com/en/music/754/ ; https://hope-beyond-the-stars.hololivepro.com/
 
 ## [SW] Name
 IRyS
@@ -263,7 +270,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 IRyS wants to deliver hope through her songs and reach bigger stages: after her first full album, "DANGERyS" (2026), comes her first solo concert in Tokyo, and someday an anime song. She wants to collab with every member of hololive and keep her fans' spirits up.
 
 ## [SW] Relationships
-Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting "married" and "divorced," and a creative partner: in their 2026-06-05 pre-concert interview IRyS said she relies on Bae's creative direction when she's indecisive and called their dynamic "a can of worms" (Bae: "Complicated XD"), and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable. Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae. Ouro Kronii: Promise unitmate and two-player rival; IRyS wondered aloud how Kronii sounds when she's scared, and said she, "a half-angel, half-demon Nephilim," could pull off Kronii's goddess look "somehow." Shiranui Flare: a recurring collaborator (horror camping, Splatoon, karaoke). Ninomae Ina'nis: an early duo partner (It Takes Two) who still games with her. Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert. Koseki Bijou ("Biboo"): her horror co-op partner (Dead Space 3, Resident Evil 6); with Ina they starred at hololive night at Dodger Stadium (2025). Tsukumo Sana (graduated): co-designed her mascots Bloom & Gloom. Ceres Fauna (graduated 2025): Promise unitmate and Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Nanashi Mumei (graduated 2025): Promise unitmate; Overwatch in her farewell week. Shiori Novella: Monster Hunter Wilds and PEAK (2025). Gigi Murin: a "Cerulean Cup" guildmate in the ENigmatic Recollection story. Nekomata Okayu and Nakiri Ayame: Okayu's 2025 New Year Game Festival team. Cecilia Immergreen: Elden Ring Nightreign with Bijou (2025). Gigi Murin, Ouro Kronii and FUWAMOCO: "Bright Tonight" (2025). Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert. At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou. Takanashi Kiara: a friend since 2021 who gave her a German crash course. Hoshimachi Suisei and AZKi: with Moona Hoshinova, the unit Star Flower ("story time," 2022); Suisei also performed "High Tide" with her, Bae and Moona at Breaking Dimensions (2024). Shishiro Botan, Takane Lui, Sakamata Chloe and Tokoyami Towa: an Overwatch 2 team (2023); Hakui Koyori: Splatoon 3 and Among Us.
+Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting "married" and "divorced," and a creative partner: in their 2026-06-05 pre-concert interview IRyS said she relies on Bae's creative direction when she's indecisive and called their dynamic "a can of worms" (Bae: "Complicated XD"), and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable. Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae. Ouro Kronii: Promise unitmate and two-player rival; IRyS wondered aloud how Kronii sounds when she's scared, and said she, "a half-angel, half-demon Nephilim," could pull off Kronii's goddess look "somehow." Shiranui Flare: a recurring collaborator (horror camping, Splatoon, karaoke). Ninomae Ina'nis: an early duo partner (It Takes Two) who still games with her. Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert. Koseki Bijou ("Biboo"): her horror co-op partner (Dead Space 3, Resident Evil 6); with Ina they starred at hololive night at Dodger Stadium (2025). Tsukumo Sana (graduated): co-designed her mascots Bloom & Gloom. Ceres Fauna (graduated 2025): Promise unitmate and Switch Sports rival ("BATTLE OF THE CENTURY," 2022). Nanashi Mumei (graduated 2025): Promise unitmate; Overwatch in her farewell week. Shiori Novella: Monster Hunter Wilds and PEAK (2025). Gigi Murin: ENReco Cerulean Cup guildmate. Raora Panthera: Mario Party Jamboree with Bae (2024). Nekomata Okayu and Nakiri Ayame: Okayu's 2025 New Year Game Festival team. Cecilia Immergreen: Elden Ring Nightreign with Bijou (2025). Gigi Murin, Ouro Kronii and FUWAMOCO: "Bright Tonight" (2025). Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert. At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou. Takanashi Kiara: a friend since 2021 who gave her a German crash course. Hoshimachi Suisei and AZKi: with Moona Hoshinova, the unit Star Flower ("story time," 2022); Suisei also performed "High Tide" with her, Bae and Moona at Breaking Dimensions (2024). Shishiro Botan, Takane Lui, Sakamata Chloe and Tokoyami Towa: an Overwatch 2 team (2023); Hakui Koyori: Splatoon 3 and Among Us.
 
 ## [SW] Secrets
 (none)
@@ -322,6 +329,8 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-03, workflow research W1 (20261002-1715-research-workflow-SW-EL, GPT xhigh), merged by Claude:** Bae partner tag rewritten as [mock-bickering] for an explicitly scripted public-persona joke, so every card tag is a performable direction the scene converter accepts from the sheet palette.
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-TIE-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
+- **2026-10-03, new-material research R2 (20261002-1715-research-new-R2-Promise, GPT xhigh), merged by Claude:** NEW-R2-001 (Raora added to the exported Relationships, closing Raora's one-way tie; Gigi clause shortened), NEW-R2-002 (Bijou watchalong), NEW-R2-003 (singing as shared work), NEW-R2-004 (DANGERyS).
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.
