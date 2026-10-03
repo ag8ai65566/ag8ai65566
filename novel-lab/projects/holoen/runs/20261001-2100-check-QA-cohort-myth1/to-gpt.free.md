@@ -292,9 +292,22 @@ web_search: live
 - Justice：Elizabeth Rose Bloodflame、Gigi Murin、Cecilia Immergreen、Raora Panthera
 - 已畢業：Gawr Gura、Tsukumo Sana、Ceres Fauna、Nanashi Mumei
 - 停止活動、保留 affiliate：Watson Amelia（2024-09-30 起）
+- hololive JP（作者指定，2026-10-02）：Hoshimachi Suisei、AZKi（0th gen）、Nakiri Ayame（2nd gen）、Nekomata Okayu（GAMERS）
+  ——四人已收錄（2026-10-02，GPT 一輪 A／B 後作者裁決）。第二批（Marine、Noel、Lamy、Botan、Vivi、holoX 五人）卡片與表演表
+  已完成，GPT 一輪 C–F 排隊中，審查後收錄。
 - 已完成（2026-10-01）：Myth 五人、Ouro Kronii、IRyS、Ceres Fauna、Nanashi Mumei、**Advent 全員**（Shiori Novella、
   Koseki Bijou、Nerissa Ravencroft、Fuwawa Abyssgard、Mococo Abyssgard）、**Justice 全員**（Elizabeth Rose Bloodflame、Gigi Murin、
-  Cecilia Immergreen、Raora Panthera；2026-10-01）。尚未做：Hakos Baelz、Tsukumo Sana（等作者下令）。
+  Cecilia Immergreen、Raora Panthera；2026-10-01）。
+- 作者下令（2026-10-02，第三則）：JP 四人做好後，接著做 **Houshou Marine、Shirogane Noel、Yukihana Lamy、Shishiro Botan**
+  與 **holoX 全員**（La+ Darknesss、Takane Lui、Hakui Koyori、Sakamata Chloe、Kazama Iroha），做法同上（完整卡＋表演表＋
+  關係網，重點是和 EN 成員與已收錄成員的關係），另做 holoX 團體世界觀卡；「別閒下來」——不要停工等待。
+- 作者下令（2026-10-02，第四則）：第二批**追加 Kikirara Vivi**（hololive DEV_IS FLOW GLOW），做法相同。
+- 作者下令（2026-10-02，第二則）：加入 hololive JP 的 **Hoshimachi Suisei、AZKi、Nakiri Ayame、Nekomata Okayu**，
+  做法同 Bae：完整角色卡＋ElevenLabs 表演表＋關係網（重點是和 EN 成員的關係），另做一張 **JP Senpai Pairs** 世界觀卡。
+  她們主要用日語直播：卡片仍用英文寫，日語口頭禪附羅馬拼音與英譯；音檔核對改用多語模型（small／medium）。
+  不寫母語、國籍、休息與其原因（Ayame 的直播頻率也不寫）。
+- 作者下令（2026-10-02）：加入 **Hakos Baelz**（Promise），同樣補完所有人的關係網與世界觀；**不做 Tsukumo Sana**
+  （她只以已畢業的過去成員出現在別人的卡片裡）。
 - 作者下令（2026-10-01）：Advent 做完後接著做 **Justice**（Elizabeth Rose Bloodflame、Gigi Murin、Cecilia Immergreen、
   Raora Panthera），同樣補完所有人的關係網與世界觀。成員宣布的休息與其原因一律不寫。
 - 作者下令（2026-10-01）：做 **Advent 整團**（Shiori Novella、Koseki Bijou、FUWAMOCO 的 Fuwawa Abyssgard 與
@@ -400,7 +413,7 @@ Source of the CONSULT-* findings: `runs/20261001-1557-check-Project-Consult/gpt-
 | CONSULT-P1-006 | Kronii ASR report: "Agrees" rows that differ lexically | applied (Kronii rows rewritten by hand; all 151 other bare "Agrees" rows given computed shared spans by `tools/asr_spans.py`; 36 partial rows listed in `research/audio-check/partial-spans.md` for task 09) | this commit |
 | CONSULT-P1-007 | Mococo: sparse solo evidence; speaker attribution | task 07 part applied: whole-channel archive search found no other attributable solo window (2026 "MOCOCO POV" is a multi-member role-play; 2024 candidates include her twin); attribution basis now stated separately in research/audio-check/fuwamoco.md; card and sheet say directions stay provisional. Quotation gate stays with task 09 | this commit |
 | CONSULT-P1-008 | Performance sheets: settings scale; stale-sheet hashes | scale applied (UI % and API decimals); hashes pending (task 10 release builder) | snapshot commit |
-| CONSULT-P2-001 | Myth sixth-anniversary live missing from shared timeline | applied as "announced, not verified as held" on Myth and TakaMori (only an announcement post is cited; no official event page or archive found by Claude 2026-10-01); propagation to History/Concerts waits for task 08 evidence | this commit |
+| CONSULT-P2-001 | Myth sixth-anniversary live missing from shared timeline | applied and closed 2026-10-02: verified as held (hololive English channel VOD title; official posts), 2026-09-19 PDT, with the new song "THIS IS MYTH"; propagated to Myth, TakaMori, TakoTori, History 2023–2026, Concerts and the three members (task 06, research/refresh/myth-kronii-20260930.md) | this commit |
 | CONSULT-P2-002 | Audio Tags boilerplate before the distinguishing cue | deferred (task 09, all 18 cards at once) | — |
 | CONSULT-P2-003 | Gura sheet "pre-2025 stories" excluded her active 2025 months | applied | snapshot commit |
 | CONSULT-VAL-001 | Alias "Kronster" on Kronii and Time and Death | applied (removed from Time and Death) | snapshot commit |
@@ -413,7 +426,7 @@ Source of the CONSULT-* findings: `runs/20261001-1557-check-Project-Consult/gpt-
 | CONSULT-R2-005 | Release candidate + acceptance tied to its manifest hash; finding priority ≠ validation severity | pending (task 10–11) | — |
 
 New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}`, `BR-…`).
-| CLAUDE-SCOPE-001 | Process notes that dated or described excluded status matters (Kiara, Myth, TakaMori, History, x-posts) | applied (generalized to the author's rule; no dates or reasons) | this commit |
+| CLAUDE-SCOPE-001 | Process notes that dated or described excluded matters (four cards and x-posts) | applied (generalized to the author's rule; no dates or reasons) | this commit |
 | ADVENT-SCOPE-001 | Elizabeth: a private day-off plan in an incoming Voice Profile bullet | applied (deleted) | this commit |
 | ADVENT-SCOPE-002 | Pre-debut discovery history (how a member first found hololive/VTubers): Shiori, Advent Pairs, Cross-Branch | applied; Claude propagated the same rule to Raora (Korone row and SW sentence) and Justice Pairs | this commit |
 | ADVENT-SCOPE-003 | Nerissa: off-stream habits and private possessions (merch, plush, figures, cooking) | applied (Nerissa, IRyS-and-Nerissa Pairs, Cross-Branch) | this commit |
@@ -431,13 +444,23 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 | CONSULT-P1-006 (residual) | Nerissa N20 and Shiori quotations crossing shared spans | applied (Advent audit; Nerissa's Voice Profile, Sample Lines and sheet also split into separate shared spans) | this commit |
 | CONSULT-R2-001 (residual) | Incoming-claim retrieval was case-sensitive and missed owned world-card aliases | applied (`tools/qa_packets.py`, `re.I`, world-card names and aliases) | this commit |
 | CLAUDE-SCOPE-002 | Process notes still naming the excluded details they removed (Merge Records of Kiara, Nerissa, Calli, Bijou, Ina, FUWAMOCO, Mumei, Raora; FUWAMOCO and Mumei audio reports; one X post in x-posts) | applied (generalized to "private-life material removed"; the post dropped) | this commit |
+| CLAUDE-QUOTE-001 | 23 quotations ran past the span both ASR models share (Ame, Calli, Elizabeth, Gigi, Gura, Bijou, Kiara, Mumei, Nerissa, Raora; Ame, Gigi and Gura sheets) | applied (trimmed to the shared run, split into separate shared quotations, or paraphrased; one apostrophe-only difference documented). `tools/span_check.py` now checks every card and sheet against `partial-spans.md`, and V13 fails automatically on any overrun. Quotes never second-model checked remain task 09's | this commit |
+| CLAUDE-SCOPE-003 | Process notes and scope headers that tied the break rule to particular members (four Myth-era cards; three Justice cards and the Justice world card) | applied (member-specific notes removed; each card keeps only the general privacy statement) | this commit |
+| TASK-06 | Myth/Kronii recency refresh (done by Claude to save GPT quota) | 9 facts applied, 5 candidates held for better evidence: research/refresh/myth-kronii-20260930.md; GPT reviews the additions in the Myth cohort audits | this commit |
+| CLAUDE-QUOTE-002 | span_check missed wrapped quotations and the performance sheets' example blocks; `asr_spans.py` re-runs dropped earlier partial rows | applied: both tools fixed (partial-spans.md rebuilt from every report); eight clear overruns trimmed (Calli, Gigi, IRyS, Nerissa, Raora; IRyS, Raora and Shiori sheets); the remaining hand-judged candidates listed in research/qa/span-candidates.md for task 09 | this commit |
+| AUTHOR-2026-10-02 | Author order: add Hakos Baelz; do not make Tsukumo Sana | in progress: Bae's character card, "Hakos Baelz Pairs," the performance sheet and audio report (research/audio-check/bae.md) drafted; Bae ties added to 13 cast cards and to Promise, Concerts and Cross-Branch Friends; CHADCast recorded as an official unit; GPT's one xhigh claim-check review queued first (runs/20261002-0236-character-Hakos-Baelz) | this commit |
+| CLAUDE-SCOPE-004 | Calli's Cross-Branch entry recorded how she came to VTubers (pre-debut history, ADVENT-SCOPE-002 rule) | applied (clause removed) | this commit |
+| CLAUDE-TOOLS-001 | The roster was hard-coded in several places (18/24/18 counts, reference-only lists) | applied: `qa_packets.COHORTS` is the single roster; release counts, START-HERE and V02 derive from it, and V02 fails when the bible and the roster differ; packets skip a rostered card that is not yet promoted | this commit |
+| CLAUDE-TOOLS-002 | A draft package claimed the roster counts (19/25) while its CSVs held only the promoted cards (18/24), and shipped Bae's performance sheet without her card | applied: package counts, INDEX, CHANGELOG and START-HERE count the cards actually shipped; a sheet ships only with its card; START-HERE names what is not yet included; `CAST_ORDER`/`WORLD_ORDER` must equal the COHORTS roster (assert) | this commit |
+| CLAUDE-TOOLS-003 | The quote gate matched any partial ASR row by five shared words, so a wiki quote (Cecilia's "Ew! Get away from me, you FREAK!") was flagged against an unrelated FUWAMOCO stream line | applied: a report row gates only files that cite its video (a performance sheet counts its card's citations); `span_check.py --write` regenerates `span-candidates.md` (40 → 31 rows; the 9 dropped were all unrelated-video matches) | this commit |
+| CLAUDE-GUIDE-001 | The author needed one place that says where to get the data and where each file goes in Sudowrite | applied: `framework/templates/start-here-zh.md` is the package's 00-START-HERE (Chinese): download, file → Sudowrite placement, smoke test, project setup, scene habits, ElevenLabs, updates, FAQ; scene-setup states the date zone rule | this commit |
 
 ### Registry excerpt (this cohort's cast and world records and its units; query `projects/holoen/research/qa/registry.json` with `jq` for the rest)
 
 ```json
 {
  "baseline": "2026-09-30",
- "commit": "c06ffa3",
+ "commit": "4ee09a4",
  "cast": [
   {
    "name": "Mori Calliope",
@@ -467,10 +490,10 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
    "status": "She has no supernatural abilities; her lore is a performed persona. Calli is a VTuber whose lore, a persona she plays for laughs, makes her the Grim Reaper's first apprentice: when modern medicine gutted the reaping business, she became an idol-rapper VTuber to harvest souls through music and streams.",
    "status_interval": {
     "state_at_baseline": "active",
-    "debut": null,
+    "debut": "2020-09-12",
     "graduated": null,
     "regular_activities_concluded": null,
-    "source": "bible/characters/Mori-Calliope.md › Background"
+    "source": "bible/characters/Mori-Calliope.md › Background (debut: Hard Facts / Background Timeline)"
    }
   }
  ],
@@ -508,6 +531,15 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
    "evidence": "official Serendipity billing, 2026"
   },
   {
+   "unit": "CHADCast",
+   "members": [
+    "Mori Calliope",
+    "IRyS",
+    "Hakos Baelz"
+   ],
+   "evidence": "official music entry (\"Here Comes the CHADCast,\" 2026)"
+  },
+  {
    "unit": "LYRA",
    "members": [
     "Amane Kanata",
@@ -526,19 +558,19 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 
 # Audit packet: myth1
 
-Snapshot: git c06ffa3. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 4ee09a4. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Mori-Calliope.md` 1d1db639dda3; `bible/world/TakaMori.md` e9cf098194f5
+Owned files (sha256): `bible/characters/Mori-Calliope.md` fa27059d7339; `bible/world/TakaMori.md` a25e152cb285
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
 ### Mori Calliope — `bible/characters/Mori-Calliope.md`
 **[SW] Groups:** hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
 **[SW] Other Names:** Calli, Calliope, Mori, Calliope Mori, 森カリオペ, 森美声, Mor Mori, Kawaiiope, Miss Mori, Mowi, CallioP, Cori Malliope
-**[SW] Background:** She has no supernatural abilities; her lore is a performed persona. Calli is a VTuber whose lore, a persona she plays for laughs, makes her the Grim Reaper's first apprentice: when modern medicine gutted the reaping business, she became an idol-rapper VTuber to harvest souls through music and streams. In that lore her Underworld looks like a modern city with bad internet, and she once waitressed there to save up for Japan. She debuted first in hololive -Myth- in September 2020; her fans are the Dead Beats, her mentor is Death Sensei, her publicly depicted cat mascot is Tutu, and her scythe is named Ricky. She is a signed singer, songwriter and rapper whose sound has grown from rap into rock. She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE. She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella. Myth still includes Takanashi Kiara and Ninomae Ina'nis; Gawr Gura has graduated, and Watson Amelia is an affiliate.
-**[SW] Relationships:** Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned the ship down in 2021, and now they collab less but are settled, affectionate old friends who bicker like an old married couple. Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote the lyrics for Ina's song TAKO∞TAKOVER and is a recurring target of Ina's puns. Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q" together, and Calli performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert "The Show Goes On!" Watson Amelia (affiliate): Myth genmate who "called in from 2021" to Calli's 2026 charity stream. IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"); Bae calls her "Cori Malliope," and IRyS joined her as the "Two Pink Women" of Silent Hill 2. Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert). Gigi Murin ("Grem Reaper," a shared title): horror and job-simulator collabs; Calli came to like her own name once Gigi kept using it. Kobo Kanaeru calls her "Uncle Dad." Koseki Bijou ("Biboo," "TombStone"): a junior whose skill Calli admires; they played Bijou's Undertale mod starring Calli and ran a 24-hour charity stream together (2025). Shiori Novella: her partner for the 2026 Serendipity concert who calls her "Mor Mori"; they chase absurd premises together, and Calli admits she is "a little obsessed with her." Ouro Kronii ("Kronster"): deadpan sparring partner in "Time and Death" horror co-ops and mock feuds (Calli's mock exposé of Kronii's joke "$KRONII" coin), with a running joke about their 1 cm height difference. Hoshimachi Suisei: a Japanese senpai she's starstruck by ("Death Star"). Rikka (HOLOSTARS): they released "spiral tones" together (MoRikka). Elizabeth Rose Bloodflame, Koganei Niko, Ayunda Risu and Amane Kanata: fellow LYRA vocalists on a "III" remix cover. Nanashi Mumei (graduated 2025): her "ANATOMY REVIEW" drawing-stream partner (2022). FUWAMOCO: "FUWAMOCALLI," a pair name the twins favor.
+**[SW] Background:** She has no supernatural abilities; her lore is a performed persona. Calli is a VTuber whose lore, a persona she plays for laughs, makes her the Grim Reaper's first apprentice: when modern medicine gutted the reaping business, she became an idol-rapper VTuber to harvest souls through music and streams. In that lore her Underworld looks like a modern city with bad internet, and she once waitressed there to save up for Japan. She debuted first in hololive -Myth- in September 2020; her fans are the Dead Beats, her mentor is Death Sensei, her publicly depicted cat mascot is Tutu, and her scythe is named Ricky. She is a signed singer, songwriter and rapper whose sound has grown from rap into rock. She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE, held her sixth birthday 3D live "UNCUT ROCK!!" with a live band, and sang with Kiara and Ina at Myth's 6th-anniversary 3D live, which premiered the Myth song "THIS IS MYTH." She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella. Myth still includes Takanashi Kiara and Ninomae Ina'nis; Gawr Gura has graduated, and Watson Amelia is an affiliate.
+**[SW] Relationships:** Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusotori" rebuffs; they toned it down in 2021; now settled, affectionate old friends, they bicker like an old married couple. Calli deflects, then insists "I love Kiara!"; they sang "Fire N Ice" and play Mom and Dad to Kobo. Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote lyrics for Ina's TAKO∞TAKOVER and is a recurring target of Ina's puns. Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q," and Calli performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert. Watson Amelia (affiliate): Myth genmate who "called in from 2021" to Calli's 2026 charity stream. IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"; "BLUE CLAPPER" with Bijou, 2024; "Here Comes the CHADCast," 2026); Bae sang "R x R x R" with her (2025); IRyS joined her as the "Two Pink Women" of Silent Hill 2. Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert). Gigi Murin ("Grem Reaper," a shared title): horror, job-simulator and, with Raora Panthera, Elden Ring Nightreign collabs; Calli came to like her own name once Gigi kept using it. Kobo Kanaeru: "Uncle Dad." Koseki Bijou ("Biboo," "TombStone"): a junior whose skill Calli admires; they played her Undertale mod starring Calli and ran a 24-hour charity stream (2025). Shiori Novella: her 2026 Serendipity partner, who calls her "Mor Mori"; they chase absurd premises, and Calli admits she is "a little obsessed with her." Ouro Kronii ("Kronster"): deadpan sparring partner in "Time and Death" horror co-ops and mock feuds. Hoshimachi Suisei: "Wicked" and, per archived uploads, "CapSule" (2022). Cecilia Immergreen: "Cloudy Sheep" at Serendipity. Nekomata Okayu: Mario Party (2024, archived). Rikka (HOLOSTARS): "spiral tones" (MoRikka). Elizabeth, Koganei Niko, Ayunda Risu and Amane Kanata: fellow LYRA vocalists ("III"). Nanashi Mumei (graduated 2025): her "ANATOMY REVIEW" drawing-stream partner (2022). FUWAMOCO: "FUWAMOCALLI," a pair name the twins favor. English-lesson guests Marine, AZKi, La+, Iroha, Lui and Chloe (2022); HOLOYOI guests Lui, Chloe, Noel and Botan (2023).
 **Dossier · Background Timeline:**
 | Date | Event | Relevance |
 |---|---|---|
@@ -551,8 +583,13 @@ Owned files (sha256): `bible/characters/Mori-Calliope.md` 1d1db639dda3; `bible/w
 | 2024-09-05 | Tutu, a cat, is added to her model as a toggle. | [Observed C4 §Mascot and fans, secondary] |
 | 2025-02-26 | "GriMoire" at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent. | [Official C19] |
 | 2026-02-06 | Her third major album, "DISASTERPIECE." | [Official C16] |
+| 2026-03-31 PDT | April Fools "new VTuber debut" as Bonelliope Mori, "a bone-fide idol" | [Observed C31, secondary] |
+| 2026-04-04 JST | Sixth birthday 3D live "UNCUT ROCK!!" with a live band, plus a members-only encore | [Archive metadata C32] |
+| 2026-06-30 | Wins the overall ranking at Kizuna Ai's "Kizuna Ai Cup 2026" (Among Us 3D, Fall Guys) | [Observed C31, secondary] |
+| 2026-07-24 | TOHO animation announces her as the English dub voice of Kou Tousetsu in *Though I Am an Inept Villainess* | [Observed C31, secondary; TOHO animation post not opened] |
 | 2026-06-10 | Serendipity interview and partnership with Shiori Novella. | [Official C11] |
 | 2026-09-07 | The branches merge into one "hololive." Her unit is now hololive -Myth-. | [Official C17, C1] |
+| 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres | [Archive metadata C33] |
 **Dossier · Hard Facts (continuity):**
 - Birthday April 4 (4/4: "shi" is also "death"). Height 167 cm. Debut 2020-09-12. Unit: hololive -Myth-.
   [Official C1] [Observed C4 §Miscellaneous, secondary]
@@ -582,7 +619,7 @@ Owned files (sha256): `bible/characters/Mori-Calliope.md` 1d1db639dda3; `bible/w
 | 2023 | Off-collabs; "Fire N Ice" duet (2023-12-14) | Their song |
 | 2025-02-27 | Kiara's watch party for Calli's GriMoire concert | Cheering from the crowd |
 | 2025-04/05 | Split Fiction series ("takamori split screen nostalgia") | Nostalgic co-op |
-| 2026-09-19 (announced) | Myth 6th anniversary live announced with both | Still side by side |
+| 2026-09-19 PDT | Myth 6th anniversary 3D live "Seasons From Within": a Calli–Kiara duet cover and the new Myth song "THIS IS MYTH" | Still side by side [S7] |
 **Dossier · Hard Facts (continuity):**
 - "TakaMori" was named by Kiara (2020); toned down in 2021; they remain close friends.
 - Kobo's "parents" bit: Kiara "Mom," Calli "Dad"; "not married, Kobo is adopted."
@@ -594,10 +631,19 @@ Incoming claims continue in `myth1-incoming.md`.
 
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git c06ffa3.
+Snapshot: git 4ee09a4.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori Malliope|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|Mor Mori|Takamori|TakaMori|Calliope|CallioP|Calli|森カリオペ|Mori|Mowi|LYRA)(
+Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Mori Calliope|Calliope Mori|Cori Malliope|Last Writes|Kawaiiope|Miss Mori|Takamori|Calliope|CHADCast|Mor Mori|TakaMori|CallioP|森カリオペ|Calli|LYRA|Mori|Mowi)(
+
+### from AZKi
+- `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
+- `bible/characters/AZKi.md › [SW] Relationships`: Mori Calliope: her English lesson with IRyS and Tsunomaki Watame (2022); AZKi's "Orpheus" dance short (2025).
+- `bible/characters/AZKi.md › Behavioral Traits`: 4. Dances other members' songs in her shorts (Calli's "Orpheus," 2025-10-09, archived metadata lXLBb9IVraI; in 2026 Laplus, Towa and Nene, Miko, Koyori, Riona, Lui, Zeta). [Observed AZ4 titles]
+- `bible/characters/AZKi.md › Voice Profile`: - **Language:** streams in Japanese; she participated in Calliope's English lesson with IRyS and Watame (2022, archived metadata). [Observed AZ5]
+- `bible/characters/AZKi.md › Background Timeline`: | 2022-03-12 | Calli's "HOLO ENGLISH LESSON #03" with IRyS and Tsunomaki Watame | [AZ5 32NVpmKdAOs] |
+- `bible/characters/AZKi.md › Relationship Map`: | IRyS | Star Flower | "story time" (2022); IRyS's "Inochi" cover (2021-07-18, archived); Calli's English lesson (2022); R.E.P.O. JP & EN (2025); "A Cruel Angel's Thesis" at Cross Over (2026, secondary) | [Official AZ6] [AZ5] |
+- `bible/characters/AZKi.md › Relationship Map`: | Mori Calliope | — | Calli's English lesson #03 (2022-03-12, archived); AZKi's "Orpheus" dance short (2025-10-09) | [AZ5] [AZ4] |
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: (2026; Cecilia wrote the lyrics and directed it), a 2026 3D live, and the Serendipity concert, where she also sang "Break It Down" with Vestia Zeta and Shiori Novella and "Cloudy Sheep" with Tsunomaki Watame and Mori Calliope.
@@ -625,9 +671,11 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/characters/Gawr-Gura.md › [SW] Background`: Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025.
 - `bible/characters/Gawr-Gura.md › [SW] Background`: She hosted The Fish Tank with Watson Amelia and sang "Q" with Mori Calliope.
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert."
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
 - `bible/characters/Gawr-Gura.md › Voice Profile`: - Other members' openers (Kiara's "Kikkeriki," Calli's "What is up, humans?!").
 - `bible/characters/Gawr-Gura.md › Background Timeline`: | 2022-02-03 | "Q" with Mori Calliope (DECO*27) | [Official G15] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Mori Calliope | Myth genmate ("Bone Bros") | Pranks, bickering and duets; co-vocalists on "Q" | [Observed G2 §Relationships] [Official G15] |
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | La+ Darknesss, Kazama Iroha, Shishiro Botan | JP members | HOLO ENGLISH LESSON #02 with La+ and Iroha (Calli's stream, 2022-03-04); "Apex Predators," a wiki-listed pair name with Botan | [S1 X492n37brRU] [Botan file, secondary] |
 
 ### from Gigi Murin
 - `bible/characters/Gigi-Murin.md › [SW] Relationships`: Mori Calliope: Mouthwashing, Fast Food Simulator, R.E.P.O. and The Boba Teashop; the League of Legends campaign; with Fuwawa, "2 Creatures + 1 Reaper"
@@ -637,7 +685,47 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/characters/Gigi-Murin.md › Story Engine`: - Trouble she brings: a plan that "would be funny"; a bit repeated past its limit; an ambush on Mori Calliope; a keyboard-smash post.
 - `bible/characters/Gigi-Murin.md › Story Engine`: 3. Calli finally agrees to one game of League; Gigi panics.
 
+### from Hakos Baelz
+- `bible/characters/Hakos-Baelz.md › [SW] Groups`: hololive -Promise-, Promise, hololive English -Promise- (former branch name), hololive English -Council- (former), Council, BaeRyS, CHADCast
+- `bible/characters/Hakos-Baelz.md › [SW] Background`: A singer and dancer, she has released originals such as "PLAY DICE!", "PSYCHO", "RxRxR", "FEAST" and "SNAKE EYES," the album "ZODIAC," the EP "Pandæmonium" and "HIDE & SEEK" with Usada Pekora (2023); she co-hosts the CHADCast podcast with IRyS and Mori Calliope (their song "Here Comes the CHADCast," 2026) and holds "Febaerary," a month of daily streams before her birthday.
+- `bible/characters/Hakos-Baelz.md › [SW] Background`: On stage she sang "GEKIRIN" solo and "BLUE CLAPPER" with the CHADCast trio and Koseki Bijou (2024), "Ai ni" with Kobo Kanaeru (2025), "Dance Monkey" as Promise in Sydney (2025), "R x R x R" with Calli and "Countach" with Gigi Murin and Kureiji Ollie (2025), and at Serendipity (2026) "LUVATORRRRRY!" with IRyS as BaeRyS and "HELP!!" with Kobo and Elizabeth Rose Bloodflame.
+- `bible/characters/Hakos-Baelz.md › [SW] Relationships`: IRyS: her BaeRyS partner in a performed "married and divorced" routine that fan references trace to a Minecraft bento exchange; covers, off-collabs, "Here Comes the CHADCast" and "LUVATORRRRRY!" at Serendipity; Bae calls IRyS "the very first senpai I had ever met," and IRyS calls their dynamic "a can of worms."
+- `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Mori Calliope and IRyS: her CHADCast cohosts; "BLUE CLAPPER" with them and Koseki Bijou (2024); "R x R x R" with Calli (2025); secondary references record her nickname "Cori Malliope."
+- `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Houshou Marine: Mario Kart (2021) and Calli's house party (2023); Bae and Mumei played "Truth of Beauty Witch," the horror game featuring Marine.
+- `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2022 | The CHADCast podcast with IRyS and Mori Calliope (Chaos, Hope and Death; episode 1 in January); the first "Febaerary"; first original song "PLAY DICE!" (02-28) | [Observed HB2; HB3 MXd7uOemEzc; Calli file C12] |
+- `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2024-08-24/25 | -Breaking Dimensions-: "Our Promise" with Promise; "BLUE CLAPPER" with Calli, IRyS and Koseki Bijou; solo "GEKIRIN"; "High Tide" with IRyS, Moona Hoshinova and Hoshimachi Suisei | [Official HB5] |
+- `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2025-08-23/24 EDT | -All for One-: "R x R x R" with Calli; "Countach" with Gigi and Kureiji Ollie; solo "La Roja (Arrange ver.)" | [Official HB5] |
+- `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2026-09-01 | "Here Comes the CHADCast," released with Mori Calliope and IRyS | [Official HB9] |
+- `bible/characters/Hakos-Baelz.md › Relationship Map`: | IRyS | Promise genmate; "BaeRyS" | A performed "married/divorced" routine that fan references trace to a Minecraft bento exchange; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); a Valentine bento handcam (2024); "High Tide" on stage (2024); Snow Bros. 2 (2025); "Here Comes the CHADCast" (2026); BaeRyS at Serendipity (2026). In their 2026-06-05 pre-concert interview Bae calls IRyS "the very first senpai I had ever met"; IRyS says she relies on Bae's creative direction when she is indecisive and calls their dynamic "a can of worms," to which Bae answers "Complicated XD." | [Official HB4, HB9] [Observed HB3; IRyS file] |
+- `bible/characters/Hakos-Baelz.md › Relationship Map`: | Mori Calliope | Myth senior; CHADCast cohost | The CHADCast podcast with IRyS (archived from January 2022) and the song "Here Comes the CHADCast" (2026-09-01); "BLUE CLAPPER" with IRyS and Bijou (2024); the "R x R x R" duo at -All for One- (2025); a GriMoire watch-along (2025). Secondary references record the nickname "Cori Malliope" and that Bae calls her "sister" because they share a Live2D rigger | [Official HB5, HB9] [Observed HB3; HB2, secondary; Calli file] |
+- `bible/characters/Hakos-Baelz.md › Relationship Map`: | Secret Society holoX (Lui, Chloe, Koyori) | JP kouhai | The EN-server Minecraft tour with Mumei, Lui and Chloe (2022-02-12); BAE-GEMITE DOMINATION #4 with Koyori and Nene (2023-04-22) and #5 with Lui and Chloe (2023-04-29); a Suika Game challenge and the "Crazy Scary Holy Fantasy" cover with Chloe (2023-10-30); KHAOS KITCHEN taste testers Koyori, Calli and Subaru (2023-11-24) | [HB3 S-d80w5gs-c, WwjB7QSmQng, z4-5Hq5AKG4, p9_oBCK0olg, 9EAIDwXj4Jk, NdLiUW-nUlk] |
+- `bible/characters/Hakos-Baelz.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25) | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] |
+- `bible/characters/Hakos-Baelz.md › Story Engine`: 2. BaeRyS "divorce" proceedings, with Calli presiding as CHADCast judge.
+- `bible/characters/Hakos-Baelz.md › Hard Facts`: - Official stage units: BaeRyS with IRyS (Serendipity 2026); CHADCast trio with Calli and IRyS.
+
+### from Hoshimachi Suisei
+- `bible/characters/Hoshimachi-Suisei.md › [SW] Background`: With the English cast she made "CapSule" and "Wicked" with Calli (2022) and sang "Wicked" at Calli's first solo concert, sings with IRyS, AZKi and Moona as Star Flower, sang "High Tide" and "BIBBIDIBA" at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024).
+- `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Mori Calliope: "Death Star"; Calli is openly starstruck by her; collaborators on "CapSule" and "Wicked"
+- `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: (2022), including their performance at Calli's concert New Underworld Order, and Calli hosted a watch party of Suisei's first tour.
+- `bible/characters/Hoshimachi-Suisei.md › Voice Profile`: - **Language:** streams in Japanese; occasional English words ("Hi, honey!", secondary); she used English phrases when addressing Calliope at New Underworld Order (2022), and members like Calli address her as "senpai." [Observed SU2] [Official Calli report] [S1 titles]
+- `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2022 | "CapSule" with Mori Calliope; single "TEMPLATE / Wicked feat. Mori Calliope"; sings "Wicked" at Calli's first solo concert (07-21) | [S1] |
+- `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2024-11 to 12 | First live tour "Spectra of Nova" (Saitama, Osaka, Fukuoka); Calli, FUWAMOCO and Elizabeth hold a watch party | [Observed SU2] [S1 YtVleZxIiNc] |
+- `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2026-03-08 | hololive 7th fes. "Ridin' on Dreams," STAGE 4 (with Calli, Kronii, Bijou, Nerissa) | [Official SU9] |
+- `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2026-04-04 | Guest at Mori Calliope's birthday 3D live "UNCUT ROCK!!" (her reported recollection; the event record was not opened) | [ASR SU20, her own account] [Observed fan-clip titles, secondary] |
+- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Mori Calliope | "Death Star" | Calli is openly starstruck by her (Calli's file); "CapSule" and "Wicked" (2022); Suisei sang "Wicked" at Calli's first solo concert, New Underworld Order; by Suisei's own account a guest at "UNCUT ROCK!!" (2026); a "Talkin' Live Shows" collab (2023); Calli's watch party of her first tour (2024-11-14) | [S1] [ASR SU20] [SU2 §Relationships] |
+- `bible/characters/Hoshimachi-Suisei.md › Story Engine`: 1. Calli asks Suisei to rehearse "Wicked" one more time and cannot stop saying "senpai."
+
+### from Houshou Marine
+- `bible/characters/Houshou-Marine.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's first HOLOTALK guest (2020), on Calli's first English lesson (2022), at an off-collab house party with Calli and Bae (2023), in off-collabs with FUWAMOCO and Nerissa (2024) and as a guest at Ina's "Pleides"
+- `bible/characters/Houshou-Marine.md › [SW] Background`: (2024); she features in the horror game "Truth of Beauty Witch," which Calli, and Bae with Mumei, played, and she sang for Elizabeth's 2026 birthday.
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Mori Calliope: Calli's English lesson #01 (2022), Mario Kart (2021) and a house-party off-collab with Bae (2023).
+- `bible/characters/Houshou-Marine.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her as a guest on Calli's first English lesson (2022) and Kiara's first HOLOTALK (2020), and joining off-collabs with Calli and Bae (2023), FUWAMOCO and Nerissa (2024). [MA5]
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2022-02-19 | Calli's HOLO ENGLISH LESSON #01 with Ina and Fubuki | [MA5 bfUEbp3xk4o] |
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2023-08 | The horror game "Truth of Beauty Witch -Marine's treasure ship-" features her (Calli played it 08-14; Bae with Mumei 08-23); an off-collab house party with Calli and Bae (08-14) | [Observed MA2 §Events] [MA5 Mf-sAjsuSig, RY1GkF4jMls, DY5VThfehW8] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Mori Calliope | — | English lesson #01 (2022); Mario Kart with Bae and Reine (2021); a house-party off-collab with Bae (2023); Calli played the horror game featuring Marine on her own stream (2023) | [MA5 bfUEbp3xk4o, X3pHIQAvpYU, DY5VThfehW8, Mf-sAjsuSig] |
+
 ### from IRyS
+- `bible/characters/IRyS.md › [SW] Groups`: hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast
 - `bible/characters/IRyS.md › [SW] Relationships`: Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae.
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
 - `bible/characters/IRyS.md › Background Timeline`: | 2021-07-29 | First official collab: Just Shapes & Beats with Mori Calliope | [Observed R2 §2021] |
@@ -645,10 +733,12 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Mori Calliope: they played Bijou's Undertale mod starring Calli together (2023); "TombStone"; a 24-hour charity stream together (2025) and Warhammer painting (2026).
+- `bible/characters/Koseki-Bijou.md › [SW] Relationships`: (We Were Here, a 2024 sleepover marathon); with Bae, Calli and IRyS she sang "BLUE CLAPPER" at the 2024 English concert.
 - `bible/characters/Koseki-Bijou.md › Behavioral Traits`: 6. She mods games: on stream with Calli she played an Undertale mod that puts Calli in Sans's place (2023-08-12). [Observed KB3 eRGs-7AqRgs]
 - `bible/characters/Koseki-Bijou.md › Background Timeline`: | 2023-08-12 | An Undertale mod starring Calli, played with Calli on stream | [Observed KB3] |
 - `bible/characters/Koseki-Bijou.md › Background Timeline`: | 2025-06-29 | "THAT'S WILD?!" 24-hour charity stream with Calli (Wildlife Warriors Worldwide) | [Observed Calli archive J5u2aGUrNq8] |
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Mori Calliope | Senior ("TombStone") | An Undertale mod starring Calli, played together (2023); BG3 as "Killing, Two Birds, with One Stone" (2023); 24-hour charity stream (2025); Warhammer painting (2026); Calli's channel mentions her 29 times | [Observed KB2; KB3; Calli archive] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] |
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Mori Calliope: "FUWAMOCALLI."
@@ -656,6 +746,13 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 ### from Nanashi Mumei
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Mori Calliope: "ANATOMY REVIEW."
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Mori Calliope | Myth senior | "ANATOMY REVIEW" streams (with Calli and Sana, 2022; solo, 2025) | [Observed M3] |
+
+### from Nekomata Okayu
+- `bible/characters/Nekomata-Okayu.md › [SW] Background`: Archived stream metadata documents her as Kiara's 18th HOLOTALK guest (2021), a guest at Mumei's 3D live (2024), a pop-up Mario Party with Calli, Anya and Ao (2024) and her 2025 New Year Game Festival team with Ina, IRyS and Cecilia among its members.
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Mori Calliope: a pop-up Mario Party with Anya and Ao (2024).
+- `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2024-09-15 | A pop-up Mario Party with Mori Calliope, Anya Melfissa and Hiodoshi Ao (archived metadata) | [OK4 WnKCmQ2iXww] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Mori Calliope | — | A pop-up Mario Party (2024) | [OK4] |
+- `bible/characters/Nekomata-Okayu.md › Story Engine`: 3. Okayu flirts with Calli to see her react; Calli's deflection makes Okayu laugh until she squeaks.
 
 ### from Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Background`: (2025) with Calli and IRyS as guests, sang the duet "OVER//RIDE" with Calli (2025), and released "OYOME♡HOLIC" and "Blue World"
@@ -665,13 +762,15 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Calli's Death Sensei, and Calli wrote lyrics for Ina's song.
+- `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **Profanity:** her ordinary speech favors mild exclamations: she has said she "usually never swears," and a rare "damn" from her made headlines in clips [Observed I15 clip titles]; about an hour of checked audio had no swearing in her own words [ASR I29]. Sharper language and bawdy wordplay turn up in specific exchanges (above). Constant swearing in Kiara's or Calli's register would be out of character; an occasional sharp word is not.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **How she addresses people:** "you guys," "everyone," "chat," and fans as "Takodachi" (the official fan name is the Tentacult). Members by first or short name ("Calli," "Kiara," "Ame," "Gura," "Kronii," "Bae," "Biboo," "CC"); a full name signals a mock-serious scold. New members are "kouhais." She gives her own name surname-first. [Official I1] [Observed I3 captions; I2 §Mascot and fans]
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - Measured (I29, 2026 chat): median pitch 223–232 Hz, in the middle of the six files measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz), so "mid" rather than "low"; about 81–95 words per minute of speech in that one 2026 chat stream (Kronii 120–127, Calli 161–186 in their chat windows). A 2021 game stream measures 210–214 Hz and 68–116 words per minute (its opening chat 116). Sample results only; they do not establish a general ranking among genmates.
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | Ongoing | Illustrator: drew Myth's intro art; designed the Takodachi [I2 §Mascot and fans], Bubba [Ame file A2 §Mascots and fans] and Death Sensei [Calli file C4 §Mascot and fans] (the wiki says all Myth mascots except Bloop); she drew chibi Bloop artwork, but Bloop's original design is not hers [Gura file G2] | [Observed I2 §Miscellaneous and §Mascot and fans, secondary] |
-- `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026 | TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope | [Observed—published interview I19] [Official I25] |
+- `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-01-06/07 | TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope (released; the wiki dates it 01-06 in its history and 01-07 in its discography) | [Observed—published interview I19] [Official I25] |
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-07 | Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- | [Official I28] [Observed I10] |
+- `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Mori Calliope | Myth genmate | Favorite pun target ("Every freaking time, Ina."); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
 - `bible/characters/Ninomae-Inanis.md › Hard Facts`: - Birthday May 20; height 157 cm; debut 2020-09-13; unit hololive -Myth-; illustrator Kuroboshi Kouhaku (whom she calls "papa"). [Official I1] [Observed I2 infobox]
 
@@ -696,19 +795,37 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/characters/Shiori-Novella.md › Arc`: - **Starting point:** active member at the 2026 baseline: her first original song, the Serendipity duo with Calli, "Into The Void."
 - `bible/characters/Shiori-Novella.md › Story Engine`: 3. Calli and Shiori record a "deep-dive" on a kids' cartoon that goes too far; the manager bonks both.
 
+### from Shirogane Noel
+- `bible/characters/Shirogane-Noel.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Mori Calliope: HOLOYOI #02 with Flare (2023).
+- `bible/characters/Shirogane-Noel.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her as Kiara's 22nd HOLOTALK guest (2022) and a guest with Flare on Calli's HOLOYOI #02 (2023). [NO5]
+- `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2023 | Calli's HOLOYOI #02 with Flare (04-20); first solo album "NOESANPO" (official digital release 11-25; birthday merchandise orders opened 11-24); a "Yuru Holo" team Mario Kart event with FUWAMOCO and Bae among the participants (12-12) | [NO5] [Official music 359] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Mori Calliope | — | HOLOYOI #02 with Flare (2023) | [NO5] |
+- `bible/characters/Shirogane-Noel.md › Story Engine`: 2. "Drinking Knight with Noel" welcomes Calli as a guest and turns into a cooking contest.
+
+### from Shishiro Botan
+- `bible/characters/Shishiro-Botan.md › [SW] Background`: Archived metadata and secondary concert reports record her with the English cast in Left 4 Dead 2 (2022) and an Overwatch 2 team (2023) with IRyS, on Calli's HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and as a guest at Ina's birthday 3D live "EVERMORE"
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Mori Calliope: HOLOYOI #03 with Oozora Subaru (2023).
+- `bible/characters/Shishiro-Botan.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her on Calli's HOLOYOI #03 and Bae's BAE-GEMITE DOMINATION #2 (2023), both with Oozora Subaru. [BO5]
+- `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2023 | BAE-GEMITE DOMINATION #2 with Bae and Subaru (04-08); HOLOYOI #03 with Calli and Subaru (05-18); an Overwatch 2 team with IRyS, Lui, Chloe and Towa (08) | [BO5] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Mori Calliope | — | HOLOYOI #03 with Subaru (2023) | [BO5] |
+- `bible/characters/Shishiro-Botan.md › Story Engine`: 1. Botan runs a money-making server event for the EN cast and Calli keeps buying out the ramen shop.
+
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German.
+- `bible/characters/Takanashi-Kiara.md › [SW] Background`: She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Mori Calliope: her TakaMori partner.
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Kiara declared a crush in 2020 and long called Calli her "wife," a public bit they toned down in 2021; now they collab less but are settled, affectionate old friends who bicker like an old married couple.
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Kiara declared a crush in 2020 and long called Calli her "wife," a public bit they toned down in 2021; now settled, affectionate old friends, they bicker like an old married couple.
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Kiara says it plainly: Calli "actually does like me a lot but is just really bad at expressing herself."
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "When I first met all of them, the one that struck me was Calli... I was like, 'Damn, she hot, what a hot-ass chick!'"
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "Calli goes to The Pink Vice, gets drunk, sees a stripper she likes… realizes the next day the stripper was me"
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - She uses German, English and Japanese on stream; she has said her English is not perfect and has corrected Calli's Japanese; she learned some Korean in 2022. [Observed T2 §Miscellaneous, secondary]
-- `bible/characters/Takanashi-Kiara.md › Voice Profile`: 3. "So actually, tomorrow, Calli, Ina, Wawa, Wawa, Wawa, lots of people in Hytale." (ASR T23, 2:39:41)
+- `bible/characters/Takanashi-Kiara.md › Voice Profile`: 3. "So actually, tomorrow, Calli, Ina, Wawa…" (ASR T23, 2:39:41; she goes on to "lots of people in Hytale")
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2020-12-10 | Channel briefly terminated, then restored; "#PhoenixDown" re-debut with a mock-amnesia bit ("Who's Calli?") | [Observed T2 §2020 and §Takamori; T5-le72UNZAbQI] |
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2021-09 | She and Calli announce they will tone down the TakaMori ship | [Observed T2 §Takamori] |
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-09-07 | Branches merge; unit is hololive -Myth- | [Official T20, T1] |
+- `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Ina; "THIS IS MYTH" premieres | [Archive metadata T25] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Mori Calliope | Myth genmate | Kiara long called Calli her "wife" and coined "TakaMori"; Calli rebuffed her and calls her "kusotori" ("shitbird"). They announced in 2021 that they would tone the ship down (the wiki adds that "the two remain close friends"; a secondary statement, not a documented current relationship); they play "Mom" and "Dad" to Kobo as a performed family bit | [Observed T2 §Takamori, secondary; T14 title] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Kobo Kanaeru | Collaborator | Kobo calls her "Mommy Kiwawa"; Kiara and Calli play her "Mom" and "Dad" | [Observed T5-gNEWWDKlTM8 clip title; T2 §Takamori] |
 - `bible/characters/Takanashi-Kiara.md › Hard Facts`: - Birthday July 6; height 165 cm; debut 2020-09-12; unit hololive -Myth-; illustrator huke. [Official T1]
@@ -759,19 +876,20 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: The cast's own stages: Calli's "GriMoire" at the Hollywood Palladium (2025, the first hololive solo concert outside Japan); Kiara and Ina's duo concert "Drawn to Dawn"
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: (2025) with Calli and IRyS as guests; Gura's final mini live (2025-05-01); hololive night at Dodger Stadium with Ina, IRyS and Bijou (2025-07-05); FUWAMOCO's first birthday concert (2025) and Advent's anniversary lives "On the Run!"
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive fes. + hololive SUPER EXPO** (spring, in Japan; the combined fes./EXPO tradition dates to 2022, while fes. itself is older): the agency-wide concert and convention. 3rd fes "Link Your Wish" (2022-03, Makuhari; Calli and Kiara performed on day 2, per their X posts), 4th fes "Our Bright Parade" (2023), 5th "Capture the Moment" (2024), 6th "Color Rise Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06/08). EN units share Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
-- `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive English concerts** (US, summer): "-Connect the World-" (2023-07-02), "-Breaking Dimensions-" (2024-08-24/25, Kings Theatre, New York; Fauna and Mumei premiered their duet "It's Not a Phase"; Kiara, Mumei and Nerissa sang "Beyond the way"; Fauna, Shiori and Nerissa "Lonely in Gorgeous" [Official S8]), "-All for One-" (2025-08-23/24, Radio City Music Hall, New York; all fifteen EN members: Advent's "Genesis"; "HOT DUCK!" by Bijou, FUWAMOCO and Oozora Subaru; "MONSTER" by Ina, Kronii, Shiori and Gigi; "SHALLYS" by Ina, FUWAMOCO and Cecilia; Shiori's "AKUMA" and "Suspect" with Kiara and Ayunda Risu; Bijou's solo "Dead Ma'am's Chest"; Justice's first group performance at an in-person concert venue in 3D, "ABOVE BELOW"; Cecilia's "Wind-Up," the first Justice solo number of that concert, Raora's "Gacha×Gacha ADVENTURE!," Elizabeth's "Stellar Stellar" and Gigi's "Wonky Monkey"; "ALiCE&u" by Nerissa, Elizabeth and Ayunda Risu; "I'm Your Treasure Box" by Bijou, Cecilia and Raora [Official S9]), "Serendipity" (2026-07-03/04, Shrine Auditorium, Los Angeles), the last built around partner pairs (among them Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Hakos Baelz and Nerissa–Elizabeth Rose Bloodflame, FUWAMOCO–Raora and Gigi–Cecilia), each with a published interview. Official report (S11): units Last Writes (Calli & Shiori, "When My Devil Rises"), Octo'clock (Ina & Kronii, "Bad Apple"), Rocku Wawa (Kiara & Bijou, "Tententengoku Jigokukoku"), BaeRyS (IRyS & Bae, "LUVATORRRRRY!"), Bloodraven (Nerissa & Elizabeth, "Cruel Angel's Thesis"), B.F.F (FUWAMOCO & Raora, "Inu Neko. Seishun Massakari"), Autofister (Gigi & Cecilia, "CCGG MADNESS"); guests Ookami Mio ("Dottabatta Chindouchuu" with Ina and FUWAMOCO; "Night Loop" with IRyS and Bijou), Kobo Kanaeru ("HELP!!" with Bae and Elizabeth; "BLUE CLAPPER" with Kronii and Nerissa), Vestia Zeta ("Break It Down" with Shiori and Cecilia; "MAKE IT, BREAK IT" with FUWAMOCO and Gigi) and Tsunomaki Watame ("Cloudy Sheep" with Calli and Cecilia; "What an amazing swing" with Kiara and Raora); group stages: Myth and Promise medleys, Advent's "What Goes Around," Justice's "SUPERNOVA SUPER GIRL," the Advent+Justice medley ("Rebellion," "ABOVE BELOW"), Myth and Promise's "Kirameki Rider – English ver.," and all fifteen on "Serendipity" (its first performance) and "All for One." The report lists selected performances, not a full setlist. Dates are US local time. [Observed S1; character files C11, K4, I7, T10; Official S5, S6]
+- `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive English concerts** (US, summer): "-Connect the World-" (2023-07-02), "-Breaking Dimensions-" (2024-08-24/25, Kings Theatre, New York; Fauna and Mumei premiered their duet "It's Not a Phase"; Kiara, Mumei and Nerissa sang "Beyond the way"; Fauna, Shiori and Nerissa "Lonely in Gorgeous"; Promise's unit song "Our Promise"; "BLUE CLAPPER" by the CHADCast trio (Calli, IRyS, Bae) with Bijou; Bae's solo "GEKIRIN"; "High Tide" by IRyS, Bae, Moona Hoshinova and Hoshimachi Suisei [Official S8]), "-All for One-" (2025-08-23/24, Radio City Music Hall, New York; all fifteen EN members: Advent's "Genesis"; "HOT DUCK!" by Bijou, FUWAMOCO and Oozora Subaru; "MONSTER" by Ina, Kronii, Shiori and Gigi; "SHALLYS" by Ina, FUWAMOCO and Cecilia; Shiori's "AKUMA" and "Suspect" with Kiara and Ayunda Risu; Bijou's solo "Dead Ma'am's Chest"; Justice's first group performance at an in-person concert venue in 3D, "ABOVE BELOW"; "R x R x R" by Calli and Bae; "Countach" by Bae, Gigi and guest Kureiji Ollie; Bae's solo "La Roja (Arrange ver.)"; Cecilia's "Wind-Up," the first Justice solo number of that concert, Raora's "Gacha×Gacha ADVENTURE!," Elizabeth's "Stellar Stellar" and Gigi's "Wonky Monkey"; "ALiCE&u" by Nerissa, Elizabeth and Ayunda Risu; "I'm Your Treasure Box" by Bijou, Cecilia and Raora [Official S9]), "Serendipity" (2026-07-03/04, Shrine Auditorium, Los Angeles), the last built around partner pairs (among them Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Hakos Baelz and Nerissa–Elizabeth Rose Bloodflame, FUWAMOCO–Raora and Gigi–Cecilia), each with a published interview. Official report (S11): units Last Writes (Calli & Shiori, "When My Devil Rises"), Octo'clock (Ina & Kronii, "Bad Apple"), Rocku Wawa (Kiara & Bijou, "Tententengoku Jigokukoku"), BaeRyS (IRyS & Bae, "LUVATORRRRRY!"), Bloodraven (Nerissa & Elizabeth, "Cruel Angel's Thesis"), B.F.F (FUWAMOCO & Raora, "Inu Neko. Seishun Massakari"), Autofister (Gigi & Cecilia, "CCGG MADNESS"); guests Ookami Mio ("Dottabatta Chindouchuu" with Ina and FUWAMOCO; "Night Loop" with IRyS and Bijou), Kobo Kanaeru ("HELP!!" with Bae and Elizabeth; "BLUE CLAPPER" with Kronii and Nerissa), Vestia Zeta ("Break It Down" with Shiori and Cecilia; "MAKE IT, BREAK IT" with FUWAMOCO and Gigi) and Tsunomaki Watame ("Cloudy Sheep" with Calli and Cecilia; "What an amazing swing" with Kiara and Raora); group stages: Myth and Promise medleys, Advent's "What Goes Around," Justice's "SUPERNOVA SUPER GIRL," the Advent+Justice medley ("Rebellion," "ABOVE BELOW"), Myth and Promise's "Kirameki Rider – English ver.," and all fifteen on "Serendipity" (its first performance) and "All for One." The report lists selected performances, not a full setlist. Dates are US local time. [Observed S1; character files C11, K4, I7, T10; Official S5, S6]
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **World tours:** "hololive STAGE World Tour'24 -Soar!-" (AZKi, Tsunomaki Watame, Moona Hoshinova, Kobo Kanaeru, Takanashi Kiara, Ninomae Ina'nis, Hakos Baelz): New York (Anime NYC, 2024-08-23, a day before and separate from "-Breaking Dimensions-"), Jakarta (11-09), Singapore (11-30, with a pre-concert panel of Kaela Kovalskia and Ouro Kronii), Atlanta (12-15, a panel of Nerissa and Elizabeth Rose Bloodflame), Kuala Lumpur (12-21, Nerissa and Elizabeth again) and Taipei (2025-01-18, the finale) [Official S7]; and "World Tour'25 -Synchronize!-" led by Momosuzu Nene, Kureiji Ollie, Mori Calliope, IRyS and Nerissa Ravencroft, with two guests per city (Ouro Kronii and Hakos Baelz in Sydney; Tokino Sora and Sakura Miko in Hong Kong). [Observed S1 §2024, §2025]
-- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Mori Calliope | Solo concert "New Underworld Order" (2022-07-21); "GriMoire" at the Hollywood Palladium (2025-02-26), the first solo concert by a hololive production talent outside Japan; World Tour '25 lead; Serendipity with Shiori | Calli file C6, C19, C11; S1 |
+- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Mori Calliope | Solo concert "New Underworld Order" (2022-07-21); "GriMoire" at the Hollywood Palladium (2025-02-26), the first solo concert by a hololive production talent outside Japan; World Tour '25 lead; Serendipity with Shiori; 6th birthday 3D live "UNCUT ROCK!!" with a live band (2026-04-04 JST); Myth's 6th-anniversary 3D live "Seasons From Within" (2026-09-19 PDT) | Calli file C6, C19, C11; S1 |
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Nerissa Ravencroft | 6th fes day 1 (2025-03-08); 3D concert "Requiem for Love – A JukeBox Musical" (2025-05-24, with Calli and IRyS as guests); Advent's "On the Run!" (2025-08-29); World Tour '24 panels with Elizabeth (Atlanta, Kuala Lumpur); World Tour '25 lead; Serendipity with Elizabeth | Nerissa file N2, N3; S1 |
+- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Hakos Baelz | -Breaking Dimensions- (2024): "Our Promise," "BLUE CLAPPER" with Calli, IRyS and Bijou, solo "GEKIRIN," "High Tide"; -All for One- (2025): "R x R x R" with Calli, "Countach" with Gigi and Ollie, solo "La Roja (Arrange ver.)"; birthday 3D lives "-KAGURA- Dance of the Gods" (2025) and "ReCOLOR" (2026); "Idol" as the final solo number of STAGE 3 at the 2026 fes (secondary setlist; the choreography and breakdance finale are her account); Serendipity: BaeRyS with IRyS, "HELP!!" with Kobo and Elizabeth; first solo concert "REGALIA" scheduled for 2026-12-01 (after the baseline; official announcement) | S8, S9, S11; Bae file HB2, HB7, HB11, HB12, HB20 |
 - `bible/world/Concerts-and-Live-Events.md › Conflicts and Story Hooks`: 2. IRyS counts down to her first solo concert in Tokyo; Kronii and Calli send messages.
 - `bible/world/Concerts-and-Live-Events.md › Conflicts and Story Hooks`: 5. A tour stop in Sydney: Kronii joins Calli, IRyS and Nerissa as a guest.
 
 ### from Cross-Branch Friends
-- `bible/world/Cross-Branch-Friends.md › [SW] Other Names`: Death Star, MoRikka, LYRA, Holodeath, PavoNashi, HOLOTORI, UMISEA, HoloJEI, TakoNeko, K.I.R.A, OKFAIR, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET
+- `bible/world/Cross-Branch-Friends.md › [SW] Other Names`: Death Star, MoRikka, LYRA, Holodeath, PavoNashi, HOLOTORI, UMISEA, HoloJEI, K.I.R.A, OKFAIR, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix cover as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa."
-- `bible/world/Cross-Branch-Friends.md › By Character`: - **Mori Calliope:** Hoshimachi Suisei is the senpai she is starstruck by ("Death Star"): she drew her ("DRAWING MY SENPAI," 2021), Suisei featured at Calli's first solo concert ("Wicked," 2022), they talked live shows together (2023), and Calli hosts watch parties of Suisei's concerts ("We're Screaming Loud for Senpai!", 2024-11). Kobo Kanaeru calls her "Uncle Dad" ("Father Daughter GOLF," 2022; an in-person cooking-and-gaming collab, 2023). Units: "Holodeath" (with Kureiji Ollie); "LYRA," a five-singer cover of "III" with Koganei Niko, Ayunda Risu, Amane Kanata and Elizabeth (Kanata has since graduated); "MoRikka" with HOLOSTARS' Rikka (their song "spiral tones," 2021; fans "DeadTuners") [Official music entry S5]. Outside hololive: friends with Milky Queen, whom she credits for introducing her to VTubers, and Ironmouse (a shared Underworld theme). [Observed S1 titles; S2 Calli §Relationships; Calli file]
-- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first), not language or nationality; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
+- `bible/world/Cross-Branch-Friends.md › By Character`: - **Mori Calliope:** Hoshimachi Suisei is the senpai she is starstruck by ("Death Star"): she drew her ("DRAWING MY SENPAI," 2021), Suisei featured at Calli's first solo concert ("Wicked," 2022), they talked live shows together (2023), and Calli hosts watch parties of Suisei's concerts ("We're Screaming Loud for Senpai!", 2024-11). Kobo Kanaeru calls her "Uncle Dad" ("Father Daughter GOLF," 2022; an in-person cooking-and-gaming collab, 2023). Units: "Holodeath" (with Kureiji Ollie); "LYRA," a five-singer cover of "III" with Koganei Niko, Ayunda Risu, Amane Kanata and Elizabeth (Kanata has since graduated); "MoRikka" with HOLOSTARS' Rikka (their song "spiral tones," 2021; fans "DeadTuners") [Official music entry S5]. Outside hololive: friends with Milky Queen and Ironmouse (a shared Underworld theme). [Observed S1 titles; S2 Calli §Relationships; Calli file]
+- `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first) and nothing else; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Calli by Suisei, Kiara by Pekora, Nerissa by Marine). [Observed character files]
 - `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 1. Calli hosts another watch party for Suisei's concert and loses her composure on the high note.
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).
 
@@ -784,6 +902,19 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: Mumei also drew with Ina, did "Anatomy Review" with Calli, played with Ame in Ame's last regular week, and held "emo hours" with Nerissa; at the 2024 concert Mumei sang with Kiara and Nerissa, and Fauna with Shiori and Nerissa.
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Calli:** "ANATOMY REVIEW with Calli + Sana + Mumei" (2022), a drawing bit Mumei brought back on her own in 2025. [Observed S1]
 
+### from Hakos Baelz Pairs
+- `bible/world/Hakos-Baelz-Pairs.md › [SW] Other Names`: Bae and IRyS, BaeRyS, CHADCast, BaeBi, BratTea, Bae and Kronii, Bae and Calli, Bae and Cecilia
+- `bible/world/Hakos-Baelz-Pairs.md › [SW] Description`: With IRyS and Mori Calliope she is CHADCast (Chaos, Hope and Death), a podcast trio archived from January 2022, with the song "Here Comes the CHADCast"
+- `bible/world/Hakos-Baelz-Pairs.md › [SW] Description`: (2026); they sang "BLUE CLAPPER" with Koseki Bijou in 2024, and Bae and Calli sang "R x R x R" in 2025.
+- `bible/world/Hakos-Baelz-Pairs.md › CHADCast`: - "Chaos, Hope And Death": archived episode metadata records the podcast trio from January 2022 (episodes through at least #14, 2023), with the 2026 song "Here Comes the CHADCast." With Koseki Bijou they sang "BLUE CLAPPER" at -Breaking Dimensions- (2024). [S1] [Official S3; Calli file C13]
+- `bible/world/Hakos-Baelz-Pairs.md › CHADCast`: - Calli and Bae: the "R x R x R" duo at -All for One- (2025); a GriMoire concert watch-along (2025-02-27); early collabs (2021). Secondary references record the nickname "Cori Malliope" and that Bae calls her "sister" because they share a Live2D rigger. [Official S3] [S1] [Calli file]
+- `bible/world/Hakos-Baelz-Pairs.md › History`: | 2022 | CHADCast begins; "Month of Horrors" (October) | Bae–Calli–IRyS; Bae–Fauna |
+- `bible/world/Hakos-Baelz-Pairs.md › History`: | 2024-08-24/25 | -Breaking Dimensions-: "Our Promise," "BLUE CLAPPER," "High Tide" | Promise; CHADCast + Bijou; BaeRyS |
+- `bible/world/Hakos-Baelz-Pairs.md › History`: | 2025-08-23/24 | -All for One-: "R x R x R," "Countach" | Bae–Calli; Bae–Gigi (with Ollie) |
+- `bible/world/Hakos-Baelz-Pairs.md › Conflicts and Story Hooks`: 1. A BaeRyS "divorce" hearing with Calli as the CHADCast judge.
+- `bible/world/Hakos-Baelz-Pairs.md › Hard Facts`: - Official stage units: BaeRyS (IRyS & Bae, Serendipity 2026); CHADCast is a podcast trio (Calli, IRyS, Bae).
+- `bible/world/Hakos-Baelz-Pairs.md › Hard Facts`: - Concert pairings: "BLUE CLAPPER" (Calli, IRyS, Bae, Bijou; 2024); "High Tide" (IRyS, Bae, Moona, Suisei; 2024); "R x R x R" (Calli & Bae; 2025); "Countach" (Bae, Gigi, Ollie; 2025); "HELP!!" (Kobo, Bae, Elizabeth; 2026).
+
 ### from IRyS and Nerissa Pairs
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Other Names`: MorIRyS, CHADCast, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IRyS's debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke).
@@ -793,10 +924,40 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Nerissa`: - **Nerissa and Kiara ("KiaRissa")** (15 / 12 / 3 / 0): Kiara is Nerissa's oshi; in Nerissa's lore she worked at KFP before hololive . "Compatibility test with Kiara-senpai" (2023-08-14); Kiara showed her around the EN Minecraft server (2023-09-07); their Baldur's Gate 3 party with Calli and Bijou ("Killing, Two Birds, with One Stone," 2023); "Rating your CARS with NERISSA" (2023-10-21); "GIRLSTALK with Nerissa, EN BIRB GIRLS PARTY!" (2025-04-08); a CHICAGO watchalong "with the musical connoisseur Nerissa" (2025-07-09). [Observed S1 titles; S3 Nerissa §Relationships, §Lore, secondary]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Nerissa`: - **Nerissa and Calli** (6 / 7 / 3 / 1): the BG3 party (2023); Calli's "I Gathered 8 Cute People to Destroy their Friendships" (Mario Party, 2024-11); Calli as guest at Nerissa's 2025 3D concert ("Bocca della Verità"); the duet "OVER//RIDE – Mori Calliope × Nerissa Ravencroft" (2025-07-18); Nerissa as HOLOMELO RADIO guest (2025-07); Nerissa sang charity karaoke for #GOLIVEforLOVE (2026-02-17). Nerissa was Calli's first Instagram follower. [Observed S1 titles; S3, secondary]
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2021-07-29 | Calli's first collab with IRyS | MorIRyS |
+- `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2022-01-30 | First CHADCast | Chaos, Hope, and Death |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 1. CHADCast records an episode while Calli and IRyS disagree on what counts as "chad."
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 4. Calli and Nerissa rehearse a duet; Calli's flow meets Nerissa's flirting.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - CHADCast = IRyS, Calli, Bae. KiaRissa = Kiara and Nerissa. IRyS and Kronii are -Promise- genmates.
+
+### from JP Senpai Pairs 2
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Other Names`: Marine and Kiara, Noel and Calliope, Lamy and Ina, Botan and IRyS, Vivi and FUWAMOCO
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Marine was the first guest of Kiara's talk show HOLOTALK (2020), joined Calli's first English lesson with Ina (2022), played Mario Kart with Calli and Bae (2021) and joined their house-party off-collab (2023), joined off-collabs with FUWAMOCO and Nerissa (2024), and was a guest at Ina's 3D live "Pleides"
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA.
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Noel was HOLOTALK's 22nd guest and on Calli's HOLOYOI with Shiranui Flare (2023).
+- `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Mori Calliope:** Calli's HOLO ENGLISH LESSON #01 with Ina and Fubuki (2022-02-19); Mario Kart with Bae and Pavolia Reine (2021-12-25); an off-collab "House Party with Marine & Bae" (2023-08-14); Calli played "Truth of Beauty Witch," the horror game featuring Marine, on her own stream (2023); dance shorts to Marine's songs. [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Ninomae Ina'nis, Gawr Gura:** UMISEA, the ocean unit (official 2023 roster: Minato Aqua, Marine, Sakamata Chloe, Gura and Ina); Calli's English lesson #01 (Ina); a guest at Ina's "Pleides" (2024); "SHINKIRO" with Gura (anime MV on Marine's channel, 2023-11-12, credited to both). The "GuraMarine" pair name is wiki-listed only. [Official UMISEA roster] [S1 9ehwhQJ50gs, 3n9igJnSXtQ] [S2 Marine §Relationships, secondary]
+- `bible/world/JP-Senpai-Pairs-2.md › Shirogane Noel with the cast`: - **Mori Calliope:** HOLOYOI #02 with Shiranui Flare (2023-04-20). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **Mori Calliope, Hakos Baelz:** HOLOYOI #03 and BAE-GEMITE DOMINATION #2, both with Oozora Subaru (2023). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2022 | Calli's English lesson #01; HOLOTALK #22; Left 4 Dead 2 | Marine; Noel; Botan, IRyS |
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2023 | HOLOYOI #02 and #03; BAE-GEMITE DOMINATION #2; the horror game featuring Marine; Overwatch 2 team; Blue Journey | Noel, Botan, Calli, Bae; Calli, Bae, Mumei; Botan, IRyS |
+- `bible/world/JP-Senpai-Pairs-2.md › Hard Facts`: - Calli's HOLOYOI: #02 Noel and Flare (2023-04-20); #03 Subaru and Botan (2023-05-18).
+
+### from JP Senpai Pairs
+- `bible/world/JP-Senpai-Pairs.md › [SW] Other Names`: AS_tar, FWMCAZ, TakoNeko, Suisei and Calli, Okayu and Ina, AZKi and FUWAMOCO, Ayame and Kiara
+- `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Suisei and Calli: collaborators on "CapSule" and "Wicked"
+- `bible/world/JP-Senpai-Pairs.md › [SW] Description`: (2022) and a performance at Calli's concert New Underworld Order; archived uploads document Calli's watch-alongs of Suisei's concerts.
+- `bible/world/JP-Senpai-Pairs.md › Hoshimachi Suisei with the cast`: - **Mori Calliope ("Death Star," secondary):** Calli's own card describes her as starstruck by Suisei (secondary; the pair name and reaction stay here in the dossier). Calli's original "CapSule" with Suisei (2022-04-04) and Suisei's "Wicked feat. Mori Calliope" (single "TEMPLATE / Wicked," 2022); Suisei sang "Wicked" with Calli at Calli's first solo concert "New Underworld Order" (2022-07-21). Calli drew Suisei on stream (2021), watched Suisei's 2nd concert with Ina (2023-02-20), held a "Talkin' Live Shows" collab with her (2023-04-12) and watched the "Spectra of Nova" tour opener with FUWAMOCO and Elizabeth (2024-11-14). In a June 2026 chat Suisei mentioned having already talked about "the one with Calliope" among her recent stage appearances. [S1] [S2 Suisei §Relationships, secondary] [Suisei file SU20]
+- `bible/world/JP-Senpai-Pairs.md › AZKi with the cast`: - **IRyS:** Star Flower (above); IRyS covered AZKi's "Inochi" (2021); Calli's "HOLO ENGLISH LESSON #03" with IRyS and Tsunomaki Watame (2022-03-12); an R.E.P.O. "JP & EN" collab with Shiranui Flare, Usada Pekora, Ina and Kronii (2025-07-19). [S1] [Official S3]
+- `bible/world/JP-Senpai-Pairs.md › AZKi with the cast`: - **Others:** Takanashi Kiara (HOLOTALK's 13th guest, 2021-07-31); Hakos Baelz (GeoGuessr, "lost simulator," 2023-03-09); Ouro Kronii, Elizabeth and FUWAMOCO (Tokoyami Towa's team at the 2025 New Year Game Festival); Mori Calliope (AZKi danced to Calli's "Orpheus" in a 2025 short); Shiori Novella, Bae and Raora Panthera danced to AZKi's songs in shorts (2025–2026). [S1]
+- `bible/world/JP-Senpai-Pairs.md › Nakiri Ayame with the cast`: - **Shared billing:** 7th fes STAGE 1 with Ina and FUWAMOCO (2026-03-06); the official Anime NYC 2026 announcement listed her, Shirakami Fubuki and Ookami Mio for an August 22 convention-exclusive stream, the same day as streams by Kronii and Raora, FUWAMOCO, and Calli, Bijou, Nerissa and Kobo Kanaeru (a booking, not a location). [Official S5, S7]
+- `bible/world/JP-Senpai-Pairs.md › Nekomata Okayu with the cast`: - **Others:** Takanashi Kiara (HOLOTALK's 18th guest, the show's first-anniversary episode, 2021-11-27); Nanashi Mumei (a guest at Mumei's 3D live "Outside the Box," 2024); Mori Calliope (a pop-up Mario Party with Anya Melfissa and Hiodoshi Ao, 2024-09-15); Hakos Baelz and FUWAMOCO (team Mario Kart, 2023-12-12); IRyS and Cecilia Immergreen (Okayu's 2025 New Year Game Festival team); Gigi Murin (public translation-based banter during the 2026 New Year Game Festival, secondary clip metadata). [S1] [Mumei file] [Gigi file]
+- `bible/world/JP-Senpai-Pairs.md › History`: | 2022-03-12 | HOLO ENGLISH LESSON #03 | Calli with IRyS, Watame, AZKi |
+- `bible/world/JP-Senpai-Pairs.md › History`: | 2022-04 | "CapSule"; "TEMPLATE / Wicked feat. Mori Calliope" | Death Star |
+- `bible/world/JP-Senpai-Pairs.md › History`: | 2024-11-14 | "Spectra of Nova" watch party | Calli, FUWAMOCO, Elizabeth for Suisei |
+- `bible/world/JP-Senpai-Pairs.md › Conflicts and Story Hooks`: 1. Calli rehearses a duet with Suisei and cannot stop calling her "senpai" mid-verse.
+- `bible/world/JP-Senpai-Pairs.md › Hard Facts`: - Concert pairings: "Wicked" (Suisei with Calli, 2022-07-21); "High Tide" (IRyS, Bae, Moona, Suisei; 2024).
+- `bible/world/JP-Senpai-Pairs.md › Hard Facts`: - 7th fes (March 6–8, 2026; STAGE 1 Mar 6, STAGE 3 Mar 7, STAGE 4 Mar 8): STAGE 1 Ayame, Okayu (with Ina, FUWAMOCO); STAGE 3 AZKi (with IRyS, Bae, Shiori); STAGE 4 Suisei (with Calli, Kronii, Bijou, Nerissa).
 
 ### from Justice Pairs
 - `bible/world/Justice-Pairs.md › [SW] Description`: With seniors: Gigi repeatedly uses Calli's full name and jokes about getting her into League of Legends; within HoloEU, Raora teaches Kiara Italian and Cecilia speaks German with her; Cecilia plays up a rivalry with Ina; Kronii is Raora's "Pizza Time" collaborator and Gigi's Fatal Fury and Hytale partner, and secondary accounts record Kronii's "CLANKER" joke and Cecilia's "Owo-senpai"; Automatowl names Cecilia and Mumei.
@@ -864,7 +1025,7 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/world/hololive--Myth.md › [SW] Description`: At the September 2026 baseline, Calli, Kiara and Ina are active members of hololive -Myth-; Ame is an affiliate and Gura is a graduate.
 - `bible/world/hololive--Myth.md › [SW] Description`: All five belong to Myth's shared history. hololive's first English generation debuted 12–13 September 2020: Mori Calliope, Takanashi Kiara, Ninomae Ina'nis, Gawr Gura and Watson Amelia.
 - `bible/world/hololive--Myth.md › [SW] Description`: Calli wrote the lyrics for their first song and often plays the grumbling big sister; Kiara cheers loudest and hosts; Ina, the calm one, designed the Myth mascots except Bloop; Ame is often the gremlin and tech helper; Gura is the goofy little shark.
-- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within."
+- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
 - `bible/world/hololive--Myth.md › [SW] Rules`: At the 2026 baseline Calli, Kiara and Ina are the active members; Ame can appear as an affiliate guest; Gura appears as a memory or callback, never as a current streamer.
 - `bible/world/hololive--Myth.md › Members and Status`: - Mori Calliope, Takanashi Kiara, Ninomae Ina'nis: active in hololive -Myth-.
 - `bible/world/hololive--Myth.md › Members and Status`: - Watson Amelia: concluded general activities 2024-09-30; affiliate; guests at genmates' events (Kiara's concerts 2025 and 2026, Kronii's 2026 live, a 2026 "call from 2021" in Calli's charity stream). [Observed Ame file A23; Ame's wiki page §2025–§2026, secondary]
@@ -874,7 +1035,7 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/world/hololive--Myth.md › History`: | 2021-10-31 | "Myth or Treat" (lyrics by Calli) | First group song |
 - `bible/world/hololive--Myth.md › History`: | 2025-04-30 | Myth relay "one last time" with Calli, Kiara, Ina and Gura before Gura's graduation | Gura's farewell with Myth |
 - `bible/world/hololive--Myth.md › History`: | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
-- `bible/world/hololive--Myth.md › History`: | 2026-09-19 (announced) | Myth 6th Anniversary 3D LIVE "Seasons From Within" announced with Calli, Kiara and Ina (S3, an official hololive English post); not verified as held | The current three, as announced |
+- `bible/world/hololive--Myth.md › History`: | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
 
 ### from hololive -Promise-
 - `bible/world/hololive--Promise.md › How the Group Works`: - **Kronii's first official collab outside her generation** was with Mori Calliope (2021-09-23). [Observed Kronii's wiki page §2021, secondary]
@@ -884,6 +1045,7 @@ Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Calliope Mori|Cori 
 - `bible/world/hololive-History-2023-2026.md › [SW] Description`: (June); EN's 4th concert "Serendipity" in Los Angeles (July), built on units such as Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS, Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora) and Autofister (Gigi–Cecilia); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2025-04 | World Tour '25 "-Synchronize!-" announced, led by Momosuzu Nene, Kureiji Ollie, **Mori Calliope, IRyS and Nerissa Ravencroft**, with guests per city (Kronii and Bae in Sydney) | Three of the cast on one tour |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-07-03/04 PDT | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around units: Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS (IRyS–Bae), Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora), Autofister (Gigi–Cecilia); guests Ookami Mio, Kobo Kanaeru, Vestia Zeta, Tsunomaki Watame (official report) | The current partnerships |
+- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" | — |
 - `bible/world/hololive-History-2023-2026.md › Conflicts and Story Hooks`: 3. During a fictional public tour panel, Calli, IRyS and Nerissa compare their stage personas.
 
 ### from hololive History to 2022
