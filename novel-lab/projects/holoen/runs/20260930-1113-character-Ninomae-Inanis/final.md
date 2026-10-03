@@ -262,6 +262,7 @@ fan or collab nicknames.
 | Shiranui Flare | JP senior | Gave her the nickname "Ore no Ina" | [Observed I2 nickname list] |
 | Hakos Baelz | Promise kouhai | Archived metadata: the K/DA "POP/STARS" cover with Moona and Ayunda Risu (2023); a BAE-CADEMY art lesson with "Ina-sensei" (2024); Ina's AmiAmi special featuring Bae (2025-05-29); World Tour '24 together | [Bae file HB3, HB5, HB8, HB20] |
 | Yukihana Lamy, Shishiro Botan, Kikirara Vivi, Shirogane Noel | JP members | Lamy: the Minecraft "Usaken Summer Festival" (2021-06-27), an EN-server "date" (2021-10-20) and a guest at "Pleides" (2024-12-28); Botan: a guest at "EVERMORE" (2025-05-21); Vivi: R.E.P.O. (2025-06-02); Noel and Vivi: Mumei's Gartic Phone (2025-04-14) | [S1 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ, I-J11Da5ONY, grBU9Dl09Ds, OMDzBQohAf8] |
+| Cecilia Immergreen | Justice kouhai; a joking rival (secondary accounts) | Cecilia framed a May 2026 music-making stream as preparing a birthday tune for her rival (title wording; Ina's participation not established). | [Archive metadata, ckworks DE7WL-YLk8Y] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026), as on the card.
@@ -509,6 +510,7 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-DATE-001 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:CLAUDE-SCOPE-002, myth3:MYTH-DATE-002, myth3:MYTH-QUOTE-001, myth3:MYTH-SCOPE-001 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-011 ("Stardust Capsule"), NEW-R1-012 (credits tellingbones), NEW-R1-013 (Bijou outfit project), NEW-R1-014 (crowd-leading TAKO∞TAKOVER debut), NEW-R1-015 (self-stated reason for creating, in Personality). FIX-R1-001 was already applied by the myth1 audit.
+- **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

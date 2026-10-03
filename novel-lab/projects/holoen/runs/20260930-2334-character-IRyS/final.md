@@ -182,7 +182,7 @@ the wiki as units or pairings; -Promise- is official.
 | Nanashi Mumei, Ceres Fauna (graduated) | Promise unitmates | Early Council collabs (Jump King, Minecraft) | [Observed R2; R3] |
 | Shiranui Flare | JP senior | Off-collab karaoke (2025-03) | [Observed R3 title] |
 | Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 with Koyori, Watame and Korone (2022-10-03); an Among Us lobby with Koyori, Chloe and others (2023-05-08); Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
-| Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). | [Member-upload title NEW-R2-001] |
+| Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026): Promise member, solo concert ahead.
@@ -331,6 +331,7 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
 - **2026-10-03, new-material research R2 (20261002-1715-research-new-R2-Promise, GPT xhigh), merged by Claude:** NEW-R2-001 (Raora added to the exported Relationships, closing Raora's one-way tie; Gigi clause shortened), NEW-R2-002 (Bijou watchalong), NEW-R2-003 (singing as shared work), NEW-R2-004 (DANGERyS).
+- **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

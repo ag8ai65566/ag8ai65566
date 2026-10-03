@@ -68,6 +68,7 @@ She dislikes weird nicknames. [Official MC1] [Observed MC2 §Personality, second
    secondary; MC3 titles]
 7. On FUWAMOCO MORNING she tells viewers to post to the hashtag, saying the symbol aloud: "hashtag hashtag
    FWMCMORNING." [Observed MC2 FUWAMOCO MORNING, secondary]
+- **FUWAMOCO ROCK N' RAWR PARTY:** a recurring karaoke banner (January and February 2026); editions can be themed or paired with an announcement. [Archive metadata NEW-R3-017]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -103,6 +104,7 @@ She dislikes weird nicknames. [Official MC1] [Observed MC2 §Personality, second
     vowel on some words; earnest and warm in Pup Talks.
 - **Sounds off:** a low or lazy voice; sarcasm in a Pup Talk; swearing; calling her anything but her name or
   her three nicknames.
+- **Call-and-response (joint written stage direction, 2026-06-08):** FUWAMOCO invite the audience to answer with "BAU BAUs," "NYAN NYANs" and "WAN WANs" and to curl their fists into cat and dog paws, treating the audience as part of the performance. Attributed to the duo, not to either twin as a spoken line. [Official NEW-R3-015]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -140,7 +142,9 @@ The middle column is provisional voice direction unless a source is named.
 | 2023-07-31 | FUWAMOCO MORNING pilot | [Observed MC2] |
 | 2024-08-10 PDT | 3D debut | [Observed MC2 §2024] |
 | 2025-01-29 | 500th on-stream sneeze, celebrated on X | [Observed MC6] |
+| 2025-08-01 | FUWAMOCO digital releases: "Lifetime Showtime"; later "Prisoner (FUWAMOCO ver.)" (2026-03-24) and "Ichizutte Trend♡" (2026-08-30). | [Official NEW-R3-019] |
 | 2025-08-23/24 | -All for One- with Fuwawa | [Official MC5] |
+| 2026-02-26 | Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). | [Official NEW-R3-001; archive metadata] |
 | 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Fuwawa and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) | [Official MC4; Serendipity report] |
 
 ## Relationship Map
@@ -154,11 +158,12 @@ that belong to Mococo or define her.
 | Gigi Murin | Justice kouhai ("GigiMoco," "bauBau") | Collabs from 2024; Gigi and Cecilia hosted FUWAMOCO MORNING #167 in the twins' place as a prank (2025) | [Observed MC2, secondary; MC3] |
 | Cecilia Immergreen | Justice kouhai ("Cecemoco") | The twins had hoped for a robot-girl member before Cecilia's debut; a Chrono Trigger off-collab (2026-04-25) | [Observed MC2; MC3 GmcYjV6aTuA] |
 | Ouro Kronii | Senior ("WatchDog," with Fuwawa) | Among Us, Team Fortress 2, 7 Days to Die (2023–24) | [Observed MC2; MC3] |
-| Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 | [Official MC4] |
+| Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 After Serendipity the twins described Raora teasing them about their tails and chasing them around the stage in their trio's MC comedy (2026-07-04). | [Official MC4] [Secondary NEW-R3-016, attributed answers] |
 | Hakos Baelz | Promise senior | Archived metadata: Gigi's 2025 Spring Party with FUWAMOCO and Bae (2025-03-31); a FUWAMOCO short dancing to "bae-senpai's new song SNAKE EYES" (2026-03-20) | [Bae file HB3, HB5, HB8, HB20] |
 | Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori (FUWAMOCO Morning ep. 90, 2024-04-26); Lethal Company with Koyori and Fubuki (2024-03-09); Koyori a guest at their 2025 birthday concert; "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab presented by Iroha and AZKi, the twins as challengers (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
 | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
 | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
+| Takanashi Kiara | Myth senpai | [Lead, secondary: episode records list both twins among Advent's guests on HOLOTALK's 29th edition (2023-08); the original video still needs a primary check.] | [Secondary NEW-R3-021] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their
@@ -201,6 +206,12 @@ that belong to Mococo or define her.
 - MC20 Claude's audio check (2026-10-01); see research/audio-check/fuwamoco.md.
 
 ---
+- NEW-R3-001 (GPT research R3, checked 2026-10-03) Advent releases (OFFICIAL): https://hololive.hololivepro.com/en/music/709/ ; /723/ ; /783/ ; "Bound by Fate" live metadata (ARCHIVE_METADATA): https://www.holostats.com/stream/54oaXuyyfMc?lang=en
+- NEW-R3-015 (GPT research R3, checked 2026-10-03) FUWAMOCO–Raora Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview03/
+- NEW-R3-016 (GPT research R3, checked 2026-10-03) post-concert Q&A (SECONDARY): https://hololivetoday.com/news-list/hololive-today-q-and-a-hololive-english-serendipity
+- NEW-R3-017 (GPT research R3, checked 2026-10-03) karaoke banner (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/Z0AT2Robu8s ; https://www.holostats.com/stream/yNAYmjmC9ZY?lang=en
+- NEW-R3-019/020 (GPT research R3, checked 2026-10-03) FUWAMOCO releases (OFFICIAL): https://hololive.hololivepro.com/en/music/605/ ; /734/ ; /805/ ; /731/
+- NEW-R3-021 (GPT research R3, checked 2026-10-03) HOLOTALK episode records (SECONDARY): https://www.imdb.com/title/tt30135186/ ; https://hololive.wiki/wiki/HoloTalk
 
 ## [SW] Name
 Mococo Abyssgard
@@ -221,7 +232,7 @@ Mococo, Moco-chan, Mogogo, Mogojyan, The Fuzzy One
 Mococo streams as "The Fuzzy One," the younger twin demonic guard dog who spent her prison time on anime and games and joined the escape "just for the heck of it." On stream she is energetic, optimistic and especially friendly, the twin who raises everyone's spirits with "Mococo Pup Talks" ("Not tomorrow! Today!"), and insists on her real nicknames (Moco-chan, Mogogo, Mogojyan). She brings energetic reactions and earnest Pup Talks to the duo, keeps recurring show segments moving ("hashtag hashtag FWMCMORNING"), and sometimes argues with Fuwawa. Most of her streams are shared with her sister, though she has also streamed solo. She gets overexcited, can be stubborn, and has a big heart. She sneezes on stream so often that fans keep count. She loves underground idols, denpa songs, visual novels, roguelikes and her oshi Omaru Polka, dislikes scary things yet plays horror games with her sister, and wants every Ruffian to keep going "one step forward a day."
 
 ## [SW] Background
-Mococo is a hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Fuzzy One," the younger of two twin demonic guard dogs from the demon world, sealed in The Cell "for being a pain in the godly behind," who spent her prison time watching anime and playing games and joined the escape "just for the heck of it," barking at the guards and throwing Pero, the twins' dog mascot, at them. She debuted with her older twin Fuwawa as FUWAMOCO on 2023-07-31 in hololive English -Advent-, sharing one channel and the morning show FUWAMOCO MORNING. Together they won "VTuber of the Year" at the 2024 VTuber Awards, made their 3D debut in August 2024, sang a TV anime ending theme in 2026, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album. Her color is pink.
+Mococo is a hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Fuzzy One," the younger of two twin demonic guard dogs from the demon world, sealed in The Cell "for being a pain in the godly behind," who spent her prison time watching anime and playing games and joined the escape "just for the heck of it," barking at the guards and throwing Pero, the twins' dog mascot, at them. She debuted with her older twin Fuwawa as FUWAMOCO on 2023-07-31 in hololive English -Advent-, sharing one channel and the morning show FUWAMOCO MORNING. Together they won "VTuber of the Year" at the 2024 VTuber Awards, made their 3D debut in August 2024, sang "Mekurumeku Rendezvous" (digital release 2026-04-02), the ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album. Her color is pink.
 
 ## [SW] Physical Description
 Mococo's avatar is 155 cm tall, with short blonde hair streaked pink, pointed dog ears with white tufts and a collar. She wears a black and pink jacket and headphones, with light-pink X-shaped hairpins and a white-and-pink bandage clip that mirrors her twin's blue one. Pink is always her color, so people can tell her from Fuwawa, who is otherwise her identical twin. Pero, "The Great Perroccino," their small, muscular fictional dog mascot, appears in their bits.
@@ -298,6 +309,7 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** Koyori was a "special guest" (episode 90 title), not a guest host; the cookie battle's presenters (Iroha and AZKi) recorded; La+ (dance short to "Onee-sama♡Love Call," TlzLo7Fw2pw) added, closing a one-way tie.
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-006, VOICE-V2-024, VOICE-V2-037, VOICE-V2-038 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
+- **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-001, NEW-R3-015 (joint call-and-response), NEW-R3-016 (Raora's stage chase), NEW-R3-017 (karaoke banner), NEW-R3-019 (releases), NEW-R3-020 (the anime ending theme named in Background), NEW-R3-021 (Kiara: a secondary lead, dossier only).
 
 ## Open Questions
 1. There is no clean solo sample of Mococo's ordinary speech in the archive (her 2025 solo is quiet and

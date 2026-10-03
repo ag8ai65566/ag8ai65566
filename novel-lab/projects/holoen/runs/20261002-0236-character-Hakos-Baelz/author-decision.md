@@ -7,3 +7,4 @@
 - 2026-10-03 23:33 作者裁決收錄 final.md（sha256 b60b5b092293）：Author decision (2026-10-03): task-09 voice audit v1 Merge Record note for Hakos Baelz
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 b1cbdb14a7b4）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-03 23:53 作者裁決收錄 final.md（sha256 7373c1304544）：Author decision (2026-10-03): new-material research R2 (Promise) merged by Claude
+- 2026-10-03 23:55 作者裁決收錄 final.md（sha256 c4e2bef9231c）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude

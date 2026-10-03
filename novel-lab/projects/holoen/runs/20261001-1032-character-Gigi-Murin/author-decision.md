@@ -8,3 +8,4 @@
 - 2026-10-03 23:32 作者裁決收錄 final.md（sha256 f704e3694a57）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
 - 2026-10-03 23:33 作者裁決收錄 final.md（sha256 f2977de2826b）：Author decision (2026-10-03): task-09 voice audit v2 follow-up (VOICE-V2-004 a–c, Gigi accent note) merged by Claude
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 8c9d7e7d2d39）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
+- 2026-10-03 23:56 作者裁決收錄 final.md（sha256 b9f0b8a18c28）：Author decision (2026-10-03): new-material research R3/R4 (Advent, Justice) merged by Claude

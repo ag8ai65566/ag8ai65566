@@ -149,11 +149,14 @@ The middle column is provisional voice direction unless a source is named.
 | Lore | A big cat from the Romance Empire who prepares Justice's criminal reports; sent after FUWAMOCO, she got distracted by crane games | [Official RP1] [Observed RP2 §Lore] |
 | 2024-06-22 PDT | Debut ("I've got my eyes on you 🐱 mamma mia"), last of Justice; official profile lists June 23 (JST) | [Official RP1] [Observed RP3] |
 | 2024-12-14 | VTuber Awards: Best Art VTuber | [Observed RP6; secondary report] |
+| 2025-06-22 | Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). | [Official NEW-R4-020] |
 | 2025-08-09 PDT | 3D showcase (5 PM PDT; Aug 10 09:00 JST) | [Official RP8] |
 | 2025-08-16 PDT | Justice 3D collaboration stream | [Official RP8] |
 | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, solo "Gacha x Gacha ADVENTURE!," "Neko Kaburi-Na" with Ina, Shiori and guest Oozora Subaru, "I'm Your Treasure Box" with Bijou and Cecilia | [Official RP5] |
 | 2025-11-16 | The "Doom" spell in Kiara's Mage Arena collab | [Observed RP7] |
+| 2026-03-07 JST | hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." | [Official NEW-R4-005/009/019] |
 | 2026-05 | First birthday 3D live concert (archived video w37yVSXhV_c); the shared timeline records the announced date as May 10 JST / May 9 PDT, but the actual zoned start remains unverified | [Observed RP3; hololive -Justice- History; hololive History 2023–2026 Timeline] |
+| 2026-05-10 | MV of her second original song "Draw." (the period is part of the title); official digital release 2026-05-11. | [Archive metadata; Official NEW-R4-017] |
 | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice (day 1); the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari"), "What an amazing swing" with Tsunomaki Watame and Kiara, and "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official RP4, RP9] |
 
 ## Relationship Map
@@ -162,21 +165,21 @@ Pairs."
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| FUWAMOCO (Fuwawa, Mococo) | Advent seniors; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 | [Official RP4] |
+| FUWAMOCO (Fuwawa, Mococo) | Advent seniors; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 The twins describe her teasing their tails and chasing them around the Serendipity stage in their MC comedy. | [Official RP4] [Secondary, hololivetoday Q&A] |
 | Gigi Murin | Genmate ("RPGG," secondary) | MapleStory, Monster Hunter Wilds, a food tier-list off-collab, Elden Ring Nightreign with Calli (2025); she designed both her own and Gigi's Monster Hunter Wilds collaboration outfits (2026; secondary report) | [Observed RP3; X post RP6, secondary] |
 | Cecilia Immergreen | Genmate ("Raviolin," secondary) | Minecraft duo in the first weeks (secondary archive evidence); Raora illustrated Cecilia's debut ending screen and sweeping scene, and Cecilia animated Raora's ending screen and mascot stinger (archived debut credits); she helped design the Otomo (secondary); "I'm Your Treasure Box" with Bijou at -All for One- | [Observed RP2, RP3 JW7j8tKMOfY, p_ZQs-kgUKI] [Official RP5] |
 | Elizabeth Rose Bloodflame | Genmate ("FlamePanther," "Lizotto"; secondary) | An early duo collab, "Chat & Art w/ Liz!" (2024-06-26; the full-Justice debut collab came first); Elizabeth calls her "Pretty Kitty" (secondary) and hosted her birthday Among Us | [Observed RP2, RP3] |
 | Kaela Kovalskia | ID senior ("SMITTEN"; "Graondstone" with Bijou; secondary) | Lethal Company, Don't Starve Together, Buckshot Roulette, PEAK; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement (secondary) | [Observed RP2, RP3] |
-| Koseki Bijou | Advent senior ("Graondstone") | A cooking off-collab with Bijou as "my assistant" (2024; the stream title's wording); Monster Hunter Wilds (2025); "I'm Your Treasure Box" with Cecilia (2025) | [Observed RP3] [Official RP5] |
+| Koseki Bijou | Advent senior ("Graondstone") | A cooking off-collab with Bijou as "my assistant" (2024; the stream title's wording); Monster Hunter Wilds (2025); "I'm Your Treasure Box" with Cecilia (2025) Co-credited vocalists on "Freaky Deaky Love" (2026-05-31). | [Observed RP3] [Official RP5] [Official, music/757] |
 | Ouro Kronii | Promise senior ("Pizza Time") | Portal 2 (2024-11-26, "w/ KRONII!! #PizzaTime"), Backrooms Cleanup Crew (2026); in ENReco she called Kronii's character "Tam Tender" (secondary transcription) | [Observed RP2, RP3; Kronii file] |
-| Takanashi Kiara | Myth senior ("HoloEU" with Cecilia; secondary) | An Italian lesson (2024), a proposed outfit for Kiara on her "Raora's Clawset" art stream (2025-01-26; not a released Kiara model), an EU-snacks off-collab (2025); the "Doom" meme in Kiara's collab; "What an amazing swing" with Watame at Serendipity (2026) | [Observed RP3, RP7] [Official RP9] |
+| Takanashi Kiara | Myth senior ("HoloEU" with Cecilia; secondary) | An Italian lesson (2024), a proposed outfit for Kiara on her "Raora's Clawset" art stream (2025-01-26; not a released Kiara model), an EU-snacks off-collab (2025); the "Doom" meme in Kiara's collab; "What an amazing swing" with Watame at Serendipity (2026) Their Pokémon FireRed/LeafGreen Soul-Link Nuzlocke (2026-06-21 to 09-24) couples their losses: a fainted Pokémon removes its linked partner, and a failed catch costs both players the encounter; Raora's September title has them one critical hit from disaster. | [Observed RP3, RP7] [Official RP9] [Archive metadata NEW-R4-015] |
 | Ninomae Ina'nis | Myth senior | Puyo Puyo Tetris 2 (2025); the Monster Hunter Wilds launch with Gigi and Bijou; "Neko Kaburi-Na" with Shiori and Oozora Subaru at -All for One- | [Observed RP3] [Official RP5] |
 | Shiori Novella, Oozora Subaru (JP) | Advent senior; JP senior | "Neko Kaburi-Na" with Ina at -All for One- (2025) | [Official RP5] |
 | Tsunomaki Watame (JP) | JP senior | "What an amazing swing" with Kiara at Serendipity (2026) | [Official RP9] |
 | Mori Calliope | Myth senior | Elden Ring Nightreign with Gigi (2025-06-11) | [Observed RP3 AnvhW-eFatE] |
-| Nerissa Ravencroft, Moona Hoshinova | Seniors ("V3LVET," secondary) | Clubhouse Games with Nerissa (2024-12-09); Raft with both (2025-02-06); Monster Hunter Wilds as V3LVET (Nerissa's title, 2025-03-25) | [Observed RP2, RP3; Nerissa archive] |
+| Nerissa Ravencroft, Moona Hoshinova | Seniors ("V3LVET," secondary) | Clubhouse Games with Nerissa (2024-12-09); Raft with both (2025-02-06); Monster Hunter Wilds as V3LVET (Nerissa's title, 2025-03-25) Raora co-presented the official Serendipity merchandise infomercial with Nerissa and IRyS (May 2026). | [Observed RP2, RP3; Nerissa archive] [Archive metadata NEW-R4-016] |
 | Akai Haato, Vestia Zeta, Anya Melfissa | JP and ID seniors | Clubhouse Games with Haachama; a Mario Party off-collab with Zeta and Haachama; a public off-collab with Anya (2025; archived video w30OQWD6AEw) | [Observed RP3] |
-| Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) | [Bae file HB3, HB5, HB8, HB20] |
+| Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
 | Takane Lui | holoX senior | An animated "Soar" short on Raora's channel (2026-06-22) | [S1 N8bfOiPot6o] |
 
 ## Arc
@@ -228,6 +231,11 @@ Pairs."
 - RP20 Claude's audio check (2026-10-01); see research/audio-check/raora.md.
 
 ---
+- NEW-R4-020 (GPT research R4, checked 2026-10-03) Justice releases (OFFICIAL): https://hololive.hololivepro.com/en/music/590/ ; /770/
+- NEW-R4-005/009/014/019 (GPT research R4, checked 2026-10-03) 7th fes. cast list and report (OFFICIAL): https://hololivesuperexpo.hololivepro.com/2026/fes/cast/ ; https://hololive.hololivepro.com/events/hololivesuperexpo2026/
+- NEW-R4-015 (GPT research R4, checked 2026-10-03) Soul-Link opening and September episode (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/foL47AjE7yM ; https://ckworks.jp/vinforadar/video/m7fX9PYU5-A
+- NEW-R4-016 (GPT research R4, checked 2026-10-03) merchandise infomercial credits (ARCHIVE_METADATA, official channel): https://ckworks.jp/vinforadar/video/ew00E7t4Dow
+- NEW-R4-017 (GPT research R4, checked 2026-10-03) "Draw." MV and release (ARCHIVE_METADATA; OFFICIAL): https://archive.ragtag.moe/watch?v=uKYxf3wfwP4 ; https://hololive.hololivepro.com/en/music/747/
 
 ## [SW] Name
 Raora Panthera
@@ -322,6 +330,8 @@ FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu 
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-010 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-DATE-001, justice:JUSTICE-SCOPE-002, justice:JUSTICE-SCOPE-003, justice:JUSTICE-TIE-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** "Freaky Deaky Love" with Bijou propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** NEW-R4-015 (Soul-Link with Kiara), NEW-R4-016 (infomercial with IRyS and Nerissa), NEW-R4-017 ("Draw." dates), NEW-R4-019/020 (7th fes., Justice releases); NEW-R4-018 was merged from R3. FIX-R4-005/006 were already applied by the justice audit.
 
 ## Open Questions
 1. Resolved: 3D showcase 2025-08-09 PDT (RP8).

@@ -66,6 +66,7 @@ an evil doppelganger kept as a joke. [Official KB1] [Observed KB2 §Personality,
    §Miscellaneous, secondary]
 6. She mods games: on stream with Calli she played an Undertale mod that puts Calli in Sans's place
    (2023-08-12). [Observed KB3 eRGs-7AqRgs]
+- **Songwriter:** she shares the lyric credit for "ROCK IN!" with Ludokano. [Distributor catalog credits NEW-R3-009]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -175,7 +176,9 @@ The middle column is provisional voice direction unless a source is named.
 | 2025-06-29 | "THAT'S WILD?!" 24-hour charity stream with Calli (Wildlife Warriors Worldwide) | [Observed Calli archive J5u2aGUrNq8] |
 | 2025-07-05 | hololive night at Dodger Stadium with Ina and IRyS: a stadium sing-along and the first VTuber stream from the stadium | [Official KB9] |
 | 2025-08-23/24 | -All for One-: "HOT DUCK!" with FUWAMOCO and Subaru; solo "Dead Ma'am's Chest"; "I'm Your Treasure Box" with Cecilia and Raora | [Official KB5] |
-| 2025-11-01 | Second original song "ROCK IN!" and a 3D live | [Observed KB2 §2025] |
+| 2025-11-01 | 3D live (original dossier date retained; timezone not reverified) | [Observed KB2 §2025] |
+| 2025-11-03 | Digital release of second original song "ROCK IN!" | [Official FIX-R3-003] |
+| 2026-02-26 | Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). | [Official NEW-R3-001; archive metadata] |
 | 2026-07-03/04 | Serendipity concert, duo with Takanashi Kiara ("Rocku Wawa") | [Official KB4] |
 
 ## Relationship Map
@@ -189,19 +192,20 @@ archive KB3; the archive thins out from late 2025), a rough measure, not a ranki
 | FUWAMOCO | Genmates ("Diamond Dogs") | Their first collab was Overcooked 2 (2023-08-08); "Rock rock!" is her parody of "bau bau" (7 / 17 / 12 / 0) | [Observed KB2; KB3; FUWAMOCO archive] |
 | Kaela Kovalskia (ID) | Friend ("Grindstone"; Kaela calls her "Beejoe") | Grindstone collabs include Raft and Minecraft (2023), Split Fiction (2025) and PEAK as "Graondstone" with Raora (archive counts 10 / 23 / 11 / 0) | [Observed KB2; KB3] |
 | Mori Calliope | Senior ("TombStone") | An Undertale mod starring Calli, played together (2023); BG3 as "Killing, Two Birds, with One Stone" (2023); 24-hour charity stream (2025); Warhammer painting (2026); Calli's channel mentions her 29 times | [Observed KB2; KB3; Calli archive] |
-| Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" | [Official KB4] [Observed KB3; Kiara archive] |
+| Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Official KB4] [Observed KB3; Kiara archive] [Official NEW-R3-007] |
 | IRyS | Senior | Her frequent horror co-op partner: Resident Evil 6 "LAS CHICAS GUAPAS" (2026-04-29), Dead Space 3 (2026-01); Overwatch "Please carry me Senpai!!" (2023) IRyS hosted a joint *Gundam 0080* watchalong (2026-09-05). | [Observed KB3; IRyS archive] [Archive metadata, holosubs IRyS listing] |
-| Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] |
+| Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] [Official NEW-R3-007] |
 | Nanashi Mumei | Senior (graduated 2025; "Stone Age") | Portal 2 co-op (2023); Marvel Rivals in Mumei's last week (2025-04-23); Mumei rated her a loss at arm wrestling because "she is a rock" | [Observed KB3; Mumei file] |
 | Ninomae Ina'nis | Senior ("TakoRocky") | Monster Hunter (2023–2025); Ina designed their Monster Hunter Wilds collab outfits (2025-12) Monster Hunter Wilds outfit project: Bijou chose Gore Magala, Ina Nu Udra. | [Observed KB3; X post via wiki] [Secondary, Siliconera interview] |
 | Ceres Fauna | Senior (graduated 2025) | "Coach" Fauna in Hitman (2023, 2024); PlateUp! as "The Sweaty TryHard Gamers" | [Observed KB3] |
 | Ouro Kronii | Senior | Lethal Company (2023), Yu-Gi-Oh (2025), Blood Typers (2025) | [Observed KB3] |
-| Cecilia Immergreen, Raora Panthera, Gigi Murin | Justice kouhai | GAGA (with Shiori and Gigi); Graondstone (with Kaela and Raora); a Walking Dead off-collab watchalong with Cecilia (2025) | [Observed KB2; KB3] |
+| Cecilia Immergreen, Raora Panthera, Gigi Murin | Justice kouhai | GAGA (with Shiori and Gigi); Graondstone (with Kaela and Raora); a Walking Dead off-collab watchalong with Cecilia (2025) Raora is a co-credited vocalist (with Kiara and Bae) on "Freaky Deaky Love" (2026-05-31). | [Observed KB2; KB3] [Official NEW-R3-007] |
 | Kureiji Ollie (ID), Akai Haato (JP), Ichijou Ririka (ReGLOSS, originally DEV_IS) | "GraveStone," "Red Stone"; a ReGLOSS game partner | ID Minecraft server tour (2023); Lethal Company with Haato (2024); Smash and Monster Hunter with Ririka | [Observed KB2; KB3] |
 | Regis Altare (HOLOSTARS EN) | Friend | Racing sims (2024) and Fortnite (2026) | [Observed KB3] |
 | Watson Amelia | Senior | Overwatch and Apex collabs (2023) | [Observed KB3 7MtuoPeC4tE; Ame archive] |
 | Kikirara Vivi | FLOW GLOW kouhai | Bijou watched FLOW GLOW's debut with FUWAMOCO (2024-11-09; a watch-along, not a collab with Vivi) | [S1 gAj77STI2oc] [Official debut schedule] |
 | Hoshimachi Suisei | JP senior | Watched her Fortnite concert on stream ("THE SUISEI CONCERT IN FORTNITE?!", 2026) | [Suisei file S1 AhGrt2gr5pc] |
+| Nekomata Okayu | JP senior | Credited participants together (with Kiara, Ina, Kobo and Todoroki Hajime) in the official purple-themed 3D variety program #パープル争奪戦 (2026-07-23). | [Archive metadata NEW-R3-008] |
 
 ## Arc
 - **Starting point:** active member at the 2026 baseline: a 900K+ channel, two original songs, the
@@ -248,6 +252,11 @@ archive KB3; the archive thins out from late 2025), a rough measure, not a ranki
 - KB20 Claude's audio check (2026-10-01); see research/audio-check/bijou.md.
 
 ---
+- NEW-R3-001 (GPT research R3, checked 2026-10-03) Advent releases (OFFICIAL): https://hololive.hololivepro.com/en/music/709/ ; /723/ ; /783/ ; "Bound by Fate" live metadata (ARCHIVE_METADATA): https://www.holostats.com/stream/54oaXuyyfMc?lang=en
+- NEW-R3-006 (GPT research R3, checked 2026-10-03) Kiara–Bijou Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview04/
+- NEW-R3-007 (GPT research R3, checked 2026-10-03) "Freaky Deaky Love" (OFFICIAL): https://hololive.hololivepro.com/en/music/757/
+- NEW-R3-008 (GPT research R3, checked 2026-10-03) purple-themed 3D program (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/Blen0XcU9gg
+- NEW-R3-009 (GPT research R3, checked 2026-10-03) "ROCK IN!" credits (distributor catalog): https://music.apple.com/us/song/rock-in/1847822039 ; release (OFFICIAL): https://hololive.hololivepro.com/en/music/662/
 
 ## [SW] Name
 Koseki Bijou
@@ -265,7 +274,7 @@ hololive -Advent-, hololive English -Advent- (former branch name), Advent, Rocku
 Bijou, Biboo, Koseki, Beebs, Beejoe, Lil'Rock, Jewel of Emotions, Oobib
 
 ## [SW] Personality
-Bijou, "Biboo," streams as the Jewel of Emotions, a tiny crystal girl made of every human feeling, and plays it as a bubbly, friendly, easily excited gremlin: she speaks fluent Gen Alpha meme ("skibidi," "rizz," "gyatt," "67"), blurts jokes that get her affectionately teased, and "collects moms" by getting seniors to agree to mother her. She tackles difficult action games (FromSoft games, Hollow Knight) and sets additional challenges after clearing them; she generally stays collected, but also performs mock outrage. She deliberately replaces profanity with "beep," including when reading game text, says "dang it!" for frustration, and asks Pebbles to avoid profanity too. She treats hard work like a boss fight she runs at "over and over again," loves to share her gaming with others, and keeps her lore as running bits: an evil twin, Oobib; an "Ascended" emotionless form; a habit of saying she eats her fans, who respawn. Her streams open with a moai head until she calls "Kira kira, Koseki!" She sometimes gives a hard-G name a J sound as a running joke ("Jerudo") and is proud of her small size.
+Bijou, "Biboo," streams as the Jewel of Emotions, a tiny crystal girl made of every human feeling, and plays it as a bubbly, friendly, easily excited gremlin: she speaks fluent Gen Alpha meme ("skibidi," "rizz," "gyatt," "67"), blurts jokes that get her affectionately teased, and "collects moms" by getting seniors to agree to mother her. She tackles difficult action games (FromSoft games, Hollow Knight) and sets additional challenges after clearing them; she generally stays collected, but also performs mock outrage. She deliberately replaces profanity with "beep," including when reading game text, says "dang it!" for frustration, and asks Pebbles to avoid profanity too. She treats hard work like a boss fight she runs at "over and over again," loves to share her gaming with others, and keeps her lore as running bits: an evil twin, Oobib; an "Ascended" emotionless form; a habit of saying she eats her fans, who respawn. Her streams open with a moai head until she calls "Kira kira, Koseki!" She sometimes gives a hard-G name a J sound as a running joke ("Jerudo") and is proud of her small size. In concert preparation she works on vocal technique and enjoys learning songs and noticing her own progress.
 
 ## [SW] Background
 Bijou is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Jewel of Emotions," a gem formed under immense pressure from every human emotion, beautiful and filthy alike, whose brilliance drove the greedy to fight over her until she was imprisoned in secret; good emotions make her shine brighter. She debuted on 2023-07-30 (JST) with hololive English -Advent-. She made her 3D debut on 2024-08-03 (PDT), released the original songs "Prism no Mahou" ("Prism Magic," 2024) and "ROCK IN!" (2025), starred with Ina and IRyS at hololive night at Dodger Stadium (2025), sang a solo and two group numbers at the 2025 English concert -All for One-, and was paired with Takanashi Kiara at the 2026 Serendipity concert. Her fans are Pebbles, her mascot is GEOW, and her emoji is the moai 🗿.
@@ -341,6 +350,7 @@ Shiori Novella: Advent's "glorious leader" in Bijou's affectionate bit (Goth Roc
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-003, VOICE-V2-037 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** the IRyS watchalong propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-001, NEW-R3-006 (vocal practice, in Personality), NEW-R3-007 ("Freaky Deaky Love"), NEW-R3-008 (Okayu: a shared 3D program, dossier), NEW-R3-009 ("ROCK IN!" lyric credit), FIX-R3-003 (live and release dates separated).
 
 ## Open Questions
 1. The Tomodachi Life window was unusable (drawing, game voices), and her "squeegee" laugh and Moai opening

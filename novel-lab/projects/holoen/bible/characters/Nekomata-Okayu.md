@@ -177,6 +177,7 @@ on the world card "JP Senpai Pairs."
 | Hakui Koyori | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07) | [Koyori channel PtjqrNUOSWA] |
 | La+ Darknesss | "Dorobo Kensetsu" | A 3D lie-detector challenge (2026) | [La+ file LA2, LA4] |
 | Takane Lui | — | Harry Potter watch-alongs to introduce Okayu to the series (2025-11-24 and others); "Shaccho" is a first-model ASR rendering whose direction is unconfirmed, so it is not used | [Lui channel Lj0MZFpHitQ] |
+| Koseki Bijou | Advent kouhai | Credited participants together in the official purple-themed 3D variety program #パープル争奪戦 (2026-07-23). | [Archive metadata, ckworks Blen0XcU9gg] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a long Final Fantasy VII series, a game she supervises, and
@@ -289,6 +290,7 @@ Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; the
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** "Shaccho" removed (first-model only, direction unknown); the Koyori puzzle collab and Lui's watch-alongs cite their uploads; "Dorobo Kensetsu" stays labelled secondary.
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-010 (sheet: VOICE-V3-011, VOICE-V3-012); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** Bijou's purple-themed 3D program propagated (dossier Relationship Map).
 
 ## Open Questions
 1. The OkaGigi festival banter rests on secondary clip metadata; its dialogue is not quoted.

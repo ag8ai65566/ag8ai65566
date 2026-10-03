@@ -276,9 +276,9 @@ Public exchanges only. Pair labels and unit names retain the evidence level stat
 | Ninomae Ina'nis | Myth genmate ("TakoTori") | Duo concert 2026; Kiara "fired" Ina over the 2020 chicken incident.  | [Official T11, T12] [Observed T2 §KFP; T22 §Personality, secondary] |
 | Watson Amelia (affiliate) | Myth genmate | Kiara's EN oshi ("#1 Ame gosling"), credited for help with 3D productions; Ame made HOLOTALK intro material | [Observed T2 §Likes and dislikes] [Official T9] |
 | Gawr Gura (graduated) | Myth genmate | German lessons where Kiara taught her German swears and rickrolled her; Gura's 2020 Minecraft prank filled KFP's back room with chickens; "GURA YOU LITTLE SHIT" | [Observed T15; T2 §Miscellaneous and §KFP] [Official T16] |
-| Koseki Bijou | Advent junior; 2026 Serendipity partner | Practical encouragement for stage work; shared "6 7" meme | [Official T10] |
+| Koseki Bijou | Advent junior; 2026 Serendipity partner | Practical encouragement for stage work; shared "6 7" meme Co-credited vocalists on "Freaky Deaky Love" (2026-05-31). | [Official T10] [Official, music/757] |
 | Kobo Kanaeru | Collaborator | Kobo calls her "Mommy Kiwawa"; Kiara and Calli play her "Mom" and "Dad" | [Observed T5-gNEWWDKlTM8 clip title; T2 §Takamori] |
-| Raora Panthera | Justice member | The "Doom" incident | [Observed T2 §Quotes; T6] |
+| Raora Panthera | Justice member | The "Doom" incident A Pokémon FireRed/LeafGreen Soul-Link Nuzlocke with coupled losses (2026-06-21 to 09-24). | [Observed T2 §Quotes; T6] [Archive metadata, ckworks foL47AjE7yM] |
 | Cecilia Immergreen | Justice member | German-speaking duo; they slip into German together | [Observed T5-K7NNBucs3zc clip title; T2 §Relationships] |
 | Ouro Kronii | Promise member ("Sundial", fan term) | Kiara announced she was a fan before Kronii debuted; a language exchange is reported by a clip title but remains unverified | [Observed T2 §Relationships; Kronii file K17] |
 | Nanashi Mumei (graduated) | Council member | Kiara coached her "Kikkeriki" | [Observed T5-eivcnjk6yeE clip title] |
@@ -533,6 +533,8 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
 - **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:CLAUDE-SCOPE-002, myth3:MYTH-DATE-002, myth3:MYTH-EVENT-001, myth3:MYTH-SCOPE-001, myth3:MYTH-SCOPE-003, myth3:MYTH-TIE-001, myth3:MYTH-UNIT-001 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit myth3, hand-applied by Claude:** myth3:MYTH-SCOPE-002 (TakaMori line now describes the public banter). myth3:MYTH-COVERAGE-001 was superseded: the holoX row now carries verified sources (run E/F merges).**
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-006 (organized chants, in Personality), NEW-R1-007 (public stream formats), NEW-R1-008 (HoloEN REWIND explainer mode, secondary), NEW-R1-009 (Botan: Usada Kensetsu builder; added to the exported Relationships, closing Botan's one-way tie; Bae's clause shortened for length), NEW-R1-010 (twins: a secondary lead, dossier only), FIX-R1-004 (DOOM sample line paraphrased within the shared span).
+- **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** "Freaky Deaky Love" with Bijou propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Should the card quote one crude line verbatim (for example "I'm an innocent maiden." as irony), or is

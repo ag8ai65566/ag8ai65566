@@ -18,3 +18,5 @@
 - 2026-10-03 23:33 作者裁決收錄 final.md（sha256 5a9dbf1bbb82）：Author decision (2026-10-03): task-09 voice audit v2 follow-up (VOICE-V2-004 a–c, Gigi accent note) merged by Claude
 - 2026-10-03 23:41 作者裁決收錄 final.md（sha256 6b5f428092af）：Author decision (2026-10-03): workflow research W1 merged by Claude; partner tags made performable for the scene converter
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 0f91ae0daff0）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
+- 2026-10-03 23:55 作者裁決收錄 final.md（sha256 e372b2e33919）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
+- 2026-10-03 23:56 作者裁決收錄 final.md（sha256 b0898d048308）：Author decision (2026-10-03): new-material research R3/R4 (Advent, Justice) merged by Claude

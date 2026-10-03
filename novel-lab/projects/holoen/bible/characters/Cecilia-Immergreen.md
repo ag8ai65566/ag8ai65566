@@ -114,6 +114,8 @@ builds elaborate gifts for her audience: the complaints are the comedy, the work
     reactions.
 - **Sounds off:** a robotic monotone (she is an automaton by lore, not by voice); a meek or servile maid
   voice; a cold, genuinely cruel edge to her "hate" bits.
+- **From-memory recaps (written, 2026-09-22):** a stream devoted to Stranger Things, described as "i have good memory trust": confidence as the premise. Written self-presentation, not a verified spoken quote. [Archive metadata NEW-R4-010]
+- **Exasperated partner (written, 2026-06-27):** an animated Serendipity promotion builds its title and description from repeated bids for Gigi's attention, escalating to a demand that she focus. A specific comedy setup, not a permanent straight-woman role. [Archive metadata NEW-R4-012]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -153,10 +155,13 @@ The middle column is provisional voice direction unless a source is named.
 |---|---|---|
 | Lore | An ancient automaton built for eternal servitude (official); secondary lore places her origin in Immerheim; in a public joke she attributed her maid duties to an earlier Justice | [Official CI1] [X post CI6, secondary] |
 | 2024-06-22 PDT | Debut ("It's wind-up time!!"), with a chat-controlled game (implemented by nullrefrepro per the credits; Raora drew the ending screen and sweeping art) and a violin performance; official profile lists June 23 (JST) | [Official CI1] [Observed CI3] |
+| 2025-06-22 | Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). | [Official NEW-R4-020] |
 | 2025-08-08 PDT | 3D showcase (5 PM PDT; Aug 9 09:00 JST) | [Official CI7] |
 | 2025-08-16 PDT | Justice 3D collaboration stream | [Official CI7] |
 | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice; "Wind-Up," the first Justice solo; "SHALLYS" with Ina and FUWAMOCO (on violin); "I'm Your Treasure Box" with Bijou and Raora | [Official CI5] |
+| 2026-03-07 JST | hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW.; Cecilia also sang "nowhere" with a violin performance. | [Official NEW-R4-014] |
 | 2026-05 | CCGG 3D live with Gigi (after-talk 05-20, secondary archive evidence); "CCGG MADNESS" MV (05-17; digital 05-29) | [Official CI1] [Observed CI3 1rIXU_4xGvY, bTxEGwMOQQI] |
+| 2026-06-07 | A German-language cover of inabakumori's "LAGTRAIN" (German lyrics credited to Jinja). | [Archive metadata NEW-R4-013] |
 | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice, "CCGG MADNESS" as Autofister with Gigi, "Break It Down" with Vestia Zeta and Shiori, "Cloudy Sheep" with Tsunomaki Watame and Calli (day 1); "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official CI4, CI8] |
 
 ## Relationship Map
@@ -169,7 +174,7 @@ Pairs."
 | Raora Panthera | Genmate ("Raviolin," secondary) | Minecraft duo in the first weeks (secondary archive evidence); Raora illustrated Cecilia's debut ending screen and sweeping scene, and Cecilia animated Raora's ending screen and mascot stinger (archived debut credits); Raora helped design the Otomo (secondary); a Chattino model together (2025); "I'm Your Treasure Box" with Bijou at -All for One- | [Observed CI2, CI3 p_ZQs-kgUKI, JW7j8tKMOfY] [Official CI5] |
 | Elizabeth Rose Bloodflame | Genmate ("FiddleFlame," secondary) | Showed her around Minecraft (their first collab); fans sometimes depict Cecilia as Elizabeth's maid (fan art, not canon); Cecilia's separate "#LizIsInnocent" joke excludes the current Justice from the earlier maid-service story (secondary) | [Observed CI2, CI3; X post CI6] |
 | Takanashi Kiara | Senior ("EterniTea"; "HoloEU" with Raora) | They spoke German in their first exchange, on Kiara's 2024 birthday stream | [Observed CI2, secondary; Kiara file] |
-| Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage | [Observed CI2, CI3] [Official CI5] |
+| Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage She framed a May 2026 music-making stream as preparing a tune for her rival's approaching birthday (title wording; Ina's participation not established). | [Observed CI2, CI3] [Official CI5] [Archive metadata NEW-R4-011] |
 | Nanashi Mumei | Promise alumna ("Automatowl," secondary) | Halo: Reach (2024), "Ask us anything" (2025); the nickname "Myumyei" is unverified and not used | [Observed CI2, CI3] |
 | Ouro Kronii | Senior ("Clockwork Orange" with Gigi; secondary) | Phogs, Squirreled Away (2025); Kronii has called her "CLANKER"; she calls Kronii "Owo-senpai" (secondary transcriptions; not a call-and-response) | [Observed CI3; Kronii file] |
 | Koseki Bijou, Shiori Novella | Advent; GAGA (Gem, Archiver, Gremlin, Automaton) with Gigi | GAGA: Trine 5, Heave Ho (2024), Phasmophobia (2025); Walking Dead watchalongs and Elden Ring with Bijou (2025); "I'm Your Treasure Box" with Bijou and Raora (not Shiori); "Break It Down" with Shiori and Zeta at Serendipity | [Observed CI2, CI3] [Official CI5, CI8] |
@@ -230,6 +235,12 @@ Pairs."
 - CI20 Claude's audio check (2026-10-01); see research/audio-check/cecilia.md.
 
 ---
+- NEW-R4-020 (GPT research R4, checked 2026-10-03) Justice releases (OFFICIAL): https://hololive.hololivepro.com/en/music/590/ ; /770/
+- NEW-R4-005/009/014/019 (GPT research R4, checked 2026-10-03) 7th fes. cast list and report (OFFICIAL): https://hololivesuperexpo.hololivepro.com/2026/fes/cast/ ; https://hololive.hololivepro.com/events/hololivesuperexpo2026/
+- NEW-R4-010 (GPT research R4, checked 2026-10-03) Stranger Things recap (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/_EXIVk54450
+- NEW-R4-011 (GPT research R4, checked 2026-10-03) birthday-tune stream title (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/DE7WL-YLk8Y
+- NEW-R4-012 (GPT research R4, checked 2026-10-03) Serendipity short (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=61LRYUdo26k
+- NEW-R4-013 (GPT research R4, checked 2026-10-03) "LAGTRAIN" German cover credits (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=0ry5cruKqsw
 
 ## [SW] Name
 Cecilia Immergreen
@@ -322,6 +333,7 @@ Gigi Murin: her genmate and Autofister partner (also called CCGG): "CCGG MADNESS
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-009, VOICE-V2-033 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-SCOPE-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** NEW-R4-010 to 014 and 020 (recap format, birthday tune for her rival Ina, exasperated-partner promo, German "LAGTRAIN", 7th fes. with "nowhere", Justice releases). FIX-R4-003/004 were already applied by the justice audit.
 
 ## Open Questions
 1. Resolved: 3D showcase 2025-08-08 PDT (CI7).

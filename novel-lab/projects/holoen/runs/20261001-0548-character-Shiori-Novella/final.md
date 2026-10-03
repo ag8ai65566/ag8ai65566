@@ -63,6 +63,7 @@ the prison-break planner. [Official SN1, SN4 interview] [Observed SN2 §Personal
 6. She narrates Advent's lore videos and, in the lore, planned the prison break; fans and Bijou call her the
    leader as a bit (a fan poll gave her 78%; Bijou: "our glorious leader"). [Official SN1] [Observed SN2
    §Miscellaneous, secondary]
+- **Judges herself by the MC comedy:** after Serendipity she singled out the MC segments and her MC partners as a highlight and was proud of their comedy. [Secondary NEW-R3-004, attributed interview answers]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -112,6 +113,7 @@ the prison-break planner. [Official SN1, SN4 interview] [Observed SN2 §Personal
     deadpan for lore asides, teasing in her "hot vampire" bits, and a piercing scream at jump scares.
 - **Sounds off:** a slow, ominous, villain voice as her default (her menace is a joke); prim or formal speech;
   constant swearing; a whispery seductive read of the thirst bits (keep them goofy).
+- **Written forms of address and care (official interview, 2026-06-10):** she calls Calli "Mor Mori" in writing (spoken form unchecked), and closes with practical audience reminders ("Don't lose any of your belongings!") and encouragement to enjoy the show at their own pace: a plain, considerate register beside her comic hosting. [Official NEW-R3-002/003]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -156,9 +158,11 @@ The middle column is provisional voice direction unless a source is named.
 | 2024-08-02 PDT | 3D debut "A New Chapter Begins!" with Nerissa, Bijou and FUWAMOCO as guests | [Observed SN3 tIKQMFtbgOA] |
 | 2024-08-25 | -Breaking Dimensions-: "Lonely in Gorgeous" with Fauna and Nerissa | [Official, Concerts card S8] |
 | 2025-08-29 | Advent 2nd-anniversary 3D live "On the Run!" | [Observed SN2 §2025] |
-| 2026-02-15 | First original song "Monsters and Men" | [Observed SN2 Discography] |
+| 2026-02-16 | Digital release of first original song "Monsters and Men" | [Official FIX-R3-002] |
+| 2026-02-26 | Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). | [Official NEW-R3-001; archive metadata] |
 | 2026-07-03/04 | Serendipity concert, duo with Mori Calliope | [Official SN4] |
 | 2026-07-30 | "Into The Void" motion comic begins | [Observed SN3] |
+| 2026-09-21 | "Glitch Through," a new solo song for the hololive Dreams event "A Dreamy Summer Escape" (her chapter); the game's event story is a separate fictional production. | [Official partner press release NEW-R3-005] |
 
 ## Relationship Map
 Public exchanges only; counts are streams on Shiori's channel mentioning the other per year (2023 → 2026,
@@ -227,6 +231,11 @@ partners, so the cast's channels and the wiki fill in.
 - SN20 Claude's audio check (2026-10-01); see research/audio-check/shiori.md.
 
 ---
+- NEW-R3-001 (GPT research R3, checked 2026-10-03) Advent releases (OFFICIAL): https://hololive.hololivepro.com/en/music/709/ ; /723/ ; /783/ ; "Bound by Fate" live metadata (ARCHIVE_METADATA): https://www.holostats.com/stream/54oaXuyyfMc?lang=en
+- NEW-R3-002/003 (GPT research R3, checked 2026-10-03) Calliope–Shiori Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview05/
+- NEW-R3-004 (GPT research R3, checked 2026-10-03) post-concert Q&A (SECONDARY, attributed answers): https://hololivetoday.com/news-list/hololive-today-q-and-a-hololive-english-serendipity
+- NEW-R3-005 (GPT research R3, checked 2026-10-03) hololive Dreams event announcement (OFFICIAL partner press release): https://www.einpresswire.com/article/943860924/hololive-dreams-in-game-event-a-dreamy-summer-escape-begins-september-19
+- FIX-R3-001/002 (GPT research R3, checked 2026-10-03) "Monsters and Men" catalog (OFFICIAL): https://hololive.hololivepro.com/music/713/
 
 ## [SW] Name
 Shiori Novella
@@ -247,7 +256,7 @@ Shiori, Shiorin, The Archiver, Shiori Novella, Shiori~n
 Shiori streams as "The Archiver," a bookish fugitive with forbidden knowledge, and plays it with a cheerful, dorky, slightly unhinged energy: she calls herself "a whacky, sleepy eepy girl" with "ditzy what-is-she-talking-about energy." Cozy chats swerve into strange tangents (anatomy, parasites, cannibalism, childhood cartoons with adult subtexts) until chat reaches for the "bonk" emote. She teases the people she is close to, especially her genmates, plays hard to get when Nerissa calls her "wife," and guards lore secrets (where Nerissa's horn is) as a running joke. Under the edge she is sweet and supportive: she credits fan artists in her outros, has a soft spot for animals, and says plainly how much she appreciates her viewers. She is a hands-on creator who edits her own vlogs, writes community posts like a public diary, made an original motion comic, and runs odd review and "educational" streams. She loves mysteries, Sherlock Holmes, horror co-ops and whimsical-creepy art, though she would rather watch someone else play the truly scary games; when a jump scare lands, she screams.
 
 ## [SW] Background
-Shiori is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Archiver," driven by a thirst for knowledge, who turns favorite stories and memories into bookmarks; imprisoned in The Cell for forbidden knowledge found in a story (which, in the lore, turned half her hair grey), she planned and executed Advent's prison break. She debuted on 2023-07-30 (JST) with hololive English -Advent-, narrates the group's lore videos, and is jokingly called its leader. She made her 3D debut on 2024-08-02 (PDT), sang at the 2024 and 2025 English concerts, released her first original song "Monsters and Men" on 2026-02-15, was paired with Mori Calliope at the 2026 Serendipity concert, and began her original motion comic "Into The Void" in July 2026. Her fans are Novelites; her mascot is Yorick.
+Shiori is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Archiver," driven by a thirst for knowledge, who turns favorite stories and memories into bookmarks; imprisoned in The Cell for forbidden knowledge found in a story (which, in the lore, turned half her hair grey), she planned and executed Advent's prison break. She debuted on 2023-07-30 (JST) with hololive English -Advent-, narrates the group's lore videos, and is jokingly called its leader. She made her 3D debut on 2024-08-02 (PDT), sang at the 2024 and 2025 English concerts, released her first original song "Monsters and Men" digitally on 2026-02-16, was paired with Mori Calliope at the 2026 Serendipity concert, and began her original motion comic "Into The Void" in July 2026. Her fans are Novelites; her mascot is Yorick.
 
 ## [SW] Physical Description
 Shiori's avatar is 163 cm tall, with mid-length two-tone hair, black on one side and white on the other, held by sharp shuriken-like hairpins, and bright, glowing light-yellow eyes. She wears a dark purple and black jacket over a dress with "dripping" edges, long fingerless gloves and two rings on each hand. Yorick, a small, sad black sphere with long arms and four spikes on its head, rides on her right shoulder.
@@ -306,6 +315,7 @@ Nerissa Ravencroft: Advent genmate and partner in the performed ShioRaven "wife"
 - **2026-10-02, quotation spans (Claude, ahead of the voice audit):** "…really bad at remembering names" quoted without the first-model-only "I'm."
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-002, VOICE-V2-011, VOICE-V2-014, VOICE-V2-017, VOICE-V2-037 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
+- **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-001 (Advent 2026 releases), NEW-R3-002/003 (written address and audience care), NEW-R3-004 (MC comedy as a highlight), NEW-R3-005 ("Glitch Through"), FIX-R3-001/002 ("Monsters and Men" digital release 2026-02-16, in Background and the timeline).
 
 ## Open Questions
 1. The sampled 2026 windows include a showcase with trailer audio and a co-op stream with viewers; counts are

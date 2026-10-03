@@ -91,9 +91,11 @@ secondary]
 | 2024-12 | VTuber Awards: "VTuber of the Year" | — |
 | 2025-02-02 | First birthday 3D concert | — |
 | 2025-08-23/24 | -All for One-: "HOT DUCK!" with Bijou and Subaru; their version of "Howling"; "Lifetime Showtime"; "SHALLYS" with Ina and Cecilia | [Official S5] |
-| 2026-04-02 | "Mekurumeku Rendezvous," a TV anime ending theme | their first TV anime song |
+| 2026-03-24 | "Prisoner (FUWAMOCO ver.)" | [Official NEW-R3-019] |
+| 2026-04-02 | "Mekurumeku Rendezvous," ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3 | their first TV anime song [Official NEW-R3-020] |
 | 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Raora ("Inu Neko. Seishun Massakari") | [Official S4; Serendipity report] |
 | 2026-08-29 | First album "FUWAMOCO à la mode" announced | hand-signed copies |
+| 2026-08-30 | "Ichizutte Trend♡" | [Official NEW-R3-019] |
 
 ## Sensory Palette
 - See: pink and blue side by side (fans' "baubaubyou" makes any pink-and-blue pair look like them); paw
@@ -143,6 +145,7 @@ Amelia, Ouro Kronii, Nanashi Mumei, Ceres Fauna, Takanashi Kiara, Ninomae Ina'ni
 - S20 Claude's audio check (2026-10-01): research/audio-check/fuwamoco.md
 
 ---
+- NEW-R3-019/020 (GPT research R3, checked 2026-10-03) FUWAMOCO releases (OFFICIAL): https://hololive.hololivepro.com/en/music/734/ ; /805/ ; /731/
 
 ## [SW] Name
 FUWAMOCO
@@ -195,6 +198,7 @@ Pink and blue side by side; paw prints; two voices from one microphone saying th
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-QUOTE-001, CONSULT-P0-002
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:ADVENT-TIE-001, justice:JUSTICE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
+- **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-019/020 (releases; the anime named).
 
 ## Open Questions
 (None.)

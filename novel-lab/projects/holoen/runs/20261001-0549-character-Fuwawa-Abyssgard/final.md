@@ -62,6 +62,7 @@ secondary]
 5. She posts alone on the shared X account with a blue heart 🩵. [Observed FW2 §Miscellaneous, secondary]
 6. Her oshi is Houshou Marine; she loves visual novels, retro games, Japanese sweets and matcha.
    [Observed FW2 §Likes and dislikes, secondary]
+- **FUWAMOCO ROCK N' RAWR PARTY:** a recurring karaoke banner (January and February 2026); editions can be themed or paired with an announcement. [Archive metadata NEW-R3-017]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -104,6 +105,7 @@ secondary]
     up when she is excited and turns mock-stern for her "evil twin" teasing.
 - **Sounds off:** a low or husky voice; crisp, rapid efficiency; swearing or crude jokes; a genuinely cold
   "evil twin" (it is teasing).
+- **Call-and-response (joint written stage direction, 2026-06-08):** FUWAMOCO invite the audience to answer with "BAU BAUs," "NYAN NYANs" and "WAN WANs" and to curl their fists into cat and dog paws, treating the audience as part of the performance. Attributed to the duo, not to either twin as a spoken line. [Official NEW-R3-015]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -148,10 +150,13 @@ The middle column is provisional voice direction unless a source is named.
 | 2024-10-12 | FUWAMOCO reach 1,000,000 subscribers, first in Advent | [Observed FW2 §2024] |
 | 2024-12 | VTuber Awards: "VTuber of the Year" (as FUWAMOCO) | [Observed FW2 §Awards] |
 | 2025-02-02 | First birthday 3D concert, with Advent and JP guests | [Observed FW3 ouQF2A1l_cI] |
+| 2025-08-01 | FUWAMOCO digital releases: "Lifetime Showtime"; later "Prisoner (FUWAMOCO ver.)" (2026-03-24) and "Ichizutte Trend♡" (2026-08-30). | [Official NEW-R3-019] |
 | 2025-08-23/24 | -All for One-: "HOT DUCK!", "Howling," "Lifetime Showtime," "SHALLYS" | [Official FW5] |
+| 2026-02-26 | Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). | [Official NEW-R3-001; archive metadata] |
 | 2026-04 | "Mekurumeku Rendezvous," a TV anime ending theme | [Observed FW3 vSwxof0K8lk] |
 | 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Mococo and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) | [Official FW4; Serendipity report] |
 | 2026-08-29 | First album "FUWAMOCO à la mode" announced | [Observed FW2 §2026; X via wiki] |
+| 2026-09-26 | Her first solo singing stream, a ROCK N' RAWR PARTY; the description calls her "just a fluffy dog doing her best to sing for you!" (written). | [Archive metadata NEW-R3-018] |
 
 ## Relationship Map
 Public exchanges only. Shared FUWAMOCO relationships are on the world card "FUWAMOCO"; these are the ones
@@ -167,6 +172,8 @@ that belong to Fuwawa or define her.
 | Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori (FUWAMOCO Morning ep. 90, 2024-04-26); Lethal Company with Koyori and Fubuki (2024-03-09); Koyori a guest at their 2025 birthday concert; "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab presented by Iroha and AZKi, the twins as challengers (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
 | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
 | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
+| Takanashi Kiara | Myth senpai | [Lead, secondary: episode records list both twins among Advent's guests on HOLOTALK's 29th edition (2023-08); the original video still needs a primary check.] | [Secondary NEW-R3-021] |
+| Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity (2026-07-03/04 PDT); afterwards the twins described her teasing their tails and chasing them around the stage in their trio's MC comedy. | [Official, Serendipity report] [Secondary NEW-R3-016] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their
@@ -208,6 +215,13 @@ that belong to Fuwawa or define her.
 - FW20 Claude's audio check (2026-10-01); see research/audio-check/fuwamoco.md.
 
 ---
+- NEW-R3-001 (GPT research R3, checked 2026-10-03) Advent releases (OFFICIAL): https://hololive.hololivepro.com/en/music/709/ ; /723/ ; /783/ ; "Bound by Fate" live metadata (ARCHIVE_METADATA): https://www.holostats.com/stream/54oaXuyyfMc?lang=en
+- NEW-R3-015 (GPT research R3, checked 2026-10-03) FUWAMOCO–Raora Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview03/
+- NEW-R3-016 (GPT research R3, checked 2026-10-03) post-concert Q&A (SECONDARY): https://hololivetoday.com/news-list/hololive-today-q-and-a-hololive-english-serendipity
+- NEW-R3-017 (GPT research R3, checked 2026-10-03) karaoke banner (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/Z0AT2Robu8s ; https://www.holostats.com/stream/yNAYmjmC9ZY?lang=en
+- NEW-R3-019/020 (GPT research R3, checked 2026-10-03) FUWAMOCO releases (OFFICIAL): https://hololive.hololivepro.com/en/music/605/ ; /734/ ; /805/ ; /731/
+- NEW-R3-021 (GPT research R3, checked 2026-10-03) HOLOTALK episode records (SECONDARY): https://www.imdb.com/title/tt30135186/ ; https://hololive.wiki/wiki/HoloTalk
+- NEW-R3-018 (GPT research R3, checked 2026-10-03) solo karaoke title and description (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/UrLISw5iDWU
 
 ## [SW] Name
 Fuwawa Abyssgard
@@ -228,7 +242,7 @@ Fuwawa, Fuwa-chan, Fuwa-nee, The Fluffy One, Fluffy One
 Fuwawa streams as "The Fluffy One," the older twin demonic guard dog whose duty is to calmly look after her little sister Mococo and their mascot Pero, a calm that never lasts. She is a sweet, gentle, bouncy airhead who says odd things with total confidence ("Refridgator!", math "stops" at zero), is poor at spelling and math, mixes up left and right, and is clumsy at games, all of which she wears happily because she is "exceptionally cute." She teases Mococo, sometimes too much, and plays an "evil twin" role in their public comedy; she also hosts solo streams, such as Hitman. The official profile calls her bouncy, boisterous and chatty. She loves visual novels, retro games, cute girls, Japanese sweets and her oshi Houshou Marine, sings and dances seriously, and her pep talks emphasize compassion, confidence and self-acceptance. Her mission, with Mococo, is to protect the Ruffians' smiles.
 
 ## [SW] Background
-Fuwawa is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Fluffy One," the older of two twin demonic guard dogs from the Northwest Passage in the demon world, sealed in The Cell "for being a pain in the godly behind," whose duty is to look after her little sister Mococo and Pero, their dog mascot. She debuted with Mococo as FUWAMOCO on 2023-07-31 in hololive English -Advent-, sharing one channel. Together they won "VTuber of the Year" at the 2024 VTuber Awards, reached one million subscribers first in Advent, made their 3D debut in August 2024, held a birthday concert in 2025, sang a TV anime ending theme in 2026, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album. Her color is blue.
+Fuwawa is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Fluffy One," the older of two twin demonic guard dogs from the Northwest Passage in the demon world, sealed in The Cell "for being a pain in the godly behind," whose duty is to look after her little sister Mococo and Pero, their dog mascot. She debuted with Mococo as FUWAMOCO on 2023-07-31 in hololive English -Advent-, sharing one channel. Together they won "VTuber of the Year" at the 2024 VTuber Awards, reached one million subscribers first in Advent, made their 3D debut in August 2024, held a birthday concert in 2025, sang "Mekurumeku Rendezvous" (digital release 2026-04-02), the ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album. Her color is blue.
 
 ## [SW] Physical Description
 Fuwawa's avatar is 155 cm tall, with long blonde hair streaked light blue and gathered in small side pigtails, bright pink eyes, fluffy dog ears and a collar. She wears a pastel-blue headband and hairclips, one shaped like a white bandage with a blue center that mirrors her twin's pink one. Blue is always her color, so people can tell her from Mococo, who is otherwise her identical twin. Pero, "The Great Perroccino," their small, muscular fictional dog mascot, appears in their bits.
@@ -298,6 +312,7 @@ Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; 
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-005, VOICE-V2-020, VOICE-V2-037, VOICE-V2-038 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-001, NEW-R3-015 (joint call-and-response), NEW-R3-016 (Raora's stage chase), NEW-R3-017 (karaoke banner), NEW-R3-019 (releases), NEW-R3-020 (the anime ending theme named in Background), NEW-R3-021 (Kiara: a secondary lead, dossier only), NEW-R3-018 (her first solo singing stream).
 
 ## Open Questions
 1. (Resolved 2026-10-01, from the GPT review: the solo measurements stay in the dossier with the recording
