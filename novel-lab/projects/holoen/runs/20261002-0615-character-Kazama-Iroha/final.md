@@ -134,7 +134,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| AZKi | "AzuIro" | Covers (2023, 2025), the official song "AZUIRO BESTIE DAYS" (2025-09-18), GeoGuessr, Cuphead (2025-06-03) and an off-collab billed as a summer camp, Mario Kart; co-presenter of the cookie battle (2024-10-27). The "shared Minecraft village" was dropped (its cited ID is the Cuphead stream) | [IR4 VxZVNuscS7c, -im-pIdanZY, mwhcZmc6-s8, JgOwJ7m89Lk] [Official music 642] |
+| AZKi | "AzuIro" | Covers (2023, 2025), the official song "AZUIRO BESTIE DAYS" (2025-09-18), GeoGuessr, Cuphead (2025-06-03) and an off-collab billed as a summer camp, Mario Kart; co-presenter of the cookie battle (2024-10-27). The "shared Minecraft village" was dropped (its cited ID is the Cuphead stream) They performed "AZUIRO BESTIE DAYS" on STAGE 3 of hololive 7th fes. (2026-03-07); AZKi's encouragement in the MC left Iroha tearful. | [IR4 VxZVNuscS7c, -im-pIdanZY, mwhcZmc6-s8, JgOwJ7m89Lk] [Official music 642] [Official, 7th fes. report] |
 | La+ Darknesss | holoX founder; "La+-dono" (secondary) | Showed her around the new holo server (2023); the cover 「絶対敵対メチャキライヤー」 (2024-03-11) | [IR4 U9tSa1hxU0M] |
 | Takane Lui | holoX; "Lui-nee" (secondary) | The cover 「右肩の蝶」 (2024-04-11) | [IR4 oDIsQ6U71Po] [Lui file LU2] |
 | Hakui Koyori | holoX | The early "seiso" pair | [IR2] |
@@ -252,6 +252,7 @@ AZKi: "AzuIro," her steady duo (covers, "AZUIRO BESTIE DAYS" in 2025, Cuphead an
     description was rewritten from the official key art (checked by Claude 2026-10-03).
   - Kept with sources the review could not open, verified by Claude in the local archive metadata: the covers
     with La+ (U9tSa1hxU0M, 2024-03-11) and Lui (oDIsQ6U71Po, 2024-04-11) and "Gehenna" with Chloe (5zJp7oulbwc).
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. "Lui-nee" stays secondary (wiki); no directed address was found in the sampled audio.

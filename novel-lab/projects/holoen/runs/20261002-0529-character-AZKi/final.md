@@ -74,6 +74,7 @@ shouting "Gēsu!" at a map and, per a secondary transcription, answering Tokino 
    "Iyā, osoroshii yume datta na" ("What a frightening dream that was"), "Bottakuri!" ("Rip-off!") at a shop;
    she names her heroes after herself ("Azu," "great detective Azukichi"). [ASR AZ20; both models]
 8. Popular for ASMR (a "last-train station names" series in 2026). [Observed AZ3, secondary; AZ4 titles]
+- **Pun-ASMR host (2025-06-22):** she hosted a 3D pun-ASMR contest with Okayu, Noel, Oozora Subaru and Otonose Kanade; laughing meant losing. The title establishes the format and players, not particular jokes or the winner. [Archive metadata NEW-R5-004]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -160,6 +161,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2025-07-19 | R.E.P.O. "JP & EN" collab with Shiranui Flare, Usada Pekora, Ina, IRyS and Kronii (the description's lineup) | [AZ4 _gZdFTluxtc] |
 | 2025-09-18 | "AZUIRO BESTIE DAYS" with Kazama Iroha (official digital release) | [Official AZ10] |
 | 2025-11-19 | Solo concert "Departure" at Pia Arena MM (the wiki counts it as her tenth); EPs "Re:Start" and "Re:Birth" (11-05) | [Official AZ8] [Observed AZ2, secondary count] |
+| 2025-11-19 | "Departure" concert: AS_tar performed "The Last Frontier"; she gave Suisei a reply to Suisei's earlier concert letter, and they unveiled "Going My Way" (digital release 2026-05-19). | [Official NEW-R5-002] |
 | 2026-03-07 | hololive 7th fes. "Ridin' on Dreams," STAGE 3 (with IRyS, Bae, Shiori) | [Official AZ7] |
 | 2026-04-01 | April Fools: a "new VTuber" debut on her original design | [AZ4] [ASR AZ20] |
 | 2026-05-18/19 | AS_tar with Suisei: a horror off-collab, then "Going My Way" | [AZ4] |
@@ -185,9 +187,12 @@ public labels from a secondary reference; song credits are official.
 | Shiori Novella, Raora Panthera | kouhai | Dance shorts to her songs (2025–2026) | [AZ5] |
 | Tokino Sora | "SorAZ" | Her SorAZ partner; a major-label duo (2023) and "First Gravity" (2024) | [AZ2] |
 | Amane Kanata | "KanatAZ" (secondary label) | A collaborator associated with KanatAZ | [AZ2, secondary] |
-| Kazama Iroha | "AzuIro" (secondary label) | Frequent partner since 2022; their original "AZUIRO BESTIE DAYS" (2025-09-18) | [AZ2] [Official AZ10] |
-| Nekomata Okayu, Nakiri Ayame | — | No direct pair; Ayame was on her 2023 Sports Festival white team (Ayame's stream description) | [AZ4 tHP7bd8Jtm0] |
-| Hakui Koyori, Yukihana Lamy | "KoZMy" (secondary references; a 2025-08-03 "KoZMy 結成⁉" collab title) | A 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026-02-03, not a KoZMy event); Lamy is also in "KALAZ" with Amane Kanata (secondary) | [Koyori file KO4 lvgC3pW-LVA, 1HQL3WJPBHA] [Lamy file LM2] |
+| Kazama Iroha | "AzuIro" (secondary label) | Frequent partner since 2022; their original "AZUIRO BESTIE DAYS" (2025-09-18) They performed "AZUIRO BESTIE DAYS" on STAGE 3 of hololive 7th fes. (2026-03-07), with linked little fingers and a shared heart gesture; AZKi's encouragement in the MC left Iroha tearful. | [AZ2] [Official AZ10] [Official NEW-R5-007] |
+| Nekomata Okayu | JP senior | Mario Kart World practice together for Team Wind (2026-01-16); Okayu also played in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata FIX-R5-001, NEW-R5-004] |
+| Nakiri Ayame | JP senior | Her 2023 Sports Festival white-team teammate. | [AZ4 tHP7bd8Jtm0] |
+| Shirogane Noel | JP senior | A player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
+| Houshou Marine | JP senior | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+| Hakui Koyori, Yukihana Lamy | "KoZMy" (secondary references; a 2025-08-03 "KoZMy 結成⁉" collab title) | A 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026-02-03, not a KoZMy event); Lamy is also in "KALAZ" with Amane Kanata (secondary) Lamy: an impromptu group chat with Lamy and Inugami Korone on Lamy's channel (#あずらみころ, 2026-09-18). | [Koyori file KO4 lvgC3pW-LVA, 1HQL3WJPBHA] [Lamy file LM2] [Archive metadata NEW-R5-005] |
 | Sakamata Chloe (affiliate) | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [Chloe file CH4] |
 | La+ Darknesss | — | GeoGuessr for Tochigi Day (2025-06-15), The Headliners with Korone and Miko (2025-05-07), Minecraft (2025-07); a clip of La+ reacting to AZKi's ASMR (2026-03-31) | [AZ4 80Xb4PxZLyw, AMturrbpVD0] [La+ channel z0Z2Zc3MlE4, 6n2X82dqqx0] |
 
@@ -241,6 +246,12 @@ public labels from a secondary reference; song credits are official.
   research/audio-check/azki.md
 
 ---
+- NEW-R5-002 (GPT research R5, checked 2026-10-03) Departure report (OFFICIAL): https://hololive.hololivepro.com/events/departure/
+- NEW-R5-004 (GPT research R5, checked 2026-10-03) AZKi's pun-ASMR contest listing (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/vtuber/AZKi/label/ASMR (original https://www.youtube.com/watch?v=qrf_Ci2eiUg)
+- NEW-R5-005 (GPT research R5, checked 2026-10-03) #あずらみころ stream record (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/SEuGEowBpCA
+- NEW-R5-006 (GPT research R5, checked 2026-10-03) Holo Koshien commentary (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/dlq2aYuSN_M
+- NEW-R5-007 (GPT research R5, checked 2026-10-03) 7th fes. report (OFFICIAL): https://hololive.hololivepro.com/events/hololivesuperexpo2026/
+- FIX-R5-001 (GPT research R5, checked 2026-10-03) Mario Kart World practice (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/DdcuNAx4S4I
 
 ## [SW] Name
 AZKi
@@ -282,7 +293,7 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 AZKi wants to keep creating memorable music that touches her Pioneers' hearts, on stage and in her units, and to enjoy what she loves to the fullest, from maps to puns.
 
 ## [SW] Relationships
-Hoshimachi Suisei: labelmate since INoNaKa Music and 0th-generation partner ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with Suisei and Moona Hoshinova ("story time," 2022); IRyS covered AZKi's "Inochi" (2021); R.E.P.O. (2025); "A Cruel Angel's Thesis" at AZKi's 2026 birthday live. FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live. Takanashi Kiara: HOLOTALK's 13th guest (2021); the 2023 Sports Festival white team. Mori Calliope: her English lesson with IRyS and Tsunomaki Watame (2022); AZKi's "Orpheus" dance short (2025). Hakos Baelz: GeoGuessr (2023). Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team. Ninomae Ina'nis and Kronii: R.E.P.O. "JP & EN" (2025). Tokino Sora: her SorAZ partner. Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025). Nakiri Ayame: 2023 Sports Festival teammate. Hakui Koyori and Yukihana Lamy: "KoZMy" (2025; secondary references), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary). Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024). La+ Darknesss: GeoGuessr for Tochigi Day and other games (2025).
+Hoshimachi Suisei: labelmate since INoNaKa Music and 0th-generation partner ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with Suisei and Moona Hoshinova ("story time," 2022); IRyS covered AZKi's "Inochi" (2021); R.E.P.O. (2025); "A Cruel Angel's Thesis" at AZKi's 2026 birthday live. FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live. Takanashi Kiara: HOLOTALK's 13th guest (2021); the 2023 Sports Festival white team. Mori Calliope: her English lesson with IRyS and Tsunomaki Watame (2022); AZKi's "Orpheus" dance short (2025). Hakos Baelz: GeoGuessr (2023). Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team. Ninomae Ina'nis and Kronii: R.E.P.O. "JP & EN" (2025). Tokino Sora: her SorAZ partner. Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025). Nakiri Ayame: 2023 Sports Festival teammate. Hakui Koyori and Yukihana Lamy: "KoZMy" (2025; secondary references), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary). Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024). La+ Darknesss: GeoGuessr for Tochigi Day and other games (2025). Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing. Houshou Marine: AZKi supplied soothing commentary for Marine's Holo Koshien stream (2026).
 
 ## [SW] Secrets
 (none)
@@ -319,6 +330,7 @@ Hoshimachi Suisei: labelmate since INoNaKa Music and 0th-generation partner ("AS
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** KoZMy and KALAZ carry their secondary labels; the 2026 3D karaoke is verified by Claude in the local archive (1HQL3WJPBHA) and is a four-member stream with Koyori, not a KoZMy event.
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the La+ tie cites its own uploads (GeoGuessr for Tochigi Day and others, verified by Claude in the local archive); the four-person 2026 karaoke stays separate from KoZMy.
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-004 and its dossier-note propagation (sheet: VOICE-V3-005, VOICE-V3-006); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-002, 004 to 007; FIX-R5-001 (the combined Okayu/Ayame row split; Okayu, Noel and Marine are now in the exported Relationships, filling three empty pairs).
 
 ## Open Questions
 1. IRyS appears in the archived Cross Over short metadata ("A Cruel Angel's Thesis"); attach the primary short

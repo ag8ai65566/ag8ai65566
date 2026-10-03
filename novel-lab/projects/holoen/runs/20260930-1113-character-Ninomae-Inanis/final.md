@@ -511,6 +511,7 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
 - **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:CLAUDE-SCOPE-002, myth3:MYTH-DATE-002, myth3:MYTH-QUOTE-001, myth3:MYTH-SCOPE-001 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-011 ("Stardust Capsule"), NEW-R1-012 (credits tellingbones), NEW-R1-013 (Bijou outfit project), NEW-R1-014 (crowd-leading TAKO∞TAKOVER debut), NEW-R1-015 (self-stated reason for creating, in Personality). FIX-R1-001 was already applied by the myth1 audit.
 - **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

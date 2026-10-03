@@ -150,6 +150,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2026-02-14 | A new pink kimono outfit | [Observed AY2; AY4] |
 | 2026-03-06 | hololive 7th fes. "Ridin' on Dreams," STAGE 1 (with Okayu, Ina, FUWAMOCO) | [Official AY6] [Observed AY3] |
 | 2026-08-22 | Anime NYC: an announced convention-exclusive stream with Fubuki and Mio | [Official AY7] |
+| 2026-09-19 | Digital release of "BANZAI☆MANKAI." | [Official NEW-R5-008] |
 
 ## Relationship Map
 Public exchanges only. Her ties with the English cast and the other three Japanese members on this project are
@@ -158,7 +159,7 @@ on the world card "JP Senpai Pairs."
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Takanashi Kiara | — | HOLOTALK #23 (2022); the 2023 Sports Festival white team | [AY5] [AY4] |
-| Nekomata Okayu | "OKFAMS" | With Korone, Fubuki, Mio and Subaru; Okayu's 2025 New Year Game Festival team; 7th fes STAGE 1 | [AY2] [AY5] [Official AY6] |
+| Nekomata Okayu | "OKFAMS" | With Korone, Fubuki, Mio and Subaru; Okayu's 2025 New Year Game Festival team; 7th fes STAGE 1 [Secondary, performance unchecked: a setlist records Ayame joining Okayu for "デビルじゃないもん" at Okayu's 2026 birthday live (2026-02-22).] | [AY2] [AY5] [Official AY6] [Secondary NEW-R5-009] |
 | Hoshimachi Suisei | — | Okayu's 2025 team | [AY5] |
 | AZKi | — | The 2023 Sports Festival white team | [AY4] |
 | Ninomae Ina'nis, IRyS, Cecilia Immergreen | — | Okayu's 2025 team; Ina and FUWAMOCO on 7th fes STAGE 1 | [AY5] [Official AY6] |
@@ -210,6 +211,9 @@ on the world card "JP Senpai Pairs."
   JqaYwRmGKHQ (2026-03-19), E1DuNe3uIrY (2026-03-31); research/audio-check/ayame.md
 
 ---
+- NEW-R5-008 (GPT research R5, checked 2026-10-03) "BANZAI☆MANKAI" (OFFICIAL): https://hololive.hololivepro.com/en/music/821/
+- NEW-R5-009 (GPT research R5, checked 2026-10-03) Okayu birthday-live setlist (SECONDARY): https://holo3d-live.com/nekomata-okayu/id238246/
+- FIX-R5-002 (GPT research R5, checked 2026-10-03) official profile (OFFICIAL): https://hololive.hololivepro.com/talents/nakiri-ayame/
 
 ## [SW] Name
 Nakiri Ayame
@@ -239,7 +243,7 @@ Ayame's avatar is 152 cm tall, an oni girl with long, loose white hair tinted pi
 Streams in Japanese: chatty and storytelling, with "nanka," "maji de" and "meccha," polite with chat at first and quickly casual (「聞こえておりますでしょうか」, "can you hear me?", opening a 2026 chat). She calls herself "Yo" and her viewers "ningen-sama"; the archaic pronoun does not make her syntax archaic. She scolds teasing chat with a pouting 「うるさい」 ("Urusai!", "Shut up!") and, in a separate moment, 「困った人たち」 ("you troublesome people"), and in a horror game talks herself down (「落ち着いて落ち着いて」, "calm down, calm down") while 「声が震えちゃう」 ("my voice is shaking"). When a story renders her speech in English or Chinese, keep the royal "Yo" (in Chinese, 余) and the mock-haughty act melting into giggles; the English glosses are ours.
 
 ## [SW] Catchphrases
-"Greetings, Humans! Yoohoo!" (official profile wording); 「こんなきりー！」 ("Konnakiri!", greeting; secondary transcription); 「余だよ！」 ("Yo da yo!", "It's me!"; secondary transcription); "Yo" (余) for "I"; "ningen-sama" (her viewers); "kawayo" (fans' word for her cuteness, adopted by her official profile); "It's 'Nakiri'!"; "Why don't you humans have horns?" (secondary English transcription). Her fans are the Nakiri-gumi (Nakiri Gang).
+"Greetings, Humans! Yoohoo!" (official profile wording); 「こんなきりー！」 ("Konnakiri!", greeting appearing in her official Japanese profile); 「余だよ！」 ("Yo da yo!", "It's me!"; secondary transcription); "Yo" (余) for "I"; "ningen-sama" (her viewers); "kawayo" (fans' word for her cuteness, adopted by her official profile); "It's 'Nakiri'!"; "Why don't you humans have horns?" (secondary English transcription). Her fans are the Nakiri-gumi (Nakiri Gang).
 
 ## [SW] Voice & Delivery
 Provisional direction for an original designed voice: a soft, cute mid-high voice with a playful, mock-haughty edge for the oni act, chatty and unhurried in conversation, dissolving into giggles; quick and focused in an FPS round; shaky and pleading when a horror game scares her. Mock-haughtiness is a performed bit; delivery follows the scene.
@@ -282,6 +286,7 @@ Takanashi Kiara: her 23rd HOLOTALK guest (2022, archived metadata) and a 2023 Sp
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the poker claim is removed (publisher roster: Suisei, La+, Botan, Fubuki); holoGTA stays (verified by Claude in the local archive titles); the Noel sponsorship is dated.
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** "Onikan" cites the archived title (YXaDmUXPSGo); holoGTA stays shared participation.
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-007 (Dialogue Style and palette table), VOICE-V3-009, VOICE-V3-010 (sheet: VOICE-V3-007, VOICE-V3-008); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-008 ("BANZAI☆MANKAI"), NEW-R5-009 (secondary duet, dossier), FIX-R5-002 ("Konnakiri!" sourced to her official profile).
 
 ## Open Questions
 1. Ayame's English-cast ties are team events and shared stages only; enough for her card, or leave it there?

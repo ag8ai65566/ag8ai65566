@@ -73,6 +73,7 @@ associated with her Project Winter performance: her ruthless play there became a
 6. A builder of idol projects: "Hoshimatic Project" (practice streams, group MVs, "BEEP BEEP," 2026), her music
    unit Midnight Grand Orchestra, solo tours, a fan club and fan meetings ("Hoshiyomi Pajama Party"). [Observed
    SU2 §2023–§2026]
+- **Working the crowd (SuperNova: REBOOT, 2026-02-21):** after her surprise entrance she asked whether she had surprised the audience, pressed for a louder response to her greeting, and later answered individual pose requests. [Official NEW-R5-001]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -161,6 +162,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2024-11 to 12 | First live tour "Spectra of Nova" (Saitama, Osaka, Fukuoka); Calli, FUWAMOCO and Elizabeth hold a watch party | [Observed SU2] [S1 YtVleZxIiNc] |
 | 2025-02-01 | "SuperNova" at the Nippon Budokan | [Observed SU2] |
 | 2025 | "I don't care" and "Bloom in the night" for Mobile Suit Gundam GQuuuuuuX; miComet's "Lollipop" (official digital release 10-03) | [Observed SU2] [Official SU10] |
+| 2025-11-19 | At AZKi's "Departure" concert, AS_tar performed "The Last Frontier"; AZKi gave Suisei a reply to her earlier concert letter, and they unveiled "Going My Way" (digital release 2026-05-19). | [Official NEW-R5-002] |
 | 2026-02-21 | "SuperNova: REBOOT" at K-Arena Yokohama | [Observed SU2] |
 | 2026-03-08 | hololive 7th fes. "Ridin' on Dreams," STAGE 4 (with Calli, Kronii, Bijou, Nerissa) | [Official SU9] |
 | 2026-03 | "Chatter Chatter" with Houshou Marine; playable in Fortnite (03-13 to 03-24) | [Observed SU4] [SU3, secondary] |
@@ -199,7 +201,7 @@ Kensetsu roles) are public labels from a secondary reference, not all officially
 | Amane Kanata | "Hoshi no Kanata" | — | [SU2] |
 | Usada Pekora | "Pekomet" | hololive night (2024) | [SU2] [Official SU7] |
 | Hakui Koyori, Sakamata Chloe, Kazama Iroha | Hoshimatic Project | Her idol-group practice unit (2023–); Koyori and Iroha are among the nine credited "BEEP BEEP" vocalists (2026), Chloe was in the earlier lineup (secondary roster); she coached Iroha at Puyo Puyo Tetris (2023-04-11) | [Official BEEP BEEP credits] [Koyori file KO2] [Iroha file IR4 8tOoSNGa_rg] |
-| Houshou Marine | "Chatter Chatter" (2026) | A duet with an original anime MV (official release page 711); the wiki's holoALICE and MOMAS labels were not verified in review | [Marine file MA4] |
+| Houshou Marine | "Chatter Chatter" (2026) | A duet with an original anime MV (official release page 711); the wiki's holoALICE and MOMAS labels were not verified in review They performed "Chatter Chatter" together on STAGE 4 of hololive 7th fes. (2026-03-08). | [Marine file MA4] [Official NEW-R5-003] |
 | Shirogane Noel | Shiranui Kensetsu | The Minecraft construction company with Flare, Polka and Miko | [Noel file NO2, secondary] |
 | La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured Suisei, La+, Botan and Shirakami Fubuki (publisher roster; a joint broadcast is not established) | [SU4 2v4DYYf7hB0] [Sammy roster] |
 
@@ -252,6 +254,9 @@ Kensetsu roles) are public labels from a secondary reference, not all officially
   Rhythm Heaven), a1rcws7ellI (2026-06-09 Resident Evil); research/audio-check/suisei.md
 
 ---
+- NEW-R5-001 (GPT research R5, checked 2026-10-03) SuperNova: REBOOT report (OFFICIAL): https://hololive.hololivepro.com/events/supernova-reboot/
+- NEW-R5-002 (GPT research R5, checked 2026-10-03) Departure report and "Going My Way" release (OFFICIAL): https://hololive.hololivepro.com/events/departure/ ; https://hololive.hololivepro.com/en/music/752/
+- NEW-R5-003 (GPT research R5, checked 2026-10-03) 7th fes. report (OFFICIAL): https://hololive.hololivepro.com/events/hololivesuperexpo2026/
 
 ## [SW] Name
 Hoshimachi Suisei
@@ -333,6 +338,7 @@ Mori Calliope: collaborators on "CapSule" and "Wicked" (2022), including their p
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-002, VOICE-V3-003 (sheet: VOICE-V3-001); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:CLAUDE-SCOPE-002, myth1:MYTH-EVENT-002, myth1:MYTH-TIE-002 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-UNIT-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-03, new-material research R5 (20261002-1715-research-new-R5-JP1, GPT xhigh), merged by Claude:** NEW-R5-001 (crowd work at SuperNova: REBOOT), NEW-R5-002 (Departure: "The Last Frontier," the reply letter, "Going My Way"), NEW-R5-003 ("Chatter Chatter" with Marine).
 
 ## Open Questions
 1. Her guest appearance at Calli's "UNCUT ROCK!!" (2026-04-04) rests on her own June 2026 account (ASR) and

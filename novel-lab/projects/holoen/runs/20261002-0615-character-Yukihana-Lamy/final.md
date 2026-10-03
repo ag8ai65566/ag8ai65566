@@ -125,7 +125,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2023 | "Blue Journey" music project with Marine, Noel, Koyori and Sakura Miko | [Koyori file; Observed LM2] |
 | 2024 | Originals "Hatsukoi Pâtissière," "Watashi wo amayakasunara" and "Lamy's Baribari Workout"; a guest at Ina's 3D live "Pleides" (12-28) | [Observed LM2] [LM5] |
 | 2025 | Joins "Magical Girl holoWitches!" (04–05); "Yoppara Music!" (official digital release 08-13); a "KoZMy 結成⁉" collab with AZKi and Koyori (08-03; secondary listings give its first anniversary in 2026-08) | [Observed LM2] [Official music 609] [Koyori file lvgC3pW-LVA] |
-| 2026 | Her collaboration sake "Yukiyozuki" with Meiri Shurui (04); an off-collab with Koyori titled to name their duo (03); a NePoLaBo 3D party (04-29); NePoX events with holoX announced for 09-26/27 (Nene, Polka, Lamy, Botan, La+, Lui, Koyori, Iroha); "Snowlight Stories" (official digital release 08-13) | [LM4 Zi8R63ee0Fs, Ekdsnb2aWY4, Ml1tM8S40p0] [Official NePoX page] [Official music 792] [Brewery page] |
+| 2026 | Her collaboration sake "Yukiyozuki" with Meiri Shurui (04); an off-collab with Koyori titled to name their duo (03); a NePoLaBo 3D party (04-29); NePoX took place at Ariake Arena on 2026-09-26/27 with Nene, Polka, Lamy, Botan, La+, Lui, Koyori and Iroha: NePoLaBo-versus-holoX games ending Day 1 with all eight in a giant-robot red-light/green-light challenge, and the collaboration song "Watcha Gatcha!!!!!!!!" introduced [Secondary NEW-R5-020, organizer report]; "Snowlight Stories" (official digital release 08-13) | [LM4 Zi8R63ee0Fs, Ekdsnb2aWY4, Ml1tM8S40p0] [Official NePoX page] [Official music 792] [Brewery page] |
 | 2026-08-15 | First album "Fleur de neige" announced for 2027-01-27 (after the baseline) | [Observed LM2] |
 
 ## Relationship Map
@@ -135,9 +135,9 @@ Public exchanges only.
 |---|---|---|---|
 | Shishiro Botan | 5th-gen genmate; NePoLaBo | Horror playthroughs (secondary); NePoLaBo 3D and R.E.P.O. | [LM2] [LM4] |
 | Momosuzu Nene, Omaru Polka | 5th-gen genmates; NePoLaBo; "Magamaga's" with Nene (secondary) | NePoLaBo 3D party (2026); NePoX (2026); a Yukiyozuki presentation to Nene (2026) | [LM4 ua8QKKIXT2s, Ekdsnb2aWY4] [Official NePoX page] |
-| AZKi | "KALAZ" with Amane Kanata (secondary); "KoZMy" | Units with AZKi | [LM2] [hololiveinfo KALAZ entry] |
-| Hakui Koyori | "KoZMy"; NePoX | A March 2026 off-collab whose title proposes naming their duo (the chosen name is not established); KoZMy horror (2025) | [LM4 Zi8R63ee0Fs] [Koyori file] |
-| Houshou Marine, Shirogane Noel | "Yakamashi Musume" with Inugami Korone; Blue Journey | Yakamashi talk collabs | [LM2] [Noel file] |
+| AZKi | "KALAZ" with Amane Kanata (secondary); "KoZMy" | Units with AZKi An impromptu group chat with AZKi and Inugami Korone on Lamy's channel (#あずらみころ, 2026-09-18). | [LM2] [hololiveinfo KALAZ entry] [Archive metadata NEW-R5-005] |
+| Hakui Koyori | "KoZMy"; NePoX | A March 2026 off-collab whose title proposes naming their duo (the chosen name is not established); KoZMy horror (2025) They performed "Snow halation" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [LM4 Zi8R63ee0Fs] [Koyori file] [Official NEW-R5-019] |
+| Houshou Marine, Shirogane Noel | "Yakamashi Musume" with Inugami Korone; Blue Journey | Yakamashi talk collabs Noel: "HATSUKOI DAISENSOU" with Yuzuki Choco (2026-02-15). | [LM2] [Noel file] [Official NEW-R5-018] |
 | Houshou Marine | holoWitches | — | [LM2] |
 | La+ Darknesss, Takane Lui, Kazama Iroha | NePoX | NePoLaBo × holoX events (2026; billed roster of eight, Chloe not included) | [LM4 Ml1tM8S40p0] [Official NePoX page] |
 | Kazama Iroha | — | Caravan Stories (2023) | [Iroha file] |
@@ -181,6 +181,9 @@ Public exchanges only.
   https://hololiveinfo.hatenablog.com/entry/hololive_KALAZ
 
 ---
+- NEW-R5-005 (GPT research R5, checked 2026-10-03) #あずらみころ stream record (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/SEuGEowBpCA
+- NEW-R5-018/019 (GPT research R5, checked 2026-10-03) "HATSUKOI DAISENSOU" (OFFICIAL): https://hololive.hololivepro.com/en/music/706/ ; 7th fes. STAGE 1 (OFFICIAL): https://hololive.hololivepro.com/news/20260306-01-379/
+- NEW-R5-020/FIX-R5-003 (GPT research R5, checked 2026-10-03) NePoX post-event release (organizer report, SECONDARY): https://prtimes.jp/main/html/rd/p/000004030.000064643.html ; album announcement (OFFICIAL): https://hololive.hololivepro.com/news/20260815-02-82/
 
 ## [SW] Name
 Yukihana Lamy
@@ -249,6 +252,7 @@ Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describ
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** no finding (card and sheet attested OK); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-005, 018 to 020; FIX-R5-003 (NePoX recorded as held, 2026-09-26/27, from the organizer's report).
 
 ## Open Questions
 1. Resolved: both are kept, "Lamyoohoo!" as the official greeting and "Konlamy desu" as a labelled secondary

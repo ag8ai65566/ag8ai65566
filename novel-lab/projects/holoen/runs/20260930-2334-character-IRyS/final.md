@@ -332,6 +332,7 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
 - **2026-10-03, new-material research R2 (20261002-1715-research-new-R2-Promise, GPT xhigh), merged by Claude:** NEW-R2-001 (Raora added to the exported Relationships, closing Raora's one-way tie; Gigi clause shortened), NEW-R2-002 (Bijou watchalong), NEW-R2-003 (singing as shared work), NEW-R2-004 (DANGERyS).
 - **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.
