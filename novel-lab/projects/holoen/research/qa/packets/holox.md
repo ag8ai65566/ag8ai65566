@@ -1,10 +1,10 @@
 # Audit packet: holox
 
-Snapshot: git fca8f18. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git fa69d71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 665ffca4b0d3; `bible/characters/Takane-Lui.md` 6d81b858789c; `bible/characters/Hakui-Koyori.md` b129e84b71f9; `bible/characters/Sakamata-Chloe.md` 5d5d78ff41b4; `bible/characters/Kazama-Iroha.md` 9f9549eaf96f; `bible/world/holoX.md` 997dc697ccbd
+Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 665ffca4b0d3; `bible/characters/Takane-Lui.md` 6d81b858789c; `bible/characters/Hakui-Koyori.md` 0309db734020; `bible/characters/Sakamata-Chloe.md` 5d5d78ff41b4; `bible/characters/Kazama-Iroha.md` 9f9549eaf96f; `bible/world/holoX.md` 997dc697ccbd
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 

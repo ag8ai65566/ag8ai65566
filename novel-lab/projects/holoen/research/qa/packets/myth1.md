@@ -1,10 +1,10 @@
 # Audit packet: myth1
 
-Snapshot: git fca8f18. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git fa69d71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Mori-Calliope.md` 395687490069; `bible/world/TakaMori.md` ecc3059926ff
+Owned files (sha256): `bible/characters/Mori-Calliope.md` 9620ff3b8ba1; `bible/world/TakaMori.md` ecc3059926ff
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -24,11 +24,12 @@ Owned files (sha256): `bible/characters/Mori-Calliope.md` 395687490069; `bible/w
 | 2022-07-21 | Her solo concert "New Underworld Order." | [Official C6] |
 | 2024-09-05 | Tutu, a cat, is added to her model as a toggle. | [Observed C4 §Mascot and fans, secondary] |
 | 2025-02-26 | "GriMoire" at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent. | [Official C19] |
-| 2026-02-06 | Her third major album, "DISASTERPIECE." | [Official C16] |
+| 2025-10-07 | Announced: her "LET'S JUST CRASH" is the second opening theme of the TV anime *Gachiakuta* (lyrics by syudou and Mori Calliope; composition and arrangement by syudou). | [Official NEW-R1-002] |
+| 2026-02-06 | Her third major album, "DISASTERPIECE." Universal Music frames it around showing an imperfect self and finding beauty in imperfection; the track list includes the *Gachiakuta* opening "LET'S JUST CRASH" and insert song "Rivals and Equals." | [Official C16] |
 | 2026-03-31 PDT | April Fools "new VTuber debut" as Bonelliope Mori, "a bone-fide idol" | [Observed C31, secondary] |
 | 2026-04-04 JST | Sixth birthday 3D live "UNCUT ROCK!!" with a live band, plus a members-only encore | [Archive metadata C32] |
 | 2026-06-30 | Wins the overall ranking at Kizuna Ai's "Kizuna Ai Cup 2026" (Among Us 3D, Fall Guys) | [Observed C31, secondary] |
-| 2026-07-24 | TOHO animation announces her as the English dub voice of Kou Tousetsu in *Though I Am an Inept Villainess* | [Observed C31, secondary; TOHO animation post not opened] |
+| 2026-07-24 | TOHO animation names Mori Calliope as Kou Tousetsu in the English dub of *Though I Am an Inept Villainess*, announcing a July 26 streaming start. | [Official FIX-R1-003] |
 | 2026-06-10 | Serendipity interview and partnership with Shiori Novella. | [Official C11] |
 | 2026-09-07 | The branches merge into one "hololive." Her unit is now hololive -Myth-. | [Official C17, C1] |
 | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres | [Archive metadata C33] |
@@ -40,7 +41,7 @@ Owned files (sha256): `bible/characters/Mori-Calliope.md` 395687490069; `bible/w
 - Japanese name 森カリオペ; historical styling 森美声 (before 2021-09-01). [Official C1] [Observed C4
   §Name, secondary]
 - Likes (secondary, C4 §Likes and dislikes): red wine, oolong tea, rap and rock, FromSoftware games,
-  Castlevania: SotN, JoJo. Gachiakuta: [Unverified] (not in C4).
+  Castlevania: SotN, JoJo. Gachiakuta: confirmed public interest; in the anime production's artist comment she calls herself a longtime manga fan and looks forward to its animated battles and villains. [Official NEW-R1-002 music page]
 - Dislikes (secondary, C4 §Likes and dislikes): crowds, coffee, hospitals, cantaloupe. The "6 7" meme:
   [Unverified, title only: C21-1M69I28RWUU, C21-r8jx_Tlb9zA clip titles; off the card].
 - Performed identities are excluded from name matching unless a story uses them: Calvin Mori, C-Man,

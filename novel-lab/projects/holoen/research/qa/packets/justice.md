@@ -1,10 +1,10 @@
 # Audit packet: justice
 
-Snapshot: git fca8f18. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git fa69d71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Elizabeth-Rose-Bloodflame.md` 8c923cecfa89; `bible/characters/Gigi-Murin.md` 8c9d7e7d2d39; `bible/characters/Cecilia-Immergreen.md` e59b0f52ef69; `bible/characters/Raora-Panthera.md` 32c1cb69a479; `bible/world/hololive--Justice.md` d54b14489a88; `bible/world/Justice-Pairs.md` d05eeeb159fa
+Owned files (sha256): `bible/characters/Elizabeth-Rose-Bloodflame.md` bfb314867f38; `bible/characters/Gigi-Murin.md` b9f0b8a18c28; `bible/characters/Cecilia-Immergreen.md` 0d41b3b7f2f6; `bible/characters/Raora-Panthera.md` 5ebb3348980c; `bible/world/hololive--Justice.md` d54b14489a88; `bible/world/Justice-Pairs.md` d05eeeb159fa
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -12,17 +12,19 @@ Owned files (sha256): `bible/characters/Elizabeth-Rose-Bloodflame.md` 8c923cecfa
 **[SW] Groups:** hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven
 **[SW] Other Names:** Elizabeth, Liz, ERB, Lizzie, Erby Berby, Lady Bloodflame, The Scarlet Queen
 **[SW] Background:** Elizabeth is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Scarlet Queen" and organizer of Justice; secondary-reported lore adds that she is the Harbinger of Order, a human knight from Great Exardia (not actually royalty) whose sword is Thorn, who joined hololive to keep an eye on Advent and to become an idol. She debuted first of her generation on 2024-06-21 (PDT) in hololive English -Justice-, held her 3D showcase on 2025-08-01 (PDT), sang at the 2025 English concert ("ALiCE&u" with Nerissa and Ayunda Risu, a solo "Stellar Stellar," and the day-two opener "START AGAIN" with Calli, IRyS and Nerissa), invited guests from several branches to her 2026 birthday live, and at the 2026 Serendipity concert sang "HELP!!" with Kobo Kanaeru and Hakos Baelz and formed the unit Bloodraven with Nerissa Ravencroft ("Cruel Angel's Thesis"). Her representative color is red; her fans are the Rosarians of the Bloodflame Kingdom.
-**[SW] Relationships:** Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026 unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution" and shared the 2025 stages "ALiCE&u" (with Ayunda Risu) and "START AGAIN" (with Calli and IRyS); Elizabeth says Nerissa "has a beautiful voice," Nerissa praises her kindness, and Nerissa calls her "my husband" as a performed bit. Vestia Zeta (ID): her duet partner for "Giri Giri" at her 2025 3D showcase, which Elizabeth arranged and choreographed. Gigi Murin: her Operation Tango partner (Gigi titled her stream "i won't let Liz down!!!"). Cecilia Immergreen: introduced her to Minecraft; Cecilia's lore joke says an older Justice made her a maid ("#LizIsInnocent"). Raora Panthera: an early duo partner ("Chat & Art w/ Liz!"), whom she calls "Pretty Kitty." Kobo Kanaeru and Hakos Baelz: "HELP!!" at Serendipity. Kureiji Ollie (ID): her kami-oshi and "Code Red" partner (PEAK with HOLOSTARS' Machina X Flayon and Jurard T Rexford; "High Tide" on stage with Kronii); Crimzon Ruze (HOLOSTARS) is her "Nephew" in a Marvel Rivals uncle–nephew bit. Banzoin Hakka (HOLOSTARS): a "Mephisto" duet she produced and arranged. Mori Calliope: the LYRA cover of "III" with Amane Kanata, Koganei Niko and Ayunda Risu. Shiori Novella: credited in Shiori's non-canon motion comic "Into The Void." Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests (secondary set list) included FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine, Korone and Nerissa. Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025). AZKi: fellow member of Tokoyami Towa's 2025 New Year Game Festival team, with Kronii (secondary roster).
+**[SW] Relationships:** Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026 unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution" and shared the 2025 stages "ALiCE&u" (with Ayunda Risu) and "START AGAIN" (with Calli and IRyS); Elizabeth says Nerissa "has a beautiful voice," Nerissa praises her kindness, and Nerissa calls her "my husband" as a performed bit. Vestia Zeta (ID): her duet partner for "Giri Giri" at her 2025 3D showcase, which Elizabeth arranged and choreographed. Gigi Murin: her Operation Tango partner (Gigi titled her stream "i won't let Liz down!!!"). Cecilia Immergreen: introduced her to Minecraft; Cecilia's lore joke says an older Justice made her a maid ("#LizIsInnocent"). Raora Panthera: an early duo partner ("Chat & Art w/ Liz!"), whom she calls "Pretty Kitty." Kobo Kanaeru and Hakos Baelz: "HELP!!" at Serendipity. Kureiji Ollie (ID): her kami-oshi and "Code Red" partner (PEAK with HOLOSTARS' Machina X Flayon and Jurard T Rexford; "High Tide" on stage with Kronii); Crimzon Ruze (HOLOSTARS) is her "Nephew" in a Marvel Rivals uncle–nephew bit. Banzoin Hakka (HOLOSTARS): a "Mephisto" duet she produced and arranged. Mori Calliope: the LYRA cover of "III" with Amane Kanata, Koganei Niko and Ayunda Risu. Shiori Novella: credited in Shiori's non-canon motion comic "Into The Void." Takanashi Kiara: calls her "Erby Berby." Her April 25, 2026 birthday-live guests included FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine, Korone and Nerissa. Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025). AZKi: fellow member of Tokoyami Towa's 2025 New Year Game Festival team, with Kronii (secondary roster).
 **Dossier · Background Timeline:**
 | Date | Event | Relevance |
 |---|---|---|
 | Lore | The Scarlet Queen and Harbinger of Order from Great Exardia; joined hololive to keep an eye on Advent and to become an idol; human, and not royalty despite the title | [Official EB1] [Observed EB2 §Lore, secondary] |
 | 2024-06-21 PDT | Debut ("Ello Ello Ello~!"), first of Justice; official profile lists June 22 (JST) | [Official EB1] [Observed EB3] |
 | 2025-01-18 | "Mephisto" cover with HOLOSTARS' Banzoin Hakka | [Observed EB3] |
+| 2025-06-22 | Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). | [Official NEW-R4-020] |
 | 2025-08-01 PDT | 3D showcase (5 PM PDT); she arranged and directed most of it, including "Giri Giri" with Vestia Zeta | [Official EB7] [ASR EB20] |
 | 2025-08-16 PDT | Justice 3D collaboration stream | [Official EB7] |
 | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, "ALiCE&u" with Nerissa and guest Ayunda Risu, solo "Stellar Stellar," "START AGAIN" with Calli, IRyS and Nerissa (day 2 opener), "High Tide" with Kronii and guest Kureiji Ollie | [Official EB5] |
-| 2026-05 | 2026 birthday live with guests from several branches; the performances were released as cover videos ("Live from COVER Corp. Studio") | [Observed EB3, archived credits] |
+| 2026-03-07 JST | hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." | [Official NEW-R4-005/009/019] |
+| 2026-04-25 | 2026 birthday live with guests from several branches (credited in her archived broadcast description); the performances were later released as cover videos ("Live from COVER Corp. Studio," from May) | [Archive metadata FIX-R4-001] [Observed EB3, archived credits] |
 | 2026-07-03/04 PDT | Serendipity: "HELP!!" with Kobo Kanaeru and Hakos Baelz (day 1); unit Bloodraven with Nerissa, "Cruel Angel's Thesis" (day 2); "SUPERNOVA SUPER GIRL" and "ABOVE BELOW" with Justice | [Official EB4, EB8] |
 **Dossier · Hard Facts (continuity):**
 - Debut 2024-06-21 PDT (June 22 JST); birthday April 25; 171 cm; color red; fans Rosarians; sword Thorn.
@@ -40,11 +42,13 @@ Owned files (sha256): `bible/characters/Elizabeth-Rose-Bloodflame.md` 8c923cecfa
 | 2024-06-21 PDT | Debut ("GG STANDS FOR GIGI!"), second of Justice; official profile lists June 22 (JST) | [Official GG1] [Observed GG3] |
 | 2024-09-21 | Sings "September" 120 times in an eight-hour unarchived karaoke | [Observed GG2, secondary] |
 | 2024-12-14 | VTuber Awards: Most Chaotic VTuber | [Observed GG6; secondary reporting] |
+| 2025-06-22 | Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). | [Official NEW-R4-020] |
 | 2025-08-02 PDT | 3D showcase (5 PM PDT; Aug 3 00:00 UTC) | [Official GG8] |
 | 2025-08-16 PDT | Justice 3D collaboration stream | [Official GG8] |
 | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, "Countach" with Bae and guest Kureiji Ollie, "MONSTER" with Ina, Kronii and Shiori, solo "Wonky Monkey," "III" with Nerissa | [Official GG5] |
 | 2025-10-18 | First original song "I'll still be here" presented (digital release 10-20) | [Official GG7] [Observed GG2] |
 | 2025-12-22 | "Bright Tonight" with IRyS, Kronii and FUWAMOCO released | [Official GG7] |
+| 2026-03-07 JST | hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." | [Official NEW-R4-005/009/019] |
 | 2026-05 | CCGG 3D live with Cecilia; "CCGG MADNESS" MV (05-17; digital 05-29) | [Official GG1, GG7] [Observed GG3] |
 | 2026-06-25 | Original MV "enough" | [Observed GG3] |
 | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice and "CCGG MADNESS" as Autofister with Cecilia (day 1); "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO, and "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official GG4, GG9] |
@@ -64,10 +68,13 @@ Owned files (sha256): `bible/characters/Elizabeth-Rose-Bloodflame.md` 8c923cecfa
 |---|---|---|
 | Lore | An ancient automaton built for eternal servitude (official); secondary lore places her origin in Immerheim; in a public joke she attributed her maid duties to an earlier Justice | [Official CI1] [X post CI6, secondary] |
 | 2024-06-22 PDT | Debut ("It's wind-up time!!"), with a chat-controlled game (implemented by nullrefrepro per the credits; Raora drew the ending screen and sweeping art) and a violin performance; official profile lists June 23 (JST) | [Official CI1] [Observed CI3] |
+| 2025-06-22 | Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). | [Official NEW-R4-020] |
 | 2025-08-08 PDT | 3D showcase (5 PM PDT; Aug 9 09:00 JST) | [Official CI7] |
 | 2025-08-16 PDT | Justice 3D collaboration stream | [Official CI7] |
 | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice; "Wind-Up," the first Justice solo; "SHALLYS" with Ina and FUWAMOCO (on violin); "I'm Your Treasure Box" with Bijou and Raora | [Official CI5] |
+| 2026-03-07 JST | hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW.; Cecilia also sang "nowhere" with a violin performance. | [Official NEW-R4-014] |
 | 2026-05 | CCGG 3D live with Gigi (after-talk 05-20, secondary archive evidence); "CCGG MADNESS" MV (05-17; digital 05-29) | [Official CI1] [Observed CI3 1rIXU_4xGvY, bTxEGwMOQQI] |
+| 2026-06-07 | A German-language cover of inabakumori's "LAGTRAIN" (German lyrics credited to Jinja). | [Archive metadata NEW-R4-013] |
 | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice, "CCGG MADNESS" as Autofister with Gigi, "Break It Down" with Vestia Zeta and Shiori, "Cloudy Sheep" with Tsunomaki Watame and Calli (day 1); "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official CI4, CI8] |
 **Dossier · Hard Facts (continuity):**
 - Debut 2024-06-22 PDT (June 23 JST); birthday November 11; 162 cm; color green; fans Otomos; plays violin.
@@ -86,11 +93,14 @@ Owned files (sha256): `bible/characters/Elizabeth-Rose-Bloodflame.md` 8c923cecfa
 | Lore | A big cat from the Romance Empire who prepares Justice's criminal reports; sent after FUWAMOCO, she got distracted by crane games | [Official RP1] [Observed RP2 §Lore] |
 | 2024-06-22 PDT | Debut ("I've got my eyes on you 🐱 mamma mia"), last of Justice; official profile lists June 23 (JST) | [Official RP1] [Observed RP3] |
 | 2024-12-14 | VTuber Awards: Best Art VTuber | [Observed RP6; secondary report] |
+| 2025-06-22 | Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). | [Official NEW-R4-020] |
 | 2025-08-09 PDT | 3D showcase (5 PM PDT; Aug 10 09:00 JST) | [Official RP8] |
 | 2025-08-16 PDT | Justice 3D collaboration stream | [Official RP8] |
 | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, solo "Gacha x Gacha ADVENTURE!," "Neko Kaburi-Na" with Ina, Shiori and guest Oozora Subaru, "I'm Your Treasure Box" with Bijou and Cecilia | [Official RP5] |
 | 2025-11-16 | The "Doom" spell in Kiara's Mage Arena collab | [Observed RP7] |
+| 2026-03-07 JST | hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." | [Official NEW-R4-005/009/019] |
 | 2026-05 | First birthday 3D live concert (archived video w37yVSXhV_c); the shared timeline records the announced date as May 10 JST / May 9 PDT, but the actual zoned start remains unverified | [Observed RP3; hololive -Justice- History; hololive History 2023–2026 Timeline] |
+| 2026-05-10 | MV of her second original song "Draw." (the period is part of the title); official digital release 2026-05-11. | [Archive metadata; Official NEW-R4-017] |
 | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice (day 1); the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari"), "What an amazing swing" with Tsunomaki Watame and Kiara, and "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official RP4, RP9] |
 **Dossier · Hard Facts (continuity):**
 - Debut 2024-06-22 PDT (June 23 JST); birthday May 11; 155 cm; color pink; fans Chattini (Chattino, Chattina);

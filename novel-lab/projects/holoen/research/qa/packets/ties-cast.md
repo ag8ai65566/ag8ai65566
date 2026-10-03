@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git fca8f18. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git fa69d71. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Hakos Baelz
@@ -101,7 +101,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Raora Panthera | Genmate ("Raviolin," secondary) | Minecraft duo in the first weeks (secondary archive evidence); Raora illustrated Cecilia's debut ending screen and sweeping scene, and Cecilia animated Raora's ending screen and mascot stinger (archived debut credits); Raora helped design the Otomo (secondary); a Chattino model together (2025); "I'm Your Treasure Box" with Bijou at -All for One- | [Observed CI2, CI3 p_ZQs-kgUKI, JW7j8tKMOfY] [Official CI5] |
 - `bible/characters/IRyS.md › [SW] Relationships`: Cecilia Immergreen: Elden Ring Nightreign with Bijou (2025).
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Cecilia Immergreen | Genmate ("Raviolin," secondary) | Minecraft duo in the first weeks (secondary archive evidence); Raora illustrated Cecilia's debut ending screen and sweeping scene, and Cecilia animated Raora's ending screen and mascot stinger (archived debut credits); she helped design the Otomo (secondary); "I'm Your Treasure Box" with Bijou at -All for One- | [Observed RP2, RP3 JW7j8tKMOfY, p_ZQs-kgUKI] [Official RP5] |
-- `bible/characters/Raora-Panthera.md › Relationship Map`: | Koseki Bijou | Advent senior ("Graondstone") | A cooking off-collab with Bijou as "my assistant" (2024; the stream title's wording); Monster Hunter Wilds (2025); "I'm Your Treasure Box" with Cecilia (2025) | [Observed RP3] [Official RP5] |
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | Koseki Bijou | Advent senior ("Graondstone") | A cooking off-collab with Bijou as "my assistant" (2024; the stream title's wording); Monster Hunter Wilds (2025); "I'm Your Treasure Box" with Cecilia (2025) Co-credited vocalists on "Freaky Deaky Love" (2026-05-31). | [Observed RP3] [Official RP5] [Official, music/757] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Koseki Bijou: her "assistant" in a cooking off-collab (the stream title's word); "I'm Your Treasure Box" with Bijou and Cecilia.
 - `bible/world/Advent-Pairs.md › With -Justice-`: - **Cecilia Immergreen:** GAGA; "Cecemoco"; a Walking Dead off-collab with Bijou (2025) and a Chrono Trigger off-collab with Mococo (2026). [Observed S1]
 - `bible/world/hololive--Justice.md › How the Group Works`: - **In practice:** the pursuit supplies staged rivalries and collab jokes rather than arrests. Raora was sent after FUWAMOCO and got lost in crane games; Cecilia's plan was to dig a hole (Bijou can fly) or to give Advent rooms full of their favorite things and then remove the doors. Advent × Justice collabs use cop-and-robber jokes. [Observed S2 §Lore, secondary; S4]
@@ -117,6 +117,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Cecilia Immergreen × Nanashi Mumei
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai ("Automatowl") | Joined, with Gigi, Mumei's alphabet tier list (2025) | [Observed M2; M3] |
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024).
+
+### Cecilia Immergreen × Ninomae Ina'nis
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai; a joking rival (secondary accounts) | Cecilia framed a May 2026 music-making stream as preparing a birthday tune for her rival (title wording; Ina's participation not established). | [Archive metadata, ckworks DE7WL-YLk8Y] |
 
 ### Cecilia Immergreen × Ouro Kronii
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Ouro Kronii | Senior ("TimeChaser"; "Clockwork Orange" with Cecilia; secondary pair names) | Fatal Fury (2025), Hytale (2026); "MONSTER" at -All for One-; "Bright Tonight" (2025) | [Observed GG2, GG3] [Official GG5, GG7] |
@@ -217,9 +220,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Fauna-and-Mumei-Pairs.md › History`: | 2024-12-27 | Fauna on Kiara's HOLOTALK | — |
 
 ### Elizabeth Rose Bloodflame × Gigi Murin
-- `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Gigi Murin | Genmate ("Hot Pursuit," secondary) | Operation Tango (2024; Gigi's stream title read "i won't let Liz down!!!"), Fortnite (2024), "Finding the best parent of holoEN" (2026) | [Observed EB2, EB3] |
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Gigi Murin | Genmate ("Hot Pursuit," secondary) | Operation Tango (2024; Gigi's stream title read "i won't let Liz down!!!"), Fortnite (2024), "Finding the best parent of holoEN" (2026) Their June 2026 sponsored Final Fantasy XIV collab paired Elizabeth's first-day sprout stream with Gigi's Adopt-a-Sprout session; Gigi's description advertised a shared game community for grems and Rosarians. | [Observed EB2, EB3] [Archive metadata NEW-R4-003] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Gigi Murin: her Operation Tango partner (Gigi titled her stream "i won't let Liz down!!!").
-- `bible/characters/Gigi-Murin.md › Relationship Map`: | Elizabeth Rose Bloodflame | Genmate ("Hot Pursuit," secondary) | Operation Tango; Gigi's stream title read "i won't let Liz down!!!"; "DON'T TELL LIZ!" (secondary) | [Observed GG2, GG3] |
+- `bible/characters/Gigi-Murin.md › Relationship Map`: | Elizabeth Rose Bloodflame | Genmate ("Hot Pursuit," secondary) | Operation Tango; Gigi's stream title read "i won't let Liz down!!!"; "DON'T TELL LIZ!" (secondary) A sponsored FFXIV collab (2026-06-14 UTC): Gigi's Adopt-a-Sprout session for Elizabeth's first-day sprout stream, advertising a shared community for grems and Rosarians. | [Observed GG2, GG3] [Archive metadata NEW-R4-003] |
 - `bible/characters/Gigi-Murin.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her Operation Tango partner (Gigi's stream title: "i won't let Liz down!!!").
 - `bible/characters/Shiori-Novella.md › Behavioral Traits`: 3. She is a self-made producer: she records and edits her own vlogs, writes community posts "like some public diary," makes distinctive titles, thumbnails and overlays, and in 2026 released "Into The Void," a four-part original motion comic voiced by herself, Elizabeth, Gigi and Nerissa. [Official SN4] [Observed SN2; SN3 kEoFVaHsy_U, 3qrQ4KcvUb4]
 - `bible/world/Justice-Pairs.md › Inside Justice`: - **Gigi and Elizabeth ("Hot Pursuit"):** Operation Tango ("i won't let Liz down!!!," 2024-07-04), Fortnite with all four (2024-10-02), "Finding the best parent of holoEN" (2026-04-06); "DON'T TELL LIZ!" is one of Gigi's wiki quotes. [Observed S1; S2, secondary]
@@ -300,9 +303,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | kouhai she is a fan of | Her cameo at their 3D debut (2024); their watch-along of her 2025 solo concert ("respect to our sultry cat senpai"); a 2025 short with Korone | [FUWAMOCO card] [OK5] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Fuwawa and Mococo Abyssgard | Advent genmates ("Sound Hounds") | She claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa" | [Observed N2] |
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she claims, as a bit, to be the third sister, "Mofufu"; Fuwawa calls her "Newissa."
-- `bible/characters/Raora-Panthera.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | Advent seniors; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 | [Official RP4] |
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | Advent seniors; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 The twins describe her teasing their tails and chasing them around the Serendipity stage in their MC comedy. | [Official RP4] [Secondary, hololivetoday Q&A] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu Neko.
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | FUWAMOCO | Genmates ("Pen Pups") | The twins once mistook a Minecraft cow for her (her black-and-white coloring); she joked Mococo was hallucinating Fuwawa | [Observed SN2 §Miscellaneous; FUWAMOCO wiki, secondary] |
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Fuwawa Abyssgard, Mococo Abyssgard | Advent kouhai | [Lead, secondary: a Mage Arena clip lists Kiara and both twins in one group session (clip published 2025-10-25); stream date and exchanges unchecked.] | [Secondary NEW-R1-010] |
 - `bible/world/Advent-Pairs.md › Inside Advent`: - **Shiori and FUWAMOCO ("Pen Pups"):** the twins mistook a black-and-white Minecraft cow for Shiori, so she "is a cow"; Shiori joked that Mococo was hallucinating Fuwawa. [Observed S2 Shiori, Fuwawa §Miscellaneous, secondary]
 - `bible/world/FUWAMOCO.md › Conflicts and Story Hooks`: 3. Fuwawa teases too hard; Mococo answers with a Pup Talk aimed at Fuwawa.
 - `bible/world/FUWAMOCO.md › Hard Facts`: - Debut 2023-07-31 (JST); birthdays February 1 (Fuwawa) and February 2 (Mococo); colors blue (Fuwawa) and pink (Mococo); one shared channel; FUWAMOCO MORNING's regular format is Mon/Wed/Fri.
@@ -337,6 +341,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Fuwawa Abyssgard × Shiori Novella
 - `bible/world/Advent-Pairs.md › Inside Advent`: - **Shiori and FUWAMOCO ("Pen Pups"):** the twins mistook a black-and-white Minecraft cow for Shiori, so she "is a cow"; Shiori joked that Mococo was hallucinating Fuwawa. [Observed S2 Shiori, Fuwawa §Miscellaneous, secondary]
 - `bible/world/FUWAMOCO.md › How the Twins Work Together`: - **Early joke:** "Fuwawa doesn't exist," because only Mococo joined the first Advent Minecraft collab; Shiori joked Mococo was hallucinating her. They "corrected" it on their show. [Observed S1 §Miscellaneous, secondary]
+
+### Fuwawa Abyssgard × Takanashi Kiara
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Fuwawa Abyssgard, Mococo Abyssgard | Advent kouhai | [Lead, secondary: a Mage Arena clip lists Kiara and both twins in one group session (clip published 2025-10-25); stream date and exchanges unchecked.] | [Secondary NEW-R1-010] |
 
 ### Gawr Gura × Hoshimachi Suisei
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2024-07-05 | hololive night at Dodger Stadium | Suisei, Gura, Pekora |
@@ -417,7 +424,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **Takanashi Kiara, Gawr Gura:** "Usada Kensetsu" (Kiara) and "Apex Predators" (Gura) are secondary-listed names; a joint Apex session is not established. [S2 Botan, secondary]
 
 ### Gawr Gura × Takanashi Kiara
-- `bible/characters/Gawr-Gura.md › Relationship Map`: | Takanashi Kiara | Myth genmate ("SameTori") | Kiara calls her "Goobidiba" and taught her Japanese and German (and German swears); Gura filled the back room of Kiara's KFP building with chickens in a Minecraft prank (2020-11-15) | [Observed G2 infobox; G13; G20 §KFP, secondary] |
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | Takanashi Kiara | Myth genmate ("SameTori") | Kiara calls her "Goobidiba" and taught her Japanese and German (and German swears); Gura filled the back room of Kiara's KFP building with chickens in a Minecraft prank (2020-11-15) The final Myth relay's Jackbox segment ran on Kiara's channel (reported 2025-04-30). | [Observed G2 infobox; G13; G20 §KFP, secondary] [Secondary NEW-R1-017] |
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Takanashi Kiara: calls her "Goobidiba" and taught her Japanese and German, swears included; Gura once filled Kiara's KFP back room with chickens, and appeared as her 34th HOLOTALK guest near her graduation.
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: - Measured (N20; a 2026 solo chat): median pitch about 214 Hz (p10–p90 172–297 Hz), a mid-range speaking voice like IRyS's (214–226 Hz), lower than Kiara or Gura; about 159 words per minute of speech. Group-stream windows read higher (284–289 Hz) because several voices share them. Sample results only.
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Gawr Gura (graduated): R.E.P.O. with Kiara and Kronii (2025).
@@ -481,7 +488,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: IRyS, Gigi and Kronii: "Bright Tonight"
 
 ### Gigi Murin × Koseki Bijou
-- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage | [Observed CI2, CI3] [Official CI5] |
+- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage She framed a May 2026 music-making stream as preparing a tune for her rival's approaching birthday (title wording; Ina's participation not established). | [Observed CI2, CI3] [Official CI5] [Archive metadata NEW-R4-011] |
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025).
 
 ### Gigi Murin × Mococo Abyssgard
@@ -511,7 +518,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Gigi Murin × Ninomae Ina'nis
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | FUWAMOCO (both twins) | Advent | With Gigi, guest-hosted FUWAMOCO MORNING #167 (secondary); "SHALLYS" with Ina at -All for One-; the twins had hoped for a robot-maid member before she debuted | [Observed CI2; Mococo file] [Official CI5] |
-- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage | [Observed CI2, CI3] [Official CI5] |
+- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage She framed a May 2026 music-making stream as preparing a tune for her rival's approaching birthday (title wording; Ina's participation not established). | [Observed CI2, CI3] [Official CI5] [Archive metadata NEW-R4-011] |
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Shiori Novella: "Rating Your Clocks" together (2025) and "MONSTER" with Ina and Gigi on stage (2025).
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Ouro Kronii: they hosted "Rating Your Clocks" together (2025) and sang "MONSTER" with Ina and Gigi at the 2025 concert.
 
@@ -552,7 +559,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise unitmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
 
 ### Hakos Baelz × Houshou Marine
-- `bible/characters/Houshou-Marine.md › Relationship Map`: | Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers | [MA5] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers). | [MA5] [Secondary, dengekionline 202609/89494] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Nanashi Mumei (graduated) | — | Played the horror game featuring Marine with Bae (2023) | [MA5 RY1GkF4jMls] |
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Hakos Baelz: that Mario Kart and house party; Bae and Mumei played the horror game featuring Marine (2023).
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Houshou Marine: Mumei and Bae played "Truth of Beauty Witch," the horror game featuring Marine (2023).
@@ -567,10 +574,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Hakui-Koyori.md › Voice Profile`: - **Language:** streams in Japanese; with the English cast she has guested on FUWAMOCO's English-language morning show and played with them, Bae, IRyS and others. [KO5]
 - `bible/characters/IRyS.md › [SW] Relationships`: (Bae: "Complicated XD"), and Bae, who met IRyS as her "very first senpai," admires her humor that makes everyone comfortable.
 - `bible/characters/IRyS.md › [SW] Relationships`: Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting "married" and "divorced," and a creative partner: in their 2026-06-05 pre-concert interview IRyS said she relies on Bae's creative direction when she's indecisive and called their dynamic "a can of worms"
-- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] [Official NEW-R3-007] |
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: (We Were Here, a 2024 sleepover marathon); with Bae, Calli and IRyS she sang "BLUE CLAPPER" at the 2024 English concert.
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2022 | CHADCast begins with IRyS and Hakos Baelz. | [Observed C12] |
-- `bible/characters/Mori-Calliope.md › Relationship Map`: | IRyS, Hakos Baelz | CHADCast cohosts | A chaotic podcast trio (archived from January 2022); their song "Here Comes the CHADCast" (2026-09-01). Secondary references record Bae's nickname for her, "Cori Malliope." "BLUE CLAPPER" with Bijou at -Breaking Dimensions- (2024); the "R x R x R" duo with Bae at -All for One- (2025); Bae's GriMoire watch-along (2025) | [Observed C12; C4 nickname list, secondary] |
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"; "BLUE CLAPPER" with Bijou, 2024; "Here Comes the CHADCast," 2026); Bae sang "R x R x R" with her (2025); IRyS joined her as the "Two Pink Women" of Silent Hill 2.
 - `bible/characters/Ouro-Kronii.md › Behavioral Traits`: 7. [Unverified, title only] When someone else is easier to frighten, she helps set up the scare (with IRyS, on Baelz). [K16 clip title; off the card]
@@ -595,18 +601,16 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Hakos Baelz × Koseki Bijou
 - `bible/characters/IRyS.md › [SW] Relationships`: At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
 - `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: FUWAMOCO: watched FLOW GLOW's debut with Bijou (2024, secondary archive); R.E.P.O. with Bae (2025-05-25).
-- `bible/characters/Mori-Calliope.md › Relationship Map`: | IRyS, Hakos Baelz | CHADCast cohosts | A chaotic podcast trio (archived from January 2022); their song "Here Comes the CHADCast" (2026-09-01). Secondary references record Bae's nickname for her, "Cori Malliope." "BLUE CLAPPER" with Bijou at -Breaking Dimensions- (2024); the "R x R x R" duo with Bae at -All for One- (2025); Bae's GriMoire watch-along (2025) | [Observed C12; C4 nickname list, secondary] |
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"; "BLUE CLAPPER" with Bijou, 2024; "Here Comes the CHADCast," 2026); Bae sang "R x R x R" with her (2025); IRyS joined her as the "Two Pink Women" of Silent Hill 2.
 - `bible/world/Advent-Pairs.md › With Promise`: - **Hakos Baelz:** "BaeBi" with Bijou (#BAEBISleepOver, 2024-08-11). [Observed S1]
 - `bible/world/Hakos-Baelz-Pairs.md › [SW] Description`: (2026); they sang "BLUE CLAPPER" with Koseki Bijou in 2024, and Bae and Calli sang "R x R x R" in 2025.
 
 ### Hakos Baelz × Mori Calliope
-- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Hakos Baelz | — | "BAE-GEMITE DOMINATION" episode 4 with Nene (2023-04-22); a "KHAOS KITCHEN" taste tester with Calli and Oozora Subaru (2023-11-24) | [KO5 WwjB7QSmQng, NdLiUW-nUlk] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Hakos Baelz | — | "BAE-GEMITE DOMINATION" episode 4 with Nene (2023-04-22); a "KHAOS KITCHEN" taste tester with Calli and Oozora Subaru (2023-11-24) Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers). | [KO5 WwjB7QSmQng, NdLiUW-nUlk] [Secondary, dengekionline 202609/89494] |
 - `bible/characters/Houshou-Marine.md › Background Timeline`: | 2023-08 | The horror game "Truth of Beauty Witch -Marine's treasure ship-" features her (Calli played it 08-14; Bae with Mumei 08-23); an off-collab house party with Calli and Bae (08-14) | [Observed MA2 §Events] [MA5 Mf-sAjsuSig, RY1GkF4jMls, DY5VThfehW8] |
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Mori Calliope: Calli's English lesson #01 (2022), Mario Kart (2021) and a house-party off-collab with Bae (2023).
-- `bible/characters/IRyS.md › Relationship Map`: | Mori Calliope | First collab partner (2021) | "MorIRyS"; CHADCast podcast trio with Bae | [Observed R2 §2021, units] |
 - `bible/characters/IRyS.md › [SW] Relationships`: Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae.
-- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] [Official NEW-R3-007] |
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: (We Were Here, a 2024 sleepover marathon); with Bae, Calli and IRyS she sang "BLUE CLAPPER" at the 2024 English concert.
 - `bible/characters/Sakamata-Chloe.md › Background Timeline`: | 2023 | 1 million subscribers (02-18, secondary); HOLOYOI #01 with Calli and Lui (03-23); "BAE-GEMITE DOMINATION" (04-29); a cover with Bae (10-30); the original Hoshimatic Project lineup (11-, secondary roster reference) | [Observed CH2] [CH5 UuL_nORzfNM, z4-5Hq5AKG4, 9EAIDwXj4Jk] |
 - `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2023 | Calli's HOLOYOI #02 with Flare (04-20); first solo album "NOESANPO" (official digital release 11-25; birthday merchandise orders opened 11-24); a "Yuru Holo" team Mario Kart event with FUWAMOCO and Bae among the participants (12-12) | [NO5] [Official music 359] |
@@ -621,9 +625,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Hakos Baelz | Council kouhai | An Urban Dictionary Challenge with Kronii and Mumei (2022-08-20, Bae's stream; archived metadata jWvpe0Hs5wI) | [Bae file HB3, HB5, HB8, HB20] |
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Hakos Baelz: an Urban Dictionary Challenge with Kronii and Mumei on Bae's stream (2022).
 - `bible/characters/Houshou-Marine.md › Background Timeline`: | 2023-08 | The horror game "Truth of Beauty Witch -Marine's treasure ship-" features her (Calli played it 08-14; Bae with Mumei 08-23); an off-collab house party with Calli and Bae (08-14) | [Observed MA2 §Events] [MA5 Mf-sAjsuSig, RY1GkF4jMls, DY5VThfehW8] |
-- `bible/characters/Houshou-Marine.md › Relationship Map`: | Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers | [MA5] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers). | [MA5] [Secondary, dengekionline 202609/89494] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Nanashi Mumei (graduated) | — | Played the horror game featuring Marine with Bae (2023) | [MA5 RY1GkF4jMls] |
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Hakos Baelz: that Mario Kart and house party; Bae and Mumei played the horror game featuring Marine (2023).
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Hakos Baelz | Genmate (4 / 31 / 27 / 5 / 3; a metadata count, not a ranking) | A recurring collab partner: Mad-Lib theatre (2021), an off-collab "I Found A Rat In My House!!!" (2024), "bae wants to play!!!" (Overwatch 2, 2025) A cover of Kana Nishino's "Best Friend" during Mumei's final active week (2025-04-25 JST); Bae's upload credits both singers and uses the pair label "preYdator." | [Observed M3] [Archive metadata NEW-R2-013] |
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Houshou Marine: Mumei and Bae played "Truth of Beauty Witch," the horror game featuring Marine (2023).
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Nanashi Mumei (graduated) | Council genmate ("KronMei") | [Unverified, title only: the "Flower" bit with Mumei and Baelz; Mumei accidentally blowing up the Bunkeronii's entrance] | [Observed K14 clip, K8 §Quotes and §Relationships, secondary; K28 clip titles] |
 - `bible/characters/Ouro-Kronii.md › Voice Profile`: - "Flower." → quote [Observed K8 §Quotes, secondary]; the flat, repeated Minecraft bit with Baelz and Mumei is [Unverified, K14 clip title; off the card].
@@ -635,6 +640,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Hakos Baelz × Nerissa Ravencroft
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: "HELP!!" with Kobo Kanaeru and Hakos Baelz (day 1); unit Bloodraven with Nerissa, "Cruel Angel's Thesis" (day 2); "SUPERNOVA SUPER GIRL" and "ABOVE BELOW" with Justice | [Official EB4, EB8] |
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 
 ### Hakos Baelz × Ninomae Ina'nis
 - `bible/characters/Ouro-Kronii.md › Voice Profile`: - Colleagues: by name or short form (Ina, Bae, IRyS).
@@ -661,6 +667,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Hakos Baelz × Raora Panthera
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Raora Panthera: Mario Party on Bae's 24-hour stream.
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
+- `bible/characters/IRyS.md › [SW] Relationships`: Raora Panthera: Mario Party Jamboree with Bae (2024).
 - `bible/world/Hakos-Baelz-Pairs.md › BaeRyS`: - **Together:** a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); a Valentine bento cooked on handcam (2024-02-14); HoloEarth with Kureiji Ollie (2024); a New Year's countdown off-collab watch-along (2024-12-31); Snow Bros. 2 (2025-04-17); Mario Party with Raora on Bae's 24-hour stream (2024-11-25). [S1]
 
 ### Hakos Baelz × Shiori Novella
@@ -794,7 +802,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nakiri-Ayame.md › [SW] Relationships`: Houshou Marine: a third-generation junior whom secondary accounts say Ayame admires.
 
 ### Houshou Marine × Nanashi Mumei
-- `bible/characters/Houshou-Marine.md › Relationship Map`: | Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers | [MA5] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers). | [MA5] [Secondary, dengekionline 202609/89494] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Nanashi Mumei (graduated) | — | Played the horror game featuring Marine with Bae (2023) | [MA5 RY1GkF4jMls] |
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Hakos Baelz: that Mario Kart and house party; Bae and Mumei played the horror game featuring Marine (2023).
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Houshou Marine: Mumei and Bae played "Truth of Beauty Witch," the horror game featuring Marine (2023).
@@ -839,8 +847,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### IRyS × Koseki Bijou
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: IRyS and Bijou: Elden Ring Nightreign.
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Mori Calliope and IRyS: her CHADCast cohosts; "BLUE CLAPPER" with them and Koseki Bijou (2024); "R x R x R" with Calli (2025); secondary references record her nickname "Cori Malliope."
+- `bible/characters/IRyS.md › Relationship Map`: | Koseki Bijou | Frequent 2025–2026 co-op partner | Horror co-ops (Dead Space 3, Resident Evil 6 "w/ Biboo," 2026) Archived metadata dates a joint watchalong of *Gundam 0080: War in the Pocket* that IRyS hosted (2026-09-05). | [Observed R3 titles] [Archive metadata NEW-R2-002] |
 - `bible/characters/IRyS.md › Story Engine`: 5. A horror co-op with Bijou where IRyS is the one scaring her partner.
-- `bible/characters/Mori-Calliope.md › Relationship Map`: | IRyS, Hakos Baelz | CHADCast cohosts | A chaotic podcast trio (archived from January 2022); their song "Here Comes the CHADCast" (2026-09-01). Secondary references record Bae's nickname for her, "Cori Malliope." "BLUE CLAPPER" with Bijou at -Breaking Dimensions- (2024); the "R x R x R" duo with Bae at -All for One- (2025); Bae's GriMoire watch-along (2025) | [Observed C12; C4 nickname list, secondary] |
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"; "BLUE CLAPPER" with Bijou, 2024; "Here Comes the CHADCast," 2026); Bae sang "R x R x R" with her (2025); IRyS joined her as the "Two Pink Women" of Silent Hill 2.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at Dodger Stadium's hololive night (2025).
 - `bible/world/Advent-Pairs.md › History`: | 2025-07-05 | hololive night at Dodger Stadium: Bijou with Ina and IRyS | [Official S8] |
@@ -857,7 +865,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Hakos-Baelz.md › Hard Facts`: - Official stage units: BaeRyS with IRyS (Serendipity 2026); CHADCast trio with Calli and IRyS.
 - `bible/characters/Hakos-Baelz.md › [SW] Background`: A singer and dancer, she has released originals such as "PLAY DICE!", "PSYCHO", "RxRxR", "FEAST" and "SNAKE EYES," the album "ZODIAC," the EP "Pandæmonium" and "HIDE & SEEK" with Usada Pekora (2023); she co-hosts the CHADCast podcast with IRyS and Mori Calliope (their song "Here Comes the CHADCast," 2026) and holds "Febaerary," a month of daily streams before her birthday.
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Mori Calliope and IRyS: her CHADCast cohosts; "BLUE CLAPPER" with them and Koseki Bijou (2024); "R x R x R" with Calli (2025); secondary references record her nickname "Cori Malliope."
-- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hakos Baelz | Senior ("BaeBi") | We Were Here (2023); a JoJo watch-along (2024); #BAEBISleepOver (2024-08-11/12); UNO on Bae's #BaeTV24 stream (2024-11-25); "BLUE CLAPPER" with Bae, Calli and IRyS at -Breaking Dimensions- (2024) Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Observed KB3; Bae archive] [Bae file HB3, HB5, HB8, HB20] [Official NEW-R3-007] |
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: (We Were Here, a 2024 sleepover marathon); with Bae, Calli and IRyS she sang "BLUE CLAPPER" at the 2024 English concert.
 - `bible/characters/Nerissa-Ravencroft.md › Background Timeline`: | 2025-05-24 | 3D concert "Requiem for Love – A JukeBox Musical" (guests incl. Calli, IRyS) | [Observed N3 titles] |
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Background`: (2025) with Calli and IRyS as guests, sang the duet "OVER//RIDE" with Calli (2025), and released "OYOME♡HOLIC" and "Blue World"
@@ -944,6 +952,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2023-10-08/09 | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
 - `bible/world/hololive.md › History`: | 2023-10-09 | -Promise- formed (IRyS joins the remaining Council) | Kronii's group name |
 
+### IRyS × Raora Panthera
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Raora Panthera | Justice kouhai | Co-presenters (with IRyS) of the official Serendipity merchandise infomercial (May 2026). | [Archive metadata, ckworks ew00E7t4Dow] |
+
 ### IRyS × Shiori Novella
 - `bible/characters/AZKi.md › Background Timeline`: | 2026-03-07 | hololive 7th fes. "Ridin' on Dreams," STAGE 3 (with IRyS, Bae, Shiori) | [Official AZ7] |
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella.
@@ -1006,12 +1017,14 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [Shirogane Noel file NO5; Kikirara Vivi file VI5; archive metadata OMDzBQohAf8, inherited and not reopened] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kikirara Vivi and Shirogane Noel: Mumei's Gartic Phone (2025).
 
 ### Kikirara Vivi × Shirogane Noel
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [Shirogane Noel file NO5; Kikirara Vivi file VI5; archive metadata OMDzBQohAf8, inherited and not reopened] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025).
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Shirogane Noel, Kikirara Vivi and Elizabeth Rose Bloodflame: her Gartic Phone EN + ID + JP collab (2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kikirara Vivi and Shirogane Noel: Mumei's Gartic Phone (2025).
 
 ### Koseki Bijou × Mococo Abyssgard
 - `bible/world/Advent-Pairs.md › With -Justice-`: - **Cecilia Immergreen:** GAGA; "Cecemoco"; a Walking Dead off-collab with Bijou (2025) and a Chrono Trigger off-collab with Mococo (2026). [Observed S1]
@@ -1050,10 +1063,11 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Koseki Bijou × Ninomae Ina'nis
 - `bible/characters/Cecilia-Immergreen.md › Background Timeline`: | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice; "Wind-Up," the first Justice solo; "SHALLYS" with Ina and FUWAMOCO (on violin); "I'm Your Treasure Box" with Bijou and Raora | [Official CI5] |
-- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage | [Observed CI2, CI3] [Official CI5] |
+- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage She framed a May 2026 music-making stream as preparing a tune for her rival's approaching birthday (title wording; Ina's participation not established). | [Observed CI2, CI3] [Official CI5] [Archive metadata NEW-R4-011] |
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO and sang "I'm Your Treasure Box" with Bijou and Raora.
 - `bible/characters/IRyS.md › [SW] Relationships`: Koseki Bijou ("Biboo"): her horror co-op partner (Dead Space 3, Resident Evil 6); with Ina they starred at hololive night at Dodger Stadium (2025).
-- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her | [Observed I2 §Miscellaneous; I14] [Observed—published interview I6] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Ninomae Ina'nis | Senior ("TakoRocky") | Monster Hunter (2023–2025); Ina designed their Monster Hunter Wilds collab outfits (2025-12) Monster Hunter Wilds outfit project: Bijou chose Gore Magala, Ina Nu Udra. | [Observed KB3; X post via wiki] [Secondary, Siliconera interview] |
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her Their Monster Hunter Wilds outfit project: Bijou chose Gore Magala; Ina settled on Nu Udra after considering Uth Duna, used Capcom's reference materials, and joked about preparing an absurdly long justification for changing her monster. | [Observed I2 §Miscellaneous; I14] [Observed—published interview I6] [Secondary NEW-R1-013] |
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at Dodger Stadium's hololive night (2025).
 - `bible/world/Advent-Pairs.md › History`: | 2025-07-05 | hololive night at Dodger Stadium: Bijou with Ina and IRyS | [Official S8] |
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive night at Dodger Stadium (2025-07-05, Los Angeles):** the second hololive–Dodgers collaboration, starring Ina, IRyS and Bijou, with a stadium sing-along during the game. [Official, https://hololive.hololivepro.com/en/news/20250731-01-353/]
@@ -1091,16 +1105,18 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Advent.md › [SW] Description`: Inside the group: Nerissa calls Shiori her "wife" while Shiori plays hard to get (ShioRaven); Bijou calls Shiori "our glorious leader"
 
 ### Koseki Bijou × Takanashi Kiara
-- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" | [Official KB4] [Observed KB3; Kiara archive] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Official KB4] [Observed KB3; Kiara archive] [Official NEW-R3-007] |
 - `bible/characters/Koseki-Bijou.md › Story Engine`: 2. Kiara and Biboo try to stop saying "67" for an entire collab.
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Takanashi Kiara: her 2026 Serendipity partner ("Rocku Wawa"), who calls her a "hidden gem" and encouraged her through hard choreography for a song with Kiara and Ame; Bijou admires Kiara's "confidence," and they keep saying "67."
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
 - `bible/world/Advent-Pairs.md › Conflicts and Story Hooks`: 5. Kiara and Bijou try to keep "67" out of a serious concert rehearsal.
 - `bible/world/Advent-Pairs.md › History`: | 2023-08-12 | HOLOTALK with Kiara; Bijou's Undertale replay with Calli | senior ties |
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Takanashi Kiara | 4th-anniversary live "MIRAGE" (2024-10-06); "KIARA & FRIENDS: H!P Cover Song Spring Concert" (2025-04-21); "Drawn to Dawn" with Ina (2026-03-27/28 PDT, The Wiltern); World Tour '24 performer; Serendipity with Bijou; birthday 3D live (2026-07-06 PDT); "Seasons From Within" | Kiara file T11, T12, T10; S3 titles |
 
 ### Koseki Bijou × Watson Amelia
-- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" | [Official KB4] [Observed KB3; Kiara archive] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Official KB4] [Observed KB3; Kiara archive] [Official NEW-R3-007] |
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Takanashi Kiara: her 2026 Serendipity partner ("Rocku Wawa"), who calls her a "hidden gem" and encouraged her through hard choreography for a song with Kiara and Ame; Bijou admires Kiara's "confidence," and they keep saying "67."
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
 
 ### La+ Darknesss × Mori Calliope
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
@@ -1131,6 +1147,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Mococo Abyssgard × Shiori Novella
 - `bible/world/Advent-Pairs.md › Inside Advent`: - **Shiori and FUWAMOCO ("Pen Pups"):** the twins mistook a black-and-white Minecraft cow for Shiori, so she "is a cow"; Shiori joked that Mococo was hallucinating Fuwawa. [Observed S2 Shiori, Fuwawa §Miscellaneous, secondary]
 - `bible/world/FUWAMOCO.md › How the Twins Work Together`: - **Early joke:** "Fuwawa doesn't exist," because only Mococo joined the first Advent Minecraft collab; Shiori joked Mococo was hallucinating her. They "corrected" it on their show. [Observed S1 §Miscellaneous, secondary]
+
+### Mococo Abyssgard × Takanashi Kiara
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Fuwawa Abyssgard, Mococo Abyssgard | Advent kouhai | [Lead, secondary: a Mage Arena clip lists Kiara and both twins in one group session (clip published 2025-10-25); stream date and exchanges unchecked.] | [Secondary NEW-R1-010] |
 
 ### Mori Calliope × Nanashi Mumei
 - `bible/characters/Houshou-Marine.md › Background Timeline`: | 2023-08 | The horror game "Truth of Beauty Witch -Marine's treasure ship-" features her (Calli played it 08-14; Bae with Mumei 08-23); an off-collab house party with Calli and Bae (08-14) | [Observed MA2 §Events] [MA5 Mf-sAjsuSig, RY1GkF4jMls, DY5VThfehW8] |
@@ -1202,10 +1221,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Ouro-Kronii.md › Hard Facts`: - Aliases: Kronini, Kroniicopter, Kronster (by Calli), Tam Tender (by Raora), Owo-senpai (by Cecilia). Performed identities are excluded from matching unless a story uses them: Ouro Krono (-Ministry- persona, goodbye "Kronovoir") and Tam Gandr (ENreco). [Observed K8 nickname list, §Name and §Miscellaneous, secondary]
 
 ### Mori Calliope × Shiori Novella
-- `bible/characters/Mori-Calliope.md › Relationship Map`: | Shiori Novella | 2026 Serendipity partner | Shiori calls her "Mor Mori." Together they pursue absurd premises. | [Official C11] |
+- `bible/characters/Mori-Calliope.md › Relationship Map`: | Shiori Novella | 2026 Serendipity partner | Shiori calls her "Mor Mori." Together they pursue absurd premises. In their June 2026 interview Calli credits Shiori with encouraging her to pursue content that interests her personally instead of chasing whatever is fashionable. | [Official C11] [Official C11] |
 - `bible/characters/Mori-Calliope.md › Story Engine`: 5. Shiori pitches an absurd framing for a serious performance, and Calli catches herself defending it.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Shiori Novella: her 2026 Serendipity partner, who calls her "Mor Mori"; they chase absurd premises, and Calli admits she is "a little obsessed with her."
-- `bible/characters/Shiori-Novella.md › Relationship Map`: | Mori Calliope | Senior; Serendipity 2026 duo ("Last Writes") | Calli's "#DEEP" kids'-movie talk (2024-01-09) and Stardew Valley (2024-12-20); in the official interview Calli is "a little obsessed with her" and Shiori admires Calli's "work ethic and boundaries"; their dynamic: "Unhinged" (Calli) | [Official SN4] [Observed Calli archive] |
+- `bible/characters/Shiori-Novella.md › Relationship Map`: | Mori Calliope | Senior; Serendipity 2026 duo ("Last Writes") | Calli's "#DEEP" kids'-movie talk (2024-01-09) and Stardew Valley (2024-12-20); in the official interview Calli is "a little obsessed with her" and Shiori admires Calli's "work ethic and boundaries"; their dynamic: "Unhinged" (Calli) In their June 2026 interview Calli credits Shiori with encouraging her to pursue personally interesting content over trends. | [Official SN4] [Observed Calli archive] [Official, Serendipity interview05] |
 - `bible/characters/Shiori-Novella.md › Story Engine`: 3. Calli and Shiori record a "deep-dive" on a kids' cartoon that goes too far; the manager bonks both.
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Mori Calliope: her 2026 Serendipity partner in Last Writes ("When My Devil Rises"), who admits she is "a little obsessed with her"; Shiori admires Calli's "work ethic and boundaries," and they bond over dark taste and absurd deep-dives.
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Mori Calliope | Solo concert "New Underworld Order" (2022-07-21); "GriMoire" at the Hollywood Palladium (2025-02-26), the first solo concert by a hololive production talent outside Japan; World Tour '25 lead; Serendipity with Shiori; 6th birthday 3D live "UNCUT ROCK!!" with a live band (2026-04-04 JST); Myth's 6th-anniversary 3D live "Seasons From Within" (2026-09-19 PDT) | Calli file C6, C19, C11; S1 |
@@ -1348,6 +1367,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025).
 - `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Shirogane Noel: Mumei's Gartic Phone collab (2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kikirara Vivi and Shirogane Noel: Mumei's Gartic Phone (2025).
 
 ### Nanashi Mumei × Takanashi Kiara
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: (2023), and Kiara hosted Mumei as HOLOTALK's 33rd guest on 2025-04-22.
@@ -1402,6 +1422,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - IRyS debuted 2021-07-11 (senior to Kronii by a month, to Nerissa by two years); Nerissa 2023-07-31.
 
 ### Nerissa Ravencroft × Raora Panthera
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |
 
 ### Nerissa Ravencroft × Shiori Novella
@@ -1610,6 +1631,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Shirogane Noel: hololive Fantasy genmate; the units Bara☆Dice and Yakamashi Musume (with Lamy and Inugami Korone, per archived metadata).
 
 ### Shishiro Botan × Takanashi Kiara
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Shishiro Botan | JP senpai | A fellow builder in Botan's Minecraft "Usada Kensetsu"; she joined the Usaken summer-festival planning and building collab (2021-06-07), and contemporary viewers describe Botan checking on Kiara's building team. | [Archive metadata NEW-R1-009; secondary clip record] |
 - `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **Takanashi Kiara, Gawr Gura:** "Usada Kensetsu" (Kiara) and "Apex Predators" (Gura) are secondary-listed names; a joint Apex session is not established. [S2 Botan, secondary]
 
 ### Shishiro Botan × Takane Lui
@@ -1634,10 +1656,11 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/holoX.md › Conflicts and Story Hooks`: 2. Kiara visits holoX's base for a HOLOTORI meeting and Lui has to explain why the founder is in time-out.
 
 ### Takanashi Kiara × Watson Amelia
-- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" | [Official KB4] [Observed KB3; Kiara archive] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Official KB4] [Observed KB3; Kiara archive] [Official NEW-R3-007] |
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Takanashi Kiara: her 2026 Serendipity partner ("Rocku Wawa"), who calls her a "hidden gem" and encouraged her through hard choreography for a song with Kiara and Ame; Bijou admires Kiara's "confidence," and they keep saying "67."
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate | Kiara's EN oshi ("#1 Ame gosling"), credited for help with 3D productions; Ame made HOLOTALK intro material | [Observed T2 §Likes and dislikes] [Official T9] |
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material; "Kiara like, threw herself at me… she hugged me!" | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug.
 - `bible/world/AmeSame.md › [SW] Description`: At the 2026 baseline Ame is an affiliate and Gura has graduated; their shared history lives on in callbacks, their gold-and-blue colors, and Kiara's tribute song "Blue & Gold."

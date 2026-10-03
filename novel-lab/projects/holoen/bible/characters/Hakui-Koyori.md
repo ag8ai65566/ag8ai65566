@@ -141,8 +141,8 @@ Public exchanges only. Group ties are on the world card "holoX."
 | La+ Darknesss | holoX founder | A sponsored "#stons" deep-breathing collab (2024-12-16); a cover with La+ and Marine (2025) | [KO4 lz37xE9ED1I, ZMpsiRdqXfE] |
 | Takane Lui, Kazama Iroha | holoX | Secondary accounts describe both as having an early "seiso" image (not a named duo); Lui: Blue Journey | [KO2] [Blue Journey roster] |
 | Sakamata Chloe (affiliate) | "KoyoChlo" (archived titles) | A running "#こよクロ disband!" gag born in co-op games; their last collab before Chloe's graduation (2025-01-14) and the duet cover 「一番の宝物」 (2025-01-28) | [KO4 mxIoysy6gJ4, nCPHzr_iF7s] |
-| AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] |
-| Houshou Marine | "Pink-haired pair" | A talk testing whether they are alike (2025); Marine backseats her Pikachu game (2025); Blue Journey | [KO4] [KO2] |
+| AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) Lamy: "Snow halation" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] [Official, 7th fes. STAGE 1 report] |
+| Houshou Marine | "Pink-haired pair" | A talk testing whether they are alike (2025); Marine backseats her Pikachu game (2025); Blue Journey She joined Marine's Holo Koshien session (2026-09-17). | [KO4] [KO2] [Archive metadata, ckworks 73sl-3cOp2E] |
 | Shirogane Noel | Blue Journey | "NoeKoyo" in a baseball-game exhibition match (2025) | [KO4] [KO2] |
 | Hoshimachi Suisei | Hoshimatic Project | Idol-group practice unit (2023–), "BEEP BEEP" (2026) | [KO2] |
 | Shishiro Botan | NePoX; Blue Journey | NePoLaBo × holoX events (official 2026 roster); Blue Journey (official roster) | [KO2] [NePoX roster] [Blue Journey roster] |
@@ -267,6 +267,7 @@ La+ Darknesss: holoX's founder; a sponsored "#stons" collab (2024) and a cover w
     AZKi (1HQL3WJPBHA; four performers, not a KoZMy event), the Okayu puzzle collab (PtjqrNUOSWA), Among Us on
     IRyS's channel (VwqdwQx5cog) and the MIRAGE short on Kiara's channel (xXwi19krZ68).
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Resolved: the Famitsu column is 「よちよちゲーマー博衣こよりのゲームラボ」 (Famitsu announcement, KO7).

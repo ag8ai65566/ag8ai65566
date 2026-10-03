@@ -1,10 +1,10 @@
 # Audit packet: myth2
 
-Snapshot: git fca8f18. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git fa69d71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Gawr-Gura.md` fe836c5e53dd; `bible/characters/Watson-Amelia.md` 14c4eba1eb0a; `bible/world/hololive--Myth.md` 2093eaad2fde; `bible/world/AmeSame.md` 409dacb16a2f; `bible/world/Bone-Bros.md` 3456a63d5263
+Owned files (sha256): `bible/characters/Gawr-Gura.md` 453df5d400c8; `bible/characters/Watson-Amelia.md` bff946346460; `bible/world/hololive--Myth.md` 2093eaad2fde; `bible/world/AmeSame.md` 409dacb16a2f; `bible/world/Bone-Bros.md` 3456a63d5263
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -24,6 +24,7 @@ Owned files (sha256): `bible/characters/Gawr-Gura.md` fe836c5e53dd; `bible/chara
 | 2021-06-22 | Original song "REFLECT" | [Observed G2 §2021; G4] |
 | 2022-02-03 | "Q" with Mori Calliope (DECO*27) | [Official G15] |
 | 2024-09 | "2.0" model update | [Observed G3] |
+| 2025-04-25 | "Ash Again," credited to Gawr Gura & Casey Edwards (hololive catalogue digital-release date). | [Official NEW-R1-016] |
 | 2025-05-01 | Graduates; final 3D mini live; last post "keep swimming! always! 💙" | [Official G5] [Observed G3, G2] |
 | 2026-09-30 | Alum; her history stays part of Myth's shared memory | [Adaptation] |
 **Dossier · Hard Facts (continuity):**

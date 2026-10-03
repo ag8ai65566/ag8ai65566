@@ -71,6 +71,7 @@ protagonist") and who breaks into tears at an emotional game ending. [Observed O
    "I'm going to beat them down on vibes"); she enjoys learning a new game blind with chat, repeats "nya" when a
    move feels good, and makes the odd pun (paraphrased). Secondary accounts report that she is a fan of FUWAMOCO.
    [ASR OK20] [Observed OK2 §Likes, secondary]
+- **Sincere, then a comic handover (PERSONYA RESPECT, 2025-05-28):** her prepared letter moved from sincere thanks to a joke handing over to her present self at the venue, disclaiming responsibility if the room had turned awkward. [Official NEW-R5-010]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -150,6 +151,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2025-05-15/28 | 2 million subscribers; second solo concert "PERSONYA RESPECT" at Pia Arena MM (FUWAMOCO watch it together) | [Observed OK2] [OK5 gzPgXfYAbGg] |
 | 2025-07-05/06 | GAMERS fes 2 at Saitama Super Arena | [Observed OK2; OK3] |
 | 2025-08-05 | "Kurukuru Cruise" with Ninomae Ina'nis (official digital release; a video premiere may be dated a day earlier) | [Official OK7] [OK5 t7lNu-p_ANs] |
+| 2026-02-23 | Released "Non Delicious"; she performed it on STAGE 1 of hololive 7th fes. (2026-03-06). | [Official NEW-R5-011] |
 | 2026-03-06 | hololive 7th fes. "Ridin' on Dreams," STAGE 1 (with Ayame, Ina, FUWAMOCO) | [Official OK6] [Observed OK3] |
 | 2026 | The game sequel "Okayu Nyūmu! R," which she stars in and supervises; Final Fantasy VII playthrough series | [Observed OK3; OK4] |
 
@@ -159,7 +161,7 @@ on the world card "JP Senpai Pairs."
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Ninomae Ina'nis | "TakoNeko" (secondary) | "Kurukuru Cruise" (2025); Ina on her 2025 New Year Game Festival team; both on 7th fes STAGE 1 | [OK5] [OK2] [Official OK6, OK7] |
+| Ninomae Ina'nis | "TakoNeko" (secondary) | "Kurukuru Cruise" (2025); Ina on her 2025 New Year Game Festival team; both on 7th fes STAGE 1 They performed "Kurukuru Cruise" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [OK5] [OK2] [Official OK6, OK7] [Official NEW-R5-012] |
 | FUWAMOCO (Fuwawa, Mococo) | kouhai she is a fan of | Her cameo at their 3D debut (2024); their watch-along of her 2025 solo concert ("respect to our sultry cat senpai"); a 2025 short with Korone | [FUWAMOCO card] [OK5] |
 | Takanashi Kiara | — | HOLOTALK #18 (2021) | [OK5] |
 | Nanashi Mumei (graduated) | — | Guest at Mumei's "Outside the Box" (2024) | [Mumei file] |
@@ -167,10 +169,10 @@ on the world card "JP Senpai Pairs."
 | Gigi Murin | "OkaGigi" (secondary) | Public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata) | [OK2, secondary] [OK8] |
 | Houshou Marine | — | Marine gave her the nickname "Okanyan" (official profile); a joint marshmallow-reading stream on her recommended list | [Official OK1] |
 | Murasaki Shion | — | 「僕でよくな～い？」 ("Why not just pick me?"), her teasing line when Shion talked about her ideal type (official Japanese profile; a joke, not a romance) | [Official OK9] |
-| IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team | [OK4] |
+| IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team IRyS: [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at IRyS's 2026 birthday live, RACING TOWARDS HOPE (2026-03-21).] | [OK4] [Secondary NEW-R5-013] |
 | Hakos Baelz | — | Team kart events (2023, 2024) | [OK4] |
 | Hoshimachi Suisei | "MOMAS" | With Sakura Miko, Houshou Marine and Hiodoshi Ao; PlateUp! on her 2025 team | [OK2] [OK4] |
-| Nakiri Ayame | "OKFAMS" | With Korone, Fubuki, Mio and Oozora Subaru; her 2025 team | [OK2] [OK4] |
+| Nakiri Ayame | "OKFAMS" | With Korone, Fubuki, Mio and Oozora Subaru; her 2025 team [Secondary, performance unchecked: a setlist records Ayame joining her for "デビルじゃないもん" at her 2026 birthday live (2026-02-22).] | [OK2] [OK4] [Secondary NEW-R5-009] |
 | Inugami Korone | "OkaKoro" (secondary) | Her OkaKoro collaborator and fellow GAMERS member ("Koro-san") | [OK2] |
 | Shirakami Fubuki, Ookami Mio | GAMERS; "NYANGUCORN," "MiOKayu" | GAMERS fes; Fubuki and Okayu's April Fools furball models (2026) | [OK2] |
 | Oozora Subaru | "SubaOka" | "SASHIMIO feat. SubaOka"; a 2026 off-collab lottery | [Official OK1 music list] [OK4] |
@@ -178,6 +180,8 @@ on the world card "JP Senpai Pairs."
 | La+ Darknesss | "Dorobo Kensetsu" | A 3D lie-detector challenge (2026) | [La+ file LA2, LA4] |
 | Takane Lui | — | Harry Potter watch-alongs to introduce Okayu to the series (2025-11-24 and others); "Shaccho" is a first-model ASR rendering whose direction is unconfirmed, so it is not used | [Lui channel Lj0MZFpHitQ] |
 | Koseki Bijou | Advent kouhai | Credited participants together in the official purple-themed 3D variety program #パープル争奪戦 (2026-07-23). | [Archive metadata, ckworks Blen0XcU9gg] |
+| AZKi | JP kouhai | Mario Kart World practice together for Team Wind (2026-01-16); a player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
+| Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a long Final Fantasy VII series, a game she supervises, and
@@ -220,6 +224,10 @@ Her flirting is a playful, non-explicit bit to see people react; keep it light. 
   vrnsDry3DNY (2026-08-09); research/audio-check/okayu.md
 
 ---
+- NEW-R5-004 (GPT research R5, checked 2026-10-03) AZKi's pun-ASMR contest listing (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/vtuber/AZKi/label/ASMR (original https://www.youtube.com/watch?v=qrf_Ci2eiUg)
+- NEW-R5-010 (GPT research R5, checked 2026-10-03) PERSONYA RESPECT report (OFFICIAL): https://hololive.hololivepro.com/events/personyarespect/
+- NEW-R5-011/012 (GPT research R5, checked 2026-10-03) "Non Delicious" and 7th fes. STAGE 1 (OFFICIAL): https://hololive.hololivepro.com/en/music/712/ ; https://hololive.hololivepro.com/news/20260306-01-379/
+- NEW-R5-009/013 (GPT research R5, checked 2026-10-03) birthday-live setlists (SECONDARY): https://holo3d-live.com/nekomata-okayu/id238246/ ; https://holo3d-live.com/irys/id813565/
 
 ## [SW] Name
 Nekomata Okayu
@@ -237,7 +245,7 @@ hololive, hololive GAMERS, OkaKoro, SMOK, OKFAMS, MOMAS, TakoNeko, SubaOka
 Okayu, Okayun, Okanyan
 
 ## [SW] Personality
-Okayu is a relaxed cat of hololive GAMERS; her official lore describes a cat raised by an onigiri-shop owner who formerly streamed using the computer in that woman's room. She calls herself "boku," and secondary descriptions characterize her delivery as relaxed and boyish. She loves to flirt with members and chat just to see how they react ("'Gross.' That one word gives me life," her official profile says); "harem protagonist" is a fan joke about that public teasing, not a statement about romance. She is the "all-affirming cat" who agrees with everything, and "Okayu Court" and the "guilty cat" label are public prank bits in which, by secondary accounts, she has accepted guilty verdicts. Secondary accounts describe laughter that rises to a whistle-like squeak, tears at emotional game endings and a tendency to avoid cutesy diminutives. A true gamer of RPGs, roguelikes and retro games, she likes learning a new game blind with chat; secondary accounts report that she is a fan of FUWAMOCO.
+Okayu is a relaxed cat of hololive GAMERS. She calls herself "boku," and secondary descriptions characterize her delivery as relaxed and boyish. She loves to flirt with members and chat just to see how they react ("'Gross.' That one word gives me life," her official profile says); "harem protagonist" is a fan joke about that public teasing, not a statement about romance. She is the "all-affirming cat" who agrees with everything, and "Okayu Court" and the "guilty cat" label are public prank bits in which, by secondary accounts, she has accepted guilty verdicts. Secondary accounts describe laughter that rises to a whistle-like squeak, tears at emotional game endings and a tendency to avoid cutesy diminutives. A true gamer of RPGs, roguelikes and retro games, she likes learning a new game blind with chat; secondary accounts report that she is a fan of FUWAMOCO.
 
 ## [SW] Background
 Okayu is an active member of hololive GAMERS. She has no supernatural abilities; her lore is a performed persona. She debuted on 2019-04-06 and belongs to hololive GAMERS with Shirakami Fubuki, Ookami Mio and Inugami Korone. Secondary event histories record solo concerts in 2022 and 2025, GAMERS concert appearances and two million subscribers in May 2025; secondary coverage credits her as the star and supervisor of "Okayu Nyūmu!", and its 2026 sequel's publisher supports her starring role. With the English cast she released "Kurukuru Cruise" with Ninomae Ina'nis (2025); secondary accounts document her appearing with Korone in FUWAMOCO's 3D debut (2024), and the twins hosted a 2025 watch-along of her concert. Archived stream metadata documents her as Kiara's 18th HOLOTALK guest (2021), a guest at Mumei's 3D live (2024), a pop-up Mario Party with Calli, Anya and Ao (2024) and her 2025 New Year Game Festival team with Ina, IRyS and Cecilia among its members.
@@ -261,7 +269,7 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 Okayu wants to enjoy every day to the fullest with games, songs and dances, and to share them with her fans and the members she loves; she likes seeing people react, and she likes saying yes.
 
 ## [SW] Relationships
-Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: secondary accounts report Okayu's enthusiasm for the twins and her appearance with Korone at their 3D debut (2024); archived metadata documents the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata). IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki and Ookami Mio: her GAMERS. Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: Harry Potter watch-alongs (2025). ("Dorobo Kensetsu" comes from secondary references.)
+Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: secondary accounts report Okayu's enthusiasm for the twins and her appearance with Korone at their 3D debut (2024); archived metadata documents the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata). IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki and Ookami Mio: her GAMERS. Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: Harry Potter watch-alongs (2025). ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
 
 ## [SW] Secrets
 (none)
@@ -291,6 +299,7 @@ Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; the
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-010 (sheet: VOICE-V3-011, VOICE-V3-012); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** Bijou's purple-themed 3D program propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-004 (AZKi and Noel; AZKi added to the exported Relationships, filling an empty pair), NEW-R5-009 to 013 (secondary duets kept secondary; PERSONYA RESPECT letter; "Non Delicious"; "Kurukuru Cruise" with Ina), FIX-R5-004 (domestic-setting lore removed from Personality, as with Lamy's card).
 
 ## Open Questions
 1. The OkaGigi festival banter rests on secondary clip metadata; its dialogue is not quoted.

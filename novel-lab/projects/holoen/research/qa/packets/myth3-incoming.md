@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git fca8f18.
+Snapshot: git fa69d71.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura and Kronii|Kronii and Gura|Takanashi Kiara|hololive -Myth-|Kiara and Gura|Gura and Kiara|Ame and Calli|Ina and Calli|Kiara and Ame|Calli and Ame|Calli and Ina|Ame and Kiara|Ina and Gura|Gura and Ina|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura and Kronii|hololive -Myth-|Takanashi Kiara|Kronii and Gura|Kiara and Gura|Gura and Kiara|Ina and Calli|Kiara and Ame|Ame and Kiara|Ame and Calli|Calli and Ame|Calli and Ina|Ina and Gura|Gura and Ina|Ame and Ina|Ina and Ame|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -24,8 +24,11 @@ Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Takanashi Kiara | Myth senior | "KIWAWA vs FAWNA" (Clubhouse 51, 2022); Minecraft Wither fight; Kiara's HOLOTALK 32nd guest (2024-12-27) | [Observed F3; Kiara archive] |
 
 ### from Elizabeth Rose Bloodflame
-- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests (secondary set list) included FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine, Korone and Nerissa.
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Takanashi Kiara: calls her "Erby Berby."
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Takanashi Kiara | Myth senior ("Eternal Flame," "11 ERBs and Spices") | Kiara calls her "Erby Berby"; Minecraft (2025); Kiara's Mage Arena collab (2025) | [Observed EB2, EB3] |
+
+### from Fuwawa Abyssgard
+- `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Takanashi Kiara | Myth senpai | [Lead, secondary: episode records list both twins among Advent's guests on HOLOTALK's 29th edition (2023-08); the original video still needs a primary check.] | [Secondary NEW-R3-021] |
 
 ### from Gawr Gura
 - `bible/characters/Gawr-Gura.md › [SW] Groups`: hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name)
@@ -36,7 +39,7 @@ Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura
 - `bible/characters/Gawr-Gura.md › Voice Profile`: - **Code-switching:** small doses of Japanese ("domo," "same desu," "yabai," "arigato," "Manager-san"). She is not fluent, but sang city pop with flawless Japanese pronunciation at her debut; she took Japanese and German lessons from Kiara. [Official G1] [Observed G2 §Miscellaneous and §Quotes; G13]
 - `bible/characters/Gawr-Gura.md › Voice Profile`: - Other members' openers (Kiara's "Kikkeriki," Calli's "What is up, humans?!").
 - `bible/characters/Gawr-Gura.md › Background Timeline`: | 2020-12 / 2021-03 | Japanese and German lessons with Kiara | [Observed G13] |
-- `bible/characters/Gawr-Gura.md › Relationship Map`: | Takanashi Kiara | Myth genmate ("SameTori") | Kiara calls her "Goobidiba" and taught her Japanese and German (and German swears); Gura filled the back room of Kiara's KFP building with chickens in a Minecraft prank (2020-11-15) | [Observed G2 infobox; G13; G20 §KFP, secondary] |
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | Takanashi Kiara | Myth genmate ("SameTori") | Kiara calls her "Goobidiba" and taught her Japanese and German (and German swears); Gura filled the back room of Kiara's KFP building with chickens in a Minecraft prank (2020-11-15) The final Myth relay's Jackbox segment ran on Kiara's channel (reported 2025-04-30). | [Observed G2 infobox; G13; G20 §KFP, secondary] [Secondary NEW-R1-017] |
 - `bible/characters/Gawr-Gura.md › Hard Facts`: - Nicknames: Same-chan, City Pop Shark, Samegaki, Gooba, Goob, Goobidiba (by Kiara), George (by Miko). "Goomba" and "Apex Predator" are left out of Other Names because they would match unrelated text. [Observed G2 infobox]
 
 ### from Gigi Murin
@@ -88,7 +91,9 @@ Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: At Serendipity: "Tententengoku Jigokukoku" with Kiara as Rocku Wawa, and "Night Loop" with Ookami Mio (GAMERS) and IRyS.
 - `bible/characters/Koseki-Bijou.md › Voice Profile`: - **Code-switching:** learning Japanese seriously and planning a Japanese-lesson stream with a real teacher ("killing two birds with one stone, learning Japanese and making content out of it"); "I do speak a little Thai!" (her 2023 post on X); "ROKU NANA~ I mean… rokku wawa." [ASR KB20, 6:03:51] [Official KB4] [Observed KB6, X post 1684542578962964480]
 - `bible/characters/Koseki-Bijou.md › Background Timeline`: | 2026-07-03/04 | Serendipity concert, duo with Takanashi Kiara ("Rocku Wawa") | [Official KB4] |
-- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" | [Official KB4] [Observed KB3; Kiara archive] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Official KB4] [Observed KB3; Kiara archive] [Official NEW-R3-007] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Cecilia Immergreen, Raora Panthera, Gigi Murin | Justice kouhai | GAGA (with Shiori and Gigi); Graondstone (with Kaela and Raora); a Walking Dead off-collab watchalong with Cecilia (2025) Raora is a co-credited vocalist (with Kiara and Bae) on "Freaky Deaky Love" (2026-05-31). | [Observed KB2; KB3] [Official NEW-R3-007] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Nekomata Okayu | JP senior | Credited participants together (with Kiara, Ina, Kobo and Todoroki Hajime) in the official purple-themed 3D variety program #パープル争奪戦 (2026-07-23). | [Archive metadata NEW-R3-008] |
 - `bible/characters/Koseki-Bijou.md › Arc`: - **Starting point:** active member at the 2026 baseline: a 900K+ channel, two original songs, the Serendipity duo with Kiara.
 - `bible/characters/Koseki-Bijou.md › Story Engine`: 2. Kiara and Biboo try to stop saying "67" for an entire collab.
 
@@ -101,6 +106,9 @@ Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura
 - `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2025-07-27/28 | "Glow in the Dark," a Mythmash single with Kiara (official digital release 2025-07-28); a joint stream | [Official music 600] [LA5 v5RKZXNuVyw] [LA4] |
 - `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Takanashi Kiara | — | "Glow in the Dark" and "FAKE HEART" (2025); an off-collab (2023) | [LA5] |
 - `bible/characters/Laplus-Darknesss.md › Story Engine`: 1. La+ demands that Kiara address her as "Your Darknesss" for a whole duet rehearsal.
+
+### from Mococo Abyssgard
+- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Takanashi Kiara | Myth senpai | [Lead, secondary: episode records list both twins among Advent's guests on HOLOTALK's 29th edition (2023-08); the original video still needs a primary check.] | [Secondary NEW-R3-021] |
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
@@ -151,7 +159,7 @@ Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: - Measured (N20; a 2026 solo chat): median pitch about 214 Hz (p10–p90 172–297 Hz), a mid-range speaking voice like IRyS's (214–226 Hz), lower than Kiara or Gura; about 159 words per minute of speech. Group-stream windows read higher (284–289 Hz) because several voices share them. Sample results only.
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: | Fangirling (Kiara, Marine) | Fast, flustered, delighted | (no verified line; see Relationship Map) |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takanashi Kiara | Senior and her oshi ("KiaRissa") | Self-described KFP member; in lore, a former KFP employee | [Observed N2] |
-- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Mori Calliope | Senior | Nerissa was Calli's first Instagram follower; BG3 party "Killing, Two Birds, with One Stone" with Kiara and Bijou (2023); duet "OVER//RIDE" (2025); Calli guested at Nerissa's 3D concert; building Calli's Mii: "Calli's also got beautiful, long, straight hair." | [Observed N2; N3 titles; ASR N20, agrees] |
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Mori Calliope | Senior | Nerissa was Calli's first Instagram follower; BG3 party "Killing, Two Birds, with One Stone" with Kiara and Bijou (2023); duet "OVER//RIDE" (2025); Calli guested at Nerissa's 3D concert; building Calli's Mii: "Calli's also got beautiful, long, straight hair." Credited singers together (with IRyS, Nene and Ollie) on "LIVE IT LOUD!" (2025-06-25). A Bananagrams handcam collaboration (2026-09-18; individual jokes unchecked). | [Observed N2; N3 titles; ASR N20, agrees] [Official, music/592] [Archive metadata NEW-R3-013] |
 - `bible/characters/Nerissa-Ravencroft.md › Story Engine`: 3. She meets Kiara at an event and forgets every word of English.
 
 ### from Ninomae Ina'nis
@@ -179,9 +187,9 @@ Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura
 - `bible/characters/Raora-Panthera.md › Behavioral Traits`: 5. "Doom.": her friendly-fire "Doom" spell in Kiara's Mage Arena collab (2025-11-16) became a widely shared fan meme (secondary account); she later used "Doom." as a stream title. [Observed RP7; RP3]
 - `bible/characters/Raora-Panthera.md › Background Timeline`: | 2025-11-16 | The "Doom" spell in Kiara's Mage Arena collab | [Observed RP7] |
 - `bible/characters/Raora-Panthera.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice (day 1); the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari"), "What an amazing swing" with Tsunomaki Watame and Kiara, and "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official RP4, RP9] |
-- `bible/characters/Raora-Panthera.md › Relationship Map`: | Takanashi Kiara | Myth senior ("HoloEU" with Cecilia; secondary) | An Italian lesson (2024), a proposed outfit for Kiara on her "Raora's Clawset" art stream (2025-01-26; not a released Kiara model), an EU-snacks off-collab (2025); the "Doom" meme in Kiara's collab; "What an amazing swing" with Watame at Serendipity (2026) | [Observed RP3, RP7] [Official RP9] |
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | Takanashi Kiara | Myth senior ("HoloEU" with Cecilia; secondary) | An Italian lesson (2024), a proposed outfit for Kiara on her "Raora's Clawset" art stream (2025-01-26; not a released Kiara model), an EU-snacks off-collab (2025); the "Doom" meme in Kiara's collab; "What an amazing swing" with Watame at Serendipity (2026) Their Pokémon FireRed/LeafGreen Soul-Link Nuzlocke (2026-06-21 to 09-24) couples their losses: a fainted Pokémon removes its linked partner, and a failed catch costs both players the encounter; Raora's September title has them one critical hit from disaster. | [Observed RP3, RP7] [Official RP9] [Archive metadata NEW-R4-015] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Tsunomaki Watame (JP) | JP senior | "What an amazing swing" with Kiara at Serendipity (2026) | [Official RP9] |
-- `bible/characters/Raora-Panthera.md › Relationship Map`: | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) | [Bae file HB3, HB5, HB8, HB20] |
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
 
 ### from Sakamata Chloe
 - `bible/characters/Sakamata-Chloe.md › [SW] Background`: With the English cast, archived channel metadata documents an EN-server Minecraft tour with Bae, Mumei and Lui (2022), Calli's English lesson #04 (2022) and HOLOYOI #01 (2023), Bae's "BAE-GEMITE DOMINATION" and the cover "Crazy Scary Holy Fantasy" with her (2023), and "WILDCARD" with Kiara in her final week (2025).
@@ -206,7 +214,7 @@ Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura
 ### from Shishiro Botan
 - `bible/characters/Shishiro-Botan.md › [SW] Background`: (2025); Kiara is a fellow member of the Minecraft "Usada Kensetsu"
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu"
-- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Takanashi Kiara | "Usada Kensetsu" (Usaken) | The Minecraft construction company of Pekora's circle | [BO2] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Takanashi Kiara | "Usada Kensetsu" (Usaken) | The Minecraft construction company of Pekora's circle Archived metadata dates an Usaken summer-festival planning and building collab with Kiara (2021-06-07). | [BO2] [Archive metadata, ckworks q_IXZIRCbwI] |
 
 ### from Takane Lui
 - `bible/characters/Takane-Lui.md › [SW] Background`: She debuted on 2021-11-27 as the second member of Secret Society holoX, hololive's sixth Japanese generation, and belongs to the bird unit HOLOTORI, whose documented 2023 lineup was Lui, Takanashi Kiara, Oozora Subaru, Pavolia Reine and Nanashi Mumei.
@@ -223,6 +231,7 @@ Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Gura
 - `bible/characters/Watson-Amelia.md › Voice Profile`: - **How she addresses people:** "you guys" by default; "chat" occasionally; "Teamates" (one m, official) on big occasions; members "Investigators." Members by name ("Gura," "Calli," "Ina," "Kiara," "Kronii"); Bubba, her dog mascot. She gives her name in English order, "Amelia Watson." [Official A1] [Observed A3 captions; A2 §Mascots and fans]
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material; "Kiara like, threw herself at me… she hugged me!" | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › [SW] Other Names`: ShioRaven, Goth Rock, Pen Pups, JewelBird, Diamond Dogs, Sound Hounds, Grindstone, GAGA, FUWAMOCALLI, Rocku Wawa, GreyScaleX, Last Writes

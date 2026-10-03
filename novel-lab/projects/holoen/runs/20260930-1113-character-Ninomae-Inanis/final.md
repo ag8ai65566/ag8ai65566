@@ -263,6 +263,7 @@ fan or collab nicknames.
 | Hakos Baelz | Promise kouhai | Archived metadata: the K/DA "POP/STARS" cover with Moona and Ayunda Risu (2023); a BAE-CADEMY art lesson with "Ina-sensei" (2024); Ina's AmiAmi special featuring Bae (2025-05-29); World Tour '24 together | [Bae file HB3, HB5, HB8, HB20] |
 | Yukihana Lamy, Shishiro Botan, Kikirara Vivi, Shirogane Noel | JP members | Lamy: the Minecraft "Usaken Summer Festival" (2021-06-27), an EN-server "date" (2021-10-20) and a guest at "Pleides" (2024-12-28); Botan: a guest at "EVERMORE" (2025-05-21); Vivi: R.E.P.O. (2025-06-02); Noel and Vivi: Mumei's Gartic Phone (2025-04-14) | [S1 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ, I-J11Da5ONY, grBU9Dl09Ds, OMDzBQohAf8] |
 | Cecilia Immergreen | Justice kouhai; a joking rival (secondary accounts) | Cecilia framed a May 2026 music-making stream as preparing a birthday tune for her rival (title wording; Ina's participation not established). | [Archive metadata, ckworks DE7WL-YLk8Y] |
+| Nekomata Okayu | JP senior | They performed "Kurukuru Cruise" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [Official, 7th fes. STAGE 1 report] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026), as on the card.

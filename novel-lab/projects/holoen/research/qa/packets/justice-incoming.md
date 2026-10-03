@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git fca8f18.
+Snapshot: git fa69d71.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|holoJustice|FiddleFlame|Grem Reaper|Bloodraven|Erby Berby|Immerhater|TimeChaser|Autofister|Gigi Murin|Elizabeth|Da Fister|Gi Murin|Raviolin|Justice|Cecilia|Lizzie|G Pain|GeeGee|HoloEU|B.F.F|Raora|Ceci|Rara|Cece|LYRA|RPGG|Gigi|CCGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|holoJustice|FiddleFlame|Autofister|Immerhater|Bloodraven|Gigi Murin|TimeChaser|Erby Berby|Elizabeth|Da Fister|Raviolin|Gi Murin|Cecilia|Justice|G Pain|HoloEU|Lizzie|GeeGee|Raora|B.F.F|Cece|Gigi|Ceci|RPGG|LYRA|Rara|CCGG|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -18,7 +18,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 
 ### from Fuwawa Abyssgard
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Groups`: FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Advent, B.F.F
-- `bible/characters/Fuwawa-Abyssgard.md › [SW] Background`: Together they won "VTuber of the Year" at the 2024 VTuber Awards, reached one million subscribers first in Advent, made their 3D debut in August 2024, held a birthday concert in 2025, sang a TV anime ending theme in 2026, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album.
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Background`: (digital release 2026-04-02), the ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album.
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Raora Panthera: their 2026 Serendipity unit partner in B.F.F.
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Mori Calliope: "2 Creatures + 1 Reaper," defusing bombs (2026).
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity.
@@ -28,6 +28,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Fuwawa-Abyssgard.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Mococo and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) | [Official FW4; Serendipity report] |
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Gigi Murin, Mori Calliope | Kouhai and senior | "2 Creatures + 1 Reaper," a rare bomb-defusing collab (2026-09) | [Observed FUWAMOCO X post via wiki, FW6] |
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Hakos Baelz | Promise senior | Archived metadata: Gigi's 2025 Spring Party with FUWAMOCO and Bae (2025-03-31); a FUWAMOCO short dancing to "bae-senpai's new song SNAKE EYES" (2026-03-20) | [Bae file HB3, HB5, HB8, HB20] |
+- `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity (2026-07-03/04 PDT); afterwards the twins described her teasing their tails and chasing them around the stage in their trio's MC comedy. | [Official, Serendipity report] [Secondary NEW-R3-016] |
 
 ### from Gawr Gura
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Cecilia Immergreen: Keep Talking and Nobody Explodes and The Forest (2025).
@@ -64,10 +65,12 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Elizabeth Rose Bloodflame | — | "IT'S LOVE" cover with Elizabeth and Korone for Elizabeth's 2026 birthday (2026-05-12) | [MA5 iwnHChZq0N8] |
 
 ### from IRyS
-- `bible/characters/IRyS.md › [SW] Relationships`: Gigi Murin: a "Cerulean Cup" guildmate in the ENigmatic Recollection story.
+- `bible/characters/IRyS.md › [SW] Relationships`: Gigi Murin: ENReco Cerulean Cup guildmate.
+- `bible/characters/IRyS.md › [SW] Relationships`: Raora Panthera: Mario Party Jamboree with Bae (2024).
 - `bible/characters/IRyS.md › [SW] Relationships`: Cecilia Immergreen: Elden Ring Nightreign with Bijou (2025).
 - `bible/characters/IRyS.md › [SW] Relationships`: Gigi Murin, Ouro Kronii and FUWAMOCO: "Bright Tonight"
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 
 ### from Kazama Iroha
 - `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
@@ -89,7 +92,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Ouro Kronii: Lethal Company and Yu-Gi-Oh. -Justice-: GAGA with Gigi and Cecilia; Graondstone with Raora; "I'm Your Treasure Box" with Cecilia and Raora at the 2025 concert; Cecilia's Walking Dead watchalongs and a 2025 Elden Ring stream Bijou joined partway; Raora's 2024 cooking off-collab, billed with Bijou as her assistant.
 - `bible/characters/Koseki-Bijou.md › Background Timeline`: | 2025-08-23/24 | -All for One-: "HOT DUCK!" with FUWAMOCO and Subaru; solo "Dead Ma'am's Chest"; "I'm Your Treasure Box" with Cecilia and Raora | [Official KB5] |
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Kaela Kovalskia (ID) | Friend ("Grindstone"; Kaela calls her "Beejoe") | Grindstone collabs include Raft and Minecraft (2023), Split Fiction (2025) and PEAK as "Graondstone" with Raora (archive counts 10 / 23 / 11 / 0) | [Observed KB2; KB3] |
-- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Cecilia Immergreen, Raora Panthera, Gigi Murin | Justice kouhai | GAGA (with Shiori and Gigi); Graondstone (with Kaela and Raora); a Walking Dead off-collab watchalong with Cecilia (2025) | [Observed KB2; KB3] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Cecilia Immergreen, Raora Panthera, Gigi Murin | Justice kouhai | GAGA (with Shiori and Gigi); Graondstone (with Kaela and Raora); a Walking Dead off-collab watchalong with Cecilia (2025) Raora is a co-credited vocalist (with Kiara and Bae) on "Freaky Deaky Love" (2026-05-31). | [Observed KB2; KB3] [Official NEW-R3-007] |
 
 ### from La+ Darknesss
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Cecilia Immergreen: an "ONEE-SAMA!" short about her (2026).
@@ -97,7 +100,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Groups`: FUWAMOCO, hololive -Advent-, hololive English -Advent- (former branch name), Advent, B.F.F
-- `bible/characters/Mococo-Abyssgard.md › [SW] Background`: Together they won "VTuber of the Year" at the 2024 VTuber Awards, made their 3D debut in August 2024, sang a TV anime ending theme in 2026, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album.
+- `bible/characters/Mococo-Abyssgard.md › [SW] Background`: (digital release 2026-04-02), the ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Gigi Murin ("GigiMoco,"
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: "bauBau") and Cecilia Immergreen ("Cecemoco"): Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Cecilia is also Mococo's Chrono Trigger partner, including 2026 off-collabs; Gigi sang "Bright Tonight" and "MAKE IT, BREAK IT" with the twins.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Raora Panthera: their 2026 Serendipity unit partner in B.F.F.
@@ -107,7 +110,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Mococo-Abyssgard.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Fuwawa and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) | [Official MC4; Serendipity report] |
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Gigi Murin | Justice kouhai ("GigiMoco," "bauBau") | Collabs from 2024; Gigi and Cecilia hosted FUWAMOCO MORNING #167 in the twins' place as a prank (2025) | [Observed MC2, secondary; MC3] |
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai ("Cecemoco") | The twins had hoped for a robot-girl member before Cecilia's debut; a Chrono Trigger off-collab (2026-04-25) | [Observed MC2; MC3 GmcYjV6aTuA] |
-- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 | [Official MC4] |
+- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 After Serendipity the twins described Raora teasing them about their tails and chasing them around the stage in their trio's MC comedy (2026-07-04). | [Official MC4] [Secondary NEW-R3-016, attributed answers] |
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Hakos Baelz | Promise senior | Archived metadata: Gigi's 2025 Spring Party with FUWAMOCO and Bae (2025-03-31); a FUWAMOCO short dancing to "bae-senpai's new song SNAKE EYES" (2026-03-20) | [Bae file HB3, HB5, HB8, HB20] |
 
 ### from Mori Calliope
@@ -147,12 +150,14 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Gigi Murin | Collaborator ("BeatDown," "SoundChaser") | A joke "child," Nerigi, at Gigi's 3D live | [Observed N2 §Relationships] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Elizabeth Rose Bloodflame | Justice member ("BloodRaven"); her 2026 Serendipity duo partner | Her "mortal enemy (lore)"; their "Rondo Revolution" cover; World Tour '24 panels together; Nerissa praises her "kindness and encouraging attitude" ("She's always looking out for me, even though I'm the senpai"); building Liz's Mii: "she's the leader of justice after all" | [Official N21; S7 tour report via world card; ASR N20] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Raora Panthera | Justice kouhai | Co-presenters (with IRyS) of the official Serendipity merchandise infomercial (May 2026). | [Archive metadata, ckworks ew00E7t4Dow] |
 
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: FUWAMOCO: "SHALLYS" with Cecilia on the same stage.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025).
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai; a joking rival (secondary accounts) | Cecilia framed a May 2026 music-making stream as preparing a birthday tune for her rival (title wording; Ina's participation not established). | [Archive metadata, ckworks DE7WL-YLk8Y] |
 
 ### from Ouro Kronii
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Gigi Murin: Fatal Fury and Hytale ("TimeChaser"; "Clockwork Orange" with Cecilia), "MONSTER" on stage and "Bright Tonight"
@@ -189,7 +194,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Elizabeth Rose Bloodflame: Kiara calls her "Erby Berby."
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: - "Doom? DOOM? What do you mean, Doom?" → Raora's "Doom" (2025-11-16), now a callback she reacts to with mock trauma. [Observed T2 §Quotes, secondary; T6; T5-jwGiJnsdQn0 clip title]
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2025-11-16 | Raora's "Doom" on her stream becomes a meme | [Observed T6] |
-- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Raora Panthera | Justice member | The "Doom" incident | [Observed T2 §Quotes; T6] |
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Raora Panthera | Justice member | The "Doom" incident A Pokémon FireRed/LeafGreen Soul-Link Nuzlocke with coupled losses (2026-06-21 to 09-24). | [Observed T2 §Quotes; T6] [Archive metadata, ckworks foL47AjE7yM] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Cecilia Immergreen | Justice member | German-speaking duo; they slip into German together | [Observed T5-K7NNBucs3zc clip title; T2 §Relationships] |
 
 ### from Takane Lui

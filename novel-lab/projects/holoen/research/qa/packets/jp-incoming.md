@@ -1,9 +1,9 @@
 # Audit packet: jp (incoming claims)
 
-Snapshot: git fca8f18.
+Snapshot: git fa69d71.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azu-chan|Sui-chan|TakoNeko|Azukichi|Okanyan|AZKichi|Yo-san|FWMCAZ|AS_tar|Okayun|AzuAzu|Suisei|Okayu|Ayame|AZKi|AZAZ|Ojou)(
+Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azukichi|TakoNeko|Azu-chan|Sui-chan|AZKichi|Okanyan|Okayun|Yo-san|AS_tar|AzuAzu|FWMCAZ|Suisei|Okayu|Ayame|Ojou|AZAZ|AZKi)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
@@ -83,6 +83,7 @@ Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Ca
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Hoshimachi Suisei: Bijou watched her Fortnite concert on stream (2026).
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hoshimachi Suisei | JP senior | Watched her Fortnite concert on stream ("THE SUISEI CONCERT IN FORTNITE?!", 2026) | [Suisei file S1 AhGrt2gr5pc] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Nekomata Okayu | JP senior | Credited participants together (with Kiara, Ina, Kobo and Todoroki Hajime) in the official purple-themed 3D variety program #パープル争奪戦 (2026-07-23). | [Archive metadata NEW-R3-008] |
 
 ### from La+ Darknesss
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Nerissa Ravencroft, Nakiri Ayame, Hoshimachi Suisei and Shishiro Botan: fellow holoGTA participants (2024).

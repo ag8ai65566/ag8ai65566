@@ -183,6 +183,7 @@ the wiki as units or pairings; -Promise- is official.
 | Shiranui Flare | JP senior | Off-collab karaoke (2025-03) | [Observed R3 title] |
 | Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 with Koyori, Watame and Korone (2022-10-03); an Among Us lobby with Koyori, Chloe and others (2023-05-08); Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
 | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
+| Nekomata Okayu | JP senior | [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at RACING TOWARDS HOPE (2026-03-21).] | [Secondary, holo3d-live setlist] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026): Promise member, solo concert ahead.

@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git fca8f18. Every dated row from every bible file's dossier
+Snapshot: git fa69d71. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
@@ -565,12 +565,14 @@ search the file for the row text to see its context.
 
 ### 2025-03
 - 2025-03-15/16 [day-range] Birthday: "DIAMOND GIRLFRIEND," EP "YaBAI," 3D live "HOPE UPON A STAR" — `bible/characters/IRyS.md` ([Observed R2 §2025; R3])
+- 2025-03 [month] Spring covers: YOASOBI's "IDOL" (its description uses the written owl pun "idowl ! ~") and "Gravity" (original by Yoko Kanno, Maaya Sakamoto and Troy). — `bible/characters/Nanashi-Mumei.md` ([Archive metadata NEW-R2-014])
 - 2025-03-09 [day] 6th fes. "Color Rise Harmony," day 2 — `bible/characters/Nanashi-Mumei.md` ([Observed M2 §2025])
 - 2025-03-08 [day] hololive 6th fes. Color Rise Harmony, day 1 — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2 §2025])
 - 2025-03-08 [day] Justice hosted a watchalong of hololive 6th fes. (Expo 2025) Stage 1 ("FIRST STAGE with JUSTICE!") — `bible/world/hololive--Justice.md` ([Observed S4 nEV7T8peRcw])
 - 2025-03-08/09 [day-range] SUPER EXPO 2025 and 6th fes. "Color Rise Harmony" — `bible/world/hololive-History-2023-2026.md`
 
 ### 2025-04
+- 2025-04-25 [day] "Ash Again," credited to Gawr Gura & Casey Edwards (hololive catalogue digital-release date). — `bible/characters/Gawr-Gura.md` ([Official NEW-R1-016])
 - 2025-04-14 [day] Gartic Phone EN + ID + JP collab with Mumei, Kronii, Ina, Elizabeth and Noel — `bible/characters/Kikirara-Vivi.md` ([VI5 OMDzBQohAf8])
 - 2025-04-08 [day] "FAKE HEART," a cover with Kiara — `bible/characters/Laplus-Darknesss.md` ([LA5 yspJ9xmGRfw])
 - 2025-04 [month] A farewell month of collabs across hololive: Overwatch with IRyS (04-22), a cover of "とんとんまーえ！" with Inugami Korone (04-23), Promise R.E.P.O. with IRyS, Kronii and Bae (04-24); last chatting stream with calls (04-26); 3D graduation stream (04-27, 04-28 JST) — `bible/characters/Nanashi-Mumei.md` ([Observed M2; M3 titles])
@@ -601,8 +603,12 @@ search the file for the row text to see its context.
 - 2025-05-01 [day] Gawr Gura graduates — `bible/world/hololive.md`
 
 ### 2025-06
+- 2025-06-22 [day] Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). — `bible/characters/Cecilia-Immergreen.md` ([Official NEW-R4-020])
+- 2025-06-22 [day] Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). — `bible/characters/Elizabeth-Rose-Bloodflame.md` ([Official NEW-R4-020])
+- 2025-06-22 [day] Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). — `bible/characters/Gigi-Murin.md` ([Official NEW-R4-020])
 - 2025-06-02 [day] R.E.P.O. on Ina's stream, with Polka, Watame, Flare and Anya — `bible/characters/Kikirara-Vivi.md` ([VI5 grBU9Dl09Ds description])
 - 2025-06-29 [day] "THAT'S WILD?!" 24-hour charity stream with Calli (Wildlife Warriors Worldwide) — `bible/characters/Koseki-Bijou.md` ([Observed Calli archive J5u2aGUrNq8])
+- 2025-06-22 [day] Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). — `bible/characters/Raora-Panthera.md` ([Official NEW-R4-020])
 - 2025-06-20 [day] First anniversary, "Operation DECODE" — `bible/world/hololive--Justice.md`
 
 ### 2025-07
@@ -627,12 +633,14 @@ search the file for the row text to see its context.
 - 2025-08-01 PDT [day, PDT] 3D showcase (5 PM PDT); she arranged and directed most of it, including "Giri Giri" with Vestia Zeta — `bible/characters/Elizabeth-Rose-Bloodflame.md` ([Official EB7] [ASR EB20])
 - 2025-08-16 PDT [day, PDT] Justice 3D collaboration stream — `bible/characters/Elizabeth-Rose-Bloodflame.md` ([Official EB7])
 - 2025-08-23/24 EDT [day-range, EDT] -All for One-: "ABOVE BELOW" with Justice, "ALiCE&u" with Nerissa and guest Ayunda Risu, solo "Stellar Stellar," "START AGAIN" with Calli, IRyS and Nerissa (day 2 opener), "High Tide" with Kronii and guest Kureiji Ollie — `bible/characters/Elizabeth-Rose-Bloodflame.md` ([Official EB5])
+- 2025-08-01 [day] FUWAMOCO digital releases: "Lifetime Showtime"; later "Prisoner (FUWAMOCO ver.)" (2026-03-24) and "Ichizutte Trend♡" (2026-08-30). — `bible/characters/Fuwawa-Abyssgard.md` ([Official NEW-R3-019])
 - 2025-08-23/24 [day-range] -All for One-: "HOT DUCK!", "Howling," "Lifetime Showtime," "SHALLYS" — `bible/characters/Fuwawa-Abyssgard.md` ([Official FW5])
 - 2025-08-02 PDT [day, PDT] 3D showcase (5 PM PDT; Aug 3 00:00 UTC) — `bible/characters/Gigi-Murin.md` ([Official GG8])
 - 2025-08-16 PDT [day, PDT] Justice 3D collaboration stream — `bible/characters/Gigi-Murin.md` ([Official GG8])
 - 2025-08-23/24 EDT [day-range, EDT] -All for One-: "ABOVE BELOW" with Justice, "Countach" with Bae and guest Kureiji Ollie, "MONSTER" with Ina, Kronii and Shiori, solo "Wonky Monkey," "III" with Nerissa — `bible/characters/Gigi-Murin.md` ([Official GG5])
 - 2025-08-23/24 EDT [day-range, EDT] -All for One-: "R x R x R" with Calli; "Countach" with Gigi and Kureiji Ollie; solo "La Roja (Arrange ver.)" — `bible/characters/Hakos-Baelz.md` ([Official HB5])
 - 2025-08-23/24 [day-range] -All for One-: "HOT DUCK!" with FUWAMOCO and Subaru; solo "Dead Ma'am's Chest"; "I'm Your Treasure Box" with Cecilia and Raora — `bible/characters/Koseki-Bijou.md` ([Official KB5])
+- 2025-08-01 [day] FUWAMOCO digital releases: "Lifetime Showtime"; later "Prisoner (FUWAMOCO ver.)" (2026-03-24) and "Ichizutte Trend♡" (2026-08-30). — `bible/characters/Mococo-Abyssgard.md` ([Official NEW-R3-019])
 - 2025-08-23/24 [day-range] -All for One- with Fuwawa — `bible/characters/Mococo-Abyssgard.md` ([Official MC5])
 - 2025-08-05 [day] "Kurukuru Cruise" with Ninomae Ina'nis (official digital release; a video premiere may be dated a day earlier) — `bible/characters/Nekomata-Okayu.md` ([Official OK7] [OK5 t7lNu-p_ANs])
 - 2025-08-29 [day] Advent 2nd-anniversary 3D live "On the Run!" ("The Story of Advent") — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2 §2025])
@@ -664,13 +672,15 @@ search the file for the row text to see its context.
 
 ### 2025-10
 - 2025-10-18 [day] First original song "I'll still be here" presented (digital release 10-20) — `bible/characters/Gigi-Murin.md` ([Official GG7] [Observed GG2])
+- 2025-10-07 [day] Announced: her "LET'S JUST CRASH" is the second opening theme of the TV anime *Gachiakuta* (lyrics by syudou and Mori Calliope; composition and arrangement by syudou). — `bible/characters/Mori-Calliope.md` ([Official NEW-R1-002])
 - 2025-10-10 [day] Promise releases "Run Back 'Round" — `bible/characters/Ouro-Kronii.md` ([Official K6])
 - 2025-10-03 [day] Hiodoshi Ao (ReGLOSS) leaves — `bible/world/hololive-History-2023-2026.md`
 - 2025-10-15 [day] Official fan club launches — `bible/world/hololive-History-2023-2026.md`
 
 ### 2025-11
 - 2025-11-19 [day] Solo concert "Departure" at Pia Arena MM (the wiki counts it as her tenth); EPs "Re:Start" and "Re:Birth" (11-05) — `bible/characters/AZKi.md` ([Official AZ8] [Observed AZ2, secondary count])
-- 2025-11-01 [day] Second original song "ROCK IN!" and a 3D live — `bible/characters/Koseki-Bijou.md` ([Observed KB2 §2025])
+- 2025-11-01 [day] 3D live (original dossier date retained; timezone not reverified) — `bible/characters/Koseki-Bijou.md` ([Observed KB2 §2025])
+- 2025-11-03 [day] Digital release of second original song "ROCK IN!" — `bible/characters/Koseki-Bijou.md` ([Official FIX-R3-003])
 - 2025-11-09 [day] VALORANT VSaikyou with "Saki Ike Ninja" (participation; placement not inferred) — `bible/characters/Nakiri-Ayame.md` ([Observed AY2, secondary; AY4])
 - 2025-11-16 [day] The "Doom" spell in Kiara's Mage Arena collab — `bible/characters/Raora-Panthera.md` ([Observed RP7])
 - 2025-11-16 [day] Raora's "Doom" on her stream becomes a meme — `bible/characters/Takanashi-Kiara.md` ([Observed T6])
@@ -691,7 +701,6 @@ search the file for the row text to see its context.
 - 2026 [year] Her collaboration sake "Yukiyozuki" with Meiri Shurui (04); an off-collab with Koyori titled to name their duo (03); a NePoLaBo 3D party (04-29); NePoX events with holoX announced for 09-26/27 (Nene, Polka, Lamy, Botan, La+, Lui, Koyori, Iroha); "Snowlight Stories" (official digital release 08-13) — `bible/characters/Yukihana-Lamy.md` ([LM4 Zi8R63ee0Fs, Ekdsnb2aWY4, Ml1tM8S40p0] [Official NePoX page] [Official music 792] [Brewery page])
 - 2026 [year] "Bound by Fate," 3rd-anniversary 3D live — `bible/world/Advent-Pairs.md`
 - 2026 [year] "Chatter Chatter"; Elizabeth's birthday cover — `bible/world/JP-Senpai-Pairs-2.md`
-- 2026 [year] 3rd-anniversary live "Bound by Fate" (linked from Nerissa's official profile) — `bible/world/hololive--Advent.md`
 
 ### 2026-01
 - 2026-01-17/18 [day-range] hololive Fantasy concert "#OperationHeartfulCuties," K-Arena Yokohama — `bible/characters/Houshou-Marine.md` ([Observed MA2 §2025–2026] [Official announcement])
@@ -702,20 +711,29 @@ search the file for the row text to see its context.
 - 2026-01-26 [day] Group song "Breakout" — `bible/world/hololive--Advent.md`
 
 ### 2026-02
+- 2026-02-26 [day] Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). — `bible/characters/Fuwawa-Abyssgard.md` ([Official NEW-R3-001; archive metadata])
 - 2026-02-28 [day] Birthday 3D live "ReCOLOR" with a new 3D outfit; original "SNAKE EYES"; her fifth Febaerary — `bible/characters/Hakos-Baelz.md` ([Observed HB2] [ASR HB20])
 - 2026-02-21 [day] "SuperNova: REBOOT" at K-Arena Yokohama — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU2])
 - 2026-02-28 [day] "Chatter Chatter" with Hoshimachi Suisei: anime MV (official digital release 2026-03-01) — `bible/characters/Houshou-Marine.md` ([MA4 di9NZ6ja_mE] [Official music 711])
-- 2026-02-06 [day] Her third major album, "DISASTERPIECE." — `bible/characters/Mori-Calliope.md` ([Official C16])
+- 2026-02-26 [day] Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). — `bible/characters/Koseki-Bijou.md` ([Official NEW-R3-001; archive metadata])
+- 2026-02-26 [day] Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). — `bible/characters/Mococo-Abyssgard.md` ([Official NEW-R3-001; archive metadata])
+- 2026-02-06 [day] Her third major album, "DISASTERPIECE." Universal Music frames it around showing an imperfect self and finding beauty in imperfection; the track list includes the *Gachiakuta* opening "LET'S JUST CRASH" and insert song "Rivals and Equals." — `bible/characters/Mori-Calliope.md` ([Official C16])
 - 2026-02-14 [day] A new pink kimono outfit — `bible/characters/Nakiri-Ayame.md` ([Observed AY2; AY4])
+- 2026-02-26 [day] Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). — `bible/characters/Nerissa-Ravencroft.md` ([Official NEW-R3-001; archive metadata])
 - 2026-02-02 [day] First EP "re:VISION" — `bible/characters/Ninomae-Inanis.md` ([Official I26])
-- 2026-02-15 [day] First original song "Monsters and Men" — `bible/characters/Shiori-Novella.md` ([Observed SN2 Discography])
+- 2026-02-16 [day] Digital release of first original song "Monsters and Men" — `bible/characters/Shiori-Novella.md` ([Official FIX-R3-002])
+- 2026-02-26 [day] Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). — `bible/characters/Shiori-Novella.md` ([Official NEW-R3-001; archive metadata])
 - 2026-02-08 [day] 2nd album *Vogelfrei* — `bible/characters/Takanashi-Kiara.md` ([Observed T2 §2026; T8])
 - 2026-02 [month] Kiara's "Blue & Gold" tribute — `bible/world/AmeSame.md`
+- 2026-02-26 [day] Group song "What Goes Around" — `bible/world/hololive--Advent.md` ([Official NEW-R3-001])
 - 2026-02-20/22 JST [day-range, JST] GeoGuessr: Elizabeth, Gigi and Cecilia trained (02-20) and represented Justice against Advent (02-22), with Bijou hosting/commentating — `bible/world/hololive--Justice.md` ([Observed, secondary event roster])
 - 2026-02 [month] Kiara's album includes "Blue & Gold," a tribute to Gura and Ame — `bible/world/hololive--Myth.md`
 
 ### 2026-03
 - 2026-03-07 [day] hololive 7th fes. "Ridin' on Dreams," STAGE 3 (with IRyS, Bae, Shiori) — `bible/characters/AZKi.md` ([Official AZ7])
+- 2026-03-07 JST [day, JST] hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW.; Cecilia also sang "nowhere" with a violin performance. — `bible/characters/Cecilia-Immergreen.md` ([Official NEW-R4-014])
+- 2026-03-07 JST [day, JST] hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." — `bible/characters/Elizabeth-Rose-Bloodflame.md` ([Official NEW-R4-005/009/019])
+- 2026-03-07 JST [day, JST] hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." — `bible/characters/Gigi-Murin.md` ([Official NEW-R4-005/009/019])
 - 2026-03-06/08 [day-range] hololive 7th fes. "Ridin' on Dreams": "Idol" as the final solo number of STAGE 3 (her own choreography with a breakdance finish, by her account) and "Kakumei Dualism" with Natsuiro Matsuri; a venue talk with Cecilia Immergreen (her account) — `bible/characters/Hakos-Baelz.md` ([Official HB11 lineup] [secondary setlist HB12] [ASR HB20])
 - 2026-03-24 [day] #ラミこよ off-collab with Lamy, proposing to choose a duo name (no final name established) — `bible/characters/Hakui-Koyori.md` ([Lamy channel Zi8R63ee0Fs])
 - 2026-03-08 [day] hololive 7th fes. "Ridin' on Dreams," STAGE 4 (with Calli, Kronii, Bijou, Nerissa) — `bible/characters/Hoshimachi-Suisei.md` ([Official SU9])
@@ -728,19 +746,23 @@ search the file for the row text to see its context.
 - 2026-03-06 [day] hololive 7th fes. "Ridin' on Dreams," STAGE 1 (with Ayame, Ina, FUWAMOCO) — `bible/characters/Nekomata-Okayu.md` ([Official OK6] [Observed OK3])
 - 2026-03-28 [day] Single "Blue World" — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2 §Discography])
 - 2026-03-27/28 PDT [day-range, PDT] "Drawn to Dawn" duo concert with Kiara (Los Angeles) — `bible/characters/Ninomae-Inanis.md` ([Official I20, I21])
-- 2026-03-13 [day] 3D birthday live; Watson Amelia guests; she releases the single "Way 2 U" and announces an EP of the same name — `bible/characters/Ouro-Kronii.md` ([Observed K33, secondary, stream t=1711; K38, secondary])
+- 2026-03-13 [day] 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 — `bible/characters/Ouro-Kronii.md` ([Observed K33, secondary, stream t=1711; K38, secondary])
+- 2026-03-07 JST [day, JST] hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." — `bible/characters/Raora-Panthera.md` ([Official NEW-R4-005/009/019])
 - 2026-03-24 [day] Bilingual show HoloEN REWIND: first episode — `bible/characters/Takanashi-Kiara.md` ([Observed T2 §HoloEN REWIND])
 - 2026-03-27/28 PDT [day-range, PDT] "Drawn to Dawn" duo concert with Ina (The Wiltern, Los Angeles) — `bible/characters/Takanashi-Kiara.md` ([Official T11, T12])
 - 2026-03 [month] Guest spot at Kronii's 3D birthday live — `bible/characters/Watson-Amelia.md` ([Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711])
+- 2026-03-24 [day] "Prisoner (FUWAMOCO ver.)" — `bible/world/FUWAMOCO.md` ([Official NEW-R3-019])
 - 2026-03 [month] 7th fes: venue talk; Resident Evil series (April) — `bible/world/Hakos-Baelz-Pairs.md`
 - 2026-03-06 to 03-08 [day] hololive 7th fes. "Ridin' on Dreams" (STAGE 1 Mar 6, STAGE 3 Mar 7, STAGE 4 Mar 8) — `bible/world/JP-Senpai-Pairs.md`
 - 2026-03-27/28 PDT [day-range, PDT] "Drawn to Dawn," the Wiltern, LA — `bible/world/TakoTori.md`
 - 2026-03-13 [day] Ame guests at Kronii's 3D birthday live — `bible/world/Time-Duo.md`
+- 2026-03-26 [day] Group song "Unchained" — `bible/world/hololive--Advent.md` ([Official NEW-R3-001])
 - 2026-03-06/08 [day-range] SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" — `bible/world/hololive-History-2023-2026.md`
 - 2026-03-27/28 PDT [day-range, PDT] Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) — `bible/world/hololive-History-2023-2026.md`
 
 ### 2026-04
 - 2026-04-01 [day] April Fools: a "new VTuber" debut on her original design — `bible/characters/AZKi.md` ([AZ4] [ASR AZ20])
+- 2026-04-25 [day] 2026 birthday live with guests from several branches (credited in her archived broadcast description); the performances were later released as cover videos ("Live from COVER Corp. Studio," from May) — `bible/characters/Elizabeth-Rose-Bloodflame.md` ([Archive metadata FIX-R4-001] [Observed EB3, archived credits])
 - 2026-04 [month] "Mekurumeku Rendezvous," a TV anime ending theme — `bible/characters/Fuwawa-Abyssgard.md` ([Observed FW3 vSwxof0K8lk])
 - 2026-04 [month] Resident Evil series with Cecilia (her account); the "Liar Dancer" cover; the mock rival feud — `bible/characters/Hakos-Baelz.md` ([ASR HB20])
 - 2026-04-29 [day] holoX's first in-person unit concert, "First MISSION" — `bible/characters/Hakui-Koyori.md` ([Official KO6])
@@ -751,7 +773,7 @@ search the file for the row text to see its context.
 - 2026-04-04 JST [day, JST] Sixth birthday 3D live "UNCUT ROCK!!" with a live band, plus a members-only encore — `bible/characters/Mori-Calliope.md` ([Archive metadata C32])
 - 2026-04 [month] The "Shishiro Cup" fighting-game tournament, offline; original "Tokihanate" (04-10) — `bible/characters/Shishiro-Botan.md` ([BO4] [Observed BO2])
 - 2026-04-29 [day] holoX's first in-person unit concert "First MISSION"; COVER's interview after it describes the concert as a turning point for the four-member group and its audience — `bible/characters/Takane-Lui.md` ([Official LU6])
-- 2026-04-02 [day] "Mekurumeku Rendezvous," a TV anime ending theme — `bible/world/FUWAMOCO.md`
+- 2026-04-02 [day] "Mekurumeku Rendezvous," ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3 — `bible/world/FUWAMOCO.md`
 - 2026-04-23 [day] Nerissa's Tomodachi Life Miis of IRyS and Ina — `bible/world/IRyS-and-Nerissa-Pairs.md`
 - 2026-04-24 [day] "GETCHA!" cover — `bible/world/TakoTori.md`
 - 2026-04-29 [day] "First MISSION," Pia Arena MM — `bible/world/holoX.md`
@@ -759,7 +781,6 @@ search the file for the row text to see its context.
 ### 2026-05
 - 2026-05-18/19 [day-range] AS_tar with Suisei: a horror off-collab, then "Going My Way" — `bible/characters/AZKi.md` ([AZ4])
 - 2026-05 [month] CCGG 3D live with Gigi (after-talk 05-20, secondary archive evidence); "CCGG MADNESS" MV (05-17; digital 05-29) — `bible/characters/Cecilia-Immergreen.md` ([Official CI1] [Observed CI3 1rIXU_4xGvY, bTxEGwMOQQI])
-- 2026-05 [month] 2026 birthday live with guests from several branches; the performances were released as cover videos ("Live from COVER Corp. Studio") — `bible/characters/Elizabeth-Rose-Bloodflame.md` ([Observed EB3, archived credits])
 - 2026-05 [month] CCGG 3D live with Cecilia; "CCGG MADNESS" MV (05-17; digital 05-29) — `bible/characters/Gigi-Murin.md` ([Official GG1, GG7] [Observed GG3])
 - 2026-05-18/19 [day-range] An AS_tar horror off-collab on AZKi's channel (v60QmEvEQqw), then "Going My Way" with AZKi — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU4; archived metadata] [Official AZKi file])
 - 2026-05-19 [day] An excerpt from Elizabeth's 2026 birthday show, uploaded 05-19, credits Iroha, Watame, Nene, Polka and FUWAMOCO on "CHA-LA HEAD-CHA-LA" (upload date, not necessarily the show date) — `bible/characters/Kazama-Iroha.md` ([IR5 xylll7Mp0jk])
@@ -767,13 +788,16 @@ search the file for the row text to see its context.
 - 2026-05-19 [day] A 3D lie-detector "challenge" to Nekomata Okayu — `bible/characters/Laplus-Darknesss.md` ([LA4 F3i30BIJmtY])
 - 2026-05-25/26 [day-range] "Onee-sama♡Love Call" (official digital release 2026-05-26); album "Project Y.M.A." announced — `bible/characters/Laplus-Darknesss.md` ([Official music 753] [Observed LA2])
 - 2026-05-08 [day] Single "STORM" (later on the EP) — `bible/characters/Ouro-Kronii.md` ([Observed K38, secondary])
+- 2026-05-28 JST [day, JST] "Way 2 U" MV: Kronii shares the lyric credit with JALTO (JALTO composed and arranged; choreography by Miyuki Nishijima). — `bible/characters/Ouro-Kronii.md` ([Archive metadata NEW-R2-006, reproducing the MV credits])
 - 2026-05 [month] First birthday 3D live concert (archived video w37yVSXhV_c); the shared timeline records the announced date as May 10 JST / May 9 PDT, but the actual zoned start remains unverified — `bible/characters/Raora-Panthera.md` ([Observed RP3; hololive -Justice- History; hololive History 2023–2026 Timeline])
+- 2026-05-10 [day] MV of her second original song "Draw." (the period is part of the title); official digital release 2026-05-11. — `bible/characters/Raora-Panthera.md` ([Archive metadata; Official NEW-R4-017])
 - 2026-05 [month] CCGG 3D live, "CCGG MADNESS" — `bible/world/Justice-Pairs.md`
 - 2026-05 [month] CCGG (Gigi and Cecilia) joint 3D live (secondary event coverage) and "CCGG MADNESS"; Raora's first birthday 3D live (May 2026; announced for 05-10 JST / 05-09 PDT; actual zoned start unverified) — `bible/world/hololive--Justice.md`
 - 2026-05 [month] Gigi and Cecilia's joint CCGG 3D live and "CCGG MADNESS"; Raora's first birthday 3D live (May 2026; announced for 05-10 JST / 05-09 PDT; actual zoned start unverified) — `bible/world/hololive-History-2023-2026.md`
 - 2026-05-24 [day] ENReco chapter 3 "Broken Bonds" — `bible/world/hololive-History-2023-2026.md`
 
 ### 2026-06
+- 2026-06-07 [day] A German-language cover of inabakumori's "LAGTRAIN" (German lyrics credited to Jinja). — `bible/characters/Cecilia-Immergreen.md` ([Archive metadata NEW-R4-013])
 - 2026-06-25 [day] Original MV "enough" — `bible/characters/Gigi-Murin.md` ([Observed GG3])
 - 2026-06-18/19 [day-range] 「風向きエントロピー」 (official English title "Entropy of wind direction"; MV 06-18, digital release 06-19); a secondary chronology numbers it her ninth original — `bible/characters/Kazama-Iroha.md` ([IR4 RDobidAdBCA] [Official music 764] [Observed IR2])
 - 2026-06-30 [day] Wins the overall ranking at Kizuna Ai's "Kizuna Ai Cup 2026" (Among Us 3D, Fall Guys) — `bible/characters/Mori-Calliope.md` ([Observed C31, secondary])
@@ -798,9 +822,10 @@ search the file for the row text to see its context.
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: "SUPERNOVA SUPER GIRL" with Justice and "CCGG MADNESS" as Autofister with Cecilia (day 1); "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO, and "ABOVE BELOW" in the Advent+Justice medley (day 2) — `bible/characters/Gigi-Murin.md` ([Official GG4, GG9])
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: BaeRyS with IRyS ("LUVATORRRRRY!"), "HELP!!" with Kobo Kanaeru and Elizabeth Rose Bloodflame (day 1) — `bible/characters/Hakos-Baelz.md` ([Official HB4, HB5])
 - 2026-07-08/13 [day-range] Fan meeting "Hoshiyomi Pajama Party Vol.1" (Tokyo, Osaka) — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU2])
+- 2026-07-12 [day] Album "DANGERyS"; the official introduction names "Escalate" the lead single and describes Eurobeat as one of several styles on the album. — `bible/characters/IRyS.md` ([Official NEW-R2-004])
 - 2026-07-03/04 [day-range] Serendipity concert, duo with Takanashi Kiara ("Rocku Wawa") — `bible/characters/Koseki-Bijou.md` ([Official KB4])
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: the unit B.F.F with Fuwawa and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) — `bible/characters/Mococo-Abyssgard.md` ([Official MC4; Serendipity report])
-- 2026-07-24 [day] TOHO animation announces her as the English dub voice of Kou Tousetsu in *Though I Am an Inept Villainess* — `bible/characters/Mori-Calliope.md` ([Observed C31, secondary; TOHO animation post not opened])
+- 2026-07-24 [day] TOHO animation names Mori Calliope as Kou Tousetsu in the English dub of *Though I Am an Inept Villainess*, announcing a July 26 streaming start. — `bible/characters/Mori-Calliope.md` ([Official FIX-R1-003])
 - 2026-07-09 [day] Cast as "Risa" in the anime "Tenchi Galaxy" — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2 §2026])
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: "SUPERNOVA SUPER GIRL" with Justice (day 1); the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari"), "What an amazing swing" with Tsunomaki Watame and Kiara, and "ABOVE BELOW" in the Advent+Justice medley (day 2) — `bible/characters/Raora-Panthera.md` ([Official RP4, RP9])
 - 2026-07-03/04 [day-range] Serendipity concert, duo with Mori Calliope — `bible/characters/Shiori-Novella.md` ([Official SN4])
@@ -821,6 +846,7 @@ search the file for the row text to see its context.
 ### 2026-08
 - 2026-08-29 [day] First album "FUWAMOCO à la mode" announced — `bible/characters/Fuwawa-Abyssgard.md` ([Observed FW2 §2026; X via wiki])
 - 2026-08 [month] 5th anniversary: her 1st concert "REGALIA" (2026-12-01, after the baseline) and 2nd album "Mirror Mirror" announced (timing per a contemporaneous secondary report); original "I found me" — `bible/characters/Hakos-Baelz.md` ([Official HB7] [Observed HB2])
+- 2026-08-23 [day] Announced: "I found me," with lyrics by Bae (composition and arrangement by Tomomichi Takuma of Dream Monster), and her second album "Mirror Mirror," scheduled for 2026-11-02 (after the baseline: an announcement only). — `bible/characters/Hakos-Baelz.md` ([Official NEW-R2-017])
 - 2026-08-23 [day] Puyo Puyo Tetris 2 coaching collab with FUWAMOCO — `bible/characters/Hoshimachi-Suisei.md` ([S1, secondary metadata: https://ckworks.jp/vinforadar/video/i6_T0tiQIkE])
 - 2026-08-30 [day] Original "GUM & DROP"; more fan meetings and a December concert with tuki. announced — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU2])
 - 2026-08 [month] 7th anniversary and a new 3D costume (08-11); single "Kyapi" (08-12) — `bible/characters/Houshou-Marine.md` ([Observed MA2 §2026, §Discography])
@@ -831,14 +857,20 @@ search the file for the row text to see its context.
 - 2026-08-01 [day] A "rare" La+ and Lui talk with new outfits — `bible/characters/Takane-Lui.md` ([LU4])
 - 2026-08-15 [day] First album "Fleur de neige" announced for 2027-01-27 (after the baseline) — `bible/characters/Yukihana-Lamy.md` ([Observed LM2])
 - 2026-08-29 [day] First album "FUWAMOCO à la mode" announced — `bible/world/FUWAMOCO.md`
+- 2026-08-30 [day] "Ichizutte Trend♡" — `bible/world/FUWAMOCO.md` ([Official NEW-R3-019])
 - 2026-08-22 [day] Anime NYC: an announced convention-exclusive stream — `bible/world/JP-Senpai-Pairs.md`
+- 2026-08-02 [day] Group song "Spotlight" — `bible/world/hololive--Advent.md` ([Official NEW-R3-001])
+- 2026-08-09 [day] 3rd-anniversary 3D live "Bound by Fate" (archive calendar date; also linked from Nerissa's official profile) — `bible/world/hololive--Advent.md` ([Archive metadata NEW-R3-001])
 - 2026-08/09 [month-range] Official -Justice- merch tie-ins: Bandai Namco Amusement America pop-up (2026-08-27), Pinfinity AR pins (2026-09-30) — `bible/world/hololive--Justice.md` ([Official S1 news])
 
 ### 2026-09
 - 2026-09-20/21 [day-range] RosaMiA (with Aki Rosenthal and Ookami Mio): "Blossom Sinfonia," premiered 09-20 (reported), official digital release 09-21 — `bible/characters/AZKi.md` ([Observed AZ2] [Official AZ12])
+- 2026-09-26 [day] Her first solo singing stream, a ROCK N' RAWR PARTY; the description calls her "just a fluffy dog doing her best to sing for you!" (written). — `bible/characters/Fuwawa-Abyssgard.md` ([Archive metadata NEW-R3-018])
 - 2026-09-30 [day] Alum; her history stays part of Myth's shared memory — `bible/characters/Gawr-Gura.md` ([Adaptation])
 - 2026-09-01 [day] "Here Comes the CHADCast," released with Mori Calliope and IRyS — `bible/characters/Hakos-Baelz.md` ([Official HB9])
+- 2026-09-03 [day] [Secondary, pending primary confirmation] Reported casting as Monami Ichikawa in *Sucker for Love: Crush Landing*; a September playthrough on her channel is also reported. — `bible/characters/Hakos-Baelz.md` ([Secondary NEW-R2-018])
 - 2026-09-07 [day] Branches merge into one "hololive"; her unit is hololive -Promise- — `bible/characters/Hakos-Baelz.md` ([Official HB1])
+- 2026-09-28 [day] "PARADISE!", the hololive Dreams area theme: animated MV; Bae shares the vocal credit with Omaru Polka, Houshou Marine, Yukihana Lamy, Hakui Koyori, Kobo Kanaeru and Ichijou Ririka. Also announced that day: "REGALIA" at Kanadevia Hall, scheduled for 2026-12-01 (after the baseline: an announcement only). — `bible/characters/Hakos-Baelz.md` ([Secondary NEW-R2-019, press-release reproduction] [Official, 20260928-02-16])
 - 2026-09-12 [day] Second album "Chemical Spark" and first solo concert "Dream Spark" (2026-12-22) announced — `bible/characters/Hakui-Koyori.md` ([Observed KO2])
 - 2026-09-20 [day] A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours — `bible/characters/Hakui-Koyori.md` ([KO3])
 - 2026-09-08 [day] Arena tour "Once Upon a Stellar" opens (Yokohama, Kobe, Nagoya, Fukuoka; to 11-12) — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU2])
@@ -847,7 +879,9 @@ search the file for the row text to see its context.
 - 2026-09-19 PDT [day, PDT] Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres — `bible/characters/Mori-Calliope.md` ([Archive metadata C33])
 - 2026-09-07 [day] Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- — `bible/characters/Ninomae-Inanis.md` ([Official I28] [Observed I10])
 - 2026-09-19 PDT [day, PDT] Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres — `bible/characters/Ninomae-Inanis.md` ([Archive metadata I32])
+- 2026-09-19 [day] Original single "Stardust Capsule" (hololive catalogue CVRD-824). — `bible/characters/Ninomae-Inanis.md` ([Official NEW-R1-011])
 - 2026-09-07 [day] Branches merge into one "hololive"; unit is hololive -Promise- — `bible/characters/Ouro-Kronii.md` ([Official K5, K1])
+- 2026-09-21 [day] "Glitch Through," a new solo song for the hololive Dreams event "A Dreamy Summer Escape" (her chapter); the game's event story is a separate fictional production. — `bible/characters/Shiori-Novella.md` ([Official partner press release NEW-R3-005])
 - 2026-09-19 [day] First album "BOTAN.EXE" opened for orders; original "Stray & Stay" — `bible/characters/Shishiro-Botan.md` ([Observed BO2] [Distributor listing])
 - 2026-09-26/27 [day-range] NePoX events with Secret Society holoX — `bible/characters/Shishiro-Botan.md` ([LM4 Ml1tM8S40p0])
 - 2026-09-07 [day] Branches merge; unit is hololive -Myth- — `bible/characters/Takanashi-Kiara.md` ([Official T20, T1])

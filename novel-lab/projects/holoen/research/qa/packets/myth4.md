@@ -1,10 +1,10 @@
 # Audit packet: myth4
 
-Snapshot: git fca8f18. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git fa69d71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Ninomae-Inanis.md` ecbb600456ef; `bible/world/TakoTori.md` c3f8a29470c0
+Owned files (sha256): `bible/characters/Ninomae-Inanis.md` 45ccf8a3589f; `bible/world/TakoTori.md` c3f8a29470c0
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -28,6 +28,7 @@ Owned files (sha256): `bible/characters/Ninomae-Inanis.md` ecbb600456ef; `bible/
 | 2026-01-08 (digital release; zone unspecified) | Digital release of TAKO∞TAKOVER; lyrics by Mori Calliope. I19 discusses its deliberately unsettling takeover story. | [Observed—published interview I19] [Official I25; digital release: https://hololive.hololivepro.com/en/music/693/, checked 2026-10-03] |
 | 2026-09-07 | Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- | [Official I28] [Observed I10] |
 | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
+| 2026-09-19 | Original single "Stardust Capsule" (hololive catalogue CVRD-824). | [Official NEW-R1-011] |
 **Dossier · Hard Facts (continuity):**
 - Birthday May 20; height 157 cm; debut 2020-09-13; unit hololive -Myth-; illustrator Kuroboshi Kouhaku
   (whom she calls "papa"). [Official I1] [Observed I2 infobox]
