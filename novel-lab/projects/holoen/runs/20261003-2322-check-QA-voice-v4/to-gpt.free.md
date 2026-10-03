@@ -29,12 +29,14 @@ The factual baseline is 2026-09-30.
 ## What to check, per member
 
 1. **Quotations.** Every spoken line quoted on the card's voice fields or in the sheet (tag palette, example
-   block) must be an official written line, a labelled secondary transcription, a labelled **Style demo**
-   (original line written in her manner), or an ASR span both models share (same audio window, contiguous,
-   no stitched pieces, no added words). The audio report for each member is in
+   block) must be an official written line, a labelled **Style demo** (original line written in her
+   manner), or an ASR span both models share (same audio window, contiguous, no stitched pieces, no added
+   words). Spoken quotations require the two-model shared-span gate; a secondary transcription supplies only a
+   candidate for Claude's audio check and must stay labelled as such until checked. The audio report for each member is in
    `projects/holoen/research/audio-check/` (its table marks shared spans; Japanese rows count the same kana
    reading as shared). An example line that joins two separately timed moments is a stitch. Mechanical span
-   checking already passes (`tools/span_check.py`: 0 candidates); judge what it cannot: attribution, labels,
+   checking (`tools/span_check.py`) reports 0 quotes outside a shared span, but it only checks quotes that
+   overlap a report row, so short or unmatched quotes can escape it; judge what it cannot: attribution, labels,
    speaker, context and whether a quote is used for what it shows.
 2. **Original-voice design.** The Voice Design prompt and Voice & Delivery describe an original voice. No
    cloning or "sound like her" direction; no measured pitch (Hz), F0 or speaking-rate figure used as a target;

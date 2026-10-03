@@ -41,17 +41,22 @@ Original calibration lines must say “Style demonstration.”
 
 Use the packet inventory to resolve exact paths. Primary ownership is:
 
-- Myth: Calliope, Kiara, Ina, Amelia, Gura; Myth, TakaMori, TakoTori, AmeSame,
-  Bone Bros, Myth-and-Kronii Other Pairs.
-- Promise: Kronii, IRyS, Fauna, Mumei; Promise, Time Duo, Time and Death,
-  OctoClock, Fauna-and-Mumei Pairs, IRyS-and-Nerissa Pairs.
+- Myth (four audits: myth1 Calliope with TakaMori; myth3 Kiara with Myth-and-Kronii Other
+  Pairs; myth4 Ina with TakoTori; myth2 Gura and Amelia with Myth, AmeSame and Bone Bros).
+- Promise: Kronii, IRyS, Fauna, Mumei, Baelz; Promise, Time Duo, Time and Death,
+  OctoClock, Fauna-and-Mumei Pairs, IRyS-and-Nerissa Pairs, Hakos-Baelz Pairs.
 - Advent: Shiori, Bijou, Nerissa, Fuwawa, Mococo; Advent, Advent Pairs, FUWAMOCO.
 - Justice: Elizabeth, Gigi, Cecilia, Raora; Justice, Justice Pairs.
+- JP: Suisei, AZKi, Ayame, Okayu; JP Senpai Pairs.
+- JP2: Marine, Noel, Lamy, Botan, Vivi; JP Senpai Pairs 2.
+- holoX: La+, Lui, Koyori, Chloe, Iroha; holoX.
 - Global: hololive, Streaming Life, VTuber Persona and Lore, Cross-Branch Friends,
   Concerts and Live Events, both History cards.
 
-Together these cover 18 character and 24 world cards. Baelz, Sana and other
-external participants may be referenced; do not create their character cards.
+Together these cover the authorized 33 character and 28 world cards (the packet
+inventory is authoritative). Other external participants may be referenced; do
+not create their character cards. If a card your cohort owns is missing from the
+packet, report coverage as INCOMPLETE instead of auditing a reduced roster.
 
 Audit the selected cohort’s complete [SW] fields, Relationship Map, Background
 Timeline and Hard Facts, plus incoming claims from every other card. Inspect
@@ -131,7 +136,8 @@ such as optional compression or accepting a disclosed evidence limitation.
 It is not model approval, source verification, or permission to override binding
 scope. Give a concrete question and recommendation. Do not escalate routine fixes.
 
-IDs: {COHORT}-{TYPE}-{NNN}, with COHORT = MYTH, PROMISE, ADVENT, JUSTICE or GLOBAL.
+IDs: {COHORT}-{TYPE}-{NNN}, with COHORT = this run's cohort in capitals (MYTH1, MYTH2, MYTH3,
+MYTH4, PROMISE, ADVENT, JUSTICE, JP, JP2, HOLOX or GLOBAL), so separately queued audits never share IDs.
 Use TYPE = DATE, STATUS, EVENT, ROSTER, TIE, CREDIT, UNIT, ALIAS, SCOPE, QUOTE,
 VOICE, EXPORT or COVERAGE. Continue numbering from the resolution ledger.
 Reuse existing IDs for the same finding; never renumber or duplicate it.

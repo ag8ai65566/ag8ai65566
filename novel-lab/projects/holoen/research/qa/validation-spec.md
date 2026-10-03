@@ -10,7 +10,7 @@ Use two phases: **candidate validation**, then **final release validation** incl
 
 2. **V02 — Authorized inventory.**  
    **Check/how:** Compare canonical names, kinds, destinations and counts against the approved inventory.  
-   **Pass:** Exactly 18 Characters, 24 Worldbuilding elements and 18 performance sheets; separate twins; reference-only people do not become cards. Any expansion has explicit authorization. **Severity: block.**
+   **Pass:** Exactly the authorized inventory in `tools/qa_packets.py` COHORTS (r01: 33 Characters, 28 Worldbuilding elements and 33 performance sheets); separate twins; reference-only people do not become cards. Any expansion has explicit authorization. **Severity: block.**
 
 3. **V03 — Schema and headings.**  
    **Check/how:** Parse front matter and `[SW]` headings using the configured schema; detect duplicates before constructing dictionaries.  

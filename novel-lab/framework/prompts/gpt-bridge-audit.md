@@ -18,8 +18,8 @@ research/qa/audit-*.md reports relevant to the bridge. Reports outside runs are
 permitted. Never read projects/*/runs/, even through links. Modify no files.
 
 The baseline is 2026-09-30. Use later verification only to establish baseline-era
-facts. Cover all 18 character and 24 world cards through relevant cross-file
-claims. External participants may remain reference-only; create no new cards.
+facts. Cover all 33 character and 28 world cards (the authorized inventory in the
+packet) through relevant cross-file claims. External participants may remain reference-only; create no new cards.
 
 Use official fictional lore and public persona behavior only. Exclude performer
 identity, private appearance, past activities, private life, health, real family,

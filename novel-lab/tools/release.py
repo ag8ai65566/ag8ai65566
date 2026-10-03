@@ -70,6 +70,15 @@ PRIVACY = re.compile(r"(?i)\b(surgery|hospital|illness|diagnos\w*|hiatus|semi-br
                      r"audition\w*|vacation|days off|off-collab trip|boyfriend|girlfriend|apartment|jammies)\b")
 
 
+def shipped_counts(pkg):
+    """Count what the package actually ships (P1: byte hashes alone do not prove the inventory)."""
+    def rows(name):
+        f = pkg / "sudowrite" / name
+        return len(list(csv.DictReader(io.StringIO(lab.read(f))))) if f.exists() else 0
+    return {"characters": rows("characters.csv"), "world": rows("worldbuilding.csv"),
+            "sheets": len(list((pkg / "performance" / "sheets").glob("*.md")))}
+
+
 def sha(b):
     return hashlib.sha256(b if isinstance(b, bytes) else b.encode("utf-8")).hexdigest()
 
@@ -353,12 +362,22 @@ def check_all(proj, phase, package=None, building=False):
         if building:  # the builder writes manifest.json last, recording this validation
             need.remove("manifest.json")
         missing = [n for n in need if not (package / n).exists()]
-        R.add("V22", "fail" if missing else "pass", "block", "Package integrity", [f"missing {missing}"] if missing else ["layout complete"])
+        shipped = shipped_counts(package)
+        det22 = ([f"missing {missing}"] if missing else ["layout complete"]) + (
+            [f"shipped {shipped} != authorized {EXPECT}"] if shipped != EXPECT else [f"shipped counts {shipped}"])
+        R.add("V22", "fail" if missing or shipped != EXPECT else "pass", "block", "Package integrity", det22)
         R.add("V23", "pass" if (package / "CHANGELOG.md").exists() else "fail", "block", "Changelog and supporting views")
         rows = list(csv.DictReader(io.StringIO(lab.read(package / "performance" / "test-results.csv")))) \
             if (package / "performance" / "test-results.csv").exists() else []
-        st = "warn" if all(r["outcome"] == "not_run" for r in rows) else "pass"
-        R.add("V24", st, "warn", "Runtime evidence", ["statically validated; runtime untested"] if st == "warn" else [])
+        outs = [r["outcome"] for r in rows]
+        # a recorded failure blocks; only a complete set of passes clears; otherwise the runtime gap is disclosed
+        if not outs or any(o not in ("pass", "not_run") for o in outs):
+            st, sev, det = "fail", "block", [f"runtime outcomes {sorted(set(outs)) or 'missing'}: a failure needs remediation"]
+        elif all(o == "pass" for o in outs):
+            st, sev, det = "pass", "warn", [f"{len(outs)} runtime tests passed"]
+        else:
+            st, sev, det = "warn", "warn", ["statically validated; runtime untested"]
+        R.add("V24", st, sev, "Runtime evidence", det)
     for cid, title in (("V22", "Package integrity"), ("V23", "Changelog and supporting views"), ("V24", "Runtime evidence")):
         if not any(r["check_id"] == cid for r in R.items):
             R.add(cid, "not_applicable", "block", title, ["no package yet"])
@@ -535,7 +554,7 @@ def cmd_build(args):
     ledger = lab.read(proj / "research" / "qa" / "resolutions.md")
     manifest = {"release": rev, "draft": args.draft, "baseline": BASELINE,
                 "built_at": dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%MZ"), "commit": commit, "dirty_worktree": dirty,
-                "snapshot": snapshot2, "counts": dict(EXPECT),
+                "snapshot": snapshot2, "counts": shipped_counts(pkg), "expected_counts": dict(EXPECT),
                 "promotion": "author decisions (research/qa/promotions.md); GPT reviewed each card one round; not GPT approval",
                 "unresolved_findings": [l.split("|")[1].strip() for l in ledger.splitlines() if "| pending" in l or "| deferred" in l],
                 "runtime_tests": "not_run (statically validated; runtime untested)",

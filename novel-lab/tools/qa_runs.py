@@ -53,7 +53,7 @@ BRIDGE_NOTES = {
 
 This pass covers **external participants**: people without a card (JP/ID members, DEV_IS, guests, alumni of
 other branches) as they appear across all cohorts, using the packet `ties-external.md`. Cast-to-cast pairs and
-claims naming more than three people were already compared from both sides by the seven cohort audits, whose
+claims naming more than three people are compared from both sides by the cohort audits, whose
 packets hold every outgoing and incoming claim for their members (see `research/qa/audit-*.md`); a separate
 cast-ties pass would repeat that work and does not fit the remaining quota. If you see a cross-cohort tie
 problem the cohort audits could not have caught, report it here; say in Merge handoff whether a further pass
