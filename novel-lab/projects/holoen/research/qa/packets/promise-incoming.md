@@ -1,9 +1,9 @@
 # Audit packet: promise (incoming claims)
 
-Snapshot: git aaf1081.
+Snapshot: git 82a6b20.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Hakos Baelz Pairs|Nerissa and IRyS|hololive Council|It's Not a Phase|Mumei and Kronii|Keeper of Nature|Kronii and Calli|Calli and Kronii|IRyS and Kronii|Mumei and Fauna|Bae and Cecilia|Mumei and Kiara|Fauna and Mumei|Kronii and Ina|Kronii and Ame|Ina and Kronii|Bae and Kronii|Ame and Kronii|Warden of Time|Fauna and Gura|Time and Death|Bae and Calli|Mother Nature|Nanashi Mumei|Kroniicopter|Bae and IRyS|IRyS and Ina|Hakos Baelz|Ouro Kronii|Gamer Kirin|holoCouncil|Ceres Fauna|holoPromise|Owo-senpai|Tam Tender|Octo'Clock|Ceres-chan|Octo'clock|CouncilRyS|Mumi-chan|YabaIRyS|オーロ・クロニー|Moomsies|CHADCast|KiaRissa|Rat Idol|Time Duo|SeisoRyS|Kronster|Moomers|BratTea|Myumyei|KronMei|Promise|Council|MorIRyS|Kronini|Meimei|Faufau|Kronii|BaeRyS|Baelz|BaeBi|Fawna|gumei|Fauna|Mumei|Hakos|IRyS|Moom|Irys|Towl|Bae)(
+Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Hakos Baelz Pairs|Keeper of Nature|Nerissa and IRyS|Mumei and Kronii|hololive Council|Calli and Kronii|It's Not a Phase|Kronii and Calli|Bae and Cecilia|Mumei and Fauna|Fauna and Mumei|IRyS and Kronii|Mumei and Kiara|Kronii and Ina|Time and Death|Warden of Time|Fauna and Gura|Kronii and Ame|Ina and Kronii|Bae and Kronii|Ame and Kronii|Mother Nature|Bae and Calli|Nanashi Mumei|Kroniicopter|Bae and IRyS|IRyS and Ina|Gamer Kirin|Hakos Baelz|holoPromise|Ouro Kronii|holoCouncil|Ceres Fauna|Owo-senpai|Octo'clock|Ceres-chan|CouncilRyS|Octo'Clock|Tam Tender|Mumi-chan|Moomsies|オーロ・クロニー|SeisoRyS|CHADCast|YabaIRyS|KiaRissa|Rat Idol|Time Duo|Kronster|KronMei|Myumyei|Promise|Kronini|Council|Moomers|MorIRyS|BratTea|Faufau|BaeRyS|Meimei|Kronii|gumei|Mumei|BaeBi|Fauna|Baelz|Hakos|Fawna|Towl|IRyS|Irys|Moom|Bae)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
