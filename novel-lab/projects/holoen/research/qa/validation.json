@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-03T23:33Z",
- "snapshot": "2b7248c62cbe87670e67c850483708a24185eaf5a7fd942ec97e2da95795f62c",
+ "checked_at": "2026-10-03T23:43Z",
+ "snapshot": "0c3f77b63c7457a17cec58da19e934bf6bac8ffe159c239eb548204c3cc2aa17",
  "blocking_failures": [
   "V10",
   "V11",
@@ -20,8 +20,8 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 2b7248c62cbe87670e67c850483708a24185eaf5a7fd942ec97e2da95795f62c",
-    "100 inputs"
+    "snapshot 0c3f77b63c7457a17cec58da19e934bf6bac8ffe159c239eb548204c3cc2aa17",
+    "107 inputs"
    ],
    "finding_ids": []
   },
@@ -156,7 +156,37 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "0 automated candidates for semantic review",
+    "33 automated candidates for semantic review",
+    "sheet Ouro-Kronii: …audition…",
+    "sheet Nakiri-Ayame: …audition…",
+    "sheet Watson-Amelia: …audition…",
+    "sheet Elizabeth-Rose-Bloodflame: …audition…",
+    "sheet Mori-Calliope: …audition…",
+    "sheet Gigi-Murin: …audition…",
+    "sheet IRyS: …audition…",
+    "sheet Hakos-Baelz: …audition…",
+    "sheet Laplus-Darknesss: …audition…",
+    "sheet Shishiro-Botan: …audition…",
+    "sheet Gawr-Gura: …audition…",
+    "sheet Raora-Panthera: …audition…",
+    "sheet Houshou-Marine: …audition…",
+    "sheet Hakui-Koyori: …audition…",
+    "sheet Koseki-Bijou: …audition…",
+    "sheet Ninomae-Inanis: …audition…",
+    "sheet Takanashi-Kiara: …audition…",
+    "sheet Mococo-Abyssgard: …audition…",
+    "sheet Shirogane-Noel: …audition…",
+    "sheet Kazama-Iroha: …audition…",
+    "sheet Fuwawa-Abyssgard: …audition…",
+    "sheet Nerissa-Ravencroft: …audition…",
+    "sheet Shiori-Novella: …audition…",
+    "sheet Nekomata-Okayu: …audition…",
+    "sheet Ceres-Fauna: …audition…",
+    "sheet Sakamata-Chloe: …audition…",
+    "sheet Yukihana-Lamy: …audition…",
+    "sheet Kikirara-Vivi: …audition…",
+    "sheet Cecilia-Immergreen: …audition…",
+    "sheet Hoshimachi-Suisei: …audition…",
     "review pending: research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
@@ -249,11 +279,11 @@
   {
    "check_id": "V20",
    "title": "Audio turn handoff",
-   "status": "not_applicable",
+   "status": "pass",
    "severity": "block",
    "locator": null,
    "evidence": [
-    "no derived turn list in this release"
+    "converter fixture and card-to-sheet palettes passed"
    ],
    "finding_ids": []
   },

@@ -36,6 +36,7 @@ CUSTOM_TRAITS = {"Catchphrases", "Voice & Delivery", "Audio Tags", "Motivation",
 # The roster is defined once, in qa_packets.COHORTS; the release must contain exactly those cards and sheets.
 ROSTER_CHARS = sorted({s for c in qa_packets.COHORTS.values() for s in c["characters"]})
 ROSTER_WORLD = sorted({s for c in qa_packets.COHORTS.values() for s in c["world"]})
+RUNTIME_TESTS = ("sudowrite-import", "sudowrite-generation", "elevenlabs-3-line", "elevenlabs-japanese")
 EXPECT = {"characters": len(ROSTER_CHARS), "world": len(ROSTER_WORLD), "sheets": len(ROSTER_CHARS)}
 CAST_ORDER = ["Mori-Calliope", "Takanashi-Kiara", "Ninomae-Inanis", "Gawr-Gura", "Watson-Amelia",
               "IRyS", "Ouro-Kronii", "Ceres-Fauna", "Nanashi-Mumei", "Hakos-Baelz",
@@ -133,7 +134,11 @@ def check_all(proj, phase, package=None, building=False):
     inputs = {}
     for p in sorted(list((proj / "bible").rglob("*.md")) + list(sheets_dir.glob("*.md")) +
                     [lab.FIELDS_FILE, ROOT / "tools" / "lab.py", ROOT / "tools" / "release.py",
-                     ROOT / "tools" / "qa_packets.py", proj / "project.md"]):
+                     ROOT / "tools" / "qa_packets.py", proj / "project.md",
+                     ROOT / "tools" / "scene_to_elevenlabs.py", ROOT / "tools" / "test_scene_to_elevenlabs.py",
+                     ROOT / "docs" / "scene-script-format.md", ROOT / "docs" / "sudowrite-2026-09.md",
+                     ROOT / "docs" / "elevenlabs-v4.md", ROOT / "framework" / "templates" / "audio-scene-prompt.txt",
+                     ROOT / "framework" / "templates" / "start-here-zh.md"]):
         inputs[str(p.relative_to(ROOT))] = sha(p.read_bytes())
     snapshot = sha(json.dumps(inputs, sort_keys=True))
     st, det = "pass", [f"snapshot {snapshot}", f"{len(inputs)} inputs"]
@@ -340,7 +345,25 @@ def check_all(proj, phase, package=None, building=False):
     R.add("V18", "fail" if errs18 else "pass", "block", "Performance freshness and settings", errs18)
 
     attested("V19", "Voice and pronunciation claims")
-    R.add("V20", "not_applicable", "block", "Audio turn handoff", ["no derived turn list in this release"])
+    # V20: the package ships the scene converter, so every card tag must be in its sheet palette and the fixture must pass
+    from scene_to_elevenlabs import TAG as AUDIO_TAG, norm as audio_norm, load_policies
+    handoff_errors = []
+    try:
+        palettes, _ = load_policies(sheets_dir)
+        for stem, card in chars.items():
+            name = card["fields"]["Name"]
+            missing_tags = {audio_norm(t) for t in AUDIO_TAG.findall(card["fields"].get("Audio Tags", ""))} - \
+                palettes.get(name, set())
+            if name not in palettes or missing_tags:
+                handoff_errors.append(f"{stem}: missing sheet/palette tags {sorted(missing_tags)}")
+        smoke = subprocess.run([sys.executable, str(ROOT / "tools" / "test_scene_to_elevenlabs.py")],
+                               capture_output=True, text=True)
+        if smoke.returncode:
+            handoff_errors.append(smoke.stderr or smoke.stdout or "converter test failed")
+    except (OSError, ValueError) as exc:
+        handoff_errors.append(str(exc))
+    R.add("V20", "fail" if handoff_errors else "pass", "block", "Audio turn handoff",
+          handoff_errors or ["converter fixture and card-to-sheet palettes passed"])
 
     # V21 findings and provenance
     ledger = proj / "research" / "qa" / "resolutions.md"
@@ -358,7 +381,10 @@ def check_all(proj, phase, package=None, building=False):
         need = ["00-START-HERE.md", "01-INDEX.md", "CHANGELOG.md", "manifest.json", "sudowrite/characters.csv",
                 "sudowrite/worldbuilding.csv", "sudowrite/paste.md", "sudowrite/style.txt", "sudowrite/scene-setup.md",
                 "performance/pronunciation.tsv", "performance/voice-map.example.json", "performance/test-results.csv",
-                "reference/sources-and-claims.jsonl", "reference/coverage.md"]
+                "reference/sources-and-claims.jsonl", "reference/coverage.md",
+                "performance/tools/scene_to_elevenlabs.py", "performance/tools/test_scene_to_elevenlabs.py",
+                "performance/script-format.md", "sudowrite/scene-prompt.txt",
+                "reference/platform-docs/sudowrite-2026-09.md", "reference/platform-docs/elevenlabs-v4.md"]
         if building:  # the builder writes manifest.json last, recording this validation
             need.remove("manifest.json")
         missing = [n for n in need if not (package / n).exists()]
@@ -369,14 +395,19 @@ def check_all(proj, phase, package=None, building=False):
         R.add("V23", "pass" if (package / "CHANGELOG.md").exists() else "fail", "block", "Changelog and supporting views")
         rows = list(csv.DictReader(io.StringIO(lab.read(package / "performance" / "test-results.csv")))) \
             if (package / "performance" / "test-results.csv").exists() else []
-        outs = [r["outcome"] for r in rows]
-        # a recorded failure blocks; only a complete set of passes clears; otherwise the runtime gap is disclosed
-        if not outs or any(o not in ("pass", "not_run") for o in outs):
-            st, sev, det = "fail", "block", [f"runtime outcomes {sorted(set(outs)) or 'missing'}: a failure needs remediation"]
-        elif all(o == "pass" for o in outs):
-            st, sev, det = "pass", "warn", [f"{len(outs)} runtime tests passed"]
+        latest = {r["test"]: r for r in rows}
+        bad = sorted(t for t, r in latest.items() if r.get("outcome") not in ("pass", "not_run"))
+        complete = set(RUNTIME_TESTS) <= set(latest) and all(
+            latest[t].get("outcome") == "pass" and
+            all(latest[t].get(k) for k in ("release", "date", "tester", "model_or_voice", "observations"))
+            for t in RUNTIME_TESTS)
+        # a recorded failure blocks; only complete, documented passes clear; otherwise the runtime gap is disclosed
+        if bad or not rows:
+            st, sev, det = "fail", "block", [f"failed or unknown runtime outcomes: {bad or 'no test records'}"]
+        elif complete:
+            st, sev, det = "pass", "warn", [f"{len(RUNTIME_TESTS)} runtime tests passed"]
         else:
-            st, sev, det = "warn", "warn", ["statically validated; runtime untested"]
+            st, sev, det = "warn", "warn", ["required runtime evidence incomplete; do not label runtime-tested"]
         R.add("V24", st, sev, "Runtime evidence", det)
     for cid, title in (("V22", "Package integrity"), ("V23", "Changelog and supporting views"), ("V24", "Runtime evidence")):
         if not any(r["check_id"] == cid for r in R.items):
@@ -487,6 +518,14 @@ def cmd_build(args):
         status_lines.append(f"| {c['name']} | {si['state_at_baseline']} | {si['debut'] or '—'} | {si['graduated'] or '—'} | {si['regular_activities_concluded'] or '—'} |")
     (pkg / "sudowrite" / "scene-setup.md").write_text(SCENE_SETUP.format(table="\n".join(status_lines)), encoding="utf-8")
     (pkg / "performance" / "sheets").mkdir(parents=True)
+    (pkg / "performance" / "tools").mkdir()
+    for filename in ("scene_to_elevenlabs.py", "test_scene_to_elevenlabs.py"):
+        shutil.copy2(ROOT / "tools" / filename, pkg / "performance" / "tools" / filename)
+    shutil.copy2(ROOT / "docs" / "scene-script-format.md", pkg / "performance" / "script-format.md")
+    shutil.copy2(ROOT / "framework" / "templates" / "audio-scene-prompt.txt", pkg / "sudowrite" / "scene-prompt.txt")
+    (pkg / "reference" / "platform-docs").mkdir(parents=True)
+    for filename in ("sudowrite-2026-09.md", "elevenlabs-v4.md"):
+        shutil.copy2(ROOT / "docs" / filename, pkg / "reference" / "platform-docs" / filename)
     for p in (exp / "elevenlabs").glob("*.md"):
         if p.stem in ROSTER_CHARS and p.stem not in cards:
             continue  # a sheet ships only with its card
@@ -502,7 +541,7 @@ def cmd_build(args):
     with open(pkg / "performance" / "test-results.csv", "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["test", "release", "date", "tester", "model_or_voice", "settings", "observations", "outcome"])
-        for t in ("sudowrite-import", "sudowrite-generation", "elevenlabs-3-line"):
+        for t in RUNTIME_TESTS:
             w.writerow([t, rev, "", "", "", "", "", "not_run"])
     (pkg / "reference" / "bible").mkdir(parents=True)
     for sub in ("characters", "world"):

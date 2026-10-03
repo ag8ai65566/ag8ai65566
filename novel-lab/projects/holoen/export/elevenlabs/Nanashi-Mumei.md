@@ -16,7 +16,7 @@ sudden high screech; says dark jokes in the same cute, cheerful tone."
   sparse commentary in games. [ASR M20]
 - Her singing voice is a separate register; this sheet covers speech only.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (scattered and spontaneous, but the soft base must hold). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[quick, scattered]` or `[murmuring, focused]`; v4 has no speed slider.
 
@@ -43,6 +43,8 @@ sudden high screech; says dark jokes in the same cute, cheerful tone."
 | Superchats | `[warm]` → `[brisk]` | "don don!" (SECONDARY: its superchat use; the word itself is ASR-confirmed) |
 | Philosophical | `[soft, matter-of-fact]` | "Sometimes you go through life just not knowing stuff." |
 | Sign-off | `[warm, sing-song]`, repeated | "Goodbye for now. I'll see you probably tomorrow, probably tomorrow." |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[soft, cute, low-energy]`, `[distracted]`, `[apologetic]`, `[flat]`, `[mock-gloomy]`, `[teasing]`.
 
 ## 5. Signature sounds
 - `[high-pitched screech]` (tag only; don't also spell it out).

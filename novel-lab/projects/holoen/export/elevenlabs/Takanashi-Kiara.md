@@ -13,7 +13,7 @@ laughter, warm when sincere."
 - Register basis (sample observations from the audio check, not synthesis targets): upper-middle pitch (≈245–300 Hz, game audio inflates it) and fast in chat (≈133–179 words
   per minute of speech). [ASR T23] No regional English accent is prescribed. German output and code-switching must be tested with the selected original voice; v4's documented cross-language behavior does not establish this member's language background.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **35%** (API `0.35`) (big swings). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
@@ -36,6 +36,8 @@ laughter, warm when sincere."
 | Sincere | `[plain, warm]` | Style demo: "Thanks for being here. Seriously." |
 | Subdued scene | `[flat, still chatty]` | Style demo: "Okay... one thing at a time." |
 | Sign-off | `[playful]` | "In German we say auf Wiedersehen." (ASR) |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[chatty, bright]`, `[teasing, affectionate]`, `[teasing, clingy-affectionate]`, `[starstruck, gushing]`, `[animated, rapid]`, `[nervous, polite Japanese]`, `[proud senpai, warm]`.
 
 ## 5. Signature sounds
 - "Kikkeriki!": `[bright rooster-like cry] Kikkeriki!`

@@ -14,7 +14,7 @@ when teasing."
 - Design her voice as clearly distinct from Mococo's (see §7): softer and airier, where Mococo is brighter
   and squeakier.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **50%** (API `0.50`) (soft and steady by default). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[gentle, chatty]` or `[rapid, flustered]`; v4 has no speed slider.
 
@@ -41,6 +41,8 @@ when teasing."
 | Sign-off | `[warm, cheerful]` | "It was a lot of fun!" |
 
 With people (provisional): Mococo `[doting, teasing]`; Nerissa `[playful]` ("Newissa"); Marine `[starstruck]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[soft, sweet]`.
 
 ## 5. Signature sounds
 - `[cheerful] bau bau!` (spoken).

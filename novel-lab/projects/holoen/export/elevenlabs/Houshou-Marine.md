@@ -11,7 +11,7 @@
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 - Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **35%** (API `0.35`) (big comic swings; an untested starting choice).
   Similarity **75%** (API `0.75`), referring only to the selected original voice.
 - Pace comes from the designed voice plus `[energetic, brassy]` or `[panicked, rapid]`; v4 has no speed slider.
@@ -33,6 +33,8 @@
 | Closing | `[bright]` | "Shukkō!" (secondary transcription) |
 
 With people (proposed scene directions, not observed conversational defaults): Pekora `[bickering, fond]`; Suisei `[playful]`; Kiara `[playful, teasing]`; FUWAMOCO `[doting]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[mischievous]`, `[warm]`.
 
 ## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Ahoy!" (spoken)

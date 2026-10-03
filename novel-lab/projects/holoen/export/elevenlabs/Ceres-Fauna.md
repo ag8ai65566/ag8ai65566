@@ -16,7 +16,7 @@ playfulness; can drop to a quiet whisper."
   of speech in chat; ≈154 in a rapid superchat list). [ASR F20]
 - Her singing voice is a separate register; this sheet covers speech only.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **55%** (API `0.55`) (her calm default should stay steady; lower it only for the drama bits).
   Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[soft, meandering]` or `[quick, rhythmic]`; v4 has no speed slider.
@@ -43,6 +43,8 @@ playfulness; can drop to a quiet whisper."
 | Grand deadpan | `[deadpan]` | "I will be the sole arbitrator of YouTube monetization." |
 | ASMR | `[whispering, close]` | (quiet, comforting; never seductive) |
 | Sign-off | `[warm, cheerful]` | "Thank you so much for hanging out, and I will see you tomorrow." |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[soft, gentle]`, `[embarrassed]`, `[warm, plain]`, `[warm, teasing]`, `[sweetly possessive]`, `[admiring]`, `[gentle, mischievous senpai]`.
 
 ## 5. Signature sounds
 - `[flustered] uuuu` (spoken; don't also add a tag-only whine).

@@ -158,6 +158,13 @@ Sudowrite 以英文 word 計。中文怎麼算官方沒說，我們保守地把�
 - 劇透（例如兇手的動機）先隱藏；系列作可以每本書一張卡，視需要顯示或隱藏。
 - 「特質寫成具體行為」「用現在式」是我們框架的做法，**不是**官方建議。
 
+## 工作流程接點（2026-10-02 查核，W1）
+
+這個套件支援的交接是：CSV／逐欄貼上進 Sudowrite，然後把要配音的場景存成 UTF-8 場景腳本，交給離線轉換器
+`tools/scene_to_elevenlabs.py`。沒有找到公開的 Sudowrite API（這是沒找到，不是確定沒有）；不要假設 Sudowrite 和
+ElevenLabs 會直接串接，也不要假設 Rewrite、Describe 這些改寫工具會保留腳本格式（改寫後要再跑一次 `--lint-only`）。
+每次生成實際用了哪個模型要記下來。官方 CSV 範本下載檔和目前完整的實驗模型清單這次沒有重新查到。
+
 ## 來源
 
 - Story Bible 各區塊：[Braindump](https://docs.sudowrite.com/using-sudowrite/1ow1qkGqof9rtcyGnrWUBS/braindump/bgfrku4qGdfbiFH3ar9PE2)、

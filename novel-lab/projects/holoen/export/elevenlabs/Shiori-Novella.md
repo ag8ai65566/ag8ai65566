@@ -11,7 +11,7 @@ teasing lilt; can let out a piercing horror-movie scream."
 - Register basis: qualitative only. The sampled recordings mix in trailer narrators, game dialogue and co-op
   players, so their numbers are not used as targets here (see `research/audio-check/shiori.md`).
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) (fast swings between excitement and deadpan). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rapid, excited]` or `[deadpan]`; v4 has no speed slider.
 
@@ -40,6 +40,8 @@ teasing lilt; can let out a piercing horror-movie scream."
 
 With people (proposed scene directions, not observed defaults or relationship claims): Nerissa `[teasing, mock-evasive]` for an explicitly scripted public-persona joke; Bijou `[amused, big-sister]`;
 FUWAMOCO `[playful]`; Calli `[dry, conspiratorial]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[bright, chatty]`, `[screams]`.
 
 ## 5. Signature sounds
 - `[ear-piercing scream]` (tag only; don't also spell it out).

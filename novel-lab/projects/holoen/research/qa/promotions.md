@@ -24,6 +24,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 fa27059d7339）：Author decision (2026-10-02): cross-card lines from the GPT review of Marine, Noel and Lamy (run C), merged by Claude
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 d8c36b448f72）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-03 23:32 作者裁決收錄 final.md（sha256 605a72783e02）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
+- 2026-10-03 23:41 作者裁決收錄 final.md（sha256 24549e3bd5c0）：Author decision (2026-10-03): workflow research W1 merged by Claude; partner tags made performable for the scene converter
 
 ## 20260930-0704-character-Ouro-Kronii
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 2707b4804e67）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -53,6 +54,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 7435656193f2）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 edc8fc1a8968）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-03 23:32 作者裁決收錄 final.md（sha256 67cbd4066ccc）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
+- 2026-10-03 23:41 作者裁決收錄 final.md（sha256 fe836c5e53dd）：Author decision (2026-10-03): workflow research W1 merged by Claude; partner tags made performable for the scene converter
 
 ## 20260930-1113-character-Ninomae-Inanis
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 c3bf69115852）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -107,6 +109,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 08:24 作者裁決收錄 final.md（sha256 2021dc901c54）：Author decision (2026-10-02): relationship-web coverage, reciprocal ties on cards at the length limit (clauses tightened, no facts removed except the bento aside kept in IRyS's timeline)
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 e8d131abdf47）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-03 23:33 作者裁決收錄 final.md（sha256 83b46bd6de63）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
+- 2026-10-03 23:41 作者裁決收錄 final.md（sha256 eaab2dfec431）：Author decision (2026-10-03): workflow research W1 merged by Claude; partner tags made performable for the scene converter
 
 ## 20260930-2309-world-AmeSame
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 03602b5cf2fd）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -180,6 +183,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 1c2d26e55d02）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 1cb94c612b73）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-03 23:32 作者裁決收錄 final.md（sha256 2c7ebf495964）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
+- 2026-10-03 23:41 作者裁決收錄 final.md（sha256 f5107bc15ed8）：Author decision (2026-10-03): workflow research W1 merged by Claude; partner tags made performable for the scene converter
 
 ## 20260930-2334-character-Nerissa-Ravencroft
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 aa61d24bfbcb）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -200,6 +204,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 ee3d5c1f5dc2）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-03 23:32 作者裁決收錄 final.md（sha256 25b64efe3a3b）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
 - 2026-10-03 23:33 作者裁決收錄 final.md（sha256 5a9dbf1bbb82）：Author decision (2026-10-03): task-09 voice audit v2 follow-up (VOICE-V2-004 a–c, Gigi accent note) merged by Claude
+- 2026-10-03 23:41 作者裁決收錄 final.md（sha256 6b5f428092af）：Author decision (2026-10-03): workflow research W1 merged by Claude; partner tags made performable for the scene converter
 
 ## 20261001-0001-world-IRyS-and-Nerissa-Pairs
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 9d957e0dc2fc）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）

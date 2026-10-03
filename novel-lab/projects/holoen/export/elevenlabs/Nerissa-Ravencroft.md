@@ -13,7 +13,7 @@ swings when telling a story."
   pace (≈159 words per minute of speech). [ASR N20]
 - Not a high, cutesy anime voice. Her singing voice is the persona's centerpiece; this sheet covers speech.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) (she swings between deadpan, coaxing and mock outrage). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
@@ -36,6 +36,8 @@ swings when telling a story."
 | Story voice | `[exaggerated caveman voice]` | "run from big predator" (one contiguous ASR shared span; the exaggerated delivery is provisional) |
 | Flirting with a friend | `[sweet, coaxing, low]` | (style demo) "Girl, you know I'd follow you anywhere." |
 | Fangirling (Kiara, Marine) | `[excited, flustered, fast]` | (no verified line yet) |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[sweet, teasing]`, `[bright, energetic]`, `[playful]`, `[hyped]`, `[polite Japanese, nervous]`.
 
 ## 5. Signature sounds
 - Proposed spoken interjection: `[startled] Ope?!` Its written source is reported through a secondary citation; spoken delivery and recurrence are unverified.

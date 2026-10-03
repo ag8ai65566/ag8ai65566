@@ -11,7 +11,7 @@
 and friendly when she talks, a playful lilt for jokes, a bright shout of triumph when she wins a guessing game."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **50%** (API `0.50`) (poised delivery with occasional bursts; an untested starting choice).
   Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[warm, clear]` or `[focused, quick]`; v4 has no speed slider.
@@ -34,6 +34,8 @@ and friendly when she talks, a playful lilt for jokes, a bright shout of triumph
 
 With people (proposed scene directions, not observed conversational defaults): Suisei `[relaxed, teasing]`;
 FUWAMOCO `[cheerful]`; IRyS `[friendly]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[triumphant]`, `[playful]`, `[mock-indignant]`, `[soft, gentle]`, `[nervous]`.
 
 ## 5. Signature sounds
 - `[giggles]` (tag only; a provisional performance choice); "e~?" (spoken).

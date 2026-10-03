@@ -12,7 +12,7 @@ middling pace that trips over itself with restarts and fillers, mischievous, can
 voice for jokes, high-pitched wheezing screech when losing."
 - Register basis (sample observations from the audio check, not synthesis targets): upper range (≈248–276 Hz), middle pace (≈114–133 words per minute of speech). [ASR A23]
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
@@ -35,6 +35,8 @@ voice for jokes, high-pitched wheezing screech when losing."
 | 2024 nostalgia | `[warm, playful]` | "I'm four years old! I can barely talk!" |
 | Gremlin bit | `[mischievous]` | "I'm gonna connect the world with my fist. I'm gonna connect the world by force." |
 | Sign-off | `[cheerful]` | "Alright, bye-bye!" |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[playful]`, `[playful, bratty]`, `[fond, a little embarrassed]`, `[competitive, blunt taunts]`, `[time-travel banter, smug]`, `[relaxed, conversational]`.
 
 ## 5. Signature sounds
 - Gremlin laugh "NEHEHEHEHE!" (secondary spelling): `[gremlin cackle] NEHEHEHEHE!`

@@ -11,7 +11,7 @@ for the punchline; soft and plain when sincere."
 - Register basis: qualitative; see `research/audio-check/gigi.md`. Her game window mixes in voiced
   characters and is not used.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **35%** (API `0.35`) (big, sudden swings). Similarity **75%** (API `0.75`).
 - Default tags `[animated, conversational]`; escalate only for a specific bit. Pace comes from the designed
   voice plus `[chatty, quick]` or `[deadpan]`; v4 has no speed slider.
@@ -37,6 +37,8 @@ for the punchline; soft and plain when sincere."
 | Sign-off | `[bright, quick]` | "I'll be back tomorrow. You'll see me again." |
 
 With people (provisional): Cecilia `[teasing]`; Mori Calliope `[excited, emphatic]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[outraged, shouting]`.
 
 ## 5. Signature sounds
 - `[whining] pleeease` (spoken).

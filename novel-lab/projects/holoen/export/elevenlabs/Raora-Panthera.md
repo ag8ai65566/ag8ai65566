@@ -10,7 +10,7 @@ rambling; brighter and quicker when excited; a playful little roar; mock-stern f
 complaints when a game goes wrong."
 - Register basis: qualitative; see `research/audio-check/raora.md`. Do not invent grammar errors or an accent caricature; no regional accent is assigned pending an in-scope listening check.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **50%** (API `0.50`) (warm and even). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rambling, warm]` or `[bubbly, quick]`; v4 has no speed slider.
 
@@ -36,6 +36,8 @@ complaints when a game goes wrong."
 | Sign-off | `[warm, playful]` | "Remember, big cat means big trouble." |
 
 With people (provisional): FUWAMOCO `[starstruck, sweet]`; Gigi `[playful]`; Cecilia `[warm]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[warm, cheerful]`, `[flustered, complaining]`.
 
 ## 5. Signature sounds
 - `[playful roar] RAAAOO!` (spoken).

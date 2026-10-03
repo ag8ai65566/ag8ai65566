@@ -11,7 +11,7 @@ self-mocking when thanking people."
 - Register basis: qualitative; see `research/audio-check/cecilia.md`. She is an automaton by lore, not by
   voice: no robotic effects.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) (fast, with sharp swings). Similarity **75%** (API `0.75`).
 - Default tags `[dry, conversational]`. Pace comes from the designed voice plus `[rapid, rambling]` or
   `[deadpan]`; v4 has no speed slider.
@@ -37,6 +37,8 @@ self-mocking when thanking people."
 | Sign-off | `[warm]` | "Thank you very much for spending time with me today." (one ASR shared excerpt) |
 
 With people (provisional): Gigi `[teasing]`; Raora `[warm]`; Kiara `[playful, switching to German]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[warm, self-mocking]`.
 
 ## 5. Signature sounds
 - `[mock-dramatic] dun dun dun` (spoken; a style demo, not a transcribed line).

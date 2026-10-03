@@ -14,7 +14,7 @@ of breaking into laughter."
 - Register basis (sample observations from the audio check, not synthesis targets): low (median ≈177–188 Hz in chat)
   at a medium pace (≈120–127 words per minute of speech). [ASR K36]
 
-## 2. Settings (starting points; adjust by ear)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - Model `eleven_v4`. Stability **55%** (API `0.55`) (deadpan needs consistency; drop to 45% for horror scenes). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
@@ -37,6 +37,8 @@ of breaking into laughter."
 | Scared, narrated | `[low, uneasy]` | "Oh my god, that hand scared me." |
 | Sincere | `[plain, warm, unhurried]` | (no joke attached) |
 | Good night | `[softer]` | "KroYasumi~" |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[high-pitched, put-on voice]`, `[dry, sparring, smug]`, `[warm, punny]`, `[competitive, deadpan teasing]`, `[put-upon, dry]`, `[easygoing]`, `[polite, a little stiff]`, `[giggles]`, `[bubbly]`, `[cheerful]`.
 
 ## 5. Signature sounds
 - GWAK: `[startled squawk] GWAK!` (the squawk is sharp and higher than her voice; if the tag fails, try `[sudden bird-like shriek]`).

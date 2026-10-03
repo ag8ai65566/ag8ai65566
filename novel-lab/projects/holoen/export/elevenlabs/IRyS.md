@@ -15,7 +15,7 @@ into a sly, lower, teasing aside."
   words per minute of speech in chat; ≈67 while focused on a horror game). [ASR R20]
 - Her singing voice is fuller and more powerful than her talking voice; this sheet covers speech only.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (bubbly, but the sweet base must stay steady). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rapid, gushing]` or `[focused, quiet]`; v4 has no speed slider.
 
@@ -38,6 +38,8 @@ into a sly, lower, teasing aside."
 | Surprised | `[gasps]` | "Price, 120 million dollars, holy shoot!" |
 | Sincere | `[warm, plain]` | Style demo: "That means a lot. Thank you." |
 | Sign-off | `[warm, cheerful]`, repeated | "Thank you very much! See you guys again tomorrow!" |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[sweet, bright]`, `[mock-bickering]`, `[chaotic, giggly]`, `[competitive, teasing]`, `[cheerful, polite Japanese]`, `[warm senpai]`.
 
 ## 5. Signature sounds
 - Light giggles: `[light giggle]` (usually, rather than a cackle).

@@ -13,7 +13,7 @@ excited words."
 - Register basis (sample observations from the audio check, not synthesis targets): mid pitch (≈223–232 Hz in 2026 chat) and slow in chat (≈81–95 words per
   minute of speech; a 2021 game stream ran faster). [ASR I29]
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **60%** (API `0.60`) (calm consistency). Similarity **75%** (API `0.75`). v4 has no speed slider: slowness
   comes from the designed voice, `[unhurried]` and punctuation.
 
@@ -35,6 +35,8 @@ excited words."
 | Hyped | `[excited]` | "WAH!" |
 | Sincere | `[quiet, gentle]` | "Live without regrets." (SECONDARY transcription; a sincere reading is proposed) |
 | Sign-off | `[warm]` | "have a wonderful rest of the morning, afternoon, evening" (ASR excerpt) |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[soft, unhurried]`, `[quiet, sleepy]`, `[calm, amused, unhurried]`, `[sly, setting up a pun]`, `[warm, punny]`, `[protective, gentle]`, `[patient, unbothered]`, `[polite Japanese, shy]`.
 
 ## 5. Signature sounds
 - "WAH!": `[excited] WAH!` (sometimes a droopy one at the end: `[deflated] wah…`)

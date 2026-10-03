@@ -13,7 +13,7 @@ unhurried, dissolving into quick giggles; shaky and breathless when frightened."
 - This is an original voice-design choice. Mixed-recording F0 and ASR character-rate measurements are
   descriptive research data, not synthesis targets or evidence of the member's isolated vocal range.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) (giggles and mood swings). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[playful, warm]` or `[scared, shaky]`; v4 has no speed slider.
 
@@ -36,6 +36,8 @@ unhurried, dissolving into quick giggles; shaky and breathless when frightened."
 
 With people (proposed scene directions, not observed conversational defaults): Fubuki and Mio `[comfortable, giggly]`;
 Okayu `[teasing]`; Kiara `[polite, excited]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[shy, careful]`.
 
 ## 5. Signature sounds
 - `[giggles]` (tag only); **Style demo:** "Mō~" (spoken).

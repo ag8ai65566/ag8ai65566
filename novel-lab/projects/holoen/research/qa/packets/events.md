@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git 0c79d83. Every dated row from every bible file's dossier
+Snapshot: git dbf3a18. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 

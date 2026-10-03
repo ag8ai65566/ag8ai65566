@@ -12,7 +12,7 @@ when chatting, sing-song and stretched when she calls herself cute, crisp and cl
 - A bright laugh is a provisional performance choice, not a listening observation.
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 
-## 2. Settings (starting points)
+## 2. Settings (untested audition choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (polished by default, playful swings for the signature line).
   Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[quick, enthusiastic]` or `[focused, clipped]`; v4 has no speed
@@ -35,6 +35,8 @@ when chatting, sing-song and stretched when she calls herself cute, crisp and cl
 | Competitive game | `[focused, clipped]` | "Mō ikkai. Kondo wa kateru." (style demo) |
 
 With people (proposed scene directions, not observed conversational defaults): Calli `[gracious, amused]`; AZKi `[relaxed, teasing]`; Miko `[playful bickering]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[bright, confident]`, `[sweet]`, `[deadpan]`, `[warm]`.
 
 ## 5. Signature sounds
 - `[laughs]` (tag only); "e?" (spoken).
