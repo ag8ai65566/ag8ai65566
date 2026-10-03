@@ -32,7 +32,7 @@ Relationship web.
   a Serendipity 2026 unit (Autofister), an original song, "CCGG MADNESS" (MV 2026-05-17), and a CCGG 3D live with an
   after-talk (May 2026). In the official interview Gigi said "Who is she!!! … Jokes aside, I hope everyone's
   ready for some MADNESS!!!!" and Cecilia answered "idiot"; Gigi admires that Cecilia is "good at getting stuff
-  done," Cecilia that Gigi "doesn't easily get rattled and is very dependable!" They met before debut. A secondary
+  done," Cecilia that Gigi "doesn't easily get rattled and is very dependable!" A secondary
   transcription records Cecilia's "Ew! Get away from me, you FREAK!"; the teasing runs both ways. Collabs: A Way Out and 7 Days to Die (2024),
   Portal 2 co-op (2024-07-10), a Cuphead off-collab (2025-05-30), Shadowverse "CECE VS GIGI" (2025-08-17).
   [Official S3 interview06] [Observed S1; S2, secondary]
@@ -80,8 +80,7 @@ Relationship web.
   "assistant" (stream title, 2024-12-19); "I'm Your Treasure Box" by Bijou, Cecilia and Raora at -All for One-. [Observed S1]
   [Official S6]
 - **FUWAMOCO:** Raora is their Serendipity unit partner in B.F.F (official billing, "Inu Neko. Seishun
-  Massakari"), who drew them a shikishi before debut and gave it "with big tears in her eyes"; the twins met
-  Justice before debut to give advice; Gigi and Cecilia guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO
+  Massakari"); Gigi and Cecilia guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO
   impersonation bit ("GigiMoco" and "Cecemoco" are pair labels with Mococo); Cecilia played Chrono Trigger with
   Mococo, including 2026 off-collabs; Gigi sang "Bright Tonight" (2025) with the twins, IRyS and Kronii, and
   "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity; Fuwawa, Gigi and Calli as "2 Creatures + 1 Reaper" (2026, Fuwawa alone); the twins sang in
@@ -131,7 +130,7 @@ Relationship web.
 - **ID:** Kaela Kovalskia with Raora ("SMITTEN," "Graondstone," "PizzaTimeSmith" with Kronii; in Raora's lore
   Kaela lives in her basement); Kureiji Ollie is Elizabeth's "kami-oshi" per public-profile wikis (collabs with HOLOSTARS members in
   varying lineups, including Code Red games; "High Tide" with Kronii at -All for One-), and Ollie did a chat-and-art collab with Raora (2024-09-06); Moona Hoshinova with Raora
-  ("V3LVET"); Anya Melfissa visited Raora (2025-02-11); Vestia Zeta and Haachama in a Mario Party off-collab with
+  ("V3LVET"); Anya Melfissa joined Raora for a public off-collab (2025; archived video w30OQWD6AEw); Vestia Zeta and Haachama in a Mario Party off-collab with
   Raora (2024-10-08); Ayunda Risu with Elizabeth ("LYRA," "ALiCE&u"); Vestia Zeta sang "Giri Giri" with Elizabeth at her 2025 3D showcase, which Elizabeth arranged and choreographed [ASR, Elizabeth file EB20]; Pavolia Reine and Airani Iofi with Gigi
   in the "Fanfic Club"; Kobo Kanaeru calls Elizabeth "Lilis" (secondary) and sang "HELP!!" with Elizabeth and Bae at Serendipity;
   Vestia Zeta also sang "Break It Down" with Cecilia and Shiori and "MAKE IT, BREAK IT" with Gigi and FUWAMOCO
@@ -141,8 +140,7 @@ Relationship web.
   2026 "Yona Yona Dance" cover mixed branches (Natsuiro Matsuri, Hiodoshi Ao, Ollie and HOLOSTARS members).
   Cecilia played Minecraft and Super Mario 3D World with Tokino Sora (2025-02); Raora played Clubhouse Games
   with Haachama (2024-08-16), sang "Neko Kaburi-Na" with Ina, Shiori and guest Subaru at -All for One-, is
-  "RaoRiRi" with Ichijou Ririka; "OkaGigi" is a secondary-documented name for Gigi and Nekomata Okayu, with no concrete shared activity sourced
-  (dossier only). Tsunomaki Watame sang "Cloudy Sheep" with Calli and Cecilia and "What an amazing swing" with
+  "RaoRiRi" with Ichijou Ririka; "OkaGigi" is a secondary pair label for Gigi and Nekomata Okayu; secondary clip metadata records translation-based banter during the 2026 New Year Game Festival. It does not establish exact dialogue or a private relationship. Tsunomaki Watame sang "Cloudy Sheep" with Calli and Cecilia and "What an amazing swing" with
   Kiara and Raora at Serendipity. FLOW GLOW: Koganei Niko sang with Elizabeth in LYRA. [Observed S1; S2]
   [Official S6, S7]
 - **HOLOSTARS:** Elizabeth collaborates with Ollie and HOLOSTARS members in varying lineups: Code Red games with
@@ -157,7 +155,7 @@ Relationship web.
 ## History
 | Date | Event | Trace left |
 |---|---|---|
-| 2024-06-26 | Raora's first collab, "Chat & Art w/ Liz!" | FlamePanther |
+| 2024-06-26 | An early Raora–Elizabeth duo collab, "Chat & Art w/ Liz!" | FlamePanther |
 | 2024-07-03 | Cecilia and Raora's Minecraft duo | Raviolin |
 | 2024-07-19 | Cecilia shows Elizabeth around Minecraft | FiddleFlame |
 | 2024-07-21/22 | Advent VS Justice, Party Animals | the rivalry as a game |
@@ -236,7 +234,7 @@ Relationship
 CCGG, Autofister, Bloodraven, B.F.F, RPGG, Raviolin, FiddleFlame, FlamePanther, HoloEU, TimeChaser, Grem Reaper
 
 ## [SW] Description
-Inside Justice: Gigi and Cecilia are an officially billed duo, Autofister (also CCGG), with the song "CCGG MADNESS," a joint 2026 3D live and a Serendipity unit; a secondary transcription has Cecilia's "Ew! Get away from me, you FREAK!", yet she says Gigi "doesn't easily get rattled and is very dependable," and Gigi says Cecilia is "good at getting stuff done." Gigi and Raora collaborate in Monster Hunter and food-ranking streams, and Raora designed Monster Hunter collaboration outfits for both of them. Gigi and Elizabeth cooperate in Operation Tango (Gigi's title: "i won't let Liz down!!!"). Cecilia and Raora play Minecraft together; Raora illustrated Cecilia's debut ending screen and Cecilia animated Raora's. Elizabeth and Raora held a chat-and-art collab in June 2024, and Elizabeth titled Raora's birthday stream "Happy Birthday Pretty Kitty!"; Cecilia showed Elizabeth around Minecraft, and a lore post blames Cecilia's old maid duties on an earlier Justice, not Elizabeth's. With Advent, their in-story "targets": Elizabeth is Nerissa's lore "mortal enemy" and her Bloodraven partner ("Cruel Angel's Thesis"); Gigi and Cecilia form GAGA with Shiori and Bijou; Raora and FUWAMOCO are the unit B.F.F; Graondstone names Raora, Bijou and Kaela Kovalskia. With seniors: Gigi repeatedly uses Calli's full name and jokes about getting her into League of Legends; within HoloEU, Raora teaches Kiara Italian and Cecilia speaks German with her; Cecilia plays up a rivalry with Ina; Kronii is Raora's "Pizza Time" collaborator and Gigi's Fatal Fury and Hytale partner, and secondary accounts record Kronii's "CLANKER" joke and Cecilia's "Owo-senpai"; Automatowl names Cecilia and Mumei. Beyond EN: Elizabeth plays with Kureiji Ollie and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit) and sang LYRA's "III" with FLOW GLOW's Koganei Niko; Kaela appears in Raora's fictional basement bit; Elizabeth records covers with JP members; Cecilia plays games with Tokino Sora; at Serendipity, Elizabeth sang with Kobo Kanaeru, Gigi and Cecilia with Vestia Zeta, and Cecilia and Raora with Tsunomaki Watame.
+Inside Justice: Gigi and Cecilia are an officially billed duo, Autofister (also CCGG), with the song "CCGG MADNESS," a joint 2026 3D live and a Serendipity unit; secondary accounts describe Cecilia's abrasive teasing; in the official interview she says Gigi "doesn't easily get rattled and is very dependable," and Gigi says Cecilia is "good at getting stuff done." Gigi and Raora collaborate in Monster Hunter and food-ranking streams, and Raora designed Monster Hunter collaboration outfits for both of them. Gigi and Elizabeth cooperate in Operation Tango (Gigi's title: "i won't let Liz down!!!"). Cecilia and Raora play Minecraft together; Raora illustrated Cecilia's debut ending screen and Cecilia animated Raora's. Elizabeth and Raora held a chat-and-art collab in June 2024, and Elizabeth titled Raora's birthday stream "Happy Birthday Pretty Kitty!"; Cecilia showed Elizabeth around Minecraft, and a lore post blames Cecilia's old maid duties on an earlier Justice, not Elizabeth's. With Advent, their in-story "targets": Elizabeth is Nerissa's lore "mortal enemy" and her Bloodraven partner ("Cruel Angel's Thesis"); Gigi and Cecilia form GAGA with Shiori and Bijou; Raora and FUWAMOCO are the unit B.F.F; Graondstone names Raora, Bijou and Kaela Kovalskia. With seniors: Gigi repeatedly uses Calli's full name and jokes about getting her into League of Legends; within HoloEU, Raora teaches Kiara Italian and Cecilia speaks German with her; Cecilia plays up a rivalry with Ina; Kronii is Raora's "Pizza Time" collaborator and Gigi's Fatal Fury and Hytale partner, and secondary accounts record Kronii's "CLANKER" joke and Cecilia's "Owo-senpai"; Automatowl names Cecilia and Mumei. Beyond EN: Elizabeth plays with Kureiji Ollie and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit) and sang LYRA's "III" with FLOW GLOW's Koganei Niko; Kaela appears in Raora's fictional basement bit; Elizabeth records covers with JP members; Cecilia plays games with Tokino Sora; at Serendipity, Elizabeth sang with Kobo Kanaeru, Gigi and Cecilia with Vestia Zeta, and Cecilia and Raora with Tsunomaki Watame.
 
 ## [SW] Rules
 Collaboration and unit names identify public creative partnerships: Autofister, Bloodraven and B.F.F are official concert billing, Grem Reaper and Pizza Time appear in member stream titles, and the rest are secondary labels. Unit labels such as GAGA, Graondstone, Automatowl, HoloEU and Cecemoco name combinations of members, never one person. "Wife," "husband," fictional children, the maid backstory, the uncle–nephew bit and "mortal enemy" are performed jokes or lore and establish no private relationship. The manhunt between Justice and Advent is shared fiction. Name only the members who took part in a collab.
@@ -274,8 +272,11 @@ An orange hoodie beside a green dress; a red sword and a violin-lance; a pink ca
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "B.F.F" (official Serendipity unit) added to Other Names.
-- **2026-10-02, ADVENT-SCOPE-002 propagated (cross-card QA audit, research/qa/audit-advent.md):** how a member
-  first came to VTubers or hololive is pre-debut personal history and is not recorded.
+- **2026-10-02, ADVENT-SCOPE-002 propagated (cross-card QA audit, research/qa/audit-advent.md):** private details deliberately excluded.
+- **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-EVENT-001, justice:JUSTICE-SCOPE-001, justice:JUSTICE-SCOPE-003 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-SCOPE-002, justice:JUSTICE-TIE-003 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-QUOTE-003 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 
 ## Open Questions
 1. Partly resolved: Autofister, Bloodraven and B.F.F are official billing; Grem Reaper and Pizza Time appear in

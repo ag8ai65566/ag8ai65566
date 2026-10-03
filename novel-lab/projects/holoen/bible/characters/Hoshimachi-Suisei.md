@@ -27,8 +27,7 @@ sw_section: Characters
 >
 > **Audio status:** on 2026-10-02 Claude checked archived 2026 recordings (SU20: two windows of a June 2026
 > chatting stream, a July 2026 Rhythm Heaven stream and a June 2026 Resident Evil stream; see
-> research/audio-check/suisei.md). Long stretches of the chatting stream are about personal matters (family,
-> childhood, a trip) and are not quoted or summarized here. The audio was machine-transcribed and acoustically
+> research/audio-check/suisei.md). The project's public-persona scope applies to the reviewed material. The audio was machine-transcribed and acoustically
 > measured; transcripts were reviewed in context, without independent listening verification.
 
 ## One-line Concept
@@ -166,7 +165,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2026-03-08 | hololive 7th fes. "Ridin' on Dreams," STAGE 4 (with Calli, Kronii, Bijou, Nerissa) | [Official SU9] |
 | 2026-03 | "Chatter Chatter" with Houshou Marine; playable in Fortnite (03-13 to 03-24) | [Observed SU4] [SU3, secondary] |
 | 2026-03-22 | 8th anniversary: "Prima Donna"; arena tour "Once Upon a Stellar" announced; personal management agency Studio STELLAR for her solo work (she stays in hololive for collabs and group activities); fan club opens | [Observed SU2] |
-| 2026-04-04 | Guest at Mori Calliope's birthday 3D live "UNCUT ROCK!!" (her reported recollection; the event record was not opened) | [ASR SU20, her own account] [Observed fan-clip titles, secondary] |
+| 2026-04-04 | [Unverified: identification of Suisei's reported Calliope appearance as UNCUT ROCK!!; the event and date require a direct locator.] | [ASR SU20, her own account] [Observed fan-clip titles, secondary] |
 | 2026-04-18 | Hoshimatic Project's second song "BEEP BEEP" (official digital release; premiered the day before) | [Official SU10] [SU4] |
 | 2026-05-18/19 | An AS_tar horror off-collab on AZKi's channel (v60QmEvEQqw), then "Going My Way" with AZKi | [Observed SU4; archived metadata] [Official AZKi file] |
 | 2026-07-08/13 | Fan meeting "Hoshiyomi Pajama Party Vol.1" (Tokyo, Osaka) | [Observed SU2] |
@@ -181,7 +180,7 @@ Kensetsu roles) are public labels from a secondary reference, not all officially
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Mori Calliope | "Death Star" | Calli is openly starstruck by her (Calli's file); "CapSule" and "Wicked" (2022); Suisei sang "Wicked" at Calli's first solo concert, New Underworld Order; by Suisei's own account a guest at "UNCUT ROCK!!" (2026); a "Talkin' Live Shows" collab (2023); Calli's watch party of her first tour (2024-11-14) | [S1] [ASR SU20] [SU2 §Relationships] |
+| Mori Calliope | "Death Star" | [Unverified: the secondary characterization of Calli as starstruck.] "CapSule" and "Wicked" (2022); Suisei sang "Wicked" at Calli's first solo concert, New Underworld Order; [Unverified: whether her reported 2026 Calliope appearance was UNCUT ROCK!!]; a "Talkin' Live Shows" collab (2023); Calli's watch party of her first tour (2024-11-14) | [S1] [ASR SU20] [SU2 §Relationships] |
 | AZKi | 0th gen; "AS_tar" (formerly "Ex-INNK") | Labelmates at INoNaKa Music; Star Flower; an AS_tar horror off-collab (2026-05-18) and "Going My Way" (official credit AZKi & Hoshimachi Suisei, 2026) | [SU2] [SU4] [Official SU11] |
 | IRyS | Star Flower | "story time" (2022); "High Tide" (2024); IRyS covered "GHOST" (2021); on Okayu's 2025 New Year Game Festival team (secondary roster) | [Official SU6, SU8] [S1] |
 | Takanashi Kiara | "cometori" (the HOLOTALK title's hashtag) | HOLOTALK #8 and a Tales of Arise discussion (2021); a #tastychallenge dance short (2025-08-25, archived metadata 3PZedEMs_VM) | [S1] |
@@ -264,7 +263,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive, hololive 0th Generation, Star Flower, Death Star, miComet, Hoshimatic Project, Shiranui Kensetsu, Startend, AS_tar, MOMAS, Midnight Grand Orchestra
+hololive, hololive 0th Generation, Star Flower, miComet, Hoshimatic Project, Shiranui Kensetsu, Startend, AS_tar, MOMAS, Midnight Grand Orchestra
 
 ## [SW] Other Names
 Suisei, Sui-chan, Suicopath, Hoshimachi
@@ -294,7 +293,7 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 Suisei aims to perform at the Tokyo Dome and to expand her work as a solo artist. Running her own studio, she also wants hololive members and fans to see that she is still one of them, so she tries to accept their stage invitations when her schedule permits.
 
 ## [SW] Relationships
-Mori Calliope: "Death Star"; Calli is openly starstruck by her; collaborators on "CapSule" and "Wicked" (2022), including their performance at Calli's concert New Underworld Order, and Calli hosted a watch party of Suisei's first tour. AZKi: 0th-generation labelmate since INoNaKa Music ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with AZKi and Moona Hoshinova ("story time," 2022); "High Tide" with IRyS, Moona and Hakos Baelz at the 2024 English concert. Ninomae Ina'nis and Gawr Gura (graduated): "BIBBIDIBA" with Moona at that concert; Gura and Usada Pekora were fellow featured talents in the July 5, 2024 hololive night collaboration with the Los Angeles Dodgers. Takanashi Kiara: HOLOTALK #8 and a Tales of Arise discussion (2021); a dance-challenge short (2025). Hakos Baelz: a "Moonlight" dance cover (2025). FUWAMOCO: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026). Nanashi Mumei (graduated): a #bibbidibachallenge short (2024). Nerissa Ravencroft: a "BIBIDEBA" dance short (2024). Koseki Bijou: watched her Fortnite concert on stream (2026). Nekomata Okayu: "MOMAS"; Okayu's 2025 New Year Game Festival team with Nakiri Ayame, Ina, IRyS and Cecilia, among others. Sakura Miko: her miComet partner. Shiranui Flare: "Shiranui Kensetsu," where Suisei is the PR director. Hakui Koyori and Kazama Iroha: her Hoshimatic Project ("BEEP BEEP," 2026); Sakamata Chloe was in its earlier lineup (secondary); she coached Iroha at Puyo Puyo Tetris (2023). Houshou Marine: "Chatter Chatter" (2026). Shirogane Noel: a fellow Shiranui Kensetsu member. La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA (2024); La+, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024).
+Mori Calliope: collaborators on "CapSule" and "Wicked" (2022), including their performance at Calli's concert New Underworld Order, and Calli hosted a watch party of Suisei's first tour. AZKi: 0th-generation labelmate since INoNaKa Music ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with AZKi and Moona Hoshinova ("story time," 2022); "High Tide" with IRyS, Moona and Hakos Baelz at the 2024 English concert. Ninomae Ina'nis and Gawr Gura (graduated): "BIBBIDIBA" with Moona at that concert; Gura and Usada Pekora were fellow featured talents in the July 5, 2024 hololive night collaboration with the Los Angeles Dodgers. Takanashi Kiara: HOLOTALK #8 and a Tales of Arise discussion (2021); a dance-challenge short (2025). Hakos Baelz: a "Moonlight" dance cover (2025). FUWAMOCO: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026). Nanashi Mumei (graduated): a #bibbidibachallenge short (2024). Nerissa Ravencroft: a "BIBIDEBA" dance short (2024). Koseki Bijou: watched her Fortnite concert on stream (2026). Nekomata Okayu: "MOMAS"; Okayu's 2025 New Year Game Festival team with Nakiri Ayame, Ina, IRyS and Cecilia, among others. Sakura Miko: her miComet partner. Shiranui Flare: "Shiranui Kensetsu," where Suisei is the PR director. Hakui Koyori and Kazama Iroha: her Hoshimatic Project ("BEEP BEEP," 2026); Sakamata Chloe was in its earlier lineup (secondary); she coached Iroha at Puyo Puyo Tetris (2023). Houshou Marine: "Chatter Chatter" (2026). Shirogane Noel: a fellow Shiranui Kensetsu member. La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA (2024); La+, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024).
 
 ## [SW] Secrets
 (none)
@@ -332,6 +331,8 @@ Mori Calliope: "Death Star"; Calli is openly starstruck by her; collaborators on
 - **2026-10-03, GPT review of the holoX cards (run E, La+/Lui/Koyori), merged by Claude:** the m HOLD'EM wording follows the publisher roster ("featured in the same collaboration"), not a confirmed four-person broadcast.
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** Chloe is removed from the implied 2026 "BEEP BEEP" roster (official credits name Koyori and Iroha); her Hoshimatic membership is historical.
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-002, VOICE-V3-003 (sheet: VOICE-V3-001); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:CLAUDE-SCOPE-002, myth1:MYTH-EVENT-002, myth1:MYTH-TIE-002 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-UNIT-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Her guest appearance at Calli's "UNCUT ROCK!!" (2026-04-04) rests on her own June 2026 account (ASR) and

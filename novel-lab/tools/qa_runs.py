@@ -41,8 +41,13 @@ def read(rel):
     return (ROOT / rel).read_text(encoding="utf-8").rstrip("\n")
 
 
+# Cards whose run folder was named before the card's final name (bible stem → run-folder stem).
+RUN_STEM = {"Myth-and-Kronii-Other-Pairs": "Myth-Pairs"}
+
+
 def run_of(stem):
     """Latest run holding this card's final.md (by name; content changes after each edit)."""
+    stem = RUN_STEM.get(stem, stem)
     c = sorted(p for p in glob.glob(str(RUNS / "*" / "final.md"))
                if re.search(r"-(character|world)-" + re.escape(stem) + r"/final\.md$", p))
     return Path(c[-1]) if c else None

@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git dbf3a18. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git fca8f18. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Amane Kanata
@@ -98,7 +98,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" for Elizabeth with Watame, Nene and Polka (2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
 
 ### Elizabeth Rose Bloodflame × Vestia Zeta
-- `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Vestia Zeta | ID senior | Sang "Giri Giri" with her at her 2025 3D showcase; Elizabeth arranged it as a duet, choreographed it and taught Zeta the dance ("Zeta hit it out of the park") | [ASR EB20, Rk03Rh8P9ps 0:28:09–0:30:11; both models] |
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Vestia Zeta | ID senior | Sang "Giri Giri" with her at her 2025 3D showcase; Elizabeth arranged it as a duet, choreographed it and taught Zeta the dance  | [ASR EB20, Rk03Rh8P9ps 0:28:09–0:30:11; both models] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Vestia Zeta (ID): her duet partner for "Giri Giri" at her 2025 3D showcase, which Elizabeth arranged and choreographed.
 
 ### Fuwawa Abyssgard × Inugami Korone
@@ -147,7 +147,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2023-04-22 | "BAE-GEMITE DOMINATION" episode 4 with Bae and Momosuzu Nene | [KO5 WwjB7QSmQng] |
 
 ### Hakos Baelz × Moona Hoshinova
-- `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise genmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
+- `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise unitmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
 
 ### Hakos Baelz × Ookami Mio
 - `bible/characters/IRyS.md › [SW] Relationships`: At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
@@ -181,14 +181,14 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Hoshimachi Suisei × Moona Hoshinova
 - `bible/characters/AZKi.md › Background Timeline`: | 2022-12-31 | "story time" as Star Flower with Suisei, Moona Hoshinova and IRyS | [Official AZ6] |
-- `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise genmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
+- `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise unitmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
 - `bible/world/Hakos-Baelz-Pairs.md › BaeRyS`: - **On stage:** "High Tide" with Moona Hoshinova and Hoshimachi Suisei at -Breaking Dimensions- (2024); the official unit BaeRyS at Serendipity (2026), "LUVATORRRRRY!", their first duo stage. [Official S3]
 
 ### Hoshimachi Suisei × Omaru Polka
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Hoshimachi Suisei | "Shiranui Kensetsu" (Shiraken) | A Minecraft construction company with Flare, Polka and Miko | [NO2] |
 
 ### Hoshimachi Suisei × Rikka
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli collaborates with Hoshimachi Suisei: Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
 
 ### Hoshimachi Suisei × Shirakami Fubuki
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Suisei, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024).
@@ -230,7 +230,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### IRyS × Kaela Kovalskia
 - `bible/characters/Takane-Lui.md › Relationship Map`: | IRyS, Ouro Kronii | — | Minecraft elytra hunting with Kaela (2022); IRyS danced to "Soar" (2026) | [LU5] |
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: IRyS and Ouro Kronii: Minecraft with Kaela (2022).
-- `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Kronii's steadiest cross-branch partner: Kaela. IRyS's closest JP friend: Flare.
+- `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Kronii and Kaela are recurring public collaborators. IRyS and Flare are recurring public collaborators.
 
 ### IRyS × Kobo Kanaeru
 - `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2024–2025 | World Tour '24 -Soar!- performer (New York to Taipei; "Ai ni" with Kobo Kanaeru at the Taipei finale, 2025-01-18); holoMeet ambassador 2024; World Tour '25 Sydney show with Kronii and IRyS ("Dance Monkey" as Promise, 2025-07-12) | [Official HB6, HB10] [Observed Concerts card] |
@@ -295,7 +295,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Kaela Kovalskia | ID senior ("SMITTEN"; "Graondstone" with Bijou; secondary) | Lethal Company, Don't Starve Together, Buckshot Roulette, PEAK; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement (secondary) | [Observed RP2, RP3] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Kaela Kovalskia ("SMITTEN"): co-op partner; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement; with Koseki Bijou they are "Graondstone."
 - `bible/world/Advent-Pairs.md › Conflicts and Story Hooks`: 3. Kaela and Bijou build something enormous in silence while chat panics.
-- `bible/world/Advent-Pairs.md › With -Justice-`: - **Raora Panthera:** "Graondstone" with Bijou and Kaela; FUWAMOCO's 2026 Serendipity unit partner (B.F.F), who drew them a shikishi before her debut. [Official S6] [Observed S1]
+- `bible/world/Advent-Pairs.md › With -Justice-`: - **Raora Panthera:** "Graondstone" with Bijou and Kaela; FUWAMOCO's 2026 Serendipity unit partner (B.F.F). [Official S6] [Observed S1]
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Of Advent: Bijou and Kaela Kovalskia are "Grindstone"
 
 ### Kaela Kovalskia × Nerissa Ravencroft
@@ -306,14 +306,14 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Takane-Lui.md › Relationship Map`: | IRyS, Ouro Kronii | — | Minecraft elytra hunting with Kaela (2022); IRyS danced to "Soar" (2026) | [LU5] |
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: IRyS and Ouro Kronii: Minecraft with Kaela (2022).
 - `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 2. Kronii and Kaela's endless sim co-op hits the in-game stock market.
-- `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Kronii's steadiest cross-branch partner: Kaela. IRyS's closest JP friend: Flare.
+- `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Kronii and Kaela are recurring public collaborators. IRyS and Flare are recurring public collaborators.
 
 ### Kaela Kovalskia × Raora Panthera
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Kaela Kovalskia (ID) | Friend ("Grindstone"; Kaela calls her "Beejoe") | Grindstone collabs include Raft and Minecraft (2023), Split Fiction (2025) and PEAK as "Graondstone" with Raora (archive counts 10 / 23 / 11 / 0) | [Observed KB2; KB3] |
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: (Kaela calls her "Beejoe"): Raft, Minecraft, Split Fiction, and with Raora "Graondstone."
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Kaela Kovalskia | ID senior ("SMITTEN"; "Graondstone" with Bijou; secondary) | Lethal Company, Don't Starve Together, Buckshot Roulette, PEAK; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement (secondary) | [Observed RP2, RP3] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Kaela Kovalskia ("SMITTEN"): co-op partner; their Minecraft and chat role-play includes the running joke that Kaela lives in Raora's basement; with Koseki Bijou they are "Graondstone."
-- `bible/world/Advent-Pairs.md › With -Justice-`: - **Raora Panthera:** "Graondstone" with Bijou and Kaela; FUWAMOCO's 2026 Serendipity unit partner (B.F.F), who drew them a shikishi before her debut. [Official S6] [Observed S1]
+- `bible/world/Advent-Pairs.md › With -Justice-`: - **Raora Panthera:** "Graondstone" with Bijou and Kaela; FUWAMOCO's 2026 Serendipity unit partner (B.F.F). [Official S6] [Observed S1]
 
 ### Kaela Kovalskia × Shiori Novella
 - `bible/world/Hakos-Baelz-Pairs.md › With Advent`: - **Shiori Novella, Nerissa Ravencroft:** shared EN projects rather than duo collabs: the 2024 "Mind Craft" cover with all then-active EN members; with Nerissa, a 2026 behind-the-scenes video by Kaela Kovalskia (secondary metadata). [S7, secondary]
@@ -367,7 +367,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Mori Calliope | Myth genmate | Kiara long called Calli her "wife" and coined "TakaMori"; Calli rebuffed her and calls her "kusotori" ("shitbird"). They announced in 2021 that they would tone the ship down (the wiki adds that "the two remain close friends"; a secondary statement, not a documented current relationship); they play "Mom" and "Dad" to Kobo as a performed family bit | [Observed T2 §Takamori, secondary; T14 title] |
 - `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Takanashi Kiara:** Marine was the first guest of Kiara's HOLOTALK (2020-11-20, "#marinarasauce"); Kiara danced "MIRAGE" with her (2024) and to Marine and Kobo's "III." [S1]
 - `bible/world/TakaMori.md › Hard Facts`: - Kobo's "parents" bit: Kiara "Mom," Calli "Dad"; "not married, Kobo is adopted."
-- `bible/world/TakaMori.md › How It Works`: - **Heard in 2025 (ASR, S6):** in the first Split Fiction stream (Kiara's channel, 2025-04-06) the "parents" bit is alive: when Kobo shows up in chat, they tell her "Hi Kobo, go to bed! … What are you doing out of bed? Go to bed!", wish her a happy anniversary, and apologize: "Sorry Kobo, you can't be part of this because it's two players only. Next time…" When their game characters split into a fire mage and an ice mage, they riff on their own song: "Fire and ice, yeah. Fire and ice, death and life." When the split screen separates them: "Oh, double Takamori." [ASR S6, nE12CyKbaX8 0:07:49, 0:08:01, 0:22:36, 0:13:28; both models agree; who said which line is not separable from the transcript]
+- `bible/world/TakaMori.md › How It Works`: - **Heard in 2025 (ASR, S6):** in the first Split Fiction stream (Kiara's channel, 2025-04-06) the "parents" bit is alive: when Kobo shows up in chat, they tell her "Hi Kobo, go to bed! … What are you doing out of bed? Go to bed!", wish her a happy anniversary, and apologize: "Sorry Kobo, you can't be part of this because it's two players only. Next time…" When their game characters split into a fire mage and an ice mage, they riff on their own song: "Fire and ice, yeah. Fire and ice, death and life." When the split screen separates them: "Oh, double Takamori." [ASR S6, nE12CyKbaX8 0:07:49, 0:08:01, 0:22:36, 0:13:28; Unverified ASR comparison: explicit shared spans and independently supported speaker attribution are unavailable in this snapshot; who said which line is not separable from the transcript]
 - `bible/world/TakaMori.md › How It Works`: - They play "Mom" (Kiara, "Mommy Kiwawa") and "Dad" to Kobo Kanaeru; Calli insists she is not married to Kiara and Kobo is adopted. [Observed S2 §Takamori, secondary]
 
 ### Kobo Kanaeru × Watson Amelia
@@ -422,7 +422,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-07-18/23 | HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts | Calli and Kronii's WARS partners Magni and Vesper |
 
 ### Mori Calliope × Rikka
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli is starstruck by Hoshimachi Suisei ("Death Star"): Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli collaborates with Hoshimachi Suisei: Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2019-06 / 09 | HOLOSTARS, COVER's male group, starts (1st gen, incl. Rikka); 2nd gen in December | Calli's MoRikka partner |
 
 ### Mori Calliope × Shiranui Flare
@@ -449,7 +449,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2026-08-22 | Anime NYC: an announced convention-exclusive stream | Ayame (with Fubuki, Mio) |
 
 ### Nakiri Ayame × Oozora Subaru
-- `bible/world/hololive-History-to-2022.md › Timeline`: | 2018-08 / 09 | 2nd generation (Aqua, Shion, Ayame, Choco, Subaru); Sakura Miko debuts (2018-08-01) | Senpai the EN members grew up watching |
+- `bible/world/hololive-History-to-2022.md › Timeline`: | 2018-08 / 09 | 2nd generation (Aqua, Shion, Ayame, Choco, Subaru); Sakura Miko debuts (2018-08-01) | Earlier-debuting hololive members |
 
 ### Nanashi Mumei × Tsukumo Sana
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Tsukumo Sana | Council genmate (graduated 2022) | Human: Fall Flat (2021); Sana sent a prerecorded message for Mumei's 2022 birthday | [Observed M2 §Miscellaneous; M3] |
@@ -555,6 +555,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Takanashi Kiara × Usada Pekora
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Takanashi Kiara | "Usada Kensetsu" (Usaken) | The Minecraft construction company of Pekora's circle | [BO2] |
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI").
+- `bible/world/hololive.md › How It Works`: - **Seniority:** senpai and kouhai describe relative seniority (who debuted first), not language or nationality; forms of address and levels of formality vary by relationship. Many EN members are openly starstruck by particular senpai (Kiara by Pekora). [Observed character files]
 
 ### Takanashi Kiara × Vestia Zeta
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |

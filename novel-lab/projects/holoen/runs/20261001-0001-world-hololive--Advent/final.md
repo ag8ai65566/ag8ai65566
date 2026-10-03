@@ -36,7 +36,7 @@ Faction / unit.
 - **The premise as a bit:** each member was sealed in The Cell for being "untouchable"; Nerissa, the
   "Demon of Sound," in the story "stole" the master key on the way out; her avatar wears it on a keychain. The
   next generation, -Justice-, are law enforcers sent to catch the five fugitives, so Advent × Justice
-  collabs can use prisoner-and-guard jokes (a 2026 merch reveal: "Like prisoner and my prison guard").
+  collabs can use prisoner-and-guard jokes .
   [Official S3; Observed S1, S2 §Lore, secondary; ASR Nerissa file N20, multi-speaker, not attributed]
   Nerissa calls Justice's Elizabeth Rose Bloodflame her "mortal enemy (lore)"; the two covered "Rondo
   Revolution" together and were a duo at the 2026 Serendipity concert, where Nerissa praised Elizabeth's
@@ -168,6 +168,7 @@ The ⚠️ mark and Pokey on the logo; prison-gown merch; the master-key accesso
 - **2026-10-01, from GPT one-round review of the Advent cast edits (runs/20261001-0549-world-Advent-Pairs/gpt-free.md, high):** "who never swears" replaced by her stated practice (she says "beep"); 3D dates labeled PDT; the Advent 3D collaboration stream (2024-08-17 PDT, official schedule https://hololive.hololivepro.com/en/news/20240712-01-90/) added.
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-STATUS-001, ADVENT-UNIT-001
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-QUOTE-004 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

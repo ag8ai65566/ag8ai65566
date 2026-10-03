@@ -22,7 +22,7 @@ Private matters in the sources (an announced break, a health detail) were not us
 | 5 | Calli: April Fools "new VTuber debut" as Bonelliope Mori (2026-03-31 PDT); overall winner of "Kizuna Ai Cup 2026" (06-30); TOHO animation names her the English dub voice of Kou Tousetsu in *Though I Am an Inept Villainess* (announced 07-24). | Calli wiki page §History/§Events (secondary; cites her stream and TOHO animation's post, not opened) | Calli timeline |
 | 6 | Kiara's **birthday 3D live**, 2026-07-06 4:00 PM PDT (07-07 8:00 JST). | Official hololive English post (indexed text) | Kiara timeline and Background; Concerts |
 | 7 | HoloEN REWIND's first episode dated 2026-03-24 (was "2026-03"). | Kiara wiki page (secondary) | Kiara timeline |
-| 8 | Ina's "TAKO∞TAKOVER" dated 2026-01-06/07 (the wiki gives both dates; zone not stated). | Ina wiki page (secondary) | Ina timeline |
+| 8 | TAKO∞TAKOVER's official digital-release date is 2026-01-08; the listing does not specify a zone. Any earlier premiere date remains a separate, unresolved claim. | Ina wiki page (secondary) | Ina timeline |
 | 9 | Kronii released the single "Way 2 U" at her 2026-03-13 birthday live and announced the EP; single "STORM" 2026-05-08 (both on the EP). | Kronii wiki page §History/§Discography (secondary) | Kronii timeline |
 
 ## Candidates not applied (need better evidence)

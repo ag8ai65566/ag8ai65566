@@ -14,7 +14,7 @@ when teasing."
 - Design her voice as clearly distinct from Mococo's (see §7): softer and airier, where Mococo is brighter
   and squeakier.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **50%** (API `0.50`) (soft and steady by default). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[gentle, chatty]` or `[rapid, flustered]`; v4 has no speed slider.
 

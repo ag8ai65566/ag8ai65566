@@ -1,3 +1,4 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 8883ebe3f96e）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 86f13cba43a6）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 e7f7200a8cf5）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
+- 2026-10-03 23:48 作者裁決收錄 final.md（sha256 f38a6de759ac）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)

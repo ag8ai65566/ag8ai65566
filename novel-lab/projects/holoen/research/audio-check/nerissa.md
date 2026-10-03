@@ -11,8 +11,7 @@ Two windows (the Fan Q&A) are a group stream with -Advent- and -Justice- members
 their pitch and pace mix several voices, and lines there are not attributed to Nerissa unless the speaker
 is clear. The Tomodachi Life window includes game text she reads aloud and long menu pauses.
 
-**Privacy:** the solo chat includes stories about her pets and her childhood. None of it is used in the
-character file; only her phrasing from other parts of the window is quoted.
+**Privacy:** Only material permitted by the project's public-persona scope is used.
 
 ## Windows measured
 

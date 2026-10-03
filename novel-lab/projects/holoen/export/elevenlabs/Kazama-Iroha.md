@@ -11,7 +11,7 @@
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 - Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (earnest by default, pumped when competing; an untested starting choice).
   Similarity **75%** (API `0.75`), referring only to the selected original voice.
 - Pace comes from the designed voice plus `[cheerful, earnest]` or `[excited, fast]`; v4 has no speed slider.

@@ -16,7 +16,7 @@ on her own name."
 - Design her voice as clearly distinct from Fuwawa's (see §7): brighter and squeakier, where Fuwawa is softer
   and airier.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) (energetic, with quick jumps into a cheer). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rapid, excited]` or `[earnest, encouraging]`; v4 has no speed slider.
 

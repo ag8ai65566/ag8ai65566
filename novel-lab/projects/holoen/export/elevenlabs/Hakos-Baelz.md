@@ -12,7 +12,7 @@ when cheering someone on."
   `research/audio-check/bae.md` are not synthesis targets. A regional accent remains unassigned pending an in-scope listening
   check; the secondary description is not a synthesis instruction.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) and Similarity **75%** (API `0.75`) are untested starting
   choices (she swings between loud storytelling, deadpan and warmth); Similarity refers only to the selected
   original voice.

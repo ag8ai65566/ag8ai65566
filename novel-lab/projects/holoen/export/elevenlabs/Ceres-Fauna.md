@@ -16,7 +16,7 @@ playfulness; can drop to a quiet whisper."
   of speech in chat; ≈154 in a rapid superchat list). [ASR F20]
 - Her singing voice is a separate register; this sheet covers speech only.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **55%** (API `0.55`) (her calm default should stay steady; lower it only for the drama bits).
   Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[soft, meandering]` or `[quick, rhythmic]`; v4 has no speed slider.

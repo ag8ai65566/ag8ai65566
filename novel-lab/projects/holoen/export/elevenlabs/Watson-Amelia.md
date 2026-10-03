@@ -12,7 +12,7 @@ middling pace that trips over itself with restarts and fillers, mischievous, can
 voice for jokes, high-pitched wheezing screech when losing."
 - Register basis (sample observations from the audio check, not synthesis targets): upper range (≈248–276 Hz), middle pace (≈114–133 words per minute of speech). [ASR A23]
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script

@@ -13,7 +13,7 @@ quick to switch into playful character voices."
   members'; the 2026 game windows mix in game voices, so no numbers are used as targets (see
   `research/audio-check/elizabeth.md`).
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **50%** (API `0.50`) (warm and steady, with theatrical peaks). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[warm, polite]` or `[grand, theatrical]`; v4 has no speed slider.
 

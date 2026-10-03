@@ -11,7 +11,7 @@
 and friendly when she talks, a playful lilt for jokes, a bright shout of triumph when she wins a guessing game."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **50%** (API `0.50`) (poised delivery with occasional bursts; an untested starting choice).
   Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[warm, clear]` or `[focused, quick]`; v4 has no speed slider.

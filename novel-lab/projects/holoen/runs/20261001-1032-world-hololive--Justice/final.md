@@ -24,7 +24,7 @@ play with Advent, not a fact they live by.
 ## Type
 Faction / unit.
 
-## Members and Status (2026-10-01)
+## Members and Status (2026-09-30)
 - Elizabeth Rose Bloodflame (the Scarlet Queen, Harbinger of Order, organizer of Justice; from Great
   Exardia), Gigi Murin (the Free-spirited Chaser, a gremlin from Freesia), Cecilia Immergreen (the Ancient
   Automaton from Immerheim) and Raora Panthera (the Artist with the God Eyes, a big cat from the Romance
@@ -75,7 +75,7 @@ Faction / unit.
 | 2025-08-16 PDT | Justice group 3D collaboration stream (5 PM PDT) | [Official S7] |
 | 2025-08-23 EDT | -All for One-: Justice's first group performance at an in-person concert venue in 3D ("ABOVE BELOW"); Cecilia's "Wind-Up" was the first Justice solo number of that concert; see the member files for their other stages | [Official S3] |
 | 2026-02-20/22 JST | GeoGuessr: Elizabeth, Gigi and Cecilia trained (02-20) and represented Justice against Advent (02-22), with Bijou hosting/commentating | [Observed, secondary event roster] |
-| 2026-05 | CCGG (Gigi and Cecilia) joint 3D live (secondary event coverage) and "CCGG MADNESS"; Raora's first birthday 3D live (05-10 JST / 05-09 PDT; secondary metadata) | — |
+| 2026-05 | CCGG (Gigi and Cecilia) joint 3D live (secondary event coverage) and "CCGG MADNESS"; Raora's first birthday 3D live (May 2026; announced for 05-10 JST / 05-09 PDT; actual zoned start unverified) | — |
 | 2026-06-27 PDT | Second-anniversary live "How to Protect JUSTICE!" (06-28 JST) | [Official S1 video list] |
 | 2026-07-03/04 PDT | Serendipity: day 1 "SUPERNOVA SUPER GIRL" (Justice); Autofister (Gigi & Cecilia, "CCGG MADNESS"); "HELP!!" (Kobo Kanaeru with Bae and Elizabeth); "Break It Down" (Vestia Zeta with Shiori and Cecilia); "Cloudy Sheep" (Tsunomaki Watame with Calli and Cecilia). Day 2: the Advent+Justice medley ("Rebellion," "ABOVE BELOW"); Bloodraven (Nerissa & Elizabeth, "Cruel Angel's Thesis"); "MAKE IT, BREAK IT" (Zeta, FUWAMOCO and Gigi); "What an amazing swing" (Watame with Kiara and Raora); B.F.F (FUWAMOCO & Raora, "Inu Neko. Seishun Massakari") | [Official S6, S8] |
 | 2026-08/09 | Official -Justice- merch tie-ins: Bandai Namco Amusement America pop-up (2026-08-27), Pinfinity AR pins (2026-09-30) | [Official S1 news] |
@@ -186,6 +186,7 @@ At the 2026-09-30 baseline, all four remain members of Justice; the group is "ho
   and every Justice performance in the official report (S8); Girls' Night and Smokey merchandise (S10).
 - **Not adopted, with reason:** none.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-DATE-001, justice:JUSTICE-STATUS-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Resolved: 3D showcases 2025-08-01/02/08/09 PDT (S7).

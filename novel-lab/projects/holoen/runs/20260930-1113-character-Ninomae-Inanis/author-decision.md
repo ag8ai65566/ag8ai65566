@@ -17,3 +17,4 @@
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 e53ab65d2fcd）：Author decision (2026-10-02): cross-card lines from the GPT review of Marine, Noel and Lamy (run C), merged by Claude
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 2e94ef20a0e0）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
 - 2026-10-03 23:32 作者裁決收錄 final.md（sha256 750f528a620f）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
+- 2026-10-03 23:48 作者裁決收錄 final.md（sha256 ecbb600456ef）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)

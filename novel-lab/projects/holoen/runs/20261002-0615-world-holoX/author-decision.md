@@ -1,1 +1,2 @@
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 2602131cd4f8）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run F) merged by Claude; promoted.
+- 2026-10-03 23:49 作者裁決收錄 final.md（sha256 997dc697ccbd）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items

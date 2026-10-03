@@ -13,7 +13,7 @@ able to burst into loud laughter or shouting."
 - Register basis (sample observations from the audio check, not synthesis targets): low (≈197–214 Hz in chat) and fast (≈161–186 words
   per minute of speech). [ASR C30]
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) (she swings from deadpan to bursts). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
@@ -36,7 +36,7 @@ able to burst into loud laughter or shouting."
 | Sincere | `[plain, warm]` | "Please take care of yourselves first." |
 | Sign-off | `[casual, trailing off]` | "All right, take care everybody. I'll see you soon." (ASR; one contiguous excerpt) |
 
-Additional proposed scene directions from the card's Audio Tags (untested): `[confident]`, `[gruff, embarrassed]`, `[warm]`, `[gruff, deflecting]`, `[softening, warm]`, `[starstruck, flustered, polite Japanese]`, `[groaning at the pun]`, `[mock-feuding, smug]`, `[loud, chaotic]`, `[exasperated]`.
+Additional proposed scene directions from the card's Audio Tags (untested): `[confident]`, `[gruff, embarrassed]`, `[warm]`, `[gruff, deflecting]`, `[softening, warm]`, `[groaning at the pun]`, `[mock-feuding, smug]`, `[loud, chaotic]`, `[exasperated]`.
 
 ## 5. Signature sounds
 - "Guh." after a drink: `[comic gasp] Guh.`

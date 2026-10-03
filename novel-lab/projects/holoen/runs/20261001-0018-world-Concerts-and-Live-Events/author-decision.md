@@ -4,3 +4,4 @@
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 b69265972269）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 81d47b96ddbf）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 34b069a05751）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
+- 2026-10-03 23:48 作者裁決收錄 final.md（sha256 5e91356889fa）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)

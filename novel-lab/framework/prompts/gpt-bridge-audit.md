@@ -31,7 +31,7 @@ real-life information; public event locations do not establish personal travel.
 No inferred intimate relationships, sexuality or hidden psychology; no lyrics,
 long transcripts, explicit sexual content, real-voice cloning or identifiable
 imitation. Preserve evidenced swearing and performed jokes without sanitizing
-them. Label invented calibration lines “Style demonstration.”
+them. Label invented calibration lines with the project label “Style demo”.
 
 Do not reopen isolated claims already reviewed unless they conflict across files.
 This audit groups claims by shared event or relationship, checks previous fixes

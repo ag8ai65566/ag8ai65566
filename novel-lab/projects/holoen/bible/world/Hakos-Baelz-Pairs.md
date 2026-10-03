@@ -100,7 +100,7 @@ Relationship web (one member with the cast).
 |---|---|---|
 | 2021-09-24 | Keep Talking and Nobody Explodes | Bae–Kiara |
 | 2022 | CHADCast begins; "Month of Horrors" (October) | Bae–Calli–IRyS; Bae–Fauna |
-| 2023 | "Gisneyland," "Daikirai na Hazu Datta"; K/DA "POP/STARS"; We Were Here | BaeRyS; Bae–Ina; BaeBi |
+| 2023 | a BaeRyS off-collab; "Daikirai na Hazu Datta"; K/DA "POP/STARS"; We Were Here | BaeRyS; Bae–Ina; BaeBi |
 | 2023-10-09 JST | -Promise- formed | Bae with IRyS, Fauna, Kronii, Mumei |
 | 2024-08-11/12 | #BAEBISleepover | BaeBi |
 | 2024-08-24/25 | -Breaking Dimensions-: "Our Promise," "BLUE CLAPPER," "High Tide" | Promise; CHADCast + Bijou; BaeRyS |
@@ -193,6 +193,7 @@ Red pigtails and a little mouse on her head beside IRyS's angel and devil colors
   names Moona and Suisei; the Shiori/Nerissa note now records the shared "Mind Craft" cover and a 2026
   behind-the-scenes video (secondary). Fortnite, Amnesia and the SNAKE EYES short stay: Claude confirmed them in
   the archive's metadata, which the reviewer could not open.
+- **2026-10-03, scope screening by Claude:** a 2023 BaeRyS off-collab in the History table is described without its private-outing framing, matching IRyS's card.**
 
 ## Open Questions
 1. The exact year of the BaeRyS bento exchange is not independently dated; the card leaves it undated.

@@ -73,9 +73,7 @@ secondary]
   Amelia (Escape Simulator, 2024-09-24); "WatchDog" with Ouro Kronii; "Fuwamoomco" with Nanashi Mumei
   (Overwatch, 2025-03-01); they helped Ceres Fauna on her last World Tree stream (2024-12-31); Kiara hosted
   them on HOLOTALK (2023). [Observed S1; S3; Mumei, Calli, Kiara archives]
-- **Justice:** Raora Panthera, their Serendipity 2026 unit partner in B.F.F, drew them a shikishi before her debut
-  and gave it "with big tears in her eyes"; Gigi ("GigiMoco") and Cecilia ("Cecemoco," a Chrono Trigger
-  off-collab in 2026). [Official S4] [Observed S1; S3]
+- **Justice:** Raora Panthera, their Serendipity 2026 unit partner in B.F.F; Mococo's pair labels include "GigiMoco" with Gigi and "Cecemoco" with Cecilia; Cecilia and Mococo played Chrono Trigger together in 2026. [Official S4] [Observed S1; S3]
 - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi);
   Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori, "FUWAMOKOYO"); Akai Haato, Tsunomaki
   Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and
@@ -196,6 +194,7 @@ Pink and blue side by side; paw prints; two voices from one microphone saying th
   concert-venue jokes kept.
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-QUOTE-001, CONSULT-P0-002
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:ADVENT-TIE-001, justice:JUSTICE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

@@ -177,13 +177,22 @@ def split_list(s):
     return [x.strip() for x in re.split(r",\s*", s or "") if x.strip()]
 
 
+def split_row(line):
+    """Cells of a Markdown table row; an escaped pipe (\\|) stays inside its cell (GLOBAL-EXPORT-001)."""
+    return [c.strip().replace("\\|", "|") for c in re.split(r"(?<!\\)\|", line.strip().strip("|"))]
+
+
 def table_rows(block):
-    rows = []
+    """(cells, header) for each dated row; the header names the columns (GLOBAL-COVERAGE-002)."""
+    rows, header = [], []
     for line in (block or "").splitlines():
-        if line.startswith("|") and not re.match(r"^\|\s*-", line) and not re.match(r"^\|\s*(Date|Person|Word)\s*\|", line):
-            cells = [c.strip() for c in line.strip().strip("|").split("|")]
-            if cells and re.match(r"^(\d{4}|Lore|19|20)", cells[0]):
-                rows.append(cells)
+        if not line.startswith("|") or re.match(r"^\|\s*-", line):
+            continue
+        cells = split_row(line)
+        if re.match(r"^\|\s*(Date|Person|Word)\s*\|", line):
+            header = cells
+        elif cells and re.match(r"^(\d{4}|Lore|19|20)", cells[0]):
+            rows.append((cells, header))
     return rows
 
 
@@ -224,9 +233,12 @@ def build_registry(files, commit):
         for alias in [d["name"]] + split_list(sw.get("Other Names")):
             reg["aliases"].setdefault(alias.lower(), []).append(d["name"])
         for key in ("Background Timeline", "History", "Timeline"):
-            for cells in table_rows(d["sec"].get(key)):
+            for cells, header in table_rows(d["sec"].get(key)):
+                third = cells[2] if len(cells) > 2 else ""
+                is_ev = bool(re.search(r"(?i)evidence|source", header[2] if len(header) > 2 else "")) or third.startswith("[")
                 reg["events"].append({"date": cells[0], **date_info(cells[0]), "text": cells[1] if len(cells) > 1 else "",
-                                      "evidence": cells[2] if len(cells) > 2 else "", "file": d["path"], "section": key})
+                                      "evidence": third if is_ev else "", "context": "" if is_ev else third,
+                                      "file": d["path"], "section": key})
     reg["alias_collisions"] = {a: n for a, n in reg["aliases"].items() if len(set(n)) > 1}
     return reg
 

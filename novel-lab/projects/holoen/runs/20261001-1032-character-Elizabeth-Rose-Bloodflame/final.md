@@ -171,7 +171,7 @@ Pairs."
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Nerissa Ravencroft | Advent senior; lore "mortal enemy"; Serendipity 2026 unit Bloodraven | A "Rondo Revolution" cover; "ALiCE&u" (with Ayunda Risu) and "START AGAIN" (with Calli and IRyS) at -All for One-; "Cruel Angel's Thesis" as Bloodraven (2026); Elizabeth: "She has a beautiful voice," "the perfect harmony"; Nerissa praises her kindness. Nerissa has been "calling me her husband, my husband" (Elizabeth, 2025), a performed bit | [Official EB4, EB5] [Observed EB2] [ASR EB20, Rk03Rh8P9ps 0:38:00] |
-| Vestia Zeta | ID senior | Sang "Giri Giri" with her at her 2025 3D showcase; Elizabeth arranged it as a duet, choreographed it and taught Zeta the dance ("Zeta hit it out of the park") | [ASR EB20, Rk03Rh8P9ps 0:28:09–0:30:11; both models] |
+| Vestia Zeta | ID senior | Sang "Giri Giri" with her at her 2025 3D showcase; Elizabeth arranged it as a duet, choreographed it and taught Zeta the dance  | [ASR EB20, Rk03Rh8P9ps 0:28:09–0:30:11; both models] |
 | Gigi Murin | Genmate ("Hot Pursuit," secondary) | Operation Tango (2024; Gigi's stream title read "i won't let Liz down!!!"), Fortnite (2024), "Finding the best parent of holoEN" (2026) | [Observed EB2, EB3] |
 | Cecilia Immergreen | Genmate ("FiddleFlame," secondary) | Cecilia introduced her to Minecraft in their first duo collab (archived title); Cecilia's lore joke that an older Justice made her a maid ("#LizIsInnocent"); the "lifelong maid" image is fan art, not an established premise | [Observed EB2, EB3; X post EB6] |
 | Raora Panthera | Genmate ("FlamePanther," "Lizotto," secondary) | An early duo collab, "Chat & Art w/ Liz!" (2024-06-26, after the group's first collab); a 2025 birthday Among Us titled "Happy Birthday Pretty Kitty !" | [Observed EB2, EB3] |
@@ -185,7 +185,7 @@ Pairs."
 | Kobo Kanaeru, Ayunda Risu | ID seniors | "HELP!!" with Kobo and Hakos Baelz at Serendipity (2026); Kobo calls her "Lilis" (secondary); LYRA and "ALiCE&u" with Risu | [Observed EB2] [Official EB5, EB8] |
 | Banzoin Hakka (HOLOSTARS) | Duet partner | A "Mephisto" cover (2025-01-18); archived credits list Elizabeth's production and vocal-arrangement work | [Observed EB3, archived credits] |
 | Yona Yona Dance cast | Cross-branch cover (2026-03-17) | With Kureiji Ollie, Natsuiro Matsuri, Hiodoshi Ao (ReGLOSS), and HOLOSTARS' Josuiji Shinri, Arurandeisu, Astel Leda and Octavio | [Observed EB3, archived credits] |
-| Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 OMDzBQohAf8] |
+| Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [Shirogane Noel file NO5; Kikirara Vivi file VI5; archive metadata OMDzBQohAf8, inherited and not reopened] |
 | AZKi | — | Fellow members of Tokoyami Towa's 2025 New Year Game Festival team, with Kronii (secondary roster) | [AZKi file AZ4] |
 
 ## Arc
@@ -323,6 +323,7 @@ Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026
 - **2026-10-02, cast expansion (author: add Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu), reciprocal ties:** AZKi (Towa's 2025 festival team, secondary roster) added (source in AZKi's file).
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the 2026 birthday-live guest list is labelled secondary and includes Nerissa; the duplicate Gartic Phone row removed.
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-007, VOICE-V2-025 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
+- **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:CONSULT-P1-006, justice:JUSTICE-COVERAGE-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

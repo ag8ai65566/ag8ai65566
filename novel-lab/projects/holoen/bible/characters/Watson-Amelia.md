@@ -422,7 +422,7 @@ Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeS
     guest spot is sourced (Kronii file K33).
   - FUWAMOCO, Gigi and "Trust me, I'm a time traveler" rest on Claude's research without a re-mapped
     section; they stay in the file and left the card, except "Trust me," which stays in the file only.
-  - Real-person details the wiki mentions (pets behind Bubba, family, health, ancestry) are excluded.
+  - Real-person details the wiki mentions are excluded.
 - **Crude lines:** kept in the file with source and status. After GPT's review the card keeps the ground
   pound (audio), "Make money, get bitches" (A15) and real VALORANT rage lines (audio); the wiki-censored
   rage staircase and the Ina PvP threat stay in the file only.
@@ -498,6 +498,7 @@ Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeS
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** KoMeHa labelled a secondary name; the Apex collab with Lui and Iofi cites its own upload (Mory0I9vXtI, verified by Claude in the local archive), not the world card.
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-026, VOICE-V1-027, VOICE-V1-030 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-03, workflow research W1 (20261002-1715-research-workflow-SW-EL, GPT xhigh), merged by Claude:** Kronii partner tag shortened to a performable direction ([fond, a little embarrassed]), so every card tag is a performable direction the scene converter accepts from the sheet palette.
+- **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 
 ## Open Questions
 1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage

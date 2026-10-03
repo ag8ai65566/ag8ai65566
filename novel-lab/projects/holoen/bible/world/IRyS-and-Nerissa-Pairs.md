@@ -24,8 +24,7 @@ Relationship web.
 ## IRyS
 - **IRyS and Calli** (16 / 16 / 5 / 8 / 2 / 1): Calli's first collab with her came on July 29, 2021,
   eighteen days after IRyS's debut ("Just Irystocrats and DeadBEATS"), then a karaoke collab (2021-10). With Hakos Baelz they
-  host CHADCast ("Chaos, Hope, and Death!", from 2022-01-30; a 2025 episode: "We Went to a Hot Spring
-  Together!!"). Later: "Two Pink Women Roll Up to Silent Hill" (2024-10-26), IRyS as Calli's HOLOMELO
+  host CHADCast ("Chaos, Hope, and Death!", from 2022-01-30). Later: "Two Pink Women Roll Up to Silent Hill" (2024-10-26), IRyS as Calli's HOLOMELO
   RADIO guest (2024-07), an off-collab karaoke with Momosuzu Nene (2025-04-23). Wiki unit: "MorIRyS."
   [Observed S1 titles; S2 IRyS §Relationships, secondary]
 - **IRyS and Kronii** (10 / 12 / 7 / 6 / 8 / 1): Promise unitmates since 2023 (they debuted separately), friends since 2021 (fan
@@ -81,7 +80,7 @@ Relationship web.
 | 2021-07-29 | Calli's first collab with IRyS | MorIRyS |
 | 2022-01-30 | First CHADCast | Chaos, Hope, and Death |
 | 2023-08-14 | Nerissa's compatibility test with Kiara | KiaRissa |
-| 2023-10-09 | -Promise- formed: IRyS and Kronii genmates | — |
+| 2023-10-09 | -Promise- formed: IRyS and Kronii become unitmates | — |
 | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
 | 2026-04-23 | Nerissa's Tomodachi Life Miis of IRyS and Ina | — |
 
@@ -110,7 +109,7 @@ Gawr Gura (memory), Watson Amelia (affiliate).
 
 ## Hard Facts (continuity)
 - IRyS debuted 2021-07-11 (senior to Kronii by a month, to Nerissa by two years); Nerissa 2023-07-31.
-- CHADCast = IRyS, Calli, Bae. KiaRissa = Kiara and Nerissa. IRyS and Kronii are -Promise- genmates.
+- CHADCast = IRyS, Calli, Bae. KiaRissa = Kiara and Nerissa. IRyS and Kronii are -Promise- unitmates; they debuted separately.
 - 2026 baseline: IRyS–Gura and Nerissa–Gura are memories; Ame appears as an affiliate guest.
 
 ## Sources (checked 2026-10-01)
@@ -161,9 +160,11 @@ A three-way CHADCast call; a split-screen co-op with Kronii; KFP merch on Neriss
   measures, and are not on the card.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, scope fix from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md,
-  P0):** the 2024 off-collab trip removed (private travel is outside scope); the public GIRLSTALK collab kept.
+  P0):** private-life material removed; the public GIRLSTALK collab kept.
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-SCOPE-003
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:CLAUDE-SCOPE-002, myth1:CONSULT-P0-002 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-TIE-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The 2025 "KIARA & FRIENDS" spring concert names both IRyS and Nerissa in its archive entry; whether

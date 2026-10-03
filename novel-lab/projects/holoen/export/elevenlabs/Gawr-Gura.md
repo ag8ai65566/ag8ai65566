@@ -14,7 +14,7 @@ games and hum while playing."
 - Register basis (sample observations from the audio check, not synthesis targets): relatively high (≈245–270 Hz in chat and horror windows), moderate pace (≈120–140 words
   per minute of speech in 2024 chat). [ASR G18] Conversational observations here come from 2024; their representativeness for her final 2025 activity period is unverified. The proposed design remains provisional.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script

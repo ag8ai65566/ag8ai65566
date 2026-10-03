@@ -29,9 +29,7 @@ Relationship (pair) and official concert pairing.
 - **The chicken incident (2020):** after Gura filled the back room of Kiara's KFP building in Minecraft
   with chickens, Ina was checking on them when a creeper exploded and released them; Kiara "fired" Ina,
   and the incident became KFP lore. [Observed S4 §KFP, secondary]
-- **Ina, the quiet support:** Kiara has said that when she is down, Ina is always the first to message
-  her (a statement Kiara made publicly, reported by Ina's wiki page). Ina also designed Kiara's mascot,
-  Kotori. [Observed S5 §Personality, S4 §Mascot and fans, secondary]
+- **Mascot artwork:** Ina designed Kiara's mascot, Kotori. [Observed S4 §Mascot and fans, secondary]
 - **Kiara, the loud support:** Ina credits Kiara's support with helping her gain confidence in dancing. Kiara groans at
   Ina's puns like everyone else. [Official S2; Observed Ina file]
 - **Kibaba's future:** in Kiara's grandma-persona bit, future Ina lives near Kiara, who cooks for her so she
@@ -39,7 +37,7 @@ Relationship (pair) and official concert pairing.
 - **Recent milestones (archive, S1):** "TAKOTORI OFFCOLLAB!!" in Mario vs. Donkey Kong (Ina's title,
   2024-03-04; Kiara's side was "Two Braincells At Work"); outfit design for each other judged by juniors
   ("Ina & Wawa Outfit Design!", 2023-12-30); the duo concert "Drawn to Dawn" at the Wiltern, Los Angeles
-  (2026-03-27/28, announced 2025-11-23, new 3D outfits); Kiara's "Back from Drawn to Dawn!!!!! THANK
+  (2026-03-27/28 PDT, announced 2025-11-23, new 3D outfits); Kiara's "Back from Drawn to Dawn!!!!! THANK
   YOU!!!!" (2026-04-01); a cover of "GETCHA!" together (2026-04-24).
 - **How often (archive, S1):** mentions per year 30 (2020), 34 (2021), 17 (2022), 10 (2023), 11 (2024),
   6 (2025), 4 in the thin 2026 archive, the highest 2026 rate of any Myth pair. [Observed S1; counts by
@@ -57,7 +55,7 @@ Relationship (pair) and official concert pairing.
 | 2020-11 | The KFP chicken incident; Kiara "fires" Ina | KFP lore |
 | 2024-03-04 | "TAKOTORI OFFCOLLAB!!" | The pair name in their own titles |
 | 2025-11-23 | Duo concert announced | — |
-| 2026-03-27/28 | "Drawn to Dawn," the Wiltern, LA | Their first concert as a duo |
+| 2026-03-27/28 PDT | "Drawn to Dawn," the Wiltern, LA | Their first concert as a duo |
 | 2026-04-24 | "GETCHA!" cover | — |
 | 2026-09-19 PDT | At Myth's 6th-anniversary 3D live "Seasons From Within" the two sang a duet cover of "September" | Setlist, secondary [S7] |
 
@@ -70,7 +68,7 @@ Relationship (pair) and official concert pairing.
 
 ## Conflicts and Story Hooks
 1. Rehearsal week: Kiara wants one more run-through, Ina wants a nap; both are right.
-2. Kiara is down after a rough day; a message from Ina arrives first.
+
 3. A KFP "hearing" reopens the chicken incident; Ina defends herself deadpan.
 4. Kiara designs Ina's outfit and Ina designs Kiara's; neither admits the other's is better.
 5. Post-concert chat: they re-live the show and thank each other on stream.
@@ -108,10 +106,10 @@ Relationship
 Kiara and Ina, Ina and Kiara, Drawn to Dawn
 
 ## [SW] Description
-Takanashi Kiara and Ninomae Ina'nis, Myth's gas pedal and brake. Ina's words: Kiara has "a very 'go-getter', lively energy," Ina is "laid-back, my-pace," and "one of us is the gas pedal and one of us is the brake." Kiara's: "so different from me, and I love that," a mix of "cat fueled energy" and "energy drink fueled energy." Ina credits Kiara's support with helping her gain confidence in dancing; Ina is the quiet support, and Kiara has said Ina is always the first to message her when she's down. Ina designed Kiara's mascot Kotori, and Kiara still "fired" Ina over the 2020 KFP chicken incident. Their recent shared work includes the 2026 duo concert "Drawn to Dawn" (the Wiltern, Los Angeles, March 27–28) and a joint cover.
+Takanashi Kiara and Ninomae Ina'nis, Myth's gas pedal and brake. Ina's words: Kiara has "a very 'go-getter', lively energy," Ina is "laid-back, my-pace," and "one of us is the gas pedal and one of us is the brake." Kiara's: "so different from me, and I love that," a mix of "cat fueled energy" and "energy drink fueled energy." Ina credits Kiara's support with helping her gain confidence in dancing. Ina designed Kiara's mascot Kotori, and Kiara still "fired" Ina over the 2020 KFP chicken incident. Their recent shared work includes the 2026 duo concert "Drawn to Dawn" (The Wiltern, Los Angeles, March 27–28 PDT) and a joint cover.
 
 ## [SW] Rules
-Kiara leads with volume and plans; Ina answers with calm, a pun, or one quiet line that lands. Their support is mutual and unshowy: Kiara hypes, Ina checks in. The firing is a running KFP joke, never a real grudge.
+Kiara leads with volume and plans; Ina answers with calm, a pun, or one quiet line that lands. Their public collaborations include concerts and game streams. The firing is a running KFP joke, never a real grudge.
 
 ## [SW] Sensory Details
 Orange and purple under concert lights; Kiara's hype countdown with Ina's calm "okay, okay" under it; a pun, a groan, a giggle; Kiara scream-laughing at one quiet line from Ina.
@@ -130,6 +128,7 @@ Orange and purple under concert lights; Kiara's hype countdown with Ina's calm "
 - **SHOULD kept:** the gas-pedal/brake comparison and mutual support.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** their "September" duet cover at the 6th-anniversary live (secondary setlist).
+- **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:MYTH-DATE-002, myth3:MYTH-SCOPE-001 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

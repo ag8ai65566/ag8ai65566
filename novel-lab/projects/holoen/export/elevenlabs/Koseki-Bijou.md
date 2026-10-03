@@ -11,7 +11,7 @@ playful, childlike energy."
 - Register basis: qualitative only. The sampled gameplay recordings mix in game audio, so their numbers are
   not used as targets here (see `research/audio-check/bijou.md`).
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (bubbly swings, but the calm gaming voice must hold). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[excited, bouncy]` or `[focused, calm]`; v4 has no speed slider.
 

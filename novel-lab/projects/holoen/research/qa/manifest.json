@@ -1,69 +1,69 @@
 {
- "built_at": "2026-10-03T23:42Z",
- "commit": "dbf3a18",
+ "built_at": "2026-10-03T23:49Z",
+ "commit": "fca8f18",
  "baseline": "2026-09-30",
  "files": {
   "bible/characters/AZKi.md": "0c0824dad8fa3fdebcf05aa64dc99b8e4aa28bc0ba51e17c4041aba9986d2c08",
-  "bible/characters/Cecilia-Immergreen.md": "7a537ef4dbb79fb245d66287322b94823a2d23afd8a2a8d6c293be8a3a12add0",
+  "bible/characters/Cecilia-Immergreen.md": "e59b0f52ef69c72e79cd70a2bba07176fc33e1da6a48da06f9d6bb112e3d3148",
   "bible/characters/Ceres-Fauna.md": "9b733f131b2fff87c28b5733d7d2708ba5c0ec4ccd7efddf174034eabee5441c",
-  "bible/characters/Elizabeth-Rose-Bloodflame.md": "a756372be69f0ff58e4b98d6eaf6bd7a991df57db10d9d7371ccd6dfe53ab859",
-  "bible/characters/Fuwawa-Abyssgard.md": "a473e6c6e864335ac214382332ed8996a04b32bf41004ef433e0390330fd64ba",
+  "bible/characters/Elizabeth-Rose-Bloodflame.md": "8c923cecfa893b94f83fa7fd1975fe55fb4e11b6a9351b097d800752135fc44d",
+  "bible/characters/Fuwawa-Abyssgard.md": "59f8349ea570fcdc77db289bd2680026a27ae47873faee63da61907a9f580fa7",
   "bible/characters/Gawr-Gura.md": "fe836c5e53dd4cd6d79ce031019334690345a69836ffd7f0b62a131396f27378",
-  "bible/characters/Gigi-Murin.md": "f2977de2826b677b91d5e2d196d5e95aa6f568ad62615010de4861b311772798",
-  "bible/characters/Hakos-Baelz.md": "b60b5b0922939098854f041a1b44bfc9ee81c54c78314df8f61f48f58cd74d3b",
+  "bible/characters/Gigi-Murin.md": "8c9d7e7d2d3998ce3a592b67734b914106f3185ce03677381027039c6308d0e7",
+  "bible/characters/Hakos-Baelz.md": "b1cbdb14a7b4dfb8b50b172d5dd88da4840370ab63c24372edfc81e41781f6a3",
   "bible/characters/Hakui-Koyori.md": "b129e84b71f9a1abcf9bb8cff66c7bb15bd3b7be0481179ce622533df7287a5a",
-  "bible/characters/Hoshimachi-Suisei.md": "db89149d5b8afdc43d3f0d255fb0a06a1b7d5f1889acbf2e0c4470d8ce55e17b",
+  "bible/characters/Hoshimachi-Suisei.md": "a995e8cbfaf1ca1833883cd23f89303ad5d4772bf84200016f017f715e8b7d41",
   "bible/characters/Houshou-Marine.md": "6faafe4d0552984a049c738907a015ff3bd0043727f49a006f0a8aea38ecdde4",
-  "bible/characters/IRyS.md": "f5107bc15ed825f25c411c1729ce038c8e79133cc68241617e3e24cb65f46687",
+  "bible/characters/IRyS.md": "1eb1cdf6589704e7222dde7095af656f8d079677024c987ff7b5073c2c7b192a",
   "bible/characters/Kazama-Iroha.md": "9f9549eaf96fcd405ae580efdffdcbdd95a62467623f88bdfa8591ffb988fd47",
   "bible/characters/Kikirara-Vivi.md": "838e6bd0a87c8701e043516420ead1c6ea4c2d3b6a3901fd15070a034b822b16",
   "bible/characters/Koseki-Bijou.md": "78a66375b060769cd0722d1b7adbe1e7e44f06a4249b54048d09defd49505dfd",
   "bible/characters/Laplus-Darknesss.md": "665ffca4b0d336d74559219f0cb4d0d4fbecdf1c0179ab33c23d14b5a0a5247d",
-  "bible/characters/Mococo-Abyssgard.md": "78cab2310e436e9dd3ff8723af800936ba135a8310c9eeb708dda70553370147",
-  "bible/characters/Mori-Calliope.md": "24549e3bd5c07339d07dcda539ffc211497dbcc6e846301e0608271808c8d255",
+  "bible/characters/Mococo-Abyssgard.md": "7be35dfd2e96cae669fb08a979864a99ea2c693d8a760426ac705d726a49de31",
+  "bible/characters/Mori-Calliope.md": "395687490069113d5370acbeb302bce2c322ed1bdcba71affdec871e53bf0012",
   "bible/characters/Nakiri-Ayame.md": "36dc3ae46208fc5a15640d5c676a2429b25314b3bbeb878d44d112a46cbefd28",
-  "bible/characters/Nanashi-Mumei.md": "a5ed6367b55ded4781ad84593fbd8f504ffb243038a0bf2a0dc40f0bfc2b048e",
-  "bible/characters/Nekomata-Okayu.md": "b9a7672c4ba2d4ab372fa291b315b2037b62657bb2035cdc5d0128576dd5c582",
+  "bible/characters/Nanashi-Mumei.md": "b0d066f2150e7ac4a46eed37d7131886f21583acbe4030fea7fe038d1bf649a6",
+  "bible/characters/Nekomata-Okayu.md": "d17d1933de25730e3231ab67cc93b7d59a628420dc2e952939c460122b46644d",
   "bible/characters/Nerissa-Ravencroft.md": "6b5f428092af3641535e70446239f17e4545901b7fc5d2b3b1059dd43b1c91ea",
-  "bible/characters/Ninomae-Inanis.md": "750f528a620fab54d1a6874695a9533db0a55e36548085ddf6d6939a2a3e4073",
-  "bible/characters/Ouro-Kronii.md": "3e3d37492ac5c73bcf512a224bc4e8408e80a300cce6fc36f14e8c720ea158ad",
-  "bible/characters/Raora-Panthera.md": "c494042286a0835c13bc6a448268e642b97371e94eea9044bf3252e5f1fc88d7",
+  "bible/characters/Ninomae-Inanis.md": "ecbb600456ef108fa3d6e002a3e28f97b508f3708d2448ba121c5a895b3b0cba",
+  "bible/characters/Ouro-Kronii.md": "4e9eceb7324a22d0043104ea7b0ec084de5a5a3ed1eb8235cc6a3602e148d3ca",
+  "bible/characters/Raora-Panthera.md": "32c1cb69a479b93df262f91fd870868c57d6fca93df0e1807b46894a88487243",
   "bible/characters/Sakamata-Chloe.md": "5d5d78ff41b4018e282408d70ab64d7b96b63b7f77c331689c7793a42450fafc",
   "bible/characters/Shiori-Novella.md": "fa6bd0e71a89adb134f5b482c8622257bd81007f09bad3558194af975c155474",
   "bible/characters/Shirogane-Noel.md": "4a0cc2ac86b1318097e971dff710efbfa1020de92c0e86f1c7090c1806d23b50",
   "bible/characters/Shishiro-Botan.md": "034bcb1e2f4ad3380c1d86e2c50b6df0fde0e24fd3e5fc21b7aca35eaf88a04b",
-  "bible/characters/Takanashi-Kiara.md": "621fae788fe6cd41d6576f636f5200db9999da8781c89425c774c831aea345cd",
+  "bible/characters/Takanashi-Kiara.md": "cac0a2ba191883c9deecfe043767dd66a83a21268e2c0179fba8d2cdf69fba32",
   "bible/characters/Takane-Lui.md": "6d81b858789ce21f0a1b0044324b2e90df255e4e91bf1e6f6ca66d7e8a5ed921",
-  "bible/characters/Watson-Amelia.md": "eaab2dfec431b0e967baf0ad458ead7d21c4fcaa8404655f3008c0b043ad1d5f",
-  "bible/characters/Yukihana-Lamy.md": "711f2cdc71c65f9dea3e48cd39d3766d1e3494aa20d18b3e5b1047439c3efb8b",
-  "bible/world/Advent-Pairs.md": "bea1ef142554b21fe45ec4cdd1782bf38da5105cd275dd46582e349390ff5ce2",
-  "bible/world/AmeSame.md": "03602b5cf2fd19d1fa524636a54d0af12f84d27e928ad6d6b558931a31b6360b",
+  "bible/characters/Watson-Amelia.md": "14c4eba1eb0aa3d0ba6796affd7fd9cdf2547bcd7847f08e340277af0e8ea680",
+  "bible/characters/Yukihana-Lamy.md": "813f61e21a061f4f0638b36784493eb9cdd224ac35d1149e482f63c1c1936481",
+  "bible/world/Advent-Pairs.md": "41ba11f4e2e01b754bd37092a84a7ee1648e7b4650315285a40a60d0b63b7ff5",
+  "bible/world/AmeSame.md": "409dacb16a2f7ba4b4f51e06bbceba73189c7207a2bcecc8dc78c8e2fbe10e6e",
   "bible/world/Bone-Bros.md": "3456a63d52637b62b6c0e00e4961d7f469a52be8eb5d6bf792e331d5e83c2bdb",
-  "bible/world/Concerts-and-Live-Events.md": "34b069a05751704848dc042745054c2d4566d1cdd7ba0696661c190a8f563f2f",
-  "bible/world/Cross-Branch-Friends.md": "dea16db64500b3dd4f226646b42fe1845afba3290991e126b07b744d3522990d",
-  "bible/world/FUWAMOCO.md": "04201c0f84719e6a345afa8b29cba539736d1ac23572f32a1ae440ba62ba501f",
+  "bible/world/Concerts-and-Live-Events.md": "5e91356889faea2bb9444b989673168a8d30d6acd750918d47d9e41a34e5a9e9",
+  "bible/world/Cross-Branch-Friends.md": "465b1f43d96fe4bcb87274073e70f029dd4e0ecfffbaa2531b39cc1877a973d4",
+  "bible/world/FUWAMOCO.md": "aa9e5b90ae536cb7fc03a11b2213db9a2053b96a4d315a9a1165863a422d4a5a",
   "bible/world/Fauna-and-Mumei-Pairs.md": "537910125c8df50e45997f2e88e7d10b8fe947f02690132a5ffe540a26808fa7",
-  "bible/world/Hakos-Baelz-Pairs.md": "62cc8028a666ca2e416c754d587a661a1e39cf29ce707ed233be26b5ea83aa46",
-  "bible/world/IRyS-and-Nerissa-Pairs.md": "2d7d1c26629480c85959dded8955749d50580f933466eca23fde976ae2959746",
+  "bible/world/Hakos-Baelz-Pairs.md": "ed9cffbde4950882700e7e2a2990f41e64109b6dc312da6959d1d818364b8b5c",
+  "bible/world/IRyS-and-Nerissa-Pairs.md": "1a33b27ee01c88d86c2e4d997ada26fc8ad34aefd45df57cfe18ca5e299a4cb1",
   "bible/world/JP-Senpai-Pairs-2.md": "851a28351159ca40690e7be3c0bfd57c0ad520c890ffa117adfd27c9e86ee427",
-  "bible/world/JP-Senpai-Pairs.md": "15ee00e65441b27ee2fc20fa02288604e6ab62f8c7c4cf874b241b0d0b2629ed",
-  "bible/world/Justice-Pairs.md": "230ca850a0f3795979c018e92d59f7d12bda2ae1b008b56a46160ad59b0862ed",
-  "bible/world/Myth-and-Kronii-Other-Pairs.md": "12e7d39a7dbba46febc88e046b03cd8fcab96ec2cd1e1a690d0cd90223b18fda",
-  "bible/world/OctoClock.md": "5f0169e12e8b7e1daf0ee4e25d59ab371f65076c2bfaf71b54ffe630dc0483d9",
-  "bible/world/Streaming-Life.md": "5b091fb1cef5daa9dc040ddfdd304fd3d45c0799021268cff3e7de71ef90db61",
-  "bible/world/TakaMori.md": "a25e152cb2853aff3f594aec14de5c731cfc6879d388312dd066cbf8a8f8b5af",
-  "bible/world/TakoTori.md": "ebf69f1c30ab2f4bd0ab5ac3e4698540fd29b21fcc368a73e15c736bc49138a5",
+  "bible/world/JP-Senpai-Pairs.md": "da7d79f21c024df0275a116a6f7ccb19f9382a3f82c7c96bdfd5223ddd8ebdb4",
+  "bible/world/Justice-Pairs.md": "d05eeeb159fa0834324e3ae30a90b4ff325c7c601230dd16934408219555d4fb",
+  "bible/world/Myth-and-Kronii-Other-Pairs.md": "1febc4ccc5d3a59d4e9a544be17e836e94add0a7746900e1155af68d816b8223",
+  "bible/world/OctoClock.md": "6407b5c4a15575cac827739a2c177d02aca72506c3245c0e5622ff2961c191d1",
+  "bible/world/Streaming-Life.md": "8e3a1281513c2464179a42eaabcf57266fb5d06f4605cbd32fb6aa7e3a2fb948",
+  "bible/world/TakaMori.md": "ecc3059926ff4a008dc102536b56f26ac3e53c38f5a44bef4d661301c37698b8",
+  "bible/world/TakoTori.md": "c3f8a29470c09b5ba7eef9d4ad00d4c625809a22235bd1c369615c402c761ba4",
   "bible/world/Time-Duo.md": "329fef0a8daa8d64cda9db111093e237037ca163d6014c601a5254011258d6a5",
   "bible/world/Time-and-Death.md": "e1239bb9b6264defe6b070bb2d6a6d2b43539b191f835a133857822ccf646ac5",
-  "bible/world/VTuber-Persona-and-Lore.md": "f52c6b4e05a010ec1b56ea6ffdc69036bfe22b0dbecf9ee546d14773ff8e3105",
-  "bible/world/holoX.md": "2602131cd4f889b8feaf15ad3d952f49f1ee78bb929bea2948a5b0ce8235f03d",
-  "bible/world/hololive--Advent.md": "e7f7200a8cf51af6f44191eccbee3c4ad425d8bb7447d885778e36d9d8b56b52",
-  "bible/world/hololive--Justice.md": "2c7e406dec23e441fe727a02ade320029d8d3e2063a934fe279b67baa26b939e",
-  "bible/world/hololive--Myth.md": "ef5715a5ecbe97b21dfb9f61f08241d7d94983bb0d808bebe42a6f561be01e04",
+  "bible/world/VTuber-Persona-and-Lore.md": "6c72058abfbee6fa4c876031b4b888de9677c02a818f95b9f3c85f14ad724a88",
+  "bible/world/holoX.md": "997dc697ccbd0d71389ae7a3f693801f25c45cd65b1e10eab50c771d75697512",
+  "bible/world/hololive--Advent.md": "f38a6de759acca95bf1e4eb80fe1fc9df4cff7b52906357ad2c219509a0a9d61",
+  "bible/world/hololive--Justice.md": "d54b14489a885f5c8c4780cd5df6c20758070dccf19ae86ce15cd93a960628b4",
+  "bible/world/hololive--Myth.md": "2093eaad2fde33761fef3968ff7cbe0fbbdbf0fce9ffd46f45b00e01cfa0b5d3",
   "bible/world/hololive--Promise.md": "b80a53219f8be4ac88e0a359f1c838cdfec3bff119ae86cf0c8b9dc464070e90",
-  "bible/world/hololive-History-2023-2026.md": "727f1bd3bcb3009d90d021cbba2e4f771d52d08aaadda5d71fafba4ed9831d5a",
-  "bible/world/hololive-History-to-2022.md": "fb9d97a7537e801c5fc5606308d3e8e3d7d1c967225e1b175699f07ca1f08272",
-  "bible/world/hololive.md": "e80cfcc0d0d03d9e5b473d43a422e1d43600fba83d205e80e997ce0158f27f9b"
+  "bible/world/hololive-History-2023-2026.md": "7bd2c4b94f6dce38e6f4193d36ba12a7aa205365f4e4952dfffc4b5486d158af",
+  "bible/world/hololive-History-to-2022.md": "39bb9b8a68fa4eb95c8241fd2c85199ee0772ec62e481a10ef7fd4237ca64100",
+  "bible/world/hololive.md": "1c2401a244d739202ad3fc22b59039bfcd258050899e48a0f07180979a2e8b52"
  },
  "packets": {
   "myth1": {
@@ -74,13 +74,13 @@
    "parts": [
     {
      "packet": "research/qa/packets/myth1.md",
-     "chars": 11053,
-     "sha256": "dc3ffacf80df98d0ce82388e7b43f7cae4b6c2958d03baac9dee2061b1967ab9"
+     "chars": 10897,
+     "sha256": "b527e25ed1ab1b7c33756619f464540dcb1868d5ae43d9a93ab4a9ed3e0a8f4f"
     },
     {
      "packet": "research/qa/packets/myth1-incoming.md",
-     "chars": 103397,
-     "sha256": "6c38e7bc1a46b2e44a00dd76df1dc4bc632eb7ff1214c529069351d618fa06dd"
+     "chars": 102410,
+     "sha256": "275c308e3ae90cd738e6019ee6ff96d01eb488c627de262b54dc0e42b7a617ca"
     }
    ]
   },
@@ -92,13 +92,13 @@
    "parts": [
     {
      "packet": "research/qa/packets/myth3.md",
-     "chars": 9081,
-     "sha256": "992d0f8a2b84679941790fb03fcf27a87ba93f1465f4f5fa393005bb147d61fc"
+     "chars": 8936,
+     "sha256": "af65c3a67b5ccbb89c9bc84a63af842e707f85945ce2db9482613166432dd21e"
     },
     {
      "packet": "research/qa/packets/myth3-incoming.md",
-     "chars": 93273,
-     "sha256": "532cef2cf825d1e5ecef6b85d6c426ef63434232fd0931a6d5e963fa99f97c40"
+     "chars": 92615,
+     "sha256": "552903acd80d8946765638a29654c2d336d892ad7cfacd9ec24c661f158a55e6"
     }
    ]
   },
@@ -110,13 +110,13 @@
    "parts": [
     {
      "packet": "research/qa/packets/myth4.md",
-     "chars": 8424,
-     "sha256": "92308499b89d2af060ed32569a787e04cabf78cd8688507eebf4d09f99e62d12"
+     "chars": 8423,
+     "sha256": "e167bf2c5990cfadb3bf543c353ffd315d91b0a23cbccfc7db2871d847c78fbe"
     },
     {
      "packet": "research/qa/packets/myth4-incoming.md",
-     "chars": 69755,
-     "sha256": "b5119b83e4b6f1baf61518652056dcad50527f82fd065377e9c9dcd6260ab531"
+     "chars": 69762,
+     "sha256": "5dd016a5b55dd6772cada23e8194872f46ccc6bd9a82773b8791c17c735bfcac"
     }
    ]
   },
@@ -132,12 +132,12 @@
     {
      "packet": "research/qa/packets/myth2.md",
      "chars": 19135,
-     "sha256": "c514840d66c68bc03d1dc0e17da1475bdd548a1cc158b78895885889740ea00a"
+     "sha256": "944d0c01c3a6e578cfc7d941c60964243a0616af9624f0b0455b9379e406a940"
     },
     {
      "packet": "research/qa/packets/myth2-incoming.md",
-     "chars": 73648,
-     "sha256": "114fdbf501a5e08e9e39ddbafd2ffdffaefefbe56961205b9202c46959490a63"
+     "chars": 73680,
+     "sha256": "569f91486fed30cc185e8fe4310b3124e0556c595587c0947165455ae2df9a1c"
     }
    ]
   },
@@ -160,12 +160,12 @@
     {
      "packet": "research/qa/packets/promise.md",
      "chars": 47252,
-     "sha256": "2610080111c2171904649acbf7c51619abe4bc3c190ff237f2ab46f4cd74e6ad"
+     "sha256": "ca67ae704faa6b9fc483629efc891ea5a715e141c3fed1fac94581ef7bd2e13b"
     },
     {
      "packet": "research/qa/packets/promise-incoming.md",
-     "chars": 110661,
-     "sha256": "f576ac96aa77f404e2f730cdf53aab9ab79c2ce64609c8f1a9a4a68750656053"
+     "chars": 110782,
+     "sha256": "362590f3c5116398d2dfe5c85c7995057672b00c076ea5cb0200b3ffe3b772fa"
     }
    ]
   },
@@ -183,13 +183,13 @@
    "parts": [
     {
      "packet": "research/qa/packets/advent.md",
-     "chars": 35347,
-     "sha256": "88af7466b43266c199659bdba355c7011e6f4c885b1fc7e46b2cd88acccb8ec9"
+     "chars": 35304,
+     "sha256": "e2885d5a263eb8d28d7d8218fe389c0d194f125ec49a62421c4646ab5a2ea3e9"
     },
     {
      "packet": "research/qa/packets/advent-incoming.md",
-     "chars": 107766,
-     "sha256": "5eb7ba52b2758ab60cbfe4bcc3f72c91d04522e0034f3e929778a60cda000342"
+     "chars": 107855,
+     "sha256": "357b6b6e158fb9e9591760f79639242819bee5a22ec6b24800a1565f05be23ed"
     }
    ]
   },
@@ -205,13 +205,13 @@
    "parts": [
     {
      "packet": "research/qa/packets/justice.md",
-     "chars": 32219,
-     "sha256": "ceb173a91077174e106c855dff2e8d2356935def5d4f13df542a6544769aef22"
+     "chars": 32368,
+     "sha256": "01d2b10c86b58f5cd96b53ae05b4edfd5cce9a2ba1d134fca46f34ad9da11d54"
     },
     {
      "packet": "research/qa/packets/justice-incoming.md",
-     "chars": 62980,
-     "sha256": "d14de6efc89209e4037e26b4db5e3febe042e9fbe63c5c0d348890d2b0e4f46a"
+     "chars": 62708,
+     "sha256": "0519f4f6b95440b2de4b2fda771c02d1ea2c508e0873633292fcaa7fa8ede3e2"
     }
    ]
   },
@@ -226,13 +226,13 @@
    "parts": [
     {
      "packet": "research/qa/packets/jp.md",
-     "chars": 25922,
-     "sha256": "6f1a702e6272c23cb4c0738bb57e928630b404ca8bc36b5c82ba229a9ae6c7d5"
+     "chars": 25875,
+     "sha256": "1d065d76c800c920460e8b952d1c597b1a5814a366efb15e22f06d653c9170a7"
     },
     {
      "packet": "research/qa/packets/jp-incoming.md",
-     "chars": 43304,
-     "sha256": "6789aa38fb25a13fe6e339e74835789e64553c44e8ed57a8e6024b5a8ecc1cef"
+     "chars": 42626,
+     "sha256": "eb02e9900f67699b1066e6e142d1267d5205167e01719d004780fb879637d63c"
     }
    ]
   },
@@ -249,12 +249,12 @@
     {
      "packet": "research/qa/packets/jp2.md",
      "chars": 23189,
-     "sha256": "69f580e76c3ae4a8c30b51c9d106ce504d54439be128ffb3bc96d95bc3003f81"
+     "sha256": "7a45b49161b9b6d2af84063e7fbcf02f6612eb7b557f60759ab57037319d471c"
     },
     {
      "packet": "research/qa/packets/jp2-incoming.md",
-     "chars": 36643,
-     "sha256": "a0726a3550485973a2abee21ed37c19e4f59f4d46c84c8cd06fce59155b0d451"
+     "chars": 36854,
+     "sha256": "9647cdf862216bab3aafda8c4fc16d5a091e95a0f101ca2355c1765950292e86"
     }
    ]
   },
@@ -271,12 +271,12 @@
     {
      "packet": "research/qa/packets/holox.md",
      "chars": 25853,
-     "sha256": "6fb96a11322d3933ccd8c704af965e0e1ea5d5c3aea4e02593bd284cd5cd9290"
+     "sha256": "f44397d166d7ab1b1640d07a48d40d4e23db336df9f5661384640626b75a91b7"
     },
     {
      "packet": "research/qa/packets/holox-incoming.md",
-     "chars": 37043,
-     "sha256": "29dd37041aab5e407c705ce3041fe665429ff9ccb6fbb79c148cc68393463810"
+     "chars": 37011,
+     "sha256": "d734cdb1261913ecd8ab6a96d5f503fbe8fe674772ffce4a09dc2ccc97b00c09"
     }
    ]
   },
@@ -293,13 +293,13 @@
    "parts": [
     {
      "packet": "research/qa/packets/global.md",
-     "chars": 28292,
-     "sha256": "b2f0a642b3f9ad6cd4f206827423649a47055b1c62caf9b8b1b1dbee2afc3207"
+     "chars": 28389,
+     "sha256": "9309174e1862cd088ed6d6e6b907db0ccbc0161d3f8f49d6944bcd30da342011"
     },
     {
      "packet": "research/qa/packets/global-incoming.md",
-     "chars": 91850,
-     "sha256": "32836aa5f952cbddd2896dcbd71c5fa137ce617ef326f33afc7b3fc839d94e8f"
+     "chars": 89262,
+     "sha256": "6ae3d46026065d5c9cb48ca53dc2bf0e2020ff868dafc4db3727e619adf41b22"
     }
    ]
   },
@@ -307,23 +307,23 @@
    "parts": [
     {
      "packet": "research/qa/packets/events.md",
-     "chars": 113574,
-     "sha256": "52622da8501eccdb50ead4c17065b2bc094c175149ed2fe9f4a3e4aeb0493040"
+     "chars": 108202,
+     "sha256": "b5ad80be3850c3b47d782d8ab600d463664cb34627cceadb208c2612728d29a9"
     },
     {
      "packet": "research/qa/packets/ties-cast.md",
-     "chars": 279001,
-     "sha256": "630f93be370b7175b32261d8545f6825934f7fcc77276e4ad1505118d515e446"
+     "chars": 276866,
+     "sha256": "254a0349fc6ff8dfd5dfec6976977d3d353110771d5f364aa9b638ba3aa70d65"
     },
     {
      "packet": "research/qa/packets/ties-external.md",
-     "chars": 67308,
-     "sha256": "9f710bbc9f8aaed91af9f5412434b946020c5629e4e186962d9f6e6dc6d73e9d"
+     "chars": 67643,
+     "sha256": "2bd622ea48ffeb71068be48cbf8587e59e4face4d210ecd0fe22dab395d29f7d"
     },
     {
      "packet": "research/qa/packets/ties-groups.md",
-     "chars": 174970,
-     "sha256": "89d77536c7da42674b1ec7f1a641dbcdc74a8a6d7300a3f1b4c561ecb13f538f"
+     "chars": 174827,
+     "sha256": "61d792e2b8ff1a66d6145997e432e37565ac85b9dad20ddbb7767031802d60a5"
     }
    ]
   }

@@ -14,7 +14,7 @@ of breaking into laughter."
 - Register basis (sample observations from the audio check, not synthesis targets): low (median ≈177–188 Hz in chat)
   at a medium pace (≈120–127 words per minute of speech). [ASR K36]
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - Model `eleven_v4`. Stability **55%** (API `0.55`) (deadpan needs consistency; drop to 45% for horror scenes). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script

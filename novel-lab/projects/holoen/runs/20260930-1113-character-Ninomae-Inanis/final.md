@@ -82,8 +82,7 @@ provocations, and she takes on demanding stage work. [Observed I2 §Personality 
 8. When she draws for viewers, she treats it as learning alongside them, not lecturing. [Observed—published interview I18]
 9. When an interviewer asks a practical question, she may give an exaggerated answer first and then the
    real one ("Five and a half years!!"). [Observed—published interview I19]
-10. Kiara's account, as reported by the wiki: Ina is the first to message Kiara when Kiara is down.
-    [Observed I2 §Personality, secondary] A single reported anecdote, not a general rule; off the card.
+
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -237,9 +236,9 @@ Real lines first; Style demos after.
 | 2022-02 | Nintendo Direct "TOMORROW?!" reaction | [Observed I23] |
 | 2024 | MECONOPSIS and TEMARI; she discusses MECONOPSIS's conflict between duty and protecting others | [Official I1 music list] [Observed—published interview I7b] |
 | 2026-02-02 | First EP "re:VISION" | [Official I26] |
-| 2026-03-27/28 | "Drawn to Dawn" duo concert with Kiara (Los Angeles) | [Official I20, I21] |
+| 2026-03-27/28 PDT | "Drawn to Dawn" duo concert with Kiara (Los Angeles) | [Official I20, I21] |
 | 2026-06-04 | Serendipity interview and partnership with Kronii | [Official I7] |
-| 2026-01-06/07 | TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope (released; the wiki dates it 01-06 in its history and 01-07 in its discography) | [Observed—published interview I19] [Official I25] |
+| 2026-01-08 (digital release; zone unspecified) | Digital release of TAKO∞TAKOVER; lyrics by Mori Calliope. I19 discusses its deliberately unsettling takeover story. | [Observed—published interview I19] [Official I25; digital release: https://hololive.hololivepro.com/en/music/693/, checked 2026-10-03] |
 | 2026-09-07 | Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- | [Official I28] [Observed I10] |
 | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
 
@@ -252,8 +251,8 @@ fan or collab nicknames.
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Ouro Kronii | Serendipity partner (interview 2026-06-04; unit name "Octo'Clock" in a 2026-06-24 short, I30) | A pun duo; they share Korean; Ina: "I get to... keep Kronii... all to myself... hehe" | [Official I7] [Observed Kronii file K8 §Miscellaneous] |
-| Takanashi Kiara | Myth genmate ("TakoTori," fan term) | Duo concert 2026; Kiara encouraged her dance work; Kiara groans at her puns; Kiara once "fired" her over the chicken incident; the wiki reports Kiara saying Ina is the first to message her when she's down (secondary, off the card) | [Official I20] [Observed I2 §Personality; Kiara file T2 §KFP] |
-| Mori Calliope | Myth genmate | Favorite pun target ("Every freaking time, Ina."); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
+| Takanashi Kiara | Myth genmate ("TakoTori," fan term) | Duo concert 2026; Kiara encouraged her dance work; Kiara groans at her puns; Kiara once "fired" her over the chicken incident | [Official I20] [Observed I2 §Personality; Kiara file T2 §KFP] |
+| Mori Calliope | Myth genmate | Favorite pun target (Calli's exasperated reaction to Ina's puns); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
 | Watson Amelia (affiliate) | Myth genmate | Ina designed Bubba; the patient foil to Ame's salty gremlin; "Ame... Ame is British." | [Observed I2 §Personality, §Miscellaneous and §Quotes] |
 | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
 | Koseki Bijou | Advent member ("Wooden Shovel") | "Wooden shovel" greeting; Ina designed their Monster Hunter Wilds collab outfits; Bijou impersonates her | [Observed I2 §Miscellaneous; I14] [Observed—published interview I6] |
@@ -386,7 +385,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Ina delivers sanity checks on humanity. In her own public words, she wants to give her viewers a better day, make art and music, grow as a performer and give back through charity, and she loves groan-inducing wordplay.
 
 ## [SW] Relationships
-Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, credits Kiara's support for her confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at Dodger Stadium's hololive night (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put both on her Tomodachi Life island. Houshou Marine: UMISEA. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025). FUWAMOCO: "SHALLYS" with Cecilia on the same stage. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025). Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity. Hoshimachi Suisei: "BIBBIDIBA" (2024). Hakos Baelz: a K/DA "POP/STARS" cover with Moona Hoshinova and Ayunda Risu (2023), a stream art lesson (2024) and Ina's AmiAmi special (2025). Nekomata Okayu ("TakoNeko," a secondary pair name): "Kurukuru Cruise" (2025) and her 2025 New Year Game Festival team, with Nakiri Ayame. Yukihana Lamy: a Minecraft festival and "date"-billed collab (2021) and a "Pleides" guest (2024). Shishiro Botan: an "EVERMORE" guest (2025). Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025). AZKi: R.E.P.O. "JP & EN" (2025).
+Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, credits Kiara's support for her confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns (Calli's exasperated reaction to Ina's puns); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at Dodger Stadium's hololive night (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put both on her Tomodachi Life island. Houshou Marine: UMISEA. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025). FUWAMOCO: "SHALLYS" with Cecilia on the same stage. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025). Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity. Hoshimachi Suisei: "BIBBIDIBA" (2024). Hakos Baelz: a K/DA "POP/STARS" cover with Moona Hoshinova and Ayunda Risu (2023), a stream art lesson (2024) and Ina's AmiAmi special (2025). Nekomata Okayu ("TakoNeko," a secondary pair name): "Kurukuru Cruise" (2025) and her 2025 New Year Game Festival team, with Nakiri Ayame. Yukihana Lamy: a Minecraft festival and "date"-billed collab (2021) and a "Pleides" guest (2024). Shishiro Botan: an "EVERMORE" guest (2025). Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025). AZKi: R.E.P.O. "JP & EN" (2025).
 
 ## [SW] Secrets
 (none)
@@ -449,8 +448,7 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
   - Voice: the priestess voice, snort, quieter sincere lines and the "slowest among Myth" ranking left the
     card; "keep the crack for real surprises" (an instruction) removed; the caption "like" ratio replaced
     by the documented I29 count.
-  - Kiara's "first to message her" anecdote is attributed to the wiki and off the card; Motivation no
-    longer promises a pun in every exchange.
+  - Excluded material is removed; Motivation no longer promises a pun in every exchange.
   - UMISEA marked as an official 2021 unit (I31); unit and nickname statuses given one by one.
   - Boundary line added; mascot credit made specific (Takodachi, Bubba, Death Sensei; chibi Bloop art vs.
     the original Bloop design).
@@ -502,6 +500,8 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
 - **2026-10-02, GPT review of the batch-2 cards (run C, Marine/Noel/Lamy), cross-card lines:** the Lamy "date" keeps the stream's own framing ("date"-billed collab, archived metadata).
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** Marine is named via UMISEA (official roster) in the exported field, the admiration stays in the dossier with its interview source; Noel and Vivi added as Gartic Phone participants (archived metadata); Vivi's R.E.P.O. session on Ina's stream (2025-06-02, verified by Claude in the local archive) stays in the dossier.
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-017, VOICE-V1-018, VOICE-V1-019 (exact replacements; dispositions in research/qa/voice-delivery.md).
+- **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-DATE-001 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:CLAUDE-SCOPE-002, myth3:MYTH-DATE-002, myth3:MYTH-QUOTE-001, myth3:MYTH-SCOPE-001 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

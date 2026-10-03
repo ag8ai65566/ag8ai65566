@@ -35,7 +35,8 @@ Do not infer intimacy, sexuality, private closeness or hidden psychology.
 Preserve supported swearing, crude jokes and performed bits without sanitizing
 them or presenting them as real relationships. No lyrics, long transcripts,
 explicit sexual material, voice cloning or identifiable real-voice imitation.
-Original calibration lines must say “Style demonstration.”
+Original calibration lines must carry the project label “Style demo” (equivalent to
+“Style demonstration”; do not file findings that only change one label to the other).
 
 ## Ownership and scope
 

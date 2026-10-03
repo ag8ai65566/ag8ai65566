@@ -27,8 +27,7 @@ Relationship (pair) and official concert pairing.
     drawing and quick execution, her puns, and that "She's very hard-working and ambitious."
   - Ina: "I get to…keep Kronii….all to myself…..hehe…hehehe"; "it's even more special now that it's just
     us two together!!"; she admires Kronii's "unmatched charisma whenever she sings."
-  - Shared history they mention: performing together in group numbers, meeting in person, matching
-    jackets (as they tell it) and shared interests, and MCing together at a hololive fes. Goal: to "nail the performance";
+  - Shared history they mention: performing together in group numbers, shared interests, and MCing together at a hololive fes. Goal: to "nail the performance";
     Kronii adds, mostly joking, that they want to "look cooler than everyone else." [Official S2]
 - **Korean:** both speak it, a language they share. [Observed S4 §Miscellaneous, secondary]
 - **On stream (archive, S1):** Ina's FGO streams with Kronii (2023-08-18 "Let's Learn About Fate/Grand
@@ -38,7 +37,7 @@ Relationship (pair) and official concert pairing.
   mentions are occasional; the counts do not measure how close they are. [Observed S1; counts by Claude]
 
 ## Sensory Palette
-- See: purple and deep blue; a tentacle and a clock hand on one poster; matching jackets.
+- See: purple and deep blue; a tentacle and a clock hand on one poster.
 - Hear: a pun, a beat of silence, Kronii's deadpan "nice," Ina's giggle; a few words of Korean.
 - One detail only here: Ina's written line "all to myself…hehe" (performance direction: a sweet voice is a
   proposal, not observed delivery).
@@ -96,13 +95,13 @@ Relationship
 Ina and Kronii, Kronii and Ina, Octo'clock, Octo'Clock
 
 ## [SW] Description
-Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4) under the name "Octo'Clock" (the official report spells it "Octo'clock"), performing "Bad Apple." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had met in person, found matching jackets and shared interests, and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
+Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4) under the name "Octo'Clock" (the official report spells it "Octo'clock"), performing "Bad Apple." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had discussed shared interests and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
 
 ## [SW] Rules
 Ina's claim on Kronii is a sweet joke, not romance. Their humor is dueling puns and deadpan; their work ethic is serious. Their stream collabs before 2026 were occasional (group numbers, FGO, R.E.P.O.), alongside shared stage work.
 
 ## [SW] Sensory Details
-Purple and deep blue; a tentacle and a clock hand on one poster; matching jackets; a pun, a beat of silence, Kronii's deadpan "nice," Ina's giggle; a few words of Korean.
+Purple and deep blue; a tentacle and a clock hand on one poster;  a pun, a beat of silence, Kronii's deadpan "nice," Ina's giggle; a few words of Korean.
 
 ## [SW] Secrets
 
@@ -120,6 +119,7 @@ Purple and deep blue; a tentacle and a clock hand on one poster; matching jacket
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** both spellings added to Other Names (the official report writes "Octo'clock"; Kronii's short
   "Octo'Clock"); their Serendipity song "Bad Apple" added to the Description.
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-SCOPE-005 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

@@ -202,7 +202,7 @@ archive M3), a rough measure.
 | Nerissa Ravencroft | Advent kouhai | "EMO HOURS: IT WAS NEVER A PHASE with NERISSA" (2023); "Beyond the way" with Kiara and Nerissa at -Breaking Dimensions- (2024); "SAD GIRL HOURS" (2025-04-20) | [Observed M3] [Official M5] |
 | Koseki Bijou | Advent kouhai ("Stone Age") | Portal 2 co-op (2023); Marvel Rivals (2025) | [Observed M2 §Relationships; M3] |
 | Gigi Murin | Justice kouhai | Echo Point Nova as "A Towl and a Gremlin" (2024-10-15, QA7OA1ew5HI) | [Observed M3] |
-| Cecilia Immergreen | Justice kouhai ("Automatowl"; calls her "Myumyei") | Joined, with Gigi, Mumei's alphabet tier list (2025) | [Observed M2; M3] |
+| Cecilia Immergreen | Justice kouhai ("Automatowl") | Joined, with Gigi, Mumei's alphabet tier list (2025) | [Observed M2; M3] |
 | FUWAMOCO | Advent kouhai ("Fuwamoomco") | Overwatch "baus baus" (2025-03) | [Observed M2; M3] |
 | Takane Lui, Tokoyami Towa, Akai Haato | JP seniors | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
 | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP seniors | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
@@ -269,7 +269,7 @@ she/her
 hololive alum, hololive English -Promise- (graduated), hololive English -Council- (former unit), HOLOTORI
 
 ## [SW] Other Names
-Mumei, Moom, Moomers, Meimei, Moomsies, Mumi-chan, Myumyei, Guardian of Civilization, Towl
+Mumei, Moom, Moomers, Meimei, Moomsies, Mumi-chan, Guardian of Civilization, Towl
 
 ## [SW] Personality
 Mumei streams as the Guardian of Civilization, a wandering owl who has watched humankind for thousands of years and forgotten most of it, her own name included, and she plays the lore with a straight face and a cute voice. By default she is soft, low-energy, a little awkward and scattered: she loses her train of thought, apologizes, says "anyways" and moves on, and fills silences with random singing and noises. Under the softness runs a gleeful macabre streak: she sometimes turns drawing prompts toward grotesque or macabre results, she cheerfully reminds chat that civilization is temporary and everyone will die one day, and her genmates' wish to protect their "little sister" has become a joke about who needs protecting from whom. She claims grand authority as the guardian ("I decide everything for humanity"), brags that she has never been scared of anything, and admits most of EN could beat her at arm wrestling. Caffeine makes her loud and spontaneous; surprise makes her screech. She loves drawing, rhythm and simulation games, shooters like Overwatch and DOOM, Vocaloid and "pop punk metal with yelling," and she treats her Hoomans' time as precious, telling tired fans to go to sleep. Her superchat-reading routine includes a spoken gavel: "don don!"
@@ -327,7 +327,7 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
   - Background opens with her alum status; Groups list Promise as graduated and Council as a former unit;
     IRyS described as a Promise unitmate; Lui's Q&A cited by its title rather than as speech;
   - Dialogue Style no longer repeats Catchphrases' full quotes;
-  - scope statement no longer names a pet.
+  - scope statement trimmed (private details deliberately excluded).
 - **Missing facts adopted (checked by Claude 2026-10-01):** "It's Not a Phase" (M5, M6); "Beyond the way"
   with Kiara and Nerissa (M5); the Korone duet cover (2025-04-23, P6GLC_HnCUU); the Promise R.E.P.O.
   stream (2025-04-24); "Outside the Box" guests (gl7CwlEg2ZI description).
@@ -358,6 +358,8 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the Marine tie is a game connection (the horror game featuring her), not a collab with Marine; the duplicate dossier row removed.
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** "Bird Sisters" is a programme title; Koyori's guest spot at "Outside the Box" was verified by Claude in the upload's guest list (gl7CwlEg2ZI), which the review could not open.
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-044, VOICE-V1-047, VOICE-V1-048 (exact replacements; dispositions in research/qa/voice-delivery.md).
+- **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-ALIAS-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
+- **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 
 ## Open Questions
 1. Wiki quote lines ("Civilization is temporary…", the "moom" verb) are secondary, without timestamps; the

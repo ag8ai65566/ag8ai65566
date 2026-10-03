@@ -7,3 +7,4 @@
 - 2026-10-01 21:08 作者裁決收錄 final.md（sha256 01f1463a7fd0）：Author decision (2026-10-01): CONSULT-P2-001 (Myth 6th-anniversary live marked as announced, not verified as held) and break notes generalized per the author's rule.
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 996f74728666）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 727f1bd3bcb3）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
+- 2026-10-03 23:48 作者裁決收錄 final.md（sha256 7bd2c4b94f6d）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)

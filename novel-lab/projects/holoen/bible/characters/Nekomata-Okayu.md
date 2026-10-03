@@ -284,10 +284,11 @@ Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; the
   metadata); "never harsh" and "flirty teasing rather than swearing" replaced by the review's wording;
   relationship-specific delivery is provisional and a purr is a performance choice; the kana reading guide
   replaces IPA; standalone "Nekomata" removed from Other Names. Added from the official profiles: Marine's
-  nickname "Okanyan" and the 「僕でよくな～い？」 tease to Shion (her pets on the same page are left out).
+  nickname "Okanyan" and the 「僕でよくな～い？」 tease to Shion (private details on the same page are left out).
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi), reciprocal ties:** Koyori (puzzle collab), La+ ("Dorobo Kensetsu") and Lui ("Shaccho") added (sources in the new member files).
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** "Shaccho" removed (first-model only, direction unknown); the Koyori puzzle collab and Lui's watch-alongs cite their uploads; "Dorobo Kensetsu" stays labelled secondary.
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-010 (sheet: VOICE-V3-011, VOICE-V3-012); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 
 ## Open Questions
 1. The OkaGigi festival banter rests on secondary clip metadata; its dialogue is not quoted.

@@ -12,7 +12,7 @@ when chatting, sing-song and stretched when she calls herself cute, crisp and cl
 - A bright laugh is a provisional performance choice, not a listening observation.
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (polished by default, playful swings for the signature line).
   Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[quick, enthusiastic]` or `[focused, clipped]`; v4 has no speed

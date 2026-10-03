@@ -40,7 +40,7 @@ Faction / organization (and workplace).
   Angeles), hololive fes and SUPER EXPO (7th fes, 2026-03-06–08), holoMeet events. [Observed S2]
 - **Seniority:** senpai and kouhai describe relative seniority (who debuted first), not language or
   nationality; forms of address and levels of formality vary by relationship. Many EN members are openly
-  starstruck by particular senpai (Calli by Suisei, Kiara by Pekora). [Observed character files]
+  starstruck by particular senpai (Kiara by Pekora). [Observed character files]
 - **The company in stories:** "management," "staff" and "my manager" appear as faceless helpers who
   schedule, check and support. No invented staff names, business secrets, scandals or disputes.
   [Adaptation; COVER Derivative Works Guidelines]
@@ -160,6 +160,7 @@ A "Starting soon" screen; a superchat chime; a concert LED wall behind a 3D avat
   transcend regional and group boundaries and bring everything together as one 'hololive'"); the wiki stays
   as secondary detail.
 - **2026-10-02, scope wording (Claude):** the senpai/kouhai definition no longer names language or nationality, even in the negative (scope screening V14).
+- **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-TIE-002 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None. The baseline date 2026-09-30 is fixed by the author.)

@@ -172,9 +172,9 @@ the wiki as units or pairings; -Promise- is official.
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Hakos Baelz | Promise genmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
+| Hakos Baelz | Promise unitmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
 | Mori Calliope | First collab partner (2021) | "MorIRyS"; CHADCast podcast trio with Bae | [Observed R2 §2021, units] |
-| Ouro Kronii | Promise genmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." | [Observed R2 §Quotes] |
+| Ouro Kronii | Promise unitmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." | [Observed R2 §Quotes] |
 | Koseki Bijou | Frequent 2025–2026 co-op partner | Horror co-ops (Dead Space 3, Resident Evil 6 "w/ Biboo," 2026) | [Observed R3 titles] |
 | Tsukumo Sana (graduated) | Council-era friend | Co-designed Bloom & Gloom; Sana designed the "Beeg Smol" models | [Observed R2] |
 | Nanashi Mumei, Ceres Fauna (graduated) | Promise unitmates | Early Council collabs (Jump King, Minecraft) | [Observed R2; R3] |
@@ -312,7 +312,7 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-02:** "CHADCast" added to Groups (official music entry "Here Comes the CHADCast"; Calli's and Bae's Groups already list it).
 - **2026-10-02, relationship web (tools/web_check.py):** Kiara added to Relationships, mirroring the tie already on the other card (same evidence there).
 - **2026-10-02, cast expansion (author: add Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu):** Suisei and AZKi added (Star Flower, official music page 249; "High Tide," official -Breaking Dimensions- report).
-- **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the interview is dated (2026-06-05, before the concert) and its two descriptions attributed to their speakers ("a can of worms" is IRyS's; "Complicated XD" Bae's); the bento origin carries a fan-reference qualifier; the "Monopoly" euphemism stays only in the dossier (secondary, R2); the trip framing ("Gisneyland") becomes "a 2023 off-collab."
+- **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** the interview is dated (2026-06-05, before the concert) and its two descriptions attributed to their speakers ("a can of worms" is IRyS's; "Complicated XD" Bae's); the bento origin carries a fan-reference qualifier; the "Monopoly" euphemism stays only in the dossier (secondary, R2); an off-collab is described only as "a 2023 off-collab" (private details deliberately excluded).
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi):** Botan, Lui, Chloe and Koyori added (Overwatch 2, Left 4 Dead 2, Splatoon 3, Among Us). (sources: the new member files, "JP Senpai Pairs 2" and "holoX".)
 - **2026-10-02, GPT review of the JP cast additions (run B):** "High Tide" lineup corrected to the four singers in the official -Breaking Dimensions- report (Moona restored).
 - **2026-10-02, relationship-web coverage (Claude):** Okayu and Ayame (Okayu's 2025 festival team) named back; the Minecraft bento origin of BaeRyS stays in the timeline row; clauses tightened for length.
@@ -320,6 +320,8 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the Splatoon 3 and Among Us rosters are split (Chloe was not in Splatoon); Among Us was verified by Claude in the local archive metadata (VwqdwQx5cog).
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-035, VOICE-V1-037, VOICE-V1-039 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-03, workflow research W1 (20261002-1715-research-workflow-SW-EL, GPT xhigh), merged by Claude:** Bae partner tag rewritten as [mock-bickering] for an explicitly scripted public-persona joke, so every card tag is a performable direction the scene converter accepts from the sheet palette.
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-TIE-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

@@ -1,1 +1,2 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 12e7d39a7dbb）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
+- 2026-10-03 23:48 作者裁決收錄 final.md（sha256 1febc4ccc5d3）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)

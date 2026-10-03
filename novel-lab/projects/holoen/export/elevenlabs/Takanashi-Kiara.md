@@ -13,7 +13,7 @@ laughter, warm when sincere."
 - Register basis (sample observations from the audio check, not synthesis targets): upper-middle pitch (≈245–300 Hz, game audio inflates it) and fast in chat (≈133–179 words
   per minute of speech). [ASR T23] No regional English accent is prescribed. German output and code-switching must be tested with the selected original voice; v4's documented cross-language behavior does not establish this member's language background.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **35%** (API `0.35`) (big swings). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script

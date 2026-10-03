@@ -10,7 +10,7 @@ rambling; brighter and quicker when excited; a playful little roar; mock-stern f
 complaints when a game goes wrong."
 - Register basis: qualitative; see `research/audio-check/raora.md`. Do not invent grammar errors or an accent caricature; no regional accent is assigned pending an in-scope listening check.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **50%** (API `0.50`) (warm and even). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rambling, warm]` or `[bubbly, quick]`; v4 has no speed slider.
 

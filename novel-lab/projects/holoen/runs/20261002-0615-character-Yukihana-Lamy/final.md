@@ -234,7 +234,7 @@ Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describ
   research/audio-check/lamy.md).
 - **GPT one-round claim check (2026-10-02, xhigh, live search; run C in runs/20261002-0615-character-Houshou-Marine/gpt-free.md),
   merged by Claude:**
-  - Applied: the family/home lore is removed consistently (concept, Personality, Motivation, appearance), keeping
+  - Applied: out-of-scope lore is removed consistently (concept, Personality, Motivation, appearance), keeping
     the official snow elf, Daifuku and "serious manner, sheltered side"; the "most seiso" ranking removed; the two
     approved Japanese lines are exported in Dialogue Style and Catchphrases instead of English quotation marks;
     "every evening chat," "so good!" as a quote, "pure and all-loving," the universal Botan horror reaction and
@@ -246,6 +246,7 @@ Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describ
     Chloe) is applied; Nene and Polka get their own entries; 雪花ラミィ added; "Yoppara Music !" and "Snowlight
     Stories" carry official digital dates; the Yukiyozuki sake is named with its brewery (no quantities).
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** no finding (card and sheet attested OK); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 
 ## Open Questions
 1. Resolved: both are kept, "Lamyoohoo!" as the official greeting and "Konlamy desu" as a labelled secondary

@@ -6,3 +6,5 @@
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 ebb238c5b4ff）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
 - 2026-10-02 07:36 作者裁決收錄 final.md（sha256 4a199ef93413）：Author decision (2026-10-02): GPT review of the JP cast additions (run B) merged by Claude (Ina–Okayu wording; TakoNeko alias moved to JP Senpai Pairs)
 - 2026-10-02 07:50 作者裁決收錄 final.md（sha256 dea16db64500）：Author decision (2026-10-02): scope wording (senpai/kouhai definition without language or nationality terms)
+- 2026-10-03 23:48 作者裁決收錄 final.md（sha256 5b11df10197d）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
+- 2026-10-03 23:49 作者裁決收錄 final.md（sha256 465b1f43d96f）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items

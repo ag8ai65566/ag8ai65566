@@ -14,7 +14,7 @@ a playful purr when teasing, a laugh that climbs high."
 - This is an original voice-design choice. Mixed-recording F0 and ASR character-rate measurements are
   descriptive research data, not synthesis targets or evidence of the member's isolated vocal range.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **50%** (API `0.50`) (relaxed and steady). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[relaxed, warm]` or `[playful]`; v4 has no speed slider.
 

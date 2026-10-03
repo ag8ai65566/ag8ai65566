@@ -172,11 +172,12 @@ A tiny horned founder with long silver hair, oversized sleeves and shackles; a p
   Names (separate groups; 秘密結社holoX added); La+'s "loud protests / treated like a child" replaced by the
   official lore and her archived introduction; collaboration examples introduced as archived uploads and KoMeHa
   labelled secondary; "Bird Sisters" as a programme title; Koyori's FUWAMOKOYO guest spot separated from the
-  Lethal Company with Fubuki; "sleepy" removed (sleep is out of scope); NePoX rosters dated (eight in 2026) with
+  Lethal Company with Fubuki; an out-of-scope word removed; NePoX rosters dated (eight in 2026) with
   the 2026 joint song; the affiliate rule rewritten (no memories-only restriction; open question resolved); the
   altered interview quotation replaced by a paraphrase (also on Lui's card); Sensory Details rebuilt from the
   official key art Claude checked (2026-10-03) and the official Japanese greetings, without the secondary
   frogmouth secretary or "Yes My Dark!".
+- **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 
 ## Open Questions
 1. Resolved: after 2025-01-26 Chloe is a hololive affiliate rather than part of holoX's four-member performing

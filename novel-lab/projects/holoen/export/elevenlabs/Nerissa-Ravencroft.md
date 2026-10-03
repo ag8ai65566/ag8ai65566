@@ -13,7 +13,7 @@ swings when telling a story."
   pace (≈159 words per minute of speech). [ASR N20]
 - Not a high, cutesy anime voice. Her singing voice is the persona's centerpiece; this sheet covers speech.
 
-## 2. Settings (untested audition choices; verify endpoint behavior)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) (she swings between deadpan, coaxing and mock outrage). Similarity **75%** (API `0.75`).
 
 ## 3. Write these habits into the script
