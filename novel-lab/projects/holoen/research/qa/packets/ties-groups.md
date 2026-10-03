@@ -1,6 +1,6 @@
 # Bridge packet: ties (claims naming four or more people)
 
-Snapshot: git 82a6b20. Each listed once with the people it names.
+Snapshot: git 92a7220. Each listed once with the people it names.
 
 - `bible/characters/AZKi.md › Background Timeline` [IRyS, Ninomae Ina'nis, Ouro Kronii, Shiranui Flare, Usada Pekora]: | 2025-07-19 | R.E.P.O. "JP & EN" collab with Shiranui Flare, Usada Pekora, Ina, IRyS and Kronii (the description's lineup) | [AZ4 _gZdFTluxtc] |
 - `bible/characters/AZKi.md › Relationship Map` [Elizabeth Rose Bloodflame, IRyS, Ninomae Ina'nis, Ouro Kronii]: | Ninomae Ina'nis, Ouro Kronii, IRyS | — | R.E.P.O. "JP & EN" (2025-07-19); Elizabeth was not in it | [AZ4 _gZdFTluxtc] |

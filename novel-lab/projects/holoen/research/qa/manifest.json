@@ -1,6 +1,6 @@
 {
- "built_at": "2026-10-03T18:03Z",
- "commit": "82a6b20",
+ "built_at": "2026-10-03T22:28Z",
+ "commit": "92a7220",
  "baseline": "2026-09-30",
  "files": {
   "bible/characters/AZKi.md": "c20b3db68385dff12143e870b86804d9b9b5d04f8c5cb64b4357b2c35d8236a2",
@@ -69,12 +69,12 @@
     {
      "packet": "research/qa/packets/myth1.md",
      "chars": 11053,
-     "sha256": "90f12f15d604567d7c96c02c724e0853566c90f3f2ab814c5cf738d6149c8343"
+     "sha256": "751e60438b5145ff754809b6afd40e292c7cc72ef582bf00bda6a9c6df4d32fb"
     },
     {
      "packet": "research/qa/packets/myth1-incoming.md",
      "chars": 95285,
-     "sha256": "de65a4ec44f1235573763e3667d346935f9d846b416db830d28edbefdc62a024"
+     "sha256": "4ee72f33330155b444d8c25c29f2e77489a622360aa8bab2ba4fbb223326e6ae"
     }
    ]
   },
@@ -87,12 +87,12 @@
     {
      "packet": "research/qa/packets/myth3.md",
      "chars": 9056,
-     "sha256": "06e24b08a5875a0a78fc39927e0405df6b7d30e779ba68962d584f8b16404bcb"
+     "sha256": "e5ddea52fd806cfe25eb6c1d1163aca424013725f6380382137b8a85f9fda576"
     },
     {
      "packet": "research/qa/packets/myth3-incoming.md",
      "chars": 84627,
-     "sha256": "4fa32b39b13c8d2966b7738cf513756d0338c0c751a283db8ebf9e72e6b8fa5d"
+     "sha256": "0aab345cee0caf542c7a201531eda0f5046849163372bb11f87207057e26c58f"
     }
    ]
   },
@@ -105,12 +105,12 @@
     {
      "packet": "research/qa/packets/myth4.md",
      "chars": 8424,
-     "sha256": "aac95662648df2de6a8ecbeb09d68e037f6050fcfe1973e9774c487f363d6081"
+     "sha256": "f97472a591f4f028c6ffb3ab187eb029ab6124d63f140ce32066add07095d961"
     },
     {
      "packet": "research/qa/packets/myth4-incoming.md",
      "chars": 68908,
-     "sha256": "821bc67e19b83e05f63b3d5ffcdd5023ac10e6db54f7a8a50ec96f2735b98e2a"
+     "sha256": "53c8506bf530121768986891a894aa85b59f143163b9dc157bdba83d4879dfad"
     }
    ]
   },
@@ -126,12 +126,12 @@
     {
      "packet": "research/qa/packets/myth2.md",
      "chars": 19100,
-     "sha256": "41263264a9d0b9c7e442c0af2febe19eb86d35505663f223140861e5d587e604"
+     "sha256": "bde1bfe00a65780fb88919dedc19e01177c1419cbb71cf8a04c1e43767f7a15d"
     },
     {
      "packet": "research/qa/packets/myth2-incoming.md",
      "chars": 69598,
-     "sha256": "988f85440342b4897e8ea905150fc630f2466d0e2b62233d5b2e0c82b2a202ef"
+     "sha256": "d751a286aa8b67628571888abcdd4efd5014c78afaa34d770a4c39196fb34311"
     }
    ]
   },
@@ -154,12 +154,12 @@
     {
      "packet": "research/qa/packets/promise.md",
      "chars": 47214,
-     "sha256": "8b643f8a160ef436329792b6e9f816a04d6e30701e8bbe7c97b3190e3f1a4e50"
+     "sha256": "22be2cb48058fd10e3790862e98d3837df730f89bab631aca63f104249b5e88f"
     },
     {
      "packet": "research/qa/packets/promise-incoming.md",
      "chars": 100796,
-     "sha256": "5a4b0af70bdecff83aeaa76acb7dfe5667d35a85a82e4d1a6c1e015c32fc35aa"
+     "sha256": "00ad3c3facb85d44a44844e226744ce852997ba6ce768fdaa47a5ba2fcaeb521"
     }
    ]
   },
@@ -178,12 +178,12 @@
     {
      "packet": "research/qa/packets/advent.md",
      "chars": 35201,
-     "sha256": "fbd8e2b43b5d7b99965cc225942eb40e6d86600dfc662fe149def95a2937447f"
+     "sha256": "4d2186e2f2aa228f794278b78f12d3f3b985a0ac5bc31b137576eea579ac4d7b"
     },
     {
      "packet": "research/qa/packets/advent-incoming.md",
      "chars": 100978,
-     "sha256": "078a75c9a5464563d4d9927402f52b45b1f7a9c97a3c90c47474bd2654079a51"
+     "sha256": "6a8d488d3248e9cf13b2af68c8941c4093298ed1163930abbd520cc16e70e73b"
     }
    ]
   },
@@ -200,12 +200,12 @@
     {
      "packet": "research/qa/packets/justice.md",
      "chars": 32079,
-     "sha256": "46df4d49445669fbbb3997758918d5c64ab9129f799419a3a62610e9e845242c"
+     "sha256": "3f627231a31e592381991ce953b72c4a3005b16352461937263265220aed6837"
     },
     {
      "packet": "research/qa/packets/justice-incoming.md",
      "chars": 60567,
-     "sha256": "2b2cd7f29898fb2866654de163593e723e44fac3ea87513def233c6885d5c4fe"
+     "sha256": "746dd926d6d73174b80daefcb1be8de3117387e086bcbcc788a167a46fe52ad9"
     }
    ]
   },
@@ -221,12 +221,12 @@
     {
      "packet": "research/qa/packets/jp.md",
      "chars": 25802,
-     "sha256": "23661079431982a6471ccac342255f48af89e01c3b8ee6f58c1b5fb2a5163c33"
+     "sha256": "a10cb713bbbae547c4e738eb8e86955acf6e5d6789ec35c46a532852f955035c"
     },
     {
      "packet": "research/qa/packets/jp-incoming.md",
      "chars": 32326,
-     "sha256": "06b85417df48fdebc2fd161cd3ebf15cba7df0fe721b56f029b3a0bddd8f97c4"
+     "sha256": "b7c7f6c8534ebb9d80c78a9a57aaf5a4394db3b4fce19d08ab94094f5b0fd066"
     }
    ]
   },
@@ -243,7 +243,7 @@
     {
      "packet": "research/qa/packets/jp2.md",
      "chars": 50707,
-     "sha256": "7214604236da556dcff6a89fe754145c38ab566da86631586ad3c1c72d133381"
+     "sha256": "e145443848f59572b5737e06fe42f4a0e895374e34cf4576bc9879ed6845d2bc"
     }
    ]
   },
@@ -253,7 +253,7 @@
     {
      "packet": "research/qa/packets/holox.md",
      "chars": 460,
-     "sha256": "7e809f39bc88be14ae8cfcb6c15cc5afe647adb7b0386a8ab5c7c0e3d6a48832"
+     "sha256": "9acadfe4809bfafc95c26e87f97737fdbbe429e67ef1664d55d44561719b3d1e"
     }
    ]
   },
@@ -271,12 +271,12 @@
     {
      "packet": "research/qa/packets/global.md",
      "chars": 28292,
-     "sha256": "3514fc89d8b8c8177793f407c806a822f97b8d7c1c6004aedc352a65b3530d19"
+     "sha256": "16bce05b3cf8f446a811b5da80abe93081bfadfb3329415c90e2bbf3ee56f000"
     },
     {
      "packet": "research/qa/packets/global-incoming.md",
      "chars": 83793,
-     "sha256": "61134072a314511079e002f4a75090ec915f3fff7d0281a813d06ae2708008d5"
+     "sha256": "f411bfdd7d74f76ef3f96e4d36f94d7d6f59e05161029a7bdc9632f23015754f"
     }
    ]
   },
@@ -285,22 +285,22 @@
     {
      "packet": "research/qa/packets/events.md",
      "chars": 101823,
-     "sha256": "3d56d9caa8f4ba298878a199eef7e10a49d3fe3eed7af20f2b6b36d7c7a71586"
+     "sha256": "783f224b1da7207ef706f2325a6ad1eeef0069182d6db8b8a5c6d0a0a1e5c2a0"
     },
     {
      "packet": "research/qa/packets/ties-cast.md",
      "chars": 262458,
-     "sha256": "39dda6c6b95b7bbcc9c26e8312dc4a7d659f4f0639c3c8ebafd607e19f836da5"
+     "sha256": "23e4254fd5e7a893c6cddf8e2ae69c7930930b4c1da503e08275439dfd908387"
     },
     {
      "packet": "research/qa/packets/ties-external.md",
      "chars": 63431,
-     "sha256": "597f754602c39f1da3c05d154d97a60f37c54e950b12147578b044abd851f9b6"
+     "sha256": "e2cb23aa1eba232c9c6b0712007b7365f352955672749c1bee87c7c2354379ae"
     },
     {
      "packet": "research/qa/packets/ties-groups.md",
      "chars": 147074,
-     "sha256": "ab811c430eef717104696afe36c7b60a2b7fd3fdfa7f4b439ec6fc4e314f483e"
+     "sha256": "6e5b62932afb3bb0717baf48642b85afc7e6d8130bfdb631b5362b48e83f144c"
     }
    ]
   }

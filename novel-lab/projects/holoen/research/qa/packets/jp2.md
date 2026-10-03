@@ -1,6 +1,6 @@
 # Audit packet: jp2
 
-Snapshot: git 82a6b20. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 92a7220. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
@@ -127,7 +127,7 @@ Owned files (sha256): `bible/characters/Houshou-Marine.md` b611ca66c501; `bible/
 - Calli's HOLOYOI: #02 Noel and Flare (2023-04-20); #03 Subaru and Botan (2023-05-18).
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names:  Senpai Pairs 2|Noel and Calliope|Vivi and FUWAMOCO|Marine and Kiara|Houshou Marine|Botan and IRyS|Shirogane Noel|Shishiro Botan|Yukihana Lamy|Kikirara Vivi|Lamy and Ina|Noel-danchou|Noel Deluxe|Lamy-mama|Shishiron|Shishiro|綺々羅々ヴィヴィ|Danchou|Maririn|Senchou|Senchō|Danchō|Marine|Sencho|獅白ぼたん|Botan|白銀ノエル|宝鐘マリン|雪花ラミィ|Noel|Vivi|Wamy|Lamy)(
+Matched names: el and Calliope|JP Senpai Pairs 2|Vivi and FUWAMOCO|Marine and Kiara|Shishiro Botan|Houshou Marine|Botan and IRyS|Shirogane Noel|Yukihana Lamy|Kikirara Vivi|Lamy and Ina|Noel-danchou|Noel Deluxe|Lamy-mama|Shishiron|Shishiro|綺々羅々ヴィヴィ|Danchou|Maririn|Senchou|Senchō|Sencho|Danchō|Marine|雪花ラミィ|獅白ぼたん|白銀ノエル|Botan|宝鐘マリン|Noel|Lamy|Wamy|Vivi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy"

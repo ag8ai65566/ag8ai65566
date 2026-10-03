@@ -460,7 +460,7 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 ```json
 {
  "baseline": "2026-09-30",
- "commit": "82a6b20",
+ "commit": "92a7220",
  "cast": [
   {
    "name": "Cecilia Immergreen",
@@ -652,7 +652,7 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 
 # Audit packet: justice
 
-Snapshot: git 82a6b20. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 92a7220. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
@@ -814,10 +814,10 @@ Incoming claims continue in `justice-incoming.md`.
 
 # Audit packet: justice (incoming claims)
 
-Snapshot: git 82a6b20.
+Snapshot: git 92a7220.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|Grem Reaper|holoJustice|Autofister|TimeChaser|Immerhater|Gigi Murin|Bloodraven|Erby Berby|Da Fister|Elizabeth|Gi Murin|Raviolin|Justice|Cecilia|G Pain|HoloEU|GeeGee|Lizzie|Raora|B.F.F|RPGG|LYRA|Cece|Rara|Gigi|Ceci|CCGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|holoJustice|Grem Reaper|Erby Berby|TimeChaser|Immerhater|Autofister|Bloodraven|Gigi Murin|Da Fister|Elizabeth|Gi Murin|Raviolin|Cecilia|Justice|HoloEU|Lizzie|G Pain|GeeGee|Raora|B.F.F|Cece|LYRA|Rara|CCGG|Ceci|Gigi|RPGG|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
