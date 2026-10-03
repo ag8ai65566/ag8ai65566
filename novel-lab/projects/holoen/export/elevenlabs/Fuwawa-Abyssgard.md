@@ -5,8 +5,8 @@
 > COVER Derivative Works Guidelines). Fuwawa is active at the 2026 baseline; she shares the FUWAMOCO channel
 > with Mococo (world card "FUWAMOCO"). Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, neutral American accent, very high, soft, sweet, fluffy voice; gentle
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young woman, English-speaking, very high, soft, sweet, fluffy voice; gentle
 and a little airy; unhurried and chatty; bounces up, bouncy and boisterous, when excited; turns mock-stern
 when teasing."
 - Register basis: qualitative only. Her solo-stream numbers include game audio and are kept in
@@ -44,10 +44,9 @@ With people (provisional): Mococo `[doting, teasing]`; Nerissa `[playful]` ("New
 
 ## 5. Signature sounds
 - `[cheerful] bau bau!` (spoken).
-- `[sneezes]` (tag only; don't also spell it out).
 
 ## 6. Pronunciation (provisional; test)
-- Fuwawa `/fuˈwɑwɑ/` · Abyssgard `/ˈæbɪsɡɑɹd/` ("AB-iss-gard") · bau `/baʊ/` · Ruffians `/ˈɹʌfiənz/`; she
+- Fuwawa `フワワ (provisional kana guide; untested)` · Abyssgard `/ˈæbɪsɡɑɹd/` ("AB-iss-gard") · bau `/baʊ/` · Ruffians `/ˈɹʌfiənz/`; she
   sometimes softens the R ("Wuffians"), so write "Wuffians" only where you want it.
 
 ## 7. Don't
@@ -57,12 +56,12 @@ With people (provisional): Mococo `[doting, teasing]`; Nerissa `[playful]` ("New
 
 ## 8. Example
 ```
-[bright, sing-song] Hello hello bau bau! I'm not a chihuahua, I'm Fuwawa!
+[bright, sing-song] I'm not a chihuahua, I'm Fuwawa!
 [whispering, polite] Hello, ma'am. Nice day, ma'am.
 [nervous, giggly] Should I run? Is running suspicious?
 [warm, encouraging] So go do that, go to the gym and be the main character of the gym.
 [warm, cheerful] It was a lot of fun!
 [playful] Bau bau!
 ```
-(Line 1 combines the twins' opening and her introduction as the wiki transcribes them; the closing "Bau bau!" line
+(Line 1 uses the wiki's secondary transcription of her introduction; it is not audio-verified; the closing "Bau bau!" line
 is a style demo; the rest are her lines, quoted only where both transcripts agree.)

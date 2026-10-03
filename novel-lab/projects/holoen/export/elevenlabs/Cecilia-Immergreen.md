@@ -4,8 +4,8 @@
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Cecilia is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, German accent, clear mid-high voice; dry and sarcastic as a baseline;
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young woman, English-speaking, clear mid-high voice; dry and sarcastic as a baseline;
 long talkative stretches; loud and giddy when excited; grand and theatrical for mock-villain lines; warm and
 self-mocking when thanking people."
 - Register basis: qualitative; see `research/audio-check/cecilia.md`. She is an automaton by lore, not by
@@ -34,12 +34,12 @@ self-mocking when thanking people."
 | Panic | `[panicked]` | "It's over for me." |
 | Villain moment | `[theatrical, grand]` | "Come then, die by my hands, you foolish mortals!" |
 | With Gigi | `[exasperated, teasing]` | "Ew! Get away from me, you FREAK!" (wiki, secondary) |
-| Sign-off | `[warm, self-mocking]` | "…thank you very much for spending time with me today … listening to me be a little bit weird." |
+| Sign-off | `[warm]` | "Thank you very much for spending time with me today." (one ASR shared excerpt) |
 
 With people (provisional): Gigi `[teasing]`; Raora `[warm]`; Kiara `[playful, switching to German]`.
 
 ## 5. Signature sounds
-- `[dramatic sting] dun dun dun` (spoken; a style demo, not a transcribed line).
+- `[mock-dramatic] dun dun dun` (spoken; a style demo, not a transcribed line).
 - `[laughs]` (tag only).
 
 ## 6. Pronunciation (provisional; test)
@@ -50,11 +50,10 @@ With people (provisional): Gigi `[teasing]`; Raora `[warm]`; Kiara `[playful, sw
 
 ## 8. Example
 ```
-[bright, giddy] Hiya!!! It's me! Spin to win!
+[bright, giddy] Hiya!!! It's me!
 [rapid, rambling] Okay, okay, okay, so every cool story needs a trio, right?
 [mock-proud] Oh my god, I'm so smart.
 [theatrical, grand] Come then, die by my hands, you foolish mortals!
-[warm, self-mocking] Well, thank you very much for spending time with me today and… listening to me be a little bit weird.
+[warm] Thank you very much for spending time with me today.
 ```
-(Line 1 joins her official greeting and catchphrase; "Okay, okay, okay, so … right?" is a style demo around
-her line; the rest are her lines, quoted only where both transcripts agree; line 5 joins two shared spans.)
+(Line 1 is an official written greeting. Line 2 is a Style demo incorporating an ASR-supported phrase. Lines 3–5 use individual ASR shared excerpts. All delivery tags are proposed.)

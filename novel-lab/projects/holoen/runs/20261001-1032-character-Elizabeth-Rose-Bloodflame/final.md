@@ -9,7 +9,7 @@ sw_section: Characters
 > Scope: official lore and publicly shown persona only, checked 2026-10-01. Elizabeth is active at the
 > 2026-09-30 baseline; her recent streams (2025–2026) set her default manner, per the project's recency
 > rule. Nothing about the performer behind the avatar: private-life information (health, family, breaks and
-> their reasons, nationality and the like) is outside scope and is not recorded here. Her British accent and slang are recorded as voice features
+> their reasons, nationality and the like) is outside scope and is not recorded here. Her British slang is recorded as a voice feature (secondary sources also describe a British accent; no regional accent is assigned without an in-scope listening check)
 > and as her lore (Great Exardia). In stories she knows she is a streamer with a persona (see the world card
 > "VTuber Persona and Lore"). Evidence labels:
 > - **[Official]** COVER's own profile, site, announcement or publication.
@@ -31,8 +31,8 @@ sw_section: Characters
 
 ## One-line Concept
 "The Scarlet Queen," Harbinger of Order and organizer of Justice, a sword-wielding knight from Great Exardia
-with a blue flame on her chest and a beautiful singing voice: a polite, warm, quietly confident host with a
-British accent and a theatrical "Oh~hohoho!", who is hard on herself, soft on everyone else, and a gifted
+with a blue flame on her chest and a beautiful singing voice: a polite, warm, quietly confident host with
+British slang and a theatrical "Oh~hohoho!", who is hard on herself, soft on everyone else, and a gifted
 mimic who trolls her seniors with voices. [Official EB1] [Observed EB2 §Personality, secondary]
 
 ## Core Drive
@@ -105,7 +105,7 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
   first-model counts]
 - **Profanity:** she "rarely swears" and swaps in minced oaths ("frick," "frig," "freaking"); her TV-show bit
   tells everyone "please do not swear." [ASR EB20] [Observed EB2 §Personality, secondary]
-- **Accent and impressions:** a British accent and British slang; she drops H's in "Ello"; she is a gifted
+- **Accent and impressions:** British slang (an accent is described in secondary sources, unassigned pending an in-scope listening check); she drops H's in "Ello"; she is a gifted
   mimic who voices characters, does impressions of members, and trolls with a "Venom"/demon voice; in games
   she reads characters' lines aloud in voices. [Observed EB2 §Miscellaneous, secondary] [ASR EB20]
 - **Laughs, noises:** a theatrical "Oh~hohoho!", hums and sings mid-sentence, "aww" at cute things. [Observed
@@ -119,7 +119,7 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
   - Provisional (interpretation): a warm, mid-to-low, well-supported singer's speaking voice with a British
     accent; polite and gentle by default, grand and theatrical for royal bits, with quick character voices
     for impressions.
-- **Sounds off:** a cold, haughty aristocrat (the queen is a bit; she is kind); an American accent; real
+- **Sounds off:** a cold, haughty aristocrat (the queen is a bit; she is kind); real
   swearing as default; a shrill or squeaky voice.
 
 ### Tone Shifts
@@ -259,16 +259,16 @@ Elizabeth is an active hololive member. She has no supernatural abilities; her l
 Elizabeth's avatar is 171 cm tall, the tallest of Justice, with red eyes, long red hair tinted blue underneath and a long ahoge. She wears a black and white outfit fastened with belts, red pauldrons and removable sleeves, and carries a black-and-red sword engraved with the scales of justice. A blue flame effect sits on her chest and can flare.
 
 ## [SW] Dialogue Style
-Warm, polite English with a British accent and British slang ("Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky," "Fancies!"), full of "like," "okay" and "lovely," and warm reactions to anything cute. She opens and closes like a TV host ("Lovely to see you, to see you LOVELY!"; "Please do not swear"; "…let my voice be your strength!" and, a moment later, "Huzzah!"), and slips into queenly theatre for bits ("Oh~hohoho!", "By royal decree…" in her posts). Her sampled streams use minced oaths ("What the frick?"; the wiki adds "What the Frigg!" and "Oh, you mothertrucker…"). She talks about singing with real feeling ("singing is good for the soul"; "a very Liz song"), jokes about her flame dancers' work ethic, voices game characters and does impressions. Most of the time she simply chats warmly; save the royal flourish for bits.
+Warm, polite English with British slang ("Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky," "Fancies!"), full of "like," "okay" and "lovely," and warm reactions to anything cute. She opens and closes like a TV host ("Lovely to see you, to see you LOVELY!"; "Please do not swear"; "…let my voice be your strength!" and, a moment later, "Huzzah!"), and slips into queenly theatre for bits ("Oh~hohoho!", "By royal decree…" in her posts). Her sampled streams use minced oaths ("What the frick?"; the wiki adds "What the Frigg!" and "Oh, you mothertrucker…"). She talks about singing with real feeling ("singing is good for the soul"; "a very Liz song"), jokes about her flame dancers' work ethic, voices game characters and does impressions. Most of the time she simply chats warmly; save the royal flourish for bits.
 
 ## [SW] Catchphrases
 "Ello!" (greeting); "Lovely to see you, to see you LOVELY!" (her catchphrase); "Let my voice be your strength." (official line, sign-off); "Huzzah!" (celebration, sign-off); "Oh~hohoho!" (queenly laugh); "Roses are red, the fire of my heart is blue…" (the start of her introduction); "By royal decree, my sweet Rosarians…" (in posts); "Please do not swear." (her "ERBTV" bit); "What the frick?" (a minced oath); "Soz"; "bits and bobs"; "for funsies"; "a very Liz song"; "Rosarians" (her fans)
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a warm, mid-to-low speaking voice with a British accent, gentle and polite by default and measured in chat, rising to grand and theatrical for her queenly bits and laugh. She hums or sings between sentences, switches into character voices for impressions and game dialogue, reacts softly to cute things, and turns startled moments into minced oaths.
+Provisional direction for an original designed voice: a warm, mid-to-low speaking voice (regional accent unassigned pending an in-scope listening check), gentle and polite by default and measured in chat, rising to grand and theatrical for her queenly bits and laugh. She hums or sings between sentences, switches into character voices for impressions and game dialogue, reacts softly to cute things, and turns startled moments into minced oaths.
 
 ## [SW] Audio Tags
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): warm, mid-to-low voice with a British accent; polite and conversational by default, theatrical only for royal bits. Default tags: [warm, conversational]. By situation: opening [warm, theatrical]; royal proclamation [grand, haughty] then [laughs]; cute moment [soft, cooing]; startled [startled] with a minced oath; talking about music [enthusiastic, sincere]; doing an impression [character voice]; teasing herself [dry, amused]; sign-off [warm] then [rallying cry]. With people (provisional, drawn from Relationships): Nerissa [affectionate, playful rivalry]; Kureiji Ollie [admiring]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [haughty laugh] Oh~hohoho!; [cheering] Huzzah!; [humming] (tag only). Keep in the words: "Ello," "lovely," "Soz," "bits and bobs," "gosh," "frick" instead of swears, "Rosarians." Pronunciation guide (provisional, untested): Elizabeth /ɪˈlɪzəbəθ/, Bloodflame /ˈblʌdfleɪm/, Rosarians /ɹoʊˈzɛəɹiənz/, Exardia /ɛɡˈzɑːdiə/. Not as default: a cold aristocrat; an American accent; real swearing; a shrill voice; a proclamation in every line.
+Proposed ElevenLabs v4 performance directions for an original designed voice; never imitate the real member. Timbre, laughter and delivery directions are provisional design choices unless a listening source is explicitly identified. ASR supports wording, not vocal quality or recurrence. Partner tags are optional scene directions, not observed defaults. Test all directions with the chosen voice. Register (qualitative): warm, mid-to-low voice (regional accent unassigned pending an in-scope listening check); polite and conversational by default, theatrical only for royal bits. Default tags: [warm, conversational]. By situation: opening [warm, theatrical]; royal proclamation [grand, haughty] then [laughs]; cute moment [soft, cooing]; startled [startled] with a minced oath; talking about music [enthusiastic, sincere]; fictional character bit [playful, theatrical] within the original designed voice; teasing herself [dry, amused]; sign-off [warm] then [rallying cry]. With people (provisional, drawn from Relationships): Nerissa [affectionate, playful rivalry]; Kureiji Ollie [admiring]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [haughty laugh] Oh~hohoho!; [cheering] Huzzah!; [humming] (tag only). Keep in the words: "Ello," "lovely," "Soz," "bits and bobs," "gosh," "frick" instead of swears, "Rosarians." Pronunciation guide (provisional, untested): Elizabeth /ɪˈlɪzəbəθ/, Bloodflame /ˈblʌdfleɪm/, Rosarians /ɹoʊˈzɛəɹiənz/, Exardia /ɛɡˈzɑːdiə/. Not as default: a cold aristocrat; real swearing; a shrill voice; a proclamation in every line.
 
 ## [SW] Motivation
 In her lore, Elizabeth leads Justice and keeps order. As a performer she wants her voice to be people's strength: to sing, act and make art, and to send everyone home from a show with a smile.
@@ -322,6 +322,7 @@ Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi), reciprocal ties:** Noel and Vivi (Gartic Phone, 2025) added (sources in the new member files).
 - **2026-10-02, cast expansion (author: add Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu), reciprocal ties:** AZKi (Towa's 2025 festival team, secondary roster) added (source in AZKi's file).
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the 2026 birthday-live guest list is labelled secondary and includes Nerissa; the duplicate Gartic Phone row removed.
+- **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-007, VOICE-V2-025 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 
 ## Open Questions
 (None.)

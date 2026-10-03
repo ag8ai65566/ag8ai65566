@@ -5,8 +5,8 @@
 > or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works Guidelines).
 > Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young adult woman, neutral American accent, warm, relaxed mid-range voice,
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young adult woman, English-speaking, warm, relaxed mid-range voice,
 relaxed and chatty, playful and teasing, can turn sweet and coaxing or flat and deadpan, big theatrical
 swings when telling a story."
 - Register basis (sample observations from the audio check, not synthesis targets): mid pitch (≈214 Hz median in a 2026 solo chat, 172–297 Hz) and an easy, fairly quick
@@ -21,24 +21,24 @@ swings when telling a story."
 - Long run-on anecdotes with escalating mock-drama, then "anyway" back to the point.
 - Crude or flirty line, flat, often followed by a quick correction.
 - Rage-bait claim, then a quick retreat ("I'm sorry. They are donuts.").
-- Casual swears, then "I need to stop swearing so much."
+- Casual swears can provide emphasis. "I need to stop swearing so much" is one ASR-supported self-comment, not a required follow-up.
 - Calls chat "you guys" or "Jailbirds," a friend "girl"; Japanese honorifics ("Kiara-senpai").
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Opening / hosting | `[bright, theatrical]` | "Hiya Darlings, this is the Devilish Diva, the one and only Nerissa Ravencroft!" (official written introduction, 2026) |
+| Opening / hosting | `[bright, theatrical]` | "Hiya Darlings, this is hololive English -Advent-'s Devilish Diva, the one and only Nerissa Ravencroft!" (official written introduction, 2026) |
 | Chatting | `[relaxed, chatty]` | "You know what I'm saying?" |
 | Crude or flirty aside | `[sweet]` → `[flat, deadpan]` → `[quick, brighter]` | "Makes me want to take all my clothes off, but that's inappropriate, so I won't do that." |
 | Rage-bait | `[confident, smug]` → `[sheepish, rushed]` | "I'm sorry. They are donuts." |
 | Teased by chat | `[mock-whiny]` | "Come on, Jailbirds, be nice, I'm kicking!" |
 | Self-aware | `[amused, matter-of-fact]` | (agrees she's weird and says that's why she's a VTuber; paraphrase, the two transcripts differ) |
-| Story voice | `[exaggerated caveman voice]` | (a caveman voice: "…go hunt, … get food, … run from big predator") |
+| Story voice | `[exaggerated caveman voice]` | "run from big predator" (one contiguous ASR shared span; the exaggerated delivery is provisional) |
 | Flirting with a friend | `[sweet, coaxing, low]` | (style demo) "Girl, you know I'd follow you anywhere." |
 | Fangirling (Kiara, Marine) | `[excited, flustered, fast]` | (no verified line yet) |
 
 ## 5. Signature sounds
-- "Ope!": `[startled] Ope!` (short, a little sheepish).
+- Proposed spoken interjection: `[startled] Ope?!` Its written source is reported through a secondary citation; spoken delivery and recurrence are unverified.
 - Mock-dramatic gasps and groans in stories: `[dramatic gasp]`, `[exaggerated groan]`.
 
 ## 6. Pronunciation (provisional; test)

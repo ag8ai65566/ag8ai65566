@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 83717eb.
+Snapshot: git 82b1713.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|Myth's debut|hololive fes|Star Flower|Serendipity|the merger|Death Star|world tour|SUPER EXPO|EN concert|PavoNashi|aftertalk|Holodeath|HOLOTORI|K.I.R.A|HoloJEI|IRySora|soranii|3D live|MoRikka|OKFAIR|V3LVET|UMISEA|KoMeHa|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|EN concert|the merger|SUPER EXPO|Death Star|world tour|PavoNashi|Holodeath|aftertalk|HOLOTORI|MoRikka|K.I.R.A|IRySora|3D live|HoloJEI|soranii|OKFAIR|KoMeHa|UMISEA|V3LVET|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA

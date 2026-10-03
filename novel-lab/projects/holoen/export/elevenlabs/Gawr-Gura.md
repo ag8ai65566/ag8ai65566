@@ -6,11 +6,13 @@
 > memories and in stories set before her 2025-05-01 graduation. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, neutral American accent, soft, cute, relatively high voice with clear
+
+The prompt's timbre, laughter and delivery details are provisional creative choices for the original voice. Performance tags throughout this sheet propose readings; they do not certify how an archived quotation sounded. Regional accents require a separate in-scope listening check.
+"Perfect audio quality. Young woman, English speech with no prescribed regional accent, soft, cute, relatively high voice with clear
 pronunciation, moderate pace, playful and a little goofy, deadpan when teasing, able to scream in horror
 games and hum while playing."
 - Register basis (sample observations from the audio check, not synthesis targets): relatively high (≈245–270 Hz in chat and horror windows), moderate pace (≈120–140 words
-  per minute of speech in 2024 chat). [ASR G18]
+  per minute of speech in 2024 chat). [ASR G18] Conversational observations here come from 2024; their representativeness for her final 2025 activity period is unverified. The proposed design remains provisional.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **45%** (API `0.45`). Similarity **75%** (API `0.75`).
@@ -26,13 +28,13 @@ games and hum while playing."
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Opening | `[soft, friendly]` | "Hello? Hello? Hello? How's this one?" |
+| Microphone check; proposed friendly reading | `[soft, friendly]` | "Hello? Hello? Hello? How's this one?" |
 | Scared | `[panicked, higher]` → `[pleading]` | "Okay, okay, wait, okay, wait, wait." |
 | Taunting after a scare | `[smug, deadpan]` | "You don't scare me. Cheap party city lady. I see better makeup on clowns these days." |
 | Teasing | `[deadpan-cute, slow]` | "You can't be mad at me... I'm cute." |
-| Game commentary | `[amused, mocking]` | "Come on Leon, say it with a bit more oomph." |
+| Game commentary | `[amused, mocking]` | "Say it like it's really bothering you, Leon." (ASR; commenting on Leon's delivery) |
 | Hyped | `[excited, stretched vowels]` | "Shaaaaark!" |
-| Flustered | `[tumbling, embarrassed]` | "no, why did I say it out loud" |
+| Flustered | `[tumbling, embarrassed]` | Style demo: "Wait—no. That sounded better before I said it." |
 | Sincere sign-off | `[soft, plain]` | "Take care and be kind to yourselves." |
 
 ## 5. Signature sounds
@@ -51,3 +53,4 @@ games and hum while playing."
 [panicked, higher] Okay, okay, wait, okay, wait, wait.
 [smug, deadpan] You don't scare me. Cheap party city lady.
 ```
+(Line 1 is a microphone check, not a habitual greeting; voice audit v1.)

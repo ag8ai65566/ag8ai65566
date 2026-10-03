@@ -2,11 +2,13 @@
 
 > Built from `bible/characters/Ouro-Kronii.md` (2026-09-30). The voice is an **original designed voice**
 > matched only to register and energy. Do not clone or imitate the member's real voice (ElevenLabs Use
-> Policy §5; COVER Derivative Works Guidelines). Everything else below is about delivery, which is where
-> "sounding like her" actually lives. Guide: `novel-lab/docs/elevenlabs-v4.md`.
+> Policy §5; COVER Derivative Works Guidelines). The directions below preserve documented wording and propose
+> comic timing for an original voice; they do not aim to reproduce her identifiable vocal delivery. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young adult woman, neutral American accent, low alto speaking voice, dry and
+
+The prompt's timbre, laughter and delivery details are provisional creative choices for the original voice. Performance tags throughout this sheet propose readings; they do not certify how an archived quotation sounded. Regional accents require a separate in-scope listening check.
+"Perfect audio quality. Young adult woman, English speech with no prescribed regional accent, low alto speaking voice, dry and
 deadpan, relaxed medium pace, controlled and a little smoky, capable of a sudden high startled squawk and
 of breaking into laughter."
 - Register basis (sample observations from the audio check, not synthesis targets): low (median ≈177–188 Hz in chat)
@@ -20,12 +22,12 @@ of breaking into laughter."
 - A beat before a punchline: use an ellipsis or a new sentence, not an exclamation mark.
 - Owns mistakes out loud: "Okay, that was my bad." / "that's on me."
 - Swears when startled or frustrated, written as-is ("what the fuck").
-- Short cheers dropped in flat: "Yay!" / "Yippee!" (tone unverified: keep it light, not bubbly).
+- ASR establishes the cheers "Yay!" and "Yippee!"; a brief, lightly cheerful reading is a provisional option, not a verified flat or ironic default.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Opening | `[relaxed]` | "Hello… hello! Kroniichiwa! Yay!" |
+| Opening | `[relaxed]` | Style demo: "Hello. Kroniichiwa! Yay!" |
 | Bragging | `[deadpan, flat, slow]` | "It's me, perfection." |
 | Jump scare | `[startled squawk]` → `[trying to stay calm]` | "GWAK! …I was observing. Loudly." (second line: Style demo) |
 | Misplay | `[dry]` | "Okay, that was my bad." |
@@ -47,9 +49,13 @@ of breaking into laughter."
 - `[giggles]`, `[bubbly]`, `[cheerful]` as a default; breathy seduction as her normal voice; elaborate
   time metaphors in every line; a flawless dominator who never slips.
 
-## 8. Example (Text to Dialogue turn)
+## 8. Example (assembled performance exercise)
+
+These are separately sourced components arranged for performance, not a recorded exchange. The opening is a Style
+demo using the secondary greeting form; self-introduction and GWAK are secondary-recorded components. The misplay
+and frightened-hand sentences are independent ASR excerpts. All tags are proposed.
 ```
-[relaxed] Hello… hello! Kroniichiwa! [flat] Yay.
+[relaxed] Hello. Kroniichiwa! [lightly cheerful] Yay.
 [deadpan] It's me, perfection. [short pause] …Okay, that was my bad.
 [startled squawk] GWAK! [trying to stay calm] Oh my god, that hand scared me.
 ```

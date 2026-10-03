@@ -4,3 +4,4 @@
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 e684eb396bdb）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude (EN mirror lines; also carries the JP-four mirror lines, re-promoted after their own review)
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 4d63075ff5b1）：Author decision (2026-10-02): cross-card lines from the GPT review of Marine, Noel and Lamy (run C), merged by Claude
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 f739f518fb7c）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
+- 2026-10-03 23:32 作者裁決收錄 final.md（sha256 9b733f131b2f）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields

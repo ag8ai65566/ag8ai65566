@@ -4,12 +4,11 @@
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Raora is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, Italian accent, warm, cheerful mid-high voice; friendly and gently
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young woman, English-speaking, warm, cheerful mid-high voice; friendly and gently
 rambling; brighter and quicker when excited; a playful little roar; mock-stern for her rules; playful
 complaints when a game goes wrong."
-- Register basis: qualitative; see `research/audio-check/raora.md`. Keep the accent natural, never a
-  cartoon "Italian."
+- Register basis: qualitative; see `research/audio-check/raora.md`. Do not invent grammar errors or an accent caricature; no regional accent is assigned pending an in-scope listening check.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **50%** (API `0.50`) (warm and even). Similarity **75%** (API `0.75`).
@@ -31,10 +30,10 @@ complaints when a game goes wrong."
 | Chatting | `[rambling, warm]` | "I'm sure you guys like my cooking shorts because they are made with so much love." |
 | Covering a slip | `[mock-innocent, quick]` | "That was totally intentional, everyone." |
 | Laying down a rule | `[mock-stern]` | "First, you guys have no rights." |
-| A game going wrong | `[flustered, complaining]` | "I'll be honest. I'm a hater now." |
+| Mock complaint in chat | `[mock-annoyed]` | "I'll be honest. I'm a hater now." |
 | Something cute | `[squealing, soft]` | "This makes me so emotional. She's so cute." |
 | Pasta | `[firm, theatrical]` | "No break-a da pasta!" (wiki, secondary) |
-| Sign-off | `[warm, playful]` | "…and remember, big cat means big trouble." |
+| Sign-off | `[warm, playful]` | "Remember, big cat means big trouble." |
 
 With people (provisional): FUWAMOCO `[starstruck, sweet]`; Gigi `[playful]`; Cecilia `[warm]`.
 
@@ -53,9 +52,9 @@ With people (provisional): FUWAMOCO `[starstruck, sweet]`; Gigi `[playful]`; Cec
 ```
 [bright] Ciao ciao, Chattini! [playful roar] RAAAOO!
 [mock-innocent, quick] That was totally intentional, that was totally intentional, everyone.
-[mock-stern] Okay, okay, okay, okay. Hear me out. … No, thank you. I refuse.
+[mock-stern] No, thank you. I refuse.
 [squealing, soft] This makes me so emotional. She's so cute.
-[warm, playful] And remember, big cat means big trouble.
+[warm, playful] Remember, big cat means big trouble.
 ```
 (Line 1 is a style demo built on her official greeting; the rest are her lines, quoted only where both
 transcripts agree.)

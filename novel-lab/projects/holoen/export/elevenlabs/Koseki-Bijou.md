@@ -4,8 +4,8 @@
 > to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Bijou is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, neutral American accent, small, bright, bubbly, high voice; quick and
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young woman, English-speaking, small, bright, bubbly, high voice; quick and
 bouncy when excited or hosting; goes calm, quiet and flat under pressure; sudden squeaky bursts of laughter;
 playful, childlike energy."
 - Register basis: qualitative only. The sampled gameplay recordings mix in game audio, so their numbers are
@@ -47,7 +47,7 @@ IRyS `[excited teammate]`; FUWAMOCO `[silly]`.
 - `[humming]` to fill a quiet stretch (tag only).
 
 ## 6. Pronunciation (provisional; test)
-- Bijou `/biˈʒuː/` ("bi-joo") · Biboo `/ˈbiːbuː/` · Koseki `/koʊˈsɛki/` · Gerudo as "Jerudo" `/dʒəˈɹuːdoʊ/`
+- Bijou `/biˈʒuː/` ("bi-joo") · Biboo `/ˈbiːbuː/` · Koseki `コセキ (provisional kana guide; untested)` · Gerudo as "Jerudo" `/dʒəˈɹuːdoʊ/`
   (her quirk, on purpose)
 
 ## 7. Don't

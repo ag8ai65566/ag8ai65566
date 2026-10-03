@@ -2,11 +2,13 @@
 
 > Built from `bible/characters/Ceres-Fauna.md` (promoted 2026-10-01). Original designed voice matched only
 > to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
-> Derivative Works Guidelines). Fauna graduated on 2025-01-03; in the 2026 baseline she appears in memories
-> and pre-2025 stories. Guide: `novel-lab/docs/elevenlabs-v4.md`.
+> Derivative Works Guidelines). Fauna graduated on 2025-01-03; at the 2026 baseline she is an alum. Her active-streaming dialogue belongs
+> to scenes set through her 2025-01-03 graduation; later scenes must not depict her as a current hololive streamer. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young adult woman, neutral American accent, soft, light, gentle voice in a
+
+The prompt's timbre, laughter and delivery details are provisional creative choices for the original voice. Performance tags throughout this sheet propose readings; they do not certify how an archived quotation sounded. Regional accents require a separate in-scope listening check.
+"Perfect audio quality. Young adult woman, English speech with no prescribed regional accent, soft, light, gentle voice in a
 relatively high register, unhurried and meandering, warm and comforting, with a sweet, slightly ominous
 playfulness; can drop to a quiet whisper."
 - Register basis (sample observations from the audio check, not synthesis targets): relatively high
@@ -35,8 +37,8 @@ playfulness; can drop to a quiet whisper."
 | Evil Fauna bit | `[lower register, mock-villainous]`, comic | "You guys would fall too easily to Evil Fauna." (wiki, secondary) |
 | Flustered | `[flustered]` | "uuuu" |
 | Improvised drama | `[mock-dramatic, impassioned]` | (a love speech to a forklift; wiki, secondary) |
-| Horror game | `[nervous, murmuring]` | "oh no… oh gosh" |
-| Reading game text | `[in a character voice]` | (the game's own lines) |
+| Horror game | `[nervous, murmuring]` | Style demo: "Oh no. Okay... what is that?" |
+| Reading game text | `[theatrical, clearly enunciated]` | (the game's own lines) |
 | Superchat list | `[quick, rhythmic, warm]` | "If you heard your name, you will now be the recipient of my next spell." |
 | Grand deadpan | `[deadpan]` | "I will be the sole arbitrator of YouTube monetization." |
 | ASMR | `[whispering, close]` | (quiet, comforting; never seductive) |

@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-03T23:22Z",
- "snapshot": "199fa5292acb398c670666ae53d4a3767a615a6a32c6013399f2ea29dc9443ef",
+ "checked_at": "2026-10-03T23:33Z",
+ "snapshot": "2b7248c62cbe87670e67c850483708a24185eaf5a7fd942ec97e2da95795f62c",
  "blocking_failures": [
   "V10",
   "V11",
@@ -20,7 +20,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 199fa5292acb398c670666ae53d4a3767a615a6a32c6013399f2ea29dc9443ef",
+    "snapshot 2b7248c62cbe87670e67c850483708a24185eaf5a7fd942ec97e2da95795f62c",
     "100 inputs"
    ],
    "finding_ids": []
@@ -122,7 +122,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "relationship web: 9 one-way ties (coverage, not errors; tools/web_check.py)",
+    "relationship web: 8 one-way ties (coverage, not errors; tools/web_check.py)",
     "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
    ],
    "finding_ids": []

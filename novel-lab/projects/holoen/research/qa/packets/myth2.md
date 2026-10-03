@@ -1,10 +1,10 @@
 # Audit packet: myth2
 
-Snapshot: git 83717eb. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 82b1713. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Gawr-Gura.md` edc8fc1a8968; `bible/characters/Watson-Amelia.md` e8d131abdf47; `bible/world/hololive--Myth.md` ef5715a5ecbe; `bible/world/AmeSame.md` 03602b5cf2fd; `bible/world/Bone-Bros.md` 3456a63d5263
+Owned files (sha256): `bible/characters/Gawr-Gura.md` 67cbd4066ccc; `bible/characters/Watson-Amelia.md` 83b46bd6de63; `bible/world/hololive--Myth.md` ef5715a5ecbe; `bible/world/AmeSame.md` 03602b5cf2fd; `bible/world/Bone-Bros.md` 3456a63d5263
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 

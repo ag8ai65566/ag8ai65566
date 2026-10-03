@@ -4,8 +4,8 @@
 > to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Shiori is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, neutral American accent, clear, mid-high, chatty voice; fast and bubbly
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young woman, English-speaking, clear, mid-high, chatty voice; fast and bubbly
 when excited, piling reactions on top of each other; drops into a flat, deadpan aside for jokes; a playful,
 teasing lilt; can let out a piercing horror-movie scream."
 - Register basis: qualitative only. The sampled recordings mix in trailer narrators, game dialogue and co-op
@@ -20,7 +20,7 @@ teasing lilt; can let out a piercing horror-movie scream."
 - She talks to "guys," rarely "chat."
 - Restarts mid-thought and stacks reactions ("This looks like a movie! I genuinely like the look of this!").
 - Lore defenses opened with "In my defense…" or "For the record…"; the menace is always a joke.
-- Exclamations: "oh my god," "oh heavens," "oh shoot," "Oh nyo…"
+- Exclamations: "oh my god," "oh heavens," "oh shoot," "Oh nyo…" (secondary transcription)
 - Profanity is situational and can include strong words; when she snaps at someone, a quick apology can
   follow that one exchange. It is not her default, and not every frustrated line gets an apology.
 
@@ -32,13 +32,13 @@ teasing lilt; can let out a piercing horror-movie scream."
 | Lore defense | `[deadpan, mock-innocent]` | "For the record, I did not sacrifice anyone." |
 | Thirst bit | `[teasing, goofy]` | "Whoa, wait, who is that hot thing? Is that a vampire?" |
 | Tangent | `[rambling, amused]` | (style demo) "Okay, so, actually, wait, that's kind of a whole thing…" |
-| Horror | `[nervous, quiet]` → `[screams]` | "I would be too scared to play this myself." |
-| Comforting | `[gentle, warm]` | "Aw, it's okay! There, there!" |
+| Horror-trailer commentary | `[nervous, quiet]` | "I would be too scared to play this myself." |
+| Comforting | `[gentle, warm]` | "Aw, it's okay! There, there!" (secondary transcription) |
 | Cheering someone | `[warm, delighted]` | "Your Blender skills are so cool. I'm so happy for you." |
-| Annoyed | `[snappy]` → `[apologetic, quick]` | "I'm so sorry. I shouldn't say that." |
+| Annoyed | `[snappy]` → `[apologetic, quick]` | "Go fuck yourself. I'm so sorry. I shouldn't say that." (ASR shared span from one moderation exchange; delivery tags are proposed) |
 | Sign-off | `[warm, quick]` | "Alright, bye guys! See you later!" |
 
-With people (provisional): Nerissa `[teasing, playing hard to get]`; Bijou `[amused, big-sister]`;
+With people (proposed scene directions, not observed defaults or relationship claims): Nerissa `[teasing, mock-evasive]` for an explicitly scripted public-persona joke; Bijou `[amused, big-sister]`;
 FUWAMOCO `[playful]`; Calli `[dry, conspiratorial]`.
 
 ## 5. Signature sounds
@@ -46,7 +46,7 @@ FUWAMOCO `[playful]`; Calli `[dry, conspiratorial]`.
 - `[intrigued] ooooh` and `[startled] whoa` (spoken).
 
 ## 6. Pronunciation (provisional; test)
-- Shiori `/ʃiˈoʊɹi/` · Novella `/noʊˈvɛlə/` · Novelites `/ˈnɑvəliːts/` ("novel-eets") · Yorick `/ˈjɔɹɪk/`
+- Shiori `シオリ (provisional kana guide; untested)` · Novella `/noʊˈvɛlə/` · Novelites `/ˈnɑvəliːts/` ("novel-eets") · Yorick `/ˈjɔɹɪk/`
 
 ## 7. Don't
 - A slow, ominous villain voice as the default (her menace is a joke); prim or formal speech; constant
@@ -57,8 +57,7 @@ FUWAMOCO `[playful]`; Calli `[dry, conspiratorial]`.
 [bright, quick] Shiori~n! Shiori Novella here at your service!
 [rapid, excited] This looks like a movie! I genuinely like the look of this!
 [deadpan, mock-innocent] For the record, I did not sacrifice anyone.
-[nervous, quiet] I would be too scared to play this myself. [screams]
+[nervous, quiet] I would be too scared to play this myself.
 [warm, quick] Alright, bye guys! See you later!
 ```
-(Line 1 is her official greeting; "Okay guys," in line 2 is a style demo; the rest are her lines, quoted only
-where both transcripts agree.)
+(Line 1 is an official written introduction. Lines 2–5 use ASR shared wording. All delivery tags are provisional performance directions, not verified descriptions of these recordings.)

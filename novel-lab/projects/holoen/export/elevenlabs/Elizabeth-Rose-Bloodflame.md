@@ -5,8 +5,8 @@
 > COVER Derivative Works Guidelines). Elizabeth is active at the 2026 baseline. Guide:
 > `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, British accent, warm, mid-to-low, well-supported singer's speaking voice;
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young woman, English-speaking, warm, mid-to-low, well-supported singer's speaking voice;
 polite and gentle by default; grand and theatrical for royal proclamations, with a haughty 'oh-ho-ho' laugh;
 quick to switch into playful character voices."
 - Register basis: qualitative. Her cleanest sample (a 2025 after-party chat) is lower than the other Justice
@@ -21,22 +21,21 @@ quick to switch into playful character voices."
 - British words: "Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky,"
   "lovely"; plenty of "like" and "okay."
 - Minced oaths, not swears: "What the frick?", "What the Frigg!", "friggin'," "mothertrucker."
-- TV-host framing: "Lovely to see you, to see you LOVELY!"; "Please do not swear."; "let my voice be your
-  strength! … Huzzah!"
+- TV-host framing: "Lovely to see you, to see you LOVELY!"; "Please do not swear."; "let my voice be your strength" (ASR); separately, "Huzzah!" (ASR)
 - "Aww" and "adorable" at anything cute; humming or a sung phrase between sentences.
-- Gentle self-mockery ("workaholics like me"); warm thanks to "Rosarians."
+- Gentle self-mockery (Style demo: "Workaholic? Me? Never."); warm thanks to "Rosarians."
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
 | Opening | `[warm, theatrical]` | "Lovely to see you, to see you LOVELY!" (official interview) |
-| Impression | `[character voice]` | (style demo) a game character or a senior's line |
+| Fictional character bit | `[playful, theatrical]` | (Style demo) "Stand back, everyone. I shall handle this!" |
 | Royal proclamation | `[grand, haughty]` → `[laughs]` | "By royal decree, my sweet Rosarians…" (her post) |
 | Cute moment | `[soft, cooing]` | (style demo) "Aww, that's adorable." |
 | Startled | `[startled]` | "What the frick? Oh my god, you scared them." |
 | About singing | `[enthusiastic, sincere]` | "…singing is good for the soul." |
 | Teasing herself | `[dry, amused]` | (style demo) "Workaholic? Me? Never." |
-| Sign-off | `[warm]` → `[rallying cry]` | "…let my voice be your strength! … Huzzah!" |
+| Sign-off | `[warm]` → `[rallying cry]` | "let my voice be your strength" (ASR); separately, "Huzzah!" (ASR) |
 
 Default: `[warm, conversational]`; save the royal flourish for bits.
 
@@ -50,7 +49,7 @@ With people (provisional): Nerissa `[affectionate, playful rivalry]`; Kureiji Ol
 - Elizabeth `/ɪˈlɪzəbəθ/` · Bloodflame `/ˈblʌdfleɪm/` · Rosarians `/ɹoʊˈzɛəɹiənz/` · Exardia `/ɛɡˈzɑːdiə/`
 
 ## 7. Don't
-- A cold, haughty aristocrat as default (the queen is a bit; she is kind); an American accent; real
+- A cold, haughty aristocrat as default (the queen is a bit; she is kind); real
   swearing; a shrill voice.
 
 ## 8. Example
@@ -59,7 +58,7 @@ With people (provisional): Nerissa `[affectionate, playful rivalry]`; Kureiji Ol
 [enthusiastic, sincere] I sing too much everywhere I go, there's always Liz noises.
 [startled] What the frick? Oh my god, you scared them.
 [dry, amused] Sorry, I just brought you into a random stranger's house and just had you listen to them sleep.
-[warm] Have a lovely day, lovely to see you lovely, and most of all, don't forget, let my voice be your strength! [cheering] Huzzah!
+[warm] Let my voice be your strength!
 ```
-(Lines 2–5 are hers, quoted only where both transcripts agree; "Ello, Rosarians!" in line 1 is a style demo
+(Lines 2–5 use ASR shared wording. Line 4 comments on a fictional scene in Tomodachi Life, not anyone's private life. All delivery tags are proposed; "Ello, Rosarians!" in line 1 is a style demo
 joined to her official catchphrase.)

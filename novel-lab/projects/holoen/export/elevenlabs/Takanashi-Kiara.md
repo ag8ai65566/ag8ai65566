@@ -5,11 +5,13 @@
 > Derivative Works Guidelines). Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
+
+The prompt's timbre, laughter and delivery details are provisional creative choices for the original voice. Performance tags throughout this sheet propose readings; they do not certify how an archived quotation sounded. Regional accents require a separate in-scope listening check.
 "Perfect audio quality. Young adult woman, neutral English accent, bright upper-mid voice,
 fast and chatty with sudden accelerations, highly expressive, prone to sharp excited cries and loud
 laughter, warm when sincere."
 - Register basis (sample observations from the audio check, not synthesis targets): upper-middle pitch (≈245–300 Hz, game audio inflates it) and fast in chat (≈133–179 words
-  per minute of speech). [ASR T23] Her card gives no accent; German lines come out native in v4 (cross-language generation uses a native accent). [Official T1]
+  per minute of speech). [ASR T23] No regional English accent is prescribed. German output and code-switching must be tested with the selected original voice; v4's documented cross-language behavior does not establish this member's language background.
 
 ## 2. Settings (starting points)
 - `eleven_v4`. Stability **35%** (API `0.35`) (big swings). Similarity **75%** (API `0.75`).
@@ -25,22 +27,22 @@ laughter, warm when sincere."
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
 |---|---|---|
-| Opening | `[bright rooster-like cry]` → `[chatty]` | "Kikkeriki! Do you want to hear a tangent to start?" |
+| Opening | `[bright rooster-like cry]` → `[chatty]` | "Kikkeriki!!! Welcome to KFP, are you here to order or to apply for a job?" (OFFICIAL written greeting) |
 | Hyped | `[excited, rapid]` | "Holy shit, they're all cracked, they all look so good." |
 | Game surprise | `[shocked]` | "Vault dwellers? What the fuck is there? The wasteland?" |
-| Tilted | `[shrieks]` → `[angry, rapid]` → `[flat]` | "No no no no— It's the game that makes it too janky. Don't blame me." |
+| Tilted | `[shrieks]` → `[angry, rapid]` → `[flat]` | "Like, what the fuck, what do you mean? It's so bad." (ASR) |
 | KFP manager | `[brisk, faux-authoritative]` | "Welcome to KFP, are you here to order or to apply for a job?" |
 | Hosting | `[measured, clear]` | (contained questions, room for the answer) |
-| Sincere | `[plain, warm]` | "I hope you guys will still not get tired of me…" |
-| Tired | `[flat, still chatty]` | "I don't have much energy today." |
-| Sign-off | `[playful]` | "In German we say auf Wiedersehen. Good night!" |
+| Sincere | `[plain, warm]` | Style demo: "Thanks for being here. Seriously." |
+| Subdued scene | `[flat, still chatty]` | Style demo: "Okay... one thing at a time." |
+| Sign-off | `[playful]` | "In German we say auf Wiedersehen." (ASR) |
 
 ## 5. Signature sounds
 - "Kikkeriki!": `[bright rooster-like cry] Kikkeriki!`
 - Short cartoonish screams at deaths: `[short scream]`; loud laughter: `[laughs loudly]`.
 
 ## 6. Pronunciation (provisional; test)
-- Takanashi Kiara `/tɑkɑˈnɑʃi kiˈɑːɹə/` · Kikkeriki `/ˌkɪkəʁiˈkiː/` · Wawa `/ˈwɑwɑ/` ·
+- Takanashi Kiara — たかなし キアラ (provisional, untested) · Kikkeriki `/ˌkɪkəʁiˈkiː/` · Wawa `/ˈwɑwɑ/` ·
   auf Wiedersehen `/aʊ̯f ˈviːdɐˌzeːən/` · KFP spelled out.
 
 ## 7. Don't
@@ -49,7 +51,7 @@ laughter, warm when sincere."
 
 ## 8. Example
 ```
-[bright rooster-like cry] Kikkeriki! [chatty] Okay okay okay, do you want to hear a tangent to start?
+[bright rooster-like cry] Kikkeriki!!! [chatty] Welcome to KFP, are you here to order or to apply for a job?
 [excited, rapid] You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis.
 [playful] In German we say auf Wiedersehen!
 ```

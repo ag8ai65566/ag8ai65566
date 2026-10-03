@@ -11,7 +11,7 @@ sw_section: Characters
 > Nothing about the performer behind the avatar: private-life information (health, breaks and their
 > reasons, family, language background, training and the like) is outside scope and is not recorded here,
 > including what the wiki lists. Her
-> Italian accent and Italian words are recorded only as voice features. In stories she knows she is a
+> Italian words are recorded only as voice features. In stories she knows she is a
 > streamer with a persona (see the world card "VTuber Persona and Lore"). Evidence labels:
 > - **[Official]** COVER's own profile, site, announcement or publication.
 > - **[Observed]** public stream, title or post; "(secondary)" means the wording comes from a wiki or
@@ -33,7 +33,7 @@ sw_section: Characters
 ## One-line Concept
 "The Artist with the God Eyes," Justice's big pink cat (a snow leopard, by her own post) whose drawings of
 suspects are uncannily accurate, and who would rather find a new pizza place: a joyful, gentle, airheaded
-artist with an Italian accent, a contagious laugh, a "RAAAOO!" for a greeting, and a hard line on pasta.
+artist with Italian words in her English, a contagious laugh, a "RAAAOO!" for a greeting, and a hard line on pasta.
 [Official RP1] [Observed RP2 §Personality, secondary; X post RP6]
 
 ## Core Drive
@@ -106,7 +106,7 @@ who means "BIG TROUBLE, capish?" and is usually warm and cheerful. [Official RP1
   - Measured (RP20; two 2026 chat windows): window medians about 251–256 Hz (p10–p90 about 197–406 Hz).
     Measurements describe the sampled recording and ASR segmentation; they are not isolated vocal
     measurements.
-  - Provisional (interpretation): warm, cheerful English with an Italian accent; conversational repetition,
+  - Provisional (interpretation): warm, cheerful English (regional accent unassigned pending an in-scope listening check); conversational repetition,
     a playful roar and mock-stern refusals. A listening check would still need to establish the accent
     features, the laugh and the pacing.
 - **Sounds off:** a cartoon "Italian" caricature; a cold or sarcastic edge; heavy swearing; a menacing growl
@@ -254,16 +254,16 @@ Raora is an active hololive member. She has no supernatural abilities; her lore 
 Raora's avatar is 155 cm tall, with long pink hair streaked white, pink cat ears, a long fuzzy tail, tiny fangs and yellow eyes; an aquamarine eye-glow effect marks her performed God Eyes bit. She wears a white-and-black outfit under a pink off-shoulder coat with a gap for her tail, white stockings, a round black hat, silver-tinted goggles on her head, an artist's glove on her right hand and an amulet with a blue gem.
 
 ## [SW] Dialogue Style
-Warm, cheerful, rambling English with an Italian accent, full of "like," "yeah," "you know," "honestly" and "guys"; she greets with "Ciao ciao!", and her titles and posts add Italian words such as "mamma mia" and "grazie." She greets and celebrates with a playful roar ("RAAAOO!") and her motto, "big cat means big trouble." When the Chattini ask for her plushies she lays down mock-stern rules ("Hear me out." … "First, you guys have no rights."; "it's not negotiable"; "No, thank you. I refuse."), covers her slips with mock innocence ("That was totally intentional, everyone"), declares herself "a hater now" about tiny things, complains playfully when a game goes wrong, and squeals at anything cute. She swears rarely and mildly ("frick"). Keep her fillers, repetitions and self-corrections; never invent grammar mistakes or an accent caricature.
+Warm, cheerful, rambling English (regional accent unassigned pending an in-scope listening check), full of "like," "yeah," "you know," "honestly" and "guys"; she greets with "Ciao ciao!", and her titles and posts add Italian words such as "mamma mia" and "grazie." She greets and celebrates with a playful roar ("RAAAOO!") and her motto, "big cat means big trouble." When the Chattini ask for her plushies she lays down mock-stern rules ("Hear me out." … "First, you guys have no rights."; "it's not negotiable"; "No, thank you. I refuse."), covers her slips with mock innocence ("That was totally intentional, everyone"), declares herself "a hater now" about tiny things, complains playfully when a game goes wrong, and squeals at anything cute. She swears rarely and mildly ("frick"). Keep her fillers, repetitions and self-corrections; never invent grammar mistakes or an accent caricature.
 
 ## [SW] Catchphrases
 "Ciao ciao!" (greeting); "RAAAOO!" (greeting, thanks, triumph); "big cat means big trouble, capish?" (motto); "Woah, this place looks delicious! Let's go check it out!" (official line); "Hear me out."; "No, thank you. I refuse."; "That was totally intentional."; "I'm a hater now."; "It's a big cat, it's literally me."; "Doom." (the meme); "Chattini" (her fans); from the wiki and her posts: "Here to capture (you)r hearts! ~", "No break-a da pasta!", "Doya!", "mamma mia," "grazie!"
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: warm, cheerful English with an Italian accent; conversational repetition and self-corrections, a playful roar ("RAAAOO") and mock-stern refusals. She brightens and speeds up when excited, rambles gently when she chats, coos over cute things and complains playfully when a game turns on her; her laugh comes easily, but not after every line.
+Provisional direction for an original designed voice: warm, cheerful English (regional accent unassigned pending an in-scope listening check); conversational repetition and self-corrections, a playful roar ("RAAAOO") and mock-stern refusals. She brightens and speeds up when excited, rambles gently when she chats, coos over cute things and complains playfully when a game turns on her; her laugh comes easily, but not after every line.
 
 ## [SW] Audio Tags
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): warm, cheerful mid-high voice with an Italian accent; rambling and friendly by default; English with Italian words. Default tags: [warm, cheerful]. By situation: greeting [bright] then [playful roar]; chatting [rambling, warm]; covering a slip [mock-innocent, quick]; laying down a rule [mock-stern]; something cute [squealing, soft]; food or pasta [firm, theatrical]; a game going wrong [flustered, complaining]; sign-off [warm, playful]. With people (provisional, drawn from Relationships): FUWAMOCO [starstruck, sweet]; Gigi [playful]; Cecilia [warm]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [playful roar] RAAAOO!; [laughs] (tag only); [squeals] (tag only). Keep in the words: "Ciao," "guys," "Chattini," "big cat," "honestly," "you know." Pronunciation guide (provisional, untested): Raora /ɹaˈɔːɹa/, Panthera /pænˈθɛɹə/, Chattini /tʃəˈtiːni/ ("chuh-TEE-nee"; unverified), Chattino /tʃəˈtiːnoʊ/, ciao /tʃaʊ/. Not as default: an "Italian" caricature or invented grammar errors; heavy swearing; a menacing growl. Sarcasm is occasional and playful, never the default.
+Proposed ElevenLabs v4 performance directions for an original designed voice; never imitate the real member. Timbre, laughter and delivery directions are provisional design choices unless a listening source is explicitly identified. ASR supports wording, not vocal quality or recurrence. Partner tags are optional scene directions, not observed defaults. Test all directions with the chosen voice. Register (qualitative): warm, cheerful mid-high voice (regional accent unassigned pending an in-scope listening check); rambling and friendly by default; English with Italian words. Default tags: [warm, cheerful]. By situation: greeting [bright] then [playful roar]; chatting [rambling, warm]; covering a slip [mock-innocent, quick]; laying down a rule [mock-stern]; something cute [squealing, soft]; food or pasta [firm, theatrical]; a game going wrong [flustered, complaining]; sign-off [warm, playful]. With people (provisional, drawn from Relationships): FUWAMOCO [starstruck, sweet]; Gigi [playful]; Cecilia [warm]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [playful roar] RAAAOO!; [laughs] (tag only); [squeals] (tag only). Keep in the words: "Ciao," "guys," "Chattini," "big cat," "honestly," "you know." Pronunciation guide (provisional, untested): Raora /ɹaˈɔːɹa/, Panthera /pænˈθɛɹə/, Chattini /tʃəˈtiːni/ ("chuh-TEE-nee"; unverified), Chattino /tʃəˈtiːnoʊ/, ciao /tʃaʊ/. Not as default: an "Italian" caricature or invented grammar errors; heavy swearing; a menacing growl. Sarcasm is occasional and playful, never the default.
 
 ## [SW] Motivation
 In her lore, Raora is Justice's sketch artist who left the paperwork for idol work. As a streamer she wants to share everything she loves, art, anime, games and food, and to see people smile; on stage she wants everyone to "feel my personality."
@@ -320,6 +320,7 @@ FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu 
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi):** Lui added to the dossier ("Soar" short). (sources: the new member files, "JP Senpai Pairs 2" and "holoX".)
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the "Soar" short cites its own upload (N8bfOiPot6o, verified by Claude in the local archive), not the world card.
 - **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** Takane Lui added to the exported field (her channel's animated "Soar" short, N8bfOiPot6o, 2026, archived metadata), closing a one-way tie.
+- **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-010 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 
 ## Open Questions
 1. Resolved: 3D showcase 2025-08-09 PDT (RP8).
