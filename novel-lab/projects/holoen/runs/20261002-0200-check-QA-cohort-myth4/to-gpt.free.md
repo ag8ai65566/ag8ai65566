@@ -42,23 +42,29 @@ Do not infer intimacy, sexuality, private closeness or hidden psychology.
 Preserve supported swearing, crude jokes and performed bits without sanitizing
 them or presenting them as real relationships. No lyrics, long transcripts,
 explicit sexual material, voice cloning or identifiable real-voice imitation.
-Original calibration lines must say “Style demonstration.”
+Original calibration lines must carry the project label “Style demo” (equivalent to
+“Style demonstration”; do not file findings that only change one label to the other).
 
 ## Ownership and scope
 
 Use the packet inventory to resolve exact paths. Primary ownership is:
 
-- Myth: Calliope, Kiara, Ina, Amelia, Gura; Myth, TakaMori, TakoTori, AmeSame,
-  Bone Bros, Myth-and-Kronii Other Pairs.
-- Promise: Kronii, IRyS, Fauna, Mumei; Promise, Time Duo, Time and Death,
-  OctoClock, Fauna-and-Mumei Pairs, IRyS-and-Nerissa Pairs.
+- Myth (four audits: myth1 Calliope with TakaMori; myth3 Kiara with Myth-and-Kronii Other
+  Pairs; myth4 Ina with TakoTori; myth2 Gura and Amelia with Myth, AmeSame and Bone Bros).
+- Promise: Kronii, IRyS, Fauna, Mumei, Baelz; Promise, Time Duo, Time and Death,
+  OctoClock, Fauna-and-Mumei Pairs, IRyS-and-Nerissa Pairs, Hakos-Baelz Pairs.
 - Advent: Shiori, Bijou, Nerissa, Fuwawa, Mococo; Advent, Advent Pairs, FUWAMOCO.
 - Justice: Elizabeth, Gigi, Cecilia, Raora; Justice, Justice Pairs.
+- JP: Suisei, AZKi, Ayame, Okayu; JP Senpai Pairs.
+- JP2: Marine, Noel, Lamy, Botan, Vivi; JP Senpai Pairs 2.
+- holoX: La+, Lui, Koyori, Chloe, Iroha; holoX.
 - Global: hololive, Streaming Life, VTuber Persona and Lore, Cross-Branch Friends,
   Concerts and Live Events, both History cards.
 
-Together these cover 18 character and 24 world cards. Baelz, Sana and other
-external participants may be referenced; do not create their character cards.
+Together these cover the authorized 33 character and 28 world cards (the packet
+inventory is authoritative). Other external participants may be referenced; do
+not create their character cards. If a card your cohort owns is missing from the
+packet, report coverage as INCOMPLETE instead of auditing a reduced roster.
 
 Audit the selected cohort’s complete [SW] fields, Relationship Map, Background
 Timeline and Hard Facts, plus incoming claims from every other card. Inspect
@@ -138,7 +144,8 @@ such as optional compression or accepting a disclosed evidence limitation.
 It is not model approval, source verification, or permission to override binding
 scope. Give a concrete question and recommendation. Do not escalate routine fixes.
 
-IDs: {COHORT}-{TYPE}-{NNN}, with COHORT = MYTH, PROMISE, ADVENT, JUSTICE or GLOBAL.
+IDs: {COHORT}-{TYPE}-{NNN}, with COHORT = this run's cohort in capitals (MYTH1, MYTH2, MYTH3,
+MYTH4, PROMISE, ADVENT, JUSTICE, JP, JP2, HOLOX or GLOBAL), so separately queued audits never share IDs.
 Use TYPE = DATE, STATUS, EVENT, ROSTER, TIE, CREDIT, UNIT, ALIAS, SCOPE, QUOTE,
 VOICE, EXPORT or COVERAGE. Continue numbering from the resolution ledger.
 Reuse existing IDs for the same finding; never renumber or duplicate it.
@@ -454,13 +461,18 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 | CLAUDE-TOOLS-002 | A draft package claimed the roster counts (19/25) while its CSVs held only the promoted cards (18/24), and shipped Bae's performance sheet without her card | applied: package counts, INDEX, CHANGELOG and START-HERE count the cards actually shipped; a sheet ships only with its card; START-HERE names what is not yet included; `CAST_ORDER`/`WORLD_ORDER` must equal the COHORTS roster (assert) | this commit |
 | CLAUDE-TOOLS-003 | The quote gate matched any partial ASR row by five shared words, so a wiki quote (Cecilia's "Ew! Get away from me, you FREAK!") was flagged against an unrelated FUWAMOCO stream line | applied: a report row gates only files that cite its video (a performance sheet counts its card's citations); `span_check.py --write` regenerates `span-candidates.md` (40 → 31 rows; the 9 dropped were all unrelated-video matches) | this commit |
 | CLAUDE-GUIDE-001 | The author needed one place that says where to get the data and where each file goes in Sudowrite | applied: `framework/templates/start-here-zh.md` is the package's 00-START-HERE (Chinese): download, file → Sudowrite placement, smoke test, project setup, scene habits, ElevenLabs, updates, FAQ; scene-setup states the date zone rule | this commit |
+| AUDIT-MYTH1 | Cohort audit myth1 (Calli, TakaMori): 38 rows | applied except MYTH-EXPORT-001 (rejected: project label); details in research/qa/audit-myth1.md | 2026-10-03 merge |
+| AUDIT-MYTH3 | Cohort audit myth3 (Kiara, Other Pairs, TakoTori): 51 rows | applied; MYTH-SCOPE-002 adapted to keep the author's public-performance shorthand; MYTH-COVERAGE-001 superseded; MYTH-VOICE-001 rejected (label) | 2026-10-03 merge |
+| AUDIT-JUSTICE | Cohort audit justice: 36 rows | applied; two COVERAGE rows superseded by run F; EXPORT-001 rejected (label) | 2026-10-03 merge |
+| AUDIT-GLOBAL | Cohort audit global: 60 rows | applied (including the parser fixes in tools/qa_packets.py); overlaps closed by justice and myth1 | 2026-10-03 merge |
+| CLAUDE-SCOPE-003 | Merge Records naming excluded topics (15 cards) | applied (genericized) | 2026-10-03 merge |
 
 ### Registry excerpt (this cohort's cast and world records and its units; query `projects/holoen/research/qa/registry.json` with `jq` for the rest)
 
 ```json
 {
  "baseline": "2026-09-30",
- "commit": "5b38d20",
+ "commit": "fa69d71",
  "cast": [
   {
    "name": "Ninomae Ina'nis",
@@ -529,11 +541,11 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 
 # Audit packet: myth4
 
-Snapshot: git 5b38d20. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git fa69d71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Ninomae-Inanis.md` 2e94ef20a0e0; `bible/world/TakoTori.md` ebf69f1c30ab
+Owned files (sha256): `bible/characters/Ninomae-Inanis.md` 45ccf8a3589f; `bible/world/TakoTori.md` c3f8a29470c0
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -541,7 +553,7 @@ Owned files (sha256): `bible/characters/Ninomae-Inanis.md` 2e94ef20a0e0; `bible/
 **[SW] Groups:** hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
 **[SW] Other Names:** Ina, Ina'nis, Inya, Ninomanyo Inya'nis, 一伊那尓栖
 **[SW] Background:** She has no supernatural abilities; her lore is a performed persona. Ina is a VTuber whose lore, a persona she plays gently and for laughs, makes her an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles and began hearing Ancient Whispers; the book is her floating companion, AO-chan. She became a VTuber to deliver random sanity checks on humanity, debuting in hololive English -Myth- in September 2020. She drew Myth's intro art and designed Takodachi, Bubba and Death Sensei. Her fans are the Tentacult, each one a Takodachi, after the little purple mascot she designed. Her songs tell darker stories about her priestess duty. She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii. Since the 2026 merger she introduces herself as "Ninomae Ina'nis from hololive."
-**[SW] Relationships:** Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, credits Kiara's support for her confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns ("Every freaking time, Ina"); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at Dodger Stadium's hololive night (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put both on her Tomodachi Life island. Houshou Marine: UMISEA. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025). FUWAMOCO: "SHALLYS" with Cecilia on the same stage. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025). Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity. Hoshimachi Suisei: "BIBBIDIBA" (2024). Hakos Baelz: a K/DA "POP/STARS" cover with Moona Hoshinova and Ayunda Risu (2023), a stream art lesson (2024) and Ina's AmiAmi special (2025). Nekomata Okayu ("TakoNeko," a secondary pair name): "Kurukuru Cruise" (2025) and her 2025 New Year Game Festival team, with Nakiri Ayame. Yukihana Lamy: a Minecraft festival and "date"-billed collab (2021) and a "Pleides" guest (2024). Shishiro Botan: an "EVERMORE" guest (2025). Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025). AZKi: R.E.P.O. "JP & EN" (2025).
+**[SW] Relationships:** Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself. Takanashi Kiara: TakoTori duo-concert partner (Drawn to Dawn, 2026); Ina calls Kiara the gas pedal and herself the brake, credits Kiara's support for her confidence in dancing, and Kiara groans at her puns. Mori Calliope: a recurring target of her puns (Calli's exasperated reaction to Ina's puns); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song. Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin. Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry. Koseki Bijou: "wooden shovel" buddy ("TakoRocky") whose collab outfit Ina designed; with IRyS they starred at Dodger Stadium's hololive night (2025). IRyS: early duo partner (It Takes Two, "It Takes Tako & Hope") who still games with her; Nerissa Ravencroft put both on her Tomodachi Life island. Houshou Marine: UMISEA. Nanashi Mumei (graduated 2025): a fellow artist who drew with her on stream (2023, 2025). Shiori Novella: a "Rate Your Fears" nightmare talk (2024); "MONSTER" with Kronii and Gigi on stage (2025). FUWAMOCO: "SHALLYS" with Cecilia on the same stage. Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry. Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025). Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity. Hoshimachi Suisei: "BIBBIDIBA" (2024). Hakos Baelz: a K/DA "POP/STARS" cover with Moona Hoshinova and Ayunda Risu (2023), a stream art lesson (2024) and Ina's AmiAmi special (2025). Nekomata Okayu ("TakoNeko," a secondary pair name): "Kurukuru Cruise" (2025) and her 2025 New Year Game Festival team, with Nakiri Ayame. Yukihana Lamy: a Minecraft festival and "date"-billed collab (2021) and a "Pleides" guest (2024). Shishiro Botan: an "EVERMORE" guest (2025). Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025). AZKi: R.E.P.O. "JP & EN" (2025).
 **Dossier · Background Timeline:**
 | Date | Event | Relevance |
 |---|---|---|
@@ -552,11 +564,12 @@ Owned files (sha256): `bible/characters/Ninomae-Inanis.md` 2e94ef20a0e0; `bible/
 | 2022-02 | Nintendo Direct "TOMORROW?!" reaction | [Observed I23] |
 | 2024 | MECONOPSIS and TEMARI; she discusses MECONOPSIS's conflict between duty and protecting others | [Official I1 music list] [Observed—published interview I7b] |
 | 2026-02-02 | First EP "re:VISION" | [Official I26] |
-| 2026-03-27/28 | "Drawn to Dawn" duo concert with Kiara (Los Angeles) | [Official I20, I21] |
+| 2026-03-27/28 PDT | "Drawn to Dawn" duo concert with Kiara (Los Angeles) | [Official I20, I21] |
 | 2026-06-04 | Serendipity interview and partnership with Kronii | [Official I7] |
-| 2026-01-06/07 | TAKO∞TAKOVER, a deliberately unsettling takeover story; lyrics by Mori Calliope (released; the wiki dates it 01-06 in its history and 01-07 in its discography) | [Observed—published interview I19] [Official I25] |
+| 2026-01-08 (digital release; zone unspecified) | Digital release of TAKO∞TAKOVER; lyrics by Mori Calliope. I19 discusses its deliberately unsettling takeover story. | [Observed—published interview I19] [Official I25; digital release: https://hololive.hololivepro.com/en/music/693/, checked 2026-10-03] |
 | 2026-09-07 | Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- | [Official I28] [Observed I10] |
 | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
+| 2026-09-19 | Original single "Stardust Capsule" (hololive catalogue CVRD-824). | [Official NEW-R1-011] |
 **Dossier · Hard Facts (continuity):**
 - Birthday May 20; height 157 cm; debut 2020-09-13; unit hololive -Myth-; illustrator Kuroboshi Kouhaku
   (whom she calls "papa"). [Official I1] [Observed I2 infobox]
@@ -570,15 +583,15 @@ Owned files (sha256): `bible/characters/Ninomae-Inanis.md` 2e94ef20a0e0; `bible/
 
 ### TakoTori — `bible/world/TakoTori.md`
 **[SW] Other Names:** Kiara and Ina, Ina and Kiara, Drawn to Dawn
-**[SW] Description:** Takanashi Kiara and Ninomae Ina'nis, Myth's gas pedal and brake. Ina's words: Kiara has "a very 'go-getter', lively energy," Ina is "laid-back, my-pace," and "one of us is the gas pedal and one of us is the brake." Kiara's: "so different from me, and I love that," a mix of "cat fueled energy" and "energy drink fueled energy." Ina credits Kiara's support with helping her gain confidence in dancing; Ina is the quiet support, and Kiara has said Ina is always the first to message her when she's down. Ina designed Kiara's mascot Kotori, and Kiara still "fired" Ina over the 2020 KFP chicken incident. Their recent shared work includes the 2026 duo concert "Drawn to Dawn" (the Wiltern, Los Angeles, March 27–28) and a joint cover.
-**[SW] Rules:** Kiara leads with volume and plans; Ina answers with calm, a pun, or one quiet line that lands. Their support is mutual and unshowy: Kiara hypes, Ina checks in. The firing is a running KFP joke, never a real grudge.
+**[SW] Description:** Takanashi Kiara and Ninomae Ina'nis, Myth's gas pedal and brake. Ina's words: Kiara has "a very 'go-getter', lively energy," Ina is "laid-back, my-pace," and "one of us is the gas pedal and one of us is the brake." Kiara's: "so different from me, and I love that," a mix of "cat fueled energy" and "energy drink fueled energy." Ina credits Kiara's support with helping her gain confidence in dancing. Ina designed Kiara's mascot Kotori, and Kiara still "fired" Ina over the 2020 KFP chicken incident. Their recent shared work includes the 2026 duo concert "Drawn to Dawn" (The Wiltern, Los Angeles, March 27–28 PDT) and a joint cover.
+**[SW] Rules:** Kiara leads with volume and plans; Ina answers with calm, a pun, or one quiet line that lands. Their public collaborations include concerts and game streams. The firing is a running KFP joke, never a real grudge.
 **Dossier · History:**
 | Date | Event | Trace left |
 |---|---|---|
 | 2020-11 | The KFP chicken incident; Kiara "fires" Ina | KFP lore |
 | 2024-03-04 | "TAKOTORI OFFCOLLAB!!" | The pair name in their own titles |
 | 2025-11-23 | Duo concert announced | — |
-| 2026-03-27/28 | "Drawn to Dawn," the Wiltern, LA | Their first concert as a duo |
+| 2026-03-27/28 PDT | "Drawn to Dawn," the Wiltern, LA | Their first concert as a duo |
 | 2026-04-24 | "GETCHA!" cover | — |
 | 2026-09-19 PDT | At Myth's 6th-anniversary 3D live "Seasons From Within" the two sang a duet cover of "September" | Setlist, secondary [S7] |
 **Dossier · Hard Facts (continuity):**
@@ -591,10 +604,10 @@ Incoming claims continue in `myth4-incoming.md`.
 
 # Audit packet: myth4 (incoming claims)
 
-Snapshot: git 5b38d20.
+Snapshot: git fa69d71.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Kiara and Ina|Drawn to Dawn|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|Kiara and Ina|Ina and Kiara|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ninomae Ina'nis and Kronii: R.E.P.O.
@@ -605,7 +618,7 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/characters/Cecilia-Immergreen.md › [SW] Background`: Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO and sang "I'm Your Treasure Box" with Bijou and Raora.
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Ninomae Ina'nis: a joking rival; Stranger of Paradise, and "SHALLYS" with FUWAMOCO on stage.
 - `bible/characters/Cecilia-Immergreen.md › Background Timeline`: | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice; "Wind-Up," the first Justice solo; "SHALLYS" with Ina and FUWAMOCO (on violin); "I'm Your Treasure Box" with Bijou and Raora | [Official CI5] |
-- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage | [Observed CI2, CI3] [Official CI5] |
+- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage She framed a May 2026 music-making stream as preparing a tune for her rival's approaching birthday (title wording; Ina's participation not established). | [Observed CI2, CI3] [Official CI5] [Archive metadata NEW-R4-011] |
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | FUWAMOCO (both twins) | Advent | With Gigi, guest-hosted FUWAMOCO MORNING #167 (secondary); "SHALLYS" with Ina at -All for One-; the twins had hoped for a robot-maid member before she debuted | [Observed CI2; Mococo file] [Official CI5] |
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Nekomata Okayu, Hoshimachi Suisei, Nakiri Ayame | JP seniors | Listed with Ina and IRyS among the members of Okayu's 2025 New Year Game Festival team (archived team listing) | [Okayu file OK4] [Ayame file AY5] |
 
@@ -616,7 +629,7 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/characters/Gawr-Gura.md › [SW] Groups`: hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name)
 - `bible/characters/Gawr-Gura.md › [SW] Background`: Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025.
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and joked that anyone making Gura cry would face "the wrath of Ina."
-- `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] |
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Houshou Marine, Sakamata Chloe | UMISEA (official 2023 roster: Aqua, Marine, Chloe, Gura, Ina) | "SHINKIRO" with Marine (anime MV on Marine's channel, 2023-11-12, credited to both; the "GuraMarine" pair name is wiki-listed only) | [Marine file MA4 9ehwhQJ50gs] [Official UMISEA roster] |
 
 ### from Gigi Murin
@@ -662,7 +675,8 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Ninomae Ina'nis: "TakoRocky,"
 - `bible/characters/Koseki-Bijou.md › Voice Profile`: - Secondary: she discovered she can imitate Ina by pitching her voice down with a voice changer. [Observed KB2 §Miscellaneous, secondary]
 - `bible/characters/Koseki-Bijou.md › Background Timeline`: | 2025-07-05 | hololive night at Dodger Stadium with Ina and IRyS: a stadium sing-along and the first VTuber stream from the stadium | [Official KB9] |
-- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Ninomae Ina'nis | Senior ("TakoRocky") | Monster Hunter (2023–2025); Ina designed their Monster Hunter Wilds collab outfits (2025-12) | [Observed KB3; X post via wiki] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Ninomae Ina'nis | Senior ("TakoRocky") | Monster Hunter (2023–2025); Ina designed their Monster Hunter Wilds collab outfits (2025-12) Monster Hunter Wilds outfit project: Bijou chose Gore Magala, Ina Nu Udra. | [Observed KB3; X post via wiki] [Secondary, Siliconera interview] |
+- `bible/characters/Koseki-Bijou.md › Relationship Map`: | Nekomata Okayu | JP senior | Credited participants together (with Kiara, Ina, Kobo and Todoroki Hajime) in the official purple-themed 3D variety program #パープル争奪戦 (2026-07-23). | [Archive metadata NEW-R3-008] |
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
@@ -718,6 +732,7 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/characters/Ouro-Kronii.md › Voice Profile`: - Korean: she speaks it fluently, a language she shares with Ina [Observed K8 §Miscellaneous, secondary]; a language exchange with Kiara is reported by a clip title [Unverified, K17]. Rare outside those exchanges (estimate).
 - `bible/characters/Ouro-Kronii.md › Voice Profile`: - Colleagues: by name or short form (Ina, Bae, IRyS).
 - `bible/characters/Ouro-Kronii.md › Voice Profile`: - Measured (K36, chat windows): median pitch 177–188 Hz, the lowest of the six files measured the same way (Calli 197–214 Hz; Gura and Ame about 250–270 Hz); about 120–127 words per minute of speech, mid-paced (Calli 161–186, Ina 81–95). Approximate values for relative comparison.
+- `bible/characters/Ouro-Kronii.md › Voice Profile`: - **Stage host (official interview, 2026-06):** she recalls enjoying an earlier concert MC segment with Ina and anticipates the audience's response to their unit entrance. Scene direction (proposed): as emcee she actively invites audience participation. [Official NEW-R2-008]
 - `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2026-06-04 | Serendipity interview and partnership with Ina | Puns, appreciation, performance goals [Official K4] |
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Ninomae Ina'nis | Serendipity partner (2026); longtime friend | They trade puns; both speak Korean | [Official K4] [Observed K8 §Miscellaneous, secondary] |
 
@@ -727,6 +742,10 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/characters/Raora-Panthera.md › Background Timeline`: | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, solo "Gacha x Gacha ADVENTURE!," "Neko Kaburi-Na" with Ina, Shiori and guest Oozora Subaru, "I'm Your Treasure Box" with Bijou and Cecilia | [Official RP5] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Ninomae Ina'nis | Myth senior | Puyo Puyo Tetris 2 (2025); the Monster Hunter Wilds launch with Gigi and Bijou; "Neko Kaburi-Na" with Shiori and Oozora Subaru at -All for One- | [Observed RP3] [Official RP5] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Shiori Novella, Oozora Subaru (JP) | Advent senior; JP senior | "Neko Kaburi-Na" with Ina at -All for One- (2025) | [Official RP5] |
+
+### from Sakamata Chloe
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster).
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | The ocean unit's official 2023 roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/] |
 
 ### from Shiori Novella
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Ouro Kronii: they hosted "Rating Your Clocks" together (2025) and sang "MONSTER" with Ina and Gigi at the 2025 concert.
@@ -754,11 +773,14 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal.
 - `bible/characters/Takanashi-Kiara.md › Voice Profile`: 3. "So actually, tomorrow, Calli, Ina, Wawa…" (ASR T23, 2:39:41; she goes on to "lots of people in Hytale")
 - `bible/characters/Takanashi-Kiara.md › Appearance Anchors`: - Mascot: Kotori, a little bird designed by Ina. Two "phoenix cats," Chonkers (orange) and Smoothie (turquoise), appear as model accessories; they stay off the card. [Observed T2 §Mascot and fans, secondary]
-- `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-03-27/28 | "Drawn to Dawn" duo concert with Ina (The Wiltern, Los Angeles) | [Official T11, T12] |
+- `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-03-27/28 PDT | "Drawn to Dawn" duo concert with Ina (The Wiltern, Los Angeles) | [Official T11, T12] |
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-09-07 | Branches merge; unit is hololive -Myth- | [Official T20, T1] |
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Ina; "THIS IS MYTH" premieres | [Archive metadata T25] |
-- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate ("TakoTori") | Duo concert 2026; Kiara "fired" Ina over the 2020 chicken incident. Ina's wiki page reports that Ina is the first to message Kiara when she's down (a secondary account, not on the card) | [Official T11, T12] [Observed T2 §KFP; T22 §Personality, secondary] |
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate ("TakoTori") | Duo concert 2026; Kiara "fired" Ina over the 2020 chicken incident.  | [Official T11, T12] [Observed T2 §KFP; T22 §Personality, secondary] |
 - `bible/characters/Takanashi-Kiara.md › Hard Facts`: - Birthday July 6; height 165 cm; debut 2020-09-12; unit hololive -Myth-; illustrator huke. [Official T1]
+
+### from Takane Lui
+- `bible/characters/Takane-Lui.md › Behavioral Traits`: 2. Dad jokes, like Ina and Kronii. [Observed LU2 §Personality, secondary]
 
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Groups`: hololive (affiliate), hololive -Myth- (affiliate), Myth, hololive English (former branch name)
@@ -794,7 +816,7 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive English concerts** (US, summer): "-Connect the World-" (2023-07-02), "-Breaking Dimensions-" (2024-08-24/25, Kings Theatre, New York; Fauna and Mumei premiered their duet "It's Not a Phase"; Kiara, Mumei and Nerissa sang "Beyond the way"; Fauna, Shiori and Nerissa "Lonely in Gorgeous"; Promise's unit song "Our Promise"; "BLUE CLAPPER" by the CHADCast trio (Calli, IRyS, Bae) with Bijou; Bae's solo "GEKIRIN"; "High Tide" by IRyS, Bae, Moona Hoshinova and Hoshimachi Suisei [Official S8]), "-All for One-" (2025-08-23/24, Radio City Music Hall, New York; all fifteen EN members: Advent's "Genesis"; "HOT DUCK!" by Bijou, FUWAMOCO and Oozora Subaru; "MONSTER" by Ina, Kronii, Shiori and Gigi; "SHALLYS" by Ina, FUWAMOCO and Cecilia; Shiori's "AKUMA" and "Suspect" with Kiara and Ayunda Risu; Bijou's solo "Dead Ma'am's Chest"; Justice's first group performance at an in-person concert venue in 3D, "ABOVE BELOW"; "R x R x R" by Calli and Bae; "Countach" by Bae, Gigi and guest Kureiji Ollie; Bae's solo "La Roja (Arrange ver.)"; Cecilia's "Wind-Up," the first Justice solo number of that concert, Raora's "Gacha×Gacha ADVENTURE!," Elizabeth's "Stellar Stellar" and Gigi's "Wonky Monkey"; "ALiCE&u" by Nerissa, Elizabeth and Ayunda Risu; "I'm Your Treasure Box" by Bijou, Cecilia and Raora [Official S9]), "Serendipity" (2026-07-03/04, Shrine Auditorium, Los Angeles), the last built around partner pairs (among them Calli–Shiori, Kronii–Ina, Kiara–Bijou, IRyS–Hakos Baelz and Nerissa–Elizabeth Rose Bloodflame, FUWAMOCO–Raora and Gigi–Cecilia), each with a published interview. Official report (S11): units Last Writes (Calli & Shiori, "When My Devil Rises"), Octo'clock (Ina & Kronii, "Bad Apple"), Rocku Wawa (Kiara & Bijou, "Tententengoku Jigokukoku"), BaeRyS (IRyS & Bae, "LUVATORRRRRY!"), Bloodraven (Nerissa & Elizabeth, "Cruel Angel's Thesis"), B.F.F (FUWAMOCO & Raora, "Inu Neko. Seishun Massakari"), Autofister (Gigi & Cecilia, "CCGG MADNESS"); guests Ookami Mio ("Dottabatta Chindouchuu" with Ina and FUWAMOCO; "Night Loop" with IRyS and Bijou), Kobo Kanaeru ("HELP!!" with Bae and Elizabeth; "BLUE CLAPPER" with Kronii and Nerissa), Vestia Zeta ("Break It Down" with Shiori and Cecilia; "MAKE IT, BREAK IT" with FUWAMOCO and Gigi) and Tsunomaki Watame ("Cloudy Sheep" with Calli and Cecilia; "What an amazing swing" with Kiara and Raora); group stages: Myth and Promise medleys, Advent's "What Goes Around," Justice's "SUPERNOVA SUPER GIRL," the Advent+Justice medley ("Rebellion," "ABOVE BELOW"), Myth and Promise's "Kirameki Rider – English ver.," and all fifteen on "Serendipity" (its first performance) and "All for One." The report lists selected performances, not a full setlist. Dates are US local time. [Observed S1; character files C11, K4, I7, T10; Official S5, S6]
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **World tours:** "hololive STAGE World Tour'24 -Soar!-" (AZKi, Tsunomaki Watame, Moona Hoshinova, Kobo Kanaeru, Takanashi Kiara, Ninomae Ina'nis, Hakos Baelz): New York (Anime NYC, 2024-08-23, a day before and separate from "-Breaking Dimensions-"), Jakarta (11-09), Singapore (11-30, with a pre-concert panel of Kaela Kovalskia and Ouro Kronii), Atlanta (12-15, a panel of Nerissa and Elizabeth Rose Bloodflame), Kuala Lumpur (12-21, Nerissa and Elizabeth again) and Taipei (2025-01-18, the finale) [Official S7]; and "World Tour'25 -Synchronize!-" led by Momosuzu Nene, Kureiji Ollie, Mori Calliope, IRyS and Nerissa Ravencroft, with two guests per city (Ouro Kronii and Hakos Baelz in Sydney; Tokino Sora and Sakura Miko in Hong Kong). [Observed S1 §2024, §2025]
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive night at Dodger Stadium (2025-07-05, Los Angeles):** the second hololive–Dodgers collaboration, starring Ina, IRyS and Bijou, with a stadium sing-along during the game. [Official, https://hololive.hololivepro.com/en/news/20250731-01-353/]
-- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Takanashi Kiara | 4th-anniversary live "MIRAGE" (2024-10-06); "KIARA & FRIENDS: H!P Cover Song Spring Concert" (2025-04-21); "Drawn to Dawn" with Ina (2026-03-27/28, The Wiltern); World Tour '24 performer; Serendipity with Bijou; birthday 3D live (2026-07-06 PDT); "Seasons From Within" | Kiara file T11, T12, T10; S3 titles |
+- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Takanashi Kiara | 4th-anniversary live "MIRAGE" (2024-10-06); "KIARA & FRIENDS: H!P Cover Song Spring Concert" (2025-04-21); "Drawn to Dawn" with Ina (2026-03-27/28 PDT, The Wiltern); World Tour '24 performer; Serendipity with Bijou; birthday 3D live (2026-07-06 PDT); "Seasons From Within" | Kiara file T11, T12, T10; S3 titles |
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleiades" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ouro Kronii | World Tour '24 Singapore pre-concert panel with Kaela Kovalskia; World Tour '25 Sydney guest; 3D birthday live "The Goddess Descends" with a new outfit (2026-03-13/14, Ame as guest); Serendipity with Ina | Kronii file K33, K4; S1 |
 - `bible/world/Concerts-and-Live-Events.md › Conflicts and Story Hooks`: 4. An aftertalk where Kiara and Ina disagree about who cried first at "Drawn to Dawn."
@@ -812,7 +834,7 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 
 ### from Hakos Baelz Pairs
 - `bible/world/Hakos-Baelz-Pairs.md › With Myth`: - **Ninomae Ina'nis:** the K/DA "POP/STARS" cover with Moona and Ayunda Risu (2023); a BAE-CADEMY art lesson with "Ina-sensei" (2024); Ina's AmiAmi special featuring Bae (2025-05-29); World Tour '24. [S1] [Official S5]
-- `bible/world/Hakos-Baelz-Pairs.md › History`: | 2023 | "Gisneyland," "Daikirai na Hazu Datta"; K/DA "POP/STARS"; We Were Here | BaeRyS; Bae–Ina; BaeBi |
+- `bible/world/Hakos-Baelz-Pairs.md › History`: | 2023 | a BaeRyS off-collab; "Daikirai na Hazu Datta"; K/DA "POP/STARS"; We Were Here | BaeRyS; Bae–Ina; BaeBi |
 
 ### from IRyS and Nerissa Pairs
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Other Names`: MorIRyS, CHADCast, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
@@ -861,7 +883,7 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/world/Justice-Pairs.md › Inside Justice`: - **Gigi and Raora ("RPGG"):** MapleStory (2024-08-16), Monster Hunter Wilds (2025, a sponsored launch with Ina and Bijou), a food tier-list off-collab (2025-06-05), Elden Ring Nightreign (2025); Raora designed the 2026 Monster Hunter collaboration outfits for Gigi and herself. [Observed S1; X post S5]
 - `bible/world/Justice-Pairs.md › With Advent`: - **Shiori:** Elizabeth ("NovelFlame," "BloodQuill"; secondary) and Gigi voice parts in Shiori's non-canon motion comic "Into The Void" (2026; episode 2 also credits Calli); Gigi ("NovelGrem") games with her often (Heave Ho, a Fateful Findings watchalong, Project Zomboid, Phasmophobia; Eden Eternal was Kiara, Shiori and Gigi); the "Fanfic Club" (Gigi, Shiori, Pavolia Reine, Airani Iofifteen) is a separate group from "GAGA" (Gigi, Cecilia, Shiori, Bijou); Raora: a 2024 outfit-design collab (2024-12-05) and Blood Typers with Kronii and Bijou (2025-06-10); Cecilia: "Break It Down" with Vestia Zeta at Serendipity; Gigi: "MONSTER" with Ina and Kronii at -All for One-. [Observed S1; S2]
 - `bible/world/Justice-Pairs.md › With Myth`: - **Ninomae Ina'nis:** Cecilia's Stranger of Paradise partner (2025), with a rivalry bit Cecilia plays up (secondary); "SHALLYS" with Cecilia and FUWAMOCO, "MONSTER" with Gigi, Kronii and Shiori, "Neko Kaburi-Na" with Raora, Shiori and Oozora Subaru (all at -All for One-); Rabbit and Steel with Cecilia, Bijou and Gigi (2024); Blood Typers with Gigi (2025-04-11); Puyo Puyo Tetris 2 with Raora (2025-06-02); the Monster Hunter Wilds sponsored launch with Gigi, Raora and Bijou (2025-03-01). [Observed S1]
-- `bible/world/Justice-Pairs.md › Beyond EN`: - **JP:** Elizabeth's 2026 birthday covers, recorded at COVER's studio, featured Oozora Subaru; Roboco, Tokino Sora and Yuzuki Choco; Houshou Marine and Inugami Korone ("IT'S LOVE," iwnHChZq0N8, credits read by Claude); FUWAMOCO with Polka, Nene, Watame and Iroha; her 2026 "Yona Yona Dance" cover mixed branches (Natsuiro Matsuri, Hiodoshi Ao, Ollie and HOLOSTARS members). Cecilia played Minecraft and Super Mario 3D World with Tokino Sora (2025-02); Raora played Clubhouse Games with Haachama (2024-08-16), sang "Neko Kaburi-Na" with Ina, Shiori and guest Subaru at -All for One-, is "RaoRiRi" with Ichijou Ririka; "OkaGigi" is a secondary-documented name for Gigi and Nekomata Okayu, with no concrete shared activity sourced (dossier only). Tsunomaki Watame sang "Cloudy Sheep" with Calli and Cecilia and "What an amazing swing" with Kiara and Raora at Serendipity. FLOW GLOW: Koganei Niko sang with Elizabeth in LYRA. [Observed S1; S2] [Official S6, S7]
+- `bible/world/Justice-Pairs.md › Beyond EN`: - **JP:** Elizabeth's 2026 birthday covers, recorded at COVER's studio, featured Oozora Subaru; Roboco, Tokino Sora and Yuzuki Choco; Houshou Marine and Inugami Korone ("IT'S LOVE," iwnHChZq0N8, credits read by Claude); FUWAMOCO with Polka, Nene, Watame and Iroha; her 2026 "Yona Yona Dance" cover mixed branches (Natsuiro Matsuri, Hiodoshi Ao, Ollie and HOLOSTARS members). Cecilia played Minecraft and Super Mario 3D World with Tokino Sora (2025-02); Raora played Clubhouse Games with Haachama (2024-08-16), sang "Neko Kaburi-Na" with Ina, Shiori and guest Subaru at -All for One-, is "RaoRiRi" with Ichijou Ririka; "OkaGigi" is a secondary pair label for Gigi and Nekomata Okayu; secondary clip metadata records translation-based banter during the 2026 New Year Game Festival. It does not establish exact dialogue or a private relationship. Tsunomaki Watame sang "Cloudy Sheep" with Calli and Cecilia and "What an amazing swing" with Kiara and Raora at Serendipity. FLOW GLOW: Koganei Niko sang with Elizabeth in LYRA. [Observed S1; S2] [Official S6, S7]
 
 ### from Myth and Kronii: Other Pairs
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Other Names`: Kiara and Ame, Ame and Kiara, Kiara and Gura, Gura and Kiara, Calli and Ina, Ina and Calli, Calli and Ame, Ame and Calli, Ina and Ame, Ame and Ina, Ina and Gura, Gura and Ina, Kiara and Kronii, Kronii and Kiara, Gura and Kronii, Kronii and Gura
@@ -875,7 +897,7 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2026-01-08 | "TAKO∞TAKOVER" digital release (lyrics by Calli) | Ina × Calli |
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Conflicts and Story Hooks`: 3. Calli writes lyrics for Ina and Ina draws the cover; each critiques the other's draft.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Conflicts and Story Hooks`: 5. Ina organizes a "loser buys dinner" rematch.
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Hard Facts`: - Ina designed Death Sensei, Bubba and the Takodachi; Calli wrote "TAKO∞TAKOVER."
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Hard Facts`: - Ina designed Death Sensei, Bubba and the Takodachi; Calli wrote the lyrics for "TAKO∞TAKOVER."
 
 ### from Octo'Clock
 - `bible/world/OctoClock.md › [SW] Other Names`: Ina and Kronii, Kronii and Ina, Octo'clock, Octo'Clock
@@ -901,7 +923,10 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/world/Time-Duo.md › How It Works`: - **On stream (archive, S1):** Ame's surprise karaoke off-collab with Ina, Kronii, Fauna and Mumei (2022-02-25, per S3); 5D Chess "I Don't Understand With @WatsonAmelia" (Kronii, 2023-04-08); Escape the Backrooms with Calli (2024-09-22) and Deep Rock Galactic with Kiara and Gura (2024-09-30, Ame's last week of regular streams).
 
 ### from VTuber Persona and Lore
-- `bible/world/VTuber-Persona-and-Lore.md › How It Works`: - They can re-enter it for a bit and drop it again: Calli's reaper threats, Ina's "priestess" voice, Kiara's KFP manager routine, Ame's "Trust me, I'm a time traveler." [Observed character files]
+- `bible/world/VTuber-Persona-and-Lore.md › How It Works`: - They can re-enter it for a bit and drop it again: Calli's reaper threats, Ina's "priestess" voice, Kiara's KFP manager routine, Ame's time-traveler jokes [Observed character files]
+
+### from holoX
+- `bible/world/holoX.md › With the English cast`: - **Ninomae Ina'nis, Gawr Gura (graduated):** UMISEA with Chloe, Minato Aqua and Houshou Marine (official 2023 roster). [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/]
 
 ### from hololive -Myth-
 - `bible/world/hololive--Myth.md › [SW] Other Names`: Myth, holoMyth, HoloMyth, hololive -Myth-, hololive English first generation
@@ -922,10 +947,10 @@ Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Ina and Kiara|Ki
 - `bible/world/hololive--Promise.md › How the Group Works`: - **After 2025:** the group is three. Kronii's 2026 activity includes a 3D birthday live with Ame as a guest, the Serendipity pairing with Ina and her EP. [Observed Kronii file K4, K33, K36]
 
 ### from hololive History 2023-2026
-- `bible/world/hololive-History-2023-2026.md › [SW] Description`: Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; Justice's second-anniversary live "How to Protect JUSTICE!"
+- `bible/world/hololive-History-2023-2026.md › [SW] Description`: Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; Justice's second-anniversary live "How to Protect JUSTICE!"
 - `bible/world/hololive-History-2023-2026.md › [SW] Description`: (June); EN's 4th concert "Serendipity" in Los Angeles (July), built on units such as Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS, Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora) and Autofister (Gigi–Cecilia); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 EDT | World Tour '24 "-Soar!-" opens at Anime NYC (Javits Center) with Kiara, Ina and Bae among seven performers; it ends in Taipei on 2025-01-18 | — |
-- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2025-07-05 | hololive night at Dodger Stadium, Los Angeles, the second hololive–Dodgers collaboration: Ina, IRyS and Bijou | a stadium sing-along |
+- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2025-07-05 PDT | hololive night at Dodger Stadium, Los Angeles, the second hololive–Dodgers collaboration: Ina, IRyS and Bijou | a stadium sing-along |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-03-27/28 PDT | Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) | TakoTori on stage |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-07-03/04 PDT | **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around units: Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS (IRyS–Bae), Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora), Autofister (Gigi–Cecilia); guests Ookami Mio, Kobo Kanaeru, Vestia Zeta, Tsunomaki Watame (official report) | The current partnerships |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" | — |
