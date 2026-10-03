@@ -1,3 +1,4 @@
 - 2026-10-02 07:12 作者裁決收錄 final.md（sha256 c26b0089a9fc）：Author decision (2026-10-02): Hoshimachi Suisei and AZKi added to the cast; GPT reviews each card one round only (run A), merged by Claude
 - 2026-10-02 07:53 作者裁決收錄 final.md（sha256 bc7717aedd73）：Author decision (2026-10-02): reciprocal relationship ties for the JP four and the batch-2 members (relationship-web coverage); batch-2 lines are confirmed in GPT review runs D/F, the JP-four lines in the cohort audits
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 c20b3db68385）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
+- 2026-10-03 23:22 作者裁決收錄 final.md（sha256 43a20fa4bb7c）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.

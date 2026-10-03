@@ -489,6 +489,7 @@ Watson Amelia (affiliate): a close Myth friend and frequent early collaborator (
 - **2026-10-02, GPT review of the JP cast additions (run B):** Dodgers clause reworded to the official report's "featured talents" (no physical attendance implied); HOLOTALK #34 dated "near her graduation" (archive ash9FVn3trc; YouTube and archive dates differ by timezone). The older Kiara clauses (Goobidiba, lessons, chicken prank) keep their earlier-round sources G2/G13/G20; this run could not open them.
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi), reciprocal ties:** Marine (UMISEA, "SHINKIRO"), Chloe (UMISEA, secondary) and Botan ("Apex Predators," secondary) added to Relationships (sources in the new member files).
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** Chloe's UMISEA membership rests on the official 2023 roster; "GuraMarine" left out of the export (wiki-only); "SHINKIRO" kept, verified by Claude in the local archive metadata (9ehwhQJ50gs).
+- **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the English-lesson roster matches Calli's, Iroha's and the holoX card; UMISEA keeps "official 2023 roster" (not a claim that all five are active).
 
 ## Open Questions
 1. "Fuck" is attested once in the 4.4-hour Resident Evil 2 audio of 2021 (both models hear it; the

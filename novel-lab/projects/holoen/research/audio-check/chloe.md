@@ -45,7 +45,7 @@ All windows are from 2024, her last full year of regular activities (she conclud
 | Refers to herself as "Sakamata" | **Observed**; the first model renders it in several ways (e.g. 「坂本」), so no line with it is quoted. | [0:10:08](https://youtu.be/Myw1OMa2wvQ?t=608) |
 | Turns a stray question into a poll of chat | **Observed**: asks chat when an "ojisan" becomes an "ojisan" and runs a show of hands. | [0:07:32](https://youtu.be/Myw1OMa2wvQ?t=452) |
 | Drawn-out "~sā" sentence endings | **Observed**: 「ずっとさー」 … 「めっちゃ緊張してさー」 in the opening. | [0:05:59](https://youtu.be/Myw1OMa2wvQ?t=359) |
-| Fast, soft chatter | **Observed**: about 309 characters a minute of speech in the chat window (a rough index). | — |
+| Fast, soft chatter | **Not established**: ASR records connected chatter; the character-rate measurement (about 309 characters a minute, a rough index) does not establish perceived speed, softness or timbre, which stay provisional (run F review, 2026-10-03). | — |
 
 ## Second model (whisper medium) on quoted lines
 

@@ -1,38 +1,40 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "d2dfb9b",
+ "commit": "83717eb",
  "files": {
-  "bible/characters/AZKi.md": "c20b3db68385dff12143e870b86804d9b9b5d04f8c5cb64b4357b2c35d8236a2",
-  "bible/characters/Cecilia-Immergreen.md": "1a7023b73db21444e4a016f37dfd28775a01d57ac9e21defdf5b8df37fe8491e",
+  "bible/characters/AZKi.md": "43a20fa4bb7c3b85f001b62d59f7a9dff837e8a3d75b4ec26c35244ba6605e98",
+  "bible/characters/Cecilia-Immergreen.md": "111cf4ee0a40ae1da64f851a4708acd3f62bab4d0df3fd74e3f78e58c2da824c",
   "bible/characters/Ceres-Fauna.md": "f739f518fb7cd83c19ffc575a6890990ea06f16299ca84f7e25d855958efe271",
   "bible/characters/Elizabeth-Rose-Bloodflame.md": "b0e0e589f540946b3220ff4a08429c8011d0c527e6349ff42abc7c89ac1fda0c",
-  "bible/characters/Fuwawa-Abyssgard.md": "258cd852ef95c3a79ea1b23db6cabc72291de7e263cd22591fc09fceb3254866",
-  "bible/characters/Gawr-Gura.md": "7435656193f205608af7a9a7a7b784f0c6aaa32202a9027904151f0a109104e7",
-  "bible/characters/Gigi-Murin.md": "4d8a32d14e884e082b60a5dc04023f168cfdfd6b3c72acf67ad934340dd1e486",
-  "bible/characters/Hakos-Baelz.md": "9dc8b9d13d93b0c56721130df231eba7e89ca2e3562bbcc829b15a64a2b5d18a",
+  "bible/characters/Fuwawa-Abyssgard.md": "d217b4a02844dc2df163b0cdc038879f0939b4d2040492c557795e3cf2920f04",
+  "bible/characters/Gawr-Gura.md": "edc8fc1a896865b7a641cb0d114b50ea66d7f52cbee9ce82e5214772f18ca706",
+  "bible/characters/Gigi-Murin.md": "88c860025cd02ed5b07767aa45f7bbc599df6971628508a287c234895645a12c",
+  "bible/characters/Hakos-Baelz.md": "911cd9d7bf2d383718bff9aa0ffc185195a207d09dc07d8f6572dcf41a4c69f1",
   "bible/characters/Hakui-Koyori.md": "b129e84b71f9a1abcf9bb8cff66c7bb15bd3b7be0481179ce622533df7287a5a",
-  "bible/characters/Hoshimachi-Suisei.md": "101adc6666c05f62e2b41a9cd01fca0cec534b0147a69c5e6faf5536bbbac63f",
+  "bible/characters/Hoshimachi-Suisei.md": "fe2efe4e6a7ea01d519d20799cb75c6c88a3ff35458d798167d705c123428774",
   "bible/characters/Houshou-Marine.md": "b611ca66c50163fa90e5a6015806c29aff84f371f59818d4e6a08c208eed907b",
-  "bible/characters/IRyS.md": "1c2d26e55d0282d0199044b0ad8cb9a7e55a00e4707460ee4f6978b492ebfeb9",
+  "bible/characters/IRyS.md": "1cb94c612b73c5a18d71a25145eb894273f672ae857ce768f3357da965451612",
+  "bible/characters/Kazama-Iroha.md": "9f9549eaf96fcd405ae580efdffdcbdd95a62467623f88bdfa8591ffb988fd47",
   "bible/characters/Kikirara-Vivi.md": "21bf60dbf9204012f00b3fdc356cd2d7e435c1c294d6ab48ce9d35882b51fb1d",
-  "bible/characters/Koseki-Bijou.md": "bdb081c5ae65ff29f060e3c26baa8fe96fbe627e4215c494a63f509448687037",
+  "bible/characters/Koseki-Bijou.md": "8ecae76ba297f57a73a5f0bb6045d5926a4cbae11c98a727037a8df151df170c",
   "bible/characters/Laplus-Darknesss.md": "665ffca4b0d336d74559219f0cb4d0d4fbecdf1c0179ab33c23d14b5a0a5247d",
-  "bible/characters/Mococo-Abyssgard.md": "e3ea165fb7d90b9af194377c2282f456c42002a34c4e8065f511990a486a1776",
-  "bible/characters/Mori-Calliope.md": "fa27059d7339592feb8fe4cd46dbf00eeabb5ce64eccf4fb59deb9375e4d5e1f",
-  "bible/characters/Nakiri-Ayame.md": "c82646952259bc845300c292527b72574cd18c0425df5c74fbd4bddfb9f41b8e",
-  "bible/characters/Nanashi-Mumei.md": "30153c6be3bc18484c3d24cfbbdc73495f29c8bd28fd5e2aa67ed5c507f5d6f8",
-  "bible/characters/Nekomata-Okayu.md": "63e5fed4346b3ac5adcf5742f4ac9cfb7ce87b4b6c274c008b47c5465ac11cf8",
-  "bible/characters/Nerissa-Ravencroft.md": "8028c69be62a8325969d17b512e738ae66e5c793247921eabf85b6ce0e081904",
+  "bible/characters/Mococo-Abyssgard.md": "a0c6e273b3ef577d71b3cc6f3244adc4639d0f80ecf1fff5fc3adcc0b0430b07",
+  "bible/characters/Mori-Calliope.md": "d8c36b448f72ccf1e3d76f21969758cd789b9b0594eedb5e9347ed442ff3647f",
+  "bible/characters/Nakiri-Ayame.md": "6ed39914583c28b8c03a55567fe8b4b1b32b76fe3e6939d59f90530f63d4dfb8",
+  "bible/characters/Nanashi-Mumei.md": "c80dc1dba174a57c2b7a7ad7ee53f5d53a1d1ff539037fa367811e9b3229ac9d",
+  "bible/characters/Nekomata-Okayu.md": "acf231f9cad3d0029f14defcc321ae407f7406bef1459040aca5f86450a80fa5",
+  "bible/characters/Nerissa-Ravencroft.md": "ee3d5c1f5dc2f433a3042c8afcb1938ba6d7dffbf53d3087fdeaa6158d3f1f6d",
   "bible/characters/Ninomae-Inanis.md": "2e94ef20a0e0f2d76ee1580e35f145c04747e88539bc5ec5d2e5c4ccddfd3eb2",
-  "bible/characters/Ouro-Kronii.md": "e28417b894a9516999a0ea922b52088937192d2f2a22ef6ccb254d240b198e70",
-  "bible/characters/Raora-Panthera.md": "0f153278cd7f7d14305164b804fbf2b49c14a3ba63416115b85c7f7c21529679",
+  "bible/characters/Ouro-Kronii.md": "dc36501919a441a480294cad9cb738150a5025e8c87eedfcdcc6010b9773a87f",
+  "bible/characters/Raora-Panthera.md": "7060be92d016a17a8ae0753142766aba8e161895f0fe8c5db4df2d9d28595baf",
+  "bible/characters/Sakamata-Chloe.md": "5d5d78ff41b4018e282408d70ab64d7b96b63b7f77c331689c7793a42450fafc",
   "bible/characters/Shiori-Novella.md": "17e6e4e846ecf9163246fde34efc12e18ad5b3e5e22f9beb5bdb6d87fe0fa5ae",
   "bible/characters/Shirogane-Noel.md": "fa254fc26dbde629e8eb4d5f1d732425899bcd0dbb228f97dc65f2c08a7ddaed",
   "bible/characters/Shishiro-Botan.md": "06d44f3cce8193784f6dc90624badd3f9c1b3d9cc24bde34b452f708881bfeb9",
-  "bible/characters/Takanashi-Kiara.md": "9018e513052bdfbfafabf5ab9544186c3f3b5cd4ad093ceb6dd7ccdfcdfa18c4",
-  "bible/characters/Takane-Lui.md": "3ef5bf38be6e1175099a6405ade2d56c0e852983b165cbf283884f58052ba65e",
-  "bible/characters/Watson-Amelia.md": "2021dc901c54e53010da9cdbd0aedb75011318cd9e5ce9ca269e027d0116aa53",
+  "bible/characters/Takanashi-Kiara.md": "f85955aa3e88fdf7760b782ac9f5c755cea700a74277d13b4f23c670b99d7a85",
+  "bible/characters/Takane-Lui.md": "6d81b858789ce21f0a1b0044324b2e90df255e4e91bf1e6f6ca66d7e8a5ed921",
+  "bible/characters/Watson-Amelia.md": "e8d131abdf47d727b4fc3d72172ce2aa03efeac0324b7f007c93b730d3bc8e34",
   "bible/characters/Yukihana-Lamy.md": "b7309e3862592efce8b1e8ecd5d795461e3616e06cfc2ead170a38cdde123ab6",
   "bible/world/Advent-Pairs.md": "bea1ef142554b21fe45ec4cdd1782bf38da5105cd275dd46582e349390ff5ce2",
   "bible/world/AmeSame.md": "03602b5cf2fd19d1fa524636a54d0af12f84d27e928ad6d6b558931a31b6360b",
@@ -54,6 +56,7 @@
   "bible/world/Time-Duo.md": "329fef0a8daa8d64cda9db111093e237037ca163d6014c601a5254011258d6a5",
   "bible/world/Time-and-Death.md": "e1239bb9b6264defe6b070bb2d6a6d2b43539b191f835a133857822ccf646ac5",
   "bible/world/VTuber-Persona-and-Lore.md": "f52c6b4e05a010ec1b56ea6ffdc69036bfe22b0dbecf9ee546d14773ff8e3105",
+  "bible/world/holoX.md": "2602131cd4f889b8feaf15ad3d952f49f1ee78bb929bea2948a5b0ce8235f03d",
   "bible/world/hololive--Advent.md": "e7f7200a8cf51af6f44191eccbee3c4ad425d8bb7447d885778e36d9d8b56b52",
   "bible/world/hololive--Justice.md": "2c7e406dec23e441fe727a02ade320029d8d3e2063a934fe279b67baa26b939e",
   "bible/world/hololive--Myth.md": "ef5715a5ecbe97b21dfb9f61f08241d7d94983bb0d808bebe42a6f561be01e04",
@@ -395,6 +398,34 @@
    }
   },
   {
+   "name": "Kazama Iroha",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "other_names": [
+    "Iroha",
+    "Iroha-dono",
+    "Gozaru",
+    "Gozaru-chan",
+    "風真いろは"
+   ],
+   "groups": [
+    "hololive",
+    "Secret Society holoX",
+    "holoX",
+    "AzuIro",
+    "Hoshimatic Project",
+    "NePoX",
+    "Bara☆Dice"
+   ],
+   "status": "Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2021-11-30",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Kazama-Iroha.md › Background (debut: Background)"
+   }
+  },
+  {
    "name": "Kikirara Vivi",
    "file": "bible/characters/Kikirara-Vivi.md",
    "other_names": [
@@ -711,6 +742,34 @@
     "graduated": null,
     "regular_activities_concluded": null,
     "source": "bible/characters/Raora-Panthera.md › Background (debut: Background)"
+   }
+  },
+  {
+   "name": "Sakamata Chloe",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "other_names": [
+    "Chloe",
+    "Kuroe",
+    "Sakamata",
+    "Kura-tan",
+    "沙花叉クロヱ"
+   ],
+   "groups": [
+    "hololive",
+    "Secret Society holoX (until 2025)",
+    "holoX",
+    "KoyoChlo",
+    "Kanaken",
+    "holoWitches",
+    "UMISEA"
+   ],
+   "status": "Chloe is a hololive affiliate, formerly an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "affiliate",
+    "debut": "2021-11-29",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Sakamata-Chloe.md › Background (debut: Background)"
    }
   },
   {
@@ -1187,6 +1246,16 @@
     "kayfabe",
     "in-character",
     "canonically"
+   ]
+  },
+  {
+   "name": "holoX",
+   "file": "bible/world/holoX.md",
+   "role": "Organization",
+   "other_names": [
+    "Secret Society holoX",
+    "秘密結社holoX",
+    "hololive 6th Generation"
    ]
   },
   {
@@ -1773,6 +1842,24 @@
   "yabairys": [
    "IRyS"
   ],
+  "kazama iroha": [
+   "Kazama Iroha"
+  ],
+  "iroha": [
+   "Kazama Iroha"
+  ],
+  "iroha-dono": [
+   "Kazama Iroha"
+  ],
+  "gozaru": [
+   "Kazama Iroha"
+  ],
+  "gozaru-chan": [
+   "Kazama Iroha"
+  ],
+  "風真いろは": [
+   "Kazama Iroha"
+  ],
   "kikirara vivi": [
    "Kikirara Vivi"
   ],
@@ -2012,6 +2099,24 @@
   ],
   "the artist with the god eyes": [
    "Raora Panthera"
+  ],
+  "sakamata chloe": [
+   "Sakamata Chloe"
+  ],
+  "chloe": [
+   "Sakamata Chloe"
+  ],
+  "kuroe": [
+   "Sakamata Chloe"
+  ],
+  "sakamata": [
+   "Sakamata Chloe"
+  ],
+  "kura-tan": [
+   "Sakamata Chloe"
+  ],
+  "沙花叉クロヱ": [
+   "Sakamata Chloe"
   ],
   "shiori novella": [
    "Shiori Novella",
@@ -2608,6 +2713,18 @@
   ],
   "canonically": [
    "VTuber Persona and Lore"
+  ],
+  "holox": [
+   "holoX"
+  ],
+  "secret society holox": [
+   "holoX"
+  ],
+  "秘密結社holox": [
+   "holoX"
+  ],
+  "hololive 6th generation": [
+   "holoX"
   ],
   "hololive -advent-": [
    "hololive -Advent-"
@@ -4178,6 +4295,78 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2021-11-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut, the fifth and last of holoX",
+   "evidence": "[Official IR1] [Observed IR2]",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022",
+   "precision": "year",
+   "zone": null,
+   "text": "Calli's English lesson #02 with La+ and Gura (03-04); VALORANT with Ame and Kobo Kanaeru (\"KoMeHa,\" 06-04)",
+   "evidence": "[IR5]",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023",
+   "precision": "year",
+   "zone": null,
+   "text": "AzuIro: GeoGuessr on a \"Kazama map\" AZKi made, covers and a first off-collab (08); Puyo Puyo Tetris coaching from Suisei (04); Hoshimatic Project (11-)",
+   "evidence": "[IR4] [Observed IR2]",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "Covers with La+ (「絶対敵対メチャキライヤー」, 03-11) and Lui (「右肩の蝶」, 04-11); originals \"Mahou Shoujo☆Magical GOZARU\" and \"Dreamy Sky\" (06); a cookie-battle off-collab on her channel, presented with AZKi, with FUWAMOCO as the challengers (10-27, JgOwJ7m89Lk); a guest at Kiara's 4th-anniversary live (10-06); 1 million subscribers (11-19)",
+   "evidence": "[Observed IR2] [IR4] [IR5]",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "\"Gehenna\" cover with Chloe on her last day (01-26); Cuphead as #あずいろ (06-03) and an off-collab billed as a summer camp (08); \"A letter only you can read\" (06-15); a guest at Kiara's birthday live (07); #TASTYchallenge shorts with Kiara and Nene (07-11, 07-16); \"AZUIRO BESTIE DAYS\" (official release 09-18)",
+   "evidence": "[IR4 5zJp7oulbwc, -im-pIdanZY, mwhcZmc6-s8] [IR5 f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0] [Official music 642]",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-04-29",
+   "precision": "day",
+   "zone": null,
+   "text": "holoX's first concert, \"First MISSION\"",
+   "evidence": "[Official IR6]",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05-19",
+   "precision": "day",
+   "zone": null,
+   "text": "An excerpt from Elizabeth's 2026 birthday show, uploaded 05-19, credits Iroha, Watame, Nene, Polka and FUWAMOCO on \"CHA-LA HEAD-CHA-LA\" (upload date, not necessarily the show date)",
+   "evidence": "[IR5 xylll7Mp0jk]",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-18/19",
+   "precision": "day-range",
+   "zone": null,
+   "text": "「風向きエントロピー」 (official English title \"Entropy of wind direction\"; MV 06-18, digital release 06-19); a secondary chronology numbers it her ninth original",
+   "evidence": "[IR4 RDobidAdBCA] [Official music 764] [Observed IR2]",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "2024-11-09",
    "precision": "day",
    "zone": null,
@@ -5447,6 +5636,78 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2021-11-29",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut, fourth of holoX; 500,000 subscribers within a week",
+   "evidence": "[Official CH1] [Observed CH2]",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022",
+   "precision": "year",
+   "zone": null,
+   "text": "First original \"Jinsei Reset Button Pochii w\" (02-26); EN Minecraft tour with Bae, Mumei and Lui (02-12); Calli's English lesson #04 with Lui (04-16); 3D debut (06-13)",
+   "evidence": "[Observed CH2] [CH5]",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023",
+   "precision": "year",
+   "zone": null,
+   "text": "1 million subscribers (02-18, secondary); HOLOYOI #01 with Calli and Lui (03-23); \"BAE-GEMITE DOMINATION\" (04-29); a cover with Bae (10-30); the original Hoshimatic Project lineup (11-, secondary roster reference)",
+   "evidence": "[Observed CH2] [CH5 UuL_nORzfNM, z4-5Hq5AKG4, 9EAIDwXj4Jk]",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "\"Magical Girl holoWitches!\" single (05-30); \"Kanaken\" 3D live with Kanata and AZKi",
+   "evidence": "[Observed CH2] [CH4]",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11-29",
+   "precision": "day",
+   "zone": null,
+   "text": "Conclusion of regular activities announced; she stays an affiliate",
+   "evidence": "[Observed CH2]",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-01",
+   "precision": "month",
+   "zone": null,
+   "text": "Farewell week: last \"KoyoChlo\" collab (01-14), covers with La+ (01-15) and Koyori (「花の塔」 01-23; 「一番の宝物」 01-28 on Koyori's channel), \"WILDCARD\" with Kiara (01-25; the description says they had performed it at the 2024 fes), \"Gehenna\" with Iroha (01-26)",
+   "evidence": "[CH4 u5hBkM77dX0, acYx6NnoaAQ, mKq0e-7nnSU] [KO4 nCPHzr_iF7s] [CH5 eEGbAKvSf1Q] [IR4 5zJp7oulbwc]",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-01-26",
+   "precision": "day",
+   "zone": null,
+   "text": "Graduation live \"Gochisōsama deshita\"; tenth original song \"Hikari Are\"",
+   "evidence": "[CH4] [Observed CH2]",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-04-26",
+   "precision": "day",
+   "zone": null,
+   "text": "Performs \"Sparkle\" with Murasaki Shion at Shion's graduation live",
+   "evidence": "[Observed CH2]",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "Lore",
    "precision": "lore",
    "zone": null,
@@ -5873,7 +6134,7 @@
    "date": "2026-04-29",
    "precision": "day",
    "zone": null,
-   "text": "holoX's first in-person unit concert \"First MISSION\" (\"I feel like we gave it everything I got!\")",
+   "text": "holoX's first in-person unit concert \"First MISSION\"; COVER's interview after it describes the concert as a turning point for the four-member group and its audience",
    "evidence": "[Official LU6]",
    "file": "bible/characters/Takane-Lui.md",
    "section": "Background Timeline"
@@ -7271,6 +7532,87 @@
    "text": "Branches merge; COVER says it will update members' designs to fit their personalities, activities and future directions",
    "evidence": "Lore and looks can change officially",
    "file": "bible/world/VTuber-Persona-and-Lore.md",
+   "section": "History"
+  },
+  {
+   "date": "2021-11-26 to 11-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut week, one member a night",
+   "evidence": "La+, Lui, Koyori, Chloe, Iroha",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-03-04 / 04-16",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Calli's English lessons #02 and #04",
+   "evidence": "La+, Iroha; Lui, Chloe",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2023",
+   "precision": "year",
+   "zone": null,
+   "text": "HOLOYOI ep. 1 (Lui, Chloe); BAE-GEMITE episodes; Kiara's off-collabs with Lui and La+",
+   "evidence": "with Calli, Bae, Kiara",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "FUWAMOKOYO; holoX \"Drokei\" escape event",
+   "evidence": "Koyori; the group",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-01-26",
+   "precision": "day",
+   "zone": null,
+   "text": "Chloe's graduation live; she stays an affiliate",
+   "evidence": "Chloe",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-04-19",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Q&A With Bird Sisters\"",
+   "evidence": "Lui, Mumei",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-07-27",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Glow in the Dark\" (Mythmash)",
+   "evidence": "La+, Kiara",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-12-01",
+   "precision": "day",
+   "zone": null,
+   "text": "4th anniversary: \"Gyouan Xdeath,\" album \"Secret ORDER,\" concert announced",
+   "evidence": "four members",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-04-29",
+   "precision": "day",
+   "zone": null,
+   "text": "\"First MISSION,\" Pia Arena MM",
+   "evidence": "La+, Lui, Koyori, Iroha",
+   "file": "bible/world/holoX.md",
    "section": "History"
   },
   {

@@ -253,7 +253,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Watson Amelia (affiliate) | Fellow EN ("Time Duo") | Guested at Kronii's 2026 3D birthday live | [Observed K8 §Relationships, K33, secondary] |
 | Gawr Gura (graduated) | Fellow EN ("SNOTCast" with Fauna and Mumei) | A friendly rivalry and Gura's "CLOCK WOMAN" nickname are reported but [Unverified] | [Observed K8 §Relationships, secondary] |
 | Kaela Kovalskia | hololive ID ("TimeSmith") | Kaela is a fan of Kronii's voice; constant bickering is reported but [Unverified] | [Observed K8 §Relationships, K35, secondary] |
-| Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) | [S1 OMDzBQohAf8; world card "holoX"] |
+| Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) (archived upload credits) | [S1 zp5nxAgi2dw, OMDzBQohAf8] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026), as on the card.
@@ -539,6 +539,7 @@ Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "B
 - **2026-10-02, GPT one-round claim check of the Bae additions (runs/20261002-0236-character-Hakos-Baelz/gpt-free.md), merged by Claude:** "tsundere granny" is now an attributed paraphrase from Kronii's wiki page (the reviewer could not find its source; Claude located it there); Fortnite stays (Claude confirmed yA8-ALtC4IY and 0mbr6HbgH9E, 2024-06-18, in the archive's metadata); "Dance Monkey" in Sydney (2025-07-12, official World Tour '25 report) added; the leap years stay as fan-recorded lore; the Shiori clause was shortened for length.
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi):** Lui, Noel and Vivi added to the dossier (elytra hunting; Gartic Phone); the Relationships field is at its limit. (sources: the new member files, "JP Senpai Pairs 2" and "holoX".)
 - **2026-10-02, relationship-web coverage (Claude):** AZKi (R.E.P.O. "JP & EN," 2025, as on AZKi's card) named back; clauses tightened for length.
+- **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the elytra-hunt row cites its own upload (zp5nxAgi2dw).
 
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:

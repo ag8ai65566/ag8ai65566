@@ -1,0 +1,2 @@
+- 2026-10-03 23:22 作者裁決收錄 final.md（sha256 8c6cee008a7a）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run F) merged by Claude; promoted.
+- 2026-10-03 23:22 作者裁決收錄 final.md（sha256 9f9549eaf96f）：Author decision (2026-10-03): Noel added to Iroha's Bara☆Dice clause (reciprocal tie); run F merge.

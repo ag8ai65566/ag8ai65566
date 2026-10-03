@@ -1,9 +1,9 @@
 # Audit packet: jp (incoming claims)
 
-Snapshot: git d2dfb9b.
+Snapshot: git 83717eb.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azukichi|Azu-chan|Sui-chan|TakoNeko|Okanyan|AZKichi|AS_tar|Suisei|FWMCAZ|AzuAzu|Okayun|Yo-san|Ayame|Okayu|AZAZ|AZKi|Ojou)(
+Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azu-chan|Sui-chan|Azukichi|TakoNeko|Okanyan|AZKichi|AS_tar|FWMCAZ|AzuAzu|Suisei|Yo-san|Okayun|Ayame|Okayu|Ojou|AZKi|AZAZ)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
@@ -19,6 +19,7 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Hoshimachi Suisei: Puyo Puyo coaching (2026).
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Nakiri Ayame: the 7th fes. stage (2026).
 - `bible/characters/Fuwawa-Abyssgard.md › Background Timeline`: | 2024-08-10 PDT | 3D debut with a wrestling segment and cameos by Okayu and Korone | [Observed FW2 §2024] |
+- `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori (FUWAMOCO Morning ep. 90, 2024-04-26); Lethal Company with Koyori and Fubuki (2024-03-09); Koyori a guest at their 2025 birthday concert; "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab presented by Iroha and AZKi, the twins as challengers (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
 
 ### from Gawr Gura
@@ -66,6 +67,19 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 - `bible/characters/IRyS.md › [SW] Relationships`: Hoshimachi Suisei and AZKi: with Moona Hoshinova, the unit Star Flower ("story time," 2022); Suisei also performed "High Tide" with her, Bae and Moona at Breaking Dimensions (2024).
 - `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise genmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
 
+### from Kazama Iroha
+- `bible/characters/Kazama-Iroha.md › [SW] Background`: She formed the duo AzuIro with AZKi (covers, the 2025 song "AZUIRO BESTIE DAYS," off-collabs), sings in Suisei's Hoshimatic Project (credited on "BEEP BEEP," 2026) and performed at holoX's first in-person unit concert, "First MISSION"
+- `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
+- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: AZKi: "AzuIro," her steady duo (covers, "AZUIRO BESTIE DAYS" in 2025, Cuphead and off-collabs billed as summer camps).
+- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Hoshimachi Suisei: Hoshimatic Project ("BEEP BEEP," 2026); coached her at Puyo Puyo Tetris (2023).
+- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: FUWAMOCO: challengers in the cookie battle she and AZKi presented (2024).
+- `bible/characters/Kazama-Iroha.md › Behavioral Traits`: 4. A steady duo partner: "AzuIro" with AZKi (covers; the official song "AZUIRO BESTIE DAYS," released 2025-09-18; a Cuphead off-collab billed as a summer camp; GeoGuessr and Mario Kart). [IR4] [Official music 642]
+- `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2023 | AzuIro: GeoGuessr on a "Kazama map" AZKi made, covers and a first off-collab (08); Puyo Puyo Tetris coaching from Suisei (04); Hoshimatic Project (11-) | [IR4] [Observed IR2] |
+- `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2024 | Covers with La+ (「絶対敵対メチャキライヤー」, 03-11) and Lui (「右肩の蝶」, 04-11); originals "Mahou Shoujo☆Magical GOZARU" and "Dreamy Sky" (06); a cookie-battle off-collab on her channel, presented with AZKi, with FUWAMOCO as the challengers (10-27, JgOwJ7m89Lk); a guest at Kiara's 4th-anniversary live (10-06); 1 million subscribers (11-19) | [Observed IR2] [IR4] [IR5] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | AZKi | "AzuIro" | Covers (2023, 2025), the official song "AZUIRO BESTIE DAYS" (2025-09-18), GeoGuessr, Cuphead (2025-06-03) and an off-collab billed as a summer camp, Mario Kart; co-presenter of the cookie battle (2024-10-27). The "shared Minecraft village" was dropped (its cited ID is the Cuphead stream) | [IR4 VxZVNuscS7c, -im-pIdanZY, mwhcZmc6-s8, JgOwJ7m89Lk] [Official music 642] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Hoshimachi Suisei | Hoshimatic Project | Coached her at Puyo Puyo Tetris (2023) | [IR4] [IR2] |
+- `bible/characters/Kazama-Iroha.md › Story Engine`: 2. An AzuIro "summer camp" where AZKi navigates and Iroha charges ahead, de gozaru.
+
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Hoshimachi Suisei: Bijou watched her Fortnite concert on stream (2026).
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Hoshimachi Suisei | JP senior | Watched her Fortnite concert on stream ("THE SUISEI CONCERT IN FORTNITE?!", 2026) | [Suisei file S1 AhGrt2gr5pc] |
@@ -85,6 +99,7 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Nekomata Okayu: secondary accounts report her enthusiasm for FUWAMOCO and her appearance with Korone at their 3D debut; archived metadata documents the twins' 2025 watch-along of her concert.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Hoshimachi Suisei: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026).
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Nakiri Ayame: the 7th fes. stage with Okayu and Ina (2026).
+- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori (FUWAMOCO Morning ep. 90, 2024-04-26); Lethal Company with Koyori and Fubuki (2024-03-09); Koyori a guest at their 2025 birthday concert; "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab presented by Iroha and AZKi, the twins as challengers (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
 
 ### from Mori Calliope
@@ -115,6 +130,15 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 ### from Ouro Kronii
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: AZKi: R.E.P.O.
 
+### from Sakamata Chloe
+- `bible/characters/Sakamata-Chloe.md › [SW] Background`: She took part in the original lineup of Suisei's Hoshimatic Project (secondary roster reference), "Magical Girl holoWitches!" and the "Kanaken"
+- `bible/characters/Sakamata-Chloe.md › [SW] Background`: Minecraft company with Amane Kanata and AZKi (a 3D live in 2024), and concluded her regular activities with a graduation live on 2025-01-26, staying an affiliate; a secondary record has her singing "Sparkle" at Murasaki Shion's graduation live (2025-04-26).
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024).
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Hoshimachi Suisei: the original Hoshimatic Project lineup (secondary); a farewell video together (2025).
+- `bible/characters/Sakamata-Chloe.md › Background Timeline`: | 2024 | "Magical Girl holoWitches!" single (05-30); "Kanaken" 3D live with Kanata and AZKi | [Observed CH2] [CH4] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | AZKi | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [CH4] [CH2] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Hoshimachi Suisei | Original Hoshimatic Project lineup (secondary roster reference; not on the 2026 "BEEP BEEP" credits) | 「沙花叉クロヱと星街すいせい」, part of her farewell video series (2025-01-22) | [CH2] [CH4 OF41reZNGnw] |
+
 ### from Shirogane Noel
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Hoshimachi Suisei: "Shiranui Kensetsu"
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Nakiri Ayame: an Audio-Technica sponsorship collab (2025).
@@ -127,7 +151,7 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki, not Ayame (publisher roster; a joint broadcast is not established) | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
 
 ### from Takanashi Kiara
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Archived episode records list HOLOTALK guests including Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ Darknesss ("Glow in the Dark") and Sakamata Chloe ("WILDCARD").
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Archived episode records list HOLOTALK guests including Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ Darknesss ("Glow in the Dark"), Sakamata Chloe ("WILDCARD") and Hakui Koyori ("MIRAGE").
 
 ### from Takane Lui
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Nekomata Okayu: Harry Potter watch-alongs (2025); secondary references list both in "Dorobo Kensetsu."
@@ -190,6 +214,9 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 
 ### from Myth and Kronii: Other Pairs
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
+
+### from holoX
+- `bible/world/holoX.md › With the other Japanese members on the cards`: - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s, Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project with Koyori, Chloe and Iroha. Okayu: "Dorobo Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+ (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine: Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
 
 ### from hololive History 2023-2026
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-02/10 PDT | Advent 3D debuts (JST dates one day later): Shiori (08-02), Bijou (08-03), Nerissa (08-09), FUWAMOCO (08-10, with Okayu and Korone cameos) | genmates as guests |

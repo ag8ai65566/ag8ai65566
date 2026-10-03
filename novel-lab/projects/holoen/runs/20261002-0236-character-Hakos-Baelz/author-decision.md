@@ -2,3 +2,4 @@
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 7f5e7fdb1941）：Author decision (2026-10-02): batch-2 cast additions (Marine, Noel, Lamy, Botan, holoX, Vivi) mirrored into EN relationship lines by Claude; their GPT round is pending
 - 2026-10-02 07:53 作者裁決收錄 final.md（sha256 a6b3877663d6）：Author decision (2026-10-02): reciprocal relationship ties for the JP four and the batch-2 members (relationship-web coverage); batch-2 lines are confirmed in GPT review runs D/F, the JP-four lines in the cohort audits
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 9dc8b9d13d93）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
+- 2026-10-03 23:22 作者裁決收錄 final.md（sha256 911cd9d7bf2d）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.

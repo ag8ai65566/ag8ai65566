@@ -174,9 +174,9 @@ on the world card "JP Senpai Pairs."
 | Inugami Korone | "OkaKoro" (secondary) | Her OkaKoro collaborator and fellow GAMERS member ("Koro-san") | [OK2] |
 | Shirakami Fubuki, Ookami Mio | GAMERS; "NYANGUCORN," "MiOKayu" | GAMERS fes; Fubuki and Okayu's April Fools furball models (2026) | [OK2] |
 | Oozora Subaru | "SubaOka" | "SASHIMIO feat. SubaOka"; a 2026 off-collab lottery | [Official OK1 music list] [OK4] |
-| Hakui Koyori | — | A lateral-thinking puzzle collab (2025); played Okayu's game (2025) | [Koyori file KO4] |
+| Hakui Koyori | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07) | [Koyori channel PtjqrNUOSWA] |
 | La+ Darknesss | "Dorobo Kensetsu" | A 3D lie-detector challenge (2026) | [La+ file LA2, LA4] |
-| Takane Lui | "Shaccho" | Harry Potter watch-alongs (2025); predictions before a 2026 Nintendo Direct | [Lui file LU4] |
+| Takane Lui | — | Harry Potter watch-alongs to introduce Okayu to the series (2025-11-24 and others); "Shaccho" is a first-model ASR rendering whose direction is unconfirmed, so it is not used | [Lui channel Lj0MZFpHitQ] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a long Final Fantasy VII series, a game she supervises, and
@@ -260,7 +260,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Okayu wants to enjoy every day to the fullest with games, songs and dances, and to share them with her fans and the members she loves; she likes seeing people react, and she likes saying yes.
 
 ## [SW] Relationships
-Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: secondary accounts report Okayu's enthusiasm for the twins and her appearance with Korone at their 3D debut (2024); archived metadata documents the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata). IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki and Ookami Mio: her GAMERS. Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: "Shaccho"; Harry Potter watch-alongs (2025). (Pair names come from secondary references.)
+Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: secondary accounts report Okayu's enthusiasm for the twins and her appearance with Korone at their 3D debut (2024); archived metadata documents the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata). IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki and Ookami Mio: her GAMERS. Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: Harry Potter watch-alongs (2025). ("Dorobo Kensetsu" comes from secondary references.)
 
 ## [SW] Secrets
 (none)
@@ -286,6 +286,7 @@ Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; the
   replaces IPA; standalone "Nekomata" removed from Other Names. Added from the official profiles: Marine's
   nickname "Okanyan" and the 「僕でよくな～い？」 tease to Shion (her pets on the same page are left out).
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi), reciprocal ties:** Koyori (puzzle collab), La+ ("Dorobo Kensetsu") and Lui ("Shaccho") added (sources in the new member files).
+- **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** "Shaccho" removed (first-model only, direction unknown); the Koyori puzzle collab and Lui's watch-alongs cite their uploads; "Dorobo Kensetsu" stays labelled secondary.
 
 ## Open Questions
 1. The OkaGigi festival banter rests on secondary clip metadata; its dialogue is not quoted.

@@ -134,7 +134,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2024 | First album "Liberty" (official digital release 06-12); 1 million subscribers (11-16, secondary) | [Official music 434] [Observed LU2] |
 | 2025 | EP "Lieblings"; Code Geass ambassador (June, secondary); "Q&A With Bird Sisters" with Mumei (04-19); Harry Potter watch-alongs with Okayu; "FEAST" dance short with Bae (07-11) | [Observed LU2] [LU5] [LU4 Lj0MZFpHitQ, 5TUiccnytQA] |
 | 2025-12-01 | holoX's 4th anniversary: "Gyouan Xdeath," album "Secret ORDER" | [Observed LU2] |
-| 2026-04-29 | holoX's first in-person unit concert "First MISSION" ("I feel like we gave it everything I got!") | [Official LU6] |
+| 2026-04-29 | holoX's first in-person unit concert "First MISSION"; COVER's interview after it describes the concert as a turning point for the four-member group and its audience | [Official LU6] |
 | 2026-06-11 | EP "The LEGENDARY" with "Soar" (official digital release of "Soar" 06-12); 1st live "REBELLION" (2026-12-16) and a BAYFM78 radio programme (from 07-03) announced; EN members' channels posted animated "Soar" shorts crediting external motion creators | [Official LU7] [Official music 760] [LU4] [LU5] |
 | 2026-08-01 | A "rare" La+ and Lui talk with new outfits | [LU4] |
 
@@ -274,6 +274,8 @@ La+ Darknesss: holoX's founder, whom Lui reins in and covers for. Sakamata Chloe
     InuTakaShishiRam (4-NEM2HrUVA, Botan's channel, 2023-04-18), HOLOYOI #01 (UuL_nORzfNM), the Wario off-collab
     (cVJefDjefUs), Apex with Ame and Iofi (Mory0I9vXtI), Onikan (YXaDmUXPSGo) and the FEAST dance short with Bae
     (5TUiccnytQA, Lui's channel, 2025-07-11).
+- **2026-10-03, run F review (holoX card), merged by Claude:** the interview line is paraphrased (the earlier
+  wording was not verbatim).
 
 ## Open Questions
 1. Resolved: "Onikan" stays as an archived-title label (YXaDmUXPSGo), not a claim about a formal unit.

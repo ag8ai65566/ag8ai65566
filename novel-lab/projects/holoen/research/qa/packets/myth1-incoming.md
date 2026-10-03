@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git d2dfb9b.
+Snapshot: git 83717eb.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Cori Malliope|Calliope Mori|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|Calliope|CHADCast|Mor Mori|TakaMori|Takamori|CallioP|森カリオペ|Calli|LYRA|Mori|Mowi)(
+Matched names: lli and Kiara|Kiara and Calli|hololive -Myth-|Mori Calliope|Cori Malliope|Calliope Mori|Last Writes|Miss Mori|Kawaiiope|CHADCast|Calliope|TakaMori|Takamori|Mor Mori|CallioP|森カリオペ|Calli|Mowi|Mori|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -105,6 +105,13 @@ Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Cori Malliope|Calli
 - `bible/characters/IRyS.md › Background Timeline`: | 2021-07-29 | First official collab: Just Shapes & Beats with Mori Calliope | [Observed R2 §2021] |
 - `bible/characters/IRyS.md › Relationship Map`: | Mori Calliope | First collab partner (2021) | "MorIRyS"; CHADCast podcast trio with Bae | [Observed R2 §2021, units] |
 
+### from Kazama Iroha
+- `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
+- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022).
+- `bible/characters/Kazama-Iroha.md › Voice Profile`: - **Language:** streams in Japanese; with the English cast she took Calli's English lesson #02 (2022) and did dance-challenge shorts with Kiara (2025). [IR5]
+- `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2022 | Calli's English lesson #02 with La+ and Gura (03-04); VALORANT with Ame and Kobo Kanaeru ("KoMeHa," 06-04) | [IR5] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Mori Calliope, Gawr Gura (graduated) | — | HOLO ENGLISH LESSON #02 (2022) | [IR5] |
+
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Mori Calliope: they played Bijou's Undertale mod starring Calli together (2023); "TombStone"; a 24-hour charity stream together (2025) and Warhammer painting (2026).
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: (We Were Here, a 2024 sleepover marathon); with Bae, Calli and IRyS she sang "BLUE CLAPPER" at the 2024 English concert.
@@ -166,6 +173,16 @@ Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Cori Malliope|Calli
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Mori Calliope and Gigi: Elden Ring Nightreign.
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Gigi Murin | Genmate ("RPGG," secondary) | MapleStory, Monster Hunter Wilds, a food tier-list off-collab, Elden Ring Nightreign with Calli (2025); she designed both her own and Gigi's Monster Hunter Wilds collaboration outfits (2026; secondary report) | [Observed RP3; X post RP6, secondary] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Mori Calliope | Myth senior | Elden Ring Nightreign with Gigi (2025-06-11) | [Observed RP3 AnvhW-eFatE] |
+
+### from Sakamata Chloe
+- `bible/characters/Sakamata-Chloe.md › [SW] Background`: With the English cast, archived channel metadata documents an EN-server Minecraft tour with Bae, Mumei and Lui (2022), Calli's English lesson #04 (2022) and HOLOYOI #01 (2023), Bae's "BAE-GEMITE DOMINATION" and the cover "Crazy Scary Holy Fantasy" with her (2023), and "WILDCARD" with Kiara in her final week (2025).
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Takane Lui: holoX's executive officer; secondary accounts describe Lui reining her in; "LuiChlo" collabs, Calli's English lesson and HOLOYOI together.
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Mori Calliope: HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023).
+- `bible/characters/Sakamata-Chloe.md › Voice Profile`: - **Language:** streamed in Japanese; she used basic English on the EN Minecraft server tour (2022) and in Calli's English lesson #04 (2022), and wrote her original song "Hurt you" in English (2022). [CH4] [CH5] [Observed CH2]
+- `bible/characters/Sakamata-Chloe.md › Background Timeline`: | 2022 | First original "Jinsei Reset Button Pochii w" (02-26); EN Minecraft tour with Bae, Mumei and Lui (02-12); Calli's English lesson #04 with Lui (04-16); 3D debut (06-13) | [Observed CH2] [CH5] |
+- `bible/characters/Sakamata-Chloe.md › Background Timeline`: | 2023 | 1 million subscribers (02-18, secondary); HOLOYOI #01 with Calli and Lui (03-23); "BAE-GEMITE DOMINATION" (04-29); a cover with Bae (10-30); the original Hoshimatic Project lineup (11-, secondary roster reference) | [Observed CH2] [CH5 UuL_nORzfNM, z4-5Hq5AKG4, 9EAIDwXj4Jk] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Takane Lui | holoX executive officer | "LuiChlo" collabs (archived titles); secondary accounts describe Lui reining her in; Calli's lesson #04 and HOLOYOI #01 together | [CH4] [CH5] [Lui file LU2] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Mori Calliope | — | HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023) | [CH5] |
 
 ### from Shiori Novella
 - `bible/characters/Shiori-Novella.md › [SW] Groups`: hololive -Advent-, hololive English -Advent- (former branch name), Advent, Last Writes
@@ -403,6 +420,13 @@ Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Cori Malliope|Calli
 - `bible/world/VTuber-Persona-and-Lore.md › How It Works`: - They can re-enter it for a bit and drop it again: Calli's reaper threats, Ina's "priestess" voice, Kiara's KFP manager routine, Ame's "Trust me, I'm a time traveler." [Observed character files]
 - `bible/world/VTuber-Persona-and-Lore.md › How It Works`: - **Normal example:** Calli jokes that she'll collect a guest's soul, the guest laughs, and Calli goes back to arguing about snacks. Nobody's soul is collected.
 - `bible/world/VTuber-Persona-and-Lore.md › The Performer Behind the Avatar`: - Relationships are friendships and public bits. Ships (e.g. TakaMori) are performed bits and fan terms, not real romance. Intimacy is not written. [Project rule]
+
+### from holoX
+- `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
+- `bible/world/holoX.md › With the English cast`: - **Mori Calliope:** English practice with Lui (2021-12-27); "HOLO ENGLISH LESSON #02" with La+, Iroha and Gura (2022-03-04) and "#04" with Lui and Chloe (2022-04-16); "HOLOYOI" episode 1 with Lui and Chloe (2023); dance shorts to Lui's songs (2025, 2026). [S1]
+- `bible/world/holoX.md › With the English cast`: - **Others:** Lui's 2026 song "Soar" was danced by IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO (2026 shorts); Cecilia teased La+ as "onee-sama" (2026 short); Nerissa met La+ in holoGTA (2024). [S1]
+- `bible/world/holoX.md › History`: | 2022-03-04 / 04-16 | Calli's English lessons #02 and #04 | La+, Iroha; Lui, Chloe |
+- `bible/world/holoX.md › History`: | 2023 | HOLOYOI ep. 1 (Lui, Chloe); BAE-GEMITE episodes; Kiara's off-collabs with Lui and La+ | with Calli, Bae, Kiara |
 
 ### from hololive -Advent-
 - `bible/world/hololive--Advent.md › [SW] Description`: (2026), and 2026 Serendipity pairs Shiori–Calli, Bijou–Kiara, Nerissa–Elizabeth and FUWAMOCO–Raora.

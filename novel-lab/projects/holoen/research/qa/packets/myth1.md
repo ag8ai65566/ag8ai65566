@@ -1,10 +1,10 @@
 # Audit packet: myth1
 
-Snapshot: git d2dfb9b. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 83717eb. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Mori-Calliope.md` fa27059d7339; `bible/world/TakaMori.md` a25e152cb285
+Owned files (sha256): `bible/characters/Mori-Calliope.md` d8c36b448f72; `bible/world/TakaMori.md` a25e152cb285
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 

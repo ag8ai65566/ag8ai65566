@@ -164,7 +164,7 @@ that belong to Fuwawa or define her.
 | Nerissa Ravencroft | Genmate ("Sound Hounds") | Fuwawa calls her "Newissa"; Nerissa claims to be the third sister, "Mofufu" | [Observed Nerissa wiki, secondary; Advent card] |
 | Gigi Murin, Mori Calliope | Kouhai and senior | "2 Creatures + 1 Reaper," a rare bomb-defusing collab (2026-09) | [Observed FUWAMOCO X post via wiki, FW6] |
 | Hakos Baelz | Promise senior | Archived metadata: Gigi's 2025 Spring Party with FUWAMOCO and Bae (2025-03-31); a FUWAMOCO short dancing to "bae-senpai's new song SNAKE EYES" (2026-03-20) | [Bae file HB3, HB5, HB8, HB20] |
-| Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori (FUWAMOCO Morning ep. 90, 2024-04-26); Lethal Company with Koyori and Fubuki (2024-03-09); Koyori a guest at their 2025 birthday concert; "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab with Iroha (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
+| Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori (FUWAMOCO Morning ep. 90, 2024-04-26); Lethal Company with Koyori and Fubuki (2024-03-09); Koyori a guest at their 2025 birthday concert; "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab presented by Iroha and AZKi, the twins as challengers (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
 | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
 | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
 
@@ -294,6 +294,7 @@ Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; 
 - **2026-10-02, relationship-web coverage (Claude):** Ayame (shared 7th fes. stage, 2026) named back.
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the oshi claim carries its secondary label; the Touhou off-collab is verified by Claude in the local archive metadata (x7gRHgQ0yI0, "TOUHOU OFF-COLLAB with MARINE"); "team Mario Kart event" names participants, not team assignments.
 - **2026-10-03, GPT review of the holoX cards (run E, La+/Lui/Koyori), merged by Claude:** "FUWAMOKOYO" (the twins and Koyori, a FUWAMOCO Morning title) is separated from the four-person Lethal Company with Shirakami Fubuki (archived titles gCYXKgYcFmk, XR1PEtj15kE).
+- **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the cookie battle was presented by Iroha and AZKi with FUWAMOCO as challengers (dossier; the exported field is at its length limit).
 
 ## Open Questions
 1. (Resolved 2026-10-01, from the GPT review: the solo measurements stay in the dossier with the recording

@@ -1,1 +1,2 @@
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 3ef5bf38be6e）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run E) merged by Claude; promoted.
+- 2026-10-03 23:22 作者裁決收錄 final.md（sha256 6d81b858789c）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.

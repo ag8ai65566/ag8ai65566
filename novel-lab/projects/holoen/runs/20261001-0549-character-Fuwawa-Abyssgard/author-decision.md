@@ -7,3 +7,4 @@
 - 2026-10-02 08:24 作者裁決收錄 final.md（sha256 1c23f61a0548）：Author decision (2026-10-02): relationship-web coverage, reciprocal ties on cards at the length limit (clauses tightened, no facts removed except the bento aside kept in IRyS's timeline)
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 82a36237de1b）：Author decision (2026-10-02): cross-card lines from the GPT review of Botan, Vivi and JP Senpai Pairs 2 (run D), merged by Claude
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 258cd852ef95）：Author decision (2026-10-03): cross-card lines corrected by the run E review (FUWAMOKOYO, m HOLD'EM wording, Glow in the Dark release date); one GPT round, merged by Claude.
+- 2026-10-03 23:22 作者裁決收錄 final.md（sha256 d217b4a02844）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.

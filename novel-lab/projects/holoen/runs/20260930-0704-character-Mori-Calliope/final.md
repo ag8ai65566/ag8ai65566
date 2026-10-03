@@ -603,6 +603,7 @@ Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusot
 - **2026-10-02, GPT review of the JP cast additions (run B):** Suisei clause reduced to "Wicked" and the archived "CapSule"; "Death Star," the starstruck reaction and the 2026 birthday-live guest spot moved to the dossier as unverified (an analytics page's Suisei entry measures audience overlap, not a guest); the reciprocal Okayu Mario Party added (archive WnKCmQ2iXww, 2024-09-15, with Anya Melfissa and Hiodoshi Ao).
 - **2026-10-02, relationship-web coverage (Claude):** AZKi (English lesson), Cecilia ("Cloudy Sheep" at Serendipity) and Raora (Elden Ring Nightreign with Gigi) named back, as on their cards; a few clauses tightened for length (no facts removed; the Suisei clause keeps the archived label on "CapSule").
 - **2026-10-02, GPT review of the batch-2 cards (run C, Marine/Noel/Lamy), cross-card lines:** the English-lesson guests (2022) and the HOLOYOI guests (2023) are listed separately, so Marine's lesson and Noel's HOLOYOI are not merged.
+- **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the English lessons and HOLOYOI stay separate events; HOLOYOI #01 with Lui and Chloe was verified by Claude in the local archive metadata (UuL_nORzfNM), which the review could not open.
 
 ## Open Questions
 1. Should Groups keep "hololive English (former branch name)", or be current-only as GPT prefers? The

@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git d2dfb9b.
+Snapshot: git 83717eb.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|hololive -Myth-|Gura and Kronii|Kronii and Gura|Takanashi Kiara|Kiara and Gura|Gura and Kiara|Ina and Calli|Ame and Calli|Calli and Ame|Calli and Ina|Ame and Kiara|Kiara and Ame|Ina and Gura|Gura and Ina|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Takanashi Kiara|Gura and Kronii|hololive -Myth-|Kronii and Gura|Kiara and Gura|Gura and Kiara|Calli and Ame|Ina and Calli|Ame and Kiara|Ame and Calli|Kiara and Ame|Calli and Ina|Ina and Gura|Gura and Ina|Ame and Ina|Ina and Ame|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -72,6 +72,15 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|holo
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: Takanashi Kiara: a friend since 2021 who gave her a German crash course.
 
+### from Kazama Iroha
+- `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
+- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Takanashi Kiara: a credited guest at Kiara's 2024 and 2025 lives; #TASTYchallenge shorts with Nene (2025).
+- `bible/characters/Kazama-Iroha.md › Voice Profile`: - **Language:** streams in Japanese; with the English cast she took Calli's English lesson #02 (2022) and did dance-challenge shorts with Kiara (2025). [IR5]
+- `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2024 | Covers with La+ (「絶対敵対メチャキライヤー」, 03-11) and Lui (「右肩の蝶」, 04-11); originals "Mahou Shoujo☆Magical GOZARU" and "Dreamy Sky" (06); a cookie-battle off-collab on her channel, presented with AZKi, with FUWAMOCO as the challengers (10-27, JgOwJ7m89Lk); a guest at Kiara's 4th-anniversary live (10-06); 1 million subscribers (11-19) | [Observed IR2] [IR4] [IR5] |
+- `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2025 | "Gehenna" cover with Chloe on her last day (01-26); Cuphead as #あずいろ (06-03) and an off-collab billed as a summer camp (08); "A letter only you can read" (06-15); a guest at Kiara's birthday live (07); #TASTYchallenge shorts with Kiara and Nene (07-11, 07-16); "AZUIRO BESTIE DAYS" (official release 09-18) | [IR4 5zJp7oulbwc, -im-pIdanZY, mwhcZmc6-s8] [IR5 f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0] [Official music 642] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Takanashi Kiara | — | A credited guest at Kiara's 4th-anniversary live (2024) and birthday live (2025); #TASTYchallenge shorts (2025-07-11 with Nene in the background; 07-16 with Nene) | [IR5 0LoG81pLS8c, f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0] |
+- `bible/characters/Kazama-Iroha.md › Story Engine`: 1. Iroha appoints herself Kiara's bodyguard for a day and takes it far too seriously.
+
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Groups`: hololive -Advent-, hololive English -Advent- (former branch name), Advent, Rocku Wawa
 - `bible/characters/Koseki-Bijou.md › [SW] Background`: (2025), starred with Ina and IRyS at hololive night at Dodger Stadium (2025), sang a solo and two group numbers at the 2025 English concert -All for One-, and was paired with Takanashi Kiara at the 2026 Serendipity concert.
@@ -120,7 +129,7 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|holo
 - `bible/characters/Nakiri-Ayame.md › Story Engine`: 2. Kiara invites her back to HOLOTALK; Ayame laughs at her own pun before the translation lands.
 
 ### from Nanashi Mumei
-- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Takanashi Kiara: fellow bird of HOLOTORI, who calls her "Moomsies"; they sang a DECO*27 song together at the 4th fes.
+- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Takanashi Kiara: fellow bird of HOLOTORI, who calls her "Moomsies"; they sang a DECO*27 song at the 4th fes.
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: (2023), and Kiara hosted Mumei as HOLOTALK's 33rd guest on 2025-04-22.
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: (2023), "Beyond the way" with Kiara at the 2024 concert, "SAD GIRL HOURS"
 - `bible/characters/Nanashi-Mumei.md › Voice Profile`: - **Macabre and grandiose humor:** a cute voice with dark content: drawings that turn Tim Burton-esque or demonic, cheerful reminders that everyone dies. [Observed M2 §Personality, secondary]. Bravado: "I've never been scared of anything ever." [ASR M20, 0:26:39]. Ranking who she'd beat at arm wrestling: "I think I would win against Gura, Kiara, IRyS, Nerissa, and Mococo"; she moved Biboo to the losing side ("she is a rock") and concluded that most of EN could beat her: "But I have other skills and things that make me special, so whatever." [ASR M20, 0:23:52–0:27:44; the models disagree on the word "EN"]
@@ -174,6 +183,13 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|holo
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Takanashi Kiara | Myth senior ("HoloEU" with Cecilia; secondary) | An Italian lesson (2024), a proposed outfit for Kiara on her "Raora's Clawset" art stream (2025-01-26; not a released Kiara model), an EU-snacks off-collab (2025); the "Doom" meme in Kiara's collab; "What an amazing swing" with Watame at Serendipity (2026) | [Observed RP3, RP7] [Official RP9] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Tsunomaki Watame (JP) | JP senior | "What an amazing swing" with Kiara at Serendipity (2026) | [Official RP9] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) | [Bae file HB3, HB5, HB8, HB20] |
+
+### from Sakamata Chloe
+- `bible/characters/Sakamata-Chloe.md › [SW] Background`: With the English cast, archived channel metadata documents an EN-server Minecraft tour with Bae, Mumei and Lui (2022), Calli's English lesson #04 (2022) and HOLOYOI #01 (2023), Bae's "BAE-GEMITE DOMINATION" and the cover "Crazy Scary Holy Fantasy" with her (2023), and "WILDCARD" with Kiara in her final week (2025).
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Takanashi Kiara: "WILDCARD," performed at the 2024 fes and released as a cover in her final week (2025), and an origami off-collab (2023).
+- `bible/characters/Sakamata-Chloe.md › Background Timeline`: | 2025-01 | Farewell week: last "KoyoChlo" collab (01-14), covers with La+ (01-15) and Koyori (「花の塔」 01-23; 「一番の宝物」 01-28 on Koyori's channel), "WILDCARD" with Kiara (01-25; the description says they had performed it at the 2024 fes), "Gehenna" with Iroha (01-26) | [CH4 u5hBkM77dX0, acYx6NnoaAQ, mKq0e-7nnSU] [KO4 nCPHzr_iF7s] [CH5 eEGbAKvSf1Q] [IR4 5zJp7oulbwc] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Takanashi Kiara | — | "WILDCARD" cover (2025-01-25) and an origami off-collab (2023) | [CH5] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | The ocean unit's official 2023 roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/] |
 
 ### from Shiori Novella
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Takanashi Kiara: hosted Advent on HOLOTALK; an occult handcam off-collab ("#shiotori").
@@ -376,6 +392,13 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|holo
 - `bible/world/VTuber-Persona-and-Lore.md › How It Works`: - They can re-enter it for a bit and drop it again: Calli's reaper threats, Ina's "priestess" voice, Kiara's KFP manager routine, Ame's "Trust me, I'm a time traveler." [Observed character files]
 - `bible/world/VTuber-Persona-and-Lore.md › How It Works`: - Lore can be retconned or joked about by the members themselves ("Kiara is a phoenix, not a chicken"); a member may improvise or contradict lore within a bit; an improvised joke does not automatically rewrite historical facts or permanent continuity. [Observed; Adaptation]
 - `bible/world/VTuber-Persona-and-Lore.md › How It Works`: - **Edge example:** during a horror game, Kiara says "I'm immortal, I'll just respawn!" — that is a gamer joke about her lore; if her character dies in the game, she groans and restarts the level like anyone else.
+
+### from holoX
+- `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
+- `bible/world/holoX.md › With the English cast`: - **Takanashi Kiara:** welcomed Lui into the bird unit HOLOTORI on her debut day; HOLOTORI is Kiara, Lui, Mumei, Subaru and Reine; a Wario off-collab with Lui (2023-01-15); La+ and Kiara's Mythmash single "Glow in the Dark" (2025-07-27) and their "FAKE HEART" cover (2025-04-08); a nostalgic-games handcam off-collab with La+ (2023-06-30); "WILDCARD," a cover with Chloe (2025-01-25); a #TASTYchallenge dance with Iroha (2025). [S1] [S3]
+- `bible/world/holoX.md › History`: | 2023 | HOLOYOI ep. 1 (Lui, Chloe); BAE-GEMITE episodes; Kiara's off-collabs with Lui and La+ | with Calli, Bae, Kiara |
+- `bible/world/holoX.md › History`: | 2025-07-27 | "Glow in the Dark" (Mythmash) | La+, Kiara |
+- `bible/world/holoX.md › Conflicts and Story Hooks`: 2. Kiara visits holoX's base for a HOLOTORI meeting and Lui has to explain why the founder is in time-out.
 
 ### from hololive -Advent-
 - `bible/world/hololive--Advent.md › [SW] Description`: (2026), and 2026 Serendipity pairs Shiori–Calli, Bijou–Kiara, Nerissa–Elizabeth and FUWAMOCO–Raora.

@@ -1,9 +1,8 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-03T23:15Z",
- "snapshot": "9cee8d8e2cc8418ea76e97caae3b361321c96f9c70802d2eec5f7be6c1d820f3",
+ "checked_at": "2026-10-03T23:22Z",
+ "snapshot": "199fa5292acb398c670666ae53d4a3767a615a6a32c6013399f2ea29dc9443ef",
  "blocking_failures": [
-  "V02",
   "V10",
   "V11",
   "V12",
@@ -21,23 +20,21 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 9cee8d8e2cc8418ea76e97caae3b361321c96f9c70802d2eec5f7be6c1d820f3",
-    "97 inputs"
+    "snapshot 199fa5292acb398c670666ae53d4a3767a615a6a32c6013399f2ea29dc9443ef",
+    "100 inputs"
    ],
    "finding_ids": []
   },
   {
    "check_id": "V02",
    "title": "Authorized inventory",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
    "evidence": [
-    "characters 31/33",
-    "world 27/28",
-    "sheets 33/33",
-    "sheet/card mismatch: ['Kazama-Iroha', 'Sakamata-Chloe']",
-    "roster vs bible: ['Kazama-Iroha', 'Sakamata-Chloe', 'holoX']"
+    "characters 33/33",
+    "world 28/28",
+    "sheets 33/33"
    ],
    "finding_ids": []
   },
@@ -125,7 +122,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "relationship web: 11 one-way ties (coverage, not errors; tools/web_check.py)",
+    "relationship web: 9 one-way ties (coverage, not errors; tools/web_check.py)",
     "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
@@ -221,11 +218,13 @@
     "Takanashi-Kiara: no source hash (run stamp-sheets after reviewing the sheet)",
     "Mococo-Abyssgard: no source hash (run stamp-sheets after reviewing the sheet)",
     "Shirogane-Noel: no source hash (run stamp-sheets after reviewing the sheet)",
+    "Kazama-Iroha: no source hash (run stamp-sheets after reviewing the sheet)",
     "Fuwawa-Abyssgard: no source hash (run stamp-sheets after reviewing the sheet)",
     "Nerissa-Ravencroft: no source hash (run stamp-sheets after reviewing the sheet)",
     "Shiori-Novella: no source hash (run stamp-sheets after reviewing the sheet)",
     "Nekomata-Okayu: no source hash (run stamp-sheets after reviewing the sheet)",
     "Ceres-Fauna: no source hash (run stamp-sheets after reviewing the sheet)",
+    "Sakamata-Chloe: no source hash (run stamp-sheets after reviewing the sheet)",
     "Yukihana-Lamy: no source hash (run stamp-sheets after reviewing the sheet)",
     "Kikirara-Vivi: no source hash (run stamp-sheets after reviewing the sheet)",
     "Cecilia-Immergreen: no source hash (run stamp-sheets after reviewing the sheet)",

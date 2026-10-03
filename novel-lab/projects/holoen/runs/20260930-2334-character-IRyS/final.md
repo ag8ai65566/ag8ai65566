@@ -179,7 +179,7 @@ the wiki as units or pairings; -Promise- is official.
 | Tsukumo Sana (graduated) | Council-era friend | Co-designed Bloom & Gloom; Sana designed the "Beeg Smol" models | [Observed R2] |
 | Nanashi Mumei, Ceres Fauna (graduated) | Promise unitmates | Early Council collabs (Jump King, Minecraft) | [Observed R2; R3] |
 | Shiranui Flare | JP senior | Off-collab karaoke (2025-03) | [Observed R3 title] |
-| Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 (2022-10-03) and Among Us (2023-05-08) with Koyori and Chloe; Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
+| Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 with Koyori, Watame and Korone (2022-10-03); an Among Us lobby with Koyori, Chloe and others (2023-05-08); Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026): Promise member, solo concert ahead.
@@ -317,6 +317,7 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-02, GPT review of the JP cast additions (run B):** "High Tide" lineup corrected to the four singers in the official -Breaking Dimensions- report (Moona restored).
 - **2026-10-02, relationship-web coverage (Claude):** Okayu and Ayame (Okayu's 2025 festival team) named back; the Minecraft bento origin of BaeRyS stays in the timeline row; clauses tightened for length.
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the Overwatch 2 team roster includes Towa; the Left 4 Dead 2 lineup (Botan, Lui, Korone) is in the dossier (archived metadata).
+- **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** the Splatoon 3 and Among Us rosters are split (Chloe was not in Splatoon); Among Us was verified by Claude in the local archive metadata (VwqdwQx5cog).
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

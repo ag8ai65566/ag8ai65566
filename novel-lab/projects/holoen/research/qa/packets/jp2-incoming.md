@@ -1,9 +1,9 @@
 # Audit packet: jp2 (incoming claims)
 
-Snapshot: git d2dfb9b.
+Snapshot: git 83717eb.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: vi and FUWAMOCO|Noel and Calliope|JP Senpai Pairs 2|Marine and Kiara|Shishiro Botan|Botan and IRyS|Houshou Marine|Shirogane Noel|Yukihana Lamy|Kikirara Vivi|Lamy and Ina|Noel-danchou|Noel Deluxe|Shishiron|Lamy-mama|Shishiro|綺々羅々ヴィヴィ|Maririn|Senchou|Danchou|Sencho|Danchō|Marine|Senchō|白銀ノエル|宝鐘マリン|Botan|獅白ぼたん|雪花ラミィ|Lamy|Vivi|Noel|Wamy)(
+Matched names: el and Calliope|Vivi and FUWAMOCO|JP Senpai Pairs 2|Marine and Kiara|Botan and IRyS|Shirogane Noel|Houshou Marine|Shishiro Botan|Kikirara Vivi|Yukihana Lamy|Lamy and Ina|Noel-danchou|Noel Deluxe|Shishiron|Lamy-mama|綺々羅々ヴィヴィ|Shishiro|Maririn|Danchou|Senchou|Danchō|Senchō|Sencho|Marine|白銀ノエル|宝鐘マリン|雪花ラミィ|獅白ぼたん|Botan|Lamy|Noel|Wamy|Vivi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy"
@@ -77,7 +77,12 @@ Matched names: vi and FUWAMOCO|Noel and Calliope|JP Senpai Pairs 2|Marine and Ki
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: Shishiro Botan, Takane Lui, Sakamata Chloe and Tokoyami Towa: an Overwatch 2 team (2023); Hakui Koyori: Splatoon 3 and Among Us.
 - `bible/characters/IRyS.md › Voice Profile`: - Secondary description: a "high-pitched, soft and calm" speaking voice (compared with Yukihana Lamy); a more powerful, deeper singing voice (compared with Tokoyami Towa). [Observed R2 §Personality, secondary]
-- `bible/characters/IRyS.md › Relationship Map`: | Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 (2022-10-03) and Among Us (2023-05-08) with Koyori and Chloe; Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
+- `bible/characters/IRyS.md › Relationship Map`: | Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 with Koyori, Watame and Korone (2022-10-03); an Among Us lobby with Koyori, Chloe and others (2023-05-08); Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
+
+### from Kazama Iroha
+- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Yukihana Lamy and Shishiro Botan: NePoX.
+- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Houshou Marine and Shirogane Noel: fellow Bara☆Dice vocalists (distributor credits).
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Yukihana Lamy, Shishiro Botan | NePoX | Caravan Stories with Lamy (2023); built the roof of Botan's Minecraft shop (2023) | [IR4] [IR2] |
 
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Kikirara Vivi: Bijou watched Vivi's FLOW GLOW debut with FUWAMOCO (2024).
@@ -137,10 +142,20 @@ Matched names: vi and FUWAMOCO|Noel and Calliope|JP Senpai Pairs 2|Marine and Ki
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Yukihana Lamy, Shishiro Botan, Kikirara Vivi, Shirogane Noel | JP members | Lamy: the Minecraft "Usaken Summer Festival" (2021-06-27), an EN-server "date" (2021-10-20) and a guest at "Pleides" (2024-12-28); Botan: a guest at "EVERMORE" (2025-05-21); Vivi: R.E.P.O. (2025-06-02); Noel and Vivi: Mumei's Gartic Phone (2025-04-14) | [S1 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ, I-J11Da5ONY, grBU9Dl09Ds, OMDzBQohAf8] |
 
 ### from Ouro Kronii
-- `bible/characters/Ouro-Kronii.md › Relationship Map`: | Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) | [S1 OMDzBQohAf8; world card "holoX"] |
+- `bible/characters/Ouro-Kronii.md › Relationship Map`: | Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) (archived upload credits) | [S1 zp5nxAgi2dw, OMDzBQohAf8] |
+
+### from Sakamata Chloe
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Houshou Marine: UMISEA (official 2023 roster) and holoWitches.
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Yukihana Lamy: Rust with Kanata (2022).
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Shishiro Botan: an Overwatch 2 team (2023).
+- `bible/characters/Sakamata-Chloe.md › Behavioral Traits`: 2. Taunt-loving but sweet: compared by fans to Shirogane Noel, Momosuzu Nene and Tsunomaki Watame. [Observed CH2 §Personality, secondary]
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Houshou Marine | UMISEA (official 2023 roster); holoWitches | A game about Marine's treasure ship (2023) | [CH2] [CH4] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Yukihana Lamy | — | Rust with Kanata and Lamy (2022) | [CH4] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Shishiro Botan | — | An Overwatch 2 team with IRyS, Lui and Towa (2023) | [CH5] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | The ocean unit's official 2023 roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/] |
 
 ### from Takanashi Kiara
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Archived episode records list HOLOTALK guests including Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ Darknesss ("Glow in the Dark") and Sakamata Chloe ("WILDCARD").
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Archived episode records list HOLOTALK guests including Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ Darknesss ("Glow in the Dark"), Sakamata Chloe ("WILDCARD") and Hakui Koyori ("MIRAGE").
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Oozora Subaru | JP seniors | Early HOLOTALK guest (Marine); first EN×JP collab (Subaru, 2020) | [Observed T2 §2020, secondary] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Shirogane Noel | JP seniors | HOLOTALK's first guest Marine ("#marinarasauce," 2020-11-20) and 22nd guest Noel (2022-03-05); a "MIRAGE" dance short with Marine (2024) | [S1 3HwaqbdKO1s, toe_PmrDWBU, tzVgzvV0cVo] |
 
@@ -183,6 +198,11 @@ Matched names: vi and FUWAMOCO|Noel and Calliope|JP Senpai Pairs 2|Marine and Ki
 
 ### from Myth and Kronii: Other Pairs
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
+
+### from holoX
+- `bible/world/holoX.md › How they work together`: - NePoX: NePoLaBo (Nene, Polka, Lamy, Botan) × holoX; the 2026 event roster is the eight active members (Chloe is not on it), and the joint song "Watcha Gatcha!!!!!!!!" was released 2026-08-26. Membership and rosters are dated. [S3] [Official NePoX 2026 roster] [Official music 801]
+- `bible/world/holoX.md › With the English cast`: - **Ninomae Ina'nis, Gawr Gura (graduated):** UMISEA with Chloe, Minato Aqua and Houshou Marine (official 2023 roster). [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/]
+- `bible/world/holoX.md › With the other Japanese members on the cards`: - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s, Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project with Koyori, Chloe and Iroha. Okayu: "Dorobo Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+ (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine: Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
 
 ### from hololive History 2023-2026
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-11-09 | DEV_IS second unit FLOW GLOW debuts (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi) | — |
