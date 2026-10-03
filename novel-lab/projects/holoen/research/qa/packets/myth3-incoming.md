@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git 4ee09a4.
+Snapshot: git d91f322.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Kronii and Gura|Gura and Kronii|Takanashi Kiara|hololive -Myth-|Kiara and Gura|Gura and Kiara|Ame and Kiara|Ame and Calli|Calli and Ame|Calli and Ina|Kiara and Ame|Ina and Calli|Gura and Ina|Ina and Gura|Ame and Ina|Ina and Ame|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|Kronii and Gura|Takanashi Kiara|Gura and Kronii|hololive -Myth-|Gura and Kiara|Kiara and Gura|Kiara and Ame|Ina and Calli|Ame and Kiara|Calli and Ina|Calli and Ame|Ame and Calli|Gura and Ina|Ina and Gura|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.

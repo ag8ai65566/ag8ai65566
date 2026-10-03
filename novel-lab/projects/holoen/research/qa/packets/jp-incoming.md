@@ -1,9 +1,9 @@
 # Audit packet: jp (incoming claims)
 
-Snapshot: git 4ee09a4.
+Snapshot: git d91f322.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Sui-chan|Azu-chan|Azukichi|TakoNeko|Okanyan|AZKichi|AS_tar|AzuAzu|Okayun|FWMCAZ|Suisei|Yo-san|Ayame|Okayu|AZAZ|AZKi|Ojou)(
+Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azu-chan|Azukichi|Sui-chan|TakoNeko|Okanyan|AZKichi|Okayun|FWMCAZ|Yo-san|AS_tar|Suisei|AzuAzu|Okayu|Ayame|Ojou|AZKi|AZAZ)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).

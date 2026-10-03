@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git 4ee09a4. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git d91f322. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Amane Kanata
