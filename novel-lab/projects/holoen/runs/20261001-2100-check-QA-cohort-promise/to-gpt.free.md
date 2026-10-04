@@ -467,13 +467,14 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 | AUDIT-GLOBAL | Cohort audit global: 60 rows | applied (including the parser fixes in tools/qa_packets.py); overlaps closed by justice and myth1 | 2026-10-03 merge |
 | CLAUDE-SCOPE-003 | Merge Records naming excluded topics (15 cards) | applied (genericized) | 2026-10-03 merge |
 | AUDIT-MYTH4 | Cohort audit myth4 (Ina, TakoTori): 34 rows | applied in full; this also closes the myth1/myth3 residuals that myth4 flagged | 2026-10-04 merge |
+| AUDIT-MYTH2 | Cohort audit myth2 (Gura, Ame, Myth, AmeSame, Bone Bros) | applied in full, including re-raised myth3 residuals | 2026-10-04 merge |
 
 ### Registry excerpt (this cohort's cast and world records and its units; query `projects/holoen/research/qa/registry.json` with `jq` for the rest)
 
 ```json
 {
  "baseline": "2026-09-30",
- "commit": "3d8502c",
+ "commit": "8f921de",
  "cast": [
   {
    "name": "Ceres Fauna",
@@ -744,11 +745,11 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 
 # Audit packet: promise
 
-Snapshot: git 3d8502c. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 8f921de. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Ouro-Kronii.md` 4dffa89f761b; `bible/characters/IRyS.md` 868c53e2e031; `bible/characters/Ceres-Fauna.md` 80c27935baac; `bible/characters/Nanashi-Mumei.md` 76cb7d253ec8; `bible/characters/Hakos-Baelz.md` c4e2bef9231c; `bible/world/hololive--Promise.md` b80a53219f8b; `bible/world/Time-Duo.md` 329fef0a8daa; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` 6407b5c4a155; `bible/world/Fauna-and-Mumei-Pairs.md` 537910125c8d; `bible/world/IRyS-and-Nerissa-Pairs.md` 1a33b27ee01c; `bible/world/Hakos-Baelz-Pairs.md` ed9cffbde495
+Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/characters/IRyS.md` c0498b0949fa; `bible/characters/Ceres-Fauna.md` 0b1f638829bb; `bible/characters/Nanashi-Mumei.md` 592e017a260b; `bible/characters/Hakos-Baelz.md` 9e284efa3513; `bible/world/hololive--Promise.md` b80a53219f8b; `bible/world/Time-Duo.md` ed829394e292; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` 6407b5c4a155; `bible/world/Fauna-and-Mumei-Pairs.md` 537910125c8d; `bible/world/IRyS-and-Nerissa-Pairs.md` 1a33b27ee01c; `bible/world/Hakos-Baelz-Pairs.md` ed9cffbde495
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -926,7 +927,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 4dffa89f761b; `bible/cha
 
 ### Time Duo — `bible/world/Time-Duo.md`
 **[SW] Other Names:** Ame and Kronii, Kronii and Ame
-**[SW] Description:** Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes," and Ame's alternate-Ame lore includes an "Epic Ame War" against Kronii that messed up time. On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
+**[SW] Description:** Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes,". On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
 **[SW] Rules:** No one actually controls or travels through time; it is a shared joke. Ame plays the guilty borrower, Kronii the unimpressed Warden. In the 2026 baseline Ame appears as a guest, not a regular collab partner.
 **Dossier · History:**
 | Date | Event | Trace left |
@@ -1037,10 +1038,10 @@ Incoming claims continue in `promise-incoming.md`.
 
 # Audit packet: promise (incoming claims)
 
-Snapshot: git 3d8502c.
+Snapshot: git 8f921de.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Hakos Baelz Pairs|It's Not a Phase|Kronii and Calli|Keeper of Nature|Calli and Kronii|hololive Council|Nerissa and IRyS|Mumei and Kronii|Fauna and Mumei|IRyS and Kronii|Mumei and Kiara|Bae and Cecilia|Mumei and Fauna|Warden of Time|Kronii and Ina|Time and Death|Ina and Kronii|Kronii and Ame|Bae and Kronii|Ame and Kronii|Fauna and Gura|Nanashi Mumei|Mother Nature|Bae and Calli|Bae and IRyS|IRyS and Ina|Kroniicopter|Ceres Fauna|Ouro Kronii|holoCouncil|Hakos Baelz|holoPromise|Gamer Kirin|Octo'clock|Ceres-chan|CouncilRyS|Tam Tender|Owo-senpai|Octo'Clock|Mumi-chan|オーロ・クロニー|YabaIRyS|KiaRissa|Time Duo|Kronster|CHADCast|Rat Idol|SeisoRyS|Moomsies|MorIRyS|Moomers|BratTea|Kronini|Promise|Council|KronMei|BaeRyS|Faufau|Meimei|Kronii|Fawna|Mumei|Baelz|Fauna|BaeBi|gumei|Hakos|Irys|Moom|IRyS|Towl|Bae)(
+Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Hakos Baelz Pairs|Kronii and Calli|hololive Council|Calli and Kronii|Mumei and Kronii|Keeper of Nature|It's Not a Phase|Nerissa and IRyS|Bae and Cecilia|Fauna and Mumei|IRyS and Kronii|Mumei and Fauna|Mumei and Kiara|Ina and Kronii|Kronii and Ame|Time and Death|Kronii and Ina|Bae and Kronii|Warden of Time|Ame and Kronii|Fauna and Gura|Nanashi Mumei|Mother Nature|Bae and Calli|Kroniicopter|IRyS and Ina|Bae and IRyS|Hakos Baelz|Gamer Kirin|Ceres Fauna|Ouro Kronii|holoPromise|holoCouncil|Octo'clock|CouncilRyS|Owo-senpai|Octo'Clock|Ceres-chan|Tam Tender|Mumi-chan|Time Duo|Kronster|KiaRissa|YabaIRyS|オーロ・クロニー|SeisoRyS|Moomsies|Rat Idol|CHADCast|Promise|Moomers|MorIRyS|BratTea|Kronini|Council|KronMei|Faufau|Kronii|Meimei|BaeRyS|Hakos|Fawna|Mumei|gumei|BaeBi|Baelz|Fauna|IRyS|Towl|Irys|Moom|Bae)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
@@ -1478,7 +1479,7 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 - `bible/world/Justice-Pairs.md › With Advent`: - **Shiori:** Elizabeth ("NovelFlame," "BloodQuill"; secondary) and Gigi voice parts in Shiori's non-canon motion comic "Into The Void" (2026; episode 2 also credits Calli); Gigi ("NovelGrem") games with her often (Heave Ho, a Fateful Findings watchalong, Project Zomboid, Phasmophobia; Eden Eternal was Kiara, Shiori and Gigi); the "Fanfic Club" (Gigi, Shiori, Pavolia Reine, Airani Iofifteen) is a separate group from "GAGA" (Gigi, Cecilia, Shiori, Bijou); Raora: a 2024 outfit-design collab (2024-12-05) and Blood Typers with Kronii and Bijou (2025-06-10); Cecilia: "Break It Down" with Vestia Zeta at Serendipity; Gigi: "MONSTER" with Ina and Kronii at -All for One-. [Observed S1; S2]
 - `bible/world/Justice-Pairs.md › With Advent`: - **FUWAMOCO:** Raora is their Serendipity unit partner in B.F.F (official billing, "Inu Neko. Seishun Massakari"); Gigi and Cecilia guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit ("GigiMoco" and "Cecemoco" are pair labels with Mococo); Cecilia played Chrono Trigger with Mococo, including 2026 off-collabs; Gigi sang "Bright Tonight" (2025) with the twins, IRyS and Kronii, and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity; Fuwawa, Gigi and Calli as "2 Creatures + 1 Reaper" (2026, Fuwawa alone); the twins sang in Elizabeth's 2026 birthday cover "CHA-LA HEAD-CHA-LA" with Polka, Nene, Watame and Iroha. [Official S3 interview03] [Observed S1; S2]
 - `bible/world/Justice-Pairs.md › With Myth`: - **Ninomae Ina'nis:** Cecilia's Stranger of Paradise partner (2025), with a rivalry bit Cecilia plays up (secondary); "SHALLYS" with Cecilia and FUWAMOCO, "MONSTER" with Gigi, Kronii and Shiori, "Neko Kaburi-Na" with Raora, Shiori and Oozora Subaru (all at -All for One-); Rabbit and Steel with Cecilia, Bijou and Gigi (2024); Blood Typers with Gigi (2025-04-11); Puyo Puyo Tetris 2 with Raora (2025-06-02); the Monster Hunter Wilds sponsored launch with Gigi, Raora and Bijou (2025-03-01). [Observed S1]
-- `bible/world/Justice-Pairs.md › With Myth`: - **Gawr Gura (graduated):** Keep Talking and Nobody Explodes and The Forest with Cecilia (2025-02); R.E.P.O. with Raora, Kiara and Kronii (2025-04-13). **Watson Amelia (affiliate):** in ENReco's role-play story, Gigi's Gonathon and Ame's Jyonathan marry (secondary; "ClueChaser"); Borderlands 2 with Cecilia, Gigi and Mumei (2024-08-09). [Observed S1; S2]
+- `bible/world/Justice-Pairs.md › With Myth`: - **Gawr Gura (graduated):** Keep Talking and Nobody Explodes and The Forest with Cecilia (2025-02); R.E.P.O. with Raora, Kiara and Kronii (2025-04-13). **Watson Amelia (affiliate):** in ENReco's role-play story, Gigi and Ame play knights in a fictional marriage storyline (secondary; "ClueChaser"); Borderlands 2 with Cecilia, Gigi and Mumei (2024-08-09). [Observed S1; S2]
 - `bible/world/Justice-Pairs.md › With Promise`: - **Ouro Kronii:** "Pizza Time" with Raora (Portal 2, 2024-11-26; Backrooms Cleanup Crew, 2026-06-11; in ENReco Raora used "Tam Tender" for Kronii's character, secondary), "TimeChaser" with Gigi (Fatal Fury, 2025-05-03; Hytale, 2026-04-14), "Clockwork Orange" with Gigi and Cecilia; secondary accounts record Kronii's "CLANKER" joke and Cecilia's "Owo-senpai" nickname; "Bright Tonight" and "MONSTER" with Gigi. [Observed S1; S2; Kronii file] [Official S6]
 - `bible/world/Justice-Pairs.md › With Promise`: - **Hakos Baelz:** "BratTea" with Cecilia; "Countach" with Gigi and guest Kureiji Ollie at -All for One-. **IRyS:** Elden Ring Nightreign with Cecilia and Bijou (2025-06-05); "Bright Tonight" with Gigi (2025); "START AGAIN" with Elizabeth at -All for One-. [Observed S1; S2] [Official S6]
 - `bible/world/Justice-Pairs.md › With Promise`: - **Ceres Fauna (graduated 2025):** Gigi's "FruitPunch" (Silent Hill 2; The Coughing Baby Award Show, 2024-12-28) and League of Legends with Elizabeth, Gigi, Cecilia and Nerissa (2024); Cecilia's "Green Women" (a shoujo-tropes ranking, 2024-09-23). **Nanashi Mumei (graduated 2025):** Cecilia's "Automatowl" (Halo: Reach, 2024; "Ask us anything," 2025-04-12; the nickname "Myumyei" is unverified); Gigi's Echo Point Nova ("A Towl and a Gremlin," 2024-10-15); an art stream with Raora (2025-01-18). [Observed S1; S2]
@@ -1525,7 +1526,7 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 - `bible/world/hololive--Justice.md › History`: | 2026-07-03/04 PDT | Serendipity: day 1 "SUPERNOVA SUPER GIRL" (Justice); Autofister (Gigi & Cecilia, "CCGG MADNESS"); "HELP!!" (Kobo Kanaeru with Bae and Elizabeth); "Break It Down" (Vestia Zeta with Shiori and Cecilia); "Cloudy Sheep" (Tsunomaki Watame with Calli and Cecilia). Day 2: the Advent+Justice medley ("Rebellion," "ABOVE BELOW"); Bloodraven (Nerissa & Elizabeth, "Cruel Angel's Thesis"); "MAKE IT, BREAK IT" (Zeta, FUWAMOCO and Gigi); "What an amazing swing" (Watame with Kiara and Raora); B.F.F (FUWAMOCO & Raora, "Inu Neko. Seishun Massakari") | [Official S6, S8] |
 
 ### from hololive -Myth-
-- `bible/world/hololive--Myth.md › Members and Status`: - Watson Amelia: concluded general activities 2024-09-30; affiliate; guests at genmates' events (Kiara's concerts 2025 and 2026, Kronii's 2026 live, a reported cameo in Calli's 2026 charity stream, with its segment locator unverified). [Observed Ame file A23; Ame's wiki page §2025–§2026, secondary]
+- `bible/world/hololive--Myth.md › Members and Status`: - Watson Amelia: concluded regular activities on 2024-09-30 and remains an affiliate. Her March 2026 appearance at Kronii's birthday live is recorded under K33. Reported appearances at Kiara's 2025 and 2026 concerts and Calli's 2026 charity stream remain unverified pending direct segment evidence. [Official Ame A4; inherited Kronii K33; unverified Ame A8/A19]
 
 ### from hololive History 2023-2026
 - `bible/world/hololive-History-2023-2026.md › [SW] Description`: The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup,"
