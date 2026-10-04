@@ -20,7 +20,7 @@ Relationship (pair) and official concert pairing.
 
 ## How It Works
 - **Official pairing (2026):** paired for the 4th concert "Serendipity" (Shrine Auditorium, Los Angeles,
-  2026-07-03/04); Kronii's short "#holoSerendipity It's Time for Octo'Clock!" (2026-06-24) names the unit.
+  2026-07-03/04 PDT); Kronii's short "#holoSerendipity It's Time for Octo'Clock!" (2026-06-24) names the unit.
   [Official S2; Observed S3]
 - **How they describe each other (official interview, 2026-06-04):**
   - Kronii: "Just two punny people waiting to deliver the pun-chline to everyone." She praises Ina's
@@ -49,7 +49,7 @@ Relationship (pair) and official concert pairing.
 | 2023–2024 | FGO streams on Ina's channel | A shared game |
 | 2026-06-04 | Official Serendipity interview | Their own words |
 | 2026-06-24 | "It's Time for Octo'Clock!" short | The unit name |
-| 2026-07-03/04 | Serendipity concert, Los Angeles | Their stage pairing |
+| 2026-07-03/04 PDT | Serendipity concert, Los Angeles | Their stage pairing |
 
 ## Glossary
 | Word | Meaning | Who says it |
@@ -71,7 +71,7 @@ Ninomae Ina'nis, Ouro Kronii; Watson Amelia (the 2022 karaoke).
 (None.)
 
 ## Hard Facts (continuity)
-- Serendipity: 2026-07-03/04, Shrine Auditorium, Los Angeles.
+- Serendipity: 2026-07-03/04 PDT, Shrine Auditorium, Los Angeles.
 - "Octo'Clock" is the pairing's name in Kronii's official short (2026-06-24).
 
 ## Sources (checked 2026-09-30)
@@ -95,7 +95,7 @@ Relationship
 Ina and Kronii, Kronii and Ina, Octo'clock, Octo'Clock
 
 ## [SW] Description
-Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4) under the name "Octo'Clock" (the official report spells it "Octo'clock"), performing "Bad Apple." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had discussed shared interests and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
+Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4, 2026 PDT) under the name "Octo'Clock" (the official report spells it "Octo'clock"), performing "Bad Apple." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had discussed shared interests and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
 
 ## [SW] Rules
 Ina's claim on Kronii is a sweet joke, not romance. Their humor is dueling puns and deadpan; their work ethic is serious. Their stream collabs before 2026 were occasional (group numbers, FGO, R.E.P.O.), alongside shared stage work.
@@ -120,6 +120,8 @@ Purple and deep blue; a tentacle and a clock hand on one poster;  a pun, a beat 
   checked by Claude against the official Serendipity report and announcements:** both spellings added to Other Names (the official report writes "Octo'clock"; Kronii's short
   "Octo'Clock"); their Serendipity song "Bad Apple" added to the Description.
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-SCOPE-005 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-004 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit promise, hand-applied by Claude:** PROMISE-DATE-004 at every occurrence (PDT).
 
 ## Open Questions
 (None.)

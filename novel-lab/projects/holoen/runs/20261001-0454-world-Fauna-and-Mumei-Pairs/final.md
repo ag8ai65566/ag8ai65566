@@ -63,7 +63,7 @@ Relationship web.
   at -Breaking Dimensions- (2024) Mumei sang "Beyond the way" with Kiara and Nerissa, and Fauna "Lonely in
   Gorgeous" with Shiori and Nerissa; a 2023 reply from Nerissa to Fauna on X: "Fauna-senpai!!! My Raven
   companion is named Shadow~". [Observed S1; research/x-posts.md, via wiki citation] [Official S6]
-- **Outside the cast (context):** Hakos Baelz is a recurring collaborator of both (Fauna's horror partner);
+- **Other collaborators:** Hakos Baelz is a recurring collaborator of both (Fauna's horror partner);
   Tsukumo Sana (graduated 2022) completed the Council; Inugami Korone recorded a duet cover with Mumei
   (2025-04-23) and, with Okayu, Nene and Koyori, guested at "Outside the Box" (2024-08-05). [Observed S1;
   Promise card]
@@ -75,7 +75,7 @@ Relationship web.
 | 2021-08-25 | Fauna and Mumei's first co-op | Don't Starve Together: "Surviving in the wilderness with Mumei!" |
 | 2021-09-13 | Minecraft together | "Adventuring with Mumei!" |
 | 2023-03-19 | Mumei sings with Kiara on the 4th fes. stage | HOLOTORI |
-| 2023-10-09 | -Promise- formed | — |
+| 2023-10-09 JST | -Promise- formed | — |
 | 2024-08-24 | "It's Not a Phase" premiered at -Breaking Dimensions- | their duet (released 2024-12-22) |
 | 2024-12-27 | Fauna on Kiara's HOLOTALK | — |
 | 2025-01-03 | Fauna graduates | — |
@@ -173,6 +173,7 @@ On-screen avatar imagery pairs green hair and branch-shaped horns with brown fea
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "R.E.P.O. with all of Promise" → the session's roster (IRyS, Kronii, Bae; Fauna had graduated).
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-002, promise:PROMISE-ROSTER-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

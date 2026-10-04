@@ -36,7 +36,7 @@ Faction / organization (and workplace).
   3D lives and concerts, collabs with other members, off-collabs (streaming together from the same
   place), sponsored streams, merchandise and voice packs, conventions and meet events. [Observed]
 - **Events that anchor a calendar:** debut anniversaries (Myth's in mid-September), birthdays (often a
-  3D live), hololive English concerts (the 4th, "Serendipity," 2026-07-03/04, Shrine Auditorium, Los
+  3D live), hololive English concerts (the 4th, "Serendipity," 2026-07-03/04 PDT, Shrine Auditorium, Los
   Angeles), hololive fes and SUPER EXPO (7th fes, 2026-03-06–08), holoMeet events. [Observed S2]
 - **Seniority:** senpai and kouhai describe relative seniority (who debuted first), not language or
   nationality; forms of address and levels of formality vary by relationship. Many EN members are openly
@@ -66,10 +66,10 @@ Faction / organization (and workplace).
 |---|---|---|
 | 2020-09 | hololive English -Myth- debuts (first EN generation) | Myth anniversaries every September |
 | 2021-08 | -Council- debuts (Kronii's generation) | Council → Promise |
-| 2023-10-09 | -Promise- formed (IRyS joins the remaining Council) | Kronii's group name |
+| 2023-10-09 JST | -Promise- formed (IRyS joins the remaining Council) | Kronii's group name |
 | 2024-09-30 | Watson Amelia concludes general activities, stays an affiliate | Occasional guest appearances |
 | 2025-05-01 | Gawr Gura graduates | Alumna; remembered in songs and anniversaries |
-| 2026-07-03/04 | hololive English 4th concert "Serendipity" (LA) | Partner pairs (e.g. Kronii and Ina) |
+| 2026-07-03/04 PDT | hololive English 4th concert "Serendipity" (LA) | Partner pairs (e.g. Kronii and Ina) |
 | 2026-09-07 | The female-talent branches unify under "hololive" | Groups become units |
 
 ## Glossary
@@ -161,6 +161,8 @@ A "Starting soon" screen; a superchat chime; a concert LED wall behind a 3D avat
   as secondary detail.
 - **2026-10-02, scope wording (Claude):** the senpai/kouhai definition no longer names language or nationality, even in the negative (scope screening V14).
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-TIE-002 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-002 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit promise, hand-applied by Claude:** PROMISE-DATE-004 at every occurrence (PDT).
 
 ## Open Questions
 (None. The baseline date 2026-09-30 is fixed by the author.)

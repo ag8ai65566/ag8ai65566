@@ -69,7 +69,7 @@ Relationship web.
   collab (2023-12) is the example found. [Observed S1 titles; S3 §Relationships, secondary]
 
 ## Sensory Palette
-- See: CHADCast's three-way call; IRyS and Kronii's split-screen co-op; KFP merch on Nerissa's shelf;
+- See: CHADCast's three-way call; IRyS and Kronii's split-screen co-op;
   two singers on one concert stage.
 - Hear: "Chaos, Hope, and Death!"; Kiara's "Nerissa!" across a Minecraft base; a duet of Calli's
   rap and Nerissa's sung part.
@@ -80,7 +80,7 @@ Relationship web.
 | 2021-07-29 | Calli's first collab with IRyS | MorIRyS |
 | 2022-01-30 | First CHADCast | Chaos, Hope, and Death |
 | 2023-08-14 | Nerissa's compatibility test with Kiara | KiaRissa |
-| 2023-10-09 | -Promise- formed: IRyS and Kronii become unitmates | — |
+| 2023-10-09 JST | -Promise- formed: IRyS and Kronii become unitmates | — |
 | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
 | 2026-04-23 | Nerissa's Tomodachi Life Miis of IRyS and Ina | — |
 
@@ -133,7 +133,7 @@ IRyS and Nerissa Pairs
 Relationship
 
 ## [SW] Other Names
-MorIRyS, CHADCast, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
+MorIRyS, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
 
 ## [SW] Description
 IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IRyS's debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke). IRyS and Kronii: Promise unitmates since 2023 and friends since 2021, regulars at two-player games (A Way Out, Bokura, a Powerwash race, "May The Best Maid Win"); in 2026 IRyS said she could pull off Kronii's goddess look "somehow." IRyS and Ina: an early duo (It Takes Two, "It Takes Tako & Hope") who still play together. IRyS and Kiara: Kiara gave her a German crash course; nail-painting off-collab. Nerissa and Kiara (KiaRissa): Kiara is Nerissa's oshi; Kiara showed her around Minecraft; a 2025 "BIRB GIRLS" GIRLSTALK. Nerissa and Calli: a Baldur's Gate 3 party, the 2025 duet "OVER//RIDE," and Calli as a guest at Nerissa's 3D concert. Nerissa and IRyS: two singers; IRyS guested at that concert, and Nerissa put IRyS and Ina in Tomodachi Life.
@@ -142,7 +142,7 @@ IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IR
 IRyS (2021) is Nerissa's senior; Myth are seniors to both. Recent pairings (IRyS with Kronii, Calli and Ina; Nerissa with Kiara and Calli) carry the most weight; pairs with Gura are memories. All are friendships and stream bits.
 
 ## [SW] Sensory Details
-A three-way CHADCast call; a split-screen co-op with Kronii; KFP merch on Nerissa's shelf; Calli's rap and Nerissa's sung part in one duet.
+A three-way CHADCast call; a split-screen co-op with Kronii; Calli's rap and Nerissa's sung part in one duet.
 
 ## [SW] Secrets
 
@@ -165,6 +165,8 @@ A three-way CHADCast call; a split-screen co-op with Kronii; KFP merch on Neriss
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:CLAUDE-SCOPE-002, myth1:CONSULT-P0-002 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-TIE-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-ALIAS-002, promise:PROMISE-DATE-002 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit promise, hand-applied by Claude:** ADVENT-SCOPE-003 at both occurrences (a home detail removed).
 
 ## Open Questions
 1. The 2025 "KIARA & FRIENDS" spring concert names both IRyS and Nerissa in its archive entry; whether

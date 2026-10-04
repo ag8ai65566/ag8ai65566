@@ -1,9 +1,9 @@
 # Audit packet: jp2 (incoming claims)
 
-Snapshot: git 8f921de.
+Snapshot: git d0295ae.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names:  Senpai Pairs 2|Vivi and FUWAMOCO|Noel and Calliope|Marine and Kiara|Houshou Marine|Shishiro Botan|Shirogane Noel|Botan and IRyS|Kikirara Vivi|Yukihana Lamy|Lamy and Ina|Noel-danchou|Noel Deluxe|Shishiron|Lamy-mama|綺々羅々ヴィヴィ|Shishiro|Danchou|Maririn|Senchou|Danchō|Marine|Sencho|Senchō|雪花ラミィ|Botan|白銀ノエル|宝鐘マリン|獅白ぼたん|Lamy|Vivi|Wamy|Noel)(
+Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Kiara|Shirogane Noel|Shishiro Botan|Botan and IRyS|Houshou Marine|Yukihana Lamy|Kikirara Vivi|Noel-danchou|Lamy and Ina|Noel Deluxe|Shishiron|Lamy-mama|Shishiro|綺々羅々ヴィヴィ|Maririn|Senchou|Danchou|Marine|Senchō|Danchō|Sencho|雪花ラミィ|Botan|獅白ぼたん|宝鐘マリン|白銀ノエル|Lamy|Noel|Wamy|Vivi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
@@ -53,7 +53,7 @@ Matched names:  Senpai Pairs 2|Vivi and FUWAMOCO|Noel and Calliope|Marine and Ki
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Shirogane Noel: a team Mario Kart event with FUWAMOCO (2023).
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Shishiro Botan: BAE-GEMITE DOMINATION #2 with Oozora Subaru (2023).
 - `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2026-09-28 | "PARADISE!", the hololive Dreams area theme: animated MV; Bae shares the vocal credit with Omaru Polka, Houshou Marine, Yukihana Lamy, Hakui Koyori, Kobo Kanaeru and Ichijou Ririka. Also announced that day: "REGALIA" at Kanadevia Hall, scheduled for 2026-12-01 (after the baseline: an announcement only). | [Secondary NEW-R2-019, press-release reproduction] [Official, 20260928-02-16] |
-- `bible/characters/Hakos-Baelz.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25) Co-credited singers on "PARADISE!" (2026-09-28). | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] [Secondary NEW-R2-019] |
+- `bible/characters/Hakos-Baelz.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Shishiro Botan, Kikirara Vivi | JP members | Mario Kart with Marine, Calli and Reine (2021); Calli's house party with Marine (2023); Marine's horror game with Mumei (2023); BAE-GEMITE DOMINATION #2 with Botan and Subaru (2023-04-08); "Yuru Holo" team Mario Kart with Noel and FUWAMOCO (2023-12-12); #holoREPO with Vivi and FUWAMOCO (2025-05-25). Marine and Bae are co-credited vocalists on "PARADISE!" (MV 2026-09-28). | [HB3 X3pHIQAvpYU, RY1GkF4jMls, -0_9xCPljh0, Evg-T2BUIDM, TgMVtjXW2Ms] [Secondary NEW-R2-019] |
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Yukihana Lamy | JP senior | Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28); a shared recording project, not a particular conversation. | [Secondary NEW-R2-019] |
 
 ### from Hakui Koyori

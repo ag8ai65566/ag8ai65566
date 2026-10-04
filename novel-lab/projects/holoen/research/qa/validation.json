@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-04T03:43Z",
- "snapshot": "ce983db8e1b7443fbe3fbc600f1925a61a8f0f3709a0f07409c5dc543b9550fc",
+ "checked_at": "2026-10-04T05:17Z",
+ "snapshot": "0f97507d17ab6804fbf560028897abde3128248e1d944406157782c2a06efc33",
  "blocking_failures": [
   "V10",
   "V11",
@@ -20,7 +20,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot ce983db8e1b7443fbe3fbc600f1925a61a8f0f3709a0f07409c5dc543b9550fc",
+    "snapshot 0f97507d17ab6804fbf560028897abde3128248e1d944406157782c2a06efc33",
     "107 inputs"
    ],
    "finding_ids": []
@@ -86,13 +86,10 @@
   {
    "check_id": "V08",
    "title": "Alias ownership",
-   "status": "warn",
+   "status": "pass",
    "severity": "warn",
    "locator": null,
-   "evidence": [
-    "baerys: ['Hakos Baelz Pairs', 'hololive -Promise-']",
-    "chadcast: ['Hakos Baelz Pairs', 'IRyS and Nerissa Pairs']"
-   ],
+   "evidence": [],
    "finding_ids": []
   },
   {
@@ -122,8 +119,8 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "relationship web: 1 one-way ties (coverage, not errors; tools/web_check.py)",
-    "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "relationship web: 0 one-way ties (coverage, not errors; tools/web_check.py)",
+    "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },
@@ -134,7 +131,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },
@@ -157,7 +154,7 @@
    "locator": null,
    "evidence": [
     "0 automated candidates for semantic review",
-    "review pending: research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },
@@ -168,7 +165,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },

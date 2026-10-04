@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git 8f921de. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git d0295ae. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Hakos Baelz
@@ -635,7 +635,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Promise.md › [SW] Description`: hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline.
 
 ### Hakos Baelz × Kikirara Vivi
-- `bible/world/JP-Senpai-Pairs-2.md › Conflicts and Story Hooks`: 3. Vivi does stage makeup for Bae before a R.E.P.O. rematch.
+- `bible/world/JP-Senpai-Pairs-2.md › Conflicts and Story Hooks`: 3. During a fictional public drawing collab, Vivi designs stage makeup for Bae's avatar before a R.E.P.O. rematch.
 
 ### Hakos Baelz × Koseki Bijou
 - `bible/characters/IRyS.md › [SW] Relationships`: At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
@@ -988,7 +988,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Kronii and Kaela are recurring public collaborators. IRyS and Flare are recurring public collaborators.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 2. IRyS and Kronii race again at something mundane; the loser has to admit she was scared.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - IRyS debuted 2021-07-11 (senior to Kronii by a month, to Nerissa by two years); Nerissa 2023-07-31.
-- `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2023-10-09 | -Promise- formed: IRyS and Kronii become unitmates | — |
+- `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2023-10-09 JST | -Promise- formed: IRyS and Kronii become unitmates | — |
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Kronii: Promise unitmates since 2023 and friends since 2021, regulars at two-player games (A Way Out, Bokura, a Powerwash race, "May The Best Maid Win"); in 2026 IRyS said she could pull off Kronii's goddess look "somehow."
 - `bible/world/hololive--Promise.md › Conflicts and Story Hooks`: 2. IRyS tries to get Kronii to admit she was scared.
 - `bible/world/hololive--Promise.md › Hard Facts`: - Unverified title-only bits (Bae holding Kronii's hand, scaring Bae with IRyS) are not facts.
@@ -997,8 +997,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Promise.md › One-line Concept`: 2023. After two graduations in 2025, the active members are IRyS, Ouro Kronii and Hakos Baelz.
 - `bible/world/hololive--Promise.md › [SW] Description`: (per the wiki); Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared.
 - `bible/world/hololive--Promise.md › [SW] Description`: hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline.
-- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2023-10-08/09 | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
-- `bible/world/hololive.md › History`: | 2023-10-09 | -Promise- formed (IRyS joins the remaining Council) | Kronii's group name |
+- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2023-10-08 PDT / 10-09 JST | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
+- `bible/world/hololive.md › History`: | 2023-10-09 JST | -Promise- formed (IRyS joins the remaining Council) | Kronii's group name |
 
 ### IRyS × Raora Panthera
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Raora Panthera | Justice kouhai | Co-presenters (with IRyS) of the official Serendipity merchandise infomercial (May 2026). | [Archive metadata, ckworks ew00E7t4Dow] |
@@ -1216,7 +1216,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Mori Calliope × Nerissa Ravencroft
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert).
-- `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive fes. + hololive SUPER EXPO** (spring, in Japan; the combined fes./EXPO tradition dates to 2022, while fes. itself is older): the agency-wide concert and convention. 3rd fes "Link Your Wish" (2022-03, Makuhari; Calli and Kiara performed on day 2, per their X posts), 4th fes "Our Bright Parade" (2023), 5th "Capture the Moment" (2024), 6th "Color Rise Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06/08). EN units share Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
+- `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive fes. + hololive SUPER EXPO** (spring, in Japan; the combined fes./EXPO tradition dates to 2022, while fes. itself is older): the agency-wide concert and convention. 3rd fes "Link Your Wish" (2022-03, Makuhari; Calli and Kiara performed on day 2, per their X posts), 4th fes "Our Bright Parade" (2023), 5th "Capture the Moment" (2024), 6th "Color Rise Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06–08 JST). EN units share Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-,"
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 4. Calli and Nerissa rehearse a duet; Calli's flow meets Nerissa's flirting.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
@@ -1310,7 +1310,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |
 - `bible/world/Advent-Pairs.md › History`: | 2023-08-12 | HOLOTALK with Kiara; Bijou's Undertale replay with Calli | senior ties |
 - `bible/world/Bone-Bros.md › How It Works`: - **"Full Color":** Gura's single was never released; Calli performed it at hololive English -Myth-'s fourth-anniversary concert "The Show Goes On!" (September 2024), and Calli and Kiara said they would keep singing it in karaoke. [Observed S2 §Miscellaneous, secondary; archived official broadcast CDljbqawDkw]
-- `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive fes. + hololive SUPER EXPO** (spring, in Japan; the combined fes./EXPO tradition dates to 2022, while fes. itself is older): the agency-wide concert and convention. 3rd fes "Link Your Wish" (2022-03, Makuhari; Calli and Kiara performed on day 2, per their X posts), 4th fes "Our Bright Parade" (2023), 5th "Capture the Moment" (2024), 6th "Color Rise Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06/08). EN units share Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
+- `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive fes. + hololive SUPER EXPO** (spring, in Japan; the combined fes./EXPO tradition dates to 2022, while fes. itself is older): the agency-wide concert and convention. 3rd fes "Link Your Wish" (2022-03, Makuhari; Calli and Kiara performed on day 2, per their X posts), 4th fes "Our Bright Parade" (2023), 5th "Capture the Moment" (2024), 6th "Color Rise Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06–08 JST). EN units share Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-,"
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: The cast's own stages: Calli's "GriMoire" at the Hollywood Palladium (2025, the first hololive solo concert outside Japan); Kiara and Ina's duo concert "Drawn to Dawn"
 - `bible/world/Justice-Pairs.md › Conflicts and Story Hooks`: 3. Gigi tries to get Mori Calliope into League of Legends one more time, with Kiara as backup.
@@ -1521,7 +1521,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | "EMO HOURS: IT WAS NEVER A PHASE with NERISSA" (2023); "Beyond the way" with Kiara and Nerissa at -Breaking Dimensions- (2024); "SAD GIRL HOURS" (2025-04-20) | [Observed M3] [Official M5] |
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Takanashi Kiara: her oshi (KiaRissa); in Nerissa's lore she worked at KFP; Kiara showed her around Minecraft, and they held a 2025 "BIRB GIRLS"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Nerissa Ravencroft: an Advent kouhai who calls Kiara her oshi and, in her lore, once worked at KFP (KiaRissa); they held a 2025 "BIRB GIRLS"
-- `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive fes. + hololive SUPER EXPO** (spring, in Japan; the combined fes./EXPO tradition dates to 2022, while fes. itself is older): the agency-wide concert and convention. 3rd fes "Link Your Wish" (2022-03, Makuhari; Calli and Kiara performed on day 2, per their X posts), 4th fes "Our Bright Parade" (2023), 5th "Capture the Moment" (2024), 6th "Color Rise Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06/08). EN units share Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
+- `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive fes. + hololive SUPER EXPO** (spring, in Japan; the combined fes./EXPO tradition dates to 2022, while fes. itself is older): the agency-wide concert and convention. 3rd fes "Link Your Wish" (2022-03, Makuhari; Calli and Kiara performed on day 2, per their X posts), 4th fes "Our Bright Parade" (2023), 5th "Capture the Moment" (2024), 6th "Color Rise Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06–08 JST). EN units share Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-,"
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 3. Nerissa guests on Kiara's stream and fangirls so hard she forgets the topic.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › History`: | 2023-08-14 | Nerissa's compatibility test with Kiara | KiaRissa |
@@ -1547,7 +1547,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/OctoClock.md › [SW] Other Names`: Ina and Kronii, Kronii and Ina, Octo'clock, Octo'Clock
 - `bible/world/OctoClock.md › [SW] Rules`: Ina's claim on Kronii is a sweet joke, not romance.
 - `bible/world/hololive--Promise.md › How the Group Works`: - **After 2025:** the group is three. Kronii's 2026 activity includes a 3D birthday live with Ame as a guest, the Serendipity pairing with Ina and her EP. [Observed Kronii file K4, K33, K36]
-- `bible/world/hololive.md › History`: | 2026-07-03/04 | hololive English 4th concert "Serendipity" (LA) | Partner pairs (e.g. Kronii and Ina) |
+- `bible/world/hololive.md › History`: | 2026-07-03/04 PDT | hololive English 4th concert "Serendipity" (LA) | Partner pairs (e.g. Kronii and Ina) |
 
 ### Ninomae Ina'nis × Raora Panthera
 - `bible/characters/Cecilia-Immergreen.md › Background Timeline`: | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice; "Wind-Up," the first Justice solo; "SHALLYS" with Ina and FUWAMOCO (on violin); "I'm Your Treasure Box" with Bijou and Raora | [Official CI5] |
@@ -1648,13 +1648,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/OctoClock.md › How It Works`: - **On stream (archive, S1):** Ina's FGO streams with Kronii (2023-08-18 "Let's Learn About Fate/Grand Order!!!", 2024-01-02 "NEW YEAR FGO ADVENTURES"), R.E.P.O. (2025-07-19), and Ame's 2022 surprise karaoke off-collab that both joined (per Ame's wiki page).
 - `bible/world/Time-Duo.md › Conflicts and Story Hooks`: 1. Kronii "audits" Ame's time travel as a bit; Ame pleads a borrowed watch.
 - `bible/world/Time-Duo.md › Conflicts and Story Hooks`: 3. An Ame cameo in 2026: Kronii pretends not to be delighted.
-- `bible/world/Time-Duo.md › Hard Facts`: - Ame guested at Kronii's 3D birthday live on 2026-03-13.
-- `bible/world/Time-Duo.md › History`: | 2026-03-13 | Ame guests at Kronii's 3D birthday live | The affiliate's cameo |
+- `bible/world/Time-Duo.md › Hard Facts`: - Ame guested at Kronii's 3D birthday live on 2026-03-14 JST.
+- `bible/world/Time-Duo.md › History`: | 2026-03-14 JST | Ame guests at Kronii's 3D birthday live | The affiliate's cameo |
 - `bible/world/Time-Duo.md › How It Works`: - **2026:** Ame guested at Kronii's March 2026 birthday live, "The Goddess Descends" (2026-03-13 in the Americas, 03-14 in Japan; "Fall in Grace" in an earlier note refers to the same broadcast). [Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711; S3 §2026, secondary]
 - `bible/world/Time-Duo.md › How It Works`: - **Opposites (a joke):** Ame joked that Kronii "dislikes everything she likes." [Observed S2 §Likes and dislikes, secondary]
 - `bible/world/Time-Duo.md › How It Works`: - **The lore joke:** when Kronii was announced (2021) and her account was briefly restricted by the rush of followers, Ame joked "twitter is protecting me from a certain time lord" and "i swear i'll give it back soon...." — as if her time travel were borrowed from the Warden. [Observed S2 §Lore, secondary]
 - `bible/world/Time-Duo.md › How It Works`: - **Unverified lore candidate:** Secondary accounts describe an alternate-Ame conflict involving Kronii. Its original statement and continuity scope remain unverified; it is outside the current baseline. [Observed S3 §Alter Ames, secondary; Amelia dossier, Arc]
-- `bible/world/Time-Duo.md › [SW] Description`: Ame has joked that Kronii "dislikes everything she likes,".
+- `bible/world/Time-Duo.md › [SW] Description`: Ame has joked that Kronii "dislikes everything she likes."
 - `bible/world/Time-Duo.md › [SW] Description`: Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends."
 - `bible/world/Time-Duo.md › [SW] Description`: On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii.
 - `bible/world/Time-Duo.md › [SW] Description`: Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed.

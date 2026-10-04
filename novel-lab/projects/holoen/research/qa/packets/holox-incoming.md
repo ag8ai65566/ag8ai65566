@@ -1,9 +1,9 @@
 # Audit packet: holox (incoming claims)
 
-Snapshot: git 8f921de.
+Snapshot: git d0295ae.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Kazama Iroha|Hakui Koyori|Gozaru-chan|ラプラス・ダークネス|Iroha-dono|Takane Lui|秘密結社holoX|Sakamata|Kura-tan|Lui Lui|Koyorin|Lui-nee|Gozaru|沙花叉クロヱ|Laplus|Koyori|博衣こより|holoX|Chloe|風真いろは|Iroha|Kuroe|Koyo|鷹嶺ルイ|ルイルイ|La+|Lui)(
+Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Hakui Koyori|Kazama Iroha|Gozaru-chan|Iroha-dono|ラプラス・ダークネス|Takane Lui|秘密結社holoX|Kura-tan|Sakamata|Lui Lui|Lui-nee|Koyorin|Gozaru|Koyori|Laplus|沙花叉クロヱ|Iroha|風真いろは|Chloe|Kuroe|holoX|博衣こより|Koyo|ルイルイ|鷹嶺ルイ|La+|Lui)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
@@ -202,7 +202,7 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 
 ### from Fauna and Mumei Pairs
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Kiara:** Mumei and Kiara are birds in HOLOTORI (with Subaru, Reine and Lui): "BUILDER BIRBS" (2021), "Kiwawa & Mumeiwi" (2022), a DECO*27 song together on the 4th fes. holo*27 stage (2023), "two smol beans" (2025-03-26) and Kiara's HOLOTALK 33rd guest (2025-04-22); Kiara calls her "Moomsies." Fauna and Kiara: "KIWAWA vs FAWNA" (2022), Pokémon Unite practice (2023), and Fauna was HOLOTALK's 32nd guest (2024-12-27), a week before she graduated. [Observed S1; S3 infobox; S4]
-- `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Outside the cast (context):** Hakos Baelz is a recurring collaborator of both (Fauna's horror partner); Tsukumo Sana (graduated 2022) completed the Council; Inugami Korone recorded a duet cover with Mumei (2025-04-23) and, with Okayu, Nene and Koyori, guested at "Outside the Box" (2024-08-05). [Observed S1; Promise card]
+- `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Other collaborators:** Hakos Baelz is a recurring collaborator of both (Fauna's horror partner); Tsukumo Sana (graduated 2022) completed the Council; Inugami Korone recorded a duet cover with Mumei (2025-04-23) and, with Okayu, Nene and Koyori, guested at "Outside the Box" (2024-08-05). [Observed S1; Promise card]
 
 ### from JP Senpai Pairs 2
 - `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Ninomae Ina'nis, Gawr Gura:** UMISEA, the ocean unit (official 2023 roster: Minato Aqua, Marine, Sakamata Chloe, Gura and Ina); Calli's English lesson #01 (Ina); a guest at Ina's "Pleides" (2024); "SHINKIRO" with Gura (anime MV on Marine's channel, 2023-11-12, credited to both). The "GuraMarine" pair name is wiki-listed only. [Official UMISEA roster] [S1 9ehwhQJ50gs, 3n9igJnSXtQ] [S2 Marine §Relationships, secondary]

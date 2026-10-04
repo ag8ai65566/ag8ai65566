@@ -30,7 +30,7 @@ into a sly, lower, teasing aside."
 | Situation | Tags | Line |
 |---|---|---|
 | Opening | `[bright, cheerful]` | "HiRyS, iiiit's IRyS! … Your seiso nephilim here to fill the world with hopium!" (official written greetings) |
-| Gushing about an outfit | `[rapid, gushing, delighted]` | "I'm glad you guys liked the outfit. I knew you guys would!" |
+| Gushing about an outfit | `[rapid, gushing, delighted]` | "I knew you guys would!" |
 | Teasing chat | `[sweet]` → `[sly, lower]` | "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" |
 | After a slip | `[mock-innocent, quick]` | (claims to be "a hundred percent seiso"; the full wiki line is unverified by audio) |
 | Outfit speculation | `[innocent]` → `[sly, lightly amused]` | "could pull it off somehow" (ASR excerpt about an outfit; proposed lightly amused reading) |

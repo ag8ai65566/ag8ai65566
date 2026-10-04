@@ -229,10 +229,10 @@ Real lines first; Style demos after.
 | 2021-10 | Minecraft "civil war" with Fauna | [Unverified, K29 clip titles] |
 | 2022-01-15 | Kimono reveal; introduces Boros | [Observed K8 §Mascots and fans, secondary] |
 | 2022-08 | Mumei accidentally blows up the Bunkeronii's entrance | [Unverified, K28 clip titles] |
-| 2023-10-09 | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
+| 2023-10-09 JST | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
 | 2025 | Fauna (January) and Mumei (April) graduate; Promise's current members are Kronii, IRyS and Baelz | Shared history stays [Official K34] |
 | 2025-10-10 | Promise releases "Run Back 'Round" | [Official K6] |
-| 2026-03-13 | 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 | [Observed K33, secondary, stream t=1711; K38, secondary] |
+| 2026-03-14 JST | 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 | [Observed K33, secondary, stream t=1711; K38, secondary] |
 | 2026-05-08 | Single "STORM" (later on the EP) | [Observed K38, secondary] |
 | 2026-05-28 JST | "Way 2 U" MV: Kronii shares the lyric credit with JALTO (JALTO composed and arranged; choreography by Miyuki Nishijima). | [Archive metadata NEW-R2-006, reproducing the MV credits] |
 | 2026-06-04 | Serendipity interview and partnership with Ina | Puns, appreciation, performance goals [Official K4] |
@@ -240,7 +240,7 @@ Real lines first; Style demos after.
 | 2026-09-07 | Branches merge into one "hololive"; unit is hololive -Promise- | [Official K5, K1] |
 
 ## Relationship Map
-Public exchanges only. Ship and unit names are fan terms. No private feelings are implied.
+Public exchanges only. Octo'clock has official Serendipity billing; other pairing labels retain their individually cited evidence status. No private feelings are implied.
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
@@ -381,7 +381,7 @@ She has no supernatural abilities; her lore is a performed persona. Kronii is a 
 Kronii's avatar is 168 cm tall, with short dark-blue hair that falls in long locks at the sides and big blue eyes. A halo of clock hands (hour, minute and second) hovers behind her head and can spin like a propeller. In her original outfit she wears blue, white and black with gold trim, under a blue cape with a big ribbon, jewels and gold ornaments, and she carries two swords shaped like the long and short hands of a clock.
 
 ## [SW] Dialogue Style
-She speaks dry, minimal, casual English, with short cheers dropped in. She uses deadpan self-praise, short reactions and repetition. She prefers understatement to exclamation,. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Lines of hers: "I'm so funny. I can't read this." "Oh my god, that hand scared me."
+She speaks dry, minimal, casual English, with short cheers dropped in. She uses deadpan self-praise, short reactions and repetition. She prefers understatement to exclamation. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Lines of hers: "I'm so funny. I can't read this." "Oh my god, that hand scared me."
 
 ## [SW] Catchphrases
 "Kroniichiwa!" (greeting, after a few hellos); "It's me, perfection." (self-introduction, bragging); "Yay!" / "Yippee!" (a cheer); "KroYasumi~" (good night); "I know." (accepting a compliment); "That was my bad." / "that's on me" (owning a misplay); "just be better" (mock advice to chat); "GWAK!" (startled squawk when scared or hit); "God, I can't get over how amazing I am. Narcissus would be so jealous." (peak self-praise); "I'm like, the hottest dumpster fire." (self-roast); "I'm not a happy person. But I would like to be happy." (deadpan existential aside); "Flower." (a quoted bit); "Tea is leaf juice." (deadpan food take); "You're looking at the ribbon, right?" (teasing about her outfit); "ご飯にする？お風呂にする？それとも…わ・た・し？" ("Dinner? A bath? Or… me?") (a flirty line); "Sorry, I just don't understand things from a CLANKER." (to Cecilia)
@@ -554,6 +554,8 @@ Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "B
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-005 (Vivi and Noel added to the exported Relationships, closing both one-way ties; Kaela clause shortened), NEW-R2-006 ("Way 2 U" lyric credit), NEW-R2-007 ($KRONII mock promotion), NEW-R2-008 (stage-host direction), FIX-R2-001 (EP announcement vs. single on-sale date).
 - **2026-10-03, relationship web (tools/web_check.py), by Claude:** a one-way tie closed in the exported Relationships with an already-sourced dossier fact; other clauses shortened to stay within the word limit.
 - **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-003, promise:PROMISE-EXPORT-001, promise:PROMISE-UNIT-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit promise, hand-applied by Claude:** PROMISE-DATE-002 (timeline row, JST).
 
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:

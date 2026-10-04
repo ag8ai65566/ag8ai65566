@@ -1,9 +1,9 @@
 # Audit packet: jp (incoming claims)
 
-Snapshot: git 8f921de.
+Snapshot: git d0295ae.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azukichi|Sui-chan|TakoNeko|Azu-chan|Okanyan|AZKichi|AzuAzu|Suisei|Yo-san|Okayun|AS_tar|FWMCAZ|Ayame|Okayu|AZAZ|Ojou|AZKi)(
+Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azu-chan|TakoNeko|Azukichi|Sui-chan|Okanyan|AZKichi|AS_tar|FWMCAZ|Okayun|Yo-san|Suisei|AzuAzu|Okayu|Ayame|Ojou|AZKi|AZAZ)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
@@ -218,7 +218,7 @@ Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Ca
 - `bible/world/FUWAMOCO.md › History`: | 2024-08-10 PDT | 3D debut: a wrestling segment supervised by DDT Pro-Wrestling, Okayu and Korone cameos | "Lifetime Showtime" full version |
 
 ### from Fauna and Mumei Pairs
-- `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Outside the cast (context):** Hakos Baelz is a recurring collaborator of both (Fauna's horror partner); Tsukumo Sana (graduated 2022) completed the Council; Inugami Korone recorded a duet cover with Mumei (2025-04-23) and, with Okayu, Nene and Koyori, guested at "Outside the Box" (2024-08-05). [Observed S1; Promise card]
+- `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Other collaborators:** Hakos Baelz is a recurring collaborator of both (Fauna's horror partner); Tsukumo Sana (graduated 2022) completed the Council; Inugami Korone recorded a duet cover with Mumei (2025-04-23) and, with Okayu, Nene and Koyori, guested at "Outside the Box" (2024-08-05). [Observed S1; Promise card]
 
 ### from Hakos Baelz Pairs
 - `bible/world/Hakos-Baelz-Pairs.md › [SW] Description`: With IRyS she is BaeRyS: a performed "married and divorced" routine that fan references trace to a Minecraft bento exchange, covers and off-collabs, "High Tide" with Moona Hoshinova and Hoshimachi Suisei on stage in 2024, and their first duo stage, "LUVATORRRRRY!", at Serendipity 2026; in a pre-concert interview Bae says she was "blown away" by IRyS's voice, and IRyS admires Bae's creativity and calls their dynamic "a can of worms."

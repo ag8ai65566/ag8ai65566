@@ -1,2 +1,3 @@
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 62cc8028a666）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 ed9cffbde495）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
+- 2026-10-04 05:16 作者裁決收錄 final.md（sha256 3a714066f75f）：Author decision (2026-10-03): cross-card QA audit promise merged by Claude

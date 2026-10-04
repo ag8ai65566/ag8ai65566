@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git 8f921de. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git d0295ae. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Amane Kanata
@@ -60,7 +60,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Banzoin Hakka (HOLOSTARS) | Duet partner | A "Mephisto" cover (2025-01-18); archived credits list Elizabeth's production and vocal-arrangement work | [Observed EB3, archived credits] |
 
 ### Cecilia Immergreen × Natsuiro Matsuri
-- `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2026-03-06/08 | hololive 7th fes. "Ridin' on Dreams": "Idol" as the final solo number of STAGE 3 (her own choreography with a breakdance finish, by her account) and "Kakumei Dualism" with Natsuiro Matsuri; a venue talk with Cecilia Immergreen (her account) | [Official HB11 lineup] [secondary setlist HB12] [ASR HB20] |
+- `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2026-03-06–08 JST | hololive 7th fes. "Ridin' on Dreams": "Idol" as the final solo number of STAGE 3 (her own choreography with a breakdance finish, by her account) and "Kakumei Dualism" with Natsuiro Matsuri; a venue talk with Cecilia Immergreen (her account) | [Official HB11 lineup] [secondary setlist HB12] [ASR HB20] |
 
 ### Cecilia Immergreen × Oozora Subaru
 - `bible/characters/Koseki-Bijou.md › Background Timeline`: | 2025-08-23/24 | -All for One-: "HOT DUCK!" with FUWAMOCO and Subaru; solo "Dead Ma'am's Chest"; "I'm Your Treasure Box" with Cecilia and Raora | [Official KB5] |

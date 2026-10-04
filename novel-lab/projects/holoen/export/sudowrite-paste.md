@@ -1,5 +1,5 @@
 # Sudowrite 貼上單 — holoen
-_產生時間 2026-10-04 03:56。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
+_產生時間 2026-10-04 05:16。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
 
 # Style — paste this block first
 貼到 Story Bible → **Style**（119 字；故事本身的文風說明可以接在後面，合計超過約 120 字時請檢查）。它教 Sudowrite 用每個角色的 **Audio Tags** 特質在對白裡寫 ElevenLabs v4 標籤。說明與注意事項見 `elevenlabs/sudowrite-style.md`。
@@ -185,9 +185,9 @@ hololive alum, hololive English -Promise- (graduated), hololive English -Council
 Fauna, Faufau, Fawna, Keeper of Nature, Mother Nature, Gamer Kirin, Ceres-chan
 ```
 
-### Personality（182/400）
+### Personality（180/400）
 ```text
-Fauna streams as the Keeper of Nature, a druidic kirin four and a half billion years old, and plays the lore for laughs: she is the presents herself with a soft voice and a comforting manner, and she uses that same soft voice to suggest you "return to nature," threaten to turn you into a tree, or let "Evil Fauna" out in a deliberately lower, theatrical voice. She dotes on her Saplings, and her comedy with Mumei includes exaggerated protective, possessive bits; she gets embarrassed easily ("uuuu"). She commits to huge, patient projects (a Minecraft World Tree built over more than a hundred hours) and long playthroughs, loves horror games, cursed memes, animals and cats, and spins absurd improvised dramas out of games (a love monologue for a forklift, "pangolin crimes" in a zoo). She runs late and jokes that she is "always on time" on "Fauna Standard Time." Sincere moments are plain and warm: she thanks every Sapling she can by name. She asks chat to let her struggle through games and to offer advice only when she asks for help.
+Fauna streams as the Keeper of Nature, a druidic kirin four and a half billion years old, and plays the lore for laughs: she presents herself with a soft voice and a comforting manner, and she uses that same soft voice to suggest you "return to nature," threaten to turn you into a tree, or let "Evil Fauna" out in a deliberately lower, theatrical voice. She dotes on her Saplings, and her comedy with Mumei includes exaggerated protective, possessive bits; she gets embarrassed easily ("uuuu"). She commits to huge, patient projects (a Minecraft World Tree built over more than a hundred hours) and long playthroughs, loves horror games, cursed memes, animals and cats, and spins absurd improvised dramas out of games (a love monologue for a forklift, "pangolin crimes" in a zoo). She runs late and jokes that she is "always on time" on "Fauna Standard Time." Sincere moments are plain and warm: she thanks every Sapling she can by name. She asks chat to let her struggle through games and to offer advice only when she asks for help.
 ```
 
 ### Background（155/500）
@@ -857,9 +857,9 @@ She has no supernatural abilities; her lore is a performed persona. IRyS is a VT
 IRyS's avatar is 162 cm tall (166 cm in heels), with light brown skin, floor-length magenta hair, long pointed ears and two small black horns. Her eyes are heterochromatic, cyan on the right and purple on the left, and a halo of white crystal stars floats above her head. She has a small pair of iridescent wings at her shoulders and larger magenta ones at her lower back.
 ```
 
-### Dialogue Style（137/250）
+### Dialogue Style（136/250）
 ```text
-Fast, bubbly, run-on English when she's excited, full of "like," "you know," "I do think so," restarts and repeated phrases ("It's so cute. It's so cute."). She calls her audience "you guys," puns on her own name, and slips a Japanese interjection into English. Strong profanity is uncommon in the sampled recent streams ("damn it," "holy shoot!"); her usual comic edge is innuendo, delivered sweetly and then walked back: she insists she is "a hundred percent seiso," or tells chat to erase what she just said from memory. She reads superchats in counted batches and wanders into long, detailed explanations of how a show or outfit was made. Lines of hers: "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" "I'm glad you guys liked the outfit. I knew you guys would!"
+Fast, bubbly, run-on English when she's excited, full of "like," "you know," "I do think so," restarts and repeated phrases ("It's so cute. It's so cute."). She calls her audience "you guys," puns on her own name, and slips a Japanese interjection into English. Strong profanity is uncommon in the sampled recent streams ("damn it," "holy shoot!"); her usual comic edge is innuendo, delivered sweetly and then walked back: she insists she is "a hundred percent seiso," or tells chat to erase what she just said from memory. She reads superchats in counted batches and wanders into long, detailed explanations of how a show or outfit was made. Lines of hers: "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" "Glad you guys like the outfit. I knew you guys would."
 ```
 
 ### Catchphrases（64/250）
@@ -1426,9 +1426,9 @@ hololive alum, hololive English -Promise- (graduated), hololive English -Council
 Mumei, Moom, Moomers, Meimei, Moomsies, Mumi-chan, Guardian of Civilization, Towl
 ```
 
-### Personality（207/400）
+### Personality（201/400）
 ```text
-Mumei streams as the Guardian of Civilization, a wandering owl who has watched humankind for thousands of years and forgotten most of it, her own name included, and she plays the lore with a straight face and a cute voice. By default she is soft, low-energy, a little awkward and scattered: she loses her train of thought, apologizes, says "anyways" and moves on, and fills silences with random singing and noises. Under the softness runs a gleeful macabre streak: she sometimes turns drawing prompts toward grotesque or macabre results, she cheerfully reminds chat that civilization is temporary and everyone will die one day, and her genmates' wish to protect their "little sister" has become a joke about who needs protecting from whom. She claims grand authority as the guardian ("I decide everything for humanity"), brags that she has never been scared of anything, and admits most of EN could beat her at arm wrestling. Caffeine makes her loud and spontaneous; surprise makes her screech. She loves drawing, rhythm and simulation games, shooters like Overwatch and DOOM, Vocaloid and "pop punk metal with yelling," and she treats her Hoomans' time as precious, telling tired fans to go to sleep. Her superchat-reading routine includes a spoken gavel: "don don!"
+Mumei streams as the Guardian of Civilization, a wandering owl who has watched humankind for thousands of years and forgotten most of it, her own name included, and she plays the lore with a straight face and a cute voice. By default she is soft, low-energy, a little awkward and scattered: she loses her train of thought, apologizes, says "anyways" and moves on, and fills silences with random singing and noises. Under the softness runs a gleeful macabre streak: she sometimes turns drawing prompts toward grotesque or macabre results, she cheerfully reminds chat that civilization is temporary and everyone will die one day, and her genmates' wish to protect their "little sister" has become a joke about who needs protecting from whom. She claims grand authority as the guardian ("I decide everything for humanity"), brags that she has never been scared of anything, and admits most of EN could beat her at arm wrestling. Surprise makes her screech. She loves drawing, rhythm and simulation games, shooters like Overwatch and DOOM, Vocaloid and "pop punk metal with yelling," and she treats her Hoomans' time as precious, telling tired fans to go to sleep. Her superchat-reading routine includes a spoken gavel: "don don!"
 ```
 
 ### Background（186/500）
@@ -1735,7 +1735,7 @@ Kronii's avatar is 168 cm tall, with short dark-blue hair that falls in long loc
 
 ### Dialogue Style（93/250）
 ```text
-She speaks dry, minimal, casual English, with short cheers dropped in. She uses deadpan self-praise, short reactions and repetition. She prefers understatement to exclamation,. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Lines of hers: "I'm so funny. I can't read this." "Oh my god, that hand scared me."
+She speaks dry, minimal, casual English, with short cheers dropped in. She uses deadpan self-praise, short reactions and repetition. She prefers understatement to exclamation. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Lines of hers: "I'm so funny. I can't read this." "Oh my god, that hand scared me."
 ```
 
 ### Catchphrases（145/250）
@@ -2700,9 +2700,9 @@ IRyS and Nerissa Pairs
 Relationship
 ```
 
-### Other Names（15）
+### Other Names（14）
 ```text
-MorIRyS, CHADCast, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
+MorIRyS, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
 ```
 
 ### Description（165/450）
@@ -2715,9 +2715,9 @@ IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IR
 IRyS (2021) is Nerissa's senior; Myth are seniors to both. Recent pairings (IRyS with Kronii, Calli and Ina; Nerissa with Kiara and Calli) carry the most weight; pairs with Gura are memories. All are friendships and stream bits.
 ```
 
-### Sensory Details（23/200）
+### Sensory Details（18/200）
 ```text
-A three-way CHADCast call; a split-screen co-op with Kronii; KFP merch on Nerissa's shelf; Calli's rap and Nerissa's sung part in one duet.
+A three-way CHADCast call; a split-screen co-op with Kronii; Calli's rap and Nerissa's sung part in one duet.
 ```
 
 ## JP Senpai Pairs 2
@@ -2870,9 +2870,9 @@ Relationship
 Ina and Kronii, Kronii and Ina, Octo'clock, Octo'Clock
 ```
 
-### Description（142/450）
+### Description（144/450）
 ```text
-Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4) under the name "Octo'Clock" (the official report spells it "Octo'clock"), performing "Bad Apple." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had discussed shared interests and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
+Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4, 2026 PDT) under the name "Octo'Clock" (the official report spells it "Octo'clock"), performing "Bad Apple." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had discussed shared interests and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
 ```
 
 ### Rules（40/350）
@@ -3004,7 +3004,7 @@ Ame and Kronii, Kronii and Ame
 
 ### Description（110/450）
 ```text
-Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes,". On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
+Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes." On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
 ```
 
 ### Rules（36/350）
@@ -3228,9 +3228,9 @@ hololive -Promise-
 Faction
 ```
 
-### Other Names（8）
+### Other Names（7）
 ```text
-hololive -Promise-, holoPromise, hololive Council, holoCouncil, CouncilRyS, BaeRyS
+hololive -Promise-, holoPromise, hololive Council, holoCouncil, CouncilRyS
 ```
 
 ### Description（201/450）

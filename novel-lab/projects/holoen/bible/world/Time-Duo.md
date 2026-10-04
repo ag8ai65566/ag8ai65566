@@ -48,7 +48,7 @@ Relationship (pair / unit name).
 | 2021-08 | Kronii's announcement; "a certain time lord" joke | The lore rivalry |
 | 2023-04-08 | 5D Chess ("I Don't Understand") | A time-travel game, fittingly |
 | 2024-09 | Backrooms and DRG in Ame's last week | — |
-| 2026-03-13 | Ame guests at Kronii's 3D birthday live | The affiliate's cameo |
+| 2026-03-14 JST | Ame guests at Kronii's 3D birthday live | The affiliate's cameo |
 
 ## Glossary
 | Word | Meaning | Who says it |
@@ -71,7 +71,7 @@ Watson Amelia, Ouro Kronii; Mori Calliope and the 2024 Backrooms trio.
 
 ## Hard Facts (continuity)
 - Nobody actually time-travels; the rivalry is a lore joke.
-- Ame guested at Kronii's 3D birthday live on 2026-03-13.
+- Ame guested at Kronii's 3D birthday live on 2026-03-14 JST.
 
 ## Sources (checked 2026-09-30)
 - S1 Stream archive metadata (archive.ragtag.moe, read 2026-09-30): 37li7htBfKs (2023-04-08),
@@ -92,7 +92,7 @@ Relationship
 Ame and Kronii, Kronii and Ame
 
 ## [SW] Description
-Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes,". On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
+Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes." On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
 
 ## [SW] Rules
 No one actually controls or travels through time; it is a shared joke. Ame plays the guilty borrower, Kronii the unimpressed Warden. In the 2026 baseline Ame appears as a guest, not a regular collab partner.
@@ -114,6 +114,8 @@ Gold and deep blue; a pocket watch beside a giant clock; Ame's gremlin cackle ag
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-TIE-002 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit myth2, hand-applied by Claude:** MYTH2-TIE-002 in the exported Description.
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-EXPORT-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit promise, hand-applied by Claude:** PROMISE-DATE-003 (birthday live 2026-03-14 JST in the History row and Hard Facts).
 
 ## Open Questions
 (None.)

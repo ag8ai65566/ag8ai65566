@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 8f921de.
+Snapshot: git d0295ae.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|VTuber Persona and Lore|recent hololive history|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|SUPER EXPO|the merger|world tour|EN concert|aftertalk|Holodeath|PavoNashi|HOLOTORI|3D live|IRySora|HoloJEI|soranii|K.I.R.A|MoRikka|OKFAIR|UMISEA|V3LVET|KoMeHa|LYRA)(
+Matched names: loEN's later generations|hololive History 2023-2026|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|Myth's debut|hololive fes|Star Flower|Serendipity|SUPER EXPO|the merger|world tour|EN concert|PavoNashi|aftertalk|Holodeath|HOLOTORI|MoRikka|IRySora|K.I.R.A|HoloJEI|soranii|3D live|V3LVET|OKFAIR|UMISEA|KoMeHa|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -229,7 +229,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kaela Kovalskia: Raft, Luma Island, Old Market Simulator; 2024 World Tour panel.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Watson Amelia (affiliate): "Time Duo"; Ame jokes she "borrowed" time travel from the Warden, and she guested at Kronii's 2026 birthday live.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii and Nerissa at Serendipity.
-- `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2026-03-13 | 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 | [Observed K33, secondary, stream t=1711; K38, secondary] |
+- `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2026-03-14 JST | 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 | [Observed K33, secondary, stream t=1711; K38, secondary] |
 - `bible/characters/Ouro-Kronii.md › Background Timeline`: | 2026-06-04 | Serendipity interview and partnership with Ina | Puns, appreciation, performance goals [Official K4] |
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Ninomae Ina'nis | Serendipity partner (2026); longtime friend | They trade puns; both speak Korean | [Official K4] [Observed K8 §Miscellaneous, secondary] |
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Hakos Baelz | Council/Promise genmate | Per the wiki (secondary), Bae described her as too talented, savage and a "tsundere granny"; Sandwich Review (2022), Digimon Survive ("takronii and agubae," 2022), Fortnite (2024-06-18, archived on both channels), UNO on Bae's 24-hour stream (2024); "Dance Monkey" as Promise at the World Tour '25 Sydney show (2025-07-12, official report); in fan-recorded lore Kronii created leap years to hold Bae's birthday. [Unverified, title only: Bae suddenly holding her hand; Kronii and IRyS scaring Bae together] | [Observed K8 §Personality, secondary; K27, K16 clip titles] |
@@ -399,11 +399,11 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/world/OctoClock.md › [SW] Description`: Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work.
 - `bible/world/OctoClock.md › [SW] Description`: They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity"
 - `bible/world/OctoClock.md › [SW] Description`: They had discussed shared interests and MC'd together at a hololive fes.
-- `bible/world/OctoClock.md › How It Works`: - **Official pairing (2026):** paired for the 4th concert "Serendipity" (Shrine Auditorium, Los Angeles, 2026-07-03/04); Kronii's short "#holoSerendipity It's Time for Octo'Clock!" (2026-06-24) names the unit. [Official S2; Observed S3]
+- `bible/world/OctoClock.md › How It Works`: - **Official pairing (2026):** paired for the 4th concert "Serendipity" (Shrine Auditorium, Los Angeles, 2026-07-03/04 PDT); Kronii's short "#holoSerendipity It's Time for Octo'Clock!" (2026-06-24) names the unit. [Official S2; Observed S3]
 - `bible/world/OctoClock.md › How It Works`: - Shared history they mention: performing together in group numbers, shared interests, and MCing together at a hololive fes. Goal: to "nail the performance"; Kronii adds, mostly joking, that they want to "look cooler than everyone else." [Official S2]
 - `bible/world/OctoClock.md › History`: | 2026-06-04 | Official Serendipity interview | Their own words |
-- `bible/world/OctoClock.md › History`: | 2026-07-03/04 | Serendipity concert, Los Angeles | Their stage pairing |
-- `bible/world/OctoClock.md › Hard Facts`: - Serendipity: 2026-07-03/04, Shrine Auditorium, Los Angeles.
+- `bible/world/OctoClock.md › History`: | 2026-07-03/04 PDT | Serendipity concert, Los Angeles | Their stage pairing |
+- `bible/world/OctoClock.md › Hard Facts`: - Serendipity: 2026-07-03/04 PDT, Shrine Auditorium, Los Angeles.
 
 ### from TakaMori
 - `bible/world/TakaMori.md › How It Works`: - **Recent milestones (archive, S1):** an off-collab "Reunion & Gaming!! #takamori" and a karaoke collab (2022-06); off-collabs in 2023 (a Rubik's cube stream, "TAKAMORI OFF-COLLAB" with Kobo, doing each other's nails on camera with IRyS); their duet "Fire N Ice" (2023-12-14; lyrics by Calli and TeddyLoid); Kiara's off-collab watch party "cheering Calli on!!!" for Calli's GriMoire concert (2025-02-27); a four-part Split Fiction co-op series in April–May 2025, titled by them "takamori split screen nostalgia," "Perfectly In Sync with @TakanashiKiara," "thumbnail teetee manifestation into gameplay teetee" and "Saving the World with @TakanashiKiara"; Myth's 5th anniversary collab (2025-09-13) and the 6th anniversary 3D live "Seasons From Within" (2026-09-19 PDT), where the two sang a duet cover together (setlist, secondary S7) and premiered "THIS IS MYTH" with Ina.
@@ -415,8 +415,8 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 ### from Time Duo
 - `bible/world/Time-Duo.md › [SW] Description`: Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends."
 - `bible/world/Time-Duo.md › How It Works`: - **2026:** Ame guested at Kronii's March 2026 birthday live, "The Goddess Descends" (2026-03-13 in the Americas, 03-14 in Japan; "Fall in Grace" in an earlier note refers to the same broadcast). [Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711; S3 §2026, secondary]
-- `bible/world/Time-Duo.md › History`: | 2026-03-13 | Ame guests at Kronii's 3D birthday live | The affiliate's cameo |
-- `bible/world/Time-Duo.md › Hard Facts`: - Ame guested at Kronii's 3D birthday live on 2026-03-13.
+- `bible/world/Time-Duo.md › History`: | 2026-03-14 JST | Ame guests at Kronii's 3D birthday live | The affiliate's cameo |
+- `bible/world/Time-Duo.md › Hard Facts`: - Ame guested at Kronii's 3D birthday live on 2026-03-14 JST.
 
 ### from holoX
 - `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").

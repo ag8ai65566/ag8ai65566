@@ -1,10 +1,10 @@
 # Audit packet: promise
 
-Snapshot: git 8f921de. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git d0295ae. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/characters/IRyS.md` c0498b0949fa; `bible/characters/Ceres-Fauna.md` 0b1f638829bb; `bible/characters/Nanashi-Mumei.md` 592e017a260b; `bible/characters/Hakos-Baelz.md` 9e284efa3513; `bible/world/hololive--Promise.md` b80a53219f8b; `bible/world/Time-Duo.md` ed829394e292; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` 6407b5c4a155; `bible/world/Fauna-and-Mumei-Pairs.md` 537910125c8d; `bible/world/IRyS-and-Nerissa-Pairs.md` 1a33b27ee01c; `bible/world/Hakos-Baelz-Pairs.md` ed9cffbde495
+Owned files (sha256): `bible/characters/Ouro-Kronii.md` f6f20f16b680; `bible/characters/IRyS.md` 0e12081f6739; `bible/characters/Ceres-Fauna.md` 1cb286c79b4d; `bible/characters/Nanashi-Mumei.md` deb95790e4fc; `bible/characters/Hakos-Baelz.md` c504265a5264; `bible/world/hololive--Promise.md` 0c58fdd52211; `bible/world/Time-Duo.md` da8702e646d2; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` b81982ab3e3d; `bible/world/Fauna-and-Mumei-Pairs.md` 8a1fc2c0c86b; `bible/world/IRyS-and-Nerissa-Pairs.md` a05400bc7b25; `bible/world/Hakos-Baelz-Pairs.md` 3a714066f75f
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -21,10 +21,10 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2021-10 | Minecraft "civil war" with Fauna | [Unverified, K29 clip titles] |
 | 2022-01-15 | Kimono reveal; introduces Boros | [Observed K8 §Mascots and fans, secondary] |
 | 2022-08 | Mumei accidentally blows up the Bunkeronii's entrance | [Unverified, K28 clip titles] |
-| 2023-10-09 | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
+| 2023-10-09 JST | Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz | [Official K3] |
 | 2025 | Fauna (January) and Mumei (April) graduate; Promise's current members are Kronii, IRyS and Baelz | Shared history stays [Official K34] |
 | 2025-10-10 | Promise releases "Run Back 'Round" | [Official K6] |
-| 2026-03-13 | 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 | [Observed K33, secondary, stream t=1711; K38, secondary] |
+| 2026-03-14 JST | 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 | [Observed K33, secondary, stream t=1711; K38, secondary] |
 | 2026-05-08 | Single "STORM" (later on the EP) | [Observed K38, secondary] |
 | 2026-05-28 JST | "Way 2 U" MV: Kronii shares the lyric credit with JALTO (JALTO composed and arranged; choreography by Miyuki Nishijima). | [Archive metadata NEW-R2-006, reproducing the MV credits] |
 | 2026-06-04 | Serendipity interview and partnership with Ina | Puns, appreciation, performance goals [Official K4] |
@@ -54,7 +54,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2021-07-11 | Debuts as the sole member of hololive English -Project: HOPE-, a VSinger | [Official R1] [Observed R2] |
 | 2021-07-29 | First official collab: Just Shapes & Beats with Mori Calliope | [Observed R2 §2021] |
 | 2021-09-29 | The Minecraft "bento" that starts the BaeRyS married/divorced bit | [Observed R2 §Relationships] |
-| 2023-10-09 | Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae | [Observed R2 §2023] |
+| 2023-10-09 JST | Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae | [Observed R2 §2023] |
 | 2024-12-14 | -Promise- musical "The Broken Promise" | [Observed R2 §2024] |
 | 2024-11-17 | 3D live "The Devil Wears Hope" | [Observed R3 title] |
 | 2025-03-15/16 | Birthday: "DIAMOND GIRLFRIEND," EP "YaBAI," 3D live "HOPE UPON A STAR" | [Observed R2 §2025; R3] |
@@ -64,7 +64,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2026-09-07 | Branch merger; her unit is "hololive -Promise-" | [Observed R2] |
 **Dossier · Hard Facts (continuity):**
 - Debut 2021-07-11; birthday March 7; 162 cm; fans IRyStocrats, members Nephamily; emoji 💎.
-- Unit: hololive -Promise- (since 2023-10-09; "hololive English -Promise-" before 2026-09).
+- Unit: hololive -Promise- (since 2023-10-09 JST; "hololive English -Promise-" before 2026-09).
 - Solo concert "HOPE ||: Beyond the Stars," 2026-10-06, Tokyo (announced).
 
 ### Ceres Fauna — `bible/characters/Ceres-Fauna.md`
@@ -81,7 +81,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2022-10 | "BAE & FAUNA'S MONTH OF HORRORS" | [Observed F4, F3] |
 | 2023-03-19 | 3D idol costume at hololive 4th fes. (day 2) | [Observed F2 §2023] |
 | 2023-07-02 | hololive English 1st concert "-Connect the World-" | [Observed F2 §2023] |
-| 2023-10-09 | Joins hololive English -Promise- | [Official] |
+| 2023-10-09 JST | Joins hololive English -Promise- | [Official] |
 | 2024-08-24/25 | hololive English 2nd concert -Breaking Dimensions-: premieres "It's Not a Phase" with Mumei and sings "Mayonaka no Door" solo (day 1); "Lonely in Gorgeous" with Shiori and Nerissa (day 2) | [Official F5] |
 | 2024-12-14 | -Promise- musical "The Broken Promise" | [Observed F2 §2024] |
 | 2024-12-22 | "It's Not a Phase" (Mumei & Fauna) released | [Official F6] |
@@ -105,7 +105,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2021-08-23 JST | Debuts with hololive English -Council- (first post on X: "oh man") | [Official M1] [Observed M4] |
 | 2022-01-17 | First original song "A New Start" | [Observed M2 §2022] |
 | 2023-03-18/19 | 3D idol costume and main 3D model at hololive 4th fes.; sang a DECO*27 song with Kiara on the holo*27 stage | [Observed M2 §2023; M4] |
-| 2023-10-09 | Joins hololive English -Promise- | [Official] |
+| 2023-10-09 JST | Joins hololive English -Promise- | [Official] |
 | 2023-10-10 | Second original song "mumei" | [Observed M2 §2023] |
 | 2024-01-26 | 1,000,000 subscribers, the first of Council/Promise | [Observed M2 §2024] |
 | 2024-08-05 | 3D birthday live "Outside the Box"; guests Gura, IRyS, Bae, Nekomata Okayu, Inugami Korone, Momosuzu Nene, Hakui Koyori | [Observed M3 title, description] |
@@ -146,7 +146,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2025-02-28 | Original "FEAST"; birthday 3D live "-KAGURA- Dance of the Gods" | [Observed HB2; HB3 viPlIHvk724] |
 | 2025-08-23/24 EDT | -All for One-: "R x R x R" with Calli; "Countach" with Gigi and Kureiji Ollie; solo "La Roja (Arrange ver.)" | [Official HB5] |
 | 2026-02-28 | Birthday 3D live "ReCOLOR" with a new 3D outfit; original "SNAKE EYES"; her fifth Febaerary | [Observed HB2] [ASR HB20] |
-| 2026-03-06/08 | hololive 7th fes. "Ridin' on Dreams": "Idol" as the final solo number of STAGE 3 (her own choreography with a breakdance finish, by her account) and "Kakumei Dualism" with Natsuiro Matsuri; a venue talk with Cecilia Immergreen (her account) | [Official HB11 lineup] [secondary setlist HB12] [ASR HB20] |
+| 2026-03-06–08 JST | hololive 7th fes. "Ridin' on Dreams": "Idol" as the final solo number of STAGE 3 (her own choreography with a breakdance finish, by her account) and "Kakumei Dualism" with Natsuiro Matsuri; a venue talk with Cecilia Immergreen (her account) | [Official HB11 lineup] [secondary setlist HB12] [ASR HB20] |
 | 2026-04 | Resident Evil series with Cecilia (her account); the "Liar Dancer" cover; the mock rival feud | [ASR HB20] |
 | 2026-07-03/04 PDT | Serendipity: BaeRyS with IRyS ("LUVATORRRRRY!"), "HELP!!" with Kobo Kanaeru and Elizabeth Rose Bloodflame (day 1) | [Official HB4, HB5] |
 | 2026-08 | 5th anniversary: her 1st concert "REGALIA" (2026-12-01, after the baseline) and 2nd album "Mirror Mirror" announced (timing per a contemporaneous secondary report); original "I found me" | [Official HB7] [Observed HB2] |
@@ -165,7 +165,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
   "Mirror Mirror."
 
 ### hololive -Promise- — `bible/world/hololive--Promise.md`
-**[SW] Other Names:** hololive -Promise-, holoPromise, hololive Council, holoCouncil, CouncilRyS, BaeRyS
+**[SW] Other Names:** hololive -Promise-, holoPromise, hololive Council, holoCouncil, CouncilRyS
 **[SW] Description:** hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline. It grew from the English -Council- generation (August 2021), whose personas were themed around concepts (Kronii is Time); Sana graduated from Council in 2022, before Promise existed. IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and a recurring collaborator with Bae) graduated in 2025. All five sang their unit song "Our Promise" at the 2024 English concert and staged the musical "The Broken Promise" (December 2024). Bae has described Kronii as a "tsundere granny" (per the wiki); Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. IRyS and Bae keep up the performed "BaeRyS" routine of being "married" and "divorced," and they are also creative partners: in a pre-concert interview for Serendipity (2026), IRyS said she leans on Bae's "strong vision" when she's indecisive, Bae said she admires IRyS's humor that makes everyone comfortable, and IRyS called their dynamic "a can of worms" ("Complicated XD," Bae answered).
 **[SW] Rules:** At the 2026 baseline Promise is IRyS, Kronii and Bae; Fauna and Mumei are Promise graduates and Sana a Council graduate, appearing only as memories. Unit names (Council, Promise) describe groups, not real powers or concepts.
 **Dossier · History:**
@@ -182,7 +182,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 
 ### Time Duo — `bible/world/Time-Duo.md`
 **[SW] Other Names:** Ame and Kronii, Kronii and Ame
-**[SW] Description:** Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes,". On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
+**[SW] Description:** Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes." On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
 **[SW] Rules:** No one actually controls or travels through time; it is a shared joke. Ame plays the guilty borrower, Kronii the unimpressed Warden. In the 2026 baseline Ame appears as a guest, not a regular collab partner.
 **Dossier · History:**
 | Date | Event | Trace left |
@@ -190,10 +190,10 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2021-08 | Kronii's announcement; "a certain time lord" joke | The lore rivalry |
 | 2023-04-08 | 5D Chess ("I Don't Understand") | A time-travel game, fittingly |
 | 2024-09 | Backrooms and DRG in Ame's last week | — |
-| 2026-03-13 | Ame guests at Kronii's 3D birthday live | The affiliate's cameo |
+| 2026-03-14 JST | Ame guests at Kronii's 3D birthday live | The affiliate's cameo |
 **Dossier · Hard Facts (continuity):**
 - Nobody actually time-travels; the rivalry is a lore joke.
-- Ame guested at Kronii's 3D birthday live on 2026-03-13.
+- Ame guested at Kronii's 3D birthday live on 2026-03-14 JST.
 
 ### Time and Death — `bible/world/Time-and-Death.md`
 **[SW] Other Names:** Calli and Kronii, Kronii and Calli
@@ -212,7 +212,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 
 ### Octo'Clock — `bible/world/OctoClock.md`
 **[SW] Other Names:** Ina and Kronii, Kronii and Ina, Octo'clock, Octo'Clock
-**[SW] Description:** Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4) under the name "Octo'Clock" (the official report spells it "Octo'clock"), performing "Bad Apple." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had discussed shared interests and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
+**[SW] Description:** Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work. They share Korean, a love of puns and occasional FGO streams, and in 2026 they were paired for hololive English's 4th concert "Serendipity" (Los Angeles, July 3–4, 2026 PDT) under the name "Octo'Clock" (the official report spells it "Octo'clock"), performing "Bad Apple." In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings." They had discussed shared interests and MC'd together at a hololive fes. Their goal was to "nail the performance," and, Kronii added mostly as a joke, "look cooler than everyone else."
 **[SW] Rules:** Ina's claim on Kronii is a sweet joke, not romance. Their humor is dueling puns and deadpan; their work ethic is serious. Their stream collabs before 2026 were occasional (group numbers, FGO, R.E.P.O.), alongside shared stage work.
 **Dossier · History:**
 | Date | Event | Trace left |
@@ -221,9 +221,9 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2023–2024 | FGO streams on Ina's channel | A shared game |
 | 2026-06-04 | Official Serendipity interview | Their own words |
 | 2026-06-24 | "It's Time for Octo'Clock!" short | The unit name |
-| 2026-07-03/04 | Serendipity concert, Los Angeles | Their stage pairing |
+| 2026-07-03/04 PDT | Serendipity concert, Los Angeles | Their stage pairing |
 **Dossier · Hard Facts (continuity):**
-- Serendipity: 2026-07-03/04, Shrine Auditorium, Los Angeles.
+- Serendipity: 2026-07-03/04 PDT, Shrine Auditorium, Los Angeles.
 - "Octo'Clock" is the pairing's name in Kronii's official short (2026-06-24).
 
 ### Fauna and Mumei Pairs — `bible/world/Fauna-and-Mumei-Pairs.md`
@@ -237,7 +237,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2021-08-25 | Fauna and Mumei's first co-op | Don't Starve Together: "Surviving in the wilderness with Mumei!" |
 | 2021-09-13 | Minecraft together | "Adventuring with Mumei!" |
 | 2023-03-19 | Mumei sings with Kiara on the 4th fes. stage | HOLOTORI |
-| 2023-10-09 | -Promise- formed | — |
+| 2023-10-09 JST | -Promise- formed | — |
 | 2024-08-24 | "It's Not a Phase" premiered at -Breaking Dimensions- | their duet (released 2024-12-22) |
 | 2024-12-27 | Fauna on Kiara's HOLOTALK | — |
 | 2025-01-03 | Fauna graduates | — |
@@ -248,7 +248,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 - Fauna's oshi: Gura. Kiara's name for Mumei: "Moomsies." HOLOTORI includes Kiara and Mumei.
 
 ### IRyS and Nerissa Pairs — `bible/world/IRyS-and-Nerissa-Pairs.md`
-**[SW] Other Names:** MorIRyS, CHADCast, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
+**[SW] Other Names:** MorIRyS, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
 **[SW] Description:** IRyS and Calli: Calli collabed with her on July 29, 2021, eighteen days after IRyS's debut; with Bae they host CHADCast ("Chaos, Hope, and Death!"), and they still team up (Silent Hill 2 as "Two Pink Women," karaoke). IRyS and Kronii: Promise unitmates since 2023 and friends since 2021, regulars at two-player games (A Way Out, Bokura, a Powerwash race, "May The Best Maid Win"); in 2026 IRyS said she could pull off Kronii's goddess look "somehow." IRyS and Ina: an early duo (It Takes Two, "It Takes Tako & Hope") who still play together. IRyS and Kiara: Kiara gave her a German crash course; nail-painting off-collab. Nerissa and Kiara (KiaRissa): Kiara is Nerissa's oshi; Kiara showed her around Minecraft; a 2025 "BIRB GIRLS" GIRLSTALK. Nerissa and Calli: a Baldur's Gate 3 party, the 2025 duet "OVER//RIDE," and Calli as a guest at Nerissa's 3D concert. Nerissa and IRyS: two singers; IRyS guested at that concert, and Nerissa put IRyS and Ina in Tomodachi Life.
 **[SW] Rules:** IRyS (2021) is Nerissa's senior; Myth are seniors to both. Recent pairings (IRyS with Kronii, Calli and Ina; Nerissa with Kiara and Calli) carry the most weight; pairs with Gura are memories. All are friendships and stream bits.
 **Dossier · History:**
@@ -257,7 +257,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 7c02ee3a3942; `bible/cha
 | 2021-07-29 | Calli's first collab with IRyS | MorIRyS |
 | 2022-01-30 | First CHADCast | Chaos, Hope, and Death |
 | 2023-08-14 | Nerissa's compatibility test with Kiara | KiaRissa |
-| 2023-10-09 | -Promise- formed: IRyS and Kronii become unitmates | — |
+| 2023-10-09 JST | -Promise- formed: IRyS and Kronii become unitmates | — |
 | 2025 | Nerissa's 3D concert with Calli and IRyS as guests; "OVER//RIDE" duet | Calli × Nerissa |
 | 2026-04-23 | Nerissa's Tomodachi Life Miis of IRyS and Ina | — |
 **Dossier · Hard Facts (continuity):**

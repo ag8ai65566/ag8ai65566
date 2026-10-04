@@ -1,3 +1,4 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 919addd12472）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 5f0169e12e8b）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 6407b5c4a155）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
+- 2026-10-04 05:16 作者裁決收錄 final.md（sha256 b81982ab3e3d）：Author decision (2026-10-03): cross-card QA audit promise merged by Claude

@@ -1,10 +1,10 @@
 # Audit packet: jp2
 
-Snapshot: git 8f921de. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git d0295ae. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Houshou-Marine.md` aefe9a816d29; `bible/characters/Shirogane-Noel.md` fa75876d435e; `bible/characters/Yukihana-Lamy.md` bd7bdb48bd86; `bible/characters/Shishiro-Botan.md` 40c78f4b1201; `bible/characters/Kikirara-Vivi.md` e3dae5035b02; `bible/world/JP-Senpai-Pairs-2.md` 70c0e71414d3
+Owned files (sha256): `bible/characters/Houshou-Marine.md` aefe9a816d29; `bible/characters/Shirogane-Noel.md` fa75876d435e; `bible/characters/Yukihana-Lamy.md` bd7bdb48bd86; `bible/characters/Shishiro-Botan.md` 40c78f4b1201; `bible/characters/Kikirara-Vivi.md` e3dae5035b02; `bible/world/JP-Senpai-Pairs-2.md` 35b0b7f66dea
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 

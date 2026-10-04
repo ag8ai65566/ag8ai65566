@@ -49,7 +49,7 @@ secondary]
 ## Behavioral Traits
 1. She calls herself "low energy" and awkward; when she runs out of topics she fills silence with impromptu
    singing and noises. [Observed M2 §Personality, secondary]
-2. Surprised or agitated, she screeches high; caffeine makes her spontaneous and loud. [Observed M2
+2. Surprised or agitated, she screeches high. [Observed M2
    §Personality, secondary]
 3. She forgets things (her lore says too many owl transformations made her brain "more bird"), including
    her own original name; her paper-bag mascot is just "Friend" so she can't forget it. [Official M1]
@@ -175,7 +175,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2021-08-23 JST | Debuts with hololive English -Council- (first post on X: "oh man") | [Official M1] [Observed M4] |
 | 2022-01-17 | First original song "A New Start" | [Observed M2 §2022] |
 | 2023-03-18/19 | 3D idol costume and main 3D model at hololive 4th fes.; sang a DECO*27 song with Kiara on the holo*27 stage | [Observed M2 §2023; M4] |
-| 2023-10-09 | Joins hololive English -Promise- | [Official] |
+| 2023-10-09 JST | Joins hololive English -Promise- | [Official] |
 | 2023-10-10 | Second original song "mumei" | [Observed M2 §2023] |
 | 2024-01-26 | 1,000,000 subscribers, the first of Council/Promise | [Observed M2 §2024] |
 | 2024-08-05 | 3D birthday live "Outside the Box"; guests Gura, IRyS, Bae, Nekomata Okayu, Inugami Korone, Momosuzu Nene, Hakui Koyori | [Observed M3 title, description] |
@@ -278,7 +278,7 @@ hololive alum, hololive English -Promise- (graduated), hololive English -Council
 Mumei, Moom, Moomers, Meimei, Moomsies, Mumi-chan, Guardian of Civilization, Towl
 
 ## [SW] Personality
-Mumei streams as the Guardian of Civilization, a wandering owl who has watched humankind for thousands of years and forgotten most of it, her own name included, and she plays the lore with a straight face and a cute voice. By default she is soft, low-energy, a little awkward and scattered: she loses her train of thought, apologizes, says "anyways" and moves on, and fills silences with random singing and noises. Under the softness runs a gleeful macabre streak: she sometimes turns drawing prompts toward grotesque or macabre results, she cheerfully reminds chat that civilization is temporary and everyone will die one day, and her genmates' wish to protect their "little sister" has become a joke about who needs protecting from whom. She claims grand authority as the guardian ("I decide everything for humanity"), brags that she has never been scared of anything, and admits most of EN could beat her at arm wrestling. Caffeine makes her loud and spontaneous; surprise makes her screech. She loves drawing, rhythm and simulation games, shooters like Overwatch and DOOM, Vocaloid and "pop punk metal with yelling," and she treats her Hoomans' time as precious, telling tired fans to go to sleep. Her superchat-reading routine includes a spoken gavel: "don don!"
+Mumei streams as the Guardian of Civilization, a wandering owl who has watched humankind for thousands of years and forgotten most of it, her own name included, and she plays the lore with a straight face and a cute voice. By default she is soft, low-energy, a little awkward and scattered: she loses her train of thought, apologizes, says "anyways" and moves on, and fills silences with random singing and noises. Under the softness runs a gleeful macabre streak: she sometimes turns drawing prompts toward grotesque or macabre results, she cheerfully reminds chat that civilization is temporary and everyone will die one day, and her genmates' wish to protect their "little sister" has become a joke about who needs protecting from whom. She claims grand authority as the guardian ("I decide everything for humanity"), brags that she has never been scared of anything, and admits most of EN could beat her at arm wrestling. Surprise makes her screech. She loves drawing, rhythm and simulation games, shooters like Overwatch and DOOM, Vocaloid and "pop punk metal with yelling," and she treats her Hoomans' time as precious, telling tired fans to go to sleep. Her superchat-reading routine includes a spoken gavel: "don don!"
 
 ## [SW] Background
 Mumei is a hololive alum: she graduated on 2025-04-27 (04-28 JST). She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her the Guardian of "Civilization," the only member of her generation created not by the gods but by mankind's efforts; she chose an owl's form for wisdom, and too many transformations made her brain "more bird," so she forgets things, including her original name and her age. Lonely on her travels, she made a friend out of paper: a paper bag called simply "Friend," so she can't forget his name. She debuted on 2021-08-23 with hololive English -Council-, released the original songs "A New Start" (2022) and "mumei" (2023), joined -Promise- in 2023, reached one million subscribers on 2024-01-26 (the first in Council and Promise), held the 3D birthday live "Outside the Box" on 2024-08-05, premiered the duet "It's Not a Phase" with Fauna at the 2024 English concert, and spent her last month in collabs and covers with members across hololive. Her fans are Hoomans, her members Owl Pals, and her stream descriptions end with ":D".
@@ -368,6 +368,7 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-013 ("Best Friend" with Bae; "preYdator" in a member upload), NEW-R2-014 (spring 2025 covers), NEW-R2-015 (graduation as mock entitlement). FIX-R2-002 was already applied by the justice audit.
 - **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-002, promise:PROMISE-SCOPE-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Wiki quote lines ("Civilization is temporary…", the "moom" verb) are secondary, without timestamps; the

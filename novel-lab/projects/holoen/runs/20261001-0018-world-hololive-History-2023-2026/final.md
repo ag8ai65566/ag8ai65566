@@ -30,7 +30,7 @@ Historical events.
 | 2023-07-02 PDT | hololive English 1st concert "-Connect the World-" | EN's first concert |
 | 2023-07-25/31 | **-Advent- revealed ("WANTED!") and debuts**: Shiori, Bijou, **Nerissa**, Fuwawa, Mococo | Nerissa's origin |
 | 2023-09-09/10 | hololive DEV_IS opens with ReGLOSS (Ao, Kanade, Ririka, Raden, Hajime) | Japanese kouhai |
-| 2023-10-08/09 | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
+| 2023-10-08 PDT / 10-09 JST | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
 | 2024-01-16 | Yozora Mel leaves hololive | Not discussed in stories |
 | 2024-03-16/17 | SUPER EXPO 2024 and 5th fes. "Capture the Moment" | — |
 | 2024-04 | holoMeet 2024 ambassadors include Hakos Baelz | — |
@@ -63,7 +63,7 @@ Historical events.
 | 2025-11 | Raora's friendly-fire "Doom" spell in Kiara's Mage Arena collab becomes a widely shared fan meme (KYM dates the stream 11-16) | a callback |
 | 2025-11-15 | hololive Indonesia 1st concert "Chromatic Future" | — |
 | 2025-12-27 | Amane Kanata graduates | — |
-| 2026-03-06/08 | SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" | — |
+| 2026-03-06–08 JST | SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" | — |
 | 2026-03-27/28 PDT | Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) | TakoTori on stage |
 | 2026-05 | Gigi and Cecilia's joint CCGG 3D live and "CCGG MADNESS"; Raora's first birthday 3D live (May 2026; announced for 05-10 JST / 05-09 PDT; actual zoned start unverified) | — |
 | 2026-05-24 | ENReco chapter 3 "Broken Bonds" | — |
@@ -181,6 +181,7 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-DATE-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-DATE-001, global:GLOBAL-DATE-002 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit global, hand-applied by Claude:** global:GLOBAL-DATE-001, GLOBAL-DATE-002 (timeline date cells), GLOBAL-EXPORT-001 (escaped pipes in the IRyS concert title so the table and the registry parse it whole).**
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-001, promise:PROMISE-DATE-002 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None. Serendipity pairs for IRyS and Nerissa were found: see "Concerts and Live Events.")

@@ -53,9 +53,12 @@ def names():
 
 def resolve(loc, nm):
     paths = []
-    for m in re.finditer(r"`?([CW])/([^`/\s]+)\.md|bible/(?:characters|world)/([^`/\s]+)\.md|(research/[^`\s›;]+\.md)", loc):
+    for m in re.finditer(r"`?([CW])/([^`/\s]+)\.md|bible/(?:characters|world)/([^`/\s]+)\.md|"
+                         r"((?:research|R)/[^`\s›;]+\.md)|((?:export/elevenlabs|S)/[^`\s›;]+\.md)", loc):
         if m.group(4):
-            paths.append(P / m.group(4))
+            paths.append(P / re.sub(r"^R/", "research/", m.group(4)))
+        elif m.group(5):
+            paths.append(P / "export" / "elevenlabs" / Path(m.group(5)).name)
         else:
             stem = m.group(2) or m.group(3)
             r = qa_runs.run_of(stem)

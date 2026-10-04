@@ -1,9 +1,9 @@
 # Audit packet: myth4 (incoming claims)
 
-Snapshot: git 8f921de.
+Snapshot: git d0295ae.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Kiara and Ina|Ina and Kiara|Drawn to Dawn|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|Kiara and Ina|Ina and Kiara|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ninomae Ina'nis and Kronii: R.E.P.O.
@@ -218,7 +218,7 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Kiara and Ina|In
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive night at Dodger Stadium (2025-07-05, Los Angeles):** the second hololive–Dodgers collaboration, starring Ina, IRyS and Bijou, with a stadium sing-along during the game. [Official, https://hololive.hololivepro.com/en/news/20250731-01-353/]
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Takanashi Kiara | 4th-anniversary live "MIRAGE" (2024-10-06); "KIARA & FRIENDS: H!P Cover Song Spring Concert" (2025-04-21); "Drawn to Dawn" with Ina (2026-03-27/28 PDT, The Wiltern); World Tour '24 performer; Serendipity with Bijou; birthday 3D live (2026-07-06 PDT); "Seasons From Within" | Kiara file T11, T12, T10; S3 titles |
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleides" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
-- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ouro Kronii | World Tour '24 Singapore pre-concert panel with Kaela Kovalskia; World Tour '25 Sydney guest; 3D birthday live "The Goddess Descends" with a new outfit (2026-03-13/14, Ame as guest); Serendipity with Ina | Kronii file K33, K4; S1 |
+- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ouro Kronii | World Tour '24 Singapore pre-concert panel with Kaela Kovalskia; World Tour '25 Sydney guest; 3D birthday live "The Goddess Descends" with a new outfit (2026-03-14 JST, Ame as guest); Serendipity with Ina | Kronii file K33, K4; S1 |
 - `bible/world/Concerts-and-Live-Events.md › Conflicts and Story Hooks`: 4. An aftertalk where Kiara and Ina disagree about who cried first at "Drawn to Dawn."
 
 ### from Cross-Branch Friends
@@ -237,7 +237,7 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Kiara and Ina|In
 - `bible/world/Hakos-Baelz-Pairs.md › History`: | 2023 | a BaeRyS off-collab; "Daikirai na Hazu Datta"; K/DA "POP/STARS"; We Were Here | BaeRyS; Bae–Ina; BaeBi |
 
 ### from IRyS and Nerissa Pairs
-- `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Other Names`: MorIRyS, CHADCast, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
+- `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Other Names`: MorIRyS, KiaRissa, IRyS and Kronii, IRyS and Ina, Nerissa and Calli, Nerissa and IRyS
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Ina: an early duo (It Takes Two, "It Takes Tako & Hope") who still play together.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: Nerissa and IRyS: two singers; IRyS guested at that concert, and Nerissa put IRyS and Ina in Tomodachi Life.
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Rules`: Recent pairings (IRyS with Kronii, Calli and Ina; Nerissa with Kiara and Calli) carry the most weight; pairs with Gura are memories.
@@ -302,11 +302,11 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Kiara and Ina|In
 ### from Octo'Clock
 - `bible/world/OctoClock.md › [SW] Other Names`: Ina and Kronii, Kronii and Ina, Octo'clock, Octo'Clock
 - `bible/world/OctoClock.md › [SW] Description`: Ninomae Ina'nis and Ouro Kronii, the octopus and the clock: longstanding collaborators whose 2026 Serendipity pairing foregrounds their shared puns, interests and performance work.
-- `bible/world/OctoClock.md › [SW] Description`: (Los Angeles, July 3–4) under the name "Octo'Clock"
+- `bible/world/OctoClock.md › [SW] Description`: (Los Angeles, July 3–4, 2026 PDT) under the name "Octo'Clock"
 - `bible/world/OctoClock.md › [SW] Description`: (the official report spells it "Octo'clock"), performing "Bad Apple."
 - `bible/world/OctoClock.md › [SW] Description`: In their official interview Kronii called them "Just two punny people waiting to deliver the pun-chline to everyone" and praised Ina as "very hard-working and ambitious"; Ina said "I get to…keep Kronii….all to myself…..hehe…hehehe" and admired Kronii's "unmatched charisma whenever she sings."
 - `bible/world/OctoClock.md › [SW] Rules`: Ina's claim on Kronii is a sweet joke, not romance.
-- `bible/world/OctoClock.md › How It Works`: - **Official pairing (2026):** paired for the 4th concert "Serendipity" (Shrine Auditorium, Los Angeles, 2026-07-03/04); Kronii's short "#holoSerendipity It's Time for Octo'Clock!" (2026-06-24) names the unit. [Official S2; Observed S3]
+- `bible/world/OctoClock.md › How It Works`: - **Official pairing (2026):** paired for the 4th concert "Serendipity" (Shrine Auditorium, Los Angeles, 2026-07-03/04 PDT); Kronii's short "#holoSerendipity It's Time for Octo'Clock!" (2026-06-24) names the unit. [Official S2; Observed S3]
 - `bible/world/OctoClock.md › How It Works`: - Kronii: "Just two punny people waiting to deliver the pun-chline to everyone." She praises Ina's drawing and quick execution, her puns, and that "She's very hard-working and ambitious."
 - `bible/world/OctoClock.md › How It Works`: - Ina: "I get to…keep Kronii….all to myself…..hehe…hehehe"; "it's even more special now that it's just us two together!!"; she admires Kronii's "unmatched charisma whenever she sings."
 - `bible/world/OctoClock.md › How It Works`: - **On stream (archive, S1):** Ina's FGO streams with Kronii (2023-08-18 "Let's Learn About Fate/Grand Order!!!", 2024-01-02 "NEW YEAR FGO ADVENTURES"), R.E.P.O. (2025-07-19), and Ame's 2022 surprise karaoke off-collab that both joined (per Ame's wiki page).
@@ -362,4 +362,4 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Kiara and Ina|In
 ### from hololive
 - `bible/world/hololive.md › [SW] Description`: (hololive production also includes HOLOSTARS), and old groups are units: Calli, Kiara and Ina are active in hololive -Myth-; Kronii and IRyS are in hololive -Promise-; Nerissa is in hololive -Advent-.
 - `bible/world/hololive.md › How It Works`: - **Structure (as of 2026-09-30):** hololive production is COVER's brand, which also includes the male group HOLOSTARS; hololive is its female VTuber group. On 2026-09-07 COVER unified the former female-talent branches (hololive, hololive English, hololive Indonesia, hololive DEV_IS) under a single "hololive," an organizational and branding change it described as removing regional limits; members had already collaborated across branches for years; former groups keep their names as units (hololive -Myth-, -Promise-, -Advent-, -Justice-). Promotion is now done for all members in Japanese, Indonesian and English. [Official S6] [Observed S2 §2026, secondary, citing the hololive Next broadcast of 2026-09-07; project.md]
-- `bible/world/hololive.md › History`: | 2026-07-03/04 | hololive English 4th concert "Serendipity" (LA) | Partner pairs (e.g. Kronii and Ina) |
+- `bible/world/hololive.md › History`: | 2026-07-03/04 PDT | hololive English 4th concert "Serendipity" (LA) | Partner pairs (e.g. Kronii and Ina) |

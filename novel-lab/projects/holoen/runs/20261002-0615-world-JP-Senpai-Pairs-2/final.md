@@ -116,7 +116,7 @@ Relationship web (five Japanese members with the cast and with each other).
 ## Conflicts and Story Hooks
 1. Marine invites FUWAMOCO onto her "ship"; Noel insists on guarding the deck.
 2. Botan runs a server event for the EN cast; Lamy hosts the after-party toast.
-3. Vivi does stage makeup for Bae before a R.E.P.O. rematch.
+3. During a fictional public drawing collab, Vivi designs stage makeup for Bae's avatar before a R.E.P.O. rematch.
 
 ## Links to Characters
 Houshou Marine; Shirogane Noel; Yukihana Lamy; Shishiro Botan; Kikirara Vivi; Takanashi Kiara; Mori Calliope;
@@ -188,6 +188,7 @@ Crimson twintails under a gold-trimmed pirate hat; silver hair over black knight
     (DY5VThfehW8), "SHINKIRO" credited to Marine and Gura (9ehwhQJ50gs), the "Pleides" guest list (3n9igJnSXtQ),
     Vivi's R.E.P.O. on Ina's stream (grBU9Dl09Ds).
 - **2026-10-03, cross-card QA audit myth4, hand-applied by Claude:** myth4:MYTH4-CREDIT-001 at every occurrence (the festival named as the Usaken Summer Festival with Ina).
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Lamy's EN ties in the archive are all with Ina; kept short.

@@ -5,3 +5,4 @@
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 c9b3dd043ec2）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-02 07:50 作者裁決收錄 final.md（sha256 e80cfcc0d0d0）：Author decision (2026-10-02): scope wording (senpai/kouhai definition without language or nationality terms)
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 1c2401a244d7）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
+- 2026-10-04 05:16 作者裁決收錄 final.md（sha256 9fbc51b41096）：Author decision (2026-10-03): cross-card QA audit promise merged by Claude

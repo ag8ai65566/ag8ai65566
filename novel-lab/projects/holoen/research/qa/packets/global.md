@@ -1,10 +1,10 @@
 # Audit packet: global
 
-Snapshot: git 8f921de. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git d0295ae. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/world/hololive.md` 1c2401a244d7; `bible/world/Streaming-Life.md` 8e3a1281513c; `bible/world/VTuber-Persona-and-Lore.md` 6c72058abfbe; `bible/world/Cross-Branch-Friends.md` 6439fb2edcf5; `bible/world/Concerts-and-Live-Events.md` 2e8a2c505b41; `bible/world/hololive-History-2023-2026.md` 7bd2c4b94f6d; `bible/world/hololive-History-to-2022.md` 39bb9b8a68fa
+Owned files (sha256): `bible/world/hololive.md` 9fbc51b41096; `bible/world/Streaming-Life.md` 8e3a1281513c; `bible/world/VTuber-Persona-and-Lore.md` 6c72058abfbe; `bible/world/Cross-Branch-Friends.md` 6439fb2edcf5; `bible/world/Concerts-and-Live-Events.md` 0040e6f6f63d; `bible/world/hololive-History-2023-2026.md` ea88e925b436; `bible/world/hololive-History-to-2022.md` 39bb9b8a68fa
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -17,10 +17,10 @@ Owned files (sha256): `bible/world/hololive.md` 1c2401a244d7; `bible/world/Strea
 |---|---|---|
 | 2020-09 | hololive English -Myth- debuts (first EN generation) | Myth anniversaries every September |
 | 2021-08 | -Council- debuts (Kronii's generation) | Council → Promise |
-| 2023-10-09 | -Promise- formed (IRyS joins the remaining Council) | Kronii's group name |
+| 2023-10-09 JST | -Promise- formed (IRyS joins the remaining Council) | Kronii's group name |
 | 2024-09-30 | Watson Amelia concludes general activities, stays an affiliate | Occasional guest appearances |
 | 2025-05-01 | Gawr Gura graduates | Alumna; remembered in songs and anniversaries |
-| 2026-07-03/04 | hololive English 4th concert "Serendipity" (LA) | Partner pairs (e.g. Kronii and Ina) |
+| 2026-07-03/04 PDT | hololive English 4th concert "Serendipity" (LA) | Partner pairs (e.g. Kronii and Ina) |
 | 2026-09-07 | The female-talent branches unify under "hololive" | Groups become units |
 **Dossier · Hard Facts (continuity):**
 - Baseline date 2026-09-30: one merged "hololive"; units keep their names.
@@ -87,7 +87,7 @@ Owned files (sha256): `bible/world/hololive.md` 1c2401a244d7; `bible/world/Strea
 | 2023-07-02 PDT | hololive English 1st concert "-Connect the World-" | EN's first concert |
 | 2023-07-25/31 | **-Advent- revealed ("WANTED!") and debuts**: Shiori, Bijou, **Nerissa**, Fuwawa, Mococo | Nerissa's origin |
 | 2023-09-09/10 | hololive DEV_IS opens with ReGLOSS (Ao, Kanade, Ririka, Raden, Hajime) | Japanese kouhai |
-| 2023-10-08/09 | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
+| 2023-10-08 PDT / 10-09 JST | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
 | 2024-01-16 | Yozora Mel leaves hololive | Not discussed in stories |
 | 2024-03-16/17 | SUPER EXPO 2024 and 5th fes. "Capture the Moment" | — |
 | 2024-04 | holoMeet 2024 ambassadors include Hakos Baelz | — |
@@ -120,7 +120,7 @@ Owned files (sha256): `bible/world/hololive.md` 1c2401a244d7; `bible/world/Strea
 | 2025-11 | Raora's friendly-fire "Doom" spell in Kiara's Mage Arena collab becomes a widely shared fan meme (KYM dates the stream 11-16) | a callback |
 | 2025-11-15 | hololive Indonesia 1st concert "Chromatic Future" | — |
 | 2025-12-27 | Amane Kanata graduates | — |
-| 2026-03-06/08 | SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" | — |
+| 2026-03-06–08 JST | SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" | — |
 | 2026-03-27/28 PDT | Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) | TakoTori on stage |
 | 2026-05 | Gigi and Cecilia's joint CCGG 3D live and "CCGG MADNESS"; Raora's first birthday 3D live (May 2026; announced for 05-10 JST / 05-09 PDT; actual zoned start unverified) | — |
 | 2026-05-24 | ENReco chapter 3 "Broken Bonds" | — |

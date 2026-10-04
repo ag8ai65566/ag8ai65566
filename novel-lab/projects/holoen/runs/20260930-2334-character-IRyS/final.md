@@ -137,7 +137,7 @@ The middle column is provisional voice direction unless a source is named.
 ### Sample Lines
 1. "HiRyS, it's IRyS! Your seiso nephilim here to fill the world with hopium!" (Official R1)
 2. "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" (ASR R20, 0:12:07)
-3. "I'm glad you guys liked the outfit. I knew you guys would!" (ASR R20, 4:27:19)
+3. "Glad you guys like the outfit. I knew you guys would." (ASR R20, 4:27:19)
 4. "No, I don't like it. I love it!" (ASR R20, 4:27:30)
 5. "I am a hundred percent seiso, I would never lie!" (R2 §Quotes, secondary)
 6. "We can play Monopoly... IN BED!" (R2 §Quotes, secondary)
@@ -160,7 +160,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2021-07-11 | Debuts as the sole member of hololive English -Project: HOPE-, a VSinger | [Official R1] [Observed R2] |
 | 2021-07-29 | First official collab: Just Shapes & Beats with Mori Calliope | [Observed R2 §2021] |
 | 2021-09-29 | The Minecraft "bento" that starts the BaeRyS married/divorced bit | [Observed R2 §Relationships] |
-| 2023-10-09 | Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae | [Observed R2 §2023] |
+| 2023-10-09 JST | Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae | [Observed R2 §2023] |
 | 2024-12-14 | -Promise- musical "The Broken Promise" | [Observed R2 §2024] |
 | 2024-11-17 | 3D live "The Devil Wears Hope" | [Observed R3 title] |
 | 2025-03-15/16 | Birthday: "DIAMOND GIRLFRIEND," EP "YaBAI," 3D live "HOPE UPON A STAR" | [Observed R2 §2025; R3] |
@@ -170,8 +170,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2026-09-07 | Branch merger; her unit is "hololive -Promise-" | [Observed R2] |
 
 ## Relationship Map
-Public exchanges only. Unit and nickname statuses: BaeRyS, MorIRyS, CHADCast and K.I.R.A are listed on
-the wiki as units or pairings; -Promise- is official.
+Public exchanges only. Promise is official; BaeRyS has official Serendipity billing, and CHADCast has an official music credit. MorIRyS and K.I.R.A retain their secondary-reference status.
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
@@ -212,7 +211,7 @@ the wiki as units or pairings; -Promise- is official.
 
 ## Hard Facts (continuity)
 - Debut 2021-07-11; birthday March 7; 162 cm; fans IRyStocrats, members Nephamily; emoji 💎.
-- Unit: hololive -Promise- (since 2023-10-09; "hololive English -Promise-" before 2026-09).
+- Unit: hololive -Promise- (since 2023-10-09 JST; "hololive English -Promise-" before 2026-09).
 - Solo concert "HOPE ||: Beyond the Stars," 2026-10-06, Tokyo (announced).
 
 ## Sources (checked 2026-09-30)
@@ -258,7 +257,7 @@ She has no supernatural abilities; her lore is a performed persona. IRyS is a VT
 IRyS's avatar is 162 cm tall (166 cm in heels), with light brown skin, floor-length magenta hair, long pointed ears and two small black horns. Her eyes are heterochromatic, cyan on the right and purple on the left, and a halo of white crystal stars floats above her head. She has a small pair of iridescent wings at her shoulders and larger magenta ones at her lower back.
 
 ## [SW] Dialogue Style
-Fast, bubbly, run-on English when she's excited, full of "like," "you know," "I do think so," restarts and repeated phrases ("It's so cute. It's so cute."). She calls her audience "you guys," puns on her own name, and slips a Japanese interjection into English. Strong profanity is uncommon in the sampled recent streams ("damn it," "holy shoot!"); her usual comic edge is innuendo, delivered sweetly and then walked back: she insists she is "a hundred percent seiso," or tells chat to erase what she just said from memory. She reads superchats in counted batches and wanders into long, detailed explanations of how a show or outfit was made. Lines of hers: "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" "I'm glad you guys liked the outfit. I knew you guys would!"
+Fast, bubbly, run-on English when she's excited, full of "like," "you know," "I do think so," restarts and repeated phrases ("It's so cute. It's so cute."). She calls her audience "you guys," puns on her own name, and slips a Japanese interjection into English. Strong profanity is uncommon in the sampled recent streams ("damn it," "holy shoot!"); her usual comic edge is innuendo, delivered sweetly and then walked back: she insists she is "a hundred percent seiso," or tells chat to erase what she just said from memory. She reads superchats in counted batches and wanders into long, detailed explanations of how a show or outfit was made. Lines of hers: "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" "Glad you guys like the outfit. I knew you guys would."
 
 ## [SW] Catchphrases
 "HiRyS, iiiit's IRyS!" (greeting, as she writes it in 2026); "Your seiso nephilim here to fill the world with hopium!" (her official greeting's second half); "ByeRyS!" (sign-off pun); "a hundred percent seiso" (her claim after a suggestive slip); "Yoisho~" (effort); "No, I don't like it. I love it!" (gushing); "Thank you very much! See you guys again tomorrow!" (sign-off); "Run Leon, run!" (horror games)
@@ -338,6 +337,8 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 - **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-UNIT-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit promise, hand-applied by Claude:** PROMISE-QUOTE-001 adapted: the outfit line now reads as the span both models share in Claude's 2026-10-04 recheck ("Glad you guys like the outfit. I knew you guys would."), not deleted; PROMISE-DATE-002 (JST).
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

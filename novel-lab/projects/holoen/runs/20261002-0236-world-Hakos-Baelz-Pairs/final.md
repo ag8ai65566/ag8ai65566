@@ -126,7 +126,7 @@ Relationship web (one member with the cast).
 ## Conflicts and Story Hooks
 1. A BaeRyS "divorce" hearing with Calli as the CHADCast judge.
 2. Bae and Cecilia settle coffee versus tea with a blind taste test that Kronii referees.
-3. A BaeBi sleepover where nobody sleeps and Bae narrates the chaos like breaking news.
+3. During a fictional BaeBi gaming marathon, Bae narrates on-stream mishaps like breaking news.
 4. Bae choreographs a duet for a kouhai and insists the breakdance goes in the last 16 counts.
 
 ## Links to Characters
@@ -194,6 +194,7 @@ Red pigtails and a little mouse on her head beside IRyS's angel and devil colors
   behind-the-scenes video (secondary). Fortnite, Amnesia and the SNAKE EYES short stay: Claude confirmed them in
   the archive's metadata, which the reviewer could not open.
 - **2026-10-03, scope screening by Claude:** a 2023 BaeRyS off-collab in the History table is described without its private-outing framing, matching IRyS's card.**
+- **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-SCOPE-003 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The exact year of the BaeRyS bento exchange is not independently dated; the card leaves it undated.

@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git 8f921de. Every dated row from every bible file's dossier
+Snapshot: git d0295ae. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
@@ -356,18 +356,18 @@ search the file for the row text to see its context.
 
 ### 2023-10
 - 2023-10-04 [day] Major debut (Victor Entertainment, until 2025); SorAZ with Tokino Sora debuts 2023-12-20 — `bible/characters/AZKi.md` ([Observed AZ2; AZ3])
-- 2023-10-09 [day] Joins hololive English -Promise- — `bible/characters/Ceres-Fauna.md` ([Official])
+- 2023-10-09 JST [day, JST] Joins hololive English -Promise- — `bible/characters/Ceres-Fauna.md` ([Official])
 - 2023-10-09 JST [day, JST] hololive English -Promise- formed with IRyS, Fauna, Kronii and Mumei — `bible/characters/Hakos-Baelz.md` ([Observed HB2; Promise card])
-- 2023-10-09 [day] Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae — `bible/characters/IRyS.md` ([Observed R2 §2023])
-- 2023-10-09 [day] Joins hololive English -Promise- — `bible/characters/Nanashi-Mumei.md` ([Official])
+- 2023-10-09 JST [day, JST] Joins hololive English -Promise- with Fauna, Kronii, Mumei and Bae — `bible/characters/IRyS.md` ([Observed R2 §2023])
+- 2023-10-09 JST [day, JST] Joins hololive English -Promise- — `bible/characters/Nanashi-Mumei.md` ([Official])
 - 2023-10-10 [day] Second original song "mumei" — `bible/characters/Nanashi-Mumei.md` ([Observed M2 §2023])
-- 2023-10-09 [day] Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz — `bible/characters/Ouro-Kronii.md` ([Official K3])
-- 2023-10-09 [day] -Promise- formed — `bible/world/Fauna-and-Mumei-Pairs.md`
+- 2023-10-09 JST [day, JST] Joins hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz — `bible/characters/Ouro-Kronii.md` ([Official K3])
+- 2023-10-09 JST [day, JST] -Promise- formed — `bible/world/Fauna-and-Mumei-Pairs.md`
 - 2023-10-09 JST [day, JST] -Promise- formed — `bible/world/Hakos-Baelz-Pairs.md`
-- 2023-10-09 [day] -Promise- formed: IRyS and Kronii become unitmates — `bible/world/IRyS-and-Nerissa-Pairs.md`
+- 2023-10-09 JST [day, JST] -Promise- formed: IRyS and Kronii become unitmates — `bible/world/IRyS-and-Nerissa-Pairs.md`
 - 2023-10-08 PDT / 10-09 JST [day-range, PDT] -Promise- formed with IRyS (closing Project: HOPE) — `bible/world/hololive--Promise.md`
-- 2023-10-08/09 [day-range] "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) — `bible/world/hololive-History-2023-2026.md`
-- 2023-10-09 [day] -Promise- formed (IRyS joins the remaining Council) — `bible/world/hololive.md`
+- 2023-10-08 PDT / 10-09 JST [day-range, PDT] "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) — `bible/world/hololive-History-2023-2026.md`
+- 2023-10-09 JST [day, JST] -Promise- formed (IRyS joins the remaining Council) — `bible/world/hololive.md`
 
 ### 2023-11
 - 2023-11 [month] Starts "Hoshimatic Project" — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU2])
@@ -737,7 +737,7 @@ search the file for the row text to see its context.
 - 2026-03-07 JST [day, JST] hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW.; Cecilia also sang "nowhere" with a violin performance. — `bible/characters/Cecilia-Immergreen.md` ([Official NEW-R4-014])
 - 2026-03-07 JST [day, JST] hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." — `bible/characters/Elizabeth-Rose-Bloodflame.md` ([Official NEW-R4-005/009/019])
 - 2026-03-07 JST [day, JST] hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." — `bible/characters/Gigi-Murin.md` ([Official NEW-R4-005/009/019])
-- 2026-03-06/08 [day-range] hololive 7th fes. "Ridin' on Dreams": "Idol" as the final solo number of STAGE 3 (her own choreography with a breakdance finish, by her account) and "Kakumei Dualism" with Natsuiro Matsuri; a venue talk with Cecilia Immergreen (her account) — `bible/characters/Hakos-Baelz.md` ([Official HB11 lineup] [secondary setlist HB12] [ASR HB20])
+- 2026-03-06–08 JST [day-range, JST] hololive 7th fes. "Ridin' on Dreams": "Idol" as the final solo number of STAGE 3 (her own choreography with a breakdance finish, by her account) and "Kakumei Dualism" with Natsuiro Matsuri; a venue talk with Cecilia Immergreen (her account) — `bible/characters/Hakos-Baelz.md` ([Official HB11 lineup] [secondary setlist HB12] [ASR HB20])
 - 2026-03-24 [day] #ラミこよ off-collab with Lamy, proposing to choose a duo name (no final name established) — `bible/characters/Hakui-Koyori.md` ([Lamy channel Zi8R63ee0Fs])
 - 2026-03-08 [day] hololive 7th fes. "Ridin' on Dreams," STAGE 4 (with Calli, Kronii, Bijou, Nerissa) — `bible/characters/Hoshimachi-Suisei.md` ([Official SU9])
 - 2026-03 [month] "Chatter Chatter" with Houshou Marine; playable in Fortnite (03-13 to 03-24) — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU4] [SU3, secondary])
@@ -749,7 +749,7 @@ search the file for the row text to see its context.
 - 2026-03-06 [day] hololive 7th fes. "Ridin' on Dreams," STAGE 1 (with Ayame, Ina, FUWAMOCO) — `bible/characters/Nekomata-Okayu.md` ([Official OK6] [Observed OK3])
 - 2026-03-28 [day] Single "Blue World" — `bible/characters/Nerissa-Ravencroft.md` ([Observed N2 §Discography])
 - 2026-03-27/28 PDT [day-range, PDT] "Drawn to Dawn" duo concert with Kiara (Los Angeles) — `bible/characters/Ninomae-Inanis.md` ([Official I20, I21])
-- 2026-03-13 [day] 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 — `bible/characters/Ouro-Kronii.md` ([Observed K33, secondary, stream t=1711; K38, secondary])
+- 2026-03-14 JST [day, JST] 3D birthday live; Watson Amelia guests; she announces the EP "Way 2 U"; the title single's official on-sale date is 2026-03-15 — `bible/characters/Ouro-Kronii.md` ([Observed K33, secondary, stream t=1711; K38, secondary])
 - 2026-03-07 JST [day, JST] hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." — `bible/characters/Raora-Panthera.md` ([Official NEW-R4-005/009/019])
 - 2026-03-24 [day] Bilingual show HoloEN REWIND: first episode — `bible/characters/Takanashi-Kiara.md` ([Observed T2 §HoloEN REWIND])
 - 2026-03-27/28 PDT [day-range, PDT] "Drawn to Dawn" duo concert with Ina (The Wiltern, Los Angeles) — `bible/characters/Takanashi-Kiara.md` ([Official T11, T12])
@@ -758,9 +758,9 @@ search the file for the row text to see its context.
 - 2026-03 [month] 7th fes: venue talk; Resident Evil series (April) — `bible/world/Hakos-Baelz-Pairs.md`
 - 2026-03-06 to 03-08 [day] hololive 7th fes. "Ridin' on Dreams" (STAGE 1 Mar 6, STAGE 3 Mar 7, STAGE 4 Mar 8) — `bible/world/JP-Senpai-Pairs.md`
 - 2026-03-27/28 PDT [day-range, PDT] "Drawn to Dawn," the Wiltern, LA — `bible/world/TakoTori.md`
-- 2026-03-13 [day] Ame guests at Kronii's 3D birthday live — `bible/world/Time-Duo.md`
+- 2026-03-14 JST [day, JST] Ame guests at Kronii's 3D birthday live — `bible/world/Time-Duo.md`
 - 2026-03-26 [day] Group song "Unchained" — `bible/world/hololive--Advent.md` ([Official NEW-R3-001])
-- 2026-03-06/08 [day-range] SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" — `bible/world/hololive-History-2023-2026.md`
+- 2026-03-06–08 JST [day-range, JST] SUPER EXPO 2026 and 7th fes. "Ridin' on Dreams" — `bible/world/hololive-History-2023-2026.md`
 - 2026-03-27/28 PDT [day-range, PDT] Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) — `bible/world/hololive-History-2023-2026.md`
 
 ### 2026-04
@@ -842,13 +842,13 @@ search the file for the row text to see its context.
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: the unit B.F.F with Raora ("Inu Neko. Seishun Massakari") — `bible/world/FUWAMOCO.md` ([Official S4; Serendipity report])
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: BaeRyS "LUVATORRRRRY!"; "HELP!!" — `bible/world/Hakos-Baelz-Pairs.md`
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: units Autofister (Gigi & Cecilia), Bloodraven (Nerissa & Elizabeth), B.F.F (FUWAMOCO & Raora); guests' songs with Justice members: "HELP!!" (Kobo, Bae, Elizabeth), "Break It Down" (Zeta, Shiori, Cecilia), "Cloudy Sheep" (Watame, Calli, Cecilia), "MAKE IT, BREAK IT" (Zeta, FUWAMOCO, Gigi), "What an amazing swing" (Watame, Kiara, Raora) — `bible/world/Justice-Pairs.md` ([Official S3, S7])
-- 2026-07-03/04 [day-range] Serendipity concert, Los Angeles — `bible/world/OctoClock.md`
+- 2026-07-03/04 PDT [day-range, PDT] Serendipity concert, Los Angeles — `bible/world/OctoClock.md`
 - 2026-07-03/04 [day-range] Serendipity pairs: Shiori–Calli, Bijou–Kiara, Nerissa–Elizabeth, FUWAMOCO–Raora — `bible/world/hololive--Advent.md` ([Official S7, S10])
 - 2026-07-03/04 PDT [day-range, PDT] Serendipity: day 1 "SUPERNOVA SUPER GIRL" (Justice); Autofister (Gigi & Cecilia, "CCGG MADNESS"); "HELP!!" (Kobo Kanaeru with Bae and Elizabeth); "Break It Down" (Vestia Zeta with Shiori and Cecilia); "Cloudy Sheep" (Tsunomaki Watame with Calli and Cecilia). Day 2: the Advent+Justice medley ("Rebellion," "ABOVE BELOW"); Bloodraven (Nerissa & Elizabeth, "Cruel Angel's Thesis"); "MAKE IT, BREAK IT" (Zeta, FUWAMOCO and Gigi); "What an amazing swing" (Watame with Kiara and Raora); B.F.F (FUWAMOCO & Raora, "Inu Neko. Seishun Massakari") — `bible/world/hololive--Justice.md` ([Official S6, S8])
 - 2026-07-03/04 PDT [day-range, PDT] **EN 4th concert "Serendipity"** (Shrine Auditorium, Los Angeles), built around units: Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS (IRyS–Bae), Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora), Autofister (Gigi–Cecilia); guests Ookami Mio, Kobo Kanaeru, Vestia Zeta, Tsunomaki Watame (official report) — `bible/world/hololive-History-2023-2026.md`
 - 2026-07/08 [month-range] Shiori's original motion comic "Into The Void" (with Elizabeth, Gigi, Nerissa); Advent's 3rd-anniversary 3D live "Bound by Fate"; FUWAMOCO announce their first album (08-29) — `bible/world/hololive-History-2023-2026.md`
 - 2026-07-23 [day] Rhythm game "hololive Dreams" released — `bible/world/hololive-History-2023-2026.md`
-- 2026-07-03/04 [day-range] hololive English 4th concert "Serendipity" (LA) — `bible/world/hololive.md`
+- 2026-07-03/04 PDT [day-range, PDT] hololive English 4th concert "Serendipity" (LA) — `bible/world/hololive.md`
 
 ### 2026-08
 - 2026-08-29 [day] First album "FUWAMOCO à la mode" announced — `bible/characters/Fuwawa-Abyssgard.md` ([Observed FW2 §2026; X via wiki])

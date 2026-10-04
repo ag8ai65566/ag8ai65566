@@ -9,3 +9,4 @@
 - 2026-10-03 23:53 作者裁決收錄 final.md（sha256 7373c1304544）：Author decision (2026-10-03): new-material research R2 (Promise) merged by Claude
 - 2026-10-03 23:55 作者裁決收錄 final.md（sha256 c4e2bef9231c）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
 - 2026-10-04 03:56 作者裁決收錄 final.md（sha256 9e284efa3513）：Author decision (2026-10-03): two-model audio check of research quotation candidates (dossier sample lines)
+- 2026-10-04 05:16 作者裁決收錄 final.md（sha256 c504265a5264）：Author decision (2026-10-03): cross-card QA audit promise merged by Claude
