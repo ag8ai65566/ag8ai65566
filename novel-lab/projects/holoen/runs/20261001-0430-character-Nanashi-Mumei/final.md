@@ -207,8 +207,8 @@ archive M3), a rough measure.
 | Gigi Murin | Justice kouhai | Echo Point Nova as "A Towl and a Gremlin" (2024-10-15, QA7OA1ew5HI) | [Observed M3] |
 | Cecilia Immergreen | Justice kouhai ("Automatowl") | Joined, with Gigi, Mumei's alphabet tier list (2025) | [Observed M2; M3] |
 | FUWAMOCO | Advent kouhai ("Fuwamoomco") | Overwatch "baus baus" (2025-03) | [Observed M2; M3] |
-| Takane Lui, Tokoyami Towa, Akai Haato | JP seniors | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
-| Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP seniors | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
+| Takane Lui, Tokoyami Towa, Akai Haato | JP collaborators; Towa and Haato are seniors, Lui is a kouhai | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
+| Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP collaborators; Korone, Okayu and Nene are seniors, Koyori is a kouhai | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
 | Sakamata Chloe, Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Chloe and Lui on Mumei's EN-server Minecraft tour with Bae (2022-02-12); Marine's horror game with Bae (2023-08-23); Noel and Vivi in Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 50tBPC5c2zM, RY1GkF4jMls, OMDzBQohAf8] |
 | Hoshimachi Suisei | JP senior | A #bibbidibachallenge short on Suisei's channel (2024-06-18) | [Suisei file SU4 zSB9yejsmGQ] |
 
@@ -370,6 +370,7 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
 - **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 - **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-002, promise:PROMISE-SCOPE-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
 - **2026-10-04, scope wording (Claude, with the jp audit's CLAUDE-SCOPE-002):** the audio-status note no longer lists excluded topics; private details deliberately excluded.
+- **2026-10-04, cross-card QA audit (holox, GPT xhigh), hand-applied by Claude:** holox:HOLOX-TIE-002 (both rows: Lui and Koyori debuted after Mumei).
 
 ## Open Questions
 1. Wiki quote lines ("Civilization is temporary…", the "moom" verb) are secondary, without timestamps; the

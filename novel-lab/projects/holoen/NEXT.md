@@ -2,6 +2,16 @@
 
 **作者規則（2026-10-04）：給作者的最終匯報一律用繁體中文。**
 
+狀態（2026-10-04 15:50 UTC）：**GPT 佇列全部跑完並合併。release.py validate：V01–V23 全部通過，沒有擋下的項目。**
+- 已合併：cohort 審計 myth1–4、justice、global、promise、jp、jp2、holox；bridge 審計 events、ties-external；聲音審計 v1–v4；
+  新資料 R1–R7；P1、W1。紀錄在 `research/qa/audit-*.md`、`voice-audit-dispositions.md`、`resolutions.md`。
+- 作者 2026-10-04 決定：(1) 二手台詞選 B（`research/qa/quote-inventory.md`，作者例外）；(2) hololive JP 14 人念日文
+  （卡片 Audio Tags、表演表第 2 節、轉換器檢查都已上線）。
+- 候選交付包：`delivery/holoen-2026-09-30-r01`（舊的 r01-draft 已移除）。
+- **作者要做的：** V24 實際試聽（`test-results.csv` 的 `sudowrite-import`、`sudowrite-generation`、`elevenlabs-3-line`、
+  `elevenlabs-japanese`）；V25 最終驗收（`research/qa/release-acceptance.md`，作者決定）。
+- 之後（作者下令再做）：P1 建議的 M0–M7 驗收輪次（GPT-PROGRAM.md）；外部人物參考索引補齊（ties-external 交接）。
+
 狀態（2026-10-04 11:30 UTC）：**作者命令（10-03 23:15）：Claude 合併 GPT 累積的結果；jp、jp2 也已合併；GPT 10:38 額度用完，15:05 由排程叫醒續跑 voice v4 → holox。**
 - **作者 2026-10-04 決定：** (1) 93 句只有二手轉錄的台詞選 **B**（保留，作者例外；`research/qa/quote-inventory.md`，span_check 列為例外）。
   (2) **hololive JP 14 人念日文**：9 張非 holoX 的卡片與表演表已改（Audio Tags 開頭寫明、表演表第 2 節

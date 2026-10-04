@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 4e81394.
+Snapshot: git 135bae1.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|hololive -Advent-|Jewel of Emotions|FUWAMOCO MORNING|Mococo Abyssgard|Fuwawa Abyssgard|Abyssgard twins|The Fluffy One|Shiori Novella|Demon of Sound|Demon of Soup|The Fuzzy One|Diamond Dogs|Advent Pairs|Koseki Bijou|Sound Hounds|The Archiver|Last Writes|FUWAMOCALLI|holoAdvent|Bloodraven|Grindstone|Fluffy One|Rocku Wawa|GreyScaleX|Fuwa-chan|ShioRaven|Adventrix|Moco-chan|Goth Rock|JewelBird|Shiori~n|Mogojyan|Lil'Rock|The Cell|Fuwa-nee|Pen Pups|FUWAMOCO|Shiorin|Nerissa|Koseki|Advent|Fuwawa|Mogogo|Mococo|Beejoe|Shiori|Rissa|Beebs|Bijou|Oobib|B.F.F|Biboo|Pero|Neri|FWMC|GAGA)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewel of Emotions|Fuwawa and Mococo|Fuwawa Abyssgard|FUWAMOCO MORNING|Mococo Abyssgard|Abyssgard twins|The Fluffy One|Demon of Sound|Shiori Novella|Demon of Soup|The Fuzzy One|Diamond Dogs|Koseki Bijou|Advent Pairs|Sound Hounds|The Archiver|FUWAMOCALLI|Last Writes|GreyScaleX|Grindstone|holoAdvent|Rocku Wawa|Bloodraven|Fluffy One|ShioRaven|Adventrix|Fuwa-chan|Goth Rock|Moco-chan|JewelBird|Mogojyan|FUWAMOCO|Lil'Rock|Pen Pups|Fuwa-nee|The Cell|Shiori~n|Shiorin|Nerissa|Mogogo|Koseki|Shiori|Beejoe|Fuwawa|Mococo|Advent|B.F.F|Rissa|Oobib|Biboo|Beebs|Bijou|Neri|GAGA|Pero|FWMC)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -162,7 +162,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" from her 2026 birthday show, with FUWAMOCO.
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2024 | Covers with La+ (「絶対敵対メチャキライヤー」, 03-11) and Lui (「右肩の蝶」, 04-11); originals "Mahou Shoujo☆Magical GOZARU" and "Dreamy Sky" (06); a cookie-battle off-collab on her channel, presented with AZKi, with FUWAMOCO as the challengers (10-27, JgOwJ7m89Lk); a guest at Kiara's 4th-anniversary live (10-06); 1 million subscribers (11-19) | [Observed IR2] [IR4] [IR5] |
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2026-05-19 | An excerpt from Elizabeth's 2026 birthday show, uploaded 05-19, credits Iroha, Watame, Nene, Polka and FUWAMOCO on "CHA-LA HEAD-CHA-LA" (upload date, not necessarily the show date) | [IR5 xylll7Mp0jk] |
-- `bible/characters/Kazama-Iroha.md › Relationship Map`: | FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" for Elizabeth with Watame, Nene and Polka (2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show with Watame, Nene and Polka (excerpt uploaded 2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 
 ### from Kikirara Vivi
@@ -455,7 +455,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 ### from holoX
 - `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
 - `bible/world/holoX.md › With the English cast`: - **FUWAMOCO:** "FUWAMOKOYO" names Koyori and the twins in FUWAMOCO MORNING #90's title (2024-04-26); a separate 2024 Lethal Company upload lists Fubuki and Koyori; "TWIN DAY WITH LUI" (2023-11-25); a cookie-battle off-collab with Iroha (2024-10-27) and Chained Together (2024-09-13); dance shorts to La+'s and Lui's 2026 songs. [S1]
-- `bible/world/holoX.md › With the English cast`: - **Others:** Lui's 2026 song "Soar" was danced by IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO (2026 shorts); Cecilia teased La+ as "onee-sama" (2026 short); Nerissa met La+ in holoGTA (2024). [S1]
+- `bible/world/holoX.md › With the English cast`: - **Others:** The channels of IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO posted shorts featuring Lui's "Soar" in 2026; these include animated/MMD uploads, and channel publication does not establish who performed the dance motion; Cecilia's channel posted a short titled "ONEE-SAMA!" about La+ (2026; archived title, not verified dialogue); Nerissa and La+ both participated in holoGTA (2024); a direct exchange is not established. [S1]
 
 ### from hololive -Justice-
 - `bible/world/hololive--Justice.md › [SW] Description`: In their shared lore they are law enforcers sent to catch Advent's escaped "criminals," working from a headquarters in the clouds, The Lookout, whose Panscope telescope can observe distant places; the pursuit supplies staged rivalries and Advent × Justice collab jokes rather than arrests.

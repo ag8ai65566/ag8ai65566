@@ -60,8 +60,7 @@ LU2 §Personality, secondary]
    when she knocked over her water before the game started. [Observed LU2 §Likes, secondary]
 4. Horse-racing prediction streams for almost every G1 race; Saturday RPG streams (MOTHER, MOTHER 2, SAND LAND,
    Dragon Ball Z: Kakarot in 2026). [Official LU1] [Observed LU4 titles]
-5. Predicted game announcements before a 2026 Nintendo Direct; the first model renders her name for Nekomata Okayu
-   as 「シャッチョ」 ("Shaccho"), unconfirmed by the second model, so it is not quoted. [ASR LU20, first model only]
+5. Predicted game announcements before a 2026 Nintendo Direct. The first-model transcript does not establish her form of address for Nekomata Okayu. [ASR LU20, first model only]
    [Observed LU4 titles]
 6. Loves twins (her official likes), which made "TWIN DAY WITH LUI" with FUWAMOCO (2023). [Official LU1] [LU5]
 7. An ambassador for Code Geass from June 2025, with watch-alongs of "Code Geass: Roze of the Recapture" (2026).
@@ -135,7 +134,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2024 | First album "Liberty" (official digital release 06-12); 1 million subscribers (11-16, secondary) | [Official music 434] [Observed LU2] |
 | 2025 | EP "Lieblings"; Code Geass ambassador (June, secondary); "Q&A With Bird Sisters" with Mumei (04-19); Harry Potter watch-alongs with Okayu; "FEAST" dance short with Bae (07-11) | [Observed LU2] [LU5] [LU4 Lj0MZFpHitQ, 5TUiccnytQA] |
 | 2025-12-01 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LU2] |
-| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-004] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official Secret ORDER catalog](https://hololive.hololivepro.com/en/music/025/) |
 | 2026-04-29 | holoX's first in-person unit concert "First MISSION"; COVER's interview after it describes the concert as a turning point for the four-member group and its audience | [Official LU6] |
 | 2026-06-11 | EP "The LEGENDARY" with "Soar" (official digital release of "Soar" 06-12); 1st live "REBELLION" (2026-12-16) and a BAYFM78 radio programme (from 07-03) announced; EN members' channels posted animated "Soar" shorts crediting external motion creators | [Official LU7] [Official music 760] [LU4] [LU5] |
 | 2026-06-11 | COVER announces a regular BAYFM78 radio programme for her (first broadcast scheduled for 2026-07-03); orders open for the four-track EP "The LEGENDARY," including "Soar"; her first live concert "REBELLION" announced for 2026-12-16 at Kanadevia Hall (after the baseline: an announcement only). | [Official NEW-R6-013/014] |
@@ -285,6 +284,7 @@ La+ Darknesss: holoX's founder, whom Lui reins in and covers for. Sakamata Chloe
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-010, 013 to 015 and 022 (duets with La+ and Iroha; radio programme, The LEGENDARY and REBELLION announced; Horror Game Week), FIX-R6-004 ("Secret ORDER" release dated separately).
 - **2026-10-04, task-09 voice audit (20261003-2322-check-QA-voice-v4, GPT xhigh), merged by Claude:** applied VOICE-V4-004, VOICE-V4-005 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-04, dialogue language (author decision, applied by Claude):** her audio dialogue is Japanese; Audio Tags states it and gives the words to keep in Japanese script; the performance sheet's lines are Japanese script with ROMAJI lines.
+- **2026-10-04, cross-card QA audit (holox, GPT xhigh), merged by Claude:** applied holox:HOLOX-COVERAGE-001, holox:HOLOX-TIE-003 (exact replacements; dispositions in research/qa/audit-holox.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Resolved: "Onikan" stays as an archived-title label (YXaDmUXPSGo), not a claim about a formal unit.

@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git 4e81394. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 135bae1. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Elizabeth Rose Bloodflame
@@ -71,8 +71,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### AZKi × La+ Darknesss
 - `bible/characters/AZKi.md › Relationship Map`: | La+ Darknesss | — | GeoGuessr for Tochigi Day (2025-06-15), The Headliners with Korone and Miko (2025-05-07), Minecraft (2025-07); a clip of La+ reacting to AZKi's ASMR (2026-03-31) | [AZ4 80Xb4PxZLyw, AMturrbpVD0] [La+ channel z0Z2Zc3MlE4, 6n2X82dqqx0] |
 - `bible/characters/AZKi.md › [SW] Relationships`: La+ Darknesss: GeoGuessr for Tochigi Day and other games (2025).
-- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | AZKi | — | Games and an ASMR "evaluation" (2025); AZKi danced to her songs | [LA4] |
-- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: AZKi: games and an ASMR "evaluation"
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | AZKi | — | Games in 2025; an animated short uploaded to La+'s channel on 2026-03-31 depicts her reaction to AZKi's ASMR (original reaction date unverified); AZKi danced to her songs | [LA4] |
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: AZKi: games in 2025; an animated short on La+'s channel uploaded in 2026 depicts her reaction to AZKi's ASMR.
 
 ### AZKi × Mococo Abyssgard
 - `bible/characters/AZKi.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | "FWMCAZ" | A FUWAMOCO-themed GeoGuessr map (2024); singing with Aqua (2024); appeared at her 2025 birthday live (secondary setlist) | [AZ4] |
@@ -547,7 +547,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Mococo-Abyssgard.md › Voice Profile`: | Introduction | Bright, a beat of comic timing | "I'm not... Fuwawa, I'm Mococo!" (MC2) |
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called her dependable, calls her plain "Fuwawa"
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Fuwawa and Mococo Abyssgard | Advent genmates ("Sound Hounds") | She claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa" | [Observed N2] |
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she claims, as a bit, to be the third sister, "Mofufu"; Fuwawa calls her "Newissa."
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she jokingly claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa."
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | Advent seniors; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 The twins describe her teasing their tails and chasing them around the Serendipity stage in their MC comedy. | [Official RP4] [Secondary, hololivetoday Q&A] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu Neko.
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Fuwawa Abyssgard, Mococo Abyssgard | EN kouhai | A cover of BABYMETAL's "Gimme Chocolate!!" together (2024-02). | [Archive metadata NEW-R6-020] |
@@ -588,7 +588,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Fuwawa Abyssgard × Nerissa Ravencroft
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Nerissa Ravencroft | Genmate ("Sound Hounds") | Fuwawa calls her "Newissa"; Nerissa claims to be the third sister, "Mofufu" | [Observed Nerissa wiki, secondary; Advent card] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Fuwawa and Mococo Abyssgard | Advent genmates ("Sound Hounds") | She claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa" | [Observed N2] |
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she claims, as a bit, to be the third sister, "Mofufu"; Fuwawa calls her "Newissa."
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she jokingly claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa."
 - `bible/world/Advent-Pairs.md › Inside Advent`: - **Nerissa and FUWAMOCO ("Sound Hounds"):** Nerissa as the third Abyssgard sister "Mofufu"; Fuwawa calls her "Newissa." [Observed Nerissa wiki, secondary]
 - `bible/world/hololive--Advent.md › How the Group Works`: - **As a group:** relay streams for new outfits, a friendship test with swapped hairstyles (Nerissa got Fuwawa's, dog ears included), and joint Expo appearances with -Justice- (2025, 2026). [Observed S1, S2 §2025, secondary]
 - `bible/world/hololive--Advent.md › How the Group Works`: - **Nerissa and FUWAMOCO ("Sound Hounds"):** after time with the twins she claims to be the third Abyssgard sister, "Mofufu"; Fuwawa calls her "Newissa" (6 / 16 / 0). [Observed S2, secondary; S4]
@@ -699,7 +699,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Gawr Gura × Nerissa Ravencroft
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Shiori Novella and Nerissa Ravencroft: her "Scarlet Wand" guildmates in the ENigmatic Recollection story.
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Gawr Gura | Senior (graduated) | Guildmates ("Scarlet Wand") in the ENigmatic Recollection Minecraft story | [Observed N2 §Relationships] |
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): a "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Gawr Gura (graduated): a fellow "Scarlet Wand" guildmate in ENigmatic Recollection, with Nerissa.
 - `bible/world/Advent-Pairs.md › With Myth`: - **Gawr Gura (graduated):** fellow "Scarlet Wand" guildmate of Shiori and Nerissa in the ENigmatic Recollection story. [Observed S2 Shiori, secondary]
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 | "ENigmatic Recollection" (ENReco) announced: EN members in the fantasy world Libestal, via a Minecraft series, animation and songs | Guilds: IRyS in "Cerulean Cup," Nerissa and Gura in "Scarlet Wand" |
@@ -730,7 +730,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Gawr Gura × Shiori Novella
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Shiori Novella and Nerissa Ravencroft: her "Scarlet Wand" guildmates in the ENigmatic Recollection story.
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): a "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Gawr Gura (graduated): a fellow "Scarlet Wand" guildmate in ENigmatic Recollection, with Nerissa.
 - `bible/world/Advent-Pairs.md › With Myth`: - **Gawr Gura (graduated):** fellow "Scarlet Wand" guildmate of Shiori and Nerissa in the ENigmatic Recollection story. [Observed S2 Shiori, secondary]
 
@@ -1099,7 +1099,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Hakui-Koyori.md › [SW] Relationships`: Takane Lui and Kazama Iroha: holoX; Lui: Blue Journey (2023).
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Hakui Koyori | holoX | The early "seiso" pair | [IR2] |
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Hakui Koyori: holoX genmate.
-- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) Their duet "SUKIDEKA!!~BIGLOVE????~" (2025-11-21). | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) La+ and Koyori released the duet "SUKIDEKA!!~BIGLOVE????~" on 2025-11-21. | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: holoX; secondary references call her pairing with Iroha "Irohasu."
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | Secondary references record "Lui-nee" as Iroha's address for her; Koyori: Blue Journey Iroha: their single "Private EyeZ" (2025-11-21), performed as a duo at First MISSION (2026-04-29). | [LU2] [Blue Journey roster] [Official NEW-R6-022] |
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: holoX; secondary references record "Lui-nee" as Iroha's address for her.
@@ -1110,7 +1110,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Hakui-Koyori.md › [SW] Relationships`: La+ Darknesss: holoX's founder; a sponsored "#stons" collab (2024) and a cover with Marine (2025).
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | La+ Darknesss | "#マリラプ" (archived title) | A sponsored collab (2025-07); a cover with La+ and Koyori (2025-08) | [MA4 Xf4MPOkHKtE] [Koyori file] |
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: La+ Darknesss: a sponsored collab billed #マリラプ and a cover with Koyori (2025).
-- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) Their duet "SUKIDEKA!!~BIGLOVE????~" (2025-11-21). | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) La+ and Koyori released the duet "SUKIDEKA!!~BIGLOVE????~" on 2025-11-21. | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
 - `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Houshou Marine | "#マリラプ" (archived title) | A sponsored collab (2025); a cover with Marine and Koyori (2025) | [Marine file] [KO4] |
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: holoX; secondary references call her pairing with Iroha "Irohasu."
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Houshou Marine: a sponsored collab billed #マリラプ and a cover with Koyori (2025).
@@ -1528,7 +1528,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Kazama Iroha × La+ Darknesss
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | La+ Darknesss | holoX founder; "La+-dono" (secondary) | Showed her around the new holo server (2023); the cover 「絶対敵対メチャキライヤー」 (2024-03-11) | [IR4 U9tSa1hxU0M] |
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: La+ Darknesss: holoX's founder; a cover together (2024).
-- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) Their duet "SUKIDEKA!!~BIGLOVE????~" (2025-11-21). | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) La+ and Koyori released the duet "SUKIDEKA!!~BIGLOVE????~" on 2025-11-21. | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: holoX; secondary references call her pairing with Iroha "Irohasu."
 - `bible/world/holoX.md › History`: | 2022-03-04 | Calli's English lesson #02 | La+, Iroha; archive X492n37brRU |
 
@@ -1753,7 +1753,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### La+ Darknesss × Nerissa Ravencroft
 - `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Nerissa Ravencroft | — | holoGTA (2024) | [LA4] |
-- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | Dance shorts to Lui's "Soar" (2026) and La+'s "Onee-sama♡Love Call" (2026); both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | An animated "Soar" short on Nerissa's channel (2026), plus a short to La+'s "Onee-sama♡Love Call" (2026); Nerissa and La+ both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: La+ Darknesss: both in holoGTA (2024); a dance short to her "Onee-sama♡Love Call"
 
 ### La+ Darknesss × Sakamata Chloe
@@ -1778,7 +1778,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Takane Lui | holoX executive officer | Reins her in; a 2026 two-person talk Featured on Lui's original "Anastasis Girl feat. La+ Darknesss" (2025-11-28); they performed it together at First MISSION (2026-04-29). | [LA2] [LA4] [Official NEW-R6-010] |
 - `bible/characters/Laplus-Darknesss.md › Story Engine`: 2. A holoX meeting where La+ announces a conquest plan and Lui schedules it for "after lunch."
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Takane Lui: holoX's executive officer, who actually runs things and reins her in.
-- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | Dance shorts to Lui's "Soar" (2026) and La+'s "Onee-sama♡Love Call" (2026); both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | An animated "Soar" short on Nerissa's channel (2026), plus a short to La+'s "Onee-sama♡Love Call" (2026); Nerissa and La+ both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
 - `bible/characters/Takane-Lui.md › Background Timeline`: | 2026-08-01 | A "rare" La+ and Lui talk with new outfits | [LU4] |
 - `bible/characters/Takane-Lui.md › Relationship Map`: | La+ Darknesss | holoX founder | Lui reins her in; a 2026 two-person talk; poker (2025) Her original "Anastasis Girl feat. La+ Darknesss" (2025-11-28); performed together at First MISSION (2026-04-29). | [LU2] [LU4] [Official NEW-R6-010] |
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: La+ Darknesss: holoX's founder, whom Lui reins in and covers for.
@@ -1799,7 +1799,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Mococo Abyssgard × Nerissa Ravencroft
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Houshou Marine: archived metadata records a Touhou off-collab and Mario Party with Nerissa (2024).
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Fuwawa and Mococo Abyssgard | Advent genmates ("Sound Hounds") | She claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa" | [Observed N2] |
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she claims, as a bit, to be the third sister, "Mofufu"; Fuwawa calls her "Newissa."
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she jokingly claims to be the third sister, "Mofufu"; Fuwawa calls her "Newissa."
 
 ### Mococo Abyssgard × Ninomae Ina'nis
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
@@ -2124,7 +2124,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: Mumei and Kiara are birds of HOLOTORI; Kiara calls her "Moomsies" and hosted both on HOLOTALK before they left.
 
 ### Nanashi Mumei × Takane Lui
-- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP seniors | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP collaborators; Towa and Haato are seniors, Lui is a kouhai | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Nanashi Mumei (graduated) | HOLOTORI; "Bird Sisters" | "Q&A With Bird Sisters" (2025); the EN Minecraft tour (2022) | [LU5] |
 - `bible/characters/Takane-Lui.md › Story Engine`: 1. A historical HOLOTORI scene with Kiara and Mumei; Lui keeps the agenda, then knocks over the water.
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Nanashi Mumei (graduated): HOLOTORI; "Q&A With Bird Sisters"
@@ -2211,7 +2211,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shiori Novella | Advent genmate ("ShioRaven") | Nerissa calls her "wife"; Shiori plays hard to get; fictional "children"; off-collabs ("Here with my Shiwowi 💙🤍🖤," 2025) | [Observed N2 §Relationships, §Lore; N3] |
 - `bible/characters/Nerissa-Ravencroft.md › Story Engine`: 1. Shiori finally says "yes" to a bit, and Nerissa panics.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Ceres Fauna (graduated 2025): "Fauna-senpai!!!" on her first day on X; with Shiori they sang "Lonely in Gorgeous" at the same concert.
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): a "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit (ShioRaven); Shiori plays hard to get, and the two keep a joke lore of fictional "children."
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Koseki Bijou | Genmate ("Goth Rock," "GAGA") | Bijou's most-mentioned genmate on her own channel (46 streams); a "Gyatt Review" (2024), an offline conbini-snack collab with Nerissa and Bijou (2024) | [Observed SN2; SN3; Bijou archive] |
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Nerissa Ravencroft | Genmate ("ShioRaven") | Nerissa calls her "wife"; Shiori plays hard to get; a fictional daughter, "Beatrice Niori World Destroyer Novella"; Shiori knows where Nerissa's horn piece is; a hedge maze and fishing collabs (7 / 2 / 1 / 2) | [Observed SN2 §Relationships, §Lore, secondary; SN3] |
@@ -2255,8 +2255,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: Nerissa and Kiara (KiaRissa): Kiara is Nerissa's oshi; Kiara showed her around Minecraft; a 2025 "BIRB GIRLS"
 
 ### Nerissa Ravencroft × Takane Lui
-- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | Dance shorts to Lui's "Soar" (2026) and La+'s "Onee-sama♡Love Call" (2026); both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: (2026); Takane Lui: a "Soar" dance short (2026).
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | An animated "Soar" short on Nerissa's channel (2026), plus a short to La+'s "Onee-sama♡Love Call" (2026); Nerissa and La+ both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: (2026); Takane Lui: an animated "Soar" short on her channel (2026).
 
 ### Nerissa Ravencroft × Watson Amelia
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Watson Amelia | Senior (affiliate) | Portal 2 together, "TAKING ON PUZZLES WITH @WatsonAmelia" (2024) | [Observed N3 title] |

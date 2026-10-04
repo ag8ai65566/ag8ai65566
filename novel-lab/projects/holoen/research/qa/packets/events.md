@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git 4e81394. Every dated row from every bible file's dossier
+Snapshot: git 135bae1. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
@@ -776,16 +776,16 @@ search the file for the row text to see its context.
 - 2026-04-29 [day] holoX's first in-person unit concert, "First MISSION" — `bible/characters/Hakui-Koyori.md` ([Official KO6])
 - 2026-04-18 [day] Hoshimatic Project's second song "BEEP BEEP" (official digital release; premiered the day before) — `bible/characters/Hoshimachi-Suisei.md` ([Official SU10] [SU4])
 - 2026-04-29 [day] holoX's first concert, "First MISSION" — `bible/characters/Kazama-Iroha.md` ([Official IR6])
-- 2026-04-08 [day] holoX album "Secret ORDER" released — `bible/characters/Laplus-Darknesss.md` ([Official FIX-R6-003])
+- 2026-04-08 [day] holoX album "Secret ORDER" released — `bible/characters/Laplus-Darknesss.md` ([Official Secret ORDER catalog](https://hololive.hololivepro.com/en/music/025/))
 - 2026-04-29 [day] holoX's first in-person unit concert, "First MISSION" (La+, Lui, Koyori, Iroha) — `bible/characters/Laplus-Darknesss.md` ([Official LA6])
 - 2026-04-04 JST [day, JST] Sixth birthday 3D live "UNCUT ROCK!!" with a live band, plus a members-only encore — `bible/characters/Mori-Calliope.md` ([Archive metadata C32])
 - 2026-04 [month] The "Shishiro Cup" fighting-game tournament, offline; original "Tokihanate" (04-10) — `bible/characters/Shishiro-Botan.md` ([BO4] [Observed BO2])
-- 2026-04-08 [day] holoX album "Secret ORDER" released — `bible/characters/Takane-Lui.md` ([Official FIX-R6-004])
+- 2026-04-08 [day] holoX album "Secret ORDER" released — `bible/characters/Takane-Lui.md` ([Official Secret ORDER catalog](https://hololive.hololivepro.com/en/music/025/))
 - 2026-04-29 [day] holoX's first in-person unit concert "First MISSION"; COVER's interview after it describes the concert as a turning point for the four-member group and its audience — `bible/characters/Takane-Lui.md` ([Official LU6])
 - 2026-04-02 [day] "Mekurumeku Rendezvous," ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3 — `bible/world/FUWAMOCO.md`
 - 2026-04-23 [day] Nerissa's Tomodachi Life Miis of IRyS and Ina — `bible/world/IRyS-and-Nerissa-Pairs.md`
 - 2026-04-24 [day] "GETCHA!" cover — `bible/world/TakoTori.md`
-- 2026-04-08 [day] Album "Secret ORDER" released — `bible/world/holoX.md` ([Official, R6])
+- 2026-04-08 [day] Album "Secret ORDER" released — `bible/world/holoX.md` ([Official Secret ORDER catalog](https://hololive.hololivepro.com/en/music/025/))
 - 2026-04-29 [day] "First MISSION," Pia Arena MM — `bible/world/holoX.md`
 
 ### 2026-05
@@ -886,7 +886,7 @@ search the file for the row text to see its context.
 - 2026-09-07 [day] Branches merge into one "hololive"; her unit is hololive -Promise- — `bible/characters/Hakos-Baelz.md` ([Official HB1])
 - 2026-09-28 [day] "PARADISE!", the hololive Dreams area theme: animated MV; Bae shares the vocal credit with Omaru Polka, Houshou Marine, Yukihana Lamy, Hakui Koyori, Kobo Kanaeru and Ichijou Ririka. Also announced that day: "REGALIA" at Kanadevia Hall, scheduled for 2026-12-01 (after the baseline: an announcement only). — `bible/characters/Hakos-Baelz.md` ([Secondary NEW-R2-019, press-release reproduction] [Official, 20260928-02-16])
 - 2026-09-12 [day] Second album "Chemical Spark" and first solo concert "Dream Spark" (2026-12-22) announced — `bible/characters/Hakui-Koyori.md` ([Observed KO2])
-- 2026-09-20 [day] A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours — `bible/characters/Hakui-Koyori.md` ([KO3])
+- 2026-09 (exact day and time zone unverified) [month] A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours — `bible/characters/Hakui-Koyori.md` ([KO3])
 - 2026-09-08 [day] Arena tour "Once Upon a Stellar" opens (Yokohama, Kobe, Nagoya, Fukuoka; to 11-12) — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU2])
 - 2026-09 [month] Holo Koshien series: a baseball team followed through successive in-game seasons; Koyori joined the 09-17 session and AZKi commentated on 09-26. — `bible/characters/Houshou-Marine.md` ([Archive metadata NEW-R5-014, NEW-R5-006])
 - 2026-09-07 [day] Branch merger; her unit is "hololive -Promise-" — `bible/characters/IRyS.md` ([Observed R2])

@@ -1,9 +1,9 @@
 # Audit packet: jp2 (incoming claims)
 
-Snapshot: git 4e81394.
+Snapshot: git 135bae1.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Kiara|Shishiro Botan|Botan and IRyS|Houshou Marine|Shirogane Noel|Kikirara Vivi|Yukihana Lamy|Lamy and Ina|Noel-danchou|Noel Deluxe|Shishiron|Lamy-mama|Shishiro|綺々羅々ヴィヴィ|Danchou|Maririn|Senchou|Danchō|Marine|Senchō|Sencho|白銀ノエル|雪花ラミィ|獅白ぼたん|Botan|宝鐘マリン|Vivi|Lamy|Noel|Wamy)(
+Matched names:  Senpai Pairs 2|Vivi and FUWAMOCO|Noel and Calliope|Marine and Kiara|Shirogane Noel|Shishiro Botan|Botan and IRyS|Houshou Marine|Kikirara Vivi|Yukihana Lamy|Noel-danchou|Lamy and Ina|Noel Deluxe|Lamy-mama|Shishiron|綺々羅々ヴィヴィ|Shishiro|Senchou|Danchou|Maririn|Marine|Danchō|Senchō|Sencho|獅白ぼたん|Botan|宝鐘マリン|白銀ノエル|雪花ラミィ|Noel|Lamy|Wamy|Vivi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
@@ -226,7 +226,7 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 
 ### from FUWAMOCO
 - `bible/world/FUWAMOCO.md › [SW] Description`: Their public ties extend to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo).
-- `bible/world/FUWAMOCO.md › Shared Relationships`: - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi); Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori, "FUWAMOKOYO"); Akai Haato, Tsunomaki Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
+- `bible/world/FUWAMOCO.md › Shared Relationships`: - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi); Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori); "FUWAMOKOYO" names Koyori and the twins on FUWAMOCO MORNING #90; Akai Haato, Tsunomaki Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
 
 ### from JP Senpai Pairs
 - `bible/world/JP-Senpai-Pairs.md › Hoshimachi Suisei with the cast`: - **Others:** Hakos Baelz ("High Tide," 2024; a 2025 dance short to Suisei's "Moonlight"); Nanashi Mumei (a #bibbidibachallenge short together, 2024-06-18); FUWAMOCO (a 2026 dance short to Suisei and Houshou Marine's "Chatter Chatter"); Nerissa Ravencroft (a "BIBIDEBA" dance short, 2024); Koseki Bijou (a Fortnite stream titled "THE SUISEI CONCERT IN FORTNITE?!", 2026-05-02, after Suisei joined Fortnite as a playable character in March 2026). [S1] [Official S6] [S5 Suisei, secondary]

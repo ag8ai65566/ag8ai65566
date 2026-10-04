@@ -1,0 +1,269 @@
+{
+ "phase": "candidate",
+ "checked_at": "2026-10-04T15:32Z",
+ "snapshot": "57beac0d0a5986bb0f798365f7face71b03fe8ae8f7b17303247d4caeb4902ab",
+ "blocking_failures": [],
+ "results": [
+  {
+   "check_id": "V01",
+   "title": "Source snapshot",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "snapshot 57beac0d0a5986bb0f798365f7face71b03fe8ae8f7b17303247d4caeb4902ab",
+    "107 inputs"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V02",
+   "title": "Authorized inventory",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "characters 33/33",
+    "world 28/28",
+    "sheets 33/33"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V03",
+   "title": "Schema and headings",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V04",
+   "title": "Placeholders and field names",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V05",
+   "title": "CSV integrity",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V06",
+   "title": "Export equality",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V07",
+   "title": "Sizes and platform limits",
+   "status": "pass",
+   "severity": "warn",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V08",
+   "title": "Alias ownership",
+   "status": "pass",
+   "severity": "warn",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V09",
+   "title": "Units and retrieval coverage",
+   "status": "pass",
+   "severity": "warn",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V10",
+   "title": "Dates, zones and status",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "reviewed in research/qa/audit-bridge-events.md"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V11",
+   "title": "Participants and directional facts",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "relationship web: 0 one-way ties (coverage, not errors; tools/web_check.py)",
+    "reviewed in research/qa/audit-bridge-ties-external.md, research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V12",
+   "title": "Evidence records",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "reviewed in research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V13",
+   "title": "Quotations and ASR",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "reviewed in research/qa/voice-delivery.md"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V14",
+   "title": "Scope screening",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "0 automated candidates for semantic review",
+    "reviewed in research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V15",
+   "title": "Card usability and fidelity",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "reviewed in research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-global.md"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V16",
+   "title": "Secrets and visibility",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "all Secrets empty"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V17",
+   "title": "Style handoff",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V18",
+   "title": "Performance freshness and settings",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V19",
+   "title": "Voice and pronunciation claims",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "reviewed in research/qa/voice-delivery.md"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V20",
+   "title": "Audio turn handoff",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "converter fixture and card-to-sheet palettes passed"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V21",
+   "title": "Findings and provenance",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "no open P0 in research/qa/resolutions.md; promotions are author decisions (research/qa/promotions.md)"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V22",
+   "title": "Package integrity",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "layout complete",
+    "shipped counts {'characters': 33, 'world': 28, 'sheets': 33}"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V23",
+   "title": "Changelog and supporting views",
+   "status": "pass",
+   "severity": "block",
+   "locator": null,
+   "evidence": [],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V24",
+   "title": "Runtime evidence",
+   "status": "warn",
+   "severity": "warn",
+   "locator": null,
+   "evidence": [
+    "required runtime evidence incomplete; do not label runtime-tested"
+   ],
+   "finding_ids": []
+  },
+  {
+   "check_id": "V25",
+   "title": "Final acceptance and publication",
+   "status": "not_applicable",
+   "severity": "block",
+   "locator": null,
+   "evidence": [
+    "candidate phase"
+   ],
+   "finding_ids": []
+  }
+ ]
+}

@@ -1,9 +1,9 @@
 # Audit packet: jp (incoming claims)
 
-Snapshot: git 4e81394.
+Snapshot: git 135bae1.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azukichi|Sui-chan|Azu-chan|TakoNeko|Okanyan|AZKichi|AS_tar|Suisei|FWMCAZ|Okayun|AzuAzu|Yo-san|Ayame|Okayu|AZAZ|Ojou|AZKi)(
+Matched names: rtual Diva AZKi|AZKi and FUWAMOCO|Hoshimachi Suisei|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Sui-chan|Azukichi|Azu-chan|TakoNeko|Okanyan|AZKichi|AS_tar|Suisei|FWMCAZ|Okayun|AzuAzu|Yo-san|Ayame|Okayu|AZAZ|AZKi|Ojou)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
@@ -102,11 +102,11 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Nerissa Ravencroft, Nakiri Ayame, Hoshimachi Suisei and Shishiro Botan: fellow holoGTA participants (2024).
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Suisei, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024).
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Nekomata Okayu: a 3D lie-detector challenge (2026); secondary references group them in "Dorobo Kensetsu."
-- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: AZKi: games and an ASMR "evaluation"
+- `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: AZKi: games in 2025; an animated short on La+'s channel uploaded in 2026 depicts her reaction to AZKi's ASMR.
 - `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2026-05-19 | A 3D lie-detector "challenge" to Nekomata Okayu | [LA4 F3i30BIJmtY] |
 - `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Nekomata Okayu | "Dorobo Kensetsu" (secondary) | A 3D lie-detector challenge (2026, archived metadata) | [LA2] [LA4] |
 - `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Nakiri Ayame, Hoshimachi Suisei, Shishiro Botan | — | Fellow holoGTA participants (2024-09; each archive establishes participation, not specific exchanges); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki (publisher roster, not Ayame; a joint broadcast is not established) | [LA4 swqXHi1Z4ew, QLHSm3rpG8k] [Sammy announcement] |
-- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | AZKi | — | Games and an ASMR "evaluation" (2025); AZKi danced to her songs | [LA4] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | AZKi | — | Games in 2025; an animated short uploaded to La+'s channel on 2026-03-31 depicts her reaction to AZKi's ASMR (original reaction date unverified); AZKi danced to her songs | [LA4] |
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: AZKi: a FUWAMOCO-themed GeoGuessr collaboration ("FWMCAZ"); secondary records also document a singing stream with Minato Aqua and the twins' guest appearance at her 2025 birthday live.
@@ -126,7 +126,7 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft; Nakiri Ayame: the 2023 Sports Festival white team.
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Hoshimachi Suisei: a #bibbidibachallenge short (2024).
 - `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2024-08-05 | 3D birthday live "Outside the Box"; guests Gura, IRyS, Bae, Nekomata Okayu, Inugami Korone, Momosuzu Nene, Hakui Koyori | [Observed M3 title, description] |
-- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP seniors | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP collaborators; Korone, Okayu and Nene are seniors, Koyori is a kouhai | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Hoshimachi Suisei | JP senior | A #bibbidibachallenge short on Suisei's channel (2024-06-18) | [Suisei file SU4 zSB9yejsmGQ] |
 
 ### from Nerissa Ravencroft
@@ -176,7 +176,7 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 ### from Takane Lui
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Nekomata Okayu: Harry Potter watch-alongs (2025); secondary references list both in "Dorobo Kensetsu."
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Nakiri Ayame: "Onikan"
-- `bible/characters/Takane-Lui.md › Behavioral Traits`: 5. Predicted game announcements before a 2026 Nintendo Direct; the first model renders her name for Nekomata Okayu as 「シャッチョ」 ("Shaccho"), unconfirmed by the second model, so it is not quoted. [ASR LU20, first model only] [Observed LU4 titles]
+- `bible/characters/Takane-Lui.md › Behavioral Traits`: 5. Predicted game announcements before a 2026 Nintendo Direct. The first-model transcript does not establish her form of address for Nekomata Okayu. [ASR LU20, first model only] [Observed LU4 titles]
 - `bible/characters/Takane-Lui.md › Background Timeline`: | 2025 | EP "Lieblings"; Code Geass ambassador (June, secondary); "Q&A With Bird Sisters" with Mumei (04-19); Harry Potter watch-alongs with Okayu; "FEAST" dance short with Bae (07-11) | [Observed LU2] [LU5] [LU4 Lj0MZFpHitQ, 5TUiccnytQA] |
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Nekomata Okayu | — | Harry Potter watch-alongs (2025); predictions before a 2026 Nintendo Direct; "Dorobo Kensetsu" (secondary); "Shaccho" is a first-model rendering only | [LU4] [ASR LU20] [LU2] |
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Nakiri Ayame | "Onikan" (archived titles) | Games and a sponsored collab billed おにかん (2025-08-09) | [LU4 YXaDmUXPSGo] |
@@ -214,7 +214,7 @@ Matched names: shimachi Suisei|Virtual Diva AZKi|AZKi and FUWAMOCO|Suisei and Ca
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).
 
 ### from FUWAMOCO
-- `bible/world/FUWAMOCO.md › Shared Relationships`: - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi); Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori, "FUWAMOKOYO"); Akai Haato, Tsunomaki Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
+- `bible/world/FUWAMOCO.md › Shared Relationships`: - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi); Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori); "FUWAMOKOYO" names Koyori and the twins on FUWAMOCO MORNING #90; Akai Haato, Tsunomaki Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
 - `bible/world/FUWAMOCO.md › History`: | 2024-08-10 PDT | 3D debut: a wrestling segment supervised by DDT Pro-Wrestling, Okayu and Korone cameos | "Lifetime Showtime" full version |
 
 ### from Fauna and Mumei Pairs

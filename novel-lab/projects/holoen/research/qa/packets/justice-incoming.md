@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git 4e81394.
+Snapshot: git 135bae1.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|FiddleFlame|holoJustice|TimeChaser|Gigi Murin|Bloodraven|Immerhater|Autofister|Erby Berby|Da Fister|Elizabeth|Gi Murin|Raviolin|Justice|Cecilia|HoloEU|G Pain|GeeGee|Lizzie|Raora|B.F.F|LYRA|CCGG|Gigi|Rara|Cece|Ceci|RPGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|Grem Reaper|holoJustice|TimeChaser|Immerhater|Gigi Murin|Bloodraven|Autofister|Erby Berby|Da Fister|Elizabeth|Gi Murin|Raviolin|Cecilia|Justice|HoloEU|G Pain|GeeGee|Lizzie|B.F.F|Raora|Rara|Ceci|LYRA|Gigi|CCGG|Cece|RPGG|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -78,7 +78,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" from her 2026 birthday show, with FUWAMOCO.
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2026-05-19 | An excerpt from Elizabeth's 2026 birthday show, uploaded 05-19, credits Iroha, Watame, Nene, Polka and FUWAMOCO on "CHA-LA HEAD-CHA-LA" (upload date, not necessarily the show date) | [IR5 xylll7Mp0jk] |
-- `bible/characters/Kazama-Iroha.md › Relationship Map`: | FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" for Elizabeth with Watame, Nene and Polka (2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show with Watame, Nene and Polka (excerpt uploaded 2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Elizabeth Rose Bloodflame | — | Credited on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show (excerpt uploaded 05-19) | [IR5 xylll7Mp0jk] |
 
 ### from Kikirara Vivi
@@ -301,7 +301,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/world/VTuber-Persona-and-Lore.md › [SW] Description`: Their lore (a reaper, an immortal phoenix, a priestess of the Ancient Ones, a shark from Atlantis, a time-traveling detective, the Warden of Time, a half-angel half-demon nephilim, the Demon of Sound, a druidic kirin, a forgetful owl who guards civilization, an archiver who broke out of a prison for forbidden things, a gem born from human emotion, twin demonic guard dogs, Justice's queen, gremlin, ancient automaton and big-cat artist sent to catch Advent) is a persona and a running joke, not a fact of the story world, and they know it.
 
 ### from holoX
-- `bible/world/holoX.md › With the English cast`: - **Others:** Lui's 2026 song "Soar" was danced by IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO (2026 shorts); Cecilia teased La+ as "onee-sama" (2026 short); Nerissa met La+ in holoGTA (2024). [S1]
+- `bible/world/holoX.md › With the English cast`: - **Others:** The channels of IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO posted shorts featuring Lui's "Soar" in 2026; these include animated/MMD uploads, and channel publication does not establish who performed the dance motion; Cecilia's channel posted a short titled "ONEE-SAMA!" about La+ (2026; archived title, not verified dialogue); Nerissa and La+ both participated in holoGTA (2024); a direct exchange is not established. [S1]
 
 ### from hololive -Advent-
 - `bible/world/hololive--Advent.md › [SW] Description`: (2026), and 2026 Serendipity pairs Shiori–Calli, Bijou–Kiara, Nerissa–Elizabeth and FUWAMOCO–Raora.

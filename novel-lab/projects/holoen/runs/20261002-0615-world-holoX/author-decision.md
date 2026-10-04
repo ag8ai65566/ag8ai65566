@@ -4,3 +4,4 @@
 - 2026-10-04 05:33 作者裁決收錄 final.md（sha256 1ac995a7de11）：Author decision (2026-10-03): bridge-events audit merged by Claude
 - 2026-10-04 10:15 作者裁決收錄 final.md（sha256 9981df72d23d）：Author order 2026-10-03: Claude merges the GPT QA audits; bridge-ties-external findings applied
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 37017b831e12）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 159764504cab）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied

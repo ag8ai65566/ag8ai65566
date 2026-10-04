@@ -1,9 +1,9 @@
 # Audit packet: holox (incoming claims)
 
-Snapshot: git 4e81394.
+Snapshot: git 135bae1.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Hakui Koyori|Kazama Iroha|Gozaru-chan|Takane Lui|Iroha-dono|ラプラス・ダークネス|秘密結社holoX|Kura-tan|Sakamata|Koyorin|Lui-nee|Lui Lui|Koyori|Gozaru|Laplus|沙花叉クロヱ|Iroha|Kuroe|Chloe|holoX|風真いろは|博衣こより|鷹嶺ルイ|ルイルイ|Koyo|La+|Lui)(
+Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Hakui Koyori|Kazama Iroha|Gozaru-chan|Takane Lui|Iroha-dono|ラプラス・ダークネス|秘密結社holoX|Sakamata|Kura-tan|Koyorin|Lui Lui|Lui-nee|沙花叉クロヱ|Koyori|Laplus|Gozaru|Chloe|Iroha|Kuroe|風真いろは|holoX|博衣こより|鷹嶺ルイ|ルイルイ|Koyo|La+|Lui)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
@@ -104,8 +104,8 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft; Nakiri Ayame: the 2023 Sports Festival white team.
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Sakamata Chloe: Mumei's EN-server Minecraft tour with Lui and Bae (2022).
 - `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2024-08-05 | 3D birthday live "Outside the Box"; guests Gura, IRyS, Bae, Nekomata Okayu, Inugami Korone, Momosuzu Nene, Hakui Koyori | [Observed M3 title, description] |
-- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP seniors | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
-- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP seniors | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP collaborators; Towa and Haato are seniors, Lui is a kouhai | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP collaborators; Korone, Okayu and Nene are seniors, Koyori is a kouhai | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Sakamata Chloe, Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Chloe and Lui on Mumei's EN-server Minecraft tour with Bae (2022-02-12); Marine's horror game with Bae (2023-08-23); Noel and Vivi in Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 50tBPC5c2zM, RY1GkF4jMls, OMDzBQohAf8] |
 
 ### from Nekomata Okayu
@@ -120,8 +120,8 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 
 ### from Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: La+ Darknesss: both in holoGTA (2024); a dance short to her "Onee-sama♡Love Call"
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: (2026); Takane Lui: a "Soar" dance short (2026).
-- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | Dance shorts to Lui's "Soar" (2026) and La+'s "Onee-sama♡Love Call" (2026); both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: (2026); Takane Lui: an animated "Soar" short on her channel (2026).
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | An animated "Soar" short on Nerissa's channel (2026), plus a short to La+'s "Onee-sama♡Love Call" (2026); Nerissa and La+ both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
 
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine and Sakamata Chloe: UMISEA.
@@ -200,7 +200,7 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Nanashi Mumei** (graduated): HOLOTORI with Kiara, Subaru, Reine and Lui ("【MUMEI + LUI】Q&A With Bird Sisters !!!," 2025-04-19, fEO6kSCseE0); drawing collabs with Airani Iofi ("Doodles with IOFI," 2022-04-14, 2dWx7xg48xc; "SWIMSUITS!! with IOFI!," 2023-01-30, XCXF08GMUHY); a duet cover of "とんとんまーえ！" with Inugami Korone (2025-04-23, P6GLC_HnCUU), and Okayu, Korone, Nene and Koyori as guests at her 3D live "Outside the Box" (2024-08-05, gl7CwlEg2ZI); Minecraft "Peace & Love with HAACHAMA" (2025); Tokoyami Towa calls her "Mumi-chan." [Observed S1; Mumei file M2]
 
 ### from FUWAMOCO
-- `bible/world/FUWAMOCO.md › Shared Relationships`: - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi); Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori, "FUWAMOKOYO"); Akai Haato, Tsunomaki Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
+- `bible/world/FUWAMOCO.md › Shared Relationships`: - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi); Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori); "FUWAMOKOYO" names Koyori and the twins on FUWAMOCO MORNING #90; Akai Haato, Tsunomaki Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
 
 ### from Fauna and Mumei Pairs
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Kiara:** Mumei and Kiara are birds in HOLOTORI (with Subaru, Reine and Lui): "BUILDER BIRBS" (2021), "Kiwawa & Mumeiwi" (2022), a DECO*27 song together on the 4th fes. holo*27 stage (2023), "two smol beans" (2025-03-26) and Kiara's HOLOTALK 33rd guest (2025-04-22); Kiara calls her "Moomsies." Fauna and Kiara: "KIWAWA vs FAWNA" (2022), Pokémon Unite practice (2023), and Fauna was HOLOTALK's 32nd guest (2024-12-27), a week before she graduated. [Observed S1; S3 infobox; S4]

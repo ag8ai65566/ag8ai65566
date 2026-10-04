@@ -55,8 +55,7 @@ innuendo and teasing. [Official KO1] [Observed KO2 §Personality, secondary]
 1. A researcher by bit: calls her viewers her lab "Assistants," runs "experiments" (stream tag #こより実験中, "Koyori
    experimenting") and treats collabs as tests of how people react. [Official KO1]
 2. Big reactions: loud screams in horror and sudden scares, which she knows fans love. [Official KO1]
-3. A practiced presenter: "AsaKoyo," her hololive news show at 7:00 JST on Tuesdays and Fridays (episode 290 on
-   2026-07-20, billed "ten more to 300"), runs on corners: news, a "hololive quote of the month" and viewer questions, introduced with a
+3. A practiced presenter: "AsaKoyo," her hololive news show (episode 300 aired on 2026-09-29), runs on corners: news, a "hololive quote of the month" and viewer questions, introduced with a
    brisk 「それでは続いてはこちら」 ("and next up," shared ASR span); she calls herself 「こよりちゃんでございます」
    ("it's Koyori-chan") and invites viewers 「ぜひぜひ見てみてください」 ("please do take a look") (shared spans).
    [Official KO1] [Observed KO4 ogC6DbQJpJQ title] [ASR KO20]
@@ -133,7 +132,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2026-04-29 | holoX's first in-person unit concert, "First MISSION" | [Official KO6] |
 | 2026-08-22 | Announced hololive Koshien 2026: Koyori is organizer and one of six team managers (others include Houshou Marine and Shirogane Noel); the main competition is scheduled for 10-17/18 (after the baseline: an announcement only). | [Member announcement NEW-R6-017] |
 | 2026-09-12 | Second album "Chemical Spark" and first solo concert "Dream Spark" (2026-12-22) announced | [Observed KO2] |
-| 2026-09-20 | A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours | [KO3] |
+| 2026-09 (exact day and time zone unverified) | A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours | [KO3] |
 
 ## Relationship Map
 Public exchanges only. Group ties are on the world card "holoX."
@@ -177,13 +176,12 @@ Public exchanges only. Group ties are on the world card "holoX."
 
 ## Hard Facts (continuity)
 - Debut 2021-11-28; Secret Society holoX (head of R&D); birthday 15 March; 153 cm; illustrator Momoco; fans
-  Koyori's Assistants; robot coyote Kokoro; stream tag #こより実験中; fan-art tag #こよりすけっち; AsaKoyo on
-  Tuesdays and Fridays at 7:00 JST.
+  Koyori's Assistants; robot coyote Kokoro; stream tag #こより実験中; fan-art tag #こよりすけっち; AsaKoyo episode 300 aired on Tuesday 2026-09-29.
 
 ## Sources (checked 2026-10-02)
 - KO1 Official profile: https://hololive.hololivepro.com/en/talents/hakui-koyori/
 - KO2 Hakui Koyori wiki page (secondary), by section, read via the fandom API: https://virtualyoutuber.fandom.com/wiki/Hakui_Koyori
-- KO3 Her post on the 10,000-hour milestone (2026-09-21, via KO2): https://x.com/hakuikoyori/status/2101974268091527606
+- KO3 Her post on the 10,000-hour milestone (September 2026; exact day and time zone unverified; via KO2): https://x.com/hakuikoyori/status/2101974268091527606
 - KO4 Stream archive metadata, her channel (archive.ragtag.moe): ogC6DbQJpJQ (AsaKoyo #290, 2026-07-20),
   PN2i1U-MDIE (2026), lz37xE9ED1I (with La+), mxIoysy6gJ4 and nCPHzr_iF7s (with Chloe), lvgC3pW-LVA and
   oxWPvsUb_3Y (KoZMy), 1HQL3WJPBHA (3D karaoke with AZKi), NUn4nGzg5tQ and 3SRNeHe4F5M (with Marine),
@@ -276,6 +274,7 @@ La+ Darknesss: holoX's founder; a sponsored "#stons" collab (2024) and a cover w
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-011, 016 to 018 (La+ duet, AsaKoyo segments, hololive Koshien organizer, First MISSION prop), FIX-R6-005 (AsaKoyo stated by its 2026-09-29 episode 300 instead of a stale twice-weekly schedule).
 - **2026-10-04, dialogue language (author decision, applied by Claude):** her audio dialogue is Japanese; Audio Tags states it and gives the words to keep in Japanese script; the performance sheet's lines are Japanese script with ROMAJI lines.
+- **2026-10-04, cross-card QA audit (holox, GPT xhigh), merged by Claude:** applied holox:FIX-R6-005, holox:HOLOX-DATE-003 (exact replacements; dispositions in research/qa/audit-holox.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Resolved: the Famitsu column is 「よちよちゲーマー博衣こよりのゲームラボ」 (Famitsu announcement, KO7).

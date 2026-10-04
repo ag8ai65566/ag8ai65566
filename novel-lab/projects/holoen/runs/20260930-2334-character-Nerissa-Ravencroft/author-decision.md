@@ -27,3 +27,4 @@
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 b14087c5b1ab）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 48e0462ed9bb）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 b7ef684aff14）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 44bd3ac66fd2）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied

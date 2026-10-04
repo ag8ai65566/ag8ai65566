@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git 4e81394. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 135bae1. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Amane Kanata
@@ -38,13 +38,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Omaru Polka | Her oshi | Phasmophobia with Fubuki and Polka (2023); Content Warning with Haachama and Polka (2024); a guest at their birthday concert (2025) | [Observed MC2; MC3] |
 
 ### Akai Haato × Nanashi Mumei
-- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP seniors | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP collaborators; Towa and Haato are seniors, Lui is a kouhai | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
 
 ### Akai Haato × Raora Panthera
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Akai Haato (JP): Clubhouse Games; with Vestia Zeta (ID), a Super Mario Party off-collab.
 
 ### Akai Haato × Takane Lui
-- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP seniors | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP collaborators; Towa and Haato are seniors, Lui is a kouhai | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
 
 ### Akai Haato × Watson Amelia
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Akai Haato (Haachama) | JP senior | Clubhouse 51 games ("AMECHAMA") | [Observed A21] |
@@ -471,7 +471,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Moona Hoshinova × Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Moona Hoshinova: she sings on Moona's "100%"
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Moona Hoshinova: sings on Moona's "100%"
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Raora Panthera: Clubhouse Games (2024); with Moona, Raft and Monster Hunter Wilds as "V3LVET"
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Nerissa Ravencroft and Moona Hoshinova ("V3LVET"): Raft and Monster Hunter Wilds; Clubhouse Games with Nerissa.
 

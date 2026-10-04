@@ -18,7 +18,7 @@ are not quoted or summarized here.
 | Window | Stream | Segment | Speech (min) | Characters | Characters/min of speech | F0 median | F0 p10–p90 |
 |---|---|---|---|---|---|---|---|
 | mother20_2026 | [【 MOTHER2 】完全初見！砂漠を進んでフォーサイドへ・・・！【鷹嶺ルイ/ホロライブ】](https://youtu.be/gN91npViT-k) | [0:10:00–0:30:00](https://youtu.be/gN91npViT-k?t=600) | 9.8 | 1657 | 168.6 | 213 Hz | 132–502 Hz |
-| hirukatsu25_2026 | [【 昼活 】起きました。お昼です。明日お誕生日です✨【鷹嶺ルイ/ホロライブ】](https://youtu.be/wOHSGHgT5Aw) | [0:05:00–0:30:00](https://youtu.be/wOHSGHgT5Aw?t=300) | 13.7 | 3232 | 236.7 | 190 Hz | 137–293 Hz |
+| hirukatsu25_2026 | [2026 public chat — Takane Lui](https://youtu.be/wOHSGHgT5Aw) | [0:05:00–0:30:00](https://youtu.be/wOHSGHgT5Aw?t=300) | 13.7 | 3232 | 236.7 | 190 Hz | 137–293 Hz |
 
 "Characters/min of speech" = transcribed kana and kanji (punctuation dropped) ÷ minutes inside whisper's speech segments; it is a rough pace index for comparing windows, not a mora count.
 
@@ -41,7 +41,7 @@ are not quoted or summarized here.
 | Claim in the file | Result (in the machine transcript) | Evidence (ASR, archived audio) |
 |---|---|---|
 | Calm, reassuring with chat | **Observed**: 「まあ誰にだってトラブルやミスはあるからね」 ("well, everyone has trouble and mistakes"). | [0:05:39](https://youtu.be/wOHSGHgT5Aw?t=339) |
-| Calls Nekomata Okayu "Shaccho"; predicted game announcements together before a Nintendo Direct | **Observed** (the model writes 「シャッチョ」). | [0:09:15](https://youtu.be/wOHSGHgT5Aw?t=555) |
+| Possible address term in the Nintendo Direct discussion | **Unverified**: the first-model rendering does not establish who addresses whom; no approved two-model quotation span is available for this term. | [0:09:15](https://youtu.be/wOHSGHgT5Aw?t=555) |
 | Answers chat one comment at a time | **Observed** in the 2026 midday chat. | [0:10:27](https://youtu.be/wOHSGHgT5Aw?t=627) |
 | Saturday RPG streams (MOTHER 2, 2026) | **Observed**: a first playthrough, reacting to each new area. | [0:10:26](https://youtu.be/gN91npViT-k?t=626) |
 | Easy laughter, rare profanity | **Undetermined**: one automatic swear-pattern match occurred in the game window and its meaning was not validated; overall profanity habits remain undetermined; laughter is not reliably transcribed (run E review, 2026-10-03). | — |

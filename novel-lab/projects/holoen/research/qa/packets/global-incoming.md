@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 4e81394.
+Snapshot: git 135bae1.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: loEN's later generations|hololive History 2023-2026|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|the merger|EN concert|world tour|SUPER EXPO|aftertalk|PavoNashi|Holodeath|HOLOTORI|soranii|MoRikka|K.I.R.A|HoloJEI|3D live|IRySora|KoMeHa|V3LVET|OKFAIR|UMISEA|LYRA)(
+Matched names: loEN's later generations|hololive History 2023-2026|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|the merger|EN concert|world tour|SUPER EXPO|aftertalk|Holodeath|PavoNashi|HOLOTORI|K.I.R.A|MoRikka|IRySora|soranii|HoloJEI|3D live|UMISEA|V3LVET|OKFAIR|KoMeHa|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -426,7 +426,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|Concerts and 
 
 ### from holoX
 - `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
-- `bible/world/holoX.md › With the English cast`: - **Takanashi Kiara:** welcomed Lui into the bird unit HOLOTORI on her debut day; HOLOTORI is Kiara, Lui, Mumei, Subaru and Reine; a Wario off-collab with Lui (2023-01-15); La+ and Kiara's Mythmash single "Glow in the Dark" (2025-07-27) and their "FAKE HEART" cover (2025-04-08); a nostalgic-games handcam off-collab with La+ (2023-06-30); "WILDCARD," a cover with Chloe (2025-01-25); a #TASTYchallenge dance with Iroha (2025). [S1] [S3]
+- `bible/world/holoX.md › With the English cast`: - **Takanashi Kiara:** belonged to HOLOTORI with Lui, Mumei, Subaru and Reine in the official 2023 lineup; a Wario off-collab with Lui (2023-01-15); La+ and Kiara's Mythmash single "Glow in the
 - `bible/world/holoX.md › With the English cast`: - **Nanashi Mumei (graduated):** HOLOTORI with Lui; "Q&A With Bird Sisters" (2025-04-19); an EN-server Minecraft tour with Lui, Chloe and Bae (2022). [S1]
 - `bible/world/holoX.md › With the English cast`: - **Watson Amelia (affiliate):** a VALORANT collab with Iroha and Kobo Kanaeru (2022-06-04; secondary references call the trio "KoMeHa"); Apex with Lui and Iofi (2022-01-19). [S1 tGVhLibbYL0, Mory0I9vXtI] [S3]
 - `bible/world/holoX.md › With the English cast`: - **Ninomae Ina'nis, Gawr Gura (graduated):** UMISEA with Chloe, Minato Aqua and Houshou Marine (official 2023 roster). [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/]

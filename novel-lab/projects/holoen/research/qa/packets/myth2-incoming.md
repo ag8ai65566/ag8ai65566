@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 4e81394.
+Snapshot: git 135bae1.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Gura and Calli|Calli and Gura|Amelia Watson|Watson Amelia|The Fish Tank|Ame and Gura|Gura and Ame|Gremlin Ame|Goobidiba|Bone Bros|Gawr Gura|ワトソン・アメリア|Same-chan|Samegaki|holoMyth|HoloMyth|amesame|AmeSame|Amechan|がうる・ぐら|Amelia|Gooba|Myth|Gura|Goob|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|City Pop Shark|Calli and Gura|The Fish Tank|Watson Amelia|Amelia Watson|Gura and Ame|Ame and Gura|Gremlin Ame|Same-chan|ワトソン・アメリア|Bone Bros|Gawr Gura|Goobidiba|Samegaki|holoMyth|HoloMyth|AmeSame|Amechan|amesame|Amelia|がうる・ぐら|Gooba|Gura|Goob|Myth|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -118,7 +118,7 @@ Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Gu
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Mori Calliope | Myth senior | "ANATOMY REVIEW" streams (with Calli and Sana, 2022; solo, 2025) | [Observed M3] |
 
 ### from Nerissa Ravencroft
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): a "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gawr Gura (graduated): "Scarlet Wand" guildmate in ENigmatic Recollection, with Shiori.
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Nakiri Ayame, Nanashi Mumei and Watson Amelia: the 2023 Sports Festival white team.
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: - Measured (N20; a 2026 solo chat): median pitch about 214 Hz (p10–p90 172–297 Hz), a mid-range speaking voice like IRyS's (214–226 Hz), lower than Kiara or Gura; about 159 words per minute of speech. Group-stream windows read higher (284–289 Hz) because several voices share them. Sample results only.
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Watson Amelia | Senior (affiliate) | Portal 2 together, "TAKING ON PUZZLES WITH @WatsonAmelia" (2024) | [Observed N3 title] |

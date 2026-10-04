@@ -144,7 +144,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Takanashi Kiara | — | A credited guest at Kiara's 4th-anniversary live (2024) and birthday live (2025); #TASTYchallenge shorts (2025-07-11 with Nene in the background; 07-16 with Nene) | [IR5 0LoG81pLS8c, f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0] |
 | Watson Amelia (affiliate) | "KoMeHa" with Kobo Kanaeru (secondary name) | A VALORANT collab (2022-06-04) | [IR5 tGVhLibbYL0] [IR2] |
 | Mori Calliope, Gawr Gura (graduated) | — | HOLO ENGLISH LESSON #02 (2022) | [IR5] |
-| FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" for Elizabeth with Watame, Nene and Polka (2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
+| FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show with Watame, Nene and Polka (excerpt uploaded 2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
 | Elizabeth Rose Bloodflame | — | Credited on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show (excerpt uploaded 05-19) | [IR5 xylll7Mp0jk] |
 | Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 
@@ -259,6 +259,7 @@ AZKi: "AzuIro," her steady duo (covers, "AZUIRO BESTIE DAYS" in 2025, Cuphead an
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-008, 021, 022; FIX-R6-007 (origin and travel lore removed from Personality, keeping the samurai role and Pokobee, as with Lamy and Okayu). FIX-R6-008 was already resolved by the run F merge.
 - **2026-10-04, task-09 voice audit (20261003-2322-check-QA-voice-v4, GPT xhigh), merged by Claude:** applied VOICE-V4-012 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-04, dialogue language (author decision, applied by Claude):** her audio dialogue is Japanese; Audio Tags states it and gives the words to keep in Japanese script; the performance sheet's lines are Japanese script with ROMAJI lines.
+- **2026-10-04, cross-card QA audit (holox, GPT xhigh), merged by Claude:** applied holox:HOLOX-DATE-002 (exact replacements; dispositions in research/qa/audit-holox.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. "Lui-nee" stays secondary (wiki); no directed address was found in the sampled audio.

@@ -3,3 +3,4 @@
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 bba6c81607a0）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 85fd36cc6c01）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 15:22 作者裁決收錄 final.md（sha256 4a565ab5f170）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 90b182eb7d79）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied

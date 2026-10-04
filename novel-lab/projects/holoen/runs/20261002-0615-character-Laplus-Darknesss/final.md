@@ -128,7 +128,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2025-04-08 | "FAKE HEART," a cover with Kiara | [LA5 yspJ9xmGRfw] |
 | 2025-07-27/28 | "Glow in the Dark," a Mythmash single with Kiara (official digital release 2025-07-28); a joint stream | [Official music 600] [LA5 v5RKZXNuVyw] [LA4] |
 | 2025-12 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LA2] |
-| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-003] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official Secret ORDER catalog](https://hololive.hololivepro.com/en/music/025/) |
 | 2026-04-29 | holoX's first in-person unit concert, "First MISSION" (La+, Lui, Koyori, Iroha) | [Official LA6] |
 | 2026-05-03 | Tochigi Future Ambassador | [Official LA3] |
 | 2026-05-19 | A 3D lie-detector "challenge" to Nekomata Okayu | [LA4 F3i30BIJmtY] |
@@ -140,7 +140,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Takane Lui | holoX executive officer | Reins her in; a 2026 two-person talk Featured on Lui's original "Anastasis Girl feat. La+ Darknesss" (2025-11-28); they performed it together at First MISSION (2026-04-29). | [LA2] [LA4] [Official NEW-R6-010] |
-| Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) Their duet "SUKIDEKA!!~BIGLOVE????~" (2025-11-21). | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
+| Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) La+ and Koyori released the duet "SUKIDEKA!!~BIGLOVE????~" on 2025-11-21. | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
 | Sakamata Chloe (affiliate) | holoX intern | Covers together: 「デイバイデイズ」 (2022-09-20) and 「ぼうけんのしょがきえました！」 (2025-01-15) (archived titles) | [LA4 wLQQD3Ok0Uk, acYx6NnoaAQ] |
 | Takanashi Kiara | — | "Glow in the Dark" and "FAKE HEART" (2025); an off-collab (2023) | [LA5] |
 | Mori Calliope | — | HOLO ENGLISH LESSON #02 (2022) | [LA5] |
@@ -149,7 +149,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Nerissa Ravencroft | — | holoGTA (2024) | [LA4] |
 | Nekomata Okayu | "Dorobo Kensetsu" (secondary) | A 3D lie-detector challenge (2026, archived metadata) | [LA2] [LA4] |
 | Nakiri Ayame, Hoshimachi Suisei, Shishiro Botan | — | Fellow holoGTA participants (2024-09; each archive establishes participation, not specific exchanges); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki (publisher roster, not Ayame; a joint broadcast is not established) | [LA4 swqXHi1Z4ew, QLHSm3rpG8k] [Sammy announcement] |
-| AZKi | — | Games and an ASMR "evaluation" (2025); AZKi danced to her songs | [LA4] |
+| AZKi | — | Games in 2025; an animated short uploaded to La+'s channel on 2026-03-31 depicts her reaction to AZKi's ASMR (original reaction date unverified); AZKi danced to her songs | [LA4] |
 | Houshou Marine | "#マリラプ" (archived title) | A sponsored collab (2025); a cover with Marine and Koyori (2025) | [Marine file] [KO4] |
 | Yukihana Lamy, Shishiro Botan | NePoX | NePoLaBo × holoX events (2026) | [Lamy file] [Botan file] |
 
@@ -235,7 +235,7 @@ Dialogue language for audio scripts: Japanese (author decision 2026-10-04): writ
 In her lore, La+ wants to conquer the world with her secret society. Her public work as a streamer and artist centres on games and music: her first album, "Project Y.M.A. (Yes My Artist)," was announced in 2026.
 
 ## [SW] Relationships
-Takane Lui: holoX's executive officer, who actually runs things and reins her in. Hakui Koyori and Kazama Iroha: holoX; secondary references call her pairing with Iroha "Irohasu." Sakamata Chloe (affiliate since 2025): the former intern; covers together (2022, 2025). Takanashi Kiara: "Glow in the Dark" (Mythmash) and "FAKE HEART" (2025), and a nostalgic-games off-collab (2023). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: archived shorts of them performing to "Onee-sama♡Love Call" (2026). Cecilia Immergreen: an "ONEE-SAMA!" short about her (2026). Nerissa Ravencroft, Nakiri Ayame, Hoshimachi Suisei and Shishiro Botan: fellow holoGTA participants (2024). Suisei, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024). Nekomata Okayu: a 3D lie-detector challenge (2026); secondary references group them in "Dorobo Kensetsu." AZKi: games and an ASMR "evaluation" (2025). Houshou Marine: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Yukihana Lamy and Shishiro Botan: NePoX (2026).
+Takane Lui: holoX's executive officer, who actually runs things and reins her in. Hakui Koyori and Kazama Iroha: holoX; secondary references call her pairing with Iroha "Irohasu." Sakamata Chloe (affiliate since 2025): the former intern; covers together (2022, 2025). Takanashi Kiara: "Glow in the Dark" (Mythmash) and "FAKE HEART" (2025), and a nostalgic-games off-collab (2023). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: archived shorts of them performing to "Onee-sama♡Love Call" (2026). Cecilia Immergreen: an "ONEE-SAMA!" short about her (2026). Nerissa Ravencroft, Nakiri Ayame, Hoshimachi Suisei and Shishiro Botan: fellow holoGTA participants (2024). Suisei, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024). Nekomata Okayu: a 3D lie-detector challenge (2026); secondary references group them in "Dorobo Kensetsu." AZKi: games in 2025; an animated short on La+'s channel uploaded in 2026 depicts her reaction to AZKi's ASMR. Houshou Marine: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Yukihana Lamy and Shishiro Botan: NePoX (2026).
 
 ## [SW] Secrets
 (none)
@@ -265,6 +265,7 @@ Takane Lui: holoX's executive officer, who actually runs things and reins her in
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-010 to 012 (duets with Lui and Koyori; First MISSION's staged recruitment), FIX-R6-003 ("Secret ORDER" release dated 2026-04-08, separate from the anniversary), Project Y.M.A. kept as a preorder at the baseline. FIX-R6-001/002 were already resolved by the run E merge.
 - **2026-10-04, task-09 voice audit (20261003-2322-check-QA-voice-v4, GPT xhigh), merged by Claude:** applied VOICE-V4-002 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-04, dialogue language (author decision, applied by Claude):** her audio dialogue is Japanese; Audio Tags states it and gives the words to keep in Japanese script; the performance sheet's lines are Japanese script with ROMAJI lines.
+- **2026-10-04, cross-card QA audit (holox, GPT xhigh), merged by Claude:** applied holox:HOLOX-COVERAGE-001, holox:HOLOX-CREDIT-001, holox:HOLOX-DATE-001 (exact replacements; dispositions in research/qa/audit-holox.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Resolved: the crow stays unnamed (no name in the sources; none invented).

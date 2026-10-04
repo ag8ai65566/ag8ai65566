@@ -1,10 +1,10 @@
 # Audit packet: holox
 
-Snapshot: git 4e81394. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 135bae1. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 27c95d61ba9b; `bible/characters/Takane-Lui.md` e8178610dd84; `bible/characters/Hakui-Koyori.md` 5b8d8d35cd19; `bible/characters/Sakamata-Chloe.md` a9d002fd4938; `bible/characters/Kazama-Iroha.md` 4a565ab5f170; `bible/world/holoX.md` 37017b831e12
+Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 2763879d7ad5; `bible/characters/Takane-Lui.md` 75381ba17bef; `bible/characters/Hakui-Koyori.md` e7570278bf33; `bible/characters/Sakamata-Chloe.md` a9d002fd4938; `bible/characters/Kazama-Iroha.md` 90b182eb7d79; `bible/world/holoX.md` 159764504cab
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -12,7 +12,7 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 27c95d61ba9b; `bibl
 **[SW] Groups:** hololive, Secret Society holoX, holoX, NePoX
 **[SW] Other Names:** La+, Laplus, YMD, ラプラス・ダークネス
 **[SW] Background:** La+ is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-26 as the first member of Secret Society holoX, hololive's sixth Japanese generation, whose executive officer Takane Lui does the actual running. Her songs include "drop candy" (2024) and "Onee-sama♡Love Call" (released 2026-05-26). She performed at holoX's first in-person unit concert, "First MISSION" (2026-04-29), and Tochigi Prefecture appointed her a Tochigi Future Ambassador (2026-05-03). With the English cast, archived metadata records the Mythmash single "Glow in the Dark" (released 2025-07-28) and the cover "FAKE HEART" (2025) with Takanashi Kiara, a nostalgic-games off-collab on Kiara's channel (2023), and Mori Calliope's English lesson #02 with Gawr Gura and Kazama Iroha (2022).
-**[SW] Relationships:** Takane Lui: holoX's executive officer, who actually runs things and reins her in. Hakui Koyori and Kazama Iroha: holoX; secondary references call her pairing with Iroha "Irohasu." Sakamata Chloe (affiliate since 2025): the former intern; covers together (2022, 2025). Takanashi Kiara: "Glow in the Dark" (Mythmash) and "FAKE HEART" (2025), and a nostalgic-games off-collab (2023). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: archived shorts of them performing to "Onee-sama♡Love Call" (2026). Cecilia Immergreen: an "ONEE-SAMA!" short about her (2026). Nerissa Ravencroft, Nakiri Ayame, Hoshimachi Suisei and Shishiro Botan: fellow holoGTA participants (2024). Suisei, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024). Nekomata Okayu: a 3D lie-detector challenge (2026); secondary references group them in "Dorobo Kensetsu." AZKi: games and an ASMR "evaluation" (2025). Houshou Marine: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Yukihana Lamy and Shishiro Botan: NePoX (2026).
+**[SW] Relationships:** Takane Lui: holoX's executive officer, who actually runs things and reins her in. Hakui Koyori and Kazama Iroha: holoX; secondary references call her pairing with Iroha "Irohasu." Sakamata Chloe (affiliate since 2025): the former intern; covers together (2022, 2025). Takanashi Kiara: "Glow in the Dark" (Mythmash) and "FAKE HEART" (2025), and a nostalgic-games off-collab (2023). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: archived shorts of them performing to "Onee-sama♡Love Call" (2026). Cecilia Immergreen: an "ONEE-SAMA!" short about her (2026). Nerissa Ravencroft, Nakiri Ayame, Hoshimachi Suisei and Shishiro Botan: fellow holoGTA participants (2024). Suisei, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024). Nekomata Okayu: a 3D lie-detector challenge (2026); secondary references group them in "Dorobo Kensetsu." AZKi: games in 2025; an animated short on La+'s channel uploaded in 2026 depicts her reaction to AZKi's ASMR. Houshou Marine: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Yukihana Lamy and Shishiro Botan: NePoX (2026).
 **Dossier · Background Timeline:**
 | Date | Event | Relevance |
 |---|---|---|
@@ -24,7 +24,7 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 27c95d61ba9b; `bibl
 | 2025-04-08 | "FAKE HEART," a cover with Kiara | [LA5 yspJ9xmGRfw] |
 | 2025-07-27/28 | "Glow in the Dark," a Mythmash single with Kiara (official digital release 2025-07-28); a joint stream | [Official music 600] [LA5 v5RKZXNuVyw] [LA4] |
 | 2025-12 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LA2] |
-| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-003] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official Secret ORDER catalog](https://hololive.hololivepro.com/en/music/025/) |
 | 2026-04-29 | holoX's first in-person unit concert, "First MISSION" (La+, Lui, Koyori, Iroha) | [Official LA6] |
 | 2026-05-03 | Tochigi Future Ambassador | [Official LA3] |
 | 2026-05-19 | A 3D lie-detector "challenge" to Nekomata Okayu | [LA4 F3i30BIJmtY] |
@@ -49,7 +49,7 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 27c95d61ba9b; `bibl
 | 2024 | First album "Liberty" (official digital release 06-12); 1 million subscribers (11-16, secondary) | [Official music 434] [Observed LU2] |
 | 2025 | EP "Lieblings"; Code Geass ambassador (June, secondary); "Q&A With Bird Sisters" with Mumei (04-19); Harry Potter watch-alongs with Okayu; "FEAST" dance short with Bae (07-11) | [Observed LU2] [LU5] [LU4 Lj0MZFpHitQ, 5TUiccnytQA] |
 | 2025-12-01 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LU2] |
-| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-004] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official Secret ORDER catalog](https://hololive.hololivepro.com/en/music/025/) |
 | 2026-04-29 | holoX's first in-person unit concert "First MISSION"; COVER's interview after it describes the concert as a turning point for the four-member group and its audience | [Official LU6] |
 | 2026-06-11 | EP "The LEGENDARY" with "Soar" (official digital release of "Soar" 06-12); 1st live "REBELLION" (2026-12-16) and a BAYFM78 radio programme (from 07-03) announced; EN members' channels posted animated "Soar" shorts crediting external motion creators | [Official LU7] [Official music 760] [LU4] [LU5] |
 | 2026-06-11 | COVER announces a regular BAYFM78 radio programme for her (first broadcast scheduled for 2026-07-03); orders open for the four-track EP "The LEGENDARY," including "Soar"; her first live concert "REBELLION" announced for 2026-12-16 at Kanadevia Hall (after the baseline: an announcement only). | [Official NEW-R6-013/014] |
@@ -78,11 +78,10 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 27c95d61ba9b; `bibl
 | 2026-04-29 | holoX's first in-person unit concert, "First MISSION" | [Official KO6] |
 | 2026-08-22 | Announced hololive Koshien 2026: Koyori is organizer and one of six team managers (others include Houshou Marine and Shirogane Noel); the main competition is scheduled for 10-17/18 (after the baseline: an announcement only). | [Member announcement NEW-R6-017] |
 | 2026-09-12 | Second album "Chemical Spark" and first solo concert "Dream Spark" (2026-12-22) announced | [Observed KO2] |
-| 2026-09-20 | A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours | [KO3] |
+| 2026-09 (exact day and time zone unverified) | A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours | [KO3] |
 **Dossier · Hard Facts (continuity):**
 - Debut 2021-11-28; Secret Society holoX (head of R&D); birthday 15 March; 153 cm; illustrator Momoco; fans
-  Koyori's Assistants; robot coyote Kokoro; stream tag #こより実験中; fan-art tag #こよりすけっち; AsaKoyo on
-  Tuesdays and Fridays at 7:00 JST.
+  Koyori's Assistants; robot coyote Kokoro; stream tag #こより実験中; fan-art tag #こよりすけっち; AsaKoyo episode 300 aired on Tuesday 2026-09-29.
 
 ### Sakamata Chloe — `bible/characters/Sakamata-Chloe.md`
 **[SW] Groups:** hololive, Secret Society holoX (until 2025), holoX, KoyoChlo, Kanaken, holoWitches, UMISEA
@@ -143,7 +142,7 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 27c95d61ba9b; `bibl
 | 2025-07-27 | "Glow in the Dark" video premiere (Mythmash; inherited date, zone unspecified) | La+, Kiara; Kiara Relationship Map and archive v5RKZXNuVyw |
 | 2025-07-28 (digital release; zone unspecified) | "Glow in the Dark" digital release | La+, Kiara; official catalog 600, checked 2026-10-04 |
 | 2025-12-01 | 4th anniversary: "Gyouan Xdeath," concert announced | four members |
-| 2026-04-08 | Album "Secret ORDER" released | [Official, R6] |
+| 2026-04-08 | Album "Secret ORDER" released | [Official Secret ORDER catalog](https://hololive.hololivepro.com/en/music/025/) |
 | 2026-04-29 | "First MISSION," Pia Arena MM | La+, Lui, Koyori, Iroha |
 **Dossier · Hard Facts (continuity):**
 - Members and debut order: La+ (2021-11-26), Lui (11-27), Koyori (11-28), Chloe (11-29), Iroha (11-30).

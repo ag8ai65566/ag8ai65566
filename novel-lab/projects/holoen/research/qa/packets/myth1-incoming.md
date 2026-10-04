@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 4e81394.
+Snapshot: git 135bae1.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Mori Calliope|Cori Malliope|Calliope Mori|Last Writes|Kawaiiope|Miss Mori|Mor Mori|Calliope|TakaMori|CHADCast|Takamori|CallioP|森カリオペ|Calli|LYRA|Mowi|Mori)(
+Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Mori Calliope|Calliope Mori|Cori Malliope|Last Writes|Kawaiiope|Miss Mori|TakaMori|Takamori|Calliope|CHADCast|Mor Mori|CallioP|Calli|森カリオペ|Mori|LYRA|Mowi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -435,7 +435,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Mori Calliope|Cori 
 ### from holoX
 - `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
 - `bible/world/holoX.md › With the English cast`: - **Mori Calliope:** English practice with Lui (2021-12-27); "HOLO ENGLISH LESSON #02" with La+, Iroha and Gura (2022-03-04) and "#04" with Lui and Chloe (2022-04-16); "HOLOYOI" episode 1 with Lui and Chloe (2023); dance shorts to Lui's songs (2025, 2026). [S1]
-- `bible/world/holoX.md › With the English cast`: - **Others:** Lui's 2026 song "Soar" was danced by IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO (2026 shorts); Cecilia teased La+ as "onee-sama" (2026 short); Nerissa met La+ in holoGTA (2024). [S1]
+- `bible/world/holoX.md › With the English cast`: - **Others:** The channels of IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO posted shorts featuring Lui's "Soar" in 2026; these include animated/MMD uploads, and channel publication does not establish who performed the dance motion; Cecilia's channel posted a short titled "ONEE-SAMA!" about La+ (2026; archived title, not verified dialogue); Nerissa and La+ both participated in holoGTA (2024); a direct exchange is not established. [S1]
 - `bible/world/holoX.md › History`: | 2022-03-04 | Calli's English lesson #02 | La+, Iroha; archive X492n37brRU |
 - `bible/world/holoX.md › History`: | 2022-04-16 | Calli's English lesson #04 | Lui, Chloe; archive YrZ4baKOT1c |
 - `bible/world/holoX.md › History`: | 2023 | HOLOYOI ep. 1 (Lui, Chloe); BAE-GEMITE episodes; Kiara's off-collabs with Lui and La+ | with Calli, Bae, Kiara |

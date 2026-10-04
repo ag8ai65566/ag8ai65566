@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git 4e81394.
+Snapshot: git 135bae1.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Kronii and Gura|Gura and Kronii|Takanashi Kiara|hololive -Myth-|Kiara and Gura|Gura and Kiara|Calli and Ame|Ame and Kiara|Ina and Calli|Kiara and Ame|Calli and Ina|Ame and Calli|Gura and Ina|Ina and Gura|Ame and Ina|Ina and Ame|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Takanashi Kiara|hololive -Myth-|Gura and Kronii|Kronii and Gura|Gura and Kiara|Kiara and Gura|Ina and Calli|Calli and Ina|Calli and Ame|Kiara and Ame|Ame and Kiara|Ame and Calli|Gura and Ina|Ina and Gura|Ame and Ina|Ina and Ame|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -401,7 +401,7 @@ Matched names: th and Kronii: Other Pairs|Kiara and Kronii|Kronii and Kiara|Kron
 
 ### from holoX
 - `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
-- `bible/world/holoX.md › With the English cast`: - **Takanashi Kiara:** welcomed Lui into the bird unit HOLOTORI on her debut day; HOLOTORI is Kiara, Lui, Mumei, Subaru and Reine; a Wario off-collab with Lui (2023-01-15); La+ and Kiara's Mythmash single "Glow in the Dark" (2025-07-27) and their "FAKE HEART" cover (2025-04-08); a nostalgic-games handcam off-collab with La+ (2023-06-30); "WILDCARD," a cover with Chloe (2025-01-25); a #TASTYchallenge dance with Iroha (2025). [S1] [S3]
+- `bible/world/holoX.md › With the English cast`: - **Takanashi Kiara:** belonged to HOLOTORI with Lui, Mumei, Subaru and Reine in the official 2023 lineup; a Wario off-collab with Lui (2023-01-15); La+ and Kiara's Mythmash single "Glow in the
 - `bible/world/holoX.md › History`: | 2023 | HOLOYOI ep. 1 (Lui, Chloe); BAE-GEMITE episodes; Kiara's off-collabs with Lui and La+ | with Calli, Bae, Kiara |
 - `bible/world/holoX.md › History`: | 2025-07-27 | "Glow in the Dark" video premiere (Mythmash; inherited date, zone unspecified) | La+, Kiara; Kiara Relationship Map and archive v5RKZXNuVyw |
 - `bible/world/holoX.md › History`: | 2025-07-28 (digital release; zone unspecified) | "Glow in the Dark" digital release | La+, Kiara; official catalog 600, checked 2026-10-04 |

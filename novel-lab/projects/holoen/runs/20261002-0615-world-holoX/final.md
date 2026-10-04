@@ -50,9 +50,8 @@ Unit / generation (lore group with five persona roles; four active at the baseli
   [S3] [Official NePoX 2026 roster] [Official music 801]
 
 ## With the English cast
-- **Takanashi Kiara:** welcomed Lui into the bird unit HOLOTORI on her debut day; HOLOTORI is Kiara, Lui,
-  Mumei, Subaru and Reine; a Wario off-collab with Lui (2023-01-15); La+ and Kiara's Mythmash single "Glow in the
-  Dark" (2025-07-27) and their "FAKE HEART" cover (2025-04-08); a nostalgic-games handcam off-collab with La+
+- **Takanashi Kiara:** belonged to HOLOTORI with Lui, Mumei, Subaru and Reine in the official 2023 lineup; a Wario off-collab with Lui (2023-01-15); La+ and Kiara's Mythmash single "Glow in the
+Dark" (video premiere 2025-07-27; official digital release 2025-07-28; zones unspecified) and their "FAKE HEART" cover (2025-04-08); a nostalgic-games handcam off-collab with La+
   (2023-06-30); "WILDCARD," a cover with Chloe (2025-01-25); a #TASTYchallenge dance with Iroha (2025). [S1] [S3]
 - **Nanashi Mumei (graduated):** HOLOTORI with Lui; "Q&A With Bird Sisters" (2025-04-19); an EN-server Minecraft
   tour with Lui, Chloe and Bae (2022). [S1]
@@ -68,8 +67,7 @@ Unit / generation (lore group with five persona roles; four active at the baseli
   call the trio "KoMeHa"); Apex with Lui and Iofi (2022-01-19). [S1 tGVhLibbYL0, Mory0I9vXtI] [S3]
 - **Ninomae Ina'nis, Gawr Gura (graduated):** UMISEA with Chloe, Minato Aqua and Houshou Marine (official 2023
   roster). [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/]
-- **Others:** Lui's 2026 song "Soar" was danced by IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO
-  (2026 shorts); Cecilia teased La+ as "onee-sama" (2026 short); Nerissa met La+ in holoGTA (2024). [S1]
+- **Others:** The channels of IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO posted shorts featuring Lui's "Soar" in 2026; these include animated/MMD uploads, and channel publication does not establish who performed the dance motion; Cecilia's channel posted a short titled "ONEE-SAMA!" about La+ (2026; archived title, not verified dialogue); Nerissa and La+ both participated in holoGTA (2024); a direct exchange is not established. [S1]
 
 ## With the other Japanese members on the cards
 - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s,
@@ -91,7 +89,7 @@ Unit / generation (lore group with five persona roles; four active at the baseli
 | 2025-07-27 | "Glow in the Dark" video premiere (Mythmash; inherited date, zone unspecified) | La+, Kiara; Kiara Relationship Map and archive v5RKZXNuVyw |
 | 2025-07-28 (digital release; zone unspecified) | "Glow in the Dark" digital release | La+, Kiara; official catalog 600, checked 2026-10-04 |
 | 2025-12-01 | 4th anniversary: "Gyouan Xdeath," concert announced | four members |
-| 2026-04-08 | Album "Secret ORDER" released | [Official, R6] |
+| 2026-04-08 | Album "Secret ORDER" released | [Official Secret ORDER catalog](https://hololive.hololivepro.com/en/music/025/) |
 | 2026-04-29 | "First MISSION," Pia Arena MM | La+, Lui, Koyori, Iroha |
 
 ## Sensory Palette
@@ -105,7 +103,7 @@ Unit / generation (lore group with five persona roles; four active at the baseli
 |---|---|---|
 | holoX | Secret Society holoX, hololive's sixth Japanese generation | everyone |
 | Yes My Dark (YMD) | her followers' answer to La+ (secondary transcription) | Plusmate |
-| HOLOTORI | the bird unit (Kiara, Lui, Mumei, Subaru, Reine) | the birds |
+| HOLOTORI | the bird unit; its official 2023 lineup was Kiara, Lui, Mumei, Subaru and Reine | the birds |
 | NePoX | NePoLaBo × holoX joint events and releases (rosters are dated: eight in 2026) | NePoLaBo and the active holoX members |
 | gozaru | Iroha's samurai copula ("I daresay") | Iroha |
 
@@ -184,6 +182,7 @@ A tiny horned founder with long silver hair, oversized sleeves and shackles; a p
 - **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:BR-DATE-001, bridge-events:BR-DATE-003, bridge-events:BR-STATUS-002 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-001 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:JP-UNIT-001 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (holox, GPT xhigh), merged by Claude:** applied holox:BR-DATE-003, holox:HOLOX-COVERAGE-001, holox:HOLOX-CREDIT-002, holox:HOLOX-QUOTE-001, holox:HOLOX-ROSTER-001, holox:HOLOX-TIE-001 (exact replacements; dispositions in research/qa/audit-holox.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Resolved: after 2025-01-26 Chloe is a hololive affiliate rather than part of holoX's four-member performing

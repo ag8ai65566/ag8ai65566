@@ -75,7 +75,7 @@ secondary]
   them on HOLOTALK (2023). [Observed S1; S3; Mumei, Calli, Kiara archives]
 - **Justice:** Raora Panthera, their Serendipity 2026 unit partner in B.F.F; Mococo's pair labels include "GigiMoco" with Gigi and "Cecemoco" with Cecilia; Cecilia and Mococo played Chrono Trigger together in 2026. [Official S4] [Observed S1; S3]
 - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi);
-  Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori, "FUWAMOKOYO"); Akai Haato, Tsunomaki
+  Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori); "FUWAMOKOYO" names Koyori and the twins on FUWAMOCO MORNING #90; Akai Haato, Tsunomaki
   Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and
   Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday
   concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
@@ -200,6 +200,7 @@ Pink and blue side by side; paw prints; two voices from one microphone saying th
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:ADVENT-TIE-001, justice:JUSTICE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-019/020 (releases; the anime named).
 - **2026-10-04, cross-card QA audit (jp2, GPT xhigh), merged by Claude:** applied jp2:JP2-TIE-003 (exact replacements; dispositions in research/qa/audit-jp2.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (holox, GPT xhigh), merged by Claude:** applied holox:BR-UNIT-001 (exact replacements; dispositions in research/qa/audit-holox.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

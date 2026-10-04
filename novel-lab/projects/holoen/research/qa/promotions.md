@@ -289,6 +289,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 b14087c5b1ab）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 48e0462ed9bb）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 b7ef684aff14）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 44bd3ac66fd2）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied
 
 ## 20261001-0001-world-IRyS-and-Nerissa-Pairs
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 9d957e0dc2fc）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -387,6 +388,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 03:56 作者裁決收錄 final.md（sha256 592e017a260b）：Author decision (2026-10-03): two-model audio check of research quotation candidates (dossier sample lines)
 - 2026-10-04 05:16 作者裁決收錄 final.md（sha256 deb95790e4fc）：Author decision (2026-10-03): cross-card QA audit promise merged by Claude
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 2cca759f1c3c）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 9033f6ab8d98）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied
 
 ## 20261001-0454-world-Fauna-and-Mumei-Pairs
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 9c0d1dd0a9f8）：作者裁決：GPT 一輪審查（runs/20261001-0454-world-Fauna-and-Mumei-Pairs/gpt-free.md）已合併，依作者指示只審一輪；作者 2026-10-01 下令加入 Fauna 與 Mumei
@@ -486,6 +488,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 aa9e5b90ae53）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-03 23:55 作者裁決收錄 final.md（sha256 d8bb40f76f0e）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 0c5cc7b390cd）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 cfa1f4d729e0）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied
 
 ## 20261001-1032-character-Cecilia-Immergreen
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 06f3cf172332）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.
@@ -639,6 +642,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 28cae5116dfe）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 2335e184a0f0）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 15:22 作者裁決收錄 final.md（sha256 5b8d8d35cd19）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 e7570278bf33）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied
 
 ## 20261002-0615-character-Houshou-Marine
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 499212948bf5）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude
@@ -659,6 +663,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 bba6c81607a0）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 85fd36cc6c01）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 15:22 作者裁決收錄 final.md（sha256 4a565ab5f170）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 90b182eb7d79）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied
 
 ## 20261002-0615-character-Kikirara-Vivi
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 21bf60dbf920）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude
@@ -671,6 +676,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:15 作者裁決收錄 final.md（sha256 665ffca4b0d3）：Author decision (2026-10-03): re-promoted under the project stem Laplus-Darknesss (filename fix); same final.md as the run E merge.
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 4f243197ccfe）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 15:22 作者裁決收錄 final.md（sha256 27c95d61ba9b）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 2763879d7ad5）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied
 
 ## 20261002-0615-character-Sakamata-Chloe
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 5d5d78ff41b4）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run F) merged by Claude; promoted.
@@ -704,6 +710,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 6d81b858789c）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 015a3f014ba3）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 15:22 作者裁決收錄 final.md（sha256 e8178610dd84）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 75381ba17bef）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied
 
 ## 20261002-0615-character-Yukihana-Lamy
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 b7309e386259）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude
@@ -731,3 +738,4 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 05:33 作者裁決收錄 final.md（sha256 1ac995a7de11）：Author decision (2026-10-03): bridge-events audit merged by Claude
 - 2026-10-04 10:15 作者裁決收錄 final.md（sha256 9981df72d23d）：Author order 2026-10-03: Claude merges the GPT QA audits; bridge-ties-external findings applied
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 37017b831e12）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
+- 2026-10-04 15:32 作者裁決收錄 final.md（sha256 159764504cab）：Author order 2026-10-03: Claude merges the GPT QA audits; holox cohort findings applied
