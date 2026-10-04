@@ -6,7 +6,7 @@ This is a cross-file consistency audit, not another single-card review.
 Run sequentially; do not launch parallel GPT audits.
 
 Cohort: holox
-Packet: projects/holoen/research/qa/packets/holox.md (inline below)
+Packet: projects/holoen/research/qa/packets/holox.md (owned material) and projects/holoen/research/qa/packets/holox-incoming.md (incoming claims); both are inline below
 Registry: projects/holoen/research/qa/registry.json
 
 ## Binding rules
@@ -42,23 +42,29 @@ Do not infer intimacy, sexuality, private closeness or hidden psychology.
 Preserve supported swearing, crude jokes and performed bits without sanitizing
 them or presenting them as real relationships. No lyrics, long transcripts,
 explicit sexual material, voice cloning or identifiable real-voice imitation.
-Original calibration lines must say “Style demonstration.”
+Original calibration lines must carry the project label “Style demo” (equivalent to
+“Style demonstration”; do not file findings that only change one label to the other).
 
 ## Ownership and scope
 
 Use the packet inventory to resolve exact paths. Primary ownership is:
 
-- Myth: Calliope, Kiara, Ina, Amelia, Gura; Myth, TakaMori, TakoTori, AmeSame,
-  Bone Bros, Myth-and-Kronii Other Pairs.
-- Promise: Kronii, IRyS, Fauna, Mumei; Promise, Time Duo, Time and Death,
-  OctoClock, Fauna-and-Mumei Pairs, IRyS-and-Nerissa Pairs.
+- Myth (four audits: myth1 Calliope with TakaMori; myth3 Kiara with Myth-and-Kronii Other
+  Pairs; myth4 Ina with TakoTori; myth2 Gura and Amelia with Myth, AmeSame and Bone Bros).
+- Promise: Kronii, IRyS, Fauna, Mumei, Baelz; Promise, Time Duo, Time and Death,
+  OctoClock, Fauna-and-Mumei Pairs, IRyS-and-Nerissa Pairs, Hakos-Baelz Pairs.
 - Advent: Shiori, Bijou, Nerissa, Fuwawa, Mococo; Advent, Advent Pairs, FUWAMOCO.
 - Justice: Elizabeth, Gigi, Cecilia, Raora; Justice, Justice Pairs.
+- JP: Suisei, AZKi, Ayame, Okayu; JP Senpai Pairs.
+- JP2: Marine, Noel, Lamy, Botan, Vivi; JP Senpai Pairs 2.
+- holoX: La+, Lui, Koyori, Chloe, Iroha; holoX.
 - Global: hololive, Streaming Life, VTuber Persona and Lore, Cross-Branch Friends,
   Concerts and Live Events, both History cards.
 
-Together these cover 18 character and 24 world cards. Baelz, Sana and other
-external participants may be referenced; do not create their character cards.
+Together these cover the authorized 33 character and 28 world cards (the packet
+inventory is authoritative). Other external participants may be referenced; do
+not create their character cards. If a card your cohort owns is missing from the
+packet, report coverage as INCOMPLETE instead of auditing a reduced roster.
 
 Audit the selected cohort’s complete [SW] fields, Relationship Map, Background
 Timeline and Hard Facts, plus incoming claims from every other card. Inspect
@@ -138,7 +144,8 @@ such as optional compression or accepting a disclosed evidence limitation.
 It is not model approval, source verification, or permission to override binding
 scope. Give a concrete question and recommendation. Do not escalate routine fixes.
 
-IDs: {COHORT}-{TYPE}-{NNN}, with COHORT = MYTH, PROMISE, ADVENT, JUSTICE or GLOBAL.
+IDs: {COHORT}-{TYPE}-{NNN}, with COHORT = this run's cohort in capitals (MYTH1, MYTH2, MYTH3,
+MYTH4, PROMISE, ADVENT, JUSTICE, JP, JP2, HOLOX or GLOBAL), so separately queued audits never share IDs.
 Use TYPE = DATE, STATUS, EVENT, ROSTER, TIE, CREDIT, UNIT, ALIAS, SCOPE, QUOTE,
 VOICE, EXPORT or COVERAGE. Continue numbering from the resolution ledger.
 Reuse existing IDs for the same finding; never renumber or duplicate it.
@@ -229,7 +236,11 @@ web_search: live
 - **全部用英文**：Sudowrite 卡片和調查檔案都寫英文，連段落標題也翻成英文（`## [SW]`
   開頭的標題與 front matter 保持原樣）。成員本人說英文，口頭禪與語感照原文才準，
   Sudowrite 也以英文最穩定。日文等混用的詞照原文保留（附英文註解）。
-- 「待確認」與「合併紀錄」也用英文；Claude 回報給作者時再用中文摘要。
+- 「待確認」與「合併紀錄」也用英文；Claude 回報給作者時再用中文摘要。**給作者的最終匯報一律用繁體中文（作者 2026-10-04）。**
+- **語音台詞的語言（作者 2026-10-04 定案）：hololive JP 的成員（含 holoX 與 DEV_IS 的 Vivi，共 14 人）在 ElevenLabs
+  語音腳本裡念日文。**說出口的台詞用日文字（假名、漢字）寫，羅馬拼音和英文翻譯只放在不唸的 `ROMAJI`／`GLOSS` 行。
+  卡片的 Audio Tags 與表演表第 2 節寫明「Dialogue language: Japanese」，轉換器會擋下沒有日文字的 JP 成員台詞。
+  EN 成員維持英文（可夾日文詞）。卡片本身仍用英文寫。
 
 ## 範圍與界線（以真人為基礎的角色）
 - 只用**官方設定（lore）**與**直播、影片、社群上公開呈現的言行**。
@@ -277,6 +288,8 @@ web_search: live
 - 目標是完成 EN 全體成員；**目前名單以外的成員要等作者下令才做**。
 
 ## 聲音（給 Sudowrite 加 ElevenLabs 標籤，作者 2026-10-01 定案）
+- **只有二手轉錄的台詞（作者 2026-10-04 選 B）：**`research/qa/quote-inventory.md` 列的 93 句（粉絲 wiki 等二手轉錄、
+  沒有兩模型 ASR 確認）保留在匯出欄位，作者以例外放行；來源標籤保留在卡片的 dossier。V13 以此清單為作者例外。
 - 作者打算讓 **Sudowrite 在寫故事時自己加上 ElevenLabs v4 的表演標籤**。
 - 所以每個角色的說話方式、性格、口癖、口音、語速、音域、笑聲與招牌聲音、情境語氣轉換、
   發音，凡是影響「聲音」的因素，都要**鉅細靡遺**教給 Sudowrite，讓它生成時能完美模仿。
@@ -454,137 +467,177 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 | CLAUDE-TOOLS-002 | A draft package claimed the roster counts (19/25) while its CSVs held only the promoted cards (18/24), and shipped Bae's performance sheet without her card | applied: package counts, INDEX, CHANGELOG and START-HERE count the cards actually shipped; a sheet ships only with its card; START-HERE names what is not yet included; `CAST_ORDER`/`WORLD_ORDER` must equal the COHORTS roster (assert) | this commit |
 | CLAUDE-TOOLS-003 | The quote gate matched any partial ASR row by five shared words, so a wiki quote (Cecilia's "Ew! Get away from me, you FREAK!") was flagged against an unrelated FUWAMOCO stream line | applied: a report row gates only files that cite its video (a performance sheet counts its card's citations); `span_check.py --write` regenerates `span-candidates.md` (40 → 31 rows; the 9 dropped were all unrelated-video matches) | this commit |
 | CLAUDE-GUIDE-001 | The author needed one place that says where to get the data and where each file goes in Sudowrite | applied: `framework/templates/start-here-zh.md` is the package's 00-START-HERE (Chinese): download, file → Sudowrite placement, smoke test, project setup, scene habits, ElevenLabs, updates, FAQ; scene-setup states the date zone rule | this commit |
+| AUDIT-MYTH1 | Cohort audit myth1 (Calli, TakaMori): 38 rows | applied except MYTH-EXPORT-001 (rejected: project label); details in research/qa/audit-myth1.md | 2026-10-03 merge |
+| AUDIT-MYTH3 | Cohort audit myth3 (Kiara, Other Pairs, TakoTori): 51 rows | partly applied; MYTH-QUOTE-001 and MYTH-SCOPE-005 have residuals in snapshot fa69d71; MYTH-QUOTE-004 remains open pending quotation-gate resolution. MYTH-SCOPE-002 adapted to keep the author's public-performance shorthand; MYTH-COVERAGE-001 superseded; MYTH-VOICE-001 rejected (label) | 2026-10-03 merge |
+| AUDIT-JUSTICE | Cohort audit justice: 36 rows | applied; two COVERAGE rows superseded by run F; EXPORT-001 rejected (label) | 2026-10-03 merge |
+| AUDIT-GLOBAL | Cohort audit global: 60 rows | applied (including the parser fixes in tools/qa_packets.py); overlaps closed by justice and myth1 | 2026-10-03 merge |
+| CLAUDE-SCOPE-003 | Merge Records naming excluded topics (15 cards) | applied (genericized) | 2026-10-03 merge |
+| AUDIT-MYTH4 | Cohort audit myth4 (Ina, TakoTori): 34 rows | applied in full; this also closes the myth1/myth3 residuals that myth4 flagged | 2026-10-04 merge |
+| AUDIT-MYTH2 | Cohort audit myth2 (Gura, Ame, Myth, AmeSame, Bone Bros) | applied in full, including re-raised myth3 residuals | 2026-10-04 merge |
+| AUDIT-PROMISE | Cohort audit promise (Kronii, IRyS, Fauna, Mumei, Bae and pair cards) | applied; PROMISE-QUOTE-001 adapted to the two-model shared span; one CONSULT-P1-006 row not applied (both models share the longer span) | 2026-10-04 merge |
+| AUDIT-BRIDGE-EVENTS | Bridge audit of dates, zones and status | applied; registry rows fixed in tools/qa_packets.py (date parser) and by regeneration | 2026-10-04 merge |
+| AUDIT-BRIDGE-TIES-EXTERNAL | Bridge audit of ties with external participants (rosters, credits, Groups, quotations, packet coverage) | applied in full; the TakaMori finale bullet paraphrased under MYTH-QUOTE-001; the generator now recovers each card owner in her own relationship rows | 2026-10-04 merge |
+| AUDIT-JP | Cohort audit jp (Suisei, AZKi, Ayame, Okayu, JP Senpai Pairs) | applied in full; exclusion-note wording generalized across all audio reports; JP-QUOTE-001 deferred to the project-wide quotation pass (voice-delivery.md, blocks V13) | 2026-10-04 merge |
+| AUDIT-JP2 | Cohort audit jp2 (Marine, Noel, Lamy, Botan, Vivi, JP Senpai Pairs 2) | applied; AZKi seniority rows keep the neutral jp label (she joined hololive in 2022), Okayu→Noel set to JP kouhai; Fauna scope redaction done by hand in the audio report | 2026-10-04 merge |
+| QUOTE-INVENTORY | 93 exported spoken lines resting only on secondary transcriptions (jp:JP-QUOTE-001 and the project-wide pass) | **author decision 2026-10-04: B**, kept as an author exception; three lines upgraded by two-model checks (Shukkō, Ohamassuru, Bruh) | 2026-10-04 |
 
 ### Registry excerpt (this cohort's cast and world records and its units; query `projects/holoen/research/qa/registry.json` with `jq` for the rest)
 
 ```json
 {
  "baseline": "2026-09-30",
- "commit": "12abb1f",
- "cast": [],
- "world": [],
- "units": [
+ "commit": "17521e0",
+ "cast": [
   {
-   "unit": "hololive -Myth-",
-   "members": [
-    "Mori Calliope",
-    "Takanashi Kiara",
-    "Ninomae Ina'nis",
-    "Gawr Gura",
-    "Watson Amelia"
+   "name": "Hakui Koyori",
+   "file": "bible/characters/Hakui-Koyori.md",
+   "other_names": [
+    "Koyori",
+    "Koyo",
+    "Koyorin",
+    "博衣こより"
    ],
-   "evidence": "official"
+   "groups": [
+    "hololive",
+    "Secret Society holoX",
+    "holoX",
+    "Hoshimatic Project",
+    "KoZMy",
+    "NePoX",
+    "Blue Journey"
+   ],
+   "status": "Koyori is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2021-11-28",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Hakui-Koyori.md › Background (debut: Background)"
+   }
   },
   {
-   "unit": "hololive -Promise- (from 2023-10; earlier Council and Project: HOPE)",
-   "members": [
-    "IRyS",
-    "Ouro Kronii",
-    "Hakos Baelz",
-    "Ceres Fauna",
-    "Nanashi Mumei"
+   "name": "Kazama Iroha",
+   "file": "bible/characters/Kazama-Iroha.md",
+   "other_names": [
+    "Iroha",
+    "Iroha-dono",
+    "Gozaru",
+    "Gozaru-chan",
+    "風真いろは"
    ],
-   "evidence": "official"
+   "groups": [
+    "hololive",
+    "Secret Society holoX",
+    "holoX",
+    "AzuIro",
+    "Hoshimatic Project",
+    "NePoX",
+    "Bara☆Dice"
+   ],
+   "status": "Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2021-11-30",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Kazama-Iroha.md › Background (debut: Background)"
+   }
   },
   {
-   "unit": "hololive -Advent-",
-   "members": [
-    "Shiori Novella",
-    "Koseki Bijou",
-    "Nerissa Ravencroft",
-    "Fuwawa Abyssgard",
-    "Mococo Abyssgard"
+   "name": "La+ Darknesss",
+   "file": "bible/characters/Laplus-Darknesss.md",
+   "other_names": [
+    "La+",
+    "Laplus",
+    "YMD",
+    "ラプラス・ダークネス"
    ],
-   "evidence": "official"
+   "groups": [
+    "hololive",
+    "Secret Society holoX",
+    "holoX",
+    "NePoX"
+   ],
+   "status": "La+ is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2021-11-26",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Laplus-Darknesss.md › Background (debut: Background)"
+   }
   },
   {
-   "unit": "hololive -Justice-",
-   "members": [
-    "Elizabeth Rose Bloodflame",
-    "Gigi Murin",
-    "Cecilia Immergreen",
-    "Raora Panthera"
+   "name": "Sakamata Chloe",
+   "file": "bible/characters/Sakamata-Chloe.md",
+   "other_names": [
+    "Chloe",
+    "Kuroe",
+    "Sakamata",
+    "Kura-tan",
+    "沙花叉クロヱ"
    ],
-   "evidence": "official"
+   "groups": [
+    "hololive",
+    "Secret Society holoX (until 2025)",
+    "holoX",
+    "KoyoChlo",
+    "Kanaken",
+    "holoWitches",
+    "UMISEA"
+   ],
+   "status": "Chloe is a hololive affiliate, formerly an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "affiliate",
+    "debut": "2021-11-29",
+    "graduated": null,
+    "regular_activities_concluded": "2025-01-26",
+    "source": "bible/characters/Sakamata-Chloe.md › Background (debut: Background)"
+   }
   },
   {
-   "unit": "Last Writes",
-   "members": [
-    "Mori Calliope",
-    "Shiori Novella"
+   "name": "Takane Lui",
+   "file": "bible/characters/Takane-Lui.md",
+   "other_names": [
+    "Lui",
+    "Lui-nee",
+    "Lui Lui",
+    "鷹嶺ルイ",
+    "ルイルイ"
    ],
-   "evidence": "official Serendipity billing, 2026"
-  },
-  {
-   "unit": "Octo'clock",
-   "members": [
-    "Ninomae Ina'nis",
-    "Ouro Kronii"
+   "groups": [
+    "hololive",
+    "Secret Society holoX",
+    "holoX",
+    "HOLOTORI",
+    "Bara☆Dice",
+    "Blue Journey",
+    "InuTakaShishiRam",
+    "NePoX"
    ],
-   "evidence": "official Serendipity billing, 2026"
-  },
-  {
-   "unit": "Rocku Wawa",
-   "members": [
-    "Takanashi Kiara",
-    "Koseki Bijou"
-   ],
-   "evidence": "official Serendipity billing, 2026"
-  },
-  {
-   "unit": "BaeRyS",
-   "members": [
-    "Hakos Baelz",
-    "IRyS"
-   ],
-   "evidence": "official Serendipity billing, 2026"
-  },
-  {
-   "unit": "CHADCast",
-   "members": [
-    "Mori Calliope",
-    "IRyS",
-    "Hakos Baelz"
-   ],
-   "evidence": "official music entry (\"Here Comes the CHADCast,\" 2026)"
-  },
-  {
-   "unit": "Bloodraven",
-   "members": [
-    "Nerissa Ravencroft",
-    "Elizabeth Rose Bloodflame"
-   ],
-   "evidence": "official Serendipity billing, 2026"
-  },
-  {
-   "unit": "B.F.F",
-   "members": [
-    "Fuwawa Abyssgard",
-    "Mococo Abyssgard",
-    "Raora Panthera"
-   ],
-   "evidence": "official Serendipity billing, 2026"
-  },
-  {
-   "unit": "Autofister (also CCGG)",
-   "members": [
-    "Gigi Murin",
-    "Cecilia Immergreen"
-   ],
-   "evidence": "official Serendipity billing and shop, 2026"
-  },
-  {
-   "unit": "LYRA",
-   "members": [
-    "Amane Kanata",
-    "Koganei Niko",
-    "Mori Calliope",
-    "Ayunda Risu",
-    "Elizabeth Rose Bloodflame"
-   ],
-   "evidence": "mix engineer's credits (a remix-version cover of \"III\")"
+   "status": "Lui is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2021-11-27",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Takane-Lui.md › Background (debut: Background)"
+   }
   }
- ]
+ ],
+ "world": [
+  {
+   "name": "holoX",
+   "file": "bible/world/holoX.md",
+   "role": "Organization",
+   "other_names": [
+    "Secret Society holoX",
+    "秘密結社holoX",
+    "hololive 6th Generation"
+   ]
+  }
+ ],
+ "units": []
 }
 ```
 
@@ -592,10 +645,384 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 
 # Audit packet: holox
 
-Snapshot: git 12abb1f. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 17521e0. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): 
+Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 4f243197ccfe; `bible/characters/Takane-Lui.md` 015a3f014ba3; `bible/characters/Hakui-Koyori.md` 2335e184a0f0; `bible/characters/Sakamata-Chloe.md` a3555ab23cbe; `bible/characters/Kazama-Iroha.md` 85fd36cc6c01; `bible/world/holoX.md` 37017b831e12
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
+
+### La+ Darknesss — `bible/characters/Laplus-Darknesss.md`
+**[SW] Groups:** hololive, Secret Society holoX, holoX, NePoX
+**[SW] Other Names:** La+, Laplus, YMD, ラプラス・ダークネス
+**[SW] Background:** La+ is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-26 as the first member of Secret Society holoX, hololive's sixth Japanese generation, whose executive officer Takane Lui does the actual running. Her songs include "drop candy" (2024) and "Onee-sama♡Love Call" (released 2026-05-26). She performed at holoX's first in-person unit concert, "First MISSION" (2026-04-29), and Tochigi Prefecture appointed her a Tochigi Future Ambassador (2026-05-03). With the English cast, archived metadata records the Mythmash single "Glow in the Dark" (released 2025-07-28) and the cover "FAKE HEART" (2025) with Takanashi Kiara, a nostalgic-games off-collab on Kiara's channel (2023), and Mori Calliope's English lesson #02 with Gawr Gura and Kazama Iroha (2022).
+**[SW] Relationships:** Takane Lui: holoX's executive officer, who actually runs things and reins her in. Hakui Koyori and Kazama Iroha: holoX; secondary references call her pairing with Iroha "Irohasu." Sakamata Chloe (affiliate since 2025): the former intern; covers together (2022, 2025). Takanashi Kiara: "Glow in the Dark" (Mythmash) and "FAKE HEART" (2025), and a nostalgic-games off-collab (2023). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: archived shorts of them performing to "Onee-sama♡Love Call" (2026). Cecilia Immergreen: an "ONEE-SAMA!" short about her (2026). Nerissa Ravencroft, Nakiri Ayame, Hoshimachi Suisei and Shishiro Botan: fellow holoGTA participants (2024). Suisei, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024). Nekomata Okayu: a 3D lie-detector challenge (2026); secondary references group them in "Dorobo Kensetsu." AZKi: games and an ASMR "evaluation" (2025). Houshou Marine: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Yukihana Lamy and Shishiro Botan: NePoX (2026).
+**Dossier · Background Timeline:**
+| Date | Event | Relevance |
+|---|---|---|
+| Lore | Founder of Secret Society holoX; vast power, now sealed | [Official LA1] |
+| 2021-11-26 | Debut, the first holoX member to debut | [Observed LA2] |
+| 2022-03-04 | Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha | [LA5 X492n37brRU] |
+| 2023-06-30 | Nostalgic games with a handcam, an off-collab on Kiara's channel (archived title and description) | [LA5 XWf2PqD_8zQ] |
+| 2024 | "drop candy" (05-25); holoGTA participant (her archive establishes participation; other members' own archives place them in the same event) | [Observed LA2] [LA4 swqXHi1Z4ew] |
+| 2025-04-08 | "FAKE HEART," a cover with Kiara | [LA5 yspJ9xmGRfw] |
+| 2025-07-27/28 | "Glow in the Dark," a Mythmash single with Kiara (official digital release 2025-07-28); a joint stream | [Official music 600] [LA5 v5RKZXNuVyw] [LA4] |
+| 2025-12 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LA2] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-003] |
+| 2026-04-29 | holoX's first in-person unit concert, "First MISSION" (La+, Lui, Koyori, Iroha) | [Official LA6] |
+| 2026-05-03 | Tochigi Future Ambassador | [Official LA3] |
+| 2026-05-19 | A 3D lie-detector "challenge" to Nekomata Okayu | [LA4 F3i30BIJmtY] |
+| 2026-05-25/26 | "Onee-sama♡Love Call" (official digital release 2026-05-26); album "Project Y.M.A." announced | [Official music 753] [Observed LA2] |
+**Dossier · Hard Facts (continuity):**
+- Debut 2021-11-26; Secret Society holoX (founder); birthday 25 May; 139 cm; illustrator Mishima Kurone; fans
+  Plusmate; stream tag #laplus_great.
+
+### Takane Lui — `bible/characters/Takane-Lui.md`
+**[SW] Groups:** hololive, Secret Society holoX, holoX, HOLOTORI, Bara☆Dice, Blue Journey, InuTakaShishiRam, NePoX
+**[SW] Other Names:** Lui, Lui-nee, Lui Lui, 鷹嶺ルイ, ルイルイ
+**[SW] Background:** Lui is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-27 as the second member of Secret Society holoX, hololive's sixth Japanese generation, and belongs to the bird unit HOLOTORI, whose documented 2023 lineup was Lui, Takanashi Kiara, Oozora Subaru, Pavolia Reine and Nanashi Mumei. She released the album "Liberty" (2024), the EP "Lieblings" (2025) and the EP "The LEGENDARY" with "Soar" (2026-06), and performed at holoX's first in-person unit concert, "First MISSION," at Pia Arena MM (2026-04-29). In June 2026 COVER announced her BAYFM78 radio programme and her 1st live, "REBELLION," set for 2026-12-16 at Kanadevia Hall. With the English cast, archived metadata records English practice with Mori Calliope (2021), Calli's lesson #04 with Chloe (2022), Calli's "HOLOYOI" episode 1 with Chloe (2023), a Wario off-collab with Kiara (2023), "TWIN DAY WITH LUI" with FUWAMOCO (2023), Hakos Baelz's "BAE-GEMITE DOMINATION" episode 5 with Chloe (2023) and "Q&A With Bird Sisters" with Mumei (2025). Several English members' channels posted animated "Soar" shorts (2026).
+**[SW] Relationships:** La+ Darknesss: holoX's founder, whom Lui reins in and covers for. Sakamata Chloe (affiliate since 2025): the intern she used to keep in line. Hakui Koyori and Kazama Iroha: holoX; secondary references record "Lui-nee" as Iroha's address for her. Takanashi Kiara: HOLOTORI; a Wario off-collab (2023). Nanashi Mumei (graduated): HOLOTORI; "Q&A With Bird Sisters" (2025). Mori Calliope: English practice (2021), lesson #04 (2022), "HOLOYOI" (2023). FUWAMOCO: "TWIN DAY WITH LUI" (2023). Hakos Baelz: "BAE-GEMITE DOMINATION" (2023) and a "FEAST" dance short (2025). IRyS and Ouro Kronii: Minecraft with Kaela (2022). Watson Amelia (affiliate): Apex with Iofi (2022). Nekomata Okayu: Harry Potter watch-alongs (2025); secondary references list both in "Dorobo Kensetsu." Nakiri Ayame: "Onikan" (archived titles, 2025). Shishiro Botan: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (2023, archived title); Left 4 Dead 2 with IRyS and Korone (2022); Blue Journey. Houshou Marine, Shirogane Noel and Kazama Iroha: Bara☆Dice (with Flare and Nene). Yukihana Lamy: NePoX (2026). Nerissa Ravencroft, Koseki Bijou, Gigi Murin and Raora Panthera: animated "Soar" shorts (2026).
+**Dossier · Background Timeline:**
+| Date | Event | Relevance |
+|---|---|---|
+| Lore | holoX's executive officer and point of contact | [Official LU1] |
+| 2021-11-27 | Debut, second of holoX; HOLOTORI membership (the wiki places Kiara's welcome beside the 11-26 reveal) | [Observed LU2] [Official HOLOTORI roster 2023] |
+| 2021-12-27 | English practice with Mori Calliope | [LU5 i2wLH4O92-0] |
+| 2022 | Calli's English lesson #04 with Chloe; an EN-server Minecraft tour with Mumei, Bae and Chloe; Minecraft with IRyS, Kronii and Kaela | [LU5] |
+| 2023 | HOLOYOI ep. 1 with Chloe (Calli's show, 03-23); a Wario off-collab with Kiara (01-15); BAE-GEMITE #5 with Bae and Chloe (04-29); "TWIN DAY WITH LUI" with FUWAMOCO (11-25); Blue Journey (official roster) | [LU5 UuL_nORzfNM, cVJefDjefUs, z4-5Hq5AKG4, MbqO5OPuT80] [Blue Journey roster] |
+| 2024 | First album "Liberty" (official digital release 06-12); 1 million subscribers (11-16, secondary) | [Official music 434] [Observed LU2] |
+| 2025 | EP "Lieblings"; Code Geass ambassador (June, secondary); "Q&A With Bird Sisters" with Mumei (04-19); Harry Potter watch-alongs with Okayu; "FEAST" dance short with Bae (07-11) | [Observed LU2] [LU5] [LU4 Lj0MZFpHitQ, 5TUiccnytQA] |
+| 2025-12-01 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LU2] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-004] |
+| 2026-04-29 | holoX's first in-person unit concert "First MISSION"; COVER's interview after it describes the concert as a turning point for the four-member group and its audience | [Official LU6] |
+| 2026-06-11 | EP "The LEGENDARY" with "Soar" (official digital release of "Soar" 06-12); 1st live "REBELLION" (2026-12-16) and a BAYFM78 radio programme (from 07-03) announced; EN members' channels posted animated "Soar" shorts crediting external motion creators | [Official LU7] [Official music 760] [LU4] [LU5] |
+| 2026-06-11 | COVER announces a regular BAYFM78 radio programme for her (first broadcast scheduled for 2026-07-03); orders open for the four-track EP "The LEGENDARY," including "Soar"; her first live concert "REBELLION" announced for 2026-12-16 at Kanadevia Hall (after the baseline: an announcement only). | [Official NEW-R6-013/014] |
+| 2026-08-01 | A "rare" La+ and Lui talk with new outfits | [LU4] |
+**Dossier · Hard Facts (continuity):**
+- Debut 2021-11-27; Secret Society holoX (executive officer); birthday 11 June; 161 cm; illustrator Kakage; fans
+  "Lui-tomo"; partner Ganmo (frogmouth); fan mark 🥀; stream tag #たかねの見物.
+- Greetings: "Mattakane?" / "Otsuluilui."
+
+### Hakui Koyori — `bible/characters/Hakui-Koyori.md`
+**[SW] Groups:** hololive, Secret Society holoX, holoX, Hoshimatic Project, KoZMy, NePoX, Blue Journey
+**[SW] Other Names:** Koyori, Koyo, Koyorin, 博衣こより
+**[SW] Background:** Koyori is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-28 as the third member of Secret Society holoX and released her first original song, "WAO!!," in 2022. She sang in "Blue Journey" with Marine, Noel, Lamy, Botan, Lui and Sakura Miko (2023); secondary records place her in Suisei's Hoshimatic Project from 2023; archived 2025 collabs bill her, AZKi and Lamy as "KoZMy." She performed at holoX's first in-person unit concert, "First MISSION" (2026-04-29), and in September 2026 announced her second album, "Chemical Spark," and her first solo concert, "Dream Spark," for December 2026. With the English cast, archived titles and descriptions record Lethal Company with FUWAMOCO and Shirakami Fubuki (2024), a FUWAMOCO Morning guest spot billed "FUWAMOKOYO" (2024), and guest appearances at FUWAMOCO's birthday concert (2025) and Mumei's first 3D live (2024). In 2023 she joined Bae's "BAE-GEMITE DOMINATION" with Momosuzu Nene and tasted Bae's "KHAOS KITCHEN" curry with Calli and Oozora Subaru.
+**[SW] Relationships:** La+ Darknesss: holoX's founder; a sponsored "#stons" collab (2024) and a cover with Marine (2025). Takane Lui and Kazama Iroha: holoX; Lui: Blue Journey (2023). Sakamata Chloe (affiliate since 2025): "KoyoChlo," a running "disband!" gag from their co-op games; their last collab before Chloe's graduation and the duet cover 「一番の宝物」 (January 2025). AZKi and Yukihana Lamy: "KoZMy" (archived 2025 titles); a 3D karaoke with AZKi (2026); a #ラミこよ off-collab with Lamy (2026). Houshou Marine: archived titles bill them as the "pink-haired pair"; Blue Journey; Marine backseats her Pikachu game (2025). Shirogane Noel: Blue Journey and "NoeKoyo" baseball (2025). Hoshimachi Suisei: Hoshimatic Project (secondary). Shishiro Botan: NePoX and Blue Journey. Nekomata Okayu: a lateral-thinking puzzle collab she hosted (2025). FUWAMOCO: "FUWAMOKOYO" on FUWAMOCO Morning (2024), Lethal Company with them and Shirakami Fubuki (2024), their birthday concert (2025). Hakos Baelz: BAE-GEMITE DOMINATION with Nene and a KHAOS KITCHEN tasting (2023). Nanashi Mumei (graduated): a guest at her first 3D live (2024). IRyS: Splatoon 3 (2022) and Among Us (2023). Takanashi Kiara: a "MIRAGE" dance short (2024).
+**Dossier · Background Timeline:**
+| Date | Event | Relevance |
+|---|---|---|
+| 2021-11-28 | Debut, third of holoX | [Official KO1] [Observed KO2] |
+| 2022-06-16 | First original song "WAO!!" (official music page); the wiki also dates her 3D debut here (not verified in review) | [Official music page] [Observed KO2] |
+| 2023 | "Blue Journey" with Marine, Noel, Lamy, Botan, Lui and Sakura Miko (07-08; official roster); 1 million subscribers (09-24, secondary); Hoshimatic Project (from 11, secondary) | [Blue Journey roster] [Observed KO2] |
+| 2023-04-22 | "BAE-GEMITE DOMINATION" episode 4 with Bae and Momosuzu Nene | [KO5 WwjB7QSmQng] |
+| 2024 | Lethal Company with FUWAMOCO and Fubuki (03-09); FUWAMOCO Morning episode 90 guest, billed #FUWAMOKOYO (04-26); a guest at Mumei's first 3D live (08-05) | [KO5 XR1PEtj15kE, gCYXKgYcFmk, gl7CwlEg2ZI] |
+| 2025-01-14 | The last "KoyoChlo" collab before Chloe's graduation; its description says the "#こよクロ disband!" gag was born in two-player co-op games; the duet cover 「一番の宝物」 followed (2025-01-28) | [KO4 mxIoysy6gJ4, nCPHzr_iF7s] |
+| 2025 | Weekly Famitsu column launched (07-17); archived collabs bill Koyori, AZKi and Lamy as "KoZMy" (08-03, 08-20); "pink-haired pair" talk with Marine | [KO7] [KO4 lvgC3pW-LVA, oxWPvsUb_3Y] |
+| 2026-03-24 | #ラミこよ off-collab with Lamy, proposing to choose a duo name (no final name established) | [Lamy channel Zi8R63ee0Fs] |
+| 2026-04-29 | holoX's first in-person unit concert, "First MISSION" | [Official KO6] |
+| 2026-08-22 | Announced hololive Koshien 2026: Koyori is organizer and one of six team managers (others include Houshou Marine and Shirogane Noel); the main competition is scheduled for 10-17/18 (after the baseline: an announcement only). | [Member announcement NEW-R6-017] |
+| 2026-09-12 | Second album "Chemical Spark" and first solo concert "Dream Spark" (2026-12-22) announced | [Observed KO2] |
+| 2026-09-20 | A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours | [KO3] |
+**Dossier · Hard Facts (continuity):**
+- Debut 2021-11-28; Secret Society holoX (head of R&D); birthday 15 March; 153 cm; illustrator Momoco; fans
+  Koyori's Assistants; robot coyote Kokoro; stream tag #こより実験中; fan-art tag #こよりすけっち; AsaKoyo on
+  Tuesdays and Fridays at 7:00 JST.
+
+### Sakamata Chloe — `bible/characters/Sakamata-Chloe.md`
+**[SW] Groups:** hololive, Secret Society holoX (until 2025), holoX, KoyoChlo, Kanaken, holoWitches, UMISEA
+**[SW] Other Names:** Chloe, Kuroe, Sakamata, Kura-tan, 沙花叉クロヱ
+**[SW] Background:** Chloe is a hololive affiliate, formerly an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-29 as the fourth member of Secret Society holoX, and secondary records date her 500,000 subscribers to her first week and a million to 2023. A secondary chronology lists ten numbered original-song releases by January 2025. She took part in the original lineup of Suisei's Hoshimatic Project (secondary roster reference), "Magical Girl holoWitches!" and the "Kanaken" Minecraft company with Amane Kanata and AZKi (a 3D live in 2024), and concluded her regular activities on 2025-01-26, holding a graduation live and remaining an affiliate; a secondary record has her singing "Sparkle" at Murasaki Shion's graduation live (2025-04-26). After 2025-01-26 she is an affiliate rather than part of holoX's four-member performing lineup. With the English cast, archived channel metadata documents an EN-server Minecraft tour with Bae, Mumei and Lui (2022), Calli's English lesson #04 (2022) and HOLOYOI #01 (2023), Bae's "BAE-GEMITE DOMINATION" and the cover "Crazy Scary Holy Fantasy" with her (2023), and "WILDCARD" with Kiara in her final week (2025).
+**[SW] Relationships:** Takane Lui: holoX's executive officer; secondary accounts describe Lui reining her in; "LuiChlo" collabs, Calli's English lesson and HOLOYOI together. Hakui Koyori: "KoyoChlo," a duo with a running "disband!" gag; their last collab and two covers in January 2025. La+ Darknesss: covers together (2022, 2025). Kazama Iroha: holoX; the duet cover "Gehenna" on her last day (2025-01-26). AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024). Houshou Marine: UMISEA (official 2023 roster) and holoWitches. Hoshimachi Suisei: the original Hoshimatic Project lineup (secondary); a farewell video together (2025). Yukihana Lamy: Rust with Kanata (2022). Shishiro Botan: an Overwatch 2 team (2023). Takanashi Kiara: "WILDCARD," performed at the 2024 fes and released as a cover in her final week (2025), and an origami off-collab (2023). Hakos Baelz: the EN Minecraft tour (2022), BAE-GEMITE DOMINATION and "Crazy Scary Holy Fantasy" (2023). Mori Calliope: HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023). Nanashi Mumei (graduated): the EN Minecraft tour (2022). IRyS: Overwatch 2 and Among Us (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster). Nekomata Okayu: chorus on her "Bling-Bang-Bang-Born" cover (2025). Fuwawa and Mococo Abyssgard: a "Gimme Chocolate!!" cover together (2024).
+**Dossier · Background Timeline:**
+| Date | Event | Relevance |
+|---|---|---|
+| 2021-11-29 | Debut, fourth of holoX; 500,000 subscribers within a week | [Official CH1] [Observed CH2] |
+| 2022 | First original "Jinsei Reset Button Pochii w" (02-26); EN Minecraft tour with Bae, Mumei and Lui (02-12); Calli's English lesson #04 with Lui (04-16); 3D debut (06-13) | [Observed CH2] [CH5] |
+| 2023 | 1 million subscribers (02-18, secondary); HOLOYOI #01 with Calli and Lui (03-23); "BAE-GEMITE DOMINATION" (04-29); a cover with Bae (10-30); the original Hoshimatic Project lineup (11-, secondary roster reference) | [Observed CH2] [CH5 UuL_nORzfNM, z4-5Hq5AKG4, 9EAIDwXj4Jk] |
+| 2024 | "Magical Girl holoWitches!" single (05-30); "Kanaken" 3D live with Kanata and AZKi | [Observed CH2] [CH4] |
+| 2024-11-29 | Conclusion of regular activities announced for 2025-01-26; she will remain a hololive production affiliate afterward | [Observed CH2] |
+| 2025-01 | Farewell week: last "KoyoChlo" collab (01-14), covers with La+ (01-15) and Koyori (「花の塔」 01-23; 「一番の宝物」 01-28 on Koyori's channel), "WILDCARD" with Kiara (01-25; the description says they had performed it at the 2024 fes), "Gehenna" with Iroha (01-26) | [CH4 u5hBkM77dX0, acYx6NnoaAQ, mKq0e-7nnSU] [KO4 nCPHzr_iF7s] [CH5 eEGbAKvSf1Q] [IR4 5zJp7oulbwc] |
+| 2025-01-26 | Graduation live "Gochisōsama deshita"; tenth original song "Hikari Are" | [CH4] [Observed CH2] |
+| 2025-04-26 | Performs "Sparkle" with Murasaki Shion at Shion's graduation live | [Observed CH2] |
+**Dossier · Hard Facts (continuity):**
+- Debut 2021-11-29; Secret Society holoX (intern, fixer and cleaner); regular activities concluded 2025-01-26
+  (affiliate); birthday 18 May; 148 cm; illustrator Parsley; fans Handlers (shiikuin); mascot Inu; stream tag
+  #またまたさかまた; fan-art tag #さかまた飼育日記.
+
+### Kazama Iroha — `bible/characters/Kazama-Iroha.md`
+**[SW] Groups:** hololive, Secret Society holoX, holoX, AzuIro, Hoshimatic Project, NePoX, Bara☆Dice
+**[SW] Other Names:** Iroha, Iroha-dono, Gozaru, Gozaru-chan, 風真いろは
+**[SW] Background:** Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-30 as the fifth and last member of Secret Society holoX; archived stream titles mark her as the last of holoX to pass a million subscribers (2024-11-19), and a secondary chronology numbers 「風向きエントロピー」 ("Entropy of wind direction," 2026) as her ninth original. She formed the duo AzuIro with AZKi (covers, the 2025 song "AZUIRO BESTIE DAYS," off-collabs), sings in Suisei's Hoshimatic Project (credited on "BEEP BEEP," 2026) and performed at holoX's first in-person unit concert, "First MISSION" (2026-04-29). With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
+**[SW] Relationships:** AZKi: "AzuIro," her steady duo (covers, "AZUIRO BESTIE DAYS" in 2025, Cuphead and off-collabs billed as summer camps). La+ Darknesss: holoX's founder; a cover together (2024). Takane Lui: a cover together (2024); secondary references record "Lui-nee" as her address for Lui. Hakui Koyori: holoX genmate. Sakamata Chloe (affiliate since 2025): the duet cover "Gehenna" on Chloe's last day (2025). Hoshimachi Suisei: Hoshimatic Project ("BEEP BEEP," 2026); coached her at Puyo Puyo Tetris (2023). Yukihana Lamy and Shishiro Botan: NePoX. Houshou Marine and Shirogane Noel: fellow Bara☆Dice vocalists (distributor credits). Takanashi Kiara: a credited guest at Kiara's 2024 and 2025 lives; #TASTYchallenge shorts with Nene (2025). Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa"). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: challengers in the cookie battle she and AZKi presented (2024). Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" from her 2026 birthday show, with FUWAMOCO.
+**Dossier · Background Timeline:**
+| Date | Event | Relevance |
+|---|---|---|
+| 2021-11-30 | Debut, the fifth and last of holoX | [Official IR1] [Observed IR2] |
+| 2022 | Calli's English lesson #02 with La+ and Gura (03-04); VALORANT with Ame and Kobo Kanaeru ("KoMeHa," 06-04) | [IR5] |
+| 2023 | AzuIro: GeoGuessr on a "Kazama map" AZKi made, covers and a first off-collab (08); Puyo Puyo Tetris coaching from Suisei (04); Hoshimatic Project (11-) | [IR4] [Observed IR2] |
+| 2024 | Covers with La+ (「絶対敵対メチャキライヤー」, 03-11) and Lui (「右肩の蝶」, 04-11); originals "Mahou Shoujo☆Magical GOZARU" and "Dreamy Sky" (06); a cookie-battle off-collab on her channel, presented with AZKi, with FUWAMOCO as the challengers (10-27, JgOwJ7m89Lk); a guest at Kiara's 4th-anniversary live (10-06); 1 million subscribers (11-19) | [Observed IR2] [IR4] [IR5] |
+| 2025 | "Gehenna" cover with Chloe on her last day (01-26); Cuphead as #あずいろ (06-03) and an off-collab billed as a summer camp (08); "A letter only you can read" (06-15); a guest at Kiara's birthday live (07); #TASTYchallenge shorts with Kiara and Nene (07-11, 07-16); "AZUIRO BESTIE DAYS" (official release 09-18) | [IR4 5zJp7oulbwc, -im-pIdanZY, mwhcZmc6-s8] [IR5 f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0] [Official music 642] |
+| 2026-04-29 | holoX's first concert, "First MISSION" | [Official IR6] |
+| 2026-05-19 | An excerpt from Elizabeth's 2026 birthday show, uploaded 05-19, credits Iroha, Watame, Nene, Polka and FUWAMOCO on "CHA-LA HEAD-CHA-LA" (upload date, not necessarily the show date) | [IR5 xylll7Mp0jk] |
+| 2026-06-18/19 | 「風向きエントロピー」 (official English title "Entropy of wind direction"; MV 06-18, digital release 06-19); a secondary chronology numbers it her ninth original | [IR4 RDobidAdBCA] [Official music 764] [Observed IR2] |
+**Dossier · Hard Facts (continuity):**
+- Debut 2021-11-30; Secret Society holoX (bodyguard, "insurance policy"); birthday 18 June; 156 cm; illustrator
+  Umibōzu; fans Kazama-tai (Kazama Squad); companion Pokobee (tanuki); katana Chakimaru; stream tag #かざま修行中;
+  fan-art tag #いろはにも絵を.
+
+### holoX — `bible/world/holoX.md`
+**[SW] Other Names:** Secret Society holoX, 秘密結社holoX, hololive 6th Generation
+**[SW] Description:** Secret Society holoX is hololive's sixth Japanese generation, a self-styled evil secret society that streams. In their official lore, La+ Darknesss is the founder, a demon whose vast powers are sealed; her archived channel introduction uses "wagahai" and performs a world-conquest boast. Takane Lui is the executive officer and point of contact who does the real work and cares for her subordinates; Hakui Koyori runs R&D as the self-proclaimed "brains," meddling in everyone's affairs to study them; Kazama Iroha is the society's bodyguard and "insurance policy," a samurai who says "de gozaru." Sakamata Chloe, the orca intern who cleaned up after them, ended her regular activities on 2025-01-26 and is now a hololive affiliate rather than part of the four-member performing lineup. They debuted one a night in November 2021 and held their first in-person unit concert, "First MISSION," at Pia Arena MM on 2026-04-29 as four; with NePoLaBo they form NePoX ("Watcha Gatcha!!!!!!!!," 2026). With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
+**[SW] Rules:** holoX's "evil organization" is a performed lore frame; their schemes are bits. After 2025-01-26 Chloe is a hololive affiliate rather than an active member of holoX's four-member performing lineup; affiliates can appear at individual events. The 2026 concert was four members. Collab titles show that a collab happened, not how close two members are; event rosters are dated.
+**Dossier · History:**
+| Date | Event | Who |
+|---|---|---|
+| 2021-11-26 to 11-30 | Debut week, one member a night | La+, Lui, Koyori, Chloe, Iroha |
+| 2022-03-04 | Calli's English lesson #02 | La+, Iroha; archive X492n37brRU |
+| 2022-04-16 | Calli's English lesson #04 | Lui, Chloe; archive YrZ4baKOT1c |
+| 2023 | HOLOYOI ep. 1 (Lui, Chloe); BAE-GEMITE episodes; Kiara's off-collabs with Lui and La+ | with Calli, Bae, Kiara |
+| 2024 | FUWAMOKOYO; holoX "Drokei" escape event | Koyori; the group |
+| 2025-01-26 | Chloe's graduation live; she stays an affiliate | Chloe |
+| 2025-04-19 | "Q&A With Bird Sisters" | Lui, Mumei |
+| 2025-07-27 | "Glow in the Dark" video premiere (Mythmash; inherited date, zone unspecified) | La+, Kiara; Kiara Relationship Map and archive v5RKZXNuVyw |
+| 2025-07-28 (digital release; zone unspecified) | "Glow in the Dark" digital release | La+, Kiara; official catalog 600, checked 2026-10-04 |
+| 2025-12-01 | 4th anniversary: "Gyouan Xdeath," concert announced | four members |
+| 2026-04-08 | Album "Secret ORDER" released | [Official, R6] |
+| 2026-04-29 | "First MISSION," Pia Arena MM | La+, Lui, Koyori, Iroha |
+**Dossier · Hard Facts (continuity):**
+- Members and debut order: La+ (2021-11-26), Lui (11-27), Koyori (11-28), Chloe (11-29), Iroha (11-30).
+- Chloe: regular activities ended 2025-01-26; affiliate.
+- First in-person concert: "First MISSION," Pia Arena MM, 2026-04-29 (four members).
+
+Incoming claims continue in `holox-incoming.md`.
+
+### projects/holoen/research/qa/packets/holox-incoming.md
+
+# Audit packet: holox (incoming claims)
+
+Snapshot: git 17521e0.
+
+## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
+Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Hakui Koyori|Kazama Iroha|Gozaru-chan|ラプラス・ダークネス|Iroha-dono|Takane Lui|秘密結社holoX|Kura-tan|Sakamata|Lui-nee|Lui Lui|Koyorin|Koyori|沙花叉クロヱ|Laplus|Gozaru|風真いろは|Kuroe|holoX|Chloe|博衣こより|Iroha|Koyo|鷹嶺ルイ|ルイルイ|Lui|La+)(
+
+### from AZKi
+- `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
+- `bible/characters/AZKi.md › [SW] Relationships`: Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025).
+- `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
+- `bible/characters/AZKi.md › [SW] Relationships`: Koyori also joined AZKi, Isaki Riona and Koganei Niko for a four-person 3D karaoke (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
+- `bible/characters/AZKi.md › [SW] Relationships`: Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024).
+- `bible/characters/AZKi.md › [SW] Relationships`: La+ Darknesss: GeoGuessr for Tochigi Day and other games (2025).
+- `bible/characters/AZKi.md › Behavioral Traits`: 4. Dances other members' songs in her shorts (Calli's "Orpheus," 2025-10-09, archived metadata lXLBb9IVraI; in 2026 Laplus, Towa and Nene, Miko, Koyori, Riona, Lui, Zeta). [Observed AZ4 titles]
+- `bible/characters/AZKi.md › Background Timeline`: | 2025-09-18 | "AZUIRO BESTIE DAYS" with Kazama Iroha (official digital release) | [Official AZ10] |
+- `bible/characters/AZKi.md › Relationship Map`: | Kazama Iroha | "AzuIro" (secondary label) | Frequent partner since 2022; their original "AZUIRO BESTIE DAYS" (2025-09-18) They performed "AZUIRO BESTIE DAYS" on STAGE 3 of hololive 7th fes. (2026-03-07), with linked little fingers and a shared heart gesture; AZKi's encouragement in the MC left Iroha tearful. | [AZ2] [Official AZ10] [Official NEW-R5-007] |
+- `bible/characters/AZKi.md › Relationship Map`: | Hakui Koyori, Yukihana Lamy | "KoZMy" (secondary references; a 2025-08-03 "KoZMy 結成⁉" collab title) | A 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026-02-03, not a KoZMy event); Lamy is also in "KALAZ" with Amane Kanata (secondary) Lamy: an impromptu group chat with Lamy and Inugami Korone on Lamy's channel (#あずらみころ, 2026-09-18). | [Koyori file KO4 lvgC3pW-LVA, 1HQL3WJPBHA] [Lamy file LM2] [Archive metadata NEW-R5-005] |
+- `bible/characters/AZKi.md › Relationship Map`: | Sakamata Chloe (affiliate) | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [Chloe file CH4] |
+- `bible/characters/AZKi.md › Relationship Map`: | La+ Darknesss | — | GeoGuessr for Tochigi Day (2025-06-15), The Headliners with Korone and Miko (2025-05-07), Minecraft (2025-07); a clip of La+ reacting to AZKi's ASMR (2026-03-31) | [AZ4 80Xb4PxZLyw, AMturrbpVD0] [La+ channel z0Z2Zc3MlE4, 6n2X82dqqx0] |
+
+### from Cecilia Immergreen
+- `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: La+ Darknesss: a 2026 short titled "ONEE-SAMA!
+- `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | La+ Darknesss | holoX senior | A 2026 short titled "ONEE-SAMA! (Laplus-senpai... onee-sama.. janai)" (archived title, not verified dialogue) | [S1 tqF0_rYGW20] |
+
+### from Elizabeth Rose Bloodflame
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Her April 25, 2026 birthday-live guests included FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine, Korone and Nerissa.
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | FUWAMOCO | Advent seniors | They sang in her 2026 birthday cover "CHA-LA HEAD-CHA-LA" with Polka, Nene, Watame and Iroha | [Observed EB3] |
+
+### from Fuwawa Abyssgard
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Hakui Koyori: "FUWAMOKOYO" on FUWAMOCO MORNING (2024).
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Takane Lui: "TWIN DAY WITH LUI"
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Kazama Iroha: a cookie-quiz off-collab (2024).
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: La+ Darknesss: a dance short to her song (2026).
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Sakamata Chloe: a "Gimme Chocolate!!" cover (2024).
+- `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori (FUWAMOCO Morning ep. 90, 2024-04-26); Lethal Company with Koyori and Fubuki (2024-03-09); Koyori a guest at their 2025 birthday concert; "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab presented by Iroha and AZKi, the twins as challengers (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
+- `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Sakamata Chloe | JP senior (holoX) | A cover of BABYMETAL's "Gimme Chocolate!!" with Chloe (2024-02). | [Archive metadata, ragtag m5c9WfWUBZE] |
+
+### from Gawr Gura
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: (2023); UMISEA's official 2023 roster also includes Sakamata Chloe.
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | La+ Darknesss, Kazama Iroha, Shishiro Botan | JP members | HOLO ENGLISH LESSON #02 with La+ and Iroha (Calli's stream, 2022-03-04); "Apex Predators," a wiki-listed pair name with Botan | [S1 X492n37brRU] [Botan file, secondary] |
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | Houshou Marine, Sakamata Chloe | UMISEA (official 2023 roster: Aqua, Marine, Chloe, Gura, Ina) | "SHINKIRO" with Marine (anime MV on Marine's channel, 2023-11-12, credited to both; the "GuraMarine" pair name is wiki-listed only) | [Marine file MA4 9ehwhQJ50gs] [Official UMISEA roster] |
+
+### from Gigi Murin
+- `bible/characters/Gigi-Murin.md › [SW] Relationships`: Takane Lui: an animated "Soar" short on her channel (2026).
+
+### from Hakos Baelz
+- `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Natsuiro Matsuri: "Kakumei Dualism" at the 2026 fes. holoX: Sakamata Chloe ("Crazy Scary Holy Fantasy," 2023), Takane Lui (episode 5, with Chloe) and Hakui Koyori (episode 4, with Nene) on BAE-GEMITE DOMINATION.
+- `bible/characters/Hakos-Baelz.md › Background Timeline`: | 2026-09-28 | "PARADISE!", the hololive Dreams area theme: animated MV; Bae shares the vocal credit with Omaru Polka, Houshou Marine, Yukihana Lamy, Hakui Koyori, Kobo Kanaeru and Ichijou Ririka. Also announced that day: "REGALIA" at Kanadevia Hall, scheduled for 2026-12-01 (after the baseline: an announcement only). | [Secondary NEW-R2-019, press-release reproduction] [Official, 20260928-02-16] |
+- `bible/characters/Hakos-Baelz.md › Relationship Map`: | Secret Society holoX (Lui, Chloe, Koyori) | JP kouhai | The EN-server Minecraft tour with Mumei, Lui and Chloe (2022-02-12); BAE-GEMITE DOMINATION #4 with Koyori and Nene (2023-04-22) and #5 with Lui and Chloe (2023-04-29); a Suika Game challenge and the "Crazy Scary Holy Fantasy" cover with Chloe (2023-10-30); KHAOS KITCHEN taste testers Koyori, Calli and Subaru (2023-11-24) Koyori is a co-credited singer on "PARADISE!" (2026-09-28). | [HB3 S-d80w5gs-c, WwjB7QSmQng, z4-5Hq5AKG4, p9_oBCK0olg, 9EAIDwXj4Jk, NdLiUW-nUlk] [Secondary NEW-R2-019] |
+
+### from Hoshimachi Suisei
+- `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: her Hoshimatic Project ("BEEP BEEP," 2026); Sakamata Chloe was in its earlier lineup (secondary); she coached Iroha at Puyo Puyo Tetris (2023).
+- `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA (2024); La+, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024).
+- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Hakui Koyori, Sakamata Chloe, Kazama Iroha | Hoshimatic Project | Her idol-group practice unit (2023–); Koyori and Iroha are among the nine credited "BEEP BEEP" vocalists (2026), Chloe was in the earlier lineup (secondary roster); she coached Iroha at Puyo Puyo Tetris (2023-04-11) | [Official BEEP BEEP credits] [Koyori file KO2] [Iroha file IR4 8tOoSNGa_rg] |
+- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured Suisei, La+, Botan and Shirakami Fubuki (publisher roster; a joint broadcast is not established) | [SU4 2v4DYYf7hB0] [Sammy roster] |
+
+### from Houshou Marine
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Shirogane Noel: hololive Fantasy genmate; Bara☆Dice with Takane Lui, Shiranui Flare, Momosuzu Nene and Kazama Iroha; separately, Yakamashi Musume with Yukihana Lamy and Inugami Korone.
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Hakui Koyori: "#頭ピンク組," the pink-haired pair of their archived titles (a race and a talk testing whether they are alike, 2025); Blue Journey.
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: La+ Darknesss: a sponsored collab billed #マリラプ and a cover with Koyori (2025).
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Takane Lui and Kazama Iroha: Bara☆Dice.
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Sakamata Chloe (affiliate): UMISEA and holoWitches.
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2026-09 | Holo Koshien series: a baseball team followed through successive in-game seasons; Koyori joined the 09-17 session and AZKi commentated on 09-26. | [Archive metadata NEW-R5-014, NEW-R5-006] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Hakui Koyori | "#頭ピンク組" (the pink-haired pair, archived titles); Blue Journey | A talk testing whether they are alike and a Gorogoro Mountain race (2025-07); backseat Pikachu (2025-08) Koyori joined her Holo Koshien session (2026-09-17). | [MA4 QnT0cKrEhkk] [Koyori file KO4] [Archive metadata NEW-R5-014] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | La+ Darknesss | "#マリラプ" (archived title) | A sponsored collab (2025-07); a cover with La+ and Koyori (2025-08) | [MA4 Xf4MPOkHKtE] [Koyori file] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Takane Lui | Bara☆Dice (Bandai credits) | The wiki's "SSS" with Yuzuki Choco was not verified in review | [MA2] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Sakamata Chloe (affiliate) | UMISEA; holoWitches | Chloe played Marine's horror game (2023) | [MA2] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Kazama Iroha | Bara☆Dice | — | [MA2] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Minato Aqua (graduated) | UMISEA | The ocean unit's official roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster] |
+
+### from IRyS
+- `bible/characters/IRyS.md › [SW] Relationships`: Shishiro Botan, Takane Lui, Sakamata Chloe and Tokoyami Towa: an Overwatch 2 team (2023); Hakui Koyori: Splatoon 3 and Among Us.
+- `bible/characters/IRyS.md › Relationship Map`: | Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 with Koyori, Watame and Korone (2022-10-03); an Among Us lobby with Koyori, Chloe and others (2023-05-08); Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
+
+### from Kikirara Vivi
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Yukihana Lamy | JP senior | Lamy hosted, and Vivi, Iroha and Bijou commentated, the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
+
+### from Koseki Bijou
+- `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Takane Lui: an animated "Soar" short on her channel (2026).
+
+### from Mococo Abyssgard
+- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Hakui Koyori: special guest on FUWAMOCO MORNING ("FUWAMOKOYO," 2024).
+- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: La+ Darknesss: a dance short to her song (2026).
+- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Takane Lui: "TWIN DAY WITH LUI"
+- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Kazama Iroha: a cookie-quiz off-collab (2024).
+- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Sakamata Chloe: a "Gimme Chocolate!!" cover (2024).
+- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Secret Society holoX (Koyori, Lui, Iroha, La+) | JP members | "FUWAMOKOYO" with Koyori (FUWAMOCO Morning ep. 90, 2024-04-26); Lethal Company with Koyori and Fubuki (2024-03-09); Koyori a guest at their 2025 birthday concert; "TWIN DAY WITH LUI" (2023-11-25); a cookie-quiz off-collab presented by Iroha and AZKi, the twins as challengers (2024-10-27); dance shorts to La+'s and Lui's 2026 songs | [S1 gCYXKgYcFmk, XR1PEtj15kE, ouQF2A1l_cI, MbqO5OPuT80, JgOwJ7m89Lk] |
+- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Sakamata Chloe | JP senior (holoX) | A cover of BABYMETAL's "Gimme Chocolate!!" with Chloe (2024-02). | [Archive metadata, ragtag m5c9WfWUBZE] |
+
+### from Mori Calliope
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: English-lesson guests Marine, AZKi, La+, Iroha, Lui and Chloe (2022); HOLOYOI guests Lui, Chloe, Noel and Botan (2023).
+- `bible/characters/Mori-Calliope.md › Relationship Map`: | Secret Society holoX (La+, Lui, Chloe, Iroha) | JP kouhai | English practice with Lui (2021-12-27); HOLO ENGLISH LESSON #02 with La+, Iroha and Gura (2022-03-04) and #04 with Lui and Chloe (2022-04-16); HOLOYOI #01 with Lui and Chloe (2023-03-23); dance shorts to Lui's songs | [S1 X492n37brRU, YrZ4baKOT1c, UuL_nORzfNM; world card "holoX"] |
+
+### from Nakiri Ayame
+- `bible/characters/Nakiri-Ayame.md › [SW] Relationships`: La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA (2024).
+- `bible/characters/Nakiri-Ayame.md › [SW] Relationships`: Takane Lui: "Onikan"
+- `bible/characters/Nakiri-Ayame.md › Relationship Map`: | La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | All four streamed holoGTA (2024-09); Ayame was not in the m HOLD'EM poker collab | [AY4 1iz9AxcgvPg] [Sammy roster] |
+- `bible/characters/Nakiri-Ayame.md › Relationship Map`: | Takane Lui | "Onikan" (archived titles) | A sponsored collab billed おにかん (2025-08-09); secondary coverage also reports R.E.P.O. with Lui, Miko and Korone (2025) | [Lui channel YXaDmUXPSGo] [appbank.net report, secondary] |
+
+### from Nanashi Mumei
+- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft; Nakiri Ayame: the 2023 Sports Festival white team.
+- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Sakamata Chloe: Mumei's EN-server Minecraft tour with Lui and Bae (2022).
+- `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2024-08-05 | 3D birthday live "Outside the Box"; guests Gura, IRyS, Bae, Nekomata Okayu, Inugami Korone, Momosuzu Nene, Hakui Koyori | [Observed M3 title, description] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP seniors | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Inugami Korone, Nekomata Okayu (GAMERS); Momosuzu Nene, Hakui Koyori | JP seniors | All four were guests at "Outside the Box" (2024-08-05); Korone and Mumei released a duet cover of "とんとんまーえ！" (2025-04-23, P6GLC_HnCUU) | [Observed M3 descriptions] |
+- `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Sakamata Chloe, Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Chloe and Lui on Mumei's EN-server Minecraft tour with Bae (2022-02-12); Marine's horror game with Bae (2023-08-23); Noel and Vivi in Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 50tBPC5c2zM, RY1GkF4jMls, OMDzBQohAf8] |
+
+### from Nekomata Okayu
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Hakui Koyori: a lateral-thinking puzzle collab (2025).
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026).
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Takane Lui: Harry Potter watch-alongs (2025).
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Sakamata Chloe: Okayu contributed chorus vocals to Chloe's "Bling-Bang-Bang-Born" cover (2025).
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hakui Koyori | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07) | [Koyori channel PtjqrNUOSWA] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | La+ Darknesss | "Dorobo Kensetsu" | A 3D lie-detector challenge (2026) | [La+ file LA2, LA4] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Takane Lui | — | Harry Potter watch-alongs to introduce Okayu to the series (2025-11-24 and others); "Shaccho" is a first-model ASR rendering whose direction is unconfirmed, so it is not used | [Lui channel Lj0MZFpHitQ] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Sakamata Chloe | — | Chorus on Chloe's "Bling-Bang-Bang-Born" cover (2025-01-24). | [Archive metadata, ragtag wxnTKRkpePs] |
+
+### from Nerissa Ravencroft
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: La+ Darknesss: both in holoGTA (2024); a dance short to her "Onee-sama♡Love Call"
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: (2026); Takane Lui: a "Soar" dance short (2026).
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | Dance shorts to Lui's "Soar" (2026) and La+'s "Onee-sama♡Love Call" (2026); both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
+
+### from Ninomae Ina'nis
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine and Sakamata Chloe: UMISEA.
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Secondary accounts describe Ina's protective mock-threat bit about Gura; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
+
+### from Ouro Kronii
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Takane Lui: Minecraft with IRyS and Kaela (2022).
+- `bible/characters/Ouro-Kronii.md › Relationship Map`: | Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) (archived upload credits) | [S1 zp5nxAgi2dw, OMDzBQohAf8] |
+
+### from Raora Panthera
+- `bible/characters/Raora-Panthera.md › [SW] Relationships`: Takane Lui: an animated "Soar" short on her channel (2026).
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | Takane Lui | holoX senior | An animated "Soar" short on Raora's channel (2026-06-22) | [S1 N8bfOiPot6o] |
+
+### from Shirogane Noel
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Houshou Marine: hololive Fantasy genmate; Bara☆Dice with Takane Lui, Shiranui Flare, Momosuzu Nene and Kazama Iroha; separately, Yakamashi Musume with Yukihana Lamy and Inugami Korone; 3rd-gen R.E.P.O.
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Hakui Koyori: "#ノエこよ," a Power Pros baseball exhibition (2025), and Blue Journey (2023).
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Takane Lui and Kazama Iroha: Bara☆Dice.
+- `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Hakui Koyori | "#ノエこよ" (archived title) | A Power Pros baseball exhibition match (2025-01-10); Blue Journey (2023) | [Koyori file slTZmnyNbIc] [Official Blue Journey roster] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Takane Lui, Kazama Iroha | Bara☆Dice (Bandai credits) | — | [Bandai credits] |
+
+### from Shishiro Botan
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Takane Lui: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (secondary); Left 4 Dead 2 (2022) and Overwatch 2 (2023) together.
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026).
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss and Hoshimachi Suisei: holoGTA and, with Shirakami Fubuki, the m HOLD'EM poker collaboration (2024); Nakiri Ayame: holoGTA (2024).
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: IRyS: Left 4 Dead 2 with Lui and Korone (2022) and an Overwatch 2 team with Lui, Sakamata Chloe and Tokoyami Towa (2023).
+- `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2022-04-24 | Left 4 Dead 2 with IRyS, Takane Lui and Inugami Korone | [BO5 K1wStJxm4F0] |
+- `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2023 | BAE-GEMITE DOMINATION #2 with Bae and Subaru (04-08); HOLOYOI #03 with Calli and Subaru (05-18); an Overwatch 2 team with IRyS, Lui, Chloe and Towa (08) | [BO5] |
+- `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2026-08-26 | NePoLaBo and Secret Society holoX release their joint original "Watcha Gatcha!!!!!!!!" | [Official NEW-R6-004] |
+- `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2026-09-26/27 | NePoX events with Secret Society holoX | [LM4 Ml1tM8S40p0] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Takane Lui | "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (secondary) | Left 4 Dead 2 (2022); an Overwatch 2 team (2023). The "BLT" label was not verified in review | [BO2] [BO5] [Lui file] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Hakui Koyori, Kazama Iroha | NePoX | NePoLaBo × holoX events (2026) The Shishiro Cup offline programme billed Botan and La+ on opposing sides of its East–West team competition (announced 2026-02-02 for 04-12). | [BO2] [Official NEW-R6-003] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Kazama Iroha | — | Built the roof of Botan's Minecraft shop (2023) | [Iroha file] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Sakamata Chloe (affiliate) | — | The 2023 Overwatch 2 team | [BO5] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki, not Ayame (publisher roster; a joint broadcast is not established) | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | IRyS | — | Left 4 Dead 2 with Lui and Korone (2022); the Overwatch 2 team with Lui, Chloe and Towa (2023) | [BO5 K1wStJxm4F0, roWKpgZsjR4] |
+
+### from Takanashi Kiara
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Pavolia Reine (ID) and Takane Lui: HOLOTORI ("PavoNashi" with Reine).
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: HOLOTALK guests include Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ ("Glow in the Dark"), Chloe ("WILDCARD"), Koyori ("MIRAGE") and Iroha (a guest at her 2024 and 2025 lives).
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Secret Society holoX | JP kouhai | HOLOTORI with Lui and Mumei; La+: "FAKE HEART" (2025-04-08), the Mythmash single "Glow in the Dark" (premiere 2025-07-27; official digital release 2025-07-28) and an off-collab (2023-06-30); Chloe: an origami off-collab (2023-11-22) and the "WILDCARD" cover (2025-01-25); Iroha: a credited guest at her 4th-anniversary live (2024) and birthday live (2025), and #TASTYchallenge shorts with Nene (2025-07-11, 07-16); Koyori: a "MIRAGE" dance short (2024-12-27) | [S1 v5RKZXNuVyw, eEGbAKvSf1Q, 0LoG81pLS8c, f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0, xXwi19krZ68] |
+
+### from Watson Amelia
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Kazama Iroha: VALORANT with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa").
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Takane Lui: Apex with Airani Iofifteen (2022).
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Kazama Iroha, Takane Lui | JP members | "KoMeHa" with Iroha and Kobo Kanaeru (VALORANT, 2022-06-04); Apex with Lui and Iofi (2022-01-19) | [S1 tGVhLibbYL0, Mory0I9vXtI] |
+
+### from Yukihana Lamy
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: She sang in the "Blue Journey" project with Marine, Noel, Koyori and Sakura Miko (2023), joined "Magical Girl holoWitches!"
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi.
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: her KoZMy cover partner with Hakui Koyori on "Ai♡Scream!"
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Hakui Koyori: KoZMy (2025) and a March 2026 off-collab titled to name their duo.
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: La+ Darknesss, Takane Lui, Kazama Iroha and Hakui Koyori: NePoX, the 2026 NePoLaBo × holoX events.
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Sakamata Chloe (affiliate): Rust with Amane Kanata (2022).
+- `bible/characters/Yukihana-Lamy.md › Behavioral Traits`: 5. Units and pairs: NePoLaBo (with Botan, Omaru Polka and Momosuzu Nene); KALAZ (with Amane Kanata and AZKi, secondary); KoZMy (with AZKi and Koyori; a 2025-08-03 collab titled "KoZMy 結成⁉"); "Magamaga's" (with Nene, secondary); "Yakamashi Musume" (archived metadata); holoWitches. [Observed LM2 §Relationships, secondary] [Koyori file lvgC3pW-LVA]
+- `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2023 | "Blue Journey" music project with Marine, Noel, Koyori and Sakura Miko | [Koyori file; Observed LM2] |
+- `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2025 | Joins "Magical Girl holoWitches!" (04–05); "Yoppara Music!" (official digital release 08-13); a "KoZMy 結成⁉" collab with AZKi and Koyori (08-03; secondary listings give its first anniversary in 2026-08) | [Observed LM2] [Official music 609] [Koyori file lvgC3pW-LVA] |
+- `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2026 | Her collaboration sake "Yukiyozuki" with Meiri Shurui (04); an off-collab with Koyori titled to name their duo (03); a NePoLaBo 3D party (04-29); NePoX took place at Ariake Arena on 2026-09-26/27 with Nene, Polka, Lamy, Botan, La+, Lui, Koyori and Iroha: NePoLaBo-versus-holoX games ending Day 1 with all eight in a giant-robot red-light/green-light challenge, and the collaboration song "Watcha Gatcha!!!!!!!!" introduced [Secondary NEW-R5-020, organizer report]; "Snowlight Stories" (official digital release 08-13) | [LM4 Zi8R63ee0Fs, Ekdsnb2aWY4, Ml1tM8S40p0] [Official NePoX page] [Official music 792] [Brewery page] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Hakui Koyori | "KoZMy"; NePoX | A March 2026 off-collab whose title proposes naming their duo (the chosen name is not established); KoZMy horror (2025) They performed "Snow halation" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [LM4 Zi8R63ee0Fs] [Koyori file] [Official NEW-R5-019] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | La+ Darknesss, Takane Lui, Kazama Iroha | NePoX | NePoLaBo × holoX events (2026; billed roster of eight, Chloe not included) | [LM4 Ml1tM8S40p0] [Official NePoX page] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Kazama Iroha | — | Caravan Stories (2023) | [Iroha file] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Sakamata Chloe (affiliate) | — | Rust with Kanata (2022-09); a self-knowledge quiz collab (2025-01-18) | [Chloe file z55R0Z8_qk0] [LM4 9DMCTQDpBos] |
+
+### from Advent Pairs
+- `bible/world/Advent-Pairs.md › Beyond EN`: - **JP:** FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo); archived game metadata lists Shirakami Fubuki and Hakui Koyori with the twins; "FUWAMOKOYO" labels Koyori and the twins in FUWAMOCO MORNING #90; Okayu and Korone made cameos at their 3D debut; Oozora Subaru sang "HOT DUCK!" with Bijou and the twins; Akai Haato and Bijou are "Red Stone"; Ichijou Ririka (ReGLOSS, originally DEV_IS) played Smash Bros. with Bijou with a loser's punishment. [Observed S1; S2]
+
+### from Cross-Branch Friends
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina appears with Aqua, Marine, Chloe and Gura in UMISEA's official 2023 roster and released "Kurukuru Cruise" with Nekomata Okayu (2025).
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Amelia played VALORANT with Kobo and Kazama Iroha (2022; "KoMeHa" in secondary references).
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (she hosted a Q&A with Lui titled "Q&A With Bird Sisters") and recorded a duet cover with Inugami Korone in her last week.
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: (the X is silent; "Purrfect Pair" merchandise, 2026), Reine and Airani Iofi join her "Fanfic Club"; FUWAMOCO's oshi are Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou.
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Of Justice: Ollie is Elizabeth's kami-oshi, and Elizabeth plays with her and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit); Elizabeth's 2026 birthday covers featured Subaru, Roboco, Sora, Choco, Marine, Korone, Polka, Nene, Watame and Iroha; Kaela appears in Raora's fictional basement bit ("SMITTEN"); Raora played Clubhouse Games with Haachama and Super Mario Party with Haachama and Zeta, and is "RaoRiRi" with Ririka; Cecilia plays games with Sora; at Serendipity, Kobo, Zeta and Tsunomaki Watame sang with Elizabeth, Gigi, Cecilia and Raora.
+- `bible/world/Cross-Branch-Friends.md › By Character`: - **Takanashi Kiara:** Usada Pekora is her oshi ("Senpai! Be my guide for the day!", 2020; HOLOTALK's 24th guest, 2022). Pavolia Reine is a recurring collaborator on her channel (30 streams; their pair name "PavoNashi"; a VR "vacation," a Minecraft summer festival; the bird unit "HOLOTORI" with Subaru, Reine, Mumei and Lui); Kobo calls her "Mommy Kiwawa." Other units: "O'riends" (Momosuzu Nene), "KoAra Connect" (Hakui Koyori), "SunMoon"/"Eclipse" (Moona Hoshinova). Outside hololive: "PomuTori" (Pomu Rainpuff), "Mintori" (Mint Fantôme). [Observed S1; S2 Kiara; Kiara file]
+- `bible/world/Cross-Branch-Friends.md › By Character`: - **Ninomae Ina'nis:** an artist among artists: the ocean unit UMISEA (formed 2021 with Minato Aqua, Houshou Marine and Gura; Chloe appears in the official 2023 roster; Aqua and Gura have graduated and Chloe is an affiliate); "HoloJEI" (Tsunomaki Watame, Kureiji Ollie, Anya Melfissa); "TakoBazo" (Vestia Zeta); "TakoNeko" (Nekomata Okayu, a secondary pair name; "Kurukuru Cruise," 2025; see "JP Senpai Pairs"); Shiranui Flare appeared on her 2025 AmiAmi special ("Flare?!!?"). She admires Marine as an artist. [Observed S1; S2 Ina; Ina file]
+- `bible/world/Cross-Branch-Friends.md › By Character`: - **Watson Amelia** (affiliate): "KoMeHa" (Kobo Kanaeru, Kazama Iroha), "ZetAme" (Vestia Zeta); outside hololive, "SelAMei" (with Mumei and Selen Tatsuki). [Observed S2 Ame]
+- `bible/world/Cross-Branch-Friends.md › By Character`: - **Nanashi Mumei** (graduated): HOLOTORI with Kiara, Subaru, Reine and Lui ("【MUMEI + LUI】Q&A With Bird Sisters !!!," 2025-04-19, fEO6kSCseE0); drawing collabs with Airani Iofi ("Doodles with IOFI," 2022-04-14, 2dWx7xg48xc; "SWIMSUITS!! with IOFI!," 2023-01-30, XCXF08GMUHY); a duet cover of "とんとんまーえ！" with Inugami Korone (2025-04-23, P6GLC_HnCUU), and Okayu, Korone, Nene and Koyori as guests at her 3D live "Outside the Box" (2024-08-05, gl7CwlEg2ZI); Minecraft "Peace & Love with HAACHAMA" (2025); Tokoyami Towa calls her "Mumi-chan." [Observed S1; Mumei file M2]
+
+### from FUWAMOCO
+- `bible/world/FUWAMOCO.md › Shared Relationships`: - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi); Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori, "FUWAMOKOYO"); Akai Haato, Tsunomaki Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
+
+### from Fauna and Mumei Pairs
+- `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Kiara:** Mumei and Kiara are birds in HOLOTORI (with Subaru, Reine and Lui): "BUILDER BIRBS" (2021), "Kiwawa & Mumeiwi" (2022), a DECO*27 song together on the 4th fes. holo*27 stage (2023), "two smol beans" (2025-03-26) and Kiara's HOLOTALK 33rd guest (2025-04-22); Kiara calls her "Moomsies." Fauna and Kiara: "KIWAWA vs FAWNA" (2022), Pokémon Unite practice (2023), and Fauna was HOLOTALK's 32nd guest (2024-12-27), a week before she graduated. [Observed S1; S3 infobox; S4]
+- `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Other collaborators:** Hakos Baelz is a recurring collaborator of both (Fauna's horror partner); Tsukumo Sana (graduated 2022) completed the Council; Inugami Korone recorded a duet cover with Mumei (2025-04-23) and, with Okayu, Nene and Koyori, guested at "Outside the Box" (2024-08-05). [Observed S1; Promise card]
+
+### from JP Senpai Pairs 2
+- `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Ninomae Ina'nis, Gawr Gura:** UMISEA, the ocean unit (official 2023 roster: Minato Aqua, Marine, Sakamata Chloe, Gura and Ina); Calli's English lesson #01 (Ina); a guest at Ina's "Pleides" (2024); "SHINKIRO" with Gura (anime MV on Marine's channel, 2023-11-12, credited to both). The "GuraMarine" pair name is wiki-listed only. [Official UMISEA roster] [S1 9ehwhQJ50gs, 3n9igJnSXtQ] [S2 Marine §Relationships, secondary]
+- `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **IRyS:** Left 4 Dead 2 with Lui and Inugami Korone (2022-04-24); an Overwatch 2 team for Holizontal JAM with Lui, Chloe and Towa (2023-08). [S1]
+- `bible/world/JP-Senpai-Pairs-2.md › Among themselves`: - Marine and Noel: hololive Fantasy and Bara☆Dice (Bandai credits); with Lamy and Inugami Korone, "Yakamashi Musume" (archived metadata). The wiki's "Onee-san Gumi" with Shiranui Flare was not verified in review. Marine, Noel, Lamy, Hakui Koyori and Sakura Miko sang in the music project "Blue Journey" (2023). [S2]
+- `bible/world/JP-Senpai-Pairs-2.md › Among themselves`: - With the first four: Marine and Suisei released "Chatter Chatter" (2026); Marine gave Okayu the nickname "Okanyan" (Okayu's official profile); Noel and Suisei are in "Shiranui Kensetsu" (official unit roster); Noel and Ayame did an Audio-Technica sponsored stream (2025-07-11); Botan streamed holoGTA with Suisei and Ayame (2024) and joined the m HOLD'EM poker collab with Suisei (2024); Lamy and AZKi are in KoZMy (with Koyori) and, per secondary references, KALAZ (with Amane Kanata). The wiki's holoALICE, MOMAS and HoLOGSS labels were not verified in review. [S2] [S1] [Official]
+
+### from Justice Pairs
+- `bible/world/Justice-Pairs.md › With Advent`: - **FUWAMOCO:** Raora is their Serendipity unit partner in B.F.F (official billing, "Inu Neko. Seishun Massakari"); Gigi and Cecilia guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit ("GigiMoco" and "Cecemoco" are pair labels with Mococo); Cecilia played Chrono Trigger with Mococo, including 2026 off-collabs; Gigi sang "Bright Tonight" (2025) with the twins, IRyS and Kronii, and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity; Fuwawa, Gigi and Calli as "2 Creatures + 1 Reaper" (2026, Fuwawa alone); the twins sang in Elizabeth's 2026 birthday cover "CHA-LA HEAD-CHA-LA" with Polka, Nene, Watame and Iroha. [Official S3 interview03] [Observed S1; S2]
+- `bible/world/Justice-Pairs.md › Beyond EN`: - **JP:** Elizabeth's 2026 birthday covers, recorded at COVER's studio, featured Oozora Subaru; Roboco, Tokino Sora and Yuzuki Choco; Houshou Marine and Inugami Korone ("IT'S LOVE," iwnHChZq0N8, credits read by Claude); FUWAMOCO with Polka, Nene, Watame and Iroha; her 2026 "Yona Yona Dance" cover mixed branches (Natsuiro Matsuri, Hiodoshi Ao, Ollie and HOLOSTARS members). Cecilia played Minecraft and Super Mario 3D World with Tokino Sora (2025-02); Raora played Clubhouse Games with Haachama (2024-08-16), sang "Neko Kaburi-Na" with Ina, Shiori and guest Subaru at -All for One-, is "RaoRiRi" with Ichijou Ririka; "OkaGigi" is a secondary pair label for Gigi and Nekomata Okayu; secondary clip metadata records translation-based banter during the 2026 New Year Game Festival. It does not establish exact dialogue or a private relationship. Tsunomaki Watame sang "Cloudy Sheep" with Calli and Cecilia and "What an amazing swing" with Kiara and Raora at Serendipity. FLOW GLOW: Koganei Niko sang with Elizabeth in LYRA. [Observed S1; S2] [Official S6, S7]
+
+### from Myth and Kronii: Other Pairs
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
+
+### from hololive History 2023-2026
+- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2025-01-26 | Sakamata Chloe concludes streaming activities (affiliate) | — |
+
+### from hololive History to 2022
+- `bible/world/hololive-History-to-2022.md › [SW] Description`: The shared past the cast remembers. 2017: Tokino Sora makes COVER's first broadcast. 2018–2019: the Japanese generations debut (1st gen, 2nd gen with Aqua and Shion, GAMERS, 3rd gen "Fantasy" with Pekora and Marine, 4th gen with Coco and Kanata); AZKi debuts in 2018 and joins Suisei under INoNaKa Music in 2019, and Suisei moves to the main branch; the male group HOLOSTARS starts in 2019 (Rikka among its first generation); in late 2019 hololive, HOLOSTARS and INoNaKa Music become "hololive production." 2020: the Indonesian branch opens; on 2020-09-12/13 hololive English -Myth- debuts (Calli first, then Kiara, Ina, Gura, Ame); Gura becomes the first hololive member to reach a million subscribers (2020-10-22: "I am an overwhelmed, but very happy shark") and in 2021 the most-subscribed VTuber anywhere; by 2021-05-30 all of Myth pass a million. 2021: IRyS debuts as Project: HOPE's VSinger (07-11), -Council- debuts with Kronii, Fauna and Mumei (08-23), holoX debuts, Coco graduates. 2022: ID gen 3 (Kobo, Zeta, Kaela), Calli and Kiara perform at hololive 3rd fes.
+- `bible/world/hololive-History-to-2022.md › Timeline`: | 2021-11 | 6th gen "Secret Society holoX" (La+, Lui, Koyori, Chloe, Iroha) | — |
