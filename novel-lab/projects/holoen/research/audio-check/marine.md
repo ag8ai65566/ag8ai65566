@@ -54,3 +54,5 @@ are not quoted or summarized here.
 | "待って待って待って待って" | [0:05:28](https://youtu.be/aHis7-TfsJY?t=328) | "…開?ちょっと待って待て説明がない…" | **Not confirmed** by the second model; not quoted |
 | "一回落ち着こうよ" | [0:05:41](https://youtu.be/aHis7-TfsJY?t=341) | "…回落ち着こう一回落ち着こうよね、だいたい…" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "馬鹿言ってるんじゃねぇや" | [0:06:43](https://youtu.be/aHis7-TfsJY?t=403) | "…!バカ言ってんじゃねーよ!ウィン…" | **Not confirmed** by the second model; not quoted |
+| "それでは行きますよー出航ー" | [3:39:54](https://youtu.be/aHis7-TfsJY?t=13194) | "…それでは行きますよー!しゅっこー!" | **Shared span (hand-checked):** whole line; 出航 and しゅっこー are the same reading (しゅっこう). Her sign-off, at the end of the stream (quotation pass, Claude, 2026-10-04) |
+| "しゅっこ!" | [1:46:52](https://youtu.be/H1Z96LzzG7k?t=6412) | "…それでは行きますよ…出航!" | **Shared span (hand-checked):** the sign-off word (the first model drops the final long vowel); a second stream (quotation pass, Claude, 2026-10-04) |

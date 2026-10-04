@@ -7,3 +7,4 @@
 - 2026-10-04 10:15 作者裁決收錄 final.md（sha256 363cad47c8c7）：Author order 2026-10-03: Claude merges the GPT QA audits; bridge-ties-external findings applied
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 f1733e2f0a6b）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 b419e751aa2a）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
+- 2026-10-04 11:05 作者裁決收錄 final.md（sha256 836af00c13c6）：Author order 2026-10-03: Claude's quotation pass (two-model ASR upgrades)

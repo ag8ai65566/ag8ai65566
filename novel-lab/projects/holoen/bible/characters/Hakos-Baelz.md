@@ -88,7 +88,7 @@ her genmates' antics." [Official HB1 (original lore)] [Observed HB2 §Personalit
   - Rhythmic, repeated thanks while reading superchats ("thank you so much" about 128 times in an hour of 2026
     chat; a repeated "boom" about 38 times, first-model counts only, not a certified quotation). [ASR HB20,
     first-model counts]
-  - "Bruh." / "Everything comes back to 'Bruh'." → absurdity. [Observed HB2 §Quotes, secondary] [ASR HB20]
+  - "Bruh." / "Everything comes back to 'Bruh'." → absurdity. [Observed HB2 §Quotes, secondary] [ASR HB20; both models on "Bruh.", DOZ8rRVH03c 2:14:34]
   - "You're doing great!" → cheering chat or a friend. [Observed HB2 §Quotes, secondary] [ASR HB20]
   - Mock outrage with a conspiracy: "It was sabotage." … "They hate promise. They hate us. It's a
     conspiracy." → a small failure on stream. [ASR HB20, DOZ8rRVH03c 0:06:53, 0:08:27; both models]
@@ -323,7 +323,7 @@ Bae's avatar is 149 cm tall, with bright red hair in two big pigtails and a whit
 Fast, loud, run-on English (regional accent unverified by listening), full of "like," "yeah," "okay," "oh my god" and "crazy"; she says "senpai" for her seniors even in English and also holds Japanese chatting streams. She tells stories at full speed and answers her own questions ("Who would think that's a good idea? Me."), blames small failures on sabotage ("It was sabotage." "It's a conspiracy."), stages mock scandals with chat ("Breaking news!"), answers absurdity with a flat "bruh," and turns warm and sincere when she cheers someone on ("You're doing great."). Reading superchats she gives rhythmic, repeated thanks. She swears casually ("hell yeah," and milder curses). Keep her fillers, repetitions and self-corrections; never caricature the accent.
 
 ## [SW] Catchphrases
-"WAZZUP!! It's your worldwide Rat Idol" (official greeting); "I am Chaos the end of ends, a steel rose trapped in a cage of ice, your best friend Baelz Hakos" (her self-introduction, wiki-recorded); "Bruh." (wiki-recorded); "You're doing great!"; "It was sabotage."; "It's a conspiracy."; "Breaking news!"; "Welcome to the Rat Pack"; "Technology be crazy."; "Confused rat."; "okey dokey" and "bye-bye" (her sign-off); from the wiki (secondary): "SARABA DA!", "BIG BRAIN!", "Bae is stoopid," "JDON MY SOUL," "ORA ORA ORA." Her fans are the Brats; her members, the Rat Pack (secondary).
+"WAZZUP!! It's your worldwide Rat Idol" (official greeting); "I am Chaos the end of ends, a steel rose trapped in a cage of ice, your best friend Baelz Hakos" (her self-introduction, wiki-recorded); "Bruh." (shared ASR span); "You're doing great!"; "It was sabotage."; "It's a conspiracy."; "Breaking news!"; "Welcome to the Rat Pack"; "Technology be crazy."; "Confused rat."; "okey dokey" and "bye-bye" (her sign-off); from the wiki (secondary): "SARABA DA!", "BIG BRAIN!", "Bae is stoopid," "JDON MY SOUL," "ORA ORA ORA." Her fans are the Brats; her members, the Rat Pack (secondary).
 
 ## [SW] Voice & Delivery
 Provisional direction for an original designed voice: a bright, punchy mid-range voice with no prescribed regional accent; run-on when she tells a story, a brighter lift for jokes and mock outrage, a flatter finish for "bruh," warm and sincere when cheering someone on. Reading superchats she falls into a quick, rhythmic thank-you patter. Brief laughter after a self-inflicted mishap, not after every line. These are performance choices for an original voice, not measurements to match.
@@ -383,6 +383,7 @@ IRyS: her BaeRyS partner in a performed "married and divorced" routine that fan 
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** "Freaky Deaky Love" with Bijou propagated (dossier Relationship Map).
 - **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 - **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-CREDIT-001, promise:PROMISE-DATE-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
+- **2026-10-04, quotation pass (Claude):** "Bruh." now rests on a two-model ASR check (research/audio-check/bae.md, rows marked "quotation pass"); its secondary label is replaced.
 
 ## Open Questions
 1. Her 2026 fes stages (the STAGE 3 closing solo "Idol" and "Kakumei Dualism" with Natsuiro Matsuri) rest on the

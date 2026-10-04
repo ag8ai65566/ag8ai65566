@@ -35,7 +35,7 @@ when cheering someone on."
 | Telling a story | `[fast, self-mocking]` | "Who would think that's a good idea? Me." |
 | A small failure | `[mock outrage]` | "It was sabotage." |
 | Mock scandal | `[gasps]` → `[theatrical]` | "Does she really think that me, of all people, is trying to clout chase by using her?" |
-| Absurdity | `[deadpan]` | "Bruh." (wiki, secondary) |
+| Absurdity | `[deadpan]` | "Bruh." (shared ASR span) |
 | Thanking gifts | `[quick, warm]` | "Welcome to the Rat Pack, welcome, welcome." |
 | Cheering someone | `[warm, sincere]` | "Everything gets better. If you're at the bottom, you can only go up. You're doing great." |
 | Horror game | `[panicked]` | "I don't like this. I wanna leave." (wiki, secondary) |

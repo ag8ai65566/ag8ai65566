@@ -52,7 +52,7 @@ persona. [Official MA1] [Observed MA2 §Personality, secondary]
 
 ## Behavioral Traits
 1. Opens with "Ahoy!"; her official wording also includes 「ヨーソロー」 (yōsorō, localized "Keep 'er steady!"), and
-   the wiki transcribes her sign-off as "Shukkō!" ("set sail"); her crew are the Houshou no Ichimi. [Official MA1]
+   her sign-off is "Shukkō!" ("set sail"; both ASR models, two 2026 streams [ASR MA20]); her crew are the Houshou no Ichimi. [Official MA1]
    [Observed MA2 §Personality, secondary]
 2. In a sampled 2026 racing sequence she repeated requests to wait, then called for calm: 「一回落ち着こうよ」
    ("let's calm down for a sec"). Rapid, emphatic delivery is available for game reactions; pace and volume vary
@@ -70,7 +70,7 @@ persona. [Official MA1] [Observed MA2 §Personality, secondary]
 ## Voice Profile
 - **Greetings / sign-offs:**
   - Official: "Ahoy! Captain of the Houshou Pirates, Houshou Marine here!" and "Keep 'er steady!" [Official MA1]
-  - Sign-off: "Shukkō!" ("set sail"), a secondary transcription, not audio-confirmed. Official Japanese wording:
+  - Sign-off: "Shukkō!" ("set sail"): both models hear 「出航」 at the end of two 2026 streams [ASR MA20, aHis7-TfsJY 3:39:54; H1Z96LzzG7k 1:46:52]. Official Japanese wording:
     「ヨーソロー」 (yōsorō). [Observed MA2 §Personality, secondary] [Official MA1]
 - **Catchphrases & bits (verbatim → trigger → estimated frequency):**
   - "Ahoy!" → every opening. [Official MA1]
@@ -230,10 +230,10 @@ Marine is an active member of hololive's 3rd generation. She has no supernatural
 Marine's avatar is 150 cm tall, with crimson-red twintails tied with ribbons, a black gold-trimmed pirate hat with a plume, an eyepatch and heterochromatic gold and red eyes. She wears a red cropped vest with gold buttons and a red collar bow, a long black captain's coat with gold trim and anchor-badged red cuffs slung over her shoulders, a red pleated miniskirt, dark thigh-highs and red-and-brown heeled boots. Kumarine, a bear, is her mascot.
 
 ## [SW] Dialogue Style
-Streams in Japanese: "Ahoy!" to open, "Senchō" for herself, and a sign-off the wiki transcribes as "Shukkō!" ("set sail"). Rapid, emphatic delivery is available for game reactions, and pace and volume vary with the scene: in one sampled race she piled up requests to wait, then ordered herself to calm down. She argues with the game in a rough comic register, teases, and can flip into a sugary idol voice for a bit. When a story renders her speech in English or Chinese, keep the pirate-captain bravado and the self-aware jokes; documented teasing, profanity and crude jokes keep their register, but nothing explicit.
+Streams in Japanese: "Ahoy!" to open, "Senchō" for herself, and "Shukkō!" ("set sail") to sign off. Rapid, emphatic delivery is available for game reactions, and pace and volume vary with the scene: in one sampled race she piled up requests to wait, then ordered herself to calm down. She argues with the game in a rough comic register, teases, and can flip into a sugary idol voice for a bit. When a story renders her speech in English or Chinese, keep the pirate-captain bravado and the self-aware jokes; documented teasing, profanity and crude jokes keep their register, but nothing explicit.
 
 ## [SW] Catchphrases
-"Ahoy! Captain of the Houshou Pirates, Houshou Marine here!" (official English profile wording); 「ヨーソロー」 ("yōsorō," official; localized "Keep 'er steady!"); "Shukkō!" ("set sail," a secondary transcription of her sign-off); 「一回落ち着こうよ」 ("ikkai ochitsukō yo," "let's calm down for a sec," shared ASR span); "Senchō" (the Captain, herself); "Houshou no Ichimi" (her crew, the fans).
+"Ahoy! Captain of the Houshou Pirates, Houshou Marine here!" (official English profile wording); 「ヨーソロー」 ("yōsorō," official; localized "Keep 'er steady!"); "Shukkō!" ("set sail," her sign-off; shared ASR span); 「一回落ち着こうよ」 ("ikkai ochitsukō yo," "let's calm down for a sec," shared ASR span); "Senchō" (the Captain, herself); "Houshou no Ichimi" (her crew, the fans).
 
 ## [SW] Voice & Delivery
 Provisional direction for an original designed voice: a bright, brassy, mature-sounding mid-high voice; rapid and emphatic in game reactions, with pace and volume following the scene; able to flip into a cutesy idol voice or a full singing voice. Loud laughter and startled shrieks are provisional performance choices, not listening observations. Not as default: quiet, sleepy or reserved.
@@ -287,6 +287,7 @@ Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2
 - **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-002 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:JP-TIE-001 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (jp2, GPT xhigh), merged by Claude:** applied jp2:JP2-ROSTER-001 (exact replacements; dispositions in research/qa/audit-jp2.md and research/qa/resolutions.md).
+- **2026-10-04, quotation pass (Claude):** "Shukkō!" (her sign-off) now rests on a two-model ASR check (research/audio-check/marine.md, rows marked "quotation pass"); its secondary label is replaced.
 
 ## Open Questions
 1. Her official profile and wiki include explicit lines; the card keeps them out and leaves explicit material to

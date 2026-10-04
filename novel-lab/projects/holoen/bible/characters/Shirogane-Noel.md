@@ -52,7 +52,9 @@ show. [Official NO1] [NO4 titles]
 ## Behavioral Traits
 1. Muscle-themed greetings: the official 「こんまっする〜」 (konmassuru); the wiki also transcribes
    "Konbanmassuru~" ("Good Musclevening~") and "Ohamassuru" for mornings; her Sunday-morning chat show is "Sunday
-   Muscle" (さんでーまっする, "Sanma" for short). [Official NO1] [Observed NO2 caption, secondary; NO4 LIwx6lGRLRs]
+   Muscle" (さんでーまっする, "Sanma" for short). Both ASR models hear 「おはまっする」 opening a 2026 morning chat; "Konbanmassuru"
+   was not confirmed (the second model hears 「こんばんは」). [Official NO1] [Observed NO2 caption, secondary; NO4 LIwx6lGRLRs]
+   [ASR NO20, 99f7sLRAHHM 0:02:57; TrrD5iQGCGA 0:02:57]
 2. Calls herself "Danchou" (the commander) and her viewers "danin-san" (members of her knight order). [Observed
    NO2 nickname, secondary; NO4 titles] [ASR NO20]
 3. Wholesome and eager with games, from a first playthrough of Dragon Quest VII Reimagined (2026) to Undertale's
@@ -217,7 +219,7 @@ Noel's avatar is 158 cm tall, with shoulder-length silver hair, a braid, a black
 Streams in Japanese in a cheerful, chatty voice, calling herself "Danchou" and her viewers "danin-san." She uses muscle-themed greetings (the official 「こんまっする〜」), recaps her week with old-fashioned endings (「まぁ色々ありましたな」, "well, quite a lot happened"), recommends games eagerly, and plays up mock jealousy about Flare as a comedy bit. When a story renders her speech in English or Chinese, keep the muscle puns, the "Danchou" self-reference and the soft voice under the armor.
 
 ## [SW] Catchphrases
-"All hustle, all muscle! Shirogane Noel's here!" (official English profile wording); 「こんまっする〜」 ("konmassuru," official muscle-themed greeting); "Konbanmassuru~" ("Good Musclevening~") and "Ohamassuru" (good morning) (secondary transcriptions); 「まぁ色々ありましたな」 ("mā iroiro arimashita na," shared ASR span); "Danchou" (herself, the commander); "danin-san" (her knights, the viewers); "Sunday Muscle" (her Sunday-morning chat).
+"All hustle, all muscle! Shirogane Noel's here!" (official English profile wording); 「こんまっする〜」 ("konmassuru," official muscle-themed greeting); "Ohamassuru" (good morning; shared ASR span); "Konbanmassuru~" ("Good Musclevening~"; secondary transcription); 「まぁ色々ありましたな」 ("mā iroiro arimashita na," shared ASR span); "Danchou" (herself, the commander); "danin-san" (her knights, the viewers); "Sunday Muscle" (her Sunday-morning chat).
 
 ## [SW] Voice & Delivery
 Provisional direction for an original designed voice: a soft, girlish, warm voice, higher than her armor suggests; bubbly and eager in chat. Flustered wailing when she loses, a bright laugh and a gentler older-sister register are provisional performance choices, not listening observations. Not as default: gruff, cold or sultry.
@@ -263,6 +265,7 @@ Houshou Marine: hololive Fantasy genmate; Bara☆Dice with Takane Lui, Shiranui 
 - **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-002 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:JP-TIE-001 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (jp2, GPT xhigh), merged by Claude:** applied jp2:JP2-ROSTER-001 (exact replacements; dispositions in research/qa/audit-jp2.md and research/qa/resolutions.md).
+- **2026-10-04, quotation pass (Claude):** "Ohamassuru" now rests on a two-model ASR check (research/audio-check/noel.md, rows marked "quotation pass"); its secondary label is replaced.
 
 ## Open Questions
 1. Resolved: the official English title is "TREVIAN KNIGHT" (official music page 622).

@@ -1,5 +1,5 @@
 # Sudowrite 貼上單 — holoen
-_產生時間 2026-10-04 10:39。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
+_產生時間 2026-10-04 11:05。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
 
 # Style — paste this block first
 貼到 Story Bible → **Style**（119 字；故事本身的文風說明可以接在後面，合計超過約 120 字時請檢查）。它教 Sudowrite 用每個角色的 **Audio Tags** 特質在對白裡寫 ElevenLabs v4 標籤。說明與注意事項見 `elevenlabs/sudowrite-style.md`。
@@ -570,9 +570,9 @@ Bae's avatar is 149 cm tall, with bright red hair in two big pigtails and a whit
 Fast, loud, run-on English (regional accent unverified by listening), full of "like," "yeah," "okay," "oh my god" and "crazy"; she says "senpai" for her seniors even in English and also holds Japanese chatting streams. She tells stories at full speed and answers her own questions ("Who would think that's a good idea? Me."), blames small failures on sabotage ("It was sabotage." "It's a conspiracy."), stages mock scandals with chat ("Breaking news!"), answers absurdity with a flat "bruh," and turns warm and sincere when she cheers someone on ("You're doing great."). Reading superchats she gives rhythmic, repeated thanks. She swears casually ("hell yeah," and milder curses). Keep her fillers, repetitions and self-corrections; never caricature the accent.
 ```
 
-### Catchphrases（89/250）
+### Catchphrases（91/250）
 ```text
-"WAZZUP!! It's your worldwide Rat Idol" (official greeting); "I am Chaos the end of ends, a steel rose trapped in a cage of ice, your best friend Baelz Hakos" (her self-introduction, wiki-recorded); "Bruh." (wiki-recorded); "You're doing great!"; "It was sabotage."; "It's a conspiracy."; "Breaking news!"; "Welcome to the Rat Pack"; "Technology be crazy."; "Confused rat."; "okey dokey" and "bye-bye" (her sign-off); from the wiki (secondary): "SARABA DA!", "BIG BRAIN!", "Bae is stoopid," "JDON MY SOUL," "ORA ORA ORA." Her fans are the Brats; her members, the Rat Pack (secondary).
+"WAZZUP!! It's your worldwide Rat Idol" (official greeting); "I am Chaos the end of ends, a steel rose trapped in a cage of ice, your best friend Baelz Hakos" (her self-introduction, wiki-recorded); "Bruh." (shared ASR span); "You're doing great!"; "It was sabotage."; "It's a conspiracy."; "Breaking news!"; "Welcome to the Rat Pack"; "Technology be crazy."; "Confused rat."; "okey dokey" and "bye-bye" (her sign-off); from the wiki (secondary): "SARABA DA!", "BIG BRAIN!", "Bae is stoopid," "JDON MY SOUL," "ORA ORA ORA." Her fans are the Brats; her members, the Rat Pack (secondary).
 ```
 
 ### Voice & Delivery（75/250）
@@ -784,14 +784,14 @@ Marine is an active member of hololive's 3rd generation. She has no supernatural
 Marine's avatar is 150 cm tall, with crimson-red twintails tied with ribbons, a black gold-trimmed pirate hat with a plume, an eyepatch and heterochromatic gold and red eyes. She wears a red cropped vest with gold buttons and a red collar bow, a long black captain's coat with gold trim and anchor-badged red cuffs slung over her shoulders, a red pleated miniskirt, dark thigh-highs and red-and-brown heeled boots. Kumarine, a bear, is her mascot.
 ```
 
-### Dialogue Style（103/250）
+### Dialogue Style（100/250）
 ```text
-Streams in Japanese: "Ahoy!" to open, "Senchō" for herself, and a sign-off the wiki transcribes as "Shukkō!" ("set sail"). Rapid, emphatic delivery is available for game reactions, and pace and volume vary with the scene: in one sampled race she piled up requests to wait, then ordered herself to calm down. She argues with the game in a rough comic register, teases, and can flip into a sugary idol voice for a bit. When a story renders her speech in English or Chinese, keep the pirate-captain bravado and the self-aware jokes; documented teasing, profanity and crude jokes keep their register, but nothing explicit.
+Streams in Japanese: "Ahoy!" to open, "Senchō" for herself, and "Shukkō!" ("set sail") to sign off. Rapid, emphatic delivery is available for game reactions, and pace and volume vary with the scene: in one sampled race she piled up requests to wait, then ordered herself to calm down. She argues with the game in a rough comic register, teases, and can flip into a sugary idol voice for a bit. When a story renders her speech in English or Chinese, keep the pirate-captain bravado and the self-aware jokes; documented teasing, profanity and crude jokes keep their register, but nothing explicit.
 ```
 
-### Catchphrases（65/250）
+### Catchphrases（64/250）
 ```text
-"Ahoy! Captain of the Houshou Pirates, Houshou Marine here!" (official English profile wording); 「ヨーソロー」 ("yōsorō," official; localized "Keep 'er steady!"); "Shukkō!" ("set sail," a secondary transcription of her sign-off); 「一回落ち着こうよ」 ("ikkai ochitsukō yo," "let's calm down for a sec," shared ASR span); "Senchō" (the Captain, herself); "Houshou no Ichimi" (her crew, the fans).
+"Ahoy! Captain of the Houshou Pirates, Houshou Marine here!" (official English profile wording); 「ヨーソロー」 ("yōsorō," official; localized "Keep 'er steady!"); "Shukkō!" ("set sail," her sign-off; shared ASR span); 「一回落ち着こうよ」 ("ikkai ochitsukō yo," "let's calm down for a sec," shared ASR span); "Senchō" (the Captain, herself); "Houshou no Ichimi" (her crew, the fans).
 ```
 
 ### Voice & Delivery（58/250）
@@ -2030,9 +2030,9 @@ Noel's avatar is 158 cm tall, with shoulder-length silver hair, a braid, a black
 Streams in Japanese in a cheerful, chatty voice, calling herself "Danchou" and her viewers "danin-san." She uses muscle-themed greetings (the official 「こんまっする〜」), recaps her week with old-fashioned endings (「まぁ色々ありましたな」, "well, quite a lot happened"), recommends games eagerly, and plays up mock jealousy about Flare as a comedy bit. When a story renders her speech in English or Chinese, keep the muscle puns, the "Danchou" self-reference and the soft voice under the armor.
 ```
 
-### Catchphrases（60/250）
+### Catchphrases（62/250）
 ```text
-"All hustle, all muscle! Shirogane Noel's here!" (official English profile wording); 「こんまっする〜」 ("konmassuru," official muscle-themed greeting); "Konbanmassuru~" ("Good Musclevening~") and "Ohamassuru" (good morning) (secondary transcriptions); 「まぁ色々ありましたな」 ("mā iroiro arimashita na," shared ASR span); "Danchou" (herself, the commander); "danin-san" (her knights, the viewers); "Sunday Muscle" (her Sunday-morning chat).
+"All hustle, all muscle! Shirogane Noel's here!" (official English profile wording); 「こんまっする〜」 ("konmassuru," official muscle-themed greeting); "Ohamassuru" (good morning; shared ASR span); "Konbanmassuru~" ("Good Musclevening~"; secondary transcription); 「まぁ色々ありましたな」 ("mā iroiro arimashita na," shared ASR span); "Danchou" (herself, the commander); "danin-san" (her knights, the viewers); "Sunday Muscle" (her Sunday-morning chat).
 ```
 
 ### Voice & Delivery（49/250）

@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-04T10:39Z",
- "snapshot": "b1803d993cfb8185d54e679bd6f275933b2196ccf9f18b6edc75164d53cb455d",
+ "checked_at": "2026-10-04T11:05Z",
+ "snapshot": "0c1e27157c4cb71153dbb7d9a0eff9420c58f92105cd6e1b155e8c15828182e1",
  "blocking_failures": [
   "V11",
   "V12",
@@ -19,7 +19,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot b1803d993cfb8185d54e679bd6f275933b2196ccf9f18b6edc75164d53cb455d",
+    "snapshot 0c1e27157c4cb71153dbb7d9a0eff9420c58f92105cd6e1b155e8c15828182e1",
     "107 inputs"
    ],
    "finding_ids": []
@@ -119,7 +119,7 @@
    "locator": null,
    "evidence": [
     "relationship web: 0 one-way ties (coverage, not errors; tools/web_check.py)",
-    "review pending: research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },
@@ -130,7 +130,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },
@@ -141,6 +141,8 @@
    "severity": "block",
    "locator": null,
    "evidence": [
+    "bible/characters/Hakos-Baelz.md:79 quotes past a shared ASR span (bae.md 0:04:44): \"Wazzup! I am Chaos the end of ends, a steel rose trapped in a cage of ice, your best friend Baelz Hakos from hololive English Promise, WITNESS ME\"",
+    "bible/characters/Hakos-Baelz.md:325 quotes past a shared ASR span (bae.md 0:04:44): \"I am Chaos the end of ends, a steel rose trapped in a cage of ice, your best friend Baelz Hakos\"",
     "review pending: research/qa/voice-delivery.md"
    ],
    "finding_ids": []
@@ -153,7 +155,7 @@
    "locator": null,
    "evidence": [
     "0 automated candidates for semantic review",
-    "review pending: research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },
@@ -164,7 +166,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },

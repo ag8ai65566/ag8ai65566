@@ -74,6 +74,7 @@ Private-life material is excluded under the project's scope rule.
 | "予習が生きてる" | [0:11:23](https://youtu.be/3ri2_FG67uY?t=683) | "いいねいいねいいですよ 予習が生きてるよしどんどんこの感じで全駅をゲスしていきたいと思う行くぞ!ケイオーダガヤマは、ケイオーダガヤマは、玉の、玉、玉…" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "ゲース" | [0:15:50](https://youtu.be/3ri2_FG67uY?t=950) | "このフォル…このロゴのマック古いかえ、井の頭線…これ聖歯かここでしょ!ゲース!オーケーイ!ちょ、みんな…見てください!みなさん!ちょっと…え、ちょ、余臭が生きてるわ余臭…余臭って大事コマバー東大前待って、このレー…この…この…K.O.いろがしらせんこ…こ…" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "鮮やかな満点を取っていきます" | [0:16:23](https://youtu.be/3ri2_FG67uY?t=983) | "池農部 駒場東大前鮮やかな満点を取っていきますみなさん待ってKO戦ってここだけ?そんなことないここ、あれ?KO戦ってここ、ここここ渋谷からゆっくりやる" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "この野郎!この野郎!この案内に" | [0:24:22](https://youtu.be/22FaM0PkTwU?t=1462) | "…この野郎、この野郎、この案内に おっと失礼いたしました…" | **Not confirmed as hers:** both models hear it, but the surrounding lines are the game's voiced narrator; not quoted, and "kono yarō" stays a secondary transcription (quotation pass, Claude, 2026-10-04) |
 
 Second-model excerpts are trimmed to the span needed for each line ("…" marks cuts); out-of-scope
 personal material was removed after GPT's 2026-10-02 review.

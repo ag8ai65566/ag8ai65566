@@ -10,3 +10,4 @@
 - 2026-10-03 23:55 作者裁決收錄 final.md（sha256 c4e2bef9231c）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
 - 2026-10-04 03:56 作者裁決收錄 final.md（sha256 9e284efa3513）：Author decision (2026-10-03): two-model audio check of research quotation candidates (dossier sample lines)
 - 2026-10-04 05:16 作者裁決收錄 final.md（sha256 c504265a5264）：Author decision (2026-10-03): cross-card QA audit promise merged by Claude
+- 2026-10-04 11:05 作者裁決收錄 final.md（sha256 59d0388c7254）：Author order 2026-10-03: Claude's quotation pass (two-model ASR upgrades)

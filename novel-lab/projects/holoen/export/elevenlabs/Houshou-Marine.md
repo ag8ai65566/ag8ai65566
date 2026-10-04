@@ -17,7 +17,7 @@
 - Pace comes from the designed voice plus `[energetic, brassy]` or `[panicked, rapid]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script
-- "Ahoy!" to open; calls herself "Senchō" (Captain); official 「ヨーソロー」 (yōsorō); the wiki transcribes her sign-off as "Shukkō!" (set sail).
+- "Ahoy!" to open; calls herself "Senchō" (Captain); official 「ヨーソロー」 (yōsorō); her sign-off is "Shukkō!" (set sail; both ASR models, two 2026 streams).
 - Rapid, emphatic delivery for game reactions; pace and volume follow the scene.
 - Regroups out loud: 「一回落ち着こうよ」 ("let's calm down for a sec").
 - Flips into a cutesy idol voice for a bit, then straight back. Crude jokes keep their teasing register; nothing explicit.
@@ -30,7 +30,7 @@
 | Regrouping | `[comic, self-scolding]` | 「一回落ち着こうよ」 ("Ikkai ochitsukō yo," "let's calm down for a sec") |
 | Arguing with a game | `[rough, comic]` | **Style demo:** "Baka iu na!" ("Don't be stupid!") |
 | Idol mode | `[cutesy, sweet]` | **Style demo:** "Senchō no koto, suki ni naccha dame da yo♡" ("You mustn't fall for the Captain♡") |
-| Closing | `[bright]` | "Shukkō!" (secondary transcription) |
+| Closing | `[bright]` | "Shukkō!" (shared ASR span) |
 
 With people (proposed scene directions, not observed conversational defaults): Pekora `[bickering, fond]`; Suisei `[playful]`; Kiara `[playful, teasing]`; FUWAMOCO `[doting]`.
 

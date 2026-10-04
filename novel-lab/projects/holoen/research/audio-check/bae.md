@@ -76,6 +76,8 @@ attributed to her and are not quoted).
 | "My name is Koseki Bijuu" | [0:50:30](https://youtu.be/2pn5_pZu8Q4?t=3030) | "Yay! KA-SEK-I-ME-JU! Whoa!" | **Disagrees** (game text-to-speech and a name being typed); not used |
 | "Should've picked a big one. God dammit." | [1:01:40](https://youtu.be/2pn5_pZu8Q4?t=3700) | "I got a marble what was that should pick the big one god damn it all righty oh hello sorry what is going on See you soon." | **Disagrees** ("should pick the big one god damn it"); not used |
 | "Here I am trying to promote her new song, and what does she do? Claim my video" | [2:12:26](https://youtu.be/DOZ8rRVH03c?t=7946) | "Here I am trying to promote her new song and what does she do claim my video" | Agrees (two-model recheck by Claude, 2026-10-04: small.en and medium.en share these words in the same window; the speaker is the streamer on her own solo stream) |
+| "Bruh." | [2:14:34](https://youtu.be/DOZ8rRVH03c?t=8074) | "…look at it! Bruh. Crazy. Ugh." | **Shared span (computed):** whole line (quotation pass, Claude, 2026-10-04) |
+| "I'm Chaos, the end of it. I still wish to have an occasion of ice. Your best friend, Bell Taker," | [0:04:44](https://youtu.be/DOZ8rRVH03c?t=284) | "I'm Chaos, the end of ends. I still wish Trapped in the Cage of Ice, your best friend Belle Taker's…" | **Partly agrees** only on "I'm Chaos, the end of" and "your best friend"; the full self-introduction is not confirmed and stays wiki-recorded (quotation pass, Claude, 2026-10-04) |
 
 ## Review note (2026-10-02)
 GPT's one-round claim check flagged personal material in the second-model excerpts at 2:19:11, 2:19:23 and

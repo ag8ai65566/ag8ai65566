@@ -1,10 +1,10 @@
 # Audit packet: promise
 
-Snapshot: git 1034e56. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 79f4497. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Ouro-Kronii.md` f6f20f16b680; `bible/characters/IRyS.md` 05b097893deb; `bible/characters/Ceres-Fauna.md` 8730e0b2c3ba; `bible/characters/Nanashi-Mumei.md` 2cca759f1c3c; `bible/characters/Hakos-Baelz.md` c504265a5264; `bible/world/hololive--Promise.md` 0c58fdd52211; `bible/world/Time-Duo.md` da8702e646d2; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` b81982ab3e3d; `bible/world/Fauna-and-Mumei-Pairs.md` 8a1fc2c0c86b; `bible/world/IRyS-and-Nerissa-Pairs.md` a05400bc7b25; `bible/world/Hakos-Baelz-Pairs.md` 3a714066f75f
+Owned files (sha256): `bible/characters/Ouro-Kronii.md` f6f20f16b680; `bible/characters/IRyS.md` 05b097893deb; `bible/characters/Ceres-Fauna.md` 8730e0b2c3ba; `bible/characters/Nanashi-Mumei.md` 2cca759f1c3c; `bible/characters/Hakos-Baelz.md` 59d0388c7254; `bible/world/hololive--Promise.md` 0c58fdd52211; `bible/world/Time-Duo.md` da8702e646d2; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` b81982ab3e3d; `bible/world/Fauna-and-Mumei-Pairs.md` 8a1fc2c0c86b; `bible/world/IRyS-and-Nerissa-Pairs.md` a05400bc7b25; `bible/world/Hakos-Baelz-Pairs.md` 3a714066f75f
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 

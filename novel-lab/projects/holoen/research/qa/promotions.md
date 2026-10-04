@@ -572,6 +572,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:55 作者裁決收錄 final.md（sha256 c4e2bef9231c）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
 - 2026-10-04 03:56 作者裁決收錄 final.md（sha256 9e284efa3513）：Author decision (2026-10-03): two-model audio check of research quotation candidates (dossier sample lines)
 - 2026-10-04 05:16 作者裁決收錄 final.md（sha256 c504265a5264）：Author decision (2026-10-03): cross-card QA audit promise merged by Claude
+- 2026-10-04 11:05 作者裁決收錄 final.md（sha256 59d0388c7254）：Author order 2026-10-03: Claude's quotation pass (two-model ASR upgrades)
 
 ## 20261002-0236-world-Hakos-Baelz-Pairs
 - 2026-10-02 07:02 作者裁決收錄 final.md（sha256 62cc8028a666）：Author decision (2026-10-02): Hakos Baelz added to the cast; GPT reviews each card one round only, merged by Claude
@@ -644,6 +645,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 10:15 作者裁決收錄 final.md（sha256 363cad47c8c7）：Author order 2026-10-03: Claude merges the GPT QA audits; bridge-ties-external findings applied
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 f1733e2f0a6b）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 b419e751aa2a）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
+- 2026-10-04 11:05 作者裁決收錄 final.md（sha256 836af00c13c6）：Author order 2026-10-03: Claude's quotation pass (two-model ASR upgrades)
 
 ## 20261002-0615-character-Kazama-Iroha
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 8c6cee008a7a）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run F) merged by Claude; promoted.
@@ -674,6 +676,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 10:15 作者裁決收錄 final.md（sha256 383c370fae8f）：Author order 2026-10-03: Claude merges the GPT QA audits; bridge-ties-external findings applied
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 db1b077a8443）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 438b6e32eb77）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
+- 2026-10-04 11:05 作者裁決收錄 final.md（sha256 5ed15a84ee97）：Author order 2026-10-03: Claude's quotation pass (two-model ASR upgrades)
 
 ## 20261002-0615-character-Shishiro-Botan
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 936bfc763af7）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude

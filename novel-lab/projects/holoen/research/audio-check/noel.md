@@ -55,3 +55,5 @@ are not quoted or summarized here.
 | "まぁ色々ありましたな" | [0:05:28](https://youtu.be/99f7sLRAHHM?t=328) | "…と言いますとまぁ色々ありましたなまぁ色々あり…" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "いやぜひみなさんもやってみて欲しい" | [0:08:52](https://youtu.be/99f7sLRAHHM?t=532) | "…しかったからいや ぜひ みなさんもね やってみ…" | **Partial (computed):** shared run "いやぜひみなさんも"; only that part is quoted |
 | "今週ね、何があったかと言いますと、まぁ色々ありましたな" | [0:05:28](https://youtu.be/99f7sLRAHHM?t=328) | "…ぁ今週ねまぁ何があったかと言いますとまぁ色々ありましたなまぁ色々あり…" | **Partial (computed):** shared run "何があったかと言いますとまあ色々ありましたな"; only that part is quoted |
+| "おはまする" | [0:02:57](https://youtu.be/99f7sLRAHHM?t=177) | "…BGMかかってなかったオハマスルーフォンライブ三期生の…" | **Shared span (computed):** whole line (kana folded); her morning greeting (quotation pass, Claude, 2026-10-04) |
+| "皆さんこんばんすで" | [0:02:57](https://youtu.be/TrrD5iQGCGA?t=177) | "…えー、皆さんこんばんはステルフォーライブ三期生の…" | **Not confirmed** (the second model hears "こんばんは"); "Konbanmassuru" stays a secondary transcription (quotation pass, Claude, 2026-10-04) |

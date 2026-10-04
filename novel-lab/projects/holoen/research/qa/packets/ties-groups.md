@@ -1,6 +1,6 @@
 # Bridge packet: ties (claims naming four or more people)
 
-Snapshot: git 1034e56. Each listed once with the people it names.
+Snapshot: git 79f4497. Each listed once with the people it names.
 
 - `bible/characters/AZKi.md › Background Timeline` [IRyS, Ninomae Ina'nis, Ouro Kronii, Shiranui Flare, Usada Pekora]: | 2025-07-19 | R.E.P.O. "JP & EN" collab with Shiranui Flare, Usada Pekora, Ina, IRyS and Kronii (the description's lineup) | [AZ4 _gZdFTluxtc] |
 - `bible/characters/AZKi.md › Behavioral Traits` [Hakui Koyori, La+ Darknesss, Mori Calliope, Takane Lui, Vestia Zeta]: 4. Dances other members' songs in her shorts (Calli's "Orpheus," 2025-10-09, archived metadata lXLBb9IVraI; in 2026 Laplus, Towa and Nene, Miko, Koyori, Riona, Lui, Zeta). [Observed AZ4 titles]
