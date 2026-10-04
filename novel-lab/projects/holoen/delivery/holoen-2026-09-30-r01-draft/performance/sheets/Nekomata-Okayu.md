@@ -6,7 +6,7 @@
 > English glosses, and the voice works for Japanese, English or Chinese dialogue. Guide:
 > `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
+## 1. Voice Design prompt (original voice; provisional design choices)
 "Perfect audio quality. Young woman, soft, relaxed, boyish voice; lazy and warm, unhurried with trailing vowels,
 a playful purr when teasing, a laugh that climbs high."
 - The climbing laugh follows a secondary description; the purr is an original performance choice. Neither is a
@@ -14,13 +14,13 @@ a playful purr when teasing, a laugh that climbs high."
 - This is an original voice-design choice. Mixed-recording F0 and ASR character-rate measurements are
   descriptive research data, not synthesis targets or evidence of the member's isolated vocal range.
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **50%** (API `0.50`) (relaxed and steady). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[relaxed, warm]` or `[playful]`; v4 has no speed slider.
 
 ## 3. Write these habits into the script
 - "Boku" for "I"; "Mogu mogu~ Okayu~!" to greet; "Onigiryā" for her fans.
-- "Nori de" (by vibes); "Rettsura gō!"; a repeated "nya" when a move feels good.
+- "Nori de" ("by vibes") appears in one sampled game opening; use it as a situational example. "Rettsura gō!" is a documented start cue; repeated "nya" is documented during play.
 - Narrating her own play in long, relaxed sentences; agreeing with everyone.
 - Flirty teasing kept light and non-explicit.
 
@@ -38,6 +38,8 @@ a playful purr when teasing, a laugh that climbs high."
 With people (proposed scene directions, not observed conversational defaults): Korone `[comfortable, fond]`;
 Ina `[mellow]`; FUWAMOCO `[fond senpai, teasing]`.
 
+Additional proposed scene directions from the card's Audio Tags (untested): `[easygoing]`, `[soft, tearful]`.
+
 ## 5. Signature sounds
 - "mogu mogu" (spoken); repeated "nya" (spoken; documented); `[laughs]` (tag only).
 
@@ -46,7 +48,7 @@ Ina `[mellow]`; FUWAMOCO `[fond senpai, teasing]`.
   check. Listen to how the chosen voice says them and adjust.
 
 ## 7. Don't
-- A high, sugary voice; harsh or aggressive delivery; explicit flirting.
+- Not as default: a high, sugary voice or harsh, aggressive delivery. Stronger reactions follow the scene. Keep flirting non-explicit.
 
 ## 8. Example
 ```

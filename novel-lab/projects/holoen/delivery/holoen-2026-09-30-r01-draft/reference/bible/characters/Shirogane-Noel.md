@@ -64,6 +64,7 @@ show. [Official NO1] [NO4 titles]
    fellow members (a stream program, not a private habit). [NO4 titles]
 6. "Noel Deluxe": a secondary-recorded alternate name. [Observed NO2 §Miscellaneous, secondary]
 7. Releases ASMR works, linked from her official profile. [Official NO1]
+- **Leading the crowd (7th fes., 2026-03-07):** during "Matsuken Samba II" she, Subaru and Luna used the long instrumental to guide the audience's hand and penlight movements. [Official NEW-R5-017]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -90,6 +91,7 @@ show. [Official NO1] [NO4 titles]
   - Provisional (interpretation): a soft, girlish, warm voice, higher than her knight's armor suggests; bubbly and
     eager; a gentler older-sister register is a provisional choice.
 - **Sounds off:** a gruff warrior bark; cold or aloof delivery; a sultry voice.
+- **"Tarō" titles (written, 2026):** her Holo Koshien titles attach "Tarō" to phrases, e.g. 「ドキドキ太郎」 (roughly "Nervous Tarō"). A written-title joke; spoken recurrence unverified. [Archive metadata NEW-R5-016]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -123,6 +125,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
 | 2026-01-17/18 | hololive Fantasy concert "#OperationHeartfulCuties," K-Arena Yokohama | [Observed NO2] [Official announcement] |
 | 2026-08 | Original song "KAGAMI YO KAGAMI" (official digital release 08-16) | [Official music 796] |
+| 2026-08-27 | Holo Koshien: she ran "Shirogane Gakuin," opening with player creation and naming and following the team through its seasons into September. | [Archive metadata NEW-R5-015] |
 
 ## Relationship Map
 Public exchanges only.
@@ -130,7 +133,7 @@ Public exchanges only.
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Houshou Marine | hololive Fantasy; Bara☆Dice; "Yakamashi Musume" | 3rd-gen R.E.P.O. (2025); Yakamashi drinking-talk collabs (archived metadata). The wiki's "Onee-san Gumi" was not verified in review | [NO2] [NO4 ND9xvoFNPUQ, nuiqLHQA7k8] [Bandai credits] |
-| Yukihana Lamy | "Yakamashi Musume" with Korone and Marine | Drinking-talk collabs (2025) | [NO2] [NO4] |
+| Yukihana Lamy | "Yakamashi Musume" with Korone and Marine | Drinking-talk collabs (2025) They released "HATSUKOI DAISENSOU" with Yuzuki Choco (2026-02-15). | [NO2] [NO4] [Official NEW-R5-018] |
 | Hoshimachi Suisei | "Shiranui Kensetsu" (Shiraken) | A Minecraft construction company with Flare, Polka and Miko | [NO2] |
 | Nakiri Ayame | — | An Audio-Technica earphone collab (2025) | [NO4] |
 | Hakui Koyori | "#ノエこよ" (archived title) | A Power Pros baseball exhibition match (2025-01-10); Blue Journey (2023) | [Koyori file slTZmnyNbIc] [Official Blue Journey roster] |
@@ -142,6 +145,8 @@ Public exchanges only.
 | FUWAMOCO, Hakos Baelz | — | Participants in the "Yuru Holo" team Mario Kart event (2023; not necessarily one team); FUWAMOCO danced to "TREVIAN KNIGHT" (2025-09-30) | [NO5 Evg-T2BUIDM, 8RjOCCH2sac] |
 | Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [NO5] |
 | Ceres Fauna (graduated) | EN kouhai | Secondary accounts (Fauna's wiki trivia) say Fauna admired her and wanted to collab; not verified in review and no collab recorded, so it stays out of the exported fields | [Fauna file F2, secondary] |
+| AZKi | JP kouhai | A player in AZKi's 3D pun-ASMR contest (2025-06-22), alongside Okayu, Subaru and Kanade. | [Archive metadata NEW-R5-004] |
+| Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a hololive Fantasy concert and a new original song behind her.
@@ -179,6 +184,10 @@ Public exchanges only.
   official Japanese introduction https://operation-heartful-cuties.hololivepro.com/
 
 ---
+- NEW-R5-004 (GPT research R5, checked 2026-10-03) AZKi's pun-ASMR contest listing (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/vtuber/AZKi/label/ASMR (original https://www.youtube.com/watch?v=qrf_Ci2eiUg)
+- NEW-R5-015/016 (GPT research R5, checked 2026-10-03) Holo Koshien series (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/SMAvGS1YwCo
+- NEW-R5-017 (GPT research R5, checked 2026-10-03) 7th fes. report (OFFICIAL): https://hololive.hololivepro.com/events/hololivesuperexpo2026/
+- NEW-R5-018 (GPT research R5, checked 2026-10-03) "HATSUKOI DAISENSOU" (OFFICIAL): https://hololive.hololivepro.com/en/music/706/
 
 ## [SW] Name
 Shirogane Noel
@@ -214,13 +223,13 @@ Streams in Japanese in a cheerful, chatty voice, calling herself "Danchou" and h
 Provisional direction for an original designed voice: a soft, girlish, warm voice, higher than her armor suggests; bubbly and eager in chat. Flustered wailing when she loses, a bright laugh and a gentler older-sister register are provisional performance choices, not listening observations. Not as default: gruff, cold or sultry.
 
 ## [SW] Audio Tags
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): soft, girlish, warm voice. Default tags: [cheerful, warm]. By situation: greeting [hearty, bright]; recapping the week [chatty, relaxed]; recommending something [eager]; losing a game [flustered, wailing]; the mock-jealous Flare bit [mock-jealous, pouty]; older-sister mode [gentle, lower]. With people (proposed scene directions, not observed conversational defaults): Flare [playful, fond]; Marine [bickering, playful]; Pekora [competitive]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; the laugh is a provisional choice): "Konmassuru~" (spoken); [laughs] (tag only). Keep in the words: "Danchou," "massuru," "danin-san." Reading guide (untested): しろがね のえる; だんちょう; こんまっする. Not as default: a gruff warrior or a cold voice.
+Proposed ElevenLabs v4 performance directions for an original designed voice; never imitate the real member. Timbre, laughter and delivery directions are provisional design choices unless a listening source is explicitly identified. ASR supports wording, not vocal quality or recurrence. Partner tags are optional scene directions, not observed defaults. Test all directions with the chosen voice. Register (qualitative): soft, girlish, warm voice. Default tags: [cheerful, warm]. By situation: greeting [hearty, bright]; recapping the week [chatty, relaxed]; recommending something [eager]; losing a game [flustered, wailing]; the mock-jealous Flare bit [mock-jealous, pouty]; older-sister mode [gentle, lower]. With people (proposed scene directions, not observed conversational defaults): Flare [playful, fond]; Marine [bickering, playful]; Pekora [competitive]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; the laugh is a provisional choice): "Konmassuru~" (spoken); [laughs] (tag only). Keep in the words: "Danchou," "massuru," "danin-san." Reading guide (untested): しろがね のえる; だんちょう; こんまっする. Not as default: a gruff warrior or a cold voice.
 
 ## [SW] Motivation
 In her lore, Noel came to the VTuber world to train and grow stronger. As a streamer she wants to have fun with her knights and her friends and keep improving as a singer.
 
 ## [SW] Relationships
-Houshou Marine: hololive Fantasy genmate; the units Bara☆Dice and "Yakamashi Musume" (with Yukihana Lamy and Inugami Korone, per archived metadata); 3rd-gen R.E.P.O. (2025). Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy. Yukihana Lamy: Yakamashi Musume and drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an Audio-Technica sponsorship collab (2025). Hakui Koyori: "#ノエこよ," a Power Pros baseball exhibition (2025), and Blue Journey (2023). Takane Lui and Kazama Iroha: Bara☆Dice. Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025).
+Houshou Marine: hololive Fantasy genmate; the units Bara☆Dice and "Yakamashi Musume" (with Yukihana Lamy and Inugami Korone, per archived metadata); 3rd-gen R.E.P.O. (2025). Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy. Yukihana Lamy: Yakamashi Musume and drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an Audio-Technica sponsorship collab (2025). Hakui Koyori: "#ノエこよ," a Power Pros baseball exhibition (2025), and Blue Journey (2023). Takane Lui and Kazama Iroha: Bara☆Dice. Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025). AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
 
 ## [SW] Secrets
 (none)
@@ -249,6 +258,8 @@ Houshou Marine: hololive Fantasy genmate; the units Bara☆Dice and "Yakamashi M
   - Not applied: the conservative physical description (the card's description is Claude's own reading of the
     official key art, labelled as such).
 - **2026-10-02, GPT review run D (cross-card), merged by Claude:** the Fauna admiration is out of the exported Relationships (run D could not recover the wiki source; aligned with Fauna's card); the dossier keeps it as an unverified secondary lead.
+- **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** no finding (card and sheet attested OK); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-004 (AZKi and Okayu added to the exported Relationships, filling two empty pairs), NEW-R5-015 to 018 (Holo Koshien, "Tarō" titles, Matsuken Samba crowd work, "HATSUKOI DAISENSOU").
 
 ## Open Questions
 1. Resolved: the official English title is "TREVIAN KNIGHT" (official music page 622).

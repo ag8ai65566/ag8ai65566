@@ -24,7 +24,7 @@ Faction / unit (a friend group with a shared history).
 ## Members and Status (2026-09-30)
 - Mori Calliope, Takanashi Kiara, Ninomae Ina'nis: active in hololive -Myth-.
 - Watson Amelia: concluded general activities 2024-09-30; affiliate; guests at genmates' events
-  (Kiara's concerts 2025 and 2026, Kronii's 2026 live, a 2026 "call from 2021" in Calli's charity stream).
+  (Kiara's concerts 2025 and 2026, Kronii's 2026 live, a reported cameo in Calli's 2026 charity stream, with its segment locator unverified).
   [Observed Ame file A23; Ame's wiki page §2025–§2026, secondary]
 - Gawr Gura: graduated 2025-05-01; alumna. [Official, Gura file]
 
@@ -138,6 +138,7 @@ Five member colors in a row (black, orange, purple, blue, gold); five voices tal
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, CONSULT-P2-001 and scope tidy-up:** process notes trimmed to the author's public-persona scope rule.
 - **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** the 6th-anniversary live is now confirmed as held (hololive English channel VOD title, official posts) with the new song "THIS IS MYTH" (CONSULT-P2-001 closed); pair duet stages from a secondary setlist.
+- **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The "big sister / little shark" shorthand is Claude's summary of the group dynamic. Keep, reword or

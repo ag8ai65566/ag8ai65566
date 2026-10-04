@@ -220,13 +220,14 @@ Proposed scene direction: a bilingual stream title, Calli's excited concert-watc
 - **GPT one-round claim check (2026-10-02, xhigh; run B in runs/20261002-0529-character-Nakiri-Ayame/gpt-free.md),
   merged by Claude:** the exported description no longer asserts "Death Star" or Calli's starstruck reaction (kept
   in the dossier with a secondary label); archive and secondary attribution throughout; the GeoGuessr collab is
-  travel-neutral ("FUWAMOCO-themed"), with no record of trips or favorite places; Aqua kept in the singing
+  described as "FUWAMOCO-themed" (private details deliberately excluded); Aqua kept in the singing
   collab; "came up together" replaced by the archived AS_tar usage and the official "Going My Way"; the
   universal language rule and "no closer pairing" claim removed; Calli's quoted "Senpai!" and the composite
   avatar description removed from Sensory Details; the evidence types (billing, team, song, watch-along,
   conversation) are kept apart in Rules; the 7th fes dates are split by stage (Mar 6/7/8); OkaGigi is the 2026
   festival banter (secondary clip metadata); Anime NYC is an announced booking; broad aliases (Death Star, Star
   Flower, HOLOTALK, OkaGigi, cometori) removed from Other Names in favor of explicit pair names.
+- **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 
 ## Open Questions
 1. Ayame has no direct EN collab beyond HOLOTALK and team events in the sources read; keep her section short?

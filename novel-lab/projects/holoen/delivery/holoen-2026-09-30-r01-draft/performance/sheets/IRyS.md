@@ -6,14 +6,16 @@
 > Guidelines). Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young adult woman, neutral American accent, soft and bright mid-range voice,
+
+The prompt's timbre, laughter and delivery details are provisional creative choices for the original voice. Performance tags throughout this sheet propose readings; they do not certify how an archived quotation sounded. Regional accents require a separate in-scope listening check.
+"Perfect audio quality. Young adult woman, English speech with no prescribed regional accent, soft and bright mid-range voice,
 sweet and friendly, speeds up into quick bubbly run-on sentences when excited, light giggles, can drop
 into a sly, lower, teasing aside."
 - Register basis (sample observations from the audio check, not synthesis targets): mid pitch (≈214–226 Hz in 2026 chat and a horror game), and fast when excited (≈168–183
   words per minute of speech in chat; ≈67 while focused on a horror game). [ASR R20]
 - Her singing voice is fuller and more powerful than her talking voice; this sheet covers speech only.
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (bubbly, but the sweet base must stay steady). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rapid, gushing]` or `[focused, quiet]`; v4 has no speed slider.
 
@@ -31,11 +33,13 @@ into a sly, lower, teasing aside."
 | Gushing about an outfit | `[rapid, gushing, delighted]` | "I'm glad you guys liked the outfit. I knew you guys would!" |
 | Teasing chat | `[sweet]` → `[sly, lower]` | "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" |
 | After a slip | `[mock-innocent, quick]` | (claims to be "a hundred percent seiso"; the full wiki line is unverified by audio) |
-| Yabai aside | `[innocent]` → `[slight smirk]` | "…a half-angel, half-demon Nephilim… could pull it off somehow" (shared spans only) |
+| Outfit speculation | `[innocent]` → `[sly, lightly amused]` | "could pull it off somehow" (ASR excerpt about an outfit; proposed lightly amused reading) |
 | Horror game | `[focused, quiet]` → `[short cheer]` | "Run Leon, run!" |
 | Surprised | `[gasps]` | "Price, 120 million dollars, holy shoot!" |
-| Sincere | `[warm, plain]` | "I really hope so too." |
+| Sincere | `[warm, plain]` | Style demo: "That means a lot. Thank you." |
 | Sign-off | `[warm, cheerful]`, repeated | "Thank you very much! See you guys again tomorrow!" |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[sweet, bright]`, `[mock-bickering]`, `[chaotic, giggly]`, `[competitive, teasing]`, `[cheerful, polite Japanese]`, `[warm senpai]`.
 
 ## 5. Signature sounds
 - Light giggles: `[light giggle]` (usually, rather than a cackle).

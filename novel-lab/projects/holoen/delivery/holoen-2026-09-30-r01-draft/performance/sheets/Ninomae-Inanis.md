@@ -5,13 +5,15 @@
 > Derivative Works Guidelines). Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young adult woman, neutral American accent, soft and calm mid-range voice,
+
+The prompt's timbre, laughter and delivery details are provisional creative choices for the original voice. Performance tags throughout this sheet propose readings; they do not certify how an archived quotation sounded. Regional accents require a separate in-scope listening check.
+"Perfect audio quality. Young adult woman, English speech with no prescribed regional accent, soft and calm mid-range voice,
 slow unhurried pace with small pauses, gentle and warm, quiet little giggles, occasionally cracking on
 excited words."
 - Register basis (sample observations from the audio check, not synthesis targets): mid pitch (≈223–232 Hz in 2026 chat) and slow in chat (≈81–95 words per
   minute of speech; a 2021 game stream ran faster). [ASR I29]
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **60%** (API `0.60`) (calm consistency). Similarity **75%** (API `0.75`). v4 has no speed slider: slowness
   comes from the designed voice, `[unhurried]` and punctuation.
 
@@ -26,20 +28,22 @@ excited words."
 |---|---|---|
 | Opening | `[warm, unhurried]` → `[brighter]` | "Good morning, afternoon, evening, everyone. Could this be Tako time?" |
 | Pun | `[flat, quick]` → `[short pause]` → `[small giggle]` | (the pun, then silence) |
-| Chatting | `[soft, meandering]` | "Sorry, I went on a little tangent." |
+| Chatting | `[soft, meandering]` | Style demo: "I had a point... anyways." |
 | Mock-scold | `[sweet, dead calm]` | "…We don't say that in public." (about the "Forbidden WAH") |
-| Teasing chat | `[sweet, dead calm]` | "I'll bonk you. With a crowbar. Don't do it." |
-| Startled | `[sudden, high, voice cracks]` → `[embarrassed]` | "TOMORROW?!" … "Sorry, I got a little excited there." |
+| Teasing chat | `[sweet, dead calm]` | "I'll bonk you. With a crowbar. Don't do it." (SECONDARY transcription, answering a hair-squishing prompt) |
+| Startled | `[sudden, high, voice cracks]` → `[embarrassed]` | "Tomorrow!" (SECONDARY transcription) and, separately, "Sorry, I got a little excited there." (ASR) |
 | Hyped | `[excited]` | "WAH!" |
-| Sincere | `[quiet, gentle]` | "Live without regrets." |
-| Sign-off | `[warm]` | "Hope you guys have a wonderful rest of the morning, afternoon, evening." |
+| Sincere | `[quiet, gentle]` | "Live without regrets." (SECONDARY transcription; a sincere reading is proposed) |
+| Sign-off | `[warm]` | "have a wonderful rest of the morning, afternoon, evening" (ASR excerpt) |
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[soft, unhurried]`, `[quiet, sleepy]`, `[calm, amused, unhurried]`, `[sly, setting up a pun]`, `[warm, punny]`, `[protective, gentle]`, `[patient, unbothered]`, `[polite Japanese, shy]`.
 
 ## 5. Signature sounds
 - "WAH!": `[excited] WAH!` (sometimes a droopy one at the end: `[deflated] wah…`)
 - Small giggles mid-sentence: `[small giggle]`.
 
 ## 6. Pronunciation (provisional; test)
-- Ninomae Ina'nis `/ninoˈmae ˈiːnɑnis/` (she says her name surname-first) · Takodachi `/tɑkoˈdɑtʃi/` ·
+- Ninomae Ina'nis — にのまえ いなにす (provisional, untested; surname first) · Takodachi `/tɑkoˈdɑtʃi/` ·
   WAH `/wɑː/`
 
 ## 7. Don't
@@ -49,6 +53,7 @@ excited words."
 ## 8. Example
 ```
 [warm, unhurried] Good morning, afternoon, evening, everyone. [brighter] Could this be Tako time?
-[soft, meandering] Sorry, I went on a little tangent. Anyways…
+[soft, meandering] I had a point... anyways.
 [sweet, dead calm] …We don't say that in public.
 ```
+(The "I had a point... anyways." line is a **Style demo**, not a quotation; voice audit v1.)

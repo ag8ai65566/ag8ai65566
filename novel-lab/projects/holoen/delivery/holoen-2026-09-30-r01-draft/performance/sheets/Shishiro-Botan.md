@@ -6,12 +6,12 @@
 > English glosses, and the voice works for Japanese, English or Chinese dialogue. Guide:
 > `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
+## 1. Voice Design prompt (original voice; provisional design choices)
 "Perfect audio quality. Young woman, clear, cool-toned but cheerful voice; relaxed and amused in play, brisk and orderly when presenting, with an easy, frequent laugh."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 - Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **55%** (API `0.55`) (relaxed and steady; an untested starting choice).
   Similarity **75%** (API `0.75`), referring only to the selected original voice.
 - Pace comes from the designed voice plus `[relaxed, cheerful]` or `[brisk, organized]`; v4 has no speed slider.
@@ -20,7 +20,7 @@
 - "La-lion♪" to open; "Well then, cya~" to close (official profile wording).
 - A brisk explanatory register when presenting a project: 「前回はですねペコちゃんが優勝しました」 ("last time, Peko-chan won").
 - An offhand 「ぽい」 (poi; secondary transcription) as she lobs a grenade.
-- Horror usually begins with calm amusement; surprise remains possible. She teases scared friends.
+- Proposed horror-scene direction, informed by secondary descriptions: begin with calm amusement or teasing when appropriate, and allow surprise when the scene warrants it.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |
@@ -33,6 +33,8 @@
 | Closing | `[easy]` | "Well then, cya~" (official English) |
 
 With people (proposed scene directions, not observed conversational defaults): Lamy in a horror scene `[amused, reassuring]`; Ina `[warm]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[amused, teasing]`, `[surprised, laughing]`.
 
 ## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - "Poi!" (spoken)

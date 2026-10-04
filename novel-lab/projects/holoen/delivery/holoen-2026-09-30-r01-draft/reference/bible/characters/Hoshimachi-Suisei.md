@@ -27,8 +27,7 @@ sw_section: Characters
 >
 > **Audio status:** on 2026-10-02 Claude checked archived 2026 recordings (SU20: two windows of a June 2026
 > chatting stream, a July 2026 Rhythm Heaven stream and a June 2026 Resident Evil stream; see
-> research/audio-check/suisei.md). Long stretches of the chatting stream are about personal matters (family,
-> childhood, a trip) and are not quoted or summarized here. The audio was machine-transcribed and acoustically
+> research/audio-check/suisei.md). The project's public-persona scope applies to the reviewed material. The audio was machine-transcribed and acoustically
 > measured; transcripts were reviewed in context, without independent listening verification.
 
 ## One-line Concept
@@ -74,6 +73,7 @@ associated with her Project Winter performance: her ruthless play there became a
 6. A builder of idol projects: "Hoshimatic Project" (practice streams, group MVs, "BEEP BEEP," 2026), her music
    unit Midnight Grand Orchestra, solo tours, a fan club and fan meetings ("Hoshiyomi Pajama Party"). [Observed
    SU2 §2023–§2026]
+- **Working the crowd (SuperNova: REBOOT, 2026-02-21):** after her surprise entrance she asked whether she had surprised the audience, pressed for a louder response to her greeting, and later answered individual pose requests. [Official NEW-R5-001]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -162,11 +162,12 @@ The middle column is provisional voice direction unless a source is named.
 | 2024-11 to 12 | First live tour "Spectra of Nova" (Saitama, Osaka, Fukuoka); Calli, FUWAMOCO and Elizabeth hold a watch party | [Observed SU2] [S1 YtVleZxIiNc] |
 | 2025-02-01 | "SuperNova" at the Nippon Budokan | [Observed SU2] |
 | 2025 | "I don't care" and "Bloom in the night" for Mobile Suit Gundam GQuuuuuuX; miComet's "Lollipop" (official digital release 10-03) | [Observed SU2] [Official SU10] |
+| 2025-11-19 | At AZKi's "Departure" concert, AS_tar performed "The Last Frontier"; AZKi gave Suisei a reply to her earlier concert letter, and they unveiled "Going My Way" (digital release 2026-05-19). | [Official NEW-R5-002] |
 | 2026-02-21 | "SuperNova: REBOOT" at K-Arena Yokohama | [Observed SU2] |
 | 2026-03-08 | hololive 7th fes. "Ridin' on Dreams," STAGE 4 (with Calli, Kronii, Bijou, Nerissa) | [Official SU9] |
 | 2026-03 | "Chatter Chatter" with Houshou Marine; playable in Fortnite (03-13 to 03-24) | [Observed SU4] [SU3, secondary] |
 | 2026-03-22 | 8th anniversary: "Prima Donna"; arena tour "Once Upon a Stellar" announced; personal management agency Studio STELLAR for her solo work (she stays in hololive for collabs and group activities); fan club opens | [Observed SU2] |
-| 2026-04-04 | Guest at Mori Calliope's birthday 3D live "UNCUT ROCK!!" (her reported recollection; the event record was not opened) | [ASR SU20, her own account] [Observed fan-clip titles, secondary] |
+| 2026-04-04 | [Unverified: identification of Suisei's reported Calliope appearance as UNCUT ROCK!!; the event and date require a direct locator.] | [ASR SU20, her own account] [Observed fan-clip titles, secondary] |
 | 2026-04-18 | Hoshimatic Project's second song "BEEP BEEP" (official digital release; premiered the day before) | [Official SU10] [SU4] |
 | 2026-05-18/19 | An AS_tar horror off-collab on AZKi's channel (v60QmEvEQqw), then "Going My Way" with AZKi | [Observed SU4; archived metadata] [Official AZKi file] |
 | 2026-07-08/13 | Fan meeting "Hoshiyomi Pajama Party Vol.1" (Tokyo, Osaka) | [Observed SU2] |
@@ -181,7 +182,7 @@ Kensetsu roles) are public labels from a secondary reference, not all officially
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Mori Calliope | "Death Star" | Calli is openly starstruck by her (Calli's file); "CapSule" and "Wicked" (2022); Suisei sang "Wicked" at Calli's first solo concert, New Underworld Order; by Suisei's own account a guest at "UNCUT ROCK!!" (2026); a "Talkin' Live Shows" collab (2023); Calli's watch party of her first tour (2024-11-14) | [S1] [ASR SU20] [SU2 §Relationships] |
+| Mori Calliope | "Death Star" | [Unverified: the secondary characterization of Calli as starstruck.] "CapSule" and "Wicked" (2022); Suisei sang "Wicked" at Calli's first solo concert, New Underworld Order; [Unverified: whether her reported 2026 Calliope appearance was UNCUT ROCK!!]; a "Talkin' Live Shows" collab (2023); Calli's watch party of her first tour (2024-11-14) | [S1] [ASR SU20] [SU2 §Relationships] |
 | AZKi | 0th gen; "AS_tar" (formerly "Ex-INNK") | Labelmates at INoNaKa Music; Star Flower; an AS_tar horror off-collab (2026-05-18) and "Going My Way" (official credit AZKi & Hoshimachi Suisei, 2026) | [SU2] [SU4] [Official SU11] |
 | IRyS | Star Flower | "story time" (2022); "High Tide" (2024); IRyS covered "GHOST" (2021); on Okayu's 2025 New Year Game Festival team (secondary roster) | [Official SU6, SU8] [S1] |
 | Takanashi Kiara | "cometori" (the HOLOTALK title's hashtag) | HOLOTALK #8 and a Tales of Arise discussion (2021); a #tastychallenge dance short (2025-08-25, archived metadata 3PZedEMs_VM) | [S1] |
@@ -199,10 +200,11 @@ Kensetsu roles) are public labels from a secondary reference, not all officially
 | Tokoyami Towa, Minato Aqua | "Startend" | Apex tournaments (2022) | [SU2] |
 | Amane Kanata | "Hoshi no Kanata" | — | [SU2] |
 | Usada Pekora | "Pekomet" | hololive night (2024) | [SU2] [Official SU7] |
-| Hakui Koyori, Sakamata Chloe, Kazama Iroha | Hoshimatic Project | Her idol-group practice unit (2023–), "BEEP BEEP" (2026); she coached Iroha at Puyo Puyo Tetris (2023) | [Koyori file KO2] [Chloe file] [Iroha file IR4] |
-| Houshou Marine | "Chatter Chatter" (2026) | A duet with an original anime MV (official release page 711); the wiki's holoALICE and MOMAS labels were not verified in review | [Marine file MA4] |
+| Hakui Koyori, Sakamata Chloe, Kazama Iroha | Hoshimatic Project | Her idol-group practice unit (2023–); Koyori and Iroha are among the nine credited "BEEP BEEP" vocalists (2026), Chloe was in the earlier lineup (secondary roster); she coached Iroha at Puyo Puyo Tetris (2023-04-11) | [Official BEEP BEEP credits] [Koyori file KO2] [Iroha file IR4 8tOoSNGa_rg] |
+| Houshou Marine | "Chatter Chatter" (2026) | A duet with an original anime MV (official release page 711); the wiki's holoALICE and MOMAS labels were not verified in review They performed "Chatter Chatter" together on STAGE 4 of hololive 7th fes. (2026-03-08). | [Marine file MA4] [Official NEW-R5-003] |
 | Shirogane Noel | Shiranui Kensetsu | The Minecraft construction company with Flare, Polka and Miko | [Noel file NO2, secondary] |
-| La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | All four streamed holoGTA (2024-09); the m HOLD'EM poker collab (2024-12) was Suisei, La+, Botan and Shirakami Fubuki | [SU4 2v4DYYf7hB0] [Sammy roster] |
+| La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured Suisei, La+, Botan and Shirakami Fubuki (publisher roster; a joint broadcast is not established) | [SU4 2v4DYYf7hB0] [Sammy roster] |
+| Kikirara Vivi | — | Taught Vivi Tetris on Vivi's channel (2026-08-29). | [Archive metadata, ckworks qHC9c62GCpc] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, mid-way through the arena tour "Once Upon a Stellar"
@@ -253,6 +255,9 @@ Kensetsu roles) are public labels from a secondary reference, not all officially
   Rhythm Heaven), a1rcws7ellI (2026-06-09 Resident Evil); research/audio-check/suisei.md
 
 ---
+- NEW-R5-001 (GPT research R5, checked 2026-10-03) SuperNova: REBOOT report (OFFICIAL): https://hololive.hololivepro.com/events/supernova-reboot/
+- NEW-R5-002 (GPT research R5, checked 2026-10-03) Departure report and "Going My Way" release (OFFICIAL): https://hololive.hololivepro.com/events/departure/ ; https://hololive.hololivepro.com/en/music/752/
+- NEW-R5-003 (GPT research R5, checked 2026-10-03) 7th fes. report (OFFICIAL): https://hololive.hololivepro.com/events/hololivesuperexpo2026/
 
 ## [SW] Name
 Hoshimachi Suisei
@@ -264,7 +269,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive, hololive 0th Generation, Star Flower, Death Star, miComet, Hoshimatic Project, Shiranui Kensetsu, Startend, AS_tar, MOMAS, Midnight Grand Orchestra
+hololive, hololive 0th Generation, Star Flower, miComet, Hoshimatic Project, Shiranui Kensetsu, Startend, AS_tar, MOMAS, Midnight Grand Orchestra
 
 ## [SW] Other Names
 Suisei, Sui-chan, Suicopath, Hoshimachi
@@ -282,19 +287,19 @@ Suisei's avatar is 160 cm tall, with light blue hair in a side ponytail tied wit
 Streams in Japanese: quick, fluent and confident, with "nanka," "mā," "ne" and "chotto matte" ("wait a sec"). She talks about herself as "Sui-chan," stretches her signature cute line into a sing-song, reacts with a quick "e?", blames chat in mock innocence when chat talked her into something, throws in a mock-rough Tales of the Abyss quote, and answers age questions with the forever-18 bit. English appears in short phrases (she used English when addressing Calliope at New Underworld Order). Laughter and emotional coloring are provisional choices for the original voice, not documented habits. When a story renders her speech in English or Chinese, keep the third-person "Sui-chan" and the sing-song cuteness on top of a crisp, competitive core.
 
 ## [SW] Catchphrases
-「彗星のごとく現れたスターの原石！バーチャルアイドルの星街すいせいでーす！」 ("A shooting star that appeared from diamonds in the rough; I'm the virtual idol Hoshimachi Suisei!", official introduction); 「スイちゃんは〜今日も可愛い〜」 ("Sui-chan wa~ kyō mo kawaii~," "Sui-chan is cute today too~"); 「いやいやいや、私は悪くない」 ("Iya iya iya, watashi wa warukunai," "No, no, no, I'm not the bad one"); 「俺は悪くねぇ」 ("Ore wa warukunē," "It's not my fault," a Tales of the Abyss line); 「スイちゃんは18歳だよ」 ("Sui-chan wa jūhassai da yo," "Sui-chan is eighteen"); "Hi, honey!" (a secondary transcription associated with her Duolingo stream). Her fans are the Hoshiyomi (Stargazers). The English glosses are ours.
+「彗星のごとく現れたスターの原石！バーチャルアイドルの星街すいせいでーす！」 ("A shooting star that appeared from diamonds in the rough; I'm the virtual idol Hoshimachi Suisei!", official introduction); 「スイちゃんは〜今日も可愛い〜」 ("Sui-chan wa~ kyō mo kawaii~," "Sui-chan is cute today too~"); 「いやいやいや、私は悪くない」 ("Iya iya iya, watashi wa warukunai," "No, no, no, I'm not the bad one"); 「俺は悪くねぇ」 ("Ore wa warukunē," "It's not my fault," a Tales of the Abyss line); 「スイちゃんは18歳だよ」 ("Sui-chan wa jūhassai da yo," "Sui-chan is eighteen"); "Hi, honey!" (a secondary transcription associated with her Duolingo stream). Her fans are the Hoshiyomi (Stargazers). The English introduction is official profile wording; the other English glosses are ours.
 
 ## [SW] Voice & Delivery
 Provisional direction for an original designed voice: a clear, bright mid-high voice, polished and confident; quick and fluent in chat, sing-song and stretched for her signature cute line, crisp and clipped when she is competing; a bright laugh as a performance choice. Keep the cuteness as a performance on top of a self-assured core; the "psychopath" bit is a joke, never a cold default.
 
 ## [SW] Audio Tags
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): clear, bright mid-high voice; quick and confident by default. Default tags: [bright, confident]. By situation: introduction [polished, idol-bright]; signature line [sing-song, playful]; chatting about games [quick, enthusiastic]; caught in a mistake [mock-innocent] then [mock-gruff]; competitive game [focused, clipped]; a social-deduction betrayal [sweet] then [deadpan]; cheering a kouhai [warm]. With people (proposed scene directions, not observed conversational defaults): Calli [gracious, amused]; AZKi [relaxed, teasing]; Miko [playful bickering]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [laughs] (tag only); "e?" (spoken). Keep in the words: "Sui-chan," "kawaii," "chotto matte," "Hi, honey!" Reading guide (untested): ほしまち すいせい; すいちゃん; ほしよみ. Not as default: a breathy or babyish voice; a cold, menacing read; mumbling.
+Proposed ElevenLabs v4 performance directions for an original designed voice; never imitate the real member. Timbre, laughter and delivery directions are provisional design choices unless a listening source is explicitly identified. ASR supports wording, not vocal quality or recurrence. Partner tags are optional scene directions, not observed defaults. Test all directions with the chosen voice. Register (qualitative): clear, bright mid-high voice; quick and confident by default. Default tags: [bright, confident]. By situation: introduction [polished, idol-bright]; signature line [sing-song, playful]; chatting about games [quick, enthusiastic]; caught in a mistake [mock-innocent] then [mock-gruff]; competitive game [focused, clipped]; a social-deduction betrayal [sweet] then [deadpan]; cheering a kouhai [warm]. With people (proposed scene directions, not observed conversational defaults): Calli [gracious, amused]; AZKi [relaxed, teasing]; Miko [playful bickering]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [laughs] (tag only); "e?" (spoken). Keep in the words: "Sui-chan," "kawaii," "chotto matte"; occasional "Hi, honey!" (secondary transcription associated with her Duolingo stream). Reading guide (untested): ほしまち すいせい; すいちゃん; ほしよみ. Not as default: a breathy or babyish voice; a cold, menacing read; mumbling.
 
 ## [SW] Motivation
 Suisei aims to perform at the Tokyo Dome and to expand her work as a solo artist. Running her own studio, she also wants hololive members and fans to see that she is still one of them, so she tries to accept their stage invitations when her schedule permits.
 
 ## [SW] Relationships
-Mori Calliope: "Death Star"; Calli is openly starstruck by her; collaborators on "CapSule" and "Wicked" (2022), including their performance at Calli's concert New Underworld Order, and Calli hosted a watch party of Suisei's first tour. AZKi: 0th-generation labelmate since INoNaKa Music ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with AZKi and Moona Hoshinova ("story time," 2022); "High Tide" with IRyS, Moona and Hakos Baelz at the 2024 English concert. Ninomae Ina'nis and Gawr Gura (graduated): "BIBBIDIBA" with Moona at that concert; Gura and Usada Pekora were fellow featured talents in the July 5, 2024 hololive night collaboration with the Los Angeles Dodgers. Takanashi Kiara: HOLOTALK #8 and a Tales of Arise discussion (2021); a dance-challenge short (2025). Hakos Baelz: a "Moonlight" dance cover (2025). FUWAMOCO: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026). Nanashi Mumei (graduated): a #bibbidibachallenge short (2024). Nerissa Ravencroft: a "BIBIDEBA" dance short (2024). Koseki Bijou: watched her Fortnite concert on stream (2026). Nekomata Okayu: "MOMAS"; Okayu's 2025 New Year Game Festival team with Nakiri Ayame, Ina, IRyS and Cecilia, among others. Sakura Miko: her miComet partner. Shiranui Flare: "Shiranui Kensetsu," where Suisei is the PR director. Hakui Koyori, Sakamata Chloe and Kazama Iroha: her Hoshimatic Project; she coached Iroha at Puyo Puyo Tetris (2023). Houshou Marine: "Chatter Chatter" (2026). Shirogane Noel: a fellow Shiranui Kensetsu member. La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA (2024); La+, Botan and Shirakami Fubuki: the m HOLD'EM poker collab (2024).
+Mori Calliope: collaborators on "CapSule" and "Wicked" (2022), including their performance at Calli's concert New Underworld Order, and Calli hosted a watch party of Suisei's first tour. AZKi: 0th-generation labelmate since INoNaKa Music ("AS_tar"); a 2026 horror off-collab and "Going My Way." IRyS: Star Flower with AZKi and Moona Hoshinova ("story time," 2022); "High Tide" with IRyS, Moona and Hakos Baelz at the 2024 English concert. Ninomae Ina'nis and Gawr Gura (graduated): "BIBBIDIBA" with Moona at that concert; Gura and Usada Pekora were fellow featured talents in the July 5, 2024 hololive night collaboration with the Los Angeles Dodgers. Takanashi Kiara: HOLOTALK #8 and a Tales of Arise discussion (2021); a dance-challenge short (2025). Hakos Baelz: a "Moonlight" dance cover (2025). FUWAMOCO: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026). Nanashi Mumei (graduated): a #bibbidibachallenge short (2024). Nerissa Ravencroft: a "BIBIDEBA" dance short (2024). Koseki Bijou: watched her Fortnite concert on stream (2026). Nekomata Okayu: "MOMAS"; Okayu's 2025 New Year Game Festival team with Nakiri Ayame, Ina, IRyS and Cecilia, among others. Sakura Miko: her miComet partner. Shiranui Flare: "Shiranui Kensetsu," where Suisei is the PR director. Hakui Koyori and Kazama Iroha: her Hoshimatic Project ("BEEP BEEP," 2026); Sakamata Chloe was in its earlier lineup (secondary); she coached Iroha at Puyo Puyo Tetris (2023). Houshou Marine: "Chatter Chatter" (2026). Shirogane Noel: a fellow Shiranui Kensetsu member. La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA (2024); La+, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024). Kikirara Vivi: taught her Tetris (2026).
 
 ## [SW] Secrets
 (none)
@@ -329,6 +334,13 @@ Mori Calliope: "Death Star"; Calli is openly starstruck by her; collaborators on
     trimmed to the needed performance spans.
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi), reciprocal ties:** Koyori, Chloe and Iroha (Hoshimatic Project), Marine ("Chatter Chatter"), Noel (Shiranui Kensetsu) and La+, Ayame and Botan (holoGTA, poker) added (sources in the new member files); the Dodgers clause reworded to "featured talents" as on Gura's card.
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the poker roster is Suisei, La+, Botan and Fubuki (publisher roster), not Ayame; holoGTA has its own entry (all four streamed it, verified by Claude in the local archive titles); Marine's unverified unit labels marked.
+- **2026-10-03, GPT review of the holoX cards (run E, La+/Lui/Koyori), merged by Claude:** the m HOLD'EM wording follows the publisher roster ("featured in the same collaboration"), not a confirmed four-person broadcast.
+- **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** Chloe is removed from the implied 2026 "BEEP BEEP" roster (official credits name Koyori and Iroha); her Hoshimatic membership is historical.
+- **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-002, VOICE-V3-003 (sheet: VOICE-V3-001); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:CLAUDE-SCOPE-002, myth1:MYTH-EVENT-002, myth1:MYTH-TIE-002 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-UNIT-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-03, new-material research R5 (20261002-1715-research-new-R5-JP1, GPT xhigh), merged by Claude:** NEW-R5-001 (crowd work at SuperNova: REBOOT), NEW-R5-002 (Departure: "The Last Frontier," the reply letter, "Going My Way"), NEW-R5-003 ("Chatter Chatter" with Marine).
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Her guest appearance at Calli's "UNCUT ROCK!!" (2026-04-04) rests on her own June 2026 account (ASR) and

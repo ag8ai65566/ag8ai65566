@@ -52,7 +52,7 @@ Culture / setting (workplace routine).
 - Hear: BGM under the chat; the superchat chime; a keyboard and mouse; a game's music; a genmate's voice
   crackling in over voice chat.
 - Touch: a controller, a mic arm, a drink on the desk ("my yum-yum drink").
-- One detail only here: "Wait, chat, is my mic on?"
+- One detail only here: Style demo: "Wait, chat, is my mic on?"
 
 ## Society and Power
 - Fans shape the show: requests, memes and backseating; members push back ("no backseating").
@@ -122,7 +122,7 @@ The cast's everyday medium. A stream often opens on a "Starting soon" screen wit
 An off-collab is in person; a collab can be remote or in person; 3D means a full-body avatar. A clip title is a fan's description, not the member's words. Chat can suggest; the member decides. Stream openings, schedules and chimes are common, not mandatory.
 
 ## [SW] Sensory Details
-A scrolling chat wall of member-color emotes; the superchat chime and a yellow or red superchat bar; BGM under the talk; a keyboard and mouse; a genmate's voice crackling in over voice chat; a drink on the desk; "Wait, chat, is my mic on?"
+A scrolling chat wall of member-color emotes; the superchat chime and a yellow or red superchat bar; BGM under the talk; a keyboard and mouse; a genmate's voice crackling in over voice chat; a drink on the desk; Style demo: "Wait, chat, is my mic on?"
 
 ## [SW] Secrets
 
@@ -139,6 +139,7 @@ A scrolling chat wall of member-color emotes; the superchat chime and a yellow o
 - **SHOULD adopted:** openings, schedules and notification sounds written as common possibilities.
 - **Author direction 2026-10-01:** added a line on posting to X (research/x-posts.md).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-03, cross-card QA audit global, hand-applied by Claude:** global:GLOBAL-QUOTE-001 (the mic line is labelled Style demo, the project label).**
 
 ## Open Questions
 (None.)

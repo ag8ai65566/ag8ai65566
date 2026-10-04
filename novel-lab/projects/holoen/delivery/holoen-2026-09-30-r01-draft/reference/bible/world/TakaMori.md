@@ -14,7 +14,7 @@ sw_section: Worldbuilding
 > and a fan term; no private feelings are implied and no romance is written.
 
 ## One-line Concept
-Calli and Kiara are longtime close friends whose present-day public dynamic has the author's "old married
+Calli and Kiara are longtime Myth partners whose present-day public dynamic has the author's "old married
 couple" rhythm: familiar bickering, affectionate teasing and shared history despite fewer collaborations.
 It began as Myth's founding double act, an early "business couple" with a ship name: their persona joke
 paired an immortal phoenix with a reaper who could never keep her dead. [Author; Observed S2–S3]
@@ -40,8 +40,7 @@ paired an immortal phoenix with a reaper who could never keep her dead. [Author;
     secondary]
   - Calli, when a superchat says it is glad they are "friends now": "What do you mean?! I love Kiara!"
     [Observed S3 Calli §Quotes, secondary]
-  - Kiara tells chat that Calli misplaces things in obvious places. [Observed S3 Calli §Personality,
-    secondary]
+  
   - They play "Mom" (Kiara, "Mommy Kiwawa") and "Dad" to Kobo Kanaeru; Calli insists she is not married to
     Kiara and Kobo is adopted. [Observed S2 §Takamori, secondary]
 - **Recent milestones (archive, S1):** an off-collab "Reunion & Gaming!! #takamori" and a karaoke collab
@@ -59,7 +58,7 @@ paired an immortal phoenix with a reaper who could never keep her dead. [Author;
   of this because it's two players only. Next time…" When their game characters split into a fire mage and
   an ice mage, they riff on their own song: "Fire and ice, yeah. Fire and ice, death and life." When the
   split screen separates them: "Oh, double Takamori." [ASR S6, nE12CyKbaX8 0:07:49, 0:08:01, 0:22:36,
-  0:13:28; both models agree; who said which line is not separable from the transcript]
+  0:13:28; Unverified ASR comparison: explicit shared spans and independently supported speaker attribution are unavailable in this snapshot; who said which line is not separable from the transcript]
 - **Heard at the finale (ASR, S6; Calli's channel, 2025-05-02):** they bicker over an idiom like a long
   married pair. One mangles it ("glass stones in stone houses or whatever. I forget the term"), they argue
   over what it even means ("Okay, how about this? Don't cast stones when your body's made of glass."), and
@@ -68,16 +67,15 @@ paired an immortal phoenix with a reaper who could never keep her dead. [Author;
   Out the best… but you know me, I'm edgy, but I still love power, friendship and stuff." Wrapping up:
   "Split screen game finished by Takamori… because Takamori will always get together for these ones,
   right?" "Let's play more in the future." Earlier in the ending: "We got published together."
-  "Together." [ASR S6, 2X8h7UI28mE 4:42:57–4:44:30, 4:36:00, 4:40:50, 4:31:35; both models agree]
+  "Together." [ASR S6, 2X8h7UI28mE 4:42:57–4:44:30, 4:36:00, 4:40:50, 4:31:35; Unverified ASR comparison: explicit shared spans and independently supported speaker attribution are unavailable in this snapshot]
 - **How often (archive, S1):** mentions of each other in titles and descriptions: 33 (2020), 38 (2021),
   12 (2022), 22 (2023), 9 (2024), 9 (2025). Fewer than the first two years, but still one of the most
   steady pairs. [Observed S1; counts by Claude]
 - **Old-married-couple rhythm [Author; supported by the lines above]:** bickering on autopilot, finishing
-  each other's jokes, nostalgia about the early days, complaints that are really affection, and total
-  trust underneath. Kiara says the love out loud; Calli deflects, then proves it by showing up.
+  each other's jokes, nostalgia about the early days, performed complaints and familiar callbacks in their public exchanges. Kiara says the love out loud; Calli deflects.
 
 ## Sensory Palette
-- See: black and orange side by side; a split-screen co-op; Kiara's hand-drawn chicken on Calli's intro.
+- See: black and orange side by side; a split-screen co-op; a chicken caricature of Kiara drawn by Calli.
 - Hear: Kiara's "CALLI!" at full volume; Calli's flat "kusotori"; both laughing at the same bad joke.
 - One detail only here: Calli saying "I love Kiara!" like it's an obvious fact she's annoyed to repeat.
 
@@ -86,10 +84,10 @@ paired an immortal phoenix with a reaper who could never keep her dead. [Author;
 |---|---|---|
 | 2020-09 | Kiara declares the crush on Calli's 2nd stream; "TakaMori" named | The ship name |
 | 2020-12 | Kiara's amnesia re-debut: "Who's Calli?" | Running gag |
-| 2021-09 | Flirt-and-rebuff routine toned down; still close friends | Nicknames and couple jokes remain callbacks |
+| 2021-09 | Flirt-and-rebuff routine toned down; public callbacks continued | Nicknames and couple jokes remain callbacks |
 | 2022-06 | "Reunion & Gaming!! #takamori" off-collab; karaoke collab | In-person reunion |
 | 2023 | Off-collabs; "Fire N Ice" duet (2023-12-14) | Their song |
-| 2025-02-27 | Kiara's watch party for Calli's GriMoire concert | Cheering from the crowd |
+| 2025-02-27 | Kiara's watch party for Calli's GriMoire concert | Cheering during a watch-along |
 | 2025-04/05 | Split Fiction series ("takamori split screen nostalgia") | Nostalgic co-op |
 | 2026-09-19 PDT | Myth 6th anniversary 3D live "Seasons From Within": a Calli–Kiara duet cover and the new Myth song "THIS IS MYTH" | Still side by side [S7] |
 
@@ -116,7 +114,7 @@ Mori Calliope, Takanashi Kiara; Kobo Kanaeru (their "kid" bit); Myth.
 (None.)
 
 ## Hard Facts (continuity)
-- "TakaMori" was named by Kiara (2020); toned down in 2021; they remain close friends.
+- "TakaMori" was named by Kiara (2020); toned down in 2021; they continued public collaborations.
 - Kobo's "parents" bit: Kiara "Mom," Calli "Dad"; "not married, Kobo is adopted."
 - No real romance or intimacy is written; the flirting is a performed bit.
 
@@ -132,8 +130,7 @@ Mori Calliope, Takanashi Kiara; Kobo Kanaeru (their "kid" bit); Myth.
 - S6 Claude's audio check (2026-09-30): nE12CyKbaX8 0:00–0:25 (Kiara's channel, 2025-04-06) and
   2X8h7UI28mE, last 15 minutes (Calli's channel, 2025-05-02), archived
   via archive.ragtag.moe, whisper small.en, lines re-checked with medium.en. Machine transcription, not
-  listening; speakers are not labeled. Lines about the members' families or where they live were heard
-  and deliberately left out (project rule).
+  listening; speakers are not labeled. The project's public-persona scope applies to these recordings.
 - S5 Author's description (2026-09-30): early business couple with a name; fewer interactions now but
   still very close; like an old married couple.
 - S7 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened); setlist (secondary): https://holopick.net/article/4ef36c79-7079-4140-90db-c299245874ed
@@ -150,10 +147,10 @@ Relationship
 Takamori, TakaMori, Calli and Kiara, Kiara and Calli
 
 ## [SW] Description
-Mori Calliope and Takanashi Kiara are longtime close friends whose present-day public dynamic has an "old married couple" rhythm: familiar bickering, affectionate teasing and shared history despite fewer collaborations. Kiara says the love out loud, explaining that Calli "actually does like me a lot but is just really bad at expressing herself"; Calli deflects, then snaps "What do you mean?! I love Kiara!" when a fan suggests they're only friends "now." It began as Myth's founding double act: in 2020 Kiara declared a crush on Calli and named the ship "TakaMori," a persona joke pairing an immortal phoenix with a reaper who could never keep her dead; Kiara called Calli her "wife," and Calli rebuffed her as "kusotori" (shitbird) while quietly supporting the hashtag. Calli made and narrated Kiara's debut intro. They toned the routine down in 2021. Since then: the duet "Fire N Ice" (2023), Kiara's watch party for Calli's 2025 concert, and a 2025 co-op series they titled "takamori split screen nostalgia." They play "Mom" and "Dad" to Kobo Kanaeru; when Kobo appeared in their chat they told her "Go to bed!" and "Sorry Kobo, you can't be part of this because it's two players only." When their game gave them fire and ice powers, they riffed, "Fire and ice, death and life." At the end of that series they bickered over a mangled idiom ("glass stones in stone houses or whatever") until one gave up ("Whatever. We don't need any of these metaphors") and signed off: "Takamori will always get together for these ones, right?"
+Mori Calliope and Takanashi Kiara are longtime Myth partners whose present-day public dynamic has an "old married couple" rhythm: familiar bickering, affectionate teasing and shared history despite fewer collaborations. Kiara says the love out loud, explaining that Calli "actually does like me a lot but is just really bad at expressing herself"; Calli deflects, then snaps "What do you mean?! I love Kiara!" when a fan suggests they're only friends "now." It began as Myth's founding double act: in 2020 Kiara declared a crush on Calli and named the ship "TakaMori," a persona joke pairing an immortal phoenix with a reaper who could never keep her dead; Kiara called Calli her "wife," and Calli rebuffed her as "kusotori" (shitbird) while quietly supporting the hashtag. Calli made and narrated Kiara's debut intro. They toned the routine down in 2021. Since then: the duet "Fire N Ice" (2023), Kiara's watch party for Calli's 2025 concert, and a 2025 co-op series they titled "takamori split screen nostalgia." They play "Mom" and "Dad" to Kobo Kanaeru; when Kobo appeared in their chat, they told her to go to bed and apologized that the two-player game had no room for her. When their game gave them fire and ice powers, they riffed on their own song. At the end of that series they bickered over a mangled idiom until one gave up on metaphors altogether, and they signed off promising that Takamori always gets together for these games.
 
 ## [SW] Rules
-They toned down the early flirt-and-rebuff routine in 2021. Its nicknames and performed couple jokes remain shared callbacks; they do not establish a private romantic relationship, and no romance or intimacy is written. Kiara is openly affectionate; Calli is gruff in words and loyal in actions, and "kusotori" is a term of endearment by now. Collabs are occasional; when they meet, it feels like no time has passed. In the 2025 co-op lines quoted here, who said which is not always known; keep those exchanges unattributed.
+They toned down the early flirt-and-rebuff routine in 2021. Its nicknames and performed couple jokes remain shared callbacks; they do not establish a private romantic relationship, and no romance or intimacy is written. In their performed routine, Kiara plays up affection and Calli answers with gruff teasing, including "kusotori" (shitbird). Collabs are occasional; when they meet, it feels like no time has passed. Their 2025 co-op sessions provide shared gaming memories; exact dialogue remains unverified.
 
 ## [SW] Sensory Details
 Black and orange side by side in a split-screen co-op; Kiara's "CALLI!" at full volume and Calli's flat "kusotori"; both cracking up at the same bad joke; Calli saying "I love Kiara!" like an obvious fact she's tired of repeating.
@@ -168,13 +165,16 @@ Black and orange side by side in a split-screen co-op; Kiara's "CALLI!" at full 
   Siliconera (S4), the author's framing (S5) and Claude's two-model audio check (S6).
 - **From GPT one-round review (runs/20260930-2309-world-hololive/gpt-free.md, 2026-10-01, high), adopted:** the author-approved present-day relationship now leads (dossier and card);
   literal-sounding lore rewritten as a persona joke; "past tense" replaced with GPT's wording (the bits
-  remain callbacks, no private romance); the sleep-talking anecdote and the home reference removed;
+  remain callbacks, no private romance); private-life material removed;
   Split Fiction lines left unattributed (the one "I'm an edgelord, Kiara" line is marked as presumably
   Calli because it addresses Kiara).
 - **SHOULD adopted:** "kusotori" removed from Other Names (it would load this card in unrelated Kiara scenes).
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-01, CONSULT-P2-001 and scope tidy-up:** process notes trimmed to the author's public-persona scope rule.
 - **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** the 6th-anniversary live confirmed as held (CONSULT-P2-001); their duet cover there (secondary setlist).
+- **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:CLAUDE-SCOPE-002, myth1:MYTH-CREDIT-001, myth1:MYTH-EVENT-003, myth1:MYTH-QUOTE-001, myth1:MYTH-SCOPE-002 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:MYTH-SCOPE-004 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audits myth1/myth3, hand-applied by Claude:** myth1:MYTH-QUOTE-001 (S6 co-op lines marked as an unverified ASR comparison; the [SW] Description paraphrases them instead of quoting), myth3:MYTH-SCOPE-002 (public-performance wording kept, including the author's old-married-couple shorthand; claims of private closeness, loyalty and hidden feelings removed).**
 
 ## Open Questions
 1. The "old married couple" rhythm is the author's description; the evidence above supports its pieces

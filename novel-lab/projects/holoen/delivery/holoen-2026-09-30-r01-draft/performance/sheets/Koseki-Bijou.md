@@ -4,14 +4,14 @@
 > to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Bijou is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, neutral American accent, small, bright, bubbly, high voice; quick and
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young woman, English-speaking, small, bright, bubbly, high voice; quick and
 bouncy when excited or hosting; goes calm, quiet and flat under pressure; sudden squeaky bursts of laughter;
 playful, childlike energy."
 - Register basis: qualitative only. The sampled gameplay recordings mix in game audio, so their numbers are
   not used as targets here (see `research/audio-check/bijou.md`).
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (bubbly swings, but the calm gaming voice must hold). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[excited, bouncy]` or `[focused, calm]`; v4 has no speed slider.
 
@@ -40,6 +40,8 @@ playful, childlike energy."
 With people (provisional): Shiori `[cheeky]`; Kiara `[hyped, meme-y]`; Kaela `[comfortable, playful]`;
 IRyS `[excited teammate]`; FUWAMOCO `[silly]`.
 
+Additional proposed scene directions from the card's Audio Tags (untested): `[bright, bubbly]`, `[delighted]`.
+
 ## 5. Signature sounds
 - `[squeaky laugh] ha ha ha ha` and `[giggles] hehehe` (spoken).
 - `[censoring herself] beep` (spoken, in place of a swear).
@@ -47,7 +49,7 @@ IRyS `[excited teammate]`; FUWAMOCO `[silly]`.
 - `[humming]` to fill a quiet stretch (tag only).
 
 ## 6. Pronunciation (provisional; test)
-- Bijou `/biˈʒuː/` ("bi-joo") · Biboo `/ˈbiːbuː/` · Koseki `/koʊˈsɛki/` · Gerudo as "Jerudo" `/dʒəˈɹuːdoʊ/`
+- Bijou `/biˈʒuː/` ("bi-joo") · Biboo `/ˈbiːbuː/` · Koseki `コセキ (provisional kana guide; untested)` · Gerudo as "Jerudo" `/dʒəˈɹuːdoʊ/`
   (her quirk, on purpose)
 
 ## 7. Don't

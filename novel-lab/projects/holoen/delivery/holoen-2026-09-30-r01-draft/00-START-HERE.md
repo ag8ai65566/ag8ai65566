@@ -1,11 +1,9 @@
 # 從這裡開始 — holoen r01（草稿候選版，尚未通過全部檢查）
 
 這是給作者的使用指南：資料在哪裡、每個檔案放進 Sudowrite 的哪一格、寫作時怎麼用、怎麼交給 ElevenLabs 配音、
-之後怎麼更新。基準日 2026-09-30；這一版有 **28 張角色卡**、**27 張世界觀卡**、28 份 ElevenLabs 表演表，
+之後怎麼更新。基準日 2026-09-30；這一版有 **33 張角色卡**、**28 張世界觀卡**、33 份 ElevenLabs 表演表，
 全部是完整卡（沒有精簡版）。檢查結果在 `validation.json`；**實際匯入和配音只有你能測（runtime untested）**，
 請先做第 3 節的十分鐘測試。
-
-> 這一版還沒收錄：La+ Darknesss、Takane Lui、Hakui Koyori、Sakamata Chloe、Kazama Iroha、holoX（審查完成後在下一版加入；到時只要匯入 `sudowrite/cards/` 裡這幾張的 CSV，不用重匯整包）。
 
 ## 1. 資料在哪裡拿
 
@@ -26,10 +24,14 @@
 | `sudowrite/style.txt` | Story Bible → **Style** | 整段貼上；後面可以接一兩句你自己的文風（合計約 120 字內） |
 | `sudowrite/paste.md` | （不匯入）| 每張卡逐欄的內容，**更新既有卡片時逐欄複製貼上**用 |
 | `sudowrite/scene-setup.md` | （不匯入）| 寫過去時間點的場景時，查每個人當時的狀態 |
+| `sudowrite/scene-prompt.txt` | 章節的 **Extra Instructions** | 要配音的場景才用：讓 Sudowrite 寫成場景腳本格式（第 6 節） |
 | `performance/sheets/<名字>.md` | ElevenLabs | 每個角色的原創聲音設計、設定值、標籤表（第 6 節） |
-| `performance/pronunciation.tsv` | ElevenLabs | 名字與專有名詞的 IPA（暫定，要先測） |
+| `performance/script-format.md` | （不匯入）| 場景腳本格式：`全名 :: 台詞`、STAGE／SFX／PAUSE／ROMAJI／GLOSS 行 |
+| `performance/tools/scene_to_elevenlabs.py` | 你的電腦 | 離線轉換器：腳本 → ElevenLabs 請求檔＋試聽單（不連網、不需金鑰） |
+| `performance/pronunciation.tsv` | ElevenLabs | 名字與專有名詞的 IPA（暫定、不完整；日文讀音看表演表第 6 節） |
 | `performance/voice-map.example.json` | 你自己的紀錄 | 填你做好的原創聲音 voice_id |
 | `performance/test-results.csv` | 你自己的紀錄 | 寫測試結果（第 3、6 節） |
+| `reference/platform-docs/…` | （不匯入）| Sudowrite 與 ElevenLabs 的平台筆記（查核日 2026-10-02） |
 | `reference/bible/…` | （不匯入）| 每張卡上面的完整研究檔：來源、時間線、關係表、合併紀錄。想查「這句話哪裡來」時看 |
 | `CHANGELOG.md`、`01-INDEX.md`、`manifest.json` | （不匯入）| 這版改了哪些欄位、卡片索引、檔案雜湊 |
 
@@ -40,8 +42,8 @@ Relationships, Secrets`。每個角色的 Role 都是 Protagonist。`Secrets` �
 ## 3. 第一次：先在測試專案做十分鐘匯入測試
 
 1. 新建專案 `holoen-r01-smoke`（可丟棄）。不要在你正在寫的專案裡測匯入。
-2. Characters 匯入 `sudowrite/characters.csv`，確認 **28 張**；Worldbuilding 匯入 `sudowrite/worldbuilding.csv`，
-   確認 **27 個**。每個合併 CSV 只匯入一次。
+2. Characters 匯入 `sudowrite/characters.csv`，確認 **33 張**；Worldbuilding 匯入 `sudowrite/worldbuilding.csv`，
+   確認 **28 個**。每個合併 CSV 只匯入一次。
 3. 打開 Fuwawa、Mococo 和另一個角色：雙胞胎是兩張卡、`Role` 是 Protagonist、自訂特質（含 `Audio Tags`）有內容。
    找一個多行或有標點的欄位，和 `sudowrite/paste.md` 對照。打開 FUWAMOCO 和一張 History 卡。
 4. 把 `sudowrite/style.txt` 貼到 Style。Genre 填 `Light comic fantasy`，Braindump 填
@@ -87,22 +89,44 @@ Relationships, Secrets`。每個角色的 Role 都是 Protagonist。`Secrets` �
 
 ## 6. 配音：交給 ElevenLabs v4
 
-1. **做原創聲音**：每個角色在 Voice Design 貼上表演表第 1 節的描述，生成幾個預覽，挑最符合「音域和能量」的，
-   存成 `holoen-<名字>`。**不要用直播或歌聲做 clone，也不要刻意做像本人的聲音**（ElevenLabs 政策與 COVER
-   二次創作規範都禁止）。旁白另外做一個中性聲音。voice_id 記在 `voice-map.example.json`。
-2. **設定**：表演表第 2 節（UI 用百分比，例 Stability 40%、Similarity 75%；API 用小數）；模型選 `eleven_v4`。
-3. **貼稿**：從 Sudowrite 複製帶標籤的對白。多人對話用 **Text to Dialogue**（每一輪指定那個角色的聲音，
-   一次 2,000 字元以內）；長段旁白用 Text to Speech 或 Studio，旁白不加標籤。同一場景盡量一次生成，讓 v4 讀到上下文。
-4. **發音**：`pronunciation.tsv` 的 IPA 是暫定的；要測時，在另一份稿裡**直接把名字換成 IPA**，不要同時寫名字又寫 IPA。
-5. **三行測試**（先做一次）：用兩個你自己的原創聲音 A/B/A 輪流（以下是風格示範，不是引用）：
+在發佈資料夾**外面**開一個製作資料夾（例 `production/<故事名>/`），草稿、voice-map、請求檔和錄音都放那裡，
+不要寫回有雜湊的發佈資料夾。
+
+1. **做原創聲音**：每個角色在 Voice Design（Voices → My Voices → Add a new voice → Voice Design）寫一段**獨立的**
+   聲音描述，可以參考表演表第 1 節，但不要放成員名字、錄音、「像她」的要求或量測到的音高語速。生成幾個預覽，
+   選清楚、有表現力、適合故事的那個，存起來拿到 voice_id。**不要用直播或歌聲做 clone，也不要刻意做像本人的聲音**
+   （ElevenLabs 政策與 COVER 二次創作規範）。旁白要配的話另外做一個中性聲音。把 `voice-map.example.json` 複製成
+   `voice-map.json`，只留會出場的人，填上 voice_id。
+2. **寫配音用的場景**：在 Sudowrite 用 Draft 或 Guided Write，把 `sudowrite/scene-prompt.txt` 貼進 Extra Instructions，
+   寫成場景腳本格式（`performance/script-format.md`）：一行一輪 `全名 :: [標籤] 台詞`；日文台詞後面加
+   `ROMAJI ::`（不唸）；舞台指示、音效、精確停頓用 `STAGE ::`、`SFX ::`、`PAUSE ::`。存成 UTF-8 的
+   `scenes/s001.scene.txt`。用 Rewrite／Describe 改過之後要再檢查一次。
+   **沒有 Python（或不想用程式）也可以**：跳過第 3、4 步的指令，直接在 ElevenLabs 網頁的 Dialogue 模式，一行台詞建一輪，
+   選那個角色的聲音，把 `全名 ::` 後面的內容（含 `[標籤]`）貼進去；`ROMAJI`、`GLOSS`、`STAGE`、`SFX`、`PAUSE`、旁白行都不要貼。
+   自己檢查三件事：標籤要出自該角色表演表第 2、4、5 節；笑聲這類聲音只寫標籤、不要再拼出來；一次不超過約 2,000 字元。
+3. **檢查**（有 Python 3 時）：`python3 performance/tools/scene_to_elevenlabs.py scenes/s001.scene.txt --voice-map voice-map.json --sheets performance/sheets --lint-only`。
+   它會擋下：名字拼錯、表演表沒列的標籤、括號錯誤、日文沒有羅馬拼音、一個請求超過 2,000 單位或十個聲音、
+   `【Sudowrite 處理】` 標記（那種場景不進配音）。笑聲同時寫成標籤又拼出來會給警告。
+4. **轉成請求**：同一行把 `--lint-only` 換成 `--out requests/r01`，每個場景得到一個 JSON（`model_id: eleven_v4`）
+   和一份試聽單。用 API 的話，把 JSON 用你自己的工具送到 `POST /v1/text-to-dialogue`（金鑰不要放進套件）；
+   用網頁的話，照試聽單在 Dialogue 模式一輪一輪指定聲音。設定看表演表第 2 節（UI 百分比、API 小數；都是待試聽的起點）。
+5. **發音**：先用一般拼法試；不對再用測過的發音字典規則，或把名字換成 IPA（不要名字和 IPA 都寫）。
+6. **試聽**（先做一次三行測試和一次日文測試；以下是風格示範，不是引用）：
    ```text
-   A: [calm] We can check the map again.
-   B: [startled] Ah! That door moved.
-   A: [laughs] Fuwawa, Mococo—your turn.
+   @@scene test
+   @@date 2026-09-30
+   # Style demo: invented lines, not quotations.
+   Fuwawa Abyssgard :: [bright, sing-song] We can check the map again.
+   Mococo Abyssgard :: [squeaky] Whaaat? That door moved!
+   Mococo Abyssgard :: [sneezes]
    ```
-   聽：聲音分配對不對、語氣有沒有變、標籤有沒有被唸出來、笑聲有沒有重複、名字發音。結果寫具體觀察，
-   記在 `test-results.csv`。
-6. 太平淡就把 Stability 往下調、標籤寫具體一點；太誇張就往上調、減少標籤。表演表第 7 節是「不要這樣演」。
+   聽：聲音分配、語氣變化、標籤有沒有被唸出來、笑聲有沒有重複、名字和日文發音。結果寫進 `test-results.csv`
+   （`elevenlabs-3-line`、`elevenlabs-japanese`；寫日期、測試者、模型或聲音、具體觀察）。失敗就寫 fail，不要留白。
+7. **調整**：一次只改一個地方。太平淡→Stability 往下、標籤寫具體；太誇張→Stability 往上、減少標籤。
+   表演表第 7 節是「不要這樣演」。改台詞要改腳本原檔，再重新轉換。
+8. **組裝與發佈**：停頓、重疊、音效照試聽單在 Studio 或剪輯軟體裡做。保留每個選用 take 的設定與 request ID。
+   對外分享時附上聲明：*“Unofficial fan fiction. Performed with original AI-generated voices; no talent participated
+   in or endorsed this recording.”*（這是本專案建議的聲明，不代表一句話就解決所有地區的規定。）
 
 ## 7. 之後的版本怎麼更新
 

@@ -5,14 +5,14 @@
 > Derivative Works Guidelines). Bae is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, Australian accent, bright, punchy mid-range voice; fast, loud and
+"Perfect audio quality. Young woman, English speech with no prescribed regional accent, bright, punchy mid-range voice; fast, loud and
 run-on when telling a story; louder and higher for jokes, flat and deadpan for a dry 'bruh'; warm and sincere
 when cheering someone on."
 - Register and energy are creative choices for an original voice; the recording measurements in
-  `research/audio-check/bae.md` are not synthesis targets. The accent is a secondary description of her public
-  delivery: keep it natural, never a caricature.
+  `research/audio-check/bae.md` are not synthesis targets. A regional accent remains unassigned pending an in-scope listening
+  check; the secondary description is not a synthesis instruction.
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) and Similarity **75%** (API `0.75`) are untested starting
   choices (she swings between loud storytelling, deadpan and warmth); Similarity refers only to the selected
   original voice.

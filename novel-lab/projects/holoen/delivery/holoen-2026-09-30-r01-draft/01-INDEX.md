@@ -1,6 +1,6 @@
 # Index
 
-Release r01 · baseline 2026-09-30 · 28 characters · 27 world elements · full cards (no compact variants).
+Release r01 · baseline 2026-09-30 · 33 characters · 28 world elements · full cards (no compact variants).
 
 ## Characters (Myth → Promise/Council → Advent → Justice → hololive JP)
 
@@ -25,7 +25,7 @@ Release r01 · baseline 2026-09-30 · 28 characters · 27 world elements · full
 | Gigi Murin | active | hololive -Justice-, hololive English -Justice- (former branch name), Justice, Autofister, CCGG | `reference/bible/characters/Gigi-Murin.md` | `performance/sheets/Gigi-Murin.md` | hololive -Justice-, Hakos Baelz Pairs, Advent Pairs, Justice Pairs, Cross-Branch Friends, Concerts and Live Events, hololive History 2023-2026 |
 | Cecilia Immergreen | active | hololive -Justice-, hololive English -Justice- (former branch name), Justice, Autofister, CCGG | `reference/bible/characters/Cecilia-Immergreen.md` | `performance/sheets/Cecilia-Immergreen.md` | hololive -Justice-, Hakos Baelz Pairs, Advent Pairs, Justice Pairs, Cross-Branch Friends, Concerts and Live Events, hololive History 2023-2026 |
 | Raora Panthera | active | hololive -Justice-, hololive English -Justice- (former branch name), Justice, B.F.F | `reference/bible/characters/Raora-Panthera.md` | `performance/sheets/Raora-Panthera.md` | hololive -Advent-, hololive -Justice-, FUWAMOCO, Advent Pairs, Justice Pairs, Cross-Branch Friends, Concerts and Live Events, hololive History 2023-2026 |
-| Hoshimachi Suisei | active | hololive, hololive 0th Generation, Star Flower, Death Star, miComet, Hoshimatic Project, Shiranui Kensetsu, Startend, AS_tar, MOMAS, Midnight Grand Orchestra | `reference/bible/characters/Hoshimachi-Suisei.md` | `performance/sheets/Hoshimachi-Suisei.md` | Hakos Baelz Pairs, JP Senpai Pairs, Cross-Branch Friends |
+| Hoshimachi Suisei | active | hololive, hololive 0th Generation, Star Flower, miComet, Hoshimatic Project, Shiranui Kensetsu, Startend, AS_tar, MOMAS, Midnight Grand Orchestra | `reference/bible/characters/Hoshimachi-Suisei.md` | `performance/sheets/Hoshimachi-Suisei.md` | Hakos Baelz Pairs, JP Senpai Pairs, Cross-Branch Friends |
 | AZKi | active | hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA | `reference/bible/characters/AZKi.md` | `performance/sheets/AZKi.md` | JP Senpai Pairs, Cross-Branch Friends, hololive History to 2022 |
 | Nakiri Ayame | active | hololive, hololive 2nd Generation, FAMS, AyaFubuMi, AyaSuba, Manji-gumi, OKFAMS | `reference/bible/characters/Nakiri-Ayame.md` | `performance/sheets/Nakiri-Ayame.md` | JP Senpai Pairs |
 | Nekomata Okayu | active | hololive, hololive GAMERS, OkaKoro, SMOK, OKFAMS, MOMAS, TakoNeko, SubaOka | `reference/bible/characters/Nekomata-Okayu.md` | `performance/sheets/Nekomata-Okayu.md` | JP Senpai Pairs, Cross-Branch Friends |
@@ -34,6 +34,11 @@ Release r01 · baseline 2026-09-30 · 28 characters · 27 world elements · full
 | Yukihana Lamy | active | hololive, hololive 5th generation, NePoLaBo, KALAZ, KoZMy, Yakamashi Musume, holoWitches, NePoX, Blue Journey | `reference/bible/characters/Yukihana-Lamy.md` | `performance/sheets/Yukihana-Lamy.md` | JP Senpai Pairs 2 |
 | Shishiro Botan | active | hololive, hololive 5th generation, NePoLaBo, holoFive, NePoX, InuTakaShishiRam, Usada Kensetsu, SubaChocoLunaTan | `reference/bible/characters/Shishiro-Botan.md` | `performance/sheets/Shishiro-Botan.md` | JP Senpai Pairs 2, Cross-Branch Friends |
 | Kikirara Vivi | active | hololive, FLOW GLOW, MVP | `reference/bible/characters/Kikirara-Vivi.md` | `performance/sheets/Kikirara-Vivi.md` | JP Senpai Pairs 2 |
+| La+ Darknesss | active | hololive, Secret Society holoX, holoX, NePoX | `reference/bible/characters/Laplus-Darknesss.md` | `performance/sheets/Laplus-Darknesss.md` | holoX |
+| Takane Lui | active | hololive, Secret Society holoX, holoX, HOLOTORI, Bara☆Dice, Blue Journey, InuTakaShishiRam, NePoX | `reference/bible/characters/Takane-Lui.md` | `performance/sheets/Takane-Lui.md` | holoX |
+| Hakui Koyori | active | hololive, Secret Society holoX, holoX, Hoshimatic Project, KoZMy, NePoX, Blue Journey | `reference/bible/characters/Hakui-Koyori.md` | `performance/sheets/Hakui-Koyori.md` | holoX, Cross-Branch Friends |
+| Sakamata Chloe | affiliate | hololive, Secret Society holoX (until 2025), holoX, KoyoChlo, Kanaken, holoWitches, UMISEA | `reference/bible/characters/Sakamata-Chloe.md` | `performance/sheets/Sakamata-Chloe.md` | holoX |
+| Kazama Iroha | active | hololive, Secret Society holoX, holoX, AzuIro, Hoshimatic Project, NePoX, Bara☆Dice | `reference/bible/characters/Kazama-Iroha.md` | `performance/sheets/Kazama-Iroha.md` | holoX |
 
 ## World elements (premise → units → relationships → events)
 
@@ -60,6 +65,7 @@ Release r01 · baseline 2026-09-30 · 28 characters · 27 world elements · full
 - Justice Pairs — `reference/bible/world/Justice-Pairs.md`
 - JP Senpai Pairs — `reference/bible/world/JP-Senpai-Pairs.md`
 - JP Senpai Pairs 2 — `reference/bible/world/JP-Senpai-Pairs-2.md`
+- holoX — `reference/bible/world/holoX.md`
 - Cross-Branch Friends — `reference/bible/world/Cross-Branch-Friends.md`
 - Concerts and Live Events — `reference/bible/world/Concerts-and-Live-Events.md`
 - hololive History to 2022 — `reference/bible/world/hololive-History-to-2022.md`

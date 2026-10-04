@@ -25,12 +25,12 @@ Historical events.
 | 2017-09-07 | Tokino Sora makes COVER's first VTuber broadcast | "Sora-senpai" is everyone's origin point |
 | 2017-12-21 | The "hololive" app launches | Where the name came from |
 | 2018-05 / 06 | hololive 1st generation debuts (Fubuki, Matsuri, Haato, Aki, Mel, Chris) | The first "gen" |
-| 2018-08 / 09 | 2nd generation (Aqua, Shion, Ayame, Choco, Subaru); Sakura Miko debuts (2018-08-01) | Senpai the EN members grew up watching |
+| 2018-08 / 09 | 2nd generation (Aqua, Shion, Ayame, Choco, Subaru); Sakura Miko debuts (2018-08-01) | Earlier-debuting hololive members |
 | 2018-12 | hololive GAMERS (Fubuki, Mio; later Okayu, Korone) | Gaming senpai |
 | 2018-11-15 | AZKi debuts under COVER's management | — |
-| 2019-05-19 | AZKi and Hoshimachi Suisei (formerly independent) join under the INoNaKa Music label; Suisei moves to hololive's main branch on 2019-12-01 | Calli's starstruck senpai Suisei |
+| 2019-05-19 | AZKi and Hoshimachi Suisei (formerly independent) join under the INoNaKa Music label; Suisei moves to hololive's main branch on 2019-12-01 | Calli's collaborator Hoshimachi Suisei |
 | 2019-06 / 09 | HOLOSTARS, COVER's male group, starts (1st gen, incl. Rikka); 2nd gen in December | Calli's MoRikka partner |
-| 2019 | 3rd gen "hololive Fantasy" (Pekora, Rushia, Marine, Flare, Noel); hololive China begins | Kiara's oshi Pekora; Nerissa's oshi Marine; Calli's starstruck senpai Suisei |
+| 2019 | 3rd gen "hololive Fantasy" (Pekora, Rushia, Marine, Flare, Noel); hololive China begins | Kiara's oshi Pekora; Nerissa's oshi Marine; Calli's collaborator Hoshimachi Suisei |
 | 2019-12 | 4th gen (Coco, Kanata, Watame, Towa, Luna); hololive, HOLOSTARS and INoNaKa Music unite as "hololive production" | The modern brand |
 | 2020-04 | hololive Indonesia gen 1; hololive English auditions announced | The overseas branches |
 | 2020-08 | 5th gen (Lamy, Nene, Botan, Polka; Aloe graduated the same month) | The JP generation just before Myth |
@@ -135,6 +135,8 @@ A 2020 debut thumbnail; a "1,000,000" celebration screen; the old hololive Engli
 - **2026-10-01, cast expansion (author: add Fauna and Mumei):** links and lines updated for the ten characters.
 - **2026-10-01, P1 fixes from the GPT project consult (runs/20261001-1557-check-Project-Consult/gpt-free.md),
   checked by Claude against the official Serendipity report and announcements:** "hololive English first generation" removed from Other Names (it names Myth; it stays on the Myth card).
+- **2026-10-03, cross-card QA audit myth1, hand-applied by Claude:** myth1:MYTH-TIE-002 (both 2019 trace cells).**
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:ADVENT-SCOPE-002 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

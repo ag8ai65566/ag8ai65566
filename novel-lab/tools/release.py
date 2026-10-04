@@ -77,7 +77,7 @@ def shipped_counts(pkg):
         f = pkg / "sudowrite" / name
         return len(list(csv.DictReader(io.StringIO(lab.read(f))))) if f.exists() else 0
     return {"characters": rows("characters.csv"), "world": rows("worldbuilding.csv"),
-            "sheets": len(list((pkg / "performance" / "sheets").glob("*.md")))}
+            "sheets": len([p for p in (pkg / "performance" / "sheets").glob("*.md") if p.stem != "sudowrite-style"])}
 
 
 def sha(b):

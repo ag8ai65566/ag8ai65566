@@ -129,6 +129,8 @@ The middle column is provisional voice direction unless a source is named.
 | 2025 | 1.5 million subscribers (02-14, secondary); originals "Simulacre," "Gaotteko!" and "boundary"; a guest at Ina's birthday 3D live "EVERMORE" (05-21), singing "storia" with Ina and Tsunomaki Watame per a secondary set list; the first "#ホロ金策サバイバル" | [Observed BO2] [BO5] [EVERMORE report] [ASR BO20] |
 | 2026-04 | The "Shishiro Cup" fighting-game tournament, offline; original "Tokihanate" (04-10) | [BO4] [Observed BO2] |
 | 2026-06-01/05 | "#ホロ金策サバイバル2," with Botan as game master | [BO4] [ASR BO20] |
+| 2026-08-26 | NePoLaBo and Secret Society holoX release their joint original "Watcha Gatcha!!!!!!!!" | [Official NEW-R6-004] |
+| 2026-09-14 | She organized and hosted the ShishiDori Cup, a hololive Dreams competition with 27 participants in nine teams, combining rhythm-game and chase-game challenges. | [Archive metadata NEW-R6-001] |
 | 2026-09-19 | First album "BOTAN.EXE" opened for orders; original "Stray & Stay" | [Observed BO2] [Distributor listing] |
 | 2026-09-26/27 | NePoX events with Secret Society holoX | [LM4 Ml1tM8S40p0] |
 
@@ -139,16 +141,17 @@ Public exchanges only.
 |---|---|---|---|
 | Yukihana Lamy | 5th-gen genmate; NePoLaBo | "Horror dates" where Botan stays calm and teases Lamy | [BO2] |
 | Takane Lui | "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (secondary) | Left 4 Dead 2 (2022); an Overwatch 2 team (2023). The "BLT" label was not verified in review | [BO2] [BO5] [Lui file] |
-| La+ Darknesss, Hakui Koyori, Kazama Iroha | NePoX | NePoLaBo × holoX events (2026) | [BO2] |
+| La+ Darknesss, Hakui Koyori, Kazama Iroha | NePoX | NePoLaBo × holoX events (2026) The Shishiro Cup offline programme billed Botan and La+ on opposing sides of its East–West team competition (announced 2026-02-02 for 04-12). | [BO2] [Official NEW-R6-003] |
 | Kazama Iroha | — | Built the roof of Botan's Minecraft shop (2023) | [Iroha file] |
 | Sakamata Chloe (affiliate) | — | The 2023 Overwatch 2 team | [BO5] |
-| La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); the m HOLD'EM poker collab (2024-12) was La+, Suisei, Botan and Shirakami Fubuki, not Ayame | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
-| Takanashi Kiara | "Usada Kensetsu" (Usaken) | The Minecraft construction company of Pekora's circle | [BO2] |
+| La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki, not Ayame (publisher roster; a joint broadcast is not established) | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
+| Takanashi Kiara | "Usada Kensetsu" (Usaken) | The Minecraft construction company of Pekora's circle Archived metadata dates an Usaken summer-festival planning and building collab with Kiara (2021-06-07). | [BO2] [Archive metadata, ckworks q_IXZIRCbwI] |
 | Gawr Gura (graduated) | "Apex Predators" (a secondary-listed pair label) | A joint Apex session is not established here | [BO2] |
 | IRyS | — | Left 4 Dead 2 with Lui and Korone (2022); the Overwatch 2 team with Lui, Chloe and Towa (2023) | [BO5 K1wStJxm4F0, roWKpgZsjR4] |
 | Mori Calliope | — | HOLOYOI #03 with Subaru (2023) | [BO5] |
 | Hakos Baelz | — | BAE-GEMITE DOMINATION #2 with Subaru (2023) | [BO5] |
 | Ninomae Ina'nis | — | A guest at Ina's birthday 3D live "EVERMORE" (2025); "storia" with Ina and Watame (secondary set list) | [BO5 I-J11Da5ONY] [EVERMORE report] |
+| Nerissa Ravencroft | Advent kouhai | A credited guest in Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata NEW-R6-002] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: her second season of the Minecraft money-making event run, a
@@ -185,6 +188,11 @@ Public exchanges only.
   report (secondary): https://iffy.club/2025/evermore/ ; m HOLD'EM roster: https://www.sammy.co.jp/japanese/top/pdf/Sammy_241021_1.pdf
 
 ---
+- NEW-R6-001 (GPT research R6, checked 2026-10-03) ShishiDori Cup description (ARCHIVE_METADATA): https://tw.yutura.net/channel/35550/video/DjbOkB_3KXs/
+- NEW-R6-002 (GPT research R6, checked 2026-10-03) Stray&Stay guest credits (ARCHIVE_METADATA): https://tw.yutura.net/channel/35550/video/cI535pJp-TQ/
+- NEW-R6-003 (GPT research R6, checked 2026-10-03) Shishiro Cup announcement (OFFICIAL): https://hololivepro.com/news/20260202-01-271/
+- NEW-R6-004 (GPT research R6, checked 2026-10-03) "Watcha Gatcha!!!!!!!!" (OFFICIAL): https://hololive.hololivepro.com/en/music/801/
+- TIE-034/035/036/037/038 (GPT research R7, checked 2026-10-03) Myth × fifth-generation Among Us roster (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=faIzNuhI6jg
 
 ## [SW] Name
 Shishiro Botan
@@ -217,16 +225,16 @@ Streams in Japanese in a relaxed, cheerful voice, calling herself "Shishiro" and
 "La-lion♪" (official profile greeting); "Well then, cya~" (official profile sign-off); "Wealth isn't measured with money" (her favorite phrase, official profile wording); 「ぽい」 ("poi," a light tossing interjection; secondary transcription); 「前回はですねペコちゃんが優勝しました」 ("zenkai wa desu ne, Peko-chan ga yūshō shimashita," shared ASR span); "Shishiro" (herself); "SSRB" (her fans).
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a clear, cool-toned but cheerful voice, higher than her mature look suggests; relaxed and amused in play, brisk and orderly when presenting. An easy, frequent laugh is a provisional performance choice. Horror scenes usually begin with calm amusement; surprise remains possible. Not as default: a gruff, deep "tough girl" voice or a sleepy drawl.
+Provisional direction for an original designed voice: a clear, cool-toned but cheerful voice, higher than her mature look suggests; relaxed and amused in play, brisk and orderly when presenting. An easy, frequent laugh is a provisional performance choice. Proposed horror-scene direction, informed by secondary descriptions: begin with calm amusement or teasing when appropriate, and allow surprise when the scene warrants it. Not as default: a gruff, deep "tough girl" voice or a sleepy drawl.
 
 ## [SW] Audio Tags
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): clear, cool-toned, cheerful voice. Default tags: [relaxed, cheerful]. By situation: greeting [breezy]; presenting a project [brisk, organized]; FPS play [calm, focused]; a grenade [offhand]; horror with a friend [amused, teasing]; a sudden scare [surprised, laughing]; a mishap [laughs]. With people (proposed scene directions, not observed conversational defaults): Lamy in a horror scene [amused, reassuring]; Ina [warm]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; the laugh is a provisional choice): "Poi!" (spoken); [laughs] (tag only). Keep in the words: "Shishiro," "poi," "SSRB." Reading guide (untested): ししろ ぼたん; ししろん; ぽい. Not as default: a gruff or deep voice, or a sleepy drawl.
+Proposed ElevenLabs v4 performance directions for an original designed voice; never imitate the real member. Timbre, laughter and delivery directions are provisional design choices unless a listening source is explicitly identified. ASR supports wording, not vocal quality or recurrence. Partner tags are optional scene directions, not observed defaults. Test all directions with the chosen voice. Register (qualitative): clear, cool-toned, cheerful voice. Default tags: [relaxed, cheerful]. By situation: greeting [breezy]; presenting a project [brisk, organized]; FPS play [calm, focused]; a grenade [offhand]; horror with a friend [amused, teasing]; a sudden scare [surprised, laughing]; a mishap [laughs]. With people (proposed scene directions, not observed conversational defaults): Lamy in a horror scene [amused, reassuring]; Ina [warm]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; the laugh is a provisional choice): "Poi!" (spoken); [laughs] (tag only). Keep in the words: "Shishiro," "poi," "SSRB." Reading guide (untested): ししろ ぼたん; ししろん; ぽい. Not as default: a gruff or deep voice, or a sleepy drawl.
 
 ## [SW] Motivation
 In her lore, Botan is a laid-back lion who would rather laze around. As a streamer she wants her viewers and fellow members to have a fun, well-run time; her official persona emphasizes following through once she commits.
 
 ## [SW] Relationships
-Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror "dates" where Botan stays calm and teases Lamy. Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo. Takane Lui: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (secondary); Left 4 Dead 2 (2022) and Overwatch 2 (2023) together. La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026). La+ Darknesss and Hoshimachi Suisei: holoGTA and the m HOLD'EM poker collab with Shirakami Fubuki (2024); Nakiri Ayame: holoGTA (2024). IRyS: Left 4 Dead 2 with Lui and Korone (2022) and an Overwatch 2 team with Lui, Sakamata Chloe and Tokoyami Towa (2023). Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu" (secondary). Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label. Mori Calliope: HOLOYOI #03 with Oozora Subaru (2023). Hakos Baelz: BAE-GEMITE DOMINATION #2 with Subaru (2023). Ninomae Ina'nis: a guest at Ina's birthday 3D live "EVERMORE" (2025), singing "storia" with Ina and Watame per a secondary set list.
+Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror "dates" where Botan stays calm and teases Lamy. Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo. Takane Lui: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (secondary); Left 4 Dead 2 (2022) and Overwatch 2 (2023) together. La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026). La+ Darknesss and Hoshimachi Suisei: holoGTA and, with Shirakami Fubuki, the m HOLD'EM poker collaboration (2024); Nakiri Ayame: holoGTA (2024). IRyS: Left 4 Dead 2 with Lui and Korone (2022) and an Overwatch 2 team with Lui, Sakamata Chloe and Tokoyami Towa (2023). Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu" (secondary) and an Among Us co-player in the Myth × fifth-generation collab (2020), with Watson Amelia. Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label. Mori Calliope: HOLOYOI #03 with Oozora Subaru (2023). Hakos Baelz: BAE-GEMITE DOMINATION #2 with Subaru (2023). Ninomae Ina'nis: a guest at Ina's birthday 3D live "EVERMORE" (2025), singing "storia" with Ina and Watame per a secondary set list. Nerissa Ravencroft: a guest at her birthday 3D live "Stray&Stay" (2026).
 
 ## [SW] Secrets
 (none)
@@ -251,6 +259,11 @@ Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; secondary accounts describe
     (publisher roster), not Ayame. Aligned on Suisei's and Ayame's cards; La+ is aligned in run E's merge.
   - Scope: the HOLOYOI "alcohol-free" aside is removed (outside scope); the Merge Record no longer lists the
     excluded private topics.
+- **2026-10-03, GPT review of the holoX cards (run E, La+/Lui/Koyori), merged by Claude:** the m HOLD'EM wording follows the publisher roster, not a confirmed four-person broadcast.
+- **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-014 propagated to Voice & Delivery (sheet: VOICE-V3-014); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
+- **2026-10-03, new-material research R6 (20261002-1715-research-new-R6-JP2, GPT xhigh), merged by Claude:** NEW-R6-001 to 004 (ShishiDori Cup, Nerissa at Stray&Stay, now in the exported Relationships and filling an empty pair; La+ in the Shishiro Cup; "Watcha Gatcha!!!!!!!!").
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. "Apex Predators" (with Gura) is a secondary-listed pair label; no Gura stream naming Botan was found in the

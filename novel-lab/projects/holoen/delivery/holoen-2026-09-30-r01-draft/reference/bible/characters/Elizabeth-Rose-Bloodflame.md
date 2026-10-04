@@ -9,7 +9,7 @@ sw_section: Characters
 > Scope: official lore and publicly shown persona only, checked 2026-10-01. Elizabeth is active at the
 > 2026-09-30 baseline; her recent streams (2025–2026) set her default manner, per the project's recency
 > rule. Nothing about the performer behind the avatar: private-life information (health, family, breaks and
-> their reasons, nationality and the like) is outside scope and is not recorded here. Her British accent and slang are recorded as voice features
+> their reasons, nationality and the like) is outside scope and is not recorded here. Her British slang is recorded as a voice feature (secondary sources also describe a British accent; no regional accent is assigned without an in-scope listening check)
 > and as her lore (Great Exardia). In stories she knows she is a streamer with a persona (see the world card
 > "VTuber Persona and Lore"). Evidence labels:
 > - **[Official]** COVER's own profile, site, announcement or publication.
@@ -31,8 +31,8 @@ sw_section: Characters
 
 ## One-line Concept
 "The Scarlet Queen," Harbinger of Order and organizer of Justice, a sword-wielding knight from Great Exardia
-with a blue flame on her chest and a beautiful singing voice: a polite, warm, quietly confident host with a
-British accent and a theatrical "Oh~hohoho!", who is hard on herself, soft on everyone else, and a gifted
+with a blue flame on her chest and a beautiful singing voice: a polite, warm, quietly confident host with
+British slang and a theatrical "Oh~hohoho!", who is hard on herself, soft on everyone else, and a gifted
 mimic who trolls her seniors with voices. [Official EB1] [Observed EB2 §Personality, secondary]
 
 ## Core Drive
@@ -64,6 +64,7 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
    her work coordinating Justice." [Official EB1] [Observed EB3]
 7. A fan of her seniors across hololive and HOLOSTARS; Kureiji Ollie is her "kami-oshi." [Observed EB2 §Likes,
    secondary]
+- **SCARLET SIDE QUEST:** a 2026 chat format, with episodes billed around Valorant Masters and Serendipity; her theatrical programme branding extends to informal discussion. [Archive metadata NEW-R4-002]
 
 ## Voice Profile
 - **Greetings / sign-offs:**
@@ -105,7 +106,7 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
   first-model counts]
 - **Profanity:** she "rarely swears" and swaps in minced oaths ("frick," "frig," "freaking"); her TV-show bit
   tells everyone "please do not swear." [ASR EB20] [Observed EB2 §Personality, secondary]
-- **Accent and impressions:** a British accent and British slang; she drops H's in "Ello"; she is a gifted
+- **Accent and impressions:** British slang (an accent is described in secondary sources, unassigned pending an in-scope listening check); she drops H's in "Ello"; she is a gifted
   mimic who voices characters, does impressions of members, and trolls with a "Venom"/demon voice; in games
   she reads characters' lines aloud in voices. [Observed EB2 §Miscellaneous, secondary] [ASR EB20]
 - **Laughs, noises:** a theatrical "Oh~hohoho!", hums and sings mid-sentence, "aww" at cute things. [Observed
@@ -119,8 +120,9 @@ proclamations are theatre; her manners are real. [Official EB1] [Observed EB2, s
   - Provisional (interpretation): a warm, mid-to-low, well-supported singer's speaking voice with a British
     accent; polite and gentle by default, grand and theatrical for royal bits, with quick character voices
     for impressions.
-- **Sounds off:** a cold, haughty aristocrat (the queen is a bit; she is kind); an American accent; real
+- **Sounds off:** a cold, haughty aristocrat (the queen is a bit; she is kind); real
   swearing as default; a shrill or squeaky voice.
+- **Title wordplay (written, 2026-02-11):** she billed a R.E.P.O. collab as "Ramen Every Possible Occasion," turning the initials into a food joke. Title wording, not a verified spoken catchphrase. [Archive metadata NEW-R4-001]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -158,10 +160,12 @@ The middle column is provisional voice direction unless a source is named.
 | Lore | The Scarlet Queen and Harbinger of Order from Great Exardia; joined hololive to keep an eye on Advent and to become an idol; human, and not royalty despite the title | [Official EB1] [Observed EB2 §Lore, secondary] |
 | 2024-06-21 PDT | Debut ("Ello Ello Ello~!"), first of Justice; official profile lists June 22 (JST) | [Official EB1] [Observed EB3] |
 | 2025-01-18 | "Mephisto" cover with HOLOSTARS' Banzoin Hakka | [Observed EB3] |
+| 2025-06-22 | Justice group song "RENEGADE"; later "SUPERNOVA SUPER GIRL" (2026-06-29). | [Official NEW-R4-020] |
 | 2025-08-01 PDT | 3D showcase (5 PM PDT); she arranged and directed most of it, including "Giri Giri" with Vestia Zeta | [Official EB7] [ASR EB20] |
 | 2025-08-16 PDT | Justice 3D collaboration stream | [Official EB7] |
 | 2025-08-23/24 EDT | -All for One-: "ABOVE BELOW" with Justice, "ALiCE&u" with Nerissa and guest Ayunda Risu, solo "Stellar Stellar," "START AGAIN" with Calli, IRyS and Nerissa (day 2 opener), "High Tide" with Kronii and guest Kureiji Ollie | [Official EB5] |
-| 2026-05 | 2026 birthday live with guests from several branches; the performances were released as cover videos ("Live from COVER Corp. Studio") | [Observed EB3, archived credits] |
+| 2026-03-07 JST | hololive 7th fes. Ridin' on Dreams, STAGE 2: Justice performed "ABOVE BELOW." | [Official NEW-R4-005/009/019] |
+| 2026-04-25 | 2026 birthday live with guests from several branches (credited in her archived broadcast description); the performances were later released as cover videos ("Live from COVER Corp. Studio," from May) | [Archive metadata FIX-R4-001] [Observed EB3, archived credits] |
 | 2026-07-03/04 PDT | Serendipity: "HELP!!" with Kobo Kanaeru and Hakos Baelz (day 1); unit Bloodraven with Nerissa, "Cruel Angel's Thesis" (day 2); "SUPERNOVA SUPER GIRL" and "ABOVE BELOW" with Justice | [Official EB4, EB8] |
 
 ## Relationship Map
@@ -171,8 +175,8 @@ Pairs."
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Nerissa Ravencroft | Advent senior; lore "mortal enemy"; Serendipity 2026 unit Bloodraven | A "Rondo Revolution" cover; "ALiCE&u" (with Ayunda Risu) and "START AGAIN" (with Calli and IRyS) at -All for One-; "Cruel Angel's Thesis" as Bloodraven (2026); Elizabeth: "She has a beautiful voice," "the perfect harmony"; Nerissa praises her kindness. Nerissa has been "calling me her husband, my husband" (Elizabeth, 2025), a performed bit | [Official EB4, EB5] [Observed EB2] [ASR EB20, Rk03Rh8P9ps 0:38:00] |
-| Vestia Zeta | ID senior | Sang "Giri Giri" with her at her 2025 3D showcase; Elizabeth arranged it as a duet, choreographed it and taught Zeta the dance ("Zeta hit it out of the park") | [ASR EB20, Rk03Rh8P9ps 0:28:09–0:30:11; both models] |
-| Gigi Murin | Genmate ("Hot Pursuit," secondary) | Operation Tango (2024; Gigi's stream title read "i won't let Liz down!!!"), Fortnite (2024), "Finding the best parent of holoEN" (2026) | [Observed EB2, EB3] |
+| Vestia Zeta | ID senior | Sang "Giri Giri" with her at her 2025 3D showcase; Elizabeth arranged it as a duet, choreographed it and taught Zeta the dance  | [ASR EB20, Rk03Rh8P9ps 0:28:09–0:30:11; both models] |
+| Gigi Murin | Genmate ("Hot Pursuit," secondary) | Operation Tango (2024; Gigi's stream title read "i won't let Liz down!!!"), Fortnite (2024), "Finding the best parent of holoEN" (2026) Their June 2026 sponsored Final Fantasy XIV collab paired Elizabeth's first-day sprout stream with Gigi's Adopt-a-Sprout session; Gigi's description advertised a shared game community for grems and Rosarians. | [Observed EB2, EB3] [Archive metadata NEW-R4-003] |
 | Cecilia Immergreen | Genmate ("FiddleFlame," secondary) | Cecilia introduced her to Minecraft in their first duo collab (archived title); Cecilia's lore joke that an older Justice made her a maid ("#LizIsInnocent"); the "lifelong maid" image is fan art, not an established premise | [Observed EB2, EB3; X post EB6] |
 | Raora Panthera | Genmate ("FlamePanther," "Lizotto," secondary) | An early duo collab, "Chat & Art w/ Liz!" (2024-06-26, after the group's first collab); a 2025 birthday Among Us titled "Happy Birthday Pretty Kitty !" | [Observed EB2, EB3] |
 | Kureiji Ollie | ID senior; her "kami-oshi" (secondary); "HoloRed" | "Code Red" collabs: Liars Bar with Ollie and Jurard (2024), PEAK with Ollie, Flayon and Jurard (2025); "High Tide" with Kronii and Ollie at -All for One-; the 2026 "Yona Yona Dance" cover | [Observed EB2, EB3] [Official EB5] |
@@ -185,8 +189,10 @@ Pairs."
 | Kobo Kanaeru, Ayunda Risu | ID seniors | "HELP!!" with Kobo and Hakos Baelz at Serendipity (2026); Kobo calls her "Lilis" (secondary); LYRA and "ALiCE&u" with Risu | [Observed EB2] [Official EB5, EB8] |
 | Banzoin Hakka (HOLOSTARS) | Duet partner | A "Mephisto" cover (2025-01-18); archived credits list Elizabeth's production and vocal-arrangement work | [Observed EB3, archived credits] |
 | Yona Yona Dance cast | Cross-branch cover (2026-03-17) | With Kureiji Ollie, Natsuiro Matsuri, Hiodoshi Ao (ReGLOSS), and HOLOSTARS' Josuiji Shinri, Arurandeisu, Astel Leda and Octavio | [Observed EB3, archived credits] |
-| Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [S1 OMDzBQohAf8] |
+| Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [Shirogane Noel file NO5; Kikirara Vivi file VI5; archive metadata OMDzBQohAf8, inherited and not reopened] |
 | AZKi | — | Fellow members of Tokoyami Towa's 2025 New Year Game Festival team, with Kronii (secondary roster) | [AZKi file AZ4] |
+| Koseki Bijou | Advent senior | [Lead, secondary: a clip roster places Bijou in Elizabeth's 2026-02-11 R.E.P.O. collab with Nerissa, Raora and FUWAMOCO; the roster still needs checking against the footage or full credits.] | [Archive metadata; secondary NEW-R4-004] |
+| Ninomae Ina'nis | Myth senior | Co-players in Mumei's Gartic Phone EN + ID + JP, Day 2 (2025-04-14). | [Archive metadata TIE-014] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: Serendipity with Nerissa, her birthday covers with JP
@@ -233,6 +239,12 @@ The Nerissa "mortal enemy" and shipped duet are performed bits; no private relat
 - EB20 Claude's audio check (2026-10-01); see research/audio-check/elizabeth.md.
 
 ---
+- NEW-R4-020 (GPT research R4, checked 2026-10-03) Justice releases (OFFICIAL): https://hololive.hololivepro.com/en/music/590/ ; /770/
+- NEW-R4-005/009/014/019 (GPT research R4, checked 2026-10-03) 7th fes. cast list and report (OFFICIAL): https://hololivesuperexpo.hololivepro.com/2026/fes/cast/ ; https://hololive.hololivepro.com/events/hololivesuperexpo2026/
+- NEW-R4-001/004 (GPT research R4, checked 2026-10-03) R.E.P.O. stream (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=RXNzYh2Q6H0 ; clip roster (SECONDARY): https://holo-clips.com/archives/606281
+- NEW-R4-002/003 (GPT research R4, checked 2026-10-03) stream records (ARCHIVE_METADATA): https://www.holostats.com/member/1913?lang=en ; Gigi's FFXIV description: https://archive.ragtag.moe/watch?v=7tjrub3JkJ8
+- FIX-R4-001/002 (GPT research R4, checked 2026-10-03) birthday-live broadcast and guest credits (ARCHIVE_METADATA, member-written): https://ckworks.jp/vinforadar/video/PGppUhILuP4 ; https://www.holostats.com/stream/PGppUhILuP4?lang=en
+- TIE-014 (GPT research R7, checked 2026-10-03) Mumei's Gartic Phone Day 2 (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=OMDzBQohAf8
 
 ## [SW] Name
 Elizabeth Rose Bloodflame
@@ -259,22 +271,22 @@ Elizabeth is an active hololive member. She has no supernatural abilities; her l
 Elizabeth's avatar is 171 cm tall, the tallest of Justice, with red eyes, long red hair tinted blue underneath and a long ahoge. She wears a black and white outfit fastened with belts, red pauldrons and removable sleeves, and carries a black-and-red sword engraved with the scales of justice. A blue flame effect sits on her chest and can flare.
 
 ## [SW] Dialogue Style
-Warm, polite English with a British accent and British slang ("Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky," "Fancies!"), full of "like," "okay" and "lovely," and warm reactions to anything cute. She opens and closes like a TV host ("Lovely to see you, to see you LOVELY!"; "Please do not swear"; "…let my voice be your strength!" and, a moment later, "Huzzah!"), and slips into queenly theatre for bits ("Oh~hohoho!", "By royal decree…" in her posts). Her sampled streams use minced oaths ("What the frick?"; the wiki adds "What the Frigg!" and "Oh, you mothertrucker…"). She talks about singing with real feeling ("singing is good for the soul"; "a very Liz song"), jokes about her flame dancers' work ethic, voices game characters and does impressions. Most of the time she simply chats warmly; save the royal flourish for bits.
+Warm, polite English with British slang ("Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky," "Fancies!"), full of "like," "okay" and "lovely," and warm reactions to anything cute. She opens and closes like a TV host ("Lovely to see you, to see you LOVELY!"; "Please do not swear"; "…let my voice be your strength!" and, a moment later, "Huzzah!"), and slips into queenly theatre for bits ("Oh~hohoho!", "By royal decree…" in her posts). Her sampled streams use minced oaths ("What the frick?"; the wiki adds "What the Frigg!" and "Oh, you mothertrucker…"). She talks about singing with real feeling ("singing is good for the soul"; "a very Liz song"), jokes about her flame dancers' work ethic, voices game characters and does impressions. Most of the time she simply chats warmly; save the royal flourish for bits.
 
 ## [SW] Catchphrases
 "Ello!" (greeting); "Lovely to see you, to see you LOVELY!" (her catchphrase); "Let my voice be your strength." (official line, sign-off); "Huzzah!" (celebration, sign-off); "Oh~hohoho!" (queenly laugh); "Roses are red, the fire of my heart is blue…" (the start of her introduction); "By royal decree, my sweet Rosarians…" (in posts); "Please do not swear." (her "ERBTV" bit); "What the frick?" (a minced oath); "Soz"; "bits and bobs"; "for funsies"; "a very Liz song"; "Rosarians" (her fans)
 
 ## [SW] Voice & Delivery
-Provisional direction for an original designed voice: a warm, mid-to-low speaking voice with a British accent, gentle and polite by default and measured in chat, rising to grand and theatrical for her queenly bits and laugh. She hums or sings between sentences, switches into character voices for impressions and game dialogue, reacts softly to cute things, and turns startled moments into minced oaths.
+Provisional direction for an original designed voice: a warm, mid-to-low speaking voice (regional accent unassigned pending an in-scope listening check), gentle and polite by default and measured in chat, rising to grand and theatrical for her queenly bits and laugh. She hums or sings between sentences, switches into character voices for impressions and game dialogue, reacts softly to cute things, and turns startled moments into minced oaths.
 
 ## [SW] Audio Tags
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): warm, mid-to-low voice with a British accent; polite and conversational by default, theatrical only for royal bits. Default tags: [warm, conversational]. By situation: opening [warm, theatrical]; royal proclamation [grand, haughty] then [laughs]; cute moment [soft, cooing]; startled [startled] with a minced oath; talking about music [enthusiastic, sincere]; doing an impression [character voice]; teasing herself [dry, amused]; sign-off [warm] then [rallying cry]. With people (provisional, drawn from Relationships): Nerissa [affectionate, playful rivalry]; Kureiji Ollie [admiring]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [haughty laugh] Oh~hohoho!; [cheering] Huzzah!; [humming] (tag only). Keep in the words: "Ello," "lovely," "Soz," "bits and bobs," "gosh," "frick" instead of swears, "Rosarians." Pronunciation guide (provisional, untested): Elizabeth /ɪˈlɪzəbəθ/, Bloodflame /ˈblʌdfleɪm/, Rosarians /ɹoʊˈzɛəɹiənz/, Exardia /ɛɡˈzɑːdiə/. Not as default: a cold aristocrat; an American accent; real swearing; a shrill voice; a proclamation in every line.
+Proposed ElevenLabs v4 performance directions for an original designed voice; never imitate the real member. Timbre, laughter and delivery directions are provisional design choices unless a listening source is explicitly identified. ASR supports wording, not vocal quality or recurrence. Partner tags are optional scene directions, not observed defaults. Test all directions with the chosen voice. Register (qualitative): warm, mid-to-low voice (regional accent unassigned pending an in-scope listening check); polite and conversational by default, theatrical only for royal bits. Default tags: [warm, conversational]. By situation: opening [warm, theatrical]; royal proclamation [grand, haughty] then [laughs]; cute moment [soft, cooing]; startled [startled] with a minced oath; talking about music [enthusiastic, sincere]; fictional character bit [playful, theatrical] within the original designed voice; teasing herself [dry, amused]; sign-off [warm] then [rallying cry]. With people (provisional, drawn from Relationships): Nerissa [affectionate, playful rivalry]; Kureiji Ollie [admiring]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [haughty laugh] Oh~hohoho!; [cheering] Huzzah!; [humming] (tag only). Keep in the words: "Ello," "lovely," "Soz," "bits and bobs," "gosh," "frick" instead of swears, "Rosarians." Pronunciation guide (provisional, untested): Elizabeth /ɪˈlɪzəbəθ/, Bloodflame /ˈblʌdfleɪm/, Rosarians /ɹoʊˈzɛəɹiənz/, Exardia /ɛɡˈzɑːdiə/. Not as default: a cold aristocrat; real swearing; a shrill voice; a proclamation in every line.
 
 ## [SW] Motivation
 In her lore, Elizabeth leads Justice and keeps order. As a performer she wants her voice to be people's strength: to sing, act and make art, and to send everyone home from a show with a smile.
 
 ## [SW] Relationships
-Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026 unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution" and shared the 2025 stages "ALiCE&u" (with Ayunda Risu) and "START AGAIN" (with Calli and IRyS); Elizabeth says Nerissa "has a beautiful voice," Nerissa praises her kindness, and Nerissa calls her "my husband" as a performed bit. Vestia Zeta (ID): her duet partner for "Giri Giri" at her 2025 3D showcase, which Elizabeth arranged and choreographed. Gigi Murin: her Operation Tango partner (Gigi titled her stream "i won't let Liz down!!!"). Cecilia Immergreen: introduced her to Minecraft; Cecilia's lore joke says an older Justice made her a maid ("#LizIsInnocent"). Raora Panthera: an early duo partner ("Chat & Art w/ Liz!"), whom she calls "Pretty Kitty." Kobo Kanaeru and Hakos Baelz: "HELP!!" at Serendipity. Kureiji Ollie (ID): her kami-oshi and "Code Red" partner (PEAK with HOLOSTARS' Machina X Flayon and Jurard T Rexford; "High Tide" on stage with Kronii); Crimzon Ruze (HOLOSTARS) is her "Nephew" in a Marvel Rivals uncle–nephew bit. Banzoin Hakka (HOLOSTARS): a "Mephisto" duet she produced and arranged. Mori Calliope: the LYRA cover of "III" with Amane Kanata, Koganei Niko and Ayunda Risu. Shiori Novella: credited in Shiori's non-canon motion comic "Into The Void." Takanashi Kiara: calls her "Erby Berby." 2026 birthday-live guests (secondary set list) included FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine, Korone and Nerissa. Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025). AZKi: fellow member of Tokoyami Towa's 2025 New Year Game Festival team, with Kronii (secondary roster).
+Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026 unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution" and shared the 2025 stages "ALiCE&u" (with Ayunda Risu) and "START AGAIN" (with Calli and IRyS); Elizabeth says Nerissa "has a beautiful voice," Nerissa praises her kindness, and Nerissa calls her "my husband" as a performed bit. Vestia Zeta (ID): her duet partner for "Giri Giri" at her 2025 3D showcase, which Elizabeth arranged and choreographed. Gigi Murin: her Operation Tango partner (Gigi titled her stream "i won't let Liz down!!!"). Cecilia Immergreen: introduced her to Minecraft; Cecilia's lore joke says an older Justice made her a maid ("#LizIsInnocent"). Raora Panthera: an early duo partner ("Chat & Art w/ Liz!"), whom she calls "Pretty Kitty." Kobo Kanaeru and Hakos Baelz: "HELP!!" at Serendipity. Kureiji Ollie (ID): her kami-oshi and "Code Red" partner (PEAK with HOLOSTARS' Machina X Flayon and Jurard T Rexford; "High Tide" on stage with Kronii); Crimzon Ruze (HOLOSTARS) is her "Nephew" in a Marvel Rivals uncle–nephew bit. Banzoin Hakka (HOLOSTARS): a "Mephisto" duet she produced and arranged. Mori Calliope: the LYRA cover of "III" with Amane Kanata, Koganei Niko and Ayunda Risu. Shiori Novella: credited in Shiori's non-canon motion comic "Into The Void." Takanashi Kiara: calls her "Erby Berby." Her April 25, 2026 birthday-live guests included FUWAMOCO, Polka, Nene, Watame, Iroha, Subaru, Roboco, Sora, Choco, Marine, Korone and Nerissa. Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025). AZKi: fellow member of Tokoyami Towa's 2025 New Year Game Festival team, with Kronii (secondary roster). Ninomae Ina'nis: co-players in Mumei's cross-branch Gartic Phone (2025).
 
 ## [SW] Secrets
 (none)
@@ -322,6 +334,10 @@ Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi), reciprocal ties:** Noel and Vivi (Gartic Phone, 2025) added (sources in the new member files).
 - **2026-10-02, cast expansion (author: add Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu), reciprocal ties:** AZKi (Towa's 2025 festival team, secondary roster) added (source in AZKi's file).
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the 2026 birthday-live guest list is labelled secondary and includes Nerissa; the duplicate Gartic Phone row removed.
+- **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-007, VOICE-V2-025 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
+- **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:CONSULT-P1-006, justice:JUSTICE-COVERAGE-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
+- **2026-10-03, new-material research R4 (20261002-1715-research-new-R4-Justice, GPT xhigh), merged by Claude:** NEW-R4-001 to 005 and 020 (title wordplay, SCARLET SIDE QUEST, FFXIV with Gigi, a Bijou lead held in the dossier, 7th fes., Justice releases), FIX-R4-001/002 (birthday live dated 2026-04-25; the guest list is now supported by her archived credits).
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 (None.)

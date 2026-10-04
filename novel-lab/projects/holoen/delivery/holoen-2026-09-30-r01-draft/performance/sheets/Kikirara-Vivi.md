@@ -6,12 +6,12 @@
 > English glosses, and the voice works for Japanese, English or Chinese dialogue. Guide:
 > `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
+## 1. Voice Design prompt (original voice; provisional design choices)
 "Perfect audio quality. Young woman, bright, slightly husky, girlish voice; lively, frank and fast in banter, deliberately flat for a deadpan retort, loud screams in horror, warm and sincere with her fans."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 - Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) (lively, with deliberate flat turns; an untested starting choice).
   Similarity **75%** (API `0.75`), referring only to the selected original voice.
 - Pace comes from the designed voice plus `[lively, frank]` or `[deadpan]`; v4 has no speed slider.
@@ -33,6 +33,8 @@
 
 With people (proposed scene directions, not observed conversational defaults): Pekora `[adoring, excited]`; Marine `[playful]`; FUWAMOCO `[cheerful]`.
 
+Additional proposed scene directions from the card's Audio Tags (untested): `[chatty, quick]`, `[flustered]`.
+
 ## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
 - `[laughs]` (tag only); `[screams]` (tag only)
 
@@ -49,5 +51,4 @@ With people (proposed scene directions, not observed conversational defaults): P
 [playful, coy] Okane toru de.
 [warm, sincere] Minna ga oran to Vivi ganbararehen.
 ```
-(Line 1 renders her opening as her archived stream titles write it; line 2 is a style demo of her deadpan retort;
-line 3 is her line, quoted only where both transcripts agree; line 4 is a style demo.)
+(Line 1 is a Style demo adapted from archived title wording; its stretching and rising delivery are provisional. Lines 2 and 4 are Style demos. Line 3 is a shared ASR span. The exact spoken opening has not been verified here.)

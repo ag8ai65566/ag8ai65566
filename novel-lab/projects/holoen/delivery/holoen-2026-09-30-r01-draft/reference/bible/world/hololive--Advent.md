@@ -36,7 +36,7 @@ Faction / unit.
 - **The premise as a bit:** each member was sealed in The Cell for being "untouchable"; Nerissa, the
   "Demon of Sound," in the story "stole" the master key on the way out; her avatar wears it on a keychain. The
   next generation, -Justice-, are law enforcers sent to catch the five fugitives, so Advent × Justice
-  collabs can use prisoner-and-guard jokes (a 2026 merch reveal: "Like prisoner and my prison guard").
+  collabs can use prisoner-and-guard jokes .
   [Official S3; Observed S1, S2 §Lore, secondary; ASR Nerissa file N20, multi-speaker, not attributed]
   Nerissa calls Justice's Elizabeth Rose Bloodflame her "mortal enemy (lore)"; the two covered "Rondo
   Revolution" together and were a duo at the 2026 Serendipity concert, where Nerissa praised Elizabeth's
@@ -77,7 +77,10 @@ Faction / unit.
 | 2025-08-29 | 2nd-anniversary 3D live "On the Run!" with "The Story of Advent" (five chapters, five songs) | — |
 | 2026-01-26 | Group song "Breakout" | — |
 | 2026-07-03/04 | Serendipity pairs: Shiori–Calli, Bijou–Kiara, Nerissa–Elizabeth, FUWAMOCO–Raora | [Official S7, S10] |
-| 2026 | 3rd-anniversary live "Bound by Fate" (linked from Nerissa's official profile) | — |
+| 2026-02-26 | Group song "What Goes Around" | [Official NEW-R3-001] |
+| 2026-03-26 | Group song "Unchained" | [Official NEW-R3-001] |
+| 2026-08-02 | Group song "Spotlight" | [Official NEW-R3-001] |
+| 2026-08-09 | 3rd-anniversary 3D live "Bound by Fate" (archive calendar date; also linked from Nerissa's official profile) | [Archive metadata NEW-R3-001] |
 | 2026-09 | Renamed "hololive -Advent-" in the merger | Current name |
 
 ## Sensory Palette
@@ -127,6 +130,7 @@ across Myth and Promise appear as friends (see "Advent Pairs," "FUWAMOCO," "IRyS
 - S11 Character files: Shiori (SN#), Bijou (KB#), Fuwawa (FW#), Mococo (MC#); world cards "Advent Pairs," "FUWAMOCO"
 
 ---
+- NEW-R3-001 (GPT research R3, checked 2026-10-03) Advent releases (OFFICIAL): https://hololive.hololivepro.com/en/music/709/ ; /723/ ; /783/ ; "Bound by Fate" live metadata (ARCHIVE_METADATA): https://www.holostats.com/stream/54oaXuyyfMc?lang=en
 
 ## [SW] Name
 hololive -Advent-
@@ -168,6 +172,8 @@ The ⚠️ mark and Pokey on the logo; prison-gown merch; the master-key accesso
 - **2026-10-01, from GPT one-round review of the Advent cast edits (runs/20261001-0549-world-Advent-Pairs/gpt-free.md, high):** "who never swears" replaced by her stated practice (she says "beep"); 3D dates labeled PDT; the Advent 3D collaboration stream (2024-08-17 PDT, official schedule https://hololive.hololivepro.com/en/news/20240712-01-90/) added.
 - **2026-10-02, cross-card QA audit (audit-advent, research/qa/audit-advent.md, GPT xhigh):** applied ADVENT-STATUS-001, ADVENT-UNIT-001
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-QUOTE-004 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-03, new-material research R3 (20261002-1715-research-new-R3-Advent, GPT xhigh), merged by Claude:** NEW-R3-001 (2026 group releases; "Bound by Fate" dated by archive).
 
 ## Open Questions
 (None.)

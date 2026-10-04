@@ -111,7 +111,7 @@ The middle column is provisional voice direction unless a source is named.
 | Greeting | Bright, playful | "Konnakiri!" (AY2) |
 | The oni act | Mock-haughty | "Yo da yo!" (AY2) |
 | A bad pun | Giggles, then helpless laughter | [laughs] (AY2) |
-| Teasing chat | Pouting scold | "Urusai!" … "Komatta hitotachi." (ASR AY20) |
+| Teasing chat | Pouting scold | "Urusai!"; separately, "Komatta hitotachi." (ASR AY20, two excerpts) |
 | FPS clutch | Focused, quick | **Style demo:** "Hidari, hidari! Yo ga iku!" ("Left, left! I'm going in!") |
 | Horror game | Scared, shaky | "Koe ga furuechau." … "Ochitsuite, ochitsuite." (ASR AY20) |
 
@@ -150,6 +150,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2026-02-14 | A new pink kimono outfit | [Observed AY2; AY4] |
 | 2026-03-06 | hololive 7th fes. "Ridin' on Dreams," STAGE 1 (with Okayu, Ina, FUWAMOCO) | [Official AY6] [Observed AY3] |
 | 2026-08-22 | Anime NYC: an announced convention-exclusive stream with Fubuki and Mio | [Official AY7] |
+| 2026-09-19 | Digital release of "BANZAI☆MANKAI." | [Official NEW-R5-008] |
 
 ## Relationship Map
 Public exchanges only. Her ties with the English cast and the other three Japanese members on this project are
@@ -158,7 +159,7 @@ on the world card "JP Senpai Pairs."
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
 | Takanashi Kiara | — | HOLOTALK #23 (2022); the 2023 Sports Festival white team | [AY5] [AY4] |
-| Nekomata Okayu | "OKFAMS" | With Korone, Fubuki, Mio and Subaru; Okayu's 2025 New Year Game Festival team; 7th fes STAGE 1 | [AY2] [AY5] [Official AY6] |
+| Nekomata Okayu | "OKFAMS" | With Korone, Fubuki, Mio and Subaru; Okayu's 2025 New Year Game Festival team; 7th fes STAGE 1 [Secondary, performance unchecked: a setlist records Ayame joining Okayu for "デビルじゃないもん" at Okayu's 2026 birthday live (2026-02-22).] | [AY2] [AY5] [Official AY6] [Secondary NEW-R5-009] |
 | Hoshimachi Suisei | — | Okayu's 2025 team | [AY5] |
 | AZKi | — | The 2023 Sports Festival white team | [AY4] |
 | Ninomae Ina'nis, IRyS, Cecilia Immergreen | — | Okayu's 2025 team; Ina and FUWAMOCO on 7th fes STAGE 1 | [AY5] [Official AY6] |
@@ -169,7 +170,7 @@ on the world card "JP Senpai Pairs."
 | Inugami Korone | "Onigashima Combi" | — | [AY2] |
 | Houshou Marine | a 3rd-generation junior she admires (secondary) | — | [AY2, secondary] |
 | La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | All four streamed holoGTA (2024-09); Ayame was not in the m HOLD'EM poker collab | [AY4 1iz9AxcgvPg] [Sammy roster] |
-| Takane Lui | "Onikan" | Games together (2025) | [Lui file LU4] |
+| Takane Lui | "Onikan" (archived titles) | A sponsored collab billed おにかん (2025-08-09); secondary coverage also reports R.E.P.O. with Lui, Miko and Korone (2025) | [Lui channel YXaDmUXPSGo] [appbank.net report, secondary] |
 | Shirogane Noel | — | An Audio-Technica sponsored stream (2025-07-11, archived metadata) | [Noel file NO4 cpUnHgEveX8] |
 
 ## Arc
@@ -210,6 +211,9 @@ on the world card "JP Senpai Pairs."
   JqaYwRmGKHQ (2026-03-19), E1DuNe3uIrY (2026-03-31); research/audio-check/ayame.md
 
 ---
+- NEW-R5-008 (GPT research R5, checked 2026-10-03) "BANZAI☆MANKAI" (OFFICIAL): https://hololive.hololivepro.com/en/music/821/
+- NEW-R5-009 (GPT research R5, checked 2026-10-03) Okayu birthday-live setlist (SECONDARY): https://holo3d-live.com/nekomata-okayu/id238246/
+- FIX-R5-002 (GPT research R5, checked 2026-10-03) official profile (OFFICIAL): https://hololive.hololivepro.com/talents/nakiri-ayame/
 
 ## [SW] Name
 Nakiri Ayame
@@ -236,22 +240,22 @@ Ayame is an active member of hololive's 2nd generation. She has no supernatural 
 Ayame's avatar is 152 cm tall, an oni girl with long, loose white hair tinted pink, white horns, reddish-pink eyes, bell-ribbon hair ornaments and a red oni mask. She wears a black kimono with red and gold accents and spider lilies at the hem, a green obi with a gold flower motif, a large red-and-white bow, long white stockings and zori, with two swords on her back: the black-handled "Rasetsu" and the red-handled "Asura."
 
 ## [SW] Dialogue Style
-Streams in Japanese: chatty and storytelling, with "nanka," "maji de" and "meccha," polite with chat at first and quickly casual (「聞こえておりますでしょうか」, "can you hear me?", opening a 2026 chat). She calls herself "Yo" and her viewers "ningen-sama"; the archaic pronoun does not make her syntax archaic. She scolds teasing chat with a pouting 「うるさい」 ("Urusai!", "Shut up!") … 「困った人たち」 ("you troublesome people"), and in a horror game talks herself down (「落ち着いて落ち着いて」, "calm down, calm down") while 「声が震えちゃう」 ("my voice is shaking"). When a story renders her speech in English or Chinese, keep the royal "Yo" (in Chinese, 余) and the mock-haughty act melting into giggles; the English glosses are ours.
+Streams in Japanese: chatty and storytelling, with "nanka," "maji de" and "meccha," polite with chat at first and quickly casual (「聞こえておりますでしょうか」, "can you hear me?", opening a 2026 chat). She calls herself "Yo" and her viewers "ningen-sama"; the archaic pronoun does not make her syntax archaic. She scolds teasing chat with a pouting 「うるさい」 ("Urusai!", "Shut up!") and, in a separate moment, 「困った人たち」 ("you troublesome people"), and in a horror game talks herself down (「落ち着いて落ち着いて」, "calm down, calm down") while 「声が震えちゃう」 ("my voice is shaking"). When a story renders her speech in English or Chinese, keep the royal "Yo" (in Chinese, 余) and the mock-haughty act melting into giggles; the English glosses are ours.
 
 ## [SW] Catchphrases
-"Greetings, Humans! Yoohoo!" (official profile wording); 「こんなきりー！」 ("Konnakiri!", greeting; secondary transcription); 「余だよ！」 ("Yo da yo!", "It's me!"; secondary transcription); "Yo" (余) for "I"; "ningen-sama" (her viewers); "kawayo" (fans' word for her cuteness, adopted by her official profile); "It's 'Nakiri'!"; "Why don't you humans have horns?" (secondary English transcription). Her fans are the Nakiri-gumi (Nakiri Gang).
+"Greetings, Humans! Yoohoo!" (official profile wording); 「こんなきりー！」 ("Konnakiri!", greeting appearing in her official Japanese profile); 「余だよ！」 ("Yo da yo!", "It's me!"; secondary transcription); "Yo" (余) for "I"; "ningen-sama" (her viewers); "kawayo" (fans' word for her cuteness, adopted by her official profile); "It's 'Nakiri'!"; "Why don't you humans have horns?" (secondary English transcription). Her fans are the Nakiri-gumi (Nakiri Gang).
 
 ## [SW] Voice & Delivery
 Provisional direction for an original designed voice: a soft, cute mid-high voice with a playful, mock-haughty edge for the oni act, chatty and unhurried in conversation, dissolving into giggles; quick and focused in an FPS round; shaky and pleading when a horror game scares her. Mock-haughtiness is a performed bit; delivery follows the scene.
 
 ## [SW] Audio Tags
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): soft, cute mid-high voice; playful by default. Default tags: [playful, warm]. By situation: greeting [bright, playful]; the oni act [mock-haughty]; a bad pun [giggles]; teasing chat [pouting]; FPS clutch [focused, quick]; horror game [scared, shaky]; meeting someone new [shy, careful]. Relationship-specific delivery is not established by the sampled audio; any partner tags are fictional scene directions. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [giggles] (tag only); **Style demo:** "Mō~" (spoken). Keep in the words: "Yo," "ningen-sama," "Konnakiri," "kawayo." Japanese reading: なきり あやめ; こんなきり; 余＝よ. Regional accent and pitch-accent patterns are unverified. Not as default: a cruel or menacing oni; a monotone.
+Proposed ElevenLabs v4 performance directions for an original designed voice; never imitate the real member. Timbre, laughter and delivery directions are provisional design choices unless a listening source is explicitly identified. ASR supports wording, not vocal quality or recurrence. Partner tags are optional scene directions, not observed defaults. Test all directions with the chosen voice. Register (qualitative): soft, cute mid-high voice; playful by default. Default tags: [playful, warm]. By situation: greeting [bright, playful]; the oni act [mock-haughty]; a bad pun [giggles]; teasing chat [pouting]; FPS clutch [focused, quick]; horror game [scared, shaky]; meeting someone new [shy, careful]. Relationship-specific delivery is not established by the sampled audio; any partner tags are fictional scene directions. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [giggles] (tag only); **Style demo:** "Mō~" (spoken). Keep in the words: "Yo," "ningen-sama," "Konnakiri." "Kawayo" is documented viewer vocabulary; its use as her own recurring filler is not established here. Reading guide (provisional; untested): なきり あやめ; こんなきり; 余＝よ. Regional accent and pitch-accent patterns are unverified. Not as default: a cruel or menacing oni; a monotone.
 
 ## [SW] Motivation
 Ayame wants her stream to be a warm place where she and her viewers smile and have fun together, and she gives her best to singing and games; her stated dreams are her own songs and a solo concert.
 
 ## [SW] Relationships
-Takanashi Kiara: her 23rd HOLOTALK guest (2022, archived metadata) and a 2023 Sports Festival white-team teammate. Nekomata Okayu: "OKFAMS" (secondary); Okayu's 2025 New Year Game Festival team, and 7th fes STAGE 1 together. Hoshimachi Suisei, Ninomae Ina'nis, IRyS and Cecilia Immergreen: listed among the members of Okayu's 2025 New Year Game Festival team; Ina and FUWAMOCO shared her 7th fes stage. AZKi, Nanashi Mumei, Watson Amelia and Nerissa Ravencroft: the 2023 Sports Festival white team. Shirakami Fubuki and Ookami Mio: AyaFubuMi (a reported 2025 anime opening); Fubuki created her companion Poyoyo; FAMS with Oozora Subaru (AyaSuba). Murasaki Shion and Minato Aqua: Manji-gumi. Inugami Korone: "Onigashima Combi." Houshou Marine: a third-generation junior whom secondary accounts say Ayame admires. La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA (2024). Takane Lui: "Onikan"; games together (2025). Shirogane Noel: an Audio-Technica sponsored stream (2025-07-11). (Pair and unit names other than official song credits come from secondary references.)
+Takanashi Kiara: her 23rd HOLOTALK guest (2022, archived metadata) and a 2023 Sports Festival white-team teammate. Nekomata Okayu: "OKFAMS" (secondary); Okayu's 2025 New Year Game Festival team, and 7th fes STAGE 1 together. Hoshimachi Suisei, Ninomae Ina'nis, IRyS and Cecilia Immergreen: listed among the members of Okayu's 2025 New Year Game Festival team; Ina and FUWAMOCO shared her 7th fes stage. AZKi, Nanashi Mumei, Watson Amelia and Nerissa Ravencroft: the 2023 Sports Festival white team. Shirakami Fubuki and Ookami Mio: AyaFubuMi (a reported 2025 anime opening); Fubuki created her companion Poyoyo; FAMS with Oozora Subaru (AyaSuba). Murasaki Shion and Minato Aqua: Manji-gumi. Inugami Korone: "Onigashima Combi." Houshou Marine: a third-generation junior whom secondary accounts say Ayame admires. La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA (2024). Takane Lui: "Onikan" (archived titles, 2025). Shirogane Noel: an Audio-Technica sponsored stream (2025-07-11). (Pair and unit names other than official song credits come from secondary references.)
 
 ## [SW] Secrets
 (none)
@@ -280,6 +284,9 @@ Takanashi Kiara: her 23rd HOLOTALK guest (2022, archived metadata) and a 2023 Sp
   - The performance sheet no longer uses a measured register basis or compares her with Suisei.
 - **2026-10-02, cast expansion (author: add Marine, Noel, Lamy, Botan, Secret Society holoX and Kikirara Vivi), reciprocal ties:** La+, Suisei and Botan (holoGTA, poker), Lui ("Onikan") and Noel (earphone collab) added (sources in the new member files).
 - **2026-10-02, GPT review of the batch-2 cards (run D, Botan/Vivi/JP Senpai Pairs 2 and cross-card lines), merged by Claude:** the poker claim is removed (publisher roster: Suisei, La+, Botan, Fubuki); holoGTA stays (verified by Claude in the local archive titles); the Noel sponsorship is dated.
+- **2026-10-03, GPT review of the holoX cards and cross-card holoX lines (run F), merged by Claude:** "Onikan" cites the archived title (YXaDmUXPSGo); holoGTA stays shared participation.
+- **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-007 (Dialogue Style and palette table), VOICE-V3-009, VOICE-V3-010 (sheet: VOICE-V3-007, VOICE-V3-008); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-008 ("BANZAI☆MANKAI"), NEW-R5-009 (secondary duet, dossier), FIX-R5-002 ("Konnakiri!" sourced to her official profile).
 
 ## Open Questions
 1. Ayame's English-cast ties are team events and shared stages only; enough for her card, or leave it there?

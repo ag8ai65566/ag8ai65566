@@ -32,12 +32,10 @@ Premise / rule of the setting (how reality works in these stories).
   [Official profiles; Adaptation]
 - **How they treat their lore (observed habits):**
   - They use it as a joke engine: age jokes (Gura's "9,000-something," Kronii jokingly "60"), immortality
-    and rebirth gags (Kiara), "canonically" framed bits (Ame calling in "from 2021" during Calli's 2026
-    charity stream). [Observed character files; Ame's wiki page §2026, secondary]
-  - They break it casually and without drama: talking about ordinary things (food, sleep, games, work
-    schedules, the weather) in the same breath as lore. [Observed stream titles and ASR in character files]
+    and rebirth gags (Kiara), reported time-travel callbacks whose event and segment locators still require verification. [Observed character files; Ame's wiki page §2026, secondary]
+  - They break it casually and without drama: talking about ordinary things (food, games, music, the weather) in the same breath as lore. [Observed stream titles and ASR in character files]
   - They can re-enter it for a bit and drop it again: Calli's reaper threats, Ina's "priestess" voice,
-    Kiara's KFP manager routine, Ame's "Trust me, I'm a time traveler." [Observed character files]
+    Kiara's KFP manager routine, Ame's time-traveler jokes [Observed character files]
   - Lore can be retconned or joked about by the members themselves ("Kiara is a phoenix, not a chicken");
     a member may improvise or contradict lore within a bit; an improvised joke does not automatically
     rewrite historical facts or permanent continuity. [Observed; Adaptation]
@@ -46,7 +44,7 @@ Premise / rule of the setting (how reality works in these stories).
   game, a song concept, a costume, a stream graphic or a fan's joke. [Adaptation]
 - **Normal example:** Calli jokes that she'll collect a guest's soul, the guest laughs, and Calli goes back
   to arguing about snacks. Nobody's soul is collected.
-- **Edge example:** during a horror game, Kiara says "I'm immortal, I'll just respawn!" — that is a gamer
+- **Edge example — Style demo:** during a horror game, Kiara says "I'm immortal, I'll just respawn!" — that is a gamer
   joke about her lore; if her character dies in the game, she groans and restarts the level like anyone
   else.
 
@@ -133,7 +131,7 @@ Premise
 VTuber lore, hololive persona, kayfabe, in-character, canonically
 
 ## [SW] Description
-The core premise of every story: the cast are hololive talents, streamers who perform characters through avatars. Their lore (a reaper, an immortal phoenix, a priestess of the Ancient Ones, a shark from Atlantis, a time-traveling detective, the Warden of Time, a half-angel half-demon nephilim, the Demon of Sound, a druidic kirin, a forgetful owl who guards civilization, an archiver who broke out of a prison for forbidden things, a gem born from human emotion, twin demonic guard dogs, Justice's queen, gremlin, ancient automaton and big-cat artist sent to catch Advent) is a persona and a running joke, not a fact of the story world, and they know it. They slip into the persona for bits ("canonically, I'm immortal"), break it casually to talk about food, games or work, and step out of it completely when something sincere needs saying. Their friendships, nicknames, songs, concerts and collabs are real parts of their lives. Off stream they are shown as their avatar selves and called by their talent names; nothing about the real people behind the avatars is ever described.
+The core premise of every story: the cast are hololive talents, streamers who perform characters through avatars. Their lore (a reaper, an immortal phoenix, a priestess of the Ancient Ones, a shark from Atlantis, a time-traveling detective, the Warden of Time, a half-angel half-demon nephilim, the Demon of Sound, a druidic kirin, a forgetful owl who guards civilization, an archiver who broke out of a prison for forbidden things, a gem born from human emotion, twin demonic guard dogs, Justice's queen, gremlin, ancient automaton and big-cat artist sent to catch Advent) is a persona and a running joke, not a fact of the story world, and they know it. They slip into the persona for lore jokes, break it casually to talk about food, games or work, and step out of it completely when something sincere needs saying. Their friendships, nicknames, songs, concerts and collabs are real parts of their lives. Off stream they are shown as their avatar selves and called by their talent names; nothing about the real people behind the avatars is ever described.
 
 ## [SW] Rules
 No one has supernatural powers. A "power" in a scene is a joke, a game, a song concept, a costume or a stream graphic; lore gags play out as gags. A member may improvise or contradict lore within a bit; an improvised joke does not automatically rewrite historical facts or permanent continuity. Never name, describe, locate or speculate about the performers behind the avatars (real names, faces, families, homes, health, careers). Public availability does not override this: identities, homes, families, health, private relationships and other prohibited personal details stay outside the story. Ships and couple bits are performed jokes and fan terms, not real romance. Characters are depicted using their public avatar designs; floating books, halos and similar elements are visual conventions, model effects or staged props, not abilities.
@@ -165,6 +163,9 @@ An avatar mirroring every head tilt; chat flooding with emotes when a lore joke 
   "hololive -Justice-" and "Justice Pairs").
 - **2026-10-01, from GPT one-round review of the Justice cast edits (runs/20261001-1032-world-hololive--Justice/
   gpt-free.md, xhigh), with facts checked by Claude against the official Serendipity report and 3D schedule:** "sent to catch them" → "sent to catch Advent" (clearer antecedent).
+- **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-EVENT-001, myth1:MYTH-SCOPE-003 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-QUOTE-002 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit global, hand-applied by Claude:** global:GLOBAL-QUOTE-001 (edge example labelled Style demo; the unverified lore quote paraphrased).**
 
 ## Open Questions
 1. Off-stream scenes show members as their avatar selves (a fan-fiction convention). If the author ever

@@ -131,6 +131,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2026-02-28 | "Chatter Chatter" with Hoshimachi Suisei: anime MV (official digital release 2026-03-01) | [MA4 di9NZ6ja_mE] [Official music 711] |
 | 2026-03-10 | Mario Tennis with Pekora as her coach ("Pekoach") | [MA4 GWZrQZ6leZI] |
 | 2026-08 | 7th anniversary and a new 3D costume (08-11); single "Kyapi" (08-12) | [Observed MA2 §2026, §Discography] |
+| 2026-09 | Holo Koshien series: a baseball team followed through successive in-game seasons; Koyori joined the 09-17 session and AZKi commentated on 09-26. | [Archive metadata NEW-R5-014, NEW-R5-006] |
 
 ## Relationship Map
 Public exchanges only.
@@ -139,10 +140,10 @@ Public exchanges only.
 |---|---|---|---|
 | Usada Pekora | hololive Fantasy; "PekoMari" (secondary) | Mario Tennis with Pekora as coach (2026) | [MA4 GWZrQZ6leZI] |
 | Shirogane Noel | hololive Fantasy | Units Bara☆Dice (Bandai credits) and Yakamashi Musume (archived metadata); 3rd-gen R.E.P.O. (2025). The wiki's "Onee-san Gumi" with Flare was not verified in review | [MA2] [Noel file NO4] |
-| Hoshimachi Suisei | "Chatter Chatter" (2026) | A duet with an original anime MV. The wiki's holoALICE and MOMAS labels were not verified in review | [MA4] [MA2] |
+| Hoshimachi Suisei | "Chatter Chatter" (2026) | A duet with an original anime MV. The wiki's holoALICE and MOMAS labels were not verified in review They performed "Chatter Chatter" together on STAGE 4 of hololive 7th fes. (2026-03-08). | [MA4] [MA2] [Official NEW-R5-003] |
 | Yukihana Lamy | "Yakamashi Musume"; holoWitches; Blue Journey | — | [MA2] |
 | Kikirara Vivi | "MVP" with Usada Pekora | An archived September 2026 "Hatsukoi Cider" upload record names the trio (secondary record, run D) | [MA2] [MVP upload record] |
-| Hakui Koyori | "#頭ピンク組" (the pink-haired pair, archived titles); Blue Journey | A talk testing whether they are alike and a Gorogoro Mountain race (2025-07); backseat Pikachu (2025-08) | [MA4 QnT0cKrEhkk] [Koyori file KO4] |
+| Hakui Koyori | "#頭ピンク組" (the pink-haired pair, archived titles); Blue Journey | A talk testing whether they are alike and a Gorogoro Mountain race (2025-07); backseat Pikachu (2025-08) Koyori joined her Holo Koshien session (2026-09-17). | [MA4 QnT0cKrEhkk] [Koyori file KO4] [Archive metadata NEW-R5-014] |
 | La+ Darknesss | "#マリラプ" (archived title) | A sponsored collab (2025-07); a cover with La+ and Koyori (2025-08) | [MA4 Xf4MPOkHKtE] [Koyori file] |
 | Takane Lui | Bara☆Dice (Bandai credits) | The wiki's "SSS" with Yuzuki Choco was not verified in review | [MA2] |
 | Sakamata Chloe (affiliate) | UMISEA; holoWitches | Chloe played Marine's horror game (2023) | [MA2] |
@@ -151,13 +152,15 @@ Public exchanges only.
 | Minato Aqua (graduated) | UMISEA | The ocean unit's official roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster] |
 | Takanashi Kiara | Her first HOLOTALK guest (2020-11-20) | A "MIRAGE" dance short (2024-10-23); "III" with Kobo in a 3D short (2024-05-20) | [MA5 3HwaqbdKO1s, tzVgzvV0cVo, I8DEx4MomOA] |
 | Mori Calliope | — | English lesson #01 (2022); Mario Kart with Bae and Reine (2021); a house-party off-collab with Bae (2023); Calli played the horror game featuring Marine on her own stream (2023) | [MA5 bfUEbp3xk4o, X3pHIQAvpYU, DY5VThfehW8, Mf-sAjsuSig] |
-| Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers | [MA5] |
+| Hakos Baelz | — | Mario Kart (2021); the house party (2023); Bae and Mumei played the horror game featuring Marine (2023); dance covers Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers). | [MA5] [Secondary, dengekionline 202609/89494] |
 | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | English lesson #01 with Ina (2022); a guest at Ina's 3D live "Pleides" (2024); "SHINKIRO" with Gura (anime MV 2023-11-12, credited "宝鐘マリン・Gawr Gura") | [MA5 3n9igJnSXtQ] [MA4 9ehwhQJ50gs] |
 | Nanashi Mumei (graduated) | — | Played the horror game featuring Marine with Bae (2023) | [MA5 RY1GkF4jMls] |
 | FUWAMOCO | — | Joined their Touhou off-collab (2024-04-30); Mario Party with Nerissa (2024); watched her solo concert (2024); danced to "Chatter Chatter" (2026) (secondary and archived records) | [MA5 x7gRHgQ0yI0] |
 | Nerissa Ravencroft | — | Mario Party Superstars off-collab with FUWAMOCO (2024); a "Marine's treasure box" dance short (2024) | [MA5 FLL7e1-RPGo, Lo9q4WJrcM4] |
 | Elizabeth Rose Bloodflame | — | "IT'S LOVE" cover with Elizabeth and Korone for Elizabeth's 2026 birthday (2026-05-12) | [MA5 iwnHChZq0N8] |
 | Nakiri Ayame | 2nd-gen senior | Ayame's card records secondary accounts that she admires Marine; no Marine-side source | [Ayame file, secondary] |
+| AZKi | JP kouhai | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+| Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a hololive Fantasy concert, a duet with Suisei and a new single
@@ -198,6 +201,9 @@ the writer in Sudowrite 【Sudowrite 處理】.
   https://operation-heartful-cuties.hololivepro.com/
 
 ---
+- NEW-R5-003 (GPT research R5, checked 2026-10-03) 7th fes. report (OFFICIAL): https://hololive.hololivepro.com/events/hololivesuperexpo2026/
+- NEW-R5-006/014 (GPT research R5, checked 2026-10-03) Holo Koshien streams (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/dlq2aYuSN_M ; https://ckworks.jp/vinforadar/video/73sl-3cOp2E
+- TIE-039 to 043 (GPT research R7, checked 2026-10-03) New Year Game Festival 2026 Team Bird roster (SECONDARY): https://www.inside-games.jp/article/2026/01/31/176776.html ; https://dengekionline.com/article/202512/61985
 
 ## [SW] Name
 Houshou Marine
@@ -233,13 +239,13 @@ Streams in Japanese: "Ahoy!" to open, "Senchō" for herself, and a sign-off the 
 Provisional direction for an original designed voice: a bright, brassy, mature-sounding mid-high voice; rapid and emphatic in game reactions, with pace and volume following the scene; able to flip into a cutesy idol voice or a full singing voice. Loud laughter and startled shrieks are provisional performance choices, not listening observations. Not as default: quiet, sleepy or reserved.
 
 ## [SW] Audio Tags
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, brassy mid-high voice. Default tags: [energetic, brassy]. By situation: opening [bright, theatrical]; startled in a game [panicked, rapid]; arguing with a game [rough, comic]; teasing [mischievous]; idol mode [cutesy, sweet]; heartfelt thanks [warm]. With people (proposed scene directions, not observed conversational defaults): Pekora [bickering, fond]; Suisei [playful]; Kiara [playful, teasing]; FUWAMOCO [doting]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; laughter and shrieks are provisional choices): "Ahoy!" (spoken); [cackles] (tag only); [shrieks] (tag only). Keep in the words: "Ahoy," "Senchō," "yōsorō." Reading guide (untested): ほうしょう まりん; せんちょう; ようそろー. Not as default: quiet, shy or slow delivery.
+Proposed ElevenLabs v4 performance directions for an original designed voice; never imitate the real member. Timbre, laughter and delivery directions are provisional design choices unless a listening source is explicitly identified. ASR supports wording, not vocal quality or recurrence. Partner tags are optional scene directions, not observed defaults. Test all directions with the chosen voice. Register (qualitative): bright, brassy mid-high voice. Default tags: [energetic, brassy]. By situation: opening [bright, theatrical]; startled in a game [panicked, rapid]; arguing with a game [rough, comic]; teasing [mischievous]; idol mode [cutesy, sweet]; heartfelt thanks [warm]. With people (proposed scene directions, not observed conversational defaults): Pekora [bickering, fond]; Suisei [playful]; Kiara [playful, teasing]; FUWAMOCO [doting]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; laughter and shrieks are provisional choices): "Ahoy!" (spoken); [cackles] (tag only); [shrieks] (tag only). Keep in the words: "Ahoy," "Senchō," "yōsorō." Reading guide (untested): ほうしょう まりん; せんちょう; ようそろー. Not as default: quiet, shy or slow delivery.
 
 ## [SW] Motivation
 In her lore, Marine wants a real pirate ship to sail with her crew in search of treasure, and in the end to find that the treasure was the journey and the friends. As a streamer and idol she wants to entertain everyone and keep singing, dancing and organizing collaborations.
 
 ## [SW] Relationships
-Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2026 Pekora coached her at Mario Tennis ("Pekoach"). Shirogane Noel: hololive Fantasy genmate; the units Bara☆Dice and Yakamashi Musume (with Lamy and Inugami Korone, per archived metadata). Hoshimachi Suisei: "Chatter Chatter" (2026). Kikirara Vivi: the unit MVP with Pekora (an archived 2026 performance record). Yukihana Lamy: Yakamashi Musume, holoWitches and Blue Journey. Hakui Koyori: "#頭ピンク組," the pink-haired pair of their archived titles (a race and a talk testing whether they are alike, 2025); Blue Journey. La+ Darknesss: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Takane Lui and Kazama Iroha: Bara☆Dice. Sakamata Chloe (affiliate): UMISEA and holoWitches. Nekomata Okayu: Marine gave her the nickname "Okanyan" (Okayu's official profile). Takanashi Kiara: her first HOLOTALK guest (2020) and dance shorts ("MIRAGE," "III," 2024). Mori Calliope: Calli's English lesson #01 (2022), Mario Kart (2021) and a house-party off-collab with Bae (2023). Hakos Baelz: that Mario Kart and house party; Bae and Mumei played the horror game featuring Marine (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides" (2024); "SHINKIRO" with Gura (2023). FUWAMOCO: a Touhou off-collab and Mario Party Superstars with Nerissa (2024). Nerissa Ravencroft: that Mario Party off-collab. Elizabeth Rose Bloodflame: "IT'S LOVE" with Korone for Elizabeth's 2026 birthday. Nakiri Ayame: a second-generation senior.
+Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2026 Pekora coached her at Mario Tennis ("Pekoach"). Shirogane Noel: hololive Fantasy genmate; the units Bara☆Dice and Yakamashi Musume (with Lamy and Inugami Korone, per archived metadata). Hoshimachi Suisei: "Chatter Chatter" (2026). Kikirara Vivi: the unit MVP with Pekora (an archived 2026 performance record). Yukihana Lamy: Yakamashi Musume, holoWitches and Blue Journey. Hakui Koyori: "#頭ピンク組," the pink-haired pair of their archived titles (a race and a talk testing whether they are alike, 2025); Blue Journey. La+ Darknesss: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Takane Lui and Kazama Iroha: Bara☆Dice. Sakamata Chloe (affiliate): UMISEA and holoWitches. Nekomata Okayu: Marine gave her the nickname "Okanyan" (Okayu's official profile). Takanashi Kiara: her first HOLOTALK guest (2020) and dance shorts ("MIRAGE," "III," 2024). Mori Calliope: Calli's English lesson #01 (2022), Mario Kart (2021) and a house-party off-collab with Bae (2023). Hakos Baelz: that Mario Kart and house party; Bae and Mumei played the horror game featuring Marine (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides" (2024); "SHINKIRO" with Gura (2023). FUWAMOCO: a Touhou off-collab and Mario Party Superstars with Nerissa (2024). Nerissa Ravencroft: that Mario Party off-collab. Elizabeth Rose Bloodflame: "IT'S LOVE" with Korone for Elizabeth's 2026 birthday. Nakiri Ayame: a second-generation senior. AZKi: commentary for her Holo Koshien stream (2026).
 
 ## [SW] Secrets
 (none)
@@ -274,6 +280,10 @@ Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2
     official key art (MA1), labelled as such; the review could not open the image.
 - **2026-10-02, GPT review run D (cross-card), merged by Claude:** MVP restored to Groups and Relationships: run D found an
   archived 2026 performance record naming Marine, Vivi and Pekora (secondary record).
+- **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** no card finding (sheet: VOICE-V3-013); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-003, NEW-R5-006 (AZKi added to the exported Relationships, filling an empty pair), NEW-R5-014 (Holo Koshien with Koyori).
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. Her official profile and wiki include explicit lines; the card keeps them out and leaves explicit material to

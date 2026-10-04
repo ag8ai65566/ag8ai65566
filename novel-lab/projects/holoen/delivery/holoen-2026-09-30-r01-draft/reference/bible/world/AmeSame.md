@@ -125,11 +125,12 @@ Gold and blue side by side (💛💙); a shark hood next to a deerstalker; two v
 - **Structure and evidence:** Claude's draft (2026-09-30), built from the wiki pages, archive metadata (S1)
   and the Gura and Ame character files.
 - **From GPT one-round review (runs/20260930-2309-world-hololive/gpt-free.md, 2026-10-01, high), adopted:** "closest friends" ranking replaced by "close Myth friends and frequent early
-  collaborators" (also in both character cards); the home detail removed (now "an off-collab in June
+  collaborators" (also in both character cards); a private detail removed (now "an off-collab in June
   2022"); the baseline rule rewritten so it does not claim anything about private contact; the
   "sincerity embarrasses them both" rule narrowed to the cited case (Gura flustered by Ame's praise).
 - **SHOULD adopted:** the "stopping dead" sensory detail replaced with the sourced fluster.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 
 ## Open Questions
 (None.)

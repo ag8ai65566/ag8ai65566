@@ -4,14 +4,14 @@
 > and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Gigi is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, American accent, bright, energetic mid-high voice, animated and chatty;
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young woman, English-speaking, bright, energetic mid-high voice, animated and chatty;
 fast run-on chatter; jumps into whiny, mock-dramatic or shouting registers for a specific joke and drops flat
 for the punchline; soft and plain when sincere."
 - Register basis: qualitative; see `research/audio-check/gigi.md`. Her game window mixes in voiced
   characters and is not used.
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **35%** (API `0.35`) (big, sudden swings). Similarity **75%** (API `0.75`).
 - Default tags `[animated, conversational]`; escalate only for a specific bit. Pace comes from the designed
   voice plus `[chatty, quick]` or `[deadpan]`; v4 has no speed slider.
@@ -38,9 +38,11 @@ for the punchline; soft and plain when sincere."
 
 With people (provisional): Cecilia `[teasing]`; Mori Calliope `[excited, emphatic]`.
 
+Additional proposed scene directions from the card's Audio Tags (untested): `[outraged, shouting]`.
+
 ## 5. Signature sounds
 - `[whining] pleeease` (spoken).
-- `[laughs]`, `[sound effects]` (percussive vocal noises), `[humming]` (tag only; no spelled-out sounds).
+- `[laughs]`, `[vocal percussion]` (percussive vocal noises), `[humming]` (tag only; no spelled-out sounds).
 
 ## 6. Pronunciation (provisional; test)
 - Gigi `/ˈdʒiːdʒiː/` (like "GG") · Murin `/ˈmʊɹɪn/` · grems `/ɡɹɛmz/`
@@ -52,9 +54,8 @@ With people (provisional): Cecilia `[teasing]`; Mori Calliope `[excited, emphati
 ```
 [sing-song, loud] Gi Murin!
 [chatty, quick] Okay, okay, superchats. [deadpan] I require context.
-[grave, theatrical] The killer is still out there, chat. [laughs] (Style demonstration)
+[grave, theatrical] The killer is still out there, chat. [laughs]
 [exasperated] I feel like someone hired an Etsy witch to curse me and to hex me.
 [bright, quick] I'll be back tomorrow. You'll see me again.
 ```
-(Line 1 is her official greeting; "Okay, okay, superchats." is a style demo; the rest are her lines, quoted
-only where both transcripts agree.)
+(Line 1 is an official written greeting. "Okay, okay, superchats." and all of line 3 are Style demos. "I require context" and lines 4–5 use ASR shared wording. All tags are proposed.)

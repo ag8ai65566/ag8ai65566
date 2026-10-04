@@ -6,13 +6,13 @@
 > romanized with English glosses, and the voice works for Japanese, English or Chinese dialogue. Guide:
 > `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
+## 1. Voice Design prompt (original voice; provisional design choices)
 "Perfect audio quality. Young woman, clear and bright mid-high voice, polished and confident; quick and fluent
 when chatting, sing-song and stretched when she calls herself cute, crisp and clipped when competing."
 - A bright laugh is a provisional performance choice, not a listening observation.
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (polished by default, playful swings for the signature line).
   Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[quick, enthusiastic]` or `[focused, clipped]`; v4 has no speed
@@ -21,7 +21,7 @@ when chatting, sing-song and stretched when she calls herself cute, crisp and cl
 ## 3. Write these habits into the script
 - Third person for herself: "Sui-chan"; the stretched signature "Sui-chan wa~ kyō mo kawaii~."
 - Quick "e?" reactions; "chotto matte" ("wait a sec"); fillers "nanka," "mā," "ne."
-- Mock innocence when caught: "Iya iya iya, watashi wa warukunai" … then a mock-rough "Ore wa warukunē."
+- Mock innocence when caught: "Iya iya iya, watashi wa warukunai." Separately, a mock-rough "Ore wa warukunē." (two ASR excerpts nine seconds apart, not one spoken turn).
 - Occasional short English ("Hi, honey!", a secondary transcription associated with her Duolingo stream).
 
 ## 4. Tag palette by situation
@@ -29,12 +29,14 @@ when chatting, sing-song and stretched when she calls herself cute, crisp and cl
 |---|---|---|
 | Introduction | `[polished, idol-bright]` | "A shooting star that appeared from diamonds in the rough; I'm the virtual idol Hoshimachi Suisei!" (official) |
 | Signature line | `[sing-song, playful]` | "Sui-chan wa~ kyō mo kawaii~" |
-| Caught in a mistake | `[mock-innocent]` → `[mock-gruff]` | "Iya iya iya, watashi wa warukunai." … "Ore wa warukunē." |
+| Caught in a mistake | `[mock-innocent]` → `[mock-gruff]` | Separate ASR excerpts, not one spoken turn: "Iya iya iya, watashi wa warukunai." (00:05:39); "Ore wa warukunē." (00:05:48). |
 | Age joke | `[breezy, firm]` | "Sui-chan wa jūhassai da yo." |
 | Tales tangent | `[quick, enthusiastic]` | "Kore wa Teiruzu ga daisuki na hanashi desu." |
 | Competitive game | `[focused, clipped]` | "Mō ikkai. Kondo wa kateru." (style demo) |
 
 With people (proposed scene directions, not observed conversational defaults): Calli `[gracious, amused]`; AZKi `[relaxed, teasing]`; Miko `[playful bickering]`.
+
+Additional proposed scene directions from the card's Audio Tags (untested): `[bright, confident]`, `[sweet]`, `[deadpan]`, `[warm]`.
 
 ## 5. Signature sounds
 - `[laughs]` (tag only); "e?" (spoken).

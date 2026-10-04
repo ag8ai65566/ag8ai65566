@@ -2,12 +2,11 @@
 
 > Built from `bible/characters/Mococo-Abyssgard.md` (promoted 2026-10-01). Original designed voice matched
 > only to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5;
-> COVER Derivative Works Guidelines). Mococo is active at the 2026 baseline (by the author's decision she is
-> not written as on a break); she shares the FUWAMOCO channel with Fuwawa (world card "FUWAMOCO").
+> COVER Derivative Works Guidelines). Mococo is active at the 2026 baseline; she shares the FUWAMOCO channel with Fuwawa (world card "FUWAMOCO").
 > Guide: `novel-lab/docs/elevenlabs-v4.md`.
 
-## 1. Voice Design prompt (original voice)
-"Perfect audio quality. Young woman, neutral American accent, very high, bright, energetic voice, a little
+## 1. Voice Design prompt (original voice; provisional design choices)
+"Perfect audio quality. Young woman, English-speaking, very high, bright, energetic voice, a little
 squeaky; quick when excited; warm and earnest when encouraging someone, building to a cheer; comic timing
 on her own name."
 - Register basis: qualitative only. Her solo sample is thin and the duo recordings mix both twins, so no
@@ -17,7 +16,7 @@ on her own name."
 - Design her voice as clearly distinct from Fuwawa's (see §7): brighter and squeakier, where Fuwawa is softer
   and airier.
 
-## 2. Settings (starting points)
+## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **40%** (API `0.40`) (energetic, with quick jumps into a cheer). Similarity **75%** (API `0.75`).
 - Pace comes from the designed voice plus `[rapid, excited]` or `[earnest, encouraging]`; v4 has no speed slider.
 
@@ -37,8 +36,8 @@ on her own name."
 |---|---|---|
 | Introduction | `[bright, comic timing]` | "I'm not... Fuwawa, I'm Mococo!" (wiki, secondary) |
 | Pup Talk | `[earnest, encouraging]` → `[cheering]` | "Not tomorrow! Today!" (wiki, secondary) |
-| Surprised | `[squeaky]` | "Whaaat?" |
-| After a sneeze | `[embarrassed, small]` | "Nooo!" |
+| Surprised | `[squeaky]` | (Style demo) "Whaaat?" |
+| After a sneeze | `[embarrassed, small]` | (Style demo) "Nooo!" |
 | Running the show | `[bright, brisk]` | "Please tweet your thoughts to the hashtag, hashtag FWMCMORNING." (wiki, secondary) |
 | Overexcited | `[rapid, excited]` | "I'm the danger!" (wiki, secondary) |
 | Scared in a game | `[nervous, quiet]` → `[reckless]` | "If I die, I die." |
@@ -46,12 +45,14 @@ on her own name."
 
 With people (provisional): Fuwawa `[close, a little bossy]`; Polka `[starstruck]`; Gigi `[playful]`.
 
+Additional proposed scene directions from the card's Audio Tags (untested): `[bright, energetic]`.
+
 ## 5. Signature sounds
 - `[sneezes]` (tag only), then `[embarrassed] Nooo!`
 - `[giggles] ehehe` and `[cheerful] bau bau!` (spoken).
 
 ## 6. Pronunciation (provisional; test)
-- Mococo `/moʊˈkoʊkoʊ/` · Mogogo `/moʊˈɡoʊɡoʊ/` · Mogojyan `/moʊɡoʊˈdʒɑn/` · Abyssgard `/ˈæbɪsɡɑɹd/`
+- Mococo `モココ (provisional kana guide; untested)` · Mogogo `/moʊˈɡoʊɡoʊ/` · Mogojyan `/moʊɡoʊˈdʒɑn/` · Abyssgard `/ˈæbɪsɡɑɹd/`
 
 ## 7. Don't
 - A low or lazy voice; sarcasm in a Pup Talk; swearing; any nickname she has not approved.
@@ -60,12 +61,11 @@ With people (provisional): Fuwawa `[close, a little bossy]`; Polka `[starstruck]
 
 ## 8. Example
 ```
-[bright, comic timing] I'm not... Fuwawa, I'm Mococo! Bau bau!
+[bright, comic timing] I'm not... Fuwawa, I'm Mococo!
 [giggles] Ehehe, it's play time, whether you're ready or not!
 [nervous, quiet] Okay... [reckless] If I die, I die.
 [sneezes] [embarrassed, small] Nooo!
 [earnest, encouraging] Even if things don't go your way, you get back up and do your best. [cheering] That means you're unstoppable!
 ```
 (Line 1 is the wiki's transcription of her introduction; line 2 is her official line; "If I die, I die" is
-quoted where both transcripts agree; "Okay..." and "Nooo!" are style demos; line 5 paraphrases a Pup Talk the
-wiki transcribes.)
+quoted where both transcripts agree; "Okay..." and "Nooo!" are style demos; line 5 is a Style demo inspired by a secondary account of a Pup Talk, not a quotation.)

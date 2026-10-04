@@ -101,7 +101,10 @@ Relationships, Secrets`。每個角色的 Role 都是 Protagonist。`Secrets` �
    寫成場景腳本格式（`performance/script-format.md`）：一行一輪 `全名 :: [標籤] 台詞`；日文台詞後面加
    `ROMAJI ::`（不唸）；舞台指示、音效、精確停頓用 `STAGE ::`、`SFX ::`、`PAUSE ::`。存成 UTF-8 的
    `scenes/s001.scene.txt`。用 Rewrite／Describe 改過之後要再檢查一次。
-3. **檢查**：`python3 performance/tools/scene_to_elevenlabs.py scenes/s001.scene.txt --voice-map voice-map.json --sheets performance/sheets --lint-only`。
+   **沒有 Python（或不想用程式）也可以**：跳過第 3、4 步的指令，直接在 ElevenLabs 網頁的 Dialogue 模式，一行台詞建一輪，
+   選那個角色的聲音，把 `全名 ::` 後面的內容（含 `[標籤]`）貼進去；`ROMAJI`、`GLOSS`、`STAGE`、`SFX`、`PAUSE`、旁白行都不要貼。
+   自己檢查三件事：標籤要出自該角色表演表第 2、4、5 節；笑聲這類聲音只寫標籤、不要再拼出來；一次不超過約 2,000 字元。
+3. **檢查**（有 Python 3 時）：`python3 performance/tools/scene_to_elevenlabs.py scenes/s001.scene.txt --voice-map voice-map.json --sheets performance/sheets --lint-only`。
    它會擋下：名字拼錯、表演表沒列的標籤、括號錯誤、日文沒有羅馬拼音、一個請求超過 2,000 單位或十個聲音、
    `【Sudowrite 處理】` 標記（那種場景不進配音）。笑聲同時寫成標籤又拼出來會給警告。
 4. **轉成請求**：同一行把 `--lint-only` 換成 `--out requests/r01`，每個場景得到一個 JSON（`model_id: eleven_v4`）

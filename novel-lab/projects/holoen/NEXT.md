@@ -1,5 +1,7 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+**作者規則（2026-10-04）：給作者的最終匯報一律用繁體中文。**
+
 狀態（2026-10-04 00:05 UTC）：**作者命令（10-03 23:15）：Claude 開始合併 GPT 累積的結果；作者 23:58 重置 GPT 額度，GPT 佇列已叫醒繼續跑。**
 - 已合併並收錄：聲音審計 v1、v2、v3（處置在 `research/qa/voice-audit-dispositions.md`）；P1 計畫審查與 W1 工作流
   （`research/qa/workflow-dispositions.md`：轉換器 `tools/scene_to_elevenlabs.py`、腳本格式、V20 通過）；QA cohort
