@@ -20,3 +20,4 @@
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 0f91ae0daff0）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
 - 2026-10-03 23:55 作者裁決收錄 final.md（sha256 e372b2e33919）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
 - 2026-10-03 23:56 作者裁決收錄 final.md（sha256 b0898d048308）：Author decision (2026-10-03): new-material research R3/R4 (Advent, Justice) merged by Claude
+- 2026-10-04 00:00 作者裁決收錄 final.md（sha256 f20c02ad14ed）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude

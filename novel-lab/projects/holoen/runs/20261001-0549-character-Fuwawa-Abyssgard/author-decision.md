@@ -12,3 +12,4 @@
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 81990068ef74）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 59f8349ea570）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
 - 2026-10-03 23:55 作者裁決收錄 final.md（sha256 15d05d1fcda4）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
+- 2026-10-04 00:00 作者裁決收錄 final.md（sha256 691d6608e60d）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude

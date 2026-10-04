@@ -174,6 +174,7 @@ that belong to Fuwawa or define her.
 | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
 | Takanashi Kiara | Myth senpai | [Lead, secondary: episode records list both twins among Advent's guests on HOLOTALK's 29th edition (2023-08); the original video still needs a primary check.] | [Secondary NEW-R3-021] |
 | Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity (2026-07-03/04 PDT); afterwards the twins described her teasing their tails and chasing them around the stage in their trio's MC comedy. | [Official, Serendipity report] [Secondary NEW-R3-016] |
+| Sakamata Chloe | JP senior (holoX) | A cover of BABYMETAL's "Gimme Chocolate!!" with Chloe (2024-02). | [Archive metadata, ragtag m5c9WfWUBZE] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their
@@ -313,6 +314,7 @@ Mococo Abyssgard: her younger twin, whom she calls "Moco-chan" even in English; 
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-001, NEW-R3-015 (joint call-and-response), NEW-R3-016 (Raora's stage chase), NEW-R3-017 (karaoke banner), NEW-R3-019 (releases), NEW-R3-020 (the anime ending theme named in Background), NEW-R3-021 (Kiara: a secondary lead, dossier only), NEW-R3-018 (her first solo singing stream).
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** the Chloe cover propagated (dossier Relationship Map).
 
 ## Open Questions
 1. (Resolved 2026-10-01, from the GPT review: the solo measurements stay in the dossier with the recording

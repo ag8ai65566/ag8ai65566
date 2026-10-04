@@ -41,7 +41,7 @@ Unit / generation (lore group with five persona roles; four active at the baseli
 - Lui reins in La+ and Chloe; La+ is loud and smug ("wagahai") and gets teased by seniors as a child; Koyori and
   Iroha were first called the "seiso" pair; Iroha is the one who did not call herself the smartest in their first
   meeting collab. [S3, secondary]
-- Group work: original songs (the sixth, "Gyouan Xdeath," 2025-12-01), the first album "Secret ORDER," and their
+- Group work: original songs (the sixth, "Gyouan Xdeath," 2025-12-01), the first album "Secret ORDER" (released 2026-04-08), and their
   first in-person concert, "First MISSION," at Pia Arena MM (2026-04-29) as a four-member unit, with new group
   uniforms. COVER's interview after it describes the concert as a turning point for the four-member group and
   its audience. [Official S4] [S3]
@@ -89,7 +89,8 @@ Unit / generation (lore group with five persona roles; four active at the baseli
 | 2025-01-26 | Chloe's graduation live; she stays an affiliate | Chloe |
 | 2025-04-19 | "Q&A With Bird Sisters" | Lui, Mumei |
 | 2025-07-27 | "Glow in the Dark" (Mythmash) | La+, Kiara |
-| 2025-12-01 | 4th anniversary: "Gyouan Xdeath," album "Secret ORDER," concert announced | four members |
+| 2025-12-01 | 4th anniversary: "Gyouan Xdeath," concert announced | four members |
+| 2026-04-08 | Album "Secret ORDER" released | [Official, R6] |
 | 2026-04-29 | "First MISSION," Pia Arena MM | La+, Lui, Koyori, Iroha |
 
 ## Sensory Palette
@@ -178,6 +179,7 @@ A tiny horned founder with long silver hair, oversized sleeves and shackles; a p
   official key art Claude checked (2026-10-03) and the official Japanese greetings, without the secondary
   frogmouth secretary or "Yes My Dark!".
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** "Secret ORDER" release dated 2026-04-08, separate from the anniversary.
 
 ## Open Questions
 1. Resolved: after 2025-01-26 Chloe is a hololive affiliate rather than part of holoX's four-member performing

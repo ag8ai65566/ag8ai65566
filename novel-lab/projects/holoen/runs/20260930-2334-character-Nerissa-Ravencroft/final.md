@@ -184,6 +184,7 @@ Public exchanges only. Pair names are wiki-listed units or fan names; -Advent- i
 | Hoshimachi Suisei | JP senior | A "BIBIDEBA" dance short (2024-11-04) | [Suisei file S1 JZ1Sfotw7tE] |
 | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Ame | [Ayame file AY4] |
 | Raora Panthera | Justice kouhai | Co-presenters (with IRyS) of the official Serendipity merchandise infomercial (May 2026). | [Archive metadata, ckworks ew00E7t4Dow] |
+| Shishiro Botan | — | A credited guest at Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata, yutura cI535pJp-TQ] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026): Advent member, 1M subscribers, voice
@@ -332,6 +333,7 @@ Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-001, NEW-R3-010 (N64/GameCube era, in Personality), NEW-R3-011 (set-list planning, in Motivation), NEW-R3-013 (Bananagrams with Calli), NEW-R3-014 (official written profile line in Catchphrases), FIX-R3-004 (English casting in an anime pilot). NEW-R3-012 was already merged from R1.
 - **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Her laughter, "Ope!" and her fangirling with Kiara were not captured by the audio check (whisper does

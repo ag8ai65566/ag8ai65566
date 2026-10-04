@@ -31,8 +31,8 @@ sw_section: Characters
 
 ## One-line Concept
 "The brain of holoX!": Secret Society holoX's pink-haired coyote researcher, head of R&D, who meddles in everyone's
-business "to study human behavior," pokes people just to see how they react and hosts hololive's twice-weekly
-morning news show "AsaKoyo." [Official KO1]
+business "to study human behavior," pokes people just to see how they react and hosts hololive's morning news
+show "AsaKoyo." [Official KO1]
 [Observed KO2 §Personality, secondary]
 
 ## Core Drive
@@ -92,6 +92,7 @@ innuendo and teasing. [Official KO1] [Observed KO2 §Personality, secondary]
   - Provisional (interpretation): a bright, clear, well-enunciated voice in presenter mode that leaps upward into
     squeals and screams when excited or scared.
 - **Sounds off:** a flat, sleepy or monotone delivery; a cold scientist; mumbling.
+- **AsaKoyo segments:** the show invites audience submissions about hololive happenings through #朝こよリーク and requests short lines through #朝こよ台詞 / #AsaKoyoLines; programme segments, not spontaneous remarks. Episode 300 aired Tuesday 2026-09-29. [Archive metadata NEW-R6-016]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -130,6 +131,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2025 | Weekly Famitsu column launched (07-17); archived collabs bill Koyori, AZKi and Lamy as "KoZMy" (08-03, 08-20); "pink-haired pair" talk with Marine | [KO7] [KO4 lvgC3pW-LVA, oxWPvsUb_3Y] |
 | 2026-03-24 | #ラミこよ off-collab with Lamy, proposing to choose a duo name (no final name established) | [Lamy channel Zi8R63ee0Fs] |
 | 2026-04-29 | holoX's first in-person unit concert, "First MISSION" | [Official KO6] |
+| 2026-08-22 | Announced hololive Koshien 2026: Koyori is organizer and one of six team managers (others include Houshou Marine and Shirogane Noel); the main competition is scheduled for 10-17/18 (after the baseline: an announcement only). | [Member announcement NEW-R6-017] |
 | 2026-09-12 | Second album "Chemical Spark" and first solo concert "Dream Spark" (2026-12-22) announced | [Observed KO2] |
 | 2026-09-20 | A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours | [KO3] |
 
@@ -138,7 +140,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| La+ Darknesss | holoX founder | A sponsored "#stons" deep-breathing collab (2024-12-16); a cover with La+ and Marine (2025) | [KO4 lz37xE9ED1I, ZMpsiRdqXfE] |
+| La+ Darknesss | holoX founder | A sponsored "#stons" deep-breathing collab (2024-12-16); a cover with La+ and Marine (2025) Their duet "SUKIDEKA!!~BIGLOVE????~" (2025-11-21). | [KO4 lz37xE9ED1I, ZMpsiRdqXfE] [Official NEW-R6-011] |
 | Takane Lui, Kazama Iroha | holoX | Secondary accounts describe both as having an early "seiso" image (not a named duo); Lui: Blue Journey | [KO2] [Blue Journey roster] |
 | Sakamata Chloe (affiliate) | "KoyoChlo" (archived titles) | A running "#こよクロ disband!" gag born in co-op games; their last collab before Chloe's graduation (2025-01-14) and the duet cover 「一番の宝物」 (2025-01-28) | [KO4 mxIoysy6gJ4, nCPHzr_iF7s] |
 | AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) Lamy: "Snow halation" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] [Official, 7th fes. STAGE 1 report] |
@@ -165,6 +167,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 - Scene seeds ([Unverified] proposed fiction, awaiting author approval):
   1. Koyori "interviews" FUWAMOCO for AsaKoyo and keeps scoring their answers like lab data.
   2. A KoZMy horror night in which Koyori volunteers AZKi and Lamy as test subjects.
+- **Stage prop (First MISSION, 2026-04-29):** the intruder sketch attributed its fan-converting balloon bomb to Koyori. [Official NEW-R6-018]
 
 ## Secrets & Foreshadowing
 - **Truth:** none assigned.
@@ -194,6 +197,9 @@ Public exchanges only. Group ties are on the world card "holoX."
 - KO20 Claude's audio check (two-model ASR, Japanese): research/audio-check/koyori.md
 
 ---
+- NEW-R6-016 (GPT research R6, checked 2026-10-03) AsaKoyo episode 300 description (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/m0wMAE1en5E
+- NEW-R6-017 (GPT research R6, checked 2026-10-03) hololive Koshien 2026 announcement (PRIMARY indexed; ARCHIVE_METADATA): https://www.youtube.com/watch?v=ocDrGpuMXlQ ; https://yutura.net/channel/50474/video/ocDrGpuMXlQ/
+- NEW-R6-011/018 (GPT research R6, checked 2026-10-03) "SUKIDEKA!!" (OFFICIAL): https://hololive.hololivepro.com/en/music/676/ ; First MISSION report (OFFICIAL): https://hololive.hololivepro.com/events/first-mission
 
 ## [SW] Name
 Hakui Koyori
@@ -211,7 +217,7 @@ hololive, Secret Society holoX, holoX, Hoshimatic Project, KoZMy, NePoX, Blue Jo
 Koyori, Koyo, Koyorin, 博衣こより
 
 ## [SW] Personality
-Koyori is Secret Society holoX's head of research and development, a pink-haired coyote in a lab coat who calls herself "the brain of holoX" while her own profile admits her expertise is "pretty limited." She studies "human behavior" by meddling in her fellow members' affairs, helping where she can and sometimes poking people just to see how they react; her viewers are her lab "Assistants" (助手くん). Secondary accounts describe an initially "seiso" (proper) image, later contrasted with her on-stream innuendo and teasing; she screams through horror games and knows fans love her reactions. She is also a disciplined presenter: she hosts "AsaKoyo," hololive's news show on Tuesday and Friday mornings (episode 290 in July 2026), calls herself 「こよりちゃんでございます」 ("it's Koyori-chan"), invites viewers to look at things (「ぜひぜひ見てみてください」), and writes a monthly game column for Weekly Famitsu. In September 2026 a mirrored public post showed her acknowledging a fan estimate that her own-channel streams had passed 10,000 hours. Secondary records credit her with voice impressions and with voicing her fan-made mascot, Mofukoyo.
+Koyori is Secret Society holoX's head of research and development, a pink-haired coyote in a lab coat who calls herself "the brain of holoX" while her own profile admits her expertise is "pretty limited." She studies "human behavior" by meddling in her fellow members' affairs, helping where she can and sometimes poking people just to see how they react; her viewers are her lab "Assistants" (助手くん). Secondary accounts describe an initially "seiso" (proper) image, later contrasted with her on-stream innuendo and teasing; she screams through horror games and knows fans love her reactions. She is also a disciplined presenter: she hosts "AsaKoyo," hololive's morning news show (episode 300 aired on Tuesday 2026-09-29), calls herself 「こよりちゃんでございます」 ("it's Koyori-chan"), invites viewers to look at things (「ぜひぜひ見てみてください」), and writes a monthly game column for Weekly Famitsu. In September 2026 a mirrored public post showed her acknowledging a fan estimate that her own-channel streams had passed 10,000 hours. Secondary records credit her with voice impressions and with voicing her fan-made mascot, Mofukoyo.
 
 ## [SW] Background
 Koyori is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-28 as the third member of Secret Society holoX and released her first original song, "WAO!!," in 2022. She sang in "Blue Journey" with Marine, Noel, Lamy, Botan, Lui and Sakura Miko (2023); secondary records place her in Suisei's Hoshimatic Project from 2023; archived 2025 collabs bill her, AZKi and Lamy as "KoZMy." She performed at holoX's first in-person unit concert, "First MISSION" (2026-04-29), and in September 2026 announced her second album, "Chemical Spark," and her first solo concert, "Dream Spark," for December 2026. With the English cast, archived titles and descriptions record Lethal Company with FUWAMOCO and Shirakami Fubuki (2024), a FUWAMOCO Morning guest spot billed "FUWAMOKOYO" (2024), and guest appearances at FUWAMOCO's birthday concert (2025) and Mumei's first 3D live (2024). In 2023 she joined Bae's "BAE-GEMITE DOMINATION" with Momosuzu Nene and tasted Bae's "KHAOS KITCHEN" curry with Calli and Oozora Subaru.
@@ -268,6 +274,7 @@ La+ Darknesss: holoX's founder; a sponsored "#stons" collab (2024) and a cover w
     IRyS's channel (VwqdwQx5cog) and the MIRAGE short on Kiara's channel (xXwi19krZ68).
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-011, 016 to 018 (La+ duet, AsaKoyo segments, hololive Koshien organizer, First MISSION prop), FIX-R6-005 (AsaKoyo stated by its 2026-09-29 episode 300 instead of a stale twice-weekly schedule).
 
 ## Open Questions
 1. Resolved: the Famitsu column is 「よちよちゲーマー博衣こよりのゲームラボ」 (Famitsu announcement, KO7).

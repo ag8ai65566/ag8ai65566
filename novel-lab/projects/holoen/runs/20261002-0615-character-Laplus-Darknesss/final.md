@@ -127,7 +127,8 @@ The middle column is provisional voice direction unless a source is named.
 | 2024 | "drop candy" (05-25); holoGTA participant (her archive establishes participation; other members' own archives place them in the same event) | [Observed LA2] [LA4 swqXHi1Z4ew] |
 | 2025-04-08 | "FAKE HEART," a cover with Kiara | [LA5 yspJ9xmGRfw] |
 | 2025-07-27/28 | "Glow in the Dark," a Mythmash single with Kiara (official digital release 2025-07-28); a joint stream | [Official music 600] [LA5 v5RKZXNuVyw] [LA4] |
-| 2025-12 | holoX's 4th anniversary ("Gyouan Xdeath," "Secret ORDER") | [Observed LA2] |
+| 2025-12 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LA2] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-003] |
 | 2026-04-29 | holoX's first in-person unit concert, "First MISSION" (La+, Lui, Koyori, Iroha) | [Official LA6] |
 | 2026-05-03 | Tochigi Future Ambassador | [Official LA3] |
 | 2026-05-19 | A 3D lie-detector "challenge" to Nekomata Okayu | [LA4 F3i30BIJmtY] |
@@ -138,8 +139,8 @@ Public exchanges only. Group ties are on the world card "holoX."
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Takane Lui | holoX executive officer | Reins her in; a 2026 two-person talk | [LA2] [LA4] |
-| Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) | [LA2] [LA4 pYEfOPIurcE] |
+| Takane Lui | holoX executive officer | Reins her in; a 2026 two-person talk Featured on Lui's original "Anastasis Girl feat. La+ Darknesss" (2025-11-28); they performed it together at First MISSION (2026-04-29). | [LA2] [LA4] [Official NEW-R6-010] |
+| Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) Their duet "SUKIDEKA!!~BIGLOVE????~" (2025-11-21). | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
 | Sakamata Chloe (affiliate) | holoX intern | Covers together: 「デイバイデイズ」 (2022-09-20) and 「ぼうけんのしょがきえました！」 (2025-01-15) (archived titles) | [LA4 wLQQD3Ok0Uk, acYx6NnoaAQ] |
 | Takanashi Kiara | — | "Glow in the Dark" and "FAKE HEART" (2025); an off-collab (2023) | [LA5] |
 | Mori Calliope | — | HOLO ENGLISH LESSON #02 (2022) | [LA5] |
@@ -162,6 +163,8 @@ Public exchanges only. Group ties are on the world card "holoX."
 - Scene seeds ([Unverified] proposed fiction, awaiting author approval):
   1. La+ demands that Kiara address her as "Your Darknesss" for a whole duet rehearsal.
   2. A holoX meeting where La+ announces a conquest plan and Lui schedules it for "after lunch."
+- **Staged recruitment (First MISSION, 2026-04-29):** holoX interrupted its concert with an intruder alert and questioned audience members as part of a staged recruitment operation, a documented stage premise for holoX scenes. [Official NEW-R6-012]
+- **After the baseline (announcement only):** at 2026-09-30 her album "Project Y.M.A. (Yes My Artist)" is still a preorder project; the official shop gives a shipping window through late October 2026. [Official, shop listing]
 
 ## Secrets & Foreshadowing
 - **Truth:** none assigned.
@@ -189,6 +192,9 @@ Public exchanges only. Group ties are on the world card "holoX."
 - LA20 Claude's audio check (two-model ASR, Japanese): research/audio-check/laplus.md
 
 ---
+- NEW-R6-010/011 (GPT research R6, checked 2026-10-03) "Anastasis Girl" and "SUKIDEKA!!" (OFFICIAL): https://hololive.hololivepro.com/en/music/641/ ; /676/
+- NEW-R6-012 (GPT research R6, checked 2026-10-03) First MISSION report (OFFICIAL): https://hololive.hololivepro.com/events/first-mission
+- FIX-R6-003 (GPT research R6, checked 2026-10-03) Project Y.M.A. shop listing (OFFICIAL): https://shop.hololivepro.com/products/laplusdarknesss_1stalbum_projectyma_expensive
 
 ## [SW] Name
 La+ Darknesss
@@ -256,6 +262,7 @@ Takane Lui: holoX's executive officer, who actually runs things and reins her in
     off-collab on Kiara's channel (XWf2PqD_8zQ); covers with Chloe (wLQQD3Ok0Uk 2022-09-20, acYx6NnoaAQ 2025-01-15);
     the #いろはス Chained Together title (pYEfOPIurcE). The avatar description was checked against the official key
     art (2026-10-03) and kept, with fangs added.
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-010 to 012 (duets with Lui and Koyori; First MISSION's staged recruitment), FIX-R6-003 ("Secret ORDER" release dated 2026-04-08, separate from the anniversary), Project Y.M.A. kept as a preorder at the baseline. FIX-R6-001/002 were already resolved by the run E merge.
 
 ## Open Questions
 1. Resolved: the crow stays unnamed (no name in the sources; none invented).

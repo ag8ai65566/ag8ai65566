@@ -164,6 +164,7 @@ that belong to Mococo or define her.
 | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
 | Hoshimachi Suisei | JP senior | A "Chatter Chatter" dance short (2026-03-31); Puyo Puyo Tetris 2 coaching (2026, secondary metadata) | [Suisei file S1] |
 | Takanashi Kiara | Myth senpai | [Lead, secondary: episode records list both twins among Advent's guests on HOLOTALK's 29th edition (2023-08); the original video still needs a primary check.] | [Secondary NEW-R3-021] |
+| Sakamata Chloe | JP senior (holoX) | A cover of BABYMETAL's "Gimme Chocolate!!" with Chloe (2024-02). | [Archive metadata, ragtag m5c9WfWUBZE] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their
@@ -310,6 +311,7 @@ Fuwawa Abyssgard: her older twin, who calls her "Moco-chan"; Mococo has called h
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-006, VOICE-V2-024, VOICE-V2-037, VOICE-V2-038 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-001, NEW-R3-015 (joint call-and-response), NEW-R3-016 (Raora's stage chase), NEW-R3-017 (karaoke banner), NEW-R3-019 (releases), NEW-R3-020 (the anime ending theme named in Background), NEW-R3-021 (Kiara: a secondary lead, dossier only).
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** the Chloe cover propagated (dossier Relationship Map).
 
 ## Open Questions
 1. There is no clean solo sample of Mococo's ordinary speech in the archive (her 2025 solo is quiet and

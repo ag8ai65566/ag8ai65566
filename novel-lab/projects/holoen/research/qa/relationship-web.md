@@ -6,12 +6,12 @@ column's member. One-way ties are listed below: a coverage question, not automat
 | | Calli | Kiara | Ina | Gura | Ame | Kronii | IRyS | Fauna | Mumei | Bae | Shiori | Bijou | Nerissa | Fuwawa | Mococo | Elizabeth | Gigi | Cecilia | Raora | Suisei | AZKi | Ayame | Okayu | Marine | Noel | Lamy | Botan | Vivi | La+ | Lui | Koyori | Chloe | Iroha |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | **Calli** | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ |  | ✓ |  | ✓ | ✓ |  | ✓ | ✓ |
-| **Kiara** | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  |  | ✓ | ✓ | ✓ | ✓ |  |
+| **Kiara** | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |  | ✓ | ✓ | ✓ | ✓ |  |
 | **Ina** | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  |  |  |  |
 | **Gura** | ✓ | ✓ | ✓ | — | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |  | ✓ |  |  |  |  | ✓ | ✓ | ✓ |  |  |  | ✓ |  |  | ✓ |  | ✓ |  |  | ✓ | ✓ |
 | **Ame** | ✓ | ✓ | ✓ | ✓ | — | ✓ |  |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  |  |  | ✓ |  |  |  |  |  |  |  | ✓ |  |  | ✓ |
-| **Kronii** | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |  |  |  |  |  |  |  |  |  |  |  |  |
-| **IRyS** | ✓ | ✓ | ✓ |  |  | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |  |  |  | ✓ |  |  | ✓ | ✓ | ✓ |  |
+| **Kronii** | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |  |  |  | ✓ |  |  | ✓ |  |  |  |  |  |
+| **IRyS** | ✓ | ✓ | ✓ |  |  | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  |  |  | ✓ |  |  | ✓ | ✓ | ✓ |  |
 | **Fauna** |  | ✓ |  | ✓ |  | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | **Mumei** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  | ✓ | ✓ | ✓ |  |
 | **Bae** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ |  | ✓ | ✓ |  | ✓ | ✓ | ✓ |  |
@@ -24,28 +24,27 @@ column's member. One-way ties are listed below: a coverage question, not automat
 | **Gigi** | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |  |  |  | ✓ |  |  |  |  |  |  | ✓ |  |  |  |
 | **Cecilia** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |  | ✓ | ✓ |  |  |  |  |  | ✓ |  |  |  |  |
 | **Raora** | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | — |  |  |  |  |  |  |  |  |  |  | ✓ |  |  |  |
-| **Suisei** | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  | — | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ |  | ✓ |  | ✓ | ✓ | ✓ |
-| **AZKi** | ✓ | ✓ | ✓ |  |  | ✓ | ✓ |  |  | ✓ |  |  |  | ✓ | ✓ | ✓ |  |  |  | ✓ | — | ✓ |  |  |  | ✓ |  |  | ✓ |  | ✓ | ✓ | ✓ |
+| **Suisei** | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  | — | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ |
+| **AZKi** | ✓ | ✓ | ✓ |  |  | ✓ | ✓ |  |  | ✓ |  |  |  | ✓ | ✓ | ✓ |  |  |  | ✓ | — | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  | ✓ | ✓ | ✓ |
 | **Ayame** |  | ✓ | ✓ |  | ✓ |  | ✓ |  | ✓ |  |  |  | ✓ | ✓ | ✓ |  |  | ✓ |  | ✓ | ✓ | — | ✓ | ✓ | ✓ |  | ✓ |  | ✓ | ✓ |  |  |  |
-| **Okayu** | ✓ | ✓ | ✓ |  |  |  | ✓ |  | ✓ | ✓ |  |  |  | ✓ | ✓ |  | ✓ | ✓ |  | ✓ |  | ✓ | — | ✓ |  |  |  |  | ✓ | ✓ | ✓ |  |  |
-| **Marine** | ✓ | ✓ | ✓ | ✓ |  |  |  |  | ✓ | ✓ |  |  | ✓ | ✓ | ✓ | ✓ |  |  |  | ✓ |  | ✓ | ✓ | — | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| **Noel** | ✓ | ✓ | ✓ |  |  | ✓ |  |  | ✓ | ✓ |  |  |  | ✓ | ✓ | ✓ |  |  |  | ✓ |  | ✓ |  | ✓ | — | ✓ |  | ✓ |  | ✓ | ✓ |  | ✓ |
+| **Okayu** | ✓ | ✓ | ✓ |  |  |  | ✓ |  | ✓ | ✓ |  |  |  | ✓ | ✓ |  | ✓ | ✓ |  | ✓ | ✓ | ✓ | — | ✓ | ✓ |  |  | ✓ | ✓ | ✓ | ✓ | ✓ |  |
+| **Marine** | ✓ | ✓ | ✓ | ✓ |  |  |  |  | ✓ | ✓ |  |  | ✓ | ✓ | ✓ | ✓ |  |  |  | ✓ | ✓ | ✓ | ✓ | — | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Noel** | ✓ | ✓ | ✓ |  |  | ✓ |  |  | ✓ | ✓ |  |  |  | ✓ | ✓ | ✓ |  |  |  | ✓ | ✓ | ✓ | ✓ | ✓ | — | ✓ |  | ✓ |  | ✓ | ✓ |  | ✓ |
 | **Lamy** |  |  | ✓ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | ✓ |  |  | ✓ | ✓ | — | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ |
-| **Botan** | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  |  | ✓ |  |  |  |  |  |  |  |  |  | ✓ |  | ✓ |  |  |  | ✓ | — |  | ✓ | ✓ | ✓ | ✓ | ✓ |
-| **Vivi** |  |  | ✓ |  |  | ✓ |  |  | ✓ | ✓ |  | ✓ |  | ✓ | ✓ | ✓ |  |  |  |  |  |  |  | ✓ | ✓ |  |  | — |  |  |  |  |  |
+| **Botan** | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  |  | ✓ |  |  | ✓ |  |  |  |  |  |  | ✓ |  | ✓ |  |  |  | ✓ | — |  | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Vivi** |  |  | ✓ |  |  | ✓ |  |  | ✓ | ✓ |  | ✓ |  | ✓ | ✓ | ✓ |  |  |  | ✓ | ✓ |  | ✓ | ✓ | ✓ |  |  | — |  |  |  |  |  |
 | **La+** | ✓ | ✓ |  | ✓ |  |  |  |  |  |  |  |  | ✓ | ✓ | ✓ |  |  | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ |  | — | ✓ | ✓ | ✓ | ✓ |
 | **Lui** | ✓ | ✓ |  |  | ✓ | ✓ | ✓ |  | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ |  | ✓ |  | ✓ |  |  | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | — | ✓ | ✓ | ✓ |
 | **Koyori** |  | ✓ |  |  |  |  | ✓ |  | ✓ | ✓ |  |  |  | ✓ | ✓ |  |  |  |  | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | — | ✓ | ✓ |
-| **Chloe** | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  | ✓ | ✓ |  |  |  |  |  |  |  |  |  | ✓ | ✓ |  |  | ✓ |  | ✓ | ✓ |  | ✓ | ✓ | ✓ | — | ✓ |
+| **Chloe** | ✓ | ✓ | ✓ | ✓ |  |  | ✓ |  | ✓ | ✓ |  |  |  | ✓ | ✓ |  |  |  |  | ✓ | ✓ |  | ✓ | ✓ |  | ✓ | ✓ |  | ✓ | ✓ | ✓ | — | ✓ |
 | **Iroha** | ✓ | ✓ |  | ✓ | ✓ |  |  |  |  |  |  |  |  | ✓ | ✓ | ✓ |  |  |  | ✓ | ✓ |  |  | ✓ | ✓ | ✓ | ✓ |  | ✓ | ✓ | ✓ | ✓ | — |
 
-## One-way ties (8)
+## One-way ties (7)
 
 - Kazama Iroha names Takanashi Kiara; Takanashi Kiara's Relationships does not name Kazama Iroha.
-- Kikirara Vivi names Ouro Kronii; Ouro Kronii's Relationships does not name Kikirara Vivi.
 - La+ Darknesss names Fuwawa Abyssgard; Fuwawa Abyssgard's Relationships does not name La+ Darknesss.
-- Raora Panthera names IRyS; IRyS's Relationships does not name Raora Panthera.
+- Sakamata Chloe names Fuwawa Abyssgard; Fuwawa Abyssgard's Relationships does not name Sakamata Chloe.
+- Sakamata Chloe names Mococo Abyssgard; Mococo Abyssgard's Relationships does not name Sakamata Chloe.
 - Sakamata Chloe names Ninomae Ina'nis; Ninomae Ina'nis's Relationships does not name Sakamata Chloe.
-- Shirogane Noel names Ouro Kronii; Ouro Kronii's Relationships does not name Shirogane Noel.
-- Shishiro Botan names Takanashi Kiara; Takanashi Kiara's Relationships does not name Shishiro Botan.
+- Shishiro Botan names Nerissa Ravencroft; Nerissa Ravencroft's Relationships does not name Shishiro Botan.
 - Takane Lui names Ouro Kronii; Ouro Kronii's Relationships does not name Takane Lui.

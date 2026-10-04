@@ -150,6 +150,8 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Nanashi Mumei (graduated) | — | The EN Minecraft tour (2022) | [CH5] |
 | IRyS | — | Overwatch 2 team (2023); Among Us (2023) | [CH5] |
 | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | The ocean unit's official 2023 roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/] |
+| Nekomata Okayu | JP senior | Credited among the chorus contributors to Chloe's "Bling-Bang-Bang-Born" cover (2025-01-24), with La+, Koyori and AZKi. | [Archive metadata NEW-R6-019] |
+| Fuwawa Abyssgard, Mococo Abyssgard | EN kouhai | A cover of BABYMETAL's "Gimme Chocolate!!" together (2024-02). | [Archive metadata NEW-R6-020] |
 
 ## Arc
 - **Starting point:** the public persona; on the card date she is a hololive affiliate (regular activities ended
@@ -186,6 +188,8 @@ Public exchanges only. Group ties are on the world card "holoX."
 - CH20 Claude's audio check (two-model ASR, Japanese): research/audio-check/chloe.md
 
 ---
+- NEW-R6-019 (GPT research R6, checked 2026-10-03) cover credits (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=wxnTKRkpePs
+- NEW-R6-020 (GPT research R6, checked 2026-10-03) Gimme Chocolate!! cover (ARCHIVE_METADATA; SECONDARY listing): https://archive.ragtag.moe/watch?v=m5c9WfWUBZE ; https://v-media.jp/songs/m5c9WfWUBZE
 
 ## [SW] Name
 Sakamata Chloe
@@ -227,7 +231,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 In her lore, Chloe works as holoX's cleaner and does what she is told. As a streamer and artist she wanted to make music (composing, writing and singing) and to hold a solo concert on a big stage; since 2025-01-26 she is an affiliate.
 
 ## [SW] Relationships
-Takane Lui: holoX's executive officer; secondary accounts describe Lui reining her in; "LuiChlo" collabs, Calli's English lesson and HOLOYOI together. Hakui Koyori: "KoyoChlo," a duo with a running "disband!" gag; their last collab and two covers in January 2025. La+ Darknesss: covers together (2022, 2025). Kazama Iroha: holoX; the duet cover "Gehenna" on her last day (2025-01-26). AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024). Houshou Marine: UMISEA (official 2023 roster) and holoWitches. Hoshimachi Suisei: the original Hoshimatic Project lineup (secondary); a farewell video together (2025). Yukihana Lamy: Rust with Kanata (2022). Shishiro Botan: an Overwatch 2 team (2023). Takanashi Kiara: "WILDCARD," performed at the 2024 fes and released as a cover in her final week (2025), and an origami off-collab (2023). Hakos Baelz: the EN Minecraft tour (2022), BAE-GEMITE DOMINATION and "Crazy Scary Holy Fantasy" (2023). Mori Calliope: HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023). Nanashi Mumei (graduated): the EN Minecraft tour (2022). IRyS: Overwatch 2 and Among Us (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster).
+Takane Lui: holoX's executive officer; secondary accounts describe Lui reining her in; "LuiChlo" collabs, Calli's English lesson and HOLOYOI together. Hakui Koyori: "KoyoChlo," a duo with a running "disband!" gag; their last collab and two covers in January 2025. La+ Darknesss: covers together (2022, 2025). Kazama Iroha: holoX; the duet cover "Gehenna" on her last day (2025-01-26). AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024). Houshou Marine: UMISEA (official 2023 roster) and holoWitches. Hoshimachi Suisei: the original Hoshimatic Project lineup (secondary); a farewell video together (2025). Yukihana Lamy: Rust with Kanata (2022). Shishiro Botan: an Overwatch 2 team (2023). Takanashi Kiara: "WILDCARD," performed at the 2024 fes and released as a cover in her final week (2025), and an origami off-collab (2023). Hakos Baelz: the EN Minecraft tour (2022), BAE-GEMITE DOMINATION and "Crazy Scary Holy Fantasy" (2023). Mori Calliope: HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023). Nanashi Mumei (graduated): the EN Minecraft tour (2022). IRyS: Overwatch 2 and Among Us (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster). Nekomata Okayu: chorus on her "Bling-Bang-Bang-Born" cover (2025). Fuwawa and Mococo Abyssgard: a "Gimme Chocolate!!" cover together (2024).
 
 ## [SW] Secrets
 (none)
@@ -255,6 +259,7 @@ Takane Lui: holoX's executive officer; secondary accounts describe Lui reining h
     KoyoChlo collab (u5hBkM77dX0 "ラストこよクロ"; Koyori's mxIoysy6gJ4 description explains the "disband" gag), the
     2022 cover with La+ (wLQQD3Ok0Uk), the Kanaken 3D live (t3p-hllEVIM), HOLOYOI #01 (UuL_nORzfNM), the origami
     off-collab (NK2ENvBoCcQ) and Among Us on IRyS's channel (VwqdwQx5cog).
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-019/020 (Okayu and the twins added to the exported Relationships, filling three empty pairs). FIX-R6-006 and 009 were already resolved by the run F merge.
 
 ## Open Questions
 1. Resolved before review: Chloe's UMISEA membership rests on the official 2023 roster (as merged on the Marine

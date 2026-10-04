@@ -144,6 +144,7 @@ Public exchanges only.
 | Sakamata Chloe (affiliate) | — | Rust with Kanata (2022-09); a self-knowledge quiz collab (2025-01-18) | [Chloe file z55R0Z8_qk0] [LM4 9DMCTQDpBos] |
 | Ninomae Ina'nis | — | A Minecraft festival appearance and a Minecraft collab billed as a "date" (2021); a guest at Ina's "Pleides" 3D live (2024) | [LM5 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ] |
 | Hakos Baelz | EN (Promise) | Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers); a shared recording project. | [Secondary, dengekionline 202609/89494] |
+| Kikirara Vivi | — | Lamy hosted the 2026-01-15 information programme where Vivi commentated (secondary report). | [Secondary, appbank] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: six years in, a ninth original song out and a first album
@@ -253,6 +254,7 @@ Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describ
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-005, 018 to 020; FIX-R5-003 (NePoX recorded as held, 2026-09-26/27, from the organizer's report).
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 
 ## Open Questions
 1. Resolved: both are kept, "Lamyoohoo!" as the official greeting and "Konlamy desu" as a labelled secondary

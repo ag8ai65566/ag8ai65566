@@ -92,6 +92,8 @@ translated secondary description). [Official VI1] [Observed VI2 §Miscellaneous,
   - Provisional (interpretation): a bright, slightly husky, girlish voice; lively and frank, dropping to a flat
     deadpan for retorts.
 - **Sounds off:** prim, overly formal speech; a slow, breathy whisper as her default; a cold, aloof beauty.
+- **Mock-scandalized title bit (written, 2026-08-25):** her collab with Okayu uses やーらし (yārashi, "lewd!") as its comic framing; spoken wording and delivery unverified. [Archive metadata NEW-R6-005]
+- [Secondary observation, pending audio check: a report on the 2026-01-15 information programme describes her returning again and again to the idea of anticipation until the other presenters teased the repetition.] [Secondary NEW-R6-009]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -142,6 +144,10 @@ Public exchanges only.
 | Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [VI5] |
 | Nanashi Mumei (graduated) | — | Hosted that Gartic Phone collab (2025) | [VI5] |
 | Koseki Bijou | — | Watched FLOW GLOW's debut with FUWAMOCO (2024) | [VI5] |
+| AZKi | JP senior | A GeoGuessr collab billed as Vivi's first zero-distance guessing session with AZKi (2026-08-22). | [Archive metadata NEW-R6-006] |
+| Hoshimachi Suisei | JP senior | Vivi hosted a Puyo Puyo Tetris session asking Suisei to teach her Tetris (2026-08-29). | [Archive metadata NEW-R6-007] |
+| Nekomata Okayu | JP senior | A collab framed around the mock-scandalized title word やーらし (2026-08-25). | [Archive metadata NEW-R6-005] |
+| Yukihana Lamy | JP senior | Lamy hosted, and Vivi, Iroha and Bijou commentated, the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, almost two years in: her first solo original out and FLOW
@@ -180,6 +186,10 @@ Public exchanges only.
   https://ckworks.jp/vinforadar/video/MQbAJKg5g7M
 
 ---
+- NEW-R6-005 (GPT research R6, checked 2026-10-03) Okayu collab title (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/jlt6HHrZnpE
+- NEW-R6-006 (GPT research R6, checked 2026-10-03) GeoGuessr with AZKi (ARCHIVE_METADATA): https://www.holostats.com/stream/dzO2LaVBmMY?lang=ko
+- NEW-R6-007 (GPT research R6, checked 2026-10-03) Tetris with Suisei (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/qHC9c62GCpc
+- NEW-R6-008/009 (GPT research R6, checked 2026-10-03) information programme report (SECONDARY): https://www.appbank.net/2026/01/17/vtuber/2910180.php
 
 ## [SW] Name
 Kikirara Vivi
@@ -221,7 +231,7 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 In her lore, Vivi wants to find true beauty and give everyone a glow-up. As a streamer and singer, secondary references list cosmetics collaborations, live concerts with her own songs and being a source of smiles for her fans among her goals.
 
 ## [SW] Relationships
-Usada Pekora: "PekoVivi" (a secondary pair name); co-op games (2025) and a gifted Getting Over It (2026); secondary accounts say Pekora rescued her in Minecraft and Vivi calls her the "legendary hero." Houshou Marine: MVP with Pekora (an archived 2026 performance record). Shirogane Noel: Mumei's Gartic Phone collab (2025). FLOW GLOW (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya): her unit; a "Bridal Dream" cover with Chihaya (2025). FUWAMOCO: watched FLOW GLOW's debut with Bijou (2024, secondary archive); R.E.P.O. with Bae (2025-05-25). Hakos Baelz: that R.E.P.O. session. Ninomae Ina'nis: a separate R.E.P.O. session on Ina's stream (2025-06-02) and the Gartic Phone collab. Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone (2025). Nanashi Mumei (graduated): hosted that Gartic Phone collab. Koseki Bijou: watched FLOW GLOW's debut with FUWAMOCO.
+Usada Pekora: "PekoVivi" (a secondary pair name); co-op games (2025) and a gifted Getting Over It (2026); secondary accounts say Pekora rescued her in Minecraft and Vivi calls her the "legendary hero." Houshou Marine: MVP with Pekora (an archived 2026 performance record). Shirogane Noel: Mumei's Gartic Phone collab (2025). FLOW GLOW (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya): her unit; a "Bridal Dream" cover with Chihaya (2025). FUWAMOCO: watched FLOW GLOW's debut with Bijou (2024, secondary archive); R.E.P.O. with Bae (2025-05-25). Hakos Baelz: that R.E.P.O. session. Ninomae Ina'nis: a separate R.E.P.O. session on Ina's stream (2025-06-02) and the Gartic Phone collab. Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone (2025). Nanashi Mumei (graduated): hosted that Gartic Phone collab. Koseki Bijou: watched FLOW GLOW's debut with FUWAMOCO. AZKi: GeoGuessr (2026). Hoshimachi Suisei: taught her Tetris on Vivi's channel (2026). Nekomata Okayu: a 2026 collab billed with a mock-scandalized "やーらし."
 
 ## [SW] Secrets
 (none)
@@ -249,6 +259,7 @@ Usada Pekora: "PekoVivi" (a secondary pair name); co-op games (2025) and a gifte
     session (grBU9Dl09Ds, 2025-06-02, description lists Vivi), the "Bridal Dream" cover with Chihaya (NGeumGspO2g,
     2025-07-28), Pekora's Getting Over It gift (Lz56n8fa25o).
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** no card finding (sheet: VOICE-V3-015); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-005 to 009 (AZKi, Suisei and Okayu added to the exported Relationships, filling three empty pairs; the Lamy/Iroha/Bijou programme and the anticipation observation kept secondary in the dossier).
 
 ## Open Questions
 1. The wiki gives no appearance section; the avatar description is Claude's reading of the official key art.

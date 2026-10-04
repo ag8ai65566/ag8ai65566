@@ -94,6 +94,7 @@ LU2 §Personality, secondary]
     softness, flipping into a cool "executive" tone (followed by a clipped "Ko!☆") for effect, and up into shrieks
     in horror.
 - **Sounds off:** a high, bubbly default; cold cruelty; nonstop shouting.
+- **Horror Game Week (written titles, 2026-08):** #ホラゲウィーク2026 frames numbered horror entries as episodes of one event; her Resident Evil 3 title plays on Bio/yabai. Written-title evidence. [Member upload titles NEW-R6-015]
 
 ### Tone Shifts
 The middle column is provisional voice direction unless a source is named.
@@ -133,9 +134,11 @@ The middle column is provisional voice direction unless a source is named.
 | 2023 | HOLOYOI ep. 1 with Chloe (Calli's show, 03-23); a Wario off-collab with Kiara (01-15); BAE-GEMITE #5 with Bae and Chloe (04-29); "TWIN DAY WITH LUI" with FUWAMOCO (11-25); Blue Journey (official roster) | [LU5 UuL_nORzfNM, cVJefDjefUs, z4-5Hq5AKG4, MbqO5OPuT80] [Blue Journey roster] |
 | 2024 | First album "Liberty" (official digital release 06-12); 1 million subscribers (11-16, secondary) | [Official music 434] [Observed LU2] |
 | 2025 | EP "Lieblings"; Code Geass ambassador (June, secondary); "Q&A With Bird Sisters" with Mumei (04-19); Harry Potter watch-alongs with Okayu; "FEAST" dance short with Bae (07-11) | [Observed LU2] [LU5] [LU4 Lj0MZFpHitQ, 5TUiccnytQA] |
-| 2025-12-01 | holoX's 4th anniversary: "Gyouan Xdeath," album "Secret ORDER" | [Observed LU2] |
+| 2025-12-01 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LU2] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-004] |
 | 2026-04-29 | holoX's first in-person unit concert "First MISSION"; COVER's interview after it describes the concert as a turning point for the four-member group and its audience | [Official LU6] |
 | 2026-06-11 | EP "The LEGENDARY" with "Soar" (official digital release of "Soar" 06-12); 1st live "REBELLION" (2026-12-16) and a BAYFM78 radio programme (from 07-03) announced; EN members' channels posted animated "Soar" shorts crediting external motion creators | [Official LU7] [Official music 760] [LU4] [LU5] |
+| 2026-06-11 | COVER announces a regular BAYFM78 radio programme for her (first broadcast scheduled for 2026-07-03); orders open for the four-track EP "The LEGENDARY," including "Soar"; her first live concert "REBELLION" announced for 2026-12-16 at Kanadevia Hall (after the baseline: an announcement only). | [Official NEW-R6-013/014] |
 | 2026-08-01 | A "rare" La+ and Lui talk with new outfits | [LU4] |
 
 ## Relationship Map
@@ -143,9 +146,9 @@ Public exchanges only. Group ties are on the world card "holoX."
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| La+ Darknesss | holoX founder | Lui reins her in; a 2026 two-person talk; poker (2025) | [LU2] [LU4] |
+| La+ Darknesss | holoX founder | Lui reins her in; a 2026 two-person talk; poker (2025) Her original "Anastasis Girl feat. La+ Darknesss" (2025-11-28); performed together at First MISSION (2026-04-29). | [LU2] [LU4] [Official NEW-R6-010] |
 | Sakamata Chloe (affiliate) | holoX intern | Lui reined her in; shows with Calli and Bae together (2022–2023) | [LU2] [LU5] |
-| Hakui Koyori, Kazama Iroha | holoX | Secondary references record "Lui-nee" as Iroha's address for her; Koyori: Blue Journey | [LU2] [Blue Journey roster] |
+| Hakui Koyori, Kazama Iroha | holoX | Secondary references record "Lui-nee" as Iroha's address for her; Koyori: Blue Journey Iroha: their single "Private EyeZ" (2025-11-21), performed as a duo at First MISSION (2026-04-29). | [LU2] [Blue Journey roster] [Official NEW-R6-022] |
 | Takanashi Kiara | HOLOTORI | Fellow HOLOTORI member (the wiki dates Kiara's welcome to the reveal); a Wario off-collab (2023-01-15) | [LU2] [LU5 cVJefDjefUs] |
 | Nanashi Mumei (graduated) | HOLOTORI; "Bird Sisters" | "Q&A With Bird Sisters" (2025); the EN Minecraft tour (2022) | [LU5] |
 | Mori Calliope | English teacher | English practice (2021), lesson #04 (2022), HOLOYOI (2023); Calli danced to Lui's songs (2025, 2026) | [LU5] |
@@ -204,6 +207,9 @@ Public exchanges only. Group ties are on the world card "holoX."
 - LU20 Claude's audio check (two-model ASR, Japanese): research/audio-check/lui.md
 
 ---
+- NEW-R6-010/022 (GPT research R6, checked 2026-10-03) "Anastasis Girl" and "Private EyeZ" (OFFICIAL): https://hololive.hololivepro.com/en/music/641/ ; /677/ ; First MISSION report (OFFICIAL): https://hololive.hololivepro.com/events/first-mission
+- NEW-R6-013/014 (GPT research R6, checked 2026-10-03) COVER announcement (OFFICIAL): https://hololivepro.com/news/20260611-01-35/
+- NEW-R6-015 (GPT research R6, checked 2026-10-03) Horror Game Week titles (PRIMARY indexed; ARCHIVE_METADATA): https://www.youtube.com/watch?v=6eX4BLtVxeg ; https://vtuber-live.net/archive_list/UCs9_O1tRPMQTHQ-N_L6FU2g
 
 ## [SW] Name
 Takane Lui
@@ -276,6 +282,7 @@ La+ Darknesss: holoX's founder, whom Lui reins in and covers for. Sakamata Chloe
     (5TUiccnytQA, Lui's channel, 2025-07-11).
 - **2026-10-03, run F review (holoX card), merged by Claude:** the interview line is paraphrased (the earlier
   wording was not verbatim).
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-010, 013 to 015 and 022 (duets with La+ and Iroha; radio programme, The LEGENDARY and REBELLION announced; Horror Game Week), FIX-R6-004 ("Secret ORDER" release dated separately).
 
 ## Open Questions
 1. Resolved: "Onikan" stays as an archived-title label (YXaDmUXPSGo), not a claim about a formal unit.

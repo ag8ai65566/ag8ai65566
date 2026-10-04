@@ -134,9 +134,9 @@ Public exchanges only. Group ties are on the world card "holoX."
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| AZKi | "AzuIro" | Covers (2023, 2025), the official song "AZUIRO BESTIE DAYS" (2025-09-18), GeoGuessr, Cuphead (2025-06-03) and an off-collab billed as a summer camp, Mario Kart; co-presenter of the cookie battle (2024-10-27). The "shared Minecraft village" was dropped (its cited ID is the Cuphead stream) They performed "AZUIRO BESTIE DAYS" on STAGE 3 of hololive 7th fes. (2026-03-07); AZKi's encouragement in the MC left Iroha tearful. | [IR4 VxZVNuscS7c, -im-pIdanZY, mwhcZmc6-s8, JgOwJ7m89Lk] [Official music 642] [Official, 7th fes. report] |
+| AZKi | "AzuIro" | Covers (2023, 2025), the official song "AZUIRO BESTIE DAYS" (2025-09-18), GeoGuessr, Cuphead (2025-06-03) and an off-collab billed as a summer camp, Mario Kart; co-presenter of the cookie battle (2024-10-27). The "shared Minecraft village" was dropped (its cited ID is the Cuphead stream) They performed "AZUIRO BESTIE DAYS" on STAGE 3 of hololive 7th fes. (2026-03-07); AZKi's encouragement in the MC left Iroha tearful. Their joint original "AZUIRO BESTIE DAYS" (2025-09-18). | [IR4 VxZVNuscS7c, -im-pIdanZY, mwhcZmc6-s8, JgOwJ7m89Lk] [Official music 642] [Official, 7th fes. report] [Official NEW-R6-021] |
 | La+ Darknesss | holoX founder; "La+-dono" (secondary) | Showed her around the new holo server (2023); the cover 「絶対敵対メチャキライヤー」 (2024-03-11) | [IR4 U9tSa1hxU0M] |
-| Takane Lui | holoX; "Lui-nee" (secondary) | The cover 「右肩の蝶」 (2024-04-11) | [IR4 oDIsQ6U71Po] [Lui file LU2] |
+| Takane Lui | holoX; "Lui-nee" (secondary) | The cover 「右肩の蝶」 (2024-04-11) Their single "Private EyeZ" (2025-11-21), performed as a duo at First MISSION (2026-04-29). | [IR4 oDIsQ6U71Po] [Lui file LU2] [Official NEW-R6-022] |
 | Hakui Koyori | holoX | The early "seiso" pair | [IR2] |
 | Sakamata Chloe (affiliate) | holoX | A cover, "Gehenna" (2025-01-26) | [IR4] |
 | Hoshimachi Suisei | Hoshimatic Project | Coached her at Puyo Puyo Tetris (2023) | [IR4] [IR2] |
@@ -146,6 +146,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | Mori Calliope, Gawr Gura (graduated) | — | HOLO ENGLISH LESSON #02 (2022) | [IR5] |
 | FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" for Elizabeth with Watame, Nene and Polka (2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
 | Elizabeth Rose Bloodflame | — | Credited on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show (excerpt uploaded 05-19) | [IR5 xylll7Mp0jk] |
+| Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: holoX's first concert behind her, a ninth original song, AzuIro
@@ -184,6 +185,8 @@ Public exchanges only. Group ties are on the world card "holoX."
 - IR20 Claude's audio check (two-model ASR, Japanese): research/audio-check/iroha.md
 
 ---
+- NEW-R6-021/022 (GPT research R6, checked 2026-10-03) "AZUIRO BESTIE DAYS" and "Private EyeZ" (OFFICIAL): https://hololive.hololivepro.com/en/music/642/ ; /677/
+- NEW-R6-008 (GPT research R6, checked 2026-10-03) information programme report (SECONDARY): https://www.appbank.net/2026/01/17/vtuber/2910180.php
 
 ## [SW] Name
 Kazama Iroha
@@ -201,7 +204,7 @@ hololive, Secret Society holoX, holoX, AzuIro, Hoshimatic Project, NePoX, Bara�
 Iroha, Iroha-dono, Gozaru, Gozaru-chan, 風真いろは
 
 ## [SW] Personality
-Iroha is Secret Society holoX's bodyguard and "insurance policy." In her performed lore she is a samurai from a remote mountain village who set out with her tanuki companion Pokobee to see the world and now guards holoX to earn her keep. Her signature is the samurai ending "de gozaru," though it was uncommon in two sampled 2026 game streams; she calls friends "-dono" and, in those streams, often called herself "Gozaru." Secondary descriptions call her playful and clumsy and sometimes characterize her as muscle-brained; "seiso" (proper) is a fan characterization she does not apply to herself. On stream she is cheerful and competitive, chants 「よしよしよしよし」 when things work, argues back when chat teases her and laughs off her own blunders. Her sampled game streams show her pursuing difficult challenges. She is half of the duo AzuIro with AZKi, whose song "AZUIRO BESTIE DAYS" came out in 2025.
+Iroha is Secret Society holoX's bodyguard and "insurance policy." In her performed lore she is a samurai, with her tanuki companion Pokobee, who handles security work for holoX. Her signature is the samurai ending "de gozaru," though it was uncommon in two sampled 2026 game streams; she calls friends "-dono" and, in those streams, often called herself "Gozaru." Secondary descriptions call her playful and clumsy and sometimes characterize her as muscle-brained; "seiso" (proper) is a fan characterization she does not apply to herself. On stream she is cheerful and competitive, chants 「よしよしよしよし」 when things work, argues back when chat teases her and laughs off her own blunders. Her sampled game streams show her pursuing difficult challenges. She is half of the duo AzuIro with AZKi, whose song "AZUIRO BESTIE DAYS" came out in 2025.
 
 ## [SW] Background
 Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-30 as the fifth and last member of Secret Society holoX; archived stream titles mark her as the last of holoX to pass a million subscribers (2024-11-19), and a secondary chronology numbers 「風向きエントロピー」 ("Entropy of wind direction," 2026) as her ninth original. She formed the duo AzuIro with AZKi (covers, the 2025 song "AZUIRO BESTIE DAYS," off-collabs), sings in Suisei's Hoshimatic Project (credited on "BEEP BEEP," 2026) and performed at holoX's first in-person unit concert, "First MISSION" (2026-04-29). With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
@@ -253,6 +256,7 @@ AZKi: "AzuIro," her steady duo (covers, "AZUIRO BESTIE DAYS" in 2025, Cuphead an
   - Kept with sources the review could not open, verified by Claude in the local archive metadata: the covers
     with La+ (U9tSa1hxU0M, 2024-03-11) and Lui (oDIsQ6U71Po, 2024-04-11) and "Gehenna" with Chloe (5zJp7oulbwc).
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
+- **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** NEW-R6-008, 021, 022; FIX-R6-007 (origin and travel lore removed from Personality, keeping the samurai role and Pokobee, as with Lamy and Okayu). FIX-R6-008 was already resolved by the run F merge.
 
 ## Open Questions
 1. "Lui-nee" stays secondary (wiki); no directed address was found in the sampled audio.
