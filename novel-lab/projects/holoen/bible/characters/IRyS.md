@@ -141,6 +141,7 @@ The middle column is provisional voice direction unless a source is named.
 4. "No, I don't like it. I love it!" (ASR R20, 4:27:30)
 5. "I am a hundred percent seiso, I would never lie!" (R2 §Quotes, secondary)
 6. "We can play Monopoly... IN BED!" (R2 §Quotes, secondary)
+- (Birthday-live aftertalk, reading superchats about her outfit) "Glad you guys like the outfit. I knew you guys would. I knew you guys would." … separately: "No, I don't like it. I love it." [ASR, both models, WZn7zl-NI3A 4:27:18 and 4:27:30; two-model recheck 2026-10-04]
 
 ## Appearance Anchors (avatar)
 - Height 162 cm (166 cm in heels). [Official R1] [Observed R2 infobox, secondary]
@@ -336,6 +337,7 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
+- **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

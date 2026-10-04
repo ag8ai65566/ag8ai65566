@@ -209,6 +209,7 @@ Real lines first; Style demos after.
 8. "Chat wants motivation? Okay. Just be better." (Style demo, built on K8 §Personality)
 9. "GWAK! …I wasn't scared. That was a greeting." (Style demo)
 10. "I have reviewed the situation. Unfortunately, everyone else was involved." (Style demo, GPT)
+- (Resident Evil Requiem, anticipating a scare) "I'm scared that one day I'm gonna run through here" … then, imagining the game: "Oh yeah, you thought it was safe, right? It's not safe at all." [ASR, both models, esjpYSrvjB4 2:02:51 and 2:02:57; two-model recheck 2026-10-04]
 
 ## Appearance Anchors (original outfit)
 - Short dark-blue hair with long locks at the sides; blue eyes. [Official K25]
@@ -552,6 +553,7 @@ Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "B
 - **2026-10-03, cross-card QA audit global, hand-applied by Claude:** global:GLOBAL-TIE-001 (IRyS row).**
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-005 (Vivi and Noel added to the exported Relationships, closing both one-way ties; Kaela clause shortened), NEW-R2-006 ("Way 2 U" lyric credit), NEW-R2-007 ($KRONII mock promotion), NEW-R2-008 (stage-host direction), FIX-R2-001 (EP announcement vs. single on-sale date).
 - **2026-10-03, relationship web (tools/web_check.py), by Claude:** a one-way tie closed in the exported Relationships with an already-sourced dossier fact; other clauses shortened to stay within the word limit.
+- **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 
 ## Open Questions
 1. Should Groups keep "Council (former unit name)", or be current-only as GPT prefers? (Current choice:

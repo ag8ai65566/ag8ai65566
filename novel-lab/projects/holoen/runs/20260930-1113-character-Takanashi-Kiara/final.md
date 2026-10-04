@@ -232,6 +232,7 @@ Real lines first; Style demos after.
 6. "Look at Wawa using words. Oh my god. So proud." (verbatim T3 captions)
 7. "Tell my wife Krystal that I love her." (T3 captions; caption spelling "Crystal")
 8. "I was going to answer that in one sentence, but now you need the entire explanation." (Style demo, GPT)
+- (2:13:25, DOOM Eternal) "One man can stop the armies of hell? Yes, me. A one woman, one doom girl will stop the armies of hell." A boast built from short emphatic fragments. [ASR, both models, gqQoOjKBmLw 2:13:25; two-model recheck 2026-10-04]
 
 ## Appearance Anchors (original outfit)
 - Medium-length coral hair fading to teal green; magenta eyes. [Observed T2 §Appearance, secondary]
@@ -539,6 +540,7 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
 - **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, relationship web (tools/web_check.py), by Claude:** a one-way tie closed in the exported Relationships with an already-sourced dossier fact; other clauses shortened to stay within the word limit.
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
+- **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 
 ## Open Questions
 1. Should the card quote one crude line verbatim (for example "I'm an innocent maiden." as irony), or is

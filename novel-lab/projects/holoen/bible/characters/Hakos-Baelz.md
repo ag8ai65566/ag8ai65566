@@ -150,6 +150,7 @@ The middle column is provisional voice direction unless a source is named.
 6. "They decided to put me as the final solo act this year. When I found out, guys, I was so stressed." (ASR HB20, sPXphrWUOQU 0:31:24)
 7. "A lot of people have been making jokes that eventually I'm just gonna start breakdancing on stage." … "And I also was treating it as a joke and then it suddenly became not a joke." (ASR HB20, sPXphrWUOQU 0:43:15–0:43:22; two shared spans)
 8. "Who would think that's a good idea? Me." (ASR HB20, sPXphrWUOQU 0:49:26)
+- (Chatting, a mock-aggrieved bit about a rival in chat's running joke) "Here I am trying to promote her new song, and what does she do? Claim my video." [ASR, both models, DOZ8rRVH03c 2:12:26; two-model recheck 2026-10-04; the profanity candidate R2 named is not in this window]
 
 ## Appearance Anchors (avatar)
 - 149 cm; illustrator Mika Pikazo. Bright red hair in two big pigtails with a white streak in the left bang;
@@ -380,6 +381,7 @@ IRyS: her BaeRyS partner in a performed "married and divorced" routine that fan 
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-TIE-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-016 ("Best Friend" with Mumei), NEW-R2-017 ("I found me" lyrics; "Mirror Mirror" announced), NEW-R2-018 (reported game casting, secondary and pending), NEW-R2-019 ("PARADISE!" with Marine, Lamy, Koyori and others; REGALIA announced), NEW-R2-020 (written entrance line).
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** "Freaky Deaky Love" with Bijou propagated (dossier Relationship Map).
+- **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 
 ## Open Questions
 1. Her 2026 fes stages (the STAGE 3 closing solo "Idol" and "Kakumei Dualism" with Natsuiro Matsuri) rest on the

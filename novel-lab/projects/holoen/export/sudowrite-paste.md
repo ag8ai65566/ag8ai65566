@@ -1,5 +1,5 @@
 # Sudowrite 貼上單 — holoen
-_產生時間 2026-10-04 03:43。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
+_產生時間 2026-10-04 03:56。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
 
 # Style — paste this block first
 貼到 Story Bible → **Style**（119 字；故事本身的文風說明可以接在後面，合計超過約 120 字時請檢查）。它教 Sudowrite 用每個角色的 **Audio Tags** 特質在對白裡寫 ElevenLabs v4 標籤。說明與注意事項見 `elevenlabs/sudowrite-style.md`。

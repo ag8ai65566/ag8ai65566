@@ -159,6 +159,7 @@ The middle column is provisional voice direction unless a source is named.
 5. "Me. I'll be the mean manager." (ASR F20, TzW6VRf4KjQ 0:55:28; asked who would want the role)
 6. "I'm not going anywhere, until I win you back." (F2 §Quotes, secondary)
 7. "No! Don't fall! You guys would fall too easily to Evil Fauna." (F2 §Quotes, secondary)
+- (Explaining an in-game murder-mystery choice) "at that moment Liz became villain number one so I had no choice" … "I just wanted to use the gun." [ASR, both models, iIBywcAIMD0 3:20:14 and 3:20:21; two-model recheck 2026-10-04; the next words differ between the models ("cuz"/"because") and are not quoted]
 
 ## Appearance Anchors (avatar)
 - 164 cm. Wavy light-green hair fading to blue-green at the tips, decorated with white five-petal flowers;
@@ -346,6 +347,7 @@ Nanashi Mumei (graduated 2025): Council and Promise genmate and recurring collab
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v1, GPT xhigh), merged by Claude:** applied VOICE-V1-040, VOICE-V1-041 (exact replacements; dispositions in research/qa/voice-delivery.md).
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-009 (advice only when asked, in Personality), NEW-R2-010 (Promise Dota 2 session), NEW-R2-011/012 (written innocence bits; official merch slogan), FIX-R2-003 (comparative superlative replaced in Personality).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
+- **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 
 ## Open Questions
 1. "Evil Fauna," the yandere lines and the forklift dramas come from the wiki's quote list (secondary, no

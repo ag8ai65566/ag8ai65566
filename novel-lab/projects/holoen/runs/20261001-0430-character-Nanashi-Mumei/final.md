@@ -155,6 +155,7 @@ The middle column is provisional voice direction unless a source is named.
 6. "Okay, are we ready? Are we bracing ourselves?" (ASR M20, 0:11:33; before
    reading her genmates' questions)
 7. "Civilization is temporary, humanity is temporary, you are all going to die one day!" (M2 §Quotes, secondary)
+- (Opening a Q&A) "Oh, I should have thought more about what to say at the beginning of this stream. I prepped stuff for, like, the middle of it. Prepped stuff for after the stream ends. Didn't think so much about how to start it." … "I guess I already started it, so I'm in the middle of it now." [ASR, both models, 7vxLfdBqFac 0:04:49 and 0:05:09; two-model recheck 2026-10-04]
 
 ## Appearance Anchors (avatar)
 - 156 cm. Long light-brown hair in a high ponytail with a black tie and two brown feathers standing in a
@@ -366,6 +367,7 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-ALIAS-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-013 ("Best Friend" with Bae; "preYdator" in a member upload), NEW-R2-014 (spring 2025 covers), NEW-R2-015 (graduation as mock entitlement). FIX-R2-002 was already applied by the justice audit.
+- **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 
 ## Open Questions
 1. Wiki quote lines ("Civilization is temporary…", the "moom" verb) are secondary, without timestamps; the

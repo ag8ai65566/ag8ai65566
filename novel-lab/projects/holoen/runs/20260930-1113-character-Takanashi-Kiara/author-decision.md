@@ -21,3 +21,4 @@
 - 2026-10-03 23:56 作者裁決收錄 final.md（sha256 9cc211f7f633）：Author decision (2026-10-03): new-material research R3/R4 (Advent, Justice) merged by Claude
 - 2026-10-04 00:02 作者裁決收錄 final.md（sha256 55ea738f4f39）：Author decision (2026-10-04): one-way relationship ties closed by Claude from sourced dossier facts
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 5078ef548266）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
+- 2026-10-04 03:56 作者裁決收錄 final.md（sha256 484f98a5a881）：Author decision (2026-10-03): two-model audio check of research quotation candidates (dossier sample lines)
