@@ -6,3 +6,4 @@
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 db1b077a8443）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 438b6e32eb77）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
 - 2026-10-04 11:05 作者裁決收錄 final.md（sha256 5ed15a84ee97）：Author order 2026-10-03: Claude's quotation pass (two-model ASR upgrades)
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 c7275638b845）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts

@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git 79f4497. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 68531a2. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Elizabeth Rose Bloodflame

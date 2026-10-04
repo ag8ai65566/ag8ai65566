@@ -13,6 +13,7 @@ TAG = re.compile(r"\[([^\[\]\n]+)\]")
 JAPANESE = re.compile(r"[\u3040-\u30ff\u3400-\u9fff]")
 SCENE_ID = re.compile(r"[a-z0-9][a-z0-9_-]{0,79}")
 RESERVED = {"STAGE", "SFX", "PAUSE", "ROMAJI", "GLOSS"}
+LANGUAGE = re.compile(r"^- Dialogue language:\s*\**(Japanese|English)\b", re.M)
 MARKER = "【Sudowrite 處理】"
 # Heuristics, not linguistic proof. A director must review every warning.
 DUPLICATES = [
@@ -56,18 +57,26 @@ def read_json(path):
                       object_pairs_hook=unique_object)
 
 
+class Palette(set):
+    """A sheet's allowed tags, plus the dialogue language its section 2 declares (None when unstated)."""
+    language = None
+
+
 def sheet_policy(text):
     """Only positive sections 2, 4 and 5; never examples or Don't."""
     title = re.search(r"^# ElevenLabs v4 Performance Sheet: (.+)$", text, re.M)
     if not title:
         return None
-    allowed = set()
+    allowed = Palette()
     for number in (2, 4, 5):
         section = re.search(
             r"^## " + str(number) + r"\.[^\n]*\n(.*?)(?=^## |\Z)",
             text, re.M | re.S)
         if section:
             allowed.update(norm(t) for t in TAG.findall(section.group(1)))
+            language = LANGUAGE.search(section.group(1)) if number == 2 else None
+            if language:
+                allowed.language = language.group(1).lower()
     if not allowed:
         raise ValueError("No positive tag palette for " + title.group(1))
     return title.group(1).strip(), allowed
@@ -275,6 +284,11 @@ def compile_script(text, voices, policies, *, narrator="exclude",
             warnings.extend(check_text(value, allowed, location, speaker != "narrator"))
             if JAPANESE.search(TAG.sub("", value)) and "ROMAJI" not in event:
                 raise ValueError(location + ": Japanese text requires ROMAJI metadata")
+            spoken = TAG.sub("", value)
+            if (getattr(allowed, "language", None) == "japanese" and not JAPANESE.search(spoken)
+                    and re.search(r"[A-Za-z]", spoken)):
+                raise ValueError(location + ": this speaker's sheet sets Dialogue language: Japanese (author "
+                                 "decision 2026-10-04); write the spoken turn in Japanese script, romaji on ROMAJI")
             pieces = split_turn(value, max_turn)
             if len(pieces) > 1:
                 warnings.append(location + ": split turn; check delivery at every join")

@@ -17,6 +17,14 @@ Group: Secret Society holoX (5 members)
 - Never clone or imitate a member's real voice; performance directions are for original designed voices.
 - Baseline 2026-09-30; recency weighting for "current" defaults; every character's Role is Protagonist.
 - Promotions are author decisions, not GPT approval; the author's rules in project.md bind.
+- **Author decision 2026-10-04 (dialogue language):** hololive JP members, holoX included, speak **Japanese** in audio
+  scripts. Spoken turns are written in Japanese script (kana/kanji); romaji and English glosses go only on the
+  non-spoken `ROMAJI ::` / `GLOSS ::` lines (docs/scene-script-format.md). The sheets below still show romanized
+  lines from before this decision; Claude converts them after this audit. When you propose a line, give its exact
+  Japanese-script wording first, then the romaji.
+- **Author decision 2026-10-04 (secondary-only lines, option B):** spoken lines resting only on a secondary
+  transcription may stay in the exported fields when they carry their secondary label (research/qa/quote-inventory.md).
+  Do not raise a labelled one as P0; do flag any that is exported without its label.
 
 The project's purpose is dialogue for AI voice performance: a writer drafts scenes in Sudowrite from the
 cards, and an ElevenLabs v4 voice that is **original** (designed, never cloned or imitating the member) speaks

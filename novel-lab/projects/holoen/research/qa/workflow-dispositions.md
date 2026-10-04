@@ -34,6 +34,7 @@ Platform facts were checked by GPT on 2026-10-02 and are adopted as written. Poi
 | WF-029 | Applied, in Chinese, to `docs/sudowrite-2026-09.md`. |
 | Risks and policy | Adopted. No member clips in Voice Design, Voice Changer or Actor Mode. The proposed disclosure is in START-HERE §6. COVER's song-extraction rule is kept separate from the project's broader no-imitation rule. |
 | Open questions 1–5 | Put to the author in the report: audio language, narration, generation route, initial delivery and assembly. Until they answer, the defaults are English with Japanese phrases, narration excluded, both routes supported, private listening files, and either Studio or an editor. |
+| Open question 1 (answered 2026-10-04) | **Author decision:** the 14 hololive JP members (including holoX and DEV_IS's Vivi) speak Japanese in audio scripts. Their spoken turns are in Japanese script, with romaji and glosses on ROMAJI/GLOSS lines. EN members stay in English. The cards' Audio Tags and the sheets' §2 state the dialogue language, and the converter rejects a Japanese-language speaker's turn that has no Japanese text. Questions 2–5 keep their defaults. |
 
 ## P1: plan audit
 

@@ -23,6 +23,12 @@ New windows (stream openings and endings) and existing windows were run through 
 
 ## The decision (author)
 
+**Decided 2026-10-04: B.** The lines below stay in the exported fields as an author exception; their provenance
+stays in each card's dossier. `tools/span_check.py` lists them as author exceptions instead of failures, and V13's
+attestation (`research/qa/voice-delivery.md`) cites this file.
+
+The options were:
+
 The lines below are exported verbatim with a "secondary"/"wiki" label, or with no label, and their only evidence is a
 fan wiki or other secondary transcription. Every one is kept in its dossier with its label; the question is only the
 exported fields that Sudowrite reads.
@@ -33,7 +39,7 @@ exported fields that Sudowrite reads.
 - **C. Mixed:** keep short stock catchphrases and greetings (five words or fewer) labelled. Paraphrase the longer
   sentences.
 
-Until the author decides, nothing below is removed. V13 stays blocked.
+Nothing below was removed.
 
 ## Inventory (93 lines, 25 cards; approximate, from the tracer)
 

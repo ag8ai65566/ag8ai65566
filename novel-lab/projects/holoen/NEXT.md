@@ -3,7 +3,10 @@
 **作者規則（2026-10-04）：給作者的最終匯報一律用繁體中文。**
 
 狀態（2026-10-04 11:30 UTC）：**作者命令（10-03 23:15）：Claude 合併 GPT 累積的結果；jp、jp2 也已合併；GPT 10:38 額度用完，15:05 由排程叫醒續跑 voice v4 → holox。**
-- **等作者決定：** `research/qa/quote-inventory.md` 列出 93 句只有二手轉錄的台詞（A 嚴格改轉述／B 保留標籤／C 短句保留、長句改轉述）。決定前不刪，V13 仍擋。
+- **作者 2026-10-04 決定：** (1) 93 句只有二手轉錄的台詞選 **B**（保留，作者例外；`research/qa/quote-inventory.md`，span_check 列為例外）。
+  (2) **hololive JP 14 人念日文**：9 張非 holoX 的卡片與表演表已改（Audio Tags 開頭寫明、表演表第 2 節
+  `Dialogue language: Japanese`、台詞改日文字＋ROMAJI 行）；轉換器會擋下沒有日文字的 JP 台詞。
+  **holoX 5 人等 voice v4 合併後再改**（v4 的 prompt 已加上這兩個決定）。
 - 已合併並收錄：聲音審計 v1、v2、v3（處置在 `research/qa/voice-audit-dispositions.md`）；P1 計畫審查與 W1 工作流
   （`research/qa/workflow-dispositions.md`：轉換器 `tools/scene_to_elevenlabs.py`、腳本格式、V20 通過）；QA cohort
   審計 myth1、myth3、justice、global、myth4、myth2、promise、jp、jp2，bridge 審計 events、ties-external（`research/qa/audit-*.md`，

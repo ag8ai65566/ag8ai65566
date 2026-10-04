@@ -11,6 +11,8 @@ separate quotes, so "A … B" passes only when A and B are each shared; stitchin
 A report row gates only the files that cite its video (a performance sheet counts its card's citations).
 Japanese quotations (eight or more kana/kanji) are compared by six-character runs instead of five-word runs, with
 katakana folded to hiragana and punctuation, spaces and long-vowel marks dropped; romanized glosses are not gated.
+Lines the author kept as an exception (research/qa/quote-inventory.md, decision B of 2026-10-04) are listed
+separately as author exceptions, not as failures.
 """
 import re
 import sys
@@ -48,7 +50,19 @@ def rows_of(proj):
     return rows
 
 
-def outside_spans(project):
+def author_exceptions(proj):
+    """Normalized lines from the author-approved inventory of secondary-only spoken lines (decision B, 2026-10-04)."""
+    f = proj / "research" / "qa" / "quote-inventory.md"
+    if not f.exists() or "**Decided 2026-10-04: B.**" not in f.read_text(encoding="utf-8"):
+        return [], []
+    lines = [c[2].strip() for c in (l.split("|") for l in f.read_text(encoding="utf-8").splitlines())
+             if len(c) >= 4 and c[1].strip() not in ("Card", "---", "")]
+    en = [norm(x) for x in lines if len(norm(x).split()) >= 3]
+    ja = [cjk(x) for x in lines if len(cjk(x)) >= 4]
+    return en, ja
+
+
+def outside_spans(project, exempt=None):
     """(file, line, quote, report row) for each quotation that runs past the span both ASR models share.
 
     A quotation (or each piece of it between ellipses) that shares five consecutive words with a first-model line
@@ -60,6 +74,7 @@ def outside_spans(project):
     rows = rows_of(proj)
     approved = approved_spans(rows)
     approved_j = approved_spans(rows, cjk)
+    ex_en, ex_ja = author_exceptions(proj)
     # Gate only the rows the reports mark as partial; whole-line and hand-judged rows are approved as written.
     # (A strict both-model check of every row needs the full second-model text, which the tables truncate.)
     partial = [r for r in rows if r["verdict"].startswith(("**Partial (computed):**", "**Partly", "**Not confirmed",
@@ -108,7 +123,11 @@ def outside_spans(project):
                         hits = [r for r in gating if any(g in r["first_j"] for g in grams)]
                         if hits and not any(pj in a for a in approved_j):
                             best = max(hits, key=lambda r: sum(g in r["first_j"] for g in grams))
-                            found.append((str(f.relative_to(proj)), n, piece.strip(), best))
+                            item = (str(f.relative_to(proj)), n, piece.strip(), best)
+                            if any(e in pj or pj in e for e in ex_ja):
+                                exempt is not None and exempt.append(item)
+                            else:
+                                found.append(item)
                         continue
                     p = norm(piece)
                     words = p.split()
@@ -118,7 +137,11 @@ def outside_spans(project):
                     hits = [r for r in gating if any(g in r["first"] for g in grams)]
                     if hits and not any(p in a for a in approved):
                         best = max(hits, key=lambda r: sum(g in r["first"] for g in grams))
-                        found.append((str(f.relative_to(proj)), n, piece.strip(), best))
+                        item = (str(f.relative_to(proj)), n, piece.strip(), best)
+                        if any(e in p or p in e for e in ex_en):
+                            exempt is not None and exempt.append(item)
+                        else:
+                            found.append(item)
     return found
 
 
@@ -147,10 +170,13 @@ instance was used); the voice audit decides each one and the card is trimmed or 
 
 
 def main(project, write=False):
-    found = outside_spans(project)
+    exempt = []
+    found = outside_spans(project, exempt)
     for f, n, q, r in found:
         print(f"{f}:{n}: \"{q}\"\n    {r['report']} {r['ts']} — {r['verdict'][:160]}")
-    print(f"{len(found)} quote(s) outside a shared span")
+    for f, n, q, r in exempt:
+        print(f"author exception (quote-inventory.md): {f}:{n}: \"{q[:100]}\"")
+    print(f"{len(found)} quote(s) outside a shared span; {len(exempt)} author exception(s)")
     if write:
         import datetime
         cell = lambda s: s.replace("|", "\\|")

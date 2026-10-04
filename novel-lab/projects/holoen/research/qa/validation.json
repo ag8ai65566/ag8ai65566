@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-04T11:05Z",
- "snapshot": "0c1e27157c4cb71153dbb7d9a0eff9420c58f92105cd6e1b155e8c15828182e1",
+ "checked_at": "2026-10-04T13:39Z",
+ "snapshot": "059cfd3f543c57ba74bf32d7d0bf71fd7c0796267f04f62d4b333b08e440d2d4",
  "blocking_failures": [
   "V11",
   "V12",
@@ -19,7 +19,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 0c1e27157c4cb71153dbb7d9a0eff9420c58f92105cd6e1b155e8c15828182e1",
+    "snapshot 059cfd3f543c57ba74bf32d7d0bf71fd7c0796267f04f62d4b333b08e440d2d4",
     "107 inputs"
    ],
    "finding_ids": []
@@ -141,8 +141,6 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "bible/characters/Hakos-Baelz.md:79 quotes past a shared ASR span (bae.md 0:04:44): \"Wazzup! I am Chaos the end of ends, a steel rose trapped in a cage of ice, your best friend Baelz Hakos from hololive English Promise, WITNESS ME\"",
-    "bible/characters/Hakos-Baelz.md:325 quotes past a shared ASR span (bae.md 0:04:44): \"I am Chaos the end of ends, a steel rose trapped in a cage of ice, your best friend Baelz Hakos\"",
     "review pending: research/qa/voice-delivery.md"
    ],
    "finding_ids": []

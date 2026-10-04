@@ -8,3 +8,4 @@
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 f981f72c4f44）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 cc7453e0e0dc）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 0dae1951b085）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 2064c8699d3c）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts

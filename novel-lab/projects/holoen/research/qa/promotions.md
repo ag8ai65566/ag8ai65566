@@ -589,6 +589,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 ea19a71ddb74）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 f9ef7601a752）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 846e4fb4532e）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 d11aff0d4f0b）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts
 
 ## 20261002-0529-character-Hoshimachi-Suisei
 - 2026-10-02 07:12 作者裁決收錄 final.md（sha256 812a7171957f）：Author decision (2026-10-02): Hoshimachi Suisei and AZKi added to the cast; GPT reviews each card one round only (run A), merged by Claude
@@ -601,6 +602,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 f981f72c4f44）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 cc7453e0e0dc）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 0dae1951b085）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 2064c8699d3c）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts
 
 ## 20261002-0529-character-Nakiri-Ayame
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 523267b57dd5）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude
@@ -609,6 +611,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 6ed39914583c）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-03 23:36 作者裁決收錄 final.md（sha256 36dc3ae46208）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 675a9db7cbb2）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 137ebe2e05db）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts
 
 ## 20261002-0529-character-Nekomata-Okayu
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 97457c9edaf6）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude
@@ -622,6 +625,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 80148bfc0586）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 20a512528ff3）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 45bf58827b76）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 d240df197bbb）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts
 
 ## 20261002-0529-world-JP-Senpai-Pairs
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 15ee00e65441）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude
@@ -646,6 +650,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 f1733e2f0a6b）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 b419e751aa2a）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
 - 2026-10-04 11:05 作者裁決收錄 final.md（sha256 836af00c13c6）：Author order 2026-10-03: Claude's quotation pass (two-model ASR upgrades)
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 bf162bc0c6b0）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts
 
 ## 20261002-0615-character-Kazama-Iroha
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 8c6cee008a7a）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run F) merged by Claude; promoted.
@@ -657,6 +662,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 21bf60dbf920）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude
 - 2026-10-03 23:36 作者裁決收錄 final.md（sha256 838e6bd0a87c）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 e3dae5035b02）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 6324819bda59）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts
 
 ## 20261002-0615-character-Laplus-Darknesss
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 665ffca4b0d3）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run E) merged by Claude; promoted.
@@ -677,6 +683,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 10:28 作者裁決收錄 final.md（sha256 db1b077a8443）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 438b6e32eb77）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
 - 2026-10-04 11:05 作者裁決收錄 final.md（sha256 5ed15a84ee97）：Author order 2026-10-03: Claude's quotation pass (two-model ASR upgrades)
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 c7275638b845）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts
 
 ## 20261002-0615-character-Shishiro-Botan
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 936bfc763af7）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude
@@ -686,6 +693,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 729e8849ea0c）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 40c78f4b1201）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 01f36e2e831b）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 abeaf87a5493）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts
 
 ## 20261002-0615-character-Takane-Lui
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 3ef5bf38be6e）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run E) merged by Claude; promoted.
@@ -702,6 +710,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 5cfa78ac2e54）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 bd7bdb48bd86）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
 - 2026-10-04 10:39 作者裁決收錄 final.md（sha256 d986b2b09357）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 e1a5d6743ef8）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts
 
 ## 20261002-0615-world-JP-Senpai-Pairs-2
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 851a28351159）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude

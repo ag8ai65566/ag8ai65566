@@ -15,6 +15,9 @@ Write dialogue for original designed voices, never to reproduce a member's ident
   `framework/templates/audio-scene-prompt.txt` as Extra Instructions), then run `tools/scene_to_elevenlabs.py`.
   Narration is excluded unless `--narrator include` is chosen. Each request must fit the converter's
   2,000-unit budget and ten-voice limit; longer scenes become successive scene IDs (s001a, s001b).
+- **Dialogue language (author decision 2026-10-04):** the 14 hololive JP members speak Japanese in audio scripts.
+  Their Audio Tags trait says so, and the scene prompt tells Sudowrite to write their turns in Japanese script. The
+  converter rejects a JP member's turn with no Japanese text. EN members keep English.
 - If Sudowrite overuses tags, lower it to "one or two tags" in the Style text; if it drifts to generic
   tags ([happy], [sad]), add "Use only tags listed in the speaker's Audio Tags trait."
 - Guide: `novel-lab/docs/elevenlabs-v4.md`.

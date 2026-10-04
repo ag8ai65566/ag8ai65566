@@ -4,3 +4,4 @@
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 6ed39914583c）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-03 23:36 作者裁決收錄 final.md（sha256 36dc3ae46208）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 675a9db7cbb2）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
+- 2026-10-04 13:39 作者裁決收錄 final.md（sha256 137ebe2e05db）：Author decision 2026-10-04: hololive JP members speak Japanese in audio scripts

@@ -8,6 +8,8 @@ speaker's Audio Tags trait inside each original spoken turn.
 Use "narrator :: " for untagged narration.
 Use separate STAGE, SFX and PAUSE metadata lines; never put production
 instructions inside words intended to be spoken.
+Write each speaker in the dialogue language her Audio Tags trait states; a speaker whose
+dialogue language is Japanese speaks in Japanese script, never romaji, in the spoken turn.
 After a Japanese turn, add ROMAJI metadata and optionally GLOSS metadata.
 Keep romanization and translations out of the spoken turn.
 Use a sound tag without also spelling out the same nonverbal sound.

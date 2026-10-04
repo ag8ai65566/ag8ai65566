@@ -52,6 +52,7 @@
 | Dialogue Style、Catchphrases、口頭禪、填充詞 | **腳本文字本身**：v4 會照字演，所以「like, like」、重來、"okay okay okay" 要寫在字裡 |
 | Tone Shifts（情境→語調） | **標籤**：每種情境對應一組標籤 |
 | 笑聲、驚叫、招牌聲音（GWAK、Kikkeriki） | 說出口的招牌字：**標籤＋文字**，例如 `[startled squawk] GWAK!`；純非語言聲音（笑、尖叫）：**只寫標籤**，不要再拼出來 |
+| 台詞語言（作者 2026-10-04 定案） | hololive JP 的 14 位成員（含 holoX、DEV_IS 的 Vivi）在語音腳本裡**念日文**：台詞用日文字寫，表演表第 2 節與卡片 Audio Tags 都寫明 `Dialogue language: Japanese`，轉換器會擋下沒有日文字的台詞；Voice Design 也用日文試聽文字。EN 成員維持英文 |
 | 名字、日語、德語 | 測過的發音字典規則，或審過的行內 IPA 替換；日文字留在台詞裡，羅馬拼音和翻譯放在不唸的 `ROMAJI`／`GLOSS` 行（見 `docs/scene-script-format.md`）。`pronunciation.tsv` 只是不完整的暫定索引，要看每份表演表第 6 節，包括日文讀音指引 |
 | Sounds off（不像她的東西） | **不要用的標籤**（例如給 Kronii 用 `[giggles]`） |
 

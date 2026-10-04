@@ -98,7 +98,8 @@ Relationships, Secrets`。每個角色的 Role 都是 Protagonist。`Secrets` �
    （ElevenLabs 政策與 COVER 二次創作規範）。旁白要配的話另外做一個中性聲音。把 `voice-map.example.json` 複製成
    `voice-map.json`，只留會出場的人，填上 voice_id。
 2. **寫配音用的場景**：在 Sudowrite 用 Draft 或 Guided Write，把 `sudowrite/scene-prompt.txt` 貼進 Extra Instructions，
-   寫成場景腳本格式（`performance/script-format.md`）：一行一輪 `全名 :: [標籤] 台詞`；日文台詞後面加
+   寫成場景腳本格式（`performance/script-format.md`）：一行一輪 `全名 :: [標籤] 台詞`。**hololive JP 的成員念日文**
+   （作者 2026-10-04 定案）：她們的台詞用日文字寫，轉換器會擋下只有羅馬拼音的台詞。日文台詞後面加
    `ROMAJI ::`（不唸）；舞台指示、音效、精確停頓用 `STAGE ::`、`SFX ::`、`PAUSE ::`。存成 UTF-8 的
    `scenes/s001.scene.txt`。用 Rewrite／Describe 改過之後要再檢查一次。
    **沒有 Python（或不想用程式）也可以**：跳過第 3、4 步的指令，直接在 ElevenLabs 網頁的 Dialogue 模式，一行台詞建一輪，
@@ -119,6 +120,16 @@ Relationships, Secrets`。每個角色的 Role 都是 Protagonist。`Secrets` �
    Fuwawa Abyssgard :: [bright, sing-song] We can check the map again.
    Mococo Abyssgard :: [squeaky] Whaaat? That door moved!
    Mococo Abyssgard :: [sneezes]
+   ```
+   日文測試（hololive JP 成員念日文；`ROMAJI` 行不唸）：
+   ```text
+   @@scene test-ja
+   @@date 2026-09-30
+   # Style demo: invented lines, not quotations.
+   Hoshimachi Suisei :: [focused, clipped] もう一回。今度は勝てる。
+   ROMAJI :: Mō ikkai. Kondo wa kateru.
+   Shirogane Noel :: [eager] みんなもぜひ遊んでみて！
+   ROMAJI :: Minna mo zehi asonde mite!
    ```
    聽：聲音分配、語氣變化、標籤有沒有被唸出來、笑聲有沒有重複、名字和日文發音。結果寫進 `test-results.csv`
    （`elevenlabs-3-line`、`elevenlabs-japanese`；寫日期、測試者、模型或聲音、具體觀察）。失敗就寫 fail，不要留白。

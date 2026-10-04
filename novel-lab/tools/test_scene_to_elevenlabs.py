@@ -13,6 +13,7 @@ sheets = [
     "## 5. Signature sounds\n[laughs]\n"
     "## 7. Don't\n[angry]\n",
     "# ElevenLabs v4 Performance Sheet: AZKi\n"
+    "## 2. Settings\n- Dialogue language: **Japanese** (author decision 2026-10-04).\n"
     "## 4. Tag palette by situation\n[mock-dignified]\n"
 ]
 palettes = dict(sheet_policy(text) for text in sheets)
@@ -47,6 +48,8 @@ for broken in (
     script.replace("Mori Calliope ::", "Calli ::"),
     script.replace("ROMAJI :: Kore wa renshū desu.\n", ""),
     script.replace("@@scene demo", "@@scene ../../escape"),
+    # a Japanese-language speaker's turn with no Japanese text (author decision 2026-10-04)
+    script.replace("これは練習です。\nROMAJI :: Kore wa renshū desu.", "Kore wa renshū desu."),
 ):
     try:
         compile_script(broken, voice_map, palettes)
@@ -69,4 +72,9 @@ except ValueError:
     pass
 else:
     raise AssertionError("A delivery-only turn without a sound tag was accepted")
+assert palettes["AZKi"].language == "japanese" and palettes["Mori Calliope"].language is None
+# a tag-only sound turn needs no Japanese text
+compile_script(script.replace("AZKi :: [mock-dignified] これは練習です。\nROMAJI :: Kore wa renshū desu.\n"
+                              "GLOSS :: This is practice.\n", "AZKi :: [laughs]\n"), voice_map,
+               {"Mori Calliope": palettes["Mori Calliope"], "AZKi": sheet_policy(sheets[1] + "[laughs]\n")[1]})
 print("PASS")
