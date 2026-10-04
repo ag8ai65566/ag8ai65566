@@ -1,7 +1,7 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "6292ab4",
+ "commit": "93327bb",
  "files": {
   "bible/characters/AZKi.md": "f9ef7601a7527129e85da4f52ba7856ad93cbcf54d3b3d610427104d358f9df4",
   "bible/characters/Cecilia-Immergreen.md": "0d41b3b7f2f6760c40cf530afb58f5c0c92cd83ea8c1be6a885074c50686aeb9",

@@ -482,13 +482,14 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 | AUDIT-MYTH4 | Cohort audit myth4 (Ina, TakoTori): 34 rows | applied in full; this also closes the myth1/myth3 residuals that myth4 flagged | 2026-10-04 merge |
 | AUDIT-MYTH2 | Cohort audit myth2 (Gura, Ame, Myth, AmeSame, Bone Bros) | applied in full, including re-raised myth3 residuals | 2026-10-04 merge |
 | AUDIT-PROMISE | Cohort audit promise (Kronii, IRyS, Fauna, Mumei, Bae and pair cards) | applied; PROMISE-QUOTE-001 adapted to the two-model shared span; one CONSULT-P1-006 row not applied (both models share the longer span) | 2026-10-04 merge |
+| AUDIT-BRIDGE-EVENTS | Bridge audit of dates, zones and status | applied; registry rows fixed in tools/qa_packets.py (date parser) and by regeneration | 2026-10-04 merge |
 
 ### Registry excerpt (units and reference-only people; query `projects/holoen/research/qa/registry.json` with `jq` for the rest)
 
 ```json
 {
  "baseline": "2026-09-30",
- "commit": "6292ab4",
+ "commit": "93327bb",
  "units": [
   {
    "unit": "hololive -Myth-",
@@ -659,13 +660,13 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git 6292ab4. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 93327bb. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Amane Kanata
 - `bible/characters/Sakamata-Chloe.md › Background Timeline`: | 2024 | "Magical Girl holoWitches!" single (05-30); "Kanaken" 3D live with Kanata and AZKi | [Observed CH2] [CH4] |
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | AZKi | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [CH4] [CH2] |
-- `bible/characters/Sakamata-Chloe.md › [SW] Background`: Minecraft company with Amane Kanata and AZKi (a 3D live in 2024), and concluded her regular activities with a graduation live on 2025-01-26, staying an affiliate; a secondary record has her singing "Sparkle" at Murasaki Shion's graduation live (2025-04-26).
+- `bible/characters/Sakamata-Chloe.md › [SW] Background`: Minecraft company with Amane Kanata and AZKi (a 3D live in 2024), and concluded her regular activities on 2025-01-26, holding a graduation live and remaining an affiliate; a secondary record has her singing "Sparkle" at Murasaki Shion's graduation live (2025-04-26).
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024).
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi.
 
@@ -1077,7 +1078,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **Mori Calliope, Hakos Baelz:** HOLOYOI #03 and BAE-GEMITE DOMINATION #2, both with Oozora Subaru (2023). [S1]
 
 ### Mori Calliope × Regis Altare
-- `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-07-18/23 | HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts | Calli and Kronii's WARS partners Magni and Vesper |
+- `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-07-18 (publication date; zone unspecified) | HOLOSTARS English -TEMPUS- announced: Regis Altare, Magni Dezmond, Axel Syrios and Noir Vesper | Calli and Kronii's WARS partners Magni and Vesper |
 
 ### Mori Calliope × Rikka
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli collaborates with Hoshimachi Suisei: Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
@@ -1085,7 +1086,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Mori Calliope × Shiranui Flare
 - `bible/world/JP-Senpai-Pairs-2.md › Shirogane Noel with the cast`: - **Mori Calliope:** HOLOYOI #02 with Shiranui Flare (2023-04-20). [S1]
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Noel was HOLOTALK's 22nd guest and on Calli's HOLOYOI with Shiranui Flare (2023).
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: She appeared with Shiranui Flare on Calli's HOLOYOI #02 in 2023.
 
 ### Mori Calliope × Tsukumo Sana
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Mori Calliope | Myth senior | "ANATOMY REVIEW" streams (with Calli and Sana, 2022; solo, 2025) | [Observed M3] |
@@ -1174,7 +1175,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Shishiro Botan: BAE-GEMITE DOMINATION #2 with Oozora Subaru (2023).
 
 ### Ouro Kronii × Regis Altare
-- `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-07-18/23 | HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts | Calli and Kronii's WARS partners Magni and Vesper |
+- `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-07-18 (publication date; zone unspecified) | HOLOSTARS English -TEMPUS- announced: Regis Altare, Magni Dezmond, Axel Syrios and Noir Vesper | Calli and Kronii's WARS partners Magni and Vesper |
 
 ### Ouro Kronii × Tsukumo Sana
 - `bible/world/hololive--Promise.md › [SW] Description`: It grew from the English -Council- generation (August 2021), whose personas were themed around concepts (Kronii is Time); Sana graduated from Council in 2022, before Promise existed.
@@ -1204,7 +1205,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Houshou-Marine.md › [SW] Background`: She debuted on 2019-08-11 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Shirogane Noel; secondary reporting records 3 million subscribers in 2024 and 4 million in 2025.
 - `bible/characters/Shirogane-Noel.md › Behavioral Traits`: 4. "NoeFure" with Shiranui Flare: their pair label appears in Noel's own stream titles (Elden Ring Nightreign, a puzzle game, a meal collab, a fes. medley). Any mock-jealous exchanges are performed on-stream comedy, not evidence of a private relationship. [NO4 titles] [Observed NO2 §Personality, secondary]
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy.
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Noel was HOLOTALK's 22nd guest and on Calli's HOLOYOI with Shiranui Flare (2023).
 
 ### Shirogane Noel × Tsunomaki Watame
 - `bible/characters/Sakamata-Chloe.md › Behavioral Traits`: 2. Taunt-loving but sweet: compared by fans to Shirogane Noel, Momosuzu Nene and Tsunomaki Watame. [Observed CH2 §Personality, secondary]
