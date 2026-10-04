@@ -359,7 +359,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
+hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock, UMISEA (official 2023 roster)
 
 ## [SW] Other Names
 Ina, Ina'nis, Inya, Ninomanyo Inya'nis, 一伊那尓栖
@@ -512,6 +512,7 @@ Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad A
 - **2026-10-03, relationship web (tools/web_check.py), by Claude:** a one-way tie closed in the exported Relationships with an already-sourced dossier fact; other clauses shortened to stay within the word limit.
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 - **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:CONSULT-P0-003, myth4:MYTH-QUOTE-004, myth4:MYTH-SCOPE-005, myth4:MYTH4-QUOTE-002, myth4:MYTH4-SCOPE-001, myth4:MYTH4-SCOPE-002 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-003 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Which of her song narratives (MECONOPSIS's protective duty, TAKO∞TAKOVER's takeover) should a story

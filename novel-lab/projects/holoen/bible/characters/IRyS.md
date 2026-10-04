@@ -242,7 +242,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast
+hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast, Star Flower
 
 ## [SW] Other Names
 Irys, SeisoRyS, YabaIRyS
@@ -339,6 +339,7 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 - **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-UNIT-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit promise, hand-applied by Claude:** PROMISE-QUOTE-001 adapted: the outfit line now reads as the span both models share in Claude's 2026-10-04 recheck ("Glad you guys like the outfit. I knew you guys would."), not deleted; PROMISE-DATE-002 (JST).
+- **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-003 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

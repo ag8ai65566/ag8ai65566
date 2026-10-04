@@ -425,9 +425,14 @@ def bridge_packets(files, reg, qa, commit):
     # ties: claims naming two people, grouped by pair
     pats = person_patterns(files)
     cast_names = {files[s]["name"] for s in qa_packets_cast(files)}
+    owners = {d["path"]: d["name"] for d in files.values() if d["kind"] == "characters"}
     pairs, groups = {}, {}
     for loc, text in all_claims(files):
-        who = sorted(n for n, p in pats.items() if p.search(text))
+        matched = {n for n, p in pats.items() if p.search(text)}
+        path, _, field = loc.partition(" › ")
+        if matched and field in ("Relationship Map", "[SW] Relationships") and path in owners:
+            matched.add(owners[path])  # the card owner is implicit in her own relationship rows (BR-COVERAGE-001)
+        who = sorted(matched)
         if len(who) > 3:  # group claims appear once, not under every pair
             if any(w in cast_names for w in who):
                 groups[f"- `{loc}` [{', '.join(who)}]: {text}"] = True

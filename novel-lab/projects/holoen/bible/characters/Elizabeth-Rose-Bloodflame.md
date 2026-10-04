@@ -256,7 +256,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven
+hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven, LYRA ("III" cover)
 
 ## [SW] Other Names
 Elizabeth, Liz, ERB, Lizzie, Erby Berby, Lady Bloodflame, The Scarlet Queen
@@ -338,6 +338,7 @@ Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:CONSULT-P1-006, justice:JUSTICE-COVERAGE-001 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, new-material research R4 (20261002-1715-research-new-R4-Justice, GPT xhigh), merged by Claude:** NEW-R4-001 to 005 and 020 (title wordplay, SCARLET SIDE QUEST, FFXIV with Gigi, a Bijou lead held in the dossier, 7th fes., Justice releases), FIX-R4-001/002 (birthday live dated 2026-04-25; the guest list is now supported by her archived credits).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
+- **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-003 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

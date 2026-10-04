@@ -70,3 +70,4 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 | AUDIT-MYTH2 | Cohort audit myth2 (Gura, Ame, Myth, AmeSame, Bone Bros) | applied in full, including re-raised myth3 residuals | 2026-10-04 merge |
 | AUDIT-PROMISE | Cohort audit promise (Kronii, IRyS, Fauna, Mumei, Bae and pair cards) | applied; PROMISE-QUOTE-001 adapted to the two-model shared span; one CONSULT-P1-006 row not applied (both models share the longer span) | 2026-10-04 merge |
 | AUDIT-BRIDGE-EVENTS | Bridge audit of dates, zones and status | applied; registry rows fixed in tools/qa_packets.py (date parser) and by regeneration | 2026-10-04 merge |
+| AUDIT-BRIDGE-TIES-EXTERNAL | Bridge audit of ties with external participants (rosters, credits, Groups, quotations, packet coverage) | applied in full; the TakaMori finale bullet paraphrased under MYTH-QUOTE-001; the generator now recovers each card owner in her own relationship rows | 2026-10-04 merge |

@@ -355,7 +355,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name)
+hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name), UMISEA (official 2023 roster)
 
 ## [SW] Other Names
 Gura, Gooba, Goob, Goobidiba, Same-chan, Samegaki, City Pop Shark, がうる・ぐら
@@ -500,6 +500,7 @@ Watson Amelia (affiliate): a Myth genmate and frequent early collaborator (AmeSa
 - **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH-QUOTE-004 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:CONSULT-P1-006, myth2:MYTH2-DATE-001, myth2:MYTH2-DATE-002, myth2:MYTH2-EXPORT-001, myth2:MYTH2-QUOTE-001, myth2:MYTH2-QUOTE-003, myth2:MYTH2-SCOPE-001, myth2:MYTH2-SCOPE-002 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:MYTH2-DATE-001 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-003 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. "Fuck" is attested once in the 4.4-hour Resident Evil 2 audio of 2021 (both models hear it; the

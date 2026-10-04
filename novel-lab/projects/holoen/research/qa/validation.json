@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-04T05:33Z",
- "snapshot": "10d3f7a1f2cbc99ee6935343b9c90bcf3e7c9ac908c1a3854bfa52da55902442",
+ "checked_at": "2026-10-04T10:16Z",
+ "snapshot": "63dccfc5cb5ba5695a80be1b83739337fc2eae15a83e18bd3060f60bead192d4",
  "blocking_failures": [
   "V11",
   "V12",
@@ -19,7 +19,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 10d3f7a1f2cbc99ee6935343b9c90bcf3e7c9ac908c1a3854bfa52da55902442",
+    "snapshot 63dccfc5cb5ba5695a80be1b83739337fc2eae15a83e18bd3060f60bead192d4",
     "107 inputs"
    ],
    "finding_ids": []
@@ -119,7 +119,7 @@
    "locator": null,
    "evidence": [
     "relationship web: 0 one-way ties (coverage, not errors; tools/web_check.py)",
-    "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },

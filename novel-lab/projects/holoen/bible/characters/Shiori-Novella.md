@@ -249,7 +249,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive -Advent-, hololive English -Advent- (former branch name), Advent, Last Writes
+hololive -Advent-, hololive English -Advent- (former branch name), Advent, Last Writes, GreyScaleX
 
 ## [SW] Other Names
 Shiori, Shiorin, The Archiver, Shiori Novella, Shiori~n
@@ -321,6 +321,7 @@ Nerissa Ravencroft: Advent genmate and partner in the performed ShioRaven "wife"
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit myth2, follow-up by Claude:** with Ame's participation unverified (MYTH2-EVENT-001), the title-only reference stays in the dossier and leaves the exported Relationships.
+- **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-003 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The sampled 2026 windows include a showcase with trailer audio and a co-op stream with viewers; counts are

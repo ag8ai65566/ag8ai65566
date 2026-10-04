@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 93327bb.
+Snapshot: git 0269bd3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|the merger|world tour|EN concert|SUPER EXPO|Holodeath|PavoNashi|aftertalk|HOLOTORI|K.I.R.A|MoRikka|HoloJEI|soranii|IRySora|3D live|V3LVET|KoMeHa|UMISEA|OKFAIR|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|SUPER EXPO|EN concert|world tour|the merger|PavoNashi|aftertalk|Holodeath|HOLOTORI|soranii|IRySora|3D live|MoRikka|HoloJEI|K.I.R.A|KoMeHa|V3LVET|UMISEA|OKFAIR|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -40,6 +40,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Cecilia-Immergreen.md › Arc`: - **Starting point:** active at the 2026 baseline: CCGG's 3D live and Serendipity, Zelda and Spider-Man streams, her "Immersions."
 
 ### from Elizabeth Rose Bloodflame
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Groups`: hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven, LYRA ("III" cover)
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Background`: She debuted first of her generation on 2024-06-21 (PDT) in hololive English -Justice-, held her 3D showcase on 2025-08-01 (PDT), sang at the 2025 English concert ("ALiCE&u" with Nerissa and Ayunda Risu, a solo "Stellar Stellar," and the day-two opener "START AGAIN" with Calli, IRyS and Nerissa), invited guests from several branches to her 2026 birthday live, and at the 2026 Serendipity concert sang "HELP!!" with Kobo Kanaeru and Hakos Baelz and formed the unit Bloodraven with Nerissa Ravencroft ("Cruel Angel's Thesis").
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026 unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution" and shared the 2025 stages "ALiCE&u"
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Kobo Kanaeru and Hakos Baelz: "HELP!!" at Serendipity.
@@ -64,6 +65,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Fuwawa-Abyssgard.md › Arc`: - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their first album.
 
 ### from Gawr Gura
+- `bible/characters/Gawr-Gura.md › [SW] Groups`: hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name), UMISEA (official 2023 roster)
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and performed a protective mock-threat bit about Gura.
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Houshou Marine: UMISEA and "SHINKIRO"
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: (2023); UMISEA's official 2023 roster also includes Sakamata Chloe.
@@ -127,6 +129,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | English lesson #01 with Ina (2022); a guest at Ina's 3D live "Pleides" (2024); "SHINKIRO" with Gura (anime MV 2023-11-12, credited "宝鐘マリン・Gawr Gura") | [MA5 3n9igJnSXtQ] [MA4 9ehwhQJ50gs] |
 
 ### from IRyS
+- `bible/characters/IRyS.md › [SW] Groups`: hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast, Star Flower
 - `bible/characters/IRyS.md › [SW] Relationships`: At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
 - `bible/characters/IRyS.md › [SW] Relationships`: Hoshimachi Suisei and AZKi: with Moona Hoshinova, the unit Star Flower ("story time," 2022); Suisei also performed "High Tide" with her, Bae and Moona at Breaking Dimensions (2024).
 - `bible/characters/IRyS.md › Voice Profile`: - (Birthday-live aftertalk, reading superchats about her outfit) "Glad you guys like the outfit. I knew you guys would. I knew you guys would." … separately: "No, I don't like it. I love it." [ASR, both models, WZn7zl-NI3A 4:27:18 and 4:27:30; two-model recheck 2026-10-04]
@@ -169,6 +172,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Mococo-Abyssgard.md › Arc`: - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their first album.
 
 ### from Mori Calliope
+- `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes, LYRA ("III" cover)
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE, held her sixth birthday 3D live "UNCUT ROCK!!" with a live band, and sang with Kiara and Ina at Myth's 6th-anniversary 3D live, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Shiori Novella: her 2026 Serendipity partner, who calls her "Mor Mori"; they chase absurd premises, and Calli admits she is "a little obsessed with her."
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Cecilia Immergreen: "Cloudy Sheep" at Serendipity.
@@ -212,6 +216,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shishiro Botan | — | A credited guest at Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata, yutura cI535pJp-TQ] |
 
 ### from Ninomae Ina'nis
+- `bible/characters/Ninomae-Inanis.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock, UMISEA (official 2023 roster)
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): UMISEA (2021); Ina performs a protective mock-threat bit about Gura.
@@ -283,6 +288,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | A credited guest in Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata NEW-R6-002] |
 
 ### from Takanashi Kiara
+- `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa, HOLOTORI
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Koseki Bijou: junior she encourages and her 2026 Serendipity partner ("Rocku Wawa,"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Pavolia Reine (ID) and Takane Lui: HOLOTORI ("PavoNashi" with Reine).

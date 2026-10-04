@@ -25,3 +25,4 @@
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 b93502a0ac01）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 b81c82e7816f）：Author decision (2026-10-04): R7 reciprocal ties closed by Claude
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 85a9bc31d257）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
+- 2026-10-04 10:15 作者裁決收錄 final.md（sha256 85459e22c8d7）：Author order 2026-10-03: Claude merges the GPT QA audits; bridge-ties-external findings applied

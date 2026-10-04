@@ -429,7 +429,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
+hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes, LYRA ("III" cover)
 
 ## [SW] Other Names
 Calli, Calliope, Mori, Calliope Mori, 森カリオペ, 森美声, Mor Mori, Kawaiiope, Miss Mori, Mowi, CallioP, Cori Malliope
@@ -619,6 +619,7 @@ Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusot
 - **2026-10-03, new-material research R1 (20261002-1715-research-new-R1-Myth, GPT xhigh), merged by Claude:** NEW-R1-001 (official written greeting in Catchphrases), NEW-R1-002/003 (Gachiakuta opening; DISASTERPIECE premise and tracks), NEW-R1-004 (Shiori's influence on her choice of content), NEW-R1-005 ("LIVE IT LOUD!"), FIX-R1-002 (Gachiakuta interest confirmed by the production's artist comment), FIX-R1-003 (TOHO casting announcement replaces the secondary citation).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-DATE-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-003 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Should Groups keep "hololive English (former branch name)", or be current-only as GPT prefers? The

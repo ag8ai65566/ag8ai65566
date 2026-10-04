@@ -1,5 +1,5 @@
 # Sudowrite 貼上單 — holoen
-_產生時間 2026-10-04 05:33。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
+_產生時間 2026-10-04 10:15。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
 
 # Style — paste this block first
 貼到 Story Bible → **Style**（119 字；故事本身的文風說明可以接在後面，合計超過約 120 字時請檢查）。它教 Sudowrite 用每個角色的 **Audio Tags** 特質在對白裡寫 ElevenLabs v4 標籤。說明與注意事項見 `elevenlabs/sudowrite-style.md`。
@@ -248,9 +248,9 @@ Protagonist
 she/her
 ```
 
-### Groups（10）
+### Groups（13）
 ```text
-hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven
+hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven, LYRA ("III" cover)
 ```
 
 ### Other Names（11）
@@ -394,9 +394,9 @@ Protagonist
 she/her
 ```
 
-### Groups（11）
+### Groups（15）
 ```text
-hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name)
+hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name), UMISEA (official 2023 roster)
 ```
 
 ### Other Names（15）
@@ -809,9 +809,9 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 In her lore, Marine wants a real pirate ship to sail with her crew in search of treasure, and in the end to find that the treasure was the journey and the friends. As a streamer and idol she wants to entertain everyone and keep singing, dancing and organizing collaborations.
 ```
 
-### Relationships（244/350）
+### Relationships（250/350）
 ```text
-Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2026 Pekora coached her at Mario Tennis ("Pekoach"). Shirogane Noel: hololive Fantasy genmate; the units Bara☆Dice and Yakamashi Musume (with Lamy and Inugami Korone, per archived metadata). Hoshimachi Suisei: "Chatter Chatter" (2026). Kikirara Vivi: the unit MVP with Pekora (an archived 2026 performance record). Yukihana Lamy: Yakamashi Musume, holoWitches and Blue Journey. Hakui Koyori: "#頭ピンク組," the pink-haired pair of their archived titles (a race and a talk testing whether they are alike, 2025); Blue Journey. La+ Darknesss: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Takane Lui and Kazama Iroha: Bara☆Dice. Sakamata Chloe (affiliate): UMISEA and holoWitches. Nekomata Okayu: Marine gave her the nickname "Okanyan" (Okayu's official profile). Takanashi Kiara: her first HOLOTALK guest (2020) and dance shorts ("MIRAGE," "III," 2024). Mori Calliope: Calli's English lesson #01 (2022), Mario Kart (2021) and a house-party off-collab with Bae (2023). Hakos Baelz: that Mario Kart and house party; Bae and Mumei played the horror game featuring Marine (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides" (2024); "SHINKIRO" with Gura (2023). FUWAMOCO: a Touhou off-collab and Mario Party Superstars with Nerissa (2024). Nerissa Ravencroft: that Mario Party off-collab. Elizabeth Rose Bloodflame: "IT'S LOVE" with Korone for Elizabeth's 2026 birthday. Nakiri Ayame: a second-generation senior. AZKi: commentary for her Holo Koshien stream (2026).
+Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2026 Pekora coached her at Mario Tennis ("Pekoach"). Shirogane Noel: hololive Fantasy genmate; Bara☆Dice with Takane Lui, Shiranui Flare, Momosuzu Nene and Kazama Iroha; separately, Yakamashi Musume with Yukihana Lamy and Inugami Korone. Hoshimachi Suisei: "Chatter Chatter" (2026). Kikirara Vivi: the unit MVP with Pekora (an archived 2026 performance record). Yukihana Lamy: Yakamashi Musume, holoWitches and Blue Journey. Hakui Koyori: "#頭ピンク組," the pink-haired pair of their archived titles (a race and a talk testing whether they are alike, 2025); Blue Journey. La+ Darknesss: a sponsored collab billed #マリラプ and a cover with Koyori (2025). Takane Lui and Kazama Iroha: Bara☆Dice. Sakamata Chloe (affiliate): UMISEA and holoWitches. Nekomata Okayu: Marine gave her the nickname "Okanyan" (Okayu's official profile). Takanashi Kiara: her first HOLOTALK guest (2020) and dance shorts ("MIRAGE," "III," 2024). Mori Calliope: Calli's English lesson #01 (2022), Mario Kart (2021) and a house-party off-collab with Bae (2023). Hakos Baelz: that Mario Kart and house party; Bae and Mumei played the horror game featuring Marine (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides" (2024); "SHINKIRO" with Gura (2023). FUWAMOCO: a Touhou off-collab and Mario Party Superstars with Nerissa (2024). Nerissa Ravencroft: that Mario Party off-collab. Elizabeth Rose Bloodflame: "IT'S LOVE" with Korone for Elizabeth's 2026 birthday. Nakiri Ayame: a second-generation senior. AZKi: commentary for her Holo Koshien stream (2026).
 ```
 
 ## IRyS
@@ -832,9 +832,9 @@ Protagonist
 she/her
 ```
 
-### Groups（15）
+### Groups（17）
 ```text
-hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast
+hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast, Star Flower
 ```
 
 ### Other Names（3）
@@ -1270,9 +1270,9 @@ Protagonist
 she/her
 ```
 
-### Groups（12）
+### Groups（15）
 ```text
-hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
+hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes, LYRA ("III" cover)
 ```
 
 ### Other Names（22）
@@ -1635,9 +1635,9 @@ Protagonist
 she/her
 ```
 
-### Groups（10）
+### Groups（14）
 ```text
-hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
+hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock, UMISEA (official 2023 roster)
 ```
 
 ### Other Names（10）
@@ -1927,9 +1927,9 @@ Protagonist
 she/her
 ```
 
-### Groups（11）
+### Groups（12）
 ```text
-hololive -Advent-, hololive English -Advent- (former branch name), Advent, Last Writes
+hololive -Advent-, hololive English -Advent- (former branch name), Advent, Last Writes, GreyScaleX
 ```
 
 ### Other Names（8）
@@ -2050,9 +2050,9 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 In her lore, Noel came to the VTuber world to train and grow stronger. As a streamer she wants to have fun with her knights and her friends and keep improving as a singer.
 ```
 
-### Relationships（163/350）
+### Relationships（168/350）
 ```text
-Houshou Marine: hololive Fantasy genmate; the units Bara☆Dice and "Yakamashi Musume" (with Yukihana Lamy and Inugami Korone, per archived metadata); 3rd-gen R.E.P.O. (2025). Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy. Yukihana Lamy: Yakamashi Musume and drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an Audio-Technica sponsorship collab (2025). Hakui Koyori: "#ノエこよ," a Power Pros baseball exhibition (2025), and Blue Journey (2023). Takane Lui and Kazama Iroha: Bara☆Dice. Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025). AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
+Houshou Marine: hololive Fantasy genmate; Bara☆Dice with Takane Lui, Shiranui Flare, Momosuzu Nene and Kazama Iroha; separately, Yakamashi Musume with Yukihana Lamy and Inugami Korone; 3rd-gen R.E.P.O. (2025). Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy. Yukihana Lamy: Yakamashi Musume and drinking-talk collabs. Hoshimachi Suisei: "Shiranui Kensetsu" (Shiraken), the Minecraft construction company with Flare, Omaru Polka and Sakura Miko. Nakiri Ayame: an Audio-Technica sponsorship collab (2025). Hakui Koyori: "#ノエこよ," a Power Pros baseball exhibition (2025), and Blue Journey (2023). Takane Lui and Kazama Iroha: Bara☆Dice. Kikirara Vivi: Gartic Phone (2025). Takanashi Kiara: her 22nd HOLOTALK guest (2022). Mori Calliope: HOLOYOI #02 with Flare (2023). FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT" (2025). Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025). AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
 ```
 
 ## Shishiro Botan
@@ -2146,9 +2146,9 @@ Protagonist
 she/her
 ```
 
-### Groups（11）
+### Groups（12）
 ```text
-hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa
+hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa, HOLOTORI
 ```
 
 ### Other Names（11）
@@ -2573,9 +2573,9 @@ Relationship
 MoRikka, LYRA, Holodeath, PavoNashi, HOLOTORI, UMISEA, HoloJEI, K.I.R.A, OKFAIR, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET
 ```
 
-### Description（449/450）
+### Description（448/450）
 ```text
-The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli collaborates with Hoshimachi Suisei: Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones" ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix cover as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina appears with Aqua, Marine, Chloe and Gura in UMISEA's official 2023 roster and released "Kurukuru Cruise" with Nekomata Okayu (2025). Secondary references call Gura and Shishiro Botan "Apex Predators"; Gura released a duet cover with Murasaki Shion. Ame has "KoMeHa" with Kobo and Iroha. Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan." Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (she hosted a Q&A with Lui titled "Q&A With Bird Sisters") and recorded a duet cover with Inugami Korone in her last week. Of Advent: Bijou and Kaela Kovalskia are "Grindstone" (Kaela calls her "Beejoe"; Raft, Minecraft, Split Fiction), with Kureiji Ollie ("GraveStone"), Akai Haato ("Red Stone") and Ichijou Ririka (ReGLOSS; Smash Bros.) as game partners; Shiori and Vestia Zeta are the official duo "GreyScaleX" (the X is silent; "Purrfect Pair" merchandise, 2026), Pavolia Reine and Airani Iofi join her "Fanfic Club"; FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou. Of Justice: Kureiji Ollie is Elizabeth's kami-oshi, and Elizabeth plays with her and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit); Elizabeth's 2026 birthday covers featured Subaru, Roboco, Sora, Choco, Marine, Korone, Polka, Nene, Watame and Iroha; Kaela Kovalskia appears in Raora's fictional basement bit ("SMITTEN"); Raora played Clubhouse Games with Haachama and Super Mario Party with Haachama and Zeta, and is "RaoRiRi" with Ririka; Cecilia plays games with Tokino Sora; at Serendipity, Kobo Kanaeru, Vestia Zeta and Tsunomaki Watame sang with Elizabeth, Gigi, Cecilia and Raora. Hakos Baelz jokingly calls Ookami Mio and Kureiji Ollie her "moms," sang "HELP!!" with Kobo Kanaeru and Elizabeth, and "Kakumei Dualism" with Natsuiro Matsuri at the 2026 fes.
+The cast's ties beyond EN, including JP, ID, DEV_IS and HOLOSTARS. Calli collaborates with Hoshimachi Suisei: Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; Calli released "spiral tones" with HOLOSTARS' Rikka ("MoRikka"); Calli sang a remix cover of "III" with Koganei Niko, Ayunda Risu, Amane Kanata and Elizabeth as LYRA; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa." Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI"). Ina appears with Aqua, Marine, Chloe and Gura in UMISEA's official 2023 roster and released "Kurukuru Cruise" with Nekomata Okayu (2025). Secondary references call Gura and Shishiro Botan "Apex Predators"; Gura released a duet cover with Murasaki Shion. Amelia played VALORANT with Kobo and Kazama Iroha (2022; "KoMeHa" in secondary references). Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora. IRyS's recurring Japanese collaborator is Shiranui Flare (horror camping, Splatoon, karaoke), and she sings with Moona, Suisei and AZKi ("Star Flower"). Nerissa's oshi is Houshou Marine; she pairs with Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan." Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (she hosted a Q&A with Lui titled "Q&A With Bird Sisters") and recorded a duet cover with Inugami Korone in her last week. Of Advent: Bijou and Kaela are "Grindstone" (Kaela calls her "Beejoe"; Raft, Minecraft, Split Fiction), with Kureiji Ollie ("GraveStone"), Akai Haato ("Red Stone") and Ichijou Ririka (ReGLOSS; Smash Bros.) as game partners; Shiori and Vestia Zeta are the official duo "GreyScaleX" (the X is silent; "Purrfect Pair" merchandise, 2026), Reine and Airani Iofi join her "Fanfic Club"; FUWAMOCO's oshi are Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou. Of Justice: Ollie is Elizabeth's kami-oshi, and Elizabeth plays with her and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit); Elizabeth's 2026 birthday covers featured Subaru, Roboco, Sora, Choco, Marine, Korone, Polka, Nene, Watame and Iroha; Kaela appears in Raora's fictional basement bit ("SMITTEN"); Raora played Clubhouse Games with Haachama and Super Mario Party with Haachama and Zeta, and is "RaoRiRi" with Ririka; Cecilia plays games with Sora; at Serendipity, Kobo, Zeta and Tsunomaki Watame sang with Elizabeth, Gigi, Cecilia and Raora. Hakos Baelz jokingly calls Ookami Mio and Ollie her "moms," sang "HELP!!" with Kobo and Elizabeth, and "Kakumei Dualism" with Natsuiro Matsuri at the 2026 fes.
 ```
 
 ### Rules（40/350）

@@ -59,8 +59,7 @@ Unit / generation (lore group with five persona roles; four active at the baseli
 - **Mori Calliope:** English practice with Lui (2021-12-27); "HOLO ENGLISH LESSON #02" with La+, Iroha and Gura
   (2022-03-04) and "#04" with Lui and Chloe (2022-04-16); "HOLOYOI" episode 1 with Lui and Chloe (2023); dance
   shorts to Lui's songs (2025, 2026). [S1]
-- **FUWAMOCO:** "FUWAMOKOYO" with Shirakami Fubuki and Koyori (Lethal Company, 2024; Koyori on FUWAMOCO Morning,
-  2024-04-26); "TWIN DAY WITH LUI" (2023-11-25); a cookie-battle off-collab with Iroha (2024-10-27) and Chained
+- **FUWAMOCO:** "FUWAMOKOYO" names Koyori and the twins in FUWAMOCO MORNING #90's title (2024-04-26); a separate 2024 Lethal Company upload lists Fubuki and Koyori; "TWIN DAY WITH LUI" (2023-11-25); a cookie-battle off-collab with Iroha (2024-10-27) and Chained
   Together (2024-09-13); dance shorts to La+'s and Lui's 2026 songs. [S1]
 - **Hakos Baelz:** "BAE-GEMITE DOMINATION" with Lui and Chloe (2023-04-29) and with Koyori (2023-04-22); a cover
   with Chloe ("Crazy Scary Holy Fantasy," 2023); dances to Lui's songs. [S1]
@@ -183,6 +182,7 @@ A tiny horned founder with long silver hair, oversized sleeves and shackles; a p
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** "Secret ORDER" release dated 2026-04-08, separate from the anniversary.
 - **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:BR-DATE-001, bridge-events:BR-DATE-003, bridge-events:BR-STATUS-002 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-001 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Resolved: after 2025-01-26 Chloe is a hololive affiliate rather than part of holoX's four-member performing

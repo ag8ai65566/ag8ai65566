@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 93327bb.
+Snapshot: git 0269bd3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|hololive -Advent-|Jewel of Emotions|Mococo Abyssgard|FUWAMOCO MORNING|Fuwawa Abyssgard|Abyssgard twins|Demon of Sound|Shiori Novella|The Fluffy One|The Fuzzy One|Demon of Soup|Koseki Bijou|Diamond Dogs|The Archiver|Advent Pairs|Sound Hounds|Last Writes|FUWAMOCALLI|Rocku Wawa|Grindstone|GreyScaleX|Bloodraven|holoAdvent|Fluffy One|Moco-chan|Goth Rock|Fuwa-chan|ShioRaven|Adventrix|JewelBird|Pen Pups|Mogojyan|Fuwa-nee|FUWAMOCO|Lil'Rock|Shiori~n|The Cell|Shiorin|Nerissa|Mococo|Fuwawa|Mogogo|Advent|Shiori|Koseki|Beejoe|B.F.F|Rissa|Bijou|Beebs|Oobib|Biboo|Pero|Neri|FWMC|GAGA)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Fuwawa and Mococo|Jewel of Emotions|FUWAMOCO MORNING|Mococo Abyssgard|Fuwawa Abyssgard|Abyssgard twins|Shiori Novella|The Fluffy One|Demon of Sound|The Fuzzy One|Demon of Soup|Diamond Dogs|The Archiver|Advent Pairs|Sound Hounds|Koseki Bijou|FUWAMOCALLI|Last Writes|Fluffy One|Grindstone|Rocku Wawa|GreyScaleX|holoAdvent|Bloodraven|Goth Rock|ShioRaven|Fuwa-chan|Adventrix|JewelBird|Moco-chan|Fuwa-nee|The Cell|Mogojyan|Pen Pups|FUWAMOCO|Shiori~n|Lil'Rock|Shiorin|Nerissa|Advent|Shiori|Beejoe|Fuwawa|Koseki|Mococo|Mogogo|Bijou|Rissa|Beebs|B.F.F|Biboo|Oobib|FWMC|Neri|GAGA|Pero)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -45,7 +45,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Mori Calliope | Myth senior | Her five-player Dota 2 session "FULL STACK FULL CHAOS" with Calli, Bijou, Nerissa and Kobo (2024-01-27 JST). | [Member upload, indexed TIE-010] |
 
 ### from Elizabeth Rose Bloodflame
-- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Groups`: hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Groups`: hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven, LYRA ("III" cover)
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Background`: She is a VTuber whose lore makes her "The Scarlet Queen" and organizer of Justice; secondary-reported lore adds that she is the Harbinger of Order, a human knight from Great Exardia (not actually royalty) whose sword is Thorn, who joined hololive to keep an eye on Advent and to become an idol.
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Background`: She debuted first of her generation on 2024-06-21 (PDT) in hololive English -Justice-, held her 3D showcase on 2025-08-01 (PDT), sang at the 2025 English concert ("ALiCE&u" with Nerissa and Ayunda Risu, a solo "Stellar Stellar," and the day-two opener "START AGAIN" with Calli, IRyS and Nerissa), invited guests from several branches to her 2026 birthday live, and at the 2026 Serendipity concert sang "HELP!!" with Kobo Kanaeru and Hakos Baelz and formed the unit Bloodraven with Nerissa Ravencroft ("Cruel Angel's Thesis").
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026 unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution" and shared the 2025 stages "ALiCE&u"
@@ -183,7 +183,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Nerissa Ravencroft | — | holoGTA (2024) | [LA4] |
 
 ### from Mori Calliope
-- `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes
+- `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes, LYRA ("III" cover)
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She co-hosts the CHADCast podcast with IRyS and Hakos Baelz, and she started a 2026 performance partnership with Shiori Novella.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: IRyS and Hakos Baelz: her CHADCast cohosts ("Chaos, Hope, and Death"; "BLUE CLAPPER" with Bijou, 2024; "Here Comes the CHADCast," 2026); Bae sang "R x R x R" with her (2025); IRyS joined her as the "Two Pink Women" of Silent Hill 2.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert).
@@ -293,7 +293,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | A credited guest in Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata NEW-R6-002] |
 
 ### from Takanashi Kiara
-- `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa
+- `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa, HOLOTORI
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Koseki Bijou: junior she encourages and her 2026 Serendipity partner ("Rocku Wawa,"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Shiori Novella: an occult handcam off-collab ("#shiotori," 2024).
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Nerissa Ravencroft: an Advent kouhai who calls Kiara her oshi and, in her lore, once worked at KFP (KiaRissa); they held a 2025 "BIRB GIRLS"
@@ -342,10 +342,10 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 - `bible/world/Concerts-and-Live-Events.md › Conflicts and Story Hooks`: 5. A tour stop in Sydney: Kronii joins Calli, IRyS and Nerissa as a guest.
 
 ### from Cross-Branch Friends
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Nerissa's oshi is Houshou Marine; she pairs with Tokino Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan."
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Of Advent: Bijou and Kaela Kovalskia are "Grindstone"
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Nerissa's oshi is Houshou Marine; she pairs with Sora ("BLUE·MEGAMISAMA"), sings on Moona's "100%," and Kobo calls her "Nori-chan."
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Of Advent: Bijou and Kaela are "Grindstone"
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: (Kaela calls her "Beejoe"; Raft, Minecraft, Split Fiction), with Kureiji Ollie ("GraveStone"), Akai Haato ("Red Stone") and Ichijou Ririka (ReGLOSS; Smash Bros.) as game partners; Shiori and Vestia Zeta are the official duo "GreyScaleX"
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: (the X is silent; "Purrfect Pair" merchandise, 2026), Pavolia Reine and Airani Iofi join her "Fanfic Club"; FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou.
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: (the X is silent; "Purrfect Pair" merchandise, 2026), Reine and Airani Iofi join her "Fanfic Club"; FUWAMOCO's oshi are Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou.
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Nerissa Ravencroft:** Houshou Marine is her oshi (an off-collab with Marine and FUWAMOCO, 2024); "BLUE·MEGAMISAMA" with Tokino Sora; "V3LVET" with Raora and Moona Hoshinova; Kobo calls her "Nori-chan." With Moona she has a released song, "100% (feat. Nerissa Ravencroft)" (2025-02-16) [Official S7]. [Observed S1; S2 Nerissa; Nerissa file]
 - `bible/world/Cross-Branch-Friends.md › How It Works in Stories`: - Senpai and kouhai describe relative seniority (who debuted first) and nothing else; forms of address and levels of formality vary by relationship. Some EN members are openly starstruck by particular senpai (Kiara by Pekora, Nerissa by Marine). [Observed character files]
 - `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 4. Nerissa meets Marine at an event and forgets every word of Japanese.
@@ -454,7 +454,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|holo
 
 ### from holoX
 - `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
-- `bible/world/holoX.md › With the English cast`: - **FUWAMOCO:** "FUWAMOKOYO" with Shirakami Fubuki and Koyori (Lethal Company, 2024; Koyori on FUWAMOCO Morning, 2024-04-26); "TWIN DAY WITH LUI" (2023-11-25); a cookie-battle off-collab with Iroha (2024-10-27) and Chained Together (2024-09-13); dance shorts to La+'s and Lui's 2026 songs. [S1]
+- `bible/world/holoX.md › With the English cast`: - **FUWAMOCO:** "FUWAMOKOYO" names Koyori and the twins in FUWAMOCO MORNING #90's title (2024-04-26); a separate 2024 Lethal Company upload lists Fubuki and Koyori; "TWIN DAY WITH LUI" (2023-11-25); a cookie-battle off-collab with Iroha (2024-10-27) and Chained Together (2024-09-13); dance shorts to La+'s and Lui's 2026 songs. [S1]
 - `bible/world/holoX.md › With the English cast`: - **Others:** Lui's 2026 song "Soar" was danced by IRyS, Nerissa, Bijou, Gigi, Raora, Calli, Bae and FUWAMOCO (2026 shorts); Cecilia teased La+ as "onee-sama" (2026 short); Nerissa met La+ in holoGTA (2024). [S1]
 
 ### from hololive -Justice-

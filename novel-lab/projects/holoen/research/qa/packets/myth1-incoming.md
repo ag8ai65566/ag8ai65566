@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 93327bb.
+Snapshot: git 0269bd3.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Mori Calliope|Cori Malliope|Last Writes|Miss Mori|Kawaiiope|Calliope|TakaMori|Mor Mori|CHADCast|Takamori|CallioP|森カリオペ|Calli|Mori|LYRA|Mowi)(
+Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Mori Calliope|Calliope Mori|Cori Malliope|Last Writes|Miss Mori|Kawaiiope|TakaMori|Calliope|CHADCast|Mor Mori|Takamori|CallioP|森カリオペ|Calli|LYRA|Mowi|Mori)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -25,6 +25,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Mori 
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Mori Calliope | Myth senior | Her five-player Dota 2 session "FULL STACK FULL CHAOS" with Calli, Bijou, Nerissa and Kobo (2024-01-27 JST). | [Member upload, indexed TIE-010] |
 
 ### from Elizabeth Rose Bloodflame
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Groups`: hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven, LYRA ("III" cover)
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Background`: She debuted first of her generation on 2024-06-21 (PDT) in hololive English -Justice-, held her 3D showcase on 2025-08-01 (PDT), sang at the 2025 English concert ("ALiCE&u" with Nerissa and Ayunda Risu, a solo "Stellar Stellar," and the day-two opener "START AGAIN" with Calli, IRyS and Nerissa), invited guests from several branches to her 2026 birthday live, and at the 2026 Serendipity concert sang "HELP!!" with Kobo Kanaeru and Hakos Baelz and formed the unit Bloodraven with Nerissa Ravencroft ("Cruel Angel's Thesis").
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: (with Calli and IRyS); Elizabeth says Nerissa "has a beautiful voice,"
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Mori Calliope: the LYRA cover of "III" with Amane Kanata, Koganei Niko and Ayunda Risu.
@@ -40,7 +41,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Mori 
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Gigi Murin, Mori Calliope | Kouhai and senior | "2 Creatures + 1 Reaper," a rare bomb-defusing collab (2026-09) | [Observed FUWAMOCO X post via wiki, FW6] |
 
 ### from Gawr Gura
-- `bible/characters/Gawr-Gura.md › [SW] Groups`: hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name)
+- `bible/characters/Gawr-Gura.md › [SW] Groups`: hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name), UMISEA (official 2023 roster)
 - `bible/characters/Gawr-Gura.md › [SW] Background`: Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025.
 - `bible/characters/Gawr-Gura.md › [SW] Background`: She hosted The Fish Tank with Watson Amelia and sang "Q" with Mori Calliope.
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert.
@@ -104,7 +105,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Mori 
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Mori Calliope | — | English lesson #01 (2022); Mario Kart with Bae and Reine (2021); a house-party off-collab with Bae (2023); Calli played the horror game featuring Marine on her own stream (2023) | [MA5 bfUEbp3xk4o, X3pHIQAvpYU, DY5VThfehW8, Mf-sAjsuSig] |
 
 ### from IRyS
-- `bible/characters/IRyS.md › [SW] Groups`: hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast
+- `bible/characters/IRyS.md › [SW] Groups`: hololive -Promise-, Promise, hololive English -Project: HOPE- (former), hololive English (former branch name), BaeRyS, CHADCast, Star Flower
 - `bible/characters/IRyS.md › [SW] Relationships`: Mori Calliope: her first collab partner (2021) and a CHADCast cohost with Bae.
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
 - `bible/characters/IRyS.md › Background Timeline`: | 2021-07-29 | First official collab: Just Shapes & Beats with Mori Calliope | [Observed R2 §2021] |
@@ -154,7 +155,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Mori 
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Mori Calliope | Senior | Nerissa was Calli's first Instagram follower; BG3 party "Killing, Two Birds, with One Stone" with Kiara and Bijou (2023); duet "OVER//RIDE" (2025); Calli guested at Nerissa's 3D concert; building Calli's Mii: "Calli's also got beautiful, long, straight hair." Credited singers together (with IRyS, Nene and Ollie) on "LIVE IT LOUD!" (2025-06-25). A Bananagrams handcam collaboration (2026-09-18; individual jokes unchecked). | [Observed N2; N3 titles; ASR N20, agrees] [Official, music/592] [Archive metadata NEW-R3-013] |
 
 ### from Ninomae Ina'nis
-- `bible/characters/Ninomae-Inanis.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
+- `bible/characters/Ninomae-Inanis.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock, UMISEA (official 2023 roster)
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: At the 2026-09-30 baseline, she is an active member of hololive -Myth-.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Mori Calliope: a recurring target of her puns (Calli's exasperated reaction to Ina's puns); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song.
@@ -191,7 +192,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Mori 
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Mori Calliope | — | HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023) | [CH5] |
 
 ### from Shiori Novella
-- `bible/characters/Shiori-Novella.md › [SW] Groups`: hololive -Advent-, hololive English -Advent- (former branch name), Advent, Last Writes
+- `bible/characters/Shiori-Novella.md › [SW] Groups`: hololive -Advent-, hololive English -Advent- (former branch name), Advent, Last Writes, GreyScaleX
 - `bible/characters/Shiori-Novella.md › [SW] Background`: She made her 3D debut on 2024-08-02 (PDT), sang at the 2024 and 2025 English concerts, released her first original song "Monsters and Men" digitally on 2026-02-16, was paired with Mori Calliope at the 2026 Serendipity concert, and began her original motion comic "Into The Void" in July 2026.
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Mori Calliope: her 2026 Serendipity partner in Last Writes ("When My Devil Rises"), who admits she is "a little obsessed with her"; Shiori admires Calli's "work ethic and boundaries," and they bond over dark taste and absurd deep-dives.
 - `bible/characters/Shiori-Novella.md › Voice Profile`: - **Written forms of address and care (official interview, 2026-06-10):** she calls Calli "Mor Mori" in writing (spoken form unchecked), and closes with practical audience reminders ("Don't lose any of your belongings!") and encouragement to enjoy the show at their own pace: a plain, considerate register beside her comic hosting. [Official NEW-R3-002/003]
@@ -217,7 +218,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Mori 
 - `bible/characters/Shishiro-Botan.md › Story Engine`: 1. Botan runs a money-making server event for the EN cast and Calli keeps buying out the ramen shop.
 
 ### from Takanashi Kiara
-- `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa
+- `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa, HOLOTORI
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German.
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Mori Calliope: her TakaMori partner.
@@ -308,8 +309,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Mori 
 
 ### from Cross-Branch Friends
 - `bible/world/Cross-Branch-Friends.md › [SW] Other Names`: MoRikka, LYRA, Holodeath, PavoNashi, HOLOTORI, UMISEA, HoloJEI, K.I.R.A, OKFAIR, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli collaborates with Hoshimachi Suisei: Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; with HOLOSTARS' Rikka she released "spiral tones"
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: ("MoRikka"); with Niko, Risu, Kanata and Elizabeth she sang a "III" remix cover as "LYRA"; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa."
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli collaborates with Hoshimachi Suisei: Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; Calli released "spiral tones" with HOLOSTARS' Rikka ("MoRikka"); Calli sang a remix cover of "III" with Koganei Niko, Ayunda Risu, Amane Kanata and Elizabeth as LYRA; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa."
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Mori Calliope:** Calli drew Hoshimachi Suisei ("DRAWING MY SENPAI," 2021), Suisei featured at Calli's first solo concert ("Wicked," 2022), they talked live shows together (2023), and Calli hosts watch parties of Suisei's concerts ("We're Screaming Loud for Senpai!", 2024-11). Kobo Kanaeru calls her "Uncle Dad" ("Father Daughter GOLF," 2022; an in-person cooking-and-gaming collab, 2023). Units: "Holodeath" (with Kureiji Ollie); "LYRA," a five-singer cover of "III" with Koganei Niko, Ayunda Risu, Amane Kanata and Elizabeth (Kanata has since graduated); "MoRikka" with HOLOSTARS' Rikka (their song "spiral tones," 2021; fans "DeadTuners") [Official music entry S5]. Outside hololive: friends with Milky Queen and Ironmouse (a shared Underworld theme). [Observed S1 titles; S2 Calli §Relationships; Calli file]
 - `bible/world/Cross-Branch-Friends.md › Conflicts and Story Hooks`: 1. Calli hosts another watch party for Suisei's concert and loses her composure on the high note.
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).

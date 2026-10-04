@@ -105,8 +105,7 @@ Relationship web.
   merchandise opened for orders on 2026-09-05 [Official S7]; Kureiji
   Ollie and Bijou "GraveStone"; Pavolia Reine and Airani Iofi with Shiori and Gigi in the "Fanfic Club."
   [Observed S2; S1]
-- **JP:** FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo); they game with Shirakami
-  Fubuki and Hakui Koyori ("FUWAMOKOYO"); Okayu and Korone made cameos at their 3D debut; Oozora Subaru sang
+- **JP:** FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo); archived game metadata lists Shirakami Fubuki and Hakui Koyori with the twins; "FUWAMOKOYO" labels Koyori and the twins in FUWAMOCO MORNING #90; Okayu and Korone made cameos at their 3D debut; Oozora Subaru sang
   "HOT DUCK!" with Bijou and the twins; Akai Haato and Bijou are "Red Stone"; Ichijou Ririka (ReGLOSS,
   originally DEV_IS) played Smash Bros. with Bijou with a loser's punishment. [Observed S1; S2]
 - **HOLOSTARS EN:** Machina X Flayon and Shiori ("Goth Pilot"); Regis Altare games with Bijou and Shiori;
@@ -240,6 +239,7 @@ A moai head opening to reveal Bijou; pink and blue paws; a two-tone head of hair
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-001 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

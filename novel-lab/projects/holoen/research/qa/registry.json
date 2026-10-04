@@ -1,46 +1,46 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "93327bb",
+ "commit": "0269bd3",
  "files": {
   "bible/characters/AZKi.md": "f9ef7601a7527129e85da4f52ba7856ad93cbcf54d3b3d610427104d358f9df4",
   "bible/characters/Cecilia-Immergreen.md": "0d41b3b7f2f6760c40cf530afb58f5c0c92cd83ea8c1be6a885074c50686aeb9",
-  "bible/characters/Ceres-Fauna.md": "1cb286c79b4db366f3d47a78a104702c33780d9b19bf924c23a4c2e37a300239",
-  "bible/characters/Elizabeth-Rose-Bloodflame.md": "f3252e183a94a04380e7dd46d4a7ecc5e77bb0351f1f5087627aafc8a5188a1d",
+  "bible/characters/Ceres-Fauna.md": "850860c2af729f83059440b8387dce0f2312fde1ff1578e8df94c1cae4bad316",
+  "bible/characters/Elizabeth-Rose-Bloodflame.md": "6944f97c9aa38ebab430bf9a52f4c465bb83ec2955e2aebe17dea7d1d9d84aca",
   "bible/characters/Fuwawa-Abyssgard.md": "83cb10830ca9bb628109531fc9476654903031a563254c2b809a53041259ef0a",
-  "bible/characters/Gawr-Gura.md": "60f2c49c8e28fa701f17407ab2a07bc9fbf4e336f87bb681fb78a16537c443be",
+  "bible/characters/Gawr-Gura.md": "e0f73600a45dc550e8a7e5d58f1e50c02d50197090c25e3b641aad7f3558dff0",
   "bible/characters/Gigi-Murin.md": "b9f0b8a18c28acc5715b10521d4006d67734efa7c9fce411bcbec91336630312",
   "bible/characters/Hakos-Baelz.md": "c504265a52640938c03eb16b896f03f62f6906ab4a8ba55817d7c5d6217daaf1",
   "bible/characters/Hakui-Koyori.md": "2335e184a0f050b4c33201e08de5c68249fa3a19e0e9276d98427496b4124cdc",
   "bible/characters/Hoshimachi-Suisei.md": "cc7453e0e0dcd780920504d2f2cfae18f6533ab7419c9b9e2667afb42a7c30d8",
-  "bible/characters/Houshou-Marine.md": "aefe9a816d2949287a8eb9fbfbd93ffb36b391f4406f1a3b70193ab79f4b7b90",
-  "bible/characters/IRyS.md": "0e12081f6739b827a125c0a6b258669a47eec1a272d1ce3ca60efd34c7b3c4bb",
+  "bible/characters/Houshou-Marine.md": "363cad47c8c73b0d9f2ea31ead393e40442f89c38b3497140384a4c8e0b422b5",
+  "bible/characters/IRyS.md": "05b097893deb4037aed6648cbff6819d90e8b3b1c28aeff31ceac9b36366e836",
   "bible/characters/Kazama-Iroha.md": "85fd36cc6c0197f0cdb1b832e7cd1a4c644a636517aa31a11b0213aaab8c5fd9",
   "bible/characters/Kikirara-Vivi.md": "e3dae5035b02a24617099256e642f418d055590000abdeb8d5a762df2734bda7",
   "bible/characters/Koseki-Bijou.md": "9da1e0c0ce80b6ba8f1aaf39ef574323435addd486ca92b5b49ec9d2d11e7f25",
   "bible/characters/Laplus-Darknesss.md": "4f243197ccfe16516540300afd1f9b30eb97f02c88d8aa80bf8e8ca0695e9117",
   "bible/characters/Mococo-Abyssgard.md": "51ceac7de5be058eea4618bccec09ac634aaee9652be80d67f53f40b81dac1fa",
-  "bible/characters/Mori-Calliope.md": "b67e10dbfba359361ce61502f86b739fdb84f3c42ea74ef0d45223a01161501f",
+  "bible/characters/Mori-Calliope.md": "5f04601cf3b13e95b352ed950d2a17d13975759a4ee4a393377502e59c3fc8b5",
   "bible/characters/Nakiri-Ayame.md": "675a9db7cbb2fca7feb4423ab3ba63d0795974057518d644cab964013e06f706",
   "bible/characters/Nanashi-Mumei.md": "deb95790e4fc3cada5199b1b748a1077b2d59c06104e86f1dd34ab362a035869",
   "bible/characters/Nekomata-Okayu.md": "80148bfc0586011eb9f2f780c7d8316c45c078b5deee28817cabd3e581d9db58",
   "bible/characters/Nerissa-Ravencroft.md": "64c5b3cc704ce17c4ef9976ec73d985c8f750aa5601a173f36fd94a848c0cb2e",
-  "bible/characters/Ninomae-Inanis.md": "85a9bc31d257a1407c64f8c36d350c8db825185adfc86fa837242e616b6e6694",
+  "bible/characters/Ninomae-Inanis.md": "85459e22c8d76ce95e1b75d02c38da9d12948ec799478dd2163851ff00bd9bed",
   "bible/characters/Ouro-Kronii.md": "f6f20f16b68064a7be6cc36316e8679a1300091248bc4a7aa00a467ff8e48e42",
   "bible/characters/Raora-Panthera.md": "b64f7c9ebf6918f85a279a96f9a7973525d46e7bbfb0829936e2d700efd7d139",
   "bible/characters/Sakamata-Chloe.md": "a3555ab23cbe141242b5572c661d7c627bbb82b611b049ce643a292ea606203f",
-  "bible/characters/Shiori-Novella.md": "434ea3cb8ec06b0b614491a6304d18a8ed336e15e418163ed0eedf1a0aa4dfd9",
-  "bible/characters/Shirogane-Noel.md": "fa75876d435e0546d6bb72acc0b19105edb6faca168d01f47ef161dd9c6ee7f5",
+  "bible/characters/Shiori-Novella.md": "0e78bbb2d14458d5cdcb102f1aac93ea081e8b890c6b699cd6163a973136cd64",
+  "bible/characters/Shirogane-Noel.md": "383c370fae8fbba13c2e633c08bb5babba7be3d2cc6f7251a5128f84a4d03508",
   "bible/characters/Shishiro-Botan.md": "40c78f4b12013ad801d4e53333a5974a8a7cf2505ce567568a23a4d9fd4c0bb0",
-  "bible/characters/Takanashi-Kiara.md": "484f98a5a881250be9b9b570afdda043fe75133155d71c7cbd55ecc879d7a737",
+  "bible/characters/Takanashi-Kiara.md": "3b10c4ecfd9ec817c28e026eee864389b6cc63f4c88ff91909722bb4dd73d013",
   "bible/characters/Takane-Lui.md": "015a3f014ba32eb302984116b88bc618d98523807eddbcc9a86b530aa9cddf55",
   "bible/characters/Watson-Amelia.md": "39eaa60c85a34e224d067ecf0ba26c5dbd3416247025982ccb5e6cd2b650228e",
   "bible/characters/Yukihana-Lamy.md": "bd7bdb48bd860060cfd78c8b9411801d02168803968ad5e4bb8fa988e44f8102",
-  "bible/world/Advent-Pairs.md": "b5cd09c2d0e519d9a172a523819fe1740cf154970e2e7dc8d9c315712e7dba15",
+  "bible/world/Advent-Pairs.md": "126b3ece8373d9a66ee9b770e67f5094765cef4435f655e254e1b97236c7b0f9",
   "bible/world/AmeSame.md": "c750fb6fe94fe80c28cd82d253aa200a6c3c34d89269075a69b02df1428ab796",
   "bible/world/Bone-Bros.md": "7fa9161aeafb9ffa4d80aa174f2c15b9d69b23095701add3991a5f1c0c11f3f9",
   "bible/world/Concerts-and-Live-Events.md": "0040e6f6f63dc21aa2258d7b833044a365edd7d3eaaa15b9926cd305a8bd2dd0",
-  "bible/world/Cross-Branch-Friends.md": "6439fb2edcf584e876d2b8b2c440d5caf992204b516bad9714933dfad61c4396",
+  "bible/world/Cross-Branch-Friends.md": "f52fcd40895ed6f7d8ef3f6d6ad9dc4d0190bd98e99f1276875edeae977c83c5",
   "bible/world/FUWAMOCO.md": "d8bb40f76f0ecdc1c5b9a8c1b7b5ebe295d73459cb267f815ca6e91dd3d786cf",
   "bible/world/Fauna-and-Mumei-Pairs.md": "8a1fc2c0c86bc4d40ceaa94b36520877a94e85fe0308833cf5abcb087f410ee8",
   "bible/world/Hakos-Baelz-Pairs.md": "3a714066f75f40908837a8f075cdab279f128e96c7a1f7e9db1c77f88f3a6f8d",
@@ -51,12 +51,12 @@
   "bible/world/Myth-and-Kronii-Other-Pairs.md": "eac5d2965724543a235931873b4c03ab503f4f38ef86c21d501a61375a18251b",
   "bible/world/OctoClock.md": "b81982ab3e3dbab3cfb263a00f4a31a867ed63117d32c96fb620d34d0fed0bfb",
   "bible/world/Streaming-Life.md": "8e3a1281513c2464179a42eaabcf57266fb5d06f4605cbd32fb6aa7e3a2fb948",
-  "bible/world/TakaMori.md": "ecc3059926ff4a008dc102536b56f26ac3e53c38f5a44bef4d661301c37698b8",
+  "bible/world/TakaMori.md": "59f8a5f6322c933bd8c3c40490aedae95f99696849033187df11c77fe03c5924",
   "bible/world/TakoTori.md": "401f1dfba7cc619dbab92a2c3c2f5f2af7da4da555f5d29f8b04665e5a8e11ed",
   "bible/world/Time-Duo.md": "da8702e646d29834caf99d0d2205eb13c30c5d4e1dd501dbc2aa87aa3846edc9",
   "bible/world/Time-and-Death.md": "e1239bb9b6264defe6b070bb2d6a6d2b43539b191f835a133857822ccf646ac5",
   "bible/world/VTuber-Persona-and-Lore.md": "6c72058abfbee6fa4c876031b4b888de9677c02a818f95b9f3c85f14ad724a88",
-  "bible/world/holoX.md": "1ac995a7de11a06a4d1321d93f4f92966461093010dcddd804fc126bac4a22b8",
+  "bible/world/holoX.md": "9981df72d23dd24785d37426fb1c53b5f2e234a6efd705dc46d7db2c2f9d9312",
   "bible/world/hololive--Advent.md": "ebba5657247270ea4ed54389dd2842de474be3e14f47d7940e943b4ee6fa7e20",
   "bible/world/hololive--Justice.md": "d54b14489a885f5c8c4780cd5df6c20758070dccf19ae86ce15cd93a960628b4",
   "bible/world/hololive--Myth.md": "92ad62626d86b9e3b373c1e2e3648cdd6e2c0737737b90ea8eaa7e0c43ba2b9c",
@@ -164,7 +164,8 @@
     "hololive -Justice-",
     "hololive English -Justice- (former branch name)",
     "Justice",
-    "Bloodraven"
+    "Bloodraven",
+    "LYRA (\"III\" cover)"
    ],
    "status": "Elizabeth is an active hololive member. She has no supernatural abilities; her lore is a performed persona.",
    "status_interval": {
@@ -218,7 +219,8 @@
     "hololive -Myth- (graduated)",
     "hololive alum",
     "Myth",
-    "hololive English (former branch name)"
+    "hololive English (former branch name)",
+    "UMISEA (official 2023 roster)"
    ],
    "status": "She has no supernatural abilities; her lore is a performed persona. Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025.",
    "status_interval": {
@@ -385,7 +387,8 @@
     "hololive English -Project: HOPE- (former)",
     "hololive English (former branch name)",
     "BaeRyS",
-    "CHADCast"
+    "CHADCast",
+    "Star Flower"
    ],
    "status": "She has no supernatural abilities; her lore is a performed persona. IRyS is a VTuber and singer whose lore, a persona she plays for laughs, makes her a nephilim who was once the embodiment of hope in \"The Paradise\" and reawakened in an age of despair to deliver hope through her songs; she doesn't speak of what came before.",
    "status_interval": {
@@ -546,7 +549,8 @@
     "Myth",
     "CHADCast",
     "hololive English (former branch name)",
-    "Last Writes"
+    "Last Writes",
+    "LYRA (\"III\" cover)"
    ],
    "status": "She has no supernatural abilities; her lore is a performed persona. Calli is a VTuber whose lore, a persona she plays for laughs, makes her the Grim Reaper's first apprentice: when modern medicine gutted the reaping business, she became an idol-rapper VTuber to harvest souls through music and streams.",
    "status_interval": {
@@ -678,7 +682,8 @@
     "hololive -Myth-",
     "Myth",
     "hololive English (former branch name)",
-    "Octo'clock"
+    "Octo'clock",
+    "UMISEA (official 2023 roster)"
    ],
    "status": "She has no supernatural abilities; her lore is a performed persona. Ina is a VTuber whose lore, a persona she plays gently and for laughs, makes her an ordinary girl, despite how she looks, who picked up a strange book, gained the power to control tentacles and began hearing Ancient Whispers; the book is her floating companion, AO-chan.",
    "status_interval": {
@@ -784,7 +789,8 @@
     "hololive -Advent-",
     "hololive English -Advent- (former branch name)",
     "Advent",
-    "Last Writes"
+    "Last Writes",
+    "GreyScaleX"
    ],
    "status": "Shiori is an active hololive member. She has no supernatural abilities; her lore is a performed persona.",
    "status_interval": {
@@ -869,7 +875,8 @@
     "hololive -Myth-",
     "Myth",
     "hololive English (former branch name)",
-    "Rocku Wawa"
+    "Rocku Wawa",
+    "HOLOTORI"
    ],
    "status": "She has no supernatural abilities; her lore is a performed persona. Kiara is a VTuber whose lore, a persona she plays for laughs, makes her a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain; a phoenix can always be reborn.",
    "status_interval": {

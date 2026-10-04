@@ -2,13 +2,14 @@
 
 **作者規則（2026-10-04）：給作者的最終匯報一律用繁體中文。**
 
-狀態（2026-10-04 00:05 UTC）：**作者命令（10-03 23:15）：Claude 開始合併 GPT 累積的結果；作者 23:58 重置 GPT 額度，GPT 佇列已叫醒繼續跑。**
+狀態（2026-10-04 10:45 UTC）：**作者命令（10-03 23:15）：Claude 合併 GPT 累積的結果；GPT 佇列在跑（05:36 額度用完，10:02 由排程叫醒續跑）。**
 - 已合併並收錄：聲音審計 v1、v2、v3（處置在 `research/qa/voice-audit-dispositions.md`）；P1 計畫審查與 W1 工作流
   （`research/qa/workflow-dispositions.md`：轉換器 `tools/scene_to_elevenlabs.py`、腳本格式、V20 通過）；QA cohort
-  審計 myth1、myth3、justice、global（`research/qa/audit-*.md`，工具 `tools/audit_apply.py`）；新資料 R1–R7
-  （`research/qa/new-material-dispositions.md`）。關係網 33 人、686 條、**0 單向**。
-- GPT 佇列（`.gpt-quota.json`）：myth4（跑中）→ myth2 → promise → bridge-events → ties-external → jp → jp2 → voice v4
-  → holox。每跑完一個，照同樣方法合併：cohort／bridge 用 `tools/audit_apply.py <run>/gpt-free.md --tag <cohort>`
+  審計 myth1、myth3、justice、global、myth4、myth2、promise，bridge 審計 events、ties-external（`research/qa/audit-*.md`，
+  工具 `tools/audit_apply.py`）；新資料 R1–R7（`research/qa/new-material-dispositions.md`）。關係網 33 人、684 條、**0 單向**。
+  V06–V10、V16、V17、V20、V21 通過；仍擋：V11、V12、V15（等 jp／jp2／holox）、V13、V19（等 voice v4 與 voice-delivery.md）、
+  V14（範圍人工審查）、V18（表演表蓋章）。
+- GPT 佇列（`.gpt-quota.json`）：jp（跑中）→ jp2 → voice v4 → holox。每跑完一個，照同樣方法合併：cohort／bridge 用 `tools/audit_apply.py <run>/gpt-free.md --tag <cohort>`
   （先 --dry），聲音用 `tools/voice_apply.py`，再 promote-changed → export → qa_packets → span_check → web_check →
   validate，寫 `research/qa/audit-<cohort>.md`。
 - 全部聲音審計（含 v4）合併後：寫 `research/qa/voice-delivery.md`（V13/V19 attestation），再對審過的表演表

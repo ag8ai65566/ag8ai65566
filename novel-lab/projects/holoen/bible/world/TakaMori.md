@@ -52,22 +52,12 @@ paired an immortal phoenix with a reaper who could never keep her dead. [Author;
   gameplay teetee" and "Saving the World with @TakanashiKiara"; Myth's 5th anniversary collab
   (2025-09-13) and the 6th anniversary 3D live "Seasons From Within" (2026-09-19 PDT), where the two sang a
   duet cover together (setlist, secondary S7) and premiered "THIS IS MYTH" with Ina.
-- **Heard in 2025 (ASR, S6):** in the first Split Fiction stream (Kiara's channel, 2025-04-06) the
-  "parents" bit is alive: when Kobo shows up in chat, they tell her "Hi Kobo, go to bed! … What are you
-  doing out of bed? Go to bed!", wish her a happy anniversary, and apologize: "Sorry Kobo, you can't be part
-  of this because it's two players only. Next time…" When their game characters split into a fire mage and
-  an ice mage, they riff on their own song: "Fire and ice, yeah. Fire and ice, death and life." When the
-  split screen separates them: "Oh, double Takamori." [ASR S6, nE12CyKbaX8 0:07:49, 0:08:01, 0:22:36,
-  0:13:28; Unverified ASR comparison: explicit shared spans and independently supported speaker attribution are unavailable in this snapshot; who said which line is not separable from the transcript]
-- **Heard at the finale (ASR, S6; Calli's channel, 2025-05-02):** they bicker over an idiom like a long
-  married pair. One mangles it ("glass stones in stone houses or whatever. I forget the term"), they argue
-  over what it even means ("Okay, how about this? Don't cast stones when your body's made of glass."), and
-  it ends with "I don't know that one. All right. All right. Well then, whatever. We don't need any of these
-  metaphors." One of them, addressing Kiara (so presumably Calli), on her favorite of the studio's co-op games: "I'm an edgelord, Kiara. I like A Way
-  Out the best… but you know me, I'm edgy, but I still love power, friendship and stuff." Wrapping up:
-  "Split screen game finished by Takamori… because Takamori will always get together for these ones,
-  right?" "Let's play more in the future." Earlier in the ending: "We got published together."
-  "Together." [ASR S6, 2X8h7UI28mE 4:42:57–4:44:30, 4:36:00, 4:40:50, 4:31:35; Unverified ASR comparison: explicit shared spans and independently supported speaker attribution are unavailable in this snapshot]
+- **Unverified ASR lead (S6):** the transcript of the 2025-04-06 Split Fiction stream suggests a performed parent–child joke involving Kobo in chat and callbacks during the game. Exact speech and speaker assignments remain unapproved. [ASR S6, nE12CyKbaX8 0:07:49, 0:08:01, 0:22:36, 0:13:28; whisper small.en and medium.en reported, but explicit shared spans and separate speaker evidence are unavailable; machine transcription, not listening]
+- **Unverified ASR lead (S6; Calli's channel, 2025-05-02):** the transcript of the Split Fiction finale suggests the
+  pair bickering over a half-remembered idiom about glass houses, one of them naming A Way Out as her favorite of
+  the studio's co-op games, and closing remarks about finishing the game together and playing more in the
+  future. Exact speech and speaker assignments remain unapproved. [ASR S6, 2X8h7UI28mE 4:42:57–4:44:30, 4:36:00,
+  4:40:50, 4:31:35; two speakers, which machine transcription cannot attribute; not listening]
 - **How often (archive, S1):** mentions of each other in titles and descriptions: 33 (2020), 38 (2021),
   12 (2022), 22 (2023), 9 (2024), 9 (2025). Fewer than the first two years, but still one of the most
   steady pairs. [Observed S1; counts by Claude]
@@ -175,6 +165,7 @@ Black and orange side by side in a split-screen co-op; Kiara's "CALLI!" at full 
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:CLAUDE-SCOPE-002, myth1:MYTH-CREDIT-001, myth1:MYTH-EVENT-003, myth1:MYTH-QUOTE-001, myth1:MYTH-SCOPE-002 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:MYTH-SCOPE-004 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audits myth1/myth3, hand-applied by Claude:** myth1:MYTH-QUOTE-001 (S6 co-op lines marked as an unverified ASR comparison; the [SW] Description paraphrases them instead of quoting), myth3:MYTH-SCOPE-002 (public-performance wording kept, including the author's old-married-couple shorthand; claims of private closeness, loyalty and hidden feelings removed).**
+- **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:MYTH-QUOTE-001 (exact replacements; the adjacent finale bullet paraphrased by hand under the same finding; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The "old married couple" rhythm is the author's description; the evidence above supports its pieces
