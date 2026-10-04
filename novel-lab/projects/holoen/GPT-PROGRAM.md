@@ -3,6 +3,13 @@
 作者命令：規劃 GPT 之後所有審查、找新資料、規劃並統整 Sudowrite＋ElevenLabs 工作流；先全部交給 GPT 做，不必顧慮
 GPT 額度。Claude 的週額度快到上限，所以 Claude 只負責排程，**結果出來後先不合併，等作者下令再動工**。
 
+## 進度（2026-10-04 00:05 UTC）
+作者 10-03 23:15 下令合併；Claude 已合併 E、F、P1、W1、聲音 v1–v3、R1–R7、QA 審計 myth1/myth3/justice/global（見 NEXT.md）。
+作者 23:58 重置 GPT 額度，佇列繼續：myth4 → myth2 → promise → bridge-events → ties-external → jp → jp2 → voice v4 → holox。
+P1 之後的驗收輪次（M0–M7，約 13 個 GPT 視窗）等這批合併完再建：M0 工具與合併來源、M1a/b 合併驗收、H1 holoX cohort
+（已在佇列）、M2 世界卡、M3 事件與日期、M4 關係、M5a–c 聲音合併驗收、H2 聲音 v4（已在佇列）、M6 Sudowrite／音訊交接、
+M7 候選版驗收。沒有變動的輪次用雜湊沿用，不花 GPT 額度。
+
 ## 怎麼跑
 - 佇列在 `novel-lab/.gpt-quota.json`（不進 git）；`tools/gpt_autorun.py` 在背景一個接一個跑（不並行），額度用完就睡到
   重置時間再繼續，每跑完一個就把 run 目錄提交並推送（commit 標題「GPT output … (unattended queue, merge pending

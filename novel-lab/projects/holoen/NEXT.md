@@ -1,5 +1,18 @@
 # 接續步驟（給下一個 session 或排程喚醒的 Claude）
 
+狀態（2026-10-04 00:05 UTC）：**作者命令（10-03 23:15）：Claude 開始合併 GPT 累積的結果；作者 23:58 重置 GPT 額度，GPT 佇列已叫醒繼續跑。**
+- 已合併並收錄：聲音審計 v1、v2、v3（處置在 `research/qa/voice-audit-dispositions.md`）；P1 計畫審查與 W1 工作流
+  （`research/qa/workflow-dispositions.md`：轉換器 `tools/scene_to_elevenlabs.py`、腳本格式、V20 通過）；QA cohort
+  審計 myth1、myth3、justice、global（`research/qa/audit-*.md`，工具 `tools/audit_apply.py`）；新資料 R1–R7
+  （`research/qa/new-material-dispositions.md`）。關係網 33 人、686 條、**0 單向**。
+- GPT 佇列（`.gpt-quota.json`）：myth4（跑中）→ myth2 → promise → bridge-events → ties-external → jp → jp2 → voice v4
+  → holox。每跑完一個，照同樣方法合併：cohort／bridge 用 `tools/audit_apply.py <run>/gpt-free.md --tag <cohort>`
+  （先 --dry），聲音用 `tools/voice_apply.py`，再 promote-changed → export → qa_packets → span_check → web_check →
+  validate，寫 `research/qa/audit-<cohort>.md`。
+- 全部聲音審計（含 v4）合併後：寫 `research/qa/voice-delivery.md`（V13/V19 attestation），再對審過的表演表
+  `release.py stamp-sheets`（V18）。引句候選（新資料 R1–R6 列出的 12 個）要做兩模型音檔核對。
+- 之後：P1 建議的 M0–M7 驗收輪次（GPT-PROGRAM.md）。
+
 狀態（2026-10-02 17:05 UTC）：**作者命令：GPT 負責規劃之後所有審查、找新資料、規劃 Sudowrite＋ElevenLabs 工作流；Claude 週額度快到，結果出來先不合併，等作者下令。**計畫與佇列見 `GPT-PROGRAM.md`；`tools/gpt_autorun.py` 在背景跨額度重置跑完 25 個任務並逐一提交推送（log：scratchpad `gpt_autorun.log`）。排程喚醒時只確認 driver 還活著（`pgrep -f gpt_autorun`），沒在跑且佇列非空就重開，其他事都不做。
 
 狀態（2026-10-02 12:31 UTC）：第二批審查 C、D 已併入並收錄（Marine、Noel、Lamy、Botan、Vivi、JP Senpai Pairs 2；
