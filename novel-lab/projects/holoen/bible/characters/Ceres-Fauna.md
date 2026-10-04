@@ -117,8 +117,7 @@ is unacceptable, and has "a reputation for turning people into trees." [Official
   superchats read as quick, rhythmic lists of names and thank-yous (62 "thank you"s in the 12-minute closing
   window), with a sung "Happy Birthday" when a Sapling asks. [ASR F20]
 - **Timbre / pitch / pace (for voice performance):**
-  - Self-description: "I'm pretty soft-spoken. And talking in my head voice like this does not strain my
-    voice at all." [ASR F20, 1:14:21]. Secondary: soft-spoken and comforting, with a voice tone fans compare
+  - Self-description: She describes her speaking manner as soft-spoken. [ASR F20, 1:14:21]. Secondary: soft-spoken and comforting, with a voice tone fans compare
     with Yukihana Lamy's. [Observed F2 §Personality, secondary]
   - Measured (F20; four 2024 windows): median pitch about 280–306 Hz (283–300 in chat, 293 while building,
     306 in the horror game); in the cleaner windows p10–p90 is about 210–445 Hz. High in this project's
@@ -351,6 +350,7 @@ Nanashi Mumei (graduated 2025): Council and Promise genmate and recurring collab
 - **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-002, promise:PROMISE-EXPORT-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-QUOTE-001 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
 - **2026-10-04, scope wording (Claude, with the jp audit's CLAUDE-SCOPE-002):** the audio-status note no longer lists excluded topics; private details deliberately excluded.
+- **2026-10-04, cross-card QA audit (jp2, GPT xhigh), merged by Claude:** applied jp2:JP2-SCOPE-001 (exact replacements; dispositions in research/qa/audit-jp2.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. "Evil Fauna," the yandere lines and the forklift dramas come from the wiki's quote list (secondary, no

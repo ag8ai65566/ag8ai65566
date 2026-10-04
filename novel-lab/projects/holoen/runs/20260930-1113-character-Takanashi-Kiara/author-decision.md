@@ -23,3 +23,4 @@
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 5078ef548266）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 03:56 作者裁決收錄 final.md（sha256 484f98a5a881）：Author decision (2026-10-03): two-model audio check of research quotation candidates (dossier sample lines)
 - 2026-10-04 10:15 作者裁決收錄 final.md（sha256 3b10c4ecfd9e）：Author order 2026-10-03: Claude merges the GPT QA audits; bridge-ties-external findings applied
+- 2026-10-04 10:39 作者裁決收錄 final.md（sha256 4dd78d587b91）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied

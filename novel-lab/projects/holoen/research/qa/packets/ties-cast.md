@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git e4f3e81. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 1034e56. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Elizabeth Rose Bloodflame
@@ -92,7 +92,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/AZKi.md › Relationship Map`: | Nekomata Okayu | hololive collaborator | Mario Kart World practice together for Team Wind (2026-01-16); Okayu also played in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata FIX-R5-001, NEW-R5-004] |
 - `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | AZKi | hololive collaborator | Mario Kart World practice together for Team Wind (2026-01-16); a player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP kouhai | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
@@ -124,7 +124,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### AZKi × Shirogane Noel
 - `bible/characters/AZKi.md › Relationship Map`: | Shirogane Noel | hololive collaborator | A player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
 - `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP kouhai | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
@@ -247,7 +247,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Cecilia Immergreen × Nerissa Ravencroft
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nerissa Ravencroft: Unravel Two (2024; "AutoTune," a secondary pair name).
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Cecilia Immergreen: Unravel Two (2024; "AutoTune," a secondary pair name).
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Cecilia Immergreen: Unravel Two (2024; secondary pair name "AutoTune").
 
 ### Cecilia Immergreen × Ninomae Ina'nis
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Ninomae Ina'nis: a joking rival; Stranger of Paradise, and "SHALLYS" with FUWAMOCO on stage.
@@ -693,7 +693,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Gura:** Gura is Fauna's hololive oshi; Mario Kart ("GOOWA FWANA RACING," 2021), a Dark Souls race (2024) and "Drawing Hololive Members From Memory with @GawrGura!" (2024-12-30). Mumei and Gura: "【VOICE CHALLENGE】in the same room? 💙🤎 #gumei" (2023) and a "ROOM REVIEW" (2025-04-21). [Observed S2 §Likes; S1]
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: Gura was Fauna's oshi; they drew hololive members from memory four days before Fauna graduated, and Gura and Mumei did a "ROOM REVIEW" together in Mumei's last week.
 - `bible/world/Hakos-Baelz-Pairs.md › With Myth`: - **Gawr Gura (graduated):** an Urban Dictionary Challenge with Kronii, Mumei and Gura (2022). [S1]
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 - `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 
 ### Gawr Gura × Nerissa Ravencroft
@@ -780,7 +780,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/AmeSame.md › [SW] Other Names`: Ame and Gura, Gura and Ame, The Fish Tank, amesame
 - `bible/world/AmeSame.md › [SW] Rules`: At the 2026-09-30 baseline, Ame is an affiliate and Gura has graduated.
 - `bible/world/AmeSame.md › [SW] Rules`: Teasing can be crude and relentless, and Gura has become flustered when Ame turns teasing into praise.
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 - `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Hard Facts`: - 2026 baseline: pairs with Gura are memories; pairs with Ame are guest appearances.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Gura** (59 / 25 / 11 / 10 / 8 / 6): Kiara calls her "Goobidiba" and taught her German and Japanese, German swears included, tricking her into singing on lesson streams; Gura's 2020 Minecraft prank filled Kiara's KFP back room with chickens. Gura was HOLOTALK's 34th guest on 2025-04-30, the eve of her graduation ("three four," at last). Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. [Observed S2 §KFP, §Miscellaneous; S4 Gura §Gura's antics, secondary; S1]
@@ -2135,7 +2135,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Watson Amelia: Overwatch, VR field trips, and "ANIMALS" in Ame's last regular week.
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week.
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Ame:** Mumei and Ame: Overwatch and a VR field trip (2022), "ANIMALS with Ame & Moom" (2024-09-29, in Ame's last regular week). [Observed S1]
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 - `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 
 ### Nekomata Okayu × Ninomae Ina'nis
@@ -2160,7 +2160,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Nekomata Okayu × Shirogane Noel
 - `bible/characters/AZKi.md › Behavioral Traits`: - **Pun-ASMR host (2025-06-22):** she hosted a 3D pun-ASMR contest with Okayu, Noel, Oozora Subaru and Otonose Kanade; laughing meant losing. The title establishes the format and players, not particular jokes or the winner. [Archive metadata NEW-R5-004]
 - `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP kouhai | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
@@ -2235,10 +2235,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Advent.md › [SW] Description`: Inside the group: Nerissa calls Shiori her "wife" while Shiori plays hard to get (ShioRaven); Bijou calls Shiori "our glorious leader"
 
 ### Nerissa Ravencroft × Shishiro Botan
-- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shishiro Botan | — | A credited guest at Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata, yutura cI535pJp-TQ] |
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Shishiro Botan: a guest at her birthday live "Stray&Stay"
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shishiro Botan | — | Nerissa is credited as a guest in Botan's birthday 3D live "Stray&Stay"; the archive lists the broadcast under 2026-09-19. | [Archive metadata, yutura cI535pJp-TQ] |
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Shishiro Botan: Nerissa guested at Botan's birthday 3D live "Stray&Stay"
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | A credited guest in Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata NEW-R6-002] |
-- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Nerissa Ravencroft: a guest at her birthday 3D live "Stray&Stay"
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Nerissa Ravencroft: credited as a guest in Botan's birthday 3D live "Stray&Stay"
 
 ### Nerissa Ravencroft × Takanashi Kiara
 - `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2024-08-24 | -Breaking Dimensions- day 1: premieres "It's Not a Phase" with Fauna; "Beyond the way" with Kiara and Nerissa; day 2: her original "A New Start" | [Official M5] |
@@ -2473,8 +2473,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Shishiro Botan × Takanashi Kiara
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Takanashi Kiara | "Usada Kensetsu" (Usaken) | The Minecraft construction company of Pekora's circle Archived metadata dates an Usaken summer-festival planning and building collab with Kiara (2021-06-07). | [BO2] [Archive metadata, ckworks q_IXZIRCbwI] |
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu"
-- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Shishiro Botan | JP senpai | A fellow builder in Botan's Minecraft "Usada Kensetsu"; she joined the Usaken summer-festival planning and building collab (2021-06-07), and contemporary viewers describe Botan checking on Kiara's building team. | [Archive metadata NEW-R1-009; secondary clip record] |
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Shishiro Botan: fellow builders in Botan's Minecraft "Usada Kensetsu"
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Shishiro Botan | JP senpai | A fellow builder in the Minecraft company "Usada Kensetsu"; she joined the Usaken summer-festival planning and building collab (2021-06-07), and contemporary viewers describe Botan checking on Kiara's building team. | [Archive metadata NEW-R1-009; secondary clip record] |
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Shishiro Botan: fellow builders in the Minecraft company "Usada Kensetsu"
 - `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **Takanashi Kiara, Gawr Gura:** "Usada Kensetsu" (Kiara) and "Apex Predators" (Gura) are secondary-listed names; a joint Apex session is not established. [S2 Botan, secondary]
 
 ### Shishiro Botan × Watson Amelia
@@ -2495,6 +2495,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Yukihana-Lamy.md › Behavioral Traits`: 4. Horror with Shishiro Botan: secondary accounts describe Lamy's scared reactions and Botan's calm; in a scene, play it situationally (frightened, seeking reassurance), not as a personal relationship. [Observed LM2 §Personality, secondary]
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Shishiro Botan | 5th-gen genmate; NePoLaBo | Horror playthroughs (secondary); NePoLaBo 3D and R.E.P.O. | [LM2] [LM4] |
 - `bible/characters/Yukihana-Lamy.md › Story Engine`: 2. Botan drags Lamy through a haunted house while pretending not to enjoy her screams.
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: Lamy forms NePoLaBo with Botan, Polka and Nene.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror runs where Lamy is scared and Botan stays calm.
 - `bible/world/JP-Senpai-Pairs-2.md › Conflicts and Story Hooks`: 2. Botan runs a server event for the EN cast; Lamy hosts the after-party toast.
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2020-08 | 5th gen (Lamy, Nene, Botan, Polka; Aloe graduated the same month) | The JP generation just before Myth |

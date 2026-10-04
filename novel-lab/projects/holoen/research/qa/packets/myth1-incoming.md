@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git e4f3e81.
+Snapshot: git 1034e56.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Cori Malliope|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|TakaMori|CHADCast|Mor Mori|Takamori|Calliope|CallioP|Calli|森カリオペ|Mori|Mowi|LYRA)(
+Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Cori Malliope|Calliope Mori|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|Mor Mori|Takamori|Calliope|TakaMori|CHADCast|CallioP|森カリオペ|Calli|Mori|Mowi|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -315,7 +315,7 @@ Matched names: lolive -Myth-|Calli and Kiara|Kiara and Calli|Calliope Mori|Cori 
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).
 
 ### from FUWAMOCO
-- `bible/world/FUWAMOCO.md › [SW] Description`: Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo).
+- `bible/world/FUWAMOCO.md › [SW] Description`: Their public ties extend to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo).
 - `bible/world/FUWAMOCO.md › [SW] Rules`: A collab one twin joins alone (such as Fuwawa's 2026 trio with Calli and Gigi) is not a FUWAMOCO appearance.
 - `bible/world/FUWAMOCO.md › Shared Relationships`: - **Myth and Promise:** "FUWAMOCALLI" with Mori Calliope (a twin game show and Smash in 2023, a tea party, an off-collab karaoke in 2024); Fuwawa also joined Mori Calliope and Gigi Murin for a 2026 BOMBANANA collab ("2 Creatures + 1 Reaper"; Fuwawa's post, not a twin appearance); "Detective Dogs" with Watson Amelia (Escape Simulator, 2024-09-24); "WatchDog" with Ouro Kronii; "Fuwamoomco" with Nanashi Mumei (Overwatch, 2025-03-01); they helped Ceres Fauna on her last World Tree stream (2024-12-31); Kiara hosted them on HOLOTALK (2023). [Observed S1; S3; Mumei, Calli, Kiara archives]
 

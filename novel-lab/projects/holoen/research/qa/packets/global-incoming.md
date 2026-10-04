@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git e4f3e81.
+Snapshot: git 1034e56.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: loEN's later generations|hololive History 2023-2026|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|Myth's debut|hololive fes|Serendipity|Star Flower|EN concert|the merger|SUPER EXPO|world tour|Holodeath|aftertalk|PavoNashi|HOLOTORI|HoloJEI|MoRikka|K.I.R.A|IRySora|3D live|soranii|OKFAIR|KoMeHa|UMISEA|V3LVET|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|SUPER EXPO|the merger|world tour|EN concert|Holodeath|aftertalk|PavoNashi|HOLOTORI|soranii|IRySora|3D live|HoloJEI|K.I.R.A|MoRikka|KoMeHa|UMISEA|OKFAIR|V3LVET|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -206,14 +206,14 @@ Matched names: loEN's later generations|hololive History 2023-2026|Concerts and 
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai").
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Raora Panthera: Clubhouse Games (2024); with Moona, Raft and Monster Hunter Wilds as "V3LVET"
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii at Serendipity.
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Shishiro Botan: a guest at her birthday live "Stray&Stay"
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Shishiro Botan: Nerissa guested at Botan's birthday 3D live "Stray&Stay"
 - `bible/characters/Nerissa-Ravencroft.md › Background Timeline`: | 2025-08-29 | Advent 2nd-anniversary 3D live "On the Run!" ("The Story of Advent") | [Observed N2 §2025] |
 - `bible/characters/Nerissa-Ravencroft.md › Background Timeline`: | 2026-02-26 | Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). | [Official NEW-R3-001; archive metadata] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Gigi Murin | Collaborator ("BeatDown," "SoundChaser") | A joke "child," Nerigi, at Gigi's 3D live | [Observed N2 §Relationships] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Elizabeth Rose Bloodflame | Justice member ("BloodRaven"); her 2026 Serendipity duo partner | Her "mortal enemy (lore)"; their "Rondo Revolution" cover; World Tour '24 panels together; Nerissa praises her "kindness and encouraging attitude" ("She's always looking out for me, even though I'm the senpai"); building Liz's Mii: "she's the leader of justice after all" | [Official N21; S7 tour report via world card; ASR N20] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Raora Panthera | Justice kouhai | Co-presenters (with IRyS) of the official Serendipity merchandise infomercial (May 2026). | [Archive metadata, ckworks ew00E7t4Dow] |
-- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shishiro Botan | — | A credited guest at Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata, yutura cI535pJp-TQ] |
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shishiro Botan | — | Nerissa is credited as a guest in Botan's birthday 3D live "Stray&Stay"; the archive lists the broadcast under 2026-09-19. | [Archive metadata, yutura cI535pJp-TQ] |
 
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock, UMISEA (official 2023 roster)
@@ -281,7 +281,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|Concerts and 
 - `bible/characters/Shishiro-Botan.md › [SW] Background`: Archived metadata and secondary concert reports record her with the English cast in Left 4 Dead 2 (2022) and an Overwatch 2 team (2023) with IRyS, on Calli's HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and as a guest at Ina's birthday 3D live "EVERMORE"
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label.
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Ninomae Ina'nis: a guest at Ina's birthday 3D live "EVERMORE"
-- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Nerissa Ravencroft: a guest at her birthday 3D live "Stray&Stay"
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Nerissa Ravencroft: credited as a guest in Botan's birthday 3D live "Stray&Stay"
 - `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2025 | 1.5 million subscribers (02-14, secondary); originals "Simulacre," "Gaotteko!" and "boundary"; a guest at Ina's birthday 3D live "EVERMORE" (05-21), singing "storia" with Ina and Tsunomaki Watame per a secondary set list; the first "#ホロ金策サバイバル" | [Observed BO2] [BO5] [EVERMORE report] [ASR BO20] |
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Gawr Gura (graduated) | "Apex Predators" (a secondary-listed pair label) | A joint Apex session is not established here | [BO2] |
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Ninomae Ina'nis | — | A guest at Ina's birthday 3D live "EVERMORE" (2025); "storia" with Ina and Watame (secondary set list) | [BO5 I-J11Da5ONY] [EVERMORE report] |

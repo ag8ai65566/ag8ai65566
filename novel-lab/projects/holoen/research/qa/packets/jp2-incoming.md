@@ -1,9 +1,9 @@
 # Audit packet: jp2 (incoming claims)
 
-Snapshot: git e4f3e81.
+Snapshot: git 1034e56.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Kiara|Houshou Marine|Botan and IRyS|Shirogane Noel|Shishiro Botan|Kikirara Vivi|Yukihana Lamy|Noel-danchou|Lamy and Ina|Noel Deluxe|Shishiron|Lamy-mama|Shishiro|綺々羅々ヴィヴィ|Senchou|Maririn|Danchou|Marine|Danchō|Senchō|Sencho|雪花ラミィ|獅白ぼたん|宝鐘マリン|白銀ノエル|Botan|Wamy|Lamy|Vivi|Noel)(
+Matched names:  Senpai Pairs 2|Noel and Calliope|Vivi and FUWAMOCO|Marine and Kiara|Botan and IRyS|Houshou Marine|Shirogane Noel|Shishiro Botan|Yukihana Lamy|Kikirara Vivi|Noel-danchou|Lamy and Ina|Noel Deluxe|Lamy-mama|Shishiron|Shishiro|綺々羅々ヴィヴィ|Danchou|Senchou|Maririn|Danchō|Senchō|Sencho|Marine|白銀ノエル|雪花ラミィ|Botan|宝鐘マリン|獅白ぼたん|Wamy|Vivi|Noel|Lamy)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
@@ -18,7 +18,7 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/AZKi.md › Relationship Map`: | Kikirara Vivi | — | A GeoGuessr collab on Vivi's channel (2026-08-22). | [Archive metadata, holostats dzO2LaVBmMY] |
 
 ### from Ceres Fauna
-- `bible/characters/Ceres-Fauna.md › Voice Profile`: - Self-description: "I'm pretty soft-spoken. And talking in my head voice like this does not strain my voice at all." [ASR F20, 1:14:21]. Secondary: soft-spoken and comforting, with a voice tone fans compare with Yukihana Lamy's. [Observed F2 §Personality, secondary]
+- `bible/characters/Ceres-Fauna.md › Voice Profile`: - Self-description: She describes her speaking manner as soft-spoken. [ASR F20, 1:14:21]. Secondary: soft-spoken and comforting, with a voice tone fans compare with Yukihana Lamy's. [Observed F2 §Personality, secondary]
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Shirogane Noel | JP senior | Wiki trivia says Fauna admired her and wanted to collab (secondary; not verified in review, no collab recorded) | [Observed F2 §Trivia, secondary] |
 
 ### from Elizabeth Rose Bloodflame
@@ -34,7 +34,7 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/Fuwawa-Abyssgard.md › Core Drive`: - **Want:** with Mococo, to protect the Ruffians' smiles; their debut list held more than a hundred goals (sing with Houshou Marine, a solo concert, an anime song, a scale figure). [Official FW1, FW4] [Observed FW2 §Hopes and dreams, secondary]
 - `bible/characters/Fuwawa-Abyssgard.md › Behavioral Traits`: 6. Her oshi is Houshou Marine; she loves visual novels, retro games, Japanese sweets and matcha. [Observed FW2 §Likes and dislikes, secondary]
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Houshou Marine | Her oshi (secondary) | A Touhou off-collab (2024-04-30, archived x7gRHgQ0yI0); Marine's solo concert watchalong (2024-12-07); a guest at their birthday concert (2025) | [Observed FW2; FW3] |
-- `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
+- `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "TREVIAN KNIGHT" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
 
 ### from Gawr Gura
 - `bible/characters/Gawr-Gura.md › [SW] Background`: Her lore, which she played for laughs, is a persona, not literal: a descendant of the Lost City of Atlantis who swam to land because it was "so boring down there," bought her clothes and shark hat in the human world, and talks to marine life.
@@ -116,7 +116,7 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Houshou Marine: archived metadata records a Touhou off-collab and Mario Party with Nerissa (2024).
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Kikirara Vivi: #holoREPO (2025).
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Shirogane Noel: a team Mario Kart event (2023).
-- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "Très Bien Night" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
+- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Kikirara Vivi | JP members | Marine: a Touhou off-collab (2024-04-30), Mario Party with Nerissa (2024-06-17), a watch-along of her solo concert (2024-12-07), a "Chatter Chatter" dance short (2026); Noel: "Yuru Holo" team Mario Kart (2023-12-12) and a "TREVIAN KNIGHT" dance short (2025); Vivi: FLOW GLOW's debut watch-along (2024) and #holoREPO (2025) | [S1 x7gRHgQ0yI0, FLL7e1-RPGo, zQdsLXE4ZQ8, PtaFGDOaj0k, Janl2FCKmsg, 8RjOCCH2sac, gAj77STI2oc, Z5cpzbdsLDE] |
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: English-lesson guests Marine, AZKi, La+, Iroha, Lui and Chloe (2022); HOLOYOI guests Lui, Chloe, Noel and Botan (2023).
@@ -145,17 +145,17 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Yukihana Lamy: a "Lukewarm" duet cover (2024).
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Houshou Marine | — | Marine gave her the nickname "Okanyan" (official profile); a joint marshmallow-reading stream on her recommended list | [Official OK1] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hoshimachi Suisei | "MOMAS" | With Sakura Miko, Houshou Marine and Hiodoshi Ao; PlateUp! on her 2025 team | [OK2] [OK4] |
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP kouhai | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Kikirara Vivi | — | A 2026-08-25 collab on Vivi's channel framed around やーらし. | [Archive metadata, ckworks jlt6HHrZnpE] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Yukihana Lamy | JP kouhai | A "Lukewarm" duet cover on Okayu's channel (2024-02-01). | [Member-upload title TIE-004] |
 
 ### from Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Houshou Marine: one of her oshis (secondary); Mario Party Superstars with FUWAMOCO (2024).
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Shishiro Botan: a guest at her birthday live "Stray&Stay"
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Shishiro Botan: Nerissa guested at Botan's birthday 3D live "Stray&Stay"
 - `bible/characters/Nerissa-Ravencroft.md › Behavioral Traits`: 3. She is an open fangirl of Houshou Marine and Takanashi Kiara (a self-described KFP member); in her lore she worked at KFP before hololive. [Observed N2 §Likes and dislikes, §Lore, secondary]
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: | Fangirling (Kiara, Marine) | Fast, flustered, delighted | (no verified line; see Relationship Map) |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Houshou Marine | JP senior and oshi |  off-collab with Marine and FUWAMOCO (2024) | [Observed N2; N3 title] |
-- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shishiro Botan | — | A credited guest at Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata, yutura cI535pJp-TQ] |
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shishiro Botan | — | Nerissa is credited as a guest in Botan's birthday 3D live "Stray&Stay"; the archive lists the broadcast under 2026-09-19. | [Archive metadata, yutura cI535pJp-TQ] |
 
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine and Sakamata Chloe: UMISEA.
@@ -187,11 +187,11 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Yukihana Lamy, Houshou Marine | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### from Takanashi Kiara
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Shishiro Botan: fellow builders in Botan's Minecraft "Usada Kensetsu"
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Shishiro Botan: fellow builders in the Minecraft company "Usada Kensetsu"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: HOLOTALK guests include Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ ("Glow in the Dark"), Chloe ("WILDCARD"), Koyori ("MIRAGE") and Iroha (a guest at her 2024 and 2025 lives).
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Oozora Subaru | JP seniors | Early HOLOTALK guest (Marine); first EN×JP collab (Subaru, 2020) | [Observed T2 §2020, secondary] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Shirogane Noel | JP seniors | HOLOTALK's first guest Marine ("#marinarasauce," 2020-11-20) and 22nd guest Noel (2022-03-05); a "MIRAGE" dance short with Marine (2024) | [S1 3HwaqbdKO1s, toe_PmrDWBU, tzVgzvV0cVo] |
-- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Shishiro Botan | JP senpai | A fellow builder in Botan's Minecraft "Usada Kensetsu"; she joined the Usaken summer-festival planning and building collab (2021-06-07), and contemporary viewers describe Botan checking on Kiara's building team. | [Archive metadata NEW-R1-009; secondary clip record] |
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Shishiro Botan | JP senpai | A fellow builder in the Minecraft company "Usada Kensetsu"; she joined the Usaken summer-festival planning and building collab (2021-06-07), and contemporary viewers describe Botan checking on Kiara's building team. | [Archive metadata NEW-R1-009; secondary clip record] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Yukihana Lamy | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### from Takane Lui
@@ -225,7 +225,7 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Calli's senpai: Suisei. Kiara's oshi: Pekora. Nerissa's oshi: Marine (and Kiara).
 
 ### from FUWAMOCO
-- `bible/world/FUWAMOCO.md › [SW] Description`: Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo).
+- `bible/world/FUWAMOCO.md › [SW] Description`: Their public ties extend to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo).
 - `bible/world/FUWAMOCO.md › Shared Relationships`: - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi); Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori, "FUWAMOKOYO"); Akai Haato, Tsunomaki Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
 
 ### from JP Senpai Pairs

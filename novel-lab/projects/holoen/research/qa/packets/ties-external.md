@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git e4f3e81. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 1034e56. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Amane Kanata
@@ -260,9 +260,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Houshou Marine × Oozora Subaru
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Oozora Subaru | JP seniors | Early HOLOTALK guest (Marine); first EN×JP collab (Subaru, 2020) | [Observed T2 §2020, secondary] |
 
-### Houshou Marine × Shiranui Flare
-- `bible/characters/Shirogane-Noel.md › [SW] Background`: She debuted on 2019-08-08 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Houshou Marine.
-
 ### Houshou Marine × Usada Pekora
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Kikirara Vivi | "MVP" with Usada Pekora | An archived September 2026 "Hatsukoi Cider" upload record names the trio (secondary record, run D) | [MA2] [MVP upload record] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Usada Pekora | hololive Fantasy; "PekoMari" (secondary) | Mario Tennis with Pekora as coach (2026) | [MA4 GWZrQZ6leZI] |
@@ -272,7 +269,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Houshou Marine | "MVP" with Pekora | An archived 2026 performance record ("Hatsukoi Cider") names the trio | [VI2] [MVP upload record] |
 - `bible/characters/Kikirara-Vivi.md › [SW] Background`: She plays games with Usada Pekora ("PekoVivi," secondary), and an archived 2026 performance record names Marine, Vivi and Pekora as MVP.
 - `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Houshou Marine: MVP with Pekora (an archived 2026 performance record).
-- `bible/characters/Shirogane-Noel.md › [SW] Background`: She debuted on 2019-08-08 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Houshou Marine.
 - `bible/world/JP-Senpai-Pairs-2.md › Among themselves`: - Marine and Vivi: "MVP" with Usada Pekora; an archived September 2026 "Hatsukoi Cider" upload record names the trio. [S2] [MVP upload record]
 
 ### Houshou Marine × Yuzuki Choco
@@ -467,7 +463,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Momosuzu Nene × Shishiro Botan
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo.
-- `bible/characters/Yukihana-Lamy.md › [SW] Background`: She debuted on 2020-08-12 in hololive's 5th generation with Shishiro Botan, Omaru Polka and Momosuzu Nene (with whom she forms NePoLaBo).
 
 ### Momosuzu Nene × Yukihana Lamy
 - `bible/characters/Shishiro-Botan.md › [SW] Background`: She debuted on 2020-08-14 as a fifth-generation member; she forms NePoLaBo with Yukihana Lamy, Omaru Polka and Momosuzu Nene.
@@ -565,12 +560,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Omaru Polka × Shishiro Botan
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo.
-- `bible/characters/Yukihana-Lamy.md › [SW] Background`: She debuted on 2020-08-12 in hololive's 5th generation with Shishiro Botan, Omaru Polka and Momosuzu Nene (with whom she forms NePoLaBo).
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: Lamy forms NePoLaBo with Botan, Polka and Nene.
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2020-08 | 5th gen (Lamy, Nene, Botan, Polka; Aloe graduated the same month) | The JP generation just before Myth |
 
 ### Omaru Polka × Yukihana Lamy
 - `bible/characters/Shishiro-Botan.md › [SW] Background`: She debuted on 2020-08-14 as a fifth-generation member; she forms NePoLaBo with Yukihana Lamy, Omaru Polka and Momosuzu Nene.
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Momosuzu Nene, Omaru Polka | 5th-gen genmates; NePoLaBo; "Magamaga's" with Nene (secondary) | NePoLaBo 3D party (2026); NePoX (2026); a Yukiyozuki presentation to Nene (2026) | [LM4 ua8QKKIXT2s, Ekdsnb2aWY4] [Official NePoX page] |
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: Lamy forms NePoLaBo with Botan, Polka and Nene.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo (a 3D party, 2026); "Magamaga's" with Nene (secondary).
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2020-08 | 5th gen (Lamy, Nene, Botan, Polka; Aloe graduated the same month) | The JP generation just before Myth |
 
@@ -629,7 +625,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nakiri-Ayame.md › [SW] Background`: "melting" and "Hanafubuki"; with Shirakami Fubuki and Ookami Mio as AyaFubuMi she performed "Ame Tokimeki Koimoyō," reported as a 2025 anime opening theme.
 
 ### Shiranui Flare × Shirogane Noel
-- `bible/characters/Houshou-Marine.md › [SW] Background`: She debuted on 2019-08-11 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Shirogane Noel; secondary reporting records 3 million subscribers in 2024 and 4 million in 2025.
 - `bible/characters/Shirogane-Noel.md › Behavioral Traits`: 4. "NoeFure" with Shiranui Flare: their pair label appears in Noel's own stream titles (Elden Ring Nightreign, a puzzle game, a meal collab, a fes. medley). Any mock-jealous exchanges are performed on-stream comedy, not evidence of a private relationship. [NO4 titles] [Observed NO2 §Personality, secondary]
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Shiranui Flare | hololive Fantasy; "NoeFure" (her own titles) | Elden Ring Nightreign with Pekora (2025), a puzzle game and meal collabs (2024), a fes. medley | [NO4] |
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Shiranui Flare: hololive Fantasy genmate ("NoeFure," a label from Noel's own stream titles); any mock jealousy is on-stream comedy.
@@ -638,7 +633,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Sakamata-Chloe.md › Behavioral Traits`: 2. Taunt-loving but sweet: compared by fans to Shirogane Noel, Momosuzu Nene and Tsunomaki Watame. [Observed CH2 §Personality, secondary]
 
 ### Shirogane Noel × Usada Pekora
-- `bible/characters/Houshou-Marine.md › [SW] Background`: She debuted on 2019-08-11 in hololive's 3rd generation, the "hololive Fantasy" group with Usada Pekora, Shiranui Flare and Shirogane Noel; secondary reporting records 3 million subscribers in 2024 and 4 million in 2025.
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Shiranui Flare | hololive Fantasy; "NoeFure" (her own titles) | Elden Ring Nightreign with Pekora (2025), a puzzle game and meal collabs (2024), a fes. medley | [NO4] |
 
 ### Shishiro Botan × Tsunomaki Watame

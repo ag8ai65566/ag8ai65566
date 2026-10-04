@@ -2,3 +2,4 @@
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 70c0e71414d3）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
 - 2026-10-04 05:16 作者裁決收錄 final.md（sha256 35b0b7f66dea）：Author decision (2026-10-03): cross-card QA audit promise merged by Claude
 - 2026-10-04 05:33 作者裁決收錄 final.md（sha256 aeeee4dd9074）：Author decision (2026-10-03): bridge-events audit merged by Claude
+- 2026-10-04 10:39 作者裁決收錄 final.md（sha256 e63d3909bc12）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied

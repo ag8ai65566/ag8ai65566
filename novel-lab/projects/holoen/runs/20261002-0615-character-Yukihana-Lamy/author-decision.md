@@ -6,3 +6,4 @@
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 776a2176961a）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 5cfa78ac2e54）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 bd7bdb48bd86）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
+- 2026-10-04 10:39 作者裁決收錄 final.md（sha256 d986b2b09357）：Author order 2026-10-03: Claude merges the GPT QA audits; jp2 cohort findings applied

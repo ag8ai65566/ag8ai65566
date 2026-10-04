@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git e4f3e81.
+Snapshot: git 1034e56.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Calli and Gura|City Pop Shark|The Fish Tank|Watson Amelia|Amelia Watson|Gura and Ame|Ame and Gura|Gremlin Ame|Goobidiba|ワトソン・アメリア|Bone Bros|Gawr Gura|Same-chan|Samegaki|HoloMyth|holoMyth|amesame|Amechan|AmeSame|Amelia|がうる・ぐら|Gooba|Myth|Goob|Gura|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Calli and Gura|City Pop Shark|Amelia Watson|The Fish Tank|Watson Amelia|Gura and Ame|Ame and Gura|Gremlin Ame|Goobidiba|Gawr Gura|Same-chan|Bone Bros|ワトソン・アメリア|holoMyth|Samegaki|HoloMyth|Amechan|AmeSame|amesame|Amelia|がうる・ぐら|Gooba|Myth|Goob|Gura|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -247,7 +247,7 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ca
 
 ### from JP Senpai Pairs 2
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA.
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 - `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Ninomae Ina'nis, Gawr Gura:** UMISEA, the ocean unit (official 2023 roster: Minato Aqua, Marine, Sakamata Chloe, Gura and Ina); Calli's English lesson #01 (Ina); a guest at Ina's "Pleides" (2024); "SHINKIRO" with Gura (anime MV on Marine's channel, 2023-11-12, credited to both). The "GuraMarine" pair name is wiki-listed only. [Official UMISEA roster] [S1 9ehwhQJ50gs, 3n9igJnSXtQ] [S2 Marine §Relationships, secondary]
 - `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **Takanashi Kiara, Gawr Gura:** "Usada Kensetsu" (Kiara) and "Apex Predators" (Gura) are secondary-listed names; a joint Apex session is not established. [S2 Botan, secondary]
 

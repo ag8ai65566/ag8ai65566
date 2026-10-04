@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git e4f3e81.
+Snapshot: git 1034e56.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|hololive -Advent-|Fuwawa and Mococo|FUWAMOCO MORNING|Mococo Abyssgard|Fuwawa Abyssgard|Abyssgard twins|Demon of Sound|The Fluffy One|Shiori Novella|The Fuzzy One|Demon of Soup|The Archiver|Advent Pairs|Diamond Dogs|Sound Hounds|Koseki Bijou|FUWAMOCALLI|Last Writes|Grindstone|Rocku Wawa|holoAdvent|Fluffy One|GreyScaleX|Bloodraven|ShioRaven|JewelBird|Fuwa-chan|Goth Rock|Adventrix|Moco-chan|Lil'Rock|The Cell|Fuwa-nee|FUWAMOCO|Pen Pups|Mogojyan|Shiori~n|Shiorin|Nerissa|Fuwawa|Mococo|Mogogo|Advent|Shiori|Koseki|Beejoe|Biboo|Rissa|B.F.F|Beebs|Oobib|Bijou|FWMC|Pero|GAGA|Neri)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|Jewel of Emotions|hololive -Advent-|Mococo Abyssgard|FUWAMOCO MORNING|Fuwawa Abyssgard|Abyssgard twins|Shiori Novella|The Fluffy One|Demon of Sound|Demon of Soup|The Fuzzy One|The Archiver|Diamond Dogs|Koseki Bijou|Sound Hounds|Advent Pairs|Last Writes|FUWAMOCALLI|GreyScaleX|Bloodraven|Rocku Wawa|Fluffy One|holoAdvent|Grindstone|Goth Rock|Moco-chan|Adventrix|JewelBird|ShioRaven|Fuwa-chan|Shiori~n|FUWAMOCO|Fuwa-nee|Pen Pups|The Cell|Mogojyan|Lil'Rock|Shiorin|Nerissa|Fuwawa|Mococo|Koseki|Mogogo|Shiori|Advent|Beejoe|Oobib|Biboo|Rissa|Beebs|B.F.F|Bijou|Neri|FWMC|GAGA|Pero)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -289,7 +289,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|holo
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | FUWAMOCO, Hakos Baelz | — | Participants in the "Yuru Holo" team Mario Kart event (2023; not necessarily one team); FUWAMOCO danced to "TREVIAN KNIGHT" (2025-09-30) | [NO5 Evg-T2BUIDM, 8RjOCCH2sac] |
 
 ### from Shishiro Botan
-- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Nerissa Ravencroft: a guest at her birthday 3D live "Stray&Stay"
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Nerissa Ravencroft: credited as a guest in Botan's birthday 3D live "Stray&Stay"
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | A credited guest in Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata NEW-R6-002] |
 
 ### from Takanashi Kiara

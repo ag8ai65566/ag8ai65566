@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git e4f3e81.
+Snapshot: git 1034e56.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|holoJustice|FiddleFlame|Autofister|TimeChaser|Erby Berby|Gigi Murin|Immerhater|Bloodraven|Elizabeth|Da Fister|Raviolin|Gi Murin|Cecilia|Justice|G Pain|HoloEU|GeeGee|Lizzie|Raora|B.F.F|Gigi|Cece|Ceci|CCGG|Rara|LYRA|RPGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|holoJustice|FiddleFlame|Bloodraven|Gigi Murin|Immerhater|Erby Berby|Autofister|TimeChaser|Elizabeth|Da Fister|Gi Murin|Raviolin|Cecilia|Justice|GeeGee|Lizzie|HoloEU|G Pain|B.F.F|Raora|CCGG|Gigi|RPGG|Cece|Ceci|Rara|LYRA|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -148,7 +148,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Groups`: hololive -Advent-, Advent, hololive English (former branch name), Bloodraven
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai").
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gigi Murin: duo partner with a joke "child,"
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Cecilia Immergreen: Unravel Two (2024; "AutoTune," a secondary pair name).
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Cecilia Immergreen: Unravel Two (2024; secondary pair name "AutoTune").
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Raora Panthera: Clubhouse Games (2024); with Moona, Raft and Monster Hunter Wilds as "V3LVET"
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Gigi Murin | Collaborator ("BeatDown," "SoundChaser") | A joke "child," Nerigi, at Gigi's 3D live | [Observed N2 §Relationships] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Elizabeth Rose Bloodflame | Justice member ("BloodRaven"); her 2026 Serendipity duo partner | Her "mortal enemy (lore)"; their "Rondo Revolution" cover; World Tour '24 panels together; Nerissa praises her "kindness and encouraging attitude" ("She's always looking out for me, even though I'm the senpai"); building Liz's Mii: "she's the leader of justice after all" | [Official N21; S7 tour report via world card; ASR N20] |
@@ -254,7 +254,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Hakos Baelz:** secondary references record her performed maternal-role jokes with Ookami Mio and Kureiji Ollie (her "mom" and "another mom"); with Ollie she sang "Countach" (with Gigi, -All for One- 2025) and played HoloEarth (2024); "HELP!!" with Kobo Kanaeru and Elizabeth at Serendipity (2026); "High Tide" with IRyS, Moona Hoshinova and Hoshimachi Suisei (-Breaking Dimensions- 2024); "Kakumei Dualism" with Natsuiro Matsuri in STAGE 3 of the 2026 fes (a secondary setlist; also her after-talk); Reanimal with Tokoyami Towa (2026); Lethal Company with Kaela Kovalskia (2023–24). Units (secondary): "holorodents" with Usada Pekora and Ayunda Risu; "RoBaelz" with HOLOSTARS' Yukoku Roberu. [Bae file HB2, HB3, HB5, HB20]
 
 ### from FUWAMOCO
-- `bible/world/FUWAMOCO.md › [SW] Description`: Close to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo).
+- `bible/world/FUWAMOCO.md › [SW] Description`: Their public ties extend to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo).
 - `bible/world/FUWAMOCO.md › [SW] Rules`: A collab one twin joins alone (such as Fuwawa's 2026 trio with Calli and Gigi) is not a FUWAMOCO appearance.
 - `bible/world/FUWAMOCO.md › Shared Relationships`: - **Myth and Promise:** "FUWAMOCALLI" with Mori Calliope (a twin game show and Smash in 2023, a tea party, an off-collab karaoke in 2024); Fuwawa also joined Mori Calliope and Gigi Murin for a 2026 BOMBANANA collab ("2 Creatures + 1 Reaper"; Fuwawa's post, not a twin appearance); "Detective Dogs" with Watson Amelia (Escape Simulator, 2024-09-24); "WatchDog" with Ouro Kronii; "Fuwamoomco" with Nanashi Mumei (Overwatch, 2025-03-01); they helped Ceres Fauna on her last World Tree stream (2024-12-31); Kiara hosted them on HOLOTALK (2023). [Observed S1; S3; Mumei, Calli, Kiara archives]
 - `bible/world/FUWAMOCO.md › Shared Relationships`: - **Justice:** Raora Panthera, their Serendipity 2026 unit partner in B.F.F; Mococo's pair labels include "GigiMoco" with Gigi and "Cecemoco" with Cecilia; Cecilia and Mococo played Chrono Trigger together in 2026. [Official S4] [Observed S1; S3]

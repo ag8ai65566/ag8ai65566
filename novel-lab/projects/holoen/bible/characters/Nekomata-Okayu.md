@@ -180,7 +180,7 @@ on the world card "JP Senpai Pairs."
 | Takane Lui | — | Harry Potter watch-alongs to introduce Okayu to the series (2025-11-24 and others); "Shaccho" is a first-model ASR rendering whose direction is unconfirmed, so it is not used | [Lui channel Lj0MZFpHitQ] |
 | Koseki Bijou | Advent kouhai | Credited participants together in the official purple-themed 3D variety program #パープル争奪戦 (2026-07-23). | [Archive metadata, ckworks Blen0XcU9gg] |
 | AZKi | hololive collaborator | Mario Kart World practice together for Team Wind (2026-01-16); a player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
-| Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+| Shirogane Noel | JP kouhai | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 | Kikirara Vivi | — | A 2026-08-25 collab on Vivi's channel framed around やーらし. | [Archive metadata, ckworks jlt6HHrZnpE] |
 | Sakamata Chloe | — | Chorus on Chloe's "Bling-Bang-Bang-Born" cover (2025-01-24). | [Archive metadata, ragtag wxnTKRkpePs] |
 | Yukihana Lamy | JP kouhai | A "Lukewarm" duet cover on Okayu's channel (2024-02-01). | [Member-upload title TIE-004] |
@@ -307,6 +307,7 @@ Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; the
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 - **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:CLAUDE-SCOPE-002, jp:JP-CREDIT-001, jp:JP-TIE-001 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (jp2, GPT xhigh), hand-applied by Claude:** jp2:JP2-TIE-001 for Noel only (Okayu debuted before Noel, matching Noel's own row); AZKi's rows stay "hololive collaborator" per jp:JP-TIE-001.
 
 ## Open Questions
 1. The OkaGigi festival banter rests on secondary clip metadata; its dialogue is not quoted.
