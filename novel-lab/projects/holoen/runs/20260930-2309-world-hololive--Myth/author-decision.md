@@ -5,3 +5,4 @@
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 2093eaad2fde）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 816b0169918d）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
 - 2026-10-04 03:43 作者裁決收錄 final.md（sha256 522515814ba5）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
+- 2026-10-04 05:33 作者裁決收錄 final.md（sha256 92ad62626d86）：Author decision (2026-10-03): bridge-events audit merged by Claude

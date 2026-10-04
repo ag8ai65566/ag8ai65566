@@ -1,14 +1,14 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "d0295ae",
+ "commit": "6292ab4",
  "files": {
   "bible/characters/AZKi.md": "f9ef7601a7527129e85da4f52ba7856ad93cbcf54d3b3d610427104d358f9df4",
   "bible/characters/Cecilia-Immergreen.md": "0d41b3b7f2f6760c40cf530afb58f5c0c92cd83ea8c1be6a885074c50686aeb9",
   "bible/characters/Ceres-Fauna.md": "1cb286c79b4db366f3d47a78a104702c33780d9b19bf924c23a4c2e37a300239",
   "bible/characters/Elizabeth-Rose-Bloodflame.md": "f3252e183a94a04380e7dd46d4a7ecc5e77bb0351f1f5087627aafc8a5188a1d",
   "bible/characters/Fuwawa-Abyssgard.md": "83cb10830ca9bb628109531fc9476654903031a563254c2b809a53041259ef0a",
-  "bible/characters/Gawr-Gura.md": "8a0f3c36c099499286ff9c76dcc5f929cbc358890ebad73db9b8f33130af4749",
+  "bible/characters/Gawr-Gura.md": "60f2c49c8e28fa701f17407ab2a07bc9fbf4e336f87bb681fb78a16537c443be",
   "bible/characters/Gigi-Murin.md": "b9f0b8a18c28acc5715b10521d4006d67734efa7c9fce411bcbec91336630312",
   "bible/characters/Hakos-Baelz.md": "c504265a52640938c03eb16b896f03f62f6906ab4a8ba55817d7c5d6217daaf1",
   "bible/characters/Hakui-Koyori.md": "2335e184a0f050b4c33201e08de5c68249fa3a19e0e9276d98427496b4124cdc",
@@ -28,7 +28,7 @@
   "bible/characters/Ninomae-Inanis.md": "85a9bc31d257a1407c64f8c36d350c8db825185adfc86fa837242e616b6e6694",
   "bible/characters/Ouro-Kronii.md": "f6f20f16b68064a7be6cc36316e8679a1300091248bc4a7aa00a467ff8e48e42",
   "bible/characters/Raora-Panthera.md": "b64f7c9ebf6918f85a279a96f9a7973525d46e7bbfb0829936e2d700efd7d139",
-  "bible/characters/Sakamata-Chloe.md": "125c79cc59554508b77ba8421ff9118ff6728692fdf5a050108dba981af49816",
+  "bible/characters/Sakamata-Chloe.md": "a3555ab23cbe141242b5572c661d7c627bbb82b611b049ce643a292ea606203f",
   "bible/characters/Shiori-Novella.md": "434ea3cb8ec06b0b614491a6304d18a8ed336e15e418163ed0eedf1a0aa4dfd9",
   "bible/characters/Shirogane-Noel.md": "fa75876d435e0546d6bb72acc0b19105edb6faca168d01f47ef161dd9c6ee7f5",
   "bible/characters/Shishiro-Botan.md": "40c78f4b12013ad801d4e53333a5974a8a7cf2505ce567568a23a4d9fd4c0bb0",
@@ -38,15 +38,15 @@
   "bible/characters/Yukihana-Lamy.md": "bd7bdb48bd860060cfd78c8b9411801d02168803968ad5e4bb8fa988e44f8102",
   "bible/world/Advent-Pairs.md": "b5cd09c2d0e519d9a172a523819fe1740cf154970e2e7dc8d9c315712e7dba15",
   "bible/world/AmeSame.md": "c750fb6fe94fe80c28cd82d253aa200a6c3c34d89269075a69b02df1428ab796",
-  "bible/world/Bone-Bros.md": "c53915b3bb341b763594d6e2377ef5eff91e49747d01435846abb15877682290",
+  "bible/world/Bone-Bros.md": "7fa9161aeafb9ffa4d80aa174f2c15b9d69b23095701add3991a5f1c0c11f3f9",
   "bible/world/Concerts-and-Live-Events.md": "0040e6f6f63dc21aa2258d7b833044a365edd7d3eaaa15b9926cd305a8bd2dd0",
   "bible/world/Cross-Branch-Friends.md": "6439fb2edcf584e876d2b8b2c440d5caf992204b516bad9714933dfad61c4396",
   "bible/world/FUWAMOCO.md": "d8bb40f76f0ecdc1c5b9a8c1b7b5ebe295d73459cb267f815ca6e91dd3d786cf",
   "bible/world/Fauna-and-Mumei-Pairs.md": "8a1fc2c0c86bc4d40ceaa94b36520877a94e85fe0308833cf5abcb087f410ee8",
   "bible/world/Hakos-Baelz-Pairs.md": "3a714066f75f40908837a8f075cdab279f128e96c7a1f7e9db1c77f88f3a6f8d",
   "bible/world/IRyS-and-Nerissa-Pairs.md": "a05400bc7b258d20032a9efea852dd2564836a2849416b3177b8b96d6e674439",
-  "bible/world/JP-Senpai-Pairs-2.md": "35b0b7f66deacb2854b698534eca90379ba3e937eeec657c2b7b5c6c750e671b",
-  "bible/world/JP-Senpai-Pairs.md": "da7d79f21c024df0275a116a6f7ccb19f9382a3f82c7c96bdfd5223ddd8ebdb4",
+  "bible/world/JP-Senpai-Pairs-2.md": "aeeee4dd9074fed9c0964897efb188309f6962dcdefc438f8ca3cfed7949496a",
+  "bible/world/JP-Senpai-Pairs.md": "26d530531779c08ac599677c0bbe0de17088a1fc15da0aaa2c5ba3290e2b285b",
   "bible/world/Justice-Pairs.md": "97ad21d8b3f701022f4691d3e4506d398e1a1c7a99e92b3e4a4f77910e24210a",
   "bible/world/Myth-and-Kronii-Other-Pairs.md": "eac5d2965724543a235931873b4c03ab503f4f38ef86c21d501a61375a18251b",
   "bible/world/OctoClock.md": "b81982ab3e3dbab3cfb263a00f4a31a867ed63117d32c96fb620d34d0fed0bfb",
@@ -56,13 +56,13 @@
   "bible/world/Time-Duo.md": "da8702e646d29834caf99d0d2205eb13c30c5d4e1dd501dbc2aa87aa3846edc9",
   "bible/world/Time-and-Death.md": "e1239bb9b6264defe6b070bb2d6a6d2b43539b191f835a133857822ccf646ac5",
   "bible/world/VTuber-Persona-and-Lore.md": "6c72058abfbee6fa4c876031b4b888de9677c02a818f95b9f3c85f14ad724a88",
-  "bible/world/holoX.md": "ee67244bf519667566631f737d6191db3311a58aab05a08056072bef300f2d1c",
+  "bible/world/holoX.md": "1ac995a7de11a06a4d1321d93f4f92966461093010dcddd804fc126bac4a22b8",
   "bible/world/hololive--Advent.md": "ebba5657247270ea4ed54389dd2842de474be3e14f47d7940e943b4ee6fa7e20",
   "bible/world/hololive--Justice.md": "d54b14489a885f5c8c4780cd5df6c20758070dccf19ae86ce15cd93a960628b4",
-  "bible/world/hololive--Myth.md": "522515814ba50b94f6190c37174c9f2e086635093e2478f5e82ef3a8c680fc7c",
+  "bible/world/hololive--Myth.md": "92ad62626d86b9e3b373c1e2e3648cdd6e2c0737737b90ea8eaa7e0c43ba2b9c",
   "bible/world/hololive--Promise.md": "0c58fdd5221146d6a2797d571df3d4a5ac4d634197d01e10d638677f0f662044",
-  "bible/world/hololive-History-2023-2026.md": "ea88e925b4362bfb73ee6e149ddf89b0a9989b0bc8e06e83d142cee502ad913c",
-  "bible/world/hololive-History-to-2022.md": "39bb9b8a68fa4eb95c8241fd2c85199ee0772ec62e481a10ef7fd4237ca64100",
+  "bible/world/hololive-History-2023-2026.md": "88a4f7f63f01b77775caed72177d1bddb0e50ac4ebe9315cf8002b389e30cd7d",
+  "bible/world/hololive-History-to-2022.md": "f8357b1b0cb9f588290aa3029da3875084c86eba842e885eab308eede40b4e43",
   "bible/world/hololive.md": "9fbc51b41096c0279359da4533ee06a02fa18bb19c31dd069618767867385341"
  },
  "cast": [
@@ -766,7 +766,7 @@
     "state_at_baseline": "affiliate",
     "debut": "2021-11-29",
     "graduated": null,
-    "regular_activities_concluded": null,
+    "regular_activities_concluded": "2025-01-26",
     "source": "bible/characters/Sakamata-Chloe.md › Background (debut: Background)"
    }
   },
@@ -3575,6 +3575,16 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2022-02-05",
+   "precision": "day",
+   "zone": null,
+   "text": "Digital release of \"Q,\" the Calli–Gura duet",
+   "evidence": "[Official https://hololive.hololivepro.com/en/music/q/; catalog date, zone unspecified; verified in the Myth2 audit on 2026-10-04]",
+   "context": "",
+   "file": "bible/characters/Gawr-Gura.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "2024-09",
    "precision": "month",
    "zone": null,
@@ -4256,7 +4266,7 @@
   },
   {
    "date": "2024-11 to 12",
-   "precision": "month",
+   "precision": "month-range",
    "zone": null,
    "text": "First live tour \"Spectra of Nova\" (Saitama, Osaka, Fukuoka); Calli, FUWAMOCO and Elizabeth hold a watch party",
    "evidence": "[Observed SU2] [S1 YtVleZxIiNc]",
@@ -6318,7 +6328,7 @@
    "date": "2024-11-29",
    "precision": "day",
    "zone": null,
-   "text": "Conclusion of regular activities announced; she stays an affiliate",
+   "text": "Conclusion of regular activities announced for 2025-01-26; she will remain a hololive production affiliate afterward",
    "evidence": "[Observed CH2]",
    "context": "",
    "file": "bible/characters/Sakamata-Chloe.md",
@@ -7315,6 +7325,16 @@
    "section": "History"
   },
   {
+   "date": "2022-02-05",
+   "precision": "day",
+   "zone": null,
+   "text": "Digital release of \"Q\"",
+   "evidence": "",
+   "context": "Official catalog https://hololive.hololivepro.com/en/music/q/; zone unspecified; verified in the Myth2 audit on 2026-10-04",
+   "file": "bible/world/Bone-Bros.md",
+   "section": "History"
+  },
+  {
    "date": "2024-09",
    "precision": "month",
    "zone": null,
@@ -7975,18 +7995,18 @@
    "section": "History"
   },
   {
-   "date": "2025-08-04",
+   "date": "2025-08-05 (digital release; zone unspecified)",
    "precision": "day",
    "zone": null,
-   "text": "\"Kurukuru Cruise\"",
+   "text": "\"Kurukuru Cruise,\" by Ninomae Ina'nis and Nekomata Okayu",
    "evidence": "",
-   "context": "TakoNeko",
+   "context": "TakoNeko; official catalog 604, checked 2026-10-04",
    "file": "bible/world/JP-Senpai-Pairs.md",
    "section": "History"
   },
   {
    "date": "2026-03-06 to 03-08",
-   "precision": "day",
+   "precision": "day-range",
    "zone": null,
    "text": "hololive 7th fes. \"Ridin' on Dreams\" (STAGE 1 Mar 6, STAGE 3 Mar 7, STAGE 4 Mar 8)",
    "evidence": "",
@@ -8476,7 +8496,7 @@
   },
   {
    "date": "2021-11-26 to 11-30",
-   "precision": "day",
+   "precision": "day-range",
    "zone": null,
    "text": "Debut week, one member a night",
    "evidence": "",
@@ -8485,12 +8505,22 @@
    "section": "History"
   },
   {
-   "date": "2022-03-04 / 04-16",
-   "precision": "day-range",
+   "date": "2022-03-04",
+   "precision": "day",
    "zone": null,
-   "text": "Calli's English lessons #02 and #04",
+   "text": "Calli's English lesson #02",
    "evidence": "",
-   "context": "La+, Iroha; Lui, Chloe",
+   "context": "La+, Iroha; archive X492n37brRU",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2022-04-16",
+   "precision": "day",
+   "zone": null,
+   "text": "Calli's English lesson #04",
+   "evidence": "",
+   "context": "Lui, Chloe; archive YrZ4baKOT1c",
    "file": "bible/world/holoX.md",
    "section": "History"
   },
@@ -8538,9 +8568,19 @@
    "date": "2025-07-27",
    "precision": "day",
    "zone": null,
-   "text": "\"Glow in the Dark\" (Mythmash)",
+   "text": "\"Glow in the Dark\" video premiere (Mythmash; inherited date, zone unspecified)",
    "evidence": "",
-   "context": "La+, Kiara",
+   "context": "La+, Kiara; Kiara Relationship Map and archive v5RKZXNuVyw",
+   "file": "bible/world/holoX.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-07-28 (digital release; zone unspecified)",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Glow in the Dark\" digital release",
+   "evidence": "",
+   "context": "La+, Kiara; official catalog 600, checked 2026-10-04",
    "file": "bible/world/holoX.md",
    "section": "History"
   },
@@ -8998,9 +9038,9 @@
    "date": "2025-07",
    "precision": "month",
    "zone": null,
-   "text": "MYTHMASH: each active member releases a duet with a Japanese senpai (#mythmashchemythtry)",
+   "text": "MYTHMASH opening-ceremony stream",
    "evidence": "",
-   "context": "Cross-branch songs",
+   "context": "Project introduction; individual song releases have separate dates [Archive metadata S1, 6guF3BHlR4U]",
    "file": "bible/world/hololive--Myth.md",
    "section": "History"
   },
@@ -9056,8 +9096,8 @@
   },
   {
    "date": "2023-10-08 PDT / 10-09 JST",
-   "precision": "day-range",
-   "zone": "PDT",
+   "precision": "day",
+   "zone": null,
    "text": "-Promise- formed with IRyS (closing Project: HOPE)",
    "evidence": "",
    "context": "The current group name",
@@ -9146,11 +9186,11 @@
   },
   {
    "date": "2023-10-08 PDT / 10-09 JST",
-   "precision": "day-range",
-   "zone": "PDT",
-   "text": "\"CouncilRyS\" 3D showcase; **-Promise- formed** (IRyS joins the Council)",
+   "precision": "day",
+   "zone": null,
+   "text": "\"CouncilRyS\" 3D showcase; **-Promise- formed** by IRyS and the four remaining Council members",
    "evidence": "",
-   "context": "Kronii's and IRyS's group",
+   "context": "Kronii's and IRyS's group; official formation notice S7 in the Promise card",
    "file": "bible/world/hololive-History-2023-2026.md",
    "section": "Timeline"
   },
@@ -9278,7 +9318,7 @@
    "date": "2024-11-29",
    "precision": "day",
    "zone": null,
-   "text": "Two months after Ame's change of status, COVER names it: \"conclusion of streaming activities,\" distinct from graduation (affiliates can still appear in projects)",
+   "text": "COVER explains \"conclusion of streaming activities\" as a form of graduation that may permit limited future projects; individual notices establish each talent's status",
    "evidence": "",
    "context": "Why Ame can come back for events",
    "file": "bible/world/hololive-History-2023-2026.md",
@@ -9337,7 +9377,7 @@
   {
    "date": "2025-04-27 (04-28 JST)",
    "precision": "day",
-   "zone": "JST",
+   "zone": null,
    "text": "Nanashi Mumei graduates",
    "evidence": "",
    "context": "Promise becomes three",
@@ -9885,12 +9925,22 @@
    "section": "Timeline"
   },
   {
-   "date": "2022-07-18/23",
-   "precision": "day-range",
+   "date": "2022-07-18 (publication date; zone unspecified)",
+   "precision": "day",
    "zone": null,
-   "text": "HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts",
+   "text": "HOLOSTARS English -TEMPUS- announced: Regis Altare, Magni Dezmond, Axel Syrios and Noir Vesper",
    "evidence": "",
    "context": "Calli and Kronii's WARS partners Magni and Vesper",
+   "file": "bible/world/hololive-History-to-2022.md",
+   "section": "Timeline"
+  },
+  {
+   "date": "2022-07-23/24 JST (announced schedule)",
+   "precision": "day-range",
+   "zone": "JST",
+   "text": "Debut streams scheduled for Altare and Magni on July 23, then Axel and Vesper on July 24",
+   "evidence": "",
+   "context": "Official announcement; scheduled dates do not establish actual broadcast-start times",
    "file": "bible/world/hololive-History-to-2022.md",
    "section": "Timeline"
   },

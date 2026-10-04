@@ -50,6 +50,7 @@ Relationship (pair / unit name).
 |---|---|---|
 | 2020–2021 | Constant collabs, pranks and bickering | "Bone Bros" |
 | 2022-02 | "Q" music video; exact MV date and time zone remain unresolved | Calli–Gura duet; DECO*27 composed it and shared lyric credits with Calli |
+| 2022-02-05 | Digital release of "Q" | Official catalog https://hololive.hololivepro.com/en/music/q/; zone unspecified; verified in the Myth2 audit on 2026-10-04 |
 | 2024-09 | Calli performs Gura's "Full Color" at Myth's 4th-anniversary concert "The Show Goes On!" | Carrying her song |
 | 2025-04-30 | "One Last Minecraft Trip." (Myth relay) | Last duo moments on stream |
 | 2025-05-01 | Gura graduates | — |
@@ -120,6 +121,7 @@ Black and blue; a scythe beside a trident; Calli's "LISTEN." against Gura's "a";
 - **SHOULD adopted:** persona qualifier on "the reaper and the shark"; "not speeches" softened to a tendency.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-CREDIT-001, myth2:MYTH2-DATE-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:MYTH2-DATE-001 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. "The Dad joke started around Gura" could not be re-found in the current wiki; it stays unverified and

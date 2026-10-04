@@ -51,7 +51,7 @@ Faction / unit (a friend group with a shared history).
 | 2024-06 | Myth One-Block Minecraft series | A recent full-group project |
 | 2024-09 | 4th anniversary song and voice pack; Ame's last week includes a Myth collab | Ame's farewell to regular streaming |
 | 2025-04-30 | Myth relay "one last time" with Calli, Kiara, Ina and Gura before Gura's graduation | Gura's farewell with Myth |
-| 2025-07 | MYTHMASH: each active member releases a duet with a Japanese senpai (#mythmashchemythtry) | Cross-branch songs |
+| 2025-07 | MYTHMASH opening-ceremony stream | Project introduction; individual song releases have separate dates [Archive metadata S1, 6guF3BHlR4U] |
 | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 | 2026-02 | Kiara's album includes "Blue & Gold," a tribute to Gura and Ame | Remembering the two |
 | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
@@ -138,6 +138,7 @@ Five member colors in a row (black, orange, purple, blue, gold); five voices tal
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH-QUOTE-004 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-DATE-003, myth2:myth3:MYTH-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:BR-EVENT-001 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The "big sister / little shark" shorthand is Claude's summary of the group dynamic. Keep, reword or

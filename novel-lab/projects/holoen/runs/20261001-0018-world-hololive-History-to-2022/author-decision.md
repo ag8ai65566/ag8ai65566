@@ -2,3 +2,4 @@
 - 2026-10-01 05:41 作者裁決收錄 final.md（sha256 868b885b2057）：作者裁決：加入 Fauna 與 Mumei 後的關係與世界觀連動修改（含 GPT 一輪審查的修正），依作者指示只審一輪
 - 2026-10-01 20:58 作者裁決收錄 final.md（sha256 fb9d97a7537e）：Author decision (2026-10-01): P1 fixes from the GPT project consult (official Serendipity units in Groups and aliases, missing concert ties, PDT labels, rosters, alias collisions, official merger source).
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 39bb9b8a68fa）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
+- 2026-10-04 05:33 作者裁決收錄 final.md（sha256 f8357b1b0cb9）：Author decision (2026-10-03): bridge-events audit merged by Claude

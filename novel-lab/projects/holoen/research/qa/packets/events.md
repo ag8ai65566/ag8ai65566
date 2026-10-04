@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git d0295ae. Every dated row from every bible file's dossier
+Snapshot: git 6292ab4. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
@@ -31,7 +31,7 @@ search the file for the row text to see its context.
 - Ninomae Ina'nis: active; debut 2020-09-13; graduated —; regular activities concluded — (`bible/characters/Ninomae-Inanis.md › Background (debut: Hard Facts / Background Timeline)`)
 - Ouro Kronii: active; debut 2021-08-23; graduated —; regular activities concluded — (`bible/characters/Ouro-Kronii.md › Background (debut: Hard Facts / Background Timeline)`)
 - Raora Panthera: active; debut 2024-06-22; graduated —; regular activities concluded — (`bible/characters/Raora-Panthera.md › Background (debut: Background)`)
-- Sakamata Chloe: affiliate; debut 2021-11-29; graduated —; regular activities concluded — (`bible/characters/Sakamata-Chloe.md › Background (debut: Background)`)
+- Sakamata Chloe: affiliate; debut 2021-11-29; graduated —; regular activities concluded 2025-01-26 (`bible/characters/Sakamata-Chloe.md › Background (debut: Background)`)
 - Shiori Novella: active; debut 2023-07-30; graduated —; regular activities concluded — (`bible/characters/Shiori-Novella.md › Background (debut: Background)`)
 - Shirogane Noel: active; debut 2019-08-08; graduated —; regular activities concluded — (`bible/characters/Shirogane-Noel.md › Background (debut: Background)`)
 - Shishiro Botan: active; debut 2020-08-14; graduated —; regular activities concluded — (`bible/characters/Shishiro-Botan.md › Background (debut: Background)`)
@@ -204,7 +204,7 @@ search the file for the row text to see its context.
 - 2021-11-29 [day] Debut, fourth of holoX; 500,000 subscribers within a week — `bible/characters/Sakamata-Chloe.md` ([Official CH1] [Observed CH2])
 - 2021-11-27 [day] Debut, second of holoX; HOLOTORI membership (the wiki places Kiara's welcome beside the 11-26 reveal) — `bible/characters/Takane-Lui.md` ([Observed LU2] [Official HOLOTORI roster 2023])
 - 2021-11-27 [day] HOLOTALK #18 (first anniversary) — `bible/world/JP-Senpai-Pairs.md`
-- 2021-11-26 to 11-30 [day] Debut week, one member a night — `bible/world/holoX.md`
+- 2021-11-26 to 11-30 [day-range] Debut week, one member a night — `bible/world/holoX.md`
 - 2021-11 [month] 6th gen "Secret Society holoX" (La+, Lui, Koyori, Chloe, Iroha) — `bible/world/hololive-History-to-2022.md`
 
 ### 2021-12
@@ -228,9 +228,11 @@ search the file for the row text to see its context.
 
 ### 2022-02
 - 2022-02 [month] "Q" music video with Mori Calliope; exact MV date and time zone remain unresolved — `bible/characters/Gawr-Gura.md` ([Archive metadata G15; https://archive.ragtag.moe/watch?v=aetXqd9B8WE, checked 2026-10-04])
+- 2022-02-05 [day] Digital release of "Q," the Calli–Gura duet — `bible/characters/Gawr-Gura.md` ([Official https://hololive.hololivepro.com/en/music/q/; catalog date, zone unspecified; verified in the Myth2 audit on 2026-10-04])
 - 2022-02-19 [day] Calli's HOLO ENGLISH LESSON #01 with Ina and Fubuki — `bible/characters/Houshou-Marine.md` ([MA5 bfUEbp3xk4o])
 - 2022-02 [month] Nintendo Direct "TOMORROW?!" reaction — `bible/characters/Ninomae-Inanis.md` ([Observed I23])
 - 2022-02 [month] "Q" music video; exact MV date and time zone remain unresolved — `bible/world/Bone-Bros.md`
+- 2022-02-05 [day] Digital release of "Q" — `bible/world/Bone-Bros.md`
 - 2022-02-25 [day] Ame's surprise karaoke off-collab (with Ina, Kronii, Fauna, Mumei) — `bible/world/OctoClock.md`
 - 2022-02-24 [day] Uruha Rushia leaves hololive — `bible/world/hololive-History-to-2022.md`
 
@@ -238,7 +240,7 @@ search the file for the row text to see its context.
 - 2022-03-12 [day] Calli's "HOLO ENGLISH LESSON #03" with IRyS and Tsunomaki Watame — `bible/characters/AZKi.md` ([AZ5 32NVpmKdAOs])
 - 2022-03-04 [day] Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha — `bible/characters/Laplus-Darknesss.md` ([LA5 X492n37brRU])
 - 2022-03-12 [day] HOLO ENGLISH LESSON #03 — `bible/world/JP-Senpai-Pairs.md`
-- 2022-03-04 / 04-16 [day-range] Calli's English lessons #02 and #04 — `bible/world/holoX.md`
+- 2022-03-04 [day] Calli's English lesson #02 — `bible/world/holoX.md`
 - 2022-03 [month] ID gen 3 (Zeta, Kaela, Kobo) — `bible/world/hololive-History-to-2022.md`
 - 2022-03-20 [day] hololive 3rd fes. "Link Your Wish" at Makuhari (#つながるホロライブ), day 2: Calli and Kiara perform — `bible/world/hololive-History-to-2022.md`
 - 2022-03-19 [day] HOLOSTARS announces the unit UPROAR!! — `bible/world/hololive-History-to-2022.md`
@@ -248,6 +250,7 @@ search the file for the row text to see its context.
 - 2022-04 [month] She signs with EMI Records / Universal Music Japan. — `bible/characters/Mori-Calliope.md` ([Observed C4 §2022, secondary])
 - 2022-04-24 [day] Left 4 Dead 2 with IRyS, Takane Lui and Inugami Korone — `bible/characters/Shishiro-Botan.md` ([BO5 K1wStJxm4F0])
 - 2022-04 [month] "CapSule"; "TEMPLATE / Wicked feat. Mori Calliope" — `bible/world/JP-Senpai-Pairs.md`
+- 2022-04-16 [day] Calli's English lesson #04 — `bible/world/holoX.md`
 - 2022-04-26 [day] holoMeet begins; Gura is an ambassador — `bible/world/hololive-History-to-2022.md`
 
 ### 2022-05
@@ -264,7 +267,8 @@ search the file for the row text to see its context.
 - 2022-07-21 [day] Her solo concert "New Underworld Order." — `bible/characters/Mori-Calliope.md` ([Official C6])
 - 2022-07-21 [day] "Wicked" at New Underworld Order — `bible/world/JP-Senpai-Pairs.md`
 - 2022-07-31 [day] Sana graduates — `bible/world/hololive--Promise.md`
-- 2022-07-18/23 [day-range] HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts — `bible/world/hololive-History-to-2022.md`
+- 2022-07-18 (publication date; zone unspecified) [day] HOLOSTARS English -TEMPUS- announced: Regis Altare, Magni Dezmond, Axel Syrios and Noir Vesper — `bible/world/hololive-History-to-2022.md`
+- 2022-07-23/24 JST (announced schedule) [day-range, JST] Debut streams scheduled for Altare and Magni on July 23, then Axel and Vesper on July 24 — `bible/world/hololive-History-to-2022.md`
 - 2022-07-31 [day] Tsukumo Sana graduates — `bible/world/hololive-History-to-2022.md`
 
 ### 2022-08
@@ -365,8 +369,8 @@ search the file for the row text to see its context.
 - 2023-10-09 JST [day, JST] -Promise- formed — `bible/world/Fauna-and-Mumei-Pairs.md`
 - 2023-10-09 JST [day, JST] -Promise- formed — `bible/world/Hakos-Baelz-Pairs.md`
 - 2023-10-09 JST [day, JST] -Promise- formed: IRyS and Kronii become unitmates — `bible/world/IRyS-and-Nerissa-Pairs.md`
-- 2023-10-08 PDT / 10-09 JST [day-range, PDT] -Promise- formed with IRyS (closing Project: HOPE) — `bible/world/hololive--Promise.md`
-- 2023-10-08 PDT / 10-09 JST [day-range, PDT] "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) — `bible/world/hololive-History-2023-2026.md`
+- 2023-10-08 PDT / 10-09 JST [day] -Promise- formed with IRyS (closing Project: HOPE) — `bible/world/hololive--Promise.md`
+- 2023-10-08 PDT / 10-09 JST [day] "CouncilRyS" 3D showcase; **-Promise- formed** by IRyS and the four remaining Council members — `bible/world/hololive-History-2023-2026.md`
 - 2023-10-09 JST [day, JST] -Promise- formed (IRyS joins the remaining Council) — `bible/world/hololive.md`
 
 ### 2023-11
@@ -492,14 +496,14 @@ search the file for the row text to see its context.
 
 ### 2024-11
 - 2024-11-25 [day] "#BaeTV24" 24-hour stream with collabs (IRyS and Raora; Kronii, Bijou and Gigi) — `bible/characters/Hakos-Baelz.md` ([Observed HB3])
-- 2024-11 to 12 [month] First live tour "Spectra of Nova" (Saitama, Osaka, Fukuoka); Calli, FUWAMOCO and Elizabeth hold a watch party — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU2] [S1 YtVleZxIiNc])
+- 2024-11 to 12 [month-range] First live tour "Spectra of Nova" (Saitama, Osaka, Fukuoka); Calli, FUWAMOCO and Elizabeth hold a watch party — `bible/characters/Hoshimachi-Suisei.md` ([Observed SU2] [S1 YtVleZxIiNc])
 - 2024-11-17 [day] 3D live "The Devil Wears Hope" — `bible/characters/IRyS.md` ([Observed R3 title])
 - 2024-11-09 [day] Debut with FLOW GLOW, through hololive DEV_IS; first cover "Luna say maybe" — `bible/characters/Kikirara-Vivi.md` ([Official VI1] [Observed VI2])
-- 2024-11-29 [day] Conclusion of regular activities announced; she stays an affiliate — `bible/characters/Sakamata-Chloe.md` ([Observed CH2])
+- 2024-11-29 [day] Conclusion of regular activities announced for 2025-01-26; she will remain a hololive production affiliate afterward — `bible/characters/Sakamata-Chloe.md` ([Observed CH2])
 - 2024-11-25 [day] #BaeTV24 24-hour stream — `bible/world/Hakos-Baelz-Pairs.md`
 - 2024-11-14 [day] "Spectra of Nova" watch party — `bible/world/JP-Senpai-Pairs.md`
 - 2024-11-09 [day] DEV_IS second unit FLOW GLOW debuts (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi) — `bible/world/hololive-History-2023-2026.md`
-- 2024-11-29 [day] Two months after Ame's change of status, COVER names it: "conclusion of streaming activities," distinct from graduation (affiliates can still appear in projects) — `bible/world/hololive-History-2023-2026.md`
+- 2024-11-29 [day] COVER explains "conclusion of streaming activities" as a form of graduation that may permit limited future projects; individual notices establish each talent's status — `bible/world/hololive-History-2023-2026.md`
 
 ### 2024-12
 - 2024-12-14 [day] -Promise- musical "The Broken Promise" — `bible/characters/Ceres-Fauna.md` ([Observed F2 §2024])
@@ -587,7 +591,7 @@ search the file for the row text to see its context.
 - 2025-04-27 [day] Mumei graduates — `bible/world/hololive--Promise.md`
 - 2025-04 [month] World Tour '25 "-Synchronize!-" announced, led by Momosuzu Nene, Kureiji Ollie, **Mori Calliope, IRyS and Nerissa Ravencroft**, with guests per city (Kronii and Bae in Sydney) — `bible/world/hololive-History-2023-2026.md`
 - 2025-04-26 [day] Murasaki Shion graduates — `bible/world/hololive-History-2023-2026.md`
-- 2025-04-27 (04-28 JST) [day, JST] Nanashi Mumei graduates — `bible/world/hololive-History-2023-2026.md`
+- 2025-04-27 (04-28 JST) [day] Nanashi Mumei graduates — `bible/world/hololive-History-2023-2026.md`
 
 ### 2025-05
 - 2025-05-01 [day] Graduates; final 3D mini live; last post "keep swimming! always! 💙" — `bible/characters/Gawr-Gura.md` ([Official G5] [Observed G3, G2])
@@ -621,8 +625,9 @@ search the file for the row text to see its context.
 - 2025-07-05/06 [day-range] GAMERS fes 2 at Saitama Super Arena — `bible/characters/Nekomata-Okayu.md` ([Observed OK2; OK3])
 - 2025-07-05 [day] hololive night at Dodger Stadium: Bijou with Ina and IRyS — `bible/world/Advent-Pairs.md` ([Official S8])
 - 2025-07 [month] "Sweet Pop Story" — `bible/world/JP-Senpai-Pairs.md`
-- 2025-07-27 [day] "Glow in the Dark" (Mythmash) — `bible/world/holoX.md`
-- 2025-07 [month] MYTHMASH: each active member releases a duet with a Japanese senpai (#mythmashchemythtry) — `bible/world/hololive--Myth.md`
+- 2025-07-27 [day] "Glow in the Dark" video premiere (Mythmash; inherited date, zone unspecified) — `bible/world/holoX.md`
+- 2025-07-28 (digital release; zone unspecified) [day] "Glow in the Dark" digital release — `bible/world/holoX.md`
+- 2025-07 [month] MYTHMASH opening-ceremony stream — `bible/world/hololive--Myth.md`
 - 2025-07-05 PDT [day, PDT] hololive night at Dodger Stadium, Los Angeles, the second hololive–Dodgers collaboration: Ina, IRyS and Bijou — `bible/world/hololive-History-2023-2026.md`
 - 2025-07-16 [day] hololive RECORDS label launched — `bible/world/hololive-History-2023-2026.md`
 
@@ -652,7 +657,7 @@ search the file for the row text to see its context.
 - 2025-08-29 [day] "On the Run!" 2nd-anniversary 3D live — `bible/world/Advent-Pairs.md`
 - 2025-08-23/24 [day-range] -All for One-: "HOT DUCK!" with Bijou and Subaru; their version of "Howling"; "Lifetime Showtime"; "SHALLYS" with Ina and Cecilia — `bible/world/FUWAMOCO.md` ([Official S5])
 - 2025-08-23/24 [day-range] -All for One-: "R x R x R," "Countach" — `bible/world/Hakos-Baelz-Pairs.md`
-- 2025-08-04 [day] "Kurukuru Cruise" — `bible/world/JP-Senpai-Pairs.md`
+- 2025-08-05 (digital release; zone unspecified) [day] "Kurukuru Cruise," by Ninomae Ina'nis and Nekomata Okayu — `bible/world/JP-Senpai-Pairs.md`
 - 2025-08-16 PDT [day, PDT] Justice group 3D collab (after the individual showcases 08-01/02/08/09 PDT) — `bible/world/Justice-Pairs.md`
 - 2025-08-23/24 EDT [day-range, EDT] -All for One-: "ALiCE&u," "START AGAIN," "High Tide" (Elizabeth); "Countach," "MONSTER," "III," "Wonky Monkey" (Gigi); "Wind-Up," "SHALLYS," "I'm Your Treasure Box" (Cecilia); "Gacha×Gacha ADVENTURE!," "Neko Kaburi-Na," "I'm Your Treasure Box" (Raora) — `bible/world/Justice-Pairs.md` ([Official S6])
 - 2025-08-23 [day] -All for One- opens with all of EN, then Advent's "Genesis" — `bible/world/hololive--Advent.md` ([Official S9])
@@ -756,7 +761,7 @@ search the file for the row text to see its context.
 - 2026-03 [month] Guest spot at Kronii's 3D birthday live — `bible/characters/Watson-Amelia.md` ([Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711])
 - 2026-03-24 [day] "Prisoner (FUWAMOCO ver.)" — `bible/world/FUWAMOCO.md` ([Official NEW-R3-019])
 - 2026-03 [month] 7th fes: venue talk; Resident Evil series (April) — `bible/world/Hakos-Baelz-Pairs.md`
-- 2026-03-06 to 03-08 [day] hololive 7th fes. "Ridin' on Dreams" (STAGE 1 Mar 6, STAGE 3 Mar 7, STAGE 4 Mar 8) — `bible/world/JP-Senpai-Pairs.md`
+- 2026-03-06 to 03-08 [day-range] hololive 7th fes. "Ridin' on Dreams" (STAGE 1 Mar 6, STAGE 3 Mar 7, STAGE 4 Mar 8) — `bible/world/JP-Senpai-Pairs.md`
 - 2026-03-27/28 PDT [day-range, PDT] "Drawn to Dawn," the Wiltern, LA — `bible/world/TakoTori.md`
 - 2026-03-14 JST [day, JST] Ame guests at Kronii's 3D birthday live — `bible/world/Time-Duo.md`
 - 2026-03-26 [day] Group song "Unchained" — `bible/world/hololive--Advent.md` ([Official NEW-R3-001])

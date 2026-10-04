@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git d0295ae. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 6292ab4. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Hakos Baelz
@@ -390,6 +390,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2022-03-04 | Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha | [LA5 X492n37brRU] |
 
 ### Gawr Gura × Mori Calliope
+- `bible/characters/Gawr-Gura.md › Background Timeline`: | 2022-02-05 | Digital release of "Q," the Calli–Gura duet | [Official https://hololive.hololivepro.com/en/music/q/; catalog date, zone unspecified; verified in the Myth2 audit on 2026-10-04] |
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert.
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Mori Calliope, Gawr Gura (graduated) | — | HOLO ENGLISH LESSON #02 (2022) | [IR5] |
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022).
@@ -997,7 +998,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Promise.md › One-line Concept`: 2023. After two graduations in 2025, the active members are IRyS, Ouro Kronii and Hakos Baelz.
 - `bible/world/hololive--Promise.md › [SW] Description`: (per the wiki); Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared.
 - `bible/world/hololive--Promise.md › [SW] Description`: hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline.
-- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2023-10-08 PDT / 10-09 JST | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
+- `bible/world/hololive-History-2023-2026.md › Timeline`: | 2023-10-08 PDT / 10-09 JST | "CouncilRyS" 3D showcase; **-Promise- formed** by IRyS and the four remaining Council members | Kronii's and IRyS's group; official formation notice S7 in the Promise card |
 - `bible/world/hololive.md › History`: | 2023-10-09 JST | -Promise- formed (IRyS joins the remaining Council) | Kronii's group name |
 
 ### IRyS × Raora Panthera
@@ -1027,10 +1028,12 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Kazama Iroha × La+ Darknesss
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026).
+- `bible/world/holoX.md › History`: | 2022-03-04 | Calli's English lesson #02 | La+, Iroha; archive X492n37brRU |
 
 ### Kazama Iroha × Mori Calliope
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
 - `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2022-03-04 | Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha | [LA5 X492n37brRU] |
+- `bible/world/holoX.md › History`: | 2022-03-04 | Calli's English lesson #02 | La+, Iroha; archive X492n37brRU |
 
 ### Kazama Iroha × Sakamata Chloe
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Hakui Koyori, Sakamata Chloe, Kazama Iroha | Hoshimatic Project | Her idol-group practice unit (2023–); Koyori and Iroha are among the nine credited "BEEP BEEP" vocalists (2026), Chloe was in the earlier lineup (secondary roster); she coached Iroha at Puyo Puyo Tetris (2023-04-11) | [Official BEEP BEEP credits] [Koyori file KO2] [Iroha file IR4 8tOoSNGa_rg] |
@@ -1174,6 +1177,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### La+ Darknesss × Mori Calliope
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
+- `bible/world/holoX.md › History`: | 2022-03-04 | Calli's English lesson #02 | La+, Iroha; archive X492n37brRU |
 
 ### La+ Darknesss × Sakamata Chloe
 - `bible/characters/Takane-Lui.md › Behavioral Traits`: 1. Reins in La+ Darknesss and Sakamata Chloe; holoX's point of contact for outside work. [Official LU1] [Observed LU2 §Personality, secondary]
@@ -1183,7 +1187,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### La+ Darknesss × Takanashi Kiara
 - `bible/characters/Laplus-Darknesss.md › Story Engine`: 1. La+ demands that Kiara address her as "Your Darknesss" for a whole duet rehearsal.
-- `bible/world/holoX.md › History`: | 2025-07-27 | "Glow in the Dark" (Mythmash) | La+, Kiara |
+- `bible/world/holoX.md › History`: | 2025-07-27 | "Glow in the Dark" video premiere (Mythmash; inherited date, zone unspecified) | La+, Kiara; Kiara Relationship Map and archive v5RKZXNuVyw |
+- `bible/world/holoX.md › History`: | 2025-07-28 (digital release; zone unspecified) | "Glow in the Dark" digital release | La+, Kiara; official catalog 600, checked 2026-10-04 |
 
 ### La+ Darknesss × Takane Lui
 - `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Takane Lui | holoX executive officer | Reins her in; a 2026 two-person talk Featured on Lui's original "Anastasis Girl feat. La+ Darknesss" (2025-11-28); they performed it together at First MISSION (2026-04-29). | [LA2] [LA4] [Official NEW-R6-010] |
@@ -1269,10 +1274,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Time-and-Death.md › [SW] Other Names`: Calli and Kronii, Kronii and Calli
 - `bible/world/Time-and-Death.md › [SW] Rules`: Kronii's schemes and Calli's exposés are bits, never real accusations.
 - `bible/world/hololive--Promise.md › How the Group Works`: - **Kronii's first official collab outside her generation** was with Mori Calliope (2021-09-23). [Observed Kronii's wiki page §2021, secondary]
-- `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-07-18/23 | HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts | Calli and Kronii's WARS partners Magni and Vesper |
+- `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-07-18 (publication date; zone unspecified) | HOLOSTARS English -TEMPUS- announced: Regis Altare, Magni Dezmond, Axel Syrios and Noir Vesper | Calli and Kronii's WARS partners Magni and Vesper |
 
 ### Mori Calliope × Raora Panthera
 - `bible/characters/Ouro-Kronii.md › Hard Facts`: - Aliases: Kronini, Kroniicopter, Kronster (by Calli), Tam Tender (by Raora), Owo-senpai (by Cecilia). Performed identities are excluded from matching unless a story uses them: Ouro Krono (-Ministry- persona, goodbye "Kronovoir") and Tam Gandr (ENreco). [Observed K8 nickname list, §Name and §Miscellaneous, secondary]
+
+### Mori Calliope × Sakamata Chloe
+- `bible/world/holoX.md › History`: | 2022-04-16 | Calli's English lesson #04 | Lui, Chloe; archive YrZ4baKOT1c |
 
 ### Mori Calliope × Shiori Novella
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Shiori Novella | 2026 Serendipity partner | Shiori calls her "Mor Mori." Together they pursue absurd premises. In their June 2026 interview Calli credits Shiori with encouraging her to pursue content that interests her personally instead of chasing whatever is fashionable. | [Official C11] [Official C11] |
@@ -1285,7 +1293,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Mori Calliope × Shirogane Noel
 - `bible/characters/Shirogane-Noel.md › Story Engine`: 2. "Drinking Knight with Noel" welcomes Calli as a guest and turns into a cooking contest.
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Noel was HOLOTALK's 22nd guest and on Calli's HOLOYOI with Shiranui Flare (2023).
 
 ### Mori Calliope × Shishiro Botan
 - `bible/characters/Shishiro-Botan.md › Story Engine`: 1. Botan runs a money-making server event for the EN cast and Calli keeps buying out the ramen shop.
@@ -1350,6 +1357,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Takane Lui: holoX's executive officer; secondary accounts describe Lui reining her in; "LuiChlo" collabs, Calli's English lesson and HOLOYOI together.
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Mori Calliope | English teacher | English practice (2021), lesson #04 (2022), HOLOYOI (2023); Calli danced to Lui's songs (2025, 2026) | [LU5] |
 - `bible/characters/Takane-Lui.md › Story Engine`: 3. Calli's English lesson, round two: Lui answers in perfect textbook English and then says "Ko!☆".
+- `bible/world/holoX.md › History`: | 2022-04-16 | Calli's English lesson #04 | Lui, Chloe; archive YrZ4baKOT1c |
 
 ### Mori Calliope × Watson Amelia
 - `bible/characters/Gawr-Gura.md › [SW] Background`: She hosted The Fish Tank with Watson Amelia and sang "Q" with Mori Calliope.
@@ -1452,6 +1460,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nakiri-Ayame.md › Background Timeline`: | 2026-03-06 | hololive 7th fes. "Ridin' on Dreams," STAGE 1 (with Okayu, Ina, FUWAMOCO) | [Official AY6] [Observed AY3] |
 - `bible/characters/Nekomata-Okayu.md › Story Engine`: 2. Ina and Okayu rehearse "Kurukuru Cruise" and Okayu agrees with every note change.
 - `bible/world/JP-Senpai-Pairs.md › Conflicts and Story Hooks`: 4. Okayu, the "all-affirming cat," judges an Ina–FUWAMOCO argument and agrees with everyone.
+- `bible/world/JP-Senpai-Pairs.md › History`: | 2025-08-05 (digital release; zone unspecified) | "Kurukuru Cruise," by Ninomae Ina'nis and Nekomata Okayu | TakoNeko; official catalog 604, checked 2026-10-04 |
 - `bible/world/JP-Senpai-Pairs.md › Nekomata Okayu with the cast`: - **Ninomae Ina'nis ("TakoNeko," secondary):** they released "Kurukuru Cruise" together (official digital release 2025-08-05); both on Okayu's 2025 New Year Game Festival team and on 7th fes STAGE 1 (2026). [S1] [S2 Okayu §Relationships, secondary] [Official S5]
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Okayu and Ina released "Kurukuru Cruise"
 
@@ -1683,6 +1692,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Sakamata Chloe × Takane Lui
 - `bible/characters/Sakamata-Chloe.md › Story Engine`: 2. Lui catches Chloe "cleaning" the holoX base by hiding everything in one closet.
+- `bible/world/holoX.md › History`: | 2022-04-16 | Calli's English lesson #04 | Lui, Chloe; archive YrZ4baKOT1c |
 
 ### Shiori Novella × Takanashi Kiara
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Takanashi Kiara | Senior ("Ultra Orange," from Gigi's stream title); calls her "GeeGee" (secondary) | Reanimal (2026-04-03); Eden Eternal with Shiori (2024); first-model ASR only, pending verification: Gigi decorated a page in the friendship journal Kiara brought to the 2026 fes.; "I know Kiara saved the world. Literally." (Hytale) | [Observed GG2, GG3] [ASR GG20, LgDuyqoaqT4 1:01:53, 1:16:19] |

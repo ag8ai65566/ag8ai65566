@@ -1,10 +1,10 @@
 # Audit packet: global
 
-Snapshot: git d0295ae. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 6292ab4. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/world/hololive.md` 9fbc51b41096; `bible/world/Streaming-Life.md` 8e3a1281513c; `bible/world/VTuber-Persona-and-Lore.md` 6c72058abfbe; `bible/world/Cross-Branch-Friends.md` 6439fb2edcf5; `bible/world/Concerts-and-Live-Events.md` 0040e6f6f63d; `bible/world/hololive-History-2023-2026.md` ea88e925b436; `bible/world/hololive-History-to-2022.md` 39bb9b8a68fa
+Owned files (sha256): `bible/world/hololive.md` 9fbc51b41096; `bible/world/Streaming-Life.md` 8e3a1281513c; `bible/world/VTuber-Persona-and-Lore.md` 6c72058abfbe; `bible/world/Cross-Branch-Friends.md` 6439fb2edcf5; `bible/world/Concerts-and-Live-Events.md` 0040e6f6f63d; `bible/world/hololive-History-2023-2026.md` 88a4f7f63f01; `bible/world/hololive-History-to-2022.md` f8357b1b0cb9
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -76,7 +76,7 @@ Owned files (sha256): `bible/world/hololive.md` 9fbc51b41096; `bible/world/Strea
 
 ### hololive History 2023-2026 — `bible/world/hololive-History-2023-2026.md`
 **[SW] Other Names:** recent hololive history, the merger, the 2025 graduations, holoEN's later generations
-**[SW] Description:** The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; Justice's second-anniversary live "How to Protect JUSTICE!" (June); EN's 4th concert "Serendipity" in Los Angeles (July), built on units such as Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS, Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora) and Autofister (Gigi–Cecilia); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
+**[SW] Description:** The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER explains the scope of "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; Justice's second-anniversary live "How to Protect JUSTICE!" (June); EN's 4th concert "Serendipity" in Los Angeles (July), built on units such as Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS, Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora) and Autofister (Gigi–Cecilia); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
 **[SW] Rules:** After 2026-09-07 members say "from hololive"; old group names survive as units. Affiliates may appear at events; graduates appear only as memories. ENReco is a fictional story the members play in, separate from their persona lore.
 **Dossier · Timeline:**
 | Date | Event | Why the cast remembers it |
@@ -87,7 +87,7 @@ Owned files (sha256): `bible/world/hololive.md` 9fbc51b41096; `bible/world/Strea
 | 2023-07-02 PDT | hololive English 1st concert "-Connect the World-" | EN's first concert |
 | 2023-07-25/31 | **-Advent- revealed ("WANTED!") and debuts**: Shiori, Bijou, **Nerissa**, Fuwawa, Mococo | Nerissa's origin |
 | 2023-09-09/10 | hololive DEV_IS opens with ReGLOSS (Ao, Kanade, Ririka, Raden, Hajime) | Japanese kouhai |
-| 2023-10-08 PDT / 10-09 JST | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
+| 2023-10-08 PDT / 10-09 JST | "CouncilRyS" 3D showcase; **-Promise- formed** by IRyS and the four remaining Council members | Kronii's and IRyS's group; official formation notice S7 in the Promise card |
 | 2024-01-16 | Yozora Mel leaves hololive | Not discussed in stories |
 | 2024-03-16/17 | SUPER EXPO 2024 and 5th fes. "Capture the Moment" | — |
 | 2024-04 | holoMeet 2024 ambassadors include Hakos Baelz | — |
@@ -100,7 +100,7 @@ Owned files (sha256): `bible/world/hololive.md` 9fbc51b41096; `bible/world/Strea
 | 2024-10-12 | FUWAMOCO reach 1,000,000 subscribers, first in Advent; VTuber of the Year at the VTuber Awards (2024-12) | — |
 | 2024-09-30 | **Watson Amelia concludes regular activities and stays an affiliate** | Ame appears as a guest |
 | 2024-11-09 | DEV_IS second unit FLOW GLOW debuts (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi) | — |
-| 2024-11-29 | Two months after Ame's change of status, COVER names it: "conclusion of streaming activities," distinct from graduation (affiliates can still appear in projects) | Why Ame can come back for events |
+| 2024-11-29 | COVER explains "conclusion of streaming activities" as a form of graduation that may permit limited future projects; individual notices establish each talent's status | Why Ame can come back for events |
 | 2025-01-03 | Ceres Fauna graduates | Promise remembers her |
 | 2025-01-26 | Sakamata Chloe concludes streaming activities (affiliate) | — |
 | 2025-03-08/09 | SUPER EXPO 2025 and 6th fes. "Color Rise Harmony" | Nerissa performs on day 1 |
@@ -173,7 +173,8 @@ Owned files (sha256): `bible/world/hololive.md` 9fbc51b41096; `bible/world/Strea
 | 2022-03-20 | hololive 3rd fes. "Link Your Wish" at Makuhari (#つながるホロライブ), day 2: Calli and Kiara perform | Calli: "My dream came true, my heart is exploding." Kiara: "MAKUHARI WAS ON FIRE!" [Observed—X posts, S4] |
 | 2022-04-26 | holoMeet begins; Gura is an ambassador | Global events |
 | 2022-03-19 | HOLOSTARS announces the unit UPROAR!! | — |
-| 2022-07-18/23 | HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts | Calli and Kronii's WARS partners Magni and Vesper |
+| 2022-07-18 (publication date; zone unspecified) | HOLOSTARS English -TEMPUS- announced: Regis Altare, Magni Dezmond, Axel Syrios and Noir Vesper | Calli and Kronii's WARS partners Magni and Vesper |
+| 2022-07-23/24 JST (announced schedule) | Debut streams scheduled for Altare and Magni on July 23, then Axel and Vesper on July 24 | Official announcement; scheduled dates do not establish actual broadcast-start times |
 | 2022-07-31 | Tsukumo Sana graduates | Council becomes four |
 | 2022-09 | hololive's 5th anniversary | — |
 **Dossier · Hard Facts (continuity):**

@@ -136,10 +136,13 @@ def date_info(raw):
         return {"precision": "lore" if raw.lower().startswith("lore") else "other", "zone": None}
     d, rest = m.group("d"), m.group("rest")
     prec = {4: "year", 7: "month", 10: "day"}[len(d)]
-    if re.search(r"[/–]", rest):
+    # A zone in parentheses belongs to an alternative date ("2025-04-27 (04-28 JST)"); two different zones mark
+    # one moment in two places ("2023-10-08 PDT / 10-09 JST"), not a range (bridge-events BR-DATE-001).
+    main = re.sub(r"\(.*?\)", "", rest)
+    zones = re.findall(r"\b(PDT|PST|EDT|EST|JST|UTC|WIB|AEST|BST|CEST)\b", main)
+    if len(set(zones)) <= 1 and re.search(r"[/–]|\bto\b", main):
         prec += "-range"
-    zone = re.search(r"\b(PDT|PST|EDT|EST|JST|UTC|WIB|AEST|BST|CEST)\b", rest)
-    return {"precision": prec, "zone": zone.group(1) if zone else None}
+    return {"precision": prec, "zone": zones[0] if len(set(zones)) == 1 else None}
 
 
 SW = re.compile(r"^## \[SW\] (.+?)\n(.*?)(?=\n## |\n---|\Z)", re.S | re.M)

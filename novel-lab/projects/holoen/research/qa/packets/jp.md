@@ -1,10 +1,10 @@
 # Audit packet: jp
 
-Snapshot: git d0295ae. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 6292ab4. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Hoshimachi-Suisei.md` cc7453e0e0dc; `bible/characters/AZKi.md` f9ef7601a752; `bible/characters/Nakiri-Ayame.md` 675a9db7cbb2; `bible/characters/Nekomata-Okayu.md` 80148bfc0586; `bible/world/JP-Senpai-Pairs.md` da7d79f21c02
+Owned files (sha256): `bible/characters/Hoshimachi-Suisei.md` cc7453e0e0dc; `bible/characters/AZKi.md` f9ef7601a752; `bible/characters/Nakiri-Ayame.md` 675a9db7cbb2; `bible/characters/Nekomata-Okayu.md` 80148bfc0586; `bible/world/JP-Senpai-Pairs.md` 26d530531779
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -141,7 +141,7 @@ Owned files (sha256): `bible/characters/Hoshimachi-Suisei.md` cc7453e0e0dc; `bib
 
 ### JP Senpai Pairs — `bible/world/JP-Senpai-Pairs.md`
 **[SW] Other Names:** AS_tar, FWMCAZ, TakoNeko, Suisei and Calli, Okayu and Ina, AZKi and FUWAMOCO, Ayame and Kiara
-**[SW] Description:** The ties of four hololive senpai from Japan, Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu, with the English cast and with each other. Suisei and Calli: collaborators on "CapSule" and "Wicked" (2022) and a performance at Calli's concert New Underworld Order; archived uploads document Calli's watch-alongs of Suisei's concerts. Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024). AZKi and FUWAMOCO: a FUWAMOCO-themed GeoGuessr collaboration (2024), a singing stream with Minato Aqua, and the twins' guest appearance at her 2025 birthday live (secondary). Okayu and Ina released "Kurukuru Cruise" (2025); secondary accounts call them "TakoNeko" and document Okayu's appearances around FUWAMOCO. Archived episode records list all four as guests on Kiara's translated talk show HOLOTALK (2021–2022). Ayame's ties with the English cast are HOLOTALK, team events and shared festival billing. Among themselves: Suisei and AZKi are "AS_tar" ("Going My Way," 2026); secondary references list MOMAS (Suisei, Okayu) and OKFAMS (Ayame, Okayu). All four were billed at hololive 7th fes. (March 2026).
+**[SW] Description:** The ties of four members of hololive's historical JP roster, Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu, with the English cast and with each other. Suisei and Calli: collaborators on "CapSule" and "Wicked" (2022) and a performance at Calli's concert New Underworld Order; archived uploads document Calli's watch-alongs of Suisei's concerts. Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024). AZKi and FUWAMOCO: a FUWAMOCO-themed GeoGuessr collaboration (2024), a singing stream with Minato Aqua, and the twins' guest appearance at her 2025 birthday live (secondary). Okayu and Ina released "Kurukuru Cruise" (2025); secondary accounts call them "TakoNeko" and document Okayu's appearances around FUWAMOCO. Archived episode records list all four as guests on Kiara's translated talk show HOLOTALK (2021–2022). Ayame's ties with the English cast are HOLOTALK, team events and shared festival billing. Among themselves: Suisei and AZKi are "AS_tar" ("Going My Way," 2026); secondary references list MOMAS (Suisei, Okayu) and OKFAMS (Ayame, Okayu). All four were billed at hololive 7th fes. (March 2026).
 **[SW] Rules:** These entries record public collaborations and senpai–kouhai ties. Same billing, same team, same song, a watch-along and a direct conversation are different kinds of evidence; none implies another. Language use depends on the event; HOLOTALK uses live translation. Gura and Mumei appear only as memories; Ame is an affiliate. A collab title shows that a collab happened, not how close two members are.
 **Dossier · History:**
 | Date | Event | Pair |
@@ -163,7 +163,7 @@ Owned files (sha256): `bible/characters/Hoshimachi-Suisei.md` cc7453e0e0dc; `bib
 | 2025-01-13 | New Year Game Festival, Okayu's team | Okayu, Suisei, Ayame with Ina, IRyS, Cecilia |
 | 2025-05-28 | "PERSONYA RESPECT" watch-along | FUWAMOCO for Okayu |
 | 2025-07 | "Sweet Pop Story" | AZKi with FUWAMOCO |
-| 2025-08-04 | "Kurukuru Cruise" | TakoNeko |
+| 2025-08-05 (digital release; zone unspecified) | "Kurukuru Cruise," by Ninomae Ina'nis and Nekomata Okayu | TakoNeko; official catalog 604, checked 2026-10-04 |
 | 2026-03-06 to 03-08 | hololive 7th fes. "Ridin' on Dreams" (STAGE 1 Mar 6, STAGE 3 Mar 7, STAGE 4 Mar 8) | all four on stage |
 | 2026-08-22 | Anime NYC: an announced convention-exclusive stream | Ayame (with Fubuki, Mio) |
 **Dossier · Hard Facts (continuity):**

@@ -1,10 +1,10 @@
 # Audit packet: myth2
 
-Snapshot: git d0295ae. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 6292ab4. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Gawr-Gura.md` 8a0f3c36c099; `bible/characters/Watson-Amelia.md` 39eaa60c85a3; `bible/world/hololive--Myth.md` 522515814ba5; `bible/world/AmeSame.md` c750fb6fe94f; `bible/world/Bone-Bros.md` c53915b3bb34
+Owned files (sha256): `bible/characters/Gawr-Gura.md` 60f2c49c8e28; `bible/characters/Watson-Amelia.md` 39eaa60c85a3; `bible/world/hololive--Myth.md` 92ad62626d86; `bible/world/AmeSame.md` c750fb6fe94f; `bible/world/Bone-Bros.md` 7fa9161aeafb
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -23,6 +23,7 @@ Owned files (sha256): `bible/characters/Gawr-Gura.md` 8a0f3c36c099; `bible/chara
 | 2021-05 | The Fish Tank talk show with Ame | [Observed G6] |
 | 2021-06-22 | Original song "REFLECT" | [Observed G2 §2021; G4] |
 | 2022-02 | "Q" music video with Mori Calliope; exact MV date and time zone remain unresolved | [Archive metadata G15; https://archive.ragtag.moe/watch?v=aetXqd9B8WE, checked 2026-10-04] |
+| 2022-02-05 | Digital release of "Q," the Calli–Gura duet | [Official https://hololive.hololivepro.com/en/music/q/; catalog date, zone unspecified; verified in the Myth2 audit on 2026-10-04] |
 | 2024-09 | "2.0" model update | [Observed G3] |
 | 2025-04-25 | "Ash Again," credited to Gawr Gura & Casey Edwards (hololive catalogue digital-release date). | [Official NEW-R1-016] |
 | 2025-05-01 | Graduates; final 3D mini live; last post "keep swimming! always! 💙" | [Official G5] [Observed G3, G2] |
@@ -87,7 +88,7 @@ Owned files (sha256): `bible/characters/Gawr-Gura.md` 8a0f3c36c099; `bible/chara
 | 2024-06 | Myth One-Block Minecraft series | A recent full-group project |
 | 2024-09 | 4th anniversary song and voice pack; Ame's last week includes a Myth collab | Ame's farewell to regular streaming |
 | 2025-04-30 | Myth relay "one last time" with Calli, Kiara, Ina and Gura before Gura's graduation | Gura's farewell with Myth |
-| 2025-07 | MYTHMASH: each active member releases a duet with a Japanese senpai (#mythmashchemythtry) | Cross-branch songs |
+| 2025-07 | MYTHMASH opening-ceremony stream | Project introduction; individual song releases have separate dates [Archive metadata S1, 6guF3BHlR4U] |
 | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 | 2026-02 | Kiara's album includes "Blue & Gold," a tribute to Gura and Ame | Remembering the two |
 | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
@@ -124,6 +125,7 @@ Owned files (sha256): `bible/characters/Gawr-Gura.md` 8a0f3c36c099; `bible/chara
 |---|---|---|
 | 2020–2021 | Constant collabs, pranks and bickering | "Bone Bros" |
 | 2022-02 | "Q" music video; exact MV date and time zone remain unresolved | Calli–Gura duet; DECO*27 composed it and shared lyric credits with Calli |
+| 2022-02-05 | Digital release of "Q" | Official catalog https://hololive.hololivepro.com/en/music/q/; zone unspecified; verified in the Myth2 audit on 2026-10-04 |
 | 2024-09 | Calli performs Gura's "Full Color" at Myth's 4th-anniversary concert "The Show Goes On!" | Carrying her song |
 | 2025-04-30 | "One Last Minecraft Trip." (Myth relay) | Last duo moments on stream |
 | 2025-05-01 | Gura graduates | — |

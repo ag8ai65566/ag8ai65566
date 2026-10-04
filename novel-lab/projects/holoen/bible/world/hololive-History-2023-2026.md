@@ -9,7 +9,7 @@ sw_section: Worldbuilding
 > Research dossier above; the Sudowrite Worldbuilding card is under the `## [SW]` headings.
 >
 > Scope: the public history of hololive from 2023 to the 2026-09-30 baseline, checked 2026-10-01. Evidence
-> labels as in the other world files. Dates JST unless noted (PDT/EDT for US events). Graduation and
+> labels as in the other world files. Dates are JST unless explicitly noted. Gura's 2025-05-01 graduation date has no source-specified time zone; US concert dates use the stated local zone. Graduation and
 > conclusion dates come from wiki infoboxes; no reasons are given or implied (project rule). Concerts
 > have their own card ("Concerts and Live Events").
 
@@ -30,7 +30,7 @@ Historical events.
 | 2023-07-02 PDT | hololive English 1st concert "-Connect the World-" | EN's first concert |
 | 2023-07-25/31 | **-Advent- revealed ("WANTED!") and debuts**: Shiori, Bijou, **Nerissa**, Fuwawa, Mococo | Nerissa's origin |
 | 2023-09-09/10 | hololive DEV_IS opens with ReGLOSS (Ao, Kanade, Ririka, Raden, Hajime) | Japanese kouhai |
-| 2023-10-08 PDT / 10-09 JST | "CouncilRyS" 3D showcase; **-Promise- formed** (IRyS joins the Council) | Kronii's and IRyS's group |
+| 2023-10-08 PDT / 10-09 JST | "CouncilRyS" 3D showcase; **-Promise- formed** by IRyS and the four remaining Council members | Kronii's and IRyS's group; official formation notice S7 in the Promise card |
 | 2024-01-16 | Yozora Mel leaves hololive | Not discussed in stories |
 | 2024-03-16/17 | SUPER EXPO 2024 and 5th fes. "Capture the Moment" | — |
 | 2024-04 | holoMeet 2024 ambassadors include Hakos Baelz | — |
@@ -43,7 +43,7 @@ Historical events.
 | 2024-10-12 | FUWAMOCO reach 1,000,000 subscribers, first in Advent; VTuber of the Year at the VTuber Awards (2024-12) | — |
 | 2024-09-30 | **Watson Amelia concludes regular activities and stays an affiliate** | Ame appears as a guest |
 | 2024-11-09 | DEV_IS second unit FLOW GLOW debuts (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi) | — |
-| 2024-11-29 | Two months after Ame's change of status, COVER names it: "conclusion of streaming activities," distinct from graduation (affiliates can still appear in projects) | Why Ame can come back for events |
+| 2024-11-29 | COVER explains "conclusion of streaming activities" as a form of graduation that may permit limited future projects; individual notices establish each talent's status | Why Ame can come back for events |
 | 2025-01-03 | Ceres Fauna graduates | Promise remembers her |
 | 2025-01-26 | Sakamata Chloe concludes streaming activities (affiliate) | — |
 | 2025-03-08/09 | SUPER EXPO 2025 and 6th fes. "Color Rise Harmony" | Nerissa performs on day 1 |
@@ -139,7 +139,7 @@ Event
 recent hololive history, the merger, the 2025 graduations, holoEN's later generations
 
 ## [SW] Description
-The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER names this "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; Justice's second-anniversary live "How to Protect JUSTICE!" (June); EN's 4th concert "Serendipity" in Los Angeles (July), built on units such as Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS, Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora) and Autofister (Gigi–Cecilia); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
+The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup," Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER explains the scope of "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; Justice's second-anniversary live "How to Protect JUSTICE!" (June); EN's 4th concert "Serendipity" in Los Angeles (July), built on units such as Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS, Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora) and Autofister (Gigi–Cecilia); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
 
 ## [SW] Rules
 After 2026-09-07 members say "from hololive"; old group names survive as units. Affiliates may appear at events; graduates appear only as memories. ENReco is a fictional story the members play in, separate from their persona lore.
@@ -182,6 +182,8 @@ The new 2026 hololive logo; a world-tour poster of city names; Advent's "WANTED!
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-DATE-001, global:GLOBAL-DATE-002 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit global, hand-applied by Claude:** global:GLOBAL-DATE-001, GLOBAL-DATE-002 (timeline date cells), GLOBAL-EXPORT-001 (escaped pipes in the IRyS concert title so the table and the registry parse it whole).**
 - **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-001, promise:PROMISE-DATE-002 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:BR-STATUS-003, bridge-events:MYTH2-DATE-002 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
+- **2026-10-03, bridge-events audit, hand-applied by Claude:** BR-DATE-004 (formation row wording and source; the zone was already set by the promise audit) and BR-STATUS-003 in the exported Description.
 
 ## Open Questions
 (None. Serendipity pairs for IRyS and Nerissa were found: see "Concerts and Live Events.")

@@ -50,7 +50,8 @@ Historical events.
 | 2022-03-20 | hololive 3rd fes. "Link Your Wish" at Makuhari (#つながるホロライブ), day 2: Calli and Kiara perform | Calli: "My dream came true, my heart is exploding." Kiara: "MAKUHARI WAS ON FIRE!" [Observed—X posts, S4] |
 | 2022-04-26 | holoMeet begins; Gura is an ambassador | Global events |
 | 2022-03-19 | HOLOSTARS announces the unit UPROAR!! | — |
-| 2022-07-18/23 | HOLOSTARS English -TEMPUS- (Regis Altare, Magni Dezmond, Axel Syrios, Noir Vesper) announced and debuts | Calli and Kronii's WARS partners Magni and Vesper |
+| 2022-07-18 (publication date; zone unspecified) | HOLOSTARS English -TEMPUS- announced: Regis Altare, Magni Dezmond, Axel Syrios and Noir Vesper | Calli and Kronii's WARS partners Magni and Vesper |
+| 2022-07-23/24 JST (announced schedule) | Debut streams scheduled for Altare and Magni on July 23, then Axel and Vesper on July 24 | Official announcement; scheduled dates do not establish actual broadcast-start times |
 | 2022-07-31 | Tsukumo Sana graduates | Council becomes four |
 | 2022-09 | hololive's 5th anniversary | — |
 
@@ -137,6 +138,7 @@ A 2020 debut thumbnail; a "1,000,000" celebration screen; the old hololive Engli
   checked by Claude against the official Serendipity report and announcements:** "hololive English first generation" removed from Other Names (it names Myth; it stays on the Myth card).
 - **2026-10-03, cross-card QA audit myth1, hand-applied by Claude:** myth1:MYTH-TIE-002 (both 2019 trace cells).**
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:ADVENT-SCOPE-002 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:BR-DATE-005 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

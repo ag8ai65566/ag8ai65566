@@ -12,7 +12,7 @@ sw_section: Worldbuilding
 > members' channels (archive.ragtag.moe, S1). holoX is hololive's sixth Japanese generation, presented as a
 > secret society. Added to the cast by author order (2026-10-02). At the 2026-09-30 baseline its active members
 > are La+ Darknesss, Takane Lui, Hakui Koyori and Kazama Iroha; Sakamata Chloe ended her regular activities on
-> 2025-01-26 and remains an affiliate, so she appears as a member of the past (as Watson Amelia does for Myth).
+> 2025-01-26 and remains an affiliate. Historical membership and individually documented guest appearances remain distinct from holoX's active four-member performing lineup.
 > Members' private lives, breaks and the reasons for them are not recorded.
 
 ## One-line Concept
@@ -83,12 +83,14 @@ Unit / generation (lore group with five persona roles; four active at the baseli
 | Date | Event | Who |
 |---|---|---|
 | 2021-11-26 to 11-30 | Debut week, one member a night | La+, Lui, Koyori, Chloe, Iroha |
-| 2022-03-04 / 04-16 | Calli's English lessons #02 and #04 | La+, Iroha; Lui, Chloe |
+| 2022-03-04 | Calli's English lesson #02 | La+, Iroha; archive X492n37brRU |
+| 2022-04-16 | Calli's English lesson #04 | Lui, Chloe; archive YrZ4baKOT1c |
 | 2023 | HOLOYOI ep. 1 (Lui, Chloe); BAE-GEMITE episodes; Kiara's off-collabs with Lui and La+ | with Calli, Bae, Kiara |
 | 2024 | FUWAMOKOYO; holoX "Drokei" escape event | Koyori; the group |
 | 2025-01-26 | Chloe's graduation live; she stays an affiliate | Chloe |
 | 2025-04-19 | "Q&A With Bird Sisters" | Lui, Mumei |
-| 2025-07-27 | "Glow in the Dark" (Mythmash) | La+, Kiara |
+| 2025-07-27 | "Glow in the Dark" video premiere (Mythmash; inherited date, zone unspecified) | La+, Kiara; Kiara Relationship Map and archive v5RKZXNuVyw |
+| 2025-07-28 (digital release; zone unspecified) | "Glow in the Dark" digital release | La+, Kiara; official catalog 600, checked 2026-10-04 |
 | 2025-12-01 | 4th anniversary: "Gyouan Xdeath," concert announced | four members |
 | 2026-04-08 | Album "Secret ORDER" released | [Official, R6] |
 | 2026-04-29 | "First MISSION," Pia Arena MM | La+, Lui, Koyori, Iroha |
@@ -180,6 +182,7 @@ A tiny horned founder with long silver hair, oversized sleeves and shackles; a p
   frogmouth secretary or "Yes My Dark!".
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** "Secret ORDER" release dated 2026-04-08, separate from the anniversary.
+- **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:BR-DATE-001, bridge-events:BR-DATE-003, bridge-events:BR-STATUS-002 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Resolved: after 2025-01-26 Chloe is a hololive affiliate rather than part of holoX's four-member performing

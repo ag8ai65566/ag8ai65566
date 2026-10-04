@@ -1,2 +1,3 @@
 - 2026-10-02 07:34 作者裁決收錄 final.md（sha256 15ee00e65441）：Author decision (2026-10-02): Nakiri Ayame and Nekomata Okayu added to the cast; GPT reviews each card one round only (run B), merged by Claude
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 da7d79f21c02）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
+- 2026-10-04 05:33 作者裁決收錄 final.md（sha256 26d530531779）：Author decision (2026-10-03): bridge-events audit merged by Claude

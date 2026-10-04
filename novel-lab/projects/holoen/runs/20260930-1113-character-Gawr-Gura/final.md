@@ -238,6 +238,7 @@ Real lines first; Style demos after.
 | 2021-05 | The Fish Tank talk show with Ame | [Observed G6] |
 | 2021-06-22 | Original song "REFLECT" | [Observed G2 §2021; G4] |
 | 2022-02 | "Q" music video with Mori Calliope; exact MV date and time zone remain unresolved | [Archive metadata G15; https://archive.ragtag.moe/watch?v=aetXqd9B8WE, checked 2026-10-04] |
+| 2022-02-05 | Digital release of "Q," the Calli–Gura duet | [Official https://hololive.hololivepro.com/en/music/q/; catalog date, zone unspecified; verified in the Myth2 audit on 2026-10-04] |
 | 2024-09 | "2.0" model update | [Observed G3] |
 | 2025-04-25 | "Ash Again," credited to Gawr Gura & Casey Edwards (hololive catalogue digital-release date). | [Official NEW-R1-016] |
 | 2025-05-01 | Graduates; final 3D mini live; last post "keep swimming! always! 💙" | [Official G5] [Observed G3, G2] |
@@ -498,6 +499,7 @@ Watson Amelia (affiliate): a Myth genmate and frequent early collaborator (AmeSa
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 - **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH-QUOTE-004 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:CONSULT-P1-006, myth2:MYTH2-DATE-001, myth2:MYTH2-DATE-002, myth2:MYTH2-EXPORT-001, myth2:MYTH2-QUOTE-001, myth2:MYTH2-QUOTE-003, myth2:MYTH2-SCOPE-001, myth2:MYTH2-SCOPE-002 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:MYTH2-DATE-001 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. "Fuck" is attested once in the 4.4-hour Resident Evil 2 audio of 2021 (both models hear it; the

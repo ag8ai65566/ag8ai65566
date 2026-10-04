@@ -1,9 +1,8 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-04T05:17Z",
- "snapshot": "0f97507d17ab6804fbf560028897abde3128248e1d944406157782c2a06efc33",
+ "checked_at": "2026-10-04T05:33Z",
+ "snapshot": "10d3f7a1f2cbc99ee6935343b9c90bcf3e7c9ac908c1a3854bfa52da55902442",
  "blocking_failures": [
-  "V10",
   "V11",
   "V12",
   "V13",
@@ -20,7 +19,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 0f97507d17ab6804fbf560028897abde3128248e1d944406157782c2a06efc33",
+    "snapshot 10d3f7a1f2cbc99ee6935343b9c90bcf3e7c9ac908c1a3854bfa52da55902442",
     "107 inputs"
    ],
    "finding_ids": []
@@ -104,11 +103,11 @@
   {
    "check_id": "V10",
    "title": "Dates, zones and status",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-bridge-events.md"
+    "reviewed in research/qa/audit-bridge-events.md"
    ],
    "finding_ids": []
   },

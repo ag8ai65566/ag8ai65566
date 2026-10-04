@@ -1,9 +1,9 @@
 # Audit packet: holox (incoming claims)
 
-Snapshot: git d0295ae.
+Snapshot: git 6292ab4.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Hakui Koyori|Kazama Iroha|Gozaru-chan|Iroha-dono|ラプラス・ダークネス|Takane Lui|秘密結社holoX|Kura-tan|Sakamata|Lui Lui|Lui-nee|Koyorin|Gozaru|Koyori|Laplus|沙花叉クロヱ|Iroha|風真いろは|Chloe|Kuroe|holoX|博衣こより|Koyo|ルイルイ|鷹嶺ルイ|La+|Lui)(
+Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Kazama Iroha|Hakui Koyori|Gozaru-chan|Iroha-dono|ラプラス・ダークネス|Takane Lui|秘密結社holoX|Kura-tan|Sakamata|Lui Lui|Koyorin|Lui-nee|Laplus|沙花叉クロヱ|Koyori|Gozaru|風真いろは|holoX|Kuroe|博衣こより|Iroha|Chloe|Koyo|ルイルイ|鷹嶺ルイ|Lui|La+)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
