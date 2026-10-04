@@ -25,8 +25,7 @@ dropped in on FUWAMOCO's 3D debut.
 Relationship web (four Japanese senpai with the cast and with each other).
 
 ## Hoshimachi Suisei with the cast
-- **Mori Calliope ("Death Star," secondary):** Calli's own card describes her as starstruck by Suisei (secondary;
-  the pair name and reaction stay here in the dossier). Calli's original "CapSule" with Suisei
+- **Mori Calliope ("Death Star," secondary):** [Unverified: the secondary characterization of Calli as starstruck.] Calli's original "CapSule" with Suisei
   (2022-04-04) and Suisei's "Wicked feat. Mori Calliope" (single "TEMPLATE / Wicked," 2022); Suisei sang
   "Wicked" with Calli at Calli's first solo concert "New Underworld Order" (2022-07-21). Calli drew Suisei on
   stream (2021), watched Suisei's 2nd concert with Ina (2023-02-20), held a "Talkin' Live Shows" collab with
@@ -132,7 +131,7 @@ AZKi (13th, 2021-07-31), Okayu (18th, 2021-11-27) and Ayame (23rd, 2022-10-09). 
 ## Glossary
 | Term | Meaning | Who uses it |
 |---|---|---|
-| Death Star | Calli and Suisei | fans, titles |
+| Death Star | Calli and Suisei | fan-wiki pair label (secondary) |
 | cometori | Suisei and Kiara (HOLOTALK hashtag) | Kiara |
 | Star Flower | Suisei, AZKi, Moona, IRyS ("story time") | official |
 | AS_tar | Suisei and AZKi (formerly Ex-INNK) | the pair, fans |
@@ -203,7 +202,7 @@ AS_tar, FWMCAZ, TakoNeko, Suisei and Calli, Okayu and Ina, AZKi and FUWAMOCO, Ay
 The ties of four members of hololive's historical JP roster, Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu, with the English cast and with each other. Suisei and Calli: collaborators on "CapSule" and "Wicked" (2022) and a performance at Calli's concert New Underworld Order; archived uploads document Calli's watch-alongs of Suisei's concerts. Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024). AZKi and FUWAMOCO: a FUWAMOCO-themed GeoGuessr collaboration (2024), a singing stream with Minato Aqua, and the twins' guest appearance at her 2025 birthday live (secondary). Okayu and Ina released "Kurukuru Cruise" (2025); secondary accounts call them "TakoNeko" and document Okayu's appearances around FUWAMOCO. Archived episode records list all four as guests on Kiara's translated talk show HOLOTALK (2021–2022). Ayame's ties with the English cast are HOLOTALK, team events and shared festival billing. Among themselves: Suisei and AZKi are "AS_tar" ("Going My Way," 2026); secondary references list MOMAS (Suisei, Okayu) and OKFAMS (Ayame, Okayu). All four were billed at hololive 7th fes. (March 2026).
 
 ## [SW] Rules
-These entries record public collaborations and senpai–kouhai ties. Same billing, same team, same song, a watch-along and a direct conversation are different kinds of evidence; none implies another. Language use depends on the event; HOLOTALK uses live translation. Gura and Mumei appear only as memories; Ame is an affiliate. A collab title shows that a collab happened, not how close two members are.
+These entries record public collaborations and senpai–kouhai ties. Same billing, same team, same song, a watch-along and a direct conversation are different kinds of evidence; none implies another. Language use depends on the event; HOLOTALK uses live translation. At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate. Historical scenes use each member's status at the scene's date. A title identifies advertised content; confirmation that a collaboration occurred requires evidence of the broadcast. Neither establishes private closeness.
 
 ## [SW] Sensory Details
 Proposed scene direction: a bilingual stream title, Calli's excited concert-watchalong commentary, easy giggles and a relaxed, unhurried "mogu mogu," a GeoGuessr guess called out in Japanese. (Avatar details are on each character's own card.)
@@ -229,6 +228,7 @@ Proposed scene direction: a bilingual stream title, Calli's excited concert-watc
   Flower, HOLOTALK, OkaGigi, cometori) removed from Other Names in favor of explicit pair names.
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:BR-DATE-002, bridge-events:BR-SCOPE-001 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:JP-ALIAS-001, jp:JP-EVENT-001, jp:JP-STATUS-001, jp:MYTH-TIE-002 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Ayame has no direct EN collab beyond HOLOTALK and team events in the sources read; keep her section short?

@@ -1,9 +1,9 @@
 # Audit packet: myth4 (incoming claims)
 
-Snapshot: git 0269bd3.
+Snapshot: git e4f3e81.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Ina and Kiara|Kiara and Ina|Drawn to Dawn|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|Kiara and Ina|Ina and Kiara|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ninomae Ina'nis and Kronii: R.E.P.O.
@@ -269,7 +269,7 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Ina and Kiara|Ki
 - `bible/world/JP-Senpai-Pairs.md › [SW] Other Names`: AS_tar, FWMCAZ, TakoNeko, Suisei and Calli, Okayu and Ina, AZKi and FUWAMOCO, Ayame and Kiara
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024).
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Okayu and Ina released "Kurukuru Cruise"
-- `bible/world/JP-Senpai-Pairs.md › Hoshimachi Suisei with the cast`: - **Mori Calliope ("Death Star," secondary):** Calli's own card describes her as starstruck by Suisei (secondary; the pair name and reaction stay here in the dossier). Calli's original "CapSule" with Suisei (2022-04-04) and Suisei's "Wicked feat. Mori Calliope" (single "TEMPLATE / Wicked," 2022); Suisei sang "Wicked" with Calli at Calli's first solo concert "New Underworld Order" (2022-07-21). Calli drew Suisei on stream (2021), watched Suisei's 2nd concert with Ina (2023-02-20), held a "Talkin' Live Shows" collab with her (2023-04-12) and watched the "Spectra of Nova" tour opener with FUWAMOCO and Elizabeth (2024-11-14). In a June 2026 chat Suisei mentioned having already talked about "the one with Calliope" among her recent stage appearances. [S1] [S2 Suisei §Relationships, secondary] [Suisei file SU20]
+- `bible/world/JP-Senpai-Pairs.md › Hoshimachi Suisei with the cast`: - **Mori Calliope ("Death Star," secondary):** [Unverified: the secondary characterization of Calli as starstruck.] Calli's original "CapSule" with Suisei (2022-04-04) and Suisei's "Wicked feat. Mori Calliope" (single "TEMPLATE / Wicked," 2022); Suisei sang "Wicked" with Calli at Calli's first solo concert "New Underworld Order" (2022-07-21). Calli drew Suisei on stream (2021), watched Suisei's 2nd concert with Ina (2023-02-20), held a "Talkin' Live Shows" collab with her (2023-04-12) and watched the "Spectra of Nova" tour opener with FUWAMOCO and Elizabeth (2024-11-14). In a June 2026 chat Suisei mentioned having already talked about "the one with Calliope" among her recent stage appearances. [S1] [S2 Suisei §Relationships, secondary] [Suisei file SU20]
 - `bible/world/JP-Senpai-Pairs.md › AZKi with the cast`: - **IRyS:** Star Flower (above); IRyS covered AZKi's "Inochi" (2021); Calli's "HOLO ENGLISH LESSON #03" with IRyS and Tsunomaki Watame (2022-03-12); an R.E.P.O. "JP & EN" collab with Shiranui Flare, Usada Pekora, Ina and Kronii (2025-07-19). [S1] [Official S3]
 - `bible/world/JP-Senpai-Pairs.md › Nakiri Ayame with the cast`: - **Team events:** the 2023 hololive Sports Festival in Minecraft, white team (Ayame's stream description lists Kiara, Mumei, Ame, Nerissa and AZKi; its title celebrates the win); Okayu's team at the 2025 New Year Game Festival (with Suisei, Ina, IRyS and Cecilia). [S1]
 - `bible/world/JP-Senpai-Pairs.md › Nakiri Ayame with the cast`: - **Shared billing:** 7th fes STAGE 1 with Ina and FUWAMOCO (2026-03-06); the official Anime NYC 2026 announcement listed her, Shirakami Fubuki and Ookami Mio for an August 22 convention-exclusive stream, the same day as streams by Kronii and Raora, FUWAMOCO, and Calli, Bijou, Nerissa and Kobo Kanaeru (a booking, not a location). [Official S5, S7]

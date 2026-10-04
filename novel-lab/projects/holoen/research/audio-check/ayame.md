@@ -11,7 +11,7 @@ render identically are quoted. Measurements describe the sampled recording and A
 music and other voices prevent treating them as isolated vocal measurements.
 
 All windows are from 2026. Only in-scope public performance material is used: personal remarks in the chats
-(family, childhood, health, trips, daily life) are not quoted or summarized here.
+are not quoted or summarized here.
 
 ## Windows measured
 
@@ -55,7 +55,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 | A playful reveal | **Observed** (2026-02-14): she unveils her Valentine's outfit behind a "mosaic roulette," spinning to decide how much to uncover, protests "ステイ！このまま！" ("Stay! Keep it like this!") at a near-miss, and then reads viewers' fan-art guesses. | [0:10:27](https://youtu.be/7RG6f33ZOvU?t=627), [0:13:50](https://youtu.be/7RG6f33ZOvU?t=830) |
 | Speech pace and pitch | About 260–270 transcribed characters a minute of speech in chat (slower than Suisei), about 280 in the excited outfit reveal and in the horror game; window medians 244–263 Hz in chat, about 283 Hz in the reveal and the horror game. | — |
 
-Not used: most of the February chat (dance practice, physical complaints, seasonal allergies, taxi rides, gifts, an injury), which is about personal matters. The photo-hunting window mixes in game voices; its pitch figures are not used.
+Private-life material is excluded under the project's scope rule. The photo-hunting window mixes in game voices; its pitch figures are not used.
 
 ## Second model (whisper medium) on quoted lines
 

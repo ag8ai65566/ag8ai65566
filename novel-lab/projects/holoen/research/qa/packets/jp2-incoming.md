@@ -1,19 +1,19 @@
 # Audit packet: jp2 (incoming claims)
 
-Snapshot: git 0269bd3.
+Snapshot: git e4f3e81.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names:  Senpai Pairs 2|Vivi and FUWAMOCO|Noel and Calliope|Marine and Kiara|Shirogane Noel|Botan and IRyS|Shishiro Botan|Houshou Marine|Kikirara Vivi|Yukihana Lamy|Lamy and Ina|Noel-danchou|Noel Deluxe|Shishiron|Lamy-mama|綺々羅々ヴィヴィ|Shishiro|Danchou|Senchou|Maririn|Sencho|Danchō|Senchō|Marine|獅白ぼたん|雪花ラミィ|Botan|宝鐘マリン|白銀ノエル|Wamy|Noel|Lamy|Vivi)(
+Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Kiara|Houshou Marine|Botan and IRyS|Shirogane Noel|Shishiro Botan|Kikirara Vivi|Yukihana Lamy|Noel-danchou|Lamy and Ina|Noel Deluxe|Shishiron|Lamy-mama|Shishiro|綺々羅々ヴィヴィ|Senchou|Maririn|Danchou|Marine|Danchō|Senchō|Sencho|雪花ラミィ|獅白ぼたん|宝鐘マリン|白銀ノエル|Botan|Wamy|Lamy|Vivi|Noel)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
-- `bible/characters/AZKi.md › [SW] Relationships`: (2025), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
+- `bible/characters/AZKi.md › [SW] Relationships`: Koyori also joined AZKi, Isaki Riona and Koganei Niko for a four-person 3D karaoke (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
 - `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
 - `bible/characters/AZKi.md › [SW] Relationships`: Houshou Marine: AZKi supplied soothing commentary for Marine's Holo Koshien stream (2026).
 - `bible/characters/AZKi.md › [SW] Relationships`: Kikirara Vivi: GeoGuessr on Vivi's channel (2026).
 - `bible/characters/AZKi.md › Behavioral Traits`: - **Pun-ASMR host (2025-06-22):** she hosted a 3D pun-ASMR contest with Okayu, Noel, Oozora Subaru and Otonose Kanade; laughing meant losing. The title establishes the format and players, not particular jokes or the winner. [Archive metadata NEW-R5-004]
-- `bible/characters/AZKi.md › Relationship Map`: | Shirogane Noel | JP senior | A player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
-- `bible/characters/AZKi.md › Relationship Map`: | Houshou Marine | JP senior | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+- `bible/characters/AZKi.md › Relationship Map`: | Shirogane Noel | hololive collaborator | A player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
+- `bible/characters/AZKi.md › Relationship Map`: | Houshou Marine | hololive collaborator | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
 - `bible/characters/AZKi.md › Relationship Map`: | Hakui Koyori, Yukihana Lamy | "KoZMy" (secondary references; a 2025-08-03 "KoZMy 結成⁉" collab title) | A 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026-02-03, not a KoZMy event); Lamy is also in "KALAZ" with Amane Kanata (secondary) Lamy: an impromptu group chat with Lamy and Inugami Korone on Lamy's channel (#あずらみころ, 2026-09-18). | [Koyori file KO4 lvgC3pW-LVA, 1HQL3WJPBHA] [Lamy file LM2] [Archive metadata NEW-R5-005] |
 - `bible/characters/AZKi.md › Relationship Map`: | Kikirara Vivi | — | A GeoGuessr collab on Vivi's channel (2026-08-22). | [Archive metadata, holostats dzO2LaVBmMY] |
 
@@ -145,7 +145,7 @@ Matched names:  Senpai Pairs 2|Vivi and FUWAMOCO|Noel and Calliope|Marine and Ki
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Yukihana Lamy: a "Lukewarm" duet cover (2024).
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Houshou Marine | — | Marine gave her the nickname "Okanyan" (official profile); a joint marshmallow-reading stream on her recommended list | [Official OK1] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hoshimachi Suisei | "MOMAS" | With Sakura Miko, Houshou Marine and Hiodoshi Ao; PlateUp! on her 2025 team | [OK2] [OK4] |
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Kikirara Vivi | — | A 2026-08-25 collab on Vivi's channel framed around やーらし. | [Archive metadata, ckworks jlt6HHrZnpE] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Yukihana Lamy | JP kouhai | A "Lukewarm" duet cover on Okayu's channel (2024-02-01). | [Member-upload title TIE-004] |
 
@@ -241,7 +241,7 @@ Matched names:  Senpai Pairs 2|Vivi and FUWAMOCO|Noel and Calliope|Marine and Ki
 ### from holoX
 - `bible/world/holoX.md › How they work together`: - NePoX: NePoLaBo (Nene, Polka, Lamy, Botan) × holoX; the 2026 event roster is the eight active members (Chloe is not on it), and the joint song "Watcha Gatcha!!!!!!!!" was released 2026-08-26. Membership and rosters are dated. [S3] [Official NePoX 2026 roster] [Official music 801]
 - `bible/world/holoX.md › With the English cast`: - **Ninomae Ina'nis, Gawr Gura (graduated):** UMISEA with Chloe, Minato Aqua and Houshou Marine (official 2023 roster). [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/]
-- `bible/world/holoX.md › With the other Japanese members on the cards`: - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s, Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project with Koyori, Chloe and Iroha. Okayu: "Dorobo Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+ (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine: Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
+- `bible/world/holoX.md › With the other Japanese members on the cards`: - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s, Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project; Koyori and Iroha are credited on "BEEP BEEP" (2026), while secondary sources place Chloe in the earlier lineup. Okayu: "Dorobo Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+ (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine: Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
 
 ### from hololive History 2023-2026
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-11-09 | DEV_IS second unit FLOW GLOW debuts (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi) | — |

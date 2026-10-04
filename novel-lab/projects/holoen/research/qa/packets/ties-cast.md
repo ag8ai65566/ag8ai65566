@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git 0269bd3. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git e4f3e81. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Elizabeth Rose Bloodflame
@@ -43,9 +43,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2019-05-19 | AZKi and Hoshimachi Suisei (formerly independent) join under the INoNaKa Music label; Suisei moves to hololive's main branch on 2019-12-01 | Calli's collaborator Hoshimachi Suisei |
 
 ### AZKi × Houshou Marine
-- `bible/characters/AZKi.md › Relationship Map`: | Houshou Marine | JP senior | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+- `bible/characters/AZKi.md › Relationship Map`: | Houshou Marine | hololive collaborator | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
 - `bible/characters/AZKi.md › [SW] Relationships`: Houshou Marine: AZKi supplied soothing commentary for Marine's Holo Koshien stream (2026).
-- `bible/characters/Houshou-Marine.md › Relationship Map`: | AZKi | JP kouhai | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | AZKi | hololive collaborator | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: AZKi: commentary for her Holo Koshien stream (2026).
 
 ### AZKi × IRyS
@@ -89,10 +89,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nakiri-Ayame.md › Relationship Map`: | AZKi | — | The 2023 Sports Festival white team | [AY4] |
 
 ### AZKi × Nekomata Okayu
-- `bible/characters/AZKi.md › Relationship Map`: | Nekomata Okayu | JP senior | Mario Kart World practice together for Team Wind (2026-01-16); Okayu also played in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata FIX-R5-001, NEW-R5-004] |
+- `bible/characters/AZKi.md › Relationship Map`: | Nekomata Okayu | hololive collaborator | Mario Kart World practice together for Team Wind (2026-01-16); Okayu also played in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata FIX-R5-001, NEW-R5-004] |
 - `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | AZKi | JP kouhai | Mario Kart World practice together for Team Wind (2026-01-16); a player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | AZKi | hololive collaborator | Mario Kart World practice together for Team Wind (2026-01-16); a player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
@@ -122,9 +122,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/AZKi.md › Relationship Map`: | Shiori Novella, Raora Panthera | kouhai | Dance shorts to her songs (2025–2026) | [AZ5] |
 
 ### AZKi × Shirogane Noel
-- `bible/characters/AZKi.md › Relationship Map`: | Shirogane Noel | JP senior | A player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
+- `bible/characters/AZKi.md › Relationship Map`: | Shirogane Noel | hololive collaborator | A player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
 - `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
@@ -694,7 +694,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Fauna-and-Mumei-Pairs.md › [SW] Description`: Gura was Fauna's oshi; they drew hololive members from memory four days before Fauna graduated, and Gura and Mumei did a "ROOM REVIEW" together in Mumei's last week.
 - `bible/world/Hakos-Baelz-Pairs.md › With Myth`: - **Gawr Gura (graduated):** an Urban Dictionary Challenge with Kronii, Mumei and Gura (2022). [S1]
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
-- `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 
 ### Gawr Gura × Nerissa Ravencroft
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Shiori Novella and Nerissa Ravencroft: her "Scarlet Wand" guildmates in the ENigmatic Recollection story.
@@ -781,7 +781,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/AmeSame.md › [SW] Rules`: At the 2026-09-30 baseline, Ame is an affiliate and Gura has graduated.
 - `bible/world/AmeSame.md › [SW] Rules`: Teasing can be crude and relentless, and Gura has become flustered when Ame turns teasing into praise.
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
-- `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Hard Facts`: - 2026 baseline: pairs with Gura are memories; pairs with Ame are guest appearances.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Gura** (59 / 25 / 11 / 10 / 8 / 6): Kiara calls her "Goobidiba" and taught her German and Japanese, German swears included, tricking her into singing on lesson streams; Gura's 2020 Minecraft prank filled Kiara's KFP back room with chickens. Gura was HOLOTALK's 34th guest on 2025-04-30, the eve of her graduation ("three four," at last). Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. [Observed S2 §KFP, §Miscellaneous; S4 Gura §Gura's antics, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Rules`: In the 2026 baseline, pairs with Gura are memories and callbacks, and pairs with Ame are guest appearances.
@@ -1205,7 +1205,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Hoshimachi Suisei: a "Chatter Chatter" dance short and Puyo Puyo Tetris 2 coaching (2026).
 
 ### Hoshimachi Suisei × Mori Calliope
-- `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2026-04-04 | [Unverified: identification of Suisei's reported Calliope appearance as UNCUT ROCK!!; the event and date require a direct locator.] | [ASR SU20, her own account] [Observed fan-clip titles, secondary] |
+- `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | Date unverified | [Unverified: identification of Suisei's reported Calliope appearance as UNCUT ROCK!!; the event and date require a direct locator.] | [ASR SU20, her own account] [Observed fan-clip titles, secondary] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Mori Calliope | "Death Star" | [Unverified: the secondary characterization of Calli as starstruck.] "CapSule" and "Wicked" (2022); Suisei sang "Wicked" at Calli's first solo concert, New Underworld Order; [Unverified: whether her reported 2026 Calliope appearance was UNCUT ROCK!!]; a "Talkin' Live Shows" collab (2023); Calli's watch party of her first tour (2024-11-14) | [S1] [ASR SU20] [SU2 §Relationships] |
 - `bible/characters/Hoshimachi-Suisei.md › Story Engine`: 1. Calli asks Suisei to rehearse "Wicked" one more time and cannot stop saying "senpai."
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: (2022), including their performance at Calli's concert New Underworld Order, and Calli hosted a watch party of Suisei's first tour.
@@ -2136,7 +2136,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week.
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Ame:** Mumei and Ame: Overwatch and a VR field trip (2022), "ANIMALS with Ame & Moom" (2024-09-29, in Ame's last regular week). [Observed S1]
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
-- `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 
 ### Nekomata Okayu × Ninomae Ina'nis
 - `bible/characters/Nakiri-Ayame.md › Background Timeline`: | 2026-03-06 | hololive 7th fes. "Ridin' on Dreams," STAGE 1 (with Okayu, Ina, FUWAMOCO) | [Official AY6] [Observed AY3] |
@@ -2154,13 +2154,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Hakui-Koyori.md › Relationship Map`: | Nekomata Okayu | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07); plays Okayu's game (2025) | [KO4 PtjqrNUOSWA] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hakui Koyori | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07) | [Koyori channel PtjqrNUOSWA] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Sakamata Chloe | — | Chorus on Chloe's "Bling-Bang-Bang-Born" cover (2025-01-24). | [Archive metadata, ragtag wxnTKRkpePs] |
-- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Sakamata Chloe: chorus on her "Bling-Bang-Bang-Born" cover (2025).
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Sakamata Chloe: Okayu contributed chorus vocals to Chloe's "Bling-Bang-Bang-Born" cover (2025).
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Nekomata Okayu: chorus on her "Bling-Bang-Bang-Born" cover (2025).
 
 ### Nekomata Okayu × Shirogane Noel
 - `bible/characters/AZKi.md › Behavioral Traits`: - **Pun-ASMR host (2025-06-22):** she hosted a 3D pun-ASMR contest with Okayu, Noel, Oozora Subaru and Otonose Kanade; laughing meant losing. The title establishes the format and players, not particular jokes or the winner. [Archive metadata NEW-R5-004]
 - `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).

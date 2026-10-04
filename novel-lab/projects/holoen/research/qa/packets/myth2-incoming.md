@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 0269bd3.
+Snapshot: git e4f3e81.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Gura and Calli|Calli and Gura|Amelia Watson|Watson Amelia|The Fish Tank|Gura and Ame|Ame and Gura|Gremlin Ame|Same-chan|ワトソン・アメリア|Gawr Gura|Bone Bros|Goobidiba|HoloMyth|Samegaki|holoMyth|AmeSame|Amechan|amesame|がうる・ぐら|Amelia|Gooba|Myth|Gura|Goob|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Calli and Gura|City Pop Shark|The Fish Tank|Watson Amelia|Amelia Watson|Gura and Ame|Ame and Gura|Gremlin Ame|Goobidiba|ワトソン・アメリア|Bone Bros|Gawr Gura|Same-chan|Samegaki|HoloMyth|holoMyth|amesame|Amechan|AmeSame|Amelia|がうる・ぐら|Gooba|Myth|Goob|Gura|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -253,7 +253,7 @@ Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Gu
 
 ### from JP Senpai Pairs
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024).
-- `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: Gura and Mumei appear only as memories; Ame is an affiliate.
+- `bible/world/JP-Senpai-Pairs.md › [SW] Rules`: At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate.
 - `bible/world/JP-Senpai-Pairs.md › Hoshimachi Suisei with the cast`: - **Gawr Gura (graduated):** Suisei, Gura and Usada Pekora were the three faces of "hololive night" at Dodger Stadium (2024-07-05), on the big screen at the first pitch and in the drone show. [Official S4]
 - `bible/world/JP-Senpai-Pairs.md › Nakiri Ayame with the cast`: - **Team events:** the 2023 hololive Sports Festival in Minecraft, white team (Ayame's stream description lists Kiara, Mumei, Ame, Nerissa and AZKi; its title celebrates the win); Okayu's team at the 2025 New Year Game Festival (with Suisei, Ina, IRyS and Cecilia). [S1]
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2023-11 | Sports Festival, white team wins | Ayame and AZKi with Kiara, Mumei, Ame, Nerissa |

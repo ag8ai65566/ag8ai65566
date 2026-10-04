@@ -11,7 +11,7 @@ render identically are quoted. Measurements describe the sampled recording and A
 music and other voices prevent treating them as isolated vocal measurements.
 
 All windows are from 2026. Only in-scope public performance material is used: personal remarks in the chats
-(family, childhood, health, trips, daily life) are not quoted or summarized here.
+are not quoted or summarized here.
 
 ## Windows measured
 
@@ -55,7 +55,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 | Speech pace | About 200–220 transcribed characters a minute of speech in the April Fools and RPG windows (measured, careful delivery), about 280 in the horror mystery (reading text aloud). | — |
 | Register | The April Fools window (a nervous "new VTuber" act, median about 340 Hz) and the excited GeoGuessr window (about 312 Hz) sit well above her RPG window (about 244 Hz). | — |
 
-Not used: remarks in the April Fools stream about her family and childhood, and her travel habits (personal matters).
+Private-life material is excluded under the project's scope rule.
 
 ## Second model (whisper medium) on quoted lines
 
@@ -65,7 +65,7 @@ Not used: remarks in the April Fools stream about her family and childhood, and 
 | "ちょっとちょっとなんでそんなみんな情報を持ってるの" | [0:08:05](https://youtu.be/Y5BPxMCI6oU?t=485) | "…え、ちょっとちょっと、なんでそんなみんな情報を持ってるの?…" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "ダジャレも好きなんです" | [0:09:30](https://youtu.be/Y5BPxMCI6oU?t=570) | "…地図を見るなんで?なんで?え、ダジャーレ、あ、ダジャーレ" | **Not confirmed** by the second model; not quoted |
 | "パクチー！いや、一番嫌い！いらない！" | [0:12:09](https://youtu.be/Y5BPxMCI6oU?t=729) | "…苦手なものパクチーいや一番嫌いいらない激甘なもの…" | **Shared span (computed):** whole line (kana/kanji folded) |
-| "この文字数に恐怖するがいい" | [0:17:10](https://youtu.be/Y5BPxMCI6oU?t=1030) | "同時 に 大好き でこの 世界 に 行っ て き たので アズキ の 頑張っ て 小さい 頃 から今 まで に 影響 を 受け て き たアーティスト さん 音楽 編 歴 を まとめ て き まし た の で みんな さんこの 文字 数 に 恐怖 する が いいはい こちらうわぁ" | **Shared span (computed):** whole line (kana/kanji folded) |
+| "この文字数に恐怖するがいい" | [0:17:10](https://youtu.be/Y5BPxMCI6oU?t=1030) | "同時 に 大好き でこの 世界 に 行っ て き たので アズキ の 頑張っ て [Private-life material removed; this bracketed note is not spoken text.] を まとめ て き まし た の で みんな さんこの 文字 数 に 恐怖 する が いいはい こちらうわぁ" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "戦略的撤退" | [0:21:58](https://youtu.be/ZlaE59NgPpg?t=1318) | "2回目にして終わってない終わってないよまだ戦略的撤退いや恐ろしい夢だったなとこれみんなみんな生きてるみんな生きてるみんな生きてるねセーブ" | **Shared span (computed):** whole line (kana/kanji folded) |
 | "いやー恐ろしい夢だったなぁ" | [0:22:04](https://youtu.be/ZlaE59NgPpg?t=1324) | "戦略的撤退!いやー恐ろしい夢だったなーとこれみんなーみんな生きてる、みんな生きてるみんな生きてるねセーブなんもなかったんやご視聴ありがとうございました" | **Partial (computed):** shared run "いや恐ろしい夢だったな"; only that part is quoted |
 | "ぼったくり" | [0:31:25](https://youtu.be/ZlaE59NgPpg?t=1885) | "…お金!やば!ぼったくり、ぼったくり、ぼったくりです、ぼったくりの店…" | **Shared span (computed):** whole line (kana/kanji folded) |

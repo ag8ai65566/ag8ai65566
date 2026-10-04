@@ -28,8 +28,7 @@ sw_section: Characters
 > **Audio status:** on 2026-10-02 Claude checked archived 2026 recordings (OK20: a Moero!! Holo Yakyū
 > stream, a Mina the Hollower stream and a Final Fantasy VII Rebirth stream, about 50 minutes of speech; see
 > research/audio-check/okayu.md). Lines she reads from the games are not quoted; the baseball window has voiced
-> members and crowd audio and is not used for voice measurements. A remark about her off-stream schedule is not
-> used. The audio was machine-transcribed and
+> members and crowd audio and is not used for voice measurements. The project's public-persona scope applies to the reviewed material. The audio was machine-transcribed and
 > acoustically measured; transcripts were reviewed in context, without independent listening verification.
 
 ## One-line Concept
@@ -180,8 +179,8 @@ on the world card "JP Senpai Pairs."
 | La+ Darknesss | "Dorobo Kensetsu" | A 3D lie-detector challenge (2026) | [La+ file LA2, LA4] |
 | Takane Lui | — | Harry Potter watch-alongs to introduce Okayu to the series (2025-11-24 and others); "Shaccho" is a first-model ASR rendering whose direction is unconfirmed, so it is not used | [Lui channel Lj0MZFpHitQ] |
 | Koseki Bijou | Advent kouhai | Credited participants together in the official purple-themed 3D variety program #パープル争奪戦 (2026-07-23). | [Archive metadata, ckworks Blen0XcU9gg] |
-| AZKi | JP kouhai | Mario Kart World practice together for Team Wind (2026-01-16); a player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
-| Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+| AZKi | hololive collaborator | Mario Kart World practice together for Team Wind (2026-01-16); a player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
+| Shirogane Noel | hololive collaborator | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 | Kikirara Vivi | — | A 2026-08-25 collab on Vivi's channel framed around やーらし. | [Archive metadata, ckworks jlt6HHrZnpE] |
 | Sakamata Chloe | — | Chorus on Chloe's "Bling-Bang-Bang-Born" cover (2025-01-24). | [Archive metadata, ragtag wxnTKRkpePs] |
 | Yukihana Lamy | JP kouhai | A "Lukewarm" duet cover on Okayu's channel (2024-02-01). | [Member-upload title TIE-004] |
@@ -273,7 +272,7 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 Okayu wants to enjoy every day to the fullest with games, songs and dances, and to share them with her fans and the members she loves; she likes seeing people react, and she likes saying yes.
 
 ## [SW] Relationships
-Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: secondary accounts report Okayu's enthusiasm for the twins and her appearance with Korone at their 3D debut (2024); archived metadata documents the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata). IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki and Ookami Mio: her GAMERS. Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: Harry Potter watch-alongs (2025). ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played. Kikirara Vivi: a 2026 collab on Vivi's channel. Sakamata Chloe: chorus on her "Bling-Bang-Bang-Born" cover (2025). Yukihana Lamy: a "Lukewarm" duet cover (2024).
+Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: secondary accounts report Okayu's enthusiasm for the twins and her appearance with Korone at their 3D debut (2024); archived metadata documents the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata). IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki and Ookami Mio: her GAMERS. Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: Harry Potter watch-alongs (2025). ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played. Kikirara Vivi: a 2026 collab on Vivi's channel. Sakamata Chloe: Okayu contributed chorus vocals to Chloe's "Bling-Bang-Bang-Born" cover (2025). Yukihana Lamy: a "Lukewarm" duet cover (2024).
 
 ## [SW] Secrets
 (none)
@@ -307,6 +306,7 @@ Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; the
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
+- **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:CLAUDE-SCOPE-002, jp:JP-CREDIT-001, jp:JP-TIE-001 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The OkaGigi festival banter rests on secondary clip metadata; its dialogue is not quoted.

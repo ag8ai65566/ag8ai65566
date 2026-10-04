@@ -5,3 +5,4 @@
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 6d46cd8876b6）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 aefe9a816d29）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 10:15 作者裁決收錄 final.md（sha256 363cad47c8c7）：Author order 2026-10-03: Claude merges the GPT QA audits; bridge-ties-external findings applied
+- 2026-10-04 10:28 作者裁決收錄 final.md（sha256 f1733e2f0a6b）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied

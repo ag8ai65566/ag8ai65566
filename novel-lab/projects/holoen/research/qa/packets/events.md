@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git 0269bd3. Every dated row from every bible file's dossier
+Snapshot: git e4f3e81. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
@@ -774,7 +774,6 @@ search the file for the row text to see its context.
 - 2026-04 [month] "Mekurumeku Rendezvous," a TV anime ending theme — `bible/characters/Fuwawa-Abyssgard.md` ([Observed FW3 vSwxof0K8lk])
 - 2026-04 [month] Resident Evil series with Cecilia (her account); the "Liar Dancer" cover; the mock rival feud — `bible/characters/Hakos-Baelz.md` ([ASR HB20])
 - 2026-04-29 [day] holoX's first in-person unit concert, "First MISSION" — `bible/characters/Hakui-Koyori.md` ([Official KO6])
-- 2026-04-04 [day] [Unverified: identification of Suisei's reported Calliope appearance as UNCUT ROCK!!; the event and date require a direct locator.] — `bible/characters/Hoshimachi-Suisei.md` ([ASR SU20, her own account] [Observed fan-clip titles, secondary])
 - 2026-04-18 [day] Hoshimatic Project's second song "BEEP BEEP" (official digital release; premiered the day before) — `bible/characters/Hoshimachi-Suisei.md` ([Official SU10] [SU4])
 - 2026-04-29 [day] holoX's first concert, "First MISSION" — `bible/characters/Kazama-Iroha.md` ([Official IR6])
 - 2026-04-08 [day] holoX album "Secret ORDER" released — `bible/characters/Laplus-Darknesss.md` ([Official FIX-R6-003])

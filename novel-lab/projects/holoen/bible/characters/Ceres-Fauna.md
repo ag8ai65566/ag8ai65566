@@ -9,7 +9,7 @@ sw_section: Characters
 > Scope: official lore and publicly shown persona only, checked 2026-10-01. Fauna graduated from hololive
 > on 2025-01-03; her "present" in this file is her last active period (2024), per the project's recency
 > rule. Nothing about the performer behind the avatar: the reason for her graduation and private-life
-> details (health, family, school and the like) are deliberately left out. In stories she knows she is a
+> details are deliberately left out. In stories she knows she is a
 > streamer with a persona (see the world card "VTuber Persona and Lore"). Evidence labels:
 > - **[Official]** COVER's own profile, site, announcement or publication.
 > - **[Observed]** public stream, title or post; "(secondary)" means the wording comes from a wiki or
@@ -350,6 +350,7 @@ Nanashi Mumei (graduated 2025): Council and Promise genmate and recurring collab
 - **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 - **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-002, promise:PROMISE-EXPORT-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-QUOTE-001 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
+- **2026-10-04, scope wording (Claude, with the jp audit's CLAUDE-SCOPE-002):** the audio-status note no longer lists excluded topics; private details deliberately excluded.
 
 ## Open Questions
 1. "Evil Fauna," the yandere lines and the forklift dramas come from the wiki's quote list (secondary, no

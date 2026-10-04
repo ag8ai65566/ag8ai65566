@@ -9,7 +9,7 @@ sw_section: Characters
 > Scope: official lore and publicly shown persona only, checked 2026-10-01. Mumei graduated from hololive
 > on 2025-04-27 (2025-04-28 JST); her "present" in this file is her last active period (late 2024 to April
 > 2025), per the project's recency rule. Nothing about the performer behind the avatar: graduation reasons
-> and private-life details (health, family, school and the like) are deliberately left out. In stories she
+> and private-life details are deliberately left out. In stories she
 > knows she is a streamer with a persona (see the world card "VTuber Persona and Lore"). Evidence labels:
 > - **[Official]** COVER's own profile, site, announcement or publication.
 > - **[Observed]** public stream, title or post; "(secondary)" means the wording comes from a wiki or
@@ -369,6 +369,7 @@ Ceres Fauna (graduated 2025-01): Council and Promise genmate and recurring colla
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** NEW-R2-013 ("Best Friend" with Bae; "preYdator" in a member upload), NEW-R2-014 (spring 2025 covers), NEW-R2-015 (graduation as mock entitlement). FIX-R2-002 was already applied by the justice audit.
 - **2026-10-03, two-model audio check by Claude (quotation candidates from GPT research R1–R6):** a shared ASR span added to the dossier's sample lines, recorded in its audio report's second-model table; exported fields unchanged.
 - **2026-10-04, cross-card QA audit (promise, GPT xhigh), merged by Claude:** applied promise:PROMISE-DATE-002, promise:PROMISE-SCOPE-001 (exact replacements; dispositions in research/qa/audit-promise.md and research/qa/resolutions.md).
+- **2026-10-04, scope wording (Claude, with the jp audit's CLAUDE-SCOPE-002):** the audio-status note no longer lists excluded topics; private details deliberately excluded.
 
 ## Open Questions
 1. Wiki quote lines ("Civilization is temporary…", the "moom" verb) are secondary, without timestamps; the

@@ -11,7 +11,7 @@ render identically are quoted. Measurements describe the sampled recording and A
 music and other voices prevent treating them as isolated vocal measurements.
 
 All windows are from 2024, her last full year of regular activities (she concluded them on 2025-01-26). Only in-scope public performance material is used: personal remarks in the chats
-(family, childhood, health, trips, daily life) are not quoted or summarized here.
+are not quoted or summarized here.
 
 ## Windows measured
 

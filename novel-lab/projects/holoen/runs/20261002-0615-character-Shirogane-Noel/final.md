@@ -145,7 +145,7 @@ Public exchanges only.
 | FUWAMOCO, Hakos Baelz | — | Participants in the "Yuru Holo" team Mario Kart event (2023; not necessarily one team); FUWAMOCO danced to "TREVIAN KNIGHT" (2025-09-30) | [NO5 Evg-T2BUIDM, 8RjOCCH2sac] |
 | Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [NO5] |
 | Ceres Fauna (graduated) | EN kouhai | Secondary accounts (Fauna's wiki trivia) say Fauna admired her and wanted to collab; not verified in review and no collab recorded, so it stays out of the exported fields | [Fauna file F2, secondary] |
-| AZKi | JP kouhai | A player in AZKi's 3D pun-ASMR contest (2025-06-22), alongside Okayu, Subaru and Kanade. | [Archive metadata NEW-R5-004] |
+| AZKi | hololive collaborator | A player in AZKi's 3D pun-ASMR contest (2025-06-22), alongside Okayu, Subaru and Kanade. | [Archive metadata NEW-R5-004] |
 | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 
 ## Arc
@@ -261,6 +261,7 @@ Houshou Marine: hololive Fantasy genmate; Bara☆Dice with Takane Lui, Shiranui 
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** no finding (card and sheet attested OK); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-004 (AZKi and Okayu added to the exported Relationships, filling two empty pairs), NEW-R5-015 to 018 (Holo Koshien, "Tarō" titles, Matsuken Samba crowd work, "HATSUKOI DAISENSOU").
 - **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-002 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:JP-TIE-001 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Resolved: the official English title is "TREVIAN KNIGHT" (official music page 622).

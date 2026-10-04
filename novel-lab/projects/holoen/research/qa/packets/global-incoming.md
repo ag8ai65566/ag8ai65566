@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 0269bd3.
+Snapshot: git e4f3e81.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|SUPER EXPO|EN concert|world tour|the merger|PavoNashi|aftertalk|Holodeath|HOLOTORI|soranii|IRySora|3D live|MoRikka|HoloJEI|K.I.R.A|KoMeHa|V3LVET|UMISEA|OKFAIR|LYRA)(
+Matched names: loEN's later generations|hololive History 2023-2026|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|Myth's debut|hololive fes|Serendipity|Star Flower|EN concert|the merger|SUPER EXPO|world tour|Holodeath|aftertalk|PavoNashi|HOLOTORI|HoloJEI|MoRikka|K.I.R.A|IRySora|3D live|soranii|OKFAIR|KoMeHa|UMISEA|V3LVET|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -430,7 +430,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/world/holoX.md › With the English cast`: - **Nanashi Mumei (graduated):** HOLOTORI with Lui; "Q&A With Bird Sisters" (2025-04-19); an EN-server Minecraft tour with Lui, Chloe and Bae (2022). [S1]
 - `bible/world/holoX.md › With the English cast`: - **Watson Amelia (affiliate):** a VALORANT collab with Iroha and Kobo Kanaeru (2022-06-04; secondary references call the trio "KoMeHa"); Apex with Lui and Iofi (2022-01-19). [S1 tGVhLibbYL0, Mory0I9vXtI] [S3]
 - `bible/world/holoX.md › With the English cast`: - **Ninomae Ina'nis, Gawr Gura (graduated):** UMISEA with Chloe, Minato Aqua and Houshou Marine (official 2023 roster). [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/]
-- `bible/world/holoX.md › With the other Japanese members on the cards`: - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s, Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project with Koyori, Chloe and Iroha. Okayu: "Dorobo Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+ (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine: Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
+- `bible/world/holoX.md › With the other Japanese members on the cards`: - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s, Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project; Koyori and Iroha are credited on "BEEP BEEP" (2026), while secondary sources place Chloe in the earlier lineup. Okayu: "Dorobo Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+ (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine: Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
 - `bible/world/holoX.md › Conflicts and Story Hooks`: 2. Kiara visits holoX's base for a HOLOTORI meeting and Lui has to explain why the founder is in time-out.
 
 ### from hololive -Advent-

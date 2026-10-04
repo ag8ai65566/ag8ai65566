@@ -1,15 +1,15 @@
 # Audit packet: holox (incoming claims)
 
-Snapshot: git 0269bd3.
+Snapshot: git e4f3e81.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Hakui Koyori|Kazama Iroha|Gozaru-chan|Takane Lui|ラプラス・ダークネス|Iroha-dono|秘密結社holoX|Kura-tan|Sakamata|Koyorin|Lui-nee|Lui Lui|沙花叉クロヱ|Koyori|Laplus|Gozaru|Chloe|holoX|風真いろは|Kuroe|Iroha|博衣こより|Koyo|ルイルイ|鷹嶺ルイ|Lui|La+)(
+Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Hakui Koyori|Kazama Iroha|Gozaru-chan|ラプラス・ダークネス|Takane Lui|Iroha-dono|秘密結社holoX|Kura-tan|Sakamata|Koyorin|Lui Lui|Lui-nee|沙花叉クロヱ|Laplus|Gozaru|Koyori|Iroha|Kuroe|博衣こより|風真いろは|holoX|Chloe|鷹嶺ルイ|ルイルイ|Koyo|La+|Lui)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
 - `bible/characters/AZKi.md › [SW] Relationships`: Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025).
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
-- `bible/characters/AZKi.md › [SW] Relationships`: (2025), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
+- `bible/characters/AZKi.md › [SW] Relationships`: Koyori also joined AZKi, Isaki Riona and Koganei Niko for a four-person 3D karaoke (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
 - `bible/characters/AZKi.md › [SW] Relationships`: Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024).
 - `bible/characters/AZKi.md › [SW] Relationships`: La+ Darknesss: GeoGuessr for Tochigi Day and other games (2025).
 - `bible/characters/AZKi.md › Behavioral Traits`: 4. Dances other members' songs in her shorts (Calli's "Orpheus," 2025-10-09, archived metadata lXLBb9IVraI; in 2026 Laplus, Towa and Nene, Miko, Koyori, Riona, Lui, Zeta). [Observed AZ4 titles]
@@ -112,7 +112,7 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Hakui Koyori: a lateral-thinking puzzle collab (2025).
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026).
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Takane Lui: Harry Potter watch-alongs (2025).
-- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Sakamata Chloe: chorus on her "Bling-Bang-Bang-Born" cover (2025).
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Sakamata Chloe: Okayu contributed chorus vocals to Chloe's "Bling-Bang-Bang-Born" cover (2025).
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hakui Koyori | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07) | [Koyori channel PtjqrNUOSWA] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | La+ Darknesss | "Dorobo Kensetsu" | A 3D lie-detector challenge (2026) | [La+ file LA2, LA4] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Takane Lui | — | Harry Potter watch-alongs to introduce Okayu to the series (2025-11-24 and others); "Shaccho" is a first-model ASR rendering whose direction is unconfirmed, so it is not used | [Lui channel Lj0MZFpHitQ] |

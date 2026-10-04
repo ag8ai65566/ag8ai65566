@@ -11,7 +11,7 @@ render identically are quoted. Measurements describe the sampled recording and A
 music and other voices prevent treating them as isolated vocal measurements.
 
 All windows are from 2026. Only in-scope public performance material is used: personal remarks in the chats
-(family, childhood, health, trips, daily life) are not quoted or summarized here.
+are not quoted or summarized here.
 
 ## Windows measured
 
@@ -54,7 +54,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 | Low voice | **Partly supported**: her lower range reaches further down than the other three (p10 about 131–155 Hz against about 160–200 Hz), but window medians (about 260 Hz) are similar; game audio is mixed in. Treat "low, boyish" as a style description, not a measured fact. | — |
 | Laugh rising to a whistle | **Not checked** (whisper does not write laughs); kept from the Japanese Wikipedia (secondary). | — |
 
-Not used: a story about her off-stream schedule at the start of the Final Fantasy VII window, and a stream title about an illness (personal matters). The Moero!! Holo Yakyū window has voiced members and crowd audio; its pitch figures are not used.
+Private-life material is excluded under the project's scope rule. The Moero!! Holo Yakyū window has voiced members and crowd audio; its pitch figures are not used.
 
 ## Second model (whisper medium) on quoted lines
 

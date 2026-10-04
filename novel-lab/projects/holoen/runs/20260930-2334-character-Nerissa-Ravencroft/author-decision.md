@@ -23,3 +23,4 @@
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 f20c02ad14ed）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 00:02 作者裁決收錄 final.md（sha256 94448cdabd96）：Author decision (2026-10-04): one-way relationship ties closed by Claude from sourced dossier facts
 - 2026-10-04 00:02 作者裁決收錄 final.md（sha256 64c5b3cc704c）：Author decision (2026-10-04): Nerissa Relationships trimmed to the word limit
+- 2026-10-04 10:28 作者裁決收錄 final.md（sha256 951fdbc0aa68）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied

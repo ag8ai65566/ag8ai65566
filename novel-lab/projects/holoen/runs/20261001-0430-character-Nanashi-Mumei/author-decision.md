@@ -16,3 +16,4 @@
 - 2026-10-03 23:53 作者裁決收錄 final.md（sha256 76cb7d253ec8）：Author decision (2026-10-03): new-material research R2 (Promise) merged by Claude
 - 2026-10-04 03:56 作者裁決收錄 final.md（sha256 592e017a260b）：Author decision (2026-10-03): two-model audio check of research quotation candidates (dossier sample lines)
 - 2026-10-04 05:16 作者裁決收錄 final.md（sha256 deb95790e4fc）：Author decision (2026-10-03): cross-card QA audit promise merged by Claude
+- 2026-10-04 10:28 作者裁決收錄 final.md（sha256 2cca759f1c3c）：Author order 2026-10-03: Claude merges the GPT QA audits; jp cohort findings applied

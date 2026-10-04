@@ -10,8 +10,8 @@ small.en can turn Japanese speech into English words. The horror window includes
 reads aloud in character voices; only lines that are clearly her own are quoted.
 
 All windows are from autumn 2024, her last active period before she graduated on 2025-01-03, which this
-project weights highest. Stories told in these windows about her family, school, diet and driving are
-outside the project's scope and are not used. A members-only window was transcribed by mistake and then
+project weights highest. Private-life material in these windows is
+outside the project's scope and is not used. A members-only window was transcribed by mistake and then
 set aside unused (members content is not public).
 
 ## Windows measured

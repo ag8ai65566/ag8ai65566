@@ -4,9 +4,9 @@
     python3 tools/audit_apply.py <run>/gpt-free.md --tag myth1 [--dry] [--only ID,..] [--skip ID,..]
 
 Replaces `qa_runs.py apply` for audits whose locators use any of the forms GPT writes: `C/<stem>.md`,
-`W/<stem>.md`, `bible/characters/<stem>.md`, `bible/world/<stem>.md`, `research/...md`, or a short name before
-"›" ("Calliope ›", "TakaMori ›", "Other Pairs ›"). A row whose locator lists several files is applied to each file
-that holds the old text exactly once (whitespace-tolerant). Card edits go into the latest run of the card (then
+`W/<stem>.md`, `bible/characters/<stem>.md`, `bible/world/<stem>.md`, `research/...md` (or `R/`; `A/` is
+research/audio-check/), or a short name before "›" ("Calliope ›", "TakaMori ›", "Other Pairs ›"). A row whose
+locator lists several files is applied to each file that holds the old text exactly once (whitespace-tolerant). Card edits go into the latest run of the card (then
 `qa_runs.py promote-changed`); research files are edited in place. A row whose replacement is already present
 and whose old text is gone counts as already applied. Rows that cannot be placed are printed for hand handling,
 with every row's Propagate column. IDs are recorded as <tag>:<ID>, because cohorts reused IDs before the
@@ -54,9 +54,9 @@ def names():
 def resolve(loc, nm):
     paths = []
     for m in re.finditer(r"`?([CW])/([^`/\s]+)\.md|bible/(?:characters|world)/([^`/\s]+)\.md|"
-                         r"((?:research|R)/[^`\s›;]+\.md)|((?:export/elevenlabs|S)/[^`\s›;]+\.md)", loc):
+                         r"((?<![\w/])(?:research|R|A)/[^`\s›;]+\.md)|((?:export/elevenlabs|S)/[^`\s›;]+\.md)", loc):
         if m.group(4):
-            paths.append(P / re.sub(r"^R/", "research/", m.group(4)))
+            paths.append(P / re.sub(r"^A/", "research/audio-check/", re.sub(r"^R/", "research/", m.group(4))))
         elif m.group(5):
             paths.append(P / "export" / "elevenlabs" / Path(m.group(5)).name)
         else:

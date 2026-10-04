@@ -73,7 +73,7 @@ Unit / generation (lore group with five persona roles; four active at the baseli
 
 ## With the other Japanese members on the cards
 - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s,
-  Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project with Koyori, Chloe and Iroha. Okayu: "Dorobo
+  Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project; Koyori and Iroha are credited on "BEEP BEEP" (2026), while secondary sources place Chloe in the earlier lineup. Okayu: "Dorobo
   Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+
   (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine:
   Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
@@ -183,6 +183,7 @@ A tiny horned founder with long silver hair, oversized sleeves and shackles; a p
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** "Secret ORDER" release dated 2026-04-08, separate from the anniversary.
 - **2026-10-04, cross-card QA audit (bridge-events, GPT xhigh), merged by Claude:** applied bridge-events:BR-DATE-001, bridge-events:BR-DATE-003, bridge-events:BR-STATUS-002 (exact replacements; dispositions in research/qa/audit-bridge-events.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-001 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:JP-UNIT-001 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Resolved: after 2025-01-26 Chloe is a hololive affiliate rather than part of holoX's four-member performing

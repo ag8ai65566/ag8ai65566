@@ -1,10 +1,10 @@
 # Audit packet: advent
 
-Snapshot: git 0269bd3. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git e4f3e81. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Shiori-Novella.md` 0e78bbb2d144; `bible/characters/Koseki-Bijou.md` 9da1e0c0ce80; `bible/characters/Nerissa-Ravencroft.md` 64c5b3cc704c; `bible/characters/Fuwawa-Abyssgard.md` 83cb10830ca9; `bible/characters/Mococo-Abyssgard.md` 51ceac7de5be; `bible/world/hololive--Advent.md` ebba56572472; `bible/world/Advent-Pairs.md` 126b3ece8373; `bible/world/FUWAMOCO.md` d8bb40f76f0e
+Owned files (sha256): `bible/characters/Shiori-Novella.md` 0e78bbb2d144; `bible/characters/Koseki-Bijou.md` 9da1e0c0ce80; `bible/characters/Nerissa-Ravencroft.md` 951fdbc0aa68; `bible/characters/Fuwawa-Abyssgard.md` 83cb10830ca9; `bible/characters/Mococo-Abyssgard.md` 51ceac7de5be; `bible/world/hololive--Advent.md` ebba56572472; `bible/world/Advent-Pairs.md` 126b3ece8373; `bible/world/FUWAMOCO.md` d8bb40f76f0e
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 

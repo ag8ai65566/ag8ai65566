@@ -23,7 +23,7 @@ sw_section: Characters
 > morning chat, a Tomodachi Life stream, and the opening and closing of a group Q&A). The audio was
 > machine-transcribed and acoustically measured; transcripts were reviewed in context, without independent
 > listening verification. Group-stream lines are not attributed to her unless she is named or the speaker
-> is clear. Private details she mentions on stream (pets, family, childhood) are not used.
+> is clear. Private details are not used.
 
 ## One-line Concept
 "The Demon of Sound," a singer whose voice was sealed away by the gods, who escaped with Advent and now
@@ -335,6 +335,7 @@ Shiori Novella: Advent genmate whom she calls her "wife" in a running public bit
 - **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, relationship web (tools/web_check.py), by Claude:** a one-way tie closed in the exported Relationships with an already-sourced dossier fact; other clauses shortened to stay within the word limit.
+- **2026-10-04, scope wording (Claude, with the jp audit's CLAUDE-SCOPE-002):** the audio-status note no longer lists excluded topics; private details deliberately excluded.
 
 ## Open Questions
 1. Her laughter, "Ope!" and her fangirling with Kiara were not captured by the audio check (whisper does

@@ -11,7 +11,7 @@ render identically are quoted. Measurements describe the sampled recording and A
 music and other voices prevent treating them as isolated vocal measurements.
 
 All windows are from 2026. Only in-scope public performance material is used: personal remarks in the chats
-(family, childhood, health, trips, daily life) are not quoted or summarized here.
+are not quoted or summarized here.
 
 ## Windows measured
 
@@ -54,7 +54,7 @@ All windows are from 2026. Only in-scope public performance material is used: pe
 | Gaming register (Resident Evil Requiem, June 2026) | **Observed**: mock-rough "ore" talk with herself ("Hando-gan o tsukaisugi nan da ore wa"), "Rasuto erikusā shōkōgun" (hoarding items), a mock-solemn "sasuga ni rekuiemu anken" when an enemy will not die; focused, clipped reactions rather than screams. | [0:42:23](https://youtu.be/a1rcws7ellI?t=2543), [0:55:01](https://youtu.be/a1rcws7ellI?t=3301) |
 | Speech pace | About 330–340 transcribed characters a minute of speech in chat, about 250 in the horror game (more silence and reading). | — |
 
-Not used: long stretches of the chat about family, childhood games, a trip home and a trip abroad (personal matters). The Rhythm Heaven window is full of game music and voiced cues, so its pitch figures (median about 318 Hz) are not used for her voice.
+Private-life material is excluded under the project's scope rule. The Rhythm Heaven window is full of game music and voiced cues, so its pitch figures (median about 318 Hz) are not used for her voice.
 
 ## Second model (whisper medium) on quoted lines
 

@@ -159,7 +159,7 @@ Public exchanges only.
 | Nerissa Ravencroft | — | Mario Party Superstars off-collab with FUWAMOCO (2024); a "Marine's treasure box" dance short (2024) | [MA5 FLL7e1-RPGo, Lo9q4WJrcM4] |
 | Elizabeth Rose Bloodflame | — | "IT'S LOVE" cover with Elizabeth and Korone for Elizabeth's 2026 birthday (2026-05-12) | [MA5 iwnHChZq0N8] |
 | Nakiri Ayame | 2nd-gen senior | Ayame's card records secondary accounts that she admires Marine; no Marine-side source | [Ayame file, secondary] |
-| AZKi | JP kouhai | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+| AZKi | hololive collaborator | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
 | Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ## Arc
@@ -285,6 +285,7 @@ Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-003, NEW-R5-006 (AZKi added to the exported Relationships, filling an empty pair), NEW-R5-014 (Holo Koshien with Koyori).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 - **2026-10-04, cross-card QA audit (bridge-ties-external, GPT xhigh), merged by Claude:** applied bridge-ties-external:BR-UNIT-002 (exact replacements; dispositions in research/qa/audit-bridge-ties-external.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:JP-TIE-001 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Her official profile and wiki include explicit lines; the card keeps them out and leaves explicit material to

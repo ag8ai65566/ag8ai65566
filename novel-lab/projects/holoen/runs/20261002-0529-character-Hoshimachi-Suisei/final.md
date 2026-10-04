@@ -167,7 +167,7 @@ The middle column is provisional voice direction unless a source is named.
 | 2026-03-08 | hololive 7th fes. "Ridin' on Dreams," STAGE 4 (with Calli, Kronii, Bijou, Nerissa) | [Official SU9] |
 | 2026-03 | "Chatter Chatter" with Houshou Marine; playable in Fortnite (03-13 to 03-24) | [Observed SU4] [SU3, secondary] |
 | 2026-03-22 | 8th anniversary: "Prima Donna"; arena tour "Once Upon a Stellar" announced; personal management agency Studio STELLAR for her solo work (she stays in hololive for collabs and group activities); fan club opens | [Observed SU2] |
-| 2026-04-04 | [Unverified: identification of Suisei's reported Calliope appearance as UNCUT ROCK!!; the event and date require a direct locator.] | [ASR SU20, her own account] [Observed fan-clip titles, secondary] |
+| Date unverified | [Unverified: identification of Suisei's reported Calliope appearance as UNCUT ROCK!!; the event and date require a direct locator.] | [ASR SU20, her own account] [Observed fan-clip titles, secondary] |
 | 2026-04-18 | Hoshimatic Project's second song "BEEP BEEP" (official digital release; premiered the day before) | [Official SU10] [SU4] |
 | 2026-05-18/19 | An AS_tar horror off-collab on AZKi's channel (v60QmEvEQqw), then "Going My Way" with AZKi | [Observed SU4; archived metadata] [Official AZKi file] |
 | 2026-07-08/13 | Fan meeting "Hoshiyomi Pajama Party Vol.1" (Tokyo, Osaka) | [Observed SU2] |
@@ -341,6 +341,7 @@ Mori Calliope: collaborators on "CapSule" and "Wicked" (2022), including their p
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-UNIT-001 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 - **2026-10-03, new-material research R5 (20261002-1715-research-new-R5-JP1, GPT xhigh), merged by Claude:** NEW-R5-001 (crowd work at SuperNova: REBOOT), NEW-R5-002 (Departure: "The Last Frontier," the reply letter, "Going My Way"), NEW-R5-003 ("Chatter Chatter" with Marine).
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
+- **2026-10-04, cross-card QA audit (jp, GPT xhigh), merged by Claude:** applied jp:MYTH-EVENT-002 (exact replacements; dispositions in research/qa/audit-jp.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Her guest appearance at Calli's "UNCUT ROCK!!" (2026-04-04) rests on her own June 2026 account (ASR) and

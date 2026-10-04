@@ -1,9 +1,9 @@
 # Audit packet: jp (incoming claims)
 
-Snapshot: git 0269bd3.
+Snapshot: git e4f3e81.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Sui-chan|Azukichi|Azu-chan|TakoNeko|AZKichi|Okanyan|AS_tar|FWMCAZ|Suisei|Okayun|AzuAzu|Yo-san|Ayame|Okayu|Ojou|AZAZ|AZKi)(
+Matched names: rtual Diva AZKi|AZKi and FUWAMOCO|Hoshimachi Suisei|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azukichi|Azu-chan|Sui-chan|TakoNeko|Okanyan|AZKichi|AS_tar|Okayun|Yo-san|AzuAzu|Suisei|FWMCAZ|Ayame|Okayu|Ojou|AZKi|AZAZ)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
@@ -62,7 +62,7 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Hoshimachi Suisei | "Chatter Chatter" (2026) | A duet with an original anime MV. The wiki's holoALICE and MOMAS labels were not verified in review They performed "Chatter Chatter" together on STAGE 4 of hololive 7th fes. (2026-03-08). | [MA4] [MA2] [Official NEW-R5-003] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Nekomata Okayu | — | Marine gave her the nickname "Okanyan"; Okayu's official profile recommends their marshmallow-reading stream. The wiki's HoLOGSS and MOMAS labels were not verified in review | [Okayu file OK1] [MA2] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Nakiri Ayame | 2nd-gen senior | Ayame's card records secondary accounts that she admires Marine; no Marine-side source | [Ayame file, secondary] |
-- `bible/characters/Houshou-Marine.md › Relationship Map`: | AZKi | JP kouhai | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | AZKi | hololive collaborator | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
 - `bible/characters/Houshou-Marine.md › Arc`: - **Starting point:** active at the 2026 baseline: a hololive Fantasy concert, a duet with Suisei and a new single behind her.
 
 ### from IRyS
@@ -163,7 +163,7 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Hoshimachi Suisei | "Shiranui Kensetsu" (Shiraken) | A Minecraft construction company with Flare, Polka and Miko | [NO2] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nakiri Ayame | — | An Audio-Technica earphone collab (2025) | [NO4] |
-- `bible/characters/Shirogane-Noel.md › Relationship Map`: | AZKi | JP kouhai | A player in AZKi's 3D pun-ASMR contest (2025-06-22), alongside Okayu, Subaru and Kanade. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | AZKi | hololive collaborator | A player in AZKi's 3D pun-ASMR contest (2025-06-22), alongside Okayu, Subaru and Kanade. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 
 ### from Shishiro Botan
@@ -237,7 +237,7 @@ Matched names: Ki and FUWAMOCO|Hoshimachi Suisei|Virtual Diva AZKi|Suisei and Ca
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns. They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
 
 ### from holoX
-- `bible/world/holoX.md › With the other Japanese members on the cards`: - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s, Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project with Koyori, Chloe and Iroha. Okayu: "Dorobo Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+ (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine: Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
+- `bible/world/holoX.md › With the other Japanese members on the cards`: - AZKi: "Kanaken" with Chloe and Amane Kanata; "AzuIro" (Iroha), "KoZMy" (Koyori and Lamy); AZKi danced to La+'s, Koyori's and Lui's songs (2026). Suisei: Hoshimatic Project; Koyori and Iroha are credited on "BEEP BEEP" (2026), while secondary sources place Chloe in the earlier lineup. Okayu: "Dorobo Kensetsu" with La+ and Lui; La+'s lie-detector 3D challenge to Okayu (2026-05-19). Ayame: VALORANT with La+ (2024); "#みっころおにかん" games with Lui (2025). Botan: NePoX; "InuTakaShishiRam" with Lui, Korone and Watame (Minecraft, 2023). Marine: Bara☆Dice with Lui and Iroha (Bandai credits); UMISEA with Chloe. Lamy: KoZMy with Koyori. [S3] [S1]
 
 ### from hololive History 2023-2026
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-02/10 PDT | Advent 3D debuts (JST dates one day later): Shiori (08-02), Bijou (08-03), Nerissa (08-09), FUWAMOCO (08-10, with Okayu and Korone cameos) | genmates as guests |
