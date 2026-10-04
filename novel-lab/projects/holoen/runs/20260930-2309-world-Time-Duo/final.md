@@ -26,9 +26,7 @@ Relationship (pair / unit name).
 - **The unit name:** "Time Duo" is listed on both wiki pages. [Observed S2, S3 §Relationships, secondary]
 - **Opposites (a joke):** Ame joked that Kronii "dislikes everything she likes." [Observed S2 §Likes and dislikes,
   secondary]
-- **Lore chaos:** Ame's alternate-Ame lore includes an "Epic Ame War" between Kronii and many Ames that
-  "messed up" time, which Ame compared to one bear-sized duck against fifty duck-sized bears. [Observed S3
-  §Alter Ames, secondary]
+- **Unverified lore candidate:** Secondary accounts describe an alternate-Ame conflict involving Kronii. Its original statement and continuity scope remain unverified; it is outside the current baseline. [Observed S3 §Alter Ames, secondary; Amelia dossier, Arc]
 - **On stream (archive, S1):** Ame's surprise karaoke off-collab with Ina, Kronii, Fauna and Mumei
   (2022-02-25, per S3); 5D Chess "I Don't Understand With @WatsonAmelia" (Kronii, 2023-04-08); Escape the
   Backrooms with Calli (2024-09-22) and Deep Rock Galactic with Kiara and Gura (2024-09-30, Ame's last
@@ -114,6 +112,7 @@ Gold and deep blue; a pocket watch beside a giant clock; Ame's gremlin cackle ag
   time zones; "Fall in Grace" was the same broadcast); "opposite tastes" replaced by Ame's joke.
 - **SHOULD kept:** the explicit no-time-travel rule.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-TIE-002 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

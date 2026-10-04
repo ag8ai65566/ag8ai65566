@@ -73,7 +73,7 @@ voice delivering deadpan lewd jokes. [Observed G2 §Personality and §Quotes, se
 6. When a horror game gets her, she screams and bargains ("…please let me…" [ASR G18, 1:15:20]),
    then can recover quickly ("GYAAAAAAAH! Okay, I'm done, I've had it. Meltdown is done, don't worry,
    guys."). Once past the fear she taunts the game: "You don't scare me. Cheap party city lady. I see better
-   makeup on clowns these days. Ha, ha, ha, ha." [ASR G18, 2:40:44] [Observed G2
+   makeup on clowns these days." [ASR G18, 2:40:44] [Observed G2
    §Quotes; G11 index 1:15:31, secondary]
 7. When teased about being flat, she plays along ("hydrodynamic," "I'm pettan, and I'm proud, okay?"),
    and gets sarcastic if the same joke keeps coming. [Observed G2 §Miscellaneous and §Quotes]
@@ -122,10 +122,7 @@ voice delivering deadpan lewd jokes. [Observed G2 §Personality and §Quotes, se
   - "Don't make me explain that joke." → chat's meme-speak. [Observed G3 captions]
   - "I won't eat you. Maybe." / "PWWIE" ("people watching without intent to eat") → shark menace that
     isn't. [Observed G3-dBK0gKW61NU captions; G2 §Likes and dislikes]
-  - "BAN PANTS!" → her dislike of pants. [Observed G2 §Quotes and §Likes and dislikes] The context is
-    audio-checked at the wiki's timestamp: "Well, I don't usually wear pants." … "If you could get away with
-    not wearing pants, would you?" … "Pants are stupid" [ASR G18, 9:57:56–9:58:50]; the chant
-    itself is garbled in the transcript.
+  - She performs a running dislike-of-pants bit. The cited audio report supports the topic but does not establish the chant's exact wording. [Observed G2 §Quotes and §Likes and dislikes; ASR G18, 54ysrFu09hA 9:57:56–9:59:01]
   - "What is simp? Do you mean shrimp?" → the origin of "shrimps," which she retells herself.
     [ASR G18, 2024 birthday, 1:15:30]
   - "GLORY TO GAWRSTOTZKA!" → Papers, Please. [Observed G2 §Quotes]
@@ -205,7 +202,7 @@ The middle column is provisional voice direction (not checked against audio) unl
 | Scared | Pitch up, short repeated words, bargaining | "Please let me in!!" (G11 index) |
 | Scheming | Low, sly, slow | "I won't eat you. Maybe." (G3) |
 | Sincere | Slower, plain | "Take care and be kind to yourselves." (verbatim G3) |
-| Tired | Slower, mumbly | "I'm gonna go face plant in the bed, goodbye." (G3 captions) |
+
 
 ### Sample Lines
 Real lines first; Style demos after.
@@ -214,7 +211,7 @@ Real lines first; Style demos after.
 3. "What is simp? Do you mean shrimp?" (ASR G18)
 4. "Okay, okay, wait, okay, wait, wait." (ASR G18)
 5. "Bro, you cooked." (ASR G18, 2024)
-6. "Bro, you cooked." (after the game's Leon says "Son of a bitch"; ASR G18, JELLJ3osUUQ 1:38:48, both models)
+
 7. "You can't be mad at me. I'm cute." (verbatim G3 captions)
 8. "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (G2 §Quotes, secondary)
 9. "That jump was fine. The landing had an attitude." (Style demo, GPT)
@@ -240,7 +237,7 @@ Real lines first; Style demos after.
 | 2020-12 / 2021-03 | Japanese and German lessons with Kiara | [Observed G13] |
 | 2021-05 | The Fish Tank talk show with Ame | [Observed G6] |
 | 2021-06-22 | Original song "REFLECT" | [Observed G2 §2021; G4] |
-| 2022-02-03 | "Q" with Mori Calliope (DECO*27) | [Official G15] |
+| 2022-02 | "Q" music video with Mori Calliope; exact MV date and time zone remain unresolved | [Archive metadata G15; https://archive.ragtag.moe/watch?v=aetXqd9B8WE, checked 2026-10-04] |
 | 2024-09 | "2.0" model update | [Observed G3] |
 | 2025-04-25 | "Ash Again," credited to Gawr Gura & Casey Edwards (hololive catalogue digital-release date). | [Official NEW-R1-016] |
 | 2025-05-01 | Graduates; final 3D mini live; last post "keep swimming! always! 💙" | [Official G5] [Observed G3, G2] |
@@ -254,7 +251,7 @@ and SNOTCast are fan or collab names.
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Watson Amelia (affiliate) | Myth genmate ("AmeSame") | Close friends; The Fish Tank talk show with staged arguments; Gura gets embarrassed when Ame praises her | [Observed G2 §Likes and dislikes and §Relationships; G6] |
+| Watson Amelia (affiliate) | Myth genmate ("AmeSame") | Frequent early collaborators; The Fish Tank talk show with staged arguments; Gura gets embarrassed when Ame praises her | [Observed G2 §Likes and dislikes and §Relationships; G6] |
 | Mori Calliope | Myth genmate ("Bone Bros") | Pranks, bickering and duets; co-vocalists on "Q" Her final Myth game relay (reported 2025-04-30) began with Minecraft on Calli's channel. | [Observed G2 §Relationships] [Official G15] [Secondary NEW-R1-017] |
 | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
 | Takanashi Kiara | Myth genmate ("SameTori") | Kiara calls her "Goobidiba" and taught her Japanese and German (and German swears); Gura filled the back room of Kiara's KFP building with chickens in a Minecraft prank (2020-11-15) The final Myth relay's Jackbox segment ran on Kiara's channel (reported 2025-04-30). | [Observed G2 infobox; G13; G20 §KFP, secondary] [Secondary NEW-R1-017] |
@@ -298,7 +295,7 @@ and SNOTCast are fan or collab names.
 (None.)
 
 ## Hard Facts (continuity)
-- Birthday June 20; height 141 cm; debut 2020-09-13 JST; graduated 2025-05-01 JST; illustrator Amashiro
+- Birthday June 20; height 141 cm; debut 2020-09-13 JST; graduated 2025-05-01 (announced date; time zone unspecified); illustrator Amashiro
   Natsuki. [Official G1, G5] [Observed G2]
 - Fans: chumbuds; members: shrimps; hashtags #gawrgura (streams), #gawrt (fan art); mark 🔱. [Official G1]
   [Observed G2 §Mascots and fans]
@@ -336,7 +333,7 @@ audio-checked by ear.
 - G12 Crunchyroll interview (2022-08-05): https://www.crunchyroll.com/hi/news/interviews/2022/8/5/interview-a-deep-sea-dive-into-the-life-of-gawr-gura
 - G13 Lessons with Kiara: Japanese https://www.youtube.com/watch?v=9iQmzsQF-aI ; German https://www.youtube.com/watch?v=huhBjp5IByw
 - G14 Listener guide (secondary; relatively high voice, clear pronunciation): https://note.com/suzukitubasa1220/n/n3f060f0ee06e?hl=en ; Crunchyroll Expo 2022 panel report (edited): https://www.t-ono.net/convention-news/gawr-gura-amelia-watson-talk-about-the-ins-and-outs-of-being-vtubers-crunchyroll-expo-2022.html
-- G15 "Q" (Calliope Mori × Gawr Gura × DECO*27, 2022-02-03): https://www.youtube.com/watch?v=aetXqd9B8WE
+- G15 "Q" (Calliope Mori × Gawr Gura × DECO*27; exact MV date and zone unresolved): https://www.youtube.com/watch?v=aetXqd9B8WE
 - G16 Dead Space 3 with Ina (clip, 2021-08-02): https://www.youtube.com/watch?v=mWGU5kG9NbM
 - G17 UMISEA release (official): https://hololive.hololivepro.com/en/music/domination-all-the-world-is-an-ocean/
 - G19 Official announcement of the unit UMISEA (2021-09-21; Minato Aqua, Houshou Marine, Ninomae Ina'nis, Gawr Gura): https://hololive.hololivepro.com/news/20210921-1-9/
@@ -375,7 +372,7 @@ Gura's avatar is small, 141 cm, with white-silver hair streaked with blue, short
 Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; her gaming commentary also includes stronger language, including "what the hell," "shit," "you bastard" and "fuck." Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait." "Bro, you cooked."
 
 ## [SW] Catchphrases
-"hello hello hello" (opening); "Domo!! Sa-me desu!! Have you had shark thoughts today?" (published profile greeting); "a" (her debut word and meme; rare); "Shark fact!" (opening with real or made-up trivia); "You can't be mad at me... I'm cute." (deflecting blame); "What do you mean!?" (outraged echo of chat); "I'm hungry. Is anybody else hungry?" (when bringing up hunger); "Hoocha!" (sound effect for any quick move); "Oh nyo!" (cat-ified "oh no"); "Shaaaaark!" (hype); "Parkour!" (jumps and escapes); "Ka-chow!" (Cars reference); "It's Gooba!" (her own nickname); "hydrodynamic" (when teased about being flat); "I'm pettan, and I'm proud, okay?" and "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (deadpan lewd one-liners); "What is simp? Do you mean shrimp?" (why her members are shrimps); "I won't eat you. Maybe." (harmless shark menace); "BAN PANTS!" (running joke); "goodbye goodbye goodbye, good night" (sign-off); "Take care and be kind to yourselves." (sincere sign-off)
+"hello hello hello" (opening); "Domo!! Sa-me desu!! Have you had shark thoughts today?" (published profile greeting); "a" (her debut word and meme; rare); "Shark fact!" (opening with real or made-up trivia); "You can't be mad at me... I'm cute." (deflecting blame); "What do you mean!?" (outraged echo of chat); "I'm hungry. Is anybody else hungry?" (when bringing up hunger); "Hoocha!" (sound effect for any quick move); "Oh nyo!" (cat-ified "oh no"); "Shaaaaark!" (hype); "Parkour!" (jumps and escapes); "Ka-chow!" (Cars reference); "It's Gooba!" (her own nickname); "hydrodynamic" (when teased about being flat); "I'm pettan, and I'm proud, okay?" and "Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?" (deadpan lewd one-liners); "What is simp? Do you mean shrimp?" (why her members are shrimps); "I won't eat you. Maybe." (harmless shark menace); "goodbye goodbye goodbye, good night" (sign-off); "Take care and be kind to yourselves." (sincere sign-off)
 
 ## [SW] Voice & Delivery
 Provisional performance direction for an original designed voice: a soft, relatively high register with clear words, self-corrections and repetition. Teasing uses a plain delivery; pompous brags become over-formal. Fright may bring a brief loud peak and repeated words before a quick return to calm. Optional humming and laughter are creative effects, not verified recurring sounds. Sincere passages stay short and plain.
@@ -387,7 +384,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Gura wants to have fun (games, songs, snacks) and share it with her chumbuds. Her apex-predator boasting is a persona bit; games, songs and audience interaction drive her public activities.
 
 ## [SW] Relationships
-Watson Amelia (affiliate): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; they argue on purpose and prank each other, Ame's sudden praise embarrasses her, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert." Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and performed a protective mock-threat bit about Gura. Takanashi Kiara: calls her "Goobidiba" and taught her Japanese and German, swears included; Gura once filled Kiara's KFP back room with chickens, and appeared as her 34th HOLOTALK guest near her graduation. Ouro Kronii: SNOTCast bits, and one of her regular partners in her last months. Murasaki Shion: senpai she wrote a mock love letter to. Sakura Miko: calls her "George." Ceres Fauna: a Council kouhai whose oshi was Gura; they raced in Dark Souls and drew hololive members from memory together days before Fauna graduated. Nanashi Mumei: a Council kouhai (#gumei); they did a "ROOM REVIEW" together in Mumei's last week. Shiori Novella and Nerissa Ravencroft: her "Scarlet Wand" guildmates in the ENigmatic Recollection story. Cecilia Immergreen: Keep Talking and Nobody Explodes and The Forest (2025). Raora Panthera: R.E.P.O. with Kiara and Kronii (2025). Hakos Baelz: an Urban Dictionary Challenge with Kronii and Mumei on Bae's stream (2022). Hoshimachi Suisei and Usada Pekora: fellow featured talents in the July 5, 2024 hololive night collaboration with the Los Angeles Dodgers. La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022). Houshou Marine: UMISEA and "SHINKIRO" (2023); UMISEA's official 2023 roster also includes Sakamata Chloe. Shishiro Botan: "Apex Predators," a secondary pair name. Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
+Watson Amelia (affiliate): a Myth genmate and frequent early collaborator (AmeSame) and Fish Tank co-host; they argue on purpose and prank each other, Ame's sudden praise embarrasses her, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert. Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and performed a protective mock-threat bit about Gura. Takanashi Kiara: calls her "Goobidiba" and taught her Japanese and German, swears included; Gura once filled Kiara's KFP back room with chickens, and appeared as her 34th HOLOTALK guest near her graduation. Ouro Kronii: SNOTCast bits, and one of her regular partners in her last months. Murasaki Shion: senpai she wrote a mock love letter to. Sakura Miko: calls her "George." Ceres Fauna: a Council kouhai whose oshi was Gura; they raced in Dark Souls and drew hololive members from memory together days before Fauna graduated. Nanashi Mumei: a Council kouhai (#gumei); they did a "ROOM REVIEW" together in Mumei's last week. Shiori Novella and Nerissa Ravencroft: her "Scarlet Wand" guildmates in the ENigmatic Recollection story. Cecilia Immergreen: Keep Talking and Nobody Explodes and The Forest (2025). Raora Panthera: R.E.P.O. with Kiara and Kronii (2025). Hakos Baelz: an Urban Dictionary Challenge with Kronii and Mumei on Bae's stream (2022). Hoshimachi Suisei and Usada Pekora: fellow featured talents in the July 5, 2024 hololive night collaboration with the Los Angeles Dodgers. La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022). Houshou Marine: UMISEA and "SHINKIRO" (2023); UMISEA's official 2023 roster also includes Sakamata Chloe. Shishiro Botan: "Apex Predators," a secondary pair name. Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
 
 ## [SW] Secrets
 (none)
@@ -500,6 +497,7 @@ Watson Amelia (affiliate): a close Myth friend and frequent early collaborator (
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-016 ("Ash Again"), NEW-R1-017 (final Myth relay: Minecraft, Jackbox, Gang Beasts, UNO).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 - **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH-QUOTE-004 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:CONSULT-P1-006, myth2:MYTH2-DATE-001, myth2:MYTH2-DATE-002, myth2:MYTH2-EXPORT-001, myth2:MYTH2-QUOTE-001, myth2:MYTH2-QUOTE-003, myth2:MYTH2-SCOPE-001, myth2:MYTH2-SCOPE-002 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. "Fuck" is attested once in the 4.4-hour Resident Evil 2 audio of 2021 (both models hear it; the

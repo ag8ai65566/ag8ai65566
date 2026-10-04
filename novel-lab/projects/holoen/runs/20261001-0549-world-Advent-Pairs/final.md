@@ -67,8 +67,7 @@ Relationship web.
   outfits); "Rate Your Fears" with Shiori (2024); "SHALLYS" with FUWAMOCO and Cecilia at the 2025 concert;
   with Bijou and IRyS, starred at hololive night at Dodger Stadium (2025-07-05). [Observed S1; X post via
   wiki] [Official S5, S8]
-- **Watson Amelia:** "Detective Dogs" with FUWAMOCO (Escape Simulator, 2024); Shiori's VRChat aquarium visit
-  with her (2024). [Observed S1]
+- **Watson Amelia:** "Detective Dogs" with FUWAMOCO (Escape Simulator, 2024). [Observed S1]
 - **Gawr Gura (graduated):** fellow "Scarlet Wand" guildmate of Shiori and Nerissa in the ENigmatic
   Recollection story. [Observed S2 Shiori, secondary]
 
@@ -240,6 +239,7 @@ A moai head opening to reveal Bijou; pink and blue paws; a two-tone head of hair
   (exact replacements from the audit's findings table; dispositions in research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-SCOPE-002 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

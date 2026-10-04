@@ -14,16 +14,14 @@ sw_section: Worldbuilding
 
 ## One-line Concept
 Myth's gremlin and Myth's shark: close Myth friends and frequent early collaborators, a comedy duo that
-argued on purpose and pranked each other endlessly, and whose last on-stream moments together were spent
-reading their old DMs. At the 2026 baseline Ame is an affiliate and Gura has graduated; their shared
+argued on purpose and pranked each other endlessly, and whose final duo stream before Ame concluded regular activities revisited their old DMs. At the 2026 baseline Ame is an affiliate and Gura has graduated; their shared
 streaming history supplies callbacks and memories.
 
 ## Type
 Relationship (pair).
 
 ## How It Works
-- **Close friends:** Gura and Ame are close friends who collabbed often and are "most commonly shipped
-  together under the name… #amesame." [Observed S2 §Likes and dislikes, secondary]
+- **Public collaborations:** Gura and Ame frequently collaborated on stream; AmeSame is a fan pairing name. [Observed S2 §Likes and dislikes, secondary]
 - **The Fish Tank (2021):** their talk show, built on staged arguments; when an argument turned into
   sudden sincere praise from Ame, Gura got visibly embarrassed. [Observed Gura file G6, secondary report]
 - **Pranks and gremlin energy:** endless Minecraft pranks (Ame named a mine "Gura's Backdoor ( ͡° ͜ʖ ͡°)"),
@@ -131,6 +129,7 @@ Gold and blue side by side (💛💙); a shark hood next to a deerstalker; two v
 - **SHOULD adopted:** the "stopping dead" sensory detail replaced with the sourced fluster.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-EVENT-002, myth2:MYTH2-SCOPE-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

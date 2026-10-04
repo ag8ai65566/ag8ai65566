@@ -473,7 +473,7 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 ```json
 {
  "baseline": "2026-09-30",
- "commit": "ebbab25",
+ "commit": "3d8502c",
  "cast": [
   {
    "name": "Ceres Fauna",
@@ -744,7 +744,7 @@ New audit findings are appended below with their own IDs (`{COHORT}-{TYPE}-{NNN}
 
 # Audit packet: promise
 
-Snapshot: git ebbab25. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 3d8502c. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
@@ -1037,10 +1037,10 @@ Incoming claims continue in `promise-incoming.md`.
 
 # Audit packet: promise (incoming claims)
 
-Snapshot: git ebbab25.
+Snapshot: git 3d8502c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Hakos Baelz Pairs|Nerissa and Calli|Calli and Kronii|It's Not a Phase|Nerissa and IRyS|Keeper of Nature|Mumei and Kronii|hololive Council|Kronii and Calli|IRyS and Kronii|Mumei and Kiara|Mumei and Fauna|Bae and Cecilia|Fauna and Mumei|Warden of Time|Kronii and Ame|Fauna and Gura|Bae and Kronii|Time and Death|Ame and Kronii|Ina and Kronii|Kronii and Ina|Mother Nature|Nanashi Mumei|Bae and Calli|IRyS and Ina|Kroniicopter|Bae and IRyS|holoPromise|Ceres Fauna|Ouro Kronii|Hakos Baelz|holoCouncil|Gamer Kirin|Ceres-chan|Tam Tender|Octo'Clock|Octo'clock|Owo-senpai|CouncilRyS|Mumi-chan|Time Duo|オーロ・クロニー|CHADCast|KiaRissa|YabaIRyS|SeisoRyS|Rat Idol|Kronster|Moomsies|Kronini|Promise|MorIRyS|Council|Moomers|KronMei|BratTea|Faufau|BaeRyS|Meimei|Kronii|Baelz|Fauna|Mumei|BaeBi|gumei|Hakos|Fawna|IRyS|Irys|Moom|Towl|Bae)(
+Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Hakos Baelz Pairs|It's Not a Phase|Kronii and Calli|Keeper of Nature|Calli and Kronii|hololive Council|Nerissa and IRyS|Mumei and Kronii|Fauna and Mumei|IRyS and Kronii|Mumei and Kiara|Bae and Cecilia|Mumei and Fauna|Warden of Time|Kronii and Ina|Time and Death|Ina and Kronii|Kronii and Ame|Bae and Kronii|Ame and Kronii|Fauna and Gura|Nanashi Mumei|Mother Nature|Bae and Calli|Bae and IRyS|IRyS and Ina|Kroniicopter|Ceres Fauna|Ouro Kronii|holoCouncil|Hakos Baelz|holoPromise|Gamer Kirin|Octo'clock|Ceres-chan|CouncilRyS|Tam Tender|Owo-senpai|Octo'Clock|Mumi-chan|オーロ・クロニー|YabaIRyS|KiaRissa|Time Duo|Kronster|CHADCast|Rat Idol|SeisoRyS|Moomsies|MorIRyS|Moomers|BratTea|Kronini|Promise|Council|KronMei|BaeRyS|Faufau|Meimei|Kronii|Fawna|Mumei|Baelz|Fauna|BaeBi|gumei|Hakos|Irys|Moom|IRyS|Towl|Bae)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
