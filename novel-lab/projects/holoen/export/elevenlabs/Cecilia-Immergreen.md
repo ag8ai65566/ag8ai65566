@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Cecilia Immergreen
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `5d4350ec70b2ed6be3e529de0f5b480035f4f606cbc182aea197e112660b8cd5` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Cecilia-Immergreen.md` (2026-10-01). Original designed voice matched only to
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Cecilia is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.

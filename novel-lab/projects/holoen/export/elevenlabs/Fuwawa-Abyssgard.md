@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Fuwawa Abyssgard
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `67efb51d97617c4e8b66c876792a51675f7ea5327cd649ade21524a4da5feae3` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Fuwawa-Abyssgard.md` (promoted 2026-10-01). Original designed voice matched
 > only to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5;
 > COVER Derivative Works Guidelines). Fuwawa is active at the 2026 baseline; she shares the FUWAMOCO channel

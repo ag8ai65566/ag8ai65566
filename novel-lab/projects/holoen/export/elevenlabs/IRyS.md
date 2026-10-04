@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: IRyS
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `a7dd2131953841ed0aaca1416d71b070385cd28d4f2dd3609d217f310b894d5f` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from the IRyS character file (`runs/20260930-2334-character-IRyS`, 2026-09-30; update after it is
 > promoted to `bible/characters/IRyS.md`; promoted 2026-10-01). Original designed voice matched only to register and energy;
 > never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works

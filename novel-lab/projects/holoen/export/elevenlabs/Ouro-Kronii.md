@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Ouro Kronii
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `fd1cd3bb409b2b1e6527ebc82615d55f6d32933bd1d4abcabcafd5cdf884aea5` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Ouro-Kronii.md` (2026-09-30). The voice is an **original designed voice**
 > matched only to register and energy. Do not clone or imitate the member's real voice (ElevenLabs Use
 > Policy §5; COVER Derivative Works Guidelines). The directions below preserve documented wording and propose

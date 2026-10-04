@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: AZKi
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `354529bc8cf676c40247b136daf237308e8c4b28bfd7a0b287b18cda5c307a18` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/AZKi.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). AZKi is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese

@@ -1,24 +1,30 @@
 # ElevenLabs v4 Performance Sheet: Sakamata Chloe
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `7d4aeaac7e0473f518fe981719bbd3d82f4dc3b80aa633fd05377d596c622990` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Sakamata-Chloe.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
-> Guidelines). Chloe concluded her regular activities on 2025-01-26 and remains a hololive affiliate; the sheet covers her 2021–2025 persona. She streams in Japanese; lines below are given in Japanese or romanized with
-> English glosses, and the voice works for Japanese, English or Chinese dialogue. Guide:
+> Guidelines). Chloe concluded her regular activities on 2025-01-26 and remains a hololive affiliate; the sheet covers her 2021–2025 persona. Her archived performances used Japanese; her audio dialogue is Japanese
+> (author decision 2026-10-04): spoken lines are Japanese script; romaji and glosses are reading aids, not spoken. Guide:
 > `novel-lab/docs/elevenlabs-v4.md`.
 
 ## 1. Voice Design prompt (original voice)
 "Perfect audio quality. Young woman, small, soft, high and slightly airy voice that chatters, giggles and teases; panicky squeaks in horror; a fuller, more mature tone when singing."
 - The original voice's register is an independent design choice; mixed-recording pitch estimates are not synthesis targets.
 - Laughter, shrieks, breathiness and timbre are provisional choices for the original voice, not listening observations.
+- Design and preview this voice with Japanese text (the §8 lines). Japanese is the project's dialogue language
+  for the original voice, not a claim about the member.
 
 ## 2. Settings (untested starting choices; verify endpoint behavior)
 - `eleven_v4`. Stability **45%** (API `0.45`) (quick and playful; an untested starting choice).
   Similarity **75%** (API `0.75`), referring only to the selected original voice.
 - Pace comes from the designed voice plus `[soft, playful]` or `[fast, casual]`; v4 has no speed slider.
+- Dialogue language: **Japanese** (author decision 2026-10-04). Write her spoken turns in Japanese script;
+  romaji goes on a `ROMAJI ::` line and any English on `GLOSS ::` (neither is spoken).
+  `tools/scene_to_elevenlabs.py` rejects a turn of hers that has no Japanese text.
 
 ## 3. Write these habits into the script
 - Opens like a meal: 「ばっくばっくばく～ん」 ("bakku bakku bakūn," official) then 「いただきます」; on stream, 「いただきまーす」 ("itadakimāsu!").
-- Calls herself "Sakamata"; connected, run-on chatter that polls chat (speed and softness are provisional choices).
+- Calls herself 「沙花叉」 ("Sakamata"); connected, run-on phrasing that polls chat (speed and softness are provisional choices).
 - Teases seniors and friends; any blame-denying line is a style demo, not a documented habit.
 - Closes with 「ごちそうさまでした」 ("gochisōsama deshita," official; "Thanks for the food").
 
@@ -27,7 +33,7 @@
 |---|---|---|
 | Opening | `[bright, hungry]` | 「いただきまーす」 ("Itadakimāsu!") |
 | Chatting | `[fast, casual]` | 「いつからおじさんなの」 ("Itsu kara ojisan na no," "since when is someone an ojisan?") |
-| Teasing a member | `[mischievous, giggly]` | **Style demo:** "Ē~, sore Sakamata no sei ja nai yo?" ("Huh~, that's not Sakamata's fault, is it?") |
+| Teasing a member | `[mischievous, giggly]` | **Style demo:** 「えぇ～、それ沙花叉のせいじゃないよ？」 ("Ē~, sore Sakamata no sei ja nai yo?", "Huh~, that's not Sakamata's fault, is it?") |
 | Horror | `[panicked, squeaky]` | `[gasps]` (tag only) |
 | Closing | `[content]` | 「ごちそうさまでした」 ("Gochisōsama deshita," official) |
 
@@ -36,7 +42,7 @@ With people (proposed scene directions, not observed conversational defaults): K
 Additional proposed scene directions from the card's Audio Tags (untested): `[curious, playful]`, `[mature, heartfelt]`.
 
 ## 5. Signature sounds (provisional; tag plus a written word is a scripting convention, not a guarantee of engine behavior)
-- "Bakku bakku bakūn" (spoken, official opening)
+- 「ばっくばっくばく～ん」 ("Bakku bakku bakūn", spoken, official opening)
 - `[giggles]` (tag only); `[gasps]` (tag only); provisional choices
 
 ## 6. Pronunciation (provisional; test)
@@ -47,10 +53,14 @@ Additional proposed scene directions from the card's Audio Tags (untested): `[cu
 
 ## 8. Example
 ```
-[bright, hungry] Itadakimāsu!
-[fast, casual] Itsu kara ojisan na no?
-[mischievous, giggly] Ē~, sore Sakamata no sei ja nai yo?
-[content] Gochisōsama deshita.
+[bright, hungry] いただきまーす！
+ROMAJI :: Itadakimāsu!
+[fast, casual] いつからおじさんなの？
+ROMAJI :: Itsu kara ojisan na no?
+[mischievous, giggly] えぇ～、それ沙花叉のせいじゃないよ？
+ROMAJI :: Ē~, sore Sakamata no sei ja nai yo?
+[content] ごちそうさまでした。
+ROMAJI :: Gochisōsama deshita.
 ```
 (Lines 1–2 are her lines, quoted only where both transcripts agree (line 2 is the shared part of a longer
-line); line 3 is a style demo; line 4 is her official closing.)
+line); line 3 is a style demo; line 4 is her official closing. ROMAJI lines are reading aids and are not spoken.)

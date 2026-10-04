@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Watson Amelia
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `565cdd97d0d941f3346f700e71ae5dec17083baf2439dd1b273ba24e8f15ee90` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Watson-Amelia.md` (2026-09-30). Original designed voice matched only to
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Ame is an affiliate since 2024-09-30. Guide: `novel-lab/docs/elevenlabs-v4.md`.

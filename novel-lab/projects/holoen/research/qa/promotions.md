@@ -638,6 +638,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:53 作者裁決收錄 final.md（sha256 0309db734020）：Author decision (2026-10-03): new-material research R2 (Promise) merged by Claude
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 28cae5116dfe）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 2335e184a0f0）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
+- 2026-10-04 15:22 作者裁決收錄 final.md（sha256 5b8d8d35cd19）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
 
 ## 20261002-0615-character-Houshou-Marine
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 499212948bf5）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude
@@ -657,6 +658,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 9f9549eaf96f）：Author decision (2026-10-03): Noel added to Iroha's Bara☆Dice clause (reciprocal tie); run F merge.
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 bba6c81607a0）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 85fd36cc6c01）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
+- 2026-10-04 15:22 作者裁決收錄 final.md（sha256 4a565ab5f170）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
 
 ## 20261002-0615-character-Kikirara-Vivi
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 21bf60dbf920）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude
@@ -668,11 +670,13 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 665ffca4b0d3）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run E) merged by Claude; promoted.
 - 2026-10-03 23:15 作者裁決收錄 final.md（sha256 665ffca4b0d3）：Author decision (2026-10-03): re-promoted under the project stem Laplus-Darknesss (filename fix); same final.md as the run E merge.
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 4f243197ccfe）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
+- 2026-10-04 15:22 作者裁決收錄 final.md（sha256 27c95d61ba9b）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
 
 ## 20261002-0615-character-Sakamata-Chloe
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 5d5d78ff41b4）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run F) merged by Claude; promoted.
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 125c79cc5955）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 05:33 作者裁決收錄 final.md（sha256 a3555ab23cbe）：Author decision (2026-10-03): bridge-events audit merged by Claude
+- 2026-10-04 15:22 作者裁決收錄 final.md（sha256 a9d002fd4938）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
 
 ## 20261002-0615-character-Shirogane-Noel
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 ff8ebb28f4bf）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude
@@ -699,6 +703,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:14 作者裁決收錄 final.md（sha256 3ef5bf38be6e）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run E) merged by Claude; promoted.
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 6d81b858789c）：Author decision (2026-10-03): cross-card holoX lines corrected by the run F review (rosters split, archive IDs, secondary labels, Shaccho removed, reciprocal ties); Lui's interview paraphrase; one GPT round, merged by Claude.
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 015a3f014ba3）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
+- 2026-10-04 15:22 作者裁決收錄 final.md（sha256 e8178610dd84）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese
 
 ## 20261002-0615-character-Yukihana-Lamy
 - 2026-10-02 12:13 作者裁決收錄 final.md（sha256 b7309e386259）：Author decision (2026-10-02): Houshou Marine, Shirogane Noel and Yukihana Lamy added to the cast; GPT reviews each card one round only (run C), merged by Claude

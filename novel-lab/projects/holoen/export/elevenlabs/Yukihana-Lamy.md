@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Yukihana Lamy
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `bdf3daf6fde4f1c39c5a453ef066cc7c7ea6e31f3e41dd8f5fa4b93a9a1f7f04` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Yukihana-Lamy.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Lamy is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese

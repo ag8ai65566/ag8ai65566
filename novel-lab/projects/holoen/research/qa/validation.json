@@ -1,15 +1,12 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-04T13:39Z",
- "snapshot": "059cfd3f543c57ba74bf32d7d0bf71fd7c0796267f04f62d4b333b08e440d2d4",
+ "checked_at": "2026-10-04T15:23Z",
+ "snapshot": "b7e9498cd9f9212429d014a827215caf80bdeddf2d2334d552fc231d0b4d4faf",
  "blocking_failures": [
   "V11",
   "V12",
-  "V13",
   "V14",
-  "V15",
-  "V18",
-  "V19"
+  "V15"
  ],
  "results": [
   {
@@ -19,7 +16,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 059cfd3f543c57ba74bf32d7d0bf71fd7c0796267f04f62d4b333b08e440d2d4",
+    "snapshot b7e9498cd9f9212429d014a827215caf80bdeddf2d2334d552fc231d0b4d4faf",
     "107 inputs"
    ],
    "finding_ids": []
@@ -137,11 +134,11 @@
   {
    "check_id": "V13",
    "title": "Quotations and ASR",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/voice-delivery.md"
+    "reviewed in research/qa/voice-delivery.md"
    ],
    "finding_ids": []
   },
@@ -191,54 +188,20 @@
   {
    "check_id": "V18",
    "title": "Performance freshness and settings",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
-   "evidence": [
-    "Ouro-Kronii: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Nakiri-Ayame: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Watson-Amelia: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Elizabeth-Rose-Bloodflame: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Mori-Calliope: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Gigi-Murin: no source hash (run stamp-sheets after reviewing the sheet)",
-    "IRyS: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Hakos-Baelz: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Laplus-Darknesss: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Shishiro-Botan: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Gawr-Gura: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Raora-Panthera: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Houshou-Marine: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Hakui-Koyori: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Koseki-Bijou: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Ninomae-Inanis: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Takanashi-Kiara: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Mococo-Abyssgard: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Shirogane-Noel: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Kazama-Iroha: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Fuwawa-Abyssgard: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Nerissa-Ravencroft: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Shiori-Novella: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Nekomata-Okayu: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Ceres-Fauna: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Sakamata-Chloe: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Yukihana-Lamy: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Kikirara-Vivi: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Cecilia-Immergreen: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Hoshimachi-Suisei: no source hash (run stamp-sheets after reviewing the sheet)",
-    "AZKi: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Takane-Lui: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Nanashi-Mumei: no source hash (run stamp-sheets after reviewing the sheet)"
-   ],
+   "evidence": [],
    "finding_ids": []
   },
   {
    "check_id": "V19",
    "title": "Voice and pronunciation claims",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/voice-delivery.md"
+    "reviewed in research/qa/voice-delivery.md"
    ],
    "finding_ids": []
   },

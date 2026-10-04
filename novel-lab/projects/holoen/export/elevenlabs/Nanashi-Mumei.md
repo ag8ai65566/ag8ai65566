@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Nanashi Mumei
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `c26dd30f7b68069868e8b6b5463370febdc4ea0a56c932377a22a5d463584110` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Nanashi-Mumei.md` (promoted 2026-10-01). Original designed voice matched only
 > to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Mumei graduated on 2025-04-27 (04-28 JST); at the 2026 baseline she is an alum. Her active-streaming dialogue

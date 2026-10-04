@@ -1,3 +1,4 @@
 - 2026-10-03 23:22 作者裁決收錄 final.md（sha256 5d5d78ff41b4）：Author decision (2026-10-03, author order to merge the queued GPT results): one GPT round (run F) merged by Claude; promoted.
 - 2026-10-04 00:00 作者裁決收錄 final.md（sha256 125c79cc5955）：Author decision (2026-10-04): new-material research R6 (JP second group, holoX) merged by Claude
 - 2026-10-04 05:33 作者裁決收錄 final.md（sha256 a3555ab23cbe）：Author decision (2026-10-03): bridge-events audit merged by Claude
+- 2026-10-04 15:22 作者裁決收錄 final.md（sha256 a9d002fd4938）：Author order 2026-10-03: voice audit v4 merged; author decision 2026-10-04: holoX speak Japanese

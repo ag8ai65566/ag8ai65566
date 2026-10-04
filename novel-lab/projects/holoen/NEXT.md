@@ -6,14 +6,16 @@
 - **作者 2026-10-04 決定：** (1) 93 句只有二手轉錄的台詞選 **B**（保留，作者例外；`research/qa/quote-inventory.md`，span_check 列為例外）。
   (2) **hololive JP 14 人念日文**：9 張非 holoX 的卡片與表演表已改（Audio Tags 開頭寫明、表演表第 2 節
   `Dialogue language: Japanese`、台詞改日文字＋ROMAJI 行）；轉換器會擋下沒有日文字的 JP 台詞。
-  **holoX 5 人等 voice v4 合併後再改**（v4 的 prompt 已加上這兩個決定）。
+  holoX 5 人已在 voice v4 合併後一起改好（15:40 UTC）。
+- 聲音審計 v1–v4 全部合併；`research/qa/voice-delivery.md` 寫好，表演表已蓋章：**V13、V18、V19 通過**。
+  仍擋：V11、V12、V14、V15（只差 holox cohort 審計，GPT 跑中）。
 - 已合併並收錄：聲音審計 v1、v2、v3（處置在 `research/qa/voice-audit-dispositions.md`）；P1 計畫審查與 W1 工作流
   （`research/qa/workflow-dispositions.md`：轉換器 `tools/scene_to_elevenlabs.py`、腳本格式、V20 通過）；QA cohort
   審計 myth1、myth3、justice、global、myth4、myth2、promise、jp、jp2，bridge 審計 events、ties-external（`research/qa/audit-*.md`，
   工具 `tools/audit_apply.py`）；新資料 R1–R7（`research/qa/new-material-dispositions.md`）。關係網 33 人、684 條、**0 單向**。
   V06–V10、V16、V17、V20、V21 通過；仍擋：V11、V12、V15（等 jp／jp2／holox）、V13、V19（等 voice v4 與 voice-delivery.md）、
   V14（範圍人工審查）、V18（表演表蓋章）。
-- GPT 佇列（`.gpt-quota.json`）：voice v4（10:38 中斷，重跑）→ holox。每跑完一個，照同樣方法合併：cohort／bridge 用 `tools/audit_apply.py <run>/gpt-free.md --tag <cohort>`
+- GPT 佇列（`.gpt-quota.json`）：holox（跑中，最後一個）。每跑完一個，照同樣方法合併：cohort／bridge 用 `tools/audit_apply.py <run>/gpt-free.md --tag <cohort>`
   （先 --dry），聲音用 `tools/voice_apply.py`，再 promote-changed → export → qa_packets → span_check → web_check →
   validate，寫 `research/qa/audit-<cohort>.md`。
 - 全部聲音審計（含 v4）合併後：寫 `research/qa/voice-delivery.md`（V13/V19 attestation），再對審過的表演表

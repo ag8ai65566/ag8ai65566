@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Raora Panthera
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `c343c6fd85824dccdc5b1dfdc1181b8291dfb0dafcf1ff9b18309d907194eca9` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Raora-Panthera.md` (2026-10-01). Original designed voice matched only to
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Raora is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.

@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Shiori Novella
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `dba641e0500227b4d6f40a2d5f3135feb85cb5c585d9997fb5fd40d26f670739` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Shiori-Novella.md` (promoted 2026-10-01). Original designed voice matched only
 > to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Shiori is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.

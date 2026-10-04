@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Ceres Fauna
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `0676e65b15292f93c2f2bfec079a523b380dbe86842f7bbdeb8e89dc3addee4d` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Ceres-Fauna.md` (promoted 2026-10-01). Original designed voice matched only
 > to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Fauna graduated on 2025-01-03; at the 2026 baseline she is an alum. Her active-streaming dialogue belongs

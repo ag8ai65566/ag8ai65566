@@ -70,6 +70,19 @@ GPT attested the Noel and Lamy cards and sheets as OK. The other seven were OK a
 | Merge handoff 3 (shared guide) | Already satisfied by the v1 revision of `docs/elevenlabs-v4.md`: measurements are research context, not synthesis targets, and nonverbal sounds are tag-only. |
 | Harmonization (Claude) | The VOICE-V2-001 Audio Tags opening and sheet §1 heading were applied to all nine, so the 2026 JP cards use the same provisional wording as the EN cast. |
 
-## v4: holoX
+## v4: holoX (runs/20261003-2322-check-QA-voice-v4)
 
-Pending. The audit is queued in GPT and runs after the 2026-10-04 quota reset.
+GPT attested all five holoX cards and sheets as OK after the listed findings. Its prompt carried both of the author's
+decisions of 2026-10-04: Japanese dialogue and quote-inventory option B.
+
+| IDs | Disposition |
+|---|---|
+| VOICE-V4-001 (La+) | Applied by hand. The card's Dialogue Style keeps only the two shared spans, 「聞こえたっしょ」 and 「これが配信者よ」. The unchecked fillers ("watashi", "maji de", "yabai") are no longer exported. The sheet's §3 rewords the first-person note as GPT proposed. |
+| VOICE-V4-002 (La+) | Applied. Option B labels: "Yes My Dark!" is a secondary transcription and the followers' line. 「吾輩」 and 「貴様」 are secondary vocabulary records. The labels were carried into Dialogue Style, Audio Tags and the sheet's §3 and §5. |
+| VOICE-V4-003, 006, 007, 011, 013 | Already satisfied. The palette lines were added by WF-015/016 ("Additional proposed scene directions…" in §4), which the converter reads. V20 passes. GPT saw the sheets as they stood on 10-03. |
+| VOICE-V4-004 (Lui) | Applied. Dialogue Style keeps 「まあ」 and 「ね」 only as they occur in the shared line. The calm delivery is a provisional choice. |
+| VOICE-V4-005 (Lui) | Applied, and normalized across Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags and sheet §§3–5 and 8. The official written laugh 「ﾊｯﾊｰ↑」 has the provisional reading はっはー (hahhā). In a script it is `[pleased] ハッハー！` with a ROMAJI line. The ROMAJI line that the tool had put inside Audio Tags was folded into one line. |
+| VOICE-V4-008 – 010 (Chloe) | Applied. Dialogue Style drops the unchecked "~sā" filler. The sheet introduction is in the past tense ("Her archived performances used Japanese"). Giggles and the singing register are provisional choices. |
+| VOICE-V4-012 (Iroha) | Applied. 「よしよしよしよし」 is one documented example, not a fixed repetition count. The same wording is on the sheet's §3. |
+| VOICE-V4-014 (all five) | Applied in the format used for the nine JP sheets. §2 says "Dialogue language: **Japanese**", and Audio Tags opens with the dialogue-language sentence. Lines in §§3–5 and 8 are in Japanese script with ROMAJI lines. A holoX scene lints against the real sheets. Two Style demos that matched lines only one ASR model heard were replaced (Iroha; Marine's in the earlier JP pass). |
+

@@ -1,5 +1,5 @@
 # Sudowrite 貼上單 — holoen
-_產生時間 2026-10-04 13:39。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
+_產生時間 2026-10-04 15:22。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
 
 # Style — paste this block first
 貼到 Story Bible → **Style**（119 字；故事本身的文風說明可以接在後面，合計超過約 120 字時請檢查）。它教 Sudowrite 用每個角色的 **Audio Tags** 特質在對白裡寫 ElevenLabs v4 標籤。說明與注意事項見 `elevenlabs/sudowrite-style.md`。
@@ -653,9 +653,9 @@ Streams in Japanese with a presenter's polish: 「こんこよ～！」 to open,
 Provisional direction for an original designed voice: a bright, clear, well-enunciated voice in presenter mode, quick and cheerful; excited explanations may accelerate and rise; squeals when excited and full screams when scared; sly and playful when teasing. Her recorded giggle is a first-model observation, so laughs are provisional choices. Not as default: flat, sleepy, mumbled or coldly scientific.
 ```
 
-### Audio Tags（159/350）
+### Audio Tags（202/350）
 ```text
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, clear mid-high voice with a wide upward range. Default tags: [cheerful, crisp]. By situation: hosting [upbeat, announcer]; inviting viewers [warm, upbeat]; excited explanation [excited, fast]; horror or a scare [screams]; teasing a member [playful, sly]; proud of an "experiment" [smug]; thanking her Assistants [warm]. With people (proposed scene directions, not observed conversational defaults): Chloe [bickering, fond]; Marine [giddy]; FUWAMOCO [bubbly]; La+ [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; giggles and screams are provisional choices): "Konkoyo!" (spoken); [giggles] (tag only); [screams] (tag only). Keep in the words: "Konkoyo," "joshu-kun," "koyoriniumu." Reading guide (untested): はくい こより; こんこよ; こよりにうむ. Not as default: a flat, sleepy or coldly scientific voice.
+Dialogue language for audio scripts: Japanese (author decision 2026-10-04): write her spoken turns in Japanese script; romaji and English go only on ROMAJI/GLOSS lines. Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, clear mid-high voice with a wide upward range. Default tags: [cheerful, crisp]. By situation: hosting [upbeat, announcer]; inviting viewers [warm, upbeat]; excited explanation [excited, fast]; horror or a scare [screams]; teasing a member [playful, sly]; proud of an "experiment" [smug]; thanking her Assistants [warm]. With people (proposed scene directions, not observed conversational defaults): Chloe [bickering, fond]; Marine [giddy]; FUWAMOCO [bubbly]; La+ [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; giggles and screams are provisional choices): 「こんこよ～！」 ("Konkoyo!", spoken); [giggles] (tag only); [screams] (tag only). Keep in the words: 「こんこよ」 (Konkoyo), 「助手くん」 (joshu-kun), 「コヨリニウム」 (koyoriniumu). Reading guide (untested): はくい こより; こんこよ; こよりにうむ. Not as default: a flat, sleepy or coldly scientific voice.
 ```
 
 ### Motivation（48/200）
@@ -930,9 +930,9 @@ Iroha is an active member of Secret Society holoX. She has no supernatural abili
 Iroha's avatar is 156 cm tall, with short blonde hair in a ponytail tied with a green leaf-like ribbon and aqua-blue eyes. She wears a white top with gold fittings and a red cord with a bell at her waist, a teal pleated skirt with a cloud pattern, a black fingerless glove and, over everything, a long cream haori-like coat with teal-gradient sleeves and cloud motifs; she carries a katana with a teal scabbard and wears white thigh-highs with teal diamond accents and black-and-red thong sandals. Pokobee, a small tanuki, travels with her.
 ```
 
-### Dialogue Style（112/250）
+### Dialogue Style（132/250）
 ```text
-Streams in Japanese in a bright samurai persona: "de gozaru" as her signature ending (uncommon in the two sampled 2026 game windows), "-dono" for friends and "Gozaru" for herself. In games she switches to fast play-by-play with words repeated in fours (「よしよしよしよし」 when it works), gets flustered when things go wrong, talks back at teasing chat and then laughs. When a story renders her speech in English or Chinese, keep occasional samurai flavor without forcing an archaic ending onto every sentence ("I daresay" is the official English localization; in Chinese, 在下 for herself and an occasional sentence-final 是也) against an upbeat, sporty voice.
+Streams in Japanese in a bright samurai persona: 「でござる」 ("de gozaru") as her signature ending (uncommon in the two sampled 2026 game windows), 「殿」 ("-dono") for friends and 「ござる」 ("Gozaru") for herself. The sampled 2026 kanji game contains 「よしよしよしよし」 (yoshi yoshi yoshi yoshi) after a success; this is a documented example, not a fixed repetition count. Quick play-by-play, flustered replies to teasing and laughter after mistakes are provisional directions for the original designed voice. When a story renders her speech in English or Chinese, keep occasional samurai flavor without forcing an archaic ending onto every sentence ("I daresay" is the official English localization; in Chinese, 在下 for herself and an occasional sentence-final 是也) against an upbeat, sporty voice.
 ```
 
 ### Catchphrases（71/250）
@@ -945,9 +945,9 @@ Streams in Japanese in a bright samurai persona: "de gozaru" as her signature en
 Provisional direction for an original designed voice: a clear, bright, youthful voice with a sporty edge; earnest and polite in samurai mode, quick, loud and pumped when she competes, laughing easily at her own mistakes (laughs are provisional choices). Not as default: gruff, grim, sultry or slow and solemn.
 ```
 
-### Audio Tags（150/350）
+### Audio Tags（196/350）
 ```text
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, clear youthful voice. Default tags: [cheerful, earnest]. By situation: samurai introduction [proud, polite]; competing [excited, fast]; it works [triumphant]; a blunder [laughs, sheepish]; teased by chat [indignant, loud]; guarding holoX [determined]; scared [panicked]. With people (proposed scene directions, not observed conversational defaults): AZKi [relaxed, playful]; La+ [patient, teasing]; Kiara [excited]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; laughs are provisional choices): "de gozaru" (spoken); "yoshi yoshi yoshi yoshi" (spoken); [laughs] (tag only). Keep in the words: "de gozaru," "-dono," "yoshi yoshi." Reading guide (untested): かざま いろは; ござる; ようじんぼう. Not as default: a gruff warrior or a sultry, cool voice.
+Dialogue language for audio scripts: Japanese (author decision 2026-10-04): write her spoken turns in Japanese script; romaji and English go only on ROMAJI/GLOSS lines. Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): bright, clear youthful voice. Default tags: [cheerful, earnest]. By situation: samurai introduction [proud, polite]; competing [excited, fast]; it works [triumphant]; a blunder [laughs, sheepish]; teased by chat [indignant, loud]; guarding holoX [determined]; scared [panicked]. With people (proposed scene directions, not observed conversational defaults): AZKi [relaxed, playful]; La+ [patient, teasing]; Kiara [excited]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; laughs are provisional choices): 「でござる」 ("de gozaru", spoken); 「よしよしよしよし」 ("yoshi yoshi yoshi yoshi", spoken); [laughs] (tag only). Keep in the words: 「でござる」 (de gozaru), 「殿」 (-dono), 「よしよし」 (yoshi yoshi). Reading guide (untested): かざま いろは; ござる; ようじんぼう. Not as default: a gruff warrior or a sultry, cool voice.
 ```
 
 ### Motivation（42/200）
@@ -1149,14 +1149,14 @@ La+ is an active member of Secret Society holoX. She has no supernatural abiliti
 La+'s avatar is 139 cm tall, with long silvery hair, a purple lock and a braided bang, large black horns striped in purple above pointed ears, yellow eyes and small fangs. She wears a dark purple dress with a yellow tie and oversized sleeves that swallow her hands, one purple legging and short boots, with a star-tipped purple tail and shackles at her neck, sleeves and ankles. A crow keeps her company.
 ```
 
-### Dialogue Style（139/250）
+### Dialogue Style（155/250）
 ```text
-Streams in Japanese. Her persona voice is a pint-sized villain: "wagahai" for "I," "kisama" for "you," and grand declarations such as her official introduction 「貴様ら、刮目せよ！！」 ("Kisama-ra, katsumoku seyo!!," officially "See me, hear me, all of you!"), which her followers answer with "Yes My Dark!" In everyday 2026 chats she talks casually, with plain "watashi," "maji de," "yabai" and "~ssho" (「聞こえたっしょ」, "you heard it, right?"), and shows off (「これが配信者よ」, "this is what a streamer is!"). Indignant protests when teased or beaten and a smug cackle on a win are provisional performance choices for suitable scenes. When a story renders her speech in English or Chinese, keep the archaic villain "I" (in Chinese, 吾輩) for persona moments against a small, indignant voice.
+Streams in Japanese. Her persona voice is a pint-sized villain: 「吾輩」 (wagahai) for "I" and 「貴様」 (kisama) for "you" (secondary vocabulary records), and grand declarations such as her official introduction 「貴様ら、刮目せよ！！」 ("Kisama-ra, katsumoku seyo!!," officially "See me, hear me, all of you!"), which her followers answer with "Yes My Dark!" (secondary transcription) The sampled 2026 chat contains casual phrasing: 「聞こえたっしょ」 (kikoeta ssho, "you heard it, right?") checks with chat, while 「これが配信者よ」 (kore ga haishinsha yo, "this is what a streamer is!") shows off. Both are shared ASR spans. Indignant protests when teased or beaten and a smug cackle on a win are provisional performance choices for suitable scenes. When a story renders her speech in English or Chinese, keep the archaic villain "I" (in Chinese, 吾輩) for persona moments against a small, indignant voice.
 ```
 
-### Catchphrases（104/250）
+### Catchphrases（119/250）
 ```text
-「貴様ら、刮目せよ！！」 ("Kisama-ra, katsumoku seyo!!"; official introduction, officially "See me, hear me, all of you!"); "Yes My Dark!" (her followers' answer); "wagahai" (her persona "I"); "kisama" ("you"); 「吾輩怪しい者でないぞ」 ("Wagahai ayashii mono de nai zo," "I'm not a suspicious person!," attributed to her first post by secondary records); 「これが配信者よ」 ("this is what a streamer is!," shared ASR span). Secondary transcription of her full title: "Laplus Dia Highest Death Thirteen Daina Art of Impact Sign Emperor Road of the Darknesss." Her fans are the Plusmate (+mate).
+「貴様ら、刮目せよ！！」 ("Kisama-ra, katsumoku seyo!!"; official introduction, officially "See me, hear me, all of you!"); "Yes My Dark!" (her followers' answer; SECONDARY transcription, not her line); 「吾輩」 (wagahai, her persona "I"; SECONDARY vocabulary record); 「貴様」 (kisama, "you"; SECONDARY vocabulary record); 「吾輩怪しい者でないぞ」 ("Wagahai ayashii mono de nai zo," "I'm not a suspicious person!," attributed to her first post by secondary records); 「これが配信者よ」 ("this is what a streamer is!," shared ASR span). Secondary transcription of her full title: "Laplus Dia Highest Death Thirteen Daina Art of Impact Sign Emperor Road of the Darknesss." Her fans are the Plusmate (+mate).
 ```
 
 ### Voice & Delivery（58/250）
@@ -1164,9 +1164,9 @@ Streams in Japanese. Her persona voice is a pint-sized villain: "wagahai" for "I
 Provisional direction for an original designed voice: a small, bright, bratty voice that puffs itself up into a grand villain register for persona moments and drops to casual chat between them; indignant protests when teased or beaten and a smug cackle on a win are provisional choices for suitable scenes. Not as default: truly menacing, sleepy or mature-cool.
 ```
 
-### Audio Tags（159/350）
+### Audio Tags（200/350）
 ```text
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): small, bright voice; cocky by default. Default tags: [smug, bright]. By situation: grand declaration [commanding, theatrical]; showing off [smug, bright]; checking with chat [casual]; treated like a child [indignant, loud]; losing [whining, furious]; scheming [conspiratorial]; winning [cackles]. With people (proposed scene directions, not observed conversational defaults): Lui [whiny, dependent]; Kiara [competitive, friendly]; seniors [indignant]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; laughs are provisional choices): [cackles] (tag only). "Yes My Dark!" is her followers' answer, not her line. Keep in the words: "wagahai," "kisama," "katsumoku seyo." Reading guide (untested): らぷらす だーくねす; わがはい; かつもくせよ. Not as default: a truly menacing demon; a sleepy or mature-cool voice.
+Dialogue language for audio scripts: Japanese (author decision 2026-10-04): write her spoken turns in Japanese script; romaji and English go only on ROMAJI/GLOSS lines. Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): small, bright voice; cocky by default. Default tags: [smug, bright]. By situation: grand declaration [commanding, theatrical]; showing off [smug, bright]; checking with chat [casual]; treated like a child [indignant, loud]; losing [whining, furious]; scheming [conspiratorial]; winning [cackles]. With people (proposed scene directions, not observed conversational defaults): Lui [whiny, dependent]; Kiara [competitive, friendly]; seniors [indignant]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; laughs are provisional choices): [cackles] (tag only). "Yes My Dark!" is her followers' answer (secondary transcription), not her line. Keep in the words: 「吾輩」 (wagahai; secondary vocabulary record), 「貴様」 (kisama; secondary vocabulary record), 「刮目せよ」 (katsumoku seyo). Reading guide (untested): らぷらす だーくねす; わがはい; かつもくせよ. Not as default: a truly menacing demon; a sleepy or mature-cool voice.
 ```
 
 ### Motivation（40/200）
@@ -1879,14 +1879,14 @@ Chloe is a hololive affiliate, formerly an active member of Secret Society holoX
 Chloe's avatar is 148 cm tall, with long wavy gray hair, a side braid, X-shaped hair pins, red eyes and a small fang, under a black orca hood with white "eyes" and red plaid bows. She wears an open, off-shoulder black jacket lined in quilted red and strapped with belts, a white ruffled top, a collar with a heart charm, a studded belt with chains, a red plaid skirt over black ruffles, torn black thigh-highs with garters and black boots with red laces and red platform soles, all marked with yellow "caution" tape. Inu, a tiny orca in a "Caution" life jacket, is her mascot.
 ```
 
-### Dialogue Style（90/250）
+### Dialogue Style（89/250）
 ```text
-Streamed in Japanese in connected, run-on chatter whose sentences often trail into a drawn-out "~sā" (transcript observation), calling herself "Sakamata" and her viewers 「飼育員」 ("shiikuin," Handlers). She opens like a meal (「いただきまーす」), teases seniors and friends, and turns questions into polls of chat (「いつからおじさんなの」). When a story renders her speech in English or Chinese, keep the third-person "Sakamata," the teasing, giggly chatter and the switch to a serious, mature voice when she sings.
+Her archived Japanese performances use connected, run-on phrasing. She refers to herself as 「沙花叉」 (Sakamata) and addresses her viewers as 「飼育員」 (shiikuin, Handlers). She opens like a meal (「いただきまーす」), teases seniors and friends, and turns questions into polls of chat (「いつからおじさんなの」). Her dialogue keeps the third-person self-reference and connected, teasing phrasing. Giggles and a fuller, more mature singing register are provisional choices for the original designed voice, not listening observations.
 ```
 
-### Catchphrases（78/250）
+### Catchphrases（81/250）
 ```text
-「ばっくばっくばく～ん」 ("bakku bakku bakūn," official opening) followed by 「いただきます」 ("itadakimasu"; officially "Chomp, chomp, chomp! It's time to eat!"); 「ごちそうさまでした」 ("gochisōsama deshita," official closing, "Thanks for the food"); 「いただきまーす」 (shared ASR span); 「飼育員」 ("shiikuin," Handlers, her viewers); "Sakamata" (how she refers to herself); "KoyoChlo" (her duo with Koyori).
+「ばっくばっくばく～ん」 ("bakku bakku bakūn," official opening) followed by 「いただきます」 ("itadakimasu"; officially "Chomp, chomp, chomp! It's time to eat!"); 「ごちそうさまでした」 ("gochisōsama deshita," official closing, "Thanks for the food"); 「いただきまーす」 (shared ASR span); 「飼育員」 ("shiikuin," Handlers, her viewers); 「沙花叉」 ("Sakamata," how she refers to herself); "KoyoChlo" (her duo with Koyori).
 ```
 
 ### Voice & Delivery（63/250）
@@ -1894,9 +1894,9 @@ Streamed in Japanese in connected, run-on chatter whose sentences often trail in
 Provisional direction for an original designed voice: a small, soft, high and slightly airy voice that chatters, giggles and teases; panicky squeaks in horror; noticeably deeper, fuller and more mature when she sings. Speed, softness and timbre are provisional choices: ASR records connected chatter, not how it sounds. Not as default: a cool, mature speaking voice, a menacing "cleaner" or slow, careful speech.
 ```
 
-### Audio Tags（152/350）
+### Audio Tags（199/350）
 ```text
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): small, soft, high voice; quick and playful by default. Default tags: [soft, playful]. By situation: opening [bright, hungry]; chatting [fast, casual]; polling chat [curious, playful]; teasing [mischievous, giggly]; horror [panicked, squeaky]; singing [mature, heartfelt]. With people (proposed scene directions, not observed conversational defaults): Koyori [bickering, fond]; Lui [whiny, sheepish]; Kiara [shy, excited]; seniors [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; giggles are provisional choices): "Bakku bakku bakūn" (spoken); [giggles] (tag only); [gasps] (tag only). Keep in the words: "Sakamata," "shiikuin," "itadakimāsu." Reading guide (untested): さかまた くろえ; ばっくばっくばくーん. Not as default: a cool, mature or menacing voice.
+Dialogue language for audio scripts: Japanese (author decision 2026-10-04): write her spoken turns in Japanese script; romaji and English go only on ROMAJI/GLOSS lines. Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): small, soft, high voice; quick and playful by default. Default tags: [soft, playful]. By situation: opening [bright, hungry]; chatting [fast, casual]; polling chat [curious, playful]; teasing [mischievous, giggly]; horror [panicked, squeaky]; singing [mature, heartfelt]. With people (proposed scene directions, not observed conversational defaults): Koyori [bickering, fond]; Lui [whiny, sheepish]; Kiara [shy, excited]; seniors [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; giggles are provisional choices): 「ばっくばっくばく～ん」 ("Bakku bakku bakūn", spoken); [giggles] (tag only); [gasps] (tag only). Keep in the words: 「沙花叉」 (Sakamata), 「飼育員」 (shiikuin), 「いただきまーす」 (itadakimāsu). Reading guide (untested): さかまた くろえ; ばっくばっくばくーん. Not as default: a cool, mature or menacing voice.
 ```
 
 ### Motivation（44/200）
@@ -2244,24 +2244,24 @@ Lui is an active member of Secret Society holoX. She has no supernatural abiliti
 Lui's avatar is 161 cm tall: a hawk girl with short pink hair, feather-like side locks, a black headband and blue eyes. She wears a white blouse with a red tie and a gold bird pin under a dark crimson cape with strap-and-buckle trim and bird emblems, black fingerless gloves, glossy black high-waisted shorts with a wide belt, dark tights with a thigh strap holding a riding crop, and black heels with silver wing ornaments; brown feathers hang at her side. Secondary descriptions make Ganmo, a plump frogmouth with two white chicks on his head, her secretary.
 ```
 
-### Dialogue Style（121/250）
+### Dialogue Style（151/250）
 ```text
-Streams in Japanese, calm and conversational: "mā," "ne," "un un," reading chat aloud and answering it one by one, unhurried and warm. Her official phrases open with 「まったかね～？」 ("Mattakane?," officially "Did I Luive you waiting!?") and close with 「おつルイルイ」 ("Otsuluilui," "I take your Luive"); doubts come out as 「○○したかね？」 ("…shitakane?"), excitement as 「鷹まってきた～！」 ("Takamattekita!"). Her greetings and jokes play on her name. She delivers a cool executive line, then adds a clipped 「コッ☆」, and laughs ﾊｯﾊｰ↑ ("Haha↑") after her own joke. When a story renders her speech in English or Chinese, keep the big-sister calm, the wordplay on her name and the cool-then-goofy turn.
+She speaks Japanese and answers chat comments one at a time in the sampled 2026 chat. 「まあ」 (mā) and sentence-final 「ね」 (ne) occur in the shared reassurance line. A calm, warm, unhurried delivery is a provisional choice for the original designed voice. Her official phrases open with 「まったかね～？」 ("Mattakane?," officially "Did I Luive you waiting!?") and close with 「おつルイルイ」 ("Otsuluilui," "I take your Luive"); doubts come out as 「○○したかね？」 ("…shitakane?"), excitement as 「鷹まってきた～！」 ("Takamattekita!"). Her greetings and jokes play on her name. She delivers a cool executive line, then adds a clipped 「コッ☆」, and laughs 「ﾊｯﾊｰ↑」 (official written laugh; provisional reading はっはー, hahhā) after her own joke. When a story renders her speech in English or Chinese, keep the big-sister calm, the wordplay on her name and the cool-then-goofy turn.
 ```
 
-### Catchphrases（81/250）
+### Catchphrases（88/250）
 ```text
-「まったかね～？」 ("Mattakane?"; official English "Did I Luive you waiting!?"); 「おつルイルイ」 ("Otsuluilui"; "I take your Luive"); 「○○したかね？」 ("…shitakane?"; "Did you…, if I'm not mistakane?"); 「鷹まってきた～！」 ("Takamattekita!"; "Hype Luivels rising!"); 「コッ☆」 ("Ko!☆," the clipped sparkle after a cool line); ﾊｯﾊｰ↑ ("Haha↑," her official laugh after a joke); "PON" (the meme for her blunders); "Don't drop your water" (what fans tell her). Her fans are the Lui-tomo.
+「まったかね～？」 ("Mattakane?"; official English "Did I Luive you waiting!?"); 「おつルイルイ」 ("Otsuluilui"; "I take your Luive"); 「○○したかね？」 ("…shitakane?"; "Did you…, if I'm not mistakane?"); 「鷹まってきた～！」 ("Takamattekita!"; "Hype Luivels rising!"); 「コッ☆」 ("Ko!☆," the clipped sparkle after a cool line); 「ﾊｯﾊｰ↑」 (her official written laugh after a joke; provisional reading はっはー, hahhā); "PON" (the meme for her blunders); "Don't drop your water" (what fans tell her). Her fans are the Lui-tomo.
 ```
 
-### Voice & Delivery（61/250）
+### Voice & Delivery（63/250）
 ```text
-Provisional direction for an original designed voice: a low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool executive line for effect, undone by a cute, clipped "Ko!☆"; a pleased "Haha↑" after her own joke (official phrase); flustered laughter after a blunder and shrieks in horror games are provisional choices. Not as default: a high, bubbly voice.
+Provisional direction for an original designed voice: a low, calm, mature voice with a warm big-sister softness; unhurried and conversational; a cool executive line for effect, undone by a cute, clipped 「コッ☆」; a pleased 「ﾊｯﾊｰ↑」 (hahhā) after her own joke (official written laugh); flustered laughter after a blunder and shrieks in horror games are provisional choices. Not as default: a high, bubbly voice.
 ```
 
-### Audio Tags（163/350）
+### Audio Tags（222/350）
 ```text
-Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): low, calm, mature voice; warm by default. Default tags: [calm, warm]. By situation: opening [warm, lilting]; executive mode [cool, low] then [playful] on "Ko!☆"; chatting [calm, motherly]; a joke [deadpan] then "Haha↑"; a blunder [flustered] then [laughs]; horror game [panicked, shrieking]; horse-race prediction [confident]. With people (proposed scene directions, not observed conversational defaults): La+ [exasperated, fond]; Kiara [bright, friendly]; Mumei [gentle, sisterly]; Okayu [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; laughs and screams are provisional choices): "Ko!☆" (spoken, clipped); "Haha↑" (spoken, official phrase); [laughs] (tag only); [screams] (tag only). Keep in the words: "Mattakane," "Otsuluilui," "Lui-tomo." Reading guide (untested): たかね るい; まったかね; こっ☆ (clipped). Not as default: a high, bubbly voice; cold cruelty; nonstop shouting.
+Dialogue language for audio scripts: Japanese (author decision 2026-10-04): write her spoken turns in Japanese script; romaji and English go only on ROMAJI/GLOSS lines. Proposed ElevenLabs v4 performance directions for her dialogue, for an original designed voice (never imitate the real member); test them with the chosen voice. Register (qualitative): low, calm, mature voice; warm by default. Default tags: [calm, warm]. By situation: opening [warm, lilting]; executive mode [cool, low] then [playful] on 「コッ☆」; chatting [calm, motherly]; a joke [deadpan] then [pleased] 「ﾊｯﾊｰ↑」; a blunder [flustered] then [laughs]; horror game [panicked, shrieking]; horse-race prediction [confident]. With people (proposed scene directions, not observed conversational defaults): La+ [exasperated, fond]; Kiara [bright, friendly]; Mumei [gentle, sisterly]; Okayu [teasing]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out; laughs and screams are provisional choices): 「コッ☆」 ("Ko!☆", spoken, clipped); 「ﾊｯﾊｰ↑」 (official written laugh; provisional reading はっはー, hahhā; in a script, [pleased] ハッハー！ with ROMAJI :: Hahhā!); [laughs] (tag only); [screams] (tag only). Keep in the words: 「まったかね」 (Mattakane), 「おつルイルイ」 (Otsuluilui), 「ルイ友」 (Lui-tomo). Reading guide (untested): たかね るい; まったかね; こっ☆ (clipped). Not as default: a high, bubbly voice; cold cruelty; nonstop shouting.
 ```
 
 ### Motivation（62/200）

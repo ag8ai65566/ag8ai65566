@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Mori Calliope
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `7596cbd0e4a92a1162901cdbee94774a249c2a6ee5278f9a0b0ec5e24b947b46` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Mori-Calliope.md` (2026-09-30). Original designed voice matched only to
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Guide: `novel-lab/docs/elevenlabs-v4.md`.

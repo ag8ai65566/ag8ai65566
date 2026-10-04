@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Mococo Abyssgard
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `5e1d259c2e6a74c6032377d8fc5adc0c61d80e9d29cf055c8fa97033dfd9eccd` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Mococo-Abyssgard.md` (promoted 2026-10-01). Original designed voice matched
 > only to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5;
 > COVER Derivative Works Guidelines). Mococo is active at the 2026 baseline; she shares the FUWAMOCO channel with Fuwawa (world card "FUWAMOCO").

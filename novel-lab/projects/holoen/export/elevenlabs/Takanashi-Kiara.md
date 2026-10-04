@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Takanashi Kiara
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `873fcd00cad54da40739774b69c2e5470934609c9e607655eb0dd42a2a360b03` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Takanashi-Kiara.md` (2026-09-30). Original designed voice matched only to
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Guide: `novel-lab/docs/elevenlabs-v4.md`.

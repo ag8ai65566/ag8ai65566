@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Shishiro Botan
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `be7a633b2c07bf15859043c1ee684655ac57ddd4a77cc9e18a4f6ba8867d89f9` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Shishiro-Botan.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Botan is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese

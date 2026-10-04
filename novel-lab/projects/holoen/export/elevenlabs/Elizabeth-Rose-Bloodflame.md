@@ -1,5 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Elizabeth Rose Bloodflame
 
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `d80dc9dcdaa93be2b4ef12641d1a3430b52bc24926181de01f7e6056668529d2` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
 > Built from `bible/characters/Elizabeth-Rose-Bloodflame.md` (2026-10-01). Original designed voice matched
 > only to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5;
 > COVER Derivative Works Guidelines). Elizabeth is active at the 2026 baseline. Guide:
