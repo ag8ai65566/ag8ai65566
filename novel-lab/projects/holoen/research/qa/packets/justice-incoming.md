@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git d952b79.
+Snapshot: git 8f921de.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|holoJustice|Grem Reaper|Bloodraven|Autofister|TimeChaser|Gigi Murin|Immerhater|Erby Berby|Elizabeth|Da Fister|Gi Murin|Raviolin|Justice|Cecilia|Lizzie|G Pain|HoloEU|GeeGee|Raora|B.F.F|Cece|Rara|LYRA|RPGG|Gigi|Ceci|CCGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|holoJustice|Grem Reaper|Autofister|Immerhater|Erby Berby|TimeChaser|Gigi Murin|Bloodraven|Elizabeth|Da Fister|Raviolin|Gi Murin|Cecilia|Justice|Lizzie|HoloEU|GeeGee|G Pain|Raora|B.F.F|Ceci|RPGG|CCGG|Rara|Gigi|LYRA|Cece|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -14,6 +14,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 ### from Ceres Fauna
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Cecilia Immergreen: a book and shoujo-manga tropes ranking (2024; "Green Women").
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Gigi Murin: Silent Hill 2 and the 2024 Coughing Baby Award Show ("FruitPunch," a secondary pair name).
+- `bible/characters/Ceres-Fauna.md › Voice Profile`: - (Explaining an in-game murder-mystery choice) "at that moment Liz became villain number one so I had no choice" … "I just wanted to use the gun." [ASR, both models, iIBywcAIMD0 3:20:14 and 3:20:21; two-model recheck 2026-10-04; the next words differ between the models ("cuz"/"because") and are not quoted]
 - `bible/characters/Ceres-Fauna.md › Story Engine`: 4. Fauna referees Justice in a board game she invented, and the rules keep changing.
 
 ### from Fuwawa Abyssgard

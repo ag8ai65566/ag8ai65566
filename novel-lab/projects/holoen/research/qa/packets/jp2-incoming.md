@@ -1,9 +1,9 @@
 # Audit packet: jp2 (incoming claims)
 
-Snapshot: git d952b79.
+Snapshot: git 8f921de.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: el and Calliope|Vivi and FUWAMOCO|JP Senpai Pairs 2|Marine and Kiara|Shishiro Botan|Shirogane Noel|Botan and IRyS|Houshou Marine|Kikirara Vivi|Yukihana Lamy|Noel-danchou|Lamy and Ina|Noel Deluxe|Shishiron|Lamy-mama|Shishiro|綺々羅々ヴィヴィ|Maririn|Danchou|Senchou|Marine|Sencho|Danchō|Senchō|雪花ラミィ|白銀ノエル|宝鐘マリン|獅白ぼたん|Botan|Vivi|Lamy|Noel|Wamy)(
+Matched names:  Senpai Pairs 2|Vivi and FUWAMOCO|Noel and Calliope|Marine and Kiara|Houshou Marine|Shishiro Botan|Shirogane Noel|Botan and IRyS|Kikirara Vivi|Yukihana Lamy|Lamy and Ina|Noel-danchou|Noel Deluxe|Shishiron|Lamy-mama|綺々羅々ヴィヴィ|Shishiro|Danchou|Maririn|Senchou|Danchō|Marine|Sencho|Senchō|雪花ラミィ|Botan|白銀ノエル|宝鐘マリン|獅白ぼたん|Lamy|Vivi|Wamy|Noel)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"

@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git d952b79.
+Snapshot: git 8f921de.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: loEN's later generations|hololive History 2023-2026|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|the merger|world tour|SUPER EXPO|EN concert|Holodeath|PavoNashi|aftertalk|HOLOTORI|MoRikka|3D live|soranii|HoloJEI|K.I.R.A|IRySora|KoMeHa|V3LVET|OKFAIR|UMISEA|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|VTuber Persona and Lore|recent hololive history|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|SUPER EXPO|the merger|world tour|EN concert|aftertalk|Holodeath|PavoNashi|HOLOTORI|3D live|IRySora|HoloJEI|soranii|K.I.R.A|MoRikka|OKFAIR|UMISEA|V3LVET|KoMeHa|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -129,6 +129,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|Concerts and 
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
 - `bible/characters/IRyS.md › [SW] Relationships`: Hoshimachi Suisei and AZKi: with Moona Hoshinova, the unit Star Flower ("story time," 2022); Suisei also performed "High Tide" with her, Bae and Moona at Breaking Dimensions (2024).
+- `bible/characters/IRyS.md › Voice Profile`: - (Birthday-live aftertalk, reading superchats about her outfit) "Glad you guys like the outfit. I knew you guys would. I knew you guys would." … separately: "No, I don't like it. I love it." [ASR, both models, WZn7zl-NI3A 4:27:18 and 4:27:30; two-model recheck 2026-10-04]
 - `bible/characters/IRyS.md › Appearance Anchors`: - 2026: a race-queen outfit for her birthday live "Racing Towards Hope" (visor, gold accessories, blue and pink eyeshadow). [ASR R20]
 - `bible/characters/IRyS.md › Background Timeline`: | 2024-11-17 | 3D live "The Devil Wears Hope" | [Observed R3 title] |
 - `bible/characters/IRyS.md › Background Timeline`: | 2025-03-15/16 | Birthday: "DIAMOND GIRLFRIEND," EP "YaBAI," 3D live "HOPE UPON A STAR" | [Observed R2 §2025; R3] |

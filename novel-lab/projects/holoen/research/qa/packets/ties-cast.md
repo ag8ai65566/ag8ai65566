@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git d952b79. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 8f921de. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Hakos Baelz
