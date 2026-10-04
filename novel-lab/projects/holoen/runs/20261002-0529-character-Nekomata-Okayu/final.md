@@ -184,6 +184,7 @@ on the world card "JP Senpai Pairs."
 | Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 | Kikirara Vivi | — | A 2026-08-25 collab on Vivi's channel framed around やーらし. | [Archive metadata, ckworks jlt6HHrZnpE] |
 | Sakamata Chloe | — | Chorus on Chloe's "Bling-Bang-Bang-Born" cover (2025-01-24). | [Archive metadata, ragtag wxnTKRkpePs] |
+| Yukihana Lamy | JP kouhai | A "Lukewarm" duet cover on Okayu's channel (2024-02-01). | [Member-upload title TIE-004] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a long Final Fantasy VII series, a game she supervises, and
@@ -230,6 +231,7 @@ Her flirting is a playful, non-explicit bit to see people react; keep it light. 
 - NEW-R5-010 (GPT research R5, checked 2026-10-03) PERSONYA RESPECT report (OFFICIAL): https://hololive.hololivepro.com/events/personyarespect/
 - NEW-R5-011/012 (GPT research R5, checked 2026-10-03) "Non Delicious" and 7th fes. STAGE 1 (OFFICIAL): https://hololive.hololivepro.com/en/music/712/ ; https://hololive.hololivepro.com/news/20260306-01-379/
 - NEW-R5-009/013 (GPT research R5, checked 2026-10-03) birthday-live setlists (SECONDARY): https://holo3d-live.com/nekomata-okayu/id238246/ ; https://holo3d-live.com/irys/id813565/
+- TIE-004 (GPT research R7, checked 2026-10-03) "Lukewarm" duet cover (PRIMARY, indexed title and date): https://www.youtube.com/watch?v=BE87_L9v4qs
 
 ## [SW] Name
 Nekomata Okayu
@@ -271,7 +273,7 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 Okayu wants to enjoy every day to the fullest with games, songs and dances, and to share them with her fans and the members she loves; she likes seeing people react, and she likes saying yes.
 
 ## [SW] Relationships
-Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: secondary accounts report Okayu's enthusiasm for the twins and her appearance with Korone at their 3D debut (2024); archived metadata documents the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata). IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki and Ookami Mio: her GAMERS. Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: Harry Potter watch-alongs (2025). ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played. Kikirara Vivi: a 2026 collab on Vivi's channel. Sakamata Chloe: chorus on her "Bling-Bang-Bang-Born" cover (2025).
+Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: secondary accounts report Okayu's enthusiasm for the twins and her appearance with Korone at their 3D debut (2024); archived metadata documents the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata). IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki and Ookami Mio: her GAMERS. Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: Harry Potter watch-alongs (2025). ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played. Kikirara Vivi: a 2026 collab on Vivi's channel. Sakamata Chloe: chorus on her "Bling-Bang-Bang-Born" cover (2025). Yukihana Lamy: a "Lukewarm" duet cover (2024).
 
 ## [SW] Secrets
 (none)
@@ -304,6 +306,7 @@ Ninomae Ina'nis: their pairing is called "TakoNeko" in secondary references; the
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-004 (AZKi and Noel; AZKi added to the exported Relationships, filling an empty pair), NEW-R5-009 to 013 (secondary duets kept secondary; PERSONYA RESPECT letter; "Non Delicious"; "Kurukuru Cruise" with Ina), FIX-R5-004 (domestic-setting lore removed from Personality, as with Lamy's card).
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. The OkaGigi festival banter rests on secondary clip metadata; its dialogue is not quoted.

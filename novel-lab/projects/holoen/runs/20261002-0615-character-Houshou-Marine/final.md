@@ -160,6 +160,7 @@ Public exchanges only.
 | Elizabeth Rose Bloodflame | — | "IT'S LOVE" cover with Elizabeth and Korone for Elizabeth's 2026 birthday (2026-05-12) | [MA5 iwnHChZq0N8] |
 | Nakiri Ayame | 2nd-gen senior | Ayame's card records secondary accounts that she admires Marine; no Marine-side source | [Ayame file, secondary] |
 | AZKi | JP kouhai | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+| Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: a hololive Fantasy concert, a duet with Suisei and a new single
@@ -202,6 +203,7 @@ the writer in Sudowrite 【Sudowrite 處理】.
 ---
 - NEW-R5-003 (GPT research R5, checked 2026-10-03) 7th fes. report (OFFICIAL): https://hololive.hololivepro.com/events/hololivesuperexpo2026/
 - NEW-R5-006/014 (GPT research R5, checked 2026-10-03) Holo Koshien streams (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/dlq2aYuSN_M ; https://ckworks.jp/vinforadar/video/73sl-3cOp2E
+- TIE-039 to 043 (GPT research R7, checked 2026-10-03) New Year Game Festival 2026 Team Bird roster (SECONDARY): https://www.inside-games.jp/article/2026/01/31/176776.html ; https://dengekionline.com/article/202512/61985
 
 ## [SW] Name
 Houshou Marine
@@ -281,6 +283,7 @@ Usada Pekora: hololive Fantasy genmate ("PekoMari," a secondary pair name); in 2
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** no card finding (sheet: VOICE-V3-013); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-003, NEW-R5-006 (AZKi added to the exported Relationships, filling an empty pair), NEW-R5-014 (Holo Koshien with Koyori).
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. Her official profile and wiki include explicit lines; the card keeps them out and leaves explicit material to

@@ -271,6 +271,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 | Kazama Iroha, Takane Lui | JP members | "KoMeHa" with Iroha and Kobo Kanaeru (VALORANT, 2022-06-04); Apex with Lui and Iofi (2022-01-19) | [S1 tGVhLibbYL0, Mory0I9vXtI] |
 | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Nerissa | [Ayame file AY4] |
 | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
+| Shishiro Botan, Yukihana Lamy | JP fifth generation | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
 
 ## Arc
 - **Starting point:** the public persona; on the card date she is a hololive affiliate (regular activities
@@ -351,6 +352,7 @@ by listening; A23 is a machine transcription of archived audio.
 
 ---
 - NEW-R1-018 (GPT research R1, checked 2026-10-03) Kiara–Bijou Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview04/
+- TIE-034/035/036/037/038 (GPT research R7, checked 2026-10-03) Myth × fifth-generation Among Us roster (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=faIzNuhI6jg
 
 ## [SW] Name
 Watson Amelia
@@ -392,7 +394,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Ame wants to crack every case and every game her own way, make entertaining experiments for her Teamates, and help her friends, whether that means fixing their tech, building something new with them or raising money for a good cause.
 
 ## [SW] Relationships
-Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs. Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week. FUWAMOCO: "Detective Dogs" (Escape Simulator, 2024: "blondes can solve any puzzle"). Shiori Novella: a VRChat aquarium visit with "Ame Senpai" (2024). Koseki Bijou: Overwatch and Apex (2023). Gigi Murin: in the ENigmatic Recollection role-play story Gigi's knight Gonathon married Ame's Jyonathan ("ClueChaser," a secondary pair name). Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024). Hakos Baelz: bathroom reviews and a Holoween escape-room behind-the-scenes (2022), and an Apex off-collab (2023). Kazama Iroha: VALORANT with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa"). Takane Lui: Apex with Airani Iofifteen (2022). Nakiri Ayame and Nerissa Ravencroft: 2023 Sports Festival white-team teammates.
+Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs. Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week. FUWAMOCO: "Detective Dogs" (Escape Simulator, 2024: "blondes can solve any puzzle"). Shiori Novella: a VRChat aquarium visit with "Ame Senpai" (2024). Koseki Bijou: Overwatch and Apex (2023). Gigi Murin: in the ENigmatic Recollection role-play story Gigi's knight Gonathon married Ame's Jyonathan ("ClueChaser," a secondary pair name). Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024). Hakos Baelz: bathroom reviews and a Holoween escape-room behind-the-scenes (2022), and an Apex off-collab (2023). Kazama Iroha: VALORANT with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa"). Takane Lui: Apex with Airani Iofifteen (2022). Nakiri Ayame and Nerissa Ravencroft: 2023 Sports Festival white-team teammates. Shishiro Botan and Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
 
 ## [SW] Secrets
 (none)
@@ -502,6 +504,7 @@ Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeS
 - **2026-10-03, workflow research W1 (20261002-1715-research-workflow-SW-EL, GPT xhigh), merged by Claude:** Kronii partner tag shortened to a performable direction ([fond, a little embarrassed]), so every card tag is a performable direction the scene converter accepts from the sheet palette.
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-018 (a song performance with Bijou and Kiara, undated).
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage

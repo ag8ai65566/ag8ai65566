@@ -8,3 +8,4 @@
 - 2026-10-03 23:33 作者裁決收錄 final.md（sha256 fa6bd0e71a89）：Author decision (2026-10-03): task-09 voice audits v1 (Myth, Promise) and v2 (Advent, Justice) merged by Claude; provisional-direction boilerplate, regional accents unassigned without an in-scope listening check, secondary and style-demo labels kept in exported fields
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 0fa64eb8e2f8）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
 - 2026-10-03 23:55 作者裁決收錄 final.md（sha256 e7967ca25a1c）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
+- 2026-10-04 00:03 作者裁決收錄 final.md（sha256 2681e6e65546）：Author decision (2026-10-04): cast-ties research R7 merged by Claude

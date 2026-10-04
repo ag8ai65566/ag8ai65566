@@ -192,6 +192,7 @@ Public exchanges only.
 - NEW-R6-002 (GPT research R6, checked 2026-10-03) Stray&Stay guest credits (ARCHIVE_METADATA): https://tw.yutura.net/channel/35550/video/cI535pJp-TQ/
 - NEW-R6-003 (GPT research R6, checked 2026-10-03) Shishiro Cup announcement (OFFICIAL): https://hololivepro.com/news/20260202-01-271/
 - NEW-R6-004 (GPT research R6, checked 2026-10-03) "Watcha Gatcha!!!!!!!!" (OFFICIAL): https://hololive.hololivepro.com/en/music/801/
+- TIE-034/035/036/037/038 (GPT research R7, checked 2026-10-03) Myth × fifth-generation Among Us roster (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=faIzNuhI6jg
 
 ## [SW] Name
 Shishiro Botan
@@ -233,7 +234,7 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 In her lore, Botan is a laid-back lion who would rather laze around. As a streamer she wants her viewers and fellow members to have a fun, well-run time; her official persona emphasizes following through once she commits.
 
 ## [SW] Relationships
-Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror "dates" where Botan stays calm and teases Lamy. Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo. Takane Lui: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (secondary); Left 4 Dead 2 (2022) and Overwatch 2 (2023) together. La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026). La+ Darknesss and Hoshimachi Suisei: holoGTA and, with Shirakami Fubuki, the m HOLD'EM poker collaboration (2024); Nakiri Ayame: holoGTA (2024). IRyS: Left 4 Dead 2 with Lui and Korone (2022) and an Overwatch 2 team with Lui, Sakamata Chloe and Tokoyami Towa (2023). Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu" (secondary). Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label. Mori Calliope: HOLOYOI #03 with Oozora Subaru (2023). Hakos Baelz: BAE-GEMITE DOMINATION #2 with Subaru (2023). Ninomae Ina'nis: a guest at Ina's birthday 3D live "EVERMORE" (2025), singing "storia" with Ina and Watame per a secondary set list. Nerissa Ravencroft: a guest at her birthday 3D live "Stray&Stay" (2026).
+Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror "dates" where Botan stays calm and teases Lamy. Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo. Takane Lui: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (secondary); Left 4 Dead 2 (2022) and Overwatch 2 (2023) together. La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026). La+ Darknesss and Hoshimachi Suisei: holoGTA and, with Shirakami Fubuki, the m HOLD'EM poker collaboration (2024); Nakiri Ayame: holoGTA (2024). IRyS: Left 4 Dead 2 with Lui and Korone (2022) and an Overwatch 2 team with Lui, Sakamata Chloe and Tokoyami Towa (2023). Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu" (secondary) and an Among Us co-player in the Myth × fifth-generation collab (2020), with Watson Amelia. Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label. Mori Calliope: HOLOYOI #03 with Oozora Subaru (2023). Hakos Baelz: BAE-GEMITE DOMINATION #2 with Subaru (2023). Ninomae Ina'nis: a guest at Ina's birthday 3D live "EVERMORE" (2025), singing "storia" with Ina and Watame per a secondary set list. Nerissa Ravencroft: a guest at her birthday 3D live "Stray&Stay" (2026).
 
 ## [SW] Secrets
 (none)
@@ -262,6 +263,7 @@ Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; secondary accounts describe
 - **2026-10-03, task-09 voice audit (20261002-1657-check-QA-voice-v3, GPT xhigh), merged by Claude:** VOICE-V3-014 propagated to Voice & Delivery (sheet: VOICE-V3-014); the Audio Tags opening and the sheet's §1 heading were harmonized with the provisional-direction wording that VOICE-V2-001 set for the EN cast. Dispositions are in research/qa/voice-audit-dispositions.md.
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
 - **2026-10-03, new-material research R6 (20261002-1715-research-new-R6-JP2, GPT xhigh), merged by Claude:** NEW-R6-001 to 004 (ShishiDori Cup, Nerissa at Stray&Stay, now in the exported Relationships and filling an empty pair; La+ in the Shishiro Cup; "Watcha Gatcha!!!!!!!!").
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. "Apex Predators" (with Gura) is a secondary-listed pair label; no Gura stream naming Botan was found in the

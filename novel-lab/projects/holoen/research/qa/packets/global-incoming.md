@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git a2ead9c.
+Snapshot: git 3bd6202.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|SUPER EXPO|EN concert|world tour|the merger|aftertalk|Holodeath|PavoNashi|HOLOTORI|IRySora|K.I.R.A|HoloJEI|MoRikka|3D live|soranii|KoMeHa|UMISEA|OKFAIR|V3LVET|LYRA)(
+Matched names: loEN's later generations|hololive History 2023-2026|hololive History to 2022|Concerts and Live Events|VTuber Persona and Lore|recent hololive history|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|world tour|the merger|SUPER EXPO|EN concert|Holodeath|aftertalk|PavoNashi|HOLOTORI|IRySora|3D live|MoRikka|HoloJEI|K.I.R.A|soranii|V3LVET|UMISEA|OKFAIR|KoMeHa|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -134,7 +134,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/characters/IRyS.md › Background Timeline`: | 2025-03-15/16 | Birthday: "DIAMOND GIRLFRIEND," EP "YaBAI," 3D live "HOPE UPON A STAR" | [Observed R2 §2025; R3] |
 - `bible/characters/IRyS.md › Background Timeline`: | 2026-03 | Birthday live "Racing Towards Hope"; "BE MY FLAME"; solo album "DANGERyS" and solo concert announced | [Observed R2 §2026; R3] |
 - `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise unitmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
-- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 
 ### from Kazama Iroha
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa").
@@ -245,7 +245,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Takanashi Kiara | Myth senior ("HoloEU" with Cecilia; secondary) | An Italian lesson (2024), a proposed outfit for Kiara on her "Raora's Clawset" art stream (2025-01-26; not a released Kiara model), an EU-snacks off-collab (2025); the "Doom" meme in Kiara's collab; "What an amazing swing" with Watame at Serendipity (2026) Their Pokémon FireRed/LeafGreen Soul-Link Nuzlocke (2026-06-21 to 09-24) couples their losses: a fainted Pokémon removes its linked partner, and a failed catch costs both players the encounter; Raora's September title has them one critical hit from disaster. | [Observed RP3, RP7] [Official RP9] [Archive metadata NEW-R4-015] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Tsunomaki Watame (JP) | JP senior | "What an amazing swing" with Kiara at Serendipity (2026) | [Official RP9] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Nerissa Ravencroft, Moona Hoshinova | Seniors ("V3LVET," secondary) | Clubhouse Games with Nerissa (2024-12-09); Raft with both (2025-02-06); Monster Hunter Wilds as V3LVET (Nerissa's title, 2025-03-25) Raora co-presented the official Serendipity merchandise infomercial with Nerissa and IRyS (May 2026). | [Observed RP2, RP3; Nerissa archive] [Archive metadata NEW-R4-016] |
-- `bible/characters/Raora-Panthera.md › Relationship Map`: | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
 - `bible/characters/Raora-Panthera.md › Arc`: - **Starting point:** active at the 2026 baseline: her first birthday live, Serendipity with FUWAMOCO, Pokémon, Pragmata and Hytale streams.
 - `bible/characters/Raora-Panthera.md › Hard Facts`: - 3D showcase 2025-08-09 PDT. Official music list: "Gacha×Gacha ADVENTURE!" and "Draw" (Draw's premiere and release dates not yet established). Serendipity unit: B.F.F with FUWAMOCO.
 

@@ -1,9 +1,9 @@
 # Audit packet: myth4 (incoming claims)
 
-Snapshot: git a2ead9c.
+Snapshot: git 3bd6202.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Kiara and Ina|Drawn to Dawn|Ina and Kiara|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|Ina and Kiara|Kiara and Ina|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ninomae Ina'nis and Kronii: R.E.P.O.
@@ -17,6 +17,10 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Kiara and Ina|Dr
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Ninomae Ina'nis | Senior; a joking rival (secondary accounts) | Stranger of Paradise (2025); Rabbit and Steel with Bijou and Gigi (2024); "SHALLYS" on stage She framed a May 2026 music-making stream as preparing a tune for her rival's approaching birthday (title wording; Ina's participation not established). | [Observed CI2, CI3] [Official CI5] [Archive metadata NEW-R4-011] |
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | FUWAMOCO (both twins) | Advent | With Gigi, guest-hosted FUWAMOCO MORNING #167 (secondary); "SHALLYS" with Ina at -All for One-; the twins had hoped for a robot-maid member before she debuted | [Observed CI2; Mococo file] [Official CI5] |
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Nekomata Okayu, Hoshimachi Suisei, Nakiri Ayame | JP seniors | Listed with Ina and IRyS among the members of Okayu's 2025 New Year Game Festival team (archived team listing) | [Okayu file OK4] [Ayame file AY5] |
+
+### from Elizabeth Rose Bloodflame
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Ninomae Ina'nis: co-players in Mumei's cross-branch Gartic Phone (2025).
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Ninomae Ina'nis | Myth senior | Co-players in Mumei's Gartic Phone EN + ID + JP, Day 2 (2025-04-14). | [Archive metadata TIE-014] |
 
 ### from Fuwawa Abyssgard
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.

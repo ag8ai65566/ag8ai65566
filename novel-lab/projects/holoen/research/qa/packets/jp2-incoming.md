@@ -1,13 +1,13 @@
 # Audit packet: jp2 (incoming claims)
 
-Snapshot: git a2ead9c.
+Snapshot: git 3bd6202.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Kiara|Shirogane Noel|Shishiro Botan|Houshou Marine|Botan and IRyS|Yukihana Lamy|Kikirara Vivi|Noel-danchou|Lamy and Ina|Noel Deluxe|Shishiron|Lamy-mama|Shishiro|綺々羅々ヴィヴィ|Danchou|Senchou|Maririn|Danchō|Senchō|Sencho|Marine|Botan|白銀ノエル|雪花ラミィ|獅白ぼたん|宝鐘マリン|Noel|Lamy|Wamy|Vivi)(
+Matched names: el and Calliope|Vivi and FUWAMOCO|JP Senpai Pairs 2|Marine and Kiara|Houshou Marine|Shishiro Botan|Shirogane Noel|Botan and IRyS|Yukihana Lamy|Kikirara Vivi|Lamy and Ina|Noel-danchou|Noel Deluxe|Lamy-mama|Shishiron|綺々羅々ヴィヴィ|Shishiro|Senchou|Danchou|Maririn|Senchō|Sencho|Marine|Danchō|白銀ノエル|獅白ぼたん|雪花ラミィ|Botan|宝鐘マリン|Vivi|Lamy|Wamy|Noel)(
 
 ### from AZKi
-- `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy"
-- `bible/characters/AZKi.md › [SW] Relationships`: (2025; secondary references), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
+- `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
+- `bible/characters/AZKi.md › [SW] Relationships`: (2025), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
 - `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
 - `bible/characters/AZKi.md › [SW] Relationships`: Houshou Marine: AZKi supplied soothing commentary for Marine's Holo Koshien stream (2026).
 - `bible/characters/AZKi.md › [SW] Relationships`: Kikirara Vivi: GeoGuessr on Vivi's channel (2026).
@@ -40,10 +40,12 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/Gawr-Gura.md › [SW] Background`: Her lore, which she played for laughs, is a persona, not literal: a descendant of the Lost City of Atlantis who swam to land because it was "so boring down there," bought her clothes and shark hat in the human world, and talks to marine life.
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Houshou Marine: UMISEA and "SHINKIRO"
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Shishiro Botan: "Apex Predators," a secondary pair name.
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
 - `bible/characters/Gawr-Gura.md › Background Timeline`: | Lore | Descendant of Atlantis (now ruins); swam to land because it was "so boring down there"; bought her clothes at a beachside store, paying in seashells; talks to marine life | [Official G1] [Observed G2 §Lore] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | La+ Darknesss, Kazama Iroha, Shishiro Botan | JP members | HOLO ENGLISH LESSON #02 with La+ and Iroha (Calli's stream, 2022-03-04); "Apex Predators," a wiki-listed pair name with Botan | [S1 X492n37brRU] [Botan file, secondary] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Houshou Marine, Sakamata Chloe | UMISEA (official 2023 roster: Aqua, Marine, Chloe, Gura, Ina) | "SHINKIRO" with Marine (anime MV on Marine's channel, 2023-11-12, credited to both; the "GuraMarine" pair name is wiki-listed only) | [Marine file MA4 9ehwhQJ50gs] [Official UMISEA roster] |
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | Yukihana Lamy | JP fifth generation | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
 
 ### from Hakos Baelz
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Houshou Marine: Mario Kart (2021) and Calli's house party (2023); Bae and Mumei played "Truth of Beauty Witch," the horror game featuring Marine.
@@ -118,7 +120,9 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: English-lesson guests Marine, AZKi, La+, Iroha, Lui and Chloe (2022); HOLOYOI guests Lui, Chloe, Noel and Botan (2023).
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Shishiro Botan | JP seniors | HOLO ENGLISH LESSON #01 with Marine, Ina and Fubuki (2022-02-19); Mario Kart with Marine, Bae and Reine (2021-12-25); a house-party off-collab with Marine and Bae and a playthrough of Marine's horror game (2023-08-14); HOLOYOI #02 with Noel and Flare (2023-04-20) and #03 with Botan and Subaru (2023-05-18) | [S1 bfUEbp3xk4o, Tpzbfccp_ZM, DY5VThfehW8, Mf-sAjsuSig, wyrLR1CC1Co, EatMZc1N3VM] |
+- `bible/characters/Mori-Calliope.md › Relationship Map`: | Yukihana Lamy | JP fifth generation | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
 
 ### from Nakiri Ayame
 - `bible/characters/Nakiri-Ayame.md › [SW] Relationships`: Houshou Marine: a third-generation junior whom secondary accounts say Ayame admires.
@@ -138,10 +142,12 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Houshou Marine: gave her the nickname "Okanyan."
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Kikirara Vivi: a 2026 collab on Vivi's channel.
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Yukihana Lamy: a "Lukewarm" duet cover (2024).
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Houshou Marine | — | Marine gave her the nickname "Okanyan" (official profile); a joint marshmallow-reading stream on her recommended list | [Official OK1] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hoshimachi Suisei | "MOMAS" | With Sakura Miko, Houshou Marine and Hiodoshi Ao; PlateUp! on her 2025 team | [OK2] [OK4] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Kikirara Vivi | — | A 2026-08-25 collab on Vivi's channel framed around やーらし. | [Archive metadata, ckworks jlt6HHrZnpE] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Yukihana Lamy | JP kouhai | A "Lukewarm" duet cover on Okayu's channel (2024-02-01). | [Member-upload title TIE-004] |
 
 ### from Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Houshou Marine: one of her oshis (secondary); Mario Party Superstars with FUWAMOCO (2024).
@@ -155,7 +161,7 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine and Sakamata Chloe: UMISEA.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Yukihana Lamy: a Minecraft festival and "date"-billed collab (2021) and a "Pleides" guest (2024).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shishiro Botan: an "EVERMORE" guest (2025).
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel, Kikirara Vivi and Elizabeth Rose Bloodflame: Mumei's Gartic Phone (2025).
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Houshou Marine | JP senior; UMISEA (official 2023 roster) | Admired artist-performer ("Marine-senpai," 2022 interview, not reopened in review); Marine guested at "Pleides" (2024) | [Observed—published interview I18] [Official UMISEA roster] [S1 3n9igJnSXtQ] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Yukihana Lamy, Shishiro Botan, Kikirara Vivi, Shirogane Noel | JP members | Lamy: the Minecraft "Usaken Summer Festival" (2021-06-27), an EN-server "date" (2021-10-20) and a guest at "Pleides" (2024-12-28); Botan: a guest at "EVERMORE" (2025-05-21); Vivi: R.E.P.O. (2025-06-02); Noel and Vivi: Mumei's Gartic Phone (2025-04-14) | [S1 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ, I-J11Da5ONY, grBU9Dl09Ds, OMDzBQohAf8] |
@@ -163,6 +169,9 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 ### from Ouro Kronii
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kikirara Vivi and Shirogane Noel: Mumei's Gartic Phone (2025).
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) (archived upload credits) | [S1 zp5nxAgi2dw, OMDzBQohAf8] |
+
+### from Raora Panthera
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | Yukihana Lamy, Houshou Marine | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### from Sakamata Chloe
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Houshou Marine: UMISEA (official 2023 roster) and holoWitches.
@@ -174,12 +183,16 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Shishiro Botan | — | An Overwatch 2 team with IRyS, Lui and Towa (2023) | [CH5] |
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | The ocean unit's official 2023 roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/] |
 
+### from Shiori Novella
+- `bible/characters/Shiori-Novella.md › Relationship Map`: | Yukihana Lamy, Houshou Marine | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
+
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Shishiro Botan: fellow builders in Botan's Minecraft "Usada Kensetsu"
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: HOLOTALK guests include Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ ("Glow in the Dark"), Chloe ("WILDCARD"), Koyori ("MIRAGE") and Iroha (a guest at her 2024 and 2025 lives).
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Oozora Subaru | JP seniors | Early HOLOTALK guest (Marine); first EN×JP collab (Subaru, 2020) | [Observed T2 §2020, secondary] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Shirogane Noel | JP seniors | HOLOTALK's first guest Marine ("#marinarasauce," 2020-11-20) and 22nd guest Noel (2022-03-05); a "MIRAGE" dance short with Marine (2024) | [S1 3HwaqbdKO1s, toe_PmrDWBU, tzVgzvV0cVo] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Shishiro Botan | JP senpai | A fellow builder in Botan's Minecraft "Usada Kensetsu"; she joined the Usaken summer-festival planning and building collab (2021-06-07), and contemporary viewers describe Botan checking on Kiara's building team. | [Archive metadata NEW-R1-009; secondary clip record] |
+- `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Yukihana Lamy | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### from Takane Lui
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Shishiro Botan: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (2023, archived title); Left 4 Dead 2 with IRyS and Korone (2022); Blue Journey.
@@ -188,6 +201,10 @@ Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Ki
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Shishiro Botan | "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame | A Minecraft collab under that name (2023-04-18, archived title on Botan's channel); Left 4 Dead 2 with IRyS and Korone (2022); the 2023 Overwatch 2 team; Blue Journey (official roster) | [LU2] [Botan file 4-NEM2HrUVA, K1wStJxm4F0] [Blue Journey roster] |
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Houshou Marine, Shirogane Noel | Bara☆Dice (Bandai credits, with Flare, Nene and Iroha); Blue Journey (official roster) | The wiki's "SSS" with Yuzuki Choco was not found in the archive titles | [LU2] [Bandai credits] [Blue Journey roster] |
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Yukihana Lamy | NePoX | NePoLaBo × holoX events (2026) | [Lamy file] |
+
+### from Watson Amelia
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Shishiro Botan and Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Shishiro Botan, Yukihana Lamy | JP fifth generation | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › [SW] Description`: Beyond EN: Bijou and Kaela Kovalskia's Grindstone collabs include Raft, Minecraft and Split Fiction; Vestia Zeta and Shiori are the official duo GreyScaleX ("Purrfect Pair" merchandise, 2026); Pavolia Reine and Airani Iofi join Shiori and Gigi in the "Fanfic Club"; FUWAMOCO's oshi are Houshou Marine and Omaru Polka.

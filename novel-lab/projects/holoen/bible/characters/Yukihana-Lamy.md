@@ -145,6 +145,9 @@ Public exchanges only.
 | Ninomae Ina'nis | — | A Minecraft festival appearance and a Minecraft collab billed as a "date" (2021); a guest at Ina's "Pleides" 3D live (2024) | [LM5 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ] |
 | Hakos Baelz | EN (Promise) | Co-credited singers on the hololive Dreams theme "PARADISE!" (MV 2026-09-28; seven singers); a shared recording project. | [Secondary, dengekionline 202609/89494] |
 | Kikirara Vivi | — | Lamy hosted the 2026-01-15 information programme where Vivi commentated (secondary report). | [Secondary, appbank] |
+| Nekomata Okayu | JP senior | A "Lukewarm" duet cover on Okayu's channel (2024-02-01). | [Member-upload title TIE-004] |
+| Gawr Gura, Watson Amelia, Mori Calliope | Myth | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
+| Takanashi Kiara, Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: six years in, a ninth original song out and a first album
@@ -185,6 +188,10 @@ Public exchanges only.
 - NEW-R5-005 (GPT research R5, checked 2026-10-03) #あずらみころ stream record (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/SEuGEowBpCA
 - NEW-R5-018/019 (GPT research R5, checked 2026-10-03) "HATSUKOI DAISENSOU" (OFFICIAL): https://hololive.hololivepro.com/en/music/706/ ; 7th fes. STAGE 1 (OFFICIAL): https://hololive.hololivepro.com/news/20260306-01-379/
 - NEW-R5-020/FIX-R5-003 (GPT research R5, checked 2026-10-03) NePoX post-event release (organizer report, SECONDARY): https://prtimes.jp/main/html/rd/p/000004030.000064643.html ; album announcement (OFFICIAL): https://hololive.hololivepro.com/news/20260815-02-82/
+- TIE-004 (GPT research R7, checked 2026-10-03) "Lukewarm" duet cover (PRIMARY, indexed title and date): https://www.youtube.com/watch?v=BE87_L9v4qs
+- TIE-034/035/036/037/038 (GPT research R7, checked 2026-10-03) Myth × fifth-generation Among Us roster (ARCHIVE_METADATA): https://archive.ragtag.moe/watch?v=faIzNuhI6jg
+- TIE-039 to 043 (GPT research R7, checked 2026-10-03) New Year Game Festival 2026 Team Bird roster (SECONDARY): https://www.inside-games.jp/article/2026/01/31/176776.html ; https://dengekionline.com/article/202512/61985
+- COR-002/003 (GPT research R7, checked 2026-10-03) KoZMy "Ai♡Scream!" cover (PRIMARY indexed; ARCHIVE_METADATA): https://www.youtube.com/watch?v=Mz2csaOL8Ho ; https://ckworks.jp/vinforadar/video/Mz2csaOL8Ho
 
 ## [SW] Name
 Yukihana Lamy
@@ -226,7 +233,7 @@ Proposed ElevenLabs v4 performance directions for an original designed voice; ne
 In her lore, hololive's streams made Lamy smile, and she wants to pass that on. As a streamer she wants to take on every challenge, give hololive a boost, stand on stage with her senpai and keep her Yukimin company.
 
 ## [SW] Relationships
-Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror runs where Lamy is scared and Botan stays calm. Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo (a 3D party, 2026); "Magamaga's" with Nene (secondary). AZKi: "KoZMy" with Hakui Koyori, and "KALAZ" with Amane Kanata (secondary). Hakui Koyori: KoZMy (2025) and a March 2026 off-collab titled to name their duo. Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone (archived metadata), and Blue Journey; Marine is also in holoWitches. La+ Darknesss, Takane Lui, Kazama Iroha and Hakui Koyori: NePoX, the 2026 NePoLaBo × holoX events. Ninomae Ina'nis: a Minecraft festival and a Minecraft collab billed as a "date" (2021), and a guest at Ina's 3D live "Pleides" (2024). Sakamata Chloe (affiliate): Rust with Amane Kanata (2022).
+Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror runs where Lamy is scared and Botan stays calm. Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo (a 3D party, 2026); "Magamaga's" with Nene (secondary). AZKi: her KoZMy cover partner with Hakui Koyori on "Ai♡Scream!" (2025); also "KALAZ" with Amane Kanata (secondary). Hakui Koyori: KoZMy (2025) and a March 2026 off-collab titled to name their duo. Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone (archived metadata), and Blue Journey; Marine is also in holoWitches. La+ Darknesss, Takane Lui, Kazama Iroha and Hakui Koyori: NePoX, the 2026 NePoLaBo × holoX events. Ninomae Ina'nis: a Minecraft festival and a Minecraft collab billed as a "date" (2021), and a guest at Ina's 3D live "Pleides" (2024). Sakamata Chloe (affiliate): Rust with Amane Kanata (2022). Nekomata Okayu: a "Lukewarm" duet cover (2024). Gawr Gura, Watson Amelia and Mori Calliope: co-players in the Myth × fifth-generation Among Us collab (2020).
 
 ## [SW] Secrets
 (none)
@@ -255,6 +262,7 @@ Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describ
 - **2026-10-03, new-material research R2 (GPT xhigh), merged by Claude:** "PARADISE!" co-credit with Bae propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-005, 018 to 020; FIX-R5-003 (NePoX recorded as held, 2026-09-26/27, from the organizer's report).
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. Resolved: both are kept, "Lamyoohoo!" as the official greeting and "Konlamy desu" as a labelled secondary

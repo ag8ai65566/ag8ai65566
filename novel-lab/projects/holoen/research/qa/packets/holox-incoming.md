@@ -1,15 +1,15 @@
 # Audit packet: holox (incoming claims)
 
-Snapshot: git a2ead9c.
+Snapshot: git 3bd6202.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Kazama Iroha|Hakui Koyori|Gozaru-chan|ラプラス・ダークネス|Takane Lui|Iroha-dono|秘密結社holoX|Kura-tan|Sakamata|Lui Lui|Koyorin|Lui-nee|Gozaru|Koyori|Laplus|沙花叉クロヱ|Iroha|Chloe|holoX|博衣こより|風真いろは|Kuroe|ルイルイ|Koyo|鷹嶺ルイ|Lui|La+)(
+Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Kazama Iroha|Hakui Koyori|Gozaru-chan|Takane Lui|ラプラス・ダークネス|Iroha-dono|秘密結社holoX|Sakamata|Kura-tan|Koyorin|Lui Lui|Lui-nee|Koyori|Laplus|Gozaru|沙花叉クロヱ|Kuroe|博衣こより|holoX|風真いろは|Iroha|Chloe|ルイルイ|鷹嶺ルイ|Koyo|La+|Lui)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
 - `bible/characters/AZKi.md › [SW] Relationships`: Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025).
-- `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy"
-- `bible/characters/AZKi.md › [SW] Relationships`: (2025; secondary references), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
+- `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
+- `bible/characters/AZKi.md › [SW] Relationships`: (2025), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
 - `bible/characters/AZKi.md › [SW] Relationships`: Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024).
 - `bible/characters/AZKi.md › [SW] Relationships`: La+ Darknesss: GeoGuessr for Tochigi Day and other games (2025).
 - `bible/characters/AZKi.md › Behavioral Traits`: 4. Dances other members' songs in her shorts (Calli's "Orpheus," 2025-10-09, archived metadata lXLBb9IVraI; in 2026 Laplus, Towa and Nene, Miko, Koyori, Riona, Lui, Zeta). [Observed AZ4 titles]
@@ -170,7 +170,7 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 ### from Yukihana Lamy
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: She sang in the "Blue Journey" project with Marine, Noel, Koyori and Sakura Miko (2023), joined "Magical Girl holoWitches!"
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi.
-- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: "KoZMy" with Hakui Koyori, and "KALAZ" with Amane Kanata (secondary).
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: her KoZMy cover partner with Hakui Koyori on "Ai♡Scream!"
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Hakui Koyori: KoZMy (2025) and a March 2026 off-collab titled to name their duo.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: La+ Darknesss, Takane Lui, Kazama Iroha and Hakui Koyori: NePoX, the 2026 NePoLaBo × holoX events.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Sakamata Chloe (affiliate): Rust with Amane Kanata (2022).

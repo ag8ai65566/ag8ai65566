@@ -13,3 +13,4 @@
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 32c1cb69a479）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
 - 2026-10-03 23:55 作者裁決收錄 final.md（sha256 aa37f6305183）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
 - 2026-10-03 23:56 作者裁決收錄 final.md（sha256 5ebb3348980c）：Author decision (2026-10-03): new-material research R3/R4 (Advent, Justice) merged by Claude
+- 2026-10-04 00:03 作者裁決收錄 final.md（sha256 b64f7c9ebf69）：Author decision (2026-10-04): cast-ties research R7 merged by Claude

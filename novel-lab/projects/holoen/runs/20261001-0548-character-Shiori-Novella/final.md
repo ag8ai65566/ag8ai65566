@@ -186,6 +186,7 @@ partners, so the cast's channels and the wiki fill in.
 | Airani Iofi (ID), Pavolia Reine (ID) | "Fanfic Club" with Gigi | Monster Hunter Wilds with Iofi and Jurard (2025) | [Observed SN2; SN3] |
 | Machina X Flayon, Jurard T Rexford, Regis Altare (HOLOSTARS EN) | Friends ("Goth Pilot" with Machina) | Smash Bros. with Machina (2025); R.E.P.O. (2025); The Dark Pictures: Little Hope (2026) | [Observed SN2; SN3] |
 | Inugami Korone | JP senior | No eligible shared activity is established by the cited source. | [Observed SN2 §Background, secondary] |
+| Yukihana Lamy, Houshou Marine | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ## Arc
 - **Starting point:** active member at the 2026 baseline: her first original song, the Serendipity duo with
@@ -236,6 +237,7 @@ partners, so the cast's channels and the wiki fill in.
 - NEW-R3-004 (GPT research R3, checked 2026-10-03) post-concert Q&A (SECONDARY, attributed answers): https://hololivetoday.com/news-list/hololive-today-q-and-a-hololive-english-serendipity
 - NEW-R3-005 (GPT research R3, checked 2026-10-03) hololive Dreams event announcement (OFFICIAL partner press release): https://www.einpresswire.com/article/943860924/hololive-dreams-in-game-event-a-dreamy-summer-escape-begins-september-19
 - FIX-R3-001/002 (GPT research R3, checked 2026-10-03) "Monsters and Men" catalog (OFFICIAL): https://hololive.hololivepro.com/music/713/
+- TIE-039 to 043 (GPT research R7, checked 2026-10-03) New Year Game Festival 2026 Team Bird roster (SECONDARY): https://www.inside-games.jp/article/2026/01/31/176776.html ; https://dengekionline.com/article/202512/61985
 
 ## [SW] Name
 Shiori Novella
@@ -316,6 +318,7 @@ Nerissa Ravencroft: Advent genmate and partner in the performed ShioRaven "wife"
 - **2026-10-03, task-09 voice audit (20261002-0755-check-QA-voice-v2, GPT xhigh), merged by Claude:** applied VOICE-V2-001, VOICE-V2-002, VOICE-V2-011, VOICE-V2-014, VOICE-V2-017, VOICE-V2-037 to this card (provisional-direction boilerplate; regional accent unassigned pending an in-scope listening check; secondary or style-demo labels kept in exported fields), with the matching sheet edits; dispositions in research/qa/voice-delivery.md.
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** a cross-card line propagated from Myth research (dossier Relationship Map).
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** NEW-R3-001 (Advent 2026 releases), NEW-R3-002/003 (written address and audience care), NEW-R3-004 (MC comedy as a highlight), NEW-R3-005 ("Glitch Through"), FIX-R3-001/002 ("Monsters and Men" digital release 2026-02-16, in Background and the timeline).
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. The sampled 2026 windows include a showcase with trailer audio and a co-op stream with viewers; counts are

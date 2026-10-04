@@ -17,3 +17,4 @@
 - 2026-10-03 23:53 作者裁決收錄 final.md（sha256 af0dc8c1e8a7）：Author decision (2026-10-03): new-material research R2 (Promise) merged by Claude
 - 2026-10-03 23:56 作者裁決收錄 final.md（sha256 7e6a467f1590）：Author decision (2026-10-03): new-material research R3/R4 (Advent, Justice) merged by Claude
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 90f7f1ca42c2）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
+- 2026-10-04 00:03 作者裁決收錄 final.md（sha256 868c53e2e031）：Author decision (2026-10-04): cast-ties research R7 merged by Claude

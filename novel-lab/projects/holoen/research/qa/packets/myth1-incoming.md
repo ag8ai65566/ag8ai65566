@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git a2ead9c.
+Snapshot: git 3bd6202.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Mori Calliope|Calliope Mori|Last Writes|Miss Mori|Kawaiiope|TakaMori|Takamori|Mor Mori|CHADCast|Calliope|CallioP|Calli|森カリオペ|Mowi|Mori|LYRA)(
+Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Calliope Mori|Cori Malliope|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|Mor Mori|Takamori|Calliope|TakaMori|CHADCast|CallioP|Calli|森カリオペ|Mowi|Mori|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -19,6 +19,10 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Mori 
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Tsunomaki Watame (JP) and Mori Calliope: "Cloudy Sheep" at Serendipity.
 - `bible/characters/Cecilia-Immergreen.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice, "CCGG MADNESS" as Autofister with Gigi, "Break It Down" with Vestia Zeta and Shiori, "Cloudy Sheep" with Tsunomaki Watame and Calli (day 1); "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official CI4, CI8] |
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Tsunomaki Watame (JP), Mori Calliope | Cross-branch; senior | "Cloudy Sheep" at Serendipity (2026) | [Official CI8] |
+
+### from Ceres Fauna
+- `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Mori Calliope: her five-player Dota 2 collab with Bijou, Nerissa and Kobo (2024).
+- `bible/characters/Ceres-Fauna.md › Relationship Map`: | Mori Calliope | Myth senior | Her five-player Dota 2 session "FULL STACK FULL CHAOS" with Calli, Bijou, Nerissa and Kobo (2024-01-27 JST). | [Member upload, indexed TIE-010] |
 
 ### from Elizabeth Rose Bloodflame
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Background`: She debuted first of her generation on 2024-06-21 (PDT) in hololive English -Justice-, held her 3D showcase on 2025-08-01 (PDT), sang at the 2025 English concert ("ALiCE&u" with Nerissa and Ayunda Risu, a solo "Stellar Stellar," and the day-two opener "START AGAIN" with Calli, IRyS and Nerissa), invited guests from several branches to her 2026 birthday live, and at the 2026 Serendipity concert sang "HELP!!" with Kobo Kanaeru and Hakos Baelz and formed the unit Bloodraven with Nerissa Ravencroft ("Cruel Angel's Thesis").
@@ -248,6 +252,10 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Mori 
 - `bible/characters/Watson-Amelia.md › Voice Profile`: - Measured (A23; Mario, VALORANT and 2024 chat windows, with game audio mixed in): median pitch about 248–276 Hz; about 114–133 words per minute of speech. For comparison only, Calli's chat windows measured 161–186 and Ina's 81–95. Sample results; they do not establish a general ranking. [ASR A23]
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Mori Calliope | Myth genmate | Clubhouse 51 games [Observed A20]. [Unverified, title only: a surprise "ara ara" scare] | [A20; A6 clip title] |
+
+### from Yukihana Lamy
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Gawr Gura, Watson Amelia and Mori Calliope: co-players in the Myth × fifth-generation Among Us collab (2020).
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Gawr Gura, Watson Amelia, Mori Calliope | Myth | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › [SW] Other Names`: ShioRaven, Goth Rock, Pen Pups, JewelBird, Diamond Dogs, Sound Hounds, Grindstone, GAGA, FUWAMOCALLI, Rocku Wawa, GreyScaleX, Last Writes

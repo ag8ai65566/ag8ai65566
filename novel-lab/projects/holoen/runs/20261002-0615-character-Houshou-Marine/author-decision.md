@@ -3,3 +3,4 @@
 - 2026-10-03 23:36 作者裁決收錄 final.md（sha256 6faafe4d0552）：Author decision (2026-10-03): task-09 voice audit v3 (JP nine) merged by Claude; stitched quotes split into separate ASR excerpts, secondary labels carried into exported fields, provisional-direction wording harmonized
 - 2026-10-03 23:53 作者裁決收錄 final.md（sha256 12ca48af1d2b）：Author decision (2026-10-03): new-material research R2 (Promise) merged by Claude
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 6d46cd8876b6）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
+- 2026-10-04 00:03 作者裁決收錄 final.md（sha256 aefe9a816d29）：Author decision (2026-10-04): cast-ties research R7 merged by Claude

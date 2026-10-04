@@ -179,8 +179,9 @@ Pairs."
 | Mori Calliope | Myth senior | Elden Ring Nightreign with Gigi (2025-06-11) | [Observed RP3 AnvhW-eFatE] |
 | Nerissa Ravencroft, Moona Hoshinova | Seniors ("V3LVET," secondary) | Clubhouse Games with Nerissa (2024-12-09); Raft with both (2025-02-06); Monster Hunter Wilds as V3LVET (Nerissa's title, 2025-03-25) Raora co-presented the official Serendipity merchandise infomercial with Nerissa and IRyS (May 2026). | [Observed RP2, RP3; Nerissa archive] [Archive metadata NEW-R4-016] |
 | Akai Haato, Vestia Zeta, Anya Melfissa | JP and ID seniors | Clubhouse Games with Haachama; a Mario Party off-collab with Zeta and Haachama; a public off-collab with Anya (2025; archived video w30OQWD6AEw) | [Observed RP3] |
-| Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
+| Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
 | Takane Lui | holoX senior | An animated "Soar" short on Raora's channel (2026-06-22) | [S1 N8bfOiPot6o] |
+| Yukihana Lamy, Houshou Marine | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: her first birthday live, Serendipity with FUWAMOCO, Pokémon,
@@ -236,6 +237,8 @@ Pairs."
 - NEW-R4-015 (GPT research R4, checked 2026-10-03) Soul-Link opening and September episode (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/foL47AjE7yM ; https://ckworks.jp/vinforadar/video/m7fX9PYU5-A
 - NEW-R4-016 (GPT research R4, checked 2026-10-03) merchandise infomercial credits (ARCHIVE_METADATA, official channel): https://ckworks.jp/vinforadar/video/ew00E7t4Dow
 - NEW-R4-017 (GPT research R4, checked 2026-10-03) "Draw." MV and release (ARCHIVE_METADATA; OFFICIAL): https://archive.ragtag.moe/watch?v=uKYxf3wfwP4 ; https://hololive.hololivepro.com/en/music/747/
+- TIE-039 to 043 (GPT research R7, checked 2026-10-03) New Year Game Festival 2026 Team Bird roster (SECONDARY): https://www.inside-games.jp/article/2026/01/31/176776.html ; https://dengekionline.com/article/202512/61985
+- COR-004 (GPT research R7, checked 2026-10-03) #BaeTV24 segment and original Part 2 (PRIMARY title; ARCHIVE_METADATA): https://www.youtube.com/watch?v=Vb94AGQmsOM ; https://ckworks.jp/vinforadar/video/RhN9-mCDUoU
 
 ## [SW] Name
 Raora Panthera
@@ -332,6 +335,7 @@ FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu 
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** "Freaky Deaky Love" with Bijou propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** NEW-R4-015 (Soul-Link with Kiara), NEW-R4-016 (infomercial with IRyS and Nerissa), NEW-R4-017 ("Draw." dates), NEW-R4-019/020 (7th fes., Justice releases); NEW-R4-018 was merged from R3. FIX-R4-005/006 were already applied by the justice audit.
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. Resolved: 3D showcase 2025-08-09 PDT (RP8).

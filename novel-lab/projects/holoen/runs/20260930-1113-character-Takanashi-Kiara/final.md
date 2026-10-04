@@ -289,6 +289,7 @@ Public exchanges only. Pair labels and unit names retain the evidence level stat
 | Secret Society holoX | JP kouhai | HOLOTORI with Lui and Mumei; La+: "FAKE HEART" (2025-04-08), the Mythmash single "Glow in the Dark" (premiere 2025-07-27; official digital release 2025-07-28) and an off-collab (2023-06-30); Chloe: an origami off-collab (2023-11-22) and the "WILDCARD" cover (2025-01-25); Iroha: a credited guest at her 4th-anniversary live (2024) and birthday live (2025), and #TASTYchallenge shorts with Nene (2025-07-11, 07-16); Koyori: a "MIRAGE" dance short (2024-12-27) | [S1 v5RKZXNuVyw, eEGbAKvSf1Q, 0LoG81pLS8c, f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0, xXwi19krZ68] |
 | Shishiro Botan | JP senpai | A fellow builder in Botan's Minecraft "Usada Kensetsu"; she joined the Usaken summer-festival planning and building collab (2021-06-07), and contemporary viewers describe Botan checking on Kiara's building team. | [Archive metadata NEW-R1-009; secondary clip record] |
 | Fuwawa Abyssgard, Mococo Abyssgard | Advent kouhai | [Lead, secondary: a Mage Arena clip lists Kiara and both twins in one group session (clip published 2025-10-25); stream date and exchanges unchecked.] | [Secondary NEW-R1-010] |
+| Yukihana Lamy | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ## Arc
 - **Starting point:** the current public persona (September 2026), as on the card.
@@ -370,6 +371,7 @@ audio-checked by ear.
 - NEW-R1-008 (GPT research R1, checked 2026-10-03) HoloEN REWIND announcement repost (SECONDARY): https://www.reddit.com/r/Hololive/comments/1s14696/kiara_announces_holoen_rewind_news_show/
 - NEW-R1-009 (GPT research R1, checked 2026-10-03) Usaken festival stream metadata (ARCHIVE_METADATA): https://ckworks.jp/vinforadar/video/q_IXZIRCbwI ; clip record (SECONDARY): https://ckworks.jp/vinforadar/video/kirinuki/EoUx-vfV23M
 - NEW-R1-010 (GPT research R1, checked 2026-10-03) Mage Arena clip record (SECONDARY): https://holo-clips.com/archives/568047
+- TIE-039 to 043 (GPT research R7, checked 2026-10-03) New Year Game Festival 2026 Team Bird roster (SECONDARY): https://www.inside-games.jp/article/2026/01/31/176776.html ; https://dengekionline.com/article/202512/61985
 
 ## [SW] Name
 Takanashi Kiara
@@ -536,6 +538,7 @@ Mori Calliope: her TakaMori partner. Kiara declared a crush in 2020 and long cal
 - **2026-10-03, new-material research R3 (GPT xhigh), merged by Claude:** "Freaky Deaky Love" with Bijou propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, relationship web (tools/web_check.py), by Claude:** a one-way tie closed in the exported Relationships with an already-sourced dossier fact; other clauses shortened to stay within the word limit.
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. Should the card quote one crude line verbatim (for example "I'm an innocent maiden." as irony), or is

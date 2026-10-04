@@ -182,7 +182,7 @@ the wiki as units or pairings; -Promise- is official.
 | Nanashi Mumei, Ceres Fauna (graduated) | Promise unitmates | Early Council collabs (Jump King, Minecraft) | [Observed R2; R3] |
 | Shiranui Flare | JP senior | Off-collab karaoke (2025-03) | [Observed R3 title] |
 | Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 with Koyori, Watame and Korone (2022-10-03); an Among Us lobby with Koyori, Chloe and others (2023-05-08); Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
-| Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
+| Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 | Nekomata Okayu | JP senior | [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at RACING TOWARDS HOPE (2026-03-21).] | [Secondary, holo3d-live setlist] |
 
 ## Arc
@@ -230,6 +230,7 @@ the wiki as units or pairings; -Promise- is official.
 - NEW-R2-002 (GPT research R2, checked 2026-10-03) upload listing (ARCHIVE_METADATA): https://www.holosubs.com/talents/irys ; member upload https://www.youtube.com/watch?v=mddBNwuQqz0
 - NEW-R2-003 (GPT research R2, checked 2026-10-03) Serendipity interview (OFFICIAL): https://serendipity.hololivepro.com/news/interview03/
 - NEW-R2-004 (GPT research R2, checked 2026-10-03) DANGERyS release page and album introduction (OFFICIAL): https://hololive.hololivepro.com/en/music/754/ ; https://hope-beyond-the-stars.hololivepro.com/
+- COR-004 (GPT research R7, checked 2026-10-03) #BaeTV24 segment and original Part 2 (PRIMARY title; ARCHIVE_METADATA): https://www.youtube.com/watch?v=Vb94AGQmsOM ; https://ckworks.jp/vinforadar/video/RhN9-mCDUoU
 
 ## [SW] Name
 IRyS
@@ -334,6 +335,7 @@ Hakos Baelz: Promise unitmate, her "BaeRyS" partner in a running bit of getting 
 - **2026-10-03, new-material research R2 (20261002-1715-research-new-R2-Promise, GPT xhigh), merged by Claude:** NEW-R2-001 (Raora added to the exported Relationships, closing Raora's one-way tie; Gigi clause shortened), NEW-R2-002 (Bijou watchalong), NEW-R2-003 (singing as shared work), NEW-R2-004 (DANGERyS).
 - **2026-10-03, new-material research R4 (GPT xhigh), merged by Claude:** a Justice cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
+- **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 
 ## Open Questions
 1. The wiki calls her speaking voice "high-pitched"; in this project's 2026 sample it measures mid-range.

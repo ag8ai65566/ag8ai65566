@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git a2ead9c. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 3bd6202. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Hakos Baelz
@@ -11,7 +11,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Houshou-Marine.md › Background Timeline`: | 2026-09 | Holo Koshien series: a baseball team followed through successive in-game seasons; Koyori joined the 09-17 session and AZKi commentated on 09-26. | [Archive metadata NEW-R5-014, NEW-R5-006] |
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2025 | Joins "Magical Girl holoWitches!" (04–05); "Yoppara Music!" (official digital release 08-13); a "KoZMy 結成⁉" collab with AZKi and Koyori (08-03; secondary listings give its first anniversary in 2026-08) | [Observed LM2] [Official music 609] [Koyori file lvgC3pW-LVA] |
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi.
-- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: "KoZMy" with Hakui Koyori, and "KALAZ" with Amane Kanata (secondary).
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: her KoZMy cover partner with Hakui Koyori on "Ai♡Scream!"
 
 ### AZKi × Hoshimachi Suisei
 - `bible/characters/AZKi.md › [SW] Background`: She debuted in 2018 as "Virtual Diva AZKi," joined hololive production's music label INoNaKa Music with Hoshimachi Suisei in 2019, and transferred to hololive's main group in April 2022 (secondary historical reference).
@@ -279,6 +279,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2024-11-14 | "Spectra of Nova" watch party | Calli, FUWAMOCO, Elizabeth for Suisei |
 
+### Elizabeth Rose Bloodflame × Nanashi Mumei
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Elizabeth Rose Bloodflame | Justice kouhai | Co-players in Mumei's Gartic Phone EN + ID + JP, Day 2 (2025-04-14). | [Archive metadata TIE-014] |
+
 ### Elizabeth Rose Bloodflame × Nerissa Ravencroft
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Story Engine`: 2. Nerissa and Elizabeth must stay "mortal enemies" through a duet rehearsal.
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
@@ -394,6 +397,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022).
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q," and Calli performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert.
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | Ongoing | Illustrator: drew Myth's intro art; designed the Takodachi [I2 §Mascot and fans], Bubba [Ame file A2 §Mascots and fans] and Death Sensei [Calli file C4 §Mascot and fans] (the wiki says all Myth mascots except Bloop); she drew chibi Bloop artwork, but Bloop's original design is not hers [Gura file G2] | [Observed I2 §Miscellaneous and §Mascot and fans, secondary] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Gawr Gura, Watson Amelia, Mori Calliope | Myth | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Gawr Gura, Watson Amelia and Mori Calliope: co-players in the Myth × fifth-generation Among Us collab (2020).
 - `bible/world/Bone-Bros.md › Conflicts and Story Hooks`: 1. (Before 2025-05) Gura pranks Calli's Minecraft base; Calli plots revenge on stream.
 - `bible/world/Bone-Bros.md › Conflicts and Story Hooks`: 2. (Proposed fiction, before 2025-05) Calli and Gura look back on their published duet "Q" on stream.
 - `bible/world/Bone-Bros.md › Hard Facts`: - 2026 baseline: Gura has graduated; Calli performed "Full Color" in 2024 and said she would keep singing it.
@@ -476,6 +481,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German swears; Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate ("AmeSame") | Close friends per the wiki; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs"
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Gawr Gura, Watson Amelia, Mori Calliope | Myth | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Gawr Gura, Watson Amelia and Mori Calliope: co-players in the Myth × fifth-generation Among Us collab (2020).
 - `bible/world/AmeSame.md › Conflicts and Story Hooks`: 2. (Before 2024-10) Ame "fixes" Gura's stream setup and it's a prank.
 - `bible/world/AmeSame.md › Conflicts and Story Hooks`: 3. (Before 2025-05) Gura needs directions in Minecraft; Ame gives the worst ones on purpose.
 - `bible/world/AmeSame.md › Hard Facts`: - 2026 baseline: Ame is an affiliate and Gura has graduated; their history supplies callbacks and memories. Graduation establishes nothing about their private contact.
@@ -670,9 +677,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Hakos Baelz × Nerissa Ravencroft
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: "HELP!!" with Kobo Kanaeru and Hakos Baelz (day 1); unit Bloodraven with Nerissa, "Cruel Angel's Thesis" (day 2); "SUPERNOVA SUPER GIRL" and "ABOVE BELOW" with Justice | [Official EB4, EB8] |
-- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 
 ### Hakos Baelz × Ninomae Ina'nis
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Hakos Baelz: a K/DA "POP/STARS" cover (2023), a stream art lesson (2024) and Ina's AmiAmi special (2025).
 - `bible/characters/Ouro-Kronii.md › Voice Profile`: - Colleagues: by name or short form (Ina, Bae, IRyS).
 - `bible/world/Hakos-Baelz-Pairs.md › History`: | 2023 | a BaeRyS off-collab; "Daikirai na Hazu Datta"; K/DA "POP/STARS"; We Were Here | BaeRyS; Bae–Ina; BaeBi |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 EDT | World Tour '24 "-Soar!-" opens at Anime NYC (Javits Center) with Kiara, Ina and Bae among seven performers; it ends in Taipei on 2025-01-18 | — |
@@ -697,7 +705,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Hakos Baelz × Raora Panthera
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Raora Panthera: Mario Party on Bae's 24-hour stream.
-- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 - `bible/characters/IRyS.md › [SW] Relationships`: Raora Panthera: Mario Party Jamboree with Bae (2024).
 - `bible/world/Hakos-Baelz-Pairs.md › BaeRyS`: - **Together:** a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); a Valentine bento cooked on handcam (2024-02-14); HoloEarth with Kureiji Ollie (2024); a New Year's countdown off-collab watch-along (2024-12-31); Snow Bros. 2 (2025-04-17); Mario Party with Raora on Bae's 24-hour stream (2024-11-25). [S1]
 
@@ -759,7 +767,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/holoX.md › [SW] Description`: Takane Lui is the executive officer and point of contact who does the real work and cares for her subordinates; Hakui Koyori runs R&D as the self-proclaimed "brains," meddling in everyone's affairs to study them; Kazama Iroha is the society's bodyguard and "insurance policy," a samurai who says "de gozaru."
 
 ### Hakui Koyori × Yukihana Lamy
-- `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy"
+- `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
 - `bible/characters/Hakui-Koyori.md › Story Engine`: 2. A KoZMy horror night in which Koyori volunteers AZKi and Lamy as test subjects.
 
 ### Hoshimachi Suisei × Houshou Marine
@@ -876,6 +884,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Takanashi Kiara:** Marine was the first guest of Kiara's HOLOTALK (2020-11-20, "#marinarasauce"); Kiara danced "MIRAGE" with her (2024) and to Marine and Kobo's "III." [S1]
 
 ### Houshou Marine × Yukihana Lamy
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | Yukihana Lamy, Houshou Marine | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
+- `bible/characters/Shiori-Novella.md › Relationship Map`: | Yukihana Lamy, Houshou Marine | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 - `bible/world/JP-Senpai-Pairs-2.md › Among themselves`: - Marine and Lamy: "Magical Girl holoWitches!" (Lamy joined in 2025). [S2]
 
 ### IRyS × Koseki Bijou
@@ -1053,14 +1063,12 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Kikirara Vivi × Nanashi Mumei
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [Shirogane Noel file NO5; Kikirara Vivi file VI5; archive metadata OMDzBQohAf8, inherited and not reopened] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025).
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kikirara Vivi and Shirogane Noel: Mumei's Gartic Phone (2025).
 
 ### Kikirara Vivi × Shirogane Noel
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [Shirogane Noel file NO5; Kikirara Vivi file VI5; archive metadata OMDzBQohAf8, inherited and not reopened] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025).
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Shirogane Noel, Kikirara Vivi and Elizabeth Rose Bloodflame: her Gartic Phone EN + ID + JP collab (2025).
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kikirara Vivi and Shirogane Noel: Mumei's Gartic Phone (2025).
 
 ### Kikirara Vivi × Yukihana Lamy
@@ -1344,6 +1352,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Mori Calliope × Watson Amelia
 - `bible/characters/Gawr-Gura.md › [SW] Background`: She hosted The Fish Tank with Watson Amelia and sang "Q" with Mori Calliope.
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | Ongoing | Illustrator: drew Myth's intro art; designed the Takodachi [I2 §Mascot and fans], Bubba [Ame file A2 §Mascots and fans] and Death Sensei [Calli file C4 §Mascot and fans] (the wiki says all Myth mascots except Bloop); she drew chibi Bloop artwork, but Bloop's original design is not hers [Gura file G2] | [Observed I2 §Miscellaneous and §Mascot and fans, secondary] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Gawr Gura, Watson Amelia, Mori Calliope | Myth | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Gawr Gura, Watson Amelia and Mori Calliope: co-players in the Myth × fifth-generation Among Us collab (2020).
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ame** (24 / 23 / 14 / 6 / 6 / 0): early Clubhouse 51 duels; the MV of Calli-written "Myth or Treat" premiered on Ame's channel (2021); [Unverified: a reported cameo in Calli's 2026 charity stream lacks a confirmed segment locator.] [Observed Ame file A20; S3 §2021, §2026, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ame: early Clubhouse 51 duels.
 
@@ -1387,6 +1397,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Nerissa | [Ayame file AY4] |
 
 ### Nanashi Mumei × Ninomae Ina'nis
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Ninomae Ina'nis | Myth senior | Co-players in Mumei's Gartic Phone EN + ID + JP, Day 2 (2025-04-14). | [Archive metadata TIE-014] |
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Ninomae Ina'nis: co-players in Mumei's cross-branch Gartic Phone (2025).
 - `bible/world/Fauna-and-Mumei-Pairs.md › With the cast`: - **Ina:** fellow artists; Mumei's drawing collabs with Ina (2023-01; "doodles with @NinomaeInanis," 2025-04-21). [Observed S1]
 
 ### Nanashi Mumei × Ouro Kronii
@@ -1409,7 +1421,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Shirogane Noel, Kikirara Vivi | JP members | Mumei's Gartic Phone EN + ID + JP (2025-04-14) | [Shirogane Noel file NO5; Kikirara Vivi file VI5; archive metadata OMDzBQohAf8, inherited and not reopened] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone EN + ID + JP collab (2025).
 - `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Shirogane Noel: Mumei's Gartic Phone collab (2025).
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kikirara Vivi and Shirogane Noel: Mumei's Gartic Phone (2025).
 
 ### Nanashi Mumei × Takanashi Kiara
@@ -1456,6 +1467,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Nekomata Okayu × Takane Lui
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Takane Lui | — | Harry Potter watch-alongs to introduce Okayu to the series (2025-11-24 and others); "Shaccho" is a first-model ASR rendering whose direction is unconfirmed, so it is not used | [Lui channel Lj0MZFpHitQ] |
 
+### Nekomata Okayu × Yukihana Lamy
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Yukihana Lamy | JP kouhai | A "Lukewarm" duet cover on Okayu's channel (2024-02-01). | [Member-upload title TIE-004] |
+
 ### Nerissa Ravencroft × Ninomae Ina'nis
 - `bible/characters/Houshou-Marine.md › Background Timeline`: | 2024 | 3 million subscribers (01-10, secondary); album "Ahoy!! You're All Pirates♡!" (10-16); a Touhou off-collab with FUWAMOCO (04-30) and Mario Party with FUWAMOCO and Nerissa; a solo concert (12); a guest at Ina's "Pleides" (12-28) | [Observed MA2] [MA5 x7gRHgQ0yI0, FLL7e1-RPGo, 3n9igJnSXtQ] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | IRyS | Senior and fellow singer | Guest at Nerissa's 2025 3D concert ("Missing Promise"); Monster Hunter Wilds (2025); Nerissa made Miis of Ina and IRyS in Tomodachi Life (2026) | [Observed N3 titles] |
@@ -1469,7 +1483,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Hard Facts`: - IRyS debuted 2021-07-11 (senior to Kronii by a month, to Nerissa by two years); Nerissa 2023-07-31.
 
 ### Nerissa Ravencroft × Raora Panthera
-- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |
 
 ### Nerissa Ravencroft × Shiori Novella
@@ -1650,11 +1664,14 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Raora Panthera × Shiori Novella
 - `bible/characters/AZKi.md › Relationship Map`: | Shiori Novella, Raora Panthera | kouhai | Dance shorts to her songs (2025–2026) | [AZ5] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Takanashi Kiara, Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### Raora Panthera × Takanashi Kiara
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Takanashi Kiara | Senior ("EterniTea"; "HoloEU" with Raora) | They spoke German in their first exchange, on Kiara's 2024 birthday stream | [Observed CI2, secondary; Kiara file] |
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Takanashi Kiara: a German-speaking senior ("EterniTea"; "HoloEU" with Raora).
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Raora Panthera: R.E.P.O. with Kiara and Kronii (2025).
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Takanashi Kiara, Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2025-11 | Raora's friendly-fire "Doom" spell in Kiara's Mage Arena collab becomes a widely shared fan meme (KYM dates the stream 11-16) | a callback |
 
 ### Raora Panthera × Takane Lui
@@ -1669,6 +1686,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Shiori Novella × Takanashi Kiara
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Takanashi Kiara | Senior ("Ultra Orange," from Gigi's stream title); calls her "GeeGee" (secondary) | Reanimal (2026-04-03); Eden Eternal with Shiori (2024); first-model ASR only, pending verification: Gigi decorated a page in the friendship journal Kiara brought to the 2026 fes.; "I know Kiara saved the world. Literally." (Hytale) | [Observed GG2, GG3] [ASR GG20, LgDuyqoaqT4 1:01:53, 1:16:19] |
 - `bible/characters/Gigi-Murin.md › [SW] Relationships`: Takanashi Kiara: Reanimal ("ULTRA ORANGE WILL LIGHT THE WAY!!") and Eden Eternal with Shiori; Kiara calls her "GeeGee."
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Takanashi Kiara, Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### Shiori Novella × Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Shiori Novella: a VRChat aquarium visit with "Ame Senpai"
@@ -1695,6 +1713,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Shishiro-Botan.md › Behavioral Traits`: 4. Secondary accounts describe her drawing friends into horror; with Yukihana Lamy, "horror date" streams where Botan usually stays calm and gently teases Lamy's scares. [Observed BO2 §Personality, §Miscellaneous, secondary]
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Yukihana Lamy | 5th-gen genmate; NePoLaBo | "Horror dates" where Botan stays calm and teases Lamy | [BO2] |
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror "dates" where Botan stays calm and teases Lamy.
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Shishiro Botan, Yukihana Lamy | JP fifth generation | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Shishiro Botan and Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
 - `bible/characters/Yukihana-Lamy.md › Behavioral Traits`: 4. Horror with Shishiro Botan: secondary accounts describe Lamy's scared reactions and Botan's calm; in a scene, play it situationally (frightened, seeking reassurance), not as a personal relationship. [Observed LM2 §Personality, secondary]
 - `bible/characters/Yukihana-Lamy.md › Story Engine`: 2. Botan drags Lamy through a haunted house while pretending not to enjoy her screams.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describe horror runs where Lamy is scared and Botan stays calm.

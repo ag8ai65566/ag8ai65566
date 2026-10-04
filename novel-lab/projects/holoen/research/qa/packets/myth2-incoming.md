@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git a2ead9c.
+Snapshot: git 3bd6202.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|City Pop Shark|Calli and Gura|Watson Amelia|Amelia Watson|The Fish Tank|Ame and Gura|Gura and Ame|Gremlin Ame|Goobidiba|Gawr Gura|Same-chan|Bone Bros|ワトソン・アメリア|holoMyth|Samegaki|HoloMyth|Amechan|amesame|AmeSame|がうる・ぐら|Amelia|Gooba|Gura|Myth|Goob|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|City Pop Shark|Gura and Calli|Amelia Watson|Watson Amelia|The Fish Tank|Gura and Ame|Ame and Gura|Gremlin Ame|ワトソン・アメリア|Goobidiba|Same-chan|Gawr Gura|Bone Bros|Samegaki|HoloMyth|holoMyth|amesame|Amechan|AmeSame|Amelia|がうる・ぐら|Gooba|Goob|Myth|Gura|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -15,10 +15,12 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Takanashi Kiara: Myth senior; "KIWAWA vs FAWNA"
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Gawr Gura | Her hololive oshi | Mario Kart ("GOOWA FWANA RACING"), a Dark Souls race (2024), and "Drawing Hololive Members From Memory with @GawrGura!" (2024-12-30) | [Observed F2 §Likes; F3] |
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Takanashi Kiara | Myth senior | "KIWAWA vs FAWNA" (Clubhouse 51, 2022); Minecraft Wither fight; Kiara's HOLOTALK 32nd guest (2024-12-27) | [Observed F3; Kiara archive] |
+- `bible/characters/Ceres-Fauna.md › Relationship Map`: | Mori Calliope | Myth senior | Her five-player Dota 2 session "FULL STACK FULL CHAOS" with Calli, Bijou, Nerissa and Kobo (2024-01-27 JST). | [Member upload, indexed TIE-010] |
 
 ### from Elizabeth Rose Bloodflame
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Takanashi Kiara | Myth senior ("Eternal Flame," "11 ERBs and Spices") | Kiara calls her "Erby Berby"; Minecraft (2025); Kiara's Mage Arena collab (2025) | [Observed EB2, EB3] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Mori Calliope | Myth senior | A TakaMori impression at debut (secondary); the LYRA cover of "III" with Amane Kanata, Koganei Niko, Calli and Ayunda Risu; "START AGAIN" on stage; "Jade Sword" guild in ENReco | [Observed EB2, secondary] [Official EB5] [EB9] |
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Ninomae Ina'nis | Myth senior | Co-players in Mumei's Gartic Phone EN + ID + JP, Day 2 (2025-04-14). | [Archive metadata TIE-014] |
 
 ### from Fuwawa Abyssgard
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Watson Amelia: "Detective Dogs."
@@ -84,6 +86,7 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate who designed Death Sensei and drew her debut EP cover; Calli wrote lyrics for Ina's TAKO∞TAKOVER and is a recurring target of Ina's puns.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Gawr Gura (graduated): her "Bone Bros" partner; they sang "Q," and Calli performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Watson Amelia (affiliate): Myth genmate and Clubhouse 51 opponent.
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
 - `bible/characters/Mori-Calliope.md › Voice Profile`: - Measured (C30, chat windows): median pitch 197–214 Hz, the second lowest of the six files measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz). The wiki's hololive-wide ranking was not measured. She is the fastest talker of the six: about 161–186 words per minute of speech while chatting (Kronii 120–127, Ina 81–95). Approximate values for relative comparison.
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-09-07 | The branches merge into one "hololive." Her unit is now hololive -Myth-. | [Official C17, C1] |
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres | [Archive metadata C33] |
@@ -92,6 +95,7 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate | "Bone Bros." [Unverified: the origin of the "Dad" joke.] They sang "Q" together (2022). | [Observed C4 §Relationships, secondary] [Official C29] |
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate | [Unverified, title only: Ame pranking and scaring her, e.g. with a surprise "ara ara"] | [C21-a03HNAHiwpM clip title] |
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Secret Society holoX (La+, Lui, Chloe, Iroha) | JP kouhai | English practice with Lui (2021-12-27); HOLO ENGLISH LESSON #02 with La+, Iroha and Gura (2022-03-04) and #04 with Lui and Chloe (2022-04-16); HOLOYOI #01 with Lui and Chloe (2023-03-23); dance shorts to Lui's songs | [S1 X492n37brRU, YrZ4baKOT1c, UuL_nORzfNM; world card "holoX"] |
+- `bible/characters/Mori-Calliope.md › Relationship Map`: | Yukihana Lamy | JP fifth generation | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
 - `bible/characters/Mori-Calliope.md › Hard Facts`: - Birthday April 4 (4/4: "shi" is also "death"). Height 167 cm. Debut 2020-09-12. Unit: hololive -Myth-. [Official C1] [Observed C4 §Miscellaneous, secondary]
 
 ### from Nakiri Ayame
@@ -162,6 +166,7 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Watson Amelia | Senior | "Ame Senpai's Aquarium Visit" in VRChat (2024-12-02) | [Observed SN3] |
 
 ### from Shishiro Botan
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: (secondary) and an Among Us co-player in the Myth × fifth-generation collab (2020), with Watson Amelia.
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label.
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Gawr Gura (graduated) | "Apex Predators" (a secondary-listed pair label) | A joint Apex session is not established here | [BO2] |
 
@@ -186,6 +191,10 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 ### from Takane Lui
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Watson Amelia (affiliate): Apex with Iofi (2022).
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Watson Amelia (affiliate) | — | Apex with Airani Iofifteen (2022-01-19) | [LU5 Mory0I9vXtI] |
+
+### from Yukihana Lamy
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Gawr Gura, Watson Amelia and Mori Calliope: co-players in the Myth × fifth-generation Among Us collab (2020).
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Gawr Gura, Watson Amelia, Mori Calliope | Myth | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › With Myth`: - **Takanashi Kiara:** hosted all five on HOLOTALK; an occult handcam off-collab with Shiori ("#shiotori," 2024-07-12); Baldur's Gate 3 with Bijou, Calli and Nerissa ("Killing, Two Birds, with One Stone," 2023); Bijou was her 2026 Serendipity partner ("Rocku Wawa," and a running "67" joke); Bijou recalls Kiara as "really encouraging and helpful" when Kiara asked her to perform a song with Kiara and Ame whose choreography was one of the hardest she had learned. [Official S4] [Observed S1]

@@ -1,9 +1,9 @@
 # Audit packet: myth3 (incoming claims)
 
-Snapshot: git a2ead9c.
+Snapshot: git 3bd6202.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|hololive -Myth-|Gura and Kronii|Takanashi Kiara|Kronii and Gura|Gura and Kiara|Kiara and Gura|Calli and Ame|Ina and Calli|Ame and Kiara|Calli and Ina|Kiara and Ame|Ame and Calli|Ina and Gura|Gura and Ina|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|Kiwawa|小鳥遊キアラ|Kiara|Wawa)(
+Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|hololive -Myth-|Gura and Kronii|Takanashi Kiara|Kronii and Gura|Gura and Kiara|Kiara and Gura|Ame and Calli|Calli and Ame|Ame and Kiara|Ina and Calli|Calli and Ina|Kiara and Ame|Gura and Ina|Ina and Gura|Ina and Ame|Ame and Ina|Rocku Wawa|Kusotori|Tenchou|小鳥遊キアラ|Kiwawa|Kiara|Wawa)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -189,7 +189,7 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|holo
 - `bible/characters/Raora-Panthera.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice (day 1); the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari"), "What an amazing swing" with Tsunomaki Watame and Kiara, and "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official RP4, RP9] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Takanashi Kiara | Myth senior ("HoloEU" with Cecilia; secondary) | An Italian lesson (2024), a proposed outfit for Kiara on her "Raora's Clawset" art stream (2025-01-26; not a released Kiara model), an EU-snacks off-collab (2025); the "Doom" meme in Kiara's collab; "What an amazing swing" with Watame at Serendipity (2026) Their Pokémon FireRed/LeafGreen Soul-Link Nuzlocke (2026-06-21 to 09-24) couples their losses: a fainted Pokémon removes its linked partner, and a failed catch costs both players the encounter; Raora's September title has them one critical hit from disaster. | [Observed RP3, RP7] [Official RP9] [Archive metadata NEW-R4-015] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Tsunomaki Watame (JP) | JP senior | "What an amazing swing" with Kiara at Serendipity (2026) | [Official RP9] |
-- `bible/characters/Raora-Panthera.md › Relationship Map`: | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
 
 ### from Sakamata Chloe
 - `bible/characters/Sakamata-Chloe.md › [SW] Background`: With the English cast, archived channel metadata documents an EN-server Minecraft tour with Bae, Mumei and Lui (2022), Calli's English lesson #04 (2022) and HOLOYOI #01 (2023), Bae's "BAE-GEMITE DOMINATION" and the cover "Crazy Scary Holy Fantasy" with her (2023), and "WILDCARD" with Kiara in her final week (2025).
@@ -232,6 +232,9 @@ Matched names: th and Kronii: Other Pairs|Kronii and Kiara|Kiara and Kronii|holo
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material; "Kiara like, threw herself at me… she hugged me!" | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
+
+### from Yukihana Lamy
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Takanashi Kiara, Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › [SW] Other Names`: ShioRaven, Goth Rock, Pen Pups, JewelBird, Diamond Dogs, Sound Hounds, Grindstone, GAGA, FUWAMOCALLI, Rocku Wawa, GreyScaleX, Last Writes

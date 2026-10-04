@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git a2ead9c.
+Snapshot: git 3bd6202.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewel of Emotions|Fuwawa and Mococo|Fuwawa Abyssgard|FUWAMOCO MORNING|Mococo Abyssgard|Abyssgard twins|Shiori Novella|Demon of Sound|The Fluffy One|Demon of Soup|The Fuzzy One|Sound Hounds|The Archiver|Diamond Dogs|Koseki Bijou|Advent Pairs|FUWAMOCALLI|Last Writes|Grindstone|Fluffy One|Rocku Wawa|holoAdvent|GreyScaleX|Bloodraven|ShioRaven|Fuwa-chan|Goth Rock|Moco-chan|Adventrix|JewelBird|Lil'Rock|Fuwa-nee|FUWAMOCO|Shiori~n|The Cell|Mogojyan|Pen Pups|Nerissa|Shiorin|Koseki|Fuwawa|Beejoe|Advent|Mogogo|Shiori|Mococo|Beebs|Oobib|Rissa|Biboo|Bijou|B.F.F|FWMC|Neri|GAGA|Pero)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|Fuwawa and Mococo|hololive -Advent-|Mococo Abyssgard|FUWAMOCO MORNING|Fuwawa Abyssgard|Abyssgard twins|The Fluffy One|Shiori Novella|Demon of Sound|The Fuzzy One|Demon of Soup|Advent Pairs|Sound Hounds|Koseki Bijou|Diamond Dogs|The Archiver|Last Writes|FUWAMOCALLI|Grindstone|Bloodraven|holoAdvent|Rocku Wawa|Fluffy One|GreyScaleX|ShioRaven|Goth Rock|Adventrix|Moco-chan|JewelBird|Fuwa-chan|Mogojyan|The Cell|Lil'Rock|Shiori~n|FUWAMOCO|Pen Pups|Fuwa-nee|Nerissa|Shiorin|Advent|Shiori|Mogogo|Fuwawa|Beejoe|Koseki|Mococo|Bijou|Rissa|Biboo|Beebs|B.F.F|Oobib|Pero|FWMC|Neri|GAGA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -39,8 +39,10 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewe
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Koseki Bijou: "Coach Fauna" in Bijou's Hitman runs and a "Sweaty TryHard Gamers" squad with Bae and Kaela.
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: FUWAMOCO: helped on the World Tree's last day (2024-12-31).
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Shiori Novella: the third voice of "Lonely in Gorgeous."
+- `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Mori Calliope: her five-player Dota 2 collab with Bijou, Nerissa and Kobo (2024).
 - `bible/characters/Ceres-Fauna.md › Background Timeline`: | 2024-08-24/25 | hololive English 2nd concert -Breaking Dimensions-: premieres "It's Not a Phase" with Mumei and sings "Mayonaka no Door" solo (day 1); "Lonely in Gorgeous" with Shiori and Nerissa (day 2) | [Official F5] |
 - `bible/characters/Ceres-Fauna.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | Fauna, Shiori and Nerissa sang "Lonely in Gorgeous" at -Breaking Dimensions- (2024-08-25); a 2023 reply from Nerissa on X: "Fauna-senpai!!! My Raven companion is named Shadow~" | [Official F5] [Observed—X post via wiki citation, research/x-posts.md] |
+- `bible/characters/Ceres-Fauna.md › Relationship Map`: | Mori Calliope | Myth senior | Her five-player Dota 2 session "FULL STACK FULL CHAOS" with Calli, Bijou, Nerissa and Kobo (2024-01-27 JST). | [Member upload, indexed TIE-010] |
 
 ### from Elizabeth Rose Bloodflame
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Groups`: hololive -Justice-, hololive English -Justice- (former branch name), Justice, Bloodraven
@@ -138,6 +140,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewe
 - `bible/characters/Houshou-Marine.md › Background Timeline`: | 2024 | 3 million subscribers (01-10, secondary); album "Ahoy!! You're All Pirates♡!" (10-16); a Touhou off-collab with FUWAMOCO (04-30) and Mario Party with FUWAMOCO and Nerissa; a solo concert (12); a guest at Ina's "Pleides" (12-28) | [Observed MA2] [MA5 x7gRHgQ0yI0, FLL7e1-RPGo, 3n9igJnSXtQ] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | FUWAMOCO | — | Joined their Touhou off-collab (2024-04-30); Mario Party with Nerissa (2024); watched her solo concert (2024); danced to "Chatter Chatter" (2026) (secondary and archived records) | [MA5 x7gRHgQ0yI0] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Nerissa Ravencroft | — | Mario Party Superstars off-collab with FUWAMOCO (2024); a "Marine's treasure box" dance short (2024) | [MA5 FLL7e1-RPGo, Lo9q4WJrcM4] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 - `bible/characters/Houshou-Marine.md › Story Engine`: 1. Marine recruits FUWAMOCO as cabin girls for a "voyage" that never leaves the studio.
 
 ### from IRyS
@@ -150,7 +153,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewe
 - `bible/characters/IRyS.md › [SW] Relationships`: At Serendipity she and Bae performed "LUVATORRRRRY!" as BaeRyS, and she sang "Night Loop" with Ookami Mio (GAMERS) and Bijou.
 - `bible/characters/IRyS.md › Relationship Map`: | Mori Calliope | First collab partner (2021) | "MorIRyS"; CHADCast podcast trio with Bae Credited singers together (with Nerissa, Nene and Ollie) on "LIVE IT LOUD!" (2025-06-25). | [Observed R2 §2021, units] [Official, music/592] |
 - `bible/characters/IRyS.md › Relationship Map`: | Koseki Bijou | Frequent 2025–2026 co-op partner | Horror co-ops (Dead Space 3, Resident Evil 6 "w/ Biboo," 2026) Archived metadata dates a joint watchalong of *Gundam 0080: War in the Pocket* that IRyS hosted (2026-09-05). | [Observed R3 titles] [Archive metadata NEW-R2-002] |
-- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 - `bible/characters/IRyS.md › Story Engine`: 5. A horror co-op with Bijou where IRyS is the one scaring her partner.
 
 ### from Kazama Iroha
@@ -193,6 +196,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewe
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | IRyS, Hakos Baelz | CHADCast cohosts | A chaotic podcast trio (archived from January 2022); their song "Here Comes the CHADCast" (2026-09-01). Secondary references record Bae's nickname for her, "Cori Malliope." "BLUE CLAPPER" with Bijou at -Breaking Dimensions- (2024); the "R x R x R" duo with Bae at -All for One- (2025); Bae's GriMoire watch-along (2025) Calli and IRyS (with Nerissa, Momosuzu Nene and Kureiji Ollie) are credited singers on "LIVE IT LOUD!" (2025-06-25). | [Observed C12; C4 nickname list, secondary] [Official NEW-R1-005] |
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Koseki Bijou | Junior collaborator | Calli calls her "Biboo" and openly admires her skill. | [Official C9] |
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Shiori Novella | 2026 Serendipity partner | Shiori calls her "Mor Mori." Together they pursue absurd premises. In their June 2026 interview Calli credits Shiori with encouraging her to pursue content that interests her personally instead of chasing whatever is fashionable. | [Official C11] [Official C11] |
+- `bible/characters/Mori-Calliope.md › Relationship Map`: | Ceres Fauna | Council | Fauna's five-player Dota 2 session with Calli, Bijou, Nerissa and Kobo (2024-01-27 JST). | [Member upload, indexed TIE-010] |
 - `bible/characters/Mori-Calliope.md › Story Engine`: 5. Shiori pitches an absurd framing for a serious performance, and Calli catches herself defending it.
 
 ### from Nakiri Ayame
@@ -268,7 +272,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewe
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Ninomae Ina'nis | Myth senior | Puyo Puyo Tetris 2 (2025); the Monster Hunter Wilds launch with Gigi and Bijou; "Neko Kaburi-Na" with Shiori and Oozora Subaru at -All for One- | [Observed RP3] [Official RP5] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Shiori Novella, Oozora Subaru (JP) | Advent senior; JP senior | "Neko Kaburi-Na" with Ina at -All for One- (2025) | [Official RP5] |
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Nerissa Ravencroft, Moona Hoshinova | Seniors ("V3LVET," secondary) | Clubhouse Games with Nerissa (2024-12-09); Raft with both (2025-02-06); Monster Hunter Wilds as V3LVET (Nerissa's title, 2025-03-25) Raora co-presented the official Serendipity merchandise infomercial with Nerissa and IRyS (May 2026). | [Observed RP2, RP3; Nerissa archive] [Archive metadata NEW-R4-016] |
-- `bible/characters/Raora-Panthera.md › Relationship Map`: | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's 24-hour #BaeTV24 stream (2024-11-25); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
+- `bible/characters/Raora-Panthera.md › Relationship Map`: | Hakos Baelz, IRyS | Promise seniors | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024); ENReco guildmates in "Amber Coin": Raora, Bae, Kiara and Mumei (secondary) With IRyS (and Nerissa) she co-presented the official Serendipity merchandise infomercial (May 2026). | [Bae file HB3, HB5, HB8, HB20] [Archive metadata NEW-R4-016] |
 - `bible/characters/Raora-Panthera.md › Arc`: - **Starting point:** active at the 2026 baseline: her first birthday live, Serendipity with FUWAMOCO, Pokémon, Pragmata and Hytale streams.
 - `bible/characters/Raora-Panthera.md › Story Engine`: 1. Raora's suspect sketch of Advent is so cute nobody can arrest them.
 - `bible/characters/Raora-Panthera.md › Hard Facts`: - 3D showcase 2025-08-09 PDT. Official music list: "Gacha×Gacha ADVENTURE!" and "Draw" (Draw's premiere and release dates not yet established). Serendipity unit: B.F.F with FUWAMOCO.
@@ -317,6 +321,9 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewe
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | FUWAMOCO | Advent members ("Detective Dogs") | Puzzle collab | [Observed A2, per Claude's research] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Nerissa | [Ayame file AY4] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
+
+### from Yukihana Lamy
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Takanashi Kiara, Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### from Concerts and Live Events
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-,"

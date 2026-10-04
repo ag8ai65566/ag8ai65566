@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git a2ead9c.
+Snapshot: git 3bd6202.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|holoJustice|Grem Reaper|Immerhater|Autofister|TimeChaser|Gigi Murin|Erby Berby|Bloodraven|Da Fister|Elizabeth|Gi Murin|Raviolin|Cecilia|Justice|GeeGee|Lizzie|G Pain|HoloEU|B.F.F|Raora|Cece|Rara|Ceci|CCGG|LYRA|RPGG|Gigi|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|holoJustice|Grem Reaper|Immerhater|TimeChaser|Bloodraven|Erby Berby|Gigi Murin|Autofister|Da Fister|Elizabeth|Gi Murin|Raviolin|Cecilia|Justice|G Pain|Lizzie|HoloEU|GeeGee|B.F.F|Raora|Cece|Gigi|RPGG|Rara|CCGG|Ceci|LYRA|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -63,6 +63,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Houshou-Marine.md › [SW] Background`: (2024); she features in the horror game "Truth of Beauty Witch," which Calli, and Bae with Mumei, played, and she sang for Elizabeth's 2026 birthday.
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "IT'S LOVE" with Korone for Elizabeth's 2026 birthday.
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Elizabeth Rose Bloodflame | — | "IT'S LOVE" cover with Elizabeth and Korone for Elizabeth's 2026 birthday (2026-05-12) | [MA5 iwnHChZq0N8] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: Gigi Murin: ENReco Cerulean Cup guildmate.
@@ -70,7 +71,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/IRyS.md › [SW] Relationships`: Cecilia Immergreen: Elden Ring Nightreign with Bijou (2025).
 - `bible/characters/IRyS.md › [SW] Relationships`: Gigi Murin, Ouro Kronii and FUWAMOCO: "Bright Tonight"
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
-- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 (2024-11-25). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
+- `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 
 ### from Kazama Iroha
 - `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
@@ -157,7 +158,9 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: FUWAMOCO: "SHALLYS" with Cecilia on the same stage.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Cecilia Immergreen: Stranger of Paradise partner (2025), who plays up a rivalry.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gigi Murin and Raora Panthera: Blood Typers with Gigi, Puyo Puyo Tetris 2 with Raora, and a sponsored Monster Hunter Wilds launch with both and Bijou (2025).
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel, Kikirara Vivi and Elizabeth Rose Bloodflame: Mumei's Gartic Phone (2025).
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai; a joking rival (secondary accounts) | Cecilia framed a May 2026 music-making stream as preparing a birthday tune for her rival (title wording; Ina's participation not established). | [Archive metadata, ckworks DE7WL-YLk8Y] |
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Elizabeth Rose Bloodflame | Justice kouhai | Co-players in Mumei's Gartic Phone EN + ID + JP, Day 2 (2025-04-14). | [Archive metadata TIE-014] |
 
 ### from Ouro Kronii
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Gigi Murin: Fatal Fury and Hytale ("TimeChaser"; "Clockwork Orange" with Cecilia), "MONSTER" on stage and "Bright Tonight"
@@ -205,6 +208,9 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gigi Murin: in the ENigmatic Recollection role-play story Gigi's knight Gonathon married Ame's Jyonathan ("ClueChaser," a secondary pair name).
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024).
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Gigi Murin | Justice member | ENreco roleplay (Jyonathan) | [Observed A2 infobox and §Relationships, per Claude's research] |
+
+### from Yukihana Lamy
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Takanashi Kiara, Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › [SW] Description`: With -Justice-, their in-story "guards": Gigi and Cecilia form the quartet GAGA with Bijou and Shiori, Raora sang with FUWAMOCO in 2026, and Elizabeth is Nerissa's "mortal enemy" in their lore and her duo partner.
