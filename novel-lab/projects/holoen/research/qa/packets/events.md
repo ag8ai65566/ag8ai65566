@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git 19dba43. Every dated row from every bible file's dossier
+Snapshot: git d952b79. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
@@ -227,10 +227,10 @@ search the file for the row text to see its context.
 - 2022-01-30 [day] First CHADCast — `bible/world/IRyS-and-Nerissa-Pairs.md`
 
 ### 2022-02
-- 2022-02-03 [day] "Q" with Mori Calliope (DECO*27) — `bible/characters/Gawr-Gura.md` ([Official G15])
+- 2022-02 [month] "Q" music video with Mori Calliope; exact MV date and time zone remain unresolved — `bible/characters/Gawr-Gura.md` ([Archive metadata G15; https://archive.ragtag.moe/watch?v=aetXqd9B8WE, checked 2026-10-04])
 - 2022-02-19 [day] Calli's HOLO ENGLISH LESSON #01 with Ina and Fubuki — `bible/characters/Houshou-Marine.md` ([MA5 bfUEbp3xk4o])
 - 2022-02 [month] Nintendo Direct "TOMORROW?!" reaction — `bible/characters/Ninomae-Inanis.md` ([Observed I23])
-- 2022-02-03 [day] "Q" (with DECO*27) — `bible/world/Bone-Bros.md`
+- 2022-02 [month] "Q" music video; exact MV date and time zone remain unresolved — `bible/world/Bone-Bros.md`
 - 2022-02-25 [day] Ame's surprise karaoke off-collab (with Ina, Kronii, Fauna, Mumei) — `bible/world/OctoClock.md`
 - 2022-02-24 [day] Uruha Rushia leaves hololive — `bible/world/hololive-History-to-2022.md`
 

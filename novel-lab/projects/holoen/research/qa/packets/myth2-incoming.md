@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 19dba43.
+Snapshot: git d952b79.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|City Pop Shark|Gura and Calli|Watson Amelia|Amelia Watson|The Fish Tank|Gura and Ame|Ame and Gura|Gremlin Ame|Gawr Gura|Goobidiba|Same-chan|ワトソン・アメリア|Bone Bros|Samegaki|holoMyth|HoloMyth|amesame|Amechan|AmeSame|がうる・ぐら|Amelia|Gooba|Myth|Gura|Goob|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|City Pop Shark|Gura and Calli|Calli and Gura|Amelia Watson|Watson Amelia|The Fish Tank|Ame and Gura|Gura and Ame|Gremlin Ame|Same-chan|ワトソン・アメリア|Gawr Gura|Goobidiba|Bone Bros|Samegaki|HoloMyth|holoMyth|amesame|AmeSame|Amechan|Amelia|がうる・ぐら|Gooba|Goob|Myth|Gura|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -162,9 +162,8 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | The ocean unit's official 2023 roster: Aqua, Marine, Chloe, Gura and Ina | [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/] |
 
 ### from Shiori Novella
-- `bible/characters/Shiori-Novella.md › [SW] Relationships`: Watson Amelia: a VRChat aquarium visit with "Ame Senpai."
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Gawr Gura (graduated): a fellow "Scarlet Wand" guildmate in ENigmatic Recollection, with Nerissa.
-- `bible/characters/Shiori-Novella.md › Relationship Map`: | Watson Amelia | Senior | "Ame Senpai's Aquarium Visit" in VRChat (2024-12-02) | [Observed SN3] |
+- `bible/characters/Shiori-Novella.md › Relationship Map`: | Watson Amelia | Senior | Shiori's VRChat aquarium stream, uploaded 2024-12-02, references Ame in its title; Ame's participation is unverified. | [Observed SN3] |
 
 ### from Shishiro Botan
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: (secondary) and an Among Us co-player in the Myth × fifth-generation collab (2020), with Watson Amelia.
@@ -199,7 +198,7 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › With Myth`: - **Takanashi Kiara:** hosted all five on HOLOTALK; an occult handcam off-collab with Shiori ("#shiotori," 2024-07-12); Baldur's Gate 3 with Bijou, Calli and Nerissa ("Killing, Two Birds, with One Stone," 2023); Bijou was her 2026 Serendipity partner ("Rocku Wawa," and a running "67" joke); Bijou recalls Kiara as "really encouraging and helpful" when Kiara asked her to perform a song with Kiara and Ame whose choreography was one of the hardest she had learned. [Official S4] [Observed S1]
-- `bible/world/Advent-Pairs.md › With Myth`: - **Watson Amelia:** "Detective Dogs" with FUWAMOCO (Escape Simulator, 2024); Shiori's VRChat aquarium visit with her (2024). [Observed S1]
+- `bible/world/Advent-Pairs.md › With Myth`: - **Watson Amelia:** "Detective Dogs" with FUWAMOCO (Escape Simulator, 2024). [Observed S1]
 - `bible/world/Advent-Pairs.md › With Myth`: - **Gawr Gura (graduated):** fellow "Scarlet Wand" guildmate of Shiori and Nerissa in the ENigmatic Recollection story. [Observed S2 Shiori, secondary]
 
 ### from Concerts and Live Events
@@ -261,12 +260,12 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2024-07-05 | hololive night at Dodger Stadium | Suisei, Gura, Pekora |
 
 ### from Justice Pairs
-- `bible/world/Justice-Pairs.md › With Myth`: - **Gawr Gura (graduated):** Keep Talking and Nobody Explodes and The Forest with Cecilia (2025-02); R.E.P.O. with Raora, Kiara and Kronii (2025-04-13). **Watson Amelia (affiliate):** in ENReco's role-play story, Gigi's Gonathon and Ame's Jyonathan marry (secondary; "ClueChaser"); Borderlands 2 with Cecilia, Gigi and Mumei (2024-08-09). [Observed S1; S2]
+- `bible/world/Justice-Pairs.md › With Myth`: - **Gawr Gura (graduated):** Keep Talking and Nobody Explodes and The Forest with Cecilia (2025-02); R.E.P.O. with Raora, Kiara and Kronii (2025-04-13). **Watson Amelia (affiliate):** in ENReco's role-play story, Gigi and Ame play knights in a fictional marriage storyline (secondary; "ClueChaser"); Borderlands 2 with Cecilia, Gigi and Mumei (2024-08-09). [Observed S1; S2]
 
 ### from Myth and Kronii: Other Pairs
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Other Names`: Kiara and Ame, Ame and Kiara, Kiara and Gura, Gura and Kiara, Calli and Ina, Ina and Calli, Calli and Ame, Ame and Calli, Ina and Ame, Ame and Ina, Ina and Gura, Gura and Ina, Kiara and Kronii, Kronii and Kiara, Gura and Kronii, Kronii and Gura
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: The rest of the web among the five Myth members and Kronii.
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024; Ame on a reunion: "Kiara like, threw herself at me… she hugged me!"
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Kiara and Gura: Kiara calls Gura "Goobidiba" and taught her German and Japanese, swears included; Gura's Minecraft prank filled Kiara's KFP back room with chickens; Gura was HOLOTALK's 34th guest the day before she graduated.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ame: early Clubhouse 51 duels.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab.
@@ -274,7 +273,7 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Gura and Kronii: fan unit SNOTCast; in Gura's last months Kronii was one of her regular partners ("I Play, She Watches (She's Scared)").
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Rules`: In the 2026 baseline, pairs with Gura are memories and callbacks, and pairs with Ame are guest appearances.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Rules`: Nicknames are used as each member uses them (Kiara's "Goobidiba,"
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Ame** (20 / 26 / 30 / 8 / 9 / 1): Ame is Kiara's EN oshi; Kiara calls herself "#1 Ame gosling" and "#1 Teamate" and credits Ame for help with her 3D productions. Ame made the intro video for Kiara's talk show HOLOTALK (2020) and was its 31st guest (2024-09-22); they did a 3D off-collab "In Ame's awesome studio" (2023-06). Ame on a reunion: "Kiara like, threw herself at me… she hugged me!" Unverified: secondary accounts report Ame appearances at Kiara's 2025 spring concert and 2026 birthday live; the cited primary material has not been verified here. [Observed S2 Kiara §Likes and dislikes, §2020; S3 Ame §Quotes, §2025–§2026, secondary; S1]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Ame** (20 / 26 / 30 / 8 / 9 / 1): Ame is Kiara's EN oshi; Kiara calls herself "#1 Ame gosling" and "#1 Teamate" and credits Ame for help with her 3D productions. Ame made the intro video for Kiara's talk show HOLOTALK (2020) and was its 31st guest (2024-09-22); they did a 3D off-collab "In Ame's awesome studio" (2023-06). Unverified: secondary accounts report Ame appearances at Kiara's 2025 spring concert and 2026 birthday live; the cited primary material has not been verified here. [Observed S2 Kiara §Likes and dislikes, §2020; S3 Ame §Quotes, §2025–§2026, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Gura** (59 / 25 / 11 / 10 / 8 / 6): Kiara calls her "Goobidiba" and taught her German and Japanese, German swears included, tricking her into singing on lesson streams; Gura's 2020 Minecraft prank filled Kiara's KFP back room with chickens. Gura was HOLOTALK's 34th guest on 2025-04-30, the eve of her graduation ("three four," at last). Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. [Observed S2 §KFP, §Miscellaneous; S4 Gura §Gura's antics, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ame** (24 / 23 / 14 / 6 / 6 / 0): early Clubhouse 51 duels; the MV of Calli-written "Myth or Treat" premiered on Ame's channel (2021); [Unverified: a reported cameo in Calli's 2026 charity stream lacks a confirmed segment locator.] [Observed Ame file A20; S3 §2021, §2026, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Ame** (29 / 30 / 9 / 4 / 4 / 0): Ina designed Bubba; Ame's "Amenade" cocktail traces back to a Japanese snack tasting with Ina; a "LOSER BUYS DINNER!!!!!" off-collab (2023-02-23); Ame aims blunt PvP taunts at her. [Observed S3 §Miscellaneous; Ame file; S1]
@@ -315,14 +314,14 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 - `bible/world/Time-Duo.md › [SW] Other Names`: Ame and Kronii, Kronii and Ame
 - `bible/world/Time-Duo.md › [SW] Description`: Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time.
 - `bible/world/Time-Duo.md › [SW] Description`: Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed.
-- `bible/world/Time-Duo.md › [SW] Description`: Ame has joked that Kronii "dislikes everything she likes," and Ame's alternate-Ame lore includes an "Epic Ame War" against Kronii that messed up time.
+- `bible/world/Time-Duo.md › [SW] Description`: Ame has joked that Kronii "dislikes everything she likes,".
 - `bible/world/Time-Duo.md › [SW] Description`: On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii.
 - `bible/world/Time-Duo.md › [SW] Description`: Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends."
 - `bible/world/Time-Duo.md › [SW] Rules`: Ame plays the guilty borrower, Kronii the unimpressed Warden.
 - `bible/world/Time-Duo.md › [SW] Rules`: In the 2026 baseline Ame appears as a guest, not a regular collab partner.
 - `bible/world/Time-Duo.md › How It Works`: - **The lore joke:** when Kronii was announced (2021) and her account was briefly restricted by the rush of followers, Ame joked "twitter is protecting me from a certain time lord" and "i swear i'll give it back soon...." — as if her time travel were borrowed from the Warden. [Observed S2 §Lore, secondary]
 - `bible/world/Time-Duo.md › How It Works`: - **Opposites (a joke):** Ame joked that Kronii "dislikes everything she likes." [Observed S2 §Likes and dislikes, secondary]
-- `bible/world/Time-Duo.md › How It Works`: - **Lore chaos:** Ame's alternate-Ame lore includes an "Epic Ame War" between Kronii and many Ames that "messed up" time, which Ame compared to one bear-sized duck against fifty duck-sized bears. [Observed S3 §Alter Ames, secondary]
+- `bible/world/Time-Duo.md › How It Works`: - **Unverified lore candidate:** Secondary accounts describe an alternate-Ame conflict involving Kronii. Its original statement and continuity scope remain unverified; it is outside the current baseline. [Observed S3 §Alter Ames, secondary; Amelia dossier, Arc]
 - `bible/world/Time-Duo.md › How It Works`: - **On stream (archive, S1):** Ame's surprise karaoke off-collab with Ina, Kronii, Fauna and Mumei (2022-02-25, per S3); 5D Chess "I Don't Understand With @WatsonAmelia" (Kronii, 2023-04-08); Escape the Backrooms with Calli (2024-09-22) and Deep Rock Galactic with Kiara and Gura (2024-09-30, Ame's last week of regular streams).
 - `bible/world/Time-Duo.md › How It Works`: - **2026:** Ame guested at Kronii's March 2026 birthday live, "The Goddess Descends" (2026-03-13 in the Americas, 03-14 in Japan; "Fall in Grace" in an earlier note refers to the same broadcast). [Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711; S3 §2026, secondary]
 - `bible/world/Time-Duo.md › History`: | 2024-09 | Backrooms and DRG in Ame's last week | — |

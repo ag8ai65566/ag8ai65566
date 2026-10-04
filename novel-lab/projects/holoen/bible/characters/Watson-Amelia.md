@@ -139,7 +139,7 @@ lost and often ignores hints. [Observed A2 §Personality and §Likes and dislike
   - "…You have a lot of yummy food, watch a lot of fun streams. Make money, get bitches. Thank you."
     (a New Year wish; censored in source) [also A15]
   - Naming a Minecraft mine "Gura's Backdoor ( ͡° ͜ʖ ͡°)". [A2 §Personality]
-  - "Oh, my tiddie hurts... Wait, why did I say that out loud?" [A2 §Quotes]
+
   - Teasing innuendo with friends, e.g. "Nice view from here" under Gura on a ladder. [Observed A10,
     secondary]
 - **Vocabulary / fillers:** very frequent "okay" (about 65 an hour in A23, first-model count), "oh," "like," "uh," "yeah"; "all right"
@@ -258,15 +258,15 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 
 | Person | Public relationship | What happens on stream | Source |
 |---|---|---|---|
-| Gawr Gura (graduated) | Myth genmate ("AmeSame") | Close friends per the wiki; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
+| Gawr Gura (graduated) | Myth genmate ("AmeSame") | Frequent early collaborators; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
 | Mori Calliope | Myth genmate | Clubhouse 51 games [Observed A20]. [Unverified, title only: a surprise "ara ara" scare] | [A20; A6 clip title] |
 | Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her (a profane PvP threat reported by a secondary clip title; exact wording unverified) | [Observed A2 §Mascots and fans and §Quotes; A14] |
-| Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material; "Kiara like, threw herself at me… she hugged me!" | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
+| Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
 | Ouro Kronii | Promise member ("Time Duo") | Time traveler vs. Warden of Time; Ame guested at Kronii's 2026 3D birthday live | [Observed A2 §Relationships; Kronii file K33] |
 | Akai Haato (Haachama) | JP senior | Clubhouse 51 games ("AMECHAMA") | [Observed A21] |
 | Robocosan | JP senior | Horror collab with "Roboco-senpai" | [Observed A17 title] |
 | FUWAMOCO | Advent members ("Detective Dogs") | Puzzle collab | [Observed A2, per Claude's research] |
-| Gigi Murin | Justice member | ENreco roleplay (Jyonathan) | [Observed A2 infobox and §Relationships, per Claude's research] |
+| Gigi Murin | Justice member | ENReco fictional knight-marriage storyline; character-name variants remain unverified | [Observed A2 infobox and §Relationships, per Claude's research] |
 | Hakos Baelz | Council kouhai | Archived metadata: "BATHROOM REVIEWS" ("#BaethingAme," 2022-05-07), a VRChat Holoween escape-room behind-the-scenes (2022), an Apex off-collab ("2 players. 1 champion.," 2023) | [Bae file HB3, HB5, HB8, HB20] |
 | Kazama Iroha, Takane Lui | JP members | "KoMeHa" with Iroha and Kobo Kanaeru (VALORANT, 2022-06-04); Apex with Lui and Iofi (2022-01-19) | [S1 tGVhLibbYL0, Mory0I9vXtI] |
 | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Nerissa | [Ayame file AY4] |
@@ -311,9 +311,8 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 - Fans: Teamates; members: Investigators / Investamigators / Investamigatorators; mascot Bubba; emoji 🔎.
   [Official A1] [Observed A2 §Mascots and fans]
 - Alternate personas (excluded from name matching unless a story uses them): Smol Ame, Armando Watson,
-  Jyonathan Watson, Bee Ame. [Observed A2 infobox and §Smol Ame]
-- Excluded on purpose: real-person details (pets behind the mascot, family, health, ancestry) that the
-  wiki mentions.
+  Bee Ame. [Observed A2 infobox and §Smol Ame]
+- Private-life material is excluded under the project's scope rule.
 
 ## Sources (checked 2026-09-30)
 Clips are cited by their YouTube titles unless captions or a timestamp are named. No recording was checked
@@ -394,7 +393,7 @@ Proposed ElevenLabs v4 performance directions for her dialogue, for an original 
 Ame wants to crack every case and every game her own way, make entertaining experiments for her Teamates, and help her friends, whether that means fixing their tech, building something new with them or raising money for a good cause.
 
 ## [SW] Relationships
-Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs. Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week. FUWAMOCO: "Detective Dogs" (Escape Simulator, 2024: "blondes can solve any puzzle"). Shiori Novella: a VRChat aquarium visit with "Ame Senpai" (2024). Koseki Bijou: Overwatch and Apex (2023). Gigi Murin: in the ENigmatic Recollection role-play story Gigi's knight Gonathon married Ame's Jyonathan ("ClueChaser," a secondary pair name). Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024). Hakos Baelz: bathroom reviews and a Holoween escape-room behind-the-scenes (2022), and an Apex off-collab (2023). Kazama Iroha: VALORANT with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa"). Takane Lui: Apex with Airani Iofifteen (2022). Nakiri Ayame and Nerissa Ravencroft: 2023 Sports Festival white-team teammates. Shishiro Botan and Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
+Gawr Gura (graduated): a Myth genmate and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs" (2024). Mori Calliope: Myth genmate and Clubhouse 51 opponent. Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her. Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions. Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live. Haachama and Roboco-senpai: Japanese seniors from early collabs. Nanashi Mumei (graduated 2025): Overwatch and VR field trips, and "ANIMALS with Ame & Moom" in Ame's last regular week. FUWAMOCO: "Detective Dogs" (Escape Simulator, 2024: "blondes can solve any puzzle").  Koseki Bijou: Overwatch and Apex (2023). Gigi Murin: in the ENigmatic Recollection role-play story Gigi and Ame played knights in a fictional marriage storyline ("ClueChaser," a secondary pair name). Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024). Hakos Baelz: bathroom reviews and a Holoween escape-room behind-the-scenes (2022), and an Apex off-collab (2023). Kazama Iroha: VALORANT with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa"). Takane Lui: Apex with Airani Iofifteen (2022). Nakiri Ayame and Nerissa Ravencroft: 2023 Sports Festival white-team teammates. Shishiro Botan and Yukihana Lamy: the Myth × fifth-generation Among Us collab (2020).
 
 ## [SW] Secrets
 (none)
@@ -506,6 +505,7 @@ Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeS
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-018 (a song performance with Bijou and Kiara, undated).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
 - **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH4-QUOTE-001 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:CLAUDE-SCOPE-002, myth2:MYTH2-EVENT-001, myth2:MYTH2-SCOPE-001, myth2:MYTH2-SCOPE-003, myth2:MYTH2-TIE-001, myth2:myth3:MYTH-EVENT-001, myth2:myth3:MYTH-QUOTE-002 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage

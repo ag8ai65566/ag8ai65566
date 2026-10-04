@@ -1,10 +1,10 @@
 # Audit packet: promise
 
-Snapshot: git 19dba43. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git d952b79. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Ouro-Kronii.md` 4dffa89f761b; `bible/characters/IRyS.md` 868c53e2e031; `bible/characters/Ceres-Fauna.md` 80c27935baac; `bible/characters/Nanashi-Mumei.md` 76cb7d253ec8; `bible/characters/Hakos-Baelz.md` c4e2bef9231c; `bible/world/hololive--Promise.md` b80a53219f8b; `bible/world/Time-Duo.md` 329fef0a8daa; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` 6407b5c4a155; `bible/world/Fauna-and-Mumei-Pairs.md` 537910125c8d; `bible/world/IRyS-and-Nerissa-Pairs.md` 1a33b27ee01c; `bible/world/Hakos-Baelz-Pairs.md` ed9cffbde495
+Owned files (sha256): `bible/characters/Ouro-Kronii.md` 4dffa89f761b; `bible/characters/IRyS.md` 868c53e2e031; `bible/characters/Ceres-Fauna.md` 80c27935baac; `bible/characters/Nanashi-Mumei.md` 76cb7d253ec8; `bible/characters/Hakos-Baelz.md` c4e2bef9231c; `bible/world/hololive--Promise.md` b80a53219f8b; `bible/world/Time-Duo.md` ed829394e292; `bible/world/Time-and-Death.md` e1239bb9b626; `bible/world/OctoClock.md` 6407b5c4a155; `bible/world/Fauna-and-Mumei-Pairs.md` 537910125c8d; `bible/world/IRyS-and-Nerissa-Pairs.md` 1a33b27ee01c; `bible/world/Hakos-Baelz-Pairs.md` ed9cffbde495
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -182,7 +182,7 @@ Owned files (sha256): `bible/characters/Ouro-Kronii.md` 4dffa89f761b; `bible/cha
 
 ### Time Duo — `bible/world/Time-Duo.md`
 **[SW] Other Names:** Ame and Kronii, Kronii and Ame
-**[SW] Description:** Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes," and Ame's alternate-Ame lore includes an "Epic Ame War" against Kronii that messed up time. On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
+**[SW] Description:** Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes,". On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
 **[SW] Rules:** No one actually controls or travels through time; it is a shared joke. Ame plays the guilty borrower, Kronii the unimpressed Warden. In the 2026 baseline Ame appears as a guest, not a regular collab partner.
 **Dossier · History:**
 | Date | Event | Trace left |

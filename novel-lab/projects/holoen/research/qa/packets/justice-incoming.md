@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git 19dba43.
+Snapshot: git d952b79.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|holoJustice|FiddleFlame|Immerhater|Autofister|Bloodraven|Gigi Murin|TimeChaser|Erby Berby|Elizabeth|Da Fister|Gi Murin|Raviolin|Justice|Cecilia|Lizzie|G Pain|HoloEU|GeeGee|Raora|B.F.F|Ceci|RPGG|Cece|Gigi|LYRA|CCGG|Rara|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|holoJustice|Grem Reaper|Bloodraven|Autofister|TimeChaser|Gigi Murin|Immerhater|Erby Berby|Elizabeth|Da Fister|Gi Murin|Raviolin|Justice|Cecilia|Lizzie|G Pain|HoloEU|GeeGee|Raora|B.F.F|Cece|Rara|LYRA|RPGG|Gigi|Ceci|CCGG|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -205,9 +205,9 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Nerissa, Bijou, Gigi, Raora | kouhai | Their channels posted animated "Soar" shorts crediting external motion creators (2026) | [LU5] |
 
 ### from Watson Amelia
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gigi Murin: in the ENigmatic Recollection role-play story Gigi's knight Gonathon married Ame's Jyonathan ("ClueChaser," a secondary pair name).
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gigi Murin: in the ENigmatic Recollection role-play story Gigi and Ame played knights in a fictional marriage storyline ("ClueChaser," a secondary pair name).
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024).
-- `bible/characters/Watson-Amelia.md › Relationship Map`: | Gigi Murin | Justice member | ENreco roleplay (Jyonathan) | [Observed A2 infobox and §Relationships, per Claude's research] |
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Gigi Murin | Justice member | ENReco fictional knight-marriage storyline; character-name variants remain unverified | [Observed A2 infobox and §Relationships, per Claude's research] |
 
 ### from Yukihana Lamy
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Takanashi Kiara, Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |

@@ -24,7 +24,7 @@ Relationship web.
 - **Kiara and Ame** (20 / 26 / 30 / 8 / 9 / 1): Ame is Kiara's EN oshi; Kiara calls herself "#1 Ame
   gosling" and "#1 Teamate" and credits Ame for help with her 3D productions. Ame made the intro video for
   Kiara's talk show HOLOTALK (2020) and was its 31st guest (2024-09-22); they did a 3D off-collab "In
-  Ame's awesome studio" (2023-06). Ame on a reunion: "Kiara like, threw herself at me… she hugged me!"
+  Ame's awesome studio" (2023-06).
   Unverified: secondary accounts report Ame appearances at Kiara's 2025 spring concert and 2026 birthday live; the cited primary material has not been verified here.
   [Observed S2 Kiara §Likes and dislikes, §2020; S3 Ame §Quotes, §2025–§2026, secondary; S1]
 - **Kiara and Gura** (59 / 25 / 11 / 10 / 8 / 6): Kiara calls her "Goobidiba" and taught her German and
@@ -120,7 +120,7 @@ Relationship
 Kiara and Ame, Ame and Kiara, Kiara and Gura, Gura and Kiara, Calli and Ina, Ina and Calli, Calli and Ame, Ame and Calli, Ina and Ame, Ame and Ina, Ina and Gura, Gura and Ina, Kiara and Kronii, Kronii and Kiara, Gura and Kronii, Kronii and Gura
 
 ## [SW] Description
-The rest of the web among the five Myth members and Kronii. Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024; Ame on a reunion: "Kiara like, threw herself at me… she hugged me!" Kiara and Gura: Kiara calls Gura "Goobidiba" and taught her German and Japanese, swears included; Gura's Minecraft prank filled Kiara's KFP back room with chickens; Gura was HOLOTALK's 34th guest the day before she graduated. Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns. Calli and Ame: early Clubhouse 51 duels. Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab. Ina and Gura: the official ocean unit UMISEA (2021); Ina performed a protective mock-threat bit about Gura. Kiara and Kronii: Kiara was a fan before Kronii debuted and calls her "quasoni." Gura and Kronii: fan unit SNOTCast; in Gura's last months Kronii was one of her regular partners ("I Play, She Watches (She's Scared)").
+The rest of the web among the five Myth members and Kronii. Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024. Kiara and Gura: Kiara calls Gura "Goobidiba" and taught her German and Japanese, swears included; Gura's Minecraft prank filled Kiara's KFP back room with chickens; Gura was HOLOTALK's 34th guest the day before she graduated. Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns. Calli and Ame: early Clubhouse 51 duels. Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab. Ina and Gura: the official ocean unit UMISEA (2021); Ina performed a protective mock-threat bit about Gura. Kiara and Kronii: Kiara was a fan before Kronii debuted and calls her "quasoni." Gura and Kronii: fan unit SNOTCast; in Gura's last months Kronii was one of her regular partners ("I Play, She Watches (She's Scared)").
 
 ## [SW] Rules
 In the 2026 baseline, pairs with Gura are memories and callbacks, and pairs with Ame are guest appearances. Nicknames are used as each member uses them (Kiara's "Goobidiba," "quasoni"). All of these are friendships.
@@ -146,6 +146,7 @@ A KFP back room full of chickens; a hand-drawn Death Sensei and a Bubba sketch; 
 - **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:MYTH-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit myth1, hand-applied by Claude:** myth1:MYTH-CREDIT-002 (lyrics credit).**
 - **2026-10-03, cross-card QA audit myth4, hand-applied by Claude:** myth4:MYTH-QUOTE-001 and MYTH-QUOTE-004 at every occurrence (unverified quotes described instead of quoted).
+- **2026-10-03, cross-card QA audit myth2, hand-applied by Claude:** myth3:MYTH-QUOTE-002 at both occurrences (an off-stream physical-interaction anecdote removed).
 
 ## Open Questions
 1. "quasoni" appears in Kiara's stream titles for Kronii; its origin was not found.

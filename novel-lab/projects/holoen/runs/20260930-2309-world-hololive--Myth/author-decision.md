@@ -4,3 +4,4 @@
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 ef5715a5ecbe）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 2093eaad2fde）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 816b0169918d）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 522515814ba5）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude

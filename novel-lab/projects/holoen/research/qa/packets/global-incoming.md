@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 19dba43.
+Snapshot: git d952b79.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|the merger|SUPER EXPO|world tour|EN concert|Holodeath|PavoNashi|aftertalk|HOLOTORI|MoRikka|K.I.R.A|HoloJEI|IRySora|soranii|3D live|OKFAIR|V3LVET|KoMeHa|UMISEA|LYRA)(
+Matched names: loEN's later generations|hololive History 2023-2026|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|the merger|world tour|SUPER EXPO|EN concert|Holodeath|PavoNashi|aftertalk|HOLOTORI|MoRikka|3D live|soranii|HoloJEI|K.I.R.A|IRySora|KoMeHa|V3LVET|OKFAIR|UMISEA|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -390,7 +390,7 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 
 ### from Myth and Kronii: Other Pairs
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina performed a protective mock-threat bit about Gura.
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Ame** (20 / 26 / 30 / 8 / 9 / 1): Ame is Kiara's EN oshi; Kiara calls herself "#1 Ame gosling" and "#1 Teamate" and credits Ame for help with her 3D productions. Ame made the intro video for Kiara's talk show HOLOTALK (2020) and was its 31st guest (2024-09-22); they did a 3D off-collab "In Ame's awesome studio" (2023-06). Ame on a reunion: "Kiara like, threw herself at me… she hugged me!" Unverified: secondary accounts report Ame appearances at Kiara's 2025 spring concert and 2026 birthday live; the cited primary material has not been verified here. [Observed S2 Kiara §Likes and dislikes, §2020; S3 Ame §Quotes, §2025–§2026, secondary; S1]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Ame** (20 / 26 / 30 / 8 / 9 / 1): Ame is Kiara's EN oshi; Kiara calls herself "#1 Ame gosling" and "#1 Teamate" and credits Ame for help with her 3D productions. Ame made the intro video for Kiara's talk show HOLOTALK (2020) and was its 31st guest (2024-09-22); they did a 3D off-collab "In Ame's awesome studio" (2023-06). Unverified: secondary accounts report Ame appearances at Kiara's 2025 spring concert and 2026 birthday live; the cited primary material has not been verified here. [Observed S2 Kiara §Likes and dislikes, §2020; S3 Ame §Quotes, §2025–§2026, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
 
@@ -442,7 +442,8 @@ Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and 
 - `bible/world/hololive--Justice.md › Hard Facts`: - Serendipity 2026 units (official billing): Autofister, Bloodraven, B.F.F.
 
 ### from hololive -Myth-
-- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
+- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 PDT, Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
+- `bible/world/hololive--Myth.md › Members and Status`: - Watson Amelia: concluded regular activities on 2024-09-30 and remains an affiliate. Her March 2026 appearance at Kronii's birthday live is recorded under K33. Reported appearances at Kiara's 2025 and 2026 concerts and Calli's 2026 charity stream remain unverified pending direct segment evidence. [Official Ame A4; inherited Kronii K33; unverified Ame A8/A19]
 - `bible/world/hololive--Myth.md › History`: | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
 - `bible/world/hololive--Myth.md › Conflicts and Story Hooks`: 4. The 6th anniversary 3D live: nerves, rehearsal jokes, a message for the absent two.
 

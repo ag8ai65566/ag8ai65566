@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git 19dba43. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git d952b79. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Hakos Baelz
@@ -390,7 +390,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2022-03-04 | Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha | [LA5 X492n37brRU] |
 
 ### Gawr Gura × Mori Calliope
-- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert."
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert.
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Mori Calliope, Gawr Gura (graduated) | — | HOLO ENGLISH LESSON #02 (2022) | [IR5] |
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022).
 - `bible/characters/Laplus-Darknesss.md › Background Timeline`: | 2022-03-04 | Calli's "HOLO ENGLISH LESSON #02" with Gura and Iroha | [LA5 X492n37brRU] |
@@ -402,11 +402,13 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Bone-Bros.md › Conflicts and Story Hooks`: 1. (Before 2025-05) Gura pranks Calli's Minecraft base; Calli plots revenge on stream.
 - `bible/world/Bone-Bros.md › Conflicts and Story Hooks`: 2. (Proposed fiction, before 2025-05) Calli and Gura look back on their published duet "Q" on stream.
 - `bible/world/Bone-Bros.md › Hard Facts`: - 2026 baseline: Gura has graduated; Calli performed "Full Color" in 2024 and said she would keep singing it.
+- `bible/world/Bone-Bros.md › History`: | 2022-02 | "Q" music video; exact MV date and time zone remain unresolved | Calli–Gura duet; DECO*27 composed it and shared lyric credits with Calli |
 - `bible/world/Bone-Bros.md › History`: | 2024-09 | Calli performs Gura's "Full Color" at Myth's 4th-anniversary concert "The Show Goes On!" | Carrying her song |
 - `bible/world/Bone-Bros.md › How It Works`: - **"Dad":** Calli's "Dad" nickname is said to have started around Gura. [Unverified: stated in this project's Calli file from an earlier wiki reading; not found in the current revision]
 - `bible/world/Bone-Bros.md › How It Works`: - **"Full Color":** Gura's single was never released; Calli performed it at hololive English -Myth-'s fourth-anniversary concert "The Show Goes On!" (September 2024), and Calli and Kiara said they would keep singing it in karaoke. [Observed S2 §Miscellaneous, secondary; archived official broadcast CDljbqawDkw]
 - `bible/world/Bone-Bros.md › How It Works`: - **Early years:** they were the branch's first two to 1 million subscribers (Gura, then Calli in January 2021) and were named Tokyo Tourism Ambassadors together with Sakura Miko (2023-02-08). [Observed S2, S3, secondary]
 - `bible/world/Bone-Bros.md › How It Works`: - **Later collabs (archive, S1):** horror co-op (The Outlast Trials, 2023-05), group games (Liars Bar, 2025-01-22) and Calli's "One Last Minecraft Trip." on the Myth relay for Gura's farewell (2025-04-30).
+- `bible/world/Bone-Bros.md › How It Works`: - **Music:** Calli and Gura are the vocalists on "Q"; DECO*27 composed it and shares lyric credits with Calli. [Official https://hololive.hololivepro.com/en/music/q/; archived MV credits, C29; checked 2026-10-04]
 - `bible/world/Bone-Bros.md › How It Works`: - **The name:** "Bone Bros" is listed as a unit of Calli and Gura on both wiki pages. [Observed S2, S3 §Relationships, secondary]
 - `bible/world/Bone-Bros.md › How It Works`: - **Tone:** pranks and bickering with a big-sister/little-shark edge; Calli's gruff threats bounce off Gura's cheerful dumb-shark defiance. [Observed Calli file C4, Gura file G2, secondary; Adaptation for the "big-sister" shorthand]
 - `bible/world/Bone-Bros.md › [SW] Description`: Mori Calliope and Gawr Gura, the reaper and the shark: a bickering duo of pranks and jabs, where Calli's gruff big-sister threats bounce off Gura's cheerful dumb-shark defiance.
@@ -476,25 +478,25 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Myth.md › History`: | 2026-02 | Kiara's album includes "Blue & Gold," a tribute to Gura and Ame | Remembering the two |
 
 ### Gawr Gura × Watson Amelia
-- `bible/characters/Gawr-Gura.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate ("AmeSame") | Close friends; The Fish Tank talk show with staged arguments; Gura gets embarrassed when Ame praises her | [Observed G2 §Likes and dislikes and §Relationships; G6] |
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate ("AmeSame") | Frequent early collaborators; The Fish Tank talk show with staged arguments; Gura gets embarrassed when Ame praises her | [Observed G2 §Likes and dislikes and §Relationships; G6] |
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | Ongoing | Illustrator: drew Myth's intro art; designed the Takodachi [I2 §Mascot and fans], Bubba [Ame file A2 §Mascots and fans] and Death Sensei [Calli file C4 §Mascot and fans] (the wiki says all Myth mascots except Bloop); she drew chibi Bloop artwork, but Bloop's original design is not hers [Gura file G2] | [Observed I2 §Miscellaneous and §Mascot and fans, secondary] |
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German swears; Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
-- `bible/characters/Watson-Amelia.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate ("AmeSame") | Close friends per the wiki; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs"
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate ("AmeSame") | Frequent early collaborators; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gawr Gura (graduated): a Myth genmate and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs"
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Gawr Gura, Watson Amelia, Mori Calliope | Myth | Co-players in Nene's Myth × fifth-generation Among Us collab (2020-10-24). | [Archive metadata TIE-034 to 038] |
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Gawr Gura, Watson Amelia and Mori Calliope: co-players in the Myth × fifth-generation Among Us collab (2020).
 - `bible/world/AmeSame.md › Conflicts and Story Hooks`: 2. (Before 2024-10) Ame "fixes" Gura's stream setup and it's a prank.
 - `bible/world/AmeSame.md › Conflicts and Story Hooks`: 3. (Before 2025-05) Gura needs directions in Minecraft; Ame gives the worst ones on purpose.
 - `bible/world/AmeSame.md › Hard Facts`: - 2026 baseline: Ame is an affiliate and Gura has graduated; their history supplies callbacks and memories. Graduation establishes nothing about their private contact.
-- `bible/world/AmeSame.md › How It Works`: - **Close friends:** Gura and Ame are close friends who collabbed often and are "most commonly shipped together under the name… #amesame." [Observed S2 §Likes and dislikes, secondary]
 - `bible/world/AmeSame.md › How It Works`: - **Lore bits:** Ame "went back in time" to tell Gura she would be in hololive; Ame hopes to visit Atlantis "when the flat earth tips over and all the water spills out." [Observed S2 §Lore, Ame wiki §Time travel, secondary]
 - `bible/world/AmeSame.md › How It Works`: - **Pranks and gremlin energy:** endless Minecraft pranks (Ame named a mine "Gura's Backdoor ( ͡° ͜ʖ ͡°)"), lewd-adjacent teasing ("Nice view from here" under Gura on a ladder), and Gura's jinxes, e.g. "Somebody kill someone! Not me, right?" right before Ame killed her in Among Us. [Observed Ame file A2, A10; S2 §Gura's antics, secondary]
+- `bible/world/AmeSame.md › How It Works`: - **Public collaborations:** Gura and Ame frequently collaborated on stream; AmeSame is a fan pairing name. [Observed S2 §Likes and dislikes, secondary]
 - `bible/world/AmeSame.md › How It Works`: - **Sweet side:** Gura once sang "You Are My Sunshine" with the lyrics changed to be about Amelia; asked whose last name she'd take, she picked "Watson" because it "sounds more like a family name than Gawr." [Observed S2 §Likes and dislikes, secondary]
 - `bible/world/AmeSame.md › How It Works`: - **The Fish Tank (2021):** their talk show, built on staged arguments; when an argument turned into sudden sincere praise from Ame, Gura got visibly embarrassed. [Observed Gura file G6, secondary report]
 - `bible/world/AmeSame.md › [SW] Description`: At the 2026 baseline Ame is an affiliate and Gura has graduated; their shared history lives on in callbacks, their gold-and-blue colors, and Kiara's tribute song "Blue & Gold."
 - `bible/world/AmeSame.md › [SW] Description`: The sweet side showed too: Gura rewrote "You Are My Sunshine" about Amelia, picked "Watson" as the family name she'd take, and got flustered whenever a staged argument turned into real praise.
 - `bible/world/AmeSame.md › [SW] Description`: They hosted The Fish Tank, a talk show built on staged arguments, and pranked each other endlessly (Ame's Minecraft mine "Gura's Backdoor"; Ame killing Gura in Among Us right after Gura said "Not me, right?").
-- `bible/world/AmeSame.md › [SW] Description`: Watson Amelia and Gawr Gura, Myth's gremlin and Myth's shark, close Myth friends and frequent early collaborators.
+- `bible/world/AmeSame.md › [SW] Description`: Watson Amelia and Gawr Gura, Myth's gremlin and Myth's shark, Myth genmates and frequent early collaborators.
 - `bible/world/AmeSame.md › [SW] Other Names`: Ame and Gura, Gura and Ame, The Fish Tank, amesame
 - `bible/world/AmeSame.md › [SW] Rules`: At the 2026-09-30 baseline, Ame is an affiliate and Gura has graduated.
 - `bible/world/AmeSame.md › [SW] Rules`: Teasing can be crude and relentless, and Gura has become flustered when Ame turns teasing into praise.
@@ -590,7 +592,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Gigi Murin × Watson Amelia
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Watson Amelia (affiliate): Borderlands 2 with Gigi and Mumei (2024).
 - `bible/characters/Gigi-Murin.md › Relationship Map`: | Watson Amelia | Affiliate senior ("ClueChaser," secondary) | In ENReco, Gigi and Ame played knights in a fictional marriage storyline (character-name variants unverified: Gonathon/Jyonathan, "Jyon Watson") | [Observed GG2, secondary] |
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gigi Murin: in the ENigmatic Recollection role-play story Gigi's knight Gonathon married Ame's Jyonathan ("ClueChaser," a secondary pair name).
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gigi Murin: in the ENigmatic Recollection role-play story Gigi and Ame played knights in a fictional marriage storyline ("ClueChaser," a secondary pair name).
 
 ### Hakos Baelz × Hoshimachi Suisei
 - `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise unitmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
@@ -1242,7 +1244,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Myth.md › History`: | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 - `bible/world/hololive--Myth.md › History`: | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
 - `bible/world/hololive--Myth.md › Members and Status`: - Mori Calliope, Takanashi Kiara, Ninomae Ina'nis: active in hololive -Myth-.
-- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
+- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 PDT, Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" | — |
 
 ### Mori Calliope × Ouro Kronii
@@ -1338,7 +1340,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Myth.md › History`: | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 - `bible/world/hololive--Myth.md › History`: | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
 - `bible/world/hololive--Myth.md › Members and Status`: - Mori Calliope, Takanashi Kiara, Ninomae Ina'nis: active in hololive -Myth-.
-- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
+- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 PDT, Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" | — |
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2022-03-20 | hololive 3rd fes. "Link Your Wish" at Makuhari (#つながるホロライブ), day 2: Calli and Kiara perform | Calli: "My dream came true, my heart is exploding." Kiara: "MAKUHARI WAS ON FIRE!" [Observed—X posts, S4] |
 
@@ -1591,7 +1593,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Myth.md › History`: | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 - `bible/world/hololive--Myth.md › History`: | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
 - `bible/world/hololive--Myth.md › Members and Status`: - Mori Calliope, Takanashi Kiara, Ninomae Ina'nis: active in hololive -Myth-.
-- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
+- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 PDT, Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 EDT | World Tour '24 "-Soar!-" opens at Anime NYC (Javits Center) with Kiara, Ina and Bae among seven performers; it ends in Taipei on 2025-01-18 | — |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-03-27/28 PDT | Kiara and Ina's duo concert "Drawn to Dawn" (Los Angeles) | TakoTori on stage |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" | — |
@@ -1649,10 +1651,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Time-Duo.md › Hard Facts`: - Ame guested at Kronii's 3D birthday live on 2026-03-13.
 - `bible/world/Time-Duo.md › History`: | 2026-03-13 | Ame guests at Kronii's 3D birthday live | The affiliate's cameo |
 - `bible/world/Time-Duo.md › How It Works`: - **2026:** Ame guested at Kronii's March 2026 birthday live, "The Goddess Descends" (2026-03-13 in the Americas, 03-14 in Japan; "Fall in Grace" in an earlier note refers to the same broadcast). [Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711; S3 §2026, secondary]
-- `bible/world/Time-Duo.md › How It Works`: - **Lore chaos:** Ame's alternate-Ame lore includes an "Epic Ame War" between Kronii and many Ames that "messed up" time, which Ame compared to one bear-sized duck against fifty duck-sized bears. [Observed S3 §Alter Ames, secondary]
 - `bible/world/Time-Duo.md › How It Works`: - **Opposites (a joke):** Ame joked that Kronii "dislikes everything she likes." [Observed S2 §Likes and dislikes, secondary]
 - `bible/world/Time-Duo.md › How It Works`: - **The lore joke:** when Kronii was announced (2021) and her account was briefly restricted by the rush of followers, Ame joked "twitter is protecting me from a certain time lord" and "i swear i'll give it back soon...." — as if her time travel were borrowed from the Warden. [Observed S2 §Lore, secondary]
-- `bible/world/Time-Duo.md › [SW] Description`: Ame has joked that Kronii "dislikes everything she likes," and Ame's alternate-Ame lore includes an "Epic Ame War" against Kronii that messed up time.
+- `bible/world/Time-Duo.md › How It Works`: - **Unverified lore candidate:** Secondary accounts describe an alternate-Ame conflict involving Kronii. Its original statement and continuity scope remain unverified; it is outside the current baseline. [Observed S3 §Alter Ames, secondary; Amelia dossier, Arc]
+- `bible/world/Time-Duo.md › [SW] Description`: Ame has joked that Kronii "dislikes everything she likes,".
 - `bible/world/Time-Duo.md › [SW] Description`: Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends."
 - `bible/world/Time-Duo.md › [SW] Description`: On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii.
 - `bible/world/Time-Duo.md › [SW] Description`: Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed.
@@ -1688,8 +1690,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Takanashi Kiara, Shiori Novella, Raora Panthera | — | Team Bird teammates at the New Year Game Festival 2026 (2026-01-24; a team roster, no specific exchange). | [Secondary TIE-039 to 043] |
 
 ### Shiori Novella × Watson Amelia
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Shiori Novella: a VRChat aquarium visit with "Ame Senpai"
-- `bible/world/Advent-Pairs.md › With Myth`: - **Watson Amelia:** "Detective Dogs" with FUWAMOCO (Escape Simulator, 2024); Shiori's VRChat aquarium visit with her (2024). [Observed S1]
+- `bible/characters/Shiori-Novella.md › Relationship Map`: | Watson Amelia | Senior | Shiori's VRChat aquarium stream, uploaded 2024-12-02, references Ame in its title; Ame's participation is unverified. | [Observed SN3] |
 
 ### Shirogane Noel × Takanashi Kiara
 - `bible/characters/Shirogane-Noel.md › Story Engine`: 1. Noel offers to be Kiara's bodyguard knight at a concert and gets lost backstage.
@@ -1730,12 +1731,12 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate | Kiara's EN oshi ("#1 Ame gosling"), credited for help with 3D productions; Ame made HOLOTALK intro material | [Observed T2 §Likes and dislikes] [Official T9] |
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German swears; Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
-- `bible/characters/Watson-Amelia.md › Relationship Map`: | Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material; "Kiara like, threw herself at me… she hugged me!" | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug.
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions.
 - `bible/world/AmeSame.md › [SW] Description`: At the 2026 baseline Ame is an affiliate and Gura has graduated; their shared history lives on in callbacks, their gold-and-blue colors, and Kiara's tribute song "Blue & Gold."
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Conflicts and Story Hooks`: 1. Kiara interviews her oshi Ame on HOLOTALK and can't keep a straight face.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2024-09-22 | Ame on HOLOTALK | Kiara's oshi as guest |
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Ame** (20 / 26 / 30 / 8 / 9 / 1): Ame is Kiara's EN oshi; Kiara calls herself "#1 Ame gosling" and "#1 Teamate" and credits Ame for help with her 3D productions. Ame made the intro video for Kiara's talk show HOLOTALK (2020) and was its 31st guest (2024-09-22); they did a 3D off-collab "In Ame's awesome studio" (2023-06). Ame on a reunion: "Kiara like, threw herself at me… she hugged me!" Unverified: secondary accounts report Ame appearances at Kiara's 2025 spring concert and 2026 birthday live; the cited primary material has not been verified here. [Observed S2 Kiara §Likes and dislikes, §2020; S3 Ame §Quotes, §2025–§2026, secondary; S1]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Ame** (20 / 26 / 30 / 8 / 9 / 1): Ame is Kiara's EN oshi; Kiara calls herself "#1 Ame gosling" and "#1 Teamate" and credits Ame for help with her 3D productions. Ame made the intro video for Kiara's talk show HOLOTALK (2020) and was its 31st guest (2024-09-22); they did a 3D off-collab "In Ame's awesome studio" (2023-06). Unverified: secondary accounts report Ame appearances at Kiara's 2025 spring concert and 2026 birthday live; the cited primary material has not been verified here. [Observed S2 Kiara §Likes and dislikes, §2020; S3 Ame §Quotes, §2025–§2026, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Gura** (59 / 25 / 11 / 10 / 8 / 6): Kiara calls her "Goobidiba" and taught her German and Japanese, German swears included, tricking her into singing on lesson streams; Gura's 2020 Minecraft prank filled Kiara's KFP back room with chickens. Gura was HOLOTALK's 34th guest on 2025-04-30, the eve of her graduation ("three four," at last). Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. [Observed S2 §KFP, §Miscellaneous; S4 Gura §Gura's antics, secondary; S1]
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024; Ame on a reunion: "Kiara like, threw herself at me… she hugged me!"
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024.
 - `bible/world/hololive--Myth.md › History`: | 2026-02 | Kiara's album includes "Blue & Gold," a tribute to Gura and Ame | Remembering the two |

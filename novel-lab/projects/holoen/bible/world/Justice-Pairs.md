@@ -110,7 +110,7 @@ Relationship web.
   (2025-06-02); the Monster Hunter Wilds sponsored launch with Gigi, Raora and Bijou (2025-03-01). [Observed S1]
 - **Gawr Gura (graduated):** Keep Talking and Nobody Explodes and The Forest with Cecilia (2025-02);
   R.E.P.O. with Raora, Kiara and Kronii (2025-04-13). **Watson Amelia (affiliate):** in ENReco's role-play story,
-  Gigi's Gonathon and Ame's Jyonathan marry (secondary; "ClueChaser"); Borderlands 2 with Cecilia, Gigi and Mumei (2024-08-09). [Observed S1; S2]
+  Gigi and Ame play knights in a fictional marriage storyline (secondary; "ClueChaser"); Borderlands 2 with Cecilia, Gigi and Mumei (2024-08-09). [Observed S1; S2]
 
 ## With Promise
 - **Ouro Kronii:** "Pizza Time" with Raora (Portal 2, 2024-11-26; Backrooms Cleanup Crew, 2026-06-11; in ENReco
@@ -277,6 +277,7 @@ An orange hoodie beside a green dress; a red sword and a violin-lance; a pink ca
 - **2026-10-03, cross-card QA audit (justice, GPT xhigh), merged by Claude:** applied justice:JUSTICE-SCOPE-002, justice:JUSTICE-TIE-003 (exact replacements; dispositions in research/qa/audit-justice.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (global, GPT xhigh), merged by Claude:** applied global:GLOBAL-QUOTE-003 (exact replacements; dispositions in research/qa/audit-global.md and research/qa/resolutions.md).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
+- **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-TIE-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Partly resolved: Autofister, Bloodraven and B.F.F are official billing; Grem Reaper and Pizza Time appear in

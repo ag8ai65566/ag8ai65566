@@ -25,7 +25,7 @@ Relationship (pair / unit name).
 - **Tone:** pranks and bickering with a big-sister/little-shark edge; Calli's gruff threats bounce off
   Gura's cheerful dumb-shark defiance. [Observed Calli file C4, Gura file G2, secondary; Adaptation for
   the "big-sister" shorthand]
-- **Music:** they sang "Q" together with DECO*27 (2022-02-03). [Official Calli file C29]
+- **Music:** Calli and Gura are the vocalists on "Q"; DECO*27 composed it and shares lyric credits with Calli. [Official https://hololive.hololivepro.com/en/music/q/; archived MV credits, C29; checked 2026-10-04]
 - **Early years:** they were the branch's first two to 1 million subscribers (Gura, then Calli in
   January 2021) and were named Tokyo Tourism Ambassadors together with Sakura Miko (2023-02-08).
   [Observed S2, S3, secondary]
@@ -49,7 +49,7 @@ Relationship (pair / unit name).
 | Date | Event | Trace left |
 |---|---|---|
 | 2020–2021 | Constant collabs, pranks and bickering | "Bone Bros" |
-| 2022-02-03 | "Q" (with DECO*27) | Their duet |
+| 2022-02 | "Q" music video; exact MV date and time zone remain unresolved | Calli–Gura duet; DECO*27 composed it and shared lyric credits with Calli |
 | 2024-09 | Calli performs Gura's "Full Color" at Myth's 4th-anniversary concert "The Show Goes On!" | Carrying her song |
 | 2025-04-30 | "One Last Minecraft Trip." (Myth relay) | Last duo moments on stream |
 | 2025-05-01 | Gura graduates | — |
@@ -74,7 +74,7 @@ Mori Calliope, Gawr Gura; Takanashi Kiara (Full Color in karaoke); Myth.
 (None.)
 
 ## Hard Facts (continuity)
-- "Q" duet: 2022-02-03. Gura graduated 2025-05-01.
+- "Q" digital release: 2022-02-05; exact MV date and time zone remain unresolved. Gura graduated 2025-05-01.
 - 2026 baseline: Gura has graduated; Calli performed "Full Color" in 2024 and said she would keep singing it.
 
 ## Sources (checked 2026-09-30)
@@ -96,7 +96,7 @@ Relationship
 Calli and Gura, Gura and Calli
 
 ## [SW] Description
-Mori Calliope and Gawr Gura, the reaper and the shark: a bickering duo of pranks and jabs, where Calli's gruff big-sister threats bounce off Gura's cheerful dumb-shark defiance. They were the English branch's first two to reach a million subscribers, were named Tokyo Tourism Ambassadors together (2023) and sang "Q" with DECO*27 (2022). Their collabs thinned out over the years, but on the Myth relay before Gura's graduation Calli's stream was "One Last Minecraft Trip." Gura graduated on 2025-05-01. Her single "Full Color" was never released; Calli performed it at Myth's fourth-anniversary concert "The Show Goes On!" (2024) and, with Kiara, said she would keep singing it.
+Mori Calliope and Gawr Gura, the reaper and the shark: a bickering duo of pranks and jabs, where Calli's gruff big-sister threats bounce off Gura's cheerful dumb-shark defiance. They were the English branch's first two to reach a million subscribers, were named Tokyo Tourism Ambassadors together (2023) and sang "Q" as a duet in 2022; DECO*27 composed the song and shared lyric credits with Calli. Their collabs thinned out over the years, but on the Myth relay before Gura's graduation Calli's stream was "One Last Minecraft Trip." Gura graduated on 2025-05-01. Her single "Full Color" was never released; Calli performed it at Myth's fourth-anniversary concert "The Show Goes On!" (2024) and, with Kiara, said she would keep singing it.
 
 ## [SW] Rules
 At the 2026 baseline Gura has graduated; Bone Bros lives in memories, the "Q" duet and "Full Color." Before May 2025 they can prank and bicker freely. Calli's affection tends to show through teasing and actions more than speeches.
@@ -119,6 +119,7 @@ Black and blue; a scythe beside a trident; Calli's "LISTEN." against Gura's "a";
   published duet.
 - **SHOULD adopted:** persona qualifier on "the reaper and the shark"; "not speeches" softened to a tendency.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
+- **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-CREDIT-001, myth2:MYTH2-DATE-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. "The Dad joke started around Gura" could not be re-found in the current wiki; it stays unverified and

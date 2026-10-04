@@ -21,3 +21,4 @@
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 9620ff3b8ba1）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 dad77f27a32d）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 f75d187c32f4）：Author decision (2026-10-04): R7 reciprocal ties closed by Claude
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 b67e10dbfba3）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude

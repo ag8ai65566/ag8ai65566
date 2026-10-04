@@ -3,3 +3,4 @@
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 230ca850a0f3）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 60907984c2e4）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 d05eeeb159fa）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 97ad21d8b3f7）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude

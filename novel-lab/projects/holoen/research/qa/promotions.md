@@ -29,6 +29,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 9620ff3b8ba1）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 dad77f27a32d）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 f75d187c32f4）：Author decision (2026-10-04): R7 reciprocal ties closed by Claude
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 b67e10dbfba3）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20260930-0704-character-Ouro-Kronii
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 2707b4804e67）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -65,6 +66,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 453df5d400c8）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 4de6c68a5aad）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 9a649f365f34）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 8a0f3c36c099）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20260930-1113-character-Ninomae-Inanis
 - 2026-09-30 22:53 作者裁決收錄 final.md（sha256 c3bf69115852）：作者 2026-09-30 裁決(b)：GPT 驗收已用完輪數上限，最新一輪意見已全部照改（含剪輯標題證據清查與近期權重調整），作者選擇直接收錄；不算 GPT 核准
@@ -138,18 +140,22 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 bff946346460）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 c5c885d5df24）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 c78a80ef0f39）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 39eaa60c85a3）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20260930-2309-world-AmeSame
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 03602b5cf2fd）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 409dacb16a2f）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 c750fb6fe94f）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20260930-2309-world-Bone-Bros
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 3456a63d5263）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 c53915b3bb34）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20260930-2309-world-Myth-Pairs
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 12e7d39a7dbb）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 1febc4ccc5d3）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 fa7a99453722）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 eac5d2965724）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20260930-2309-world-OctoClock
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 919addd12472）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -175,6 +181,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 
 ## 20260930-2309-world-Time-Duo
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 329fef0a8daa）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 ed829394e292）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20260930-2309-world-Time-and-Death
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 5ac7a6232540）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -203,6 +210,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 ef5715a5ecbe）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 2093eaad2fde）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-04 00:13 作者裁決收錄 final.md（sha256 816b0169918d）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 522515814ba5）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20260930-2309-world-hololive--Promise
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 89cb26ccb973）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
@@ -376,6 +384,8 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 0fa64eb8e2f8）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
 - 2026-10-03 23:55 作者裁決收錄 final.md（sha256 e7967ca25a1c）：Author decision (2026-10-03): new-material research R3 (Advent) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 2681e6e65546）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 498a9a568f94）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 434ea3cb8ec0）：Author decision (2026-10-03): myth2 follow-up (Shiori exported Relationships)
 
 ## 20261001-0549-character-Fuwawa-Abyssgard
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 65d87ad37465）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
@@ -422,6 +432,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 bea1ef142554）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 d8ca69a28e2b）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 41ba11f4e2e0）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 b5cd09c2d0e5）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20261001-0549-world-FUWAMOCO
 - 2026-10-01 10:17 作者裁決收錄 final.md（sha256 59fb60838300）：Author decision 2026-10-01: Advent (Shiori, Bijou, Fuwawa, Mococo) added with complete relationship webs and world cards; GPT reviewed one round only (author's instruction); review merged as recorded in each Merge Record.
@@ -496,6 +507,7 @@ verification; the evidence level of each claim stays as labeled in the card. Exp
 - 2026-10-02 01:52 作者裁決收錄 final.md（sha256 230ca850a0f3）：Author decision (2026-10-02): cross-card QA audit findings (Advent cohort, research/qa/audit-advent.md)
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 60907984c2e4）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 d05eeeb159fa）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 97ad21d8b3f7）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude
 
 ## 20261001-1032-world-hololive--Justice
 - 2026-10-01 16:13 作者裁決收錄 final.md（sha256 df1164544e49）：Author decision (2026-10-01): Justice cards and the cross-card sync after GPT's one-round xhigh reviews (runs/20261001-1032-*/gpt-free.md); no further GPT round, per the author's one-round rule.

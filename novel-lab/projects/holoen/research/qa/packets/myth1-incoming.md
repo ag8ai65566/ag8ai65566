@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 19dba43.
+Snapshot: git d952b79.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Mori Calliope|Calliope Mori|Last Writes|Kawaiiope|Miss Mori|Mor Mori|CHADCast|Calliope|TakaMori|Takamori|CallioP|森カリオペ|Calli|Mori|LYRA|Mowi)(
+Matched names: ara and Calli|Calli and Kiara|hololive -Myth-|Mori Calliope|Calliope Mori|Cori Malliope|Last Writes|Miss Mori|Kawaiiope|Mor Mori|CHADCast|TakaMori|Calliope|Takamori|CallioP|Calli|森カリオペ|LYRA|Mori|Mowi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -43,10 +43,10 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Mori 
 - `bible/characters/Gawr-Gura.md › [SW] Groups`: hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name)
 - `bible/characters/Gawr-Gura.md › [SW] Background`: Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025.
 - `bible/characters/Gawr-Gura.md › [SW] Background`: She hosted The Fish Tank with Watson Amelia and sang "Q" with Mori Calliope.
-- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert."
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Mori Calliope: her "Bone Bros" partner in pranks, bickering and the duet "Q"; Calli went on a "One Last Minecraft Trip" with her before she graduated, and performed Gura's unreleased "Full Color" at Myth's 2024 anniversary concert.
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
 - `bible/characters/Gawr-Gura.md › Voice Profile`: - Other members' openers (Kiara's "Kikkeriki," Calli's "What is up, humans?!").
-- `bible/characters/Gawr-Gura.md › Background Timeline`: | 2022-02-03 | "Q" with Mori Calliope (DECO*27) | [Official G15] |
+- `bible/characters/Gawr-Gura.md › Background Timeline`: | 2022-02 | "Q" music video with Mori Calliope; exact MV date and time zone remain unresolved | [Archive metadata G15; https://archive.ragtag.moe/watch?v=aetXqd9B8WE, checked 2026-10-04] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Mori Calliope | Myth genmate ("Bone Bros") | Pranks, bickering and duets; co-vocalists on "Q" Her final Myth game relay (reported 2025-04-30) began with Minecraft on Calli's channel. | [Observed G2 §Relationships] [Official G15] [Secondary NEW-R1-017] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | La+ Darknesss, Kazama Iroha, Shishiro Botan | JP members | HOLO ENGLISH LESSON #02 with La+ and Iroha (Calli's stream, 2022-03-04); "Apex Predators," a wiki-listed pair name with Botan | [S1 X492n37brRU] [Botan file, secondary] |
 
@@ -272,16 +272,18 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Mori 
 ### from Bone Bros
 - `bible/world/Bone-Bros.md › [SW] Other Names`: Calli and Gura, Gura and Calli
 - `bible/world/Bone-Bros.md › [SW] Description`: Mori Calliope and Gawr Gura, the reaper and the shark: a bickering duo of pranks and jabs, where Calli's gruff big-sister threats bounce off Gura's cheerful dumb-shark defiance.
+- `bible/world/Bone-Bros.md › [SW] Description`: They were the English branch's first two to reach a million subscribers, were named Tokyo Tourism Ambassadors together (2023) and sang "Q" as a duet in 2022; DECO*27 composed the song and shared lyric credits with Calli.
 - `bible/world/Bone-Bros.md › [SW] Description`: Their collabs thinned out over the years, but on the Myth relay before Gura's graduation Calli's stream was "One Last Minecraft Trip."
 - `bible/world/Bone-Bros.md › [SW] Description`: Her single "Full Color" was never released; Calli performed it at Myth's fourth-anniversary concert "The Show Goes On!"
 - `bible/world/Bone-Bros.md › [SW] Rules`: Calli's affection tends to show through teasing and actions more than speeches.
 - `bible/world/Bone-Bros.md › How It Works`: - **The name:** "Bone Bros" is listed as a unit of Calli and Gura on both wiki pages. [Observed S2, S3 §Relationships, secondary]
 - `bible/world/Bone-Bros.md › How It Works`: - **Tone:** pranks and bickering with a big-sister/little-shark edge; Calli's gruff threats bounce off Gura's cheerful dumb-shark defiance. [Observed Calli file C4, Gura file G2, secondary; Adaptation for the "big-sister" shorthand]
-- `bible/world/Bone-Bros.md › How It Works`: - **Music:** they sang "Q" together with DECO*27 (2022-02-03). [Official Calli file C29]
+- `bible/world/Bone-Bros.md › How It Works`: - **Music:** Calli and Gura are the vocalists on "Q"; DECO*27 composed it and shares lyric credits with Calli. [Official https://hololive.hololivepro.com/en/music/q/; archived MV credits, C29; checked 2026-10-04]
 - `bible/world/Bone-Bros.md › How It Works`: - **Early years:** they were the branch's first two to 1 million subscribers (Gura, then Calli in January 2021) and were named Tokyo Tourism Ambassadors together with Sakura Miko (2023-02-08). [Observed S2, S3, secondary]
 - `bible/world/Bone-Bros.md › How It Works`: - **"Dad":** Calli's "Dad" nickname is said to have started around Gura. [Unverified: stated in this project's Calli file from an earlier wiki reading; not found in the current revision]
 - `bible/world/Bone-Bros.md › How It Works`: - **Later collabs (archive, S1):** horror co-op (The Outlast Trials, 2023-05), group games (Liars Bar, 2025-01-22) and Calli's "One Last Minecraft Trip." on the Myth relay for Gura's farewell (2025-04-30).
 - `bible/world/Bone-Bros.md › How It Works`: - **"Full Color":** Gura's single was never released; Calli performed it at hololive English -Myth-'s fourth-anniversary concert "The Show Goes On!" (September 2024), and Calli and Kiara said they would keep singing it in karaoke. [Observed S2 §Miscellaneous, secondary; archived official broadcast CDljbqawDkw]
+- `bible/world/Bone-Bros.md › History`: | 2022-02 | "Q" music video; exact MV date and time zone remain unresolved | Calli–Gura duet; DECO*27 composed it and shared lyric credits with Calli |
 - `bible/world/Bone-Bros.md › History`: | 2024-09 | Calli performs Gura's "Full Color" at Myth's 4th-anniversary concert "The Show Goes On!" | Carrying her song |
 - `bible/world/Bone-Bros.md › Conflicts and Story Hooks`: 1. (Before 2025-05) Gura pranks Calli's Minecraft base; Calli plots revenge on stream.
 - `bible/world/Bone-Bros.md › Conflicts and Story Hooks`: 2. (Proposed fiction, before 2025-05) Calli and Gura look back on their published duet "Q" on stream.
@@ -449,10 +451,10 @@ Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Mori 
 - `bible/world/hololive--Myth.md › [SW] Description`: At the September 2026 baseline, Calli, Kiara and Ina are active members of hololive -Myth-; Ame is an affiliate and Gura is a graduate.
 - `bible/world/hololive--Myth.md › [SW] Description`: All five belong to Myth's shared history. hololive's first English generation debuted 12–13 September 2020: Mori Calliope, Takanashi Kiara, Ninomae Ina'nis, Gawr Gura and Watson Amelia.
 - `bible/world/hololive--Myth.md › [SW] Description`: Calli wrote the lyrics for their first song and often plays the grumbling big sister; Kiara cheers loudest and hosts; Ina, the calm one, designed the Myth mascots except Bloop; Ame is often the gremlin and tech helper; Gura is the goofy little shark.
-- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
+- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 PDT, Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
 - `bible/world/hololive--Myth.md › [SW] Rules`: At the 2026 baseline Calli, Kiara and Ina are the active members; Ame can appear as an affiliate guest; Gura appears as a memory or callback, never as a current streamer.
 - `bible/world/hololive--Myth.md › Members and Status`: - Mori Calliope, Takanashi Kiara, Ninomae Ina'nis: active in hololive -Myth-.
-- `bible/world/hololive--Myth.md › Members and Status`: - Watson Amelia: concluded general activities 2024-09-30; affiliate; guests at genmates' events (Kiara's concerts 2025 and 2026, Kronii's 2026 live, a reported cameo in Calli's 2026 charity stream, with its segment locator unverified). [Observed Ame file A23; Ame's wiki page §2025–§2026, secondary]
+- `bible/world/hololive--Myth.md › Members and Status`: - Watson Amelia: concluded regular activities on 2024-09-30 and remains an affiliate. Her March 2026 appearance at Kronii's birthday live is recorded under K33. Reported appearances at Kiara's 2025 and 2026 concerts and Calli's 2026 charity stream remain unverified pending direct segment evidence. [Official Ame A4; inherited Kronii K33; unverified Ame A8/A19]
 - `bible/world/hololive--Myth.md › How the Group Works`: - **Roles that formed early:** Calli wrote the lyrics for Myth's first song "Myth or Treat" (2021) and often plays the grumbling big sister; Kiara is the loudest cheerleader and the one who hosts; Ina is the calm one who designed the Myth mascots (all except Bloop) and draws for the group; Ame is the gremlin and the tech helper; Gura is the goofy little shark everyone protects. [Observed wiki pages, secondary; Adaptation for "big sister / little shark" shorthand]
 - `bible/world/hololive--Myth.md › How the Group Works`: - **Group humor:** mutual teasing, jinxes, chaotic Minecraft and party games; name-order trivia (Calli and Ame say their names in English order; Kiara, Ina and Gura surname-first). [Observed S2]
 - `bible/world/hololive--Myth.md › History`: | 2020-09-12/13 | Myth debuts; Calli narrates Kiara's debut intro | Kiara's intro art, Calli's narration |

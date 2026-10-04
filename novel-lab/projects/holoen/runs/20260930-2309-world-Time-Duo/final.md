@@ -92,7 +92,7 @@ Relationship
 Ame and Kronii, Kronii and Ame
 
 ## [SW] Description
-Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes," and Ame's alternate-Ame lore includes an "Epic Ame War" against Kronii that messed up time. On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
+Watson Amelia and Ouro Kronii, the time-traveling detective and the Warden of Time. Their rivalry is a lore joke: when Kronii debuted, Ame joked that Twitter was "protecting me from a certain time lord" and swore "i'll give it back soon," as if her time travel were borrowed. Ame has joked that Kronii "dislikes everything she likes,". On stream they played 5D chess neither understood, and Ame's last week of regular streams (2024) included Backrooms and Deep Rock Galactic with Kronii. Ame, now an affiliate, guested at Kronii's March 2026 birthday live, "The Goddess Descends." A small, fond pairing built on teasing and a shared bit about who owns time.
 
 ## [SW] Rules
 No one actually controls or travels through time; it is a shared joke. Ame plays the guilty borrower, Kronii the unimpressed Warden. In the 2026 baseline Ame appears as a guest, not a regular collab partner.
@@ -113,6 +113,7 @@ Gold and deep blue; a pocket watch beside a giant clock; Ame's gremlin cackle ag
 - **SHOULD kept:** the explicit no-time-travel rule.
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-TIE-002 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit myth2, hand-applied by Claude:** MYTH2-TIE-002 in the exported Description.
 
 ## Open Questions
 (None.)

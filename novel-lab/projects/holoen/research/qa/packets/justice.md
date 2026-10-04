@@ -1,10 +1,10 @@
 # Audit packet: justice
 
-Snapshot: git 19dba43. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git d952b79. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Elizabeth-Rose-Bloodflame.md` f3252e183a94; `bible/characters/Gigi-Murin.md` b9f0b8a18c28; `bible/characters/Cecilia-Immergreen.md` 0d41b3b7f2f6; `bible/characters/Raora-Panthera.md` b64f7c9ebf69; `bible/world/hololive--Justice.md` d54b14489a88; `bible/world/Justice-Pairs.md` d05eeeb159fa
+Owned files (sha256): `bible/characters/Elizabeth-Rose-Bloodflame.md` f3252e183a94; `bible/characters/Gigi-Murin.md` b9f0b8a18c28; `bible/characters/Cecilia-Immergreen.md` 0d41b3b7f2f6; `bible/characters/Raora-Panthera.md` b64f7c9ebf69; `bible/world/hololive--Justice.md` d54b14489a88; `bible/world/Justice-Pairs.md` 97ad21d8b3f7
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 

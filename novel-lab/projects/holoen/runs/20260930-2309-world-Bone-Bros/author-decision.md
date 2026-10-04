@@ -1,1 +1,2 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 3456a63d5263）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
+- 2026-10-04 03:43 作者裁決收錄 final.md（sha256 c53915b3bb34）：Author decision (2026-10-03): cross-card QA audit myth2 merged by Claude

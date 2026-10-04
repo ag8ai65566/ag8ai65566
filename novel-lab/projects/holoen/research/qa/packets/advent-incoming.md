@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git 19dba43.
+Snapshot: git d952b79.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|hololive -Advent-|Fuwawa and Mococo|Mococo Abyssgard|Fuwawa Abyssgard|FUWAMOCO MORNING|Abyssgard twins|Shiori Novella|Demon of Sound|The Fluffy One|The Fuzzy One|Demon of Soup|Diamond Dogs|Advent Pairs|Koseki Bijou|Sound Hounds|The Archiver|FUWAMOCALLI|Last Writes|Rocku Wawa|holoAdvent|Grindstone|GreyScaleX|Bloodraven|Fluffy One|ShioRaven|Goth Rock|JewelBird|Fuwa-chan|Adventrix|Moco-chan|Pen Pups|Mogojyan|Fuwa-nee|Lil'Rock|FUWAMOCO|Shiori~n|The Cell|Nerissa|Shiorin|Mococo|Beejoe|Advent|Mogogo|Koseki|Shiori|Fuwawa|Biboo|Beebs|B.F.F|Rissa|Bijou|Oobib|Neri|GAGA|Pero|FWMC)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|Fuwawa and Mococo|Jewel of Emotions|hololive -Advent-|Fuwawa Abyssgard|Mococo Abyssgard|FUWAMOCO MORNING|Abyssgard twins|Demon of Sound|The Fluffy One|Shiori Novella|Demon of Soup|The Fuzzy One|Advent Pairs|Koseki Bijou|Sound Hounds|Diamond Dogs|The Archiver|Last Writes|FUWAMOCALLI|Grindstone|holoAdvent|Bloodraven|GreyScaleX|Rocku Wawa|Fluffy One|ShioRaven|Moco-chan|Fuwa-chan|Goth Rock|JewelBird|Adventrix|Pen Pups|Mogojyan|The Cell|FUWAMOCO|Fuwa-nee|Shiori~n|Lil'Rock|Nerissa|Shiorin|Fuwawa|Beejoe|Mococo|Advent|Mogogo|Shiori|Koseki|Rissa|Beebs|B.F.F|Oobib|Bijou|Biboo|FWMC|Pero|Neri|GAGA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -315,7 +315,6 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|holo
 
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: FUWAMOCO: "Detective Dogs"
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Shiori Novella: a VRChat aquarium visit with "Ame Senpai"
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Koseki Bijou: Overwatch and Apex (2023).
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Nakiri Ayame and Nerissa Ravencroft: 2023 Sports Festival white-team teammates.
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | FUWAMOCO | Advent members ("Detective Dogs") | Puzzle collab | [Observed A2, per Claude's research] |

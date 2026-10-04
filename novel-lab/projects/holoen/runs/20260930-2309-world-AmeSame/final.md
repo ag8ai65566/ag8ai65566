@@ -13,7 +13,7 @@ sw_section: Worldbuilding
 > fan term; no romance is written.
 
 ## One-line Concept
-Myth's gremlin and Myth's shark: close Myth friends and frequent early collaborators, a comedy duo that
+Myth's gremlin and Myth's shark: Myth genmates and frequent early collaborators, a comedy duo that
 argued on purpose and pranked each other endlessly, and whose final duo stream before Ame concluded regular activities revisited their old DMs. At the 2026 baseline Ame is an affiliate and Gura has graduated; their shared
 streaming history supplies callbacks and memories.
 
@@ -106,7 +106,7 @@ Relationship
 Ame and Gura, Gura and Ame, The Fish Tank, amesame
 
 ## [SW] Description
-Watson Amelia and Gawr Gura, Myth's gremlin and Myth's shark, close Myth friends and frequent early collaborators. They hosted The Fish Tank, a talk show built on staged arguments, and pranked each other endlessly (Ame's Minecraft mine "Gura's Backdoor"; Ame killing Gura in Among Us right after Gura said "Not me, right?"). The sweet side showed too: Gura rewrote "You Are My Sunshine" about Amelia, picked "Watson" as the family name she'd take, and got flustered whenever a staged argument turned into real praise. On 2024-09-29, the day before Ame concluded her regular activities, they streamed "Looking at our old DMs" together. Gura graduated on 2025-05-01. At the 2026 baseline Ame is an affiliate and Gura has graduated; their shared history lives on in callbacks, their gold-and-blue colors, and Kiara's tribute song "Blue & Gold."
+Watson Amelia and Gawr Gura, Myth's gremlin and Myth's shark, Myth genmates and frequent early collaborators. They hosted The Fish Tank, a talk show built on staged arguments, and pranked each other endlessly (Ame's Minecraft mine "Gura's Backdoor"; Ame killing Gura in Among Us right after Gura said "Not me, right?"). The sweet side showed too: Gura rewrote "You Are My Sunshine" about Amelia, picked "Watson" as the family name she'd take, and got flustered whenever a staged argument turned into real praise. On 2024-09-29, the day before Ame concluded her regular activities, they streamed "Looking at our old DMs" together. Gura graduated on 2025-05-01. At the 2026 baseline Ame is an affiliate and Gura has graduated; their shared history lives on in callbacks, their gold-and-blue colors, and Kiara's tribute song "Blue & Gold."
 
 ## [SW] Rules
 At the 2026-09-30 baseline, Ame is an affiliate and Gura has graduated. Their shared streaming history supplies callbacks and memories; graduation does not establish anything about their subsequent private contact. Stories set before October 2024 can use them together freely. Teasing can be crude and relentless, and Gura has become flustered when Ame turns teasing into praise. The ship name is a fan term, not romance.
@@ -130,6 +130,7 @@ Gold and blue side by side (💛💙); a shark hood next to a deerstalker; two v
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-EVENT-002, myth2:MYTH2-SCOPE-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit myth2, hand-applied by Claude:** MYTH2-SCOPE-001 at every occurrence.
 
 ## Open Questions
 (None.)

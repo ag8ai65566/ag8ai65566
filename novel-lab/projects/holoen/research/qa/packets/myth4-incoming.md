@@ -1,9 +1,9 @@
 # Audit packet: myth4 (incoming claims)
 
-Snapshot: git 19dba43.
+Snapshot: git d952b79.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Ina and Kiara|Kiara and Ina|Drawn to Dawn|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|Ninomae Ina'nis|hololive -Myth-|Kiara and Ina|Ina and Kiara|Drawn to Dawn|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ninomae Ina'nis and Kronii: R.E.P.O.
@@ -333,7 +333,7 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Ina and Kiara|Ki
 - `bible/world/hololive--Myth.md › [SW] Description`: At the September 2026 baseline, Calli, Kiara and Ina are active members of hololive -Myth-; Ame is an affiliate and Gura is a graduate.
 - `bible/world/hololive--Myth.md › [SW] Description`: All five belong to Myth's shared history. hololive's first English generation debuted 12–13 September 2020: Mori Calliope, Takanashi Kiara, Ninomae Ina'nis, Gawr Gura and Watson Amelia.
 - `bible/world/hololive--Myth.md › [SW] Description`: Calli wrote the lyrics for their first song and often plays the grumbling big sister; Kiara cheers loudest and hosts; Ina, the calm one, designed the Myth mascots except Bloop; Ame is often the gremlin and tech helper; Gura is the goofy little shark.
-- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
+- `bible/world/hololive--Myth.md › [SW] Description`: On 2026-09-19 PDT, Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
 - `bible/world/hololive--Myth.md › [SW] Rules`: At the 2026 baseline Calli, Kiara and Ina are the active members; Ame can appear as an affiliate guest; Gura appears as a memory or callback, never as a current streamer.
 - `bible/world/hololive--Myth.md › Members and Status`: - Mori Calliope, Takanashi Kiara, Ninomae Ina'nis: active in hololive -Myth-.
 - `bible/world/hololive--Myth.md › How the Group Works`: - **Roles that formed early:** Calli wrote the lyrics for Myth's first song "Myth or Treat" (2021) and often plays the grumbling big sister; Kiara is the loudest cheerleader and the one who hosts; Ina is the calm one who designed the Myth mascots (all except Bloop) and draws for the group; Ame is the gremlin and the tech helper; Gura is the goofy little shark everyone protects. [Observed wiki pages, secondary; Adaptation for "big sister / little shark" shorthand]

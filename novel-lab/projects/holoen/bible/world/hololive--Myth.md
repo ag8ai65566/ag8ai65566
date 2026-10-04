@@ -23,9 +23,7 @@ Faction / unit (a friend group with a shared history).
 
 ## Members and Status (2026-09-30)
 - Mori Calliope, Takanashi Kiara, Ninomae Ina'nis: active in hololive -Myth-.
-- Watson Amelia: concluded general activities 2024-09-30; affiliate; guests at genmates' events
-  (Kiara's concerts 2025 and 2026, Kronii's 2026 live, a reported cameo in Calli's 2026 charity stream, with its segment locator unverified).
-  [Observed Ame file A23; Ame's wiki page §2025–§2026, secondary]
+- Watson Amelia: concluded regular activities on 2024-09-30 and remains an affiliate. Her March 2026 appearance at Kronii's birthday live is recorded under K33. Reported appearances at Kiara's 2025 and 2026 concerts and Calli's 2026 charity stream remain unverified pending direct segment evidence. [Official Ame A4; inherited Kronii K33; unverified Ame A8/A19]
 - Gawr Gura: graduated 2025-05-01; alumna. [Official, Gura file]
 
 ## How the Group Works
@@ -112,7 +110,7 @@ Faction
 Myth, holoMyth, HoloMyth, hololive -Myth-, hololive English first generation
 
 ## [SW] Description
-At the September 2026 baseline, Calli, Kiara and Ina are active members of hololive -Myth-; Ame is an affiliate and Gura is a graduate. All five belong to Myth's shared history. hololive's first English generation debuted 12–13 September 2020: Mori Calliope, Takanashi Kiara, Ninomae Ina'nis, Gawr Gura and Watson Amelia. They grew up on stream together: a chaotic first year of near-daily collabs, then a bond built around songs, anniversaries, relays and concerts. Calli wrote the lyrics for their first song and often plays the grumbling big sister; Kiara cheers loudest and hosts; Ina, the calm one, designed the Myth mascots except Bloop; Ame is often the gremlin and tech helper; Gura is the goofy little shark. Ame concluded her regular activities on 2024-09-30 and still guests at events; Gura graduated on 2025-05-01 after a last Myth relay "one last time." On 2026-09-19 Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
+At the September 2026 baseline, Calli, Kiara and Ina are active members of hololive -Myth-; Ame is an affiliate and Gura is a graduate. All five belong to Myth's shared history. hololive's first English generation debuted 12–13 September 2020: Mori Calliope, Takanashi Kiara, Ninomae Ina'nis, Gawr Gura and Watson Amelia. They grew up on stream together: a chaotic first year of near-daily collabs, then a bond built around songs, anniversaries, relays and concerts. Calli wrote the lyrics for their first song and often plays the grumbling big sister; Kiara cheers loudest and hosts; Ina, the calm one, designed the Myth mascots except Bloop; Ame is often the gremlin and tech helper; Gura is the goofy little shark. Ame concluded her regular activities on 2024-09-30 and still guests at events; Gura graduated on 2025-05-01 after a last Myth relay "one last time." On 2026-09-19 PDT, Calli, Kiara and Ina held the 6th Anniversary 3D LIVE "Seasons From Within" and premiered a new Myth song, "THIS IS MYTH."
 
 ## [SW] Rules
 At the 2026 baseline Calli, Kiara and Ina are the active members; Ame can appear as an affiliate guest; Gura appears as a memory or callback, never as a current streamer. Early Myth (2020–21) was collab-heavy. Membership status says nothing about how often they talk privately. The gremlin, tech-helper and cheerleader roles are flexible comic roles, not fixed.
@@ -139,6 +137,7 @@ Five member colors in a row (black, orange, purple, blue, gold); five voices tal
 - **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** the 6th-anniversary live is now confirmed as held (hololive English channel VOD title, official posts) with the new song "THIS IS MYTH" (CONSULT-P2-001 closed); pair duet stages from a secondary setlist.
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 - **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH-QUOTE-004 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-DATE-003, myth2:myth3:MYTH-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The "big sister / little shark" shorthand is Claude's summary of the group dynamic. Keep, reword or

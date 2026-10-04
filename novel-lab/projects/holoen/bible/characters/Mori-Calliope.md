@@ -407,7 +407,7 @@ Clips are cited by their YouTube titles unless a timestamp is given. No recordin
 - C30 Claude's audio check (2026-09-30), archived recordings via archive.ragtag.moe, whisper small.en +
   Praat; windows, method and short quotes: `novel-lab/projects/holoen/research/audio-check/calli.md`.
   Streams: 76-YKpxYL4g (Fields of Mistria, 2026-06-21), y0WsNvXOdns (Pragmata part 2, 2026-04-29)
-- C29 "Q" (Calliope Mori × Gawr Gura × DECO*27, 2022-02-03): https://www.youtube.com/watch?v=aetXqd9B8WE
+- C29 "Q" (Calliope Mori × Gawr Gura × DECO*27; exact MV date and zone unresolved): https://www.youtube.com/watch?v=aetXqd9B8WE
 - C31 Mori Calliope wiki page, §History 2026 and §Events (secondary, read 2026-10-02): https://virtualyoutuber.fandom.com/wiki/Mori_Calliope
 - C32 "【3D LIVE - UNCUT ROCK!!】Mori Calliope 6th Birthday (feat. LIVE BAND)" (Rb163zkoNSo) and its members-only encore (yjpHmsbV0Y0), her channel; title via YouTube oEmbed, checked 2026-10-02
 - C33 Myth 6th-anniversary 3D live: hololive English channel VOD "【3D LIVE】Myth 6th Anniversary "Seasons From Within"【#Myth6Years】" (AKg6bf5VFjA) and MV "【MV】THIS IS MYTH 【hololive -Myth- Original Song】" (T2351eZtQC0), title and channel via YouTube oEmbed, checked 2026-10-02 (archive metadata); official posts give 09-19 8 PM PDT / 09-20 12:00 JST (https://x.com/hololive_En/status/2098615081395241037, https://x.com/hololivetv/status/2098615085254287483; search-indexed text, X not opened)
@@ -618,6 +618,7 @@ Takanashi Kiara: her TakaMori partner. Kiara's 2020 crush bit met Calli's "kusot
 - **2026-10-03, cross-card QA audits myth1/myth3, hand-applied by Claude:** myth3:MYTH-SCOPE-002 (TakaMori line now describes the public banter); the withheld Suisei partner tag (myth1:MYTH-TIE-002) was also removed from the performance sheet. myth1:MYTH-EXPORT-001 was not applied: the project label is "Style demo" across all 33 cards and sheets.**
 - **2026-10-03, new-material research R1 (20261002-1715-research-new-R1-Myth, GPT xhigh), merged by Claude:** NEW-R1-001 (official written greeting in Catchphrases), NEW-R1-002/003 (Gachiakuta opening; DISASTERPIECE premise and tracks), NEW-R1-004 (Shiori's influence on her choice of content), NEW-R1-005 ("LIVE IT LOUD!"), FIX-R1-002 (Gachiakuta interest confirmed by the production's artist comment), FIX-R1-003 (TOHO casting announcement replaces the secondary citation).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
+- **2026-10-04, cross-card QA audit (myth2, GPT xhigh), merged by Claude:** applied myth2:MYTH2-DATE-001 (exact replacements; dispositions in research/qa/audit-myth2.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Should Groups keep "hololive English (former branch name)", or be current-only as GPT prefers? The
