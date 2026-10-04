@@ -1,9 +1,9 @@
 # Audit packet: myth4 (incoming claims)
 
-Snapshot: git 3bd6202.
+Snapshot: git 19dba43.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|Ina and Kiara|Kiara and Ina|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Ina and Kiara|Kiara and Ina|Drawn to Dawn|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ninomae Ina'nis and Kronii: R.E.P.O.
@@ -28,8 +28,8 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|In
 ### from Gawr Gura
 - `bible/characters/Gawr-Gura.md › [SW] Groups`: hololive -Myth- (graduated), hololive alum, Myth, hololive English (former branch name)
 - `bible/characters/Gawr-Gura.md › [SW] Background`: Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025.
-- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and joked that anyone making Gura cry would face "the wrath of Ina."
-- `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and performed a protective mock-threat bit about Gura.
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Houshou Marine, Sakamata Chloe | UMISEA (official 2023 roster: Aqua, Marine, Chloe, Gura, Ina) | "SHINKIRO" with Marine (anime MV on Marine's channel, 2023-11-12, credited to both; the "GuraMarine" pair name is wiki-listed only) | [Marine file MA4 9ehwhQJ50gs] [Official UMISEA roster] |
 
 ### from Gigi Murin
@@ -185,19 +185,19 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|In
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Groups`: hololive (affiliate), hololive -Myth- (affiliate), Myth, hololive English (former branch name)
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her.
-- `bible/characters/Watson-Amelia.md › Voice Profile`: - "Ina... prepare to get FUCKED!" (a PvP threat; censored in source and in clip A14's title)
+- `bible/characters/Watson-Amelia.md › Voice Profile`: - A secondary clip title reports a profane PvP threat aimed at Ina; the exact spoken wording is unverified. [A14]
 - `bible/characters/Watson-Amelia.md › Voice Profile`: - **How she addresses people:** "you guys" by default; "chat" occasionally; "Teamates" (one m, official) on big occasions; members "Investigators." Members by name ("Gura," "Calli," "Ina," "Kiara," "Kronii"); Bubba, her dog mascot. She gives her name in English order, "Amelia Watson." [Official A1] [Observed A3 captions; A2 §Mascots and fans]
 - `bible/characters/Watson-Amelia.md › Voice Profile`: - Measured (A23; Mario, VALORANT and 2024 chat windows, with game audio mixed in): median pitch about 248–276 Hz; about 114–133 words per minute of speech. For comparison only, Calli's chat windows measured 161–186 and Ina's 81–95. Sample results; they do not establish a general ranking. [ASR A23]
 - `bible/characters/Watson-Amelia.md › Appearance Anchors`: - Mascot: Bubba, a small dog designed by Ina. [Observed A2 §Mascots and fans]
-- `bible/characters/Watson-Amelia.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her ("Ina... prepare to get fucked!", a PvP threat; wording inferred from a censored title) | [Observed A2 §Mascots and fans and §Quotes; A14] |
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her (a profane PvP threat reported by a secondary clip title; exact wording unverified) | [Observed A2 §Mascots and fans and §Quotes; A14] |
 
 ### from Yukihana Lamy
-- `bible/characters/Yukihana-Lamy.md › [SW] Background`: Archived metadata records her with the English cast at Ina's Minecraft festival and a Minecraft collab billed as a "date"
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: Archived metadata records her with the English cast at the Usaken Summer Festival in Minecraft with Ina and a Minecraft collab billed as a "date"
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2021), and as a guest at Ina's 3D live "Pleides"
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Ninomae Ina'nis: a Minecraft festival and a Minecraft collab billed as a "date"
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: (2021), and a guest at Ina's 3D live "Pleides"
-- `bible/characters/Yukihana-Lamy.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her at Ina's Minecraft festival and a Minecraft collab billed as a "date" (2021) and as a guest at Ina's 2024 3D live. [LM5]
-- `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2021 | Ina's Usaken Summer Festival (06-27) and an EN-server Minecraft "date" with Ina (10-20) | [LM5] |
+- `bible/characters/Yukihana-Lamy.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her at the Usaken Summer Festival in Minecraft with Ina and a Minecraft collab billed as a "date" (2021) and as a guest at Ina's 2024 3D live. [LM5]
+- `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2021 | Usaken Summer Festival with Ina (06-27) and an EN-server Minecraft "date" with Ina (10-20) | [LM5] |
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2024 | Originals "Hatsukoi Pâtissière," "Watashi wo amayakasunara" and "Lamy's Baribari Workout"; a guest at Ina's 3D live "Pleides" (12-28) | [Observed LM2] [LM5] |
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Ninomae Ina'nis | — | A Minecraft festival appearance and a Minecraft collab billed as a "date" (2021); a guest at Ina's "Pleides" 3D live (2024) | [LM5 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ] |
 - `bible/characters/Yukihana-Lamy.md › Story Engine`: 1. Lamy hosts a "Snack Yuki no Hana" night and Ina draws the regulars.
@@ -217,13 +217,13 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|In
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **World tours:** "hololive STAGE World Tour'24 -Soar!-" (AZKi, Tsunomaki Watame, Moona Hoshinova, Kobo Kanaeru, Takanashi Kiara, Ninomae Ina'nis, Hakos Baelz): New York (Anime NYC, 2024-08-23, a day before and separate from "-Breaking Dimensions-"), Jakarta (11-09), Singapore (11-30, with a pre-concert panel of Kaela Kovalskia and Ouro Kronii), Atlanta (12-15, a panel of Nerissa and Elizabeth Rose Bloodflame), Kuala Lumpur (12-21, Nerissa and Elizabeth again) and Taipei (2025-01-18, the finale) [Official S7]; and "World Tour'25 -Synchronize!-" led by Momosuzu Nene, Kureiji Ollie, Mori Calliope, IRyS and Nerissa Ravencroft, with two guests per city (Ouro Kronii and Hakos Baelz in Sydney; Tokino Sora and Sakura Miko in Hong Kong). [Observed S1 §2024, §2025]
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive night at Dodger Stadium (2025-07-05, Los Angeles):** the second hololive–Dodgers collaboration, starring Ina, IRyS and Bijou, with a stadium sing-along during the game. [Official, https://hololive.hololivepro.com/en/news/20250731-01-353/]
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Takanashi Kiara | 4th-anniversary live "MIRAGE" (2024-10-06); "KIARA & FRIENDS: H!P Cover Song Spring Concert" (2025-04-21); "Drawn to Dawn" with Ina (2026-03-27/28 PDT, The Wiltern); World Tour '24 performer; Serendipity with Bijou; birthday 3D live (2026-07-06 PDT); "Seasons From Within" | Kiara file T11, T12, T10; S3 titles |
-- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleiades" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
+- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleides" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ouro Kronii | World Tour '24 Singapore pre-concert panel with Kaela Kovalskia; World Tour '25 Sydney guest; 3D birthday live "The Goddess Descends" with a new outfit (2026-03-13/14, Ame as guest); Serendipity with Ina | Kronii file K33, K4; S1 |
 - `bible/world/Concerts-and-Live-Events.md › Conflicts and Story Hooks`: 4. An aftertalk where Kiara and Ina disagree about who cried first at "Drawn to Dawn."
 
 ### from Cross-Branch Friends
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and released "Kurukuru Cruise" with Nekomata Okayu (2025).
-- `bible/world/Cross-Branch-Friends.md › By Character`: - **Ninomae Ina'nis:** an artist among artists: the ocean unit UMISEA (formed 2021 with Minato Aqua, Houshou Marine and Gura; Chloe joined later; Aqua and Gura have graduated and Chloe is an affiliate, so the unit is history more than a current lineup); "HoloJEI" (Tsunomaki Watame, Kureiji Ollie, Anya Melfissa); "TakoBazo" (Vestia Zeta); "TakoNeko" (Nekomata Okayu, a secondary pair name; "Kurukuru Cruise," 2025; see "JP Senpai Pairs"); Shiranui Flare appeared on her 2025 AmiAmi special ("Flare?!!?"). She admires Marine as an artist. [Observed S1; S2 Ina; Ina file]
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina appears with Aqua, Marine, Chloe and Gura in UMISEA's official 2023 roster and released "Kurukuru Cruise" with Nekomata Okayu (2025).
+- `bible/world/Cross-Branch-Friends.md › By Character`: - **Ninomae Ina'nis:** an artist among artists: the ocean unit UMISEA (formed 2021 with Minato Aqua, Houshou Marine and Gura; Chloe appears in the official 2023 roster; Aqua and Gura have graduated and Chloe is an affiliate); "HoloJEI" (Tsunomaki Watame, Kureiji Ollie, Anya Melfissa); "TakoBazo" (Vestia Zeta); "TakoNeko" (Nekomata Okayu, a secondary pair name; "Kurukuru Cruise," 2025; see "JP Senpai Pairs"); Shiranui Flare appeared on her 2025 AmiAmi special ("Flare?!!?"). She admires Marine as an artist. [Observed S1; S2 Ina; Ina file]
 
 ### from FUWAMOCO
 - `bible/world/FUWAMOCO.md › History`: | 2025-08-23/24 | -All for One-: "HOT DUCK!" with Bijou and Subaru; their version of "Howling"; "Lifetime Showtime"; "SHALLYS" with Ina and Cecilia | [Official S5] |
@@ -251,7 +251,7 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|In
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Other Names`: Marine and Kiara, Noel and Calliope, Lamy and Ina, Botan and IRyS, Vivi and FUWAMOCO
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Marine was the first guest of Kiara's talk show HOLOTALK (2020), joined Calli's first English lesson with Ina (2022), played Mario Kart with Calli and Bae (2021) and joined their house-party off-collab (2023), joined off-collabs with FUWAMOCO and Nerissa (2024), and was a guest at Ina's 3D live "Pleides"
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA.
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Lamy joined Ina's Minecraft festival and a "date"-billed Minecraft stream (2021) and her 3D live (2024).
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Lamy joined the Usaken Summer Festival in Minecraft with Ina and a "date"-billed Minecraft stream (2021) and her 3D live (2024).
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Botan played Left 4 Dead 2 and Overwatch 2 with IRyS, was on HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and guested at Ina's 2025 birthday live.
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Vivi, a FLOW GLOW member, played R.E.P.O. with FUWAMOCO and Bae and, separately, on Ina's stream, and Gartic Phone with Mumei, Kronii, Ina and Elizabeth (2025).
 - `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Mori Calliope:** Calli's HOLO ENGLISH LESSON #01 with Ina and Fubuki (2022-02-19); Mario Kart with Bae and Pavolia Reine (2021-12-25); an off-collab "House Party with Marine & Bae" (2023-08-14); Calli played "Truth of Beauty Witch," the horror game featuring Marine, on her own stream (2023); dance shorts to Marine's songs. [S1]
@@ -261,7 +261,7 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|In
 - `bible/world/JP-Senpai-Pairs-2.md › Shishiro Botan with the cast`: - **Ninomae Ina'nis:** a guest at Ina's birthday 3D live "EVERMORE" (2025-05-21), singing "storia" with Ina and Tsunomaki Watame per a secondary set list. [S1] [EVERMORE report]
 - `bible/world/JP-Senpai-Pairs-2.md › Kikirara Vivi with the cast`: - **Ninomae Ina'nis:** R.E.P.O. with Polka, Watame, Flare and Anya (2025-06-02). [S1]
 - `bible/world/JP-Senpai-Pairs-2.md › Kikirara Vivi with the cast`: - **Mumei, Kronii, Ina, Elizabeth:** Mumei's Gartic Phone EN + ID + JP collab (2025-04-14). [S1]
-- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2021 | Ina's Minecraft festival and EN-server "date" | Lamy, Ina |
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2021 | the Usaken Summer Festival in Minecraft with Ina and EN-server "date" | Lamy, Ina |
 - `bible/world/JP-Senpai-Pairs-2.md › History`: | 2024 | Off-collabs with FUWAMOCO and Nerissa; Ina's "Pleides" | Marine; Lamy, Marine |
 - `bible/world/JP-Senpai-Pairs-2.md › History`: | 2025 | Gartic Phone EN + ID + JP (04-14); #holoREPO (05-25); R.E.P.O. on Ina's stream (06-02); Ina's "EVERMORE" | Noel, Vivi; Vivi, Bae, FUWAMOCO; Vivi, Ina; Botan |
 
@@ -287,12 +287,12 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|In
 
 ### from Myth and Kronii: Other Pairs
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Other Names`: Kiara and Ame, Ame and Kiara, Kiara and Gura, Gura and Kiara, Calli and Ina, Ina and Calli, Calli and Ame, Ame and Calli, Ina and Ame, Ame and Ina, Ina and Gura, Gura and Ina, Kiara and Kronii, Kronii and Kiara, Gura and Kronii, Kronii and Gura
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns ("Every freaking time, Ina.").
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab.
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina promised "the wrath of Ina" to anyone who makes Gura cry.
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina performed a protective mock-threat bit about Gura.
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns. They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Ame** (29 / 30 / 9 / 4 / 4 / 0): Ina designed Bubba; Ame's "Amenade" cocktail traces back to a Japanese snack tasting with Ina; a "LOSER BUYS DINNER!!!!!" off-collab (2023-02-23); Ame aims blunt PvP taunts at her. [Observed S3 §Miscellaneous; Ame file; S1]
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and promised "the wrath of Ina" to anyone who makes Gura cry; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2026-01-08 | "TAKO∞TAKOVER" digital release (lyrics by Calli) | Ina × Calli |
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Conflicts and Story Hooks`: 3. Calli writes lyrics for Ina and Ina draws the cover; each critiques the other's draft.
@@ -338,7 +338,7 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|In
 - `bible/world/hololive--Myth.md › Members and Status`: - Mori Calliope, Takanashi Kiara, Ninomae Ina'nis: active in hololive -Myth-.
 - `bible/world/hololive--Myth.md › How the Group Works`: - **Roles that formed early:** Calli wrote the lyrics for Myth's first song "Myth or Treat" (2021) and often plays the grumbling big sister; Kiara is the loudest cheerleader and the one who hosts; Ina is the calm one who designed the Myth mascots (all except Bloop) and draws for the group; Ame is the gremlin and the tech helper; Gura is the goofy little shark everyone protects. [Observed wiki pages, secondary; Adaptation for "big sister / little shark" shorthand]
 - `bible/world/hololive--Myth.md › How the Group Works`: - **Group humor:** mutual teasing, jinxes, chaotic Minecraft and party games; name-order trivia (Calli and Ame say their names in English order; Kiara, Ina and Gura surname-first). [Observed S2]
-- `bible/world/hololive--Myth.md › How the Group Works`: - **Protectiveness:** Ina says anyone who makes Gura cry will "face the wrath of Ina," and extends the promise to all the English members (tears of joy excepted). [Observed S2 Gura §Gura's antics, secondary]
+- `bible/world/hololive--Myth.md › How the Group Works`: - **Protectiveness:** secondary accounts describe Ina performing protective mock threats about Gura and the English members, while exempting tears of joy. [Observed S2 Gura §Gura's antics, secondary]
 - `bible/world/hololive--Myth.md › History`: | 2025-04-30 | Myth relay "one last time" with Calli, Kiara, Ina and Gura before Gura's graduation | Gura's farewell with Myth |
 - `bible/world/hololive--Myth.md › History`: | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 - `bible/world/hololive--Myth.md › History`: | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |

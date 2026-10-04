@@ -1,10 +1,10 @@
 # Audit packet: myth3
 
-Snapshot: git 3bd6202. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git 19dba43. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Takanashi-Kiara.md` 5078ef548266; `bible/world/Myth-and-Kronii-Other-Pairs.md` 1febc4ccc5d3
+Owned files (sha256): `bible/characters/Takanashi-Kiara.md` 5078ef548266; `bible/world/Myth-and-Kronii-Other-Pairs.md` fa7a99453722
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -43,7 +43,7 @@ Owned files (sha256): `bible/characters/Takanashi-Kiara.md` 5078ef548266; `bible
 
 ### Myth and Kronii: Other Pairs — `bible/world/Myth-and-Kronii-Other-Pairs.md`
 **[SW] Other Names:** Kiara and Ame, Ame and Kiara, Kiara and Gura, Gura and Kiara, Calli and Ina, Ina and Calli, Calli and Ame, Ame and Calli, Ina and Ame, Ame and Ina, Ina and Gura, Gura and Ina, Kiara and Kronii, Kronii and Kiara, Gura and Kronii, Kronii and Gura
-**[SW] Description:** The rest of the web among the five Myth members and Kronii. Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024; Ame on a reunion: "Kiara like, threw herself at me… she hugged me!" Kiara and Gura: Kiara calls Gura "Goobidiba" and taught her German and Japanese, swears included; Gura's Minecraft prank filled Kiara's KFP back room with chickens; Gura was HOLOTALK's 34th guest the day before she graduated. Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). Calli and Ame: early Clubhouse 51 duels. Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab. Ina and Gura: the official ocean unit UMISEA (2021); Ina promised "the wrath of Ina" to anyone who makes Gura cry. Kiara and Kronii: Kiara was a fan before Kronii debuted and calls her "quasoni." Gura and Kronii: fan unit SNOTCast; in Gura's last months Kronii was one of her regular partners ("I Play, She Watches (She's Scared)").
+**[SW] Description:** The rest of the web among the five Myth members and Kronii. Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024; Ame on a reunion: "Kiara like, threw herself at me… she hugged me!" Kiara and Gura: Kiara calls Gura "Goobidiba" and taught her German and Japanese, swears included; Gura's Minecraft prank filled Kiara's KFP back room with chickens; Gura was HOLOTALK's 34th guest the day before she graduated. Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns. Calli and Ame: early Clubhouse 51 duels. Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab. Ina and Gura: the official ocean unit UMISEA (2021); Ina performed a protective mock-threat bit about Gura. Kiara and Kronii: Kiara was a fan before Kronii debuted and calls her "quasoni." Gura and Kronii: fan unit SNOTCast; in Gura's last months Kronii was one of her regular partners ("I Play, She Watches (She's Scared)").
 **[SW] Rules:** In the 2026 baseline, pairs with Gura are memories and callbacks, and pairs with Ame are guest appearances. Nicknames are used as each member uses them (Kiara's "Goobidiba," "quasoni"). All of these are friendships.
 **Dossier · History:**
 | Date | Event | Trace left |

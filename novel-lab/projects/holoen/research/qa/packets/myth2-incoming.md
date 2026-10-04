@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 3bd6202.
+Snapshot: git 19dba43.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|City Pop Shark|Gura and Calli|Amelia Watson|Watson Amelia|The Fish Tank|Gura and Ame|Ame and Gura|Gremlin Ame|ワトソン・アメリア|Goobidiba|Same-chan|Gawr Gura|Bone Bros|Samegaki|HoloMyth|holoMyth|amesame|Amechan|AmeSame|Amelia|がうる・ぐら|Gooba|Goob|Myth|Gura|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|City Pop Shark|Gura and Calli|Watson Amelia|Amelia Watson|The Fish Tank|Gura and Ame|Ame and Gura|Gremlin Ame|Gawr Gura|Goobidiba|Same-chan|ワトソン・アメリア|Bone Bros|Samegaki|holoMyth|HoloMyth|amesame|Amechan|AmeSame|がうる・ぐら|Amelia|Gooba|Myth|Gura|Goob|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -129,17 +129,18 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 - `bible/characters/Ninomae-Inanis.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She drew Myth's intro art and designed Takodachi, Bubba and Death Sensei.
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
+- `bible/characters/Ninomae-Inanis.md › [SW] Background`: At the 2026-09-30 baseline, she is an active member of hololive -Myth-.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): UMISEA (2021); Ina performs a protective mock-threat bit about Gura.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **How she addresses people:** "you guys," "everyone," "chat," and fans as "Takodachi" (the official fan name is the Tentacult). Members by first or short name ("Calli," "Kiara," "Ame," "Gura," "Kronii," "Bae," "Biboo," "CC"); a full name signals a mock-serious scold. New members are "kouhais." She gives her own name surname-first. [Official I1] [Observed I3 captions; I2 §Mascot and fans]
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - Measured (I29, 2026 chat): median pitch 223–232 Hz, in the middle of the six files measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz), so "mid" rather than "low"; about 81–95 words per minute of speech in that one 2026 chat stream (Kronii 120–127, Calli 161–186 in their chat windows). A 2021 game stream measures 210–214 Hz and 68–116 words per minute (its opening chat 116). Sample results only; they do not establish a general ranking among genmates.
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | Ongoing | Illustrator: drew Myth's intro art; designed the Takodachi [I2 §Mascot and fans], Bubba [Ame file A2 §Mascots and fans] and Death Sensei [Calli file C4 §Mascot and fans] (the wiki says all Myth mascots except Bloop); she drew chibi Bloop artwork, but Bloop's original design is not hers [Gura file G2] | [Observed I2 §Miscellaneous and §Mascot and fans, secondary] |
-- `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-07 | Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- | [Official I28] [Observed I10] |
+- `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-07 | Branches merge; her unit is hololive -Myth- | [Official I28] [Observed I10] |
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Takanashi Kiara | Myth genmate ("TakoTori," fan term) | Duo concert 2026; Kiara encouraged her dance work; Kiara groans at her puns; Kiara once "fired" her over the chicken incident | [Official I20] [Observed I2 §Personality; Kiara file T2 §KFP] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Mori Calliope | Myth genmate | Favorite pun target (Calli's exasperated reaction to Ina's puns); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
-- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate | Ina designed Bubba; the patient foil to Ame's salty gremlin; "Ame... Ame is British." | [Observed I2 §Personality, §Miscellaneous and §Quotes] |
-- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate | Ina designed Bubba; the patient foil to Ame's salty gremlin | [Observed I2 §Personality, §Miscellaneous and §Quotes] |
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Secondary accounts describe Ina's protective mock-threat bit about Gura; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
 - `bible/characters/Ninomae-Inanis.md › Hard Facts`: - Birthday May 20; height 157 cm; debut 2020-09-13; unit hololive -Myth-; illustrator Kuroboshi Kouhaku (whom she calls "papa"). [Official I1] [Observed I2 infobox]
 
 ### from Ouro Kronii
@@ -213,10 +214,10 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Watson Amelia | As an affiliate: guest at Kronii's 2026 birthday live | Kronii file K33 |
 
 ### from Cross-Branch Friends
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina was in the ocean unit UMISEA (Aqua, Marine, Chloe, Gura; history now) and released "Kurukuru Cruise" with Nekomata Okayu (2025).
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina appears with Aqua, Marine, Chloe and Gura in UMISEA's official 2023 roster and released "Kurukuru Cruise" with Nekomata Okayu (2025).
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Secondary references call Gura and Shishiro Botan "Apex Predators"; Gura released a duet cover with Murasaki Shion.
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ame has "KoMeHa" with Kobo and Iroha.
-- `bible/world/Cross-Branch-Friends.md › By Character`: - **Ninomae Ina'nis:** an artist among artists: the ocean unit UMISEA (formed 2021 with Minato Aqua, Houshou Marine and Gura; Chloe joined later; Aqua and Gura have graduated and Chloe is an affiliate, so the unit is history more than a current lineup); "HoloJEI" (Tsunomaki Watame, Kureiji Ollie, Anya Melfissa); "TakoBazo" (Vestia Zeta); "TakoNeko" (Nekomata Okayu, a secondary pair name; "Kurukuru Cruise," 2025; see "JP Senpai Pairs"); Shiranui Flare appeared on her 2025 AmiAmi special ("Flare?!!?"). She admires Marine as an artist. [Observed S1; S2 Ina; Ina file]
+- `bible/world/Cross-Branch-Friends.md › By Character`: - **Ninomae Ina'nis:** an artist among artists: the ocean unit UMISEA (formed 2021 with Minato Aqua, Houshou Marine and Gura; Chloe appears in the official 2023 roster; Aqua and Gura have graduated and Chloe is an affiliate); "HoloJEI" (Tsunomaki Watame, Kureiji Ollie, Anya Melfissa); "TakoBazo" (Vestia Zeta); "TakoNeko" (Nekomata Okayu, a secondary pair name; "Kurukuru Cruise," 2025; see "JP Senpai Pairs"); Shiranui Flare appeared on her 2025 AmiAmi special ("Flare?!!?"). She admires Marine as an artist. [Observed S1; S2 Ina; Ina file]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Gawr Gura** (graduated): "Apex Predators" (Shishiro Botan), UMISEA, "SharPea" (Pavolia Reine), and Murasaki Shion (Minecraft and Mario Kart in 2021; a "Renai Circulation" duet cover, 2022). [Observed S1; S2 Gura]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Watson Amelia** (affiliate): "KoMeHa" (Kobo Kanaeru, Kazama Iroha), "ZetAme" (Vestia Zeta); outside hololive, "SelAMei" (with Mumei and Selen Tatsuki). [Observed S2 Ame]
 
@@ -269,7 +270,7 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Kiara and Gura: Kiara calls Gura "Goobidiba" and taught her German and Japanese, swears included; Gura's Minecraft prank filled Kiara's KFP back room with chickens; Gura was HOLOTALK's 34th guest the day before she graduated.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ame: early Clubhouse 51 duels.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab.
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina promised "the wrath of Ina" to anyone who makes Gura cry.
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina performed a protective mock-threat bit about Gura.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Gura and Kronii: fan unit SNOTCast; in Gura's last months Kronii was one of her regular partners ("I Play, She Watches (She's Scared)").
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Rules`: In the 2026 baseline, pairs with Gura are memories and callbacks, and pairs with Ame are guest appearances.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Rules`: Nicknames are used as each member uses them (Kiara's "Goobidiba,"
@@ -277,7 +278,7 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Gura** (59 / 25 / 11 / 10 / 8 / 6): Kiara calls her "Goobidiba" and taught her German and Japanese, German swears included, tricking her into singing on lesson streams; Gura's 2020 Minecraft prank filled Kiara's KFP back room with chickens. Gura was HOLOTALK's 34th guest on 2025-04-30, the eve of her graduation ("three four," at last). Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame. [Observed S2 §KFP, §Miscellaneous; S4 Gura §Gura's antics, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ame** (24 / 23 / 14 / 6 / 6 / 0): early Clubhouse 51 duels; the MV of Calli-written "Myth or Treat" premiered on Ame's channel (2021); [Unverified: a reported cameo in Calli's 2026 charity stream lacks a confirmed segment locator.] [Observed Ame file A20; S3 §2021, §2026, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Ame** (29 / 30 / 9 / 4 / 4 / 0): Ina designed Bubba; Ame's "Amenade" cocktail traces back to a Japanese snack tasting with Ina; a "LOSER BUYS DINNER!!!!!" off-collab (2023-02-23); Ame aims blunt PvP taunts at her. [Observed S3 §Miscellaneous; Ame file; S1]
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and promised "the wrath of Ina" to anyone who makes Gura cry; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Gura and Kronii** (2021→2025: 9 / 11 / 3 / 2 / 5): the fan unit SNOTCast (Shark, Nature, Owl, Time); in 2025, Gura's last months, Kronii became one of her regular partners: Fast Food Simulator ("Legend Is Made Here With @GawrGura"), R.E.P.O., and "Greener Grass Awaits: I Play, She Watches (She's Scared)" (2025-04-26). [Observed S4 §Relationships, secondary; S1 Kronii titles]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2020-11-15 | Gura's chicken prank on KFP | KFP lore |
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
@@ -308,7 +309,6 @@ Matched names: lolive English first generation|hololive -Myth-|Calli and Gura|Ci
 ### from TakoTori
 - `bible/world/TakoTori.md › [SW] Description`: Takanashi Kiara and Ninomae Ina'nis, Myth's gas pedal and brake.
 - `bible/world/TakoTori.md › How It Works`: - **The chicken incident (2020):** after Gura filled the back room of Kiara's KFP building in Minecraft with chickens, Ina was checking on them when a creeper exploded and released them; Kiara "fired" Ina, and the incident became KFP lore. [Observed S4 §KFP, secondary]
-- `bible/world/TakoTori.md › How It Works`: - **How often (archive, S1):** mentions per year 30 (2020), 34 (2021), 17 (2022), 10 (2023), 11 (2024), 6 (2025), 4 in the thin 2026 archive, the highest 2026 rate of any Myth pair. [Observed S1; counts by Claude]
 - `bible/world/TakoTori.md › History`: | 2026-09-19 PDT | At Myth's 6th-anniversary 3D live "Seasons From Within" the two sang a duet cover of "September" | Setlist, secondary [S7] |
 
 ### from Time Duo

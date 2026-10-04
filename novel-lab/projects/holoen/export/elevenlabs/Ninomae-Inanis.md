@@ -36,7 +36,7 @@ excited words."
 | Sincere | `[quiet, gentle]` | "Live without regrets." (SECONDARY transcription; a sincere reading is proposed) |
 | Sign-off | `[warm]` | "have a wonderful rest of the morning, afternoon, evening" (ASR excerpt) |
 
-Additional proposed scene directions from the card's Audio Tags (untested): `[soft, unhurried]`, `[quiet, sleepy]`, `[calm, amused, unhurried]`, `[sly, setting up a pun]`, `[warm, punny]`, `[protective, gentle]`, `[patient, unbothered]`, `[polite Japanese, shy]`.
+Additional proposed scene directions from the card's Audio Tags (untested): `[soft, unhurried]`, `[calm, amused, unhurried]`, `[sly, setting up a pun]`, `[warm, punny]`, `[protective, gentle]`, `[patient, unbothered]`, `[polite Japanese, shy]`.
 
 ## 5. Signature sounds
 - "WAH!": `[excited] WAH!` (sometimes a droopy one at the end: `[deflated] wah…`)

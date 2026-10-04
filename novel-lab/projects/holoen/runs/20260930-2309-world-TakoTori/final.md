@@ -40,7 +40,7 @@ Relationship (pair) and official concert pairing.
   (2026-03-27/28 PDT, announced 2025-11-23, new 3D outfits); Kiara's "Back from Drawn to Dawn!!!!! THANK
   YOU!!!!" (2026-04-01); a cover of "GETCHA!" together (2026-04-24).
 - **How often (archive, S1):** mentions per year 30 (2020), 34 (2021), 17 (2022), 10 (2023), 11 (2024),
-  6 (2025), 4 in the thin 2026 archive, the highest 2026 rate of any Myth pair. [Observed S1; counts by
+  6 (2025), 4 in the thin 2026 archive. [Observed S1; counts by
   Claude]
 
 ## Sensory Palette
@@ -62,12 +62,12 @@ Relationship (pair) and official concert pairing.
 ## Glossary
 | Word | Meaning | Who says it |
 |---|---|---|
-| TakoTori | Tako (Ina) + Tori (Kiara); the pair and concert name | both, fans, official |
+| TakoTori | Tako (Ina) + Tori (Kiara); a collaboration nickname used in stream titles. Their duo concert is titled Drawn to Dawn. | members' stream titles; fans |
 | Wawa | Kiara | Kiara, Ina |
 | Drawn to Dawn | their 2026 duo concert | both |
 
 ## Conflicts and Story Hooks
-1. Rehearsal week: Kiara wants one more run-through, Ina wants a nap; both are right.
+
 
 3. A KFP "hearing" reopens the chicken incident; Ina defends herself deadpan.
 4. Kiara designs Ina's outfit and Ina designs Kiara's; neither admits the other's is better.
@@ -80,7 +80,7 @@ Takanashi Kiara, Ninomae Ina'nis; Gawr Gura (the chicken prank); Myth.
 (None.)
 
 ## Hard Facts (continuity)
-- "Drawn to Dawn": 2026-03-27/28, the Wiltern, Los Angeles; TakoTori's first concert.
+- "Drawn to Dawn": 2026-03-27/28 PDT, the Wiltern, Los Angeles; TakoTori's first concert.
 - Kiara "fired" Ina over the 2020 chicken incident (a KFP bit).
 
 ## Sources (checked 2026-09-30)
@@ -129,6 +129,7 @@ Orange and purple under concert lights; Kiara's hype countdown with Ina's calm "
 - **Promotion:** author decision; GPT reviewed one round only (author's instruction).
 - **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** their "September" duet cover at the 6th-anniversary live (secondary setlist).
 - **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:MYTH-DATE-002, myth3:MYTH-SCOPE-001 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH-DATE-002, myth4:MYTH-SCOPE-005, myth4:MYTH4-TIE-001, myth4:MYTH4-UNIT-001 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
 
 ## Open Questions
 (None.)

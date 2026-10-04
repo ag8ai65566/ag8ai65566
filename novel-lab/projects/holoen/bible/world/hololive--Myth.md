@@ -36,8 +36,7 @@ Faction / unit (a friend group with a shared history).
   Adaptation for "big sister / little shark" shorthand]
 - **Group humor:** mutual teasing, jinxes, chaotic Minecraft and party games; name-order trivia (Calli and
   Ame say their names in English order; Kiara, Ina and Gura surname-first). [Observed S2]
-- **Protectiveness:** Ina says anyone who makes Gura cry will "face the wrath of Ina," and extends the
-  promise to all the English members (tears of joy excepted). [Observed S2 Gura §Gura's antics, secondary]
+- **Protectiveness:** secondary accounts describe Ina performing protective mock threats about Gura and the English members, while exempting tears of joy. [Observed S2 Gura §Gura's antics, secondary]
 - **How often they meet on stream (archive, S1):** mentions of each other peaked in 2020–21 and fell
   after; by 2024–26 group appearances cluster around anniversaries, relays, concerts and a few big
   collabs. The bond shows in the milestones, not in daily collabs. [Observed S1]
@@ -139,6 +138,7 @@ Five member colors in a row (black, orange, purple, blue, gold); five voices tal
 - **2026-10-01, CONSULT-P2-001 and scope tidy-up:** process notes trimmed to the author's public-persona scope rule.
 - **2026-10-02, recency refresh (task 06, Claude; research/refresh/myth-kronii-20260930.md):** the 6th-anniversary live is now confirmed as held (hololive English channel VOD title, official posts) with the new song "THIS IS MYTH" (CONSULT-P2-001 closed); pair duet stages from a secondary setlist.
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
+- **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH-QUOTE-004 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. The "big sister / little shark" shorthand is Claude's summary of the group dynamic. Keep, reword or

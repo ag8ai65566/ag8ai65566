@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git 3bd6202. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git 19dba43. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Hakos Baelz
@@ -429,15 +429,15 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 | "ENigmatic Recollection" (ENReco) announced: EN members in the fantasy world Libestal, via a Minecraft series, animation and songs | Guilds: IRyS in "Cerulean Cup," Nerissa and Gura in "Scarlet Wand" |
 
 ### Gawr Gura × Ninomae Ina'nis
-- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and joked that anyone making Gura cry would face "the wrath of Ina."
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and performed a protective mock-threat bit about Gura.
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | English lesson #01 with Ina (2022); a guest at Ina's 3D live "Pleides" (2024); "SHINKIRO" with Gura (anime MV 2023-11-12, credited "宝鐘マリン・Gawr Gura") | [MA5 3n9igJnSXtQ] [MA4 9ehwhQJ50gs] |
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides"
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): UMISEA (2021); Ina performs a protective mock-threat bit about Gura.
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster).
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and promised "the wrath of Ina" to anyone who makes Gura cry; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina promised "the wrath of Ina" to anyone who makes Gura cry.
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina performed a protective mock-threat bit about Gura.
 - `bible/world/TakoTori.md › How It Works`: - **The chicken incident (2020):** after Gura filled the back room of Kiara's KFP building in Minecraft with chickens, Ina was checking on them when a creeper exploded and released them; Kiara "fired" Ina, and the incident became KFP lore. [Observed S4 §KFP, secondary]
-- `bible/world/hololive--Myth.md › How the Group Works`: - **Protectiveness:** Ina says anyone who makes Gura cry will "face the wrath of Ina," and extends the promise to all the English members (tears of joy excepted). [Observed S2 Gura §Gura's antics, secondary]
+- `bible/world/hololive--Myth.md › How the Group Works`: - **Protectiveness:** secondary accounts describe Ina performing protective mock threats about Gura and the English members, while exempting tears of joy. [Observed S2 Gura §Gura's antics, secondary]
 
 ### Gawr Gura × Ouro Kronii
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Gawr Gura | Myth senior (graduated 2025-05-01) | The Urban Dictionary Challenge with Kronii, Mumei and Gura (2022-08-20, archived) | [Observed HB3] |
@@ -799,7 +799,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2024-11-14 | "Spectra of Nova" watch party | Calli, FUWAMOCO, Elizabeth for Suisei |
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: (2022) and a performance at Calli's concert New Underworld Order; archived uploads document Calli's watch-alongs of Suisei's concerts.
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Suisei and Calli: collaborators on "CapSule" and "Wicked"
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns. They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2019-05-19 | AZKi and Hoshimachi Suisei (formerly independent) join under the INoNaKa Music label; Suisei moves to hololive's main branch on 2019-12-01 | Calli's collaborator Hoshimachi Suisei |
 
 ### Hoshimachi Suisei × Nakiri Ayame
@@ -815,7 +815,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: ("Going My Way," 2026); secondary references list MOMAS (Suisei, Okayu) and OKFAMS (Ayame, Okayu).
 
 ### Hoshimachi Suisei × Ninomae Ina'nis
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns. They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
 
 ### Hoshimachi Suisei × Shishiro Botan
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Suisei, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024).
@@ -1236,8 +1236,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Conflicts and Story Hooks`: 3. Calli writes lyrics for Ina and Ina draws the cover; each critiques the other's draft.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Hard Facts`: - Ina designed Death Sensei, Bubba and the Takodachi; Calli wrote the lyrics for "TAKO∞TAKOVER."
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2026-01-08 | "TAKO∞TAKOVER" digital release (lyrics by Calli) | Ina × Calli |
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns ("Every freaking time, Ina.").
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns. They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns.
 - `bible/world/OctoClock.md › Conflicts and Story Hooks`: 2. Ina quietly claims Kronii "all to myself" in front of Calli; Kronii plays along deadpan.
 - `bible/world/hololive--Myth.md › History`: | 2025-09-13 | 5th anniversary collab with announcements (Calli, Kiara, Ina) | New anniversary hats |
 - `bible/world/hololive--Myth.md › History`: | 2026-09-19 PDT (09-20 JST) | Myth 6th Anniversary 3D LIVE "Seasons From Within" on the hololive English channel with Calli, Kiara and Ina; it premiered the new Myth original song "THIS IS MYTH," whose MV followed. Pair stages (setlist, secondary S5): Kiara and Ina, Calli and Kiara, Calli and Ina each sang a duet cover | The current three on stage together [S3, S4; S5] |
@@ -1535,7 +1535,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself.
 - `bible/characters/Shiori-Novella.md › [SW] Relationships`: Ouro Kronii: they hosted "Rating Your Clocks" together (2025) and sang "MONSTER" with Ina and Gigi at the 2025 concert.
 - `bible/characters/Takane-Lui.md › Behavioral Traits`: 2. Dad jokes, like Ina and Kronii. [Observed LU2 §Personality, secondary]
-- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleiades" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
+- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleides" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
 - `bible/world/OctoClock.md › Conflicts and Story Hooks`: 2. Ina quietly claims Kronii "all to myself" in front of Calli; Kronii plays along deadpan.
 - `bible/world/OctoClock.md › How It Works`: - **On stream (archive, S1):** Ina's FGO streams with Kronii (2023-08-18 "Let's Learn About Fate/Grand Order!!!", 2024-01-02 "NEW YEAR FGO ADVENTURES"), R.E.P.O. (2025-07-19), and Ame's 2022 surprise karaoke off-collab that both joined (per Ame's wiki page).
 - `bible/world/OctoClock.md › How It Works`: - Ina: "I get to…keep Kronii….all to myself…..hehe…hehehe"; "it's even more special now that it's just us two together!!"; she admires Kronii's "unmatched charisma whenever she sings."
@@ -1569,10 +1569,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate ("TakoTori") | Duo concert 2026; Kiara "fired" Ina over the 2020 chicken incident.  | [Official T11, T12] [Observed T2 §KFP; T22 §Personality, secondary] |
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Ninomae Ina'nis: Myth genmate and duo-concert partner (TakoTori; Drawn to Dawn, 2026), the calm brake to Kiara's gas pedal.
 - `bible/world/Concerts-and-Live-Events.md › Conflicts and Story Hooks`: 4. An aftertalk where Kiara and Ina disagree about who cried first at "Drawn to Dawn."
-- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleiades" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
+- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleides" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Takanashi Kiara | 4th-anniversary live "MIRAGE" (2024-10-06); "KIARA & FRIENDS: H!P Cover Song Spring Concert" (2025-04-21); "Drawn to Dawn" with Ina (2026-03-27/28 PDT, The Wiltern); World Tour '24 performer; Serendipity with Bijou; birthday 3D live (2026-07-06 PDT); "Seasons From Within" | Kiara file T11, T12, T10; S3 titles |
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: The cast's own stages: Calli's "GriMoire" at the Hollywood Palladium (2025, the first hololive solo concert outside Japan); Kiara and Ina's duo concert "Drawn to Dawn"
-- `bible/world/TakoTori.md › Conflicts and Story Hooks`: 1. Rehearsal week: Kiara wants one more run-through, Ina wants a nap; both are right.
 - `bible/world/TakoTori.md › Conflicts and Story Hooks`: 4. Kiara designs Ina's outfit and Ina designs Kiara's; neither admits the other's is better.
 - `bible/world/TakoTori.md › Hard Facts`: - Kiara "fired" Ina over the 2020 chicken incident (a KFP bit).
 - `bible/world/TakoTori.md › History`: | 2020-11 | The KFP chicken incident; Kiara "fires" Ina | KFP lore |
@@ -1598,9 +1597,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" (Calli, Kiara, Ina); new Myth song "THIS IS MYTH" | — |
 
 ### Ninomae Ina'nis × Watson Amelia
-- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate | Ina designed Bubba; the patient foil to Ame's salty gremlin; "Ame... Ame is British." | [Observed I2 §Personality, §Miscellaneous and §Quotes] |
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate | Ina designed Bubba; the patient foil to Ame's salty gremlin | [Observed I2 §Personality, §Miscellaneous and §Quotes] |
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Watson Amelia (affiliate): Ina designed Bubba and is the patient foil to Ame's salty gremlin.
-- `bible/characters/Watson-Amelia.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her ("Ina... prepare to get fucked!", a PvP threat; wording inferred from a censored title) | [Observed A2 §Mascots and fans and §Quotes; A14] |
+- `bible/characters/Watson-Amelia.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her (a profane PvP threat reported by a secondary clip title; exact wording unverified) | [Observed A2 §Mascots and fans and §Quotes; A14] |
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Ninomae Ina'nis: Myth colleague and gaming partner who designed Bubba; Ame can aim blunt competitive taunts at her.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Ame** (29 / 30 / 9 / 4 / 4 / 0): Ina designed Bubba; Ame's "Amenade" cocktail traces back to a Japanese snack tasting with Ina; a "LOSER BUYS DINNER!!!!!" off-collab (2023-02-23); Ame aims blunt PvP taunts at her. [Observed S3 §Miscellaneous; Ame file; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab.
@@ -1610,9 +1609,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Ninomae Ina'nis × Yukihana Lamy
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2024 | Originals "Hatsukoi Pâtissière," "Watashi wo amayakasunara" and "Lamy's Baribari Workout"; a guest at Ina's 3D live "Pleides" (12-28) | [Observed LM2] [LM5] |
 - `bible/characters/Yukihana-Lamy.md › Story Engine`: 1. Lamy hosts a "Snack Yuki no Hana" night and Ina draws the regulars.
-- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2021 | Ina's Minecraft festival and EN-server "date" | Lamy, Ina |
+- `bible/world/JP-Senpai-Pairs-2.md › History`: | 2021 | the Usaken Summer Festival in Minecraft with Ina and EN-server "date" | Lamy, Ina |
 - `bible/world/JP-Senpai-Pairs-2.md › Yukihana Lamy with the cast`: - **Ninomae Ina'nis:** archived metadata records Ina and Lamy's 2021 "Usaken Summer Festival" stream (06-27) and a separate EN-server stream billed as a "date" (10-20, the stream's own premise); secondary concert records and Ina's archived guest list put Lamy at Ina's 3D live "Pleides" (2024-12-28). [S1]
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Lamy joined Ina's Minecraft festival and a "date"-billed Minecraft stream (2021) and her 3D live (2024).
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Lamy joined the Usaken Summer Festival in Minecraft with Ina and a "date"-billed Minecraft stream (2021) and her 3D live (2024).
 
 ### Ouro Kronii × Raora Panthera
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Raora Panthera: R.E.P.O. with Kiara and Kronii (2025).
@@ -1633,7 +1632,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Gawr Gura (graduated): R.E.P.O. with Kiara and Kronii (2025).
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Ouro Kronii | Promise member ("Sundial", fan term) | Kiara announced she was a fan before Kronii debuted; a language exchange is reported by a clip title but remains unverified | [Observed T2 §Relationships; Kronii file K17] |
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Ouro Kronii ("quasoni"): Kiara was a fan before Kronii debuted.
-- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleiades" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
+- `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Ninomae Ina'nis | 3D live "Pleides" (2024-12-28); "Drawn to Dawn" with Kiara; World Tour '24 performer; Serendipity with Kronii; "Seasons From Within" | Ina file I20, I7; S3 title |
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2025-04-26/30 | Kronii's and Kiara's last collabs with Gura | Farewells |
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Kronii** (2021→2025: 5 / 5 / 11 / 5 / 6): Kiara was a fan of Kronii before Kronii debuted and calls her "quasoni" in her own stream titles ("quasoni pls help me"); Diablo raids, an Age of Empires tournament, a GIRLSTALK ("Turns Out Kronii Is Quite The Girl Too!!!!!!", 2024) and PEAK ("we are climbing mount kronii, right?", 2025). [Observed Kronii file K8; S1 Kiara titles]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Kiara and Kronii: Kiara was a fan before Kronii debuted and calls her "quasoni."

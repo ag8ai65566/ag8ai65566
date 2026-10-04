@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 3bd6202.
+Snapshot: git 19dba43.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: loEN's later generations|hololive History 2023-2026|hololive History to 2022|Concerts and Live Events|VTuber Persona and Lore|recent hololive history|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Apex Predators|Streaming Life|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|world tour|the merger|SUPER EXPO|EN concert|Holodeath|aftertalk|PavoNashi|HOLOTORI|IRySora|3D live|MoRikka|HoloJEI|K.I.R.A|soranii|V3LVET|UMISEA|OKFAIR|KoMeHa|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|the 2025 graduations|Cross-Branch Friends|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|the merger|SUPER EXPO|world tour|EN concert|Holodeath|PavoNashi|aftertalk|HOLOTORI|MoRikka|K.I.R.A|HoloJEI|IRySora|soranii|3D live|OKFAIR|V3LVET|KoMeHa|UMISEA|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -64,11 +64,11 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Fuwawa-Abyssgard.md › Arc`: - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their first album.
 
 ### from Gawr Gura
-- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and joked that anyone making Gura cry would face "the wrath of Ina."
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and performed a protective mock-threat bit about Gura.
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Houshou Marine: UMISEA and "SHINKIRO"
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: (2023); UMISEA's official 2023 roster also includes Sakamata Chloe.
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Shishiro Botan: "Apex Predators," a secondary pair name.
-- `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and warns that anyone who makes Gura cry faces "the wrath of Ina"; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
+- `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | La+ Darknesss, Kazama Iroha, Shishiro Botan | JP members | HOLO ENGLISH LESSON #02 with La+ and Iroha (Calli's stream, 2022-03-04); "Apex Predators," a wiki-listed pair name with Botan | [S1 X492n37brRU] [Botan file, secondary] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Houshou Marine, Sakamata Chloe | UMISEA (official 2023 roster: Aqua, Marine, Chloe, Gura, Ina) | "SHINKIRO" with Marine (anime MV on Marine's channel, 2023-11-12, credited to both; the "GuraMarine" pair name is wiki-listed only) | [Marine file MA4 9ehwhQJ50gs] [Official UMISEA roster] |
 
@@ -213,13 +213,13 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): UMISEA (2021); Ina performs a protective mock-threat bit about Gura.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine and Sakamata Chloe: UMISEA.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity.
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-06-04 | Serendipity interview and partnership with Kronii | [Official I7] |
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Ouro Kronii | Serendipity partner (interview 2026-06-04; unit name "Octo'Clock" in a 2026-06-24 short, I30) | A pun duo; they share Korean; Ina: "I get to... keep Kronii... all to myself... hehe" | [Official I7] [Observed Kronii file K8 §Miscellaneous] |
-- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Ina says anyone who makes Gura cry will "face the wrath of Ina"; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Secondary accounts describe Ina's protective mock-threat bit about Gura; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Houshou Marine | JP senior; UMISEA (official 2023 roster) | Admired artist-performer ("Marine-senpai," 2022 interview, not reopened in review); Marine guested at "Pleides" (2024) | [Observed—published interview I18] [Official UMISEA roster] [S1 3n9igJnSXtQ] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Hakos Baelz | Promise kouhai | Archived metadata: the K/DA "POP/STARS" cover with Moona and Ayunda Risu (2023); a BAE-CADEMY art lesson with "Ina-sensei" (2024); Ina's AmiAmi special featuring Bae (2025-05-29); World Tour '24 together | [Bae file HB3, HB5, HB8, HB20] |
 
@@ -315,7 +315,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 ### from Yukihana Lamy
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2021), and as a guest at Ina's 3D live "Pleides"
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: (2021), and a guest at Ina's 3D live "Pleides"
-- `bible/characters/Yukihana-Lamy.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her at Ina's Minecraft festival and a Minecraft collab billed as a "date" (2021) and as a guest at Ina's 2024 3D live. [LM5]
+- `bible/characters/Yukihana-Lamy.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her at the Usaken Summer Festival in Minecraft with Ina and a Minecraft collab billed as a "date" (2021) and as a guest at Ina's 2024 3D live. [LM5]
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2024 | Originals "Hatsukoi Pâtissière," "Watashi wo amayakasunara" and "Lamy's Baribari Workout"; a guest at Ina's 3D live "Pleides" (12-28) | [Observed LM2] [LM5] |
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Ninomae Ina'nis | — | A Minecraft festival appearance and a Minecraft collab billed as a "date" (2021); a guest at Ina's "Pleides" 3D live (2024) | [LM5 a7CvRf4vFYc, Isp3UhgOAB4, 3n9igJnSXtQ] |
 
@@ -355,7 +355,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 ### from JP Senpai Pairs 2
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Marine was the first guest of Kiara's talk show HOLOTALK (2020), joined Calli's first English lesson with Ina (2022), played Mario Kart with Calli and Bae (2021) and joined their house-party off-collab (2023), joined off-collabs with FUWAMOCO and Nerissa (2024), and was a guest at Ina's 3D live "Pleides"
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA.
-- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Lamy joined Ina's Minecraft festival and a "date"-billed Minecraft stream (2021) and her 3D live (2024).
+- `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Lamy joined the Usaken Summer Festival in Minecraft with Ina and a "date"-billed Minecraft stream (2021) and her 3D live (2024).
 - `bible/world/JP-Senpai-Pairs-2.md › [SW] Description`: Botan played Left 4 Dead 2 and Overwatch 2 with IRyS, was on HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and guested at Ina's 2025 birthday live.
 - `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Ninomae Ina'nis, Gawr Gura:** UMISEA, the ocean unit (official 2023 roster: Minato Aqua, Marine, Sakamata Chloe, Gura and Ina); Calli's English lesson #01 (Ina); a guest at Ina's "Pleides" (2024); "SHINKIRO" with Gura (anime MV on Marine's channel, 2023-11-12, credited to both). The "GuraMarine" pair name is wiki-listed only. [Official UMISEA roster] [S1 9ehwhQJ50gs, 3n9igJnSXtQ] [S2 Marine §Relationships, secondary]
 - `bible/world/JP-Senpai-Pairs-2.md › Yukihana Lamy with the cast`: - **Ninomae Ina'nis:** archived metadata records Ina and Lamy's 2021 "Usaken Summer Festival" stream (06-27) and a separate EN-server stream billed as a "date" (10-20, the stream's own premise); secondary concert records and Ina's archived guest list put Lamy at Ina's 3D live "Pleides" (2024-12-28). [S1]
@@ -389,9 +389,9 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/world/Justice-Pairs.md › Hard Facts`: - Serendipity 2026 units with Justice members (official billing): Autofister (Gigi & Cecilia), Bloodraven (Nerissa & Elizabeth), B.F.F (FUWAMOCO & Raora).
 
 ### from Myth and Kronii: Other Pairs
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina promised "the wrath of Ina" to anyone who makes Gura cry.
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina performed a protective mock-threat bit about Gura.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Kiara and Ame** (20 / 26 / 30 / 8 / 9 / 1): Ame is Kiara's EN oshi; Kiara calls herself "#1 Ame gosling" and "#1 Teamate" and credits Ame for help with her 3D productions. Ame made the intro video for Kiara's talk show HOLOTALK (2020) and was its 31st guest (2024-09-22); they did a 3D off-collab "In Ame's awesome studio" (2023-06). Ame on a reunion: "Kiara like, threw herself at me… she hugged me!" Unverified: secondary accounts report Ame appearances at Kiara's 2025 spring concert and 2026 birthday live; the cited primary material has not been verified here. [Observed S2 Kiara §Likes and dislikes, §2020; S3 Ame §Quotes, §2025–§2026, secondary; S1]
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and promised "the wrath of Ina" to anyone who makes Gura cry; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
 
 ### from Octo'Clock

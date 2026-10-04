@@ -13,3 +13,4 @@
 - 2026-10-03 23:41 作者裁決收錄 final.md（sha256 fe836c5e53dd）：Author decision (2026-10-03): workflow research W1 merged by Claude; partner tags made performable for the scene converter
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 453df5d400c8）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
 - 2026-10-04 00:03 作者裁決收錄 final.md（sha256 4de6c68a5aad）：Author decision (2026-10-04): cast-ties research R7 merged by Claude
+- 2026-10-04 00:13 作者裁決收錄 final.md（sha256 9a649f365f34）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude

@@ -1,6 +1,6 @@
 # Bridge packet: events
 
-Snapshot: git 3bd6202. Every dated row from every bible file's dossier
+Snapshot: git 19dba43. Every dated row from every bible file's dossier
 tables (registry events), grouped by month; then each cast member's status interval. Locators are files;
 search the file for the row text to see its context.
 
@@ -137,8 +137,8 @@ search the file for the row text to see its context.
 - 2020-12-10 [day] Kiara's channel briefly terminated, then restored ("#PhoenixDown") — `bible/world/hololive-History-to-2022.md`
 
 ### 2021
-- 2021 [year] Ina's Usaken Summer Festival (06-27) and an EN-server Minecraft "date" with Ina (10-20) — `bible/characters/Yukihana-Lamy.md` ([LM5])
-- 2021 [year] Ina's Minecraft festival and EN-server "date" — `bible/world/JP-Senpai-Pairs-2.md`
+- 2021 [year] Usaken Summer Festival with Ina (06-27) and an EN-server Minecraft "date" with Ina (10-20) — `bible/characters/Yukihana-Lamy.md` ([LM5])
+- 2021 [year] the Usaken Summer Festival in Minecraft with Ina and EN-server "date" — `bible/world/JP-Senpai-Pairs-2.md`
 - 2021–2026 [year-range] Lore grows through jokes, songs and events — `bible/world/VTuber-Persona-and-Lore.md`
 
 ### 2021-03
@@ -889,7 +889,7 @@ search the file for the row text to see its context.
 - 2026-09-07 [day] The branches merge into one "hololive." Her unit is now hololive -Myth-. — `bible/characters/Mori-Calliope.md` ([Official C17, C1])
 - 2026-09-19 PDT [day, PDT] Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres — `bible/characters/Mori-Calliope.md` ([Archive metadata C33])
 - 2026-09-19 [day] Digital release of "BANZAI☆MANKAI." — `bible/characters/Nakiri-Ayame.md` ([Official NEW-R5-008])
-- 2026-09-07 [day] Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- — `bible/characters/Ninomae-Inanis.md` ([Official I28] [Observed I10])
+- 2026-09-07 [day] Branches merge; her unit is hololive -Myth- — `bible/characters/Ninomae-Inanis.md` ([Official I28] [Observed I10])
 - 2026-09-19 PDT [day, PDT] Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres — `bible/characters/Ninomae-Inanis.md` ([Archive metadata I32])
 - 2026-09-19 [day] Original single "Stardust Capsule" (hololive catalogue CVRD-824). — `bible/characters/Ninomae-Inanis.md` ([Official NEW-R1-011])
 - 2026-09-07 [day] Branches merge into one "hololive"; unit is hololive -Promise- — `bible/characters/Ouro-Kronii.md` ([Official K5, K1])

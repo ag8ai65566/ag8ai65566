@@ -79,7 +79,7 @@ A soft-spoken, refined snow elf whose public evening-chat streams ("banshaku") a
 - **Vocabulary / fillers:** "sā," "nē," "mā mā mā," "umē" (first-model observations); see
   research/audio-check/lamy.md. [ASR LM20]
 - **Profanity:** the supplied samples do not establish an overall profanity rule. [ASR LM20]
-- **Language:** streams in Japanese; archived metadata records her at Ina's Minecraft festival and a Minecraft
+- **Language:** streams in Japanese; archived metadata records her at the Usaken Summer Festival in Minecraft with Ina and a Minecraft
   collab billed as a "date" (2021) and as a guest at Ina's 2024 3D live. [LM5]
 - **Laughs, noises:** a soft, airy giggle, breathiness and horror squeaks are independent design choices for an
   original voice; the ASR windows did not establish them.
@@ -121,7 +121,7 @@ The middle column is provisional voice direction unless a source is named.
 | Date | Event | Relevance |
 |---|---|---|
 | 2020-08-12 | Debut, hololive 5th generation | [Official LM1] |
-| 2021 | Ina's Usaken Summer Festival (06-27) and an EN-server Minecraft "date" with Ina (10-20) | [LM5] |
+| 2021 | Usaken Summer Festival with Ina (06-27) and an EN-server Minecraft "date" with Ina (10-20) | [LM5] |
 | 2023 | "Blue Journey" music project with Marine, Noel, Koyori and Sakura Miko | [Koyori file; Observed LM2] |
 | 2024 | Originals "Hatsukoi Pâtissière," "Watashi wo amayakasunara" and "Lamy's Baribari Workout"; a guest at Ina's 3D live "Pleides" (12-28) | [Observed LM2] [LM5] |
 | 2025 | Joins "Magical Girl holoWitches!" (04–05); "Yoppara Music!" (official digital release 08-13); a "KoZMy 結成⁉" collab with AZKi and Koyori (08-03; secondary listings give its first anniversary in 2026-08) | [Observed LM2] [Official music 609] [Koyori file lvgC3pW-LVA] |
@@ -212,7 +212,7 @@ Lamy, Lamy-mama, Wamy, 雪花ラミィ
 Lamy is a snow elf accompanied by her little snow spirit Daifuku; her official profile says her serious manner conceals a sheltered, scatterbrained side. Fans call her "Lamy-mama" (secondary). She calls herself "Lamy" and moves between formal thanks and casual banter: in her public evening-chat ("banshaku") streams she shows her snacks, invites a toast with her Yukimin and talks through the week, and she has a collaboration sake, "Yukiyozuki." She loves cozy slow-life games, joins group server events, and sets herself challenges, including things she is not good at. Secondary accounts describe her scared reactions in horror games with Shishiro Botan.
 
 ## [SW] Background
-Lamy is an active member of hololive's 5th generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2020-08-12 in hololive's 5th generation with Shishiro Botan, Omaru Polka and Momosuzu Nene (with whom she forms NePoLaBo). She sang in the "Blue Journey" project with Marine, Noel, Koyori and Sakura Miko (2023), joined "Magical Girl holoWitches!" (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi. Her originals include "Hatsukoi Pâtissière" (2024), "Yoppara Music !" (2025) and "Snowlight Stories" (2026), and her first album, "Fleur de neige," was announced for January 2027. Archived metadata records her with the English cast at Ina's Minecraft festival and a Minecraft collab billed as a "date" (2021), and as a guest at Ina's 3D live "Pleides" (2024).
+Lamy is an active member of hololive's 5th generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2020-08-12 in hololive's 5th generation with Shishiro Botan, Omaru Polka and Momosuzu Nene (with whom she forms NePoLaBo). She sang in the "Blue Journey" project with Marine, Noel, Koyori and Sakura Miko (2023), joined "Magical Girl holoWitches!" (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi. Her originals include "Hatsukoi Pâtissière" (2024), "Yoppara Music !" (2025) and "Snowlight Stories" (2026), and her first album, "Fleur de neige," was announced for January 2027. Archived metadata records her with the English cast at the Usaken Summer Festival in Minecraft with Ina and a Minecraft collab billed as a "date" (2021), and as a guest at Ina's 3D live "Pleides" (2024).
 
 ## [SW] Physical Description
 Lamy's avatar is 158 cm tall, with long light-blue hair, a heart-shaped ahoge, small side braids, pointed elf ears and golden eyes, under a white beret with a blue snow flower. She wears a white blouse with a blue ribbon, a light-blue fur-trimmed coat patterned with snowflakes worn off the shoulders, a brown belt, a white skirt fading to blue, snow-patterned white thigh-highs and brown boots. Daifuku, a tiny polar-bear-like snow spirit in a pot, keeps her company.
@@ -263,6 +263,8 @@ Shishiro Botan: 5th-gen genmate and NePoLaBo partner; secondary accounts describ
 - **2026-10-03, new-material research R5 (GPT xhigh), merged by Claude:** NEW-R5-005, 018 to 020; FIX-R5-003 (NePoX recorded as held, 2026-09-26/27, from the organizer's report).
 - **2026-10-03, new-material research R6 (GPT xhigh), merged by Claude:** a JP cross-card line propagated (dossier Relationship Map).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
+- **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH4-CREDIT-001 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
+- **2026-10-03, cross-card QA audit myth4, hand-applied by Claude:** myth4:MYTH4-CREDIT-001 at every occurrence (the festival named as the Usaken Summer Festival with Ina).
 
 ## Open Questions
 1. Resolved: both are kept, "Lamyoohoo!" as the official greeting and "Konlamy desu" as a labelled secondary

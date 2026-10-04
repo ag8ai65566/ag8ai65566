@@ -8,3 +8,4 @@
 - 2026-10-02 07:50 作者裁決收錄 final.md（sha256 dea16db64500）：Author decision (2026-10-02): scope wording (senpai/kouhai definition without language or nationality terms)
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 5b11df10197d）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
 - 2026-10-03 23:49 作者裁決收錄 final.md（sha256 465b1f43d96f）：Author decision (2026-10-03): scope screening of Merge Records (excluded topics no longer named) and the global audit's hand-applied items
+- 2026-10-04 00:13 作者裁決收錄 final.md（sha256 6439fb2edcf5）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude

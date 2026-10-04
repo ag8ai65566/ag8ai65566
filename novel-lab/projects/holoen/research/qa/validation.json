@@ -1,7 +1,7 @@
 {
  "phase": "candidate",
- "checked_at": "2026-10-04T00:02Z",
- "snapshot": "f9a029f3d5ecf73231d4c71cd0a6bb4483cb88506645328c7b6eb7578f5690b3",
+ "checked_at": "2026-10-04T00:14Z",
+ "snapshot": "eb692d89e2b5f92f58ad45ffe8bc080be03b1baf0286ced810eb21ff6148beb5",
  "blocking_failures": [
   "V10",
   "V11",
@@ -20,7 +20,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot f9a029f3d5ecf73231d4c71cd0a6bb4483cb88506645328c7b6eb7578f5690b3",
+    "snapshot eb692d89e2b5f92f58ad45ffe8bc080be03b1baf0286ced810eb21ff6148beb5",
     "107 inputs"
    ],
    "finding_ids": []
@@ -123,7 +123,7 @@
    "locator": null,
    "evidence": [
     "relationship web: 0 one-way ties (coverage, not errors; tools/web_check.py)",
-    "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-bridge-ties-external.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },
@@ -134,7 +134,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },
@@ -157,7 +157,7 @@
    "locator": null,
    "evidence": [
     "0 automated candidates for semantic review",
-    "review pending: research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },
@@ -168,7 +168,7 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
+    "review pending: research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md"
    ],
    "finding_ids": []
   },

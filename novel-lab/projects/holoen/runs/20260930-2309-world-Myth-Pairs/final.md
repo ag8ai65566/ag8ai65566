@@ -34,7 +34,7 @@ Relationship web.
   [Observed S2 §KFP, §Miscellaneous; S4 Gura §Gura's antics, secondary; S1]
 - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the
   cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring
-  target of Ina's puns ("Every freaking time, Ina."). They watched Suisei's concert together in an
+  target of Ina's puns. They watched Suisei's concert together in an
   off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina
   §Miscellaneous; Calli file C28; Ina file I8; S1]
 - **Calli and Ame** (24 / 23 / 14 / 6 / 6 / 0): early Clubhouse 51 duels; the MV of Calli-written "Myth or
@@ -43,7 +43,7 @@ Relationship web.
   Japanese snack tasting with Ina; a "LOSER BUYS DINNER!!!!!" off-collab (2023-02-23); Ame aims blunt PvP
   taunts at her. [Observed S3 §Miscellaneous; Ame file; S1]
 - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021);
-  Ina drew chibi Bloop and promised "the wrath of Ina" to anyone who makes Gura cry; Gura once directed a
+  Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; Gura once directed a
   lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's
   antics, secondary]
 - **Kiara and Kronii** (2021→2025: 5 / 5 / 11 / 5 / 6): Kiara was a fan of Kronii before Kronii debuted and
@@ -57,7 +57,7 @@ Relationship web.
 
 ## Sensory Palette
 - See: a KFP back room full of chickens; a hand-drawn Death Sensei; a Bubba sketch; a PEAK summit.
-- Hear: Kiara's German lesson voice; Gura repeating a swear word wrong; "Every freaking time, Ina."
+- Hear: Kiara's German lesson voice; Gura repeating a swear word wrong; Calli's exasperated reaction to Ina's puns.
 
 ## History
 | Date | Event | Trace left |
@@ -120,13 +120,13 @@ Relationship
 Kiara and Ame, Ame and Kiara, Kiara and Gura, Gura and Kiara, Calli and Ina, Ina and Calli, Calli and Ame, Ame and Calli, Ina and Ame, Ame and Ina, Ina and Gura, Gura and Ina, Kiara and Kronii, Kronii and Kiara, Gura and Kronii, Kronii and Gura
 
 ## [SW] Description
-The rest of the web among the five Myth members and Kronii. Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024; Ame on a reunion: "Kiara like, threw herself at me… she hugged me!" Kiara and Gura: Kiara calls Gura "Goobidiba" and taught her German and Japanese, swears included; Gura's Minecraft prank filled Kiara's KFP back room with chickens; Gura was HOLOTALK's 34th guest the day before she graduated. Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). Calli and Ame: early Clubhouse 51 duels. Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab. Ina and Gura: the official ocean unit UMISEA (2021); Ina promised "the wrath of Ina" to anyone who makes Gura cry. Kiara and Kronii: Kiara was a fan before Kronii debuted and calls her "quasoni." Gura and Kronii: fan unit SNOTCast; in Gura's last months Kronii was one of her regular partners ("I Play, She Watches (She's Scared)").
+The rest of the web among the five Myth members and Kronii. Kiara and Ame: Ame is Kiara's EN oshi ("#1 Ame gosling"); Ame made Kiara's HOLOTALK intro, was its guest in 2024; Ame on a reunion: "Kiara like, threw herself at me… she hugged me!" Kiara and Gura: Kiara calls Gura "Goobidiba" and taught her German and Japanese, swears included; Gura's Minecraft prank filled Kiara's KFP back room with chickens; Gura was HOLOTALK's 34th guest the day before she graduated. Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns. Calli and Ame: early Clubhouse 51 duels. Ina and Ame: Ina designed Bubba; they did a "loser buys dinner" off-collab. Ina and Gura: the official ocean unit UMISEA (2021); Ina performed a protective mock-threat bit about Gura. Kiara and Kronii: Kiara was a fan before Kronii debuted and calls her "quasoni." Gura and Kronii: fan unit SNOTCast; in Gura's last months Kronii was one of her regular partners ("I Play, She Watches (She's Scared)").
 
 ## [SW] Rules
 In the 2026 baseline, pairs with Gura are memories and callbacks, and pairs with Ame are guest appearances. Nicknames are used as each member uses them (Kiara's "Goobidiba," "quasoni"). All of these are friendships.
 
 ## [SW] Sensory Details
-A KFP back room full of chickens; a hand-drawn Death Sensei and a Bubba sketch; Kiara's German-lesson voice; Gura repeating a swear wrong; "Every freaking time, Ina."
+A KFP back room full of chickens; a hand-drawn Death Sensei and a Bubba sketch; Kiara's German-lesson voice; Gura repeating a swear wrong; Calli's exasperated reaction to Ina's puns.
 
 ## [SW] Secrets
 
@@ -145,6 +145,7 @@ A KFP back room full of chickens; a hand-drawn Death Sensei and a Bubba sketch; 
 - **2026-10-03, cross-card QA audit (myth1, GPT xhigh), merged by Claude:** applied myth1:MYTH-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth1.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit (myth3, GPT xhigh), merged by Claude:** applied myth3:MYTH-EVENT-001 (exact replacements; dispositions in research/qa/audit-myth3.md and research/qa/resolutions.md).
 - **2026-10-03, cross-card QA audit myth1, hand-applied by Claude:** myth1:MYTH-CREDIT-002 (lyrics credit).**
+- **2026-10-03, cross-card QA audit myth4, hand-applied by Claude:** myth4:MYTH-QUOTE-001 and MYTH-QUOTE-004 at every occurrence (unverified quotes described instead of quoted).
 
 ## Open Questions
 1. "quasoni" appears in Kiara's stream titles for Kronii; its origin was not found.

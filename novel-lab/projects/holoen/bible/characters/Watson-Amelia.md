@@ -135,7 +135,7 @@ lost and often ignores hints. [Observed A2 §Personality and §Likes and dislike
     Didn't mean it." (censored in source)
   - "First of all, you watch your goddamn tone when you're talking to me." (censored in source)
   - "YOU BITCH! I COULDN'T EVEN KILL MYSELF!" (a game context; censored in source)
-  - "Ina... prepare to get FUCKED!" (a PvP threat; censored in source and in clip A14's title)
+  - A secondary clip title reports a profane PvP threat aimed at Ina; the exact spoken wording is unverified. [A14]
   - "…You have a lot of yummy food, watch a lot of fun streams. Make money, get bitches. Thank you."
     (a New Year wish; censored in source) [also A15]
   - Naming a Minecraft mine "Gura's Backdoor ( ͡° ͜ʖ ͡°)". [A2 §Personality]
@@ -260,7 +260,7 @@ Public exchanges only. Ship and unit names are fan terms. No private feelings ar
 |---|---|---|---|
 | Gawr Gura (graduated) | Myth genmate ("AmeSame") | Close friends per the wiki; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
 | Mori Calliope | Myth genmate | Clubhouse 51 games [Observed A20]. [Unverified, title only: a surprise "ara ara" scare] | [A20; A6 clip title] |
-| Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her ("Ina... prepare to get fucked!", a PvP threat; wording inferred from a censored title) | [Observed A2 §Mascots and fans and §Quotes; A14] |
+| Ninomae Ina'nis | Myth genmate and gaming collaborator | Ina designed Bubba; Ame can aim blunt competitive taunts at her (a profane PvP threat reported by a secondary clip title; exact wording unverified) | [Observed A2 §Mascots and fans and §Quotes; A14] |
 | Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material; "Kiara like, threw herself at me… she hugged me!" | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
 | Ouro Kronii | Promise member ("Time Duo") | Time traveler vs. Warden of Time; Ame guested at Kronii's 2026 3D birthday live | [Observed A2 §Relationships; Kronii file K33] |
 | Akai Haato (Haachama) | JP senior | Clubhouse 51 games ("AMECHAMA") | [Observed A21] |
@@ -505,6 +505,7 @@ Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeS
 - **2026-10-03, scope screening by Claude:** earlier Merge Record wording that named an excluded topic is genericized (project rule: Merge Records say only that private details were deliberately excluded).**
 - **2026-10-03, new-material research R1 (GPT xhigh), merged by Claude:** NEW-R1-018 (a song performance with Bijou and Kiara, undated).
 - **2026-10-03, cast-ties research R7 (20261002-1715-research-new-R7-Ties, GPT xhigh), merged by Claude:** dated pair records added (TIE and COR rows as cited in the Relationship Map); exported clauses only where the evidence names a specific shared activity and the field has room. The one-way ties R7 targeted were already closed.
+- **2026-10-04, cross-card QA audit (myth4, GPT xhigh), merged by Claude:** applied myth4:MYTH4-QUOTE-001 (exact replacements; dispositions in research/qa/audit-myth4.md and research/qa/resolutions.md).
 
 ## Open Questions
 1. Corroborated by audio (both models): the ground-pound joke, the time-travel reveal, the VALORANT rage

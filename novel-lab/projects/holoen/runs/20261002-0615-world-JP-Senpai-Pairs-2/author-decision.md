@@ -1,1 +1,2 @@
 - 2026-10-02 12:30 作者裁決收錄 final.md（sha256 851a28351159）：Author decision (2026-10-02): Shishiro Botan, Kikirara Vivi and the JP Senpai Pairs 2 world card added to the cast; GPT reviews each card one round only (run D), merged by Claude
+- 2026-10-04 00:13 作者裁決收錄 final.md（sha256 70c0e71414d3）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude

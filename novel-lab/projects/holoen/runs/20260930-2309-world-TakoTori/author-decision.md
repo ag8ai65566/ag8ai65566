@@ -1,3 +1,4 @@
 - 2026-10-01 04:17 作者裁決收錄 final.md（sha256 7d9f6437b8ed）：作者指示 GPT 只審一輪（2026-10-01 世界觀＋IRyS／Nerissa＋六人卡改動，審查意見已合併）
 - 2026-10-02 02:28 作者裁決收錄 final.md（sha256 ebf69f1c30ab）：Author decision (2026-10-02): task 06 recency refresh (research/refresh/myth-kronii-20260930.md) and scope notes generalized (CLAUDE-SCOPE-003)
 - 2026-10-03 23:48 作者裁決收錄 final.md（sha256 c3f8a29470c0）：Author decision (2026-10-03): cross-card QA audits myth1, myth3, justice and global merged by Claude (scope removals, unverified events and ties qualified, dates zoned, Death Star label kept dossier-only)
+- 2026-10-04 00:13 作者裁決收錄 final.md（sha256 401f1dfba7cc）：Author decision (2026-10-03): cross-card QA audit myth4 merged by Claude

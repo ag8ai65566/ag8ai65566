@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git 3bd6202.
+Snapshot: git 19dba43.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Calliope Mori|Cori Malliope|Mori Calliope|Last Writes|Miss Mori|Kawaiiope|Mor Mori|Takamori|Calliope|TakaMori|CHADCast|CallioP|Calli|森カリオペ|Mowi|Mori|LYRA)(
+Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Mori Calliope|Calliope Mori|Last Writes|Kawaiiope|Miss Mori|Mor Mori|CHADCast|Calliope|TakaMori|Takamori|CallioP|森カリオペ|Calli|Mori|LYRA|Mowi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -155,13 +155,14 @@ Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Calliope Mori|Cori 
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Octo'clock
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
+- `bible/characters/Ninomae-Inanis.md › [SW] Background`: At the 2026-09-30 baseline, she is an active member of hololive -Myth-.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Mori Calliope: a recurring target of her puns (Calli's exasperated reaction to Ina's puns); Ina designed Death Sensei, and Calli wrote lyrics for Ina's song.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **Profanity:** her ordinary speech favors mild exclamations: she has said she "usually never swears," and a rare "damn" from her made headlines in clips [Observed I15 clip titles]; about an hour of checked audio had no swearing in her own words [ASR I29]. Sharper language and bawdy wordplay turn up in specific exchanges (above). Constant swearing in Kiara's or Calli's register would be out of character; an occasional sharp word is not.
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - **How she addresses people:** "you guys," "everyone," "chat," and fans as "Takodachi" (the official fan name is the Tentacult). Members by first or short name ("Calli," "Kiara," "Ame," "Gura," "Kronii," "Bae," "Biboo," "CC"); a full name signals a mock-serious scold. New members are "kouhais." She gives her own name surname-first. [Official I1] [Observed I3 captions; I2 §Mascot and fans]
 - `bible/characters/Ninomae-Inanis.md › Voice Profile`: - Measured (I29, 2026 chat): median pitch 223–232 Hz, in the middle of the six files measured the same way (Kronii 177–188 Hz; Gura and Ame about 250–270 Hz), so "mid" rather than "low"; about 81–95 words per minute of speech in that one 2026 chat stream (Kronii 120–127, Calli 161–186 in their chat windows). A 2021 game stream measures 210–214 Hz and 68–116 words per minute (its opening chat 116). Sample results only; they do not establish a general ranking among genmates.
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | Ongoing | Illustrator: drew Myth's intro art; designed the Takodachi [I2 §Mascot and fans], Bubba [Ame file A2 §Mascots and fans] and Death Sensei [Calli file C4 §Mascot and fans] (the wiki says all Myth mascots except Bloop); she drew chibi Bloop artwork, but Bloop's original design is not hers [Gura file G2] | [Observed I2 §Miscellaneous and §Mascot and fans, secondary] |
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-01-08 (digital release; zone unspecified) | Digital release of TAKO∞TAKOVER; lyrics by Mori Calliope. I19 discusses its deliberately unsettling takeover story. | [Observed—published interview I19] [Official I25; digital release: https://hololive.hololivepro.com/en/music/693/, checked 2026-10-03] |
-- `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-07 | Branches merge; she is "Ninomae Ina'nis from hololive," unit hololive -Myth- | [Official I28] [Observed I10] |
+- `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-07 | Branches merge; her unit is hololive -Myth- | [Official I28] [Observed I10] |
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Mori Calliope | Myth genmate | Favorite pun target (Calli's exasperated reaction to Ina's puns); Ina designed Death Sensei; Calli wrote the lyrics for TAKO∞TAKOVER | [Observed I8 captions; I2 §Miscellaneous] [Official I25] |
 - `bible/characters/Ninomae-Inanis.md › Hard Facts`: - Birthday May 20; height 157 cm; debut 2020-09-13; unit hololive -Myth-; illustrator Kuroboshi Kouhaku (whom she calls "papa"). [Official I1] [Observed I2 infobox]
@@ -389,9 +390,9 @@ Matched names: lolive -Myth-|Kiara and Calli|Calli and Kiara|Calliope Mori|Cori 
 
 ### from Myth and Kronii: Other Pairs
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Other Names`: Kiara and Ame, Ame and Kiara, Kiara and Gura, Gura and Kiara, Calli and Ina, Ina and Calli, Calli and Ame, Ame and Calli, Ina and Ame, Ame and Ina, Ina and Gura, Gura and Ina, Kiara and Kronii, Kronii and Kiara, Gura and Kronii, Kronii and Gura
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns ("Every freaking time, Ina.").
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ina: Ina designed Death Sensei and drew Calli's debut EP cover; Calli wrote the lyrics of Ina's "TAKO∞TAKOVER"; Calli is a recurring target of Ina's puns.
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Calli and Ame: early Clubhouse 51 duels.
-- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns ("Every freaking time, Ina."). They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
+- `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ina** (26 / 26 / 8 / 15 / 8 / 9; 2 in 2026): Ina designed Calli's Death Sensei and drew the cover of Calli's debut EP; Calli wrote the lyrics of Ina's 2026 song "TAKO∞TAKOVER." Calli is a recurring target of Ina's puns. They watched Suisei's concert together in an off-collab (2023-02-20) and still game together (Elden Ring Nightreign, 2025-06). [Observed S5 Ina §Miscellaneous; Calli file C28; Ina file I8; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Calli and Ame** (24 / 23 / 14 / 6 / 6 / 0): early Clubhouse 51 duels; the MV of Calli-written "Myth or Treat" premiered on Ame's channel (2021); [Unverified: a reported cameo in Calli's 2026 charity stream lacks a confirmed segment locator.] [Observed Ame file A20; S3 §2021, §2026, secondary; S1]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2026-01-08 | "TAKO∞TAKOVER" digital release (lyrics by Calli) | Ina × Calli |
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Conflicts and Story Hooks`: 3. Calli writes lyrics for Ina and Ina draws the cover; each critiques the other's draft.

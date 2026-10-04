@@ -19,7 +19,7 @@ sw_section: Worldbuilding
 
 ## One-line Concept
 More JP members the English cast meets: Marine, the pirate captain who was Kiara's first HOLOTALK guest and joins
-EN off-collabs; Noel, the knight on Calli's HOLOYOI; Lamy, the snow elf of Ina's Minecraft festival; Botan, the
+EN off-collabs; Noel, the knight on Calli's HOLOYOI; Lamy, the snow elf of the Usaken Summer Festival in Minecraft with Ina; Botan, the
 lion who runs server events and played Overwatch with IRyS; and Vivi, a FLOW GLOW kouhai who joined FUWAMOCO and
 Bae in R.E.P.O.
 
@@ -91,7 +91,7 @@ Relationship web (five Japanese members with the cast and with each other).
 | Date | Event | Who |
 |---|---|---|
 | 2020-11-20 | Marine is HOLOTALK's first guest | Marine, Kiara |
-| 2021 | Ina's Minecraft festival and EN-server "date" | Lamy, Ina |
+| 2021 | the Usaken Summer Festival in Minecraft with Ina and EN-server "date" | Lamy, Ina |
 | 2022 | Calli's English lesson #01; HOLOTALK #22; Left 4 Dead 2 | Marine; Noel; Botan, IRyS |
 | 2023 | HOLOYOI #02 and #03; BAE-GEMITE DOMINATION #2; the horror game featuring Marine; Overwatch 2 team; Blue Journey | Noel, Botan, Calli, Bae; Calli, Bae, Mumei; Botan, IRyS |
 | 2024 | Off-collabs with FUWAMOCO and Nerissa; Ina's "Pleides" | Marine; Lamy, Marine |
@@ -156,7 +156,7 @@ Relationship
 Marine and Kiara, Noel and Calliope, Lamy and Ina, Botan and IRyS, Vivi and FUWAMOCO
 
 ## [SW] Description
-The public ties of five more hololive members, Houshou Marine, Shirogane Noel, Yukihana Lamy, Shishiro Botan and Kikirara Vivi, with the English cast and with each other. Archived channel metadata records the following. Marine was the first guest of Kiara's talk show HOLOTALK (2020), joined Calli's first English lesson with Ina (2022), played Mario Kart with Calli and Bae (2021) and joined their house-party off-collab (2023), joined off-collabs with FUWAMOCO and Nerissa (2024), and was a guest at Ina's 3D live "Pleides" (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA. Noel was HOLOTALK's 22nd guest and on Calli's HOLOYOI with Shiranui Flare (2023). Lamy joined Ina's Minecraft festival and a "date"-billed Minecraft stream (2021) and her 3D live (2024). Botan played Left 4 Dead 2 and Overwatch 2 with IRyS, was on HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and guested at Ina's 2025 birthday live. Vivi, a FLOW GLOW member, played R.E.P.O. with FUWAMOCO and Bae and, separately, on Ina's stream, and Gartic Phone with Mumei, Kronii, Ina and Elizabeth (2025). Among themselves: Marine and Noel are hololive Fantasy; Marine, Noel and Lamy are "Yakamashi Musume" with Inugami Korone; Lamy and Botan are NePoLaBo; Marine, Vivi and Pekora are "MVP."
+The public ties of five more hololive members, Houshou Marine, Shirogane Noel, Yukihana Lamy, Shishiro Botan and Kikirara Vivi, with the English cast and with each other. Archived channel metadata records the following. Marine was the first guest of Kiara's talk show HOLOTALK (2020), joined Calli's first English lesson with Ina (2022), played Mario Kart with Calli and Bae (2021) and joined their house-party off-collab (2023), joined off-collabs with FUWAMOCO and Nerissa (2024), and was a guest at Ina's 3D live "Pleides" (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA. Noel was HOLOTALK's 22nd guest and on Calli's HOLOYOI with Shiranui Flare (2023). Lamy joined the Usaken Summer Festival in Minecraft with Ina and a "date"-billed Minecraft stream (2021) and her 3D live (2024). Botan played Left 4 Dead 2 and Overwatch 2 with IRyS, was on HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and guested at Ina's 2025 birthday live. Vivi, a FLOW GLOW member, played R.E.P.O. with FUWAMOCO and Bae and, separately, on Ina's stream, and Gartic Phone with Mumei, Kronii, Ina and Elizabeth (2025). Among themselves: Marine and Noel are hololive Fantasy; Marine, Noel and Lamy are "Yakamashi Musume" with Inugami Korone; Lamy and Botan are NePoLaBo; Marine, Vivi and Pekora are "MVP."
 
 ## [SW] Rules
 These entries record public collaborations. Seniority depends on the pairing: Marine, Noel, Lamy and Botan are senpai to the English cast, while Vivi is a kouhai to the EN members listed here. The five stream mostly in Japanese; language use varies by collaboration. Gura and Mumei appear only as memories; Ame is an affiliate. A collab title shows that a collab happened, not how close two members are; a playthrough of a game featuring a member is not a collab with her.
@@ -187,6 +187,7 @@ Crimson twintails under a gold-trimmed pirate hat; silver hair over black knight
   - Kept with sources the review could not open, verified by Claude in the local archive metadata: the house party
     (DY5VThfehW8), "SHINKIRO" credited to Marine and Gura (9ehwhQJ50gs), the "Pleides" guest list (3n9igJnSXtQ),
     Vivi's R.E.P.O. on Ina's stream (grBU9Dl09Ds).
+- **2026-10-03, cross-card QA audit myth4, hand-applied by Claude:** myth4:MYTH4-CREDIT-001 at every occurrence (the festival named as the Usaken Summer Festival with Ina).
 
 ## Open Questions
 1. Lamy's EN ties in the archive are all with Ina; kept short.
