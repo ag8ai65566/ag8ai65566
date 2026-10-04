@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git fa69d71.
+Snapshot: git a2ead9c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|Grem Reaper|holoJustice|FiddleFlame|Autofister|Immerhater|Bloodraven|Gigi Murin|TimeChaser|Erby Berby|Elizabeth|Da Fister|Raviolin|Gi Murin|Cecilia|Justice|G Pain|HoloEU|Lizzie|GeeGee|Raora|B.F.F|Cece|Gigi|Ceci|RPGG|LYRA|Rara|CCGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|holoJustice|Grem Reaper|Immerhater|Autofister|TimeChaser|Gigi Murin|Erby Berby|Bloodraven|Da Fister|Elizabeth|Gi Murin|Raviolin|Cecilia|Justice|GeeGee|Lizzie|G Pain|HoloEU|B.F.F|Raora|Cece|Rara|Ceci|CCGG|LYRA|RPGG|Gigi|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -139,11 +139,11 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team.
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2025-01-13 | Leads a team at the hololive New Year Game Festival (with Suisei, Ayame, Ina, IRyS, Cecilia) | [OK4 THMIBrxnp-E] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Gigi Murin | "OkaGigi" (secondary) | Public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata) | [OK2, secondary] [OK8] |
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team | [OK4] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team IRyS: [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at IRyS's 2026 birthday live, RACING TOWARDS HOPE (2026-03-21).] | [OK4] [Secondary NEW-R5-013] |
 
 ### from Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Groups`: hololive -Advent-, Advent, hololive English (former branch name), Bloodraven
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) from Justice and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai").
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai").
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gigi Murin: duo partner with a joke "child,"
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Cecilia Immergreen: Unravel Two (2024; "AutoTune," a secondary pair name).
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Raora Panthera: Clubhouse Games (2024); with Moona, Raft and Monster Hunter Wilds as "V3LVET"

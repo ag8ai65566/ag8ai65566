@@ -1,10 +1,10 @@
 # Audit packet: holox
 
-Snapshot: git fa69d71. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
+Snapshot: git a2ead9c. Registry: `projects/holoen/research/qa/registry.json`. Manifest: `projects/holoen/research/qa/manifest.json`.
 Locators read `file › field` ([SW] fields) or `file › section` (dossier rows and bullets). You may open
 any file under `projects/holoen/bible/` for full context (relationship maps, sources, merge records).
 
-Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 665ffca4b0d3; `bible/characters/Takane-Lui.md` 6d81b858789c; `bible/characters/Hakui-Koyori.md` 0309db734020; `bible/characters/Sakamata-Chloe.md` 5d5d78ff41b4; `bible/characters/Kazama-Iroha.md` 9f9549eaf96f; `bible/world/holoX.md` 997dc697ccbd
+Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 4f243197ccfe; `bible/characters/Takane-Lui.md` 015a3f014ba3; `bible/characters/Hakui-Koyori.md` 2335e184a0f0; `bible/characters/Sakamata-Chloe.md` 125c79cc5955; `bible/characters/Kazama-Iroha.md` 85fd36cc6c01; `bible/world/holoX.md` ee67244bf519
 
 ## 1. Owned files (consistency fields, dossier timelines and hard facts)
 
@@ -23,7 +23,8 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 665ffca4b0d3; `bibl
 | 2024 | "drop candy" (05-25); holoGTA participant (her archive establishes participation; other members' own archives place them in the same event) | [Observed LA2] [LA4 swqXHi1Z4ew] |
 | 2025-04-08 | "FAKE HEART," a cover with Kiara | [LA5 yspJ9xmGRfw] |
 | 2025-07-27/28 | "Glow in the Dark," a Mythmash single with Kiara (official digital release 2025-07-28); a joint stream | [Official music 600] [LA5 v5RKZXNuVyw] [LA4] |
-| 2025-12 | holoX's 4th anniversary ("Gyouan Xdeath," "Secret ORDER") | [Observed LA2] |
+| 2025-12 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LA2] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-003] |
 | 2026-04-29 | holoX's first in-person unit concert, "First MISSION" (La+, Lui, Koyori, Iroha) | [Official LA6] |
 | 2026-05-03 | Tochigi Future Ambassador | [Official LA3] |
 | 2026-05-19 | A 3D lie-detector "challenge" to Nekomata Okayu | [LA4 F3i30BIJmtY] |
@@ -47,9 +48,11 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 665ffca4b0d3; `bibl
 | 2023 | HOLOYOI ep. 1 with Chloe (Calli's show, 03-23); a Wario off-collab with Kiara (01-15); BAE-GEMITE #5 with Bae and Chloe (04-29); "TWIN DAY WITH LUI" with FUWAMOCO (11-25); Blue Journey (official roster) | [LU5 UuL_nORzfNM, cVJefDjefUs, z4-5Hq5AKG4, MbqO5OPuT80] [Blue Journey roster] |
 | 2024 | First album "Liberty" (official digital release 06-12); 1 million subscribers (11-16, secondary) | [Official music 434] [Observed LU2] |
 | 2025 | EP "Lieblings"; Code Geass ambassador (June, secondary); "Q&A With Bird Sisters" with Mumei (04-19); Harry Potter watch-alongs with Okayu; "FEAST" dance short with Bae (07-11) | [Observed LU2] [LU5] [LU4 Lj0MZFpHitQ, 5TUiccnytQA] |
-| 2025-12-01 | holoX's 4th anniversary: "Gyouan Xdeath," album "Secret ORDER" | [Observed LU2] |
+| 2025-12-01 | holoX's 4th anniversary, including "Gyouan Xdeath" | [Observed LU2] |
+| 2026-04-08 | holoX album "Secret ORDER" released | [Official FIX-R6-004] |
 | 2026-04-29 | holoX's first in-person unit concert "First MISSION"; COVER's interview after it describes the concert as a turning point for the four-member group and its audience | [Official LU6] |
 | 2026-06-11 | EP "The LEGENDARY" with "Soar" (official digital release of "Soar" 06-12); 1st live "REBELLION" (2026-12-16) and a BAYFM78 radio programme (from 07-03) announced; EN members' channels posted animated "Soar" shorts crediting external motion creators | [Official LU7] [Official music 760] [LU4] [LU5] |
+| 2026-06-11 | COVER announces a regular BAYFM78 radio programme for her (first broadcast scheduled for 2026-07-03); orders open for the four-track EP "The LEGENDARY," including "Soar"; her first live concert "REBELLION" announced for 2026-12-16 at Kanadevia Hall (after the baseline: an announcement only). | [Official NEW-R6-013/014] |
 | 2026-08-01 | A "rare" La+ and Lui talk with new outfits | [LU4] |
 **Dossier · Hard Facts (continuity):**
 - Debut 2021-11-27; Secret Society holoX (executive officer); birthday 11 June; 161 cm; illustrator Kakage; fans
@@ -73,6 +76,7 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 665ffca4b0d3; `bibl
 | 2025 | Weekly Famitsu column launched (07-17); archived collabs bill Koyori, AZKi and Lamy as "KoZMy" (08-03, 08-20); "pink-haired pair" talk with Marine | [KO7] [KO4 lvgC3pW-LVA, oxWPvsUb_3Y] |
 | 2026-03-24 | #ラミこよ off-collab with Lamy, proposing to choose a duo name (no final name established) | [Lamy channel Zi8R63ee0Fs] |
 | 2026-04-29 | holoX's first in-person unit concert, "First MISSION" | [Official KO6] |
+| 2026-08-22 | Announced hololive Koshien 2026: Koyori is organizer and one of six team managers (others include Houshou Marine and Shirogane Noel); the main competition is scheduled for 10-17/18 (after the baseline: an announcement only). | [Member announcement NEW-R6-017] |
 | 2026-09-12 | Second album "Chemical Spark" and first solo concert "Dream Spark" (2026-12-22) announced | [Observed KO2] |
 | 2026-09-20 | A mirrored public post acknowledges a fan estimate that her own-channel livestream total passed 10,000 hours | [KO3] |
 **Dossier · Hard Facts (continuity):**
@@ -84,7 +88,7 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 665ffca4b0d3; `bibl
 **[SW] Groups:** hololive, Secret Society holoX (until 2025), holoX, KoyoChlo, Kanaken, holoWitches, UMISEA
 **[SW] Other Names:** Chloe, Kuroe, Sakamata, Kura-tan, 沙花叉クロヱ
 **[SW] Background:** Chloe is a hololive affiliate, formerly an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-29 as the fourth member of Secret Society holoX, and secondary records date her 500,000 subscribers to her first week and a million to 2023. A secondary chronology lists ten numbered original-song releases by January 2025. She took part in the original lineup of Suisei's Hoshimatic Project (secondary roster reference), "Magical Girl holoWitches!" and the "Kanaken" Minecraft company with Amane Kanata and AZKi (a 3D live in 2024), and concluded her regular activities with a graduation live on 2025-01-26, staying an affiliate; a secondary record has her singing "Sparkle" at Murasaki Shion's graduation live (2025-04-26). After 2025-01-26 she is an affiliate rather than part of holoX's four-member performing lineup. With the English cast, archived channel metadata documents an EN-server Minecraft tour with Bae, Mumei and Lui (2022), Calli's English lesson #04 (2022) and HOLOYOI #01 (2023), Bae's "BAE-GEMITE DOMINATION" and the cover "Crazy Scary Holy Fantasy" with her (2023), and "WILDCARD" with Kiara in her final week (2025).
-**[SW] Relationships:** Takane Lui: holoX's executive officer; secondary accounts describe Lui reining her in; "LuiChlo" collabs, Calli's English lesson and HOLOYOI together. Hakui Koyori: "KoyoChlo," a duo with a running "disband!" gag; their last collab and two covers in January 2025. La+ Darknesss: covers together (2022, 2025). Kazama Iroha: holoX; the duet cover "Gehenna" on her last day (2025-01-26). AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024). Houshou Marine: UMISEA (official 2023 roster) and holoWitches. Hoshimachi Suisei: the original Hoshimatic Project lineup (secondary); a farewell video together (2025). Yukihana Lamy: Rust with Kanata (2022). Shishiro Botan: an Overwatch 2 team (2023). Takanashi Kiara: "WILDCARD," performed at the 2024 fes and released as a cover in her final week (2025), and an origami off-collab (2023). Hakos Baelz: the EN Minecraft tour (2022), BAE-GEMITE DOMINATION and "Crazy Scary Holy Fantasy" (2023). Mori Calliope: HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023). Nanashi Mumei (graduated): the EN Minecraft tour (2022). IRyS: Overwatch 2 and Among Us (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster).
+**[SW] Relationships:** Takane Lui: holoX's executive officer; secondary accounts describe Lui reining her in; "LuiChlo" collabs, Calli's English lesson and HOLOYOI together. Hakui Koyori: "KoyoChlo," a duo with a running "disband!" gag; their last collab and two covers in January 2025. La+ Darknesss: covers together (2022, 2025). Kazama Iroha: holoX; the duet cover "Gehenna" on her last day (2025-01-26). AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024). Houshou Marine: UMISEA (official 2023 roster) and holoWitches. Hoshimachi Suisei: the original Hoshimatic Project lineup (secondary); a farewell video together (2025). Yukihana Lamy: Rust with Kanata (2022). Shishiro Botan: an Overwatch 2 team (2023). Takanashi Kiara: "WILDCARD," performed at the 2024 fes and released as a cover in her final week (2025), and an origami off-collab (2023). Hakos Baelz: the EN Minecraft tour (2022), BAE-GEMITE DOMINATION and "Crazy Scary Holy Fantasy" (2023). Mori Calliope: HOLO ENGLISH LESSON #04 (2022) and HOLOYOI #01 (2023). Nanashi Mumei (graduated): the EN Minecraft tour (2022). IRyS: Overwatch 2 and Among Us (2023). Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster). Nekomata Okayu: chorus on her "Bling-Bang-Bang-Born" cover (2025). Fuwawa and Mococo Abyssgard: a "Gimme Chocolate!!" cover together (2024).
 **Dossier · Background Timeline:**
 | Date | Event | Relevance |
 |---|---|---|
@@ -136,7 +140,8 @@ Owned files (sha256): `bible/characters/Laplus-Darknesss.md` 665ffca4b0d3; `bibl
 | 2025-01-26 | Chloe's graduation live; she stays an affiliate | Chloe |
 | 2025-04-19 | "Q&A With Bird Sisters" | Lui, Mumei |
 | 2025-07-27 | "Glow in the Dark" (Mythmash) | La+, Kiara |
-| 2025-12-01 | 4th anniversary: "Gyouan Xdeath," album "Secret ORDER," concert announced | four members |
+| 2025-12-01 | 4th anniversary: "Gyouan Xdeath," concert announced | four members |
+| 2026-04-08 | Album "Secret ORDER" released | [Official, R6] |
 | 2026-04-29 | "First MISSION," Pia Arena MM | La+, Lui, Koyori, Iroha |
 **Dossier · Hard Facts (continuity):**
 - Members and debut order: La+ (2021-11-26), Lui (11-27), Koyori (11-28), Chloe (11-29), Iroha (11-30).

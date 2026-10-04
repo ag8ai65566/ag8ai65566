@@ -1,9 +1,9 @@
 # Audit packet: jp (incoming claims)
 
-Snapshot: git fa69d71.
+Snapshot: git a2ead9c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Calli|JP Senpai Pairs|Ayame and Kiara|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|Azukichi|TakoNeko|Azu-chan|Sui-chan|AZKichi|Okanyan|Okayun|Yo-san|AS_tar|AzuAzu|FWMCAZ|Suisei|Okayu|Ayame|Ojou|AZAZ|AZKi)(
+Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Calli|Ayame and Kiara|JP Senpai Pairs|Nekomata Okayu|Okayu and Ina|Nakiri Ayame|Hoshimachi|Suicopath|TakoNeko|Azukichi|Azu-chan|Sui-chan|Okanyan|AZKichi|AS_tar|Suisei|Okayun|Yo-san|FWMCAZ|AzuAzu|Okayu|Ayame|Ojou|AZAZ|AZKi)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
@@ -44,7 +44,7 @@ Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Hakui-Koyori.md › [SW] Relationships`: Hoshimachi Suisei: Hoshimatic Project (secondary).
 - `bible/characters/Hakui-Koyori.md › [SW] Relationships`: Nekomata Okayu: a lateral-thinking puzzle collab she hosted (2025).
 - `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2025 | Weekly Famitsu column launched (07-17); archived collabs bill Koyori, AZKi and Lamy as "KoZMy" (08-03, 08-20); "pink-haired pair" talk with Marine | [KO7] [KO4 lvgC3pW-LVA, oxWPvsUb_3Y] |
-- `bible/characters/Hakui-Koyori.md › Relationship Map`: | AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) Lamy: "Snow halation" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] [Official, 7th fes. STAGE 1 report] |
 - `bible/characters/Hakui-Koyori.md › Relationship Map`: | Hoshimachi Suisei | Hoshimatic Project | Idol-group practice unit (2023–), "BEEP BEEP" (2026) | [KO2] |
 - `bible/characters/Hakui-Koyori.md › Relationship Map`: | Nekomata Okayu | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07); plays Okayu's game (2025) | [KO4 PtjqrNUOSWA] |
 - `bible/characters/Hakui-Koyori.md › Story Engine`: 2. A KoZMy horror night in which Koyori volunteers AZKi and Lamy as test subjects.
@@ -55,17 +55,21 @@ Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Nekomata Okayu: Marine gave her the nickname "Okanyan"
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: (Okayu's official profile).
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Nakiri Ayame: a second-generation senior.
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: AZKi: commentary for her Holo Koshien stream (2026).
 - `bible/characters/Houshou-Marine.md › Behavioral Traits`: 5. A singer and idol: albums, a solo concert (2024), and in 2026 "Chatter Chatter" with Suisei (official digital release 2026-03-01; anime MV 2026-02-28) and the single "Kyapi." [Observed MA2 §Discography, secondary; MA4]
 - `bible/characters/Houshou-Marine.md › Background Timeline`: | 2026-02-28 | "Chatter Chatter" with Hoshimachi Suisei: anime MV (official digital release 2026-03-01) | [MA4 di9NZ6ja_mE] [Official music 711] |
-- `bible/characters/Houshou-Marine.md › Relationship Map`: | Hoshimachi Suisei | "Chatter Chatter" (2026) | A duet with an original anime MV. The wiki's holoALICE and MOMAS labels were not verified in review | [MA4] [MA2] |
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2026-09 | Holo Koshien series: a baseball team followed through successive in-game seasons; Koyori joined the 09-17 session and AZKi commentated on 09-26. | [Archive metadata NEW-R5-014, NEW-R5-006] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | Hoshimachi Suisei | "Chatter Chatter" (2026) | A duet with an original anime MV. The wiki's holoALICE and MOMAS labels were not verified in review They performed "Chatter Chatter" together on STAGE 4 of hololive 7th fes. (2026-03-08). | [MA4] [MA2] [Official NEW-R5-003] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Nekomata Okayu | — | Marine gave her the nickname "Okanyan"; Okayu's official profile recommends their marshmallow-reading stream. The wiki's HoLOGSS and MOMAS labels were not verified in review | [Okayu file OK1] [MA2] |
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Nakiri Ayame | 2nd-gen senior | Ayame's card records secondary accounts that she admires Marine; no Marine-side source | [Ayame file, secondary] |
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | AZKi | JP kouhai | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
 - `bible/characters/Houshou-Marine.md › Arc`: - **Starting point:** active at the 2026 baseline: a hololive Fantasy concert, a duet with Suisei and a new single behind her.
 
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: Nekomata Okayu and Nakiri Ayame: Okayu's 2025 New Year Game Festival team.
 - `bible/characters/IRyS.md › [SW] Relationships`: Hoshimachi Suisei and AZKi: with Moona Hoshinova, the unit Star Flower ("story time," 2022); Suisei also performed "High Tide" with her, Bae and Moona at Breaking Dimensions (2024).
 - `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise unitmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
+- `bible/characters/IRyS.md › Relationship Map`: | Nekomata Okayu | JP senior | [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at RACING TOWARDS HOPE (2026-03-21).] | [Secondary, holo3d-live setlist] |
 
 ### from Kazama Iroha
 - `bible/characters/Kazama-Iroha.md › [SW] Background`: She formed the duo AzuIro with AZKi (covers, the 2025 song "AZUIRO BESTIE DAYS," off-collabs), sings in Suisei's Hoshimatic Project (credited on "BEEP BEEP," 2026) and performed at holoX's first in-person unit concert, "First MISSION"
@@ -76,9 +80,18 @@ Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Kazama-Iroha.md › Behavioral Traits`: 4. A steady duo partner: "AzuIro" with AZKi (covers; the official song "AZUIRO BESTIE DAYS," released 2025-09-18; a Cuphead off-collab billed as a summer camp; GeoGuessr and Mario Kart). [IR4] [Official music 642]
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2023 | AzuIro: GeoGuessr on a "Kazama map" AZKi made, covers and a first off-collab (08); Puyo Puyo Tetris coaching from Suisei (04); Hoshimatic Project (11-) | [IR4] [Observed IR2] |
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2024 | Covers with La+ (「絶対敵対メチャキライヤー」, 03-11) and Lui (「右肩の蝶」, 04-11); originals "Mahou Shoujo☆Magical GOZARU" and "Dreamy Sky" (06); a cookie-battle off-collab on her channel, presented with AZKi, with FUWAMOCO as the challengers (10-27, JgOwJ7m89Lk); a guest at Kiara's 4th-anniversary live (10-06); 1 million subscribers (11-19) | [Observed IR2] [IR4] [IR5] |
-- `bible/characters/Kazama-Iroha.md › Relationship Map`: | AZKi | "AzuIro" | Covers (2023, 2025), the official song "AZUIRO BESTIE DAYS" (2025-09-18), GeoGuessr, Cuphead (2025-06-03) and an off-collab billed as a summer camp, Mario Kart; co-presenter of the cookie battle (2024-10-27). The "shared Minecraft village" was dropped (its cited ID is the Cuphead stream) | [IR4 VxZVNuscS7c, -im-pIdanZY, mwhcZmc6-s8, JgOwJ7m89Lk] [Official music 642] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | AZKi | "AzuIro" | Covers (2023, 2025), the official song "AZUIRO BESTIE DAYS" (2025-09-18), GeoGuessr, Cuphead (2025-06-03) and an off-collab billed as a summer camp, Mario Kart; co-presenter of the cookie battle (2024-10-27). The "shared Minecraft village" was dropped (its cited ID is the Cuphead stream) They performed "AZUIRO BESTIE DAYS" on STAGE 3 of hololive 7th fes. (2026-03-07); AZKi's encouragement in the MC left Iroha tearful. Their joint original "AZUIRO BESTIE DAYS" (2025-09-18). | [IR4 VxZVNuscS7c, -im-pIdanZY, mwhcZmc6-s8, JgOwJ7m89Lk] [Official music 642] [Official, 7th fes. report] [Official NEW-R6-021] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Hoshimachi Suisei | Hoshimatic Project | Coached her at Puyo Puyo Tetris (2023) | [IR4] [IR2] |
 - `bible/characters/Kazama-Iroha.md › Story Engine`: 2. An AzuIro "summer camp" where AZKi navigates and Iroha charges ahead, de gozaru.
+
+### from Kikirara Vivi
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: AZKi: GeoGuessr (2026).
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Hoshimachi Suisei: taught her Tetris on Vivi's channel (2026).
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Nekomata Okayu: a 2026 collab billed with a mock-scandalized "やーらし."
+- `bible/characters/Kikirara-Vivi.md › Voice Profile`: - **Mock-scandalized title bit (written, 2026-08-25):** her collab with Okayu uses やーらし (yārashi, "lewd!") as its comic framing; spoken wording and delivery unverified. [Archive metadata NEW-R6-005]
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | AZKi | JP senior | A GeoGuessr collab billed as Vivi's first zero-distance guessing session with AZKi (2026-08-22). | [Archive metadata NEW-R6-006] |
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Hoshimachi Suisei | JP senior | Vivi hosted a Puyo Puyo Tetris session asking Suisei to teach her Tetris (2026-08-29). | [Archive metadata NEW-R6-007] |
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Nekomata Okayu | JP senior | A collab framed around the mock-scandalized title word やーらし (2026-08-25). | [Archive metadata NEW-R6-005] |
 
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Hoshimachi Suisei: Bijou watched her Fortnite concert on stream (2026).
@@ -127,6 +140,7 @@ Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Nekomata Okayu ("TakoNeko," a secondary pair name): "Kurukuru Cruise"
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: (2025) and her 2025 New Year Game Festival team, with Nakiri Ayame.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: AZKi: R.E.P.O.
+- `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Nekomata Okayu | JP senior | They performed "Kurukuru Cruise" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [Official, 7th fes. STAGE 1 report] |
 
 ### from Ouro Kronii
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: AZKi: R.E.P.O.
@@ -136,23 +150,28 @@ Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Sakamata-Chloe.md › [SW] Background`: Minecraft company with Amane Kanata and AZKi (a 3D live in 2024), and concluded her regular activities with a graduation live on 2025-01-26, staying an affiliate; a secondary record has her singing "Sparkle" at Murasaki Shion's graduation live (2025-04-26).
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024).
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Hoshimachi Suisei: the original Hoshimatic Project lineup (secondary); a farewell video together (2025).
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Nekomata Okayu: chorus on her "Bling-Bang-Bang-Born" cover (2025).
 - `bible/characters/Sakamata-Chloe.md › Background Timeline`: | 2024 | "Magical Girl holoWitches!" single (05-30); "Kanaken" 3D live with Kanata and AZKi | [Observed CH2] [CH4] |
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | AZKi | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [CH4] [CH2] |
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Hoshimachi Suisei | Original Hoshimatic Project lineup (secondary roster reference; not on the 2026 "BEEP BEEP" credits) | 「沙花叉クロヱと星街すいせい」, part of her farewell video series (2025-01-22) | [CH2] [CH4 OF41reZNGnw] |
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Nekomata Okayu | JP senior | Credited among the chorus contributors to Chloe's "Bling-Bang-Bang-Born" cover (2025-01-24), with La+, Koyori and AZKi. | [Archive metadata NEW-R6-019] |
 
 ### from Shirogane Noel
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Hoshimachi Suisei: "Shiranui Kensetsu"
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Nakiri Ayame: an Audio-Technica sponsorship collab (2025).
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
 - `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Hoshimachi Suisei | "Shiranui Kensetsu" (Shiraken) | A Minecraft construction company with Flare, Polka and Miko | [NO2] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nakiri Ayame | — | An Audio-Technica earphone collab (2025) | [NO4] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | AZKi | JP kouhai | A player in AZKi's 3D pun-ASMR contest (2025-06-22), alongside Okayu, Subaru and Kanade. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
 
 ### from Shishiro Botan
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss and Hoshimachi Suisei: holoGTA and, with Shirakami Fubuki, the m HOLD'EM poker collaboration (2024); Nakiri Ayame: holoGTA (2024).
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki, not Ayame (publisher roster; a joint broadcast is not established) | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
 
 ### from Takanashi Kiara
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Archived episode records list HOLOTALK guests including Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ Darknesss ("Glow in the Dark"), Sakamata Chloe ("WILDCARD") and Hakui Koyori ("MIRAGE").
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: HOLOTALK guests include Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ ("Glow in the Dark"), Chloe ("WILDCARD"), Koyori ("MIRAGE") and Iroha (a guest at her 2024 and 2025 lives).
 
 ### from Takane Lui
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Nekomata Okayu: Harry Potter watch-alongs (2025); secondary references list both in "Dorobo Kensetsu."
@@ -171,7 +190,7 @@ Matched names: shimachi Suisei|AZKi and FUWAMOCO|Virtual Diva AZKi|Suisei and Ca
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: "KoZMy" with Hakui Koyori, and "KALAZ" with Amane Kanata (secondary).
 - `bible/characters/Yukihana-Lamy.md › Behavioral Traits`: 5. Units and pairs: NePoLaBo (with Botan, Omaru Polka and Momosuzu Nene); KALAZ (with Amane Kanata and AZKi, secondary); KoZMy (with AZKi and Koyori; a 2025-08-03 collab titled "KoZMy 結成⁉"); "Magamaga's" (with Nene, secondary); "Yakamashi Musume" (archived metadata); holoWitches. [Observed LM2 §Relationships, secondary] [Koyori file lvgC3pW-LVA]
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2025 | Joins "Magical Girl holoWitches!" (04–05); "Yoppara Music!" (official digital release 08-13); a "KoZMy 結成⁉" collab with AZKi and Koyori (08-03; secondary listings give its first anniversary in 2026-08) | [Observed LM2] [Official music 609] [Koyori file lvgC3pW-LVA] |
-- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | AZKi | "KALAZ" with Amane Kanata (secondary); "KoZMy" | Units with AZKi | [LM2] [hololiveinfo KALAZ entry] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | AZKi | "KALAZ" with Amane Kanata (secondary); "KoZMy" | Units with AZKi An impromptu group chat with AZKi and Inugami Korone on Lamy's channel (#あずらみころ, 2026-09-18). | [LM2] [hololiveinfo KALAZ entry] [Archive metadata NEW-R5-005] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › Beyond EN`: - **JP:** FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo); they game with Shirakami Fubuki and Hakui Koyori ("FUWAMOKOYO"); Okayu and Korone made cameos at their 3D debut; Oozora Subaru sang "HOT DUCK!" with Bijou and the twins; Akai Haato and Bijou are "Red Stone"; Ichijou Ririka (ReGLOSS, originally DEV_IS) played Smash Bros. with Bijou with a loser's punishment. [Observed S1; S2]

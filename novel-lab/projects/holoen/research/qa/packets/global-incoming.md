@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git fa69d71.
+Snapshot: git a2ead9c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|EN concert|the merger|SUPER EXPO|world tour|PavoNashi|Holodeath|aftertalk|HOLOTORI|soranii|IRySora|K.I.R.A|3D live|MoRikka|HoloJEI|OKFAIR|KoMeHa|UMISEA|V3LVET|LYRA)(
+Matched names: lolive History 2023-2026|holoEN's later generations|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|SUPER EXPO|EN concert|world tour|the merger|aftertalk|Holodeath|PavoNashi|HOLOTORI|IRySora|K.I.R.A|HoloJEI|MoRikka|3D live|soranii|KoMeHa|UMISEA|OKFAIR|V3LVET|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -142,6 +142,10 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2025 | "Gehenna" cover with Chloe on her last day (01-26); Cuphead as #あずいろ (06-03) and an off-collab billed as a summer camp (08); "A letter only you can read" (06-15); a guest at Kiara's birthday live (07); #TASTYchallenge shorts with Kiara and Nene (07-11, 07-16); "AZUIRO BESTIE DAYS" (official release 09-18) | [IR4 5zJp7oulbwc, -im-pIdanZY, mwhcZmc6-s8] [IR5 f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0] [Official music 642] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Takanashi Kiara | — | A credited guest at Kiara's 4th-anniversary live (2024) and birthday live (2025); #TASTYchallenge shorts (2025-07-11 with Nene in the background; 07-16 with Nene) | [IR5 0LoG81pLS8c, f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Watson Amelia (affiliate) | "KoMeHa" with Kobo Kanaeru (secondary name) | A VALORANT collab (2022-06-04) | [IR5 tGVhLibbYL0] [IR2] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
+
+### from Kikirara Vivi
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Yukihana Lamy | JP senior | Lamy hosted, and Vivi, Iroha and Bijou commentated, the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Background`: (2025), starred with Ina and IRyS at hololive night at Dodger Stadium (2025), sang a solo and two group numbers at the 2025 English concert -All for One-, and was paired with Takanashi Kiara at the 2026 Serendipity concert.
@@ -174,6 +178,9 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres | [Archive metadata C33] |
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Shiori Novella | 2026 Serendipity partner | Shiori calls her "Mor Mori." Together they pursue absurd premises. In their June 2026 interview Calli credits Shiori with encouraging her to pursue content that interests her personally instead of chasing whatever is fashionable. | [Official C11] [Official C11] |
 
+### from Nakiri Ayame
+- `bible/characters/Nakiri-Ayame.md › Relationship Map`: | Nekomata Okayu | "OKFAMS" | With Korone, Fubuki, Mio and Subaru; Okayu's 2025 New Year Game Festival team; 7th fes STAGE 1 [Secondary, performance unchecked: a setlist records Ayame joining Okayu for "デビルじゃないもん" at Okayu's 2026 birthday live (2026-02-22).] | [AY2] [AY5] [Official AY6] [Secondary NEW-R5-009] |
+
 ### from Nanashi Mumei
 - `bible/characters/Nanashi-Mumei.md › [SW] Groups`: hololive alum, hololive English -Promise- (graduated), hololive English -Council- (former unit), HOLOTORI
 - `bible/characters/Nanashi-Mumei.md › [SW] Background`: (2023), joined -Promise- in 2023, reached one million subscribers on 2024-01-26 (the first in Council and Promise), held the 3D birthday live "Outside the Box" on 2024-08-05, premiered the duet "It's Not a Phase" with Fauna at the 2024 English concert, and spent her last month in collabs and covers with members across hololive.
@@ -187,23 +194,27 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/characters/Nekomata-Okayu.md › [SW] Background`: Archived stream metadata documents her as Kiara's 18th HOLOTALK guest (2021), a guest at Mumei's 3D live (2024), a pop-up Mario Party with Calli, Anya and Ao (2024) and her 2025 New Year Game Festival team with Ina, IRyS and Cecilia among its members.
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024).
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2024 | Guest at Nanashi Mumei's 3D live "Outside the Box"; first GAMERS fes (Yoyogi) | [Mumei file] [Observed OK3] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team IRyS: [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at IRyS's 2026 birthday live, RACING TOWARDS HOPE (2026-03-21).] | [OK4] [Secondary NEW-R5-013] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Nakiri Ayame | "OKFAMS" | With Korone, Fubuki, Mio and Oozora Subaru; her 2025 team [Secondary, performance unchecked: a setlist records Ayame joining her for "デビルじゃないもん" at her 2026 birthday live (2026-02-22).] | [OK2] [OK4] [Secondary NEW-R5-009] |
 
 ### from Nerissa Ravencroft
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) from Justice and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai").
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai").
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Raora Panthera: Clubhouse Games (2024); with Moona, Raft and Monster Hunter Wilds as "V3LVET"
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Kobo Kanaeru (ID): "BLUE CLAPPER" with Kronii at Serendipity.
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Shishiro Botan: a guest at her birthday live "Stray&Stay"
 - `bible/characters/Nerissa-Ravencroft.md › Background Timeline`: | 2025-08-29 | Advent 2nd-anniversary 3D live "On the Run!" ("The Story of Advent") | [Observed N2 §2025] |
 - `bible/characters/Nerissa-Ravencroft.md › Background Timeline`: | 2026-02-26 | Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). | [Official NEW-R3-001; archive metadata] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Gigi Murin | Collaborator ("BeatDown," "SoundChaser") | A joke "child," Nerigi, at Gigi's 3D live | [Observed N2 §Relationships] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Elizabeth Rose Bloodflame | Justice member ("BloodRaven"); her 2026 Serendipity duo partner | Her "mortal enemy (lore)"; their "Rondo Revolution" cover; World Tour '24 panels together; Nerissa praises her "kindness and encouraging attitude" ("She's always looking out for me, even though I'm the senpai"); building Liz's Mii: "she's the leader of justice after all" | [Official N21; S7 tour report via world card; ASR N20] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Moona Hoshinova | ID senior ("V3LVET" with Raora) | Featured on Moona's "100% (feat. Nerissa Ravencroft)" (2025-02-16); Keep Talking and Nobody Explodes together (2024) | [Official N23; N3 title] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Raora Panthera | Justice kouhai | Co-presenters (with IRyS) of the official Serendipity merchandise infomercial (May 2026). | [Archive metadata, ckworks ew00E7t4Dow] |
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shishiro Botan | — | A credited guest at Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata, yutura cI535pJp-TQ] |
 
 ### from Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › [SW] Background`: She released her first EP, re:VISION, and held the duo concert Drawn to Dawn with Takanashi Kiara in 2026, sang at Myth's 6th-anniversary 3D live with Calli and Kiara, which premiered the Myth song "THIS IS MYTH," and she partners with Ouro Kronii.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ouro Kronii: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "two punny people" who share Korean, and Ina jokes about keeping Kronii all to herself.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine: UMISEA.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine and Sakamata Chloe: UMISEA.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Ookami Mio (GAMERS): "Dottabatta Chindouchuu" with FUWAMOCO at Serendipity.
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-06-04 | Serendipity interview and partnership with Kronii | [Official I7] |
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Calli and Kiara; "THIS IS MYTH" premieres | [Archive metadata I32] |
@@ -264,14 +275,16 @@ Matched names: lolive History 2023-2026|holoEN's later generations|hololive Hist
 - `bible/characters/Shishiro-Botan.md › [SW] Background`: Archived metadata and secondary concert reports record her with the English cast in Left 4 Dead 2 (2022) and an Overwatch 2 team (2023) with IRyS, on Calli's HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and as a guest at Ina's birthday 3D live "EVERMORE"
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label.
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Ninomae Ina'nis: a guest at Ina's birthday 3D live "EVERMORE"
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Nerissa Ravencroft: a guest at her birthday 3D live "Stray&Stay"
 - `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2025 | 1.5 million subscribers (02-14, secondary); originals "Simulacre," "Gaotteko!" and "boundary"; a guest at Ina's birthday 3D live "EVERMORE" (05-21), singing "storia" with Ina and Tsunomaki Watame per a secondary set list; the first "#ホロ金策サバイバル" | [Observed BO2] [BO5] [EVERMORE report] [ASR BO20] |
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Gawr Gura (graduated) | "Apex Predators" (a secondary-listed pair label) | A joint Apex session is not established here | [BO2] |
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Ninomae Ina'nis | — | A guest at Ina's birthday 3D live "EVERMORE" (2025); "storia" with Ina and Watame (secondary set list) | [BO5 I-J11Da5ONY] [EVERMORE report] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | A credited guest in Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata NEW-R6-002] |
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Background`: She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH."
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Koseki Bijou: junior she encourages and her 2026 Serendipity partner ("Rocku Wawa,"
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Pavolia Reine (ID) and Takane Lui: the bird unit HOLOTORI ("PavoNashi" with Reine).
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Pavolia Reine (ID) and Takane Lui: HOLOTORI ("PavoNashi" with Reine).
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Nanashi Mumei (graduated 2025): a fellow bird of HOLOTORI whom she calls "Moomsies"; they sang a DECO*27 song together at the 2023 fes. and "Beyond the way" with Nerissa at the 2024 English concert.
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-06 | Serendipity interview and partnership with Koseki Bijou | [Official T10] |
 - `bible/characters/Takanashi-Kiara.md › Background Timeline`: | 2026-07-06 PDT (07-07 JST) | Birthday 3D live | [Observed T24: official hololive English post, search-indexed text, X not opened] |

@@ -1,9 +1,9 @@
 # Audit packet: myth1 (incoming claims)
 
-Snapshot: git fa69d71.
+Snapshot: git a2ead9c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ara and Calli|hololive -Myth-|Calli and Kiara|Cori Malliope|Mori Calliope|Calliope Mori|Last Writes|Miss Mori|Kawaiiope|Calliope|Takamori|CHADCast|Mor Mori|TakaMori|CallioP|Calli|森カリオペ|Mori|Mowi|LYRA)(
+Matched names: lli and Kiara|hololive -Myth-|Kiara and Calli|Cori Malliope|Mori Calliope|Calliope Mori|Last Writes|Miss Mori|Kawaiiope|TakaMori|Takamori|Mor Mori|CHADCast|Calliope|CallioP|Calli|森カリオペ|Mowi|Mori|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
@@ -31,7 +31,7 @@ Matched names: ara and Calli|hololive -Myth-|Calli and Kiara|Cori Malliope|Mori 
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | Kobo Kanaeru, Ayunda Risu | ID seniors | "HELP!!" with Kobo and Hakos Baelz at Serendipity (2026); Kobo calls her "Lilis" (secondary); LYRA and "ALiCE&u" with Risu | [Observed EB2] [Official EB5, EB8] |
 
 ### from Fuwawa Abyssgard
-- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Mori Calliope: "FUWAMOCALLI," a collaboration name the twins say they particularly like.
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Mori Calliope: "FUWAMOCALLI."
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Mori Calliope: "2 Creatures + 1 Reaper," defusing bombs (2026).
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Gigi Murin, Mori Calliope | Kouhai and senior | "2 Creatures + 1 Reaper," a rare bomb-defusing collab (2026-09) | [Observed FUWAMOCO X post via wiki, FW6] |
 
@@ -144,7 +144,7 @@ Matched names: ara and Calli|hololive -Myth-|Calli and Kiara|Cori Malliope|Mori 
 
 ### from Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Background`: (2025) with Calli and IRyS as guests, sang the duet "OVER//RIDE" with Calli (2025), and released "OYOME♡HOLIC" and "Blue World"
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Mori Calliope: Baldur's Gate 3 party member, duet partner ("OVER//RIDE") and guest at her 3D concert; Nerissa was Calli's first Instagram follower.
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Mori Calliope: Baldur's Gate 3 party member, duet partner ("OVER//RIDE") and guest at her 3D concert.
 - `bible/characters/Nerissa-Ravencroft.md › Background Timeline`: | 2025-05-24 | 3D concert "Requiem for Love – A JukeBox Musical" (guests incl. Calli, IRyS) | [Observed N3 titles] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Mori Calliope | Senior | Nerissa was Calli's first Instagram follower; BG3 party "Killing, Two Birds, with One Stone" with Kiara and Bijou (2023); duet "OVER//RIDE" (2025); Calli guested at Nerissa's 3D concert; building Calli's Mii: "Calli's also got beautiful, long, straight hair." Credited singers together (with IRyS, Nene and Ollie) on "LIVE IT LOUD!" (2025-06-25). A Bananagrams handcam collaboration (2026-09-18; individual jokes unchecked). | [Observed N2; N3 titles; ASR N20, agrees] [Official, music/592] [Archive metadata NEW-R3-013] |
 

@@ -21,3 +21,4 @@
 - 2026-10-03 23:52 作者裁決收錄 final.md（sha256 351818f71c8f）：Author decision (2026-10-03): new-material research R1 (Myth) merged by Claude
 - 2026-10-03 23:56 作者裁決收錄 final.md（sha256 45ccf8a3589f）：Author decision (2026-10-03): new-material research R3/R4 (Advent, Justice) merged by Claude
 - 2026-10-03 23:59 作者裁決收錄 final.md（sha256 bb2e69f1417a）：Author decision (2026-10-03): new-material research R5 (JP first group) merged by Claude
+- 2026-10-04 00:02 作者裁決收錄 final.md（sha256 c82330612d77）：Author decision (2026-10-04): one-way relationship ties closed by Claude from sourced dossier facts

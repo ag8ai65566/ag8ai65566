@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × reference-only people)
 
-Snapshot: git fa69d71. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git a2ead9c. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Amane Kanata
@@ -8,7 +8,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | AZKi | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [CH4] [CH2] |
 - `bible/characters/Sakamata-Chloe.md › [SW] Background`: Minecraft company with Amane Kanata and AZKi (a 3D live in 2024), and concluded her regular activities with a graduation live on 2025-01-26, staying an affiliate; a secondary record has her singing "Sparkle" at Murasaki Shion's graduation live (2025-04-26).
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024).
-- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | AZKi | "KALAZ" with Amane Kanata (secondary); "KoZMy" | Units with AZKi | [LM2] [hololiveinfo KALAZ entry] |
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: "KoZMy" with Hakui Koyori, and "KALAZ" with Amane Kanata (secondary).
 
@@ -17,6 +16,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### AZKi × Moona Hoshinova
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2022-12-31 | "story time" as Star Flower with AZKi, Moona Hoshinova and IRyS | [Official SU6] |
+
+### AZKi × Oozora Subaru
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | AZKi | JP kouhai | A player in AZKi's 3D pun-ASMR contest (2025-06-22), alongside Okayu, Subaru and Kanade. | [Archive metadata NEW-R5-004] |
 
 ### Airani Iofifteen × Gigi Murin
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Airani Iofi (ID), Pavolia Reine (ID) | "Fanfic Club" with Gigi | Monster Hunter Wilds with Iofi and Jurard (2025) | [Observed SN2; SN3] |
@@ -202,8 +204,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs.md › Hoshimachi Suisei with the cast`: - **Gawr Gura (graduated):** Suisei, Gura and Usada Pekora were the three faces of "hololive night" at Dodger Stadium (2024-07-05), on the big screen at the first pitch and in the drone show. [Official S4]
 
 ### Houshou Marine × Inugami Korone
-- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Yukihana Lamy | "Yakamashi Musume" with Korone and Marine | Drinking-talk collabs (2025) | [NO2] [NO4] |
-- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Houshou Marine, Shirogane Noel | "Yakamashi Musume" with Inugami Korone; Blue Journey | Yakamashi talk collabs | [LM2] [Noel file] |
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone (archived metadata), and Blue Journey; Marine is also in holoWitches.
 - `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Elizabeth Rose Bloodflame:** "IT'S LOVE" with Marine and Inugami Korone for Elizabeth's 2026 birthday. [S1]
 
@@ -228,6 +228,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2022-04-24 | Left 4 Dead 2 with IRyS, Takane Lui and Inugami Korone | [BO5 K1wStJxm4F0] |
 
 ### IRyS × Kaela Kovalskia
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Takane Lui: Minecraft with IRyS and Kaela (2022).
 - `bible/characters/Takane-Lui.md › Relationship Map`: | IRyS, Ouro Kronii | — | Minecraft elytra hunting with Kaela (2022); IRyS danced to "Soar" (2026) | [LU5] |
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: IRyS and Ouro Kronii: Minecraft with Kaela (2022).
 - `bible/world/Cross-Branch-Friends.md › Hard Facts`: - Kronii and Kaela are recurring public collaborators. IRyS and Flare are recurring public collaborators.
@@ -277,7 +278,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Inugami Korone × Shirogane Noel
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Shirogane Noel: hololive Fantasy genmate; the units Bara☆Dice and Yakamashi Musume (with Lamy and Inugami Korone, per archived metadata).
-- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Houshou Marine, Shirogane Noel | "Yakamashi Musume" with Inugami Korone; Blue Journey | Yakamashi talk collabs | [LM2] [Noel file] |
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone (archived metadata), and Blue Journey; Marine is also in holoWitches.
 
 ### Inugami Korone × Takane Lui
@@ -288,7 +288,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Inugami Korone × Yukihana Lamy
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Shirogane Noel: hololive Fantasy genmate; the units Bara☆Dice and Yakamashi Musume (with Lamy and Inugami Korone, per archived metadata).
-- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Yukihana Lamy | "Yakamashi Musume" with Korone and Marine | Drinking-talk collabs (2025) | [NO2] [NO4] |
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: (with Yukihana Lamy and Inugami Korone, per archived metadata); 3rd-gen R.E.P.O.
 
 ### Kaela Kovalskia × Koseki Bijou
@@ -317,6 +316,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Kaela Kovalskia × Shiori Novella
 - `bible/world/Hakos-Baelz-Pairs.md › With Advent`: - **Shiori Novella, Nerissa Ravencroft:** shared EN projects rather than duo collabs: the 2024 "Mind Craft" cover with all then-active EN members; with Nerissa, a 2026 behind-the-scenes video by Kaela Kovalskia (secondary metadata). [S7, secondary]
+
+### Kaela Kovalskia × Takane Lui
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Takane Lui: Minecraft with IRyS and Kaela (2022).
 
 ### Kazama Iroha × Kobo Kanaeru
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Kazama Iroha: VALORANT with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa").
@@ -459,6 +461,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirakami Fubuki, Ookami Mio | GAMERS; "NYANGUCORN," "MiOKayu" | GAMERS fes; Fubuki and Okayu's April Fools furball models (2026) | [OK2] |
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2018-12 | hololive GAMERS (Fubuki, Mio; later Okayu, Korone) | Gaming senpai |
 
+### Nekomata Okayu × Oozora Subaru
+- `bible/characters/AZKi.md › Behavioral Traits`: - **Pun-ASMR host (2025-06-22):** she hosted a 3D pun-ASMR contest with Okayu, Noel, Oozora Subaru and Otonose Kanade; laughing meant losing. The title establishes the format and players, not particular jokes or the winner. [Archive metadata NEW-R5-004]
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | AZKi | JP kouhai | A player in AZKi's 3D pun-ASMR contest (2025-06-22), alongside Okayu, Subaru and Kanade. | [Archive metadata NEW-R5-004] |
+
 ### Nekomata Okayu × Shirakami Fubuki
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirakami Fubuki, Ookami Mio | GAMERS; "NYANGUCORN," "MiOKayu" | GAMERS fes; Fubuki and Okayu's April Fools furball models (2026) | [OK2] |
 
@@ -504,6 +510,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Shiori Novella, Oozora Subaru (JP) | Advent senior; JP senior | "Neko Kaburi-Na" with Ina at -All for One- (2025) | [Official RP5] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Ninomae Ina'nis, Shiori Novella and Oozora Subaru (JP): "Neko Kaburi-Na" on stage; Puyo Puyo Tetris 2 with Ina.
 
+### Oozora Subaru × Shirogane Noel
+- `bible/characters/AZKi.md › Behavioral Traits`: - **Pun-ASMR host (2025-06-22):** she hosted a 3D pun-ASMR contest with Okayu, Noel, Oozora Subaru and Otonose Kanade; laughing meant losing. The title establishes the format and players, not particular jokes or the winner. [Archive metadata NEW-R5-004]
+
 ### Oozora Subaru × Shishiro Botan
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Shishiro Botan: BAE-GEMITE DOMINATION #2 with Oozora Subaru (2023).
 
@@ -521,7 +530,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Kiara's oshi is Usada Pekora; Pavolia Reine is a recurring collaborator ("PavoNashi"; both in the bird unit "HOLOTORI").
 
 ### Pavolia Reine × Takane Lui
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Pavolia Reine (ID) and Takane Lui: the bird unit HOLOTORI ("PavoNashi" with Reine).
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Pavolia Reine (ID) and Takane Lui: HOLOTORI ("PavoNashi" with Reine).
 
 ### Shiori Novella × Vestia Zeta
 - `bible/characters/Cecilia-Immergreen.md › Relationship Map`: | Vestia Zeta (ID) | Cross-branch | "Break It Down" with Shiori at Serendipity (2026) | [Official CI8] |

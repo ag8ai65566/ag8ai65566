@@ -1,9 +1,9 @@
 # Audit packet: advent (incoming claims)
 
-Snapshot: git fa69d71.
+Snapshot: git a2ead9c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|Fuwawa and Mococo|hololive -Advent-|FUWAMOCO MORNING|Fuwawa Abyssgard|Mococo Abyssgard|Abyssgard twins|Demon of Sound|Shiori Novella|The Fluffy One|Demon of Soup|The Fuzzy One|Diamond Dogs|Sound Hounds|The Archiver|Koseki Bijou|Advent Pairs|FUWAMOCALLI|Last Writes|Grindstone|holoAdvent|Rocku Wawa|GreyScaleX|Bloodraven|Fluffy One|Fuwa-chan|Moco-chan|ShioRaven|JewelBird|Goth Rock|Adventrix|FUWAMOCO|Fuwa-nee|The Cell|Pen Pups|Mogojyan|Shiori~n|Lil'Rock|Nerissa|Shiorin|Koseki|Mococo|Beejoe|Advent|Fuwawa|Shiori|Mogogo|Beebs|Oobib|Bijou|Rissa|B.F.F|Biboo|Neri|FWMC|GAGA|Pero)(
+Matched names: lolive English -Advent-|Nerissa Ravencroft|hololive -Advent-|Jewel of Emotions|Fuwawa and Mococo|Fuwawa Abyssgard|FUWAMOCO MORNING|Mococo Abyssgard|Abyssgard twins|Shiori Novella|Demon of Sound|The Fluffy One|Demon of Soup|The Fuzzy One|Sound Hounds|The Archiver|Diamond Dogs|Koseki Bijou|Advent Pairs|FUWAMOCALLI|Last Writes|Grindstone|Fluffy One|Rocku Wawa|holoAdvent|GreyScaleX|Bloodraven|ShioRaven|Fuwa-chan|Goth Rock|Moco-chan|Adventrix|JewelBird|Lil'Rock|Fuwa-nee|FUWAMOCO|Shiori~n|The Cell|Mogojyan|Pen Pups|Nerissa|Shiorin|Koseki|Fuwawa|Beejoe|Advent|Mogogo|Shiori|Mococo|Beebs|Oobib|Rissa|Biboo|Bijou|B.F.F|FWMC|Neri|GAGA|Pero)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
@@ -160,6 +160,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|Fuwa
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2024 | Covers with La+ (「絶対敵対メチャキライヤー」, 03-11) and Lui (「右肩の蝶」, 04-11); originals "Mahou Shoujo☆Magical GOZARU" and "Dreamy Sky" (06); a cookie-battle off-collab on her channel, presented with AZKi, with FUWAMOCO as the challengers (10-27, JgOwJ7m89Lk); a guest at Kiara's 4th-anniversary live (10-06); 1 million subscribers (11-19) | [Observed IR2] [IR4] [IR5] |
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2026-05-19 | An excerpt from Elizabeth's 2026 birthday show, uploaded 05-19, credits Iroha, Watame, Nene, Polka and FUWAMOCO on "CHA-LA HEAD-CHA-LA" (upload date, not necessarily the show date) | [IR5 xylll7Mp0jk] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" for Elizabeth with Watame, Nene and Polka (2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 
 ### from Kikirara Vivi
 - `bible/characters/Kikirara-Vivi.md › [SW] Background`: Archived metadata records her with the English cast in R.E.P.O. with FUWAMOCO and Bae (2025-05-25), in a separate R.E.P.O. session on Ina's stream (2025-06-02) and in Mumei's Gartic Phone collaboration with Noel, Kronii, Ina and Elizabeth (2025); a secondary archive records FUWAMOCO and Bijou watching FLOW GLOW's debut.
@@ -169,6 +170,7 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|Fuwa
 - `bible/characters/Kikirara-Vivi.md › Background Timeline`: | 2025-05-25 | #holoREPO with FUWAMOCO, Bae, Roboco, Towa and Hajime | [VI5 Z5cpzbdsLDE, TgMVtjXW2Ms] |
 - `bible/characters/Kikirara-Vivi.md › Relationship Map`: | FUWAMOCO | — | Watched FLOW GLOW's debut (2024-11-09, secondary archive); #holoREPO (2025-05-25) | [VI5] |
 - `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Koseki Bijou | — | Watched FLOW GLOW's debut with FUWAMOCO (2024) | [VI5] |
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Yukihana Lamy | JP senior | Lamy hosted, and Vivi, Iroha and Bijou commentated, the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 - `bible/characters/Kikirara-Vivi.md › Story Engine`: 1. Vivi does FUWAMOCO's stage makeup and charges them "Vivi prices."
 
 ### from La+ Darknesss
@@ -271,12 +273,20 @@ Matched names: lolive English -Advent-|Nerissa Ravencroft|Jewel of Emotions|Fuwa
 - `bible/characters/Raora-Panthera.md › Story Engine`: 1. Raora's suspect sketch of Advent is so cute nobody can arrest them.
 - `bible/characters/Raora-Panthera.md › Hard Facts`: - 3D showcase 2025-08-09 PDT. Official music list: "Gacha×Gacha ADVENTURE!" and "Draw" (Draw's premiere and release dates not yet established). Serendipity unit: B.F.F with FUWAMOCO.
 
+### from Sakamata Chloe
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard: a "Gimme Chocolate!!" cover together (2024).
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Fuwawa Abyssgard, Mococo Abyssgard | EN kouhai | A cover of BABYMETAL's "Gimme Chocolate!!" together (2024-02). | [Archive metadata NEW-R6-020] |
+
 ### from Shirogane Noel
 - `bible/characters/Shirogane-Noel.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: FUWAMOCO and Hakos Baelz: a team Mario Kart event (2023); FUWAMOCO danced to "TREVIAN KNIGHT"
 - `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2023 | Calli's HOLOYOI #02 with Flare (04-20); first solo album "NOESANPO" (official digital release 11-25; birthday merchandise orders opened 11-24); a "Yuru Holo" team Mario Kart event with FUWAMOCO and Bae among the participants (12-12) | [NO5] [Official music 359] |
 - `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | FUWAMOCO, Hakos Baelz | — | Participants in the "Yuru Holo" team Mario Kart event (2023; not necessarily one team); FUWAMOCO danced to "TREVIAN KNIGHT" (2025-09-30) | [NO5 Evg-T2BUIDM, 8RjOCCH2sac] |
+
+### from Shishiro Botan
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Nerissa Ravencroft: a guest at her birthday 3D live "Stray&Stay"
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | A credited guest in Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata NEW-R6-002] |
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Groups`: hololive, hololive -Myth-, Myth, hololive English (former branch name), Rocku Wawa

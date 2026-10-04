@@ -1,6 +1,6 @@
 # Bridge packet: ties (cast × cast)
 
-Snapshot: git fa69d71. Every [SW] sentence and dossier row/bullet that names both people, grouped by
+Snapshot: git a2ead9c. Every [SW] sentence and dossier row/bullet that names both people, grouped by
 pair (names and short names matched; a sentence naming three people appears under each pair).
 
 ### AZKi × Hakos Baelz
@@ -8,12 +8,14 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### AZKi × Hakui Koyori
 - `bible/characters/Hakui-Koyori.md › Story Engine`: 2. A KoZMy horror night in which Koyori volunteers AZKi and Lamy as test subjects.
+- `bible/characters/Houshou-Marine.md › Background Timeline`: | 2026-09 | Holo Koshien series: a baseball team followed through successive in-game seasons; Koyori joined the 09-17 session and AZKi commentated on 09-26. | [Archive metadata NEW-R5-014, NEW-R5-006] |
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2025 | Joins "Magical Girl holoWitches!" (04–05); "Yoppara Music!" (official digital release 08-13); a "KoZMy 結成⁉" collab with AZKi and Koyori (08-03; secondary listings give its first anniversary in 2026-08) | [Observed LM2] [Official music 609] [Koyori file lvgC3pW-LVA] |
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: "KoZMy" with Hakui Koyori, and "KALAZ" with Amane Kanata (secondary).
 
 ### AZKi × Hoshimachi Suisei
 - `bible/characters/AZKi.md › [SW] Background`: She debuted in 2018 as "Virtual Diva AZKi," joined hololive production's music label INoNaKa Music with Hoshimachi Suisei in 2019, and transferred to hololive's main group in April 2022 (secondary historical reference).
+- `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2025-11-19 | At AZKi's "Departure" concert, AS_tar performed "The Last Frontier"; AZKi gave Suisei a reply to her earlier concert letter, and they unveiled "Going My Way" (digital release 2026-05-19). | [Official NEW-R5-002] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | AZKi | 0th gen; "AS_tar" (formerly "Ex-INNK") | Labelmates at INoNaKa Music; Star Flower; an AS_tar horror off-collab (2026-05-18) and "Going My Way" (official credit AZKi & Hoshimachi Suisei, 2026) | [SU2] [SU4] [Official SU11] |
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2023 | AzuIro: GeoGuessr on a "Kazama map" AZKi made, covers and a first off-collab (08); Puyo Puyo Tetris coaching from Suisei (04); Hoshimatic Project (11-) | [IR4] [Observed IR2] |
 - `bible/characters/Kazama-Iroha.md › [SW] Background`: She formed the duo AzuIro with AZKi (covers, the 2025 song "AZUIRO BESTIE DAYS," off-collabs), sings in Suisei's Hoshimatic Project (credited on "BEEP BEEP," 2026) and performed at holoX's first in-person unit concert, "First MISSION"
@@ -21,13 +23,23 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Among themselves: Suisei and AZKi are "AS_tar"
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2019-05-19 | AZKi and Hoshimachi Suisei (formerly independent) join under the INoNaKa Music label; Suisei moves to hololive's main branch on 2019-12-01 | Calli's collaborator Hoshimachi Suisei |
 
+### AZKi × Houshou Marine
+- `bible/characters/AZKi.md › Relationship Map`: | Houshou Marine | JP senior | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+- `bible/characters/AZKi.md › [SW] Relationships`: Houshou Marine: AZKi supplied soothing commentary for Marine's Holo Koshien stream (2026).
+- `bible/characters/Houshou-Marine.md › Relationship Map`: | AZKi | JP kouhai | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+
 ### AZKi × IRyS
 - `bible/characters/AZKi.md › Background Timeline`: | 2026-07-01 | "AZKi 8th Birthday Live 'Cross Over'": little-devil outfit; she performed Konomi Suzuki's "Redo"; IRyS appears in the archived short metadata ("A Cruel Angel's Thesis"; secondary setlist); "Saikyo Mirai Shodo" (credited to AZKi and Konomi Suzuki) released digitally 07-02 | [Observed AZ2; AZ4] [Official AZ11] [secondary setlist] |
 - `bible/characters/AZKi.md › Story Engine`: 2. A duet rehearsal with IRyS where AZKi's "Floor!" interrupts every chorus.
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2022-12-31 | "story time" as Star Flower with AZKi, Moona Hoshinova and IRyS | [Official SU6] |
 
 ### AZKi × Kazama Iroha
+- `bible/characters/AZKi.md › Relationship Map`: | Kazama Iroha | "AzuIro" (secondary label) | Frequent partner since 2022; their original "AZUIRO BESTIE DAYS" (2025-09-18) They performed "AZUIRO BESTIE DAYS" on STAGE 3 of hololive 7th fes. (2026-03-07), with linked little fingers and a shared heart gesture; AZKi's encouragement in the MC left Iroha tearful. | [AZ2] [Official AZ10] [Official NEW-R5-007] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | AZKi | "AzuIro" | Covers (2023, 2025), the official song "AZUIRO BESTIE DAYS" (2025-09-18), GeoGuessr, Cuphead (2025-06-03) and an off-collab billed as a summer camp, Mario Kart; co-presenter of the cookie battle (2024-10-27). The "shared Minecraft village" was dropped (its cited ID is the Cuphead stream) They performed "AZUIRO BESTIE DAYS" on STAGE 3 of hololive 7th fes. (2026-03-07); AZKi's encouragement in the MC left Iroha tearful. Their joint original "AZUIRO BESTIE DAYS" (2025-09-18). | [IR4 VxZVNuscS7c, -im-pIdanZY, mwhcZmc6-s8, JgOwJ7m89Lk] [Official music 642] [Official, 7th fes. report] [Official NEW-R6-021] |
 - `bible/characters/Kazama-Iroha.md › Story Engine`: 2. An AzuIro "summer camp" where AZKi navigates and Iroha charges ahead, de gozaru.
+
+### AZKi × Kikirara Vivi
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | AZKi | JP senior | A GeoGuessr collab billed as Vivi's first zero-distance guessing session with AZKi (2026-08-22). | [Archive metadata NEW-R6-006] |
 
 ### AZKi × La+ Darknesss
 - `bible/characters/AZKi.md › Relationship Map`: | La+ Darknesss | — | GeoGuessr for Tochigi Day (2025-06-15), The Headliners with Korone and Miko (2025-05-07), Minecraft (2025-07); a clip of La+ reacting to AZKi's ASMR (2026-03-31) | [AZ4 80Xb4PxZLyw, AMturrbpVD0] [La+ channel z0Z2Zc3MlE4, 6n2X82dqqx0] |
@@ -36,15 +48,28 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/AZKi.md › Relationship Map`: | Mori Calliope | — | Calli's English lesson #03 (2022-03-12, archived); AZKi's "Orpheus" dance short (2025-10-09) | [AZ5] [AZ4] |
 - `bible/world/hololive-History-to-2022.md › Timeline`: | 2019-05-19 | AZKi and Hoshimachi Suisei (formerly independent) join under the INoNaKa Music label; Suisei moves to hololive's main branch on 2019-12-01 | Calli's collaborator Hoshimachi Suisei |
 
+### AZKi × Nekomata Okayu
+- `bible/characters/AZKi.md › Relationship Map`: | Nekomata Okayu | JP senior | Mario Kart World practice together for Team Wind (2026-01-16); Okayu also played in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata FIX-R5-001, NEW-R5-004] |
+- `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | AZKi | JP kouhai | A player in AZKi's 3D pun-ASMR contest (2025-06-22), alongside Okayu, Subaru and Kanade. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nekomata Okayu | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: AZKi and Nekomata Okayu: fellow players in AZKi's 3D pun-ASMR contest (2025).
+
 ### AZKi × Ouro Kronii
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Relationship Map`: | AZKi | — | Fellow members of Tokoyami Towa's 2025 New Year Game Festival team, with Kronii (secondary roster) | [AZKi file AZ4] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: AZKi: fellow member of Tokoyami Towa's 2025 New Year Game Festival team, with Kronii (secondary roster).
+
+### AZKi × Shirogane Noel
+- `bible/characters/AZKi.md › Relationship Map`: | Shirogane Noel | JP senior | A player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
+- `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
 
 ### AZKi × Takanashi Kiara
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2021-07-31 | HOLOTALK #13 | Kiara–AZKi |
 
 ### AZKi × Yukihana Lamy
-- `bible/characters/Hakui-Koyori.md › Relationship Map`: | AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) Lamy: "Snow halation" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] [Official, 7th fes. STAGE 1 report] |
 - `bible/characters/Hakui-Koyori.md › Story Engine`: 2. A KoZMy horror night in which Koyori volunteers AZKi and Lamy as test subjects.
 - `bible/characters/Hakui-Koyori.md › [SW] Relationships`: (archived 2025 titles); a 3D karaoke with AZKi (2026); a #ラミこよ off-collab with Lamy (2026).
 - `bible/characters/Hakui-Koyori.md › [SW] Relationships`: AZKi and Yukihana Lamy: "KoZMy"
@@ -94,7 +119,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Hakos-Baelz-Pairs.md › With Justice`: - **Cecilia Immergreen ("BratTea," a secondary-reference name):** in her 2026 streams Bae describes a coffee-versus-tea debate, a venue talk together at the 2026 fes and Resident Evil collaborations, and jokes that Cecilia calls her "senpai" when she wants something (Bae's account). [Bae file HB20] [Cecilia file, secondary]
 
 ### Cecilia Immergreen × IRyS
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team | [OK4] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team IRyS: [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at IRyS's 2026 birthday live, RACING TOWARDS HOPE (2026-03-21).] | [OK4] [Secondary NEW-R5-013] |
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team.
 
 ### Cecilia Immergreen × Koseki Bijou
@@ -117,6 +142,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Cecilia Immergreen × Nanashi Mumei
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai ("Automatowl") | Joined, with Gigi, Mumei's alphabet tier list (2025) | [Observed M2; M3] |
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024).
+
+### Cecilia Immergreen × Nekomata Okayu
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team IRyS: [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at IRyS's 2026 birthday live, RACING TOWARDS HOPE (2026-03-21).] | [OK4] [Secondary NEW-R5-013] |
 
 ### Cecilia Immergreen × Ninomae Ina'nis
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai; a joking rival (secondary accounts) | Cecilia framed a May 2026 music-making stream as preparing a birthday tune for her rival (title wording; Ina's participation not established). | [Archive metadata, ckworks DE7WL-YLk8Y] |
@@ -255,7 +283,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Story Engine`: 2. Nerissa and Elizabeth must stay "mortal enemies" through a duet rehearsal.
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Elizabeth Rose Bloodflame | Justice member ("BloodRaven"); her 2026 Serendipity duo partner | Her "mortal enemy (lore)"; their "Rondo Revolution" cover; World Tour '24 panels together; Nerissa praises her "kindness and encouraging attitude" ("She's always looking out for me, even though I'm the senpai"); building Liz's Mii: "she's the leader of justice after all" | [Official N21; S7 tour report via world card; ASR N20] |
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) from Justice and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai").
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai").
 - `bible/characters/Shiori-Novella.md › Behavioral Traits`: 3. She is a self-made producer: she records and edits her own vlogs, writes community posts "like some public diary," makes distinctive titles, thumbnails and overlays, and in 2026 released "Into The Void," a four-part original motion comic voiced by herself, Elizabeth, Gigi and Nerissa. [Official SN4] [Observed SN2; SN3 kEoFVaHsy_U, 3qrQ4KcvUb4]
 - `bible/world/Advent-Pairs.md › With -Justice-`: - **Elizabeth Rose Bloodflame:** Nerissa's "mortal enemy" in their lore (a performed rivalry) and 2026 duo partner; "NovelFlame" and "BloodQuill" with Shiori; in the "Into The Void" cast. [Observed S1; Advent card]
 - `bible/world/hololive--Advent.md › How the Group Works`: - **The premise as a bit:** each member was sealed in The Cell for being "untouchable"; Nerissa, the "Demon of Sound," in the story "stole" the master key on the way out; her avatar wears it on a keychain. The next generation, -Justice-, are law enforcers sent to catch the five fugitives, so Advent × Justice collabs can use prisoner-and-guard jokes . [Official S3; Observed S1, S2 §Lore, secondary; ASR Nerissa file N20, multi-speaker, not attributed] Nerissa calls Justice's Elizabeth Rose Bloodflame her "mortal enemy (lore)"; the two covered "Rondo Revolution" together and were a duo at the 2026 Serendipity concert, where Nerissa praised Elizabeth's "kindness and encouraging attitude" ("She's always looking out for me, even though I'm the senpai"). [Official S7]
@@ -305,6 +333,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard (FUWAMOCO; "Sound Hounds"): she claims, as a bit, to be the third sister, "Mofufu"; Fuwawa calls her "Newissa."
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | Advent seniors; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 The twins describe her teasing their tails and chasing them around the Serendipity stage in their MC comedy. | [Official RP4] [Secondary, hololivetoday Q&A] |
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: FUWAMOCO (Fuwawa and Mococo): her Serendipity 2026 unit partners in B.F.F ("Inu Neko.
+- `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Fuwawa Abyssgard, Mococo Abyssgard | EN kouhai | A cover of BABYMETAL's "Gimme Chocolate!!" together (2024-02). | [Archive metadata NEW-R6-020] |
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Fuwawa and Mococo Abyssgard: a "Gimme Chocolate!!" cover together (2024).
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | FUWAMOCO | Genmates ("Pen Pups") | The twins once mistook a Minecraft cow for her (her black-and-white coloring); she joked Mococo was hallucinating Fuwawa | [Observed SN2 §Miscellaneous; FUWAMOCO wiki, secondary] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Fuwawa Abyssgard, Mococo Abyssgard | Advent kouhai | [Lead, secondary: a Mage Arena clip lists Kiara and both twins in one group session (clip published 2025-10-25); stream date and exchanges unchecked.] | [Secondary NEW-R1-010] |
 - `bible/world/Advent-Pairs.md › Inside Advent`: - **Shiori and FUWAMOCO ("Pen Pups"):** the twins mistook a black-and-white Minecraft cow for Shiori, so she "is a cow"; Shiori joked that Mococo was hallucinating Fuwawa. [Observed S2 Shiori, Fuwawa §Miscellaneous, secondary]
@@ -397,7 +427,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and joked that anyone making Gura cry would face "the wrath of Ina."
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | English lesson #01 with Ina (2022); a guest at Ina's 3D live "Pleides" (2024); "SHINKIRO" with Gura (anime MV 2023-11-12, credited "宝鐘マリン・Gawr Gura") | [MA5 3n9igJnSXtQ] [MA4 9ehwhQJ50gs] |
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides"
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): fellow member of the ocean-themed unit UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Gawr Gura (graduated): UMISEA (2021); Ina promises "the wrath of Ina" to anyone who makes Gura cry.
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster).
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › Pairs`: - **Ina and Gura** (71 / 28 / 10 / 3 / 3 / 2): fellow members of the official ocean unit UMISEA (September 2021); Ina drew chibi Bloop and promised "the wrath of Ina" to anyone who makes Gura cry; Gura once directed a lost Ina in Minecraft by hitting a block with her pickaxe. [Official UMISEA announcement; S4 §Gura's antics, secondary]
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › [SW] Description`: Ina and Gura: the official ocean unit UMISEA (2021); Ina promised "the wrath of Ina" to anyone who makes Gura cry.
@@ -429,7 +459,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: - Measured (N20; a 2026 solo chat): median pitch about 214 Hz (p10–p90 172–297 Hz), a mid-range speaking voice like IRyS's (214–226 Hz), lower than Kiara or Gura; about 159 words per minute of speech. Group-stream windows read higher (284–289 Hz) because several voices share them. Sample results only.
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Gawr Gura (graduated): R.E.P.O. with Kiara and Kronii (2025).
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate | German lessons where Kiara taught her German swears and rickrolled her; Gura's 2020 Minecraft prank filled KFP's back room with chickens; "GURA YOU LITTLE SHIT" | [Observed T15; T2 §Miscellaneous and §KFP] [Official T16] |
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German swears; Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
 - `bible/world/AmeSame.md › How It Works`: - **After:** Gura graduated on 2025-05-01. In 2026 Kiara's album includes "Blue & Gold," a tribute to both. [Observed S3 §Miscellaneous, secondary]
 - `bible/world/AmeSame.md › [SW] Description`: At the 2026 baseline Ame is an affiliate and Gura has graduated; their shared history lives on in callbacks, their gold-and-blue colors, and Kiara's tribute song "Blue & Gold."
 - `bible/world/Bone-Bros.md › How It Works`: - **"Full Color":** Gura's single was never released; Calli performed it at hololive English -Myth-'s fourth-anniversary concert "The Show Goes On!" (September 2024), and Calli and Kiara said they would keep singing it in karaoke. [Observed S2 §Miscellaneous, secondary; archived official broadcast CDljbqawDkw]
@@ -443,7 +473,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Gawr Gura × Watson Amelia
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate ("AmeSame") | Close friends; The Fish Tank talk show with staged arguments; Gura gets embarrassed when Ame praises her | [Observed G2 §Likes and dislikes and §Relationships; G6] |
 - `bible/characters/Ninomae-Inanis.md › Background Timeline`: | Ongoing | Illustrator: drew Myth's intro art; designed the Takodachi [I2 §Mascot and fans], Bubba [Ame file A2 §Mascots and fans] and Death Sensei [Calli file C4 §Mascot and fans] (the wiki says all Myth mascots except Bloop); she drew chibi Bloop artwork, but Bloop's original design is not hers [Gura file G2] | [Observed I2 §Miscellaneous and §Mascot and fans, secondary] |
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German swears; Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate ("AmeSame") | Close friends per the wiki; The Fish Tank co-host; endless mutual pranks in Minecraft ("Gura's Backdoor"); lewd-adjacent teasing; Ame "went back in time" to tell Gura she'd be in hololive | [Observed A2 §Personality and §Time travel; A10; Gura file G6] |
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gawr Gura (graduated): a close Myth friend and frequent early collaborator (AmeSame) and Fish Tank co-host; the two prank each other, Ame teases her with lewd-adjacent quips, and their last duo stream before Ame stepped back was "Looking at our old DMs"
 - `bible/world/AmeSame.md › Conflicts and Story Hooks`: 2. (Before 2024-10) Ame "fixes" Gura's stream setup and it's a prank.
@@ -689,6 +719,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Hakos Baelz | — | BAE-GEMITE #5 (2023); a "FEAST" dance short on Lui's channel (2025-07-11); an MMD "Soar" (2026) | [LU5] [LU4 5TUiccnytQA] |
 
 ### Hakui Koyori × Houshou Marine
+- `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2026-08-22 | Announced hololive Koshien 2026: Koyori is organizer and one of six team managers (others include Houshou Marine and Shirogane Noel); the main competition is scheduled for 10-17/18 (after the baseline: an announcement only). | [Member announcement NEW-R6-017] |
 - `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Houshou Marine | "#マリラプ" (archived title) | A sponsored collab (2025); a cover with Marine and Koyori (2025) | [Marine file] [KO4] |
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Houshou Marine: a sponsored collab billed #マリラプ and a cover with Koyori (2025).
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2023 | "Blue Journey" music project with Marine, Noel, Koyori and Sakura Miko | [Koyori file; Observed LM2] |
@@ -697,18 +728,16 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Hakui Koyori × Kazama Iroha
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Hakui Koyori, Sakamata Chloe, Kazama Iroha | Hoshimatic Project | Her idol-group practice unit (2023–); Koyori and Iroha are among the nine credited "BEEP BEEP" vocalists (2026), Chloe was in the earlier lineup (secondary roster); she coached Iroha at Puyo Puyo Tetris (2023-04-11) | [Official BEEP BEEP credits] [Koyori file KO2] [Iroha file IR4 8tOoSNGa_rg] |
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: her Hoshimatic Project ("BEEP BEEP," 2026); Sakamata Chloe was in its earlier lineup (secondary); she coached Iroha at Puyo Puyo Tetris (2023).
-- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) | [LA2] [LA4 pYEfOPIurcE] |
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | "Irohasu" with Iroha (secondary); Chained Together as #いろはス (2024-10-22, archived title) Their duet "SUKIDEKA!!~BIGLOVE????~" (2025-11-21). | [LA2] [LA4 pYEfOPIurcE] [Official NEW-R6-011] |
 - `bible/characters/Laplus-Darknesss.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: holoX; secondary references call her pairing with Iroha "Irohasu."
-- `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Hakui Koyori, Kazama Iroha | NePoX | NePoLaBo × holoX events (2026) | [BO2] |
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026).
-- `bible/characters/Takane-Lui.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | Secondary references record "Lui-nee" as Iroha's address for her; Koyori: Blue Journey | [LU2] [Blue Journey roster] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | Hakui Koyori, Kazama Iroha | holoX | Secondary references record "Lui-nee" as Iroha's address for her; Koyori: Blue Journey Iroha: their single "Private EyeZ" (2025-11-21), performed as a duo at First MISSION (2026-04-29). | [LU2] [Blue Journey roster] [Official NEW-R6-022] |
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: holoX; secondary references record "Lui-nee" as Iroha's address for her.
 - `bible/world/holoX.md › [SW] Description`: Takane Lui is the executive officer and point of contact who does the real work and cares for her subordinates; Hakui Koyori runs R&D as the self-proclaimed "brains," meddling in everyone's affairs to study them; Kazama Iroha is the society's bodyguard and "insurance policy," a samurai who says "de gozaru."
 
 ### Hakui Koyori × La+ Darknesss
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | La+ Darknesss | "#マリラプ" (archived title) | A sponsored collab (2025-07); a cover with La+ and Koyori (2025-08) | [MA4 Xf4MPOkHKtE] [Koyori file] |
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: La+ Darknesss: a sponsored collab billed #マリラプ and a cover with Koyori (2025).
-- `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Hakui Koyori, Kazama Iroha | NePoX | NePoLaBo × holoX events (2026) | [BO2] |
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026).
 
 ### Hakui Koyori × Nekomata Okayu
@@ -722,6 +751,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hakui Koyori | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07) | [Koyori channel PtjqrNUOSWA] |
 
 ### Hakui Koyori × Shirogane Noel
+- `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2026-08-22 | Announced hololive Koshien 2026: Koyori is organizer and one of six team managers (others include Houshou Marine and Shirogane Noel); the main competition is scheduled for 10-17/18 (after the baseline: an announcement only). | [Member announcement NEW-R6-017] |
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2023 | "Blue Journey" music project with Marine, Noel, Koyori and Sakura Miko | [Koyori file; Observed LM2] |
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: She sang in the "Blue Journey" project with Marine, Noel, Koyori and Sakura Miko (2023), joined "Magical Girl holoWitches!"
 
@@ -738,6 +768,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Hoshimachi Suisei × IRyS
 - `bible/characters/AZKi.md › Background Timeline`: | 2022-12-31 | "story time" as Star Flower with Suisei, Moona Hoshinova and IRyS | [Official AZ6] |
+
+### Hoshimachi Suisei × Kikirara Vivi
+- `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Hoshimachi Suisei | JP senior | Vivi hosted a Puyo Puyo Tetris session asking Suisei to teach her Tetris (2026-08-29). | [Archive metadata NEW-R6-007] |
+- `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Hoshimachi Suisei: taught her Tetris on Vivi's channel (2026).
 
 ### Hoshimachi Suisei × Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Hoshimachi Suisei: Bijou watched her Fortnite concert on stream (2026).
@@ -791,7 +825,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs-2.md › Among themselves`: - Marine and Vivi: "MVP" with Usada Pekora; an archived September 2026 "Hatsukoi Cider" upload record names the trio. [S2] [MVP upload record]
 
 ### Houshou Marine × La+ Darknesss
-- `bible/characters/Hakui-Koyori.md › Relationship Map`: | La+ Darknesss | holoX founder | A sponsored "#stons" deep-breathing collab (2024-12-16); a cover with La+ and Marine (2025) | [KO4 lz37xE9ED1I, ZMpsiRdqXfE] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | La+ Darknesss | holoX founder | A sponsored "#stons" deep-breathing collab (2024-12-16); a cover with La+ and Marine (2025) Their duet "SUKIDEKA!!~BIGLOVE????~" (2025-11-21). | [KO4 lz37xE9ED1I, ZMpsiRdqXfE] [Official NEW-R6-011] |
 - `bible/characters/Hakui-Koyori.md › [SW] Relationships`: La+ Darknesss: holoX's founder; a sponsored "#stons" collab (2024) and a cover with Marine (2025).
 
 ### Houshou Marine × Mococo Abyssgard
@@ -821,13 +855,14 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### Houshou Marine × Sakamata Chloe
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Sakamata Chloe (affiliate) | UMISEA; holoWitches | Chloe played Marine's horror game (2023) | [MA2] |
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine and Sakamata Chloe: UMISEA.
 
 ### Houshou Marine × Shirogane Noel
+- `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2026-08-22 | Announced hololive Koshien 2026: Koyori is organizer and one of six team managers (others include Houshou Marine and Shirogane Noel); the main competition is scheduled for 10-17/18 (after the baseline: an announcement only). | [Member announcement NEW-R6-017] |
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Houshou Marine and Shirogane Noel: fellow Bara☆Dice vocalists (distributor credits).
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Shirogane Noel | JP seniors | HOLOTALK's first guest Marine ("#marinarasauce," 2020-11-20) and 22nd guest Noel (2022-03-05); a "MIRAGE" dance short with Marine (2024) | [S1 3HwaqbdKO1s, toe_PmrDWBU, tzVgzvV0cVo] |
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Houshou Marine, Shirogane Noel and Kazama Iroha: Bara☆Dice (with Flare and Nene).
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2023 | "Blue Journey" music project with Marine, Noel, Koyori and Sakura Miko | [Koyori file; Observed LM2] |
-- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Houshou Marine, Shirogane Noel | "Yakamashi Musume" with Inugami Korone; Blue Journey | Yakamashi talk collabs | [LM2] [Noel file] |
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: She sang in the "Blue Journey" project with Marine, Noel, Koyori and Sakura Miko (2023), joined "Magical Girl holoWitches!"
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Houshou Marine and Shirogane Noel: "Yakamashi Musume" with Inugami Korone (archived metadata), and Blue Journey; Marine is also in holoWitches.
 - `bible/world/JP-Senpai-Pairs-2.md › Conflicts and Story Hooks`: 1. Marine invites FUWAMOCO onto her "ship"; Noel insists on guarding the deck.
@@ -841,7 +876,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/JP-Senpai-Pairs-2.md › Houshou Marine with the cast`: - **Takanashi Kiara:** Marine was the first guest of Kiara's HOLOTALK (2020-11-20, "#marinarasauce"); Kiara danced "MIRAGE" with her (2024) and to Marine and Kobo's "III." [S1]
 
 ### Houshou Marine × Yukihana Lamy
-- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Yukihana Lamy | "Yakamashi Musume" with Korone and Marine | Drinking-talk collabs (2025) | [NO2] [NO4] |
 - `bible/world/JP-Senpai-Pairs-2.md › Among themselves`: - Marine and Lamy: "Magical Girl holoWitches!" (Lamy joined in 2025). [S2]
 
 ### IRyS × Koseki Bijou
@@ -886,6 +920,8 @@ pair (names and short names matched; a sentence naming three people appears unde
 
 ### IRyS × Nekomata Okayu
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | IRyS | Star Flower | "story time" (2022); "High Tide" (2024); IRyS covered "GHOST" (2021); on Okayu's 2025 New Year Game Festival team (secondary roster) | [Official SU6, SU8] [S1] |
+- `bible/characters/IRyS.md › Relationship Map`: | Nekomata Okayu | JP senior | [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at RACING TOWARDS HOPE (2026-03-21).] | [Secondary, holo3d-live setlist] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team IRyS: [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at IRyS's 2026 birthday live, RACING TOWARDS HOPE (2026-03-21).] | [OK4] [Secondary NEW-R5-013] |
 
 ### IRyS × Nerissa Ravencroft
 - `bible/characters/IRyS.md › [SW] Relationships`: Nerissa Ravencroft: Advent kouhai and fellow singer; IRyS guested at Nerissa's 2025 3D concert.
@@ -933,7 +969,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: IRyS, Gigi and Kronii: "Bright Tonight"
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Hakos Baelz | Council/Promise genmate | Per the wiki (secondary), Bae described her as too talented, savage and a "tsundere granny"; Sandwich Review (2022), Digimon Survive ("takronii and agubae," 2022), Fortnite (2024-06-18, archived on both channels), UNO on Bae's 24-hour stream (2024); "Dance Monkey" as Promise at the World Tour '25 Sydney show (2025-07-12, official report); in fan-recorded lore Kronii created leap years to hold Bae's birthday. [Unverified, title only: Bae suddenly holding her hand; Kronii and IRyS scaring Bae together] | [Observed K8 §Personality, secondary; K27, K16 clip titles] |
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | IRyS | Promise unitmate | IRyS: "I wonder how [Kronii] sounds when she's scared? I bet she still sounds as lovely as ever..." [Unverified, title only: mutual insults "like good friends do"; co-conspirators in scares] | [Observed K37 §Quotes, secondary; K31, K16 clip titles] |
-- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: IRyS: Promise unitmate and two-player rival (A Way Out, Bokura, a Powerwash "Best Maid" race) who wondered how Kronii sounds when scared and said she could pull off Kronii's goddess look "somehow"
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: IRyS: Promise unitmate and two-player rival (A Way Out, Bokura, a Powerwash "Best Maid" race) who wondered how Kronii sounds when scared.
 - `bible/characters/Takane-Lui.md › Relationship Map`: | IRyS, Ouro Kronii | — | Minecraft elytra hunting with Kaela (2022); IRyS danced to "Soar" (2026) | [LU5] |
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: IRyS and Ouro Kronii: Minecraft with Kaela (2022).
 - `bible/world/Concerts-and-Live-Events.md › Conflicts and Story Hooks`: 2. IRyS counts down to her first solo concert in Tokyo; Kronii and Calli send messages.
@@ -972,12 +1008,12 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/IRyS-and-Nerissa-Pairs.md › [SW] Description`: IRyS and Kiara: Kiara gave her a German crash course; nail-painting off-collab.
 
 ### IRyS × Takane Lui
+- `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Takane Lui: Minecraft with IRyS and Kaela (2022).
 - `bible/characters/Sakamata-Chloe.md › Relationship Map`: | Shishiro Botan | — | An Overwatch 2 team with IRyS, Lui and Towa (2023) | [CH5] |
 - `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2022-04-24 | Left 4 Dead 2 with IRyS, Takane Lui and Inugami Korone | [BO5 K1wStJxm4F0] |
 
 ### Kazama Iroha × La+ Darknesss
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
-- `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Hakui Koyori, Kazama Iroha | NePoX | NePoLaBo × holoX events (2026) | [BO2] |
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026).
 
 ### Kazama Iroha × Mori Calliope
@@ -1009,6 +1045,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ame has "KoMeHa" with Kobo and Iroha.
 
 ### Kikirara Vivi × Koseki Bijou
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Kikirara Vivi | FLOW GLOW kouhai | Bijou watched FLOW GLOW's debut with FUWAMOCO (2024-11-09; a watch-along, not a collab with Vivi) | [S1 gAj77STI2oc] [Official debut schedule] |
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Kikirara Vivi: Bijou watched Vivi's FLOW GLOW debut with FUWAMOCO (2024).
 - `bible/world/JP-Senpai-Pairs-2.md › Kikirara Vivi with the cast`: - **FUWAMOCO, Koseki Bijou:** watched FLOW GLOW's debut together (2024-11-09; a secondary archive record), a watch-along of Vivi's debut rather than a collab with her. [S1]
@@ -1025,6 +1062,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Shirogane Noel, Kikirara Vivi and Elizabeth Rose Bloodflame: her Gartic Phone EN + ID + JP collab (2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kikirara Vivi and Shirogane Noel: Mumei's Gartic Phone (2025).
+
+### Kikirara Vivi × Yukihana Lamy
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Kikirara Vivi | — | Lamy hosted the 2026-01-15 information programme where Vivi commentated (secondary report). | [Secondary, appbank] |
 
 ### Koseki Bijou × Mococo Abyssgard
 - `bible/world/Advent-Pairs.md › With -Justice-`: - **Cecilia Immergreen:** GAGA; "Cecemoco"; a Walking Dead off-collab with Bijou (2025) and a Chrono Trigger off-collab with Mococo (2026). [Observed S1]
@@ -1118,6 +1159,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Takanashi Kiara: her 2026 Serendipity partner ("Rocku Wawa"), who calls her a "hidden gem" and encouraged her through hard choreography for a song with Kiara and Ame; Bijou admires Kiara's "confidence," and they keep saying "67."
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
 
+### Koseki Bijou × Yukihana Lamy
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
+
 ### La+ Darknesss × Mori Calliope
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: La+ Darknesss and Kazama Iroha: Calli's English lesson #02 together (2022).
 
@@ -1132,10 +1176,11 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/holoX.md › History`: | 2025-07-27 | "Glow in the Dark" (Mythmash) | La+, Kiara |
 
 ### La+ Darknesss × Takane Lui
+- `bible/characters/Laplus-Darknesss.md › Relationship Map`: | Takane Lui | holoX executive officer | Reins her in; a 2026 two-person talk Featured on Lui's original "Anastasis Girl feat. La+ Darknesss" (2025-11-28); they performed it together at First MISSION (2026-04-29). | [LA2] [LA4] [Official NEW-R6-010] |
 - `bible/characters/Laplus-Darknesss.md › Story Engine`: 2. A holoX meeting where La+ announces a conquest plan and Lui schedules it for "after lunch."
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Takane Lui, La+ Darknesss | JP members | Dance shorts to Lui's "Soar" (2026) and La+'s "Onee-sama♡Love Call" (2026); both took part in holoGTA (2024; a direct exchange is not established) | [S1 l5fGacH2i-o, ZINB546CMEw] |
 - `bible/characters/Takane-Lui.md › Background Timeline`: | 2026-08-01 | A "rare" La+ and Lui talk with new outfits | [LU4] |
-- `bible/characters/Takane-Lui.md › Relationship Map`: | La+ Darknesss | holoX founder | Lui reins her in; a 2026 two-person talk; poker (2025) | [LU2] [LU4] |
+- `bible/characters/Takane-Lui.md › Relationship Map`: | La+ Darknesss | holoX founder | Lui reins her in; a 2026 two-person talk; poker (2025) Her original "Anastasis Girl feat. La+ Darknesss" (2025-11-28); performed together at First MISSION (2026-04-29). | [LU2] [LU4] [Official NEW-R6-010] |
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: La+ Darknesss: holoX's founder, whom Lui reins in and covers for.
 
 ### Mococo Abyssgard × Ninomae Ina'nis
@@ -1161,7 +1206,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 ### Mori Calliope × Nerissa Ravencroft
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Nerissa Ravencroft: Advent kouhai and singing partner (their 2025 duet "OVER//RIDE"; Calli guested at Nerissa's 3D concert).
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Mori Calliope: Baldur's Gate 3 party member, duet partner ("OVER//RIDE") and guest at her 3D concert; Nerissa was Calli's first Instagram follower.
 - `bible/world/Concerts-and-Live-Events.md › Recurring Events`: - **hololive fes. + hololive SUPER EXPO** (spring, in Japan; the combined fes./EXPO tradition dates to 2022, while fes. itself is older): the agency-wide concert and convention. 3rd fes "Link Your Wish" (2022-03, Makuhari; Calli and Kiara performed on day 2, per their X posts), 4th fes "Our Bright Parade" (2023), 5th "Capture the Moment" (2024), 6th "Color Rise Harmony" (2025-03-08/09; Nerissa on day 1), 7th "Ridin' on Dreams" (2026-03-06/08). EN units share Expo booths and key visuals (Myth with Promise, Advent with Justice). [Observed S1 §2023–§2026; S2]
 - `bible/world/Concerts-and-Live-Events.md › [SW] Description`: Recurring formats: each spring, hololive fes. with hololive SUPER EXPO in Japan (a combined tradition since 2022; Calli and Kiara sang at the 2022 fes. in Makuhari, Nerissa at the 6th fes. in 2025); each summer, a hololive English concert in the US (2023 "-Connect the World-"; 2024 "-Breaking Dimensions-,"
 - `bible/world/IRyS-and-Nerissa-Pairs.md › Conflicts and Story Hooks`: 4. Calli and Nerissa rehearse a duet; Calli's flow meets Nerissa's flirting.
@@ -1309,7 +1353,6 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Nakiri Ayame | JP senior | The 2023 Sports Festival white team, with Mumei and Nerissa | [Ayame file AY4] |
 
 ### Nakiri Ayame × Nekomata Okayu
-- `bible/characters/AZKi.md › Relationship Map`: | Nekomata Okayu, Nakiri Ayame | — | No direct pair; Ayame was on her 2023 Sports Festival white team (Ayame's stream description) | [AZ4 tHP7bd8Jtm0] |
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Nekomata Okayu, Hoshimachi Suisei and Nakiri Ayame: Okayu's 2025 New Year Game Festival team (archived listing).
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Nakiri Ayame | — | Both on Okayu's 2025 New Year Game Festival team | [S1] |
 - `bible/characters/IRyS.md › [SW] Relationships`: Nekomata Okayu and Nakiri Ayame: Okayu's 2025 New Year Game Festival team.
@@ -1403,6 +1446,10 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Hakui-Koyori.md › Relationship Map`: | Nekomata Okayu | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07); plays Okayu's game (2025) | [KO4 PtjqrNUOSWA] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hakui Koyori | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07) | [Koyori channel PtjqrNUOSWA] |
 
+### Nekomata Okayu × Shirogane Noel
+- `bible/characters/AZKi.md › Behavioral Traits`: - **Pun-ASMR host (2025-06-22):** she hosted a 3D pun-ASMR contest with Okayu, Noel, Oozora Subaru and Otonose Kanade; laughing meant losing. The title establishes the format and players, not particular jokes or the winner. [Archive metadata NEW-R5-004]
+- `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
+
 ### Nekomata Okayu × Takanashi Kiara
 - `bible/world/JP-Senpai-Pairs.md › History`: | 2021-11-27 | HOLOTALK #18 (first anniversary) | Kiara–Okayu |
 
@@ -1449,6 +1496,9 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/world/hololive--Advent.md › History`: | 2024-08-02/10 PDT | 3D debuts: Shiori 08-02, Bijou 08-03, Nerissa 08-09, FUWAMOCO 08-10 (JST one day later) | genmates as guests |
 - `bible/world/hololive--Advent.md › How the Group Works`: - **Nerissa and Shiori ("ShioRaven"):** (6 / 18 / 3 mentions). Nerissa calls Shiori her "wife," Shiori plays hard to get, and the two keep a lore of fictional "children." Shiori claims she knows where Nerissa's broken horn piece is and never mentioned it because Nerissa never asked. [Observed S2 §Relationships, §Lore, secondary; S4]
 - `bible/world/hololive--Advent.md › [SW] Description`: Inside the group: Nerissa calls Shiori her "wife" while Shiori plays hard to get (ShioRaven); Bijou calls Shiori "our glorious leader"
+
+### Nerissa Ravencroft × Shishiro Botan
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Nerissa Ravencroft | Advent kouhai | A credited guest in Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata NEW-R6-002] |
 
 ### Nerissa Ravencroft × Takanashi Kiara
 - `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2024-08-24 | -Breaking Dimensions- day 1: premieres "It's Not a Phase" with Fauna; "Beyond the way" with Kiara and Nerissa; day 2: her original "A New Start" | [Official M5] |
@@ -1659,7 +1709,7 @@ pair (names and short names matched; a sentence naming three people appears unde
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Official KB4] [Observed KB3; Kiara archive] [Official NEW-R3-007] |
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Takanashi Kiara: her 2026 Serendipity partner ("Rocku Wawa"), who calls her a "hidden gem" and encouraged her through hard choreography for a song with Kiara and Ame; Bijou admires Kiara's "confidence," and they keep saying "67."
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Watson Amelia (affiliate) | Myth genmate | Kiara's EN oshi ("#1 Ame gosling"), credited for help with 3D productions; Ame made HOLOTALK intro material | [Observed T2 §Likes and dislikes] [Official T9] |
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German and German swears, and Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Gawr Gura (graduated): "Goobidiba"; Kiara taught her German swears; Kiara's 2026 song "Blue & Gold" is a tribute to Gura and Ame.
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Koseki Bijou | Advent kouhai | Bijou recalls performing a song with Ame and Kiara and learning demanding choreography with Kiara's practical encouragement (undated; recalled 2026-06-09). | [Official NEW-R1-018] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Takanashi Kiara | Myth genmate | Kiara calls Ame her EN oshi and credits her for help with 3D productions; Ame made HOLOTALK intro material; "Kiara like, threw herself at me… she hugged me!" | [Observed A2 §Quotes; Kiara file T2 §Likes and dislikes, T9] |
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Takanashi Kiara: calls Ame her EN oshi ("#1 Ame gosling") and credits her help with 3D productions; Ame guests at Kiara's concerts and says Kiara once practically tackled her with a hug.

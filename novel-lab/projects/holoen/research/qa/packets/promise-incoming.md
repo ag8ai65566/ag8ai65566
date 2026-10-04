@@ -1,9 +1,9 @@
 # Audit packet: promise (incoming claims)
 
-Snapshot: git fa69d71.
+Snapshot: git a2ead9c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Nerissa and Calli|Hakos Baelz Pairs|It's Not a Phase|hololive Council|Calli and Kronii|Nerissa and IRyS|Keeper of Nature|Kronii and Calli|Mumei and Kronii|Mumei and Kiara|IRyS and Kronii|Mumei and Fauna|Bae and Cecilia|Fauna and Mumei|Kronii and Ina|Bae and Kronii|Ame and Kronii|Fauna and Gura|Time and Death|Warden of Time|Ina and Kronii|Kronii and Ame|Bae and Calli|Nanashi Mumei|Mother Nature|IRyS and Ina|Bae and IRyS|Kroniicopter|Ouro Kronii|holoPromise|Hakos Baelz|Gamer Kirin|holoCouncil|Ceres Fauna|Owo-senpai|Octo'clock|Ceres-chan|Octo'Clock|Tam Tender|CouncilRyS|Mumi-chan|Rat Idol|YabaIRyS|Time Duo|SeisoRyS|CHADCast|Kronster|KiaRissa|Moomsies|オーロ・クロニー|Moomers|Kronini|BratTea|Council|MorIRyS|Promise|KronMei|Faufau|Kronii|BaeRyS|Meimei|Fauna|Baelz|Fawna|Mumei|Hakos|BaeBi|gumei|Irys|Towl|IRyS|Moom|Bae)(
+Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pairs|hololive -Promise-|Hakos Baelz Pairs|Nerissa and Calli|Kronii and Calli|Mumei and Kronii|hololive Council|It's Not a Phase|Calli and Kronii|Keeper of Nature|Nerissa and IRyS|Fauna and Mumei|IRyS and Kronii|Bae and Cecilia|Mumei and Fauna|Mumei and Kiara|Kronii and Ina|Warden of Time|Ame and Kronii|Bae and Kronii|Fauna and Gura|Time and Death|Kronii and Ame|Ina and Kronii|Nanashi Mumei|Bae and Calli|Mother Nature|Kroniicopter|IRyS and Ina|Bae and IRyS|Ceres Fauna|holoPromise|Ouro Kronii|holoCouncil|Hakos Baelz|Gamer Kirin|Ceres-chan|Tam Tender|Octo'clock|Octo'Clock|Owo-senpai|CouncilRyS|Mumi-chan|SeisoRyS|Time Duo|Moomsies|YabaIRyS|オーロ・クロニー|KiaRissa|CHADCast|Rat Idol|Kronster|BratTea|Kronini|KronMei|Council|Moomers|Promise|MorIRyS|Kronii|BaeRyS|Meimei|Faufau|gumei|Fauna|Baelz|BaeBi|Hakos|Fawna|Mumei|Moom|Irys|IRyS|Towl|Bae)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
@@ -200,7 +200,7 @@ Matched names: ardian of Civilization|IRyS and Nerissa Pairs|Fauna and Mumei Pai
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2024 | Guest at Nanashi Mumei's 3D live "Outside the Box"; first GAMERS fes (Yoyogi) | [Mumei file] [Observed OK3] |
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2025-01-13 | Leads a team at the hololive New Year Game Festival (with Suisei, Ayame, Ina, IRyS, Cecilia) | [OK4 THMIBrxnp-E] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Nanashi Mumei (graduated) | — | Guest at Mumei's "Outside the Box" (2024) | [Mumei file] |
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team | [OK4] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team IRyS: [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at IRyS's 2026 birthday live, RACING TOWARDS HOPE (2026-03-21).] | [OK4] [Secondary NEW-R5-013] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hakos Baelz | — | Team kart events (2023, 2024) | [OK4] |
 
 ### from Nerissa Ravencroft

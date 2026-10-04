@@ -1,14 +1,21 @@
 # Audit packet: jp2 (incoming claims)
 
-Snapshot: git fa69d71.
+Snapshot: git a2ead9c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names:  Senpai Pairs 2|Noel and Calliope|Vivi and FUWAMOCO|Marine and Kiara|Botan and IRyS|Houshou Marine|Shirogane Noel|Shishiro Botan|Yukihana Lamy|Kikirara Vivi|Noel-danchou|Lamy and Ina|Noel Deluxe|Lamy-mama|Shishiron|Shishiro|綺々羅々ヴィヴィ|Senchou|Danchou|Maririn|Sencho|Senchō|Marine|Danchō|白銀ノエル|Botan|宝鐘マリン|獅白ぼたん|雪花ラミィ|Vivi|Wamy|Noel|Lamy)(
+Matched names: vi and FUWAMOCO|JP Senpai Pairs 2|Noel and Calliope|Marine and Kiara|Shirogane Noel|Shishiro Botan|Houshou Marine|Botan and IRyS|Yukihana Lamy|Kikirara Vivi|Noel-danchou|Lamy and Ina|Noel Deluxe|Shishiron|Lamy-mama|Shishiro|綺々羅々ヴィヴィ|Danchou|Senchou|Maririn|Danchō|Senchō|Sencho|Marine|Botan|白銀ノエル|雪花ラミィ|獅白ぼたん|宝鐘マリン|Noel|Lamy|Wamy|Vivi)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy"
 - `bible/characters/AZKi.md › [SW] Relationships`: (2025; secondary references), and a 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
-- `bible/characters/AZKi.md › Relationship Map`: | Hakui Koyori, Yukihana Lamy | "KoZMy" (secondary references; a 2025-08-03 "KoZMy 結成⁉" collab title) | A 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026-02-03, not a KoZMy event); Lamy is also in "KALAZ" with Amane Kanata (secondary) | [Koyori file KO4 lvgC3pW-LVA, 1HQL3WJPBHA] [Lamy file LM2] |
+- `bible/characters/AZKi.md › [SW] Relationships`: Nekomata Okayu: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), with Shirogane Noel also playing.
+- `bible/characters/AZKi.md › [SW] Relationships`: Houshou Marine: AZKi supplied soothing commentary for Marine's Holo Koshien stream (2026).
+- `bible/characters/AZKi.md › [SW] Relationships`: Kikirara Vivi: GeoGuessr on Vivi's channel (2026).
+- `bible/characters/AZKi.md › Behavioral Traits`: - **Pun-ASMR host (2025-06-22):** she hosted a 3D pun-ASMR contest with Okayu, Noel, Oozora Subaru and Otonose Kanade; laughing meant losing. The title establishes the format and players, not particular jokes or the winner. [Archive metadata NEW-R5-004]
+- `bible/characters/AZKi.md › Relationship Map`: | Shirogane Noel | JP senior | A player in AZKi's 3D pun-ASMR contest (2025-06-22). | [Archive metadata NEW-R5-004] |
+- `bible/characters/AZKi.md › Relationship Map`: | Houshou Marine | JP senior | AZKi supplied commentary for Marine's Holo Koshien stream; the title billed it as soothing (2026-09-26). | [Archive metadata NEW-R5-006] |
+- `bible/characters/AZKi.md › Relationship Map`: | Hakui Koyori, Yukihana Lamy | "KoZMy" (secondary references; a 2025-08-03 "KoZMy 結成⁉" collab title) | A 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026-02-03, not a KoZMy event); Lamy is also in "KALAZ" with Amane Kanata (secondary) Lamy: an impromptu group chat with Lamy and Inugami Korone on Lamy's channel (#あずらみころ, 2026-09-18). | [Koyori file KO4 lvgC3pW-LVA, 1HQL3WJPBHA] [Lamy file LM2] [Archive metadata NEW-R5-005] |
+- `bible/characters/AZKi.md › Relationship Map`: | Kikirara Vivi | — | A GeoGuessr collab on Vivi's channel (2026-08-22). | [Archive metadata, holostats dzO2LaVBmMY] |
 
 ### from Ceres Fauna
 - `bible/characters/Ceres-Fauna.md › Voice Profile`: - Self-description: "I'm pretty soft-spoken. And talking in my head voice like this does not strain my voice at all." [ASR F20, 1:14:21]. Secondary: soft-spoken and comforting, with a voice tone fans compare with Yukihana Lamy's. [Observed F2 §Personality, secondary]
@@ -58,9 +65,10 @@ Matched names:  Senpai Pairs 2|Noel and Calliope|Vivi and FUWAMOCO|Marine and Ki
 - `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2023 | "Blue Journey" with Marine, Noel, Lamy, Botan, Lui and Sakura Miko (07-08; official roster); 1 million subscribers (09-24, secondary); Hoshimatic Project (from 11, secondary) | [Blue Journey roster] [Observed KO2] |
 - `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2025 | Weekly Famitsu column launched (07-17); archived collabs bill Koyori, AZKi and Lamy as "KoZMy" (08-03, 08-20); "pink-haired pair" talk with Marine | [KO7] [KO4 lvgC3pW-LVA, oxWPvsUb_3Y] |
 - `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2026-03-24 | #ラミこよ off-collab with Lamy, proposing to choose a duo name (no final name established) | [Lamy channel Zi8R63ee0Fs] |
-- `bible/characters/Hakui-Koyori.md › Relationship Map`: | La+ Darknesss | holoX founder | A sponsored "#stons" deep-breathing collab (2024-12-16); a cover with La+ and Marine (2025) | [KO4 lz37xE9ED1I, ZMpsiRdqXfE] |
-- `bible/characters/Hakui-Koyori.md › Relationship Map`: | AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] |
-- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Houshou Marine | "Pink-haired pair" | A talk testing whether they are alike (2025); Marine backseats her Pikachu game (2025); Blue Journey | [KO4] [KO2] |
+- `bible/characters/Hakui-Koyori.md › Background Timeline`: | 2026-08-22 | Announced hololive Koshien 2026: Koyori is organizer and one of six team managers (others include Houshou Marine and Shirogane Noel); the main competition is scheduled for 10-17/18 (after the baseline: an announcement only). | [Member announcement NEW-R6-017] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | La+ Darknesss | holoX founder | A sponsored "#stons" deep-breathing collab (2024-12-16); a cover with La+ and Marine (2025) Their duet "SUKIDEKA!!~BIGLOVE????~" (2025-11-21). | [KO4 lz37xE9ED1I, ZMpsiRdqXfE] [Official NEW-R6-011] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | AZKi, Yukihana Lamy | "KoZMy" (archived titles) | Archived 2025 collabs bill the trio as KoZMy (formation talk 08-03, a horror monitoring game 08-20); a four-person 3D karaoke with AZKi (2026-02-03, not a KoZMy event); a #ラミこよ off-collab with Lamy (2026-03-24) Lamy: "Snow halation" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [KO4 lvgC3pW-LVA, oxWPvsUb_3Y, 1HQL3WJPBHA] [Lamy channel Zi8R63ee0Fs] [Official, 7th fes. STAGE 1 report] |
+- `bible/characters/Hakui-Koyori.md › Relationship Map`: | Houshou Marine | "Pink-haired pair" | A talk testing whether they are alike (2025); Marine backseats her Pikachu game (2025); Blue Journey She joined Marine's Holo Koshien session (2026-09-17). | [KO4] [KO2] [Archive metadata, ckworks 73sl-3cOp2E] |
 - `bible/characters/Hakui-Koyori.md › Relationship Map`: | Shirogane Noel | Blue Journey | "NoeKoyo" in a baseball-game exhibition match (2025) | [KO4] [KO2] |
 - `bible/characters/Hakui-Koyori.md › Relationship Map`: | Shishiro Botan | NePoX; Blue Journey | NePoLaBo × holoX events (official 2026 roster); Blue Journey (official roster) | [KO2] [NePoX roster] [Blue Journey roster] |
 - `bible/characters/Hakui-Koyori.md › Story Engine`: 2. A KoZMy horror night in which Koyori volunteers AZKi and Lamy as test subjects.
@@ -69,12 +77,14 @@ Matched names:  Senpai Pairs 2|Noel and Calliope|Vivi and FUWAMOCO|Marine and Ki
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Houshou Marine: "Chatter Chatter"
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Shirogane Noel: a fellow Shiranui Kensetsu member.
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA (2024); La+, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024).
+- `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Kikirara Vivi: taught her Tetris (2026).
 - `bible/characters/Hoshimachi-Suisei.md › Background Timeline`: | 2026-03 | "Chatter Chatter" with Houshou Marine; playable in Fortnite (03-13 to 03-24) | [Observed SU4] [SU3, secondary] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Nekomata Okayu | "MOMAS" (secondary label) | With Sakura Miko, Houshou Marine and Hiodoshi Ao; on Okayu's 2025 New Year Game Festival team (secondary roster) | [SU2] [S1] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Shiranui Flare, Omaru Polka, Miko, Shirogane Noel | "Shiranui Kensetsu" | Suisei is its PR director; R.E.P.O. "work shift" (2026) | [SU2] [SU4] |
-- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Houshou Marine | "Chatter Chatter" (2026) | A duet with an original anime MV (official release page 711); the wiki's holoALICE and MOMAS labels were not verified in review | [Marine file MA4] |
+- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Houshou Marine | "Chatter Chatter" (2026) | A duet with an original anime MV (official release page 711); the wiki's holoALICE and MOMAS labels were not verified in review They performed "Chatter Chatter" together on STAGE 4 of hololive 7th fes. (2026-03-08). | [Marine file MA4] [Official NEW-R5-003] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Shirogane Noel | Shiranui Kensetsu | The Minecraft construction company with Flare, Polka and Miko | [Noel file NO2, secondary] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured Suisei, La+, Botan and Shirakami Fubuki (publisher roster; a joint broadcast is not established) | [SU4 2v4DYYf7hB0] [Sammy roster] |
+- `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Kikirara Vivi | — | Taught Vivi Tetris on Vivi's channel (2026-08-29). | [Archive metadata, ckworks qHC9c62GCpc] |
 
 ### from IRyS
 - `bible/characters/IRyS.md › [SW] Relationships`: Shishiro Botan, Takane Lui, Sakamata Chloe and Tokoyami Towa: an Overwatch 2 team (2023); Hakui Koyori: Splatoon 3 and Among Us.
@@ -85,6 +95,7 @@ Matched names:  Senpai Pairs 2|Noel and Calliope|Vivi and FUWAMOCO|Marine and Ki
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Yukihana Lamy and Shishiro Botan: NePoX.
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Houshou Marine and Shirogane Noel: fellow Bara☆Dice vocalists (distributor credits).
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Yukihana Lamy, Shishiro Botan | NePoX | Caravan Stories with Lamy (2023); built the roof of Botan's Minecraft shop (2023) | [IR4] [IR2] |
+- `bible/characters/Kazama-Iroha.md › Relationship Map`: | Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Kikirara Vivi: Bijou watched Vivi's FLOW GLOW debut with FUWAMOCO (2024).
@@ -125,17 +136,23 @@ Matched names:  Senpai Pairs 2|Noel and Calliope|Vivi and FUWAMOCO|Marine and Ki
 
 ### from Nekomata Okayu
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Houshou Marine: gave her the nickname "Okanyan."
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: ("Dorobo Kensetsu" comes from secondary references.) AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played.
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Kikirara Vivi: a 2026 collab on Vivi's channel.
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Houshou Marine | — | Marine gave her the nickname "Okanyan" (official profile); a joint marshmallow-reading stream on her recommended list | [Official OK1] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Hoshimachi Suisei | "MOMAS" | With Sakura Miko, Houshou Marine and Hiodoshi Ao; PlateUp! on her 2025 team | [OK2] [OK4] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Shirogane Noel | JP senior | Fellow players in AZKi's 3D pun-ASMR contest (2025-06-22); a group activity, not a pair collab. | [Archive metadata NEW-R5-004] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Kikirara Vivi | — | A 2026-08-25 collab on Vivi's channel framed around やーらし. | [Archive metadata, ckworks jlt6HHrZnpE] |
 
 ### from Nerissa Ravencroft
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Houshou Marine: one of her oshis (secondary); Mario Party Superstars with FUWAMOCO (2024).
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Shishiro Botan: a guest at her birthday live "Stray&Stay"
 - `bible/characters/Nerissa-Ravencroft.md › Behavioral Traits`: 3. She is an open fangirl of Houshou Marine and Takanashi Kiara (a self-described KFP member); in her lore she worked at KFP before hololive. [Observed N2 §Likes and dislikes, §Lore, secondary]
 - `bible/characters/Nerissa-Ravencroft.md › Voice Profile`: | Fangirling (Kiara, Marine) | Fast, flustered, delighted | (no verified line; see Relationship Map) |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Houshou Marine | JP senior and oshi |  off-collab with Marine and FUWAMOCO (2024) | [Observed N2; N3 title] |
+- `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Shishiro Botan | — | A credited guest at Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata, yutura cI535pJp-TQ] |
 
 ### from Ninomae Ina'nis
-- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine: UMISEA.
+- `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine and Sakamata Chloe: UMISEA.
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Yukihana Lamy: a Minecraft festival and "date"-billed collab (2021) and a "Pleides" guest (2024).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shishiro Botan: an "EVERMORE" guest (2025).
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Shirogane Noel and Kikirara Vivi: Mumei's Gartic Phone (2025).
@@ -159,7 +176,7 @@ Matched names:  Senpai Pairs 2|Noel and Calliope|Vivi and FUWAMOCO|Marine and Ki
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Shishiro Botan: fellow builders in Botan's Minecraft "Usada Kensetsu"
-- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Archived episode records list HOLOTALK guests including Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ Darknesss ("Glow in the Dark"), Sakamata Chloe ("WILDCARD") and Hakui Koyori ("MIRAGE").
+- `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: HOLOTALK guests include Houshou Marine (#1), Hoshimachi Suisei ("cometori"), AZKi, Shirogane Noel, Nekomata Okayu and Nakiri Ayame. holoX: La+ ("Glow in the Dark"), Chloe ("WILDCARD"), Koyori ("MIRAGE") and Iroha (a guest at her 2024 and 2025 lives).
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Oozora Subaru | JP seniors | Early HOLOTALK guest (Marine); first EN×JP collab (Subaru, 2020) | [Observed T2 §2020, secondary] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Houshou Marine, Shirogane Noel | JP seniors | HOLOTALK's first guest Marine ("#marinarasauce," 2020-11-20) and 22nd guest Noel (2022-03-05); a "MIRAGE" dance short with Marine (2024) | [S1 3HwaqbdKO1s, toe_PmrDWBU, tzVgzvV0cVo] |
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Shishiro Botan | JP senpai | A fellow builder in Botan's Minecraft "Usada Kensetsu"; she joined the Usaken summer-festival planning and building collab (2021-06-07), and contemporary viewers describe Botan checking on Kiara's building team. | [Archive metadata NEW-R1-009; secondary clip record] |

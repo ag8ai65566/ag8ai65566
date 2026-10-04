@@ -1,9 +1,9 @@
 # Audit packet: myth4 (incoming claims)
 
-Snapshot: git fa69d71.
+Snapshot: git a2ead9c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|Kiara and Ina|Ina and Kiara|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
+Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Kiara and Ina|Drawn to Dawn|Ina and Kiara|Octo'clock|TakoTori|Ina'nis|一伊那尓栖|Inya|Ina)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ninomae Ina'nis and Kronii: R.E.P.O.
@@ -111,7 +111,7 @@ Matched names: nomanyo Inya'nis|hololive -Myth-|Ninomae Ina'nis|Drawn to Dawn|Ki
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2025-01-13 | Leads a team at the hololive New Year Game Festival (with Suisei, Ayame, Ina, IRyS, Cecilia) | [OK4 THMIBrxnp-E] |
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2025-08-05 | "Kurukuru Cruise" with Ninomae Ina'nis (official digital release; a video premiere may be dated a day earlier) | [Official OK7] [OK5 t7lNu-p_ANs] |
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2026-03-06 | hololive 7th fes. "Ridin' on Dreams," STAGE 1 (with Ayame, Ina, FUWAMOCO) | [Official OK6] [Observed OK3] |
-- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Ninomae Ina'nis | "TakoNeko" (secondary) | "Kurukuru Cruise" (2025); Ina on her 2025 New Year Game Festival team; both on 7th fes STAGE 1 | [OK5] [OK2] [Official OK6, OK7] |
+- `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Ninomae Ina'nis | "TakoNeko" (secondary) | "Kurukuru Cruise" (2025); Ina on her 2025 New Year Game Festival team; both on 7th fes STAGE 1 They performed "Kurukuru Cruise" together on STAGE 1 of hololive 7th fes. (2026-03-06). | [OK5] [OK2] [Official OK6, OK7] [Official NEW-R5-012] |
 - `bible/characters/Nekomata-Okayu.md › Story Engine`: 2. Ina and Okayu rehearse "Kurukuru Cruise" and Okayu agrees with every note change.
 
 ### from Nerissa Ravencroft
