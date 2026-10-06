@@ -79,12 +79,31 @@ def apply_lexicon(text: str, lang: str | None) -> str:
     return text
 
 
+def gpu_total_gb() -> float | None:
+    try:
+        import torch
+        if torch.cuda.is_available():
+            return torch.cuda.mem_get_info()[1] / 2 ** 30
+    except Exception:
+        pass
+    return None
+
+
+def screen_device(st: dict) -> str:
+    pref = st.get("asr_screen_device") or "auto"
+    if pref != "auto":
+        return pref
+    total = gpu_total_gb()
+    return "cuda" if total and total >= 12 else "cpu"
+
+
 def _screen(y: np.ndarray, sr: int, text: str, lang: str | None) -> dict:
-    """Transcribe a take and compare it with the requested text (catches skipped, repeated or garbled words)."""
+    """Transcribe a take and compare it with the requested text (catches skipped, repeated or garbled words).
+    On GPUs under 12 GB this runs on the CPU, so it never competes with the loaded TTS model for VRAM."""
     try:
         x16 = audio.resample(y, sr, 16000)
         st = config.load_settings()
-        t = asr.transcribe(x16, st["asr_secondary"], language=lang, device=st["asr_device"])
+        t = asr.transcribe(x16, st["asr_secondary"], language=lang, device=screen_device(st))
         return {"heard": t["text"], "match": round(asr.agreement(text, t["text"], lang or t["lang"]), 3)}
     except Exception as e:  # ASR not installed (e.g. test machines)
         return {"heard": "", "match": None, "note": str(e)[:120]}

@@ -325,3 +325,12 @@ def test_checkpoint_paths_stay_inside_model(tmp_path):
     meta = {"checkpoints": [{"name": "../../etc", "weights": True}]}
     with pytest.raises(ValueError):
         Engine.checkpoint_dir(tmp_path, meta, None)
+
+
+def test_screen_device_follows_vram(client, monkeypatch):
+    from vstudio import tts
+    monkeypatch.setattr(tts, "gpu_total_gb", lambda: 10.0)   # RTX 3080 10GB
+    assert tts.screen_device({"asr_screen_device": "auto"}) == "cpu"
+    monkeypatch.setattr(tts, "gpu_total_gb", lambda: 24.0)
+    assert tts.screen_device({"asr_screen_device": "auto"}) == "cuda"
+    assert tts.screen_device({"asr_screen_device": "cpu"}) == "cpu"

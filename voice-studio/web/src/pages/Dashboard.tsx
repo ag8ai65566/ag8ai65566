@@ -49,7 +49,8 @@ export default function Dashboard() {
               <Cpu className="mt-0.5 size-4 text-zinc-400" />
               <div>
                 {sys.data?.gpu.available
-                  ? <><div className="font-medium">{sys.data.gpu.name}</div><div className="text-zinc-500">{sys.data.gpu.vram_gb} GB 顯示記憶體（可用 {sys.data.gpu.free_gb} GB）</div></>
+                  ? <><div className="font-medium">{sys.data.gpu.name}</div><div className="text-zinc-500">{sys.data.gpu.vram_gb} GB 顯示記憶體（可用 {sys.data.gpu.free_gb} GB）</div>
+                    {(sys.data.gpu.vram_gb ?? 0) < 12 && <div className="mt-1 text-xs text-amber-600">VoxCPM2 合成約需 8 GB：放得下，但合成時請關掉遊戲、OBS 等也用顯示卡的程式。檢查漏字會自動改用 CPU。</div>}</>
                   : <div className="text-amber-600">{sys.data?.gpu.note ?? "沒有偵測到 NVIDIA 顯示卡"}</div>}
               </div>
             </div>

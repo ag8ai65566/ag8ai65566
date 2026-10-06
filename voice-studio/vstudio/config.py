@@ -25,6 +25,9 @@ DEFAULTS = {
     "asr_primary": "large-v3",
     "asr_secondary": "large-v3-turbo",
     "asr_device": "auto",
+    # where the "check for skipped words" pass runs while a TTS model is loaded: auto = on the CPU when the GPU has
+    # under 12 GB (a 10 GB card holds VoxCPM2's ~8 GB, not also a second speech model), else on the GPU
+    "asr_screen_device": "auto",
     "segment_min_s": 2.0,
     "segment_max_s": 15.0,
     "segment_target_s": 8.0,
