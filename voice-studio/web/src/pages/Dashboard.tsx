@@ -13,7 +13,7 @@ export default function Dashboard() {
   const steps = [
     { done: (voices.data ?? []).some((v) => v.consent_ok), label: "建立聲音並填寫同意紀錄", to: "/voices" },
     { done: (c.sources ?? 0) > 0, label: "匯入錄音（自動切音、辨識說話者、轉文字）", to: "/import" },
-    { done: approvedMin > 0, label: "檢查並核可片段", to: "/review" },
+    { done: approvedMin > 0, label: "檢查並核可片段（錄音多就用自動審核）", to: "/review" },
     { done: !!st.data?.secrets.runpod_api_key && !!st.data?.settings.runpod_volume_id, label: "設定 RunPod 雲端 GPU", to: "/settings" },
     { done: (c.models ?? 0) > 0, label: "開始雲端訓練", to: "/train" },
     { done: (c.outputs ?? 0) > 0, label: "用訓練好的聲音做文字轉語音", to: "/speak" },

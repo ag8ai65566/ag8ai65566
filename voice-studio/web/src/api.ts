@@ -67,6 +67,13 @@ export type Segment = {
   snr: number | null; clip: number | null; cluster: number | null; score: number | null;
   status: "pending" | "approved" | "rejected"; flags: string[]; edited: number;
 };
+export type AutoReview = {
+  unsure: number; spot_left: number; spot_ok: number; spot_fail: number; auto_approved: number; auto_rejected: number;
+  advice: string;
+  job: (Pick<Job, "id" | "status" | "progress" | "message" | "created_at"> & {
+    result: { message?: string; counts?: Record<string, number>; minutes?: Record<string, number>; profile?: string } | null;
+  }) | null;
+};
 export type Dataset = {
   id: string; voice_id: string; name: string; n_items: number; hours: number; created_at: number;
   meta: { languages: string[]; n_train: number; n_val: number };

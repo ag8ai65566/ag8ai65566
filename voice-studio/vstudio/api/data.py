@@ -9,7 +9,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from .. import audio, config, datasets, db, jobs
-from ..pipeline import prepare
+from ..pipeline import autoreview, prepare
 
 router = APIRouter(prefix="/api", tags=["data"])
 
@@ -175,6 +175,8 @@ def patch_segment(seg_id: str, body: SegmentPatch):
         upd["status"] = body.status
     if body.voice_id is not None:
         upd["voice_id"] = body.voice_id or None
+    if "status" in upd and (old := db.get("segments", seg_id)):  # a person's decision replaces the automatic one
+        upd["flags"] = autoreview.human_status(old["flags"], upd["status"])
     s = db.update("segments", seg_id, upd)
     if "text" in upd or "voice_id" in upd:
         flags = [f for f in s["flags"] if f not in ("asr_disagree", "unknown_speaker", "no_text")] \
@@ -220,6 +222,40 @@ def segment_audio(seg_id: str):
     if not s or not Path(s["path"]).exists():
         raise HTTPException(404)
     return FileResponse(s["path"], media_type="audio/wav")
+
+
+# --- automatic review ------------------------------------------------------------------------------------------
+
+class AutoReviewIn(BaseModel):
+    profile: str = "balanced"
+
+
+def _active_auto_review(voice_id: str) -> dict | None:
+    rows = db.query("SELECT * FROM jobs WHERE kind='auto_review' AND status IN ('queued','running') AND params LIKE ?",
+                    (f'%"{voice_id}"%',))
+    return rows[0] if rows else None
+
+
+@router.get("/auto-review/{voice_id}")
+def auto_review_status(voice_id: str):
+    return autoreview.summary(voice_id)
+
+
+@router.post("/auto-review/{voice_id}")
+def auto_review_start(voice_id: str, body: AutoReviewIn):
+    if not db.get("voices", voice_id):
+        raise HTTPException(404)
+    if body.profile not in autoreview.PROFILES:
+        raise HTTPException(400, f"unknown profile: {body.profile}")
+    return _active_auto_review(voice_id) or jobs.submit(
+        "auto_review", {"voice_id": voice_id, "profile": body.profile}, "排隊自動審核")
+
+
+@router.post("/auto-review/{voice_id}/undo")
+def auto_review_undo(voice_id: str):
+    if _active_auto_review(voice_id):
+        raise HTTPException(409, "自動審核還在進行，請等它結束或先取消。")
+    return {"reset": autoreview.undo(voice_id)}
 
 
 # --- datasets ---------------------------------------------------------------------------------------------------

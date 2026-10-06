@@ -25,6 +25,7 @@ DEFAULTS = {
     "asr_primary": "large-v3",
     "asr_secondary": "large-v3-turbo",
     "asr_device": "auto",
+    "asr_verbatim": True,   # keep fillers like えーと / um in transcripts (see asr.VERBATIM_PROMPT)
     # where the "check for skipped words" pass runs while a TTS model is loaded: auto = on the CPU when the GPU has
     # under 12 GB (a 10 GB card holds VoxCPM2's ~8 GB, not also a second speech model), else on the GPU
     "asr_screen_device": "auto",

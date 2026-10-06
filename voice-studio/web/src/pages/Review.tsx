@@ -2,13 +2,22 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "react-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
-import { Check, ChevronLeft, ChevronRight, Database, Pause, Play, Search, Trash2, X } from "lucide-react";
-import { api, fmtMin, fmtTime, LANGS, type Dataset, type Segment, type Voice } from "../api";
-import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader } from "../ui";
+import { Check, ChevronLeft, ChevronRight, Database, Pause, Play, Search, Sparkles, Trash2, Undo2, X } from "lucide-react";
+import { api, fmtMin, fmtTime, LANGS, type AutoReview, type Dataset, type Segment, type Voice } from "../api";
+import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader, Progress } from "../ui";
 
 const FLAGS: Record<string, string> = {
   asr_disagree: "兩個辨識結果不一致", noisy: "雜音多", clipping: "爆音", unknown_speaker: "不確定是誰",
   overlap: "可能多人同時說話", no_text: "沒有文字",
+};
+// flags written by automatic review (labels for the badges on each segment)
+const AUTO: Record<string, [string, "green" | "red" | "blue" | "amber" | "brand"]> = {
+  auto_approved: ["自動核可", "green"], auto_rejected: ["自動排除", "red"], auto_unsure: ["需要你聽", "blue"],
+  spot_check: ["抽查", "brand"], spot_ok: ["抽查：沒問題", "green"], spot_fail: ["抽查：你排除了", "red"],
+};
+const REASON: Record<string, string> = {
+  agree: "兩個辨識結果不一致", snr: "雜音偏多", clip: "爆音", speaker: "不像這個人", window: "中途可能換人或有別的聲音",
+  logprob: "辨識信心低", no_speech: "可能不是說話（笑聲、音樂）", rate: "字數和長度對不上", text: "沒有文字", duration: "長度不適合",
 };
 const STATUS = [["pending", "待檢查"], ["approved", "已核可"], ["rejected", "已排除"], ["", "全部"]] as const;
 const PAGE = 50;
@@ -115,6 +124,10 @@ export default function Review() {
             </div>
             <div className="flex flex-wrap gap-1.5">
               <button onClick={() => setFlag("")} className={clsx("rounded-full px-2.5 py-0.5 text-xs", !flag ? "bg-zinc-800 text-white dark:bg-zinc-200 dark:text-zinc-900" : "bg-zinc-100 dark:bg-zinc-800")}>不限警告</button>
+              {([["auto_unsure", "需要你聽", "pending"], ["spot_check", "抽查", ""]] as const).map(([k, l, st]) => (
+                <button key={k} onClick={() => { if (flag === k) setFlag(""); else { setFlag(k); setStatus(st); } }}
+                  className={clsx("rounded-full px-2.5 py-0.5 text-xs", flag === k ? "bg-sky-600 text-white" : "bg-sky-50 text-sky-800 dark:bg-sky-950/50 dark:text-sky-200")}>{l}</button>
+              ))}
               {Object.entries(FLAGS).map(([k, l]) => (
                 <button key={k} onClick={() => setFlag(flag === k ? "" : k)}
                   className={clsx("rounded-full px-2.5 py-0.5 text-xs", flag === k ? "bg-amber-500 text-white" : "bg-zinc-100 dark:bg-zinc-800")}>{l}</button>
@@ -157,6 +170,7 @@ export default function Review() {
           </p>
         </div>
         <div className="space-y-4">
+          {voice && <AutoReviewCard voice={voice} onShow={(f, st) => { setFlag(f); setStatus(st); }} />}
           {voice && <DatasetPanel voice={voice} />}
           <Card title="怎樣算好片段？">
             <ul className="list-disc space-y-1.5 pl-4 text-sm text-zinc-600 dark:text-zinc-400">
@@ -204,7 +218,8 @@ function SegmentRow({ s, index, active, playing, onFocus, onPlay, onStatus, onTe
           {s.lang && <span>· {LANGS[s.lang] ?? s.lang}</span>}
           {s.spk_sim != null && <span>· 像本人 {(s.spk_sim * 100).toFixed(0)}%</span>}
           {s.edited ? <Badge tone="blue">已修改</Badge> : null}
-          {s.flags.map((f) => <Badge key={f} tone="amber">{FLAGS[f] ?? f}</Badge>)}
+          {s.flags.map((f) => f.startsWith("auto:") ? <span key={f} className="text-sky-700 dark:text-sky-300">· {REASON[f.slice(5)] ?? f.slice(5)}</span>
+            : AUTO[f] ? <Badge key={f} tone={AUTO[f][1]}>{AUTO[f][0]}</Badge> : <Badge key={f} tone="amber">{FLAGS[f] ?? f}</Badge>)}
         </div>
       </div>
       <div className="flex shrink-0 flex-col gap-1.5">
@@ -214,6 +229,81 @@ function SegmentRow({ s, index, active, playing, onFocus, onPlay, onStatus, onTe
           className={clsx("rounded-lg p-2", s.status === "rejected" ? "bg-red-500 text-white" : "bg-zinc-100 text-zinc-500 hover:bg-red-100 dark:bg-zinc-800")}><X className="size-4" /></button>
       </div>
     </div>
+  );
+}
+
+function AutoReviewCard({ voice, onShow }: { voice: Voice; onShow: (flag: string, status: string) => void }) {
+  const qc = useQueryClient();
+  const [profile, setProfile] = useState("balanced");
+  const info = useQuery({
+    queryKey: ["auto-review", voice.id], queryFn: () => api.get<AutoReview>(`/api/auto-review/${voice.id}`),
+    refetchInterval: (q) => (q.state.data?.job && ["queued", "running"].includes(q.state.data.job.status) ? 2000 : false),
+  });
+  const job = info.data?.job;
+  const running = !!job && ["queued", "running"].includes(job.status);
+  const wasRunning = useRef(false);
+  useEffect(() => {  // refresh the list once the job finishes
+    if (wasRunning.current && !running) { qc.invalidateQueries({ queryKey: ["segments"] }); qc.invalidateQueries({ queryKey: ["voices"] }); }
+    wasRunning.current = running;
+  }, [running, qc]);
+  const start = useMutation({
+    mutationFn: () => api.post(`/api/auto-review/${voice.id}`, { profile }),
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["auto-review", voice.id] }),
+  });
+  const undo = useMutation({
+    mutationFn: () => api.post<{ reset: number }>(`/api/auto-review/${voice.id}/undo`),
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["auto-review", voice.id] }); qc.invalidateQueries({ queryKey: ["segments"] }); qc.invalidateQueries({ queryKey: ["voices"] }); },
+  });
+  const d = info.data;
+  const pending = voice.stats.pending?.count ?? 0;
+  const touched = !!d && d.auto_approved + d.auto_rejected + d.unsure + d.spot_ok + d.spot_fail > 0;
+  return (
+    <Card title={<span className="flex items-center gap-2"><Sparkles className="size-4" />自動審核</span>}>
+      <p className="text-xs text-zinc-500">
+        幾十小時的錄音不用一段一段聽：平台用兩個辨識模型、聲紋、雜音和語速自動判斷，清楚的直接核可、明顯不行的排除，
+        只把拿不準的留給你，另外抽一小部分核可的讓你確認。你自己改過或決定過的片段不會被動到，也可以整批復原。
+      </p>
+      {running ? (
+        <div className="mt-3 space-y-1.5 text-sm">
+          <Progress value={job!.progress} />
+          <div className="text-xs text-zinc-500">{job!.message || "排隊中…"}</div>
+        </div>
+      ) : (
+        <div className="mt-3 space-y-2">
+          <div className="flex rounded-lg border border-zinc-300 p-0.5 text-sm dark:border-zinc-700">
+            {([["balanced", "平衡"], ["strict", "嚴格"]] as const).map(([k, l]) => (
+              <button key={k} onClick={() => setProfile(k)}
+                className={clsx("flex-1 rounded-md px-3 py-1", profile === k ? "bg-brand-600 text-white" : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800")}>{l}</button>
+            ))}
+          </div>
+          <p className="text-[11px] text-zinc-500">{profile === "strict" ? "嚴格：只核可非常乾淨的片段，需要你聽的會變多。資料很多（10 小時以上）時建議用這個。" : "平衡：大部分情況用這個。"}</p>
+          <Button className="w-full" onClick={() => start.mutate()} loading={start.isPending} disabled={!pending}>
+            自動審核 {pending} 段待檢查的片段
+          </Button>
+          <ErrorText error={start.error} />
+        </div>
+      )}
+      {job?.status === "done" && job.result?.message && <p className="mt-3 rounded-lg bg-emerald-50 px-3 py-2 text-xs text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-200">上次結果：{job.result.message}</p>}
+      {job?.status === "failed" && <p className="mt-3 rounded-lg bg-red-50 px-3 py-2 text-xs text-red-800 dark:bg-red-950/40 dark:text-red-200">上次自動審核失敗：{job.message}（詳情在「工作佇列」）</p>}
+      {d && touched && (
+        <div className="mt-3 space-y-2 text-sm">
+          <button onClick={() => onShow("auto_unsure", "pending")} className="flex w-full items-center justify-between rounded-lg bg-sky-50 px-3 py-2 text-left hover:bg-sky-100 dark:bg-sky-950/40 dark:hover:bg-sky-950/70">
+            <span>① 需要你聽</span><span className="font-semibold tabular-nums">{d.unsure} 段</span>
+          </button>
+          <button onClick={() => onShow("spot_check", "")} className="flex w-full items-center justify-between rounded-lg bg-brand-50 px-3 py-2 text-left hover:bg-brand-100 dark:bg-brand-900/30 dark:hover:bg-brand-900/50">
+            <span>② 抽查自動核可的</span><span className="font-semibold tabular-nums">剩 {d.spot_left} 段</span>
+          </button>
+          {d.spot_ok + d.spot_fail > 0 && <p className="text-xs text-zinc-500">抽查結果：{d.spot_ok} 段沒問題、{d.spot_fail} 段被你排除。</p>}
+          {d.advice && <p className="rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:bg-amber-950/40 dark:text-amber-200">{d.advice}</p>}
+          <p className="text-xs text-zinc-500">抽查時用 <span className="kbd">A</span> 表示沒問題、<span className="kbd">R</span> 排除。看自動排除的原因：狀態切到「已排除」。</p>
+          <Button size="sm" variant="ghost" disabled={running} loading={undo.isPending}
+            onClick={() => confirm("把自動核可和自動排除的片段都改回「待檢查」？（你自己決定過的不會變）") && undo.mutate()}>
+            <Undo2 className="size-4" />復原自動審核
+          </Button>
+          <ErrorText error={undo.error} />
+        </div>
+      )}
+    </Card>
   );
 }
 

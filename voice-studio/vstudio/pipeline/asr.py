@@ -59,6 +59,11 @@ def unload() -> None:
         pass
 
 
+# A spoken-style prompt nudges Whisper to keep fillers and false starts ("えーと", "um") instead of tidying them
+# away; the model learns a speaker's habits from exactly those words. Used only when the language is known.
+VERBATIM_PROMPT = {"ja": "えーと、あの、まあ、なんか、うーん、そうそう。", "en": "Um, uh, like, you know, I mean, yeah."}
+
+
 def transcribe(audio16k: np.ndarray, name: str, language: str | None = None, device: str = "auto",
                prompt: str | None = None) -> dict:
     m = model(name, device)

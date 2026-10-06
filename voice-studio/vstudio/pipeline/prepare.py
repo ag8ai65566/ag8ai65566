@@ -120,14 +120,17 @@ def prepare_source(ctx: jobs.JobContext) -> dict:
     for i, rec in enumerate(records):
         ctx.progress(0.40 + 0.58 * i / max(1, len(records)), f"轉文字 {i + 1}/{len(records)}")
         a, b = int(rec["start"] * 16000), int(rec["end"] * 16000)
+        # both models get the same verbatim prompt, so a kept filler is not counted as a disagreement
+        prompt = asr.VERBATIM_PROMPT.get(langs or "") if st.get("asr_verbatim", True) else None
         with jobs.GPU_LOCK:
-            t1 = asr.transcribe(x16[a:b], st_primary, language=langs, device=st["asr_device"])
-            t2 = asr.transcribe(x16[a:b], st_secondary, language=t1["lang"], device=st["asr_device"]) \
+            t1 = asr.transcribe(x16[a:b], st_primary, language=langs, device=st["asr_device"], prompt=prompt)
+            t2 = asr.transcribe(x16[a:b], st_secondary, language=t1["lang"], device=st["asr_device"], prompt=prompt) \
                 if use_second else None
         rec["text"] = t1["text"]
         rec["lang"] = t1["lang"]
         rec["text_alt"] = t2["text"] if t2 else ""
         rec["asr_agree"] = asr.agreement(t1["text"], t2["text"], t1["lang"]) if t2 else None
+        rec["asr_logprob"], rec["no_speech"] = t1.get("avg_logprob"), t1.get("no_speech")
         rec["score"], flags = score(rec)
         rec["flags"] = flags
         amb = rec.pop("ambiguous")

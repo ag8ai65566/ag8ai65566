@@ -13,7 +13,7 @@ from fastapi.responses import FileResponse, JSONResponse
 from . import __version__, config, db, evaluate, jobs, training, tts  # noqa: F401  (modules register job handlers)
 from .api import data, docs, speak, system, train, voices
 from .engines import install  # noqa: F401  (registers install_engine)
-from .pipeline import prepare  # noqa: F401  (registers prepare_source / enroll_voice)
+from .pipeline import autoreview, prepare  # noqa: F401  (register prepare_source / enroll_voice / auto_review)
 
 WEB = config.ROOT / "web" / "dist"
 

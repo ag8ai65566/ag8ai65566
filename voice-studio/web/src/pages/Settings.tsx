@@ -153,7 +153,7 @@ function DataSettings() {
   useEffect(() => { if (st.data) setF(st.data.settings); }, [st.data]);
   const save = useMutation({ mutationFn: () => api.put("/api/settings", {
     asr_primary: f.asr_primary, asr_secondary: f.asr_secondary, asr_device: f.asr_device,
-    asr_screen_device: f.asr_screen_device, segment_min_s: +f.segment_min_s,
+    asr_screen_device: f.asr_screen_device, asr_verbatim: f.asr_verbatim ?? true, segment_min_s: +f.segment_min_s,
     segment_max_s: +f.segment_max_s, segment_target_s: +f.segment_target_s, speaker_match_threshold: +f.speaker_match_threshold,
   }), onSuccess: () => qc.invalidateQueries({ queryKey: ["settings"] }) });
   return (
@@ -168,6 +168,8 @@ function DataSettings() {
         <Field label="合成時「檢查漏字」用的裝置" hint="自動：顯示卡小於 12 GB（例如 3080 10GB）時用 CPU，避免和語音模型搶顯示記憶體。">
           <select className="input" value={f.asr_screen_device ?? "auto"} onChange={(e) => setF({ ...f, asr_screen_device: e.target.value })}>
             <option value="auto">自動</option><option value="cuda">GPU</option><option value="cpu">CPU</option></select></Field>
+        <Field label="保留口頭禪" hint="語言選定日文或英文時，提示辨識模型照實寫出「えーと」「um」這類詞（模型才學得到說話習慣）。">
+          <label className="flex items-center gap-2 py-2 text-sm"><input type="checkbox" checked={f.asr_verbatim ?? true} onChange={(e) => setF({ ...f, asr_verbatim: e.target.checked })} />照實寫出口頭禪</label></Field>
         <Field label="片段最短（秒）"><input className="input" type="number" step="0.5" value={f.segment_min_s ?? 2} onChange={(e) => setF({ ...f, segment_min_s: e.target.value })} /></Field>
         <Field label="片段目標長度（秒）"><input className="input" type="number" step="0.5" value={f.segment_target_s ?? 8} onChange={(e) => setF({ ...f, segment_target_s: e.target.value })} /></Field>
         <Field label="片段最長（秒）" hint="VoxCPM 建議 3–30 秒。"><input className="input" type="number" step="0.5" value={f.segment_max_s ?? 15} onChange={(e) => setF({ ...f, segment_max_s: e.target.value })} /></Field>

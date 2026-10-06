@@ -334,3 +334,95 @@ def test_screen_device_follows_vram(client, monkeypatch):
     monkeypatch.setattr(tts, "gpu_total_gb", lambda: 24.0)
     assert tts.screen_device({"asr_screen_device": "auto"}) == "cuda"
     assert tts.screen_device({"asr_screen_device": "cpu"}) == "cpu"
+
+
+def test_auto_review_rules():
+    from vstudio.pipeline import autoreview as ar
+    p = ar.PROFILES["balanced"]
+    good = {"text": "今日はいい天気ですね", "lang": "ja", "duration": 3.0, "asr_agree": 0.97, "snr": 28.0, "clip": 0.0,
+            "spk_sim": 0.8, "asr_logprob": -0.2, "no_speech": 0.02}
+    assert ar.decide(good, p, 0.62, 0.05) == ("approve", [])
+    assert ar.decide({**good, "asr_agree": 0.8}, p, 0.62, 0.05) == ("unsure", ["agree"])
+    assert ar.decide({**good, "asr_agree": None}, p, 0.62, 0.05)[0] == "unsure"   # unmeasured never passes
+    assert ar.decide({**good, "snr": 8.0}, p, 0.62, 0.05)[0] == "reject"
+    assert ar.decide({**good, "spk_sim": 0.3}, p, 0.62, 0.05) == ("reject", ["speaker"])
+    assert ar.decide(good, p, 0.62, 0.3) == ("unsure", ["window"])
+    assert ar.decide(good, p, 0.62, 0.5)[0] == "reject"
+    assert ar.decide({**good, "duration": 0.5}, p, 0.62, None)[0] == "reject"
+    assert ar.decide(good, ar.PROFILES["strict"], 0.62, 0.05) == ("approve", [])
+    assert ar.decide({**good, "snr": 20.0}, ar.PROFILES["strict"], 0.62, 0.05) == ("unsure", ["snr"])
+    # speaking rate: 10 characters in 3 s is fine; in 0.2 s it is not a person talking
+    assert ar.rate_ok("今日はいい天気ですね", "ja", 3.0) and not ar.rate_ok("今日はいい天気ですね", "ja", 0.5)
+    assert ar.rate_ok("so I was thinking about it", "en", 2.5) and not ar.rate_ok("yes", "en", 12.0)
+    # a person's decision on a spot check replaces the automatic flags and records the outcome
+    assert ar.human_status(["auto_approved", "spot_check", "noisy"], "rejected") == ["noisy", "spot_fail"]
+    assert ar.human_status(["auto_unsure", "auto:agree"], "approved") == []
+
+
+def _tone(path: Path, parts: list[tuple[float, float]], sr: int = 16000) -> Path:
+    y = np.concatenate([amp * np.sin(2 * math.pi * 200 * np.arange(int(sr * sec)) / sr) for sec, amp in parts])
+    with wave.open(str(path), "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)
+        w.writeframes((y * 32767).astype("<i2").tobytes())
+    return path
+
+
+def test_auto_review_job_and_undo(client, tmp_path, monkeypatch):
+    """Loud tone = the voice, quiet tone = someone else (a stand-in speaker embedding)."""
+    from vstudio import db
+    from vstudio.pipeline import speaker
+
+    class FakeEmbedder:
+        def embed(self, y):
+            t = float(np.clip((0.19 - np.abs(y).mean()) / 0.16, 0, 1)) * math.pi / 2
+            return np.array([math.cos(t), math.sin(t)], dtype=np.float32)
+    monkeypatch.setattr(speaker, "Embedder", FakeEmbedder)
+    vid = db.insert("voices", {"id": "v1", "name": "me", "kind": "self", "created_at": db.now()})["id"]
+    db.insert("sources", {"id": "s1", "filename": "a.wav", "path": "a.wav", "status": "ready", "created_at": db.now()})
+    d = tmp_path / "segs"
+    d.mkdir()
+
+    def seg(sid, parts, **kw):
+        row = {"id": sid, "source_id": "s1", "voice_id": vid, "start": 0.0, "end": 1.0, "path": str(_tone(d / f"{sid}.wav", parts)),
+               "duration": sum(p[0] for p in parts), "text": "テストの文です", "lang": "ja", "asr_agree": 0.98, "snr": 30.0,
+               "clip": 0.0, "score": 0.9, "status": "pending", "flags": [], "asr_logprob": -0.2, "no_speech": 0.01}
+        db.insert("segments", {**row, **kw})
+    for i in range(8):
+        seg(f"good{i}", [(3.0, 0.3)])
+    seg("other", [(3.0, 0.05)], score=0.5)
+    seg("noisy", [(3.0, 0.3)], snr=8.0, score=0.5)
+    seg("unsure", [(3.0, 0.3)], asr_agree=0.8, score=0.6)
+    seg("mixed", [(3.0, 0.3), (3.0, 0.05)], score=0.5)
+    seg("edited", [(3.0, 0.05)], edited=1, score=0.5)
+    seg("mine", [(3.0, 0.05)], status="approved", score=0.5)
+
+    job = client.post(f"/api/auto-review/{vid}", json={"profile": "balanced"}).json()
+    j = _wait(client, job["id"])
+    assert j["status"] == "done", j
+    st = {s["id"]: s for s in db.query("SELECT * FROM segments")}
+    assert all(st[f"good{i}"]["status"] == "approved" and "auto_approved" in st[f"good{i}"]["flags"] for i in range(8))
+    assert st["other"]["status"] == "rejected" and "auto:speaker" in st["other"]["flags"]
+    assert st["noisy"]["status"] == "rejected" and "auto:snr" in st["noisy"]["flags"]
+    assert st["unsure"]["status"] == "pending" and "auto_unsure" in st["unsure"]["flags"]
+    assert st["mixed"]["status"] == "rejected" and "auto:window" in st["mixed"]["flags"]
+    assert st["edited"]["status"] == "pending" and st["edited"]["flags"] == []      # a person edited it: untouched
+    assert st["mine"]["status"] == "approved" and st["mine"]["flags"] == []         # a person decided it: untouched
+    assert j["result"]["counts"] == {"approve": 8, "reject": 3, "unsure": 1}
+    s = client.get(f"/api/auto-review/{vid}").json()
+    assert s["unsure"] == 1 and s["spot_left"] == 8
+    listed = client.get(f"/api/segments?voice_id={vid}&flag=auto_unsure&status=pending").json()
+    assert [x["id"] for x in listed["items"]] == ["unsure"]
+
+    # the person rejects one spot check and confirms another
+    client.patch("/api/segments/good0", json={"status": "rejected"})
+    client.patch("/api/segments/good1", json={"status": "approved"})
+    s = client.get(f"/api/auto-review/{vid}").json()
+    assert (s["spot_left"], s["spot_ok"], s["spot_fail"]) == (6, 1, 1)
+
+    # undo: automatic decisions go back to pending, the person's decisions stay
+    assert client.post(f"/api/auto-review/{vid}/undo").json()["reset"] >= 10
+    st = {s["id"]: s for s in db.query("SELECT * FROM segments")}
+    assert st["good2"]["status"] == "pending" and st["good2"]["flags"] == []
+    assert st["other"]["status"] == "pending" and st["unsure"]["flags"] == []
+    assert st["good0"]["status"] == "rejected" and st["good1"]["status"] == "approved"
+    assert st["mine"]["status"] == "approved"
