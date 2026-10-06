@@ -83,6 +83,19 @@ def training_start(body: PlanIn):
         raise HTTPException(400, str(e))
 
 
+@router.post("/training/{tid}/recover")
+def training_recover(tid: str):
+    """Download the weights of a run that failed after it had already saved them."""
+    t = db.get("trainings", tid)
+    if not t:
+        raise HTTPException(404)
+    if t["status"] not in ("failed", "canceled"):
+        raise HTTPException(400, "只有失敗或取消的訓練需要救回")
+    if not training.recoverable(t):
+        raise HTTPException(404, "雲端沒有這次訓練的模型檔（訓練沒有進行到存檔）")
+    return jobs.submit("recover_model", {"training_id": tid}, "救回模型")
+
+
 @router.post("/cloud/reap")
 def cloud_reap():
     """Retry failed pod removals and list studio pods that no running training owns."""

@@ -62,19 +62,22 @@ class VoxCPM2Engine(Engine):
         return export.write(ds, out_dir, ref_fraction=frac)
 
     def cloud_files(self) -> dict[str, str]:
-        return {"setup_env.sh": remote.setup_script(self.id, "VoxCPM2", REPO, COMMIT, VERSION, "voxcpm", "VoxCPM"),
+        return {"setup_env.sh": remote.setup_script(self.id, "VoxCPM2", REPO, COMMIT, VERSION, "voxcpm", "VoxCPM",
+                                                    probe="from voxcpm.training import build_dataloader, "
+                                                          "load_audio_text_datasets"),
                 "train_entry.py": remote.read("voxcpm2_train.py"), "vs_common.py": remote.read("vs_common.py")}
 
     def schedule(self, n_train: int, params: dict) -> dict:
         """The one place the update count is decided: the quote, the stored run parameters and the cloud script
         all use it. The trainer drops the last incomplete batch and counts optimizer updates."""
         bs, accum = int(params["batch_size"]), int(params["grad_accum"])
-        batches = n_train // bs
-        if batches < accum:
-            raise ValueError(f"資料太少：這個設定至少需要 {bs * accum} 段訓練片段（目前 {n_train} 段）")
+        batches = n_train // bs  # gradient accumulation carries across epoch boundaries in the official trainer
+        if batches < 1:
+            raise ValueError(f"資料太少：至少需要 {bs} 段訓練片段（目前 {n_train} 段）")
         total = min(int(params.get("max_steps_cap", 30000)),
                     max(1, math.ceil(batches * float(params["epochs"]) / accum)))
-        return {"per_epoch": batches // accum, "total_steps": total, "epochs_effective": round(total * accum / batches, 2)}
+        return {"per_epoch": round(batches / accum, 3), "total_steps": total,
+                "epochs_effective": round(total * accum / batches, 2)}
 
     def steps(self, n_train: int, preset_id: str, params: dict | None = None) -> int:
         try:

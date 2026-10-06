@@ -32,10 +32,10 @@ def schedule(n_train: int, p: dict) -> tuple[int, int]:
     """(updates per epoch, total updates). The studio computes the same numbers for its quote and sends
     total_steps; this fallback is only used when it is missing."""
     bs, accum = int(p.get("batch_size", 2)), int(p.get("grad_accum", 8))
-    batches = n_train // bs  # the trainer drops the last incomplete batch
-    if batches < accum:
-        raise RuntimeError(f"only {n_train} training clips: need at least {bs * accum} for one update")
-    per_epoch = batches // accum
+    batches = n_train // bs  # the trainer drops the last incomplete batch; accumulation runs across epochs
+    if batches < 1:
+        raise RuntimeError(f"only {n_train} training clips: need at least {bs} for one batch")
+    per_epoch = batches / accum  # optimizer updates per pass over the data (may be fractional)
     total = int(p.get("total_steps") or max(1, math.ceil(batches * float(p.get("epochs", 2)) / accum)))
     return per_epoch, min(total, int(p.get("max_steps_cap", 30000)))
 
@@ -145,8 +145,9 @@ def main() -> None:
                 + [(d, f"model/checkpoints/{d.name}") for d in keep])
 
     try:
-        conditions = sample_all(job, base_path, mode, steps)
-        meta.update(sampling="complete", sample_conditions=conditions)
+        conditions, made, expected = sample_all(job, base_path, mode, steps)
+        meta.update(sampling="complete" if made == expected else "incomplete", sample_conditions=conditions,
+                    samples_made=made, samples_expected=expected)
     except Exception as e:  # the model is already safe in model.tar
         log(f"sampling incomplete: {e}")
         meta.update(sampling="incomplete", sampling_error=str(e)[:300])
@@ -164,6 +165,7 @@ def sample_all(job: Job, base_path: str, mode: str, steps: list[Path]) -> dict:
     from voxcpm import VoxCPM
 
     job.progress(phase="samples", step=0, total=len(steps) + 1)
+    counts = {"made": 0}
 
     def speak(model, name: str) -> None:
         d = job.out / "samples" / name
@@ -176,6 +178,7 @@ def sample_all(job: Job, base_path: str, mode: str, steps: list[Path]) -> dict:
                     wav = model.generate(text=line["text"], reference_wav_path=ref_path if kind == "ref" else None,
                                          cfg_value=2.0, inference_timesteps=10, seed=SEED)
                     sf.write(str(d / f"{i}_{kind}.wav"), wav, model.tts_model.sample_rate)
+                    counts["made"] += 1
                 except Exception as e:
                     log(f"sample {name}/{i}_{kind} failed: {e}")
 
@@ -199,8 +202,9 @@ def sample_all(job: Job, base_path: str, mode: str, steps: list[Path]) -> dict:
             speak(model, d.name)
             del model
             job.progress(phase="samples", step=i + 2, total=len(steps) + 1)
-    return {"plain": {"mode": "plain", "seed": SEED},
-            "ref": {"mode": "ref", "reference": (ref or {}).get("id"), "seed": SEED}}
+    expected = (len(steps) + 1) * len(plan.get("lines", [])) * (2 if ref_path else 1)
+    return ({"plain": {"mode": "plain", "seed": SEED},
+             "ref": {"mode": "ref", "reference": (ref or {}).get("id"), "seed": SEED}}, counts["made"], expected)
 
 
 def prune_optimizer_states(ckpt: Path, keep_newest: bool) -> None:

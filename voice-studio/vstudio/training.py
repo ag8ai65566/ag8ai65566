@@ -64,6 +64,10 @@ def start(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = Non
           params: dict | None = None, usd_h: float | None = None) -> dict:
     ds = db.get("datasets", dataset_id)
     _require_consent(ds["voice_id"])
+    voice = db.get("voices", ds["voice_id"])
+    snapshot = {"kind": voice["kind"], "consent": ds["meta"].get("consent"), "consent_doc": ds["meta"].get("consent_doc")}
+    if not datasets.consent_ok(snapshot):  # the dataset must have been built under a valid consent, too
+        raise datasets.ConsentMissing("這個資料集建立時沒有完整的同意紀錄，請重新建立資料集。")
     pl = plan(dataset_id, engine_id, preset_id, gpu, usd_h, params)
     if pl["blocked"]:
         raise ValueError(pl["blocked"])
@@ -105,6 +109,23 @@ def package_dataset(tid: str, work: Path) -> tuple[Path, dict]:
     return tar_path, cfg
 
 
+def _check_reference(tr: dict, eng) -> None:
+    """Engines that train on a reference clip fail only after renting a GPU when it is missing or unreadable."""
+    ds = db.get("datasets", tr["dataset_id"])
+    refs = ds["meta"].get("reference_items") or [{"audio": a} for a in ds["meta"].get("reference", [])]
+    if not refs:
+        if eng.needs_training_reference:
+            raise ValueError("資料集沒有 5–12 秒的參考片段，這個引擎無法訓練。請多核可一些 5 秒以上的片段後重建資料集。")
+        return
+    import soundfile as sf
+    try:
+        info = sf.info(str(Path(ds["path"]) / refs[0]["audio"]))
+    except Exception as e:
+        raise ValueError(f"參考片段讀不到：{e}")
+    if info.frames / max(1, info.samplerate) < 1.0:
+        raise ValueError("參考片段短於 1 秒")
+
+
 def _remove_pod(tid: str, pod_id: str | None) -> bool:
     """Remove the run's pod and record the outcome; a failure is left for reap() to retry."""
     if not pod_id:
@@ -136,12 +157,15 @@ def cloud_train(ctx: jobs.JobContext) -> dict:
         if tr and tr["status"] not in ("done", "failed", "canceled"):
             if tr.get("pod_id"):
                 _remove_pod(tid, tr["pod_id"])
-            elif tr.get("pod_state") == "creating":
-                try:
-                    for p in _find_pods(tid, _loc(tr)):
-                        _remove_pod(tid, p.get("id"))
-                except Exception:
-                    _set(tid, pod_state="remove_failed")
+            elif tr.get("pod_state") in ("creating", "uncertain"):
+                _reconcile_creation(tid, _loc(tr))
+            if not isinstance(e, jobs.Cancelled) and tr["status"] != "downloading" and recoverable(tr):
+                try:  # the weights were published before the failure: keep them
+                    _download_and_install(ctx, tid, partial=True,
+                                          note=f"訓練沒有正常結束（{str(e)[:120]}），但權重已經救回。")
+                    return {"message": "訓練沒有正常結束，但權重已經救回"}
+                except Exception as e2:
+                    ctx.log(f"weight recovery failed: {e2}")
             _set(tid, status="canceled" if isinstance(e, jobs.Cancelled) else "failed", finished_at=db.now())
             _save_log(tid, tr["remote_prefix"], config.DATA / "jobs" / tid, _loc(tr))
         raise
@@ -167,6 +191,8 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
         _set(tid, status="uploading")
         ctx.progress(0.01, "整理訓練資料")
         tar_path, cfg = package_dataset(tid, work)
+        _check_reference(tr, eng)  # before paying for anything
+        _require_consent(tr["voice_id"])
         runpod.put_text(f"{prefix}/config.json", json.dumps(cfg, ensure_ascii=False, indent=2), loc=loc)
         runpod.put_text(f"{prefix}/bootstrap.sh", BOOTSTRAP, loc=loc)
         for fname, text in eng.cloud_files().items():
@@ -182,7 +208,8 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
         deadline = time.time() + max_h * 3600 + 900
         _set(tid, status="starting", pod_state="creating", deadline=deadline, started_at=time.time())
         ctx.progress(0.19, "啟動雲端 GPU")
-        env = {"VS_TRAINING_ID": tid, "VS_ENGINE": eng.id, "VS_MAX_SECONDS": str(int(max_h * 3600))}
+        env = {"VS_TRAINING_ID": tid, "VS_ENGINE": eng.id, "VS_MAX_SECONDS": str(int(max_h * 3600)),
+               "VS_IMAGE": eng.image}
         hf = config.get_secret("hf_token")
         if hf:
             env["HF_TOKEN"] = hf
@@ -194,9 +221,7 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
                                     min_vcpu=preset.vcpu)
         except Exception as e:
             time.sleep(10)
-            for p in _find_pods(tid, loc):  # the request may have gone through even though we saw an error
-                _remove_pod(tid, p.get("id"))
-            _set(tid, pod_state="removed")
+            _reconcile_creation(tid, loc)  # the request may have gone through even though we saw an error
             raise RuntimeError(f"沒有租到 GPU：{str(e)[:300]}（這張卡在這個資料中心可能暫時沒貨，換一張試試）")
         pod_id = pod.get("id")
         gpu_actual = (pod.get("machine") or {}).get("gpuTypeId") or tr["gpu"]
@@ -214,10 +239,12 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
             if time.time() - last_poll < 30:
                 continue
             last_poll = time.time()
+            if time.time() > deadline:
+                raise RuntimeError("超過最長時數，已強制停止。")
             try:
-                prog = runpod.get_json(f"{prefix}/progress.json", loc) or prog
-                done = runpod.get_json(f"{prefix}/done.json", loc)
-                err = runpod.get_json(f"{prefix}/error.json", loc)
+                prog = runpod.get_json(f"{prefix}/progress.json", loc, fast=True) or prog
+                done = runpod.get_json(f"{prefix}/done.json", loc, fast=True)
+                err = runpod.get_json(f"{prefix}/error.json", loc, fast=True)
                 s3_errors = 0
             except Exception as e:  # network or storage hiccup: retry for ~10 minutes before giving up
                 s3_errors += 1
@@ -251,25 +278,71 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
     if prog.get("s_per_step"):
         _remember_speed(eng.id, tr["preset"]["id"], db.get("trainings", tid)["gpu"], float(prog["s_per_step"]))
 
-    # 4. download and register
+    # 4. download and register (also reachable on its own, to recover weights after a failure)
+    m = _download_and_install(ctx, tid, partial)
+    return {"model_id": m["id"], "message": "訓練完成，模型已下載，正在評分各檢查點"}
+
+
+def _download_and_install(ctx: jobs.JobContext, tid: str, partial: bool = False, note: str = "") -> dict:
+    """model.tar is required; samples.tar is optional and never blocks registering valid weights."""
+    tr = db.get("trainings", tid)
+    loc, prefix = _loc(tr), tr["remote_prefix"]
+    work = config.DATA / "jobs" / tid
+    work.mkdir(parents=True, exist_ok=True)
     _set(tid, status="downloading")
     tar_local = work / "model.tar"
     runpod.download(f"{prefix}/model.tar", tar_local, loc=loc,
                     progress=lambda f: ctx.progress(0.86 + 0.1 * f, f"下載模型 {f * 100:.0f}%"))
     samples_local = None
-    if runpod.exists(f"{prefix}/samples.tar", loc):
-        samples_local = runpod.download(f"{prefix}/samples.tar", work / "samples.tar", loc=loc,
-                                        progress=lambda f: ctx.progress(0.96 + 0.03 * f, "下載樣本"))
+    try:
+        if runpod.exists(f"{prefix}/samples.tar", loc):
+            samples_local = runpod.download(f"{prefix}/samples.tar", work / "samples.tar", loc=loc,
+                                            progress=lambda f: ctx.progress(0.96 + 0.03 * f, "下載樣本"))
+    except Exception as e:
+        ctx.log(f"samples download failed: {e}")
+        samples_local = None
     _save_log(tid, prefix, work, loc)
     m = install_model(tid, tar_local, samples_local)
-    note = "樣本試念沒有完成：模型可以用，但沒有檢查點比較。" if partial or samples_local is None else ""
+    sampling = (m["meta"] or {}).get("sampling")
+    if not note and (partial or samples_local is None or sampling != "complete"):
+        note = "樣本試念沒有完成：模型可以用，但檢查點比較不完整。"
     _set(tid, status="done", finished_at=db.now(), note=note)
     for name in ("dataset.tar", "model.tar", "samples.tar"):  # keep the volume small; log and config stay
         try:
             runpod.delete(f"{prefix}/{name}", loc)
         except Exception:
             pass
-    return {"model_id": m["id"], "message": "訓練完成，模型已下載，正在評分各檢查點"}
+    return m
+
+
+@jobs.handler("recover_model", queue="io")
+def recover_model(ctx: jobs.JobContext) -> dict:
+    """Download the weights of a run that ended badly but had already published model.tar."""
+    tid = ctx.params["training_id"]
+    tr = db.get("trainings", tid)
+    if not runpod.exists(f"{tr['remote_prefix']}/model.tar", _loc(tr)):
+        raise RuntimeError("雲端沒有這次訓練的模型檔（訓練沒有完成到存檔那一步）。")
+    m = _download_and_install(ctx, tid, partial=True, note="訓練沒有正常結束，但權重已經救回。")
+    return {"model_id": m["id"], "message": "已救回模型"}
+
+
+def recoverable(tr: dict) -> bool:
+    try:
+        return runpod.exists(f"{tr['remote_prefix']}/model.tar", _loc(tr))
+    except Exception:
+        return False
+
+
+def _reconcile_creation(tid: str, loc: dict) -> None:
+    """After an uncertain POST /pods: remove what RunPod shows for this run. If nothing is visible yet, or a removal
+    fails, the run stays 'uncertain' and reap() keeps looking (a pod can appear after the listing)."""
+    try:
+        found = _find_pods(tid, loc)
+    except Exception:
+        _set(tid, pod_state="uncertain")
+        return
+    ok = all(_remove_pod(tid, p.get("id")) for p in found)
+    _set(tid, pod_state="removed_found" if found and ok else "uncertain")
 
 
 def resume_interrupted() -> list[str]:
@@ -304,12 +377,30 @@ def resume_interrupted() -> list[str]:
 
 
 def reap() -> dict:
-    """The safety net outside the pod: retry removals that failed, and find studio pods with no live run."""
+    """The safety net outside the pod, run at start-up and every few minutes while the studio is open:
+    - retry removals that failed, and keep looking for pods of runs whose creation was uncertain;
+    - stop runs that are past their deadline when nothing is watching them;
+    - list studio pods (named voice-studio-<training id>) that no live run owns, removing those of finished runs."""
     removed, orphans = [], []
-    for tr in db.query("SELECT * FROM trainings WHERE pod_state IN ('remove_failed','creating','running') "
+    now = time.time()
+    for tr in db.query("SELECT * FROM trainings WHERE pod_state IN ('remove_failed','creating','uncertain','running') "
                        "AND status IN ('done','failed','canceled')"):
         if tr.get("pod_id") and _remove_pod(tr["id"], tr["pod_id"]):
             removed.append(tr["pod_id"])
+        elif not tr.get("pod_id"):
+            _reconcile_creation(tr["id"], _loc(tr))
+            # nothing has appeared for a day: the request really did not create a pod
+            if (db.get("trainings", tr["id"]) or {}).get("pod_state") == "uncertain" and \
+                    now - (tr.get("started_at") or tr["created_at"]) > 86400:
+                _set(tr["id"], pod_state="none_found")
+    for tr in db.query("SELECT * FROM trainings WHERE status IN ('starting','running','downloading') "
+                       "AND deadline IS NOT NULL AND deadline < ?", (now - 1800,)):
+        j = db.get("jobs", tr["job_id"]) if tr.get("job_id") else None
+        if j and j["status"] == "running":
+            continue  # its watcher enforces the deadline itself
+        if tr.get("pod_id"):
+            _remove_pod(tr["id"], tr["pod_id"])
+        _set(tr["id"], status="failed", finished_at=db.now(), note="超過最長時數，雲端機器已關閉。")
     try:
         pods = runpod.studio_pods()
     except Exception as e:
@@ -329,7 +420,7 @@ def reap() -> dict:
     return {"removed": removed, "orphans": orphans}
 
 
-CHECKPOINT_NAME = __import__("re").compile(r"^[\w.-]{1,80}$")
+CHECKPOINT_NAME = __import__("re").compile(r"[A-Za-z0-9_][A-Za-z0-9_.-]{0,79}")
 
 
 def install_model(tid: str, tar_local: Path, samples_tar: Path | None = None) -> dict:
@@ -347,7 +438,8 @@ def install_model(tid: str, tar_local: Path, samples_tar: Path | None = None) ->
         with tarfile.open(archive) as t:
             t.extractall(tmp, filter="data")
     emeta = json.loads((tmp / "model" / "engine.json").read_text(encoding="utf-8"))
-    bad = [c.get("name") for c in emeta.get("checkpoints", []) if not CHECKPOINT_NAME.match(str(c.get("name", "")))]
+    bad = [c.get("name") for c in emeta.get("checkpoints", [])
+           if not isinstance(c.get("name"), str) or not CHECKPOINT_NAME.fullmatch(c["name"]) or ".." in c["name"]]
     if bad:
         shutil.rmtree(tmp, ignore_errors=True)
         raise ValueError(f"模型檔裡有不合法的檢查點名稱：{bad[:3]}")

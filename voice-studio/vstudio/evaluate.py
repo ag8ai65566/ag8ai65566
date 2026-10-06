@@ -59,6 +59,8 @@ def evaluate_model(ctx: jobs.JobContext) -> dict:
     if not lines or not names:
         return {"message": "沒有可評分的樣本"}
     st = config.load_settings()
+    from . import tts
+    tts.unload()  # scoring needs the GPU for speech recognition; no TTS model should sit in memory meanwhile
     emb = speaker.Embedder()
     target = prepare.voice_centroids([m["voice_id"]]).get(m["voice_id"])
     ds = db.get("datasets", (m["meta"] or {}).get("dataset_id") or "")
@@ -107,13 +109,15 @@ def evaluate_model(ctx: jobs.JobContext) -> dict:
             ctx.progress(done / total, f"評分 {name}")
         summary = {}
         any_held_out = any(not ln.get("seen") for ln in lines)
+        expected = {i for i, ln in enumerate(lines) if not ln.get("seen") or not any_held_out}
         for kind in CONDITIONS:
             # held-out lines only; a tiny dataset without any still gets numbers, marked as seen-only
-            cs = [c for c in clips if c["kind"] == kind and (not c["seen"] or not any_held_out)]
+            cs = [c for c in clips if c["kind"] == kind and c["line"] in expected]
             if cs:
+                complete = ({c["line"] for c in cs} == expected
+                            and all(c[k] is not None and math.isfinite(c[k]) for c in cs for k in ("sim", "agree")))
                 summary[kind] = {"sim": _mean([c["sim"] for c in cs]), "agree": _mean([c["agree"] for c in cs]),
-                                 "n": len(cs), "complete": all(c["agree"] is not None for c in cs),
-                                 "seen_only": not any_held_out}
+                                 "n": len(cs), "complete": complete, "seen_only": not any_held_out}
         rows.append({"name": name, "summary": summary, "clips": clips,
                      # kept for older UI code: the "plain" numbers when there are any, else "ref"
                      "sim": (summary.get("plain") or summary.get("ref") or {}).get("sim"),
@@ -136,15 +140,16 @@ def evaluate_model(ctx: jobs.JobContext) -> dict:
         rec = max(ok, key=lambda r: r["summary"]["plain"]["sim"])["name"]
     base_plain = next((r["summary"].get("plain") for r in rows if r["name"] == "base"), None)
     rec_plain = next((r["summary"]["plain"] for r in rows if r["name"] == rec), None) if rec else None
-    improved = None
-    if base_plain and rec_plain and base_plain.get("sim") is not None:
-        improved = rec_plain["sim"] > base_plain["sim"]
+    improved = None  # unmeasured unless the base read the same lines the same way (Qwen's base can only clone)
+    if base_plain and rec_plain and base_plain.get("complete"):
+        improved = rec_plain["sim"] > base_plain["sim"] and rec_plain["agree"] >= base_plain["agree"] - 0.05
     metrics = {"checkpoints": rows, "recommended": rec, "reason": reason, "improved_over_base": improved,
                "baseline_sim": _mean(baseline), "asr": asr_available, "asr_failures": asr_failures,
                "held_out_lines": held_out, "conditions": meta.get("sample_conditions") or {},
                "evaluated_at": db.now()}
     new_meta = dict(m["meta"] or {})
-    if rec and not new_meta.get("checkpoint_chosen_by_user"):
+    # switch the model's checkpoint only when the pick is measurably better than the untrained base
+    if rec and improved is not False and not new_meta.get("checkpoint_chosen_by_user"):
         new_meta["checkpoint"] = rec
     db.update("models", m["id"], {"metrics": metrics, "meta": new_meta})
     return {"recommended": rec, "message": f"評分完成，建議使用 {rec}" if rec else f"評分完成。{reason}"}

@@ -59,6 +59,8 @@ class Engine:
     supports_tags = False       # inline bracket tags understood natively
     supports_instruct = False   # free-text style instruction
     needs_reference = False     # synthesis needs a reference clip
+    needs_training_reference = False  # the cloud training recipe needs a reference clip
+    override_keys: dict = {"epochs": (0.1, 20.0)}  # user-adjustable parameters and their allowed range
     infer_vram_gb = 0.0
     image = ""                  # container image for cloud training
     presets: list[TrainPreset] = []
@@ -78,6 +80,12 @@ class Engine:
 
     def effective_params(self, preset_id: str, overrides: dict | None, n_train: int) -> dict:
         """Preset + user overrides + derived schedule: exactly what is quoted, stored and sent to the pod."""
+        for k, v in (overrides or {}).items():
+            lo_hi = self.override_keys.get(k)
+            if lo_hi is None:
+                raise ValueError(f"不能調整的參數：{k}")
+            if not isinstance(v, (int, float)) or not (lo_hi[0] <= float(v) <= lo_hi[1]):
+                raise ValueError(f"{k} 必須在 {lo_hi[0]} 到 {lo_hi[1]} 之間")
         params = {**self.preset(preset_id).params, **(overrides or {})}
         return {**params, **self.schedule(n_train, params)}
 
@@ -154,7 +162,11 @@ class Engine:
             return None
         names = [c["name"] for c in cks]
         name = checkpoint if checkpoint in names else names[-1]
-        return Path(model_dir) / "checkpoints" / name
+        root = (Path(model_dir) / "checkpoints").resolve()
+        target = (root / str(name)).resolve()
+        if target.parent != root:  # a crafted engine.json must not point outside the model folder
+            raise ValueError(f"不合法的檢查點名稱：{name!r}")
+        return target
 
     # --- tags -----------------------------------------------------------------------------------------------
     def render_tags(self, text_with_tags: str) -> tuple[str, str]:

@@ -13,7 +13,7 @@ set -euo pipefail
 ENV="${{VS_ROOT:-/workspace/vs}}/envs/{engine}"
 SRC="${{VS_ROOT:-/workspace/vs}}/src/{engine}"
 # the stamp names the exact recipe (this script), the image's Python/torch build and the upstream commit
-STAMP="$ENV/.ready-{recipe}-$(python3 -c 'import sys,torch;print(f"py{{sys.version_info[0]}}{{sys.version_info[1]}}-torch{{torch.__version__}}")' 2>/dev/null)"
+STAMP="$ENV/.ready-{recipe}-$(python3 -c 'import sys,torch;print(f"py{{sys.version_info[0]}}{{sys.version_info[1]}}-torch{{torch.__version__}}")' 2>/dev/null)-$(printf '%s' "${{VS_IMAGE:-}}" | md5sum | cut -c1-8)"
 
 # system packages live on the container disk, so they are checked on every run (fast when present)
 if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v sox >/dev/null 2>&1; then
@@ -44,6 +44,7 @@ pip install -q -c "$ENV/constraints.txt" -e "$SRC" {extra_pip}
 python - <<'PY'
 import numpy as np, soundfile as sf, librosa
 from {module} import {cls}
+{probe}
 sf.write("/tmp/vs_probe.wav", np.zeros(16000, dtype="float32"), 16000)
 y, sr = librosa.load("/tmp/vs_probe.wav", sr=24000)
 assert len(y) == 24000, len(y)
@@ -54,9 +55,10 @@ touch "$STAMP"
 
 
 def setup_script(engine: str, name: str, repo: str, commit: str, version: str, module: str, cls: str,
-                 extra_pip: str = "", post: str = "") -> str:
+                 extra_pip: str = "", post: str = "", probe: str = "") -> str:
+    """probe: extra Python run in the smoke test, e.g. importing what the trainer imports."""
     fields = dict(engine=engine, name=name, repo=repo, commit=commit, version=version, module=module, cls=cls,
-                  extra_pip=extra_pip, post=post)
+                  extra_pip=extra_pip, post=post, probe=probe)
     recipe = hashlib.sha256(SETUP_TEMPLATE.format(recipe="", **fields).encode()).hexdigest()[:12]
     return SETUP_TEMPLATE.format(recipe=recipe, **fields)
 

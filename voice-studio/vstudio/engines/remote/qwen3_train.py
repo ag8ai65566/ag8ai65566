@@ -126,8 +126,9 @@ def main() -> None:
                 + [(d, f"model/checkpoints/{d.name}") for d in keep])
 
     try:
-        sample_all(job, base_path, ckpts, plan, ref24, ref.get("text") or "", attn)
-        meta.update(sampling="complete", sample_conditions={
+        made, expected = sample_all(job, base_path, ckpts, plan, ref24, ref.get("text") or "", attn)
+        meta.update(sampling="complete" if made == expected else "incomplete", samples_made=made,
+                    samples_expected=expected, sample_conditions={
             "plain": {"mode": "plain", "language": "Auto", "seed": SEED},
             "ref": {"mode": "hifi" if ref.get("text") else "ref", "reference": ref.get("id"), "seed": SEED,
                     "note": "base model only (zero-shot clone)"}})
@@ -147,10 +148,13 @@ def sample_all(job: Job, base_path: str, ckpts: list[Path], plan: dict, ref24: P
     job.progress(phase="samples", step=0, total=len(ckpts) + 1)
     lines = plan.get("lines", [])
 
+    counts = {"made": 0}
+
     def write(name: str, fname: str, wavs, sr) -> None:
         d = job.out / "samples" / name
         d.mkdir(parents=True, exist_ok=True)
         sf.write(str(d / fname), wavs[0], sr)
+        counts["made"] += 1
 
     # the untrained base can only clone from a reference, so its clips are filed as "ref", not "plain"
     base = Qwen3TTSModel.from_pretrained(base_path, device_map="cuda:0", dtype=torch.bfloat16,
@@ -179,6 +183,7 @@ def sample_all(job: Job, base_path: str, ckpts: list[Path], plan: dict, ref24: P
         del m
         torch.cuda.empty_cache()
         job.progress(phase="samples", step=k + 2, total=len(ckpts) + 1)
+    return counts["made"], (len(ckpts) + 1) * len(lines)
 
 
 if __name__ == "__main__":

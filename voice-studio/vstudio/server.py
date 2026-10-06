@@ -36,9 +36,17 @@ def create_app() -> FastAPI:
             training.resume_interrupted()
         except Exception:  # never block start-up on the cloud
             pass
-        import threading  # retry failed pod removals and look for orphaned pods, without delaying start-up
-        threading.Thread(target=lambda: _quiet(training.reap), name="reap", daemon=True).start()
+        import threading  # retry failed pod removals and look for orphaned pods, every few minutes
+
+        def reaper():
+            while not stop.is_set():
+                if config.get_secret("runpod_api_key"):
+                    _quiet(training.reap)
+                stop.wait(300)
+        stop = threading.Event()
+        threading.Thread(target=reaper, name="reap", daemon=True).start()
         yield
+        stop.set()
         jobs.stop()
 
     app = FastAPI(title="Voice Studio", version=__version__, lifespan=lifespan)
@@ -69,11 +77,13 @@ def create_app() -> FastAPI:
             return JSONResponse({"detail": "不允許的主機名稱"}, status_code=403)
         origin = request.headers.get("origin")
         if origin and request.method not in ("GET", "HEAD", "OPTIONS"):
-            if _hostname(origin.split("://", 1)[-1]) != host:
+            # same origin = same scheme, host and port as the page this server served
+            mine = f"{request.url.scheme}://{request.headers.get('host', '').lower()}"
+            if origin.lower().rstrip("/") != mine:
                 return JSONResponse({"detail": "不允許跨網站的請求"}, status_code=403)
         if password and is_api and request.url.path != "/api/health":
             given = request.headers.get("x-studio-password") or unquote(request.cookies.get("studio_pw") or "")
-            if not _secrets.compare_digest(given, password):
+            if not _secrets.compare_digest(given.encode("utf-8"), password.encode("utf-8")):
                 return JSONResponse({"detail": "需要密碼"}, status_code=401)
         return await call_next(request)
 
@@ -103,6 +113,8 @@ def main() -> None:
     import uvicorn
     st = config.load_settings()
     host, port = os.environ.get("VSTUDIO_HOST", st["host"]), int(os.environ.get("VSTUDIO_PORT", st["port"]))
+    if host not in ("127.0.0.1", "localhost", "::1") and not os.environ.get("VSTUDIO_PASSWORD"):
+        raise SystemExit("VSTUDIO_HOST 開放給網路時必須同時設定 VSTUDIO_PASSWORD（見教學〈安裝與啟動〉）。")
     if os.environ.get("VSTUDIO_NO_BROWSER") != "1":
         import threading
         threading.Timer(1.5, lambda: webbrowser.open(f"http://127.0.0.1:{port}")).start()

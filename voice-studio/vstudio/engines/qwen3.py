@@ -47,6 +47,7 @@ class Qwen3Engine(Engine):
     license_note = "程式與權重皆為 Apache-2.0，個人與商業使用都可以。"
     languages = tuple(LANG)
     supports_instruct = True
+    needs_training_reference = True  # the official SFT conditions every line on one reference clip
     infer_vram_gb = 8
     image = IMAGE
     presets = [
@@ -68,7 +69,8 @@ class Qwen3Engine(Engine):
                 'python -c "import flash_attn, flash_attn_2_cuda" 2>/dev/null || '
                 '{ echo "[vs] FlashAttention unusable on this image; removing it (SDPA will be used)"; '
                 'pip uninstall -q -y flash-attn || true; }')
-        setup = remote.setup_script(self.id, "Qwen3-TTS", REPO, COMMIT, VERSION, "qwen_tts", "Qwen3TTSModel", post=post)
+        setup = remote.setup_script(self.id, "Qwen3-TTS", REPO, COMMIT, VERSION, "qwen_tts", "Qwen3TTSModel", post=post,
+                                    probe="from qwen_tts.inference.qwen3_tts_model import Qwen3TTSModel as _M")
         return {"setup_env.sh": setup,
                 "train_entry.py": remote.read("qwen3_train.py"), "vs_common.py": remote.read("vs_common.py")}
 

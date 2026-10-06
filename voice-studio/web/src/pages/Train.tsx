@@ -178,6 +178,7 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
 function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
   const qc = useQueryClient();
   const cancel = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/cancel`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
+  const recover = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/recover`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
   const [label, tone] = STATUS[t.status] ?? [t.status, "zinc"];
   const active = !["done", "failed", "canceled"].includes(t.status);
   const p = t.progress ?? {};
@@ -194,6 +195,9 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
           <Button size="sm" variant="ghost" onClick={onLog}><FileText className="size-3.5" />紀錄</Button>
           {active && <Button size="sm" variant="danger" loading={cancel.isPending} onClick={() => confirm("停止這次訓練並關閉雲端機器？已經花的費用不會退回。") && cancel.mutate()}><Square className="size-3.5" />停止</Button>}
           {model && <Link to={`/models?id=${model.id}`}><Button size="sm">試聽模型</Button></Link>}
+          {(t.status === "failed" || t.status === "canceled") && !model && (
+            <Button size="sm" variant="secondary" loading={recover.isPending} title="訓練如果已經進行到存檔，可以把權重下載回來"
+              onClick={() => recover.mutate()}>救回模型</Button>)}
         </div>
       </div>
       {active && t.job && (
@@ -213,6 +217,7 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
         {t.status === "failed" && t.job?.message && <span className="text-red-600">{t.job.message}</span>}
       </div>
       {t.note && <p className="mt-2 text-xs text-amber-700 dark:text-amber-300">{t.note}</p>}
+      {recover.error && <ErrorText error={recover.error} />}
       {t.pod_state === "remove_failed" && (
         <p className="mt-2 flex items-center gap-2 text-xs font-medium text-red-600"><AlertTriangle className="size-3.5" />
           雲端機器可能還在計費。平台會在下次開啟時自動再刪一次；也可以馬上到 runpod.io → Pods 手動刪除。</p>

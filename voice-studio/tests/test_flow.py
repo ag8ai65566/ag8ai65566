@@ -234,7 +234,14 @@ def test_real_engine_cloud_files_render(client, tmp_path):
     eff = vox.effective_params("lora", {"epochs": 1}, 3600)
     assert eff["total_steps"] == 225 and eff["epochs_effective"] == 1.0
     with pytest.raises(ValueError):
-        vox.effective_params("lora", None, 10)  # fewer clips than one optimizer update
+        vox.effective_params("lora", None, 1)  # not even one batch
+    small = vox.effective_params("lora", None, 18)  # 9 batches: accumulation carries across epochs
+    assert small["total_steps"] == 3 and small["epochs_effective"] == 2.67
+    with pytest.raises(ValueError):
+        vox.effective_params("lora", {"lr": 1}, 3600)  # not user-adjustable
+    with pytest.raises(ValueError):
+        vox.effective_params("lora", {"epochs": 100}, 3600)  # out of range
+    assert engines.get("qwen3").effective_params("sft", {"epochs": 1.6}, 100)["epochs"] == 2
     assert vox.estimate(10, "lora", 1.09, n_train=3600, s_per_step=20)["basis"] == "measured"
 
 
@@ -268,6 +275,8 @@ def test_guard_blocks_foreign_hosts_and_origins(client):
     assert c.get("/api/voices", headers={"host": "evil.example"}).status_code == 403  # DNS rebinding
     r = c.post("/api/voices", json={"name": "x", "kind": "self"}, headers={"origin": "http://evil.example"})
     assert r.status_code == 403  # another website's page
+    r = c.post("/api/voices", json={"name": "x", "kind": "self"}, headers={"origin": "http://testserver:9999"})
+    assert r.status_code == 403  # same host, different port = different origin
     r = c.post("/api/voices", json={"name": "x", "kind": "self", "languages": []},
                headers={"origin": "http://testserver"})
     assert r.status_code == 200
@@ -288,3 +297,31 @@ def test_password_mode(tmp_path, monkeypatch):
         assert c.get("/api/health").status_code == 200
     import vstudio.db as db
     db.reset_connection()
+
+
+def test_migration_keeps_duplicate_models(tmp_path, monkeypatch):
+    """An older database with two models for one training must still open (and keep both models)."""
+    import sqlite3
+    monkeypatch.setenv("VSTUDIO_DATA", str(tmp_path / "data"))
+    (tmp_path / "data").mkdir()
+    for m in [m for m in list(sys.modules) if m.startswith("vstudio")]:
+        del sys.modules[m]
+    import vstudio.db as db
+    raw = sqlite3.connect(tmp_path / "data" / "studio.db")
+    raw.executescript(db.SCHEMA)
+    for i in range(2):
+        raw.execute("INSERT INTO models (id, voice_id, engine, name, training_id, path, meta, metrics, created_at) "
+                    "VALUES (?, 'v', 'mock', 'm', 'tr1', '/x', '{}', '{}', ?)", (f"m{i}", i))
+    raw.commit()
+    raw.close()
+    c = db.connect()
+    rows = c.execute("SELECT id, training_id, meta FROM models ORDER BY created_at").fetchall()
+    assert [r[1] for r in rows] == ["tr1", None] and "duplicate_of_training" in rows[1][2]
+    db.reset_connection()
+
+
+def test_checkpoint_paths_stay_inside_model(tmp_path):
+    from vstudio.engines.base import Engine
+    meta = {"checkpoints": [{"name": "../../etc", "weights": True}]}
+    with pytest.raises(ValueError):
+        Engine.checkpoint_dir(tmp_path, meta, None)

@@ -148,7 +148,8 @@ def gpu_catalog(datacenter: str | None = None) -> list[dict]:
 
 # --- S3 (network volume) ----------------------------------------------------------------------------------------
 
-def s3(loc: dict | None = None):
+def s3(loc: dict | None = None, fast: bool = False):
+    """fast=True (status polling) gives up quickly, so the caller's own retry and deadline logic stays in charge."""
     import boto3
     from botocore.config import Config
     ak, sk = config.get_secret("runpod_s3_access_key"), config.get_secret("runpod_s3_secret_key")
@@ -157,8 +158,10 @@ def s3(loc: dict | None = None):
     dc = ((loc or {}).get("datacenter") or config.load_settings().get("runpod_datacenter") or "").strip()
     return boto3.client("s3", aws_access_key_id=ak, aws_secret_access_key=sk, region_name=dc.upper(),
                         endpoint_url=S3_FMT.format(dc=dc.lower()),
-                        config=Config(signature_version="s3v4", retries={"max_attempts": 8, "mode": "adaptive"},
-                                      s3={"addressing_style": "path"}, connect_timeout=20, read_timeout=120))
+                        config=Config(signature_version="s3v4",
+                                      retries={"max_attempts": 2 if fast else 8, "mode": "adaptive"},
+                                      s3={"addressing_style": "path"}, connect_timeout=10 if fast else 20,
+                                      read_timeout=20 if fast else 120))
 
 
 def bucket(loc: dict | None = None) -> str:
@@ -188,25 +191,22 @@ def put_text(key: str, text: str, loc: dict | None = None) -> None:
     s3(loc).put_object(Bucket=bucket(loc), Key=key, Body=text.encode("utf-8"))
 
 
-def get_json(key: str, loc: dict | None = None) -> dict | None:
-    """None only when the object does not exist; network or permission errors propagate to the caller's retry."""
+def get_json(key: str, loc: dict | None = None, fast: bool = False) -> dict | None:
+    """None only when the object does not exist; network, permission and parse errors propagate to the caller's
+    retry (a file caught mid-write reads as an error, and the next poll sees it whole)."""
     try:
-        obj = s3(loc).get_object(Bucket=bucket(loc), Key=key)
+        obj = s3(loc, fast).get_object(Bucket=bucket(loc), Key=key)
     except Exception as e:
         if _missing(e):
             return None
         raise
     with obj["Body"] as body:
-        raw = body.read().decode("utf-8")
-    try:
-        return json.loads(raw)
-    except ValueError:  # caught mid-write; treat as not there yet
-        return None
+        return json.loads(body.read().decode("utf-8"))
 
 
-def exists(key: str, loc: dict | None = None) -> bool:
+def exists(key: str, loc: dict | None = None, fast: bool = False) -> bool:
     try:
-        s3(loc).head_object(Bucket=bucket(loc), Key=key)
+        s3(loc, fast).head_object(Bucket=bucket(loc), Key=key)
         return True
     except Exception as e:
         if _missing(e):

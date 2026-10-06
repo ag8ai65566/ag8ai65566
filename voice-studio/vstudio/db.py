@@ -91,7 +91,20 @@ def _migrate(c: sqlite3.Connection) -> None:
         cols = {r[1] for r in c.execute(f"PRAGMA table_info({table})")}
         if col not in cols:
             c.execute(f"ALTER TABLE {table} ADD COLUMN {col} {decl}")
-    c.execute("CREATE UNIQUE INDEX IF NOT EXISTS models_training ON models(training_id) WHERE training_id IS NOT NULL")
+    if not c.execute("SELECT 1 FROM sqlite_master WHERE type='index' AND name='models_training'").fetchone():
+        # older databases may hold two models for one training (the bug this index prevents): keep the first as
+        # the training's model, keep the others as models too, recording the link in their meta instead
+        dups = c.execute("SELECT id, training_id, meta FROM models WHERE training_id IN (SELECT training_id FROM models "
+                         "WHERE training_id IS NOT NULL GROUP BY training_id HAVING COUNT(*) > 1) "
+                         "ORDER BY training_id, created_at").fetchall()
+        seen: set = set()
+        for mid, tid, meta in dups:
+            if tid in seen:
+                m = json.loads(meta or "{}")
+                m["duplicate_of_training"] = tid
+                c.execute("UPDATE models SET training_id=NULL, meta=? WHERE id=?", (json.dumps(m, ensure_ascii=False), mid))
+            seen.add(tid)
+        c.execute("CREATE UNIQUE INDEX models_training ON models(training_id) WHERE training_id IS NOT NULL")
     c.commit()
 
 
