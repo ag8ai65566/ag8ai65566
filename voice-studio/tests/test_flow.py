@@ -236,3 +236,12 @@ def test_voxcpm_export_manifest(client, tmp_path):
     assert all(r["audio"].startswith("wavs/") for r in rows)
     if len(rows) > 1:
         assert info["n_ref"] == len(rows) and all(r["ref_audio"] != r["audio"] for r in rows)
+
+
+def test_lexicon_longest_first(client):
+    from vstudio import config, tts
+    config.save_settings({"lexicon": [{"from": "推し", "to": "おし", "lang": "ja"},
+                                      {"from": "推しの子", "to": "おしのこ", "lang": "ja"},
+                                      {"from": "AI", "to": "エーアイ", "lang": "ja"}]})
+    assert tts.apply_lexicon("推しの子と推し", "ja") == "おしのことおし"
+    assert tts.apply_lexicon("AI voice", "en") == "AI voice"

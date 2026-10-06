@@ -38,6 +38,8 @@ DEFAULTS = {
     # engine
     "default_engine": "voxcpm2",
     "speed": {},          # measured seconds per training step, per engine:preset:gpu (filled in after runs)
+    # pronunciation dictionary applied before synthesis: [{"from": "推し", "to": "おし", "lang": "ja"}]
+    "lexicon": [],
 }
 
 _lock = threading.Lock()

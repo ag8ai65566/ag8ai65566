@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FileCheck2, Plus, ShieldAlert, ShieldCheck, Trash2, Upload, UserRound } from "lucide-react";
-import { api, LANGS, type Dataset, type Model, type Voice } from "../api";
+import { api, fmtMin, LANGS, type Dataset, type Model, type Voice } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader } from "../ui";
 
 const KIND: Record<string, string> = { self: "我自己", other: "其他人（需簽同意書）", designed: "原創設計聲音" };
@@ -18,7 +18,7 @@ export default function Voices() {
     mutationFn: () => api.post<Voice>("/api/voices", form),
     onSuccess: (v) => { qc.invalidateQueries({ queryKey: ["voices"] }); setCreating(false); nav(`/voices/${v.id}`); },
   });
-  const current = voices.data?.find((v) => v.id === id);
+  const current = voices.data?.find((v) => v.id === id) ?? (id ? undefined : voices.data?.[0]);
   return (
     <div>
       <PageHeader title="聲音與同意"
@@ -29,11 +29,11 @@ export default function Voices() {
           {voices.data?.length === 0 && <Empty icon={<UserRound className="size-8" />} title="還沒有聲音">按「新增聲音」開始。</Empty>}
           {voices.data?.map((v) => (
             <Link key={v.id} to={`/voices/${v.id}`}
-              className={`card flex items-center gap-3 p-3 transition hover:border-brand-300 ${v.id === id ? "border-brand-500 ring-2 ring-brand-500/20" : ""}`}>
+              className={`card flex items-center gap-3 p-3 transition hover:border-brand-300 ${v.id === current?.id ? "border-brand-500 ring-2 ring-brand-500/20" : ""}`}>
               <div className="flex size-9 items-center justify-center rounded-full bg-brand-100 font-semibold text-brand-700 dark:bg-brand-900/40 dark:text-brand-200">{v.name.slice(0, 1)}</div>
               <div className="min-w-0 flex-1">
                 <div className="truncate font-medium">{v.name}</div>
-                <div className="text-xs text-zinc-500">已核可 {(v.stats.approved?.minutes ?? 0).toFixed(0)} 分 · 待檢查 {(v.stats.pending?.minutes ?? 0).toFixed(0)} 分</div>
+                <div className="text-xs text-zinc-500">已核可 {fmtMin(v.stats.approved?.minutes ?? 0)} · 待檢查 {fmtMin(v.stats.pending?.minutes ?? 0)}</div>
               </div>
               {v.consent_ok ? <ShieldCheck className="size-4 text-emerald-500" /> : <ShieldAlert className="size-4 text-amber-500" />}
             </Link>

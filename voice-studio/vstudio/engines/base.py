@@ -30,6 +30,15 @@ class TrainPreset:
 
 MODES = {"plain": "只用模型", "ref": "參考音色", "hifi": "完整複製"}
 
+# ElevenLabs v3/v4 sound tags → delivery descriptions ("" drops a tag that has no spoken equivalent)
+TAG_STYLE = {
+    "laughs": "with light laughter", "laughing": "with light laughter", "chuckles": "with a soft chuckle",
+    "giggles": "giggling", "sighs": "with a sigh", "exhales": "with a slow exhale", "whispers": "whispering",
+    "whispering": "whispering", "shouts": "shouting", "shouting": "shouting", "yelling": "shouting",
+    "crying": "tearful", "sobbing": "tearful", "sniffles": "tearful", "gasps": "with a gasp",
+    "clears throat": "", "pause": "", "short pause": "", "long pause": "",
+}
+
 
 @dataclass
 class Synthesis:
@@ -136,11 +145,13 @@ class Engine:
 
     # --- tags -----------------------------------------------------------------------------------------------
     def render_tags(self, text_with_tags: str) -> tuple[str, str]:
-        """Return (text for the engine, style instruction). Default: strip tags into a style instruction."""
+        """Return (text for the engine, style instruction). Default: strip tags into a style instruction.
+        ElevenLabs-style sound tags from the novel-lab sheets ([laughs], [sighs]…) become delivery descriptions,
+        because instruction-following engines describe manner rather than insert sound effects."""
         import re
-        tags = re.findall(r"\[([^\[\]]+)\]", text_with_tags)
+        tags = [t.strip() for group in re.findall(r"\[([^\[\]]+)\]", text_with_tags) for t in group.split(",")]
         text = re.sub(r"\s*\[[^\[\]]+\]\s*", " ", text_with_tags).strip()
-        style = ", ".join(dict.fromkeys(t.strip() for t in tags))
+        style = ", ".join(dict.fromkeys(TAG_STYLE.get(t.lower(), t) for t in tags if t and TAG_STYLE.get(t.lower(), t)))
         return text, style
 
     def info(self) -> dict:

@@ -69,6 +69,16 @@ def reference(m: dict, ref_id: str | None) -> dict | None:
     return {"id": r["id"], "path": Path(m["path"]) / r["file"], "text": r.get("text", ""), "lang": r.get("lang", "")}
 
 
+def apply_lexicon(text: str, lang: str | None) -> str:
+    """Replace words with how they should be read (names, readings the engine gets wrong). Longest entries first,
+    so 「推しの子」 wins over 「推し」. The original text is kept for display and for the ASR check."""
+    entries = [e for e in (config.load_settings().get("lexicon") or [])
+               if e.get("from") and e.get("to") and (not e.get("lang") or not lang or e["lang"] == lang)]
+    for e in sorted(entries, key=lambda e: -len(e["from"])):
+        text = text.replace(e["from"], e["to"])
+    return text
+
+
 def _screen(y: np.ndarray, sr: int, text: str, lang: str | None) -> dict:
     """Transcribe a take and compare it with the requested text (catches skipped, repeated or garbled words)."""
     try:
@@ -101,8 +111,8 @@ def generate(model_id: str, text: str, language: str | None = None, style: str =
     for k in range(max(1, min(8, takes))):
         s = base_seed + k
         with jobs.GPU_LOCK:
-            syn = eng.synthesize(h, text_engine, language=lang, style=full_style, mode=mode, reference=ref, seed=s,
-                                 **(extra or {}))
+            syn = eng.synthesize(h, apply_lexicon(text_engine, lang), language=lang, style=full_style, mode=mode,
+                                 reference=ref, seed=s, **(extra or {}))
         oid = db.new_id("out")
         path = audio.save(config.DATA / "outputs" / f"{oid}.wav", syn.audio, syn.sr,
                           synthetic={"engine": eng.id, "model": model_id, "voice": m["voice_id"]})

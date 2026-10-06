@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { CheckCircle2, Cloud, Download, FlaskConical, KeyRound, Lock, Server, Shield, SlidersHorizontal } from "lucide-react";
+import { BookA, CheckCircle2, Cloud, Download, FlaskConical, KeyRound, Lock, Plus, Server, Shield, SlidersHorizontal, Trash2 } from "lucide-react";
 import { api, type EngineInfo, type Job } from "../api";
 import { Badge, Button, Card, ErrorText, Field, PageHeader, Progress } from "../ui";
 
@@ -17,6 +17,7 @@ export default function Settings() {
       <PageHeader title="設定" subtitle="金鑰只存在這台電腦的 Windows 認證管理員裡，不會寫進檔案、紀錄或傳給任何人（只用來呼叫 RunPod）。" />
       <CloudSettings />
       <Engines />
+      <Lexicon />
       <DataSettings />
       <Extras />
     </div>
@@ -199,5 +200,38 @@ function Extras() {
         </ul>
       </Card>
     </div>
+  );
+}
+
+type LexEntry = { from: string; to: string; lang: string };
+
+function Lexicon() {
+  const qc = useQueryClient();
+  const st = useSettings();
+  const [rows, setRows] = useState<LexEntry[]>([]);
+  useEffect(() => { if (st.data) setRows((st.data.settings.lexicon as LexEntry[]) ?? []); }, [st.data]);
+  const save = useMutation({ mutationFn: (lexicon: LexEntry[]) => api.put("/api/settings", { lexicon }), onSuccess: () => qc.invalidateQueries({ queryKey: ["settings"] }) });
+  const set = (i: number, patch: Partial<LexEntry>) => setRows(rows.map((r, j) => (j === i ? { ...r, ...patch } : r)));
+  return (
+    <Card title={<span id="lexicon" className="flex items-center gap-2"><BookA className="size-4" />讀音字典</span>}>
+      <p className="mb-4 text-sm text-zinc-500">模型念錯的人名、專有名詞、多音字，在這裡寫上正確念法（日文寫平假名或片假名最穩）。合成前會自動替換；畫面上和檢查漏字時仍然用你原本寫的字。</p>
+      <div className="space-y-2">
+        {rows.map((r, i) => (
+          <div key={i} className="flex gap-2">
+            <input className="input" placeholder="原本的字，例如 推し" value={r.from} onChange={(e) => set(i, { from: e.target.value })} />
+            <input className="input" placeholder="念法，例如 おし" value={r.to} onChange={(e) => set(i, { to: e.target.value })} />
+            <select className="input w-28" value={r.lang} onChange={(e) => set(i, { lang: e.target.value })}>
+              <option value="">所有語言</option><option value="ja">日文</option><option value="en">英文</option>
+            </select>
+            <Button variant="ghost" onClick={() => setRows(rows.filter((_, j) => j !== i))}><Trash2 className="size-4" /></Button>
+          </div>
+        ))}
+      </div>
+      <div className="mt-3 flex gap-2">
+        <Button variant="secondary" size="sm" onClick={() => setRows([...rows, { from: "", to: "", lang: "ja" }])}><Plus className="size-3.5" />新增一筆</Button>
+        <Button size="sm" onClick={() => save.mutate(rows.filter((r) => r.from.trim() && r.to.trim()))} loading={save.isPending}>儲存</Button>
+        {save.isSuccess && <span className="self-center text-sm text-emerald-600">已儲存</span>}
+      </div>
+    </Card>
   );
 }
