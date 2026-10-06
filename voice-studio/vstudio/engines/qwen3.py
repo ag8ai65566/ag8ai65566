@@ -72,6 +72,14 @@ class Qwen3Engine(Engine):
         return {"setup_env.sh": setup,
                 "train_entry.py": remote.read("qwen3_train.py"), "vs_common.py": remote.read("vs_common.py")}
 
+    def schedule(self, n_train: int, params: dict) -> dict:
+        """The official trainer saves one checkpoint per whole epoch, so epochs are whole numbers."""
+        epochs = max(1, round(float(params["epochs"])))
+        if n_train < int(params["batch_size"]):
+            raise ValueError(f"資料太少：至少需要 {params['batch_size']} 段訓練片段")
+        return {"epochs": epochs, "total_steps": -(-n_train // int(params["batch_size"])) * epochs,
+                "epochs_effective": float(epochs)}
+
     def steps(self, n_train: int, preset_id: str, params: dict | None = None) -> int:
         p = params or self.preset(preset_id).params
         return -(-n_train // int(p["batch_size"])) * int(p["epochs"])

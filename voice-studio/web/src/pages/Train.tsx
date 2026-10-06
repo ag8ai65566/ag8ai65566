@@ -55,24 +55,26 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
   const [presetId, setPresetId] = useState("");
   const [gpu, setGpu] = useState("");
   const [name, setName] = useState("");
+  const [epochs, setEpochs] = useState<string>("");
   const [ack, setAck] = useState(false);
   const engine = engines.data?.find((e) => e.id === engineId);
   const preset = engine?.presets.find((p) => p.id === presetId) ?? engine?.presets[0];
   useEffect(() => { if (!dsId && datasets.data?.length) setDsId(datasets.data[0].id); }, [datasets.data, dsId]);
   useEffect(() => { setPresetId(engine?.presets.find((p) => p.recommended)?.id ?? engine?.presets[0]?.id ?? ""); }, [engineId, engine]);
-  useEffect(() => { setGpu(preset?.gpu[0] ?? ""); setAck(false); }, [preset?.id, engineId]);
+  useEffect(() => { setGpu(preset?.gpu[0] ?? ""); setAck(false); setEpochs(""); }, [preset?.id, engineId]);
+  const overrides = epochs && Number(epochs) > 0 ? { epochs: Number(epochs) } : null;
   const offers = useMemo(() => {
     const live = new Map((gpus.data ?? []).map((g) => [g.id, g]));
     return (preset?.gpu ?? []).map((id) => live.get(id) ?? { id, label: id.replace("NVIDIA ", ""), vram: 0, usd_h: null, availability: null });
   }, [gpus.data, preset]);
   const offer = offers.find((o) => o.id === gpu);
   const plan = useQuery({
-    queryKey: ["plan", dsId, engineId, preset?.id, gpu, offer?.usd_h],
-    queryFn: () => api.post<Plan>("/api/training/plan", { dataset_id: dsId, engine: engineId, preset: preset!.id, gpu, usd_h: offer?.usd_h ?? null }),
+    queryKey: ["plan", dsId, engineId, preset?.id, gpu, offer?.usd_h, epochs],
+    queryFn: () => api.post<Plan>("/api/training/plan", { dataset_id: dsId, engine: engineId, preset: preset!.id, gpu, usd_h: offer?.usd_h ?? null, params: overrides }),
     enabled: !!dsId && !!preset && !!gpu,
   });
   const start = useMutation({
-    mutationFn: () => api.post<Training>("/api/training", { dataset_id: dsId, engine: engineId, preset: preset!.id, gpu, name, usd_h: offer?.usd_h ?? null }),
+    mutationFn: () => api.post<Training>("/api/training", { dataset_id: dsId, engine: engineId, preset: preset!.id, gpu, name, usd_h: offer?.usd_h ?? null, params: overrides }),
     onSuccess: () => { qc.invalidateQueries({ queryKey: ["trainings"] }); setAck(false); },
   });
   const vname = (id: string) => voices.data?.find((v) => v.id === id)?.name ?? "?";
@@ -130,6 +132,18 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
             </div>
           </Field>
           <Field label="模型名稱（選填）"><input className="input" value={name} onChange={(e) => setName(e.target.value)} placeholder="例如：我的聲音 v1" /></Field>
+          {preset?.params.epochs != null && (
+            <details className="rounded-lg border border-zinc-200 px-3 py-2 text-sm dark:border-zinc-800">
+              <summary className="cursor-pointer text-zinc-600 dark:text-zinc-300">進階設定</summary>
+              <div className="mt-3">
+                <Field label={`epoch 數（預設 ${String(preset.params.epochs)}）`}
+                  hint="整份資料要看幾遍。官方建議單一說話者 1–3 遍就夠，太多容易「背答案」。途中會存好幾個檢查點，之後在模型頁比較。">
+                  <input className="input w-32" type="number" min={0.25} max={10} step={0.25} value={epochs}
+                    placeholder={String(preset.params.epochs)} onChange={(e) => setEpochs(e.target.value)} />
+                </Field>
+              </div>
+            </details>
+          )}
           {plan.data && (
             <div className="rounded-xl bg-zinc-50 p-4 text-sm dark:bg-zinc-800/50">
               <div className="grid grid-cols-2 gap-3">
