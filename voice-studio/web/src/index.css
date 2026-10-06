@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", "Noto Sans TC", "Noto Sans JP", "Microsoft JhengHei", system-ui, sans-serif;
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-900: #4c1d95;
+}
+
+html, body, #root { height: 100%; }
+body { @apply bg-zinc-50 text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100; }
+::selection { @apply bg-brand-200 dark:bg-brand-700; }
+
+@layer components {
+  .card { @apply rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900; }
+  .input { @apply w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 dark:border-zinc-700 dark:bg-zinc-950; }
+  .label { @apply mb-1 block text-xs font-medium text-zinc-500 dark:text-zinc-400; }
+  .kbd { @apply rounded border border-zinc-300 bg-zinc-100 px-1.5 py-0.5 font-mono text-[11px] dark:border-zinc-700 dark:bg-zinc-800; }
+  .prose-guide h1 { @apply mb-4 text-2xl font-bold; }
+  .prose-guide h2 { @apply mt-8 mb-3 text-xl font-semibold; }
+  .prose-guide h3 { @apply mt-6 mb-2 text-lg font-semibold; }
+  .prose-guide p, .prose-guide li { @apply leading-7 text-zinc-700 dark:text-zinc-300; }
+  .prose-guide ul { @apply my-3 list-disc pl-6; }
+  .prose-guide ol { @apply my-3 list-decimal pl-6; }
+  .prose-guide code { @apply rounded bg-zinc-100 px-1 py-0.5 text-[13px] dark:bg-zinc-800; }
+  .prose-guide pre { @apply my-3 overflow-x-auto rounded-xl bg-zinc-900 p-4 text-sm text-zinc-100; }
+  .prose-guide pre code { @apply bg-transparent p-0; }
+  .prose-guide a { @apply text-brand-600 underline dark:text-brand-400; }
+  .prose-guide table { @apply my-4 w-full text-sm; }
+  .prose-guide th, .prose-guide td { @apply border-b border-zinc-200 px-2 py-1.5 text-left dark:border-zinc-800; }
+  .prose-guide blockquote { @apply my-4 border-l-4 border-brand-400 bg-brand-50 px-4 py-2 dark:bg-brand-900/20; }
+}

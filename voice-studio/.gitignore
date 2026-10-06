@@ -1,0 +1,9 @@
+# your recordings, models and database stay on your computer only
+data/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+web/node_modules/
+# web/dist is committed on purpose: Windows users do not need Node.js
+web/tsconfig.tsbuildinfo
