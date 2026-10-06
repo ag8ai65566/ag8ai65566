@@ -8,7 +8,7 @@ from pathlib import Path
 
 import numpy as np
 
-from . import audio, config, db, engines, jobs
+from . import audio, config, datasets, db, engines, jobs
 from .pipeline import asr
 
 _loaded: dict = {"key": None, "handle": None, "engine": None}
@@ -45,7 +45,7 @@ def _handle(model_id: str):
 
 
 def unload() -> None:
-    with _load_lock:
+    with jobs.GPU_LOCK, _load_lock:
         if _loaded["handle"] is not None:
             _loaded["engine"].unload(_loaded["handle"])
         _loaded.update(key=None, handle=None, engine=None)
@@ -93,7 +93,19 @@ def _screen(y: np.ndarray, sr: int, text: str, lang: str | None) -> dict:
 def generate(model_id: str, text: str, language: str | None = None, style: str = "", takes: int = 1,
              seed: int | None = None, screen: bool = True, batch: str | None = None, mode: str | None = None,
              ref_id: str | None = None, extra: dict | None = None) -> dict:
-    """Generate `takes` versions, score them, keep all, and mark the best."""
+    """Generate `takes` versions, score them, keep all, and mark the best. The whole request (model load,
+    synthesis and the ASR check) holds the GPU, so no other job loads a model under it."""
+    with jobs.GPU_LOCK:
+        return _generate(model_id, text, language, style, takes, seed, screen, batch, mode, ref_id, extra)
+
+
+def _generate(model_id, text, language, style, takes, seed, screen, batch, mode, ref_id, extra) -> dict:
+    m0 = db.get("models", model_id)
+    if not m0:
+        raise KeyError(model_id)
+    voice = db.get("voices", m0["voice_id"])
+    if m0["engine"] != "mock" and (not voice or not datasets.consent_ok(voice)):
+        raise datasets.ConsentMissing("這個聲音目前沒有有效的同意紀錄（可能已撤回），不能合成。")
     m, eng, h = _handle(model_id)
     meta = eng.model_meta(Path(m["path"]))
     modes = eng.modes(meta)
@@ -110,9 +122,8 @@ def generate(model_id: str, text: str, language: str | None = None, style: str =
     base_seed = seed if seed is not None else int(np.random.default_rng().integers(0, 2 ** 31 - 1))
     for k in range(max(1, min(8, takes))):
         s = base_seed + k
-        with jobs.GPU_LOCK:
-            syn = eng.synthesize(h, apply_lexicon(text_engine, lang), language=lang, style=full_style, mode=mode,
-                                 reference=ref, seed=s, **(extra or {}))
+        syn = eng.synthesize(h, apply_lexicon(text_engine, lang), language=lang, style=full_style, mode=mode,
+                             reference=ref, seed=s, **(extra or {}))
         oid = db.new_id("out")
         path = audio.save(config.DATA / "outputs" / f"{oid}.wav", syn.audio, syn.sr,
                           synthetic={"engine": eng.id, "model": model_id, "voice": m["voice_id"]})

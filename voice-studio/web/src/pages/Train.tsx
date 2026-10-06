@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { AlertTriangle, Cloud, Cpu, FileText, Sparkles, Square } from "lucide-react";
 import {
-  api, fmtDur, fmtMin, fmtTime, fmtUsd, type Dataset, type EngineInfo, type GpuOffer, type Plan, type Training, type Voice,
+  api, fmtDur, fmtMin, fmtTime, fmtUsd, type Dataset, type EngineInfo, type GpuOffer, type Orphan, type Plan, type Training, type Voice,
 } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader, Progress } from "../ui";
 
@@ -30,6 +30,7 @@ export default function Train() {
           <div>還沒設定 RunPod。到 <Link to="/settings" className="font-medium underline">設定 → 雲端 GPU</Link> 填入 API 金鑰、S3 金鑰和網路磁碟（Network Volume），大約 10 分鐘。<Link to="/guide/04-cloud" className="underline">看圖文教學</Link></div>
         </div>
       )}
+      {cloudReady && <Orphans />}
       <NewTraining initialDataset={sp.get("dataset") ?? ""} cloudReady={!!cloudReady} />
       <Card title="訓練紀錄" className="mt-6">
         {!trainings.data?.length ? <Empty icon={<Cloud className="size-8" />} title="還沒有訓練" /> : (
@@ -115,7 +116,7 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
           )}
         </div>
         <div className="space-y-5">
-          <Field label="4. 雲端 GPU" hint="價格是 RunPod Secure Cloud 每小時價格（網路磁碟只能用 Secure Cloud）。第一張沒貨時會自動改用清單裡的下一張。">
+          <Field label="4. 雲端 GPU" hint="價格是 RunPod Secure Cloud 每小時價格（網路磁碟只能用 Secure Cloud）。平台只會租你選的這一張，不會偷偷換成更貴的卡；沒貨時會告訴你，換一張再按一次就好。">
             <div className="grid gap-2">
               {offers.map((o) => (
                 <label key={o.id} className={clsx("flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-sm", gpu === o.id ? "border-brand-500" : "border-zinc-200 dark:border-zinc-800")}>
@@ -134,13 +135,14 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
               <div className="grid grid-cols-2 gap-3">
                 <div><div className="text-xs text-zinc-500">預估時間</div><div className="text-lg font-semibold">{plan.data.estimate_hours.toFixed(1)} 小時</div></div>
                 <div><div className="text-xs text-zinc-500">預估費用</div><div className="text-lg font-semibold">{fmtUsd(plan.data.estimate_usd)}</div></div>
-                <div><div className="text-xs text-zinc-500">訓練步數</div><div>{plan.data.steps || "—"}（{plan.data.n_train} 段）</div></div>
+                <div><div className="text-xs text-zinc-500">訓練步數</div><div>{plan.data.steps || "—"}（{plan.data.n_train} 段{plan.data.epochs_effective ? `，約 ${plan.data.epochs_effective} epoch` : ""}）</div></div>
                 <div><div className="text-xs text-zinc-500">最多（時數上限）</div><div>{plan.data.max_hours} 小時 · {fmtUsd(plan.data.max_usd)}</div></div>
               </div>
               <p className="mt-3 text-xs text-zinc-500">
                 {plan.data.estimate_basis === "measured" ? "這個估計用的是你上次在同一張 GPU 上實際量到的速度。" : "第一次是粗估；跑完一次後平台會用實際速度校正。"}
                 網路磁碟另計（約 $0.07/GB/月）。
               </p>
+              {plan.data.blocked && <p className="mt-2 flex gap-1.5 text-xs font-medium text-red-600"><AlertTriangle className="mt-0.5 size-3.5 shrink-0" />{plan.data.blocked}</p>}
               {plan.data.warnings.map((w) => <p key={w} className="mt-2 flex gap-1.5 text-xs text-amber-700 dark:text-amber-300"><AlertTriangle className="mt-0.5 size-3.5 shrink-0" />{w}</p>)}
             </div>
           )}
@@ -149,7 +151,7 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
             <input type="checkbox" className="mt-1" checked={ack} onChange={(e) => setAck(e.target.checked)} />
             <span>我了解這會用我的 RunPod 帳號租 GPU 並計費；訓練完成、失敗、取消或達到時數上限時，平台會自動關機。</span>
           </label>
-          <Button className="w-full" onClick={() => start.mutate()} loading={start.isPending} disabled={!ack || !cloudReady || !plan.data}>
+          <Button className="w-full" onClick={() => start.mutate()} loading={start.isPending} disabled={!ack || !cloudReady || !plan.data || !!plan.data.blocked}>
             <Cloud className="size-4" />開始雲端訓練
           </Button>
           <ErrorText error={start.error} />
@@ -193,8 +195,14 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
         {p.val_loss != null && <span>驗證 loss {p.val_loss.toFixed(3)}</span>}
         {p.s_per_step != null && <span>{p.s_per_step.toFixed(1)} 秒/步</span>}
         <span>預估 {fmtUsd(t.cost_estimate)}</span>
+        {t.cost_per_hr != null && <span>實際 ${t.cost_per_hr.toFixed(2)}/時</span>}
         {t.status === "failed" && t.job?.message && <span className="text-red-600">{t.job.message}</span>}
       </div>
+      {t.note && <p className="mt-2 text-xs text-amber-700 dark:text-amber-300">{t.note}</p>}
+      {t.pod_state === "remove_failed" && (
+        <p className="mt-2 flex items-center gap-2 text-xs font-medium text-red-600"><AlertTriangle className="size-3.5" />
+          雲端機器可能還在計費。平台會在下次開啟時自動再刪一次；也可以馬上到 runpod.io → Pods 手動刪除。</p>
+      )}
     </div>
   );
 }
@@ -206,5 +214,29 @@ function LogModal({ t, onClose }: { t: Training; onClose: () => void }) {
       <p className="mb-2 text-xs text-zinc-500">雲端機器上的完整輸出（每 10 秒更新）。遇到問題時，把最後幾十行貼給 Claude 或 GPT 問就好，裡面不含任何金鑰。</p>
       <pre className="max-h-[60vh] overflow-auto rounded-xl bg-zinc-950 p-4 text-[11px] leading-5 whitespace-pre-wrap text-zinc-200">{q.data?.log || "（還沒有輸出）"}</pre>
     </Modal>
+  );
+}
+
+function Orphans() {
+  const qc = useQueryClient();
+  const reap = useQuery({ queryKey: ["reap"], queryFn: () => api.post<{ removed: string[]; orphans: Orphan[]; error?: string }>("/api/cloud/reap"),
+    refetchInterval: 300000, staleTime: 60000 });
+  const remove = useMutation({ mutationFn: (id: string) => api.post(`/api/cloud/pods/${id}/remove`), onSuccess: () => qc.invalidateQueries({ queryKey: ["reap"] }) });
+  const orphans = reap.data?.orphans ?? [];
+  if (!orphans.length && !reap.data?.removed.length) return null;
+  return (
+    <div className="mb-6 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200">
+      {reap.data?.removed.length ? <p>已自動關掉 {reap.data.removed.length} 台沒有在用的雲端機器。</p> : null}
+      {orphans.length > 0 && (
+        <>
+          <p className="font-medium">你的 RunPod 帳號上有 {orphans.length} 台 Voice Studio 開的機器，不屬於任何進行中的訓練（可能還在計費）：</p>
+          <ul className="mt-2 space-y-1">{orphans.map((o) => (
+            <li key={o.id} className="flex items-center gap-2"><code className="kbd">{o.name}</code>{o.cost_per_hr ? <span>${o.cost_per_hr}/時</span> : null}
+              <Button size="sm" variant="danger" loading={remove.isPending && remove.variables === o.id}
+                onClick={() => confirm(`刪除雲端機器 ${o.name}？`) && remove.mutate(o.id)}>刪除</Button></li>))}</ul>
+          <ErrorText error={remove.error} />
+        </>
+      )}
+    </div>
   );
 }

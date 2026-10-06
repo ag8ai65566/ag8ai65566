@@ -15,6 +15,7 @@ Synthesis modes
 from __future__ import annotations
 
 import importlib.util
+import math
 from pathlib import Path
 
 from . import export, remote
@@ -52,7 +53,7 @@ class VoxCPM2Engine(Engine):
                     "資料多時可能比 LoRA 更像，但模型檔約 8 GB、需要 80 GB 顯示卡。建議先跑 LoRA 當對照。",
                     {"mode": "full", "epochs": 1.5, "lr": 1e-5, "batch_size": 2, "grad_accum": 8, "saves": 6,
                      "keep_full": 3, "max_batch_tokens": 8192, "ref_fraction": 0.4},
-                    GPU_80, hours_per_data_hour=0.15, s_per_step=9.0, disk_gb=250, min_hours=5.0),
+                    GPU_80, hours_per_data_hour=0.15, s_per_step=9.0, disk_gb=250, ram_gb=64, min_hours=5.0),
     ]
 
     # --- dataset & training ---------------------------------------------------------------------------------
@@ -61,18 +62,30 @@ class VoxCPM2Engine(Engine):
         return export.write(ds, out_dir, ref_fraction=frac)
 
     def cloud_files(self) -> dict[str, str]:
-        return {"setup_env.sh": remote.setup_script(self.id, "VoxCPM2", REPO, COMMIT, VERSION, "voxcpm"),
+        return {"setup_env.sh": remote.setup_script(self.id, "VoxCPM2", REPO, COMMIT, VERSION, "voxcpm", "VoxCPM"),
                 "train_entry.py": remote.read("voxcpm2_train.py"), "vs_common.py": remote.read("vs_common.py")}
 
-    def steps(self, n_train: int, preset_id: str) -> int:
-        p = self.preset(preset_id).params
-        per_epoch = max(1, n_train // (p["batch_size"] * p["grad_accum"]))
-        return max(150, round(per_epoch * p["epochs"]))
+    def schedule(self, n_train: int, params: dict) -> dict:
+        """The one place the update count is decided: the quote, the stored run parameters and the cloud script
+        all use it. The trainer drops the last incomplete batch and counts optimizer updates."""
+        bs, accum = int(params["batch_size"]), int(params["grad_accum"])
+        batches = n_train // bs
+        if batches < accum:
+            raise ValueError(f"資料太少：這個設定至少需要 {bs * accum} 段訓練片段（目前 {n_train} 段）")
+        total = min(int(params.get("max_steps_cap", 30000)),
+                    max(1, math.ceil(batches * float(params["epochs"]) / accum)))
+        return {"per_epoch": batches // accum, "total_steps": total, "epochs_effective": round(total * accum / batches, 2)}
+
+    def steps(self, n_train: int, preset_id: str, params: dict | None = None) -> int:
+        try:
+            return self.schedule(n_train, params or self.preset(preset_id).params)["total_steps"]
+        except ValueError:
+            return 0
 
     # --- inference ------------------------------------------------------------------------------------------
     def install_spec(self) -> dict:
         return {"pip": [f"voxcpm @ https://github.com/OpenBMB/VoxCPM/archive/{COMMIT}.zip"],
-                "env": {"SETUPTOOLS_SCM_PRETEND_VERSION": VERSION}, "module": "voxcpm",
+                "env": {"SETUPTOOLS_SCM_PRETEND_VERSION": VERSION}, "module": "voxcpm", "cls": "VoxCPM",
                 "download": [BASE]}
 
     def available(self):
@@ -98,7 +111,10 @@ class VoxCPM2Engine(Engine):
         kw = {"load_denoiser": False, "optimize": False}
         ck = self.checkpoint_dir(model_dir, meta, checkpoint)
         if meta.get("mode") == "lora" and ck:
-            m = VoxCPM.from_pretrained(meta.get("base") or BASE, lora_weights_path=str(ck), **kw)
+            # the adapter must sit on exactly the base weights it was trained on (recorded snapshot commit)
+            from huggingface_hub import snapshot_download
+            base = snapshot_download(meta.get("base") or BASE, revision=meta.get("base_revision") or None)
+            m = VoxCPM.from_pretrained(base, lora_weights_path=str(ck), **kw)
         elif meta.get("mode") == "full" and ck:
             m = VoxCPM.from_pretrained(str(ck), **kw)
         else:

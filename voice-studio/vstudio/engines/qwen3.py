@@ -26,6 +26,18 @@ LANG = {"ja": "Japanese", "en": "English", "zh": "Chinese", "ko": "Korean", "de"
         "ru": "Russian", "pt": "Portuguese", "es": "Spanish", "it": "Italian"}
 
 
+def _flash_ok() -> bool:
+    """The CUDA extension has to load, not just be installed (a mismatched build fails at import)."""
+    if importlib.util.find_spec("flash_attn") is None:
+        return False
+    try:
+        import flash_attn  # noqa: F401
+        import flash_attn_2_cuda  # noqa: F401
+        return True
+    except Exception:
+        return False
+
+
 class Qwen3Engine(Engine):
     id = "qwen3"
     name = "Qwen3-TTS 1.7B"
@@ -43,7 +55,8 @@ class Qwen3Engine(Engine):
                     "梯度累積 4），每個 epoch 一個檢查點，保留最後 2 個。",
                     {"epochs": 3, "lr": 2e-5, "batch_size": 2, "keep": 2},
                     ["NVIDIA A100 80GB PCIe", "NVIDIA A100-SXM4-80GB", "NVIDIA L40S", "NVIDIA H100 PCIe"],
-                    hours_per_data_hour=0.12, s_per_step=0.5, disk_gb=120, min_hours=0.5, recommended=True),
+                    hours_per_data_hour=0.12, s_per_step=0.5, disk_gb=120, ram_gb=64, min_hours=0.5,
+                    recommended=True),
     ]
 
     def export_dataset(self, ds: dict, out_dir: Path, params: dict | None = None) -> dict:
@@ -51,19 +64,22 @@ class Qwen3Engine(Engine):
 
     def cloud_files(self) -> dict[str, str]:
         post = (f'pip install -q --no-deps "{FLASH_WHEEL}" '
-                '|| echo "[vs] FlashAttention wheel not available; training will use PyTorch SDPA"')
-        return {"setup_env.sh": remote.setup_script(self.id, "Qwen3-TTS", REPO, COMMIT, VERSION, "qwen_tts",
-                                                    post=post),
+                '|| echo "[vs] FlashAttention wheel not available; training will use PyTorch SDPA"\n'
+                'python -c "import flash_attn, flash_attn_2_cuda" 2>/dev/null || '
+                '{ echo "[vs] FlashAttention unusable on this image; removing it (SDPA will be used)"; '
+                'pip uninstall -q -y flash-attn || true; }')
+        setup = remote.setup_script(self.id, "Qwen3-TTS", REPO, COMMIT, VERSION, "qwen_tts", "Qwen3TTSModel", post=post)
+        return {"setup_env.sh": setup,
                 "train_entry.py": remote.read("qwen3_train.py"), "vs_common.py": remote.read("vs_common.py")}
 
-    def steps(self, n_train: int, preset_id: str) -> int:
-        p = self.preset(preset_id).params
-        return -(-n_train // p["batch_size"]) * p["epochs"]
+    def steps(self, n_train: int, preset_id: str, params: dict | None = None) -> int:
+        p = params or self.preset(preset_id).params
+        return -(-n_train // int(p["batch_size"])) * int(p["epochs"])
 
     # --- inference ------------------------------------------------------------------------------------------
     def install_spec(self) -> dict:
         return {"pip": [f"qwen-tts @ https://github.com/QwenLM/Qwen3-TTS/archive/{COMMIT}.zip"], "env": {},
-                "module": "qwen_tts", "download": [BASE, "Qwen/Qwen3-TTS-Tokenizer-12Hz"]}
+                "module": "qwen_tts", "cls": "Qwen3TTSModel", "download": [BASE, "Qwen/Qwen3-TTS-Tokenizer-12Hz"]}
 
     def available(self):
         if importlib.util.find_spec("qwen_tts") is None:
@@ -85,7 +101,7 @@ class Qwen3Engine(Engine):
         meta = self.model_meta(model_dir)
         ck = self.checkpoint_dir(model_dir, meta, checkpoint)
         cuda = torch.cuda.is_available()
-        attn = "flash_attention_2" if cuda and importlib.util.find_spec("flash_attn") else "sdpa"
+        attn = "flash_attention_2" if cuda and _flash_ok() else "sdpa"
         src = str(ck) if (meta.get("mode") == "sft" and ck) else BASE
         m = Qwen3TTSModel.from_pretrained(src, device_map="cuda:0" if cuda else "cpu",
                                           dtype=torch.bfloat16 if cuda else torch.float32, attn_implementation=attn)
@@ -98,11 +114,13 @@ class Qwen3Engine(Engine):
         if seed is not None:
             torch.manual_seed(seed)
         if meta.get("mode") == "sft":
+            # the official SFT recipe trains with the auto-language prompt, so inference uses it too
             spk = meta.get("speaker", "vs_speaker")
+            sft_lang = meta.get("sft_language", "Auto")
             try:
-                wavs, sr = m.generate_custom_voice(text=text, language=lang, speaker=spk, instruct=style or None)
+                wavs, sr = m.generate_custom_voice(text=text, language=sft_lang, speaker=spk, instruct=style or None)
             except TypeError:
-                wavs, sr = m.generate_custom_voice(text=text, language=lang, speaker=spk)
+                wavs, sr = m.generate_custom_voice(text=text, language=sft_lang, speaker=spk)
         else:
             if not reference or not reference.get("path"):
                 raise ValueError("零樣本模型需要參考片段")

@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS presets (
 """
 
 JSON_COLS = {"languages", "consent", "enrollment", "meta", "flags", "params", "result", "preset", "progress",
-             "metrics", "score", "data"}
+             "metrics", "score", "data", "storage"}
 
 _local = threading.local()
 
@@ -70,8 +70,29 @@ def connect() -> sqlite3.Connection:
         c.execute("PRAGMA journal_mode=WAL")
         c.execute("PRAGMA foreign_keys=ON")
         c.executescript(SCHEMA)
+        _migrate(c)
         _local.conn = c
     return c
+
+
+# columns added after the first release: (table, column, declaration)
+MIGRATIONS = [
+    ("trainings", "storage", "TEXT NOT NULL DEFAULT '{}'"),   # volume + datacenter frozen at start
+    ("trainings", "deadline", "REAL"),                        # absolute time the pod must be gone by
+    ("trainings", "pod_state", "TEXT"),                       # creating / running / removed / remove_failed
+    ("trainings", "started_at", "REAL"),
+    ("trainings", "cost_per_hr", "REAL"),
+    ("trainings", "note", "TEXT NOT NULL DEFAULT ''"),
+]
+
+
+def _migrate(c: sqlite3.Connection) -> None:
+    for table, col, decl in MIGRATIONS:
+        cols = {r[1] for r in c.execute(f"PRAGMA table_info({table})")}
+        if col not in cols:
+            c.execute(f"ALTER TABLE {table} ADD COLUMN {col} {decl}")
+    c.execute("CREATE UNIQUE INDEX IF NOT EXISTS models_training ON models(training_id) WHERE training_id IS NOT NULL")
+    c.commit()
 
 
 def reset_connection() -> None:

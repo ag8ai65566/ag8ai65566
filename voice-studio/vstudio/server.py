@@ -1,12 +1,11 @@
 """The web app: API under /api, the built web UI everywhere else."""
 from __future__ import annotations
 
-import ipaddress
 import os
 import secrets as _secrets
 import webbrowser
 from contextlib import asynccontextmanager
-from pathlib import Path
+from urllib.parse import unquote
 
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse
@@ -17,6 +16,13 @@ from .engines import install  # noqa: F401  (registers install_engine)
 from .pipeline import prepare  # noqa: F401  (registers prepare_source / enroll_voice)
 
 WEB = config.ROOT / "web" / "dist"
+
+
+def _quiet(fn) -> None:
+    try:
+        fn()
+    except Exception:
+        pass
 
 
 def create_app() -> FastAPI:
@@ -30,6 +36,8 @@ def create_app() -> FastAPI:
             training.resume_interrupted()
         except Exception:  # never block start-up on the cloud
             pass
+        import threading  # retry failed pod removals and look for orphaned pods, without delaying start-up
+        threading.Thread(target=lambda: _quiet(training.reap), name="reap", daemon=True).start()
         yield
         jobs.stop()
 
@@ -38,18 +46,34 @@ def create_app() -> FastAPI:
         app.include_router(r)
 
     password = os.environ.get("VSTUDIO_PASSWORD", "")
+    local_hosts = {"localhost", "127.0.0.1", "[::1]", "testserver"}
+    extra_hosts = {h.strip().lower() for h in os.environ.get("VSTUDIO_ALLOWED_HOSTS", "").split(",") if h.strip()}
+
+    def _hostname(value: str) -> str:
+        v = value.strip().lower()
+        if v.startswith("["):
+            return v.split("]")[0] + "]"
+        return v.rsplit(":", 1)[0] if v.count(":") == 1 else v
 
     @app.middleware("http")
     async def guard(request: Request, call_next):
-        """Loopback is trusted. Any other client needs VSTUDIO_PASSWORD (when the studio is opened to a network)."""
-        host = request.client.host if request.client else "127.0.0.1"
-        try:
-            local = ipaddress.ip_address(host).is_loopback
-        except ValueError:
-            local = host in ("localhost", "testclient")
-        if not local:
-            given = request.headers.get("x-studio-password") or request.cookies.get("studio_pw") or ""
-            if not password or not _secrets.compare_digest(given, password):
+        """Who may use the API.
+
+        - Default (only this computer): the Host header must name this computer, which blocks DNS-rebinding pages,
+          and requests from another website's page (a foreign Origin) are refused, so no site can drive the API.
+        - Network mode (VSTUDIO_PASSWORD set): every API request needs the password, whatever its address.
+        The web page itself (not /api) is served to anyone who can reach the port, so the login prompt can load."""
+        host = _hostname(request.headers.get("host", ""))
+        is_api = request.url.path.startswith("/api/")
+        if not password and host not in local_hosts | extra_hosts:
+            return JSONResponse({"detail": "不允許的主機名稱"}, status_code=403)
+        origin = request.headers.get("origin")
+        if origin and request.method not in ("GET", "HEAD", "OPTIONS"):
+            if _hostname(origin.split("://", 1)[-1]) != host:
+                return JSONResponse({"detail": "不允許跨網站的請求"}, status_code=403)
+        if password and is_api and request.url.path != "/api/health":
+            given = request.headers.get("x-studio-password") or unquote(request.cookies.get("studio_pw") or "")
+            if not _secrets.compare_digest(given, password):
                 return JSONResponse({"detail": "需要密碼"}, status_code=401)
         return await call_next(request)
 

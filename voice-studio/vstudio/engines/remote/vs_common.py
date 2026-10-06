@@ -81,17 +81,29 @@ class Job:
         if code != 0:
             raise RuntimeError(f"command failed with exit code {code}: {cmd[:3]}")
 
-    def package(self, meta: dict) -> None:
-        """Write engine.json and pack model/ into model.tar on the network volume (atomic rename)."""
+    def package(self, meta: dict, name: str = "model.tar", entries: list[tuple[Path, str]] | None = None) -> None:
+        """Write engine.json and pack an archive on the network volume (atomic rename).
+
+        model.tar (weights + engine.json) is written first, as soon as the weights are final; samples.tar
+        (sample clips + the final engine.json) follows after the optional sample phase. The studio needs only
+        model.tar, so a failure while sampling never loses a trained model."""
         meta = {**meta, "training_id": self.cfg.get("training_id"), "params": self.params,
                 "train_seconds": int(time.time() - self._t0)}
         (self.out / "engine.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
         self.progress(phase="package")
-        tmp = self.dir / "model.tar.tmp"
+        skip = {"optimizer.pth", "scheduler.pth", "training_state.json"}
+
+        def keep(ti: tarfile.TarInfo):
+            return None if Path(ti.name).name in skip else ti
+
+        tmp = self.dir / f"{name}.tmp"
         with tarfile.open(tmp, "w") as t:
-            t.add(self.out, arcname="model")
-        os.replace(tmp, self.dir / "model.tar")
-        log(f"packaged {(self.dir / 'model.tar').stat().st_size / 1e9:.2f} GB")
+            for src, arc in entries if entries is not None else [(self.out, "model")]:
+                t.add(src, arcname=arc, filter=keep)
+            if entries is not None:
+                t.add(self.out / "engine.json", arcname="model/engine.json")
+        os.replace(tmp, self.dir / name)
+        log(f"packaged {name}: {(self.dir / name).stat().st_size / 1e9:.2f} GB")
 
 
 def sample_plan(job: Job) -> dict:
@@ -102,6 +114,18 @@ def sample_plan(job: Job) -> dict:
 
 def free_gb(path: str = "/root") -> float:
     return shutil.disk_usage(path).free / 1e9
+
+
+def need_disk(gb: float, path: str = "/root") -> None:
+    """Fail early (before paying for hours of training) when the container disk cannot hold the outputs."""
+    have = free_gb(path)
+    if have < gb:
+        raise RuntimeError(f"not enough disk on {path}: {have:.0f} GB free, about {gb:.0f} GB needed")
+
+
+def resolved_revision(snapshot_path: str) -> str:
+    """huggingface_hub snapshot folders are named after the commit, so the exact base weights can be re-fetched."""
+    return Path(snapshot_path).name
 
 
 class LogTail(threading.Thread):

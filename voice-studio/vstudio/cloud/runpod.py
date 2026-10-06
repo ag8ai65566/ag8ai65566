@@ -75,17 +75,35 @@ def check() -> dict:
     return out
 
 
-def create_pod(name: str, image: str, gpu_types: list[str], env: dict, start_cmd: list[str],
-               container_disk_gb: int = 80) -> dict:
+def location() -> dict:
+    """The volume and datacenter from settings, frozen into each training run when it starts."""
     st = config.load_settings()
     vol, dc = st.get("runpod_volume_id"), st.get("runpod_datacenter")
     if not vol or not dc:
         raise RunPodError("請先在設定裡填網路磁碟（Network Volume）ID 和它的資料中心。")
-    body = {"name": name[:180], "imageName": image, "gpuTypeIds": gpu_types, "gpuCount": 1,
-            "cloudType": st.get("runpod_cloud_type") or "SECURE", "networkVolumeId": vol, "dataCenterIds": [dc],
-            "volumeMountPath": "/workspace", "containerDiskInGb": container_disk_gb, "env": env,
-            "dockerStartCmd": start_cmd, "ports": ["22/tcp"]}
+    return {"volume": vol, "datacenter": dc, "cloud": st.get("runpod_cloud_type") or "SECURE"}
+
+
+def create_pod(name: str, image: str, gpu_type: str, env: dict, start_cmd: list[str], loc: dict,
+               container_disk_gb: int = 80, min_ram_gb: int = 32, min_vcpu: int = 8) -> dict:
+    """Rent exactly the GPU that was quoted (no silent fallback to a pricier card)."""
+    body = {"name": name[:180], "imageName": image, "gpuTypeIds": [gpu_type], "gpuTypePriority": "custom",
+            "gpuCount": 1, "cloudType": loc.get("cloud") or "SECURE", "networkVolumeId": loc["volume"],
+            "dataCenterIds": [loc["datacenter"]], "volumeMountPath": "/workspace",
+            "containerDiskInGb": container_disk_gb, "minRAMPerGPU": min_ram_gb, "minVCPUPerGPU": min_vcpu,
+            "env": env, "dockerStartCmd": start_cmd, "ports": ["22/tcp"]}
     return _req("POST", "/pods", json=body)
+
+
+def list_pods(name: str | None = None, volume: str | None = None) -> list[dict]:
+    params = {k: v for k, v in (("name", name), ("networkVolumeId", volume)) if v}
+    out = _req("GET", "/pods", params=params)
+    return out if isinstance(out, list) else out.get("data", [])
+
+
+def studio_pods() -> list[dict]:
+    """Every pod this studio started (named voice-studio-<training id>), for the orphan check."""
+    return [p for p in list_pods() if str(p.get("name", "")).startswith("voice-studio-")]
 
 
 def get_pod(pod_id: str) -> dict | None:
@@ -98,6 +116,7 @@ def get_pod(pod_id: str) -> dict | None:
 
 
 def remove_pod(pod_id: str) -> None:
+    """Delete a pod; a pod that is already gone counts as removed. Other errors propagate."""
     try:
         _req("DELETE", f"/pods/{pod_id}")
     except RunPodError as e:
@@ -129,25 +148,29 @@ def gpu_catalog(datacenter: str | None = None) -> list[dict]:
 
 # --- S3 (network volume) ----------------------------------------------------------------------------------------
 
-def s3():
+def s3(loc: dict | None = None):
     import boto3
     from botocore.config import Config
-    st = config.load_settings()
     ak, sk = config.get_secret("runpod_s3_access_key"), config.get_secret("runpod_s3_secret_key")
     if not ak or not sk:
         raise RunPodError("尚未設定 RunPod S3 金鑰（設定 → 雲端）。")
-    dc = (st.get("runpod_datacenter") or "").strip()
+    dc = ((loc or {}).get("datacenter") or config.load_settings().get("runpod_datacenter") or "").strip()
     return boto3.client("s3", aws_access_key_id=ak, aws_secret_access_key=sk, region_name=dc.upper(),
                         endpoint_url=S3_FMT.format(dc=dc.lower()),
                         config=Config(signature_version="s3v4", retries={"max_attempts": 8, "mode": "adaptive"},
-                                      s3={"addressing_style": "path"}))
+                                      s3={"addressing_style": "path"}, connect_timeout=20, read_timeout=120))
 
 
-def bucket() -> str:
-    return config.load_settings()["runpod_volume_id"]
+def bucket(loc: dict | None = None) -> str:
+    return (loc or {}).get("volume") or config.load_settings()["runpod_volume_id"]
 
 
-def upload(local: Path, key: str, progress=None) -> None:
+def _missing(e: Exception) -> bool:
+    from botocore.exceptions import ClientError
+    return isinstance(e, ClientError) and e.response.get("Error", {}).get("Code") in ("NoSuchKey", "404", "NotFound")
+
+
+def upload(local: Path, key: str, progress=None, loc: dict | None = None) -> None:
     from boto3.s3.transfer import TransferConfig
     size = local.stat().st_size
     done = [0]
@@ -156,33 +179,52 @@ def upload(local: Path, key: str, progress=None) -> None:
         done[0] += n
         if progress:
             progress(done[0] / max(1, size))
-    s3().upload_file(str(local), bucket(), key, Callback=cb,
-                     Config=TransferConfig(multipart_chunksize=64 << 20, max_concurrency=4))
+    # parts stay far below the S3 API's 500 MB part limit
+    s3(loc).upload_file(str(local), bucket(loc), key, Callback=cb,
+                        Config=TransferConfig(multipart_chunksize=64 << 20, max_concurrency=4))
 
 
-def put_text(key: str, text: str) -> None:
-    s3().put_object(Bucket=bucket(), Key=key, Body=text.encode("utf-8"))
+def put_text(key: str, text: str, loc: dict | None = None) -> None:
+    s3(loc).put_object(Bucket=bucket(loc), Key=key, Body=text.encode("utf-8"))
 
 
-def get_json(key: str) -> dict | None:
+def get_json(key: str, loc: dict | None = None) -> dict | None:
+    """None only when the object does not exist; network or permission errors propagate to the caller's retry."""
     try:
-        obj = s3().get_object(Bucket=bucket(), Key=key)
-        return json.loads(obj["Body"].read().decode("utf-8"))
-    except Exception:
+        obj = s3(loc).get_object(Bucket=bucket(loc), Key=key)
+    except Exception as e:
+        if _missing(e):
+            return None
+        raise
+    with obj["Body"] as body:
+        raw = body.read().decode("utf-8")
+    try:
+        return json.loads(raw)
+    except ValueError:  # caught mid-write; treat as not there yet
         return None
 
 
-def get_text(key: str, tail: int = 20000) -> str:
+def exists(key: str, loc: dict | None = None) -> bool:
     try:
-        obj = s3().get_object(Bucket=bucket(), Key=key)
+        s3(loc).head_object(Bucket=bucket(loc), Key=key)
+        return True
+    except Exception as e:
+        if _missing(e):
+            return False
+        raise
+
+
+def get_text(key: str, tail: int = 20000, loc: dict | None = None) -> str:
+    try:
+        obj = s3(loc).get_object(Bucket=bucket(loc), Key=key)
         return obj["Body"].read().decode("utf-8", "replace")[-tail:]
     except Exception:
         return ""
 
 
-def download(key: str, local: Path, progress=None) -> Path:
-    c = s3()
-    size = c.head_object(Bucket=bucket(), Key=key)["ContentLength"]
+def download(key: str, local: Path, progress=None, loc: dict | None = None) -> Path:
+    c = s3(loc)
+    size = c.head_object(Bucket=bucket(loc), Key=key)["ContentLength"]
     done = [0]
 
     def cb(n):
@@ -190,22 +232,13 @@ def download(key: str, local: Path, progress=None) -> Path:
         if progress:
             progress(done[0] / max(1, size))
     local.parent.mkdir(parents=True, exist_ok=True)
-    c.download_file(bucket(), key, str(local), Callback=cb)
+    c.download_file(bucket(loc), key, str(local), Callback=cb)
     return local
 
 
-def delete_prefix(prefix: str) -> int:
-    c = s3()
-    n = 0
-    token = None
-    while True:
-        kw = {"Bucket": bucket(), "Prefix": prefix}
-        if token:
-            kw["ContinuationToken"] = token
-        r = c.list_objects_v2(**kw)
-        for o in r.get("Contents", []):
-            c.delete_object(Bucket=bucket(), Key=o["Key"])
-            n += 1
-        if not r.get("IsTruncated"):
-            return n
-        token = r.get("NextContinuationToken")
+def delete(key: str, loc: dict | None = None) -> None:
+    try:
+        s3(loc).delete_object(Bucket=bucket(loc), Key=key)
+    except Exception as e:
+        if not _missing(e):
+            raise

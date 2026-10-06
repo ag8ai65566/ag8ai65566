@@ -67,7 +67,7 @@ class PlanIn(BaseModel):
 @router.post("/training/plan")
 def training_plan(body: PlanIn):
     try:
-        return training.plan(body.dataset_id, body.engine, body.preset, body.gpu, body.usd_h)
+        return training.plan(body.dataset_id, body.engine, body.preset, body.gpu, body.usd_h, body.params)
     except KeyError:
         raise HTTPException(404, "找不到資料集或引擎")
 
@@ -79,6 +79,23 @@ def training_start(body: PlanIn):
                               body.usd_h)
     except datasets.ConsentMissing as e:
         raise HTTPException(409, str(e))
+    except (ValueError, runpod.RunPodError) as e:
+        raise HTTPException(400, str(e))
+
+
+@router.post("/cloud/reap")
+def cloud_reap():
+    """Retry failed pod removals and list studio pods that no running training owns."""
+    return training.reap()
+
+
+@router.post("/cloud/pods/{pod_id}/remove")
+def cloud_remove_pod(pod_id: str):
+    try:
+        runpod.remove_pod(pod_id)
+    except runpod.RunPodError as e:
+        raise HTTPException(502, str(e))
+    return {"ok": True}
 
 
 @router.get("/training")
@@ -99,7 +116,7 @@ def training_get(tid: str):
     t["log"] = log.read_text(encoding="utf-8")[-20000:] if log.exists() else ""
     if not t["log"] and t["status"] in ("running", "starting"):
         try:
-            t["log"] = runpod.get_text(f"{t['remote_prefix']}/train.log", tail=20000)
+            t["log"] = runpod.get_text(f"{t['remote_prefix']}/train.log", tail=20000, loc=t.get("storage") or None)
         except Exception:
             pass
     return t
@@ -111,10 +128,7 @@ def training_cancel(tid: str):
     if t and t.get("job_id"):
         jobs.cancel(t["job_id"])
     if t and t.get("pod_id"):
-        try:
-            runpod.remove_pod(t["pod_id"])
-        except Exception:
-            pass
+        training._remove_pod(tid, t["pod_id"])
     return {"ok": True}
 
 
@@ -231,7 +245,12 @@ def add_reference(model_id: str, body: RefIn):
 
 @router.delete("/models/{model_id}/references/{ref_id}")
 def delete_reference(model_id: str, ref_id: str):
-    return training.remove_reference(model_id, ref_id)
+    try:
+        return training.remove_reference(model_id, ref_id)
+    except KeyError:
+        raise HTTPException(404)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
 
 
 class ZeroShotIn(BaseModel):

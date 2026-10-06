@@ -52,6 +52,8 @@ def prepare_source(ctx: jobs.JobContext) -> dict:
     p = ctx.params
     src = db.get("sources", p["source_id"])
     st = config.load_settings()
+    from .. import tts  # free the GPU for separation and speech recognition (a TTS model can hold ~8 GB)
+    tts.unload()
     work = config.DATA / "sources" / src["id"]
     master = work / "master.wav"
     ctx.progress(0.02, "解碼音訊")
@@ -137,6 +139,8 @@ def prepare_source(ctx: jobs.JobContext) -> dict:
     if p.get("keep_master") is False:
         master.unlink(missing_ok=True)
     total = sum(r["duration"] for r in records)
+    if not db.query("SELECT id FROM jobs WHERE kind='prepare_source' AND status='queued' LIMIT 1"):
+        asr.unload()  # last recording in the queue: give the GPU back for text to speech
     return {"segments": len(records), "speech_minutes": round(total / 60, 1),
             "message": f"完成：{len(records)} 段，共 {total / 60:.1f} 分鐘語音"}
 

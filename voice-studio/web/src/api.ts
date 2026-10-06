@@ -8,7 +8,7 @@ export class ApiError extends Error {
   }
 }
 
-async function request<T>(method: string, url: string, body?: unknown): Promise<T> {
+async function request<T>(method: string, url: string, body?: unknown, retried = false): Promise<T> {
   const init: RequestInit = { method, headers: {} };
   if (body instanceof FormData) init.body = body;
   else if (body !== undefined) {
@@ -16,6 +16,14 @@ async function request<T>(method: string, url: string, body?: unknown): Promise<
     (init.headers as Record<string, string>)["Content-Type"] = "application/json";
   }
   const r = await fetch(url, init);
+  if (r.status === 401 && !retried) {
+    // network mode: the studio was started with VSTUDIO_PASSWORD
+    const pw = window.prompt("Voice Studio 密碼");
+    if (pw) {
+      document.cookie = `studio_pw=${encodeURIComponent(pw)}; path=/; SameSite=Strict; max-age=2592000`;
+      return request<T>(method, url, body, true);
+    }
+  }
   if (!r.ok) {
     let msg = r.statusText;
     try {
@@ -86,17 +94,21 @@ export type Training = {
   progress: TrainProgress; cost_estimate: number; created_at: number; finished_at: number | null;
   preset: { id: string; name?: string; params?: Record<string, unknown> };
   job: { status: string; progress: number; message: string } | null; job_id?: string; log?: string;
+  note?: string; pod_state?: string | null; cost_per_hr?: number | null;
 };
 export type Plan = {
   engine: string; preset: string; gpu: string; usd_per_hour: number; data_hours: number; n_train: number;
   steps: number; estimate_hours: number; estimate_usd: number; estimate_basis: "measured" | "guess";
-  max_hours: number; max_usd: number; disk_gb: number; warnings: string[];
+  max_hours: number; max_usd: number; disk_gb: number; ram_gb: number; warnings: string[];
+  epochs_effective?: number | null; blocked?: string | null; params: Record<string, unknown>;
 };
+export type Orphan = { id: string; name: string; training: string; known: boolean; cost_per_hr?: number };
 export type Reference = { id: string; file: string; text: string; lang: string; label: string; segment_id?: string };
 export type Checkpoint = { name: string; step: number; epoch: number; weights: boolean };
+export type ConditionScore = { sim: number | null; agree: number | null; n: number; complete: boolean; seen_only?: boolean };
 export type CheckpointScore = {
-  name: string; sim: number | null; agree: number | null;
-  clips: { line: number; kind: string; sim: number; agree: number | null }[];
+  name: string; sim: number | null; agree: number | null; summary: Record<string, ConditionScore>;
+  clips: { line: number; kind: string; sim: number; agree: number | null; seen?: boolean }[];
 };
 export type SampleLine = { id: string; text: string; lang: string; audio: string; seen?: boolean };
 export type Model = {
@@ -105,9 +117,11 @@ export type Model = {
   meta: {
     mode?: string; checkpoint?: string | null; references?: Reference[]; dataset_id?: string; languages?: string[];
     notes?: string; preset?: { id: string; params?: Record<string, unknown> }; checkpoint_chosen_by_user?: boolean;
+    sampling?: string;
   };
   metrics: {
-    checkpoints?: CheckpointScore[]; recommended?: string | null; ground_truth_sim?: number | null; asr?: boolean;
+    checkpoints?: CheckpointScore[]; recommended?: string | null; baseline_sim?: number | null; asr?: boolean;
+    reason?: string; improved_over_base?: boolean | null; held_out_lines?: number; asr_failures?: number;
   };
   modes: string[]; checkpoints: Checkpoint[]; samples: { lines?: SampleLine[]; reference?: SampleLine | null };
   available: [boolean, string]; train_seconds?: number | null;

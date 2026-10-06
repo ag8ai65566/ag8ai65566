@@ -59,13 +59,17 @@ def install_engine(ctx: jobs.JobContext) -> dict:
         ctx.progress(min(0.6, 0.05 + n * 0.004), "安裝套件：" + line.strip()[:60])
     if p.wait() != 0:
         raise RuntimeError("安裝失敗，詳細訊息在工作紀錄。常見原因：網路中斷、磁碟空間不足。")
+    # a fresh interpreter proves the native parts load (find_spec alone succeeds for broken DLLs)
+    probe = subprocess.run([sys.executable, "-c", f"import torch; from {spec['module']} import {spec['cls']}; print('ok')"],
+                           capture_output=True, text=True, creationflags=flags)
+    ctx.log(probe.stdout + probe.stderr[-3000:])
+    if probe.returncode != 0:
+        raise RuntimeError("套件裝好了但載入失敗（詳見工作紀錄）。常見原因：PyTorch 不是 GPU 版，或缺少 Visual C++ 執行階段。")
     importlib.invalidate_caches()
-    if importlib.util.find_spec(spec["module"]) is None:
-        raise RuntimeError("套件裝好了但載入不到，請重新啟動 Voice Studio 再試。")
     from huggingface_hub import snapshot_download
     repos = spec.get("download", [])
     for k, repo in enumerate(repos):
         ctx.progress(0.6 + 0.4 * k / max(1, len(repos)), f"下載模型權重 {repo}（數 GB，請稍候）", force=True)
         ctx.log(f"download {repo}")
         snapshot_download(repo, token=config.get_secret("hf_token") or None)
-    return {"message": f"{eng.name} 已安裝，可以在本機合成語音"}
+    return {"message": f"{eng.name} 已安裝。請關掉並重新開啟 Voice Studio，再開始合成。", "restart": True}

@@ -64,7 +64,14 @@ function ModelDetail({ id }: { id: string }) {
   const rows = [{ name: "base", step: 0, epoch: 0, weights: false }, ...m.checkpoints];
   const lines = m.samples.lines ?? [];
   const shown = rows.filter((r) => r.name === "base" || r.weights || scores.has(r.name));
-  const kinds = m.engine === "voxcpm2" ? ["plain", "ref"] : ["plain"];
+  // which clips each row has: from the scores when available, else what each engine's cloud script writes
+  const kindsFor = (name: string) => {
+    const sm = scores.get(name)?.summary;
+    if (sm && Object.keys(sm).length) return Object.keys(sm);
+    if (m.engine === "voxcpm2") return ["plain", "ref"];
+    if (m.engine === "qwen3" && name === "base") return ["ref"];
+    return ["plain"];
+  };
   return (
     <div className="min-w-0 space-y-6">
       <Card>
@@ -95,23 +102,31 @@ function ModelDetail({ id }: { id: string }) {
       {m.checkpoints.length > 0 && (
         <Card title="檢查點比較" actions={<Button size="sm" variant="ghost" loading={evaluate.isPending} onClick={() => evaluate.mutate()}><RefreshCw className="size-3.5" />重新評分</Button>}>
           <p className="mb-3 text-sm text-zinc-500">
-            相似度：和本人錄音的聲紋有多像（100 = 完全一樣{m.metrics.ground_truth_sim != null && <>；本人其他錄音彼此約 {pct(m.metrics.ground_truth_sim)}</>}）。
-            念對程度：語音辨識聽到的和應該念的有多一致。訓練太久時相似度可能還在升，但開始漏字或亂念，所以推薦的是「念對程度不差太多裡最像的」。
+            <b>相似度</b>是聲紋模型算出的接近程度（不是百分比的「像幾成」）{m.metrics.baseline_sim != null && <>；本人不同錄音彼此約 {pct(m.metrics.baseline_sim)}，可以當參考基準</>}。
+            <b>念對程度</b>是語音辨識聽到的和應該念的一致程度。「只用模型」才看得出訓練學到多少；「＋參考」的音色有一部分來自參考錄音，分開比較。
+            推薦的是「只用模型」時，念對程度和最好的差不到 5 分的檢查點裡最像的。
           </p>
+          {m.metrics.reason && <p className="mb-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:bg-amber-950/40 dark:text-amber-200">{m.metrics.reason}</p>}
+          {m.metrics.improved_over_base === false && <p className="mb-3 rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:bg-amber-950/40 dark:text-amber-200">推薦的檢查點沒有比訓練前更像。可能是資料太少或品質不夠，請先聽聽看，再考慮補資料重訓。</p>}
+          {m.meta.sampling && m.meta.sampling !== "complete" && <p className="mb-3 text-sm text-amber-700">雲端試念沒有完成，部分檢查點沒有樣本。</p>}
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="text-left text-xs text-zinc-500"><tr><th className="py-2">檢查點</th><th>epoch</th><th>相似度</th><th>念對程度</th><th /></tr></thead>
+              <thead className="text-left text-xs text-zinc-500">
+                <tr><th className="py-2">檢查點</th><th>epoch</th><th colSpan={2}>只用模型：相似度／念對</th><th colSpan={2}>＋參考：相似度／念對</th><th /></tr>
+              </thead>
               <tbody>
                 {shown.map((r) => {
-                  const sc = scores.get(r.name);
+                  const sc = scores.get(r.name)?.summary ?? {};
                   const using = m.meta.checkpoint === r.name;
                   return (
                     <tr key={r.name} className={clsx("border-t border-zinc-100 dark:border-zinc-800", using && "bg-brand-50/60 dark:bg-brand-900/10")}>
                       <td className="py-2 font-mono text-xs">{r.name === "base" ? "訓練前（基礎模型）" : r.name}
                         {m.metrics.recommended === r.name && <Badge tone="green"><Crown className="size-3" />推薦</Badge>}</td>
                       <td className="tabular-nums">{r.name === "base" ? "—" : r.epoch}</td>
-                      <td className="tabular-nums">{pct(sc?.sim)}</td>
-                      <td className="tabular-nums">{pct(sc?.agree)}</td>
+                      <td className="tabular-nums">{pct(sc.plain?.sim)}</td>
+                      <td className="tabular-nums">{pct(sc.plain?.agree)}</td>
+                      <td className="tabular-nums text-zinc-500">{pct(sc.ref?.sim)}</td>
+                      <td className="tabular-nums text-zinc-500">{pct(sc.ref?.agree)}</td>
                       <td className="text-right">
                         {r.weights ? (using ? <Badge tone="brand">使用中</Badge> : <Button size="sm" variant="secondary" onClick={() => patch.mutate({ checkpoint: r.name })}>使用這個</Button>)
                           : <span className="text-xs text-zinc-400">{r.name === "base" ? "對照用" : "只有樣本"}</span>}
@@ -135,7 +150,7 @@ function ModelDetail({ id }: { id: string }) {
                 <div className="mb-2 text-sm">{ln.text} <span className="text-xs text-zinc-400">{LANGS[ln.lang] ?? ln.lang}</span></div>
                 <div className="flex flex-wrap gap-1.5">
                   <PlayButton player={player} url={`/api/segments/${ln.id}/audio`} label="本人" />
-                  {shown.map((r) => kinds.map((k) => (
+                  {shown.map((r) => kindsFor(r.name).map((k) => (
                     <PlayButton key={r.name + k} small player={player} url={`/api/models/${m.id}/samples/${r.name}/${i}_${k}.wav`}
                       label={`${r.name === "base" ? "訓練前" : `ep ${r.epoch}`}${k === "ref" ? "＋參考" : ""}`} />
                   )))}

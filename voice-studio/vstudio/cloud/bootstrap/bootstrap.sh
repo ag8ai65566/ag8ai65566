@@ -1,38 +1,80 @@
 #!/bin/bash
 # Voice Studio cloud training bootstrap. Runs as the pod's start command on RunPod.
 # Everything lives on the network volume under /workspace/vs, so the engine environment is installed only once
-# and the outputs survive the pod. The pod removes itself when it finishes, fails, or hits the time limit.
+# and the outputs survive the pod. The pod removes itself when it finishes, fails, is signalled or hits the time
+# limit; removal is retried until RunPod confirms it. The studio and its orphan check remove it too.
 set -uo pipefail
-JOB="/workspace/vs/jobs/${VS_TRAINING_ID}"
-export HF_HOME=/workspace/vs/hf PYTHONUNBUFFERED=1 VS_SRC="/workspace/vs/src/${VS_ENGINE}" VS_WORK=/root/vswork
+set -m   # background jobs get their own process group, so the watchdog can stop all of the work at once
+VS_ROOT="${VS_ROOT:-/workspace/vs}"   # the network volume (overridable only for local tests)
+JOB="$VS_ROOT/jobs/${VS_TRAINING_ID}"
+export VS_ROOT HF_HOME="$VS_ROOT/hf" PYTHONUNBUFFERED=1 VS_SRC="$VS_ROOT/src/${VS_ENGINE}" VS_WORK="${VS_WORK:-/root/vswork}"
 mkdir -p "$JOB"
 exec > >(tee -a "$JOB/train.log") 2>&1
 echo "[vs] start $(date -u +%FT%TZ) pod=${RUNPOD_POD_ID:-?} gpu=$(nvidia-smi --query-gpu=name,memory.total --format=csv,noheader 2>/dev/null) disk=$(df -h /root | tail -1 | awk '{print $4}') free"
 
+VS_DATA="${VS_DATA:-/root/vsdata}"
+STAGE_FILE="${VS_WORK}.stage"
+WORK_PID=""
+FINISHING=0
+
 finish() {
-  echo "[vs] removing pod ${RUNPOD_POD_ID:-?} ($1)"
-  sync
-  runpodctl remove pod "${RUNPOD_POD_ID}" >/dev/null 2>&1 || runpodctl stop pod "${RUNPOD_POD_ID}" >/dev/null 2>&1
-  sleep 60
+  [ "$FINISHING" = 1 ] && return
+  FINISHING=1
+  echo "[vs] finishing: $1"
+  if [ -n "$WORK_PID" ]; then
+    kill -TERM -- "-$WORK_PID" 2>/dev/null; sleep "${VS_KILL_GRACE:-5}"; kill -KILL -- "-$WORK_PID" 2>/dev/null
+  fi
+  timeout 30s sync || true
+  local n=0
+  until timeout 30s runpodctl remove pod "${RUNPOD_POD_ID:?}"; do
+    n=$((n + 1))
+    echo "[vs] pod removal failed (attempt $n); retrying"
+    # stopping releases the GPU (the expensive part) even if deletion keeps failing
+    [ "$n" = 3 ] && timeout 30s runpodctl stop pod "${RUNPOD_POD_ID}"
+    sleep $(( n < 6 ? ${VS_RETRY_SLEEP:-10} : 60 ))
+  done
+  sleep "${VS_FINISH_SLEEP:-300}"   # the pod is being deleted; never fall through to restarting work
   exit 0
 }
 fail() {
   printf '{"status":"error","stage":"%s","at":"%s"}\n' "$1" "$(date -u +%FT%TZ)" > "$JOB/error.json"
   finish "error in $1"
 }
+on_timeout() {
+  printf '{"status":"timeout","stage":"%s","at":"%s"}\n' "$(cat $STAGE_FILE 2>/dev/null)" "$(date -u +%FT%TZ)" > "$JOB/error.json"
+  finish timeout
+}
+trap on_timeout USR1
+trap 'finish signal' TERM INT HUP
+trap 'finish exit' EXIT
+
+run_work() {
+  echo setup > $STAGE_FILE
+  echo '{"phase":"setup"}' > "$JOB/progress.json"
+  bash "$JOB/setup_env.sh" || return 1
+  echo unpack > $STAGE_FILE
+  echo '{"phase":"unpack"}' > "$JOB/progress.json"
+  mkdir -p "$VS_DATA" && tar -xf "$JOB/dataset.tar" -C "$VS_DATA" || return 1
+  echo train > $STAGE_FILE
+  # shellcheck disable=SC1090
+  source "$VS_ROOT/envs/${VS_ENGINE}/bin/activate" || return 1
+  python "$JOB/train_entry.py" --config "$JOB/config.json" --data "$VS_DATA"
+}
 
 # hard time limit, independent of the training process
-( sleep "${VS_MAX_SECONDS:-43200}"; printf '{"status":"timeout"}\n' > "$JOB/error.json"; finish timeout ) &
+( sleep "${VS_MAX_SECONDS:-43200}"; kill -USR1 $$ ) &
 
-echo '{"phase":"setup"}' > "$JOB/progress.json"
-bash "$JOB/setup_env.sh" || fail setup
+run_work &
+WORK_PID=$!
+wait "$WORK_PID"
+rc=$?
+WORK_PID=""
 
-echo '{"phase":"unpack"}' > "$JOB/progress.json"
-mkdir -p /root/vsdata && tar -xf "$JOB/dataset.tar" -C /root/vsdata || fail unpack
-
-source /workspace/vs/envs/"${VS_ENGINE}"/bin/activate 2>/dev/null || true
-python "$JOB/train_entry.py" --config "$JOB/config.json" --data /root/vsdata || fail train
-
-[ -f "$JOB/model.tar" ] || fail package
-printf '{"status":"done","at":"%s"}\n' "$(date -u +%FT%TZ)" > "$JOB/done.json"
-finish done
+# model.tar is written atomically as soon as the weights are ready, before the optional sample phase,
+# so a failure while sampling still delivers the trained model
+if [ -f "$JOB/model.tar" ]; then
+  printf '{"status":"done","rc":%d,"samples":%s,"at":"%s"}\n' "$rc" \
+    "$([ -f "$JOB/samples.tar" ] && echo true || echo false)" "$(date -u +%FT%TZ)" > "$JOB/done.json"
+  finish done
+fi
+fail "$(cat $STAGE_FILE 2>/dev/null || echo unknown)"

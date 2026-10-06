@@ -24,6 +24,8 @@ class TrainPreset:
     hours_per_data_hour: float  # rough wall-clock estimate per hour of training audio (before calibration)
     s_per_step: float = 0.0     # first guess of seconds per training step, replaced by measured speed after a run
     disk_gb: int = 80           # pod container disk
+    ram_gb: int = 32            # minimum host RAM (RunPod minRAMPerGPU; its default of 8 GB is too small)
+    vcpu: int = 8               # minimum vCPUs (data loading and audio preprocessing workers)
     min_hours: float = 0.0      # recommended minimum amount of approved audio
     recommended: bool = False
 
@@ -70,15 +72,24 @@ class Engine:
         """Remote file name → contents (setup_env.sh, train_entry.py …) placed next to bootstrap.sh."""
         raise NotImplementedError
 
-    def steps(self, n_train: int, preset_id: str) -> int:
+    def schedule(self, n_train: int, params: dict) -> dict:
+        """Engine-specific derived values (e.g. total_steps) stored with the run's parameters."""
+        return {}
+
+    def effective_params(self, preset_id: str, overrides: dict | None, n_train: int) -> dict:
+        """Preset + user overrides + derived schedule: exactly what is quoted, stored and sent to the pod."""
+        params = {**self.preset(preset_id).params, **(overrides or {})}
+        return {**params, **self.schedule(n_train, params)}
+
+    def steps(self, n_train: int, preset_id: str, params: dict | None = None) -> int:
         """Training steps the cloud script will run for n_train clips (0 = unknown)."""
         return 0
 
     def estimate(self, data_hours: float, preset_id: str, usd_h: float, n_train: int = 0,
-                 s_per_step: float | None = None) -> dict:
+                 s_per_step: float | None = None, params: dict | None = None) -> dict:
         """Wall-clock and cost estimate. Uses the measured speed of an earlier run when there is one."""
         p = self.preset(preset_id)
-        steps = self.steps(n_train, preset_id) if n_train else 0
+        steps = self.steps(n_train, preset_id, params) if n_train else 0
         sps = s_per_step or p.s_per_step
         if steps and sps:
             train_h = steps * sps / 3600
@@ -117,9 +128,11 @@ class Engine:
         raise NotImplementedError
 
     def unload(self, handle) -> None:
+        """Drop the model the handle owns, then collect, so the VRAM is actually released."""
         try:
+            if isinstance(handle, dict):
+                handle.clear()
             import gc
-            del handle
             gc.collect()
             import torch
             torch.cuda.empty_cache()

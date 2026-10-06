@@ -14,7 +14,7 @@ def _row(it: dict) -> dict:
     return {k: it[k] for k in MANIFEST_KEYS}
 
 
-def pick_samples(val: list[dict], n: int = 6) -> list[dict]:
+def pick_samples(val: list[dict], n: int = 12) -> list[dict]:
     """Up to n held-out lines, balanced across languages, preferring 3–12 s clips with good scores."""
     by_lang: dict[str, list[dict]] = {}
     for it in sorted(val, key=lambda i: (not 3 <= i["duration"] <= 12, -(i.get("score") or 0))):

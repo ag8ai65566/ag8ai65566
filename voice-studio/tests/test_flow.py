@@ -176,20 +176,29 @@ def test_cloud_roundtrip_with_mock_pod(client, tmp_path):
                     "--data", str(tmp_path / "pod" / "vsdata")], check=True, env=env)
     prog = json.loads((pod_job / "progress.json").read_text())
     assert prog["phase"] == "package" and prog["total"] == 4
-    m = training.install_model(tid, pod_job / "model.tar")
+    with tarfile.open(pod_job / "model.tar") as t:
+        names = t.getnames()
+    assert "model/engine.json" in names and not any(n.endswith("optimizer.pth") for n in names)
+    m = training.install_model(tid, pod_job / "model.tar", pod_job / "samples.tar")
+    assert training.install_model(tid, pod_job / "model.tar")["id"] == m["id"]  # idempotent
     assert m["meta"]["checkpoint"] == "step_0000004" and m["meta"]["references"]
     ev = db.query("SELECT * FROM jobs WHERE kind='evaluate_model'")[0]
     j = _wait(c, ev["id"])
     assert j["status"] == "done", j
     got = c.get(f"/api/models/{m['id']}").json()
-    names = [r["name"] for r in got["metrics"]["checkpoints"]]
-    assert names[0] == "base" and got["metrics"]["recommended"] in ("step_0000002", "step_0000004")
+    rows = got["metrics"]["checkpoints"]
+    assert rows[0]["name"] == "base" and "plain" in rows[0]["summary"]
+    # this tiny dataset has no held-out lines, so there is no automatic recommendation, only a reason
+    held = got["metrics"]["held_out_lines"]
+    assert (got["metrics"]["recommended"] is None and got["metrics"]["reason"]) if held == 0 else True
     assert c.get(f"/api/models/{m['id']}/samples/base/0_plain.wav").status_code == 200
     assert c.get(f"/api/models/{m['id']}/samples/../engine.json/x").status_code == 404
     from fastapi import HTTPException
     from vstudio.api.train import _safe_file
     with pytest.raises(HTTPException):
         _safe_file(Path(m["path"]), "samples/../../../studio.db")
+    with pytest.raises(KeyError):
+        training.remove_reference(m["id"], "../../studio")
     # pick a checkpoint by hand, then speak with a reference clip
     assert c.patch(f"/api/models/{m['id']}", json={"checkpoint": "step_0000002"}).json()["meta"]["checkpoint"] == "step_0000002"
     out = c.post("/api/tts", json={"model_id": m["id"], "text": "テストです", "mode": "ref"}).json()
@@ -210,16 +219,22 @@ def test_real_engine_cloud_files_render(client, tmp_path):
         eng = engines.get(eid)
         files = eng.cloud_files()
         assert {"setup_env.sh", "train_entry.py", "vs_common.py"} <= set(files)
-        assert "{" not in files["setup_env.sh"].split("python - <<'PY'")[0].replace("${", "").replace("{ ", "")
+        import re
+        assert not re.search(r"\{(engine|name|repo|commit|version|module|cls|extra_pip|post|recipe)\}", files["setup_env.sh"])
+        assert re.search(r"\.ready-[0-9a-f]{12}-", files["setup_env.sh"])
         for name in ("train_entry.py", "vs_common.py"):
             f = tmp_path / f"{eid}_{name}"
             f.write_text(files[name], encoding="utf-8")
             py_compile.compile(str(f), doraise=True)
         assert eng.steps(3600, eng.presets[0].id) > 0
     vox = engines.get("voxcpm2")
-    assert vox.steps(3600, "lora") == round(3600 // 16 * 2)
+    assert vox.steps(3600, "lora") == 450  # 1800 batches × 2 epochs ÷ 8 accumulation
     est = vox.estimate(10, "lora", 1.09, n_train=3600)
     assert est["steps"] == 450 and 0.5 < est["hours"] < 3
+    eff = vox.effective_params("lora", {"epochs": 1}, 3600)
+    assert eff["total_steps"] == 225 and eff["epochs_effective"] == 1.0
+    with pytest.raises(ValueError):
+        vox.effective_params("lora", None, 10)  # fewer clips than one optimizer update
     assert vox.estimate(10, "lora", 1.09, n_train=3600, s_per_step=20)["basis"] == "measured"
 
 
@@ -245,3 +260,31 @@ def test_lexicon_longest_first(client):
                                       {"from": "AI", "to": "エーアイ", "lang": "ja"}]})
     assert tts.apply_lexicon("推しの子と推し", "ja") == "おしのことおし"
     assert tts.apply_lexicon("AI voice", "en") == "AI voice"
+
+
+def test_guard_blocks_foreign_hosts_and_origins(client):
+    c = client
+    assert c.get("/api/voices").status_code == 200
+    assert c.get("/api/voices", headers={"host": "evil.example"}).status_code == 403  # DNS rebinding
+    r = c.post("/api/voices", json={"name": "x", "kind": "self"}, headers={"origin": "http://evil.example"})
+    assert r.status_code == 403  # another website's page
+    r = c.post("/api/voices", json={"name": "x", "kind": "self", "languages": []},
+               headers={"origin": "http://testserver"})
+    assert r.status_code == 200
+
+
+def test_password_mode(tmp_path, monkeypatch):
+    monkeypatch.setenv("VSTUDIO_DATA", str(tmp_path / "data"))
+    monkeypatch.setenv("VSTUDIO_PASSWORD", "correct horse")
+    for m in [m for m in list(sys.modules) if m.startswith("vstudio")]:
+        del sys.modules[m]
+    server = importlib.import_module("vstudio.server")
+    from fastapi.testclient import TestClient
+    with TestClient(server.app) as c:
+        assert c.get("/api/voices").status_code == 401
+        assert c.get("/api/voices", headers={"x-studio-password": "correct horse"}).status_code == 200
+        c.cookies.set("studio_pw", "correct%20horse")
+        assert c.get("/api/voices").status_code == 200
+        assert c.get("/api/health").status_code == 200
+    import vstudio.db as db
+    db.reset_connection()
