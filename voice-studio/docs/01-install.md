@@ -20,10 +20,18 @@
 - 遇到「CUDA out of memory」：按文字轉語音頁右上角「釋放顯示卡」，關掉其他程式後再試。
 - Qwen3-TTS 合成約用 6 GB，也沒問題。
 
+## 下載
+
+1. 下載程式（ZIP，約 14 MB）：
+   https://github.com/ag8ai65566/ag8ai65566/archive/refs/heads/claude/sudowrite-novel-framework-2cmja7.zip
+   （也可以到 https://github.com/ag8ai65566/ag8ai65566 ，左上角切換到 `claude/sudowrite-novel-framework-2cmja7` 分支，按綠色的「Code」→「Download ZIP」。）
+2. **解壓縮之前**：在 ZIP 檔上按右鍵 →「內容」→ 最下面勾選「解除封鎖」→ 確定。這樣之後執行 `.bat` 時，Windows 比較不會擋。
+3. 解壓縮後打開 `ag8ai65566-claude-sudowrite-novel-framework-2cmja7` 資料夾，裡面的 **`voice-studio`** 資料夾就是平台本體，`install.bat` 在它裡面。其他資料夾（小說設定等）和平台無關，可以不理。
+
 ## 安裝
 
-1. 把 `voice-studio` 資料夾放在一個**路徑沒有特殊符號**的位置，例如 `D:\voice-studio`。
-2. 雙擊 **`install.bat`**。它會：
+1. 把 `voice-studio` 資料夾搬到一個**路徑沒有中文、空白或特殊符號**的位置，例如 `D:\voice-studio`。
+2. 雙擊 **`install.bat`**（如果出現藍色的「Windows 已保護您的電腦」，按「其他資訊」→「仍要執行」）。它會：
    - 安裝 Python 管理工具 uv 和 Python 3.11（不影響你電腦上其他的 Python）；
    - 安裝 GPU 版 PyTorch（約 3 GB）；
    - 安裝 Voice Studio 和語音辨識；

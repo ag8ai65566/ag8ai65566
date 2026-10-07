@@ -323,7 +323,10 @@ function DatasetPanel({ voice }: { voice: Voice }) {
         <div className="text-2xl font-semibold tabular-nums">{fmtMin(approved)}</div>
         <div className="text-xs text-zinc-500">{voice.name} 已核可的語音</div>
         <div className="mt-2 text-xs text-zinc-500">
-          {approved < 30 ? "少於 30 分鐘：可以先試「免訓練」或 LoRA，但相似度有限。" : approved < 300 ? "30 分鐘到 5 小時：LoRA 微調的好範圍。" : "5 小時以上：可以比較 LoRA 和完整微調。"}
+          {approved < 30 ? "少於 30 分鐘：先試「免訓練」，微調的效果有限。"
+            : approved < 300 ? "30 分鐘到 5 小時：可以先跑一次 LoRA 確認流程；建議目標是 5–10 小時。"
+            : approved <= 600 ? "5–10 小時：建議目標。可以比較 VoxCPM2 LoRA、完整微調和 Qwen3-TTS。"
+            : "超過 10 小時：多出來的部分要帶來新的語氣、場合或語言才有幫助；可以先用 5、10 小時各跑一次比較。"}
         </div>
       </div>
       {!voice.consent_ok ? (

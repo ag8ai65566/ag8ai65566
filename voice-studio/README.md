@@ -18,10 +18,11 @@
 ## 安裝（Windows + NVIDIA）
 
 1. 安裝最新 NVIDIA 驅動。
-2. 雙擊 `install.bat`。
-3. 雙擊桌面「Voice Studio」或 `start.bat`，瀏覽器會打開 http://127.0.0.1:7860 。
-4. 設定 → 引擎 → 安裝 VoxCPM2（本機合成用）。
-5. 設定 → 雲端 GPU：填 RunPod 金鑰（存在 Windows 認證管理員）。
+2. 下載 https://github.com/ag8ai65566/ag8ai65566/archive/refs/heads/claude/sudowrite-novel-framework-2cmja7.zip ，解壓縮，把裡面的 `voice-studio` 資料夾搬到例如 `D:\voice-studio`。
+3. 雙擊 `voice-studio` 裡的 `install.bat`。
+4. 雙擊桌面「Voice Studio」或 `start.bat`，瀏覽器會打開 http://127.0.0.1:7860 。
+5. 設定 → 引擎 → 安裝 VoxCPM2（本機合成用）。
+6. 設定 → 雲端 GPU：填 RunPod 金鑰（存在 Windows 認證管理員）。
 
 詳細步驟見 `docs/01-install.md`，或啟動後的「教學」頁。
 
