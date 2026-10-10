@@ -25,6 +25,8 @@ class SpeakIn(BaseModel):
     mode: str | None = None
     ref_id: str | None = None
     cfg: float | None = None
+    emotion: str | None = None     # picks the reference clip and catchphrase recording; else read from the style
+    phrases: bool = True           # splice original catchphrase recordings into the line
 
 
 @router.post("/tts")
@@ -36,7 +38,8 @@ async def speak(body: SpeakIn):
     extra = {"cfg": body.cfg} if body.cfg else None
     try:
         return await run_in_threadpool(tts.generate, body.model_id, body.text.strip(), body.language, body.style,
-                                       body.takes, body.seed, body.screen, None, body.mode, body.ref_id, extra)
+                                       body.takes, body.seed, body.screen, None, body.mode, body.ref_id, extra,
+                                       body.emotion or None, body.phrases)
     except KeyError:
         raise HTTPException(404, "找不到模型")
     except (ValueError, RuntimeError) as e:
@@ -110,6 +113,7 @@ class ScriptIn(BaseModel):
     cast: dict = {}
     takes: int = 2
     gap: float = 0.35
+    phrases: bool = True
 
 
 @router.post("/script/parse")

@@ -4,6 +4,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FileCheck2, Plus, ShieldAlert, ShieldCheck, Trash2, Upload, UserRound } from "lucide-react";
 import { api, fmtMin, LANGS, type Dataset, type Model, type Voice } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader } from "../ui";
+import { PhrasesCard } from "./Phrases";
 
 const KIND: Record<string, string> = { self: "我自己", other: "其他人（需簽同意書）", designed: "原創設計聲音" };
 
@@ -126,7 +127,7 @@ function VoiceDetail({ voice }: { voice: Voice }) {
             </div>
           ))}
         </div>
-        <p className="mt-3 text-sm text-zinc-500">建議：至少 30 分鐘乾淨的已核可語音；1～5 小時效果最好。<Link to={`/review?voice=${voice.id}`} className="ml-1 text-brand-600 underline">去檢查資料</Link></p>
+        <p className="mt-3 text-sm text-zinc-500">建議目標：5–10 小時乾淨的已核可語音，日文英文各至少 2 小時，各種情緒都有一些。<Link to={`/review?voice=${voice.id}`} className="ml-1 text-brand-600 underline">去檢查資料</Link></p>
       </Card>
 
       <Card title={<span className="flex items-center gap-2">同意紀錄 {voice.consent_ok ? <Badge tone="green"><ShieldCheck className="size-3" />完整</Badge> : <Badge tone="amber"><ShieldAlert className="size-3" />未完成，不能訓練</Badge>}</span>}>
@@ -169,6 +170,8 @@ function VoiceDetail({ voice }: { voice: Voice }) {
           <Button variant="secondary" onClick={() => enroll.mutate()} disabled={!enrollFiles?.length} loading={enroll.isPending}><Upload className="size-4" />加入聲紋</Button>
         </div>
       </Card>
+
+      <PhrasesCard voice={voice} />
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card title="訓練資料版本">

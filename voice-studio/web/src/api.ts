@@ -56,16 +56,17 @@ export type Voice = {
   consent: Consent | null; consent_doc: string | null; consent_ok: boolean;
   enrollment: { path: string; from: string }[]; enrolled: number;
   stats: Record<string, { count: number; minutes: number }>;
+  emotions?: Record<string, number>;   // approved minutes per emotion label ("" = unlabelled)
 };
 export type Source = {
   id: string; filename: string; path: string; duration: number | null; status: string;
-  voice_hint: string | null; language: string | null; segments: number; created_at: number;
+  voice_hint: string | null; language: string | null; segments: number; created_at: number; emotion?: string | null;
 };
 export type Segment = {
   id: string; source_id: string; voice_id: string | null; start: number; end: number; duration: number;
   text: string; text_alt: string; lang: string | null; asr_agree: number | null; spk_sim: number | null;
   snr: number | null; clip: number | null; cluster: number | null; score: number | null;
-  status: "pending" | "approved" | "rejected"; flags: string[]; edited: number;
+  status: "pending" | "approved" | "rejected"; flags: string[]; edited: number; emotion?: string | null;
 };
 export type AutoReview = {
   unsure: number; spot_left: number; spot_ok: number; spot_fail: number; auto_approved: number; auto_rejected: number;
@@ -110,7 +111,18 @@ export type Plan = {
   epochs_effective?: number | null; blocked?: string | null; params: Record<string, unknown>;
 };
 export type Orphan = { id: string; name: string; training: string; known: boolean; cost_per_hr?: number };
-export type Reference = { id: string; file: string; text: string; lang: string; label: string; segment_id?: string };
+export type Reference = {
+  id: string; file: string; text: string; lang: string; label: string; segment_id?: string; emotion?: string;
+};
+export type PhraseClip = { id: string; file: string; emotion: string; duration: number; from: string };
+export type PhraseCheck = {
+  output_id: string; match: number | null; sim: number | null; dur_ratio: number | null; at: number; checkpoint?: string | null;
+};
+export type Phrase = {
+  id: string; voice_id: string; text: string; variants: string[]; lang: string | null; clips: PhraseClip[];
+  checks: Record<string, PhraseCheck>; created_at: number;
+  counts: { segments?: number; approved?: number; other_spellings?: number };
+};
 export type Checkpoint = { name: string; step: number; epoch: number; weights: boolean };
 export type ConditionScore = { sim: number | null; agree: number | null; n: number; complete: boolean; seen_only?: boolean };
 export type CheckpointScore = {
@@ -138,7 +150,8 @@ export type Output = {
   favorite: number; batch: string | null;
   params: {
     language?: string; style?: string; seed?: number; engine?: string; scene?: boolean; mode?: string;
-    ref?: string | null; checkpoint?: string | null;
+    ref?: string | null; checkpoint?: string | null; emotion?: string | null;
+    phrases?: { phrase: string; clip: string; emotion: string }[];
   };
   score: { match?: number | null; heard?: string; best?: boolean; lines?: number };
 };
@@ -158,6 +171,14 @@ export type SystemInfo = {
   gpu: { available: boolean; name?: string; vram_gb?: number; free_gb?: number; note?: string };
   counts: Record<string, number>;
 };
+
+// emotion / delivery labels (same keys as vstudio/emotions.py); the first nine are keys 1–9 on the review page
+export const EMOTIONS: [string, string][] = [
+  ["neutral", "平靜"], ["happy", "開心"], ["excited", "興奮"], ["angry", "生氣"], ["sad", "難過"], ["soft", "小聲"],
+  ["laughing", "笑著說"], ["surprised", "驚訝"], ["scared", "害怕"], ["whisper", "悄悄話"], ["teasing", "撒嬌"],
+  ["narration", "念稿／旁白"],
+];
+export const EMOTION_LABEL: Record<string, string> = Object.fromEntries(EMOTIONS);
 
 export const fmtMin = (m: number) => (m >= 60 ? `${(m / 60).toFixed(1)} 小時` : `${m.toFixed(1)} 分鐘`);
 export const fmtTime = (ts: number) => new Date(ts * 1000).toLocaleString("zh-TW", { hour12: false });

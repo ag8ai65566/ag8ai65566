@@ -107,7 +107,7 @@ def prepare_source(ctx: jobs.JobContext) -> dict:
             vid, sim = hint, None
         records.append({"id": sid, "source_id": src["id"], "voice_id": vid, "start": r.start, "end": r.end,
                         "path": str(path), "duration": r.dur, "snr": s["snr"], "clip": s["clip"],
-                        "spk_sim": sim, "ambiguous": amb})
+                        "spk_sim": sim, "ambiguous": amb, "emotion": src.get("emotion")})
 
     if records and not centroids and not hint:
         labels = speaker.cluster(np.array(embs))
@@ -117,11 +117,18 @@ def prepare_source(ctx: jobs.JobContext) -> dict:
     langs = p.get("language") or src.get("language") or None
     st_primary, st_secondary = st["asr_primary"], st["asr_secondary"]
     use_second = p.get("two_model_check", True)
+    from .. import phrases
+    phrase_hint: dict = {}  # voice → its catchphrases in the canonical spelling, as a hint to speech recognition
     for i, rec in enumerate(records):
         ctx.progress(0.40 + 0.58 * i / max(1, len(records)), f"轉文字 {i + 1}/{len(records)}")
         a, b = int(rec["start"] * 16000), int(rec["end"] * 16000)
-        # both models get the same verbatim prompt, so a kept filler is not counted as a disagreement
-        prompt = asr.VERBATIM_PROMPT.get(langs or "") if st.get("asr_verbatim", True) else None
+        # both models get the same prompt (verbatim fillers + this voice's catchphrases), so a kept filler or a
+        # catchphrase is not counted as a disagreement; only when the language is known
+        if rec["voice_id"] not in phrase_hint:
+            phrase_hint[rec["voice_id"]] = phrases.asr_prompt(rec["voice_id"], langs)
+        prompt = ((asr.VERBATIM_PROMPT.get(langs or "", "") if st.get("asr_verbatim", True) else "")
+                  + phrase_hint[rec["voice_id"]]) if langs else ""
+        prompt = prompt or None
         with jobs.GPU_LOCK:
             t1 = asr.transcribe(x16[a:b], st_primary, language=langs, device=st["asr_device"], prompt=prompt)
             t2 = asr.transcribe(x16[a:b], st_secondary, language=t1["lang"], device=st["asr_device"], prompt=prompt) \

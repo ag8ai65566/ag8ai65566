@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Download, FileText, Play } from "lucide-react";
-import { api, fmtTime, LANGS, MODES, type CharacterPreset, type Job, type Model, type Output } from "../api";
+import { api, EMOTION_LABEL, fmtTime, LANGS, MODES, type CharacterPreset, type Job, type Model, type Output } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader, PlayButton, Progress, usePlayer, Wave } from "../ui";
 
 type Cast = { model_id: string; language: string; style: string; mode: string; ref_id: string };
 type Parsed = { events: { kind: string; speaker?: string; text?: string; line: number; romaji?: string }[];
   speakers: { name: string; preset: CharacterPreset | null }[] };
-type SheetLine = { line: number; speaker: string; text: string; romaji?: string; output: string; match: number | null };
+type SheetLine = {
+  line: number; speaker: string; text: string; romaji?: string; output: string; match: number | null;
+  emotion?: string | null; original_clips?: number;
+};
 
 const EXAMPLE = `@@scene 屋上の練習
 @@date 2026-10-06
@@ -27,6 +30,7 @@ export default function Script() {
   const [cast, setCast] = useState<Record<string, Cast>>(() => JSON.parse(localStorage.getItem("vs-cast") ?? "{}"));
   const [takes, setTakes] = useState(2);
   const [gap, setGap] = useState(0.35);
+  const [usePhrases, setUsePhrases] = useState(true);
   const [jobId, setJobId] = useState<string | null>(null);
   useEffect(() => { localStorage.setItem("vs-script", script); }, [script]);
   useEffect(() => { localStorage.setItem("vs-cast", JSON.stringify(cast)); }, [cast]);
@@ -50,7 +54,7 @@ export default function Script() {
   }, [parsed.data]);
   const render = useMutation({
     mutationFn: () => api.post<Job>("/api/script/render", {
-      script, takes, gap,
+      script, takes, gap, phrases: usePhrases,
       cast: Object.fromEntries((parsed.data?.speakers ?? []).map((s) => {
         const c = cast[s.name];
         return [s.name, { model_id: c.model_id, language: c.language === "auto" ? null : c.language, style: c.style,
@@ -100,8 +104,8 @@ export default function Script() {
                         {m && <select className="input" value={c.mode || m.modes[0]} onChange={(e) => set({ mode: e.target.value })}>
                           {m.modes.map((k) => <option key={k} value={k}>{MODES[k]?.label ?? k}</option>)}</select>}
                         {m && (c.mode || m.modes[0]) !== "plain" && <select className="input" value={c.ref_id} onChange={(e) => set({ ref_id: e.target.value })}>
-                          <option value="">參考：預設第一段</option>
-                          {m.meta.references?.map((r) => <option key={r.id} value={r.id}>{r.text.slice(0, 20) || r.label}</option>)}</select>}
+                          <option value="">參考：依每句語氣自動挑</option>
+                          {m.meta.references?.map((r) => <option key={r.id} value={r.id}>{r.emotion ? `【${EMOTION_LABEL[r.emotion] ?? r.emotion}】` : ""}{r.text.slice(0, 20) || r.label}</option>)}</select>}
                         <input className="input sm:col-span-2" placeholder="這個角色整體的風格提示（選填），會加在每句的 [語氣] 後面" value={c.style} onChange={(e) => set({ style: e.target.value })} />
                       </div>
                       {s.preset && <p className="mt-2 text-[11px] text-zinc-500">預設語言 {LANGS[s.preset.data.language]}；常用提示：{s.preset.data.default_tags.join(", ")}</p>}
@@ -117,6 +121,10 @@ export default function Script() {
               <Field label="每句產生幾個版本"><select className="input" value={takes} onChange={(e) => setTakes(+e.target.value)}>{[1, 2, 3, 4].map((n) => <option key={n}>{n}</option>)}</select></Field>
               <Field label={`句子之間的間隔 ${gap.toFixed(2)} 秒`}><input type="range" min={0} max={1.5} step={0.05} value={gap} onChange={(e) => setGap(+e.target.value)} className="mt-3 w-full" /></Field>
             </div>
+            <label className="mt-3 flex items-start gap-2 text-sm">
+              <input type="checkbox" className="mt-1" checked={usePhrases} onChange={(e) => setUsePhrases(e.target.checked)} />
+              <span>口頭禪用原音<span className="block text-xs text-zinc-500">台詞裡出現聲音頁登記過、而且有原音的口頭禪時，換成本人的錄音。</span></span>
+            </label>
             <Button className="mt-4 w-full" disabled={!turns || missing.length > 0 || render.isPending || job.data?.status === "running"}
               loading={render.isPending} onClick={() => render.mutate()}><Play className="size-4" />合成整場</Button>
             {missing.length > 0 && turns > 0 && <p className="mt-2 text-xs text-amber-700">還沒指定聲音：{missing.map((s) => s.name).join("、")}</p>}
@@ -169,6 +177,8 @@ function SceneDetail({ id }: { id: string }) {
             <div className="min-w-0 flex-1"><span className="font-medium">{l.speaker}</span>：{l.text}
               {l.romaji && <div className="text-xs text-zinc-500">{l.romaji}</div>}</div>
             {l.match != null && <Badge tone={l.match >= 0.9 ? "green" : l.match >= 0.75 ? "amber" : "red"}>{(l.match * 100).toFixed(0)}%</Badge>}
+            {l.emotion && <Badge tone="brand">{EMOTION_LABEL[l.emotion] ?? l.emotion}</Badge>}
+            {l.original_clips ? <Badge tone="blue">含原音</Badge> : null}
           </li>
         ))}
       </ol>

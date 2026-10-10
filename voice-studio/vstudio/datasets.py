@@ -44,6 +44,17 @@ def choose_reference(items: list[dict], n: int = 3) -> list[dict]:
     return good[:n]
 
 
+def choose_emotion_references(items: list[dict], taken: set[str], limit: int = 8) -> list[dict]:
+    """One reference per labelled emotion (the best clip of that mood), so synthesis can pick the mood it needs."""
+    out = []
+    for emo in sorted({i["emotion"] for i in items if i.get("emotion")}):
+        pick = [i for i in choose_reference([i for i in items if i.get("emotion") == emo], 1) if i["id"] not in taken]
+        out += pick
+        if len(out) >= limit:
+            break
+    return out
+
+
 def split_validation(items: list[dict], val_fraction: float, seed: int) -> set[str]:
     """Hold out whole recordings when there are enough of them, so validation lines are truly unseen
     (neighbouring clips of one recording share room sound and mood). Otherwise hold out random clips."""
@@ -86,9 +97,12 @@ def build(voice_id: str, name: str, min_score: float = 0.0, val_fraction: float 
         dst = root / "wavs" / f"{s['id']}.wav"
         _link(Path(s["path"]), dst)
         items.append({"id": s["id"], "audio": f"wavs/{s['id']}.wav", "text": s["text"], "lang": s["lang"] or "",
-                      "duration": round(s["duration"], 3), "score": s["score"], "source": s["source_id"]})
+                      "duration": round(s["duration"], 3), "score": s["score"], "source": s["source_id"],
+                      "emotion": s.get("emotion") or ""})
     val_ids = split_validation(items, val_fraction, seed)
-    refs = choose_reference([i for i in items if i["id"] not in val_ids])
+    train_items = [i for i in items if i["id"] not in val_ids]
+    refs = choose_reference(train_items)
+    refs += choose_emotion_references(train_items, {r["id"] for r in refs})
     with open(root / "train.jsonl", "w", encoding="utf-8") as tr, open(root / "val.jsonl", "w", encoding="utf-8") as va:
         for i in items:
             (va if i["id"] in val_ids else tr).write(json.dumps(i, ensure_ascii=False) + "\n")
@@ -98,7 +112,9 @@ def build(voice_id: str, name: str, min_score: float = 0.0, val_fraction: float 
             "consent": voice["consent"], "consent_doc": voice.get("consent_doc"),
             "languages": langs, "n_train": len(items) - len(val_ids), "n_val": len(val_ids),
             "reference": [r["audio"] for r in refs],
-            "reference_items": [{k: r[k] for k in ("id", "audio", "text", "lang", "duration")} for r in refs],
+            "reference_items": [{k: r[k] for k in ("id", "audio", "text", "lang", "duration", "emotion")} for r in refs],
+            "emotions": {e: round(sum(i["duration"] for i in items if i["emotion"] == e) / 60, 1)
+                         for e in sorted({i["emotion"] for i in items})},
             "n_sources": len({i["source"] for i in items}), "min_score": min_score, "built_at": db.now()}
     (root / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     return db.insert("datasets", {"id": did, "voice_id": voice_id, "name": name, "n_items": len(items),

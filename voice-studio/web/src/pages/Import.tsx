@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { FolderOpen, RefreshCw, Trash2, Upload, Users } from "lucide-react";
-import { api, fmtMin, type Source, type Voice } from "../api";
+import { api, EMOTIONS, fmtMin, type Source, type Voice } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader, Progress, Wave } from "../ui";
 
 type SourceRow = Source & {
@@ -30,7 +30,7 @@ export default function ImportPage() {
   const qc = useQueryClient();
   const voices = useQuery({ queryKey: ["voices"], queryFn: () => api.get<Voice[]>("/api/voices") });
   const sources = useQuery({ queryKey: ["sources"], queryFn: () => api.get<SourceRow[]>("/api/sources"), refetchInterval: 3000 });
-  const [opts, setOpts] = useState({ voice_hint: "", language: "", separate: false });
+  const [opts, setOpts] = useState({ voice_hint: "", language: "", separate: false, emotion: "" });
   const [drag, setDrag] = useState(false);
   const [queue, setQueue] = useState<{ name: string; progress: number; error?: string }[]>([]);
   const [folder, setFolder] = useState("");
@@ -38,7 +38,7 @@ export default function ImportPage() {
   const fileInput = useRef<HTMLInputElement>(null);
   const consented = (voices.data ?? []).filter((v) => v.consent_ok);
 
-  const fields = { voice_hint: opts.voice_hint, language: opts.language, separate: String(opts.separate) };
+  const fields = { voice_hint: opts.voice_hint, language: opts.language, separate: String(opts.separate), emotion: opts.emotion };
   async function uploadFiles(files: FileList | File[]) {
     const list = Array.from(files);
     setQueue((q) => [...q, ...list.map((f) => ({ name: f.name, progress: 0 }))]);
@@ -54,12 +54,17 @@ export default function ImportPage() {
   }
   const importFolder = useMutation({
     mutationFn: () => api.post<{ found: number; created: number }>("/api/sources/import-path",
-      { path: folder.trim(), voice_hint: opts.voice_hint || null, language: opts.language || null, separate: opts.separate }),
+      { path: folder.trim(), voice_hint: opts.voice_hint || null, language: opts.language || null, separate: opts.separate,
+        emotion: opts.emotion || null }),
     onSuccess: () => qc.invalidateQueries({ queryKey: ["sources"] }),
   });
   const reprocess = useMutation({
     mutationFn: (s: SourceRow) => api.post(`/api/sources/${s.id}/process`, { separate: opts.separate }),
     onSuccess: () => qc.invalidateQueries({ queryKey: ["sources"] }),
+  });
+  const setEmotion = useMutation({
+    mutationFn: ({ s, emotion }: { s: SourceRow; emotion: string }) => api.patch(`/api/sources/${s.id}`, { emotion }),
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["sources"] }); qc.invalidateQueries({ queryKey: ["voices"] }); },
   });
   const remove = useMutation({
     mutationFn: (s: SourceRow) => api.del(`/api/sources/${s.id}`),
@@ -91,6 +96,13 @@ export default function ImportPage() {
                 <option value="ja">日文</option>
                 <option value="en">英文</option>
                 <option value="zh">中文</option>
+              </select>
+            </Field>
+            <Field label="情緒／風格（選填）"
+              hint="整個檔案都是同一種情緒時才選，例如專門錄的一段生氣台詞。一般直播或影片請留空，之後在「檢查資料」逐句標。">
+              <select className="input" value={opts.emotion} onChange={(e) => setOpts({ ...opts, emotion: e.target.value })}>
+                <option value="">不標記</option>
+                {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
               </select>
             </Field>
             <label className="flex items-start gap-2 text-sm">
@@ -146,7 +158,7 @@ export default function ImportPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead className="text-left text-xs text-zinc-500">
-                <tr><th className="py-2 pr-3">檔案</th><th className="pr-3">長度</th><th className="pr-3">狀態</th><th className="pr-3">片段</th><th className="pr-3">誰</th><th /></tr>
+                <tr><th className="py-2 pr-3">檔案</th><th className="pr-3">長度</th><th className="pr-3">狀態</th><th className="pr-3">片段</th><th className="pr-3">誰</th><th className="pr-3">情緒</th><th /></tr>
               </thead>
               <tbody>
                 {sources.data.map((s) => {
@@ -167,6 +179,13 @@ export default function ImportPage() {
                         {s.unassigned > 0 && s.status === "ready"
                           ? <Button size="sm" variant="secondary" onClick={() => setClusterFor(s)}><Users className="size-3.5" />{s.unassigned} 段待指定</Button>
                           : <span className="text-xs text-zinc-500">{hint ?? "自動"}</span>}
+                      </td>
+                      <td className="pr-3">
+                        <select className="input w-28 py-1 text-xs" value={s.emotion ?? ""} title="整個檔案的情緒；你逐句改過的不會被覆蓋"
+                          onChange={(e) => setEmotion.mutate({ s, emotion: e.target.value })}>
+                          <option value="">{s.emotion ? "清除" : "—"}</option>
+                          {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
+                        </select>
                       </td>
                       <td className="whitespace-nowrap text-right">
                         <Button size="sm" variant="ghost" title="重新處理" onClick={() => reprocess.mutate(s)} disabled={!!running}><RefreshCw className="size-3.5" /></Button>

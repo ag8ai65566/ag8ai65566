@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { Download, Mic2, Power, Star, Trash2 } from "lucide-react";
-import { api, fmtTime, LANGS, MODES, type CharacterPreset, type Model, type Output } from "../api";
+import { api, EMOTION_LABEL, EMOTIONS, fmtTime, LANGS, MODES, type CharacterPreset, type Model, type Output, type Phrase } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader, PlayButton, usePlayer, Wave } from "../ui";
 
 const STYLE_CHIPS: [string, string][] = [
@@ -28,6 +28,8 @@ export default function Speak() {
   const [seed, setSeed] = useState("");
   const [screen, setScreen] = useState(true);
   const [presetId, setPresetId] = useState("");
+  const [emotion, setEmotion] = useState("");
+  const [usePhrases, setUsePhrases] = useState(true);
   const [result, setResult] = useState<Output[]>([]);
   const player = usePlayer();
   useEffect(() => {
@@ -36,6 +38,16 @@ export default function Speak() {
     setRefId(model.meta.references?.[0]?.id ?? "");
     setResult([]);
   }, [model?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+  const phrases = useQuery({
+    queryKey: ["phrases", model?.voice_id, "light"], enabled: !!model,
+    queryFn: () => api.get<Phrase[]>(`/api/voices/${model!.voice_id}/phrases?counts=false`),
+  });
+  const withClips = (phrases.data ?? []).filter((p) => p.clips.length);
+  const pickEmotion = (e: string) => {  // a reference of that mood is the strongest way to get it
+    setEmotion(e);
+    const r = model?.meta.references?.find((x) => x.emotion === e);
+    if (r) setRefId(r.id);
+  };
   const preset = presets.data?.find((p) => p.id === presetId);
   useEffect(() => {
     if (!preset) return;
@@ -46,7 +58,7 @@ export default function Speak() {
   const gen = useMutation({
     mutationFn: () => api.post<{ outputs: Output[] }>("/api/tts", {
       model_id: modelId, text, language, style: mode === "hifi" ? "" : style, takes, screen, mode,
-      ref_id: refId || null, seed: seed ? Number(seed) : null,
+      ref_id: refId || null, seed: seed ? Number(seed) : null, emotion: emotion || null, phrases: usePhrases,
     }),
     onSuccess: (r) => { setResult(r.outputs); qc.invalidateQueries({ queryKey: ["outputs", modelId] }); },
   });
@@ -104,6 +116,20 @@ export default function Speak() {
                 ))}
               </div>
             </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Field label="情緒（選填）" hint="會挑這個情緒的參考片段和口頭禪原音。不選時，從風格提示或 [angry] 這類標籤判斷。">
+                <select className="input" value={emotion} onChange={(e) => pickEmotion(e.target.value)}>
+                  <option value="">自動</option>
+                  {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
+                </select>
+              </Field>
+              {withClips.length > 0 && (
+                <label className="mt-6 flex items-start gap-2 text-sm">
+                  <input type="checkbox" className="mt-1" checked={usePhrases} onChange={(e) => setUsePhrases(e.target.checked)} />
+                  <span>口頭禪用原音<span className="block text-xs text-zinc-500">{withClips.map((p) => `「${p.text}」`).join("")} 會換成本人的錄音</span></span>
+                </label>
+              )}
+            </div>
             {needsRef && (
               <Field label="參考片段" hint={refs.length ? "挑語氣最接近你想要的那段。" : undefined}>
                 {refs.length ? (
@@ -112,6 +138,7 @@ export default function Speak() {
                       <input type="radio" checked={refId === r.id} onChange={() => setRefId(r.id)} />
                       <PlayButton small player={player} url={`/api/models/${modelId}/references/${r.id}/audio`} />
                       <span className="truncate">{r.text || r.label}</span>
+                      {r.emotion && <Badge tone="brand">{EMOTION_LABEL[r.emotion] ?? r.emotion}</Badge>}
                     </label>))}</div>
                 ) : <p className="text-sm text-amber-700">這個模型還沒有參考片段，到 <Link to={`/models?id=${modelId}`} className="underline">模型頁</Link> 加入。</p>}
               </Field>
@@ -155,6 +182,8 @@ function Take({ o, index }: { o: Output; index: number }) {
         {o.score.best && <Badge tone="green">最好</Badge>}
         {o.score.match != null && <Badge tone={o.score.match >= 0.9 ? "green" : o.score.match >= 0.75 ? "amber" : "red"}>念對 {(o.score.match * 100).toFixed(0)}%</Badge>}
         <span className="text-zinc-500">{o.duration.toFixed(1)} 秒 · 種子 {o.params.seed}</span>
+        {o.params.phrases?.length ? <Badge tone="blue">含原音：{o.params.phrases.map((p) => p.phrase).join("、")}</Badge> : null}
+        {o.params.emotion && <Badge tone="brand">{EMOTION_LABEL[o.params.emotion] ?? o.params.emotion}</Badge>}
         <span className="ml-auto flex gap-1">
           <a href={`/api/outputs/${o.id}/audio`} download><Button size="sm" variant="ghost"><Download className="size-3.5" />WAV</Button></a>
           <a href={`/api/outputs/${o.id}/audio?format=mp3`} download><Button size="sm" variant="ghost">MP3</Button></a>

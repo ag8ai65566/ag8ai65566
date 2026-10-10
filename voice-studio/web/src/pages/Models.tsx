@@ -3,7 +3,7 @@ import { Link, useSearchParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { Boxes, Crown, Mic2, Pencil, Plus, RefreshCw, Trash2, Wand2 } from "lucide-react";
-import { api, fmtDur, fmtTime, LANGS, type EngineInfo, type Model, type Segment, type Voice } from "../api";
+import { api, EMOTIONS, fmtDur, fmtTime, LANGS, type EngineInfo, type Model, type Segment, type Voice } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader, PlayButton, usePlayer } from "../ui";
 
 const MODE_LABEL: Record<string, string> = { lora: "LoRA 微調", full: "完整微調", sft: "官方微調", zeroshot: "免訓練（零樣本）", mock: "測試" };
@@ -58,6 +58,7 @@ function ModelDetail({ id }: { id: string }) {
   const del = useMutation({ mutationFn: () => api.del(`/api/models/${id}`), onSuccess: () => { qc.invalidateQueries({ queryKey: ["models"] }); location.assign("/models"); } });
   const addRef = useMutation({ mutationFn: (sid: string) => api.post(`/api/models/${id}/references`, { segment_id: sid }), onSuccess: inv });
   const delRef = useMutation({ mutationFn: (rid: string) => api.del(`/api/models/${id}/references/${rid}`), onSuccess: inv });
+  const refEmotion = useMutation({ mutationFn: ({ rid, emotion }: { rid: string; emotion: string }) => api.patch(`/api/models/${id}/references/${rid}`, { emotion }), onSuccess: inv });
   const m = q.data;
   if (!m) return null;
   const scores = new Map((m.metrics.checkpoints ?? []).map((c) => [c.name, c]));
@@ -162,13 +163,17 @@ function ModelDetail({ id }: { id: string }) {
       )}
 
       <Card title="參考片段" actions={<Button size="sm" variant="secondary" onClick={() => setPicking(true)}><Plus className="size-3.5" />加入</Button>}>
-        <p className="mb-3 text-sm text-zinc-500">「參考音色」和「完整複製」模式會用到。準備幾種情緒（平靜、開心、小聲…）各一段，合成時挑最接近想要語氣的那段，效果最好。5–12 秒、乾淨、文字正確的片段最好。</p>
+        <p className="mb-3 text-sm text-zinc-500">「參考音色」和「完整複製」模式會用到。準備幾種情緒（平靜、開心、小聲…）各一段，並標上情緒：合成時選了情緒（或風格提示、劇本的 [angry] 標籤），平台會自動挑那種情緒的參考片段。5–12 秒、乾淨、文字正確的片段最好。</p>
         {!m.meta.references?.length ? <Empty title="還沒有參考片段" /> : (
           <ul className="space-y-2">
             {m.meta.references.map((r) => (
               <li key={r.id} className="flex items-center gap-3 rounded-lg bg-zinc-50 px-3 py-2 text-sm dark:bg-zinc-800/50">
                 <PlayButton player={player} url={`/api/models/${m.id}/references/${r.id}/audio`} />
                 <div className="min-w-0 flex-1"><div className="truncate">{r.text || "（沒有逐字稿：不能用完整複製）"}</div><div className="text-xs text-zinc-500">{r.label}</div></div>
+                <select className="input w-28 py-1 text-xs" value={r.emotion ?? ""} onChange={(e) => refEmotion.mutate({ rid: r.id, emotion: e.target.value })} title="這段參考的情緒">
+                  <option value="">情緒…</option>
+                  {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
+                </select>
                 <button className="text-zinc-400 hover:text-red-500" onClick={() => delRef.mutate(r.id)}><Trash2 className="size-4" /></button>
               </li>
             ))}

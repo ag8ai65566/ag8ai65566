@@ -256,6 +256,16 @@ def add_reference(model_id: str, body: RefIn):
         raise HTTPException(400, str(e))
 
 
+@router.patch("/models/{model_id}/references/{ref_id}")
+def patch_reference(model_id: str, ref_id: str, body: dict):
+    try:
+        return training.set_reference_emotion(model_id, ref_id, body.get("emotion") or "")
+    except KeyError:
+        raise HTTPException(404)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+
 @router.delete("/models/{model_id}/references/{ref_id}")
 def delete_reference(model_id: str, ref_id: str):
     try:

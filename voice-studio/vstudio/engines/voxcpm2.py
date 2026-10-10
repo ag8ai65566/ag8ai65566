@@ -130,8 +130,9 @@ class VoxCPM2Engine(Engine):
                 "seed": seed}
         ref_path = str(reference["path"]) if reference and reference.get("path") else None
         if mode == "hifi" and ref_path and reference.get("text"):
+            # timbre_path: a longer clip for timbre when the prompt is short (a catchphrase recording)
             args.update(text=text, prompt_wav_path=ref_path, prompt_text=reference["text"],
-                        reference_wav_path=ref_path)
+                        reference_wav_path=str(reference.get("timbre_path") or ref_path))
         else:
             args["text"] = f"({style}){text}" if style else text
             if mode in ("ref", "hifi") and ref_path:

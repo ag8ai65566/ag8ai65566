@@ -50,13 +50,18 @@ CREATE TABLE IF NOT EXISTS outputs (
   id TEXT PRIMARY KEY, model_id TEXT, text TEXT NOT NULL, params TEXT NOT NULL DEFAULT '{}', path TEXT NOT NULL,
   duration REAL, score TEXT NOT NULL DEFAULT '{}', favorite INTEGER NOT NULL DEFAULT 0, batch TEXT, created_at REAL NOT NULL
 );
+CREATE TABLE IF NOT EXISTS catchphrases (
+  id TEXT PRIMARY KEY, voice_id TEXT NOT NULL, text TEXT NOT NULL, variants TEXT NOT NULL DEFAULT '[]', lang TEXT,
+  clips TEXT NOT NULL DEFAULT '[]', checks TEXT NOT NULL DEFAULT '{}', created_at REAL NOT NULL
+);
+CREATE INDEX IF NOT EXISTS phrase_voice ON catchphrases(voice_id);
 CREATE TABLE IF NOT EXISTS presets (
   id TEXT PRIMARY KEY, name TEXT NOT NULL, source TEXT NOT NULL, model_id TEXT, data TEXT NOT NULL, created_at REAL NOT NULL
 );
 """
 
 JSON_COLS = {"languages", "consent", "enrollment", "meta", "flags", "params", "result", "preset", "progress",
-             "metrics", "score", "data", "storage"}
+             "metrics", "score", "data", "storage", "variants", "clips", "checks"}
 
 _local = threading.local()
 
@@ -85,6 +90,8 @@ MIGRATIONS = [
     ("trainings", "note", "TEXT NOT NULL DEFAULT ''"),
     ("segments", "asr_logprob", "REAL"),                      # primary ASR confidence (average log-probability)
     ("segments", "no_speech", "REAL"),                        # primary ASR: probability the clip is not speech
+    ("segments", "emotion", "TEXT"),                          # emotion / delivery label (see emotions.py)
+    ("sources", "emotion", "TEXT"),                           # label applied to every segment of the recording
 ]
 
 

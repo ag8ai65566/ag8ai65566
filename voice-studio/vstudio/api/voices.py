@@ -25,6 +25,10 @@ def _stats(v: dict) -> dict:
         (v["id"],)).fetchall()
     by = {row[0]: {"count": row[1], "minutes": round(row[2] / 60, 1)} for row in r}
     v["stats"] = by
+    # approved minutes per emotion label ("" = unlabelled), so the person sees what the data covers
+    v["emotions"] = {(row[0] or ""): round(row[1] / 60, 1) for row in db.connect().execute(
+        "SELECT emotion, COALESCE(SUM(duration),0) FROM segments WHERE voice_id=? AND status='approved' "
+        "GROUP BY emotion", (v["id"],)).fetchall()}
     v["consent_ok"] = datasets.consent_ok(v)
     v["enrolled"] = sum(1 for e in v["enrollment"] if e.get("emb"))
     for e in v["enrollment"]:
@@ -65,6 +69,7 @@ def update_voice(voice_id: str, body: dict):
 def delete_voice(voice_id: str):
     with db.tx() as c:
         c.execute("UPDATE segments SET voice_id=NULL WHERE voice_id=?", (voice_id,))
+        c.execute("DELETE FROM catchphrases WHERE voice_id=?", (voice_id,))  # their recordings live in the folder below
     shutil.rmtree(config.DATA / "voices" / voice_id, ignore_errors=True)
     db.delete("voices", voice_id)
     return {"ok": True}

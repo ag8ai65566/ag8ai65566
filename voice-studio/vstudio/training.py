@@ -7,7 +7,7 @@ import tarfile
 import time
 from pathlib import Path
 
-from . import config, datasets, db, engines, evaluate, jobs  # noqa: F401  (evaluate registers evaluate_model)
+from . import config, datasets, db, emotions, engines, evaluate, jobs  # noqa: F401  (evaluate registers evaluate_model)
 from .cloud import runpod
 
 BOOTSTRAP = (Path(__file__).parent / "cloud" / "bootstrap" / "bootstrap.sh").read_text(encoding="utf-8")
@@ -463,7 +463,7 @@ def install_model(tid: str, tar_local: Path, samples_tar: Path | None = None) ->
     return m
 
 
-def _copy_references(ds: dict, mdir: Path, limit: int = 3) -> list[dict]:
+def _copy_references(ds: dict, mdir: Path, limit: int = 11) -> list[dict]:
     items = ds["meta"].get("reference_items") or [{"audio": a, "text": "", "lang": ""}
                                                     for a in ds["meta"].get("reference", [])]
     out = []
@@ -474,8 +474,11 @@ def _copy_references(ds: dict, mdir: Path, limit: int = 3) -> list[dict]:
             continue
         dst = mdir / "references" / f"ref{k}.wav"
         shutil.copy2(src, dst)
+        emo = it.get("emotion") or ""
         out.append({"id": f"ref{k}", "file": f"references/ref{k}.wav", "text": it.get("text", ""),
-                    "lang": it.get("lang", ""), "label": "資料集參考 " + str(k + 1), "segment_id": it.get("id")})
+                    "lang": it.get("lang", ""), "segment_id": it.get("id"), "emotion": emo,
+                    "label": f"資料集參考：{emotions.EMOTIONS[emo]}" if emo in emotions.EMOTIONS
+                    else "資料集參考 " + str(k + 1)})
     return out
 
 
@@ -500,7 +503,8 @@ def create_zeroshot(voice_id: str, engine_id: str, segment_ids: list[str], name:
             continue
         shutil.copy2(s["path"], mdir / "references" / f"ref{k}.wav")
         refs.append({"id": f"ref{k}", "file": f"references/ref{k}.wav", "text": s["text"], "lang": s["lang"] or "",
-                     "label": (s["text"][:24] + "…") if len(s["text"]) > 24 else s["text"], "segment_id": sid})
+                     "label": (s["text"][:24] + "…") if len(s["text"]) > 24 else s["text"], "segment_id": sid,
+                     "emotion": s.get("emotion") or ""})
     if not refs:
         raise ValueError("請至少選一個這個聲音的片段當參考")
     (mdir / "engine.json").write_text(json.dumps({"engine": eng.id, "mode": "zeroshot", "checkpoints": []}),
@@ -524,7 +528,21 @@ def add_reference(model_id: str, segment_id: str, label: str = "") -> dict:
     (mdir / "references").mkdir(parents=True, exist_ok=True)
     shutil.copy2(s["path"], mdir / "references" / f"ref{k}.wav")
     refs.append({"id": f"ref{k}", "file": f"references/ref{k}.wav", "text": s["text"], "lang": s["lang"] or "",
-                 "label": label or s["text"][:24], "segment_id": segment_id})
+                 "label": label or s["text"][:24], "segment_id": segment_id, "emotion": s.get("emotion") or ""})
+    return db.update("models", model_id, {"meta": {**m["meta"], "references": refs}})
+
+
+def set_reference_emotion(model_id: str, ref_id: str, emotion: str) -> dict:
+    m = db.get("models", model_id)
+    if not m:
+        raise KeyError(model_id)
+    refs = [dict(r) for r in (m["meta"] or {}).get("references", [])]
+    ref = next((r for r in refs if r["id"] == ref_id), None)
+    if ref is None:
+        raise KeyError(ref_id)
+    if emotion and not emotions.valid(emotion):
+        raise ValueError(f"unknown emotion: {emotion}")
+    ref["emotion"] = emotion or ""
     return db.update("models", model_id, {"meta": {**m["meta"], "references": refs}})
 
 

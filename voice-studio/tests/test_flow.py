@@ -426,3 +426,167 @@ def test_auto_review_job_and_undo(client, tmp_path, monkeypatch):
     assert st["other"]["status"] == "pending" and st["unsure"]["flags"] == []
     assert st["good0"]["status"] == "rejected" and st["good1"]["status"] == "approved"
     assert st["mine"]["status"] == "approved"
+
+
+def test_emotion_words():
+    from vstudio import emotions
+    assert emotions.from_style("annoyed, sharp") == "angry"
+    assert emotions.from_style("I made it") is None          # "mad" is not inside "made"
+    assert emotions.from_style("laughing softly") == "laughing"
+    assert emotions.from_style("calm, then excited") == "neutral"   # the earliest word wins
+    assert emotions.from_text_tags("[whispers] ねえ") == "whisper"
+    assert emotions.valid("angry") == "angry" and emotions.valid("furious") is None
+
+
+def _consented_voice(c, name="我"):
+    v = c.post("/api/voices", json={"name": name, "kind": "self", "languages": ["ja", "en"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-10", "agreed": "true", "scope": "train,generate"})
+    return v
+
+
+def _seg(db, vid, sid, text, d, seconds=6.0, amp=0.3, **kw):
+    path = _tone(d / f"{sid}.wav", [(seconds, amp)], sr=48000)
+    row = {"id": sid, "source_id": "s1", "voice_id": vid, "start": 0.0, "end": seconds, "path": str(path),
+           "duration": seconds, "text": text, "text_alt": text, "lang": "ja", "asr_agree": 1.0, "snr": 30.0,
+           "clip": 0.0, "score": 0.9, "status": "approved", "flags": []}
+    return db.insert("segments", {**row, **kw})
+
+
+def test_emotion_labels_flow(client, tmp_path):
+    from vstudio import db
+    c = client
+    v = _consented_voice(c)
+    db.insert("sources", {"id": "s1", "filename": "a.wav", "path": "a.wav", "status": "ready", "created_at": db.now()})
+    d = tmp_path / "segs"
+    d.mkdir()
+    for i in range(6):
+        _seg(db, v["id"], f"calm{i}", "今日は静かに話します", d)
+    for i in range(3):
+        _seg(db, v["id"], f"ang{i}", "もういい加減にして", d, emotion="angry")
+    # a recording-level label follows to its segments, except ones a person labelled differently
+    c.patch("/api/segments/calm0", json={"emotion": "happy"})
+    r = c.patch("/api/sources/s1", json={"emotion": "neutral"}).json()
+    assert r["emotion"] == "neutral"
+    st = {s["id"]: s["emotion"] for s in db.query("SELECT id, emotion FROM segments")}
+    assert st["calm1"] == "neutral" and st["calm0"] == "happy" and st["ang0"] == "angry"
+    assert c.patch("/api/segments/calm1", json={"emotion": "furious"}).status_code == 400
+    # filter, bulk, per-voice minutes
+    assert c.get(f"/api/segments?voice_id={v['id']}&emotion=angry").json()["total"] == 3
+    c.post("/api/segments/bulk", json={"ids": ["calm2"], "emotion": ""})
+    assert c.get(f"/api/segments?voice_id={v['id']}&emotion=none").json()["total"] == 1
+    vv = c.get(f"/api/voices/{v['id']}").json()
+    assert vv["emotions"]["angry"] == 0.3 and vv["emotions"][""] == 0.1
+    # datasets record the spread and keep one reference per labelled emotion
+    ds = c.post("/api/datasets", json={"voice_id": v["id"], "name": "e"}).json()
+    assert ds["meta"]["emotions"]["angry"] == 0.3
+    ref_emotions = {r.get("emotion") for r in ds["meta"]["reference_items"]}
+    assert {"angry", "happy", "neutral"} <= ref_emotions
+    # synthesis picks the reference of the wanted mood
+    from vstudio import tts
+    m = {"path": str(tmp_path), "meta": {"references": [
+        {"id": "ref0", "file": "a.wav", "text": "x", "emotion": "neutral"},
+        {"id": "ref1", "file": "b.wav", "text": "y", "emotion": "angry"}]}}
+    assert tts.reference(m, None, "angry")["id"] == "ref1"
+    assert tts.reference(m, "ref0", "angry")["id"] == "ref0"      # an explicit choice wins
+    assert tts.reference(m, "auto", "sad")["id"] == "ref0"        # nothing of that mood: the first one
+
+
+def test_catchphrases(client, tmp_path):
+    from vstudio import db, phrases
+    c = client
+    v = _consented_voice(c)
+    db.insert("sources", {"id": "s1", "filename": "a.wav", "path": "a.wav", "status": "ready", "created_at": db.now()})
+    d = tmp_path / "segs"
+    d.mkdir()
+    _seg(db, v["id"], "a", "やっほー、今日もやるよ", d)
+    _seg(db, v["id"], "b", "ヤッホー！元気？", d, text_alt="ヤッホー！元気？", flags=["auto_approved", "spot_check"])
+    _seg(db, v["id"], "c", "Let's gooo, okay", d)
+    ph = c.post(f"/api/voices/{v['id']}/phrases", json={"text": "やっほー", "variants": ["ヤッホー"], "lang": "ja"}).json()
+    en = c.post(f"/api/voices/{v['id']}/phrases", json={"text": "Let's gooo", "lang": "en"}).json()
+    assert c.post(f"/api/voices/{v['id']}/phrases", json={"text": "やっほー"}).status_code == 400
+    lst = {p["text"]: p for p in c.get(f"/api/voices/{v['id']}/phrases").json()}
+    assert lst["やっほー"]["counts"] == {"segments": 1, "approved": 1, "other_spellings": 1}
+    assert phrases.asr_prompt(v["id"], "ja") == "やっほー。" and phrases.asr_prompt(v["id"], "en") == "Let's gooo."
+    # unify: both transcripts rewritten, automatic-review marks kept, not marked as a person's edit
+    assert c.post(f"/api/phrases/{ph['id']}/unify").json()["changed"] == 1
+    b = db.get("segments", "b")
+    assert b["text"] == "やっほー！元気？" and b["text_alt"] == "やっほー！元気？" and b["edited"] == 0
+    assert "auto_approved" in b["flags"] and "spot_check" in b["flags"]
+    # English spellings match whole words, any case
+    assert [h[2]["text"] for h in phrases.find("LET'S GOOO now", [en])] == ["Let's gooo"]
+    assert phrases.find("Let's goooo", [en]) == []
+
+    # original recordings: upload a file, cut one from a segment
+    clip = _tone(tmp_path / "clip.wav", [(0.3, 0.0), (0.8, 0.3), (0.3, 0.0)], sr=48000)
+    with open(clip, "rb") as fh:
+        r = c.post(f"/api/phrases/{ph['id']}/clips", files={"file": ("clip.wav", fh, "audio/wav")}, data={"emotion": "happy"})
+    assert r.status_code == 200, r.text
+    clips = r.json()["clips"]
+    assert len(clips) == 1 and 0.8 <= clips[0]["duration"] <= 0.95      # leading/trailing silence trimmed
+    r = c.post(f"/api/phrases/{ph['id']}/clips", data={"segment_id": "a", "start": "0.0", "end": "1.0", "emotion": "angry"})
+    assert r.status_code == 200 and len(r.json()["clips"]) == 2
+    assert c.get(f"/api/phrases/{ph['id']}/clips/{clips[0]['id']}/audio").status_code == 200
+    ph = phrases.get(ph["id"])
+    assert phrases.pick_clip(ph, "angry")["emotion"] == "angry"
+    assert phrases.pick_clip(ph, "sad")["emotion"] in ("happy", "angry")
+
+    # the plan of a line: phrase recording + continuation; punctuation stays with the phrase
+    parts = phrases.plan("やっほー！今日もやるよ。", [ph])
+    assert [p["kind"] for p in parts] == ["clip", "tts"] and parts[0]["said"] == "やっほー！"
+    assert phrases.plan("今日も、やっほー", [ph])[-1]["kind"] == "clip"
+    assert phrases.plan("関係ない文", [ph]) == []
+
+    # synthesis with the test engine: the recording is spliced in, and can be turned off
+    m = c.post("/api/models/demo").json()
+    db.update("models", m["id"], {"voice_id": v["id"]})
+    out = c.post("/api/tts", json={"model_id": m["id"], "text": "やっほー！今日もやるよ", "emotion": "angry"}).json()
+    o = out["outputs"][0]
+    assert o["params"]["phrases"] and o["params"]["phrases"][0]["emotion"] == "angry" and o["params"]["emotion"] == "angry"
+    only = c.post("/api/tts", json={"model_id": m["id"], "text": "やっほー"}).json()["outputs"][0]
+    assert only["params"]["phrases"] and only["duration"] < 1.2               # just the recording
+    off = c.post("/api/tts", json={"model_id": m["id"], "text": "やっほー！今日もやるよ", "phrases": False}).json()
+    assert not off["outputs"][0]["params"]["phrases"]
+
+    # how the model says each phrase on its own
+    job = c.post(f"/api/voices/{v['id']}/phrases/check", json={"model_id": m["id"]}).json()
+    j = _wait(c, job["id"])
+    assert j["status"] == "done", j
+    chk = phrases.get(ph["id"])["checks"][m["id"]]
+    assert chk["output_id"] and chk["dur_ratio"] is not None
+    # deleting a phrase removes its recordings
+    folder = phrases._dir(ph)
+    assert folder.exists()
+    c.delete(f"/api/phrases/{ph['id']}")
+    assert not folder.exists()
+
+
+def test_splice_continues_from_the_recording(tmp_path, monkeypatch):
+    """With an engine that can continue from a prompt, the text after a catchphrase is spoken as a continuation of
+    the original recording (full-clone mode with the recording and what was said in it)."""
+    monkeypatch.setenv("VSTUDIO_DATA", str(tmp_path / "data"))
+    for m in [m for m in list(sys.modules) if m.startswith("vstudio")]:
+        del sys.modules[m]
+    from vstudio import tts
+    from vstudio.engines.base import Synthesis
+    clip = _tone(tmp_path / "clip.wav", [(0.6, 0.1)], sr=48000)
+    calls = []
+
+    class Eng:
+        def synthesize(self, h, text, language=None, style="", mode="plain", reference=None, seed=None, **kw):
+            calls.append({"text": text, "mode": mode, "ref": reference})
+            return Synthesis(np.full(24000, 0.3, dtype=np.float32), 24000, {"checkpoint": "ck"})
+
+    ph = {"id": "p", "voice_id": "v", "text": "やっほー", "variants": [], "clips": [{"id": "c1", "emotion": ""}]}
+    monkeypatch.setattr(tts.phrases, "clip_path", lambda p, cid: clip)
+    parts = tts.phrases.plan("前置き、やっほー！今日もやるよ", [ph])
+    timbre = {"path": tmp_path / "ref.wav"}
+    y, sr, info, used = tts._spliced(Eng(), {"checkpoint": "ck"}, parts, "ja", "calm", "plain", None, timbre, 1, None,
+                                     None, 0, ["plain", "ref", "hifi"])
+    assert [c["mode"] for c in calls] == ["plain", "hifi"]
+    assert calls[0]["text"] == "前置き、" and calls[1]["text"] == "今日もやるよ"
+    assert calls[1]["ref"]["path"] == clip and calls[1]["ref"]["text"] == "やっほー！"
+    assert calls[1]["ref"]["timbre_path"] == timbre["path"]
+    assert sr == 24000 and used == [{"phrase": "やっほー", "clip": "c1", "emotion": ""}]
+    # two synthesized seconds + the recording + punctuation pauses
+    assert 2.5 < len(y) / sr < 3.2

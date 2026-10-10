@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Link } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { Check, ChevronLeft, ChevronRight, Database, Pause, Play, Search, Sparkles, Trash2, Undo2, X } from "lucide-react";
-import { api, fmtMin, fmtTime, LANGS, type AutoReview, type Dataset, type Segment, type Voice } from "../api";
+import { api, EMOTION_LABEL, EMOTIONS, fmtMin, fmtTime, LANGS, type AutoReview, type Dataset, type Segment, type Voice } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader, Progress } from "../ui";
 
 const FLAGS: Record<string, string> = {
@@ -27,16 +27,18 @@ type SegList = { total: number; minutes: number; items: Segment[] };
 export default function Review() {
   const qc = useQueryClient();
   const voices = useQuery({ queryKey: ["voices"], queryFn: () => api.get<Voice[]>("/api/voices") });
-  const [voiceId, setVoiceId] = useState<string>("");
-  const [status, setStatus] = useState<string>("pending");
+  const [sp] = useSearchParams();  // links from other pages: ?voice=…&q=…
+  const [voiceId, setVoiceId] = useState<string>(sp.get("voice") ?? "");
+  const [status, setStatus] = useState<string>(sp.get("q") ? "" : "pending");
   const [flag, setFlag] = useState("");
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState(sp.get("q") ?? "");
+  const [emotion, setEmotion] = useState("");
   const [sort, setSort] = useState("score_desc");
   const [page, setPage] = useState(0);
   const [cursor, setCursor] = useState(0);
   const vid = voiceId || voices.data?.[0]?.id || "";
   const voice = voices.data?.find((v) => v.id === vid);
-  const filter = useMemo(() => ({ voice_id: vid, status, flag, q, sort }), [vid, status, flag, q, sort]);
+  const filter = useMemo(() => ({ voice_id: vid, status, flag, q, sort, emotion }), [vid, status, flag, q, sort, emotion]);
   const params = new URLSearchParams({ ...filter, offset: String(page * PAGE), limit: String(PAGE) });
   const segs = useQuery({
     queryKey: ["segments", filter, page], enabled: !!vid, placeholderData: keepPreviousData,
@@ -69,11 +71,12 @@ export default function Review() {
   useEffect(() => () => player.current?.pause(), []);
 
   const items = segs.data?.items ?? [];
+  const setEmotionOf = (s: Segment, e: string) => patch.mutate({ id: s.id, body: { emotion: e } });
   const setStatusOf = (s: Segment, st: Segment["status"]) => {
     patch.mutate({ id: s.id, body: { status: st } });
     setCursor((c) => Math.min(c + 1, items.length - 1));
   };
-  // keyboard: J/K move, Space play, A approve, R reject
+  // keyboard: J/K move, Space play, A approve, R reject, 1–9 emotion label, 0 clear label
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
       const t = e.target as HTMLElement;
@@ -84,6 +87,11 @@ export default function Review() {
       else if (e.key === " " && cur) { e.preventDefault(); play(cur.id); }
       else if (e.key === "a" && cur) setStatusOf(cur, "approved");
       else if (e.key === "r" && cur) setStatusOf(cur, "rejected");
+      else if (/^[0-9]$/.test(e.key) && cur && !e.ctrlKey && !e.metaKey && !e.altKey) {
+        const n = Number(e.key);
+        if (n === 0) setEmotionOf(cur, "");
+        else if (EMOTIONS[n - 1]) setEmotionOf(cur, EMOTIONS[n - 1][0]);
+      }
     };
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
@@ -117,6 +125,11 @@ export default function Review() {
                 <option value="time">錄音時間順序</option>
                 <option value="duration">長度</option>
               </select>
+              <select className="input w-32" value={emotion} onChange={(e) => setEmotion(e.target.value)} title="依情緒篩選">
+                <option value="">全部情緒</option>
+                <option value="none">未標記</option>
+                {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
+              </select>
               <div className="relative min-w-40 flex-1">
                 <Search className="absolute top-2.5 left-2.5 size-4 text-zinc-400" />
                 <input className="input pl-8" placeholder="搜尋文字" value={q} onChange={(e) => setQ(e.target.value)} />
@@ -141,6 +154,12 @@ export default function Review() {
                   onClick={() => confirm(`把符合目前篩選的 ${segs.data?.total} 段全部核可？`) && bulk.mutate({ filter, status: "approved" })}>核可全部符合的</Button>
                 <Button size="sm" variant="ghost" disabled={!segs.data?.total}
                   onClick={() => confirm(`把符合目前篩選的 ${segs.data?.total} 段全部排除？`) && bulk.mutate({ filter, status: "rejected" })}>排除全部符合的</Button>
+                <select className="input w-40 py-1 text-xs" value="" disabled={!segs.data?.total}
+                  onChange={(e) => { const v = e.target.value; if (v && confirm(`把符合目前篩選的 ${segs.data?.total} 段都標成「${v === "__clear" ? "未標記" : EMOTION_LABEL[v]}」？`)) bulk.mutate({ filter, emotion: v === "__clear" ? "" : v }); }}>
+                  <option value="">全部符合的標成…</option>
+                  {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
+                  <option value="__clear">清除情緒</option>
+                </select>
               </div>
             </div>
           </div>
@@ -153,7 +172,7 @@ export default function Review() {
             <div className="space-y-2">
               {items.map((s, i) => (
                 <SegmentRow key={s.id} s={s} index={i} active={i === cursor} playing={playing === s.id}
-                  onFocus={() => setCursor(i)} onPlay={() => play(s.id)}
+                  onFocus={() => setCursor(i)} onPlay={() => play(s.id)} onEmotion={(e) => setEmotionOf(s, e)}
                   onStatus={(st) => setStatusOf(s, st)} onText={(text) => patch.mutate({ id: s.id, body: { text } })} />
               ))}
             </div>
@@ -166,7 +185,8 @@ export default function Review() {
             </div>
           )}
           <p className="mt-4 text-center text-xs text-zinc-500">
-            鍵盤：<span className="kbd">J</span>/<span className="kbd">K</span> 上下 · <span className="kbd">空白</span> 播放 · <span className="kbd">A</span> 核可 · <span className="kbd">R</span> 排除
+            鍵盤：<span className="kbd">J</span>/<span className="kbd">K</span> 上下 · <span className="kbd">空白</span> 播放 · <span className="kbd">A</span> 核可 · <span className="kbd">R</span> 排除 ·{" "}
+            <span className="kbd">1</span>–<span className="kbd">9</span> 標情緒（{EMOTIONS.slice(0, 9).map(([, l], i) => `${i + 1} ${l}`).join("、")}）· <span className="kbd">0</span> 清除
           </p>
         </div>
         <div className="space-y-4">
@@ -187,9 +207,9 @@ export default function Review() {
   );
 }
 
-function SegmentRow({ s, index, active, playing, onFocus, onPlay, onStatus, onText }: {
+function SegmentRow({ s, index, active, playing, onFocus, onPlay, onStatus, onText, onEmotion }: {
   s: Segment; index: number; active: boolean; playing: boolean; onFocus: () => void; onPlay: () => void;
-  onStatus: (st: Segment["status"]) => void; onText: (t: string) => void;
+  onStatus: (st: Segment["status"]) => void; onText: (t: string) => void; onEmotion: (e: string) => void;
 }) {
   const [text, setText] = useState(s.text);
   useEffect(() => setText(s.text), [s.text]);
@@ -218,6 +238,11 @@ function SegmentRow({ s, index, active, playing, onFocus, onPlay, onStatus, onTe
           {s.lang && <span>· {LANGS[s.lang] ?? s.lang}</span>}
           {s.spk_sim != null && <span>· 像本人 {(s.spk_sim * 100).toFixed(0)}%</span>}
           {s.edited ? <Badge tone="blue">已修改</Badge> : null}
+          <select value={s.emotion ?? ""} onClick={(e) => e.stopPropagation()} onChange={(e) => onEmotion(e.target.value)} title="情緒（鍵盤 1–9）"
+            className={clsx("rounded-full border-0 px-2 py-0.5 text-[11px]", s.emotion ? "bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-200" : "bg-zinc-100 text-zinc-500 dark:bg-zinc-800")}>
+            <option value="">情緒…</option>
+            {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
+          </select>
           {s.flags.map((f) => f.startsWith("auto:") ? <span key={f} className="text-sky-700 dark:text-sky-300">· {REASON[f.slice(5)] ?? f.slice(5)}</span>
             : AUTO[f] ? <Badge key={f} tone={AUTO[f][1]}>{AUTO[f][0]}</Badge> : <Badge key={f} tone="amber">{FLAGS[f] ?? f}</Badge>)}
         </div>
@@ -307,6 +332,25 @@ function AutoReviewCard({ voice, onShow }: { voice: Voice; onShow: (flag: string
   );
 }
 
+function EmotionSpread({ voice }: { voice: Voice }) {
+  const em = voice.emotions ?? {};
+  const labelled = Object.entries(em).filter(([k]) => k);
+  if (!labelled.length) return null;
+  const thin = labelled.filter(([, min]) => min < 5).map(([k]) => EMOTION_LABEL[k] ?? k);
+  return (
+    <div className="mt-3">
+      <div className="mb-1 text-xs text-zinc-500">已核可的各情緒</div>
+      <div className="flex flex-wrap gap-1">
+        {labelled.sort((a, b) => b[1] - a[1]).map(([k, min]) => (
+          <span key={k} className={clsx("rounded-full px-2 py-0.5 text-[11px]", min < 5 ? "bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-200" : "bg-violet-100 text-violet-800 dark:bg-violet-900/40 dark:text-violet-200")}>
+            {EMOTION_LABEL[k] ?? k} {min.toFixed(1)} 分</span>))}
+        {em[""] ? <span className="rounded-full bg-zinc-100 px-2 py-0.5 text-[11px] text-zinc-500 dark:bg-zinc-800">未標記 {em[""].toFixed(0)} 分</span> : null}
+      </div>
+      {thin.length > 0 && <p className="mt-1 text-[11px] text-amber-700 dark:text-amber-300">{thin.join("、")}不到 5 分鐘（約 50 段）：想用這些語氣的話，再多找一些。</p>}
+    </div>
+  );
+}
+
 function DatasetPanel({ voice }: { voice: Voice }) {
   const qc = useQueryClient();
   const sets = useQuery({ queryKey: ["datasets", voice.id], queryFn: () => api.get<Dataset[]>(`/api/datasets?voice_id=${voice.id}`) });
@@ -322,6 +366,7 @@ function DatasetPanel({ voice }: { voice: Voice }) {
       <div className="text-sm">
         <div className="text-2xl font-semibold tabular-nums">{fmtMin(approved)}</div>
         <div className="text-xs text-zinc-500">{voice.name} 已核可的語音</div>
+        <EmotionSpread voice={voice} />
         <div className="mt-2 text-xs text-zinc-500">
           {approved < 30 ? "少於 30 分鐘：先試「免訓練」，微調的效果有限。"
             : approved < 300 ? "30 分鐘到 5 小時：可以先跑一次 LoRA 確認流程；建議目標是 5–10 小時。"

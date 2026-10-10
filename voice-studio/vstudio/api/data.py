@@ -8,7 +8,7 @@ from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from .. import audio, config, datasets, db, jobs
+from .. import audio, config, datasets, db, emotions, jobs
 from ..pipeline import autoreview, prepare
 
 router = APIRouter(prefix="/api", tags=["data"])
@@ -33,21 +33,29 @@ def list_sources():
     return out
 
 
-def _new_source(filename: str, path: str, voice_hint: str | None, language: str | None, copied: bool) -> dict:
+def _emotion(e: str | None) -> str | None:
+    if e and not emotions.valid(e):
+        raise HTTPException(400, f"unknown emotion: {e}")
+    return e or None
+
+
+def _new_source(filename: str, path: str, voice_hint: str | None, language: str | None, copied: bool,
+                emotion: str | None = None) -> dict:
     return db.insert("sources", {"id": db.new_id("src"), "filename": filename, "path": path, "status": "new",
                                  "voice_hint": voice_hint or None, "language": language or None,
-                                 "meta": {"copied": copied}, "created_at": db.now()})
+                                 "emotion": _emotion(emotion), "meta": {"copied": copied}, "created_at": db.now()})
 
 
 @router.post("/sources/upload")
 async def upload_source(file: UploadFile = File(...), voice_hint: str = Form(""), language: str = Form(""),
-                        separate: bool = Form(False), process: bool = Form(True)):
+                        separate: bool = Form(False), process: bool = Form(True), emotion: str = Form("")):
+    _emotion(emotion)
     sid_dir = config.DATA / "sources" / "_uploads"
     sid_dir.mkdir(parents=True, exist_ok=True)
     dst = sid_dir / f"{db.new_id('up')}_{Path(file.filename or 'audio').name}"
     with open(dst, "wb") as fh:
         shutil.copyfileobj(file.file, fh, length=8 << 20)
-    src = _new_source(file.filename or dst.name, str(dst), voice_hint, language, True)
+    src = _new_source(file.filename or dst.name, str(dst), voice_hint, language, True, emotion)
     job = jobs.submit("prepare_source", {"source_id": src["id"], "separate": separate}, "排隊處理") if process else None
     return {"source": src, "job": job}
 
@@ -58,6 +66,7 @@ class ImportPath(BaseModel):
     voice_hint: str | None = None
     language: str | None = None
     separate: bool = False
+    emotion: str | None = None
 
 
 @router.post("/sources/import-path")
@@ -66,6 +75,7 @@ def import_path(body: ImportPath):
     root = Path(body.path).expanduser()
     if not root.exists():
         raise HTTPException(400, f"找不到：{root}")
+    _emotion(body.emotion)
     files = [root] if root.is_file() else sorted(
         p for p in (root.rglob("*") if body.recursive else root.iterdir())
         if p.is_file() and p.suffix.lower() in audio.MEDIA_EXT)
@@ -74,7 +84,7 @@ def import_path(body: ImportPath):
     for f in files:
         if str(f) in known:
             continue
-        src = _new_source(f.name, str(f), body.voice_hint, body.language, False)
+        src = _new_source(f.name, str(f), body.voice_hint, body.language, False, body.emotion)
         jobs.submit("prepare_source", {"source_id": src["id"], "separate": body.separate}, "排隊處理")
         created.append(src)
     return {"found": len(files), "created": len(created), "sources": created}
@@ -87,6 +97,21 @@ def process_source(source_id: str, body: dict | None = None):
         raise HTTPException(404)
     return jobs.submit("prepare_source", {"source_id": source_id, "separate": bool(body.get("separate")),
                                           "language": body.get("language")}, "排隊處理")
+
+
+@router.patch("/sources/{source_id}")
+def patch_source(source_id: str, body: dict):
+    """Change a recording's emotion label. Its segments follow, except ones a person labelled differently."""
+    src = db.get("sources", source_id)
+    if not src:
+        raise HTTPException(404)
+    if "emotion" in body:
+        new, old = _emotion(body.get("emotion")), src.get("emotion")
+        with db.tx() as c:
+            c.execute("UPDATE segments SET emotion=? WHERE source_id=? AND (emotion IS NULL OR emotion IS ?)",
+                      (new, source_id, old))
+        src = db.update("sources", source_id, {"emotion": new})
+    return src
 
 
 @router.delete("/sources/{source_id}")
@@ -137,7 +162,7 @@ def _rescore(source_id: str) -> None:
 @router.get("/segments")
 def list_segments(voice_id: str = "", source_id: str = "", status: str = "", flag: str = "",
                   min_score: float = -1, max_score: float = 2, unassigned: bool = False,
-                  sort: str = "score_desc", offset: int = 0, limit: int = 100, q: str = ""):
+                  sort: str = "score_desc", offset: int = 0, limit: int = 100, q: str = "", emotion: str = ""):
     where, args = ["1=1"], []
     if voice_id:
         where.append("voice_id=?"); args.append(voice_id)
@@ -151,6 +176,10 @@ def list_segments(voice_id: str = "", source_id: str = "", status: str = "", fla
         where.append("flags LIKE ?"); args.append(f'%"{flag}"%')
     if q:
         where.append("text LIKE ?"); args.append(f"%{q}%")
+    if emotion == "none":
+        where.append("emotion IS NULL")
+    elif emotion:
+        where.append("emotion=?"); args.append(emotion)
     where.append("COALESCE(score,0) BETWEEN ? AND ?"); args += [min_score, max_score]
     order = {"score_desc": "score DESC", "score_asc": "score ASC", "time": "source_id, start",
              "duration": "duration DESC"}.get(sort, "score DESC")
@@ -164,6 +193,7 @@ class SegmentPatch(BaseModel):
     text: str | None = None
     status: str | None = None
     voice_id: str | None = None
+    emotion: str | None = None   # "" clears the label
 
 
 @router.patch("/segments/{seg_id}")
@@ -175,6 +205,8 @@ def patch_segment(seg_id: str, body: SegmentPatch):
         upd["status"] = body.status
     if body.voice_id is not None:
         upd["voice_id"] = body.voice_id or None
+    if body.emotion is not None:
+        upd["emotion"] = _emotion(body.emotion)
     if "status" in upd and (old := db.get("segments", seg_id)):  # a person's decision replaces the automatic one
         upd["flags"] = autoreview.human_status(old["flags"], upd["status"])
     s = db.update("segments", seg_id, upd)
@@ -192,6 +224,7 @@ class Bulk(BaseModel):
     filter: dict | None = None
     status: str | None = None
     voice_id: str | None = None
+    emotion: str | None = None   # "" clears the label
 
 
 @router.post("/segments/bulk")
@@ -206,6 +239,8 @@ def bulk(body: Bulk):
         sets.append("status=?"); args.append(body.status)
     if body.voice_id is not None:
         sets.append("voice_id=?"); args.append(body.voice_id or None)
+    if body.emotion is not None:
+        sets.append("emotion=?"); args.append(_emotion(body.emotion))
     if not sets or not ids:
         return {"updated": 0}
     with db.tx() as c:

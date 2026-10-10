@@ -8,7 +8,7 @@ from pathlib import Path
 
 import numpy as np
 
-from . import audio, config, datasets, db, engines, jobs
+from . import audio, config, datasets, db, emotions, engines, jobs, phrases
 from .pipeline import asr
 
 _loaded: dict = {"key": None, "handle": None, "engine": None}
@@ -61,12 +61,18 @@ def loaded() -> dict | None:
     return {"model_id": k[0], "checkpoint": k[1]} if k else None
 
 
-def reference(m: dict, ref_id: str | None) -> dict | None:
+def reference(m: dict, ref_id: str | None, emotion: str | None = None) -> dict | None:
+    """The chosen reference clip; with none chosen (or "auto"), the first one labelled with the wanted emotion,
+    else the first one. A reference carries much of the mood, so this is how a line gets the right delivery."""
     refs = (m["meta"] or {}).get("references") or []
-    r = next((x for x in refs if x["id"] == ref_id), refs[0] if refs else None)
+    r = next((x for x in refs if x["id"] == ref_id), None) if ref_id and ref_id != "auto" else None
+    if r is None and emotion:
+        r = next((x for x in refs if x.get("emotion") == emotion), None)
+    r = r or (refs[0] if refs else None)
     if not r:
         return None
-    return {"id": r["id"], "path": Path(m["path"]) / r["file"], "text": r.get("text", ""), "lang": r.get("lang", "")}
+    return {"id": r["id"], "path": Path(m["path"]) / r["file"], "text": r.get("text", ""), "lang": r.get("lang", ""),
+            "emotion": r.get("emotion") or ""}
 
 
 def apply_lexicon(text: str, lang: str | None) -> str:
@@ -111,14 +117,20 @@ def _screen(y: np.ndarray, sr: int, text: str, lang: str | None) -> dict:
 
 def generate(model_id: str, text: str, language: str | None = None, style: str = "", takes: int = 1,
              seed: int | None = None, screen: bool = True, batch: str | None = None, mode: str | None = None,
-             ref_id: str | None = None, extra: dict | None = None) -> dict:
+             ref_id: str | None = None, extra: dict | None = None, emotion: str | None = None,
+             phrases: bool = True) -> dict:
     """Generate `takes` versions, score them, keep all, and mark the best. The whole request (model load,
-    synthesis and the ASR check) holds the GPU, so no other job loads a model under it."""
+    synthesis and the ASR check) holds the GPU, so no other job loads a model under it.
+
+    emotion: the mood wanted (else read from the style hint / [tags]); it picks the reference clip and the
+    catchphrase recording. phrases: splice the voice's original catchphrase recordings into the line."""
     with jobs.GPU_LOCK:
-        return _generate(model_id, text, language, style, takes, seed, screen, batch, mode, ref_id, extra)
+        return _generate(model_id, text, language, style, takes, seed, screen, batch, mode, ref_id, extra,
+                         emotion, phrases)
 
 
-def _generate(model_id, text, language, style, takes, seed, screen, batch, mode, ref_id, extra) -> dict:
+def _generate(model_id, text, language, style, takes, seed, screen, batch, mode, ref_id, extra, emotion,
+              use_phrases) -> dict:
     m0 = db.get("models", model_id)
     if not m0:
         raise KeyError(model_id)
@@ -133,26 +145,36 @@ def _generate(model_id, text, language, style, takes, seed, screen, batch, mode,
     if eng.supports_tags:
         text_engine = text
     full_style = ", ".join(s for s in (tag_style, style) if s)
+    emotion = emotions.valid(emotion) or emotions.from_text_tags(text) or emotions.from_style(full_style)
     lang = language if language and language != "auto" else detect_language(text_engine)
-    ref = reference(m, ref_id) if mode in ("ref", "hifi") else None
+    ref = reference(m, ref_id, emotion) if mode in ("ref", "hifi") else None
     if mode in ("ref", "hifi") and ref is None:
         raise ValueError("這個模式需要參考片段，請先在模型頁加入參考片段")
+    parts = phrases.plan(text_engine, phrases.with_clips(m["voice_id"])) if use_phrases else []
+    timbre = reference(m, ref_id, emotion)  # the model's own reference (if any) keeps timbre in continuations
     outs = []
     base_seed = seed if seed is not None else int(np.random.default_rng().integers(0, 2 ** 31 - 1))
     for k in range(max(1, min(8, takes))):
         s = base_seed + k
-        syn = eng.synthesize(h, apply_lexicon(text_engine, lang), language=lang, style=full_style, mode=mode,
-                             reference=ref, seed=s, **(extra or {}))
+        if parts:
+            y, sr, info, used = _spliced(eng, h, parts, lang, full_style, mode, ref, timbre, s, extra, emotion, k,
+                                         modes)
+        else:
+            syn = eng.synthesize(h, apply_lexicon(text_engine, lang), language=lang, style=full_style, mode=mode,
+                                 reference=ref, seed=s, **(extra or {}))
+            y, sr, info, used = syn.audio, syn.sr, syn.info, []
         oid = db.new_id("out")
-        path = audio.save(config.DATA / "outputs" / f"{oid}.wav", syn.audio, syn.sr,
-                          synthetic={"engine": eng.id, "model": model_id, "voice": m["voice_id"]})
-        dur = len(syn.audio) / syn.sr
-        sc = _screen(syn.audio, syn.sr, text_engine, lang) if screen else {}
+        path = audio.save(config.DATA / "outputs" / f"{oid}.wav", y, sr,
+                          synthetic={"engine": eng.id, "model": model_id, "voice": m["voice_id"],
+                                     **({"original_clips": len(used)} if used else {})})
+        dur = len(y) / sr
+        sc = _screen(y, sr, text_engine, lang) if screen else {}
         outs.append(db.insert("outputs", {"id": oid, "model_id": model_id, "text": text,
                                           "params": {"language": lang, "style": full_style, "seed": s,
                                                      "engine": eng.id, "mode": mode,
-                                                     "ref": ref["id"] if ref else None,
-                                                     "checkpoint": syn.info.get("checkpoint"), **(extra or {})},
+                                                     "ref": ref["id"] if ref else None, "emotion": emotion,
+                                                     "phrases": used,
+                                                     "checkpoint": info.get("checkpoint"), **(extra or {})},
                                           "path": str(path), "duration": round(dur, 3), "score": sc,
                                           "batch": batch, "created_at": db.now()}))
     if len(outs) > 1:
@@ -169,7 +191,48 @@ def _generate(model_id, text, language, style, takes, seed, screen, batch, mode,
     elif outs:
         outs[0]["score"]["best"] = True
         db.update("outputs", outs[0]["id"], {"score": outs[0]["score"]})
-    return {"outputs": outs, "mode": mode, "language": lang}
+    return {"outputs": outs, "mode": mode, "language": lang, "emotion": emotion}
+
+
+def _spliced(eng, h, parts, lang, style, mode, ref, timbre, seed, extra, emotion, k, modes):
+    """One take of a line with original catchphrase recordings in it. Text right after a recording is spoken as a
+    continuation of it when the engine can ("完整複製" with the recording as the prompt), so the flow carries on
+    from the real voice; otherwise it is synthesized as usual. Recordings are matched in loudness and joined with
+    pauses taken from the punctuation."""
+    pieces: list[list] = []
+    used: list[dict] = []
+    sr, info, prev = None, {}, None
+    for p in parts:
+        if p["kind"] == "clip":
+            c = phrases.pick_clip(p["phrase"], emotion, k)
+            path = phrases.clip_path(p["phrase"], c["id"])
+            prev = {"path": path, "text": p["said"], "timbre_path": timbre["path"] if timbre else None}
+            pieces.append(["clip", path, p])
+            used.append({"phrase": p["phrase"]["text"], "clip": c["id"], "emotion": c.get("emotion") or ""})
+            continue
+        t = apply_lexicon(p["text"].strip(), lang)
+        if prev is not None and "hifi" in modes:
+            syn = eng.synthesize(h, t, language=lang, style="", mode="hifi", reference=prev, seed=seed,
+                                 **(extra or {}))
+        else:
+            syn = eng.synthesize(h, t, language=lang, style=style, mode=mode, reference=ref, seed=seed,
+                                 **(extra or {}))
+        sr = sr or syn.sr
+        info = syn.info or info
+        y = audio.resample(syn.audio, syn.sr, sr) if syn.sr != sr else np.asarray(syn.audio, dtype=np.float32)
+        pieces.append(["tts", phrases.trim(y, sr, pad=0.06), p])
+        prev = None
+    sr = sr or audio.MASTER_SR
+    spoken = [x[1] for x in pieces if x[0] == "tts"]
+    joined = []
+    for i, (kind, a, p) in enumerate(pieces):
+        if kind == "clip":
+            y, _ = audio.load(a, sr)
+            near = [pieces[j][1] for j in (i - 1, i + 1) if 0 <= j < len(pieces) and pieces[j][0] == "tts"]
+            a = phrases.fade(phrases.match_level(y, sr, near or spoken), sr)
+        joined.append((a, phrases.gap_after(p) if i < len(pieces) - 1 else 0.0))
+    return audio.concat(joined, sr), sr, {"checkpoint": h.get("checkpoint") if isinstance(h, dict) else None,
+                                          **info}, used
 
 
 # --- scene scripts -------------------------------------------------------------------------------------------------
@@ -226,12 +289,14 @@ def render_script(ctx: jobs.JobContext) -> dict:
             continue
         c = cast[e["speaker"]]
         res = generate(c["model_id"], e["text"], language=c.get("language"), style=c.get("style", ""),
-                       takes=int(p.get("takes", 2)), batch=batch, mode=c.get("mode"), ref_id=c.get("ref_id"))
+                       takes=int(p.get("takes", 2)), batch=batch, mode=c.get("mode"), ref_id=c.get("ref_id"),
+                       phrases=bool(p.get("phrases", True)))
         best = next((o for o in res["outputs"] if o["score"].get("best")), res["outputs"][0])
         y, sr = audio.load(Path(best["path"]), sr_out)
         parts.append((y, float(p.get("gap", 0.35))))
         sheet.append({"line": e["line"], "speaker": e["speaker"], "text": e["text"], "romaji": e.get("romaji"),
-                      "output": best["id"], "match": best["score"].get("match")})
+                      "output": best["id"], "match": best["score"].get("match"), "emotion": res.get("emotion"),
+                      "original_clips": len(best["params"].get("phrases") or [])})
     mix = audio.concat(parts, sr_out)
     path = audio.save(config.DATA / "outputs" / f"{batch}.wav", mix, sr_out, synthetic={"scene": batch})
     (config.DATA / "outputs" / f"{batch}.json").write_text(json.dumps(sheet, ensure_ascii=False, indent=2),
