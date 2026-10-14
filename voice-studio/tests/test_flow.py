@@ -590,3 +590,74 @@ def test_splice_continues_from_the_recording(tmp_path, monkeypatch):
     assert sr == 24000 and used == [{"phrase": "やっほー", "clip": "c1", "emotion": ""}]
     # two synthesized seconds + the recording + punctuation pauses
     assert 2.5 < len(y) / sr < 3.2
+
+
+def test_colab_roundtrip(client, tmp_path):
+    """Studio → synced Drive folder → runner (as on Colab, test engine) → Drive folder → studio installs the model."""
+    import json
+    import subprocess
+    from vstudio import db
+    from vstudio.cloud import colab
+
+    c = client
+    v, ds = _approved_dataset(c, tmp_path)
+    drive = tmp_path / "MyDrive"
+    drive.mkdir()
+    st = c.post("/api/colab/setup", json={"drive_root": str(drive), "folder": "VoiceStudio"}).json()
+    assert st["ok"] and st["notebook"]
+    nb = json.loads((drive / "VoiceStudio" / colab.NOTEBOOK_NAME).read_text(encoding="utf-8"))
+    assert nb["metadata"]["colab"]["gpuType"] == "A100" and 'runner["main"]' in "".join(nb["cells"][1]["source"])
+    assert c.post("/api/colab/setup", json={"drive_root": str(drive), "folder": "a/b"}).status_code == 400
+
+    body = {"dataset_id": ds["id"], "engine": "mock", "preset": "quick", "target": "colab"}
+    plan = c.post("/api/training/plan", json=body).json()
+    assert plan["estimate_usd"] == 0 and plan["gpu"] == "Colab" and plan["compute_units"]
+    tr = c.post("/api/training", json=body).json()
+    assert _wait(c, tr["job_id"])["status"] == "done"
+    tid = tr["id"]
+    assert db.get("trainings", tid)["status"] == "waiting"
+    d = drive / "VoiceStudio" / "jobs" / tid
+    for f in ("job.json", "dataset.tar", "config.json", "setup_env.sh", "train_entry.py", "vs_common.py"):
+        assert (d / f).exists(), f
+    row = next(t for t in c.get("/api/training").json() if t["id"] == tid)
+    assert row["phase"]["label"] and row["colab_path"].endswith(colab.NOTEBOOK_NAME)
+
+    def run_runner():
+        code = (f"import runpy; r = runpy.run_path({str(drive / 'VoiceStudio' / 'colab_runner.py')!r}); "
+                f"r['main'](folder='VoiceStudio', drive_root={str(drive)!r}, auto_disconnect=False)")
+        env = {**os.environ, "VS_COLAB_LOCAL": str(tmp_path / "content"), "VS_MOCK_DELAY": "0"}
+        return subprocess.run([sys.executable, "-c", code], env=env, timeout=300, capture_output=True, text=True)
+
+    r = run_runner()
+    assert r.returncode == 0, r.stdout + r.stderr
+    done = json.loads((d / "done.json").read_text())
+    assert done["rc"] == 0 and done["sizes"]["model.tar"] > 0 and (d / "claim.json").exists()
+    colab.poll()
+    tr = db.get("trainings", tid)
+    assert tr["status"] in ("downloading", "done")
+    assert _wait(c, tr["job_id"])["status"] == "done"
+    tr = db.get("trainings", tid)
+    assert tr["status"] == "done", tr
+    m = db.query("SELECT * FROM models WHERE training_id=?", (tid,))[0]
+    assert m["meta"]["checkpoint"] and (Path(m["path"]) / "samples").exists()
+    assert not (d / "dataset.tar").exists() and not (d / "model.tar").exists() and (d / "train.log").exists()
+    assert "packaged model.tar" in c.get(f"/api/training/{tid}").json()["log"]
+
+    # a second run, cancelled before anyone runs it: the runner leaves it alone
+    tr2 = c.post("/api/training", json=body).json()
+    assert _wait(c, tr2["job_id"])["status"] == "done"
+    c.post(f"/api/training/{tr2['id']}/cancel")
+    d2 = drive / "VoiceStudio" / "jobs" / tr2["id"]
+    assert db.get("trainings", tr2["id"])["status"] == "canceled" and (d2 / "cancel.json").exists()
+    r = run_runner()
+    assert r.returncode == 0 and not (d2 / "claim.json").exists()
+
+    # a runtime that went silent: the run goes back to waiting so the notebook can be run again
+    tr3 = c.post("/api/training", json=body).json()
+    assert _wait(c, tr3["job_id"])["status"] == "done"
+    d3 = drive / "VoiceStudio" / "jobs" / tr3["id"]
+    (d3 / "claim.json").write_text(json.dumps({"gpu": "NVIDIA A100-SXM4-40GB"}))
+    (d3 / "heartbeat.json").write_text(json.dumps({"t": 1.0}))
+    colab.poll()
+    t3 = db.get("trainings", tr3["id"])
+    assert t3["status"] == "waiting" and "斷線" in t3["note"] and not (d3 / "claim.json").exists()

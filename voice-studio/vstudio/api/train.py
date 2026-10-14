@@ -8,7 +8,7 @@ from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
 from .. import config, datasets, db, engines, jobs, training, tts
-from ..cloud import runpod
+from ..cloud import colab, runpod
 
 router = APIRouter(prefix="/api", tags=["train"])
 
@@ -62,12 +62,16 @@ class PlanIn(BaseModel):
     name: str = ""
     params: dict | None = None
     usd_h: float | None = None
+    target: str = "runpod"   # runpod | colab
 
 
 @router.post("/training/plan")
 def training_plan(body: PlanIn):
+    if body.target not in ("runpod", "colab"):
+        raise HTTPException(400, "target")
     try:
-        return training.plan(body.dataset_id, body.engine, body.preset, body.gpu, body.usd_h, body.params)
+        return training.plan(body.dataset_id, body.engine, body.preset, body.gpu, body.usd_h, body.params,
+                             body.target)
     except KeyError:
         raise HTTPException(404, "找不到資料集或引擎")
 
@@ -75,8 +79,10 @@ def training_plan(body: PlanIn):
 @router.post("/training")
 def training_start(body: PlanIn):
     try:
+        if body.target not in ("runpod", "colab"):
+            raise ValueError("target")
         return training.start(body.dataset_id, body.engine, body.preset, body.gpu, body.name, body.params,
-                              body.usd_h)
+                              body.usd_h, body.target)
     except datasets.ConsentMissing as e:
         raise HTTPException(409, str(e))
     except (ValueError, runpod.RunPodError) as e:
@@ -93,6 +99,10 @@ def training_recover(tid: str):
         raise HTTPException(400, "只有失敗或取消的訓練需要救回")
     if not training.recoverable(t):
         raise HTTPException(404, "雲端沒有這次訓練的模型檔（訓練沒有進行到存檔）")
+    if t.get("target") == "colab":
+        job = jobs.submit("colab_install", {"training_id": tid, "partial": True}, "從雲端硬碟取回模型")
+        training._set(tid, status="downloading", job_id=job["id"])
+        return job
     return jobs.submit("recover_model", {"training_id": tid}, "救回模型")
 
 
@@ -117,6 +127,12 @@ def training_list():
     for t in out:
         j = db.get("jobs", t["job_id"]) if t.get("job_id") else None
         t["job"] = {k: j[k] for k in ("status", "progress", "message")} if j else None
+        if t.get("target") == "colab" and t["status"] in ("waiting", "running"):
+            p = t.get("progress") or {}
+            t["phase"] = {"label": training._phase_label(p) if p.get("phase") else
+                          ("Colab 已接手，準備中" if t["status"] == "running" else "等你在 Colab 執行筆記本"),
+                          "fraction": training._fraction(p)}
+            t["colab_path"] = f"{(t.get('storage') or {}).get('folder', 'VoiceStudio')}/{colab.NOTEBOOK_NAME}"
     return out
 
 
@@ -127,7 +143,12 @@ def training_get(tid: str):
         raise HTTPException(404)
     log = config.DATA / "jobs" / tid / "train.log"
     t["log"] = log.read_text(encoding="utf-8")[-20000:] if log.exists() else ""
-    if not t["log"] and t["status"] in ("running", "starting"):
+    if not t["log"] and t.get("target") == "colab":
+        try:
+            t["log"] = (colab.job_dir(t) / "train.log").read_text(encoding="utf-8", errors="replace")[-20000:]
+        except Exception:
+            pass
+    elif not t["log"] and t["status"] in ("running", "starting"):
         try:
             t["log"] = runpod.get_text(f"{t['remote_prefix']}/train.log", tail=20000, loc=t.get("storage") or None)
         except Exception:
@@ -142,7 +163,38 @@ def training_cancel(tid: str):
         jobs.cancel(t["job_id"])
     if t and t.get("pod_id"):
         training._remove_pod(tid, t["pod_id"])
+    if t and t.get("target") == "colab" and t["status"] not in ("done", "failed", "canceled"):
+        colab.cancel(t)  # the runner on Colab sees cancel.json within 30 s and stops
+        training._set(tid, status="canceled", finished_at=db.now())
     return {"ok": True}
+
+
+# --- Google Colab --------------------------------------------------------------------------------------------------
+
+@router.get("/colab/status")
+def colab_status():
+    return colab.status()
+
+
+class ColabSetup(BaseModel):
+    drive_root: str
+    folder: str = "VoiceStudio"
+
+
+@router.post("/colab/setup")
+def colab_setup(body: ColabSetup):
+    """Remember the synced "My Drive" folder and put the notebook and runner into <folder> there."""
+    name = body.folder.strip().strip("/\\") or "VoiceStudio"
+    if any(c in name for c in '\\/:*?"<>|'):
+        raise HTTPException(400, "資料夾名稱不能有 \\ / : * ? \" < > |")
+    if not Path(body.drive_root.strip()).is_dir():
+        raise HTTPException(400, f"找不到 {body.drive_root}。Google 雲端硬碟電腦版有沒有開著？")
+    st = config.save_settings({"colab_drive_root": body.drive_root.strip(), "colab_folder": name})
+    try:
+        colab.install_files(st)
+    except (colab.ColabError, OSError) as e:
+        raise HTTPException(400, str(e))
+    return colab.status()
 
 
 def _model_view(m: dict) -> dict:

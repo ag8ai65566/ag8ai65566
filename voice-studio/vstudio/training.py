@@ -1,4 +1,5 @@
-"""Training runs: cloud (RunPod) fine-tuning, the model registry and zero-shot (no training) models."""
+"""Training runs: cloud fine-tuning (RunPod, or Google Colab through a synced Drive folder), the model registry and
+zero-shot (no training) models."""
 from __future__ import annotations
 
 import json
@@ -8,7 +9,7 @@ import time
 from pathlib import Path
 
 from . import config, datasets, db, emotions, engines, evaluate, jobs  # noqa: F401  (evaluate registers evaluate_model)
-from .cloud import runpod
+from .cloud import colab, runpod
 
 BOOTSTRAP = (Path(__file__).parent / "cloud" / "bootstrap" / "bootstrap.sh").read_text(encoding="utf-8")
 
@@ -25,7 +26,7 @@ def _require_consent(voice_id: str) -> None:
 
 
 def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None, usd_h: float | None = None,
-         params: dict | None = None) -> dict:
+         params: dict | None = None, target: str = "runpod") -> dict:
     """What a run will use and roughly cost, shown before the user confirms. The parameters returned here are the
     exact ones that start() stores and the pod receives."""
     ds = db.get("datasets", dataset_id)
@@ -33,8 +34,11 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
         raise KeyError(dataset_id)
     eng = engines.get(engine_id)
     p = eng.preset(preset_id)
-    gpu = gpu or p.gpu[0]
-    usd_h = usd_h or runpod.GPUS.get(gpu, {}).get("usd_h", 1.5)
+    if target == "colab":  # paid for by the Google AI plan's compute units; speed is measured under "Colab"
+        gpu, usd_h = "Colab", 0.0
+    else:
+        gpu = gpu or p.gpu[0]
+        usd_h = usd_h or runpod.GPUS.get(gpu, {}).get("usd_h", 1.5)
     st = config.load_settings()
     n_train = int(ds["meta"].get("n_train") or ds["n_items"])
     warnings, blocked = [], None
@@ -45,6 +49,8 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
     measured = (st.get("speed") or {}).get(_speed_key(eng.id, p.id, gpu), {}).get("s_per_step")
     est = eng.estimate(ds["hours"], p.id, usd_h, n_train=n_train, s_per_step=measured, params=eff)
     limit = float(st.get("runpod_max_hours") or 12)
+    if target == "colab":
+        limit = min(limit, 11.5)  # a Colab session ends after at most about 12 hours
     if ds["hours"] < p.min_hours:
         warnings.append(f"這個設定建議至少 {p.min_hours:g} 小時已核可語音，目前只有 {ds['hours']:.2f} 小時。")
     if (eff.get("epochs_effective") or 0) > 3:
@@ -53,7 +59,16 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
         warnings.append(f"預估時間超過你設定的上限 {limit:g} 小時，訓練會在上限時被強制停止。請到設定調高上限。")
     if not ds["meta"].get("reference_items") and not ds["meta"].get("reference"):
         warnings.append("資料集沒有 5–12 秒的參考片段，樣本比較會比較不準。")
+    units = None
+    if target == "colab":
+        units = colab.estimate_units(est["hours"])
+        need = colab.MIN_VRAM_GB.get((eng.id, p.id), 24)
+        if need >= 40:
+            warnings.append(f"這個訓練方式需要 {need} GB 以上的顯示記憶體，Colab 不一定分得到；分不到時筆記本會請你換 GPU。")
+        if p.disk_gb >= 200:
+            warnings.append("完整微調的檢查點每個約 8 GB，要經過雲端硬碟同步回來會很久，建議用 RunPod。")
     return {"engine": eng.id, "preset": p.id, "gpu": gpu, "usd_per_hour": usd_h, "data_hours": ds["hours"],
+            "target": target, "compute_units": units,
             "n_train": n_train, "steps": est["steps"], "epochs_effective": eff.get("epochs_effective"),
             "estimate_hours": est["hours"], "estimate_usd": est["usd"], "estimate_basis": est["basis"],
             "max_hours": limit, "max_usd": round(limit * usd_h, 2), "disk_gb": p.disk_gb, "ram_gb": p.ram_gb,
@@ -61,16 +76,32 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
 
 
 def start(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None, name: str = "",
-          params: dict | None = None, usd_h: float | None = None) -> dict:
+          params: dict | None = None, usd_h: float | None = None, target: str = "runpod") -> dict:
     ds = db.get("datasets", dataset_id)
     _require_consent(ds["voice_id"])
     voice = db.get("voices", ds["voice_id"])
     snapshot = {"kind": voice["kind"], "consent": ds["meta"].get("consent"), "consent_doc": ds["meta"].get("consent_doc")}
     if not datasets.consent_ok(snapshot):  # the dataset must have been built under a valid consent, too
         raise datasets.ConsentMissing("這個資料集建立時沒有完整的同意紀錄，請重新建立資料集。")
-    pl = plan(dataset_id, engine_id, preset_id, gpu, usd_h, params)
+    pl = plan(dataset_id, engine_id, preset_id, gpu, usd_h, params, target)
     if pl["blocked"]:
         raise ValueError(pl["blocked"])
+    if target == "colab":
+        st = config.load_settings()
+        try:
+            colab.folder(st)
+        except colab.ColabError as e:
+            raise ValueError(str(e))
+        tid = db.new_id("tr")
+        db.insert("trainings", {"id": tid, "voice_id": ds["voice_id"], "dataset_id": dataset_id, "engine": engine_id,
+                                "preset": {"id": pl["preset"], "params": pl["params"], "name": name},
+                                "target": "colab", "status": "queued", "gpu": "Colab",
+                                "storage": {"drive_root": st["colab_drive_root"], "folder": st.get("colab_folder")
+                                            or "VoiceStudio"},
+                                "remote_prefix": f"jobs/{tid}", "progress": {}, "cost_estimate": 0.0,
+                                "created_at": db.now()})
+        job = jobs.submit("colab_prepare", {"training_id": tid}, message="放進雲端硬碟資料夾")
+        return db.update("trainings", tid, {"job_id": job["id"]})
     loc = runpod.location()
     tid = db.new_id("tr")
     db.insert("trainings", {"id": tid, "voice_id": ds["voice_id"], "dataset_id": dataset_id, "engine": engine_id,
@@ -327,6 +358,8 @@ def recover_model(ctx: jobs.JobContext) -> dict:
 
 
 def recoverable(tr: dict) -> bool:
+    if tr.get("target") == "colab":
+        return colab.recoverable(tr)
     try:
         return runpod.exists(f"{tr['remote_prefix']}/model.tar", _loc(tr))
     except Exception:
@@ -353,6 +386,14 @@ def resume_interrupted() -> list[str]:
                        "'downloading')"):
         j = db.get("jobs", tr["job_id"]) if tr.get("job_id") else None
         if j and j["status"] in ("queued", "running"):
+            continue
+        if tr.get("target") == "colab":  # Colab keeps training without the studio; the poller picks it up again
+            if tr["status"] == "downloading":
+                job = jobs.submit("colab_install", {"training_id": tr["id"], "partial": False}, "從雲端硬碟取回模型")
+                _set(tr["id"], job_id=job["id"])
+                resumed.append(tr["id"])
+            elif tr["status"] in ("queued", "uploading"):
+                _set(tr["id"], status="failed", finished_at=db.now(), note="程式關閉時還在準備 Colab 訓練，請重新開始。")
             continue
         pod_id = tr.get("pod_id")
         if not pod_id and tr.get("pod_state") == "creating":

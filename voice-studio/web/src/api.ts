@@ -103,12 +103,17 @@ export type Training = {
   preset: { id: string; name?: string; params?: Record<string, unknown> };
   job: { status: string; progress: number; message: string } | null; job_id?: string; log?: string;
   note?: string; pod_state?: string | null; cost_per_hr?: number | null;
+  target?: "runpod" | "colab"; phase?: { label: string; fraction: number }; colab_path?: string;
+};
+export type ColabStatus = {
+  drive_root: string; folder: string; detected: string[]; ok: boolean; notebook: boolean; error: string; path?: string;
 };
 export type Plan = {
   engine: string; preset: string; gpu: string; usd_per_hour: number; data_hours: number; n_train: number;
   steps: number; estimate_hours: number; estimate_usd: number; estimate_basis: "measured" | "guess";
   max_hours: number; max_usd: number; disk_gb: number; ram_gb: number; warnings: string[];
   epochs_effective?: number | null; blocked?: string | null; params: Record<string, unknown>;
+  target?: "runpod" | "colab"; compute_units?: [number, number] | null;
 };
 export type Orphan = { id: string; name: string; training: string; known: boolean; cost_per_hr?: number };
 export type Reference = {

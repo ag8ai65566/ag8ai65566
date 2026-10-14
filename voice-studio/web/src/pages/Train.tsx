@@ -2,14 +2,16 @@ import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
-import { AlertTriangle, Cloud, Cpu, FileText, Sparkles, Square } from "lucide-react";
+import { AlertTriangle, Cloud, Cpu, FileText, FolderSync, Sparkles, Square } from "lucide-react";
 import {
-  api, fmtDur, fmtMin, fmtTime, fmtUsd, type Dataset, type EngineInfo, type GpuOffer, type Orphan, type Plan, type Training, type Voice,
+  api, fmtDur, fmtMin, fmtTime, fmtUsd, type ColabStatus, type Dataset, type EngineInfo, type GpuOffer, type Orphan, type Plan,
+  type Training, type Voice,
 } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader, Progress } from "../ui";
 
 const STATUS: Record<string, [string, "zinc" | "green" | "amber" | "red" | "brand" | "blue"]> = {
   queued: ["排隊中", "zinc"], uploading: ["上傳資料", "blue"], starting: ["啟動 GPU", "blue"], running: ["雲端訓練中", "brand"],
+  waiting: ["等你在 Colab 執行", "amber"],
   downloading: ["下載模型", "blue"], done: ["完成", "green"], failed: ["失敗", "red"], canceled: ["已取消", "zinc"],
 };
 
@@ -19,19 +21,21 @@ export default function Train() {
   const trainings = useQuery({ queryKey: ["trainings"], queryFn: () => api.get<Training[]>("/api/training"), refetchInterval: 5000 });
   const s = settings.data;
   const cloudReady = !!s && s.secrets.runpod_api_key && s.secrets.runpod_s3_access_key && s.secrets.runpod_s3_secret_key && !!s.settings.runpod_volume_id && !!s.settings.runpod_datacenter;
+  const colab = useQuery({ queryKey: ["colab"], queryFn: () => api.get<ColabStatus>("/api/colab/status") });
+  const colabReady = !!colab.data?.ok;
   const [logFor, setLogFor] = useState<Training | null>(null);
   return (
     <div>
       <PageHeader title="雲端訓練"
-        subtitle="在 RunPod 租一張 GPU 幫你微調模型。平台會自動上傳資料、開機、安裝、訓練、讓每個檢查點試念、打包下載，最後自動關機，不會忘記關而一直計費。" />
-      {s && !cloudReady && (
+        subtitle="用雲端 GPU 微調模型：在 RunPod 租一張（全自動，付費），或用 Google AI 方案附的 Colab 運算單位（要自己在 Colab 按執行）。訓練完會自動下載、讓每個檢查點試念並評分。" />
+      {s && !cloudReady && !colabReady && (
         <div className="mb-6 flex items-start gap-3 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-800 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-200">
           <AlertTriangle className="mt-0.5 size-4 shrink-0" />
-          <div>還沒設定 RunPod。到 <Link to="/settings" className="font-medium underline">設定 → 雲端 GPU</Link> 填入 API 金鑰、S3 金鑰和網路磁碟（Network Volume），大約 10 分鐘。<Link to="/guide/04-cloud" className="underline">看圖文教學</Link></div>
+          <div>還沒設定雲端訓練。二選一：到 <Link to="/settings" className="font-medium underline">設定 → 雲端 GPU</Link> 填入 RunPod 的金鑰和網路磁碟（<Link to="/guide/04-cloud" className="underline">教學</Link>），或到 <Link to="/settings#colab" className="font-medium underline">設定 → Google Colab</Link> 選雲端硬碟資料夾（<Link to="/guide/11-colab" className="underline">教學</Link>）。</div>
         </div>
       )}
       {cloudReady && <Orphans />}
-      <NewTraining initialDataset={sp.get("dataset") ?? ""} cloudReady={!!cloudReady} />
+      <NewTraining initialDataset={sp.get("dataset") ?? ""} cloudReady={!!cloudReady} colabReady={colabReady} />
       <Card title="訓練紀錄" className="mt-6">
         {!trainings.data?.length ? <Empty icon={<Cloud className="size-8" />} title="還沒有訓練" /> : (
           <div className="space-y-3">
@@ -44,7 +48,7 @@ export default function Train() {
   );
 }
 
-function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; cloudReady: boolean }) {
+function NewTraining({ initialDataset, cloudReady, colabReady }: { initialDataset: string; cloudReady: boolean; colabReady: boolean }) {
   const qc = useQueryClient();
   const voices = useQuery({ queryKey: ["voices"], queryFn: () => api.get<Voice[]>("/api/voices") });
   const datasets = useQuery({ queryKey: ["datasets"], queryFn: () => api.get<Dataset[]>("/api/datasets") });
@@ -57,6 +61,8 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
   const [name, setName] = useState("");
   const [epochs, setEpochs] = useState<string>("");
   const [ack, setAck] = useState(false);
+  const [target, setTarget] = useState<"runpod" | "colab">("runpod");
+  useEffect(() => { if (colabReady && !cloudReady) setTarget("colab"); }, [colabReady, cloudReady]);
   const engine = engines.data?.find((e) => e.id === engineId);
   const preset = engine?.presets.find((p) => p.id === presetId) ?? engine?.presets[0];
   useEffect(() => { if (!dsId && datasets.data?.length) setDsId(datasets.data[0].id); }, [datasets.data, dsId]);
@@ -69,12 +75,12 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
   }, [gpus.data, preset]);
   const offer = offers.find((o) => o.id === gpu);
   const plan = useQuery({
-    queryKey: ["plan", dsId, engineId, preset?.id, gpu, offer?.usd_h, epochs],
-    queryFn: () => api.post<Plan>("/api/training/plan", { dataset_id: dsId, engine: engineId, preset: preset!.id, gpu, usd_h: offer?.usd_h ?? null, params: overrides }),
-    enabled: !!dsId && !!preset && !!gpu,
+    queryKey: ["plan", dsId, engineId, preset?.id, gpu, offer?.usd_h, epochs, target],
+    queryFn: () => api.post<Plan>("/api/training/plan", { dataset_id: dsId, engine: engineId, preset: preset!.id, gpu, usd_h: offer?.usd_h ?? null, params: overrides, target }),
+    enabled: !!dsId && !!preset && (!!gpu || target === "colab"),
   });
   const start = useMutation({
-    mutationFn: () => api.post<Training>("/api/training", { dataset_id: dsId, engine: engineId, preset: preset!.id, gpu, name, usd_h: offer?.usd_h ?? null, params: overrides }),
+    mutationFn: () => api.post<Training>("/api/training", { dataset_id: dsId, engine: engineId, preset: preset!.id, gpu, name, usd_h: offer?.usd_h ?? null, params: overrides, target }),
     onSuccess: () => { qc.invalidateQueries({ queryKey: ["trainings"] }); setAck(false); },
   });
   const vname = (id: string) => voices.data?.find((v) => v.id === id)?.name ?? "?";
@@ -118,7 +124,33 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
           )}
         </div>
         <div className="space-y-5">
-          <Field label="4. 雲端 GPU" hint="價格是 RunPod Secure Cloud 每小時價格（網路磁碟只能用 Secure Cloud）。平台只會租你選的這一張，不會偷偷換成更貴的卡；沒貨時會告訴你，換一張再按一次就好。">
+          <div>
+            <span className="label">4. 在哪裡訓練</span>
+            <div className="grid gap-2 sm:grid-cols-2">
+              {([["runpod", "RunPod", "全自動開機、訓練、關機。按小時付費。", cloudReady],
+                ["colab", "Google Colab", "用 Google AI 方案的運算單位。要自己在 Colab 按執行，分頁要開著。", colabReady]] as const).map(([k, l, d, ready]) => (
+                <button key={k} onClick={() => setTarget(k)}
+                  className={clsx("rounded-xl border p-3 text-left transition", target === k ? "border-brand-500 ring-2 ring-brand-500/20" : "border-zinc-200 hover:border-brand-300 dark:border-zinc-800")}>
+                  <div className="flex items-center gap-2 text-sm font-medium">{k === "colab" ? <FolderSync className="size-4" /> : <Cloud className="size-4" />}{l}
+                    {!ready && <Badge tone="amber">未設定</Badge>}</div>
+                  <p className="mt-1 text-xs leading-5 text-zinc-500">{d}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+          {target === "colab" ? (
+            <div className="rounded-xl border border-zinc-200 p-3 text-sm dark:border-zinc-800">
+              {colabReady ? (
+                <ul className="list-disc space-y-1 pl-4 text-xs leading-5 text-zinc-600 dark:text-zinc-300">
+                  <li>按開始後，平台把資料放進雲端硬碟的 Voice Studio 資料夾（Google 雲端硬碟電腦版會自動上傳）。</li>
+                  <li>到 Colab 打開 <b>VoiceStudio-Colab.ipynb</b>，執行階段選 <b>A100</b>（沒有就選 L4），按 ▶。</li>
+                  <li>完成後 Colab 自動斷線；模型同步回來後，平台會自動安裝和評分。</li>
+                  <li>建議只用 <b>LoRA</b>：完整微調的檔案太大，同步很慢。</li>
+                </ul>
+              ) : <p className="text-xs text-amber-700 dark:text-amber-300">還沒設定。到 <Link to="/settings#colab" className="underline">設定 → Google Colab</Link> 選雲端硬碟資料夾。</p>}
+            </div>
+          ) : (
+          <Field label="雲端 GPU" hint="價格是 RunPod Secure Cloud 每小時價格（網路磁碟只能用 Secure Cloud）。平台只會租你選的這一張，不會偷偷換成更貴的卡；沒貨時會告訴你，換一張再按一次就好。">
             <div className="grid gap-2">
               {offers.map((o) => (
                 <label key={o.id} className={clsx("flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-sm", gpu === o.id ? "border-brand-500" : "border-zinc-200 dark:border-zinc-800")}>
@@ -131,6 +163,7 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
               ))}
             </div>
           </Field>
+          )}
           <Field label="模型名稱（選填）"><input className="input" value={name} onChange={(e) => setName(e.target.value)} placeholder="例如：我的聲音 v1" /></Field>
           {preset?.params.epochs != null && (
             <details className="rounded-lg border border-zinc-200 px-3 py-2 text-sm dark:border-zinc-800">
@@ -148,13 +181,15 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
             <div className="rounded-xl bg-zinc-50 p-4 text-sm dark:bg-zinc-800/50">
               <div className="grid grid-cols-2 gap-3">
                 <div><div className="text-xs text-zinc-500">預估時間</div><div className="text-lg font-semibold">{plan.data.estimate_hours.toFixed(1)} 小時</div></div>
-                <div><div className="text-xs text-zinc-500">預估費用</div><div className="text-lg font-semibold">{fmtUsd(plan.data.estimate_usd)}</div></div>
+                {target === "colab" ? (
+                  <div><div className="text-xs text-zinc-500">預估運算單位</div><div className="text-lg font-semibold">{plan.data.compute_units ? `約 ${plan.data.compute_units[0]}–${plan.data.compute_units[1]}` : "—"}</div></div>
+                ) : <div><div className="text-xs text-zinc-500">預估費用</div><div className="text-lg font-semibold">{fmtUsd(plan.data.estimate_usd)}</div></div>}
                 <div><div className="text-xs text-zinc-500">訓練步數</div><div>{plan.data.steps || "—"}（{plan.data.n_train} 段{plan.data.epochs_effective ? `，約 ${plan.data.epochs_effective} epoch` : ""}）</div></div>
-                <div><div className="text-xs text-zinc-500">最多（時數上限）</div><div>{plan.data.max_hours} 小時 · {fmtUsd(plan.data.max_usd)}</div></div>
+                <div><div className="text-xs text-zinc-500">最多（時數上限）</div><div>{plan.data.max_hours} 小時{target === "colab" ? "" : ` · ${fmtUsd(plan.data.max_usd)}`}</div></div>
               </div>
               <p className="mt-3 text-xs text-zinc-500">
-                {plan.data.estimate_basis === "measured" ? "這個估計用的是你上次在同一張 GPU 上實際量到的速度。" : "第一次是粗估；跑完一次後平台會用實際速度校正。"}
-                網路磁碟另計（約 $0.07/GB/月）。
+                {plan.data.estimate_basis === "measured" ? "這個估計用的是你上次實際量到的速度。" : "第一次是粗估；跑完一次後平台會用實際速度校正。"}
+                {target === "colab" ? "運算單位是粗估（A100 每小時約 5–15，Google 沒有公布），實際用量看 Colab 的資源面板。每次新的 Colab 執行階段都要重新安裝環境（約 5–10 分鐘）。" : "網路磁碟另計（約 $0.07/GB/月）。"}
               </p>
               {plan.data.blocked && <p className="mt-2 flex gap-1.5 text-xs font-medium text-red-600"><AlertTriangle className="mt-0.5 size-3.5 shrink-0" />{plan.data.blocked}</p>}
               {plan.data.warnings.map((w) => <p key={w} className="mt-2 flex gap-1.5 text-xs text-amber-700 dark:text-amber-300"><AlertTriangle className="mt-0.5 size-3.5 shrink-0" />{w}</p>)}
@@ -163,10 +198,13 @@ function NewTraining({ initialDataset, cloudReady }: { initialDataset: string; c
           <ErrorText error={plan.error} />
           <label className="flex items-start gap-2 text-sm">
             <input type="checkbox" className="mt-1" checked={ack} onChange={(e) => setAck(e.target.checked)} />
-            <span>我了解這會用我的 RunPod 帳號租 GPU 並計費；訓練完成、失敗、取消或達到時數上限時，平台會自動關機。</span>
+            <span>{target === "colab"
+              ? "我了解：要自己在 Colab 執行筆記本，訓練時分頁要開著；A100 不保證有；Colab 規則禁止製作深偽內容，我只訓練有同意的聲音。"
+              : "我了解這會用我的 RunPod 帳號租 GPU 並計費；訓練完成、失敗、取消或達到時數上限時，平台會自動關機。"}</span>
           </label>
-          <Button className="w-full" onClick={() => start.mutate()} loading={start.isPending} disabled={!ack || !cloudReady || !plan.data || !!plan.data.blocked}>
-            <Cloud className="size-4" />開始雲端訓練
+          <Button className="w-full" onClick={() => start.mutate()} loading={start.isPending}
+            disabled={!ack || !(target === "colab" ? colabReady : cloudReady) || !plan.data || !!plan.data.blocked}>
+            {target === "colab" ? <><FolderSync className="size-4" />放進雲端硬碟，準備在 Colab 訓練</> : <><Cloud className="size-4" />開始雲端訓練</>}
           </Button>
           <ErrorText error={start.error} />
         </div>
@@ -181,6 +219,7 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
   const recover = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/recover`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
   const [label, tone] = STATUS[t.status] ?? [t.status, "zinc"];
   const active = !["done", "failed", "canceled"].includes(t.status);
+  const isColab = t.target === "colab";
   const p = t.progress ?? {};
   const voice = useQuery({ queryKey: ["voices"], queryFn: () => api.get<Voice[]>("/api/voices") }).data?.find((v) => v.id === t.voice_id);
   const model = useQuery({ queryKey: ["models"], queryFn: () => api.get<{ id: string; training_id: string | null }[]>("/api/models"), enabled: t.status === "done" })
@@ -190,17 +229,33 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
       <div className="flex flex-wrap items-center gap-2">
         <span className="font-medium">{t.preset.name || `${voice?.name ?? ""} · ${t.engine}`}</span>
         <Badge tone={tone}>{label}</Badge>
-        <span className="text-xs text-zinc-500">{t.engine} / {t.preset.id} · {p.gpu_name ?? t.gpu.replace("NVIDIA ", "")} · {fmtTime(t.created_at)}</span>
+        <span className="text-xs text-zinc-500">{t.engine} / {t.preset.id} · {isColab ? `Colab${p.gpu_name ? ` ${p.gpu_name.replace("NVIDIA ", "")}` : ""}` : p.gpu_name ?? t.gpu.replace("NVIDIA ", "")} · {fmtTime(t.created_at)}</span>
         <div className="ml-auto flex gap-2">
           <Button size="sm" variant="ghost" onClick={onLog}><FileText className="size-3.5" />紀錄</Button>
-          {active && <Button size="sm" variant="danger" loading={cancel.isPending} onClick={() => confirm("停止這次訓練並關閉雲端機器？已經花的費用不會退回。") && cancel.mutate()}><Square className="size-3.5" />停止</Button>}
+          {active && <Button size="sm" variant="danger" loading={cancel.isPending} onClick={() => confirm(isColab ? "停止這次 Colab 訓練？（Colab 上的程式會在 30 秒內停下）" : "停止這次訓練並關閉雲端機器？已經花的費用不會退回。") && cancel.mutate()}><Square className="size-3.5" />停止</Button>}
           {model && <Link to={`/models?id=${model.id}`}><Button size="sm">試聽模型</Button></Link>}
           {(t.status === "failed" || t.status === "canceled") && !model && (
             <Button size="sm" variant="secondary" loading={recover.isPending} title="訓練如果已經進行到存檔，可以把權重下載回來"
               onClick={() => recover.mutate()}>救回模型</Button>)}
         </div>
       </div>
-      {active && t.job && (
+      {isColab && t.phase && (t.status === "waiting" || t.status === "running") && (
+        <div className="mt-3">
+          <div className="mb-1 flex justify-between text-xs text-zinc-500"><span>{t.phase.label}</span><span>{Math.round(t.phase.fraction * 100)}%</span></div>
+          <Progress value={t.phase.fraction} />
+        </div>
+      )}
+      {isColab && t.status === "waiting" && (
+        <div className="mt-3 rounded-lg bg-amber-50 px-3 py-2 text-xs leading-5 text-amber-900 dark:bg-amber-950/40 dark:text-amber-100">
+          <div className="font-medium">接下來在 Colab：</div>
+          <ol className="mt-1 list-decimal pl-4">
+            <li>等雲端硬碟電腦版把資料上傳完（工作列的雲端硬碟圖示不再轉圈）。</li>
+            <li>在瀏覽器打開 Google 雲端硬碟，找到「我的雲端硬碟」裡的 <code className="kbd">{t.colab_path ?? "VoiceStudio/VoiceStudio-Colab.ipynb"}</code>，右鍵 → 開啟工具 → Google Colaboratory。</li>
+            <li>「執行階段 → 變更執行階段類型」選 A100（沒有就選 L4），按那一格左邊的 ▶，分頁保持開著。</li>
+          </ol>
+        </div>
+      )}
+      {active && t.job && !(isColab && (t.status === "waiting" || t.status === "running")) && (
         <div className="mt-3">
           <div className="mb-1 flex justify-between text-xs text-zinc-500"><span>{t.job.message}</span><span>{Math.round(t.job.progress * 100)}%</span></div>
           <Progress value={t.job.progress} />
@@ -212,7 +267,7 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
         {p.loss != null && <span>訓練 loss {p.loss.toFixed(3)}</span>}
         {p.val_loss != null && <span>驗證 loss {p.val_loss.toFixed(3)}</span>}
         {p.s_per_step != null && <span>{p.s_per_step.toFixed(1)} 秒/步</span>}
-        <span>預估 {fmtUsd(t.cost_estimate)}</span>
+        <span>{isColab ? "用 Colab 運算單位" : `預估 ${fmtUsd(t.cost_estimate)}`}</span>
         {t.cost_per_hr != null && <span>實際 ${t.cost_per_hr.toFixed(2)}/時</span>}
         {t.status === "failed" && t.job?.message && <span className="text-red-600">{t.job.message}</span>}
       </div>

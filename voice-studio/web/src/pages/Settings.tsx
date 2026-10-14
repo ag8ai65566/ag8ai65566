@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { BookA, CheckCircle2, Cloud, Download, FlaskConical, KeyRound, Lock, Plus, Server, Shield, SlidersHorizontal, Trash2 } from "lucide-react";
-import { api, type EngineInfo, type Job } from "../api";
+import { BookA, CheckCircle2, Cloud, Download, FlaskConical, FolderSync, KeyRound, Lock, Plus, Server, Shield, SlidersHorizontal, Trash2 } from "lucide-react";
+import { api, type ColabStatus, type EngineInfo, type Job } from "../api";
 import { Badge, Button, Card, ErrorText, Field, PageHeader, Progress } from "../ui";
 
 type SettingsResp = { settings: Record<string, any>; secrets: Record<string, boolean> };
@@ -16,6 +16,7 @@ export default function Settings() {
     <div className="space-y-6">
       <PageHeader title="設定" subtitle="金鑰只存在這台電腦的 Windows 認證管理員裡，不會寫進檔案、紀錄或傳給任何人（只用來呼叫 RunPod）。" />
       <CloudSettings />
+      <ColabSettings />
       <Engines />
       <Lexicon />
       <DataSettings />
@@ -108,6 +109,54 @@ function CloudSettings() {
         </div>
       ) : <ErrorText error={check.data.error} />)}
       <ErrorText error={check.error} />
+    </Card>
+  );
+}
+
+function ColabSettings() {
+  const qc = useQueryClient();
+  const st = useQuery({ queryKey: ["colab"], queryFn: () => api.get<ColabStatus>("/api/colab/status") });
+  const [root, setRoot] = useState("");
+  const [folder, setFolder] = useState("VoiceStudio");
+  useEffect(() => {
+    if (!st.data) return;
+    setRoot(st.data.drive_root || st.data.detected[0] || "");
+    setFolder(st.data.folder || "VoiceStudio");
+  }, [st.data]);
+  const save = useMutation({
+    mutationFn: () => api.post<ColabStatus>("/api/colab/setup", { drive_root: root, folder }),
+    onSuccess: (d) => { qc.setQueryData(["colab"], d); qc.invalidateQueries({ queryKey: ["settings"] }); },
+  });
+  const d = st.data;
+  return (
+    <Card title={<span id="colab" className="flex items-center gap-2"><FolderSync className="size-4" />Google Colab（用 Google AI 方案的運算單位訓練）
+      {d?.ok && <Badge tone="green"><CheckCircle2 className="size-3" />已設定</Badge>}</span>}>
+      <div className="space-y-4 text-sm">
+        <p className="text-zinc-500">
+          不用租 RunPod，改用 Google AI Pro／Ultra 每月附的 Colab 運算單位訓練。平台透過 <b>Google 雲端硬碟電腦版</b> 和 Colab 交換檔案：
+          先安裝它並登入<b>和 Colab 同一個 Google 帳號</b>，再在這裡選「我的雲端硬碟」的位置。
+          <Link to="/guide/11-colab" className="ml-1 text-brand-600 underline">看教學</Link>
+        </p>
+        <Field label="「我的雲端硬碟」在這台電腦上的位置" hint="通常是 G:\我的雲端硬碟 或 G:\My Drive（串流模式），或使用者資料夾裡的「我的雲端硬碟」（鏡像模式）。">
+          <input className="input" value={root} onChange={(e) => setRoot(e.target.value)} placeholder="G:\我的雲端硬碟" list="drive-roots" />
+          <datalist id="drive-roots">{d?.detected.map((x) => <option key={x} value={x} />)}</datalist>
+          {d && d.detected.length > 0 && <div className="mt-1 flex flex-wrap gap-1 text-xs">找到：{d.detected.map((x) => (
+            <button key={x} className="rounded-full bg-zinc-100 px-2 py-0.5 hover:bg-brand-100 dark:bg-zinc-800" onClick={() => setRoot(x)}>{x}</button>))}</div>}
+          {d && !d.detected.length && !d.ok && <p className="mt-1 text-xs text-amber-700 dark:text-amber-300">沒有自動找到。請確認 Google 雲端硬碟電腦版有開著，再手動填路徑。</p>}
+        </Field>
+        <Field label="Voice Studio 用的資料夾名稱" hint="會在「我的雲端硬碟」裡建立這個資料夾，放筆記本和每次的訓練資料。">
+          <input className="input w-60" value={folder} onChange={(e) => setFolder(e.target.value)} />
+        </Field>
+        <div className="flex flex-wrap items-center gap-3">
+          <Button onClick={() => save.mutate()} loading={save.isPending} disabled={!root.trim()}>儲存並放入筆記本</Button>
+          {d?.ok && <span className="text-xs text-zinc-500">筆記本：{d.path}\VoiceStudio-Colab.ipynb {d.notebook ? "✓" : "（還沒放入）"}</span>}
+        </div>
+        <ErrorText error={save.error} />
+        {d?.error && d.drive_root && <p className="text-xs text-red-600">{d.error}</p>}
+        <p className="rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:bg-amber-950/40 dark:text-amber-200">
+          Colab 的使用規則禁止「製作深偽內容」。平台只訓練有同意紀錄的聲音，但由 Google 判斷，風險在你的 Google 帳號上。A100 不保證有，運算單位的數量 Google 也沒有公布。
+        </p>
+      </div>
     </Card>
   );
 }

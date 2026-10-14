@@ -39,6 +39,9 @@ DEFAULTS = {
     "runpod_datacenter": "",
     "runpod_cloud_type": "SECURE",
     "runpod_max_hours": 12.0,
+    # Google Colab (see cloud/colab.py): the "My Drive" folder that Google Drive for desktop syncs, and the folder in it
+    "colab_drive_root": "",
+    "colab_folder": "VoiceStudio",
     # engine
     "default_engine": "voxcpm2",
     "speed": {},          # measured seconds per training step, per engine:preset:gpu (filled in after runs)

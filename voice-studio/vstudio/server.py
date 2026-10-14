@@ -12,6 +12,7 @@ from fastapi.responses import FileResponse, JSONResponse
 
 from . import __version__, config, db, evaluate, jobs, training, tts  # noqa: F401  (modules register job handlers)
 from .api import data, docs, phrases, speak, system, train, voices
+from .cloud import colab  # noqa: F401  (registers colab_prepare / colab_install)
 from .engines import install  # noqa: F401  (registers install_engine)
 from .pipeline import autoreview, prepare  # noqa: F401  (register prepare_source / enroll_voice / auto_review)
 
@@ -43,8 +44,13 @@ def create_app() -> FastAPI:
                 if config.get_secret("runpod_api_key"):
                     _quiet(training.reap)
                 stop.wait(300)
+        def colab_poller():  # Colab runs report through the synced Google Drive folder
+            while not stop.is_set():
+                _quiet(colab.poll)
+                stop.wait(20)
         stop = threading.Event()
         threading.Thread(target=reaper, name="reap", daemon=True).start()
+        threading.Thread(target=colab_poller, name="colab", daemon=True).start()
         yield
         stop.set()
         jobs.stop()
