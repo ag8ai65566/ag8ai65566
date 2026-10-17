@@ -2,8 +2,8 @@ import { useRef, useState } from "react";
 import { Link } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
-import { FolderOpen, RefreshCw, Trash2, Upload, Users } from "lucide-react";
-import { api, EMOTIONS, fmtMin, type Source, type Voice } from "../api";
+import { Download, FileSpreadsheet, FolderOpen, FolderUp, RefreshCw, Trash2, Upload, Users, X } from "lucide-react";
+import { api, EMOTION_LABEL, EMOTIONS, fmtMin, type Source, type Voice } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader, Progress, Wave } from "../ui";
 
 type SourceRow = Source & {
@@ -11,16 +11,24 @@ type SourceRow = Source & {
   job: { id: string; status: string; progress: number; message: string } | null;
 };
 type Cluster = { cluster: number; n: number; secs: number; samples: string[]; voice_id: string | null; rejected: number };
+type LabelList = { id: string; filename: string; count: number; errors: string[]; emotions: Record<string, number> };
+type FolderResult = {
+  found: number; created: number; labelled: Record<string, number>; list: string | null; list_errors: string[];
+};
+
+const MEDIA = /\.(mp4|mkv|mov|webm|flv|ts|avi|wav|mp3|m4a|aac|flac|ogg|opus|wma)$/i;
+const LIST = /\.(xlsx|xlsm|csv)$/i;
+const FROM: Record<string, string> = { list: "清單", filename: "檔名", folder: "資料夾名稱", form: "上面選的情緒" };
 
 function uploadWithProgress(file: File, fields: Record<string, string>, onProgress: (f: number) => void) {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<{ source: Source; label_from: string }>((resolve, reject) => {
     const fd = new FormData();
     fd.append("file", file);
     Object.entries(fields).forEach(([k, v]) => fd.append(k, v));
     const x = new XMLHttpRequest();
     x.open("POST", "/api/sources/upload");
     x.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total);
-    x.onload = () => (x.status < 300 ? resolve() : reject(new Error(x.responseText || x.statusText)));
+    x.onload = () => (x.status < 300 ? resolve(JSON.parse(x.responseText)) : reject(new Error(x.responseText || x.statusText)));
     x.onerror = () => reject(new Error("上傳失敗（連線中斷）"));
     x.send(fd);
   });
@@ -35,27 +43,57 @@ export default function ImportPage() {
   const [queue, setQueue] = useState<{ name: string; progress: number; error?: string }[]>([]);
   const [folder, setFolder] = useState("");
   const [clusterFor, setClusterFor] = useState<SourceRow | null>(null);
+  const [labelList, setLabelList] = useState<LabelList | null>(null);
+  const [listError, setListError] = useState<unknown>(null);
+  const [labelled, setLabelled] = useState<Record<string, number>>({});
   const fileInput = useRef<HTMLInputElement>(null);
+  const folderInput = useRef<HTMLInputElement>(null);
+  const listInput = useRef<HTMLInputElement>(null);
   const consented = (voices.data ?? []).filter((v) => v.consent_ok);
 
-  const fields = { voice_hint: opts.voice_hint, language: opts.language, separate: String(opts.separate), emotion: opts.emotion };
+  async function uploadList(f: File): Promise<LabelList | null> {
+    const fd = new FormData();
+    fd.append("file", f);
+    setListError(null);
+    try {
+      const l = await api.post<LabelList>("/api/import-labels", fd);
+      setLabelList(l);
+      return l;
+    } catch (e) {
+      setListError(e);
+      return null;
+    }
+  }
+
+  // a dropped or picked .xlsx / .csv is the emotion list; it is read first so the recordings next to it use it
   async function uploadFiles(files: FileList | File[]) {
-    const list = Array.from(files);
-    setQueue((q) => [...q, ...list.map((f) => ({ name: f.name, progress: 0 }))]);
-    for (const f of list) {
+    const all = Array.from(files);
+    const lists = all.filter((f) => LIST.test(f.name));
+    const media = all.filter((f) => MEDIA.test(f.name) || (!LIST.test(f.name) && /^(audio|video)\//.test(f.type)));
+    let list = labelList;
+    if (lists.length) list = (await uploadList(lists.find((f) => /清單|label|情緒|標籤/i.test(f.name)) ?? lists[0])) ?? list;
+    if (!media.length) return;
+    const fields = { voice_hint: opts.voice_hint, language: opts.language, separate: String(opts.separate), emotion: opts.emotion,
+      labels_id: list?.id ?? "" };
+    const key = (f: File) => f.webkitRelativePath || f.name;
+    setQueue((q) => [...q, ...media.map((f) => ({ name: key(f), progress: 0 }))]);
+    setLabelled({});
+    for (const f of media) {
       try {
-        await uploadWithProgress(f, fields, (p) => setQueue((q) => q.map((x) => (x.name === f.name ? { ...x, progress: p } : x))));
-        setQueue((q) => q.filter((x) => x.name !== f.name));
+        const r = await uploadWithProgress(f, { ...fields, relpath: f.webkitRelativePath },
+          (p) => setQueue((q) => q.map((x) => (x.name === key(f) ? { ...x, progress: p } : x))));
+        if (r.source.emotion) setLabelled((c) => ({ ...c, [r.label_from]: (c[r.label_from] ?? 0) + 1 }));
+        setQueue((q) => q.filter((x) => x.name !== key(f)));
       } catch (e) {
-        setQueue((q) => q.map((x) => (x.name === f.name ? { ...x, error: String((e as Error).message) } : x)));
+        setQueue((q) => q.map((x) => (x.name === key(f) ? { ...x, error: String((e as Error).message) } : x)));
       }
       qc.invalidateQueries({ queryKey: ["sources"] });
     }
   }
   const importFolder = useMutation({
-    mutationFn: () => api.post<{ found: number; created: number }>("/api/sources/import-path",
+    mutationFn: () => api.post<FolderResult>("/api/sources/import-path",
       { path: folder.trim(), voice_hint: opts.voice_hint || null, language: opts.language || null, separate: opts.separate,
-        emotion: opts.emotion || null }),
+        emotion: opts.emotion || null, labels_id: labelList?.id ?? null }),
     onSuccess: () => qc.invalidateQueries({ queryKey: ["sources"] }),
   });
   const reprocess = useMutation({
@@ -99,12 +137,47 @@ export default function ImportPage() {
               </select>
             </Field>
             <Field label="情緒／風格（選填）"
-              hint="整個檔案都是同一種情緒時才選，例如專門錄的一段生氣台詞。一般直播或影片請留空，之後在「檢查資料」逐句標。">
+              hint="這一批全部都是同一種情緒時才選，例如一個資料夾的生氣台詞。混在一起的請留空，改用下面的清單或檔名標記。">
               <select className="input" value={opts.emotion} onChange={(e) => setOpts({ ...opts, emotion: e.target.value })}>
                 <option value="">不標記</option>
                 {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
               </select>
             </Field>
+            <div id="labels" className="rounded-xl border border-zinc-200 p-3 text-sm dark:border-zinc-800">
+              <div className="mb-1 font-medium">每個檔案不同情緒？兩種標法</div>
+              <ul className="mb-3 list-disc space-y-1 pl-5 text-xs text-zinc-600 dark:text-zinc-400">
+                <li><b>檔名</b>：加上括號標籤，例如 <code className="kbd">0815直播[生氣].mp4</code>、<code className="kbd">【開心】雜談.wav</code>，或開頭 <code className="kbd">生氣_0815.wav</code>。</li>
+                <li><b>Excel／CSV 清單</b>：一欄檔名、一欄情緒（可再加一欄語言）。檔案很多或不想改檔名時用這個。</li>
+                <li>放在名叫 <code className="kbd">生氣</code>、<code className="kbd">開心</code> 的資料夾裡也可以（匯入整個資料夾時）。</li>
+              </ul>
+              {labelList ? (
+                <div className="rounded-lg bg-emerald-50 px-3 py-2 text-xs text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-200">
+                  <div className="flex items-start justify-between gap-2">
+                    <span><FileSpreadsheet className="mr-1 inline size-3.5" />已讀取「{labelList.filename}」：{labelList.count} 個檔案
+                      {Object.keys(labelList.emotions).length > 0 && <>（{Object.entries(labelList.emotions).map(([k, n]) => `${EMOTION_LABEL[k]} ${n}`).join("、")}）</>}
+                    </span>
+                    <button title="不用這份清單" onClick={() => setLabelList(null)}><X className="size-3.5" /></button>
+                  </div>
+                  {labelList.errors.length > 0 && (
+                    <ul className="mt-1 list-disc pl-4 text-amber-700 dark:text-amber-300">{labelList.errors.map((e) => <li key={e}>{e}</li>)}</ul>
+                  )}
+                  <div className="mt-1 text-zinc-500">接下來加入的檔案會照這份清單標情緒。</div>
+                </div>
+              ) : (
+                <div className="flex flex-wrap gap-2">
+                  <Button size="sm" variant="secondary" onClick={() => listInput.current?.click()}>
+                    <FileSpreadsheet className="size-3.5" />上傳情緒清單
+                  </Button>
+                  <a className="inline-flex items-center gap-1 px-2 text-xs text-brand-600 hover:underline"
+                    href="/api/import-labels/template.csv" download>
+                    <Download className="size-3.5" />下載範本
+                  </a>
+                </div>
+              )}
+              <input ref={listInput} type="file" className="hidden" accept=".xlsx,.xlsm,.csv"
+                onChange={(e) => { if (e.target.files?.[0]) uploadList(e.target.files[0]); e.target.value = ""; }} />
+              <ErrorText error={listError} />
+            </div>
             <label className="flex items-start gap-2 text-sm">
               <input type="checkbox" className="mt-1" checked={opts.separate} onChange={(e) => setOpts({ ...opts, separate: e.target.checked })} />
               <span>去除背景音樂（BS-RoFormer 人聲分離）<span className="block text-xs text-zinc-500">只在有背景音樂或遊戲音效時勾選。乾淨的錄音不要勾，處理會改變一點音色，而且比較慢。</span></span>
@@ -120,10 +193,22 @@ export default function ImportPage() {
               drag ? "border-brand-500 bg-brand-50 dark:bg-brand-900/20" : "border-zinc-300 hover:border-brand-400 dark:border-zinc-700")}>
             <Upload className="mb-2 size-8 text-brand-500" />
             <p className="font-medium">把影片或錄音拖到這裡，或點一下選檔</p>
-            <p className="mt-1 text-xs text-zinc-500">mp4、mkv、mov、wav、mp3、m4a、flac… 一次可以選很多個</p>
-            <input ref={fileInput} type="file" multiple className="hidden" accept="audio/*,video/*,.mkv,.flv,.ts"
-              onChange={(e) => e.target.files && uploadFiles(e.target.files)} />
+            <p className="mt-1 text-xs text-zinc-500">mp4、mkv、mov、wav、mp3、m4a、flac… 一次可以選很多個。情緒清單（.xlsx、.csv）也可以一起拖進來。</p>
+            <input ref={fileInput} type="file" multiple className="hidden" accept="audio/*,video/*,.mkv,.flv,.ts,.xlsx,.xlsm,.csv"
+              onChange={(e) => { if (e.target.files) uploadFiles(e.target.files); e.target.value = ""; }} />
           </div>
+          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+            <Button size="sm" variant="ghost" onClick={() => folderInput.current?.click()}><FolderUp className="size-3.5" />選整個資料夾上傳</Button>
+            <span>資料夾裡的子資料夾名稱（例如「生氣」）和情緒清單會一起套用。</span>
+            <input ref={folderInput} type="file" multiple className="hidden"
+              {...({ webkitdirectory: "", directory: "" } as Record<string, string>)}
+              onChange={(e) => { if (e.target.files) uploadFiles(e.target.files); e.target.value = ""; }} />
+          </div>
+          {Object.keys(labelled).length > 0 && (
+            <p className="mt-2 text-sm text-emerald-600">
+              已標上情緒：{Object.entries(labelled).map(([k, n]) => `${n} 個來自${FROM[k] ?? k}`).join("、")}。可以在下方表格的「情緒」欄修改。
+            </p>
+          )}
           {queue.length > 0 && (
             <ul className="mt-4 space-y-2 text-sm">
               {queue.map((q) => (
@@ -136,7 +221,7 @@ export default function ImportPage() {
           )}
           <div className="mt-5 border-t border-zinc-100 pt-4 dark:border-zinc-800">
             <Field label="或：直接匯入電腦上的資料夾（大量檔案建議用這個，不會複製檔案）"
-              hint={<>例如 <code className="kbd">D:\錄音\2026</code>。子資料夾裡的影音檔也會一起匯入；已匯入過的會自動跳過。</>}>
+              hint={<>例如 <code className="kbd">D:\錄音\2026</code>。子資料夾裡的影音檔也會一起匯入；已匯入過的會自動跳過。資料夾裡放一份情緒清單（.xlsx 或 .csv）會自動讀取。</>}>
               <div className="flex gap-2">
                 <input className="input" value={folder} onChange={(e) => setFolder(e.target.value)} placeholder="D:\recordings" />
                 <Button variant="secondary" onClick={() => importFolder.mutate()} loading={importFolder.isPending} disabled={!folder.trim()}>
@@ -144,7 +229,18 @@ export default function ImportPage() {
                 </Button>
               </div>
             </Field>
-            {importFolder.data && <p className="mt-2 text-sm text-emerald-600">找到 {importFolder.data.found} 個檔案，新增 {importFolder.data.created} 個。</p>}
+            {importFolder.data && (
+              <div className="mt-2 text-sm text-emerald-600">
+                <p>找到 {importFolder.data.found} 個檔案，新增 {importFolder.data.created} 個。
+                  {importFolder.data.list && <>讀取了資料夾裡的情緒清單「{importFolder.data.list}」。</>}
+                  {Object.keys(importFolder.data.labelled).length > 0 &&
+                    <>已標上情緒：{Object.entries(importFolder.data.labelled).map(([k, n]) => `${n} 個來自${FROM[k] ?? k}`).join("、")}。</>}
+                </p>
+                {importFolder.data.list_errors.length > 0 && (
+                  <ul className="mt-1 list-disc pl-5 text-xs text-amber-600">{importFolder.data.list_errors.map((e) => <li key={e}>{e}</li>)}</ul>
+                )}
+              </div>
+            )}
             <ErrorText error={importFolder.error} />
           </div>
         </Card>

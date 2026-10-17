@@ -1,14 +1,16 @@
 """Sources (imported recordings), segments (review) and datasets."""
 from __future__ import annotations
 
+import json
+import re
 import shutil
 from pathlib import Path
 
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from pydantic import BaseModel
 
-from .. import audio, config, datasets, db, emotions, jobs
+from .. import audio, config, datasets, db, emotions, jobs, labels
 from ..pipeline import autoreview, prepare
 
 router = APIRouter(prefix="/api", tags=["data"])
@@ -46,18 +48,72 @@ def _new_source(filename: str, path: str, voice_hint: str | None, language: str 
                                  "emotion": _emotion(emotion), "meta": {"copied": copied}, "created_at": db.now()})
 
 
+# --- emotion / language lists (Excel or CSV) ---------------------------------------------------------------------
+
+def _labels_dir() -> Path:
+    d = config.DATA / "labels"
+    d.mkdir(parents=True, exist_ok=True)
+    return d
+
+
+def _load_labels(labels_id: str | None) -> dict | None:
+    if not labels_id:
+        return None
+    if not re.fullmatch(r"lbl_[0-9a-z]+", labels_id):
+        raise HTTPException(400, "bad labels id")
+    p = _labels_dir() / f"{labels_id}.json"
+    if not p.exists():
+        raise HTTPException(400, "情緒清單已過期，請重新上傳。")
+    return json.loads(p.read_text(encoding="utf-8"))["rows"]
+
+
+@router.post("/import-labels")
+async def upload_labels(file: UploadFile = File(...)):
+    """Read an emotion list once; the files uploaded or imported next refer to it by id."""
+    try:
+        out = labels.parse_list(await file.read(), file.filename or "list.csv")
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    lid = db.new_id("lbl")
+    (_labels_dir() / f"{lid}.json").write_text(json.dumps({"filename": file.filename, **out}, ensure_ascii=False),
+                                               encoding="utf-8")
+    return {"id": lid, "filename": file.filename, "count": out["count"], "errors": out["errors"],
+            "emotions": _emotion_counts(out["rows"])}
+
+
+def _emotion_counts(rows: dict) -> dict:
+    counts: dict = {}
+    for r in rows.values():
+        if r.get("emotion"):
+            counts[r["emotion"]] = counts.get(r["emotion"], 0) + 1
+    return counts
+
+
+@router.get("/import-labels/template.csv")
+def labels_template():
+    # the byte-order mark makes Excel open the Chinese headings as UTF-8
+    return Response(("\ufeff" + labels.TEMPLATE_CSV).encode("utf-8"), media_type="text/csv",
+                    headers={"Content-Disposition": "attachment; filename*=UTF-8''%E6%83%85%E7%B7%92%E6%B8%85%E5%96%AE.csv"})
+
+
 @router.post("/sources/upload")
 async def upload_source(file: UploadFile = File(...), voice_hint: str = Form(""), language: str = Form(""),
-                        separate: bool = Form(False), process: bool = Form(True), emotion: str = Form("")):
+                        separate: bool = Form(False), process: bool = Form(True), emotion: str = Form(""),
+                        labels_id: str = Form(""), relpath: str = Form("")):
+    """One file from the browser. relpath is its path inside a folder picked with "選資料夾" (for folder labels)."""
     _emotion(emotion)
+    rows = _load_labels(labels_id)
+    name = Path(file.filename or "audio").name
+    folders = [x for x in relpath.replace("\\", "/").split("/")[:-1] if x] if relpath else []
+    emo, lang, label_src = labels.resolve(name, rows, emotion, language, folders)
     sid_dir = config.DATA / "sources" / "_uploads"
     sid_dir.mkdir(parents=True, exist_ok=True)
-    dst = sid_dir / f"{db.new_id('up')}_{Path(file.filename or 'audio').name}"
+    dst = sid_dir / f"{db.new_id('up')}_{name}"
     with open(dst, "wb") as fh:
         shutil.copyfileobj(file.file, fh, length=8 << 20)
-    src = _new_source(file.filename or dst.name, str(dst), voice_hint, language, True, emotion)
+    src = _new_source(name, str(dst), voice_hint, lang, True, emo)
     job = jobs.submit("prepare_source", {"source_id": src["id"], "separate": separate}, "排隊處理") if process else None
-    return {"source": src, "job": job}
+    return {"source": src, "job": job, "label_from": label_src}
 
 
 class ImportPath(BaseModel):
@@ -67,27 +123,44 @@ class ImportPath(BaseModel):
     language: str | None = None
     separate: bool = False
     emotion: str | None = None
+    labels_id: str | None = None
 
 
 @router.post("/sources/import-path")
 def import_path(body: ImportPath):
-    """Import files straight from a folder on this computer (no copy: large videos stay where they are)."""
-    root = Path(body.path).expanduser()
+    """Import files straight from a folder on this computer (no copy: large videos stay where they are).
+
+    Emotion labels come from an uploaded list, else a list (.xlsx / .csv) inside the folder, then file names and
+    folder names, then the form."""
+    root = Path(body.path.strip().strip('"')).expanduser()
     if not root.exists():
         raise HTTPException(400, f"找不到：{root}")
     _emotion(body.emotion)
+    rows, list_name, list_errors = _load_labels(body.labels_id), None, []
+    if rows is None and root.is_dir() and (found := labels.find_list(root)):
+        try:
+            parsed = labels.parse_list(found.read_bytes(), found.name)
+            rows, list_name, list_errors = parsed["rows"], found.name, parsed["errors"]
+        except ValueError as e:
+            list_name, list_errors = found.name, [str(e)]
     files = [root] if root.is_file() else sorted(
         p for p in (root.rglob("*") if body.recursive else root.iterdir())
         if p.is_file() and p.suffix.lower() in audio.MEDIA_EXT)
     known = {s["path"] for s in db.query("SELECT path FROM sources")}
-    created = []
+    created: list = []
+    by: dict = {}
     for f in files:
         if str(f) in known:
             continue
-        src = _new_source(f.name, str(f), body.voice_hint, body.language, False, body.emotion)
+        folders = list(f.relative_to(root).parts[:-1]) if root.is_dir() else []
+        emo, lang, src_of = labels.resolve(f.name, rows, body.emotion, body.language, folders)
+        src = _new_source(f.name, str(f), body.voice_hint, lang, False, emo)
         jobs.submit("prepare_source", {"source_id": src["id"], "separate": body.separate}, "排隊處理")
         created.append(src)
-    return {"found": len(files), "created": len(created), "sources": created}
+        if emo:
+            by[src_of] = by.get(src_of, 0) + 1
+    return {"found": len(files), "created": len(created), "sources": created, "labelled": by,
+            "list": list_name, "list_errors": list_errors}
 
 
 @router.post("/sources/{source_id}/process")

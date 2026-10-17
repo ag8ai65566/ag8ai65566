@@ -492,6 +492,60 @@ def test_emotion_labels_flow(client, tmp_path):
     assert tts.reference(m, "auto", "sad")["id"] == "ref0"        # nothing of that mood: the first one
 
 
+def test_label_lists(client, tmp_path, monkeypatch):
+    from vstudio import jobs, labels
+    # file names: bracket tags, a label at the start, but not a word that merely contains one
+    assert labels.from_filename("0815直播[生氣].mp4") == {"emotion": "angry"}
+    assert labels.from_filename("【開心】【日文】雜談.wav") == {"emotion": "happy", "language": "ja"}
+    assert labels.from_filename("talk (whispering).wav")["emotion"] == "whisper"
+    assert labels.from_filename("生氣_0815.wav")["emotion"] == "angry"
+    assert labels.from_filename("搞笑_0815.wav") == {} and labels.from_filename("happy birthday.mp4") == {}
+    assert labels.resolve("a.wav", None, None, None, ["生氣"])[::2] == ("angry", "folder")
+    # a CSV saved by Excel in the Traditional Chinese code page, with a title row above the header
+    csv = "我的清單\n檔名,情緒,語言\nA.WAV,生氣,日文\nsub/b.mp4,happy,auto\nc.wav,發呆,火星文\n".encode("cp950")
+    out = labels.parse_list(csv, "list.csv")
+    assert out["rows"]["a.wav"] == {"emotion": "angry", "language": "ja"} and out["rows"]["b.mp4"] == {"emotion": "happy"}
+    assert len(out["errors"]) == 2 and out["count"] == 3
+    # the list beats the file name, the file name beats the folder, the folder beats the form
+    assert labels.resolve("a.wav", out["rows"], "sad", None, ["開心"]) == ("angry", "ja", "list")
+    assert labels.resolve("x[難過].wav", out["rows"], "neutral", None, ["開心"])[::2] == ("sad", "filename")
+    assert labels.resolve("x.wav", out["rows"], "neutral", "en")[::2] == ("neutral", "form")
+    with pytest.raises(ValueError):
+        labels.parse_list("名字,心情\na,b\n".encode(), "x.csv")
+
+    monkeypatch.setattr(jobs, "submit", lambda *a, **k: None)
+    c = client
+    # Excel list uploaded on the import page, then used for the files that follow
+    import openpyxl
+    wb = openpyxl.Workbook()
+    wb.active.append(["檔名", "情緒"])
+    wb.active.append(["one.wav", "笑著說"])
+    buf = io.BytesIO()
+    wb.save(buf)
+    r = c.post("/api/import-labels", files={"file": ("情緒清單.xlsx", buf.getvalue())}).json()
+    assert r["count"] == 1 and r["emotions"] == {"laughing": 1}
+    up = c.post("/api/sources/upload", files={"file": ("one.wav", b"RIFF")},
+                data={"labels_id": r["id"], "process": "false", "emotion": "sad"}).json()
+    assert up["source"]["emotion"] == "laughing" and up["label_from"] == "list"
+    up = c.post("/api/sources/upload", files={"file": ("two.wav", b"RIFF")},
+                data={"relpath": "錄音/開心/two.wav", "process": "false"}).json()
+    assert up["source"]["emotion"] == "happy" and up["label_from"] == "folder"
+    assert c.post("/api/sources/upload", files={"file": ("x.wav", b"RIFF")}, data={"labels_id": "../x"}).status_code == 400
+    t = c.get("/api/import-labels/template.csv")
+    assert t.content.startswith("\ufeff檔名".encode()) and labels.parse_list(t.content, "t.csv")["errors"] == []
+    # a folder with a list inside and an emotion subfolder
+    root = tmp_path / "rec"
+    (root / "生氣").mkdir(parents=True)
+    for f in ("a.wav", "plain.wav", "生氣/loud.wav", "x[難過].wav"):
+        (root / f).write_bytes(b"RIFF")
+    (root / "情緒清單.csv").write_text("檔名,情緒,語言\na.wav,開心,英文\n", encoding="utf-8-sig")
+    r = c.post("/api/sources/import-path", json={"path": str(root)}).json()
+    assert r["created"] == 4 and r["list"] == "情緒清單.csv" and r["labelled"] == {"list": 1, "folder": 1, "filename": 1}
+    got = {s["filename"]: (s["emotion"], s["language"]) for s in r["sources"]}
+    assert got == {"a.wav": ("happy", "en"), "plain.wav": (None, None), "loud.wav": ("angry", None),
+                   "x[難過].wav": ("sad", None)}
+
+
 def test_catchphrases(client, tmp_path):
     from vstudio import db, phrases
     c = client
