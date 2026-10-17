@@ -144,7 +144,7 @@ export default function ImportPage() {
               </select>
             </Field>
             <div id="labels" className="rounded-xl border border-zinc-200 p-3 text-sm dark:border-zinc-800">
-              <div className="mb-1 font-medium">每個檔案不同情緒？兩種標法</div>
+              <div className="mb-1 font-medium">每個檔案不同情緒？這樣標</div>
               <ul className="mb-3 list-disc space-y-1 pl-5 text-xs text-zinc-600 dark:text-zinc-400">
                 <li><b>檔名</b>：加上括號標籤，例如 <code className="kbd">0815直播[生氣].mp4</code>、<code className="kbd">【開心】雜談.wav</code>，或開頭 <code className="kbd">生氣_0815.wav</code>。</li>
                 <li><b>Excel／CSV 清單</b>：一欄檔名、一欄情緒（可再加一欄語言）。檔案很多或不想改檔名時用這個。</li>
@@ -224,7 +224,7 @@ export default function ImportPage() {
               hint={<>例如 <code className="kbd">D:\錄音\2026</code>。子資料夾裡的影音檔也會一起匯入；已匯入過的會自動跳過。資料夾裡放一份情緒清單（.xlsx 或 .csv）會自動讀取。</>}>
               <div className="flex gap-2">
                 <input className="input" value={folder} onChange={(e) => setFolder(e.target.value)} placeholder="D:\recordings" />
-                <Button variant="secondary" onClick={() => importFolder.mutate()} loading={importFolder.isPending} disabled={!folder.trim()}>
+                <Button variant="secondary" className="shrink-0 whitespace-nowrap" onClick={() => importFolder.mutate()} loading={importFolder.isPending} disabled={!folder.trim()}>
                   <FolderOpen className="size-4" />匯入
                 </Button>
               </div>

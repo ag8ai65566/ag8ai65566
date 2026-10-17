@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Link, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import DOMPurify from "dompurify";
@@ -11,6 +11,7 @@ type Doc = { id: string; title: string; markdown?: string };
 
 export default function Guide() {
   const { doc } = useParams();
+  const navigate = useNavigate();
   const list = useQuery({ queryKey: ["docs"], queryFn: () => api.get<Doc[]>("/api/docs") });
   const id = doc ?? list.data?.[0]?.id;
   const cur = useQuery({ queryKey: ["doc", id], enabled: !!id, queryFn: () => api.get<Doc>(`/api/docs/${id}`) });
@@ -36,7 +37,14 @@ export default function Guide() {
           ))}
         </nav>
         <Card>
-          <article className="prose-guide max-w-3xl" dangerouslySetInnerHTML={{ __html: html }} />
+          <article className="prose-guide max-w-3xl" dangerouslySetInnerHTML={{ __html: html }}
+            onClick={(e) => {  // links to pages of the app open in place; other sites in a new tab
+              const href = (e.target as HTMLElement).closest("a")?.getAttribute("href");
+              if (!href || href.startsWith("/api/")) return;
+              if (href.startsWith("#")) { e.preventDefault(); document.getElementById(href.slice(1))?.scrollIntoView({ behavior: "smooth" }); }
+              else if (href.startsWith("/")) { e.preventDefault(); navigate(href); }
+              else if (/^https?:/.test(href)) { e.preventDefault(); window.open(href, "_blank", "noopener"); }
+            }} />
           <div className="mt-10 flex justify-between border-t border-zinc-100 pt-4 text-sm dark:border-zinc-800">
             {prev ? <Link to={`/guide/${prev.id}`} className="text-brand-600">← {prev.title}</Link> : <span />}
             {next ? <Link to={`/guide/${next.id}`} className="text-brand-600">{next.title} →</Link> : <span />}

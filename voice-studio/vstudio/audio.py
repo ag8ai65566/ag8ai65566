@@ -115,6 +115,35 @@ def concat(parts: list[tuple[np.ndarray, float]], sr: int) -> np.ndarray:
     return np.concatenate(out) if out else np.zeros(0, dtype=np.float32)
 
 
+def stretch(x: np.ndarray, sr: int, ratio: float) -> np.ndarray:
+    """Make speech `ratio` times as long without changing its pitch (WSOLA: overlap-add of 30 ms frames, each
+    shifted up to 8 ms to line up with the waveform before it). Meant for small changes, about 0.8–1.25."""
+    if abs(ratio - 1) < 0.01 or len(x) < sr * 0.1:
+        return x
+    from scipy.signal import correlate
+    win, tol = int(sr * 0.03), int(sr * 0.008)
+    hop = win // 2
+    w = np.hanning(win).astype(np.float32)
+    pad = win + tol
+    y = np.concatenate([np.zeros(pad, np.float32), np.asarray(x, np.float32), np.zeros(pad + win, np.float32)])
+    n_out = int(len(x) * ratio)
+    out = np.zeros(n_out + 2 * win, np.float32)
+    norm = np.zeros_like(out)
+    prev = pad
+    for k in range(n_out // hop + 1):
+        ideal = pad + int(k * hop / ratio)
+        lo, hi = max(0, ideal - tol), min(len(y) - win, ideal + tol)
+        if k == 0 or hi <= lo:
+            pos = min(max(0, ideal), len(y) - win)
+        else:
+            nat = y[prev + hop: prev + hop + win]  # what would follow the previous frame naturally
+            pos = lo + int(np.argmax(correlate(y[lo: hi + win], nat, mode="valid")))
+        out[k * hop: k * hop + win] += y[pos: pos + win] * w
+        norm[k * hop: k * hop + win] += w
+        prev = pos
+    return (out / np.maximum(norm, 1e-3))[:n_out]
+
+
 def to_mp3(src: Path, dst: Path, bitrate: str = "192k", synthetic: dict | None = None) -> Path:
     tags = ["-metadata", f"comment={tag_synthetic(synthetic)}"] if synthetic is not None else []
     r = _run([ffmpeg(), "-hide_banner", "-loglevel", "error", "-y", "-i", str(src), "-b:a", bitrate, *tags, str(dst)])

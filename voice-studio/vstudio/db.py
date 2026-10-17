@@ -55,13 +55,18 @@ CREATE TABLE IF NOT EXISTS catchphrases (
   clips TEXT NOT NULL DEFAULT '[]', checks TEXT NOT NULL DEFAULT '{}', created_at REAL NOT NULL
 );
 CREATE INDEX IF NOT EXISTS phrase_voice ON catchphrases(voice_id);
+CREATE TABLE IF NOT EXISTS performances (
+  id TEXT PRIMARY KEY, name TEXT NOT NULL, path TEXT NOT NULL, duration REAL, lang TEXT, status TEXT NOT NULL,
+  phrases TEXT NOT NULL DEFAULT '[]', params TEXT NOT NULL DEFAULT '{}', result TEXT NOT NULL DEFAULT '{}',
+  meta TEXT NOT NULL DEFAULT '{}', created_at REAL NOT NULL
+);
 CREATE TABLE IF NOT EXISTS presets (
   id TEXT PRIMARY KEY, name TEXT NOT NULL, source TEXT NOT NULL, model_id TEXT, data TEXT NOT NULL, created_at REAL NOT NULL
 );
 """
 
 JSON_COLS = {"languages", "consent", "enrollment", "meta", "flags", "params", "result", "preset", "progress",
-             "metrics", "score", "data", "storage", "variants", "clips", "checks"}
+             "metrics", "score", "data", "storage", "variants", "clips", "checks", "phrases"}
 
 _local = threading.local()
 

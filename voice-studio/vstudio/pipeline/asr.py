@@ -77,6 +77,16 @@ def transcribe(audio16k: np.ndarray, name: str, language: str | None = None, dev
             "avg_logprob": lp, "no_speech": nsp}
 
 
+def transcribe_words(audio16k: np.ndarray, name: str, language: str | None = None, device: str = "auto") -> dict:
+    """Words with their times, for following a recording phrase by phrase (照著念)."""
+    m = model(name, device)
+    segs, info = m.transcribe(audio16k, language=language, beam_size=5, vad_filter=True, word_timestamps=True,
+                              condition_on_previous_text=False)
+    words = [{"start": float(w.start), "end": float(w.end), "word": w.word, "prob": float(w.probability)}
+             for s in segs for w in (s.words or [])]
+    return {"lang": info.language, "words": words}
+
+
 # --- agreement --------------------------------------------------------------------------------------------------
 
 def normalize(text: str, lang: str | None) -> str:

@@ -1,11 +1,13 @@
+import { useEffect, useState } from "react";
 import { NavLink, Route, Routes } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import {
-  AudioLines, BookOpen, Boxes, ClipboardCheck, Cpu, FileText, Home, ListChecks, Mic2, Moon, Settings2, Sun,
-  Upload, Users, Wand2,
+  AudioLines, BookOpen, BookOpenText, Boxes, ClipboardCheck, Cpu, Drama, FileText, Home, ListChecks, Mic2, Moon,
+  Settings2, Sun, Upload, Users, Wand2,
 } from "lucide-react";
 import { api, type Job } from "./api";
+import ManualPanel from "./ManualPanel";
 import Dashboard from "./pages/Dashboard";
 import Voices from "./pages/Voices";
 import ImportPage from "./pages/Import";
@@ -18,6 +20,7 @@ import Characters from "./pages/Characters";
 import Jobs from "./pages/Jobs";
 import Settings from "./pages/Settings";
 import Guide from "./pages/Guide";
+import Perform from "./pages/Perform";
 
 const NAV = [
   { to: "/", label: "總覽", icon: Home },
@@ -30,6 +33,7 @@ const NAV = [
   { to: "/models", label: "模型", icon: Boxes },
   { group: "使用" },
   { to: "/speak", label: "文字轉語音", icon: Mic2 },
+  { to: "/perform", label: "照著念", icon: Drama },
   { to: "/script", label: "劇本配音", icon: FileText },
   { to: "/characters", label: "角色預設", icon: Wand2 },
   { group: "其他" },
@@ -55,6 +59,21 @@ export default function App() {
   const toggle = () => {
     const d = document.documentElement.classList.toggle("dark");
     localStorage.setItem("theme", d ? "dark" : "light");
+  };
+  // the manual stays open across pages and restarts until it is closed (open at first on wide screens)
+  const [manual, setManual] = useState(() => {
+    try { const v = localStorage.getItem("manual"); return v === null ? window.innerWidth >= 1280 : v === "1"; } catch { return false; }
+  });
+  const [width, setWidth] = useState(() => { try { return Number(localStorage.getItem("manual-width")) || 400; } catch { return 400; } });
+  useEffect(() => { try { localStorage.setItem("manual", manual ? "1" : "0"); } catch { /* private mode */ } }, [manual]);
+  useEffect(() => { try { localStorage.setItem("manual-width", String(width)); } catch { /* private mode */ } }, [width]);
+  const resize = (e: React.PointerEvent) => {  // drag the panel's left edge
+    e.preventDefault();
+    const move = (ev: PointerEvent) => setWidth(Math.round(Math.min(760, Math.max(320, window.innerWidth - ev.clientX))));
+    const up = () => { window.removeEventListener("pointermove", move); window.removeEventListener("pointerup", up); document.body.style.userSelect = ""; };
+    document.body.style.userSelect = "none";
+    window.addEventListener("pointermove", move);
+    window.addEventListener("pointerup", up);
   };
   return (
     <div className="flex h-full">
@@ -85,6 +104,11 @@ export default function App() {
         <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-zinc-200 bg-white/80 px-6 backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/80">
           <ActiveJobs />
           <div className="ml-auto flex items-center gap-2">
+            <button onClick={() => setManual(!manual)} title={manual ? "收起使用手冊" : "打開使用手冊"}
+              className={clsx("flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm",
+                manual ? "bg-brand-50 font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-200" : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800")}>
+              <BookOpenText className="size-4" />使用手冊
+            </button>
             <button onClick={toggle} className="rounded-lg p-2 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800" title="切換深色模式">
               <Sun className="hidden size-4 dark:block" /><Moon className="size-4 dark:hidden" />
             </button>
@@ -101,6 +125,7 @@ export default function App() {
               <Route path="/train" element={<Train />} />
               <Route path="/models" element={<Models />} />
               <Route path="/speak" element={<Speak />} />
+              <Route path="/perform" element={<Perform />} />
               <Route path="/script" element={<Script />} />
               <Route path="/characters" element={<Characters />} />
               <Route path="/jobs" element={<Jobs />} />
@@ -111,6 +136,18 @@ export default function App() {
           </div>
         </main>
       </div>
+      {manual && (
+        <>
+          {/* docked beside the page on wide screens; a drawer over it on narrow ones */}
+          <div className="fixed inset-0 z-30 bg-black/30 xl:hidden" onClick={() => setManual(false)} />
+          <aside style={{ "--mw": `${width}px` } as React.CSSProperties}
+            className="fixed inset-y-0 right-0 z-40 w-[min(440px,92vw)] border-l border-zinc-200 bg-white shadow-xl xl:relative xl:z-auto xl:w-(--mw) xl:shrink-0 xl:shadow-none dark:border-zinc-800 dark:bg-zinc-900">
+            <div onPointerDown={resize} title="拖曳調整寬度"
+              className="absolute inset-y-0 -left-1 z-10 hidden w-2 cursor-col-resize hover:bg-brand-400/40 xl:block" />
+            <ManualPanel onClose={() => setManual(false)} />
+          </aside>
+        </>
+      )}
     </div>
   );
 }

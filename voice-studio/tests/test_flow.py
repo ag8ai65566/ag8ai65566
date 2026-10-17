@@ -715,3 +715,85 @@ def test_colab_roundtrip(client, tmp_path):
     colab.poll()
     t3 = db.get("trainings", tr3["id"])
     assert t3["status"] == "waiting" and "斷線" in t3["note"] and not (d3 / "claim.json").exists()
+
+
+def _phrased(path: Path, parts: list[tuple[float, float, float, float]], sr: int = 48000) -> Path:
+    """(start, end, f0, amplitude) voiced stretches with silence between them."""
+    y = np.zeros(int(sr * (parts[-1][1] + 0.6)), dtype=np.float32)
+    for a, b, f0, amp in parts:
+        t = np.arange(int(sr * (b - a))) / sr
+        ph = 2 * math.pi * np.cumsum(f0 * (1 + 0.04 * np.sin(2 * math.pi * 4 * t))) / sr
+        y[int(sr * a): int(sr * a) + len(t)] = amp * (np.sin(ph) + 0.5 * np.sin(2 * ph) + 0.25 * np.sin(3 * ph)) / 1.75
+    with wave.open(str(path), "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)
+        w.writeframes((y * 32767).astype("<i2").tobytes())
+    return path
+
+
+def test_perform_follows_a_recording(client, tmp_path, monkeypatch):
+    """照著念: phrases and pauses from word times, delivery guesses, editing, rendering with the trained voice."""
+    from vstudio import db, perform
+    from vstudio.pipeline import asr
+    c = client
+    ref = _phrased(tmp_path / "ref.wav", [(0.4, 1.6, 150, 0.15), (2.4, 3.6, 150, 0.15), (4.6, 5.6, 210, 0.6),
+                                          (6.4, 7.6, 150, 0.15)])
+    words = [("今日は", 0.4, 0.9), ("いい天気。", 0.95, 1.6), ("散歩に", 2.4, 3.0), ("行こう", 3.05, 3.6),
+             ("すごい！", 4.6, 5.6), ("ほんとに", 6.4, 7.6)]
+
+    def fake_words(audio16k, name, language=None, device="auto"):
+        assert abs(len(audio16k) / 16000 - 8.2) < 0.1
+        return {"lang": "ja", "words": [{"word": w, "start": a, "end": b, "prob": 0.9} for w, a, b in words]}
+    monkeypatch.setattr(asr, "transcribe_words", fake_words)
+
+    # word grouping on its own: pauses, sentence ends, very long phrases
+    sp = perform.split_phrases([{"word": w, "start": a, "end": b} for w, a, b in words])
+    assert [p["text"] for p in sp] == ["今日はいい天気。", "散歩に行こう", "すごい！", "ほんとに"]
+    long = [{"word": "あ", "start": i * 0.5, "end": i * 0.5 + 0.45 + (0.1 if i == 13 else 0)} for i in range(30)]
+    assert all(p["end"] - p["start"] <= perform.MAX_PHRASE for p in perform.split_phrases(long))
+
+    with open(ref, "rb") as fh:
+        rec = c.post("/api/perform", files={"file": ("台詞.wav", fh, "audio/wav")}, data={"language": "ja"}).json()
+    assert _wait(c, rec["job"]["id"])["status"] == "done"
+    rec = c.get(f"/api/perform/{rec['id']}").json()
+    assert rec["status"] == "ready" and rec["lang"] == "ja" and len(rec["phrases"]) == 4
+    assert not Path(rec["path"]).exists()                           # the upload is decoded once, then removed
+    p0, p2 = rec["phrases"][0], rec["phrases"][2]
+    assert p0["pause"] == 0.8 and rec["phrases"][-1]["pause"] == 0.0
+    assert {"loud", "high"} <= set(p2["tags"]) and p2["emotion"] == "excited" and "loud" in p2["style"]
+    assert "大聲" in p2["labels"] and p0["emotion"] == ""
+    assert c.get(f"/api/perform/{rec['id']}/phrase/2/source").status_code == 200
+
+    # the person corrects the guesses
+    r = c.patch(f"/api/perform/{rec['id']}", json={"phrases": [{"i": 0, "emotion": "sad", "style": "slow"},
+                                                               {"i": 3, "skip": True}, {"i": 1, "pause": 1.5}]})
+    assert r.status_code == 200 and r.json()["phrases"][0]["emotion"] == "sad"
+    assert c.patch(f"/api/perform/{rec['id']}", json={"phrases": [{"i": 0, "emotion": "furious"}]}).status_code == 400
+
+    # render with a trained voice (the test engine); the recording itself is never a voice prompt
+    v = _consented_voice(c)
+    m = c.post("/api/models/demo").json()
+    db.update("models", m["id"], {"voice_id": v["id"]})
+    before = len(db.query("SELECT id FROM outputs"))
+    job = c.post(f"/api/perform/{rec['id']}/render", json={"model_id": m["id"], "takes": 2}).json()
+    j = _wait(c, job["id"])
+    assert j["status"] == "done", j
+    rec = c.get(f"/api/perform/{rec['id']}").json()
+    res = rec["result"]
+    assert rec["status"] == "done" and len(res["phrases"]) == 3     # the skipped phrase is left out
+    assert len(db.query("SELECT id FROM outputs")) == before + 1     # only the joined result, not every take
+    assert all(0.8 <= s["stretch"] <= 1.25 for s in res["phrases"]) and res["phrases"][0]["emotion"] == "sad"
+    out = db.get("outputs", res["output_id"])
+    assert out["params"]["perform"] == rec["id"] and out["duration"] > 4
+    assert c.get(f"/api/perform/{rec['id']}/phrase/0/output").status_code == 200
+    # redo one phrase: the others are reused, the old result replaced
+    job = c.post(f"/api/perform/{rec['id']}/render", json={"model_id": m["id"], "takes": 1, "only": [1]}).json()
+    assert _wait(c, job["id"])["status"] == "done"
+    res2 = c.get(f"/api/perform/{rec['id']}").json()["result"]
+    assert res2["output_id"] != res["output_id"] and db.get("outputs", res["output_id"]) is None
+    assert res2["phrases"][0]["match"] == res["phrases"][0]["match"]
+    # a voice without consent cannot be used
+    db.update("voices", v["id"], {"consent": {"agreed": False}})
+    db.update("models", m["id"], {"engine": "voxcpm2"})
+    assert c.post(f"/api/perform/{rec['id']}/render", json={"model_id": m["id"]}).status_code == 400
+    c.delete(f"/api/perform/{rec['id']}")
+    assert not perform.folder(rec["id"]).exists() and db.get("outputs", res2["output_id"]) is None
