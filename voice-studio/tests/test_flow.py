@@ -512,6 +512,14 @@ def test_label_lists(client, tmp_path, monkeypatch):
     assert labels.resolve("x.wav", out["rows"], "neutral", "en")[::2] == ("neutral", "form")
     with pytest.raises(ValueError):
         labels.parse_list("名字,心情\na,b\n".encode(), "x.csv")
+    # the clips.csv the screening AI hands over (chapter 10) reads as a list: "none" means no label, mixed = auto
+    ai = labels.parse_list("file,stream,lang,emotion,bgm\nclean/ja/angry/x1.wav,s,ja,angry,none\n"
+                           "clean/mixed/none/x2.wav,s,mixed,none,low\n".encode(), "clips.csv")
+    assert ai["errors"] == [] and ai["rows"] == {"x1.wav": {"emotion": "angry", "language": "ja"}, "x2.wav": {}}
+    # and its folder layout labels files by itself: clean/<lang>/<emotion>/
+    assert labels.resolve("x1.wav", None, None, None, ["ja", "angry"]) == ("angry", "ja", "folder")
+    assert labels.resolve("x2.wav", None, None, None, ["mixed", "none"]) == (None, None, "")
+    assert labels.resolve("x3.wav", None, None, None, ["bgm", "en", "soft"]) == ("soft", "en", "folder")
 
     monkeypatch.setattr(jobs, "submit", lambda *a, **k: None)
     c = client

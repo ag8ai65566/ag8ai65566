@@ -24,6 +24,7 @@ LANG_WORDS = {
     "zh": ("zh", "中文", "國語", "华语", "chinese"),
 }
 AUTO_WORDS = ("auto", "自動", "自動判斷", "mixed", "混合", "")
+NO_EMOTION = ("none", "無", "不標記", "不標", "未標記", "n/a", "-", "—")  # an explicit "no label" in a list
 FILE_COLS = ("檔名", "檔案", "檔案名稱", "file", "filename", "file name", "名稱", "path")
 EMO_COLS = ("情緒", "情緒標籤", "emotion", "風格", "語氣")
 LANG_COLS = ("語言", "language", "lang")
@@ -111,7 +112,7 @@ def _rows_from_table(rows: list[list[str]]) -> dict:
         if not fname:
             continue
         entry: dict = {}
-        if ec is not None and ec < len(cells) and cells[ec]:
+        if ec is not None and ec < len(cells) and cells[ec] and cells[ec].lower() not in NO_EMOTION:
             e = emotion_of(cells[ec])
             if e:
                 entry["emotion"] = e
