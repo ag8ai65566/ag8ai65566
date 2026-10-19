@@ -1,8 +1,9 @@
 """Persistent background jobs.
 
-Two queues, each served by one worker thread:
+Three queues, each served by one worker thread:
 - "gpu": data preparation, evaluation and anything else that needs the local GPU (one at a time);
-- "io": uploads, cloud training monitoring and downloads (network-bound, so they never block the GPU queue).
+- "io": uploads, cloud training monitoring and downloads (network-bound, so they never block the GPU queue);
+- "check": checking recordings before import (light CPU work, so it never waits behind an import or a training).
 
 Jobs live in the database, so the job list survives a restart; a job that was running when the app stopped is
 marked failed with an explanation and can be retried. Handlers report progress and check for cancellation through
@@ -133,7 +134,7 @@ def start() -> None:
                   "WHERE status='running'", (db.now(),))
     if _threads:
         return
-    for q in ("gpu", "io"):
+    for q in ("gpu", "io", "check"):
         t = threading.Thread(target=_worker, args=(q,), name=f"jobs-{q}", daemon=True)
         t.start()
         _threads.append(t)

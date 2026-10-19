@@ -805,3 +805,97 @@ def test_perform_follows_a_recording(client, tmp_path, monkeypatch):
     assert c.post(f"/api/perform/{rec['id']}/render", json={"model_id": m["id"]}).status_code == 400
     c.delete(f"/api/perform/{rec['id']}")
     assert not perform.folder(rec["id"]).exists() and db.get("outputs", res2["output_id"]) is None
+
+
+def test_audio_check_detectors():
+    """The pieces of the pre-import check on signals with known answers (no speech detector needed)."""
+    from vstudio import audiocheck as ac
+    sr, rng = 48000, np.random.default_rng(1)
+    t = np.arange(int(0.5 * sr)) / sr
+    feats = lambda y: ac.block_features(y.astype(np.float32), sr)
+    noise = 0.01 * rng.standard_normal(len(t))
+    chord = sum(0.05 * np.sin(2 * np.pi * f * t) for f in (261.6, 329.6, 392.0)) * np.exp(-3 * t)
+    hum = sum(0.02 * np.sin(2 * np.pi * 60 * k * t) / k for k in range(1, 6)) + 0.0005 * rng.standard_normal(len(t))
+    fan = np.convolve(0.05 * rng.standard_normal(len(t)), np.ones(30) / 30, "same")
+    clicks = 0.0005 * rng.standard_normal(len(t))
+    for c in (0.05, 0.2, 0.35):
+        clicks[int(c * sr): int(c * sr) + 200] += 0.3 * rng.standard_normal(200)
+    assert ac.classify_block(feats(noise), -30, 0.0) == "noise"
+    assert ac.classify_block(feats(chord), -30, 0.0) == "music"
+    assert ac.classify_block(feats(hum), -30, 0.0) == "hum"
+    assert ac.classify_block(feats(fan), -30, 0.0) == "noise"          # a fan's rumble is not mains hum
+    assert ac.classify_block(feats(clicks), -30, 0.0) == "transient"
+    assert ac.classify_block(feats(noise), -55, 0.0) == "quiet"
+    assert ac.classify_block(feats(noise), -30, 0.6) == "voice"
+    # bandwidth: a cliff at 4 kHz (phone) versus sound up to the top
+    from scipy.signal import butter, sosfilt
+    x = rng.standard_normal(sr * 4) * 0.1
+    phone = sosfilt(butter(12, 4000, fs=sr, output="sos"), x)
+    spec, freqs = ac.ltas(phone, sr, np.ones(395, dtype=bool))
+    assert 3500 <= ac.cutoff(spec, freqs) <= 5000
+    spec, freqs = ac.ltas(x, sr, np.ones(395, dtype=bool))
+    assert ac.cutoff(spec, freqs) >= 23000
+    # echo: a level that falls 60 dB in 0.2 s versus in 1 s, from the end of a phrase
+    for rt, lo, hi in ((0.2, 0.1, 0.35), (1.0, 0.8, 1.3)):
+        fdb = np.full(300, -80.0)
+        fdb[:100] = -20.0
+        fdb[100:] = np.maximum(-20 - 60 * np.arange(200) * 0.01 / rt, -80)
+        assert lo <= ac.decay_time(fdb, 0.01, 1.0, 1.5, -80.0) <= hi
+    assert ac.verdict([{"level": "pass"}, {"level": "unknown"}]) == "pass"
+    assert ac.verdict([{"level": "pass"}, {"level": "warn"}]) == "warn"
+    assert ac.verdict([{"level": "warn"}, {"level": "fail"}]) == "fail"
+
+
+@needs_speech
+def test_audio_check_flow(client, tmp_path):
+    """Upload, check, hear a problem spot, import only what passed."""
+    from vstudio import audio, db
+    c = client
+    x, sr = audio.load(Path(SAMPLE), 48000)
+    gap = np.zeros(int(2.5 * sr), np.float32)
+    speech = np.concatenate([x, gap, x, gap, x]) / max(1e-6, float(np.max(np.abs(x)))) * 0.5
+    t = np.arange(len(speech)) / sr
+    music = sum(np.sin(2 * np.pi * f * t) for f in (261.6, 329.6, 392.0)) * (0.5 + 0.5 * np.sin(2 * np.pi * 2 * t))
+    loud_music = speech + 0.03 * music
+    clipped = np.clip(speech * 4, -1, 1)
+    files = {"music.wav": loud_music, "clipped.wav": clipped}
+    b = c.post("/api/checks/batches").json()["id"]
+    for name, y in files.items():
+        audio.save(tmp_path / name, y.astype(np.float32), sr)
+        with open(tmp_path / name, "rb") as fh:
+            assert c.post("/api/checks/upload", files={"file": (name, fh, "audio/wav")}, data={"batch": b}).status_code == 200
+    job = db.query("SELECT id FROM jobs WHERE kind='audio_check' ORDER BY created_at DESC LIMIT 1")[0]
+    assert _wait(c, job["id"])["status"] == "done"
+    batch = next(x for x in c.get("/api/checks").json() if x["id"] == b)
+    items = {i["filename"]: i for i in batch["items"]}
+    assert all(i["status"] == "done" for i in items.values())
+    checks = {i: {k["key"]: k for k in items[i]["result"]["checks"]} for i in items}
+    assert checks["music.wav"]["background"]["level"] == "fail" and checks["music.wav"]["background"]["ranges"]
+    assert items["music.wav"]["verdict"] == "fail"
+    assert checks["clipped.wav"]["clipping"]["level"] == "fail" and checks["clipped.wav"]["clipping"]["ranges"]
+    a, e = checks["music.wav"]["background"]["ranges"][0]
+    r = c.get(f"/api/checks/{items['music.wav']['id']}/audio?start={a}&end={e}")
+    assert r.status_code == 200 and r.content[:4] == b"RIFF"
+    assert len(c.get("/api/checks/criteria").json()) >= 8
+    # import: the upload moves into the studio's sources; checking the folder in place does not copy
+    r = c.post("/api/checks/import", json={"ids": [items["clipped.wav"]["id"]], "language": "en"}).json()
+    assert r["created"] == 1
+    src = db.query("SELECT * FROM sources WHERE filename='clipped.wav'")[0]
+    assert "_uploads" in src["path"] and Path(src["path"]).exists() and src["language"] == "en"
+    folder = tmp_path / "rec" / "生氣"
+    folder.mkdir(parents=True)
+    audio.save(folder / "a.wav", speech.astype(np.float32), sr)
+    r = c.post("/api/checks/path", json={"path": str(tmp_path / "rec")}).json()
+    assert r["count"] == 1
+    job = db.query("SELECT id FROM jobs WHERE kind='audio_check' ORDER BY created_at DESC LIMIT 1")[0]
+    assert _wait(c, job["id"])["status"] == "done"
+    item = next(x for x in c.get("/api/checks").json() if x["id"] == r["batch"])["items"][0]
+    assert item["status"] == "done" and item["copied"] == 0
+    c.post("/api/checks/import", json={"ids": [item["id"]]})
+    src = db.query("SELECT * FROM sources WHERE filename='a.wav'")[0]
+    assert src["path"] == str(folder / "a.wav") and src["emotion"] == "angry"     # folder name still labels it
+    # deleting a batch removes uploaded copies but never the user's own files
+    c.delete(f"/api/checks/batch/{r['batch']}")
+    c.delete(f"/api/checks/batch/{b}")
+    assert (folder / "a.wav").exists() and Path(src["path"]).exists()
+    assert not db.query("SELECT id FROM audio_checks")

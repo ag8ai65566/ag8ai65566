@@ -9,7 +9,7 @@ import { api } from "./api";
 
 // the manual's section for each page (anchors are <a id="…"></a> lines in docs/00-manual.md)
 const ROUTE_SECTION: [string, string][] = [
-  ["/voices", "step-voices"], ["/import", "step-import"], ["/review", "step-review"], ["/train", "step-train"],
+  ["/voices", "step-voices"], ["/check", "step-check"], ["/import", "step-import"], ["/review", "step-review"], ["/train", "step-train"],
   ["/models", "step-models"], ["/speak", "step-speak"], ["/perform", "step-perform"], ["/script", "step-script"],
   ["/characters", "step-script"], ["/settings", "step-settings"], ["/jobs", "step-trouble"], ["/", "start"],
 ];

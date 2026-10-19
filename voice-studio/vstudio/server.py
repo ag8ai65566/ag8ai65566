@@ -10,8 +10,9 @@ from urllib.parse import unquote
 from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse, JSONResponse
 
-from . import __version__, config, db, evaluate, jobs, perform, training, tts  # noqa: F401  (modules register job handlers)
+from . import __version__, audiocheck, config, db, evaluate, jobs, perform, training, tts  # noqa: F401  (modules register job handlers)
 from .api import data, docs, phrases, speak, system, train, voices
+from .api import checks as checks_api
 from .api import perform as perform_api
 from .cloud import colab  # noqa: F401  (registers colab_prepare / colab_install)
 from .engines import install  # noqa: F401  (registers install_engine)
@@ -58,7 +59,7 @@ def create_app() -> FastAPI:
 
     app = FastAPI(title="Voice Studio", version=__version__, lifespan=lifespan)
     for r in (voices.router, data.router, train.router, speak.router, system.router, docs.router,
-              phrases.router, perform_api.router):
+              phrases.router, perform_api.router, checks_api.router):
         app.include_router(r)
 
     password = os.environ.get("VSTUDIO_PASSWORD", "")

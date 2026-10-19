@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import {
   AudioLines, BookOpen, BookOpenText, Boxes, ClipboardCheck, Cpu, Drama, FileText, Home, ListChecks, Mic2, Moon,
-  Settings2, Sun, Upload, Users, Wand2,
+  Settings2, Stethoscope, Sun, Upload, Users, Wand2,
 } from "lucide-react";
 import { api, type Job } from "./api";
 import ManualPanel from "./ManualPanel";
@@ -21,11 +21,13 @@ import Jobs from "./pages/Jobs";
 import Settings from "./pages/Settings";
 import Guide from "./pages/Guide";
 import Perform from "./pages/Perform";
+import CheckPage from "./pages/Check";
 
 const NAV = [
   { to: "/", label: "總覽", icon: Home },
   { group: "準備資料" },
   { to: "/voices", label: "聲音與同意", icon: Users },
+  { to: "/check", label: "檢查音檔", icon: Stethoscope },
   { to: "/import", label: "匯入錄音", icon: Upload },
   { to: "/review", label: "檢查資料", icon: ClipboardCheck },
   { group: "訓練" },
@@ -120,6 +122,7 @@ export default function App() {
               <Route path="/" element={<Dashboard />} />
               <Route path="/voices" element={<Voices />} />
               <Route path="/voices/:id" element={<Voices />} />
+              <Route path="/check" element={<CheckPage />} />
               <Route path="/import" element={<ImportPage />} />
               <Route path="/review" element={<Review />} />
               <Route path="/train" element={<Train />} />

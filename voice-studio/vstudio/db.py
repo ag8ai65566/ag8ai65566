@@ -60,6 +60,12 @@ CREATE TABLE IF NOT EXISTS performances (
   phrases TEXT NOT NULL DEFAULT '[]', params TEXT NOT NULL DEFAULT '{}', result TEXT NOT NULL DEFAULT '{}',
   meta TEXT NOT NULL DEFAULT '{}', created_at REAL NOT NULL
 );
+CREATE TABLE IF NOT EXISTS audio_checks (
+  id TEXT PRIMARY KEY, batch TEXT NOT NULL, filename TEXT NOT NULL, path TEXT NOT NULL, root TEXT,
+  copied INTEGER NOT NULL DEFAULT 0, status TEXT NOT NULL, verdict TEXT, duration REAL,
+  result TEXT NOT NULL DEFAULT '{}', meta TEXT NOT NULL DEFAULT '{}', created_at REAL NOT NULL
+);
+CREATE INDEX IF NOT EXISTS check_batch ON audio_checks(batch);
 CREATE TABLE IF NOT EXISTS presets (
   id TEXT PRIMARY KEY, name TEXT NOT NULL, source TEXT NOT NULL, model_id TEXT, data TEXT NOT NULL, created_at REAL NOT NULL
 );
