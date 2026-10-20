@@ -49,6 +49,7 @@ def list_checks(limit: int = 1000):
                                  "AND status IN ('queued', 'running') ORDER BY created_at")}
     batches: dict = {}
     for r in rows:
+        r["bgm_ok"] = r["status"] == "done" and audiocheck.quiet_bgm(r["result"])
         b = batches.setdefault(r["batch"], {"id": r["batch"], "created_at": r["created_at"], "items": [],
                                            "root": r["root"], "job": running.get(r["batch"])})
         b["created_at"] = min(b["created_at"], r["created_at"])
@@ -163,6 +164,7 @@ class ImportIn(BaseModel):
     voice_hint: str | None = None
     language: str | None = None
     emotion: str | None = None
+    separate: bool = False     # remove the background music (for recordings with quiet music, bgm/)
 
 
 @router.post("/import")
@@ -190,9 +192,10 @@ def import_checked(body: ImportIn):
         src = db.insert("sources", {"id": db.new_id("src"), "filename": item["filename"], "path": str(path),
                                     "status": "new", "voice_hint": body.voice_hint or None, "language": lang,
                                     "emotion": emo, "meta": {"copied": bool(item["copied"]),
-                                                             "check": {"verdict": item["verdict"]}},
+                                                             "check": {"verdict": item["verdict"],
+                                                                       "separated": body.separate}},
                                     "created_at": db.now()})
-        jobs.submit("prepare_source", {"source_id": src["id"], "separate": False}, "排隊處理")
+        jobs.submit("prepare_source", {"source_id": src["id"], "separate": body.separate}, "排隊處理")
         db.update("audio_checks", cid, {"path": str(path), "copied": 0,
                                         "meta": {**(item["meta"] or {}), "imported": src["id"]}})
         created.append(src["id"])

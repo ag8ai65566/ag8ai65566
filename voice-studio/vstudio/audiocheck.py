@@ -487,6 +487,15 @@ def summarise(parts: list[dict], info: dict, sr: int, dur: float) -> dict:
             "timeline": _timeline(parts, flagged)}
 
 
+def quiet_bgm(result: dict) -> bool:
+    """Usable for bgm/ (imported with the music removed): the deep check finds the music under the speech at least
+    20 dB below the voice, and nothing but the background itself fails."""
+    checks = {c["key"]: c for c in (result or {}).get("checks", [])}
+    under = checks.get("under")
+    return bool(under) and under["level"] in ("pass", "warn") and \
+        all(c["level"] != "fail" for k, c in checks.items() if k not in ("background", "under"))
+
+
 def verdict(checks: list[dict]) -> str:
     worst = max((ORDER[c["level"]] for c in checks), default=0)
     return "fail" if worst >= 3 else "warn" if worst >= 2 else "pass"

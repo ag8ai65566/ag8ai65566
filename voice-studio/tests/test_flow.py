@@ -899,3 +899,24 @@ def test_audio_check_flow(client, tmp_path):
     c.delete(f"/api/checks/batch/{b}")
     assert (folder / "a.wav").exists() and Path(src["path"]).exists()
     assert not db.query("SELECT id FROM audio_checks")
+
+
+def test_quiet_bgm_import(client, tmp_path):
+    """bgm/ recordings: fine when the deep check finds the music 20 dB under the voice; imported with separation."""
+    from vstudio import audiocheck, db
+    ok = {"checks": [{"key": "background", "level": "fail"}, {"key": "noise", "level": "warn"},
+                     {"key": "under", "level": "warn"}]}
+    assert audiocheck.quiet_bgm(ok)
+    assert not audiocheck.quiet_bgm({"checks": [{"key": "background", "level": "fail"}]})            # no deep check
+    assert not audiocheck.quiet_bgm({"checks": [{"key": "under", "level": "fail"}]})                 # music too loud
+    assert not audiocheck.quiet_bgm({"checks": [{"key": "under", "level": "pass"}, {"key": "clipping", "level": "fail"}]})
+    f = tmp_path / "bgm.wav"
+    f.write_bytes(b"RIFF")
+    db.insert("audio_checks", {"id": "ac_1", "batch": "chk_1", "filename": "bgm.wav", "path": str(f), "root": None,
+                               "copied": 0, "status": "done", "verdict": "fail", "result": ok, "meta": {},
+                               "created_at": db.now()})
+    item = client.get("/api/checks").json()[0]["items"][0]
+    assert item["bgm_ok"] is True
+    assert client.post("/api/checks/import", json={"ids": ["ac_1"], "separate": True}).json()["created"] == 1
+    job = db.query("SELECT params FROM jobs WHERE kind='prepare_source'")[0]
+    assert job["params"]["separate"] is True

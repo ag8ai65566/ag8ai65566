@@ -10,7 +10,7 @@ type Level = "pass" | "warn" | "fail" | "unknown" | "info";
 type CheckRow = { key: string; label: string; level: Level; value: string; detail: string; ranges: [number, number][] };
 type Item = {
   id: string; batch: string; filename: string; path: string; status: string; verdict: "pass" | "warn" | "fail" | null;
-  duration: number | null; copied: number; meta: { imported?: string };
+  duration: number | null; copied: number; meta: { imported?: string }; bgm_ok: boolean;
   result: {
     checks?: CheckRow[]; error?: string;
     info?: { codec?: string; sr?: number; channels?: number; kbps?: number; duration: number; analysed: number; sampled: boolean; speech_seconds: number };
@@ -174,7 +174,7 @@ function BatchCard({ b }: { b: Batch }) {
       {new Date(b.created_at * 1000).toLocaleString("zh-TW", { hour12: false })}
       <span className="text-sm font-normal text-zinc-500">{b.items.length} 個檔案{b.root ? ` · ${b.root}` : ""}</span></span>}
       actions={<div className="flex flex-wrap gap-1">
-        <Button size="sm" onClick={() => setImporting(true)} disabled={!count("pass") && !count("warn")}>匯入通過的</Button>
+        <Button size="sm" onClick={() => setImporting(true)} disabled={!count("pass") && !count("warn") && !b.items.some((i) => i.bgm_ok)}>匯入通過的</Button>
         <Button size="sm" variant="ghost" title="用人聲分離再檢查一次整批" onClick={() => recheck.mutate()} disabled={pending > 0}><RefreshCw className="size-3.5" />深入檢查</Button>
         <Button size="sm" variant="ghost" title="刪除這批檢查結果（資料夾裡的原始檔案不會被刪）" onClick={() => confirm("刪除這批檢查結果？上傳的複本會刪除；資料夾裡的原始檔案不會被刪。") && remove.mutate()}><Trash2 className="size-3.5" /></Button>
       </div>}>
@@ -277,9 +277,12 @@ function ImportModal({ batch, onClose }: { batch: Batch; onClose: () => void }) 
   const [voice, setVoice] = useState("");
   const [language, setLanguage] = useState("");
   const [withWarn, setWithWarn] = useState(false);
-  const ids = batch.items.filter((i) => !i.meta?.imported && (i.verdict === "pass" || (withWarn && i.verdict === "warn"))).map((i) => i.id);
+  const [mode, setMode] = useState<"passed" | "bgm">("passed");
+  const ids = batch.items.filter((i) => !i.meta?.imported && (mode === "bgm" ? i.bgm_ok
+    : i.verdict === "pass" || (withWarn && i.verdict === "warn"))).map((i) => i.id);
   const run = useMutation({
-    mutationFn: () => api.post<{ created: number }>("/api/checks/import", { ids, voice_hint: voice || null, language: language || null }),
+    mutationFn: () => api.post<{ created: number }>("/api/checks/import",
+      { ids, voice_hint: voice || null, language: language || null, separate: mode === "bgm" }),
     onSuccess: () => { qc.invalidateQueries({ queryKey: ["checks"] }); qc.invalidateQueries({ queryKey: ["sources"] }); },
   });
   return (
@@ -303,7 +306,21 @@ function ImportModal({ batch, onClose }: { batch: Batch; onClose: () => void }) 
               {Object.entries(LANGS).map(([k, l]) => <option key={k} value={k}>{l}</option>)}
             </select>
           </Field>
-          <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={withWarn} onChange={(e) => setWithWarn(e.target.checked)} />也匯入「勉強可用」的</label>
+          <div className="space-y-2 text-sm">
+            <span className="label">匯入哪些</span>
+            <label className="flex items-start gap-2">
+              <input type="radio" className="mt-1" checked={mode === "passed"} onChange={() => setMode("passed")} />
+              <span>通過的
+                <label className="mt-1 flex items-center gap-2 text-xs text-zinc-500">
+                  <input type="checkbox" checked={withWarn} disabled={mode !== "passed"} onChange={(e) => setWithWarn(e.target.checked)} />也匯入「勉強可用」的
+                </label></span>
+            </label>
+            <label className="flex items-start gap-2">
+              <input type="radio" className="mt-1" checked={mode === "bgm"} onChange={() => setMode("bgm")} />
+              <span>背景音樂夠小聲的（bgm/ 用）
+                <span className="block text-xs text-zinc-500">要先做「深入檢查」：說話時底下的背景比人聲小 20 dB 以上、其他項目沒有不通過。匯入時會自動去除背景音樂。</span></span>
+            </label>
+          </div>
           <ErrorText error={run.error} />
           <Button className="w-full" onClick={() => run.mutate()} loading={run.isPending} disabled={!ids.length}>匯入 {ids.length} 個檔案</Button>
         </div>
