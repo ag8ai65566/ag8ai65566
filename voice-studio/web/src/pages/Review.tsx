@@ -296,12 +296,14 @@ function AutoReviewCard({ voice, onShow }: { voice: Voice; onShow: (flag: string
       ) : (
         <div className="mt-3 space-y-2">
           <div className="flex rounded-lg border border-zinc-300 p-0.5 text-sm dark:border-zinc-700">
-            {([["balanced", "平衡"], ["strict", "嚴格"]] as const).map(([k, l]) => (
+            {([["trusted", "已審核過"], ["balanced", "平衡"], ["strict", "嚴格"]] as const).map(([k, l]) => (
               <button key={k} onClick={() => setProfile(k)}
                 className={clsx("flex-1 rounded-md px-3 py-1", profile === k ? "bg-brand-600 text-white" : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800")}>{l}</button>
             ))}
           </div>
-          <p className="text-[11px] text-zinc-500">{profile === "strict" ? "嚴格：只核可非常乾淨的片段，需要你聽的會變多。資料很多（10 小時以上）時建議用這個。" : "平衡：大部分情況用這個。"}</p>
+          <p className="text-[11px] text-zinc-500">{profile === "strict" ? "嚴格：只核可非常乾淨的片段，需要你聽的會變多。資料很多（10 小時以上）時建議用這個。"
+            : profile === "trusted" ? "已審核過：素材已經由 AI 或你自己挑過（只有你、乾淨）。不再檢查是誰在說、雜音多少，也不抽查；只檢查平台轉出來的文字對不對，文字拿不準的才留給你聽。明顯不能用的（沒有字、爆音、只有笑聲）會排除。"
+            : "平衡：大部分情況用這個。"}</p>
           <Button className="w-full" onClick={() => start.mutate()} loading={start.isPending} disabled={!pending}>
             自動審核 {pending} 段待檢查的片段
           </Button>

@@ -949,3 +949,29 @@ def test_bulk_assign_and_delete(client, tmp_path):
     assert not db.query("SELECT id FROM sources") and not db.query("SELECT id FROM segments")
     assert db.get("jobs", job["id"])["status"] == "canceled"
     assert jobs.run_inline("prepare_source", {"source_id": "s2"})["status"] == "done"
+
+
+def test_auto_review_trusted(client, tmp_path):
+    """Material already screened (by an AI or the person): one click approves it; only doubtful transcripts and
+    plainly unusable clips are held back. No voiceprint needed, no spot checks."""
+    from vstudio import db, jobs
+    from vstudio.pipeline import autoreview
+    v = _consented_voice(client)
+    db.insert("sources", {"id": "s1", "filename": "a.wav", "path": "a.wav", "status": "ready", "created_at": db.now()})
+    d = tmp_path / "segs"
+    d.mkdir()
+    _seg(db, v["id"], "ok", "今日はいい天気ですね", d, status="pending", seconds=3.0, snr=14.0, spk_sim=None)
+    _seg(db, v["id"], "doubt", "今日はいい天気ですね", d, status="pending", seconds=3.0, asr_agree=0.7)
+    _seg(db, v["id"], "laugh", "", d, status="pending", seconds=3.0)
+    _seg(db, v["id"], "mine", "人が直した", d, status="pending", seconds=3.0, asr_agree=0.2, edited=1)
+    r = client.post(f"/api/auto-review/{v['id']}", json={"profile": "trusted"}).json()
+    j = _wait(client, r["id"])
+    assert j["status"] == "done" and j["result"]["spot_checks"] == 0, j
+    st = {s["id"]: s["status"] for s in db.query("SELECT id, status FROM segments")}
+    assert st == {"ok": "approved", "doubt": "pending", "laugh": "rejected", "mine": "pending"}
+    assert "auto_unsure" in db.get("segments", "doubt")["flags"]
+    # the usual profiles still need a voiceprint and still check the speaker
+    seg = {"text": "this is a fine line", "lang": "en", "duration": 3, "asr_agree": 1, "snr": 30, "spk_sim": None}
+    assert autoreview.decide(seg, autoreview.PROFILES["balanced"], 0.62, None) == ("unsure", ["speaker"])
+    assert autoreview.decide(seg, autoreview.PROFILES["trusted"], 0.62, None) == ("approve", [])
+    assert jobs  # imported for the job handlers

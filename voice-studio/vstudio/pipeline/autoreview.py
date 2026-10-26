@@ -28,6 +28,9 @@ PROFILES = {
     # drop: how far the least-similar 2 s window may fall below the clip's typical window
     "strict": {"agree": 0.95, "snr": 22.0, "spk_margin": 0.05, "drop": 0.15, "logprob": -0.5, "no_speech": 0.3},
     "balanced": {"agree": 0.88, "snr": 18.0, "spk_margin": 0.0, "drop": 0.22, "logprob": -0.8, "no_speech": 0.5},
+    # material someone already screened (an AI or the person): who is speaking and how clean it sounds are taken on
+    # trust; only the transcripts made here are checked, since a wrong transcript is what hurts training most
+    "trusted": {"agree": 0.85, "snr": 10.0, "trusted": True},
 }
 AUTO_FLAGS = ("auto_approved", "auto_rejected", "auto_unsure", "spot_check", "spot_ok", "spot_fail")
 REASON = {
@@ -64,6 +67,8 @@ def window_drop(emb: speaker.Embedder, y16: np.ndarray, target: np.ndarray, win:
 
 def decide(seg: dict, p: dict, threshold: float, drop: float | None) -> tuple[str, list[str]]:
     """('approve' | 'reject' | 'unsure', reasons). Missing measurements never count as a pass."""
+    if p.get("trusted"):
+        return decide_trusted(seg, p)
     hard, soft = [], []
     agree, snr, clip, sim = seg.get("asr_agree"), seg.get("snr"), seg.get("clip") or 0.0, seg.get("spk_sim")
     lp, ns = seg.get("asr_logprob"), seg.get("no_speech")
@@ -85,6 +90,31 @@ def decide(seg: dict, p: dict, threshold: float, drop: float | None) -> tuple[st
         soft.append("logprob")
     if ns is not None and ns > p["no_speech"]:
         (hard if ns > 0.8 else soft).append("no_speech")
+    if seg.get("text") and not rate_ok(seg["text"], seg.get("lang"), seg["duration"]):
+        hard.append("rate")
+    if hard:
+        return "reject", hard + soft
+    return ("unsure", soft) if soft else ("approve", [])
+
+
+def decide_trusted(seg: dict, p: dict) -> tuple[str, list[str]]:
+    """Screened material: reject only what is plainly unusable (no words, far too noisy, badly clipped, laughter or
+    music the recognizer heard as no speech, a transcript the two models disagree on completely); ask the person only
+    when the transcript itself is in doubt."""
+    hard, soft = [], []
+    agree = seg.get("asr_agree")
+    if not seg.get("text"):
+        hard.append("text")
+    if not 1.0 <= seg["duration"] <= 30.0:
+        hard.append("duration")
+    if agree is None or agree < p["agree"]:
+        (hard if agree is not None and agree < 0.5 else soft).append("agree")
+    if seg.get("snr") is not None and seg["snr"] < p["snr"]:
+        hard.append("snr")
+    if (seg.get("clip") or 0.0) > 0.01:
+        hard.append("clip")
+    if (seg.get("no_speech") or 0.0) > 0.8:
+        hard.append("no_speech")
     if seg.get("text") and not rate_ok(seg["text"], seg.get("lang"), seg["duration"]):
         hard.append("rate")
     if hard:
@@ -136,9 +166,10 @@ def auto_review(ctx: jobs.JobContext) -> dict:
     p = PROFILES.get(profile, PROFILES["balanced"])
     st = config.load_settings()
     threshold = float(st.get("speaker_match_threshold", 0.62))
-    emb = speaker.Embedder()
-    target = _target(voice_id, emb)
-    if target is None:
+    trusted = bool(p.get("trusted"))
+    emb = None if trusted else speaker.Embedder()
+    target = None if trusted else _target(voice_id, emb)
+    if target is None and not trusted:
         return {"voice_id": voice_id, "message": "還沒有這個聲音的聲紋，無法判斷「是不是本人」。請先到聲音頁登錄聲紋，"
                                                  "或手動核可 5 段以上清楚的片段後再試。"}
     segs = db.query("SELECT * FROM segments WHERE voice_id=? AND status='pending' AND edited=0 ORDER BY id",
@@ -150,16 +181,19 @@ def auto_review(ctx: jobs.JobContext) -> dict:
         if i % 20 == 0:
             ctx.check()
             ctx.progress(i / max(1, len(segs)), f"自動審核 {i}/{len(segs)}")
-        try:
-            y, _ = audio.load(Path(s["path"]), 16000)
-        except Exception:
-            y = None
-        # speaker similarity is measured again against one target for every clip: segments assigned by a name hint
-        # or a cluster have no (or a stale) similarity from the import
-        seg = {**s, "spk_sim": speaker.cosine(emb.embed(y), target) if y is not None and len(y) else None}
-        verdict, reasons = decide(seg, p, threshold, None)
-        if verdict != "reject" and y is not None:  # the windowed check costs the most, so only when it can matter
-            verdict, reasons = decide(seg, p, threshold, window_drop(emb, y, target))
+        if trusted:  # decided from what the import measured; no audio to load
+            verdict, reasons = decide(s, p, threshold, None)
+        else:
+            try:
+                y, _ = audio.load(Path(s["path"]), 16000)
+            except Exception:
+                y = None
+            # speaker similarity is measured again against one target for every clip: segments assigned by a name
+            # hint or a cluster have no (or a stale) similarity from the import
+            seg = {**s, "spk_sim": speaker.cosine(emb.embed(y), target) if y is not None and len(y) else None}
+            verdict, reasons = decide(seg, p, threshold, None)
+            if verdict != "reject" and y is not None:  # the windowed check costs the most: only when it can matter
+                verdict, reasons = decide(seg, p, threshold, window_drop(emb, y, target))
         flags = _clean_flags(s["flags"]) + [VERDICT_FLAG[verdict]] + [f"auto:{r}" for r in reasons]
         with db.tx() as c:  # never overwrite a decision a person made while this job was running
             n = c.execute("UPDATE segments SET status=?, flags=? WHERE id=? AND status='pending' AND edited=0",
@@ -170,8 +204,8 @@ def auto_review(ctx: jobs.JobContext) -> dict:
         minutes[verdict] += s["duration"] / 60
         if verdict == "approve":
             approved_ids.append(s["id"])
-    # spot checks: a small random sample of what was approved without anyone listening
-    n_spot = min(len(approved_ids), max(10, min(100, len(approved_ids) // 50)))
+    # spot checks: a small random sample of what was approved without anyone listening (not for screened material)
+    n_spot = 0 if trusted else min(len(approved_ids), max(10, min(100, len(approved_ids) // 50)))
     for sid in random.Random(7).sample(approved_ids, n_spot):
         s = db.get("segments", sid)
         if s and "auto_approved" in s["flags"]:
@@ -179,7 +213,7 @@ def auto_review(ctx: jobs.JobContext) -> dict:
     return {"profile": profile, "counts": counts, "minutes": {k: round(v, 1) for k, v in minutes.items()},
             "spot_checks": n_spot, "voice_id": voice_id,
             "message": (f"自動核可 {minutes['approve']:.0f} 分鐘、排除 {minutes['reject']:.0f} 分鐘；"
-                        f"需要你聽 {counts['unsure']} 段，抽查 {n_spot} 段")}
+                        f"需要你聽 {counts['unsure']} 段" + (f"，抽查 {n_spot} 段" if n_spot else ""))}
 
 
 def summary(voice_id: str) -> dict:
