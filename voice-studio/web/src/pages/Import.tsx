@@ -46,6 +46,8 @@ export default function ImportPage() {
   const [labelList, setLabelList] = useState<LabelList | null>(null);
   const [listError, setListError] = useState<unknown>(null);
   const [labelled, setLabelled] = useState<Record<string, number>>({});
+  const [selected, setSelected] = useState<Set<string>>(new Set());
+  const [bulkMsg, setBulkMsg] = useState("");
   const fileInput = useRef<HTMLInputElement>(null);
   const folderInput = useRef<HTMLInputElement>(null);
   const listInput = useRef<HTMLInputElement>(null);
@@ -103,6 +105,25 @@ export default function ImportPage() {
   const setEmotion = useMutation({
     mutationFn: ({ s, emotion }: { s: SourceRow; emotion: string }) => api.patch(`/api/sources/${s.id}`, { emotion }),
     onSuccess: () => { qc.invalidateQueries({ queryKey: ["sources"] }); qc.invalidateQueries({ queryKey: ["voices"] }); },
+  });
+  const ids = (sources.data ?? []).map((s) => s.id);
+  const chosen = ids.filter((id) => selected.has(id));
+  const allChosen = ids.length > 0 && chosen.length === ids.length;
+  const toggle = (id: string) => setSelected((cur) => { const n = new Set(cur); if (n.has(id)) n.delete(id); else n.add(id); return n; });
+  const bulkAssign = useMutation({
+    mutationFn: (voice_id: string) => api.post<{ segments: number; waiting: number }>("/api/sources/bulk-assign", { ids: chosen, voice_id }),
+    onSuccess: (r, voice_id) => {
+      const name = voices.data?.find((v) => v.id === voice_id)?.name ?? "";
+      setBulkMsg(`已把 ${r.segments} 段指定給「${name}」` + (r.waiting ? `；還在處理的 ${r.waiting} 個處理完會自動用這個聲音` : "") + "。");
+      qc.invalidateQueries({ queryKey: ["sources"] }); qc.invalidateQueries({ queryKey: ["voices"] });
+    },
+  });
+  const bulkDelete = useMutation({
+    mutationFn: () => api.post("/api/sources/bulk-delete", { ids: chosen }),
+    onSuccess: () => {
+      setSelected(new Set()); setBulkMsg("");
+      qc.invalidateQueries({ queryKey: ["sources"] }); qc.invalidateQueries({ queryKey: ["voices"] });
+    },
   });
   const remove = useMutation({
     mutationFn: (s: SourceRow) => api.del(`/api/sources/${s.id}`),
@@ -252,9 +273,27 @@ export default function ImportPage() {
           <Empty icon={<Upload className="size-8" />} title="還沒有匯入任何錄音" />
         ) : (
           <div className="overflow-x-auto">
+            <div className="mb-3 flex flex-wrap items-center gap-2 rounded-xl bg-zinc-50 px-3 py-2 text-sm dark:bg-zinc-800/50">
+              <label className="flex items-center gap-2">
+                <input type="checkbox" checked={allChosen} onChange={() => setSelected(allChosen ? new Set() : new Set(ids))} />全選
+              </label>
+              <span className="text-xs text-zinc-500">{chosen.length ? `已選 ${chosen.length} 個` : "勾選檔案後可以一次指定是誰或刪除"}</span>
+              <select className="input ml-auto w-48 py-1 text-xs" value="" disabled={!chosen.length || bulkAssign.isPending}
+                title="選取的錄音裡還沒指定的片段，全部指定給這個聲音。只有一個人說話的錄音才用這個；有別人的請用「N 段待指定」逐群指定。"
+                onChange={(e) => e.target.value && bulkAssign.mutate(e.target.value)}>
+                <option value="">把選取的指定給…</option>
+                {voices.data?.map((v) => <option key={v.id} value={v.id}>{v.name}</option>)}
+              </select>
+              <Button size="sm" variant="danger" disabled={!chosen.length} loading={bulkDelete.isPending}
+                onClick={() => confirm(`刪除選取的 ${chosen.length} 個錄音和它們的所有片段？處理中的會先停下。上傳的複本會刪除；用資料夾匯入的原始檔案不會被刪除。`) && bulkDelete.mutate()}>
+                <Trash2 className="size-3.5" />刪除選取的
+              </Button>
+            </div>
+            {bulkMsg && <p className="mb-2 text-sm text-emerald-600">{bulkMsg}</p>}
+            <ErrorText error={bulkAssign.error ?? bulkDelete.error} />
             <table className="w-full text-sm">
               <thead className="text-left text-xs text-zinc-500">
-                <tr><th className="py-2 pr-3">檔案</th><th className="pr-3">長度</th><th className="pr-3">狀態</th><th className="pr-3">片段</th><th className="pr-3">誰</th><th className="pr-3">情緒</th><th /></tr>
+                <tr><th className="w-6 py-2 pr-2" /><th className="py-2 pr-3">檔案</th><th className="pr-3">長度</th><th className="pr-3">狀態</th><th className="pr-3">片段</th><th className="pr-3">誰</th><th className="pr-3">情緒</th><th /></tr>
               </thead>
               <tbody>
                 {sources.data.map((s) => {
@@ -262,7 +301,8 @@ export default function ImportPage() {
                   const failed = s.job?.status === "failed";
                   const hint = voices.data?.find((v) => v.id === s.voice_hint)?.name;
                   return (
-                    <tr key={s.id} className="border-t border-zinc-100 align-middle dark:border-zinc-800">
+                    <tr key={s.id} className={clsx("border-t border-zinc-100 align-middle dark:border-zinc-800", selected.has(s.id) && "bg-brand-50/60 dark:bg-brand-900/20")}>
+                      <td className="py-2 pr-2"><input type="checkbox" checked={selected.has(s.id)} onChange={() => toggle(s.id)} /></td>
                       <td className="max-w-xs truncate py-2 pr-3" title={s.path}>{s.filename}</td>
                       <td className="pr-3 tabular-nums text-zinc-500">{s.duration ? fmtMin(s.duration / 60) : "—"}</td>
                       <td className="min-w-40 pr-3">

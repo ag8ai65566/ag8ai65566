@@ -187,13 +187,60 @@ def patch_source(source_id: str, body: dict):
     return src
 
 
-@router.delete("/sources/{source_id}")
-def delete_source(source_id: str):
+def _stop_processing(source_id: str) -> None:
+    """Cancel the source's import job; a running one notices at its next step and cleans up after itself."""
+    for j in db.query("SELECT id FROM jobs WHERE kind='prepare_source' AND status IN ('queued', 'running') "
+                      "AND params LIKE ?", (f'%"{source_id}"%',)):
+        jobs.cancel(j["id"])
+
+
+def _delete_source(source_id: str) -> None:
     src = db.get("sources", source_id)
+    _stop_processing(source_id)
     prepare.remove_source(source_id)
     if src and src["meta"].get("copied"):
         Path(src["path"]).unlink(missing_ok=True)
+
+
+@router.delete("/sources/{source_id}")
+def delete_source(source_id: str):
+    _delete_source(source_id)
     return {"ok": True}
+
+
+class SourceIds(BaseModel):
+    ids: list[str]
+    voice_id: str | None = None
+
+
+@router.post("/sources/bulk-delete")
+def bulk_delete_sources(body: SourceIds):
+    """Remove many recordings at once (with their segments; files outside the studio are never deleted)."""
+    for sid in body.ids:
+        _delete_source(sid)
+    return {"deleted": len(body.ids)}
+
+
+@router.post("/sources/bulk-assign")
+def bulk_assign(body: SourceIds):
+    """Say who is speaking in many recordings at once: their segments without a voice go to this voice, and
+    recordings still waiting to be processed use it as their hint. Segments marked as nobody's stay that way."""
+    if not body.voice_id or not db.get("voices", body.voice_id):
+        raise HTTPException(400, "請選一個聲音")
+    n_seg, waiting = 0, 0
+    for sid in body.ids:
+        src = db.get("sources", sid)
+        if not src:
+            continue
+        db.update("sources", sid, {"voice_hint": body.voice_id})
+        if src["status"] != "ready":
+            waiting += 1
+            continue
+        with db.tx() as c:
+            n_seg += c.execute("UPDATE segments SET voice_id=? WHERE source_id=? AND voice_id IS NULL "
+                               "AND status<>'rejected'", (body.voice_id, sid)).rowcount
+        _rescore(sid)
+    return {"segments": n_seg, "waiting": waiting}
 
 
 @router.get("/sources/{source_id}/clusters")

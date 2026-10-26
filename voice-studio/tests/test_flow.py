@@ -920,3 +920,32 @@ def test_quiet_bgm_import(client, tmp_path):
     assert client.post("/api/checks/import", json={"ids": ["ac_1"], "separate": True}).json()["created"] == 1
     job = db.query("SELECT params FROM jobs WHERE kind='prepare_source'")[0]
     assert job["params"]["separate"] is True
+
+
+def test_bulk_assign_and_delete(client, tmp_path):
+    """Import page: say who speaks in many recordings at once, and delete many at once."""
+    from vstudio import db, jobs
+    c = client
+    me, other = _consented_voice(c, "我"), _consented_voice(c, "朋友")
+    d = tmp_path / "segs"
+    d.mkdir()
+    for sid, status in (("s1", "ready"), ("s2", "new")):
+        db.insert("sources", {"id": sid, "filename": f"{sid}.wav", "path": str(tmp_path / f"{sid}.wav"),
+                              "status": status, "meta": {"copied": False}, "created_at": db.now()})
+    _seg(db, None, "a", "一", d, source_id="s1", status="pending")
+    _seg(db, None, "b", "二", d, source_id="s1", status="pending")
+    _seg(db, None, "x", "三", d, source_id="s1", status="rejected")       # marked as nobody's: stays so
+    _seg(db, other["id"], "o", "四", d, source_id="s1", status="pending")  # someone else's: untouched
+    r = c.post("/api/sources/bulk-assign", json={"ids": ["s1", "s2"], "voice_id": me["id"]}).json()
+    assert r == {"segments": 2, "waiting": 1}
+    got = {s["id"]: s["voice_id"] for s in db.query("SELECT id, voice_id FROM segments")}
+    assert got == {"a": me["id"], "b": me["id"], "x": None, "o": other["id"]}
+    assert db.get("sources", "s2")["voice_hint"] == me["id"]                # used when it gets processed
+    assert c.post("/api/sources/bulk-assign", json={"ids": ["s1"], "voice_id": "nope"}).status_code == 400
+    # deleting stops the waiting import job; a job that starts anyway finds nothing to do
+    job = db.insert("jobs", {"id": "job_t", "kind": "prepare_source", "queue": "held", "status": "queued",
+                             "params": {"source_id": "s2"}, "result": {}, "created_at": db.now()})
+    assert c.post("/api/sources/bulk-delete", json={"ids": ["s1", "s2"]}).json()["deleted"] == 2
+    assert not db.query("SELECT id FROM sources") and not db.query("SELECT id FROM segments")
+    assert db.get("jobs", job["id"])["status"] == "canceled"
+    assert jobs.run_inline("prepare_source", {"source_id": "s2"})["status"] == "done"

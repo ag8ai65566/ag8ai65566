@@ -51,6 +51,8 @@ def score(seg: dict) -> tuple[float, list[str]]:
 def prepare_source(ctx: jobs.JobContext) -> dict:
     p = ctx.params
     src = db.get("sources", p["source_id"])
+    if not src:
+        return {"message": "這段錄音已經刪除"}
     st = config.load_settings()
     from .. import tts  # free the GPU for separation and speech recognition (a TTS model can hold ~8 GB)
     tts.unload()
@@ -142,6 +144,9 @@ def prepare_source(ctx: jobs.JobContext) -> dict:
         rec["flags"] = flags
         amb = rec.pop("ambiguous")
         rec["status"] = "pending"
+        if not db.get("sources", src["id"]):  # deleted while it was being processed
+            remove_source(src["id"])
+            raise jobs.Cancelled()
         db.insert("segments", rec)
         rec["ambiguous"] = amb
 
