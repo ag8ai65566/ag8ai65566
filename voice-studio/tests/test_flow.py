@@ -975,3 +975,42 @@ def test_auto_review_trusted(client, tmp_path):
     assert autoreview.decide(seg, autoreview.PROFILES["balanced"], 0.62, None) == ("unsure", ["speaker"])
     assert autoreview.decide(seg, autoreview.PROFILES["trusted"], 0.62, None) == ("approve", [])
     assert jobs  # imported for the job handlers
+
+
+def test_long_text_line_by_line(client):
+    """Long text: up to 20,000 characters split into lines; each line's emotion beats its [tag], which beats the
+    default; one line can be redone; the whole text comes out as one file."""
+    from vstudio import db, perform
+    c = client
+    lines = perform.split_text("[excited] やっほー！今日はね、すごいニュースがあるの。えっと。聞いて聞いて！\n\n"
+                               "これは秘密だよ…誰にも言わないでね。\nHello everyone. This is a test! Yes.")
+    assert [l["text"] for l in lines] == ["[excited] やっほー！今日はね、すごいニュースがあるの。",
+                                          "[excited] えっと。聞いて聞いて！", "これは秘密だよ…", "誰にも言わないでね。",
+                                          "Hello everyone. This is a test! Yes."]
+    assert [l["pause"] for l in lines] == [0.35, 0.8, 0.35, 0.8, 0.0]
+    long = "。".join(["とても長い文章ですね"] * 40)
+    assert all(len(l["text"]) <= 130 for l in perform.split_text("、".join([long] * 3)))
+    assert c.post("/api/perform/text", json={"text": "あ" * 20001}).status_code == 400
+
+    v = _consented_voice(c)
+    m = c.post("/api/models/demo").json()
+    db.update("models", m["id"], {"voice_id": v["id"]})
+    d = c.post("/api/perform/text", json={"text": "[whispers] ひみつ、ひみつ、内緒の話。\n普通の文章です、こんにちは。\n"
+                                                  "三番目の文章です、よろしく。", "language": "ja"}).json()
+    assert d["status"] == "ready" and len(d["phrases"]) == 3 and d["meta"]["kind"] == "text"
+    assert [x["id"] for x in c.get("/api/perform?kind=text").json()] == [d["id"]]
+    assert all(x["id"] != d["id"] for x in c.get("/api/perform").json())        # not in 照著念's list
+    c.patch(f"/api/perform/{d['id']}", json={"phrases": [{"i": 2, "emotion": "sad"}]})
+    job = c.post(f"/api/perform/{d['id']}/render", json={"model_id": m["id"], "takes": 1, "emotion": "happy",
+                                                         "keep_pauses": True, "match_timing": False,
+                                                         "follow_level": False}).json()
+    assert _wait(c, job["id"])["status"] == "done"
+    res = c.get(f"/api/perform/{d['id']}").json()["result"]
+    assert [l["emotion"] for l in res["phrases"]] == ["whisper", "happy", "sad"]
+    assert db.get("outputs", res["output_id"])["params"]["perform"] == d["id"]
+    job = c.post(f"/api/perform/{d['id']}/render", json={"model_id": m["id"], "takes": 1, "only": [1]}).json()
+    assert _wait(c, job["id"])["status"] == "done"
+    res2 = c.get(f"/api/perform/{d['id']}").json()["result"]
+    assert res2["output_id"] != res["output_id"] and res2["phrases"][2]["emotion"] == "sad"
+    r = c.put(f"/api/perform/{d['id']}/text", json={"text": "新しい一文です。もう一つの文です。"}).json()
+    assert len(r["phrases"]) == 2 and r["result"] == {}

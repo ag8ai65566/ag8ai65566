@@ -30,8 +30,47 @@ def _view(rec: dict) -> dict:
 
 
 @router.get("")
-def list_performances():
-    return [_view(r) for r in db.query("SELECT * FROM performances ORDER BY created_at DESC")]
+def list_performances(kind: str = "audio"):
+    """kind=audio: recordings to follow (照著念); kind=text: long texts read line by line."""
+    rows = db.query("SELECT * FROM performances ORDER BY created_at DESC")
+    return [_view(r) for r in rows if ((r["meta"] or {}).get("kind") == "text") == (kind == "text")]
+
+
+class TextIn(BaseModel):
+    text: str
+    name: str = ""
+    language: str | None = None
+
+
+@router.post("/text")
+def create_text(body: TextIn):
+    """A long text, split into lines that can each get their own emotion, style, pause and retake."""
+    text = body.text.strip()
+    if not text:
+        raise HTTPException(400, "請輸入文字")
+    if len(text) > perform.MAX_TEXT:
+        raise HTTPException(400, f"一次最多 {perform.MAX_TEXT} 字，請分成兩段")
+    lines = perform.split_text(text)
+    pid = db.new_id("perf")
+    first = text.splitlines()[0].strip()
+    return _view(db.insert("performances", {
+        "id": pid, "name": (body.name.strip() or first[:30] or "長文")[:80], "path": "",
+        "lang": body.language if body.language in ("ja", "en", "zh") else None, "status": "ready",
+        "phrases": lines, "params": {}, "result": {}, "meta": {"kind": "text", "text": text},
+        "created_at": db.now()}))
+
+
+@router.put("/{pid}/text")
+def replace_text(pid: str, body: TextIn):
+    """Edit the whole text: it is split again (line settings and results start over)."""
+    rec = _get(pid)
+    text = body.text.strip()
+    if not text or len(text) > perform.MAX_TEXT:
+        raise HTTPException(400, f"請輸入 1–{perform.MAX_TEXT} 字")
+    return _view(db.update("performances", pid, {
+        "phrases": perform.split_text(text), "status": "ready", "result": {},
+        "lang": body.language if body.language in ("ja", "en", "zh") else rec["lang"],
+        "meta": {**(rec["meta"] or {}), "text": text}, **({"name": body.name.strip()[:80]} if body.name.strip() else {})}))
 
 
 @router.post("")
@@ -100,6 +139,8 @@ class RenderIn(BaseModel):
     follow_level: bool = True
     phrases: bool = True
     only: list[int] = []
+    emotion: str | None = None   # default for lines without their own emotion or [tag] (long text)
+    style: str = ""              # default style hint for lines without their own
 
 
 @router.post("/{pid}/render")
@@ -111,6 +152,8 @@ def render(pid: str, body: RenderIn):
     m = db.get("models", body.model_id)
     if not m:
         raise HTTPException(404, "找不到模型")
+    if body.emotion and not emotions.valid(body.emotion):
+        raise HTTPException(400, f"unknown emotion: {body.emotion}")
     from .. import datasets
     voice = db.get("voices", m["voice_id"])
     if m["engine"] != "mock" and (not voice or not datasets.consent_ok(voice)):

@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { Download, Mic2, Power, Star, Trash2 } from "lucide-react";
 import { api, EMOTION_LABEL, EMOTIONS, fmtTime, LANGS, MODES, type CharacterPreset, type Model, type Output, type Phrase } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader, PlayButton, usePlayer, Wave } from "../ui";
+import LongForm from "./LongForm";
 
 const STYLE_CHIPS: [string, string][] = [
   ["開心", "cheerful, bright"], ["興奮", "excited, energetic"], ["平靜", "calm, steady"], ["溫柔", "gentle, warm"],
@@ -71,10 +72,19 @@ export default function Speak() {
       先 <Link to="/train" className="underline">訓練一個</Link>，或到 <Link to="/models" className="underline">模型</Link> 建立免訓練模型。
       只想看看介面的話，可以到 <Link to="/settings" className="underline">設定</Link> 建立測試模型。</Empty></div>);
 
+  const tab = sp.get("tab") === "long" ? "long" : "short";
+  const setTab = (t: string) => setSp((cur) => { const n = new URLSearchParams(cur); if (t === "long") n.set("tab", "long"); else n.delete("tab"); return n; });
   return (
     <div>
       <PageHeader title="文字轉語音" subtitle="輸入文字，用你訓練好的聲音念出來。一次產生幾個版本，平台會用語音辨識檢查有沒有漏字，標出最好的一個。"
         actions={<Button variant="ghost" size="sm" onClick={() => unload.mutate()} title="把模型從顯示卡移出，讓出記憶體"><Power className="size-4" />釋放顯示卡</Button>} />
+      <div className="mb-6 flex w-fit rounded-lg border border-zinc-300 p-0.5 text-sm dark:border-zinc-700">
+        {([["short", "一段話（2,000 字內）"], ["long", "長文・逐句調整（20,000 字內）"]] as const).map(([k, l]) => (
+          <button key={k} onClick={() => setTab(k)}
+            className={clsx("rounded-md px-3 py-1.5", tab === k ? "bg-brand-600 text-white" : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800")}>{l}</button>
+        ))}
+      </div>
+      {tab === "long" ? <LongForm models={models.data ?? []} initialText={text.length > 0 ? text : undefined} /> : (
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <Card>
           <div className="space-y-4">
@@ -94,8 +104,10 @@ export default function Speak() {
             {model && !model.available[0] && <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:bg-amber-950/40 dark:text-amber-200">本機還不能用 {model.engine_name}：{model.available[1]}。<Link to="/settings#engines" className="underline">安裝引擎</Link></p>}
             <Field label={`文字（${text.length}/2000）`} hint={<>可以用 <code className="kbd">[excited]</code> 這種方括號提示語氣，會轉成引擎看得懂的風格說明。<span className="kbd">Ctrl</span>+<span className="kbd">Enter</span> 產生。</>}>
               <textarea className="input min-h-36 text-base leading-7" value={text} maxLength={2000} onChange={(e) => setText(e.target.value)}
-                placeholder="今日はちょっとだけ、ゆっくり話してみようかな。" onKeyDown={(e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && text.trim()) gen.mutate(); }} />
+                placeholder="今日はちょっとだけ、ゆっくり話してみようかな。" onKeyDown={(e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && text.trim()) gen.mutate(); }}
+                onPaste={(e) => { const t = e.clipboardData.getData("text"); if (text.length + t.length > 2000) { e.preventDefault(); setText(text + t); setTab("long"); } }} />
             </Field>
+            {text.length >= 1500 && <p className="-mt-2 text-xs text-zinc-500">文字很長的話，用上面的「<button className="text-brand-600 underline" onClick={() => setTab("long")}>長文・逐句調整</button>」：最多 20,000 字，每一句可以單獨調整和重念。</p>}
             {preset && (
               <div className="rounded-lg bg-zinc-50 p-3 text-xs leading-5 text-zinc-600 dark:bg-zinc-800/50 dark:text-zinc-300">
                 <div className="font-medium">{preset.name} 的情境提示</div>
@@ -170,6 +182,7 @@ export default function Speak() {
         </Card>
         {modelId && <History modelId={modelId} />}
       </div>
+      )}
     </div>
   );
 }

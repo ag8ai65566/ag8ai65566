@@ -169,6 +169,76 @@ def split_phrases(words: list[dict]) -> list[dict]:
              "text": "".join(w["word"] for w in g).strip()} for g in out]
 
 
+# --- long text: the same per-line rendering, from text instead of a recording -------------------------------------
+
+MAX_TEXT = 20000
+SENT_END = re.compile(r"(?<=[。．！？!?…])[」』）)\"'”’]*\s*|(?<=[.!?])[\"'”’)]*\s+(?=[A-Z\[\"“'‘(]|$)")
+TAG_AT_START = re.compile(r"^\s*((?:\[[^\[\]]{1,40}\]\s*)+)")
+PAUSE_SENTENCE, PAUSE_PARAGRAPH = 0.35, 0.8
+
+
+def _cut_long(sent: str, limit: int) -> list[str]:
+    """Split an over-long sentence at commas (、，,;；), then hard at the limit."""
+    if len(sent) <= limit:
+        return [sent]
+    parts, cur = [], ""
+    for piece in re.split(r"(?<=[、，,;；：:])", sent):
+        if cur and len(cur) + len(piece) > limit:
+            parts.append(cur)
+            cur = ""
+        cur += piece
+    if cur:
+        parts.append(cur)
+    out = []
+    for x in parts:
+        out += [x[i:i + limit] for i in range(0, len(x), limit)]
+    return out
+
+
+def split_text(text: str) -> list[dict]:
+    """Lines to speak one by one: sentences within paragraphs (blank-line or line-break separated). A [tag] at the
+    start of a paragraph colours every sentence of it that has no tag of its own, as in ElevenLabs scripts."""
+    lines: list[dict] = []
+    for para in re.split(r"\n+", text.replace("\r", "")):
+        para = para.strip()
+        if not para:
+            continue
+        m = TAG_AT_START.match(para)
+        lead_tag = m.group(1).strip() if m else ""
+        sents = [x.strip() for x in SENT_END.split(para) if x and x.strip()]
+        cjk = len(re.findall(r"[\u3040-\u30ff\u4e00-\u9fff]", para)) > len(para) / 4
+        limit = 120 if cjk else 280
+        pieces = [c.strip() for x in sents for c in _cut_long(x, limit) if c.strip()]
+        # very short pieces (a lone "えっと。", "Yes.") ride with the next one (the last with the one before), so
+        # the engine has some context to say them naturally
+        def short(c: str) -> bool:
+            bare = re.sub(r"\[[^\]]*\]", "", c).strip()
+            return len(bare) <= 5 if cjk else len(bare.split()) <= 2
+        join = (lambda a, b: a + b) if cjk else (lambda a, b: f"{a} {b}")
+        merged: list[str] = []
+        carry = ""
+        for c in pieces:
+            c = join(carry, c) if carry else c
+            carry = ""
+            if short(c):
+                carry = c
+            else:
+                merged.append(c)
+        if carry:
+            if merged:
+                merged[-1] = join(merged[-1], carry)
+            else:
+                merged.append(carry)
+        for j, c in enumerate(merged):
+            if lead_tag and j > 0 and not TAG_AT_START.match(c):
+                c = f"{lead_tag} {c}"
+            lines.append({"i": len(lines), "text": c, "emotion": "", "style": "", "skip": False,
+                          "pause": PAUSE_PARAGRAPH if j == len(merged) - 1 else PAUSE_SENTENCE})
+    if lines:
+        lines[-1]["pause"] = 0.0
+    return lines
+
+
 @jobs.handler("perform_analyze", queue="gpu")
 def perform_analyze(ctx: jobs.JobContext) -> dict:
     try:
@@ -233,14 +303,18 @@ def _active_db(y: np.ndarray, sr: int) -> float:
     return float(np.mean(e[e > e.max() - 30]))
 
 
-def pick_take(outs: list[dict], target: float) -> tuple[dict, np.ndarray, int]:
-    """The take that is understood best and closest in length to the original phrase."""
+def pick_take(outs: list[dict], target: float | None) -> tuple[dict, np.ndarray, int]:
+    """The take that is understood best and closest in length to the original phrase (without an original: the
+    take the engine run ranked best)."""
     best = None
     for o in outs:
         y, sr = audio.load(Path(o["path"]))
         y = phrases.trim(y, sr, pad=0.04)
         m = o["score"].get("match")
-        score = (m if m is not None else 0.5) - 0.6 * abs(math.log(max(len(y) / sr, 0.05) / max(target, 0.05)))
+        if target is None:
+            score = 1.0 if o["score"].get("best") else (m if m is not None else 0.0)
+        else:
+            score = (m if m is not None else 0.5) - 0.6 * abs(math.log(max(len(y) / sr, 0.05) / max(target, 0.05)))
         if best is None or score > best[0]:
             best = (score, o, y, sr)
     return best[1], best[2], best[3]
@@ -282,28 +356,33 @@ def _render(ctx: jobs.JobContext) -> dict:
             continue
         k = len([t for t in todo if t["i"] <= x["i"]])
         ctx.progress((k - 1) / max(1, len(todo)), f"第 {k}/{len(todo)} 句")
-        res = tts.generate(p["model_id"], x["text"], language=rec.get("lang"), style=x.get("style") or "",
-                           takes=int(p.get("takes", 3)), mode=p.get("mode"), emotion=x.get("emotion") or None,
-                           phrases=bool(p.get("phrases", True)), batch=f"perf_{pid}")
-        target = x["end"] - x["start"]
+        # a line's own emotion wins, then a [tag] in it, then the default chosen for the whole text
+        emo = x.get("emotion") or (None if emotions.from_text_tags(x["text"]) else p.get("emotion")) or None
+        res = tts.generate(p["model_id"], x["text"], language=rec.get("lang"),
+                           style=x.get("style") or p.get("style") or "", takes=int(p.get("takes", 3)),
+                           mode=p.get("mode"), emotion=emo, phrases=bool(p.get("phrases", True)),
+                           batch=f"perf_{pid}")
+        timed = "start" in x  # follows a recording; lines from text have no timing to match
+        target = x["end"] - x["start"] if timed else None
         best, y, sr = pick_take(res["outputs"], target)
         y = audio.resample(y, sr, sr_out)
         ratio = 1.0
-        if p.get("match_timing", True):
+        if timed and p.get("match_timing", True):
             ratio = float(np.clip(target / max(len(y) / sr_out, 0.05), 0.8, 1.25))
             y = audio.stretch(y, sr_out, ratio)
         audio.save(d / f"p{x['i']}.wav", y, sr_out, synthetic={"perform": pid, "model": p["model_id"]})
         pieces.append((x, y))
         sheet.append({"i": x["i"], "model_id": p["model_id"], "match": best["score"].get("match"),
                       "heard": best["score"].get("heard"), "emotion": res.get("emotion"), "takes": len(res["outputs"]),
-                      "stretch": round(ratio, 3), "original": round(target, 2), "spoken": round(len(y) / sr_out, 2)})
+                      "stretch": round(ratio, 3), "original": round(target, 2) if timed else None,
+                      "spoken": round(len(y) / sr_out, 2)})
         for o in res["outputs"]:  # each phrase is kept as p<i>.wav; only the joined result goes to the output list
             Path(o["path"]).unlink(missing_ok=True)
             db.delete("outputs", o["id"])
     if not pieces:
         raise ValueError("沒有要念的句子")
     # follow the original's loudness from phrase to phrase (±6 dB), around the voice's own level
-    if p.get("follow_level", True):
+    if p.get("follow_level", True) and all("rel" in x for x, _ in pieces):
         lv = [_active_db(y, sr_out) for _, y in pieces]
         mid = float(np.median(lv))
         for j, ((x, y), cur) in enumerate(zip(pieces, lv)):
@@ -311,7 +390,7 @@ def _render(ctx: jobs.JobContext) -> dict:
             pieces[j] = (x, y * 10 ** (g / 20))
             sheet[j] = {**sheet[j], "gain_db": round(g, 1)}
     keep = p.get("keep_pauses", True)
-    lead = min(items[0]["start"], 0.8) if keep else 0.2
+    lead = min(items[0]["start"], 0.8) if keep and "start" in items[0] else 0.2
     joined = [(np.zeros(int(sr_out * lead), np.float32), 0.0)]
     for j, (x, y) in enumerate(pieces):
         gap = (x.get("pause") or 0.0) if keep else 0.35
