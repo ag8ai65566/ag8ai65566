@@ -66,6 +66,12 @@ CREATE TABLE IF NOT EXISTS audio_checks (
   result TEXT NOT NULL DEFAULT '{}', meta TEXT NOT NULL DEFAULT '{}', created_at REAL NOT NULL
 );
 CREATE INDEX IF NOT EXISTS check_batch ON audio_checks(batch);
+CREATE TABLE IF NOT EXISTS sound_finds (
+  id TEXT PRIMARY KEY, voice_id TEXT NOT NULL, source_id TEXT NOT NULL, segment_id TEXT, start REAL NOT NULL,
+  "end" REAL NOT NULL, kind TEXT NOT NULL, how TEXT NOT NULL, score REAL, text TEXT NOT NULL DEFAULT '',
+  status TEXT NOT NULL DEFAULT 'new', meta TEXT NOT NULL DEFAULT '{}', created_at REAL NOT NULL
+);
+CREATE INDEX IF NOT EXISTS sound_voice ON sound_finds(voice_id, status, kind);
 CREATE TABLE IF NOT EXISTS presets (
   id TEXT PRIMARY KEY, name TEXT NOT NULL, source TEXT NOT NULL, model_id TEXT, data TEXT NOT NULL, created_at REAL NOT NULL
 );

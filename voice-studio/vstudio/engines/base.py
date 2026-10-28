@@ -39,6 +39,33 @@ TAG_STYLE = {
     "whispering": "whispering", "shouts": "shouting", "shouting": "shouting", "yelling": "shouting",
     "crying": "tearful", "sobbing": "tearful", "sniffles": "tearful", "gasps": "with a gasp",
     "clears throat": "", "pause": "", "short pause": "", "long pause": "",
+    # breathing, sighs and murmurs, also by their Chinese / Japanese names. A tag registered on the voice page as a
+    # sound with the person's own recording ([喘氣] …) is played from that recording instead (phrases.is_sound).
+    "panting": "breathless, panting", "pants": "breathless, panting", "breathless": "breathless, panting",
+    "out of breath": "breathless, panting", "heavy breathing": "breathing heavily", "喘氣": "breathless, panting",
+    "喘": "breathless, panting", "喘息": "breathless, panting", "息切れ": "breathless, panting",
+    "はぁはぁ": "breathless, panting", "嬌喘": "breathy, softly panting", "breathy": "breathy, airy voice",
+    "氣音": "breathy, airy voice", "吐息": "breathy, airy voice",
+    "inhales": "with a quick intake of breath", "breathes in": "with a quick intake of breath",
+    "吸氣": "with a quick intake of breath", "息を吸う": "with a quick intake of breath",
+    "deep breath": "taking a deep breath first", "大口吸氣": "taking a deep breath first",
+    "深呼吸": "taking a deep breath first", "倒抽一口氣": "with a gasp", "息をのむ": "with a gasp",
+    "sigh": "with a sigh", "嘆氣": "with a sigh", "嘆息": "with a sigh", "ため息": "with a sigh",
+    "吐氣": "with a slow exhale", "呼氣": "with a slow exhale",
+    "murmurs": "murmuring softly, half to themself", "murmuring": "murmuring softly, half to themself",
+    "呢喃": "murmuring softly, half to themself", "喃喃": "murmuring softly, half to themself",
+    "つぶやく": "murmuring softly, half to themself", "mumbles": "mumbling", "自言自語": "muttering to themself",
+    "低語": "whispering", "耳語": "whispering", "悄悄話": "whispering", "ささやき": "whispering",
+    "笑": "with light laughter", "輕笑": "with a soft chuckle", "哭腔": "tearful", "哽咽": "choked up, tearful",
+    "大喊": "shouting", "groans": "groaning", "呻吟": "groaning softly",
+}
+# tags for something that happens once (a breath, a sigh, a laugh), as opposed to a way of speaking: a long text does
+# not carry them from the start of a paragraph to its other sentences
+EVENT_TAGS = {
+    "laughs", "chuckles", "giggles", "sighs", "sigh", "exhales", "gasps", "clears throat", "pause", "short pause",
+    "long pause", "inhales", "breathes in", "deep breath", "panting", "pants", "heavy breathing", "sniffles", "groans",
+    "吸氣", "大口吸氣", "深呼吸", "倒抽一口氣", "嘆氣", "嘆息", "吐氣", "呼氣", "喘氣", "喘", "喘息", "嬌喘", "笑", "輕笑", "呻吟",
+    "息を吸う", "息をのむ", "ため息", "息切れ", "はぁはぁ",
 }
 
 

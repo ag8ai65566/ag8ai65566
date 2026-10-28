@@ -5,6 +5,7 @@ import { FileCheck2, Plus, ShieldAlert, ShieldCheck, Trash2, Upload, UserRound }
 import { api, fmtMin, LANGS, type Dataset, type Model, type Voice } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader } from "../ui";
 import { PhrasesCard } from "./Phrases";
+import { SoundsCard } from "./Sounds";
 
 const KIND: Record<string, string> = { self: "我自己", other: "其他人（需簽同意書）", designed: "原創設計聲音" };
 
@@ -172,6 +173,7 @@ function VoiceDetail({ voice }: { voice: Voice }) {
       </Card>
 
       <PhrasesCard voice={voice} />
+      <SoundsCard voice={voice} />
 
       <div className="grid gap-6 md:grid-cols-2">
         <Card title="訓練資料版本">

@@ -70,6 +70,7 @@ def delete_voice(voice_id: str):
     with db.tx() as c:
         c.execute("UPDATE segments SET voice_id=NULL WHERE voice_id=?", (voice_id,))
         c.execute("DELETE FROM catchphrases WHERE voice_id=?", (voice_id,))  # their recordings live in the folder below
+        c.execute("DELETE FROM sound_finds WHERE voice_id=?", (voice_id,))
     shutil.rmtree(config.DATA / "voices" / voice_id, ignore_errors=True)
     db.delete("voices", voice_id)
     return {"ok": True}

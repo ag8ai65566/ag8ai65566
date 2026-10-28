@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { Download, Mic2, Power, Star, Trash2 } from "lucide-react";
-import { api, EMOTION_LABEL, EMOTIONS, fmtTime, LANGS, MODES, type CharacterPreset, type Model, type Output, type Phrase } from "../api";
+import { api, EMOTION_LABEL, EMOTIONS, fmtTime, isSound, LANGS, MODES, type CharacterPreset, type Model, type Output, type Phrase } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader, PlayButton, usePlayer, Wave } from "../ui";
 import LongForm from "./LongForm";
 
@@ -44,6 +44,16 @@ export default function Speak() {
     queryFn: () => api.get<Phrase[]>(`/api/voices/${model!.voice_id}/phrases?counts=false`),
   });
   const withClips = (phrases.data ?? []).filter((p) => p.clips.length);
+  const soundTags = withClips.filter(isSound);
+  const box = useRef<HTMLTextAreaElement | null>(null);
+  const insert = (tag: string) => {  // at the cursor, with a space on either side where needed
+    const el = box.current;
+    const a = el?.selectionStart ?? text.length, b = el?.selectionEnd ?? text.length;
+    const before = text.slice(0, a), after = text.slice(b);
+    const t = (before && !/\s$/.test(before) ? " " : "") + tag + (after && !/^\s/.test(after) ? " " : "");
+    setText(before + t + after);
+    requestAnimationFrame(() => { el?.focus(); el?.setSelectionRange(a + t.length, a + t.length); });
+  };
   const pickEmotion = (e: string) => {  // a reference of that mood is the strongest way to get it
     setEmotion(e);
     const r = model?.meta.references?.find((x) => x.emotion === e);
@@ -103,10 +113,15 @@ export default function Speak() {
             </div>
             {model && !model.available[0] && <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:bg-amber-950/40 dark:text-amber-200">本機還不能用 {model.engine_name}：{model.available[1]}。<Link to="/settings#engines" className="underline">安裝引擎</Link></p>}
             <Field label={`文字（${text.length}/2000）`} hint={<>可以用 <code className="kbd">[excited]</code> 這種方括號提示語氣，會轉成引擎看得懂的風格說明。<span className="kbd">Ctrl</span>+<span className="kbd">Enter</span> 產生。</>}>
-              <textarea className="input min-h-36 text-base leading-7" value={text} maxLength={2000} onChange={(e) => setText(e.target.value)}
+              <textarea ref={box} className="input min-h-36 text-base leading-7" value={text} maxLength={2000} onChange={(e) => setText(e.target.value)}
                 placeholder="今日はちょっとだけ、ゆっくり話してみようかな。" onKeyDown={(e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && text.trim()) gen.mutate(); }}
                 onPaste={(e) => { const t = e.clipboardData.getData("text"); if (text.length + t.length > 2000) { e.preventDefault(); setText(text + t); setTab("long"); } }} />
             </Field>
+            {soundTags.length > 0 && (
+              <div className="-mt-2 flex flex-wrap items-center gap-1 text-xs"><span className="text-zinc-500">插入聲音（用你的原音）：</span>
+                {soundTags.map((p) => <button key={p.id} onClick={() => insert(p.text)} className="rounded-full bg-zinc-100 px-2 py-0.5 hover:bg-brand-100 dark:bg-zinc-800">{p.text}</button>)}
+              </div>
+            )}
             {text.length >= 1500 && <p className="-mt-2 text-xs text-zinc-500">文字很長的話，用上面的「<button className="text-brand-600 underline" onClick={() => setTab("long")}>長文・逐句調整</button>」：最多 20,000 字，每一句可以單獨調整和重念。</p>}
             {preset && (
               <div className="rounded-lg bg-zinc-50 p-3 text-xs leading-5 text-zinc-600 dark:bg-zinc-800/50 dark:text-zinc-300">
@@ -138,7 +153,7 @@ export default function Speak() {
               {withClips.length > 0 && (
                 <label className="mt-6 flex items-start gap-2 text-sm">
                   <input type="checkbox" className="mt-1" checked={usePhrases} onChange={(e) => setUsePhrases(e.target.checked)} />
-                  <span>口頭禪用原音<span className="block text-xs text-zinc-500">{withClips.map((p) => `「${p.text}」`).join("")} 會換成本人的錄音</span></span>
+                  <span>{soundTags.length ? "口頭禪和聲音標籤用原音" : "口頭禪用原音"}<span className="block text-xs text-zinc-500">{withClips.map((p) => (isSound(p) ? p.text : `「${p.text}」`)).join("")} 會換成本人的錄音</span></span>
                 </label>
               )}
             </div>

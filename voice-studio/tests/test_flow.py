@@ -1014,3 +1014,105 @@ def test_long_text_line_by_line(client):
     assert res2["output_id"] != res["output_id"] and res2["phrases"][2]["emotion"] == "sad"
     r = c.put(f"/api/perform/{d['id']}/text", json={"text": "新しい一文です。もう一つの文です。"}).json()
     assert len(r["phrases"]) == 2 and r["result"] == {}
+
+
+def test_sound_tags(client, tmp_path):
+    """Breaths, sighs and panting: [tags] by their Chinese names, a scan of the voice's recordings for candidates,
+    keeping one as the person's own recording of a sound tag, and playing it where the tag is written."""
+    import soundfile as sf
+    from scipy import signal
+    from vstudio import config, db, perform, phrases, sounds
+    from vstudio.engines.base import Engine
+    c = client
+
+    # tags by their Chinese / Japanese names steer the delivery; one-off sounds are not carried through a paragraph
+    assert Engine().render_tags("[喘氣] はぁ…待って") == ("はぁ…待って", "breathless, panting")
+    assert Engine().render_tags("[呢喃]ねえ")[1] == "murmuring softly, half to themself"
+    assert [x["text"] for x in perform.split_text("[吸氣][whispers] ねえ、聞いて。これは秘密だよ。")] == \
+        ["[吸氣][whispers] ねえ、聞いて。", "[whispers] これは秘密だよ。"]
+
+    # a recording: breath before speech, a sigh in the transcript, panting, a wordless "んっ"
+    v = _consented_voice(c)
+    sr, rng = 48000, np.random.default_rng(3)
+    t = lambda s: int(s * sr)  # noqa: E731
+    x = (rng.standard_normal(t(10.5)) * 1e-4).astype(np.float32)
+    tone = lambda a, b, amp=0.3: x.__setitem__(slice(t(a), t(b)), amp * np.sin(2 * np.pi * 200 * np.arange(t(b) - t(a)) / sr))  # noqa: E731
+    bb, ba = signal.butter(2, [400 / (sr / 2), 2600 / (sr / 2)], "band")
+    def breath(a, b, rel_db):
+        n = t(b) - t(a)
+        z = signal.lfilter(bb, ba, rng.standard_normal(n)) * np.sin(np.linspace(0, np.pi, n)) ** 0.7
+        x[t(a):t(b)] = z / np.sqrt(np.mean(z ** 2)) * 0.3 / np.sqrt(2) * 10 ** (rel_db / 20)
+    breath(1.0, 1.6, -18)
+    tone(1.7, 3.7)
+    for k in range(4):
+        breath(4.7 + 0.45 * k, 4.95 + 0.45 * k, -14)
+    tone(6.6, 7.6)
+    tone(8.6, 9.4, 0.2)
+    db.insert("sources", {"id": "s1", "filename": "a.wav", "path": "a.wav", "status": "ready", "voice_hint": v["id"],
+                          "created_at": db.now()})
+    master = config.DATA / "sources" / "s1" / "master.wav"
+    master.parent.mkdir(parents=True)
+    sf.write(str(master), x, sr)
+    d = tmp_path / "segs"
+    d.mkdir()
+    for sid, a, b, text in (("A", 1.6, 3.8, "こんにちは、今日は"), ("B", 6.5, 7.7, "はぁ…疲れた"), ("C", 8.5, 9.5, "んっ")):
+        sf.write(str(d / f"{sid}.wav"), x[t(a):t(b)], sr)
+        db.insert("segments", {"id": sid, "source_id": "s1", "voice_id": v["id"], "start": a, "end": b,
+                               "path": str(d / f"{sid}.wav"), "duration": b - a, "text": text, "text_alt": text,
+                               "lang": "ja", "asr_agree": 1.0, "snr": 40.0, "clip": 0.0, "score": 0.9,
+                               "status": "rejected" if sid == "C" else "approved", "flags": []})
+    assert sounds.text_kind("はぁ…疲れた") == "sigh" and sounds.text_kind("はぁ、はぁ、はぁ") == "pant"
+    assert sounds.wordless("んっ…") and sounds.wordless("mm, ah") and not sounds.wordless("はい") \
+        and not sounds.wordless("home")
+
+    job = c.post(f"/api/voices/{v['id']}/sounds/scan").json()
+    assert _wait(c, job["id"])["status"] == "done"
+    res = c.get(f"/api/voices/{v['id']}/sounds").json()
+    assert {k: res["counts"].get(k, 0) > 0 for k in ("breath", "pant", "sigh", "voice")} == \
+        {"breath": True, "pant": True, "sigh": True, "voice": True}, res["counts"]
+    br = next(f for f in res["items"] if f["kind"] == "breath")
+    assert 0.9 <= br["start"] <= 1.1 and 1.5 <= br["end"] <= 1.7 and br["meta"]["where"] == "before"
+    pant = next(f for f in res["items"] if f["kind"] == "pant")
+    assert pant["start"] < 4.8 and pant["end"] > 6.0
+    wav = c.get(f"/api/sounds/{br['id']}/audio")
+    assert wav.status_code == 200 and abs(sf.info(io.BytesIO(wav.content)).duration - (br["clip_end"] - br["clip_start"])) < 0.05
+
+    # keep the breath as [吸氣] (a new sound tag); dismiss the panting; neither comes back on a new scan
+    r = c.post(f"/api/sounds/{br['id']}/keep", json={"tag": "［吸氣］"})
+    assert r.status_code == 200, r.text
+    ph = r.json()
+    assert ph["text"] == "[吸氣]" and len(ph["clips"]) == 1 and ph["clips"][0]["speech_rms"] > 0
+    c.post(f"/api/sounds/{pant['id']}/dismiss")
+    job = c.post(f"/api/voices/{v['id']}/sounds/scan").json()
+    assert _wait(c, job["id"])["status"] == "done"
+    again = c.get(f"/api/voices/{v['id']}/sounds").json()
+    assert not again["counts"].get("pant") and not any(f["kind"] == "breath" and f["start"] < 2 for f in again["items"])
+    assert c.get(f"/api/voices/{v['id']}/sounds?status=kept").json()["items"][0]["meta"]["phrase"] == ph["id"]
+
+    # a sound tag is not a catchphrase: no speech-recognition hint, no counts, matched only as a tag
+    assert c.post(f"/api/voices/{v['id']}/phrases", json={"text": "[吸氣]"}).status_code == 400
+    hello = phrases.create(v["id"], "hello")
+    assert phrases.asr_prompt(v["id"], "en") == "hello."
+    assert [h[2]["text"] for h in phrases.find("[ 吸氣 ] [hello there] hello", [phrases.get(ph["id"]), hello])] == \
+        ["[吸氣]", "hello"]
+    assert phrases.create(v["id"], "[喘氣]", variants=["panting"])["variants"] == ["[panting]"]
+
+    # synthesis: the tag plays the recording (not also a style hint); an unregistered tag stays a style hint
+    m = c.post("/api/models/demo").json()
+    db.update("models", m["id"], {"voice_id": v["id"]})
+    o = c.post("/api/tts", json={"model_id": m["id"], "text": "[吸氣] こんにちは [嘆氣]"}).json()["outputs"][0]
+    assert o["params"]["phrases"] == [{"phrase": "[吸氣]", "clip": ph["clips"][0]["id"], "emotion": "", "sound": True}]
+    assert o["params"]["style"] == "with a sigh"
+    alone = c.post("/api/tts", json={"model_id": m["id"], "text": "[吸氣]"}).json()["outputs"][0]
+    assert alone["params"]["phrases"] and alone["duration"] < 1.0
+
+    # level: a kept sound keeps its level next to speech; an uploaded one is only turned down
+    y = np.full(4800, 0.05, np.float32)
+    near = [np.full(4800, 0.2, np.float32)]
+    assert abs(float(phrases.match_level(y, 48000, near, {"speech_rms": 0.4}).max()) - 0.025) < 1e-3
+    assert float(phrases.match_level(y, 48000, near, {}).max()) == pytest.approx(0.05)
+    assert float(phrases.match_level(np.full(4800, 0.5, np.float32), 48000, near, {}).max()) == pytest.approx(0.2)
+
+    # deleting the recording removes its candidates
+    c.delete("/api/sources/s1")
+    assert not db.query("SELECT 1 FROM sound_finds")

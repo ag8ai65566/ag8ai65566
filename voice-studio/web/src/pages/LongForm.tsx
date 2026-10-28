@@ -249,7 +249,7 @@ function RenderCard({ d, models }: { d: Doc; models: Model[] }) {
             <Field label={`每句念幾次（${opts.takes}）`}>
               <input type="range" min={1} max={5} value={opts.takes} className="w-full" onChange={(e) => setOpts({ ...opts, takes: Number(e.target.value) })} />
             </Field>
-            <label className="mt-6 flex items-center gap-2 text-sm"><input type="checkbox" checked={opts.phrases} onChange={(e) => setOpts({ ...opts, phrases: e.target.checked })} />口頭禪用原音</label>
+            <label className="mt-6 flex items-center gap-2 text-sm"><input type="checkbox" checked={opts.phrases} onChange={(e) => setOpts({ ...opts, phrases: e.target.checked })} />口頭禪、聲音標籤用原音</label>
           </div>
           <Button className="w-full" onClick={() => render.mutate()} loading={render.isPending} disabled={!modelId || rendering || !opts.mode || !n}>
             <Mic2 className="size-4" />全部產生（{n} 句）

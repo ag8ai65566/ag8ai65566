@@ -195,6 +195,15 @@ def _cut_long(sent: str, limit: int) -> list[str]:
     return out
 
 
+def carried_tags(lead: str) -> str:
+    """The tags at the start of a paragraph that colour its other sentences too: ways of speaking ([excited],
+    [whispers]), not things that happen once ([sighs], [吸氣], [喘氣] – a sound is heard where it is written)."""
+    from .engines.base import EVENT_TAGS
+    keep = [t.strip() for g in re.findall(r"\[([^\[\]]+)\]", lead) for t in g.split(",")]
+    keep = [t for t in keep if t and t.lower() not in EVENT_TAGS]
+    return f"[{', '.join(keep)}]" if keep else ""
+
+
 def split_text(text: str) -> list[dict]:
     """Lines to speak one by one: sentences within paragraphs (blank-line or line-break separated). A [tag] at the
     start of a paragraph colours every sentence of it that has no tag of its own, as in ElevenLabs scripts."""
@@ -204,7 +213,7 @@ def split_text(text: str) -> list[dict]:
         if not para:
             continue
         m = TAG_AT_START.match(para)
-        lead_tag = m.group(1).strip() if m else ""
+        lead_tag = carried_tags(m.group(1)) if m else ""
         sents = [x.strip() for x in SENT_END.split(para) if x and x.strip()]
         cjk = len(re.findall(r"[\u3040-\u30ff\u4e00-\u9fff]", para)) > len(para) / 4
         limit = 120 if cjk else 280

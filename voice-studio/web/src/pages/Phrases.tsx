@@ -3,7 +3,7 @@ import { Link } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { MessageSquareQuote, Pause, Play, Plus, Scissors, Trash2, Upload, Wand2 } from "lucide-react";
-import { api, EMOTIONS, LANGS, type Job, type Model, type Phrase, type Segment, type Voice } from "../api";
+import { api, EMOTIONS, isSound, LANGS, type Job, type Model, type Phrase, type Segment, type Voice } from "../api";
 import { Badge, Button, Card, ErrorText, Field, Modal, PlayButton, Progress, usePlayer } from "../ui";
 
 const splitList = (s: string) => s.split(/[,，、\n]/).map((x) => x.trim()).filter(Boolean);
@@ -34,7 +34,7 @@ export function PhrasesCard({ voice }: { voice: Voice }) {
     refetchInterval: (q) => (q.state.data && ["done", "failed", "canceled"].includes(q.state.data.status) ? false : 1500),
   });
   useEffect(() => { if (job.data?.status === "done") inv(); }, [job.data?.status]); // eslint-disable-line react-hooks/exhaustive-deps
-  const phrases = list.data ?? [];
+  const phrases = (list.data ?? []).filter((p) => !isSound(p));  // sound tags have their own card
   const otherSpellings = phrases.reduce((n, p) => n + (p.counts.other_spellings ?? 0), 0);
   const running = !!job.data && ["queued", "running"].includes(job.data.status);
 
@@ -163,11 +163,12 @@ function PhraseRow({ p, voice, modelId, onChange }: { p: Phrase; voice: Voice; m
 }
 
 /** Add an original recording: upload a short file, or cut the phrase out of an imported segment. */
-function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: Voice; onClose: () => void; onDone: () => void }) {
+export function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: Voice; onClose: () => void; onDone: () => void }) {
   const [tab, setTab] = useState<"segment" | "file">("segment");
   const [emotion, setEmotion] = useState("");
   const [file, setFile] = useState<File | null>(null);
-  const [q, setQ] = useState(p.text);
+  const sound = isSound(p);
+  const [q, setQ] = useState(sound ? "" : p.text);
   const [seg, setSeg] = useState<Segment | null>(null);
   const [range, setRange] = useState({ start: 0, end: 0 });
   const player = usePlayer();
@@ -179,7 +180,7 @@ function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: Voice; 
     setSeg(s);
     setEmotion(s.emotion ?? "");
     // first guess: where the phrase sits in the text, as a share of the clip's length
-    const i = s.text.indexOf(p.text);
+    const i = sound ? -1 : s.text.indexOf(p.text);
     const len = Math.max(1, s.text.length);
     if (i >= 0) {
       const a = Math.max(0, (s.duration * i) / len - 0.2), b = Math.min(s.duration, (s.duration * (i + p.text.length)) / len + 0.3);
@@ -204,12 +205,13 @@ function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: Voice; 
         ))}
       </div>
       {tab === "file" ? (
-        <Field label="錄音檔（只有這個口頭禪，0.2–10 秒；前後的靜音會自動去掉）">
+        <Field label={sound ? "錄音檔（只有這個聲音，0.2–10 秒；前後的靜音會自動去掉）" : "錄音檔（只有這個口頭禪，0.2–10 秒；前後的靜音會自動去掉）"}
+          hint={sound ? "上傳的聲音會照原本的音量；比旁邊說話大聲時才會調小。從片段剪的會記住它原本和說話聲的音量比例。" : undefined}>
           <input type="file" accept="audio/*,video/*" className="input" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
         </Field>
       ) : (
         <div className="space-y-3">
-          <input className="input" value={q} onChange={(e) => { setQ(e.target.value); setSeg(null); }} placeholder="搜尋片段文字" />
+          <input className="input" value={q} onChange={(e) => { setQ(e.target.value); setSeg(null); }} placeholder={sound ? "搜尋片段文字，例如 はぁ、ふぅ（空白＝全部）" : "搜尋片段文字"} />
           {!seg ? (
             <div className="max-h-[40vh] space-y-1 overflow-y-auto">
               {segs.data?.items.map((s) => (
@@ -222,7 +224,7 @@ function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: Voice; 
               {segs.data && !segs.data.items.length && <p className="text-sm text-zinc-500">找不到含有這段文字的片段。</p>}
             </div>
           ) : (
-            <RangePicker seg={seg} range={range} setRange={setRange} onBack={() => setSeg(null)} />
+            <RangePicker url={`/api/segments/${seg.id}/audio`} duration={seg.duration} text={seg.text} range={range} setRange={setRange} onBack={() => setSeg(null)} />
           )}
         </div>
       )}
@@ -245,25 +247,26 @@ function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: Voice; 
   );
 }
 
-function RangePicker({ seg, range, setRange, onBack }: {
-  seg: Segment; range: { start: number; end: number }; setRange: (r: { start: number; end: number }) => void; onBack: () => void;
+export function RangePicker({ url, duration, text, range, setRange, onBack, hint }: {
+  url: string; duration: number; text: string; range: { start: number; end: number };
+  setRange: (r: { start: number; end: number }) => void; onBack?: () => void; hint?: string;
 }) {
   const audio = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   useEffect(() => () => audio.current?.pause(), []);
   const playRange = () => {
     if (playing) { audio.current?.pause(); setPlaying(false); return; }
-    const a = audio.current ?? (audio.current = new Audio(`/api/segments/${seg.id}/audio`));
+    const a = audio.current ?? (audio.current = new Audio(url));
     const go = () => { a.currentTime = range.start; a.play().then(() => setPlaying(true)).catch(() => setPlaying(false)); };
     a.ontimeupdate = () => { if (a.currentTime >= range.end) { a.pause(); setPlaying(false); } };
     if (a.readyState >= 1) go(); else a.onloadedmetadata = go;
   };
-  const clamp = (x: number) => Math.max(0, Math.min(seg.duration, x));
+  const clamp = (x: number) => Math.max(0, Math.min(duration, x));
   return (
     <div className="rounded-xl border border-zinc-200 p-3 dark:border-zinc-800">
-      <div className="mb-2 text-sm">{seg.text}</div>
+      {text && <div className="mb-2 text-sm">{text}</div>}
       <div className="grid gap-3 sm:grid-cols-[1fr_1fr_auto]">
-        <Field label={`開始（秒，共 ${seg.duration.toFixed(1)} 秒）`}>
+        <Field label={`開始（秒，共 ${duration.toFixed(1)} 秒）`}>
           <input type="number" step={0.05} className="input" value={range.start} onChange={(e) => setRange({ ...range, start: clamp(+e.target.value) })} />
         </Field>
         <Field label="結束（秒）">
@@ -271,10 +274,10 @@ function RangePicker({ seg, range, setRange, onBack }: {
         </Field>
         <Button variant="secondary" className="mt-6" onClick={playRange}>{playing ? <Pause className="size-4" /> : <Play className="size-4" />}聽選取範圍</Button>
       </div>
-      <input type="range" min={0} max={seg.duration} step={0.05} value={range.start} onChange={(e) => setRange({ ...range, start: Math.min(+e.target.value, range.end - 0.2) })} className="w-full" aria-label="開始" />
-      <input type="range" min={0} max={seg.duration} step={0.05} value={range.end} onChange={(e) => setRange({ ...range, end: Math.max(+e.target.value, range.start + 0.2) })} className="w-full" aria-label="結束" />
-      <p className="mt-1 text-xs text-zinc-500">先用預估的範圍聽一次，再調整到剛好只有口頭禪（前後多一點點沒關係，靜音會自動去掉）。</p>
-      <button className="mt-2 text-xs text-brand-600 underline" onClick={onBack}>換一段</button>
+      <input type="range" min={0} max={duration} step={0.05} value={range.start} onChange={(e) => setRange({ ...range, start: Math.min(+e.target.value, range.end - 0.2) })} className="w-full" aria-label="開始" />
+      <input type="range" min={0} max={duration} step={0.05} value={range.end} onChange={(e) => setRange({ ...range, end: Math.max(+e.target.value, range.start + 0.2) })} className="w-full" aria-label="結束" />
+      <p className="mt-1 text-xs text-zinc-500">{hint ?? "先用預估的範圍聽一次，再調整到剛好只有口頭禪（前後多一點點沒關係，靜音會自動去掉）。"}</p>
+      {onBack && <button className="mt-2 text-xs text-brand-600 underline" onClick={onBack}>換一段</button>}
     </div>
   );
 }

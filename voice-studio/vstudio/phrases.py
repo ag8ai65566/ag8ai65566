@@ -9,6 +9,10 @@ to produce, and a few original recordings of the phrase (in different moods). Th
   that starts with it plays the recording and lets the model continue from it (the model hears the original and
   speaks on in the same flow); elsewhere the recording is joined between synthesized parts;
 - check how a trained model says the phrase on its own, against the original.
+
+A phrase written as a bracket tag, e.g. "[喘氣]" or "[sigh]", is a sound rather than words: breathing, a sigh, panting,
+a wordless moan. Speech recognition never writes it and a model cannot be asked to say it, so it only does the third
+job: where the tag is in a line, the person's own recording of that sound is played.
 """
 from __future__ import annotations
 
@@ -22,6 +26,20 @@ from . import audio, config, db, emotions, jobs
 
 SCORE_FLAGS = {"asr_disagree", "noisy", "clipping", "unknown_speaker", "overlap", "no_text"}
 PUNCT = "、。，．,.!?！？…〜~ー「」『』\"'（）()　 "
+BRACKETS = str.maketrans({"［": "[", "【": "[", "〔": "[", "］": "]", "】": "]", "〕": "]"})
+TAG_SPAN = re.compile(r"\[[^\[\]]*\]")
+
+
+def is_sound(ph: dict | str) -> bool:
+    """A sound tag such as "[喘氣]": played from the person's recording, never spoken or transcribed."""
+    t = ph if isinstance(ph, str) else ph["text"]
+    return len(t) > 2 and t.startswith("[") and t.endswith("]")
+
+
+def as_tag(x: str) -> str:
+    x = x.translate(BRACKETS).strip()
+    inner = x.strip("[] ").strip()
+    return f"[{inner}]" if inner else ""
 
 
 def _clean_list(xs) -> list[str]:
@@ -51,26 +69,40 @@ def with_clips(voice_id: str) -> list[dict]:
 def create(voice_id: str, text: str, variants=(), lang: str | None = None) -> dict:
     if not db.get("voices", voice_id):
         raise KeyError(voice_id)
-    text = text.strip()
+    text, variants = _normalise(text, variants)
     if not text or len(text) > 60:
         raise ValueError("口頭禪要有 1–60 個字")
-    if any(p["text"] == text for p in list_for_voice(voice_id)):
+    if any(p["text"].lower() == text.lower() for p in list_for_voice(voice_id)):
         raise ValueError(f"「{text}」已經在清單裡")
     return db.insert("catchphrases", {"id": db.new_id("phr"), "voice_id": voice_id, "text": text,
-                                      "variants": [v for v in _clean_list(variants) if v != text],
+                                      "variants": [v for v in variants if v != text],
                                       "lang": lang or None, "clips": [], "checks": {}, "created_at": db.now()})
+
+
+def _normalise(text: str, variants=()) -> tuple[str, list[str]]:
+    """Trim; a sound tag gets half-width brackets, and so do its other spellings ("panting" → "[panting]")."""
+    text = text.translate(BRACKETS).strip()
+    variants = _clean_list(variants)
+    if is_sound(text):
+        text = as_tag(text)
+        variants = _clean_list(as_tag(v) for v in variants)
+    return text, variants
 
 
 def update(pid: str, text: str | None = None, variants=None, lang: str | None = None) -> dict:
     ph = get(pid)
     upd: dict = {}
     if text is not None:
-        text = text.strip()
+        text, _ = _normalise(text)
         if not text or len(text) > 60:
             raise ValueError("口頭禪要有 1–60 個字")
+        if is_sound(text) != is_sound(ph):
+            raise ValueError("聲音標籤和口頭禪不能互換，請刪掉重新登記")
         upd["text"] = text
     if variants is not None:
-        upd["variants"] = [v for v in _clean_list(variants) if v != upd.get("text", ph["text"])]
+        canon = upd.get("text", ph["text"])
+        _, vs = _normalise(canon, variants)
+        upd["variants"] = [v for v in vs if v != canon]
     if lang is not None:
         upd["lang"] = lang or None
     return db.update("catchphrases", pid, upd)
@@ -85,16 +117,22 @@ def delete(pid: str) -> None:
 # --- finding a phrase in text -------------------------------------------------------------------------------------
 
 def _pattern(form: str) -> re.Pattern:
-    """English spellings match whole words, any case; Japanese/Chinese ones match anywhere."""
+    """English spellings match whole words, any case; Japanese/Chinese ones match anywhere. A sound tag matches the
+    tag with any spacing and case inside the brackets ("[ Sigh ]" = "[sigh]")."""
+    if is_sound(form):
+        return re.compile(r"\[\s*" + re.escape(form[1:-1].strip()) + r"\s*\]", re.IGNORECASE)
     if form.isascii():
         return re.compile(r"(?<![A-Za-z0-9'])" + re.escape(form) + r"(?![A-Za-z0-9'])", re.IGNORECASE)
     return re.compile(re.escape(form))
 
 
 def find(text: str, phrases: list[dict]) -> list[tuple[int, int, dict]]:
-    """Non-overlapping occurrences of any phrase in any of its spellings, longest spellings first."""
+    """Non-overlapping occurrences of any phrase in any of its spellings, longest spellings first. Words inside a
+    [tag] are not the phrase being said ("[sighs]" does not contain the phrase "sigh")."""
     forms = sorted(((f, p) for p in phrases for f in [p["text"], *p["variants"]] if f), key=lambda x: -len(x[0]))
-    taken: list[tuple[int, int]] = []
+    sounds = [_pattern(f) for f, p in forms if is_sound(p)]
+    taken = [(m.start(), m.end()) for m in TAG_SPAN.finditer(text)
+             if not any(s.fullmatch(m.group()) for s in sounds)]
     out: list[tuple[int, int, dict]] = []
     for form, ph in forms:
         for m in _pattern(form).finditer(text):
@@ -117,6 +155,8 @@ def counts(voice_id: str) -> dict[str, dict]:
     segs = db.query("SELECT text, status FROM segments WHERE voice_id=? AND status<>'rejected'", (voice_id,))
     out = {}
     for ph in list_for_voice(voice_id):
+        if is_sound(ph):
+            continue
         canon = _pattern(ph["text"])
         others = [_pattern(v) for v in ph["variants"]]
         c = {"segments": 0, "approved": 0, "other_spellings": 0}
@@ -135,7 +175,7 @@ def unify(voice_id: str, pid: str | None = None) -> int:
     agreement score stays meaningful). Spelling is mechanical, so segments are not marked as edited by a person."""
     from .pipeline import asr, prepare
     phs = [get(pid)] if pid else list_for_voice(voice_id)
-    phs = [p for p in phs if p["variants"] and p["voice_id"] == voice_id]
+    phs = [p for p in phs if p["variants"] and p["voice_id"] == voice_id and not is_sound(p)]
     if not phs:
         return 0
     changed = 0
@@ -158,7 +198,8 @@ def asr_prompt(voice_id: str | None, lang: str | None) -> str:
     """The voice's phrases as a hint to speech recognition, so they are written with the canonical spelling."""
     if not voice_id or not lang:
         return ""
-    texts = [p["text"] for p in list_for_voice(voice_id) if not p["lang"] or p["lang"] == lang][:12]
+    texts = [p["text"] for p in list_for_voice(voice_id)
+             if not is_sound(p) and (not p["lang"] or p["lang"] == lang)][:12]
     if not texts:
         return ""
     return ("、".join(texts) + "。") if lang in ("ja", "zh") else (", ".join(texts) + ".")
@@ -198,7 +239,8 @@ def trim(y: np.ndarray, sr: int, pad: float = 0.04) -> np.ndarray:
     return y[a:b]
 
 
-def _add(pid: str, y: np.ndarray, sr: int, emotion: str | None, source: str) -> dict:
+def _add(pid: str, y: np.ndarray, sr: int, emotion: str | None, source: str,
+         speech_rms: float | None = None) -> dict:
     ph = get(pid)
     if emotion and not emotions.valid(emotion):
         raise ValueError(f"unknown emotion: {emotion}")
@@ -208,9 +250,23 @@ def _add(pid: str, y: np.ndarray, sr: int, emotion: str | None, source: str) -> 
         raise ValueError(f"原音片段要 0.2–10 秒（去掉前後靜音後是 {dur:.1f} 秒）")
     cid = db.new_id("clip")
     audio.save(_dir(ph) / f"{cid}.wav", y, audio.MASTER_SR)
-    clips = list(ph["clips"]) + [{"id": cid, "file": f"{cid}.wav", "emotion": emotion or "",
-                                  "duration": round(dur, 3), "from": source}]
-    return db.update("catchphrases", pid, {"clips": clips})
+    clip = {"id": cid, "file": f"{cid}.wav", "emotion": emotion or "", "duration": round(dur, 3), "from": source}
+    if speech_rms and is_sound(ph):
+        clip["speech_rms"] = round(float(speech_rms), 6)  # the person's speech level next to it (see match_level)
+    return db.update("catchphrases", pid, {"clips": list(ph["clips"]) + [clip]})
+
+
+def speech_level(source_id: str) -> float | None:
+    """How loud the person speaks in a recording: the median over a few of its transcribed segments."""
+    levels = []
+    for r in db.query("SELECT path FROM segments WHERE source_id=? AND text<>'' AND status<>'rejected' "
+                      "ORDER BY score DESC LIMIT 6", (source_id,)):
+        try:
+            y, sr = audio.load(Path(r["path"]))
+        except Exception:
+            continue
+        levels.append(_active_rms(y, sr))
+    return float(np.median(levels)) if levels else None
 
 
 def add_clip_file(pid: str, src: Path, emotion: str | None, name: str = "") -> dict:
@@ -235,7 +291,34 @@ def add_clip_segment(pid: str, segment_id: str, start: float, end: float, emotio
     if b - a < 0.2:
         raise ValueError("選取的範圍太短")
     return _add(pid, y[int(a * sr):int(b * sr)], sr, emotion if emotion is not None else s.get("emotion"),
-                f"{segment_id} {a:.2f}–{b:.2f}s")
+                f"{segment_id} {a:.2f}–{b:.2f}s", speech_level(s["source_id"]) if is_sound(ph) else None)
+
+
+def source_has_voice(source_id: str, voice_id: str) -> bool:
+    src = db.get("sources", source_id)
+    return bool(src) and (src.get("voice_hint") == voice_id or bool(db.query(
+        "SELECT 1 FROM segments WHERE source_id=? AND voice_id=? LIMIT 1", (source_id, voice_id))))
+
+
+def add_clip_source(pid: str, source_id: str, start: float, end: float, emotion: str | None) -> dict:
+    """Cut a recording out of an imported recording (its processed copy), also between the cut segments: that is
+    where a sigh or a breath on its own usually is."""
+    import soundfile as sf
+    ph = get(pid)
+    if not db.get("sources", source_id):
+        raise KeyError(source_id)
+    if not source_has_voice(source_id, ph["voice_id"]):
+        raise ValueError("只能用同一個聲音的錄音")
+    master = config.DATA / "sources" / source_id / "master.wav"
+    if not master.exists():
+        raise ValueError("這段錄音的處理檔已經不在了，請改從片段剪或上傳檔案")
+    info = sf.info(str(master))
+    a, b = max(0.0, float(start)), min(info.duration, float(end))
+    if b - a < 0.2:
+        raise ValueError("選取的範圍太短")
+    y, sr = sf.read(str(master), start=int(a * info.samplerate), stop=int(b * info.samplerate), dtype="float32",
+                    always_2d=True)
+    return _add(pid, y.mean(axis=1), sr, emotion, f"{source_id} {a:.2f}–{b:.2f}s", speech_level(source_id))
 
 
 def remove_clip(pid: str, cid: str) -> dict:
@@ -285,6 +368,14 @@ def plan(text: str, phrases: list[dict]) -> list[dict]:
     return [p for p in parts if p["kind"] == "clip" or p["text"].strip(PUNCT)]
 
 
+def drop_sounds(text: str, phrases: list[dict]) -> str:
+    """The line without the sound tags that are played from a recording."""
+    for a, b, ph in reversed(find(text, phrases)):
+        if is_sound(ph) and ph["clips"]:
+            text = text[:a] + " " + text[b:]
+    return text
+
+
 def gap_after(part: dict) -> float:
     """Silence after a part, from the punctuation it ends with."""
     t = (part.get("said") or part.get("text") or "").rstrip(" 　")
@@ -305,12 +396,20 @@ def _active_rms(y: np.ndarray, sr: int) -> float:
     return float(np.sqrt(np.mean(loud) + 1e-12))
 
 
-def match_level(clip: np.ndarray, sr: int, near: list[np.ndarray]) -> np.ndarray:
-    """Scale an original recording to the loudness of the synthesized speech around it (within ×0.5–×2)."""
+def match_level(clip: np.ndarray, sr: int, near: list[np.ndarray], sound: dict | None = None) -> np.ndarray:
+    """Scale an original recording to the loudness of the synthesized speech around it (within ×0.5–×2).
+    A sound (the clip record of a sound tag) keeps the level it had next to the person's own speech, so a breath
+    stays as quiet as a breath; an uploaded sound with no speech to compare is only ever turned down."""
     near = [x for x in near if len(x)]
     if not near:
         return clip
-    gain = float(np.clip(np.mean([_active_rms(x, sr) for x in near]) / max(_active_rms(clip, sr), 1e-6), 0.5, 2.0))
+    target = float(np.mean([_active_rms(x, sr) for x in near]))
+    if sound is None:
+        gain = float(np.clip(target / max(_active_rms(clip, sr), 1e-6), 0.5, 2.0))
+    elif sound.get("speech_rms"):
+        gain = float(np.clip(target / sound["speech_rms"], 0.25, 4.0))
+    else:
+        gain = min(1.0, target / max(_active_rms(clip, sr), 1e-6))
     return clip * gain
 
 
@@ -337,7 +436,7 @@ def check_phrases(ctx: jobs.JobContext) -> dict:
     m = db.get("models", model_id)
     if not m:
         raise KeyError(model_id)
-    phs = list_for_voice(m["voice_id"])
+    phs = [p for p in list_for_voice(m["voice_id"]) if not is_sound(p)]
     emb = None
     try:
         from .pipeline import speaker

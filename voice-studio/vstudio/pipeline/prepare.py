@@ -84,6 +84,7 @@ def prepare_source(ctx: jobs.JobContext) -> dict:
         Path(old["path"]).unlink(missing_ok=True)
     with db.tx() as c:
         c.execute("DELETE FROM segments WHERE source_id=?", (src["id"],))
+        c.execute("DELETE FROM sound_finds WHERE source_id=?", (src["id"],))  # they point at the old segments
 
     emb_model = speaker.Embedder()
     hint = src.get("voice_hint")
@@ -178,6 +179,7 @@ def remove_source(source_id: str) -> None:
         Path(s["path"]).unlink(missing_ok=True)
     with db.tx() as c:
         c.execute("DELETE FROM segments WHERE source_id=?", (source_id,))
+        c.execute("DELETE FROM sound_finds WHERE source_id=?", (source_id,))
         c.execute("DELETE FROM sources WHERE id=?", (source_id,))
     shutil.rmtree(config.DATA / "sources" / source_id, ignore_errors=True)
     shutil.rmtree(config.DATA / "segments" / source_id, ignore_errors=True)
