@@ -198,9 +198,8 @@ def _cut_long(sent: str, limit: int) -> list[str]:
 def carried_tags(lead: str) -> str:
     """The tags at the start of a paragraph that colour its other sentences too: ways of speaking ([excited],
     [whispers]), not things that happen once ([sighs], [吸氣], [喘氣] – a sound is heard where it is written)."""
-    from .engines.base import EVENT_TAGS
-    keep = [t.strip() for g in re.findall(r"\[([^\[\]]+)\]", lead) for t in g.split(",")]
-    keep = [t for t in keep if t and t.lower() not in EVENT_TAGS]
+    from . import tags
+    keep = [t for g in tags.GROUP.findall(lead) for t in tags.split_group(g) if not tags.is_event(t)]
     return f"[{', '.join(keep)}]" if keep else ""
 
 

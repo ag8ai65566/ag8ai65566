@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
 import { Download, FileText, Mic2, RefreshCw, Scissors, Trash2 } from "lucide-react";
 import { api, EMOTIONS, LANGS, MODES, type Model } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, PlayButton, Progress, usePlayer, Wave } from "../ui";
+import { insertAt, TagPicker } from "../TagPicker";
 
 const MAX = 20000;
 type LineIn = { i: number; text: string; emotion: string; style: string; pause: number; skip: boolean };
@@ -36,6 +37,12 @@ export default function LongForm({ models, initialText }: { models: Model[]; ini
   });
   const d = doc.data;
   const [text, setText] = useState(initialText ?? "");
+  const box = useRef<HTMLTextAreaElement | null>(null);
+  const insert = (tag: string) => {
+    const [t, at] = insertAt(box.current, text, tag);
+    setText(t);
+    requestAnimationFrame(() => { box.current?.focus(); box.current?.setSelectionRange(at, at); });
+  };
   const [name, setName] = useState("");
   const [language, setLanguage] = useState("");
   useEffect(() => { if (d) { setText(d.meta.text ?? ""); setName(d.name); setLanguage(d.lang ?? ""); } }, [d?.id]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -60,10 +67,11 @@ export default function LongForm({ models, initialText }: { models: Model[]; ini
         <div className="grid gap-4 lg:grid-cols-[1fr_260px]">
           <div className="space-y-3">
             <Field label={`文字（${text.length.toLocaleString()}/${MAX.toLocaleString()}）`}
-              hint={<>空一行＝換段落（停比較久）。句子開頭可以加 <code className="kbd">[excited]</code>、<code className="kbd">[whispers]</code> 這類標籤；寫在段落開頭的標籤會套用到整段。</>}>
-              <textarea className="input min-h-56 text-base leading-7" value={text} maxLength={MAX} onChange={(e) => setText(e.target.value)}
+              hint={<>空一行＝換段落（停比較久）。用「標籤」插入 <code className="kbd">[害羞]</code>、<code className="kbd">[whispers]</code>、<code className="kbd">[停頓 1秒]</code> 這類標籤；寫在段落開頭的「說話方式」標籤會套用到整段。</>}>
+              <textarea ref={box} className="input min-h-56 text-base leading-7" value={text} maxLength={MAX} onChange={(e) => setText(e.target.value)}
                 placeholder={"[excited] やっほー！今日はね、すごいニュースがあるの。\n\n[whispers] これはまだ秘密なんだけど…"} />
             </Field>
+            <div className="-mt-2"><TagPicker onPick={insert} /></div>
             <div className="grid gap-3 sm:grid-cols-2">
               <Field label="名稱（選填）"><input className="input" value={name} onChange={(e) => setName(e.target.value)} placeholder="第一行會當名稱" /></Field>
               <Field label="語言">
@@ -134,6 +142,7 @@ function Lines({ d }: { d: Doc }) {
 function LineRow({ d, x, out, player }: { d: Doc; x: LineIn; out?: LineOut; player: ReturnType<typeof usePlayer> }) {
   const qc = useQueryClient();
   const [text, setText] = useState(x.text);
+  const line = useRef<HTMLTextAreaElement | null>(null);
   const [style, setStyle] = useState(x.style);
   const [pause, setPause] = useState(String(x.pause));
   useEffect(() => { setText(x.text); setStyle(x.style); setPause(String(x.pause)); }, [x.text, x.style, x.pause]);
@@ -151,8 +160,9 @@ function LineRow({ d, x, out, player }: { d: Doc; x: LineIn; out?: LineOut; play
       <div className="flex items-start gap-2">
         <input type="checkbox" className="mt-2.5" title="取消勾選＝這句不念" checked={!x.skip} onChange={(e) => edit.mutate({ skip: !e.target.checked })} />
         <span className="mt-1.5 w-6 text-right text-xs text-zinc-400 tabular-nums">{x.i + 1}</span>
-        <textarea className="input min-h-9 flex-1 resize-y py-1 text-sm leading-6" rows={1} value={text} onChange={(e) => setText(e.target.value)}
+        <textarea ref={line} className="input min-h-9 flex-1 resize-y py-1 text-sm leading-6" rows={1} value={text} onChange={(e) => setText(e.target.value)}
           onBlur={() => text !== x.text && edit.mutate({ text })} />
+        <TagPicker label="" align="right" onPick={(tag) => { const [t] = insertAt(line.current, text, tag); setText(t); edit.mutate({ text: t }); }} />
       </div>
       <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-2 pl-14 text-xs">
         <label className="flex items-center gap-1"><span className="text-zinc-500">情緒</span>

@@ -33,7 +33,8 @@ PREFIX = re.compile(r"^([^_\-\s]{1,8})[_\-]")
 
 TEMPLATE_CSV = (
     "檔名,情緒,語言,備註\n"
-    "0815直播_開場.wav,開心,日文,情緒可以填：平靜 開心 興奮 生氣 難過 小聲 笑著說 驚訝 害怕 悄悄話 撒嬌 念稿\n"
+    "0815直播_開場.wav,開心,日文,情緒可以填：平靜 開心 興奮 生氣 難過 小聲 笑著說 驚訝 害怕 悄悄話 撒嬌 念稿 不耐煩 哭著說 緊張 "
+    "害羞 嫌棄 疲倦 大喊 認真 冷淡 得意 諷刺 疑惑\n"
     "0815直播_輸了.wav,生氣,日文,語言可以填：日文 英文 中文 自動\n"
     "english_chat.mp4,平靜,英文,\n"
     "雜談合集.mp4,,自動,情緒留空＝不標記（之後在檢查資料頁逐句標）\n")
@@ -51,6 +52,9 @@ def emotion_of(text: str | None, strict: bool = False) -> str | None:
     for code, label in emotions.EMOTIONS.items():
         if s == label or s in label.split("／"):
             return code
+    from . import tags
+    if (t := tags.lookup(s)) and t.emotion:  # any name of a tag: "照れて", "nervous", "ドヤ顔"
+        return t.emotion
     if strict:
         return next((code for code, words in emotions.WORDS.items()
                      if s.lower() in (w.rstrip("*") for w in words)), None)

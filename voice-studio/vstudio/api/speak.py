@@ -8,7 +8,7 @@ from fastapi.concurrency import run_in_threadpool
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from .. import audio, db, jobs, tts
+from .. import audio, db, jobs, tags, tts
 from ..presets import holoen
 
 router = APIRouter(prefix="/api", tags=["tts"])
@@ -44,6 +44,12 @@ async def speak(body: SpeakIn):
         raise HTTPException(404, "找不到模型")
     except (ValueError, RuntimeError) as e:
         raise HTTPException(400, str(e))
+
+
+@router.get("/tags")
+def tag_catalogue():
+    """Every [tag] by group (emotions, ways of speaking, habits, roles, sounds, pauses) and the emotion labels."""
+    return tags.catalogue()
 
 
 @router.get("/tts/loaded")

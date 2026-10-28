@@ -8,7 +8,7 @@ from pathlib import Path
 
 import numpy as np
 
-from . import audio, config, datasets, db, emotions, engines, jobs, phrases
+from . import audio, config, datasets, db, emotions, engines, jobs, phrases, tags
 from .pipeline import asr
 
 _loaded: dict = {"key": None, "handle": None, "engine": None}
@@ -62,12 +62,12 @@ def loaded() -> dict | None:
 
 
 def reference(m: dict, ref_id: str | None, emotion: str | None = None) -> dict | None:
-    """The chosen reference clip; with none chosen (or "auto"), the first one labelled with the wanted emotion,
-    else the first one. A reference carries much of the mood, so this is how a line gets the right delivery."""
+    """The chosen reference clip; with none chosen (or "auto"), the first one labelled with the wanted emotion
+    (or the nearest one, see emotions.NEAR), else the first one. A reference carries much of the mood, so this is how a line gets the right delivery."""
     refs = (m["meta"] or {}).get("references") or []
     r = next((x for x in refs if x["id"] == ref_id), None) if ref_id and ref_id != "auto" else None
-    if r is None and emotion:
-        r = next((x for x in refs if x.get("emotion") == emotion), None)
+    for e in ([] if r else emotions.chain(emotion)):  # the mood, else the nearest one, else calm
+        r = r or next((x for x in refs if x.get("emotion") == e), None)
     r = r or (refs[0] if refs else None)
     if not r:
         return None
@@ -129,6 +129,62 @@ def generate(model_id: str, text: str, language: str | None = None, style: str =
                          emotion, phrases)
 
 
+def compose(text: str, pool: list[dict], style: str = "", emotion: str | None = None,
+            keep_tags: bool = False) -> list[dict]:
+    """A line as the parts to render, in order. A [tag] applies to the text after it, up to the next tag: a way of
+    speaking ([nervous], [whispers]) carries on to the rest of the line, a one-off ([sighs], [pause]) does not.
+    - {"kind": "tts", "text", "style", "emotion", "tags"}: text synthesized with its own style and mood;
+    - {"kind": "clip", "phrase", "said", "emotion"}: the person's recording of a catchphrase or a sound tag;
+    - {"kind": "pause", "seconds"}: silence ([pause], [停頓 1.5秒], [間]).
+    style / emotion: the line's own (chosen in the interface): added to every piece / beating the tags' mood.
+    keep_tags: for an engine that reads [tags] itself. pool: the voice's catchphrases and sounds with recordings."""
+    sounds = [p for p in pool if phrases.is_sound(p)]
+    words = [p for p in pool if not phrases.is_sound(p)]
+    line_emotion = emotions.valid(emotion)
+    parts: list[dict] = []
+    carried: list[str] = []
+    for names, body in tags.chunks(text):
+        steps: list[dict] = []
+        events, own = [], []
+        for n in names:
+            sec = tags.pause_seconds(n)
+            ph = phrases.sound_for(n, sounds) if sec is None else None
+            if sec is not None:
+                steps.append({"kind": "pause", "seconds": sec})
+            elif ph:
+                steps.append({"kind": "clip", "phrase": ph, "said": f"[{n}]"})
+            elif tags.is_event(n):
+                events.append(n)
+            else:
+                own.append(n)
+        if own:
+            carried = own
+        active = events + carried
+        st = ", ".join(dict.fromkeys(x for x in [*map(tags.style_of, active), style] if x))
+        emo = line_emotion or tags.emotion_of(active) or emotions.from_style(st)
+        for x in steps:
+            if x["kind"] == "clip":
+                x["emotion"] = emo
+        parts += steps
+        if not body.strip(phrases.PUNCT):
+            # tags at the end of the line: a sound without a recording colours the text before it
+            prev = next((x for x in reversed(parts) if x["kind"] == "tts"), None)
+            if prev is not None and events:
+                prev["style"] = ", ".join(dict.fromkeys(
+                    x for x in [*prev["style"].split(", "), *map(tags.style_of, events)] if x))
+                prev["tags"] = prev["tags"] + events
+            continue
+        for x in phrases.plan(body, words) or [{"kind": "tts", "text": body}]:
+            if x["kind"] == "tts":
+                t = x["text"].strip()
+                x = {"kind": "tts", "text": f"[{', '.join(active)}] {t}" if keep_tags and active else t,
+                     "style": st, "emotion": emo, "tags": active}
+            else:
+                x["emotion"] = emo
+            parts.append(x)
+    return parts
+
+
 def _generate(model_id, text, language, style, takes, seed, screen, batch, mode, ref_id, extra, emotion,
               use_phrases) -> dict:
     m0 = db.get("models", model_id)
@@ -142,43 +198,49 @@ def _generate(model_id, text, language, style, takes, seed, screen, batch, mode,
     modes = eng.modes(meta)
     mode = mode if mode in modes else modes[0]
     pool = phrases.with_clips(m["voice_id"]) if use_phrases else []
-    parts = phrases.plan(text, pool) if pool else []
-    # a sound tag played from the person's own recording ([喘氣] …) is not also turned into a style hint
-    text_engine, tag_style = eng.render_tags(phrases.drop_sounds(text, pool) if parts else text)
-    if eng.supports_tags:
-        text_engine = text
-    if parts and not eng.supports_tags:
-        parts = [x if x["kind"] == "clip" else {**x, "text": eng.render_tags(x["text"])[0]} for x in parts]
-        parts = [x for x in parts if x["kind"] == "clip" or x["text"].strip(phrases.PUNCT)]
-    full_style = ", ".join(s for s in (tag_style, style) if s)
-    emotion = emotions.valid(emotion) or emotions.from_text_tags(text) or emotions.from_style(full_style)
-    lang = language if language and language != "auto" else detect_language(text_engine)
-    ref = reference(m, ref_id, emotion) if mode in ("ref", "hifi") else None
-    if mode in ("ref", "hifi") and ref is None:
+    parts = compose(text, pool, style, emotion, keep_tags=eng.supports_tags)
+    if not any(p["kind"] in ("tts", "clip") for p in parts):
+        raise ValueError("沒有要念的文字（只有標籤的話，那個聲音要先在聲音頁放進原音）")
+    spoken = tags.strip(text)
+    first = next(p for p in parts if p["kind"] in ("tts", "clip"))
+    emotion = first.get("emotion")  # the line's mood as recorded with the output: that of its first piece
+    lang = language if language and language != "auto" else detect_language(spoken)
+    refs: dict = {}
+
+    def ref_for(e):  # a reference for each mood in the line (the chosen one when the person picked one)
+        if mode not in ("ref", "hifi"):
+            return None
+        if e not in refs:
+            refs[e] = reference(m, ref_id, e)
+        return refs[e]
+    if mode in ("ref", "hifi") and ref_for(emotion) is None:
         raise ValueError("這個模式需要參考片段，請先在模型頁加入參考片段")
     timbre = reference(m, ref_id, emotion)  # the model's own reference (if any) keeps timbre in continuations
+    styles = ", ".join(dict.fromkeys(p["style"] for p in parts if p["kind"] == "tts" and p["style"]))
+    first_tts = next((p for p in parts if p["kind"] == "tts"), None)
+    ref = ref_for(first_tts["emotion"]) if first_tts else None
+    single = len(parts) == 1 and parts[0]["kind"] == "tts"
     outs = []
     base_seed = seed if seed is not None else int(np.random.default_rng().integers(0, 2 ** 31 - 1))
     for k in range(max(1, min(8, takes))):
         s = base_seed + k
-        if parts:
-            y, sr, info, used = _spliced(eng, h, parts, lang, full_style, mode, ref, timbre, s, extra, emotion, k,
-                                         modes)
-        else:
-            syn = eng.synthesize(h, apply_lexicon(text_engine, lang), language=lang, style=full_style, mode=mode,
-                                 reference=ref, seed=s, **(extra or {}))
+        if single:
+            syn = eng.synthesize(h, apply_lexicon(first_tts["text"], lang), language=lang, style=first_tts["style"],
+                                 mode=mode, reference=ref, seed=s, **(extra or {}))
             y, sr, info, used = syn.audio, syn.sr, syn.info, []
+        else:
+            y, sr, info, used = _spliced(eng, h, parts, lang, mode, ref_for, timbre, s, extra, k, modes)
         oid = db.new_id("out")
         path = audio.save(config.DATA / "outputs" / f"{oid}.wav", y, sr,
                           synthetic={"engine": eng.id, "model": model_id, "voice": m["voice_id"],
                                      **({"original_clips": len(used)} if used else {})})
         dur = len(y) / sr
-        sc = _screen(y, sr, text_engine, lang) if screen and text_engine.strip(phrases.PUNCT) else {}
+        sc = _screen(y, sr, spoken, lang) if screen and spoken.strip(phrases.PUNCT) else {}
         outs.append(db.insert("outputs", {"id": oid, "model_id": model_id, "text": text,
-                                          "params": {"language": lang, "style": full_style, "seed": s,
+                                          "params": {"language": lang, "style": styles, "seed": s,
                                                      "engine": eng.id, "mode": mode,
                                                      "ref": ref["id"] if ref else None, "emotion": emotion,
-                                                     "phrases": used,
+                                                     "phrases": used, "pieces": len(parts),
                                                      "checkpoint": info.get("checkpoint"), **(extra or {})},
                                           "path": str(path), "duration": round(dur, 3), "score": sc,
                                           "batch": batch, "created_at": db.now()}))
@@ -199,18 +261,22 @@ def _generate(model_id, text, language, style, takes, seed, screen, batch, mode,
     return {"outputs": outs, "mode": mode, "language": lang, "emotion": emotion}
 
 
-def _spliced(eng, h, parts, lang, style, mode, ref, timbre, seed, extra, emotion, k, modes):
-    """One take of a line with original catchphrase recordings in it. Text right after a recording is spoken as a
-    continuation of it when the engine can ("完整複製" with the recording as the prompt), so the flow carries on
-    from the real voice; otherwise it is synthesized as usual. Recordings are matched in loudness and joined with
-    pauses taken from the punctuation. A sound ([喘氣] …) is played as recorded, at the level it had next to the
-    person's speech, and the text after it is synthesized as usual (a breath is no prompt to continue from)."""
+def _spliced(eng, h, parts, lang, mode, ref_for, timbre, seed, extra, k, modes):
+    """One take of a line made of several parts (compose): text pieces each with their own style and reference,
+    the person's recordings, pauses. Text right after a catchphrase recording is spoken as a continuation of it
+    when the engine can ("完整複製" with the recording as the prompt), so the flow carries on from the real voice.
+    A sound ([喘氣] …) is played as recorded, at the level it had next to the person's speech. Recordings are
+    matched in loudness and joined with pauses taken from the punctuation; a [pause] sets the silence itself."""
     pieces: list[list] = []
     used: list[dict] = []
     sr, info, prev = None, {}, None
     for p in parts:
+        if p["kind"] == "pause":
+            pieces.append(["pause", p["seconds"], p, None])
+            prev = None
+            continue
         if p["kind"] == "clip":
-            c = phrases.pick_clip(p["phrase"], emotion, k)
+            c = phrases.pick_clip(p["phrase"], p.get("emotion"), k)
             path = phrases.clip_path(p["phrase"], c["id"])
             sound = phrases.is_sound(p["phrase"])
             prev = None if sound else {"path": path, "text": p["said"],
@@ -224,8 +290,8 @@ def _spliced(eng, h, parts, lang, style, mode, ref, timbre, seed, extra, emotion
             syn = eng.synthesize(h, t, language=lang, style="", mode="hifi", reference=prev, seed=seed,
                                  **(extra or {}))
         else:
-            syn = eng.synthesize(h, t, language=lang, style=style, mode=mode, reference=ref, seed=seed,
-                                 **(extra or {}))
+            syn = eng.synthesize(h, t, language=lang, style=p.get("style", ""), mode=mode,
+                                 reference=ref_for(p.get("emotion")), seed=seed, **(extra or {}))
         sr = sr or syn.sr
         info = syn.info or info
         y = audio.resample(syn.audio, syn.sr, sr) if syn.sr != sr else np.asarray(syn.audio, dtype=np.float32)
@@ -233,15 +299,22 @@ def _spliced(eng, h, parts, lang, style, mode, ref, timbre, seed, extra, emotion
         prev = None
     sr = sr or audio.MASTER_SR
     spoken = [x[1] for x in pieces if x[0] == "tts"]
-    joined = []
+    joined: list[list] = []  # [audio, silence after, the silence was set by a pause]
     for i, (kind, a, p, sound) in enumerate(pieces):
+        if kind == "pause":
+            if joined:
+                joined[-1][1] = joined[-1][1] + a if joined[-1][2] else a
+                joined[-1][2] = True
+            else:
+                joined.append([np.zeros(0, dtype=np.float32), a, True])
+            continue
         if kind == "clip":
             y, _ = audio.load(a, sr)
             near = [pieces[j][1] for j in (i - 1, i + 1) if 0 <= j < len(pieces) and pieces[j][0] == "tts"]
             a = phrases.fade(phrases.match_level(y, sr, near or spoken, sound), sr)
-        joined.append((a, phrases.gap_after(p) if i < len(pieces) - 1 else 0.0))
-    return audio.concat(joined, sr), sr, {"checkpoint": h.get("checkpoint") if isinstance(h, dict) else None,
-                                          **info}, used
+        joined.append([a, phrases.gap_after(p) if i < len(pieces) - 1 else 0.0, False])
+    return audio.concat([(x[0], x[1]) for x in joined], sr), sr, \
+        {"checkpoint": h.get("checkpoint") if isinstance(h, dict) else None, **info}, used
 
 
 # --- scene scripts -------------------------------------------------------------------------------------------------

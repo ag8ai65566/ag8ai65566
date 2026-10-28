@@ -430,7 +430,7 @@ def test_auto_review_job_and_undo(client, tmp_path, monkeypatch):
 
 def test_emotion_words():
     from vstudio import emotions
-    assert emotions.from_style("annoyed, sharp") == "angry"
+    assert emotions.from_style("annoyed, sharp") == "annoyed" and emotions.from_style("angry, sharp") == "angry"
     assert emotions.from_style("I made it") is None          # "mad" is not inside "made"
     assert emotions.from_style("laughing softly") == "laughing"
     assert emotions.from_style("calm, then excited") == "neutral"   # the earliest word wins
@@ -643,7 +643,7 @@ def test_splice_continues_from_the_recording(tmp_path, monkeypatch):
     monkeypatch.setattr(tts.phrases, "clip_path", lambda p, cid: clip)
     parts = tts.phrases.plan("前置き、やっほー！今日もやるよ", [ph])
     timbre = {"path": tmp_path / "ref.wav"}
-    y, sr, info, used = tts._spliced(Eng(), {"checkpoint": "ck"}, parts, "ja", "calm", "plain", None, timbre, 1, None,
+    y, sr, info, used = tts._spliced(Eng(), {"checkpoint": "ck"}, parts, "ja", "plain", lambda e: None, timbre, 1,
                                      None, 0, ["plain", "ref", "hifi"])
     assert [c["mode"] for c in calls] == ["plain", "hifi"]
     assert calls[0]["text"] == "前置き、" and calls[1]["text"] == "今日もやるよ"
@@ -1116,3 +1116,83 @@ def test_sound_tags(client, tmp_path):
     # deleting the recording removes its candidates
     c.delete("/api/sources/s1")
     assert not db.query("SELECT 1 FROM sound_finds")
+
+
+def test_tag_catalogue_and_pieces(client, tmp_path):
+    """Every tag by any of its names; tags apply to the text after them; pauses are silence; the nearest mood is
+    used when there is no reference or recording of the wanted one; the reference page and the UI stay in step."""
+    import re as _re
+    from vstudio import db, emotions, labels, phrases, sounds, tags, tts
+    root = Path(__file__).resolve().parents[1]
+
+    # the catalogue: valid labels, one meaning per name, the docs page and the interface list in step
+    seen = {}
+    for t in tags.CATALOGUE:
+        assert t.group in tags.GROUPS and (t.emotion is None or t.emotion in emotions.EMOTIONS), t
+        for n in (t.key, t.zh, *t.names):
+            assert seen.setdefault(tags._norm(n), t.key) == t.key, (n, t.key, seen[tags._norm(n)])
+    assert len(tags.CATALOGUE) >= 150
+    doc = (root / "docs" / "14-tags.md").read_text(encoding="utf-8")
+    assert doc.split("<!-- tags:start -->\n")[1].split("<!-- tags:end -->")[0] == tags.markdown()
+    ui = (root / "web" / "src" / "api.ts").read_text(encoding="utf-8")
+    block = ui.split("export const EMOTIONS")[1].split("];")[0]
+    assert _re.findall(r'\["(\w+)", "', block) == list(emotions.EMOTIONS)
+    assert c_get(client, "/api/tags")["groups"][0]["tags"][0]["key"] == tags.CATALOGUE[0].key
+
+    # names in three languages, pauses with seconds, free descriptions
+    assert tags.lookup("照れて").key == tags.lookup("害羞").key == tags.lookup("Embarrassed").key == "embarrassed"
+    assert tags.lookup("ドヤ顔").emotion == "smug" and tags.lookup("はぁはぁ").key == "panting"
+    assert [tags.pause_seconds(x) for x in ("pause", "間", "停頓 1.5秒", "pause 2s", "1.2秒", "長停頓", "開心")] == \
+        [0.5, 0.5, 1.5, 2.0, 1.2, 1.2, None]
+    assert tags.style_of("like a pirate") == "like a pirate" and not tags.is_event("like a pirate")
+    assert labels.emotion_of("照れて") == "embarrassed" and labels.emotion_of("不耐煩") == "annoyed"
+    assert emotions.from_text_tags("[照れて] もう…") == "embarrassed"
+
+    # a line in pieces: each tag rules the text after it; ways of speaking carry on, sounds and pauses do not
+    parts = tts.compose("[happy] やった！[sad] でも…[pause 1s][sighs] まあいいか [laughs]", [])
+    assert [p["kind"] for p in parts] == ["tts", "tts", "pause", "tts"]
+    assert [p.get("emotion") for p in parts] == ["happy", "sad", None, "sad"]
+    assert parts[0]["style"] == "happy, cheerful" and parts[2]["seconds"] == 1.0
+    assert parts[3]["style"] == "with a sigh, sad, subdued, with a laugh"     # the trailing [laughs] colours it
+    assert [p["text"] for p in parts if p["kind"] == "tts"] == ["やった！", "でも…", "まあいいか"]
+    assert {p.get("emotion") for p in tts.compose("[happy] あ [sad] い", [], emotion="angry") if p["kind"] == "tts"} \
+        == {"angry"}                                                         # the line's own choice wins
+    assert tts.compose("[whispers] ねえ [sighs] 聞いて", [])[1]["style"] == "with a sigh, whispering"
+    snd = {"id": "p", "text": "[喘氣]", "variants": [], "clips": [{"id": "c", "emotion": ""}]}
+    assert [p["kind"] for p in tts.compose("[panting] 待って", [snd])] == ["clip", "tts"]
+    assert tts.compose("[はぁはぁ]", [snd])[0]["phrase"] is snd
+
+    # the nearest mood: an embarrassed line takes the soft reference, a recording falls back the same way
+    m = {"path": str(tmp_path), "meta": {"references": [{"id": "r_n", "file": "a.wav", "emotion": "neutral"},
+                                                        {"id": "r_s", "file": "b.wav", "emotion": "soft"}]}}
+    assert tts.reference(m, None, "embarrassed")["id"] == "r_s" and tts.reference(m, None, "angry")["id"] == "r_n"
+    ph = {"clips": [{"id": "a", "emotion": "angry"}, {"id": "b", "emotion": "happy"}]}
+    assert phrases.pick_clip(ph, "annoyed")["id"] == "a" and phrases.pick_clip(ph, "excited")["id"] == "b"
+
+    # synthesis: pieces joined, a real pause in between
+    v = _consented_voice(client)
+    mo = client.post("/api/models/demo").json()
+    db.update("models", mo["id"], {"voice_id": v["id"]})
+    one = client.post("/api/tts", json={"model_id": mo["id"], "text": "やった！でも…", "takes": 1}).json()["outputs"][0]
+    two = client.post("/api/tts", json={"model_id": mo["id"], "text": "[happy] やった！[停頓 1.5秒][sad] でも…",
+                                        "takes": 1}).json()["outputs"][0]
+    assert one["params"]["pieces"] == 1 and two["params"]["pieces"] == 3 and two["params"]["emotion"] == "happy"
+    assert two["duration"] > one["duration"] + 1.2
+    assert client.post("/api/tts", json={"model_id": mo["id"], "text": "[sighs]"}).status_code == 400
+
+    # transcripts: English descriptions and interjections, Japanese and Chinese sounds
+    kinds = {x: sounds.text_kind(x) for x in ("(laughs) no way", "*sighs*", "[Laughter]", "(clears throat) So",
+                                             "Ugh.", "Achoo!", "Pfft", "ゴホッゴホッ", "くしゅん", "唉，算了",
+                                             "she sighed and left", "うーん、どうだろう")}
+    assert kinds == {"(laughs) no way": "laugh", "*sighs*": "sigh", "[Laughter]": "laugh",
+                     "(clears throat) So": "throat", "Ugh.": "groan", "Achoo!": "sneeze", "Pfft": "scoff",
+                     "ゴホッゴホッ": "cough", "くしゅん": "sneeze", "唉，算了": "sigh", "she sighed and left": None,
+                     "うーん、どうだろう": None}
+    assert sounds.wordless("(laughs)") and sounds.wordless("mm-hmm") and not sounds.wordless("home")
+    assert all(tags.lookup(sug[1:-1]) for _, sug in sounds.KINDS.values() if sug)
+
+
+def c_get(c, url):
+    r = c.get(url)
+    assert r.status_code == 200, r.text
+    return r.json()

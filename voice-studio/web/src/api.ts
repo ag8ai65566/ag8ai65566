@@ -186,10 +186,14 @@ export type SystemInfo = {
 
 // emotion / delivery labels (same keys as vstudio/emotions.py); the first nine are keys 1–9 on the review page
 export const EMOTIONS: [string, string][] = [
-  ["neutral", "平靜"], ["happy", "開心"], ["excited", "興奮"], ["angry", "生氣"], ["sad", "難過"], ["soft", "小聲"],
-  ["laughing", "笑著說"], ["surprised", "驚訝"], ["scared", "害怕"], ["whisper", "悄悄話"], ["teasing", "撒嬌"],
-  ["narration", "念稿／旁白"],
+  ["neutral", "平靜"], ["happy", "開心"], ["excited", "興奮"], ["angry", "生氣"], ["sad", "難過"], ["soft", "小聲／溫柔"],
+  ["laughing", "笑著說"], ["surprised", "驚訝"], ["scared", "害怕"], ["whisper", "悄悄話"], ["teasing", "撒嬌／調皮"],
+  ["narration", "念稿／旁白"], ["annoyed", "不耐煩"], ["crying", "哭著說"], ["nervous", "緊張"], ["embarrassed", "害羞"],
+  ["disgusted", "嫌棄"], ["tired", "疲倦／想睡"], ["shouting", "大喊"], ["serious", "認真"], ["cold", "冷淡"],
+  ["smug", "得意"], ["sarcastic", "諷刺"], ["confused", "疑惑"],
 ];
+export type TagInfo = { key: string; zh: string; style: string; emotion: string | null; names: string[]; pause: number | null };
+export type TagCatalogue = { groups: { id: string; name: string; event: boolean; tags: TagInfo[] }[]; emotions: [string, string][] };
 export const EMOTION_LABEL: Record<string, string> = Object.fromEntries(EMOTIONS);
 
 export const fmtMin = (m: number) => (m >= 60 ? `${(m / 60).toFixed(1)} 小時` : `${m.toFixed(1)} 分鐘`);

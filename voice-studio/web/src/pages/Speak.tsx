@@ -6,6 +6,7 @@ import { Download, Mic2, Power, Star, Trash2 } from "lucide-react";
 import { api, EMOTION_LABEL, EMOTIONS, fmtTime, isSound, LANGS, MODES, type CharacterPreset, type Model, type Output, type Phrase } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader, PlayButton, usePlayer, Wave } from "../ui";
 import LongForm from "./LongForm";
+import { insertAt, TagPicker } from "../TagPicker";
 
 const STYLE_CHIPS: [string, string][] = [
   ["開心", "cheerful, bright"], ["興奮", "excited, energetic"], ["平靜", "calm, steady"], ["溫柔", "gentle, warm"],
@@ -46,13 +47,11 @@ export default function Speak() {
   const withClips = (phrases.data ?? []).filter((p) => p.clips.length);
   const soundTags = withClips.filter(isSound);
   const box = useRef<HTMLTextAreaElement | null>(null);
-  const insert = (tag: string) => {  // at the cursor, with a space on either side where needed
+  const insert = (tag: string) => {
     const el = box.current;
-    const a = el?.selectionStart ?? text.length, b = el?.selectionEnd ?? text.length;
-    const before = text.slice(0, a), after = text.slice(b);
-    const t = (before && !/\s$/.test(before) ? " " : "") + tag + (after && !/^\s/.test(after) ? " " : "");
-    setText(before + t + after);
-    requestAnimationFrame(() => { el?.focus(); el?.setSelectionRange(a + t.length, a + t.length); });
+    const [t, at] = insertAt(el, text, tag);
+    setText(t);
+    requestAnimationFrame(() => { el?.focus(); el?.setSelectionRange(at, at); });
   };
   const pickEmotion = (e: string) => {  // a reference of that mood is the strongest way to get it
     setEmotion(e);
@@ -112,16 +111,16 @@ export default function Speak() {
               </Field>
             </div>
             {model && !model.available[0] && <p className="rounded-lg bg-amber-50 px-3 py-2 text-sm text-amber-800 dark:bg-amber-950/40 dark:text-amber-200">本機還不能用 {model.engine_name}：{model.available[1]}。<Link to="/settings#engines" className="underline">安裝引擎</Link></p>}
-            <Field label={`文字（${text.length}/2000）`} hint={<>可以用 <code className="kbd">[excited]</code> 這種方括號提示語氣，會轉成引擎看得懂的風格說明。<span className="kbd">Ctrl</span>+<span className="kbd">Enter</span> 產生。</>}>
+            <Field label={`文字（${text.length}/2000）`} hint={<>用下面的「標籤」插入 <code className="kbd">[害羞]</code> <code className="kbd">[嘆氣]</code> <code className="kbd">[停頓 1秒]</code> 這類方括號標籤：管它後面的字，到下一個標籤為止。<span className="kbd">Ctrl</span>+<span className="kbd">Enter</span> 產生。</>}>
               <textarea ref={box} className="input min-h-36 text-base leading-7" value={text} maxLength={2000} onChange={(e) => setText(e.target.value)}
                 placeholder="今日はちょっとだけ、ゆっくり話してみようかな。" onKeyDown={(e) => { if (e.key === "Enter" && (e.ctrlKey || e.metaKey) && text.trim()) gen.mutate(); }}
                 onPaste={(e) => { const t = e.clipboardData.getData("text"); if (text.length + t.length > 2000) { e.preventDefault(); setText(text + t); setTab("long"); } }} />
             </Field>
-            {soundTags.length > 0 && (
-              <div className="-mt-2 flex flex-wrap items-center gap-1 text-xs"><span className="text-zinc-500">插入聲音（用你的原音）：</span>
-                {soundTags.map((p) => <button key={p.id} onClick={() => insert(p.text)} className="rounded-full bg-zinc-100 px-2 py-0.5 hover:bg-brand-100 dark:bg-zinc-800">{p.text}</button>)}
-              </div>
-            )}
+            <div className="-mt-2 flex flex-wrap items-center gap-1 text-xs">
+              <TagPicker onPick={insert} sounds={soundTags} />
+              {soundTags.length > 0 && <span className="ml-2 text-zinc-500">你的原音：</span>}
+              {soundTags.map((p) => <button key={p.id} onClick={() => insert(p.text)} className="rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-900 hover:bg-emerald-200 dark:bg-emerald-900/40 dark:text-emerald-100">{p.text}</button>)}
+            </div>
             {text.length >= 1500 && <p className="-mt-2 text-xs text-zinc-500">文字很長的話，用上面的「<button className="text-brand-600 underline" onClick={() => setTab("long")}>長文・逐句調整</button>」：最多 20,000 字，每一句可以單獨調整和重念。</p>}
             {preset && (
               <div className="rounded-lg bg-zinc-50 p-3 text-xs leading-5 text-zinc-600 dark:bg-zinc-800/50 dark:text-zinc-300">

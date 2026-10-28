@@ -28,24 +28,53 @@ NFFT = 2048
 NEAR = 1.5     # a sound within this many seconds of one of the voice's segments counts as this voice's
 PAD = 0.4      # context played before and after a candidate
 
-KINDS = {  # kind → name, and the sound tag it suggests
-    "breath": ("呼吸聲", "[吸氣]"),
-    "pant": ("喘氣", "[喘氣]"),
-    "sigh": ("嘆氣", "[嘆氣]"),
-    "gasp": ("倒抽一口氣", "[倒抽一口氣]"),
-    "voice": ("沒有字的聲音", ""),
+KINDS = {  # kind → name, and the sound tag it suggests (a name tags.py knows)
+    "breath": ("呼吸聲", "[吸氣]"), "pant": ("喘氣", "[喘氣]"), "sigh": ("嘆氣", "[嘆氣]"),
+    "gasp": ("倒抽一口氣", "[倒抽一口氣]"), "laugh": ("笑聲", "[笑聲]"), "cry": ("哭聲", "[抽泣]"),
+    "cough": ("咳嗽", "[咳嗽]"), "throat": ("清喉嚨", "[清喉嚨]"), "sneeze": ("打噴嚏", "[打噴嚏]"),
+    "sniff": ("吸鼻子", "[吸鼻子]"), "yawn": ("打哈欠", "[打哈欠]"), "hum": ("哼歌", "[哼歌]"), "tsk": ("嘖", "[嘖]"),
+    "scoff": ("哼・嗤笑", "[哼]"), "scream": ("尖叫", "[尖叫]"), "groan": ("呻吟", "[呻吟]"),
+    "gulp": ("吞口水", "[吞口水]"), "hiccup": ("打嗝", "[打嗝]"), "voice": ("沒有字的聲音", ""),
 }
 
-TEXT_KINDS = [  # the first that matches a transcript wins
-    ("pant", re.compile(r"(?:(?:はぁ|ハァ|はあ|ハア|はっ|ハッ)[、。…・っッー〜~!！\s]*){2,}|\b(?:huff(?:ing)?|panting)\b"
-                        r"|喘氣|喘息|呼哧", re.I)),
-    ("sigh", re.compile(r"はぁ|ハァ|はあ[ぁあ…ー]|ハア[ァア…ー]|ふぅ|フゥ|ふう|ふー|フー|ため息|溜息|\bsigh(?:s|ed)?\b|\bphew\b"
-                        r"|唉|嘆氣|嘆息", re.I)),
-    ("gasp", re.compile(r"ひっ|ヒッ|はっ[!！]|ハッ[!！]|\bgasps?\b|倒抽", re.I)),
-]
+
+def _ann(words: str) -> str:
+    """A description of a sound in brackets, parentheses or asterisks, as speech recognition writes them in English
+    transcripts: "(laughs)", "[Laughter]", "*sighs*", "(breathing heavily)", "(clears throat)"."""
+    return r"[(\[*（【][^)\]*）】]{0,30}?\b(?:" + words + r")"
+
+
+TEXT_KINDS = [(k, re.compile(rx, re.IGNORECASE)) for k, rx in [  # the first that matches a transcript wins
+    ("pant", _ann(r"pant\w*|breathing heavily|heavy breathing|out of breath|breathless|huff\w*")
+     + r"|(?:(?:はぁ|ハァ|はあ|ハア|はっ|ハッ|ぜえ|ゼエ)[、。…・っッー〜~!！\s]*){2,}|\bhuff(?:ing)?\b|喘氣|喘息|呼哧|氣喘吁吁"),
+    ("laugh", _ann(r"laugh\w*|chuckl\w*|giggl\w*|snicker\w*|cackl\w*|guffaw\w*")
+     + r"|[(（]笑[)）]|\b(?:a?ha){2,}h?\b|\b(?:he){2,}h?\b|\blol\b|\blmao\b|あはは|アハハ|えへへ|エヘヘ|うふふ|ウフフ"
+       r"|ふふっ|フフッ|くすくす|クスクス|ははは|ハハハ|[wｗ]{3,}|哈哈|呵呵|嘻嘻|嘿嘿|噗哧"),
+    ("cry", _ann(r"cr(?:y|ies|ying)|sob\w*|whimper\w*|sniffl\w*|weep\w*")
+     + r"|ぐすっ|グスッ|ぐすん|えぐっ|うえーん|うわーん|嗚嗚|啜泣|抽泣"),
+    ("cough", _ann(r"cough\w*") + r"|ゴホ|ごほ|げほ|ゲホ|けほ|ケホ|コホッ|こほっ|咳咳"),
+    ("throat", _ann(r"clears? (?:\w+ )?throat|throat[- ]clear\w*") + r"|\bahem\b|咳払い|清喉嚨|清嗓"),
+    ("sneeze", _ann(r"sneez\w*") + r"|\ba?h?-?choo\b|くしゅん|クシュン|へっくし|ハクション|はくしょん|くちゅん|哈啾|阿嚏"),
+    ("sniff", _ann(r"sniffs?\b|sniffing") + r"|すんすん|スンスン|ずずっ|吸鼻子"),
+    ("yawn", _ann(r"yawn\w*") + r"|ふぁ[ぁあ〜ー]|ふわぁ|ふあ[〜ー]|あくび|打哈欠|哈欠|呵欠"),
+    ("hum", _ann(r"hums\b|humming") + r"|鼻歌|ふんふん|フンフン|ルンルン|哼歌"),
+    ("tsk", _ann(r"tsk|tuts?|clicks? (?:\w+ )?tongue") + r"|\btsk\b|\btch\b|ちっ|チッ|ちぇっ|チェッ|舌打ち|嘖"),
+    ("scoff", _ann(r"scoff\w*|snort\w*|sneer\w*") + r"|\bpff+t?\b|\bhmph\b|\bpsh\b|ふんっ|フンッ|哼"),
+    ("scream", _ann(r"scream\w*|shriek\w*|yelp\w*|squeal\w*")
+     + r"|\beek\b|\ba{3,}h*\b|きゃー|キャー|きゃあ|ぎゃー|ギャー|ひゃっ|ヒャッ|うわあああ|啊啊啊|尖叫"),
+    ("groan", _ann(r"groan\w*|moan\w*|grunt\w*|whin\w*") + r"|\bugh+\b|\bargh+\b|\bnngh?\b|ううう|ぐぬぬ|うめき|呻吟"),
+    ("gulp", _ann(r"gulp\w*|swallow\w*") + r"|ごくり|ゴクリ|ごくっ|ゴクッ|吞口水|咕嚕"),
+    ("hiccup", _ann(r"hiccup\w*") + r"|しゃっくり|打嗝"),
+    ("sigh", _ann(r"sigh\w*|exhal\w*") + r"|\bphew\b|\bwhew\b|はぁ|ハァ|はあ[ぁあ…ー]|ハア[ァア…ー]|ふぅ|フゥ|ふう|ふー|フー"
+     r"|やれやれ|ため息|溜息|唉|嘆氣|嘆息"),
+    ("gasp", _ann(r"gasp\w*|inhal\w*|breath(?:es)? in|sharp breath") + r"|ひっ(?!く)|ヒッ(?!ク)|はっ[!！]|ハッ[!！]|息をのむ|倒抽"),
+    ("breath", _ann(r"breath\w*")),
+]]
+ANNOTATION = re.compile(r"[(\[*（【][^)\]*）】]{1,40}[)\]*）】]")
 # a transcript made only of these is a sound rather than words (はい and いいえ are words, so い and え are left out)
 WORDLESS_JA = re.compile(r"[ぁぅぉあうおんっーはひふへほハヒフヘホアウオンッ〜嗯啊唔哦呃喔哈呵嘿哼]+")
-WORDLESS_EN = re.compile(r"(?:m+|h+m+|a+h*|o+h*|u+h+|u+m+|e+h+|h+a+|h+e+|h+u+h*)", re.I)
+WORDLESS_EN = re.compile(r"(?:m+|h+m+|a+h*|o+h*|u+h+|u+m+|e+h+|h+a+|h+e+|h+u+h*|ugh+|oof|whew|phew|pff+t?|hmph|tsk|tch"
+                         r"|eek|o+h+|aw+|mhm|mm-?hmm|uh-?huh|ahem|a?h?-?choo)", re.IGNORECASE)
 PUNCT = re.compile(r"[\s、。，．,.!?！？…〜~・\"'「」『』（）()\-]+")
 
 
@@ -57,7 +86,8 @@ def text_kind(text: str) -> str | None:
 
 
 def wordless(text: str) -> bool:
-    toks = [t for t in PUNCT.split(text or "") if t]
+    """Only interjections, sound descriptions ("(laughs)") or nothing."""
+    toks = [t for t in PUNCT.split(ANNOTATION.sub(" ", text or "")) if t]
     return all(WORDLESS_JA.fullmatch(t) or WORDLESS_EN.fullmatch(t) for t in toks)
 
 

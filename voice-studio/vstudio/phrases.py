@@ -336,12 +336,13 @@ def set_clip_emotion(pid: str, cid: str, emotion: str) -> dict:
 
 
 def pick_clip(ph: dict, emotion: str | None, k: int = 0) -> dict | None:
-    """A recording in the wanted mood, else a calm or unlabelled one, else any; takes rotate through equals."""
+    """A recording in the wanted mood, else the nearest mood (emotions.NEAR), else a calm or unlabelled one, else
+    any; takes rotate through equals."""
     clips = ph["clips"]
     if not clips:
         return None
-    pool = ([c for c in clips if emotion and c.get("emotion") == emotion]
-            or [c for c in clips if c.get("emotion") in ("", "neutral")] or clips)
+    pool = next((m for e in emotions.chain(emotion) if (m := [c for c in clips if c.get("emotion") == e])), None)
+    pool = pool or [c for c in clips if c.get("emotion") in ("", "neutral")] or clips
     return pool[k % len(pool)]
 
 
@@ -368,12 +369,14 @@ def plan(text: str, phrases: list[dict]) -> list[dict]:
     return [p for p in parts if p["kind"] == "clip" or p["text"].strip(PUNCT)]
 
 
-def drop_sounds(text: str, phrases: list[dict]) -> str:
-    """The line without the sound tags that are played from a recording."""
-    for a, b, ph in reversed(find(text, phrases)):
-        if is_sound(ph) and ph["clips"]:
-            text = text[:a] + " " + text[b:]
-    return text
+def sound_for(name: str, sounds: list[dict]) -> dict | None:
+    """The sound tag with recordings that a [name] in a line plays: the same name, one of its other spellings, or
+    another name of the same tag in tags.py ([panting] and [はぁはぁ] play the recordings of [喘氣])."""
+    from . import tags
+    for p in sounds:
+        if p["clips"] and any(tags.same(f[1:-1], name) for f in [p["text"], *p["variants"]] if is_sound(f)):
+            return p
+    return None
 
 
 def gap_after(part: dict) -> float:

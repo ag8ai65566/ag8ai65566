@@ -6,7 +6,7 @@ import { api, EMOTIONS, isSound, type Job, type Phrase, type SoundFind, type Voi
 import { Badge, Button, Card, ErrorText, Field, Modal, PlayButton, Progress, usePlayer } from "../ui";
 import { AddClipModal, RangePicker } from "./Phrases";
 
-const PRESETS = ["[吸氣]", "[大口吸氣]", "[嘆氣]", "[喘氣]", "[嬌喘]", "[輕笑]"];
+const PRESETS = ["[吸氣]", "[大口吸氣]", "[嘆氣]", "[喘氣]", "[嬌喘]", "[笑聲]", "[輕笑]", "[抽泣]", "[咳嗽]", "[清喉嚨]", "[打哈欠]", "[嘖]"];
 const WHERE: Record<string, string> = { before: "在句子前（多半是吸氣）", after: "在句子後（多半是吐氣、嘆氣）", alone: "單獨" };
 type Finds = { counts: Record<string, number>; items: SoundFind[]; job: Job | null; kinds: Record<string, string> };
 
@@ -103,7 +103,7 @@ function FindPanel({ voice, sounds, onKept }: { voice: Voice; sounds: Phrase[]; 
         </Button>
       </div>
       <p className="mb-3 text-xs text-zinc-500">
-        掃描這個聲音匯入過的所有錄音（包括被排除的片段和片段之間的空檔），找出像吸氣、喘氣、嘆氣、沒有字的聲音（嗯、啊、呻吟）的地方，還有逐字稿裡有「はぁ、ふぅ、ため息、唉」的片段。這些是<b>候選</b>：按播放聽，確定是就「收下」放進標籤，不是就按「不是」。背景有音樂或雜音的地方只看逐字稿。
+        掃描這個聲音匯入過的所有錄音（包括被排除的片段和片段之間的空檔），找出像吸氣、喘氣、嘆氣、沒有字的聲音（嗯、啊、呻吟）的地方，還有逐字稿裡有笑聲、哭聲、咳嗽、打噴嚏、嘖…的片段（日文「はぁ・あはは・ゴホッ」、英文「(laughs)・*sighs*・ugh・achoo」、中文「唉・哈哈・咳咳」都會找）。這些是<b>候選</b>：按播放聽，確定是就「收下」放進標籤，不是就按「不是」。背景有音樂或雜音的地方只看逐字稿。
       </p>
       {running && <div className="mb-3"><div className="text-xs text-zinc-500">{job!.message}</div><Progress value={job!.progress} /></div>}
       {job?.status === "failed" && <ErrorText error={job.message} />}
