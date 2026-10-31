@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import clsx from "clsx";
-import { MessageSquareQuote, Pause, Play, Plus, Scissors, Trash2, Upload, Wand2 } from "lucide-react";
+import { AlertTriangle, MessageSquareQuote, Pause, Play, Plus, Scissors, Trash2, Upload, Wand2 } from "lucide-react";
 import { api, EMOTIONS, isSound, LANGS, type Job, type Model, type Phrase, type Segment, type Voice } from "../api";
 import { Badge, Button, Card, ErrorText, Field, Modal, PlayButton, Progress, usePlayer } from "../ui";
 
@@ -136,6 +136,7 @@ function PhraseRow({ p, voice, modelId, onChange }: { p: Phrase; voice: Voice; m
         {p.clips.map((cl) => (
           <span key={cl.id} className="inline-flex items-center gap-1 rounded-full bg-zinc-100 py-0.5 pr-1 pl-0.5 dark:bg-zinc-800">
             <PlayButton small player={player} url={`/api/phrases/${p.id}/clips/${cl.id}/audio`} label={`${cl.duration.toFixed(1)}s`} />
+            <ClipWarn cl={cl} />
             <select className="rounded-full border-0 bg-transparent py-0 text-[11px]" value={cl.emotion} onChange={(e) => clipEmotion.mutate({ cid: cl.id, emotion: e.target.value })}>
               <option value="">情緒…</option>
               {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}
@@ -162,11 +163,19 @@ function PhraseRow({ p, voice, modelId, onChange }: { p: Phrase; voice: Voice; m
   );
 }
 
+/** A small warning mark on a recording that does not meet the recording spec (hover for what is wrong). */
+export function ClipWarn({ cl }: { cl: { check?: { warnings: string[] } } }) {
+  const w = cl.check?.warnings ?? [];
+  return w.length ? <span title={w.join("\n")} className="cursor-help text-amber-600"><AlertTriangle className="size-3.5" /></span> : null;
+}
+
 /** Add an original recording: upload a short file, or cut the phrase out of an imported segment. */
 export function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: Voice; onClose: () => void; onDone: () => void }) {
   const [tab, setTab] = useState<"segment" | "file">("segment");
   const [emotion, setEmotion] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
+  const [byName, setByName] = useState(true);
+  const [done, setDone] = useState<{ name: string; error?: string; warnings?: string[] }[]>([]);
   const sound = isSound(p);
   const [q, setQ] = useState(sound ? "" : p.text);
   const [seg, setSeg] = useState<Segment | null>(null);
@@ -188,14 +197,29 @@ export function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: 
     } else setRange({ start: 0, end: +Math.min(s.duration, 2).toFixed(2) });
   };
   const add = useMutation({
-    mutationFn: () => {
+    mutationFn: async () => {
+      if (tab === "file") {  // one by one, so one bad file does not stop the rest
+        const out: { name: string; error?: string; warnings?: string[] }[] = [];
+        for (const f of files) {
+          const fd = new FormData();
+          fd.append("emotion", emotion);
+          fd.append("emotion_from_name", String(byName));
+          fd.append("file", f);
+          try {
+            const ph = await api.post<Phrase>(`/api/phrases/${p.id}/clips`, fd);
+            out.push({ name: f.name, warnings: ph.clips[ph.clips.length - 1]?.check?.warnings ?? [] });
+          } catch (e) { out.push({ name: f.name, error: e instanceof Error ? e.message : String(e) }); }
+          setDone([...out]);
+        }
+        return out;
+      }
       const fd = new FormData();
       fd.append("emotion", emotion);
-      if (tab === "file" && file) fd.append("file", file);
-      else if (seg) { fd.append("segment_id", seg.id); fd.append("start", String(range.start)); fd.append("end", String(range.end)); }
-      return api.post(`/api/phrases/${p.id}/clips`, fd);
+      if (seg) { fd.append("segment_id", seg.id); fd.append("start", String(range.start)); fd.append("end", String(range.end)); }
+      await api.post(`/api/phrases/${p.id}/clips`, fd);
+      return [];
     },
-    onSuccess: onDone,
+    onSuccess: (out) => { if (!out.some((x) => x.error || x.warnings?.length)) onDone(); },
   });
   return (
     <Modal open onClose={onClose} title={`加入「${p.text}」的原音`} wide>
@@ -205,10 +229,22 @@ export function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: 
         ))}
       </div>
       {tab === "file" ? (
-        <Field label={sound ? "錄音檔（只有這個聲音，0.2–10 秒；前後的靜音會自動去掉）" : "錄音檔（只有這個口頭禪，0.2–10 秒；前後的靜音會自動去掉）"}
-          hint={sound ? "上傳的聲音會照原本的音量；比旁邊說話大聲時才會調小。從片段剪的會記住它原本和說話聲的音量比例。" : undefined}>
-          <input type="file" accept="audio/*,video/*" className="input" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
-        </Field>
+        <div className="space-y-2">
+          <Field label={sound ? "錄音檔（可以一次選好幾個；每個只有這個聲音，0.2–10 秒）" : "錄音檔（可以一次選好幾個；每個只有這個口頭禪，0.2–10 秒）"}
+            hint={<>前後的靜音會自動去掉。上傳後會自動檢查音量、爆音、背景噪音和音質；規格見〈<a className="underline" href="/guide/15-sound-recording" target="_blank" rel="noreferrer">錄聲音標籤的原音</a>〉。{sound && " 上傳的聲音照原本的音量，只有比旁邊說話大聲時才會調小。"}</>}>
+            <input type="file" multiple accept="audio/*,video/*" className="input" onChange={(e) => { setFiles(Array.from(e.target.files ?? [])); setDone([]); }} />
+          </Field>
+          <label className="flex items-center gap-2 text-sm"><input type="checkbox" checked={byName} onChange={(e) => setByName(e.target.checked)} />情緒照檔名（例如 <code className="kbd">tired_01.wav</code>、<code className="kbd">[害羞] 2.wav</code>）；檔名沒寫的用下面選的</label>
+          {done.length > 0 && (
+            <ul className="space-y-1 rounded-lg bg-zinc-50 p-2 text-xs dark:bg-zinc-800/50">
+              {done.map((d) => (
+                <li key={d.name}><b>{d.name}</b>：{d.error ? <span className="text-red-600">沒有加入：{d.error}</span>
+                  : d.warnings?.length ? <span className="text-amber-700 dark:text-amber-300">已加入，但{d.warnings.join("；")}</span>
+                  : <span className="text-emerald-700 dark:text-emerald-300">已加入，符合規格</span>}</li>
+              ))}
+            </ul>
+          )}
+        </div>
       ) : (
         <div className="space-y-3">
           <input className="input" value={q} onChange={(e) => { setQ(e.target.value); setSeg(null); }} placeholder={sound ? "搜尋片段文字，例如 はぁ、ふぅ（空白＝全部）" : "搜尋片段文字"} />
@@ -239,9 +275,11 @@ export function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: 
       <ErrorText error={add.error} />
       <div className="mt-4 flex justify-end gap-2">
         <Button variant="ghost" onClick={onClose}>取消</Button>
-        <Button onClick={() => add.mutate()} loading={add.isPending} disabled={tab === "file" ? !file : !seg || range.end - range.start < 0.2}>
-          {tab === "file" ? <Upload className="size-4" /> : <Scissors className="size-4" />}加入
-        </Button>
+        {done.length > 0 && !add.isPending ? <Button onClick={onDone}>完成</Button> : (
+          <Button onClick={() => add.mutate()} loading={add.isPending} disabled={tab === "file" ? !files.length : !seg || range.end - range.start < 0.2}>
+            {tab === "file" ? <Upload className="size-4" /> : <Scissors className="size-4" />}加入{tab === "file" && files.length > 1 ? `（${files.length} 個）` : ""}
+          </Button>
+        )}
       </div>
     </Modal>
   );

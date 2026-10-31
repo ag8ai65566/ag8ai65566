@@ -119,7 +119,8 @@ export type Orphan = { id: string; name: string; training: string; known: boolea
 export type Reference = {
   id: string; file: string; text: string; lang: string; label: string; segment_id?: string; emotion?: string;
 };
-export type PhraseClip = { id: string; file: string; emotion: string; duration: number; from: string; speech_rms?: number };
+export type ClipCheck = { peak_db: number; floor_db: number | null; cutoff_hz: number | null; duration: number; warnings: string[] };
+export type PhraseClip = { id: string; file: string; emotion: string; duration: number; from: string; speech_rms?: number; check?: ClipCheck };
 /** A sound tag such as "[喘氣]": played from the person's own recording, never spoken. */
 export const isSound = (p: { text: string }) => p.text.length > 2 && p.text.startsWith("[") && p.text.endsWith("]");
 export type SoundFind = {

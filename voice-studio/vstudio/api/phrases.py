@@ -58,9 +58,14 @@ def delete_phrase(pid: str):
 
 @router.post("/phrases/{pid}/clips")
 async def add_clip(pid: str, file: UploadFile | None = File(None), segment_id: str = Form(""),
-                   start: float = Form(0.0), end: float = Form(0.0), emotion: str = Form("")):
-    """An original recording of the phrase: an uploaded file, or a range cut out of an imported segment."""
+                   start: float = Form(0.0), end: float = Form(0.0), emotion: str = Form(""),
+                   emotion_from_name: bool = Form(False)):
+    """An original recording of the phrase: an uploaded file, or a range cut out of an imported segment.
+    emotion_from_name: read the emotion from the file name ("tired_01.wav", "[害羞] 2.wav"), else use `emotion`."""
     if file is not None and file.filename:
+        if emotion_from_name:
+            from .. import labels
+            emotion = labels.from_filename(file.filename).get("emotion") or emotion
         tmp = config.path("tmp", f"{db.new_id('up')}{Path(file.filename).suffix[:8]}")
         try:
             with open(tmp, "wb") as fh:

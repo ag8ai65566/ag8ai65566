@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { Check, Plus, Search, Trash2, Undo2, Wind, X } from "lucide-react";
 import { api, EMOTIONS, isSound, type Job, type Phrase, type SoundFind, type Voice } from "../api";
 import { Badge, Button, Card, ErrorText, Field, Modal, PlayButton, Progress, usePlayer } from "../ui";
-import { AddClipModal, RangePicker } from "./Phrases";
+import { AddClipModal, ClipWarn, RangePicker } from "./Phrases";
 
 const PRESETS = ["[吸氣]", "[大口吸氣]", "[嘆氣]", "[喘氣]", "[嬌喘]", "[笑聲]", "[輕笑]", "[抽泣]", "[咳嗽]", "[清喉嚨]", "[打哈欠]", "[嘖]"];
 const WHERE: Record<string, string> = { before: "在句子前（多半是吸氣）", after: "在句子後（多半是吐氣、嘆氣）", alone: "單獨" };
@@ -26,7 +26,7 @@ export function SoundsCard({ voice }: { voice: Voice }) {
   return (
     <Card title={<span className="flex items-center gap-2"><Wind className="size-4" />聲音標籤：吸氣、嘆氣、喘氣…（{sounds.length}）</span>}>
       <p className="mb-3 text-sm text-zinc-500">
-        模型只學會「說話」，很難自己發出喘氣、嘆氣這種沒有字的聲音。在這裡登記標籤並放進<b>你自己錄到的聲音</b>，在要念的文字裡寫 <code className="kbd">[喘氣]</code>，合成時就會在那個位置播你的原音（音量照原本和說話聲的比例）。還沒放原音的標籤只當語氣提示。
+        模型只學會「說話」，很難自己發出喘氣、嘆氣這種沒有字的聲音。在這裡登記標籤並放進<b>你自己錄到的聲音</b>，在要念的文字裡寫 <code className="kbd">[喘氣]</code>，合成時就會在那個位置播你的原音（音量照原本和說話聲的比例）。還沒放原音的標籤只當語氣提示。怎麼錄最好：<a className="text-brand-600 underline" href="/guide/15-sound-recording" target="_blank" rel="noreferrer">錄音規格</a>。
       </p>
       <div className="flex flex-wrap items-center gap-2 rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50">
         {PRESETS.filter((t) => !have.has(t)).map((t) => (
@@ -57,6 +57,7 @@ function SoundRow({ p, voice, onChange }: { p: Phrase; voice: Voice; onChange: (
       {p.clips.map((cl) => (
         <span key={cl.id} className="inline-flex items-center gap-1 rounded-full bg-zinc-100 py-0.5 pr-1 pl-0.5 dark:bg-zinc-800">
           <PlayButton small player={player} url={`/api/phrases/${p.id}/clips/${cl.id}/audio`} label={`${cl.duration.toFixed(1)}s`} />
+          <ClipWarn cl={cl} />
           <select className="rounded-full border-0 bg-transparent py-0 text-[11px]" value={cl.emotion} onChange={(e) => clipEmotion.mutate({ cid: cl.id, emotion: e.target.value })}>
             <option value="">情緒…</option>
             {EMOTIONS.map(([k, l]) => <option key={k} value={k}>{l}</option>)}

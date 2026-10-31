@@ -1196,3 +1196,58 @@ def c_get(c, url):
     r = c.get(url)
     assert r.status_code == 200, r.text
     return r.json()
+
+
+def test_sound_recording_check(client, tmp_path):
+    """Recordings for sound tags are measured on upload (clipping, level, background, bandwidth, format, length);
+    the emotion can come from the file name; the spec page names only tags the catalogue knows."""
+    import re as _re
+    import soundfile as sf
+    from scipy import signal
+    from vstudio import audio, phrases, tags
+    c = client
+    v = _consented_voice(c)
+    ph = c.post(f"/api/voices/{v['id']}/phrases", json={"text": "[嘆氣]"}).json()
+    rng = np.random.default_rng(5)
+    sr = 48000
+    def sigh(peak, noise=1e-4, dur=1.0, lo=300, hi=6000, rate=sr):
+        n = int(rate * dur)
+        bb, ba = signal.butter(2, [lo / (rate / 2), hi / (rate / 2)], "band")
+        z = signal.lfilter(bb, ba, rng.standard_normal(n)) * np.sin(np.linspace(0, np.pi, n)) ** 0.7
+        quiet = rng.standard_normal(int(rate * 0.4)) * noise
+        y = np.concatenate([quiet, z / np.abs(z).max() * peak, quiet]).astype(np.float32)
+        return y
+    def up(name, y, rate=sr, **form):
+        p = tmp_path / name
+        sf.write(str(p), y, rate)
+        with open(p, "rb") as fh:
+            r = c.post(f"/api/phrases/{ph['id']}/clips", files={"file": (name, fh, "audio/wav")}, data=form)
+        assert r.status_code == 200, r.text
+        return r.json()["clips"][-1]
+
+    good = up("tired_01.wav", sigh(0.3), emotion_from_name="true")
+    assert good["check"]["warnings"] == [] and good["emotion"] == "tired"
+    assert good["check"]["floor_db"] is not None and good["check"]["floor_db"] < -60
+    named = up("[害羞] 2.wav", sigh(0.3), emotion_from_name="true", emotion="sad")
+    plain = up("take3.wav", sigh(0.3), emotion_from_name="true", emotion="sad")
+    assert named["emotion"] == "embarrassed" and plain["emotion"] == "sad"
+    clipped = sigh(1.0)
+    clipped = np.clip(clipped * 1.6, -1, 1)
+    assert any("爆音" in w for w in up("hot.wav", clipped)["check"]["warnings"])
+    assert any("太小聲" in w for w in up("faint.wav", sigh(0.01, noise=1e-6))["check"]["warnings"])
+    assert any("背景噪音" in w for w in up("fan.wav", sigh(0.3, noise=0.01))["check"]["warnings"])
+    assert any("取樣率" in w for w in up("phone.wav", sigh(0.3, hi=3500, rate=8000), rate=8000)["check"]["warnings"])
+    def brickwall(y, hz):  # what a lossy codec or a phone line leaves: nothing above a hard edge
+        f = np.fft.rfft(y)
+        f[np.fft.rfftfreq(len(y), 1 / sr) > hz] = 0
+        return np.fft.irfft(f, len(y)).astype(np.float32)
+    assert any("高頻" in w for w in up("muffled.wav", brickwall(sigh(0.3, hi=12000), 7000))["check"]["warnings"])
+    assert any("有點長" in w for w in up("long.wav", sigh(0.3, dur=7.0))["check"]["warnings"])
+    # a catchphrase recording gets the same measurements, but no length note
+    word = phrases.check_clip(sigh(0.3, dur=7.0), sr, sound=False)
+    assert not any("有點長" in w for w in word["warnings"])
+
+    doc = (Path(__file__).resolve().parents[1] / "docs" / "15-sound-recording.md").read_text(encoding="utf-8")
+    named_tags = set(_re.findall(r"`\[([^\]`]+)\]`", doc))
+    assert named_tags and all(tags.lookup(t) for t in named_tags), [t for t in named_tags if not tags.lookup(t)]
+    assert audio.MASTER_SR == sr

@@ -239,18 +239,65 @@ def trim(y: np.ndarray, sr: int, pad: float = 0.04) -> np.ndarray:
     return y[a:b]
 
 
+# what a recording for a sound tag or a catchphrase should meet (docs/15-sound-recording.md)
+CLIP_LIMITS = {"peak_max_db": -1.0, "peak_min_db": -35.0, "floor_max_db": -50.0, "min_sr": 32000,
+               "min_cutoff_hz": 11000, "sound_max_s": 5.0}
+
+
+def check_clip(y: np.ndarray, sr: int, sound: bool, source: dict | None = None) -> dict:
+    """Measure a recording before it is kept: peak, flat-topped (clipped) samples, background level (its first and
+    last 0.15 s, when the sound does not fill them), the highest frequency that still carries sound,
+    length after trimming; plus the file's own sample rate and codec when known. Returns the numbers and plain
+    warnings (none means it meets docs/15-sound-recording.md)."""
+    from .audiocheck import cutoff, frames_db, ltas
+    L, warn = CLIP_LIMITS, []
+    y = np.asarray(y, dtype=np.float32)
+    peak = float(np.max(np.abs(y))) if len(y) else 0.0
+    peak_db = round(20 * np.log10(peak + 1e-9), 1)
+    flat = int(np.sum(np.abs(y) >= 0.999))
+    if flat >= 3:
+        warn.append(f"爆音：有 {flat} 個取樣點被削平，請把錄音增益調低再錄")
+    elif peak_db > L["peak_max_db"]:
+        warn.append(f"太滿：峰值 {peak_db} dBFS，差一點就爆音（建議 −6 到 −3 dBFS）")
+    if peak_db < L["peak_min_db"]:
+        warn.append(f"太小聲：峰值只有 {peak_db} dBFS；用平常說話的增益錄，不要事後放大")
+    db = frames_db(y, sr)
+    # background: the lead-in and tail the spec asks for (0.15 s each end); not measurable if the sound fills them
+    edge = np.concatenate([db[:15], db[-15:]]) if len(db) >= 45 else np.zeros(0)
+    floor_db = round(float(np.median(edge)), 1) if len(edge) and np.median(edge) < db.max() - 6 else None
+    if floor_db is not None and floor_db > L["floor_max_db"]:
+        warn.append(f"背景噪音偏大：底噪約 {floor_db} dBFS（建議 −60 以下）；關掉風扇、冷氣，離電腦遠一點")
+    spec, freqs = ltas(y, sr, db > db.max() - 30)
+    cut = cutoff(spec, freqs)
+    src_sr = (source or {}).get("sr")
+    if src_sr and src_sr < L["min_sr"]:
+        warn.append(f"取樣率太低：{src_sr} Hz（建議 48000 或 44100 Hz）")
+    elif cut is not None and cut < L["min_cutoff_hz"] and sr >= 2 * L["min_cutoff_hz"]:
+        warn.append(f"高頻被切掉：約 {cut / 1000:.1f} kHz 以上沒有聲音，像 MP3、通話或手機降噪的音質；請錄 WAV、關掉降噪")
+    codec = (source or {}).get("codec") or ""
+    if codec in ("mp3", "aac", "opus", "vorbis", "amr_nb", "amr_wb"):
+        warn.append(f"壓縮格式（{codec}）：會損失呼吸聲的細節，建議錄成 WAV")
+    dur = len(trim(y, sr)) / sr if len(y) else 0.0
+    if sound and dur > L["sound_max_s"]:
+        warn.append(f"有點長：{dur:.1f} 秒；聲音標籤通常 0.3–3 秒（喘氣最多約 5 秒）")
+    return {"peak_db": peak_db, "floor_db": floor_db, "cutoff_hz": cut, "duration": round(dur, 2),
+            "src_sr": src_sr, "codec": codec or None, "warnings": warn}
+
+
 def _add(pid: str, y: np.ndarray, sr: int, emotion: str | None, source: str,
-         speech_rms: float | None = None) -> dict:
+         speech_rms: float | None = None, src_info: dict | None = None) -> dict:
     ph = get(pid)
     if emotion and not emotions.valid(emotion):
         raise ValueError(f"unknown emotion: {emotion}")
+    check = check_clip(y, sr, is_sound(ph), src_info)
     y = trim(audio.resample(y, sr, audio.MASTER_SR), audio.MASTER_SR)
     dur = len(y) / audio.MASTER_SR
     if not 0.2 <= dur <= 10.0:
         raise ValueError(f"原音片段要 0.2–10 秒（去掉前後靜音後是 {dur:.1f} 秒）")
     cid = db.new_id("clip")
     audio.save(_dir(ph) / f"{cid}.wav", y, audio.MASTER_SR)
-    clip = {"id": cid, "file": f"{cid}.wav", "emotion": emotion or "", "duration": round(dur, 3), "from": source}
+    clip = {"id": cid, "file": f"{cid}.wav", "emotion": emotion or "", "duration": round(dur, 3), "from": source,
+            "check": check}
     if speech_rms and is_sound(ph):
         clip["speech_rms"] = round(float(speech_rms), 6)  # the person's speech level next to it (see match_level)
     return db.update("catchphrases", pid, {"clips": list(ph["clips"]) + [clip]})
@@ -270,13 +317,18 @@ def speech_level(source_id: str) -> float | None:
 
 
 def add_clip_file(pid: str, src: Path, emotion: str | None, name: str = "") -> dict:
+    from .audiocheck import probe
+    try:
+        info = probe(src)
+    except Exception:  # the check then goes without the file's own rate and codec
+        info = {}
     tmp = config.path("tmp", f"{db.new_id('up')}.wav")
     try:
         audio.extract(src, tmp, sr=audio.MASTER_SR)
         y, sr = audio.load(tmp)
     finally:
         tmp.unlink(missing_ok=True)
-    return _add(pid, y, sr, emotion, name or src.name)
+    return _add(pid, y, sr, emotion, name or src.name, src_info=info)
 
 
 def add_clip_segment(pid: str, segment_id: str, start: float, end: float, emotion: str | None) -> dict:
