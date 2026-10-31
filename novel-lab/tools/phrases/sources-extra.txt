@@ -1,0 +1,85 @@
+# 常用語表補充的來源（成員檔案以外）：編號|說明|連結|查核日期。ASR 列可以寫 編號@秒數，連結會跳到影片的那個時間。
+@AZKi
+AZ30|ホロライブ非公式wiki（seesaawiki）「AZKi」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/AZKi|2026-10-31
+AZ31|ホロライブ非公式wiki「AZKi【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/AZKi%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+AZ32|ホロライブ非公式wiki「AZKi【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/AZKi%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+AZ41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-08-15「【雑談/FreeTalk】かなたんソロライブゲストなど怒涛の一週間【ホロライブ / AZKi】」|https://www.youtube.com/watch?v=T-Qkg7z8wE0|2026-10-31
+AZ42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-06-23「【雑談/FreeTalk】月曜日がつらい？我慢でい！週末の振り返り！【ホロライブ / AZKi】」|https://www.youtube.com/watch?v=hgN4RJA8gf0|2026-10-31
+@Hoshimachi-Suisei
+SU30|ホロライブ非公式wiki（seesaawiki）「星街すいせい」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%C0%B1%B3%B9%A4%B9%A4%A4%A4%BB%A4%A4|2026-10-31
+SU31|ホロライブ非公式wiki「星街すいせい【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%C0%B1%B3%B9%A4%B9%A4%A4%A4%BB%A4%A4%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+SU32|ホロライブ非公式wiki「星街すいせい【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%C0%B1%B3%B9%A4%B9%A4%A4%A4%BB%A4%A4%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+SU41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-09-10「【雑談】横浜公演おつかれさま会🎉【星街すいせい / #ほしまちすたじお】」|https://www.youtube.com/watch?v=VaReh9wFThk|2026-10-31
+SU42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-07-30「【雑談】しゃべります【星街すいせい / #ほしまちすたじお】」|https://www.youtube.com/watch?v=w5K09LcvPVY|2026-10-31
+@Houshou-Marine
+MA30|ホロライブ非公式wiki（seesaawiki）「宝鐘マリン」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%CA%F5%BE%E2%A5%DE%A5%EA%A5%F3|2026-10-31
+MA31|ホロライブ非公式wiki「宝鐘マリン【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%CA%F5%BE%E2%A5%DE%A5%EA%A5%F3%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+MA32|ホロライブ非公式wiki「宝鐘マリン【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%CA%F5%BE%E2%A5%DE%A5%EA%A5%F3%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+MA41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-10「【#ホロ甲2026】3年目夏合宿から負けたら終わりの最後の甲子園！！！【ホロライブ/宝鐘マリン】」|https://www.youtube.com/watch?v=PrhrHSn1qDw|2026-10-31
+MA42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-09-29「【#ホロ甲2026】3年目新入生入学！！キャAに転生ふたり…レギュラーはどうなる！？【ホロライブ/宝鐘マリン】」|https://www.youtube.com/watch?v=hiftM9MxlCs|2026-10-31
+@Shirogane-Noel
+NO30|ホロライブ非公式wiki（seesaawiki）「白銀ノエル」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%C7%F2%B6%E4%A5%CE%A5%A8%A5%EB|2026-10-31
+NO31|ホロライブ非公式wiki「白銀ノエル【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%C7%F2%B6%E4%A5%CE%A5%A8%A5%EB%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+NO32|ホロライブ非公式wiki「白銀ノエル【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%C7%F2%B6%E4%A5%CE%A5%A8%A5%EB%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+NO41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-18「【朝活雑談】このあとホロライブ甲子園2026本戦！！ドキドキだけどさんまありまっする💪🔥【白銀ノエル/ホロライブ】」|https://www.youtube.com/watch?v=O3JHLJzRtGY|2026-10-31
+NO42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-04「【朝活雑談】10月！日曜10時といえば～～～～？？＼さんでーまっする／【白銀ノエル/ホロライブ】」|https://www.youtube.com/watch?v=9GEPfutuFn0|2026-10-31
+@Nakiri-Ayame
+AY30|ホロライブ非公式wiki（seesaawiki）「百鬼あやめ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%C9%B4%B5%B4%A4%A2%A4%E4%A4%E1|2026-10-31
+AY31|ホロライブ非公式wiki「百鬼あやめ【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%C9%B4%B5%B4%A4%A2%A4%E4%A4%E1%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+AY32|ホロライブ非公式wiki「百鬼あやめ【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%C9%B4%B5%B4%A4%A2%A4%E4%A4%E1%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+AY41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-03-08「【雑談】Fesお疲れ様でした！振り返り＆感想会【百鬼あやめ/ホロライブ】」|https://www.youtube.com/watch?v=n4yLsTkrNg0|2026-10-31
+AY42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-02-08「【雑談】おはなししよ？【百鬼あやめ/ホロライブ】」|https://www.youtube.com/watch?v=hhsGMjt_Ix0|2026-10-31
+@Nekomata-Okayu
+OK30|ホロライブ非公式wiki（seesaawiki）「猫又おかゆ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%C7%AD%CB%F4%A4%AA%A4%AB%A4%E6|2026-10-31
+OK31|ホロライブ非公式wiki「猫又おかゆ【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%C7%AD%CB%F4%A4%AA%A4%AB%A4%E6%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+OK32|ホロライブ非公式wiki「猫又おかゆ【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%C7%AD%CB%F4%A4%AA%A4%AB%A4%E6%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+OK41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-26「新しい朝がきた～～ 希望の朝だ～～～～～～！🌤」|https://www.youtube.com/watch?v=ukYZ4iMSTAg|2026-10-31
+OK42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-08「寝起き声低許して雑談」|https://www.youtube.com/watch?v=QpuVXgtsUAs|2026-10-31
+@Shishiro-Botan
+BO30|ホロライブ非公式wiki（seesaawiki）「獅白ぼたん」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%BB%E2%C7%F2%A4%DC%A4%BF%A4%F3|2026-10-31
+BO31|ホロライブ非公式wiki「獅白ぼたん【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%BB%E2%C7%F2%A4%DC%A4%BF%A4%F3%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+BO32|ホロライブ非公式wiki「獅白ぼたん【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%BB%E2%C7%F2%A4%DC%A4%BF%A4%F3%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+BO41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-07-12「【雑談】ホロマッチ追加公演の会場はこちら【獅白ぼたん/ホロライブ】」|https://www.youtube.com/watch?v=Ql2HfzAgZJw|2026-10-31
+BO42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-06-29「【ナイトレイン】朝に夜を渡る練習！－ELDEN RING NIGHTREIGN【獅白ぼたん/ホロライブ】」|https://www.youtube.com/watch?v=8R9qDWFv14M|2026-10-31
+@Yukihana-Lamy
+LM30|ホロライブ非公式wiki（seesaawiki）「雪花ラミィ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%C0%E3%B2%D6%A5%E9%A5%DF%A5%A3|2026-10-31
+LM31|ホロライブ非公式wiki「雪花ラミィ【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%C0%E3%B2%D6%A5%E9%A5%DF%A5%A3%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+LM32|ホロライブ非公式wiki「雪花ラミィ【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%C0%E3%B2%D6%A5%E9%A5%DF%A5%A3%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+LM41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-08-27「【雑談】ちょっとお話しでもしますかい？【雪花ラミィ /ホロライブ】」|https://www.youtube.com/watch?v=J7NIglFasOg|2026-10-31
+LM42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-05-28「【昼雑談】お出かけする前にみんなでお話し！【雪花ラミィ /ホロライブ】」|https://www.youtube.com/watch?v=RTxIV4MMFK0|2026-10-31
+@Laplus-Darknesss
+LA30|ホロライブ非公式wiki（seesaawiki）「ラプラス・ダークネス」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%A5%E9%A5%D7%A5%E9%A5%B9%A1%A6%A5%C0%A1%BC%A5%AF%A5%CD%A5%B9|2026-10-31
+LA31|ホロライブ非公式wiki「ラプラス・ダークネス【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%A5%E9%A5%D7%A5%E9%A5%B9%A1%A6%A5%C0%A1%BC%A5%AF%A5%CD%A5%B9%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+LA32|ホロライブ非公式wiki「ラプラス・ダークネス【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%A5%E9%A5%D7%A5%E9%A5%B9%A1%A6%A5%C0%A1%BC%A5%AF%A5%CD%A5%B9%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+LA41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-05-11「【雑談】本当にいろいろあったから話そうぜ～～～～～＾＾【ラプラス・ダークネス/ホロライブ】」|https://www.youtube.com/watch?v=dBzPcy1DqzU|2026-10-31
+LA42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-28「【雑談】裏話など今月あったいろいろ振り返る！たくさんありがとーーー！！【ラプラス・ダークネス/ホロライブ】」|https://www.youtube.com/watch?v=dQf3tVitoq8|2026-10-31
+@Takane-Lui
+LU30|ホロライブ非公式wiki（seesaawiki）「鷹嶺ルイ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%C2%EB%CE%E6%A5%EB%A5%A4|2026-10-31
+LU31|ホロライブ非公式wiki「鷹嶺ルイ【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%C2%EB%CE%E6%A5%EB%A5%A4%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+LU32|ホロライブ非公式wiki「鷹嶺ルイ【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%C2%EB%CE%E6%A5%EB%A5%A4%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+LU41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-07-05「【 SAND LAND 】完全初見！めちゃ名作やん・・・朝からやります。【鷹嶺ルイ/ホロライブ】※ネタバレあり」|https://www.youtube.com/watch?v=otPR2IOrDjE|2026-10-31
+LU42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-06-28「【 函館記念&ラジオNIKKEI賞 】夏の名物重賞ｷﾀｰｰｰｰ！！今回は荒れか堅めか！？【鷹嶺ルイ/ホロライブ】」|https://www.youtube.com/watch?v=kouF4CfnDdY|2026-10-31
+@Hakui-Koyori
+KO30|ホロライブ非公式wiki（seesaawiki）「博衣こより」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%C7%EE%B0%E1%A4%B3%A4%E8%A4%EA|2026-10-31
+KO31|ホロライブ非公式wiki「博衣こより【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%C7%EE%B0%E1%A4%B3%A4%E8%A4%EA%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+KO32|ホロライブ非公式wiki「博衣こより【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%C7%EE%B0%E1%A4%B3%A4%E8%A4%EA%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+KO41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-09-27「【雑談】ねぽっくす打ち上げ裏話&デジモンの話とか！【博衣こより/ホロライブ】」|https://www.youtube.com/watch?v=QTUZgrGymlc|2026-10-31
+KO42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-09-21「【 #朝こよ 】次回で300回⁉️新人ちゃん予想SPな火曜日の朝も朝こよ～！☀ #299 【博衣こより/hololive】」|https://www.youtube.com/watch?v=4BVf_1YzAFM|2026-10-31
+@Sakamata-Chloe
+CH30|ホロライブ非公式wiki（seesaawiki）「沙花叉クロヱ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%BA%BB%B2%D6%BA%B5%A5%AF%A5%ED%A5%F1|2026-10-31
+CH31|ホロライブ非公式wiki「沙花叉クロヱ【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%BA%BB%B2%D6%BA%B5%A5%AF%A5%ED%A5%F1%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+CH32|ホロライブ非公式wiki「沙花叉クロヱ【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%BA%BB%B2%D6%BA%B5%A5%AF%A5%ED%A5%F1%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+CH41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2024-11-21「【 雑談 】ねぇねぇおはなししよ【ホロライブ/沙花叉クロヱ】」|https://www.youtube.com/watch?v=Myw1OMa2wvQ|2026-10-31
+CH42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2024-06-19「【 ハースストーン 】バトグラ雑談！ねぇアプデの新要素めちょおもろいから皆やって！【ホロライブ/沙花叉クロヱ】」|https://www.youtube.com/watch?v=A67M6BdsSBQ|2026-10-31
+@Kazama-Iroha
+IR30|ホロライブ非公式wiki（seesaawiki）「風真いろは」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%C9%F7%BF%BF%A4%A4%A4%ED%A4%CF|2026-10-31
+IR31|ホロライブ非公式wiki「風真いろは【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%C9%F7%BF%BF%A4%A4%A4%ED%A4%CF%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+IR32|ホロライブ非公式wiki「風真いろは【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%C9%F7%BF%BF%A4%A4%A4%ED%A4%CF%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+IR41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-13「【#ホロドリ】朝活☀#ござる金冠チャレンジ👑DAY6🎣【風真いろは/ホロライブ】」|https://www.youtube.com/watch?v=voRNgChh-vI|2026-10-31
+IR42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-04「【#ホロドリ】朝活☀#ござる金冠チャレンジ👑DAY1🎣【風真いろは/ホロライブ】」|https://www.youtube.com/watch?v=vcIlbVGqwVQ|2026-10-31
+@Kikirara-Vivi
+VI30|ホロライブ非公式wiki（seesaawiki）「綺々羅々ヴィヴィ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源）|https://seesaawiki.jp/hololivetv/d/%E5%BA%A1%B9%CD%E5%A1%B9%A5%F4%A5%A3%A5%F4%A5%A3|2026-10-31
+VI31|ホロライブ非公式wiki「綺々羅々ヴィヴィ【語録】」：口癖（次要來源）|https://seesaawiki.jp/hololivetv/d/%E5%BA%A1%B9%CD%E5%A1%B9%A5%F4%A5%A3%A5%F4%A5%A3%A1%DA%B8%EC%CF%BF%A1%DB|2026-10-31
+VI32|ホロライブ非公式wiki「綺々羅々ヴィヴィ【関連語】」（次要來源）|https://seesaawiki.jp/hololivetv/d/%E5%BA%A1%B9%CD%E5%A1%B9%A5%F4%A5%A3%A5%F4%A5%A3%A1%DA%B4%D8%CF%A2%B8%EC%A1%DB|2026-10-31
+VI41|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-11「【#ホロドリ 】おはよう！朝のホロドリ！新エリアクリア目指す！【#綺々羅々ヴィヴィ #hololive  #FLOWGLOW】」|https://www.youtube.com/watch?v=1jfrtUlxO0E|2026-10-31
+VI42|Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-09「【#ホロドリ 】おはよう！朝のホロドリ！！新エリアクリア目指してまったり～！【#綺々羅々ヴィヴィ #hololive  #FLOWGLOW】」|https://www.youtube.com/watch?v=b5nDqJmKJy8|2026-10-31

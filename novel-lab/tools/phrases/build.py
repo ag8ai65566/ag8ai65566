@@ -21,6 +21,19 @@ ROOT = HERE.parents[1] / "projects" / "holoen"
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "export" / "hololive-常用語.xlsx"
 M = {m["file"]: m for m in extract()}
 
+def load_extra_sources():
+    """sources-extra.txt: sources that are not in the character files (JP wiki pages, the 2026-10 audio check)."""
+    who = None
+    for ln in (HERE / "sources-extra.txt").read_text(encoding="utf-8").split("\n"):
+        if not ln.strip() or ln.startswith("#"):
+            continue
+        if ln.startswith("@"):
+            who = ln[1:].strip()
+            continue
+        sid, desc, url, checked = ln.split("|")
+        M[who]["sources"][sid] = {"desc": desc, "urls": [url] if url else [], "checked": checked}
+load_extra_sources()
+
 INFO = {  # file → (中文名, 分部・期別, 狀態, 主要直播語言)
     "Mori-Calliope": ("森美聲", "hololive English -Myth-", "在籍", "英文"),
     "Takanashi-Kiara": ("小鳥遊琪亞拉", "hololive English -Myth-", "在籍", "英文（夾德文、日文）"),
@@ -61,7 +74,7 @@ VER = {"O": "官方資料", "S": "本人社群貼文", "A": "語音辨識（兩�
        "W": "Wiki 等次要來源", "T": "只有影片標題"}
 TYPE_FIX = {"開場・節目": "開場招呼", "開場・閒聊": "開場閒聊", "其他（未放進卡片）": "其他（未放進角色卡）",
             "粉絲台詞": "粉絲互動", "粉絲回應": "粉絲互動", "組合名": "稱呼・暱稱", "英式用語": "用語特色"}
-GREET = ("開場招呼", "自我介紹", "開場閒聊", "結尾道別")
+GREET = ("開場招呼", "自我介紹", "開場閒聊", "結尾道別", "呼喊與回應")
 
 AUDIO = {"ame": "Watson-Amelia", "ayame": "Nakiri-Ayame", "azki": "AZKi", "bae": "Hakos-Baelz",
          "bijou": "Koseki-Bijou", "botan": "Shishiro-Botan", "calli": "Mori-Calliope", "cecilia": "Cecilia-Immergreen",
@@ -113,11 +126,28 @@ def sheet(title, headers, widths, rows, links=None, table=True, wrap_cols=None):
         ws.add_table(t)
     return ws
 
+def hms(sec):
+    sec = int(sec)
+    return f"{sec // 3600}:{sec % 3600 // 60:02d}:{sec % 60:02d}"
+
+def src_url(member, token):
+    """A source id, or id@seconds for a moment in a YouTube video (the link then starts there)."""
+    sid, _, t = token.partition("@")
+    info = M[member]["sources"].get(sid)
+    if not info or not info["urls"]:
+        return None
+    u = info["urls"][0]
+    return f"{u}&t={int(t)}s" if t and "youtube.com/watch" in u else u
+
+def src_label(token):
+    sid, _, t = token.partition("@")
+    return f"{sid}（影片 {hms(t)}）" if t else sid
+
 def first_url(member, srcs):
-    for s in srcs:
-        info = M[member]["sources"].get(s)
-        if info and info["urls"]:
-            return info["urls"][0]
+    for s in sorted(srcs, key=lambda s: "@" not in s):  # a moment in a video first
+        u = src_url(member, s)
+        if u:
+            return u
     return None
 
 # --- 常用語總表 ---------------------------------------------------------------------------------------------------
@@ -129,7 +159,7 @@ for i, r in enumerate(rows, 1):
     r["type"] = t
     url = first_url(r["member"], r["src"])
     main.append([i, name_of(r["member"]), INFO[r["member"]][0], INFO[r["member"]][1], t, r["orig"], r["reading"], r["zh"],
-                 r["when"], r["freq"], VER[r["ver"]], ", ".join(r["src"]), url or ""])
+                 r["when"], r["freq"], VER[r["ver"]], ", ".join(src_label(s) for s in r["src"]), url or ""])
     if url:
         links[(i + 1, 13)] = url
 H_MAIN = ["編號", "成員", "中文名", "分部・期別", "類型", "原文", "讀音・官方英譯", "中文意思", "使用時機・說明", "頻率",
@@ -145,6 +175,29 @@ for i, m in enumerate(greet, 1):
         glinks[(i + 1, 11)] = m[12]
 H_GREET = ["編號", "成員", "中文名", "類型", "原文", "讀音・官方英譯", "中文意思", "使用時機・說明", "查證等級", "來源編號", "來源連結"]
 W_GREET = [6, 22, 18, 11, 48, 30, 42, 44, 18, 12, 36]
+
+# --- 成員互相稱呼（日本成員，seesaawiki 呼称一覧） -----------------------------------------------------------------
+JP_NAME = {"AZKi": "AZKi", "Hoshimachi-Suisei": "星街すいせい", "Houshou-Marine": "宝鐘マリン", "Shirogane-Noel": "白銀ノエル",
+           "Nakiri-Ayame": "百鬼あやめ", "Nekomata-Okayu": "猫又おかゆ", "Shishiro-Botan": "獅白ぼたん", "Yukihana-Lamy": "雪花ラミィ",
+           "Laplus-Darknesss": "ラプラス・ダークネス", "Takane-Lui": "鷹嶺ルイ", "Hakui-Koyori": "博衣こより",
+           "Sakamata-Chloe": "沙花叉クロヱ", "Kazama-Iroha": "風真いろは", "Kikirara-Vivi": "綺々羅々ヴィヴィ"}
+IN_BOOK = set(JP_NAME.values()) | {name_of(f).replace("'", "") for f in ORDER} | {
+    "Mori Calliope", "Takanashi Kiara", "Ninomae Ina'nis", "Gawr Gura", "Watson Amelia", "IRyS", "Ouro Kronii", "Ceres Fauna",
+    "Nanashi Mumei", "Hakos Baelz", "Shiori Novella", "Koseki Bijou", "Nerissa Ravencroft", "Fuwawa Abyssgard",
+    "Mococo Abyssgard", "Elizabeth Rose Bloodflame", "Gigi Murin", "Cecilia Immergreen", "Raora Panthera"}
+koshou, klinks = [], {}
+for ln in (HERE / "koshou-jp.txt").read_text(encoding="utf-8").split("\n"):
+    if not ln.strip() or ln.startswith("#"):
+        continue
+    f, target, call, called = ln.split("|")
+    self_row = target == JP_NAME[f]
+    url = src_url(f, M[f]["sources"] and next(s for s in M[f]["sources"] if s.endswith("30")))
+    koshou.append([name_of(f), INFO[f][0], "（自稱）" if self_row else target, "是" if target in IN_BOOK and not self_row else "",
+                   call, "" if self_row else called, url or ""])
+    if url:
+        klinks[(len(koshou) + 1, 7)] = url
+H_KOSHOU = ["成員（話者）", "中文名", "對象", "對象也在本表", "她怎麼叫對方（對象是自己＝自稱）", "對方怎麼叫她", "來源連結"]
+W_KOSHOU = [22, 16, 24, 10, 44, 44, 30]
 
 # --- 說話特徵（原文）、情境語氣、範例台詞 -----------------------------------------------------------------------------
 traits, tones, samples = [], [], []
@@ -185,6 +238,16 @@ for p in sorted((ROOT / "research" / "audio-check").glob("*.md")):
             asr.append([who, cells[0].strip('"'), lm.group(1) if lm else cells[1], cells[2].strip('"'), verdict, used])
             if lm:
                 alinks[(len(asr) + 1, 3)] = lm.group(2)
+# 2026-10-31 round for the Japanese members, openings and endings (asr-jp-2026-10.txt: first model faster-whisper small,
+# second model medium on a 30 s clip around the line; verdict 一致 = the second model wrote the line verbatim)
+JP_ASR = HERE / "asr-jp-2026-10.txt"
+if JP_ASR.exists():
+    for ln in JP_ASR.read_text(encoding="utf-8").split("\n"):
+        if not ln.strip() or ln.startswith("#"):
+            continue
+        f, first, vid, t, second, verdict = ln.split("|")
+        asr.append([name_of(f), first, hms(t), second, verdict, "是" if verdict.startswith("一致") else "否"])
+        alinks[(len(asr) + 1, 3)] = f"https://www.youtube.com/watch?v={vid}&t={int(float(t))}s"
 H_ASR = ["成員", "第一個模型聽到的", "時間點（點開跳到影片）", "第二個模型聽到的（節錄）", "判定（原文）", "可以引用"]
 
 # --- 角色卡原文 --------------------------------------------------------------------------------------------------
@@ -194,7 +257,7 @@ cards = [[name_of(f), INFO[f][0], m["other_names"], m["catchphrases_sw"], m["dia
 srcs, slinks = [], {}
 for f in ORDER:
     for sid, info in M[f]["sources"].items():
-        srcs.append([name_of(f), sid, info["desc"], info["urls"][0] if info["urls"] else "", M[f]["checked"]])
+        srcs.append([name_of(f), sid, info["desc"], info["urls"][0] if info["urls"] else "", info.get("checked") or M[f]["checked"]])
         if info["urls"]:
             slinks[(len(srcs) + 1, 4)] = info["urls"][0]
 
@@ -234,6 +297,7 @@ for c in ws_over[n + 1]:
 ws_over.auto_filter.ref = f"A1:O{n}"
 sheet("常用語總表", H_MAIN, W_MAIN, main, links)
 sheet("開場與結尾", H_GREET, W_GREET, greet_rows, glinks)
+sheet("成員互相稱呼", H_KOSHOU, W_KOSHOU, koshou, klinks)
 sheet("說話特徵（英文原文）", ["成員", "中文名", "項目", "原始標題", "內容（英文研究筆記原文）"], [22, 18, 14, 26, 110], traits)
 sheet("各情境語氣（英文原文）", ["成員", "中文名", "情境", "語氣・音高・速度", "代表說法"], [22, 18, 26, 44, 60], tones)
 sheet("範例台詞（英文原文）", ["成員", "中文名", "序號", "台詞（含來源註記）"], [22, 18, 6, 110], samples)
@@ -247,12 +311,14 @@ types = sorted({m[4] for m in main}, key=lambda t: (t not in GREET, GREET.index(
 lines = [
     ("hololive 成員常用語（開場、結尾、口頭禪）", "title"),
     ("整理自 novel-lab 專案 holoen 的角色檔（bible/characters，2026-09-30～10-02 查核）與語音辨識報告（research/audio-check）。", ""),
+    ("日本成員在 2026-10-31 補查：粉絲 Wiki（ホロライブ非公式wiki 的あいさつ集、語録的口癖、関連語、呼称一覧）＋直播開頭與結尾的語音辨識。", ""),
     ("收錄 33 位成員（Myth、Promise、Advent、Justice 與 14 位日本成員）。", ""),
     ("", ""),
     ("工作表", "h"),
     ("成員總覽：每位成員的分部、狀態、粉絲稱呼、自稱、招牌開場與結尾，以及各類句數（公式自動計算）。", ""),
     ("常用語總表：全部句子，一句一列，附中文意思、使用時機、頻率、查證等級和來源連結。可以用篩選找成員或類型。", ""),
-    ("開場與結尾：只列開場招呼、自我介紹、開場閒聊、結尾道別。", ""),
+    ("開場與結尾：只列開場招呼、自我介紹、開場閒聊、結尾道別、呼喊與回應（成員喊上句、觀眾回下句）。", ""),
+    ("成員互相稱呼：14 位日本成員怎麼叫其他成員、其他成員怎麼叫她（粉絲 Wiki 的呼称一覧；對象是自己的那列＝自稱）。", ""),
     ("說話特徵／各情境語氣／範例台詞（英文原文）：角色檔裡的研究筆記原文（語助詞、笑聲、節奏、髒話程度、語言切換、音色測量等）。", ""),
     ("語音辨識實測：每一句用兩個語音辨識模型轉寫比對的結果，時間點可以直接點開影片。", ""),
     ("角色卡原文：給 Sudowrite 的口頭禪欄和說話風格欄原文。", ""),
@@ -269,7 +335,8 @@ lines = [
     ("", ""),
     ("注意", "h"),
     ("中文意思是我們的翻譯；官方有英譯的放在「讀音・官方英譯」欄。頻率是估計，不是統計。", ""),
-    ("日本成員的資料比英文成員少（研究時以官方簡介和兩段 2026 年直播抽樣為主）。", ""),
+    ("「粉絲互動」是觀眾的留言或回應（待機、開場、收台時聊天室打的字），不是成員自己的台詞。", ""),
+    ("語音辨識的列在「來源編號」標了影片時間，點來源連結會直接跳到那個時間。", ""),
     ("類型「口頭禪（較色）」是粉絲 Wiki 收錄、非露骨的玩笑話；「口頭禪（風格示範）」不是逐字台詞。", ""),
 ]
 r = 1

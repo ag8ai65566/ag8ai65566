@@ -17,9 +17,15 @@ def load_rows():
 if __name__ == "__main__":
     from extract import extract
     M = {m["file"]: m for m in extract()}
+    who = None
+    for ln in (HERE / "sources-extra.txt").read_text(encoding="utf-8").split("\n"):
+        if ln.startswith("@"):
+            who = ln[1:].strip()
+        elif ln.strip() and not ln.startswith("#"):
+            M[who]["sources"][ln.split("|")[0]] = {}
     rows = load_rows()
     print(len(rows), "rows")
     bad = [(r["member"], s, r["at"]) for r in rows for s in r["src"]
-           if s not in M[r["member"]]["sources"] and not s.startswith(("FUWAMOCO", "X "))]
+           if s.partition("@")[0] not in M[r["member"]]["sources"] and not s.startswith(("FUWAMOCO", "X "))]
     for b in bad: print("missing source", b)
     print(sorted({r["ver"] for r in rows}), sorted({r["type"] for r in rows}))
