@@ -1,0 +1,77 @@
+@Nekomata-Okayu
+開場招呼|もぐもぐ～おかゆ～！ホロライブゲーマーズの猫又おかゆです！|mogu mogu~ Okayu~! Hororaibu Gēmāzu no Nekomata Okayu desu!|嚼嚼～小粥～！我是 hololive GAMERS 的貓又小粥！|官方招呼語（英文版：Om nom, Okayu! Nekomata Okayu here!）|固定|O|OK1
+口頭禪|もぐもぐ|mogu mogu|嚼嚼（咀嚼聲）|打招呼時|固定|O|OK1, OK2
+結尾道別|ごちごち！|gochi gochi!|謝謝招待！|直播結尾觀眾的回應（次要來源）||W|OK3, OK2
+粉絲稱呼|おにぎりゃー|onigiryā|飯糰們|她對粉絲的稱呼（兩個模型都聽到）||A|OK20, OK1
+口頭禪|ノリで相手をぶっ倒したいと思いまーす|nori de aite o buttaoshitai to omoimāsu|我打算憑感覺把對手打倒～|跳過教學時說的（抽樣只出現一次）||A|OK20
+笑聲・聲音|にゃ（連續）|nya|喵|操作很順、很爽的時候連續喵（次數長度不固定）||A|OK20
+口頭禪|レッツラゴー！|rettsura gō!|出發囉！（Let's go）|開始玩當天的遊戲時||A|OK20
+口頭禪（風格示範）|僕と一緒に遊んでくれませんか？|boku to issho ni asonde kuremasen ka?|你願意跟我一起玩嗎？|撒嬌式的邀請（取自她 2024 年《瑪利歐派對》直播標題；風格示範，不是逐字台詞）||T|OK4
+名言|'Gross.' That one word gives me life.||「噁心」——光是這個詞就讓我活過來了。|官方：被撩的時候||O|OK1
+名言|僕でよくな～い？|boku de yoku nāi?|選我不就好了嗎～？|官方：紫咲詩音聊理想型時她的調侃||O|OK1
+稱呼・暱稱|全肯定猫／ギルティ猫|zen-kōtei neko / giruti neko|全肯定貓／有罪的貓|官方簡介的稱號||O|OK1
+自稱|僕|boku|我（男性化的第一人稱）|她的自稱|很常見|O|OK1
+@Shishiro-Botan
+開場招呼|らいおん♪|La-lion（官方英文寫法）|獅～子♪|官方簡介的招呼語|固定|O|BO1
+結尾道別|それじゃ、またね～|Well then, cya~（官方英文寫法）|那就，下次見～|官方簡介的結尾|固定|O|BO1
+名言|Wealth isn't measured with money||財富不是用錢衡量的|她最喜歡的話（官方簡介）||O|BO1
+口頭禪|ぽい|poi|（輕輕一丟）啪|丟手榴彈時（次要來源轉寫）||W|BO2
+口頭禪|前回はですね、ぺこちゃんが優勝しました|zenkai wa desu ne, Peko-chan ga yūshō shimashita|上次啊，是 Peko 醬拿了冠軍|主持時回顧（兩個模型一致）||A|BO20
+自稱|ししろ／ししろん|Shishiro / Shishiron|獅白／獅白醬|她的自稱||A|BO20, BO2
+粉絲稱呼|SSRB||SSRB（獅白的粉絲，吉祥物是炸彈獅子）|她的粉絲||O|BO1, BO2
+@Yukihana-Lamy
+開場招呼|Lamyoohoo!||菈米喲呼！|官方招呼語|固定|O|LM1
+開場招呼|こんらみです|konlamy desu|菈米安～|開場（Wiki 轉寫）||W|LM2
+口頭禪|とりあえず、乾杯しないと何も始まらない|toriaezu, kanpai shinai to nani mo hajimaranai|總之，不先乾杯什麼都不會開始|晚酌（喝酒聊天）直播時（兩個模型一致）|晚酌直播|A|LM20
+結尾道別|今週も、皆様、お疲れ様でございました|konshū mo, minasama, otsukaresama de gozaimashita|這週大家也辛苦了|週末聊天直播（兩個模型一致）||A|LM20
+自稱|ラミィ|Lamy|菈米（用名字稱呼自己）|一直用第三人稱自稱|很常見|A|LM20
+粉絲稱呼|雪民|Yukimin|雪民|她的粉絲||O|LM1
+@Laplus-Darknesss
+開場招呼|貴様ら、刮目せよ！！|kisama-ra, katsumoku seyo!!|你們這些傢伙，給我睜大眼睛看好！！|官方介紹（英文版：See me, hear me, all of you!）|固定|O|LA1
+粉絲回應|Yes My Dark!||是的，我的黑暗！（YMD）|她的追隨者回應她的話，不是她自己的台詞||W|LA2
+自稱|吾輩|wagahai|吾輩（本座）|角色設定的自稱；2026 年抽樣的兩段直播裡是「私」，沒聽到「吾輩」||W|LA2, LA20
+稱呼他人|貴様|kisama|你這傢伙|角色設定用語||W|LA2
+名言|吾輩怪しい者でないぞ|wagahai ayashii mono de nai zo|吾輩可不是可疑人物！|據次要來源是她的第一則貼文||W|LA2
+口頭禪|これが配信者よ|kore ga haishinsha yo|這就是實況主啊！|（兩個模型一致）||A|LA20
+自我介紹|Laplus Dia Highest Death Thirteen Daina Art of Impact Sign Emperor Road of the Darknesss||（完整稱號）|她的完整稱號（次要來源轉寫）||W|LA2
+粉絲稱呼|ぷらすめいと|Plusmate（+mate）|Plusmate|她的粉絲||W|LA2
+@Takane-Lui
+開場招呼|まったかね～？|Mattakane?（官方英譯：Did I Luive you waiting!?）|等很久了嗎～？（まった＋鷹嶺 Takane）|官方開場|固定|O|LU1
+結尾道別|おつルイルイ|Otsuluilui（官方英譯：I take your Luive）|辛苦了～琉依琉依|官方結尾|固定|O|LU1
+口頭禪|○○したかね？|…shitakane?（官方英譯：Did you…, if I'm not mistakane?）|是不是做了○○呀？|有懷疑的時候||O|LU1
+口頭禪|鷹まってきた～！|Takamattekita!（官方英譯：Hype Luivels rising!）|情緒高漲起來了～！（高まって＋鷹）|興奮時||O|LU1
+口頭禪|コッ☆|Ko!☆|（耍帥後的短促閃亮聲）|說完帥氣台詞之後||O|LU1
+笑聲・聲音|ﾊｯﾊｰ↑|hahhā（暫定讀音）|哈哈～↑|講完笑話後的官方笑聲寫法||O|LU1
+梗・固定橋段|PON||（出包、迷糊）|她出包時的迷因（不是一定要說出口的反應）||O|LU1
+粉絲台詞|Don't drop your water||別把水打翻了|粉絲對她說的話||O|LU1
+粉絲稱呼|ルイ友|Lui-tomo|琉依友|她的粉絲||O|LU1
+@Hakui-Koyori
+開場招呼|こんこよ～！|Konkoyo~!（官方英譯：Ayo, this is Koyo!）|小夜璃安～！|官方開場|固定|O|KO1
+自我介紹|The brain of holoX! My name is Koyori Hakui!||holoX 的頭腦！我是博衣小夜璃！|官方英文自我介紹||O|KO1
+口頭禪|コヨリニウム|koyoriniumu（官方英譯：Koyorium）|小夜璃素|看她直播能攝取到的營養素||O|KO1
+口頭禪|冷こよ|Reikoyo|冷小夜璃（冷酷模式的小夜璃）|||O|KO1
+口頭禪|こよ色|Koyo-iro|小夜璃色（粉紅色）|||O|KO1
+粉絲稱呼|助手くん|joshu-kun|助手君們|她對聊天室的稱呼||O|KO1, KO20
+節目用語|それでは続いてはこちら|sore dewa tsuzuite wa kochira|那麼接下來是這個|晨間節目 AsaKoyo 的串場（兩個模型一致）||A|KO20
+自稱|こよりちゃんでございます|Koyori-chan de gozaimasu|我是小夜璃醬喔|（兩個模型一致）||A|KO20
+@Sakamata-Chloe
+開場招呼|ばっくばっくばく～ん → いただきます|bakku bakku bakūn → itadakimasu（官方英譯：Chomp, chomp, chomp! It's time to eat!）|吧咕吧咕吧咕～嗯→我開動了|官方開場|固定|O|CH1
+開場招呼|いただきまーす|itadakimāsu|我開動了～|2024 年聊天直播開頭聽到（兩個模型一致）||A|CH20
+結尾道別|ごちそうさまでした|gochisōsama deshita（官方英譯：Thanks for the food）|謝謝招待|官方結尾，也是她畢業演唱會的標題|固定|O|CH1, CH4
+粉絲稱呼|飼育員|shiikuin（Handlers）|飼育員|她對聊天室的稱呼||O|CH1
+自稱|沙花叉|Sakamata|沙花叉|她的自稱||A|CH20, CH2
+組合名|KoyoChlo||小夜璃＋克蘿耶|她和博衣小夜璃的組合||W|CH2
+@Kazama-Iroha
+自我介紹|holoXの用心棒、侍の風真いろはでござる|holoX no yōjinbō, samurai no Kazama Iroha de gozaru（官方英譯：Secret Society holoX's insurance policy, Kazama Iroha here, I daresay!）|holoX 的保鑣，武士風真伊呂波是也|官方自我介紹|固定|O|IR1
+語尾・說話特徵|〜でござる|de gozaru|～是也（武士語尾）|招牌語尾（2026 年抽樣的遊戲直播裡少見）||W|IR2, IR20
+自稱|ござる|Gozaru|在下（用「ござる」當第三人稱自稱）|||A|IR20
+稱呼他人|〜殿|-dono|～殿|稱呼朋友和前輩||T|IR4
+反應・感嘆|よしよしよしよし|yoshi yoshi yoshi yoshi|好好好好！|成功的時候（兩個模型一致）||A|IR20
+粉絲稱呼|かざま隊|Kazama-tai|風真隊|她的粉絲||W|IR2
+@Kikirara-Vivi
+自我介紹|Hol'up, 'cus you're in for a transformation!||等等，因為你即將見證一場變身！|官方英文簡介台詞||O|VI1
+開場招呼|ん～～～～～～～ッヴィヴィ～！！！！！|Nnn—Vivi!|嗯～～～薇薇～！！！|開場（直播標題的寫法）|固定|T|VI4
+口頭禪|お金取るで|okane toru de|要收錢喔|聊天室要她講甜言蜜語時（關西腔，兩個模型一致）||A|VI20
+反應・感嘆|おーい（平板地）|ōi|喂——|故意平板地吐槽（只有第一個模型，未證實為原文）||A1|VI20
+自稱|ヴィヴィ|Vivi|薇薇|她的自稱||A|VI20
+粉絲稱呼|Vivid||Vivid|她的粉絲（次要來源）||W|VI2

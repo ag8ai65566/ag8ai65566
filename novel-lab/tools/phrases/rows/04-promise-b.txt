@@ -1,0 +1,48 @@
+@Nanashi-Mumei
+開場招呼|Oh hi! Hoo's this? Nanashi Mumei!||喔，嗨！這是誰呀（Hoo＝貓頭鷹叫聲）？七詩無銘！|官方招呼語||O|M1
+開場招呼|Oh hi! / Oh, hi … hi everybody. What's up? How are you?||喔，嗨！／喔，嗨……大家好，怎麼樣？你們好嗎？|2025 年 Q&A 直播實際開場：被自己的音樂嚇一跳後打招呼|2025 實測|A|M2, M20
+結尾道別|Goodbye for now. I'll see you probably tomorrow, probably tomorrow. → bye-bye for now → bye-bye ×12||先說再見囉，大概明天見，大概明天。→ 先掰掰囉 → 掰掰（十幾次）|實際的結尾，最後連說十幾次 bye-bye||A|M20
+結尾道別|don don（結尾）||咚咚|同一場直播她答應以後每次結尾都來一個大大的「don don」（轉述；語音辨識聽不清楚那個字）||A|M20
+口頭禪|don don!||咚咚！（木槌敲兩下）|謝謝超級留言時的「敲槌」：「謝謝某某的斗內，咚咚！」；也寫在直播說明裡|念 SC 時固定|W|M2, M3, M20
+口頭禪|I'm moomin' / Today we moom / A Moom's gotta moom what a Moom's gotta moom||我在 moom／今天我們來 moom／Moom 該 moom 的就是要 moom|她自創的動詞「moom」||W|M2
+名言|Civilization is temporary, humanity is temporary, you are all going to die one day!||文明是暫時的，人類是暫時的，你們總有一天都會死！|開朗又黑暗的「文明守護者」梗||W|M2
+口頭禪|…guardian of civilization! … I decide everything for humanity.||……文明守護者！……人類的一切都由我決定。|排名洋芋片口味時的守護者權威||A|M20
+口頭禪|…but what do I know? Everything.||……不過我知道什麼？我什麼都知道。|講完自己的意見之後||A|M20
+口頭禪|Good job homo sapien.||做得好，智人。|稱讚人類||A|M20
+反應・感嘆|Yippee / hooray / I love talking about myself. Yippee, yippee. Hooray.||耶／萬歲／我最愛聊我自己了，耶，耶，萬歲。|歡呼，常帶反諷（開頭十分鐘各出現五次）|常見|A|M20
+反應・感嘆|Oh dear / Oh dear, that was pointless.||哎呀／哎呀，剛剛白做了。|輕微的沮喪||A|M20
+反應・感嘆|Owie! Owie! Owie!||好痛好痛好痛！|遊戲裡受傷||A|M20
+口頭禪|Hoo's this? / Hoomans||（貓頭鷹諧音：who→hoo、humans→hoomans）|貓頭鷹諧音梗||O|M1, M2
+寫作用語|:D||（笑臉）|直播說明、貼文裡的笑臉|文字常用|W|M2
+@Hakos-Baelz
+開場招呼|WAZZUP!! It's your worldwide Rat Idol --- Hakos Baelz!||WAZZUP！！我是你們的全球老鼠偶像——Hakos Baelz！|官方招呼語||O|HB1
+自我介紹|Wazzup! I am Chaos the end of ends, a steel rose trapped in a cage of ice, your best friend Baelz Hakos from hololive English Promise, WITNESS ME||Wazzup！我是終結之終的混沌，被冰籠困住的鋼鐵玫瑰，你們最好的朋友，hololive English Promise 的 Baelz Hakos，見證我吧！|Wiki 紀錄的自我介紹；2026 年 4 月聊天台還說過一個版本（語音辨識聽不清楚，沒有引用）||W|HB2, HB20
+結尾道別|okey dokey / bye-bye||好的好的／掰掰|2026 年結尾：宣傳新歌和下次連動後，快速說 okey dokey、bye-bye 離開||A|HB20
+結尾道別|SARABA DA!|saraba da（さらばだ）|後會有期！|Wiki 列出的台詞||W|HB2
+感謝|thank you so much（念 SC 時連續）||非常謝謝你|念超級留言時有節奏地一直道謝（2026 年一小時約 128 次，第一個模型的計數）|很常見|A|HB20
+反應・感嘆|Bruh. / Everything comes back to 'Bruh'.||Bruh（無言）。／一切都會回到「Bruh」。|覺得荒謬時；兩個模型都聽到 Bruh|常見|A|HB2, HB20
+口頭禪|You're doing great!||你做得很好！|為聊天室或朋友打氣||A|HB2, HB20
+梗・固定橋段|It was sabotage. … They hate promise. They hate us. It's a conspiracy.||這是蓄意破壞……他們討厭 Promise，他們討厭我們，這是陰謀。|直播出小狀況時假裝憤怒、講陰謀論||A|HB20
+梗・固定橋段|Breaking news! Bae is trying to clout chase by… / Does she really think that me, of all people, is trying to clout chase by using her?||插播新聞！Bae 想要蹭熱度……／她真的以為我會利用她來蹭熱度嗎？|2026 年和聊天室玩的假對手梗||A|HB20
+口頭禪|Who would think that's a good idea? Me.||誰會覺得這是好主意？我。|自問自答講故事||A|HB20
+口頭禪|Okay, I guess I'm doing this now. Confused rat.||好吧，看來我現在要做這個了。困惑的老鼠。|自嘲||A|HB20
+感謝|Welcome to the Rat Pack, welcome, welcome.||歡迎加入 Rat Pack，歡迎歡迎。|歡迎新會員（會員叫 Rat Pack）||A|HB20
+口頭禪|Technology be crazy.||科技真瘋狂。|||W|HB2
+梗・固定橋段|JDON MY SOUL / Oui oui pp.||（傳話遊戲聽錯的句子）／Oui oui pp|Wiki 列出的梗||W|HB2
+梗・固定橋段|BIG BRAIN! / Bae is stoopid / ORA ORA ORA||大腦袋（聰明）！／Bae 好笨／歐啦歐啦歐啦|Wiki 列出的台詞||W|HB2
+粉絲稱呼|Brats / Rat Pack||小鬼們（粉絲）／鼠群（會員）|粉絲叫 Brats，會員叫 Rat Pack||W|HB2
+@Shiori-Novella
+開場招呼|Shiori~n!||詩織～嗯！|招呼語（Wiki 的標題）||W|SN2
+自我介紹|Shiori~n! Shiori Novella here at your service!||詩織～嗯！Shiori Novella 為您服務！|2026 官方訪談的介紹||O|SN4
+開場招呼|Hello||哈囉|2026 年抽樣的開場沒有正式招呼：說聲 hello 就蓋過等待畫面的音樂開始聊|2026 實測|A|SN20
+結尾道別|…I appreciate you so much. → Alright, bye guys! See you later!||……真的很感謝你們。→ 好，掰掰大家！待會見！|實際的結尾||A|SN20
+口頭禪|In my defense… / For the record…||我要辯解一下……／先說清楚……|替自己的設定或故事辯護；一小時說了六次「in my defense」|常見|A|SN20
+梗・固定橋段|It was not my fault everyone got sacrificed, okay? / In my defense, guys, they trespassed. / For the record, I did not sacrifice anyone.||大家被獻祭不是我的錯，好嗎？／我要辯解，他們擅闖。／先說清楚，我沒有獻祭任何人。|她的「獻祭」梗||A|SN20
+口頭禪|Don't you think that's a wonderful story?||你不覺得這是個很棒的故事嗎？|官方台詞||O|SN4
+反應・感嘆|I would not want to play this! / I would love to watch someone else play this. I would be too scared to play this myself.||我才不想玩這個！／我想看別人玩，我自己玩會太害怕。|看恐怖遊戲預告時||A|SN20
+反應・感嘆|Whoa, wait, who is that hot thing? Is that a vampire? / …kind of cute for a pixel. What's your name?||哇等等，那個辣的是誰？是吸血鬼嗎？／……以一個像素來說還滿可愛的，你叫什麼名字？|對遊戲角色犯花痴的梗||A|SN20
+口頭禪|Your Blender skills are so cool. I'm so happy for you.||你的 Blender 技術好酷，我好替你開心。|為創作者打氣||A|SN20
+口頭禪|You can do it, yes you can! If you can't do it, beat them up!||你做得到，你一定可以！做不到就揍他們！|Wiki 名言||W|SN2
+口頭禪|Aw, it's okay! There, there!||啊，沒關係！乖、乖！|安慰人||W|SN2
+口頭禪|Yeah, you like this, don't ya?||對吧，你喜歡這個吧？|Wiki 名言||W|SN2
+反應・感嘆|Oh nyo...||喔不喵……|沮喪||W|SN2

@@ -1,0 +1,49 @@
+@AZKi
+開場招呼|こんあずきー！|kon-AZKi（こんにちは＋AZKi）|AZKi 安！|官方日文招呼語|固定|O|AZ9
+自我介紹|I'm the Virtual Diva AZKi! I love music and singing!||我是虛擬歌姬 AZKi！我最喜歡音樂和唱歌！|官方英文簡介||O|AZ1
+自我介紹|This moment is key, this is AZKi!||這一刻就是關鍵，我是 AZKi！|官方訊息台詞||O|AZ1
+自我介紹|バーチャルディーバAZKi、仮想世界の歌姫です|bācharu dībā AZKi, kasō sekai no utahime desu|虛擬歌姬 AZKi，虛擬世界的歌姬。|2026 愚人節直播的自我介紹||A|AZ20
+口頭禪|ゲース！|gēsu（Guess!）|猜！|玩 GeoGuessr 鎖定答案時；猜中時說「予習が生きてる」（預習有用了）|GeoGuessr 固定|A|AZ20, AZ2, AZ4
+口頭禪|予習が生きてる|yoshū ga ikiteru|預習派上用場了|GeoGuessr 猜中時||A|AZ20
+反應・感嘆|床！／天井！|yuka! / tenjō!|地板！／天花板！|情緒很強烈時（官方提到的詞）||O|AZ1
+反應・感嘆|この野郎|kono yarō|你這傢伙（混蛋）|對時乃空不小心整到她的反應（次要來源轉寫）||W|AZ2
+反應・感嘆|戦略的撤退！|senryakuteki tettai!|戰略性撤退！|打輸要逃跑時||A|AZ20
+反應・感嘆|ぼったくり！|bottakuri!|坑錢啊！（敲竹槓）|看到商店價格時||A|AZ20
+名言|この文字数に恐怖するがいい|kono mojisū ni kyōfu suru ga ii|顫抖吧，在這字數面前！|||W|AZ2
+粉絲稱呼|開拓者|kaitakusha（Pioneers）|開拓者|她的粉絲||W|AZ2
+@Hoshimachi-Suisei
+自我介紹|彗星のごとく現れたスターの原石！バーチャルアイドルの星街すいせいでーす！|suisei no gotoku arawareta sutā no genseki! bācharu aidoru no Hoshimachi Suisei dēsu!|如彗星般出現的明星原石！我是虛擬偶像星街彗星～！|官方自我介紹（英文版：A shooting star that appeared from diamonds in the rough; I'm the virtual idol Hoshimachi Suisei!）|固定|O|SU12, SU1, SU20
+口頭禪|スイちゃんは〜今日も可愛い〜|Sui-chan wa~ kyō mo kawaii~|小彗今天也很可愛～|自我介紹後馬上接，拉長、唱歌般的語氣；也用在打招呼、誇獎、短影片|固定|A|SU20, SU4
+口頭禪|いやいやいや、私は悪くない … コメント欄がやれって言ったんだ … 俺は悪くねぇ|iya iya iya, watashi wa warukunai … komento-ran ga yarette ittan da … ore wa warukunē|不不不，不是我的錯……是留言區叫我做的……我沒有錯（《Tales of the Abyss》的台詞）|失誤時怪到聊天室頭上||A|SU20
+口頭禪|スイちゃんは18歳だよ|Sui-chan wa jūhassai da yo|小彗是 18 歲喔|永遠 18 歲的梗||A|SU20
+口頭禪|Hi, honey!||嗨，親愛的！|跟她的多鄰國直播有關（次要來源轉寫），其他成員也會模仿||W|SU2
+粉絲稱呼|星詠み|hoshiyomi（Stargazers）|星詠（觀星者）|她的粉絲||W|SU2
+@Houshou-Marine
+自我介紹|Ahoy! Captain of the Houshou Pirates, Houshou Marine here!||Ahoy！寶鐘海賊團船長，寶鐘瑪琳在此！|官方英文簡介||O|MA1
+開場招呼|Ahoy!||啊吼！（海盜的招呼）|每次開場|固定|O|MA1
+結尾道別|それでは行きますよー、出航ー！|sore dewa ikimasu yo, shukkō!|那麼要出發囉，出航！|2026 年兩場直播結尾都聽到「出航」（兩個模型一致）|固定|A|MA20
+結尾道別|ヨーソロー|yōsorō（官方英譯 Keep 'er steady!）|保持航向！|官方日文用語||O|MA1, MA2
+反應・感嘆|一回落ち着こうよ|ikkai ochitsukō yo|先冷靜一下啦|遇到突發狀況時叫自己冷靜（兩個模型一致）||A|MA20
+反應・感嘆|待って待って待って|matte matte matte|等等等等！|遇到突發狀況一直喊等等（只有第一個模型，沒有引用為原文）||A1|MA20
+自稱|船長|senchō|船長|她的自稱|很常見|W|MA2, MA4
+粉絲稱呼|宝鐘の一味|Houshou no Ichimi|寶鐘一味（海賊團員）|她的粉絲||W|MA2
+@Shirogane-Noel
+自我介紹|All hustle, all muscle! Shirogane Noel's here!||全力衝刺，全是肌肉！白銀諾艾爾來了！|官方英文簡介||O|NO1
+開場招呼|こんまっする〜|konmassuru|肌肉安～（こんにちは＋マッスル）|官方肌肉主題招呼語|固定|O|NO1
+開場招呼|おはまっする|ohamassuru|肌肉早安|早上的招呼（兩個模型一致）||A|NO20
+開場招呼|こんばんまっする〜|konbanmassuru~|肌肉晚安～|晚上的招呼（Wiki 轉寫）||W|NO2
+語尾・說話特徵|〜まっする|-massuru|～肌肉|招呼語的字尾|固定|W|NO2, NO4
+口頭禪|まぁ色々ありましたな|mā iroiro arimashita na|嘛，發生了不少事呢|講這週發生的事時用老派的語尾（兩個模型一致）||A|NO20
+自稱|団長|danchō|團長|她的自稱|很常見|W|NO4, NO20
+粉絲稱呼|団員さん|dan'in-san|團員們|她對觀眾（騎士團員）的稱呼||W|NO2
+節目用語|Sunday Muscle||星期日肌肉|週日早上的聊天節目||W|NO2
+@Nakiri-Ayame
+自我介紹|Greetings, Humans! Yoohoo!||人類們好！喲呼！|官方英文簡介（原版：Greetings, humans! Nakiri Ayame has arrived!）||O|AY1
+開場招呼|こんなきりー！|kon-Nakiri（こんにちは＋なきり）|百鬼安！|直播招呼語（也在官方日文簡介裡）|固定|W|AY2
+口頭禪|余だよ！|yo da yo!|是余（我）喔！|固定台詞（次要來源轉寫）||W|AY2
+自稱|余|yo|余（古風的「我」）|她的自稱|很常見|O|AY1, AY3, AY20
+粉絲稱呼|人間様|ningen-sama|人類大人們|她對觀眾的稱呼||O|AY1, AY20
+口頭禪|かわよ|kawayo|好可愛|可愛的瞬間（粉絲的迷因，官方簡介也採用）||O|AY1
+口頭禪|なきりだよ！（百鬼じゃない）|Nakiri da yo!|是 Nakiri！（不是 Hyakki）|有人把名字唸錯時||O|AY1
+名言|Why don't you humans have horns?||你們人類為什麼沒有角？|次要來源的英文轉寫||W|AY2
+粉絲稱呼|百鬼組|Nakiri-gumi|百鬼組|她的粉絲||W|AY2

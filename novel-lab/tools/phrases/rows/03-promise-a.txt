@@ -1,0 +1,51 @@
+@IRyS
+開場招呼|HiRyS, it's IRyS! Your seiso nephilim here to fill the world with hopium!||HiRyS（Hi＋IRyS），我是 IRyS！你們的清楚系拿非利人來為世界灌滿希望！|官方招呼語（書面）；hopium = hope + opium 的「希望藥」||O|R1
+開場招呼|HiRyS, iiiit's IRyS from hololive English -Promise-! I am (probably) the embodiment of HOPE, a seiso half angel – half demon nephilim here to bring hope to the world through song!!||HiRyS，我是 hololive English -Promise- 的 IRyS！我（大概）是希望的化身，半天使半惡魔的清楚系拿非利人，用歌聲為世界帶來希望！！|2026 年她自己寫的版本（書面）||O|R21
+開場招呼|…it's IRyS||……我是 IRyS|2026 年直播的實際開場：先講名字諧音梗再說「it's IRyS」（兩個模型只同意這一段）|2026 實測|A|R20
+開場・閒聊|How's the volume?||音量還好嗎？|開台時問||W|R2
+結尾道別|ByeRyS!||ByeRyS（Bye＋IRyS）！|諧音梗結尾||W|R2
+結尾道別|Thank you very much! See you guys again tomorrow!||非常謝謝大家！明天見！|2026 年實際的結尾，之後還會繞回來多說好幾次再見|2026 實測|A|R20
+口頭禪|HiRyS / ByeRyS / -RyS 諧音梗||（名字諧音梗）|招呼、名字都會加 -RyS|常出現|O|R1, R2
+口頭禪|I am a hundred percent seiso, I would never lie!||我百分之百清楚系，我絕對不會說謊！|說了有點色的話之後的固定梗|常出現|W|R2
+反應・感嘆|Hope has descended!||希望降臨了！|登場、炒熱氣氛||W|R2
+口頭禪|Yoisho~|yoisho（よいしょ）|嘿咻～|坐下、用力時||W|R2
+口頭禪|hopium||希望藥（hope + opium）|她對「希望」的說法||O|R1
+反應・感嘆|Erase that from your memory. / I'll probably get bonked for that later...||把那段從記憶裡刪掉。／我等等大概會被敲頭……|說溜嘴之後||W|R2
+反應・感嘆|No, I don't like it. I love it!||不，我不是喜歡，我是超愛！|興奮地大讚||W|R2
+反應・感嘆|Run Leon, run!||快跑 Leon，快跑！|玩惡靈古堡（恐怖遊戲）時||W|R2
+@Ouro-Kronii
+開場招呼|Kroniichiwa!|Kroniichi-wa（暫定：「wa」前小停頓、重音在 wa）|Kronii 安！（Kronii＋こんにちは）|招牌招呼語；直播時先說幾句 hello 再說|固定|O|K1, K9
+開場招呼|Hello… hello! → （招呼語）→ Yay! Oh, yay, yippee! Woohoo!||哈囉……哈囉！→（招呼）→ 耶！喔耶，好耶！嗚呼！|2026 年實際開場；兩個模型都聽到招呼語，但諧音的確切形式無法證實|2026 實測|A|K36
+結尾道別|KroYasumi~|Kro-yasumi（Kronii＋おやすみ）|Kronii 晚安～|官方卡片的晚安寫法；實際唸法未證實||O|K18, K12
+自我介紹|It's me, perfection.||是我，完美本人。|自我介紹、炫耀|常見|O|K1
+笑聲・聲音|GWAK!||嘎！|被嚇到或受傷時的怪叫|恐怖、動作遊戲常見|W|K8, K10, K11, K12b
+口頭禪|That was my bad / that's on me||那是我的錯／算我的|自己失誤時|常見|A|K36, K8
+反應・感嘆|Yay! / Yippee!||耶！／好耶！|歡呼；約 2 小時的語音辨識稿裡出現 21 次「Yay」（語氣是平淡、反諷還是真開心，從文字看不出來）|常見|A|K36
+口頭禪|just be better||變強就好啦|假裝給觀眾建議|常出現|W|K8
+口頭禪|I know.||我知道。|被稱讚時理所當然地接受|偶爾（估計）|W|K9
+名言|God, I can't get over how amazing I am. Narcissus would be so jealous.||天啊，我真是太厲害了，那西瑟斯都會嫉妒。|極致的自誇||W|K8
+名言|I'm garbage... but really hot garbage... I'm like, the hottest dumpster fire.||我是垃圾……但是很辣的垃圾……我是最辣的垃圾桶火災。|自嘲||W|K8
+名言|I'm not a happy person. But I would like to be happy.||我不是個快樂的人，但我想要快樂。|面無表情的存在主義感嘆||W|K8
+梗・固定橋段|Flower.||花。|名言（和 Baelz、Mumei 在 Minecraft 重複說的梗，未證實）||W|K8, K14
+名言|Tea is leaf juice.||茶就是葉子汁。|冷面的食物看法||W|K8
+反應・感嘆|You're looking at the ribbon, right?||你是在看緞帶，對吧？|拿自己的服裝逗觀眾||W|K8
+梗・固定橋段|ご飯にする？お風呂にする？それとも…わ・た・し？|gohan ni suru? ofuro ni suru? soretomo... wa-ta-shi?|要先吃飯？先洗澡？還是……要・我？|調情的經典台詞（語氣沒有紀錄）||W|K8
+對特定人|Sorry, I just don't understand things from a CLANKER.||抱歉，我聽不懂鐵罐頭說的話。|對 Cecilia Immergreen（機械人設）||W|K8
+名言|I'm sorry that I'm not a tree but a helicopter, can't have everything in life.||很抱歉我不是樹而是直升機，人生不能什麼都有。|她的第一則推文（頭上旋轉的光環＝Kroniicopter）||W|K8a, K8
+口頭禪|（老爸笑話、時間諧音梗）|||愛講老爸冷笑話和時間諧音梗，會和 Ina 互丟諧音梗|常出現|O|K4, K22
+未證實線索|I'm not addicted to Minecraft / Ara ara / Your Mom.||我才沒有沉迷 Minecraft／あらあら／你媽啦|只在剪輯標題看到，沒放進角色卡||T|K21, K13, K20
+@Ceres-Fauna
+開場招呼|Konfauna~ Your gaming idol kirin Ceres Fauna is here!||Fauna 安～你們的遊戲偶像麒麟 Ceres Fauna 來了！|官方招呼語（2024 年抽樣的開場沒聽到，那次是邊調背景音樂邊小聲打招呼）||O|F1, F20
+開場招呼|Konfauna!||Fauna 安！（こん＋Fauna）|招呼語||W|F2
+結尾道別|…we will be back to Fauna Standard Time. I promise. Thank you so much for hanging out, and I will see you tomorrow. Wish me luck.||……我們會回到 Fauna 標準時間的，我保證。謝謝大家陪我，明天見，祝我好運。|2024-10-24 實際的結尾||A|F20
+結尾道別|LOVE & PEACE / Love, Fauna||愛與和平／愛你們的 Fauna|她在 X 上的最後一則貼文（2025 年畢業）||W|F2
+梗・固定橋段|return to nature||回歸大自然|Mumei 不開心或有人類走偏時；既是邀請也是威脅|常出現|W|F2
+笑聲・聲音|uuuu||嗚嗚嗚～|害羞、慌張時|常見|W|F2
+梗・固定橋段|I'm not that old! Only four and a half... four and a half billion.||我沒那麼老！才四十五……四十五億歲。|被說老時的年齡梗||W|F2
+名言|Mother Nature would never betray you... right?||大自然母親絕對不會背叛你……對吧？|溫柔安慰後面接一個有點可怕的尾巴||W|F2
+梗・固定橋段|Evil Fauna / No! Don't fall! You guys would fall too easily to Evil Fauna.||邪惡 Fauna／不行！別陷進去！你們太容易被邪惡 Fauna 拐走了。|另一個人格的梗：刻意壓低、戲劇化的假反派聲音||W|F2
+梗・固定橋段|Fauna Standard Time / It's okay. We can celebrate… I'm always on time.||Fauna 標準時間／沒關係，我們可以慶祝……我一向很準時。|遲到時的梗（慶祝 90 萬訂閱時其實已經過了）||A|F20
+梗・固定橋段|If you heard your name, you will now be the recipient of my next spell. / It's not a scam! Fauna Mart is real!||聽到自己名字的人，就是我下一個咒語的對象。／這不是詐騙！Fauna Mart 是真的！|念超級留言時：施咒讓大家去她的商店花錢||A|F20
+口頭禪|I am not the keeper of jet packs.||我不是噴射背包的保管人。|拒絕粉絲（Sapling）的要求||A|F20
+口頭禪|Plant them, plant them…||種下去、種下去……|念完一長串 Sapling 名字後的小小咒語||A|F20
+笑聲・聲音|ha ha… ha ha ha ha||哈哈……哈哈哈哈（假笑）|講完自己的諧音梗後平板的假笑||A|F20

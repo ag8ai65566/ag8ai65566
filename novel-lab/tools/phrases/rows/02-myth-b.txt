@@ -1,0 +1,81 @@
+@Ninomae-Inanis
+開場招呼|WAH! / WAH! Hello!||哇！／哇！哈囉！|招牌開場和慶祝聲；2026 官方訪談用「WAH! Hello!」開頭|很常見|O|I7, I2
+開場招呼|Good morning, afternoon, evening! Hope you're having a WAHnderful day!||早安、午安、晚安！希望你今天過得 WAH 美好！|官方簡介的招呼語（WAHnderful = WAH + wonderful）||O|I1
+開場招呼|Good morning, afternoon, evening, everyone.||大家早安、午安、晚安。|直播實際的開場（不管觀眾在哪個時區都照顧到）|固定|C|I3
+開場招呼|Could this be Tako time? → It is indeed Tako time. → How's everyone doing today?||這難道是章魚時間嗎？→ 沒錯，就是章魚時間。→ 大家今天好嗎？|開場的固定問答（中間隔幾句）；她的粉絲叫 Takodachi|固定|C|I3
+自我介紹|Ina Ina ii na~||伊那伊那好棒喔～（ii na = 真好）|早期的自我介紹，現在被要求才會做而且會害羞|回顧梗|W|I2, I11
+結尾道別|Thank you guys for chilling with me... Hope you guys have a wonderful rest of the morning, afternoon, evening. I'll see you guys next stream. Until next time. Bye-bye. Bye-bye.||謝謝大家陪我放鬆……祝你們接下來的早上、下午、晚上都很美好。下次直播見，下次見，掰掰、掰掰。|固定結尾；有時最後會小小、無力地「WAH」一聲|固定|C|I3, I12
+結尾道別|have a wonderful rest of the morning, afternoon, evening||祝你接下來的早上、下午、晚上都美好|結尾的核心句（語音辨識片段）||A|I3
+口頭禪|WAH / WAHnderful||哇／哇棒的|開場、興奮、任何時候|很常見|O|I1, I2
+梗・固定橋段|INAFF||（Ina + enough：諧音冷笑話夠了）|她講諧音冷笑話後，聊天室（有時她自己）回的吐槽|常見|W|I2
+梗・固定橋段|What happens when we squish your squishy hair? I'll bonk you. With a crowbar. Don't do it.||有人捏你軟軟的頭髮會怎樣？我會敲你。用鐵撬。不要這樣做。|聊天室搗亂時的威脅（觸手頭髮梗）|偶爾|W|I2, I4
+梗・固定橋段|If you ever sneak anything into my coffee, I'll bonk you!||你敢偷放東西到我咖啡裡，我就敲你！|同一類的玩笑威脅||W|I2
+口頭禪|Forgetty Beam!||遺忘光線！|說溜嘴或出錯之後，假裝發射光線讓大家忘記|偶爾|W|I2, I9
+口頭禪|Humu humu / Hmm||嗯嗯（點頭聽）|在語音通話裡養成的聆聽附和聲；現在少了（被點破才會出現）|現在少見|W|I2, I4, I22
+反應・感嘆|Warau na!||不准笑！（日文）|聊天室笑她的時候；只在 Wiki 名言列表，沒放進角色卡||W|I2
+反應・感嘆|Oh, crab.||喔，螃蟹。（＝ Oh, crap 的乾淨版）|代替髒話的說法；只在 Wiki 名言列表||W|I2
+口頭禪|I only have one brain cell||我只有一個腦細胞|自嘲|偶爾|W|I2, I3
+梗・固定橋段|Another gold trophy for Ninomanyo Inya'nis!||Ninomanyo Inya'nis 又一座金盃！|以前瑪利歐賽車的梗，聊天室還在用||W|I2, I13
+對特定人|Wooden shovel||木鏟子|和 Koseki Bijou 之間的無厘頭暗號和招呼語||W|I2, I14
+梗・固定橋段|TOMORROW?! / (Long pause) Tomorrow!||明天？！|2022 年任天堂直面會時的驚嚇反應，後來變成回顧梗（社群詞彙表標的時間點，未親耳確認）|回顧梗|W|I23, I2
+反應・感嘆|Sorry, I got a little excited there.||抱歉，我剛剛有點太激動了。|上面那次爆發之後的道歉（語音辨識片段）||A|I23
+口頭禪|I'm just a normal girl! / Despite how I look, I'm totally a normal human girl and a priestess of the Ancient Ones!||我只是個普通女孩！／別看我這樣，我完全是個普通人類女孩，也是古神的祭司！|否認自己有什麼不尋常||O|I19, I7
+反應・感嘆|Sorry, tentacles very big.||抱歉，觸手很大。|冷面道歉的梗||C|I3
+名言|I raised this chat. / I'm seiso, if you say so.||這個聊天室是我養大的。／如果你們這麼說，那我就是清楚系。|名言||W|I2
+梗・固定橋段|We don't say that in public.||這種話不要在公開場合說。|關於聊天室的色色縮寫「Forbidden WAH」||W|I2
+名言|Live without regrets.||活得不留遺憾。|真誠的一句話（次要來源轉寫）||W|I2
+未證實線索|（品牌改名後的自我介紹梗）||| 二手剪輯標題提到 hololive 英文分部改名後的介紹梗，實際台詞未查證||T|I10
+@Gawr-Gura
+自我介紹|Domo!! Sa-me desu!! Have you had shark thoughts today?|dōmo, same desu（same＝鮫）|你好！！我是鯊魚！！今天有想鯊魚的事嗎？|官方簡介的介紹詞；不是直播固定開場||O|G1, G3
+開場招呼|hello hello hello / hi guys / hey guys / hello everybody → welcome to [遊戲名]||哈囉哈囉哈囉／嗨大家→歡迎來到〔遊戲〕|平常的開場：三連「hello」或「hi guys」，然後「歡迎來到某某遊戲」；「Hi chat」不是她的招牌|固定|C|G3
+開場招呼|Hello, hello, hello, how's this one, oh yeah, oh yeah||哈囉哈囉哈囉，這樣可以嗎，喔耶喔耶|2022 年實際錄到的開場||A|G18
+開場・閒聊|hey do you want to know a really stupid fact about me||欸，你們想不想知道一個關於我的超蠢冷知識？|開始講故事前||A|G18
+開場招呼|Shark fact!||鯊魚冷知識！|以前用一個真的或亂編的鯊魚冷知識開場|早期|W|G2, G3
+梗・固定橋段|a||啊|她的第一則推文、出道第一句話（遲到 12 分 32 秒後帶回音說的），最有名的梗；是回顧梗，不是口癖|回顧梗|W|G2, G4
+結尾道別|goodbye goodbye goodbye, good night / bye bye bye||掰掰掰掰掰掰，晚安／掰掰掰|疊很多個再見，再加一句關心的話|固定|C|G3
+結尾道別|don't forget to drink your water and feed your belly / be kind to yourselves||別忘了喝水、填飽肚子／對自己好一點|結尾的關心句|常見|C|G3
+結尾道別|good night my gamblers, sleep tight, don't let the Joker bite||晚安我的賭徒們，睡個好覺，別被小丑咬到|依遊戲改編的結尾（範例：撲克類遊戲）||C|G3
+結尾道別|Take care and be kind to yourselves. Okay. Good night and goodbye. Goodbye. Goodbye. Goodbye. Bye-bye.||保重，對自己好一點。好。晚安，再見。再見、再見、再見，掰掰。|最後一次直播（2025-05-01 畢業）的道別||O|G3, G5
+口頭禪|You can't be mad at me... I'm cute.||你不能生我的氣……我很可愛。|推卸責任|常見|W|G2, G3
+反應・感嘆|What do you mean!?||什麼意思啦！？|對聊天室的話不爽地重複|常見|W|G2, G3
+口頭禪|I'm hungry. Is anybody else hungry?||我餓了。還有人餓嗎？|提到肚子餓|常見（估計）|W|G2, G3
+笑聲・聲音|Hoocha!||嘿哈！（自己配的音效）|任何快速、用力的動作（「踢空手道就會 hoocha」）|偶爾|W|G2, G3, G9
+反應・感嘆|Oh nyo!||喔不喵！（貓化的 oh no）|出狀況時|偶爾|W|G2, G9
+反應・感嘆|Shaaaaark!||鯊——魚！|炒熱氣氛的叫聲；也是出道直播標題|偶爾|W|G2, G7
+反應・感嘆|Parkour! / Ka-chow!||跑酷！／咖嚓！（Cars 閃電麥坤）|跳躍或逃跑時／Cars 梗||W|G2
+自稱|It's Gooba!||是 Gooba 啦！|用聊天室把她名字唸歪的版本自稱||W|G2, G3
+自我介紹|Hello, I am shark. / Ever heard of Atlantis? I'm from Atlantis.||你好，我是鯊魚。／聽過亞特蘭提斯嗎？我是從那裡來的。|自我介紹的梗||W|G2
+名言|I'll have you know that I have more hours on this game than you have on this planet.||告訴你，我玩這遊戲的時數比你活在地球上的時間還長。|裝腔作勢地炫耀||W|G2
+梗・固定橋段|hydrodynamic||流體力學的（＝流線型）|被嘲笑身材平時的回嘴||W|G2, G8
+口頭禪|Don't make me explain that joke.||別逼我解釋那個笑話。|聊天室的梗太深時||C|G3
+梗・固定橋段|I won't eat you. Maybe. / PWWIE||我不會吃掉你。大概吧。／PWWIE（看人但不打算吃的人）|不太可怕的鯊魚威脅||C|G3, G2
+梗・固定橋段|What is simp? Do you mean shrimp?||Simp 是什麼？你是說蝦子（shrimp）嗎？|她的會員／粉絲叫「shrimps（蝦子）」的由來，她自己也會再講一次||A|G18
+梗・固定橋段|GLORY TO GAWRSTOTZKA!||光榮歸於 Gawr 斯托茲卡！|玩《Papers, Please》時||W|G2
+反應・感嘆|Screw you! It's my stream!||去你的！這是我的直播！|被聊天室惹毛時||W|G2
+梗・固定橋段|（不喜歡穿褲子的梗）||| 一直在演的「不喜歡褲子」梗；語音報告只證實有這個話題，確切台詞未證實||A1|G2, G18
+口頭禪（較色）|I'm pettan, and I'm proud, okay?||我就是平，而且我很驕傲，好嗎？|面無表情的黃色冷笑話（非露骨）||W|G2
+口頭禪（較色）|Just because I go commando doesn't automatically mean that those cheeks are up for grabs, alright?||我沒穿內褲不代表那屁股就可以隨便摸，懂嗎？|同上||W|G2
+未證實線索|ara ara||あらあら（哎呀哎呀）|只在剪輯標題看到，沒有放進角色卡||T|G10
+@Watson-Amelia
+自我介紹|Test test, Hello~ Amelia Watson! #1 Detective at your service!||測試測試，哈囉～我是 Amelia Watson！第一名偵探為您服務！|官方簡介的介紹詞||O|A1
+自我介紹|I'm hololive EN's #1 detective, Amelia Waaaatson!||我是 hololive EN 第一名偵探，Amelia 華——生！|介紹詞的變化版||W|A2
+開場招呼|hello hello hello hello → how's everybody doing||哈囉哈囉哈囉哈囉→大家好嗎|隨性開場：一連串 hello，然後馬上岔題|常見|C|A3
+開場招呼|Hello everybody... hello hello, what up... hello mates, hello hello, Teamates||大家好……哈囉哈囉，怎樣啊……哈囉夥伴們，哈囉，Teamates|2024 年用搞笑英國腔開場；Teamates 是她的粉絲名||C|A3
+結尾道別|Thank you all for watching... thank you, thank you... good night... I'll see you guys tomorrow—bye-bye, bye-bye.||謝謝大家收看……謝謝、謝謝……晚安……明天見——掰掰、掰掰。|結尾||C|A3
+結尾道別|Alright, bye-bye!||好，掰掰！|2020 年實際錄到的結尾；她沒有固定品牌化的結尾台詞，不要自己編||A|A23
+其他（未放進卡片）|This is Amelia Watson, number one time traveling detective. / This is Amelia Watson signing off. Until next time. Bye!||我是 Amelia Watson，第一名時空旅行偵探。／Amelia Watson 下線了，下次見，掰！|2025 年擔任主持時的台詞；說話者未確認，沒有放進角色卡||C|A8
+梗・固定橋段|Nothing beats a ground pound. → …you guys know that's actually what I did to your mom last night. → Sorry. It's late.||（遊戲：沒什麼比得上重踏。）→……你們知道那其實是我昨晚對你媽做的事。→ 抱歉，太晚了。|她最有名的黃色梗（兩個語音辨識模型一致），之後遊戲裡任何踩、重擊都會拿出來|常出現|A|A23, A5, A2
+梗・固定橋段|Don't say ground pounding.||別說重踏。|自覺的回顧梗（2025）||C|A8
+口頭禪|It's elementary, right?||這很基本吧？（福爾摩斯的梗）|解謎、偵探玩笑|偶爾|O|A1
+口頭禪|It's the piiiing! / It's the ping! He's rubber-banding!||是延遲啦！／是延遲！他在瞬移！|線上輸了的藉口|常出現|W|A2
+口頭禪|It's not cheating, I got stuck, what do you want me to do?||這不是作弊，我卡住了，不然你要我怎樣？|被說作弊時||W|A2
+名言|I'm gonna get it! I'm gonna do it my way! I DON'T CARE IF GRAVITY SAYS YOU CAN'T, I'M GONNA!||我一定要拿到！我要照我的方式！我才不管重力說不行，我就是要！|拒絕提示的「Ame 流」||W|A2
+反應・感嘆|Wait, why did I say that out loud? / Wait what? Okay, we're not gonna repeat that one.||等等，我為什麼說出來了？／等等什麼？好，那句我們不再說一次。|說溜嘴之後||W|A2
+反應・感嘆|Don't look, stahp!||不要看，停——！|害羞時||W|A2
+笑聲・聲音|NEHEHEHEHE!||呢嘿嘿嘿嘿！|小惡魔／整人時的笑聲|常出現|W|A2
+反應・感嘆|Wadyameeeeean?||什麼意思——？|不敢相信時（照 Wiki 拼法）||W|A2
+口頭禪|It's just like Minecraft!||這就跟 Minecraft 一樣嘛！|任何方塊或建築遊戲||W|A2
+口頭禪|Oh, I know that feeling, as a detective.||喔，身為偵探，我懂那種感覺。|拿偵探身分當笑點||W|A2
+口頭禪|Trust me, I'm a time traveler.||相信我，我是時空旅行者。|預知未來的玩笑||W|A2
+口頭禪|cute cute cute||好可愛好可愛好可愛|看到寶可夢、狗狗時||C|A3
+口頭禪（較色）|Make money, get bitches.||賺大錢，把妹子。|粗俗的祝福語||W|A2

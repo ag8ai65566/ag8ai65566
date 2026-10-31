@@ -1,0 +1,29 @@
+# 角色檔背景段落記載的粉絲稱呼（補進總覽）
+@Mori-Calliope
+粉絲稱呼|Dead Beats||Dead Beats（死拍子們）|她的粉絲；開場招呼「What's up, Dead Beats?!」||W|C4
+@Takanashi-Kiara
+粉絲稱呼|KFP（employees）／my cute chickens||KFP（店員們）／我可愛的小雞們|粉絲是 KFP 的「員工」；她也叫聊天室「chat」「you guys」「y'all」||W|T2
+@Ninomae-Inanis
+粉絲稱呼|Takodachi／Tentacult||章魚朋友／觸手教|粉絲整體叫 Tentacult，每個人是一隻 Takodachi（她設計的紫色小吉祥物）||W|I2
+@Gawr-Gura
+粉絲稱呼|chumbuds／shrimps||Chum 夥伴（粉絲）／蝦子們（會員）|粉絲叫 chumbuds，會員叫 shrimps||W|G2
+@Watson-Amelia
+粉絲稱呼|Teamates||Teamates（茶伴們）|她的粉絲||W|A2
+@IRyS
+粉絲稱呼|IRyStocrats／Nephamily||IRyS 貴族們（粉絲）／拿非家族（會員）|||W|R2
+@Ouro-Kronii
+粉絲稱呼|Kronies（Kromies）||Kronies|她的粉絲，她也會叫 Kromies||W|K8
+@Ceres-Fauna
+粉絲稱呼|Saplings／Faunatics||小樹苗們（粉絲）／Fauna 狂熱者（會員）|吉祥物是想睡的麒麟 Nemu||W|F2
+@Nanashi-Mumei
+粉絲稱呼|Hoomans／Owl Pals||Hoomans（人類們）／貓頭鷹夥伴（會員）|||W|M2
+@Shiori-Novella
+粉絲稱呼|Novelites||Novelites（念作 novel-eets，小說迷）|她的粉絲||W|SN2
+@Koseki-Bijou
+粉絲稱呼|Pebbles||小石頭們|她的粉絲（她會說自己把粉絲吃掉，然後他們會重生）||W|KB2
+@Nerissa-Ravencroft
+粉絲稱呼|Jailbirds||囚鳥們|她的粉絲||W|N2
+@Cecilia-Immergreen
+粉絲稱呼|Otomos||Otomos（oto 音符＋tomo 朋友）|她的粉絲||W|CI2
+@Mococo-Abyssgard
+粉絲稱呼|Ruffians||Ruffians（小搗蛋們）|FUWAMOCO 共同的粉絲||W|MC2

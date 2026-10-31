@@ -1,0 +1,56 @@
+# 類型|原文|讀音・補充|中文意思|使用時機・說明|頻率|查證|來源
+@Mori-Calliope
+開場招呼|What's up, Dead Beats?!||大家好啊，Dead Beats（死拍子們）！|2026 年官方訪談寫的開場招呼；Dead Beats 是她的粉絲名|常用|O|C11
+開場招呼|hey deadbeats||嘿，deadbeats|她在社群貼文裡打招呼的寫法（小寫）|常用（文字）|S|C22
+自我介紹|Dead Beats, listen up! Your Mori's been working hard for you!||Dead Beats 聽好了！你們的 Mori 一直在為你們努力！|官方簡介的招呼語（書面）||O|C11
+開場招呼|What is up, humans?!||怎麼樣啊，人類們？！|出道直播的標題，之後當作回顧梗使用|回顧梗|W|C2, C4
+開場・閒聊|I'm here, I got my yum-yum drink.||我來了，我拿好我的好喝飲料了。|2026 年開台後坐定、閒聊時說|2026 實測|A|C30
+開場・閒聊|I'm really just not very organized. I'm gonna be honest with you guys.||老實跟你們說，我真的很沒條理。|2026 年開台閒聊時的自嘲|2026 實測|A|C30
+結尾道別|I'm your Mori, and I hope you'll remember me!||我是你們的 Mori，希望你們會記得我！|經典結尾台詞||W|C4, C3
+結尾道別|I'm your Mori, and you're gonna remember me!||我是你們的 Mori，你們一定會記得我的！|官方訪談結尾留言的版本||O|C11
+結尾道別|PEACE.||和平。（掰）|結尾台詞的最後一個字||W|C3
+結尾道別|I'll catch you guys on the flip side. … All right, take care everybody. I'll see you soon. Goodbye…||下次見啦……好，大家保重，很快再見，掰掰……|2026 年直播實際聽到的隨性結尾（那場沒有說 I'm your Mori／PEACE）|2026 實測|A|C30
+口頭禪|Guh.||（喝完飲料的「咕」一聲）|喝一口飲料之後的搞笑吸氣聲；有自己的 emote 和同名歌曲|常見|O|C6, C4, C23
+口頭禪|LISTEN. / Well... listen. Listen. / LISTEN TO ME!||聽著。／呃……聽著，聽著。／聽我說！|想搶話或拖時間；梗是「聽著」後面常常沒有下文|常見|W|C4
+自稱|your boy||你家老大（本大爺）|得意時的自稱；Wiki 說相當於日文裡有個性的第一人稱|偶爾|W|C4
+梗・固定橋段|I AM NOT YOUR DAD!||我不是你爸！|聊天室叫她「爸爸」時|常出現|W|C4, C21
+感謝|Big ups!||感謝！／大推！|道謝或幫人喊聲|常出現|O|C9, C4, C21
+名場面|Hey guys, two quick questions. Uh, number 1: What the fuck am I looking at? Number 2: Can... can we stop? … FOR FIVE! SECONDS?!||各位，兩個小問題。第一：我到底在看什麼鬼？第二：能不能……停一下？……停個五秒就好？！|被聊天室搞到崩潰時的名言（含髒話）|名場面|W|C4, C21
+反應・感嘆|Oh, hahahahahahaHAHAHAHAHAHAAAAA... whatever, man.||哈哈哈哈哈哈……算了啦。|大笑或暴怒到一半洩氣收尾|常出現|W|C4, C21
+反應・感嘆|Wait, NOOOOO!!! NO, WAIT A MINUTE, WAIT A MINUTE!!!||等等，不——！不不，等一下，等一下！|慌張的時候||W|C4
+反應・感嘆|Curse you, muscle memory!||可惡的肌肉記憶！|手殘操作失誤時||W|C4
+梗・固定橋段|Let me kill him. / What can I say, I'm attracted to death.||讓我宰了他。／沒辦法，我就是被死亡吸引。|死神角色的玩笑||W|C4
+口頭禪|Cringe is like, my brand.||尷尬就是我的招牌啦。|對自己的尷尬時刻坦然承認||W|C4
+梗・固定橋段|EN's Law||EN 定律|她自創的詞：連動人數越多，越容易出包|連動出包時|W|C4
+梗・固定橋段|Ya-GOH||（YAGOO 的唸法，重音在第二音節）|她唸社長 YAGOO 的方式；原本是唸錯，後來刻意保留||W|C4, C21
+梗・固定橋段|I'm still not gonna play League.||我還是不會玩 LoL 的。|一直拒絕玩英雄聯盟的老梗|常出現|W|C4, C21
+笑聲・聲音|Tee hee||嘻嘻（故意裝可愛）|出道時刻意裝可愛的聲音；她自己說「很快就不演了」|回顧梗|O|C15, C4, C8
+名言|If you quit when you suck, you'll suck forever.||如果爛的時候就放棄，你就會永遠爛下去。|直白的鼓勵||W|C20, C4
+名言|I think it's cute that people keep asking if I'm drunk. I'm not, I'm just like this.||大家一直問我是不是喝醉了，很可愛。我沒醉，我本來就這樣。|||W|C4
+對特定人|Hey, Kiara...unzip your pants?||欸，Kiara……把褲子拉鍊拉開？|對 Kiara 開的玩笑（非露骨）||W|C4
+名言|Sometimes I harden them to see how much muscle is there...IT'S THE WHOLE FUCKING THING!||有時候我會用力看看有多少肌肉……結果整個都是！|講自己肌肉時的激動發言（含髒話）||W|C4
+未證實線索|ey boss / ORA ORA ORA||欸老大／歐啦歐啦歐啦|只在剪輯影片標題看到，實際用法未查證，沒有放進角色卡||T|C21
+@Takanashi-Kiara
+開場招呼|Kikkeriki!!!||喔喔喔～！（德文的雞叫聲）|她說這是不死鳥的叫聲；開台、炒熱氣氛時喊，也會教別人一起喊|開台|O|T1, T2, T3, T5
+自我介紹|Welcome to KFP, are you here to order or to apply for a job?||歡迎光臨 KFP（Kiara 炸雞店），請問要點餐還是來應徵工作？|官方標語；她是 KFP 店長||O|T1
+開場招呼|Where are my day one members? Assemble.||我的元老會員在哪？集合！|開台點名（2026-09-27）|2026|C|T3
+結尾道別|In German we say ___ → Good night. / Bye-bye.||「在德文裡我們會說＿＿」→ 晚安／掰掰|固定結尾儀式：先講行程，再「在德文裡我們會說……」（常變成玩笑，例如「德文說 bye-bye」），最後晚安；忘記說也會變成梗|2026 年 9 月常見（估計）|C|T3
+結尾道別|Auf Wiedersehen||再見（德文）|經典結尾台詞||O|T2, T13
+結尾道別|Thank you for watching my cute chicken(s).||謝謝收看，我可愛的小雞們。|結尾謝謝觀眾（粉絲叫 chicken／KFP 員工）||C|T3
+反應・感嘆|Oh my god.||天啊。|任何反應|很常見（估計）|A|T3, T23
+口頭禪|Okay. Okay. Okay. / Wait. WAIT. / Anyway, anyway, anyway.||好、好、好。／等等，等一下！／總之、總之、總之。|拖時間、慌張、結束話題|很常見（估計）|C|T3
+口頭禪|Okie dokie.||好的好的～|答應或收尾|常出現（估計）|C|T3
+自稱|Look at Wawa using words. Oh my god. So proud. / It's a rare Wawa sighting.||看看 Wawa 會說話了，天啊好驕傲。／稀有的 Wawa 出現了。|用第三人稱（Wawa）誇自己或自嘲|2026 很常見|C|T3
+反應・感嘆|What the fuck? / Holy fuck / What the hell?||搞什麼鬼？／我的天（髒話）／什麼鬼？|遊戲裡被嚇到或覺得不公平；兩個語音辨識模型都聽到|常見（估計）|A|T3, T23
+對特定人|You little shit!||你這小混蛋！|對連動夥伴抗議；她自己的短片標題「GURA YOU LITTLE SHIT」||O|T16, T2
+口頭禪|Can Wawa swear less? Rhetorical question. / I wonder how many people realize I'm swearing right now?||Wawa 能不能少罵點髒話？反問句啦。／不知道有多少人發現我現在在罵髒話？|自覺地罵髒話|偶爾|C|T3, T2
+名場面|I HATE SAND! … I'm not gonna swear because this is a sponsored stream!||我討厭沙子！……我不會罵髒話，因為這是業配直播！|業配直播時忍住不罵||W|T2
+梗・固定橋段|Doom? DOOM? What do you mean, Doom?||Doom？DOOM？什麼叫 Doom？|Raora 說過的「Doom」（2025-11-16）變成回顧梗，她會假裝有心理陰影||W|T2, T6, T5
+梗・固定橋段|the Usual Room||老地方（懲罰室）|處罰不乖「員工」的地方；2020 年 12 月起的老梗|常出現|W|T2, T17
+梗・固定橋段|just Kiara, just Kiara, just Kiara / #WOKE / #YOLK||只看 Kiara／#WOKE（每天只看 Kiara）／#YOLK（你只愛 Kiara）|KFP 店長的邪教式洗腦梗|特定場合|W|T2, T5
+名言|You can't get me down, I'm a phoenix!||你打不倒我的，我是不死鳥！|死掉或受挫之後||W|T2
+梗・固定橋段|bottom left||左下角|成員「純潔／聰明」分佈圖上她的位置（最色又最笨），她自己也拿來自嘲|梗|W|T2
+感謝|danke schön / vielen Dank / pipipi||謝謝／非常感謝（德文）／嗶嗶嗶（「鳥語」的謝謝）|謝謝斗內||W|T2
+反應・感嘆|Tell my wife Krystal that I love her.||幫我跟我老婆 Krystal 說我愛她。|對遊戲角色犯花痴（2026）|2026|C|T3
+反應・感嘆|Okay. But this… is just divine… exquisite.||好……但這真是……太神聖了……太精緻了。|假裝優雅地稱讚||W|T2
+口頭禪|I'm an innocent maiden.||我是純潔的少女。|反諷地說（和 bottom left 梗呼應）||W|T2
