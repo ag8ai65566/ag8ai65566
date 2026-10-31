@@ -139,7 +139,7 @@ def real_seed():
     # Editable in the app.
     trips = [{
         "id": "t1", "name": "2027 年 1 月 東京",
-        "start": "2027-01-05", "end": "2027-01-12", "party": 2, "plan": {},
+        "start": "2027-01-04", "end": "2027-01-10", "party": 2, "plan": {},
     }]
     # A fingerprint of the baked data, so a browser holding older data knows to
     # fold the new version in rather than keep showing what it cached.

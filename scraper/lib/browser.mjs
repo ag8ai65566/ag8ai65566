@@ -40,17 +40,33 @@ const DELAY = Number(process.env.REQUEST_DELAY_MS || 4000);
  * sandbox image ships a different build under PLAYWRIGHT_BROWSERS_PATH and
  * blocks `playwright install`, so point at whatever is actually on disk.
  */
-function findChromium() {
+function findChromium({ headless } = {}) {
   if (process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE) return process.env.PLAYWRIGHT_CHROMIUM_EXECUTABLE;
   const root = process.env.PLAYWRIGHT_BROWSERS_PATH;
   if (!root) return undefined;
   try { if (chromium.executablePath() && fsSync.existsSync(chromium.executablePath())) return undefined; } catch { /* not installed */ }
-  const builds = fsSync.readdirSync(root)
-    .filter(d => /^chromium-\d+$/.test(d))
-    .sort((a, b) => Number(b.split("-")[1]) - Number(a.split("-")[1]));
-  for (const b of builds) {
-    const exe = path.join(root, b, "chrome-linux", "chrome");
-    if (fsSync.existsSync(exe)) return exe;
+
+  /* Two different binaries live here, and which one is needed depends on the
+     mode: headless uses the headless shell, headed the full browser. Some
+     images carry only one of them — looking for the full browser alone was
+     enough to fail outright on an image that ships just the shell. Prefer the
+     one that matches, then accept whatever is actually present. */
+  const kinds = [
+    ["chromium_headless_shell", "chrome-headless-shell-linux64", "chrome-headless-shell"],
+    ["chromium", "chrome-linux", "chrome"],
+  ];
+  if (!headless) kinds.reverse();
+
+  let dirs;
+  try { dirs = fsSync.readdirSync(root); } catch { return undefined; }
+  for (const [prefix, sub, bin] of kinds) {
+    const builds = dirs
+      .filter(d => new RegExp(`^${prefix}-\\d+$`).test(d))
+      .sort((x, y) => Number(y.split("-").pop()) - Number(x.split("-").pop()));
+    for (const b of builds) {
+      const exe = path.join(root, b, sub, bin);
+      if (fsSync.existsSync(exe)) return exe;
+    }
   }
   return undefined;
 }
@@ -100,7 +116,7 @@ export async function getBrowser() {
 
   browser = await chromium.launch({
     headless: !headful,
-    executablePath: findChromium(),
+    executablePath: findChromium({ headless: !headful }),
     proxy: proxyUrl ? { server: proxyUrl } : undefined,
     args,
   });
