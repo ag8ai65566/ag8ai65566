@@ -3,7 +3,7 @@ import { NavLink, Route, Routes } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import clsx from "clsx";
 import {
-  AudioLines, BookOpen, BookOpenText, Boxes, ClipboardCheck, Cpu, Drama, FileText, Home, ListChecks, Mic2, Moon,
+  AudioLines, BookOpen, BookOpenText, Boxes, ClipboardCheck, Cpu, Drama, FileText, FolderInput, Home, ListChecks, Mic2, Moon,
   Settings2, Stethoscope, Sun, Upload, Users, Wand2,
 } from "lucide-react";
 import { api, type Job } from "./api";
@@ -22,6 +22,7 @@ import Settings from "./pages/Settings";
 import Guide from "./pages/Guide";
 import Perform from "./pages/Perform";
 import CheckPage from "./pages/Check";
+import Delivery from "./pages/Delivery";
 
 const NAV = [
   { to: "/", label: "總覽", icon: Home },
@@ -29,6 +30,7 @@ const NAV = [
   { to: "/voices", label: "聲音與同意", icon: Users },
   { to: "/check", label: "檢查音檔", icon: Stethoscope },
   { to: "/import", label: "匯入錄音", icon: Upload },
+  { to: "/delivery", label: "交付資料夾", icon: FolderInput },
   { to: "/review", label: "檢查資料", icon: ClipboardCheck },
   { group: "訓練" },
   { to: "/train", label: "雲端訓練", icon: Cpu },
@@ -124,6 +126,7 @@ export default function App() {
               <Route path="/voices/:id" element={<Voices />} />
               <Route path="/check" element={<CheckPage />} />
               <Route path="/import" element={<ImportPage />} />
+              <Route path="/delivery" element={<Delivery />} />
               <Route path="/review" element={<Review />} />
               <Route path="/train" element={<Train />} />
               <Route path="/models" element={<Models />} />

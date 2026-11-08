@@ -166,8 +166,11 @@ def import_path(body: ImportPath):
 @router.post("/sources/{source_id}/process")
 def process_source(source_id: str, body: dict | None = None):
     body = body or {}
-    if not db.get("sources", source_id):
+    src = db.get("sources", source_id)
+    if not src:
         raise HTTPException(404)
+    if src["meta"].get("delivery"):
+        raise HTTPException(400, "交付資料夾匯入的片段已經切好，不需要重新處理。")
     return jobs.submit("prepare_source", {"source_id": source_id, "separate": bool(body.get("separate")),
                                           "language": body.get("language")}, "排隊處理")
 

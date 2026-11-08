@@ -1251,3 +1251,120 @@ def test_sound_recording_check(client, tmp_path):
     named_tags = set(_re.findall(r"`\[([^\]`]+)\]`", doc))
     assert named_tags and all(tags.lookup(t) for t in named_tags), [t for t in named_tags if not tags.lookup(t)]
     assert audio.MASTER_SR == sr
+
+
+def _tone_file(path: Path, seconds: float, sr: int = 44100, f0: float = 180.0) -> Path:
+    t = np.arange(int(sr * seconds)) / sr
+    y = 0.25 * np.sin(2 * math.pi * f0 * t) * (0.6 + 0.4 * np.sin(2 * math.pi * 3 * t))
+    y += 0.002 * np.random.default_rng(1).standard_normal(len(t))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with wave.open(str(path), "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(sr)
+        w.writeframes((np.clip(y, -1, 1) * 32767).astype("<i2").tobytes())
+    return path
+
+
+def _delivery_folder(root: Path) -> Path:
+    """A small delivery folder in the agreed layout (交付 / 常用語 / 素材庫)."""
+    p = root / "EN" / "Gen X" / "Alice"
+    d = p / "交付"
+    rows = [("clean/en/happy/20250101_vidA_10.00-12.00.wav", "Hello there friends"),
+            ("clean/en/angry/20250101_vidA_20.00-22.50.wav", "Why would you do that"),
+            ("clean/ja/neutral/20250102_vid-B_c_5.00-7.00.wav", "今日はいい天気です"),
+            ("bgm/en/sad/20250103_vidC_1.00-3.00.wav", "I miss it already"),
+            ("bgm/en/neutral/20250103_vidC_30.00-32.00.wav", "Okay let's go on")]
+    for f, _ in rows:
+        a, b = [float(x) for x in f.rsplit("_", 1)[1][:-4].split("-")]
+        _tone_file(d / f, b - a)
+    _tone_file(d / "clean_去背景音樂/en/sad/20250103_vidC~sep_1.00-3.00.wav", 2.0, f0=200)
+    (d / "clips.csv").write_text("file,stream,date,url,start,end,lang,emotion,bgm,transcript,notes\n" + "".join(
+        f"{f},s,20250101,https://youtu.be/x,0,1,{f.split('/')[1]},{f.split('/')[2]},{'yes' if f.startswith('bgm') else 'no'},{t},\n"
+        for f, t in rows), encoding="utf-8-sig")
+    _tone_file(d / "phrases/yippee/happy_20250101_vidA_40.00-40.80.wav", 0.8)
+    _tone_file(d / "phrases/yippee/excited_20250102_vid-B_c_9.00-9.70.wav", 0.7)
+    (d / "phrases.csv").write_text("phrase,variants,kind,lang,count,file,emotion\n"
+                                   "yippee,yipee|yippie,口頭禪,en,2,happy_20250101_vidA_40.00-40.80.wav,happy\n",
+                                   encoding="utf-8")
+    c = p / "常用語"
+    _tone_file(c / "原音/開場招呼/001_Hello everyone/neutral_20250101_vidA_0.50-2.00.wav", 1.5)
+    _tone_file(c / "原音/開場招呼/001_Hello everyone/neutral_20250104_vidD_0.40-1.90.wav", 1.5)
+    _tone_file(c / "已去背景音樂/開場招呼/001_Hello everyone/neutral_20250104_vidD_0.40-1.90.wav", 1.5, f0=210)
+    _tone_file(c / "原音/口頭禪/002_Cut off/happy_20250105_vidE_3.00-4.00.wav", 1.0)
+    _tone_file(c / "原音/口頭禪/003_Hello there/happy_20250101_vidA_10.20-11.90.wav", 1.7)
+    (c / "常用語.csv").write_text(
+        "檔名,編號,類型,原文,中文意思,處理方式,情緒,語言,句子完整度,聲紋相似度\n"
+        "neutral_20250101_vidA_0.50-2.00.wav,001,開場招呼,Hello everyone!,大家好,原音,neutral,en,完整,0.91\n"
+        "neutral_20250104_vidD_0.40-1.90.wav,001,開場招呼,Hello everyone!,大家好,原音,neutral,en,完整,0.88\n"
+        "happy_20250105_vidE_3.00-4.00.wav,002,口頭禪,Cut off line,斷掉,原音,happy,en,不完整,0.80\n"
+        "happy_20250101_vidA_10.20-11.90.wav,003,口頭禪,Hello there,你好,原音,happy,en,完整,0.90\n", encoding="utf-8")
+    m = p / "素材庫"
+    _tone_file(m / "原音/聲音/笑聲/20250101_vidA_50.00-50.80.wav", 0.8)
+    _tone_file(m / "原音/聲音/呼吸/20250101_vidA_60.00-60.60.wav", 0.6)
+    _tone_file(m / "原音/情緒/開心/20250101_vidA_70.00-72.00.wav", 2.0)
+    (m / "tags.csv").write_text("file,處理方式,大類,標籤,長度,文字\n"
+                                "20250101_vidA_70.00-72.00.wav,原音,情緒,開心,2.0,This is so fun\n", encoding="utf-8")
+    (p / "delivered.json").write_text("{}", encoding="utf-8")
+    return p
+
+
+def test_delivery_import(client, tmp_path):
+    from vstudio import delivery
+    assert delivery.parse_name("20250102_vid-B_c_5.00-7.00") == {
+        "emo": "", "date": "20250102", "vid": "vid-B_c", "sep": False, "start": 5.0, "end": 7.0}
+    assert delivery.parse_name("happy_20250103_vidC~sep_1.00-3.00")["sep"] is True
+    assert not delivery.is_complete("不完整") and delivery.is_complete("") and not delivery.is_complete("0.5")
+
+    c = client
+    person = _delivery_folder(tmp_path / "交付總覽")
+    v = c.post("/api/voices", json={"name": "alice", "kind": "other", "languages": ["en", "ja"]}).json()
+
+    s = c.post("/api/delivery/scan", json={"path": str(tmp_path / "交付總覽")}).json()
+    assert [x["name"] for x in s["people"]] == ["Alice"]
+    a = s["people"][0]
+    assert a["group"] == "EN / Gen X"
+    assert a["voice"] == {"id": v["id"], "name": "alice", "consent_ok": False}
+    assert a["delivery"]["clean"]["count"] == 3 and a["delivery"]["bgm"]["count"] == 2 and a["delivery"]["sep"]["count"] == 1
+    # 5 delivery clips (the bgm clip with a music-removed copy counts once), 2 common phrases (the cut-off one and the
+    # one overlapping a delivery clip are left out), 1 library clip with text
+    assert a["training"]["count"] == 8, a["training"]
+    assert a["training"]["skipped"]["incomplete"] == 1 and a["training"]["skipped"]["duplicate"] == 1
+    assert a["phrases"]["count"] == 4 and a["sounds"]["names"] == ["[呼吸]", "[笑聲]"]
+
+    # no consent, no import
+    r = c.post("/api/delivery/import", json={"path": str(person), "voice_id": v["id"]})
+    assert r.status_code == 409
+    c.post(f"/api/voices/{v['id']}/consent", data={"signed_name": "Alice", "date": "2026-11-08", "agreed": "true",
+                                                  "scope": "train,generate", "document_note": "signed copy in drawer"})
+    assert c.post("/api/delivery/import", json={"path": str(tmp_path), "voice_id": v["id"]}).status_code == 400
+
+    j = _wait(c, c.post("/api/delivery/import", json={"path": str(person), "voice_id": v["id"]}).json()["id"])
+    assert j["status"] == "done", j
+    res = j["result"]
+    assert res["added"] == 8 and res["dataset_id"], res
+    segs = c.get(f"/api/segments?voice_id={v['id']}&limit=100").json()
+    segs = segs["items"] if isinstance(segs, dict) else segs
+    by_text = {x["text"]: x for x in segs}
+    assert by_text["Hello there friends"]["emotion"] == "happy" and by_text["Hello there friends"]["lang"] == "en"
+    assert by_text["今日はいい天気です"]["lang"] == "ja"
+    sad = by_text["I miss it already"]
+    assert "separated" in sad["flags"] and sad["emotion"] == "sad"            # the music-removed copy was used
+    assert "bgm" in by_text["Okay let's go on"]["flags"]                       # no copy: the original, flagged
+    assert by_text["This is so fun"]["emotion"] == "happy"                     # library tag 開心 → happy
+    assert "Cut off line" not in by_text
+    assert all(x["status"] == "approved" for x in segs)
+    srcs = {x["source_id"] for x in segs}
+    assert len(srcs) == 4                                                      # one recording per stream: A, B, C, D
+    ds = [d for d in c.get(f"/api/datasets?voice_id={v['id']}").json() if d["id"] == res["dataset_id"]][0]
+    assert ds["n_items"] == 8
+
+    ph = {p["text"]: p for p in c.get(f"/api/voices/{v['id']}/phrases").json()}
+    assert sorted(ph) == ["Hello everyone!", "Hello there", "[呼吸]", "[笑聲]", "yippee"]
+    assert len(ph["yippee"]["clips"]) == 2 and ph["yippee"]["variants"] == ["yipee", "yippie"]
+    assert {x["emotion"] for x in ph["yippee"]["clips"]} == {"happy", "excited"}
+    assert len(ph["Hello everyone!"]["clips"]) == 2                            # vidA, and vidD once (not twice)
+    assert len(ph["[笑聲]"]["clips"]) == 1
+
+    # a second import of the same folder adds nothing and keeps what was there
+    j2 = _wait(c, c.post("/api/delivery/import", json={"path": str(person), "voice_id": v["id"], "build": False}).json()["id"])
+    assert j2["result"]["added"] == 0 and j2["result"]["phrase_clips"] == 0
+    assert c.post(f"/api/sources/{segs[0]['source_id']}/process", json={}).status_code == 400

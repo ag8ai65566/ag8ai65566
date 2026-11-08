@@ -9,6 +9,7 @@ import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader, Progress } fr
 const FLAGS: Record<string, string> = {
   asr_disagree: "兩個辨識結果不一致", noisy: "雜音多", clipping: "爆音", unknown_speaker: "不確定是誰",
   overlap: "可能多人同時說話", no_text: "沒有文字",
+  bgm: "背景有小聲的音樂", separated: "去過背景音樂", delivery: "交付資料夾匯入",
 };
 // flags written by automatic review (labels for the badges on each segment)
 const AUTO: Record<string, [string, "green" | "red" | "blue" | "amber" | "brand"]> = {
