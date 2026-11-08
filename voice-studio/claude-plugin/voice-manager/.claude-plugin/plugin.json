@@ -1,0 +1,7 @@
+{
+  "name": "voice-manager",
+  "version": "0.1.0",
+  "description": "右側面板：一鍵開啟電腦上的 Voice Manager（E:\\HololiveVoiceManager）",
+  "types": "./types/index.d.ts",
+  "license": "MIT"
+}

@@ -1,0 +1,5 @@
+{
+  "name": "voice-studio",
+  "owner": { "name": "Voice Studio" },
+  "plugins": [{ "name": "voice-manager", "source": "./voice-manager" }]
+}
