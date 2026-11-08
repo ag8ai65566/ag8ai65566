@@ -26,6 +26,7 @@ import hashlib
 import io
 import re
 import time
+import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -113,14 +114,33 @@ def col(row: dict, *names: str) -> str:
     return ""
 
 
+def _norm_path(x: str) -> str:
+    x = unicodedata.normalize("NFC", x.replace("\\", "/").strip())
+    return re.sub(r"^(\./)+", "", x).lower()
+
+
 def by_file(rows: list[dict]) -> dict[str, dict]:
-    """CSV rows keyed by the audio file's name (the file column may hold a name or a relative path)."""
-    out = {}
+    """CSV rows keyed by the file column: a path from the CSV's own folder (交付\\, 常用語\\, 素材庫\\), e.g.
+    "原音/開場招呼/153_…/happy_….wav", or a bare file name. A bare name is only used when it is unique: the
+    original and the music-removed copy of one clip have the same name in different folders."""
+    out: dict[str, dict] = {}
+    names: dict[str, list[dict]] = {}
     for r in rows:
-        f = col(r, "file", "檔名", "檔案", "filename", "path", "路徑", "音檔")
+        f = col(r, "file", "檔案", "檔名", "filename", "path", "路徑", "音檔")
         if f:
-            out[Path(f.replace("\\", "/")).name] = r
+            rel = _norm_path(f)
+            out["rel:" + rel] = r
+            names.setdefault(rel.rsplit("/", 1)[-1], []).append(r)
+    for n, rs in names.items():
+        if len(rs) == 1:
+            out["name:" + n] = rs[0]
     return out
+
+
+def row_for(rows: dict[str, dict], base: Path, p: Path) -> dict:
+    """The CSV row of an audio file: by its path from the CSV's folder, else by its name when that is unique."""
+    rel = _norm_path(p.relative_to(base).as_posix())
+    return rows.get("rel:" + rel) or rows.get("name:" + rel.rsplit("/", 1)[-1]) or {}
 
 
 def _num(x: str) -> float | None:
@@ -166,7 +186,7 @@ def read_delivery(root: Path) -> list[Clip]:
             rel = p.relative_to(base).parts
             lang = LANGS.get(rel[0].lower()) if len(rel) > 2 else None
             emo = emotion(rel[1]) if len(rel) > 2 else None
-            r = rows.get(p.name, {})
+            r = row_for(rows, d, p)
             c = _clip(p, "delivery", kind=kind, lang=lang, emotion=emo, text=col(r, "transcript", "text", "文字"))
             if r:
                 c.lang = LANGS.get(col(r, "lang").lower(), c.lang) if col(r, "lang") else c.lang
@@ -186,7 +206,7 @@ def read_delivery(root: Path) -> list[Clip]:
     if base.is_dir():
         for folder in sorted(x for x in base.iterdir() if x.is_dir()):
             for p in _wavs(folder):
-                r = files.get(p.name, {})
+                r = row_for(files, d, p)
                 text = col(r, "phrase", "口頭禪") or folder.name
                 c = _clip(p, "phrase", phrase=text, lang=(meta.get(text) or {}).get("lang"),
                           emotion=emotion(col(r, "emotion")))
@@ -199,7 +219,9 @@ def read_common(root: Path) -> list[Clip]:
     d = root / "常用語"
     rows = by_file(read_csv(d / "常用語.csv"))
     by_no: dict[str, dict] = {}
-    for r in rows.values():
+    for k, r in rows.items():
+        if not k.startswith("rel:"):
+            continue
         no = col(r, "編號", "id", "no")
         if no and col(r, "原文", "text", "phrase"):
             by_no.setdefault(no, r)
@@ -212,7 +234,7 @@ def read_common(root: Path) -> list[Clip]:
                 continue
             ptype, folder = rel[0], rel[1]
             no, _, short = folder.partition("_")
-            r = rows.get(p.name) or by_no.get(no, {})
+            r = row_for(rows, d, p) or by_no.get(no, {})
             text = col(r, "原文", "text", "phrase") or short or folder
             c = _clip(p, "common", kind=kind, phrase=text, group=ptype, text=text,
                       lang=LANGS.get(col(r, "語言", "lang").lower()), emotion=emotion(col(r, "情緒", "emotion")),
@@ -235,7 +257,7 @@ def read_library(root: Path) -> list[Clip]:
             if len(rel) < 3:
                 continue
             grp, tag = rel[0], rel[1]
-            r = rows.get(p.name, {})
+            r = row_for(rows, d, p)
             c = _clip(p, "library", kind=kind, phrase=tag, group=grp, text=col(r, "文字", "text", "transcript"))
             c.emotion = tags.emotion_of([tag]) if grp not in SOUND_GROUPS else None
             out.append(c)

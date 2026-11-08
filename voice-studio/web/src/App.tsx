@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { api, type Job } from "./api";
 import ManualPanel from "./ManualPanel";
+import VoiceManagerButton from "./VoiceManager";
 import Dashboard from "./pages/Dashboard";
 import Voices from "./pages/Voices";
 import ImportPage from "./pages/Import";
@@ -108,6 +109,7 @@ export default function App() {
         <header className="flex h-14 shrink-0 items-center justify-between gap-4 border-b border-zinc-200 bg-white/80 px-6 backdrop-blur dark:border-zinc-800 dark:bg-zinc-900/80">
           <ActiveJobs />
           <div className="ml-auto flex items-center gap-2">
+            <VoiceManagerButton />
             <button onClick={() => setManual(!manual)} title={manual ? "收起使用手冊" : "打開使用手冊"}
               className={clsx("flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm",
                 manual ? "bg-brand-50 font-medium text-brand-700 dark:bg-brand-900/30 dark:text-brand-200" : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800")}>

@@ -1283,7 +1283,7 @@ def _delivery_folder(root: Path) -> Path:
     _tone_file(d / "phrases/yippee/happy_20250101_vidA_40.00-40.80.wav", 0.8)
     _tone_file(d / "phrases/yippee/excited_20250102_vid-B_c_9.00-9.70.wav", 0.7)
     (d / "phrases.csv").write_text("phrase,variants,kind,lang,count,file,emotion\n"
-                                   "yippee,yipee|yippie,口頭禪,en,2,happy_20250101_vidA_40.00-40.80.wav,happy\n",
+                                   "yippee,yipee|yippie,口頭禪,en,2,phrases/yippee/happy_20250101_vidA_40.00-40.80.wav,happy\n",
                                    encoding="utf-8")
     c = p / "常用語"
     _tone_file(c / "原音/開場招呼/001_Hello everyone/neutral_20250101_vidA_0.50-2.00.wav", 1.5)
@@ -1291,18 +1291,24 @@ def _delivery_folder(root: Path) -> Path:
     _tone_file(c / "已去背景音樂/開場招呼/001_Hello everyone/neutral_20250104_vidD_0.40-1.90.wav", 1.5, f0=210)
     _tone_file(c / "原音/口頭禪/002_Cut off/happy_20250105_vidE_3.00-4.00.wav", 1.0)
     _tone_file(c / "原音/口頭禪/003_Hello there/happy_20250101_vidA_10.20-11.90.wav", 1.7)
+    # as delivered: the file column is 檔案 (6th), a path from 常用語\ (the same file name under 原音 and 已去背景音樂)
+    h = "原音/開場招呼/001_Hello everyone"
     (c / "常用語.csv").write_text(
-        "檔名,編號,類型,原文,中文意思,處理方式,情緒,語言,句子完整度,聲紋相似度\n"
-        "neutral_20250101_vidA_0.50-2.00.wav,001,開場招呼,Hello everyone!,大家好,原音,neutral,en,完整,0.91\n"
-        "neutral_20250104_vidD_0.40-1.90.wav,001,開場招呼,Hello everyone!,大家好,原音,neutral,en,完整,0.88\n"
-        "happy_20250105_vidE_3.00-4.00.wav,002,口頭禪,Cut off line,斷掉,原音,happy,en,不完整,0.80\n"
-        "happy_20250101_vidA_10.20-11.90.wav,003,口頭禪,Hello there,你好,原音,happy,en,完整,0.90\n", encoding="utf-8")
+        "編號,類型,原文,中文意思,處理方式,檔案,情緒,語言,句子完整度,聲紋相似度\n"
+        f"001,開場招呼,Hello everyone!,大家好,原音,{h}/neutral_20250101_vidA_0.50-2.00.wav,neutral,en,完整,0.91\n"
+        f"001,開場招呼,Hello everyone!,大家好,原音,{h}/neutral_20250104_vidD_0.40-1.90.wav,neutral,en,完整,0.88\n"
+        "001,開場招呼,Hello everyone!,大家好,已去背景音樂,"
+        "已去背景音樂/開場招呼/001_Hello everyone/neutral_20250104_vidD_0.40-1.90.wav,neutral,en,完整,0.86\n"
+        "002,口頭禪,Cut off line,斷掉,原音,原音/口頭禪/002_Cut off/happy_20250105_vidE_3.00-4.00.wav,happy,en,不完整,0.80\n"
+        "003,口頭禪,Hello there,你好,原音,原音/口頭禪/003_Hello there/happy_20250101_vidA_10.20-11.90.wav,happy,en,完整,0.90\n",
+        encoding="utf-8-sig")
     m = p / "素材庫"
     _tone_file(m / "原音/聲音/笑聲/20250101_vidA_50.00-50.80.wav", 0.8)
     _tone_file(m / "原音/聲音/呼吸/20250101_vidA_60.00-60.60.wav", 0.6)
     _tone_file(m / "原音/情緒/開心/20250101_vidA_70.00-72.00.wav", 2.0)
     (m / "tags.csv").write_text("file,處理方式,大類,標籤,長度,文字\n"
-                                "20250101_vidA_70.00-72.00.wav,原音,情緒,開心,2.0,This is so fun\n", encoding="utf-8")
+                                "原音/情緒/開心/20250101_vidA_70.00-72.00.wav,原音,情緒,開心,2.0,This is so fun\n"
+                                "原音/聲音/笑聲/20250101_vidA_50.00-50.80.wav,原音,聲音,笑聲,0.8,\n", encoding="utf-8")
     (p / "delivered.json").write_text("{}", encoding="utf-8")
     return p
 
@@ -1313,6 +1319,14 @@ def test_delivery_import(client, tmp_path):
         "emo": "", "date": "20250102", "vid": "vid-B_c", "sep": False, "start": 5.0, "end": 7.0}
     assert delivery.parse_name("happy_20250103_vidC~sep_1.00-3.00")["sep"] is True
     assert not delivery.is_complete("不完整") and delivery.is_complete("") and not delivery.is_complete("0.5")
+    # CSV rows by path from the CSV's folder; a file name shared by two folders is never matched by name alone
+    rows = delivery.by_file([{"檔案": "原音\\a\\x.wav", "n": "1"}, {"檔案": "已去背景音樂/a/x.wav", "n": "2"},
+                             {"檔案": "y.wav", "n": "3"}])
+    base = tmp_path / "常用語"
+    assert delivery.row_for(rows, base, base / "已去背景音樂" / "a" / "x.wav")["n"] == "2"
+    assert delivery.row_for(rows, base, base / "原音" / "a" / "x.wav")["n"] == "1"
+    assert delivery.row_for(rows, base, base / "原音" / "b" / "x.wav") == {}
+    assert delivery.row_for(rows, base, base / "原音" / "b" / "y.wav")["n"] == "3"
 
     c = client
     person = _delivery_folder(tmp_path / "交付總覽")
@@ -1368,3 +1382,35 @@ def test_delivery_import(client, tmp_path):
     j2 = _wait(c, c.post("/api/delivery/import", json={"path": str(person), "voice_id": v["id"], "build": False}).json()["id"])
     assert j2["result"]["added"] == 0 and j2["result"]["phrase_clips"] == 0
     assert c.post(f"/api/sources/{segs[0]['source_id']}/process", json={}).status_code == 400
+
+
+def test_voice_manager_button(client, tmp_path, monkeypatch):
+    from vstudio import launcher
+    c = client
+    vm = tmp_path / "HololiveVoiceManager"
+    (vm / "app").mkdir(parents=True)
+    for f in ("Start Manager.bat", "install.bat", "readme.txt", "app/VoiceManager.exe"):
+        (vm / f).write_text("x", encoding="utf-8")
+    monkeypatch.setattr(launcher, "DEFAULT_DIR", vm)
+    opened: list[str] = []
+    monkeypatch.setattr(launcher, "launch", lambda t: opened.append(t))
+
+    s = c.get("/api/launcher/voice-manager").json()
+    assert s["resolved"] is None and s["target"] == ""
+    assert s["candidates"] == [str(vm / "Start Manager.bat"), str(vm / "app" / "VoiceManager.exe")]  # no installer
+    assert c.post("/api/launcher/voice-manager/open", json={}).status_code == 409   # nothing chosen yet
+    assert c.post("/api/launcher/voice-manager/open", json={"target": str(vm / "readme.txt")}).status_code == 400
+
+    r = c.post("/api/launcher/voice-manager/open", json={"target": f'"{vm / "Start Manager.bat"}"'}).json()
+    assert r["url"] is None and opened == [str(vm / "Start Manager.bat")]
+    assert c.get("/api/launcher/voice-manager").json()["resolved"] == str(vm / "Start Manager.bat")
+    c.post("/api/launcher/voice-manager/open", json={})                           # remembered: one click
+    assert opened[-1] == str(vm / "Start Manager.bat")
+
+    r = c.post("/api/launcher/voice-manager/open", json={"target": "http://127.0.0.1:8000"}).json()
+    assert r["url"] == "http://127.0.0.1:8000" and len(opened) == 2               # a web address is opened by the page
+
+    # with nothing set and exactly one program in the folder, that one is used
+    c.put("/api/settings", json={"voice_manager": ""})
+    (vm / "app" / "VoiceManager.exe").unlink()
+    assert c.get("/api/launcher/voice-manager").json()["resolved"] == str(vm / "Start Manager.bat")

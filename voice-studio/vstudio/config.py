@@ -47,6 +47,8 @@ DEFAULTS = {
     "speed": {},          # measured seconds per training step, per engine:preset:gpu (filled in after runs)
     # pronunciation dictionary applied before synthesis: [{"from": "推し", "to": "おし", "lang": "ja"}]
     "lexicon": [],
+    # the button at the top right: a program, shortcut, batch file or folder to open, or a web address
+    "voice_manager": "",
 }
 
 _lock = threading.Lock()

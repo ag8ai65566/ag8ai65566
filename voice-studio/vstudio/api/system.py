@@ -4,10 +4,10 @@ from __future__ import annotations
 import platform
 import shutil
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 
-from .. import __version__, config, db, jobs
+from .. import __version__, config, db, jobs, launcher
 
 router = APIRouter(prefix="/api", tags=["system"])
 
@@ -84,3 +84,41 @@ def put_secret(body: SecretIn):
     if not ok:
         raise HTTPException(500, "無法寫入系統的認證儲存區（Windows 認證管理員）。")
     return config.secret_status()
+
+
+# --- the Voice Manager button ------------------------------------------------------------------------------------
+
+LOOPBACK = {"127.0.0.1", "::1", "localhost", "testclient"}
+
+
+@router.get("/launcher/voice-manager")
+def voice_manager_status():
+    return launcher.status()
+
+
+class LaunchIn(BaseModel):
+    target: str | None = None   # choose (and remember) what to open; empty = what is already set
+
+
+@router.post("/launcher/voice-manager/open")
+def voice_manager_open(body: LaunchIn, request: Request):
+    """Open the program on this computer. Only from a browser on the same computer: a studio opened over the network
+    (password mode) never starts programs for a remote visitor."""
+    if (request.client.host if request.client else "") not in LOOPBACK:
+        raise HTTPException(403, "只能在執行 Voice Studio 的這台電腦上開啟。")
+    if body.target is not None:
+        t = body.target.strip().strip('"')
+        if not launcher.valid(t):
+            raise HTTPException(400, f"找不到可以開啟的程式、捷徑或資料夾：{t}")
+        config.save_settings({"voice_manager": t})
+    st = launcher.status()
+    target = st["resolved"]
+    if not target:
+        raise HTTPException(409, "還沒選要開啟哪個程式。")
+    if st["is_url"]:
+        return {"opened": target, "url": target}
+    try:
+        launcher.launch(target)
+    except OSError as e:
+        raise HTTPException(500, f"開不起來：{e}")
+    return {"opened": target, "url": None}
