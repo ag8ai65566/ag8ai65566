@@ -180,6 +180,12 @@ def start(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = Non
         job = jobs.submit("colab_prepare", {"training_id": tid}, message="放進雲端硬碟資料夾")
         return db.update("trainings", tid, {"job_id": job["id"]})
     loc = runpod.location()
+    try:  # the volume must still exist and be reachable over S3; an unreachable API is left to the upload itself
+        chk = runpod.check()
+    except Exception:
+        chk = {}
+    if chk.get("problem"):
+        raise ValueError(chk["problem"] + "還沒有上傳任何資料。")
     problem = _stock_problem(engine_id, pl["preset"], pl["gpu"], loc["datacenter"])
     if problem:  # checked before anything is uploaded or rented
         raise ValueError(problem + "還沒有上傳任何資料。")

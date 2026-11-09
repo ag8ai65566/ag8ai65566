@@ -1542,6 +1542,36 @@ def test_sold_out_gpu_stops_before_upload_and_retry_reuses_upload(client, monkey
     assert c.post(f"/api/training/{tid}/retry-gpu", json={"gpu": "NVIDIA H100 80GB HBM3"}).status_code == 400
 
 
+def test_unusable_volume_is_flagged_and_stops_start(client, monkeypatch, tmp_path):
+    """A deleted volume, or one in a datacenter without the S3 API, is named on the pages and refused before upload."""
+    from vstudio import config, db
+    from vstudio.cloud import runpod
+    c = client
+    vols = [{"id": "tx", "name": "better_plum_gibbon", "dataCenterId": "US-TX-3", "size": 150},
+            {"id": "wa", "name": "fine", "dataCenterId": "US-WA-1", "size": 150}]
+    monkeypatch.setattr(runpod, "_req", lambda method, path, **kw: vols if path == "/networkvolumes" else {})
+
+    def problem(volume, dc):
+        config.save_settings({"runpod_volume_id": volume, "runpod_datacenter": dc})
+        return c.get("/api/cloud/check").json()
+
+    chk = problem("gone", "US-CA-2")
+    assert [v["s3"] for v in chk["volumes"]] == [False, True] and "gone" in chk["problem"]
+    assert "US-TX-3" in problem("tx", "US-TX-3")["problem"]                # no S3 endpoint there
+    assert "US-WA-1" in problem("wa", "US-CA-2")["problem"]                # datacenter does not match the volume
+    assert problem("wa", "US-WA-1")["problem"] == ""
+
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 40, "hours": 1.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"]}})
+    problem("gone", "US-CA-2")
+    r = c.post("/api/training", json={"dataset_id": ds["id"], "engine": "voxcpm2", "preset": "lora", "gpu": "NVIDIA L40S"})
+    assert r.status_code == 400 and "gone" in r.json()["detail"] and not db.query("SELECT * FROM trainings")
+
+
 def test_unmeasured_gpu_estimate_scales_a_measured_speed(client, tmp_path):
     """A faster card is never estimated slower: an unmeasured card uses another card's measured speed, scaled."""
     from vstudio import config, db, training

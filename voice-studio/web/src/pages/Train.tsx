@@ -4,7 +4,7 @@ import { useMutation, useQuery, useQueryClient, type UseQueryResult } from "@tan
 import clsx from "clsx";
 import { AlertTriangle, Cloud, Cpu, FileText, FolderSync, RefreshCw, Sparkles, Square } from "lucide-react";
 import {
-  api, fmtDur, fmtMin, fmtTime, fmtUsd, inStock, type ColabStatus, type Dataset, type EngineInfo, type GpuOffer, type GpuOffers,
+  api, fmtDur, fmtMin, fmtTime, fmtUsd, inStock, type CloudCheck, type ColabStatus, type Dataset, type EngineInfo, type GpuOffer, type GpuOffers,
   type Orphan, type Plan, type Training, type Voice,
 } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader, Progress } from "../ui";
@@ -81,6 +81,9 @@ export default function Train() {
   const cloudReady = !!s && s.secrets.runpod_api_key && s.secrets.runpod_s3_access_key && s.secrets.runpod_s3_secret_key && !!s.settings.runpod_volume_id && !!s.settings.runpod_datacenter;
   const colab = useQuery({ queryKey: ["colab"], queryFn: () => api.get<ColabStatus>("/api/colab/status") });
   const colabReady = !!colab.data?.ok;
+  const check = useQuery({ queryKey: ["cloudcheck"], queryFn: () => api.get<CloudCheck>("/api/cloud/check"),
+    enabled: !!cloudReady, staleTime: 60000, retry: false });
+  const volumeProblem = (check.data?.ok && check.data.problem) || "";
   const [logFor, setLogFor] = useState<Training | null>(null);
   return (
     <div>
@@ -92,8 +95,14 @@ export default function Train() {
           <div>還沒設定雲端訓練。二選一：到 <Link to="/settings" className="font-medium underline">設定 → 雲端 GPU</Link> 填入 RunPod 的金鑰和網路磁碟（<Link to="/guide/04-cloud" className="underline">教學</Link>），或到 <Link to="/settings#colab" className="font-medium underline">設定 → Google Colab</Link> 選雲端硬碟資料夾（<Link to="/guide/11-colab" className="underline">教學</Link>）。</div>
         </div>
       )}
+      {volumeProblem && (
+        <div className="mb-6 flex items-start gap-3 rounded-xl border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-800 dark:border-red-900 dark:bg-red-950/40 dark:text-red-200">
+          <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+          <div>RunPod 現在不能訓練：{volumeProblem} <Link to="/settings" className="font-medium underline">設定 → 雲端 GPU</Link></div>
+        </div>
+      )}
       {cloudReady && <Orphans />}
-      <NewTraining initialDataset={sp.get("dataset") ?? ""} cloudReady={!!cloudReady} colabReady={colabReady} />
+      <NewTraining initialDataset={sp.get("dataset") ?? ""} cloudReady={!!cloudReady} colabReady={colabReady} volumeProblem={volumeProblem} />
       <Card title="訓練紀錄" className="mt-6">
         {!trainings.data?.length ? <Empty icon={<Cloud className="size-8" />} title="還沒有訓練" /> : (
           <div className="space-y-3">
@@ -106,7 +115,7 @@ export default function Train() {
   );
 }
 
-function NewTraining({ initialDataset, cloudReady, colabReady }: { initialDataset: string; cloudReady: boolean; colabReady: boolean }) {
+function NewTraining({ initialDataset, cloudReady, colabReady, volumeProblem }: { initialDataset: string; cloudReady: boolean; colabReady: boolean; volumeProblem: string }) {
   const qc = useQueryClient();
   const voices = useQuery({ queryKey: ["voices"], queryFn: () => api.get<Voice[]>("/api/voices") });
   const datasets = useQuery({ queryKey: ["datasets"], queryFn: () => api.get<Dataset[]>("/api/datasets") });
@@ -262,7 +271,8 @@ function NewTraining({ initialDataset, cloudReady, colabReady }: { initialDatase
               : "我了解這會用我的 RunPod 帳號租 GPU 並計費；訓練完成、失敗、取消或達到時數上限時，平台會自動關機。"}</span>
           </label>
           <Button className="w-full" onClick={() => start.mutate()} loading={start.isPending}
-            disabled={!ack || !(target === "colab" ? colabReady : cloudReady) || !plan.data || !!plan.data.blocked || soldOut}>
+            disabled={!ack || !(target === "colab" ? colabReady : cloudReady) || !plan.data || !!plan.data.blocked || soldOut
+              || (target === "runpod" && !!volumeProblem)}>
             {target === "colab" ? <><FolderSync className="size-4" />放進雲端硬碟，準備在 Colab 訓練</> : <><Cloud className="size-4" />開始雲端訓練</>}
           </Button>
           <ErrorText error={start.error} />

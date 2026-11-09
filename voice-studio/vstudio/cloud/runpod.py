@@ -77,17 +77,39 @@ def _req(method: str, path: str, **kw):
 
 
 def check() -> dict:
-    """Verify the API key and the volume; returns the volume's datacenter and size."""
+    """Verify the API key and the volume; returns the account's volumes (s3: whether the studio can use one) and,
+    in problem, why the volume in settings cannot be used for training ("" when it can)."""
     st = config.load_settings()
     vols = _req("GET", "/networkvolumes")
     vols = vols if isinstance(vols, list) else vols.get("data", vols)
     out = {"ok": True, "volumes": [{"id": v.get("id"), "name": v.get("name"), "dataCenterId": v.get("dataCenterId"),
-                                    "size": v.get("size")} for v in vols]}
+                                    "size": v.get("size"), "s3": v.get("dataCenterId") in S3_DATACENTERS}
+                                   for v in vols]}
     vid = st.get("runpod_volume_id")
     if vid:
         match = [v for v in out["volumes"] if v["id"] == vid]
         out["volume"] = match[0] if match else None
+    out["problem"] = volume_problem(out["volumes"], vid, st.get("runpod_datacenter"))
     return out
+
+
+def volume_problem(volumes: list[dict], volume_id: str | None, datacenter: str | None) -> str:
+    """Why the volume in settings cannot be used for training: gone, in a datacenter without the S3 API, or set
+    with another datacenter than the one it is in. "" when it can be used (or none is set yet)."""
+    if not volume_id:
+        return ""
+    v = next((x for x in volumes if x["id"] == volume_id), None)
+    if v is None:
+        return (f"設定裡的網路磁碟 {volume_id} 不在你的 RunPod 帳號裡（可能已經刪除），訓練會失敗。"
+                "到「設定 → 雲端 GPU」按「測試連線」，點一個可以用的磁碟。")
+    dc = v.get("dataCenterId") or ""
+    if dc not in S3_DATACENTERS:
+        return (f"網路磁碟 {v.get('name') or volume_id} 在 {dc}，那裡沒有 S3 API，Voice Studio 沒辦法把資料傳過去。"
+                "請在設定下拉選單裡的資料中心建立網路磁碟，再到設定改用它。")
+    if datacenter and datacenter != dc:
+        return (f"設定的資料中心 {datacenter} 和網路磁碟實際所在的 {dc} 不一樣。"
+                "到「設定 → 雲端 GPU」按「測試連線」，再點一次這個磁碟。")
+    return ""
 
 
 def location() -> dict:

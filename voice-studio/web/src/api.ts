@@ -183,6 +183,11 @@ export type GpuOffer = {
   id: string; label: string; vram: number; usd_h: number | null; recommended: boolean;
   availability: "HIGH" | "MEDIUM" | "LOW" | "NONE" | null; // null: the live stock could not be read
 };
+export type CloudCheck = {
+  ok: boolean; error?: string; volume?: { id: string } | null;
+  volumes?: { id: string; name: string; dataCenterId: string; size: number; s3: boolean }[];
+  problem?: string; // why the volume in settings cannot be used ("" when it can)
+};
 export type GpuOffers = { live: boolean; datacenter: string | null; error: string; offers: GpuOffer[]; default: string | null };
 export const inStock = (o?: GpuOffer) => !!o && (o.availability === "HIGH" || o.availability === "MEDIUM" || o.availability === "LOW");
 export type SystemInfo = {
