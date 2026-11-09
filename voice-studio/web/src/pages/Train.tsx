@@ -244,7 +244,10 @@ function NewTraining({ initialDataset, cloudReady, colabReady }: { initialDatase
                 <div><div className="text-xs text-zinc-500">最多（時數上限）</div><div>{plan.data.max_hours} 小時{target === "colab" ? "" : ` · ${fmtUsd(plan.data.max_usd)}`}</div></div>
               </div>
               <p className="mt-3 text-xs text-zinc-500">
-                {plan.data.estimate_basis === "measured" ? "這個估計用的是你上次實際量到的速度。" : "第一次是粗估；跑完一次後平台會用實際速度校正。"}
+                {plan.data.estimate_basis === "measured" ? "這個估計用的是你上次在這張卡實際量到的速度。"
+                  : plan.data.estimate_basis === "scaled" ? `這張卡還沒跑過：用你在 ${plan.data.estimate_from} 量到的速度，依兩張卡的效能比例換算（粗估），跑完一次後會改用這張卡的實測速度。`
+                  : "第一次是粗估；跑完一次後平台會用實際速度校正。"}
+                {plan.data.s_per_step ? `（每步約 ${plan.data.s_per_step} 秒）` : ""}
                 {target === "colab" ? "運算單位是粗估（A100 每小時約 5–15，Google 沒有公布），實際用量看 Colab 的資源面板。每次新的 Colab 執行階段都要重新安裝環境（約 5–10 分鐘）。" : "網路磁碟另計（約 $0.07/GB/月）。"}
               </p>
               {plan.data.blocked && <p className="mt-2 flex gap-1.5 text-xs font-medium text-red-600"><AlertTriangle className="mt-0.5 size-3.5 shrink-0" />{plan.data.blocked}</p>}

@@ -1540,3 +1540,37 @@ def test_sold_out_gpu_stops_before_upload_and_retry_reuses_upload(client, monkey
     # a run that never uploaded (or whose data is gone) cannot be retried this way
     db.update("trainings", tid, {"uploaded_at": None})
     assert c.post(f"/api/training/{tid}/retry-gpu", json={"gpu": "NVIDIA H100 80GB HBM3"}).status_code == 400
+
+
+def test_unmeasured_gpu_estimate_scales_a_measured_speed(client, tmp_path):
+    """A faster card is never estimated slower: an unmeasured card uses another card's measured speed, scaled."""
+    from vstudio import config, db, training
+    c = client
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 3600, "hours": 10.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 3600, "consent": db.get("voices", v["id"])["consent"]}})
+    rtx, h100 = "NVIDIA RTX 6000 Ada Generation", "NVIDIA H100 80GB HBM3"
+
+    def plan(gpu):
+        return c.post("/api/training/plan", json={"dataset_id": ds["id"], "engine": "voxcpm2", "preset": "lora",
+                                                  "gpu": gpu, "target": "runpod"}).json()
+    g_rtx, g_h100 = plan(rtx), plan(h100)                       # nothing measured: the first guess, per card
+    assert g_rtx["estimate_basis"] == g_h100["estimate_basis"] == "guess"
+    assert g_h100["estimate_hours"] < g_rtx["estimate_hours"]
+
+    config.save_settings({"speed": {f"voxcpm2:lora:{rtx}": {"s_per_step": 2.0, "at": 1.0}}})
+    m_rtx, s_h100 = plan(rtx), plan(h100)
+    assert m_rtx["estimate_basis"] == "measured" and m_rtx["s_per_step"] == 2.0
+    assert s_h100["estimate_basis"] == "scaled" and s_h100["estimate_from"] == "RTX 6000 Ada 48GB"
+    assert s_h100["s_per_step"] == 0.8 and s_h100["estimate_hours"] < m_rtx["estimate_hours"]  # 2.0 s × 0.8 / 2.0
+
+    # the card's own measurement wins; the latest other measurement is the one scaled; Colab is never scaled
+    config.save_settings({"speed": {f"voxcpm2:lora:{rtx}": {"s_per_step": 2.0, "at": 1.0},
+                                    f"voxcpm2:lora:{h100}": {"s_per_step": 1.1, "at": 2.0},
+                                    "voxcpm2:lora:NVIDIA A100-SXM4-80GB": {"s_per_step": 1.5, "at": 3.0}}})
+    assert training._speed("voxcpm2", "lora", h100) == (1.1, "measured", h100)
+    assert training._speed("voxcpm2", "lora", "NVIDIA L40S")[1:] == ("scaled", "NVIDIA A100-SXM4-80GB")
+    assert training._speed("voxcpm2", "lora", "Colab") == (None, "guess", "")

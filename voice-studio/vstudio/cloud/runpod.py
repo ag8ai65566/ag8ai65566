@@ -37,6 +37,21 @@ GPUS = {  # Secure Cloud on-demand prices from runpod.io/pricing (updated 2026-0
     "NVIDIA GeForce RTX 4090": {"label": "RTX 4090 24GB", "vram": 24, "usd_h": 0.74},
 }
 
+# Rough training speed relative to an A100 SXM 80GB (bf16 mixed precision; from public specs and common training
+# benchmarks, not measured with these engines). Only used to carry a speed measured on one card over to a card that
+# has not been measured yet; a card's own measured speed always wins.
+GPU_SPEED = {
+    "NVIDIA H200": 2.2,
+    "NVIDIA H100 80GB HBM3": 2.0,
+    "NVIDIA H100 PCIe": 1.5,
+    "NVIDIA A100-SXM4-80GB": 1.0,
+    "NVIDIA A100 80GB PCIe": 0.9,
+    "NVIDIA GeForce RTX 5090": 0.85,
+    "NVIDIA L40S": 0.8,
+    "NVIDIA RTX 6000 Ada Generation": 0.8,
+    "NVIDIA GeForce RTX 4090": 0.65,
+}
+
 
 class RunPodError(Exception):
     pass

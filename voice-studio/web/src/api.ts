@@ -110,7 +110,8 @@ export type ColabStatus = {
 };
 export type Plan = {
   engine: string; preset: string; gpu: string; usd_per_hour: number; data_hours: number; n_train: number;
-  steps: number; estimate_hours: number; estimate_usd: number; estimate_basis: "measured" | "guess";
+  steps: number; estimate_hours: number; estimate_usd: number; estimate_basis: "measured" | "scaled" | "guess";
+  estimate_from?: string | null; s_per_step?: number | null;
   max_hours: number; max_usd: number; disk_gb: number; ram_gb: number; warnings: string[];
   epochs_effective?: number | null; blocked?: string | null; params: Record<string, unknown>;
   target?: "runpod" | "colab"; compute_units?: [number, number] | null;

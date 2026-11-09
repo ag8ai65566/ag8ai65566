@@ -18,6 +18,33 @@ def _speed_key(engine_id: str, preset_id: str, gpu: str) -> str:
     return f"{engine_id}:{preset_id}:{gpu}"
 
 
+def _speed(engine_id: str, preset_id: str, gpu: str) -> tuple[float | None, str, str]:
+    """Seconds per training step on this card, and where the number comes from:
+    - "measured": an earlier run of this training method on this card;
+    - "scaled": the latest run on another card, scaled by the two cards' relative speed (that card is returned);
+    - "guess": the training method's first guess, scaled from the card it is listed first for.
+    None (the engine's own guess) when the card's relative speed is unknown, e.g. for Colab."""
+    speed = config.load_settings().get("speed") or {}
+    own = (speed.get(_speed_key(engine_id, preset_id, gpu)) or {}).get("s_per_step")
+    if own:
+        return float(own), "measured", gpu
+    rel = runpod.GPU_SPEED.get(gpu)
+    if not rel:
+        return None, "guess", ""
+    prefix = _speed_key(engine_id, preset_id, "")
+    others = sorted(((v.get("at") or 0, k[len(prefix):], float(v["s_per_step"])) for k, v in speed.items()
+                     if k.startswith(prefix) and (v or {}).get("s_per_step") and k[len(prefix):] in runpod.GPU_SPEED),
+                    reverse=True)
+    if others:
+        _, other, sps = others[0]
+        return sps * runpod.GPU_SPEED[other] / rel, "scaled", other
+    p = engines.get(engine_id).preset(preset_id)
+    first = p.gpu[0] if p.gpu else ""
+    if p.s_per_step and first in runpod.GPU_SPEED:
+        return p.s_per_step * runpod.GPU_SPEED[first] / rel, "guess", first
+    return None, "guess", ""
+
+
 def _require_consent(voice_id: str) -> None:
     """Consent is re-checked at every step that uses the voice: building, uploading, renting, synthesizing."""
     voice = db.get("voices", voice_id)
@@ -46,8 +73,10 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
         eff = eng.effective_params(p.id, params, n_train)
     except ValueError as e:
         eff, blocked = {**p.params, **(params or {})}, str(e)
-    measured = (st.get("speed") or {}).get(_speed_key(eng.id, p.id, gpu), {}).get("s_per_step")
-    est = eng.estimate(ds["hours"], p.id, usd_h, n_train=n_train, s_per_step=measured, params=eff)
+    sps, basis, basis_gpu = _speed(eng.id, p.id, gpu)
+    est = eng.estimate(ds["hours"], p.id, usd_h, n_train=n_train, s_per_step=sps, params=eff)
+    if est["steps"] and sps:
+        est["basis"] = basis
     limit = float(st.get("runpod_max_hours") or 12)
     if target == "colab":
         limit = min(limit, 11.5)  # a Colab session ends after at most about 12 hours
@@ -71,6 +100,8 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
             "target": target, "compute_units": units,
             "n_train": n_train, "steps": est["steps"], "epochs_effective": eff.get("epochs_effective"),
             "estimate_hours": est["hours"], "estimate_usd": est["usd"], "estimate_basis": est["basis"],
+            "estimate_from": runpod.GPUS.get(basis_gpu, {}).get("label") or basis_gpu.replace("NVIDIA ", "")
+            if est["basis"] == "scaled" else None, "s_per_step": round(sps, 2) if sps else None,
             "max_hours": limit, "max_usd": round(limit * usd_h, 2), "disk_gb": p.disk_gb, "ram_gb": p.ram_gb,
             "params": eff, "warnings": warnings, "blocked": blocked}
 
@@ -454,10 +485,8 @@ def retry_on_gpu(tid: str, gpu: str, usd_h: float | None = None) -> dict:
         raise ValueError("RunPod 上有這次訓練留下的機器，刪除失敗。請到 runpod.io → Pods 確認後再試。")
     ds, eng = db.get("datasets", tr["dataset_id"]), engines.get(tr["engine"])
     usd_h = usd_h or runpod.GPUS.get(gpu, {}).get("usd_h", 1.5)
-    measured = (config.load_settings().get("speed") or {}).get(_speed_key(eng.id, tr["preset"]["id"], gpu), {}) \
-        .get("s_per_step")
     est = eng.estimate(ds["hours"], tr["preset"]["id"], usd_h, n_train=int(ds["meta"].get("n_train") or ds["n_items"]),
-                       s_per_step=measured, params=tr["preset"]["params"])
+                       s_per_step=_speed(eng.id, tr["preset"]["id"], gpu)[0], params=tr["preset"]["params"])
     # the row is updated before the job exists, so the worker never reads the old GPU
     _set(tid, gpu=gpu, status="queued", pod_state=None, note="", finished_at=None, deadline=None, started_at=None,
          cost_estimate=est["usd"], cost_per_hr=None, progress={})
