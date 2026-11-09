@@ -124,26 +124,41 @@ def remove_pod(pod_id: str) -> None:
             raise
 
 
-def gpu_catalog(datacenter: str | None = None) -> list[dict]:
-    """Live GPU prices and stock for pods (api.runpod.io/v2/catalog/gpus); falls back to the static table."""
+IN_STOCK = ("HIGH", "MEDIUM", "LOW")  # the catalog's availability levels that can be rented; "NONE" cannot
+
+
+def gpu_catalog(datacenter: str | None = None) -> dict:
+    """Live GPU prices and stock for pods (api.runpod.io/v2/catalog/gpus), for one datacenter when given.
+
+    A GPU the catalog does not list for that datacenter is out of stock there ("NONE"). Only NVIDIA cards are listed
+    (the engine images are CUDA). When the catalog cannot be read, the static table comes back with live=False and
+    the reason, so the page can say so instead of presenting the static list as if it were the current stock."""
     st = config.load_settings()
     cloud = st.get("runpod_cloud_type") or "SECURE"
     try:
         with httpx.Client(timeout=30) as c:
             r = c.get("https://api.runpod.io/v2/catalog/gpus", headers=_h(),
                       params={"include": "AVAILABILITY", "product": "POD", "cloud": cloud})
-        r.raise_for_status()
+        if r.status_code >= 400:
+            raise RunPodError(f"RunPod GPU catalog: {r.status_code} {r.text[:200]}")
         out = []
         for g in r.json().get("gpus", []):
-            dcs = {d["id"]: d.get("availability") for d in g.get("dataCenters", [])}
-            if datacenter and datacenter not in dcs:
+            if not str(g.get("id", "")).startswith("NVIDIA"):
                 continue
+            if datacenter:
+                dcs = {d.get("id"): d.get("availability") for d in g.get("dataCenters") or []}
+                avail = dcs[datacenter] if datacenter in dcs else "NONE"
+            else:
+                avail = g.get("availability")
             price = (g.get("price") or {}).get("secure" if cloud == "SECURE" else "community")
-            out.append({"id": g["id"], "label": g.get("name") or g["id"], "vram": g.get("memory"), "usd_h": price,
-                        "availability": dcs.get(datacenter) if datacenter else g.get("availability")})
-        return sorted(out, key=lambda x: (x["usd_h"] is None, x["usd_h"] or 0))
-    except Exception:
-        return [{"id": k, **v, "availability": None} for k, v in GPUS.items()]
+            out.append({"id": g["id"], "label": g.get("name") or g["id"], "vram": g.get("memory"),
+                        "usd_h": price or None, "availability": str(avail or "NONE").upper()})
+        gpus = sorted(out, key=lambda x: (x["usd_h"] is None, x["usd_h"] or 0))
+        return {"live": True, "datacenter": datacenter, "error": "", "gpus": gpus}
+    except Exception as e:
+        reason = str(e) if isinstance(e, RunPodError) else f"{type(e).__name__}: {e}"
+        return {"live": False, "datacenter": datacenter, "error": reason[:300],
+                "gpus": [{"id": k, **v, "availability": None} for k, v in GPUS.items()]}
 
 
 # --- S3 (network volume) ----------------------------------------------------------------------------------------

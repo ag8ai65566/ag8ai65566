@@ -1414,3 +1414,129 @@ def test_voice_manager_button(client, tmp_path, monkeypatch):
     c.put("/api/settings", json={"voice_manager": ""})
     (vm / "app" / "VoiceManager.exe").unlink()
     assert c.get("/api/launcher/voice-manager").json()["resolved"] == str(vm / "Start Manager.bat")
+
+
+GPU_CATALOG = {"gpus": [  # the shape of api.runpod.io/v2/catalog/gpus?include=AVAILABILITY
+    {"id": "NVIDIA L40S", "name": "L40S", "memory": 48, "price": {"secure": 0.86},
+     "dataCenters": [{"id": "US-IL-1", "availability": "HIGH"}]},
+    {"id": "NVIDIA H100 80GB HBM3", "name": "H100 SXM", "memory": 80, "price": {"secure": 3.99},
+     "dataCenters": [{"id": "US-CA-2", "availability": "LOW"}]},
+    {"id": "NVIDIA A100-SXM4-80GB", "name": "A100 SXM", "memory": 80, "price": {"secure": 1.79},
+     "dataCenters": [{"id": "US-CA-2", "availability": "NONE"}]},
+    {"id": "AMD Instinct MI300X OAM", "name": "MI300X", "memory": 192, "price": {"secure": 2.39},
+     "dataCenters": [{"id": "US-CA-2", "availability": "HIGH"}]},
+]}
+
+
+def _fake_gpu_catalog(monkeypatch, runpod, fail=False):
+    """Serve the GPU catalog from memory: no key, no network."""
+    import types
+    import httpx
+
+    class Client:
+        def __init__(self, *a, **kw):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def get(self, url, **kw):
+            if fail:
+                raise httpx.ConnectError("[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed")
+            assert url.endswith("/v2/catalog/gpus")
+            return types.SimpleNamespace(status_code=200, json=lambda: GPU_CATALOG)
+
+    monkeypatch.setattr(runpod, "_h", lambda: {})
+    monkeypatch.setattr(runpod, "httpx", types.SimpleNamespace(Client=Client))
+
+
+def test_gpu_stock_in_the_volume_datacenter(client, monkeypatch):
+    """Only cards the volume's datacenter has can be rented; a bigger known card stands in for missing ones."""
+    from vstudio import config, training
+    from vstudio.cloud import runpod
+    _fake_gpu_catalog(monkeypatch, runpod)
+    config.save_settings({"runpod_datacenter": "US-CA-2"})
+    cat = runpod.gpu_catalog("US-CA-2")
+    by = {g["id"]: g for g in cat["gpus"]}
+    assert cat["live"] and "AMD Instinct MI300X OAM" not in by                    # the engine images are CUDA
+    assert by["NVIDIA H100 80GB HBM3"]["availability"] == "LOW"
+    assert by["NVIDIA L40S"]["availability"] == "NONE"                             # sold elsewhere, not here
+
+    res = client.get("/api/cloud/gpus?engine=voxcpm2&preset=lora").json()
+    ids = [o["id"] for o in res["offers"]]
+    assert res["live"] and res["datacenter"] == "US-CA-2" and res["default"] == "NVIDIA H100 80GB HBM3" == ids[0]
+    assert not res["offers"][0]["recommended"] and res["offers"][0]["vram"] == 80  # LoRA's own 48 GB cards: none here
+    assert {"NVIDIA L40S", "NVIDIA RTX 6000 Ada Generation"} <= set(ids)          # still listed, as sold out
+    assert all(o["availability"] == "NONE" for o in res["offers"][1:])
+    assert "NVIDIA GeForce RTX 4090" not in ids                                   # 24 GB is too small for LoRA
+    assert client.get("/api/cloud/gpus?engine=nope&preset=x").status_code == 404
+
+    assert training._stock_problem("voxcpm2", "lora", "NVIDIA H100 80GB HBM3", "US-CA-2") is None
+    msg = training._stock_problem("voxcpm2", "lora", "NVIDIA L40S", "US-CA-2")
+    assert "L40S" in msg and "H100 SXM" in msg                                    # says what can be rented instead
+    assert training._stock_problem("voxcpm2", "lora", "NVIDIA GeForce RTX 4090", "US-CA-2")
+
+
+def test_gpu_stock_unreadable_is_said_not_hidden(client, monkeypatch):
+    from vstudio import training
+    from vstudio.cloud import runpod
+    _fake_gpu_catalog(monkeypatch, runpod, fail=True)
+    res = training.gpu_offers("voxcpm2", "lora")
+    assert not res["live"] and "CERTIFICATE_VERIFY_FAILED" in res["error"]
+    assert res["default"] == "NVIDIA L40S" and all(o["availability"] is None for o in res["offers"])
+    assert training._stock_problem("voxcpm2", "lora", "NVIDIA L40S", "US-CA-2") is None  # unknown stock: renting is tried
+
+
+def test_sold_out_gpu_stops_before_upload_and_retry_reuses_upload(client, monkeypatch, tmp_path):
+    from vstudio import config, db, training
+    from vstudio.cloud import runpod
+    c = client
+    _fake_gpu_catalog(monkeypatch, runpod)
+    config.save_settings({"runpod_datacenter": "US-CA-2", "runpod_volume_id": "vol1"})
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 40, "hours": 1.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"],
+                                         "voice": {"name": "我"}}})
+    calls = {"upload": 0, "put": 0, "pods": []}
+    monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: key.endswith("/dataset.tar"))
+    monkeypatch.setattr(runpod, "upload", lambda *a, **kw: calls.update(upload=calls["upload"] + 1))
+    monkeypatch.setattr(runpod, "put_text", lambda *a, **kw: calls.update(put=calls["put"] + 1))
+    monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
+    monkeypatch.setattr(runpod, "get_text", lambda *a, **kw: "")
+
+    def create_pod(name, image, gpu_type, *a, **kw):
+        calls["pods"].append(gpu_type)
+        raise runpod.RunPodError("RunPod POST /pods: 500 There are no instances currently available")
+    monkeypatch.setattr(runpod, "create_pod", create_pod)
+
+    # a sold-out card is refused before anything is uploaded or a run is recorded
+    r = c.post("/api/training", json={"dataset_id": ds["id"], "engine": "voxcpm2", "preset": "lora", "gpu": "NVIDIA L40S"})
+    assert r.status_code == 400 and "H100 SXM" in r.json()["detail"]
+    assert not db.query("SELECT * FROM trainings") and calls["upload"] == 0
+
+    # a run that uploaded its data and then got no GPU: another card, without uploading again
+    tid = db.new_id("tr")
+    db.insert("trainings", {"id": tid, "voice_id": v["id"], "dataset_id": ds["id"], "engine": "mock",
+                            "preset": {"id": "quick", "params": {"steps": 4}, "name": ""}, "target": "runpod",
+                            "status": "failed", "gpu": "NVIDIA GeForce RTX 4090", "remote_prefix": f"vs/jobs/{tid}",
+                            "storage": {"volume": "vol1", "datacenter": "US-CA-2", "cloud": "SECURE"},
+                            "progress": {}, "created_at": db.now(), "uploaded_at": db.now()})
+    assert next(t for t in c.get("/api/training").json() if t["id"] == tid)["can_retry_gpu"]
+    r = c.post(f"/api/training/{tid}/retry-gpu", json={"gpu": "NVIDIA L40S"})
+    assert r.status_code == 400 and "H100 SXM" in r.json()["detail"]
+    tr = c.post(f"/api/training/{tid}/retry-gpu", json={"gpu": "NVIDIA H100 80GB HBM3", "usd_h": 3.99}).json()
+    assert tr["gpu"] == "NVIDIA H100 80GB HBM3" and tr["cost_estimate"] > 0
+    j = _wait(c, tr["job_id"])
+    assert j["status"] == "failed" and "換一張 GPU 重試" in j["message"]
+    assert calls == {"upload": 0, "put": 0, "pods": ["NVIDIA H100 80GB HBM3"]}     # reused, then tried the new card
+    assert training.can_retry_gpu(db.get("trainings", tid))                        # and can try yet another one
+
+    # a run that never uploaded (or whose data is gone) cannot be retried this way
+    db.update("trainings", tid, {"uploaded_at": None})
+    assert c.post(f"/api/training/{tid}/retry-gpu", json={"gpu": "NVIDIA H100 80GB HBM3"}).status_code == 400

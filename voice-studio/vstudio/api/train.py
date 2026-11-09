@@ -41,12 +41,14 @@ def cloud_check():
 
 
 @router.get("/cloud/gpus")
-def cloud_gpus():
-    st = config.load_settings()
-    try:
-        return runpod.gpu_catalog(st.get("runpod_datacenter") or None)
-    except runpod.RunPodError:
-        return [{"id": k, **v, "availability": None} for k, v in runpod.GPUS.items()]
+def cloud_gpus(engine: str | None = None, preset: str | None = None):
+    """Live stock in the volume's datacenter: the cards one training method can rent, or the whole catalog."""
+    if engine and preset:
+        try:
+            return training.gpu_offers(engine, preset)
+        except KeyError:
+            raise HTTPException(404, "找不到引擎或訓練方式")
+    return runpod.gpu_catalog(config.load_settings().get("runpod_datacenter") or None)
 
 
 @router.get("/cloud/datacenters")
@@ -83,6 +85,24 @@ def training_start(body: PlanIn):
             raise ValueError("target")
         return training.start(body.dataset_id, body.engine, body.preset, body.gpu, body.name, body.params,
                               body.usd_h, body.target)
+    except datasets.ConsentMissing as e:
+        raise HTTPException(409, str(e))
+    except (ValueError, runpod.RunPodError) as e:
+        raise HTTPException(400, str(e))
+
+
+class RetryGpuIn(BaseModel):
+    gpu: str
+    usd_h: float | None = None
+
+
+@router.post("/training/{tid}/retry-gpu")
+def training_retry_gpu(tid: str, body: RetryGpuIn):
+    """Try another card for a run that uploaded its data but never got a GPU; nothing is uploaded again."""
+    try:
+        return training.retry_on_gpu(tid, body.gpu, body.usd_h)
+    except KeyError:
+        raise HTTPException(404)
     except datasets.ConsentMissing as e:
         raise HTTPException(409, str(e))
     except (ValueError, runpod.RunPodError) as e:
@@ -127,6 +147,7 @@ def training_list():
     for t in out:
         j = db.get("jobs", t["job_id"]) if t.get("job_id") else None
         t["job"] = {k: j[k] for k in ("status", "progress", "message")} if j else None
+        t["can_retry_gpu"] = training.can_retry_gpu(t)
         if t.get("target") == "colab" and t["status"] in ("waiting", "running"):
             p = t.get("progress") or {}
             t["phase"] = {"label": training._phase_label(p) if p.get("phase") else

@@ -102,7 +102,7 @@ export type Training = {
   progress: TrainProgress; cost_estimate: number; created_at: number; finished_at: number | null;
   preset: { id: string; name?: string; params?: Record<string, unknown> };
   job: { status: string; progress: number; message: string } | null; job_id?: string; log?: string;
-  note?: string; pod_state?: string | null; cost_per_hr?: number | null;
+  note?: string; pod_state?: string | null; cost_per_hr?: number | null; can_retry_gpu?: boolean;
   target?: "runpod" | "colab"; phase?: { label: string; fraction: number }; colab_path?: string;
 };
 export type ColabStatus = {
@@ -178,7 +178,12 @@ export type CharacterPreset = {
     cast_mode?: string; cast_ref_id?: string; cast_style?: string;
   };
 };
-export type GpuOffer = { id: string; label: string; vram: number; usd_h: number | null; availability: string | null };
+export type GpuOffer = {
+  id: string; label: string; vram: number; usd_h: number | null; recommended: boolean;
+  availability: "HIGH" | "MEDIUM" | "LOW" | "NONE" | null; // null: the live stock could not be read
+};
+export type GpuOffers = { live: boolean; datacenter: string | null; error: string; offers: GpuOffer[]; default: string | null };
+export const inStock = (o?: GpuOffer) => !!o && (o.availability === "HIGH" || o.availability === "MEDIUM" || o.availability === "LOW");
 export type SystemInfo = {
   version: string; python: string; os: string; disk_free_gb: number; data_dir: string;
   gpu: { available: boolean; name?: string; vram_gb?: number; free_gb?: number; note?: string };

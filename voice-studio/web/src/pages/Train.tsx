@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useSearchParams } from "react-router";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient, type UseQueryResult } from "@tanstack/react-query";
 import clsx from "clsx";
-import { AlertTriangle, Cloud, Cpu, FileText, FolderSync, Sparkles, Square } from "lucide-react";
+import { AlertTriangle, Cloud, Cpu, FileText, FolderSync, RefreshCw, Sparkles, Square } from "lucide-react";
 import {
-  api, fmtDur, fmtMin, fmtTime, fmtUsd, type ColabStatus, type Dataset, type EngineInfo, type GpuOffer, type Orphan, type Plan,
-  type Training, type Voice,
+  api, fmtDur, fmtMin, fmtTime, fmtUsd, inStock, type ColabStatus, type Dataset, type EngineInfo, type GpuOffer, type GpuOffers,
+  type Orphan, type Plan, type Training, type Voice,
 } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader, Progress } from "../ui";
 
@@ -14,6 +14,64 @@ const STATUS: Record<string, [string, "zinc" | "green" | "amber" | "red" | "bran
   waiting: ["等你在 Colab 執行", "amber"],
   downloading: ["下載模型", "blue"], done: ["完成", "green"], failed: ["失敗", "red"], canceled: ["已取消", "zinc"],
 };
+
+const STOCK: Record<string, [string, "green" | "blue" | "amber" | "red"]> = {
+  HIGH: ["充足", "green"], MEDIUM: ["普通", "blue"], LOW: ["很少", "amber"], NONE: ["沒貨", "red"],
+};
+
+function useGpuOffers(engine: string | undefined, preset: string | undefined, enabled: boolean) {
+  return useQuery({
+    queryKey: ["gpus", engine, preset],
+    queryFn: () => api.get<GpuOffers>(`/api/cloud/gpus?engine=${encodeURIComponent(engine!)}&preset=${encodeURIComponent(preset!)}`),
+    enabled: enabled && !!engine && !!preset, staleTime: 60000,
+  });
+}
+
+/** Keeps the selection on a card that can be rented: the server's default when nothing (or a sold-out card) is chosen. */
+function useRentableChoice(gpus: UseQueryResult<GpuOffers>, gpu: string, setGpu: (id: string) => void) {
+  useEffect(() => {
+    const d = gpus.data;
+    if (!d) return;
+    const cur = d.offers.find((o) => o.id === gpu);
+    if (!cur || (d.live && !inStock(cur))) setGpu(d.default ?? d.offers[0]?.id ?? "");
+  }, [gpus.data, gpu]);
+}
+
+function GpuPicker({ q, value, onChange }: { q: UseQueryResult<GpuOffers>; value: string; onChange: (id: string) => void }) {
+  const d = q.data;
+  const checked = d?.live ? `${d.datacenter ?? "所有資料中心"} 的即時庫存，${new Date(q.dataUpdatedAt).toLocaleTimeString("zh-TW", { hour: "2-digit", minute: "2-digit" })} 查詢` : "";
+  return (
+    <div className="grid gap-2">
+      <div className="flex items-center gap-2 text-xs text-zinc-500">
+        <span>{q.isLoading ? "正在查詢 RunPod 的庫存…" : checked}</span>
+        <Button size="sm" variant="ghost" className="ml-auto" loading={q.isFetching} onClick={() => q.refetch()}><RefreshCw className="size-3.5" />重新查詢</Button>
+      </div>
+      {d && !d.live && (
+        <p className="flex gap-1.5 text-xs text-amber-700 dark:text-amber-300"><AlertTriangle className="mt-0.5 size-3.5 shrink-0" />
+          讀不到 RunPod 的即時庫存（{d.error}）。下面是內建清單，沒辦法確定有沒有貨。</p>
+      )}
+      {d?.live && !d.offers.some(inStock) && (
+        <p className="flex gap-1.5 text-xs font-medium text-red-600"><AlertTriangle className="mt-0.5 size-3.5 shrink-0" />
+          這個訓練方式能用的卡，在 {d.datacenter} 現在都沒貨。過一陣子再按「重新查詢」，或在 RunPod 其他資料中心建立網路磁碟，再到設定改用它。</p>
+      )}
+      {(d?.offers ?? []).map((o) => {
+        const soldOut = d!.live && !inStock(o);
+        const stock = o.availability ? STOCK[o.availability] : undefined;
+        return (
+          <label key={o.id} className={clsx("flex items-center gap-3 rounded-lg border px-3 py-2 text-sm", soldOut ? "cursor-not-allowed opacity-50" : "cursor-pointer",
+            value === o.id ? "border-brand-500" : "border-zinc-200 dark:border-zinc-800")}>
+            <input type="radio" disabled={soldOut} checked={value === o.id} onChange={() => onChange(o.id)} />
+            <Cpu className="size-4 text-zinc-400" />
+            <span className="flex-1">{o.label}{o.vram ? ` · ${o.vram} GB` : ""}
+              {!o.recommended && <span className="ml-2 text-xs text-zinc-500">記憶體夠，也能用</span>}</span>
+            {stock && <Badge tone={stock[1]}>{stock[0]}</Badge>}
+            <span className="tabular-nums text-zinc-600 dark:text-zinc-300">{o.usd_h != null ? `$${o.usd_h.toFixed(2)}/時` : ""}</span>
+          </label>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function Train() {
   const [sp] = useSearchParams();
@@ -53,7 +111,6 @@ function NewTraining({ initialDataset, cloudReady, colabReady }: { initialDatase
   const voices = useQuery({ queryKey: ["voices"], queryFn: () => api.get<Voice[]>("/api/voices") });
   const datasets = useQuery({ queryKey: ["datasets"], queryFn: () => api.get<Dataset[]>("/api/datasets") });
   const engines = useQuery({ queryKey: ["engines"], queryFn: () => api.get<EngineInfo[]>("/api/engines") });
-  const gpus = useQuery({ queryKey: ["gpus", cloudReady], queryFn: () => api.get<GpuOffer[]>("/api/cloud/gpus"), staleTime: 120000 });
   const [dsId, setDsId] = useState(initialDataset);
   const [engineId, setEngineId] = useState("voxcpm2");
   const [presetId, setPresetId] = useState("");
@@ -69,11 +126,13 @@ function NewTraining({ initialDataset, cloudReady, colabReady }: { initialDatase
   useEffect(() => { setPresetId(engine?.presets.find((p) => p.recommended)?.id ?? engine?.presets[0]?.id ?? ""); }, [engineId, engine]);
   useEffect(() => { setGpu(preset?.gpu[0] ?? ""); setAck(false); setEpochs(""); }, [preset?.id, engineId]);
   const overrides = epochs && Number(epochs) > 0 ? { epochs: Number(epochs) } : null;
-  const offers = useMemo(() => {
-    const live = new Map((gpus.data ?? []).map((g) => [g.id, g]));
-    return (preset?.gpu ?? []).map((id) => live.get(id) ?? { id, label: id.replace("NVIDIA ", ""), vram: 0, usd_h: null, availability: null });
-  }, [gpus.data, preset]);
+  const gpus = useGpuOffers(engineId, preset?.id, cloudReady && target === "runpod");
+  useRentableChoice(gpus, gpu, setGpu);
+  const offers = useMemo<GpuOffer[]>(() => gpus.data?.offers
+    ?? (preset?.gpu ?? []).map((id) => ({ id, label: id.replace("NVIDIA ", ""), vram: 0, usd_h: null, recommended: true, availability: null })),
+  [gpus.data, preset]);
   const offer = offers.find((o) => o.id === gpu);
+  const soldOut = target === "runpod" && !!gpus.data?.live && !inStock(offer);
   const plan = useQuery({
     queryKey: ["plan", dsId, engineId, preset?.id, gpu, offer?.usd_h, epochs, target],
     queryFn: () => api.post<Plan>("/api/training/plan", { dataset_id: dsId, engine: engineId, preset: preset!.id, gpu, usd_h: offer?.usd_h ?? null, params: overrides, target }),
@@ -150,18 +209,15 @@ function NewTraining({ initialDataset, cloudReady, colabReady }: { initialDatase
               ) : <p className="text-xs text-amber-700 dark:text-amber-300">還沒設定。到 <Link to="/settings#colab" className="underline">設定 → Google Colab</Link> 選雲端硬碟資料夾。</p>}
             </div>
           ) : (
-          <Field label="雲端 GPU" hint="價格是 RunPod Secure Cloud 每小時價格（網路磁碟只能用 Secure Cloud）。平台只會租你選的這一張，不會偷偷換成更貴的卡；沒貨時會告訴你，換一張再按一次就好。">
-            <div className="grid gap-2">
-              {offers.map((o) => (
-                <label key={o.id} className={clsx("flex cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 text-sm", gpu === o.id ? "border-brand-500" : "border-zinc-200 dark:border-zinc-800")}>
-                  <input type="radio" checked={gpu === o.id} onChange={() => setGpu(o.id)} />
-                  <Cpu className="size-4 text-zinc-400" />
-                  <span className="flex-1">{o.label}{o.vram ? ` · ${o.vram} GB` : ""}</span>
-                  {o.availability && <Badge tone={o.availability === "High" ? "green" : o.availability === "Low" ? "amber" : "zinc"}>{o.availability === "High" ? "充足" : o.availability === "Medium" ? "普通" : o.availability === "Low" ? "很少" : o.availability}</Badge>}
-                  <span className="tabular-nums text-zinc-600 dark:text-zinc-300">{o.usd_h != null ? `$${o.usd_h.toFixed(2)}/時` : ""}</span>
-                </label>
-              ))}
-            </div>
+          <Field label="雲端 GPU" hint="只列出你網路磁碟所在資料中心的卡，沒貨的不能選。價格是 RunPod Secure Cloud 每小時價格（網路磁碟只能用 Secure Cloud）。平台只會租你選的這一張，不會偷偷換成更貴的卡；按開始時會再確認一次有貨，才開始上傳。">
+            {cloudReady ? <GpuPicker q={gpus} value={gpu} onChange={setGpu} /> : (
+              <div className="grid gap-2">
+                {offers.map((o) => (
+                  <div key={o.id} className="flex items-center gap-3 rounded-lg border border-zinc-200 px-3 py-2 text-sm text-zinc-500 dark:border-zinc-800">
+                    <Cpu className="size-4 text-zinc-400" /><span className="flex-1">{o.label}</span></div>
+                ))}
+              </div>
+            )}
           </Field>
           )}
           <Field label="模型名稱（選填）"><input className="input" value={name} onChange={(e) => setName(e.target.value)} placeholder="例如：我的聲音 v1" /></Field>
@@ -203,7 +259,7 @@ function NewTraining({ initialDataset, cloudReady, colabReady }: { initialDatase
               : "我了解這會用我的 RunPod 帳號租 GPU 並計費；訓練完成、失敗、取消或達到時數上限時，平台會自動關機。"}</span>
           </label>
           <Button className="w-full" onClick={() => start.mutate()} loading={start.isPending}
-            disabled={!ack || !(target === "colab" ? colabReady : cloudReady) || !plan.data || !!plan.data.blocked}>
+            disabled={!ack || !(target === "colab" ? colabReady : cloudReady) || !plan.data || !!plan.data.blocked || soldOut}>
             {target === "colab" ? <><FolderSync className="size-4" />放進雲端硬碟，準備在 Colab 訓練</> : <><Cloud className="size-4" />開始雲端訓練</>}
           </Button>
           <ErrorText error={start.error} />
@@ -217,6 +273,7 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
   const qc = useQueryClient();
   const cancel = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/cancel`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
   const recover = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/recover`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
+  const [retryOpen, setRetryOpen] = useState(false);
   const [label, tone] = STATUS[t.status] ?? [t.status, "zinc"];
   const active = !["done", "failed", "canceled"].includes(t.status);
   const isColab = t.target === "colab";
@@ -234,11 +291,13 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
           <Button size="sm" variant="ghost" onClick={onLog}><FileText className="size-3.5" />紀錄</Button>
           {active && <Button size="sm" variant="danger" loading={cancel.isPending} onClick={() => confirm(isColab ? "停止這次 Colab 訓練？（Colab 上的程式會在 30 秒內停下）" : "停止這次訓練並關閉雲端機器？已經花的費用不會退回。") && cancel.mutate()}><Square className="size-3.5" />停止</Button>}
           {model && <Link to={`/models?id=${model.id}`}><Button size="sm">試聽模型</Button></Link>}
-          {(t.status === "failed" || t.status === "canceled") && !model && (
+          {t.can_retry_gpu && <Button size="sm" onClick={() => setRetryOpen(true)} title="資料已經在雲端，不會重新上傳"><RefreshCw className="size-3.5" />換一張 GPU 重試</Button>}
+          {(t.status === "failed" || t.status === "canceled") && !model && !t.can_retry_gpu && (
             <Button size="sm" variant="secondary" loading={recover.isPending} title="訓練如果已經進行到存檔，可以把權重下載回來"
               onClick={() => recover.mutate()}>救回模型</Button>)}
         </div>
       </div>
+      {retryOpen && <RetryGpuModal t={t} onClose={() => setRetryOpen(false)} />}
       {isColab && t.phase && (t.status === "waiting" || t.status === "running") && (
         <div className="mt-3">
           <div className="mb-1 flex justify-between text-xs text-zinc-500"><span>{t.phase.label}</span><span>{Math.round(t.phase.fraction * 100)}%</span></div>
@@ -278,6 +337,27 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
           雲端機器可能還在計費。平台會在下次開啟時自動再刪一次；也可以馬上到 runpod.io → Pods 手動刪除。</p>
       )}
     </div>
+  );
+}
+
+function RetryGpuModal({ t, onClose }: { t: Training; onClose: () => void }) {
+  const qc = useQueryClient();
+  const gpus = useGpuOffers(t.engine, t.preset.id, true);
+  const [gpu, setGpu] = useState("");
+  useRentableChoice(gpus, gpu, setGpu);
+  const offer = gpus.data?.offers.find((o) => o.id === gpu);
+  const retry = useMutation({
+    mutationFn: () => api.post(`/api/training/${t.id}/retry-gpu`, { gpu, usd_h: offer?.usd_h ?? null }),
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["trainings"] }); onClose(); },
+  });
+  return (
+    <Modal open onClose={onClose} title="換一張 GPU 重試">
+      <p className="mb-3 text-xs leading-5 text-zinc-500">這次訓練的資料已經在雲端，不會重新上傳。選一張現在有貨的卡，平台會直接租這張開始訓練（租之前會再確認一次有貨）。</p>
+      <GpuPicker q={gpus} value={gpu} onChange={setGpu} />
+      <Button className="mt-4 w-full" loading={retry.isPending} onClick={() => retry.mutate()}
+        disabled={!gpu || (!!gpus.data?.live && !inStock(offer))}><Cloud className="size-4" />用這張開始訓練</Button>
+      <ErrorText error={retry.error} />
+    </Modal>
   );
 }
 
