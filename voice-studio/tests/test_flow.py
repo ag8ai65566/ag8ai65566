@@ -1428,8 +1428,9 @@ GPU_CATALOG = {"gpus": [  # the shape of api.runpod.io/v2/catalog/gpus?include=A
 ]}
 
 
-def _fake_gpu_catalog(monkeypatch, runpod, fail=False):
-    """Serve the GPU catalog from memory: no key, no network."""
+def _fake_gpu_catalog(monkeypatch, runpod, fail=False, payload=None):
+    """Serve the GPU catalog from memory (GPU_CATALOG, or payload, which a test may change as it goes): no key, no
+    network."""
     import types
     import httpx
 
@@ -1447,7 +1448,7 @@ def _fake_gpu_catalog(monkeypatch, runpod, fail=False):
             if fail:
                 raise httpx.ConnectError("[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed")
             assert url.endswith("/v2/catalog/gpus")
-            return types.SimpleNamespace(status_code=200, json=lambda: GPU_CATALOG)
+            return types.SimpleNamespace(status_code=200, json=lambda: payload or GPU_CATALOG)
 
     monkeypatch.setattr(runpod, "_h", lambda: {})
     monkeypatch.setattr(runpod, "httpx", types.SimpleNamespace(Client=Client))
@@ -1535,7 +1536,7 @@ def test_sold_out_gpu_stops_before_upload_and_retry_reuses_upload(client, monkey
     assert tr["gpu"] == "NVIDIA H100 80GB HBM3" and tr["cost_estimate"] > 0
     j = _wait(c, tr["job_id"])
     assert j["status"] == "failed" and "換一張 GPU 重試" in j["message"]
-    assert calls["upload"] == 0 and calls["pods"] == ["NVIDIA H100 80GB HBM3"]     # reused, then tried the new card
+    assert calls["upload"] == 0 and calls["pods"] == [["NVIDIA H100 80GB HBM3"]]   # reused, then tried the new card
     assert "config.json" not in calls["put"] and '"status":"done","bytes":0,"total":1234' in calls["put"]["upload.json"]
     assert training.can_retry_gpu(db.get("trainings", tid))                        # and can try yet another one
 
@@ -1607,6 +1608,87 @@ def test_gpu_is_rented_before_the_dataset_is_uploaded(client, monkeypatch, tmp_p
     assert env["VS_WAIT_UPLOAD"] == "1" and int(env["VS_MAX_SECONDS"]) >= 2 * 3600 + 1800  # time for the upload too
     t = db.get("trainings", tid)
     assert t["uploaded_at"] and t["pod_id"] == "pod1" and ("remove", "pod1") in events and not training.can_retry_gpu(t)
+
+
+def test_auto_grab_waits_renting_nothing_then_grabs(client, monkeypatch, tmp_path):
+    """Auto-grab: while its cards are sold out the run only waits (nothing rented); a card taken at the last moment
+    sends it back to waiting; then it rents the first card of its list in stock; it stops on time or on request."""
+    import copy
+    import tarfile
+    import time
+    from vstudio import config, db, training
+    from vstudio.cloud import runpod
+    c = client
+    monkeypatch.setattr(config, "get_secret", lambda name: None)  # the server's own waiter thread stays out of this
+    stock = copy.deepcopy(GPU_CATALOG)
+    _fake_gpu_catalog(monkeypatch, runpod, payload=stock)
+    config.save_settings({"runpod_datacenter": "US-CA-2", "runpod_volume_id": "vol1"})
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    (tmp_path / "ds" / "wavs").mkdir(parents=True)
+    (tmp_path / "ds" / "wavs" / "a.wav").write_bytes(b"\0" * 1000)
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 40, "hours": 1.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"]}})
+
+    def package(tid, work):
+        tar = work / "dataset.tar"
+        with tarfile.open(tar, "w") as t:
+            t.add(tmp_path / "ds" / "wavs", arcname="data/wavs")
+        return tar, {"training_id": tid}
+    pods, taken = [], [True]
+
+    def create_pod(name, image, gpu_type, env, *a, **kw):
+        pods.append(list(gpu_type))
+        if taken[0]:
+            raise runpod.RunPodError("RunPod POST /pods: 500 There are no instances currently available")
+        return {"id": "pod1", "machine": {"gpuTypeId": gpu_type[0]}, "costPerHr": 1.09}
+    monkeypatch.setattr(training, "package_dataset", package)
+    monkeypatch.setattr(runpod, "create_pod", create_pod)
+    monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: False)
+    monkeypatch.setattr(runpod, "put_text", lambda *a, **kw: None)
+    monkeypatch.setattr(runpod, "upload", lambda local, key, progress=None, loc=None: progress(1.0))
+    monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
+    monkeypatch.setattr(runpod, "get_text", lambda *a, **kw: "")
+    monkeypatch.setattr(runpod, "remove_pod", lambda pod_id: None)
+    monkeypatch.setattr(runpod, "get_json", lambda key, loc=None, fast=False:
+                        {"status": "error", "stage": "train"} if key.endswith("error.json") else None)
+
+    l40s, a100 = "NVIDIA L40S", "NVIDIA A100-SXM4-80GB"
+    body = {"dataset_id": ds["id"], "engine": "voxcpm2", "preset": "lora", "target": "runpod",
+            "gpus": [l40s, a100], "wait_hours": 1}
+    r = c.post("/api/training", json={**body, "gpus": ["NVIDIA GeForce RTX 4090"]})
+    assert r.status_code == 400 and "RTX 4090" in r.json()["detail"]          # 24 GB: not enough for LoRA
+    tr = c.post("/api/training", json=body).json()
+    tid = tr["id"]
+    assert tr["status"] == "waiting_gpu" and tr["wait"]["gpus"] == [l40s, a100] and not tr.get("job_id")
+    assert training.wait_for_gpus() == [] and not pods                        # both sold out: nothing rented
+    w = db.get("trainings", tid)["wait"]
+    assert w["checks"] >= 1 and w["seen"] == {l40s: "NONE", a100: "NONE"}
+
+    for g in stock["gpus"]:  # both come in stock in US-CA-2 ...
+        if g["id"] in (l40s, a100):
+            g["dataCenters"] = [{"id": "US-CA-2", "availability": "LOW"}]
+    assert training.wait_for_gpus() == [tid]                                  # ... but are taken at the last moment
+    assert _wait(c, db.get("trainings", tid)["job_id"])["status"] == "done"
+    t = db.get("trainings", tid)
+    assert t["status"] == "waiting_gpu" and t["wait"]["misses"] == 1 and pods == [[l40s, a100]]
+
+    taken[0] = False                                                          # next time it works
+    assert training.wait_for_gpus() == [tid]
+    _wait(c, db.get("trainings", tid)["job_id"])                              # (ends here on the pod's train error)
+    t = db.get("trainings", tid)
+    assert pods[-1] == [l40s, a100] and t["pod_id"] == "pod1" and t["gpu"] == l40s and t["uploaded_at"]
+
+    late = c.post("/api/training", json=body).json()                          # waiting time over: stops by itself
+    db.update("trainings", late["id"], {"wait": {**late["wait"], "until": time.time() - 1}})
+    training.wait_for_gpus()
+    t = db.get("trainings", late["id"])
+    assert t["status"] == "failed" and "沒有計費" in t["note"]
+    stop = c.post("/api/training", json=body).json()                          # and can be stopped
+    c.post(f"/api/training/{stop['id']}/cancel")
+    assert db.get("trainings", stop["id"])["status"] == "canceled" and training.wait_for_gpus() == []
 
 
 def _bash() -> str | None:

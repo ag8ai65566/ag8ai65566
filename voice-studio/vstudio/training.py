@@ -163,7 +163,12 @@ def _stock_problem(engine_id: str, preset_id: str, gpu: str, datacenter: str) ->
 
 
 def start(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None, name: str = "",
-          params: dict | None = None, usd_h: float | None = None, target: str = "runpod") -> dict:
+          params: dict | None = None, usd_h: float | None = None, target: str = "runpod",
+          gpus: list[str] | None = None, wait_hours: float | None = None) -> dict:
+    """gpus (RunPod only): auto-grab. The run waits, renting nothing, until a card of this list (in its order) is in
+    stock in the volume's datacenter, for at most wait_hours; then it rents that card and continues as usual."""
+    if gpus:
+        gpu = gpus[0]
     ds = db.get("datasets", dataset_id)
     _require_consent(ds["voice_id"])
     voice = db.get("voices", ds["voice_id"])
@@ -196,16 +201,29 @@ def start(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = Non
         chk = {}
     if chk.get("problem"):
         raise ValueError(chk["problem"] + "還沒有上傳任何資料。")
+    row = {"voice_id": ds["voice_id"], "dataset_id": dataset_id, "engine": engine_id,
+           "preset": {"id": pl["preset"], "params": pl["params"], "name": name}, "target": "runpod",
+           "gpu": pl["gpu"], "storage": loc, "progress": {}, "cost_estimate": pl["estimate_usd"]}
+    if gpus:  # auto-grab: only cards with enough memory for this training method; stock is the waiter's business
+        usable = {o["id"] for o in gpu_offers(engine_id, pl["preset"], runpod.gpu_catalog(loc["datacenter"]))["offers"]}
+        bad = [g.replace("NVIDIA ", "") for g in gpus if g not in usable]
+        if bad:
+            raise ValueError(f"{'、'.join(bad)} 的顯示記憶體不夠這個訓練方式用，請從清單拿掉。")
+        hours = min(72.0, max(0.25, float(wait_hours or 12)))
+        now = time.time()
+        tid = db.new_id("tr")
+        db.insert("trainings", {"id": tid, **row, "status": "waiting_gpu", "remote_prefix": f"vs/jobs/{tid}",
+                                "wait": {"gpus": list(dict.fromkeys(gpus)), "since": now, "until": now + hours * 3600,
+                                         "checks": 0}, "created_at": db.now()})
+        GPU_WAKE.set()  # look at the stock right away
+        return db.get("trainings", tid)
     problem = _stock_problem(engine_id, pl["preset"], pl["gpu"], loc["datacenter"])
     if problem:  # checked before anything is uploaded or rented
-        raise ValueError(problem + "還沒有上傳任何資料。")
+        raise ValueError(problem + "還沒有上傳任何資料。可以勾「沒貨時自動搶卡」，有貨時自動開始。")
     tid = db.new_id("tr")
-    db.insert("trainings", {"id": tid, "voice_id": ds["voice_id"], "dataset_id": dataset_id, "engine": engine_id,
-                            "preset": {"id": pl["preset"], "params": pl["params"], "name": name},
-                            "target": "runpod", "status": "queued", "gpu": pl["gpu"], "storage": loc,
-                            "remote_prefix": f"vs/jobs/{tid}", "progress": {}, "cost_estimate": pl["estimate_usd"],
+    db.insert("trainings", {"id": tid, **row, "status": "queued", "remote_prefix": f"vs/jobs/{tid}",
                             "created_at": db.now()})
-    job = jobs.submit("cloud_train", {"training_id": tid}, message="準備上傳")
+    job = jobs.submit("cloud_train", {"training_id": tid}, message="準備租用 GPU")
     return db.update("trainings", tid, {"job_id": job["id"]})
 
 
@@ -285,16 +303,16 @@ def _upload_allowance(size: int) -> int:
     return int(min(6 * 3600, max(1800, 2 * size / bps)))
 
 
-def _upload_dataset(ctx: jobs.JobContext, tid: str, tar_path: Path, prefix: str, loc: dict, size: int) -> None:
-    """Upload dataset.tar to the volume of the pod that is already rented. upload.json is rewritten every minute, so
-    the pod knows the studio is still at it (it gives up after 15 minutes without a word); an error the pod reports
-    while setting up stops the upload early instead of finishing it for nothing."""
-    sent, stop, trouble = [0], threading.Event(), []
+def _send_dataset(ctx: jobs.JobContext, tid: str, work: Path, prefix: str, loc: dict) -> None:
+    """Package the dataset and upload it to the volume of the pod that is already rented. upload.json is rewritten
+    every minute from the start, so the pod knows the studio is still at it (it gives up after 15 minutes without a
+    word); an error the pod reports while setting up stops the upload early instead of finishing it for nothing."""
+    sent, total, stop, trouble = [0], [0], threading.Event(), []
 
     def heartbeat():
         while not stop.wait(60):
             try:
-                runpod.put_text(f"{prefix}/upload.json", _upload_status("uploading", sent[0], size), loc=loc)
+                runpod.put_text(f"{prefix}/upload.json", _upload_status("uploading", sent[0], total[0]), loc=loc)
                 if runpod.exists(f"{prefix}/error.json", loc, fast=True):
                     trouble.append("雲端機器在準備環境時出錯，已停止上傳。按「紀錄」看原因。")
                     return
@@ -302,21 +320,90 @@ def _upload_dataset(ctx: jobs.JobContext, tid: str, tar_path: Path, prefix: str,
                 ctx.log(f"upload heartbeat failed: {e}")
 
     def progress(f: float) -> None:
-        sent[0] = int(f * size)
+        sent[0] = int(f * total[0])
         if trouble:
             raise RuntimeError(trouble[0])
         ctx.progress(0.05 + 0.15 * f, f"已租到 GPU，上傳資料 {f * 100:.0f}%（上傳完就開始訓練）")
 
-    t0 = time.time()
     threading.Thread(target=heartbeat, name=f"upload-{tid}", daemon=True).start()
     try:
+        ctx.progress(0.04, "已租到 GPU，整理訓練資料")
+        tar_path, cfg = package_dataset(tid, work)
+        total[0] = tar_path.stat().st_size
+        runpod.put_text(f"{prefix}/config.json", json.dumps(cfg, ensure_ascii=False, indent=2), loc=loc)
+        t0 = time.time()
         runpod.upload(tar_path, f"{prefix}/dataset.tar", progress=progress, loc=loc)
+        took = time.time() - t0
     finally:
         stop.set()
-    runpod.put_text(f"{prefix}/upload.json", _upload_status("done", size, size), loc=loc)
+    tar_path.unlink(missing_ok=True)
+    runpod.put_text(f"{prefix}/upload.json", _upload_status("done", total[0], total[0]), loc=loc)
     _set(tid, uploaded_at=time.time())
-    if size >= 50 << 20:  # remembered for the estimates and the next pod's time limit
-        config.save_settings({"upload_bps": round(size / max(1.0, time.time() - t0))})
+    if total[0] >= 50 << 20:  # remembered for the estimates and the next pod's time limit
+        config.save_settings({"upload_bps": round(total[0] / max(1.0, took))})
+
+
+def _rentable(engine_id: str, preset_id: str, gpus: list[str], datacenter: str) -> list[str]:
+    """The cards of the list (in its order) that can be rented in the datacenter now; all of them when the live
+    stock cannot be read (renting is then simply tried)."""
+    res = gpu_offers(engine_id, preset_id, runpod.gpu_catalog(datacenter))
+    if not res["live"]:
+        return list(gpus)
+    stock = {o["id"]: o["availability"] for o in res["offers"]}
+    return [g for g in gpus if stock.get(g) in runpod.IN_STOCK]
+
+
+# --- auto-grab: wait for a GPU without renting anything -------------------------------------------------------------
+
+GRAB_POLL_S = 30                 # how often the live stock is checked for runs waiting for a GPU
+GPU_WAKE = threading.Event()     # set to check at once (a new waiting run)
+_GRAB_LOCK = threading.Lock()
+
+
+def _rewait(tid: str, why: str) -> bool:
+    """Put an auto-grab run back to waiting after the card was gone again; False when its waiting time is over."""
+    tr = db.get("trainings", tid)
+    w = dict(tr.get("wait") or {})
+    if not w or time.time() >= (w.get("until") or 0):
+        return False
+    w.update(misses=(w.get("misses") or 0) + 1, note=why)
+    _set(tid, status="waiting_gpu", wait=w, deadline=None, started_at=None)
+    return True
+
+
+def wait_for_gpus() -> list[str]:
+    """Runs in a server thread every GRAB_POLL_S seconds. For each run waiting for a GPU, look at the live stock of
+    its datacenter; as soon as a card of its list can be rented, hand it to cloud_train with the cards in stock (in
+    the person's order), which rents first and uploads after. Waiting costs nothing: no pod exists until then.
+    Returns the runs that were started."""
+    started = []
+    with _GRAB_LOCK:
+        for tr in db.query("SELECT * FROM trainings WHERE status='waiting_gpu'"):
+            tid, w, now = tr["id"], dict(tr.get("wait") or {}), time.time()
+            if now >= (w.get("until") or 0):
+                hours = round(((w.get("until") or now) - (w.get("since") or now)) / 3600, 1)
+                _set(tid, status="failed", finished_at=db.now(),
+                     note=f"等了 {hours:g} 小時都沒搶到卡，已停止。沒有租用或上傳任何東西，也沒有計費。")
+                continue
+            try:
+                _require_consent(tr["voice_id"])
+            except datasets.ConsentMissing as e:
+                _set(tid, status="failed", finished_at=db.now(), note=str(e))
+                continue
+            dc = (tr.get("storage") or {}).get("datacenter")
+            res = gpu_offers(tr["engine"], tr["preset"]["id"], runpod.gpu_catalog(dc))
+            stock = {o["id"]: o["availability"] for o in res["offers"]}
+            ready = [g for g in w.get("gpus", []) if stock.get(g) in runpod.IN_STOCK] if res["live"] else []
+            w.update(checks=(w.get("checks") or 0) + 1, last=now, error=res["error"],
+                     seen={g: stock.get(g) for g in w.get("gpus", [])})
+            if not ready:
+                _set(tid, wait=w)
+                continue
+            _set(tid, wait=w, status="queued", gpu=ready[0])
+            job = jobs.submit("cloud_train", {"training_id": tid, "gpus": ready}, message="有貨了，租用 GPU")
+            _set(tid, job_id=job["id"])
+            started.append(tid)
+    return started
 
 
 def _dataset_bytes(ds: dict) -> int:
@@ -373,31 +460,34 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
         deadline = tr.get("deadline") or (tr["created_at"] + float(config.load_settings()["runpod_max_hours"]) * 3600)
         ctx.log(f"resuming watch of pod {pod_id}")
     else:
-        # GPU first: the small files go up, the pod is rented, and only then is the dataset uploaded, while the pod
-        # sets up its environment (bootstrap.sh waits for upload.json). A scarce card is never lost to a long upload.
-        # 1. package and send the small files (a retry on another GPU reuses the dataset an earlier attempt uploaded)
+        # GPU first: the small files go up, the pod is rented, and only then is the dataset packaged and uploaded,
+        # while the pod sets up its environment (bootstrap.sh waits for upload.json). A scarce card is never lost to a
+        # long upload, and an auto-grab run holds the card seconds after it shows up in stock.
+        # 1. the small files (a retry on another GPU reuses the dataset an earlier attempt of this run uploaded)
         reuse = bool(ctx.params.get("reuse_upload")) and runpod.exists(f"{prefix}/dataset.tar", loc)
+        grab = bool(tr.get("wait"))  # auto-grab: the person accepts any card of their list
+        gpus = ctx.params.get("gpus") or [tr["gpu"]]
         _set(tid, status="starting")
-        ctx.progress(0.01, "整理訓練資料")
-        if reuse:
-            ctx.log("reusing the dataset already on the volume")
-            tar_path, size = None, runpod.size(f"{prefix}/dataset.tar", loc)
-        else:
-            tar_path, cfg = package_dataset(tid, work)
-            size = tar_path.stat().st_size
+        ctx.progress(0.01, "準備租用 GPU")
         _check_reference(tr, eng)  # before paying for anything
         _require_consent(tr["voice_id"])
-        if not reuse:
-            runpod.put_text(f"{prefix}/config.json", json.dumps(cfg, ensure_ascii=False, indent=2), loc=loc)
+        size = runpod.size(f"{prefix}/dataset.tar", loc) if reuse else _dataset_bytes(db.get("datasets", tr["dataset_id"]))
         runpod.put_text(f"{prefix}/bootstrap.sh", BOOTSTRAP, loc=loc)
         for fname, text in eng.cloud_files().items():
             runpod.put_text(f"{prefix}/{fname}", text, loc=loc)
         runpod.put_text(f"{prefix}/upload.json", _upload_status("done" if reuse else "waiting", 0, size), loc=loc)
         then = ("訓練資料已經在雲端，按「換一張 GPU 重試」就好，不用重新上傳。" if reuse
                 else "訓練資料還沒上傳，換一張有貨的卡再按一次開始就好。")
-        problem = _stock_problem(eng.id, tr["preset"]["id"], tr["gpu"], loc["datacenter"])
-        if problem:
-            raise RuntimeError(problem + then)
+        if grab:
+            gpus = _rentable(eng.id, tr["preset"]["id"], gpus, loc["datacenter"])
+            if not gpus:
+                if _rewait(tid, "剛好又沒貨了"):
+                    return {"message": "剛好又沒貨了，繼續等"}
+                raise RuntimeError("等卡的時間到了，還是沒有搶到卡（沒有租用或上傳任何東西）。")
+        else:
+            problem = _stock_problem(eng.id, tr["preset"]["id"], gpus[0], loc["datacenter"])
+            if problem:
+                raise RuntimeError(problem + then)
         ctx.check()
 
         # 2. rent the pod (intent and deadline are recorded first, so a lost response can be reconciled); its time
@@ -414,24 +504,25 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
             env["HF_TOKEN"] = hf
         preset = eng.preset(tr["preset"]["id"])
         try:
-            pod = runpod.create_pod(f"voice-studio-{tid}", eng.image, tr["gpu"], env,
+            pod = runpod.create_pod(f"voice-studio-{tid}", eng.image, gpus, env,
                                     ["bash", "-c", f"bash /workspace/{prefix}/bootstrap.sh"], loc,
                                     container_disk_gb=preset.disk_gb, min_ram_gb=preset.ram_gb,
                                     min_vcpu=preset.vcpu)
         except Exception as e:
             time.sleep(10)
             _reconcile_creation(tid, loc)  # the request may have gone through even though we saw an error
+            if grab and _rewait(tid, f"差一點：{str(e)[:120]}"):
+                return {"message": "差一點就搶到，被別人先租走了，繼續等"}
             raise RuntimeError(f"沒有租到 GPU：{str(e)[:300]}（這張卡剛好被租走了。{then}）")
         pod_id = pod.get("id")
-        gpu_actual = (pod.get("machine") or {}).get("gpuTypeId") or tr["gpu"]
+        gpu_actual = (pod.get("machine") or {}).get("gpuTypeId") or gpus[0]
         _set(tid, status="running" if reuse else "uploading", pod_id=pod_id, pod_state="running", gpu=gpu_actual,
              cost_per_hr=pod.get("costPerHr") or pod.get("adjustedCostPerHr"))
         ctx.log(f"pod {pod_id} created on {gpu_actual} at {pod.get('costPerHr')} /h")
 
-        # 3. upload the dataset onto the rented pod's volume
+        # 3. package and upload the dataset onto the rented pod's volume
         if not reuse:
-            _upload_dataset(ctx, tid, tar_path, prefix, loc, size)
-            tar_path.unlink(missing_ok=True)
+            _send_dataset(ctx, tid, work, prefix, loc)
             _set(tid, status="running")
 
     # 3. watch

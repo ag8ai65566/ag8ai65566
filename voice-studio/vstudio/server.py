@@ -51,9 +51,16 @@ def create_app() -> FastAPI:
             while not stop.is_set():
                 _quiet(colab.poll)
                 stop.wait(20)
+        def gpu_waiter():  # auto-grab: runs waiting for a GPU start as soon as one of their cards is in stock
+            while not stop.is_set():
+                if config.get_secret("runpod_api_key"):
+                    _quiet(training.wait_for_gpus)
+                training.GPU_WAKE.wait(training.GRAB_POLL_S)
+                training.GPU_WAKE.clear()
         stop = threading.Event()
         threading.Thread(target=reaper, name="reap", daemon=True).start()
         threading.Thread(target=colab_poller, name="colab", daemon=True).start()
+        threading.Thread(target=gpu_waiter, name="grab", daemon=True).start()
         yield
         stop.set()
         jobs.stop()

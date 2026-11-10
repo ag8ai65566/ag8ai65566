@@ -121,10 +121,12 @@ def location() -> dict:
     return {"volume": vol, "datacenter": dc, "cloud": st.get("runpod_cloud_type") or "SECURE"}
 
 
-def create_pod(name: str, image: str, gpu_type: str, env: dict, start_cmd: list[str], loc: dict,
+def create_pod(name: str, image: str, gpu_type: str | list[str], env: dict, start_cmd: list[str], loc: dict,
                container_disk_gb: int = 80, min_ram_gb: int = 32, min_vcpu: int = 8) -> dict:
-    """Rent exactly the GPU that was quoted (no silent fallback to a pricier card)."""
-    body = {"name": name[:180], "imageName": image, "gpuTypeIds": [gpu_type], "gpuTypePriority": "custom",
+    """Rent exactly the GPU that was quoted (no silent fallback to a pricier card), or, for auto-grab, the first card
+    of the person's own list that RunPod can give (gpuTypePriority "custom" keeps their order)."""
+    gpus = [gpu_type] if isinstance(gpu_type, str) else list(gpu_type)
+    body = {"name": name[:180], "imageName": image, "gpuTypeIds": gpus, "gpuTypePriority": "custom",
             "gpuCount": 1, "cloudType": loc.get("cloud") or "SECURE", "networkVolumeId": loc["volume"],
             "dataCenterIds": [loc["datacenter"]], "volumeMountPath": "/workspace",
             "containerDiskInGb": container_disk_gb, "minRAMPerGPU": min_ram_gb, "minVCPUPerGPU": min_vcpu,

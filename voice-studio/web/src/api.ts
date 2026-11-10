@@ -103,6 +103,11 @@ export type Training = {
   preset: { id: string; name?: string; params?: Record<string, unknown> };
   job: { status: string; progress: number; message: string } | null; job_id?: string; log?: string;
   note?: string; pod_state?: string | null; cost_per_hr?: number | null; can_retry_gpu?: boolean;
+  storage?: { datacenter?: string };
+  wait?: { // auto-grab: waiting (renting nothing) until one of these cards is in stock
+    gpus?: string[]; since?: number; until?: number; checks?: number; last?: number; misses?: number;
+    seen?: Record<string, string | null>; error?: string;
+  };
   target?: "runpod" | "colab"; phase?: { label: string; fraction: number }; colab_path?: string;
 };
 export type ColabStatus = {

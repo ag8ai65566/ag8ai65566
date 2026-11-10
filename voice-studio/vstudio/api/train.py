@@ -65,6 +65,8 @@ class PlanIn(BaseModel):
     params: dict | None = None
     usd_h: float | None = None
     target: str = "runpod"   # runpod | colab
+    gpus: list[str] | None = None      # auto-grab: wait until one of these cards is in stock (in this order)
+    wait_hours: float | None = None
 
 
 @router.post("/training/plan")
@@ -84,7 +86,8 @@ def training_start(body: PlanIn):
         if body.target not in ("runpod", "colab"):
             raise ValueError("target")
         return training.start(body.dataset_id, body.engine, body.preset, body.gpu, body.name, body.params,
-                              body.usd_h, body.target)
+                              body.usd_h, body.target, body.gpus if body.target == "runpod" else None,
+                              body.wait_hours)
     except datasets.ConsentMissing as e:
         raise HTTPException(409, str(e))
     except (ValueError, runpod.RunPodError) as e:
@@ -179,7 +182,11 @@ def training_get(tid: str):
 
 @router.post("/training/{tid}/cancel")
 def training_cancel(tid: str):
-    t = db.get("trainings", tid)
+    with training._GRAB_LOCK:  # the waiter does not start this run while it is being stopped
+        t = db.get("trainings", tid)
+        if t and t["status"] == "waiting_gpu":  # nothing rented or uploaded yet
+            training._set(tid, status="canceled", finished_at=db.now())
+            return {"ok": True}
     if t and t.get("job_id"):
         jobs.cancel(t["job_id"])
     if t and t.get("pod_id"):
