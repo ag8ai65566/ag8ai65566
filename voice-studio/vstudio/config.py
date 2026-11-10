@@ -39,6 +39,7 @@ DEFAULTS = {
     "runpod_datacenter": "",
     "runpod_cloud_type": "SECURE",
     "runpod_max_hours": 12.0,
+    "upload_bps": 0,      # measured upload speed to RunPod storage in bytes/s (0 = not measured yet)
     # Google Colab (see cloud/colab.py): the "My Drive" folder that Google Drive for desktop syncs, and the folder in it
     "colab_drive_root": "",
     "colab_folder": "VoiceStudio",

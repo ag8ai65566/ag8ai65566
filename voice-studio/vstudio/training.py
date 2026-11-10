@@ -3,8 +3,10 @@ zero-shot (no training) models."""
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import tarfile
+import threading
 import time
 from pathlib import Path
 
@@ -16,6 +18,33 @@ BOOTSTRAP = (Path(__file__).parent / "cloud" / "bootstrap" / "bootstrap.sh").rea
 
 def _speed_key(engine_id: str, preset_id: str, gpu: str) -> str:
     return f"{engine_id}:{preset_id}:{gpu}"
+
+
+def _speed(engine_id: str, preset_id: str, gpu: str) -> tuple[float | None, str, str]:
+    """Seconds per training step on this card, and where the number comes from:
+    - "measured": an earlier run of this training method on this card;
+    - "scaled": the latest run on another card, scaled by the two cards' relative speed (that card is returned);
+    - "guess": the training method's first guess, scaled from the card it is listed first for.
+    None (the engine's own guess) when the card's relative speed is unknown, e.g. for Colab."""
+    speed = config.load_settings().get("speed") or {}
+    own = (speed.get(_speed_key(engine_id, preset_id, gpu)) or {}).get("s_per_step")
+    if own:
+        return float(own), "measured", gpu
+    rel = runpod.GPU_SPEED.get(gpu)
+    if not rel:
+        return None, "guess", ""
+    prefix = _speed_key(engine_id, preset_id, "")
+    others = sorted(((v.get("at") or 0, k[len(prefix):], float(v["s_per_step"])) for k, v in speed.items()
+                     if k.startswith(prefix) and (v or {}).get("s_per_step") and k[len(prefix):] in runpod.GPU_SPEED),
+                    reverse=True)
+    if others:
+        _, other, sps = others[0]
+        return sps * runpod.GPU_SPEED[other] / rel, "scaled", other
+    p = engines.get(engine_id).preset(preset_id)
+    first = p.gpu[0] if p.gpu else ""
+    if p.s_per_step and first in runpod.GPU_SPEED:
+        return p.s_per_step * runpod.GPU_SPEED[first] / rel, "guess", first
+    return None, "guess", ""
 
 
 def _require_consent(voice_id: str) -> None:
@@ -46,8 +75,18 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
         eff = eng.effective_params(p.id, params, n_train)
     except ValueError as e:
         eff, blocked = {**p.params, **(params or {})}, str(e)
-    measured = (st.get("speed") or {}).get(_speed_key(eng.id, p.id, gpu), {}).get("s_per_step")
-    est = eng.estimate(ds["hours"], p.id, usd_h, n_train=n_train, s_per_step=measured, params=eff)
+    sps, basis, basis_gpu = _speed(eng.id, p.id, gpu)
+    est = eng.estimate(ds["hours"], p.id, usd_h, n_train=n_train, s_per_step=sps, params=eff)
+    if est["steps"] and sps:
+        est["basis"] = basis
+    upload = None
+    if target == "runpod":  # the dataset goes up after the GPU is rented, so the upload is billed time too
+        nbytes, bps = _dataset_bytes(ds), float(st.get("upload_bps") or 0)
+        if nbytes:
+            upload = {"gb": round(nbytes / 1e9, 2), "minutes": round(nbytes / bps / 60, 1) if bps else None}
+            if bps:
+                est["hours"] = round(est["hours"] + nbytes / bps / 3600, 2)
+                est["usd"] = round(est["hours"] * usd_h, 2)
     limit = float(st.get("runpod_max_hours") or 12)
     if target == "colab":
         limit = min(limit, 11.5)  # a Colab session ends after at most about 12 hours
@@ -68,15 +107,68 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
         if p.disk_gb >= 200:
             warnings.append("完整微調的檢查點每個約 8 GB，要經過雲端硬碟同步回來會很久，建議用 RunPod。")
     return {"engine": eng.id, "preset": p.id, "gpu": gpu, "usd_per_hour": usd_h, "data_hours": ds["hours"],
-            "target": target, "compute_units": units,
+            "target": target, "compute_units": units, "upload": upload,
             "n_train": n_train, "steps": est["steps"], "epochs_effective": eff.get("epochs_effective"),
             "estimate_hours": est["hours"], "estimate_usd": est["usd"], "estimate_basis": est["basis"],
+            "estimate_from": runpod.GPUS.get(basis_gpu, {}).get("label") or basis_gpu.replace("NVIDIA ", "")
+            if est["basis"] == "scaled" else None, "s_per_step": round(sps, 2) if sps else None,
             "max_hours": limit, "max_usd": round(limit * usd_h, 2), "disk_gb": p.disk_gb, "ram_gb": p.ram_gb,
             "params": eff, "warnings": warnings, "blocked": blocked}
 
 
+def gpu_offers(engine_id: str, preset_id: str, catalog: dict | None = None) -> dict:
+    """The GPUs a RunPod run of this training method can rent, with the live stock in the volume's datacenter.
+
+    The preset's own cards are offered (recommended); so is any other card the engine or the price table knows with at
+    least as much memory as the smallest recommended one, so a datacenter without the recommended cards can still
+    train on a bigger card. With live stock, cards that can be rented now come first, recommended then cheapest."""
+    eng = engines.get(engine_id)
+    p = eng.preset(preset_id)
+    cat = catalog or runpod.gpu_catalog(config.load_settings().get("runpod_datacenter") or None)
+    live = {g["id"]: g for g in cat["gpus"]}
+
+    def offer(gid: str) -> dict:
+        g, static = live.get(gid) or {}, runpod.GPUS.get(gid, {})
+        return {"id": gid, "label": g.get("label") or static.get("label") or gid.replace("NVIDIA ", ""),
+                "vram": g.get("vram") or static.get("vram") or 0, "usd_h": g.get("usd_h") or static.get("usd_h"),
+                "availability": (g.get("availability") or "NONE") if cat["live"] else None,
+                "recommended": gid in p.gpu}
+    own = [offer(g) for g in p.gpu]
+    floor = min((o["vram"] for o in own if o["vram"]), default=0)
+    others = dict.fromkeys([g for q in eng.presets for g in q.gpu] + list(runpod.GPUS))
+    extra = [o for o in map(offer, others) if o["id"] not in p.gpu and floor and o["vram"] >= floor]
+    offers = own + extra
+    if cat["live"]:
+        offers.sort(key=lambda o: (o["availability"] not in runpod.IN_STOCK, not o["recommended"],
+                                   o["usd_h"] is None, o["usd_h"] or 0))
+    rentable = [o["id"] for o in offers if o["availability"] in runpod.IN_STOCK]
+    return {"live": cat["live"], "datacenter": cat["datacenter"], "error": cat["error"], "offers": offers,
+            "default": (rentable[0] if rentable else None) if cat["live"] else p.gpu[0]}
+
+
+def _stock_problem(engine_id: str, preset_id: str, gpu: str, datacenter: str) -> str | None:
+    """Why this GPU cannot be rented for this training method in the datacenter right now; None when it can, or when
+    the live stock cannot be read (then renting is simply tried, as before)."""
+    res = gpu_offers(engine_id, preset_id, runpod.gpu_catalog(datacenter))
+    o = next((x for x in res["offers"] if x["id"] == gpu), None)
+    if o is None:
+        return f"{gpu.replace('NVIDIA ', '')} 的顯示記憶體不夠這個訓練方式用，請換一張。"
+    if not res["live"] or o["availability"] in runpod.IN_STOCK:
+        return None
+    alts = [f"{x['label']}（${x['usd_h']:.2f}/時）" if x["usd_h"] else x["label"]
+            for x in res["offers"] if x["availability"] in runpod.IN_STOCK]
+    return (f"{o['label']} 在 {datacenter} 現在沒貨。" +
+            (f"現在有貨的：{'、'.join(alts)}。" if alts else
+             "這個訓練方式能用的卡在這個資料中心都沒貨：晚點再試，或在 RunPod 其他資料中心建立網路磁碟後到設定改用它。"))
+
+
 def start(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None, name: str = "",
-          params: dict | None = None, usd_h: float | None = None, target: str = "runpod") -> dict:
+          params: dict | None = None, usd_h: float | None = None, target: str = "runpod",
+          gpus: list[str] | None = None, wait_hours: float | None = None) -> dict:
+    """gpus (RunPod only): auto-grab. The run waits, renting nothing, until a card of this list (in its order) is in
+    stock in the volume's datacenter, for at most wait_hours; then it rents that card and continues as usual."""
+    if gpus:
+        gpu = gpus[0]
     ds = db.get("datasets", dataset_id)
     _require_consent(ds["voice_id"])
     voice = db.get("voices", ds["voice_id"])
@@ -103,13 +195,35 @@ def start(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = Non
         job = jobs.submit("colab_prepare", {"training_id": tid}, message="放進雲端硬碟資料夾")
         return db.update("trainings", tid, {"job_id": job["id"]})
     loc = runpod.location()
+    try:  # the volume must still exist and be reachable over S3; an unreachable API is left to the upload itself
+        chk = runpod.check()
+    except Exception:
+        chk = {}
+    if chk.get("problem"):
+        raise ValueError(chk["problem"] + "還沒有上傳任何資料。")
+    row = {"voice_id": ds["voice_id"], "dataset_id": dataset_id, "engine": engine_id,
+           "preset": {"id": pl["preset"], "params": pl["params"], "name": name}, "target": "runpod",
+           "gpu": pl["gpu"], "storage": loc, "progress": {}, "cost_estimate": pl["estimate_usd"]}
+    if gpus:  # auto-grab: only cards with enough memory for this training method; stock is the waiter's business
+        usable = {o["id"] for o in gpu_offers(engine_id, pl["preset"], runpod.gpu_catalog(loc["datacenter"]))["offers"]}
+        bad = [g.replace("NVIDIA ", "") for g in gpus if g not in usable]
+        if bad:
+            raise ValueError(f"{'、'.join(bad)} 的顯示記憶體不夠這個訓練方式用，請從清單拿掉。")
+        hours = min(72.0, max(0.25, float(wait_hours or 12)))
+        now = time.time()
+        tid = db.new_id("tr")
+        db.insert("trainings", {"id": tid, **row, "status": "waiting_gpu", "remote_prefix": f"vs/jobs/{tid}",
+                                "wait": {"gpus": list(dict.fromkeys(gpus)), "since": now, "until": now + hours * 3600,
+                                         "checks": 0}, "created_at": db.now()})
+        GPU_WAKE.set()  # look at the stock right away
+        return db.get("trainings", tid)
+    problem = _stock_problem(engine_id, pl["preset"], pl["gpu"], loc["datacenter"])
+    if problem:  # checked before anything is uploaded or rented
+        raise ValueError(problem + "還沒有上傳任何資料。可以勾「沒貨時自動搶卡」，有貨時自動開始。")
     tid = db.new_id("tr")
-    db.insert("trainings", {"id": tid, "voice_id": ds["voice_id"], "dataset_id": dataset_id, "engine": engine_id,
-                            "preset": {"id": pl["preset"], "params": pl["params"], "name": name},
-                            "target": "runpod", "status": "queued", "gpu": pl["gpu"], "storage": loc,
-                            "remote_prefix": f"vs/jobs/{tid}", "progress": {}, "cost_estimate": pl["estimate_usd"],
+    db.insert("trainings", {"id": tid, **row, "status": "queued", "remote_prefix": f"vs/jobs/{tid}",
                             "created_at": db.now()})
-    job = jobs.submit("cloud_train", {"training_id": tid}, message="準備上傳")
+    job = jobs.submit("cloud_train", {"training_id": tid}, message="準備租用 GPU")
     return db.update("trainings", tid, {"job_id": job["id"]})
 
 
@@ -176,6 +290,134 @@ def _find_pods(tid: str, loc: dict) -> list[dict]:
     return [p for p in pods if (p.get("env") or {}).get("VS_TRAINING_ID", tid) == tid]
 
 
+def _upload_status(status: str, sent: int, total: int) -> str:
+    """upload.json, read by wait_upload in bootstrap.sh: compact JSON that changes on every write while uploading."""
+    return json.dumps({"status": status, "bytes": sent, "total": total, "t": round(time.time(), 1)},
+                      separators=(",", ":"))
+
+
+def _upload_allowance(size: int) -> int:
+    """Extra seconds on the pod's time limit for the upload that runs on rented time: twice the time it should take at
+    the measured upload speed (2 MB/s before one was measured), at least 30 minutes, at most 6 hours."""
+    bps = float(config.load_settings().get("upload_bps") or 0) or 2e6
+    return int(min(6 * 3600, max(1800, 2 * size / bps)))
+
+
+def _send_dataset(ctx: jobs.JobContext, tid: str, work: Path, prefix: str, loc: dict) -> None:
+    """Package the dataset and upload it to the volume of the pod that is already rented. upload.json is rewritten
+    every minute from the start, so the pod knows the studio is still at it (it gives up after 15 minutes without a
+    word); an error the pod reports while setting up stops the upload early instead of finishing it for nothing."""
+    sent, total, stop, trouble = [0], [0], threading.Event(), []
+
+    def heartbeat():
+        while not stop.wait(60):
+            try:
+                runpod.put_text(f"{prefix}/upload.json", _upload_status("uploading", sent[0], total[0]), loc=loc)
+                if runpod.exists(f"{prefix}/error.json", loc, fast=True):
+                    trouble.append("雲端機器在準備環境時出錯，已停止上傳。按「紀錄」看原因。")
+                    return
+            except Exception as e:  # a missed beat is harmless: the pod waits 15 minutes for the next one
+                ctx.log(f"upload heartbeat failed: {e}")
+
+    def progress(f: float) -> None:
+        sent[0] = int(f * total[0])
+        if trouble:
+            raise RuntimeError(trouble[0])
+        ctx.progress(0.05 + 0.15 * f, f"已租到 GPU，上傳資料 {f * 100:.0f}%（上傳完就開始訓練）")
+
+    threading.Thread(target=heartbeat, name=f"upload-{tid}", daemon=True).start()
+    try:
+        ctx.progress(0.04, "已租到 GPU，整理訓練資料")
+        tar_path, cfg = package_dataset(tid, work)
+        total[0] = tar_path.stat().st_size
+        runpod.put_text(f"{prefix}/config.json", json.dumps(cfg, ensure_ascii=False, indent=2), loc=loc)
+        t0 = time.time()
+        runpod.upload(tar_path, f"{prefix}/dataset.tar", progress=progress, loc=loc)
+        took = time.time() - t0
+    finally:
+        stop.set()
+    tar_path.unlink(missing_ok=True)
+    runpod.put_text(f"{prefix}/upload.json", _upload_status("done", total[0], total[0]), loc=loc)
+    _set(tid, uploaded_at=time.time())
+    if total[0] >= 50 << 20:  # remembered for the estimates and the next pod's time limit
+        config.save_settings({"upload_bps": round(total[0] / max(1.0, took))})
+
+
+def _rentable(engine_id: str, preset_id: str, gpus: list[str], datacenter: str) -> list[str]:
+    """The cards of the list (in its order) that can be rented in the datacenter now; all of them when the live
+    stock cannot be read (renting is then simply tried)."""
+    res = gpu_offers(engine_id, preset_id, runpod.gpu_catalog(datacenter))
+    if not res["live"]:
+        return list(gpus)
+    stock = {o["id"]: o["availability"] for o in res["offers"]}
+    return [g for g in gpus if stock.get(g) in runpod.IN_STOCK]
+
+
+# --- auto-grab: wait for a GPU without renting anything -------------------------------------------------------------
+
+GRAB_POLL_S = 30                 # how often the live stock is checked for runs waiting for a GPU
+GPU_WAKE = threading.Event()     # set to check at once (a new waiting run)
+_GRAB_LOCK = threading.Lock()
+
+
+def _rewait(tid: str, why: str) -> bool:
+    """Put an auto-grab run back to waiting after the card was gone again; False when its waiting time is over."""
+    tr = db.get("trainings", tid)
+    w = dict(tr.get("wait") or {})
+    if not w or time.time() >= (w.get("until") or 0):
+        return False
+    w.update(misses=(w.get("misses") or 0) + 1, note=why)
+    _set(tid, status="waiting_gpu", wait=w, deadline=None, started_at=None)
+    return True
+
+
+def wait_for_gpus() -> list[str]:
+    """Runs in a server thread every GRAB_POLL_S seconds. For each run waiting for a GPU, look at the live stock of
+    its datacenter; as soon as a card of its list can be rented, hand it to cloud_train with the cards in stock (in
+    the person's order), which rents first and uploads after. Waiting costs nothing: no pod exists until then.
+    Returns the runs that were started."""
+    started = []
+    with _GRAB_LOCK:
+        for tr in db.query("SELECT * FROM trainings WHERE status='waiting_gpu'"):
+            tid, w, now = tr["id"], dict(tr.get("wait") or {}), time.time()
+            if now >= (w.get("until") or 0):
+                hours = round(((w.get("until") or now) - (w.get("since") or now)) / 3600, 1)
+                _set(tid, status="failed", finished_at=db.now(),
+                     note=f"等了 {hours:g} 小時都沒搶到卡，已停止。沒有租用或上傳任何東西，也沒有計費。")
+                continue
+            try:
+                _require_consent(tr["voice_id"])
+            except datasets.ConsentMissing as e:
+                _set(tid, status="failed", finished_at=db.now(), note=str(e))
+                continue
+            dc = (tr.get("storage") or {}).get("datacenter")
+            res = gpu_offers(tr["engine"], tr["preset"]["id"], runpod.gpu_catalog(dc))
+            stock = {o["id"]: o["availability"] for o in res["offers"]}
+            ready = [g for g in w.get("gpus", []) if stock.get(g) in runpod.IN_STOCK] if res["live"] else []
+            w.update(checks=(w.get("checks") or 0) + 1, last=now, error=res["error"],
+                     seen={g: stock.get(g) for g in w.get("gpus", [])})
+            if not ready:
+                _set(tid, wait=w)
+                continue
+            _set(tid, wait=w, status="queued", gpu=ready[0])
+            job = jobs.submit("cloud_train", {"training_id": tid, "gpus": ready}, message="有貨了，租用 GPU")
+            _set(tid, job_id=job["id"])
+            started.append(tid)
+    return started
+
+
+def _dataset_bytes(ds: dict) -> int:
+    """Roughly the size of the dataset.tar a run uploads (the dataset folder: audio and metadata)."""
+    total = 0
+    for root, _dirs, files in os.walk(ds["path"]):
+        for f in files:
+            try:
+                total += os.path.getsize(os.path.join(root, f))
+            except OSError:
+                pass
+    return total
+
+
 @jobs.handler("cloud_train", queue="io")
 def cloud_train(ctx: jobs.JobContext) -> dict:
     """Upload → pod → watch → download. Whatever goes wrong, the training row ends in a final state and the pod is
@@ -218,47 +460,70 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
         deadline = tr.get("deadline") or (tr["created_at"] + float(config.load_settings()["runpod_max_hours"]) * 3600)
         ctx.log(f"resuming watch of pod {pod_id}")
     else:
-        # 1. package and upload
-        _set(tid, status="uploading")
-        ctx.progress(0.01, "整理訓練資料")
-        tar_path, cfg = package_dataset(tid, work)
+        # GPU first: the small files go up, the pod is rented, and only then is the dataset packaged and uploaded,
+        # while the pod sets up its environment (bootstrap.sh waits for upload.json). A scarce card is never lost to a
+        # long upload, and an auto-grab run holds the card seconds after it shows up in stock.
+        # 1. the small files (a retry on another GPU reuses the dataset an earlier attempt of this run uploaded)
+        reuse = bool(ctx.params.get("reuse_upload")) and runpod.exists(f"{prefix}/dataset.tar", loc)
+        grab = bool(tr.get("wait"))  # auto-grab: the person accepts any card of their list
+        gpus = ctx.params.get("gpus") or [tr["gpu"]]
+        _set(tid, status="starting")
+        ctx.progress(0.01, "準備租用 GPU")
         _check_reference(tr, eng)  # before paying for anything
         _require_consent(tr["voice_id"])
-        runpod.put_text(f"{prefix}/config.json", json.dumps(cfg, ensure_ascii=False, indent=2), loc=loc)
+        size = runpod.size(f"{prefix}/dataset.tar", loc) if reuse else _dataset_bytes(db.get("datasets", tr["dataset_id"]))
         runpod.put_text(f"{prefix}/bootstrap.sh", BOOTSTRAP, loc=loc)
         for fname, text in eng.cloud_files().items():
             runpod.put_text(f"{prefix}/{fname}", text, loc=loc)
-        runpod.upload(tar_path, f"{prefix}/dataset.tar", loc=loc,
-                      progress=lambda f: ctx.progress(0.02 + 0.16 * f, f"上傳資料 {f * 100:.0f}%"))
-        tar_path.unlink(missing_ok=True)
+        runpod.put_text(f"{prefix}/upload.json", _upload_status("done" if reuse else "waiting", 0, size), loc=loc)
+        then = ("訓練資料已經在雲端，按「換一張 GPU 重試」就好，不用重新上傳。" if reuse
+                else "訓練資料還沒上傳，換一張有貨的卡再按一次開始就好。")
+        if grab:
+            gpus = _rentable(eng.id, tr["preset"]["id"], gpus, loc["datacenter"])
+            if not gpus:
+                if _rewait(tid, "剛好又沒貨了"):
+                    return {"message": "剛好又沒貨了，繼續等"}
+                raise RuntimeError("等卡的時間到了，還是沒有搶到卡（沒有租用或上傳任何東西）。")
+        else:
+            problem = _stock_problem(eng.id, tr["preset"]["id"], gpus[0], loc["datacenter"])
+            if problem:
+                raise RuntimeError(problem + then)
         ctx.check()
-        _require_consent(tr["voice_id"])
 
-        # 2. create the pod (intent and deadline are recorded first, so a lost response can be reconciled)
+        # 2. rent the pod (intent and deadline are recorded first, so a lost response can be reconciled); its time
+        # limit also covers the upload, which now runs on rented time
         max_h = float(config.load_settings().get("runpod_max_hours") or 12)
-        deadline = time.time() + max_h * 3600 + 900
-        _set(tid, status="starting", pod_state="creating", deadline=deadline, started_at=time.time())
-        ctx.progress(0.19, "啟動雲端 GPU")
-        env = {"VS_TRAINING_ID": tid, "VS_ENGINE": eng.id, "VS_MAX_SECONDS": str(int(max_h * 3600)),
-               "VS_IMAGE": eng.image}
+        allow = 0 if reuse else _upload_allowance(size)
+        deadline = time.time() + max_h * 3600 + allow + 900
+        _set(tid, pod_state="creating", deadline=deadline, started_at=time.time())
+        ctx.progress(0.03, "租用雲端 GPU")
+        env = {"VS_TRAINING_ID": tid, "VS_ENGINE": eng.id, "VS_MAX_SECONDS": str(int(max_h * 3600 + allow)),
+               "VS_IMAGE": eng.image, "VS_WAIT_UPLOAD": "1"}
         hf = config.get_secret("hf_token")
         if hf:
             env["HF_TOKEN"] = hf
         preset = eng.preset(tr["preset"]["id"])
         try:
-            pod = runpod.create_pod(f"voice-studio-{tid}", eng.image, tr["gpu"], env,
+            pod = runpod.create_pod(f"voice-studio-{tid}", eng.image, gpus, env,
                                     ["bash", "-c", f"bash /workspace/{prefix}/bootstrap.sh"], loc,
                                     container_disk_gb=preset.disk_gb, min_ram_gb=preset.ram_gb,
                                     min_vcpu=preset.vcpu)
         except Exception as e:
             time.sleep(10)
             _reconcile_creation(tid, loc)  # the request may have gone through even though we saw an error
-            raise RuntimeError(f"沒有租到 GPU：{str(e)[:300]}（這張卡在這個資料中心可能暫時沒貨，換一張試試）")
+            if grab and _rewait(tid, f"差一點：{str(e)[:120]}"):
+                return {"message": "差一點就搶到，被別人先租走了，繼續等"}
+            raise RuntimeError(f"沒有租到 GPU：{str(e)[:300]}（這張卡剛好被租走了。{then}）")
         pod_id = pod.get("id")
-        gpu_actual = (pod.get("machine") or {}).get("gpuTypeId") or tr["gpu"]
-        _set(tid, status="running", pod_id=pod_id, pod_state="running", gpu=gpu_actual,
+        gpu_actual = (pod.get("machine") or {}).get("gpuTypeId") or gpus[0]
+        _set(tid, status="running" if reuse else "uploading", pod_id=pod_id, pod_state="running", gpu=gpu_actual,
              cost_per_hr=pod.get("costPerHr") or pod.get("adjustedCostPerHr"))
         ctx.log(f"pod {pod_id} created on {gpu_actual} at {pod.get('costPerHr')} /h")
+
+        # 3. package and upload the dataset onto the rented pod's volume
+        if not reuse:
+            _send_dataset(ctx, tid, work, prefix, loc)
+            _set(tid, status="running")
 
     # 3. watch
     last_poll, s3_errors, partial = 0.0, 0, False
@@ -366,6 +631,43 @@ def recoverable(tr: dict) -> bool:
         return False
 
 
+def can_retry_gpu(tr: dict) -> bool:
+    """A RunPod run that uploaded its data and stopped before it got a GPU: it can try another card without
+    uploading again (retry_on_gpu checks that the data is really still on the volume)."""
+    return (tr.get("target") == "runpod" and tr["status"] in ("failed", "canceled") and not tr.get("pod_id")
+            and bool(tr.get("uploaded_at")))
+
+
+def retry_on_gpu(tid: str, gpu: str, usd_h: float | None = None) -> dict:
+    tr = db.get("trainings", tid)
+    if not tr:
+        raise KeyError(tid)
+    if not can_retry_gpu(tr):
+        raise ValueError("只有資料已經上傳、但還沒租到 GPU 就停下的 RunPod 訓練可以換卡重試。")
+    loc = _loc(tr)
+    if not runpod.exists(f"{tr['remote_prefix']}/dataset.tar", loc):
+        raise ValueError("雲端已經沒有這次上傳的資料，請重新開始一次訓練。")
+    _require_consent(tr["voice_id"])
+    problem = _stock_problem(tr["engine"], tr["preset"]["id"], gpu, loc["datacenter"])
+    if problem:
+        raise ValueError(problem)
+    try:  # a create request that looked failed can still have made a pod: it must not train next to the new one
+        found = _find_pods(tid, loc)
+    except Exception as e:
+        raise ValueError(f"暫時無法確認 RunPod 上沒有這次訓練留下的機器（{str(e)[:120]}），請稍後再試。")
+    if not all(_remove_pod(tid, p.get("id")) for p in found):
+        raise ValueError("RunPod 上有這次訓練留下的機器，刪除失敗。請到 runpod.io → Pods 確認後再試。")
+    ds, eng = db.get("datasets", tr["dataset_id"]), engines.get(tr["engine"])
+    usd_h = usd_h or runpod.GPUS.get(gpu, {}).get("usd_h", 1.5)
+    est = eng.estimate(ds["hours"], tr["preset"]["id"], usd_h, n_train=int(ds["meta"].get("n_train") or ds["n_items"]),
+                       s_per_step=_speed(eng.id, tr["preset"]["id"], gpu)[0], params=tr["preset"]["params"])
+    # the row is updated before the job exists, so the worker never reads the old GPU
+    _set(tid, gpu=gpu, status="queued", pod_state=None, note="", finished_at=None, deadline=None, started_at=None,
+         cost_estimate=est["usd"], cost_per_hr=None, progress={})
+    job = jobs.submit("cloud_train", {"training_id": tid, "reuse_upload": True}, message="換一張 GPU 重試")
+    return db.update("trainings", tid, {"job_id": job["id"]})
+
+
 def _reconcile_creation(tid: str, loc: dict) -> None:
     """After an uncertain POST /pods: remove what RunPod shows for this run. If nothing is visible yet, or a removal
     fails, the run stays 'uncertain' and reap() keeps looking (a pod can appear after the listing)."""
@@ -401,7 +703,7 @@ def resume_interrupted() -> list[str]:
                 found = _find_pods(tr["id"], _loc(tr))
             except Exception:
                 found = []
-            if len(found) == 1:
+            if len(found) == 1 and tr.get("uploaded_at"):
                 pod_id = found[0].get("id")
                 _set(tr["id"], pod_id=pod_id, pod_state="running", status="running")
             else:
@@ -623,7 +925,7 @@ def _fraction(p: dict) -> float:
     """Overall cloud progress 0–1 across phases (training dominates)."""
     ph = p.get("phase")
     frac = (p.get("step", 0) / p["total"]) if p.get("total") else 0.0
-    return {"setup": 0.02, "unpack": 0.04, "download": 0.06, "prepare": 0.08}.get(ph) or \
+    return {"setup": 0.02, "upload": 0.03, "unpack": 0.04, "download": 0.06, "prepare": 0.08}.get(ph) or \
         {"train": 0.1 + 0.75 * frac, "samples": 0.85 + 0.12 * frac, "package": 0.98}.get(ph, 0.0)
 
 
@@ -631,6 +933,8 @@ def _phase_label(p: dict) -> str:
     ph = p.get("phase")
     if ph == "setup":
         return "雲端安裝環境（第一次約 10 分鐘，之後會跳過）"
+    if ph == "upload":
+        return "環境已就緒，等資料上傳完"
     if ph == "unpack":
         return "解開資料"
     if ph == "download":
@@ -652,7 +956,8 @@ def _phase_label(p: dict) -> str:
 
 
 def _stage_label(err: dict) -> str:
-    return {"setup": "安裝環境", "unpack": "解開資料", "train": "訓練", "package": "打包",
+    return {"setup": "安裝環境", "upload": "等資料上傳（太久沒有上傳進度）", "unpack": "解開資料", "train": "訓練",
+            "package": "打包",
             None: "逾時" if err.get("status") == "timeout" else "未知"}.get(err.get("stage"), err.get("stage") or "?")
 
 

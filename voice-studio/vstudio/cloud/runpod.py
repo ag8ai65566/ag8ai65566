@@ -37,6 +37,21 @@ GPUS = {  # Secure Cloud on-demand prices from runpod.io/pricing (updated 2026-0
     "NVIDIA GeForce RTX 4090": {"label": "RTX 4090 24GB", "vram": 24, "usd_h": 0.74},
 }
 
+# Rough training speed relative to an A100 SXM 80GB (bf16 mixed precision; from public specs and common training
+# benchmarks, not measured with these engines). Only used to carry a speed measured on one card over to a card that
+# has not been measured yet; a card's own measured speed always wins.
+GPU_SPEED = {
+    "NVIDIA H200": 2.2,
+    "NVIDIA H100 80GB HBM3": 2.0,
+    "NVIDIA H100 PCIe": 1.5,
+    "NVIDIA A100-SXM4-80GB": 1.0,
+    "NVIDIA A100 80GB PCIe": 0.9,
+    "NVIDIA GeForce RTX 5090": 0.85,
+    "NVIDIA L40S": 0.8,
+    "NVIDIA RTX 6000 Ada Generation": 0.8,
+    "NVIDIA GeForce RTX 4090": 0.65,
+}
+
 
 class RunPodError(Exception):
     pass
@@ -62,17 +77,39 @@ def _req(method: str, path: str, **kw):
 
 
 def check() -> dict:
-    """Verify the API key and the volume; returns the volume's datacenter and size."""
+    """Verify the API key and the volume; returns the account's volumes (s3: whether the studio can use one) and,
+    in problem, why the volume in settings cannot be used for training ("" when it can)."""
     st = config.load_settings()
     vols = _req("GET", "/networkvolumes")
     vols = vols if isinstance(vols, list) else vols.get("data", vols)
     out = {"ok": True, "volumes": [{"id": v.get("id"), "name": v.get("name"), "dataCenterId": v.get("dataCenterId"),
-                                    "size": v.get("size")} for v in vols]}
+                                    "size": v.get("size"), "s3": v.get("dataCenterId") in S3_DATACENTERS}
+                                   for v in vols]}
     vid = st.get("runpod_volume_id")
     if vid:
         match = [v for v in out["volumes"] if v["id"] == vid]
         out["volume"] = match[0] if match else None
+    out["problem"] = volume_problem(out["volumes"], vid, st.get("runpod_datacenter"))
     return out
+
+
+def volume_problem(volumes: list[dict], volume_id: str | None, datacenter: str | None) -> str:
+    """Why the volume in settings cannot be used for training: gone, in a datacenter without the S3 API, or set
+    with another datacenter than the one it is in. "" when it can be used (or none is set yet)."""
+    if not volume_id:
+        return ""
+    v = next((x for x in volumes if x["id"] == volume_id), None)
+    if v is None:
+        return (f"設定裡的網路磁碟 {volume_id} 不在你的 RunPod 帳號裡（可能已經刪除），訓練會失敗。"
+                "到「設定 → 雲端 GPU」按「測試連線」，點一個可以用的磁碟。")
+    dc = v.get("dataCenterId") or ""
+    if dc not in S3_DATACENTERS:
+        return (f"網路磁碟 {v.get('name') or volume_id} 在 {dc}，那裡沒有 S3 API，Voice Studio 沒辦法把資料傳過去。"
+                "請在設定下拉選單裡的資料中心建立網路磁碟，再到設定改用它。")
+    if datacenter and datacenter != dc:
+        return (f"設定的資料中心 {datacenter} 和網路磁碟實際所在的 {dc} 不一樣。"
+                "到「設定 → 雲端 GPU」按「測試連線」，再點一次這個磁碟。")
+    return ""
 
 
 def location() -> dict:
@@ -84,10 +121,12 @@ def location() -> dict:
     return {"volume": vol, "datacenter": dc, "cloud": st.get("runpod_cloud_type") or "SECURE"}
 
 
-def create_pod(name: str, image: str, gpu_type: str, env: dict, start_cmd: list[str], loc: dict,
+def create_pod(name: str, image: str, gpu_type: str | list[str], env: dict, start_cmd: list[str], loc: dict,
                container_disk_gb: int = 80, min_ram_gb: int = 32, min_vcpu: int = 8) -> dict:
-    """Rent exactly the GPU that was quoted (no silent fallback to a pricier card)."""
-    body = {"name": name[:180], "imageName": image, "gpuTypeIds": [gpu_type], "gpuTypePriority": "custom",
+    """Rent exactly the GPU that was quoted (no silent fallback to a pricier card), or, for auto-grab, the first card
+    of the person's own list that RunPod can give (gpuTypePriority "custom" keeps their order)."""
+    gpus = [gpu_type] if isinstance(gpu_type, str) else list(gpu_type)
+    body = {"name": name[:180], "imageName": image, "gpuTypeIds": gpus, "gpuTypePriority": "custom",
             "gpuCount": 1, "cloudType": loc.get("cloud") or "SECURE", "networkVolumeId": loc["volume"],
             "dataCenterIds": [loc["datacenter"]], "volumeMountPath": "/workspace",
             "containerDiskInGb": container_disk_gb, "minRAMPerGPU": min_ram_gb, "minVCPUPerGPU": min_vcpu,
@@ -124,26 +163,41 @@ def remove_pod(pod_id: str) -> None:
             raise
 
 
-def gpu_catalog(datacenter: str | None = None) -> list[dict]:
-    """Live GPU prices and stock for pods (api.runpod.io/v2/catalog/gpus); falls back to the static table."""
+IN_STOCK = ("HIGH", "MEDIUM", "LOW")  # the catalog's availability levels that can be rented; "NONE" cannot
+
+
+def gpu_catalog(datacenter: str | None = None) -> dict:
+    """Live GPU prices and stock for pods (api.runpod.io/v2/catalog/gpus), for one datacenter when given.
+
+    A GPU the catalog does not list for that datacenter is out of stock there ("NONE"). Only NVIDIA cards are listed
+    (the engine images are CUDA). When the catalog cannot be read, the static table comes back with live=False and
+    the reason, so the page can say so instead of presenting the static list as if it were the current stock."""
     st = config.load_settings()
     cloud = st.get("runpod_cloud_type") or "SECURE"
     try:
         with httpx.Client(timeout=30) as c:
             r = c.get("https://api.runpod.io/v2/catalog/gpus", headers=_h(),
                       params={"include": "AVAILABILITY", "product": "POD", "cloud": cloud})
-        r.raise_for_status()
+        if r.status_code >= 400:
+            raise RunPodError(f"RunPod GPU catalog: {r.status_code} {r.text[:200]}")
         out = []
         for g in r.json().get("gpus", []):
-            dcs = {d["id"]: d.get("availability") for d in g.get("dataCenters", [])}
-            if datacenter and datacenter not in dcs:
+            if not str(g.get("id", "")).startswith("NVIDIA"):
                 continue
+            if datacenter:
+                dcs = {d.get("id"): d.get("availability") for d in g.get("dataCenters") or []}
+                avail = dcs[datacenter] if datacenter in dcs else "NONE"
+            else:
+                avail = g.get("availability")
             price = (g.get("price") or {}).get("secure" if cloud == "SECURE" else "community")
-            out.append({"id": g["id"], "label": g.get("name") or g["id"], "vram": g.get("memory"), "usd_h": price,
-                        "availability": dcs.get(datacenter) if datacenter else g.get("availability")})
-        return sorted(out, key=lambda x: (x["usd_h"] is None, x["usd_h"] or 0))
-    except Exception:
-        return [{"id": k, **v, "availability": None} for k, v in GPUS.items()]
+            out.append({"id": g["id"], "label": g.get("name") or g["id"], "vram": g.get("memory"),
+                        "usd_h": price or None, "availability": str(avail or "NONE").upper()})
+        gpus = sorted(out, key=lambda x: (x["usd_h"] is None, x["usd_h"] or 0))
+        return {"live": True, "datacenter": datacenter, "error": "", "gpus": gpus}
+    except Exception as e:
+        reason = str(e) if isinstance(e, RunPodError) else f"{type(e).__name__}: {e}"
+        return {"live": False, "datacenter": datacenter, "error": reason[:300],
+                "gpus": [{"id": k, **v, "availability": None} for k, v in GPUS.items()]}
 
 
 # --- S3 (network volume) ----------------------------------------------------------------------------------------
@@ -212,6 +266,10 @@ def exists(key: str, loc: dict | None = None, fast: bool = False) -> bool:
         if _missing(e):
             return False
         raise
+
+
+def size(key: str, loc: dict | None = None) -> int:
+    return int(s3(loc).head_object(Bucket=bucket(loc), Key=key)["ContentLength"])
 
 
 def get_text(key: str, tail: int = 20000, loc: dict | None = None) -> str:

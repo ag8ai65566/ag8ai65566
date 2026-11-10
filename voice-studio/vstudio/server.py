@@ -51,9 +51,16 @@ def create_app() -> FastAPI:
             while not stop.is_set():
                 _quiet(colab.poll)
                 stop.wait(20)
+        def gpu_waiter():  # auto-grab: runs waiting for a GPU start as soon as one of their cards is in stock
+            while not stop.is_set():
+                if config.get_secret("runpod_api_key"):
+                    _quiet(training.wait_for_gpus)
+                training.GPU_WAKE.wait(training.GRAB_POLL_S)
+                training.GPU_WAKE.clear()
         stop = threading.Event()
         threading.Thread(target=reaper, name="reap", daemon=True).start()
         threading.Thread(target=colab_poller, name="colab", daemon=True).start()
+        threading.Thread(target=gpu_waiter, name="grab", daemon=True).start()
         yield
         stop.set()
         jobs.stop()
@@ -106,11 +113,11 @@ def create_app() -> FastAPI:
         if full_path.startswith("api/"):
             return JSONResponse({"detail": "Not Found"}, status_code=404)
         f = (WEB / full_path).resolve()
-        if full_path and f.is_file() and WEB.resolve() in f.parents:
-            return FileResponse(f)
+        if full_path and f.is_file() and WEB.resolve() in f.parents and f.name != "index.html":
+            return FileResponse(f)  # hashed asset names: safe to cache
         index = WEB / "index.html"
-        if index.exists():
-            return FileResponse(index)
+        if index.exists():  # always revalidated, so the browser picks up an update's new asset names
+            return FileResponse(index, headers={"Cache-Control": "no-cache"})
         return JSONResponse({"detail": "web UI not built: run `npm run build` in web/"}, status_code=404)
 
     return app

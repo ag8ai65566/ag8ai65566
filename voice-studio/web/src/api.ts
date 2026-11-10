@@ -102,7 +102,12 @@ export type Training = {
   progress: TrainProgress; cost_estimate: number; created_at: number; finished_at: number | null;
   preset: { id: string; name?: string; params?: Record<string, unknown> };
   job: { status: string; progress: number; message: string } | null; job_id?: string; log?: string;
-  note?: string; pod_state?: string | null; cost_per_hr?: number | null;
+  note?: string; pod_state?: string | null; cost_per_hr?: number | null; can_retry_gpu?: boolean;
+  storage?: { datacenter?: string };
+  wait?: { // auto-grab: waiting (renting nothing) until one of these cards is in stock
+    gpus?: string[]; since?: number; until?: number; checks?: number; last?: number; misses?: number;
+    seen?: Record<string, string | null>; error?: string;
+  };
   target?: "runpod" | "colab"; phase?: { label: string; fraction: number }; colab_path?: string;
 };
 export type ColabStatus = {
@@ -110,7 +115,9 @@ export type ColabStatus = {
 };
 export type Plan = {
   engine: string; preset: string; gpu: string; usd_per_hour: number; data_hours: number; n_train: number;
-  steps: number; estimate_hours: number; estimate_usd: number; estimate_basis: "measured" | "guess";
+  steps: number; estimate_hours: number; estimate_usd: number; estimate_basis: "measured" | "scaled" | "guess";
+  estimate_from?: string | null; s_per_step?: number | null;
+  upload?: { gb: number; minutes: number | null } | null; // RunPod: uploaded after the GPU is rented, so billed
   max_hours: number; max_usd: number; disk_gb: number; ram_gb: number; warnings: string[];
   epochs_effective?: number | null; blocked?: string | null; params: Record<string, unknown>;
   target?: "runpod" | "colab"; compute_units?: [number, number] | null;
@@ -178,7 +185,17 @@ export type CharacterPreset = {
     cast_mode?: string; cast_ref_id?: string; cast_style?: string;
   };
 };
-export type GpuOffer = { id: string; label: string; vram: number; usd_h: number | null; availability: string | null };
+export type GpuOffer = {
+  id: string; label: string; vram: number; usd_h: number | null; recommended: boolean;
+  availability: "HIGH" | "MEDIUM" | "LOW" | "NONE" | null; // null: the live stock could not be read
+};
+export type CloudCheck = {
+  ok: boolean; error?: string; volume?: { id: string } | null;
+  volumes?: { id: string; name: string; dataCenterId: string; size: number; s3: boolean }[];
+  problem?: string; // why the volume in settings cannot be used ("" when it can)
+};
+export type GpuOffers = { live: boolean; datacenter: string | null; error: string; offers: GpuOffer[]; default: string | null };
+export const inStock = (o?: GpuOffer) => !!o && (o.availability === "HIGH" || o.availability === "MEDIUM" || o.availability === "LOW");
 export type SystemInfo = {
   version: string; python: string; os: string; disk_free_gb: number; data_dir: string;
   gpu: { available: boolean; name?: string; vram_gb?: number; free_gb?: number; note?: string };

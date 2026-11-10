@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS presets (
 """
 
 JSON_COLS = {"languages", "consent", "enrollment", "meta", "flags", "params", "result", "preset", "progress",
-             "metrics", "score", "data", "storage", "variants", "clips", "checks", "phrases"}
+             "metrics", "score", "data", "storage", "variants", "clips", "checks", "phrases", "wait"}
 
 _local = threading.local()
 
@@ -105,6 +105,8 @@ MIGRATIONS = [
     ("trainings", "started_at", "REAL"),
     ("trainings", "cost_per_hr", "REAL"),
     ("trainings", "note", "TEXT NOT NULL DEFAULT ''"),
+    ("trainings", "uploaded_at", "REAL"),                     # dataset.tar is on the volume: a retry reuses it
+    ("trainings", "wait", "TEXT NOT NULL DEFAULT '{}'"),      # auto-grab: accepted GPUs, deadline, checks so far
     ("segments", "asr_logprob", "REAL"),                      # primary ASR confidence (average log-probability)
     ("segments", "no_speech", "REAL"),                        # primary ASR: probability the clip is not speech
     ("segments", "emotion", "TEXT"),                          # emotion / delivery label (see emotions.py)

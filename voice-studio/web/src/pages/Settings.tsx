@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { BookA, CheckCircle2, Cloud, Download, FlaskConical, FolderSync, KeyRound, Lock, Plus, Server, Shield, SlidersHorizontal, Trash2 } from "lucide-react";
-import { api, type ColabStatus, type EngineInfo, type Job } from "../api";
+import { AlertTriangle, BookA, CheckCircle2, Cloud, Download, FlaskConical, FolderSync, KeyRound, Lock, Plus, Server, Shield, SlidersHorizontal, Trash2 } from "lucide-react";
+import { api, type CloudCheck, type ColabStatus, type EngineInfo, type Job } from "../api";
 import { Badge, Button, Card, ErrorText, Field, PageHeader, Progress } from "../ui";
 
 type SettingsResp = { settings: Record<string, any>; secrets: Record<string, boolean> };
-type CloudCheck = { ok: boolean; error?: string; volumes?: { id: string; name: string; dataCenterId: string; size: number }[];
-  volume?: { id: string } | null };
 
 export default function Settings() {
   const loc = useLocation();
@@ -59,9 +57,11 @@ function CloudSettings() {
   const dcs = useQuery({ queryKey: ["dcs"], queryFn: () => api.get<string[]>("/api/cloud/datacenters") });
   const [form, setForm] = useState<Record<string, any>>({});
   useEffect(() => { if (st.data) setForm(st.data.settings); }, [st.data]);
-  const save = useMutation({ mutationFn: (b: Record<string, unknown>) => api.put("/api/settings", b), onSuccess: () => qc.invalidateQueries({ queryKey: ["settings"] }) });
-  const check = useMutation({ mutationFn: () => api.get<CloudCheck>("/api/cloud/check") });
+  const save = useMutation({ mutationFn: (b: Record<string, unknown>) => api.put("/api/settings", b),
+    onSuccess: () => { qc.invalidateQueries({ queryKey: ["settings"] }); qc.invalidateQueries({ queryKey: ["cloudcheck"] }); } });
   const sec = st.data?.secrets ?? {};
+  const check = useQuery({ queryKey: ["cloudcheck"], queryFn: () => api.get<CloudCheck>("/api/cloud/check"),
+    enabled: !!sec.runpod_api_key, staleTime: 60000, retry: false });
   return (
     <Card title={<span className="flex items-center gap-2"><Cloud className="size-4" />雲端 GPU（RunPod）</span>}>
       <ol className="mb-5 list-decimal space-y-1 pl-5 text-sm text-zinc-600 dark:text-zinc-400">
@@ -91,20 +91,28 @@ function CloudSettings() {
       </div>
       <div className="mt-5 flex flex-wrap gap-2">
         <Button onClick={() => save.mutate({ runpod_volume_id: form.runpod_volume_id, runpod_datacenter: form.runpod_datacenter, runpod_max_hours: form.runpod_max_hours })} loading={save.isPending}>儲存</Button>
-        <Button variant="secondary" onClick={() => check.mutate()} loading={check.isPending} disabled={!sec.runpod_api_key}>測試連線</Button>
+        <Button variant="secondary" onClick={() => check.refetch()} loading={check.isFetching} disabled={!sec.runpod_api_key}>測試連線</Button>
         {save.isSuccess && <span className="self-center text-sm text-emerald-600">已儲存</span>}
       </div>
       {check.data && (check.data.ok ? (
         <div className="mt-4 rounded-xl bg-zinc-50 p-3 text-sm dark:bg-zinc-800/50">
-          <div className="mb-2 font-medium text-emerald-600">API 金鑰有效。你的網路磁碟：</div>
+          {check.data.problem && (
+            <p className="mb-3 flex gap-1.5 font-medium text-red-600"><AlertTriangle className="mt-0.5 size-4 shrink-0" />{check.data.problem}</p>
+          )}
+          <div className="mb-2 font-medium text-emerald-600">API 金鑰有效。你的網路磁碟（點一下改用）：</div>
           {!check.data.volumes?.length ? <p className="text-zinc-500">還沒有網路磁碟，請先到 RunPod 建立。</p> : (
             <ul className="space-y-1">{check.data.volumes.map((v) => (
-              <li key={v.id}><button className="w-full rounded-lg px-2 py-1 text-left hover:bg-white dark:hover:bg-zinc-900"
+              <li key={v.id}><button disabled={!v.s3}
+                className={`w-full rounded-lg px-2 py-1 text-left ${v.s3 ? "hover:bg-white dark:hover:bg-zinc-900" : "cursor-not-allowed opacity-60"}`}
+                title={v.s3 ? undefined : "這個資料中心沒有 S3 API，Voice Studio 沒辦法把資料傳過去"}
                 onClick={() => { const f = { ...form, runpod_volume_id: v.id, runpod_datacenter: v.dataCenterId }; setForm(f); save.mutate({ runpod_volume_id: v.id, runpod_datacenter: v.dataCenterId }); }}>
                 <span className="font-mono">{v.id}</span> · {v.name} · {v.dataCenterId} · {v.size} GB
-                {!dcs.data?.includes(v.dataCenterId) && <Badge tone="red">這個資料中心沒有 S3 API</Badge>}
-                {form.runpod_volume_id === v.id && <Badge tone="green">使用中</Badge>}
+                {!v.s3 && <> <Badge tone="red">這個資料中心沒有 S3 API，不能用</Badge></>}
+                {form.runpod_volume_id === v.id && <> <Badge tone="green">使用中</Badge></>}
               </button></li>))}</ul>
+          )}
+          {!!check.data.volumes?.length && check.data.volumes.every((v) => !v.s3) && (
+            <p className="mt-2 text-xs text-zinc-500">你的網路磁碟都在沒有 S3 API 的資料中心。到 RunPod 用上面「資料中心」下拉選單裡的其中一個建立新的網路磁碟（不用的磁碟記得刪掉，每月會計費），再按「測試連線」點它。</p>
           )}
         </div>
       ) : <ErrorText error={check.data.error} />)}

@@ -1456,3 +1456,462 @@ def test_long_phrases_and_clips(client, tmp_path):
     segs = {s["text"]: s for s in (got["items"] if isinstance(got, dict) else got)}
     assert segs["A twelve second line"]["status"] == "approved"
     assert segs["A very long thirty five second line"]["status"] == "pending"
+
+
+GPU_CATALOG = {"gpus": [  # the shape of api.runpod.io/v2/catalog/gpus?include=AVAILABILITY
+    {"id": "NVIDIA L40S", "name": "L40S", "memory": 48, "price": {"secure": 0.86},
+     "dataCenters": [{"id": "US-IL-1", "availability": "HIGH"}]},
+    {"id": "NVIDIA H100 80GB HBM3", "name": "H100 SXM", "memory": 80, "price": {"secure": 3.99},
+     "dataCenters": [{"id": "US-CA-2", "availability": "LOW"}]},
+    {"id": "NVIDIA A100-SXM4-80GB", "name": "A100 SXM", "memory": 80, "price": {"secure": 1.79},
+     "dataCenters": [{"id": "US-CA-2", "availability": "NONE"}]},
+    {"id": "AMD Instinct MI300X OAM", "name": "MI300X", "memory": 192, "price": {"secure": 2.39},
+     "dataCenters": [{"id": "US-CA-2", "availability": "HIGH"}]},
+]}
+
+
+def _fake_gpu_catalog(monkeypatch, runpod, fail=False, payload=None):
+    """Serve the GPU catalog from memory (GPU_CATALOG, or payload, which a test may change as it goes): no key, no
+    network."""
+    import types
+    import httpx
+
+    class Client:
+        def __init__(self, *a, **kw):
+            pass
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *a):
+            return False
+
+        def get(self, url, **kw):
+            if fail:
+                raise httpx.ConnectError("[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed")
+            assert url.endswith("/v2/catalog/gpus")
+            return types.SimpleNamespace(status_code=200, json=lambda: payload or GPU_CATALOG)
+
+    monkeypatch.setattr(runpod, "_h", lambda: {})
+    monkeypatch.setattr(runpod, "httpx", types.SimpleNamespace(Client=Client))
+
+
+def test_gpu_stock_in_the_volume_datacenter(client, monkeypatch):
+    """Only cards the volume's datacenter has can be rented; a bigger known card stands in for missing ones."""
+    from vstudio import config, training
+    from vstudio.cloud import runpod
+    _fake_gpu_catalog(monkeypatch, runpod)
+    config.save_settings({"runpod_datacenter": "US-CA-2"})
+    cat = runpod.gpu_catalog("US-CA-2")
+    by = {g["id"]: g for g in cat["gpus"]}
+    assert cat["live"] and "AMD Instinct MI300X OAM" not in by                    # the engine images are CUDA
+    assert by["NVIDIA H100 80GB HBM3"]["availability"] == "LOW"
+    assert by["NVIDIA L40S"]["availability"] == "NONE"                             # sold elsewhere, not here
+
+    res = client.get("/api/cloud/gpus?engine=voxcpm2&preset=lora").json()
+    ids = [o["id"] for o in res["offers"]]
+    assert res["live"] and res["datacenter"] == "US-CA-2" and res["default"] == "NVIDIA H100 80GB HBM3" == ids[0]
+    assert not res["offers"][0]["recommended"] and res["offers"][0]["vram"] == 80  # LoRA's own 48 GB cards: none here
+    assert {"NVIDIA L40S", "NVIDIA RTX 6000 Ada Generation"} <= set(ids)          # still listed, as sold out
+    assert all(o["availability"] == "NONE" for o in res["offers"][1:])
+    assert "NVIDIA GeForce RTX 4090" not in ids                                   # 24 GB is too small for LoRA
+    assert client.get("/api/cloud/gpus?engine=nope&preset=x").status_code == 404
+
+    assert training._stock_problem("voxcpm2", "lora", "NVIDIA H100 80GB HBM3", "US-CA-2") is None
+    msg = training._stock_problem("voxcpm2", "lora", "NVIDIA L40S", "US-CA-2")
+    assert "L40S" in msg and "H100 SXM" in msg                                    # says what can be rented instead
+    assert training._stock_problem("voxcpm2", "lora", "NVIDIA GeForce RTX 4090", "US-CA-2")
+
+
+def test_gpu_stock_unreadable_is_said_not_hidden(client, monkeypatch):
+    from vstudio import training
+    from vstudio.cloud import runpod
+    _fake_gpu_catalog(monkeypatch, runpod, fail=True)
+    res = training.gpu_offers("voxcpm2", "lora")
+    assert not res["live"] and "CERTIFICATE_VERIFY_FAILED" in res["error"]
+    assert res["default"] == "NVIDIA L40S" and all(o["availability"] is None for o in res["offers"])
+    assert training._stock_problem("voxcpm2", "lora", "NVIDIA L40S", "US-CA-2") is None  # unknown stock: renting is tried
+
+
+def test_sold_out_gpu_stops_before_upload_and_retry_reuses_upload(client, monkeypatch, tmp_path):
+    from vstudio import config, db, training
+    from vstudio.cloud import runpod
+    c = client
+    _fake_gpu_catalog(monkeypatch, runpod)
+    config.save_settings({"runpod_datacenter": "US-CA-2", "runpod_volume_id": "vol1"})
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 40, "hours": 1.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"],
+                                         "voice": {"name": "我"}}})
+    calls = {"upload": 0, "put": {}, "pods": []}
+    monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: key.endswith("/dataset.tar"))
+    monkeypatch.setattr(runpod, "size", lambda key, loc=None: 1234)
+    monkeypatch.setattr(runpod, "upload", lambda *a, **kw: calls.update(upload=calls["upload"] + 1))
+    monkeypatch.setattr(runpod, "put_text", lambda key, text, loc=None: calls["put"].update({key.rsplit("/", 1)[1]: text}))
+    monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
+    monkeypatch.setattr(runpod, "get_text", lambda *a, **kw: "")
+
+    def create_pod(name, image, gpu_type, *a, **kw):
+        calls["pods"].append(gpu_type)
+        raise runpod.RunPodError("RunPod POST /pods: 500 There are no instances currently available")
+    monkeypatch.setattr(runpod, "create_pod", create_pod)
+
+    # a sold-out card is refused before anything is uploaded or a run is recorded
+    r = c.post("/api/training", json={"dataset_id": ds["id"], "engine": "voxcpm2", "preset": "lora", "gpu": "NVIDIA L40S"})
+    assert r.status_code == 400 and "H100 SXM" in r.json()["detail"]
+    assert not db.query("SELECT * FROM trainings") and calls["upload"] == 0
+
+    # a run that uploaded its data and then got no GPU: another card, without uploading again
+    tid = db.new_id("tr")
+    db.insert("trainings", {"id": tid, "voice_id": v["id"], "dataset_id": ds["id"], "engine": "mock",
+                            "preset": {"id": "quick", "params": {"steps": 4}, "name": ""}, "target": "runpod",
+                            "status": "failed", "gpu": "NVIDIA GeForce RTX 4090", "remote_prefix": f"vs/jobs/{tid}",
+                            "storage": {"volume": "vol1", "datacenter": "US-CA-2", "cloud": "SECURE"},
+                            "progress": {}, "created_at": db.now(), "uploaded_at": db.now()})
+    assert next(t for t in c.get("/api/training").json() if t["id"] == tid)["can_retry_gpu"]
+    r = c.post(f"/api/training/{tid}/retry-gpu", json={"gpu": "NVIDIA L40S"})
+    assert r.status_code == 400 and "H100 SXM" in r.json()["detail"]
+    tr = c.post(f"/api/training/{tid}/retry-gpu", json={"gpu": "NVIDIA H100 80GB HBM3", "usd_h": 3.99}).json()
+    assert tr["gpu"] == "NVIDIA H100 80GB HBM3" and tr["cost_estimate"] > 0
+    j = _wait(c, tr["job_id"])
+    assert j["status"] == "failed" and "換一張 GPU 重試" in j["message"]
+    assert calls["upload"] == 0 and calls["pods"] == [["NVIDIA H100 80GB HBM3"]]   # reused, then tried the new card
+    assert "config.json" not in calls["put"] and '"status":"done","bytes":0,"total":1234' in calls["put"]["upload.json"]
+    assert training.can_retry_gpu(db.get("trainings", tid))                        # and can try yet another one
+
+    # a run that never uploaded (or whose data is gone) cannot be retried this way
+    db.update("trainings", tid, {"uploaded_at": None})
+    assert c.post(f"/api/training/{tid}/retry-gpu", json={"gpu": "NVIDIA H100 80GB HBM3"}).status_code == 400
+
+
+def test_gpu_is_rented_before_the_dataset_is_uploaded(client, monkeypatch, tmp_path):
+    """A scarce GPU is held first: the pod is rented, then the dataset goes up while the pod sets up and waits for it."""
+    import tarfile
+    from vstudio import config, db, training
+    from vstudio.cloud import runpod
+    c = client
+    _fake_gpu_catalog(monkeypatch, runpod)
+    config.save_settings({"runpod_datacenter": "US-CA-2", "runpod_volume_id": "vol1", "runpod_max_hours": 2})
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    (tmp_path / "ds" / "wavs").mkdir(parents=True)
+    (tmp_path / "ds" / "wavs" / "a.wav").write_bytes(b"\0" * 300_000)
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 40, "hours": 1.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"]}})
+    body = {"dataset_id": ds["id"], "engine": "mock", "preset": "quick", "gpu": "NVIDIA H100 80GB HBM3", "target": "runpod"}
+    plan = c.post("/api/training/plan", json=body).json()
+    assert plan["upload"] and plan["upload"]["minutes"] is None              # upload speed not measured yet
+    config.save_settings({"upload_bps": 1000})                                # 300 kB at 1 kB/s = 5 minutes, billed
+    plan2 = c.post("/api/training/plan", json=body).json()
+    assert plan2["upload"]["minutes"] == 5.0 and plan2["estimate_hours"] > plan["estimate_hours"]
+    config.save_settings({"upload_bps": 0})
+
+    def package(tid, work):
+        tar = work / "dataset.tar"
+        with tarfile.open(tar, "w") as t:
+            t.add(tmp_path / "ds" / "wavs", arcname="data/wavs")
+        return tar, {"training_id": tid}
+    monkeypatch.setattr(training, "package_dataset", package)
+    events: list = []
+    monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: False)
+    monkeypatch.setattr(runpod, "put_text", lambda key, text, loc=None: events.append(("put", key.rsplit("/", 1)[1], text)))
+    monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
+    monkeypatch.setattr(runpod, "get_text", lambda *a, **kw: "")
+    monkeypatch.setattr(runpod, "remove_pod", lambda pod_id: events.append(("remove", pod_id)))
+
+    def create_pod(name, image, gpu_type, env, *a, **kw):
+        events.append(("pod", gpu_type, env))
+        return {"id": "pod1", "costPerHr": 3.99}
+
+    def upload(local, key, progress=None, loc=None):
+        events.append(("upload", db.query("SELECT status FROM trainings")[0]["status"]))  # the GPU is already held
+        progress(0.5), progress(1.0)
+    monkeypatch.setattr(runpod, "create_pod", create_pod)
+    monkeypatch.setattr(runpod, "upload", upload)
+    # the pod then reports a training error, which ends the run quickly
+    monkeypatch.setattr(runpod, "get_json", lambda key, loc=None, fast=False:
+                        {"status": "error", "stage": "train"} if key.endswith("error.json") else None)
+
+    tr = c.post("/api/training", json=body).json()
+    tid = tr["id"]
+    j = _wait(c, tr["job_id"])
+    assert j["status"] == "failed" and "訓練" in j["message"]
+    beats = [i for i, e in enumerate(events) if e[:2] == ("put", "upload.json")]
+    rent = next(i for i, e in enumerate(events) if e[0] == "pod")
+    sent = next(i for i, e in enumerate(events) if e[0] == "upload")
+    assert beats[0] < rent < sent < beats[-1] and events[sent][1] == "uploading"  # waiting → rent → upload → done
+    assert '"status":"waiting"' in events[beats[0]][2] and '"status":"done"' in events[beats[-1]][2]
+    env = events[rent][2]
+    assert env["VS_WAIT_UPLOAD"] == "1" and int(env["VS_MAX_SECONDS"]) >= 2 * 3600 + 1800  # time for the upload too
+    t = db.get("trainings", tid)
+    assert t["uploaded_at"] and t["pod_id"] == "pod1" and ("remove", "pod1") in events and not training.can_retry_gpu(t)
+
+
+def test_auto_grab_waits_renting_nothing_then_grabs(client, monkeypatch, tmp_path):
+    """Auto-grab: while its cards are sold out the run only waits (nothing rented); a card taken at the last moment
+    sends it back to waiting; then it rents the first card of its list in stock; it stops on time or on request."""
+    import copy
+    import tarfile
+    import time
+    from vstudio import config, db, training
+    from vstudio.cloud import runpod
+    c = client
+    monkeypatch.setattr(config, "get_secret", lambda name: None)  # the server's own waiter thread stays out of this
+    stock = copy.deepcopy(GPU_CATALOG)
+    _fake_gpu_catalog(monkeypatch, runpod, payload=stock)
+    config.save_settings({"runpod_datacenter": "US-CA-2", "runpod_volume_id": "vol1"})
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    (tmp_path / "ds" / "wavs").mkdir(parents=True)
+    (tmp_path / "ds" / "wavs" / "a.wav").write_bytes(b"\0" * 1000)
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 40, "hours": 1.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"]}})
+
+    def package(tid, work):
+        tar = work / "dataset.tar"
+        with tarfile.open(tar, "w") as t:
+            t.add(tmp_path / "ds" / "wavs", arcname="data/wavs")
+        return tar, {"training_id": tid}
+    pods, taken = [], [True]
+
+    def create_pod(name, image, gpu_type, env, *a, **kw):
+        pods.append(list(gpu_type))
+        if taken[0]:
+            raise runpod.RunPodError("RunPod POST /pods: 500 There are no instances currently available")
+        return {"id": "pod1", "machine": {"gpuTypeId": gpu_type[0]}, "costPerHr": 1.09}
+    monkeypatch.setattr(training, "package_dataset", package)
+    monkeypatch.setattr(runpod, "create_pod", create_pod)
+    monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: False)
+    monkeypatch.setattr(runpod, "put_text", lambda *a, **kw: None)
+    monkeypatch.setattr(runpod, "upload", lambda local, key, progress=None, loc=None: progress(1.0))
+    monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
+    monkeypatch.setattr(runpod, "get_text", lambda *a, **kw: "")
+    monkeypatch.setattr(runpod, "remove_pod", lambda pod_id: None)
+    monkeypatch.setattr(runpod, "get_json", lambda key, loc=None, fast=False:
+                        {"status": "error", "stage": "train"} if key.endswith("error.json") else None)
+
+    l40s, a100 = "NVIDIA L40S", "NVIDIA A100-SXM4-80GB"
+    body = {"dataset_id": ds["id"], "engine": "voxcpm2", "preset": "lora", "target": "runpod",
+            "gpus": [l40s, a100], "wait_hours": 1}
+    r = c.post("/api/training", json={**body, "gpus": ["NVIDIA GeForce RTX 4090"]})
+    assert r.status_code == 400 and "RTX 4090" in r.json()["detail"]          # 24 GB: not enough for LoRA
+    tr = c.post("/api/training", json=body).json()
+    tid = tr["id"]
+    assert tr["status"] == "waiting_gpu" and tr["wait"]["gpus"] == [l40s, a100] and not tr.get("job_id")
+    assert training.wait_for_gpus() == [] and not pods                        # both sold out: nothing rented
+    w = db.get("trainings", tid)["wait"]
+    assert w["checks"] >= 1 and w["seen"] == {l40s: "NONE", a100: "NONE"}
+
+    for g in stock["gpus"]:  # both come in stock in US-CA-2 ...
+        if g["id"] in (l40s, a100):
+            g["dataCenters"] = [{"id": "US-CA-2", "availability": "LOW"}]
+    assert training.wait_for_gpus() == [tid]                                  # ... but are taken at the last moment
+    assert _wait(c, db.get("trainings", tid)["job_id"])["status"] == "done"
+    t = db.get("trainings", tid)
+    assert t["status"] == "waiting_gpu" and t["wait"]["misses"] == 1 and pods == [[l40s, a100]]
+
+    taken[0] = False                                                          # next time it works
+    assert training.wait_for_gpus() == [tid]
+    _wait(c, db.get("trainings", tid)["job_id"])                              # (ends here on the pod's train error)
+    t = db.get("trainings", tid)
+    assert pods[-1] == [l40s, a100] and t["pod_id"] == "pod1" and t["gpu"] == l40s and t["uploaded_at"]
+
+    late = c.post("/api/training", json=body).json()                          # waiting time over: stops by itself
+    db.update("trainings", late["id"], {"wait": {**late["wait"], "until": time.time() - 1}})
+    training.wait_for_gpus()
+    t = db.get("trainings", late["id"])
+    assert t["status"] == "failed" and "沒有計費" in t["note"]
+    stop = c.post("/api/training", json=body).json()                          # and can be stopped
+    c.post(f"/api/training/{stop['id']}/cancel")
+    assert db.get("trainings", stop["id"])["status"] == "canceled" and training.wait_for_gpus() == []
+
+
+def test_https_is_verified_also_with_many_connections_at_once(tmp_path):
+    """HTTPS goes through one CA file (Windows: certifi + the roots Windows trusts) that OpenSSL verifies against;
+    ssl.SSLContext is not patched. A server with an untrusted certificate is refused on every connection, also with
+    many at once, as boto3's parallel transfers make them (with the truststore patch, some of those were checked
+    while another handshake had verification switched off)."""
+    import datetime
+    import http.server
+    import ipaddress
+    import ssl
+    import threading
+    from concurrent.futures import ThreadPoolExecutor
+    pytest.importorskip("cryptography")
+    from cryptography import x509
+    from cryptography.hazmat.primitives import hashes, serialization
+    from cryptography.hazmat.primitives.asymmetric import ec
+    from cryptography.x509.oid import NameOID
+
+    key = ec.generate_private_key(ec.SECP256R1())
+    name = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME, "127.0.0.1")])
+    now = datetime.datetime.now(datetime.timezone.utc)
+    cert = (x509.CertificateBuilder().subject_name(name).issuer_name(name).public_key(key.public_key())
+            .serial_number(x509.random_serial_number()).not_valid_before(now - datetime.timedelta(minutes=5))
+            .not_valid_after(now + datetime.timedelta(days=1))
+            .add_extension(x509.SubjectAlternativeName([x509.IPAddress(ipaddress.ip_address("127.0.0.1"))]),
+                           critical=False).sign(key, hashes.SHA256()))
+    (tmp_path / "cert.pem").write_bytes(cert.public_bytes(serialization.Encoding.PEM))
+    (tmp_path / "key.pem").write_bytes(key.private_bytes(serialization.Encoding.PEM,
+                                                         serialization.PrivateFormat.PKCS8,
+                                                         serialization.NoEncryption()))
+    import vstudio  # noqa: F401  (sets up HTTPS on import)
+    assert ssl.SSLContext.__module__ == "ssl"
+    if os.name == "nt":
+        bundle = Path(os.environ["AWS_CA_BUNDLE"])
+        assert os.environ["SSL_CERT_FILE"] == os.environ["REQUESTS_CA_BUNDLE"] == str(bundle)
+        assert bundle.read_text(encoding="utf-8").count("BEGIN CERTIFICATE") > 100
+
+    sctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+    sctx.load_cert_chain(tmp_path / "cert.pem", tmp_path / "key.pem")
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), http.server.BaseHTTPRequestHandler)
+    srv.socket = sctx.wrap_socket(srv.socket, server_side=True, do_handshake_on_connect=False)
+    srv.handle_error = lambda *a: None
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    import boto3
+    from botocore.config import Config
+    s3 = boto3.client("s3", aws_access_key_id="x", aws_secret_access_key="y", region_name="us-east-1",
+                      endpoint_url=f"https://127.0.0.1:{srv.server_address[1]}",
+                      config=Config(retries={"max_attempts": 1}, connect_timeout=5, read_timeout=5,
+                                    max_pool_connections=8))
+
+    def one(_):
+        try:
+            s3.list_buckets()
+            return True                     # got through: the certificate was not verified
+        except Exception:
+            return False
+    with ThreadPoolExecutor(8) as ex:
+        accepted = sum(ex.map(one, range(32)))
+    srv.shutdown()
+    assert accepted == 0
+
+
+def _bash() -> str | None:
+    """A real bash for running bootstrap.sh (Git Bash on Windows, not the WSL launcher)."""
+    import shutil
+    cands = [shutil.which("bash")] + ([r"C:\Program Files\Git\bin\bash.exe"] if os.name == "nt" else [])
+    return next((b for b in cands if b and os.path.exists(b) and "system32" not in b.lower()), None)
+
+
+@pytest.mark.skipif(_bash() is None, reason="needs bash")
+def test_bootstrap_waits_for_the_upload_and_gives_up_without_word(tmp_path):
+    """bootstrap.sh on a rented pod: it waits for upload.json to say done (with the right size), and a pod that hears
+    nothing from the studio stops and removes itself instead of waiting on rented time."""
+    import json
+    import subprocess
+    import tarfile
+    from vstudio import training
+
+    def sh(p) -> str:  # a path as bash sees it (Git Bash: /c/..., so tar does not take "C:" for a remote host)
+        s = p.as_posix()
+        return f"/{s[0].lower()}{s[2:]}" if os.name == "nt" and s[1:2] == ":" else s
+
+    def run(case: str, upload: str | None, tar: bool) -> dict:
+        root = tmp_path / case
+        job = root / "vs" / "jobs" / "t1"
+        job.mkdir(parents=True)
+        (job / "setup_env.sh").write_text("exit 0\n", encoding="utf-8", newline="\n")
+        (root / "bin").mkdir()
+        ctl = root / "bin" / "runpodctl"
+        ctl.write_text(f'#!/bin/bash\necho "$@" >> "{sh(root / "ctl.log")}"\n', encoding="utf-8", newline="\n")
+        ctl.chmod(0o755)
+        (root / "vs" / "envs" / "mock" / "bin").mkdir(parents=True)
+        (root / "vs" / "envs" / "mock" / "bin" / "activate").write_text("", encoding="utf-8")
+        if tar:
+            (root / "x.txt").write_text("x", encoding="utf-8")
+            with tarfile.open(job / "dataset.tar", "w") as t:
+                t.add(root / "x.txt", arcname="data/x.txt")
+        if upload:
+            (job / "upload.json").write_text(upload.replace("SIZE", str((job / "dataset.tar").stat().st_size)),
+                                             encoding="utf-8")
+        script = job / "bootstrap.sh"
+        script.write_bytes(training.BOOTSTRAP.encode("utf-8"))
+        env = {**os.environ, "PATH": str(root / "bin") + os.pathsep + os.environ.get("PATH", ""),
+               "VS_ROOT": sh(root / "vs"), "VS_WORK": sh(root / "work"), "VS_DATA": sh(root / "data"),
+               "VS_TRAINING_ID": "t1", "VS_ENGINE": "mock", "RUNPOD_POD_ID": "pod1", "VS_WAIT_UPLOAD": "1",
+               "VS_UPLOAD_STALL": "3", "VS_UPLOAD_POLL": "1", "VS_FINISH_SLEEP": "0", "VS_KILL_GRACE": "0",
+               "VS_RETRY_SLEEP": "0", "VS_MAX_SECONDS": "120"}
+        subprocess.run([_bash(), sh(script)], env=env, timeout=90, stdout=subprocess.DEVNULL,
+                       stderr=subprocess.DEVNULL)
+        err = json.loads((job / "error.json").read_text(encoding="utf-8"))
+        return {"stage": err["stage"], "removed": "remove pod pod1" in (root / "ctl.log").read_text(encoding="utf-8"),
+                "log": (job / "train.log").read_text(encoding="utf-8", errors="replace")}
+
+    silent = run("silent", None, tar=False)                    # the studio never says anything
+    assert silent["stage"] == "upload" and silent["removed"] and "giving up" in silent["log"]
+    short = run("short", '{"status":"done","bytes":1,"total":999999999,"t":1}', tar=True)  # size does not match yet
+    assert short["stage"] == "upload" and short["removed"]
+    done = run("done", '{"status":"done","bytes":SIZE,"total":SIZE,"t":1}', tar=True)
+    assert done["stage"] == "train" and done["removed"] and "dataset uploaded" in done["log"]  # went on past the wait
+
+
+def test_unusable_volume_is_flagged_and_stops_start(client, monkeypatch, tmp_path):
+    """A deleted volume, or one in a datacenter without the S3 API, is named on the pages and refused before upload."""
+    from vstudio import config, db
+    from vstudio.cloud import runpod
+    c = client
+    vols = [{"id": "tx", "name": "better_plum_gibbon", "dataCenterId": "US-TX-3", "size": 150},
+            {"id": "wa", "name": "fine", "dataCenterId": "US-WA-1", "size": 150}]
+    monkeypatch.setattr(runpod, "_req", lambda method, path, **kw: vols if path == "/networkvolumes" else {})
+
+    def problem(volume, dc):
+        config.save_settings({"runpod_volume_id": volume, "runpod_datacenter": dc})
+        return c.get("/api/cloud/check").json()
+
+    chk = problem("gone", "US-CA-2")
+    assert [v["s3"] for v in chk["volumes"]] == [False, True] and "gone" in chk["problem"]
+    assert "US-TX-3" in problem("tx", "US-TX-3")["problem"]                # no S3 endpoint there
+    assert "US-WA-1" in problem("wa", "US-CA-2")["problem"]                # datacenter does not match the volume
+    assert problem("wa", "US-WA-1")["problem"] == ""
+
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 40, "hours": 1.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"]}})
+    problem("gone", "US-CA-2")
+    r = c.post("/api/training", json={"dataset_id": ds["id"], "engine": "voxcpm2", "preset": "lora", "gpu": "NVIDIA L40S"})
+    assert r.status_code == 400 and "gone" in r.json()["detail"] and not db.query("SELECT * FROM trainings")
+
+
+def test_unmeasured_gpu_estimate_scales_a_measured_speed(client, tmp_path):
+    """A faster card is never estimated slower: an unmeasured card uses another card's measured speed, scaled."""
+    from vstudio import config, db, training
+    c = client
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 3600, "hours": 10.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 3600, "consent": db.get("voices", v["id"])["consent"]}})
+    rtx, h100 = "NVIDIA RTX 6000 Ada Generation", "NVIDIA H100 80GB HBM3"
+
+    def plan(gpu):
+        return c.post("/api/training/plan", json={"dataset_id": ds["id"], "engine": "voxcpm2", "preset": "lora",
+                                                  "gpu": gpu, "target": "runpod"}).json()
+    g_rtx, g_h100 = plan(rtx), plan(h100)                       # nothing measured: the first guess, per card
+    assert g_rtx["estimate_basis"] == g_h100["estimate_basis"] == "guess"
+    assert g_h100["estimate_hours"] < g_rtx["estimate_hours"]
+
+    config.save_settings({"speed": {f"voxcpm2:lora:{rtx}": {"s_per_step": 2.0, "at": 1.0}}})
+    m_rtx, s_h100 = plan(rtx), plan(h100)
+    assert m_rtx["estimate_basis"] == "measured" and m_rtx["s_per_step"] == 2.0
+    assert s_h100["estimate_basis"] == "scaled" and s_h100["estimate_from"] == "RTX 6000 Ada 48GB"
+    assert s_h100["s_per_step"] == 0.8 and s_h100["estimate_hours"] < m_rtx["estimate_hours"]  # 2.0 s × 0.8 / 2.0
+
+    # the card's own measurement wins; the latest other measurement is the one scaled; Colab is never scaled
+    config.save_settings({"speed": {f"voxcpm2:lora:{rtx}": {"s_per_step": 2.0, "at": 1.0},
+                                    f"voxcpm2:lora:{h100}": {"s_per_step": 1.1, "at": 2.0},
+                                    "voxcpm2:lora:NVIDIA A100-SXM4-80GB": {"s_per_step": 1.5, "at": 3.0}}})
+    assert training._speed("voxcpm2", "lora", h100) == (1.1, "measured", h100)
+    assert training._speed("voxcpm2", "lora", "NVIDIA L40S")[1:] == ("scaled", "NVIDIA A100-SXM4-80GB")
+    assert training._speed("voxcpm2", "lora", "Colab") == (None, "guess", "")
