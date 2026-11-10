@@ -172,7 +172,7 @@ function PersonCard({ p, voices, opts }: { p: Person; voices: Voice[]; opts: Opt
           <p className="flex items-start gap-2"><CheckCircle2 className="mt-0.5 size-4 shrink-0 text-emerald-600" />{res.message}</p>
           {res.pending > 0 && <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-300">{res.pending} 段沒有自動核可，在「檢查資料」等你聽。</p>}
           {res.dataset_error && <p className="mt-1 text-xs text-amber-700">沒有建立資料集：{res.dataset_error}</p>}
-          {res.too_long.length > 0 && <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-300">超過 60 字、只當訓練資料的常用語：{res.too_long.join("、")}</p>}
+          {res.too_long.length > 0 && <p className="mt-1 text-xs text-zinc-600 dark:text-zinc-300">超過 300 字、只當訓練資料的常用語：{res.too_long.join("、")}</p>}
           {res.n_problems > 0 && (
             <details className="mt-1 text-xs"><summary className="cursor-pointer">{res.n_problems} 段原音沒有加入（長度不合）</summary>
               <ul className="mt-1 list-disc pl-5">{res.problems.map((x) => <li key={x}>{x}</li>)}</ul></details>

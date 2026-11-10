@@ -230,7 +230,7 @@ export function AddClipModal({ p, voice, onClose, onDone }: { p: Phrase; voice: 
       </div>
       {tab === "file" ? (
         <div className="space-y-2">
-          <Field label={sound ? "錄音檔（可以一次選好幾個；每個只有這個聲音，0.2–10 秒）" : "錄音檔（可以一次選好幾個；每個只有這個口頭禪，0.2–10 秒）"}
+          <Field label={sound ? "錄音檔（可以一次選好幾個；每個只有這個聲音，0.2–30 秒，建議 5 秒以內）" : "錄音檔（可以一次選好幾個；每個只有這個口頭禪或句子，0.2–30 秒）"}
             hint={<>前後的靜音會自動去掉。上傳後會自動檢查音量、爆音、背景噪音和音質；規格見〈<a className="underline" href="/guide/15-sound-recording" target="_blank" rel="noreferrer">錄聲音標籤的原音</a>〉。{sound && " 上傳的聲音照原本的音量，只有比旁邊說話大聲時才會調小。"}</>}>
             <input type="file" multiple accept="audio/*,video/*" className="input" onChange={(e) => { setFiles(Array.from(e.target.files ?? [])); setDone([]); }} />
           </Field>

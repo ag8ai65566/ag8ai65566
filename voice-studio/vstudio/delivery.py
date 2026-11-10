@@ -483,7 +483,8 @@ def _segment(voice_id: str, root: Path, c: Clip, approve: bool) -> bool:
         flags.append("bgm")
     elif c.kind == "sep":
         flags.append("separated")
-    ok = approve and score >= 0.6 and "clipping" not in flags
+    # the same length rule as automatic review: 1–30 s is approved when it passes, anything else waits for a person
+    ok = approve and score >= 0.6 and "clipping" not in flags and 1.0 <= dur <= 30.0
     db.insert("segments", {**rec, "score": score, "flags": flags + (["delivery"] if ok else []),
                            "status": "approved" if ok else "pending"})
     return True
@@ -495,7 +496,7 @@ def _phrase(voice_id: str, text: str, variants: list[str], lang: str | None) -> 
             return p
     try:
         return phrases.create(voice_id, text, variants, lang)
-    except ValueError:  # too long for a catchphrase (over 60 characters)
+    except ValueError:  # too long for a catchphrase (over phrases.MAX_TEXT characters)
         return None
 
 

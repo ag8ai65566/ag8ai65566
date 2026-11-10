@@ -150,7 +150,7 @@
 | 沒有逐字稿 | 不匯入 |
 | 句子不完整（常用語.csv 的句子完整度含「不完整」、partial、incomplete、缺、截斷、cut，或是數字小於 0.9） | 不當訓練片段、也不當口頭禪原音 |
 | 同一部影片、時間重疊超過較短那段的一半 | 只留一段（交付 > 常用語 > 素材庫） |
-| 勾了「通過檢查的片段直接核可」，分數 ≥ 0.6 而且沒有爆音 | 核可 |
+| 勾了「通過檢查的片段直接核可」，分數 ≥ 0.6、沒有爆音，而且長度 1–30 秒 | 核可 |
 | 其他 | 待檢查（到「檢查資料」聽） |
 | bgm/ 的片段 | 標「背景有小聲的音樂」；設定「用去背景音樂的版本」時，有對應的 clean_去背景音樂 檔就用它，標「去過背景音樂」 |
 
@@ -162,7 +162,9 @@
 
 | 項目 | 標準 |
 |---|---|
-| 長度（去掉前後靜音後） | 0.2–10 秒，不合就不收；聲音標籤超過 5 秒提醒 |
+| 長度（去掉前後靜音後） | 0.2–30 秒，不合就不收；聲音標籤超過 5 秒提醒 |
+| 口頭禪文字 | 1–300 字（約 30 秒的整句）；只有 30 字以內的會放進語音辨識的提示，太長的會把提示擠掉 |
+| 接著念 | 句子以口頭禪開頭時，後面的字接著原音念（引擎拿原音當開頭）；原音超過 15 秒時不接，後面的字照一般方式念 |
 | 爆音 | 3 個以上取樣點絕對值 ≥ 0.999 |
 | 太滿 | 峰值高於 −1 dBFS（建議 −6 到 −3） |
 | 太小聲 | 峰值低於 −35 dBFS |
@@ -239,9 +241,9 @@
     "window": {"size_s": 2.0, "hop_s": 1.0},
     "spot_check": {"min": 10, "max": 100, "share": 0.02, "advise_strict_if_rejected_share_above": 0.1}
   },
-  "delivery_import": {"approve_if_score_at_least": 0.6, "approve_requires_no_clipping": true,
+  "delivery_import": {"approve_if_score_at_least": 0.6, "approve_requires_no_clipping": true, "approve_duration_s": [1.0, 30.0],
                       "duplicate_if_overlap_share_of_shorter_above": 0.5, "incomplete_if_number_below": 0.9},
-  "clip_check": {"keep_duration_s": [0.2, 10.0], "sound_tag_warn_above_s": 5.0, "clipped_samples_warn": 3,
+  "clip_check": {"keep_duration_s": [0.2, 30.0], "phrase_text_max_chars": 300, "asr_hint_phrase_max_chars": 30, "continue_from_recording_max_s": 15.0, "sound_tag_warn_above_s": 5.0, "clipped_samples_warn": 3,
                  "clipped_sample_abs_min": 0.999, "peak_max_dbfs": -1.0, "peak_min_dbfs": -35.0,
                  "edge_floor_max_dbfs": -50.0, "edge_s": 0.15, "min_source_sr_hz": 32000, "min_cutoff_hz": 11000,
                  "lossy_codecs": ["mp3", "aac", "opus", "vorbis", "amr_nb", "amr_wb"]},

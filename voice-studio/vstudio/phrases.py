@@ -28,6 +28,9 @@ SCORE_FLAGS = {"asr_disagree", "noisy", "clipping", "unknown_speaker", "overlap"
 PUNCT = "、。，．,.!?！？…〜~ー「」『』\"'（）()　 "
 BRACKETS = str.maketrans({"［": "[", "【": "[", "〔": "[", "］": "]", "】": "]", "〕": "]"})
 TAG_SPAN = re.compile(r"\[[^\[\]]*\]")
+MAX_TEXT = 300        # characters: a whole sentence (a self-introduction, a greeting) of up to ~30 s
+CLIP_S = (0.2, 30.0)  # an original recording, after trimming silence
+PROMPT_TEXT = 30      # only phrases this short go into the speech-recognition hint (a long one would crowd it out)
 
 
 def is_sound(ph: dict | str) -> bool:
@@ -70,8 +73,8 @@ def create(voice_id: str, text: str, variants=(), lang: str | None = None) -> di
     if not db.get("voices", voice_id):
         raise KeyError(voice_id)
     text, variants = _normalise(text, variants)
-    if not text or len(text) > 60:
-        raise ValueError("口頭禪要有 1–60 個字")
+    if not text or len(text) > MAX_TEXT:
+        raise ValueError(f"口頭禪要有 1–{MAX_TEXT} 個字")
     if any(p["text"].lower() == text.lower() for p in list_for_voice(voice_id)):
         raise ValueError(f"「{text}」已經在清單裡")
     return db.insert("catchphrases", {"id": db.new_id("phr"), "voice_id": voice_id, "text": text,
@@ -94,8 +97,8 @@ def update(pid: str, text: str | None = None, variants=None, lang: str | None = 
     upd: dict = {}
     if text is not None:
         text, _ = _normalise(text)
-        if not text or len(text) > 60:
-            raise ValueError("口頭禪要有 1–60 個字")
+        if not text or len(text) > MAX_TEXT:
+            raise ValueError(f"口頭禪要有 1–{MAX_TEXT} 個字")
         if is_sound(text) != is_sound(ph):
             raise ValueError("聲音標籤和口頭禪不能互換，請刪掉重新登記")
         upd["text"] = text
@@ -199,7 +202,7 @@ def asr_prompt(voice_id: str | None, lang: str | None) -> str:
     if not voice_id or not lang:
         return ""
     texts = [p["text"] for p in list_for_voice(voice_id)
-             if not is_sound(p) and (not p["lang"] or p["lang"] == lang)][:12]
+             if not is_sound(p) and len(p["text"]) <= PROMPT_TEXT and (not p["lang"] or p["lang"] == lang)][:12]
     if not texts:
         return ""
     return ("、".join(texts) + "。") if lang in ("ja", "zh") else (", ".join(texts) + ".")
@@ -292,8 +295,8 @@ def _add(pid: str, y: np.ndarray, sr: int, emotion: str | None, source: str,
     check = check_clip(y, sr, is_sound(ph), src_info)
     y = trim(audio.resample(y, sr, audio.MASTER_SR), audio.MASTER_SR)
     dur = len(y) / audio.MASTER_SR
-    if not 0.2 <= dur <= 10.0:
-        raise ValueError(f"原音片段要 0.2–10 秒（去掉前後靜音後是 {dur:.1f} 秒）")
+    if not CLIP_S[0] <= dur <= CLIP_S[1]:
+        raise ValueError(f"原音片段要 {CLIP_S[0]:g}–{CLIP_S[1]:g} 秒（去掉前後靜音後是 {dur:.1f} 秒）")
     cid = db.new_id("clip")
     audio.save(_dir(ph) / f"{cid}.wav", y, audio.MASTER_SR)
     clip = {"id": cid, "file": f"{cid}.wav", "emotion": emotion or "", "duration": round(dur, 3), "from": source,

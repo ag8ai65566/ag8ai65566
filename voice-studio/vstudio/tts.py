@@ -261,6 +261,8 @@ def _generate(model_id, text, language, style, takes, seed, screen, batch, mode,
     return {"outputs": outs, "mode": mode, "language": lang, "emotion": emotion}
 
 
+CONTINUE_MAX_S = 15.0  # longest recording the next words continue from (see _spliced)
+
 def _spliced(eng, h, parts, lang, mode, ref_for, timbre, seed, extra, k, modes):
     """One take of a line made of several parts (compose): text pieces each with their own style and reference,
     the person's recordings, pauses. Text right after a catchphrase recording is spoken as a continuation of it
@@ -279,8 +281,10 @@ def _spliced(eng, h, parts, lang, mode, ref_for, timbre, seed, extra, k, modes):
             c = phrases.pick_clip(p["phrase"], p.get("emotion"), k)
             path = phrases.clip_path(p["phrase"], c["id"])
             sound = phrases.is_sound(p["phrase"])
-            prev = None if sound else {"path": path, "text": p["said"],
-                                       "timbre_path": timbre["path"] if timbre else None}
+            # the text after a recording continues from it; a very long recording is no prompt the engines were
+            # made for, so the text after it is spoken in the usual way
+            prev = None if sound or (c.get("duration") or 0) > CONTINUE_MAX_S else {
+                "path": path, "text": p["said"], "timbre_path": timbre["path"] if timbre else None}
             pieces.append(["clip", path, p, c if sound else None])
             used.append({"phrase": p["phrase"]["text"], "clip": c["id"], "emotion": c.get("emotion") or "",
                          **({"sound": True} if sound else {})})

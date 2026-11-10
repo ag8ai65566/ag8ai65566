@@ -653,6 +653,13 @@ def test_splice_continues_from_the_recording(tmp_path, monkeypatch):
     # two synthesized seconds + the recording + punctuation pauses
     assert 2.5 < len(y) / sr < 3.2
 
+    # a recording over 15 s is still played, but the words after it are not continued from it
+    calls.clear()
+    ph["clips"] = [{"id": "c1", "emotion": "", "duration": 20.0}]
+    tts._spliced(Eng(), {"checkpoint": "ck"}, tts.phrases.plan("前置き、やっほー！今日もやるよ", [ph]), "ja", "plain",
+                 lambda e: None, timbre, 1, None, 0, ["plain", "ref", "hifi"])
+    assert [c["mode"] for c in calls] == ["plain", "plain"]
+
 
 def test_colab_roundtrip(client, tmp_path):
     """Studio → synced Drive folder → runner (as on Colab, test engine) → Drive folder → studio installs the model."""
@@ -1414,3 +1421,38 @@ def test_voice_manager_button(client, tmp_path, monkeypatch):
     c.put("/api/settings", json={"voice_manager": ""})
     (vm / "app" / "VoiceManager.exe").unlink()
     assert c.get("/api/launcher/voice-manager").json()["resolved"] == str(vm / "Start Manager.bat")
+
+
+def test_long_phrases_and_clips(client, tmp_path):
+    """Whole sentences up to ~30 s can be catchphrases with their recordings; only short ones hint speech recognition;
+    delivery clips outside 1–30 s are imported but wait for a person."""
+    from vstudio import phrases
+    c = client
+    v = _consented_voice(c)
+    long_text = "彗星のごとく現れたスターの原石、バーチャルアイドルの星街すいせいでーす、今日も一日よろしくお願いします" * 2
+    assert 60 < len(long_text) <= phrases.MAX_TEXT
+    r = c.post(f"/api/voices/{v['id']}/phrases", json={"text": long_text, "lang": "ja"})
+    assert r.status_code == 200, r.text
+    c.post(f"/api/voices/{v['id']}/phrases", json={"text": "やっほー", "lang": "ja"})
+    assert phrases.asr_prompt(v["id"], "ja") == "やっほー。"          # the long sentence stays out of the hint
+    pid = r.json()["id"]
+    for seconds, ok in ((15.0, True), (29.0, True), (31.0, False)):
+        f = _tone_file(tmp_path / f"long_{seconds:g}.wav", seconds)
+        with open(f, "rb") as fh:
+            res = c.post(f"/api/phrases/{pid}/clips", files={"file": (f.name, fh, "audio/wav")}, data={"emotion": ""})
+        assert (res.status_code == 200) == ok, (seconds, res.status_code, res.text)
+    assert len(phrases.get(pid)["clips"]) == 2
+
+    from vstudio import delivery
+    person = tmp_path / "Bob"
+    _tone_file(person / "交付/clean/en/happy/20250101_vidZ_0.00-12.00.wav", 12.0)
+    _tone_file(person / "交付/clean/en/happy/20250101_vidZ_100.00-135.00.wav", 35.0)
+    (person / "交付/clips.csv").write_text(
+        "file,transcript\nclean/en/happy/20250101_vidZ_0.00-12.00.wav,A twelve second line\n"
+        "clean/en/happy/20250101_vidZ_100.00-135.00.wav,A very long thirty five second line\n", encoding="utf-8")
+    res = delivery.run(str(person), v["id"], build=False)
+    assert res["added"] == 2
+    got = c.get(f"/api/segments?voice_id={v['id']}&limit=100").json()
+    segs = {s["text"]: s for s in (got["items"] if isinstance(got, dict) else got)}
+    assert segs["A twelve second line"]["status"] == "approved"
+    assert segs["A very long thirty five second line"]["status"] == "pending"
