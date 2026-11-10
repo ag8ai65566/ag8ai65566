@@ -266,6 +266,10 @@ def exists(key: str, loc: dict | None = None, fast: bool = False) -> bool:
         raise
 
 
+def size(key: str, loc: dict | None = None) -> int:
+    return int(s3(loc).head_object(Bucket=bucket(loc), Key=key)["ContentLength"])
+
+
 def get_text(key: str, tail: int = 20000, loc: dict | None = None) -> str:
     try:
         obj = s3(loc).get_object(Bucket=bucket(loc), Key=key)

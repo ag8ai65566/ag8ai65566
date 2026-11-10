@@ -10,7 +10,7 @@ import {
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader, Progress } from "../ui";
 
 const STATUS: Record<string, [string, "zinc" | "green" | "amber" | "red" | "brand" | "blue"]> = {
-  queued: ["排隊中", "zinc"], uploading: ["上傳資料", "blue"], starting: ["啟動 GPU", "blue"], running: ["雲端訓練中", "brand"],
+  queued: ["排隊中", "zinc"], starting: ["準備、租用 GPU", "blue"], uploading: ["已租到 GPU，上傳資料", "blue"], running: ["雲端訓練中", "brand"],
   waiting: ["等你在 Colab 執行", "amber"],
   downloading: ["下載模型", "blue"], done: ["完成", "green"], failed: ["失敗", "red"], canceled: ["已取消", "zinc"],
 };
@@ -218,7 +218,7 @@ function NewTraining({ initialDataset, cloudReady, colabReady, volumeProblem }: 
               ) : <p className="text-xs text-amber-700 dark:text-amber-300">還沒設定。到 <Link to="/settings#colab" className="underline">設定 → Google Colab</Link> 選雲端硬碟資料夾。</p>}
             </div>
           ) : (
-          <Field label="雲端 GPU" hint="只列出你網路磁碟所在資料中心的卡，沒貨的不能選。價格是 RunPod Secure Cloud 每小時價格（網路磁碟只能用 Secure Cloud）。平台只會租你選的這一張，不會偷偷換成更貴的卡；按開始時會再確認一次有貨，才開始上傳。">
+          <Field label="雲端 GPU" hint="只列出你網路磁碟所在資料中心的卡，沒貨的不能選。價格是 RunPod Secure Cloud 每小時價格（網路磁碟只能用 Secure Cloud）。平台只會租你選的這一張，不會偷偷換成更貴的卡。按開始後會先租下這張卡（佔住），再上傳訓練資料：上傳期間就開始計費，但雲端機器同時在準備環境，不會上傳完才發現卡被租走。">
             {cloudReady ? <GpuPicker q={gpus} value={gpu} onChange={setGpu} /> : (
               <div className="grid gap-2">
                 {offers.map((o) => (
@@ -257,6 +257,9 @@ function NewTraining({ initialDataset, cloudReady, colabReady, volumeProblem }: 
                   : plan.data.estimate_basis === "scaled" ? `這張卡還沒跑過：用你在 ${plan.data.estimate_from} 量到的速度，依兩張卡的效能比例換算（粗估），跑完一次後會改用這張卡的實測速度。`
                   : "第一次是粗估；跑完一次後平台會用實際速度校正。"}
                 {plan.data.s_per_step ? `（每步約 ${plan.data.s_per_step} 秒）` : ""}
+                {target === "runpod" && plan.data.upload && (plan.data.upload.minutes != null
+                  ? `上傳約 ${plan.data.upload.gb} GB、約 ${plan.data.upload.minutes} 分鐘（照你上次的上傳速度），已算進預估：GPU 先租下才上傳，這段時間也在計費。`
+                  : `上傳約 ${plan.data.upload.gb} GB。GPU 先租下才上傳，這段時間也在計費；第一次上傳完會記下你的上傳速度，之後算進預估。`)}
                 {target === "colab" ? "運算單位是粗估（A100 每小時約 5–15，Google 沒有公布），實際用量看 Colab 的資源面板。每次新的 Colab 執行階段都要重新安裝環境（約 5–10 分鐘）。" : "網路磁碟另計（約 $0.07/GB/月）。"}
               </p>
               {plan.data.blocked && <p className="mt-2 flex gap-1.5 text-xs font-medium text-red-600"><AlertTriangle className="mt-0.5 size-3.5 shrink-0" />{plan.data.blocked}</p>}

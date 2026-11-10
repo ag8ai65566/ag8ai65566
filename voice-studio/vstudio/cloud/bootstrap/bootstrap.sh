@@ -52,10 +52,39 @@ trap on_timeout USR1
 trap 'finish signal' TERM INT HUP
 trap 'finish exit' EXIT
 
+# The studio rents this pod first and uploads dataset.tar while the environment is being set up, so a scarce GPU is
+# not lost during a long upload. It rewrites upload.json about once a minute while uploading, then marks it done with
+# the size. If upload.json stops changing for VS_UPLOAD_STALL seconds (the studio was closed, the network went down)
+# the pod gives up and removes itself instead of waiting on rented time.
+wait_upload() {
+  [ -n "${VS_WAIT_UPLOAD:-}" ] || return 0
+  echo upload > $STAGE_FILE
+  put progress.json '{"phase":"upload"}'
+  local last="" since=$SECONDS s want have
+  while :; do
+    s=$(cat "$JOB/upload.json" 2>/dev/null || true)
+    if [[ "$s" == *'"status":"done"'* ]]; then
+      want=$(printf '%s' "$s" | sed -n 's/.*"total":\([0-9]*\).*/\1/p')
+      have=$(stat -c %s "$JOB/dataset.tar" 2>/dev/null || echo -1)
+      if [ -z "$want" ] || [ "$have" = "$want" ]; then
+        echo "[vs] dataset uploaded ($have bytes)"
+        return 0
+      fi
+    fi
+    if [ "$s" != "$last" ]; then last="$s"; since=$SECONDS; fi
+    if [ $((SECONDS - since)) -ge "${VS_UPLOAD_STALL:-900}" ]; then
+      echo "[vs] no word from the upload for ${VS_UPLOAD_STALL:-900} s; giving up"
+      return 1
+    fi
+    sleep "${VS_UPLOAD_POLL:-10}"
+  done
+}
+
 run_work() {
   echo setup > $STAGE_FILE
   put progress.json '{"phase":"setup"}'
   bash "$JOB/setup_env.sh" || return 1
+  wait_upload || return 1
   echo unpack > $STAGE_FILE
   put progress.json '{"phase":"unpack"}'
   mkdir -p "$VS_DATA" && tar -xf "$JOB/dataset.tar" -C "$VS_DATA" || return 1

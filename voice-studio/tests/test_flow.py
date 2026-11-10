@@ -1503,10 +1503,11 @@ def test_sold_out_gpu_stops_before_upload_and_retry_reuses_upload(client, monkey
                                 "path": str(tmp_path / "ds"), "created_at": db.now(),
                                 "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"],
                                          "voice": {"name": "我"}}})
-    calls = {"upload": 0, "put": 0, "pods": []}
+    calls = {"upload": 0, "put": {}, "pods": []}
     monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: key.endswith("/dataset.tar"))
+    monkeypatch.setattr(runpod, "size", lambda key, loc=None: 1234)
     monkeypatch.setattr(runpod, "upload", lambda *a, **kw: calls.update(upload=calls["upload"] + 1))
-    monkeypatch.setattr(runpod, "put_text", lambda *a, **kw: calls.update(put=calls["put"] + 1))
+    monkeypatch.setattr(runpod, "put_text", lambda key, text, loc=None: calls["put"].update({key.rsplit("/", 1)[1]: text}))
     monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
     monkeypatch.setattr(runpod, "get_text", lambda *a, **kw: "")
 
@@ -1534,12 +1535,137 @@ def test_sold_out_gpu_stops_before_upload_and_retry_reuses_upload(client, monkey
     assert tr["gpu"] == "NVIDIA H100 80GB HBM3" and tr["cost_estimate"] > 0
     j = _wait(c, tr["job_id"])
     assert j["status"] == "failed" and "換一張 GPU 重試" in j["message"]
-    assert calls == {"upload": 0, "put": 0, "pods": ["NVIDIA H100 80GB HBM3"]}     # reused, then tried the new card
+    assert calls["upload"] == 0 and calls["pods"] == ["NVIDIA H100 80GB HBM3"]     # reused, then tried the new card
+    assert "config.json" not in calls["put"] and '"status":"done","bytes":0,"total":1234' in calls["put"]["upload.json"]
     assert training.can_retry_gpu(db.get("trainings", tid))                        # and can try yet another one
 
     # a run that never uploaded (or whose data is gone) cannot be retried this way
     db.update("trainings", tid, {"uploaded_at": None})
     assert c.post(f"/api/training/{tid}/retry-gpu", json={"gpu": "NVIDIA H100 80GB HBM3"}).status_code == 400
+
+
+def test_gpu_is_rented_before_the_dataset_is_uploaded(client, monkeypatch, tmp_path):
+    """A scarce GPU is held first: the pod is rented, then the dataset goes up while the pod sets up and waits for it."""
+    import tarfile
+    from vstudio import config, db, training
+    from vstudio.cloud import runpod
+    c = client
+    _fake_gpu_catalog(monkeypatch, runpod)
+    config.save_settings({"runpod_datacenter": "US-CA-2", "runpod_volume_id": "vol1", "runpod_max_hours": 2})
+    v = c.post("/api/voices", json={"name": "我", "kind": "self", "languages": ["ja"]}).json()
+    c.post(f"/api/voices/{v['id']}/consent",
+           data={"signed_name": "測試者", "date": "2026-10-06", "agreed": "true", "scope": "train,generate"})
+    (tmp_path / "ds" / "wavs").mkdir(parents=True)
+    (tmp_path / "ds" / "wavs" / "a.wav").write_bytes(b"\0" * 300_000)
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 40, "hours": 1.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"]}})
+    body = {"dataset_id": ds["id"], "engine": "mock", "preset": "quick", "gpu": "NVIDIA H100 80GB HBM3", "target": "runpod"}
+    plan = c.post("/api/training/plan", json=body).json()
+    assert plan["upload"] and plan["upload"]["minutes"] is None              # upload speed not measured yet
+    config.save_settings({"upload_bps": 1000})                                # 300 kB at 1 kB/s = 5 minutes, billed
+    plan2 = c.post("/api/training/plan", json=body).json()
+    assert plan2["upload"]["minutes"] == 5.0 and plan2["estimate_hours"] > plan["estimate_hours"]
+    config.save_settings({"upload_bps": 0})
+
+    def package(tid, work):
+        tar = work / "dataset.tar"
+        with tarfile.open(tar, "w") as t:
+            t.add(tmp_path / "ds" / "wavs", arcname="data/wavs")
+        return tar, {"training_id": tid}
+    monkeypatch.setattr(training, "package_dataset", package)
+    events: list = []
+    monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: False)
+    monkeypatch.setattr(runpod, "put_text", lambda key, text, loc=None: events.append(("put", key.rsplit("/", 1)[1], text)))
+    monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
+    monkeypatch.setattr(runpod, "get_text", lambda *a, **kw: "")
+    monkeypatch.setattr(runpod, "remove_pod", lambda pod_id: events.append(("remove", pod_id)))
+
+    def create_pod(name, image, gpu_type, env, *a, **kw):
+        events.append(("pod", gpu_type, env))
+        return {"id": "pod1", "costPerHr": 3.99}
+
+    def upload(local, key, progress=None, loc=None):
+        events.append(("upload", db.query("SELECT status FROM trainings")[0]["status"]))  # the GPU is already held
+        progress(0.5), progress(1.0)
+    monkeypatch.setattr(runpod, "create_pod", create_pod)
+    monkeypatch.setattr(runpod, "upload", upload)
+    # the pod then reports a training error, which ends the run quickly
+    monkeypatch.setattr(runpod, "get_json", lambda key, loc=None, fast=False:
+                        {"status": "error", "stage": "train"} if key.endswith("error.json") else None)
+
+    tr = c.post("/api/training", json=body).json()
+    tid = tr["id"]
+    j = _wait(c, tr["job_id"])
+    assert j["status"] == "failed" and "訓練" in j["message"]
+    beats = [i for i, e in enumerate(events) if e[:2] == ("put", "upload.json")]
+    rent = next(i for i, e in enumerate(events) if e[0] == "pod")
+    sent = next(i for i, e in enumerate(events) if e[0] == "upload")
+    assert beats[0] < rent < sent < beats[-1] and events[sent][1] == "uploading"  # waiting → rent → upload → done
+    assert '"status":"waiting"' in events[beats[0]][2] and '"status":"done"' in events[beats[-1]][2]
+    env = events[rent][2]
+    assert env["VS_WAIT_UPLOAD"] == "1" and int(env["VS_MAX_SECONDS"]) >= 2 * 3600 + 1800  # time for the upload too
+    t = db.get("trainings", tid)
+    assert t["uploaded_at"] and t["pod_id"] == "pod1" and ("remove", "pod1") in events and not training.can_retry_gpu(t)
+
+
+def _bash() -> str | None:
+    """A real bash for running bootstrap.sh (Git Bash on Windows, not the WSL launcher)."""
+    import shutil
+    cands = [shutil.which("bash")] + ([r"C:\Program Files\Git\bin\bash.exe"] if os.name == "nt" else [])
+    return next((b for b in cands if b and os.path.exists(b) and "system32" not in b.lower()), None)
+
+
+@pytest.mark.skipif(_bash() is None, reason="needs bash")
+def test_bootstrap_waits_for_the_upload_and_gives_up_without_word(tmp_path):
+    """bootstrap.sh on a rented pod: it waits for upload.json to say done (with the right size), and a pod that hears
+    nothing from the studio stops and removes itself instead of waiting on rented time."""
+    import json
+    import subprocess
+    import tarfile
+    from vstudio import training
+
+    def sh(p) -> str:  # a path as bash sees it (Git Bash: /c/..., so tar does not take "C:" for a remote host)
+        s = p.as_posix()
+        return f"/{s[0].lower()}{s[2:]}" if os.name == "nt" and s[1:2] == ":" else s
+
+    def run(case: str, upload: str | None, tar: bool) -> dict:
+        root = tmp_path / case
+        job = root / "vs" / "jobs" / "t1"
+        job.mkdir(parents=True)
+        (job / "setup_env.sh").write_text("exit 0\n", encoding="utf-8", newline="\n")
+        (root / "bin").mkdir()
+        ctl = root / "bin" / "runpodctl"
+        ctl.write_text(f'#!/bin/bash\necho "$@" >> "{sh(root / "ctl.log")}"\n', encoding="utf-8", newline="\n")
+        ctl.chmod(0o755)
+        (root / "vs" / "envs" / "mock" / "bin").mkdir(parents=True)
+        (root / "vs" / "envs" / "mock" / "bin" / "activate").write_text("", encoding="utf-8")
+        if tar:
+            (root / "x.txt").write_text("x", encoding="utf-8")
+            with tarfile.open(job / "dataset.tar", "w") as t:
+                t.add(root / "x.txt", arcname="data/x.txt")
+        if upload:
+            (job / "upload.json").write_text(upload.replace("SIZE", str((job / "dataset.tar").stat().st_size)),
+                                             encoding="utf-8")
+        script = job / "bootstrap.sh"
+        script.write_bytes(training.BOOTSTRAP.encode("utf-8"))
+        env = {**os.environ, "PATH": str(root / "bin") + os.pathsep + os.environ.get("PATH", ""),
+               "VS_ROOT": sh(root / "vs"), "VS_WORK": sh(root / "work"), "VS_DATA": sh(root / "data"),
+               "VS_TRAINING_ID": "t1", "VS_ENGINE": "mock", "RUNPOD_POD_ID": "pod1", "VS_WAIT_UPLOAD": "1",
+               "VS_UPLOAD_STALL": "3", "VS_UPLOAD_POLL": "1", "VS_FINISH_SLEEP": "0", "VS_KILL_GRACE": "0",
+               "VS_RETRY_SLEEP": "0", "VS_MAX_SECONDS": "120"}
+        subprocess.run([_bash(), sh(script)], env=env, timeout=90, stdout=subprocess.DEVNULL,
+                       stderr=subprocess.DEVNULL)
+        err = json.loads((job / "error.json").read_text(encoding="utf-8"))
+        return {"stage": err["stage"], "removed": "remove pod pod1" in (root / "ctl.log").read_text(encoding="utf-8"),
+                "log": (job / "train.log").read_text(encoding="utf-8", errors="replace")}
+
+    silent = run("silent", None, tar=False)                    # the studio never says anything
+    assert silent["stage"] == "upload" and silent["removed"] and "giving up" in silent["log"]
+    short = run("short", '{"status":"done","bytes":1,"total":999999999,"t":1}', tar=True)  # size does not match yet
+    assert short["stage"] == "upload" and short["removed"]
+    done = run("done", '{"status":"done","bytes":SIZE,"total":SIZE,"t":1}', tar=True)
+    assert done["stage"] == "train" and done["removed"] and "dataset uploaded" in done["log"]  # went on past the wait
 
 
 def test_unusable_volume_is_flagged_and_stops_start(client, monkeypatch, tmp_path):

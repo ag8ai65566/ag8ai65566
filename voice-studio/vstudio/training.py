@@ -3,8 +3,10 @@ zero-shot (no training) models."""
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import tarfile
+import threading
 import time
 from pathlib import Path
 
@@ -77,6 +79,14 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
     est = eng.estimate(ds["hours"], p.id, usd_h, n_train=n_train, s_per_step=sps, params=eff)
     if est["steps"] and sps:
         est["basis"] = basis
+    upload = None
+    if target == "runpod":  # the dataset goes up after the GPU is rented, so the upload is billed time too
+        nbytes, bps = _dataset_bytes(ds), float(st.get("upload_bps") or 0)
+        if nbytes:
+            upload = {"gb": round(nbytes / 1e9, 2), "minutes": round(nbytes / bps / 60, 1) if bps else None}
+            if bps:
+                est["hours"] = round(est["hours"] + nbytes / bps / 3600, 2)
+                est["usd"] = round(est["hours"] * usd_h, 2)
     limit = float(st.get("runpod_max_hours") or 12)
     if target == "colab":
         limit = min(limit, 11.5)  # a Colab session ends after at most about 12 hours
@@ -97,7 +107,7 @@ def plan(dataset_id: str, engine_id: str, preset_id: str, gpu: str | None = None
         if p.disk_gb >= 200:
             warnings.append("完整微調的檢查點每個約 8 GB，要經過雲端硬碟同步回來會很久，建議用 RunPod。")
     return {"engine": eng.id, "preset": p.id, "gpu": gpu, "usd_per_hour": usd_h, "data_hours": ds["hours"],
-            "target": target, "compute_units": units,
+            "target": target, "compute_units": units, "upload": upload,
             "n_train": n_train, "steps": est["steps"], "epochs_effective": eff.get("epochs_effective"),
             "estimate_hours": est["hours"], "estimate_usd": est["usd"], "estimate_basis": est["basis"],
             "estimate_from": runpod.GPUS.get(basis_gpu, {}).get("label") or basis_gpu.replace("NVIDIA ", "")
@@ -262,6 +272,65 @@ def _find_pods(tid: str, loc: dict) -> list[dict]:
     return [p for p in pods if (p.get("env") or {}).get("VS_TRAINING_ID", tid) == tid]
 
 
+def _upload_status(status: str, sent: int, total: int) -> str:
+    """upload.json, read by wait_upload in bootstrap.sh: compact JSON that changes on every write while uploading."""
+    return json.dumps({"status": status, "bytes": sent, "total": total, "t": round(time.time(), 1)},
+                      separators=(",", ":"))
+
+
+def _upload_allowance(size: int) -> int:
+    """Extra seconds on the pod's time limit for the upload that runs on rented time: twice the time it should take at
+    the measured upload speed (2 MB/s before one was measured), at least 30 minutes, at most 6 hours."""
+    bps = float(config.load_settings().get("upload_bps") or 0) or 2e6
+    return int(min(6 * 3600, max(1800, 2 * size / bps)))
+
+
+def _upload_dataset(ctx: jobs.JobContext, tid: str, tar_path: Path, prefix: str, loc: dict, size: int) -> None:
+    """Upload dataset.tar to the volume of the pod that is already rented. upload.json is rewritten every minute, so
+    the pod knows the studio is still at it (it gives up after 15 minutes without a word); an error the pod reports
+    while setting up stops the upload early instead of finishing it for nothing."""
+    sent, stop, trouble = [0], threading.Event(), []
+
+    def heartbeat():
+        while not stop.wait(60):
+            try:
+                runpod.put_text(f"{prefix}/upload.json", _upload_status("uploading", sent[0], size), loc=loc)
+                if runpod.exists(f"{prefix}/error.json", loc, fast=True):
+                    trouble.append("雲端機器在準備環境時出錯，已停止上傳。按「紀錄」看原因。")
+                    return
+            except Exception as e:  # a missed beat is harmless: the pod waits 15 minutes for the next one
+                ctx.log(f"upload heartbeat failed: {e}")
+
+    def progress(f: float) -> None:
+        sent[0] = int(f * size)
+        if trouble:
+            raise RuntimeError(trouble[0])
+        ctx.progress(0.05 + 0.15 * f, f"已租到 GPU，上傳資料 {f * 100:.0f}%（上傳完就開始訓練）")
+
+    t0 = time.time()
+    threading.Thread(target=heartbeat, name=f"upload-{tid}", daemon=True).start()
+    try:
+        runpod.upload(tar_path, f"{prefix}/dataset.tar", progress=progress, loc=loc)
+    finally:
+        stop.set()
+    runpod.put_text(f"{prefix}/upload.json", _upload_status("done", size, size), loc=loc)
+    _set(tid, uploaded_at=time.time())
+    if size >= 50 << 20:  # remembered for the estimates and the next pod's time limit
+        config.save_settings({"upload_bps": round(size / max(1.0, time.time() - t0))})
+
+
+def _dataset_bytes(ds: dict) -> int:
+    """Roughly the size of the dataset.tar a run uploads (the dataset folder: audio and metadata)."""
+    total = 0
+    for root, _dirs, files in os.walk(ds["path"]):
+        for f in files:
+            try:
+                total += os.path.getsize(os.path.join(root, f))
+            except OSError:
+                pass
+    return total
+
+
 @jobs.handler("cloud_train", queue="io")
 def cloud_train(ctx: jobs.JobContext) -> dict:
     """Upload → pod → watch → download. Whatever goes wrong, the training row ends in a final state and the pod is
@@ -304,39 +373,42 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
         deadline = tr.get("deadline") or (tr["created_at"] + float(config.load_settings()["runpod_max_hours"]) * 3600)
         ctx.log(f"resuming watch of pod {pod_id}")
     else:
-        # 1. package and upload (a retry on another GPU reuses what an earlier attempt of this run uploaded)
+        # GPU first: the small files go up, the pod is rented, and only then is the dataset uploaded, while the pod
+        # sets up its environment (bootstrap.sh waits for upload.json). A scarce card is never lost to a long upload.
+        # 1. package and send the small files (a retry on another GPU reuses the dataset an earlier attempt uploaded)
         reuse = bool(ctx.params.get("reuse_upload")) and runpod.exists(f"{prefix}/dataset.tar", loc)
-        _set(tid, status="uploading")
+        _set(tid, status="starting")
+        ctx.progress(0.01, "整理訓練資料")
         if reuse:
-            ctx.progress(0.18, "沿用已經上傳的資料")
             ctx.log("reusing the dataset already on the volume")
-            _check_reference(tr, eng)
+            tar_path, size = None, runpod.size(f"{prefix}/dataset.tar", loc)
         else:
-            ctx.progress(0.01, "整理訓練資料")
             tar_path, cfg = package_dataset(tid, work)
-            _check_reference(tr, eng)  # before paying for anything
-            _require_consent(tr["voice_id"])
-            runpod.put_text(f"{prefix}/config.json", json.dumps(cfg, ensure_ascii=False, indent=2), loc=loc)
-            runpod.put_text(f"{prefix}/bootstrap.sh", BOOTSTRAP, loc=loc)
-            for fname, text in eng.cloud_files().items():
-                runpod.put_text(f"{prefix}/{fname}", text, loc=loc)
-            runpod.upload(tar_path, f"{prefix}/dataset.tar", loc=loc,
-                          progress=lambda f: ctx.progress(0.02 + 0.16 * f, f"上傳資料 {f * 100:.0f}%"))
-            tar_path.unlink(missing_ok=True)
-            _set(tid, uploaded_at=time.time())
-        ctx.check()
+            size = tar_path.stat().st_size
+        _check_reference(tr, eng)  # before paying for anything
         _require_consent(tr["voice_id"])
+        if not reuse:
+            runpod.put_text(f"{prefix}/config.json", json.dumps(cfg, ensure_ascii=False, indent=2), loc=loc)
+        runpod.put_text(f"{prefix}/bootstrap.sh", BOOTSTRAP, loc=loc)
+        for fname, text in eng.cloud_files().items():
+            runpod.put_text(f"{prefix}/{fname}", text, loc=loc)
+        runpod.put_text(f"{prefix}/upload.json", _upload_status("done" if reuse else "waiting", 0, size), loc=loc)
+        then = ("訓練資料已經在雲端，按「換一張 GPU 重試」就好，不用重新上傳。" if reuse
+                else "訓練資料還沒上傳，換一張有貨的卡再按一次開始就好。")
         problem = _stock_problem(eng.id, tr["preset"]["id"], tr["gpu"], loc["datacenter"])
-        if problem:  # stock can change during a long upload: stop before renting, keep the data for a retry
-            raise RuntimeError(f"資料已經上傳，但{problem}按「換一張 GPU 重試」就好，不用重新上傳。")
+        if problem:
+            raise RuntimeError(problem + then)
+        ctx.check()
 
-        # 2. create the pod (intent and deadline are recorded first, so a lost response can be reconciled)
+        # 2. rent the pod (intent and deadline are recorded first, so a lost response can be reconciled); its time
+        # limit also covers the upload, which now runs on rented time
         max_h = float(config.load_settings().get("runpod_max_hours") or 12)
-        deadline = time.time() + max_h * 3600 + 900
-        _set(tid, status="starting", pod_state="creating", deadline=deadline, started_at=time.time())
-        ctx.progress(0.19, "啟動雲端 GPU")
-        env = {"VS_TRAINING_ID": tid, "VS_ENGINE": eng.id, "VS_MAX_SECONDS": str(int(max_h * 3600)),
-               "VS_IMAGE": eng.image}
+        allow = 0 if reuse else _upload_allowance(size)
+        deadline = time.time() + max_h * 3600 + allow + 900
+        _set(tid, pod_state="creating", deadline=deadline, started_at=time.time())
+        ctx.progress(0.03, "租用雲端 GPU")
+        env = {"VS_TRAINING_ID": tid, "VS_ENGINE": eng.id, "VS_MAX_SECONDS": str(int(max_h * 3600 + allow)),
+               "VS_IMAGE": eng.image, "VS_WAIT_UPLOAD": "1"}
         hf = config.get_secret("hf_token")
         if hf:
             env["HF_TOKEN"] = hf
@@ -349,13 +421,18 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
         except Exception as e:
             time.sleep(10)
             _reconcile_creation(tid, loc)  # the request may have gone through even though we saw an error
-            raise RuntimeError(f"沒有租到 GPU：{str(e)[:300]}（這張卡在這個資料中心可能剛好沒貨。資料已經上傳，"
-                               "按「換一張 GPU 重試」就好，不用重新上傳）")
+            raise RuntimeError(f"沒有租到 GPU：{str(e)[:300]}（這張卡剛好被租走了。{then}）")
         pod_id = pod.get("id")
         gpu_actual = (pod.get("machine") or {}).get("gpuTypeId") or tr["gpu"]
-        _set(tid, status="running", pod_id=pod_id, pod_state="running", gpu=gpu_actual,
+        _set(tid, status="running" if reuse else "uploading", pod_id=pod_id, pod_state="running", gpu=gpu_actual,
              cost_per_hr=pod.get("costPerHr") or pod.get("adjustedCostPerHr"))
         ctx.log(f"pod {pod_id} created on {gpu_actual} at {pod.get('costPerHr')} /h")
+
+        # 3. upload the dataset onto the rented pod's volume
+        if not reuse:
+            _upload_dataset(ctx, tid, tar_path, prefix, loc, size)
+            tar_path.unlink(missing_ok=True)
+            _set(tid, status="running")
 
     # 3. watch
     last_poll, s3_errors, partial = 0.0, 0, False
@@ -535,7 +612,7 @@ def resume_interrupted() -> list[str]:
                 found = _find_pods(tr["id"], _loc(tr))
             except Exception:
                 found = []
-            if len(found) == 1:
+            if len(found) == 1 and tr.get("uploaded_at"):
                 pod_id = found[0].get("id")
                 _set(tr["id"], pod_id=pod_id, pod_state="running", status="running")
             else:
@@ -757,7 +834,7 @@ def _fraction(p: dict) -> float:
     """Overall cloud progress 0–1 across phases (training dominates)."""
     ph = p.get("phase")
     frac = (p.get("step", 0) / p["total"]) if p.get("total") else 0.0
-    return {"setup": 0.02, "unpack": 0.04, "download": 0.06, "prepare": 0.08}.get(ph) or \
+    return {"setup": 0.02, "upload": 0.03, "unpack": 0.04, "download": 0.06, "prepare": 0.08}.get(ph) or \
         {"train": 0.1 + 0.75 * frac, "samples": 0.85 + 0.12 * frac, "package": 0.98}.get(ph, 0.0)
 
 
@@ -765,6 +842,8 @@ def _phase_label(p: dict) -> str:
     ph = p.get("phase")
     if ph == "setup":
         return "雲端安裝環境（第一次約 10 分鐘，之後會跳過）"
+    if ph == "upload":
+        return "環境已就緒，等資料上傳完"
     if ph == "unpack":
         return "解開資料"
     if ph == "download":
@@ -786,7 +865,8 @@ def _phase_label(p: dict) -> str:
 
 
 def _stage_label(err: dict) -> str:
-    return {"setup": "安裝環境", "unpack": "解開資料", "train": "訓練", "package": "打包",
+    return {"setup": "安裝環境", "upload": "等資料上傳（太久沒有上傳進度）", "unpack": "解開資料", "train": "訓練",
+            "package": "打包",
             None: "逾時" if err.get("status") == "timeout" else "未知"}.get(err.get("stage"), err.get("stage") or "?")
 
 
