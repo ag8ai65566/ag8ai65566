@@ -1691,6 +1691,67 @@ def test_auto_grab_waits_renting_nothing_then_grabs(client, monkeypatch, tmp_pat
     assert db.get("trainings", stop["id"])["status"] == "canceled" and training.wait_for_gpus() == []
 
 
+def test_https_is_verified_also_with_many_connections_at_once(tmp_path):
+    """HTTPS goes through one CA file (Windows: certifi + the roots Windows trusts) that OpenSSL verifies against;
+    ssl.SSLContext is not patched. A server with an untrusted certificate is refused on every connection, also with
+    many at once, as boto3's parallel transfers make them (with the truststore patch, some of those were checked
+    while another handshake had verification switched off)."""
+    import datetime
+    import http.server
+    import ipaddress
+    import ssl
+    import threading
+    from concurrent.futures import ThreadPoolExecutor
+    pytest.importorskip("cryptography")
+    from cryptography import x509
+    from cryptography.hazmat.primitives import hashes, serialization
+    from cryptography.hazmat.primitives.asymmetric import ec
+    from cryptography.x509.oid import NameOID
+
+    key = ec.generate_private_key(ec.SECP256R1())
+    name = x509.Name([x509.NameAttribute(NameOID.COMMON_NAME, "127.0.0.1")])
+    now = datetime.datetime.now(datetime.timezone.utc)
+    cert = (x509.CertificateBuilder().subject_name(name).issuer_name(name).public_key(key.public_key())
+            .serial_number(x509.random_serial_number()).not_valid_before(now - datetime.timedelta(minutes=5))
+            .not_valid_after(now + datetime.timedelta(days=1))
+            .add_extension(x509.SubjectAlternativeName([x509.IPAddress(ipaddress.ip_address("127.0.0.1"))]),
+                           critical=False).sign(key, hashes.SHA256()))
+    (tmp_path / "cert.pem").write_bytes(cert.public_bytes(serialization.Encoding.PEM))
+    (tmp_path / "key.pem").write_bytes(key.private_bytes(serialization.Encoding.PEM,
+                                                         serialization.PrivateFormat.PKCS8,
+                                                         serialization.NoEncryption()))
+    import vstudio  # noqa: F401  (sets up HTTPS on import)
+    assert ssl.SSLContext.__module__ == "ssl"
+    if os.name == "nt":
+        bundle = Path(os.environ["AWS_CA_BUNDLE"])
+        assert os.environ["SSL_CERT_FILE"] == os.environ["REQUESTS_CA_BUNDLE"] == str(bundle)
+        assert bundle.read_text(encoding="utf-8").count("BEGIN CERTIFICATE") > 100
+
+    sctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+    sctx.load_cert_chain(tmp_path / "cert.pem", tmp_path / "key.pem")
+    srv = http.server.ThreadingHTTPServer(("127.0.0.1", 0), http.server.BaseHTTPRequestHandler)
+    srv.socket = sctx.wrap_socket(srv.socket, server_side=True, do_handshake_on_connect=False)
+    srv.handle_error = lambda *a: None
+    threading.Thread(target=srv.serve_forever, daemon=True).start()
+    import boto3
+    from botocore.config import Config
+    s3 = boto3.client("s3", aws_access_key_id="x", aws_secret_access_key="y", region_name="us-east-1",
+                      endpoint_url=f"https://127.0.0.1:{srv.server_address[1]}",
+                      config=Config(retries={"max_attempts": 1}, connect_timeout=5, read_timeout=5,
+                                    max_pool_connections=8))
+
+    def one(_):
+        try:
+            s3.list_buckets()
+            return True                     # got through: the certificate was not verified
+        except Exception:
+            return False
+    with ThreadPoolExecutor(8) as ex:
+        accepted = sum(ex.map(one, range(32)))
+    srv.shutdown()
+    assert accepted == 0
+
+
 def _bash() -> str | None:
     """A real bash for running bootstrap.sh (Git Bash on Windows, not the WSL launcher)."""
     import shutil
