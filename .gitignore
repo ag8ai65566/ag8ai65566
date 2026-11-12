@@ -15,3 +15,7 @@ data/restaurants.json
 
 # scraper page dumps (contain your logged-in view)
 scraper/dump/
+
+# Python bytecode caches: derived files, rewritten on every import
+__pycache__/
+*.pyc
