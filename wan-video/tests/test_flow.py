@@ -7657,7 +7657,7 @@ def test_progress_phases() -> None:
     import inspect
 
     from comfy_client import ComfyClient
-    src = inspect.getsource(ComfyClient.run)
+    src = inspect.getsource(ComfyClient.run) + inspect.getsource(ComfyClient._listen)
     check("on_node" in src and 'data.get("node") is not None' in src,
           "the client reports which node started, not only when the job ends")
 

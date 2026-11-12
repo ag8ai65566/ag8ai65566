@@ -37,6 +37,15 @@ WRITABLE = {
                 "**拿到 token 還不夠**：還要去那個模型的頁面按一次同意授權，"
                 "否則一樣是 401。",
     },
+    "RUNPOD_API_KEY": {
+        "label": "Runpod API key",
+        "secret": True,
+        "restart": False,   # runpod.api_key() reads os.environ on every call
+        "help": "顯卡不夠大的模型可以租一台雲端 GPU 來跑。"
+                "到 runpod.io → Settings → API Keys → Create API Key，"
+                "權限選 **All**（或至少給 Pods 和 Network Volumes 讀寫），貼進來。"
+                "**填了不會自動花錢** —— 要到下面的「雲端 GPU」自己按開機才會。",
+    },
     "COMFY_ARGS": {
         "label": "ComfyUI 啟動參數",
         "secret": False,

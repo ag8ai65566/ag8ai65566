@@ -59,6 +59,10 @@ class Record:
     # threw the link away: ComfyUI finished the render, wrote the file, and
     # nothing here ever went to collect it.
     prompt_id: str = ""
+    # "local" or "cloud": which ComfyUI this job was sent to. Fixed when the
+    # job is submitted - flipping the switch afterwards must not move a job
+    # that is already uploaded to one machine onto the other half way through.
+    target: str = "local"
 
 
 class Library:

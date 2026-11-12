@@ -47,6 +47,10 @@ REFS_DIR = _dir("REFS_DIR", REPO / "data" / "refs", Path("/data/refs"))
 # them - re-exporting one is a trip back through another program's menus.
 WORKFLOWS_DIR = _dir("WORKFLOWS_DIR", REPO / "data" / "workflows", Path("/data/workflows"))
 APP_URL = os.environ.get("APP_URL", "http://127.0.0.1:8000")
+# What this app remembers about a rented GPU: which machine, which disk, and
+# the token its agent answers to. Next to the job history rather than in
+# `.env`, because it is state the app writes on its own, not a setting.
+CLOUD_STATE = Path(os.environ.get("CLOUD_STATE_FILE") or (OUTPUT_DIR / ".cloud.json"))
 
 # Checkouts the update check looks at. In Docker the app does not own either of
 # them, so both are allowed not to be git repos - the check just reports that.

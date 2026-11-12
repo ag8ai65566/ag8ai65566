@@ -104,9 +104,44 @@ class OutputFile:
     type: str
 
 
-# Seconds between websocket pings while waiting for a generation. See the
-# comment at the ws_connect call: this has to outlast a cold model load.
-WS_HEARTBEAT = 600.0
+# Seconds between websocket pings while waiting for a generation.
+#
+# This was 30, then 600, and is 30 again - and the reason it can be is the
+# point. At 30, ComfyUI loading a model bigger than the card could not answer
+# the ping (its event loop is blocked for minutes), aiohttp raised, and a job
+# that was running perfectly well was thrown away. Raising it to 600 hid that.
+# But a rented machine sits behind a proxy that drops any connection idle for
+# 100 seconds, so a ten-minute ping interval guarantees a disconnect there.
+#
+# The real fix is in `run`: a dropped socket is no longer treated as the job
+# failing. It reconnects, and asks ComfyUI's history whether the job finished
+# while nobody was listening. With that in place a missed pong costs one
+# reconnect, so the interval can be short enough to keep a proxy open.
+WS_HEARTBEAT = 30.0
+# How long ComfyUI may refuse connections outright before `run` gives up
+# waiting. Being slow to answer does not count - only being gone does.
+GONE_AFTER = 180.0
+
+
+@dataclass(frozen=True)
+class Issue:
+    """One thing wrong with a graph, for this ComfyUI.
+
+    `kind` is one of: no-node, missing-input, unexpected-input, no-files,
+    bad-choice. The last two carry the literal that was refused in `value`,
+    which for a loader node is a filename.
+    """
+
+    kind: str
+    node: str
+    cls: str
+    input: str = ""
+    value: str = ""
+    text: str = ""
+
+
+class JobVanished(ComfyError):
+    """ComfyUI no longer knows the job: not queued, not running, no history."""
 
 
 class ComfyClient:
@@ -187,6 +222,15 @@ class ComfyClient:
         Returns a list of human-readable problems; empty means the graph should
         be accepted. Catching this here gives a far better error message than
         ComfyUI's own 400 response.
+        """
+        return [issue.text for issue in await self.diagnose(graph)]
+
+    async def diagnose(self, graph: dict) -> list["Issue"]:
+        """The same check as `validate`, as data rather than sentences.
+
+        The rented machine needs this form: "which files does this graph name
+        that the machine does not have" is the list of things to download, and
+        picking filenames back out of an error message would be a guess.
 
         A first failure re-reads /object_info once before reporting. The cached
         copy lists the model folders as they were when it was fetched, so a file
@@ -195,22 +239,25 @@ class ComfyClient:
         the path that was about to fail anyway, and turns a dead end into a job
         that just runs.
         """
-        problems = await self._validate(graph, await self.object_info())
-        if problems:
-            problems = await self._validate(graph, await self.object_info(refresh=True))
-        return problems
+        issues = self._diagnose(graph, await self.object_info())
+        if issues:
+            issues = self._diagnose(graph, await self.object_info(refresh=True))
+        return issues
 
     async def _validate(self, graph: dict, info: dict) -> list[str]:
-        problems: list[str] = []
+        return [issue.text for issue in self._diagnose(graph, info)]
+
+    def _diagnose(self, graph: dict, info: dict) -> list["Issue"]:
+        issues: list[Issue] = []
 
         for node_id, node in graph.items():
             cls = node["class_type"]
             schema = info.get(cls)
             if schema is None:
-                problems.append(
-                    f"node {node_id}: ComfyUI has no node type '{cls}' "
-                    "(missing custom node package?)"
-                )
+                issues.append(Issue(
+                    "no-node", str(node_id), cls,
+                    text=f"node {node_id}: ComfyUI has no node type '{cls}' "
+                         "(missing custom node package?)"))
                 continue
 
             spec = schema.get("input", {})
@@ -220,9 +267,13 @@ class ComfyClient:
             given = set(node["inputs"])
 
             for missing in set(required) - given:
-                problems.append(f"node {node_id} ({cls}): missing input '{missing}'")
+                issues.append(Issue(
+                    "missing-input", str(node_id), cls, missing,
+                    text=f"node {node_id} ({cls}): missing input '{missing}'"))
             for unknown in given - known:
-                problems.append(f"node {node_id} ({cls}): unexpected input '{unknown}'")
+                issues.append(Issue(
+                    "unexpected-input", str(node_id), cls, unknown,
+                    text=f"node {node_id} ({cls}): unexpected input '{unknown}'"))
 
             # For combo inputs, check the literal value is one of the choices.
             for name, value in node["inputs"].items():
@@ -239,18 +290,18 @@ class ComfyClient:
                 if not choices:
                     # An empty combo means the folder ComfyUI scans for this
                     # input has no files at all, so nothing could be valid.
-                    problems.append(
-                        f"node {node_id} ({cls}): ComfyUI has no files to offer for "
-                        f"'{name}' — '{value}' is not installed (empty model folder)"
-                    )
+                    issues.append(Issue(
+                        "no-files", str(node_id), cls, name, str(value),
+                        text=f"node {node_id} ({cls}): ComfyUI has no files to offer for "
+                             f"'{name}' — '{value}' is not installed (empty model folder)"))
                 elif value not in choices:
                     shown = ", ".join(str(c) for c in choices[:8])
-                    problems.append(
-                        f"node {node_id} ({cls}): '{value}' is not a valid {name}. "
-                        f"Available: {shown}{' ...' if len(choices) > 8 else ''}"
-                    )
+                    issues.append(Issue(
+                        "bad-choice", str(node_id), cls, name, str(value),
+                        text=f"node {node_id} ({cls}): '{value}' is not a valid {name}. "
+                             f"Available: {shown}{' ...' if len(choices) > 8 else ''}"))
 
-        return problems
+        return issues
 
     # -- inputs -------------------------------------------------------------
 
@@ -287,58 +338,107 @@ class ComfyClient:
         `on_queued` is called with ComfyUI's prompt id the instant the graph is
         accepted, before any waiting. The caller persists it, because from that
         moment ComfyUI owns a job that will finish whether or not this app is
-        still listening - and without the id there is no way back to it. A
-        user watched that happen: the wait timed out, the render completed, and
-        the finished file sat in ComfyUI's output folder with nothing here
-        knowing it existed.
+        still listening - and without the id there is no way back to it.
+
+        The websocket is only how progress arrives; it is not what decides
+        whether the job is done. Sockets drop for reasons that have nothing to
+        do with the render - ComfyUI too busy loading a model to answer a ping,
+        a proxy closing an idle connection - so every drop is followed by one
+        question to ComfyUI's history: did it finish? If not, reconnect and
+        keep listening.
         """
         ws_url = self.base.replace("https://", "wss://").replace("http://", "ws://")
-        prompt_id = ""
+        address = f"{ws_url}/ws?clientId={self.client_id}"
         async with aiohttp.ClientSession() as session:
-            async with session.ws_connect(
-                # Long, on purpose. `heartbeat=30` sends a ping every 30s and
-                # gives up if no pong comes back - but ComfyUI loading a model
-                # bigger than the card blocks its event loop for minutes at a
-                # time, so it cannot answer, and aiohttp raised a TimeoutError
-                # on a run that was proceeding perfectly well. On a 10GB card
-                # loading 21.5GB of weights that is every single generation.
-                # A blocked event loop is what a big load looks like, not a
-                # dead connection; `reattach` in server.py is what covers a
-                # genuinely dead one.
-                f"{ws_url}/ws?clientId={self.client_id}", heartbeat=WS_HEARTBEAT
-            ) as ws:
+            # Connected before queueing, so the first events are not missed.
+            ws = await session.ws_connect(address, heartbeat=WS_HEARTBEAT)
+            try:
                 prompt_id = await self.queue(graph)
                 if on_queued:
                     on_queued(prompt_id)
-                async for msg in ws:
-                    if msg.type is not aiohttp.WSMsgType.TEXT:
-                        continue
-                    event = json.loads(msg.data)
-                    kind, data = event.get("type"), event.get("data", {})
-                    if data.get("prompt_id") not in (None, prompt_id):
-                        continue
-
-                    if kind == "progress" and on_progress:
-                        maximum = data.get("max") or 1
-                        on_progress(data.get("value", 0) / maximum)
-                    elif kind == "executing" and data.get("node") is not None:
-                        # Which node ComfyUI has moved on to. Only the sampler
-                        # reports a percentage, so without this the message sat
-                        # at "生成中 100%" through the VAE decode and the video
-                        # encode - which on a card too small for the model is
-                        # the slowest part of the whole job. It looked frozen.
-                        if on_node:
-                            on_node(str(data["node"]))
-                    elif kind == "execution_error":
-                        raise ComfyError(
-                            f"{data.get('node_type')}: {data.get('exception_message')}"
-                        )
-                    elif kind == "execution_interrupted":
-                        raise ComfyError("execution interrupted")
-                    elif kind == "executing" and data.get("node") is None:
-                        break  # this prompt is done
+                gone_since = 0.0
+                while True:
+                    finished = False
+                    if ws is not None and not ws.closed:
+                        try:
+                            finished = await self._listen(ws, prompt_id, on_progress, on_node)
+                        except ComfyError:
+                            raise
+                        except (aiohttp.ClientError, asyncio.TimeoutError, OSError):
+                            finished = False
+                    if finished:
+                        break
+                    # The socket is gone. Ask the one thing that knows.
+                    try:
+                        state = await self._job_state(prompt_id)
+                        gone_since = 0.0
+                    except asyncio.TimeoutError:
+                        state = "unknown"      # busy, not gone: keep waiting
+                        gone_since = 0.0
+                    except (aiohttp.ClientError, OSError):
+                        state = "unknown"
+                        now = asyncio.get_event_loop().time()
+                        gone_since = gone_since or now
+                        if now - gone_since > GONE_AFTER:
+                            raise
+                    if state == "done":
+                        break
+                    if state == "vanished":
+                        raise JobVanished(
+                            "ComfyUI 那邊已經沒有這個工作了（它可能被重開過）。這一顆要重新生成。")
+                    await asyncio.sleep(2)
+                    try:
+                        if ws is not None:
+                            await ws.close()
+                        ws = await session.ws_connect(address, heartbeat=WS_HEARTBEAT)
+                    except (aiohttp.ClientError, asyncio.TimeoutError, OSError):
+                        ws = None              # poll again next time round
+            finally:
+                if ws is not None:
+                    await ws.close()
 
         return await self.outputs(prompt_id)
+
+    async def _listen(self, ws, prompt_id: str, on_progress, on_node) -> bool:
+        """Read events until this job ends (True) or the socket closes (False)."""
+        async for msg in ws:
+            if msg.type is not aiohttp.WSMsgType.TEXT:
+                continue
+            event = json.loads(msg.data)
+            kind, data = event.get("type"), event.get("data", {})
+            if data.get("prompt_id") not in (None, prompt_id):
+                continue
+
+            if kind == "progress" and on_progress:
+                maximum = data.get("max") or 1
+                on_progress(data.get("value", 0) / maximum)
+            elif kind == "executing" and data.get("node") is not None:
+                # Which node ComfyUI has moved on to. Only the sampler
+                # reports a percentage, so without this the message sat
+                # at "生成中 100%" through the VAE decode and the video
+                # encode - which on a card too small for the model is
+                # the slowest part of the whole job. It looked frozen.
+                if on_node:
+                    on_node(str(data["node"]))
+            elif kind == "execution_error":
+                raise ComfyError(
+                    f"{data.get('node_type')}: {data.get('exception_message')}"
+                )
+            elif kind == "execution_interrupted":
+                raise ComfyError("execution interrupted")
+            elif kind == "executing" and data.get("node") is None:
+                return True  # this prompt is done
+        return False
+
+    async def _job_state(self, prompt_id: str) -> str:
+        """"done", "running" or "vanished", from the history and the queue."""
+        async with aiohttp.ClientSession() as s:
+            async with s.get(f"{self.base}/history/{prompt_id}", timeout=60) as r:
+                r.raise_for_status()
+                history = await r.json()
+        if history.get(prompt_id):
+            return "done"
+        return "running" if await self.pending(prompt_id) else "vanished"
 
     async def collect(self, prompt_id: str) -> list[OutputFile]:
         """The outputs of a job this app stopped watching, if it has finished.
