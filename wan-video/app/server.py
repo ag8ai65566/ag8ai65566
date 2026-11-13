@@ -4794,6 +4794,7 @@ async def health() -> JSONResponse:
             "library": lib.stats(),
             "civitai_key": bool(civitai.api_key()),
             "comfy_args": config.COMFY_ARGS,
+            "target": cloud.state.target,
         }
     )
 

@@ -7957,6 +7957,14 @@ async def test_cloud() -> None:
               "…but not while ComfyUI is working")
         check(not agent_mod.should_stop(agent_state, 0, agent_state.last_seen + 9e9, busy=False),
               "…and not at all when the switch is off")
+        html = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+        check('id="where"' in html and 'id="cloudcard"' in html,
+              "the page has the 本機/雲端 switch and the cloud card")
+        check("chosen.installed && chosen.runnable" not in html
+              and "$('#go').disabled = !(picked && chosen && ok(chosen)" in html,
+              "the video button accepts a model the cloud will fetch")
+        check("const needs = !ok(m);" in html and "needs.filter((m) => !ok(m))" in html,
+              "…and so do the image button and the episode planner")
         try:
             await server.cloud_target({"target": "elsewhere"})
             check(False, "an unknown target is refused")

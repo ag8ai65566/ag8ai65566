@@ -261,6 +261,15 @@
 <div class="wrap">
   <h1>圖片 → 動畫</h1>
   <div class="sub" id="sub">本機執行 · 無內容過濾</div>
+  <!-- Where new jobs run. A job keeps the target it was submitted with. -->
+  <div class="row" style="margin:6px 0;gap:8px;align-items:center">
+    <span class="s">在哪裡跑：</span>
+    <div class="modes" id="where" role="group" aria-label="在哪裡跑" style="margin:0">
+      <button data-where="local" class="on">本機</button>
+      <button data-where="cloud">雲端 GPU</button>
+    </div>
+    <span class="s" id="wherenote"></span>
+  </div>
 
   <!-- The app hands every job to ComfyUI and cannot start it itself, so
        "ComfyUI is not running" is the most common failure there is. It used to
@@ -1307,6 +1316,13 @@ const P = {
 };
 
 let MODELS = [], LORAS = [], JOBS = [], GPU = {}, picked = null, chosen = null;
+// Where new jobs run. `installed` stays the literal fact about this disk; a
+// model is *usable* when it is installed, or when jobs go to the rented
+// machine, which downloads what it lacks right before the job.
+let CLOUD = { target: 'local', has_key: false, pod_id: '' }, CLOUDGPUS = [], cloudPick = '';
+const ok = (m) => !!(m && (m.usable ?? m.installed));
+const mark = (m) => m.installed ? '✓' : (ok(m) ? '☁' : (m.partial ? '◐' : '·'));
+const usd = (n) => '$' + (Number(n) || 0).toFixed(n >= 10 ? 0 : 2);
 let CIV = { items: [], cursor: '', loading: false };
 
 /* ---------- tabs ---------- */
@@ -1374,10 +1390,10 @@ window.addEventListener('paste', (e) => { for (const f of e.clipboardData.files)
 
 /* ---------- model selection ---------- */
 function syncGo() {
-  const needs = chosen && chosen.runnable && !chosen.installed;
+  const needs = chosen && chosen.runnable && !ok(chosen);
   $('#go').classList.toggle('hidden', !!needs);
   $('#getmodel').classList.toggle('hidden', !needs);
-  $('#go').disabled = !(picked && chosen && chosen.installed && chosen.runnable);
+  $('#go').disabled = !(picked && chosen && ok(chosen) && chosen.runnable);
   if (needs) {
     $('#getmodel').textContent = `先下載這個模型（${gb(chosen.download_bytes)}）`;
     $('#status').textContent = `${chosen.label} 還沒下載。按上面那顆鈕開始，或改選前面有 ✓ 的。`;
@@ -1426,7 +1442,7 @@ function renderModelPicker() {
   // The TTS bundles are in the same catalogue because that is where they are
   // downloaded from; they do not make video and do not belong in this picker.
   sel.innerHTML = MODELS.filter((m) => m.role !== 'tts').map((m) => canRun(m)
-    ? `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}`
+    ? `<option value="${m.id}">${mark(m)} ${esc(m.label)}`
       + `${m.has_workflow ? '（用你匯入的工作流）' : ''}</option>`
     : `<option value="${m.id}" disabled>${m.installed ? '✓' : '·'} ${esc(m.label)}　—— 這裡跑不了</option>`
   ).join('');
@@ -1475,7 +1491,7 @@ function onModelChange() {
   $('#litlabel').textContent = `${chosen.lightning_steps || 4} 步加速`;
   const sm = chosen.sampling;
   $('#modelnote').textContent =
-    `${chosen.installed ? '已安裝' : '未下載 '+gb(chosen.download_bytes)} · ${sm.steps} 步 · cfg ${sm.cfg} · shift ${sm.shift} · ${sm.sampler}/${sm.scheduler} · ${chosen.fps}fps`
+    `${chosen.installed ? '已安裝' : ok(chosen) ? '雲端機會自己下載 '+gb(chosen.download_bytes) : '未下載 '+gb(chosen.download_bytes)} · ${sm.steps} 步 · cfg ${sm.cfg} · shift ${sm.shift} · ${sm.sampler}/${sm.scheduler} · ${chosen.fps}fps`
     + (chosen.note ? ' · '+chosen.note : '');
 
   // VRAM is advice, never a gate.
@@ -2647,6 +2663,7 @@ async function renderSettings() {
   $('#setbody').innerHTML = `
     <h2 style="margin-top:0">設定（直接改，會寫進 <code>${esc(SETTINGS.file || '.env')}</code>）</h2>
     ${fields}
+    <div id="cloudcard"></div>
     <h2 style="margin-top:16px">更新</h2>
     <div class="m">
       <div class="top">
@@ -2681,6 +2698,7 @@ async function renderSettings() {
       <b>換預設模型</b>：<code>MODEL=wan22-14b-q4</code>。
     </div>`;
 
+  renderCloud();
   $('#setbody').querySelectorAll('[data-set]').forEach((box) => {
     const input = box.querySelector('.v');
     const save = async (value) => {
@@ -2766,7 +2784,7 @@ async function refreshImageModels() {
     IMG.embeddings = d.embeddings || [];
     const keep = $('#imodel').value || P.get('imodel', '');
     $('#imodel').innerHTML = IMG.models.map((m) =>
-      `<option value="${m.id}">${m.installed ? '✓' : (m.partial ? '◐' : '·')} ${esc(m.label)}</option>`).join('');
+      `<option value="${m.id}">${mark(m)} ${esc(m.label)}</option>`).join('');
     if (IMG.models.some((m) => m.id === keep)) $('#imodel').value = keep;
     // Rebuilding a <select> resets it, and the touched-guard then refuses to
     // restore it - so the user's own choice would silently revert. Keep it.
@@ -4242,7 +4260,7 @@ function onImageModelChange() {
     box.classList.remove('hidden');
   } else box.classList.add('hidden');
 
-  const needs = !m.installed;
+  const needs = !ok(m);
   $('#igo').classList.toggle('hidden', needs);
   $('#igetmodel').classList.toggle('hidden', !needs);
   if (needs) {
@@ -4972,7 +4990,7 @@ function quickModels() {
   const rows = (MODELS || []).filter((m) => m.role !== 'tts').map((m) => {
     const name = m.short || m.label;
     const size = m.download_bytes || 0;
-    if (!m.installed) return { id: m.id, text: `${name}（還沒下載 ${gb(size)}）`, ok: false, size };
+    if (!ok(m)) return { id: m.id, text: `${name}（還沒下載 ${gb(size)}）`, ok: false, size };
     if (!m.runnable_here) return { id: m.id, text: `${name}（下載好了，但還沒有工作流）`, ok: false, size };
     return { id: m.id, text: name, ok: true, size };
   });
@@ -5004,7 +5022,7 @@ function quickNote(extra) {
   if (!box) return;
   if (extra !== undefined) { box.innerHTML = extra; return; }
   if (!m) { box.textContent = ''; return; }
-  if (!m.installed) {
+  if (!ok(m)) {
     box.innerHTML = `<span class="warn">這個模型還沒下載完（${gb(m.download_bytes)}）。</span>`
       + ` <button class="go tiny" id="qkget">下載它</button>`;
     if (go) go.disabled = true;
@@ -6342,11 +6360,11 @@ let needDownloading = '';
 function renderNeeds(needs) {
   const box = $('#sdneed');
   if (!box) return;
-  const missing = needs.filter((m) => !m.installed);
+  const missing = needs.filter((m) => !ok(m));
   // Downloaded but still not runnable: a files-only model has all its weights
   // and no graph this app can drive. That is a different problem with a
   // different fix, and it needs saying here rather than as a per-shot failure.
-  const noGraph = needs.filter((m) => m.installed && m.runnable_here === false);
+  const noGraph = needs.filter((m) => ok(m) && m.runnable_here === false);
   if (!missing.length && !noGraph.length) {
     box.innerHTML = ''; needDownloading = ''; return;
   }
@@ -7831,15 +7849,222 @@ async function boot() {
   // the answer is waiting by the time anyone opens the LoRA tab.
   checkUpdates(false);
 
+  refreshCloud();
   await refreshHealth();
 }
+
+/* ---------- cloud GPU (Runpod) ---------- */
+
+async function refreshCloud() {
+  try { CLOUD = await (await fetch('/api/cloud')).json(); } catch { return; }
+  renderWhere();
+  renderCloud();
+}
+
+function renderWhere() {
+  const box = $('#where');
+  if (!box) return;
+  box.querySelectorAll('button').forEach((b) => b.classList.toggle('on', b.dataset.where === CLOUD.target));
+  const note = $('#wherenote');
+  if (!note) return;
+  if (CLOUD.target !== 'cloud') { note.textContent = ''; return; }
+  note.innerHTML = !CLOUD.has_key ? '<span class="warn">還沒填 Runpod API key（到「設定」）</span>'
+    : !CLOUD.pod_id ? '<span class="warn">雲端機沒開 —— 到「設定」→「雲端 GPU」開機</span>'
+    : `${esc(CLOUD.gpu.name)} · ${usd(CLOUD.cost_per_hr)}/小時 · `
+      + (CLOUD.phase === 'ready' ? '<span class="ok">就緒</span>' : esc(CLOUD.phase || CLOUD.pod_status || '開機中'));
+}
+
+async function setWhere(target) {
+  const r = await fetch('/api/cloud/target', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ target }) });
+  if (!r.ok) return;
+  await refreshCloud();
+  // Which models can be used just changed.
+  await refreshModels();
+  if (typeof refreshImageModels === 'function') refreshImageModels();
+}
+
+async function cloudCall(path, body) {
+  const r = await fetch('/api/cloud/' + path, { method: 'POST',
+    headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+  const d = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(d.detail || r.statusText);
+  return d;
+}
+
+function renderCloud() {
+  const box = $('#cloudcard');
+  if (!box) return;
+  const c = CLOUD;
+  const vol = c.volume || {};
+  let html = `<h2 style="margin-top:16px">雲端 GPU（Runpod）</h2>
+    <div class="note">顯卡不夠的部分租雲端的跑：<b>按秒計費</b>，用完自動還掉；模型放在一顆獨立的雲端硬碟上，
+    下次開機不用重新下載。<b>填 key 不會花錢，按「開機」才會。</b></div>`;
+  if (c.last_error) html += `<div class="banner warn" style="margin:8px 0">${esc(c.last_error)}</div>`;
+  if (c.error) html += `<div class="banner err" style="margin:8px 0">${esc(c.error)}</div>`;
+  if (!c.has_key) {
+    html += `<div class="m"><b>先在上面「Runpod API key」那一格貼上 key。</b>
+      到 runpod.io → Settings → API Keys 建立一把，權限給 <b>All</b>（或至少 Pods 和 Network Volumes 讀寫）。
+      帳戶裡至少要有 1 小時的額度才能開機。</div>`;
+    box.innerHTML = html;
+    return;
+  }
+  if (c.pod_id) {
+    const ready = c.phase === 'ready';
+    html += `<div class="m installed">
+      <div class="top"><span class="name">${esc(c.gpu.name)}（${c.gpu.vram || '?'}GB）</span>
+        <span class="tag ${ready ? 'done' : 'run'}">${ready ? '就緒' : esc(c.phase || c.pod_status || '開機中')}</span>
+        <span class="s">${usd(c.cost_per_hr)}/小時 · 已開 ${dur(c.running_seconds)} · 這次約 ${usd(c.running_cost)}</span></div>
+      <div class="s">${c.idle_left != null ? `閒置 ${dur(c.idle_left)} 後自動關機（模型留在硬碟上）` : ''}</div>
+      ${c.log && c.log.length ? `<pre class="s" style="max-height:180px;overflow:auto;white-space:pre-wrap">${esc(c.log.join('\n'))}</pre>` : ''}
+      <div class="row" style="margin-top:6px">
+        <button class="go" id="cloudoff">關機（模型留著）</button>
+        <button class="ghost tiny" id="cloudclog">看 ComfyUI 紀錄</button>
+      </div>
+      <pre class="s hidden" id="cloudclogout" style="max-height:240px;overflow:auto;white-space:pre-wrap"></pre>
+    </div>`;
+  } else {
+    html += `<div class="m">
+      <div class="row">
+        <div class="modes" id="cloudtier" style="margin:0">
+          <button data-tier="SECURE" class="${P.get('cloudtier', 'SECURE') === 'SECURE' ? 'on' : ''}">Secure（穩定）</button>
+          <button data-tier="COMMUNITY" class="${P.get('cloudtier', 'SECURE') === 'COMMUNITY' ? 'on' : ''}">Community（便宜）</button>
+        </div>
+        <button class="ghost" id="cloudlist">列出現在能租的顯卡</button>
+      </div>
+      <div id="cloudgpus" style="margin-top:8px"></div>
+      ${vol.id ? '' : `<div class="row" style="margin-top:8px">模型硬碟
+        <input id="cloudgb" type="number" min="50" max="2000" step="10" value="${P.get('cloudgb', 150)}" style="width:90px"> GB
+        <span class="s" id="cloudgbcost"></span></div>`}
+      <div class="row" style="margin-top:8px">
+        <button class="go" id="cloudon" disabled>先選一張顯卡</button>
+      </div>
+      <div class="note">影片模型建議 24GB 以上（MiniMax H3 光權重就 44GB，48GB 的卡最順）。
+        第一次開機要裝 ComfyUI，大約 5～10 分鐘；之後 1～2 分鐘。</div>
+    </div>`;
+  }
+  html += `<div class="m">
+    <div class="row">閒置
+      <input id="cloudidle" type="number" min="5" max="240" value="${c.idle_minutes}" style="width:70px">
+      分鐘沒用就自動關機 <button class="ghost tiny" id="cloudidlesave">存</button></div>
+    ${vol.id ? `<div class="s" style="margin-top:6px">模型硬碟：${vol.gb}GB（${esc(vol.data_center)}），
+      每月約 ${usd(vol.per_month)} —— <b>沒開機也會收</b>，不要了可以刪。
+      <button class="ghost tiny danger" id="cloudvoldel" ${c.pod_id ? 'disabled title="先關機"' : ''}>刪除硬碟</button></div>` : ''}
+    <div class="s" style="margin-top:6px">這個 app 看到的累計用量：${c.hours_total} 小時，約 ${usd(c.spent_total)}
+      （估計值，實際以 Runpod 帳單為準）</div>
+    <div class="note">安全：雲端 ComfyUI 前面有一道門，只認這台電腦產生的 token；
+      這個 app 關掉超過 30 分鐘，雲端機也會自己關機。</div>
+  </div>`;
+  box.innerHTML = html;
+  wireCloud();
+}
+
+function renderCloudGpus() {
+  const box = $('#cloudgpus');
+  if (!box) return;
+  if (!CLOUDGPUS.length) { box.innerHTML = '<div class="s">沒有可以租的卡。</div>'; return; }
+  const stock = { HIGH: '多', MEDIUM: '有', LOW: '少', NONE: '沒貨' };
+  box.innerHTML = CLOUDGPUS.map((g) => `
+    <label class="lora" style="cursor:${g.stock === 'NONE' ? 'not-allowed' : 'pointer'};opacity:${g.stock === 'NONE' ? .5 : 1}">
+      <input type="radio" name="cloudgpu" value="${esc(g.id)}" ${g.stock === 'NONE' ? 'disabled' : ''}
+             ${cloudPick === g.id ? 'checked' : ''}>
+      <span class="n">${esc(g.name)}　${g.vram}GB${g.vram >= 24 ? ' <span class="tag done">影片 OK</span>' : ''}</span>
+      <span class="s">${usd(g.price)}/小時 · 庫存${stock[g.stock] || g.stock}</span>
+    </label>`).join('');
+  box.querySelectorAll('input[name=cloudgpu]').forEach((r) => r.onchange = () => {
+    cloudPick = r.value;
+    syncCloudOn();
+  });
+  syncCloudOn();
+}
+
+function syncCloudOn() {
+  const b = $('#cloudon');
+  if (!b) return;
+  const g = CLOUDGPUS.find((x) => x.id === cloudPick);
+  b.disabled = !g;
+  b.textContent = g ? `開機：${g.name}，每小時 ${usd(g.price)}（按秒計費）` : '先選一張顯卡';
+  const gbIn = $('#cloudgb'), cost = $('#cloudgbcost');
+  if (gbIn && cost) cost.textContent = `每月約 ${usd((+gbIn.value || 0) * 0.07)}（硬碟獨立計費）`;
+}
+
+function wireCloud() {
+  const tier = () => P.get('cloudtier', 'SECURE');
+  document.querySelectorAll('#cloudtier button').forEach((b) => b.onclick = () => {
+    P.set('cloudtier', b.dataset.tier); CLOUDGPUS = []; cloudPick = ''; renderCloud();
+  });
+  const list = $('#cloudlist');
+  if (list) list.onclick = async () => {
+    list.disabled = true; list.textContent = '查詢中…';
+    try {
+      const d = await (async () => {
+        const r = await fetch('/api/cloud/gpus?tier=' + tier());
+        const j = await r.json();
+        if (!r.ok) throw new Error(j.detail || r.statusText);
+        return j;
+      })();
+      CLOUDGPUS = d.gpus || [];
+      renderCloudGpus();
+    } catch (e) { $('#cloudgpus').innerHTML = `<span class="warn">${esc(e.message)}</span>`; }
+    list.disabled = false; list.textContent = '重新整理';
+  };
+  if (CLOUDGPUS.length) renderCloudGpus();
+  const gbIn = $('#cloudgb');
+  if (gbIn) gbIn.oninput = () => { P.set('cloudgb', +gbIn.value || 150); syncCloudOn(); };
+  const on = $('#cloudon');
+  if (on) on.onclick = async () => {
+    const g = CLOUDGPUS.find((x) => x.id === cloudPick);
+    if (!g) return;
+    const gbv = gbIn ? (+gbIn.value || 150) : 0;
+    if (!confirm(`開一台 ${g.name}，每小時 ${usd(g.price)}，按秒計費。`
+      + (gbv ? `\n另外建一顆 ${gbv}GB 的模型硬碟，每月約 ${usd(gbv * 0.07)}。` : '')
+      + `\n閒置 ${CLOUD.idle_minutes} 分鐘會自動關機。確定？`)) return;
+    on.disabled = true; on.textContent = '向 Runpod 租機器中…';
+    try {
+      await cloudCall('rent', { gpu_id: g.id, tier: tier(), volume_gb: gbv || 150 });
+      if (CLOUD.target !== 'cloud') await setWhere('cloud'); else await refreshCloud();
+    } catch (e) { alert(e.message); await refreshCloud(); }
+  };
+  const off = $('#cloudoff');
+  if (off) off.onclick = async () => {
+    off.disabled = true; off.textContent = '關機中…';
+    try { await cloudCall('release'); } catch (e) { alert(e.message); }
+    await refreshCloud();
+  };
+  const clog = $('#cloudclog');
+  if (clog) clog.onclick = async () => {
+    const out = $('#cloudclogout');
+    const d = await (await fetch('/api/cloud/log?name=comfy')).json();
+    out.textContent = (d.lines || []).join('\n') || d.error || '（還沒有紀錄）';
+    out.classList.remove('hidden');
+  };
+  const idleSave = $('#cloudidlesave');
+  if (idleSave) idleSave.onclick = async () => {
+    try { await cloudCall('settings', { idle_minutes: +$('#cloudidle').value }); } catch (e) { alert(e.message); }
+    await refreshCloud();
+  };
+  const vdel = $('#cloudvoldel');
+  if (vdel) vdel.onclick = async () => {
+    if (!confirm('刪掉雲端硬碟？上面所有模型都要重新下載。')) return;
+    try { await cloudCall('volume/delete'); } catch (e) { alert(e.message); }
+    await refreshCloud();
+  };
+}
+
+document.querySelectorAll('#where button').forEach((b) => b.onclick = () => setWhere(b.dataset.where));
+// While a machine exists its state changes on its own (booting, idle timer),
+// so the card and the header keep themselves current.
+setInterval(() => {
+  const settingsOpen = !$('#tab-set').classList.contains('hidden');
+  if (CLOUD.pod_id || settingsOpen || CLOUD.target === 'cloud') refreshCloud();
+}, 8000);
 
 async function refreshHealth() {
   try {
     HEALTH = await (await fetch('/api/health')).json();
     $('#lightning').checked = !!HEALTH.lightning_default;
     const v = (HEALTH.gpu || {}).vram_gb;
-    $('#sub').textContent = `本機執行 · 無內容過濾 · 已安裝 ${HEALTH.installed.length}/${MODELS.length} 個模型`
+    $('#sub').textContent = `${HEALTH.target === 'cloud' ? '雲端 GPU 執行' : '本機執行'} · 無內容過濾 · 已安裝 ${HEALTH.installed.length}/${MODELS.length} 個模型`
       + (v ? ` · 顯卡 ${v}GB` : '')
       + (HEALTH.comfy.ok ? '' : ' · ComfyUI 還沒開');
   // The header has room for four words; the reason and the fix go in a banner
@@ -7848,8 +8073,11 @@ async function refreshHealth() {
   // surface as a raw ClientConnectorError.
   const cbox = $('#comfydown');
   if (cbox) {
-    cbox.classList.toggle('hidden', !!HEALTH.comfy.ok);
-    if (!HEALTH.comfy.ok) {
+    // With jobs going to the rented machine, this computer's ComfyUI being
+    // off is not a problem worth a banner.
+    const localMatters = HEALTH.target !== 'cloud';
+    cbox.classList.toggle('hidden', !!HEALTH.comfy.ok || !localMatters);
+    if (!HEALTH.comfy.ok && localMatters) {
       const inst = HEALTH.comfy.install || {};
       cbox.innerHTML = '<b>ComfyUI 沒有在跑，所以現在什麼都生不出來。</b><br>'
         + bold(HEALTH.comfy.detail || '').replace(/\n/g, '<br>')
