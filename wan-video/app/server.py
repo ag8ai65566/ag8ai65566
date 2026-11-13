@@ -1748,6 +1748,12 @@ async def image_models() -> JSONResponse:
                 # The checkpoint filename, so an image that names the model it
                 # was made with can be matched back to an entry here.
                 "file_name": model.file.name,
+                # "checkpoint" (SDXL) or "unet" (a newer family built from its
+                # official template): the second has no ControlNet, no comic
+                # mode, and - when zero_negative - no use for a negative prompt.
+                "loader": model.loader,
+                "zero_negative": model.zero_negative,
+                "licence_note": model.licence_note,
                 **state,
             }
         )
@@ -1877,6 +1883,9 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         source_name = init_name
 
     control_name = ""
+    if settings.controlnet and model.loader != "checkpoint":
+        raise HTTPException(400, f"{model.label} 沒有對應的 ControlNet（這個 app 的 ControlNet "
+                                 "都是 SDXL 用的）。拿掉構圖參考，或換一個 SDXL 系的底模。")
     if settings.controlnet:
         if settings.controlnet not in installed_controlnets():
             raise HTTPException(
@@ -4682,6 +4691,11 @@ async def comic_generate(payload: dict = Body(...)) -> JSONResponse:
     model = images.resolve(str(payload.get("model", "")), installed_checkpoints())
     if model is None:
         raise HTTPException(400, f"不認識的圖片模型：{payload.get('model')}")
+    if model.loader != "checkpoint":
+        # The page builder chains SDXL-specific pieces (regional prompts,
+        # ControlNet per panel); none of them exist for the newer families.
+        raise HTTPException(400, f"漫畫模式目前只支援 SDXL 系的底模，{model.label} 不行。"
+                                 "換一個 SDXL 系的底模，或用一般模式一張一張生。")
     state = image_status(model)
     if not (state["installed"] or on_cloud()):
         raise HTTPException(

@@ -66,6 +66,20 @@ class ImageModel:
     sha256: str = ""
     # When the numbers above were read off the API.
     checked: str = ""
+    # How the weights are loaded. "checkpoint" is one SDXL file holding the
+    # model, text encoder and VAE. "unet" is the shape every newer family
+    # ships in - separate diffusion model, text encoder and VAE files - and
+    # is built from that family's official ComfyUI template (see build()).
+    loader: str = "checkpoint"
+    clip_type: str = ""              # CLIPLoader's `type` for a "unet" model
+    # Model patches the official template applies, in order: (class, inputs).
+    patches: tuple = ()
+    latent_node: str = "EmptyLatentImage"
+    # The distilled families run at cfg 1 and their templates feed the sampler
+    # a zeroed copy of the prompt as the negative. A typed negative would do
+    # nothing at cfg 1, so the page hides the box for them.
+    zero_negative: bool = False
+    licence_note: str = ""
 
     @property
     def source(self) -> str:
@@ -78,6 +92,10 @@ class ImageModel:
     @property
     def all_files(self) -> list[ModelFile]:
         return [self.file, *self.extra_files]
+
+    def extra(self, folder: str) -> str:
+        """The extra file kept in this ComfyUI folder, by name ('' if none)."""
+        return next((f.name for f in self.extra_files if f.folder == folder), "")
 
     @property
     def download_bytes(self) -> int:
@@ -347,6 +365,61 @@ IMAGE_MODELS: list[ImageModel] = [
         note="拿來當基準或給 LoRA 當底，不是最好看的選擇。",
         extra_files=(SDXL_VAE,),
     ),
+    # -- the newer families, each built from its official ComfyUI template ---
+    # Graphs and defaults read off Comfy-Org/workflow_templates (templates/
+    # image_z_image_turbo.json and image_anima_base_v1.json, fetched
+    # 2026-11-13); file sizes from Hugging Face's own headers that day.
+    ImageModel(
+        id="z-image-turbo",
+        label="Z-Image Turbo — 寫實／通用，8 步出圖（ComfyUI 官方範本最常用的文生圖）",
+        file=ModelFile("Comfy-Org/z_image_turbo",
+                       "split_files/diffusion_models/z_image_turbo_bf16.safetensors",
+                       "diffusion_models", 12309866400),
+        extra_files=(
+            ModelFile("Comfy-Org/z_image_turbo", "split_files/text_encoders/qwen_3_4b.safetensors",
+                      "text_encoders", 8044982048),
+            ModelFile("Comfy-Org/z_image_turbo", "split_files/vae/ae.safetensors", "vae", 335304388),
+        ),
+        loader="unet", clip_type="lumina2",
+        patches=(("ModelSamplingAuraFlow", {"shift": 3.0}),),
+        latent_node="EmptySD3LatentImage", zero_negative=True,
+        vram_gb=16,
+        steps=8, cfg=1.0, sampler="res_multistep", scheduler="simple",
+        tag_style="natural",
+        negative="",
+        prompt_style="自然句子，中文或英文都可以，越具體越好（人物、光線、鏡頭、氛圍）。不用品質標籤。",
+        sizes=SDXL_SIZES,
+        note=("20.7GB。蒸餾過的模型：8 步、CFG 1，所以負面提詞不起作用（官方範本也是把它歸零）。"
+              "10GB 顯卡會一直搬權重，很慢 —— 建議用雲端 GPU。"),
+        licence_note="Apache-2.0，可商用。",
+        checked="2026-11-13",
+    ),
+    ImageModel(
+        id="anima",
+        label="Anima — 動漫，5.6GB，10GB 顯卡跑得動",
+        file=ModelFile("circlestone-labs/Anima",
+                       "split_files/diffusion_models/anima-base-v1.0.safetensors",
+                       "diffusion_models", 4182218328),
+        extra_files=(
+            ModelFile("circlestone-labs/Anima", "split_files/text_encoders/qwen_3_06b_base.safetensors",
+                      "text_encoders", 1192135096),
+            ModelFile("circlestone-labs/Anima", "split_files/vae/qwen_image_vae.safetensors",
+                      "vae", 253806246),
+        ),
+        loader="unet", clip_type="stable_diffusion",
+        latent_node="EmptyLatentImage",
+        vram_gb=8,
+        steps=30, cfg=4.0, sampler="euler", scheduler="simple",
+        tag_style="danbooru",
+        # The template's own negative, verbatim.
+        negative="worst quality, low quality, score_1, score_2, score_3, blurry, jpeg artifacts, sepia",
+        prompt_style="標籤或自然句子都可以；官方範例是一段英文描述。",
+        sizes=SDXL_SIZES,
+        note=("官方另有一支 turbo LoRA（anima-turbo-lora-v0.2，8 步、CFG 1），"
+              "可以在 LoRA 分頁下載後勾起來用。"),
+        licence_note="circlestone-labs 非商用授權：只能個人／非商業使用。",
+        checked="2026-11-13",
+    ),
 ]
 
 BY_ID = {m.id: m for m in IMAGE_MODELS}
@@ -408,6 +481,9 @@ CIVITAI_BASES = {
     "biglust": ("SDXL 1.0", "SDXL Lightning"),
     "epicrealism-xl": ("SDXL 1.0", "SDXL Lightning"),
     "cyberrealistic-pony": ("Pony",),
+    # The newer families, by the names CivitAI's API used on 2026-11-13.
+    "z-image-turbo": ("ZImageTurbo",),
+    "anima": ("Anima",),
 }
 CIVITAI_BASES_LOOSE = ("SDXL 1.0", "Illustrious", "Pony", "NoobAI", "SDXL Lightning")
 
@@ -800,10 +876,18 @@ def build(
     def supported(class_type: str) -> bool:
         return have is None or class_type in have
 
-    ckpt = add("CheckpointLoaderSimple", {"ckpt_name": model.file.name}, "Checkpoint")
-    model_link: list = [ckpt, 0]
-    clip_link: list = [ckpt, 1]
-    vae_link: list = [ckpt, 2]
+    unet_family = model.loader == "unet"
+    if unet_family:
+        # The newer families: three files, three loaders, as in their templates.
+        unet = add("UNETLoader", {"unet_name": model.file.name, "weight_dtype": "default"},
+                   "Diffusion model")
+        clip = add("CLIPLoader", {"clip_name": model.extra("text_encoders"),
+                                  "type": model.clip_type, "device": "default"}, "Text encoder")
+        vae = add("VAELoader", {"vae_name": model.extra("vae")}, "VAE")
+        model_link, clip_link, vae_link = [unet, 0], [clip, 0], [vae, 0]
+    else:
+        ckpt = add("CheckpointLoaderSimple", {"ckpt_name": model.file.name}, "Checkpoint")
+        model_link, clip_link, vae_link = [ckpt, 0], [ckpt, 1], [ckpt, 2]
 
     # LoRAs affect both the model and the text encoder, so LoraLoader (not the
     # model-only variant used for video) is the right node here. The two
@@ -823,22 +907,27 @@ def build(
         )
         model_link, clip_link = [node, 0], [node, 1]
 
-    # Model patches, in the order the ComfyUI examples chain them.
-    if settings.freeu and supported("FreeU_V2"):
+    for patch_class, patch_inputs in model.patches:
+        patched = add(patch_class, {"model": model_link, **patch_inputs}, patch_class)
+        model_link = [patched, 0]
+
+    # Model patches, in the order the ComfyUI examples chain them. All three
+    # are UNet tricks tuned on SDXL; the newer families are transformers.
+    if settings.freeu and supported("FreeU_V2") and not unet_family:
         patched = add(
             "FreeU_V2",
             {"model": model_link, "b1": 1.3, "b2": 1.4, "s1": 0.9, "s2": 0.2},
             "FreeU v2",
         )
         model_link = [patched, 0]
-    if settings.pag > 0 and supported("PerturbedAttentionGuidance"):
+    if not unet_family and settings.pag > 0 and supported("PerturbedAttentionGuidance"):
         patched = add(
             "PerturbedAttentionGuidance",
             {"model": model_link, "scale": round(settings.pag, 2)},
             "PAG",
         )
         model_link = [patched, 0]
-    if settings.rescale_cfg > 0 and supported("RescaleCFG"):
+    if not unet_family and settings.rescale_cfg > 0 and supported("RescaleCFG"):
         patched = add(
             "RescaleCFG",
             {"model": model_link, "multiplier": round(min(settings.rescale_cfg, 1.0), 2)},
@@ -846,7 +935,7 @@ def build(
         )
         model_link = [patched, 0]
 
-    if settings.clip_skip < -1:
+    if settings.clip_skip < -1 and not unet_family:
         clip_node = add(
             "CLIPSetLastLayer",
             {"clip": clip_link, "stop_at_clip_layer": settings.clip_skip},
@@ -854,7 +943,7 @@ def build(
         )
         clip_link = [clip_node, 0]
 
-    if use_vae and supported("VAELoader"):
+    if use_vae and supported("VAELoader") and not unet_family:
         if any(f.folder == "vae" for f in model.extra_files):
             vae_name = next(f.name for f in model.extra_files if f.folder == "vae")
             vae_node = add("VAELoader", {"vae_name": vae_name}, "VAE (fp16 fix)")
@@ -868,7 +957,11 @@ def build(
     if not forked:
         texts = texts[:1]
 
-    neg = add("CLIPTextEncode", {"clip": clip_link, "text": negative}, "Negative")
+    if control_image and unet_family:
+        raise ValueError(f"{model.label} 沒有對應的 ControlNet（這個 app 的 ControlNet 都是 SDXL 用的）。"
+                         "拿掉構圖參考圖，或換一個 SDXL 系的底模。")
+    neg = (None if model.zero_negative
+           else add("CLIPTextEncode", {"clip": clip_link, "text": negative}, "Negative"))
     control = (
         _ControlNet(add, supported, settings)
         if control_image and _ControlNet.usable(settings, supported)
@@ -902,7 +995,7 @@ def build(
                 )
             return encoded
         return add(
-            "EmptyLatentImage",
+            model.latent_node,
             {"width": width, "height": height, "batch_size": count},
             "Empty latent",
         )
@@ -952,7 +1045,11 @@ def build(
         """One prompt all the way to a decoded image, ready to save."""
         pos = add("CLIPTextEncode", {"clip": clip_link, "text": text}, f"Prompt{tag}")
         pos_link: list = [pos, 0]
-        neg_link: list = [neg, 0]
+        if model.zero_negative:
+            zeroed = add("ConditioningZeroOut", {"conditioning": pos_link}, f"Negative (zeroed){tag}")
+            neg_link: list = [zeroed, 0]
+        else:
+            neg_link = [neg, 0]
         if control is not None:
             pos_link, neg_link = control.apply(
                 pos_link, neg_link, control_image, width, height, tag

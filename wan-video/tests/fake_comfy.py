@@ -58,12 +58,10 @@ def installed_names(folders: tuple[str, ...], only: set[str] | None) -> list[str
     if folders == ("frame_interpolation",):
         return sorted(i.name for i in upscalers.INTERPOLATORS)
     names: set[str] = set()
-    if "checkpoints" in folders:
-        names.update(f.name for m in images.IMAGE_MODELS for f in m.all_files
-                     if f.folder == "checkpoints")
-    if "vae" in folders:
-        names.update(f.name for m in images.IMAGE_MODELS for f in m.all_files
-                     if f.folder == "vae")
+    # Every image model's files, whatever folder they live in: the SDXL ones
+    # are single checkpoints, the newer families split into three folders.
+    names.update(f.name for m in images.IMAGE_MODELS for f in m.all_files
+                 if f.folder in folders)
     for model in registry.MODELS:
         if only is not None and model.id not in only:
             continue
@@ -173,6 +171,14 @@ class FakeComfy:
         return web.json_response({})
 
     async def ws(self, req):
+        try:
+            return await self._ws(req)
+        except ConnectionResetError:
+            # The client went away mid-job - a test stopped its server while a
+            # job was still running. A real ComfyUI shrugs this off too.
+            return web.Response(status=499)
+
+    async def _ws(self, req):
         ws = web.WebSocketResponse()
         await ws.prepare(req)
         before = len(self.graphs)

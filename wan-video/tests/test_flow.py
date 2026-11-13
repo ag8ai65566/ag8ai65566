@@ -1364,11 +1364,13 @@ def test_image_registry() -> None:
     check(len(images.IMAGE_MODELS) >= 4, f"{len(images.IMAGE_MODELS)} checkpoints catalogued")
     check(len({m.id for m in images.IMAGE_MODELS}) == len(images.IMAGE_MODELS), "ids unique")
     for m in images.IMAGE_MODELS:
-        check(m.file.folder == "checkpoints", f"{m.id} installs into checkpoints/")
+        want = "diffusion_models" if m.loader == "unet" else "checkpoints"
+        check(m.file.folder == want, f"{m.id} installs into {want}/")
         check(m.file.size > 1e9, f"{m.id} has a real size ({m.file.size/1e9:.1f}GB)")
         check(bool(m.sizes), f"{m.id} offers sizes")
         check(bool(m.prompt_style), f"{m.id} explains how to prompt it")
-        check(bool(m.negative), f"{m.id} ships a default negative prompt")
+        check(bool(m.negative) or m.zero_negative,
+              f"{m.id} ships a default negative prompt (or, at cfg 1, has no use for one)")
         check(-12 <= m.clip_skip <= -1, f"{m.id} clip skip in range ({m.clip_skip})")
         check(any(f.folder == "vae" for f in m.extra_files), f"{m.id} pairs an fp16 VAE")
 
@@ -8222,6 +8224,76 @@ async def _coro(value):
     return value
 
 
+async def test_new_image_families() -> None:
+    """Z-Image Turbo and Anima, built the way their official templates are.
+
+    The expected nodes and numbers below were read off
+    Comfy-Org/workflow_templates (image_z_image_turbo.json,
+    image_anima_base_v1.json, 2026-11-13). The same graphs were also checked
+    against a real ComfyUI 0.45.0 schema while writing this; here they are
+    checked against the fake, whose node schemas are dumps of a real one.
+    """
+    import images
+    import server
+    from comfy_client import ComfyClient
+    from fastapi import HTTPException
+
+    section("image families from official templates")
+    z, a = images.get("z-image-turbo"), images.get("anima")
+    check(z is not None and a is not None, "both are catalogued")
+    zg = images.build(z, images.defaults_for(z), prompt="海邊的女孩", negative="", seed=5,
+                      width=1024, height=1024)
+    by = lambda g, c: [n for n in g.values() if n["class_type"] == c]  # noqa: E731
+    check(not by(zg, "CheckpointLoaderSimple") and by(zg, "UNETLoader")[0]["inputs"]["unet_name"]
+          == "z_image_turbo_bf16.safetensors", "Z-Image loads a diffusion model, not a checkpoint")
+    check(by(zg, "CLIPLoader")[0]["inputs"] == {"clip_name": "qwen_3_4b.safetensors",
+                                                "type": "lumina2", "device": "default"},
+          "…its Qwen3 4B text encoder as lumina2, as the template does")
+    check(by(zg, "ModelSamplingAuraFlow")[0]["inputs"]["shift"] == 3.0, "…AuraFlow sampling, shift 3")
+    ks = by(zg, "KSampler")[0]["inputs"]
+    check((ks["steps"], ks["cfg"], ks["sampler_name"], ks["scheduler"]) == (8, 1.0, "res_multistep", "simple"),
+          f"…8 steps, cfg 1, res_multistep/simple ({ks['steps']}, {ks['cfg']}, {ks['sampler_name']})")
+    zero = by(zg, "ConditioningZeroOut")
+    check(zero and ks["negative"] == [next(k for k, n in zg.items() if n["class_type"] == "ConditioningZeroOut"), 0],
+          "…and a zeroed prompt as the negative, not a typed one")
+    check(by(zg, "EmptySD3LatentImage") and not by(zg, "EmptyLatentImage"), "…on an SD3-style latent")
+    check(not by(zg, "FreeU_V2") and not by(zg, "CLIPSetLastLayer"),
+          "SDXL-only patches and CLIP skip are not applied to it")
+
+    ag = images.build(a, images.defaults_for(a), prompt="1girl", negative=a.negative, seed=5,
+                      width=832, height=1216)
+    ks = by(ag, "KSampler")[0]["inputs"]
+    check(by(ag, "CLIPLoader")[0]["inputs"]["type"] == "stable_diffusion"
+          and (ks["steps"], ks["cfg"], ks["sampler_name"]) == (30, 4.0, "euler"),
+          "Anima: its 0.6B text encoder, 30 steps, cfg 4, euler, as in the template")
+    check(len(by(ag, "CLIPTextEncode")) == 2, "…with a real negative prompt")
+    check(a.download_bytes < 6e9, f"…and it is small enough for a 10GB card ({a.download_bytes / 1e9:.1f}GB)")
+    try:
+        images.build(z, images.defaults_for(z), prompt="x", negative="", seed=1, width=1024,
+                     height=1024, control_image="ref.png")
+        check(False, "ControlNet is refused for a family that has none")
+    except ValueError as exc:
+        check("ControlNet" in str(exc), "ControlNet is refused for a family that has none")
+    check(images.CIVITAI_BASES["z-image-turbo"] == ("ZImageTurbo",)
+          and images.CIVITAI_BASES["anima"] == ("Anima",),
+          "LoRA search knows their CivitAI base-model names")
+
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    try:
+        client = ComfyClient(url)
+        for name, graph in (("Z-Image", zg), ("Anima", ag)):
+            problems = await client.validate(graph)
+            check(not problems, f"{name} validates against the schema ({problems[:1]})")
+    finally:
+        await runner.cleanup()
+    try:
+        await server.comic_generate({"model": "z-image-turbo"})
+        check(False, "comic mode refuses the newer families")
+    except HTTPException as exc:
+        check("SDXL" in str(exc.detail), "comic mode refuses the newer families, saying why")
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -9087,6 +9159,7 @@ async def main() -> int:
     await test_reattach()
     await test_cloud()
     await test_reverse()
+    await test_new_image_families()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

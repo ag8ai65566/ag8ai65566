@@ -4434,7 +4434,9 @@ function onImageModelChange() {
   fillKeeping('#isize', [...Object.keys(m.sizes), IMG.customSize], m.default_size);
   syncCustomSize();
   $('#istyle').innerHTML = `<b>怎麼寫提詞</b>：${(m.prompt_style || '').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}`
-    + (m.nsfw_note ? `<div class="s" style="margin-top:6px">${esc(m.nsfw_note)}</div>` : '');
+    + (m.nsfw_note ? `<div class="s" style="margin-top:6px">${esc(m.nsfw_note)}</div>` : '')
+    + (m.loader === 'unet' && m.note ? `<div class="s" style="margin-top:6px">${esc(m.note)}</div>` : '')
+    + (m.licence_note ? `<div class="s" style="margin-top:6px">授權：${esc(m.licence_note)}</div>` : '');
   $('#iprefixlabel').textContent = m.positive_prefix
     ? `自動加上品質標籤：${m.positive_prefix}` : '這個底模不需要品質標籤';
   $('#iprefix').disabled = !m.positive_prefix;
@@ -4460,7 +4462,19 @@ function onImageModelChange() {
     'denoise','hires','hires_denoise','hires_steps','hires_upscaler','upscaler',
     'freeu','pag','rescale_cfg','tiled_vae','lora','lora_clip','wildcards']
     .filter((k) => h[k]).map((k) => `<div>· <b>${k}</b>：${esc(h[k])}</div>`).join('');
-  $('#ineghelp').textContent = '負面提詞 = 不想出現的東西。上面填的是這個底模的建議值。';
+  // A distilled model runs at CFG 1, where a negative prompt has no effect at
+  // all - its official template feeds the sampler a zeroed prompt instead. A
+  // box that silently does nothing is worse than one that says so.
+  $('#inegative').disabled = !!m.zero_negative;
+  $('#ineghelp').textContent = m.zero_negative
+    ? '這個底模是蒸餾過的（CFG 1），負面提詞不會起作用，所以停用。'
+    : '負面提詞 = 不想出現的東西。上面填的是這個底模的建議值。';
+  // The ControlNets this app ships are SDXL ones; the newer families have none.
+  const cn = $('#icn');
+  if (cn) {
+    if (m.loader === 'unet') { cn.value = ''; cn.disabled = true; cn.title = '這個底模沒有對應的 ControlNet'; }
+    else { cn.disabled = false; cn.title = ''; }
+  }
 
   const a = m.vram_advice || {};
   const box = $('#ivram');

@@ -46,24 +46,13 @@ import math
 from dataclasses import dataclass, field
 
 import civitai
+import images
 import posebook
 import tags
 
-# CivitAI's `baseModels` filter values for each image checkpoint family this
-# app ships, so suggested LoRAs are ones that actually load on the suggested
-# checkpoint. NoobAI and Illustrious share a lineage and mostly each other's
-# LoRAs, so each searches the other second.
-BASES = {
-    "noobai": ["NoobAI", "Illustrious"],
-    "illustrious": ["Illustrious", "NoobAI"],
-    "pony": ["Pony"],
-    "cyberrealistic-pony": ["Pony"],
-    "juggernaut": ["SDXL 1.0"],
-    "epicrealism-xl": ["SDXL 1.0"],
-    "lustify": ["SDXL 1.0"],
-    "biglust": ["SDXL 1.0"],
-    "sdxl-base": ["SDXL 1.0"],
-}
+# Which CivitAI base models a suggested LoRA must be trained on, per image
+# checkpoint: the same table the LoRA tab filters with (images.CIVITAI_BASES).
+BASES = images.CIVITAI_BASES
 
 # Never part of a picture's content: moved to the negative so the copy does
 # not grow a watermark of its own.
@@ -387,7 +376,7 @@ def small_image_url(url: str, width: int = 448) -> str:
 
 async def search_candidates(guess: tags.Guess, model_id: str) -> list[dict]:
     """CivitAI LoRAs worth comparing, with real-person and minor flags removed."""
-    bases = BASES.get(model_id, ["SDXL 1.0"])
+    bases = list(BASES.get(model_id, ("SDXL 1.0",)))
     found: dict[int, dict] = {}
     for q in queries(guess):
         if q.get("tag"):
