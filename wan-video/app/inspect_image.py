@@ -49,6 +49,11 @@ class Found:
     width: int = 0
     height: int = 0
     clip_skip: int | None = None
+    # What lets a model be looked up rather than guessed at by name: A1111's
+    # short model hash, and the exact CivitAI version ids an image made on
+    # CivitAI lists in "Civitai resources". See reverse.resolve.
+    model_hash: str = ""
+    resources: list[dict] = field(default_factory=list)  # {type, version_id, name, weight}
     extras: dict = field(default_factory=dict)
     note: str = ""
 
@@ -59,6 +64,7 @@ class Found:
             "steps": self.steps, "cfg": self.cfg, "sampler": self.sampler,
             "scheduler": self.scheduler, "width": self.width, "height": self.height,
             "clip_skip": self.clip_skip, "extras": self.extras, "note": self.note,
+            "model_hash": self.model_hash, "resources": self.resources,
         }
 
 
@@ -240,12 +246,35 @@ def _from_a1111(raw: str) -> Found | None:
     if not settings_line and "Steps:" not in text:
         return None
 
+    # A JSON list inside a comma-separated line: cut it out before the simple
+    # key/value split below, which would shred it at its first comma.
+    resources: list[dict] = []
+    marker = "Civitai resources:"
+    if marker in settings_line:
+        head, _, tail = settings_line.partition(marker)
+        try:
+            listed, used = json.JSONDecoder().raw_decode(tail.lstrip())
+            tail = tail.lstrip()[used:]
+        except ValueError:
+            listed = []
+        for entry in listed if isinstance(listed, list) else []:
+            if isinstance(entry, dict) and entry.get("modelVersionId"):
+                resources.append({
+                    "type": str(entry.get("type") or "").lower(),
+                    "version_id": int(entry["modelVersionId"]),
+                    "name": str(entry.get("modelName") or ""),
+                    "weight": entry.get("weight"),
+                })
+        settings_line = head + tail
+
     settings = {}
     for key, value in _SETTINGS.findall(settings_line):
         settings[key.strip()] = value.strip().strip('"')
 
     found = Found(source="a1111", prompt=body.strip(), negative=negative.strip())
     found.model = settings.get("Model", "")
+    found.model_hash = settings.get("Model hash", "")
+    found.resources = resources
     found.sampler = settings.get("Sampler", "")
     found.scheduler = settings.get("Schedule type", "")
     for key, attr, cast in (
@@ -272,11 +301,17 @@ def _from_a1111(raw: str) -> Found | None:
              "strength_clip": float(strength or 1.0)}
         )
     if hashes := settings.get("Lora hashes", ""):
-        known = {l["name"] for l in found.loras}
+        by_name = {l["name"]: l for l in found.loras}
         for chunk in hashes.split(","):
-            name = chunk.split(":")[0].strip()
-            if name and name not in known:
-                found.loras.append({"name": name, "strength": 1.0, "strength_clip": 1.0})
+            name, _, digest = chunk.partition(":")
+            name, digest = name.strip(), digest.strip()
+            if not name:
+                continue
+            if name not in by_name:
+                by_name[name] = {"name": name, "strength": 1.0, "strength_clip": 1.0}
+                found.loras.append(by_name[name])
+            if digest:
+                by_name[name]["hash"] = digest
     found.extras = {
         k: v for k, v in settings.items()
         if k not in ("Steps", "Seed", "CFG scale", "Sampler", "Model", "Size",

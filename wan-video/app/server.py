@@ -50,6 +50,7 @@ import shortdrama
 import styles
 import refs as refslib
 import registry
+import reverse
 import runner as runner_mod
 import runpod
 import sources
@@ -4223,6 +4224,8 @@ async def inspect(image: UploadFile, tagger: str = Form(""),
         "loras": [],
         "suggest_model": "",
         "rating_label": "",
+        "recipe": None,
+        "blocked": [],
     }
 
     here = tags.installed(config.MODELS_DIR)
@@ -4239,6 +4242,7 @@ async def inspect(image: UploadFile, tagger: str = Form(""),
             result["suggest_model"] = tags.suggest_model(guess)
             result["rating_label"] = tags.RATING_LABEL.get(guess.rating, guess.rating)
             result["lora_hints"] = tags.matching_loras(guess, models.list_loras())
+            result["_guess"] = guess
         except ImportError:
             result["tagger_error"] = (
                 "缺少 onnxruntime 套件。關掉 app，跑一次 update.bat 或 install.bat 就會裝好。"
@@ -4247,6 +4251,20 @@ async def inspect(image: UploadFile, tagger: str = Form(""),
             result["tagger_error"] = f"分析失敗：{type(exc).__name__}: {exc}"
     elif not tags.installed(config.MODELS_DIR):
         result["tagger_error"] = "還沒下載看圖分析模型（到「模型」分頁下載，約 380MB）。"
+
+    # The one hard line in a filter-free tool: a picture with a minor in it is
+    # not something this app will help reproduce, by description or by LoRA.
+    guess = result.pop("_guess", None)
+    stop = (reverse.blocked(guess) if guess else []) + reverse.blocked_text(found.prompt)
+    if stop:
+        result.update({
+            "blocked": sorted(set(stop)), "tags": None, "lora_hints": [], "recipe": None,
+            "metadata": {**found.public(), "prompt": "", "negative": ""},
+            "tagger_error": "這張圖看起來有未成年人物（"
+                            + "、".join(sorted(set(stop))) + "）。這個 app 不做這類內容的反推。",
+        })
+        return JSONResponse(result)
+    result["recipe"] = reverse.recipe(found, guess, picture.size).public()
 
     # Which of the LoRAs the file named do we actually have?
     have = {l["name"] for l in models.list_loras()}
@@ -4263,6 +4281,104 @@ async def inspect(image: UploadFile, tagger: str = Form(""),
             }
         )
     return JSONResponse(result)
+
+
+def _tagger_or_400(tagger: str) -> tuple[str, Path]:
+    here = tags.installed(config.MODELS_DIR)
+    chosen = tagger if tagger in here else (here[0] if here else "")
+    if not chosen:
+        raise HTTPException(400, "還沒下載看圖分析模型（到「模型」分頁下載，約 380MB）。")
+    return chosen, tags.folder(config.MODELS_DIR, chosen)
+
+
+async def _read_picture(upload: UploadFile) -> Image.Image:
+    data = await upload.read()
+    if not data:
+        raise HTTPException(400, "圖片是空的")
+    try:
+        picture = Image.open(io.BytesIO(data))
+        picture.load()
+    except Exception:
+        raise HTTPException(400, "無法辨識這個圖片格式")
+    if picture.width * picture.height > MAX_IMPORT_PIXELS:
+        raise HTTPException(400, "這張圖太大了")
+    return picture
+
+
+@app.post("/api/reverse/resolve")
+async def reverse_resolve(payload: dict = Body(default={})) -> JSONResponse:
+    """Look up on CivitAI every model and LoRA an image's metadata names."""
+    from types import SimpleNamespace
+
+    meta = payload.get("metadata") or {}
+    loras = [l for l in (meta.get("loras") or []) if isinstance(l, dict)][:10]
+    resources = [r for r in (meta.get("resources") or [])
+                 if isinstance(r, dict) and str(r.get("version_id") or "").isdigit()][:10]
+    found = SimpleNamespace(
+        model=str(meta.get("model") or "")[:200],
+        model_hash=re.sub(r"[^0-9A-Fa-f]", "", str(meta.get("model_hash") or ""))[:64],
+        loras=[{**l, "hash": re.sub(r"[^0-9A-Fa-f]", "", str(l.get("hash") or ""))[:64]}
+               for l in loras],
+        resources=resources)
+    return JSONResponse({"resources": await reverse.resolve(found),
+                         "has_key": bool(civitai.api_key())})
+
+
+@app.post("/api/reverse/loras")
+async def reverse_loras(image: UploadFile, tagger: str = Form(""),
+                        model: str = Form("")) -> JSONResponse:
+    """LoRAs on CivitAI whose sample pictures look like this one, best first.
+
+    Slow on purpose-built hardware and slower on a CPU: every candidate's
+    sample picture is downloaded and read by the tagger (a second or two
+    each). The page says so before it is pressed.
+    """
+    picture = await _read_picture(image)
+    _chosen, base = _tagger_or_400(tagger)
+    loop = asyncio.get_running_loop()
+    try:
+        guess = await loop.run_in_executor(None, tags.describe, picture, base)
+        target = await loop.run_in_executor(None, tags.vector, picture, base)
+    except ImportError:
+        raise HTTPException(400, "缺少 onnxruntime 套件。跑一次 update.bat 或 install.bat。")
+    if stop := reverse.blocked(guess):
+        raise HTTPException(400, "這張圖看起來有未成年人物（" + "、".join(stop)
+                            + "）。這個 app 不做這類內容的反推。")
+    model_id = model if model in reverse.BASES else tags.suggest_model(guess)
+    searched = reverse.queries(guess)
+    try:
+        candidates = await reverse.search_candidates(guess, model_id)
+    except civitai.CivitaiError as exc:
+        raise HTTPException(400, str(exc))
+    ranked = await reverse.rank(candidates, target, lambda pic: tags.vector(pic, base),
+                                reverse.style_signature(picture))
+    have = {l["name"].rsplit(".", 1)[0].lower() for l in models.list_loras()}
+    for cand in ranked:
+        cand["installed"] = cand["file"]["name"].rsplit(".", 1)[0].lower() in have
+    return JSONResponse({"candidates": ranked, "queries": searched, "model": model_id,
+                         "has_key": bool(civitai.api_key())})
+
+
+@app.post("/api/reverse/compare")
+async def reverse_compare(image: UploadFile, job: str = Form(""),
+                          tagger: str = Form("")) -> JSONResponse:
+    """How close a generated attempt came to the picture it copies, and what to fix."""
+    original = await _read_picture(image)
+    record = lib.get(job)
+    if record is None or not record.output:
+        raise HTTPException(404, "找不到這個成品")
+    path = config.OUTPUT_DIR / record.output
+    if not path.is_file() or path.suffix.lower() not in (".png", ".jpg", ".jpeg", ".webp"):
+        raise HTTPException(400, "這個成品不是圖片")
+    attempt = Image.open(path)
+    attempt.load()
+    _chosen, base = _tagger_or_400(tagger)
+    loop = asyncio.get_running_loop()
+    a_guess = await loop.run_in_executor(None, tags.describe, original, base)
+    b_guess = await loop.run_in_executor(None, tags.describe, attempt, base)
+    a_vec = await loop.run_in_executor(None, tags.vector, original, base)
+    b_vec = await loop.run_in_executor(None, tags.vector, attempt, base)
+    return JSONResponse(reverse.compare(a_guess, b_guess, reverse.similarity(a_vec, b_vec)))
 
 
 @app.get("/api/comic/layouts")

@@ -7992,6 +7992,236 @@ def rp_fields_allowed() -> set[str]:
     return POD_FIELDS
 
 
+async def test_reverse() -> None:
+    """Image -> recipe: exact when the file says, described when it does not,
+    and look-alike LoRAs ranked by their own sample pictures.
+
+    CivitAI is faked with the field names read off the live API on 2026-11-13
+    (items carry `poi` and `minor`; versions carry `baseModel`, `trainedWords`
+    and file `hashes`). The tagger is replaced by a colour histogram so the
+    ranking is predictable: a red sample must beat a blue one for a red picture.
+    """
+    import types as pytypes
+
+    import civitai
+    import config
+    import inspect_image
+    import library
+    import reverse
+    import server
+    import tags
+    from fastapi import HTTPException
+
+    section("reverse: reading what a file names")
+    raw = ('1girl, solo, <lora:wc:0.7>, smile\nNegative prompt: lowres\n'
+           'Steps: 28, Sampler: Euler a, CFG scale: 6, Seed: 1, Size: 832x1216, '
+           'Model hash: 3f1d2c4b5a, Model: noob, Lora hashes: "wc: abcdef123456, real: 0badc0ffee00", '
+           'Civitai resources: [{"type":"lora","weight":0.7,"modelVersionId":777,"modelName":"A, B"}], '
+           'Version: f2.0')
+    found = inspect_image._from_a1111(raw)
+    check(found.model_hash == "3f1d2c4b5a", "the model hash is kept")
+    check({l["name"]: l.get("hash") for l in found.loras} == {"wc": "abcdef123456", "real": "0badc0ffee00"},
+          "each LoRA keeps its hash")
+    check(found.resources == [{"type": "lora", "version_id": 777, "name": "A, B", "weight": 0.7}],
+          "CivitAI's resource list survives the commas inside it")
+    check(found.extras.get("Version") == "f2.0", "…and the settings after it still parse")
+
+    section("reverse: describing a picture")
+    guess = tags.Guess(
+        general=[("watermark", 0.9), ("solo", 0.98), ("smile", 0.8), ("long_hair", 0.95),
+                 ("1girl", 0.99), ("school_uniform", 0.85), ("watercolor_(medium)", 0.7),
+                 ("highres", 0.6), ("outdoors", 0.75)],
+        characters=[("hatsune_miku", 0.97)], rating="general")
+    prompt, negative = reverse.prompt_from(guess)
+    order = [w.strip() for w in prompt.split(",")]
+    check(order[:3] == ["solo", "1girl", "hatsune miku"] or order[:3] == ["1girl", "solo", "hatsune miku"],
+          f"who and how many come first, then the character ({order[:3]})")
+    check(order.index("long hair") < order.index("school uniform") < order.index("smile"),
+          "…then the look, the outfit, the shot")
+    check(order[-1] == "watercolor \\(medium\\)", f"…and the medium last ({order[-1]})")
+    check("watermark" not in prompt and negative == ["watermark"], "a watermark goes to the negative")
+    check("highres" not in prompt, "upload metadata like highres is dropped")
+    check(reverse.nearest_size(1080, 1920) == (768, 1344), f"a 9:16 picture gets a 9:16 canvas ({reverse.nearest_size(1080, 1920)})")
+    check(reverse.nearest_size(1000, 1000) == (1024, 1024), "a square stays square")
+    q = reverse.queries(guess)
+    check([x["kind"] for x in q] == ["character", "style", "style"] and q[0]["query"] == "hatsune miku"
+          and q[1]["query"] == "watercolor" and q[2].get("tag") == "style",
+          f"CivitAI is searched by character, then style, then the popular-style pool ({q})")
+    rec = reverse.recipe(found, guess, (832, 1216))
+    check(rec.exact and rec.prompt.startswith("1girl") and rec.seed == 1,
+          "a file with its own prompt gives the exact recipe")
+    rec2 = reverse.recipe(inspect_image.Found(), guess, (1080, 1920))
+    check(not rec2.exact and rec2.prompt == prompt and (rec2.width, rec2.height) == (768, 1344)
+          and rec2.model_id == "illustrious", "without metadata the recipe is the described one")
+    young = tags.Guess(general=[("1girl", 0.9), ("child", 0.6)], rating="general")
+    check(reverse.blocked(young) == ["child"], "a minor in the frame is caught")
+    check(reverse.blocked_text("loli, 1girl") == ["loli"], "…in a file's own prompt too")
+    check(not reverse.blocked(tags.Guess(general=[("lolita_fashion", 0.9)])),
+          "…by whole tag, so a clothing style is not")
+
+    section("reverse: CivitAI lookups and look-alike LoRAs")
+    from PIL import Image as PILImage
+
+    def png(color) -> bytes:
+        buf = io.BytesIO()
+        PILImage.new("RGB", (64, 64), color).save(buf, "PNG")
+        return buf.getvalue()
+
+    def model(mid, name, color, *, poi=False, minor=False, base="Illustrious"):
+        return {"id": mid, "name": name, "type": "LORA", "nsfw": False, "poi": poi, "minor": minor,
+                "stats": {"downloadCount": 100 * mid},
+                "modelVersions": [{
+                    "id": mid * 10, "name": "v1", "baseModel": base, "trainedWords": [f"{name}_trigger"],
+                    "files": [{"name": f"{name}.safetensors", "sizeKB": 1024.0, "primary": True,
+                               "downloadUrl": f"__BASE__/dl/{mid}",
+                               "hashes": {"AutoV2": f"{mid:010X}"}}],
+                    "images": [{"url": f"__BASE__/img/{color}/original=true/x.png", "type": "image",
+                                "poi": False, "minor": False, "nsfwLevel": 1}]}]}
+
+    catalogue = [model(1, "bluewash", "blue"), model(2, "redwash", "red"),
+                 model(3, "celebrity", "red", poi=True), model(4, "kidstyle", "red", minor=True)]
+    asked = []
+
+    async def models_route(request):
+        asked.append((request.query.get("types"), request.query.getall("baseModels", [])))
+        text = json.dumps({"items": catalogue}).replace("__BASE__", base_url)
+        return web.Response(text=text, content_type="application/json")
+
+    def version_json(m):
+        v = dict(m["modelVersions"][0])
+        v["modelId"] = m["id"]
+        v["model"] = {"name": m["name"], "type": m["type"], "nsfw": False, "poi": m["poi"]}
+        return web.Response(text=json.dumps(v).replace("__BASE__", base_url), content_type="application/json")
+
+    async def by_hash(request):
+        h = request.match_info["h"].upper()
+        for m in catalogue:
+            if m["modelVersions"][0]["files"][0]["hashes"]["AutoV2"] == h:
+                return version_json(m)
+        return web.json_response({"error": "not found"}, status=404)
+
+    async def by_id(request):
+        vid = int(request.match_info["vid"])
+        for m in catalogue:
+            if m["modelVersions"][0]["id"] == vid:
+                return version_json(m)
+        return web.json_response({"error": "not found"}, status=404)
+
+    seen_images = []
+
+    async def image_route(request):
+        seen_images.append(request.path)
+        return web.Response(body=png(request.match_info["color"]), content_type="image/png")
+
+    fake = web.Application()
+    fake.router.add_get("/api/v1/models", models_route)
+    fake.router.add_get("/api/v1/model-versions/by-hash/{h}", by_hash)
+    fake.router.add_get("/api/v1/model-versions/{vid}", by_id)
+    fake.router.add_get("/img/{color}/{size}/x.png", image_route)
+    runner, base_url = await start(fake)
+    saved_api = civitai.API
+    civitai.API = f"{base_url}/api/v1"
+    saved_tags = (tags.installed, tags.describe, tags.vector)
+    try:
+        found2 = pytypes.SimpleNamespace(
+            model="noob", model_hash="", resources=[{"type": "lora", "version_id": 20, "name": "x"}],
+            loras=[{"name": "bluewash", "hash": f"{1:010X}", "strength": 0.6},
+                   {"name": "celebrity", "hash": f"{3:010X}", "strength": 1.0},
+                   {"name": "gone", "hash": "FFFFFFFFFF", "strength": 1.0}])
+        resolved = await reverse.resolve(found2)
+        by_ask = {r["asked"]: r for r in resolved}
+        check(by_ask["x"]["found"] and by_ask["x"]["name"] == "redwash" and "版本編號" in by_ask["x"]["how"],
+              "a CivitAI version id resolves exactly")
+        check(by_ask["bluewash"]["found"] and by_ask["bluewash"]["trained_words"] == ["bluewash_trigger"]
+              and by_ask["bluewash"]["file"]["url"].endswith("/dl/1") and "雜湊" in by_ask["bluewash"]["how"],
+              "a LoRA hash resolves to its page, trigger words and download")
+        check(by_ask["celebrity"].get("withheld") and "page" not in by_ask["celebrity"],
+              "a real-person LoRA named in a file is reported but not linked")
+        check(not by_ask["gone"]["found"] and by_ask["gone"]["error"], "an unknown hash says so")
+        check(any(r["kind"] == "checkpoint" and r["asked"] == "noob" for r in resolved),
+              "a checkpoint named only by file name is searched by name")
+
+        cands = await reverse.search_candidates(guess, "illustrious")
+        names = {c["name"] for c in cands}
+        check(names == {"bluewash", "redwash"}, f"real-person and minor LoRAs are never candidates ({names})")
+        lora_searches = [bases for kind, bases in asked if kind == "LORA"]
+        check(lora_searches and all(b == ["Illustrious", "NoobAI"] for b in lora_searches),
+              f"LoRA searches are limited to the suggested checkpoint's family ({lora_searches[:1]})")
+        check(all("/width=448/" in s for c in cands for s in c["samples"]), "samples are fetched small")
+
+        def colour_vec(pic):
+            import numpy as np
+            return np.asarray(pic.convert("RGB").resize((1, 1)).getpixel((0, 0)), dtype=np.float32) + 1.0
+
+        target = colour_vec(PILImage.new("RGB", (8, 8), "red"))
+        ranked = await reverse.rank(cands, target, colour_vec)
+        check([c["name"] for c in ranked] == ["redwash", "bluewash"],
+              f"the LoRA whose samples look like the picture ranks first ({[(c['name'], c['score']) for c in ranked]})")
+        check(ranked[0]["score"] > 0.9 > ranked[1]["score"], "…with a score that says how alike")
+        vivid = PILImage.new("RGB", (64, 64), (255, 0, 40))
+        pastel = PILImage.new("RGB", (64, 64), (250, 200, 210))
+        same = reverse.style_similarity(reverse.style_signature(vivid), reverse.style_signature(vivid))
+        apart = reverse.style_similarity(reverse.style_signature(vivid), reverse.style_signature(pastel))
+        check(same > 0.99 and apart < 0.6, f"the style measure tells vivid from pastel ({same:.2f} vs {apart:.2f})")
+        styled = await reverse.rank(cands, target, colour_vec, reverse.style_signature(vivid))
+        check(all({"content", "style"} <= set(c) for c in styled) and styled[0]["name"] == "redwash",
+              "with a style signature both measures are reported, and the red LoRA still wins")
+        check(any(q.get("tag") == "style" for q in reverse.queries(tags.Guess())),
+              "a pool of popular style LoRAs is always searched, even with no style tag")
+
+        # -- through the server, with the tagger stubbed
+        tags.installed = lambda _d: ["wd-vit-v3"]
+        tags.describe = lambda pic, base, *a, **k: guess
+        tags.vector = lambda pic, base: colour_vec(pic)
+        upload = lambda data: pytypes.SimpleNamespace(read=lambda: _coro(data), filename="t.png")  # noqa: E731
+        out = json.loads((await server.reverse_loras(upload(png("red")), "", "")).body)
+        check(out["model"] == "illustrious" and out["candidates"][0]["name"] == "redwash",
+              "/api/reverse/loras ranks CivitAI LoRAs for an uploaded picture")
+        check(all(c.get("installed") is False for c in out["candidates"]), "…and says which you already have")
+
+        tags.describe = lambda pic, base, *a, **k: young
+        try:
+            await server.reverse_loras(upload(png("red")), "", "")
+            check(False, "a picture with a minor in it is refused")
+        except HTTPException as exc:
+            check("未成年" in str(exc.detail), "a picture with a minor in it is refused")
+        res = json.loads((await server.inspect(upload(png("red")), "", 0.35)).body)
+        check(res["blocked"] == ["child"] and res["recipe"] is None and res["tags"] is None,
+              "…and the inspector gives no tags and no recipe for it")
+        tags.describe = lambda pic, base, *a, **k: guess
+        res = json.loads((await server.inspect(upload(png("red")), "", 0.35)).body)
+        check(res["recipe"] and not res["recipe"]["exact"] and res["recipe"]["model_id"] == "illustrious",
+              "the inspector returns a recipe for an ordinary picture")
+
+        out = json.loads((await server.reverse_resolve({"metadata": {
+            "model": "noob", "loras": [{"name": "bluewash", "hash": "0000000001; DROP"}]}})).body)
+        check(any(r.get("name") == "bluewash" for r in out["resources"]),
+              "/api/reverse/resolve looks up what the metadata names (hashes are sanitised)")
+
+        # -- closing the loop: compare a generated attempt with the original
+        config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+        (config.OUTPUT_DIR / "rev-attempt.png").write_bytes(png("red"))
+        server.lib.records["rev-attempt"] = library.Record(
+            id="rev-attempt", model_id="illustrious", prompt="p", kind="image", status="done",
+            output="rev-attempt.png")
+        less = tags.Guess(general=[("1girl", 0.99), ("solo", 0.98), ("smile", 0.8), ("hat", 0.7)])
+        calls = iter([guess, less])
+        tags.describe = lambda pic, base, *a, **k: next(calls)
+        cmp = json.loads((await server.reverse_compare(upload(png("red")), "rev-attempt", "")).body)
+        check(cmp["score"] > 0.99, "the same colour scores as near-identical")
+        check("long hair" in cmp["missing"] and "hat" in cmp["extra"],
+              f"…and the tags the attempt lost or gained are listed ({cmp['missing'][:3]}, {cmp['extra']})")
+        server.lib.records.pop("rev-attempt", None)
+    finally:
+        civitai.API = saved_api
+        tags.installed, tags.describe, tags.vector = saved_tags
+        await runner.cleanup()
+
+
+async def _coro(value):
+    return value
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -8856,6 +9086,7 @@ async def main() -> int:
     test_progress_phases()
     await test_reattach()
     await test_cloud()
+    await test_reverse()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

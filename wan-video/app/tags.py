@@ -187,6 +187,28 @@ def describe(
     limit: int = 40,
 ) -> Guess:
     """Danbooru tags for a PIL image."""
+    scores, names, cats = _scores(image, base)
+
+    guess = Guess()
+    general: list[tuple[str, float]] = []
+    characters: list[tuple[str, float]] = []
+    for score, name, category in zip(scores, names, cats):
+        value = float(score)
+        if category == CAT_RATING:
+            guess.ratings.append((name, value))
+        elif category == CAT_CHARACTER and value >= character_threshold:
+            characters.append((name, value))
+        elif category == CAT_GENERAL and value >= general_threshold:
+            general.append((name, value))
+    guess.general = sorted(general, key=lambda x: -x[1])[:limit]
+    guess.characters = sorted(characters, key=lambda x: -x[1])[:8]
+    guess.ratings.sort(key=lambda x: -x[1])
+    guess.rating = guess.ratings[0][0] if guess.ratings else ""
+    return guess
+
+
+def _scores(image, base: Path):
+    """The tagger's raw output: one probability per label, plus the labels."""
     import numpy as np
     from PIL import Image
 
@@ -205,23 +227,21 @@ def describe(
 
     array = np.asarray(square, dtype=np.float32)[:, :, ::-1]  # RGB -> BGR
     scores = session.run(None, {session.get_inputs()[0].name: array[None, ...]})[0][0]
+    return scores, names, cats
 
-    guess = Guess()
-    general: list[tuple[str, float]] = []
-    characters: list[tuple[str, float]] = []
-    for score, name, category in zip(scores, names, cats):
-        value = float(score)
-        if category == CAT_RATING:
-            guess.ratings.append((name, value))
-        elif category == CAT_CHARACTER and value >= character_threshold:
-            characters.append((name, value))
-        elif category == CAT_GENERAL and value >= general_threshold:
-            general.append((name, value))
-    guess.general = sorted(general, key=lambda x: -x[1])[:limit]
-    guess.characters = sorted(characters, key=lambda x: -x[1])[:8]
-    guess.ratings.sort(key=lambda x: -x[1])
-    guess.rating = guess.ratings[0][0] if guess.ratings else ""
-    return guess
+
+def vector(image, base: Path):
+    """The picture as the tagger sees it: every content and character score.
+
+    Used to say how alike two pictures are (see reverse.similarity). Ratings
+    are left out - two pictures are not "similar" because both are safe for
+    work - and nothing is thresholded, so faint style signals still count.
+    """
+    import numpy as np
+
+    scores, _names, cats = _scores(image, base)
+    keep = np.array([c != CAT_RATING for c in cats])
+    return np.asarray(scores, dtype=np.float32)[keep]
 
 
 # -- splitting a description into "who" and "what is happening" ---------------

@@ -3357,6 +3357,8 @@ $('#inspfile').onchange = async () => {
     if (!r.ok) throw new Error(d.detail || r.statusText);
     INSP = d;
     INSP._preview = URL.createObjectURL(file);
+    INSP._file = file;
+    INSP._picked = new Set();
     renderInspect();
   } catch (e) {
     box.innerHTML = `<div class="errbox">看不了這張圖：${esc(e.message)}</div>`;
@@ -3435,10 +3437,13 @@ function renderInspect() {
       + `<textarea id="insptags" style="margin-top:8px;min-height:60px">${esc(t.prompt)}</textarea>`
       + '<div class="s" id="insppartnote"></div>'
       + '</div>');
+  } else if ((d.blocked || []).length) {
+    parts.push(`<div class="errbox">${esc(d.tagger_error)}</div>`);
   } else if (d.tagger_error) {
     parts.push(`<div class="banner tight">${esc(d.tagger_error)}
       <button class="ghost tiny" id="getTagger" style="margin-left:8px">去下載</button></div>`);
   }
+  if (d.recipe) parts.push(reverseSections(d));
 
   if ((d.lora_hints || []).length) {
     parts.push('<div class="banner"><b>你裝的 LoRA 裡，觸發詞對得上的有：</b>'
@@ -3459,6 +3464,178 @@ function renderInspect() {
   if (dl) dl.onclick = () => document.querySelector('.tabs button[data-tab="mdl"]').click();
   $('#inspapply').onclick = applyInspect;
   wireInspectParts();
+  wireReverse();
+}
+
+/* ---------- 反推: recipe, the exact resources, look-alike LoRAs, compare ---------- */
+function reverseSections(d) {
+  const r = d.recipe, m = d.metadata || {};
+  const model = (IMG.models || []).find((x) => x.id === r.model_id);
+  const names = (m.model || (m.loras || []).length || (m.resources || []).length);
+  return `<h2>反推：照這樣做會最像</h2><div class="card" style="background:var(--panel2)">
+    <div class="s">底模：<b>${esc(model ? (model.short || model.label) : r.model_id)}</b>
+      · 尺寸 ${r.width}×${r.height}${r.steps ? ` · ${r.steps} 步` : ''}${r.cfg ? ` · CFG ${r.cfg}` : ''}
+      ${r.seed != null ? ` · 種子 ${r.seed}` : ''}</div>
+    ${r.negative ? `<div class="s">負面提詞會加上：${esc(r.negative)}</div>` : ''}
+    ${(r.notes || []).map((n) => `<div class="note">${esc(n)}</div>`).join('')}
+    <div class="row" style="margin-top:8px">
+      <button class="ghost tiny" id="revinit" title="把原圖當成圖生圖的起點">拿原圖當起點（幾乎一模一樣）</button>
+      <span class="s">重畫強度 ${r.img2img_denoise}：構圖、顏色照原圖，細節重畫</span>
+    </div>
+  </div>
+  ${names ? `<h2>檔案裡點名的模型和 LoRA（到 CivitAI 查出來的）</h2>
+    <div class="card" style="background:var(--panel2)" id="revres"><div class="s">查詢中…</div></div>` : ''}
+  <h2>找畫風／角色相近的 LoRA</h2>
+  <div class="card" style="background:var(--panel2)" id="revloras">
+    <div class="s">用看到的角色和畫風標籤去 CivitAI 搜，再把每支 LoRA 的範例圖跟你的圖比對，越像排越前面。
+      要下載十幾張範例圖來看，<b>大約 30～60 秒</b>。</div>
+    <div class="note">分數是「這支 LoRA 的範例圖跟你的圖有多像」，<b>不代表原圖就是用它畫的</b>。
+      CivitAI 標成真人肖像或未成年的模型一律不列。</div>
+    <button class="go tiny" id="revfind" style="margin-top:6px">開始找</button>
+  </div>
+  <h2>生完比對</h2>
+  <div class="card" style="background:var(--panel2)">
+    <div class="s">按「套用」→ 生成，等最新一張圖出來後按這裡，會告訴你差多少、少了／多了哪些東西。</div>
+    <button class="ghost tiny" id="revcompare" style="margin-top:6px">比對最新一張成品</button>
+    <div id="revcmp"></div>
+  </div>`;
+}
+
+const pct = (x) => Math.round((x || 0) * 100) + '%';
+
+function revDownloadButton(c) {
+  if (c.installed) return '<span class="tag done">你有</span>';
+  if (!c.file || !c.file.url) return '';
+  return `<button class="go tiny" data-revdl="${esc(String(c.version_id))}">下載 ${gb(c.file.size)}</button>`;
+}
+
+async function revDownload(c, btn) {
+  btn.disabled = true; btn.textContent = '加入下載…';
+  try {
+    const r = await fetch('/api/civitai/download', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ files: [{ url: c.file.url, name: c.file.name, size: c.file.size }],
+        kind: c.type === 'checkpoint' ? 'checkpoint' : 'lora', label: c.name, page_url: c.page,
+        trained_words: c.trained_words, base_model: c.base_model, version_id: c.version_id }) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    btn.textContent = '下載中（看「模型」分頁）';
+  } catch (e) { btn.disabled = false; btn.textContent = '下載'; alert(e.message); }
+}
+
+function wireReverse() {
+  const d = INSP;
+  if (!d || !d.recipe) return;
+  const init = $('#revinit');
+  if (init) init.onclick = async () => {
+    init.disabled = true;
+    try {
+      const form = new FormData();
+      form.append('image', d._file);
+      const r = await fetch('/api/image/upload', { method: 'POST', body: form });
+      const u = await r.json();
+      if (!r.ok) throw new Error(u.detail || r.statusText);
+      IMG.init = u;
+      $('#i2ithumb').src = d._preview;
+      $('#i2isize').textContent = `原圖 · ${u.width}×${u.height}`;
+      $('#i2i').classList.remove('hidden');
+      $('#idenoise').value = d.recipe.img2img_denoise; $('#idenoise').oninput();
+      applyInspect();
+      $('#istatus').textContent = '原圖已經是起點了，提詞和設定也帶入了。按生成。';
+    } catch (e) { alert('放不進去：' + e.message); }
+    init.disabled = false;
+  };
+
+  const res = $('#revres');
+  if (res) (async () => {
+    try {
+      const r = await fetch('/api/reverse/resolve', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ metadata: d.metadata }) });
+      const out = await r.json();
+      if (!r.ok) throw new Error(out.detail || r.statusText);
+      d._resources = out.resources || [];
+      res.innerHTML = d._resources.map((c, i) => c.withheld
+        ? `<div class="s">· ${esc(c.asked)}：<span class="warn">${esc(c.withheld)}</span></div>`
+        : !c.found ? `<div class="s">· ${esc(c.asked)}：${esc(c.error || '找不到')}</div>`
+        : `<div class="row" style="margin-top:4px;align-items:center">
+            <span style="flex:1;min-width:200px"><a href="${esc(c.page)}" target="_blank" rel="noopener">${esc(c.name)}</a>
+              <span class="s">${esc(c.version)} · ${esc(c.type)} · ${esc(c.base_model)}${c.strength != null ? ` · 強度 ${c.strength}` : ''}</span><br>
+              <span class="s">${esc(c.how)}${(c.trained_words || []).length ? ` · 觸發詞：${esc(c.trained_words.join(', '))}` : ''}</span></span>
+            ${revDownloadButton(c)}</div>`).join('')
+        + (out.has_key ? '' : '<div class="note">沒有 CivitAI API key 時，成人分級的模型 CivitAI 會回「找不到」。到「設定」貼上 key 再試。</div>');
+      res.querySelectorAll('[data-revdl]').forEach((b) => b.onclick = () =>
+        revDownload(d._resources.find((c) => String(c.version_id) === b.dataset.revdl), b));
+    } catch (e) { res.innerHTML = `<div class="warn">${esc(e.message)}</div>`; }
+  })();
+
+  const find = $('#revfind');
+  if (find) find.onclick = async () => {
+    const box = $('#revloras');
+    find.disabled = true; find.textContent = '搜尋並比對中…（30～60 秒）';
+    try {
+      const form = new FormData();
+      form.append('image', d._file);
+      form.append('model', d.recipe.model_id);
+      const r = await fetch('/api/reverse/loras', { method: 'POST', body: form });
+      const out = await r.json();
+      if (!r.ok) throw new Error(out.detail || r.statusText);
+      d._cands = out.candidates || [];
+      box.innerHTML = (out.note ? `<div class="s">${esc(out.note)}</div>` : '')
+        + ((out.queries || []).length ? `<div class="s">搜了：${out.queries.map((q) => esc(q.why)).join('、')}</div>` : '')
+        + (d._cands.length ? d._cands.map((c) => `
+          <div class="row" style="margin-top:6px;align-items:center">
+            ${c.samples && c.samples[0] ? `<img src="${esc(c.samples[0])}" loading="lazy" style="width:56px;height:56px;object-fit:cover;border-radius:6px">` : ''}
+            <label style="flex:1;min-width:200px">
+              <input type="checkbox" class="revpick" data-v="${esc(String(c.version_id))}" ${d._picked.has(String(c.version_id)) ? 'checked' : ''}>
+              <a href="${esc(c.page)}" target="_blank" rel="noopener">${esc(c.name)}</a>
+              <span class="tag ${c.score >= 0.8 ? 'done' : ''}">像 ${pct(c.score)}</span><br>
+              <span class="s">${esc(c.why)} · ${esc(c.base_model)} · 建議強度 ${c.strength}
+                ${(c.trained_words || []).length ? ` · 觸發詞：${esc(c.trained_words.slice(0, 4).join(', '))}` : ''}</span>
+            </label>
+            ${revDownloadButton(c)}
+          </div>`).join('')
+          + '<div class="note">勾起來的，按「套用」時會把觸發詞加進提詞；已經有的 LoRA 會直接勾上。</div>'
+          : '<div class="s">沒有找到可以比對的 LoRA。</div>');
+      box.querySelectorAll('.revpick').forEach((c) => c.onchange = () => {
+        if (c.checked) d._picked.add(c.dataset.v); else d._picked.delete(c.dataset.v);
+      });
+      box.querySelectorAll('[data-revdl]').forEach((b) => b.onclick = () =>
+        revDownload(d._cands.find((c) => String(c.version_id) === b.dataset.revdl), b));
+    } catch (e) {
+      box.insertAdjacentHTML('beforeend', `<div class="warn">${esc(e.message)}</div>`);
+      find.disabled = false; find.textContent = '再試一次';
+    }
+  };
+
+  const cmp = $('#revcompare');
+  if (cmp) cmp.onclick = async () => {
+    const out = $('#revcmp');
+    const latest = (IMG.jobs || []).filter((j) => j.kind === 'image' && j.status === 'done' && j.output)
+      .sort((a, b) => b.created - a.created)[0];
+    if (!latest) { out.innerHTML = '<div class="s">還沒有生好的圖。</div>'; return; }
+    cmp.disabled = true; out.innerHTML = '<div class="s">比對中…</div>';
+    try {
+      const form = new FormData();
+      form.append('image', d._file);
+      form.append('job', latest.id);
+      const r = await fetch('/api/reverse/compare', { method: 'POST', body: form });
+      const c = await r.json();
+      if (!r.ok) throw new Error(c.detail || r.statusText);
+      out.innerHTML = `<div class="row" style="margin-top:6px;align-items:center">
+          <img src="${esc(latest.output)}" style="width:72px;border-radius:6px">
+          <div><b>像 ${pct(c.score)}</b> <span class="s">${esc(c.advice)}</span></div></div>`
+        + (c.missing.length ? `<div class="s" style="margin-top:4px">少了：${esc(c.missing.join(', '))}
+            <button class="ghost tiny" id="revaddmiss">加進提詞</button></div>` : '')
+        + (c.extra.length ? `<div class="s">多了：${esc(c.extra.join(', '))}
+            <button class="ghost tiny" id="revaddextra">加進負面提詞</button></div>` : '');
+      const add = (id, words) => { const b = $(id); if (b) b.onclick = () => {
+        const box = $(id === '#revaddmiss' ? '#iprompt' : '#inegative');
+        box.value = [box.value.trim(), words.join(', ')].filter(Boolean).join(', ');
+        box.dataset.touched = '1'; b.disabled = true; b.textContent = '加了';
+      }; };
+      add('#revaddmiss', c.missing); add('#revaddextra', c.extra);
+    } catch (e) { out.innerHTML = `<div class="warn">${esc(e.message)}</div>`; }
+    cmp.disabled = false;
+  };
 }
 
 // Which buckets are ticked -> the tag box. `drop` is never offered: those tags
@@ -3480,7 +3657,10 @@ function wireInspectParts() {
   if (!boxes.length) return;
   const paint = () => {
     const tags = inspectTags();
-    $('#insptags').value = tags.join(', ');
+    const all = boxes.every((b) => b.checked || b.disabled);
+    // With everything ticked, the recipe's ordering (who, look, outfit, shot,
+    // then the medium - with watermarks moved out) is the better prompt.
+    $('#insptags').value = all && INSP.recipe && !INSP.recipe.exact ? INSP.recipe.prompt : tags.join(', ');
     const off = boxes.filter((b) => !b.checked && !b.disabled).length;
     $('#insppartnote').textContent = off
       ? `已拿掉 ${off} 組，剩 ${tags.length} 個標籤。人物部分自己補上就行。`
@@ -3533,8 +3713,38 @@ function applyInspect() {
     el.querySelector('.vm').textContent = sm.value;
     el.querySelector('.vc').textContent = sc.value;
   });
+  const r = d.recipe;
+  if (r && !r.exact) {
+    $('#isize').value = IMG.customSize; syncCustomSize();
+    setIfPresent('iwidth', r.width); setIfPresent('iheight', r.height);
+    if (r.negative) {
+      const neg = $('#inegative');
+      const have = neg.value.toLowerCase();
+      const add = r.negative.split(',').map((x) => x.trim()).filter((x) => x && !have.includes(x.toLowerCase()));
+      if (add.length) { neg.value = [neg.value.trim(), add.join(', ')].filter(Boolean).join(', '); neg.dataset.touched = '1'; }
+    }
+  }
+  // LoRAs picked from the look-alike list: their trigger words go into the
+  // prompt, and the ones already downloaded are ticked at the suggested strength.
+  const picked = (d._cands || []).filter((c) => d._picked && d._picked.has(String(c.version_id)));
+  const words = picked.flatMap((c) => (c.trained_words || []).slice(0, 3));
+  if (words.length) {
+    const box = $('#iprompt');
+    box.value = [box.value.trim(), ...words.filter((w) => !box.value.includes(w))].filter(Boolean).join(', ');
+  }
+  picked.filter((c) => c.installed).forEach((c) => {
+    const stem = c.file.name.replace(/\.[^.]+$/, '').toLowerCase();
+    $('#iloras').querySelectorAll('.lora').forEach((el) => {
+      if (el.dataset.n.replace(/\.[^.]+$/, '').toLowerCase() !== stem) return;
+      el.querySelector('input[type=checkbox]').checked = true;
+      const sm = el.querySelector('.sm'), sc = el.querySelector('.sc');
+      sm.value = c.strength; sc.value = c.strength;
+      el.querySelector('.vm').textContent = sm.value; el.querySelector('.vc').textContent = sc.value;
+    });
+  });
   $('#istatus').textContent = (m.source ? '參數已帶入。' : '提詞已帶入。')
-    + '按生成就會照這組設定重畫。';
+    + '按生成就會照這組設定重畫。'
+    + (picked.some((c) => !c.installed) ? '（有勾的 LoRA 還沒下載，下載好再按一次「套用」。）' : '');
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 

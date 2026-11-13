@@ -290,6 +290,29 @@ async def search(
     }
 
 
+async def get_json(path: str, params: list[tuple[str, str]] | None = None) -> dict | None:
+    """One GET against the public API in its raw shape; None for a 404.
+
+    For callers that need fields the parsed forms above leave out - `poi`
+    (a real person) and `minor` on a model, the file hashes on a version.
+    The key, when there is one, is sent: without it CivitAI answers 404 for
+    versions above its default browsing level, which is not "does not exist".
+    """
+    headers = {"User-Agent": UA, "Accept": "application/json"}
+    if key := api_key():
+        headers["Authorization"] = f"Bearer {key}"
+    url = f"{API}/{path.lstrip('/')}" + (f"?{urlencode(params)}" if params else "")
+    async with aiohttp.ClientSession(headers=headers) as session:
+        async with session.get(url, timeout=aiohttp.ClientTimeout(total=45)) as response:
+            if response.status == 404:
+                return None
+            if response.status == 429:
+                raise CivitaiError("CivitAI 說請求太頻繁（429）。等一下再試。")
+            if response.status != 200:
+                raise CivitaiError(f"CivitAI 回應 {response.status}")
+            return await response.json(content_type=None)
+
+
 async def version(version_id: int) -> dict:
     headers = {"User-Agent": UA, "Accept": "application/json"}
     if key := api_key():
