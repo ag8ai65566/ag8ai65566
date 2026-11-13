@@ -1143,6 +1143,37 @@
         <button class="ghost tiny hidden" id="trcopycmd">複製指令</button>
       </div>
     </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2 style="margin-top:0">從一張圖生一組訓練圖</h2>
+      <div class="s">只有一張角色圖也能開始：用它當參考，生出不同角度、姿勢、表情的圖，你挑好的放進訓練資料夾。
+        SDXL 系底模會配 IP-Adapter；選 Qwen-Image Edit 則是「同一個人，換個姿勢」的編輯。用的是頁首選的本機或雲端。</div>
+      <div class="row" style="margin-top:8px;align-items:center;gap:6px">
+        <button class="ghost tiny" id="bspick">選角色圖</button><input type="file" id="bsfile" accept="image/*" hidden>
+        <span class="s" id="bssrc"></span>
+        <label class="f">底模 <select id="bsmodel"></select></label>
+        <label class="f">張數 <input type="number" id="bscount" min="4" max="30" value="20" style="width:64px"></label>
+      </div>
+      <label class="chk" style="margin-top:6px"><input type="checkbox" id="bsconsent"> <span class="s" id="bsconsenttext"></span></label>
+      <div class="row" style="margin-top:6px"><button class="go tiny" id="bsgo">開始生</button>
+        <span class="s" id="bsnote"></span></div>
+      <div id="bsout" style="margin-top:8px"></div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h2 style="margin-top:0">在雲端訓練（Runpod）</h2>
+      <div class="s">用上面的「資料夾」「觸發詞」「輸出檔名」，在你租的雲端 GPU 上用 kohya sd-scripts（v0.12.3）訓練一支 SDXL LoRA。
+        訓練好的 LoRA 雲端可以直接用，也可以抓回這台電腦。<b>這條路還沒在真的 GPU 上跑過</b>，第一次會先安裝訓練程式（幾分鐘）；
+        出問題時下面的訓練紀錄會說原因。</div>
+      <div class="row" style="margin-top:8px;align-items:center;gap:6px">
+        <label class="f">底模 <select id="ctmodel"></select></label>
+        <button class="go tiny" id="ctgo">開始雲端訓練</button>
+        <button class="ghost tiny hidden" id="ctstop">停止</button>
+        <button class="go tiny hidden" id="ctfetch">抓回本機</button>
+      </div>
+      <label class="chk" style="margin-top:6px"><input type="checkbox" id="ctconsent"> <span class="s" id="ctconsenttext"></span></label>
+      <div id="ctstatus" style="margin-top:8px"></div>
+    </div>
   </div>
 
   <div id="tab-lora" role="tabpanel" tabindex="0" class="hidden">
@@ -1362,6 +1393,7 @@ function showTab(b) {
   if (b.dataset.tab === 'pb') refreshPb();
   if (b.dataset.tab === 'lib') renderGallery();
   if (b.dataset.tab === 'img') { refreshImageModels(); }
+  if (b.dataset.tab === 'train') { fillTrainModels(); pollCloudTrain(); }
   if (b.dataset.tab === 'lora' && !CIV.items.length) civSearch(true);
   if (b.dataset.tab === 'set') renderSettings();
   // The shot table's pickers are populated from the image models, the LoRA list
@@ -6501,6 +6533,126 @@ async function renderTrainCaption() {
     ? `<span class="bad">${esc(d.trigger_problem)}</span>`
     : '這個觸發詞可以用。它要是一個底模沒有既有印象的字 —— 用真名的話，'
       + 'LoRA 會一直在跟模型原本對那個名字的印象打架。';
+}
+
+
+/* ---------- training: one picture -> a set; train on the rented machine ---------- */
+const BS = { ref: null, run: null, timer: null };
+const CONSENT = '這是原創角色、畫風，或我有權使用的圖片；不是未經同意的真人，也沒有未成年人物。';
+async function fillTrainModels() {
+  if (!(IMG.models || []).length && typeof refreshImageModels === 'function') await refreshImageModels();
+  const opt = (m) => `<option value="${esc(m.id)}">${mark(m)} ${esc(m.short || m.label)}</option>`;
+  const sdxl = (IMG.models || []).filter((m) => (m.loader || 'checkpoint') === 'checkpoint' && !m.custom);
+  const bs = $('#bsmodel'), ct = $('#ctmodel');
+  if (bs && !bs.options.length) bs.innerHTML = sdxl.concat((IMG.models || []).filter((m) => m.loader === 'qwen_edit')).map(opt).join('');
+  if (ct && !ct.options.length) ct.innerHTML = sdxl.map(opt).join('');
+  $('#bsconsenttext').textContent = CONSENT; $('#ctconsenttext').textContent = CONSENT;
+}
+$('#bspick').onclick = () => $('#bsfile').click();
+$('#bsfile').onchange = async () => {
+  const file = $('#bsfile').files[0];
+  if (!file) return;
+  const form = new FormData(); form.append('image', file);
+  $('#bssrc').textContent = '上傳中…';
+  try {
+    const r = await fetch('/api/image/upload', { method: 'POST', body: form });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    BS.ref = d; $('#bssrc').textContent = file.name;
+  } catch (e) { BS.ref = null; $('#bssrc').textContent = '讀不了：' + e.message; }
+  $('#bsfile').value = '';
+};
+$('#bsgo').onclick = async () => {
+  const note = $('#bsnote');
+  if (!BS.ref) { note.textContent = '先選一張角色圖。'; return; }
+  $('#bsgo').disabled = true; note.textContent = '送出中…';
+  try {
+    const r = await fetch('/api/training/bootstrap', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ image: BS.ref.name, model: $('#bsmodel').value, trigger: $('#trtrigger').value.trim(),
+                             count: +$('#bscount').value || 20, consent: $('#bsconsent').checked }) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    BS.run = d; note.textContent = `排了 ${d.jobs.length} 張，生好的會出現在下面。`;
+    pollBootstrap();
+  } catch (e) { note.innerHTML = `<span class="warn">${esc(e.message)}</span>`; }
+  $('#bsgo').disabled = false;
+};
+async function pollBootstrap() {
+  clearTimeout(BS.timer);
+  if (!BS.run) return;
+  const jobs = await Promise.all(BS.run.jobs.map((j) => fetch('/api/jobs/' + j.job).then((r) => r.json()).catch(() => ({}))));
+  const picked = new Set([...document.querySelectorAll('.bspick:checked')].map((c) => c.value));
+  const box = $('#bsout');
+  box.innerHTML = '<div class="row" style="gap:6px;flex-wrap:wrap">' + jobs.map((j, i) => {
+    const id = BS.run.jobs[i].job;
+    if (j.status === 'done' && j.output) {
+      return `<label style="text-align:center"><img src="${esc(j.output)}" style="width:96px;height:96px;object-fit:cover;border-radius:6px"><br>
+        <input type="checkbox" class="bspick" value="${esc(id)}" ${picked.has(id) || !picked.size ? 'checked' : ''}></label>`;
+    }
+    return `<div class="s" style="width:96px;height:96px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--line);border-radius:6px">${
+      j.status === 'error' ? '失敗' : '生成中…'}</div>`;
+  }).join('') + '</div>'
+    + '<div class="row" style="margin-top:6px"><button class="go tiny" id="bsadd">把勾的放進訓練資料夾</button>'
+    + '<span class="s">挑臉和服裝都對的；角度、姿勢越多樣越好。</span></div>';
+  $('#bsadd').onclick = async () => {
+    const jobsPicked = [...document.querySelectorAll('.bspick:checked')].map((c) => c.value);
+    const r = await fetch('/api/training/collect', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: BS.run.id, jobs: jobsPicked }) });
+    const d = await r.json();
+    if (!r.ok) { alert(d.detail || r.statusText); return; }
+    $('#trfolder').value = d.folder;
+    $('#bsnote').textContent = `放了 ${d.copied} 張到 ${d.folder}，上面的資料夾已經填好，按「檢查」看看。`;
+    $('#trcheck').click();
+  };
+  if (jobs.some((j) => j.status === 'queued' || j.status === 'running')) BS.timer = setTimeout(pollBootstrap, 4000);
+}
+
+let CT_TIMER = null;
+$('#ctgo').onclick = async () => {
+  const box = $('#ctstatus');
+  $('#ctgo').disabled = true;
+  try {
+    const r = await fetch('/api/cloud/train', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ folder: $('#trfolder').value.trim(), trigger: $('#trtrigger').value.trim(),
+                             name: $('#trname').value.trim(), model: $('#ctmodel').value,
+                             consent: $('#ctconsent').checked }) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    pollCloudTrain();
+  } catch (e) { box.innerHTML = `<span class="warn">${esc(e.message)}</span>`; }
+  $('#ctgo').disabled = false;
+};
+$('#ctstop').onclick = async () => { await fetch('/api/cloud/train/stop', { method: 'POST' }); pollCloudTrain(); };
+$('#ctfetch').onclick = async () => {
+  const r = await fetch('/api/cloud/train/fetch', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' });
+  const d = await r.json();
+  if (!r.ok) { alert(d.detail || r.statusText); return; }
+  pollCloudTrain();
+};
+async function pollCloudTrain() {
+  clearTimeout(CT_TIMER);
+  let d;
+  try { d = await (await fetch('/api/cloud/train')).json(); } catch { return; }
+  const local = d.local || {}, remote = d.remote || {};
+  const words = { idle: '沒有在訓練', installing: '安裝訓練程式中', training: '訓練中', done: '訓練完成',
+                  failed: '訓練失敗', stopped: '已停止', preparing: '準備中', uploading: '上傳訓練圖中',
+                  submitted: '已送出', fetching: '抓回本機中', fetched: '已抓回本機', error: '出錯' };
+  const busyLocal = ['preparing', 'uploading', 'fetching'].includes(local.phase);
+  const phase = busyLocal || local.phase === 'error' || local.phase === 'fetched' ? local.phase : (remote.phase || local.phase);
+  const pct = remote.total ? Math.round((remote.step || 0) * 100 / remote.total) : 0;
+  $('#ctstatus').innerHTML = `<div><b>${esc(words[phase] || phase)}</b>
+      ${remote.name ? `<span class="s"> · ${esc(remote.name)}</span>` : ''}
+      ${remote.phase === 'training' ? `<span class="s"> · ${remote.step}/${remote.total} 步（${pct}%）</span>` : ''}
+      <span class="s"> ${esc(local.message || remote.error || '')}</span></div>`
+    + (remote.phase === 'training' ? `<div style="height:6px;background:var(--panel2);border-radius:3px;margin-top:6px"><div style="width:${pct}%;height:6px;background:var(--accent);border-radius:3px"></div></div>` : '')
+    + ((remote.outputs || []).length ? `<div class="s" style="margin-top:6px">雲端上的 LoRA：${esc(remote.outputs.join('、'))}</div>` : '')
+    + ((remote.log || []).length ? `<pre class="s" style="max-height:200px;overflow:auto;white-space:pre-wrap;margin-top:6px">${esc(remote.log.join('\n'))}</pre>` : '')
+    + (d.remote_error ? `<div class="s">${esc(d.remote_error)}</div>` : '');
+  $('#ctstop').classList.toggle('hidden', !['installing', 'training'].includes(remote.phase));
+  $('#ctfetch').classList.toggle('hidden', !(remote.phase === 'done' && local.phase !== 'fetching'));
+  if (busyLocal || ['installing', 'training'].includes(remote.phase) || local.phase === 'submitted') {
+    CT_TIMER = setTimeout(pollCloudTrain, 5000);
+  }
 }
 
 function wireTraining() {

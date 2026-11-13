@@ -35,10 +35,12 @@ from __future__ import annotations
 import argparse
 import hmac
 import json
+import math
 import os
 import re
 import shutil
 import subprocess
+import sys
 import threading
 import time
 import urllib.error
@@ -59,6 +61,23 @@ SAFE_SEGMENT = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 _.()+,=@\-]*$")
 # Headers a caller may attach to a download. Anything else is dropped: this is
 # a file fetcher, not a general-purpose request forwarder.
 ALLOWED_HEADERS = {"authorization", "user-agent"}
+# LoRA training (kohya-ss/sd-scripts, SDXL). Pinned for the same reason
+# ComfyUI is: the arguments below were read off this release's own docs.
+SDSCRIPTS_REPO = "https://github.com/kohya-ss/sd-scripts.git"
+SDSCRIPTS_REF = os.environ.get("WAN_SDSCRIPTS_REF", "v0.12.3")
+OPTIMIZERS = {"AdamW8bit", "AdamW", "Adafactor", "Prodigy"}
+SCHEDULERS = {"cosine", "constant", "constant_with_warmup", "linear", "cosine_with_restarts"}
+# Every number the app may set, with its type and bounds. Anything else in the
+# request is ignored: the agent builds the command itself and never runs a
+# command line or a config file it was handed.
+TRAIN_NUMBERS = {
+    "network_dim": (int, 1, 256), "network_alpha": (float, 0.1, 256.0),
+    "learning_rate": (float, 1e-7, 1e-2), "unet_lr": (float, 1e-7, 1e-2),
+    "text_encoder_lr": (float, 0.0, 1e-2), "epochs": (int, 1, 50),
+    "repeats": (int, 1, 100), "resolution": (int, 512, 2048), "batch_size": (int, 1, 8),
+}
+IMAGE_SUFFIXES = (".png", ".jpg", ".jpeg", ".webp")
+FILE_CHUNK = 32 << 20
 
 
 class Refused(Exception):
@@ -92,6 +111,7 @@ class State:
     def __init__(self, root: Path, token: str) -> None:
         self.root = root
         self.models = root / "ComfyUI" / "models"
+        self.train_root = root / "train"
         self.token = token
         self.lock = threading.Lock()
         self.downloads: dict[str, dict] = {}
@@ -107,10 +127,11 @@ class State:
 
     # -- paths ---------------------------------------------------------------
 
-    def target(self, folder: str, name: str) -> Path:
+    def target(self, folder: str, name: str, area: str = "models") -> Path:
         rel = safe_relative(folder, name)
-        path = (self.models / rel).resolve()
-        base = self.models.resolve()
+        root = self.train_root if area == "train" else self.models
+        path = (root / rel).resolve()
+        base = root.resolve()
         if base != path and base not in path.parents:
             raise Refused("路徑跑到模型資料夾外面了")
         return path
@@ -149,6 +170,7 @@ class State:
             "uptime": int(time.time() - self.started),
             "disk": {"free": usage.free, "total": usage.total},
             "downloading": active,
+            "training": bool(getattr(self, "trainer", None) and self.trainer.running),
             "log": self.log_tail("boot", 40),
         }
 
@@ -323,11 +345,22 @@ class State:
 
     # -- uploads -------------------------------------------------------------
 
-    def receive(self, folder: str, name: str, offset: int, total: int, body: bytes) -> dict:
+    def read_slice(self, folder: str, name: str, offset: int) -> tuple[bytes, int]:
+        """A piece of a model file, for sending a trained LoRA back to the app."""
+        path = self.target(folder, name)
+        if not path.is_file():
+            raise Refused("沒有這個檔案", 404)
+        total = path.stat().st_size
+        with path.open("rb") as handle:
+            handle.seek(max(0, offset))
+            return handle.read(FILE_CHUNK), total
+
+    def receive(self, folder: str, name: str, offset: int, total: int, body: bytes,
+                area: str = "models") -> dict:
         """One slice of a file the app is pushing up from the user's own disk."""
         if total <= 0 or offset < 0 or offset + len(body) > total:
             raise Refused("上傳的位置或大小不對")
-        target = self.target(folder, name)
+        target = self.target(folder, name, area)
         part = target.with_name(target.name + ".part")
         target.parent.mkdir(parents=True, exist_ok=True)
         have = part.stat().st_size if part.is_file() else 0
@@ -345,6 +378,241 @@ class State:
             part.replace(target)
             return {"received": have, "complete": True}
         return {"received": have, "complete": False}
+
+
+class Trainer:
+    """One LoRA training run at a time, with kohya-ss/sd-scripts.
+
+    The app sends a name, the base checkpoint (a file already in models/),
+    and a handful of numbers. This class checks each one, writes the dataset
+    config itself, and starts the trainer with an argument list - there is
+    no shell and no config text from outside, so nothing the request says can
+    turn into a command. The images and captions were uploaded first into
+    train/<name>/img (PUT /upload?area=train).
+
+    The result is written straight into models/loras/<name>/, so the ComfyUI
+    on this machine can use it the moment it exists; the app fetches it back
+    with GET /file.
+
+    WAN_TRAIN_CMD replaces the trainer with a script (tests only): it is run
+    with the output folder, name and total steps, and nothing is installed.
+    """
+
+    def __init__(self, state: "State") -> None:
+        self.state = state
+        self.lock = threading.Lock()
+        self.proc: subprocess.Popen | None = None
+        self.info = {"phase": "idle", "name": "", "step": 0, "total": 0, "error": "",
+                     "started": 0.0, "finished": 0.0, "outputs": []}
+        self._stop = False
+
+    @property
+    def running(self) -> bool:
+        return self.info["phase"] in ("installing", "training")
+
+    # -- checking the request ------------------------------------------------
+
+    def _spec(self, data: dict) -> dict:
+        name = str(data.get("name") or "")
+        if not SAFE_SEGMENT.match(name) or len(name) > 64:
+            raise Refused("訓練名稱只能用英數字、底線、減號")
+        base_folder, base_name = str(data.get("base_folder") or "checkpoints"), str(data.get("base_name") or "")
+        if base_folder != "checkpoints":
+            raise Refused("底模要放在 checkpoints 資料夾")
+        base = self.state.target(base_folder, base_name)
+        if not base.is_file():
+            raise Refused(f"雲端機上沒有底模 {base_name}，先下載再訓練")
+        spec = {"name": name, "base": base}
+        for key, (kind, low, high) in TRAIN_NUMBERS.items():
+            try:
+                value = kind(data[key])
+            except (KeyError, TypeError, ValueError) as exc:
+                raise Refused(f"缺少或看不懂 {key}") from exc
+            if not low <= value <= high:
+                raise Refused(f"{key} 要在 {low} 到 {high} 之間")
+            spec[key] = value
+        spec["optimizer"] = str(data.get("optimizer") or "AdamW8bit")
+        spec["scheduler"] = str(data.get("scheduler") or "cosine")
+        if spec["optimizer"] not in OPTIMIZERS or spec["scheduler"] not in SCHEDULERS:
+            raise Refused("不支援的 optimizer 或 scheduler")
+        images = [p for p in (self.state.train_root / name / "img").glob("*")
+                  if p.suffix.lower() in IMAGE_SUFFIXES]
+        if len(images) < 5:
+            raise Refused(f"訓練圖太少（{len(images)} 張），至少要 5 張，建議 15～30 張")
+        spec["images"] = len(images)
+        steps_per_epoch = math.ceil(len(images) * spec["repeats"] / spec["batch_size"])
+        spec["total"] = steps_per_epoch * spec["epochs"]
+        return spec
+
+    def start(self, data: dict) -> dict:
+        with self.lock:
+            if self.running:
+                raise Refused("已經有一個訓練在跑了", 409)
+            spec = self._spec(data)
+            self._stop = False
+            self.info = {"phase": "installing", "name": spec["name"], "step": 0,
+                         "total": spec["total"], "error": "", "started": time.time(),
+                         "finished": 0.0, "outputs": []}
+        threading.Thread(target=self._run, args=(spec,), daemon=True).start()
+        return self.status()
+
+    def stop(self) -> dict:
+        self._stop = True
+        proc = self.proc
+        if proc is not None and proc.poll() is None:
+            proc.terminate()
+        return self.status()
+
+    # -- running ---------------------------------------------------------------
+
+    def _folder(self, name: str) -> Path:
+        return self.state.train_root / name
+
+    def _log(self, name: str) -> Path:
+        return self._folder(name) / "train.log"
+
+    def _say(self, name: str, text: str) -> None:
+        with self._log(name).open("a", encoding="utf-8") as handle:
+            handle.write(time.strftime("[%H:%M:%S] ", time.gmtime()) + text + "\n")
+
+    def _install(self, name: str) -> Path:
+        """sd-scripts in its own environment, so its packages never meet ComfyUI's."""
+        repo = self.state.root / "sd-scripts"
+        venv = self.state.root / "train-venv"
+        marker = self.state.root / f".sd-scripts-{SDSCRIPTS_REF}"
+        if marker.is_file() and (venv / "bin" / "python").is_file():
+            return venv / "bin" / "python"
+        self._say(name, f"第一次訓練：安裝 sd-scripts {SDSCRIPTS_REF}（幾分鐘）")
+        if repo.is_dir():
+            shutil.rmtree(repo)
+        steps = [
+            ["git", "clone", "--quiet", "--depth", "1", "--branch", SDSCRIPTS_REF, SDSCRIPTS_REPO, str(repo)],
+            [sys.executable, "-m", "venv", "--system-site-packages", str(venv)],
+            [str(venv / "bin" / "python"), "-m", "pip", "install", "--quiet", "-r", "requirements.txt"],
+        ]
+        for argv in steps:
+            with self._log(name).open("a", encoding="utf-8") as handle:
+                done = subprocess.run(argv, cwd=str(repo) if repo.is_dir() else None,
+                                      stdout=handle, stderr=subprocess.STDOUT)
+            if done.returncode != 0:
+                raise RuntimeError(f"安裝 sd-scripts 失敗：{' '.join(argv[:3])}（看訓練紀錄）")
+        marker.touch()
+        return venv / "bin" / "python"
+
+    def _dataset_config(self, spec: dict) -> Path:
+        """kohya's documented dataset config (docs/config_README-en.md): the
+        repeats are num_repeats on the subset, not a folder-name prefix."""
+        folder = self._folder(spec["name"])
+        text = (
+            "[general]\nshuffle_caption = true\ncaption_extension = '.txt'\nkeep_tokens = 1\n\n"
+            f"[[datasets]]\nresolution = {spec['resolution']}\nbatch_size = {spec['batch_size']}\n"
+            "enable_bucket = true\nmin_bucket_reso = 640\nmax_bucket_reso = 1536\n"
+            "bucket_reso_steps = 64\nbucket_no_upscale = true\n\n"
+            f"  [[datasets.subsets]]\n  image_dir = {json.dumps(str(folder / 'img'))}\n"
+            f"  num_repeats = {spec['repeats']}\n")
+        path = folder / "dataset.toml"
+        path.write_text(text, encoding="utf-8")
+        return path
+
+    def command(self, spec: dict, python: Path, out_dir: Path) -> tuple[list[str], Path | None]:
+        fake = os.environ.get("WAN_TRAIN_CMD")
+        if fake:
+            return [sys.executable, fake, str(out_dir), spec["name"], str(spec["total"])], None
+        repo = self.state.root / "sd-scripts"
+        dataset = self._dataset_config(spec)
+        # The documented SDXL command (docs/sdxl_train_network.md), checked
+        # flag by flag against the pinned release's own argument parser - the
+        # docs on `main` show --text_encoder_lr1/2, which v0.12.3 does not
+        # have: there it is one --text_encoder_lr taking a value per encoder.
+        # --sdpa in place of xformers, which the image may not have.
+        accelerate = python.parent / "accelerate"
+        argv = [str(accelerate), "launch", "--num_cpu_threads_per_process", "1",
+                "sdxl_train_network.py",
+                "--pretrained_model_name_or_path", str(spec["base"]),
+                "--dataset_config", str(dataset),
+                "--output_dir", str(out_dir), "--output_name", spec["name"],
+                "--save_model_as", "safetensors",
+                "--network_module", "networks.lora",
+                "--network_dim", str(spec["network_dim"]), "--network_alpha", str(spec["network_alpha"]),
+                "--learning_rate", str(spec["learning_rate"]), "--unet_lr", str(spec["unet_lr"]),
+                "--text_encoder_lr", str(spec["text_encoder_lr"]), str(spec["text_encoder_lr"]),
+                "--optimizer_type", spec["optimizer"], "--lr_scheduler", spec["scheduler"],
+                "--max_train_epochs", str(spec["epochs"]), "--save_every_n_epochs", "1",
+                "--mixed_precision", "bf16", "--save_precision", "bf16",
+                "--gradient_checkpointing", "--cache_latents", "--cache_latents_to_disk",
+                "--sdpa", "--seed", "42", "--max_data_loader_n_workers", "2"]
+        return argv, repo
+
+    def _run(self, spec: dict) -> None:
+        name = spec["name"]
+        out_dir = self.state.models / "loras" / name
+        try:
+            self._folder(name).mkdir(parents=True, exist_ok=True)
+            python = Path(sys.executable) if os.environ.get("WAN_TRAIN_CMD") else self._install(name)
+            if self._stop:
+                raise InterruptedError
+            out_dir.mkdir(parents=True, exist_ok=True)
+            argv, cwd = self.command(spec, python, out_dir)
+            self.info["phase"] = "training"
+            self._say(name, f"開始訓練：{spec['images']} 張 × {spec['repeats']} 次 × {spec['epochs']} 輪 = {spec['total']} 步")
+            with self._log(name).open("ab") as handle:
+                self.proc = subprocess.Popen(argv, cwd=str(cwd) if cwd else None,
+                                             stdout=handle, stderr=subprocess.STDOUT)
+            while self.proc.poll() is None:
+                self._progress(name)
+                time.sleep(2)
+            self._progress(name)
+            if self._stop:
+                raise InterruptedError
+            if self.proc.returncode != 0:
+                raise RuntimeError(f"訓練程式結束代碼 {self.proc.returncode}（看訓練紀錄）")
+            self.info["outputs"] = sorted(p.name for p in out_dir.glob("*.safetensors"))
+            if not self.info["outputs"]:
+                raise RuntimeError("訓練跑完了，但沒有產生任何 LoRA 檔")
+            self.info["phase"] = "done"
+            self._say(name, "訓練完成：" + "、".join(self.info["outputs"]))
+        except InterruptedError:
+            self.info["phase"] = "stopped"
+            self._say(name, "訓練被停止")
+        except Exception as exc:  # noqa: BLE001 - reported, never crashes the agent
+            self.info["phase"], self.info["error"] = "failed", str(exc)
+            try:
+                self._say(name, f"訓練失敗：{exc}")
+            except OSError:
+                pass
+        finally:
+            self.info["finished"] = time.time()
+            self.proc = None
+
+    _STEP = re.compile(rb"(\d+)/(\d+) \[")
+
+    def _progress(self, name: str) -> None:
+        """tqdm's `120/1000 [` in the log's last few kilobytes, if there is one."""
+        try:
+            with self._log(name).open("rb") as handle:
+                handle.seek(0, os.SEEK_END)
+                handle.seek(max(0, handle.tell() - 8192))
+                tail = handle.read()
+        except OSError:
+            return
+        found = self._STEP.findall(tail.replace(b"\r", b"\n"))
+        if found:
+            step, total = found[-1]
+            self.info["step"] = int(step)
+            if int(total) > 0:
+                self.info["total"] = int(total)
+
+    def status(self) -> dict:
+        out = dict(self.info)
+        name = out["name"]
+        out["log"] = []
+        if name:
+            try:
+                lines = self._log(name).read_text(encoding="utf-8", errors="replace")
+                out["log"] = [line for line in lines.replace("\r", "\n").splitlines() if line.strip()][-25:]
+            except OSError:
+                pass
+        return out
 
 
 def _local_test_url(parsed: urllib.parse.SplitResult) -> bool:
@@ -489,7 +757,8 @@ def deadman_loop(state: State, minutes: int, comfy_port: int) -> None:
     log = state.root / "boot.log"
     while True:
         time.sleep(60)
-        if not should_stop(state, minutes, time.time(), comfy_busy(comfy_port)):
+        busy = comfy_busy(comfy_port) or bool(getattr(state, "trainer", None) and state.trainer.running)
+        if not should_stop(state, minutes, time.time(), busy):
             continue
         how = stop_this_machine()
         try:
@@ -522,6 +791,15 @@ def make_handler(state: State):
             self.send_header("Cache-Control", "no-store")
             self.end_headers()
             self.wfile.write(body)
+
+        def _send_bytes(self, data: bytes, total: int) -> None:
+            self.send_response(200)
+            self.send_header("Content-Type", "application/octet-stream")
+            self.send_header("Content-Length", str(len(data)))
+            self.send_header("X-Total-Size", str(total))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(data)
 
         def _authorised(self) -> bool:
             given = self.headers.get("X-Wan-Token") or ""
@@ -587,7 +865,19 @@ def make_handler(state: State):
                     return self._send(state.receive(
                         query.get("folder", ""), query.get("name", ""),
                         int(query.get("offset", "0") or 0),
-                        int(query.get("total", "0") or 0), body))
+                        int(query.get("total", "0") or 0), body,
+                        "train" if query.get("area") == "train" else "models"))
+                if method == "GET" and url.path == "/file":
+                    data, total = state.read_slice(query.get("folder", ""), query.get("name", ""),
+                                                   int(query.get("offset", "0") or 0))
+                    return self._send_bytes(data, total)
+                if method == "POST" and url.path == "/train":
+                    return self._send(state.trainer.start(self._json()))
+                if method == "GET" and url.path == "/train":
+                    return self._send(state.trainer.status())
+                if method == "POST" and url.path == "/train/stop":
+                    self._body(MAX_JSON)
+                    return self._send(state.trainer.stop())
                 return self._send({"error": "沒有這個路徑"}, 404)
             except Refused as exc:
                 return self._send({"error": str(exc)}, exc.status)
@@ -622,6 +912,7 @@ def main() -> None:
     root = Path(args.root)
     root.mkdir(parents=True, exist_ok=True)
     state = State(root, token)
+    state.trainer = Trainer(state)
     server = ThreadingHTTPServer((args.host, args.port), make_handler(state))
     server.daemon_threads = True
     try:

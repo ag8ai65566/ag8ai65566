@@ -2273,6 +2273,235 @@ async def cloud_log(name: str = "boot") -> JSONResponse:
     return JSONResponse({"lines": lines})
 
 
+# -- training a LoRA on the rented machine ------------------------------------
+
+CLOUD_TRAIN: dict = {"phase": "idle", "message": "", "name": "", "fetched": []}
+CONSENT_TEXT = ("這是原創角色、畫風，或我有權使用的圖片；"
+                "不是未經同意的真人，也沒有未成年人物。")
+DATASETS_DIR = config.OUTPUT_DIR.parent / "datasets"
+
+
+def _train_name(raw: str) -> str:
+    return re.sub(r"[^A-Za-z0-9_-]", "_", str(raw or "")).strip("_")[:64]
+
+
+async def _dataset_guard(images: list[Path], captions: list[str], trigger: str) -> None:
+    """The same line as everywhere else: no minors, in the words or the pictures."""
+    stop = reverse.blocked_text(trigger) + [t for c in captions for t in reverse.blocked_text(c)]
+    here = tags.installed(config.MODELS_DIR)
+    if not stop and here:
+        base = tags.folder(config.MODELS_DIR, here[0])
+        loop = asyncio.get_running_loop()
+        for path in images:
+            try:
+                picture = Image.open(path)
+                picture.load()
+                guess = await loop.run_in_executor(None, tags.describe, picture, base)
+            except Exception:  # noqa: BLE001 - an unreadable file is reported by the check
+                continue
+            stop += reverse.blocked(guess)
+    if stop:
+        raise HTTPException(400, "訓練資料裡看起來有未成年人物（" + "、".join(sorted(set(stop)))
+                            + "）。這個 app 不訓練這類內容。")
+
+
+@app.post("/api/cloud/train")
+async def cloud_train(payload: dict = Body(default={})) -> JSONResponse:
+    """Upload a training folder to the rented machine and train an SDXL LoRA there."""
+    if not payload.get("consent"):
+        raise HTTPException(400, "要先勾選確認：" + CONSENT_TEXT)
+    trigger = str(payload.get("trigger") or "").strip()
+    if problem := training.check_trigger(trigger):
+        raise HTTPException(400, problem)
+    name = _train_name(payload.get("name") or trigger)
+    if not name:
+        raise HTTPException(400, "輸出名稱不能是空的")
+    folder = Path(str(payload.get("folder") or "").strip()).expanduser()
+    if not folder.is_dir():
+        raise HTTPException(404, f"找不到這個資料夾：{folder}")
+    samples = [s for s in training.read_dataset(folder) if s.width and s.height]
+    if len(samples) < 5:
+        raise HTTPException(400, f"資料夾裡只有 {len(samples)} 張能讀的圖，至少要 5 張，建議 15～30 張。")
+    model = images.get(str(payload.get("model") or ""))
+    if model is None or model.loader != "checkpoint":
+        raise HTTPException(400, "雲端訓練目前只支援 SDXL 系的底模（Illustrious、NoobAI、Pony、Juggernaut…）。")
+    if not cloud.state.pod_id or not runpod.api_key():
+        raise HTTPException(400, "先到「設定」→「雲端 GPU」開一台雲端機。")
+    if CLOUD_TRAIN["phase"] in ("preparing", "uploading"):
+        raise HTTPException(409, "上一個訓練還在準備中")
+    await _dataset_guard([folder / s.name for s in samples], [s.caption for s in samples], trigger)
+
+    recipe = training.RECIPES["sdxl"]
+    spec = {"name": name, "base_folder": "checkpoints", "base_name": model.file.name,
+            "network_dim": recipe.network_dim, "network_alpha": recipe.network_alpha,
+            "learning_rate": recipe.learning_rate, "unet_lr": recipe.learning_rate,
+            "text_encoder_lr": recipe.text_encoder_lr, "optimizer": recipe.optimizer,
+            "scheduler": recipe.scheduler, "resolution": recipe.resolution,
+            "batch_size": recipe.batch_size, "repeats": recipe.repeats, "epochs": recipe.epochs}
+    CLOUD_TRAIN.update({"phase": "preparing", "message": "等雲端機就緒…", "name": name, "fetched": []})
+
+    async def go() -> None:
+        def say(text: str) -> None:
+            CLOUD_TRAIN["message"] = text
+        try:
+            await cloud.wait_ready(say)
+            plan = sources.find(model.file.name, config.MODELS_DIR)
+            if plan is None:
+                raise runpod.CloudError(f"不知道去哪裡下載底模 {model.file.name}")
+            if sources.needs_civitai_key(plan):
+                raise runpod.CloudError(f"{model.label} 要從 CivitAI 下載，先到「設定」貼 CivitAI API key。")
+            await cloud.fetch([plan], say)
+            CLOUD_TRAIN["phase"] = "uploading"
+            agent = cloud.agent
+            for index, sample in enumerate(samples, 1):
+                say(f"上傳訓練圖 {index}/{len(samples)}…")
+                await agent.upload(folder / sample.name, f"{name}/img", sample.name, area="train")
+                caption = config.STAGING_DIR / f"train-{name}-{Path(sample.name).stem}.txt"
+                caption.write_text(sample.caption or trigger, encoding="utf-8")
+                await agent.upload(caption, f"{name}/img", Path(sample.name).stem + ".txt", area="train")
+                caption.unlink(missing_ok=True)
+                cloud.touch()
+            await agent.train(spec)
+            CLOUD_TRAIN.update({"phase": "submitted", "message": ""})
+        except Exception as exc:  # noqa: BLE001 - shown on the page
+            CLOUD_TRAIN.update({"phase": "error", "message": str(exc)})
+
+    task = asyncio.create_task(go())
+    _background.add(task)
+    task.add_done_callback(_background.discard)
+    return JSONResponse({**CLOUD_TRAIN, "images": len(samples)})
+
+
+@app.get("/api/cloud/train")
+async def cloud_train_status() -> JSONResponse:
+    out = {"local": dict(CLOUD_TRAIN), "remote": None, "consent": CONSENT_TEXT}
+    agent = cloud.agent
+    if agent is not None and cloud.state.pod_id:
+        try:
+            out["remote"] = await agent.train_status()
+        except Exception as exc:  # noqa: BLE001 - machine booting or gone
+            out["remote_error"] = str(exc)
+    return JSONResponse(out)
+
+
+@app.post("/api/cloud/train/stop")
+async def cloud_train_stop() -> JSONResponse:
+    agent = cloud.agent
+    if agent is None:
+        raise HTTPException(400, "雲端機沒有開")
+    try:
+        return JSONResponse(await agent.train_stop())
+    except runpod.CloudError as exc:
+        raise _cloud_call(exc)
+
+
+@app.post("/api/cloud/train/fetch")
+async def cloud_train_fetch(payload: dict = Body(default={})) -> JSONResponse:
+    """Bring the finished LoRA(s) back into this computer's loras folder."""
+    agent = cloud.agent
+    if agent is None:
+        raise HTTPException(400, "雲端機沒有開")
+    status = await agent.train_status()
+    if status.get("phase") != "done" or not status.get("outputs"):
+        raise HTTPException(400, "雲端上還沒有訓練好的 LoRA")
+    name = status["name"]
+    wanted = [str(n) for n in (payload.get("files") or []) if str(n) in status["outputs"]]
+    # The last epoch by default; the earlier ones are there to compare.
+    wanted = wanted or [f"{name}.safetensors" if f"{name}.safetensors" in status["outputs"]
+                        else status["outputs"][-1]]
+    CLOUD_TRAIN.update({"phase": "fetching", "message": "", "fetched": []})
+
+    async def go() -> None:
+        try:
+            for file in wanted:
+                def progress(share: float, file=file) -> None:
+                    CLOUD_TRAIN["message"] = f"抓回 {file}：{share * 100:.0f}%"
+                await agent.fetch_file(f"loras/{name}", file, config.MODELS_DIR / "loras" / file, progress)
+                CLOUD_TRAIN["fetched"].append(file)
+            CLOUD_TRAIN.update({"phase": "fetched", "message": "已放進 LoRA 資料夾，重新整理 LoRA 清單就看得到。"})
+            client.invalidate()
+        except Exception as exc:  # noqa: BLE001
+            CLOUD_TRAIN.update({"phase": "error", "message": str(exc)})
+
+    task = asyncio.create_task(go())
+    _background.add(task)
+    task.add_done_callback(_background.discard)
+    return JSONResponse({"fetching": wanted})
+
+
+# One picture -> a varied training set. Each line is something the caption
+# names (so it is taught as variable) while the character stays the same.
+BOOTSTRAP_SHOTS = (
+    "close-up portrait, looking at viewer", "upper body, smiling", "upper body, from side",
+    "full body, standing", "full body, walking", "sitting on a chair", "from behind, looking back",
+    "cowboy shot, arms crossed", "portrait, three-quarter view", "full body, outdoors, park",
+    "upper body, indoors, window light", "close-up, laughing", "full body, from above",
+    "upper body, from below", "sitting on the floor", "portrait, night, city lights",
+    "full body, running", "upper body, hands on hips", "close-up, profile", "full body, leaning on a wall",
+)
+BOOTSTRAPS: dict[str, dict] = {}
+
+
+@app.post("/api/training/bootstrap")
+async def training_bootstrap(payload: dict = Body(default={})) -> JSONResponse:
+    """Generate a varied set of one character from one picture, to pick from."""
+    if not payload.get("consent"):
+        raise HTTPException(400, "要先勾選確認：" + CONSENT_TEXT)
+    trigger = str(payload.get("trigger") or "").strip()
+    if problem := training.check_trigger(trigger):
+        raise HTTPException(400, problem)
+    staged = str(payload.get("image") or "")
+    source = (config.STAGING_DIR / staged).resolve()
+    if not staged or config.STAGING_DIR.resolve() not in source.parents or not source.is_file():
+        raise HTTPException(400, "先放一張角色的圖")
+    await _dataset_guard([source], [], trigger)
+    model = images.get(str(payload.get("model") or ""))
+    if model is None:
+        raise HTTPException(400, "先選一個圖片底模")
+    count = max(4, min(int(payload.get("count") or 20), 30))
+    how = "edit" if model.loader == "qwen_edit" else "ipadapter"
+    if how == "ipadapter" and model.loader != "checkpoint":
+        raise HTTPException(400, "從一張圖生訓練圖要用 SDXL 系底模（配 IP-Adapter）或 Qwen-Image Edit。")
+    run = {"id": uuid.uuid4().hex[:10], "trigger": trigger, "jobs": []}
+    for index in range(count):
+        shot = BOOTSTRAP_SHOTS[index % len(BOOTSTRAP_SHOTS)]
+        if how == "edit":
+            body = {"model": model.id, "init_image": staged, "batch": 1, "seed": -1,
+                    "prompt": f"Keep the same character, face, hair and outfit. Show them {shot}."}
+        else:
+            body = {"model": model.id, "prompt": f"{trigger}, adult, {shot}", "batch": 1, "seed": -1,
+                    "ipadapter": "all", "ipadapter_weight": 0.85, "reference_image": staged}
+        answer = await image_generate(body)
+        run["jobs"].append({"job": json.loads(answer.body)["id"],
+                            "caption": training.caption_for(trigger, shot=shot)})
+    BOOTSTRAPS[run["id"]] = run
+    return JSONResponse(run)
+
+
+@app.post("/api/training/collect")
+async def training_collect(payload: dict = Body(default={})) -> JSONResponse:
+    """Copy the picked results into a training folder, each with its caption."""
+    run = BOOTSTRAPS.get(str(payload.get("id") or ""))
+    if run is None:
+        raise HTTPException(404, "找不到這一批")
+    picked = {str(j) for j in (payload.get("jobs") or [])}
+    folder = DATASETS_DIR / _train_name(run["trigger"])
+    folder.mkdir(parents=True, exist_ok=True)
+    copied = 0
+    for entry in run["jobs"]:
+        record = lib.get(entry["job"])
+        if entry["job"] not in picked or record is None or not record.output:
+            continue
+        src = config.OUTPUT_DIR / record.output
+        if not src.is_file():
+            continue
+        dest = folder / f"{entry['job']}{src.suffix}"
+        shutil.copyfile(src, dest)
+        dest.with_suffix(".txt").write_text(entry["caption"], encoding="utf-8")
+        copied += 1
+    return JSONResponse({"folder": str(folder), "copied": copied})
+
+
 @app.get("/api/settings")
 async def get_settings() -> JSONResponse:
     return JSONResponse({"settings": envfile.state(), "file": str(envfile.path())})

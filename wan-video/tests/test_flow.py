@@ -8628,6 +8628,256 @@ async def test_qwen_edit() -> None:
         server.image_status = saved
 
 
+async def test_cloud_training() -> None:
+    """Training a LoRA on the rented machine, without a GPU.
+
+    The agent is the real one, started here; the trainer it runs is
+    tests/fake_trainer.py (WAN_TRAIN_CMD), which prints tqdm-style progress
+    and writes a LoRA file. The command the real trainer would get is checked
+    separately against what sd-scripts v0.12.3 accepts. Runpod is the strict
+    fake from test_cloud.
+    """
+    import threading
+    import types as pytypes
+    from http.server import ThreadingHTTPServer
+
+    import config
+    import images
+    import library
+    import runpod
+    import server
+    import sources
+    import tags
+    from fastapi import HTTPException
+    from fake_runpod import FakeRunpod
+    from PIL import Image as PILImage
+
+    sys.path.insert(0, str(ROOT / "cloud"))
+    import agent as agent_mod
+
+    section("cloud training: the agent")
+    root = TMP / "train-agent"
+    if root.exists():
+        import shutil as _shutil
+        _shutil.rmtree(root)
+    (root / "ComfyUI" / "models" / "checkpoints").mkdir(parents=True)
+    token = "train-agent-token-0123456789"
+    os.environ["WAN_TRAIN_CMD"] = str(ROOT / "tests" / "fake_trainer.py")
+    state = agent_mod.State(root, token)
+    state.trainer = agent_mod.Trainer(state)
+    httpd = ThreadingHTTPServer(("127.0.0.1", 0), agent_mod.make_handler(state))
+    threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    agent_url = f"http://127.0.0.1:{httpd.server_address[1]}"
+    client_agent = runpod.Agent(agent_url, token)
+    spec = {"name": "hero", "base_folder": "checkpoints", "base_name": "base.safetensors",
+            "network_dim": 32, "network_alpha": 16, "learning_rate": 1e-4, "unet_lr": 1e-4,
+            "text_encoder_lr": 1e-5, "optimizer": "AdamW8bit", "scheduler": "cosine",
+            "resolution": 1024, "batch_size": 1, "repeats": 10, "epochs": 2}
+
+    async def refused(body, needle, label):
+        try:
+            await client_agent.train(body)
+            check(False, label)
+        except runpod.CloudError as exc:
+            check(needle in str(exc), f"{label} ({str(exc)[:30]})")
+
+    await refused(spec, "底模", "no base checkpoint on the machine: refused")
+    (root / "ComfyUI/models/checkpoints/base.safetensors").write_bytes(b"x")
+    await refused(spec, "太少", "fewer than 5 pictures: refused")
+    pic = TMP / "train-pic.png"
+    PILImage.new("RGB", (64, 64), (90, 120, 200)).save(pic)
+    for i in range(6):
+        await client_agent.upload(pic, "hero/img", f"{i}.png", area="train")
+    check((root / "train/hero/img/0.png").is_file() and not (root / "ComfyUI/models/hero").exists(),
+          "training pictures go to their own area, not into the model folders")
+    await refused({**spec, "name": "../../x"}, "名稱", "a path in the name: refused")
+    await refused({**spec, "epochs": 500}, "epochs", "a number out of range: refused")
+    await refused({**spec, "optimizer": "AdamW8bit; rm -rf /"}, "optimizer", "anything but a known optimizer: refused")
+    started = await client_agent.train(spec)
+    check(started["total"] == 120, f"steps = 6 pictures x 10 repeats x 2 epochs ({started['total']})")
+    await refused(spec, "已經有", "a second run while one is going: refused")
+    check(state.status()["training"] is True, "the machine reports itself busy while training")
+    check(not agent_mod.should_stop(state, 30, state.last_seen + 9999, busy=state.trainer.running),
+          "…so its dead-man switch will not stop it mid-run")
+    for _ in range(100):
+        status = await client_agent.train_status()
+        if status["phase"] not in ("installing", "training"):
+            break
+        await asyncio.sleep(0.1)
+    check(status["phase"] == "done" and status["outputs"] == ["hero.safetensors"],
+          f"the run finishes with a LoRA ({status['phase']}, {status['outputs']})")
+    check(status["step"] == 120 and any("120/120" in line for line in status["log"]),
+          "progress is read off the trainer's own output")
+    dest = TMP / "train-fetched" / "hero.safetensors"
+    size = await client_agent.fetch_file("loras/hero", "hero.safetensors", dest)
+    check(size == 4096 and dest.read_bytes() == b"\0" * 4096, "the LoRA comes back to this computer intact")
+
+    (root / "train/hero2/img").mkdir(parents=True)
+    for i in range(6):
+        (root / f"train/hero2/img/{i}.png").write_bytes(pic.read_bytes())
+    os.environ["FAKE_TRAIN_FAIL"] = "1"
+    await client_agent.train({**spec, "name": "hero2"})
+    for _ in range(100):
+        status = await client_agent.train_status()
+        if status["phase"] not in ("installing", "training"):
+            break
+        await asyncio.sleep(0.1)
+    os.environ.pop("FAKE_TRAIN_FAIL", None)
+    check(status["phase"] == "failed" and "代碼 3" in status["error"]
+          and any("out of memory" in line for line in status["log"]),
+          "a trainer that fails says so, with its own last lines")
+
+    # The real command: every flag must be one sd-scripts v0.12.3 defines (a
+    # list read off its argument parsers when this was written).
+    known = {"--pretrained_model_name_or_path", "--dataset_config", "--output_dir", "--output_name",
+             "--save_model_as", "--network_module", "--network_dim", "--network_alpha", "--learning_rate",
+             "--unet_lr", "--text_encoder_lr", "--optimizer_type", "--lr_scheduler", "--max_train_epochs",
+             "--save_every_n_epochs", "--mixed_precision", "--save_precision", "--gradient_checkpointing",
+             "--cache_latents", "--cache_latents_to_disk", "--sdpa", "--seed", "--max_data_loader_n_workers"}
+    saved_cmd = os.environ.pop("WAN_TRAIN_CMD")
+    try:
+        real = state.trainer._spec(spec)
+        argv, cwd = state.trainer.command(real, Path("/v/bin/python"), root / "out")
+    finally:
+        os.environ["WAN_TRAIN_CMD"] = saved_cmd
+    flags = {a for a in argv if a.startswith("--") and a != "--num_cpu_threads_per_process"}
+    check(argv[:2] == ["/v/bin/accelerate", "launch"] and "sdxl_train_network.py" in argv,
+          "the real run is the documented `accelerate launch sdxl_train_network.py`")
+    check(flags <= known, f"…using only flags v0.12.3 defines ({sorted(flags - known)})")
+    lr = argv.index("--text_encoder_lr")
+    check(argv[lr + 1:lr + 3] == ["1e-05", "1e-05"], "…with one text-encoder rate per SDXL encoder")
+    dataset = (root / "train/hero/dataset.toml").read_text()
+    check("num_repeats = 10" in dataset and "keep_tokens = 1" in dataset and "image_dir" in dataset,
+          "the dataset config uses kohya's documented keys (num_repeats, not a folder-name prefix)")
+
+    section("cloud training: through the server")
+    rp = FakeRunpod()
+    rp_runner, rp_url = await start(rp.app())
+    files_app = web.Application()
+    files_app.router.add_get("/f/{name}", lambda req: web.Response(body=b"c" * 1000))
+    files_runner, files_url = await start(files_app)
+    saved = (server.cloud, runpod.COMFY_PORT, runpod.AGENT_PORT, server.sources.find,
+             {k: os.environ.get(k) for k in ("RUNPOD_API_KEY", "RUNPOD_API_URL", "RUNPOD_PROXY_TEMPLATE")})
+    os.environ.update({"RUNPOD_API_URL": rp_url, "RUNPOD_PROXY_TEMPLATE": "http://127.0.0.1:{port}",
+                       "RUNPOD_API_KEY": rp.key})
+    runpod.AGENT_PORT = httpd.server_address[1]
+    server.cloud = runpod.Cloud(runpod.Store(TMP / "train-cloud.json"))
+    (TMP / "train-cloud.json").unlink(missing_ok=True)
+    server.cloud.store.load()
+    server.sources.find = lambda value, d: sources.Source(
+        name=value, folder="checkpoints", size=1000, url=f"{files_url}/f/{value}")
+    (root / "phase").write_text("ready")
+    dataset_dir = TMP / "train-dataset"
+    dataset_dir.mkdir(exist_ok=True)
+    for i in range(6):
+        PILImage.new("RGB", (64, 64), (200, 100, 50)).save(dataset_dir / f"{i}.png")
+    (dataset_dir / "0.txt").write_text("herochar, adult, full body", encoding="utf-8")
+    saved_installed = tags.installed
+    tags.installed = lambda _d: []
+    try:
+        body = {"folder": str(dataset_dir), "trigger": "herochar", "name": "herochar_v1", "model": "illustrious"}
+        for extra, needle, label in (({}, "勾選", "no consent, no training"),
+                                     ({"consent": True, "model": "z-image-turbo"}, "SDXL", "only SDXL bases"),
+                                     ({"consent": True}, "雲端機", "no machine rented: says so")):
+            try:
+                await server.cloud_train({**body, **extra})
+                check(False, label)
+            except HTTPException as exc:
+                check(needle in str(exc.detail), f"{label} ({str(exc.detail)[:24]})")
+        await server.cloud_rent({"gpu_id": "NVIDIA GeForce RTX 4090"})
+        server.cloud.state.agent_token = token
+        try:
+            await server.cloud_train({**body, "consent": True, "trigger": "loli"})
+            check(False, "a minor in the trigger is refused")
+        except HTTPException as exc:
+            check("未成年" in str(exc.detail) or "觸發詞" in str(exc.detail), "a minor in the trigger is refused")
+        out = json.loads((await server.cloud_train({**body, "consent": True})).body)
+        check(out["images"] == 6, "six pictures accepted")
+        for _ in range(200):
+            if server.CLOUD_TRAIN["phase"] in ("submitted", "error"):
+                break
+            await asyncio.sleep(0.05)
+        check(server.CLOUD_TRAIN["phase"] == "submitted", f"uploaded and started ({server.CLOUD_TRAIN})")
+        base_file = root / "ComfyUI/models/checkpoints" / images.get("illustrious").file.name
+        check(base_file.is_file() and base_file.stat().st_size == 1000,
+              "the base checkpoint was put on the machine first")
+        caps = sorted((root / "train/herochar_v1/img").glob("*.txt"))
+        check(len(caps) == 6 and (root / "train/herochar_v1/img/0.txt").read_text() == "herochar, adult, full body"
+              and (root / "train/herochar_v1/img/1.txt").read_text() == "herochar",
+              "every picture goes up with its caption (the trigger alone when it had none)")
+        for _ in range(100):
+            remote = json.loads((await server.cloud_train_status()).body)["remote"] or {}
+            if remote.get("phase") not in ("installing", "training"):
+                break
+            await asyncio.sleep(0.1)
+        check(remote.get("phase") == "done", f"the machine finished training ({remote.get('phase')})")
+        await server.cloud_train_fetch({})
+        for _ in range(100):
+            if server.CLOUD_TRAIN["phase"] in ("fetched", "error"):
+                break
+            await asyncio.sleep(0.05)
+        check(server.CLOUD_TRAIN["phase"] == "fetched"
+              and (config.MODELS_DIR / "loras" / "herochar_v1.safetensors").is_file(),
+              "抓回本機 puts the LoRA in this computer's loras folder")
+        (config.MODELS_DIR / "loras" / "herochar_v1.safetensors").unlink(missing_ok=True)
+    finally:
+        tags.installed = saved_installed
+        server.cloud, runpod.COMFY_PORT, runpod.AGENT_PORT, server.sources.find, env = saved
+        for k, v in env.items():
+            if v is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = v
+        os.environ.pop("WAN_TRAIN_CMD", None)
+        httpd.shutdown()
+        await rp_runner.cleanup()
+        await files_runner.cleanup()
+
+    section("training set from one picture")
+    saved_gen, saved_status = server.image_generate, server.image_status
+    server.image_status = lambda m: {"installed": True, "usable": True, "missing": []}
+    asked = []
+
+    async def fake_generate(payload):
+        asked.append(payload)
+        job = f"bs{len(asked):03d}"
+        name = f"{job}.png"
+        PILImage.new("RGB", (48, 48), (10 * len(asked), 80, 120)).save(config.OUTPUT_DIR / name)
+        server.lib.records[job] = library.Record(id=job, model_id=payload["model"], prompt=payload["prompt"],
+                                                 kind="image", status="done", output=name)
+        return server.JSONResponse({"id": job})
+
+    server.image_generate = fake_generate
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    PILImage.new("RGB", (64, 64), (1, 2, 3)).save(config.STAGING_DIR / "bs-source.png")
+    try:
+        try:
+            await server.training_bootstrap({"image": "bs-source.png", "model": "illustrious", "trigger": "herochar"})
+            check(False, "no consent, no set")
+        except HTTPException:
+            check(True, "no consent, no set")
+        run = json.loads((await server.training_bootstrap({"image": "bs-source.png", "model": "illustrious",
+                                                           "trigger": "herochar", "count": 6, "consent": True})).body)
+        check(len(asked) == 6 and all(a["ipadapter"] == "all" and a["reference_image"] == "bs-source.png"
+                                      for a in asked), "an SDXL base draws each variation with the picture as IP-Adapter reference")
+        check(len({a["prompt"] for a in asked}) == 6 and all(a["prompt"].startswith("herochar, adult,") for a in asked),
+              "…six different shots, each starting with the trigger")
+        asked.clear()
+        await server.training_bootstrap({"image": "bs-source.png", "model": "qwen-image-edit",
+                                         "trigger": "herochar", "count": 4, "consent": True})
+        check(all(a["init_image"] == "bs-source.png" and "same character" in a["prompt"] for a in asked),
+              "the edit model is asked to keep the same character in a new pose")
+        got = json.loads((await server.training_collect({"id": run["id"], "jobs": [j["job"] for j in run["jobs"][:4]]})).body)
+        folder = Path(got["folder"])
+        check(got["copied"] == 4 and len(list(folder.glob("*.png"))) == 4, "the picked four are copied into a training folder")
+        caption = next(folder.glob("*.txt")).read_text(encoding="utf-8")
+        check(caption.startswith("herochar, adult,"), f"…each with a caption naming what varies ({caption[:40]})")
+    finally:
+        server.image_generate, server.image_status = saved_gen, saved_status
+        for job in [k for k in server.lib.records if k.startswith("bs0")]:
+            server.lib.records.pop(job, None)
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -9497,6 +9747,7 @@ async def main() -> int:
     await test_approach()
     await test_ipadapter()
     await test_qwen_edit()
+    await test_cloud_training()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

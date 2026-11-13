@@ -328,11 +328,48 @@ class Agent:
             "url": url, "folder": folder, "name": name, "size": int(size or 0),
             "headers": headers or {}})
 
+    async def train(self, spec: dict) -> dict:
+        return await self._call("POST", "/train", payload=spec, timeout=60)
+
+    async def train_status(self) -> dict:
+        return await self._call("GET", "/train", timeout=20)
+
+    async def train_stop(self) -> dict:
+        return await self._call("POST", "/train/stop", payload={}, timeout=20)
+
+    async def fetch_file(self, folder: str, name: str, dest: Path, on_progress=None) -> int:
+        """Pull a file off the machine (a trained LoRA) in slices, like upload in reverse."""
+        part = dest.with_name(dest.name + ".part")
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        offset, total = 0, None
+        headers = {"User-Agent": UA, "X-Wan-Token": self.token}
+        async with aiohttp.ClientSession(headers=headers) as session:
+            with part.open("wb") as handle:
+                while total is None or offset < total:
+                    async with session.get(self.base + "/file", timeout=95, params={
+                            "folder": folder, "name": name, "offset": str(offset)}) as response:
+                        if response.status != 200:
+                            raise CloudError(f"從雲端機抓 {name} 失敗（HTTP {response.status}）")
+                        total = int(response.headers.get("X-Total-Size") or 0)
+                        chunk = await response.read()
+                    if not chunk:
+                        break
+                    handle.write(chunk)
+                    offset += len(chunk)
+                    if on_progress and total:
+                        on_progress(offset / total)
+        if total is None or offset != total:
+            part.unlink(missing_ok=True)
+            raise CloudError(f"{name} 只抓到一部分（{offset}/{total}），再試一次。")
+        part.replace(dest)
+        return offset
+
     async def delete(self, folder: str, name: str) -> bool:
         return bool((await self._call("POST", "/delete", payload={
             "folder": folder, "name": name})).get("deleted"))
 
-    async def upload(self, path: Path, folder: str, name: str, on_progress=None) -> None:
+    async def upload(self, path: Path, folder: str, name: str, on_progress=None,
+                     area: str = "models") -> None:
         """Push a local file up in slices that each fit the proxy's time limit."""
         total = path.stat().st_size
         if total <= 0:
@@ -344,7 +381,7 @@ class Agent:
                 chunk = handle.read(UPLOAD_CHUNK)
                 answer = await self._call(
                     "PUT", "/upload", data=chunk, timeout=95,
-                    params={"folder": folder, "name": name,
+                    params={"folder": folder, "name": name, "area": area,
                             "offset": str(offset), "total": str(total)})
                 received = int(answer.get("received") or 0)
                 if answer.get("resync"):
@@ -632,8 +669,9 @@ class Cloud:
         agent = self.agent
         if agent is not None:
             try:
-                if int((await agent.status()).get("downloading") or 0) > 0:
-                    self.touch()          # still fetching a model: that is work
+                status = await agent.status()
+                if int(status.get("downloading") or 0) > 0 or status.get("training"):
+                    self.touch()          # fetching a model or training: that is work
                     return False
             except Exception:  # noqa: BLE001 - unreachable agent is not "busy"
                 pass
