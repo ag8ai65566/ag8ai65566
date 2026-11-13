@@ -1364,7 +1364,7 @@ def test_image_registry() -> None:
     check(len(images.IMAGE_MODELS) >= 4, f"{len(images.IMAGE_MODELS)} checkpoints catalogued")
     check(len({m.id for m in images.IMAGE_MODELS}) == len(images.IMAGE_MODELS), "ids unique")
     for m in images.IMAGE_MODELS:
-        want = "diffusion_models" if m.loader == "unet" else "checkpoints"
+        want = "checkpoints" if m.loader == "checkpoint" else "diffusion_models"
         check(m.file.folder == want, f"{m.id} installs into {want}/")
         check(m.file.size > 1e9, f"{m.id} has a real size ({m.file.size/1e9:.1f}GB)")
         check(bool(m.sizes), f"{m.id} offers sizes")
@@ -1508,6 +1508,8 @@ async def test_image_graphs() -> None:
                     settings(_model=model, batch=3, hires_scale=hires,
                              loras=[("my_style.safetensors", 0.8, 0.8)]),
                     prompt="p", negative="n", seed=1, width=w, height=h,
+                    # An edit model edits a picture; it has nothing to start from without one.
+                    init_image="example.png" if model.loader == "qwen_edit" else "",
                     available_nodes=nodes,
                 )
                 problems = await client.validate(g)
@@ -8558,6 +8560,74 @@ async def test_ipadapter() -> None:
             server.image_status = saved
 
 
+
+async def test_qwen_edit() -> None:
+    """Qwen-Image 2.1 Edit, from ComfyUI's official template.
+
+    The graph shape is the template's core path (its prompt enhancer is off by
+    default and left out). The same graphs were accepted by a real ComfyUI
+    0.45.0's own /prompt validation while this was written - including the
+    dotted `images.image_1` input names of its autogrow picture list, which
+    this app's validator now understands too.
+    """
+    import images
+    import server
+    from comfy_client import ComfyClient
+    from fastapi import HTTPException
+
+    section("Qwen-Image Edit")
+    m = images.get("qwen-image-edit")
+    check(m is not None and m.loader == "qwen_edit" and m.zero_negative, "catalogued as an edit model")
+    check(abs(m.download_bytes - 17.28e9) < 0.05e9, f"…17.3GB without the optional prompt enhancer ({m.download_bytes/1e9:.2f})")
+    check("不能商用" in m.licence_note, "…and its research-only licence is on the card")
+    s = images.defaults_for(m)
+    s.loras = [("my_style.safetensors", 0.8, 0.8)]
+    g = images.build(m, s, prompt="把衣服換成紅色洋裝", negative="ignored", seed=3, width=1, height=1,
+                     init_image="photo.png", reference_image="dress.png")
+    by = lambda c: [(k, n) for k, n in g.items() if n["class_type"] == c]  # noqa: E731
+    (enc_id, enc), = by("TextEncodeQwenImage21")
+    loads = {n["inputs"]["image"]: k for k, n in by("LoadImage")}
+    check(enc["inputs"]["images.image_1"] == [loads["photo.png"], 0]
+          and enc["inputs"]["images.image_2"] == [loads["dress.png"], 0],
+          "the picture to edit is image_1, the second reference image_2")
+    ks = by("KSampler")[0][1]["inputs"]
+    check(ks["positive"] == [enc_id, 0] and ks["negative"] == [enc_id, 1] and ks["latent_image"] == [enc_id, 2],
+          "the encoder supplies positive, negative and the starting latent, as in the template")
+    check((ks["steps"], ks["cfg"], ks["sampler_name"], ks["scheduler"]) == (25, 1.0, "euler", "simple"),
+          "…25 steps, cfg 1, euler/simple")
+    check(g[ks["model"][0]]["class_type"] == "QwenImage21Cache"
+          and by("CLIPLoader")[0][1]["inputs"]["type"] == "qwen_image",
+          "…through the prefix cache, with the qwen_image text encoder")
+    check(by("LoraLoaderModelOnly"), "LoRAs go on the model only")
+    try:
+        images.build(m, images.defaults_for(m), prompt="x", negative="", seed=1, width=1, height=1)
+        check(False, "no picture, no edit")
+    except ValueError as exc:
+        check("以圖生圖" in str(exc), "no picture, no edit - and it says where to put one")
+
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    try:
+        problems = await ComfyClient(url).validate(g)
+        check(not problems, f"the graph validates, dotted inputs included ({problems[:1]})")
+        bad = dict(g)
+        bad[enc_id] = {**enc, "inputs": {**enc["inputs"], "pictures.image_1": enc["inputs"]["images.image_1"]}}
+        problems = await ComfyClient(url).validate(bad)
+        check(any("pictures.image_1" in p for p in problems), "…while a dotted name with an unknown head is still caught")
+    finally:
+        await runner.cleanup()
+
+    saved = server.image_status
+    server.image_status = lambda mm: {"installed": True, "usable": True, "missing": []}
+    try:
+        await server.image_generate({"model": "qwen-image-edit", "prompt": "改成紅色"})
+        check(False, "the endpoint refuses an edit with no picture")
+    except HTTPException as exc:
+        check("編輯模型" in str(exc.detail), "the endpoint refuses an edit with no picture")
+    finally:
+        server.image_status = saved
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -9426,6 +9496,7 @@ async def main() -> int:
     await test_new_image_families()
     await test_approach()
     await test_ipadapter()
+    await test_qwen_edit()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

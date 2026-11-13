@@ -271,12 +271,17 @@ class ComfyClient:
             optional = spec.get("optional", {})
             known = set(required) | set(optional) | {"hidden"}
             given = set(node["inputs"])
+            # ComfyUI's v3 dynamic inputs (an "autogrow" list of pictures, for
+            # one) arrive flattened with dots - `images.image_1` fills the
+            # `images` input. Count each dotted key towards its head, the way
+            # ComfyUI's own validation does (execution.py splits on ".").
+            heads = {key.split(".", 1)[0] for key in given if "." in key}
 
-            for missing in set(required) - given:
+            for missing in set(required) - given - heads:
                 issues.append(Issue(
                     "missing-input", str(node_id), cls, missing,
                     text=f"node {node_id} ({cls}): missing input '{missing}'"))
-            for unknown in given - known:
+            for unknown in {k for k in given if k.split(".", 1)[0] not in known}:
                 issues.append(Issue(
                     "unexpected-input", str(node_id), cls, unknown,
                     text=f"node {node_id} ({cls}): unexpected input '{unknown}'"))

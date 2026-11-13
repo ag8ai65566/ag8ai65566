@@ -1648,7 +1648,8 @@ async def run_image_job(record: library.Record) -> None:
         )
 
     reference_name = ""
-    if settings.ipadapter and (record.settings or {}).get("reference_image"):
+    if ((settings.ipadapter or model.loader == "qwen_edit")
+            and (record.settings or {}).get("reference_image")):
         staged = config.STAGING_DIR / f"{record.id}-reference.png"
         if not staged.is_file():
             raise ComfyError("找不到剛才那張參考圖，請重新放一次")
@@ -1910,7 +1911,18 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         control_name = raw_control
 
     reference_name = ""
-    if settings.ipadapter:
+    if model.loader == "qwen_edit":
+        # An edit model edits something: without a picture there is nothing to do.
+        if not init_name:
+            raise HTTPException(400, f"{model.label.split('—')[0].strip()} 是編輯模型："
+                                     "先在「以圖生圖」放一張要改的圖，提詞寫要怎麼改。")
+        raw_reference = str(payload.get("reference_image") or "")
+        if raw_reference:
+            reference = (config.STAGING_DIR / raw_reference).resolve()
+            if config.STAGING_DIR.resolve() not in reference.parents or not reference.is_file():
+                raise HTTPException(400, "找不到剛才那張參考圖，請重新放一次")
+            reference_name = raw_reference
+    elif settings.ipadapter:
         if settings.ipadapter not in images.IPADAPTER_MODES:
             raise HTTPException(400, f"不認識的參考方式：{settings.ipadapter}")
         if model.loader != "checkpoint":

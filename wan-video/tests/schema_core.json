@@ -2037,5 +2037,125 @@
   "output": [
    "MODEL"
   ]
+ },
+ "TextEncodeQwenImage21": {
+  "input": {
+   "required": {
+    "clip": [
+     "CLIP",
+     {}
+    ],
+    "prompt": [
+     "STRING",
+     {
+      "multiline": true,
+      "dynamicPrompts": true
+     }
+    ],
+    "negative_prompt": [
+     "STRING",
+     {
+      "multiline": true,
+      "dynamicPrompts": true
+     }
+    ],
+    "resolution": [
+     "INT",
+     {
+      "tooltip": "Reference images are resized to about resolution x resolution pixels, at multiples of 32, preserving aspect ratio. 0 keeps each reference at its own size, rounded to a multiple of 32. ",
+      "default": 1024,
+      "min": 0,
+      "max": 4096,
+      "step": 32
+     }
+    ],
+    "images": [
+     "COMFY_AUTOGROW_V3",
+     {
+      "tooltip": "Reference images, seen by the text encoder and spliced into the sequence as VAE latents.",
+      "template": {
+       "input": {
+        "required": {
+         "image": [
+          "IMAGE",
+          {}
+         ]
+        }
+       },
+       "names": [
+        "image_1",
+        "image_2",
+        "image_3",
+        "image_4",
+        "image_5",
+        "image_6",
+        "image_7",
+        "image_8",
+        "image_9",
+        "image_10",
+        "image_11",
+        "image_12",
+        "image_13",
+        "image_14",
+        "image_15",
+        "image_16"
+       ],
+       "min": 0
+      }
+     }
+    ]
+   },
+   "optional": {
+    "vae": [
+     "VAE",
+     {}
+    ]
+   }
+  },
+  "output": [
+   "CONDITIONING",
+   "CONDITIONING",
+   "LATENT"
+  ]
+ },
+ "QwenImage21Cache": {
+  "input": {
+   "required": {
+    "model": [
+     "MODEL",
+     {}
+    ],
+    "device": [
+     "COMBO",
+     {
+      "tooltip": "auto uses spare VRAM, then RAM. cpu (RAM) is prefetched behind compute and costs little speed. off recomputes the prefix every step, which is slower but is the one way to rule the cache out.",
+      "default": "auto",
+      "multiselect": false,
+      "options": [
+       "auto",
+       "gpu",
+       "cpu",
+       "off"
+      ]
+     }
+    ],
+    "dtype": [
+     "COMBO",
+     {
+      "tooltip": "Storage precision. default is lossless. int8 halves the cache at about bf16 accuracy, int4 quarters it but roughly doubles the per-step error.",
+      "default": "default",
+      "multiselect": false,
+      "options": [
+       "default",
+       "int8",
+       "int4"
+      ]
+     }
+    ]
+   }
+  },
+  "output": [
+   "MODEL"
+  ]
  }
 }

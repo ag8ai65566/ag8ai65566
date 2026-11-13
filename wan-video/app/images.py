@@ -420,6 +420,35 @@ IMAGE_MODELS: list[ImageModel] = [
         licence_note="circlestone-labs 非商用授權：只能個人／非商業使用。",
         checked="2026-11-13",
     ),
+    # Qwen-Image 2.1 Edit: change a picture by instruction, with the picture
+    # itself as the reference - the most used template in ComfyUI's index
+    # (image_qwen_image_2_1_image_edit, 15644 uses, 2026-09-20). Built from
+    # that template with its optional 9B prompt enhancer left out (off by
+    # default there too), which saves a 9.5GB download.
+    ImageModel(
+        id="qwen-image-edit",
+        label="Qwen-Image 2.1 Edit — 用一句話改圖（換衣服、換背景、加東西），原圖的人和畫風保留",
+        file=ModelFile("Comfy-Org/Qwen-Image-2.1", "diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+                       "diffusion_models", 7256783064),
+        extra_files=(
+            ModelFile("Comfy-Org/Qwen-Image-2.1", "text_encoders/qwen3vl_8b_int8_convrot.safetensors",
+                      "text_encoders", 9350798360),
+            ModelFile("Comfy-Org/Qwen-Image-2.1", "vae/qwen_image_2.1_vae_bf16.safetensors",
+                      "vae", 675509688),
+        ),
+        loader="qwen_edit", clip_type="qwen_image", zero_negative=True,
+        vram_gb=24,
+        steps=25, cfg=1.0, sampler="euler", scheduler="simple",
+        tag_style="natural",
+        negative="",
+        prompt_style=("寫「要怎麼改」，不是描述整張圖：例如「把她的衣服換成紅色洋裝」「背景換成夜晚的東京街頭」。"
+                      "中文英文都可以。"),
+        sizes=SDXL_SIZES,
+        note=("編輯模式：「以圖生圖」那裡放要改的圖（必要）；「參考圖」那裡可以再放一張（例如要換上的衣服）。"
+              "輸出尺寸跟著原圖比例走。17.3GB，建議 24GB 以上顯卡，10GB 卡請用雲端 GPU。"),
+        licence_note="Qwen Research License：只限研究或評估用途，不能商用。",
+        checked="2026-11-13",
+    ),
 ]
 
 BY_ID = {m.id: m for m in IMAGE_MODELS}
@@ -484,6 +513,8 @@ CIVITAI_BASES = {
     # The newer families, by the names CivitAI's API used on 2026-11-13.
     "z-image-turbo": ("ZImageTurbo",),
     "anima": ("Anima",),
+    # CivitAI files Qwen-Image LoRAs, edit ones included, under one base name.
+    "qwen-image-edit": ("Qwen",),
 }
 CIVITAI_BASES_LOOSE = ("SDXL 1.0", "Illustrious", "Pony", "NoobAI", "SDXL Lightning")
 
@@ -905,6 +936,11 @@ def build(
     def supported(class_type: str) -> bool:
         return have is None or class_type in have
 
+    if model.loader == "qwen_edit":
+        return _build_qwen_edit(model, settings, add, prompt=prompt, seed=seed,
+                                init_image=init_image, reference_image=reference_image,
+                                supported=supported, filename_prefix=filename_prefix,
+                                nodes=nodes)
     unet_family = model.loader == "unet"
     if unet_family:
         # The newer families: three files, three loaders, as in their templates.
@@ -1188,5 +1224,52 @@ def build(
         )
         image_link = [final, 0]
 
+    add("SaveImage", {"images": image_link, "filename_prefix": filename_prefix}, "Save")
+    return nodes
+
+
+def _build_qwen_edit(model: ImageModel, settings: ImageSettings, add, *, prompt, seed: int,
+                     init_image: str, reference_image: str, supported, filename_prefix: str,
+                     nodes: dict) -> dict:
+    """Qwen-Image 2.1 Edit, as in ComfyUI's official template.
+
+    The picture being edited is image_1 of the text encoder, which also hands
+    back the starting latent at the picture's own proportions - so the size
+    picker does not apply. A second picture (an outfit, an object) is image_2.
+    """
+    if not init_image:
+        raise ValueError(f"{model.label} 是編輯模型：要先在「以圖生圖」放一張要改的圖。")
+    text = prompt if isinstance(prompt, str) else (list(prompt) or [""])[0]
+    unet = add("UNETLoader", {"unet_name": model.file.name, "weight_dtype": "default"}, "Diffusion model")
+    model_link = [unet, 0]
+    for name, strength_model, _clip in settings.loras:
+        node = add("LoraLoaderModelOnly", {"model": model_link, "lora_name": name,
+                                            "strength_model": strength_model}, f"LoRA {name}")
+        model_link = [node, 0]
+    cache = add("QwenImage21Cache", {"model": model_link, "device": "auto", "dtype": "default"},
+                "Prefix cache")
+    clip = add("CLIPLoader", {"clip_name": model.extra("text_encoders"), "type": model.clip_type,
+                              "device": "default"}, "Text encoder")
+    vae = add("VAELoader", {"vae_name": model.extra("vae")}, "VAE")
+    pictures = {"images.image_1": [add("LoadImage", {"image": init_image}, "Picture to edit"), 0]}
+    if reference_image:
+        pictures["images.image_2"] = [add("LoadImage", {"image": reference_image}, "Second reference"), 0]
+    encoded = add("TextEncodeQwenImage21", {"clip": [clip, 0], "vae": [vae, 0], "prompt": text,
+                                            "negative_prompt": "", "resolution": 1024, **pictures},
+                  "Edit instruction")
+    latent: list = [encoded, 2]
+    batch = max(1, min(settings.batch, 16))
+    if batch > 1:
+        latent = [add("RepeatLatentBatch", {"samples": latent, "amount": batch}, "Batch"), 0]
+    sampled = add("KSampler", {
+        "model": [cache, 0], "seed": seed, "steps": settings.steps, "cfg": settings.cfg,
+        "sampler_name": settings.sampler, "scheduler": settings.scheduler,
+        "positive": [encoded, 0], "negative": [encoded, 1], "latent_image": latent, "denoise": 1.0,
+    }, "Sample")
+    image_link: list = [add("VAEDecode", {"samples": [sampled, 0], "vae": [vae, 0]}, "Decode"), 0]
+    if settings.upscaler and supported("UpscaleModelLoader") and supported("ImageUpscaleWithModel"):
+        loader = add("UpscaleModelLoader", {"model_name": settings.upscaler}, "Upscale model")
+        image_link = [add("ImageUpscaleWithModel", {"upscale_model": [loader, 0], "image": image_link},
+                          "Final upscale"), 0]
     add("SaveImage", {"images": image_link, "filename_prefix": filename_prefix}, "Save")
     return nodes

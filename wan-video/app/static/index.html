@@ -3175,6 +3175,8 @@ $('#packgo').onclick = applyPack;
 /* ---------- IP-Adapter: a reference picture instead of a LoRA ---------- */
 const IPA = { ref: null };
 function ipaPayload() {
+  // The edit model takes a second picture as-is (an outfit, an object), no mode.
+  if ((IMG.chosen || {}).loader === 'qwen_edit') return { ipadapter: '', reference_image: IPA.ref ? IPA.ref.name : '' };
   const mode = $('#iipa') ? $('#iipa').value : '';
   if (!mode || !IPA.ref) return { ipadapter: '' };
   return { ipadapter: mode, ipadapter_weight: +$('#iipaw').value || 0.8, reference_image: IPA.ref.name };
@@ -3184,6 +3186,12 @@ function renderIpaHelp() {
   if (!box || !sel) return;
   const st = IMG.ipadapter || {};
   const m = IMG.chosen || {};
+  if (m.loader === 'qwen_edit') {
+    sel.value = ''; sel.disabled = true;
+    box.textContent = '編輯模型用不到 IP-Adapter，但可以在這裡放「第二張參考圖」（選填），'
+      + '例如要換上的衣服或要加進去的東西，提詞裡說清楚怎麼用它。';
+    return;
+  }
   if (m.loader === 'unet') {
     sel.value = ''; sel.disabled = true;
     box.textContent = '這個底模不是 SDXL 系，IP-Adapter 用不了。要用參考圖，換一個 SDXL 系的底模。';
@@ -4654,7 +4662,7 @@ function onImageModelChange() {
   syncCustomSize();
   $('#istyle').innerHTML = `<b>怎麼寫提詞</b>：${(m.prompt_style || '').replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')}`
     + (m.nsfw_note ? `<div class="s" style="margin-top:6px">${esc(m.nsfw_note)}</div>` : '')
-    + (m.loader === 'unet' && m.note ? `<div class="s" style="margin-top:6px">${esc(m.note)}</div>` : '')
+    + (m.loader && m.loader !== 'checkpoint' && m.note ? `<div class="s" style="margin-top:6px">${esc(m.note)}</div>` : '')
     + (m.licence_note ? `<div class="s" style="margin-top:6px">授權：${esc(m.licence_note)}</div>` : '');
   $('#iprefixlabel').textContent = m.positive_prefix
     ? `自動加上品質標籤：${m.positive_prefix}` : '這個底模不需要品質標籤';
@@ -4692,7 +4700,7 @@ function onImageModelChange() {
   // The ControlNets this app ships are SDXL ones; the newer families have none.
   const cn = $('#icn');
   if (cn) {
-    if (m.loader === 'unet') { cn.value = ''; cn.disabled = true; cn.title = '這個底模沒有對應的 ControlNet'; }
+    if (m.loader && m.loader !== 'checkpoint') { cn.value = ''; cn.disabled = true; cn.title = '這個底模沒有對應的 ControlNet'; }
     else { cn.disabled = false; cn.title = ''; }
   }
 
