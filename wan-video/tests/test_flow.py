@@ -8294,6 +8294,193 @@ async def test_new_image_families() -> None:
         check("SDXL" in str(exc.detail), "comic mode refuses the newer families, saying why")
 
 
+async def test_approach() -> None:
+    """自動逼近: the generate-score-correct loop, without a GPU.
+
+    The loop is driven with stand-ins for "generate" and "score", so every
+    stopping rule and every correction can be checked exactly. Then the same
+    thing once through the server's endpoint, with the image generator and the
+    tagger stubbed, to check the wiring: real library records, real staging,
+    real polling.
+    """
+    import types as pytypes
+
+    import approach
+    import config
+    import library
+    import server
+    import tags
+    from fastapi import HTTPException
+    from PIL import Image as PILImage
+
+    section("自動逼近: scoring and correcting")
+    red = PILImage.new("RGB", (64, 96), (220, 30, 30))
+    half = PILImage.new("RGB", (64, 96), (220, 30, 30))
+    half.paste((30, 30, 220), (0, 0, 64, 48))
+    blue = PILImage.new("RGB", (64, 96), (30, 30, 220))
+    sig = approach.structure_signature
+    same = approach.structure_similarity(sig(red), sig(red))
+    mid = approach.structure_similarity(sig(red), sig(half))
+    far = approach.structure_similarity(sig(red), sig(blue))
+    check(same > 0.99 and far < mid < same, f"the layout score orders same > half > different ({same:.2f}, {mid:.2f}, {far:.2f})")
+    check(approach.overall(1, 1, 1) == 1.0 and approach.overall(0, 0, 0) == 0.0, "the overall score stays in 0..1")
+
+    p, n, changes = approach.refine("1girl, smile", "lowres", ["long hair", "smile", "hat"], ["glasses", "smile"],
+                                    zero_negative=False, protected="1girl, smile")
+    check(p == "1girl, smile, long hair, hat", f"missing tags are added once ({p})")
+    check(n == "lowres, glasses", f"extra tags go to the negative, never one that was asked for ({n})")
+    check(len(changes) == 2, "…and both changes are reported in words")
+    p, n, _ = approach.refine("a", "", [], ["glasses"], zero_negative=True)
+    check(n == "", "a model with no negative prompt gets none")
+    check(approach.next_denoise(0.45, 0.6, 0.9)[0] == 0.4, "a drifted layout lowers the denoise")
+    check(approach.next_denoise(0.45, 0.9, 0.4)[0] == 0.5, "right layout, wrong content raises it")
+    check(approach.next_denoise(0.3, 0.1, 0.9)[0] == 0.3, "…never below the floor")
+    check(approach.next_denoise(None, 0.1, 0.1)[0] is None, "a prompt-only run has no denoise to change")
+
+    section("自動逼近: the loop")
+
+    def make(**kw):
+        defaults = dict(original="o.png", base={"model": "m"}, prompt="1girl", negative="", max_rounds=5,
+                        per_round=2, target=0.9, start_from_original=True, denoise=0.45,
+                        benchmark=False, zero_negative=False)
+        return approach.new_run(**{**defaults, **kw})
+
+    def fakes(curve, fail=False):
+        """Each round's two candidates score curve[i] and curve[i]-0.05."""
+        made, prompts = [], []
+
+        async def submit(arm, rnd):
+            prompts.append((arm.key, rnd.prompt, rnd.denoise))
+            ids = [f"{arm.key}-{rnd.n}-{i}" for i in range(2)]
+            made.extend(ids)
+            return ids
+
+        async def wait(ids):
+            return {i: (("error", "", "炸了") if fail else ("done", i + ".png", "")) for i in ids}
+
+        async def score(output):
+            key, n, i = output[:-4].rsplit("-", 2)
+            value = curve(key)[min(int(n), len(curve(key))) - 1] - 0.05 * int(i)
+            return {"content": value, "style": value, "structure": value,
+                    "missing": [f"tag{n}"], "extra": []}
+        return submit, wait, score, made, prompts
+
+    run = make()
+    submit, wait, score, made, prompts = fakes(lambda k: [0.5, 0.7, 0.93])
+    await approach.drive(run, submit=submit, wait=wait, score=score, cancelled=lambda: False)
+    arm = run.arms[0]
+    check(run.status == "done" and "達標" in arm.stop_reason and len(arm.rounds) == 3,
+          f"it stops when the target is reached ({arm.stop_reason}, {len(arm.rounds)} rounds)")
+    check(arm.best_job == "approach-3-0" and abs(arm.best_score - 0.93) < 1e-6, "…keeping the best candidate")
+    check(prompts[1][1] == "1girl, tag1" and prompts[2][1] == "1girl, tag1, tag2",
+          f"each round's prompt carries the corrections ({prompts[2][1]})")
+
+    run = make(max_rounds=8)
+    submit, wait, score, *_ = fakes(lambda k: [0.6, 0.61, 0.605, 0.6, 0.6, 0.6, 0.6, 0.6])
+    await approach.drive(run, submit=submit, wait=wait, score=score, cancelled=lambda: False)
+    check("沒有進步" in run.arms[0].stop_reason and len(run.arms[0].rounds) == 4,
+          f"it stops when two rounds in a row do not improve ({len(run.arms[0].rounds)} rounds)")
+
+    run = make(max_rounds=2)
+    submit, wait, score, *_ = fakes(lambda k: [0.5, 0.6, 0.7])
+    await approach.drive(run, submit=submit, wait=wait, score=score, cancelled=lambda: False)
+    check("跑滿 2 輪" in run.arms[0].stop_reason, "it stops at the round limit")
+
+    run = make()
+    submit, wait, score, *_ = fakes(lambda k: [0.5], fail=True)
+    await approach.drive(run, submit=submit, wait=wait, score=score, cancelled=lambda: False)
+    check(run.arms[0].status == "error" and "炸了" in run.arms[0].stop_reason,
+          "a round that produced nothing ends the run and says why")
+
+    run = make()
+    submit, wait, score, *_ = fakes(lambda k: [0.5, 0.6, 0.7])
+    await approach.drive(run, submit=submit, wait=wait, score=score, cancelled=lambda: True)
+    check(run.status == "stopped" and not run.arms[0].rounds, "pressing stop stops it")
+
+    run = make(benchmark=True, max_rounds=3)
+    submit, wait, score, made, prompts = fakes(
+        lambda k: [0.4, 0.45, 0.5] if k == "prompt" else [0.7, 0.8, 0.85])
+    await approach.drive(run, submit=submit, wait=wait, score=score, cancelled=lambda: False)
+    by_key = {a.key: a for a in run.arms}
+    check(set(by_key) == {"prompt", "original"}, "a benchmark runs both routes")
+    check(by_key["prompt"].rounds[0].prompt == by_key["original"].rounds[0].prompt,
+          "…from the same starting prompt")
+    check(all(d is None for k, _, d in prompts if k == "prompt")
+          and all(d for k, _, d in prompts if k == "original"),
+          "…one from an empty canvas, the other from the original")
+    check(by_key["original"].best_score > by_key["prompt"].best_score, "…and reports each one's best")
+
+    store = approach.Store(TMP / "approach-store.json")
+    (TMP / "approach-store.json").unlink(missing_ok=True)
+    running = make()
+    store.add(run)
+    store.add(running)
+    again = approach.Store(TMP / "approach-store.json")
+    again.load()
+    check(set(again.runs) == {run.id, running.id}, "runs survive a restart")
+    check(again.runs[running.id].status == "stopped", "…and one that was running says it stopped")
+
+    section("自動逼近: through the server")
+    saved = (tags.installed, tags.describe, tags.vector, server.image_generate, server.image_status)
+    server.image_status = lambda m: {"installed": True, "usable": True, "missing": []}
+    guess = tags.Guess(general=[("1girl", 0.99), ("solo", 0.97), ("long_hair", 0.9)], rating="general")
+    tags.installed = lambda _d: ["wd-vit-v3"]
+    tags.describe = lambda pic, base, *a, **k: guess
+    tags.vector = lambda pic, base: __import__("numpy").asarray(pic.convert("RGB").resize((1, 1)).getpixel((0, 0)),
+                                                                dtype="float32") + 1.0
+    config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    asked = []
+
+    async def fake_generate(payload):
+        asked.append(payload)
+        job = f"ap{len(asked):03d}"
+        name = f"{job}.png"
+        red.save(config.OUTPUT_DIR / name)
+        server.lib.records[job] = library.Record(id=job, model_id=payload["model"], prompt=payload["prompt"],
+                                                 kind="image", status="done", output=name)
+        return server.JSONResponse({"id": job})
+
+    server.image_generate = fake_generate
+    buf = io.BytesIO()
+    red.save(buf, "PNG")
+    upload = pytypes.SimpleNamespace(read=lambda: _coro(buf.getvalue()), filename="t.png")
+    try:
+        try:
+            await server.reverse_approach(upload, json.dumps({"model": "illustrious"}), "")
+            check(False, "an empty starting prompt is refused")
+        except HTTPException as exc:
+            check("提詞" in str(exc.detail), "an empty starting prompt is refused")
+        out = json.loads((await server.reverse_approach(
+            upload, json.dumps({"model": "illustrious", "size": "1024×1024 方形", "loras": []}),
+            "1girl, solo", "", 3, 2, 0.95, "1", 0.45, "")).body)
+        for _ in range(100):
+            run = server.APPROACH.runs[out["id"]]
+            if run.status != "running":
+                break
+            await asyncio.sleep(0.05)
+        check(run.status == "done", f"a run finishes through the real loop ({run.status}: {run.message})")
+        check((config.STAGING_DIR / run.original).is_file(), "the original is staged for image-to-image")
+        check(asked and all(a["init_image"] == run.original and a["batch"] == 1 and a["seed"] == -1
+                            and a["denoise"] == 0.45 for a in asked[:2]),
+              "each candidate starts from the original, one image, a fresh seed")
+        check(run.arms[0].best_score > 0.95 and "達標" in run.arms[0].stop_reason,
+              f"an identical result scores as identical and stops the run ({run.arms[0].best_score})")
+        got = json.loads((await server.reverse_approach_get(run.id)).body)
+        check("base" not in got and got["model"] == "illustrious", "the run is readable back, settings summarised")
+        young = tags.Guess(general=[("child", 0.8)], rating="general")
+        tags.describe = lambda pic, base, *a, **k: young
+        try:
+            await server.reverse_approach(upload, json.dumps({"model": "illustrious"}), "1girl")
+            check(False, "a picture with a minor in it is refused")
+        except HTTPException as exc:
+            check("未成年" in str(exc.detail), "a picture with a minor in it is refused")
+    finally:
+        tags.installed, tags.describe, tags.vector, server.image_generate, server.image_status = saved
+        for job in [k for k in server.lib.records if k.startswith("ap0")]:
+            server.lib.records.pop(job, None)
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -9160,6 +9347,7 @@ async def main() -> int:
     await test_cloud()
     await test_reverse()
     await test_new_image_families()
+    await test_approach()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

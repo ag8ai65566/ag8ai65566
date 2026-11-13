@@ -3467,6 +3467,82 @@ function renderInspect() {
   wireReverse();
 }
 
+/* ---------- 自動逼近: progress, benchmark table, apply the best ---------- */
+let APPROACH_TIMER = null;
+function pollApproach(id) {
+  clearTimeout(APPROACH_TIMER);
+  APPROACH_TIMER = setTimeout(async () => {
+    try {
+      const run = await (await fetch('/api/reverse/approach/' + id)).json();
+      if (!INSP || INSP._approach !== id) return;
+      renderApproach(run);
+      if (run.status === 'running') pollApproach(id);
+    } catch { pollApproach(id); }
+  }, 3000);
+}
+
+function renderApproach(run) {
+  const box = $('#aprun');
+  if (!box) return;
+  const pctv = (x) => Math.round((x || 0) * 100);
+  const state = { running: '進行中', done: '完成', stopped: '已停止', error: '出錯', waiting: '等待中' };
+  let html = `<div class="row" style="margin-top:8px;align-items:center">
+      <b>${run.benchmark ? '基準測試' : '自動逼近'}</b>
+      <span class="tag ${run.status === 'done' ? 'done' : run.status === 'error' ? 'err' : 'run'}">${state[run.status] || run.status}</span>
+      <span class="s">${esc(run.message || '')}</span><div class="spacer"></div>
+      ${run.status === 'running' ? '<button class="ghost tiny" id="apstop">停止</button>' : ''}</div>`;
+  if (run.benchmark && run.arms.length === 2) {
+    const n = Math.max(...run.arms.map((a) => a.rounds.length), 0);
+    html += '<table class="s" style="margin-top:6px;border-collapse:collapse"><tr><th style="text-align:left;padding:2px 8px">輪</th>'
+      + run.arms.map((a) => `<th style="padding:2px 8px">${esc(a.label)}</th>`).join('') + '</tr>';
+    for (let i = 0; i < n; i++) {
+      html += `<tr><td style="padding:2px 8px">${i + 1}</td>` + run.arms.map((a) => {
+        const r = a.rounds[i];
+        return `<td style="padding:2px 8px;text-align:center">${r && r.best ? pctv(r.best) + '%' : '—'}</td>`;
+      }).join('') + '</tr>';
+    }
+    html += '<tr><td style="padding:2px 8px"><b>最好</b></td>' + run.arms.map((a) =>
+      `<td style="padding:2px 8px;text-align:center"><b>${pctv(a.best_score)}%</b></td>`).join('') + '</tr></table>';
+  }
+  for (const arm of run.arms) {
+    html += `<div style="margin-top:8px"><b class="s">${esc(arm.label)}</b>
+      <span class="s">最好 ${pctv(arm.best_score)}%${arm.best_round ? `（第 ${arm.best_round} 輪）` : ''}
+      ${arm.stop_reason ? ' · ' + esc(arm.stop_reason) : ''}</span>
+      ${arm.best_job ? `<button class="ghost tiny" data-apuse="${esc(arm.key)}">套用這條最好的那組</button>` : ''}</div>`;
+    for (const r of arm.rounds) {
+      html += `<div class="row" style="margin-top:4px;align-items:center;gap:6px">
+        <span class="s" style="width:3.5em">第 ${r.n} 輪</span>`
+        + r.attempts.map((a) => a.output
+          ? `<img src="/outputs/${esc(a.output)}" title="總分 ${pctv(a.score)}% · 內容 ${pctv(a.content)} · 畫風 ${pctv(a.style)} · 構圖 ${pctv(a.structure)}"
+               style="width:56px;height:56px;object-fit:cover;border-radius:6px;${a.job === arm.best_job ? 'outline:2px solid var(--ok)' : ''}">`
+          : `<span class="s" style="width:56px">${a.error ? '失敗' : '生成中…'}</span>`).join('')
+        + `<span class="s">${r.best ? pctv(r.best) + '%' : ''}${(r.changes || []).length ? ' → ' + esc(r.changes.join('；')) : ''}</span></div>`;
+    }
+  }
+  box.innerHTML = html;
+  const stop = $('#apstop');
+  if (stop) stop.onclick = async () => {
+    stop.disabled = true; stop.textContent = '停止中…';
+    await fetch(`/api/reverse/approach/${run.id}/stop`, { method: 'POST' });
+  };
+  box.querySelectorAll('[data-apuse]').forEach((b) => b.onclick = () => {
+    const arm = run.arms.find((a) => a.key === b.dataset.apuse);
+    const best = arm && arm.rounds.find((r) => r.n === arm.best_round);
+    if (!best) return;
+    $('#iprompt').value = best.prompt; $('#iprompt').dataset.touched = '1';
+    if (!$('#inegative').disabled) { $('#inegative').value = best.negative; $('#inegative').dataset.touched = '1'; }
+    if (arm.start_from_original && INSP) {
+      IMG.init = { name: run.original };
+      $('#i2ithumb').src = INSP._preview;
+      $('#i2isize').textContent = '原圖（自動逼近用的那張）';
+      $('#i2i').classList.remove('hidden');
+      if (best.denoise) { $('#idenoise').value = best.denoise; $('#idenoise').oninput(); }
+    }
+    $('#istatus').textContent = `已帶入第 ${best.n} 輪的提詞（${pctv(best.best)}%）。按生成可以換種子多試幾張。`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 /* ---------- 反推: recipe, the exact resources, look-alike LoRAs, compare ---------- */
 function reverseSections(d) {
   const r = d.recipe, m = d.metadata || {};
@@ -3492,6 +3568,27 @@ function reverseSections(d) {
     <div class="note">分數是「這支 LoRA 的範例圖跟你的圖有多像」，<b>不代表原圖就是用它畫的</b>。
       CivitAI 標成真人肖像或未成年的模型一律不列。</div>
     <button class="go tiny" id="revfind" style="margin-top:6px">開始找</button>
+  </div>
+  <h2>自動逼近（自動生圖、評分、修正，一輪一輪來）</h2>
+  <div class="card" style="background:var(--panel2)">
+    <div class="s">每一輪生幾張 → 跟原圖比「內容、畫風、構圖」三種分數 → 少的標籤加進提詞、多的放進負面提詞、
+      構圖跑掉就降低重畫強度 → 留下最好的 → 再來一輪。達標、跑滿、或連續兩輪沒進步就停。
+      用的是下面圖片分頁<b>目前選的底模、尺寸和勾的 LoRA</b>，本機或雲端照頁首的開關。</div>
+    <div class="row" style="margin-top:6px;align-items:center;gap:6px">
+      最多 <input id="aprounds" type="number" min="1" max="12" value="5" style="width:56px"> 輪，
+      每輪 <input id="apper" type="number" min="1" max="4" value="2" style="width:50px"> 張，
+      目標分數 <input id="aptarget" type="number" min="0.5" max="0.99" step="0.01" value="0.9" style="width:64px">
+    </div>
+    <label class="chk" style="margin-top:6px"><input type="checkbox" id="aporig" checked>
+      從原圖開始（重畫強度 <input id="apden" type="number" min="0.3" max="0.9" step="0.05" value="0.45" style="width:76px">）
+      —— 要「幾乎一樣」就勾著</label>
+    <div class="note">這個迴圈裡沒有語言模型：修正只會加減標籤、調重畫強度，所以它最擅長「這張圖」的重現，
+      不擅長把整個構圖用文字描述出來。每一輪大約等於生「每輪張數」張圖的時間。</div>
+    <div class="row" style="margin-top:6px">
+      <button class="go tiny" id="apstart">開始自動逼近</button>
+      <button class="ghost tiny" id="apbench" title="同一張圖、同一個起始提詞，兩條路線各跑一次，比分數">基準測試：只用提詞 vs 從原圖開始</button>
+    </div>
+    <div id="aprun"></div>
   </div>
   <h2>生完比對</h2>
   <div class="card" style="background:var(--panel2)">
@@ -3605,6 +3702,38 @@ function wireReverse() {
       find.disabled = false; find.textContent = '再試一次';
     }
   };
+
+  const startRun = async (benchmark) => {
+    const box = $('#aprun');
+    if (!IMG.chosen) { box.innerHTML = '<div class="warn">先到圖片分頁選一個底模。</div>'; return; }
+    const tagged = $('#insptags');
+    const prompt = (d.metadata && d.metadata.prompt) || (tagged ? tagged.value : '') || (d.recipe || {}).prompt || '';
+    const base = imagePayload();
+    delete base.init_image;
+    const form = new FormData();
+    form.append('image', d._file);
+    form.append('base', JSON.stringify(base));
+    form.append('prompt', prompt);
+    form.append('negative', $('#inegative').value || (d.recipe || {}).negative || '');
+    form.append('rounds', $('#aprounds').value);
+    form.append('per_round', $('#apper').value);
+    form.append('target', $('#aptarget').value);
+    form.append('from_original', $('#aporig').checked ? '1' : '');
+    form.append('denoise', $('#apden').value);
+    form.append('benchmark', benchmark ? '1' : '');
+    box.innerHTML = '<div class="s">準備中…（先分析原圖）</div>';
+    try {
+      const r = await fetch('/api/reverse/approach', { method: 'POST', body: form });
+      const run = await r.json();
+      if (!r.ok) throw new Error(run.detail || r.statusText);
+      d._approach = run.id;
+      renderApproach(run);
+      pollApproach(run.id);
+    } catch (e) { box.innerHTML = `<div class="warn">${esc(e.message)}</div>`; }
+  };
+  const ap = $('#apstart'), bench = $('#apbench');
+  if (ap) ap.onclick = () => startRun(false);
+  if (bench) bench.onclick = () => startRun(true);
 
   const cmp = $('#revcompare');
   if (cmp) cmp.onclick = async () => {

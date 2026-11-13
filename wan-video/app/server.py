@@ -24,6 +24,7 @@ import traceback
 import uuid
 from pathlib import Path
 
+import approach as approach_mod
 import artists
 import assemble
 import charpacks
@@ -172,6 +173,7 @@ async def startup() -> None:
     lib.load()
     book.load()
     cloud.store.load()
+    APPROACH.load()
     # A finished download changes what ComfyUI can offer, and its /object_info
     # is cached; drop that cache or the new model looks uninstalled.
     models.on_change = client.invalidate
@@ -4388,6 +4390,140 @@ async def reverse_compare(image: UploadFile, job: str = Form(""),
     a_vec = await loop.run_in_executor(None, tags.vector, original, base)
     b_vec = await loop.run_in_executor(None, tags.vector, attempt, base)
     return JSONResponse(reverse.compare(a_guess, b_guess, reverse.similarity(a_vec, b_vec)))
+
+
+# -- 自動逼近: generate, score, correct, again ---------------------------------
+
+APPROACH = approach_mod.Store(config.OUTPUT_DIR / ".approach.json")
+_approach_stop: set[str] = set()
+
+
+def _approach_payload(run, arm, rnd) -> dict:
+    """One candidate: the image tab's settings, with this round's prompt."""
+    payload = {k: v for k, v in run.base.items() if k not in ("prompt", "negative", "seed", "batch")}
+    payload.update({
+        "prompt": rnd.prompt, "negative": rnd.negative, "batch": 1, "seed": -1,
+        "init_image": run.original if arm.start_from_original else "",
+        "denoise": rnd.denoise if arm.start_from_original and rnd.denoise else 1.0,
+    })
+    return payload
+
+
+@app.post("/api/reverse/approach")
+async def reverse_approach(image: UploadFile, base: str = Form("{}"), prompt: str = Form(""),
+                           negative: str = Form(""), rounds: int = Form(5),
+                           per_round: int = Form(2), target: float = Form(0.9),
+                           from_original: str = Form("1"), denoise: float = Form(0.45),
+                           benchmark: str = Form(""), tagger: str = Form("")) -> JSONResponse:
+    """Start trying to make this picture again, round after round."""
+    picture = await _read_picture(image)
+    _chosen, tagger_base = _tagger_or_400(tagger)
+    try:
+        settings = json.loads(base or "{}")
+    except ValueError:
+        raise HTTPException(400, "設定格式不對")
+    if not isinstance(settings, dict):
+        raise HTTPException(400, "設定格式不對")
+    model = images.resolve(str(settings.get("model", "")), installed_checkpoints())
+    if model is None:
+        raise HTTPException(400, f"不認識的圖片模型：{settings.get('model')}")
+    if not (image_status(model)["installed"] or on_cloud()):
+        raise HTTPException(400, f"{model.label} 還沒下載。到「模型」分頁下載，或切到雲端 GPU。")
+    if not prompt.strip():
+        raise HTTPException(400, "起始提詞是空的 —— 先按上面的反推，或自己寫一段")
+
+    loop = asyncio.get_running_loop()
+    try:
+        orig_guess = await loop.run_in_executor(None, tags.describe, picture, tagger_base)
+        orig_vec = await loop.run_in_executor(None, tags.vector, picture, tagger_base)
+    except ImportError:
+        raise HTTPException(400, "缺少 onnxruntime 套件。跑一次 update.bat 或 install.bat。")
+    if stop := reverse.blocked(orig_guess) + reverse.blocked_text(prompt):
+        raise HTTPException(400, "這張圖看起來有未成年人物（" + "、".join(sorted(set(stop)))
+                            + "）。這個 app 不做這類內容。")
+    orig_style = reverse.style_signature(picture)
+    orig_layout = approach_mod.structure_signature(picture)
+
+    run = approach_mod.new_run(
+        original="", base=settings, prompt=prompt.strip(), negative=negative.strip(),
+        max_rounds=rounds, per_round=per_round, target=target,
+        start_from_original=from_original.lower() in ("1", "true", "on", "yes"),
+        denoise=denoise, benchmark=benchmark.lower() in ("1", "true", "on", "yes"),
+        zero_negative=model.zero_negative)
+    run.original = f"approach-{run.id}.png"
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    picture.convert("RGB").save(config.STAGING_DIR / run.original, "PNG")
+    APPROACH.add(run)
+
+    async def submit(arm, rnd) -> list[str]:
+        jobs = []
+        for _ in range(run.per_round):
+            answer = await image_generate(_approach_payload(run, arm, rnd))
+            jobs.append(json.loads(answer.body)["id"])
+        return jobs
+
+    async def wait(jobs: list[str]) -> dict:
+        done = await approach_mod.poll_jobs(lib.get, jobs, lambda: run.id in _approach_stop)
+        if run.id in _approach_stop:
+            # Do not leave the rest of a stopped round in the queue.
+            for job in jobs:
+                record = lib.get(job)
+                if record is not None and record.status == "queued":
+                    lib.delete(job)
+        return done
+
+    async def score(output: str) -> dict:
+        attempt = Image.open(config.OUTPUT_DIR / output)
+        attempt.load()
+        guess = await loop.run_in_executor(None, tags.describe, attempt, tagger_base)
+        vec = await loop.run_in_executor(None, tags.vector, attempt, tagger_base)
+        content = reverse.similarity(orig_vec, vec)
+        diff = reverse.compare(orig_guess, guess, content)
+        return {"content": content,
+                "style": reverse.style_similarity(orig_style, reverse.style_signature(attempt)),
+                "structure": approach_mod.structure_similarity(
+                    orig_layout, approach_mod.structure_signature(attempt)),
+                "missing": diff["missing"], "extra": diff["extra"]}
+
+    async def go() -> None:
+        try:
+            await approach_mod.drive(run, submit=submit, wait=wait, score=score,
+                                     cancelled=lambda: run.id in _approach_stop,
+                                     save=APPROACH.save)
+        except HTTPException as exc:          # a candidate was refused up front
+            run.status, run.message = "error", str(exc.detail)
+            APPROACH.save()
+        finally:
+            _approach_stop.discard(run.id)
+
+    task = asyncio.create_task(go())
+    _background.add(task)
+    task.add_done_callback(_background.discard)
+    return JSONResponse(run.public())
+
+
+@app.get("/api/reverse/approach")
+async def reverse_approach_list() -> JSONResponse:
+    runs = sorted(APPROACH.runs.values(), key=lambda r: -r.created)[:6]
+    return JSONResponse({"runs": [r.public() for r in runs]})
+
+
+@app.get("/api/reverse/approach/{run_id}")
+async def reverse_approach_get(run_id: str) -> JSONResponse:
+    run = APPROACH.runs.get(run_id)
+    if run is None:
+        raise HTTPException(404, "找不到這次逼近")
+    return JSONResponse(run.public())
+
+
+@app.post("/api/reverse/approach/{run_id}/stop")
+async def reverse_approach_stop(run_id: str) -> JSONResponse:
+    run = APPROACH.runs.get(run_id)
+    if run is None:
+        raise HTTPException(404, "找不到這次逼近")
+    if run.status == "running":
+        _approach_stop.add(run_id)
+    return JSONResponse(run.public())
 
 
 @app.get("/api/comic/layouts")
