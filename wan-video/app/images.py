@@ -516,6 +516,29 @@ HELP = {
 }
 
 
+# -- IP-Adapter: a reference picture instead of a LoRA ------------------------
+# From cubiq/ComfyUI_IPAdapter_plus's own README (the installation list, read
+# 2026-11-13): the SDXL "plus" adapter and the ViT-H image encoder it needs,
+# which has to be saved under exactly this name. Sizes from Hugging Face's
+# headers that day. Apache-2.0 (h94/IP-Adapter model card). The FaceID models
+# on the same list are deliberately not offered: their whole purpose is to
+# copy a particular person's face, which this app does not do.
+IPADAPTER_FILE = ModelFile("h94/IP-Adapter", "sdxl_models/ip-adapter-plus_sdxl_vit-h.safetensors",
+                           "ipadapter", 847517512)
+IPADAPTER_VISION = ModelFile("h94/IP-Adapter", "models/image_encoder/model.safetensors",
+                             "clip_vision", 2528373448,
+                             save_as="CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors")
+IPADAPTER_FILES = (IPADAPTER_FILE, IPADAPTER_VISION)
+# What to take from the reference -> the node's own `weight_type` names
+# (IPAdapterPlus.py WEIGHT_TYPES), and one line saying what it does.
+IPADAPTER_MODES = {
+    "style": ("style transfer", "只學畫風（顏色、筆觸、質感），畫什麼照你的提詞"),
+    "composition": ("composition", "只學構圖（位置、姿勢、取景），畫風照底模"),
+    "both": ("style and composition", "畫風和構圖都學，內容照提詞"),
+    "all": ("linear", "全部都學（最像原圖，但提詞的影響會變小）"),
+}
+
+
 @dataclass
 class ImageSettings:
     """Every knob for one image job.
@@ -553,6 +576,11 @@ class ImageSettings:
     controlnet_high: float = 0.8
     controlnet_union_type: str = ""  # "" = ask the catalogue what this model wants
     # Quality patches, all off by default.
+    # IP-Adapter: a reference picture as a one-off LoRA. "" = off, otherwise a
+    # key of IPADAPTER_MODES (what to take from the picture).
+    ipadapter: str = ""
+    ipadapter_weight: float = 0.8
+    ipadapter_end: float = 1.0
     freeu: bool = False
     pag: float = 0.0
     rescale_cfg: float = 0.0
@@ -839,6 +867,7 @@ def build(
     height: int,
     init_image: str = "",
     control_image: str = "",
+    reference_image: str = "",
     use_vae: bool = True,
     available_nodes: set[str] | None = None,
     filename_prefix: str = "img/out",
@@ -909,6 +938,24 @@ def build(
 
     for patch_class, patch_inputs in model.patches:
         patched = add(patch_class, {"model": model_link, **patch_inputs}, patch_class)
+        model_link = [patched, 0]
+
+    if settings.ipadapter and reference_image:
+        if unet_family or settings.ipadapter not in IPADAPTER_MODES:
+            raise ValueError(f"{model.label} 不能用 IP-Adapter 參考圖（只支援 SDXL 系底模）。")
+        # After the LoRAs, before the SDXL patches - the order in the node
+        # pack's own example workflows.
+        adapter = add("IPAdapterModelLoader", {"ipadapter_file": IPADAPTER_FILE.name}, "IP-Adapter")
+        vision = add("CLIPVisionLoader", {"clip_name": IPADAPTER_VISION.name}, "Image encoder")
+        reference = add("LoadImage", {"image": reference_image}, "Reference picture")
+        patched = add("IPAdapterAdvanced", {
+            "model": model_link, "ipadapter": [adapter, 0], "image": [reference, 0],
+            "weight": round(max(0.0, min(settings.ipadapter_weight, 2.0)), 2),
+            "weight_type": IPADAPTER_MODES[settings.ipadapter][0],
+            "combine_embeds": "concat", "start_at": 0.0,
+            "end_at": round(max(0.1, min(settings.ipadapter_end, 1.0)), 2),
+            "embeds_scaling": "V only", "clip_vision": [vision, 0],
+        }, "IP-Adapter: " + settings.ipadapter)
         model_link = [patched, 0]
 
     # Model patches, in the order the ComfyUI examples chain them. All three

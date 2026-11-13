@@ -134,7 +134,7 @@ if mark="$(need_install "$COMFY/requirements.txt")"; then
   touch "$mark"
 fi
 
-# -- 4. the two node packs this app's workflows can use ----------------------
+# -- 4. the node packs this app's workflows can use ---------------------------
 # Neither is fatal. A pack that fails to install costs the workflows that need
 # it, and the app says which node is missing when one of those is submitted.
 node_pack() {
@@ -150,6 +150,10 @@ node_pack() {
 phase "installing: 節點套件"
 node_pack ComfyUI-GGUF https://github.com/city96/ComfyUI-GGUF.git
 node_pack ComfyUI-VideoHelperSuite https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
+# IP-Adapter: a reference picture as a one-off LoRA (style, composition or
+# both) for SDXL checkpoints. Maintenance-only upstream since 2025-04, so it is
+# not pinned to a newer feature than the app uses.
+node_pack ComfyUI_IPAdapter_plus https://github.com/cubiq/ComfyUI_IPAdapter_plus.git
 
 # -- 5. run ------------------------------------------------------------------
 phase "starting"

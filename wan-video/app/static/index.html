@@ -702,6 +702,24 @@
         </div>
         <div class="note" id="icnhelp"></div>
 
+        <h2 style="margin:18px 0 6px">參考圖（IP-Adapter，不用 LoRA 也能學畫風／角色）</h2>
+        <div class="row" style="margin-top:6px">
+          <label class="f">學什麼 <select id="iipa">
+            <option value="">不用參考圖</option>
+            <option value="style">只學畫風</option>
+            <option value="composition">只學構圖</option>
+            <option value="both">畫風＋構圖</option>
+            <option value="all">全部都學（最像）</option>
+          </select></label>
+          <label class="f">強度
+            <input type="range" id="iipaw" min="0.2" max="1.5" step="0.05" value="0.8" style="width:130px"></label>
+          <span class="s" id="iipawlabel" style="width:3em">0.80</span>
+          <button class="ghost tiny" id="iipapick">選一張參考圖</button>
+          <input type="file" id="iipafile" accept="image/*" hidden>
+          <span class="s" id="iipasrc" style="align-self:center;flex:1;min-width:160px"></span>
+        </div>
+        <div class="note" id="iipahelp"></div>
+
         <h2 style="margin:18px 0 6px">畫質補丁</h2>
         <div class="row" style="margin-top:6px">
           <label class="chk"><input type="checkbox" id="ifreeu"> FreeU</label>
@@ -2778,6 +2796,7 @@ async function refreshImageModels() {
   try {
     const d = await (await fetch('/api/image/models')).json();
     IMG.models = d.models; IMG.help = d.help || {};
+    IMG.ipadapter = d.ipadapter || {};
     IMG.samplers = d.samplers || []; IMG.schedulers = d.schedulers || [];
     IMG.upscalers = d.upscalers || []; IMG.customSize = d.custom_size || '自訂尺寸';
     IMG.syntax = d.syntax || []; IMG.notSupported = d.not_supported || [];
@@ -3152,6 +3171,65 @@ $('#packpick').onchange = () => choosePack($('#packpick').value);
 $('#packgroup').onchange = renderPackMembers;
 $('#packfind').oninput = renderPackMembers;
 $('#packgo').onclick = applyPack;
+
+/* ---------- IP-Adapter: a reference picture instead of a LoRA ---------- */
+const IPA = { ref: null };
+function ipaPayload() {
+  const mode = $('#iipa') ? $('#iipa').value : '';
+  if (!mode || !IPA.ref) return { ipadapter: '' };
+  return { ipadapter: mode, ipadapter_weight: +$('#iipaw').value || 0.8, reference_image: IPA.ref.name };
+}
+function renderIpaHelp() {
+  const box = $('#iipahelp'), sel = $('#iipa');
+  if (!box || !sel) return;
+  const st = IMG.ipadapter || {};
+  const m = IMG.chosen || {};
+  if (m.loader === 'unet') {
+    sel.value = ''; sel.disabled = true;
+    box.textContent = '這個底模不是 SDXL 系，IP-Adapter 用不了。要用參考圖，換一個 SDXL 系的底模。';
+    return;
+  }
+  sel.disabled = false;
+  const mode = sel.value;
+  let html = mode ? esc((st.modes || {})[mode] || '') : '放一張圖，讓它的畫風、構圖或整體感覺直接帶進新圖 —— 等於一次性的 LoRA，不用訓練。';
+  if (mode && !IPA.ref) html += ' <span class="warn">還沒選參考圖。</span>';
+  if (!st.usable) {
+    html += ` <span class="warn">要先下載 IP-Adapter 模型（${gb(st.bytes)}）。</span>`
+      + ' <button class="go tiny" id="iipaget">下載</button>';
+  }
+  box.innerHTML = html;
+  const get = $('#iipaget');
+  if (get) get.onclick = async () => {
+    get.disabled = true; get.textContent = '加入下載…';
+    try {
+      const r = await fetch('/api/ipadapter/download', { method: 'POST' });
+      const d = await r.json();
+      get.textContent = '下載中（看「模型」分頁）';
+      if (d.note) box.insertAdjacentHTML('beforeend', `<div class="s" style="margin-top:4px">${esc(d.note)}</div>`);
+    } catch (e) { get.disabled = false; get.textContent = '下載'; }
+  };
+}
+async function setIpaReference(file, label) {
+  const form = new FormData();
+  form.append('image', file);
+  $('#iipasrc').textContent = '上傳中…';
+  try {
+    const r = await fetch('/api/image/upload', { method: 'POST', body: form });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    IPA.ref = d;
+    $('#iipasrc').textContent = `參考圖：${label || file.name}（${d.width}×${d.height}）`;
+  } catch (e) { IPA.ref = null; $('#iipasrc').textContent = '讀不了：' + e.message; }
+  renderIpaHelp();
+}
+$('#iipa').onchange = renderIpaHelp;
+$('#iipaw').oninput = () => { $('#iipawlabel').textContent = (+$('#iipaw').value).toFixed(2); };
+$('#iipapick').onclick = () => $('#iipafile').click();
+$('#iipafile').onchange = async () => {
+  const file = $('#iipafile').files[0];
+  if (file) await setIpaReference(file);
+  $('#iipafile').value = '';
+};
 
 function controlPayload() {
   const name = $('#icn') ? $('#icn').value : '';
@@ -3558,6 +3636,10 @@ function reverseSections(d) {
       <button class="ghost tiny" id="revinit" title="把原圖當成圖生圖的起點">拿原圖當起點（幾乎一模一樣）</button>
       <span class="s">重畫強度 ${r.img2img_denoise}：構圖、顏色照原圖，細節重畫</span>
     </div>
+    <div class="row" style="margin-top:6px">
+      <button class="ghost tiny" id="revipa" title="IP-Adapter：不用 LoRA，直接學這張圖的畫風">拿原圖當參考圖（畫新構圖、保留畫風）</button>
+      <span class="s">沒有原本那支 LoRA 時用這個：畫風跟原圖走，內容和構圖照提詞</span>
+    </div>
   </div>
   ${names ? `<h2>檔案裡點名的模型和 LoRA（到 CivitAI 查出來的）</h2>
     <div class="card" style="background:var(--panel2)" id="revres"><div class="s">查詢中…</div></div>` : ''}
@@ -3640,6 +3722,14 @@ function wireReverse() {
       $('#istatus').textContent = '原圖已經是起點了，提詞和設定也帶入了。按生成。';
     } catch (e) { alert('放不進去：' + e.message); }
     init.disabled = false;
+  };
+
+  const ipa = $('#revipa');
+  if (ipa) ipa.onclick = async () => {
+    if ((IMG.chosen || {}).loader === 'unet') { alert('目前選的底模不是 SDXL 系，IP-Adapter 用不了。先換一個 SDXL 系的底模。'); return; }
+    $('#iipa').value = 'style';
+    await setIpaReference(d._file, '反推的原圖');
+    $('#istatus').textContent = '原圖已設成參考圖（只學畫風）。在「參考圖」那一區可以改成學構圖或全部。';
   };
 
   const res = $('#revres');
@@ -4598,6 +4688,7 @@ function onImageModelChange() {
   $('#ineghelp').textContent = m.zero_negative
     ? '這個底模是蒸餾過的（CFG 1），負面提詞不會起作用，所以停用。'
     : '負面提詞 = 不想出現的東西。上面填的是這個底模的建議值。';
+  if (typeof renderIpaHelp === 'function') renderIpaHelp();
   // The ControlNets this app ships are SDXL ones; the newer families have none.
   const cn = $('#icn');
   if (cn) {
@@ -4896,6 +4987,7 @@ function imagePayload() {
     rescale_cfg: +$('#irescale').value || 0,
     tiled_vae: $('#itiled').checked,
     ...controlPayload(),
+    ...ipaPayload(),
     loras,
   };
 }

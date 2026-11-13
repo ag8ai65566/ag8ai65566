@@ -8481,6 +8481,83 @@ async def test_approach() -> None:
             server.lib.records.pop(job, None)
 
 
+
+async def test_ipadapter() -> None:
+    """IP-Adapter: a reference picture as a one-off LoRA, for SDXL checkpoints.
+
+    Node names, inputs and model files are from cubiq/ComfyUI_IPAdapter_plus
+    (its README and IPAdapterPlus.py); the fake's schemas for its two nodes
+    were copied from a real ComfyUI 0.45.0 with the pack installed, where the
+    same graphs were validated in all four modes.
+    """
+    import images
+    import server
+    import sources
+    from comfy_client import ComfyClient
+    from fastapi import HTTPException
+
+    section("IP-Adapter")
+    m = images.get("illustrious")
+    s = images.defaults_for(m)
+    s.ipadapter = "style"
+    s.loras = [("my_style.safetensors", 0.7, 0.7)]
+    g = images.build(m, s, prompt="1girl", negative="", seed=1, width=832, height=1216,
+                     reference_image="ref.png")
+    by = lambda c: [(k, n) for k, n in g.items() if n["class_type"] == c]  # noqa: E731
+    (ipa_id, ipa), = by("IPAdapterAdvanced")
+    check(ipa["inputs"]["weight_type"] == "style transfer" and ipa["inputs"]["weight"] == 0.8,
+          "「只學畫風」is the node's own `style transfer`, at the default strength")
+    check(g[ipa["inputs"]["model"][0]]["class_type"] == "LoraLoader",
+          "…applied after the LoRAs, as the node pack's examples do")
+    check(by("KSampler")[0][1]["inputs"]["model"] == [ipa_id, 0], "…and the sampler uses the patched model")
+    check(by("IPAdapterModelLoader")[0][1]["inputs"]["ipadapter_file"] == "ip-adapter-plus_sdxl_vit-h.safetensors"
+          and by("CLIPVisionLoader")[0][1]["inputs"]["clip_name"] == "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors",
+          "…with the SDXL plus adapter and the ViT-H encoder under the name the README asks for")
+    check(by("LoadImage")[0][1]["inputs"]["image"] == "ref.png", "…reading the reference picture")
+    check(set(images.IPADAPTER_MODES) == {"style", "composition", "both", "all"}
+          and not any("face" in f.name.lower() for f in images.IPADAPTER_FILES),
+          "four modes, and no face-identity model on offer")
+    s2 = images.defaults_for(m)
+    g2 = images.build(m, s2, prompt="1girl", negative="", seed=1, width=832, height=1216,
+                      reference_image="ref.png")
+    check(not any(n["class_type"] == "IPAdapterAdvanced" for n in g2.values()),
+          "with no mode picked, a reference picture changes nothing")
+    z = images.get("z-image-turbo")
+    sz = images.defaults_for(z)
+    sz.ipadapter = "style"
+    try:
+        images.build(z, sz, prompt="x", negative="", seed=1, width=1024, height=1024, reference_image="r.png")
+        check(False, "a non-SDXL model refuses IP-Adapter")
+    except ValueError:
+        check(True, "a non-SDXL model refuses IP-Adapter")
+    cat = sources.catalogue()
+    check(all(f.name in cat for f in images.IPADAPTER_FILES)
+          and cat["CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"].url.endswith("models/image_encoder/model.safetensors"),
+          "the cloud machine knows where to download both files from")
+
+    fake = FakeComfy()
+    runner, url = await start(fake.app())
+    try:
+        problems = await ComfyClient(url).validate(g)
+        check(not problems, f"the graph validates against the real node schemas ({problems[:1]})")
+    finally:
+        await runner.cleanup()
+
+    for payload, label, needle in (
+            ({"model": "z-image-turbo", "prompt": "x", "ipadapter": "style"}, "a non-SDXL model", "SDXL"),
+            ({"model": "illustrious", "prompt": "x", "ipadapter": "sideways"}, "an unknown mode", "不認識"),
+    ):
+        saved = server.image_status
+        server.image_status = lambda mm: {"installed": True, "usable": True, "missing": []}
+        try:
+            await server.image_generate(payload)
+            check(False, f"the endpoint refuses {label}")
+        except HTTPException as exc:
+            check(needle in str(exc.detail), f"the endpoint refuses {label} ({str(exc.detail)[:30]})")
+        finally:
+            server.image_status = saved
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -9348,6 +9425,7 @@ async def main() -> int:
     await test_reverse()
     await test_new_image_families()
     await test_approach()
+    await test_ipadapter()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

@@ -1647,6 +1647,13 @@ async def run_image_job(record: library.Record) -> None:
             staged.read_bytes(), f"{record.id}-control.png"
         )
 
+    reference_name = ""
+    if settings.ipadapter and (record.settings or {}).get("reference_image"):
+        staged = config.STAGING_DIR / f"{record.id}-reference.png"
+        if not staged.is_file():
+            raise ComfyError("找不到剛才那張參考圖，請重新放一次")
+        reference_name = await comfy().upload_image(staged.read_bytes(), f"{record.id}-reference.png")
+
     graph = images.build(
         model,
         settings,
@@ -1657,6 +1664,7 @@ async def run_image_job(record: library.Record) -> None:
         height=record.height,
         init_image=init_name,
         control_image=control_name,
+        reference_image=reference_name,
         available_nodes=await comfy().node_classes(),
         filename_prefix=f"img/{record.id}",
     )
@@ -1766,6 +1774,7 @@ async def image_models() -> JSONResponse:
             "samplers": samplers,
             "schedulers": schedulers,
             "loose_bases": list(images.CIVITAI_BASES_LOOSE),
+            "ipadapter": ipadapter_status(),
             "upscalers": installed_up,
             "embeddings": await client.embeddings(),
             "custom_size": CUSTOM_SIZE,
@@ -1900,6 +1909,24 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
             raise HTTPException(400, "開了 ControlNet 就要放一張構圖參考圖")
         control_name = raw_control
 
+    reference_name = ""
+    if settings.ipadapter:
+        if settings.ipadapter not in images.IPADAPTER_MODES:
+            raise HTTPException(400, f"不認識的參考方式：{settings.ipadapter}")
+        if model.loader != "checkpoint":
+            raise HTTPException(400, f"{model.label} 不能用 IP-Adapter 參考圖（只支援 SDXL 系底模）。")
+        missing = [f.name for f in images.IPADAPTER_FILES
+                   if models.file_status(f)[0] != "ok"]
+        if missing and not on_cloud():
+            raise HTTPException(400, "還沒下載 IP-Adapter 的模型（" + "、".join(missing)
+                                + "）。到「模型」分頁下載，或切到雲端 GPU。")
+        raw_reference = str(payload.get("reference_image") or "")
+        reference = (config.STAGING_DIR / raw_reference).resolve() if raw_reference else None
+        if reference is None or config.STAGING_DIR.resolve() not in reference.parents \
+                or not reference.is_file():
+            raise HTTPException(400, "開了參考圖就要放一張參考圖")
+        reference_name = raw_reference
+
     record = library.Record(
         id=uuid.uuid4().hex[:12],
         model_id=model.id,
@@ -1917,7 +1944,8 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         length=batch,
         source_name=source_name,
         loras=[f"{n}:{m}" for n, m, _ in settings.loras],
-        settings={**settings.to_dict(), "control_image": control_name},
+        settings={**settings.to_dict(), "control_image": control_name,
+                  "reference_image": reference_name},
     )
     if source_name:
         # The worker runs long after this request is gone, so the picture has to
@@ -1925,6 +1953,8 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         (config.STAGING_DIR / f"{record.id}.png").write_bytes(source.read_bytes())
     if control_name:
         (config.STAGING_DIR / f"{record.id}-control.png").write_bytes(control.read_bytes())
+    if reference_name:
+        (config.STAGING_DIR / f"{record.id}-reference.png").write_bytes(reference.read_bytes())
     record.target = cloud.state.target
     if record.target == "cloud":
         cloud.touch()
@@ -4020,6 +4050,54 @@ def _queue_single(key: str, label: str, file) -> dict:
     return models.enqueue_files(
         key=key, label=label, files=[remote], kind="model"
     ).public()
+
+
+IPADAPTER_NODES = ("ComfyUI_IPAdapter_plus", "https://github.com/cubiq/ComfyUI_IPAdapter_plus.git")
+
+
+def _install_ipadapter_nodes() -> str:
+    """Add the node pack to this computer's ComfyUI if it is not there.
+
+    New installs get it from the setup scripts; an install made before it was
+    added does not, and update.bat deliberately never touches the ComfyUI
+    folder. So the download button does it - a git clone into custom_nodes,
+    nothing else - and says ComfyUI has to be restarted to load it.
+    """
+    found = comfyboot.find()
+    if found.comfy is None:
+        return "找不到這台電腦上的 ComfyUI 資料夾，節點包要自己裝到 ComfyUI/custom_nodes/ComfyUI_IPAdapter_plus。"
+    dest = found.comfy / "custom_nodes" / IPADAPTER_NODES[0]
+    if dest.is_dir():
+        return ""
+    git = shutil.which("git")
+    if not git:
+        return "這台電腦沒有 git，節點包要自己下載到 " + str(dest)
+    done = subprocess.run([git, "clone", "--depth", "1", IPADAPTER_NODES[1], str(dest)],
+                          capture_output=True, text=True, timeout=300)
+    if done.returncode != 0:
+        return "裝 IP-Adapter 節點包失敗：" + (done.stderr or "").strip()[-300:]
+    client.invalidate()
+    return "IP-Adapter 節點包裝好了，要重開 ComfyUI 才會載入（黑視窗關掉再開，或按頁首的啟動）。"
+
+
+@app.post("/api/ipadapter/download")
+async def download_ipadapter() -> JSONResponse:
+    """Both IP-Adapter files, plus the node pack if this ComfyUI lacks it."""
+    for file in images.IPADAPTER_FILES:
+        if models.file_status(file)[0] != "ok":
+            _queue_single(f"ipadapter:{file.name}", f"IP-Adapter · {file.name}", file)
+    note = ""
+    if cloud.state.target != "cloud":
+        note = await asyncio.get_running_loop().run_in_executor(None, _install_ipadapter_nodes)
+    return JSONResponse({"queued": True, "note": note})
+
+
+def ipadapter_status() -> dict:
+    states = [models.file_status(f) for f in images.IPADAPTER_FILES]
+    installed = all(state == "ok" for state, _ in states)
+    return {"installed": installed, "usable": installed or on_cloud(),
+            "bytes": sum(f.size for f in images.IPADAPTER_FILES),
+            "modes": {k: v[1] for k, v in images.IPADAPTER_MODES.items()}}
 
 
 @app.post("/api/upscalers/{upscaler_id}/download")

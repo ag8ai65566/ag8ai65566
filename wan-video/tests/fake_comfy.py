@@ -33,6 +33,7 @@ FILE_INPUTS = {
     ("DualCLIPLoader", "clip_name1"): ("text_encoders",),
     ("DualCLIPLoader", "clip_name2"): ("text_encoders",),
     ("CLIPVisionLoader", "clip_name"): ("clip_vision",),
+    ("IPAdapterModelLoader", "ipadapter_file"): ("ipadapter",),
     ("VAELoader", "vae_name"): ("vae",),
     ("LoraLoaderModelOnly", "lora_name"): ("loras",),
     ("CLIPSetLastLayer", "__none__"): (),
@@ -62,6 +63,7 @@ def installed_names(folders: tuple[str, ...], only: set[str] | None) -> list[str
     # are single checkpoints, the newer families split into three folders.
     names.update(f.name for m in images.IMAGE_MODELS for f in m.all_files
                  if f.folder in folders)
+    names.update(f.name for f in images.IPADAPTER_FILES if f.folder in folders)
     for model in registry.MODELS:
         if only is not None and model.id not in only:
             continue

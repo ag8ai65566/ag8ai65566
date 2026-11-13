@@ -114,6 +114,8 @@ def catalogue() -> dict[str, Source]:
         add(_from_model_file(item.file, item.label))
     for item in controlnets.CONTROLNETS:
         add(_from_model_file(item.file, item.label))
+    for file in images.IPADAPTER_FILES:
+        add(_from_model_file(file, "IP-Adapter"))
     return found
 
 

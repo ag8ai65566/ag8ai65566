@@ -67,6 +67,7 @@ install_node() {
 }
 install_node ComfyUI-GGUF https://github.com/city96/ComfyUI-GGUF.git
 install_node ComfyUI-VideoHelperSuite https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git
+install_node ComfyUI_IPAdapter_plus https://github.com/cubiq/ComfyUI_IPAdapter_plus.git
 install_node ComfyUI-Manager https://github.com/ltdrdata/ComfyUI-Manager.git
 
 say "安裝 app"

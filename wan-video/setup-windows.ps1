@@ -157,6 +157,7 @@ Say '安裝擴充節點'
 $nodes = @(
   @{ name = 'ComfyUI-GGUF'; url = 'https://github.com/city96/ComfyUI-GGUF.git' },
   @{ name = 'ComfyUI-VideoHelperSuite'; url = 'https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite.git' },
+  @{ name = 'ComfyUI_IPAdapter_plus'; url = 'https://github.com/cubiq/ComfyUI_IPAdapter_plus.git' },
   @{ name = 'ComfyUI-Manager'; url = 'https://github.com/ltdrdata/ComfyUI-Manager.git' }
 )
 foreach ($n in $nodes) {
