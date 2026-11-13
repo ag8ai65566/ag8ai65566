@@ -457,6 +457,7 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
     resume = bool(ctx.params.get("resume") and tr.get("pod_id"))
     if resume:  # the studio was closed while the pod kept working: pick the run up again
         pod_id = tr["pod_id"]
+        started = tr.get("started_at") or tr["created_at"]
         deadline = tr.get("deadline") or (tr["created_at"] + float(config.load_settings()["runpod_max_hours"]) * 3600)
         ctx.log(f"resuming watch of pod {pod_id}")
     else:
@@ -494,8 +495,9 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
         # limit also covers the upload, which now runs on rented time
         max_h = float(config.load_settings().get("runpod_max_hours") or 12)
         allow = 0 if reuse else _upload_allowance(size)
-        deadline = time.time() + max_h * 3600 + allow + 900
-        _set(tid, pod_state="creating", deadline=deadline, started_at=time.time())
+        started = time.time()  # "running for" counts from here: an auto-grab run's waiting cost nothing
+        deadline = started + max_h * 3600 + allow + 900
+        _set(tid, pod_state="creating", deadline=deadline, started_at=started)
         ctx.progress(0.03, "租用雲端 GPU")
         env = {"VS_TRAINING_ID": tid, "VS_ENGINE": eng.id, "VS_MAX_SECONDS": str(int(max_h * 3600 + allow)),
                "VS_IMAGE": eng.image, "VS_WAIT_UPLOAD": "1"}
@@ -516,8 +518,12 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
             raise RuntimeError(f"沒有租到 GPU：{str(e)[:300]}（這張卡剛好被租走了。{then}）")
         pod_id = pod.get("id")
         gpu_actual = (pod.get("machine") or {}).get("gpuTypeId") or gpus[0]
+        rate = pod.get("costPerHr") or pod.get("adjustedCostPerHr")
+        fields = {}
+        if grab or gpu_actual != tr["gpu"]:  # auto-grab may rent a later card of the list: the estimate follows it
+            fields["cost_estimate"] = _estimate_usd(tr, gpu_actual, rate, upload=not reuse)
         _set(tid, status="running" if reuse else "uploading", pod_id=pod_id, pod_state="running", gpu=gpu_actual,
-             cost_per_hr=pod.get("costPerHr") or pod.get("adjustedCostPerHr"))
+             cost_per_hr=rate, **fields)
         ctx.log(f"pod {pod_id} created on {gpu_actual} at {pod.get('costPerHr')} /h")
 
         # 3. package and upload the dataset onto the rented pod's volume
@@ -548,7 +554,7 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
                 if s3_errors >= 20:
                     raise RuntimeError("連續 10 分鐘讀不到雲端儲存，已停止並關閉雲端機器。")
                 continue
-            _set(tid, progress={**prog, "wall_s": int(time.time() - (tr.get("started_at") or tr["created_at"]))})
+            _set(tid, progress={**prog, "wall_s": int(time.time() - started)})
             ctx.progress(0.2 + 0.65 * _fraction(prog), _phase_label(prog))
             if done:
                 partial = done.get("rc", 0) != 0
@@ -657,15 +663,24 @@ def retry_on_gpu(tid: str, gpu: str, usd_h: float | None = None) -> dict:
         raise ValueError(f"暫時無法確認 RunPod 上沒有這次訓練留下的機器（{str(e)[:120]}），請稍後再試。")
     if not all(_remove_pod(tid, p.get("id")) for p in found):
         raise ValueError("RunPod 上有這次訓練留下的機器，刪除失敗。請到 runpod.io → Pods 確認後再試。")
+    # the row is updated before the job exists, so the worker never reads the old GPU
+    _set(tid, gpu=gpu, status="queued", pod_state=None, note="", finished_at=None, deadline=None, started_at=None,
+         cost_estimate=_estimate_usd(tr, gpu, usd_h, upload=False), cost_per_hr=None, progress={})
+    job = jobs.submit("cloud_train", {"training_id": tid, "reuse_upload": True}, message="換一張 GPU 重試")
+    return db.update("trainings", tid, {"job_id": job["id"]})
+
+
+def _estimate_usd(tr: dict, gpu: str, usd_h: float | None, upload: bool) -> float:
+    """What a run costs on this card at this hourly price: training at the card's measured (or scaled) speed, plus
+    the dataset upload when it still has to go up on rented time (as plan() counts it)."""
     ds, eng = db.get("datasets", tr["dataset_id"]), engines.get(tr["engine"])
     usd_h = usd_h or runpod.GPUS.get(gpu, {}).get("usd_h", 1.5)
     est = eng.estimate(ds["hours"], tr["preset"]["id"], usd_h, n_train=int(ds["meta"].get("n_train") or ds["n_items"]),
                        s_per_step=_speed(eng.id, tr["preset"]["id"], gpu)[0], params=tr["preset"]["params"])
-    # the row is updated before the job exists, so the worker never reads the old GPU
-    _set(tid, gpu=gpu, status="queued", pod_state=None, note="", finished_at=None, deadline=None, started_at=None,
-         cost_estimate=est["usd"], cost_per_hr=None, progress={})
-    job = jobs.submit("cloud_train", {"training_id": tid, "reuse_upload": True}, message="換一張 GPU 重試")
-    return db.update("trainings", tid, {"job_id": job["id"]})
+    bps = float(config.load_settings().get("upload_bps") or 0)
+    if upload and bps:
+        return round((est["hours"] + _dataset_bytes(ds) / bps / 3600) * usd_h, 2)
+    return est["usd"]
 
 
 def _reconcile_creation(tid: str, loc: dict) -> None:
@@ -714,7 +729,11 @@ def resume_interrupted() -> list[str]:
             _set(tr["id"], job_id=job["id"])
             resumed.append(tr["id"])
         else:
-            _remove_pod(tr["id"], pod_id)
+            removed = _remove_pod(tr["id"], pod_id)
+            # an auto-grab run closed while renting its card or uploading: wait again rather than give up
+            if tr.get("wait") and removed and _rewait(tr["id"], "程式關閉時正在租卡或上傳，重新等卡"):
+                _set(tr["id"], pod_id=None, pod_state=None, cost_per_hr=None, uploaded_at=None)
+                continue
             _set(tr["id"], status="failed", finished_at=db.now(), note="程式關閉時中斷（還沒開始雲端訓練），請重新開始。")
     return resumed
 

@@ -1707,7 +1707,8 @@ def test_auto_grab_waits_renting_nothing_then_grabs(client, monkeypatch, tmp_pat
         pods.append(list(gpu_type))
         if taken[0]:
             raise runpod.RunPodError("RunPod POST /pods: 500 There are no instances currently available")
-        return {"id": "pod1", "machine": {"gpuTypeId": gpu_type[0]}, "costPerHr": 1.09}
+        return {"id": "pod1", "machine": {"gpuTypeId": gpu_type[0]},
+                "costPerHr": 2.49 if gpu_type[0] == "NVIDIA A100-SXM4-80GB" else 0.86}
     monkeypatch.setattr(training, "package_dataset", package)
     monkeypatch.setattr(runpod, "create_pod", create_pod)
     monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: False)
@@ -1739,11 +1740,18 @@ def test_auto_grab_waits_renting_nothing_then_grabs(client, monkeypatch, tmp_pat
     t = db.get("trainings", tid)
     assert t["status"] == "waiting_gpu" and t["wait"]["misses"] == 1 and pods == [[l40s, a100]]
 
-    taken[0] = False                                                          # next time it works
+    taken[0] = False                                                          # next time it works, on the A100:
+    for g in stock["gpus"]:                                                   # the L40S is gone again
+        if g["id"] == l40s:
+            g["dataCenters"] = [{"id": "US-CA-2", "availability": "NONE"}]
+    est_first = db.get("trainings", tid)["cost_estimate"]                     # quoted for the L40S
+    db.update("trainings", tid, {"created_at": time.time() - 3 * 3600})       # after waiting 3 hours
     assert training.wait_for_gpus() == [tid]
     _wait(c, db.get("trainings", tid)["job_id"])                              # (ends here on the pod's train error)
     t = db.get("trainings", tid)
-    assert pods[-1] == [l40s, a100] and t["pod_id"] == "pod1" and t["gpu"] == l40s and t["uploaded_at"]
+    assert pods[-1] == [a100] and t["pod_id"] == "pod1" and t["gpu"] == a100 and t["uploaded_at"]
+    assert t["cost_estimate"] == training._estimate_usd(t, a100, 2.49, upload=True) != est_first  # follows the card
+    assert t["progress"]["wall_s"] < 600                                      # the 3 hours of waiting are not counted
 
     late = c.post("/api/training", json=body).json()                          # waiting time over: stops by itself
     db.update("trainings", late["id"], {"wait": {**late["wait"], "until": time.time() - 1}})
@@ -1753,6 +1761,18 @@ def test_auto_grab_waits_renting_nothing_then_grabs(client, monkeypatch, tmp_pat
     stop = c.post("/api/training", json=body).json()                          # and can be stopped
     c.post(f"/api/training/{stop['id']}/cancel")
     assert db.get("trainings", stop["id"])["status"] == "canceled" and training.wait_for_gpus() == []
+
+    # the studio is closed while a grabbed run uploads onto its pod: at start-up the pod goes and the run waits again
+    removed = []
+    monkeypatch.setattr(runpod, "remove_pod", lambda pod_id: removed.append(pod_id))
+    closed = c.post("/api/training", json=body).json()
+    job = db.insert("jobs", {"id": db.new_id("job"), "kind": "cloud_train", "queue": "io", "status": "failed",
+                             "params": {"training_id": closed["id"]}, "result": {}, "created_at": db.now()})
+    db.update("trainings", closed["id"], {"status": "uploading", "pod_id": "pod9", "pod_state": "running",
+                                          "job_id": job["id"], "started_at": time.time()})
+    assert training.resume_interrupted() == []
+    t = db.get("trainings", closed["id"])
+    assert removed == ["pod9"] and t["status"] == "waiting_gpu" and not t["pod_id"] and "重新等卡" in t["wait"]["note"]
 
 
 def test_https_is_verified_also_with_many_connections_at_once(tmp_path):
