@@ -26,6 +26,9 @@ ROOT="${WAN_ROOT:-/workspace/wan}"
 RAW="${WAN_REPO_RAW:-}"
 REF="${WAN_COMFY_REF:-v0.45.0}"
 PORT="${WAN_COMFY_PORT:-8188}"
+# ComfyUI itself listens here, on this machine only. PORT is the gate in front
+# of it (cloud/gate.py): ComfyUI has no login, and a Runpod address is public.
+INNER="${WAN_COMFY_INNER_PORT:-8187}"
 AGENT_PORT="${WAN_AGENT_PORT:-8189}"
 EXTRA_ARGS="${WAN_COMFY_ARGS:-}"
 COMFY_REPO="${WAN_COMFY_REPO:-https://github.com/comfyanonymous/ComfyUI.git}"
@@ -53,12 +56,14 @@ PY="$(command -v python3.12 || command -v python3 || command -v python || true)"
 
 # -- 1. the agent -----------------------------------------------------------
 phase "booting"
-if ! curl -fsSL --retry 3 "$RAW/cloud/agent.py" -o "$ROOT/agent.py.new"; then
-  fail "抓不到 agent.py（$RAW）"
-fi
-mv "$ROOT/agent.py.new" "$ROOT/agent.py"
+for f in agent.py gate.py; do
+  curl -fsSL --retry 3 "$RAW/cloud/$f" -o "$ROOT/$f.new" || fail "抓不到 $f（$RAW）"
+  mv "$ROOT/$f.new" "$ROOT/$f"
+done
 pkill -f "$ROOT/agent.py" 2>/dev/null || true
-nohup "$PY" "$ROOT/agent.py" --root "$ROOT" --port "$AGENT_PORT" \
+# The agent asks ComfyUI "are you busy?" before its dead-man switch stops the
+# machine, and it asks on the inside port - the gate would turn it away.
+WAN_COMFY_PORT="$INNER" nohup "$PY" "$ROOT/agent.py" --root "$ROOT" --port "$AGENT_PORT" \
   >> "$ROOT/agent.log" 2>&1 &
 say "agent 已啟動（:$AGENT_PORT）"
 
@@ -149,8 +154,20 @@ node_pack ComfyUI-VideoHelperSuite https://github.com/Kosinkadink/ComfyUI-VideoH
 # -- 5. run ------------------------------------------------------------------
 phase "starting"
 (
-  until curl -fs -m 5 "http://127.0.0.1:$PORT/system_stats" >/dev/null 2>&1; do sleep 2; done
+  until curl -fs -m 5 "http://127.0.0.1:$INNER/system_stats" >/dev/null 2>&1; do sleep 2; done
+  until curl -s -m 5 -o /dev/null -w '%{http_code}' "http://127.0.0.1:$PORT/system_stats" 2>/dev/null | grep -q 401; do sleep 1; done
   phase "ready"
+) &
+
+# The gate, restarted if it ever dies. Without it nothing outside can reach
+# ComfyUI at all, which is the safe way to fail.
+pkill -f "$ROOT/gate.py" 2>/dev/null || true
+(
+  while true; do
+    "$VPY" "$ROOT/gate.py" --port "$PORT" --upstream "127.0.0.1:$INNER" >> "$ROOT/gate.log" 2>&1
+    say "gate 結束了（代碼 $?），3 秒後重新啟動"
+    sleep 3
+  done
 ) &
 
 cd "$COMFY" || fail "找不到 ComfyUI 資料夾"
@@ -162,7 +179,7 @@ while true; do
     tail -c 2000000 "$ROOT/comfy.log" > "$ROOT/comfy.log.tmp" 2>/dev/null && mv "$ROOT/comfy.log.tmp" "$ROOT/comfy.log"
   fi
   # shellcheck disable=SC2086 - EXTRA_ARGS is a list of flags, split on purpose
-  "$VPY" main.py --listen 0.0.0.0 --port "$PORT" $CPU_FLAG $EXTRA_ARGS >> "$ROOT/comfy.log" 2>&1
+  "$VPY" main.py --listen 127.0.0.1 --port "$INNER" $CPU_FLAG $EXTRA_ARGS >> "$ROOT/comfy.log" 2>&1
   say "ComfyUI 結束了（代碼 $?），5 秒後重新啟動"
   [ -n "${WAN_ONCE:-}" ] && exit 0
   sleep 5

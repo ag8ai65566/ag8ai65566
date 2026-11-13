@@ -7662,6 +7662,328 @@ def test_progress_phases() -> None:
           "the client reports which node started, not only when the job ends")
 
 
+async def test_cloud() -> None:
+    """The rented GPU, end to end, with nothing rented.
+
+    Runpod's API is faked (tests/fake_runpod.py, strict to the published v2
+    schema). The agent and the gate are the real files that run on the machine,
+    started here. ComfyUI is faked - and only "sees" model files that are
+    really on the agent's disk, which is what makes provisioning testable: a
+    job can only pass validation if the files were actually put there.
+    """
+    import threading
+    from http.server import ThreadingHTTPServer
+
+    import aiohttp
+    import config
+    import registry
+    import images
+    import runpod
+    import server
+    import sources
+    from comfy_client import ComfyClient
+    from fastapi import HTTPException
+    from fake_comfy import object_info
+
+    sys.path.insert(0, str(ROOT / "cloud"))
+    import agent as agent_mod
+    import gate as gate_mod
+    from fake_runpod import FakeRunpod
+
+    section("cloud gpu: where files come from")
+    catalogue = sources.catalogue()
+    wan = registry.get("wan22-14b-fp8")
+    first = wan.all_files[0]
+    entry = catalogue.get(first.name)
+    check(entry is not None and entry.url.startswith("https://huggingface.co/"),
+          f"a catalogue file resolves to its Hugging Face URL ({entry and entry.url[:40]})")
+    check(entry is not None and entry.folder == first.folder and entry.size == first.size,
+          "…with the folder and size from the catalogue")
+    saved_env = {k: os.environ.get(k) for k in
+                 ("HF_TOKEN", "CIVITAI_API_KEY", "RUNPOD_API_KEY", "RUNPOD_API_URL",
+                  "RUNPOD_PROXY_TEMPLATE")}
+    os.environ["HF_TOKEN"] = "hf_secret_for_test"
+    os.environ.pop("CIVITAI_API_KEY", None)
+    try:
+        catalogue = sources.catalogue()
+        hf_entries = [s for s in catalogue.values() if "huggingface.co" in s.url]
+        other = [s for s in catalogue.values() if "huggingface.co" not in s.url]
+        check(all(dict(s.headers).get("Authorization") == "Bearer hf_secret_for_test"
+                  for s in hf_entries), "the HF token goes with Hugging Face files")
+        check(not any("hf_secret_for_test" in str(s.headers) for s in other),
+              "…and with nothing else")
+        check(not any("hf_secret" in json.dumps(s.public()) for s in catalogue.values()),
+              "the public form of a source never carries a header")
+        civ = next((m for m in images.IMAGE_MODELS if m.civitai_version), None)
+        if civ is not None:
+            plan = catalogue[civ.file.name]
+            check(plan.url.endswith(f"/api/download/models/{civ.civitai_version}"),
+                  "a CivitAI checkpoint resolves to its download URL")
+            check(sources.needs_civitai_key(plan), "…and without a key it says one is needed")
+    finally:
+        for key in ("HF_TOKEN", "CIVITAI_API_KEY"):
+            if saved_env[key] is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = saved_env[key]
+
+    local = TMP / "cloud-local-models"
+    (local / "loras" / "anime").mkdir(parents=True, exist_ok=True)
+    (local / "loras" / "anime" / "my_trained.safetensors").write_bytes(b"x" * 2048)
+    found = sources.find("anime/my_trained.safetensors", local)
+    check(found is not None and found.is_upload and found.folder == "loras/anime"
+          and found.size == 2048, "a LoRA only this computer has is uploaded, folder mirrored")
+    check(sources.find("never_heard_of_it.safetensors", local) is None,
+          "a file nobody knows about has no source")
+    check(sources.looks_like_model_file("x.gguf") and not sources.looks_like_model_file("a cat"),
+          "only model-looking values are treated as files")
+
+    section("cloud gpu: the gate in front of ComfyUI")
+    token = "gate-and-agent-token-0123456789"
+    agent_root = TMP / "cloud-agent"
+    if agent_root.exists():
+        import shutil as _shutil
+        _shutil.rmtree(agent_root)
+    agent_root.mkdir(parents=True)
+    models_root = agent_root / "ComfyUI" / "models"
+
+    class DiskComfy(FakeComfy):
+        """A ComfyUI whose model lists are whatever is on the agent's disk."""
+
+        async def info(self, _req):
+            self.object_info_calls += 1
+            have = {p.name for p in models_root.rglob("*")
+                    if p.is_file() and not p.name.endswith(".part")} if models_root.is_dir() else set()
+            info = object_info(self.video_nodes, None)
+            for schema in info.values():
+                for group in ("required", "optional"):
+                    for name, spec in (schema.get("input", {}).get(group) or {}).items():
+                        if (isinstance(spec, list) and spec and isinstance(spec[0], list)
+                                and spec[0] and all(sources.looks_like_model_file(str(c))
+                                                    for c in spec[0])):
+                            spec[0] = [c for c in spec[0] if c in have]
+            return web.json_response(info)
+
+    fake = DiskComfy()
+    comfy_runner, comfy_url = await start(fake.app())
+    gate_runner, gate_url = await start(gate_mod.make_app(token, comfy_url.split("//", 1)[1]))
+    async with aiohttp.ClientSession() as s:
+        async with s.get(f"{gate_url}/system_stats") as r:
+            check(r.status == 401, f"no token: the gate refuses ({r.status})")
+        async with s.get(f"{gate_url}/system_stats",
+                         headers={"X-Wan-Token": "wrong-" + token}) as r:
+            check(r.status == 401, "a wrong token is refused too")
+    through = ComfyClient(gate_url, token)
+    stats = await through.system_stats()
+    check(stats.get("system", {}).get("comfyui_version") == "fake-0.33.0",
+          "with the token, requests reach ComfyUI")
+    check({"x-wan-token", "authorization", "origin"} <= gate_mod.DROP_REQUEST,
+          "the token is not passed on to ComfyUI, and neither is Origin")
+
+    section("cloud gpu: renting (fake Runpod v2)")
+    agent_state = agent_mod.State(agent_root, token)
+    httpd = ThreadingHTTPServer(("127.0.0.1", 0), agent_mod.make_handler(agent_state))
+    threading.Thread(target=httpd.serve_forever, daemon=True).start()
+    agent_port = httpd.server_address[1]
+    gate_port = int(gate_url.rsplit(":", 1)[1])
+
+    rp = FakeRunpod()
+    rp_runner, rp_url = await start(rp.app())
+    saved = (server.cloud, runpod.COMFY_PORT, runpod.AGENT_PORT, server.sources.find)
+    worker_task = None
+    os.environ["RUNPOD_API_URL"] = rp_url
+    os.environ["RUNPOD_PROXY_TEMPLATE"] = "http://127.0.0.1:{port}"
+    os.environ.pop("RUNPOD_API_KEY", None)
+    runpod.COMFY_PORT, runpod.AGENT_PORT = gate_port, agent_port
+    server.cloud = runpod.Cloud(runpod.Store(TMP / "cloud-state.json"))
+    (TMP / "cloud-state.json").unlink(missing_ok=True)
+    server.cloud.store.load()
+
+    async def body(call):
+        return json.loads((await call).body)
+
+    try:
+        status = await body(server.cloud_status())
+        check(status["has_key"] is False and status["target"] == "local",
+              "no key yet: nothing rented, jobs stay local")
+        try:
+            await server.cloud_gpus("SECURE")
+            check(False, "listing cards without a key is refused")
+        except HTTPException as exc:
+            check("API key" in str(exc.detail), f"without a key it says to paste one ({exc.detail[:30]})")
+
+        os.environ["RUNPOD_API_KEY"] = "wrong-key"
+        try:
+            await server.cloud_gpus("SECURE")
+            check(False, "a wrong key is refused")
+        except HTTPException as exc:
+            check("不認這把" in str(exc.detail), "a wrong key is named as the problem")
+        os.environ["RUNPOD_API_KEY"] = rp.key
+
+        listing = await body(server.cloud_gpus("SECURE"))
+        prices = [g["price"] for g in listing["gpus"]]
+        check(prices == sorted(prices) and len(prices) == 3, f"cards listed cheapest first ({prices})")
+        check(all({"name", "vram", "price", "stock"} <= set(g) for g in listing["gpus"]),
+              "…each with VRAM, hourly price and stock")
+        community = await body(server.cloud_gpus("COMMUNITY"))
+        check("NVIDIA H100 80GB HBM3" not in [g["id"] for g in community["gpus"]],
+              "the community list only has community cards")
+
+        for bad, label in (({}, "no card picked"),
+                           ({"gpu_id": "NVIDIA A40"}, "a card with no stock anywhere")):
+            try:
+                await server.cloud_rent(bad)
+                check(False, f"renting is refused: {label}")
+            except HTTPException as exc:
+                check(exc.status_code == 400, f"renting is refused: {label} ({str(exc.detail)[:24]})")
+        check(not rp.pods, "…and nothing was rented by a refused request")
+
+        rented = await body(server.cloud_rent({"gpu_id": "NVIDIA GeForce RTX 4090",
+                                               "tier": "SECURE", "volume_gb": 120}))
+        check(len(rp.volumes) == 1 and list(rp.volumes.values())[0]["dataCenter"] == "EU-RO-1",
+              "a network volume is made in the data centre with the most stock")
+        check(list(rp.volumes.values())[0]["size"] == 120, "…at the size asked for")
+        pod_body = rp.pod_bodies[-1]
+        check(set(pod_body) <= rp_fields_allowed(), "the pod request only uses fields in Runpod's schema")
+        check(pod_body["ports"] == [f"{gate_port}/http", f"{agent_port}/http"],
+              f"only ComfyUI's gate and the agent are published ({pod_body['ports']})")
+        check(len(pod_body["env"]["WAN_AGENT_TOKEN"]) >= 32, "the machine gets a long random token")
+        check(rp.key not in json.dumps(pod_body), "the Runpod key is not sent into the machine")
+        check(pod_body["mounts"]["network"][0]["volumeId"] in rp.volumes,
+              "…which mounts the volume, so models survive the machine")
+        check(int(pod_body["env"]["WAN_DEADMAN_MINUTES"]) >= 30,
+              "…and has a dead-man switch armed")
+        text = json.dumps(rented)
+        check(pod_body["env"]["WAN_AGENT_TOKEN"] not in text and "agent_token" not in text,
+              "the status the page gets never contains the machine's token")
+        check(rented["pod_id"] and rented["cost_per_hr"] == 0.69,
+              f"the hourly price is recorded ({rented['cost_per_hr']})")
+        try:
+            await server.cloud_rent({"gpu_id": "NVIDIA GeForce RTX 4090"})
+            check(False, "a second machine is refused while one runs")
+        except HTTPException as exc:
+            check("已經有一台" in str(exc.detail), "a second machine is refused while one runs")
+        check(len(rp.pods) == 1, "…so only one is ever billed")
+
+        try:
+            await server.cloud_volume_delete()
+            check(False, "the disk cannot be deleted under a running machine")
+        except HTTPException as exc:
+            check("先把雲端機關掉" in str(exc.detail), "the disk cannot be deleted under a running machine")
+
+        section("cloud gpu: a job on the rented machine")
+        # The machine got this token from its environment; the fake one here
+        # was started with the shared test token instead.
+        server.cloud.state.agent_token = token
+        server.cloud.store.save()
+        (agent_root / "phase").write_text("ready")
+
+        def stub_source(value, _models_dir):
+            base = str(value).rsplit("/", 1)[-1]
+            real = sources.catalogue().get(base)
+            if real is None:
+                return None
+            return sources.Source(name=base, folder=real.folder, size=1000,
+                                  url=f"{files_url}/f/{base}")
+
+        files_app = web.Application()
+        files_app.router.add_get("/f/{name}", lambda req: web.Response(body=b"m" * 1000))
+        files_runner, files_url = await start(files_app)
+        server.sources.find = stub_source
+
+        await server.cloud_target({"target": "cloud"})
+        check(server.missing_reason(wan) is None,
+              "on the cloud, a model not on this computer is not a reason to refuse")
+        while not server.queue.empty():
+            server.queue.get_nowait()
+            server.queue.task_done()
+        server.lib.thumbs.mkdir(parents=True, exist_ok=True)
+        record = server.submit(
+            sample_png((832, 480)), prompt="a walk", negative="", source="t.png", model=wan,
+            tier=config.default_tier(wan), length=33, seed=7, lightning=True, loras=[])
+        check(record.target == "cloud", "a job submitted now is stamped for the cloud")
+        worker_task = asyncio.create_task(server.worker())
+        for _ in range(400):
+            if record.status in ("done", "error"):
+                break
+            await asyncio.sleep(0.05)
+        check(record.status == "done", f"the job ran on the machine ({record.status}: {record.message[:120]})")
+        on_machine = sorted(p.name for p in models_root.rglob("*") if p.is_file())
+        wanted = sorted({f.name for f in wan.all_files})
+        check(set(wanted) <= set(on_machine),
+              f"every file the graph needed was downloaded onto the machine ({len(on_machine)})")
+        check(fake.graphs and record.output and (config.OUTPUT_DIR / record.output).is_file(),
+              "…the graph went through the gate, and the clip came back to this computer")
+        check(server.comfy() is server.client, "after the job, the default client is local again")
+
+        section("cloud gpu: money")
+        server.cloud.state.idle_minutes = 15
+        server.cloud.state.last_used = time.time()
+        check(await server.cloud.idle_tick(False) is False, "a machine used a minute ago is kept")
+        server.cloud.state.last_used = time.time() - 3600
+        check(await server.cloud.idle_tick(True) is False, "a busy machine is never stopped")
+        server.cloud.state.last_used = time.time() - 3600
+        server.cloud.state.started = time.time() - 3600
+        stopped = await server.cloud.idle_tick(False)
+        check(stopped and rp.terminated, "an idle machine is given back")
+        check(server.cloud.state.pod_id == "" and "自動關掉" in server.cloud.state.last_error,
+              "…and the page is told why")
+        check(0.6 < server.cloud.state.spent_total < 0.8,
+              f"…with the hour it ran counted (${server.cloud.state.spent_total:.2f})")
+        check(rp.volumes, "the disk, and the models on it, survive the machine")
+        await body(server.cloud_settings({"idle_minutes": 0}))
+        check(server.cloud.state.idle_minutes == 5, "an idle limit of 0 (never) is not allowed")
+
+        rp.next_status = "RUNNING"
+        await server.cloud_rent({"gpu_id": "NVIDIA GeForce RTX 4090"})
+        first_pod = server.cloud.state.pod_id
+        rp.pods[first_pod]["status"] = "EXITED"           # its own dead-man switch stopped it
+        server.cloud._pod_cache = (0.0, None)
+        await server.cloud_rent({"gpu_id": "NVIDIA GeForce RTX 4090"})
+        check(first_pod in rp.terminated and server.cloud.state.pod_id != first_pod,
+              "a stopped machine is given back before a new one is rented")
+        check(len(rp.volumes) == 1, "…on the same disk")
+
+        rp.pods[server.cloud.state.pod_id]["status"] = "TERMINATED"   # deleted in the console
+        server.cloud._pod_cache = (0.0, None)
+        status = await body(server.cloud_status())
+        check(status["pod_id"] == "", "a machine deleted elsewhere is forgotten, not waited on")
+        await body(server.cloud_volume_delete())
+        check(not rp.volumes, "with no machine, the disk can be deleted")
+
+        check(agent_mod.should_stop(agent_state, 30, agent_state.last_seen + 31 * 60, busy=False),
+              "the machine stops itself 30 minutes after the app goes quiet")
+        check(not agent_mod.should_stop(agent_state, 30, agent_state.last_seen + 31 * 60, busy=True),
+              "…but not while ComfyUI is working")
+        check(not agent_mod.should_stop(agent_state, 0, agent_state.last_seen + 9e9, busy=False),
+              "…and not at all when the switch is off")
+        try:
+            await server.cloud_target({"target": "elsewhere"})
+            check(False, "an unknown target is refused")
+        except HTTPException:
+            check(True, "an unknown target is refused")
+    finally:
+        if worker_task is not None:
+            worker_task.cancel()
+        await server.cloud_target({"target": "local"})
+        server.cloud, runpod.COMFY_PORT, runpod.AGENT_PORT, server.sources.find = saved
+        for key in ("RUNPOD_API_KEY", "RUNPOD_API_URL", "RUNPOD_PROXY_TEMPLATE"):
+            if saved_env[key] is None:
+                os.environ.pop(key, None)
+            else:
+                os.environ[key] = saved_env[key]
+        httpd.shutdown()
+        for runner in (comfy_runner, gate_runner, rp_runner):
+            await runner.cleanup()
+        if "files_runner" in locals():
+            await files_runner.cleanup()
+
+
+def rp_fields_allowed() -> set[str]:
+    from fake_runpod import POD_FIELDS
+    return POD_FIELDS
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -8525,6 +8847,7 @@ async def main() -> int:
     await test_review_regressions()
     test_progress_phases()
     await test_reattach()
+    await test_cloud()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

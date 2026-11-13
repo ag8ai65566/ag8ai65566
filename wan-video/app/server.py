@@ -12,6 +12,7 @@ the flags that make a tight fit work; the choice is the user's.
 from __future__ import annotations
 
 import asyncio
+import contextvars
 import io
 import json
 import random
@@ -50,6 +51,8 @@ import styles
 import refs as refslib
 import registry
 import runner as runner_mod
+import runpod
+import sources
 import tags
 import training
 import updates
@@ -68,6 +71,22 @@ STATIC = Path(__file__).parent / "static"
 
 app = FastAPI(title="wan-drop")
 client = ComfyClient(config.COMFY_URL)
+# The rented GPU, if the user has one. Its ComfyUI is a second address; which
+# one a job uses is decided when the job is submitted and stored on the job, so
+# flipping the switch later does not move a job that is already queued.
+cloud = runpod.Cloud(runpod.Store(config.CLOUD_STATE))
+_job_comfy: contextvars.ContextVar[ComfyClient | None] = contextvars.ContextVar(
+    "job_comfy", default=None)
+
+
+def comfy() -> ComfyClient:
+    """The ComfyUI the job being run right now goes to: local unless it is a cloud job."""
+    return _job_comfy.get() or client
+
+
+def on_cloud() -> bool:
+    """Will the next job go to the rented machine?"""
+    return cloud.state.target == "cloud"
 models = downloader.Manager(config.MODELS_DIR)
 lib = library.Library(config.OUTPUT_DIR, config.STAGING_DIR)
 book = promptbook.Book(config.OUTPUT_DIR.parent / "promptbook.jsonl")
@@ -151,12 +170,14 @@ async def startup() -> None:
         d.mkdir(parents=True, exist_ok=True)
     lib.load()
     book.load()
+    cloud.store.load()
     # A finished download changes what ComfyUI can offer, and its /object_info
     # is cached; drop that cache or the new model looks uninstalled.
     models.on_change = client.invalidate
     models.start()
     app.state.worker = asyncio.create_task(worker())
     app.state.reattacher = asyncio.create_task(reattacher())
+    app.state.cloud_keeper = asyncio.create_task(cloud_keeper())
 
 
 @app.on_event("shutdown")
@@ -164,7 +185,8 @@ async def shutdown() -> None:
     lib.save()
     book.flush()
     for task in (getattr(app.state, "worker", None),
-                 getattr(app.state, "reattacher", None), models.stop()):
+                 getattr(app.state, "reattacher", None),
+                 getattr(app.state, "cloud_keeper", None), models.stop()):
         if task:
             task.cancel()
 
@@ -182,19 +204,32 @@ async def worker() -> None:
             queue.task_done()
             continue
         running.add(job_id)
+        bound = None
         try:
+            if record.target == "cloud":
+                # A rented machine may still be booting - the first boot
+                # installs ComfyUI - so this wait narrates itself on the card.
+                def say(text: str, record=record) -> None:
+                    record.message = text
+                record.message = "等雲端機就緒…"
+                await cloud.wait_ready(say)
+                job_client = cloud.comfy()
+                if job_client is None:
+                    raise runpod.CloudError("雲端機沒有開。到「設定」分頁的「雲端 GPU」開機。")
+                bound = _job_comfy.set(job_client)
+                cloud.touch()
             # Waited for per job, not once at startup. Outside the try, a
             # ComfyUI that is slow to boot kills the only queue consumer, and
             # because nothing restarts it every later job sits at "排隊中"
             # forever with no error to show for it.
             record.message = "等 ComfyUI 就緒…"
-            await client.wait_until_ready()
+            await comfy().wait_until_ready()
             record.status, record.started = "running", time.time()
             record.message = "準備中…"
             await run_job(record, image_bytes, end_bytes)
             record.status, record.message = "done", ""
             record._progress = 1.0
-        except (ComfyError, workflow.UnsupportedModel) as exc:
+        except (ComfyError, workflow.UnsupportedModel, runpod.CloudError) as exc:
             record.status, record.message = "error", str(exc)
         except Exception as exc:  # noqa: BLE001 - never kill the worker
             # A job ComfyUI accepted is ComfyUI's now: it will finish whether
@@ -214,9 +249,18 @@ async def worker() -> None:
                 # `explain` turns a connection failure into "ComfyUI is not
                 # running, here is how to start it". Anything it does not
                 # recognise still falls back to the class name and the message.
-                record.message = comfy_client.explain(exc, config.COMFY_URL)
+                # `explain`'s advice is about this computer's ComfyUI - how to
+                # install it, how to start it - and is wrong for a rented one.
+                record.message = (
+                    f"雲端機那邊出錯了：{type(exc).__name__}: {exc}"
+                    if record.target == "cloud"
+                    else comfy_client.explain(exc, config.COMFY_URL))
                 traceback.print_exc()
         finally:
+            if record.target == "cloud":
+                cloud.touch()
+            if bound is not None:
+                _job_comfy.reset(bound)
             # A detached job has not finished - something else is still doing
             # it - so it must not be stamped with an end time.
             if record.status != "detached":
@@ -240,6 +284,31 @@ async def reattacher() -> None:
         except Exception:  # noqa: BLE001 - this loop must never die
             traceback.print_exc()
         await asyncio.sleep(15)
+
+
+async def cloud_keeper() -> None:
+    """Look after the rented machine while it exists.
+
+    Once a minute: tell the machine this app is still here (otherwise its own
+    dead-man switch stops it), and give it back if nothing has used it for the
+    idle limit. A job queued or running for it counts as use.
+    """
+    while True:
+        await asyncio.sleep(60)
+        try:
+            if not cloud.state.pod_id or not runpod.api_key():
+                continue
+            agent = cloud.agent
+            if agent is not None:
+                try:
+                    await agent.ping()
+                except Exception:  # noqa: BLE001 - still booting, or gone
+                    pass
+            busy = any(r.target == "cloud" and r.status in ("queued", "running", "detached")
+                       for r in lib.records.values())
+            await cloud.idle_tick(busy)
+        except Exception:  # noqa: BLE001 - this loop must never die
+            traceback.print_exc()
 
 
 # What each kind of node is doing, in words, and roughly how far through the
@@ -284,12 +353,63 @@ async def _store_outputs(record: library.Record, files) -> None:
     """Download ComfyUI's output files and file them under this job's id."""
     record.outputs = []
     for index, f in enumerate(files):
-        data = await client.download(f)
+        data = await comfy().download(f)
         suffix = Path(f.filename).suffix or (".png" if record.kind == "image" else ".mp4")
         name = f"{record.id}{'' if index == 0 else f'-{index + 1}'}{suffix}"
         (config.OUTPUT_DIR / name).write_bytes(data)
         record.outputs.append(name)
     record.output = record.outputs[0] if record.outputs else None
+
+
+async def provision(record: library.Record, graph: dict) -> None:
+    """On a rented machine, put every model file this graph names onto it.
+
+    The machine's ComfyUI is asked which files it lacks - the same check that
+    would otherwise fail the job - and each name is looked up: a catalogue
+    file is downloaded by the machine itself, a file only this computer has is
+    uploaded. Then it is asked again, because a downloaded VAE can be what
+    makes the next missing file visible. A local job does nothing here.
+    """
+    if record.target != "cloud":
+        return
+    job_client = comfy()
+    tried: set[str] = set()
+    for _ in range(3):
+        wanted = []
+        for issue in await job_client.diagnose(graph):
+            value = str(issue.value or "")
+            if (issue.kind in ("no-files", "bad-choice")
+                    and sources.looks_like_model_file(value) and value not in wanted):
+                wanted.append(value)
+        if not wanted:
+            return
+        if set(wanted) <= tried:
+            # Fetched and still missing: the file landed somewhere ComfyUI does
+            # not look. Let validation report it rather than loop.
+            return
+        tried.update(wanted)
+        plans, unknown = [], []
+        for value in wanted:
+            plan = sources.find(value, config.MODELS_DIR)
+            if plan is None:
+                unknown.append(value)
+            else:
+                plans.append(plan)
+        if unknown:
+            raise ComfyError(
+                "雲端機上沒有這些檔案，這個 app 也不知道去哪裡拿"
+                "（模型目錄裡沒有，你電腦上也沒有）：\n- " + "\n- ".join(unknown))
+        keyless = [p.name for p in plans if sources.needs_civitai_key(p)]
+        if keyless:
+            raise ComfyError(
+                f"{', '.join(keyless)} 要從 CivitAI 下載，需要 CivitAI API key。"
+                "到「設定」分頁貼上再試。")
+
+        def say(text: str) -> None:
+            record.message = text
+        await cloud.fetch(plans, say)
+        job_client.invalidate()
+        record.message = "模型已放上雲端機，開始生成…"
 
 
 async def reattach() -> int:
@@ -308,42 +428,60 @@ async def reattach() -> int:
     for record in list(lib.records.values()):
         if record.status != "detached" or not record.prompt_id:
             continue
+        if record.target == "cloud":
+            job_client = cloud.comfy()
+            if job_client is None:
+                # The machine is gone, and its ComfyUI with it.
+                record.status = "error"
+                record.message = "雲端機已經關掉了，這個工作的結果拿不回來。要重新生成。"
+                record.finished = time.time()
+                picked += 1
+                continue
+        else:
+            job_client = client
+        bound = _job_comfy.set(job_client)
         try:
-            files = await client.collect(record.prompt_id)
-        except ComfyError as exc:
-            record.status, record.message = "error", str(exc)
-            record.finished = time.time()
-            picked += 1
-            continue
-        except Exception:  # noqa: BLE001 - ComfyUI down again; try later
-            continue
-        if not files:
-            try:
-                if not await client.pending(record.prompt_id):
-                    # Not in the queue and not in the history: ComfyUI was
-                    # restarted and the job went with it. Say that, rather
-                    # than leaving it "still running" forever.
-                    record.status = "error"
-                    record.message = (
-                        "ComfyUI 那邊已經沒有這個工作了（它可能被重開過）。"
-                        "這一顆要重新生成。")
-                    record.finished = time.time()
-                    picked += 1
-            except Exception:  # noqa: BLE001
-                pass
-            continue
-        try:
-            await _store_outputs(record, files)
-        except Exception as exc:  # noqa: BLE001 - keep it detached and retry
-            record.message = f"抓結果的時候失敗了，會再試：{exc}"
-            continue
-        record.status, record.message = "done", ""
-        record._progress = 1.0
-        record.finished = time.time()
-        picked += 1
+            await _reattach_one(record)
+            picked += record.status != "detached"
+        finally:
+            _job_comfy.reset(bound)
     if picked:
         lib.save()
     return picked
+
+
+async def _reattach_one(record: library.Record) -> None:
+    """One detached job: collect it, report it gone, or leave it for later."""
+    try:
+        files = await comfy().collect(record.prompt_id)
+    except ComfyError as exc:
+        record.status, record.message = "error", str(exc)
+        record.finished = time.time()
+        return
+    except Exception:  # noqa: BLE001 - ComfyUI down again; try later
+        return
+    if not files:
+        try:
+            if not await comfy().pending(record.prompt_id):
+                # Not in the queue and not in the history: ComfyUI was
+                # restarted and the job went with it. Say that, rather
+                # than leaving it "still running" forever.
+                record.status = "error"
+                record.message = (
+                    "ComfyUI 那邊已經沒有這個工作了（它可能被重開過）。"
+                    "這一顆要重新生成。")
+                record.finished = time.time()
+        except Exception:  # noqa: BLE001
+            pass
+        return
+    try:
+        await _store_outputs(record, files)
+    except Exception as exc:  # noqa: BLE001 - keep it detached and retry
+        record.message = f"抓結果的時候失敗了，會再試：{exc}"
+        return
+    record.status, record.message = "done", ""
+    record._progress = 1.0
+    record.finished = time.time()
 
 
 async def run_job(record: library.Record, image_bytes: bytes,
@@ -353,7 +491,7 @@ async def run_job(record: library.Record, image_bytes: bytes,
     model = registry.get(record.model_id)
     if model is None:
         raise ComfyError(f"不認識的模型：{record.model_id}")
-    if reason := missing_reason(model):
+    if reason := missing_reason(model, record.target):
         raise ComfyError(reason)
 
     params = config.params_for(model, lightning=record.lightning)
@@ -366,7 +504,7 @@ async def run_job(record: library.Record, image_bytes: bytes,
     if params.interpolate > 1 and not params.interpolate_model:
         params.interpolate = 1
     record.fps = params.fps
-    available = await client.node_classes()
+    available = await comfy().node_classes()
     record.settings = {
         "steps": params.steps, "cfg": params.cfg, "shift": params.shift,
         "sampler": params.sampler, "scheduler": params.scheduler,
@@ -387,7 +525,7 @@ async def run_job(record: library.Record, image_bytes: bytes,
 
     png = io.BytesIO()
     image.save(png, "PNG")
-    uploaded = await client.upload_image(png.getvalue(), f"{record.id}.png")
+    uploaded = await comfy().upload_image(png.getvalue(), f"{record.id}.png")
 
     # The second picture, for the one model that takes one. Uploaded under its
     # own name so the graph can reference both.
@@ -395,7 +533,7 @@ async def run_job(record: library.Record, image_bytes: bytes,
     if end_bytes:
         end_png = io.BytesIO()
         Image.open(io.BytesIO(end_bytes)).convert("RGB").save(end_png, "PNG")
-        end_uploaded = await client.upload_image(end_png.getvalue(), f"{record.id}-end.png")
+        end_uploaded = await comfy().upload_image(end_png.getvalue(), f"{record.id}-end.png")
 
     # An imported workflow wins over a built one. It is the official graph from
     # the user's own ComfyUI, where it demonstrably runs; this app's builders
@@ -440,7 +578,8 @@ async def run_job(record: library.Record, image_bytes: bytes,
             filename_prefix=f"wan/{record.id}",
             end_image_name=end_uploaded or None,
         )
-    if problems := await client.validate(graph):
+    await provision(record, graph)
+    if problems := await comfy().validate(graph):
         raise ComfyError("工作流程與這台 ComfyUI 不相容：\n- " + "\n- ".join(problems))
 
     # Sampling never claims the whole bar: there is a decode and an encode
@@ -468,7 +607,7 @@ async def run_job(record: library.Record, image_bytes: bytes,
         lib.save()
 
     record.message = "載入模型…（第一次會比較久）"
-    files = await client.run(graph, on_progress=progress, on_queued=queued,
+    files = await comfy().run(graph, on_progress=progress, on_queued=queued,
                              on_node=node_started)
     if not files:
         raise ComfyError("ComfyUI 沒有回傳任何輸出檔案")
@@ -491,7 +630,11 @@ def effective_default() -> registry.ModelDef:
     return configured
 
 
-def missing_reason(model: registry.ModelDef) -> str | None:
+def missing_reason(model: registry.ModelDef, target: str = "") -> str | None:
+    # A rented machine fetches what it lacks right before the job (see
+    # `provision`), so "not on this computer" is not a reason to refuse one.
+    if (target or cloud.state.target) == "cloud":
+        return None
     state = models.model_status(model)
     if state["installed"]:
         return None
@@ -606,6 +749,9 @@ def submit(
         loras=loras,
         settings=settings or {},
     )
+    record.target = cloud.state.target
+    if record.target == "cloud":
+        cloud.touch()
     lib.add(record)
     queue.put_nowait((record.id, image_bytes, end_bytes))
     return record
@@ -750,7 +896,14 @@ async def library_stats() -> JSONResponse:
 
 @app.post("/api/cancel")
 async def cancel() -> JSONResponse:
-    await client.interrupt()
+    # A job on the rented machine is interrupted there, not here - and the
+    # local ComfyUI may not even be running when everything goes to the cloud.
+    remote = cloud.comfy()
+    if remote is not None and any(
+            (r := lib.get(j)) is not None and r.target == "cloud" for j in running):
+        await remote.interrupt()
+    else:
+        await client.interrupt()
     return JSONResponse({"ok": True})
 
 
@@ -815,6 +968,9 @@ async def list_models() -> JSONResponse:
                 # this" is not a catalogue fact - it depends on this machine.
                 "has_workflow": model.id in imported_workflows,
                 "runnable_here": model.runnable or model.id in imported_workflows,
+                # Generate-button gate. `installed` stays the literal fact
+                # about this disk; the rented machine downloads for itself.
+                "usable": state["installed"] or on_cloud(),
                 # "video" or "tts". Only the video ones belong in a picker that
                 # asks which model makes the clip.
                 "role": model.role,
@@ -1304,13 +1460,17 @@ def image_status(model: images.ImageModel) -> dict:
     if model.id.startswith(images.CUSTOM_PREFIX):
         # Size is unknown for a user-installed file; presence is all we can check.
         here = (config.MODELS_DIR / "checkpoints" / model.file.name).is_file()
-        return {"installed": here, "partial": False, "bytes_on_disk": 0,
+        # On a rented machine it is uploaded from here, so the rule is the same.
+        return {"installed": here, "usable": here, "partial": False, "bytes_on_disk": 0,
                 "missing": [] if here else [model.file.name]}
     states = [models.file_status(f) for f in model.all_files]
     on_disk = sum(n for _, n in states)
     missing = [f.name for f, (st, _) in zip(model.all_files, states) if st != "ok"]
     return {
         "installed": not missing,
+        # Can a job use it right now: on this disk, or on the rented machine,
+        # which downloads a catalogue model itself before the job runs.
+        "usable": not missing or on_cloud(),
         "partial": bool(missing) and on_disk > 0,
         "bytes_on_disk": on_disk,
         "missing": missing,
@@ -1328,7 +1488,7 @@ async def run_comic_job(record: library.Record) -> None:
     if model is None:
         raise ComfyError(f"不認識的圖片模型：{record.model_id}")
     state = image_status(model)
-    if not state["installed"]:
+    if not state["installed"] and record.target != "cloud":
         raise ComfyError(
             f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
             "請到「模型」分頁下載。"
@@ -1353,7 +1513,7 @@ async def run_comic_job(record: library.Record) -> None:
             if path is None:
                 continue
             try:
-                uploaded[str(name)] = await client.upload_image(path.read_bytes(), str(name))
+                uploaded[str(name)] = await comfy().upload_image(path.read_bytes(), str(name))
             except (OSError, ComfyError):
                 continue
     # Whatever the crops did, say so on the finished card rather than in a
@@ -1387,10 +1547,11 @@ async def run_comic_job(record: library.Record) -> None:
         panels=panels,
         negative=record.negative,
         seed=record.seed,
-        available_nodes=await client.node_classes(),
+        available_nodes=await comfy().node_classes(),
         filename_prefix=f"comic/{record.id}",
     )
-    if problems := await client.validate(graph):
+    await provision(record, graph)
+    if problems := await comfy().validate(graph):
         raise ComfyError("工作流程與這台 ComfyUI 不相容：\n- " + "\n- ".join(problems))
 
     def progress(value: float) -> None:
@@ -1398,7 +1559,7 @@ async def run_comic_job(record: library.Record) -> None:
         record.message = f"畫第 {min(layout.count, int(value * layout.count) + 1)}/{layout.count} 格…"
 
     record.message = "載入模型…（第一次會比較久）"
-    files = await client.run(graph, on_progress=progress)
+    files = await comfy().run(graph, on_progress=progress)
     if not files:
         raise ComfyError("ComfyUI 沒有回傳任何輸出檔案")
 
@@ -1410,7 +1571,7 @@ async def run_comic_job(record: library.Record) -> None:
     art: list[Image.Image] = []
     record.outputs = []
     for index, f in enumerate(ordered[: layout.count]):
-        data = await client.download(f)
+        data = await comfy().download(f)
         name = f"{record.id}-p{index + 1:02d}.png"
         (config.OUTPUT_DIR / name).write_bytes(data)
         record.outputs.append(name)
@@ -1451,7 +1612,7 @@ async def run_image_job(record: library.Record) -> None:
     if model is None:
         raise ComfyError(f"不認識的圖片模型：{record.model_id}")
     state = image_status(model)
-    if not state["installed"]:
+    if not state["installed"] and record.target != "cloud":
         raise ComfyError(
             f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
             "請到「模型」分頁下載。"
@@ -1472,14 +1633,14 @@ async def run_image_job(record: library.Record) -> None:
         source = config.STAGING_DIR / f"{record.id}.png"
         if not source.is_file():
             raise ComfyError("找不到剛才那張來源圖，請重新上傳一次")
-        init_name = await client.upload_image(source.read_bytes(), f"{record.id}.png")
+        init_name = await comfy().upload_image(source.read_bytes(), f"{record.id}.png")
 
     control_name = ""
     if settings.controlnet and (record.settings or {}).get("control_image"):
         staged = config.STAGING_DIR / f"{record.id}-control.png"
         if not staged.is_file():
             raise ComfyError("找不到剛才那張構圖參考圖，請重新上傳一次")
-        control_name = await client.upload_image(
+        control_name = await comfy().upload_image(
             staged.read_bytes(), f"{record.id}-control.png"
         )
 
@@ -1493,10 +1654,11 @@ async def run_image_job(record: library.Record) -> None:
         height=record.height,
         init_image=init_name,
         control_image=control_name,
-        available_nodes=await client.node_classes(),
+        available_nodes=await comfy().node_classes(),
         filename_prefix=f"img/{record.id}",
     )
-    if problems := await client.validate(graph):
+    await provision(record, graph)
+    if problems := await comfy().validate(graph):
         raise ComfyError("工作流程與這台 ComfyUI 不相容：\n- " + "\n- ".join(problems))
 
     def progress(value: float) -> None:
@@ -1504,14 +1666,14 @@ async def run_image_job(record: library.Record) -> None:
         record.message = f"生成中 {value * 100:.0f}%"
 
     record.message = "載入模型…（第一次會比較久）"
-    files = await client.run(graph, on_progress=progress)
+    files = await comfy().run(graph, on_progress=progress)
     if not files:
         raise ComfyError("ComfyUI 沒有回傳任何輸出檔案")
 
     record.message = "下載結果…"
     record.outputs = []
     for index, f in enumerate(files):
-        data = await client.download(f)
+        data = await comfy().download(f)
         name = f"{record.id}{'' if index == 0 else f'-{index + 1}'}{Path(f.filename).suffix or '.png'}"
         (config.OUTPUT_DIR / name).write_bytes(data)
         record.outputs.append(name)
@@ -1664,7 +1826,7 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
     if model is None:
         raise HTTPException(400, f"不認識的圖片模型：{payload.get('model')}")
     state = image_status(model)
-    if not state["installed"]:
+    if not (state["installed"] or on_cloud()):
         raise HTTPException(
             400,
             f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
@@ -1751,6 +1913,9 @@ async def image_generate(payload: dict = Body(...)) -> JSONResponse:
         (config.STAGING_DIR / f"{record.id}.png").write_bytes(source.read_bytes())
     if control_name:
         (config.STAGING_DIR / f"{record.id}-control.png").write_bytes(control.read_bytes())
+    record.target = cloud.state.target
+    if record.target == "cloud":
+        cloud.touch()
     lib.add(record)
     queue.put_nowait((record.id, b""))
     return JSONResponse(public(record))
@@ -1912,6 +2077,146 @@ async def pull_comfy() -> JSONResponse:
     if not result["ok"]:
         raise HTTPException(400, result["detail"])
     return JSONResponse(result)
+
+
+# -- cloud GPU (Runpod) ------------------------------------------------------
+
+
+def _cloud_call(exc: Exception) -> HTTPException:
+    return HTTPException(400, str(exc))
+
+
+@app.get("/api/cloud")
+async def cloud_status() -> JSONResponse:
+    """Everything the 雲端 GPU card shows. Never includes a token or the key."""
+    s = cloud.state
+    pod_status, problem = "", ""
+    if s.pod_id and runpod.api_key():
+        # First, so that a machine deleted elsewhere is already forgotten in
+        # the answer this call gives, not only in the next one.
+        try:
+            pod = await cloud.pod()
+            pod_status = str((pod or {}).get("status") or "")
+        except runpod.CloudError as exc:
+            problem = str(exc)
+    now = time.time()
+    out = {
+        "has_key": bool(runpod.api_key()),
+        "target": s.target,
+        "pod_id": s.pod_id,
+        "gpu": {"id": s.gpu_id, "name": s.gpu_name, "vram": s.gpu_vram},
+        "tier": s.tier,
+        "cost_per_hr": s.cost_per_hr,
+        "idle_minutes": s.idle_minutes,
+        "volume": {"id": s.volume_id, "data_center": s.volume_dc, "gb": s.volume_gb,
+                   # Runpod's listed rate for network volumes, billed whether a
+                   # machine is running or not.
+                   "per_month": round(s.volume_gb * 0.07, 2)},
+        "started": s.started,
+        "running_seconds": round(now - s.started) if s.started else 0,
+        "running_cost": round((now - s.started) / 3600 * s.cost_per_hr, 3) if s.started else 0,
+        "idle_left": (max(0, round(s.idle_minutes * 60 - (now - (s.last_used or s.started))))
+                      if s.pod_id and s.idle_minutes else None),
+        "spent_total": round(s.spent_total, 3),
+        "hours_total": round(s.seconds_total / 3600, 2),
+        "history": s.history[:10],
+        "last_error": s.last_error,
+        "comfy_url": cloud.comfy_url,
+        "pod_status": pod_status, "phase": "", "log": [],
+    }
+    if problem:
+        out["error"] = problem
+    if s.pod_id and out["has_key"]:
+        agent = cloud.agent
+        if agent is not None and out["pod_status"] == "RUNNING":
+            try:
+                status = await agent.status()
+                out["phase"] = str(status.get("phase") or "")
+                out["log"] = list(status.get("log") or [])[-15:]
+                out["disk"] = status.get("disk") or {}
+            except Exception:  # noqa: BLE001 - not listening yet
+                out["phase"] = ""
+    return JSONResponse(out)
+
+
+@app.get("/api/cloud/gpus")
+async def cloud_gpus(tier: str = "SECURE") -> JSONResponse:
+    try:
+        rows = runpod.gpu_rows(await cloud.api.gpus(tier), tier, cloud.state.volume_dc)
+    except runpod.CloudError as exc:
+        raise _cloud_call(exc)
+    return JSONResponse({"tier": tier, "data_center": cloud.state.volume_dc, "gpus": rows})
+
+
+@app.post("/api/cloud/rent")
+async def cloud_rent(payload: dict = Body(default={})) -> JSONResponse:
+    gpu_id = str(payload.get("gpu_id") or "").strip()
+    if not gpu_id:
+        raise HTTPException(400, "先選一張顯卡")
+    try:
+        await cloud.rent(gpu_id=gpu_id, tier=str(payload.get("tier") or "SECURE"),
+                         volume_gb=int(payload.get("volume_gb") or 150),
+                         comfy_args=str(payload.get("comfy_args") or ""))
+    except (runpod.CloudError, ValueError) as exc:
+        raise _cloud_call(exc)
+    return await cloud_status()
+
+
+@app.post("/api/cloud/release")
+async def cloud_release() -> JSONResponse:
+    if any(r.target == "cloud" and r.status == "running" for r in lib.records.values()):
+        raise HTTPException(409, "雲端機上還有工作在跑。先按「中斷」，或等它跑完再關。")
+    try:
+        await cloud.release()
+    except runpod.CloudError as exc:
+        raise _cloud_call(exc)
+    return await cloud_status()
+
+
+@app.post("/api/cloud/volume/delete")
+async def cloud_volume_delete() -> JSONResponse:
+    try:
+        await cloud.drop_volume()
+    except runpod.CloudError as exc:
+        raise _cloud_call(exc)
+    return await cloud_status()
+
+
+@app.post("/api/cloud/target")
+async def cloud_target(payload: dict = Body(default={})) -> JSONResponse:
+    target = str(payload.get("target") or "")
+    if target not in ("local", "cloud"):
+        raise HTTPException(400, "target 只能是 local 或 cloud")
+    cloud.state.target = target
+    cloud.store.save()
+    return JSONResponse({"target": target})
+
+
+@app.post("/api/cloud/settings")
+async def cloud_settings(payload: dict = Body(default={})) -> JSONResponse:
+    if "idle_minutes" in payload:
+        try:
+            minutes = int(payload["idle_minutes"])
+        except (TypeError, ValueError):
+            raise HTTPException(400, "閒置分鐘數要是整數")
+        # 0 would mean "never stop on its own", which is how a bill happens.
+        cloud.state.idle_minutes = max(5, min(minutes, 240))
+    cloud.store.save()
+    return JSONResponse({"idle_minutes": cloud.state.idle_minutes})
+
+
+@app.get("/api/cloud/log")
+async def cloud_log(name: str = "boot") -> JSONResponse:
+    if not cloud.state.pod_id:
+        return JSONResponse({"lines": []})
+    try:
+        if name == "comfy" and cloud.agent is not None:
+            lines = await cloud.agent.log("comfy", 120)
+        else:
+            lines = await cloud.boot_log()
+    except Exception as exc:  # noqa: BLE001
+        return JSONResponse({"lines": [], "error": str(exc)})
+    return JSONResponse({"lines": lines})
 
 
 @app.get("/api/settings")
@@ -2113,6 +2418,10 @@ DRAMAS = shortdrama.ProjectStore(config.OUTPUT_DIR / ".shortdrama.jsonl")
 
 
 def _drama_installed() -> set[str]:
+    if on_cloud():
+        # Every model is "installed" for planning purposes: the rented machine
+        # fetches what it lacks before each shot.
+        return {m.id for m in registry.MODELS}
     return {m.id for m in registry.MODELS if models.model_status(m).get("installed")}
 
 
@@ -2342,6 +2651,7 @@ def _drama_models(project) -> list[dict]:
             "short": registry.short_label(image_model.label),
             "for": "關鍵幀",
             "installed": state["installed"],
+            "usable": state["usable"],
             "missing": state["missing"][:3],
             "bytes": sum(f.size for f in image_model.all_files),
             "downloadable": bool(getattr(image_model, "downloadable", True)),
@@ -2357,6 +2667,7 @@ def _drama_models(project) -> list[dict]:
             "short": registry.short_label(model.label),
             "for": shortdrama.METHODS[method].zh,
             "installed": state["installed"],
+            "usable": state["installed"] or on_cloud(),
             "missing": (state.get("missing") or [])[:3],
             "bytes": sum(f.size for f in model.all_files),
             "downloadable": True,
@@ -2429,7 +2740,7 @@ async def run_episode(project_id: str, payload: dict = Body(default={})) -> JSON
     # with a filename in it, and nothing to press.
     want = "image" if stage == "keyframe" else "video"
     absent = [m for m in _drama_models(project)
-              if m["kind"] == want and not m["installed"]]
+              if m["kind"] == want and not m["usable"]]
     if absent:
         raise HTTPException(
             400,
@@ -2456,7 +2767,7 @@ async def run_episode(project_id: str, payload: dict = Body(default={})) -> JSON
                 f"（它只能做：{can}）。到第 0 步把這條路線換成別的模型。")
 
     ungraphed = [m for m in _drama_models(project)
-                 if m["kind"] == want and m["installed"]
+                 if m["kind"] == want and m["usable"]
                  and m.get("runnable_here") is False]
     if ungraphed:
         raise HTTPException(
@@ -4256,7 +4567,7 @@ async def comic_generate(payload: dict = Body(...)) -> JSONResponse:
     if model is None:
         raise HTTPException(400, f"不認識的圖片模型：{payload.get('model')}")
     state = image_status(model)
-    if not state["installed"]:
+    if not (state["installed"] or on_cloud()):
         raise HTTPException(
             400,
             f"{model.label} 還沒下載完（缺 {', '.join(state['missing'][:3])}）。"
@@ -4345,6 +4656,9 @@ async def comic_generate(payload: dict = Body(...)) -> JSONResponse:
             "page_width": max(768, min(int(payload.get("page_width", 1600)), 3000)),
         },
     )
+    record.target = cloud.state.target
+    if record.target == "cloud":
+        cloud.touch()
     lib.add(record)
     queue.put_nowait((record.id, b""))
     return JSONResponse(public(record))

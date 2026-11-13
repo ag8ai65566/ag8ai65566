@@ -145,10 +145,16 @@ class JobVanished(ComfyError):
 
 
 class ComfyClient:
-    def __init__(self, base_url: str) -> None:
+    def __init__(self, base_url: str, token: str = "") -> None:
         self.base = base_url.rstrip("/")
         self.client_id = str(uuid.uuid4())
         self._object_info: dict | None = None
+        # Only a rented machine has one: its ComfyUI sits behind cloud/gate.py,
+        # which refuses anything without it. A local ComfyUI gets no header.
+        self.headers = {"X-Wan-Token": token} if token else {}
+
+    def _session(self) -> aiohttp.ClientSession:
+        return aiohttp.ClientSession(headers=self.headers)
 
     # -- lifecycle ----------------------------------------------------------
 
@@ -158,7 +164,7 @@ class ComfyClient:
         last: Exception | None = None
         while asyncio.get_event_loop().time() < deadline:
             try:
-                async with aiohttp.ClientSession() as s:
+                async with self._session() as s:
                     async with s.get(f"{self.base}/system_stats", timeout=10) as r:
                         if r.status == 200:
                             return
@@ -171,14 +177,14 @@ class ComfyClient:
     async def system_stats(self) -> dict:
         """Includes per-device vram_total / vram_free, so the UI can report the
         real card instead of asking the user to read Task Manager."""
-        async with aiohttp.ClientSession() as s:
+        async with self._session() as s:
             async with s.get(f"{self.base}/system_stats", timeout=30) as r:
                 r.raise_for_status()
                 return await r.json()
 
     async def object_info(self, refresh: bool = False) -> dict:
         if self._object_info is None or refresh:
-            async with aiohttp.ClientSession() as s:
+            async with self._session() as s:
                 async with s.get(f"{self.base}/object_info", timeout=120) as r:
                     r.raise_for_status()
                     self._object_info = await r.json()
@@ -205,7 +211,7 @@ class ComfyClient:
         appear nowhere in /object_info.
         """
         try:
-            async with aiohttp.ClientSession() as s:
+            async with self._session() as s:
                 async with s.get(f"{self.base}/embeddings", timeout=30) as r:
                     if r.status != 200:
                         return []
@@ -311,7 +317,7 @@ class ComfyClient:
         form.add_field("image", data, filename=filename, content_type="image/png")
         form.add_field("overwrite", "true")
         form.add_field("subfolder", "wan-drop")
-        async with aiohttp.ClientSession() as s:
+        async with self._session() as s:
             async with s.post(f"{self.base}/upload/image", data=form, timeout=120) as r:
                 if r.status != 200:
                     raise ComfyError(f"upload failed ({r.status}): {await r.text()}")
@@ -324,7 +330,7 @@ class ComfyClient:
 
     async def queue(self, graph: dict) -> str:
         payload = {"prompt": graph, "client_id": self.client_id}
-        async with aiohttp.ClientSession() as s:
+        async with self._session() as s:
             async with s.post(f"{self.base}/prompt", json=payload, timeout=120) as r:
                 text = await r.text()
                 if r.status != 200:
@@ -349,7 +355,7 @@ class ComfyClient:
         """
         ws_url = self.base.replace("https://", "wss://").replace("http://", "ws://")
         address = f"{ws_url}/ws?clientId={self.client_id}"
-        async with aiohttp.ClientSession() as session:
+        async with self._session() as session:
             # Connected before queueing, so the first events are not missed.
             ws = await session.ws_connect(address, heartbeat=WS_HEARTBEAT)
             try:
@@ -432,7 +438,7 @@ class ComfyClient:
 
     async def _job_state(self, prompt_id: str) -> str:
         """"done", "running" or "vanished", from the history and the queue."""
-        async with aiohttp.ClientSession() as s:
+        async with self._session() as s:
             async with s.get(f"{self.base}/history/{prompt_id}", timeout=60) as r:
                 r.raise_for_status()
                 history = await r.json()
@@ -454,7 +460,7 @@ class ComfyClient:
         """Is this job still in ComfyUI's queue, running or waiting?"""
         if not prompt_id:
             return False
-        async with aiohttp.ClientSession() as s:
+        async with self._session() as s:
             async with s.get(f"{self.base}/queue", timeout=30) as r:
                 r.raise_for_status()
                 queue = await r.json()
@@ -466,7 +472,7 @@ class ComfyClient:
         return False
 
     async def outputs(self, prompt_id: str, missing_ok: bool = False) -> list[OutputFile]:
-        async with aiohttp.ClientSession() as s:
+        async with self._session() as s:
             async with s.get(f"{self.base}/history/{prompt_id}", timeout=60) as r:
                 r.raise_for_status()
                 history = await r.json()
@@ -502,11 +508,11 @@ class ComfyClient:
 
     async def download(self, out: OutputFile) -> bytes:
         params = {"filename": out.filename, "subfolder": out.subfolder, "type": out.type}
-        async with aiohttp.ClientSession() as s:
+        async with self._session() as s:
             async with s.get(f"{self.base}/view", params=params, timeout=300) as r:
                 r.raise_for_status()
                 return await r.read()
 
     async def interrupt(self) -> None:
-        async with aiohttp.ClientSession() as s:
+        async with self._session() as s:
             await s.post(f"{self.base}/interrupt", timeout=30)

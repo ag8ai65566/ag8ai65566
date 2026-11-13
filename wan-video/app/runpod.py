@@ -305,6 +305,10 @@ class Agent:
     async def status(self) -> dict:
         return await self._call("GET", "/status", auth=False, timeout=15)
 
+    async def ping(self) -> None:
+        """Tell the machine this app is still here (its dead-man switch)."""
+        await self._call("POST", "/ping", timeout=15)
+
     async def files(self) -> list[dict]:
         return list((await self._call("GET", "/files")).get("files") or [])
 
@@ -465,6 +469,22 @@ class Cloud:
     def comfy_url(self) -> str:
         return proxy_url(self.state.pod_id, COMFY_PORT) if self.state.pod_id else ""
 
+    def comfy(self):
+        """A ComfyUI client for the machine, or None when there is none.
+
+        One per machine rather than one per call: the client caches the
+        machine's node list, and refetching that for every job would add a
+        large request to each one.
+        """
+        if not self.state.pod_id or not self.state.agent_token:
+            return None
+        from comfy_client import ComfyClient   # here, so this module stays importable alone
+        key = (self.comfy_url, self.state.agent_token)
+        cached = getattr(self, "_comfy", None)
+        if cached is None or cached[0] != key:
+            self._comfy = (key, ComfyClient(self.comfy_url, self.state.agent_token))
+        return self._comfy[1]
+
     @property
     def agent(self) -> Agent | None:
         if not self.state.pod_id or not self.state.agent_token:
@@ -508,8 +528,21 @@ class Cloud:
                    comfy_args: str = "") -> dict:
         """Rent a machine. Creates the volume first if there is none yet."""
         async with self.lock:
-            if self.state.pod_id and await self.pod(fresh=True):
-                raise CloudError("已經有一台雲端機了。先關掉它，再開新的。")
+            if self.state.pod_id:
+                pod = await self.pod(fresh=True)
+                if pod and str(pod.get("status")) in ("EXITED", "ERROR"):
+                    # Stopped (by its own dead-man switch, or out of credit) or
+                    # broken. It is not running, but it is not gone either -
+                    # and a stopped machine still bills for its disk. Give it
+                    # back before renting the new one.
+                    await self.api.terminate(self.state.pod_id)
+                    self._account(time.time())
+                    self.state.pod_id = ""
+                    self.state.agent_token = ""
+                    self.state.started = 0.0
+                    self.store.save()
+                elif pod:
+                    raise CloudError("已經有一台雲端機了。先關掉它，再開新的。")
             tier = tier if tier in TIERS else "SECURE"
             gpus = await self.api.gpus(tier)
             chosen = next((g for g in gpus if g.get("id") == gpu_id), None)
@@ -672,3 +705,53 @@ class Cloud:
                  "booting": "雲端機開機中…"}.get(phase, f"雲端機：{phase}"))
             await asyncio.sleep(5)
         self.touch()
+
+    # -- model files ---------------------------------------------------------
+
+    async def fetch(self, plans, say=None) -> None:
+        """Put these files on the machine: downloads first, then uploads.
+
+        ``plans`` are ``sources.Source`` objects. A download is the machine
+        fetching from Hugging Face or CivitAI itself, at data-centre speed;
+        all of them are started at once and the agent runs a few in parallel.
+        An upload is a file only this computer has, pushed up a slice at a
+        time. Raises CloudError naming the file if any of them fails.
+        """
+        say = say or (lambda _text: None)
+        agent = self.agent
+        if agent is None:
+            raise CloudError("雲端機沒有開，沒辦法放模型上去。")
+        downloads = [p for p in plans if not p.is_upload]
+        uploads = [p for p in plans if p.is_upload]
+
+        keys = {}
+        for plan in downloads:
+            answer = await agent.download(url=plan.url, folder=plan.folder, name=plan.name,
+                                          size=plan.size, headers=dict(plan.headers))
+            keys[str(answer.get("id") or f"{plan.folder}/{plan.name}")] = plan
+        while keys:
+            items = await agent.downloads()
+            done_bytes = total_bytes = 0
+            for key, plan in list(keys.items()):
+                item = items.get(key) or {}
+                status = str(item.get("status") or "")
+                if status == "done":
+                    keys.pop(key)
+                    continue
+                if status in ("error", "cancelled"):
+                    raise CloudError(f"雲端機下載 {plan.name} 失敗：{item.get('error') or status}")
+                done_bytes += int(item.get("done") or 0)
+                total_bytes += int(item.get("total") or plan.size or 0)
+            if not keys:
+                break
+            self.touch()               # downloading is using the machine
+            share = f"{done_bytes / total_bytes * 100:.0f}%" if total_bytes else ""
+            gb = f"{done_bytes / 1e9:.1f}/{total_bytes / 1e9:.1f} GB" if total_bytes else ""
+            say(f"雲端機下載模型中（還有 {len(keys)} 個檔）{share} {gb}".strip())
+            await asyncio.sleep(3)
+
+        for index, plan in enumerate(uploads, 1):
+            def progress(share, name=plan.name, index=index):
+                self.touch()
+                say(f"把你電腦上的 {name} 傳上雲端機（{index}/{len(uploads)}）{share * 100:.0f}%")
+            await agent.upload(plan.local, plan.folder, plan.name, on_progress=progress)
