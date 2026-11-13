@@ -24,6 +24,29 @@ BASE = "openbmb/VoxCPM2"
 SEED = 1234
 
 
+def yaml_number(x: float) -> str:
+    """A float written so the trainer's YAML reader (PyYAML's yaml.safe_load, YAML 1.1) reads it back as a number:
+    YAML 1.1 needs a decimal point, so JSON's 1e-05 would arrive as the text '1e-05' and stop the optimizer."""
+    s = repr(float(x))
+    mantissa, e, exp = s.partition("e")
+    return f"{mantissa}.0e{exp}" if e and "." not in mantissa else s
+
+
+def config_text(conf: dict) -> str:
+    """The training config as JSON (which is also YAML) with every float written by yaml_number."""
+    def val(v) -> str:
+        if isinstance(v, float):
+            return yaml_number(v)
+        if v is None or isinstance(v, (bool, int, str)):
+            return json.dumps(v)
+        if isinstance(v, dict):
+            return "{" + ", ".join(f"{json.dumps(str(k))}: {val(x)}" for k, x in v.items()) + "}"
+        if isinstance(v, (list, tuple)):
+            return "[" + ", ".join(val(x) for x in v) + "]"
+        raise TypeError(f"cannot write {type(v).__name__} into the training config")
+    return "{\n" + ",\n".join(f"  {json.dumps(str(k))}: {val(v)}" for k, v in conf.items()) + "\n}\n"
+
+
 def count_lines(p: Path) -> int:
     return sum(1 for x in p.read_text(encoding="utf-8").splitlines() if x.strip())
 
@@ -91,7 +114,7 @@ def main() -> None:
         conf["lora"] = {"enable_lm": True, "enable_dit": True, "enable_proj": bool(p.get("lora_proj", False)),
                         "r": int(p.get("rank", 32)), "alpha": int(p.get("alpha", 32)), "dropout": 0.0}
     conf_path = job.work / "train_conf.yaml"
-    conf_path.write_text(json.dumps(conf, indent=2), encoding="utf-8")  # JSON is valid YAML
+    conf_path.write_text(config_text(conf), encoding="utf-8")
     log(f"{mode}: {n_train} clips, {per_epoch} updates/epoch, {total} updates "
         f"({total / per_epoch:.2f} epochs), save every {save_every}")
     job.progress(phase="train", step=0, total=total, per_epoch=per_epoch, mode=mode)

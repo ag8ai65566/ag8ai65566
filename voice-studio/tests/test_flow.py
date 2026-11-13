@@ -260,6 +260,28 @@ def test_voxcpm_export_manifest(client, tmp_path):
         assert info["n_ref"] == len(rows) and all(r["ref_audio"] != r["audio"] for r in rows)
 
 
+def test_voxcpm_config_numbers_survive_yaml():
+    """The official trainer reads its config with yaml.safe_load. json.dumps wrote full fine-tuning's learning rate
+    as 1e-05, which YAML 1.1 reads as text, and training stopped at the optimizer (AdamW: float <= str)."""
+    import importlib.util
+    import json
+    yaml = pytest.importorskip("yaml")
+    path = Path(__file__).resolve().parents[1] / "vstudio" / "engines" / "remote" / "voxcpm2_train.py"
+    spec = importlib.util.spec_from_file_location("voxcpm2_train_under_test", path)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    assert yaml.safe_load(json.dumps({"lr": 1e-5}))["lr"] == "1e-05"  # the trap itself
+    for lr in (1e-4, 1e-5, 5e-5, 2e-6, 3e-4, -1e-7, 1e20):
+        conf = {"pretrained_path": "/root/.cache/huggingface/VoxCPM2", "val_manifest": "", "batch_size": 2,
+                "learning_rate": lr, "weight_decay": 0.01, "max_grad_norm": 1.0, "num_iters": 300,
+                "lambdas": {"loss/diff": 1.0, "loss/stop": 1.0},
+                "lora": {"enable_lm": True, "enable_proj": False, "r": 32, "dropout": 0.0}, "steps": [1e-5, 2]}
+        text = mod.config_text(conf)
+        back = yaml.safe_load(text)
+        assert back == conf and type(back["learning_rate"]) is float, text
+        assert json.loads(text) == conf  # still JSON as well
+
+
 def test_lexicon_longest_first(client):
     from vstudio import config, tts
     config.save_settings({"lexicon": [{"from": "推し", "to": "おし", "lang": "ja"},
