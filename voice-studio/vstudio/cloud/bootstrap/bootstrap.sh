@@ -9,8 +9,8 @@ VS_ROOT="${VS_ROOT:-/workspace/vs}"   # the network volume (overridable only for
 JOB="$VS_ROOT/jobs/${VS_TRAINING_ID}"
 export VS_ROOT HF_HOME="$VS_ROOT/hf" PYTHONUNBUFFERED=1 VS_SRC="$VS_ROOT/src/${VS_ENGINE}" VS_WORK="${VS_WORK:-/root/vswork}"
 # model.tar / samples.tar go on the volume in parts of this size, with a manifest (<name>.json): RunPod's S3 API
-# checksums a file written here the first time it is read, which takes minutes for one file of tens of GB
-export VS_PART_MB="${VS_PART_MB:-512}"
+# checksums a file written here the first time it is read; a 28.6 GB one could not be read at all (524)
+export VS_PART_MB="${VS_PART_MB:-64}"
 mkdir -p "$JOB"
 exec > >(tee -a "$JOB/train.log") 2>&1
 echo "[vs] start $(date -u +%FT%TZ) pod=${RUNPOD_POD_ID:-?} gpu=$(nvidia-smi --query-gpu=name,memory.total --format=csv,noheader 2>/dev/null) disk=$(df -h /root | tail -1 | awk '{print $4}') free"

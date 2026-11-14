@@ -132,6 +132,19 @@ def training_recover(tid: str):
     return job
 
 
+@router.post("/training/{tid}/split")
+def training_split(tid: str):
+    """Recover a model RunPod cannot serve as one big file: cut it into small parts on a pod, then download them."""
+    try:
+        return training.start_split(tid)
+    except KeyError:
+        raise HTTPException(404)
+    except datasets.ConsentMissing as e:
+        raise HTTPException(409, str(e))
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+
+
 @router.post("/cloud/reap")
 def cloud_reap():
     """Retry failed pod removals and list studio pods that no running training owns."""

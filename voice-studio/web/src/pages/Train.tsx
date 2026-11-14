@@ -12,7 +12,7 @@ import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader, Progre
 const STATUS: Record<string, [string, "zinc" | "green" | "amber" | "red" | "brand" | "blue"]> = {
   queued: ["排隊中", "zinc"], starting: ["準備、租用 GPU", "blue"], uploading: ["已租到 GPU，上傳資料", "blue"], running: ["雲端訓練中", "brand"],
   waiting: ["等你在 Colab 執行", "amber"], waiting_gpu: ["等 GPU 有貨", "amber"],
-  downloading: ["下載模型", "blue"], done: ["完成", "green"], failed: ["失敗", "red"], canceled: ["已取消", "zinc"],
+  downloading: ["下載模型", "blue"], splitting: ["雲端切檔中", "blue"], done: ["完成", "green"], failed: ["失敗", "red"], canceled: ["已取消", "zinc"],
 };
 
 const STOCK: Record<string, [string, "green" | "blue" | "amber" | "red"]> = {
@@ -346,6 +346,7 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
   const qc = useQueryClient();
   const cancel = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/cancel`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
   const recover = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/recover`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
+  const split = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/split`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
   const [retryOpen, setRetryOpen] = useState(false);
   const [label, tone] = STATUS[t.status] ?? [t.status, "zinc"];
   const active = !["done", "failed", "canceled"].includes(t.status);
@@ -370,6 +371,14 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
           {(t.status === "failed" || t.status === "canceled") && !model && !t.can_retry_gpu && (
             <Button size="sm" variant="secondary" loading={recover.isPending} title="訓練如果已經進行到存檔，可以把權重下載回來"
               onClick={() => recover.mutate()}>救回模型</Button>)}
+          {(t.status === "failed" || t.status === "canceled") && !model && !t.can_retry_gpu && !isColab && (
+            <Button size="sm" variant="secondary" loading={split.isPending}
+              title="模型檔太大、RunPod 一直傳不過來（524）時用：在雲端切成小檔再下載"
+              onClick={() => confirm("在 RunPod 上把模型檔切小再下載？\n\n"
+                + "RunPod 沒辦法直接傳一整個幾十 GB 的模型檔（每次都 524），所以會租一台目前有貨、最便宜的 GPU，"
+                + "在你的網路磁碟上把它切成 64 MB 的小檔，切完立刻關機，接著自動下載。\n\n"
+                + "通常 10–20 分鐘，費用大約 US$0.5–1.5（看租到哪張卡）。中途關掉 Voice Studio 也沒關係，機器會被關掉，再按一次會接著切。")
+                && split.mutate()}>切小再救回</Button>)}
         </div>
       </div>
       {retryOpen && <RetryGpuModal t={t} onClose={() => setRetryOpen(false)} />}
@@ -422,6 +431,7 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
       </div>
       {t.note && <p className="mt-2 text-xs text-amber-700 dark:text-amber-300">{t.note}</p>}
       {recover.error && <ErrorText error={recover.error} />}
+      {split.error && <ErrorText error={split.error} />}
       {t.pod_state === "remove_failed" && (
         <p className="mt-2 flex items-center gap-2 text-xs font-medium text-red-600"><AlertTriangle className="size-3.5" />
           雲端機器可能還在計費。平台會在下次開啟時自動再刪一次；也可以馬上到 runpod.io → Pods 手動刪除。</p>

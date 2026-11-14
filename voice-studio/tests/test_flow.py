@@ -822,6 +822,141 @@ def test_pod_writes_the_model_in_parts_and_the_studio_reads_them_back(tmp_path, 
     assert not list(job.glob("model.tar*"))
 
 
+def test_split_model_cuts_the_big_file_whole_and_resumes(tmp_path, monkeypatch):
+    """split_model.py (run on a pod with the volume): copy mode when there is room, in place (cutting from the end,
+    model.tar shrinking) when not; interrupted halfway, a second run finishes it; the parts always add up to the file."""
+    import importlib.util
+    import json
+    path = Path(__file__).resolve().parents[1] / "vstudio" / "engines" / "remote" / "split_model.py"
+    spec = importlib.util.spec_from_file_location("split_model_under_test", path)
+    sm = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(sm)
+    data = os.urandom(10_500)
+    for mode in ("copy", "inplace"):
+        d = tmp_path / mode
+        d.mkdir()
+        (d / "model.tar").write_bytes(data)
+        free = 10 ** 12 if mode == "copy" else 100                      # no room for a second copy: in place
+        monkeypatch.setattr(sm.shutil, "disk_usage", lambda p, free=free: type("U", (), {"free": free})())
+        real, calls = sm.write_part, []
+
+        def crash_after_four(dd, key, blob, real=real, calls=calls):
+            calls.append(key)
+            if len(calls) == 5:
+                raise OSError("the pod went away")
+            real(dd, key, blob)
+        monkeypatch.setattr(sm, "write_part", crash_after_four)
+        with pytest.raises(OSError):
+            sm.split(d, 1000)
+        assert json.loads((d / "model.tar.split.json").read_text())["mode"] == mode
+        if mode == "inplace":
+            assert (d / "model.tar").stat().st_size == 10_500 - 500 - 3 * 1000   # cut from the end, 4 parts out
+        monkeypatch.setattr(sm, "write_part", real)
+        m = sm.split(d, 1000)                                                   # run again: carries on
+        assert len(m["parts"]) == 11 and m["size"] == 10_500 and m["parts"][-1]["size"] == 500
+        assert b"".join((d / p["key"]).read_bytes() for p in m["parts"]) == data
+        assert json.loads((d / "model.tar.json").read_text()) == m
+        assert not (d / "model.tar").exists() and not (d / "model.tar.split.json").exists()
+        assert sm.split(d, 1000) == m                                           # and again: nothing to do
+
+
+def test_split_and_recover_on_runpod(client, tmp_path, monkeypatch):
+    """"Cut it smaller and recover": a pod (the cheapest card in stock) cuts model.tar on the volume, the studio
+    follows its progress, removes the pod itself, downloads the parts and installs the model."""
+    import io
+    import json
+    import subprocess
+    import tarfile
+    from vstudio import db, training
+    from vstudio.cloud import runpod
+    c = client
+    v = _consented_voice(c)
+    vol = tmp_path / "volume"
+    run = vol / "vs" / "jobs" / "tr_00cd"
+    run.mkdir(parents=True)
+    src = tmp_path / "built" / "model"
+    (src / "checkpoints" / "step_0000100").mkdir(parents=True)
+    (src / "checkpoints" / "step_0000100" / "w.bin").write_bytes(os.urandom(300_000))
+    (src / "engine.json").write_text(json.dumps({"engine": "mock", "mode": "quick", "sampling": "complete",
+                                                 "checkpoints": [{"name": "step_0000100", "step": 100, "weights": True}]}),
+                                     encoding="utf-8")
+    with tarfile.open(run / "model.tar", "w") as t:                      # an older run: one big model.tar
+        t.add(src, arcname="model")
+    (tmp_path / "ds").mkdir()
+    db.insert("datasets", {"id": "ds_cd", "voice_id": v["id"], "name": "v1", "n_items": 1, "hours": 0.1,
+                           "path": str(tmp_path / "ds"), "meta": {"consent": db.get("voices", v["id"])["consent"]},
+                           "created_at": db.now()})
+    db.insert("trainings", {"id": "tr_00cd", "voice_id": v["id"], "dataset_id": "ds_cd", "engine": "mock",
+                            "preset": {"id": "quick", "name": "Kronii"}, "target": "runpod", "status": "failed",
+                            "remote_prefix": "vs/jobs/tr_00cd", "storage": {"volume": "vol1", "datacenter": "US-CA-2"},
+                            "progress": {}, "created_at": db.now()})
+
+    class Volume:  # RunPod's S3 API over the folder
+        def get_object(self, Bucket, Key, Range=None):
+            p = vol / Key
+            if not p.exists():
+                from botocore.exceptions import ClientError
+                raise ClientError({"Error": {"Code": "NoSuchKey"}}, "GetObject")
+            if Key.endswith("model.tar"):                                   # the big file: RunPod cannot serve it
+                from botocore.exceptions import ClientError
+                raise ClientError({"Error": {"Code": "524"}, "ResponseMetadata": {"HTTPStatusCode": 524}}, "GetObject")
+            blob = p.read_bytes()
+            if Range:
+                a, e = (int(x) for x in Range[len("bytes="):].split("-"))
+                blob = blob[a:e + 1]
+            return {"Body": io.BytesIO(blob)}
+
+        def head_object(self, Bucket, Key):
+            from botocore.exceptions import ClientError
+            if not (vol / Key).exists():
+                raise ClientError({"Error": {"Code": "404"}, "ResponseMetadata": {"HTTPStatusCode": 404}}, "HeadObject")
+            return {"ContentLength": (vol / Key).stat().st_size}
+
+        def put_object(self, Bucket, Key, Body):
+            (vol / Key).write_bytes(Body)
+
+        def delete_object(self, Bucket, Key):
+            (vol / Key).unlink(missing_ok=True)
+    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None, read_timeout=None: Volume())
+    monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
+    monkeypatch.setattr(runpod, "DL_PART", 64 * 1024)
+    monkeypatch.setattr(training, "SPLIT_PART", 64 * 1024)
+    monkeypatch.setattr(training, "SPLIT_POLL_S", 0)
+    monkeypatch.setattr(runpod, "gpu_catalog", lambda dc=None: {"live": True, "datacenter": dc, "error": "", "gpus": [
+        {"id": "NVIDIA H100 80GB HBM3", "usd_h": 4.39, "availability": "LOW"},
+        {"id": "NVIDIA L40S", "usd_h": 0.86, "availability": "NONE"},
+        {"id": "NVIDIA GeForce RTX 4090", "usd_h": 0.74, "availability": "HIGH"}]})
+    pods, removed = [], []
+
+    def create_pod(name, image, gpus, env, cmd, loc, **kw):  # the pod: runs the script on the volume
+        pods.append((name, list(gpus), cmd[-1]))
+        subprocess.run([sys.executable, str(run / "split_model.py"), str(run), str(training.SPLIT_PART)], check=True)
+        return {"id": "podS", "machine": {"gpuTypeId": gpus[0]}, "costPerHr": 0.74}
+    monkeypatch.setattr(runpod, "create_pod", create_pod)
+    monkeypatch.setattr(runpod, "get_pod", lambda pod_id: {"id": pod_id})
+    monkeypatch.setattr(runpod, "remove_pod", lambda pod_id: removed.append(pod_id))
+    monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
+
+    job = c.post("/api/training/tr_00cd/split").json()
+    assert db.get("trainings", "tr_00cd")["status"] in ("splitting", "downloading", "done")
+    j = _wait(c, job["id"])
+    assert j["status"] == "done", j["message"]
+    t = db.get("trainings", "tr_00cd")
+    assert t["status"] == "done" and db.query("SELECT id FROM models WHERE training_id='tr_00cd'")
+    assert pods[0][1] == ["NVIDIA GeForce RTX 4090", "NVIDIA H100 80GB HBM3"]        # in stock, cheapest first
+    assert "split_model.py" in pods[0][2] and removed == ["podS"]                    # removed by the studio itself
+    assert not list(run.glob("model.tar*"))                                          # parts cleaned up after install
+    assert c.post("/api/training/tr_00cd/split").status_code == 400                   # nothing left to recover
+
+    # closed while cutting: at start-up the pod goes and the run can be cut again
+    db.update("trainings", "tr_00cd", {"status": "splitting", "pod_id": "podT"})
+    db.delete("models", db.query("SELECT id FROM models WHERE training_id='tr_00cd'")[0]["id"])
+    db.update("jobs", job["id"], {"status": "failed"})
+    training.resume_interrupted()
+    t = db.get("trainings", "tr_00cd")
+    assert t["status"] == "failed" and "podT" in removed and "再按一次" in t["note"]
+
+
 def test_cloud_run_folder_delete_stays_inside_the_run(monkeypatch):
     """Only one run's folder is ever deleted on the network volume, never the shared environments next to it."""
     from vstudio.cloud import runpod

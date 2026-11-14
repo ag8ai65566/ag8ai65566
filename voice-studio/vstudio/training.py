@@ -692,6 +692,120 @@ def recover_model(ctx: jobs.JobContext) -> dict:
     return {"model_id": m["id"], "message": "已救回模型"}
 
 
+SPLIT_PART = 64 << 20   # parts as big as one download piece (runpod.DL_PART): RunPod serves files this size at once
+SPLIT_MAX_S = 3600      # the cutting pod is removed after this long, done or not
+SPLIT_POLL_S = 20
+
+
+def start_split(tid: str) -> dict:
+    """Recover a run whose model.tar RunPod's S3 API cannot serve (one file of tens of GB: every read ends in a 524):
+    a pod with the volume cuts it into 64 MB parts, then the parts are downloaded."""
+    tr = db.get("trainings", tid)
+    if not tr:
+        raise KeyError(tid)
+    if tr.get("target") == "colab" or tr["status"] not in ("failed", "canceled"):
+        raise ValueError("只有失敗或取消的 RunPod 訓練可以這樣救回。")
+    if db.query("SELECT id FROM models WHERE training_id=?", (tid,)):
+        raise ValueError("這次訓練的模型已經救回了。")
+    _require_consent(tr["voice_id"])
+    job = jobs.submit("split_model", {"training_id": tid}, "在雲端把模型檔切小再下載")
+    _set(tid, status="splitting", job_id=job["id"], note="", finished_at=None)
+    return job
+
+
+def _cheapest_in_stock(datacenter: str) -> list[str]:
+    """Any card will do for cutting a file: the ones in stock in the volume's datacenter, cheapest first."""
+    cat = runpod.gpu_catalog(datacenter)
+    gpus = [g for g in cat["gpus"] if (g["availability"] in runpod.IN_STOCK if cat["live"] else True)]
+    return [g["id"] for g in sorted(gpus, key=lambda g: (g["usd_h"] is None, g["usd_h"] or 0))][:8]
+
+
+@jobs.handler("split_model", queue="io")
+def split_model(ctx: jobs.JobContext) -> dict:
+    tid = ctx.params["training_id"]
+    tr = db.get("trainings", tid)
+    loc, prefix = _loc(tr), tr["remote_prefix"]
+    pod_id = None
+    try:
+        ctx.progress(0.01, "確認雲端的模型檔…")
+        try:
+            info = runpod.archive_info(prefix, "model.tar", loc, fast=True)
+        except Exception as e:
+            raise RuntimeError(f"連不上 RunPod 的網路磁碟（{str(e)[:160]}）。模型還在雲端，稍後再按一次。") from e
+        if info is None:  # still one big file: cut it where it lies
+            gpus = _cheapest_in_stock(loc["datacenter"])
+            if not gpus:
+                raise RuntimeError(f"RunPod 的 {loc['datacenter']} 現在沒有任何 GPU 有貨，等一下再按一次（沒有租用任何東西）。")
+            from .engines import remote
+            runpod.put_text(f"{prefix}/split_model.py", remote.read("split_model.py"), loc=loc)
+            runpod.delete(f"{prefix}/split.json", loc)  # a report from an earlier try must not be read as this one's
+            ctx.progress(0.03, "租一台機器在雲端切檔案（會用目前有貨、最便宜的卡）…")
+            deadline = time.time() + SPLIT_MAX_S
+            _set(tid, pod_state="creating", deadline=deadline)
+            base = f"/workspace/{prefix}"
+            cmd = (f"python3 {base}/split_model.py {base} {SPLIT_PART} > {base}/split.log 2>&1; "
+                   "timeout 30s runpodctl remove pod \"$RUNPOD_POD_ID\"; sleep infinity")
+            try:
+                pod = runpod.create_pod(f"voice-studio-{tid}", engines.get(tr["engine"]).image, gpus,
+                                        {"VS_TRAINING_ID": tid}, ["bash", "-c", cmd], loc,
+                                        container_disk_gb=20, min_ram_gb=8, min_vcpu=2)
+            except Exception as e:
+                time.sleep(10)
+                _reconcile_creation(tid, loc)  # the request may have gone through even though we saw an error
+                raise RuntimeError(f"沒有租到機器：{str(e)[:200]}（沒有開始計費的話，等一下再按一次）") from e
+            pod_id = pod.get("id")
+            card = ((pod.get("machine") or {}).get("gpuTypeId") or gpus[0]).replace("NVIDIA ", "")
+            rate = pod.get("costPerHr") or pod.get("adjustedCostPerHr")
+            _set(tid, pod_id=pod_id, pod_state="running")
+            ctx.log(f"split pod {pod_id} on {card} at {rate} /h")
+            where = f"{card}{f'，US${rate}/時' if rate else ''}"
+            t0, misses = time.time(), 0
+            while True:
+                ctx.progress(0.04, f"在雲端切檔案（{where}）：機器開機中，已 {int(time.time() - t0) // 60} 分鐘…")
+                for _ in range(SPLIT_POLL_S):
+                    ctx.check()
+                    time.sleep(1)
+                if time.time() > deadline:
+                    raise RuntimeError(f"雲端切檔案超過 {SPLIT_MAX_S // 60} 分鐘還沒完成，已關閉機器。再按一次會接著切。")
+                try:
+                    st = runpod.get_json(f"{prefix}/split.json", loc, fast=True)
+                    misses = 0
+                except Exception as e:
+                    misses += 1
+                    ctx.log(f"split status read failed ({misses}): {e}")
+                    if misses >= 30:
+                        raise RuntimeError("連續 10 分鐘讀不到雲端的進度，已關閉機器。再按一次會接著切。") from e
+                    continue
+                if st and st.get("status") == "done":
+                    break
+                if st and st.get("status") == "error":
+                    raise RuntimeError(f"雲端切檔案失敗：{st.get('error', '')[:300]}")
+                if st and st.get("status") == "running":
+                    ctx.progress(0.05 + 0.25 * (st.get("done") or 0) / max(1, st.get("parts") or 1),
+                                 f"在雲端切檔案（{where}）：{st.get('done')} / {st.get('parts')} 段")
+                try:
+                    gone = runpod.get_pod(pod_id) is None
+                except Exception:
+                    gone = False
+                if gone:
+                    raise RuntimeError("切檔案的機器意外消失（可能被 RunPod 收回）。再按一次會接著切。")
+            _remove_pod(tid, pod_id)
+            pod_id = None
+            ctx.log(f"split done after {int(time.time() - t0)} s")
+        return {**_recover_parts(ctx, tid), "message": "已切小並救回模型"}
+    except BaseException:
+        if pod_id:
+            _remove_pod(tid, pod_id)
+        if (db.get("trainings", tid) or {}).get("status") in ("splitting", "downloading"):
+            _set(tid, status="failed", finished_at=db.now())
+        raise
+
+
+def _recover_parts(ctx: jobs.JobContext, tid: str) -> dict:
+    m = _download_and_install(ctx, tid, partial=True, note="訓練沒有正常結束，但權重已經救回。", span=(0.3, 0.95))
+    return {"model_id": m["id"]}
+
+
 def recoverable(tr: dict) -> bool:
     if tr.get("target") == "colab":
         return colab.recoverable(tr)
@@ -761,9 +875,14 @@ def resume_interrupted() -> list[str]:
     was creating its pod is reconciled against RunPod's pod list; earlier runs are marked failed."""
     resumed = []
     for tr in db.query("SELECT * FROM trainings WHERE status IN ('queued','uploading','starting','running',"
-                       "'downloading')"):
+                       "'downloading','splitting')"):
         j = db.get("jobs", tr["job_id"]) if tr.get("job_id") else None
         if j and j["status"] in ("queued", "running"):
+            continue
+        if tr["status"] == "splitting":  # its pod only cuts a file: remove it; cutting again continues where it was
+            _remove_pod(tr["id"], tr.get("pod_id"))
+            _set(tr["id"], status="failed", finished_at=db.now(),
+                 note="程式關閉時中斷了雲端切檔案，雲端機器已關閉。再按一次「切小再救回」會接著切。")
             continue
         if tr.get("target") == "colab":  # Colab keeps training without the studio; the poller picks it up again
             if tr["status"] == "downloading":
@@ -816,7 +935,7 @@ def reap() -> dict:
             if (db.get("trainings", tr["id"]) or {}).get("pod_state") == "uncertain" and \
                     now - (tr.get("started_at") or tr["created_at"]) > 86400:
                 _set(tr["id"], pod_state="none_found")
-    for tr in db.query("SELECT * FROM trainings WHERE status IN ('starting','running','downloading') "
+    for tr in db.query("SELECT * FROM trainings WHERE status IN ('starting','running','downloading','splitting') "
                        "AND deadline IS NOT NULL AND deadline < ?", (now - 1800,)):
         j = db.get("jobs", tr["job_id"]) if tr.get("job_id") else None
         if j and j["status"] == "running":
