@@ -604,7 +604,7 @@ def test_model_download_resumes_after_the_network_drops(tmp_path, monkeypatch):
                 net["short_once"].discard(i)
                 return {"Body": io.BytesIO(data[a:e])}                   # one byte missing: caught and fetched again
             return {"Body": io.BytesIO(data[a:e + 1])}
-    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False: Client())
+    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None: Client())
     monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
     out = tmp_path / "model.tar"
     with pytest.raises(runpod.RunPodError, match="下載中斷（已完成 60%）"):
@@ -615,6 +615,20 @@ def test_model_download_resumes_after_the_network_drops(tmp_path, monkeypatch):
     runpod.download("vs/jobs/tr_1/model.tar", out, progress=seen.append)        # the network is back
     assert sorted(calls) == [6, 7, 8, 9] and out.read_bytes() == data and seen[-1] == 1.0
     assert not (tmp_path / "model.tar.part").exists() and not (tmp_path / "model.tar.part.json").exists()
+
+    class Stop(Exception):
+        pass
+    asked = []
+
+    def check():  # "stop" pressed after three parts: no retry, no further parts, the three kept
+        asked.append(1)
+        if len(asked) > 3:
+            raise Stop()
+    monkeypatch.setattr(runpod, "DL_WORKERS", 1)
+    out2 = tmp_path / "again.tar"
+    with pytest.raises(Stop):
+        runpod.download("vs/jobs/tr_1/model.tar", out2, check=check)
+    assert len(json.loads((tmp_path / "again.tar.part.json").read_text())["done"]) == 3 and not out2.exists()
 
 
 def test_failed_recovery_can_be_pressed_again(client, monkeypatch):
@@ -633,12 +647,20 @@ def test_failed_recovery_can_be_pressed_again(client, monkeypatch):
     monkeypatch.setattr(training.shutil, "disk_usage", lambda p: type("U", (), {"free": 20 * 10 ** 9})())
     pulled = []
     monkeypatch.setattr(runpod, "download", lambda *a, **kw: pulled.append(a))
-    job = c.post("/api/training/tr_00ee/recover").json()
+    job = c.post("/api/training/tr_00ee/recover").json()                         # answers at once; the job looks
     assert _wait(c, job["id"])["status"] == "failed" and not pulled                # nothing downloaded into a full disk
     t = db.get("trainings", "tr_00ee")
     assert t["status"] == "failed" and t["job_id"] == job["id"]
     assert "磁碟空間不夠" in db.get("jobs", job["id"])["message"] and "救回模型" in db.get("jobs", job["id"])["message"]
-    assert c.post("/api/training/tr_00ee/recover").status_code == 200                # can be pressed again
+    job2 = c.post("/api/training/tr_00ee/recover").json()                         # can be pressed again
+    _wait(c, job2["id"])
+
+    def unreachable(key, loc=None, fast=False):
+        raise runpod.RunPodError("Read timeout on endpoint URL")
+    monkeypatch.setattr(runpod, "exists", unreachable)                             # cannot reach the volume: said so
+    job3 = c.post("/api/training/tr_00ee/recover").json()
+    assert _wait(c, job3["id"])["status"] == "failed" and "連不上 RunPod 的網路磁碟" in db.get("jobs", job3["id"])["message"]
+    assert db.get("trainings", "tr_00ee")["status"] == "failed"
 
 
 def test_cloud_run_folder_delete_stays_inside_the_run(monkeypatch):

@@ -120,14 +120,15 @@ def training_recover(tid: str):
         raise HTTPException(404)
     if t["status"] not in ("failed", "canceled"):
         raise HTTPException(400, "只有失敗或取消的訓練需要救回")
-    if not training.recoverable(t):
-        raise HTTPException(404, "雲端沒有這次訓練的模型檔（訓練沒有進行到存檔）")
-    if t.get("target") == "colab":
+    if t.get("target") == "colab":  # a local folder (Google Drive for desktop): checked right here
+        if not training.recoverable(t):
+            raise HTTPException(404, "雲端沒有這次訓練的模型檔（訓練沒有進行到存檔）")
         job = jobs.submit("colab_install", {"training_id": tid, "partial": True}, "從雲端硬碟取回模型")
         training._set(tid, status="downloading", job_id=job["id"])
         return job
+    # RunPod: the job looks for the file itself, so the button answers at once and the card shows what happens
     job = jobs.submit("recover_model", {"training_id": tid}, "救回模型")
-    training._set(tid, job_id=job["id"])  # the card follows this job: its progress, and its error if it fails
+    training._set(tid, status="downloading", job_id=job["id"])
     return job
 
 

@@ -212,8 +212,9 @@ def gpu_catalog(datacenter: str | None = None) -> dict:
 
 # --- S3 (network volume) ----------------------------------------------------------------------------------------
 
-def s3(loc: dict | None = None, fast: bool = False):
-    """fast=True (status polling) gives up quickly, so the caller's own retry and deadline logic stays in charge."""
+def s3(loc: dict | None = None, fast: bool = False, attempts: int | None = None):
+    """fast=True (status polling) gives up quickly, so the caller's own retry and deadline logic stays in charge;
+    attempts overrides how often one request is tried (a caller that retries by itself keeps it low)."""
     import boto3
     from botocore.config import Config
     ak, sk = config.get_secret("runpod_s3_access_key"), config.get_secret("runpod_s3_secret_key")
@@ -223,7 +224,7 @@ def s3(loc: dict | None = None, fast: bool = False):
     return boto3.client("s3", aws_access_key_id=ak, aws_secret_access_key=sk, region_name=dc.upper(),
                         endpoint_url=S3_FMT.format(dc=dc.lower()),
                         config=Config(signature_version="s3v4",
-                                      retries={"max_attempts": 2 if fast else 8, "mode": "adaptive"},
+                                      retries={"max_attempts": attempts or (2 if fast else 8), "mode": "adaptive"},
                                       s3={"addressing_style": "path"}, connect_timeout=10 if fast else 20,
                                       read_timeout=20 if fast else 120))
 
@@ -296,12 +297,13 @@ DL_TRIES = 6        # attempts per part, waiting 2, 4, 8, 16, 32 s in between
 DL_ROUNDS = 4       # passes over the missing parts; a pass that adds nothing stops (the network is down)
 
 
-def download(key: str, local: Path, progress=None, loc: dict | None = None) -> Path:
+def download(key: str, local: Path, progress=None, loc: dict | None = None, check=None) -> Path:
     """Download in ranged parts into <local>.part, recording each finished part in <local>.part.json, so a stalled
     connection, a failed run or a later "recover model" continues where it stopped instead of fetching the whole
     file again (a full fine-tune's model.tar is about 24 GB). Each part is retried with backoff; the file is moved
-    into place only when every part is there."""
-    c, b = s3(loc), bucket(loc)
+    into place only when every part is there. check() is called before each part; whatever it raises (a stop
+    request) ends the download at once, keeping the parts already down."""
+    c, b = s3(loc, attempts=3), bucket(loc)  # each part is retried below: a stalled request gives up sooner
     head = c.head_object(Bucket=b, Key=key)
     size, etag = int(head["ContentLength"]), str(head.get("ETag") or "")
     local.parent.mkdir(parents=True, exist_ok=True)
@@ -319,9 +321,17 @@ def download(key: str, local: Path, progress=None, loc: dict | None = None) -> P
             f.truncate(size)
         state = {"size": size, "etag": etag, "part": DL_PART, "done": []}
     n = -(-size // DL_PART)
-    done, lock = set(state["done"]), threading.Lock()
+    done, lock, stopped = set(state["done"]), threading.Lock(), []
 
     def fetch(f, i: int) -> None:
+        if stopped:
+            raise stopped[0]
+        if check:
+            try:
+                check()
+            except BaseException as x:  # not a network error: no retry, no further parts
+                stopped.append(x)
+                raise
         a = i * DL_PART
         e = min(size, a + DL_PART) - 1
         for t in range(DL_TRIES):
@@ -351,6 +361,8 @@ def download(key: str, local: Path, progress=None, loc: dict | None = None) -> P
         before = len(done)
         with open(part, "r+b") as f, ThreadPoolExecutor(DL_WORKERS) as ex:
             errors = [x for x in (fu.exception() for fu in [ex.submit(fetch, f, i) for i in todo]) if x]
+        if stopped:
+            raise stopped[0]
         if not errors:
             break
         err = errors[0]
