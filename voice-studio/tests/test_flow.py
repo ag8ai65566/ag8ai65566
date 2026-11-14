@@ -1043,6 +1043,24 @@ def test_delete_training_record_with_its_files_and_the_pod_checks_room_first(cli
     vs.volume_room(job, 3)                                                         # a LoRA's fits
 
 
+def test_speech_recognition_leaves_the_gpu_before_a_tts_model_loads(client):
+    """Whisper loaded by checkpoint scoring (or an import) stayed in video memory; VoxCPM2 (~8 GB) loaded on top of it
+    on a 10 GB card spilled into system memory: 209 s per step. Scoring now gives the GPU back when it ends, and loading
+    a TTS model clears speech recognition first."""
+    from vstudio import evaluate, jobs, tts
+    from vstudio.pipeline import asr
+    c = client
+    m = c.post("/api/models/demo").json()
+    tts.unload()
+    asr._models[("large-v3-turbo", "cuda")] = object()                             # left behind on the GPU
+    tts._handle(m["id"])
+    assert not asr._models                                                           # cleared before the TTS model
+    asr._models[("large-v3-turbo", "cuda")] = object()
+    job = db_job = jobs.submit("evaluate_model", {"model_id": m["id"]}, "評分檢查點")
+    _wait(c, db_job["id"])
+    assert not asr._models and job                                                   # scoring gave the GPU back
+
+
 def test_cloud_run_folder_delete_stays_inside_the_run(monkeypatch):
     """Only one run's folder is ever deleted on the network volume, never the shared environments next to it."""
     from vstudio.cloud import runpod

@@ -49,6 +49,15 @@ def _mean(xs: list[float]) -> float | None:
 
 @jobs.handler("evaluate_model", queue="gpu")
 def evaluate_model(ctx: jobs.JobContext) -> dict:
+    """Score a model's checkpoints, then give the GPU back: the speech recognition models it loaded used to stay in
+    video memory, and a TTS model loaded next on a 10 GB card spilled into system memory (minutes per step)."""
+    try:
+        return _evaluate_model(ctx)
+    finally:
+        asr.unload()
+
+
+def _evaluate_model(ctx: jobs.JobContext) -> dict:
     m = db.get("models", ctx.params["model_id"])
     mdir = Path(m["path"])
     eng = engines.get(m["engine"])

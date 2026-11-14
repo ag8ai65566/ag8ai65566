@@ -39,6 +39,9 @@ def _handle(model_id: str):
         ok, why = eng.available()
         if not ok:
             raise RuntimeError(f"{eng.name}：{why}")
+        # nothing else may hold video memory under a TTS model: speech recognition left loaded by an import or by
+        # checkpoint scoring pushed VoxCPM2 (~8 GB) on a 10 GB card into system memory, hundreds of times slower
+        asr.unload()
         h = eng.load(Path(m["path"]), ck)
         _loaded.update(key=key, handle=h, engine=eng)
         return m, eng, h
