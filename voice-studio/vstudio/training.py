@@ -560,7 +560,7 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
                 partial = done.get("rc", 0) != 0
                 break
             if err:
-                if runpod.exists(f"{prefix}/model.tar", loc):  # weights were published before the failure
+                if _published(prefix, loc):  # weights were published before the failure
                     partial = True
                     break
                 raise RuntimeError(f"雲端訓練失敗（{_stage_label(err)}）。請到「雲端訓練」看紀錄。")
@@ -571,7 +571,7 @@ def _cloud_train(ctx: jobs.JobContext) -> dict:
             except Exception:
                 gone = False
             if gone:
-                if runpod.get_json(f"{prefix}/done.json", loc) or runpod.exists(f"{prefix}/model.tar", loc):
+                if runpod.get_json(f"{prefix}/done.json", loc) or _published(prefix, loc):
                     partial = not runpod.get_json(f"{prefix}/done.json", loc)
                     break
                 raise RuntimeError("雲端機器意外消失（可能被平台回收）。可以重試。")
@@ -595,17 +595,30 @@ def _download_and_install(ctx: jobs.JobContext, tid: str, partial: bool = False,
     work.mkdir(parents=True, exist_ok=True)
     _set(tid, status="downloading")
     tar_local = work / "model.tar"
+    lo, hi = span
+
+    def waiting(s: int) -> None:  # RunPod reads a big file once before serving it (see runpod.prepare)
+        ctx.progress(lo, f"RunPod 正在準備模型檔：第一次從雲端讀這麼大的檔案，RunPod 要先把整個檔案讀過一遍算校驗碼。"
+                         f"已等 {s // 60} 分 {s % 60:02d} 秒（最多等 {runpod.PREPARE_WAIT_S // 60} 分鐘）")
+    ctx.progress(lo, "找雲端的模型檔…")
+    try:
+        objs, ident = runpod.locate_archive(prefix, "model.tar", loc, check=ctx.check, note=waiting)
+    except jobs.Cancelled:
+        raise
+    except runpod.MissingFile as e:
+        raise RuntimeError("雲端沒有這次訓練的模型檔（訓練沒有完成到存檔那一步）。") from e
+    except Exception as e:
+        raise RuntimeError(f"還拿不到雲端的模型檔（{str(e)[:200]}）。模型還在雲端，稍後再按「救回模型」。") from e
+    size = sum(o["size"] for o in objs)
     try:  # the archive and its unpacked copy both land on this drive: say so now, not after hours of downloading
-        size = runpod.size(f"{prefix}/model.tar", loc)
         part = tar_local.with_name("model.tar.part")
         need = (0 if part.exists() and part.stat().st_size == size else size) + int(size * 1.1)
         free = shutil.disk_usage(work).free
     except Exception:
-        size = need = free = 0
+        need = free = 0
     if need and free < need:
         raise RuntimeError(f"電腦的磁碟空間不夠：模型檔約 {size / 1e9:.1f} GB，下載加解開還需要約 {need / 1e9:.1f} GB，"
                            f"{work.anchor or '這個磁碟'} 只剩 {free / 1e9:.1f} GB。模型還在雲端，清出空間後按「救回模型」。")
-    lo, hi = span
     first = {"t": time.time(), "f": None}
 
     def shown(f: float) -> None:  # "下載模型 37%（8.9 / 24.0 GB，12 MB/s）"
@@ -617,7 +630,7 @@ def _download_and_install(ctx: jobs.JobContext, tid: str, partial: bool = False,
         ctx.progress(lo + (hi - lo) * f, f"下載模型 {f * 100:.0f}%{amount}")
     ctx.progress(lo, f"下載模型（{size / 1e9:.1f} GB）" if size else "下載模型")
     try:  # resumable: what came down stays in the work folder, and "recover model" continues from there
-        runpod.download(f"{prefix}/model.tar", tar_local, loc=loc, progress=shown, check=ctx.check)
+        runpod.fetch(objs, ident, tar_local, progress=shown, loc=loc, check=ctx.check)
     except jobs.Cancelled:
         raise
     except Exception as e:
@@ -625,9 +638,10 @@ def _download_and_install(ctx: jobs.JobContext, tid: str, partial: bool = False,
                            "按「救回模型」會從中斷的地方接著下載，不用重新訓練。") from e
     samples_local = None
     try:
-        if runpod.exists(f"{prefix}/samples.tar", loc):
-            samples_local = runpod.download(f"{prefix}/samples.tar", work / "samples.tar", loc=loc, check=ctx.check,
-                                            progress=lambda f: ctx.progress(hi + (0.99 - hi) * f, "下載樣本"))
+        if runpod.has_archive(prefix, "samples.tar", loc, fast=True):
+            samples_local = runpod.download_archive(prefix, "samples.tar", work / "samples.tar", loc=loc,
+                                                    check=ctx.check,
+                                                    progress=lambda f: ctx.progress(hi + (0.99 - hi) * f, "下載樣本"))
     except jobs.Cancelled:
         raise
     except Exception as e:
@@ -639,12 +653,20 @@ def _download_and_install(ctx: jobs.JobContext, tid: str, partial: bool = False,
     if not note and (partial or samples_local is None or sampling != "complete"):
         note = "樣本試念沒有完成：模型可以用，但檢查點比較不完整。"
     _set(tid, status="done", finished_at=db.now(), note=note)
-    for name in ("dataset.tar", "model.tar", "samples.tar"):  # keep the volume small; log and config stay
+    for name in ("model.tar", "samples.tar", "dataset.tar"):  # keep the volume small; log and config stay
         try:
-            runpod.delete(f"{prefix}/{name}", loc)
+            runpod.delete_archive(prefix, name, loc)
         except Exception:
             pass
     return m
+
+
+def _published(prefix: str, loc: dict) -> bool:
+    """The pod published model.tar (in parts or as one file); False when that cannot be told right now."""
+    try:
+        return runpod.has_archive(prefix, "model.tar", loc, fast=True)
+    except Exception:
+        return False
 
 
 @jobs.handler("recover_model", queue="io")
@@ -654,12 +676,10 @@ def recover_model(ctx: jobs.JobContext) -> dict:
     tr = db.get("trainings", tid)
     try:
         ctx.progress(0.01, "連線到雲端網路磁碟，確認模型檔還在…")
-        try:  # a quick look: "cannot reach the volume" and "the file is not there" are different answers
-            there = runpod.exists(f"{tr['remote_prefix']}/model.tar", _loc(tr), fast=True)
+        try:  # can the volume be reached at all (a small file); the model file itself is looked for next
+            runpod.archive_info(tr["remote_prefix"], "model.tar", _loc(tr), fast=True)
         except Exception as e:
             raise RuntimeError(f"連不上 RunPod 的網路磁碟（{str(e)[:160]}）。模型還在雲端，網路恢復後再按「救回模型」。") from e
-        if not there:
-            raise RuntimeError("雲端沒有這次訓練的模型檔（訓練沒有完成到存檔那一步）。")
         m = _download_and_install(ctx, tid, partial=True, note="訓練沒有正常結束，但權重已經救回。", span=(0.03, 0.95))
     except BaseException:  # back to "failed", so "recover model" can be pressed again (and continues the download)
         if (db.get("trainings", tid) or {}).get("status") == "downloading":
@@ -671,10 +691,7 @@ def recover_model(ctx: jobs.JobContext) -> dict:
 def recoverable(tr: dict) -> bool:
     if tr.get("target") == "colab":
         return colab.recoverable(tr)
-    try:
-        return runpod.exists(f"{tr['remote_prefix']}/model.tar", _loc(tr))
-    except Exception:
-        return False
+    return _published(tr["remote_prefix"], _loc(tr))
 
 
 def can_retry_gpu(tr: dict) -> bool:

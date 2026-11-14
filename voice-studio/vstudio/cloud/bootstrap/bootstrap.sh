@@ -8,6 +8,9 @@ set -m   # background jobs get their own process group, so the watchdog can stop
 VS_ROOT="${VS_ROOT:-/workspace/vs}"   # the network volume (overridable only for local tests)
 JOB="$VS_ROOT/jobs/${VS_TRAINING_ID}"
 export VS_ROOT HF_HOME="$VS_ROOT/hf" PYTHONUNBUFFERED=1 VS_SRC="$VS_ROOT/src/${VS_ENGINE}" VS_WORK="${VS_WORK:-/root/vswork}"
+# model.tar / samples.tar go on the volume in parts of this size, with a manifest (<name>.json): RunPod's S3 API
+# checksums a file written here the first time it is read, which takes minutes for one file of tens of GB
+export VS_PART_MB="${VS_PART_MB:-512}"
 mkdir -p "$JOB"
 exec > >(tee -a "$JOB/train.log") 2>&1
 echo "[vs] start $(date -u +%FT%TZ) pod=${RUNPOD_POD_ID:-?} gpu=$(nvidia-smi --query-gpu=name,memory.total --format=csv,noheader 2>/dev/null) disk=$(df -h /root | tail -1 | awk '{print $4}') free"
@@ -109,9 +112,9 @@ WORK_PID=""
 
 # model.tar is written atomically as soon as the weights are ready, before the optional sample phase,
 # so a failure while sampling still delivers the trained model
-if [ -f "$JOB/model.tar" ]; then
+if [ -f "$JOB/model.tar.json" ] || [ -f "$JOB/model.tar" ]; then
   put done.json "$(printf '{"status":"done","rc":%d,"samples":%s,"at":"%s"}' "$rc" \
-    "$([ -f "$JOB/samples.tar" ] && echo true || echo false)" "$(date -u +%FT%TZ)")"
+    "$( { [ -f "$JOB/samples.tar.json" ] || [ -f "$JOB/samples.tar" ]; } && echo true || echo false)" "$(date -u +%FT%TZ)")"
   finish done
 fi
 fail "$(cat $STAGE_FILE 2>/dev/null || echo unknown)"

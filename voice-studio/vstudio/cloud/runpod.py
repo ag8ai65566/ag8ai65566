@@ -62,6 +62,10 @@ class RunPodError(Exception):
     pass
 
 
+class MissingFile(RunPodError):
+    """The file is not on the volume (as opposed to: the volume could not be reached)."""
+
+
 def _key() -> str:
     k = config.get_secret("runpod_api_key")
     if not k:
@@ -212,9 +216,10 @@ def gpu_catalog(datacenter: str | None = None) -> dict:
 
 # --- S3 (network volume) ----------------------------------------------------------------------------------------
 
-def s3(loc: dict | None = None, fast: bool = False, attempts: int | None = None):
+def s3(loc: dict | None = None, fast: bool = False, attempts: int | None = None, read_timeout: int | None = None):
     """fast=True (status polling) gives up quickly, so the caller's own retry and deadline logic stays in charge;
-    attempts overrides how often one request is tried (a caller that retries by itself keeps it low)."""
+    attempts overrides how often one request is tried (a caller that retries by itself keeps it low), read_timeout
+    how long a reply may take (see prepare())."""
     import boto3
     from botocore.config import Config
     ak, sk = config.get_secret("runpod_s3_access_key"), config.get_secret("runpod_s3_secret_key")
@@ -226,7 +231,7 @@ def s3(loc: dict | None = None, fast: bool = False, attempts: int | None = None)
                         config=Config(signature_version="s3v4",
                                       retries={"max_attempts": attempts or (2 if fast else 8), "mode": "adaptive"},
                                       s3={"addressing_style": "path"}, connect_timeout=10 if fast else 20,
-                                      read_timeout=20 if fast else 120))
+                                      read_timeout=read_timeout or (20 if fast else 120)))
 
 
 def bucket(loc: dict | None = None) -> str:
@@ -291,56 +296,139 @@ def get_text(key: str, tail: int = 20000, loc: dict | None = None) -> str:
         return ""
 
 
-DL_PART = 64 << 20  # bytes per ranged GET
-DL_WORKERS = 4      # parts in flight at once
-DL_TRIES = 6        # attempts per part, waiting 2, 4, 8, 16, 32 s in between
-DL_ROUNDS = 4       # passes over the missing parts; a pass that adds nothing stops (the network is down)
+DL_PART = 64 << 20      # bytes per ranged GET
+DL_WORKERS = 4          # ranges in flight at once
+DL_TRIES = 6            # attempts per range, waiting 2, 4, 8, 16, 32 s in between
+DL_ROUNDS = 4           # passes over the missing ranges; a pass that adds nothing stops (the network is down)
+ARCHIVE_PART_MB = 512   # the pod writes model.tar / samples.tar in parts this big (bootstrap.sh: VS_PART_MB)
+PREPARE_WAIT_S = 5400   # how long to wait for RunPod to get a big file ready (see prepare)
+PREPARE_READ_S = 1800   # one request's patience while it does (a request that gives up may make RunPod start over)
+PREPARE_TICK_S = 5.0    # how often the wait is reported and a stop request looked for
+PREPARE_PAUSE_S = 10.0  # between two waiting requests
 
 
-def download(key: str, local: Path, progress=None, loc: dict | None = None, check=None) -> Path:
-    """Download in ranged parts into <local>.part, recording each finished part in <local>.part.json, so a stalled
-    connection, a failed run or a later "recover model" continues where it stopped instead of fetching the whole
-    file again (a full fine-tune's model.tar is about 24 GB). Each part is retried with backoff; the file is moved
-    into place only when every part is there. check() is called before each part; whatever it raises (a stop
-    request) ends the download at once, keeping the parts already down."""
-    c, b = s3(loc, attempts=3), bucket(loc)  # each part is retried below: a stalled request gives up sooner
-    head = c.head_object(Bucket=b, Key=key)
-    size, etag = int(head["ContentLength"]), str(head.get("ETag") or "")
+def _retryable(e: Exception) -> bool:
+    """A reply that may come right if asked again (a timeout, a dropped connection, a server busy); not a refusal."""
+    from botocore.exceptions import ClientError
+    if isinstance(e, ClientError):
+        code = str(e.response.get("Error", {}).get("Code", ""))
+        status = int(e.response.get("ResponseMetadata", {}).get("HTTPStatusCode") or 0)
+        return status >= 500 or code in ("SlowDown", "InternalError", "RequestTimeout", "ServiceUnavailable")
+    return True
+
+
+def prepare(key: str, loc: dict | None = None, check=None, note=None, wait_s: float | None = None) -> dict:
+    """HEAD a file, giving RunPod the time it needs. RunPod computes and caches an MD5 checksum (the ETag) the first
+    time a file that was not uploaded through its S3 API is read over S3; a model.tar of tens of GB written on the
+    pod takes minutes, and a request that gives up before that never gets the answer (the next one starts over). So
+    one request at a time, each allowed PREPARE_READ_S, for up to wait_s in all; note(seconds waited) reports the
+    wait, check() can stop it. Raises RunPodError when the file is not there or RunPod refuses."""
+    wait_s = PREPARE_WAIT_S if wait_s is None else wait_s
+    c, b = s3(loc, attempts=1, read_timeout=PREPARE_READ_S), bucket(loc)
+    name = key.rsplit("/", 1)[-1]
+    t0 = time.time()
+    while True:
+        box: dict = {}
+
+        def head(box: dict = box) -> None:
+            try:
+                box["head"] = c.head_object(Bucket=b, Key=key)
+            except Exception as x:  # reported below
+                box["error"] = x
+        th = threading.Thread(target=head, daemon=True, name=f"prepare {name}")
+        th.start()
+        while th.is_alive():
+            th.join(PREPARE_TICK_S)
+            if check:
+                check()  # a stop request: the waiting request is left to time out by itself
+            if note and th.is_alive():
+                note(int(time.time() - t0))
+        if "head" in box:
+            return box["head"]
+        e = box["error"]
+        if _missing(e):
+            raise MissingFile(f"雲端沒有 {name}") from e
+        if not _retryable(e):
+            raise RunPodError(f"RunPod 拒絕讀取 {name}：{str(e)[:200]}") from e
+        if time.time() - t0 + PREPARE_PAUSE_S >= wait_s:
+            raise RunPodError(f"等了 {int(time.time() - t0) // 60} 分鐘，RunPod 還沒把 {name} 準備好：{str(e)[:160]}") from e
+        if note:
+            note(int(time.time() - t0))
+        end = time.time() + PREPARE_PAUSE_S
+        while time.time() < end:
+            if check:
+                check()
+            time.sleep(min(1.0, PREPARE_PAUSE_S))
+
+
+def archive_info(prefix: str, name: str, loc: dict | None = None, fast: bool = False) -> dict | None:
+    """The manifest of an archive the pod wrote in parts (<name>.json: size and parts), or None. A run from before
+    parts wrote one file, <name> itself, which only prepare() can look at without timing out."""
+    return get_json(f"{prefix}/{name}.json", loc, fast)
+
+
+def has_archive(prefix: str, name: str, loc: dict | None = None, fast: bool = False) -> bool:
+    """Whether the pod published model.tar / samples.tar (in parts, or as one file)."""
+    return archive_info(prefix, name, loc, fast) is not None or exists(f"{prefix}/{name}", loc, fast)
+
+
+def locate_archive(prefix: str, name: str, loc: dict | None = None, check=None, note=None) -> tuple[list[dict], str]:
+    """What to download for an archive: ([{key, size}], an identity that changes when the file does). Parts are
+    small enough for RunPod to checksum on the fly; one big file of an older run first waits in prepare()."""
+    info = archive_info(prefix, name, loc)
+    if info is not None:
+        objs = [{"key": f"{prefix}/{p['key']}", "size": int(p["size"])} for p in info["parts"]]
+        return objs, "parts:" + json.dumps(info["parts"], sort_keys=True)
+    head = prepare(f"{prefix}/{name}", loc, check=check, note=note)
+    return [{"key": f"{prefix}/{name}", "size": int(head["ContentLength"])}], "etag:" + str(head.get("ETag") or "")
+
+
+def fetch(objs: list[dict], ident: str, local: Path, progress=None, loc: dict | None = None, check=None) -> Path:
+    """Download objects, one after the other, into one local file: in ranged pieces written into <local>.part and
+    recorded in <local>.part.json as they land, so a stalled connection, a failed run or a later "recover model"
+    continues where it stopped instead of fetching everything again. Each piece is retried with backoff; the file is
+    moved into place only when every piece is there. check() is called before each piece; whatever it raises (a
+    stop request) ends the download at once, keeping the pieces already down."""
+    c, b = s3(loc, attempts=3), bucket(loc)  # each piece is retried below: a stalled request gives up sooner
+    size = sum(o["size"] for o in objs)
     local.parent.mkdir(parents=True, exist_ok=True)
     if size == 0:
         local.write_bytes(b"")
         return local
+    pieces, off = [], 0  # (key, first byte, last byte, where it goes in the local file)
+    for o in objs:
+        pieces += [(o["key"], a, min(o["size"], a + DL_PART) - 1, off + a) for a in range(0, o["size"], DL_PART)]
+        off += o["size"]
     part, state_f = local.with_name(local.name + ".part"), local.with_name(local.name + ".part.json")
     try:
         state = json.loads(state_f.read_text(encoding="utf-8"))
     except Exception:
         state = {}
-    if (state.get("size"), state.get("etag"), state.get("part")) != (size, etag, DL_PART) or not part.exists() \
+    if (state.get("size"), state.get("ident"), state.get("part")) != (size, ident, DL_PART) or not part.exists() \
             or part.stat().st_size != size:  # another file, or nothing usable yet: start over
         with open(part, "wb") as f:
             f.truncate(size)
-        state = {"size": size, "etag": etag, "part": DL_PART, "done": []}
-    n = -(-size // DL_PART)
+        state = {"size": size, "ident": ident, "part": DL_PART, "done": []}
+    n = len(pieces)
     done, lock, stopped = set(state["done"]), threading.Lock(), []
 
-    def fetch(f, i: int) -> None:
+    def get(f, i: int) -> None:
         if stopped:
             raise stopped[0]
         if check:
             try:
                 check()
-            except BaseException as x:  # not a network error: no retry, no further parts
+            except BaseException as x:  # not a network error: no retry, no further pieces
                 stopped.append(x)
                 raise
-        a = i * DL_PART
-        e = min(size, a + DL_PART) - 1
+        key, a, e, at = pieces[i]
         for t in range(DL_TRIES):
             try:
                 data = c.get_object(Bucket=b, Key=key, Range=f"bytes={a}-{e}")["Body"].read()
                 if len(data) != e - a + 1:
                     raise OSError(f"short read: {len(data)} of {e - a + 1} bytes")
                 with lock:
-                    f.seek(a)
+                    f.seek(at)
                     f.write(data)
                     f.flush()
                     done.add(i)
@@ -360,7 +448,7 @@ def download(key: str, local: Path, progress=None, loc: dict | None = None, chec
             break
         before = len(done)
         with open(part, "r+b") as f, ThreadPoolExecutor(DL_WORKERS) as ex:
-            errors = [x for x in (fu.exception() for fu in [ex.submit(fetch, f, i) for i in todo]) if x]
+            errors = [x for x in (fu.exception() for fu in [ex.submit(get, f, i) for i in todo]) if x]
         if stopped:
             raise stopped[0]
         if not errors:
@@ -373,6 +461,28 @@ def download(key: str, local: Path, progress=None, loc: dict | None = None, chec
     os.replace(part, local)
     state_f.unlink(missing_ok=True)
     return local
+
+
+def download(key: str, local: Path, progress=None, loc: dict | None = None, check=None, note=None) -> Path:
+    """One file: prepare() it (RunPod may need minutes for a big one), then fetch() it."""
+    head = prepare(key, loc, check=check, note=note)
+    return fetch([{"key": key, "size": int(head["ContentLength"])}], "etag:" + str(head.get("ETag") or ""), local,
+                 progress, loc, check)
+
+
+def download_archive(prefix: str, name: str, local: Path, progress=None, loc: dict | None = None, check=None,
+                     note=None) -> Path:
+    objs, ident = locate_archive(prefix, name, loc, check=check, note=note)
+    return fetch(objs, ident, local, progress, loc, check)
+
+
+def delete_archive(prefix: str, name: str, loc: dict | None = None) -> None:
+    """An archive's parts and manifest, or its one file."""
+    info = archive_info(prefix, name, loc)
+    for p in (info or {}).get("parts", []):
+        delete(f"{prefix}/{p['key']}", loc)
+    delete(f"{prefix}/{name}.json", loc)
+    delete(f"{prefix}/{name}", loc)
 
 
 RUN_FOLDER = re.compile(r"vs/jobs/tr_[0-9a-f]+")  # one training run's folder on the volume, nothing wider

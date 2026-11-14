@@ -604,7 +604,7 @@ def test_model_download_resumes_after_the_network_drops(tmp_path, monkeypatch):
                 net["short_once"].discard(i)
                 return {"Body": io.BytesIO(data[a:e])}                   # one byte missing: caught and fetched again
             return {"Body": io.BytesIO(data[a:e + 1])}
-    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None: Client())
+    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None, read_timeout=None: Client())
     monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
     out = tmp_path / "model.tar"
     with pytest.raises(runpod.RunPodError, match="下載中斷（已完成 60%）"):
@@ -642,11 +642,12 @@ def test_failed_recovery_can_be_pressed_again(client, monkeypatch):
                             "preset": {"id": "full", "name": "Kronii"}, "target": "runpod", "status": "failed",
                             "remote_prefix": "vs/jobs/tr_00ee", "storage": {"volume": "vol1", "datacenter": "US-CA-2"},
                             "progress": {}, "created_at": db.now()})
-    monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: key.endswith("model.tar"))
-    monkeypatch.setattr(runpod, "size", lambda key, loc=None: 24 * 10 ** 9)
+    monkeypatch.setattr(runpod, "archive_info", lambda prefix, name, loc=None, fast=False: None)  # one big file
+    monkeypatch.setattr(runpod, "locate_archive", lambda prefix, name, loc=None, check=None, note=None:
+                        ([{"key": f"{prefix}/{name}", "size": 24 * 10 ** 9}], "etag:x"))
     monkeypatch.setattr(training.shutil, "disk_usage", lambda p: type("U", (), {"free": 20 * 10 ** 9})())
     pulled = []
-    monkeypatch.setattr(runpod, "download", lambda *a, **kw: pulled.append(a))
+    monkeypatch.setattr(runpod, "fetch", lambda *a, **kw: pulled.append(a))
     job = c.post("/api/training/tr_00ee/recover").json()                         # answers at once; the job looks
     assert _wait(c, job["id"])["status"] == "failed" and not pulled                # nothing downloaded into a full disk
     t = db.get("trainings", "tr_00ee")
@@ -655,12 +656,152 @@ def test_failed_recovery_can_be_pressed_again(client, monkeypatch):
     job2 = c.post("/api/training/tr_00ee/recover").json()                         # can be pressed again
     _wait(c, job2["id"])
 
-    def unreachable(key, loc=None, fast=False):
+    def unreachable(prefix, name, loc=None, fast=False):
         raise runpod.RunPodError("Read timeout on endpoint URL")
-    monkeypatch.setattr(runpod, "exists", unreachable)                             # cannot reach the volume: said so
+    monkeypatch.setattr(runpod, "archive_info", unreachable)                       # cannot reach the volume: said so
     job3 = c.post("/api/training/tr_00ee/recover").json()
     assert _wait(c, job3["id"])["status"] == "failed" and "連不上 RunPod 的網路磁碟" in db.get("jobs", job3["id"])["message"]
     assert db.get("trainings", "tr_00ee")["status"] == "failed"
+
+    def missing(prefix, name, loc=None, check=None, note=None):
+        raise runpod.MissingFile("雲端沒有 model.tar")
+    monkeypatch.setattr(runpod, "archive_info", lambda prefix, name, loc=None, fast=False: None)
+    monkeypatch.setattr(runpod, "locate_archive", missing)                         # really not there: said so
+    job4 = c.post("/api/training/tr_00ee/recover").json()
+    assert _wait(c, job4["id"])["status"] == "failed" and "雲端沒有這次訓練的模型檔" in db.get("jobs", job4["id"])["message"]
+
+
+def test_runpod_gets_a_big_file_ready_before_it_is_read(monkeypatch):
+    """RunPod checksums a file written on the pod the first time it is read over S3 (minutes for tens of GB): the
+    first request waits for it, reporting the wait; a missing file or a refusal is said at once; stop works."""
+    import time as _time
+    from botocore.exceptions import ClientError
+    from vstudio.cloud import runpod
+    monkeypatch.setattr(runpod, "PREPARE_TICK_S", 0.05)
+    monkeypatch.setattr(runpod, "PREPARE_PAUSE_S", 0.0)
+    replies = []
+
+    class Client:
+        def head_object(self, Bucket, Key):
+            r = replies.pop(0)
+            _time.sleep(r[0])
+            if isinstance(r[1], Exception):
+                raise r[1]
+            return r[1]
+    made = []
+    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None, read_timeout=None:
+                        made.append((attempts, read_timeout)) or Client())
+    monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
+    waited = []
+    replies[:] = [(0.2, OSError("Read timeout on endpoint URL")), (0.2, {"ContentLength": 24, "ETag": '"m"'})]
+    assert runpod.prepare("vs/jobs/tr_1/model.tar", note=waited.append)["ContentLength"] == 24
+    assert waited and made[-1] == (1, runpod.PREPARE_READ_S)      # one long request at a time, not quick retries
+    denied = ClientError({"Error": {"Code": "AccessDenied"}, "ResponseMetadata": {"HTTPStatusCode": 403}}, "HeadObject")
+    gone = ClientError({"Error": {"Code": "404"}, "ResponseMetadata": {"HTTPStatusCode": 404}}, "HeadObject")
+    replies[:] = [(0, gone)]
+    with pytest.raises(runpod.MissingFile):
+        runpod.prepare("vs/jobs/tr_1/model.tar")
+    replies[:] = [(0, denied)]
+    with pytest.raises(runpod.RunPodError, match="拒絕"):
+        runpod.prepare("vs/jobs/tr_1/model.tar")
+    replies[:] = [(0, OSError("timeout"))] * 3
+    with pytest.raises(runpod.RunPodError, match="還沒把 model.tar 準備好"):
+        runpod.prepare("vs/jobs/tr_1/model.tar", wait_s=0)
+
+    class Stop(Exception):
+        pass
+
+    def stop():
+        raise Stop()
+    replies[:] = [(0.3, {"ContentLength": 1})]
+    with pytest.raises(Stop):
+        runpod.prepare("vs/jobs/tr_1/model.tar", check=stop)
+
+
+@pytest.mark.skipif(shutil.which("bash") is None and os.name != "nt", reason="needs bash")
+def test_pod_writes_the_model_in_parts_and_the_studio_reads_them_back(tmp_path, monkeypatch):
+    """bootstrap.sh runs a training whose real packaging (vs_common) writes model.tar in parts with a manifest;
+    done.json follows; the studio downloads the parts into one model.tar that unpacks to what was trained."""
+    import io
+    import json
+    import subprocess
+    import tarfile
+    from vstudio import training
+    from vstudio.cloud import runpod
+    from vstudio.engines import remote
+
+    def sh(p) -> str:
+        s = p.as_posix()
+        return f"/{s[0].lower()}{s[2:]}" if os.name == "nt" and s[1:2] == ":" else s
+    root = tmp_path / "pod"
+    job = root / "vs" / "jobs" / "tr_00ab"
+    job.mkdir(parents=True)
+    (job / "setup_env.sh").write_text("exit 0\n", encoding="utf-8", newline="\n")
+    (job / "vs_common.py").write_text(remote.read("vs_common.py"), encoding="utf-8")
+    (job / "config.json").write_text(json.dumps({"training_id": "tr_00ab", "params": {}}), encoding="utf-8")
+    (job / "train_entry.py").write_text(
+        "import os, sys\nsys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))\n"
+        "from vs_common import Job\njob = Job()\n"
+        "(job.out / 'checkpoints').mkdir(parents=True, exist_ok=True)\n"
+        "(job.out / 'checkpoints' / 'w.bin').write_bytes(bytes(range(256)) * 10000)\n"   # 2.56 MB of weights
+        "job.package({'engine': 'mock'}, 'model.tar')\n", encoding="utf-8")
+    (root / "x.txt").write_text("x", encoding="utf-8")
+    with tarfile.open(job / "dataset.tar", "w") as t:
+        t.add(root / "x.txt", arcname="data/x.txt")
+    (root / "bin").mkdir()
+    for name, body in (("runpodctl", f'echo "$@" >> "{sh(root / "ctl.log")}"'),
+                       ("python", f'exec "{sh(Path(sys.executable))}" "$@"')):
+        (root / "bin" / name).write_text(f"#!/bin/bash\n{body}\n", encoding="utf-8", newline="\n")
+        (root / "bin" / name).chmod(0o755)
+    (root / "vs" / "envs" / "mock" / "bin").mkdir(parents=True)
+    (root / "vs" / "envs" / "mock" / "bin" / "activate").write_text("", encoding="utf-8")
+    script = job / "bootstrap.sh"
+    script.write_bytes(training.BOOTSTRAP.encode("utf-8"))
+    env = {**os.environ, "PATH": str(root / "bin") + os.pathsep + os.environ.get("PATH", ""),
+           "VS_ROOT": sh(root / "vs"), "VS_WORK": sh(root / "work"), "VS_DATA": sh(root / "data"),
+           "VS_TRAINING_ID": "tr_00ab", "VS_ENGINE": "mock", "RUNPOD_POD_ID": "pod1", "VS_PART_MB": "1",
+           "VS_FINISH_SLEEP": "0", "VS_KILL_GRACE": "0", "VS_RETRY_SLEEP": "0", "VS_MAX_SECONDS": "120"}
+    subprocess.run([_bash(), sh(script)], env=env, timeout=90, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    log = (job / "train.log").read_text(encoding="utf-8", errors="replace")
+    assert not (job / "error.json").exists(), log
+    assert json.loads((job / "done.json").read_text(encoding="utf-8"))["status"] == "done"
+    manifest = json.loads((job / "model.tar.json").read_text(encoding="utf-8"))
+    assert len(manifest["parts"]) == 3 and not (job / "model.tar").exists()          # 1 MB parts, no single file
+    assert all((job / p["key"]).stat().st_size == p["size"] for p in manifest["parts"])
+
+    class Volume:  # RunPod's S3 API over the pod's folder
+        def _path(self, Key):
+            return root / Key
+
+        def head_object(self, Bucket, Key):
+            if not self._path(Key).exists():
+                from botocore.exceptions import ClientError
+                raise ClientError({"Error": {"Code": "404"}}, "HeadObject")
+            return {"ContentLength": self._path(Key).stat().st_size, "ETag": '"x"'}
+
+        def get_object(self, Bucket, Key, Range=None):
+            if not self._path(Key).exists():
+                from botocore.exceptions import ClientError
+                raise ClientError({"Error": {"Code": "NoSuchKey"}}, "GetObject")
+            data = self._path(Key).read_bytes()
+            if Range:
+                a, e = (int(x) for x in Range[len("bytes="):].split("-"))
+                data = data[a:e + 1]
+            return {"Body": io.BytesIO(data)}
+
+        def delete_object(self, Bucket, Key):
+            self._path(Key).unlink(missing_ok=True)
+    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None, read_timeout=None: Volume())
+    monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
+    monkeypatch.setattr(runpod, "DL_PART", 300_000)                                     # pieces cross part borders
+    assert runpod.has_archive("vs/jobs/tr_00ab", "model.tar") and not runpod.has_archive("vs/jobs/tr_00ab", "samples.tar")
+    out = runpod.download_archive("vs/jobs/tr_00ab", "model.tar", tmp_path / "got" / "model.tar")
+    assert out.stat().st_size == manifest["size"]
+    with tarfile.open(out) as t:
+        assert t.extractfile("model/checkpoints/w.bin").read() == bytes(range(256)) * 10000
+        assert "model/engine.json" in t.getnames()
+    runpod.delete_archive("vs/jobs/tr_00ab", "model.tar")
+    assert not list(job.glob("model.tar*"))
 
 
 def test_cloud_run_folder_delete_stays_inside_the_run(monkeypatch):

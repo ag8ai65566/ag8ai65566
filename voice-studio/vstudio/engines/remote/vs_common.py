@@ -96,14 +96,64 @@ class Job:
         def keep(ti: tarfile.TarInfo):
             return None if Path(ti.name).name in skip else ti
 
-        tmp = self.dir / f"{name}.tmp"
-        with tarfile.open(tmp, "w") as t:
+        part_mb = int(os.environ.get("VS_PART_MB") or 0)
+
+        def fill(t: tarfile.TarFile) -> None:
             for src, arc in entries if entries is not None else [(self.out, "model")]:
                 t.add(src, arcname=arc, filter=keep)
             if entries is not None:
                 t.add(self.out / "engine.json", arcname="model/engine.json")
+        if part_mb:  # RunPod: parts its S3 API can checksum quickly (a 24 GB file takes it minutes), manifest last
+            w = PartWriter(self.dir, name, part_mb << 20)
+            with tarfile.open(fileobj=w, mode="w|") as t:
+                fill(t)
+            w.close()
+            manifest = {"name": name, "size": sum(p["size"] for p in w.parts), "parts": w.parts}
+            tmp = self.dir / f"{name}.json.tmp"
+            tmp.write_text(json.dumps(manifest), encoding="utf-8")
+            os.replace(tmp, self.dir / f"{name}.json")
+            log(f"packaged {name}: {manifest['size'] / 1e9:.2f} GB in {len(w.parts)} parts")
+            return
+        tmp = self.dir / f"{name}.tmp"
+        with tarfile.open(tmp, "w") as t:
+            fill(t)
         os.replace(tmp, self.dir / name)
         log(f"packaged {name}: {(self.dir / name).stat().st_size / 1e9:.2f} GB")
+
+
+class PartWriter:
+    """A write-only file that rolls over to <name>.p000, <name>.p001 … every `limit` bytes. Each part is written as
+    .tmp and renamed when full, so a part with its final name is always complete."""
+
+    def __init__(self, d: Path, name: str, limit: int) -> None:
+        self.d, self.name, self.limit = d, name, limit
+        self.parts: list[dict] = []
+        self._f = None
+
+    def write(self, data) -> int:
+        mv = memoryview(data).cast("B")
+        n = len(mv)
+        while mv:
+            if self._f is None or self.parts[-1]["size"] >= self.limit:
+                self._finish()
+                key = f"{self.name}.p{len(self.parts):03d}"
+                self.parts.append({"key": key, "size": 0})
+                self._f = open(self.d / f"{key}.tmp", "wb")
+            room = self.limit - self.parts[-1]["size"]
+            self._f.write(mv[:room])
+            self.parts[-1]["size"] += min(room, len(mv))
+            mv = mv[room:]
+        return n
+
+    def _finish(self) -> None:
+        if self._f is not None:
+            self._f.close()
+            key = self.parts[-1]["key"]
+            os.replace(self.d / f"{key}.tmp", self.d / key)
+            self._f = None
+
+    def close(self) -> None:
+        self._finish()
 
 
 def sample_plan(job: Job) -> dict:
