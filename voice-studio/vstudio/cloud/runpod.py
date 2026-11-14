@@ -296,10 +296,16 @@ def get_text(key: str, tail: int = 20000, loc: dict | None = None) -> str:
         return ""
 
 
+# Downloads follow RunPod's own runpodctl (network-volume download, Nov 2026): 64 MB ranges, 4 at a time, up to
+# 5 minutes for RunPod to start answering a range, and a 524 from its proxy ("slow operation") is retried.
 DL_PART = 64 << 20      # bytes per ranged GET
 DL_WORKERS = 4          # ranges in flight at once
-DL_TRIES = 6            # attempts per range, waiting 2, 4, 8, 16, 32 s in between
-DL_ROUNDS = 4           # passes over the missing ranges; a pass that adds nothing stops (the network is down)
+DL_READ_S = 300         # how long one range may wait for RunPod to start answering, or for its next bytes
+DL_STALL_S = 3600       # give up only after this long without a single byte arriving (any range)
+DL_BACKOFF_S = 5.0      # first pause after a failed range; doubles up to DL_BACKOFF_MAX_S
+DL_BACKOFF_MAX_S = 60.0
+DL_CHUNK = 1 << 20      # bytes read at a time, so progress moves while a range comes in
+DL_REPORT_S = 1.0       # progress is reported at most this often
 ARCHIVE_PART_MB = 512   # the pod writes model.tar / samples.tar in parts this big (bootstrap.sh: VS_PART_MB)
 PREPARE_WAIT_S = 5400   # how long to wait for RunPod to get a big file ready (see prepare)
 PREPARE_READ_S = 1800   # one request's patience while it does (a request that gives up may make RunPod start over)
@@ -383,13 +389,18 @@ def locate_archive(prefix: str, name: str, loc: dict | None = None, check=None, 
     return [{"key": f"{prefix}/{name}", "size": int(head["ContentLength"])}], "etag:" + str(head.get("ETag") or "")
 
 
-def fetch(objs: list[dict], ident: str, local: Path, progress=None, loc: dict | None = None, check=None) -> Path:
-    """Download objects, one after the other, into one local file: in ranged pieces written into <local>.part and
+def fetch(objs: list[dict], ident: str, local: Path, progress=None, loc: dict | None = None, check=None,
+          note=None, log=None) -> Path:
+    """Download objects, one after the other, into one local file, in ranged pieces written into <local>.part and
     recorded in <local>.part.json as they land, so a stalled connection, a failed run or a later "recover model"
-    continues where it stopped instead of fetching everything again. Each piece is retried with backoff; the file is
-    moved into place only when every piece is there. check() is called before each piece; whatever it raises (a
-    stop request) ends the download at once, keeping the pieces already down."""
-    c, b = s3(loc, attempts=3), bucket(loc)  # each piece is retried below: a stalled request gives up sooner
+    continues where it stopped instead of fetching everything again.
+
+    progress(fraction) follows the bytes as they arrive (at most every DL_REPORT_S). A piece that fails (a timeout,
+    a 524 from RunPod's proxy, a dropped connection) is asked for again after a pause, with note(text) saying why,
+    and log(text) recording it; the download gives up only when no byte at all has arrived for DL_STALL_S. check() is
+    looked at before and between tries; whatever it raises (a stop request) ends the download at once, keeping the
+    pieces already down. The file is moved into place only when every piece is there."""
+    c, b = s3(loc, attempts=1, read_timeout=DL_READ_S), bucket(loc)  # every try is seen (and reported) here
     size = sum(o["size"] for o in objs)
     local.parent.mkdir(parents=True, exist_ok=True)
     if size == 0:
@@ -411,8 +422,23 @@ def fetch(objs: list[dict], ident: str, local: Path, progress=None, loc: dict | 
         state = {"size": size, "ident": ident, "part": DL_PART, "done": []}
     n = len(pieces)
     done, lock, stopped = set(state["done"]), threading.Lock(), []
+    got = {"bytes": sum(pieces[i][2] - pieces[i][1] + 1 for i in done if i < n), "last": time.time(), "shown": 0.0,
+           "fails": 0, "t0": time.time()}
 
-    def get(f, i: int) -> None:
+    def call(fn, *args) -> None:
+        try:
+            fn(*args)
+        except BaseException as x:  # a callback that raises (the job's stop request): the whole download ends
+            if not stopped:
+                stopped.append(x)
+            raise
+
+    def report(force: bool = False) -> None:  # under lock
+        if progress and (force or time.time() - got["shown"] >= DL_REPORT_S):
+            got["shown"] = time.time()
+            call(progress, min(1.0, got["bytes"] / size))
+
+    def stop_check() -> None:
         if stopped:
             raise stopped[0]
         if check:
@@ -421,59 +447,83 @@ def fetch(objs: list[dict], ident: str, local: Path, progress=None, loc: dict | 
             except BaseException as x:  # not a network error: no retry, no further pieces
                 stopped.append(x)
                 raise
+
+    def get(f, i: int) -> None:
         key, a, e, at = pieces[i]
-        for t in range(DL_TRIES):
+        t = 0
+        while True:
+            stop_check()
+            buf = bytearray()
             try:
-                data = c.get_object(Bucket=b, Key=key, Range=f"bytes={a}-{e}")["Body"].read()
-                if len(data) != e - a + 1:
-                    raise OSError(f"short read: {len(data)} of {e - a + 1} bytes")
+                body = c.get_object(Bucket=b, Key=key, Range=f"bytes={a}-{e}")["Body"]
+                while True:
+                    chunk = body.read(DL_CHUNK)
+                    if not chunk:
+                        break
+                    buf += chunk
+                    with lock:
+                        got["bytes"] += len(chunk)
+                        got["last"] = time.time()
+                        report()
+                if len(buf) != e - a + 1:
+                    raise OSError(f"short read: {len(buf)} of {e - a + 1} bytes")
                 with lock:
                     f.seek(at)
-                    f.write(data)
+                    f.write(buf)
                     f.flush()
                     done.add(i)
                     state_f.write_text(json.dumps({**state, "done": sorted(done)}), encoding="utf-8")
-                    if progress:
-                        progress(len(done) / n)
+                    report(force=len(done) == n)
                 return
-            except Exception:
-                if t == DL_TRIES - 1:
+            except Exception as x:
+                if stopped:  # stopped from a callback while this piece was coming in
+                    raise stopped[0] from None
+                with lock:  # what came of this piece is fetched again
+                    got["bytes"] -= len(buf)
+                    got["fails"] += 1
+                    quiet = time.time() - got["last"]
+                    why = f"{type(x).__name__}: {str(x)[:160]}"
+                    if log:
+                        log(f"piece {i + 1}/{n} try {t + 1} failed after {len(buf)} bytes: {why}")
+                    if note:
+                        call(note, f"雲端這段還沒傳過來，重試中（已經 {int(quiet) // 60} 分 {int(quiet) % 60:02d} 秒沒收到資料，"
+                             f"第 {got['fails']} 次重試：{why[:80]}）。RunPod 第一次讀大檔案時可能要等幾分鐘。")
+                if quiet >= DL_STALL_S:
                     raise
-                time.sleep(2 ** (t + 1))
+            pause = min(DL_BACKOFF_MAX_S, DL_BACKOFF_S * 2 ** t)
+            t += 1
+            end = time.time() + pause
+            while time.time() < end:
+                stop_check()
+                time.sleep(min(1.0, pause))
 
-    err = None
-    for _ in range(DL_ROUNDS):
-        todo = [i for i in range(n) if i not in done]
-        if not todo:
-            break
-        before = len(done)
-        with open(part, "r+b") as f, ThreadPoolExecutor(DL_WORKERS) as ex:
-            errors = [x for x in (fu.exception() for fu in [ex.submit(get, f, i) for i in todo]) if x]
-        if stopped:
-            raise stopped[0]
-        if not errors:
-            break
-        err = errors[0]
-        if len(done) == before:
-            break
+    todo = [i for i in range(n) if i not in done]
+    with open(part, "r+b") as f, ThreadPoolExecutor(DL_WORKERS) as ex:
+        errors = [x for x in (fu.exception() for fu in [ex.submit(get, f, i) for i in todo]) if x]
+    if stopped:
+        raise stopped[0]
     if len(done) < n:
-        raise RunPodError(f"下載中斷（已完成 {len(done) * 100 // n}%）：{str(err)[:200]}") from err
+        err = errors[0] if errors else None
+        raise RunPodError(f"下載中斷（已完成 {len(done) * 100 // n}%，{DL_STALL_S // 60} 分鐘沒收到任何資料）："
+                          f"{str(err)[:200]}") from err
     os.replace(part, local)
     state_f.unlink(missing_ok=True)
     return local
 
 
-def download(key: str, local: Path, progress=None, loc: dict | None = None, check=None, note=None) -> Path:
-    """One file: prepare() it (RunPod may need minutes for a big one), then fetch() it."""
+def download(key: str, local: Path, progress=None, loc: dict | None = None, check=None, note=None,
+             log=None) -> Path:
+    """One file: prepare() it (RunPod may need minutes for a big one), then fetch() it. note(seconds) reports the
+    wait in prepare()."""
     head = prepare(key, loc, check=check, note=note)
     return fetch([{"key": key, "size": int(head["ContentLength"])}], "etag:" + str(head.get("ETag") or ""), local,
-                 progress, loc, check)
+                 progress, loc, check, log=log)
 
 
 def download_archive(prefix: str, name: str, local: Path, progress=None, loc: dict | None = None, check=None,
-                     note=None) -> Path:
+                     note=None, log=None) -> Path:
     objs, ident = locate_archive(prefix, name, loc, check=check, note=note)
-    return fetch(objs, ident, local, progress, loc, check)
+    return fetch(objs, ident, local, progress, loc, check, log=log)
 
 
 def delete_archive(prefix: str, name: str, loc: dict | None = None) -> None:

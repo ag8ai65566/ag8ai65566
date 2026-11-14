@@ -584,6 +584,9 @@ def test_model_download_resumes_after_the_network_drops(tmp_path, monkeypatch):
     from vstudio.cloud import runpod
     data = os.urandom(10_000)
     monkeypatch.setattr(runpod, "DL_PART", 1000)
+    monkeypatch.setattr(runpod, "DL_STALL_S", 0.3)        # "the network is gone" after 0.3 s without a byte
+    monkeypatch.setattr(runpod, "DL_BACKOFF_S", 0.01)
+    monkeypatch.setattr(runpod, "DL_BACKOFF_MAX_S", 0.01)
     monkeypatch.setattr(runpod.time, "sleep", lambda s: None)
     calls, net = [], {"down_from": 6, "stall_once": {2}, "short_once": {3}}
 
@@ -607,13 +610,19 @@ def test_model_download_resumes_after_the_network_drops(tmp_path, monkeypatch):
     monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None, read_timeout=None: Client())
     monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
     out = tmp_path / "model.tar"
-    with pytest.raises(runpod.RunPodError, match="下載中斷（已完成 60%）"):
-        runpod.download("vs/jobs/tr_1/model.tar", out)
+    notes, logs = [], []
+    with pytest.raises(runpod.RunPodError, match="下載中斷（已完成 60%"):
+        runpod.fetch([{"key": "vs/jobs/tr_1/model.tar", "size": len(data)}], 'etag:"e1"', out, note=notes.append,
+                     log=logs.append)
     assert not out.exists() and json.loads((tmp_path / "model.tar.part.json").read_text())["done"] == [0, 1, 2, 3, 4, 5]
+    assert any("重試中" in x and "Read timeout" in x for x in notes) and any("piece 7/10" in x for x in logs)
     net["down_from"], seen = None, []
     calls.clear()
+    monkeypatch.setattr(runpod, "DL_CHUNK", 100)           # progress follows the bytes, not only whole pieces
+    monkeypatch.setattr(runpod, "DL_REPORT_S", 0)
     runpod.download("vs/jobs/tr_1/model.tar", out, progress=seen.append)        # the network is back
     assert sorted(calls) == [6, 7, 8, 9] and out.read_bytes() == data and seen[-1] == 1.0
+    assert any(round(x * 100) % 10 for x in seen)                                 # e.g. 65 %: inside a piece
     assert not (tmp_path / "model.tar.part").exists() and not (tmp_path / "model.tar.part.json").exists()
 
     class Stop(Exception):
@@ -629,6 +638,14 @@ def test_model_download_resumes_after_the_network_drops(tmp_path, monkeypatch):
     with pytest.raises(Stop):
         runpod.download("vs/jobs/tr_1/model.tar", out2, check=check)
     assert len(json.loads((tmp_path / "again.tar.part.json").read_text())["done"]) == 3 and not out2.exists()
+
+    def stop_from_progress(f):  # the job's progress call raises when "stop" is pressed: no retry, no RunPodError
+        if f > 0.42:
+            raise Stop()
+    out3 = tmp_path / "third.tar"
+    with pytest.raises(Stop):
+        runpod.download("vs/jobs/tr_1/model.tar", out3, progress=stop_from_progress)
+    assert len(json.loads((tmp_path / "third.tar.part.json").read_text())["done"]) == 4 and not out3.exists()
 
 
 def test_failed_recovery_can_be_pressed_again(client, monkeypatch):

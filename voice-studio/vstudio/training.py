@@ -624,13 +624,17 @@ def _download_and_install(ctx: jobs.JobContext, tid: str, partial: bool = False,
     def shown(f: float) -> None:  # "下載模型 37%（8.9 / 24.0 GB，12 MB/s）"
         if first["f"] is None:
             first.update(f=f, t=time.time())  # parts already down from an earlier try do not count toward the speed
+        first["now"] = f
         dt = time.time() - first["t"]
         rate = (f - first["f"]) * size / dt if size and dt >= 5 else 0
         amount = f"（{f * size / 1e9:.1f} / {size / 1e9:.1f} GB{f'，{rate / 1e6:.1f} MB/s' if rate else ''}）" if size else ""
         ctx.progress(lo + (hi - lo) * f, f"下載模型 {f * 100:.0f}%{amount}")
-    ctx.progress(lo, f"下載模型（{size / 1e9:.1f} GB）" if size else "下載模型")
+
+    def busy(text: str) -> None:  # a piece is being asked for again: say why, keep the bar where it is
+        ctx.progress(lo + (hi - lo) * (first.get("now") or 0), f"下載模型：{text}")
+    ctx.progress(lo, f"下載模型（{size / 1e9:.1f} GB），等 RunPod 開始傳…" if size else "下載模型，等 RunPod 開始傳…")
     try:  # resumable: what came down stays in the work folder, and "recover model" continues from there
-        runpod.fetch(objs, ident, tar_local, progress=shown, loc=loc, check=ctx.check)
+        runpod.fetch(objs, ident, tar_local, progress=shown, loc=loc, check=ctx.check, note=busy, log=ctx.log)
     except jobs.Cancelled:
         raise
     except Exception as e:
