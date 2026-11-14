@@ -12,7 +12,11 @@ Keys are read from the OS credential store; they are never written to disk or lo
 from __future__ import annotations
 
 import json
+import os
 import re
+import threading
+import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 import httpx
@@ -286,17 +290,76 @@ def get_text(key: str, tail: int = 20000, loc: dict | None = None) -> str:
         return ""
 
 
-def download(key: str, local: Path, progress=None, loc: dict | None = None) -> Path:
-    c = s3(loc)
-    size = c.head_object(Bucket=bucket(loc), Key=key)["ContentLength"]
-    done = [0]
+DL_PART = 64 << 20  # bytes per ranged GET
+DL_WORKERS = 4      # parts in flight at once
+DL_TRIES = 6        # attempts per part, waiting 2, 4, 8, 16, 32 s in between
+DL_ROUNDS = 4       # passes over the missing parts; a pass that adds nothing stops (the network is down)
 
-    def cb(n):
-        done[0] += n
-        if progress:
-            progress(done[0] / max(1, size))
+
+def download(key: str, local: Path, progress=None, loc: dict | None = None) -> Path:
+    """Download in ranged parts into <local>.part, recording each finished part in <local>.part.json, so a stalled
+    connection, a failed run or a later "recover model" continues where it stopped instead of fetching the whole
+    file again (a full fine-tune's model.tar is about 24 GB). Each part is retried with backoff; the file is moved
+    into place only when every part is there."""
+    c, b = s3(loc), bucket(loc)
+    head = c.head_object(Bucket=b, Key=key)
+    size, etag = int(head["ContentLength"]), str(head.get("ETag") or "")
     local.parent.mkdir(parents=True, exist_ok=True)
-    c.download_file(bucket(loc), key, str(local), Callback=cb)
+    if size == 0:
+        local.write_bytes(b"")
+        return local
+    part, state_f = local.with_name(local.name + ".part"), local.with_name(local.name + ".part.json")
+    try:
+        state = json.loads(state_f.read_text(encoding="utf-8"))
+    except Exception:
+        state = {}
+    if (state.get("size"), state.get("etag"), state.get("part")) != (size, etag, DL_PART) or not part.exists() \
+            or part.stat().st_size != size:  # another file, or nothing usable yet: start over
+        with open(part, "wb") as f:
+            f.truncate(size)
+        state = {"size": size, "etag": etag, "part": DL_PART, "done": []}
+    n = -(-size // DL_PART)
+    done, lock = set(state["done"]), threading.Lock()
+
+    def fetch(f, i: int) -> None:
+        a = i * DL_PART
+        e = min(size, a + DL_PART) - 1
+        for t in range(DL_TRIES):
+            try:
+                data = c.get_object(Bucket=b, Key=key, Range=f"bytes={a}-{e}")["Body"].read()
+                if len(data) != e - a + 1:
+                    raise OSError(f"short read: {len(data)} of {e - a + 1} bytes")
+                with lock:
+                    f.seek(a)
+                    f.write(data)
+                    f.flush()
+                    done.add(i)
+                    state_f.write_text(json.dumps({**state, "done": sorted(done)}), encoding="utf-8")
+                    if progress:
+                        progress(len(done) / n)
+                return
+            except Exception:
+                if t == DL_TRIES - 1:
+                    raise
+                time.sleep(2 ** (t + 1))
+
+    err = None
+    for _ in range(DL_ROUNDS):
+        todo = [i for i in range(n) if i not in done]
+        if not todo:
+            break
+        before = len(done)
+        with open(part, "r+b") as f, ThreadPoolExecutor(DL_WORKERS) as ex:
+            errors = [x for x in (fu.exception() for fu in [ex.submit(fetch, f, i) for i in todo]) if x]
+        if not errors:
+            break
+        err = errors[0]
+        if len(done) == before:
+            break
+    if len(done) < n:
+        raise RunPodError(f"下載中斷（已完成 {len(done) * 100 // n}%）：{str(err)[:200]}") from err
+    os.replace(part, local)
+    state_f.unlink(missing_ok=True)
     return local
 
 

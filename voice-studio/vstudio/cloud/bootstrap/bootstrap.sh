@@ -31,6 +31,9 @@ finish() {
   until timeout 30s runpodctl remove pod "${RUNPOD_POD_ID:?}"; do
     n=$((n + 1))
     echo "[vs] pod removal failed (attempt $n); retrying"
+    # whether RunPod gave this pod its own key at all (never the key itself); Voice Studio removes the pod anyway
+    # when it sees the run end, and its reaper does when it is next opened
+    [ "$n" = 1 ] && echo "[vs] RUNPOD_API_KEY $([ -n "${RUNPOD_API_KEY:-}" ] && echo "present (${#RUNPOD_API_KEY} chars)" || echo missing); runpodctl $(runpodctl version 2>/dev/null | head -1)"
     # after ~10 minutes of failed deletes, stop the pod: that ends GPU billing, but also this loop, so from then on
     # the studio's reaper (every 5 minutes while it is open) deletes the stopped pod
     [ "$n" = 10 ] && timeout 30s runpodctl stop pod "${RUNPOD_POD_ID}"

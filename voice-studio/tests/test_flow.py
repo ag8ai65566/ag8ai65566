@@ -576,6 +576,71 @@ def test_delete_voice_with_everything_under_it(client, tmp_path, monkeypatch):
     assert db.get("presets", "pr1")["model_id"] is None
 
 
+def test_model_download_resumes_after_the_network_drops(tmp_path, monkeypatch):
+    """A full fine-tune's model.tar is ~24 GB: a stall is retried part by part, and when the network is gone the
+    parts already down are kept, so the next try (or "recover model") only fetches the rest."""
+    import io
+    import json
+    from vstudio.cloud import runpod
+    data = os.urandom(10_000)
+    monkeypatch.setattr(runpod, "DL_PART", 1000)
+    monkeypatch.setattr(runpod.time, "sleep", lambda s: None)
+    calls, net = [], {"down_from": 6, "stall_once": {2}, "short_once": {3}}
+
+    class Client:
+        def head_object(self, Bucket, Key):
+            return {"ContentLength": len(data), "ETag": '"e1"'}
+
+        def get_object(self, Bucket, Key, Range):
+            a, e = (int(x) for x in Range[len("bytes="):].split("-"))
+            i = a // 1000
+            calls.append(i)
+            if net["down_from"] is not None and i >= net["down_from"]:
+                raise OSError("Read timeout on endpoint URL")
+            if i in net["stall_once"]:
+                net["stall_once"].discard(i)
+                raise OSError("Read timeout on endpoint URL")
+            if i in net["short_once"]:
+                net["short_once"].discard(i)
+                return {"Body": io.BytesIO(data[a:e])}                   # one byte missing: caught and fetched again
+            return {"Body": io.BytesIO(data[a:e + 1])}
+    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False: Client())
+    monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
+    out = tmp_path / "model.tar"
+    with pytest.raises(runpod.RunPodError, match="下載中斷（已完成 60%）"):
+        runpod.download("vs/jobs/tr_1/model.tar", out)
+    assert not out.exists() and json.loads((tmp_path / "model.tar.part.json").read_text())["done"] == [0, 1, 2, 3, 4, 5]
+    net["down_from"], seen = None, []
+    calls.clear()
+    runpod.download("vs/jobs/tr_1/model.tar", out, progress=seen.append)        # the network is back
+    assert sorted(calls) == [6, 7, 8, 9] and out.read_bytes() == data and seen[-1] == 1.0
+    assert not (tmp_path / "model.tar.part").exists() and not (tmp_path / "model.tar.part.json").exists()
+
+
+def test_failed_recovery_can_be_pressed_again(client, monkeypatch):
+    """"Recover model" checks the disk first; when its download fails, the run goes back to failed (not stuck in
+    downloading), its card shows that job's message, and the button can be pressed again."""
+    from vstudio import db, training
+    from vstudio.cloud import runpod
+    c = client
+    v = _consented_voice(c)
+    db.insert("trainings", {"id": "tr_00ee", "voice_id": v["id"], "dataset_id": "dsX", "engine": "voxcpm2",
+                            "preset": {"id": "full", "name": "Kronii"}, "target": "runpod", "status": "failed",
+                            "remote_prefix": "vs/jobs/tr_00ee", "storage": {"volume": "vol1", "datacenter": "US-CA-2"},
+                            "progress": {}, "created_at": db.now()})
+    monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: key.endswith("model.tar"))
+    monkeypatch.setattr(runpod, "size", lambda key, loc=None: 24 * 10 ** 9)
+    monkeypatch.setattr(training.shutil, "disk_usage", lambda p: type("U", (), {"free": 20 * 10 ** 9})())
+    pulled = []
+    monkeypatch.setattr(runpod, "download", lambda *a, **kw: pulled.append(a))
+    job = c.post("/api/training/tr_00ee/recover").json()
+    assert _wait(c, job["id"])["status"] == "failed" and not pulled                # nothing downloaded into a full disk
+    t = db.get("trainings", "tr_00ee")
+    assert t["status"] == "failed" and t["job_id"] == job["id"]
+    assert "磁碟空間不夠" in db.get("jobs", job["id"])["message"] and "救回模型" in db.get("jobs", job["id"])["message"]
+    assert c.post("/api/training/tr_00ee/recover").status_code == 200                # can be pressed again
+
+
 def test_cloud_run_folder_delete_stays_inside_the_run(monkeypatch):
     """Only one run's folder is ever deleted on the network volume, never the shared environments next to it."""
     from vstudio.cloud import runpod

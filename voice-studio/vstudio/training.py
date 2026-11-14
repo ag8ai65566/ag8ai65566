@@ -593,8 +593,22 @@ def _download_and_install(ctx: jobs.JobContext, tid: str, partial: bool = False,
     work.mkdir(parents=True, exist_ok=True)
     _set(tid, status="downloading")
     tar_local = work / "model.tar"
-    runpod.download(f"{prefix}/model.tar", tar_local, loc=loc,
-                    progress=lambda f: ctx.progress(0.86 + 0.1 * f, f"下載模型 {f * 100:.0f}%"))
+    try:  # the archive and its unpacked copy both land on this drive: say so now, not after hours of downloading
+        size = runpod.size(f"{prefix}/model.tar", loc)
+        part = tar_local.with_name("model.tar.part")
+        need = (0 if part.exists() and part.stat().st_size == size else size) + int(size * 1.1)
+        free = shutil.disk_usage(work).free
+    except Exception:
+        need = free = 0
+    if need and free < need:
+        raise RuntimeError(f"電腦的磁碟空間不夠：模型檔約 {size / 1e9:.1f} GB，下載加解開還需要約 {need / 1e9:.1f} GB，"
+                           f"{work.anchor or '這個磁碟'} 只剩 {free / 1e9:.1f} GB。模型還在雲端，清出空間後按「救回模型」。")
+    try:  # resumable: what came down stays in the work folder, and "recover model" continues from there
+        runpod.download(f"{prefix}/model.tar", tar_local, loc=loc,
+                        progress=lambda f: ctx.progress(0.86 + 0.1 * f, f"下載模型 {f * 100:.0f}%"))
+    except Exception as e:
+        raise RuntimeError(f"模型已經訓練好，存在雲端網路磁碟上，只是下載回來時中斷了（{str(e)[:160]}）。"
+                           "按「救回模型」會從中斷的地方接著下載，不用重新訓練。") from e
     samples_local = None
     try:
         if runpod.exists(f"{prefix}/samples.tar", loc):
@@ -624,7 +638,12 @@ def recover_model(ctx: jobs.JobContext) -> dict:
     tr = db.get("trainings", tid)
     if not runpod.exists(f"{tr['remote_prefix']}/model.tar", _loc(tr)):
         raise RuntimeError("雲端沒有這次訓練的模型檔（訓練沒有完成到存檔那一步）。")
-    m = _download_and_install(ctx, tid, partial=True, note="訓練沒有正常結束，但權重已經救回。")
+    try:
+        m = _download_and_install(ctx, tid, partial=True, note="訓練沒有正常結束，但權重已經救回。")
+    except BaseException:  # back to "failed", so "recover model" can be pressed again (and continues the download)
+        if (db.get("trainings", tid) or {}).get("status") == "downloading":
+            _set(tid, status="failed", finished_at=db.now())
+        raise
     return {"model_id": m["id"], "message": "已救回模型"}
 
 

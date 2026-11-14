@@ -126,7 +126,9 @@ def training_recover(tid: str):
         job = jobs.submit("colab_install", {"training_id": tid, "partial": True}, "從雲端硬碟取回模型")
         training._set(tid, status="downloading", job_id=job["id"])
         return job
-    return jobs.submit("recover_model", {"training_id": tid}, "救回模型")
+    job = jobs.submit("recover_model", {"training_id": tid}, "救回模型")
+    training._set(tid, job_id=job["id"])  # the card follows this job: its progress, and its error if it fails
+    return job
 
 
 @router.post("/cloud/reap")

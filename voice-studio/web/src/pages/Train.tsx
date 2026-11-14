@@ -406,6 +406,8 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
         <div className="mt-3">
           <div className="mb-1 flex justify-between text-xs text-zinc-500"><span>{t.job.message}</span><span>{Math.round(t.job.progress * 100)}%</span></div>
           <Progress value={t.job.progress} />
+          {!isColab && <p className="mt-1 text-xs text-zinc-500">訓練時請讓 Voice Studio 開著：結束時由它確認雲端機器已經關機，再把模型下載回來。
+            關掉的話，下次打開會接著處理，但在那之前雲端機器可能還在計費。</p>}
         </div>
       )}
       <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-zinc-500">
