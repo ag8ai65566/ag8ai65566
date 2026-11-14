@@ -1061,6 +1061,20 @@ def test_speech_recognition_leaves_the_gpu_before_a_tts_model_loads(client):
     assert not asr._models and job                                                   # scoring gave the GPU back
 
 
+def test_full_video_memory_is_said_after_a_line(client, monkeypatch):
+    """A card left with too little free memory makes Windows spill into system memory (8.6 s per step on a 3080):
+    each line reports who holds the card, and the page warns when it is nearly full."""
+    from vstudio import tts
+    full = {"total": 10.0, "free": 0.3, "studio": 7.6, "others": 2.1}
+    w = tts.vram_warning(full)
+    assert "只剩 0.3 GB" in w and "語音模型用了 7.6 GB" in w and "其他程式用了 2.1 GB" in w and "硬體加速" in w
+    assert tts.vram_warning({**full, "free": 1.5}) == "" and tts.vram_warning(None) == ""
+    m = client.post("/api/models/demo").json()
+    monkeypatch.setattr(tts, "gpu_memory", lambda: full)
+    r = client.post("/api/tts", json={"model_id": m["id"], "text": "テストです", "takes": 1, "screen": False}).json()
+    assert r["outputs"] and r["warning"] == w and r["gpu"] == full
+
+
 def test_cloud_run_folder_delete_stays_inside_the_run(monkeypatch):
     """Only one run's folder is ever deleted on the network volume, never the shared environments next to it."""
     from vstudio.cloud import runpod

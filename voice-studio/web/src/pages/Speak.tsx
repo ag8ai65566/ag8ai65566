@@ -33,6 +33,7 @@ export default function Speak() {
   const [emotion, setEmotion] = useState("");
   const [usePhrases, setUsePhrases] = useState(true);
   const [result, setResult] = useState<Output[]>([]);
+  const [warning, setWarning] = useState("");
   const player = usePlayer();
   useEffect(() => {
     if (!model) return;
@@ -66,11 +67,11 @@ export default function Speak() {
   }, [presetId]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const gen = useMutation({
-    mutationFn: () => api.post<{ outputs: Output[] }>("/api/tts", {
+    mutationFn: () => api.post<{ outputs: Output[]; warning?: string }>("/api/tts", {
       model_id: modelId, text, language, style: mode === "hifi" ? "" : style, takes, screen, mode,
       ref_id: refId || null, seed: seed ? Number(seed) : null, emotion: emotion || null, phrases: usePhrases,
     }),
-    onSuccess: (r) => { setResult(r.outputs); qc.invalidateQueries({ queryKey: ["outputs", modelId] }); },
+    onSuccess: (r) => { setResult(r.outputs); setWarning(r.warning ?? ""); qc.invalidateQueries({ queryKey: ["outputs", modelId] }); },
   });
   const unload = useMutation({ mutationFn: () => api.post("/api/tts/unload") });
   const refs = model?.meta.references ?? [];
@@ -187,6 +188,7 @@ export default function Speak() {
               <Mic2 className="size-4" />{gen.isPending ? "合成中…（第一次要載入模型，約 30 秒）" : "產生語音"}
             </Button>
             <ErrorText error={gen.error} />
+            {warning && <p className="rounded-lg border border-amber-200 bg-amber-50 p-3 text-sm text-amber-800 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-200">{warning}</p>}
             {result.length > 0 && (
               <div className="space-y-3 border-t border-zinc-100 pt-4 dark:border-zinc-800">
                 {result.map((o, i) => <Take key={o.id} o={o} index={i} />)}

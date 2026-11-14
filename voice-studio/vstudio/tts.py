@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 import threading
 from pathlib import Path
 
@@ -86,6 +87,34 @@ def apply_lexicon(text: str, lang: str | None) -> str:
     for e in sorted(entries, key=lambda e: -len(e["from"])):
         text = text.replace(e["from"], e["to"])
     return text
+
+
+VRAM_HEADROOM_GB = 0.8  # less free video memory than this after a line: Windows is about to spill (or has spilled)
+
+
+def gpu_memory() -> dict | None:
+    """The card's memory: total, free, what Voice Studio's models hold (PyTorch's reservations) and what the rest of
+    the computer holds (the desktop, the browser, games, OBS …), in GB."""
+    try:
+        import torch
+        if not torch.cuda.is_available():
+            return None
+        free, total = torch.cuda.mem_get_info()
+        mine, g = torch.cuda.memory_reserved(), 2 ** 30
+        return {"total": round(total / g, 1), "free": round(free / g, 1), "studio": round(mine / g, 1),
+                "others": round(max(0, total - free - mine) / g, 1)}
+    except Exception:
+        return None
+
+
+def vram_warning(mem: dict | None) -> str:
+    """When the card is (nearly) full, Windows quietly moves the overflow into system memory and synthesis becomes
+    tens to hundreds of times slower, with no error: say so, with who holds what."""
+    if not mem or mem["free"] >= VRAM_HEADROOM_GB:
+        return ""
+    return (f"顯示卡記憶體快滿了（{mem['total']:.0f} GB 只剩 {mem['free']:.1f} GB）：語音模型用了 {mem['studio']:.1f} GB，"
+            f"電腦上其他程式用了 {mem['others']:.1f} GB。不夠時 Windows 會改用一般記憶體，合成會慢幾十到幾百倍。"
+            "請關掉遊戲、OBS、Discord 等程式，或關掉瀏覽器的「硬體加速」，再合成一次。")
 
 
 def gpu_total_gb() -> float | None:
@@ -261,7 +290,12 @@ def _generate(model_id, text, language, style, takes, seed, screen, batch, mode,
     elif outs:
         outs[0]["score"]["best"] = True
         db.update("outputs", outs[0]["id"], {"score": outs[0]["score"]})
-    return {"outputs": outs, "mode": mode, "language": lang, "emotion": emotion}
+    mem = gpu_memory()
+    if mem:  # the black window shows who holds the card, line by line
+        print(f"[vs] 顯示卡記憶體：共 {mem['total']} GB，語音模型 {mem['studio']} GB，其他程式 {mem['others']} GB，"
+              f"剩 {mem['free']} GB", file=sys.stderr, flush=True)
+    return {"outputs": outs, "mode": mode, "language": lang, "emotion": emotion, "gpu": mem,
+            "warning": vram_warning(mem)}
 
 
 CONTINUE_MAX_S = 15.0  # longest recording the next words continue from (see _spliced)
