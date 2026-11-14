@@ -957,6 +957,59 @@ def test_split_and_recover_on_runpod(client, tmp_path, monkeypatch):
     assert t["status"] == "failed" and "podT" in removed and "再按一次" in t["note"]
 
 
+def test_discard_frees_the_volume_and_the_pod_checks_room_first(client, tmp_path, monkeypatch):
+    """Not recovering a run: its model (one file or parts), samples and dataset leave the network volume, so the next
+    run has room; the card is told. The pod checks the volume has room for the model before it trains."""
+    import importlib.util
+    import json
+    from vstudio import db
+    from vstudio.cloud import runpod
+    c = client
+    v = _consented_voice(c)
+    run = tmp_path / "vol" / "vs" / "jobs" / "tr_00ef"
+    run.mkdir(parents=True)
+    for name, size in (("model.tar", 3000), ("samples.tar", 10), ("dataset.tar", 20), ("train.log", 5)):
+        (run / name).write_bytes(b"x" * size)
+    (run / "samples.tar.p0000").write_bytes(b"y")                              # an archive in parts as well
+    (run / "samples.tar.json").write_text(json.dumps({"parts": [{"key": "samples.tar.p0000", "size": 1}]}))
+    db.insert("trainings", {"id": "tr_00ef", "voice_id": v["id"], "dataset_id": "dsX", "engine": "voxcpm2",
+                            "preset": {"id": "full", "name": "Kronii"}, "target": "runpod", "status": "failed",
+                            "remote_prefix": "vs/jobs/tr_00ef", "storage": {"volume": "vol1", "datacenter": "US-CA-2"},
+                            "progress": {}, "created_at": db.now()})
+
+    class Volume:
+        def get_object(self, Bucket, Key, Range=None):
+            import io
+            from botocore.exceptions import ClientError
+            p = tmp_path / "vol" / Key
+            if not p.exists():
+                raise ClientError({"Error": {"Code": "NoSuchKey"}}, "GetObject")
+            return {"Body": io.BytesIO(p.read_bytes())}
+
+        def delete_object(self, Bucket, Key):
+            (tmp_path / "vol" / Key).unlink(missing_ok=True)
+    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None, read_timeout=None: Volume())
+    monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
+    r = c.post("/api/training/tr_00ef/discard")
+    assert r.status_code == 200, r.text
+    assert sorted(p.name for p in run.iterdir()) == ["train.log"]                  # the log stays, for the record
+    t = next(x for x in c.get("/api/training").json() if x["id"] == "tr_00ef")
+    assert t["discarded"] and "已刪除" in t["note"]
+    db.insert("models", {"id": "mdl_ef", "voice_id": v["id"], "engine": "voxcpm2", "name": "K", "training_id": "tr_00ef",
+                         "path": str(tmp_path / "m"), "created_at": db.now()})
+    assert c.post("/api/training/tr_00ef/discard").status_code == 400              # a recovered model: nothing to give up
+
+    path = Path(__file__).resolve().parents[1] / "vstudio" / "engines" / "remote" / "vs_common.py"
+    spec = importlib.util.spec_from_file_location("vs_common_under_test", path)
+    vs = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(vs)
+    job = type("J", (), {"dir": tmp_path})()
+    monkeypatch.setattr(vs, "free_gb", lambda p="/root": 20.0)
+    with pytest.raises(RuntimeError, match="網路磁碟空間不夠：只剩 20 GB，訓練完存模型需要約 32 GB"):
+        vs.volume_room(job, 32)                                                    # a full fine-tune's model: before training
+    vs.volume_room(job, 3)                                                         # a LoRA's fits
+
+
 def test_cloud_run_folder_delete_stays_inside_the_run(monkeypatch):
     """Only one run's folder is ever deleted on the network volume, never the shared environments next to it."""
     from vstudio.cloud import runpod

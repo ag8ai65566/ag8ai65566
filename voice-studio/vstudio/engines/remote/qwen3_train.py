@@ -22,7 +22,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from vs_common import LANG_NAMES, Job, log, need_disk, resolved_revision, sample_plan  # noqa: E402
+from vs_common import LANG_NAMES, Job, log, need_disk, resolved_revision, sample_plan, volume_room  # noqa: E402
 
 SRC = Path(os.environ.get("VS_SRC", "/workspace/vs/src/qwen3"))
 BASE = "Qwen/Qwen3-TTS-12Hz-1.7B-Base"
@@ -56,6 +56,7 @@ def main() -> None:
     log(f"base {BASE}@{resolved_revision(base_path)} tokenizer @{resolved_revision(tok_path)} attention {attn}")
     keep_n = int(p.get("keep", 2))
     need_disk(20 + 5 * (int(p.get("epochs", 3)) + keep_n))
+    volume_room(job, 5 * keep_n + 2)
 
     plan = sample_plan(job)
     ref = plan.get("reference") or {}

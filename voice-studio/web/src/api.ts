@@ -114,7 +114,7 @@ export type Training = {
   progress: TrainProgress; cost_estimate: number; created_at: number; finished_at: number | null;
   preset: { id: string; name?: string; params?: Record<string, unknown> };
   job: { status: string; progress: number; message: string } | null; job_id?: string; log?: string;
-  note?: string; pod_state?: string | null; cost_per_hr?: number | null; can_retry_gpu?: boolean;
+  note?: string; pod_state?: string | null; cost_per_hr?: number | null; can_retry_gpu?: boolean; discarded?: boolean;
   storage?: { datacenter?: string };
   wait?: { // auto-grab: waiting (renting nothing) until one of these cards is in stock
     gpus?: string[]; since?: number; until?: number; checks?: number; last?: number; misses?: number;

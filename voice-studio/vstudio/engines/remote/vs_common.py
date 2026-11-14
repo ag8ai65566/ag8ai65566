@@ -173,6 +173,16 @@ def need_disk(gb: float, path: str = "/root") -> None:
         raise RuntimeError(f"not enough disk on {path}: {have:.0f} GB free, about {gb:.0f} GB needed")
 
 
+def volume_room(job: "Job", gb: float) -> None:
+    """The trained model is packed onto the network volume at the end: check now (before paying for the training)
+    that it fits, so a full volume does not lose a finished model with the pod's disk."""
+    have = free_gb(str(job.dir))
+    log(f"network volume: {have:.0f} GB free, the model needs about {gb:.0f} GB")
+    if have < gb:
+        raise RuntimeError(f"網路磁碟空間不夠：只剩 {have:.0f} GB，訓練完存模型需要約 {gb:.0f} GB。"
+                           "請先刪掉舊訓練的雲端檔案（訓練卡片上的「刪除雲端檔案」），或到 RunPod 加大網路磁碟，再訓練。")
+
+
 def resolved_revision(snapshot_path: str) -> str:
     """huggingface_hub snapshot folders are named after the commit, so the exact base weights can be re-fetched."""
     return Path(snapshot_path).name

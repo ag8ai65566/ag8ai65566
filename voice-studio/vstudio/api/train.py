@@ -145,6 +145,19 @@ def training_split(tid: str):
         raise HTTPException(400, str(e))
 
 
+@router.post("/training/{tid}/discard")
+def training_discard(tid: str):
+    """Not recovering this run: free the network volume of its model and data."""
+    try:
+        return training.discard_cloud(tid)
+    except KeyError:
+        raise HTTPException(404)
+    except ValueError as e:
+        raise HTTPException(400, str(e))
+    except RuntimeError as e:
+        raise HTTPException(502, str(e))
+
+
 @router.post("/cloud/reap")
 def cloud_reap():
     """Retry failed pod removals and list studio pods that no running training owns."""
@@ -167,6 +180,7 @@ def training_list():
         j = db.get("jobs", t["job_id"]) if t.get("job_id") else None
         t["job"] = {k: j[k] for k in ("status", "progress", "message")} if j else None
         t["can_retry_gpu"] = training.can_retry_gpu(t)
+        t["discarded"] = bool((t.get("storage") or {}).get("discarded"))
         if t.get("target") == "colab" and t["status"] in ("waiting", "running"):
             p = t.get("progress") or {}
             t["phase"] = {"label": training._phase_label(p) if p.get("phase") else

@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from vs_common import Job, LogTail, log, need_disk, parse_metrics, resolved_revision, sample_plan  # noqa: E402
+from vs_common import Job, LogTail, log, need_disk, parse_metrics, resolved_revision, sample_plan, volume_room  # noqa: E402,E501
 
 SRC = Path(os.environ.get("VS_SRC", "/workspace/vs/src/voxcpm2"))
 BASE = "openbmb/VoxCPM2"
@@ -85,6 +85,7 @@ def main() -> None:
     save_every = max(10, math.ceil(total / n_saves))
     # full fine-tuning: each checkpoint ~8 GB of weights, plus optimizer state in `latest` and the archive copy
     need_disk(25 if mode == "lora" else 9 * (n_saves + 2) + 30)
+    volume_room(job, 3 if mode == "lora" else 10 * int(p.get("keep_full", 3)) + 2)
     ckpt = job.work / "ckpt"
     conf = {
         "pretrained_path": base_path,
