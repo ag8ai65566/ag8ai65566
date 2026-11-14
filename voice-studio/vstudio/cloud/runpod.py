@@ -485,9 +485,10 @@ def fetch(objs: list[dict], ident: str, local: Path, progress=None, loc: dict | 
                     why = f"{type(x).__name__}: {str(x)[:160]}"
                     if log:
                         log(f"piece {i + 1}/{n} try {t + 1} failed after {len(buf)} bytes: {why}")
-                    if note:
-                        call(note, f"雲端這段還沒傳過來，重試中（已經 {int(quiet) // 60} 分 {int(quiet) % 60:02d} 秒沒收到資料，"
-                             f"第 {got['fails']} 次重試：{why[:80]}）。RunPod 第一次讀大檔案時可能要等幾分鐘。")
+                    if note:  # where it stands, which piece, and why: enough to tell what is wrong from the card
+                        call(note, f"已完成 {len(done)} / {n} 段（最後完成的是第 {max(done) + 1 if done else 0} 段）；"
+                             f"第 {i + 1} 段重試中，已經 {int(quiet) // 60} 分 {int(quiet) % 60:02d} 秒沒收到資料，"
+                             f"共重試 {got['fails']} 次：{why[:80]}")
                 if quiet >= DL_STALL_S:
                     raise
             pause = min(DL_BACKOFF_MAX_S, DL_BACKOFF_S * 2 ** t)

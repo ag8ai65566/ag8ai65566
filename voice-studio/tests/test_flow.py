@@ -616,6 +616,7 @@ def test_model_download_resumes_after_the_network_drops(tmp_path, monkeypatch):
                      log=logs.append)
     assert not out.exists() and json.loads((tmp_path / "model.tar.part.json").read_text())["done"] == [0, 1, 2, 3, 4, 5]
     assert any("重試中" in x and "Read timeout" in x for x in notes) and any("piece 7/10" in x for x in logs)
+    assert any("已完成 6 / 10 段" in x and "第 7 段重試中" in x for x in notes)       # the card tells where it stands
     net["down_from"], seen = None, []
     calls.clear()
     monkeypatch.setattr(runpod, "DL_CHUNK", 100)           # progress follows the bytes, not only whole pieces
