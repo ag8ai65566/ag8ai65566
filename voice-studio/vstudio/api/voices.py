@@ -7,7 +7,7 @@ from pathlib import Path
 from fastapi import APIRouter, File, Form, HTTPException, UploadFile
 from pydantic import BaseModel
 
-from .. import audio, config, datasets, db, jobs
+from .. import audio, config, datasets, db, jobs, voice_delete
 
 router = APIRouter(prefix="/api/voices", tags=["voices"])
 
@@ -65,15 +65,24 @@ def update_voice(voice_id: str, body: dict):
     return _stats(db.update("voices", voice_id, allowed))
 
 
+@router.get("/{voice_id}/delete-plan")
+def delete_plan(voice_id: str):
+    """What deleting the voice would remove, and what still blocks it."""
+    try:
+        return voice_delete.plan(voice_id)
+    except KeyError:
+        raise HTTPException(404)
+
+
 @router.delete("/{voice_id}")
 def delete_voice(voice_id: str):
-    with db.tx() as c:
-        c.execute("UPDATE segments SET voice_id=NULL WHERE voice_id=?", (voice_id,))
-        c.execute("DELETE FROM catchphrases WHERE voice_id=?", (voice_id,))  # their recordings live in the folder below
-        c.execute("DELETE FROM sound_finds WHERE voice_id=?", (voice_id,))
-    shutil.rmtree(config.DATA / "voices" / voice_id, ignore_errors=True)
-    db.delete("voices", voice_id)
-    return {"ok": True}
+    """The voice and everything recorded or made from it (see voice_delete); 409 while something still uses it."""
+    if not db.get("voices", voice_id):
+        raise HTTPException(404)
+    try:
+        return voice_delete.remove(voice_id)
+    except voice_delete.Blocked as e:
+        raise HTTPException(409, str(e))
 
 
 @router.post("/{voice_id}/consent")

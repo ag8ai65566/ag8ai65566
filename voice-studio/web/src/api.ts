@@ -58,6 +58,14 @@ export type Voice = {
   stats: Record<string, { count: number; minutes: number }>;
   emotions?: Record<string, number>;   // approved minutes per emotion label ("" = unlabelled)
 };
+export type VoiceDeletePlan = {
+  voice: { id: string; name: string };
+  counts: { recordings: number; shared_recordings: number; segments: number; minutes: number; phrases: number;
+    sounds: number; datasets: number; trainings: number; models: number; outputs: number; performances: number;
+    cloud_runpod: number; cloud_colab: number };
+  blockers: string[];   // a training or job still using the voice: deleting is refused until they stop
+};
+export type VoiceDeleted = { ok: boolean; deleted: VoiceDeletePlan["counts"]; left: string[] };
 export type Source = {
   id: string; filename: string; path: string; duration: number | null; status: string;
   voice_hint: string | null; language: string | null; segments: number; created_at: number; emotion?: string | null;

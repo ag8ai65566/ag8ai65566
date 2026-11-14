@@ -475,6 +475,127 @@ def _seg(db, vid, sid, text, d, seconds=6.0, amp=0.3, **kw):
     return db.insert("segments", {**row, **kw})
 
 
+def test_delete_voice_with_everything_under_it(client, tmp_path, monkeypatch):
+    """Deleting a voice removes it and all its audio: recordings, clips, catchphrases, sound tags, datasets,
+    trainings (also their cloud files), models, and speech made with them. Another voice's clips in a shared
+    recording, and files outside the studio, stay. A running training blocks it; leftovers in the cloud are listed."""
+    from vstudio import config, db
+    from vstudio.cloud import runpod
+    c = client
+    a, b = _consented_voice(c, "Nerissa"), _consented_voice(c, "Other")
+    outside = tmp_path / "交付總覽" / "original.wav"                    # a recording that was never copied in
+    outside.parent.mkdir()
+    _tone(outside, [(2.0, 0.3)])
+    db.insert("sources", {"id": "own", "filename": "own.wav", "path": str(outside), "status": "ready",
+                          "voice_hint": a["id"], "meta": {"copied": False}, "created_at": db.now()})
+    db.insert("sources", {"id": "shared", "filename": "collab.wav", "path": "collab.wav", "status": "ready",
+                          "created_at": db.now()})
+    segdir = config.DATA / "segments" / "own"
+    segdir.mkdir(parents=True)
+    own = _seg(db, a["id"], "sa1", "私のクリップ", segdir, source_id="own")
+    mine = _seg(db, a["id"], "sa2", "コラボの私", tmp_path, source_id="shared")
+    theirs = _seg(db, b["id"], "sb1", "コラボの相手", tmp_path, source_id="shared")
+    db.insert("sound_finds", {"id": "sf1", "voice_id": a["id"], "source_id": "shared", "start": 0.0, "end": 1.0,
+                              "kind": "laugh", "how": "scan", "created_at": db.now()})
+    ph = c.post(f"/api/voices/{a['id']}/phrases", json={"text": "やっほー", "lang": "ja"}).json()
+    ds_dir = config.DATA / "datasets" / "dsA"
+    ds_dir.mkdir(parents=True)
+    db.insert("datasets", {"id": "dsA", "voice_id": a["id"], "name": "v1", "n_items": 1, "hours": 0.1,
+                           "path": str(ds_dir), "created_at": db.now()})
+    m_dir = config.DATA / "models" / "mA"
+    m_dir.mkdir(parents=True)
+    db.insert("models", {"id": "mA", "voice_id": a["id"], "engine": "mock", "name": "A", "path": str(m_dir),
+                         "created_at": db.now()})
+    out_dir = config.DATA / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    made = {}
+    for oid, mid, batch in (("o1", "mA", "b1"), ("o2", "mA", "scene_x"), ("scene_x", None, "scene_x"),
+                            ("o3", None, "other")):
+        made[oid] = _tone(out_dir / f"{oid}.wav", [(1.0, 0.3)])
+        db.insert("outputs", {"id": oid, "model_id": mid, "text": "t", "path": str(made[oid]), "batch": batch,
+                              "created_at": db.now()})
+    (out_dir / "scene_x.json").write_text("[]", encoding="utf-8")
+    db.insert("performances", {"id": "pf1", "name": "p", "path": "x", "status": "done", "params": {"model_id": "mA"},
+                               "result": {}, "created_at": db.now()})
+    db.insert("presets", {"id": "pr1", "name": "Nerissa", "source": "novel-lab", "model_id": "mA", "data": {},
+                          "created_at": db.now()})
+    colab_root = tmp_path / "drive"
+    (colab_root / "VoiceStudio" / "jobs" / "tr_00c0").mkdir(parents=True)
+    for tid, target, prefix, storage in (("tr_00a1", "runpod", "vs/jobs/tr_00a1", {"volume": "vol1"}),
+                                         ("tr_00b2", "runpod", "vs/jobs/tr_00b2", {"volume": "vol1"}),
+                                         ("tr_00c0", "colab", "jobs/tr_00c0",
+                                          {"drive_root": str(colab_root), "folder": "VoiceStudio"})):
+        db.insert("trainings", {"id": tid, "voice_id": a["id"], "dataset_id": "dsA", "engine": "mock",
+                                "preset": {"id": "lora", "name": "第一次"}, "target": target, "status": "done",
+                                "remote_prefix": prefix, "storage": storage, "progress": {}, "created_at": db.now()})
+        (config.DATA / "jobs" / tid).mkdir(parents=True, exist_ok=True)
+    gone_cloud = []
+
+    def delete_run_folder(prefix, loc=None):
+        if prefix.endswith("tr_00b2"):
+            raise runpod.RunPodError("連不上網路磁碟")
+        gone_cloud.append(prefix)
+        return 3
+    monkeypatch.setattr(runpod, "delete_run_folder", delete_run_folder)
+
+    plan = c.get(f"/api/voices/{a['id']}/delete-plan").json()
+    n = plan["counts"]
+    assert (n["recordings"], n["shared_recordings"], n["segments"], n["phrases"], n["sounds"]) == (1, 1, 2, 1, 1)
+    assert (n["datasets"], n["models"], n["trainings"], n["cloud_runpod"], n["cloud_colab"]) == (1, 1, 3, 2, 1)
+    assert n["outputs"] == 3 and n["performances"] == 1 and not plan["blockers"]   # o1, o2 and the scene mix
+
+    job = db.insert("jobs", {"id": "job_imp", "kind": "import_delivery", "queue": "io", "status": "running",
+                             "message": "匯入交付資料夾", "params": {"voice_id": a["id"]}, "created_at": db.now()})
+    assert "匯入交付資料夾" in c.get(f"/api/voices/{a['id']}/delete-plan").json()["blockers"][0]
+    assert c.delete(f"/api/voices/{a['id']}").status_code == 409                # a job still uses it
+    db.update("jobs", job["id"], {"status": "done"})
+    db.update("trainings", "tr_00a1", {"status": "running"})                         # still training: refused
+    r = c.delete(f"/api/voices/{a['id']}")
+    assert r.status_code == 409 and "還在進行" in r.json()["detail"] and db.get("voices", a["id"])
+    db.update("trainings", "tr_00a1", {"status": "done"})
+
+    res = c.delete(f"/api/voices/{a['id']}").json()
+    assert res["ok"] and len(res["left"]) == 1 and "tr_00b2" in res["left"][0]     # the unreachable one is listed
+    assert gone_cloud == ["vs/jobs/tr_00a1"] and not (colab_root / "VoiceStudio" / "jobs" / "tr_00c0").exists()
+    assert db.get("voices", a["id"]) is None and not (config.DATA / "voices" / a["id"]).exists()
+    for table, i in (("segments", own["id"]), ("segments", mine["id"]), ("sources", "own"), ("sound_finds", "sf1"),
+                     ("catchphrases", ph["id"]), ("datasets", "dsA"), ("models", "mA"), ("trainings", "tr_00a1"),
+                     ("outputs", "o1"), ("outputs", "o2"), ("outputs", "scene_x"), ("performances", "pf1")):
+        assert db.get(table, i) is None, (table, i)
+    assert not Path(own["path"]).exists() and not Path(mine["path"]).exists()
+    assert not ds_dir.exists() and not m_dir.exists() and not made["o1"].exists() and not made["scene_x"].exists()
+    assert not (out_dir / "scene_x.json").exists() and not (config.DATA / "jobs" / "tr_00a1").exists()
+    # what stays: the other voice and its clip in the shared recording, an unrelated output, the outside original
+    assert db.get("voices", b["id"]) and db.get("segments", theirs["id"]) and Path(theirs["path"]).exists()
+    assert db.get("sources", "shared") and db.get("outputs", "o3") and made["o3"].exists() and outside.exists()
+    assert db.get("presets", "pr1")["model_id"] is None
+
+
+def test_cloud_run_folder_delete_stays_inside_the_run(monkeypatch):
+    """Only one run's folder is ever deleted on the network volume, never the shared environments next to it."""
+    from vstudio.cloud import runpod
+    keys = {"vs/jobs/tr_ab12/dataset.tar", "vs/jobs/tr_ab12/train.log", "vs/jobs/tr_ab123/model.tar",
+            "vs/envs/voxcpm2/bin/python", "vs/hf/model.bin"}
+
+    class Pages:
+        def paginate(self, Bucket, Prefix):
+            return [{"Contents": [{"Key": k} for k in sorted(keys) if k.startswith(Prefix)]}]
+
+    class Client:
+        def get_paginator(self, name):
+            return Pages()
+
+        def delete_object(self, Bucket, Key):
+            keys.discard(Key)
+    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False: Client())
+    monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
+    for bad in ("vs/envs", "vs/jobs", "vs/jobs/", "vs", "", "vs/jobs/tr_ab12/../../envs", "jobs/tr_ab12"):
+        with pytest.raises(runpod.RunPodError):
+            runpod.delete_run_folder(bad)
+    assert runpod.delete_run_folder("vs/jobs/tr_ab12/") == 2
+    assert keys == {"vs/jobs/tr_ab123/model.tar", "vs/envs/voxcpm2/bin/python", "vs/hf/model.bin"}
+
+
 def test_emotion_labels_flow(client, tmp_path):
     from vstudio import db
     c = client

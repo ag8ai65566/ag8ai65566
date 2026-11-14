@@ -12,6 +12,7 @@ Keys are read from the OS credential store; they are never written to disk or lo
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 import httpx
@@ -292,6 +293,24 @@ def download(key: str, local: Path, progress=None, loc: dict | None = None) -> P
     local.parent.mkdir(parents=True, exist_ok=True)
     c.download_file(bucket(loc), key, str(local), Callback=cb)
     return local
+
+
+RUN_FOLDER = re.compile(r"vs/jobs/tr_[0-9a-f]+")  # one training run's folder on the volume, nothing wider
+
+
+def delete_run_folder(prefix: str, loc: dict | None = None) -> int:
+    """Delete everything a training run left on the network volume (its dataset.tar, model.tar, samples, logs).
+    Only a run folder: the engine environments and model cache next to it are shared by every run. Returns how
+    many files were deleted."""
+    prefix = prefix.strip("/")
+    if not RUN_FOLDER.fullmatch(prefix):
+        raise RunPodError(f"不是一次訓練的資料夾：{prefix}")
+    c, b, n = s3(loc), bucket(loc), 0
+    for page in c.get_paginator("list_objects_v2").paginate(Bucket=b, Prefix=prefix + "/"):
+        for o in page.get("Contents") or []:
+            c.delete_object(Bucket=b, Key=o["Key"])  # one by one: the volume's S3 API may not offer batch delete
+            n += 1
+    return n
 
 
 def delete(key: str, loc: dict | None = None) -> None:

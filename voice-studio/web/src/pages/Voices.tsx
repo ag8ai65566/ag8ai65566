@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { FileCheck2, Plus, ShieldAlert, ShieldCheck, Trash2, Upload, UserRound } from "lucide-react";
-import { api, fmtMin, LANGS, type Dataset, type Model, type Voice } from "../api";
+import { api, fmtMin, LANGS, type Dataset, type Model, type Voice, type VoiceDeleted, type VoiceDeletePlan } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, Modal, PageHeader } from "../ui";
 import { PhrasesCard } from "./Phrases";
 import { SoundsCard } from "./Sounds";
@@ -108,17 +108,16 @@ function VoiceDetail({ voice }: { voice: Voice }) {
     mutationFn: (i: number) => api.del(`/api/voices/${voice.id}/enrollment/${i}`),
     onSuccess: () => qc.invalidateQueries({ queryKey: ["voices"] }),
   });
-  const del = useMutation({
-    mutationFn: () => api.del(`/api/voices/${voice.id}`),
-    onSuccess: () => { qc.invalidateQueries({ queryKey: ["voices"] }); nav("/voices"); },
-  });
+  const [deleting, setDeleting] = useState(false);
   const ds = useQuery({ queryKey: ["datasets", voice.id], queryFn: () => api.get<Dataset[]>(`/api/datasets?voice_id=${voice.id}`) });
   const models = useQuery({ queryKey: ["models", voice.id], queryFn: () => api.get<Model[]>(`/api/models?voice_id=${voice.id}`) });
   const needDoc = voice.kind === "other";
   return (
     <div className="space-y-6">
       <Card title={<span className="flex items-center gap-2">{voice.name} <Badge>{KIND[voice.kind]}</Badge></span>}
-        actions={<Button variant="ghost" size="sm" onClick={() => confirm(`刪除「${voice.name}」？片段會保留但不再屬於任何聲音。`) && del.mutate()}><Trash2 className="size-4" />刪除</Button>}>
+        actions={<Button variant="ghost" size="sm" onClick={() => setDeleting(true)}><Trash2 className="size-4" />刪除</Button>}>
+        {deleting && <DeleteVoice voice={voice} onClose={() => setDeleting(false)}
+          onDeleted={() => { qc.invalidateQueries(); nav("/voices"); }} />}
         <div className="grid gap-4 sm:grid-cols-3">
           {(["approved", "pending", "rejected"] as const).map((k) => (
             <div key={k} className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50">
@@ -192,5 +191,78 @@ function VoiceDetail({ voice }: { voice: Voice }) {
         </Card>
       </div>
     </div>
+  );
+}
+
+/** Deleting a voice with everything under it: what goes is listed first, and the name is typed to confirm. */
+function DeleteVoice({ voice, onClose, onDeleted }: { voice: Voice; onClose: () => void; onDeleted: () => void }) {
+  const [typed, setTyped] = useState("");
+  const [left, setLeft] = useState<string[] | null>(null);
+  const [gone, setGone] = useState(false);
+  const plan = useQuery({ queryKey: ["delete-plan", voice.id], enabled: !gone,  // not asked again once it is deleted
+    queryFn: () => api.get<VoiceDeletePlan>(`/api/voices/${voice.id}/delete-plan`) });
+  const del = useMutation({
+    mutationFn: () => api.del<VoiceDeleted>(`/api/voices/${voice.id}`),
+    onSuccess: (r) => { setGone(true); if (r.left.length) setLeft(r.left); else onDeleted(); },
+  });
+  if (left) {
+    return (
+      <Modal open title={`已刪除「${voice.name}」`} onClose={onDeleted}>
+        <p className="text-sm">電腦上的資料都刪掉了，但雲端上有 {left.length} 份訓練檔案沒刪到，請到那裡手動刪除：</p>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-red-600">{left.map((x) => <li key={x}>{x}</li>)}</ul>
+        <div className="mt-4 flex justify-end"><Button onClick={onDeleted}>知道了</Button></div>
+      </Modal>
+    );
+  }
+  const c = plan.data?.counts;
+  const rows: [string, string][] = c ? ([
+    ["錄音檔", c.recordings ? `${c.recordings} 個` : ""],
+    ["和別人一起的錄音", c.shared_recordings ? `${c.shared_recordings} 個（只刪這個聲音的片段，別人的片段留著）` : ""],
+    ["片段", c.segments ? `${c.segments} 段（${c.minutes} 分鐘）` : ""],
+    ["口頭禪和聲音標籤", c.phrases ? `${c.phrases} 個（含原音）` : ""],
+    ["掃描錄音找到的聲音", c.sounds ? `${c.sounds} 個` : ""],
+    ["資料集", c.datasets ? `${c.datasets} 個` : ""],
+    ["訓練紀錄", c.trainings ? `${c.trainings} 次` : ""],
+    ["模型", c.models ? `${c.models} 個` : ""],
+    ["用它的模型合成的語音", c.outputs ? `${c.outputs} 個（含有它的場景整段音檔）` : ""],
+    ["角色表演", c.performances ? `${c.performances} 個` : ""],
+    ["RunPod 網路磁碟上的訓練檔案", c.cloud_runpod ? `${c.cloud_runpod} 次訓練的資料和模型` : ""],
+    ["Google 雲端硬碟上的訓練檔案", c.cloud_colab ? `${c.cloud_colab} 次訓練的資料和模型` : ""],
+  ] as [string, string][]).filter(([, v]) => v) : [];
+  const blockers = plan.data?.blockers ?? [];
+  return (
+    <Modal open title={`刪除「${voice.name}」和它所有的聲音`} onClose={onClose}>
+      {plan.isLoading ? <p className="text-sm text-zinc-500">正在整理會刪除哪些東西…</p> : plan.error ? <ErrorText error={plan.error} /> : (
+        <div className="space-y-4 text-sm">
+          <div>
+            <p className="mb-2 font-medium">會永久刪除（不能復原）：</p>
+            <ul className="space-y-1">
+              <li className="flex justify-between gap-3"><span>聲音本身、同意紀錄、認人用的樣本</span></li>
+              {rows.map(([k, v]) => (
+                <li key={k} className="flex justify-between gap-3"><span className="text-zinc-500">{k}</span><span className="text-right">{v}</span></li>
+              ))}
+            </ul>
+          </div>
+          <p className="rounded-lg bg-zinc-50 p-3 text-zinc-600 dark:bg-zinc-800/50 dark:text-zinc-300">
+            不會刪除：你電腦上原本的檔案（例如交付資料夾裡的音檔）、其他聲音的片段。之後要重新匯入同一個資料夾也可以。
+          </p>
+          {blockers.length > 0 && (
+            <div className="rounded-lg border border-red-200 bg-red-50 p-3 text-red-700 dark:border-red-900 dark:bg-red-950/40 dark:text-red-300">
+              <p className="font-medium">還有東西在用這個聲音，要先停止才能刪除：</p>
+              <ul className="mt-1 list-disc pl-5">{blockers.map((b) => <li key={b}>{b}</li>)}</ul>
+            </div>
+          )}
+          <Field label={`輸入「${voice.name}」確認`}>
+            <input className="input" value={typed} onChange={(e) => setTyped(e.target.value)} disabled={blockers.length > 0} />
+          </Field>
+          {del.error && <ErrorText error={del.error} />}
+          <div className="flex justify-end gap-2">
+            <Button variant="ghost" onClick={onClose}>取消</Button>
+            <Button variant="danger" loading={del.isPending} disabled={typed.trim() !== voice.name.trim() || blockers.length > 0}
+              onClick={() => del.mutate()}><Trash2 className="size-4" />永久刪除</Button>
+          </div>
+        </div>
+      )}
+    </Modal>
   );
 }
