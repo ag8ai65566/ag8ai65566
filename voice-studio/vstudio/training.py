@@ -303,11 +303,20 @@ def _upload_allowance(size: int) -> int:
     return int(min(6 * 3600, max(1800, 2 * size / bps)))
 
 
+UPLOAD_TICK_S = 1.0  # how often a stop request and the upload's progress are looked at while it runs
+
+
 def _send_dataset(ctx: jobs.JobContext, tid: str, work: Path, prefix: str, loc: dict) -> None:
     """Package the dataset and upload it to the volume of the pod that is already rented. upload.json is rewritten
     every minute from the start, so the pod knows the studio is still at it (it gives up after 15 minutes without a
-    word); an error the pod reports while setting up stops the upload early instead of finishing it for nothing."""
+    word); an error the pod reports while setting up stops the upload early instead of finishing it for nothing.
+
+    The packing and the upload run in a thread of their own while this one looks for a stop request every second:
+    a stop used to be noticed only when upload bytes moved, so an upload RunPod stopped answering could not be
+    stopped. A stalled upload is shown on the card (how long nothing has moved)."""
     sent, total, stop, trouble = [0], [0], threading.Event(), []
+    state = {"phase": "pack", "moved": time.time(), "f": 0.0}
+    done: dict = {}
 
     def heartbeat():
         while not stop.wait(60):
@@ -319,28 +328,51 @@ def _send_dataset(ctx: jobs.JobContext, tid: str, work: Path, prefix: str, loc: 
             except Exception as e:  # a missed beat is harmless: the pod waits 15 minutes for the next one
                 ctx.log(f"upload heartbeat failed: {e}")
 
-    def progress(f: float) -> None:
-        sent[0] = int(f * total[0])
+    def progress(f: float) -> None:  # called by the upload (its own threads): no database work here
+        if stop.is_set():
+            raise jobs.Cancelled()
         if trouble:
             raise RuntimeError(trouble[0])
-        ctx.progress(0.05 + 0.15 * f, f"已租到 GPU，上傳資料 {f * 100:.0f}%（上傳完就開始訓練）")
+        if f > state["f"]:
+            state.update(f=f, moved=time.time())
+        sent[0] = int(f * total[0])
+
+    def run() -> None:
+        try:
+            tar_path, cfg = package_dataset(tid, work)
+            total[0] = tar_path.stat().st_size
+            if stop.is_set():
+                return
+            runpod.put_text(f"{prefix}/config.json", json.dumps(cfg, ensure_ascii=False, indent=2), loc=loc)
+            state.update(phase="upload", moved=time.time())
+            t0 = time.time()
+            runpod.upload(tar_path, f"{prefix}/dataset.tar", progress=progress, loc=loc)
+            done.update(took=time.time() - t0, tar=tar_path)
+        except BaseException as e:  # handed to the job's thread below
+            done["error"] = e
 
     threading.Thread(target=heartbeat, name=f"upload-{tid}", daemon=True).start()
+    worker = threading.Thread(target=run, name=f"send-{tid}", daemon=True)
     try:
         ctx.progress(0.04, "已租到 GPU，整理訓練資料")
-        tar_path, cfg = package_dataset(tid, work)
-        total[0] = tar_path.stat().st_size
-        runpod.put_text(f"{prefix}/config.json", json.dumps(cfg, ensure_ascii=False, indent=2), loc=loc)
-        t0 = time.time()
-        runpod.upload(tar_path, f"{prefix}/dataset.tar", progress=progress, loc=loc)
-        took = time.time() - t0
+        worker.start()
+        while worker.is_alive():
+            worker.join(UPLOAD_TICK_S)
+            ctx.check()  # a stop request ends the run now; the upload thread stops at its next bytes
+            if state["phase"] == "upload":
+                f, quiet = state["f"], time.time() - state["moved"]
+                stalled = f"，已經 {int(quiet) // 60} 分 {int(quiet) % 60:02d} 秒沒有進度，RunPod 沒有回應，持續重試中" \
+                    if quiet >= 60 else ""
+                ctx.progress(0.05 + 0.15 * f, f"已租到 GPU，上傳資料 {f * 100:.0f}%{stalled}（上傳完就開始訓練）")
+        if "error" in done:
+            raise done["error"]
     finally:
         stop.set()
-    tar_path.unlink(missing_ok=True)
+    done["tar"].unlink(missing_ok=True)
     runpod.put_text(f"{prefix}/upload.json", _upload_status("done", total[0], total[0]), loc=loc)
     _set(tid, uploaded_at=time.time())
     if total[0] >= 50 << 20:  # remembered for the estimates and the next pod's time limit
-        config.save_settings({"upload_bps": round(total[0] / max(1.0, took))})
+        config.save_settings({"upload_bps": round(total[0] / max(1.0, done["took"]))})
 
 
 def _rentable(engine_id: str, preset_id: str, gpus: list[str], datacenter: str) -> list[str]:

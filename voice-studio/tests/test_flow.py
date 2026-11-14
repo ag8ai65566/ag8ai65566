@@ -2234,6 +2234,59 @@ def test_gpu_is_rented_before_the_dataset_is_uploaded(client, monkeypatch, tmp_p
     assert t["uploaded_at"] and t["pod_id"] == "pod1" and ("remove", "pod1") in events and not training.can_retry_gpu(t)
 
 
+def test_stop_works_while_the_upload_is_stuck(client, monkeypatch, tmp_path):
+    """An upload RunPod stopped answering (no bytes move, so no progress call comes): the card says it is stuck, and
+    "stop" still ends the run within seconds, the pod removed. A stop used to be noticed only when bytes moved."""
+    import tarfile
+    import threading
+    import time
+    from vstudio import config, db, training
+    from vstudio.cloud import runpod
+    c = client
+    _fake_gpu_catalog(monkeypatch, runpod)
+    config.save_settings({"runpod_datacenter": "US-CA-2", "runpod_volume_id": "vol1", "runpod_max_hours": 2})
+    v = _consented_voice(c)
+    (tmp_path / "ds" / "wavs").mkdir(parents=True)
+    (tmp_path / "ds" / "wavs" / "a.wav").write_bytes(b"\0" * 1000)
+    ds = db.insert("datasets", {"id": db.new_id("ds"), "voice_id": v["id"], "name": "v1", "n_items": 40, "hours": 1.0,
+                                "path": str(tmp_path / "ds"), "created_at": db.now(),
+                                "meta": {"n_train": 40, "consent": db.get("voices", v["id"])["consent"]}})
+
+    def package(tid, work):
+        tar = work / "dataset.tar"
+        with tarfile.open(tar, "w") as t:
+            t.add(tmp_path / "ds" / "wavs", arcname="data/wavs")
+        return tar, {"training_id": tid}
+    monkeypatch.setattr(training, "package_dataset", package)
+    monkeypatch.setattr(training, "UPLOAD_TICK_S", 0.1, raising=False)
+    monkeypatch.setattr(runpod, "exists", lambda key, loc=None, fast=False: False)
+    monkeypatch.setattr(runpod, "put_text", lambda *a, **kw: None)
+    monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
+    monkeypatch.setattr(runpod, "get_text", lambda *a, **kw: "")
+    removed, release = [], threading.Event()
+    monkeypatch.setattr(runpod, "remove_pod", lambda pod_id: removed.append(pod_id))
+    monkeypatch.setattr(runpod, "create_pod", lambda *a, **kw: {"id": "pod1", "costPerHr": 4.39})
+
+    def stuck_upload(local, key, progress=None, loc=None):
+        progress(0.3)
+        release.wait(60)                        # RunPod stops answering: no bytes, no progress calls
+        progress(0.31)                          # (the thread ends at its next bytes)
+    monkeypatch.setattr(runpod, "upload", stuck_upload)
+    tr = c.post("/api/training", json={"dataset_id": ds["id"], "engine": "mock", "preset": "quick",
+                                       "gpu": "NVIDIA H100 80GB HBM3", "target": "runpod"}).json()
+    t0 = time.time()
+    while db.get("trainings", tr["id"])["status"] != "uploading" and time.time() - t0 < 20:
+        time.sleep(0.1)
+    time.sleep(0.5)
+    assert "上傳資料 30%" in db.get("jobs", tr["job_id"])["message"]
+    t1 = time.time()
+    assert c.post(f"/api/training/{tr['id']}/cancel").status_code == 200
+    j = _wait(c, tr["job_id"], timeout=20)
+    assert j["status"] == "canceled" and time.time() - t1 < 10                      # did not wait for the upload
+    assert db.get("trainings", tr["id"])["status"] == "canceled" and "pod1" in removed
+    release.set()
+
+
 def test_auto_grab_waits_renting_nothing_then_grabs(client, monkeypatch, tmp_path):
     """Auto-grab: while its cards are sold out the run only waits (nothing rented); a card taken at the last moment
     sends it back to waiting; then it rents the first card of its list in stock; it stops on time or on request."""
