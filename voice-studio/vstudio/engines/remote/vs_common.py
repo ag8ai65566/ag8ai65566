@@ -180,7 +180,7 @@ def volume_room(job: "Job", gb: float) -> None:
     log(f"network volume: {have:.0f} GB free, the model needs about {gb:.0f} GB")
     if have < gb:
         raise RuntimeError(f"網路磁碟空間不夠：只剩 {have:.0f} GB，訓練完存模型需要約 {gb:.0f} GB。"
-                           "請先刪掉舊訓練的雲端檔案（訓練卡片上的「刪除雲端檔案」），或到 RunPod 加大網路磁碟，再訓練。")
+                           "請先刪掉用不到的舊訓練紀錄（訓練卡片上的「刪除紀錄」會一併刪掉它在雲端的檔案），或到 RunPod 加大網路磁碟，再訓練。")
 
 
 def resolved_revision(snapshot_path: str) -> str:

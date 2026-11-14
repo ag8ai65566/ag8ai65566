@@ -347,7 +347,7 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
   const cancel = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/cancel`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
   const recover = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/recover`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
   const split = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/split`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
-  const discard = useMutation({ mutationFn: () => api.post(`/api/training/${t.id}/discard`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
+  const remove = useMutation({ mutationFn: () => api.del(`/api/training/${t.id}`), onSuccess: () => qc.invalidateQueries({ queryKey: ["trainings"] }) });
   const [retryOpen, setRetryOpen] = useState(false);
   const [label, tone] = STATUS[t.status] ?? [t.status, "zinc"];
   const active = !["done", "failed", "canceled"].includes(t.status);
@@ -369,10 +369,10 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
                 : "停止這次訓練並關閉雲端機器？已經花的費用不會退回。") && cancel.mutate()}><Square className="size-3.5" />停止</Button>}
           {model && <Link to={`/models?id=${model.id}`}><Button size="sm">試聽模型</Button></Link>}
           {t.can_retry_gpu && <Button size="sm" onClick={() => setRetryOpen(true)} title="資料已經在雲端，不會重新上傳"><RefreshCw className="size-3.5" />換一張 GPU 重試</Button>}
-          {(t.status === "failed" || t.status === "canceled") && !model && !t.can_retry_gpu && !t.discarded && (
+          {(t.status === "failed" || t.status === "canceled") && !model && !t.can_retry_gpu && (
             <Button size="sm" variant="secondary" loading={recover.isPending} title="訓練如果已經進行到存檔，可以把權重下載回來"
               onClick={() => recover.mutate()}>救回模型</Button>)}
-          {(t.status === "failed" || t.status === "canceled") && !model && !t.can_retry_gpu && !isColab && !t.discarded && (
+          {(t.status === "failed" || t.status === "canceled") && !model && !t.can_retry_gpu && !isColab && (
             <Button size="sm" variant="secondary" loading={split.isPending}
               title="模型檔太大、RunPod 一直傳不過來（524）時用：在雲端切成小檔再下載"
               onClick={() => confirm("在 RunPod 上把模型檔切小再下載？\n\n"
@@ -380,13 +380,14 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
                 + "在你的網路磁碟上把它切成 64 MB 的小檔，切完立刻關機，接著自動下載。\n\n"
                 + "通常 10–20 分鐘，費用大約 US$0.5–1.5（看租到哪張卡）。中途關掉 Voice Studio 也沒關係，機器會被關掉，再按一次會接著切。")
                 && split.mutate()}>切小再救回</Button>)}
-          {(t.status === "failed" || t.status === "canceled") && !model && !isColab && !t.discarded && (
-            <Button size="sm" variant="ghost" loading={discard.isPending}
-              title="不救回這次的模型：刪掉它在 RunPod 網路磁碟上的檔案，空出空間給下一次訓練"
-              onClick={() => confirm("不救回這次的模型，刪掉它在 RunPod 網路磁碟上的檔案？\n\n"
-                + "會刪掉這次訓練的模型檔（完整微調約 29 GB）、試念樣本和上傳的訓練資料，空出空間給下一次訓練。"
-                + "你電腦上的錄音和資料集不會動。刪掉之後就不能再救回這次的模型。")
-                && discard.mutate()}><Trash2 className="size-3.5" />刪除雲端檔案</Button>)}
+          {!active && (
+            <Button size="sm" variant="ghost" loading={remove.isPending} title="刪掉這筆紀錄和它在雲端、電腦上的檔案"
+              onClick={() => confirm("刪除這筆訓練紀錄？\n\n"
+                + (isColab ? "會刪掉它在 Google 雲端硬碟裡的訓練資料夾" : "會刪掉它在 RunPod 網路磁碟上的檔案（模型檔、試念樣本、上傳的訓練資料）")
+                + "，以及電腦上沒下載完的模型檔，空出空間。"
+                + (model ? "已經救回的模型會留在「模型」頁，不受影響。" : "這次訓練的模型就不能再救回了。")
+                + "\n\n你的錄音和資料集不會動。")
+                && remove.mutate()}><Trash2 className="size-3.5" />刪除紀錄</Button>)}
         </div>
       </div>
       {retryOpen && <RetryGpuModal t={t} onClose={() => setRetryOpen(false)} />}
@@ -440,7 +441,7 @@ function TrainingRow({ t, onLog }: { t: Training; onLog: () => void }) {
       {t.note && <p className="mt-2 text-xs text-amber-700 dark:text-amber-300">{t.note}</p>}
       {recover.error && <ErrorText error={recover.error} />}
       {split.error && <ErrorText error={split.error} />}
-      {discard.error && <ErrorText error={discard.error} />}
+      {remove.error && <ErrorText error={remove.error} />}
       {t.pod_state === "remove_failed" && (
         <p className="mt-2 flex items-center gap-2 text-xs font-medium text-red-600"><AlertTriangle className="size-3.5" />
           雲端機器可能還在計費。平台會在下次開啟時自動再刪一次；也可以馬上到 runpod.io → Pods 手動刪除。</p>

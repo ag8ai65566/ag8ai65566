@@ -745,26 +745,32 @@ def start_split(tid: str) -> dict:
     return job
 
 
-def discard_cloud(tid: str) -> dict:
-    """Give up recovering a run: delete its model, samples and dataset on the network volume, so the space is free for
-    the next run (a full fine-tune's model is ~29 GB). Only for failed or canceled RunPod runs without a model."""
+def delete_training(tid: str) -> dict:
+    """Delete a finished, failed or canceled run: its record, its files in the cloud (the RunPod run folder: model,
+    samples, dataset, logs; or the Google Drive job folder) and on this computer (its work folder, e.g. a partial
+    model download of tens of GB). A model it produced stays on the models page. The record is kept, and nothing on
+    this computer is deleted, while cloud files could not be deleted (so where they are is not forgotten)."""
+    from .voice_delete import _delete_cloud, _volumes
     tr = db.get("trainings", tid)
     if not tr:
         raise KeyError(tid)
-    if tr.get("target") == "colab" or tr["status"] not in ("failed", "canceled"):
-        raise ValueError("只有失敗或取消的 RunPod 訓練可以刪雲端檔案。")
-    if db.query("SELECT id FROM models WHERE training_id=?", (tid,)):
-        raise ValueError("這次訓練的模型已經救回了，雲端的檔案在救回時就清掉了。")
-    loc, prefix, left = _loc(tr), tr["remote_prefix"], []
-    for name in ("model.tar", "samples.tar", "dataset.tar"):  # parts and manifests too; deleting reads nothing
-        try:
-            runpod.delete_archive(prefix, name, loc)
-        except Exception as e:
-            left.append(f"{name}（{str(e)[:120]}）")
-    if left:
-        raise RuntimeError("有檔案沒刪到：" + "；".join(left) + "。可以再按一次。")
-    _set(tid, storage={**(tr.get("storage") or {}), "discarded": True}, note="雲端的模型和訓練資料已刪除（不救回）。")
-    return db.get("trainings", tid)
+    if tr["status"] not in ("done", "failed", "canceled"):
+        raise ValueError("這次訓練還在進行，先按「停止」再刪紀錄。")
+    if tr.get("pod_state") in ("remove_failed", "creating", "uncertain"):
+        raise ValueError("這次訓練的雲端機器還沒確認關掉（平台會繼續試著關）。等它關掉再刪紀錄，或先到 runpod.io → Pods 手動刪除。")
+    if tr.get("remote_prefix"):
+        if tr.get("target") != "colab":  # the big files go first, by name (deleting reads nothing), then the rest
+            for name in ("model.tar", "samples.tar", "dataset.tar"):
+                try:
+                    runpod.delete_archive(tr["remote_prefix"], name, _loc(tr))
+                except Exception:
+                    pass  # the folder delete below reports what is left
+        problem, _ = _delete_cloud(tr, _volumes() if tr.get("target") != "colab" else None)
+        if problem:
+            raise RuntimeError(f"雲端的檔案沒刪到：{problem}。紀錄先留著，可以再按一次。")
+    shutil.rmtree(config.DATA / "jobs" / tid, ignore_errors=True)
+    db.delete("trainings", tid)
+    return {"ok": True}
 
 
 def _cheapest_in_stock(datacenter: str) -> list[str]:

@@ -957,47 +957,80 @@ def test_split_and_recover_on_runpod(client, tmp_path, monkeypatch):
     assert t["status"] == "failed" and "podT" in removed and "再按一次" in t["note"]
 
 
-def test_discard_frees_the_volume_and_the_pod_checks_room_first(client, tmp_path, monkeypatch):
-    """Not recovering a run: its model (one file or parts), samples and dataset leave the network volume, so the next
-    run has room; the card is told. The pod checks the volume has room for the model before it trains."""
+def test_delete_training_record_with_its_files_and_the_pod_checks_room_first(client, tmp_path, monkeypatch):
+    """Deleting a finished, failed or canceled run removes its record, its run folder on the network volume (model in
+    one file or parts, samples, dataset, logs) and its work folder here (a partial download of tens of GB); a model it
+    made stays. Not while it runs; the record stays when the cloud cannot be reached. The pod checks the volume has
+    room for the model before it trains."""
     import importlib.util
     import json
-    from vstudio import db
+    from vstudio import config, db
     from vstudio.cloud import runpod
     c = client
     v = _consented_voice(c)
-    run = tmp_path / "vol" / "vs" / "jobs" / "tr_00ef"
+    vol = tmp_path / "vol"
+    run = vol / "vs" / "jobs" / "tr_00ef"
     run.mkdir(parents=True)
     for name, size in (("model.tar", 3000), ("samples.tar", 10), ("dataset.tar", 20), ("train.log", 5)):
         (run / name).write_bytes(b"x" * size)
     (run / "samples.tar.p0000").write_bytes(b"y")                              # an archive in parts as well
     (run / "samples.tar.json").write_text(json.dumps({"parts": [{"key": "samples.tar.p0000", "size": 1}]}))
-    db.insert("trainings", {"id": "tr_00ef", "voice_id": v["id"], "dataset_id": "dsX", "engine": "voxcpm2",
-                            "preset": {"id": "full", "name": "Kronii"}, "target": "runpod", "status": "failed",
-                            "remote_prefix": "vs/jobs/tr_00ef", "storage": {"volume": "vol1", "datacenter": "US-CA-2"},
-                            "progress": {}, "created_at": db.now()})
+    (vol / "vs" / "envs").mkdir(parents=True)
+    (vol / "vs" / "envs" / "keep.txt").write_text("shared")                    # never touched
+    work = config.DATA / "jobs" / "tr_00ef"
+    work.mkdir(parents=True)
+    (work / "model.tar.part").write_bytes(b"\0" * 4096)                        # a partial download here
+    row = {"voice_id": v["id"], "dataset_id": "dsX", "engine": "voxcpm2", "preset": {"id": "full", "name": "Kronii"},
+           "target": "runpod", "storage": {"volume": "vol1", "datacenter": "US-CA-2"}, "progress": {},
+           "created_at": db.now()}
+    db.insert("trainings", {"id": "tr_00ef", **row, "status": "failed", "remote_prefix": "vs/jobs/tr_00ef"})
+    db.insert("trainings", {"id": "tr_00aa", **row, "status": "running", "remote_prefix": "vs/jobs/tr_00aa"})
 
     class Volume:
         def get_object(self, Bucket, Key, Range=None):
             import io
             from botocore.exceptions import ClientError
-            p = tmp_path / "vol" / Key
+            p = vol / Key
             if not p.exists():
                 raise ClientError({"Error": {"Code": "NoSuchKey"}}, "GetObject")
             return {"Body": io.BytesIO(p.read_bytes())}
 
         def delete_object(self, Bucket, Key):
-            (tmp_path / "vol" / Key).unlink(missing_ok=True)
+            (vol / Key).unlink(missing_ok=True)
+
+        def get_paginator(self, name):
+            class P:
+                def paginate(self, Bucket, Prefix):
+                    return [{"Contents": [{"Key": str(f.relative_to(vol)).replace(os.sep, "/")}
+                                          for f in sorted(vol.rglob("*")) if f.is_file()
+                                          and str(f.relative_to(vol)).replace(os.sep, "/").startswith(Prefix)]}]
+            return P()
     monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None, read_timeout=None: Volume())
     monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
-    r = c.post("/api/training/tr_00ef/discard")
+    monkeypatch.setattr(runpod, "volumes", lambda: [{"id": "vol1", "dataCenterId": "US-CA-2"}])
+    assert c.delete("/api/training/tr_00aa").status_code == 400                      # still running: stop it first
+
+    def unreachable():
+        raise runpod.RunPodError("Read timeout")
+    monkeypatch.setattr(runpod, "volumes", unreachable)
+    real_paginator = Volume.get_paginator
+    Volume.get_paginator = lambda self, name: (_ for _ in ()).throw(runpod.RunPodError("Read timeout"))
+    r = c.delete("/api/training/tr_00ef")
+    assert r.status_code == 502 and db.get("trainings", "tr_00ef") and (work / "model.tar.part").exists()
+    Volume.get_paginator = real_paginator
+    monkeypatch.setattr(runpod, "volumes", lambda: [{"id": "vol1", "dataCenterId": "US-CA-2"}])
+
+    r = c.delete("/api/training/tr_00ef")
     assert r.status_code == 200, r.text
-    assert sorted(p.name for p in run.iterdir()) == ["train.log"]                  # the log stays, for the record
-    t = next(x for x in c.get("/api/training").json() if x["id"] == "tr_00ef")
-    assert t["discarded"] and "已刪除" in t["note"]
-    db.insert("models", {"id": "mdl_ef", "voice_id": v["id"], "engine": "voxcpm2", "name": "K", "training_id": "tr_00ef",
+    assert db.get("trainings", "tr_00ef") is None and not work.exists()
+    assert not run.exists() or not any(run.iterdir())
+    assert (vol / "vs" / "envs" / "keep.txt").exists()
+    assert "tr_00ef" not in [t["id"] for t in c.get("/api/training").json()]
+
+    db.insert("trainings", {"id": "tr_00dd", **row, "status": "done", "remote_prefix": "vs/jobs/tr_00dd"})
+    db.insert("models", {"id": "mdl_dd", "voice_id": v["id"], "engine": "voxcpm2", "name": "K", "training_id": "tr_00dd",
                          "path": str(tmp_path / "m"), "created_at": db.now()})
-    assert c.post("/api/training/tr_00ef/discard").status_code == 400              # a recovered model: nothing to give up
+    assert c.delete("/api/training/tr_00dd").status_code == 200 and db.get("models", "mdl_dd")  # the model stays
 
     path = Path(__file__).resolve().parents[1] / "vstudio" / "engines" / "remote" / "vs_common.py"
     spec = importlib.util.spec_from_file_location("vs_common_under_test", path)
