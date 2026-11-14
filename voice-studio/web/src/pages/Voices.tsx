@@ -41,7 +41,7 @@ export default function Voices() {
             </Link>
           ))}
         </div>
-        <div>{current ? <VoiceDetail voice={current} /> : voices.data?.length ? <Empty title="選一個聲音查看詳細資料" /> : null}</div>
+        <div>{current ? <VoiceDetail key={current.id} voice={current} /> : voices.data?.length ? <Empty title="選一個聲音查看詳細資料" /> : null}</div>
       </div>
       <Modal open={creating} onClose={() => setCreating(false)} title="新增聲音">
         <div className="space-y-4">
@@ -117,7 +117,12 @@ function VoiceDetail({ voice }: { voice: Voice }) {
       <Card title={<span className="flex items-center gap-2">{voice.name} <Badge>{KIND[voice.kind]}</Badge></span>}
         actions={<Button variant="ghost" size="sm" onClick={() => setDeleting(true)}><Trash2 className="size-4" />刪除</Button>}>
         {deleting && <DeleteVoice voice={voice} onClose={() => setDeleting(false)}
-          onDeleted={() => { qc.invalidateQueries(); nav("/voices"); }} />}
+          onDeleted={() => {  // close first, drop it from the list at once, then refresh everything it was part of
+            setDeleting(false);
+            qc.setQueryData<Voice[]>(["voices"], (vs) => vs?.filter((x) => x.id !== voice.id));
+            qc.invalidateQueries();
+            nav("/voices");
+          }} />}
         <div className="grid gap-4 sm:grid-cols-3">
           {(["approved", "pending", "rejected"] as const).map((k) => (
             <div key={k} className="rounded-xl bg-zinc-50 p-3 dark:bg-zinc-800/50">
@@ -197,19 +202,24 @@ function VoiceDetail({ voice }: { voice: Voice }) {
 /** Deleting a voice with everything under it: what goes is listed first, and the name is typed to confirm. */
 function DeleteVoice({ voice, onClose, onDeleted }: { voice: Voice; onClose: () => void; onDeleted: () => void }) {
   const [typed, setTyped] = useState("");
-  const [left, setLeft] = useState<string[] | null>(null);
+  const [result, setResult] = useState<VoiceDeleted | null>(null);
   const [gone, setGone] = useState(false);
   const plan = useQuery({ queryKey: ["delete-plan", voice.id], enabled: !gone,  // not asked again once it is deleted
     queryFn: () => api.get<VoiceDeletePlan>(`/api/voices/${voice.id}/delete-plan`) });
   const del = useMutation({
     mutationFn: () => api.del<VoiceDeleted>(`/api/voices/${voice.id}`),
-    onSuccess: (r) => { setGone(true); if (r.left.length) setLeft(r.left); else onDeleted(); },
+    onSuccess: (r) => { setGone(true); if (r.left.length || r.notes?.length) setResult(r); else onDeleted(); },
   });
-  if (left) {
+  if (result) {
     return (
       <Modal open title={`已刪除「${voice.name}」`} onClose={onDeleted}>
-        <p className="text-sm">電腦上的資料都刪掉了，但雲端上有 {left.length} 份訓練檔案沒刪到，請到那裡手動刪除：</p>
-        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-red-600">{left.map((x) => <li key={x}>{x}</li>)}</ul>
+        {result.left.length > 0 ? (<>
+          <p className="text-sm">電腦上的資料都刪掉了，但雲端上有 {result.left.length} 份訓練檔案沒刪到，請到那裡手動刪除：</p>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-red-600">{result.left.map((x) => <li key={x}>{x}</li>)}</ul>
+        </>) : <p className="text-sm">電腦上和雲端上的資料都刪掉了。</p>}
+        {(result.notes?.length ?? 0) > 0 && (
+          <ul className="mt-3 list-disc space-y-1 pl-5 text-sm text-zinc-500">{result.notes!.map((x) => <li key={x}>{x}</li>)}</ul>
+        )}
         <div className="mt-4 flex justify-end"><Button onClick={onDeleted}>知道了</Button></div>
       </Modal>
     );

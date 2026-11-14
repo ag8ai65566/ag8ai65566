@@ -77,12 +77,17 @@ def _req(method: str, path: str, **kw):
     return r.json() if r.content else {}
 
 
+def volumes() -> list[dict]:
+    """The account's network volumes as RunPod lists them (id, name, dataCenterId, size)."""
+    vols = _req("GET", "/networkvolumes")
+    return vols if isinstance(vols, list) else vols.get("data", vols)
+
+
 def check() -> dict:
     """Verify the API key and the volume; returns the account's volumes (s3: whether the studio can use one) and,
     in problem, why the volume in settings cannot be used for training ("" when it can)."""
     st = config.load_settings()
-    vols = _req("GET", "/networkvolumes")
-    vols = vols if isinstance(vols, list) else vols.get("data", vols)
+    vols = volumes()
     out = {"ok": True, "volumes": [{"id": v.get("id"), "name": v.get("name"), "dataCenterId": v.get("dataCenterId"),
                                     "size": v.get("size"), "s3": v.get("dataCenterId") in S3_DATACENTERS}
                                    for v in vols]}

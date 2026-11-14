@@ -85,19 +85,37 @@ def plan(voice_id: str) -> dict:
             "blockers": _blockers(voice_id, own)}
 
 
-def _delete_cloud(tr: dict) -> str | None:
-    """The run's files in the cloud; None when gone (or never there), else where they still are and why."""
+def _volumes() -> dict[str, str] | None:
+    """The account's RunPod network volumes (id → datacenter); None when they cannot be listed."""
+    try:
+        return {v.get("id"): v.get("dataCenterId") or "" for v in runpod.volumes()}
+    except Exception:
+        return None
+
+
+def _delete_cloud(tr: dict, vols: dict[str, str] | None) -> tuple[str | None, str | None]:
+    """The run's files in the cloud: (still there: where and why, note). A volume the account no longer has took its
+    files with it (RunPod's S3 API answers AccessDenied for it, not "not found"), so that is a note, not a failure.
+    A volume that exists is reached in the datacenter RunPod lists it in, not the one recorded at the time."""
+    vol = (tr.get("storage") or {}).get("volume") or ""
+    where = (f"Google 雲端硬碟的 jobs/{tr['id']}" if tr.get("target") == "colab" else
+             f"RunPod 網路磁碟 {vol} 的 {tr['remote_prefix']}/")
     try:
         if tr.get("target") == "colab":
             d = colab.job_dir(tr)
             shutil.rmtree(d, ignore_errors=True)
-            return None if not d.exists() else f"Google 雲端硬碟 {d}（刪不掉，請手動刪除）"
-        runpod.delete_run_folder(tr["remote_prefix"], training._loc(tr))
-        return None
+            return (f"Google 雲端硬碟 {d}（刪不掉，請手動刪除）" if d.exists() else None), None
+        loc = dict(training._loc(tr))
+        if vols is not None:
+            if loc.get("volume") not in vols:
+                return None, f"RunPod 網路磁碟 {loc.get('volume')} 已經不在你的帳號裡，上面的訓練檔案已經跟著磁碟刪掉了。"
+            loc["datacenter"] = vols[loc["volume"]] or loc.get("datacenter")
+        runpod.delete_run_folder(tr["remote_prefix"], loc)
+        return None, None
     except Exception as e:
-        where = (f"Google 雲端硬碟的 jobs/{tr['id']}" if tr.get("target") == "colab" else
-                 f"RunPod 網路磁碟 {(tr.get('storage') or {}).get('volume') or ''} 的 {tr['remote_prefix']}/")
-        return f"{where}（{str(e)[:160]}）"
+        why = ("RunPod 的 S3 金鑰沒有這個網路磁碟的權限；請到 runpod.io → Storage 確認磁碟還在，再到設定 → 雲端 GPU 檢查金鑰"
+               if "AccessDenied" in str(e) else str(e)[:160])
+        return f"{where}（{why}）", None
 
 
 def _delete_output(o: dict) -> None:
@@ -114,12 +132,13 @@ def remove(voice_id: str) -> dict:
     if p["blockers"]:
         raise Blocked("還有東西在用這個聲音，請先停止：" + "；".join(p["blockers"]))
     own = _owned(voice_id)
-    left = []
+    left, notes = [], []
+    vols = _volumes() if any(t.get("remote_prefix") and t.get("target") != "colab" for t in own["trainings"]) else None
     for tr in own["trainings"]:
         if tr.get("remote_prefix"):
-            problem = _delete_cloud(tr)
-            if problem:
-                left.append(problem)
+            problem, note = _delete_cloud(tr, vols)
+            left += [problem] if problem else []
+            notes += [note] if note and note not in notes else []
         shutil.rmtree(config.DATA / "jobs" / tr["id"], ignore_errors=True)  # local work folder (dataset.tar, logs)
     for pid in own["performances"]:
         delete_performance(pid)
@@ -146,5 +165,5 @@ def remove(voice_id: str) -> dict:
         c.execute("UPDATE sources SET voice_hint=NULL WHERE voice_hint=?", (voice_id,))
     shutil.rmtree(config.DATA / "voices" / voice_id, ignore_errors=True)  # consent document, enrollment, phrases
     db.delete("voices", voice_id)
-    return {"ok": True, "deleted": p["counts"], "left": left}
+    return {"ok": True, "deleted": p["counts"], "left": left, "notes": notes}
 

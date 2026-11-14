@@ -65,7 +65,11 @@ export type VoiceDeletePlan = {
     cloud_runpod: number; cloud_colab: number };
   blockers: string[];   // a training or job still using the voice: deleting is refused until they stop
 };
-export type VoiceDeleted = { ok: boolean; deleted: VoiceDeletePlan["counts"]; left: string[] };
+export type VoiceDeleted = {
+  ok: boolean; deleted: VoiceDeletePlan["counts"];
+  left: string[];     // cloud files that could not be deleted: where, and why
+  notes?: string[];   // e.g. a network volume that no longer exists took its files with it
+};
 export type Source = {
   id: string; filename: string; path: string; duration: number | null; status: string;
   voice_hint: string | null; language: string | null; segments: number; created_at: number; emotion?: string | null;

@@ -521,8 +521,10 @@ def test_delete_voice_with_everything_under_it(client, tmp_path, monkeypatch):
                           "created_at": db.now()})
     colab_root = tmp_path / "drive"
     (colab_root / "VoiceStudio" / "jobs" / "tr_00c0").mkdir(parents=True)
-    for tid, target, prefix, storage in (("tr_00a1", "runpod", "vs/jobs/tr_00a1", {"volume": "vol1"}),
+    for tid, target, prefix, storage in (("tr_00a1", "runpod", "vs/jobs/tr_00a1",  # datacenter recorded wrongly
+                                          {"volume": "vol1", "datacenter": "EU-RO-1"}),
                                          ("tr_00b2", "runpod", "vs/jobs/tr_00b2", {"volume": "vol1"}),
+                                         ("tr_00d3", "runpod", "vs/jobs/tr_00d3", {"volume": "volGone"}),
                                          ("tr_00c0", "colab", "jobs/tr_00c0",
                                           {"drive_root": str(colab_root), "folder": "VoiceStudio"})):
         db.insert("trainings", {"id": tid, "voice_id": a["id"], "dataset_id": "dsA", "engine": "mock",
@@ -533,15 +535,16 @@ def test_delete_voice_with_everything_under_it(client, tmp_path, monkeypatch):
 
     def delete_run_folder(prefix, loc=None):
         if prefix.endswith("tr_00b2"):
-            raise runpod.RunPodError("連不上網路磁碟")
-        gone_cloud.append(prefix)
+            raise runpod.RunPodError("An error occurred (AccessDenied) when calling the ListObjectsV2 operation")
+        gone_cloud.append((prefix, loc["datacenter"]))
         return 3
     monkeypatch.setattr(runpod, "delete_run_folder", delete_run_folder)
+    monkeypatch.setattr(runpod, "volumes", lambda: [{"id": "vol1", "dataCenterId": "US-CA-2"}])  # volGone was deleted
 
     plan = c.get(f"/api/voices/{a['id']}/delete-plan").json()
     n = plan["counts"]
     assert (n["recordings"], n["shared_recordings"], n["segments"], n["phrases"], n["sounds"]) == (1, 1, 2, 1, 1)
-    assert (n["datasets"], n["models"], n["trainings"], n["cloud_runpod"], n["cloud_colab"]) == (1, 1, 3, 2, 1)
+    assert (n["datasets"], n["models"], n["trainings"], n["cloud_runpod"], n["cloud_colab"]) == (1, 1, 4, 3, 1)
     assert n["outputs"] == 3 and n["performances"] == 1 and not plan["blockers"]   # o1, o2 and the scene mix
 
     job = db.insert("jobs", {"id": "job_imp", "kind": "import_delivery", "queue": "io", "status": "running",
@@ -555,8 +558,10 @@ def test_delete_voice_with_everything_under_it(client, tmp_path, monkeypatch):
     db.update("trainings", "tr_00a1", {"status": "done"})
 
     res = c.delete(f"/api/voices/{a['id']}").json()
-    assert res["ok"] and len(res["left"]) == 1 and "tr_00b2" in res["left"][0]     # the unreachable one is listed
-    assert gone_cloud == ["vs/jobs/tr_00a1"] and not (colab_root / "VoiceStudio" / "jobs" / "tr_00c0").exists()
+    assert res["ok"] and len(res["left"]) == 1 and "tr_00b2" in res["left"][0]     # refused access: listed, in words
+    assert "S3 金鑰沒有這個網路磁碟的權限" in res["left"][0] and "volGone" in res["notes"][0]  # a gone volume: a note
+    assert gone_cloud == [("vs/jobs/tr_00a1", "US-CA-2")]                            # in the volume's real datacenter
+    assert not (colab_root / "VoiceStudio" / "jobs" / "tr_00c0").exists()
     assert db.get("voices", a["id"]) is None and not (config.DATA / "voices" / a["id"]).exists()
     for table, i in (("segments", own["id"]), ("segments", mine["id"]), ("sources", "own"), ("sound_finds", "sf1"),
                      ("catchphrases", ph["id"]), ("datasets", "dsA"), ("models", "mA"), ("trainings", "tr_00a1"),
