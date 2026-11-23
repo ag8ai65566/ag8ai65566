@@ -339,13 +339,24 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
       });
     });
     var total = real + text;
-    var corrupted = real >= 20 && realGt12 === 0 && text > 0 && textGt12 === text;
+
+    /* About 60% of real dates fall after the 12th, so a date-typed population
+       that almost never does has been through a dd/mm parser. The 19 Nov 2026
+       export was this defect with 15 of 2138 date cells (0.7%) untouched -
+       requiring literally zero exceptions let it through as merely suspicious,
+       so the test is proportional, not absolute. A clean file sits near 60%. */
+    var gt12Share = real ? realGt12 / real : 0;
+    var SWAPPED = 0.15;          /* far below the natural rate: swapped */
+    var SUSPECT = 0.40;          /* below it, but not decisively: flag only */
+    var separated = text > 0 && textGt12 === text;
+    var corrupted = real >= 20 && gt12Share < SWAPPED && separated;
     return {
       real: real, realGt12: realGt12, text: text, textGt12: textGt12,
       realShare: total ? real / total : 0,
+      gt12Share: gt12Share,
       corrupted: corrupted,
-      /* a file that is partly clean is still suspicious - surfaced separately */
-      partial: !corrupted && real >= 20 && realGt12 > 0 && realGt12 / real < 0.15
+      /* below the natural rate but not conclusively swapped - surfaced, never auto-corrected */
+      partial: !corrupted && real >= 20 && gt12Share < SUSPECT
     };
   }
 
@@ -710,7 +721,8 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     if (d.corrupted) {
       el.innerHTML = '<div class="verdict bad">' +
         '<h3>偵測到日/月對調</h3>' +
-        '<p>這份檔案有 <b>' + d.real + '</b> 個日期存成真日期格式,而其中<b>沒有任何一個</b>落在 13 號之後。' +
+        '<p>這份檔案有 <b>' + d.real + '</b> 個日期存成真日期格式,其中只有 <b>' + d.realGt12 +
+        '</b> 個(' + (100 * d.gt12Share).toFixed(1) + '%)落在 13 號之後。' +
         '正常情況下應該要有六成左右。同時 <b>' + d.text + '</b> 個文字日期<b>全部</b>都在 13 號之後。</p>' +
         '<p>這種零例外的切割只有一個成因:檔案被 dd/mm/yyyy 語系的 Excel 讀過。' +
         '<code>7/8/2026</code> 被讀成 8 月 7 日,而 <code>6/15/2026</code> 因為沒有 15 月而解析失敗、留成文字。</p>' +
@@ -719,8 +731,9 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
     } else if (d.partial) {
       el.innerHTML = '<div class="verdict warn">' +
         '<h3>部分可疑</h3>' +
-        '<p>大部分真日期落在 12 號之前(' + d.real + ' 個中有 ' + (d.real - d.realGt12) +
-        ' 個),但有 <b>' + d.realGt12 + '</b> 個超過 13 號,所以不是整批被對調。</p>' +
+        '<p>' + d.real + ' 個真日期裡有 <b>' + d.realGt12 + '</b> 個(' +
+        (100 * d.gt12Share).toFixed(1) + '%)落在 13 號之後,低於自然值的六成,' +
+        '但還不足以斷定是整批對調。</p>' +
         '<p><b>自動修正預設關閉</b>,因為無法判斷哪些該改。建議人工確認後再決定。</p>' +
         evidence + '</div>';
     } else {
@@ -999,6 +1012,6 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
   }
 })();
 </script>
-<!-- built 2026-08-25 -->
+<!-- built 2026-11-23 -->
 </body>
 </html>

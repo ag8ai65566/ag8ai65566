@@ -129,13 +129,24 @@
       });
     });
     var total = real + text;
-    var corrupted = real >= 20 && realGt12 === 0 && text > 0 && textGt12 === text;
+
+    /* About 60% of real dates fall after the 12th, so a date-typed population
+       that almost never does has been through a dd/mm parser. The 19 Nov 2026
+       export was this defect with 15 of 2138 date cells (0.7%) untouched -
+       requiring literally zero exceptions let it through as merely suspicious,
+       so the test is proportional, not absolute. A clean file sits near 60%. */
+    var gt12Share = real ? realGt12 / real : 0;
+    var SWAPPED = 0.15;          /* far below the natural rate: swapped */
+    var SUSPECT = 0.40;          /* below it, but not decisively: flag only */
+    var separated = text > 0 && textGt12 === text;
+    var corrupted = real >= 20 && gt12Share < SWAPPED && separated;
     return {
       real: real, realGt12: realGt12, text: text, textGt12: textGt12,
       realShare: total ? real / total : 0,
+      gt12Share: gt12Share,
       corrupted: corrupted,
-      /* a file that is partly clean is still suspicious - surfaced separately */
-      partial: !corrupted && real >= 20 && realGt12 > 0 && realGt12 / real < 0.15
+      /* below the natural rate but not conclusively swapped - surfaced, never auto-corrected */
+      partial: !corrupted && real >= 20 && gt12Share < SUSPECT
     };
   }
 
