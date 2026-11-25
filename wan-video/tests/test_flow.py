@@ -8935,6 +8935,20 @@ async def test_artistlab() -> None:
     check(len(kids) == 8 and all(2 <= len(k) <= artistlab.MAX_SIZE for k in kids),
           "variations stay between two and four artists")
     check(all(w in artistlab.WEIGHTS or w in (0.8, 1.0) for k in kids for _, w in k), "…with weights from the allowed steps")
+    near = artistlab.neighbours([["a", 1.0], ["b", 1.4]])
+    check(sorted(artistlab.key_of(n) for n in near) == ["a@0.8|b@1.4", "a@1.0|b@1.2", "a@1.2|b@1.4"],
+          "a blend's weight neighbours: each artist one notch up and one down, never past the ends")
+    fresh = set()
+    round_one = artistlab.next_generation([[["a", 1.0], ["b", 1.0]]], ["a", "b", "c", "d", "e"], fresh, 8, _random.Random(1))
+    steps = {"a@0.8|b@1.0", "a@1.2|b@1.0", "a@1.0|b@0.8", "a@1.0|b@1.2"}
+    check({artistlab.key_of(k) for k in round_one[:4]} == steps,
+          "each round first tries every weight step around the best blend - no luck involved")
+    check(len(round_one) == 8 and any({t for t, _ in k} != {"a", "b"} for k in round_one[4:]),
+          "…and the rest of the round explores: other artists come in")
+    again = artistlab.next_generation([[["a", 1.0], ["b", 1.0]], [["a", 1.0], ["c", 1.0]]],
+                                      ["a", "b", "c"], fresh, 8, _random.Random(1))
+    check(any(artistlab.key_of(k) in ("a@1.2|c@1.0", "a@0.8|c@1.0", "a@1.0|c@0.8", "a@1.0|c@1.2") for k in again),
+          "once the best blend's steps are used up, the runner-up's are tried")
 
     section("繪師實驗室: the search")
     wanted = {"c": 1.2, "e": 0.8}                      # the blend the "target" is made of
@@ -8978,8 +8992,24 @@ async def test_artistlab() -> None:
     best = lab.ranked(("mix", "evolve"))[0]
     first_batch_best = max(e.score for e in lab.entries if e.stage == "mix")
     check(sorted(t for t, _ in best.artists) == ["c", "e"], f"the search lands on the right two artists ({best.artists})")
-    check(best.score > first_batch_best or best.score > 0.99,
+    check(best.score > first_batch_best,
           f"…and adjusting weights beats the first equal-weight batch ({first_batch_best:.2f} -> {best.score:.2f})")
+    check(best.score > 0.99 and dict((t, w) for t, w in best.artists) == wanted,
+          f"…all the way to the exact weights ({best.artists})")
+    # The same again from twenty fixed starting points: the result must not
+    # depend on which random draw the exploring half of a round happens to get.
+    exact = 0
+    for n in range(20):
+        again_lab = artistlab.new_lab(base={"model": "noobai"}, prompt="1girl", negative="", form="artist:{tag}",
+                                      seed=7, target="t.png")
+        again_lab.id = f"fixed{n}"
+        submit, wait, score, cancelled, made = fakes()
+        await artistlab.run_solo(again_lab, pool, submit=submit, wait=wait, score=score, cancelled=cancelled)
+        await artistlab.run_mix(again_lab, [e.artists[0][0] for e in again_lab.ranked(("solo",))[:6]], count=6,
+                                sizes=(2, 3), rounds=3, per_round=8, submit=submit, wait=wait, score=score,
+                                cancelled=cancelled)
+        exact += again_lab.ranked(("mix", "evolve"))[0].score > 0.99
+    check(exact == 20, f"…from any starting point, within three rounds ({exact}/20)")
     check(len({e.key for e in lab.entries}) == len(lab.entries), "nothing was generated twice")
 
     lab2 = artistlab.new_lab(base={}, prompt="p", negative="", form="by {tag}", seed=1, target="")
@@ -9018,9 +9048,54 @@ async def test_artistlab() -> None:
           "a low, flat answer is described as no clear match")
     check(not kaloscope.installed(TMP / "nowhere"), "not installed until both files are there")
 
+    section("繪師實驗室: many pictures of one style, read as one")
+    names = ["alpha", "beta", "gamma", "kedama_milk"]
+    unit = lambda *v: (lambda a: a / np.linalg.norm(a))(np.asarray(v, dtype=np.float32))  # noqa: E731
+    # beta is never far ahead on any one picture, but it is there on every one.
+    rows = [np.array([0.50, 0.40, 0.05, 0.05]), np.array([0.05, 0.45, 0.45, 0.05]), np.array([0.45, 0.50, 0.0, 0.05])]
+    pooled = kaloscope.pool(rows, [unit(1, 0, 0), unit(0.9, 0.1, 0), unit(1, 0.05, 0)], names, 3)
+    check(pooled["matches"][0]["tag"] == "beta" and pooled["firsts"] == ["alpha", "beta", "beta"],
+          "the artist every picture agrees on wins, even where a single picture said otherwise")
+    check(abs(pooled["matches"][0]["p"] - 0.45) < 1e-3, "…and its score is the mean of the pictures' probabilities")
+    check(abs(float(np.linalg.norm(pooled["style"])) - 1.0) < 1e-5 and pooled["count"] == 3,
+          "the target is the centroid of the style vectors, at unit length")
+    check(pooled["pairwise"] > 0.9 and not pooled["outliers"] and "一致" in kaloscope.consistency(pooled),
+          "pictures that agree are reported as one style")
+    heavy = kaloscope.pool([np.array([0.1, 0.1, 0.1, 0.7])] * 2, [unit(1, 0, 0)] * 2, names, 4)
+    check(all(m["tag"] != "kedama_milk" for m in heavy["matches"]) and len(heavy["matches"]) == 3,
+          "a withheld artist is not offered however strongly a folder points at them")
+    crowd = [unit(1, 0.1 * i, 0.05) for i in range(5)] + [unit(0, 0.2, 1)]
+    stray = kaloscope.pool([rows[0]] * 6, crowd, names, 1)
+    check(stray["outliers"] == [5] and "1 張" in kaloscope.consistency(stray),
+          "one picture in a different style is pointed out")
+    check(stray["each"][5] < min(stray["each"][:5]) - kaloscope.OUTLIER_GAP,
+          "…because it sits far below the others' likeness to the folder")
+    halves = kaloscope.pool([rows[0]] * 6, [unit(1, 0, 0)] * 3 + [unit(0, 0, 1)] * 3, names, 1)
+    check(not halves["outliers"] and halves["pairwise"] < kaloscope.MIXED_BELOW
+          and "不只一種畫風" in kaloscope.consistency(halves),
+          "two styles in equal parts have no stray picture, and are called what they are")
+    few = kaloscope.pool([rows[0]] * 3, [unit(1, 0, 0), unit(1, 0.1, 0), unit(0, 0, 1)], names, 1)
+    check(not few["outliers"], "with three pictures there are too few to call one of them the odd one")
+    alone = kaloscope.pool([rows[0]], [unit(1, 0, 0)], names, 1)
+    check(alone["pairwise"] is None and "只有一張" in kaloscope.consistency(alone),
+          "one picture is one picture, and the page says more would help")
+    spread = kaloscope.sample(list(range(200)), 60)
+    check(len(spread) == 60 and spread[0] == 0 and spread[-1] >= 190 and spread == sorted(set(spread)),
+          "a big folder is sampled evenly from start to end, not just its first sixty")
+    check(kaloscope.sample([1, 2, 3], 60) == [1, 2, 3], "a small folder is used whole")
+    TMP.mkdir(parents=True, exist_ok=True)
+    kaloscope.write_target(TMP / "pooled.json", pooled["style"], ["a.png", "b.png", "c.png"])
+    back = kaloscope.read_target(TMP / "pooled.json")
+    check(back is not None and float(np.dot(back, pooled["style"])) > 0.99999,
+          "a pooled style survives being saved as a lab target")
+    (TMP / "junk.json").write_text('{"style": "no"}', encoding="utf-8")
+    check(kaloscope.read_target(TMP / "junk.json") is None and kaloscope.read_target(TMP / "none.json") is None,
+          "a file that is not a pooled style is not mistaken for one")
+
     section("繪師實驗室: through the server")
     saved = (server.image_generate, server.image_status, kaloscope.installed, kaloscope.style,
              kaloscope.analyse, tags.installed)
+    saved_many = (kaloscope.infer, server._has_onnx, tags.describe)
     server.image_status = lambda m: {"installed": True, "usable": True, "missing": []}
     tags.installed = lambda _d: []
     config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -9093,9 +9168,160 @@ async def test_artistlab() -> None:
         got = json.loads((await server.artistlab_get(out["id"])).body)
         check(got["entries"][-1]["text"].startswith("artist:") or got["entries"][-1]["text"].startswith("(artist:"),
               "each blend comes back as text ready for the prompt box")
+
+        section("繪師實驗室: a folder of one style, through the server")
+        washes = ["redwash", "bluewash", "greywash"]
+
+        def fake_infer(pic, base):
+            r, g, b = pic.convert("RGB").resize((1, 1)).getpixel((0, 0))
+            probs = np.array([r, b, min(r, g, b) * 2 + 1], dtype=np.float32) + 1.0
+            return probs / probs.sum(), kaloscope.style(pic, base), washes
+
+        kaloscope.infer = fake_infer
+        server._has_onnx = lambda: True
+        refs = TMP / "one style"
+        (refs / "inner").mkdir(parents=True, exist_ok=True)
+        for i in range(5):
+            PILImage.new("RGB", (40, 60), (240 - i * 6, 20 + i * 4, 20)).save(refs / f"red{i}.png")
+        PILImage.new("RGB", (40, 60), (20, 20, 240)).save(refs / "zblue.jpg")
+        PILImage.new("RGB", (40, 60), (20, 240, 20)).save(refs / "inner" / "deeper.png")
+        (refs / "notes.txt").write_text("not a picture", encoding="utf-8")
+        (refs / "broken.png").write_text("not a picture either", encoding="utf-8")
+
+        async def analysed(**kw):
+            state = json.loads((await server.artistlab_references(
+                images=kw.get("images", []), path=kw.get("path", ""), top=30)).body)
+            for _ in range(400):
+                state = json.loads((await server.artistlab_references_get(state["id"])).body)
+                if state["status"] != "running":
+                    break
+                await asyncio.sleep(0.02)
+            return state
+
+        for kw, needle, label in (
+                ({}, "先選幾張圖", "nothing at all"),
+                ({"path": str(TMP / "no such folder")}, "找不到這個資料夾", "a folder that is not there"),
+                ({"path": str(refs / "notes.txt")}, "找不到這個資料夾", "a file given as a folder")):
+            try:
+                await server.artistlab_references(images=kw.get("images", []), path=kw.get("path", ""), top=30)
+                check(False, f"a folder analysis refuses {label}")
+            except HTTPException as exc:
+                check(needle in str(exc.detail), f"a folder analysis refuses {label}")
+        empty = TMP / "empty refs"
+        empty.mkdir(parents=True, exist_ok=True)
+        (empty / "readme.txt").write_text("x", encoding="utf-8")
+        try:
+            await server.artistlab_references(images=[], path=str(empty), top=30)
+            check(False, "a folder with no pictures is refused")
+        except HTTPException as exc:
+            check("沒有圖片" in str(exc.detail), "a folder with no pictures is refused, and says what it looks for")
+
+        state = await analysed(path=f'"{refs}"')
+        check(state["status"] == "done" and state["total"] == 7 and state["count"] == 6,
+              f"a pasted folder path (quotes and all) is read: six pictures pooled ({state.get('message')})")
+        check([s["name"] for s in state["skipped"]] == ["broken.png"],
+              "an unreadable file is skipped and named; the text file and the subfolder are not looked at")
+        check(state["matches"][0]["tag"] == "redwash", "the folder's artist comes out on top")
+        strays = [p["name"] for p in state["pictures"] if p["outlier"]]
+        check(strays == ["zblue.jpg"] and "1 張" in state["consistency"],
+              "the one picture in another style is flagged, by name")
+        check(all((config.STAGING_DIR / f"lab-set-{state['id']}-{p['index']}.jpg").is_file() for p in state["pictures"])
+              and Path((await server.artistlab_references_thumb(state["id"], 0)).path).is_file(),
+              "each picture has a thumbnail the page can show next to its score")
+        first_target = state["target"]
+        check(first_target.endswith(".json") and kaloscope.read_target(config.STAGING_DIR / first_target) is not None,
+              "the pooled style is staged as the lab's target")
+        blue = next(p["index"] for p in state["pictures"] if p["name"] == "zblue.jpg")
+        cleaned = json.loads((await server.artistlab_references_exclude(state["id"], {"exclude": [blue]})).body)
+        check(cleaned["count"] == 5 and not any(p["outlier"] for p in cleaned["pictures"])
+              and cleaned["pairwise"] > state["pairwise"] and "一致" in cleaned["consistency"],
+              "leaving it out gives a tighter folder and a clean verdict")
+        check(cleaned["target"] != first_target and cleaned["pictures"][blue]["excluded"] is True
+              and (config.STAGING_DIR / first_target).is_file(),
+              "…as a new target, so a lab already running against the old one is not changed under it")
+        try:
+            await server.artistlab_references_exclude(state["id"], {"exclude": list(range(6))})
+            check(False, "every picture cannot be left out")
+        except HTTPException as exc:
+            check("至少" in str(exc.detail), "every picture cannot be left out")
+        try:
+            await server.artistlab_references_get("nope")
+            check(False, "an unknown set is a 404")
+        except HTTPException as exc:
+            check(exc.status_code == 404, "an unknown set is a 404")
+
+        asked.clear()
+        out = json.loads((await server.artistlab_start({
+            "base": {"model": "noobai"}, "artists": ["bluewash", "redwash"], "prompt": "1girl", "seed": 7,
+            "target": cleaned["target"]})).body)
+        for _ in range(200):
+            lab_run = server.LABS.labs[out["id"]]
+            if lab_run.status != "running":
+                break
+            await asyncio.sleep(0.05)
+        check(out["scoring"] is True and lab_run.ranked(("solo",))[0].artists[0][0] == "redwash",
+              "a lab scores against the folder's pooled style, and the matching artist ranks first")
+        one = lab_run.ranked(("solo",))[0].score
+        check(one is not None and one > 0.9, f"…with a high score for a picture in that style ({one})")
+
+        def shot(colour, name):
+            data = io.BytesIO()
+            PILImage.new("RGB", (48, 48), colour).save(data, "PNG")
+            return pytypes.SimpleNamespace(read=lambda: _coro(data.getvalue()), filename=name)
+
+        sent = await analysed(images=[shot((250, 30, 30), "C:\\pics\\a.png"), shot((240, 40, 30), "b.png")])
+        check(sent["status"] == "done" and sent["count"] == 2 and [p["name"] for p in sent["pictures"]] == ["a.png", "b.png"],
+              "uploaded pictures work the same way, keeping only the file's own name")
+        check(not (config.STAGING_DIR / f"lab-set-{sent['id']}-src").exists(),
+              "the uploaded originals are not kept once they are analysed")
+
+        many = TMP / "many refs"
+        many.mkdir(parents=True, exist_ok=True)
+        for i in range(70):
+            PILImage.new("RGB", (8, 8), (200, 20 + i, 20)).save(many / f"p{i:03d}.png")
+        big = await analysed(path=str(many))
+        check(big["found"] == 70 and big["total"] == kaloscope.MAX_REFERENCES == big["count"],
+              "a folder over the limit is sampled down, and the page is told how many there were")
+        check(big["pictures"][0]["name"] == "p000.png" and big["pictures"][-1]["name"] >= "p065.png",
+              "…spread across the whole folder")
+        check(len(server.REFSETS) <= server.REFSET_KEEP and state["id"] in server.REFSETS,
+              "only the last few analyses are kept in memory")
+        await analysed(path=str(many))
+        check(state["id"] not in server.REFSETS
+              and not list(config.STAGING_DIR.glob(f"lab-set-{state['id']}-*")),
+              "…and an old one goes with its thumbnails")
+
+        tags.installed = lambda _d: ["wd-vit-v3"]
+        calls = {"style": 0}
+        counted = kaloscope.infer
+
+        def counting_infer(pic, base):
+            calls["style"] += 1
+            return counted(pic, base)
+
+        kaloscope.infer = counting_infer
+        tags.describe = lambda pic, base, *a, **k: tags.Guess(
+            general=[("loli", 0.9)] if pic.convert("RGB").getpixel((0, 0))[0] in (234, 222) else [("1girl", 0.9)])
+        stopped = await analysed(path=str(refs))
+        check(stopped["status"] == "error" and "未成年" in stopped["message"] and "matches" not in stopped
+              and "target" not in stopped,
+              "a folder with a minor in a picture is stopped, with nothing returned")
+        check("red1.png" in stopped["message"] and "red3.png" in stopped["message"] and "red0.png" not in stopped["message"],
+              "…naming every such picture at once, not one per attempt")
+        check(calls["style"] == 1 and not server.REFSETS[stopped["id"]]["items"],
+              "…and nothing after the first of them is read for style")
+        kaloscope.infer = counted
+        tags.installed = lambda _d: []
+        kaloscope.installed = lambda _d: False
+        try:
+            await server.artistlab_references(images=[], path=str(refs), top=30)
+            check(False, "without the style model a folder cannot be analysed")
+        except HTTPException as exc:
+            check("下載" in str(exc.detail), "without the style model the page is told to download it")
     finally:
         (server.image_generate, server.image_status, kaloscope.installed, kaloscope.style,
          kaloscope.analyse, tags.installed) = saved
+        kaloscope.infer, server._has_onnx, tags.describe = saved_many
         for job in [k for k in server.lib.records if k.startswith("lab0")]:
             server.lib.records.pop(job, None)
 

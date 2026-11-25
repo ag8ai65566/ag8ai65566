@@ -17,10 +17,28 @@ What this does
    (kaloscope.py) against the target's. That ranks a hundred artists by how
    close each one's style is to the wanted one, with no content involved.
 3. **Mixing.** The best few (or the ones the user starred) are combined in
-   twos and threes; with a target, the best blends are then mutated - swap
-   one artist, add one, drop one, shift a weight - generation after
-   generation, keeping whatever scores best. That is a small beam search; it
-   stops when the rounds run out or two rounds in a row improve nothing.
+   twos and threes; with a target, the search then goes round by round,
+   keeping whatever scores best. Each round has two parts:
+
+   * *careful* - every blend one weight step away from the best so far (each
+     artist a notch up, and a notch down). Weights are a smooth dial, so
+     this is a plain hill climb and it does not depend on luck;
+   * *exploring* - random changes to the best few: swap one artist, add one,
+     drop one, jump a weight. This is what finds a different set of artists.
+
+   It stops when the rounds run out or two rounds in a row improve nothing.
+
+   The first version of this was all random, and measuring it showed why
+   that is wrong: over 300 runs against a known blend (a made-up score that
+   peaks at one blend) it found the right artists 94-100% of the time but
+   the exact weights in only 5-13%, and improved on the equal-weight blend
+   at all in 33-60% - a specific helpful weight change was a 1-in-12 draw.
+   With the careful part, same runs: the exact weights every time for two
+   artists within three rounds. Three artists at uneven weights need more
+   steps - 4% exact after three rounds, 100% after five (91% when the score
+   is given +-0.03 of noise) - so the page offers five rounds by default.
+   A real style score is rougher than that made-up one; these numbers are
+   about the search, not about how alike the pictures end up.
 
 Without a target there is nothing to score against, so the user's stars are
 the judgement: star some, mix them, star again.
@@ -203,9 +221,41 @@ def mutate(members: list, pool: list[str], rng: random.Random) -> list:
     return members
 
 
+def neighbours(members: list) -> list[list]:
+    """Every blend one weight step away: each artist a notch up, and a notch down."""
+    out = []
+    for slot, (_tag, weight) in enumerate(members):
+        at = min(range(len(WEIGHTS)), key=lambda i: abs(WEIGHTS[i] - float(weight)))
+        for step in (1, -1):
+            if 0 <= at + step < len(WEIGHTS):
+                child = [list(m) for m in members]
+                child[slot][1] = WEIGHTS[at + step]
+                out.append(child)
+    return out
+
+
 def next_generation(parents: list[list], pool: list[str], seen: set[str], count: int,
                     rng: random.Random) -> list[list]:
-    children, tries = [], 0
+    """The next round: weight steps around the best blends, then random changes.
+
+    `parents` is best first. Up to three quarters of the round goes to the
+    untried weight neighbours of the best blend (then the runner-up's, if the
+    best has none left); the rest is exploration, so a round never becomes
+    all one or the other.
+    """
+    children: list[list] = []
+    careful = count - max(1, count // 4)
+    for parent in parents:
+        for child in neighbours(parent):
+            if len(children) >= careful:
+                break
+            key = key_of(child)
+            if key not in seen:
+                seen.add(key)
+                children.append(child)
+        if len(children) >= careful:
+            break
+    tries = 0
     while len(children) < count and parents and tries < count * 40:
         tries += 1
         child = mutate(parents[tries % len(parents)], pool, rng)

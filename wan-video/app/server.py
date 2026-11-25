@@ -66,7 +66,7 @@ import workflow
 import comfy_client
 import comfyboot
 from comfy_client import ComfyClient, ComfyError
-from fastapi import Body, FastAPI, Form, HTTPException, UploadFile
+from fastapi import Body, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageOps
@@ -4783,6 +4783,210 @@ async def artistlab_identify(image: UploadFile, top: int = Form(30)) -> JSONResp
     return JSONResponse({"matches": matches, "note": kaloscope.confidence(matches), "target": name})
 
 
+# Several pictures in one style, read as one. A folder takes a second or two a
+# picture on the CPU, so it runs in the background and the page watches it.
+REFSETS: dict[str, dict] = {}
+REFSET_KEEP = 3
+
+
+def _refset_or_404(set_id: str) -> dict:
+    state = REFSETS.get(set_id)
+    if state is None:
+        raise HTTPException(404, "找不到這批圖（app 重開過的話要重新放一次）")
+    return state
+
+
+def _refset_forget() -> None:
+    """Keep the last few sets; older ones go, with their thumbnails."""
+    idle = [s for s in sorted(REFSETS.values(), key=lambda s: s["created"]) if s["status"] != "running"]
+    while len(REFSETS) >= REFSET_KEEP and idle:
+        REFSETS.pop(idle.pop(0)["id"], None)
+    for stale in config.STAGING_DIR.glob("lab-set-*"):
+        if stale.name.split("-")[2].split(".")[0] in REFSETS:
+            continue
+        if stale.is_dir():
+            shutil.rmtree(stale, ignore_errors=True)
+        else:
+            stale.unlink(missing_ok=True)
+
+
+def _refset_pool(state: dict) -> None:
+    """Pool the pictures still counted, and stage the result as a lab target."""
+    items = state["items"]
+    keep = [i for i in range(len(items)) if i not in state["excluded"]]
+    pooled = kaloscope.pool([items[i]["probs"] for i in keep], [items[i]["vector"] for i in keep],
+                            state["names"], state["top"])
+    place = {index: n for n, index in enumerate(keep)}
+    pictures = []
+    for index, item in enumerate(items):
+        n = place.get(index)
+        pictures.append({
+            "index": index, "name": item["name"], "first": item["first"],
+            "likeness": pooled["each"][n] if n is not None
+            else round(kaloscope.similarity(item["vector"], pooled["style"]), 3),
+            "outlier": n is not None and n in pooled["outliers"], "excluded": n is None})
+    target = f"lab-target-{uuid.uuid4().hex[:10]}.json"
+    kaloscope.write_target(config.STAGING_DIR / target, pooled["style"], [items[i]["name"] for i in keep])
+    state["result"] = {
+        "matches": pooled["matches"], "note": kaloscope.confidence(pooled["matches"]),
+        "consistency": kaloscope.consistency(pooled), "pairwise": pooled["pairwise"],
+        "count": pooled["count"], "pictures": pictures, "target": target}
+
+
+def _refset_public(state: dict) -> dict:
+    out = {k: state[k] for k in ("id", "status", "done", "total", "found", "message", "skipped")}
+    if state["status"] == "done":
+        out.update(state["result"])
+    return out
+
+
+async def _refset_run(state: dict, sources: list[tuple[str, Path]], scratch: Path | None) -> None:
+    loop = asyncio.get_running_loop()
+    kbase = _kaloscope_base()
+    here = tags.installed(config.MODELS_DIR)
+    tbase = tags.folder(config.MODELS_DIR, here[0]) if here else None
+    refused: list[tuple[str, list[str]]] = []
+    try:
+        for name, path in sources:
+            if state["status"] != "running":            # replaced by a newer set
+                return
+            try:
+                picture = Image.open(path)
+                picture.load()
+                if picture.width * picture.height > MAX_IMPORT_PIXELS:
+                    raise ValueError("too large")
+            except Exception:  # noqa: BLE001 - one bad file should not sink the folder
+                state["skipped"].append({"name": name, "why": "讀不出來（不是圖片、檔案壞了或太大）"})
+                state["done"] += 1
+                continue
+            if tbase is not None:
+                guess = await loop.run_in_executor(None, tags.describe, picture, tbase)
+                if stop := reverse.blocked(guess):
+                    # The folder is refused either way. The rest is still
+                    # checked, so every such picture is named in one go
+                    # rather than one per attempt - but nothing more is read
+                    # for style.
+                    refused.append((name, stop))
+            if refused:
+                state["done"] += 1
+                continue
+            probs, vector, names = await loop.run_in_executor(None, kaloscope.infer, picture, kbase)
+            thumb = picture.convert("RGB")
+            thumb.thumbnail((256, 256))
+            thumb.save(config.STAGING_DIR / f"lab-set-{state['id']}-{len(state['items'])}.jpg", "JPEG", quality=82)
+            state["names"] = names
+            state["items"].append({"name": name, "probs": probs, "vector": vector,
+                                   "first": kaloscope.ranked(probs, names, 1)[0]["tag"]})
+            state["done"] += 1
+        if state["status"] != "running":
+            return
+        if refused:
+            listed = "、".join(f"「{n}」（{'、'.join(t)}）" for n, t in refused[:8])
+            more = f" 等 {len(refused)} 張" if len(refused) > 8 else ""
+            state.update(status="error", items=[], message=(
+                f"這批圖裡有看起來是未成年人物的：{listed}{more}。這個 app 不做這類內容，整批都沒有分析。"))
+            return
+        if not state["items"]:
+            state.update(status="error", message="沒有一張讀得出來。")
+            return
+        _refset_pool(state)
+        state["status"] = "done"
+    except ImportError:
+        state.update(status="error", message="缺少 onnxruntime 套件。跑一次 update.bat 或 install.bat。")
+    except Exception as exc:  # noqa: BLE001 - shown on the page instead of vanishing
+        traceback.print_exc()
+        state.update(status="error", message=f"分析失敗：{exc}")
+    finally:
+        if scratch is not None:
+            shutil.rmtree(scratch, ignore_errors=True)
+
+
+@app.post("/api/artistlab/references")
+async def artistlab_references(images: list[UploadFile] = File(default=[]), path: str = Form(""),
+                               top: int = Form(30)) -> JSONResponse:
+    """Many pictures in one style - uploaded, or a folder on this computer.
+
+    Telling it "these are all one style" is what makes the answer better: the
+    subject of each picture averages out and the style is what remains.
+    """
+    if _kaloscope_base() is None:
+        raise HTTPException(400, "還沒下載「看圖認畫師」模型（169MB）。按下面的下載。")
+    if not _has_onnx():
+        raise HTTPException(400, "缺少 onnxruntime 套件。跑一次 update.bat 或 install.bat。")
+    listed: list[Path] = []
+    raw = str(path or "").strip().strip('"')
+    if raw:
+        folder = Path(raw).expanduser()
+        if not folder.is_dir():
+            raise HTTPException(400, f"找不到這個資料夾：{folder}")
+        listed = sorted((p for p in folder.iterdir()
+                         if p.is_file() and p.suffix.lower() in training.IMAGE_SUFFIXES),
+                        key=lambda p: p.name.lower())
+        if not listed and not images:
+            raise HTTPException(400, "這個資料夾裡沒有圖片（只看這一層的 png / jpg / webp / bmp，不看子資料夾）。")
+    if not listed and not images:
+        raise HTTPException(400, "先選幾張圖，或貼上資料夾路徑")
+    set_id = uuid.uuid4().hex[:10]
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    for other in REFSETS.values():
+        if other["status"] == "running":
+            other.update(status="error", message="已被新的一批取代。")
+    _refset_forget()
+    found = len(images) + len(listed)
+    # Sampled before anything is written, so a thousand uploads cost sixty files.
+    chosen = kaloscope.sample([("upload", u) for u in images] + [("disk", p) for p in listed])
+    sources: list[tuple[str, Path]] = []
+    scratch = None
+    for kind, item in chosen:
+        if kind == "disk":
+            sources.append((item.name, item))
+            continue
+        if scratch is None:
+            scratch = config.STAGING_DIR / f"lab-set-{set_id}-src"
+            scratch.mkdir(parents=True, exist_ok=True)
+        # A browser may send a path, with either kind of slash; keep the name.
+        name = re.split(r"[\\/]", str(item.filename or ""))[-1] or f"圖 {len(sources) + 1}"
+        saved = scratch / f"{len(sources):03d}{Path(name).suffix.lower()[:6]}"
+        saved.write_bytes(await item.read())
+        sources.append((name, saved))
+    state = {"id": set_id, "created": time.time(), "status": "running", "done": 0,
+             "total": len(sources), "found": found, "message": "", "skipped": [], "items": [],
+             "names": [], "excluded": set(), "top": max(5, min(int(top), 100)), "result": {}}
+    REFSETS[set_id] = state
+    task = asyncio.create_task(_refset_run(state, sources, scratch))
+    _background.add(task)
+    task.add_done_callback(_background.discard)
+    return JSONResponse(_refset_public(state))
+
+
+@app.get("/api/artistlab/references/{set_id}")
+async def artistlab_references_get(set_id: str) -> JSONResponse:
+    return JSONResponse(_refset_public(_refset_or_404(set_id)))
+
+
+@app.post("/api/artistlab/references/{set_id}/exclude")
+async def artistlab_references_exclude(set_id: str, payload: dict = Body(default={})) -> JSONResponse:
+    """Leave some pictures out (the ones that are not that style) and pool again."""
+    state = _refset_or_404(set_id)
+    if state["status"] != "done":
+        raise HTTPException(409, "這批圖還沒分析完")
+    wanted = {int(i) for i in (payload.get("exclude") or [])
+              if isinstance(i, int) and 0 <= i < len(state["items"])}
+    if len(wanted) >= len(state["items"]):
+        raise HTTPException(400, "至少要留一張")
+    state["excluded"] = wanted
+    _refset_pool(state)
+    return JSONResponse(_refset_public(state))
+
+
+@app.get("/api/artistlab/references/{set_id}/thumb/{index}")
+async def artistlab_references_thumb(set_id: str, index: int) -> FileResponse:
+    state = _refset_or_404(set_id)
+    if not 0 <= index < len(state["items"]):
+        raise HTTPException(404, "沒有這張")
+    return FileResponse(config.STAGING_DIR / f"lab-set-{state['id']}-{index}.jpg")
+
+
 @app.post("/api/artistlab/parse")
 async def artistlab_parse(payload: dict = Body(default={})) -> JSONResponse:
     parsed = artistlab.parse(str(payload.get("text") or ""))
@@ -4805,10 +5009,16 @@ def _lab_callbacks(lab):
     kbase = _kaloscope_base()
     target = _staged(lab.target)
     score = None
+    target_style = None
     if kbase is not None and target is not None:
-        picture = Image.open(target)
-        picture.load()
-        target_style = kaloscope.style(picture, kbase)
+        if target.suffix == ".json":
+            # A folder of references, pooled: the centroid of their styles.
+            target_style = kaloscope.read_target(target)
+        else:
+            picture = Image.open(target)
+            picture.load()
+            target_style = kaloscope.style(picture, kbase)
+    if target_style is not None:
 
         async def score(output: str) -> float:
             attempt = Image.open(config.OUTPUT_DIR / output)

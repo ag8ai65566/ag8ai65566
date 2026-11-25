@@ -1375,7 +1375,8 @@ const ok = (m) => !!(m && (m.usable ?? m.installed));
 const mark = (m) => m.installed ? '✓' : (ok(m) ? '☁' : (m.partial ? '◐' : '·'));
 const usd = (n) => '$' + (Number(n) || 0).toFixed(n >= 10 ? 0 : 2);
 // 繪師實驗室's state, up here because the model picker repaints it.
-const LAB = { info: {}, target: '', preview: '', matches: [], run: null, timer: null, built: false };
+const LAB = { info: {}, target: '', preview: '', matches: [], run: null, timer: null, built: false,
+              set: null, setTimer: null, maxRefs: 60 };
 const labPct = (x) => x == null ? '' : Math.round(x * 100) + '%';
 let CIV = { items: [], cursor: '', loading: false };
 
@@ -7972,11 +7973,22 @@ function buildLab() {
 
     <h2>① 想要的畫風（選填，有的話才能自動排名）</h2>
     <div class="row" style="margin-top:4px;align-items:center;gap:8px">
-      <button class="ghost tiny" id="labpick">選一張那種畫風的圖</button>
-      <input type="file" id="labfile" accept="image/*" hidden>
+      <button class="ghost tiny" id="labpick">選圖（可以一次選很多張）</button>
+      <input type="file" id="labfile" accept="image/*" multiple hidden>
+      <button class="ghost tiny" id="labpickdir">選整個資料夾</button>
+      <input type="file" id="labdir" webkitdirectory hidden>
       <img id="labthumb" class="hidden" style="height:64px;border-radius:6px">
       <span class="s" id="labtnote"></span>
     </div>
+    <div class="row" style="margin-top:4px;gap:6px">
+      <input type="text" id="labpath" aria-label="資料夾路徑" style="flex:1;min-width:260px"
+        placeholder="或貼上這台電腦的資料夾路徑（不用上傳，直接讀），例如 D:\\圖\\某種畫風">
+      <button class="ghost tiny" id="labpathgo">判斷這個資料夾</button>
+    </div>
+    <div class="note">同一種畫風的圖<b>放越多張越準</b>：每張圖都帶著自己的題材和構圖，很多張平均起來，題材互相抵銷，剩下的才是畫風。
+      實測（真實畫師作品）：單張認對畫師約七到八成；兩張九成以上；三張以上幾乎每次都對。3～10 張就夠，最多用 60 張（更多會平均抽樣）。
+      只看資料夾這一層，不看子資料夾。</div>
+    <div id="labset" style="margin-top:6px"></div>
     <div id="labmatches" style="margin-top:6px"></div>
 
     <h2>② 要試的畫師（一次貼多少都行，最多 ${LAB.info.max_artists || 200} 位）</h2>
@@ -8005,13 +8017,24 @@ function buildLab() {
 
   $('#labpick').onclick = () => $('#labfile').click();
   $('#labfile').onchange = async () => {
-    const file = $('#labfile').files[0];
-    if (!file) return;
-    LAB.preview = URL.createObjectURL(file);
-    $('#labthumb').src = LAB.preview; $('#labthumb').classList.remove('hidden');
-    await labIdentify(file);
+    const files = [...$('#labfile').files];
     $('#labfile').value = '';
+    if (!files.length) return;
+    if (files.length > 1) { labReferences(files, ''); return; }
+    clearTimeout(LAB.setTimer); LAB.set = null; $('#labset').innerHTML = '';
+    LAB.preview = URL.createObjectURL(files[0]);
+    $('#labthumb').src = LAB.preview; $('#labthumb').classList.remove('hidden');
+    await labIdentify(files[0]);
   };
+  $('#labpickdir').onclick = () => $('#labdir').click();
+  $('#labdir').onchange = () => {
+    // Same rule as a pasted path: this folder, not the ones inside it.
+    const files = [...$('#labdir').files].filter((f) => (f.webkitRelativePath || '').split('/').length <= 2);
+    $('#labdir').value = '';
+    labReferences(files, '');
+  };
+  $('#labpathgo').onclick = () => labReferences([], $('#labpath').value);
+  $('#labpath').onkeydown = (ev) => { if (ev.key === 'Enter') labReferences([], $('#labpath').value); };
   $('#labbuiltin').onclick = () => {
     const have = $('#labtext').value.trim();
     const add = (ART.list || []).map((a) => a.tag).join(', ');
@@ -8058,19 +8081,113 @@ async function labIdentify(file) {
     const r = await fetch('/api/artistlab/identify', { method: 'POST', body: form });
     const d = await r.json();
     if (!r.ok) throw new Error(d.detail || r.statusText);
-    LAB.target = d.target; LAB.matches = d.matches || [];
-    note.textContent = '這張圖會當成目標：之後每張試畫都跟它比畫風。';
-    box.innerHTML = `<div class="s">${esc(d.note)}</div>
-      <div class="words" style="margin-top:4px">${LAB.matches.map((m, i) =>
-        `<label class="tag" title="${m.zh ? esc(m.zh) + ' · ' : ''}相似度分數 ${m.p}"><input type="checkbox" class="labm" value="${esc(m.tag)}" ${i < 20 ? 'checked' : ''}> ${esc(m.tag)} <span class="s">${(m.p * 100).toFixed(1)}%</span></label>`).join('')}</div>
-      <div class="row" style="margin-top:4px;gap:6px"><button class="go tiny" id="labmadd">把勾的加進清單</button>
-        <span class="s">分數是模型的把握，不是證據；低分的也可能混得出來。</span></div>`;
-    $('#labmadd').onclick = () => {
-      const picked = [...document.querySelectorAll('.labm:checked')].map((c) => c.value);
-      $('#labtext').value = [$('#labtext').value.trim(), picked.join(', ')].filter(Boolean).join(', ');
-      labCheck();
-    };
+    LAB.target = d.target;
+    note.textContent = '這張圖會當成目標：之後每張試畫都跟它比畫風。同畫風的圖多選幾張會準很多。';
+    labShowMatches(d);
   } catch (e) { note.innerHTML = `<span class="warn">${esc(e.message)}</span>`; }
+}
+
+function labShowMatches(d) {
+  const box = $('#labmatches');
+  LAB.matches = d.matches || [];
+  box.innerHTML = `<div class="s">${esc(d.note)}</div>
+    <div class="words" style="margin-top:4px">${LAB.matches.map((m, i) =>
+      `<label class="tag" title="${m.zh ? esc(m.zh) + ' · ' : ''}相似度分數 ${m.p}"><input type="checkbox" class="labm" value="${esc(m.tag)}" ${i < 20 ? 'checked' : ''}> ${esc(m.tag)} <span class="s">${(m.p * 100).toFixed(1)}%</span></label>`).join('')}</div>
+    <div class="row" style="margin-top:4px;gap:6px"><button class="go tiny" id="labmadd">把勾的加進清單</button>
+      <span class="s">分數是模型的把握，不是證據；低分的也可能混得出來。</span></div>`;
+  $('#labmadd').onclick = () => {
+    const picked = [...document.querySelectorAll('.labm:checked')].map((c) => c.value);
+    $('#labtext').value = [$('#labtext').value.trim(), picked.join(', ')].filter(Boolean).join(', ');
+    labCheck();
+  };
+}
+
+/* Many pictures said to be one style: pooled into one answer and one target. */
+async function labReferences(files, path) {
+  const note = $('#labtnote');
+  if (!(LAB.info.kaloscope || {}).installed) {
+    note.textContent = '沒有 Kaloscope，無法認畫師和自動評分（可以先下載）。';
+    return;
+  }
+  const images = files.filter((f) => /\.(png|jpe?g|webp|bmp)$/i.test(f.name))
+    .sort((a, b) => a.name.localeCompare(b.name));
+  path = (path || '').trim();
+  if (!images.length && !path) { note.textContent = files.length ? '裡面沒有圖片（png / jpg / webp / bmp）。' : '先選圖，或貼上資料夾路徑。'; return; }
+  // Sampled here as well, so two hundred files are not uploaded to use sixty.
+  const step = images.length / LAB.maxRefs;
+  const send = images.length <= LAB.maxRefs ? images
+    : Array.from({ length: LAB.maxRefs }, (_, i) => images[Math.floor(i * step)]);
+  const form = new FormData();
+  send.forEach((f) => form.append('images', f, f.name));
+  form.append('path', path); form.append('top', '40');
+  clearTimeout(LAB.setTimer);
+  LAB.target = ''; LAB.set = null; LAB.picked = images.length;
+  $('#labthumb').classList.add('hidden'); $('#labmatches').innerHTML = ''; $('#labset').innerHTML = '';
+  note.textContent = send.length ? `上傳 ${send.length} 張中…` : '讀取資料夾中…';
+  try {
+    const r = await fetch('/api/artistlab/references', { method: 'POST', body: form });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    LAB.set = d; renderLabSet(); pollLabSet();
+  } catch (e) { note.innerHTML = `<span class="warn">${esc(e.message)}</span>`; }
+}
+
+function pollLabSet() {
+  clearTimeout(LAB.setTimer);
+  LAB.setTimer = setTimeout(async () => {
+    if (!LAB.set) return;
+    try {
+      const r = await fetch('/api/artistlab/references/' + LAB.set.id);
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      LAB.set = d; renderLabSet();
+    } catch (e) { $('#labtnote').innerHTML = `<span class="warn">${esc(e.message)}</span>`; return; }
+    if (LAB.set.status === 'running') pollLabSet();
+  }, 1000);
+}
+
+function renderLabSet() {
+  const s = LAB.set, box = $('#labset'), note = $('#labtnote');
+  if (!s || !box) return;
+  if (s.status === 'running') {
+    note.textContent = `分析畫風中… ${s.done}/${s.total}（約 1～2 秒一張）`;
+    box.innerHTML = `<div class="bar"><i style="width:${s.total ? Math.round(s.done / s.total * 100) : 0}%"></i></div>`;
+    return;
+  }
+  if (s.status === 'error') {
+    note.innerHTML = `<span class="warn">${esc(s.message)}</span>`; box.innerHTML = ''; LAB.target = ''; return;
+  }
+  LAB.target = s.target;
+  const flagged = s.pictures.filter((p) => p.outlier).length;
+  const more = Math.max(s.found, LAB.picked || 0);
+  note.textContent = `${s.count} 張合併成一個目標：之後每張試畫都跟這批圖的平均畫風比。`;
+  box.innerHTML = `<div class="s"><b>${esc(s.consistency)}</b>${more > s.total ? ` 一共 ${more} 張，平均抽了 ${s.total} 張。` : ''}${
+      s.skipped.length ? ` <span class="warn" title="${esc(s.skipped.map((k) => k.name).join('、'))}">${s.skipped.length} 張讀不出來，已略過。</span>` : ''}</div>
+    <div class="row" style="gap:6px;flex-wrap:wrap;margin-top:6px;align-items:flex-start">${s.pictures.map((p) => `
+      <label style="width:84px;cursor:pointer;opacity:${p.excluded ? 0.4 : 1}" title="${esc(p.name)} · 單看這張最像 ${esc(p.first)}">
+        <img src="/api/artistlab/references/${s.id}/thumb/${p.index}" loading="lazy" alt="${esc(p.name)}"
+          style="width:84px;height:84px;object-fit:cover;border-radius:6px;outline:${p.outlier ? '2px solid var(--warn)' : 'none'}">
+        <span class="s"><input type="checkbox" class="labkeep" data-i="${p.index}" ${p.excluded ? '' : 'checked'}> ${labPct(Math.max(0, p.likeness))}${p.outlier ? ' <span class="warn">不像</span>' : ''}</span>
+      </label>`).join('')}</div>
+    <div class="row" style="margin-top:6px;gap:6px;align-items:center">
+      ${flagged ? `<button class="go tiny" id="labsetdrop">拿掉標「不像」的 ${flagged} 張再判斷</button>` : ''}
+      <button class="ghost tiny" id="labsetredo">只用打勾的重新判斷</button>
+      <span class="s">百分比是每張跟整批平均畫風的相似度。同一種畫風通常 65% 以上；「不像」是明顯低於其他張的，要不要拿掉由你看圖決定。</span>
+    </div>`;
+  labShowMatches(s);
+  const redo = async (exclude) => {
+    try {
+      const r = await fetch(`/api/artistlab/references/${s.id}/exclude`, { method: 'POST',
+        headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ exclude }) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      LAB.set = d; renderLabSet();
+    } catch (e) { note.innerHTML = `<span class="warn">${esc(e.message)}</span>`; }
+  };
+  const unchecked = () => [...box.querySelectorAll('.labkeep')].filter((c) => !c.checked).map((c) => +c.dataset.i);
+  $('#labsetredo').onclick = () => redo(unchecked());
+  const drop = $('#labsetdrop');
+  if (drop) drop.onclick = () => redo([...new Set([...unchecked(), ...s.pictures.filter((p) => p.outlier).map((p) => p.index)])]);
 }
 
 async function labCheck() {
@@ -8163,7 +8280,7 @@ function renderLabRun() {
       <span class="tag ${run.status === 'idle' ? 'done' : run.status === 'error' ? 'err' : 'run'}">${state}</span>
       <span class="s">${esc(run.message || '')}</span>
       <span class="s">單人 ${doneSolo}/${solo.length}${mixes.length ? ` · 組合 ${mixes.filter((e) => e.output).length}/${mixes.length}` : ''} · 種子 ${run.seed}</span></div>
-    <div class="s">測試提詞：${esc(run.prompt)}${scored ? ' · 百分比是跟目標圖的畫風相似度（同一位畫師的兩張圖大約 85%，無關的畫師大約 20%）' : ''}</div>`;
+    <div class="s">測試提詞：${esc(run.prompt)}${scored ? ' · 百分比是跟目標的畫風相似度。參考值（量自真實作品）：同一位畫師的作品，目標是單張圖時約 60%、多張合併時約 75～80%；無關的畫師約 20%' : ''}</div>`;
   if (mixes.length) {
     html += `<h2>組合結果${scored ? '（最像的在前面）' : ''}</h2>` + mixes.slice(0, 60).map((e) => `
       <div class="row" style="margin-top:6px;align-items:flex-start;gap:8px">${labCell(e, false)}
@@ -8184,7 +8301,7 @@ function renderLabRun() {
         <label class="chk"><input type="checkbox" id="labs2" checked> 2 人</label>
         <label class="chk"><input type="checkbox" id="labs3" checked> 3 人</label>
         <span class="s">第一批</span><input type="number" id="labcount" min="2" max="40" value="12" style="width:56px"><span class="s">組</span>
-        ${scored ? `<span class="s">，再自動調整</span><input type="number" id="labrounds" min="0" max="8" value="3" style="width:52px"><span class="s">輪，每輪</span>
+        ${scored ? `<span class="s">，再自動調整</span><input type="number" id="labrounds" min="0" max="8" value="5" style="width:52px"><span class="s">輪，每輪</span>
           <input type="number" id="labper" min="2" max="20" value="8" style="width:52px"><span class="s">組</span>` : ''}
         <button class="go tiny" id="labmix" ${busy ? 'disabled' : ''}>開始組合</button>
       </div>
