@@ -219,7 +219,12 @@ MiniMax H3 光權重就 44GB、建議 24GB 顯存；10GB 的卡跑得動但非�
 
 下載中斷不用怕，重跑會從斷點續傳。
 
-**之後要更新程式**：雙擊 `update.bat`（或 `powershell -ExecutionPolicy Bypass -File
+**之後要更新程式**：雙擊 `update-and-start.bat` —— 一個檔案做完「更新 → 啟動」。它可以放在任何地方（例如桌面）：
+會自己找 app 資料夾（找不到就請你把資料夾拖進視窗，之後會記住），app 還開著的話會先請你關掉兩個黑色視窗，
+更新沒完成就不會啟動。選單：`1` 更新後啟動、`2` 只啟動、`3` 只更新。
+（這個檔案還沒在 Windows 上實際跑過；它只是依序呼叫下面兩支已經在用的腳本。）
+
+也可以分開做：雙擊 `update.bat`（或 `powershell -ExecutionPolicy Bypass -File
 .\update-windows.ps1`）。它下載最新程式碼覆蓋上去，但 `ComfyUI\`、`venv\`、`data\`、
 `models\`、`.env` 一律不動，所以模型和成品不會重下。更新後要重啟才生效。
 更新是**全有全無**的：它會先確認每個要覆蓋的檔案都寫得進去，只要有一個不行就整個不動，
@@ -976,6 +981,7 @@ Dockerfile.comfy       ComfyUI + ComfyUI-GGUF + VideoHelperSuite + Manager
 setup-windows.ps1      Windows 原生安裝（不用 Docker）
 start-windows.ps1      Windows 啟動 · update-windows.ps1 更新程式碼（不動模型）
 install.bat / start.bat / update.bat   上面三支的雙擊包裝
+update-and-start.bat   單一啟動檔：可以放桌面，自己找到 app 資料夾，更新後啟動
 setup-codex.bat        選用：裝 OpenAI Codex 並註冊給 Claude Code 當工具
                        （見 docs/codex-mcp.md；憑證由你自己輸入，不經過腳本）
 setup-linux.sh         Linux 裸機安裝

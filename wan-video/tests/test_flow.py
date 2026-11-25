@@ -9617,6 +9617,22 @@ def test_windows_script_encoding() -> None:
         lf, crlf = raw.count(b"\n"), raw.count(b"\r\n")
         check(lf > 0 and lf == crlf, f"{name} is entirely CRLF")
 
+    # The one-file launcher is only worth having if it leans on the two scripts
+    # that are already proven, and never starts an app the update did not reach.
+    launcher = (ROOT / "update-and-start.bat").read_text(encoding="ascii")
+    check("update-windows.ps1" in launcher and "start-windows.ps1" in launcher
+          and all((ROOT / name).is_file() for name in ("update-windows.ps1", "start-windows.ps1")),
+          "update-and-start.bat runs the existing update and start scripts, not copies of them")
+    flow = launcher[launcher.index(":update_start"):launcher.index(":update_only")]
+    check(flow.index("call :wait_closed") < flow.index("call :update") < flow.index("if errorlevel 1 goto failed")
+          < flow.index("goto start_only"),
+          "…it waits for a running app to close, updates, and starts only if the update completed")
+    check("-LocalPort 8000 " in launcher and "DisableDelayedExpansion" in launcher,
+          "…checking the app's own port, with ! in a folder name left alone")
+    branch = re.search(r"\$Branch = '([^']+)'", (ROOT / "update-windows.ps1").read_text(encoding="utf-8-sig")).group(1)
+    check(f"/archive/refs/heads/{branch}.zip" in launcher,
+          "…and its first-install hint points at the same branch the updater downloads")
+
     attrs = (ROOT / ".gitattributes").read_text()
     check("*.ps1 -text" in attrs, ".gitattributes stops git normalising .ps1 endings")
     check("*.bat -text" in attrs, ".gitattributes stops git normalising .bat endings")
