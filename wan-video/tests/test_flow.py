@@ -8878,6 +8878,228 @@ async def test_cloud_training() -> None:
             server.lib.records.pop(job, None)
 
 
+async def test_artistlab() -> None:
+    """繪師實驗室: a pasted list of artists, a sweep, and a search over blends.
+
+    The search is driven with stand-ins for "generate" and "score", where the
+    score is a known function of the blend - so "does it find the blend that
+    scores best" has a checkable answer. The style model itself (Kaloscope,
+    169MB) is not part of the suite: its preprocessing is checked here, and
+    its outputs were checked against the export's own reference probe and
+    against real artists' work when this was written (see kaloscope.py).
+    """
+    import random as _random
+    import types as pytypes
+
+    import numpy as np
+
+    import artistlab
+    import config
+    import kaloscope
+    import library
+    import server
+    import tags
+    from fastapi import HTTPException
+    from PIL import Image as PILImage
+
+    section("繪師實驗室: reading a pasted list")
+    parsed = artistlab.parse(
+        "artist:wlop, by hiten, 1.2::artist:mika pikazo ::, {{ask (askzy)}}, (artist:ciloranko:1.1),\n"
+        "artist:rella\\, , wlop\nArtist: Fuzichoco | kedama_milk ; 123 、redum4")
+    check(parsed["artists"] == ["wlop", "hiten_(hitenkei)", "mika_pikazo", "ask_(askzy)", "ciloranko",
+                                "rella", "fuzichoco", "redum4"],
+          f"every common spelling is understood, duplicates and numbers dropped ({parsed['artists']})")
+    check(parsed["dropped"] == ["kedama_milk"], "an artist this project does not offer is dropped, and said so")
+    many = artistlab.parse(", ".join(f"artist_{i}" for i in range(260)))
+    check(len(many["artists"]) == artistlab.MAX_ARTISTS and many["truncated"] == 60,
+          "a list over the limit is cut, and the number cut is reported")
+    spell = artistlab.spellcheck(["wlop", "hitenn_(hitenkei)", "nobody_xyz"],
+                                 ["wlop", "hiten_(hitenkei)", "hiten", "wlo"])
+    check(spell[0]["known"] and spell[1]["suggest"] == ["hiten_(hitenkei)"] and not spell[2]["suggest"],
+          "a near miss gets a suggestion; an unknown name is flagged, not rewritten")
+    check(artistlab.prompt_for([["hiten_(hitenkei)", 1.0], ["wlop", 1.2]], "artist:{tag}")
+          == "artist:hiten \\(hitenkei\\), (artist:wlop:1.2)", "tags are written in the model's own form, brackets escaped")
+    check(artistlab.prompt_for([["wlop", 0.8]], "by {tag}") == "(by wlop:0.8)", "…Illustrious's `by` form too")
+    check(artistlab.novelai_for([["hiten_(hitenkei)", 1.0], ["wlop", 1.2]])
+          == "artist:hiten (hitenkei), 1.2::artist:wlop ::", "…and NovelAI's numeric emphasis for export")
+
+    section("繪師實驗室: blends")
+    rng = _random.Random(3)
+    first = artistlab.first_generation(["a", "b", "c", "d"], (2, 3), 5, {"a": .9, "b": .8, "c": .2, "d": .1}, rng)
+    check([t for t, _ in first[0]] == ["a", "b"], "with solo scores, the most promising pair comes first")
+    check(len({artistlab.key_of(b) for b in first}) == 5, "no blend is proposed twice")
+    check(artistlab.key_of([["b", 1.0], ["a", 1.2]]) == artistlab.key_of([["a", 1.2], ["b", 1.0]]),
+          "a blend is the same blend whatever order it is written in")
+    seen = {artistlab.key_of(b) for b in first}
+    kids = artistlab.next_generation(first[:2], ["a", "b", "c", "d", "e"], seen, 8, rng)
+    check(len(kids) == 8 and all(2 <= len(k) <= artistlab.MAX_SIZE for k in kids),
+          "variations stay between two and four artists")
+    check(all(w in artistlab.WEIGHTS or w in (0.8, 1.0) for k in kids for _, w in k), "…with weights from the allowed steps")
+
+    section("繪師實驗室: the search")
+    wanted = {"c": 1.2, "e": 0.8}                      # the blend the "target" is made of
+
+    def closeness(members) -> float:
+        got = {t: w for t, w in members}
+        miss = sum(abs(got.get(t, 0.0) - w) for t, w in wanted.items())
+        extra = sum(w for t, w in got.items() if t not in wanted)
+        return max(0.0, 1.0 - 0.35 * miss - 0.3 * extra)
+
+    def fakes(scoring=True, stop_after=None):
+        made = {}
+
+        async def submit(lab, entry):
+            job = f"j{len(made)}"
+            made[job] = (entry, artistlab.full_prompt(lab, entry))
+            return job
+
+        async def wait(jobs):
+            return {j: ("done", j + ".png", "") for j in jobs}
+
+        async def score(output):
+            return closeness(made[output[:-4]][0].artists)
+
+        def cancelled():
+            return stop_after is not None and len(made) >= stop_after
+        return submit, wait, (score if scoring else None), cancelled, made
+
+    pool = ["a", "b", "c", "d", "e", "f"]
+    lab = artistlab.new_lab(base={"model": "noobai"}, prompt="1girl", negative="", form="artist:{tag}", seed=7, target="t.png")
+    submit, wait, score, cancelled, made = fakes()
+    await artistlab.run_solo(lab, pool, submit=submit, wait=wait, score=score, cancelled=cancelled)
+    check(lab.status == "idle" and len(lab.entries) == 7 and lab.entries[0].stage == "baseline",
+          "a sweep makes one picture per artist plus a no-artist baseline")
+    check(made["j1"][1] == "artist:a, 1girl" and made["j0"][1] == "1girl",
+          "…each with only the artist added, in front of the same prompt")
+    check([e.artists[0][0] for e in lab.ranked(("solo",))[:2]] == ["c", "e"],
+          "with a target, artists are ranked by style score")
+    await artistlab.run_mix(lab, [e.artists[0][0] for e in lab.ranked(("solo",))[:6]], count=6, sizes=(2, 3),
+                            rounds=6, per_round=8, submit=submit, wait=wait, score=score, cancelled=cancelled)
+    best = lab.ranked(("mix", "evolve"))[0]
+    first_batch_best = max(e.score for e in lab.entries if e.stage == "mix")
+    check(sorted(t for t, _ in best.artists) == ["c", "e"], f"the search lands on the right two artists ({best.artists})")
+    check(best.score > first_batch_best or best.score > 0.99,
+          f"…and adjusting weights beats the first equal-weight batch ({first_batch_best:.2f} -> {best.score:.2f})")
+    check(len({e.key for e in lab.entries}) == len(lab.entries), "nothing was generated twice")
+
+    lab2 = artistlab.new_lab(base={}, prompt="p", negative="", form="by {tag}", seed=1, target="")
+    submit, wait, score, cancelled, made = fakes(scoring=False)
+    await artistlab.run_solo(lab2, pool, submit=submit, wait=wait, score=score, cancelled=cancelled)
+    await artistlab.run_mix(lab2, ["a", "b", "c"], count=3, sizes=(2,), rounds=5, per_round=4,
+                            submit=submit, wait=wait, score=score, cancelled=cancelled)
+    mixes = [e for e in lab2.entries if e.stage in ("mix", "evolve")]
+    check(len(mixes) == 3 and all(e.score is None for e in mixes),
+          "without a target there is no score and no automatic rounds - the stars decide")
+    lab3 = artistlab.new_lab(base={}, prompt="p", negative="", form="by {tag}", seed=1, target="")
+    submit, wait, score, cancelled, made = fakes(stop_after=6)
+    await artistlab.run_solo(lab3, [f"x{i}" for i in range(20)], submit=submit, wait=wait, score=score, cancelled=cancelled)
+    check(lab3.status == "stopped" and len(made) == 6 and sum(1 for e in lab3.entries if e.output) == 6,
+          "stop takes effect after the batch in flight, and what was made is kept")
+    store = artistlab.Store(TMP / "lab-store.json")
+    (TMP / "lab-store.json").unlink(missing_ok=True)
+    store.add(lab)
+    again = artistlab.Store(TMP / "lab-store.json")
+    again.load()
+    check(again.labs[lab.id].ranked(("mix", "evolve"))[0].key == best.key, "a lab survives a restart with its scores")
+    public = lab.public()
+    check("base" not in public and public["entries"][1]["text"] == "artist:a"
+          and public["entries"][1]["novelai"] == "artist:a", "the page gets each entry's tag text ready to paste")
+
+    section("繪師實驗室: the style model's input")
+    white = kaloscope.preprocess(PILImage.new("RGB", (300, 900), "white"))
+    check(white.shape == (1, 3, 512, 512) and str(white.dtype) == "float32", "pictures become one 512x512 float tensor")
+    check(abs(float(white[0, 0, 0, 0]) - (1 - 0.485) / 0.229) < 1e-4, "…normalised with the ImageNet mean and std")
+    clear = PILImage.new("RGBA", (64, 64), (0, 0, 0, 0))
+    check(abs(float(kaloscope.preprocess(clear)[0, 1, 5, 5]) - (1 - 0.456) / 0.224) < 1e-4,
+          "…with transparency flattened onto white, as the reference does")
+    check(kaloscope.similarity(np.array([1.0, 0.0]), np.array([-1.0, 0.0])) == 0.0
+          and kaloscope.similarity(np.array([1.0, 0.0]), np.array([1.0, 0.0])) == 1.0, "similarity stays in 0..1")
+    check("沒有明確" in kaloscope.confidence([{"p": 0.01}]) and "很明確" in kaloscope.confidence([{"p": 0.9}]),
+          "a low, flat answer is described as no clear match")
+    check(not kaloscope.installed(TMP / "nowhere"), "not installed until both files are there")
+
+    section("繪師實驗室: through the server")
+    saved = (server.image_generate, server.image_status, kaloscope.installed, kaloscope.style,
+             kaloscope.analyse, tags.installed)
+    server.image_status = lambda m: {"installed": True, "usable": True, "missing": []}
+    tags.installed = lambda _d: []
+    config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    asked = []
+
+    async def fake_generate(payload):
+        asked.append(payload)
+        job = f"lab{len(asked):03d}"
+        shade = 250 if "artist:redwash" in payload["prompt"] else 40
+        PILImage.new("RGB", (32, 32), (shade, 20, 20)).save(config.OUTPUT_DIR / f"{job}.png")
+        server.lib.records[job] = library.Record(id=job, model_id=payload["model"], prompt=payload["prompt"],
+                                                 kind="image", status="done", output=f"{job}.png")
+        return server.JSONResponse({"id": job})
+
+    server.image_generate = fake_generate
+    kaloscope.installed = lambda _d: True
+    kaloscope.style = lambda pic, base: (lambda v: v / np.linalg.norm(v))(
+        np.asarray(pic.convert("RGB").resize((1, 1)).getpixel((0, 0)), dtype=np.float32) + 1.0)
+    kaloscope.analyse = lambda pic, base, top=30: ([{"tag": "redwash", "p": 0.4, "zh": "", "posts": 0}], None)
+    buf = io.BytesIO()
+    PILImage.new("RGB", (64, 64), (250, 20, 20)).save(buf, "PNG")
+    upload = pytypes.SimpleNamespace(read=lambda: _coro(buf.getvalue()), filename="t.png")
+    try:
+        found = json.loads((await server.artistlab_identify(upload, 30)).body)
+        check(found["matches"][0]["tag"] == "redwash" and (config.STAGING_DIR / found["target"]).is_file(),
+              "看圖認畫師 returns candidates and keeps the picture as the target")
+        for body, needle, label in (
+                ({"base": {"model": "pony"}, "artists": ["a"]}, "不吃畫師", "a model that ignores artist tags"),
+                ({"base": {"model": "noobai"}, "artists": []}, "空的", "an empty list"),
+                ({"base": {"model": "noobai"}, "artists": ["a"], "prompt": "loli"}, "未成年", "a minor in the test prompt"),
+                ({"base": {"model": "noobai"}, "artists": ["a"], "target": "../x.png"}, "目標圖", "a target outside staging")):
+            try:
+                await server.artistlab_start(body)
+                check(False, f"start refuses {label}")
+            except HTTPException as exc:
+                check(needle in str(exc.detail), f"start refuses {label} ({str(exc.detail)[:22]})")
+        out = json.loads((await server.artistlab_start({
+            "base": {"model": "noobai", "size": "832×1216 直式", "init_image": "x.png", "ipadapter": "style"},
+            "artists": ["bluewash", "redwash", "greywash"], "prompt": "1girl", "seed": 5,
+            "target": found["target"], "preview": True})).body)
+        check(out["scoring"] is True, "with a target and the style model, results are scored")
+        for _ in range(200):
+            lab_run = server.LABS.labs[out["id"]]
+            if lab_run.status != "running":
+                break
+            await asyncio.sleep(0.05)
+        check(lab_run.status == "idle" and len(asked) == 4, f"the sweep runs through the real queue path ({lab_run.status})")
+        check(all(a["seed"] == 5 and a["batch"] == 1 and a["width"] == 768 and "init_image" not in a
+                  and "ipadapter" not in a for a in asked),
+              "every picture shares the seed; quick preview size; no leftover source or reference picture")
+        check(lab_run.ranked(("solo",))[0].artists[0][0] == "redwash",
+              "the artist whose picture matches the target's style ranks first")
+        try:
+            await server.artistlab_mix(out["id"], {"pool": ["redwash"]})
+            check(False, "mixing needs at least two artists")
+        except HTTPException as exc:
+            check("兩位" in str(exc.detail), "mixing needs at least two artists, and says so")
+        await server.artistlab_star(out["id"], {"key": "bluewash@1.0", "star": True})
+        await server.artistlab_star(out["id"], {"key": "greywash@1.0", "star": True})
+        mixed = json.loads((await server.artistlab_mix(out["id"], {"count": 2, "sizes": [2], "rounds": 1, "per_round": 2})).body)
+        check(sorted(mixed["pool"]) == ["bluewash", "greywash"], "starred artists are the ones mixed")
+        for _ in range(200):
+            if lab_run.status != "running":
+                break
+            await asyncio.sleep(0.05)
+        blends = [e for e in lab_run.entries if e.stage in ("mix", "evolve")]
+        check(lab_run.status == "idle" and blends and all(e.output for e in blends),
+              f"blends are generated and scored ({len(blends)})")
+        got = json.loads((await server.artistlab_get(out["id"])).body)
+        check(got["entries"][-1]["text"].startswith("artist:") or got["entries"][-1]["text"].startswith("(artist:"),
+              "each blend comes back as text ready for the prompt box")
+    finally:
+        (server.image_generate, server.image_status, kaloscope.installed, kaloscope.style,
+         kaloscope.analyse, tags.installed) = saved
+        for job in [k for k in server.lib.records if k.startswith("lab0")]:
+            server.lib.records.pop(job, None)
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -9748,6 +9970,7 @@ async def main() -> int:
     await test_ipadapter()
     await test_qwen_edit()
     await test_cloud_training()
+    await test_artistlab()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

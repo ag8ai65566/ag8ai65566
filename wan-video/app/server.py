@@ -25,6 +25,7 @@ import uuid
 from pathlib import Path
 
 import approach as approach_mod
+import artistlab
 import artists
 import assemble
 import charpacks
@@ -39,6 +40,7 @@ import envfile
 import hfhub
 import experiments as exp_mod
 import inspect_image
+import kaloscope
 import library
 import pagelayout
 import posebook
@@ -174,6 +176,7 @@ async def startup() -> None:
     book.load()
     cloud.store.load()
     APPROACH.load()
+    LABS.load()
     # A finished download changes what ComfyUI can offer, and its /object_info
     # is cached; drop that cache or the new model looks uninstalled.
     models.on_change = client.invalidate
@@ -4711,6 +4714,242 @@ async def reverse_compare(image: UploadFile, job: str = Form(""),
     return JSONResponse(reverse.compare(a_guess, b_guess, reverse.similarity(a_vec, b_vec)))
 
 
+# -- 繪師實驗室: which artists, and which blend ---------------------------------
+
+LABS = artistlab.Store(config.OUTPUT_DIR / ".artistlab.json")
+_lab_stop: set[str] = set()
+
+
+def _kaloscope_base() -> Path | None:
+    return kaloscope.folder(config.MODELS_DIR) if kaloscope.installed(config.MODELS_DIR) else None
+
+
+def _staged(name: str) -> Path | None:
+    """A file this app staged earlier, by the name it gave the page."""
+    if not name:
+        return None
+    path = (config.STAGING_DIR / name).resolve()
+    if config.STAGING_DIR.resolve() not in path.parents or not path.is_file():
+        return None
+    return path
+
+
+@app.get("/api/artistlab")
+async def artistlab_status() -> JSONResponse:
+    labs = sorted(LABS.labs.values(), key=lambda l: -l.created)[:6]
+    return JSONResponse({
+        "kaloscope": {"installed": kaloscope.installed(config.MODELS_DIR),
+                      "bytes": sum(f.size for f in kaloscope.FILES), "licence": kaloscope.LICENCE,
+                      "runtime": _has_onnx()},
+        "max_artists": artistlab.MAX_ARTISTS,
+        "default_prompt": artistlab.DEFAULT_PROMPT,
+        "labs": [{"id": l.id, "created": l.created, "count": len(l.entries), "status": l.status}
+                 for l in labs],
+    })
+
+
+@app.post("/api/kaloscope/download")
+async def kaloscope_download() -> JSONResponse:
+    remote = [downloader.RemoteFile(url=downloader.url_for(f), folder=f.folder, name=f.name, size=f.size)
+              for f in kaloscope.FILES]
+    return JSONResponse(models.enqueue_files(
+        key="kaloscope", label="看圖認畫師 · Kaloscope 3.0", files=remote, kind="model").public())
+
+
+@app.post("/api/artistlab/identify")
+async def artistlab_identify(image: UploadFile, top: int = Form(30)) -> JSONResponse:
+    """Which artist tags a picture's style looks like. The picture is kept
+    (staged) so it can be the lab's target without uploading it twice."""
+    picture = await _read_picture(image)
+    base = _kaloscope_base()
+    if base is None:
+        raise HTTPException(400, "還沒下載「看圖認畫師」模型（169MB）。按下面的下載。")
+    here = tags.installed(config.MODELS_DIR)
+    loop = asyncio.get_running_loop()
+    if here:
+        guess = await loop.run_in_executor(None, tags.describe, picture,
+                                           tags.folder(config.MODELS_DIR, here[0]))
+        if stop := reverse.blocked(guess):
+            raise HTTPException(400, "這張圖看起來有未成年人物（" + "、".join(stop)
+                                + "）。這個 app 不做這類內容。")
+    try:
+        matches, _style = await loop.run_in_executor(
+            None, kaloscope.analyse, picture, base, max(5, min(int(top), 100)))
+    except ImportError:
+        raise HTTPException(400, "缺少 onnxruntime 套件。跑一次 update.bat 或 install.bat。")
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    name = f"lab-target-{uuid.uuid4().hex[:10]}.png"
+    picture.convert("RGB").save(config.STAGING_DIR / name, "PNG")
+    return JSONResponse({"matches": matches, "note": kaloscope.confidence(matches), "target": name})
+
+
+@app.post("/api/artistlab/parse")
+async def artistlab_parse(payload: dict = Body(default={})) -> JSONResponse:
+    parsed = artistlab.parse(str(payload.get("text") or ""))
+    known = kaloscope.labels(config.MODELS_DIR) if kaloscope.installed(config.MODELS_DIR) else []
+    parsed["checked"] = artistlab.spellcheck(parsed["artists"], known)
+    parsed["can_check"] = bool(known)
+    return JSONResponse(parsed)
+
+
+def _lab_or_404(lab_id: str):
+    lab = LABS.labs.get(lab_id)
+    if lab is None:
+        raise HTTPException(404, "找不到這個實驗")
+    return lab
+
+
+def _lab_callbacks(lab):
+    """The three things the search needs from this app: queue, wait, score."""
+    loop = asyncio.get_running_loop()
+    kbase = _kaloscope_base()
+    target = _staged(lab.target)
+    score = None
+    if kbase is not None and target is not None:
+        picture = Image.open(target)
+        picture.load()
+        target_style = kaloscope.style(picture, kbase)
+
+        async def score(output: str) -> float:
+            attempt = Image.open(config.OUTPUT_DIR / output)
+            attempt.load()
+            vector = await loop.run_in_executor(None, kaloscope.style, attempt, kbase)
+            return kaloscope.similarity(target_style, vector)
+
+    async def submit(lab, entry) -> str:
+        payload = {k: v for k, v in lab.base.items()
+                   if k not in ("prompt", "negative", "seed", "batch", "init_image", "control_image",
+                                "reference_image", "controlnet", "ipadapter")}
+        payload.update({"prompt": artistlab.full_prompt(lab, entry), "negative": lab.negative,
+                        "batch": 1, "seed": lab.seed, "denoise": 1.0})
+        answer = await image_generate(payload)
+        return json.loads(answer.body)["id"]
+
+    async def wait(jobs: list[str]) -> dict:
+        done = await approach_mod.poll_jobs(lib.get, jobs, lambda: lab.id in _lab_stop)
+        if lab.id in _lab_stop:
+            for job in jobs:
+                record = lib.get(job)
+                if record is not None and record.status == "queued":
+                    lib.delete(job)
+        return done
+
+    return submit, wait, score
+
+
+def _lab_spawn(lab, coroutine) -> None:
+    async def go() -> None:
+        try:
+            await coroutine
+        except HTTPException as exc:               # a job was refused up front
+            lab.status, lab.message = "error", str(exc.detail)
+            LABS.save()
+        finally:
+            _lab_stop.discard(lab.id)
+    task = asyncio.create_task(go())
+    _background.add(task)
+    task.add_done_callback(_background.discard)
+
+
+@app.post("/api/artistlab")
+async def artistlab_start(payload: dict = Body(default={})) -> JSONResponse:
+    """Start a solo sweep: one picture per artist, same prompt, same seed."""
+    base = payload.get("base") if isinstance(payload.get("base"), dict) else {}
+    model = images.resolve(str(base.get("model", "")), installed_checkpoints())
+    if model is None:
+        raise HTTPException(400, "先在圖片分頁選一個底模")
+    if not model.artist_form:
+        raise HTTPException(400, f"{model.label.split('—')[0].strip()} 不吃畫師標籤"
+                                 "（訓練時沒有畫師名）。換成 NoobAI 或 Illustrious。")
+    if not (image_status(model)["installed"] or on_cloud()):
+        raise HTTPException(400, f"{model.label} 還沒下載。到「模型」分頁下載，或切到雲端 GPU。")
+    names = payload.get("artists")
+    parsed = artistlab.parse("\n".join(str(n) for n in names) if isinstance(names, list)
+                             else str(payload.get("text") or ""))
+    if not parsed["artists"]:
+        raise HTTPException(400, "清單是空的 —— 貼上畫師標籤，或先用「看圖認畫師」找一批")
+    prompt = str(payload.get("prompt") or "").strip() or artistlab.DEFAULT_PROMPT
+    if stop := reverse.blocked_text(prompt):
+        raise HTTPException(400, "測試提詞裡有未成年相關的詞（" + "、".join(stop) + "）。")
+    if payload.get("preview"):
+        # Smaller and plain: a sweep is a hundred pictures, and a style reads
+        # fine at this size.
+        base = {**base, "size": CUSTOM_SIZE, "width": 768, "height": 1024,
+                "hires_scale": 0, "upscaler": ""}
+    target = str(payload.get("target") or "")
+    if target and _staged(target) is None:
+        raise HTTPException(400, "找不到目標圖，請重新放一次")
+    try:
+        seed = int(payload.get("seed"))
+    except (TypeError, ValueError):
+        seed = -1
+    lab = artistlab.new_lab(
+        base=base, prompt=prompt,
+        negative=str(payload["negative"]) if "negative" in payload else model.negative,
+        form=model.artist_form, seed=seed if seed >= 0 else random.randint(0, 2**31 - 1),
+        target=target)
+    lab.status = "running"
+    LABS.add(lab)
+    submit, wait, score = _lab_callbacks(lab)
+    _lab_spawn(lab, artistlab.run_solo(lab, parsed["artists"], submit=submit, wait=wait, score=score,
+                                       cancelled=lambda: lab.id in _lab_stop, save=LABS.save))
+    return JSONResponse({**lab.public(), "dropped": parsed["dropped"], "truncated": parsed["truncated"],
+                         "scoring": score is not None})
+
+
+@app.get("/api/artistlab/{lab_id}")
+async def artistlab_get(lab_id: str) -> JSONResponse:
+    return JSONResponse(_lab_or_404(lab_id).public())
+
+
+@app.post("/api/artistlab/{lab_id}/mix")
+async def artistlab_mix(lab_id: str, payload: dict = Body(default={})) -> JSONResponse:
+    """Blend the starred artists, or the best-scoring ones, and keep improving."""
+    lab = _lab_or_404(lab_id)
+    if lab.status == "running":
+        raise HTTPException(409, "這個實驗還在跑，等它跑完或先按停止")
+    tried = [e.artists[0][0] for e in lab.entries if e.stage == "solo" and e.output]
+    picked = [str(t) for t in (payload.get("pool") or []) if str(t) in tried]
+    if not picked:
+        picked = [e.artists[0][0] for e in lab.entries if e.stage == "solo" and e.star and e.output]
+    if not picked:
+        top = max(2, min(int(payload.get("top") or 8), 16))
+        picked = [e.artists[0][0] for e in lab.ranked(("solo",))[:top]]
+    if len(picked) < 2:
+        raise HTTPException(400, "至少要兩位畫師才能組合：在上面打星，或放一張目標圖讓它自己排名")
+    sizes = tuple(sorted({int(s) for s in (payload.get("sizes") or [2, 3])
+                          if 2 <= int(s) <= artistlab.MAX_SIZE})) or (2, 3)
+    lab.status = "running"
+    LABS.save()
+    submit, wait, score = _lab_callbacks(lab)
+    _lab_spawn(lab, artistlab.run_mix(
+        lab, picked[:16], count=max(2, min(int(payload.get("count") or 12), 40)), sizes=sizes,
+        rounds=max(0, min(int(payload.get("rounds") or 0), 8)),
+        per_round=max(2, min(int(payload.get("per_round") or 8), 20)),
+        submit=submit, wait=wait, score=score,
+        cancelled=lambda: lab.id in _lab_stop, save=LABS.save))
+    return JSONResponse({**lab.public(), "pool": picked[:16], "scoring": score is not None})
+
+
+@app.post("/api/artistlab/{lab_id}/star")
+async def artistlab_star(lab_id: str, payload: dict = Body(default={})) -> JSONResponse:
+    lab = _lab_or_404(lab_id)
+    entry = lab.find(str(payload.get("key") or ""))
+    if entry is None:
+        raise HTTPException(404, "找不到這一格")
+    entry.star = bool(payload.get("star"))
+    LABS.save()
+    return JSONResponse({"key": entry.key, "star": entry.star})
+
+
+@app.post("/api/artistlab/{lab_id}/stop")
+async def artistlab_stop(lab_id: str) -> JSONResponse:
+    lab = _lab_or_404(lab_id)
+    if lab.status == "running":
+        _lab_stop.add(lab_id)
+    return JSONResponse(lab.public())
+
+
 # -- 自動逼近: generate, score, correct, again ---------------------------------
 
 APPROACH = approach_mod.Store(config.OUTPUT_DIR / ".approach.json")
@@ -4762,6 +5001,11 @@ async def reverse_approach(image: UploadFile, base: str = Form("{}"), prompt: st
                             + "）。這個 app 不做這類內容。")
     orig_style = reverse.style_signature(picture)
     orig_layout = approach_mod.structure_signature(picture)
+    # With Kaloscope installed, "style" is its trained style vector rather
+    # than the palette-and-lines measure, which cannot tell two hands apart.
+    kbase = _kaloscope_base()
+    orig_kalo = (await loop.run_in_executor(None, kaloscope.style, picture, kbase)
+                 if kbase is not None else None)
 
     run = approach_mod.new_run(
         original="", base=settings, prompt=prompt.strip(), negative=negative.strip(),
@@ -4798,8 +5042,13 @@ async def reverse_approach(image: UploadFile, base: str = Form("{}"), prompt: st
         vec = await loop.run_in_executor(None, tags.vector, attempt, tagger_base)
         content = reverse.similarity(orig_vec, vec)
         diff = reverse.compare(orig_guess, guess, content)
+        if orig_kalo is not None:
+            style_score = kaloscope.similarity(
+                orig_kalo, await loop.run_in_executor(None, kaloscope.style, attempt, kbase))
+        else:
+            style_score = reverse.style_similarity(orig_style, reverse.style_signature(attempt))
         return {"content": content,
-                "style": reverse.style_similarity(orig_style, reverse.style_signature(attempt)),
+                "style": style_score,
                 "structure": approach_mod.structure_similarity(
                     orig_layout, approach_mod.structure_signature(attempt)),
                 "missing": diff["missing"], "extra": diff["extra"]}

@@ -371,9 +371,11 @@
       </div>
       <div class="spacer"></div>
       <input type="file" id="inspfile" accept="image/*" hidden>
+      <button class="ghost" id="labbtn">🎨 繪師實驗室</button>
       <button class="ghost" id="inspbtn">🔍 看圖猜設定</button>
     </div>
     <div id="insp" class="card hidden" style="margin-bottom:12px"></div>
+    <div id="lab" class="card hidden" style="margin-bottom:12px"></div>
 
     <!-- The three words this app kept using without ever defining them. Shown
          until dismissed: someone who already knows should not have to read it
@@ -1372,6 +1374,9 @@ let CLOUD = { target: 'local', has_key: false, pod_id: '' }, CLOUDGPUS = [], clo
 const ok = (m) => !!(m && (m.usable ?? m.installed));
 const mark = (m) => m.installed ? '✓' : (ok(m) ? '☁' : (m.partial ? '◐' : '·'));
 const usd = (n) => '$' + (Number(n) || 0).toFixed(n >= 10 ? 0 : 2);
+// 繪師實驗室's state, up here because the model picker repaints it.
+const LAB = { info: {}, target: '', preview: '', matches: [], run: null, timer: null, built: false };
+const labPct = (x) => x == null ? '' : Math.round(x * 100) + '%';
 let CIV = { items: [], cursor: '', loading: false };
 
 /* ---------- tabs ---------- */
@@ -4729,6 +4734,7 @@ function onImageModelChange() {
     ? '這個底模是蒸餾過的（CFG 1），負面提詞不會起作用，所以停用。'
     : '負面提詞 = 不想出現的東西。上面填的是這個底模的建議值。';
   if (typeof renderIpaHelp === 'function') renderIpaHelp();
+  if (LAB.built) renderLabModel();
   // The ControlNets this app ships are SDXL ones; the newer families have none.
   const cn = $('#icn');
   if (cn) {
@@ -7941,6 +7947,290 @@ function renderLikeness(d) {
     <div class="s">3. 只畫這一位的話，去 CivitAI 找<b>單人 LoRA</b> ——
        75 人合集 LoRA 平均下來每個人都會軟一點。</div>`;
 }
+
+/* ---------- 繪師實驗室: find artists for a style, then let it mix them ---------- */
+
+async function openLab() {
+  const box = $('#lab');
+  box.classList.toggle('hidden');
+  if (box.classList.contains('hidden')) return;
+  try { LAB.info = await (await fetch('/api/artistlab')).json(); } catch { LAB.info = {}; }
+  if (!LAB.built) buildLab();
+  renderLabModel();
+  if (!LAB.run && (LAB.info.labs || []).length) loadLab(LAB.info.labs[0].id);
+}
+
+function buildLab() {
+  LAB.built = true;
+  $('#lab').innerHTML = `
+    <h2 style="margin-top:0">繪師實驗室</h2>
+    <div class="s">不知道要用哪些畫師標籤、也不知道怎麼混？貼一大批進來，每位畫師用<b>同一句提詞、同一個種子</b>各畫一張，
+      只有畫師不同，一眼就能比。有放目標圖的話，會自動算每張跟目標的<b>畫風相似度</b>並排名，再自動把前幾名兩三位一組混起來、
+      調權重，一輪一輪找最像的組合。沒放目標圖就由你打星，它幫你組合。</div>
+    <div id="labmodel" class="s" style="margin-top:6px"></div>
+    <div id="labkalo" style="margin-top:6px"></div>
+
+    <h2>① 想要的畫風（選填，有的話才能自動排名）</h2>
+    <div class="row" style="margin-top:4px;align-items:center;gap:8px">
+      <button class="ghost tiny" id="labpick">選一張那種畫風的圖</button>
+      <input type="file" id="labfile" accept="image/*" hidden>
+      <img id="labthumb" class="hidden" style="height:64px;border-radius:6px">
+      <span class="s" id="labtnote"></span>
+    </div>
+    <div id="labmatches" style="margin-top:6px"></div>
+
+    <h2>② 要試的畫師（一次貼多少都行，最多 ${LAB.info.max_artists || 200} 位）</h2>
+    <textarea id="labtext" aria-label="畫師清單" style="min-height:90px"
+      placeholder="貼上畫師標籤，逗號或換行分開。這些寫法都看得懂：&#10;artist:wlop, by hiten, 1.2::artist:mika pikazo ::, {{ask (askzy)}}, (artist:ciloranko:1.1)"></textarea>
+    <div class="row" style="margin-top:4px;gap:6px">
+      <button class="ghost tiny" id="labbuiltin">加入內建清單</button>
+      <button class="ghost tiny" id="labcheck">檢查清單</button>
+      <span class="s" id="labparsed"></span>
+    </div>
+
+    <h2>③ 試畫設定</h2>
+    <div class="row" style="margin-top:4px;gap:6px;align-items:center">
+      <input type="text" id="labprompt" aria-label="測試提詞" style="flex:1;min-width:260px" value="${esc(LAB.info.default_prompt || '')}">
+      <label class="f">種子 <input type="number" id="labseed" placeholder="隨機" style="width:110px"></label>
+      <label class="chk"><input type="checkbox" id="labpreview" checked> 小圖快速試（768×1024）</label>
+    </div>
+    <div class="note">測試提詞對每位畫師都一樣，越中性越好比。其他設定（底模、步數、LoRA）用下面圖片分頁目前的。
+      每位畫師要生一張圖：100 位在本機大約是生 100 張圖的時間，可以隨時停止，生好的都會留著。</div>
+    <div class="row" style="margin-top:6px;gap:6px">
+      <button class="go" id="labgo">開始：每位畫師畫一張</button>
+      <button class="ghost tiny hidden" id="labstop">停止</button>
+      <span class="s" id="labmsg"></span>
+    </div>
+    <div id="labrun" style="margin-top:10px"></div>`;
+
+  $('#labpick').onclick = () => $('#labfile').click();
+  $('#labfile').onchange = async () => {
+    const file = $('#labfile').files[0];
+    if (!file) return;
+    LAB.preview = URL.createObjectURL(file);
+    $('#labthumb').src = LAB.preview; $('#labthumb').classList.remove('hidden');
+    await labIdentify(file);
+    $('#labfile').value = '';
+  };
+  $('#labbuiltin').onclick = () => {
+    const have = $('#labtext').value.trim();
+    const add = (ART.list || []).map((a) => a.tag).join(', ');
+    $('#labtext').value = [have, add].filter(Boolean).join(', ');
+    labCheck();
+  };
+  $('#labcheck').onclick = labCheck;
+  $('#labgo').onclick = labStart;
+  $('#labstop').onclick = async () => {
+    if (LAB.run) await fetch(`/api/artistlab/${LAB.run.id}/stop`, { method: 'POST' });
+  };
+}
+
+function renderLabModel() {
+  const m = IMG.chosen || {};
+  const box = $('#labmodel');
+  if (!box) return;
+  box.innerHTML = m.artist_form
+    ? `目前底模：<b>${esc(m.short || m.label || '')}</b>，畫師寫法 <code>${esc(m.artist_form.replace('{tag}', '名字'))}</code>。`
+    : `<span class="warn">目前選的底模（${esc(m.short || m.label || '未選')}）不吃畫師標籤。先在下面把底模換成 NoobAI 或 Illustrious。</span>`;
+  const k = LAB.info.kaloscope || {};
+  $('#labkalo').innerHTML = k.installed ? ''
+    : `<div class="banner tight">要「看圖認畫師」和「自動算畫風相似度」，需要下載 Kaloscope 3.0（${gb(k.bytes)}，在這台電腦用 CPU 跑，約 1 秒一張）。
+        沒有它也能用，只是要自己看圖打星。<button class="go tiny" id="labkaloget" style="margin-left:8px">下載</button>
+        <div class="s">授權：${esc(k.licence || '')}</div></div>`;
+  const get = $('#labkaloget');
+  if (get) get.onclick = async () => {
+    get.disabled = true;
+    try { await fetch('/api/kaloscope/download', { method: 'POST' }); get.textContent = '下載中（看「模型」分頁），好了再開一次實驗室'; }
+    catch { get.disabled = false; }
+  };
+}
+
+async function labIdentify(file) {
+  const note = $('#labtnote'), box = $('#labmatches');
+  if (!(LAB.info.kaloscope || {}).installed) {
+    // Still stage it, so stars-only mode can show it next to the results.
+    note.textContent = '沒有 Kaloscope，無法認畫師和自動評分（可以先下載）。';
+    LAB.target = ''; return;
+  }
+  note.textContent = '分析畫風中…';
+  const form = new FormData(); form.append('image', file); form.append('top', '40');
+  try {
+    const r = await fetch('/api/artistlab/identify', { method: 'POST', body: form });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    LAB.target = d.target; LAB.matches = d.matches || [];
+    note.textContent = '這張圖會當成目標：之後每張試畫都跟它比畫風。';
+    box.innerHTML = `<div class="s">${esc(d.note)}</div>
+      <div class="words" style="margin-top:4px">${LAB.matches.map((m, i) =>
+        `<label class="tag" title="${m.zh ? esc(m.zh) + ' · ' : ''}相似度分數 ${m.p}"><input type="checkbox" class="labm" value="${esc(m.tag)}" ${i < 20 ? 'checked' : ''}> ${esc(m.tag)} <span class="s">${(m.p * 100).toFixed(1)}%</span></label>`).join('')}</div>
+      <div class="row" style="margin-top:4px;gap:6px"><button class="go tiny" id="labmadd">把勾的加進清單</button>
+        <span class="s">分數是模型的把握，不是證據；低分的也可能混得出來。</span></div>`;
+    $('#labmadd').onclick = () => {
+      const picked = [...document.querySelectorAll('.labm:checked')].map((c) => c.value);
+      $('#labtext').value = [$('#labtext').value.trim(), picked.join(', ')].filter(Boolean).join(', ');
+      labCheck();
+    };
+  } catch (e) { note.innerHTML = `<span class="warn">${esc(e.message)}</span>`; }
+}
+
+async function labCheck() {
+  const out = $('#labparsed');
+  try {
+    const r = await fetch('/api/artistlab/parse', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: $('#labtext').value }) });
+    const d = await r.json();
+    $('#labtext').value = d.artists.join(', ');
+    const odd = (d.checked || []).filter((c) => d.can_check && !c.known);
+    out.innerHTML = `共 ${d.artists.length} 位`
+      + (d.truncated ? `（超過上限，少了 ${d.truncated} 位）` : '')
+      + (d.dropped.length ? `；${d.dropped.length} 位不提供` : '')
+      + (odd.length ? `；<span class="warn">${odd.length} 位模型不認得，可能拼錯：</span>`
+          + odd.slice(0, 8).map((c) => `${esc(c.tag)}${c.suggest.length ? `（是不是 <a href="#" data-labfix="${esc(c.tag)}" data-to="${esc(c.suggest[0])}">${esc(c.suggest[0])}</a>？）` : ''}`).join('、') : '');
+    out.querySelectorAll('[data-labfix]').forEach((a) => a.onclick = (ev) => {
+      ev.preventDefault();
+      $('#labtext').value = $('#labtext').value.split(', ').map((t) => t === a.dataset.labfix ? a.dataset.to : t).join(', ');
+      labCheck();
+    });
+    return d;
+  } catch (e) { out.textContent = '檢查失敗：' + e.message; return null; }
+}
+
+async function labStart() {
+  const msg = $('#labmsg');
+  if (!IMG.chosen) { msg.textContent = '先選一個底模。'; return; }
+  const parsed = await labCheck();
+  if (!parsed || !parsed.artists.length) { msg.textContent = '清單是空的。'; return; }
+  const base = imagePayload();
+  const seed = $('#labseed').value === '' ? -1 : +$('#labseed').value;
+  $('#labgo').disabled = true; msg.textContent = '送出中…';
+  try {
+    const r = await fetch('/api/artistlab', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ artists: parsed.artists, prompt: $('#labprompt').value, negative: $('#inegative').value,
+                             base, seed, target: LAB.target, preview: $('#labpreview').checked }) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+    msg.textContent = d.scoring ? '' : '沒有目標圖（或沒有 Kaloscope）：不會自動評分，請自己打星。';
+    LAB.run = d; renderLabRun(); pollLab();
+  } catch (e) { msg.innerHTML = `<span class="warn">${esc(e.message)}</span>`; }
+  $('#labgo').disabled = false;
+}
+
+async function loadLab(id) {
+  try {
+    const r = await fetch('/api/artistlab/' + id);
+    if (!r.ok) return;
+    LAB.run = await r.json(); renderLabRun();
+    if (LAB.run.status === 'running') pollLab();
+  } catch {}
+}
+
+function pollLab() {
+  clearTimeout(LAB.timer);
+  LAB.timer = setTimeout(async () => {
+    if (!LAB.run) return;
+    try {
+      const r = await fetch('/api/artistlab/' + LAB.run.id);
+      if (r.ok) { LAB.run = await r.json(); renderLabRun(); }
+    } catch {}
+    if (LAB.run && LAB.run.status === 'running') pollLab();
+  }, 3000);
+}
+
+function labCell(e, big) {
+  const size = big ? 132 : 104;
+  const label = e.stage === 'baseline' ? '（不加畫師）' : e.artists.map(([t, w]) => w === 1 ? t : `${t}×${w}`).join(' + ');
+  const img = e.output ? `<a href="/outputs/${esc(e.output)}" target="_blank" rel="noopener"><img src="/outputs/${esc(e.output)}" loading="lazy" style="width:${size}px;height:${Math.round(size * 4 / 3)}px;object-fit:cover;border-radius:6px"></a>`
+    : `<div class="s" style="width:${size}px;height:${Math.round(size * 4 / 3)}px;display:flex;align-items:center;justify-content:center;border:1px dashed var(--line);border-radius:6px">${e.error ? '失敗' : '等待中'}</div>`;
+  return `<div style="width:${size}px" title="${esc(e.error || label)}">${img}
+    <div class="s" style="word-break:break-all;line-height:1.25">${e.score != null ? `<b>${labPct(e.score)}</b> ` : ''}${esc(label)}</div>
+    ${e.stage === 'baseline' ? '' : `<label class="s"><input type="checkbox" class="labstar" data-key="${esc(e.key)}" ${e.star ? 'checked' : ''}> ★</label>`}</div>`;
+}
+
+function renderLabRun() {
+  const run = LAB.run, box = $('#labrun');
+  if (!run || !box) return;
+  const busy = run.status === 'running';
+  $('#labstop').classList.toggle('hidden', !busy);
+  const scored = run.entries.some((e) => e.score != null);
+  const byScore = (a, b) => (b.score ?? -1) - (a.score ?? -1);
+  const base = run.entries.filter((e) => e.stage === 'baseline');
+  const solo = run.entries.filter((e) => e.stage === 'solo');
+  const mixes = run.entries.filter((e) => e.stage === 'mix' || e.stage === 'evolve');
+  if (scored) { solo.sort(byScore); mixes.sort(byScore); }
+  const doneSolo = solo.filter((e) => e.output).length;
+  const state = { running: '進行中', idle: '完成', stopped: '已停止', error: '出錯' }[run.status] || run.status;
+  let html = `<div class="row" style="align-items:center;gap:8px"><b>這次實驗</b>
+      <span class="tag ${run.status === 'idle' ? 'done' : run.status === 'error' ? 'err' : 'run'}">${state}</span>
+      <span class="s">${esc(run.message || '')}</span>
+      <span class="s">單人 ${doneSolo}/${solo.length}${mixes.length ? ` · 組合 ${mixes.filter((e) => e.output).length}/${mixes.length}` : ''} · 種子 ${run.seed}</span></div>
+    <div class="s">測試提詞：${esc(run.prompt)}${scored ? ' · 百分比是跟目標圖的畫風相似度（同一位畫師的兩張圖大約 85%，無關的畫師大約 20%）' : ''}</div>`;
+  if (mixes.length) {
+    html += `<h2>組合結果${scored ? '（最像的在前面）' : ''}</h2>` + mixes.slice(0, 60).map((e) => `
+      <div class="row" style="margin-top:6px;align-items:flex-start;gap:8px">${labCell(e, false)}
+        <div style="flex:1;min-width:240px"><code style="word-break:break-all">${esc(e.text)}</code>
+          <div class="row" style="margin-top:4px;gap:6px">
+            <button class="go tiny" data-labuse="${esc(e.key)}">套用到提詞</button>
+            <button class="ghost tiny" data-labcopy="${esc(e.text)}">複製</button>
+            <button class="ghost tiny" data-labcopy="${esc(e.novelai)}" title="${esc(e.novelai)}">複製成 NovelAI 寫法</button>
+          </div></div></div>`).join('');
+  }
+  if (solo.length) {
+    html += `<h2>每位畫師單獨的樣子${scored ? '（最像的在前面）' : ''}</h2>
+      <div class="row" style="gap:8px;flex-wrap:wrap;align-items:flex-start">${base.map((e) => labCell(e, false)).join('')}${solo.map((e) => labCell(e, false)).join('')}</div>`;
+    html += `<h2>④ 把畫師混起來</h2>
+      <div class="row" style="gap:6px;align-items:center;flex-wrap:wrap">
+        <span class="s">用打 ★ 的；都沒打星就取${scored ? '分數' : '清單'}前</span>
+        <input type="number" id="labtop" min="2" max="16" value="8" style="width:56px"><span class="s">名。每組</span>
+        <label class="chk"><input type="checkbox" id="labs2" checked> 2 人</label>
+        <label class="chk"><input type="checkbox" id="labs3" checked> 3 人</label>
+        <span class="s">第一批</span><input type="number" id="labcount" min="2" max="40" value="12" style="width:56px"><span class="s">組</span>
+        ${scored ? `<span class="s">，再自動調整</span><input type="number" id="labrounds" min="0" max="8" value="3" style="width:52px"><span class="s">輪，每輪</span>
+          <input type="number" id="labper" min="2" max="20" value="8" style="width:52px"><span class="s">組</span>` : ''}
+        <button class="go tiny" id="labmix" ${busy ? 'disabled' : ''}>開始組合</button>
+      </div>
+      <div class="note">${scored ? '自動調整 = 拿最像的幾組，換一位畫師、加一位、拿掉一位或改權重，再生再比，留下更像的。'
+        : '沒有目標圖，所以由你判斷：組合出來後再打星，按一次就會從你打星的繼續變化。'}</div>`;
+  }
+  box.innerHTML = html;
+  box.querySelectorAll('.labstar').forEach((c) => c.onchange = async () => {
+    const e = run.entries.find((x) => x.key === c.dataset.key);
+    if (e) e.star = c.checked;
+    await fetch(`/api/artistlab/${run.id}/star`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: c.dataset.key, star: c.checked }) });
+  });
+  box.querySelectorAll('[data-labcopy]').forEach((b) => b.onclick = async () => {
+    try { await navigator.clipboard.writeText(b.dataset.labcopy); b.textContent = '已複製'; } catch { prompt('複製這段：', b.dataset.labcopy); }
+  });
+  box.querySelectorAll('[data-labuse]').forEach((b) => b.onclick = () => {
+    const e = run.entries.find((x) => x.key === b.dataset.labuse);
+    if (!e) return;
+    const box2 = $('#iprompt');
+    box2.value = [e.text, box2.value.trim()].filter(Boolean).join(', ');
+    box2.dataset.touched = '1';
+    $('#istatus').textContent = '畫師組合已加到提詞最前面。';
+    box2.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+  const mix = $('#labmix');
+  if (mix) mix.onclick = async () => {
+    const stars = mixes.filter((e) => e.star);
+    const sizes = [$('#labs2').checked ? 2 : 0, $('#labs3').checked ? 3 : 0].filter(Boolean);
+    // Starred blends carry their members forward as the pool for the next batch.
+    const pool = [...new Set(stars.flatMap((e) => e.artists.map(([t]) => t)))];
+    mix.disabled = true;
+    try {
+      const r = await fetch(`/api/artistlab/${run.id}/mix`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pool, top: +$('#labtop').value || 8, sizes: sizes.length ? sizes : [2, 3],
+                               count: +$('#labcount').value || 12,
+                               rounds: $('#labrounds') ? +$('#labrounds').value : 0,
+                               per_round: $('#labper') ? +$('#labper').value : 8 }) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      LAB.run = d; renderLabRun(); pollLab();
+    } catch (e) { alert(e.message); mix.disabled = false; }
+  };
+}
+
+$('#labbtn').onclick = openLab;
 
 /* ---------- artists ---------- */
 // An artist tag is the strongest single style lever these checkpoints have, and
