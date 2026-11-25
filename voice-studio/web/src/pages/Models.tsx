@@ -95,9 +95,10 @@ function ModelDetail({ id }: { id: string }) {
           </div>
           <div className="flex gap-2">
             <Link to={`/speak?model=${m.id}`}><Button><Mic2 className="size-4" />用這個模型合成</Button></Link>
-            <Button variant="ghost" onClick={() => confirm(`刪除模型「${m.name}」？檔案會一起刪除。`) && del.mutate()}><Trash2 className="size-4" /></Button>
+            <Button variant="ghost" loading={del.isPending} onClick={() => confirm(`刪除模型「${m.name}」？檔案會一起刪除。`) && del.mutate()}><Trash2 className="size-4" /></Button>
           </div>
         </div>
+        <ErrorText error={del.error} />
       </Card>
 
       {m.checkpoints.length > 0 && (

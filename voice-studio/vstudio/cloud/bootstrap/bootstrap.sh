@@ -112,7 +112,8 @@ WORK_PID=""
 
 # model.tar is written atomically as soon as the weights are ready, before the optional sample phase,
 # so a failure while sampling still delivers the trained model
-if [ -f "$JOB/model.tar.json" ] || [ -f "$JOB/model.tar" ]; then
+# (a long-form speech run publishes result.json instead, when every chunk is written)
+if [ -f "$JOB/model.tar.json" ] || [ -f "$JOB/model.tar" ] || [ -f "$JOB/result.json" ]; then
   put done.json "$(printf '{"status":"done","rc":%d,"samples":%s,"at":"%s"}' "$rc" \
     "$( { [ -f "$JOB/samples.tar.json" ] || [ -f "$JOB/samples.tar" ]; } && echo true || echo false)" "$(date -u +%FT%TZ)")"
   finish done

@@ -1007,8 +1007,24 @@ def reap() -> dict:
         pods = runpod.studio_pods()
     except Exception as e:
         return {"removed": removed, "orphans": [], "error": str(e)[:200]}
+    from . import cloud_tts
+    for r in db.query("SELECT * FROM cloud_renders WHERE pod_state IN ('remove_failed','running') AND pod_id IS NOT NULL"):
+        if r["status"] not in cloud_tts.ACTIVE and cloud_tts._remove_pod(r["id"], r["pod_id"]):
+            removed.append(r["pod_id"])
     for p in pods:
         tid = str(p.get("name", ""))[len("voice-studio-"):]
+        if tid.startswith("rd_"):  # a long-form speech run
+            r = db.get("cloud_renders", tid)
+            if r and r["status"] not in cloud_tts.ACTIVE and p.get("id") not in removed:
+                try:
+                    runpod.remove_pod(p["id"])
+                    removed.append(p["id"])
+                except Exception:
+                    orphans.append({"id": p.get("id"), "name": p.get("name"), "training": tid, "known": True})
+            elif not r:
+                orphans.append({"id": p.get("id"), "name": p.get("name"), "training": tid, "known": False,
+                                "cost_per_hr": p.get("costPerHr")})
+            continue
         tr = db.get("trainings", tid)
         if tr and tr["status"] in ("done", "failed", "canceled"):
             try:
@@ -1220,10 +1236,29 @@ def _stage_label(err: dict) -> str:
             None: "逾時" if err.get("status") == "timeout" else "未知"}.get(err.get("stage"), err.get("stage") or "?")
 
 
-def remove_model(model_id: str) -> None:
+def remove_model(model_id: str, strict: bool = True) -> list[str]:
+    """The model, its files here and its copy on the network volume (kept there for long-form cloud speech).
+    strict: a copy that cannot be deleted keeps the model (so the copy is not forgotten and billed for storage);
+    otherwise the model goes and the leftover is returned as a note."""
     m = db.get("models", model_id)
-    if m:
-        from . import tts
-        tts.unload_if(model_id)
-        shutil.rmtree(m["path"], ignore_errors=True)
-        db.delete("models", model_id)
+    if not m:
+        return []
+    notes = []
+    copy = (m["meta"] or {}).get("cloud_copy")
+    if copy:
+        loc = copy.get("loc") or None
+        try:
+            ids = {v.get("id") for v in runpod.volumes()}
+            if not loc or loc.get("volume") in ids:  # a deleted volume took the copy with it
+                runpod.delete_run_folder(copy.get("prefix") or f"vs/models/{model_id}", loc)
+        except Exception as e:
+            msg = (f"雲端網路磁碟上的模型副本沒刪到（{str(e)[:160]}）。可以再刪一次，或到 runpod.io → Storage "
+                   f"刪除 {copy.get('prefix') or f'vs/models/{model_id}'}。")
+            if strict:
+                raise RuntimeError(msg + "模型先留著。") from e
+            notes.append(msg)
+    from . import tts
+    tts.unload_if(model_id)
+    shutil.rmtree(m["path"], ignore_errors=True)
+    db.delete("models", model_id)
+    return notes

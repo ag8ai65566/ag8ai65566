@@ -2635,3 +2635,368 @@ def test_unmeasured_gpu_estimate_scales_a_measured_speed(client, tmp_path):
     assert training._speed("voxcpm2", "lora", h100) == (1.1, "measured", h100)
     assert training._speed("voxcpm2", "lora", "NVIDIA L40S")[1:] == ("scaled", "NVIDIA A100-SXM4-80GB")
     assert training._speed("voxcpm2", "lora", "Colab") == (None, "guess", "")
+
+
+# --- long-form speech on a rented GPU (cloud_tts) ---------------------------------------------------------------
+
+def _s3_folder(vol: Path, uploads: list | None = None):
+    """RunPod's S3 API over a folder (the network volume as the pod sees it)."""
+    import io
+    from botocore.exceptions import ClientError
+
+    def key_of(f: Path) -> str:
+        return str(f.relative_to(vol)).replace(os.sep, "/")
+
+    class Volume:
+        def get_object(self, Bucket, Key, Range=None):
+            if not (vol / Key).exists():
+                raise ClientError({"Error": {"Code": "NoSuchKey"}}, "GetObject")
+            return {"Body": io.BytesIO((vol / Key).read_bytes())}
+
+        def head_object(self, Bucket, Key):
+            if not (vol / Key).exists():
+                raise ClientError({"Error": {"Code": "404"}}, "HeadObject")
+            return {"ContentLength": (vol / Key).stat().st_size}
+
+        def put_object(self, Bucket, Key, Body):
+            (vol / Key).parent.mkdir(parents=True, exist_ok=True)
+            (vol / Key).write_bytes(Body)
+
+        def upload_file(self, local, Bucket, Key, Callback=None, Config=None):
+            (vol / Key).parent.mkdir(parents=True, exist_ok=True)
+            data = Path(local).read_bytes()
+            (vol / Key).write_bytes(data)
+            if uploads is not None:
+                uploads.append(Key)
+            if Callback:
+                Callback(len(data))
+
+        def delete_object(self, Bucket, Key):
+            (vol / Key).unlink(missing_ok=True)
+
+        def get_paginator(self, name):
+            class P:
+                def paginate(self, Bucket, Prefix):
+                    return [{"Contents": [{"Key": key_of(f)} for f in sorted(vol.rglob("*"))
+                                          if f.is_file() and key_of(f).startswith(Prefix)]}]
+            return P()
+    return Volume()
+
+
+def _cloud_tts_setup(monkeypatch, tmp_path, catalog=None):
+    """A fake RunPod account: one volume (a folder), a GPU catalog, and pods that run bootstrap.sh on the folder."""
+    import subprocess
+    from vstudio import cloud_tts
+    from vstudio.cloud import runpod
+    bash = _bash()
+    if not bash:
+        pytest.skip("needs bash")
+    vol = tmp_path / "volume"
+    (vol / "vs" / "envs" / "mock" / "bin").mkdir(parents=True)
+    (vol / "vs" / "envs" / "mock" / "bin" / "activate").write_text("", encoding="utf-8")   # the engine is installed
+    binp = tmp_path / "podbin"
+    binp.mkdir()
+    for name, body in (("runpodctl", "exit 0"), ("python", f'exec "{Path(sys.executable).as_posix()}" "$@"')):
+        (binp / name).write_text(f"#!/bin/bash\n{body}\n", encoding="utf-8", newline="\n")
+        (binp / name).chmod(0o755)
+    uploads: list[str] = []
+    monkeypatch.setattr(runpod, "s3", lambda loc=None, fast=False, attempts=None, read_timeout=None: _s3_folder(vol, uploads))
+    monkeypatch.setattr(runpod, "bucket", lambda loc=None: "vol1")
+    monkeypatch.setattr(runpod, "location", lambda: {"volume": "vol1", "datacenter": "US-CA-2"})
+    monkeypatch.setattr(runpod, "check", lambda: {"ok": True, "problem": ""})
+    monkeypatch.setattr(runpod, "volumes", lambda: [{"id": "vol1", "dataCenterId": "US-CA-2"}])
+    monkeypatch.setattr(runpod, "gpu_catalog", lambda dc=None: {"live": True, "datacenter": dc, "error": "", "gpus": catalog or [
+        {"id": "NVIDIA GeForce RTX 3080", "vram": 10, "usd_h": 0.17, "availability": "HIGH"},     # too small
+        {"id": "NVIDIA RTX A4000", "vram": 16, "usd_h": 0.25, "availability": "HIGH"},
+        {"id": "NVIDIA GeForce RTX 4090", "vram": 24, "usd_h": 0.74, "availability": "HIGH"},
+        {"id": "NVIDIA L40S", "vram": 48, "usd_h": 0.86, "availability": "NONE"}]})
+    monkeypatch.setattr(cloud_tts, "POLL_S", 0)
+    pods = {"created": [], "removed": [], "behaviour": []}
+
+    def run_bootstrap(env):
+        rid = env["VS_TRAINING_ID"]
+        full = {**os.environ, **env, "PATH": str(binp) + os.pathsep + os.environ.get("PATH", ""),
+                "VS_ROOT": (vol / "vs").as_posix(), "VS_WORK": (tmp_path / "podwork").as_posix(),
+                "VS_DATA": (tmp_path / "poddata" / rid).as_posix(), "RUNPOD_POD_ID": "pod",
+                "VS_FINISH_SLEEP": "0", "VS_KILL_GRACE": "0", "VS_RETRY_SLEEP": "0"}
+        subprocess.run([bash, (vol / "vs" / "jobs" / rid / "bootstrap.sh").as_posix()], env=full, timeout=120,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    def create_pod(name, image, gpus, env, cmd, loc, **kw):
+        pods["created"].append({"name": name, "gpus": list(gpus), "env": env, "cmd": cmd, **kw})
+        how = pods["behaviour"].pop(0) if pods["behaviour"] else run_bootstrap
+        how(env)
+        return {"id": f"pod{len(pods['created'])}", "costPerHr": 0.74}
+    monkeypatch.setattr(runpod, "create_pod", create_pod)
+    monkeypatch.setattr(runpod, "get_pod", lambda pod_id: {"id": pod_id})
+    monkeypatch.setattr(runpod, "remove_pod", lambda pod_id: pods["removed"].append(pod_id))
+    monkeypatch.setattr(runpod, "list_pods", lambda name=None, volume=None: [])
+    return vol, pods, uploads
+
+
+LONG_TEXT = ("[whispers] Once upon a time there was a quiet town by the sea. Nobody there had ever seen snow.\n\n"
+             "One winter morning the sky turned grey. [pause 1.5] Then the first flakes began to fall on Kronii's roof.\n"
+             "The children ran outside, shouting and laughing, and the old fisherman stood in his doorway and smiled.")
+
+
+def test_long_form_speech_on_a_rented_gpu(client, tmp_path, monkeypatch):
+    """The whole run: estimate → the text goes up as lines → the pod (bootstrap.sh + synth_entry.py, test engine)
+    writes one file per line → the studio removes the pod itself, downloads the lines and joins them into one WAV
+    with the pauses and a sheet of where each line starts → the run folder on the volume is deleted and the measured
+    speed is kept for the next estimate."""
+    import json
+    import soundfile as sf
+    from vstudio import config, db
+    c = client
+    vol, pods, _ = _cloud_tts_setup(monkeypatch, tmp_path)
+    v = _consented_voice(c)
+    (tmp_path / "m").mkdir()
+    db.insert("models", {"id": "mdl_0aa1", "voice_id": v["id"], "engine": "mock", "name": "K", "path": str(tmp_path / "m"),
+                         "created_at": db.now()})
+    config.save_settings({"lexicon": [{"from": "Kronii", "to": "Crow-nee", "lang": "en"}]})
+
+    pl = c.post("/api/cloud-tts/plan", json={"model_id": "mdl_0aa1", "text": LONG_TEXT}).json()
+    assert pl["lines"] == 5 and pl["language"] == "en" and pl["model_upload_gb"] == 0
+    ids = [g["id"] for g in pl["gpus"]]
+    assert "NVIDIA GeForce RTX 3080" not in ids                                     # 10 GB: no room for the model
+    assert ids[-1] == "NVIDIA L40S" and not pl["gpus"][-1]["in_stock"]              # sold out: listed last
+    assert pl["gpu"] == "NVIDIA RTX A4000" and pl["estimate_usd"] < 0.1             # cheapest run in stock
+    assert any("估計" in w for w in pl["warnings"])                                  # not measured on this card yet
+    assert c.post("/api/cloud-tts", json={"model_id": "mdl_0aa1", "text": LONG_TEXT,
+                                          "gpu": "NVIDIA L40S"}).status_code == 400  # sold out: nothing rented
+    assert not pods["created"]
+
+    r = c.post("/api/cloud-tts", json={"model_id": "mdl_0aa1", "text": LONG_TEXT, "gpu": "NVIDIA GeForce RTX 4090",
+                                       "name": "snow"}).json()
+    j = _wait(c, r["job_id"])
+    assert j["status"] == "done", j["message"]
+    run = c.get(f"/api/cloud-tts/{r['id']}").json()
+    assert run["status"] == "done" and run["output"] and run["text"] == LONG_TEXT
+    p = pods["created"][0]
+    assert p["name"] == f"voice-studio-{r['id']}" and p["gpus"] == ["NVIDIA GeForce RTX 4090"]
+    assert "VS_WAIT_UPLOAD" not in p["env"] and pods["removed"] == ["pod1"]          # removed by the studio itself
+
+    lines = json.loads((config.DATA / "jobs" / r["id"] / "lines.json").read_text(encoding="utf-8"))
+    assert any("Crow-nee" in ln["text"] for ln in lines)                            # the pronunciation dictionary
+    assert any("Kronii" in ln["shown"] for ln in lines)                             # the sheet shows the text as written
+    out = db.get("outputs", run["output"]["id"])
+    hum = [min(20.0, 0.06 * len(ln["text"]) + 0.3) for ln in lines]                 # what the test engine says
+    expect = sum(hum) + sum(ln["pause"] for ln in lines)
+    info = sf.info(out["path"])
+    assert info.samplerate == 48000 and abs(info.duration - expect) < 0.05 and abs(out["duration"] - expect) < 0.05
+    assert "synthetic" in (info.extra_info or "") or "Voice Studio" in json.dumps(sf.SoundFile(out["path"]).copy_metadata())
+    sheet = c.get(f"/api/outputs/{out['id']}/sheet").json()
+    assert [s["line"] for s in sheet] == list(range(1, 6)) and sheet[0]["start"] == 0
+    assert abs(sheet[3]["start"] - (hum[0] + hum[1] + hum[2] + sum(ln["pause"] for ln in lines[:3]))) < 0.02
+    assert lines[2]["pause"] == pytest.approx(0.35 + 1.5)                           # the [pause] after its sentence
+    assert out["params"]["cloud"] and out["batch"] == r["id"]
+    assert c.get(f"/api/outputs/{out['id']}/audio").status_code == 200
+    assert not [f for f in (vol / "vs" / "jobs" / r["id"]).rglob("*") if f.is_file()]  # run folder deleted
+    assert (vol / "vs" / "envs" / "mock" / "bin" / "activate").exists()               # the shared parts stay
+    assert not (config.DATA / "jobs" / r["id"] / "audio").exists()
+    assert config.load_settings()["tts_rtf"]["mock:NVIDIA GeForce RTX 4090"] > 0           # measured for next time
+    pl = c.post("/api/cloud-tts/plan", json={"model_id": "mdl_0aa1", "text": LONG_TEXT,
+                                             "gpu": "NVIDIA GeForce RTX 4090"}).json()
+    assert not any("估計" in w for w in pl["warnings"])
+
+    listed = c.get("/api/cloud-tts").json()
+    assert listed[0]["id"] == r["id"] and "text" not in listed[0]["params"] and listed[0]["params"]["chars"] == len(LONG_TEXT)
+    assert c.delete(f"/api/cloud-tts/{r['id']}").status_code == 200
+    assert db.get("cloud_renders", r["id"]) is None and db.get("outputs", out["id"])  # the speech stays
+
+
+def test_long_form_run_continues_where_it_stopped(client, tmp_path, monkeypatch):
+    """A pod that fails halfway: the lines it made are downloaded and kept, the pod is removed, and "continue" rents a
+    new one that makes only the missing lines (the first ones in the result are the first pod's). Stop works while a
+    pod is working; the app closing mid-run removes the pod at the next start."""
+    import json
+    import time
+    import numpy as np
+    import soundfile as sf
+    from vstudio import cloud_tts, config, db
+    c = client
+    vol, pods, _ = _cloud_tts_setup(monkeypatch, tmp_path)
+    v = _consented_voice(c)
+    (tmp_path / "m").mkdir()
+    db.insert("models", {"id": "mdl_0aa2", "voice_id": v["id"], "engine": "mock", "name": "K", "path": str(tmp_path / "m"),
+                         "created_at": db.now()})
+
+    def dies_after_two(env):
+        job = vol / "vs" / "jobs" / env["VS_TRAINING_ID"]
+        (job / "audio").mkdir(parents=True, exist_ok=True)
+        for i in range(2):
+            sf.write(str(job / "audio" / f"{i:05d}.wav"), np.full(24000, 0.1, dtype=np.float32), 24000)  # 1.0 s each
+        (job / "progress.json").write_text(json.dumps({"phase": "synth", "done": 2, "total": 5}), encoding="utf-8")
+        (job / "error.json").write_text(json.dumps({"status": "error", "stage": "train"}), encoding="utf-8")
+        (job / "train.log").write_text("[vs] CUDA error: device-side assert\n", encoding="utf-8")
+    pods["behaviour"].append(dies_after_two)
+    r = c.post("/api/cloud-tts", json={"model_id": "mdl_0aa2", "text": LONG_TEXT}).json()
+    j = _wait(c, r["job_id"])
+    row = db.get("cloud_renders", r["id"])
+    assert j["status"] == "failed" and row["status"] == "failed" and "2 / 5" in row["note"] and "繼續" in row["note"]
+    assert "雲端合成出錯（合成）" in row["note"]                                     # why, on the run's card
+    assert "device-side assert" in c.get(f"/api/cloud-tts/{r['id']}/log").json()["log"]
+    assert pods["removed"] == ["pod1"] and row["gpu"] == "NVIDIA RTX A4000"
+    from vstudio.cloud import runpod
+    real_catalog = runpod.gpu_catalog
+    monkeypatch.setattr(runpod, "gpu_catalog", lambda dc=None: {**real_catalog(dc), "gpus": [
+        {**g, "availability": "NONE"} if g["id"] == "NVIDIA RTX A4000" else g for g in real_catalog(dc)["gpus"]]})
+    assert sorted(f.name for f in (config.DATA / "jobs" / r["id"] / "audio").iterdir()) == ["00000.wav", "00001.wav"]
+
+    old = c.post(f"/api/jobs/{r['job_id']}/retry").json()                          # the jobs page's "retry": refused
+    assert _wait(c, old["id"])["status"] == "failed" and len(pods["created"]) == 1
+    assert db.get("cloud_renders", r["id"])["status"] == "failed"
+    r2 = c.post(f"/api/cloud-tts/{r['id']}/resume").json()
+    assert r2["gpu"] == "NVIDIA GeForce RTX 4090" and "沒貨" in r2["note"]             # its card is gone: the next one
+    j = _wait(c, r2["job_id"])
+    assert j["status"] == "done", j["message"]
+    log = (vol / "vs" / "jobs" / r["id"] / "train.log")
+    out = db.get("outputs", db.get("cloud_renders", r["id"])["output_id"])
+    sheet = json.loads(Path(out["path"]).with_suffix(".json").read_text(encoding="utf-8"))
+    assert [round(s["duration"], 2) for s in sheet[:2]] == [1.0, 1.0]                 # the first pod's lines, kept
+    assert len(sheet) == 5 and pods["removed"] == ["pod1", "pod2"] and not log.exists()
+    assert pods["created"][1]["gpus"] == ["NVIDIA GeForce RTX 4090"]
+
+    # stop while the pod works: the job ends, the pod goes
+    monkeypatch.setattr(cloud_tts, "POLL_S", 1)
+    pods["behaviour"].append(lambda env: None)                                       # a pod that never finishes
+    r = c.post("/api/cloud-tts", json={"model_id": "mdl_0aa2", "text": LONG_TEXT}).json()
+    for _ in range(100):
+        if db.get("cloud_renders", r["id"])["status"] == "running":
+            break
+        time.sleep(0.1)
+    c.post(f"/api/cloud-tts/{r['id']}/cancel")
+    j = _wait(c, r["job_id"])
+    row = db.get("cloud_renders", r["id"])
+    assert j["status"] == "canceled" and row["status"] == "canceled" and pods["removed"][-1] == "pod3"
+    assert c.delete("/api/models/mdl_0aa2").status_code == 200                      # its model deleted meanwhile
+    r3 = c.post(f"/api/cloud-tts/{r['id']}/resume")
+    assert r3.status_code == 400 and "模型已經刪掉" in r3.json()["detail"]
+
+    # the app closed mid-run: at start-up its pod is removed and the run can be continued
+    db.update("cloud_renders", r["id"], {"status": "running", "pod_id": "podZ", "pod_state": "running"})
+    db.update("jobs", db.get("cloud_renders", r["id"])["job_id"], {"status": "failed"})
+    cloud_tts.resume_interrupted()
+    row = db.get("cloud_renders", r["id"])
+    assert row["status"] == "failed" and "podZ" in pods["removed"] and "繼續" in row["note"]
+
+
+def test_long_form_model_goes_up_once_and_is_deleted_with_the_model(client, tmp_path, monkeypatch):
+    """A fine-tuned checkpoint is copied to vs/models/<model>/<checkpoint>/ before any GPU is rented, only once (a
+    marker with the file sizes says the copy is whole; a changed file is sent again alone); deleting the model deletes
+    the copy, and a copy that cannot be deleted keeps the model. Leftover studio pods of finished runs are removed."""
+    import json
+    from vstudio import cloud_tts, db, engines, training
+    from vstudio.cloud import runpod
+    c = client
+    vol, pods, uploads = _cloud_tts_setup(monkeypatch, tmp_path)
+    v = _consented_voice(c)
+    m_dir = tmp_path / "kronii"
+    ck = m_dir / "checkpoints" / "step_0000402"
+    ck.mkdir(parents=True)
+    (ck / "model.safetensors").write_bytes(b"w" * 5000)
+    (ck / "config.json").write_text("{}", encoding="utf-8")
+    (m_dir / "engine.json").write_text(json.dumps({"engine": "voxcpm2", "mode": "full", "base": "openbmb/VoxCPM2",
+                                                   "checkpoints": [{"name": "step_0000402", "weights": True}]}),
+                                       encoding="utf-8")
+    m = db.insert("models", {"id": "mdl_0bb1", "voice_id": v["id"], "engine": "voxcpm2", "name": "Kronii",
+                             "path": str(m_dir), "meta": {"checkpoint": "step_0000402"}, "created_at": db.now()})
+    eng = engines.get("voxcpm2")
+    spec = cloud_tts.model_spec(m, eng)
+    assert spec["kind"] == "full" and spec["prefix"] == "vs/models/mdl_0bb1/step_0000402" and spec["bytes"] == 5002
+    pl = c.post("/api/cloud-tts/plan", json={"model_id": "mdl_0bb1", "text": LONG_TEXT}).json()
+    assert pl["model_upload_bytes"] == 5002
+
+    class Ctx:
+        def progress(self, f, msg=""):
+            pass
+
+        def check(self):
+            pass
+    cloud_tts._ensure_model(Ctx(), "rd_0", m, spec, runpod.location())
+    assert sorted(uploads) == ["vs/models/mdl_0bb1/step_0000402/config.json",
+                               "vs/models/mdl_0bb1/step_0000402/model.safetensors"]
+    assert (vol / "vs" / "models" / "mdl_0bb1" / "step_0000402" / cloud_tts.MARKER).exists()
+    assert db.get("models", "mdl_0bb1")["meta"]["cloud_copy"]["prefix"] == "vs/models/mdl_0bb1"
+    assert db.get("models", "mdl_0bb1")["meta"]["checkpoint"] == "step_0000402"     # the rest of the meta is kept
+    uploads.clear()
+    cloud_tts._ensure_model(Ctx(), "rd_0", m, spec, runpod.location())
+    assert uploads == []                                                            # already there: nothing sent
+    assert c.post("/api/cloud-tts/plan", json={"model_id": "mdl_0bb1", "text": LONG_TEXT}).json()["model_upload_bytes"] == 0
+    (ck / "config.json").write_text('{"x": 1}', encoding="utf-8")                   # changed: sent again alone
+    spec = cloud_tts.model_spec(m, eng)
+    cloud_tts._ensure_model(Ctx(), "rd_0", m, spec, runpod.location())
+    assert uploads == ["vs/models/mdl_0bb1/step_0000402/config.json"]
+
+    (m_dir / "engine.json").write_text(json.dumps({"engine": "voxcpm2", "mode": "lora", "base": "openbmb/VoxCPM2",
+                                                   "base_revision": "abc", "checkpoints": [
+                                                       {"name": "step_0000402", "weights": True}]}), encoding="utf-8")
+    lora = cloud_tts.model_spec(m, eng)
+    assert lora["kind"] == "lora" and lora["base_revision"] == "abc"
+
+    real = runpod.delete_run_folder
+    monkeypatch.setattr(runpod, "delete_run_folder", lambda prefix, loc=None: (_ for _ in ()).throw(
+        runpod.RunPodError("Read timeout")))
+    r = c.delete("/api/models/mdl_0bb1")
+    assert r.status_code == 502 and "模型先留著" in r.json()["detail"] and db.get("models", "mdl_0bb1")
+    monkeypatch.setattr(runpod, "delete_run_folder", real)
+    assert c.delete("/api/models/mdl_0bb1").status_code == 200
+    assert db.get("models", "mdl_0bb1") is None and not m_dir.exists()
+    assert not [f for f in (vol / "vs" / "models").rglob("*") if f.is_file()]
+
+    # the reaper: a finished run's pod goes, an unknown one is listed
+    db.insert("cloud_renders", {"id": "rd_0cc1", "model_id": "mdl_x", "status": "done", "remote_prefix": "vs/jobs/rd_0cc1",
+                                "pod_id": "podQ", "pod_state": "remove_failed", "created_at": db.now()})
+    monkeypatch.setattr(runpod, "studio_pods", lambda: [{"id": "podQ", "name": "voice-studio-rd_0cc1"},
+                                                        {"id": "podU", "name": "voice-studio-rd_0dd9"}])
+    out = training.reap()
+    assert "podQ" in pods["removed"] and db.get("cloud_renders", "rd_0cc1")["pod_state"] == "removed"
+    assert [o["id"] for o in out["orphans"]] == ["podU"]
+
+
+def test_long_form_stop_during_a_stuck_upload_and_voice_delete(client, tmp_path, monkeypatch):
+    """An upload RunPod stops answering can still be stopped (the stop is seen within a second or two). Deleting a
+    voice is blocked while one of its long-form runs works, and afterwards takes the runs' cloud folders with it."""
+    import threading
+    import time
+    from vstudio import cloud_tts, config, db, jobs
+    from vstudio.cloud import runpod
+    c = client
+    vol, pods, _ = _cloud_tts_setup(monkeypatch, tmp_path)
+    hang = threading.Event()
+    monkeypatch.setattr(runpod, "upload", lambda local, key, progress=None, loc=None: hang.wait(30))
+
+    class Ctx:
+        calls = 0
+
+        def check(self):
+            self.calls += 1
+            if self.calls > 2:
+                raise jobs.Cancelled()
+    f = tmp_path / "big.bin"
+    f.write_bytes(b"x" * 10)
+    t0 = time.time()
+    with pytest.raises(jobs.Cancelled):
+        cloud_tts._upload(Ctx(), f, "vs/models/mdl_1/x/big.bin", {}, lambda fr, quiet: None)
+    assert time.time() - t0 < 5
+    hang.set()
+
+    v = _consented_voice(c, "Kronii")
+    (tmp_path / "m").mkdir()
+    db.insert("models", {"id": "mdl_0ee1", "voice_id": v["id"], "engine": "mock", "name": "K", "path": str(tmp_path / "m"),
+                         "created_at": db.now()})
+    db.insert("cloud_renders", {"id": "rd_0ee1", "model_id": "mdl_0ee1", "status": "running", "storage": {"volume": "vol1",
+                                "datacenter": "US-CA-2"}, "remote_prefix": "vs/jobs/rd_0ee1", "params": {"name": "ch1"},
+                                "created_at": db.now()})
+    (vol / "vs" / "jobs" / "rd_0ee1" / "audio").mkdir(parents=True)
+    (vol / "vs" / "jobs" / "rd_0ee1" / "audio" / "00000.wav").write_bytes(b"RIFF")
+    (config.DATA / "jobs" / "rd_0ee1").mkdir(parents=True)
+    plan = c.get(f"/api/voices/{v['id']}/delete-plan").json()
+    assert any("長篇雲端合成「ch1」" in b for b in plan["blockers"])
+    assert c.delete(f"/api/voices/{v['id']}").status_code in (400, 409)
+    db.update("cloud_renders", "rd_0ee1", {"status": "failed"})
+    r = c.delete(f"/api/voices/{v['id']}")
+    assert r.status_code == 200, r.text
+    assert db.get("cloud_renders", "rd_0ee1") is None and db.get("models", "mdl_0ee1") is None
+    assert not (vol / "vs" / "jobs" / "rd_0ee1" / "audio" / "00000.wav").exists()
+    assert not (config.DATA / "jobs" / "rd_0ee1").exists()

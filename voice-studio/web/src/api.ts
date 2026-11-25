@@ -240,3 +240,22 @@ export const fmtDur = (s: number | null | undefined) => {
   return h ? `${h} 小時 ${m} 分` : m ? `${m} 分` : `${Math.round(s)} 秒`;
 };
 export const fmtUsd = (x: number | null | undefined) => (x == null ? "—" : `US$${x.toFixed(2)}`);
+
+// --- long-form speech on a rented cloud GPU ----------------------------------------------------------------------
+export type CloudTtsGpu = {
+  id: string; label: string; vram: number | null; usd_h: number; availability: string | null; rtf: number;
+  measured: boolean; minutes: number; usd: number; in_stock: boolean;
+};
+export type CloudTtsPlan = {
+  model: string; engine: string; language: string; lines: number; words: number; speech_min: number; gpu: string | null;
+  gpus: CloudTtsGpu[]; live: boolean; usd_per_hour: number; estimate_min: number; estimate_usd: number; max_hours: number;
+  model_upload_gb: number; model_upload_bytes: number; model_upload_min: number | null; warnings: string[];
+};
+export type CloudTtsRun = {
+  id: string; model_id: string; status: string; gpu: string | null; cost_per_hr: number | null; cost_estimate: number | null;
+  pod_state: string | null; note: string; created_at: number; started_at: number | null; finished_at: number | null;
+  params: { name?: string; preview: string; chars: number; lines?: number; speech_min?: number; tts_mode?: string; max_hours?: number };
+  progress: { phase?: string; done?: number; total?: number; downloaded?: number; audio_s?: number; failed?: number[] };
+  output: { id: string; duration: number } | null; active: boolean;
+  job: { status: string; progress: number; message: string } | null;
+};

@@ -536,7 +536,8 @@ def delete_archive(prefix: str, name: str, loc: dict | None = None) -> None:
     delete(f"{prefix}/{name}", loc)
 
 
-RUN_FOLDER = re.compile(r"vs/jobs/tr_[0-9a-f]+")  # one training run's folder on the volume, nothing wider
+RUN_FOLDER = re.compile(r"vs/jobs/(tr|rd)_[0-9a-f]+")  # one run's folder (a training, a long-form speech run)
+MODEL_FOLDER = re.compile(r"vs/models/mdl_[0-9a-f]+")  # a model kept on the volume for long-form speech runs
 
 
 def delete_run_folder(prefix: str, loc: dict | None = None) -> int:
@@ -544,7 +545,7 @@ def delete_run_folder(prefix: str, loc: dict | None = None) -> int:
     Only a run folder: the engine environments and model cache next to it are shared by every run. Returns how
     many files were deleted."""
     prefix = prefix.strip("/")
-    if not RUN_FOLDER.fullmatch(prefix):
+    if not (RUN_FOLDER.fullmatch(prefix) or MODEL_FOLDER.fullmatch(prefix)):
         raise RunPodError(f"不是一次訓練的資料夾：{prefix}")
     c, b, n = s3(loc), bucket(loc), 0
     for page in c.get_paginator("list_objects_v2").paginate(Bucket=b, Prefix=prefix + "/"):
@@ -552,6 +553,13 @@ def delete_run_folder(prefix: str, loc: dict | None = None) -> int:
             c.delete_object(Bucket=b, Key=o["Key"])  # one by one: the volume's S3 API may not offer batch delete
             n += 1
     return n
+
+
+def get_bytes(key: str, loc: dict | None = None) -> bytes:
+    """A small file, whole (a chunk of speech, a few MB)."""
+    obj = s3(loc).get_object(Bucket=bucket(loc), Key=key)
+    with obj["Body"] as body:
+        return body.read()
 
 
 def delete(key: str, loc: dict | None = None) -> None:

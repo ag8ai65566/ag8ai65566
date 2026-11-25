@@ -42,7 +42,10 @@ def _owned(voice_id: str) -> dict:
                           scenes) if scenes else []
     perfs = [p["id"] for p in db.query("SELECT id, params FROM performances")
              if (p.get("params") or {}).get("model_id") in models]
+    renders = db.query(f"SELECT * FROM cloud_renders WHERE model_id IN ({','.join('?' * len(models))})",
+                       models) if models else []
     return {"whole": whole, "shared": shared, "models": models, "outputs": outs + scene_rows, "performances": perfs,
+            "renders": renders,
             "datasets": [r["id"] for r in db.query("SELECT id FROM datasets WHERE voice_id=?", (voice_id,))],
             "trainings": db.query("SELECT * FROM trainings WHERE voice_id=?", (voice_id,)),
             "phrases": [r["id"] for r in db.query("SELECT id FROM catchphrases WHERE voice_id=?", (voice_id,))]}
@@ -51,9 +54,14 @@ def _owned(voice_id: str) -> dict:
 def _blockers(voice_id: str, own: dict) -> list[str]:
     out = [f"訓練「{(t.get('preset') or {}).get('name') or t['id']}」還在進行（{t['status']}）"
            for t in own["trainings"] if t["status"] in ACTIVE_TRAINING]
+    from .cloud_tts import ACTIVE as ACTIVE_RENDER
+    out += [f"長篇雲端合成「{(r.get('params') or {}).get('name') or r['id']}」還在進行（{r['status']}）"
+            for r in own["renders"] if r["status"] in ACTIVE_RENDER]
     ids = [voice_id, *own["models"], *own["datasets"], *(t["id"] for t in own["trainings"])]
     for j in db.query("SELECT id, kind, message, params FROM jobs WHERE status IN ('queued', 'running')"):
         if j["kind"] == "prepare_source":  # importing one of its recordings: cancelled with the recording
+            continue
+        if j["kind"] == "cloud_tts":  # listed as its long-form run above
             continue
         if j["kind"] == "cloud_train" and any(t["id"] == (j["params"] or {}).get("training_id")
                                               for t in own["trainings"] if t["status"] in ACTIVE_TRAINING):
@@ -133,8 +141,9 @@ def remove(voice_id: str) -> dict:
         raise Blocked("還有東西在用這個聲音，請先停止：" + "；".join(p["blockers"]))
     own = _owned(voice_id)
     left, notes = [], []
-    vols = _volumes() if any(t.get("remote_prefix") and t.get("target") != "colab" for t in own["trainings"]) else None
-    for tr in own["trainings"]:
+    vols = _volumes() if own["renders"] or any(t.get("remote_prefix") and t.get("target") != "colab"
+                                               for t in own["trainings"]) else None
+    for tr in [*own["trainings"], *own["renders"]]:
         if tr.get("remote_prefix"):
             problem, note = _delete_cloud(tr, vols)
             left += [problem] if problem else []
@@ -149,7 +158,7 @@ def remove(voice_id: str) -> dict:
             c.execute(f"UPDATE presets SET model_id=NULL WHERE model_id IN ({','.join('?' * len(own['models']))})",
                       own["models"])
     for mid in own["models"]:
-        training.remove_model(mid)
+        left += training.remove_model(mid, strict=False)
     for did in own["datasets"]:
         datasets.remove(did)
     for pid in own["phrases"]:
@@ -162,6 +171,8 @@ def remove(voice_id: str) -> dict:
         c.execute("DELETE FROM segments WHERE voice_id=?", (voice_id,))
         c.execute("DELETE FROM sound_finds WHERE voice_id=?", (voice_id,))
         c.execute("DELETE FROM trainings WHERE voice_id=?", (voice_id,))
+        for r in own["renders"]:
+            c.execute("DELETE FROM cloud_renders WHERE id=?", (r["id"],))
         c.execute("UPDATE sources SET voice_hint=NULL WHERE voice_hint=?", (voice_id,))
     shutil.rmtree(config.DATA / "voices" / voice_id, ignore_errors=True)  # consent document, enrollment, phrases
     db.delete("voices", voice_id)

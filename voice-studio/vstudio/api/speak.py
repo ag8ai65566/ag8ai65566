@@ -110,6 +110,7 @@ def delete_output(oid: str):
     if o:
         Path(o["path"]).unlink(missing_ok=True)
         Path(o["path"]).with_suffix(".mp3").unlink(missing_ok=True)
+        Path(o["path"]).with_suffix(".json").unlink(missing_ok=True)  # a long-form run's or a scene's sheet
         db.delete("outputs", oid)
     return {"ok": True}
 

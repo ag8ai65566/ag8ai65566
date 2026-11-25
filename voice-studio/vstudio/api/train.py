@@ -7,7 +7,7 @@ from fastapi import APIRouter, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from .. import config, datasets, db, engines, jobs, training, tts
+from .. import cloud_tts, config, datasets, db, engines, jobs, training, tts
 from ..cloud import colab, runpod
 
 router = APIRouter(prefix="/api", tags=["train"])
@@ -316,7 +316,14 @@ def patch_model(model_id: str, body: ModelPatch):
 
 @router.delete("/models/{model_id}")
 def delete_model(model_id: str):
-    training.remove_model(model_id)
+    active = db.query("SELECT id FROM cloud_renders WHERE model_id=? AND status IN "
+                      f"({','.join('?' * len(cloud_tts.ACTIVE))})", (model_id, *cloud_tts.ACTIVE))
+    if active:
+        raise HTTPException(409, "這個模型正在雲端長篇合成，先到「長篇雲端合成」按「停止」。")
+    try:
+        training.remove_model(model_id)
+    except RuntimeError as e:
+        raise HTTPException(502, str(e))
     return {"ok": True}
 
 

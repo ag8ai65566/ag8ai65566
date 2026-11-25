@@ -6,6 +6,7 @@ import { Download, Mic2, Power, Star, Trash2 } from "lucide-react";
 import { api, EMOTION_LABEL, EMOTIONS, fmtTime, isSound, LANGS, MODES, type CharacterPreset, type Model, type Output, type Phrase } from "../api";
 import { Badge, Button, Card, Empty, ErrorText, Field, PageHeader, PlayButton, usePlayer, Wave } from "../ui";
 import LongForm from "./LongForm";
+import CloudLong from "./CloudLong";
 import { insertAt, TagPicker } from "../TagPicker";
 
 const STYLE_CHIPS: [string, string][] = [
@@ -82,19 +83,19 @@ export default function Speak() {
       先 <Link to="/train" className="underline">訓練一個</Link>，或到 <Link to="/models" className="underline">模型</Link> 建立免訓練模型。
       只想看看介面的話，可以到 <Link to="/settings" className="underline">設定</Link> 建立測試模型。</Empty></div>);
 
-  const tab = sp.get("tab") === "long" ? "long" : "short";
-  const setTab = (t: string) => setSp((cur) => { const n = new URLSearchParams(cur); if (t === "long") n.set("tab", "long"); else n.delete("tab"); return n; });
+  const tab = sp.get("tab") === "long" ? "long" : sp.get("tab") === "cloud" ? "cloud" : "short";
+  const setTab = (t: string) => setSp((cur) => { const n = new URLSearchParams(cur); if (t !== "short") n.set("tab", t); else n.delete("tab"); return n; });
   return (
     <div>
       <PageHeader title="文字轉語音" subtitle="輸入文字，用你訓練好的聲音念出來。一次產生幾個版本，平台會用語音辨識檢查有沒有漏字，標出最好的一個。"
         actions={<Button variant="ghost" size="sm" onClick={() => unload.mutate()} title="把模型從顯示卡移出，讓出記憶體"><Power className="size-4" />釋放顯示卡</Button>} />
       <div className="mb-6 flex w-fit rounded-lg border border-zinc-300 p-0.5 text-sm dark:border-zinc-700">
-        {([["short", "一段話（2,000 字內）"], ["long", "長文・逐句調整（20,000 字內）"]] as const).map(([k, l]) => (
+        {([["short", "一段話（2,000 字內）"], ["long", "長文・逐句調整（20,000 字內）"], ["cloud", "整篇交給雲端 GPU"]] as const).map(([k, l]) => (
           <button key={k} onClick={() => setTab(k)}
             className={clsx("rounded-md px-3 py-1.5", tab === k ? "bg-brand-600 text-white" : "text-zinc-600 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800")}>{l}</button>
         ))}
       </div>
-      {tab === "long" ? <LongForm models={models.data ?? []} initialText={text.length > 0 ? text : undefined} /> : (
+      {tab === "cloud" ? <CloudLong models={models.data ?? []} /> : tab === "long" ? <LongForm models={models.data ?? []} initialText={text.length > 0 ? text : undefined} /> : (
       <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
         <Card>
           <div className="space-y-4">

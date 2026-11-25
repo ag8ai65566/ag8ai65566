@@ -75,6 +75,12 @@ CREATE INDEX IF NOT EXISTS sound_voice ON sound_finds(voice_id, status, kind);
 CREATE TABLE IF NOT EXISTS presets (
   id TEXT PRIMARY KEY, name TEXT NOT NULL, source TEXT NOT NULL, model_id TEXT, data TEXT NOT NULL, created_at REAL NOT NULL
 );
+CREATE TABLE IF NOT EXISTS cloud_renders (
+  id TEXT PRIMARY KEY, model_id TEXT NOT NULL, status TEXT NOT NULL, params TEXT NOT NULL DEFAULT '{}',
+  storage TEXT NOT NULL DEFAULT '{}', remote_prefix TEXT NOT NULL, pod_id TEXT, pod_state TEXT, gpu TEXT,
+  cost_per_hr REAL, cost_estimate REAL, progress TEXT NOT NULL DEFAULT '{}', job_id TEXT, output_id TEXT,
+  note TEXT NOT NULL DEFAULT '', deadline REAL, created_at REAL NOT NULL, started_at REAL, finished_at REAL
+);
 """
 
 JSON_COLS = {"languages", "consent", "enrollment", "meta", "flags", "params", "result", "preset", "progress",
