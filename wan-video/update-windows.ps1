@@ -127,8 +127,8 @@ function Test-Writable($path) {
   }
 }
 
-# 這些絕對不覆蓋。zip 裡本來就沒有，這裡再擋一層。
-$keep = @('ComfyUI', 'venv', 'data', 'models', '.env')
+# 這些絕對不覆蓋。zip 裡本來就沒有，這裡再擋一層。WanGP\ 是另一個 app，由 wangp-windows.ps1 管。
+$keep = @('ComfyUI', 'venv', 'data', 'models', '.env', 'WanGP')
 
 Say '檢查'
 if (-not (Test-Path "$root\app\server.py")) {

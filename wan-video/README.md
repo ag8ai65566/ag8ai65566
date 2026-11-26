@@ -290,6 +290,45 @@ python3 scripts/fetch-model.py hy15-480p --check  # 只檢查現況
 補幀後卡片上的 fps 會直接寫「@32fps（補幀）」，長度（秒）不變 —— 補幀是讓它變順，
 不是變慢動作。
 
+### 自動導演：給一張圖，自己拍成一支影片（WanGP）
+
+這個 app 生成的是**一段**：你寫指令、它照做。要「給圖，它自己判斷怎麼動、一段接一段拍、
+自己檢查、剪成一支」，目前（2026-11）最完整的本機工具是另一個免費開源的 app
+—— [WanGP](https://github.com/deepbeepmeep/Wan2GP)（v20.20，2026-11-24）的 **Showrunner**。
+重做一個只會是比較差的版本，所以這個 app 改成**幫你裝它、幫你開它**。
+
+它做的事（照它自己的文件）：本機語言模型當導演，讀你的圖和一句想法，寫好每一鏡讓你看、讓你改，
+按下去就逐鏡生成、**自己檢查每一段、重做失敗的**，最後剪成一支（5 秒到 10 分鐘）。
+導演用的是 Qwen3.8 27B；顯存不到 16GB 時它會自動選 Bonsai 量化版（權重不到 6GB）。
+影片模型方面，它說 MiniMax H3 1080p 15 秒用它的極限分塊只要 5.9GB 顯存 —— 這是這個 app 在 10GB 上跑不動的。
+
+**裝法（Windows）**：影片分頁最下面「🎬 自動導演（WanGP）」→ 安裝；或雙擊 `wangp.bat`；
+或 `update-and-start.bat` 的選單按 `4`。它會：
+
+1. 檢查 Git、顯卡與驅動（WanGP 給 RTX 30 系列裝 CUDA 13 版 PyTorch，**驅動要 580 版以上**，太舊會先提醒你）、硬碟空間；
+2. 沒有 Python 3.11 就問你要不要用 winget 裝（WanGP 在 RTX 30 上用 3.11 建它自己的環境；這個 app 的 3.12 不受影響）；
+3. 把 WanGP 下載到這個資料夾的 `WanGP\`，用**它自己的安裝程式**（自動模式）裝好。
+   它的環境是獨立的，`update.bat` 更新這個 app 時不會碰那個資料夾。
+
+**啟動**：同一個位置按「啟動」。會先請這邊的 ComfyUI 把顯存讓出來（兩個 app 共用一張顯卡），
+再開一個黑視窗跑 WanGP，好了自動開 <http://127.0.0.1:7860>。**同一時間只讓一邊生成。**
+
+**用法**：WanGP 上方打開 Showrunner → 選 Short film 或 Anything → Brief 寫一句想法、
+把圖拖進 Cast（人物）或 References → Plan with the showrunner → 看分鏡、想改就改 → Shoot。
+只要一段的話：一般生成頁用 Prompt Enhancer 讓它看圖寫提詞，要更長就開 Sliding Window。
+
+**要注意的**：
+
+- **成人內容只留在本機**：WanGP 的助理可以接遠端 LLM（Codex、Claude Code 等）、也可以開網路搜尋 ——
+  都預設關閉，**做成人內容時不要打開**，那會把你的圖和文字送出這台電腦。
+- WanGP 的 MCP 伺服器預設用 8000 port，跟這個 app 撞在一起；要開 MCP 先在它的 Configuration > Agents 改 port。
+- 未成年人物、拿真人的臉做性內容：不管用哪個工具都不做。
+- **這套安裝腳本沒有在 Windows 上實際跑過**（開發環境沒有 Windows）。它照 WanGP 2026-11-24 版的安裝程式寫：
+  它的一鍵安裝就是 `setup.py install --env venv --auto`，RTX 30 的設定檔指定 Python 3.11、CUDA 13。
+  裝不起來的話，WanGP 官方另有圖形化安裝器
+  [WanGPManager.exe](https://github.com/deepbeepmeep/WanGP/releases/latest/download/WanGPManager.exe)，
+  選 Use existing installation 指到 `WanGP\` 資料夾即可。
+
 ### 圖片
 
 不需要輸入圖，全靠提詞。九個 SDXL 系底模，分成動漫和寫實兩條線：
@@ -981,7 +1020,8 @@ Dockerfile.comfy       ComfyUI + ComfyUI-GGUF + VideoHelperSuite + Manager
 setup-windows.ps1      Windows 原生安裝（不用 Docker）
 start-windows.ps1      Windows 啟動 · update-windows.ps1 更新程式碼（不動模型）
 install.bat / start.bat / update.bat   上面三支的雙擊包裝
-update-and-start.bat   單一啟動檔：可以放桌面，自己找到 app 資料夾，更新後啟動
+update-and-start.bat   單一啟動檔：可以放桌面，自己找到 app 資料夾，更新後啟動（選單 4 = WanGP）
+wangp-windows.ps1      安裝／啟動／更新 WanGP（另一個 app，裝在 WanGP\；wangp.bat 是雙擊包裝）
 setup-codex.bat        選用：裝 OpenAI Codex 並註冊給 Claude Code 當工具
                        （見 docs/codex-mcp.md；憑證由你自己輸入，不經過腳本）
 setup-linux.sh         Linux 裸機安裝

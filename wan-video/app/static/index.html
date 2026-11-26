@@ -357,6 +357,12 @@
       </div>
     </div>
 
+    <details class="card" id="wangp" style="margin-top:12px">
+      <summary style="cursor:pointer"><b>🎬 自動導演（WanGP）</b>
+        <span class="s">給一張圖，它自己規劃鏡頭、生成、檢查、重拍、剪成一支影片 —— 全部在本機</span></summary>
+      <div id="wangpbody" style="margin-top:8px"><span class="s">讀取中…</span></div>
+    </details>
+
     <h2>最近</h2>
     <div id="recent" class="grid"></div>
   </div>
@@ -7949,6 +7955,46 @@ function renderLikeness(d) {
        75 人合集 LoRA 平均下來每個人都會軟一點。</div>`;
 }
 
+/* ---------- WanGP: a separate app for "picture in, finished video out" ---------- */
+
+async function loadWangp() {
+  const box = $('#wangpbody');
+  let d;
+  try {
+    const r = await fetch('/api/wangp');
+    d = await r.json();
+    if (!r.ok) throw new Error(d.detail || r.statusText);
+  } catch (e) { box.innerHTML = `<span class="warn">${esc(e.message)}</span>`; return; }
+  const state = d.running ? `<span class="tag done">執行中</span> <a href="${esc(d.url)}" target="_blank" rel="noopener">打開 WanGP</a>`
+    : d.ready ? '<span class="tag">已安裝，沒在跑</span>'
+    : d.installed ? '<span class="tag warn">下載了但沒裝完</span>' : '<span class="tag">還沒安裝</span>';
+  const buttons = !d.windows ? `<span class="s">一鍵安裝只做了 Windows 版；其他系統照 <a href="${esc(d.home)}" target="_blank" rel="noopener">WanGP 官方說明</a>。</span>`
+    : (d.ready ? `<button class="go tiny" data-wangp="start" ${d.running ? 'disabled' : ''}>啟動</button>
+                  <button class="ghost tiny" data-wangp="update" ${d.running ? 'disabled' : ''}>更新</button>`
+       : `<button class="go tiny" data-wangp="install">安裝（第一次，要一段時間）</button>`);
+  box.innerHTML = `
+    <div class="s"><a href="${esc(d.home)}" target="_blank" rel="noopener">WanGP</a> 是另一個免費開源的 app，跟這個 app 分開裝、分開跑
+      （裝在 <code>${esc(d.folder)}</code>，有自己的 Python 環境）。它的 <b>Showrunner</b> 用本機語言模型當導演：
+      看你的圖、寫每一鏡、生成、自己檢查每一段、重做失敗的，最後剪成一支片。10GB 顯卡會自動用 Qwen3.8 的 Bonsai 版（不到 6GB）。</div>
+    <div class="row" style="margin-top:8px;gap:8px;align-items:center">${state} ${buttons} <span class="s" id="wangpmsg"></span></div>
+    <div class="note">用法：WanGP 上方打開 Showrunner → 選 Short film 或 Anything → Brief 寫一句想法、把圖拖進 Cast 或 References →
+      Plan with the showrunner → 看分鏡、想改就改 → Shoot。只要一段：一般生成頁用 Prompt Enhancer 看圖寫提詞，要更長開 Sliding Window。</div>
+    <div class="note">兩個 app 共用同一張顯卡：按「啟動」時會先請這邊的 ComfyUI 讓出顯存，同一時間只讓一邊生成。
+      <b>成人內容只留在本機</b>：WanGP 的 Deepy 不要接遠端 LLM（Codex、Claude Code 等），也不要開網路搜尋。
+      未成年人物、拿真人的臉做性內容，用哪個工具都不做。</div>`;
+  box.querySelectorAll('[data-wangp]').forEach((b) => b.onclick = async () => {
+    b.disabled = true;
+    const msg = $('#wangpmsg');
+    try {
+      const r = await fetch('/api/wangp/' + b.dataset.wangp, { method: 'POST' });
+      const out = await r.json();
+      if (!r.ok) throw new Error(out.detail || r.statusText);
+      msg.textContent = out.message || '';
+      if (out.already && out.url) window.open(out.url, '_blank', 'noopener');
+    } catch (e) { msg.innerHTML = `<span class="warn">${esc(e.message)}</span>`; b.disabled = false; }
+  });
+}
+
 /* ---------- 繪師實驗室: find artists for a style, then let it mix them ---------- */
 
 async function openLab() {
@@ -8348,6 +8394,7 @@ function renderLabRun() {
 }
 
 $('#labbtn').onclick = openLab;
+$('#wangp').addEventListener('toggle', () => { if ($('#wangp').open) loadWangp(); });
 
 /* ---------- artists ---------- */
 // An artist tag is the strongest single style lever these checkpoints have, and

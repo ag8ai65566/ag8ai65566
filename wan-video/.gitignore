@@ -1,6 +1,8 @@
 # 模型權重（幾十 GB，不進版控）
 models/
 ComfyUI/
+# WanGP is a separate app installed by wangp-windows.ps1
+WanGP/
 
 # 執行期產物
 data/

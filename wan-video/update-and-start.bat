@@ -52,8 +52,10 @@ echo.
 echo    [1] Update, then start    - use this after new changes were pushed
 echo    [2] Start only
 echo    [3] Update only
+echo    [4] WanGP - picture in, finished video out (install / start / update)
 echo.
-choice /C 123 /N /M "  Press 1, 2 or 3: "
+choice /C 1234 /N /M "  Press 1, 2, 3 or 4: "
+if errorlevel 4 goto wangp
 if errorlevel 3 goto update_only
 if errorlevel 2 goto start_only
 if errorlevel 1 goto update_start
@@ -80,6 +82,16 @@ powershell -NoProfile -ExecutionPolicy Bypass -File "%APP%\start-windows.ps1"
 echo.
 echo  Two black windows should have opened - leave them running.
 echo  The browser opens http://127.0.0.1:8000 automatically.
+goto end
+
+:wangp
+if not exist "%APP%\wangp-windows.ps1" (
+  echo.
+  echo  This app folder is older than the WanGP launcher.
+  echo  Press 3 first to update it, then run this again and press 4.
+  goto end
+)
+powershell -NoProfile -ExecutionPolicy Bypass -File "%APP%\wangp-windows.ps1"
 goto end
 
 :failed

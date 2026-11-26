@@ -3917,7 +3917,7 @@ async def test_settings_and_updates() -> None:
 
     # -- the update script now covers ComfyUI too ----------------------------
     script = (ROOT / "update-windows.ps1").read_bytes().decode("utf-8-sig")
-    check("$keep = @('ComfyUI', 'venv', 'data', 'models', '.env')" in script,
+    check("$keep = @('ComfyUI', 'venv', 'data', 'models', '.env', 'WanGP')" in script,
           "ComfyUI is still on the never-overwrite list (every model lives there)")
     check("'pull', '--ff-only'" in script,
           "…and is instead updated in place, which is why it used to fall behind")
@@ -9326,6 +9326,129 @@ async def test_artistlab() -> None:
             server.lib.records.pop(job, None)
 
 
+async def test_wangp() -> None:
+    """WanGP is a separate app this one installs and starts; nothing more.
+
+    The script cannot run here (it installs Python and clones a repository on a
+    Windows box), so what is checked is what it would do and in what order,
+    and that the page's buttons reach it with the right command.
+    """
+    import socket
+    import types as pytypes
+
+    import config
+    import server
+    import wangp
+    from fastapi import HTTPException
+
+    section("WanGP: where it lives and whether it runs")
+    root = TMP / "wangp-root"
+    (root / "WanGP").mkdir(parents=True, exist_ok=True)
+    check(not wangp.installed(root) and not wangp.ready(root), "an empty folder is not an installation")
+    (root / "WanGP" / "wgp.py").write_text("# stand-in", encoding="utf-8")
+    check(wangp.installed(root) and not wangp.ready(root),
+          "downloaded but not set up is told apart from ready")
+    (root / "WanGP" / "envs.json").write_text("{}", encoding="utf-8")
+    check(wangp.ready(root), "its installer's envs.json marks it ready")
+    command = wangp.command(root, "start")
+    check(command[:5] == ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File"]
+          and command[5].endswith("wangp-windows.ps1") and command[-2:] == ["-Action", "start"],
+          "the command runs the project's own script with the action")
+    try:
+        wangp.command(root, "rm")
+        check(False, "an unknown action is refused")
+    except ValueError:
+        check(True, "an unknown action is refused")
+    listener = socket.socket()
+    listener.bind(("127.0.0.1", 0))
+    listener.listen(1)
+    taken = listener.getsockname()[1]
+    check(wangp.running(port=taken), "a listening port reads as running")
+    listener.close()
+    check(not wangp.running(port=taken), "…and a closed one as not")
+
+    section("WanGP: the page's buttons")
+    spawned = []
+    saved = (server.os, server.subprocess.Popen, config.REPO, wangp.running)
+    try:
+        config.REPO = root
+        wangp.running = lambda *a, **k: False
+        server.subprocess.Popen = lambda cmd, **kw: spawned.append((cmd, kw))
+        try:
+            await server.wangp_run("start")
+            check(False, "on a system that is not Windows the buttons say so")
+        except HTTPException as exc:
+            check("Windows" in str(exc.detail) and wangp.HOME in str(exc.detail),
+                  "on a system that is not Windows the buttons say so, with where to look")
+        server.os = pytypes.SimpleNamespace(name="nt")
+        try:
+            await server.wangp_run("start")
+            check(False, "without the script the page asks for an update")
+        except HTTPException as exc:
+            check("update" in str(exc.detail), "without the script the page asks for an update first")
+        (root / "wangp-windows.ps1").write_text("# stand-in", encoding="utf-8")
+        out = json.loads((await server.wangp_run("start")).body)
+        cmd, kw = spawned[-1]
+        check(out["started"] and cmd == wangp.command(root, "start") and kw.get("creationflags") == 0x10,
+              "start opens the script in a console of its own")
+        wangp.running = lambda *a, **k: True
+        count = len(spawned)
+        out = json.loads((await server.wangp_run("start")).body)
+        check(out.get("already") and len(spawned) == count, "a running WanGP is not started twice")
+        wangp.running = lambda *a, **k: False
+        (root / "WanGP" / "envs.json").unlink()
+        try:
+            await server.wangp_run("start")
+            check(False, "an unfinished install is not started")
+        except HTTPException as exc:
+            check("安裝" in str(exc.detail), "an unfinished install is not started; it says to install")
+        out = json.loads((await server.wangp_run("install")).body)
+        check(spawned[-1][0][-1] == "install" and "黑視窗" in out["message"],
+              "install runs in a console, where its questions can be answered")
+        try:
+            await server.wangp_run("delete")
+            check(False, "only the three actions exist")
+        except HTTPException as exc:
+            check(exc.status_code == 404, "only the three actions exist")
+        status = json.loads((await server.wangp_status()).body)
+        check(status["installed"] and not status["ready"] and status["windows"] and status["url"] == wangp.URL,
+              "the status the page shows")
+    finally:
+        server.os, server.subprocess.Popen, config.REPO, wangp.running = saved
+
+    section("WanGP: what the Windows script does, and in what order")
+    script = (ROOT / "wangp-windows.ps1").read_bytes().decode("utf-8-sig")
+    check("https://github.com/deepbeepmeep/Wan2GP.git" in script, "it clones the official repository")
+    check("'-3.11', 'setup.py', 'install', '--env', 'venv', '--auto'" in script,
+          "it installs with WanGP's own installer in its automatic mode, on Python 3.11 as WanGP's RTX 30 profile asks")
+    check("Python.Python.3.11" in script and "python.org/downloads/windows" in script,
+          "a missing Python 3.11 is installed with winget, or the page to get it is named")
+    check("-lt 580" in script, "a driver older than the 580 branch CUDA 13 needs is warned about")
+    install = script[script.index("function Install-WanGP"):script.index("function Start-WanGP")]
+    check(install.index("Get-Gpu") < install.index("Get-Py311") < install.index("'clone'") < install.index("setup.py"),
+          "checks come before anything is downloaded, and the download before the install")
+    check("envs.json" in script and "Test-EnvReady" in install, "an install counts only when its installer finished")
+    start = script[script.index("function Start-WanGP"):script.index("function Update-WanGP")]
+    check(start.index("8188/free") < start.index("scripts\\run.bat"),
+          "ComfyUI is asked to give back the graphics memory before WanGP starts")
+    check("unload_models" in start and "Busy $port" in start, "…and a WanGP already running is reused, not doubled")
+    check("scripts\\update.bat" in script, "updates go through WanGP's own updater")
+    check("8000" in script and "MCP" in script, "the clash between WanGP's MCP port and this app's is pointed out")
+    check("遠端 LLM" in script and "網路搜尋" in script and "未成年" in script,
+          "adult material stays on this computer, and the line on minors and real faces is stated")
+    keep = (ROOT / "update-windows.ps1").read_bytes().decode("utf-8-sig")
+    check("'WanGP')" in keep, "updating this app never touches the WanGP folder")
+    check("WanGP/" in (ROOT / ".gitignore").read_text(), "…and git ignores it")
+    launcher = (ROOT / "update-and-start.bat").read_text(encoding="ascii")
+    check(launcher.index("if errorlevel 4 goto wangp") < launcher.index("if errorlevel 3 goto update_only"),
+          "the one-file launcher's option 4 is tested before 3 (errorlevel means 'at least')")
+    check('if not exist "%APP%\\wangp-windows.ps1"' in launcher,
+          "…and an app folder too old to have the script is told to update first")
+    page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
+    check('id="wangp"' in page and "loadWangp" in page and "/api/wangp/" in page,
+          "the video tab has the WanGP card wired to the endpoints")
+
+
 async def test_reattach() -> None:
     """Work ComfyUI finished while this app was not listening is collected.
 
@@ -10213,6 +10336,7 @@ async def main() -> int:
     await test_qwen_edit()
     await test_cloud_training()
     await test_artistlab()
+    await test_wangp()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

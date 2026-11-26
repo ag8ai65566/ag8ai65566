@@ -15,6 +15,7 @@ import asyncio
 import contextvars
 import io
 import json
+import os
 import random
 import re
 import shutil
@@ -61,6 +62,7 @@ import tags
 import training
 import updates
 import upscalers
+import wangp
 import wfimport
 import workflow
 import comfy_client
@@ -5767,6 +5769,49 @@ _started_comfy: subprocess.Popen | None = None
 # the card and the second one usually dies on the port, which reads as "the
 # button does not work".
 _comfy_start_lock = asyncio.Lock()
+
+
+# -- WanGP: a separate app for "picture in, finished video out" ----------------
+
+_wangp_lock = asyncio.Lock()
+
+
+@app.get("/api/wangp")
+async def wangp_status() -> JSONResponse:
+    return JSONResponse({**wangp.status(config.REPO), "windows": os.name == "nt"})
+
+
+@app.post("/api/wangp/{action}")
+async def wangp_run(action: str) -> JSONResponse:
+    """Open a console running wangp-windows.ps1. Install and update ask
+    questions there, so they cannot run hidden behind this page."""
+    if action not in wangp.ACTIONS:
+        raise HTTPException(404, "沒有這個動作")
+    if os.name != "nt":
+        raise HTTPException(400, "一鍵安裝／啟動只做了 Windows 版。其他系統照 WanGP 官方說明裝："
+                                 + wangp.HOME)
+    if not (config.REPO / wangp.SCRIPT).is_file():
+        raise HTTPException(400, "找不到 wangp-windows.ps1。先更新這個 app（update.bat）。")
+    async with _wangp_lock:
+        state = wangp.status(config.REPO)
+        if action == "start":
+            if state["running"]:
+                return JSONResponse({"already": True, "url": wangp.URL, "message": "WanGP 已經在跑了。"})
+            if not state["ready"]:
+                raise HTTPException(400, "WanGP 還沒裝好，先按「安裝」。")
+        if action == "update" and not state["installed"]:
+            raise HTTPException(400, "WanGP 還沒裝，先按「安裝」。")
+        try:
+            # CREATE_NEW_CONSOLE: the script asks questions and shows progress
+            # there, and it has to outlive this request.
+            subprocess.Popen(wangp.command(config.REPO, action), cwd=str(config.REPO),
+                             creationflags=0x00000010)
+        except OSError as exc:
+            raise HTTPException(500, f"叫不動 PowerShell：{exc}") from exc
+    said = {"install": "開了一個黑視窗在安裝 WanGP，照它的問題回答。要一段時間，裝好會問你要不要啟動。",
+            "start": "開了一個黑視窗在啟動 WanGP（第一次比較久），好了會自動開瀏覽器。",
+            "update": "開了一個黑視窗在更新 WanGP，照它的選單選 1。"}[action]
+    return JSONResponse({"started": True, "url": wangp.URL, "message": said})
 
 
 @app.post("/api/comfy/start")
