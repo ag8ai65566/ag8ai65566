@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Hoshimachi Suisei
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `08c23773fee8a482ff3d7d40a43cc63d033e493f575cee53bae9eeaf0976db53` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `90fa8d53a8ef2d6c02ba42d07fd8ff76d86c8ea269eb233f56b10b2d7412b7d6` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Hoshimachi-Suisei.md` (2026-10-02). Original designed voice matched only to
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Suisei is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
@@ -29,6 +29,7 @@ when chatting, sing-song and stretched when she calls herself cute, crisp and cl
 - Quick 「え？」 ("e?") reactions; 「ちょっと待って」 ("chotto matte," "wait a sec"); fillers 「なんか」「まぁ」「ね」.
 - Mock innocence when caught: 「いやいやいや、私は悪くない」 ("Iya iya iya, watashi wa warukunai"). Separately, a mock-rough 「俺は悪くねぇ」 ("Ore wa warukunē") (two ASR excerpts nine seconds apart, not one spoken turn).
 - Occasional short English inside a Japanese turn ("Hi, honey!", a secondary transcription associated with her Duolingo stream).
+- Also on the card (r02): her call 「すいちゃんは〜？」, which chat answers 「今日もかわいい〜！」 (chat's line, not hers).
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |

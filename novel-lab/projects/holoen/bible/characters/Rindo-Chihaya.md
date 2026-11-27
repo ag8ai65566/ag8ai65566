@@ -153,6 +153,7 @@ Public exchanges only.
 | Yukihana Lamy | Senpai | Gang Beasts with Nene and Riona (2025-01-20) | [CH5 EsfZ7Ny4aPA] |
 | Hoshimachi Suisei | Senpai | Chihaya covered "ムーンライト" and played "ビビデバ" on trombone | [CH4] |
 | Mori Calliope | Senpai | A watch-along of Calli's live with Riona and Niko (2025-02-27) | [Riona's channel 4Zb0JEy3bw4] |
+| Shirakami Fubuki, Inugami Korone (GAMERS) | Senpai | Phasmophobia with Fubuki, Niko and Polka (2025-04-20); R.E.P.O. on Korone's channel (2026-06-29) | [Fubuki channel yVdTbPCJytw] [Korone channel G6r_oZBgD3E] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: FLOW GLOW's DJ and driver with a 3D birthday live and two solo
@@ -230,7 +231,7 @@ Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanes
 In her lore, Chihaya wants to drive her friends somewhere new and see the view from the other side together. As a streamer and singer, she wants to grow into a full-fledged DJ and keep talking, singing and racing with her fans.
 
 ## [SW] Relationships
-FLOW GLOW (Isaki Riona, Koganei Niko, Mizumiya Su, Kikirara Vivi): her unit, which she drives around in its lore. Riona and Niko: the self-styled "team hentai gentlemen" (2024). Mizumiya Su: duets "レイメイ" and "Beyond the way" and a ちはすう off-collab. Kikirara Vivi: the duet "Bridal Dream" (2025). Nekomata Okayu: Minecraft and a voice-impression game (2025) and the cover "打上花火" (2026). Sakamata Chloe: a talk collab (2024). Takane Lui: a horse-racing stream (2025). Yukihana Lamy: Gang Beasts (2025). Hoshimachi Suisei: Chihaya covered her songs, one on trombone. Mori Calliope: Chihaya watched Calli's live with Riona and Niko (2025).
+FLOW GLOW (Isaki Riona, Koganei Niko, Mizumiya Su, Kikirara Vivi): her unit, which she drives around in its lore. Riona and Niko: the self-styled "team hentai gentlemen" (2024). Mizumiya Su: duets "レイメイ" and "Beyond the way" and a ちはすう off-collab. Kikirara Vivi: the duet "Bridal Dream" (2025). Nekomata Okayu: Minecraft and a voice-impression game (2025) and the cover "打上花火" (2026). Sakamata Chloe: a talk collab (2024). Takane Lui: a horse-racing stream (2025). Yukihana Lamy: Gang Beasts (2025). Hoshimachi Suisei: Chihaya covered her songs, one on trombone. Mori Calliope: Chihaya watched Calli's live with Riona and Niko (2025). Shirakami Fubuki: Phasmophobia with Niko and Omaru Polka (2025). Inugami Korone: R.E.P.O. (2026).
 
 ## [SW] Secrets
 (none)
@@ -249,6 +250,7 @@ FLOW GLOW (Isaki Riona, Koganei Niko, Mizumiya Su, Kikirara Vivi): her unit, whi
   (descriptions and titles).
 - Shutoko Battle, the racing wheel, trombone and covers: archived titles. Outfits: Claude's reading of the official
   gallery images.
+- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Fubuki (yVdTbPCJytw), Korone (G6r_oZBgD3E).
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete all FLOW GLOW members):** official profile, gallery and music

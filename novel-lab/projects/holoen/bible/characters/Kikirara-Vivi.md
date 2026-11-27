@@ -156,6 +156,7 @@ Public exchanges only.
 | Hoshimachi Suisei | JP senior | Vivi hosted a Puyo Puyo Tetris session asking Suisei to teach her Tetris (2026-08-29). | [Archive metadata NEW-R6-007] |
 | Nekomata Okayu | JP senior | A collab framed around the mock-scandalized title word やーらし (2026-08-25). | [Archive metadata NEW-R6-005] |
 | Yukihana Lamy | JP senior | Lamy hosted, and Vivi, Iroha and Bijou commentated, the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
+| Inugami Korone (GAMERS) | Senpai | Korone played SPAGHET, a game Vivi gave her (2026-08-05) | [Korone channel LriXEkMQGAc] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, almost two years in: her first solo original out and FLOW
@@ -239,7 +240,7 @@ Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanes
 In her lore, Vivi wants to find true beauty and give everyone a glow-up. As a streamer and singer, she wants cosmetics collaborations, live concerts with her own songs and to be a source of smiles for her fans.
 
 ## [SW] Relationships
-Usada Pekora: "PekoVivi"; co-op games (2025) and a gifted Getting Over It (2026); Pekora rescued her in Minecraft and Vivi calls her the "legendary hero." Houshou Marine: MVP with Pekora (2026). Shirogane Noel: Mumei's Gartic Phone collab (2025). FLOW GLOW (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya): her unit, led by Riona. Mizumiya Su: duets "らぶきゅん♡うぉんてっど" and "クリームで会いにいけますか" and a Forza Horizon 6 drive (2026). Rindo Chihaya: the duet "Bridal Dream" (2025). Koganei Niko: SuperBunnyMan (#ヴィヴィガー, 2024) and Minecraft (2025). FUWAMOCO: watched FLOW GLOW's debut with Bijou (2024); R.E.P.O. with Bae (2025-05-25). Hakos Baelz: that R.E.P.O. session. Ninomae Ina'nis: a separate R.E.P.O. session on Ina's stream (2025-06-02) and the Gartic Phone collab. Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone (2025). Nanashi Mumei (graduated): hosted that Gartic Phone collab. Koseki Bijou: watched FLOW GLOW's debut with FUWAMOCO. AZKi: GeoGuessr (2026). Hoshimachi Suisei: taught her Tetris on Vivi's channel (2026). Nekomata Okayu: a 2026 collab billed with a mock-scandalized "やーらし."
+Usada Pekora: "PekoVivi"; co-op games (2025) and a gifted Getting Over It (2026); Pekora rescued her in Minecraft and Vivi calls her the "legendary hero." Houshou Marine: MVP with Pekora (2026). Shirogane Noel: Mumei's Gartic Phone collab (2025). FLOW GLOW (Isaki Riona, Koganei Niko, Mizumiya Su, Rindo Chihaya): her unit, led by Riona. Mizumiya Su: duets "らぶきゅん♡うぉんてっど" and "クリームで会いにいけますか" and a Forza Horizon 6 drive (2026). Rindo Chihaya: the duet "Bridal Dream" (2025). Koganei Niko: SuperBunnyMan (#ヴィヴィガー, 2024) and Minecraft (2025). FUWAMOCO: watched FLOW GLOW's debut with Bijou (2024); R.E.P.O. with Bae (2025-05-25). Hakos Baelz: that R.E.P.O. session. Ninomae Ina'nis: a separate R.E.P.O. session on Ina's stream (2025-06-02) and the Gartic Phone collab. Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone (2025). Nanashi Mumei (graduated): hosted that Gartic Phone collab. Koseki Bijou: watched FLOW GLOW's debut with FUWAMOCO. AZKi: GeoGuessr (2026). Hoshimachi Suisei: taught her Tetris on Vivi's channel (2026). Nekomata Okayu: a 2026 collab billed with a mock-scandalized "やーらし." Inugami Korone: Vivi gave her the game SPAGHET (2026).
 
 ## [SW] Secrets
 (none)
@@ -259,6 +260,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「せーの！（ん〜）ヴィヴィー！」 as the final greeting — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-11「【#ホロドリ 】おはよう！朝のホロドリ！新エリアクリア目指す！【#綺々羅々ヴィヴィ #hololive  #FLOWGLOW】」 <https://www.youtube.com/watch?v=1jfrtUlxO0E> (checked 2026-10-31) at 5801 s); 「せーの！んーーヴィヴィ〜！」 and 「おつヴィヴィ〜！」 — secondary (ホロライブ非公式wiki（seesaawiki）「綺々羅々ヴィヴィ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%E5%BA%A1%B9%CD%E5%A1%B9%A5%F4%A5%A3%A5%F4%A5%A3> (checked 2026-10-31)).
 - Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
+- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Korone's SPAGHET stream (LriXEkMQGAc).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Kikirara Vivi): official profile and

@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Houshou Marine
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `b9ced29aa6b6e5caee7b88ed688098ccbe97be6b2accfe782a72e6132b8ca5de` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `c4a51cdb90d61682c5197d08877f54d9e3b783a7b625b0b7a0d9a92ff0fc2a34` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Houshou-Marine.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Marine is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
@@ -27,6 +27,7 @@
 - Rapid, emphatic delivery for game reactions; pace and volume follow the scene.
 - Regroups out loud: 「一回落ち着こうよ」 ("let's calm down for a sec").
 - Flips into a cutesy idol voice for a bit, then straight back. Crude jokes keep their teasing register; nothing explicit.
+- Also on the card (r02): sign-off 「それでは行きますよー、出航ー！」, which her crew answers 「ヨーソロー！」; 「宝鐘の一味」 is her crew (the fans), not a line.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |

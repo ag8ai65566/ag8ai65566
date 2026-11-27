@@ -168,6 +168,7 @@ Public exchanges only.
 | Takane Lui | Senpai | Minecraft gold/zombie-piglin trap (2025-03-17, on both channels) | [RI4] [RI5 pB3e3SzBjJ8] |
 | Yukihana Lamy | Senpai | Gang Beasts with Nene and Chihaya (2025-01-20) | [RI5 EsfZ7Ny4aPA] |
 | Houshou Marine, Shishiro Botan | Senpai | Riona danced Marine's song in a short (2025-12-14); Botan danced "Ring my name" (2026) | [RI4] [RI5] |
+| Inugami Korone, Shirakami Fubuki (GAMERS) | Senpai | #ころリオ first collab and off-collab with Korone (2025-01-22); a Mario Party with Fubuki, Niko and Polka (2026, Niko's channel); #フブミオ大予想, FLOW GLOW's profiles predicted by Fubuki and Mio (2024-11-09) | [Korone channel QaGy1nHjRIQ, sze_5XnmD9w] [RI5 cWjY92rdma4] [Fubuki channel iJpIGu5HuGY] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline, two years in: FLOW GLOW's leader with a festival debut, two solo
@@ -249,7 +250,7 @@ Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanes
 In her lore, Riona wants to do what she likes and live as herself, and to lead FLOW GLOW without ever being looked down on. As a streamer and singer, she wants to live by expressing herself through song, dance and rap.
 
 ## [SW] Relationships
-FLOW GLOW (Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi): her unit, which she leads. Koganei Niko: duets "Gimme×Gimme," "あの夏が飽和する" and "逆様"; with Rindo Chihaya they are the self-styled "team hentai gentlemen." Mizumiya Su: RoARiS with Roboco and AZKi (2026). Mori Calliope: her "beloved Calli-senpai"; Clubhouse Games together (2026), MYRIAD DEATH played as Calli and "Ring my name" dance shorts. IRyS: a "Ring my name" dance short together (2026). Nerissa Ravencroft and Koseki Bijou: danced "Ring my name." AZKi: RoARiS, a self-3D karaoke with Hakui Koyori and Niko (2026) and a guest song at AZKi's 2026 birthday live. Hakui Koyori: holoRUST (2025) and that karaoke. Takane Lui: Minecraft (2025). Yukihana Lamy: Gang Beasts (2025).
+FLOW GLOW (Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi): her unit, which she leads. Koganei Niko: duets "Gimme×Gimme," "あの夏が飽和する" and "逆様"; with Rindo Chihaya they are the self-styled "team hentai gentlemen." Mizumiya Su: RoARiS with Roboco and AZKi (2026). Mori Calliope: her "beloved Calli-senpai"; Clubhouse Games together (2026), MYRIAD DEATH played as Calli and "Ring my name" dance shorts. IRyS: a "Ring my name" dance short together (2026). Nerissa Ravencroft and Koseki Bijou: danced "Ring my name." AZKi: RoARiS, a self-3D karaoke with Hakui Koyori and Niko (2026) and a guest song at AZKi's 2026 birthday live. Hakui Koyori: holoRUST (2025) and that karaoke. Takane Lui: Minecraft (2025). Yukihana Lamy: Gang Beasts (2025). Inugami Korone: #ころリオ, a first collab and an off-collab (2025). Shirakami Fubuki: a Mario Party with Niko and Omaru Polka (2026) and a pre-debut "delusion profile" stream about FLOW GLOW (2024).
 
 ## [SW] Secrets
 (none)
@@ -270,6 +271,7 @@ FLOW GLOW (Koganei Niko, Mizumiya Su, Rindo Chihaya, Kikirara Vivi): her unit, w
   published on a channel does not establish who performed the motion.
 - Outfits: Claude's reading of the official gallery images; the New Year outfit's identification rests on the
   gallery image and the reveal-stream silhouette.
+- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Korone (QaGy1nHjRIQ, sze_5XnmD9w), Fubuki (cWjY92rdma4, iJpIGu5HuGY).
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete all FLOW GLOW members):** official profile, gallery and music

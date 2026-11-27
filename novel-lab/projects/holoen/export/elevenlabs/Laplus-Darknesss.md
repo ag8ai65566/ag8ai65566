@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: La+ Darknesss
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `66fddfbed30b3f0245f7af91b4a7783bdfdf348edd723dfee7182bcaff00b74b` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `3cddc391f51d5bb5317d706f0594ba174f94f14f6fb0e8ff0d52607e0f8156c7` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Laplus-Darknesss.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). La+ is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
@@ -27,6 +27,7 @@
 - Casual checking phrase: 「聞こえたっしょ」 (kikoeta ssho, "you heard it, right?"; shared ASR span).
 - Her followers answer her call with "Yes My Dark!" (secondary transcription); it is their line, not hers.
 - Indignant protests when teased and a whine when she loses are provisional choices for suitable scenes.
+- Also on the card (r02): casual opening 「吾輩だ、刮目せよ」 (also 「刮目刮目〜」); sign-off 「来る時に備えよ！」; 「吾輩怪しい者でないぞ」 from her first post.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |

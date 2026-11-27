@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Hakui Koyori
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `31ccc30aa7a83fa4da6bc4bf8e450d48dc7926dbf448697536d5b7d9f7e9c03d` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `7c0a51de5d7441a6e1f5fd2519eeecbdea63ca6c52bc9f47a8d9297e7fe26564` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Hakui-Koyori.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Koyori is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
@@ -27,6 +27,7 @@
 - Crisp segment transitions on her news show: 「それでは続いてはこちら」 ("and next up").
 - Invites viewers warmly: 「ぜひぜひ見てみてください」 ("please do take a look").
 - Excited explanations may speed up and rise (a provisional direction); experiments and 「コヨリニウム」 ("koyoriniumu") are running jokes.
+- Also on the card (r02): sign-off 「おつこよ〜」 (also 「おつこよさまでした！」); her call 「あのこより〜？そのこより〜？」, which chat answers 「こよが好き！」 (chat's line, not hers); 「冷こよ」 (a cool Koyori) and 「こよ色」 (pink) are terms, not lines; 「こよりちゃんでございます」 ("it's Koyori-chan").
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |

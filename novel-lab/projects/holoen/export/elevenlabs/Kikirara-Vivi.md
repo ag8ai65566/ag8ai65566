@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Kikirara Vivi
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `deb2b0e9c22975cfa7c871e175c4861559e729ba5ecf7f5b21aba84f2c53e8d3` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `92cdd10a6d7709173f7bc2a31bbf715ac9e887caa8024551f1402d8615821254` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Kikirara-Vivi.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Vivi is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
@@ -26,6 +26,7 @@
 - Opens as her archived stream titles write it, ん～～ッヴィヴィ～！！！ ("Nnn—Vivi!"); calls her fans "Vivid" and herself 「ヴィヴィ」 ("Vivi").
 - Deliberately flattens her delivery for comic retorts (she has explained this on stream).
 - Teases that affection costs extra: 「お金取るで」 ("I'll charge you for that").
+- Also on the card (r02): the opening and closing call with chat 「せーの！んーーヴィヴィ〜！」; sign-off 「おつヴィヴィ〜！」.
 - Casual endings (-yan, -nen, akan, honma) appear in her transcripts; no regional accent is assigned to the voice.
 
 ## 4. Tag palette by situation

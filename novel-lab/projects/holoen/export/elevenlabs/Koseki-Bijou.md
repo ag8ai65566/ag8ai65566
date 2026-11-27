@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Koseki Bijou
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `c747997fcb95615ed99b9d039ee07054fd7cfb78b2a385fd31ed44d74f135cb5` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `569a79258319460f3de0c0bae8a3f851f9950721a2a9edcbb4c0fb1e965135c7` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Koseki-Bijou.md` (promoted 2026-10-01). Original designed voice matched only
 > to register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Bijou is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.

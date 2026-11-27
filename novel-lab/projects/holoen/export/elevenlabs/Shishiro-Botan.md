@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Shishiro Botan
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `be7a633b2c07bf15859043c1ee684655ac57ddd4a77cc9e18a4f6ba8867d89f9` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `5b78714b203bf20f24b6a822e9faf5997f11b20222282c82857a049c65852abe` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Shishiro-Botan.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Botan is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
@@ -27,6 +27,7 @@
 - A brisk explanatory register when presenting a project: 「前回はですねペコちゃんが優勝しました」 ("last time, Peko-chan won").
 - An offhand 「ぽい」 (poi; secondary transcription) as she lobs a grenade.
 - Proposed horror-scene direction, informed by secondary descriptions: begin with calm amusement or teasing when appropriate, and allow surprise when the scene warrants it.
+- Also on the card (r02): greeting jingle 「らいおん♪」 (sung 「ららーいおん ららーいおん…」); sign-off 「それじゃ、またね～」.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |

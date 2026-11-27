@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Sakamata Chloe
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `7d4aeaac7e0473f518fe981719bbd3d82f4dc3b80aa633fd05377d596c622990` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `bec1029dd257bf13fa4de59c2cef4ef06d0c4286dac6d28a7a9717d5b4b5ed8f` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Sakamata-Chloe.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Chloe concluded her regular activities on 2025-01-26 and remains a hololive affiliate; the sheet covers her 2021–2025 persona. Her archived performances used Japanese; her audio dialogue is Japanese
@@ -27,6 +27,7 @@
 - Calls herself 「沙花叉」 ("Sakamata"); connected, run-on phrasing that polls chat (speed and softness are provisional choices).
 - Teases seniors and friends; any blame-denying line is a style demo, not a documented habit.
 - Closes with 「ごちそうさまでした」 ("gochisōsama deshita," official; "Thanks for the food").
+- Also on the card (r02): a quick 「ではな〜」 after her closing; 「飼育員」 (Handlers) is her name for the viewers, not a line.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |

@@ -186,7 +186,7 @@ on the world card "JP Senpai Pairs."
 | Hoshimachi Suisei | "MOMAS" | With Sakura Miko, Houshou Marine and Hiodoshi Ao; PlateUp! on her 2025 team | [OK2] [OK4] |
 | Nakiri Ayame | "OKFAMS" | With Korone, Fubuki, Mio and Oozora Subaru; her 2025 team [Secondary, performance unchecked: a setlist records Ayame joining her for "デビルじゃないもん" at her 2026 birthday live (2026-02-22).] | [OK2] [OK4] [Secondary NEW-R5-009] |
 | Inugami Korone | "OkaKoro" (secondary) | Her OkaKoro collaborator and fellow GAMERS member ("Koro-san") | [OK2] |
-| Shirakami Fubuki, Ookami Mio | GAMERS; "NYANGUCORN," "MiOKayu" | GAMERS fes; Fubuki and Okayu's April Fools furball models (2026) | [OK2] |
+| Shirakami Fubuki, Ookami Mio | GAMERS; "NYANGUCORN," "MiOKayu" | GAMERS fes; Fubuki and Okayu's April Fools furball models (2026); NYANGUCORN's original "KemomomomomoMof！" (2026-04-02); "神或アルゴリズム" with Mio (2025-08-21) | [OK2] [Official music 737] [Mio channel grN8TN-eLk4] |
 | Oozora Subaru | "SubaOka" | "SASHIMIO feat. SubaOka"; a 2026 off-collab lottery | [Official OK1 music list] [OK4] |
 | Hakui Koyori | — | A lateral-thinking puzzle collab hosted by Koyori, with Shion, Okayu and Chloe (2025-01-07) | [Koyori channel PtjqrNUOSWA] |
 | La+ Darknesss | "Dorobo Kensetsu" | A 3D lie-detector challenge (2026) | [La+ file LA2, LA4] |
@@ -256,7 +256,7 @@ Protagonist
 she/her
 
 ## [SW] Groups
-hololive, hololive GAMERS, OkaKoro, SMOK, OKFAMS, MOMAS, TakoNeko, SubaOka
+hololive, hololive GAMERS, OkaKoro, SMOK, OKFAMS, MOMAS, TakoNeko, SubaOka, NYANGUCORN
 
 ## [SW] Other Names
 Okayu, Okayun, Okanyan
@@ -286,7 +286,7 @@ Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanes
 Okayu wants to enjoy every day to the fullest with games, songs and dances, and to share them with her fans and the members she loves; she likes seeing people react, and she likes saying yes.
 
 ## [SW] Relationships
-Ninomae Ina'nis: their pairing is called "TakoNeko"; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: Okayu's enthusiasm for the twins, her appearance with Korone at their 3D debut (2024) and the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival. IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki and Ookami Mio: her GAMERS. Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: Harry Potter watch-alongs (2025). AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played. Kikirara Vivi: a 2026 collab on Vivi's channel. Sakamata Chloe: Okayu contributed chorus vocals to Chloe's "Bling-Bang-Bang-Born" cover (2025). Yukihana Lamy: a "Lukewarm" duet cover (2024). Rindo Chihaya (FLOW GLOW): Minecraft and a voice-impression game (2025) and the cover "打上花火" (2026); Okayu and Korone watched FLOW GLOW's debut (2024).
+Ninomae Ina'nis: their pairing is called "TakoNeko"; they released "Kurukuru Cruise" together (2025) and were teammates at the 2025 New Year Game Festival. FUWAMOCO: Okayu's enthusiasm for the twins, her appearance with Korone at their 3D debut (2024) and the twins' 2025 watch-along of her concert. Takanashi Kiara: HOLOTALK's 18th guest (2021). Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024). Mori Calliope: a pop-up Mario Party with Anya and Ao (2024). Gigi Murin: public translation-based banter during the 2026 New Year Game Festival. IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team. Hakos Baelz: kart events. Houshou Marine: gave her the nickname "Okanyan." Hoshimachi Suisei: "MOMAS." Nakiri Ayame: "OKFAMS." Inugami Korone: her OkaKoro collaborator and fellow GAMERS member ("Koro-san"). Shirakami Fubuki: her GAMERS and NYANGUCORN partner ("KemomomomomoMof！," 2026). Ookami Mio: GAMERS, OKFAMS and the cover "神或アルゴリズム" (2025). Hakui Koyori: a lateral-thinking puzzle collab (2025). La+ Darknesss: "Dorobo Kensetsu" and a 3D lie-detector challenge (2026). Takane Lui: Harry Potter watch-alongs (2025). AZKi: Mario Kart World practice for Team Wind (2026-01-16) and AZKi's pun-ASMR contest (2025), where Shirogane Noel also played. Kikirara Vivi: a 2026 collab on Vivi's channel. Sakamata Chloe: Okayu contributed chorus vocals to Chloe's "Bling-Bang-Bang-Born" cover (2025). Yukihana Lamy: a "Lukewarm" duet cover (2024). Rindo Chihaya (FLOW GLOW): Minecraft and a voice-impression game (2025) and the cover "打上花火" (2026); Okayu and Korone watched FLOW GLOW's debut (2024).
 
 ## [SW] Secrets
 (none)
@@ -306,6 +306,8 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「完食〜おかゆ〜！」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-26「新しい朝がきた～～ 希望の朝だ～～～～～～！🌤」 <https://www.youtube.com/watch?v=ukYZ4iMSTAg> (checked 2026-10-31) at 3728 s; Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-08「寝起き声低許して雑談」 <https://www.youtube.com/watch?v=QpuVXgtsUAs> (checked 2026-10-31) at 6814 s) and ホロライブ非公式wiki（seesaawiki）「猫又おかゆ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C7%AD%CB%F4%A4%AA%A4%AB%A4%E6> (checked 2026-10-31).
 - Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
+- GAMERS cohort (2026-11-27): NYANGUCORN added to Groups (official music credit, "KemomomomomoMof！," 2026-04-02, https://hololive.hololivepro.com/en/music/737/).
+- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): NYANGUCORN's original (official music 737) and the Mio cover (grN8TN-eLk4) added to Relationships and the map.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hoshimachi Suisei, AZKi, Nakiri

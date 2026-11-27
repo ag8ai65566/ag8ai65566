@@ -61,6 +61,11 @@ COHORTS = {
         "characters": ["Isaki-Riona", "Koganei-Niko", "Mizumiya-Su", "Rindo-Chihaya"],
         "world": ["FLOW-GLOW"],
     },
+    # hololive GAMERS completed by author order (2026-11-27); Okayu stays in jp, where her card was first audited.
+    "gamers": {
+        "characters": ["Shirakami-Fubuki", "Ookami-Mio", "Inugami-Korone"],
+        "world": ["hololive-GAMERS"],
+    },
     "global": {
         "characters": [],
         "world": ["hololive", "Streaming-Life", "VTuber-Persona-and-Lore", "Cross-Branch-Friends",
@@ -83,6 +88,7 @@ SHORT = {
     "Kikirara-Vivi": ["Vivi"], "Laplus-Darknesss": ["La+", "Laplus"], "Takane-Lui": ["Lui"], "Hakui-Koyori": ["Koyori"],
     "Sakamata-Chloe": ["Chloe"], "Kazama-Iroha": ["Iroha"],
     "Isaki-Riona": ["Riona"], "Koganei-Niko": ["Niko", "Nikotan"], "Mizumiya-Su": ["Su"], "Rindo-Chihaya": ["Chihaya"],
+    "Shirakami-Fubuki": ["Fubuki"], "Ookami-Mio": ["Mio"], "Inugami-Korone": ["Korone"],
 }
 UNIT_WORDS = {"myth2": ["Myth"], "promise": ["Promise", "Council"], "advent": ["Advent"], "justice": ["Justice"]}
 
@@ -104,6 +110,12 @@ UNITS = [
     {"unit": "B.F.F", "members": ["Fuwawa Abyssgard", "Mococo Abyssgard", "Raora Panthera"], "evidence": "official Serendipity billing, 2026"},
     {"unit": "Autofister (also CCGG)", "members": ["Gigi Murin", "Cecilia Immergreen"], "evidence": "official Serendipity billing and shop, 2026"},
     {"unit": "FLOW GLOW", "members": ["Isaki Riona", "Koganei Niko", "Mizumiya Su", "Rindo Chihaya", "Kikirara Vivi"], "evidence": "official (debut announcement 2024-11-07)"},
+    {"unit": "hololive GAMERS", "members": ["Shirakami Fubuki", "Ookami Mio", "Nekomata Okayu", "Inugami Korone"], "evidence": "official (profiles' unit field; unit video 2018-12-06)"},
+    {"unit": "AyaFubuMi", "members": ["Nakiri Ayame", "Shirakami Fubuki", "Ookami Mio"], "evidence": "official music credits (\"OniOniKonKonWaon,\" 2024; \"Irowanioedomo,\" 2026)"},
+    {"unit": "NYANGUCORN", "members": ["Nekomata Okayu", "Shirakami Fubuki"], "evidence": "official music credit (\"KemomomomomoMof！,\" 2026)"},
+    {"unit": "RosaMiA", "members": ["Aki Rosenthal", "Ookami Mio", "AZKi"], "evidence": "official music credit (\"Blossom Sinfonia,\" 2026); members per the AZKi card"},
+    {"unit": "FAMS", "members": ["Shirakami Fubuki", "Nakiri Ayame", "Ookami Mio", "Oozora Subaru"], "evidence": "official (Fubuki's profile Q&A)"},
+    {"unit": "OKFAMS", "members": ["Shirakami Fubuki", "Nakiri Ayame", "Ookami Mio", "Oozora Subaru", "Nekomata Okayu", "Inugami Korone"], "evidence": "official (Fubuki's profile Q&A)"},
     {"unit": "LYRA", "members": ["Amane Kanata", "Koganei Niko", "Mori Calliope", "Ayunda Risu", "Elizabeth Rose Bloodflame"], "evidence": "mix engineer's credits (a remix-version cover of \"III\")"},
 ]
 
@@ -125,9 +137,9 @@ CREDITS = [
 # People outside the cast who appear in relationship claims (reference only: no cards).
 REFERENCE_ONLY = ["Tsukumo Sana", "Kobo Kanaeru", "Vestia Zeta", "Kureiji Ollie", "Kaela Kovalskia",
                   "Moona Hoshinova", "Ayunda Risu", "Anya Melfissa", "Pavolia Reine", "Airani Iofifteen",
-                  "Ookami Mio", "Tsunomaki Watame", "Oozora Subaru", "Inugami Korone",
+                  "Tsunomaki Watame", "Oozora Subaru",
                   "Omaru Polka", "Momosuzu Nene", "Roboco", "Tokino Sora", "Yuzuki Choco",
-                  "Shirakami Fubuki", "Akai Haato",
+                  "Akai Haato",
                   "Usada Pekora", "Shiranui Flare", "Amane Kanata", "Natsuiro Matsuri", "Ichijou Ririka",
                   "Hiodoshi Ao", "Machina X Flayon", "Jurard T Rexford", "Crimzon Ruze",
                   "Gavis Bettel", "Banzoin Hakka", "Josuiji Shinri", "Arurandeisu", "Astel Leda", "Octavio",
@@ -372,8 +384,8 @@ def write_packets(cohort, files, qa, reg_path, commit):
 REF_SHORT = {"Kobo Kanaeru": ["Kobo"], "Vestia Zeta": ["Zeta"],
              "Kureiji Ollie": ["Ollie"], "Kaela Kovalskia": ["Kaela"], "Moona Hoshinova": ["Moona"],
              "Ayunda Risu": ["Risu"], "Anya Melfissa": ["Anya"], "Pavolia Reine": ["Reine"],
-             "Airani Iofifteen": ["Iofi"], "Ookami Mio": ["Mio"], "Tsunomaki Watame": ["Watame"],
-             "Oozora Subaru": ["Subaru"], "Inugami Korone": ["Korone"],
+             "Airani Iofifteen": ["Iofi"], "Tsunomaki Watame": ["Watame"],
+             "Oozora Subaru": ["Subaru"],
              "Omaru Polka": ["Polka"], "Akai Haato": ["Haachama"],
              "Usada Pekora": ["Pekora"], "Tokino Sora": ["Sora"],
              "Tsukumo Sana": ["Sana"], "Crimzon Ruze": ["Ruze"], "Banzoin Hakka": ["Hakka"],

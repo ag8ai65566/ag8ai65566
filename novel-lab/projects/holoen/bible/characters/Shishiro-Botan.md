@@ -164,6 +164,7 @@ Public exchanges only.
 | Hakos Baelz | — | BAE-GEMITE DOMINATION #2 with Subaru (2023) | [BO5] |
 | Ninomae Ina'nis | — | A guest at Ina's birthday 3D live "EVERMORE" (2025); "storia" with Ina and Watame (secondary set list) | [BO5 I-J11Da5ONY] [EVERMORE report] |
 | Nerissa Ravencroft | Advent kouhai | A credited guest in Botan's birthday 3D live "Stray&Stay" (2026-09-19). | [Archive metadata NEW-R6-002] |
+| Shirakami Fubuki, Inugami Korone (GAMERS) | — | Content Warning with Fubuki, Marine and Subaru (2024-04-23); EDF5 with Fubuki and Koyori (2022-05-06); Jumpscare Scare Jump on Korone's channel (2025-05-26); #いぬたかししらむ Machine Party (2026-09-29) | [Fubuki channel U33SciUF0WQ, KtzsKY807hY] [Korone channel Xq43wV29LW8, Wc1kJDN-xtQ] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: her second season of the Minecraft money-making event run, a
@@ -246,7 +247,7 @@ Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanes
 In her lore, Botan is a laid-back lion who would rather laze around. As a streamer she wants her viewers and fellow members to have a fun, well-run time; her official persona emphasizes following through once she commits.
 
 ## [SW] Relationships
-Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; horror "dates" where Botan stays calm and teases Lamy. Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo. Takane Lui: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame; Left 4 Dead 2 (2022) and Overwatch 2 (2023) together. La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026). La+ Darknesss and Hoshimachi Suisei: holoGTA and, with Shirakami Fubuki, the m HOLD'EM poker collaboration (2024); Nakiri Ayame: holoGTA (2024). IRyS: Left 4 Dead 2 with Lui and Korone (2022) and an Overwatch 2 team with Lui, Sakamata Chloe and Tokoyami Towa (2023). Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu" and an Among Us co-player in the Myth × fifth-generation collab (2020), with Watson Amelia. Gawr Gura (graduated): "Apex Predators." Mori Calliope: HOLOYOI #03 with Oozora Subaru (2023). Hakos Baelz: BAE-GEMITE DOMINATION #2 with Subaru (2023). Ninomae Ina'nis: a guest at Ina's birthday 3D live "EVERMORE" (2025), singing "storia" with Ina and Watame. Nerissa Ravencroft: credited as a guest in Botan's birthday 3D live "Stray&Stay" (2026).
+Yukihana Lamy: 5th-gen genmate and NePoLaBo partner; horror "dates" where Botan stays calm and teases Lamy. Momosuzu Nene and Omaru Polka: 5th-gen genmates and NePoLaBo. Takane Lui: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame; Left 4 Dead 2 (2022) and Overwatch 2 (2023) together. La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026). La+ Darknesss and Hoshimachi Suisei: holoGTA and, with Shirakami Fubuki, the m HOLD'EM poker collaboration (2024); Nakiri Ayame: holoGTA (2024). IRyS: Left 4 Dead 2 with Lui and Korone (2022) and an Overwatch 2 team with Lui, Sakamata Chloe and Tokoyami Towa (2023). Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu" and an Among Us co-player in the Myth × fifth-generation collab (2020), with Watson Amelia. Gawr Gura (graduated): "Apex Predators." Mori Calliope: HOLOYOI #03 with Oozora Subaru (2023). Hakos Baelz: BAE-GEMITE DOMINATION #2 with Subaru (2023). Ninomae Ina'nis: a guest at Ina's birthday 3D live "EVERMORE" (2025), singing "storia" with Ina and Watame. Nerissa Ravencroft: credited as a guest in Botan's birthday 3D live "Stray&Stay" (2026). Shirakami Fubuki: Content Warning with Marine and Oozora Subaru (2024) and EDF5 with Koyori (2022). Inugami Korone: Machine Party as #いぬたかししらむ (2026) and a jump-scare game on Korone's channel (2025).
 
 ## [SW] Secrets
 (none)
@@ -264,6 +265,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "Usada Kensetsu", "InuTakaShishiRam", "Apex Predators": secondary references.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「らいおん♪」 and 「それじゃ、またね～」: official profile (English "La-lion♪", "Well then, cya~"); the 「ららーいおん」 jingle — secondary (ホロライブ非公式wiki（seesaawiki）「獅白ぼたん」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%BB%E2%C7%F2%A4%DC%A4%BF%A4%F3> (checked 2026-10-31)).
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
+- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Fubuki (U33SciUF0WQ, KtzsKY807hY), Korone (Xq43wV29LW8, Wc1kJDN-xtQ).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Shishiro Botan): official profile and

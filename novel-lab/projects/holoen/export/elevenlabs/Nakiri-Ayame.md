@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Nakiri Ayame
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `9487b1e2dcc63cf88ba6b960a5235a928a5956c45b6eaab69ea779bd9f7f7c46` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `c42a74c0bce7db57634441df8392ed57946f3a826bb1c9da10a523ae7591e245` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Nakiri-Ayame.md` (2026-10-02). Original designed voice matched only to register
 > and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Ayame is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
@@ -28,6 +28,7 @@ unhurried, dissolving into quick giggles; shaky and breathless when frightened."
 - Polite at first (「聞こえておりますでしょうか？」, "Kikoete orimasu deshō ka?"), casual within minutes (「マジで」「めっちゃ」).
 - Pouting scolds: 「うるさい！」 ("Urusai!"); separately, 「困った人たち」 ("Komatta hitotachi") (two ASR excerpts, not one spoken turn).
 - In horror: 「声が震えちゃう」 ("Koe ga furuechau"), 「落ち着いて落ち着いて」 ("Ochitsuite, ochitsuite").
+- Also on the card (r02): greeting 「こんなきりー！」 (official Japanese profile) and sign-off 「おつなきりー！」.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |

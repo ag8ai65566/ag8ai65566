@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Nekomata Okayu
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `8aa7d8296f76ca523c2bddf28a20fe53d6b6ecc6e2938366c2b8580cb46408d8` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `1a6e9b8d1e1f649aea82f2891695c3367b375f4ee6e13b74955d41054b21e0d9` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Nekomata-Okayu.md` (2026-10-02). Original designed voice matched only to register
 > and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Okayu is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
@@ -29,6 +29,7 @@ a playful purr when teasing, a laugh that climbs high."
 - 「ノリで」 ("nori de," "by vibes") appears in one sampled game opening; use it as a situational example. 「レッツラゴー！」 ("Rettsura gō!") is a documented start cue; repeated 「にゃ」 ("nya") is documented during play.
 - Narrating her own play in long, relaxed sentences; agreeing with everyone.
 - Flirty teasing kept light and non-explicit.
+- Also on the card (r02): sign-off 「完食〜おかゆ〜！」; the teasing line 「僕でよくな～い？」 (official).
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |

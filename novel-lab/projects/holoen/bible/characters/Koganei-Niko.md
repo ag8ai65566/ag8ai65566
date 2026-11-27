@@ -150,6 +150,7 @@ Public exchanges only.
 | AZKi | Senpai | holoRUST on "Team AZKi" (2025); the 2026 3D karaoke | [NK4] [NK5] |
 | Hakui Koyori | Senpai | The 2026 self-3D karaoke | [NK5] |
 | Yukihana Lamy | Senpai | #にこらみ晩酌, an off-collab drinking stream on Lamy's channel (2024-12-22) | [NK5 Ig_Ba2h9DZc] |
+| Shirakami Fubuki (GAMERS) | Senpai | Phasmophobia with Chihaya and Polka on Fubuki's channel (2025-04-20); FLOW GLOW's profiles predicted by Fubuki and Mio before the debut (2024-11-09) | [Fubuki channel yVdTbPCJytw, iJpIGu5HuGY] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: FLOW GLOW's jokester with a morning show, a solo single and a
@@ -227,7 +228,7 @@ Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanes
 In her lore, Niko wants to make everyone smile, whatever it costs her dignity. As a streamer and singer, she wants her shows, songs and comedy shorts to give her fans a laugh when they need one.
 
 ## [SW] Relationships
-FLOW GLOW (Isaki Riona, Mizumiya Su, Rindo Chihaya, Kikirara Vivi): her unit. Isaki Riona: duets "Gimme×Gimme," "あの夏が飽和する" and "逆様"; with Rindo Chihaya they are the self-styled "team hentai gentlemen." Mizumiya Su: #にこすぅ and "ポケットにファンタジー." Chihaya: ELDEN RING NIGHTREIGN with Ichijou Ririka (2025). Kikirara Vivi: SuperBunnyMan and Minecraft. Mori Calliope and Elizabeth Rose Bloodflame: fellow LYRA vocalists on "III" (with Ayunda Risu and Amane Kanata). Calli and Nerissa Ravencroft: "Magia" (2026). Takane Lui: Minecraft and horror runs Lui supervised (2025). AZKi: holoRUST's "Team AZKi" and a self-3D karaoke with Hakui Koyori and Riona (2026). Yukihana Lamy: an off-collab drinking stream (2024). Shirakami Fubuki: a Mario Party with Omaru Polka and Riona (2026).
+FLOW GLOW (Isaki Riona, Mizumiya Su, Rindo Chihaya, Kikirara Vivi): her unit. Isaki Riona: duets "Gimme×Gimme," "あの夏が飽和する" and "逆様"; with Rindo Chihaya they are the self-styled "team hentai gentlemen." Mizumiya Su: #にこすぅ and "ポケットにファンタジー." Chihaya: ELDEN RING NIGHTREIGN with Ichijou Ririka (2025). Kikirara Vivi: SuperBunnyMan and Minecraft. Mori Calliope and Elizabeth Rose Bloodflame: fellow LYRA vocalists on "III" (with Ayunda Risu and Amane Kanata). Calli and Nerissa Ravencroft: "Magia" (2026). Takane Lui: Minecraft and horror runs Lui supervised (2025). AZKi: holoRUST's "Team AZKi" and a self-3D karaoke with Hakui Koyori and Riona (2026). Yukihana Lamy: an off-collab drinking stream (2024). Shirakami Fubuki: Phasmophobia with Chihaya and Omaru Polka (2025) and a Mario Party with Polka and Riona (2026).
 
 ## [SW] Secrets
 (none)
@@ -246,6 +247,7 @@ FLOW GLOW (Isaki Riona, Mizumiya Su, Rindo Chihaya, Kikirara Vivi): her unit. Is
 - "LYRA": the mix engineer's credits (on Calli's and Elizabeth's cards). "Magia," duets and collabs: archived titles;
   "逆様": the official video listing (undated here).
 - Outfits: Claude's reading of the official gallery images.
+- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Fubuki's Phasmophobia (yVdTbPCJytw) and #フブミオ大予想 (iJpIGu5HuGY).
 
 ## Merge Record
 - **2026-11-27, Claude only (author order: complete all FLOW GLOW members):** official profile, gallery and music

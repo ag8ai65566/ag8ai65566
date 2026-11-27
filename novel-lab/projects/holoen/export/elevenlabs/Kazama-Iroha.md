@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Kazama Iroha
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `b3ead757c391fac9233c6571807a27f0812b50d44321726cc8d57bc75d2a49bc` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `4ea2138bfe09de26bb1c797be03096941d0db8f43a8d28be060bf5ea40f02b5a` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Kazama-Iroha.md` (2026-10-02). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Iroha is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese
@@ -27,6 +27,7 @@
 - 「よしよしよしよし」 ("all right, all right") after a success; one documented example, not a fixed repetition count.
 - Talks back when chat teases her (her 「おい」 ("oi") is a first-model observation, so lines for it are style demos).
 - Laughs off her blunders (laughs are provisional choices).
+- Also on the card (r02): the greeting 「皆殿〜ござる〜！」; at the end of a morning stream 「行ってらっしゃい、ござる」.
 
 ## 4. Tag palette by situation
 | Situation | Tags | Line |

@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Hakos Baelz
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `732efc356f1a82151f42214200dacb57be77b1a4e2c4a26faf13eda877ece90d` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `11303217faecd7d92e3f257fe7490fa66b32ed18a65b036650c33f3262352646` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Hakos-Baelz.md` (2026-10-02). Original designed voice matched only to
 > register and energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER
 > Derivative Works Guidelines). Bae is active at the 2026 baseline. Guide: `novel-lab/docs/elevenlabs-v4.md`.

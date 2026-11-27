@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: Koganei Niko
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `pending` — reviewed: pending
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `0d88b2f464d933473ee1d90049b80e09f7ed92e3bf72237bfb6d7dfdf2ab1b56` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from `bible/characters/Koganei-Niko.md` (2026-11-27). Original designed voice matched only to register and
 > energy; never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works
 > Guidelines). Niko is active at the 2026 baseline. She streams in Japanese; her audio dialogue is Japanese

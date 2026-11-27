@@ -1,14 +1,8 @@
 {
  "phase": "candidate",
- "checked_at": "2026-11-27T18:59Z",
- "snapshot": "09f71d9d54b4cdb10c5c2d8aa31580facbec4cda3fb9f10db6f753d4b7cf10e0",
- "blocking_failures": [
-  "V11",
-  "V12",
-  "V14",
-  "V15",
-  "V18"
- ],
+ "checked_at": "2026-11-27T19:59Z",
+ "snapshot": "ec7644e6958e3bd4db776b3b181b83ed13dcdabbdfccb46b364f41caa88552cb",
+ "blocking_failures": [],
  "results": [
   {
    "check_id": "V01",
@@ -17,8 +11,8 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "snapshot 09f71d9d54b4cdb10c5c2d8aa31580facbec4cda3fb9f10db6f753d4b7cf10e0",
-    "116 inputs"
+    "snapshot ec7644e6958e3bd4db776b3b181b83ed13dcdabbdfccb46b364f41caa88552cb",
+    "123 inputs"
    ],
    "finding_ids": []
   },
@@ -29,9 +23,9 @@
    "severity": "block",
    "locator": null,
    "evidence": [
-    "characters 37/37",
-    "world 29/29",
-    "sheets 37/37"
+    "characters 40/40",
+    "world 30/30",
+    "sheets 40/40"
    ],
    "finding_ids": []
   },
@@ -74,10 +68,22 @@
   {
    "check_id": "V07",
    "title": "Sizes and platform limits",
-   "status": "pass",
+   "status": "warn",
    "severity": "warn",
    "locator": null,
-   "evidence": [],
+   "evidence": [
+    "Hoshimachi-Suisei · Physical Description: 228/200 (local target)",
+    "Houshou-Marine · Physical Description: 257/200 (local target)",
+    "Kazama-Iroha · Physical Description: 201/200 (local target)",
+    "Koseki-Bijou · Physical Description: 224/200 (local target)",
+    "Mori-Calliope · Physical Description: 308/200 (local target)",
+    "Nakiri-Ayame · Physical Description: 236/200 (local target)",
+    "Ninomae-Inanis · Physical Description: 288/200 (local target)",
+    "Shirogane-Noel · Physical Description: 213/200 (local target)",
+    "Takanashi-Kiara · Physical Description: 252/200 (local target)",
+    "Takane-Lui · Physical Description: 255/200 (local target)",
+    "Yukihana-Lamy · Physical Description: 218/200 (local target)"
+   ],
    "finding_ids": []
   },
   {
@@ -112,23 +118,23 @@
   {
    "check_id": "V11",
    "title": "Participants and directional facts",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
    "evidence": [
     "relationship web: 5 one-way ties (coverage, not errors; tools/web_check.py)",
-    "review pending: research/qa/audit-flowglow.md"
+    "reviewed in research/qa/audit-bridge-ties-external.md, research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-flowglow.md, research/qa/audit-gamers.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
   {
    "check_id": "V12",
    "title": "Evidence records",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-flowglow.md"
+    "reviewed in research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-flowglow.md, research/qa/audit-gamers.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
@@ -146,23 +152,23 @@
   {
    "check_id": "V14",
    "title": "Scope screening",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
    "evidence": [
     "0 automated candidates for semantic review",
-    "review pending: research/qa/audit-flowglow.md"
+    "reviewed in research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-flowglow.md, research/qa/audit-gamers.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
   {
    "check_id": "V15",
    "title": "Card usability and fidelity",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
    "evidence": [
-    "review pending: research/qa/audit-flowglow.md"
+    "reviewed in research/qa/audit-myth1.md, research/qa/audit-myth3.md, research/qa/audit-myth4.md, research/qa/audit-myth2.md, research/qa/audit-promise.md, research/qa/audit-advent.md, research/qa/audit-justice.md, research/qa/audit-jp.md, research/qa/audit-jp2.md, research/qa/audit-holox.md, research/qa/audit-flowglow.md, research/qa/audit-gamers.md, research/qa/audit-global.md"
    ],
    "finding_ids": []
   },
@@ -189,48 +195,10 @@
   {
    "check_id": "V18",
    "title": "Performance freshness and settings",
-   "status": "fail",
+   "status": "pass",
    "severity": "block",
    "locator": null,
-   "evidence": [
-    "Ouro-Kronii: stale (card voice fields changed since the sheet was reviewed)",
-    "Koganei-Niko: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Nakiri-Ayame: stale (card voice fields changed since the sheet was reviewed)",
-    "Watson-Amelia: stale (card voice fields changed since the sheet was reviewed)",
-    "Elizabeth-Rose-Bloodflame: stale (card voice fields changed since the sheet was reviewed)",
-    "Mori-Calliope: stale (card voice fields changed since the sheet was reviewed)",
-    "Mizumiya-Su: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Gigi-Murin: stale (card voice fields changed since the sheet was reviewed)",
-    "IRyS: stale (card voice fields changed since the sheet was reviewed)",
-    "Hakos-Baelz: stale (card voice fields changed since the sheet was reviewed)",
-    "Laplus-Darknesss: stale (card voice fields changed since the sheet was reviewed)",
-    "Shishiro-Botan: stale (card voice fields changed since the sheet was reviewed)",
-    "Gawr-Gura: stale (card voice fields changed since the sheet was reviewed)",
-    "Raora-Panthera: stale (card voice fields changed since the sheet was reviewed)",
-    "Houshou-Marine: stale (card voice fields changed since the sheet was reviewed)",
-    "Hakui-Koyori: stale (card voice fields changed since the sheet was reviewed)",
-    "Koseki-Bijou: stale (card voice fields changed since the sheet was reviewed)",
-    "Ninomae-Inanis: stale (card voice fields changed since the sheet was reviewed)",
-    "Takanashi-Kiara: stale (card voice fields changed since the sheet was reviewed)",
-    "Mococo-Abyssgard: stale (card voice fields changed since the sheet was reviewed)",
-    "Shirogane-Noel: stale (card voice fields changed since the sheet was reviewed)",
-    "Kazama-Iroha: stale (card voice fields changed since the sheet was reviewed)",
-    "Fuwawa-Abyssgard: stale (card voice fields changed since the sheet was reviewed)",
-    "Nerissa-Ravencroft: stale (card voice fields changed since the sheet was reviewed)",
-    "Shiori-Novella: stale (card voice fields changed since the sheet was reviewed)",
-    "Isaki-Riona: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Nekomata-Okayu: stale (card voice fields changed since the sheet was reviewed)",
-    "Ceres-Fauna: stale (card voice fields changed since the sheet was reviewed)",
-    "Sakamata-Chloe: stale (card voice fields changed since the sheet was reviewed)",
-    "Yukihana-Lamy: stale (card voice fields changed since the sheet was reviewed)",
-    "Kikirara-Vivi: stale (card voice fields changed since the sheet was reviewed)",
-    "Cecilia-Immergreen: stale (card voice fields changed since the sheet was reviewed)",
-    "Hoshimachi-Suisei: stale (card voice fields changed since the sheet was reviewed)",
-    "AZKi: stale (card voice fields changed since the sheet was reviewed)",
-    "Rindo-Chihaya: no source hash (run stamp-sheets after reviewing the sheet)",
-    "Takane-Lui: stale (card voice fields changed since the sheet was reviewed)",
-    "Nanashi-Mumei: stale (card voice fields changed since the sheet was reviewed)"
-   ],
+   "evidence": [],
    "finding_ids": []
   },
   {

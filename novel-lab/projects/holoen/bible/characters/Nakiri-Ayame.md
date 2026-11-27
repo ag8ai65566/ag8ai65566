@@ -178,10 +178,10 @@ on the world card "JP Senpai Pairs."
 | AZKi | — | The 2023 Sports Festival white team | [AY4] |
 | Ninomae Ina'nis, IRyS, Cecilia Immergreen | — | Okayu's 2025 team; Ina and FUWAMOCO on 7th fes STAGE 1 | [AY5] [Official AY6] |
 | Nanashi Mumei, Watson Amelia, Nerissa Ravencroft | — | The 2023 Sports Festival white team | [AY4] |
-| Shirakami Fubuki, Ookami Mio | "AyaFubuMi"; FAMS with Subaru | Their 2025 anime opening; Anime NYC 2026 | [AY2] [Official AY7] |
+| Shirakami Fubuki, Ookami Mio | "AyaFubuMi"; FAMS with Subaru | Their 2025 anime opening; Anime NYC 2026; originals "OniOniKonKonWaon" (2024-01-02), "Irowanioedomo" (2026-03-21) and "Gokuraku Gokigen Enbiyori" (2026-11-14) | [AY2] [Official AY7] [Official music 383, 705, 864] |
 | Oozora Subaru | "AyaSuba" | 2nd-generation genmate; FAMS | [AY2] |
 | Murasaki Shion, Minato Aqua | "Manji-gumi" | 2nd-generation unit | [AY2] |
-| Inugami Korone | "Onigashima Combi" | — | [AY2] |
+| Inugami Korone | "Onigashima Combi" | Clubhouse Games five-match as #鬼ヶ島コンビ (2025-01-16); a ReGLOSS 3D-live watch-along with Lui (2024-09-28) | [AY2] [Korone channel myqzgEEnV1I, 1Q48E6vFA6Y] |
 | Houshou Marine | a 3rd-generation junior she admires (secondary) | — | [AY2, secondary] |
 | La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | All four streamed holoGTA (2024-09); Ayame was not in the m HOLD'EM poker collab | [AY4 1iz9AxcgvPg] [Sammy roster] |
 | Takane Lui | "Onikan" (archived titles) | A sponsored collab billed おにかん (2025-08-09); secondary coverage also reports R.E.P.O. with Lui, Miko and Korone (2025) | [Lui channel YXaDmUXPSGo] [appbank.net report, secondary] |
@@ -269,7 +269,7 @@ Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanes
 Ayame wants her stream to be a warm place where she and her viewers smile and have fun together, and she gives her best to singing and games; her stated dreams are her own songs and a solo concert.
 
 ## [SW] Relationships
-Takanashi Kiara: her 23rd HOLOTALK guest (2022) and a 2023 Sports Festival white-team teammate. Nekomata Okayu: "OKFAMS"; Okayu's 2025 New Year Game Festival team, and 7th fes STAGE 1 together. Hoshimachi Suisei, Ninomae Ina'nis, IRyS and Cecilia Immergreen: listed among the members of Okayu's 2025 New Year Game Festival team; Ina and FUWAMOCO shared her 7th fes stage. AZKi, Nanashi Mumei, Watson Amelia and Nerissa Ravencroft: the 2023 Sports Festival white team. Shirakami Fubuki and Ookami Mio: AyaFubuMi (a 2025 anime opening); Fubuki created her companion Poyoyo; FAMS with Oozora Subaru (AyaSuba). Murasaki Shion and Minato Aqua (both graduated, 2025 and 2024): Manji-gumi. Inugami Korone: "Onigashima Combi." Houshou Marine: a third-generation junior whom Ayame admires. La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA (2024). Takane Lui: "Onikan" (2025). Shirogane Noel: an Audio-Technica sponsored stream (2025-07-11).
+Takanashi Kiara: her 23rd HOLOTALK guest (2022) and a 2023 Sports Festival white-team teammate. Nekomata Okayu: "OKFAMS"; Okayu's 2025 New Year Game Festival team, and 7th fes STAGE 1 together. Hoshimachi Suisei, Ninomae Ina'nis, IRyS and Cecilia Immergreen: listed among the members of Okayu's 2025 New Year Game Festival team; Ina and FUWAMOCO shared her 7th fes stage. AZKi, Nanashi Mumei, Watson Amelia and Nerissa Ravencroft: the 2023 Sports Festival white team. Shirakami Fubuki and Ookami Mio: AyaFubuMi (a 2025 anime opening; the originals "OniOniKonKonWaon," 2024, "Irowanioedomo" and "Gokuraku Gokigen Enbiyori," 2026); Fubuki created her companion Poyoyo; FAMS with Oozora Subaru (AyaSuba). Murasaki Shion and Minato Aqua (both graduated, 2025 and 2024): Manji-gumi. Inugami Korone: "Onigashima Combi" (a Clubhouse Games match, 2025; a ReGLOSS 3D-live watch-along with Lui, 2024). Houshou Marine: a third-generation junior whom Ayame admires. La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA (2024). Takane Lui: "Onikan" (2025). Shirogane Noel: an Audio-Technica sponsored stream (2025-07-11).
 
 ## [SW] Secrets
 (none)
@@ -290,6 +290,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - r02 status marks: Murasaki Shion graduated on 2025-04-26: Anime Corner <https://animecorner.me/hololive-vtuber-murasaki-shion-to-graduate-on-april-26/> (checked 2026-11-27).
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「おつなきりー！」 — secondary (ホロライブ非公式wiki（seesaawiki）「百鬼あやめ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C9%B4%B5%B4%A4%A2%A4%E4%A4%E1> (checked 2026-10-31); ホロライブ非公式wiki「百鬼あやめ【語録】」：口癖（次要來源） <https://seesaawiki.jp/hololivetv/d/%C9%B4%B5%B4%A4%A2%A4%E4%A4%E1%A1%DA%B8%EC%CF%BF%A1%DB> (checked 2026-10-31)).
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
+- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): AyaFubuMi originals (official music 383, 705, 864); #鬼ヶ島コンビ and the ReGLOSS watch-along (Korone channel myqzgEEnV1I, 1Q48E6vFA6Y).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hoshimachi Suisei, AZKi, Nakiri

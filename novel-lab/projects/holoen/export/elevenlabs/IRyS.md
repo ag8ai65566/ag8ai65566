@@ -1,6 +1,6 @@
 # ElevenLabs v4 Performance Sheet: IRyS
 
-> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `a7dd2131953841ed0aaca1416d71b070385cd28d4f2dd3609d217f310b894d5f` — reviewed 2026-10-04: Claude 2026-10-04: voice audits v1-v4 merged (research/qa/voice-audit-dispositions.md); attestation research/qa/voice-delivery.md; author decisions 2026-10-04 (quote inventory B; JP members speak Japanese)
+> Source voice fields SHA-256 (Name, Dialogue Style, Catchphrases, Voice & Delivery, Audio Tags): `1e5535d56e6bfa5cd1a6b000968ab2582a12a3d0831336078a2871fce59e4422` — reviewed 2026-11-27: Claude 2026-11-27 (r02): all 40 sheets checked against the r02 voice-field changes (no removed quote left in a sheet; status and dialogue language match the cards; V20 palettes and span check pass); JP sheets gained the r02 greetings and sign-offs; 7 new sheets (FLOW GLOW, GAMERS); GPT review pending
 > Built from the IRyS character file (`runs/20260930-2334-character-IRyS`, 2026-09-30; update after it is
 > promoted to `bible/characters/IRyS.md`; promoted 2026-10-01). Original designed voice matched only to register and energy;
 > never clone or imitate the member's real voice (ElevenLabs Use Policy §5; COVER Derivative Works

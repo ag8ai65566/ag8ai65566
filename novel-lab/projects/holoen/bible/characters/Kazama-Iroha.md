@@ -158,6 +158,7 @@ Public exchanges only. Group ties are on the world card "holoX."
 | FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show with Watame, Nene and Polka (excerpt uploaded 2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
 | Elizabeth Rose Bloodflame | — | Credited on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show (excerpt uploaded 05-19) | [IR5 xylll7Mp0jk] |
 | Kikirara Vivi, Koseki Bijou | Kouhai and EN | Fellow commentators (Lamy hosting) on the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
+| Shirakami Fubuki (GAMERS) | — | A cup-noodle tasting with Fubuki, Aki and Noel (2024-05-17); #めぇぷるしろっぷう, a game of Life with Fubuki and Watame (2023-11-22) | [Fubuki channel fQmhewlBr80, s18jJY5MbzM] |
 
 ## Arc
 - **Starting point:** active at the 2026 baseline: holoX's first concert behind her, a ninth original song, AzuIro
@@ -239,7 +240,7 @@ Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanes
 In her performed lore, Iroha left her mountain home to see and learn about the world and guards holoX to make a living. As a streamer she keeps training ("Kazama in training"), takes on difficult game challenges and grows as a singer.
 
 ## [SW] Relationships
-AZKi: "AzuIro," her steady duo (covers, "AZUIRO BESTIE DAYS" in 2025, Cuphead and off-collabs billed as summer camps). La+ Darknesss: holoX's founder; a cover together (2024). Takane Lui: a cover together (2024); she calls Lui "Lui-nee." Hakui Koyori: holoX genmate. Sakamata Chloe (affiliate since 2025): the duet cover "Gehenna" on Chloe's last day (2025). Hoshimachi Suisei: Hoshimatic Project ("BEEP BEEP," 2026); coached her at Puyo Puyo Tetris (2023). Yukihana Lamy and Shishiro Botan: NePoX. Houshou Marine and Shirogane Noel: fellow Bara☆Dice vocalists (distributor credits). Takanashi Kiara: a credited guest at Kiara's 2024 and 2025 lives; #TASTYchallenge shorts with Nene (2025). Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; the trio "KoMeHa"). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: challengers in the cookie battle she and AZKi presented (2024). Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" from her 2026 birthday show, with FUWAMOCO.
+AZKi: "AzuIro," her steady duo (covers, "AZUIRO BESTIE DAYS" in 2025, Cuphead and off-collabs billed as summer camps). La+ Darknesss: holoX's founder; a cover together (2024). Takane Lui: a cover together (2024); she calls Lui "Lui-nee." Hakui Koyori: holoX genmate. Sakamata Chloe (affiliate since 2025): the duet cover "Gehenna" on Chloe's last day (2025). Hoshimachi Suisei: Hoshimatic Project ("BEEP BEEP," 2026); coached her at Puyo Puyo Tetris (2023). Yukihana Lamy and Shishiro Botan: NePoX. Houshou Marine and Shirogane Noel: fellow Bara☆Dice vocalists (distributor credits). Takanashi Kiara: a credited guest at Kiara's 2024 and 2025 lives; #TASTYchallenge shorts with Nene (2025). Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; the trio "KoMeHa"). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: challengers in the cookie battle she and AZKi presented (2024). Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" from her 2026 birthday show, with FUWAMOCO. Shirakami Fubuki: a cup-noodle tasting with Noel and Aki Rosenthal (2024) and a game of Life with Tsunomaki Watame (2023).
 
 ## [SW] Secrets
 (none)
@@ -259,6 +260,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "Lui-nee" and "KoMeHa": secondary references.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「皆殿〜ござる〜！」 — secondary (ホロライブ非公式wiki（seesaawiki）「風真いろは」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C9%F7%BF%BF%A4%A4%A4%ED%A4%CF> (checked 2026-10-31)); 「行ってらっしゃい、ござる」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-04「【#ホロドリ】朝活☀#ござる金冠チャレンジ👑DAY1🎣【風真いろは/ホロライブ】」 <https://www.youtube.com/watch?v=vcIlbVGqwVQ> (checked 2026-10-31) at 7426 s).
 - Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
+- GAMERS ties (author order 2026-11-27; Claude only, GPT review pending): Fubuki (fQmhewlBr80, s18jJY5MbzM).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add holoX in full): official profile
