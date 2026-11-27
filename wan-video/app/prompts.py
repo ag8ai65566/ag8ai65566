@@ -111,6 +111,78 @@ def strip_prefix(prompt: str, prefix: str) -> str:
     return re.sub(rf"^\s*{pattern}\s*,?\s*", "", prompt or "")
 
 
+# NovelAI's weighting, for prompts read out of NovelAI images. Its own syntax
+# means nothing to ComfyUI: braces stay as literal text (and in this app `{}`
+# is the random-choice syntax), so the weights would silently disappear.
+#   {word}  = x1.05 per pair, [word] = /1.05 per pair      (NovelAI V3 and later)
+#   1.5::words ::  = exactly 1.5, until the next "::" or the end   (V4 and later)
+NAI_STEP = 1.05
+_NAI_NUMBER = re.compile(r"(-?\d+(?:\.\d+)?)::")
+_EDGE = re.compile(r"^([\s,]*)(.*?)([\s,]*)$", re.S)
+
+
+def _weight_text(weight: float) -> str:
+    return f"{weight:.2f}".rstrip("0").rstrip(".")
+
+
+def from_novelai(text: str) -> str:
+    """Rewrite NovelAI emphasis as ComfyUI's `(words:weight)`.
+
+    Literal parentheses (``hiten_(hitenkei)``, ``ask (askzy)``) are escaped
+    first, because to ComfyUI a bare pair of them is itself an emphasis.
+    """
+    text = re.sub(r"(?<!\\)([()])", r"\\\1", text or "")
+    runs: list[tuple[str, float]] = []
+    buf: list[str] = []
+    braces = brackets = 0
+    number: float | None = None
+
+    def flush() -> None:
+        if buf:
+            weight = NAI_STEP ** (braces - brackets) * (number if number is not None else 1.0)
+            runs.append(("".join(buf), weight))
+            buf.clear()
+
+    i = 0
+    while i < len(text):
+        at_boundary = i == 0 or text[i - 1] in " ,\n\t{[}]"
+        found = _NAI_NUMBER.match(text, i) if at_boundary else None
+        if found:
+            flush()
+            number = float(found.group(1))
+            i = found.end()
+            continue
+        if number is not None and text.startswith("::", i):
+            flush()
+            number = None
+            i += 2
+            continue
+        ch = text[i]
+        if ch in "{}[]":
+            flush()
+            if ch == "{":
+                braces += 1
+            elif ch == "[":
+                brackets += 1
+            elif ch == "}" and braces:
+                braces -= 1
+            elif ch == "]" and brackets:
+                brackets -= 1
+        else:
+            buf.append(ch)
+        i += 1
+    flush()
+
+    out = []
+    for chunk, weight in runs:
+        lead, body, tail = _EDGE.match(chunk).groups()
+        if not body or abs(weight - 1.0) < 0.005:
+            out.append(chunk)
+        else:
+            out.append(f"{lead}({body}:{_weight_text(weight)}){tail}")
+    return "".join(out)
+
+
 # Prompt syntax cheatsheet, shown in the UI instead of buried in a wiki.
 SYNTAX_HELP = [
     ("(字:1.3)", "加重這個詞。1.1～1.4 是常用範圍，超過 1.5 容易把畫面燒壞。"),

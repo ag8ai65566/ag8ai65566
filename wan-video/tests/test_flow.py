@@ -9351,9 +9351,12 @@ async def test_wangp() -> None:
     (root / "WanGP" / "envs.json").write_text("{}", encoding="utf-8")
     check(wangp.ready(root), "its installer's envs.json marks it ready")
     command = wangp.command(root, "start")
-    check(command[:5] == ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-File"]
-          and command[5].endswith("wangp-windows.ps1") and command[-2:] == ["-Action", "start"],
-          "the command runs the project's own script with the action")
+    check(command == ["cmd.exe", "/c", "wangp.bat", "-Action", "start"],
+          "the buttons run wangp.bat (which pauses at the end, so its last words stay on screen)")
+    launcher = (ROOT / "wangp.bat").read_text(encoding="ascii")
+    check("%*" in launcher and "wangp-windows.ps1" in launcher
+          and launcher.rstrip().splitlines()[-1].strip().lower() == "pause",
+          "…and wangp.bat hands the action to the script and waits before closing")
     try:
         wangp.command(root, "rm")
         check(False, "an unknown action is refused")
@@ -9387,10 +9390,17 @@ async def test_wangp() -> None:
         except HTTPException as exc:
             check("update" in str(exc.detail), "without the script the page asks for an update first")
         (root / "wangp-windows.ps1").write_text("# stand-in", encoding="utf-8")
+        try:
+            await server.wangp_run("start")
+            check(False, "without wangp.bat the page asks for an update")
+        except HTTPException as exc:
+            check("wangp.bat" in str(exc.detail), "…and the same without wangp.bat")
+        (root / "wangp.bat").write_text("@echo off", encoding="ascii")
         out = json.loads((await server.wangp_run("start")).body)
         cmd, kw = spawned[-1]
-        check(out["started"] and cmd == wangp.command(root, "start") and kw.get("creationflags") == 0x10,
-              "start opens the script in a console of its own")
+        check(out["started"] and cmd == wangp.command(root, "start") and kw.get("creationflags") == 0x10
+              and kw.get("cwd") == str(root),
+              "start opens wangp.bat in a console of its own, from the app folder")
         wangp.running = lambda *a, **k: True
         count = len(spawned)
         out = json.loads((await server.wangp_run("start")).body)
@@ -9447,6 +9457,445 @@ async def test_wangp() -> None:
     page = (ROOT / "app" / "static" / "index.html").read_text(encoding="utf-8")
     check('id="wangp"' in page and "loadWangp" in page and "/api/wangp/" in page,
           "the video tab has the WanGP card wired to the endpoints")
+
+
+async def test_local_only() -> None:
+    """Other web pages in the same browser cannot drive the app (localonly.py)."""
+    import localonly
+    import server
+
+    section("other web pages cannot drive this app")
+    mozilla = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) Chrome/141.0 Safari/537.36"
+    own = {"host": "127.0.0.1:8000", "origin": "http://127.0.0.1:8000",
+           "sec-fetch-site": "same-origin", "sec-fetch-mode": "cors", "user-agent": mozilla}
+    check(localonly.problem("POST", own) is None, "the app's own page can do anything")
+    check(localonly.problem("POST", {"host": "app:8000", "user-agent": "python-requests/2.32"}) is None,
+          "the drop-folder watcher (no browser headers, Docker's service name) is not a browser and passes")
+    cross = {**own, "origin": "https://evil.example", "sec-fetch-site": "cross-site"}
+    check(localonly.problem("POST", cross) is not None, "a POST from another site is refused")
+    old_browser = {"host": "127.0.0.1:8000", "origin": "https://evil.example", "user-agent": mozilla}
+    check(localonly.problem("POST", old_browser) is not None,
+          "…also from a browser too old to send Sec-Fetch-Site, by its Origin")
+    check(localonly.problem("POST", {**old_browser, "origin": "null"}) is not None,
+          "…and from a sandboxed frame, whose Origin is null")
+    check(localonly.problem("POST", {**own, "sec-fetch-site": "cross-site", "sec-fetch-mode": "navigate",
+                                     "origin": "https://evil.example"}) is not None,
+          "a form on another site that posts here is refused")
+    check(localonly.problem("POST", {**own, "origin": "http://127.0.0.1:8188", "sec-fetch-site": "same-site"})
+          is not None, "another local port (same-site, not same-origin) is refused too")
+    check(localonly.problem("GET", {"host": "127.0.0.1:8000", "sec-fetch-site": "cross-site",
+                                    "sec-fetch-mode": "navigate", "user-agent": mozilla}) is None,
+          "following a link or a bookmark to the app still opens it")
+    check(localonly.problem("GET", {"host": "127.0.0.1:8000", "sec-fetch-site": "cross-site",
+                                    "sec-fetch-mode": "no-cors", "user-agent": mozilla}) is not None,
+          "another site embedding the app's files or calling its GET endpoints is refused")
+    rebind = {"host": "evil.example:8000", "origin": "http://evil.example:8000",
+              "sec-fetch-site": "same-origin", "user-agent": mozilla}
+    check(localonly.problem("GET", rebind) is not None and localonly.problem("POST", rebind) is not None,
+          "DNS rebinding (an outside name pointed at 127.0.0.1) is refused, reads included")
+    for host in ("localhost:8000", "[::1]:8000", "192.168.1.20:8000", "app.localhost:8000", "127.0.0.1"):
+        check(localonly.problem("GET", {"host": host, "user-agent": mozilla}) is None,
+              f"{host} is this machine as a browser can address it")
+    saved = os.environ.get("ALLOWED_HOSTS")
+    try:
+        os.environ["ALLOWED_HOSTS"] = "mypc, studio.lan"
+        check(localonly.problem("GET", {"host": "studio.lan:8000", "user-agent": mozilla}) is None,
+              "a name listed in ALLOWED_HOSTS is accepted")
+        check(localonly.problem("GET", {"host": "other.lan:8000", "user-agent": mozilla}) is not None,
+              "…and only that name")
+        os.environ["ALLOWED_HOSTS"] = "*"
+        check(localonly.problem("GET", {"host": "anything.example", "user-agent": mozilla}) is None,
+              "ALLOWED_HOSTS=* switches the Host check off for a reverse proxy")
+    finally:
+        if saved is None:
+            os.environ.pop("ALLOWED_HOSTS", None)
+        else:
+            os.environ["ALLOWED_HOSTS"] = saved
+
+    async def call(method: str, path: str, headers: dict, body: bytes = b"") -> tuple[int, dict]:
+        sent = []
+
+        async def receive():
+            return {"type": "http.request", "body": body, "more_body": False}
+
+        async def send(message):
+            sent.append(message)
+
+        scope = {"type": "http", "asgi": {"version": "3.0"}, "http_version": "1.1", "method": method,
+                 "scheme": "http", "path": path, "raw_path": path.encode(), "query_string": b"",
+                 "root_path": "", "client": ("127.0.0.1", 50123), "server": ("127.0.0.1", 8000),
+                 "headers": [(k.encode("latin-1"), v.encode("latin-1")) for k, v in headers.items()]}
+        await server.app(scope, receive, send)
+        status = next(m["status"] for m in sent if m["type"] == "http.response.start")
+        raw = b"".join(m.get("body", b"") for m in sent if m["type"] == "http.response.body")
+        try:
+            return status, json.loads(raw or b"{}")
+        except ValueError:
+            return status, {}
+
+    payload = json.dumps({"text": "artist:wlop"}).encode()
+    status, out = await call("POST", "/api/artistlab/parse",
+                             {**cross, "content-type": "application/json"}, payload)
+    check(status == 403 and "擋下" in out.get("detail", ""),
+          f"through the real app, another site's POST gets 403 with a reason ({status})")
+    status, out = await call("POST", "/api/artistlab/parse",
+                             {**own, "content-type": "application/json"}, payload)
+    check(status == 200 and out.get("artists") == ["wlop"], f"…and the app's own page gets its answer ({status})")
+    status, out = await call("GET", "/api/wangp", rebind)
+    check(status == 403 and "ALLOWED_HOSTS" in out.get("detail", ""),
+          "a rebinding read is refused, and the refusal says how to allow a name on purpose")
+    status, _ = await call("GET", "/api/wangp", {"host": "app:8000", "user-agent": "python-requests/2.32"})
+    check(status == 200, "a script on the Docker network still reaches the API")
+
+
+async def test_review_fixes() -> None:
+    """The round of fixes from the 2026-11-27 review: disk space, a full disk,
+    background tasks, the event loop, and the staging folder."""
+    import errno as _errno
+    import inspect
+    import threading
+    import time as _time
+    import types as pytypes
+
+    import artistlab
+    import config
+    import downloader
+    import kaloscope
+    import server
+    from downloader import RemoteFile
+    from PIL import Image as PILImage
+
+    section("downloads check the disk first")
+    root = TMP / "space-check"
+    root.mkdir(parents=True, exist_ok=True)
+    manager = downloader.Manager(root)
+    saved_free = downloader.free_bytes
+    gib = 1024 ** 3
+    try:
+        downloader.free_bytes = lambda _path: 10 * gib
+        big = [RemoteFile(url="https://example.invalid/a", folder="loras", name="a.safetensors", size=9 * gib)]
+        try:
+            manager.enqueue_files(key="big", label="big", files=big)
+            check(False, "a download that does not fit is refused")
+        except downloader.NotEnoughSpace as exc:
+            check(exc.need == 9 * gib and "GB" in str(exc) and "模型" in str(exc),
+                  "a download that leaves less than the headroom free is refused before it starts, saying how much")
+        check("big" not in manager.history and manager.queue.empty(), "…and nothing was queued")
+        part = root / "loras" / "a.safetensors.part"
+        part.parent.mkdir(parents=True, exist_ok=True)
+        with part.open("wb") as fh:
+            fh.truncate(2 * gib)
+        manager.check_space([(root / "loras" / "a.safetensors", 9 * gib)])
+        check(True, "bytes already in the .part file are not counted twice (resuming 7GB of 9GB fits)")
+        part.unlink()
+        manager.check_space([(root / "loras" / "x.safetensors", 0)])
+        check(True, "a file of unknown size is not guessed at")
+        waiting = downloader.Download(model_id="earlier", label="earlier", status="queued",
+                                      files=[downloader.FileState(RemoteFile(
+                                          url="https://example.invalid/b", folder="loras",
+                                          name="b.safetensors", size=5 * gib))])
+        manager.history["earlier"] = waiting
+        try:
+            manager.check_space([(root / "loras" / "c.safetensors", 4 * gib)])
+            check(False, "downloads already waiting count too")
+        except downloader.NotEnoughSpace as exc:
+            check(exc.need == 9 * gib, "downloads already waiting in the queue count against the same disk")
+        manager.history.pop("earlier")
+        answer = await server._not_enough_space(None, downloader.NotEnoughSpace(9 * gib, 10 * gib, root))
+        check(answer.status_code == 400 and "硬碟空間不夠" in json.loads(answer.body)["detail"],
+              "every download button gets the same plain answer (one handler for all of them)")
+        check(downloader.NotEnoughSpace in server.app.exception_handlers, "…registered on the app")
+    finally:
+        downloader.free_bytes = saved_free
+
+    section("a full disk mid-download")
+    sizes = {"full.safetensors": 4096}
+    hf = FakeHF(sizes)
+    runner, url = await start(hf.app())
+    saved_hf, saved_open = downloader.HF, Path.open
+    try:
+        downloader.HF = url
+
+        def no_room(self, *args, **kwargs):
+            if self.name.endswith(".part"):
+                raise OSError(_errno.ENOSPC, "No space left on device")
+            return saved_open(self, *args, **kwargs)
+
+        Path.open = no_room
+        dl = manager.enqueue_files(key="full", label="full", files=[RemoteFile(
+            url=f"{url}/full.safetensors", folder="loras", name="full.safetensors", size=4096)])
+        for _ in range(300):
+            if dl.status in ("done", "error", "cancelled"):
+                break
+            await asyncio.sleep(0.02)
+        check(dl.status == "error" and "硬碟滿了" in dl.message and "接著下載" in dl.message,
+              f"a full disk stops the download with a sentence that says what to do ({dl.message[:40]})")
+        check(len(hf.requests) == 1, f"…without retrying five times first ({len(hf.requests)} requests)")
+    finally:
+        Path.open = saved_open
+        downloader.HF = saved_hf
+        await runner.cleanup()
+
+    section("background work that must not vanish or freeze the page")
+    source = inspect.getsource(server.run_episode)
+    check("_background.add(task)" in source,
+          "an episode run is kept referenced (asyncio only holds tasks weakly)")
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    target = config.STAGING_DIR / "lab-target-reviewtest.png"
+    PILImage.new("RGB", (32, 32), (200, 30, 30)).save(target)
+    PILImage.new("RGB", (32, 32), (200, 30, 30)).save(config.OUTPUT_DIR / "review-attempt.png")
+    where = []
+    saved_k = (kaloscope.installed, kaloscope.style)
+    try:
+        kaloscope.installed = lambda _d: True
+
+        def style(picture, base):
+            where.append(threading.current_thread() is threading.main_thread())
+            return np.ones(4, dtype=np.float32) / 2.0
+
+        import numpy as np
+        kaloscope.style = style
+        lab = artistlab.new_lab(base={"model": "noobai"}, prompt="1girl", negative="", form="artist:{tag}",
+                                seed=1, target=target.name)
+        _submit, _wait, score = server._lab_callbacks(lab)
+        check(score is not None and where == [],
+              "setting up a lab no longer reads the target's style on the event loop")
+        first = await score("review-attempt.png")
+        second = await score("review-attempt.png")
+        check(abs(first - 1.0) < 1e-6 and abs(second - 1.0) < 1e-6 and len(where) == 3 and not any(where),
+              f"the target's style is read once, in a worker thread, like every attempt's ({where})")
+    finally:
+        kaloscope.installed, kaloscope.style = saved_k
+
+    section("the staging folder does not grow forever")
+    old = _time.time() - 5 * 24 * 3600
+    kept, dropped, fresh = (config.STAGING_DIR / f"lab-target-{n}.png" for n in ("inuse", "orphan", "new"))
+    for path in (kept, dropped, fresh):
+        PILImage.new("RGB", (8, 8)).save(path)
+    for path in (kept, dropped):
+        os.utime(path, (old, old))
+    holder = artistlab.new_lab(base={}, prompt="", negative="", form="artist:{tag}", seed=1, target=kept.name)
+    server.LABS.labs[holder.id] = holder
+    try:
+        server._prune_lab_targets()
+        check(kept.is_file() and fresh.is_file() and not dropped.exists(),
+              "old lab targets nothing refers to are deleted; ones a lab uses, and new ones, stay")
+    finally:
+        server.LABS.labs.pop(holder.id, None)
+    stale = config.STAGING_DIR / "approach-gone.png"
+    PILImage.new("RGB", (8, 8)).save(stale)
+    os.utime(stale, (old, old))
+    server._prune_staged("approach-", set())
+    check(not stale.exists(), "an approach run's copy goes once the run has left the list")
+    other = config.STAGING_DIR / "src-keepme.png"
+    PILImage.new("RGB", (8, 8)).save(other)
+    os.utime(other, (old, old))
+    server._prune_staged("approach-", set())
+    check(other.is_file(), "…and nothing with another prefix is touched")
+    other.unlink()
+
+
+def _nai_inject(picture, fields: dict, magic: bytes = b"stealth_pngcomp", raw: bytes | None = None):
+    """Hide metadata the way NovelAI's nai_meta_writer.py does (LSBInjector):
+    gzip'd JSON of the text fields (Title dropped), alpha 0xFE|bit, down each
+    column first, everything after the payload left at 0xFF."""
+    import gzip as _gzip
+
+    import numpy as np
+
+    if raw is None:
+        raw = json.dumps({k: v for k, v in fields.items() if k != "Title"}).encode("utf-8")
+        if magic == b"stealth_pngcomp":
+            raw = _gzip.compress(raw)
+    buffer = magic + (len(raw) * 8).to_bytes(4, "big") + raw
+    bits = np.unpackbits(np.frombuffer(buffer, dtype=np.uint8))
+    pixels = np.array(picture.convert("RGBA"))
+    column_major = pixels[..., -1].T
+    h, w = column_major.shape
+    flat = column_major.reshape(-1)
+    flat[:] = 0xFF
+    flat[:bits.size] = 0xFE
+    flat[:bits.size] |= bits
+    pixels[..., -1] = flat.reshape(h, w).T
+    from PIL import Image as PILImage
+    return PILImage.fromarray(pixels)
+
+
+async def test_exact_sources() -> None:
+    """NovelAI images and CivitAI image links: exact generation data, read rather than guessed."""
+    import types as pytypes
+
+    import civitai
+    import config
+    import inspect_image
+    import prompts
+    import server
+    import tags
+    from fastapi import HTTPException
+    from PIL import Image as PILImage
+    from PIL.PngImagePlugin import PngInfo
+
+    section("NovelAI's emphasis, in ComfyUI's words")
+    for source, wanted, label in (
+            ("{{blonde hair}}, blue eyes", "(blonde hair:1.1), blue eyes", "each pair of braces is x1.05"),
+            ("[[[sketch]]]", "(sketch:0.86)", "brackets divide by 1.05"),
+            ("1.5::rain, night::, smile", "(rain, night:1.5), smile", "V4 numeric weights, closed by ::"),
+            ("2::cat", "(cat:2)", "…or running to the end"),
+            ("artist:ask (askzy), {masterpiece}", "artist:ask \\(askzy\\), (masterpiece:1.05)",
+             "literal parentheses are escaped, so ComfyUI does not read them as emphasis"),
+            ("1girl, 2girls, solo", "1girl, 2girls, solo", "numbers in ordinary tags are left alone"),
+            ("{a, [b]}, c}", "(a:1.05), b, c", "nesting cancels out, and a stray closer is dropped")):
+        got = prompts.from_novelai(source)
+        check(got == wanted, f"{label}: {source!r} -> {got!r}")
+
+    section("NovelAI images")
+    comment = {"prompt": "1girl, {{blonde hair}}, 1.3::night sky::", "steps": 28, "height": 1216, "width": 832,
+               "scale": 5.0, "seed": 123456789, "sampler": "k_euler_ancestral", "noise_schedule": "native",
+               "uc": "lowres, [[bad hands]]",
+               "v4_prompt": {"caption": {"base_caption": "unused", "char_captions": [
+                   {"char_caption": "girl, {red dress}", "centers": [{"x": 0.5, "y": 0.5}]}]}}}
+    fields = {"Title": "NovelAI generated image", "Description": comment["prompt"], "Software": "NovelAI",
+              "Source": "NovelAI Diffusion V4.5 4BDE2A90", "Comment": json.dumps(comment)}
+
+    def reopened(picture, **save):
+        buf = io.BytesIO()
+        picture.save(buf, "PNG", **save)
+        buf.seek(0)
+        out = PILImage.open(buf)
+        out.load()
+        return out
+
+    hidden = reopened(_nai_inject(PILImage.new("RGB", (64, 96), (90, 120, 200)), fields))
+    check(not hidden.text, "the stand-in has no text fields, like a NovelAI image a site has stripped")
+    found = inspect_image.read_metadata(hidden)
+    check(found.source == "novelai" and found.seed == 123456789 and found.steps == 28 and found.cfg == 5.0,
+          "the settings come back out of the alpha channel")
+    check(found.prompt == "1girl, (blonde hair:1.1), (night sky:1.3), girl, (red dress:1.05)",
+          f"the prompt is converted, and V4's character prompt is joined on ({found.prompt})")
+    check(found.negative == "lowres, (bad hands:0.91)", "the negative (NovelAI's uc) too")
+    check(found.sampler == "euler_ancestral" and found.scheduler == "normal" and (found.width, found.height) == (832, 1216),
+          "sampler, schedule and size in ComfyUI's names")
+    check(found.model.startswith("NovelAI Diffusion V4.5") and "透明通道" in found.note and "不公開" in found.note,
+          "the model is named, and the note says where this came from and that the model is closed")
+    info = PngInfo()
+    for key, value in fields.items():
+        info.add_text(key, value)
+    plain = reopened(PILImage.new("RGB", (32, 32)), pnginfo=info)
+    texted = inspect_image.read_metadata(plain)
+    check(texted.source == "novelai" and texted.seed == 123456789 and "透明通道" not in texted.note,
+          "the ordinary PNG text fields are read too")
+    a1111 = "masterpiece, 1girl\nNegative prompt: lowres\nSteps: 20, Sampler: Euler a, CFG scale: 7, Seed: 42, Size: 512x768"
+    webui = reopened(_nai_inject(PILImage.new("RGB", (64, 64)), {}, magic=b"stealth_pnginfo", raw=a1111.encode()))
+    read = inspect_image.read_metadata(webui)
+    check(read.source == "a1111" and read.seed == 42 and "stealth" in read.note,
+          "the A1111 extension's uncompressed variant carries a parameters string, read as A1111")
+    check(inspect_image.read_metadata(reopened(PILImage.new("RGB", (64, 64)))).source == "",
+          "a picture without an alpha channel has nothing hidden")
+    both = PngInfo()
+    both.add_text("prompt", json.dumps({"1": {"class_type": "CheckpointLoaderSimple",
+                                              "inputs": {"ckpt_name": "krea2.safetensors"}},
+                                        "2": {"class_type": "SomeNewSampler", "inputs": {"model": ["1", 0]}}}))
+    both.add_text("parameters", a1111)
+    mixed = inspect_image.read_metadata(reopened(PILImage.new("RGB", (32, 32)), pnginfo=both))
+    check(mixed.source == "a1111" and mixed.seed == 42 and mixed.prompt.startswith("masterpiece"),
+          "a ComfyUI graph this reader cannot follow gives way to a complete A1111 block in the same file")
+    noise = PILImage.new("RGBA", (64, 64), (1, 2, 3, 254))
+    check(inspect_image.read_stealth(noise) is None, "an ordinary transparent picture is not mistaken for metadata")
+    liar = _nai_inject(PILImage.new("RGB", (16, 16)), {}, raw=b"x")
+    check(inspect_image.read_stealth(liar) is None,
+          "a payload that does not decompress is ignored rather than trusted")
+    tiny = _nai_inject(PILImage.new("RGB", (64, 64)), fields)
+    cropped = tiny.crop((0, 0, 2, 64))
+    check(inspect_image.read_stealth(cropped) is None, "a length longer than the picture can hold is refused")
+
+    section("CivitAI image links")
+    for link, wanted in (("https://civitai.com/images/149692961", 149692961),
+                         ("https://civitai.com/images/149692961?postId=5", 149692961),
+                         ("149692961", 149692961), ("https://example.com/images/1234", None),
+                         ("https://civitai.com/models/123", None)):
+        check(inspect_image.civitai_image_id(link) == wanted, f"{link} -> {wanted}")
+    # Shapes taken from CivitAI's images API on 2026-11-27 (texts shortened).
+    plain_meta = {"seed": 604237248014470, "Model": "vxpKrea2Nsfw_beta31INT8", "steps": 10, "width": 1664,
+                  "height": 2496, "prompt": "Cinematic anime illustration, a cottage in the snow",
+                  "Version": "ComfyUI", "sampler": "Euler", "cfgScale": 1, "resources": [],
+                  "civitaiResources": [{"type": "checkpoint", "modelVersionId": 3396269},
+                                       {"type": "lora", "weight": 0.8, "modelVersionId": 3452591}]}
+    got = inspect_image.from_civitai_meta(plain_meta)
+    check(got.source == "civitai" and got.seed == 604237248014470 and got.steps == 10 and got.cfg == 1.0
+          and (got.width, got.height) == (1664, 2496) and got.model == "vxpKrea2Nsfw_beta31INT8",
+          "the settings CivitAI lists beside the picture")
+    check([r["version_id"] for r in got.resources] == [3396269, 3452591] and got.resources[1]["weight"] == 0.8,
+          "…and the exact model and LoRA versions, ready for the CivitAI lookup")
+    graph = {"3": {"class_type": "KSampler", "inputs": {"seed": 7, "steps": 8, "cfg": 1.0, "sampler_name": "er_sde",
+                                                        "scheduler": "beta", "denoise": 1.0, "model": ["4", 0],
+                                                        "positive": ["6", 0], "negative": ["7", 0]}},
+             "4": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": "krea2.safetensors"}},
+             "6": {"class_type": "CLIPTextEncode", "inputs": {"text": "a knight", "clip": ["4", 1]}},
+             "7": {"class_type": "CLIPTextEncode", "inputs": {"text": "blurry", "clip": ["4", 1]}}}
+    comfy_meta = {"comfy": json.dumps({"prompt": graph}), "width": 1024, "height": 1536, "prompt": "a knight"}
+    got = inspect_image.from_civitai_meta(comfy_meta)
+    check(got.source == "civitai" and got.prompt == "a knight" and got.negative == "blurry" and got.seed == 7
+          and got.sampler == "er_sde" and (got.width, got.height) == (1024, 1536),
+          "a ComfyUI upload's whole graph is read like a ComfyUI PNG")
+    wrapped = inspect_image.from_civitai_meta({"id": 149692961, "meta": plain_meta})
+    check(wrapped is not None and wrapped.seed == 604237248014470 and len(wrapped.resources) == 2,
+          "…also in the wrapped shape CivitAI uses when one image is asked for by id")
+    check(inspect_image.from_civitai_meta({}) is None and inspect_image.from_civitai_meta({"Model": "x"}) is None,
+          "an image with no generation data says so instead of inventing some")
+
+    png = io.BytesIO()
+    PILImage.new("RGB", (48, 64), (10, 200, 30)).save(png, "PNG")
+    listing = {"items": [{"id": 149692961, "url": "https://image.civitai.com/x/y.jpeg", "username": "someone",
+                          "meta": {"id": 149692961, "meta": plain_meta}}]}
+    saved = (civitai.get_json, server._civitai_fetch, tags.installed)
+    asked = []
+    try:
+        async def fake_get_json(path, params=None):
+            asked.append((path, dict(params or [])))
+            return listing
+
+        async def fake_fetch(url):
+            return png.getvalue()
+
+        civitai.get_json, server._civitai_fetch = fake_get_json, fake_fetch
+        tags.installed = lambda _d: []
+        out = json.loads((await server.inspect_civitai({"url": "https://civitai.com/images/149692961"})).body)
+        check(asked[-1][0] == "images" and asked[-1][1] == {"imageId": "149692961", "withMeta": "true", "nsfw": "X"},
+              "the link becomes one images-API query for that image, generation data included")
+        check(out["metadata"]["source"] == "civitai" and out["metadata"]["seed"] == 604237248014470
+              and out["recipe"]["exact"] is True and out["size"] == [48, 64],
+              "the page gets the same answer as for an upload, marked exact")
+        check(out["civitai"]["page"].endswith("/images/149692961") and out["civitai"]["author"] == "someone",
+              "…with a link back to the image page")
+        served = await server.inspect_civitai_file(out["civitai"]["file"].rsplit("/", 1)[-1])
+        check(Path(served.path).is_file(), "the picture itself is served, so compare and auto-approach can use it")
+        for bad in ("../.env", "civitai-1.png.txt", "x.png"):
+            try:
+                await server.inspect_civitai_file(bad)
+                check(False, f"{bad} is not served")
+            except HTTPException as exc:
+                check(exc.status_code == 404, f"only staged CivitAI pictures are served ({bad})")
+        for body, status in (({"url": "https://example.com/a.png"}, 400), ({"url": ""}, 400)):
+            try:
+                await server.inspect_civitai(body)
+                check(False, "a link that is not a CivitAI image is refused")
+            except HTTPException as exc:
+                check(exc.status_code == status, f"{body['url'] or 'nothing'} is refused with {status}")
+        listing["items"] = []
+        try:
+            await server.inspect_civitai({"url": "149692961"})
+            check(False, "a missing image is a 404")
+        except HTTPException as exc:
+            check(exc.status_code == 404 and "API key" in str(exc.detail),
+                  "an image CivitAI will not show says why it might be hidden")
+        listing["items"] = [{"id": 5, "url": "https://image.civitai.com/x/z.jpeg",
+                             "meta": {**plain_meta, "prompt": "loli, 1girl"}}]
+        out = json.loads((await server.inspect_civitai({"url": "https://civitai.com/images/5555"})).body)
+        check(out["blocked"] and out["metadata"]["prompt"] == "" and out["recipe"] is None,
+              "the line on minors holds for CivitAI links too")
+    finally:
+        civitai.get_json, server._civitai_fetch, tags.installed = saved
 
 
 async def test_reattach() -> None:
@@ -10337,6 +10786,9 @@ async def main() -> int:
     await test_cloud_training()
     await test_artistlab()
     await test_wangp()
+    await test_local_only()
+    await test_review_fixes()
+    await test_exact_sources()
     await test_object_info_cache_invalidation()
     test_webp_classification()
     test_codex_setup_never_touches_the_key()

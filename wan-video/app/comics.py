@@ -25,7 +25,7 @@ so any lettering it draws is gibberish, while PIL can simply write the words.
 from __future__ import annotations
 
 import textwrap
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont

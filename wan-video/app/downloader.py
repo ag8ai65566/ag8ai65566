@@ -8,6 +8,8 @@ survives a page reload.
 from __future__ import annotations
 
 import asyncio
+import errno
+import shutil
 import os
 import time
 from dataclasses import dataclass, field
@@ -96,6 +98,47 @@ def _auth_error(file: ModelFile | RemoteFile, status: int) -> str:
     return (f"HTTP {status}：token 有了但 `{file.repo}` 還是拒絕。"
             f"多半是還沒在 https://huggingface.co/{file.repo} 頁面上按同意授權 —— "
             "gated 倉庫兩件事都要做。也可能是 token 沒有 read 權限。")
+
+
+# Left free on top of what a download needs: ComfyUI writes temp files and
+# Windows misbehaves on a full system drive. A judgement, not a measurement.
+HEADROOM = 2 * 1024 ** 3
+
+
+class NotEnoughSpace(RuntimeError):
+    """Refused before starting, instead of failing at 90% after an hour."""
+
+    def __init__(self, need: int, free: int, where: Path) -> None:
+        self.need, self.free, self.where = need, free, where
+        gb = lambda n: f"{n / 1024 ** 3:.1f} GB"  # noqa: E731
+        super().__init__(
+            f"硬碟空間不夠：這次（連同排隊中的下載）還要 {gb(need)}，"
+            f"{where.anchor or where} 只剩 {gb(free)}，而且要再多留 {gb(HEADROOM)} 給 ComfyUI 和系統。"
+            "先刪掉用不到的模型（「模型」分頁），或把整個 app 資料夾搬到空間大的硬碟 —— 模型不用重下。")
+
+
+async def read_capped(response, limit: int) -> bytes:
+    """The whole body, or the first `limit + 1` bytes if it is longer.
+
+    aiohttp's `content.read(n)` is not that: it returns *up to* n bytes, as
+    soon as the first chunk has arrived - so a capped read that used it kept
+    only the first few kilobytes of a picture, and saved it as if complete.
+    """
+    chunks, total = [], 0
+    async for chunk in response.content.iter_chunked(64 * 1024):
+        chunks.append(chunk)
+        total += len(chunk)
+        if total > limit:
+            break
+    return b"".join(chunks)
+
+
+def free_bytes(path: Path) -> int:
+    """Free space on the drive that holds `path` (or its nearest existing parent)."""
+    probe = path
+    while not probe.exists() and probe.parent != probe:
+        probe = probe.parent
+    return shutil.disk_usage(probe).free
 
 
 @dataclass
@@ -204,6 +247,40 @@ class Manager:
     def missing_files(self, model: ModelDef) -> list[ModelFile]:
         return [f for f in model.all_files if self.file_status(f)[0] != "ok"]
 
+    # -- room on the disk -----------------------------------------------------
+
+    def _waiting_bytes(self) -> int:
+        """What downloads already queued or running still have to write."""
+        left = 0
+        for download in self.history.values():
+            if download.status not in ("queued", "running"):
+                continue
+            for state in download.files:
+                if state.status != "done" and state.file.size:
+                    left += max(0, state.file.size - state.done)
+        return left
+
+    def check_space(self, wanted: list[tuple[Path, int]]) -> None:
+        """Raise NotEnoughSpace if these files (path, full size) will not fit.
+
+        Bytes already in a matching .part file are not counted again, since
+        the download resumes from there. Files of unknown size count as 0: a
+        guess would refuse downloads that fit.
+        """
+        need = 0
+        for target, size in wanted:
+            if not size:
+                continue
+            part = target.with_suffix(target.suffix + ".part")
+            have = part.stat().st_size if part.is_file() else 0
+            need += max(0, size - min(have, size))
+        if not need:
+            return
+        need += self._waiting_bytes()
+        free = free_bytes(self.root)
+        if need + HEADROOM > free:
+            raise NotEnoughSpace(need, free, self.root)
+
     # -- queueing -----------------------------------------------------------
 
     def start(self) -> None:
@@ -216,6 +293,7 @@ class Manager:
 
     def enqueue(self, model: ModelDef) -> Download:
         pending = self.missing_files(model)
+        self.check_space([(self.path_for(f), f.size) for f in pending])
         download = Download(
             model_id=model.id,
             label=model.label,
@@ -259,6 +337,7 @@ class Manager:
             else:
                 pending.append(f)
 
+        self.check_space([(self.root / f.folder / f.name, f.size) for f in pending])
         download = Download(
             model_id=key,
             label=label,
@@ -328,7 +407,7 @@ class Manager:
                 async with session.get(url, headers={"User-Agent": UA}) as response:
                     if response.status != 200:
                         return False
-                    data = await response.content.read(MAX_PREVIEW_BYTES + 1)
+                    data = await read_capped(response, MAX_PREVIEW_BYTES)
         except (aiohttp.ClientError, asyncio.TimeoutError, OSError):
             return False
         if not data or len(data) > MAX_PREVIEW_BYTES:
@@ -381,7 +460,11 @@ class Manager:
                 raise
             except Exception as exc:  # noqa: BLE001 - the manager must survive
                 download.status = "error"
-                download.message = f"{type(exc).__name__}: {exc}"
+                # RuntimeError carries a sentence this module wrote for the
+                # user (a missing key, a full disk); anything else is a
+                # surprise, and its class name helps whoever reads the report.
+                download.message = (str(exc) if type(exc) is RuntimeError
+                                    else f"{type(exc).__name__}: {exc}")
             finally:
                 download.finished = time.time()
                 self.current = None
@@ -436,6 +519,13 @@ class Manager:
                             state.done += len(chunk)
                 break
             except (aiohttp.ClientError, asyncio.TimeoutError, OSError) as exc:
+                if isinstance(exc, OSError) and exc.errno == errno.ENOSPC:
+                    # Retrying cannot help, and "[Errno 28]" tells nobody what
+                    # to do. The .part file stays, so the next try resumes.
+                    state.status = "error"
+                    state.message = ("硬碟滿了，下載停在這裡。已經下載的部分會保留：清出空間後再按一次下載，"
+                                     "會從停下的地方接著下載。")
+                    raise RuntimeError(state.message) from exc
                 if attempt == 4:
                     state.status = "error"
                     state.message = str(exc)

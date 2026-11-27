@@ -379,6 +379,7 @@
       <input type="file" id="inspfile" accept="image/*" hidden>
       <button class="ghost" id="labbtn">🎨 繪師實驗室</button>
       <button class="ghost" id="inspbtn">🔍 看圖猜設定</button>
+      <button class="ghost" id="inspurlbtn" title="貼上 CivitAI 圖片頁的網址，讀作者附的生成資料">🔗 CivitAI 圖片連結</button>
     </div>
     <div id="insp" class="card hidden" style="margin-bottom:12px"></div>
     <div id="lab" class="card hidden" style="margin-bottom:12px"></div>
@@ -3473,6 +3474,44 @@ $('#pbmore').onclick = () => { PB.offset = PB.entries.length; refreshPb(true); }
 let INSP = null;
 
 $('#inspbtn').onclick = () => $('#inspfile').click();
+$('#inspurlbtn').onclick = () => {
+  const box = $('#insp');
+  box.classList.remove('hidden');
+  box.innerHTML = `<b>用 CivitAI 圖片連結反推</b>
+    <div class="s">貼上 CivitAI 圖片頁的網址（例如 https://civitai.com/images/123456789）。
+      作者有附生成資料的話，提詞、種子、取樣器、模型和 LoRA 的版本都是精確的；圖片本身也會抓下來，其他功能照常用。
+      看不到的圖（限制級）要先在「設定」分頁貼上 CivitAI API key。</div>
+    <div class="row" style="margin-top:6px;gap:6px">
+      <input type="text" id="inspurl" aria-label="CivitAI 圖片網址" style="flex:1;min-width:240px" placeholder="https://civitai.com/images/...">
+      <button class="go tiny" id="inspurlgo">讀取</button>
+      <button class="ghost tiny" id="inspurlclose">關掉</button>
+    </div>
+    <div class="s" id="inspurlmsg"></div>`;
+  $('#inspurlclose').onclick = () => { box.classList.add('hidden'); };
+  const go = async () => {
+    const msg = $('#inspurlmsg');
+    msg.textContent = '向 CivitAI 查詢、下載圖片、分析中…';
+    $('#inspurlgo').disabled = true;
+    try {
+      const r = await fetch('/api/inspect/civitai', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: $('#inspurl').value }) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.detail || r.statusText);
+      const blob = await (await fetch(d.civitai.file)).blob();
+      INSP = d;
+      INSP._file = new File([blob], `civitai-${d.civitai.id}.png`, { type: 'image/png' });
+      INSP._preview = URL.createObjectURL(blob);
+      INSP._picked = new Set();
+      renderInspect();
+    } catch (e) {
+      msg.innerHTML = `<span class="warn">${esc(e.message)}</span>`;
+      $('#inspurlgo').disabled = false;
+    }
+  };
+  $('#inspurlgo').onclick = go;
+  $('#inspurl').onkeydown = (ev) => { if (ev.key === 'Enter') go(); };
+  $('#inspurl').focus();
+};
 $('#inspfile').onchange = async () => {
   const file = $('#inspfile').files[0];
   if (!file) return;
@@ -3498,7 +3537,8 @@ $('#inspfile').onchange = async () => {
 
 function renderInspect() {
   const d = INSP, m = d.metadata || {};
-  const exact = m.source === 'comfyui' || m.source === 'a1111';
+  const SOURCES = { comfyui: 'ComfyUI', a1111: 'A1111', novelai: 'NovelAI', civitai: 'CivitAI' };
+  const exact = !!SOURCES[m.source];
   const parts = [];
 
   parts.push(`<div class="row" style="margin-top:0;align-items:flex-start">
@@ -3506,12 +3546,14 @@ function renderInspect() {
     <div style="flex:1;min-width:220px">
       <div class="row" style="margin-top:0">
         <b>${exact ? '這張圖自己帶了完整參數' : '這張圖沒有夾帶參數'}</b>
-        ${exact ? `<span class="tag done">${m.source === 'comfyui' ? 'ComfyUI' : 'A1111'} · 精確</span>`
+        ${exact ? `<span class="tag done">${SOURCES[m.source]} · 精確</span>`
                 : '<span class="tag warn">只能用看的猜</span>'}
       </div>
       <div class="s" style="margin-top:4px">${d.size[0]}×${d.size[1]}
         ${d.rating_label ? ` · 分級判定：<b>${esc(d.rating_label)}</b>` : ''}</div>
       ${m.note ? `<div class="s">${esc(m.note)}</div>` : ''}
+      ${d.civitai ? `<div class="s"><a href="${esc(d.civitai.page)}" target="_blank" rel="noopener">CivitAI 圖片頁 ↗</a>${
+        d.civitai.author ? ` · 作者 ${esc(d.civitai.author)}` : ''}</div>` : ''}
     </div>
   </div>`);
 

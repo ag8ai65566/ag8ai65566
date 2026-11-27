@@ -79,7 +79,7 @@ def main() -> int:
     inbox.mkdir(parents=True, exist_ok=True)
     print(f"[watch] 監看 {inbox} → {config.OUTPUT_DIR}", flush=True)
 
-    for attempt in range(60):
+    for _attempt in range(60):
         try:
             requests.get(f"{config.APP_URL}/api/health", timeout=10)
             break

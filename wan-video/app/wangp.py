@@ -59,11 +59,21 @@ def running(host: str = "127.0.0.1", port: int = PORT, timeout: float = 0.3) -> 
 def status(root: Path) -> dict:
     return {"installed": installed(root), "ready": ready(root), "running": running(),
             "url": URL, "home": HOME, "folder": str(folder(root)),
-            "script": (root / SCRIPT).is_file()}
+            "script": (root / SCRIPT).is_file() and (root / LAUNCHER).is_file()}
+
+
+LAUNCHER = "wangp.bat"
 
 
 def command(root: Path, action: str) -> list[str]:
+    """What the page's buttons run, in a console of its own.
+
+    Through wangp.bat rather than PowerShell directly: the .bat ends with
+    `pause`, so the window stays open on "installed" - or on the reason it was
+    not - instead of closing the instant the script exits. The name is
+    relative (the process starts in `root`), which keeps cmd.exe's quoting
+    rules out of it for folders with spaces or parentheses in their path.
+    """
     if action not in ACTIONS:
         raise ValueError(action)
-    return ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass",
-            "-File", str(root / SCRIPT), "-Action", action]
+    return ["cmd.exe", "/c", LAUNCHER, "-Action", action]

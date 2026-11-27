@@ -41,7 +41,7 @@ looks like is a claim about the tags, not about a picture.
 from __future__ import annotations
 
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 # --- one tag ---------------------------------------------------------------

@@ -25,6 +25,8 @@ import traceback
 import uuid
 from pathlib import Path
 
+import aiohttp
+
 import approach as approach_mod
 import artistlab
 import artists
@@ -43,6 +45,7 @@ import experiments as exp_mod
 import inspect_image
 import kaloscope
 import library
+import localonly
 import pagelayout
 import posebook
 import promptbook
@@ -76,6 +79,15 @@ from PIL import Image, ImageOps
 STATIC = Path(__file__).parent / "static"
 
 app = FastAPI(title="wan-drop")
+# Other web pages in the same browser must not drive this app: see localonly.py.
+app.add_middleware(localonly.LocalOnly)
+
+
+@app.exception_handler(downloader.NotEnoughSpace)
+async def _not_enough_space(_request, exc: downloader.NotEnoughSpace) -> JSONResponse:
+    # Every download button goes through the manager, so one handler covers
+    # them all, with the same sentence the page already shows for errors.
+    return JSONResponse({"detail": str(exc)}, status_code=400)
 client = ComfyClient(config.COMFY_URL)
 # The rented GPU, if the user has one. Its ComfyUI is a second address; which
 # one a job uses is decided when the job is submitted and stored on the job, so
@@ -3090,7 +3102,11 @@ async def run_episode(project_id: str, payload: dict = Body(default={})) -> JSON
     # Shots that cannot run are known now, not twenty minutes in.
     run.failures.extend(refusals)
     RUNS.save()
-    asyncio.create_task(_drive_run(project.id, run))
+    # Kept in _background: the event loop holds tasks only weakly, so one that
+    # nobody references can be collected halfway through an episode.
+    task = asyncio.create_task(_drive_run(project.id, run))
+    _background.add(task)
+    task.add_done_callback(_background.discard)
     return JSONResponse({"run": run.public()})
 
 
@@ -4549,8 +4565,12 @@ async def inspect(image: UploadFile, tagger: str = Form(""),
         picture.load()
     except Exception:
         raise HTTPException(400, "無法辨識這個圖片格式")
+    return JSONResponse(await _inspect_picture(picture, inspect_image.read_metadata(picture),
+                                               tagger, threshold))
 
-    found = inspect_image.read_metadata(picture)
+
+async def _inspect_picture(picture: Image.Image, found, tagger: str, threshold: float) -> dict:
+    """The shared body of 看圖猜設定, for an upload or a picture fetched from a link."""
     result: dict = {
         "size": list(picture.size),
         "metadata": found.public(),
@@ -4598,7 +4618,7 @@ async def inspect(image: UploadFile, tagger: str = Form(""),
             "tagger_error": "這張圖看起來有未成年人物（"
                             + "、".join(sorted(set(stop))) + "）。這個 app 不做這類內容的反推。",
         })
-        return JSONResponse(result)
+        return result
     result["recipe"] = reverse.recipe(found, guess, picture.size).public()
 
     # Which of the LoRAs the file named do we actually have?
@@ -4615,7 +4635,84 @@ async def inspect(image: UploadFile, tagger: str = Form(""),
                 "search": f"https://civitai.com/search/models?query={name.rsplit('.', 1)[0]}",
             }
         )
+    return result
+
+
+CIVITAI_IMAGE_MAX = 40 * 1024 * 1024
+_CIVITAI_FILE = re.compile(r"^civitai-\d+\.png$")
+
+
+async def _civitai_fetch(url: str) -> bytes:
+    """The picture behind a CivitAI image link, capped in size."""
+    try:
+        async with aiohttp.ClientSession(headers={"User-Agent": civitai.UA}) as session:
+            async with session.get(url, timeout=aiohttp.ClientTimeout(total=90)) as response:
+                if response.status != 200:
+                    raise HTTPException(502, f"下載圖片失敗（CivitAI 回應 {response.status}）")
+                data = await downloader.read_capped(response, CIVITAI_IMAGE_MAX)
+    except (aiohttp.ClientError, asyncio.TimeoutError) as exc:
+        raise HTTPException(502, "下載圖片時斷線了，再試一次。") from exc
+    if len(data) > CIVITAI_IMAGE_MAX:
+        raise HTTPException(400, "這張圖太大了")
+    return data
+
+
+@app.post("/api/inspect/civitai")
+async def inspect_civitai(payload: dict = Body(default={})) -> JSONResponse:
+    """看圖猜設定 for a CivitAI image link: the author's own generation data
+    from CivitAI, plus the picture itself so the rest of the page (tags,
+    auto-approach, compare) works the same as for an upload."""
+    image_id = inspect_image.civitai_image_id(str(payload.get("url") or ""))
+    if image_id is None:
+        raise HTTPException(400, "看不懂這個連結。請貼 CivitAI 圖片頁的網址，例如 https://civitai.com/images/123456789")
+    try:
+        listing = await civitai.get_json("images", [("imageId", str(image_id)), ("withMeta", "true"),
+                                                    ("nsfw", "X")])
+    except civitai.CivitaiError as exc:
+        raise HTTPException(502, str(exc)) from exc
+    except (aiohttp.ClientError, asyncio.TimeoutError) as exc:
+        raise HTTPException(502, "連不上 CivitAI，等一下再試。") from exc
+    items = (listing or {}).get("items") or []
+    if not items:
+        raise HTTPException(404, "CivitAI 找不到這張圖：可能已經刪除，或要登入才看得到"
+                                 "（到「設定」分頁貼上 CivitAI API key 再試）。")
+    item = items[0]
+    url = str(item.get("url") or "")
+    if not url.startswith("https://"):
+        raise HTTPException(502, "CivitAI 沒有給這張圖的網址。")
+    data = await _civitai_fetch(url)
+    try:
+        picture = Image.open(io.BytesIO(data))
+        picture.load()
+    except Exception:
+        raise HTTPException(502, "CivitAI 給的檔案不是看得懂的圖片")
+    if picture.width * picture.height > MAX_IMPORT_PIXELS:
+        raise HTTPException(400, "這張圖太大了")
+    # The file can carry exact data of its own; otherwise CivitAI's record.
+    own = inspect_image.read_metadata(picture)
+    found = own if own.prompt else (inspect_image.from_civitai_meta(item.get("meta") or {}) or own)
+    config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    _prune_staged("civitai-", set())
+    name = f"civitai-{image_id}.png"
+    picture.convert("RGB").save(config.STAGING_DIR / name, "PNG")
+    tagger = str(payload.get("tagger") or "")
+    try:
+        threshold = float(payload.get("threshold") or tags.DEFAULT_GENERAL)
+    except (TypeError, ValueError):
+        threshold = tags.DEFAULT_GENERAL
+    result = await _inspect_picture(picture, found, tagger, threshold)
+    result["civitai"] = {"id": image_id, "page": f"https://civitai.com/images/{image_id}",
+                         "file": f"/api/inspect/civitai/file/{name}",
+                         "author": str(item.get("username") or "")}
     return JSONResponse(result)
+
+
+@app.get("/api/inspect/civitai/file/{name}")
+async def inspect_civitai_file(name: str) -> FileResponse:
+    path = config.STAGING_DIR / name
+    if not _CIVITAI_FILE.match(name) or not path.is_file():
+        raise HTTPException(404, "找不到這張圖（可能已經過期，再貼一次連結）")
+    return FileResponse(path, media_type="image/png")
 
 
 def _tagger_or_400(tagger: str) -> tuple[str, Path]:
@@ -4726,6 +4823,27 @@ def _kaloscope_base() -> Path | None:
     return kaloscope.folder(config.MODELS_DIR) if kaloscope.installed(config.MODELS_DIR) else None
 
 
+def _prune_staged(prefix: str, keep: set[str], max_age: float = 2 * 24 * 3600) -> None:
+    """Delete old staged files with this prefix that nothing refers to any more.
+
+    Lab targets and approach originals are full-size copies of the user's
+    pictures, made each time one is chosen. Their stores only keep the last
+    few runs, so without this the staging folder grew by a picture (or a
+    folder's worth of thumbnails) per try, forever.
+    """
+    cutoff = time.time() - max_age
+    for path in config.STAGING_DIR.glob(prefix + "*"):
+        try:
+            if path.name not in keep and path.is_file() and path.stat().st_mtime < cutoff:
+                path.unlink()
+        except OSError:
+            pass
+
+
+def _prune_lab_targets() -> None:
+    _prune_staged("lab-target-", {lab.target for lab in LABS.labs.values() if lab.target})
+
+
 def _staged(name: str) -> Path | None:
     """A file this app staged earlier, by the name it gave the page."""
     if not name:
@@ -4780,6 +4898,7 @@ async def artistlab_identify(image: UploadFile, top: int = Form(30)) -> JSONResp
     except ImportError:
         raise HTTPException(400, "缺少 onnxruntime 套件。跑一次 update.bat 或 install.bat。")
     config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    _prune_lab_targets()
     name = f"lab-target-{uuid.uuid4().hex[:10]}.png"
     picture.convert("RGB").save(config.STAGING_DIR / name, "PNG")
     return JSONResponse({"matches": matches, "note": kaloscope.confidence(matches), "target": name})
@@ -4827,6 +4946,7 @@ def _refset_pool(state: dict) -> None:
             "likeness": pooled["each"][n] if n is not None
             else round(kaloscope.similarity(item["vector"], pooled["style"]), 3),
             "outlier": n is not None and n in pooled["outliers"], "excluded": n is None})
+    _prune_lab_targets()
     target = f"lab-target-{uuid.uuid4().hex[:10]}.json"
     kaloscope.write_target(config.STAGING_DIR / target, pooled["style"], [items[i]["name"] for i in keep])
     state["result"] = {
@@ -5011,22 +5131,30 @@ def _lab_callbacks(lab):
     kbase = _kaloscope_base()
     target = _staged(lab.target)
     score = None
-    target_style = None
+    wanted: dict = {}
     if kbase is not None and target is not None:
         if target.suffix == ".json":
             # A folder of references, pooled: the centroid of their styles.
-            target_style = kaloscope.read_target(target)
+            # A small JSON file, so reading it here costs nothing.
+            wanted["style"] = kaloscope.read_target(target)
         else:
-            picture = Image.open(target)
-            picture.load()
-            target_style = kaloscope.style(picture, kbase)
-    if target_style is not None:
+            wanted["picture"] = target
+
+    def target_style():
+        """The picture's style, worked out once, off the event loop."""
+        picture = Image.open(wanted.pop("picture"))
+        picture.load()
+        wanted["style"] = kaloscope.style(picture, kbase)
+
+    if wanted.get("style") is not None or "picture" in wanted:
 
         async def score(output: str) -> float:
+            if "picture" in wanted:
+                await loop.run_in_executor(None, target_style)
             attempt = Image.open(config.OUTPUT_DIR / output)
             attempt.load()
             vector = await loop.run_in_executor(None, kaloscope.style, attempt, kbase)
-            return kaloscope.similarity(target_style, vector)
+            return kaloscope.similarity(wanted["style"], vector)
 
     async def submit(lab, entry) -> str:
         payload = {k: v for k, v in lab.base.items()
@@ -5227,6 +5355,7 @@ async def reverse_approach(image: UploadFile, base: str = Form("{}"), prompt: st
         zero_negative=model.zero_negative)
     run.original = f"approach-{run.id}.png"
     config.STAGING_DIR.mkdir(parents=True, exist_ok=True)
+    _prune_staged("approach-", {r.original for r in APPROACH.runs.values() if r.original})
     picture.convert("RGB").save(config.STAGING_DIR / run.original, "PNG")
     APPROACH.add(run)
 
@@ -5790,8 +5919,8 @@ async def wangp_run(action: str) -> JSONResponse:
     if os.name != "nt":
         raise HTTPException(400, "一鍵安裝／啟動只做了 Windows 版。其他系統照 WanGP 官方說明裝："
                                  + wangp.HOME)
-    if not (config.REPO / wangp.SCRIPT).is_file():
-        raise HTTPException(400, "找不到 wangp-windows.ps1。先更新這個 app（update.bat）。")
+    if not ((config.REPO / wangp.SCRIPT).is_file() and (config.REPO / wangp.LAUNCHER).is_file()):
+        raise HTTPException(400, "找不到 wangp-windows.ps1 或 wangp.bat。先更新這個 app（update.bat）。")
     async with _wangp_lock:
         state = wangp.status(config.REPO)
         if action == "start":
@@ -5862,7 +5991,7 @@ async def health() -> JSONResponse:
         classes = await client.node_classes()
         comfy_ok, detail = True, f"{len(classes)} node types"
         comfy_where = None
-    except Exception as exc:  # noqa: BLE001
+    except Exception:  # noqa: BLE001
         # The header shows this. "ComfyUI is not running, start it like this"
         # belongs there more than a Python class name does - and the "like
         # this" has to name files this install actually has, which means

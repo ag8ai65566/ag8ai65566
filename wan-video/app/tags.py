@@ -270,7 +270,7 @@ _SCENE_EXACT = {
     "crossed_arms", "spread_arms", "outstretched_arms", "outstretched_hand",
     "hand_on_own_hip", "hands_on_hips", "hand_up", "hand_on_own_face",
     "holding", "hugging", "carrying", "bent_over", "arched_back", "all_fours",
-    "spread_legs", "crossed_legs", "legs_up", "knees_up", "kneeling",
+    "spread_legs", "crossed_legs", "legs_up", "knees_up",
     "smile", "grin", "frown", "blush", "open_mouth", "closed_mouth",
     "closed_eyes", "half-closed_eyes", "wide-eyed", "surprised", "angry",
     "sad", "crying", "tears", "embarrassed", "smug", "seductive_smile",
@@ -280,7 +280,7 @@ _SCENE_EXACT = {
     "hetero", "yuri", "yaoi", "male_focus",
     # How many people are in frame belongs to the shot, not to the character -
     # restaging a two-hander with a new lead still needs two people.
-    "1girl", "1boy", "1other", "2girls", "2boys", "3girls", "multiple_boys",
+    "1girl", "1boy", "1other", "2girls", "2boys", "3girls",
 }
 _SCENE_SUBSTRINGS = (
     "background", "_focus", "from_", "shot", "angle", "lighting", "_view",
@@ -301,7 +301,7 @@ _LOOK_WORDS = (
     "muscular", "thighs", "fang", "fangs", "beard", "moustache", "hairstyle",
 )
 _LOOK_EXACT = {
-    "ahoge", "braid", "twintails", "ponytail", "sidelocks", "bangs", "ahoge",
+    "ahoge", "braid", "twintails", "ponytail", "sidelocks", "bangs",
     "long_hair", "short_hair", "very_long_hair", "medium_hair", "bald",
     "dark_skin", "pale_skin", "tan", "petite", "curvy", "toned", "abs",
     "thighs", "collarbone",
