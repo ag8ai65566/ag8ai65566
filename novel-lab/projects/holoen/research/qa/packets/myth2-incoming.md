@@ -1,9 +1,9 @@
 # Audit packet: myth2 (incoming claims)
 
-Snapshot: git 135bae1.
+Snapshot: git 7ef358c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|City Pop Shark|Calli and Gura|The Fish Tank|Watson Amelia|Amelia Watson|Gura and Ame|Ame and Gura|Gremlin Ame|Same-chan|ワトソン・アメリア|Bone Bros|Gawr Gura|Goobidiba|Samegaki|holoMyth|HoloMyth|AmeSame|Amechan|amesame|Amelia|がうる・ぐら|Gooba|Gura|Goob|Myth|Ame)(
+Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|City Pop Shark|Calli and Gura|The Fish Tank|Amelia Watson|Watson Amelia|Ame and Gura|Gura and Ame|Gremlin Ame|Gawr Gura|Same-chan|ワトソン・アメリア|Goobidiba|Bone Bros|holoMyth|HoloMyth|Samegaki|Amechan|AmeSame|amesame|Amelia|がうる・ぐら|Gooba|Gura|Myth|Goob|Ame)(
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: Gawr Gura: Keep Talking and Nobody Explodes, The Forest.
@@ -55,8 +55,8 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Ninomae Ina'nis, Gawr Gura (graduated) | UMISEA | English lesson #01 with Ina (2022); a guest at Ina's 3D live "Pleides" (2024); "SHINKIRO" with Gura (anime MV 2023-11-12, credited "宝鐘マリン・Gawr Gura") | [MA5 3n9igJnSXtQ] [MA4 9ehwhQJ50gs] |
 
 ### from Kazama Iroha
-- `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
-- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa").
+- `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast: Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
+- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; the trio "KoMeHa").
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022).
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2022 | Calli's English lesson #02 with La+ and Gura (03-04); VALORANT with Ame and Kobo Kanaeru ("KoMeHa," 06-04) | [IR5] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Watson Amelia (affiliate) | "KoMeHa" with Kobo Kanaeru (secondary name) | A VALORANT collab (2022-06-04) | [IR5 tGVhLibbYL0] [IR2] |
@@ -99,8 +99,7 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/characters/Mori-Calliope.md › Hard Facts`: - Birthday April 4 (4/4: "shi" is also "death"). Height 167 cm. Debut 2020-09-12. Unit: hololive -Myth-. [Official C1] [Observed C4 §Miscellaneous, secondary]
 
 ### from Nakiri Ayame
-- `bible/characters/Nakiri-Ayame.md › [SW] Background`: "melting" and "Hanafubuki"; with Shirakami Fubuki and Ookami Mio as AyaFubuMi she performed "Ame Tokimeki Koimoyō," reported as a 2025 anime opening theme.
-- `bible/characters/Nakiri-Ayame.md › [SW] Background`: With the English cast, archived metadata identifies her as Kiara's 23rd HOLOTALK guest (2022-10-09), places her on the 2023 Sports Festival white team with Kiara, Mumei, Ame, Nerissa and AZKi (her stream title celebrates its win), and lists her with Suisei, Ina, IRyS and Cecilia among the members of Okayu's 2025 New Year Game Festival team; she shared 7th fes STAGE 1 with Ina and FUWAMOCO (2026), and the official Anime NYC 2026 announcement listed her, Fubuki and Mio for an August 22 convention-exclusive stream.
+- `bible/characters/Nakiri-Ayame.md › [SW] Background`: "melting" and "Hanafubuki"; with Shirakami Fubuki and Ookami Mio as AyaFubuMi she performed "Ame Tokimeki Koimoyō," a 2025 anime opening theme.
 - `bible/characters/Nakiri-Ayame.md › [SW] Relationships`: AZKi, Nanashi Mumei, Watson Amelia and Nerissa Ravencroft: the 2023 Sports Festival white team.
 - `bible/characters/Nakiri-Ayame.md › Background Timeline`: | 2023 | "Kawayo"; a guest artist at the Pretty Cure virtual music event (12-09); the hololive Sports Festival white team wins (with Kiara, Mumei, Ame, Nerissa, AZKi) | [Observed AY2; AY3; AY4 tHP7bd8Jtm0] |
 - `bible/characters/Nakiri-Ayame.md › Background Timeline`: | 2025-01 | "Ame Tokimeki Koimoyō," the anime opening sung with Fubuki and Mio (AyaFubuMi) | [Observed AY2; AY3] |
@@ -166,8 +165,8 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Watson Amelia | Senior | Shiori's VRChat aquarium stream, uploaded 2024-12-02, references Ame in its title; Ame's participation is unverified. | [Observed SN3] |
 
 ### from Shishiro Botan
-- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: (secondary) and an Among Us co-player in the Myth × fifth-generation collab (2020), with Watson Amelia.
-- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label.
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Takanashi Kiara: a fellow member of the Minecraft "Usada Kensetsu" and an Among Us co-player in the Myth × fifth-generation collab (2020), with Watson Amelia.
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Gawr Gura (graduated): "Apex Predators."
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Gawr Gura (graduated) | "Apex Predators" (a secondary-listed pair label) | A joint Apex session is not established here | [BO2] |
 
 ### from Takanashi Kiara
@@ -213,9 +212,9 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/world/Concerts-and-Live-Events.md › The Cast on Stage`: | Watson Amelia | As an affiliate: guest at Kronii's 2026 birthday live | Kronii file K33 |
 
 ### from Cross-Branch Friends
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina appears with Aqua, Marine, Chloe and Gura in UMISEA's official 2023 roster and released "Kurukuru Cruise" with Nekomata Okayu (2025).
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Secondary references call Gura and Shishiro Botan "Apex Predators"; Gura released a duet cover with Murasaki Shion.
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Amelia played VALORANT with Kobo and Kazama Iroha (2022; "KoMeHa" in secondary references).
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina appears with Aqua (graduated 2024-08-28), Marine, Chloe and Gura in UMISEA's official 2023 roster and released "Kurukuru Cruise" with Nekomata Okayu (2025).
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Gura and Shishiro Botan are the "Apex Predators"; Gura released a duet cover with Murasaki Shion (graduated 2025-04-26).
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Amelia played VALORANT with Kobo and Kazama Iroha (2022; "KoMeHa").
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Ninomae Ina'nis:** an artist among artists: the ocean unit UMISEA (formed 2021 with Minato Aqua, Houshou Marine and Gura; Chloe appears in the official 2023 roster; Aqua and Gura have graduated and Chloe is an affiliate); "HoloJEI" (Tsunomaki Watame, Kureiji Ollie, Anya Melfissa); "TakoBazo" (Vestia Zeta); "TakoNeko" (Nekomata Okayu, a secondary pair name; "Kurukuru Cruise," 2025; see "JP Senpai Pairs"); Shiranui Flare appeared on her 2025 AmiAmi special ("Flare?!!?"). She admires Marine as an artist. [Observed S1; S2 Ina; Ina file]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Gawr Gura** (graduated): "Apex Predators" (Shishiro Botan), UMISEA, "SharPea" (Pavolia Reine), and Murasaki Shion (Minecraft and Mario Kart in 2021; a "Renai Circulation" duet cover, 2022). [Observed S1; S2 Gura]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Watson Amelia** (affiliate): "KoMeHa" (Kobo Kanaeru, Kazama Iroha), "ZetAme" (Vestia Zeta); outside hololive, "SelAMei" (with Mumei and Selen Tatsuki). [Observed S2 Ame]
@@ -340,7 +339,7 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/world/VTuber-Persona-and-Lore.md › History`: | 2020-09 | Myth debuts with official lore profiles | Lore bits still in use |
 
 ### from holoX
-- `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
+- `bible/world/holoX.md › [SW] Description`: With the English cast: Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (fans' name "KoMeHa").
 - `bible/world/holoX.md › With the English cast`: - **Mori Calliope:** English practice with Lui (2021-12-27); "HOLO ENGLISH LESSON #02" with La+, Iroha and Gura (2022-03-04) and "#04" with Lui and Chloe (2022-04-16); "HOLOYOI" episode 1 with Lui and Chloe (2023); dance shorts to Lui's songs (2025, 2026). [S1]
 - `bible/world/holoX.md › With the English cast`: - **Watson Amelia (affiliate):** a VALORANT collab with Iroha and Kobo Kanaeru (2022-06-04; secondary references call the trio "KoMeHa"); Apex with Lui and Iofi (2022-01-19). [S1 tGVhLibbYL0, Mory0I9vXtI] [S3]
 - `bible/world/holoX.md › With the English cast`: - **Ninomae Ina'nis, Gawr Gura (graduated):** UMISEA with Chloe, Minato Aqua and Houshou Marine (official 2023 roster). [Official UMISEA roster https://hololivesummer2023.hololivepro.com/unit/umisea/]
@@ -357,7 +356,7 @@ Matched names: lolive English first generation|hololive -Myth-|Gura and Calli|Ci
 - `bible/world/hololive--Promise.md › Conflicts and Story Hooks`: 4. Kronii has to pick between a Promise plan and a Myth friend's invite on the same night.
 
 ### from hololive History 2023-2026
-- `bible/world/hololive-History-2023-2026.md › [SW] Description`: Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER explains the scope of "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; Justice's second-anniversary live "How to Protect JUSTICE!"
+- `bible/world/hololive-History-2023-2026.md › [SW] Description`: Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Minato Aqua graduates (08-28); Ame concludes regular activities and stays an affiliate (09-30); in November COVER explains the scope of "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Sakamata Chloe concludes her activities and stays an affiliate (01-26); Murasaki Shion graduates (04-26); Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City; Amane Kanata graduates (12-27). 2026: Kiara and Ina's duo concert "Drawn to Dawn"; HOLOSTARS Japan shifts to individual activities (April), and six of its members, Rikka among them, conclude their activities in June and July; holoX holds its first in-person concert, "First MISSION"
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-08-23 | "ENigmatic Recollection" (ENReco) announced: EN members in the fantasy world Libestal, via a Minecraft series, animation and songs | Guilds: IRyS in "Cerulean Cup," Nerissa and Gura in "Scarlet Wand" |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-09-30 | **Watson Amelia concludes regular activities and stays an affiliate** | Ame appears as a guest |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-11-29 | COVER explains "conclusion of streaming activities" as a form of graduation that may permit limited future projects; individual notices establish each talent's status | Why Ame can come back for events |

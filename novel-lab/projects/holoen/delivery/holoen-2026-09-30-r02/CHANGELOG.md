@@ -1,0 +1,252 @@
+# Changelog — r02
+
+Field-level changes since holoen-2026-09-30-r01:
+
+- **AZKi › Audio Tags**: changed
+- **AZKi › Background**: changed
+- **AZKi › Catchphrases**: changed
+- **AZKi › Dialogue Style**: changed
+- **AZKi › Personality**: changed
+- **AZKi › Physical Description**: changed
+- **AZKi › Relationships**: changed
+- **AZKi › Voice & Delivery**: changed
+- **Cecilia Immergreen › Audio Tags**: changed
+- **Cecilia Immergreen › Background**: changed
+- **Cecilia Immergreen › Catchphrases**: changed
+- **Cecilia Immergreen › Dialogue Style**: changed
+- **Cecilia Immergreen › Personality**: changed
+- **Cecilia Immergreen › Physical Description**: changed
+- **Cecilia Immergreen › Relationships**: changed
+- **Cecilia Immergreen › Voice & Delivery**: changed
+- **Ceres Fauna › Audio Tags**: changed
+- **Ceres Fauna › Dialogue Style**: changed
+- **Ceres Fauna › Motivation**: changed
+- **Ceres Fauna › Physical Description**: changed
+- **Ceres Fauna › Relationships**: changed
+- **Ceres Fauna › Voice & Delivery**: changed
+- **Elizabeth Rose Bloodflame › Audio Tags**: changed
+- **Elizabeth Rose Bloodflame › Background**: changed
+- **Elizabeth Rose Bloodflame › Dialogue Style**: changed
+- **Elizabeth Rose Bloodflame › Personality**: changed
+- **Elizabeth Rose Bloodflame › Physical Description**: changed
+- **Elizabeth Rose Bloodflame › Relationships**: changed
+- **Elizabeth Rose Bloodflame › Voice & Delivery**: changed
+- **Fuwawa Abyssgard › Audio Tags**: changed
+- **Fuwawa Abyssgard › Catchphrases**: changed
+- **Fuwawa Abyssgard › Dialogue Style**: changed
+- **Fuwawa Abyssgard › Personality**: changed
+- **Fuwawa Abyssgard › Physical Description**: changed
+- **Fuwawa Abyssgard › Relationships**: changed
+- **Fuwawa Abyssgard › Voice & Delivery**: changed
+- **Gawr Gura › Audio Tags**: changed
+- **Gawr Gura › Physical Description**: changed
+- **Gawr Gura › Relationships**: changed
+- **Gawr Gura › Voice & Delivery**: changed
+- **Gigi Murin › Audio Tags**: changed
+- **Gigi Murin › Background**: changed
+- **Gigi Murin › Dialogue Style**: changed
+- **Gigi Murin › Motivation**: changed
+- **Gigi Murin › Personality**: changed
+- **Gigi Murin › Physical Description**: changed
+- **Gigi Murin › Relationships**: changed
+- **Gigi Murin › Voice & Delivery**: changed
+- **Hakos Baelz › Audio Tags**: changed
+- **Hakos Baelz › Background**: changed
+- **Hakos Baelz › Catchphrases**: changed
+- **Hakos Baelz › Dialogue Style**: changed
+- **Hakos Baelz › Personality**: changed
+- **Hakos Baelz › Physical Description**: changed
+- **Hakos Baelz › Relationships**: changed
+- **Hakos Baelz › Voice & Delivery**: changed
+- **Hakui Koyori › Audio Tags**: changed
+- **Hakui Koyori › Background**: changed
+- **Hakui Koyori › Catchphrases**: changed
+- **Hakui Koyori › Dialogue Style**: changed
+- **Hakui Koyori › Personality**: changed
+- **Hakui Koyori › Physical Description**: changed
+- **Hakui Koyori › Relationships**: changed
+- **Hakui Koyori › Voice & Delivery**: changed
+- **Hoshimachi Suisei › Audio Tags**: changed
+- **Hoshimachi Suisei › Background**: changed
+- **Hoshimachi Suisei › Catchphrases**: changed
+- **Hoshimachi Suisei › Dialogue Style**: changed
+- **Hoshimachi Suisei › Personality**: changed
+- **Hoshimachi Suisei › Physical Description**: changed
+- **Hoshimachi Suisei › Relationships**: changed
+- **Hoshimachi Suisei › Voice & Delivery**: changed
+- **Houshou Marine › Audio Tags**: changed
+- **Houshou Marine › Background**: changed
+- **Houshou Marine › Catchphrases**: changed
+- **Houshou Marine › Dialogue Style**: changed
+- **Houshou Marine › Groups**: changed
+- **Houshou Marine › Personality**: changed
+- **Houshou Marine › Physical Description**: changed
+- **Houshou Marine › Relationships**: changed
+- **Houshou Marine › Voice & Delivery**: changed
+- **IRyS › Audio Tags**: changed
+- **IRyS › Background**: changed
+- **IRyS › Dialogue Style**: changed
+- **IRyS › Motivation**: changed
+- **IRyS › Physical Description**: changed
+- **IRyS › Voice & Delivery**: changed
+- **Inugami Korone**: new card
+- **Isaki Riona**: new card
+- **Kazama Iroha › Audio Tags**: changed
+- **Kazama Iroha › Background**: changed
+- **Kazama Iroha › Catchphrases**: changed
+- **Kazama Iroha › Dialogue Style**: changed
+- **Kazama Iroha › Personality**: changed
+- **Kazama Iroha › Physical Description**: changed
+- **Kazama Iroha › Relationships**: changed
+- **Kazama Iroha › Voice & Delivery**: changed
+- **Kikirara Vivi › Audio Tags**: changed
+- **Kikirara Vivi › Background**: changed
+- **Kikirara Vivi › Catchphrases**: changed
+- **Kikirara Vivi › Dialogue Style**: changed
+- **Kikirara Vivi › Motivation**: changed
+- **Kikirara Vivi › Personality**: changed
+- **Kikirara Vivi › Physical Description**: changed
+- **Kikirara Vivi › Relationships**: changed
+- **Kikirara Vivi › Voice & Delivery**: changed
+- **Koganei Niko**: new card
+- **Koseki Bijou › Audio Tags**: changed
+- **Koseki Bijou › Background**: changed
+- **Koseki Bijou › Dialogue Style**: changed
+- **Koseki Bijou › Personality**: changed
+- **Koseki Bijou › Physical Description**: changed
+- **Koseki Bijou › Voice & Delivery**: changed
+- **La+ Darknesss › Audio Tags**: changed
+- **La+ Darknesss › Background**: changed
+- **La+ Darknesss › Catchphrases**: changed
+- **La+ Darknesss › Dialogue Style**: changed
+- **La+ Darknesss › Personality**: changed
+- **La+ Darknesss › Physical Description**: changed
+- **La+ Darknesss › Relationships**: changed
+- **La+ Darknesss › Voice & Delivery**: changed
+- **Mizumiya Su**: new card
+- **Mococo Abyssgard › Audio Tags**: changed
+- **Mococo Abyssgard › Catchphrases**: changed
+- **Mococo Abyssgard › Dialogue Style**: changed
+- **Mococo Abyssgard › Personality**: changed
+- **Mococo Abyssgard › Physical Description**: changed
+- **Mococo Abyssgard › Relationships**: changed
+- **Mococo Abyssgard › Voice & Delivery**: changed
+- **Mori Calliope › Audio Tags**: changed
+- **Mori Calliope › Physical Description**: changed
+- **Mori Calliope › Relationships**: changed
+- **Mori Calliope › Voice & Delivery**: changed
+- **Nakiri Ayame › Audio Tags**: changed
+- **Nakiri Ayame › Background**: changed
+- **Nakiri Ayame › Catchphrases**: changed
+- **Nakiri Ayame › Personality**: changed
+- **Nakiri Ayame › Physical Description**: changed
+- **Nakiri Ayame › Relationships**: changed
+- **Nakiri Ayame › Voice & Delivery**: changed
+- **Nanashi Mumei › Audio Tags**: changed
+- **Nanashi Mumei › Catchphrases**: changed
+- **Nanashi Mumei › Dialogue Style**: changed
+- **Nanashi Mumei › Physical Description**: changed
+- **Nanashi Mumei › Relationships**: changed
+- **Nanashi Mumei › Voice & Delivery**: changed
+- **Nekomata Okayu › Audio Tags**: changed
+- **Nekomata Okayu › Background**: changed
+- **Nekomata Okayu › Catchphrases**: changed
+- **Nekomata Okayu › Dialogue Style**: changed
+- **Nekomata Okayu › Groups**: changed
+- **Nekomata Okayu › Personality**: changed
+- **Nekomata Okayu › Physical Description**: changed
+- **Nekomata Okayu › Relationships**: changed
+- **Nekomata Okayu › Voice & Delivery**: changed
+- **Nerissa Ravencroft › Audio Tags**: changed
+- **Nerissa Ravencroft › Dialogue Style**: changed
+- **Nerissa Ravencroft › Physical Description**: changed
+- **Nerissa Ravencroft › Relationships**: changed
+- **Nerissa Ravencroft › Voice & Delivery**: changed
+- **Ninomae Ina'nis › Audio Tags**: changed
+- **Ninomae Ina'nis › Catchphrases**: changed
+- **Ninomae Ina'nis › Dialogue Style**: changed
+- **Ninomae Ina'nis › Physical Description**: changed
+- **Ninomae Ina'nis › Relationships**: changed
+- **Ninomae Ina'nis › Voice & Delivery**: changed
+- **Ookami Mio**: new card
+- **Ouro Kronii › Audio Tags**: changed
+- **Ouro Kronii › Physical Description**: changed
+- **Ouro Kronii › Relationships**: changed
+- **Ouro Kronii › Voice & Delivery**: changed
+- **Raora Panthera › Audio Tags**: changed
+- **Raora Panthera › Background**: changed
+- **Raora Panthera › Catchphrases**: changed
+- **Raora Panthera › Dialogue Style**: changed
+- **Raora Panthera › Personality**: changed
+- **Raora Panthera › Physical Description**: changed
+- **Raora Panthera › Voice & Delivery**: changed
+- **Rindo Chihaya**: new card
+- **Sakamata Chloe › Audio Tags**: changed
+- **Sakamata Chloe › Background**: changed
+- **Sakamata Chloe › Catchphrases**: changed
+- **Sakamata Chloe › Dialogue Style**: changed
+- **Sakamata Chloe › Motivation**: changed
+- **Sakamata Chloe › Personality**: changed
+- **Sakamata Chloe › Physical Description**: changed
+- **Sakamata Chloe › Relationships**: changed
+- **Sakamata Chloe › Voice & Delivery**: changed
+- **Shiori Novella › Audio Tags**: changed
+- **Shiori Novella › Catchphrases**: changed
+- **Shiori Novella › Dialogue Style**: changed
+- **Shiori Novella › Physical Description**: changed
+- **Shiori Novella › Voice & Delivery**: changed
+- **Shirakami Fubuki**: new card
+- **Shirogane Noel › Audio Tags**: changed
+- **Shirogane Noel › Background**: changed
+- **Shirogane Noel › Catchphrases**: changed
+- **Shirogane Noel › Physical Description**: changed
+- **Shirogane Noel › Relationships**: changed
+- **Shirogane Noel › Voice & Delivery**: changed
+- **Shishiro Botan › Audio Tags**: changed
+- **Shishiro Botan › Background**: changed
+- **Shishiro Botan › Catchphrases**: changed
+- **Shishiro Botan › Dialogue Style**: changed
+- **Shishiro Botan › Personality**: changed
+- **Shishiro Botan › Physical Description**: changed
+- **Shishiro Botan › Relationships**: changed
+- **Shishiro Botan › Voice & Delivery**: changed
+- **Takanashi Kiara › Audio Tags**: changed
+- **Takanashi Kiara › Physical Description**: changed
+- **Takanashi Kiara › Relationships**: changed
+- **Takanashi Kiara › Voice & Delivery**: changed
+- **Takane Lui › Audio Tags**: changed
+- **Takane Lui › Background**: changed
+- **Takane Lui › Catchphrases**: changed
+- **Takane Lui › Dialogue Style**: changed
+- **Takane Lui › Motivation**: changed
+- **Takane Lui › Personality**: changed
+- **Takane Lui › Physical Description**: changed
+- **Takane Lui › Relationships**: changed
+- **Takane Lui › Voice & Delivery**: changed
+- **Watson Amelia › Audio Tags**: changed
+- **Watson Amelia › Physical Description**: changed
+- **Watson Amelia › Relationships**: changed
+- **Watson Amelia › Voice & Delivery**: changed
+- **Yukihana Lamy › Audio Tags**: changed
+- **Yukihana Lamy › Background**: changed
+- **Yukihana Lamy › Catchphrases**: changed
+- **Yukihana Lamy › Dialogue Style**: changed
+- **Yukihana Lamy › Personality**: changed
+- **Yukihana Lamy › Physical Description**: changed
+- **Yukihana Lamy › Relationships**: changed
+- **Yukihana Lamy › Voice & Delivery**: changed
+- **Cross-Branch Friends › Description**: changed
+- **FLOW GLOW**: new card
+- **Hakos Baelz Pairs › Description**: changed
+- **Hakos Baelz Pairs › Sensory Details**: changed
+- **JP Senpai Pairs 2 › Description**: changed
+- **JP Senpai Pairs 2 › Sensory Details**: changed
+- **JP Senpai Pairs › Description**: changed
+- **JP Senpai Pairs › Sensory Details**: changed
+- **Justice Pairs › Description**: changed
+- **Justice Pairs › Rules**: changed
+- **TakaMori › Rules**: changed
+- **holoX › Description**: changed
+- **hololive -Promise- › Description**: changed
+- **hololive GAMERS**: new card
+- **hololive History 2023-2026 › Description**: changed

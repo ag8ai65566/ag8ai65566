@@ -1,0 +1,5 @@
+test,release,date,tester,model_or_voice,settings,observations,outcome
+sudowrite-import,r02,,,,,,not_run
+sudowrite-generation,r02,,,,,,not_run
+elevenlabs-3-line,r02,,,,,,not_run
+elevenlabs-japanese,r02,,,,,,not_run

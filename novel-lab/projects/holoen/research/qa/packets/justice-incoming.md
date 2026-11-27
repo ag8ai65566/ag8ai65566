@@ -1,9 +1,9 @@
 # Audit packet: justice (incoming claims)
 
-Snapshot: git 135bae1.
+Snapshot: git 7ef358c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|hololive -Justice-|Cecilia Immergreen|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|Grem Reaper|holoJustice|TimeChaser|Immerhater|Gigi Murin|Bloodraven|Autofister|Erby Berby|Da Fister|Elizabeth|Gi Murin|Raviolin|Cecilia|Justice|HoloEU|G Pain|GeeGee|Lizzie|B.F.F|Raora|Rara|Ceci|LYRA|Gigi|CCGG|Cece|RPGG|Liz)(
+Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth Rose Bloodflame|The Free-spirited Chaser|The Ancient Automaton|Cecilia Immergreen|hololive -Justice-|The Scarlet Queen|Lady Bloodflame|Raora Panthera|Justice Pairs|FlamePanther|FiddleFlame|Grem Reaper|holoJustice|Bloodraven|Immerhater|Erby Berby|Autofister|Gigi Murin|TimeChaser|Da Fister|Elizabeth|Gi Murin|Raviolin|Justice|Cecilia|HoloEU|GeeGee|Lizzie|G Pain|B.F.F|Raora|Gigi|RPGG|CCGG|Rara|LYRA|Cece|Ceci|Liz)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: fellow members of Tokoyami Towa's 2025 New Year Game Festival team.
@@ -13,7 +13,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 
 ### from Ceres Fauna
 - `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Cecilia Immergreen: a book and shoujo-manga tropes ranking (2024; "Green Women").
-- `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Gigi Murin: Silent Hill 2 and the 2024 Coughing Baby Award Show ("FruitPunch," a secondary pair name).
+- `bible/characters/Ceres-Fauna.md › [SW] Relationships`: Gigi Murin: Silent Hill 2 and the 2024 Coughing Baby Award Show ("FruitPunch").
 - `bible/characters/Ceres-Fauna.md › Voice Profile`: - (Explaining an in-game murder-mystery choice) "at that moment Liz became villain number one so I had no choice" … "I just wanted to use the gun." [ASR, both models, iIBywcAIMD0 3:20:14 and 3:20:21; two-model recheck 2026-10-04; the next words differ between the models ("cuz"/"because") and are not quoted]
 - `bible/characters/Ceres-Fauna.md › Story Engine`: 4. Fauna referees Justice in a board game she invented, and the rules keep changing.
 
@@ -36,7 +36,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Raora Panthera: R.E.P.O. with Kiara and Kronii (2025).
 
 ### from Hakos Baelz
-- `bible/characters/Hakos-Baelz.md › [SW] Background`: On stage she sang "GEKIRIN" solo and "BLUE CLAPPER" with the CHADCast trio and Koseki Bijou (2024), "Ai ni" with Kobo Kanaeru (2025), "Dance Monkey" as Promise in Sydney (2025), "R x R x R" with Calli and "Countach" with Gigi Murin and Kureiji Ollie (2025), and at Serendipity (2026) "LUVATORRRRRY!" with IRyS as BaeRyS and "HELP!!" with Kobo and Elizabeth Rose Bloodflame.
+- `bible/characters/Hakos-Baelz.md › [SW] Background`: On stage she sang "GEKIRIN" solo and "BLUE CLAPPER" with the CHADCast trio and Koseki Bijou (2024), "Ai ni" with Kobo Kanaeru (2025), "Dance Monkey" as Promise in Sydney (2025), "Countach" with Gigi Murin and Kureiji Ollie (2025), and at Serendipity (2026) "LUVATORRRRRY!" with IRyS as BaeRyS and "HELP!!" with Kobo and Elizabeth Rose Bloodflame.
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Cecilia Immergreen: "BratTea"; by Bae's account a coffee-versus-tea debate, a 2026 fes talk and Resident Evil together.
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Gigi Murin: "Countach" with Kureiji Ollie (2025); a Midsummer Night's Dream reading.
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Elizabeth Rose Bloodflame and Kobo Kanaeru: "HELP!!" at Serendipity.
@@ -74,19 +74,31 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/IRyS.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "START AGAIN" with Calli and Nerissa at the 2025 concert.
 - `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 
+### from Inugami Korone
+- `bible/characters/Inugami-Korone.md › [SW] Relationships`: Elizabeth Rose Bloodflame: a guest at her 2026 birthday live.
+- `bible/characters/Inugami-Korone.md › Relationship Map`: | Houshou Marine, Shirogane Noel, Yukihana Lamy | "Yakamashi Musume" | Cuphead and R.E.P.O. as #やかまし娘 (2025); a film talk with Marine (2026); "IT'S LOVE" with Marine for Elizabeth's birthday (2026); a Star Wars club with Noel and Himemori Luna (2025) | [KO4 Xx6XUFllIO8, RjIUPjfdhSY, x3V1BH5tT-4, VNJNilMuHZk] [Marine card] |
+- `bible/characters/Inugami-Korone.md › Relationship Map`: | Elizabeth Rose Bloodflame | — | A guest at her 2026 birthday live; "IT'S LOVE" with Marine (2026) | [Elizabeth card] |
+
 ### from Kazama Iroha
-- `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast, archived channel metadata documents Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
+- `bible/characters/Kazama-Iroha.md › [SW] Background`: With the English cast: Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
 - `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" from her 2026 birthday show, with FUWAMOCO.
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2026-05-19 | An excerpt from Elizabeth's 2026 birthday show, uploaded 05-19, credits Iroha, Watame, Nene, Polka and FUWAMOCO on "CHA-LA HEAD-CHA-LA" (upload date, not necessarily the show date) | [IR5 xylll7Mp0jk] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | FUWAMOCO | — | A prefecture cookie-battle off-collab, FUWAMOCO as challengers (2024-10-27); "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show with Watame, Nene and Polka (excerpt uploaded 2026-05-19) | [IR4 JgOwJ7m89Lk] [IR5 xylll7Mp0jk] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Elizabeth Rose Bloodflame | — | Credited on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show (excerpt uploaded 05-19) | [IR5 xylll7Mp0jk] |
 
 ### from Kikirara Vivi
-- `bible/characters/Kikirara-Vivi.md › [SW] Background`: Archived metadata records her with the English cast in R.E.P.O. with FUWAMOCO and Bae (2025-05-25), in a separate R.E.P.O. session on Ina's stream (2025-06-02) and in Mumei's Gartic Phone collaboration with Noel, Kronii, Ina and Elizabeth (2025); a secondary archive records FUWAMOCO and Bijou watching FLOW GLOW's debut.
 - `bible/characters/Kikirara-Vivi.md › [SW] Relationships`: Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone (2025).
 - `bible/characters/Kikirara-Vivi.md › Voice Profile`: - **Language:** streams in Japanese (a voice feature only); archived metadata records R.E.P.O. with FUWAMOCO and Bae (2025-05-25), a separate R.E.P.O. session on Ina's stream (2025-06-02) and Mumei's Gartic Phone collab with Noel, Kronii, Ina and Elizabeth (2025). [VI5]
 - `bible/characters/Kikirara-Vivi.md › Background Timeline`: | 2025-04-14 | Gartic Phone EN + ID + JP collab with Mumei, Kronii, Ina, Elizabeth and Noel | [VI5 OMDzBQohAf8] |
 - `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [VI5] |
+
+### from Koganei Niko
+- `bible/characters/Koganei-Niko.md › [SW] Groups`: hololive, FLOW GLOW, LYRA
+- `bible/characters/Koganei-Niko.md › [SW] Background`: She sang LYRA's "III" with Mori Calliope, Elizabeth Rose Bloodflame, Ayunda Risu and Amane Kanata, and "Magia" with Calli and Nerissa Ravencroft (2026-08-28).
+- `bible/characters/Koganei-Niko.md › [SW] Relationships`: Mori Calliope and Elizabeth Rose Bloodflame: fellow LYRA vocalists on "III"
+- `bible/characters/Koganei-Niko.md › Behavioral Traits`: 6. Sings in LYRA's "III" with Calli, Elizabeth, Ayunda Risu and Amane Kanata, and in "Magia" with Calli and Nerissa (2026-08-28). [Credits on Calli's and Elizabeth's cards] [NK4 5ccqXCOshHc]
+- `bible/characters/Koganei-Niko.md › Relationship Map`: | Mori Calliope | Senpai | LYRA's "III" (with Elizabeth, Risu and Kanata); "Magia" with Nerissa (2026) | [Calli card] [NK4] |
+- `bible/characters/Koganei-Niko.md › Relationship Map`: | Elizabeth Rose Bloodflame | Senpai | LYRA's "III" | [Elizabeth card] |
 
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Shiori Novella: Advent's "glorious leader" in Bijou's affectionate bit (Goth Rock; a "Gyatt Review"; GAGA with Gigi and Cecilia).
@@ -117,13 +129,13 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes, LYRA ("III" cover)
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Gigi Murin ("Grem Reaper," a shared title): horror, job-simulator and, with Raora Panthera, Elden Ring Nightreign collabs.
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Gigi Murin ("Grem Reaper"): horror and job-simulator collabs, and Elden Ring Nightreign with Raora Panthera.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Cecilia Immergreen: "Cloudy Sheep" at Serendipity.
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Elizabeth, Koganei Niko, Ayunda Risu and Amane Kanata: fellow LYRA vocalists ("III").
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Elizabeth, Koganei Niko, Ayunda Risu and Amane Kanata (graduated 2025-12-27): fellow LYRA vocalists ("III").
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Gigi Murin | Frequent collaborator ("Grem Reaper," fan term) | [Unverified: a secondary account attributes a change in Calli's reaction to her talent name to Gigi's use of it.] [Unverified, title only: Gigi ragebaiting and teasing her] | [Observed C4 §Relationships and §Name, secondary; C21-wug0DWFeDXM clip title] |
+- `bible/characters/Mori-Calliope.md › Relationship Map`: | Isaki Riona, Koganei Niko (FLOW GLOW) | Kouhai; Riona's "beloved Calli-senpai" | Clubhouse Games on Riona's channel (2026-09-12); "Ring my name" dance shorts (2026); Niko in LYRA and in "Magia" with Calli and Nerissa (2026-08-28) | [Archive metadata hhOim_G0kns, rAR9fgHBKwI, 5ccqXCOshHc] |
 
 ### from Nakiri Ayame
-- `bible/characters/Nakiri-Ayame.md › [SW] Background`: With the English cast, archived metadata identifies her as Kiara's 23rd HOLOTALK guest (2022-10-09), places her on the 2023 Sports Festival white team with Kiara, Mumei, Ame, Nerissa and AZKi (her stream title celebrates its win), and lists her with Suisei, Ina, IRyS and Cecilia among the members of Okayu's 2025 New Year Game Festival team; she shared 7th fes STAGE 1 with Ina and FUWAMOCO (2026), and the official Anime NYC 2026 announcement listed her, Fubuki and Mio for an August 22 convention-exclusive stream.
 - `bible/characters/Nakiri-Ayame.md › [SW] Relationships`: Hoshimachi Suisei, Ninomae Ina'nis, IRyS and Cecilia Immergreen: listed among the members of Okayu's 2025 New Year Game Festival team; Ina and FUWAMOCO shared her 7th fes stage.
 - `bible/characters/Nakiri-Ayame.md › Background Timeline`: | 2025-01-13 | On Okayu's team at the New Year Game Festival (with Suisei, Ina, IRyS, Cecilia) | [AY5 THMIBrxnp-E] |
 - `bible/characters/Nakiri-Ayame.md › Relationship Map`: | Ninomae Ina'nis, IRyS, Cecilia Immergreen | — | Okayu's 2025 team; Ina and FUWAMOCO on 7th fes STAGE 1 | [AY5] [Official AY6] |
@@ -137,8 +149,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Cecilia Immergreen | Justice kouhai ("Automatowl") | Joined, with Gigi, Mumei's alphabet tier list (2025) | [Observed M2; M3] |
 
 ### from Nekomata Okayu
-- `bible/characters/Nekomata-Okayu.md › [SW] Background`: Archived stream metadata documents her as Kiara's 18th HOLOTALK guest (2021), a guest at Mumei's 3D live (2024), a pop-up Mario Party with Calli, Anya and Ao (2024) and her 2025 New Year Game Festival team with Ina, IRyS and Cecilia among its members.
-- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Gigi Murin: public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata).
+- `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Gigi Murin: public translation-based banter during the 2026 New Year Game Festival.
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: IRyS and Cecilia Immergreen: members of her 2025 New Year Game Festival team.
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2025-01-13 | Leads a team at the hololive New Year Game Festival (with Suisei, Ayame, Ina, IRyS, Cecilia) | [OK4 THMIBrxnp-E] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | Gigi Murin | "OkaGigi" (secondary) | Public translation-based banter during the 2026 New Year Game Festival (secondary clip metadata) | [OK2, secondary] [OK8] |
@@ -148,7 +159,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Groups`: hololive -Advent-, Advent, hololive English (former branch name), Bloodraven
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Elizabeth Rose Bloodflame: her "mortal enemy" in their lore (a performed rivalry) and her 2026 Serendipity unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution," and Nerissa praises Elizabeth's kindness and encouragement ("She's always looking out for me, even though I'm the senpai").
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Gigi Murin: duo partner with a joke "child,"
-- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Cecilia Immergreen: Unravel Two (2024; secondary pair name "AutoTune").
+- `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Cecilia Immergreen: Unravel Two (2024; "AutoTune").
 - `bible/characters/Nerissa-Ravencroft.md › [SW] Relationships`: Raora Panthera: Clubhouse Games (2024); with Moona, Raft and Monster Hunter Wilds as "V3LVET"
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Gigi Murin | Collaborator ("BeatDown," "SoundChaser") | A joke "child," Nerigi, at Gigi's 3D live | [Observed N2 §Relationships] |
 - `bible/characters/Nerissa-Ravencroft.md › Relationship Map`: | Elizabeth Rose Bloodflame | Justice member ("BloodRaven"); her 2026 Serendipity duo partner | Her "mortal enemy (lore)"; their "Rondo Revolution" cover; World Tour '24 panels together; Nerissa praises her "kindness and encouraging attitude" ("She's always looking out for me, even though I'm the senpai"); building Liz's Mii: "she's the leader of justice after all" | [Official N21; S7 tour report via world card; ASR N20] |
@@ -188,7 +199,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Airani Iofi (ID), Pavolia Reine (ID) | "Fanfic Club" with Gigi | Monster Hunter Wilds with Iofi and Jurard (2025) | [Observed SN2; SN3] |
 
 ### from Shirogane Noel
-- `bible/characters/Shirogane-Noel.md › [SW] Background`: Archived metadata records her with the English cast as Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), a participant with FUWAMOCO and Bae in a team Mario Kart event (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
+- `bible/characters/Shirogane-Noel.md › [SW] Background`: With the English cast, she was Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), in a team Mario Kart event with FUWAMOCO and Bae (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii and Elizabeth Rose Bloodflame: Gartic Phone EN + ID + JP (2025).
 - `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Nanashi Mumei (graduated), Ninomae Ina'nis, Ouro Kronii, Elizabeth Rose Bloodflame | — | Gartic Phone EN + ID + JP (2025) | [NO5] |
@@ -207,7 +218,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/characters/Takane-Lui.md › Relationship Map`: | Nerissa, Bijou, Gigi, Raora | kouhai | Their channels posted animated "Soar" shorts crediting external motion creators (2026) | [LU5] |
 
 ### from Watson Amelia
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gigi Murin: in the ENigmatic Recollection role-play story Gigi and Ame played knights in a fictional marriage storyline ("ClueChaser," a secondary pair name).
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Gigi Murin: in the ENigmatic Recollection role-play story Gigi and Ame played knights in a fictional marriage storyline ("ClueChaser").
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Cecilia Immergreen and Gigi: Borderlands 2 with Mumei (2024).
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Gigi Murin | Justice member | ENReco fictional knight-marriage storyline; character-name variants remain unverified | [Observed A2 infobox and §Relationships, per Claude's research] |
 
@@ -244,7 +255,7 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 
 ### from Cross-Branch Friends
 - `bible/world/Cross-Branch-Friends.md › [SW] Other Names`: MoRikka, LYRA, Holodeath, PavoNashi, HOLOTORI, UMISEA, HoloJEI, K.I.R.A, OKFAIR, Star Flower, IRySora, soranii, Apex Predators, KoMeHa, BLUE·MEGAMISAMA, V3LVET
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Calli collaborates with Hoshimachi Suisei: Suisei sang at Calli's first solo concert and Calli hosts watch parties of Suisei's lives; Calli released "spiral tones" with HOLOSTARS' Rikka ("MoRikka"); Calli sang a remix cover of "III" with Koganei Niko, Ayunda Risu, Amane Kanata and Elizabeth as LYRA; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa."
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Hoshimachi Suisei sang at Calli's first solo concert, and Calli hosts watch parties of Suisei's lives; Calli released "spiral tones" with HOLOSTARS' Rikka ("MoRikka"; Rikka ended activities 2026-06-09); Calli sang a remix cover of "III" with Koganei Niko, Ayunda Risu, Amane Kanata (graduated 2025-12-27) and Elizabeth as LYRA; Kobo Kanaeru calls Calli "Uncle Dad" and Kiara "Mommy Kiwawa."
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Kronii's recurring cross-branch partner is Kaela Kovalskia (years of survival and sim co-ops; a World Tour '24 panel), plus "soranii" with Tokino Sora and co-ops with Justice's Raora.
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Of Justice: Ollie is Elizabeth's kami-oshi, and Elizabeth plays with her and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit); Elizabeth's 2026 birthday covers featured Subaru, Roboco, Sora, Choco, Marine, Korone, Polka, Nene, Watame and Iroha; Kaela appears in Raora's fictional basement bit ("SMITTEN"); Raora played Clubhouse Games with Haachama and Super Mario Party with Haachama and Zeta, and is "RaoRiRi" with Ririka; Cecilia plays games with Sora; at Serendipity, Kobo, Zeta and Tsunomaki Watame sang with Elizabeth, Gigi, Cecilia and Raora.
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Hakos Baelz jokingly calls Ookami Mio and Ollie her "moms," sang "HELP!!" with Kobo and Elizabeth, and "Kakumei Dualism" with Natsuiro Matsuri at the 2026 fes.
@@ -252,6 +263,12 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Ouro Kronii:** Kaela Kovalskia is a recurring cross-branch collaborator (21 streams; survival and sim co-ops every few months: Raft 2023–24, Panicore, Luma Island 2024, Old Market Simulator 2025; together at a pre-concert panel in Singapore on World Tour '24 [Official S6]); also "soranii" with Tokino Sora, fan unit K.I.R.A (with IRyS, Reine, Anya), and Raora Panthera of Justice (Portal 2, Split Fiction, No Man's Sky 2026; "Pizza Time"). [Observed S1; S2 Kronii; Kronii file]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Nerissa Ravencroft:** Houshou Marine is her oshi (an off-collab with Marine and FUWAMOCO, 2024); "BLUE·MEGAMISAMA" with Tokino Sora; "V3LVET" with Raora and Moona Hoshinova; Kobo calls her "Nori-chan." With Moona she has a released song, "100% (feat. Nerissa Ravencroft)" (2025-02-16) [Official S7]. [Observed S1; S2 Nerissa; Nerissa file]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Hakos Baelz:** secondary references record her performed maternal-role jokes with Ookami Mio and Kureiji Ollie (her "mom" and "another mom"); with Ollie she sang "Countach" (with Gigi, -All for One- 2025) and played HoloEarth (2024); "HELP!!" with Kobo Kanaeru and Elizabeth at Serendipity (2026); "High Tide" with IRyS, Moona Hoshinova and Hoshimachi Suisei (-Breaking Dimensions- 2024); "Kakumei Dualism" with Natsuiro Matsuri in STAGE 3 of the 2026 fes (a secondary setlist; also her after-talk); Reanimal with Tokoyami Towa (2026); Lethal Company with Kaela Kovalskia (2023–24). Units (secondary): "holorodents" with Usada Pekora and Ayunda Risu; "RoBaelz" with HOLOSTARS' Yukoku Roberu. [Bae file HB2, HB3, HB5, HB20]
+
+### from FLOW GLOW
+- `bible/world/FLOW-GLOW.md › [SW] Description`: (a Clubhouse Games collab, 2026); Niko sang LYRA's "III" with Calli and Elizabeth and "Magia" with Calli and Nerissa; Calli, Nerissa, IRyS and Bijou danced to Riona's "Ring my name"; FUWAMOCO and Bijou watched their debut.
+- `bible/world/FLOW-GLOW.md › With the English cast`: - **Mori Calliope:** Riona calls her "my beloved Calli-senpai" in her titles: a Clubhouse Games collab on Riona's channel (2026-09-12), Riona playing MYRIAD DEATH as Calli (2025-04-11), a watch-along of Calli's live with Chihaya and Niko (2025-02-27); Calli and Riona dance "Ring my name" (Calli's short 2026-06-19, Riona's 2026-07-02). Niko sang in LYRA's "III" with Calli and Elizabeth and in "Magia" with Calli and Nerissa (2026-08-28). [S1]
+- `bible/world/FLOW-GLOW.md › With the English cast`: - **Elizabeth Rose Bloodflame:** LYRA with Niko; Gartic Phone with Vivi (2025). [S1, LYRA credits on Elizabeth's card]
+- `bible/world/FLOW-GLOW.md › With the English cast`: - **FUWAMOCO, Bijou:** watched FLOW GLOW's debut (2024-11-08 PST); FUWAMOCO, Bae, Ina, Kronii, Elizabeth and Mumei played with Vivi (2025; see her card). [S1]
 
 ### from FUWAMOCO
 - `bible/world/FUWAMOCO.md › [SW] Description`: Their public ties extend to all of Advent (with Nerissa as the self-declared third sister, "Mofufu"), to Mori Calliope ("FUWAMOCALLI," a collaboration name the twins say they particularly like), to Raora Panthera (B.F.F, their 2026 concert unit), and to JP seniors including their oshi Houshou Marine (Fuwawa) and Omaru Polka (Mococo).
@@ -310,8 +327,9 @@ Matched names: e Artist with the God Eyes|hololive English -Justice-|Elizabeth R
 
 ### from hololive History 2023-2026
 - `bible/world/hololive-History-2023-2026.md › [SW] Description`: The recent past behind the present. 2023: Advent debuts (Nerissa, Shiori, Bijou, FUWAMOCO, July); DEV_IS opens with ReGLOSS; IRyS and the Council become -Promise- (October); EN holds its 1st concert. 2024: Justice debuts (June) as the "law enforcers" hunting Advent; the ENigmatic Recollection fantasy story starts (IRyS's guild "Cerulean Cup,"
-- `bible/world/hololive-History-2023-2026.md › [SW] Description`: Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Ame concludes regular activities and stays an affiliate (09-30); in November COVER explains the scope of "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City. 2026: Kiara and Ina's duo concert "Drawn to Dawn"; Justice's second-anniversary live "How to Protect JUSTICE!"
-- `bible/world/hololive-History-2023-2026.md › [SW] Description`: (June); EN's 4th concert "Serendipity" in Los Angeles (July), built on units such as Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS, Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora) and Autofister (Gigi–Cecilia); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS's first solo concert is set for 2026-10-06 in Tokyo.
+- `bible/world/hololive-History-2023-2026.md › [SW] Description`: Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Minato Aqua graduates (08-28); Ame concludes regular activities and stays an affiliate (09-30); in November COVER explains the scope of "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Sakamata Chloe concludes her activities and stays an affiliate (01-26); Murasaki Shion graduates (04-26); Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City; Amane Kanata graduates (12-27). 2026: Kiara and Ina's duo concert "Drawn to Dawn"; HOLOSTARS Japan shifts to individual activities (April), and six of its members, Rikka among them, conclude their activities in June and July; holoX holds its first in-person concert, "First MISSION"
+- `bible/world/hololive-History-2023-2026.md › [SW] Description`: (04-29); Justice's second-anniversary live "How to Protect JUSTICE!"
+- `bible/world/hololive-History-2023-2026.md › [SW] Description`: (June); EN's 4th concert "Serendipity" in Los Angeles (July), built on units such as Last Writes (Calli–Shiori), Octo'clock (Ina–Kronii), Rocku Wawa (Kiara–Bijou), BaeRyS, Bloodraven (Nerissa–Elizabeth), B.F.F (FUWAMOCO–Raora) and Autofister (Gigi–Cecilia); on 2026-09-07 the female-talent branches unify under "hololive"; the new unit ASOBI★MAWARI-TAI! debuts (09-24/25); IRyS holds her first solo concert, "HOPE ||: Beyond the Stars," in Tokyo (10-06).
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2024-06-21/22 PDT | **-Justice- debuts**: Elizabeth Rose Bloodflame, Gigi Murin, Cecilia Immergreen, Raora Panthera ("law enforcers" chasing Advent) | EN's newest kouhai |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2025-08-01/02/08/09 PDT | Justice 3D showcases, each at 5 PM PDT: Elizabeth (08-01), Gigi (08-02), Cecilia (08-08), Raora (08-09) | official schedule |
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2025-08-16 PDT | Justice group 3D collaboration stream | before their first in-person concert stage |

@@ -1,15 +1,15 @@
 # Audit packet: holox (incoming claims)
 
-Snapshot: git 135bae1.
+Snapshot: git 7ef358c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Hakui Koyori|Kazama Iroha|Gozaru-chan|Takane Lui|Iroha-dono|ラプラス・ダークネス|秘密結社holoX|Sakamata|Kura-tan|Koyorin|Lui Lui|Lui-nee|沙花叉クロヱ|Koyori|Laplus|Gozaru|Chloe|Iroha|Kuroe|風真いろは|holoX|博衣こより|鷹嶺ルイ|ルイルイ|Koyo|La+|Lui)(
+Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Darknesss|Hakui Koyori|Kazama Iroha|Gozaru-chan|Takane Lui|ラプラス・ダークネス|Iroha-dono|秘密結社holoX|Kura-tan|Sakamata|Lui Lui|Koyorin|Lui-nee|Gozaru|Koyori|Laplus|沙花叉クロヱ|Chloe|Kuroe|風真いろは|博衣こより|Iroha|holoX|鷹嶺ルイ|ルイルイ|Koyo|Lui|La+)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Background`: Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA.
-- `bible/characters/AZKi.md › [SW] Relationships`: Amane Kanata and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025).
+- `bible/characters/AZKi.md › [SW] Relationships`: Amane Kanata (graduated 2025-12-27) and Kazama Iroha: collaborators associated with KanatAZ and AzuIro ("AZUIRO BESTIE DAYS," 2025).
 - `bible/characters/AZKi.md › [SW] Relationships`: Hakui Koyori and Yukihana Lamy: "KoZMy" cover partners on "Ai♡Scream!"
-- `bible/characters/AZKi.md › [SW] Relationships`: Koyori also joined AZKi, Isaki Riona and Koganei Niko for a four-person 3D karaoke (2026); Lamy is also in "KALAZ" with Amane Kanata (secondary).
+- `bible/characters/AZKi.md › [SW] Relationships`: Koyori also joined AZKi, Isaki Riona and Koganei Niko for a four-person 3D karaoke (2026); Lamy is also in "KALAZ" with Amane Kanata.
 - `bible/characters/AZKi.md › [SW] Relationships`: Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024).
 - `bible/characters/AZKi.md › [SW] Relationships`: La+ Darknesss: GeoGuessr for Tochigi Day and other games (2025).
 - `bible/characters/AZKi.md › Behavioral Traits`: 4. Dances other members' songs in her shorts (Calli's "Orpheus," 2025-10-09, archived metadata lXLBb9IVraI; in 2026 Laplus, Towa and Nene, Miko, Koyori, Riona, Lui, Zeta). [Observed AZ4 titles]
@@ -18,6 +18,7 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/AZKi.md › Relationship Map`: | Hakui Koyori, Yukihana Lamy | "KoZMy" (secondary references; a 2025-08-03 "KoZMy 結成⁉" collab title) | A 3D karaoke with Koyori, Isaki Riona and Koganei Niko (2026-02-03, not a KoZMy event); Lamy is also in "KALAZ" with Amane Kanata (secondary) Lamy: an impromptu group chat with Lamy and Inugami Korone on Lamy's channel (#あずらみころ, 2026-09-18). | [Koyori file KO4 lvgC3pW-LVA, 1HQL3WJPBHA] [Lamy file LM2] [Archive metadata NEW-R5-005] |
 - `bible/characters/AZKi.md › Relationship Map`: | Sakamata Chloe (affiliate) | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [Chloe file CH4] |
 - `bible/characters/AZKi.md › Relationship Map`: | La+ Darknesss | — | GeoGuessr for Tochigi Day (2025-06-15), The Headliners with Korone and Miko (2025-05-07), Minecraft (2025-07); a clip of La+ reacting to AZKi's ASMR (2026-03-31) | [AZ4 80Xb4PxZLyw, AMturrbpVD0] [La+ channel z0Z2Zc3MlE4, 6n2X82dqqx0] |
+- `bible/characters/AZKi.md › Relationship Map`: | Isaki Riona, Mizumiya Su, Koganei Niko (FLOW GLOW) | Kouhai | RoARiS (Roboco, AZKi, Su, Riona) in Momotetsu 2 (2026-06-07); Riona and Su as guests at AZKi's 2026 birthday 3D live; the 2026-02-03 self-3D karaoke with Riona, Niko and Koyori; Niko on "Team AZKi" in holoRUST (2025); AZKi's "Ring my name" dance short (2026) | [Archive metadata jG-EPYQ4V9g, M1mZrusy-xY, fqGI67bRcXQ, 1HQL3WJPBHA, 7UaG-JGAdIs, 83cZEqTVdOQ] |
 
 ### from Cecilia Immergreen
 - `bible/characters/Cecilia-Immergreen.md › [SW] Relationships`: La+ Darknesss: a 2026 short titled "ONEE-SAMA!
@@ -52,14 +53,14 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/Hakos-Baelz.md › Relationship Map`: | Secret Society holoX (Lui, Chloe, Koyori) | JP kouhai | The EN-server Minecraft tour with Mumei, Lui and Chloe (2022-02-12); BAE-GEMITE DOMINATION #4 with Koyori and Nene (2023-04-22) and #5 with Lui and Chloe (2023-04-29); a Suika Game challenge and the "Crazy Scary Holy Fantasy" cover with Chloe (2023-10-30); KHAOS KITCHEN taste testers Koyori, Calli and Subaru (2023-11-24) Koyori is a co-credited singer on "PARADISE!" (2026-09-28). | [HB3 S-d80w5gs-c, WwjB7QSmQng, z4-5Hq5AKG4, p9_oBCK0olg, 9EAIDwXj4Jk, NdLiUW-nUlk] [Secondary NEW-R2-019] |
 
 ### from Hoshimachi Suisei
-- `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: her Hoshimatic Project ("BEEP BEEP," 2026); Sakamata Chloe was in its earlier lineup (secondary); she coached Iroha at Puyo Puyo Tetris (2023).
+- `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: Hakui Koyori and Kazama Iroha: her Hoshimatic Project ("BEEP BEEP," 2026); Sakamata Chloe was in its earlier lineup; she coached Iroha at Puyo Puyo Tetris (2023).
 - `bible/characters/Hoshimachi-Suisei.md › [SW] Relationships`: La+ Darknesss, Nakiri Ayame and Shishiro Botan: holoGTA (2024); La+, Botan and Shirakami Fubuki: featured with her in the m HOLD'EM poker collaboration (2024).
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | Hakui Koyori, Sakamata Chloe, Kazama Iroha | Hoshimatic Project | Her idol-group practice unit (2023–); Koyori and Iroha are among the nine credited "BEEP BEEP" vocalists (2026), Chloe was in the earlier lineup (secondary roster); she coached Iroha at Puyo Puyo Tetris (2023-04-11) | [Official BEEP BEEP credits] [Koyori file KO2] [Iroha file IR4 8tOoSNGa_rg] |
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Shishiro Botan | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured Suisei, La+, Botan and Shirakami Fubuki (publisher roster; a joint broadcast is not established) | [SU4 2v4DYYf7hB0] [Sammy roster] |
 
 ### from Houshou Marine
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Shirogane Noel: hololive Fantasy genmate; Bara☆Dice with Takane Lui, Shiranui Flare, Momosuzu Nene and Kazama Iroha; separately, Yakamashi Musume with Yukihana Lamy and Inugami Korone.
-- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Hakui Koyori: "#頭ピンク組," the pink-haired pair of their archived titles (a race and a talk testing whether they are alike, 2025); Blue Journey.
+- `bible/characters/Houshou-Marine.md › [SW] Relationships`: Hakui Koyori: "#頭ピンク組," their "pink-haired pair"
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: La+ Darknesss: a sponsored collab billed #マリラプ and a cover with Koyori (2025).
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Takane Lui and Kazama Iroha: Bara☆Dice.
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Sakamata Chloe (affiliate): UMISEA and holoWitches.
@@ -75,11 +76,43 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/IRyS.md › [SW] Relationships`: Shishiro Botan, Takane Lui, Sakamata Chloe and Tokoyami Towa: an Overwatch 2 team (2023); Hakui Koyori: Splatoon 3 and Among Us.
 - `bible/characters/IRyS.md › Relationship Map`: | Shishiro Botan, Takane Lui, Sakamata Chloe, Hakui Koyori | JP members | Left 4 Dead 2 with Botan, Lui and Inugami Korone (2022-04-24); an Overwatch 2 team with Botan, Lui, Chloe and Towa (Holizontal JAM, 2023-08); Splatoon 3 with Koyori, Watame and Korone (2022-10-03); an Among Us lobby with Koyori, Chloe and others (2023-05-08); Minecraft elytra hunting with Lui and Kronii (2022) | [S1 K1wStJxm4F0, roWKpgZsjR4, Xoma7oWsMcM, VwqdwQx5cog] |
 
+### from Inugami Korone
+- `bible/characters/Inugami-Korone.md › [SW] Relationships`: Takane Lui and Shishiro Botan: #いぬたかししらむ with Tsunomaki Watame (2026).
+- `bible/characters/Inugami-Korone.md › [SW] Relationships`: Hakui Koyori: a manzai (2022).
+- `bible/characters/Inugami-Korone.md › Background Timeline`: | 2026-09-29 | Machine Party as #いぬたかししらむ (with Lui, Botan and Tsunomaki Watame) | [KO4 Wc1kJDN-xtQ] |
+- `bible/characters/Inugami-Korone.md › Relationship Map`: | Nakiri Ayame | "Onigashima combo" (#鬼ヶ島コンビ) | Clubhouse Games five-match (2025-01-16); a ReGLOSS 3D live watch-along with Ayame and Lui (2024-09-28) | [KO4 myqzgEEnV1I, 1Q48E6vFA6Y] |
+- `bible/characters/Inugami-Korone.md › Relationship Map`: | Takane Lui, Shishiro Botan | #いぬたかししらむ with Tsunomaki Watame | Machine Party (2026-09-29); Left 4 Dead 2 with IRyS (2022); #ルイころ (2025) | [KO4 Wc1kJDN-xtQ] [Botan, Lui and IRyS cards] [GAMERS card] |
+- `bible/characters/Inugami-Korone.md › Relationship Map`: | Hakui Koyori | — | A manzai together (2022-12-15); Splatoon 3 with IRyS and Watame (2022) | [KO4 hNqFWgDcvXM] [Koyori card] |
+
+### from Isaki Riona
+- `bible/characters/Isaki-Riona.md › [SW] Relationships`: AZKi: RoARiS, a self-3D karaoke with Hakui Koyori and Niko (2026) and a guest song at AZKi's 2026 birthday live.
+- `bible/characters/Isaki-Riona.md › [SW] Relationships`: Hakui Koyori: holoRUST (2025) and that karaoke.
+- `bible/characters/Isaki-Riona.md › [SW] Relationships`: Takane Lui: Minecraft (2025).
+- `bible/characters/Isaki-Riona.md › Background Timeline`: | 2025 | Gang Beasts with Nene, Lamy and Chihaya (01-20); a watch-along of Calli's live (02-27); Minecraft with Lui (03-17); MYRIAD DEATH as Calli (04-11); holoRUST with Koyori (04-28); "あの夏が飽和する" with Niko (10-23) | [RI4] [RI5] |
+- `bible/characters/Isaki-Riona.md › Background Timeline`: | 2026-02-03 | Self-3D karaoke with AZKi, Koyori and Niko (#せくちー3Dカラオケ) | [RI5 1HQL3WJPBHA] |
+- `bible/characters/Isaki-Riona.md › Relationship Map`: | Hakui Koyori | Senpai | holoRUST together (2025); the 2026 self-3D karaoke | [RI4] [RI5] |
+- `bible/characters/Isaki-Riona.md › Relationship Map`: | Takane Lui | Senpai | Minecraft gold/zombie-piglin trap (2025-03-17, on both channels) | [RI4] [RI5 pB3e3SzBjJ8] |
+
 ### from Kikirara Vivi
 - `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Yukihana Lamy | JP senior | Lamy hosted, and Vivi, Iroha and Bijou commentated, the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 
+### from Koganei Niko
+- `bible/characters/Koganei-Niko.md › [SW] Relationships`: Takane Lui: Minecraft and horror runs Lui supervised (2025).
+- `bible/characters/Koganei-Niko.md › [SW] Relationships`: AZKi: holoRUST's "Team AZKi" and a self-3D karaoke with Hakui Koyori and Riona (2026).
+- `bible/characters/Koganei-Niko.md › Voice Profile`: | Horror (with Lui watching) | Panicked, loud | **Style demo:** 「ルイ先輩、無言にならないでぇ！」 |
+- `bible/characters/Koganei-Niko.md › Background Timeline`: | 2025 | Chained Together practice with Usada Pekora ("兎虎兎虎," 01-10); Minecraft with Lui (03-02); Shadow Corridor with Lui watching (04-05, 04-19); holoRUST on "Team AZKi" (05-02); ELDEN RING NIGHTREIGN with Ichijou Ririka and Chihaya (06); "ポケットにファンタジー" with Su (06-29); "あの夏が飽和する" with Riona (10-23) | [NK4] |
+- `bible/characters/Koganei-Niko.md › Background Timeline`: | 2026-02-03 | Self-3D karaoke with AZKi, Koyori and Riona | [NK5 1HQL3WJPBHA] |
+- `bible/characters/Koganei-Niko.md › Relationship Map`: | Takane Lui | Senpai | Minecraft (2025-03-02, on both channels); Lui watched over her Shadow Corridor runs (2025-04); shorts on Lui's channel about Niko (2025) | [NK4] [NK5 IvzEZcBdmNk, oT0bf4SP4vk] |
+- `bible/characters/Koganei-Niko.md › Relationship Map`: | Hakui Koyori | Senpai | The 2026 self-3D karaoke | [NK5] |
+- `bible/characters/Koganei-Niko.md › Story Engine`: 2. Lui "supervises" Niko through a horror game and refuses to say a word.
+
 ### from Koseki Bijou
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Takane Lui: an animated "Soar" short on her channel (2026).
+
+### from Mizumiya Su
+- `bible/characters/Mizumiya-Su.md › [SW] Relationships`: Hakui Koyori: #こよすう, their first one-on-one collab (2025).
+- `bible/characters/Mizumiya-Su.md › Background Timeline`: | 2025 | #こよすう, a first one-on-one collab with Koyori (02-02); #すうはあ with Akai Haato (04); a first birthday stream calling her senpai (06-16); Marine's "pet" collab (06-29); "ポケットにファンタジー" with Niko (06-29); ぶんしゅぴ with Todoroki Hajime (07-14); a ちはすう off-collab (08-03); "Beyond the way" with Chihaya (08-17) | [SU4] [SU5] |
+- `bible/characters/Mizumiya-Su.md › Relationship Map`: | Hakui Koyori | Senpai | #こよすう, their first one-on-one collab (2025-02-02) | [SU5 f4K54Fc-ghM] |
 
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Hakui Koyori: special guest on FUWAMOCO MORNING ("FUWAMOKOYO," 2024).
@@ -91,17 +124,19 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Sakamata Chloe | JP senior (holoX) | A cover of BABYMETAL's "Gimme Chocolate!!" with Chloe (2024-02). | [Archive metadata, ragtag m5c9WfWUBZE] |
 
 ### from Mori Calliope
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: English-lesson guests Marine, AZKi, La+, Iroha, Lui and Chloe (2022); HOLOYOI guests Lui, Chloe, Noel and Botan (2023).
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: English-lesson guests Marine, Fubuki, AZKi, La+, Iroha, Lui and Chloe (2022); HOLOYOI guests Lui, Chloe, Noel and Botan (2023).
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Secret Society holoX (La+, Lui, Chloe, Iroha) | JP kouhai | English practice with Lui (2021-12-27); HOLO ENGLISH LESSON #02 with La+, Iroha and Gura (2022-03-04) and #04 with Lui and Chloe (2022-04-16); HOLOYOI #01 with Lui and Chloe (2023-03-23); dance shorts to Lui's songs | [S1 X492n37brRU, YrZ4baKOT1c, UuL_nORzfNM; world card "holoX"] |
 
 ### from Nakiri Ayame
+- `bible/characters/Nakiri-Ayame.md › [SW] Relationships`: (a Clubhouse Games match, 2025; a ReGLOSS 3D-live watch-along with Lui, 2024).
 - `bible/characters/Nakiri-Ayame.md › [SW] Relationships`: La+ Darknesss, Hoshimachi Suisei and Shishiro Botan: holoGTA (2024).
 - `bible/characters/Nakiri-Ayame.md › [SW] Relationships`: Takane Lui: "Onikan"
+- `bible/characters/Nakiri-Ayame.md › Relationship Map`: | Inugami Korone | "Onigashima Combi" | Clubhouse Games five-match as #鬼ヶ島コンビ (2025-01-16); a ReGLOSS 3D-live watch-along with Lui (2024-09-28) | [AY2] [Korone channel myqzgEEnV1I, 1Q48E6vFA6Y] |
 - `bible/characters/Nakiri-Ayame.md › Relationship Map`: | La+ Darknesss, Hoshimachi Suisei, Shishiro Botan | — | All four streamed holoGTA (2024-09); Ayame was not in the m HOLD'EM poker collab | [AY4 1iz9AxcgvPg] [Sammy roster] |
 - `bible/characters/Nakiri-Ayame.md › Relationship Map`: | Takane Lui | "Onikan" (archived titles) | A sponsored collab billed おにかん (2025-08-09); secondary coverage also reports R.E.P.O. with Lui, Miko and Korone (2025) | [Lui channel YXaDmUXPSGo] [appbank.net report, secondary] |
 
 ### from Nanashi Mumei
-- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: JP: archived uploads document her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft; Nakiri Ayame: the 2023 Sports Festival white team.
+- `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: JP: her Q&A with Takane Lui, an April 2025 duet cover with Inugami Korone, and Korone, Okayu, Nene and Koyori as 2024 "Outside the Box" guests; Tokoyami Towa calls her "Mumi-chan"; Akai Haato: Minecraft; Nakiri Ayame: the 2023 Sports Festival white team.
 - `bible/characters/Nanashi-Mumei.md › [SW] Relationships`: Sakamata Chloe: Mumei's EN-server Minecraft tour with Lui and Bae (2022).
 - `bible/characters/Nanashi-Mumei.md › Background Timeline`: | 2024-08-05 | 3D birthday live "Outside the Box"; guests Gura, IRyS, Bae, Nekomata Okayu, Inugami Korone, Momosuzu Nene, Hakui Koyori | [Observed M3 title, description] |
 - `bible/characters/Nanashi-Mumei.md › Relationship Map`: | Takane Lui, Tokoyami Towa, Akai Haato | JP collaborators; Towa and Haato are seniors, Lui is a kouhai | "【MUMEI + LUI】Q&A With Bird Sisters !!!" (2025-04-19); Towa calls her "Mumi-chan"; Minecraft "Peace & Love with HAACHAMA" (2025) | [Observed M2 infobox; M3] |
@@ -127,6 +162,10 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/Ninomae-Inanis.md › [SW] Relationships`: Houshou Marine and Sakamata Chloe: UMISEA.
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Gawr Gura (graduated) | Myth genmate; fellow member of the official unit UMISEA (2021, with Minato Aqua and Houshou Marine; the wiki also lists Sakamata Chloe) [Official I31] | Secondary accounts describe Ina's protective mock-threat bit about Gura; Ina drew chibi Bloop; a prank war is reported but [Unverified] | [Observed I2 §Relationships; Gura file G2 §Gura's antics and §Mascots and fans] |
 
+### from Ookami Mio
+- `bible/characters/Ookami-Mio.md › [SW] Relationships`: Takane Lui: holoGTA (2024) and a ZIGZAG dance short (2025).
+- `bible/characters/Ookami-Mio.md › Relationship Map`: | Takane Lui | — | holoGTA (2024-09-20); a ZIGZAG dance short together (2025-08-18) | [MI4 UX52XaorEfY, Rjwd8WGH2kY] |
+
 ### from Ouro Kronii
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Takane Lui: Minecraft with IRyS and Kaela (2022).
 - `bible/characters/Ouro-Kronii.md › Relationship Map`: | Takane Lui, Shirogane Noel, Kikirara Vivi | JP members | Minecraft elytra hunting with Lui, IRyS and Kaela (2022); Mumei's Gartic Phone EN + ID + JP with Noel and Vivi (2025-04-14) (archived upload credits) | [S1 zp5nxAgi2dw, OMDzBQohAf8] |
@@ -135,19 +174,43 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/Raora-Panthera.md › [SW] Relationships`: Takane Lui: an animated "Soar" short on her channel (2026).
 - `bible/characters/Raora-Panthera.md › Relationship Map`: | Takane Lui | holoX senior | An animated "Soar" short on Raora's channel (2026-06-22) | [S1 N8bfOiPot6o] |
 
+### from Rindo Chihaya
+- `bible/characters/Rindo-Chihaya.md › [SW] Relationships`: Sakamata Chloe: a talk collab (2024).
+- `bible/characters/Rindo-Chihaya.md › [SW] Relationships`: Takane Lui: a horse-racing stream (2025).
+- `bible/characters/Rindo-Chihaya.md › Background Timeline`: | 2024-11 to 12 | ちーむ変態ジェントルマン with Riona and Niko; "レイメイ" with Su (12-06); a talk collab with Sakamata Chloe (12-12); Chained Together with Tokoyami Towa (12-28) | [CH4] |
+- `bible/characters/Rindo-Chihaya.md › Background Timeline`: | 2025 | Shutoko Battle from its pre-release play (01-22); Gang Beasts with Nene, Lamy and Riona (01-20); Minecraft with Okayu (02-20) and a voice-impression game with her (03-24); horse racing with Lui (02-23); ELDEN RING NIGHTREIGN with Ichijou Ririka and Niko (06); a birthday party stream (07-08); "Bridal Dream" with Vivi (07-28); a ちはすう off-collab (08-03); "Beyond the way" with Su (08-17) | [CH4] [CH5] |
+- `bible/characters/Rindo-Chihaya.md › Relationship Map`: | Sakamata Chloe | Senpai | A talk collab on Chihaya's channel (2024-12-12) | [CH4 FgSn_JCgKyk] |
+- `bible/characters/Rindo-Chihaya.md › Relationship Map`: | Takane Lui | Senpai | A February Stakes horse-racing stream on Lui's channel (2025-02-23) | [CH5 Lh7LPWpmCEI] |
+
+### from Shirakami Fubuki
+- `bible/characters/Shirakami-Fubuki.md › [SW] Relationships`: Hakui Koyori: #こんこんこよーて New Year card-pack openings; Lethal Company with FUWAMOCO (2024); White Cat Golf with Koyori and Yukihana Lamy (2022).
+- `bible/characters/Shirakami-Fubuki.md › [SW] Relationships`: Shishiro Botan: Content Warning with Marine (2024) and EDF5 with Koyori (2022).
+- `bible/characters/Shirakami-Fubuki.md › [SW] Relationships`: Takane Lui: Virtual-On and mahjong off-collabs (2025).
+- `bible/characters/Shirakami-Fubuki.md › [SW] Relationships`: La+ Darknesss: "インターネットサバイバー" featuring La+ (2023).
+- `bible/characters/Shirakami-Fubuki.md › [SW] Relationships`: Shirogane Noel and Kazama Iroha: a cup-noodle tasting (2024).
+- `bible/characters/Shirakami-Fubuki.md › Background Timeline`: | 2023-03-21 | "インターネットサバイバー" featuring La+ Darknesss | [FB4 g_6-sM3t760] |
+- `bible/characters/Shirakami-Fubuki.md › Relationship Map`: | Hakui Koyori | #こんこんこよーて | New Year card-pack openings (2024-01-04, 2025-01-04); EDF5 with Botan (2022); Lethal Company with FUWAMOCO (2024-03-09); White Cat Golf with Yukihana Lamy (2022) | [FB4 cFwsRVbUQaQ, 8dZ9atjf4WA, KtzsKY807hY, Rfq9c8h3LPY] [Koyori card] |
+- `bible/characters/Shirakami-Fubuki.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | — | Lethal Company with Koyori (2024); Phasmophobia with Polka (2023) | [FUWAMOCO cards] |
+- `bible/characters/Shirakami-Fubuki.md › Relationship Map`: | Takane Lui | — | Virtual-On and mahjong off-collabs (2025-03-14, 2025-04-01, the mahjong with Mio); Galaxy Burger with Mio and Okayu (2024); a ZIGZAG dance short (2025) | [FB4 AnhxVnLpGR0, 80Se1st9Zyk, YT4yL2_3-Rw, 7cseBNYCrkM] |
+- `bible/characters/Shirakami-Fubuki.md › Relationship Map`: | La+ Darknesss | — | "インターネットサバイバー" featuring La+ (2023); the m HOLD'EM roster with Suisei and Botan (2024) | [FB4 g_6-sM3t760] [La+ card] |
+- `bible/characters/Shirakami-Fubuki.md › Relationship Map`: | Shirogane Noel, Kazama Iroha | — | A cup-noodle tasting with Aki Rosenthal (2024-05-17); #めぇぷるしろっぷう with Iroha and Tsunomaki Watame (2023) | [FB4 fQmhewlBr80, s18jJY5MbzM] |
+
 ### from Shirogane Noel
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Houshou Marine: hololive Fantasy genmate; Bara☆Dice with Takane Lui, Shiranui Flare, Momosuzu Nene and Kazama Iroha; separately, Yakamashi Musume with Yukihana Lamy and Inugami Korone; 3rd-gen R.E.P.O.
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Hakui Koyori: "#ノエこよ," a Power Pros baseball exhibition (2025), and Blue Journey (2023).
 - `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Takane Lui and Kazama Iroha: Bara☆Dice.
+- `bible/characters/Shirogane-Noel.md › [SW] Relationships`: Shirakami Fubuki and Kazama Iroha: a cup-noodle tasting with Aki Rosenthal (2024).
 - `bible/characters/Shirogane-Noel.md › Background Timeline`: | 2025 | #ノエこよ Power Pros exhibition with Koyori (01-10); Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (04-14); 3rd-gen R.E.P.O. with Marine, Pekora and Flare (07-05); Elden Ring Nightreign with Flare and Pekora; an Audio-Technica collab with Ayame (07-11); "TREVIAN KNIGHT" (official digital release 08-16), which FUWAMOCO danced to (09-30) | [NO4] [NO5] [Official music 622] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Hakui Koyori | "#ノエこよ" (archived title) | A Power Pros baseball exhibition match (2025-01-10); Blue Journey (2023) | [Koyori file slTZmnyNbIc] [Official Blue Journey roster] |
 - `bible/characters/Shirogane-Noel.md › Relationship Map`: | Takane Lui, Kazama Iroha | Bara☆Dice (Bandai credits) | — | [Bandai credits] |
+- `bible/characters/Shirogane-Noel.md › Relationship Map`: | Inugami Korone, Shirakami Fubuki (GAMERS) | Yakamashi Musume with Korone | #ホロライブスターウォーズ部 with Korone and Luna (2025-05-03); a cup-noodle tasting with Fubuki, Aki and Iroha (2024-05-17) | [Korone channel VNJNilMuHZk] [Fubuki channel fQmhewlBr80] |
 
 ### from Shishiro Botan
-- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Takane Lui: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame (secondary); Left 4 Dead 2 (2022) and Overwatch 2 (2023) together.
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Takane Lui: "InuTakaShishiRam" with Inugami Korone and Tsunomaki Watame; Left 4 Dead 2 (2022) and Overwatch 2 (2023) together.
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss, Hakui Koyori and Kazama Iroha: NePoX (NePoLaBo × holoX, 2026).
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: La+ Darknesss and Hoshimachi Suisei: holoGTA and, with Shirakami Fubuki, the m HOLD'EM poker collaboration (2024); Nakiri Ayame: holoGTA (2024).
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: IRyS: Left 4 Dead 2 with Lui and Korone (2022) and an Overwatch 2 team with Lui, Sakamata Chloe and Tokoyami Towa (2023).
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Shirakami Fubuki: Content Warning with Marine and Oozora Subaru (2024) and EDF5 with Koyori (2022).
 - `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2022-04-24 | Left 4 Dead 2 with IRyS, Takane Lui and Inugami Korone | [BO5 K1wStJxm4F0] |
 - `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2023 | BAE-GEMITE DOMINATION #2 with Bae and Subaru (04-08); HOLOYOI #03 with Calli and Subaru (05-18); an Overwatch 2 team with IRyS, Lui, Chloe and Towa (08) | [BO5] |
 - `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2026-08-26 | NePoLaBo and Secret Society holoX release their joint original "Watcha Gatcha!!!!!!!!" | [Official NEW-R6-004] |
@@ -158,6 +221,7 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | Sakamata Chloe (affiliate) | — | The 2023 Overwatch 2 team | [BO5] |
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | La+ Darknesss, Nakiri Ayame, Hoshimachi Suisei | — | All four streamed holoGTA (2024-09); Sammy's m HOLD'EM collaboration (2024) featured La+, Suisei, Botan and Shirakami Fubuki, not Ayame (publisher roster; a joint broadcast is not established) | [BO4 jd7Bp0prwiI] [La+ file QLHSm3rpG8k] [Sammy roster] |
 - `bible/characters/Shishiro-Botan.md › Relationship Map`: | IRyS | — | Left 4 Dead 2 with Lui and Korone (2022); the Overwatch 2 team with Lui, Chloe and Towa (2023) | [BO5 K1wStJxm4F0, roWKpgZsjR4] |
+- `bible/characters/Shishiro-Botan.md › Relationship Map`: | Shirakami Fubuki, Inugami Korone (GAMERS) | — | Content Warning with Fubuki, Marine and Subaru (2024-04-23); EDF5 with Fubuki and Koyori (2022-05-06); Jumpscare Scare Jump on Korone's channel (2025-05-26); #いぬたかししらむ Machine Party (2026-09-29) | [Fubuki channel U33SciUF0WQ, KtzsKY807hY] [Korone channel Xq43wV29LW8, Wc1kJDN-xtQ] |
 
 ### from Takanashi Kiara
 - `bible/characters/Takanashi-Kiara.md › [SW] Relationships`: Pavolia Reine (ID) and Takane Lui: HOLOTORI ("PavoNashi" with Reine).
@@ -165,17 +229,18 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/Takanashi-Kiara.md › Relationship Map`: | Secret Society holoX | JP kouhai | HOLOTORI with Lui and Mumei; La+: "FAKE HEART" (2025-04-08), the Mythmash single "Glow in the Dark" (premiere 2025-07-27; official digital release 2025-07-28) and an off-collab (2023-06-30); Chloe: an origami off-collab (2023-11-22) and the "WILDCARD" cover (2025-01-25); Iroha: a credited guest at her 4th-anniversary live (2024) and birthday live (2025), and #TASTYchallenge shorts with Nene (2025-07-11, 07-16); Koyori: a "MIRAGE" dance short (2024-12-27) | [S1 v5RKZXNuVyw, eEGbAKvSf1Q, 0LoG81pLS8c, f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0, xXwi19krZ68] |
 
 ### from Watson Amelia
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Kazama Iroha: VALORANT with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa").
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Kazama Iroha: VALORANT with Kobo Kanaeru (2022; the trio "KoMeHa").
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Takane Lui: Apex with Airani Iofifteen (2022).
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Kazama Iroha, Takane Lui | JP members | "KoMeHa" with Iroha and Kobo Kanaeru (VALORANT, 2022-06-04); Apex with Lui and Iofi (2022-01-19) | [S1 tGVhLibbYL0, Mory0I9vXtI] |
 
 ### from Yukihana Lamy
 - `bible/characters/Yukihana-Lamy.md › [SW] Background`: She sang in the "Blue Journey" project with Marine, Noel, Koyori and Sakura Miko (2023), joined "Magical Girl holoWitches!"
-- `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2025), formed KoZMy with AZKi and Koyori (2025, per a collab title and secondary listings) and, per secondary records, is in KALAZ with Amane Kanata and AZKi.
+- `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2025), formed KoZMy with AZKi and Koyori (2025) and is in KALAZ with Amane Kanata (graduated 2025-12-27) and AZKi.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: AZKi: her KoZMy cover partner with Hakui Koyori on "Ai♡Scream!"
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Hakui Koyori: KoZMy (2025) and a March 2026 off-collab titled to name their duo.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: La+ Darknesss, Takane Lui, Kazama Iroha and Hakui Koyori: NePoX, the 2026 NePoLaBo × holoX events.
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Sakamata Chloe (affiliate): Rust with Amane Kanata (2022).
+- `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: Shirakami Fubuki: White Cat Golf with Hakui Koyori (2022).
 - `bible/characters/Yukihana-Lamy.md › Behavioral Traits`: 5. Units and pairs: NePoLaBo (with Botan, Omaru Polka and Momosuzu Nene); KALAZ (with Amane Kanata and AZKi, secondary); KoZMy (with AZKi and Koyori; a 2025-08-03 collab titled "KoZMy 結成⁉"); "Magamaga's" (with Nene, secondary); "Yakamashi Musume" (archived metadata); holoWitches. [Observed LM2 §Relationships, secondary] [Koyori file lvgC3pW-LVA]
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2023 | "Blue Journey" music project with Marine, Noel, Koyori and Sakura Miko | [Koyori file; Observed LM2] |
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2025 | Joins "Magical Girl holoWitches!" (04–05); "Yoppara Music!" (official digital release 08-13); a "KoZMy 結成⁉" collab with AZKi and Koyori (08-03; secondary listings give its first anniversary in 2026-08) | [Observed LM2] [Official music 609] [Koyori file lvgC3pW-LVA] |
@@ -184,20 +249,28 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | La+ Darknesss, Takane Lui, Kazama Iroha | NePoX | NePoLaBo × holoX events (2026; billed roster of eight, Chloe not included) | [LM4 Ml1tM8S40p0] [Official NePoX page] |
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Kazama Iroha | — | Caravan Stories (2023) | [Iroha file] |
 - `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Sakamata Chloe (affiliate) | — | Rust with Kanata (2022-09); a self-knowledge quiz collab (2025-01-18) | [Chloe file z55R0Z8_qk0] [LM4 9DMCTQDpBos] |
+- `bible/characters/Yukihana-Lamy.md › Relationship Map`: | Inugami Korone, Shirakami Fubuki (GAMERS) | Yakamashi Musume with Korone | #やかまし娘 Cuphead (2025-08-09) and R.E.P.O. (2025-07-14); School 666 with AZKi and Nene (2026-05-27); White Cat Golf with Fubuki and Koyori (2022-11-11) | [Korone channel Xx6XUFllIO8, RjIUPjfdhSY, ktEBw4nBpMs] [Fubuki channel Rfq9c8h3LPY] |
 
 ### from Advent Pairs
 - `bible/world/Advent-Pairs.md › Beyond EN`: - **JP:** FUWAMOCO's oshi are Houshou Marine (Fuwawa) and Omaru Polka (Mococo); archived game metadata lists Shirakami Fubuki and Hakui Koyori with the twins; "FUWAMOKOYO" labels Koyori and the twins in FUWAMOCO MORNING #90; Okayu and Korone made cameos at their 3D debut; Oozora Subaru sang "HOT DUCK!" with Bijou and the twins; Akai Haato and Bijou are "Red Stone"; Ichijou Ririka (ReGLOSS, originally DEV_IS) played Smash Bros. with Bijou with a loser's punishment. [Observed S1; S2]
 
 ### from Cross-Branch Friends
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina appears with Aqua, Marine, Chloe and Gura in UMISEA's official 2023 roster and released "Kurukuru Cruise" with Nekomata Okayu (2025).
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Amelia played VALORANT with Kobo and Kazama Iroha (2022; "KoMeHa" in secondary references).
-- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (she hosted a Q&A with Lui titled "Q&A With Bird Sisters") and recorded a duet cover with Inugami Korone in her last week.
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Ina appears with Aqua (graduated 2024-08-28), Marine, Chloe and Gura in UMISEA's official 2023 roster and released "Kurukuru Cruise" with Nekomata Okayu (2025).
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Amelia played VALORANT with Kobo and Kazama Iroha (2022; "KoMeHa").
+- `bible/world/Cross-Branch-Friends.md › [SW] Description`: Before graduating, Fauna's recurring ID partner was Kaela, and Mumei flew with HOLOTORI (a "Q&A With Bird Sisters" with Lui) and recorded a duet cover with Inugami Korone in her last week.
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: (the X is silent; "Purrfect Pair" merchandise, 2026), Reine and Airani Iofi join her "Fanfic Club"; FUWAMOCO's oshi are Marine (Fuwawa) and Omaru Polka (Mococo), they game with Shirakami Fubuki and Hakui Koyori, and Oozora Subaru sang "HOT DUCK!" with them and Bijou.
 - `bible/world/Cross-Branch-Friends.md › [SW] Description`: Of Justice: Ollie is Elizabeth's kami-oshi, and Elizabeth plays with her and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit); Elizabeth's 2026 birthday covers featured Subaru, Roboco, Sora, Choco, Marine, Korone, Polka, Nene, Watame and Iroha; Kaela appears in Raora's fictional basement bit ("SMITTEN"); Raora played Clubhouse Games with Haachama and Super Mario Party with Haachama and Zeta, and is "RaoRiRi" with Ririka; Cecilia plays games with Sora; at Serendipity, Kobo, Zeta and Tsunomaki Watame sang with Elizabeth, Gigi, Cecilia and Raora.
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Takanashi Kiara:** Usada Pekora is her oshi ("Senpai! Be my guide for the day!", 2020; HOLOTALK's 24th guest, 2022). Pavolia Reine is a recurring collaborator on her channel (30 streams; their pair name "PavoNashi"; a VR "vacation," a Minecraft summer festival; the bird unit "HOLOTORI" with Subaru, Reine, Mumei and Lui); Kobo calls her "Mommy Kiwawa." Other units: "O'riends" (Momosuzu Nene), "KoAra Connect" (Hakui Koyori), "SunMoon"/"Eclipse" (Moona Hoshinova). Outside hololive: "PomuTori" (Pomu Rainpuff), "Mintori" (Mint Fantôme). [Observed S1; S2 Kiara; Kiara file]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Ninomae Ina'nis:** an artist among artists: the ocean unit UMISEA (formed 2021 with Minato Aqua, Houshou Marine and Gura; Chloe appears in the official 2023 roster; Aqua and Gura have graduated and Chloe is an affiliate); "HoloJEI" (Tsunomaki Watame, Kureiji Ollie, Anya Melfissa); "TakoBazo" (Vestia Zeta); "TakoNeko" (Nekomata Okayu, a secondary pair name; "Kurukuru Cruise," 2025; see "JP Senpai Pairs"); Shiranui Flare appeared on her 2025 AmiAmi special ("Flare?!!?"). She admires Marine as an artist. [Observed S1; S2 Ina; Ina file]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Watson Amelia** (affiliate): "KoMeHa" (Kobo Kanaeru, Kazama Iroha), "ZetAme" (Vestia Zeta); outside hololive, "SelAMei" (with Mumei and Selen Tatsuki). [Observed S2 Ame]
 - `bible/world/Cross-Branch-Friends.md › By Character`: - **Nanashi Mumei** (graduated): HOLOTORI with Kiara, Subaru, Reine and Lui ("【MUMEI + LUI】Q&A With Bird Sisters !!!," 2025-04-19, fEO6kSCseE0); drawing collabs with Airani Iofi ("Doodles with IOFI," 2022-04-14, 2dWx7xg48xc; "SWIMSUITS!! with IOFI!," 2023-01-30, XCXF08GMUHY); a duet cover of "とんとんまーえ！" with Inugami Korone (2025-04-23, P6GLC_HnCUU), and Okayu, Korone, Nene and Koyori as guests at her 3D live "Outside the Box" (2024-08-05, gl7CwlEg2ZI); Minecraft "Peace & Love with HAACHAMA" (2025); Tokoyami Towa calls her "Mumi-chan." [Observed S1; Mumei file M2]
+
+### from FLOW GLOW
+- `bible/world/FLOW-GLOW.md › [SW] Description`: With Japanese seniors: AZKi (RoARiS, a 3D karaoke with Koyori, Riona and Niko, and guest spots for Riona and Su at her 2026 birthday live), Lui, Okayu, Marine, Lamy and Chloe.
+- `bible/world/FLOW-GLOW.md › With the other Japanese members on the cards`: - **AZKi:** RoARiS, a Momotetsu 2 group with Roboco, Su and Riona (2026-06-07); a four-person self-3D karaoke with Koyori, Riona and Niko (#せくちー3Dカラオケ, 2026-02-03); Riona and Su sang as guests at AZKi's 2026 birthday 3D live; Niko played holoRUST on "Team AZKi" (2025); AZKi danced "Ring my name" (2026-06-25); Vivi: GeoGuessr and a 3D pun battle (2026). [S1]
+- `bible/world/FLOW-GLOW.md › With the other Japanese members on the cards`: - **Hakui Koyori:** the 2026 3D karaoke; #こよすう, a first one-on-one collab with Su (2025-02-02); holoRUST with Riona (2025). [S1]
+- `bible/world/FLOW-GLOW.md › With the other Japanese members on the cards`: - **Takane Lui:** Minecraft with Niko ("End date," 2025-03-02) and with Riona (a gold trap, 2025-03-17); Lui watched over Niko's Shadow Corridor runs (2025-04); horse racing with Chihaya (February Stakes, 2025-02-23). [S1]
+- `bible/world/FLOW-GLOW.md › With the other Japanese members on the cards`: - **Sakamata Chloe:** a talk collab on Chihaya's channel (2024-12-12). **Shishiro Botan:** a "Ring my name" dance short (2026-06-19). **Hoshimachi Suisei:** Chihaya covered "ムーンライト" (2024-12-28) and played "ビビデバ" on trombone (2025-01-15); Suisei taught Vivi Tetris (2026). [S1]
 
 ### from FUWAMOCO
 - `bible/world/FUWAMOCO.md › Shared Relationships`: - **JP:** Houshou Marine (Fuwawa's oshi; a Touhou off-collab, 2024) and Omaru Polka (Mococo's oshi); Shirakami Fubuki (horror collabs and Lethal Company with Hakui Koyori); "FUWAMOKOYO" names Koyori and the twins on FUWAMOCO MORNING #90; Akai Haato, Tsunomaki Watame ("FUWAMOCO vs FUWAFUWA," 2024), Oozora Subaru (a Donkey Kong Country 2 off-collab, 2026), and Nekomata Okayu and Inugami Korone, who made cameos at their 3D debut. Guests at their 2025 birthday concert: Shiori, Bijou, Nerissa, Polka, Koyori, Marine, Ookami Mio and Fubuki. [Observed S1; S3]
@@ -219,7 +292,13 @@ Matched names: lolive 6th Generation|Secret Society holoX|Sakamata Chloe|La+ Dar
 ### from Myth and Kronii: Other Pairs
 - `bible/world/Myth-and-Kronii-Other-Pairs.md › History`: | 2021-09 | UMISEA formed (Ina, Gura, Aqua, Marine; Chloe joined later) | Ocean unit |
 
+### from hololive GAMERS
+- `bible/world/hololive-GAMERS.md › With the English cast`: - **FUWAMOCO:** Mio's off-collab mochi-pounding stream with the twins (2025-02-07); Okayu and Korone appeared at their 3D debut (2024); a Lethal Company session with Fubuki and Koyori (2024). [G2 fQaE6-usUjg] [FUWAMOCO and Koyori cards]
+- `bible/world/hololive-GAMERS.md › With the other members on the cards`: - **Takane Lui:** #ルイころ with Korone (2025); holoGTA and a ZIGZAG dance with Mio (2024, 2025); mahjong and Virtual-On off-collabs with Fubuki (2025). [G2]
+- `bible/world/hololive-GAMERS.md › With the other members on the cards`: - **Yukihana Lamy:** Yakamashi Musume (#やかまし娘) and #ころらみ with Korone. **Hakui Koyori:** Phasmophobia with Fubuki (2022) and a manzai with Korone (2022). [G2]
+
 ### from hololive History 2023-2026
+- `bible/world/hololive-History-2023-2026.md › [SW] Description`: Nerissa and Gura's "Scarlet Wand"); EN's 2nd concert in New York; Minato Aqua graduates (08-28); Ame concludes regular activities and stays an affiliate (09-30); in November COVER explains the scope of "conclusion of streaming activities." 2025: Fauna (01-03), Mumei (April) and Gura (05-01) graduate; Sakamata Chloe concludes her activities and stays an affiliate (01-26); Murasaki Shion graduates (04-26); Calli, IRyS and Nerissa lead World Tour '25 "-Synchronize!-" with Kronii and Bae as Sydney guests; Ina, IRyS and Bijou star at hololive night at Dodger Stadium (07-05 PDT); Justice's 3D showcases (August) and their first in-person concert stage at EN's 3rd concert, Radio City; Amane Kanata graduates (12-27). 2026: Kiara and Ina's duo concert "Drawn to Dawn"; HOLOSTARS Japan shifts to individual activities (April), and six of its members, Rikka among them, conclude their activities in June and July; holoX holds its first in-person concert, "First MISSION"
 - `bible/world/hololive-History-2023-2026.md › Timeline`: | 2025-01-26 | Sakamata Chloe concludes streaming activities (affiliate) | — |
 
 ### from hololive History to 2022

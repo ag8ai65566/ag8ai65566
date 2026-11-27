@@ -1,67 +1,76 @@
 {
  "_schema": "registry v2: cast status intervals, world aliases, official units, directional credits, reference-only people, events with date precision and zone (from dossier tables), alias collisions. Bounded and non-exhaustive: the bible files stay canonical.",
  "baseline": "2026-09-30",
- "commit": "135bae1",
+ "commit": "7ef358c",
  "files": {
-  "bible/characters/AZKi.md": "d11aff0d4f0b170cdfb214aa6d0ff3bc762ec552bcb1644a6963bcc6e06d4cac",
-  "bible/characters/Cecilia-Immergreen.md": "0d41b3b7f2f6760c40cf530afb58f5c0c92cd83ea8c1be6a885074c50686aeb9",
-  "bible/characters/Ceres-Fauna.md": "8730e0b2c3bafbdc99178422c30e57d877c569dae7085259984e822f6a705125",
-  "bible/characters/Elizabeth-Rose-Bloodflame.md": "6944f97c9aa38ebab430bf9a52f4c465bb83ec2955e2aebe17dea7d1d9d84aca",
-  "bible/characters/Fuwawa-Abyssgard.md": "6eb8a998e3be0baa5174e25a4e8204822a28d7d33e75cbbc7625ef9fb44ac7ff",
-  "bible/characters/Gawr-Gura.md": "e0f73600a45dc550e8a7e5d58f1e50c02d50197090c25e3b641aad7f3558dff0",
-  "bible/characters/Gigi-Murin.md": "b9f0b8a18c28acc5715b10521d4006d67734efa7c9fce411bcbec91336630312",
-  "bible/characters/Hakos-Baelz.md": "59d0388c7254aa3d50acb602a1359d7d9225157ae61b0bcf3354682448d41998",
-  "bible/characters/Hakui-Koyori.md": "e7570278bf33702649778f4248b5e52aa6b5e8d3690e2a23d5fece7c4041a700",
-  "bible/characters/Hoshimachi-Suisei.md": "2064c8699d3cb624afffc8ba1da5cce932a341bf124d153bddb302f57520d26d",
-  "bible/characters/Houshou-Marine.md": "bf162bc0c6b0e2f70685928a6c5010307d5b6222611521c241aef3ddf53b7f83",
-  "bible/characters/IRyS.md": "05b097893deb4037aed6648cbff6819d90e8b3b1c28aeff31ceac9b36366e836",
-  "bible/characters/Kazama-Iroha.md": "90b182eb7d791441e1cc340feab251d114117792dc417fe6dd674db6c1a0a3f5",
-  "bible/characters/Kikirara-Vivi.md": "6324819bda593013575c8b5c1d4c36dffc2fd2c00fe2413eb447db757c9c806b",
-  "bible/characters/Koseki-Bijou.md": "9da1e0c0ce80b6ba8f1aaf39ef574323435addd486ca92b5b49ec9d2d11e7f25",
-  "bible/characters/Laplus-Darknesss.md": "2763879d7ad50959c6621de22a6bde5602f7a362200805fc9d4fbd2fcd8f512d",
-  "bible/characters/Mococo-Abyssgard.md": "d6f89d15cf2c604ceb7fd347336418fd02220ace2763cdccf3b9de7a24eff931",
-  "bible/characters/Mori-Calliope.md": "5f04601cf3b13e95b352ed950d2a17d13975759a4ee4a393377502e59c3fc8b5",
-  "bible/characters/Nakiri-Ayame.md": "137ebe2e05db51debc0773608c71d6d9e92d80058187ef7103ae1d3b00bcacab",
-  "bible/characters/Nanashi-Mumei.md": "9033f6ab8d9825df4293dddf2fe5e19e57524f05f52d7fd2d06961ee22863ab0",
-  "bible/characters/Nekomata-Okayu.md": "d240df197bbb6ad2db32a5774ed1deca3192028f19f7e806982c69db68f57d7b",
-  "bible/characters/Nerissa-Ravencroft.md": "44bd3ac66fd2fa127081cc2e9b294f8b2c3be5c2463eeba80141fc876de9d756",
-  "bible/characters/Ninomae-Inanis.md": "85459e22c8d76ce95e1b75d02c38da9d12948ec799478dd2163851ff00bd9bed",
-  "bible/characters/Ouro-Kronii.md": "f6f20f16b68064a7be6cc36316e8679a1300091248bc4a7aa00a467ff8e48e42",
-  "bible/characters/Raora-Panthera.md": "b64f7c9ebf6918f85a279a96f9a7973525d46e7bbfb0829936e2d700efd7d139",
-  "bible/characters/Sakamata-Chloe.md": "a9d002fd49386792b637cdeaaaa266c7cab2d956b39770f5bc1c18159f7ba3f2",
-  "bible/characters/Shiori-Novella.md": "0e78bbb2d14458d5cdcb102f1aac93ea081e8b890c6b699cd6163a973136cd64",
-  "bible/characters/Shirogane-Noel.md": "c7275638b8450e421eab6fd07e23c2564a140e6447213e98ad21d31f397c1f39",
-  "bible/characters/Shishiro-Botan.md": "abeaf87a5493e07771d6455c5341d4b4d2a741e1b4135ce2b207fb8cc41b616c",
-  "bible/characters/Takanashi-Kiara.md": "4dd78d587b91c4e662bda66f949d862085b8ef7cb50cbeae1477650fd271d0c0",
-  "bible/characters/Takane-Lui.md": "75381ba17bef0d606fd2f916fa46216c994e3cc6dc6fc548d6c86daa2823d9f5",
-  "bible/characters/Watson-Amelia.md": "39eaa60c85a34e224d067ecf0ba26c5dbd3416247025982ccb5e6cd2b650228e",
-  "bible/characters/Yukihana-Lamy.md": "e1a5d6743ef896fca65061601f18c3f6af800c01881aa3ffe7b554ba34eae16c",
+  "bible/characters/AZKi.md": "1ab44a4eb0f655cd2fa7f24cd56bdf3014f02d8802e333e2e71bc41ce3100dcb",
+  "bible/characters/Cecilia-Immergreen.md": "caecfaa8909f811e34996c0feaee24a2dee4ad3ad8b5d199ce7577ca7fd49a6e",
+  "bible/characters/Ceres-Fauna.md": "366fbbaf37719701a3a5520b6ba39a32db20d2b13de71776300122735319b9af",
+  "bible/characters/Elizabeth-Rose-Bloodflame.md": "7ca2412d425a6bec89ff7199d87fa016e4b68b4ae2ac028f1316b7585c35981b",
+  "bible/characters/Fuwawa-Abyssgard.md": "76dc8a39f05de5e0217184444147c251c49a372fcc806da1064cae6724a608de",
+  "bible/characters/Gawr-Gura.md": "75a102706cd8b9ac7a79108e399202b19eddd987d860c9c91bf96e79058633cc",
+  "bible/characters/Gigi-Murin.md": "85b1100b75d8bd860fe49b73aeac5461a4c0fb142e213929ed68d88d0f3354f8",
+  "bible/characters/Hakos-Baelz.md": "7629f8c493b03e754430b4dc6803b0c26a9c73911881e02b546fd423c8d67157",
+  "bible/characters/Hakui-Koyori.md": "6e8e471cb4a7fd3683dea7989a40401e2a8c4f572f8dbc0d3c59698a39359f71",
+  "bible/characters/Hoshimachi-Suisei.md": "93b3e932de44a911b902e64a56e1df6c353b92049c66c720990ccd03a1bd3de4",
+  "bible/characters/Houshou-Marine.md": "7bcaadebe0c17c240e59009fe3ef1ddb044a86a8e0c9b5d2697c05e4d7ae9a50",
+  "bible/characters/IRyS.md": "c1590fad3bdfe544eba3df08542916089c5889003ea2c8a3e248d9b99b5c75fe",
+  "bible/characters/Inugami-Korone.md": "ecc4d4a7d00c61247aee12b2a29b5aaab70d18028efbf56353c175c504ed103c",
+  "bible/characters/Isaki-Riona.md": "dcaaa98e3d68275b289b1910111d321f47cfc45fdcdb32f6e5c405a295143330",
+  "bible/characters/Kazama-Iroha.md": "7a6fbde8b498f90a353858b5c91b284236f392b0341cca405323a71eb9f06a9e",
+  "bible/characters/Kikirara-Vivi.md": "809b66568912cbe21bbc3a2ad292e2c50fc2306184d85fef337fc9f836f20ca9",
+  "bible/characters/Koganei-Niko.md": "6bd1cbc07de081e711e712fc9a95133b745bfc63eb198a10710a69cd227dad89",
+  "bible/characters/Koseki-Bijou.md": "ee5d5f93256bc6a2b9c1000e8d74c8ef463d98a6b550e0e560b7a910b3bf7459",
+  "bible/characters/Laplus-Darknesss.md": "a16d63390cecf15dd0954945f80fdc07a8b2d20b7a79facde4170179e0b0c472",
+  "bible/characters/Mizumiya-Su.md": "1e2d2ddbbaa0435597b9f258fef887be361433f3a3c5d72b7f20ecac9f1a5f26",
+  "bible/characters/Mococo-Abyssgard.md": "64c0aab746e90f7a06cc00f70d57c9afa5fab79b861fcdb3c5e302685c20cc02",
+  "bible/characters/Mori-Calliope.md": "65ce3b00cacbd2284c8f1100e0cc72061a7cc4f09d125197d3725c6bf1179b5f",
+  "bible/characters/Nakiri-Ayame.md": "7d4380a0061ade13a0a587c67d573b3771a37a8343f124d2f75904d7d303f3d8",
+  "bible/characters/Nanashi-Mumei.md": "3021b5dfbab4f4dc6ea3ae463c3cd03a8ead8100141e77eee08598850b3e7b31",
+  "bible/characters/Nekomata-Okayu.md": "d65d0a7560953ea06c88fbac08beb2cddcea219946c9914a5175152ead89fd5b",
+  "bible/characters/Nerissa-Ravencroft.md": "c593c2b9c5692798b409645cf3e2a6a93ed16ae6701046193267e69d519778e3",
+  "bible/characters/Ninomae-Inanis.md": "6090b1b1e68837470650495cdaba1fdcb7eb3fdc550c1ecac6cfe7ab3bd4d9f5",
+  "bible/characters/Ookami-Mio.md": "697ea375afa50552eed6606fd252ccadf705cae9734badaa458b37574f4738cb",
+  "bible/characters/Ouro-Kronii.md": "1f2a3e552c31460838c719e8d6e30b8a822f0986823e553767a8e65ae118e7a6",
+  "bible/characters/Raora-Panthera.md": "3d83853149e0b42fbed3cd8d4c1157969f154996613e293a76697193d2c2351c",
+  "bible/characters/Rindo-Chihaya.md": "f95675b26dcee9bcc54f4faf9d267b9e913b4a5e24fdffa1ded7826d1a4a8b9b",
+  "bible/characters/Sakamata-Chloe.md": "740df682432c4c96b9e67decdfffd03c5d9441a257f69ed5bb0e6331a34131e0",
+  "bible/characters/Shiori-Novella.md": "7d3cc16f2070dc7777dc537c469c4f0242bb1023cd2806154e18d481fb16ec48",
+  "bible/characters/Shirakami-Fubuki.md": "1629191c60c2c1d7f8dd7bc01ed46fd75666e308c8e9065155280f55d6ef6a45",
+  "bible/characters/Shirogane-Noel.md": "1a7754d2c15bd00792e5661dc9924e531be36378989aadb1e423183674080a34",
+  "bible/characters/Shishiro-Botan.md": "fddbd0b4a3c1d4317ea1df81367fdbd4013d4a23d8dbae0927b06cdd3da16b18",
+  "bible/characters/Takanashi-Kiara.md": "fb6aaad49b5e78793fa37b3a73ab809d48f649f5fca40b83c6a1c54018c19ff1",
+  "bible/characters/Takane-Lui.md": "555894feb89ee1aa92c02c585d2724c4f25f936184433e7aa0ecfbee797b9e1a",
+  "bible/characters/Watson-Amelia.md": "8a71aefaef202725c47cecde245a0efe56d53cb42863b820a5c442037690046c",
+  "bible/characters/Yukihana-Lamy.md": "a9f4d31663b92e82a849c1cafdba7d9007fcb508cb31e318037caecb043e67b3",
   "bible/world/Advent-Pairs.md": "126b3ece8373d9a66ee9b770e67f5094765cef4435f655e254e1b97236c7b0f9",
   "bible/world/AmeSame.md": "c750fb6fe94fe80c28cd82d253aa200a6c3c34d89269075a69b02df1428ab796",
   "bible/world/Bone-Bros.md": "7fa9161aeafb9ffa4d80aa174f2c15b9d69b23095701add3991a5f1c0c11f3f9",
   "bible/world/Concerts-and-Live-Events.md": "0040e6f6f63dc21aa2258d7b833044a365edd7d3eaaa15b9926cd305a8bd2dd0",
-  "bible/world/Cross-Branch-Friends.md": "f52fcd40895ed6f7d8ef3f6d6ad9dc4d0190bd98e99f1276875edeae977c83c5",
+  "bible/world/Cross-Branch-Friends.md": "d81ce08dc04e8c9ad119b35789b679fad51d350de24271fb9bdb7a1b0c526ac7",
+  "bible/world/FLOW-GLOW.md": "0aec7b4cf19a60adeb2ce08ab2fad10b51b2ebe49f011588436c152c2ecb2a20",
   "bible/world/FUWAMOCO.md": "cfa1f4d729e0904407069975e715ae4eaba3b257ba0398f919372753a950013a",
   "bible/world/Fauna-and-Mumei-Pairs.md": "8a1fc2c0c86bc4d40ceaa94b36520877a94e85fe0308833cf5abcb087f410ee8",
-  "bible/world/Hakos-Baelz-Pairs.md": "3a714066f75f40908837a8f075cdab279f128e96c7a1f7e9db1c77f88f3a6f8d",
+  "bible/world/Hakos-Baelz-Pairs.md": "cd3040939b7d815b05a9537b662d70650eec403236db031967286bd4b2fae561",
   "bible/world/IRyS-and-Nerissa-Pairs.md": "a05400bc7b258d20032a9efea852dd2564836a2849416b3177b8b96d6e674439",
-  "bible/world/JP-Senpai-Pairs-2.md": "e63d3909bc12d8aabeb92ada0fbe046591f0ce08c1086ce33e9a3c7cc7429077",
-  "bible/world/JP-Senpai-Pairs.md": "2dd2acb911b196b4d3c93777b6cc1a8efaaf7fd0100e7beac99e1b77bed37c8d",
-  "bible/world/Justice-Pairs.md": "97ad21d8b3f701022f4691d3e4506d398e1a1c7a99e92b3e4a4f77910e24210a",
+  "bible/world/JP-Senpai-Pairs-2.md": "db45b40c9c809c910cce9241e3d5b08829fbea2180e5942afc1baec16dc37165",
+  "bible/world/JP-Senpai-Pairs.md": "8f690ca988107ead9221d669e14b75656d767b9fbffdc2ae98c69521ec582a30",
+  "bible/world/Justice-Pairs.md": "2b9ef49551435aaad1425312fc2dc91604f0ddf6d7cb12cc777820257db96a9a",
   "bible/world/Myth-and-Kronii-Other-Pairs.md": "eac5d2965724543a235931873b4c03ab503f4f38ef86c21d501a61375a18251b",
   "bible/world/OctoClock.md": "b81982ab3e3dbab3cfb263a00f4a31a867ed63117d32c96fb620d34d0fed0bfb",
   "bible/world/Streaming-Life.md": "8e3a1281513c2464179a42eaabcf57266fb5d06f4605cbd32fb6aa7e3a2fb948",
-  "bible/world/TakaMori.md": "59f8a5f6322c933bd8c3c40490aedae95f99696849033187df11c77fe03c5924",
+  "bible/world/TakaMori.md": "ce28adb48f238f758dc715294d4913c65a635f11afc6774eb0f82bb3a764c329",
   "bible/world/TakoTori.md": "401f1dfba7cc619dbab92a2c3c2f5f2af7da4da555f5d29f8b04665e5a8e11ed",
   "bible/world/Time-Duo.md": "da8702e646d29834caf99d0d2205eb13c30c5d4e1dd501dbc2aa87aa3846edc9",
   "bible/world/Time-and-Death.md": "e1239bb9b6264defe6b070bb2d6a6d2b43539b191f835a133857822ccf646ac5",
   "bible/world/VTuber-Persona-and-Lore.md": "6c72058abfbee6fa4c876031b4b888de9677c02a818f95b9f3c85f14ad724a88",
-  "bible/world/holoX.md": "159764504cab3534c13cada8800828a6cd82a2424127bb6ab4ad7c945a561233",
+  "bible/world/holoX.md": "563af7e517310932cd227b4e870d8a685178cc10781254492fecc6378817ab3c",
   "bible/world/hololive--Advent.md": "ebba5657247270ea4ed54389dd2842de474be3e14f47d7940e943b4ee6fa7e20",
   "bible/world/hololive--Justice.md": "d54b14489a885f5c8c4780cd5df6c20758070dccf19ae86ce15cd93a960628b4",
   "bible/world/hololive--Myth.md": "92ad62626d86b9e3b373c1e2e3648cdd6e2c0737737b90ea8eaa7e0c43ba2b9c",
-  "bible/world/hololive--Promise.md": "0c58fdd5221146d6a2797d571df3d4a5ac4d634197d01e10d638677f0f662044",
-  "bible/world/hololive-History-2023-2026.md": "88a4f7f63f01b77775caed72177d1bddb0e50ac4ebe9315cf8002b389e30cd7d",
+  "bible/world/hololive--Promise.md": "04e6afe2c86507b6e2b9773e0561ea6d89520c815e10ee0c454d965b3003b5dc",
+  "bible/world/hololive-GAMERS.md": "fa3c805a673b29c983c56bff277b126bbcf5dab0c2bb225411b611451aa8ff19",
+  "bible/world/hololive-History-2023-2026.md": "8b38aa66efd0b90b1d8044b7d301447f5cbdf856453bcdcb5029889235e57aa9",
   "bible/world/hololive-History-to-2022.md": "f8357b1b0cb9f588290aa3029da3875084c86eba842e885eab308eede40b4e43",
   "bible/world/hololive.md": "9fbc51b41096c0279359da4533ee06a02fa18bb19c31dd069618767867385341"
  },
@@ -361,6 +370,7 @@
     "holoWitches",
     "Bara☆Dice",
     "Yakamashi Musume",
+    "BABACORN",
     "Blue Journey",
     "MVP"
    ],
@@ -397,6 +407,50 @@
     "graduated": null,
     "regular_activities_concluded": null,
     "source": "bible/characters/IRyS.md › Background (debut: Background)"
+   }
+  },
+  {
+   "name": "Inugami Korone",
+   "file": "bible/characters/Inugami-Korone.md",
+   "other_names": [
+    "Korone",
+    "Koro-san",
+    "戌神ころね"
+   ],
+   "groups": [
+    "hololive",
+    "hololive GAMERS",
+    "OkaKoro",
+    "Yakamashi Musume",
+    "OKFAMS"
+   ],
+   "status": "Korone is an active member of hololive GAMERS. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2019-04-13",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Inugami-Korone.md › Background (debut: Background)"
+   }
+  },
+  {
+   "name": "Isaki Riona",
+   "file": "bible/characters/Isaki-Riona.md",
+   "other_names": [
+    "Riona",
+    "響咲リオナ"
+   ],
+   "groups": [
+    "hololive",
+    "FLOW GLOW"
+   ],
+   "status": "Riona is an active member of FLOW GLOW. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2024-11-09",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Isaki-Riona.md › Background (debut: Background)"
    }
   },
   {
@@ -449,6 +503,29 @@
    }
   },
   {
+   "name": "Koganei Niko",
+   "file": "bible/characters/Koganei-Niko.md",
+   "other_names": [
+    "Niko",
+    "Nikotan",
+    "虎金妃笑虎",
+    "ニコたん"
+   ],
+   "groups": [
+    "hololive",
+    "FLOW GLOW",
+    "LYRA"
+   ],
+   "status": "Niko is an active member of FLOW GLOW. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2024-11-09",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Koganei-Niko.md › Background (debut: Background)"
+   }
+  },
+  {
    "name": "Koseki Bijou",
    "file": "bible/characters/Koseki-Bijou.md",
    "other_names": [
@@ -498,6 +575,27 @@
     "graduated": null,
     "regular_activities_concluded": null,
     "source": "bible/characters/Laplus-Darknesss.md › Background (debut: Background)"
+   }
+  },
+  {
+   "name": "Mizumiya Su",
+   "file": "bible/characters/Mizumiya-Su.md",
+   "other_names": [
+    "Su",
+    "水宮枢",
+    "Mizumiya"
+   ],
+   "groups": [
+    "hololive",
+    "FLOW GLOW"
+   ],
+   "status": "Su is an active member of FLOW GLOW. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2024-11-09",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Mizumiya-Su.md › Background (debut: Background)"
    }
   },
   {
@@ -631,7 +729,8 @@
     "OKFAMS",
     "MOMAS",
     "TakoNeko",
-    "SubaOka"
+    "SubaOka",
+    "NYANGUCORN"
    ],
    "status": "Okayu is an active member of hololive GAMERS. She has no supernatural abilities; her lore is a performed persona.",
    "status_interval": {
@@ -695,6 +794,33 @@
    }
   },
   {
+   "name": "Ookami Mio",
+   "file": "bible/characters/Ookami-Mio.md",
+   "other_names": [
+    "Mio",
+    "Mio-sha",
+    "Big God Mion",
+    "大神ミオ"
+   ],
+   "groups": [
+    "hololive",
+    "hololive GAMERS",
+    "FubuMio",
+    "AyaFubuMi",
+    "FAMS",
+    "OKFAMS",
+    "RosaMiA"
+   ],
+   "status": "Mio is an active member of hololive GAMERS. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2018-12-07",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Ookami-Mio.md › Background (debut: Background)"
+   }
+  },
+  {
    "name": "Ouro Kronii",
    "file": "bible/characters/Ouro-Kronii.md",
    "other_names": [
@@ -745,6 +871,27 @@
     "graduated": null,
     "regular_activities_concluded": null,
     "source": "bible/characters/Raora-Panthera.md › Background (debut: Background)"
+   }
+  },
+  {
+   "name": "Rindo Chihaya",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "other_names": [
+    "Chihaya",
+    "Chiha",
+    "輪堂千速"
+   ],
+   "groups": [
+    "hololive",
+    "FLOW GLOW"
+   ],
+   "status": "Chihaya is an active member of FLOW GLOW. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2024-11-09",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Rindo-Chihaya.md › Background (debut: Background)"
    }
   },
   {
@@ -799,6 +946,37 @@
     "graduated": null,
     "regular_activities_concluded": null,
     "source": "bible/characters/Shiori-Novella.md › Background (debut: Background)"
+   }
+  },
+  {
+   "name": "Shirakami Fubuki",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "other_names": [
+    "Fubuki",
+    "Fubu-chan",
+    "Shirakami",
+    "白上フブキ"
+   ],
+   "groups": [
+    "hololive",
+    "hololive 1st Generation",
+    "hololive GAMERS",
+    "FubuMio",
+    "AyaFubuMi",
+    "FAMS",
+    "OKFAMS",
+    "NYANGUCORN",
+    "BABACORN",
+    "Bakatare-domo",
+    "holoWitches"
+   ],
+   "status": "Fubuki is an active member of hololive's 1st generation and of hololive GAMERS. She has no supernatural abilities; her lore is a performed persona.",
+   "status_interval": {
+    "state_at_baseline": "active",
+    "debut": "2018-06-01",
+    "graduated": null,
+    "regular_activities_concluded": null,
+    "source": "bible/characters/Shirakami-Fubuki.md › Background (debut: Background)"
    }
   },
   {
@@ -1049,6 +1227,15 @@
     "KoMeHa",
     "BLUE·MEGAMISAMA",
     "V3LVET"
+   ]
+  },
+  {
+   "name": "FLOW GLOW",
+   "file": "bible/world/FLOW-GLOW.md",
+   "role": "Organization",
+   "other_names": [
+    "FG",
+    "フロウグロウ"
    ]
   },
   {
@@ -1308,6 +1495,16 @@
    ]
   },
   {
+   "name": "hololive GAMERS",
+   "file": "bible/world/hololive-GAMERS.md",
+   "role": "Organization",
+   "other_names": [
+    "GAMERS",
+    "ゲマズ",
+    "ホロライブゲーマーズ"
+   ]
+  },
+  {
    "name": "hololive History 2023-2026",
    "file": "bible/world/hololive-History-2023-2026.md",
    "role": "Event",
@@ -1450,6 +1647,75 @@
    "evidence": "official Serendipity billing and shop, 2026"
   },
   {
+   "unit": "FLOW GLOW",
+   "members": [
+    "Isaki Riona",
+    "Koganei Niko",
+    "Mizumiya Su",
+    "Rindo Chihaya",
+    "Kikirara Vivi"
+   ],
+   "evidence": "official (debut announcement 2024-11-07)"
+  },
+  {
+   "unit": "hololive GAMERS",
+   "members": [
+    "Shirakami Fubuki",
+    "Ookami Mio",
+    "Nekomata Okayu",
+    "Inugami Korone"
+   ],
+   "evidence": "official (profiles' unit field; unit video 2018-12-06)"
+  },
+  {
+   "unit": "AyaFubuMi",
+   "members": [
+    "Nakiri Ayame",
+    "Shirakami Fubuki",
+    "Ookami Mio"
+   ],
+   "evidence": "official music credits (\"OniOniKonKonWaon,\" 2024; \"Irowanioedomo,\" 2026)"
+  },
+  {
+   "unit": "NYANGUCORN",
+   "members": [
+    "Nekomata Okayu",
+    "Shirakami Fubuki"
+   ],
+   "evidence": "official music credit (\"KemomomomomoMof！,\" 2026)"
+  },
+  {
+   "unit": "RosaMiA",
+   "members": [
+    "Aki Rosenthal",
+    "Ookami Mio",
+    "AZKi"
+   ],
+   "evidence": "official music credit (\"Blossom Sinfonia,\" 2026); members per the AZKi card"
+  },
+  {
+   "unit": "FAMS",
+   "members": [
+    "Shirakami Fubuki",
+    "Nakiri Ayame",
+    "Ookami Mio",
+    "Oozora Subaru"
+   ],
+   "evidence": "official (Fubuki's profile Q&A)"
+  },
+  {
+   "unit": "OKFAMS",
+   "members": [
+    "Shirakami Fubuki",
+    "Nakiri Ayame",
+    "Ookami Mio",
+    "Oozora Subaru",
+    "Nekomata Okayu",
+    "Inugami Korone"
+   ],
+   "evidence": "official (Fubuki's profile Q&A)"
+  },
+  {
    "unit": "LYRA",
    "members": [
     "Amane Kanata",
@@ -1584,23 +1850,19 @@
   "Anya Melfissa",
   "Pavolia Reine",
   "Airani Iofifteen",
-  "Ookami Mio",
   "Tsunomaki Watame",
   "Oozora Subaru",
-  "Inugami Korone",
   "Omaru Polka",
   "Momosuzu Nene",
   "Roboco",
   "Tokino Sora",
   "Yuzuki Choco",
-  "Shirakami Fubuki",
   "Akai Haato",
   "Usada Pekora",
   "Shiranui Flare",
   "Amane Kanata",
   "Natsuiro Matsuri",
   "Ichijou Ririka",
-  "Koganei Niko",
   "Hiodoshi Ao",
   "Machina X Flayon",
   "Jurard T Rexford",
@@ -1844,6 +2106,27 @@
   "yabairys": [
    "IRyS"
   ],
+  "inugami korone": [
+   "Inugami Korone"
+  ],
+  "korone": [
+   "Inugami Korone"
+  ],
+  "koro-san": [
+   "Inugami Korone"
+  ],
+  "戌神ころね": [
+   "Inugami Korone"
+  ],
+  "isaki riona": [
+   "Isaki Riona"
+  ],
+  "riona": [
+   "Isaki Riona"
+  ],
+  "響咲リオナ": [
+   "Isaki Riona"
+  ],
   "kazama iroha": [
    "Kazama Iroha"
   ],
@@ -1870,6 +2153,21 @@
   ],
   "綺々羅々ヴィヴィ": [
    "Kikirara Vivi"
+  ],
+  "koganei niko": [
+   "Koganei Niko"
+  ],
+  "niko": [
+   "Koganei Niko"
+  ],
+  "nikotan": [
+   "Koganei Niko"
+  ],
+  "虎金妃笑虎": [
+   "Koganei Niko"
+  ],
+  "ニコたん": [
+   "Koganei Niko"
   ],
   "koseki bijou": [
    "Koseki Bijou"
@@ -1912,6 +2210,18 @@
   ],
   "ラプラス・ダークネス": [
    "La+ Darknesss"
+  ],
+  "mizumiya su": [
+   "Mizumiya Su"
+  ],
+  "su": [
+   "Mizumiya Su"
+  ],
+  "水宮枢": [
+   "Mizumiya Su"
+  ],
+  "mizumiya": [
+   "Mizumiya Su"
   ],
   "mococo abyssgard": [
    "Mococo Abyssgard"
@@ -2057,6 +2367,21 @@
   "一伊那尓栖": [
    "Ninomae Ina'nis"
   ],
+  "ookami mio": [
+   "Ookami Mio"
+  ],
+  "mio": [
+   "Ookami Mio"
+  ],
+  "mio-sha": [
+   "Ookami Mio"
+  ],
+  "big god mion": [
+   "Ookami Mio"
+  ],
+  "大神ミオ": [
+   "Ookami Mio"
+  ],
   "ouro kronii": [
    "Ouro Kronii"
   ],
@@ -2099,6 +2424,18 @@
   "the artist with the god eyes": [
    "Raora Panthera"
   ],
+  "rindo chihaya": [
+   "Rindo Chihaya"
+  ],
+  "chihaya": [
+   "Rindo Chihaya"
+  ],
+  "chiha": [
+   "Rindo Chihaya"
+  ],
+  "輪堂千速": [
+   "Rindo Chihaya"
+  ],
   "sakamata chloe": [
    "Sakamata Chloe"
   ],
@@ -2132,6 +2469,21 @@
   ],
   "shiori~n": [
    "Shiori Novella"
+  ],
+  "shirakami fubuki": [
+   "Shirakami Fubuki"
+  ],
+  "fubuki": [
+   "Shirakami Fubuki"
+  ],
+  "fubu-chan": [
+   "Shirakami Fubuki"
+  ],
+  "shirakami": [
+   "Shirakami Fubuki"
+  ],
+  "白上フブキ": [
+   "Shirakami Fubuki"
   ],
   "shirogane noel": [
    "Shirogane Noel"
@@ -2385,6 +2737,15 @@
   ],
   "v3lvet": [
    "Cross-Branch Friends"
+  ],
+  "flow glow": [
+   "FLOW GLOW"
+  ],
+  "fg": [
+   "FLOW GLOW"
+  ],
+  "フロウグロウ": [
+   "FLOW GLOW"
   ],
   "fuwamoco": [
    "FUWAMOCO"
@@ -2779,6 +3140,18 @@
   ],
   "councilrys": [
    "hololive -Promise-"
+  ],
+  "hololive gamers": [
+   "hololive GAMERS"
+  ],
+  "gamers": [
+   "hololive GAMERS"
+  ],
+  "ゲマズ": [
+   "hololive GAMERS"
+  ],
+  "ホロライブゲーマーズ": [
+   "hololive GAMERS"
   ],
   "hololive history 2023-2026": [
    "hololive History 2023-2026"
@@ -4642,6 +5015,356 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2019-04-13",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut (hololive GAMERS)",
+   "evidence": "[Official KO1] [KO4 Qap7HFEx_oM]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2019-09-14",
+   "precision": "day",
+   "zone": null,
+   "text": "3D debut stream",
+   "evidence": "[KO4 I9m2C_Vx1j4]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-04-01",
+   "precision": "day",
+   "zone": null,
+   "text": "OkaKoro's first-anniversary cover, \"ヒャダインのじょーじょーゆーじょー\"",
+   "evidence": "[KO4 MiuFIzr8bR0]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-07-23/24",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"セガガガ\" played until cleared, for SEGA's sixtieth anniversary",
+   "evidence": "[KO4 E4yz96XAtdg, M4clvou7I00]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-11-27",
+   "precision": "day",
+   "zone": null,
+   "text": "Keep Talking and Nobody Explodes in Japanese and English with Mori Calliope",
+   "evidence": "[KO4 yk2kdHkzI48]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021-04-01",
+   "precision": "day",
+   "zone": null,
+   "text": "OkaKoro's second-anniversary 3D live",
+   "evidence": "[KO4 v8tFy6_6R84]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-06-24",
+   "precision": "day",
+   "zone": null,
+   "text": "Sonic outfit shown in an ambassador-commemoration stream",
+   "evidence": "[KO4 QeqfCtJ-chw]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-04-14",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Wonky Monkey\"",
+   "evidence": "[Official KO3]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-07-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Alice-style outfit revealed",
+   "evidence": "[KO4 Lidmb9yq8d8]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-11-21",
+   "precision": "day",
+   "zone": null,
+   "text": "\"BITE! KAMU! BITE!\" with Hakos Baelz",
+   "evidence": "[Official KO3]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-10-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Birthday reveal of the jumpsuit outfit; \"Mad POPCORN World!\" (10-02)",
+   "evidence": "[KO4 mEPiE7V0lxg] [Official KO3]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-06",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Mikkorone × Yatteyanyo!!\" with Sakura Miko",
+   "evidence": "[Official KO3]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-01-22",
+   "precision": "day",
+   "zone": null,
+   "text": "#ころリオ, a first collab and off-collab with Isaki Riona",
+   "evidence": "[KO4 QaGy1nHjRIQ, sze_5XnmD9w]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-04-13",
+   "precision": "day",
+   "zone": null,
+   "text": "Sixth-anniversary \"3D and puppet live\"",
+   "evidence": "[KO4 ASwjM25ax58]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-10-02",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Mafiosa\"",
+   "evidence": "[Official KO3]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-19",
+   "precision": "day",
+   "zone": null,
+   "text": "A talk with Marine after interviewing a film director",
+   "evidence": "[KO4 x3V1BH5tT-4]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-04-18",
+   "precision": "day",
+   "zone": null,
+   "text": "#ふたりは神様MaxDOG 3D off-collab with Mio (a horror game)",
+   "evidence": "[KO4 yc7Iy-RACXY]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05-03",
+   "precision": "day",
+   "zone": null,
+   "text": "First episode of 朝ころ",
+   "evidence": "[KO4 Zlnqxdwg5Io]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-25",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Gimmick Gimmick Entertainment\" (hololive IDOL PROJECT)",
+   "evidence": "[Official KO3]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-08-05",
+   "precision": "day",
+   "zone": null,
+   "text": "Plays SPAGHET, a game Kikirara Vivi gave her",
+   "evidence": "[KO4 LriXEkMQGAc]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-29",
+   "precision": "day",
+   "zone": null,
+   "text": "Machine Party as #いぬたかししらむ (with Lui, Botan and Tsunomaki Watame)",
+   "evidence": "[KO4 Wc1kJDN-xtQ]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-10-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Birthday (#戌神ころね生誕祭2026)",
+   "evidence": "[KO4 HMDpQW57xC0]",
+   "context": "",
+   "file": "bible/characters/Inugami-Korone.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut (first in the FLOW GLOW relay) through hololive DEV_IS; \"FG ROADSTER\"",
+   "evidence": "[Official RI1, RI3; S4 on the FLOW GLOW card]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11 to 12",
+   "precision": "month-range",
+   "zone": null,
+   "text": "ちーむ変態ジェントルマン with Chihaya and Niko (Chained Together; a first off-collab); \"Gimme×Gimme\" with Niko (2024-12-03)",
+   "evidence": "[RI4 i25b--m63UU, DBN-VVm-pRs, y-nFLZtmLQ4]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "Gang Beasts with Nene, Lamy and Chihaya (01-20); a watch-along of Calli's live (02-27); Minecraft with Lui (03-17); MYRIAD DEATH as Calli (04-11); holoRUST with Koyori (04-28); \"あの夏が飽和する\" with Niko (10-23)",
+   "evidence": "[RI4] [RI5]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-11-23",
+   "precision": "day",
+   "zone": null,
+   "text": "FLOW GLOW's 3D debut live, \"MAKE IT, BREAK IT\"",
+   "evidence": "[FLOW GLOW card S6]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-01-02",
+   "precision": "day",
+   "zone": null,
+   "text": "First New Year outfit",
+   "evidence": "[RI4 HTHdI209UXU]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-02-03",
+   "precision": "day",
+   "zone": null,
+   "text": "Self-3D karaoke with AZKi, Koyori and Niko (#せくちー3Dカラオケ)",
+   "evidence": "[RI5 1HQL3WJPBHA]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-07",
+   "precision": "day",
+   "zone": null,
+   "text": "FLOW GLOW's festival debut, hololive 7th fes. STAGE3",
+   "evidence": "[FLOW GLOW card S8]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05-27",
+   "precision": "day",
+   "zone": null,
+   "text": "A 3D birthday stream with guests (Super Mario Party Jamboree)",
+   "evidence": "[RI4 CO2OhYWst5g]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-05-30",
+   "precision": "day",
+   "zone": null,
+   "text": "First solo single, \"Ring my name\"; dance shorts by Calli, Nerissa, AZKi, Bijou, Botan, and with IRyS, Pekora and Towa on her channel (06–07)",
+   "evidence": "[Official RI3] [RI4] [RI5]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-07",
+   "precision": "day",
+   "zone": null,
+   "text": "RoARiS (Roboco, AZKi, Su, Riona) play Momotetsu 2",
+   "evidence": "[RI4 jG-EPYQ4V9g]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07",
+   "precision": "month",
+   "zone": null,
+   "text": "Guest at AZKi's 2026 birthday 3D live (\"星座になれたら\")",
+   "evidence": "[RI5 M1mZrusy-xY]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-12",
+   "precision": "day",
+   "zone": null,
+   "text": "Clubhouse Games with Calli on Riona's channel",
+   "evidence": "[RI4 hhOim_G0kns]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-11-24",
+   "precision": "day",
+   "zone": null,
+   "text": "Second solo single, \"Reverberate\"",
+   "evidence": "[Official RI3]",
+   "context": "",
+   "file": "bible/characters/Isaki-Riona.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "2021-11-30",
    "precision": "day",
    "zone": null,
@@ -4735,7 +5458,7 @@
    "date": "2025",
    "precision": "year",
    "zone": null,
-   "text": "FLOW GLOW songs \"24K GOLD\" (03-14), \"LOAD\" (07-09), \"good enough\" (09-20); 500,000 subscribers (11-30, secondary)",
+   "text": "FLOW GLOW songs \"24K GOLD\" (03-14), \"LOAD\" (07-09), \"good enough\" (09-21, official release date); 500,000 subscribers (11-30, secondary)",
    "evidence": "[Observed VI2]",
    "context": "",
    "file": "bible/characters/Kikirara-Vivi.md",
@@ -4785,7 +5508,7 @@
    "date": "2026",
    "precision": "year",
    "zone": null,
-   "text": "FLOW GLOW's self-titled album (01-21, including \"PUNISHER\" and \"the light\"); first on-stream Super Mario Bros. 3 and Super Mario World playthroughs; Getting Over It, a gift from Pekora (07-25); 700,000 subscribers during an endurance karaoke (08-11, secondary); FLOW GLOW's \"magic summer\" (08-18); MVP's \"Hatsukoi Cider\" with Marine and Pekora (09, secondary record)",
+   "text": "FLOW GLOW's self-titled album (01-21, including \"PUNISHER\" and \"the light\"); first on-stream Super Mario Bros. 3 and Super Mario World playthroughs; Getting Over It, a gift from Pekora (07-25); 700,000 subscribers during an endurance karaoke (08-11, secondary); FLOW GLOW's \"magic summer\" (08-19, official release date); MVP's \"Hatsukoi Cider\" with Marine and Pekora (09, secondary record)",
    "evidence": "[Official music 024] [VI4] [Observed VI2] [MVP upload record]",
    "context": "",
    "file": "bible/characters/Kikirara-Vivi.md",
@@ -4799,6 +5522,106 @@
    "evidence": "[Official music 808] [Observed VI2]",
    "context": "",
    "file": "bible/characters/Kikirara-Vivi.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut (second in the FLOW GLOW relay) through hololive DEV_IS; \"FG ROADSTER\"",
+   "evidence": "[Official NK1; FLOW GLOW card S4]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11 to 12",
+   "precision": "month-range",
+   "zone": null,
+   "text": "#ニコたんアニメ shorts begin (11-12); #にこすぅ with Su (11-24); ちーむ変態ジェントルマン with Chihaya and Riona; \"Gimme×Gimme\" with Riona (12-03); #にこらみ晩酌, an off-collab with Lamy (12-22)",
+   "evidence": "[NK4] [NK5]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "Chained Together practice with Usada Pekora (\"兎虎兎虎,\" 01-10); Minecraft with Lui (03-02); Shadow Corridor with Lui watching (04-05, 04-19); holoRUST on \"Team AZKi\" (05-02); ELDEN RING NIGHTREIGN with Ichijou Ririka and Chihaya (06); \"ポケットにファンタジー\" with Su (06-29); \"あの夏が飽和する\" with Riona (10-23)",
+   "evidence": "[NK4]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-11-23",
+   "precision": "day",
+   "zone": null,
+   "text": "FLOW GLOW's 3D debut live",
+   "evidence": "[FLOW GLOW card S6]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-02-03",
+   "precision": "day",
+   "zone": null,
+   "text": "Self-3D karaoke with AZKi, Koyori and Riona",
+   "evidence": "[NK5 1HQL3WJPBHA]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-02-05",
+   "precision": "day",
+   "zone": null,
+   "text": "A 3D stream with guests for \"Niko Day\" (2/5, read ni-ko)",
+   "evidence": "[NK4 ixSOcbeAEh0]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-07",
+   "precision": "day",
+   "zone": null,
+   "text": "FLOW GLOW's festival debut, hololive 7th fes. STAGE3",
+   "evidence": "[FLOW GLOW card S8]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-06",
+   "precision": "day",
+   "zone": null,
+   "text": "Her morning show is named 朝ガオ; a Mario Party with Shirakami Fubuki, Omaru Polka and Riona",
+   "evidence": "[NK4 I1ktduXA5uw, cWjY92rdma4]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-26",
+   "precision": "day",
+   "zone": null,
+   "text": "First solo single, \"星炎\" (Seien)",
+   "evidence": "[Official NK3]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-08-28",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Magia\" with Calli and Nerissa",
+   "evidence": "[NK4 5ccqXCOshHc]",
+   "context": "",
+   "file": "bible/characters/Koganei-Niko.md",
    "section": "Background Timeline"
   },
   {
@@ -5069,6 +5892,86 @@
    "evidence": "[Official music 753] [Observed LA2]",
    "context": "",
    "file": "bible/characters/Laplus-Darknesss.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut (third in the FLOW GLOW relay) through hololive DEV_IS; \"FG ROADSTER\"",
+   "evidence": "[Official SU1; FLOW GLOW card S4]",
+   "context": "",
+   "file": "bible/characters/Mizumiya-Su.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11 to 12",
+   "precision": "month-range",
+   "zone": null,
+   "text": "#にこすぅ with Niko (11-24); \"らぶきゅん♡うぉんてっど\" with Vivi (12-05); \"レイメイ\" with Chihaya (12-06)",
+   "evidence": "[SU4]",
+   "context": "",
+   "file": "bible/characters/Mizumiya-Su.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "#こよすう, a first one-on-one collab with Koyori (02-02); #すうはあ with Akai Haato (04); a first birthday stream calling her senpai (06-16); Marine's \"pet\" collab (06-29); \"ポケットにファンタジー\" with Niko (06-29); ぶんしゅぴ with Todoroki Hajime (07-14); a ちはすう off-collab (08-03); \"Beyond the way\" with Chihaya (08-17)",
+   "evidence": "[SU4] [SU5]",
+   "context": "",
+   "file": "bible/characters/Mizumiya-Su.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-11-23",
+   "precision": "day",
+   "zone": null,
+   "text": "FLOW GLOW's 3D debut live",
+   "evidence": "[FLOW GLOW card S6]",
+   "context": "",
+   "file": "bible/characters/Mizumiya-Su.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-07",
+   "precision": "day",
+   "zone": null,
+   "text": "FLOW GLOW's festival debut, hololive 7th fes. STAGE3",
+   "evidence": "[FLOW GLOW card S8]",
+   "context": "",
+   "file": "bible/characters/Mizumiya-Su.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06",
+   "precision": "month",
+   "zone": null,
+   "text": "RoARiS (Roboco, AZKi, Su, Riona) play Momotetsu 2 (06-07); すうヴィヴィ drive in Forza Horizon 6 with Vivi (06-06)",
+   "evidence": "[SU4] [Riona's channel jG-EPYQ4V9g]",
+   "context": "",
+   "file": "bible/characters/Mizumiya-Su.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-06-17",
+   "precision": "day",
+   "zone": null,
+   "text": "First solo single, \"うみゃうにゃはっぴーらいふ\" (Umyaunyahappylife)",
+   "evidence": "[Official SU3]",
+   "context": "",
+   "file": "bible/characters/Mizumiya-Su.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07",
+   "precision": "month",
+   "zone": null,
+   "text": "Guest at AZKi's 2026 birthday 3D live (\"トウキョウ・シャンディ・ランデブ\")",
+   "evidence": "[SU5 fqGI67bRcXQ]",
+   "context": "",
+   "file": "bible/characters/Mizumiya-Su.md",
    "section": "Background Timeline"
   },
   {
@@ -6022,6 +6925,236 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2018-12-06",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive GAMERS unit video",
+   "evidence": "[GAMERS card G2 DPZbSlHcdfo]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2018-12-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut",
+   "evidence": "[Official MI1]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2019-06-16",
+   "precision": "day",
+   "zone": null,
+   "text": "3D debut stream",
+   "evidence": "[MI4 T-4B_hiiRlQ]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-10-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Model \"version 2.0\"",
+   "evidence": "[MI4 wTWaEyojbgY]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2020-12-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Second-anniversary 3D live",
+   "evidence": "[MI4 mmUVwNut2-Y]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2021",
+   "precision": "year",
+   "zone": null,
+   "text": "#朝ミオ begins (first-anniversary episode in February 2022)",
+   "evidence": "[MI4 yF3tD2_waP4]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-12-06",
+   "precision": "day",
+   "zone": null,
+   "text": "Playing-card outfit revealed",
+   "evidence": "[MI4 Wjxkl2m9zro]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-12-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Fourth-anniversary live, \"Mio Forest night party,\" and the original \"夜光通信\"",
+   "evidence": "[MI4 0WLlmgirGD8, eZWjYWcQ4Xo]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-12-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Fifth-anniversary live \"ナイトループ\" and first album \"Night walk\"",
+   "evidence": "[MI4 YqPVwYLcvrY] [Official MI3]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-01-02",
+   "precision": "day",
+   "zone": null,
+   "text": "\"OniOniKonKonWaon\" with Fubuki and Ayame (AyaFubuMi)",
+   "evidence": "[Official MI3]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-05-22",
+   "precision": "day",
+   "zone": null,
+   "text": "\"We are GAMERS!!!!\"",
+   "evidence": "[Official MI3]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-20",
+   "precision": "day",
+   "zone": null,
+   "text": "3D birthday live, \"晴れ時々にわかミオ\"",
+   "evidence": "[MI4 VzecQUmB1sY]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11-09",
+   "precision": "day",
+   "zone": null,
+   "text": "#フブミオ大予想: FLOW GLOW's profiles predicted before their debut, with Fubuki",
+   "evidence": "[MI5 iJpIGu5HuGY]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-12-21",
+   "precision": "day",
+   "zone": null,
+   "text": "AyaFubuMi year-end nabe party and the \"不純矛盾\" cover",
+   "evidence": "[MI4 KEArX1o9sEY, ShGnwuuTMIM]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-02-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Mochi-pounding off-collab with FUWAMOCO",
+   "evidence": "[MI4 fQaE6-usUjg]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-07-03",
+   "precision": "day",
+   "zone": null,
+   "text": "\"To Be Continued….\" (GAMERS)",
+   "evidence": "[Official MI3]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-08-20",
+   "precision": "day",
+   "zone": null,
+   "text": "Second album, \"My Sparkle\"",
+   "evidence": "[Official MI2 news, MI3]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-09-10",
+   "precision": "day",
+   "zone": null,
+   "text": "First solo live, \"Our Sparkle\" (Pia Arena MM)",
+   "evidence": "[Official MI2 news] [MI4 DsASp5oBG4M]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-21",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Irowanioedomo\" (AyaFubuMi)",
+   "evidence": "[Official MI3]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-03/04",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Serendipity concert: \"Night Loop\" with IRyS and Koseki Bijou; \"Dottabatta Chindouchuu\" with Ninomae Ina'nis and FUWAMOCO",
+   "evidence": "[Official MI6]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-21",
+   "precision": "day",
+   "zone": null,
+   "text": "RosaMiA (with Aki Rosenthal and AZKi): \"Blossom Sinfonia\"",
+   "evidence": "[Official MI3] [AZKi card]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-11-14",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Gokuraku Gokigen Enbiyori\" (AyaFubuMi)",
+   "evidence": "[Official MI3]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-11-21",
+   "precision": "day",
+   "zone": null,
+   "text": "Single \"Beginner's High\"",
+   "evidence": "[Official MI3]",
+   "context": "",
+   "file": "bible/characters/Ookami-Mio.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "Lore",
    "precision": "lore",
    "zone": null,
@@ -6282,6 +7415,96 @@
    "section": "Background Timeline"
   },
   {
+   "date": "2024-11-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut (fourth in the FLOW GLOW relay) through hololive DEV_IS; \"FG ROADSTER\"",
+   "evidence": "[Official CH1; FLOW GLOW card S4]",
+   "context": "",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11 to 12",
+   "precision": "month-range",
+   "zone": null,
+   "text": "ちーむ変態ジェントルマン with Riona and Niko; \"レイメイ\" with Su (12-06); a talk collab with Sakamata Chloe (12-12); Chained Together with Tokoyami Towa (12-28)",
+   "evidence": "[CH4]",
+   "context": "",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025",
+   "precision": "year",
+   "zone": null,
+   "text": "Shutoko Battle from its pre-release play (01-22); Gang Beasts with Nene, Lamy and Riona (01-20); Minecraft with Okayu (02-20) and a voice-impression game with her (03-24); horse racing with Lui (02-23); ELDEN RING NIGHTREIGN with Ichijou Ririka and Niko (06); a birthday party stream (07-08); \"Bridal Dream\" with Vivi (07-28); a ちはすう off-collab (08-03); \"Beyond the way\" with Su (08-17)",
+   "evidence": "[CH4] [CH5]",
+   "context": "",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-11-23",
+   "precision": "day",
+   "zone": null,
+   "text": "FLOW GLOW's 3D debut live",
+   "evidence": "[FLOW GLOW card S6]",
+   "context": "",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-07",
+   "precision": "day",
+   "zone": null,
+   "text": "FLOW GLOW's festival debut, hololive 7th fes. STAGE3",
+   "evidence": "[FLOW GLOW card S8]",
+   "context": "",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-08",
+   "precision": "day",
+   "zone": null,
+   "text": "A 3D birthday live (announced the day before)",
+   "evidence": "[CH4 EpJTd9Xlvlk]",
+   "context": "",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-07-09",
+   "precision": "day",
+   "zone": null,
+   "text": "First solo single, \"Flat out\"",
+   "evidence": "[Official CH3]",
+   "context": "",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-20",
+   "precision": "day",
+   "zone": null,
+   "text": "\"打上花火\" with Okayu",
+   "evidence": "[CH4 UGQfq16yY1A]",
+   "context": "",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-10-30",
+   "precision": "day",
+   "zone": null,
+   "text": "Second solo single, \"果てない旅\" (HatenaiTabi)",
+   "evidence": "[Official CH3]",
+   "context": "",
+   "file": "bible/characters/Rindo-Chihaya.md",
+   "section": "Background Timeline"
+  },
+  {
    "date": "2021-11-29",
    "precision": "day",
    "zone": null,
@@ -6469,6 +7692,256 @@
    "evidence": "[Official partner press release NEW-R3-005]",
    "context": "",
    "file": "bible/characters/Shiori-Novella.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2018-06-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut (hololive 1st generation)",
+   "evidence": "[Official FB1]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2018-12-06",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive GAMERS unit video (she is in both groups)",
+   "evidence": "[GAMERS card G2 DPZbSlHcdfo]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2019-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Kurokami Fubuki's first solo stream",
+   "evidence": "[FB4 qvIZWqp-TMY]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2019-12-22",
+   "precision": "day",
+   "zone": null,
+   "text": "First new outfit announced",
+   "evidence": "[FB4 pra4uMLmucA]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-02-19",
+   "precision": "day",
+   "zone": null,
+   "text": "Mori Calliope's HOLO ENGLISH LESSON #01 with Houshou Marine and Ninomae Ina'nis",
+   "evidence": "[Marine and Calli cards]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2022-10-05",
+   "precision": "day",
+   "zone": null,
+   "text": "Original \"KONKON Beats\"",
+   "evidence": "[FB4 c2hbKnXIa_c]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-03-21",
+   "precision": "day",
+   "zone": null,
+   "text": "\"インターネットサバイバー\" featuring La+ Darknesss",
+   "evidence": "[FB4 g_6-sM3t760]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2023-10-05",
+   "precision": "day",
+   "zone": null,
+   "text": "Birthday 3D live and the original \"LETTER☆彡\"",
+   "evidence": "[FB4 7995orE5Enc, I7CY960FEPo]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-01-02",
+   "precision": "day",
+   "zone": null,
+   "text": "\"OniOniKonKonWaon\" (AyaFubuMi, with Mio and Nakiri Ayame)",
+   "evidence": "[Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-05-22",
+   "precision": "day",
+   "zone": null,
+   "text": "\"We are GAMERS!!!!\"",
+   "evidence": "[Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-08-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Apron-and-pass outfit revealed",
+   "evidence": "[FB4 tnOsA0krATc]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-10-05",
+   "precision": "day",
+   "zone": null,
+   "text": "Birthday 3D live, #FBKINGDOMPROLOGUE; \"SUPERNOVA\"",
+   "evidence": "[FB4 -a68MSMFuuM, 0RG7iNERF4s]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2024-11-09",
+   "precision": "day",
+   "zone": null,
+   "text": "#フブミオ大予想: FLOW GLOW's profiles predicted with Mio",
+   "evidence": "[FB4 iJpIGu5HuGY]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-01-15",
+   "precision": "day",
+   "zone": null,
+   "text": "First album, FBKINGDOM \"Blessing\"",
+   "evidence": "[Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-02-02",
+   "precision": "day",
+   "zone": null,
+   "text": "\"ワンダーフューチャー！\" featuring Mio, Nekomata Okayu and Inugami Korone",
+   "evidence": "[FB4 n7ZLEzbubJs] [Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-02-13",
+   "precision": "day",
+   "zone": null,
+   "text": "First solo live, FBKINGDOM \"ANTHEM\" (Pia Arena MM)",
+   "evidence": "[Official FB6] [Secondary FB7] [FB4 w07Qooj0L_c, Dc8pLckDSYQ]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-04-20",
+   "precision": "day",
+   "zone": null,
+   "text": "Phasmophobia with Omaru Polka, Koganei Niko and Rindo Chihaya",
+   "evidence": "[FB4 yVdTbPCJytw]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2025-10",
+   "precision": "month",
+   "zone": null,
+   "text": "\"faint sunset\" and \"Necchu Syndrome\" as Magical Girl holoWitches!",
+   "evidence": "[Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-02-21",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Vivid Stampede!!!!\" (BAKATARE CIRCUS)",
+   "evidence": "[Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-03-21",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Irowanioedomo\" (AyaFubuMi)",
+   "evidence": "[Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-04-02",
+   "precision": "day",
+   "zone": null,
+   "text": "\"KemomomomomoMof！\" (NYANGUCORN, with Okayu)",
+   "evidence": "[Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-09-18",
+   "precision": "day",
+   "zone": null,
+   "text": "Pre-debut \"delusion profiles\" for アソビ★まわり隊",
+   "evidence": "[FB4 _vvbn7kgqj4]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-10-05",
+   "precision": "day",
+   "zone": null,
+   "text": "Birthday 3D live, 「ふぉっくするーむ!!」; \"FOXXXROOM\" (released 10-06)",
+   "evidence": "[FB4 62AgiXDP3tU] [Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-11-05",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Kami-Tsumo Dora Dora Densetsu\" with Aki Rosenthal, Marine and Ichijou Ririka",
+   "evidence": "[Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
+   "section": "Background Timeline"
+  },
+  {
+   "date": "2026-11-14",
+   "precision": "day",
+   "zone": null,
+   "text": "\"Gokuraku Gokigen Enbiyori\" (AyaFubuMi)",
+   "evidence": "[Official FB3]",
+   "context": "",
+   "file": "bible/characters/Shirakami-Fubuki.md",
    "section": "Background Timeline"
   },
   {
@@ -7359,6 +8832,186 @@
    "evidence": "",
    "context": "—",
    "file": "bible/world/Bone-Bros.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-11-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut announced (DEV_IS's second unit)",
+   "evidence": "[Official S4]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-11-08 (PST)",
+   "precision": "day",
+   "zone": null,
+   "text": "\"FG ROADSTER\" video premiere",
+   "evidence": "[Official S4]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-11-09",
+   "precision": "day",
+   "zone": null,
+   "text": "Debut relay; \"FG ROADSTER\" released",
+   "evidence": "[Official S4, S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-11-10 (PST)",
+   "precision": "day",
+   "zone": null,
+   "text": "First unit stream, official FLOW GLOW channel",
+   "evidence": "[Official S4]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-11-13 to 11-17",
+   "precision": "day-range",
+   "zone": null,
+   "text": "FLOW GLOW HOUSE pop-up, Harajuku",
+   "evidence": "[Official S4]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-12-10",
+   "precision": "day",
+   "zone": null,
+   "text": "\"FG ROADSTER (Solo ver.)\"",
+   "evidence": "[Official S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-03-14",
+   "precision": "day",
+   "zone": null,
+   "text": "\"24K GOLD\"",
+   "evidence": "[Official S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-07-09",
+   "precision": "day",
+   "zone": null,
+   "text": "\"LOAD\"",
+   "evidence": "[Official S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-09-21",
+   "precision": "day",
+   "zone": null,
+   "text": "\"good enough\"",
+   "evidence": "[Official S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-11-10",
+   "precision": "day",
+   "zone": null,
+   "text": "\"stay by my side\"",
+   "evidence": "[Official S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-11-23",
+   "precision": "day",
+   "zone": null,
+   "text": "3D debut live, \"MAKE IT, BREAK IT\"",
+   "evidence": "[Secondary S6] [Official #FG3Dライブ videos S2]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-11-24",
+   "precision": "day",
+   "zone": null,
+   "text": "\"MAKE IT, BREAK IT\" released",
+   "evidence": "[Official S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-01-21",
+   "precision": "day",
+   "zone": null,
+   "text": "First album, \"FLOW GLOW\"",
+   "evidence": "[Official S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-03-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Festival debut: hololive 7th fes. \"Ridin' on Dreams,\" STAGE3 at Makuhari Messe, opening with \"MAKE IT, BREAK IT\" (AZKi and Noel were on the same stage)",
+   "evidence": "[Secondary S8] [Official video listing S2]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-05-30 to 2026-11-24",
+   "precision": "day-range",
+   "zone": null,
+   "text": "Solo singles: Riona \"Ring my name\" (05-30) and \"Reverberate\" (11-24); Su \"うみゃうにゃはっぴーらいふ\" (06-17); Chihaya \"Flat out\" (07-09) and \"果てない旅\" (10-30); Niko \"星炎\" (07-26); Vivi \"Vivid Cute\" (08-28)",
+   "evidence": "[Official S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-08-19",
+   "precision": "day",
+   "zone": null,
+   "text": "\"magic summer\"",
+   "evidence": "[Official S5]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-09-07",
+   "precision": "day",
+   "zone": null,
+   "text": "COVER's DEV_IS restructuring announcement",
+   "evidence": "[Official S7]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-11-10",
+   "precision": "day",
+   "zone": null,
+   "text": "Second anniversary (#FG2周年): \"BOUNCE BACK！\"",
+   "evidence": "[Official S5, S2 listing]",
+   "context": "",
+   "file": "bible/world/FLOW-GLOW.md",
    "section": "History"
   },
   {
@@ -9119,6 +10772,106 @@
    "evidence": "",
    "context": "Promise becomes three",
    "file": "bible/world/hololive--Promise.md",
+   "section": "History"
+  },
+  {
+   "date": "2018-06-01",
+   "precision": "day",
+   "zone": null,
+   "text": "Fubuki debuts (1st generation)",
+   "evidence": "[Official G1]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
+   "section": "History"
+  },
+  {
+   "date": "2018-12-06",
+   "precision": "day",
+   "zone": null,
+   "text": "hololive GAMERS unit PV",
+   "evidence": "[G2 DPZbSlHcdfo]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
+   "section": "History"
+  },
+  {
+   "date": "2018-12-07",
+   "precision": "day",
+   "zone": null,
+   "text": "Mio debuts",
+   "evidence": "[Official G1]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
+   "section": "History"
+  },
+  {
+   "date": "2019-04-06, 04-13",
+   "precision": "day",
+   "zone": null,
+   "text": "Okayu and Korone debut",
+   "evidence": "[Official G1]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
+   "section": "History"
+  },
+  {
+   "date": "2019",
+   "precision": "year",
+   "zone": null,
+   "text": "ほろらじゲーマーズ radio; GAMERS 3D streams",
+   "evidence": "[G2]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
+   "section": "History"
+  },
+  {
+   "date": "2024-05",
+   "precision": "month",
+   "zone": null,
+   "text": "First fan event, \"超超超超ゲーマーズ,\" Yoyogi National Gymnasium",
+   "evidence": "[G2 8Y1fLns6KY0] [Secondary G3]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
+   "section": "History"
+  },
+  {
+   "date": "2024",
+   "precision": "year",
+   "zone": null,
+   "text": "Formation-anniversary 3D live (\"We are GAMERS !!!!\")",
+   "evidence": "[G2 0u8ZTalXGEc]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-02-02",
+   "precision": "day",
+   "zone": null,
+   "text": "\"ワンダーフューチャー！\" (Fubuki feat. Mio, Okayu, Korone)",
+   "evidence": "[G2 n7ZLEzbubJs]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
+   "section": "History"
+  },
+  {
+   "date": "2025-07-05 to 07-06",
+   "precision": "day-range",
+   "zone": null,
+   "text": "\"hololive GAMERS fes. 超超超超ゲーマーズ2,\" Saitama Super Arena",
+   "evidence": "[Secondary G3] [G2]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
+   "section": "History"
+  },
+  {
+   "date": "2026-08-31",
+   "precision": "day",
+   "zone": null,
+   "text": "White Cat Project collaboration with the GAMERS",
+   "evidence": "[G2 g9O_ctXThLE]",
+   "context": "",
+   "file": "bible/world/hololive-GAMERS.md",
    "section": "History"
   },
   {

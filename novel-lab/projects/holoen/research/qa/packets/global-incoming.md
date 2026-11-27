@@ -1,9 +1,9 @@
 # Audit packet: global (incoming claims)
 
-Snapshot: git 135bae1.
+Snapshot: git 7ef358c.
 
 ## 2. Incoming claims (other files naming this cohort: [SW] sentences, dossier rows and bullets)
-Matched names: loEN's later generations|hololive History 2023-2026|hololive History to 2022|Concerts and Live Events|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Serendipity|Star Flower|the merger|EN concert|world tour|SUPER EXPO|aftertalk|Holodeath|PavoNashi|HOLOTORI|K.I.R.A|MoRikka|IRySora|soranii|HoloJEI|3D live|UMISEA|V3LVET|OKFAIR|KoMeHa|LYRA)(
+Matched names: loEN's later generations|hololive History 2023-2026|Concerts and Live Events|hololive History to 2022|recent hololive history|VTuber Persona and Lore|Cross-Branch Friends|the 2025 graduations|BLUE·MEGAMISAMA|Streaming Life|Apex Predators|birthday live|hololive fes|Myth's debut|Star Flower|Serendipity|the merger|world tour|SUPER EXPO|EN concert|aftertalk|Holodeath|PavoNashi|HOLOTORI|soranii|IRySora|HoloJEI|3D live|K.I.R.A|MoRikka|KoMeHa|OKFAIR|UMISEA|V3LVET|LYRA)(
 
 ### from AZKi
 - `bible/characters/AZKi.md › [SW] Groups`: hololive, hololive 0th Generation, Star Flower, SorAZ, AS_tar, AzuIro, KanatAZ, RosaMiA
@@ -12,8 +12,9 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/AZKi.md › [SW] Background`: With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
 - `bible/characters/AZKi.md › [SW] Relationships`: IRyS: Star Flower with Suisei and Moona Hoshinova ("story time," 2022); IRyS covered AZKi's "Inochi"
 - `bible/characters/AZKi.md › [SW] Relationships`: (2025); "A Cruel Angel's Thesis" at AZKi's 2026 birthday live.
-- `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua, and an appearance at her 2025 birthday live.
+- `bible/characters/AZKi.md › [SW] Relationships`: FUWAMOCO: "FWMCAZ," a FUWAMOCO-themed GeoGuessr map (2024), a singing collab with Minato Aqua (graduated 2024-08-28), and an appearance at her 2025 birthday live.
 - `bible/characters/AZKi.md › [SW] Relationships`: Sakamata Chloe: "Kanaken" with Kanata (Minecraft and a 3D live, 2024).
+- `bible/characters/AZKi.md › [SW] Relationships`: Isaki Riona and Mizumiya Su (FLOW GLOW): RoARiS with Roboco (Momotetsu 2, 2026) and guest songs at AZKi's 2026 birthday live.
 - `bible/characters/AZKi.md › Core Drive`: - **Want:** to keep "creating memorable music" (her official dream) that "will touch my Pioneers' hearts"; she headlined "Departure" at Pia Arena MM (2025) and held "AZKi 8th Birthday Live 'Cross Over'" on 2026-07-01 ("eighth" counts her birthday events; her debut anniversary is in November). [Official AZ1, AZ8] [Observed AZ2]
 - `bible/characters/AZKi.md › Background Timeline`: | 2022-12-31 | "story time" as Star Flower with Suisei, Moona Hoshinova and IRyS | [Official AZ6] |
 - `bible/characters/AZKi.md › Background Timeline`: | 2025-07 | 7th birthday 3D live "Sweet Pop Story"; FUWAMOCO appeared ("Bon appétit♡S"; secondary setlist) | [AZ4 Dzw7zsjUoOI] [secondary setlist] |
@@ -22,6 +23,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/AZKi.md › Relationship Map`: | IRyS | Star Flower | "story time" (2022); IRyS's "Inochi" cover (2021-07-18, archived); Calli's English lesson (2022); R.E.P.O. JP & EN (2025); "A Cruel Angel's Thesis" at Cross Over (2026, secondary) | [Official AZ6] [AZ5] |
 - `bible/characters/AZKi.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | "FWMCAZ" | A FUWAMOCO-themed GeoGuessr map (2024); singing with Aqua (2024); appeared at her 2025 birthday live (secondary setlist) | [AZ4] |
 - `bible/characters/AZKi.md › Relationship Map`: | Sakamata Chloe (affiliate) | "Kanaken" with Amane Kanata | Minecraft construction "company," Chained Together and a 3D live (2024) | [Chloe file CH4] |
+- `bible/characters/AZKi.md › Relationship Map`: | Isaki Riona, Mizumiya Su, Koganei Niko (FLOW GLOW) | Kouhai | RoARiS (Roboco, AZKi, Su, Riona) in Momotetsu 2 (2026-06-07); Riona and Su as guests at AZKi's 2026 birthday 3D live; the 2026-02-03 self-3D karaoke with Riona, Niko and Koyori; Niko on "Team AZKi" in holoRUST (2025); AZKi's "Ring my name" dance short (2026) | [Archive metadata jG-EPYQ4V9g, M1mZrusy-xY, fqGI67bRcXQ, 1HQL3WJPBHA, 7UaG-JGAdIs, 83cZEqTVdOQ] |
 - `bible/characters/AZKi.md › Arc`: - **Starting point:** active at the 2026 baseline: her 8th birthday live "Cross Over," a new unit (RosaMiA), AS_tar's "Going My Way," and a traffic-safety ambassador role.
 - `bible/characters/AZKi.md › Hard Facts`: - Debut 2018-11-15; hololive main branch from 2022-04-01; 0th generation; birthday 1 July; 158 cm; fans "Kaitakusha" (Pioneers); oshi mark ⚒️; units SorAZ, AS_tar, Star Flower, AzuIro, KanatAZ, RosaMiA.
 
@@ -44,7 +46,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Background`: She debuted first of her generation on 2024-06-21 (PDT) in hololive English -Justice-, held her 3D showcase on 2025-08-01 (PDT), sang at the 2025 English concert ("ALiCE&u" with Nerissa and Ayunda Risu, a solo "Stellar Stellar," and the day-two opener "START AGAIN" with Calli, IRyS and Nerissa), invited guests from several branches to her 2026 birthday live, and at the 2026 Serendipity concert sang "HELP!!" with Kobo Kanaeru and Hakos Baelz and formed the unit Bloodraven with Nerissa Ravencroft ("Cruel Angel's Thesis").
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Nerissa Ravencroft: her lore "mortal enemy" from Advent and her Serendipity 2026 unit partner in Bloodraven ("Cruel Angel's Thesis"); they covered "Rondo Revolution" and shared the 2025 stages "ALiCE&u"
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Kobo Kanaeru and Hakos Baelz: "HELP!!" at Serendipity.
-- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Mori Calliope: the LYRA cover of "III" with Amane Kanata, Koganei Niko and Ayunda Risu.
+- `bible/characters/Elizabeth-Rose-Bloodflame.md › [SW] Relationships`: Mori Calliope: the LYRA cover of "III" with Amane Kanata (graduated 2025-12-27), Koganei Niko and Ayunda Risu.
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Behavioral Traits`: - **SCARLET SIDE QUEST:** a 2026 chat format, with episodes billed around Valorant Masters and Serendipity; her theatrical programme branding extends to informal discussion. [Archive metadata NEW-R4-002]
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Background Timeline`: | 2026-04-25 | 2026 birthday live with guests from several branches (credited in her archived broadcast description); the performances were later released as cover videos ("Live from COVER Corp. Studio," from May) | [Archive metadata FIX-R4-001] [Observed EB3, archived credits] |
 - `bible/characters/Elizabeth-Rose-Bloodflame.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: "HELP!!" with Kobo Kanaeru and Hakos Baelz (day 1); unit Bloodraven with Nerissa, "Cruel Angel's Thesis" (day 2); "SUPERNOVA SUPER GIRL" and "ABOVE BELOW" with Justice | [Official EB4, EB8] |
@@ -57,11 +59,12 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Background`: (digital release 2026-04-02), the ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album.
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Raora Panthera: their 2026 Serendipity unit partner in B.F.F.
 - `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Gigi Murin and Cecilia Immergreen: Justice kouhai who guest-hosted FUWAMOCO MORNING #167 as a FUWAMOCO impersonation bit; Gigi sang "Bright Tonight" with the twins (2025) and "MAKE IT, BREAK IT" with them and Vestia Zeta at Serendipity.
-- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
-- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: AZKi: a FUWAMOCO-themed GeoGuessr collaboration ("FWMCAZ"); secondary records also document a singing stream with Minato Aqua and the twins' guest appearance at her 2025 birthday live.
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS): a mochi-pounding off-collab (2025) and, with Ina, "Dottabatta Chindouchuu" at Serendipity.
+- `bible/characters/Fuwawa-Abyssgard.md › [SW] Relationships`: AZKi: a FUWAMOCO-themed GeoGuessr collaboration ("FWMCAZ"); also a singing stream with Minato Aqua (graduated 2024-08-28) and the twins' guest appearance at her 2025 birthday live.
 - `bible/characters/Fuwawa-Abyssgard.md › Background Timeline`: | 2026-02-26 | Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). | [Official NEW-R3-001; archive metadata] |
 - `bible/characters/Fuwawa-Abyssgard.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Mococo and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) | [Official FW4; Serendipity report] |
 - `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity (2026-07-03/04 PDT); afterwards the twins described her teasing their tails and chasing them around the stage in their trio's MC comedy. | [Official, Serendipity report] [Secondary NEW-R3-016] |
+- `bible/characters/Fuwawa-Abyssgard.md › Relationship Map`: | Ookami Mio (GAMERS) | JP senior | A mochi-pounding off-collab on Mio's channel (2025-02-07); "Dottabatta Chindouchuu" with Ina at Serendipity (2026) | [Mio channel fQaE6-usUjg] [Official Serendipity report] |
 - `bible/characters/Fuwawa-Abyssgard.md › Arc`: - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their first album.
 
 ### from Gawr Gura
@@ -69,14 +72,14 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Ninomae Ina'nis: they took part together in UMISEA in 2021; Ina drew a chibi Bloop and performed a protective mock-threat bit about Gura.
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: Houshou Marine: UMISEA and "SHINKIRO"
 - `bible/characters/Gawr-Gura.md › [SW] Relationships`: (2023); UMISEA's official 2023 roster also includes Sakamata Chloe.
-- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Shishiro Botan: "Apex Predators," a secondary pair name.
+- `bible/characters/Gawr-Gura.md › [SW] Relationships`: Shishiro Botan: "Apex Predators."
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Ninomae Ina'nis | Myth genmate; fellow member of the official unit UMISEA (2021, with Aqua and Marine; the wiki also lists Chloe) | Ina drew chibi Bloop and performed a protective mock-threat bit about Gura; co-op games The final Myth relay's Gang Beasts segment ran on Ina's channel (reported 2025-04-30). | [Observed G2 §Gura's antics and §Mascots and fans; G16] [Official G17] [Secondary NEW-R1-017] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | La+ Darknesss, Kazama Iroha, Shishiro Botan | JP members | HOLO ENGLISH LESSON #02 with La+ and Iroha (Calli's stream, 2022-03-04); "Apex Predators," a wiki-listed pair name with Botan | [S1 X492n37brRU] [Botan file, secondary] |
 - `bible/characters/Gawr-Gura.md › Relationship Map`: | Houshou Marine, Sakamata Chloe | UMISEA (official 2023 roster: Aqua, Marine, Chloe, Gura, Ina) | "SHINKIRO" with Marine (anime MV on Marine's channel, 2023-11-12, credited to both; the "GuraMarine" pair name is wiki-listed only) | [Marine file MA4 9ehwhQJ50gs] [Official UMISEA roster] |
 
 ### from Gigi Murin
 - `bible/characters/Gigi-Murin.md › [SW] Background`: (Gigi helped with the lyrics and designed the chibi models) and sang it at the Serendipity concert, where Gigi also sang "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO.
-- `bible/characters/Gigi-Murin.md › [SW] Relationships`: (Gigi helped with the lyrics and designed the chibi models), Cuphead, Shadowverse and Serendipity; Cecilia calls her "idiot"
+- `bible/characters/Gigi-Murin.md › [SW] Relationships`: Cuphead, Shadowverse and Serendipity; Cecilia calls her "idiot"
 - `bible/characters/Gigi-Murin.md › [SW] Relationships`: Vestia Zeta (ID) and FUWAMOCO: "MAKE IT, BREAK IT" at Serendipity.
 - `bible/characters/Gigi-Murin.md › Background Timeline`: | 2026-05 | CCGG 3D live with Cecilia; "CCGG MADNESS" MV (05-17; digital 05-29) | [Official GG1, GG7] [Observed GG3] |
 - `bible/characters/Gigi-Murin.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: "SUPERNOVA SUPER GIRL" with Justice and "CCGG MADNESS" as Autofister with Cecilia (day 1); "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO, and "ABOVE BELOW" in the Advent+Justice medley (day 2) | [Official GG4, GG9] |
@@ -87,9 +90,9 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Gigi-Murin.md › Hard Facts`: - 3D showcase 2025-08-02 PDT; Autofister with Cecilia (unit name in the official Serendipity report).
 
 ### from Hakos Baelz
-- `bible/characters/Hakos-Baelz.md › [SW] Background`: On stage she sang "GEKIRIN" solo and "BLUE CLAPPER" with the CHADCast trio and Koseki Bijou (2024), "Ai ni" with Kobo Kanaeru (2025), "Dance Monkey" as Promise in Sydney (2025), "R x R x R" with Calli and "Countach" with Gigi Murin and Kureiji Ollie (2025), and at Serendipity (2026) "LUVATORRRRRY!" with IRyS as BaeRyS and "HELP!!" with Kobo and Elizabeth Rose Bloodflame.
+- `bible/characters/Hakos-Baelz.md › [SW] Background`: On stage she sang "GEKIRIN" solo and "BLUE CLAPPER" with the CHADCast trio and Koseki Bijou (2024), "Ai ni" with Kobo Kanaeru (2025), "Dance Monkey" as Promise in Sydney (2025), "Countach" with Gigi Murin and Kureiji Ollie (2025), and at Serendipity (2026) "LUVATORRRRRY!" with IRyS as BaeRyS and "HELP!!" with Kobo and Elizabeth Rose Bloodflame.
 - `bible/characters/Hakos-Baelz.md › [SW] Background`: At the 2026 hololive fes she performed "Idol" as the final solo number of STAGE 3.
-- `bible/characters/Hakos-Baelz.md › [SW] Relationships`: IRyS: her BaeRyS partner in a performed "married and divorced" routine that fan references trace to a Minecraft bento exchange; covers, off-collabs, "Here Comes the CHADCast" and "LUVATORRRRRY!" at Serendipity; Bae calls IRyS "the very first senpai I had ever met," and IRyS calls their dynamic "a can of worms."
+- `bible/characters/Hakos-Baelz.md › [SW] Relationships`: IRyS: her BaeRyS partner in a performed "married and divorced" routine that traces back to a Minecraft bento exchange; covers, off-collabs, "Here Comes the CHADCast" and "LUVATORRRRRY!" at Serendipity; Bae calls IRyS "the very first senpai I had ever met," and IRyS calls their dynamic "a can of worms."
 - `bible/characters/Hakos-Baelz.md › [SW] Relationships`: Elizabeth Rose Bloodflame and Kobo Kanaeru: "HELP!!" at Serendipity.
 - `bible/characters/Hakos-Baelz.md › Voice Profile`: - **Entrance demand (written, 2026-06):** her official Serendipity self-introduction includes "WITNESS ME!!!" beside her Chaos and idol-rat identities. Performance option for an original designed voice: a theatrical demand for attention when she makes a deliberate entrance. Written, not an audio-verified catchphrase. [Official NEW-R2-020]
 - `bible/characters/Hakos-Baelz.md › Appearance Anchors`: - Her oshi mark is 🎲. Later looks include a strawberry-princess chibi model, a 2024 gothic outfit, a 2025 strawberry loungewear outfit and a 2026 3D outfit (a black crop top with a white spark pattern) from her "ReCOLOR" birthday live. [Observed HB2, secondary]
@@ -121,7 +124,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Hoshimachi-Suisei.md › Relationship Map`: | IRyS | Star Flower | "story time" (2022); "High Tide" (2024); IRyS covered "GHOST" (2021); on Okayu's 2025 New Year Game Festival team (secondary roster) | [Official SU6, SU8] [S1] |
 
 ### from Houshou Marine
-- `bible/characters/Houshou-Marine.md › [SW] Groups`: hololive, hololive 3rd generation, hololive Fantasy, UMISEA, holoWitches, Bara☆Dice, Yakamashi Musume, Blue Journey, MVP
+- `bible/characters/Houshou-Marine.md › [SW] Groups`: hololive, hololive 3rd generation, hololive Fantasy, UMISEA, holoWitches, Bara☆Dice, Yakamashi Musume, BABACORN, Blue Journey, MVP
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Sakamata Chloe (affiliate): UMISEA and holoWitches.
 - `bible/characters/Houshou-Marine.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA; English lesson #01 with Ina and a guest spot at Ina's "Pleides"
 - `bible/characters/Houshou-Marine.md › Relationship Map`: | Sakamata Chloe (affiliate) | UMISEA; holoWitches | Chloe played Marine's horror game (2023) | [MA2] |
@@ -140,8 +143,24 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/IRyS.md › Relationship Map`: | Hakos Baelz | Promise unitmate ("BaeRyS") | The married/divorced running bit; Bae once banned her from soda for a week after a lost bet; a 2023 off-collab and the "Daikirai na Hazu Datta" cover (2023); "High Tide" with Moona Hoshinova and Hoshimachi Suisei (2024); BaeRyS at Serendipity (2026) | [Observed R2 §Relationships, §Likes and dislikes] |
 - `bible/characters/IRyS.md › Relationship Map`: | Raora Panthera | Justice kouhai | Super Mario Party Jamboree on Bae's #BaeTV24 marathon (November 2024). She and Nerissa co-presented the official Serendipity merchandise infomercial with Raora (May 2026). | [Member-upload title NEW-R2-001] [Archive metadata, ckworks ew00E7t4Dow] |
 
+### from Inugami Korone
+- `bible/characters/Inugami-Korone.md › [SW] Relationships`: Nekomata Okayu: OkaKoro; Okayu calls her "Koro-san"; anniversary covers, a 3D live and off-collabs.
+- `bible/characters/Inugami-Korone.md › [SW] Relationships`: Elizabeth Rose Bloodflame: a guest at her 2026 birthday live.
+- `bible/characters/Inugami-Korone.md › Background Timeline`: | 2021-04-01 | OkaKoro's second-anniversary 3D live | [KO4 v8tFy6_6R84] |
+- `bible/characters/Inugami-Korone.md › Relationship Map`: | Nekomata Okayu | "OkaKoro"; Okayu calls her "Koro-san" | More than thirty #おかころ titles: anniversary covers and a 3D live (2020, 2021), a Famicom World Championship practice off-collab (2024) | [KO4 MiuFIzr8bR0, v8tFy6_6R84, 45RJh43m6vI] [Okayu card] |
+- `bible/characters/Inugami-Korone.md › Relationship Map`: | Nakiri Ayame | "Onigashima combo" (#鬼ヶ島コンビ) | Clubhouse Games five-match (2025-01-16); a ReGLOSS 3D live watch-along with Ayame and Lui (2024-09-28) | [KO4 myqzgEEnV1I, 1Q48E6vFA6Y] |
+- `bible/characters/Inugami-Korone.md › Relationship Map`: | Elizabeth Rose Bloodflame | — | A guest at her 2026 birthday live; "IT'S LOVE" with Marine (2026) | [Elizabeth card] |
+
+### from Isaki Riona
+- `bible/characters/Isaki-Riona.md › [SW] Background`: She sang as a guest at AZKi's 2026 birthday live, and her second solo single, "Reverberate," followed on 2026-11-24.
+- `bible/characters/Isaki-Riona.md › [SW] Relationships`: AZKi: RoARiS, a self-3D karaoke with Hakui Koyori and Niko (2026) and a guest song at AZKi's 2026 birthday live.
+- `bible/characters/Isaki-Riona.md › Background Timeline`: | 2026-07 | Guest at AZKi's 2026 birthday 3D live ("星座になれたら") | [RI5 M1mZrusy-xY] |
+- `bible/characters/Isaki-Riona.md › Relationship Map`: | Kikirara Vivi, Koganei Niko, Mizumiya Su, Rindo Chihaya | Unitmates; Riona is the leader | Group songs, the 3D live, the 2026 album | [Official] [RI4] |
+- `bible/characters/Isaki-Riona.md › Relationship Map`: | Mizumiya Su | Unitmate | RoARiS with Roboco and AZKi (2026); both guests at AZKi's 2026 birthday live | [RI4] [RI5] |
+- `bible/characters/Isaki-Riona.md › Relationship Map`: | AZKi | Senpai | RoARiS (Momotetsu 2, 2026); the 2026 self-3D karaoke; a guest song at AZKi's 2026 birthday live; a dance short together (2026-07-15) | [RI4] [RI5] |
+
 ### from Kazama Iroha
-- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa").
+- `bible/characters/Kazama-Iroha.md › [SW] Relationships`: Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; the trio "KoMeHa").
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2022 | Calli's English lesson #02 with La+ and Gura (03-04); VALORANT with Ame and Kobo Kanaeru ("KoMeHa," 06-04) | [IR5] |
 - `bible/characters/Kazama-Iroha.md › Background Timeline`: | 2025 | "Gehenna" cover with Chloe on her last day (01-26); Cuphead as #あずいろ (06-03) and an off-collab billed as a summer camp (08); "A letter only you can read" (06-15); a guest at Kiara's birthday live (07); #TASTYchallenge shorts with Kiara and Nene (07-11, 07-16); "AZUIRO BESTIE DAYS" (official release 09-18) | [IR4 5zJp7oulbwc, -im-pIdanZY, mwhcZmc6-s8] [IR5 f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0] [Official music 642] |
 - `bible/characters/Kazama-Iroha.md › Relationship Map`: | Takanashi Kiara | — | A credited guest at Kiara's 4th-anniversary live (2024) and birthday live (2025); #TASTYchallenge shorts (2025-07-11 with Nene in the background; 07-16 with Nene) | [IR5 0LoG81pLS8c, f-UbyQUUykE, 0ldag8qdg6c, AQNPRJMMYY0] |
@@ -151,8 +170,17 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 ### from Kikirara Vivi
 - `bible/characters/Kikirara-Vivi.md › Relationship Map`: | Yukihana Lamy | JP senior | Lamy hosted, and Vivi, Iroha and Bijou commentated, the 2026-01-15 SUPER EXPO 2026 / 7th fes. information programme (secondary report). | [Secondary NEW-R6-008] |
 
+### from Koganei Niko
+- `bible/characters/Koganei-Niko.md › [SW] Groups`: hololive, FLOW GLOW, LYRA
+- `bible/characters/Koganei-Niko.md › [SW] Background`: She sang LYRA's "III" with Mori Calliope, Elizabeth Rose Bloodflame, Ayunda Risu and Amane Kanata, and "Magia" with Calli and Nerissa Ravencroft (2026-08-28).
+- `bible/characters/Koganei-Niko.md › [SW] Relationships`: Mori Calliope and Elizabeth Rose Bloodflame: fellow LYRA vocalists on "III"
+- `bible/characters/Koganei-Niko.md › Behavioral Traits`: 6. Sings in LYRA's "III" with Calli, Elizabeth, Ayunda Risu and Amane Kanata, and in "Magia" with Calli and Nerissa (2026-08-28). [Credits on Calli's and Elizabeth's cards] [NK4 5ccqXCOshHc]
+- `bible/characters/Koganei-Niko.md › Relationship Map`: | Isaki Riona, Mizumiya Su, Rindo Chihaya, Kikirara Vivi | Unitmates | Group songs, the 3D live, the 2026 album | [Official] |
+- `bible/characters/Koganei-Niko.md › Relationship Map`: | Mori Calliope | Senpai | LYRA's "III" (with Elizabeth, Risu and Kanata); "Magia" with Nerissa (2026) | [Calli card] [NK4] |
+- `bible/characters/Koganei-Niko.md › Relationship Map`: | Elizabeth Rose Bloodflame | Senpai | LYRA's "III" | [Elizabeth card] |
+
 ### from Koseki Bijou
-- `bible/characters/Koseki-Bijou.md › [SW] Background`: (2025), starred with Ina and IRyS at hololive night at Dodger Stadium (2025), sang a solo and two group numbers at the 2025 English concert -All for One-, and was paired with Takanashi Kiara at the 2026 Serendipity concert.
+- `bible/characters/Koseki-Bijou.md › [SW] Background`: (2025), sang a solo and two group numbers at the 2025 English concert -All for One-, and was paired with Takanashi Kiara at the 2026 Serendipity concert.
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: Takanashi Kiara: her 2026 Serendipity partner ("Rocku Wawa"), who calls her a "hidden gem" and encouraged her through hard choreography for a song with Kiara and Ame; Bijou admires Kiara's "confidence," and they keep saying "67."
 - `bible/characters/Koseki-Bijou.md › [SW] Relationships`: At Serendipity: "Tententengoku Jigokukoku" with Kiara as Rocku Wawa, and "Night Loop" with Ookami Mio (GAMERS) and IRyS.
 - `bible/characters/Koseki-Bijou.md › Background Timeline`: | 2025-11-01 | 3D live (original dossier date retained; timezone not reverified) | [Observed KB2 §2025] |
@@ -161,27 +189,36 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Koseki-Bijou.md › Relationship Map`: | Takanashi Kiara | Senior; Serendipity 2026 duo ("Rocku Wawa") | BG3 (2023); Kiara once asked her to perform a song with her and Ame; in the official interview Kiara calls her a "hidden gem" with "so much charm," and Bijou admires Kiara's "confidence"; their shared joke is "67" Co-credited vocalists (with the other two) on "Freaky Deaky Love" (2026-05-31). | [Official KB4] [Observed KB3; Kiara archive] [Official NEW-R3-007] |
 - `bible/characters/Koseki-Bijou.md › Arc`: - **Starting point:** active member at the 2026 baseline: a 900K+ channel, two original songs, the Serendipity duo with Kiara.
 
+### from Mizumiya Su
+- `bible/characters/Mizumiya-Su.md › [SW] Background`: (Umyaunyahappylife), on 2026-06-17 and sang as a guest at AZKi's 2026 birthday live.
+- `bible/characters/Mizumiya-Su.md › [SW] Relationships`: AZKi: RoARiS and a guest song at AZKi's 2026 birthday live.
+- `bible/characters/Mizumiya-Su.md › Background Timeline`: | 2026-07 | Guest at AZKi's 2026 birthday 3D live ("トウキョウ・シャンディ・ランデブ") | [SU5 fqGI67bRcXQ] |
+- `bible/characters/Mizumiya-Su.md › Relationship Map`: | Isaki Riona, Koganei Niko, Rindo Chihaya, Kikirara Vivi | Unitmates | Group songs, the 3D live, the 2026 album | [Official] |
+- `bible/characters/Mizumiya-Su.md › Relationship Map`: | AZKi | Senpai | RoARiS (2026); a guest song at AZKi's 2026 birthday live | [SU5] |
+
 ### from Mococo Abyssgard
 - `bible/characters/Mococo-Abyssgard.md › [SW] Background`: (digital release 2026-04-02), the ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album.
 - `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Raora Panthera: their 2026 Serendipity unit partner in B.F.F.
-- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS) and Ina: "Dottabatta Chindouchuu" at Serendipity.
-- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: AZKi: a FUWAMOCO-themed GeoGuessr collaboration ("FWMCAZ"); secondary records also document a singing stream with Minato Aqua and the twins' guest appearance at her 2025 birthday live.
+- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: Ookami Mio (GAMERS): a mochi-pounding off-collab (2025) and, with Ina, "Dottabatta Chindouchuu" at Serendipity.
+- `bible/characters/Mococo-Abyssgard.md › [SW] Relationships`: AZKi: a FUWAMOCO-themed GeoGuessr collaboration ("FWMCAZ"); also a singing stream with Minato Aqua (graduated 2024-08-28) and the twins' guest appearance at her 2025 birthday live.
 - `bible/characters/Mococo-Abyssgard.md › Background Timeline`: | 2026-02-26 | Advent group song "What Goes Around"; later "Unchained" (03-26), "Spotlight" (08-02) and the third-anniversary 3D live "Bound by Fate" (archived 08-09). | [Official NEW-R3-001; archive metadata] |
 - `bible/characters/Mococo-Abyssgard.md › Background Timeline`: | 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Fuwawa and Raora Panthera ("Inu Neko. Seishun Massakari," day 2) | [Official MC4; Serendipity report] |
 - `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Raora Panthera | Justice kouhai; Serendipity 2026 unit B.F.F | Performed with both twins as B.F.F at Serendipity 2026 After Serendipity the twins described Raora teasing them about their tails and chasing them around the stage in their trio's MC comedy (2026-07-04). | [Official MC4] [Secondary NEW-R3-016, attributed answers] |
+- `bible/characters/Mococo-Abyssgard.md › Relationship Map`: | Ookami Mio (GAMERS) | JP senior | A mochi-pounding off-collab on Mio's channel (2025-02-07); "Dottabatta Chindouchuu" with Ina at Serendipity (2026) | [Mio channel fQaE6-usUjg] [Official Serendipity report] |
 - `bible/characters/Mococo-Abyssgard.md › Arc`: - **Starting point:** active at the 2026 baseline, as half of FUWAMOCO: a TV anime song, Serendipity, their first album.
 
 ### from Mori Calliope
 - `bible/characters/Mori-Calliope.md › [SW] Groups`: hololive, hololive -Myth-, Myth, CHADCast, hololive English (former branch name), Last Writes, LYRA ("III" cover)
 - `bible/characters/Mori-Calliope.md › [SW] Background`: She headlined New Underworld Order in Tokyo and GriMoire at the Hollywood Palladium, the first solo concert outside Japan by a hololive production talent, and in 2026 she released her album DISASTERPIECE, held her sixth birthday 3D live "UNCUT ROCK!!" with a live band, and sang with Kiara and Ina at Myth's 6th-anniversary 3D live, which premiered the Myth song "THIS IS MYTH."
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Shiori Novella: her 2026 Serendipity partner, who calls her "Mor Mori"; they chase absurd premises, and Calli admits she is "a little obsessed with her."
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Shiori Novella: her 2026 Serendipity partner, who calls her "Mor Mori"; Calli admits she is "a little obsessed with her."
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: Cecilia Immergreen: "Cloudy Sheep" at Serendipity.
 - `bible/characters/Mori-Calliope.md › [SW] Relationships`: (MoRikka).
-- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Elizabeth, Koganei Niko, Ayunda Risu and Amane Kanata: fellow LYRA vocalists ("III").
+- `bible/characters/Mori-Calliope.md › [SW] Relationships`: Elizabeth, Koganei Niko, Ayunda Risu and Amane Kanata (graduated 2025-12-27): fellow LYRA vocalists ("III").
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-04-04 JST | Sixth birthday 3D live "UNCUT ROCK!!" with a live band, plus a members-only encore | [Archive metadata C32] |
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-06-10 | Serendipity interview and partnership with Shiori Novella. | [Official C11] |
 - `bible/characters/Mori-Calliope.md › Background Timeline`: | 2026-09-19 PDT | Myth 6th Anniversary 3D LIVE "Seasons From Within" with Kiara and Ina; the Myth song "THIS IS MYTH" premieres | [Archive metadata C33] |
 - `bible/characters/Mori-Calliope.md › Relationship Map`: | Shiori Novella | 2026 Serendipity partner | Shiori calls her "Mor Mori." Together they pursue absurd premises. In their June 2026 interview Calli credits Shiori with encouraging her to pursue content that interests her personally instead of chasing whatever is fashionable. | [Official C11] [Official C11] |
+- `bible/characters/Mori-Calliope.md › Relationship Map`: | Isaki Riona, Koganei Niko (FLOW GLOW) | Kouhai; Riona's "beloved Calli-senpai" | Clubhouse Games on Riona's channel (2026-09-12); "Ring my name" dance shorts (2026); Niko in LYRA and in "Magia" with Calli and Nerissa (2026-08-28) | [Archive metadata hhOim_G0kns, rAR9fgHBKwI, 5ccqXCOshHc] |
 
 ### from Nakiri Ayame
 - `bible/characters/Nakiri-Ayame.md › Relationship Map`: | Nekomata Okayu | "OKFAMS" | With Korone, Fubuki, Mio and Subaru; Okayu's 2025 New Year Game Festival team; 7th fes STAGE 1 [Secondary, performance unchecked: a setlist records Ayame joining Okayu for "デビルじゃないもん" at Okayu's 2026 birthday live (2026-02-22).] | [AY2] [AY5] [Official AY6] [Secondary NEW-R5-009] |
@@ -196,7 +233,6 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Nanashi-Mumei.md › Story Engine`: 4. HOLOTORI meets for a bird-only game night; Mumei keeps forgetting she's a bird.
 
 ### from Nekomata Okayu
-- `bible/characters/Nekomata-Okayu.md › [SW] Background`: Archived stream metadata documents her as Kiara's 18th HOLOTALK guest (2021), a guest at Mumei's 3D live (2024), a pop-up Mario Party with Calli, Anya and Ao (2024) and her 2025 New Year Game Festival team with Ina, IRyS and Cecilia among its members.
 - `bible/characters/Nekomata-Okayu.md › [SW] Relationships`: Nanashi Mumei (graduated): a guest at Mumei's 3D live (2024).
 - `bible/characters/Nekomata-Okayu.md › Background Timeline`: | 2024 | Guest at Nanashi Mumei's 3D live "Outside the Box"; first GAMERS fes (Yoyogi) | [Mumei file] [Observed OK3] |
 - `bible/characters/Nekomata-Okayu.md › Relationship Map`: | IRyS, Cecilia Immergreen | — | Her 2025 New Year Game Festival team IRyS: [Secondary, performance unchecked: a setlist records Okayu singing "JANE DOE" with IRyS at IRyS's 2026 birthday live, RACING TOWARDS HOPE (2026-03-21).] | [OK4] [Secondary NEW-R5-013] |
@@ -229,6 +265,17 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Houshou Marine | JP senior; UMISEA (official 2023 roster) | Admired artist-performer ("Marine-senpai," 2022 interview, not reopened in review); Marine guested at "Pleides" (2024) | [Observed—published interview I18] [Official UMISEA roster] [S1 3n9igJnSXtQ] |
 - `bible/characters/Ninomae-Inanis.md › Relationship Map`: | Hakos Baelz | Promise kouhai | Archived metadata: the K/DA "POP/STARS" cover with Moona and Ayunda Risu (2023); a BAE-CADEMY art lesson with "Ina-sensei" (2024); Ina's AmiAmi special featuring Bae (2025-05-29); World Tour '24 together | [Bae file HB3, HB5, HB8, HB20] |
 
+### from Ookami Mio
+- `bible/characters/Ookami-Mio.md › [SW] Background`: With Fubuki and Nakiri Ayame she sings as AyaFubuMi, and at the 2026 Serendipity concert she sang with IRyS, Koseki Bijou, Ninomae Ina'nis and FUWAMOCO.
+- `bible/characters/Ookami-Mio.md › [SW] Relationships`: FUWAMOCO: a mochi-pounding off-collab (2025) and "Dottabatta Chindouchuu" with Ninomae Ina'nis at Serendipity (2026).
+- `bible/characters/Ookami-Mio.md › [SW] Relationships`: IRyS and Koseki Bijou: "Night Loop" at Serendipity (2026).
+- `bible/characters/Ookami-Mio.md › Background Timeline`: | 2020-12-07 | Second-anniversary 3D live | [MI4 mmUVwNut2-Y] |
+- `bible/characters/Ookami-Mio.md › Background Timeline`: | 2024-08-20 | 3D birthday live, "晴れ時々にわかミオ" | [MI4 VzecQUmB1sY] |
+- `bible/characters/Ookami-Mio.md › Background Timeline`: | 2026-07-03/04 | Serendipity concert: "Night Loop" with IRyS and Koseki Bijou; "Dottabatta Chindouchuu" with Ninomae Ina'nis and FUWAMOCO | [Official MI6] |
+- `bible/characters/Ookami-Mio.md › Relationship Map`: | FUWAMOCO (Fuwawa, Mococo) | — | Mochi-pounding off-collab (2025-02-07); "Dottabatta Chindouchuu" with Ina at Serendipity (2026) | [MI4 fQaE6-usUjg] [Official MI6] |
+- `bible/characters/Ookami-Mio.md › Relationship Map`: | IRyS, Koseki Bijou | — | "Night Loop" together at Serendipity (2026) | [Official MI6] |
+- `bible/characters/Ookami-Mio.md › Relationship Map`: | Ninomae Ina'nis | — | "Dottabatta Chindouchuu" at Serendipity (2026) | [Official MI6] |
+
 ### from Ouro Kronii
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Ninomae Ina'nis: her partner for the 2026 Serendipity concert (as Octo'clock, "Bad Apple"); "Just two punny people," and both speak Korean.
 - `bible/characters/Ouro-Kronii.md › [SW] Relationships`: Kaela Kovalskia: Raft, Luma Island, Old Market Simulator; 2024 World Tour panel.
@@ -255,10 +302,15 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Raora-Panthera.md › Arc`: - **Starting point:** active at the 2026 baseline: her first birthday live, Serendipity with FUWAMOCO, Pokémon, Pragmata and Hytale streams.
 - `bible/characters/Raora-Panthera.md › Hard Facts`: - 3D showcase 2025-08-09 PDT. Official music list: "Gacha×Gacha ADVENTURE!" and "Draw" (Draw's premiere and release dates not yet established). Serendipity unit: B.F.F with FUWAMOCO.
 
+### from Rindo Chihaya
+- `bible/characters/Rindo-Chihaya.md › [SW] Background`: Chihaya held a 3D birthday live on 2026-07-08 and released the solo singles "Flat out"
+- `bible/characters/Rindo-Chihaya.md › Background Timeline`: | 2026-07-08 | A 3D birthday live (announced the day before) | [CH4 EpJTd9Xlvlk] |
+- `bible/characters/Rindo-Chihaya.md › Relationship Map`: | Isaki Riona, Koganei Niko, Mizumiya Su, Kikirara Vivi | Unitmates; she drives the unit in its lore | Group songs, the 3D live, the 2026 album | [Official] |
+- `bible/characters/Rindo-Chihaya.md › Arc`: - **Starting point:** active at the 2026 baseline: FLOW GLOW's DJ and driver with a 3D birthday live and two solo singles in 2026.
+
 ### from Sakamata Chloe
 - `bible/characters/Sakamata-Chloe.md › [SW] Groups`: hololive, Secret Society holoX (until 2025), holoX, KoyoChlo, Kanaken, holoWitches, UMISEA
-- `bible/characters/Sakamata-Chloe.md › [SW] Background`: Minecraft company with Amane Kanata and AZKi (a 3D live in 2024), and concluded her regular activities on 2025-01-26, holding a graduation live and remaining an affiliate; a secondary record has her singing "Sparkle" at Murasaki Shion's graduation live (2025-04-26).
-- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: AZKi: "Kanaken" with Amane Kanata (Minecraft, Chained Together, a 3D live, 2024).
+- `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: AZKi: "Kanaken" with Amane Kanata (graduated 2025-12-27) (Minecraft, Chained Together, a 3D live, 2024).
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Houshou Marine: UMISEA (official 2023 roster) and holoWitches.
 - `bible/characters/Sakamata-Chloe.md › [SW] Relationships`: Ninomae Ina'nis and Gawr Gura (graduated): UMISEA (official 2023 roster).
 - `bible/characters/Sakamata-Chloe.md › Background Timeline`: | 2024 | "Magical Girl holoWitches!" single (05-30); "Kanaken" 3D live with Kanata and AZKi | [Observed CH2] [CH4] |
@@ -277,9 +329,14 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/characters/Shiori-Novella.md › Relationship Map`: | Mori Calliope | Senior; Serendipity 2026 duo ("Last Writes") | Calli's "#DEEP" kids'-movie talk (2024-01-09) and Stardew Valley (2024-12-20); in the official interview Calli is "a little obsessed with her" and Shiori admires Calli's "work ethic and boundaries"; their dynamic: "Unhinged" (Calli) In their June 2026 interview Calli credits Shiori with encouraging her to pursue personally interesting content over trends. | [Official SN4] [Observed Calli archive] [Official, Serendipity interview05] |
 - `bible/characters/Shiori-Novella.md › Arc`: - **Starting point:** active member at the 2026 baseline: her first original song, the Serendipity duo with Calli, "Into The Void."
 
+### from Shirakami Fubuki
+- `bible/characters/Shirakami-Fubuki.md › [SW] Background`: In 2026 she celebrated her birthday with the 3D live 「ふぉっくするーむ!!」 and the original "FOXXXROOM," and sang "Kami-Tsumo Dora Dora Densetsu" with Aki Rosenthal, Marine and Ichijou Ririka.
+- `bible/characters/Shirakami-Fubuki.md › Background Timeline`: | 2023-10-05 | Birthday 3D live and the original "LETTER☆彡" | [FB4 7995orE5Enc, I7CY960FEPo] |
+- `bible/characters/Shirakami-Fubuki.md › Background Timeline`: | 2024-10-05 | Birthday 3D live, #FBKINGDOMPROLOGUE; "SUPERNOVA" | [FB4 -a68MSMFuuM, 0RG7iNERF4s] |
+- `bible/characters/Shirakami-Fubuki.md › Background Timeline`: | 2026-10-05 | Birthday 3D live, 「ふぉっくするーむ!!」; "FOXXXROOM" (released 10-06) | [FB4 62AgiXDP3tU] [Official FB3] |
+
 ### from Shishiro Botan
-- `bible/characters/Shishiro-Botan.md › [SW] Background`: Archived metadata and secondary concert reports record her with the English cast in Left 4 Dead 2 (2022) and an Overwatch 2 team (2023) with IRyS, on Calli's HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and as a guest at Ina's birthday 3D live "EVERMORE"
-- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Gawr Gura (graduated): "Apex Predators," a secondary-listed pair label.
+- `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Gawr Gura (graduated): "Apex Predators."
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Ninomae Ina'nis: a guest at Ina's birthday 3D live "EVERMORE"
 - `bible/characters/Shishiro-Botan.md › [SW] Relationships`: Nerissa Ravencroft: credited as a guest in Botan's birthday 3D live "Stray&Stay"
 - `bible/characters/Shishiro-Botan.md › Background Timeline`: | 2025 | 1.5 million subscribers (02-14, secondary); originals "Simulacre," "Gaotteko!" and "boundary"; a guest at Ina's birthday 3D live "EVERMORE" (05-21), singing "storia" with Ina and Tsunomaki Watame per a secondary set list; the first "#ホロ金策サバイバル" | [Observed BO2] [BO5] [EVERMORE report] [ASR BO20] |
@@ -302,7 +359,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 
 ### from Takane Lui
 - `bible/characters/Takane-Lui.md › [SW] Groups`: hololive, Secret Society holoX, holoX, HOLOTORI, Bara☆Dice, Blue Journey, InuTakaShishiRam, NePoX
-- `bible/characters/Takane-Lui.md › [SW] Background`: She debuted on 2021-11-27 as the second member of Secret Society holoX, hololive's sixth Japanese generation, and belongs to the bird unit HOLOTORI, whose documented 2023 lineup was Lui, Takanashi Kiara, Oozora Subaru, Pavolia Reine and Nanashi Mumei.
+- `bible/characters/Takane-Lui.md › [SW] Background`: She debuted on 2021-11-27 as the second member of Secret Society holoX, hololive's sixth Japanese generation, and belongs to the bird unit HOLOTORI, whose 2023 lineup was Lui, Takanashi Kiara, Oozora Subaru, Pavolia Reine and Nanashi Mumei.
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Takanashi Kiara: HOLOTORI; a Wario off-collab (2023).
 - `bible/characters/Takane-Lui.md › [SW] Relationships`: Nanashi Mumei (graduated): HOLOTORI; "Q&A With Bird Sisters"
 - `bible/characters/Takane-Lui.md › Background Timeline`: | 2021-11-27 | Debut, second of holoX; HOLOTORI membership (the wiki places Kiara's welcome beside the 11-26 reveal) | [Observed LU2] [Official HOLOTORI roster 2023] |
@@ -313,14 +370,13 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 ### from Watson Amelia
 - `bible/characters/Watson-Amelia.md › [SW] Background`: She was a guest at Kronii's 3D birthday live in March 2026.
 - `bible/characters/Watson-Amelia.md › [SW] Relationships`: Ouro Kronii: her "Time Duo" counterpart; Ame jokes she "borrowed" time travel from the Warden and swears she'll give it back, says Kronii dislikes everything she likes, and guested at Kronii's 2026 birthday live.
-- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Kazama Iroha: VALORANT with Kobo Kanaeru (2022; secondary references call the trio "KoMeHa").
+- `bible/characters/Watson-Amelia.md › [SW] Relationships`: Kazama Iroha: VALORANT with Kobo Kanaeru (2022; the trio "KoMeHa").
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2026-03 | Guest spot at Kronii's 3D birthday live | [Observed Kronii file K33, stream locator qqi8yXuH35Y t=1711] |
 - `bible/characters/Watson-Amelia.md › Background Timeline`: | 2025–2026 | Other reported appearances (Kiara's concerts, announcer at Zeta's birthday live 2025-11, a call "from 2021" at Calli's charity karaoke 2026-02): [Unverified locators] — event links in A8 and A19, segment timestamps not yet found; off the card | [A8, A19] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Ouro Kronii | Promise member ("Time Duo") | Time traveler vs. Warden of Time; Ame guested at Kronii's 2026 3D birthday live | [Observed A2 §Relationships; Kronii file K33] |
 - `bible/characters/Watson-Amelia.md › Relationship Map`: | Kazama Iroha, Takane Lui | JP members | "KoMeHa" with Iroha and Kobo Kanaeru (VALORANT, 2022-06-04); Apex with Lui and Iofi (2022-01-19) | [S1 tGVhLibbYL0, Mory0I9vXtI] |
 
 ### from Yukihana Lamy
-- `bible/characters/Yukihana-Lamy.md › [SW] Background`: (2021), and as a guest at Ina's 3D live "Pleides"
 - `bible/characters/Yukihana-Lamy.md › [SW] Relationships`: (2021), and a guest at Ina's 3D live "Pleides"
 - `bible/characters/Yukihana-Lamy.md › Voice Profile`: - **Language:** streams in Japanese; archived metadata records her at the Usaken Summer Festival in Minecraft with Ina and a Minecraft collab billed as a "date" (2021) and as a guest at Ina's 2024 3D live. [LM5]
 - `bible/characters/Yukihana-Lamy.md › Background Timeline`: | 2024 | Originals "Hatsukoi Pâtissière," "Watashi wo amayakasunara" and "Lamy's Baribari Workout"; a guest at Ina's 3D live "Pleides" (12-28) | [Observed LM2] [LM5] |
@@ -335,6 +391,13 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/world/Advent-Pairs.md › History`: | 2026 | "Bound by Fate," 3rd-anniversary 3D live | — |
 - `bible/world/Advent-Pairs.md › Hard Facts`: - Serendipity 2026 pairs: Shiori–Calli, Bijou–Kiara, FUWAMOCO–Raora, Nerissa–Elizabeth (official).
 
+### from FLOW GLOW
+- `bible/world/FLOW-GLOW.md › [SW] Description`: (a Clubhouse Games collab, 2026); Niko sang LYRA's "III" with Calli and Elizabeth and "Magia" with Calli and Nerissa; Calli, Nerissa, IRyS and Bijou danced to Riona's "Ring my name"; FUWAMOCO and Bijou watched their debut.
+- `bible/world/FLOW-GLOW.md › [SW] Description`: With Japanese seniors: AZKi (RoARiS, a 3D karaoke with Koyori, Riona and Niko, and guest spots for Riona and Su at her 2026 birthday live), Lui, Okayu, Marine, Lamy and Chloe.
+- `bible/world/FLOW-GLOW.md › With the English cast`: - **Mori Calliope:** Riona calls her "my beloved Calli-senpai" in her titles: a Clubhouse Games collab on Riona's channel (2026-09-12), Riona playing MYRIAD DEATH as Calli (2025-04-11), a watch-along of Calli's live with Chihaya and Niko (2025-02-27); Calli and Riona dance "Ring my name" (Calli's short 2026-06-19, Riona's 2026-07-02). Niko sang in LYRA's "III" with Calli and Elizabeth and in "Magia" with Calli and Nerissa (2026-08-28). [S1]
+- `bible/world/FLOW-GLOW.md › With the English cast`: - **Elizabeth Rose Bloodflame:** LYRA with Niko; Gartic Phone with Vivi (2025). [S1, LYRA credits on Elizabeth's card]
+- `bible/world/FLOW-GLOW.md › With the other Japanese members on the cards`: - **AZKi:** RoARiS, a Momotetsu 2 group with Roboco, Su and Riona (2026-06-07); a four-person self-3D karaoke with Koyori, Riona and Niko (#せくちー3Dカラオケ, 2026-02-03); Riona and Su sang as guests at AZKi's 2026 birthday 3D live; Niko played holoRUST on "Team AZKi" (2025); AZKi danced "Ring my name" (2026-06-25); Vivi: GeoGuessr and a 3D pun battle (2026). [S1]
+
 ### from FUWAMOCO
 - `bible/world/FUWAMOCO.md › Shared Relationships`: - **Justice:** Raora Panthera, their Serendipity 2026 unit partner in B.F.F; Mococo's pair labels include "GigiMoco" with Gigi and "Cecemoco" with Cecilia; Cecilia and Mococo played Chrono Trigger together in 2026. [Official S4] [Observed S1; S3]
 - `bible/world/FUWAMOCO.md › History`: | 2026-07-03/04 PDT | Serendipity: the unit B.F.F with Raora ("Inu Neko. Seishun Massakari") | [Official S4; Serendipity report] |
@@ -347,7 +410,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/world/Fauna-and-Mumei-Pairs.md › Hard Facts`: - Fauna's oshi: Gura. Kiara's name for Mumei: "Moomsies." HOLOTORI includes Kiara and Mumei.
 
 ### from Hakos Baelz Pairs
-- `bible/world/Hakos-Baelz-Pairs.md › [SW] Description`: With IRyS she is BaeRyS: a performed "married and divorced" routine that fan references trace to a Minecraft bento exchange, covers and off-collabs, "High Tide" with Moona Hoshinova and Hoshimachi Suisei on stage in 2024, and their first duo stage, "LUVATORRRRRY!", at Serendipity 2026; in a pre-concert interview Bae says she was "blown away" by IRyS's voice, and IRyS admires Bae's creativity and calls their dynamic "a can of worms."
+- `bible/world/Hakos-Baelz-Pairs.md › [SW] Description`: With IRyS she is BaeRyS: a performed "married and divorced" routine that traces back to a Minecraft bento exchange, covers and off-collabs, "High Tide" with Moona Hoshinova and Hoshimachi Suisei on stage in 2024, and their first duo stage, "LUVATORRRRRY!", at Serendipity 2026; in a pre-concert interview Bae says she was "blown away" by IRyS's voice, and IRyS admires Bae's creativity and calls their dynamic "a can of worms."
 - `bible/world/Hakos-Baelz-Pairs.md › BaeRyS`: - **On stage:** "High Tide" with Moona Hoshinova and Hoshimachi Suisei at -Breaking Dimensions- (2024); the official unit BaeRyS at Serendipity (2026), "LUVATORRRRRY!", their first duo stage. [Official S3]
 - `bible/world/Hakos-Baelz-Pairs.md › Council and Promise`: - **Kronii:** per Kronii's wiki page (secondary), Bae described her as too talented, savage and a "tsundere granny"; Sandwich Review (2022), Digimon Survive ("takronii and agubae," 2022), Fortnite (2024-06-18), UNO on the 24-hour stream (2024); "Dance Monkey" as Promise at the World Tour '25 Sydney show (2025-07-12). Fan-recorded lore credits Kronii with creating leap years for Bae's 29 February birthday. [S1] [Kronii file] [S2 §Lore, secondary] [Official S6]
 - `bible/world/Hakos-Baelz-Pairs.md › With Justice`: - **Elizabeth Rose Bloodflame:** "HELP!!" with Kobo Kanaeru at Serendipity (2026). [Official S3]
@@ -371,7 +434,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 
 ### from JP Senpai Pairs
 - `bible/world/JP-Senpai-Pairs.md › [SW] Description`: Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024).
-- `bible/world/JP-Senpai-Pairs.md › [SW] Description`: AZKi and FUWAMOCO: a FUWAMOCO-themed GeoGuessr collaboration (2024), a singing stream with Minato Aqua, and the twins' guest appearance at her 2025 birthday live (secondary).
+- `bible/world/JP-Senpai-Pairs.md › [SW] Description`: AZKi and FUWAMOCO: a FUWAMOCO-themed GeoGuessr collaboration (2024), a singing stream with Minato Aqua (graduated 2024-08-28), and the twins' guest appearance at her 2025 birthday live.
 - `bible/world/JP-Senpai-Pairs.md › Hoshimachi Suisei with the cast`: - **IRyS:** with Moona Hoshinova and AZKi they are **Star Flower**, the unit of "story time" (2022-12-31, the theme of the second hololive Alternative teaser); IRyS covered Suisei's "GHOST" (2021); "High Tide" with IRyS, Moona and Hakos Baelz at -Breaking Dimensions- (2024); the PlateUp! squad of Okayu's team at the 2025 New Year Game Festival (with Pavolia Reine). [Official S3, S6] [S1]
 - `bible/world/JP-Senpai-Pairs.md › AZKi with the cast`: - **FUWAMOCO ("FWMCAZ," secondary):** a FUWAMOCO-themed GeoGuessr collaboration (2024-02-09; game locations are not a record of anyone's trips or favorite places); a singing collab with Minato Aqua (2024-08-13); guests at AZKi's 2025 birthday 3D live "Sweet Pop Story" (secondary setlist: "Bon appétit♡S"). [S1] [secondary]
 - `bible/world/JP-Senpai-Pairs.md › AZKi with the cast`: - **IRyS:** Star Flower (above); IRyS covered AZKi's "Inochi" (2021); Calli's "HOLO ENGLISH LESSON #03" with IRyS and Tsunomaki Watame (2022-03-12); an R.E.P.O. "JP & EN" collab with Shiranui Flare, Usada Pekora, Ina and Kronii (2025-07-19). [S1] [Official S3]
@@ -381,7 +444,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/world/JP-Senpai-Pairs.md › Hard Facts`: - Official units: Star Flower (Suisei, AZKi, Moona Hoshinova, IRyS; "story time," 2022-12-31).
 
 ### from Justice Pairs
-- `bible/world/Justice-Pairs.md › [SW] Description`: Inside Justice: Gigi and Cecilia are an officially billed duo, Autofister (also CCGG), with the song "CCGG MADNESS," a joint 2026 3D live and a Serendipity unit; secondary accounts describe Cecilia's abrasive teasing; in the official interview she says Gigi "doesn't easily get rattled and is very dependable," and Gigi says Cecilia is "good at getting stuff done."
+- `bible/world/Justice-Pairs.md › [SW] Description`: Inside Justice: Gigi and Cecilia are an officially billed duo, Autofister (also CCGG), with the song "CCGG MADNESS," a joint 2026 3D live and a Serendipity unit; Cecilia teases abrasively; in the official interview she says Gigi "doesn't easily get rattled and is very dependable," and Gigi says Cecilia is "good at getting stuff done."
 - `bible/world/Justice-Pairs.md › [SW] Description`: Beyond EN: Elizabeth plays with Kureiji Ollie and HOLOSTARS members in varying lineups (Code Red games; Marvel Rivals with Crimzon Ruze, her "Nephew" in an uncle–nephew bit) and sang LYRA's "III" with FLOW GLOW's Koganei Niko; Kaela appears in Raora's fictional basement bit; Elizabeth records covers with JP members; Cecilia plays games with Tokino Sora; at Serendipity, Elizabeth sang with Kobo Kanaeru, Gigi and Cecilia with Vestia Zeta, and Cecilia and Raora with Tsunomaki Watame.
 - `bible/world/Justice-Pairs.md › Inside Justice`: - **Gigi and Cecilia ("CCGG," "Autofister"):** an officially billed duo with shared music, live performances and a Serendipity 2026 unit (Autofister), an original song, "CCGG MADNESS" (MV 2026-05-17), and a CCGG 3D live with an after-talk (May 2026). In the official interview Gigi said "Who is she!!! … Jokes aside, I hope everyone's ready for some MADNESS!!!!" and Cecilia answered "idiot"; Gigi admires that Cecilia is "good at getting stuff done," Cecilia that Gigi "doesn't easily get rattled and is very dependable!" A secondary transcription records Cecilia's "Ew! Get away from me, you FREAK!"; the teasing runs both ways. Collabs: A Way Out and 7 Days to Die (2024), Portal 2 co-op (2024-07-10), a Cuphead off-collab (2025-05-30), Shadowverse "CECE VS GIGI" (2025-08-17). [Official S3 interview06] [Observed S1; S2, secondary]
 - `bible/world/Justice-Pairs.md › With Advent`: - **Nerissa:** Elizabeth is her "mortal enemy (lore)" and duet partner (Bloodraven, the official Serendipity 2026 billing, "Cruel Angel's Thesis"; a "Rondo Revolution" cover; "ALiCE&u" with guest Ayunda Risu at -All for One-). Gigi: "BeatDown"/"SoundChaser," The Planet Crafter (2024-10-11), "III" together at -All for One-, a joke child "Nerigi." Cecilia: "AutoTune," Unravel Two ("Trying to capture Nerissa through crocheting!!!," 2024-08-17). Raora: Clubhouse Games with Nerissa (2024-12-09); with Moona Hoshinova, Raft (2025-02-06) and Monster Hunter Wilds as "V3LVET" (Nerissa's title, 2025-03-25). Gigi also helped with the "CCGG MADNESS" lyrics alongside Nerissa (MV credits). [Official S3 interview07, S6] [Observed S1; S2]
@@ -425,7 +488,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/world/Time-Duo.md › Hard Facts`: - Ame guested at Kronii's 3D birthday live on 2026-03-14 JST.
 
 ### from holoX
-- `bible/world/holoX.md › [SW] Description`: With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
+- `bible/world/holoX.md › [SW] Description`: With the English cast: Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (fans' name "KoMeHa").
 - `bible/world/holoX.md › With the English cast`: - **Takanashi Kiara:** belonged to HOLOTORI with Lui, Mumei, Subaru and Reine in the official 2023 lineup; a Wario off-collab with Lui (2023-01-15); La+ and Kiara's Mythmash single "Glow in the
 - `bible/world/holoX.md › With the English cast`: - **Nanashi Mumei (graduated):** HOLOTORI with Lui; "Q&A With Bird Sisters" (2025-04-19); an EN-server Minecraft tour with Lui, Chloe and Bae (2022). [S1]
 - `bible/world/holoX.md › With the English cast`: - **Watson Amelia (affiliate):** a VALORANT collab with Iroha and Kobo Kanaeru (2022-06-04; secondary references call the trio "KoMeHa"); Apex with Lui and Iofi (2022-01-19). [S1 tGVhLibbYL0, Mory0I9vXtI] [S3]
@@ -458,3 +521,7 @@ Matched names: loEN's later generations|hololive History 2023-2026|hololive Hist
 - `bible/world/hololive--Promise.md › [SW] Description`: IRyS and Bae keep up the performed "BaeRyS" routine of being "married" and "divorced," and they are also creative partners: in a pre-concert interview for Serendipity (2026), IRyS said she leans on Bae's "strong vision" when she's indecisive, Bae said she admires IRyS's humor that makes everyone comfortable, and IRyS called their dynamic "a can of worms"
 - `bible/world/hololive--Promise.md › How the Group Works`: - **IRyS and Bae at Serendipity (2026):** paired for the 4th concert, their first stage as a duo. In their pre-concert interview (2026-06-05), IRyS: Bae "always has a strong vision" for projects, so when IRyS is "indecisive or wishy-washy" she turns to Bae's opinion, and she admires Bae's creativity; Bae: IRyS was "the very first senpai I had ever met," and she admires IRyS's "easy-going nature and natural humor" that makes everyone "laugh and feel comfortable." Their unit dynamic, in their words: "a can of worms lol" (IRyS), "Complicated XD" (Bae). [Official S6]
 - `bible/world/hololive--Promise.md › How the Group Works`: - **After 2025:** the group is three. Kronii's 2026 activity includes a 3D birthday live with Ame as a guest, the Serendipity pairing with Ina and her EP. [Observed Kronii file K4, K33, K36]
+
+### from hololive GAMERS
+- `bible/world/hololive-GAMERS.md › How they work together`: - Live events: the first real fan event, "超超超超ゲーマーズ," in May 2024 at Yoyogi National Gymnasium (reported sold out); a formation-anniversary 3D live in 2024 with "We are GAMERS !!!!"; "hololive GAMERS fes. 超超超超ゲーマーズ2" at Saitama Super Arena on 2025-07-05 and 07-06 (guests included Nakiri Ayame). [G2 aWE92xAcyrk, 8Y1fLns6KY0, 0u8ZTalXGEc, u1mdfpWU8wE, tJeo9zWQUrc] [Secondary G3]
+- `bible/world/hololive-GAMERS.md › History`: | 2024 | Formation-anniversary 3D live ("We are GAMERS !!!!") | [G2 0u8ZTalXGEc] |

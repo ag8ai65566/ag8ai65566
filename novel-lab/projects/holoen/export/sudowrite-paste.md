@@ -1,5 +1,5 @@
 # Sudowrite 貼上單 — holoen
-_產生時間 2026-11-27 19:59。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
+_產生時間 2026-11-27 20:01。字數是本地估算：英文按單字、中日韓字元每字算 1（中文的算法是本框架的保守估計，Sudowrite 實際怎麼算未公布）。⛔ = 超過 Sudowrite 官方上限；⚠ = 超過建議長度或本地估算可能超限。_
 
 # Style — paste this block first
 貼到 Story Bible → **Style**（119 字；故事本身的文風說明可以接在後面，合計超過約 120 字時請檢查）。它教 Sudowrite 用每個角色的 **Audio Tags** 特質在對白裡寫 ElevenLabs v4 標籤。說明與注意事項見 `elevenlabs/sudowrite-style.md`。
@@ -1101,9 +1101,9 @@ Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanes
 In her performed lore, Iroha left her mountain home to see and learn about the world and guards holoX to make a living. As a streamer she keeps training ("Kazama in training"), takes on difficult game challenges and grows as a singer.
 ```
 
-### Relationships（168/350）
+### Relationships（175/350）
 ```text
-AZKi: "AzuIro," her steady duo (covers, "AZUIRO BESTIE DAYS" in 2025, Cuphead and off-collabs billed as summer camps). La+ Darknesss: holoX's founder; a cover together (2024). Takane Lui: a cover together (2024); she calls Lui "Lui-nee." Hakui Koyori: holoX genmate. Sakamata Chloe (affiliate since 2025): the duet cover "Gehenna" on Chloe's last day (2025). Hoshimachi Suisei: Hoshimatic Project ("BEEP BEEP," 2026); coached her at Puyo Puyo Tetris (2023). Yukihana Lamy and Shishiro Botan: NePoX. Houshou Marine and Shirogane Noel: fellow Bara☆Dice vocalists (distributor credits). Takanashi Kiara: a credited guest at Kiara's 2024 and 2025 lives; #TASTYchallenge shorts with Nene (2025). Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; the trio "KoMeHa"). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: challengers in the cookie battle she and AZKi presented (2024). Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" from her 2026 birthday show, with FUWAMOCO. Shirakami Fubuki: a cup-noodle tasting with Noel and Aki Rosenthal (2024) and a game of Life with Tsunomaki Watame (2023).
+AZKi: "AzuIro," her steady duo (covers, "AZUIRO BESTIE DAYS" in 2025, Cuphead and off-collabs billed as summer camps). La+ Darknesss: holoX's founder; a cover together (2024). Takane Lui: a cover together (2024); she calls Lui "Lui-nee." Hakui Koyori: holoX genmate. Sakamata Chloe (affiliate since 2025): the duet cover "Gehenna" on Chloe's last day (2025). Hoshimachi Suisei: Hoshimatic Project ("BEEP BEEP," 2026); coached her at Puyo Puyo Tetris (2023). Yukihana Lamy and Shishiro Botan: NePoX. Houshou Marine and Shirogane Noel: fellow Bara☆Dice vocalists (distributor credits). Takanashi Kiara: a credited guest at Kiara's 2024 and 2025 lives; #TASTYchallenge shorts with Nene (2025). Watson Amelia (affiliate): a VALORANT collab with Kobo Kanaeru (2022; the trio "KoMeHa"). Mori Calliope and Gawr Gura (graduated): Calli's English lesson #02 (2022). FUWAMOCO: challengers in the cookie battle she and AZKi presented (2024). Elizabeth Rose Bloodflame: "CHA-LA HEAD-CHA-LA" from her 2026 birthday show, with FUWAMOCO. Shirakami Fubuki: a cup-noodle tasting with Noel and Aki Rosenthal (2024) and a #めぇぷるしろっぷう collab with Tsunomaki Watame (2023).
 ```
 
 ## Kikirara Vivi
@@ -2448,9 +2448,9 @@ hololive, hololive 1st Generation, hololive GAMERS, FubuMio, AyaFubuMi, FAMS, OK
 Fubuki, Fubu-chan, Shirakami, 白上フブキ
 ```
 
-### Personality（146/400）
+### Personality（145/400）
 ```text
-Her official profile presents Fubuki as a white-haired, animal-eared otaku fox who loves talking with people, is happy when someone gives her the time of day, and aims to become a top otaku idol while enjoying every day. On stream she is quick, chatty and well organized, calls herself "Shirakami," and has a vocabulary of her own: "Hi, Friends!" (and "Friends!" when someone says "Wife"), "F" at a game over, and gruff "-jai!" and "-yanke!" endings for comic effect. She is a fox, not a cat: the cat joke is fine when she acts cat-like, but out of the blue it earns a threat of pro-wrestling moves. A generous senpai, she guesses each new group's profiles before their debut, watches their first streams and tells newcomers to stream their own way. Her rude alter ego, Kurokami Fubuki, says what she won't. Her fans are the Sukonbu.
+Her official profile presents Fubuki as a white-haired, animal-eared otaku fox who loves talking with people, is happy when someone gives her the time of day, and aims to become a top otaku idol while enjoying every day. On stream she is quick, chatty and well organized, calls herself "Shirakami," and has a vocabulary of her own: "Hi, Friends!" (and "Friends!" when someone says "Wife"), "F" at a game over, and gruff "-jai!" and "-yanke!" endings for comic effect. She is a fox, not a cat: the cat joke is fine when she acts cat-like, but out of the blue it earns a threat of pro-wrestling moves. A generous senpai, she guesses new groups' profiles before their debut, watches their first streams and tells newcomers to stream their own way. Her rude alter ego, Kurokami Fubuki, says what she won't. Her fans are the Sukonbu.
 ```
 
 ### Background（153/500）
@@ -2483,9 +2483,9 @@ Direction for an original designed voice: a bright, clear, high voice; quick and
 Dialogue language for audio scripts: Japanese. Write her spoken turns in Japanese script; romaji and English go only on ROMAJI/GLOSS lines. ElevenLabs v4 performance directions for an original designed voice; never imitate the real member. Register: bright, clear, high voice; quick and lively. Default tags: [cheerful, energetic]. By situation: opening [bright, upbeat]; called a cat [indignant, comic]; game over [deadpan]; advising kouhai [warm, sincere]; closing [warm, orderly]; FBKINGDOM stage [regal, playful]. With people: Mio [playful, affectionate]; Okayu [teasing]; Marine [rowdy]; kouhai [encouraging]. Signature sounds (tag plus a written word = a spoken interjection; a tag alone = a nonverbal sound, not also spelled out): [laughs] (tag only). Keep in the words: 「白上」 (Shirakami), 「こんこんきーつね」 (konkon kītsune), 「すこん部」 (Sukonbu), "Hi, Friends!" Reading: しらかみ ふぶき. No regional accent is assigned. Not as default: a sleepy drawl or a cold, aloof read.
 ```
 
-### Motivation（53/200）
+### Motivation（52/200）
 ```text
-In her lore, Fubuki is an otaku fox who wants to become a top otaku idol while enjoying every day. As a streamer and singer, she wants to hold lots of concerts with the other members, get more MC experience, do lots of fun things with her fans and welcome each new kouhai.
+In her lore, Fubuki is an otaku fox who wants to become a top otaku idol while enjoying every day. As a streamer and singer, she wants to hold lots of concerts with the other members, get more MC experience, do lots of fun things with her fans and welcome new kouhai.
 ```
 
 ### Relationships（208/350）
