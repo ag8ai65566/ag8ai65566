@@ -138,3 +138,27 @@ Nothing below was removed.
 | Watson-Amelia | Wadyameeeeean? | Catchphrases |
 | Watson-Amelia | Wait, why did I say that out loud? | Catchphrases |
 | Yukihana-Lamy | Konlamy desu | Catchphrases |
+
+## r02 backfill (author request 2026-11-27)
+
+The author asked for the 14 Japanese-speaking members' greetings, sign-offs and fan names from the 2026-10-31 phrases
+workbook (`export/hololive-常用語.xlsx`, rows in `tools/phrases/rows/`) to be added to the cards. Lines the two-model
+pass of that research confirmed are cited in each dossier's "Card Evidence Notes (r02)". The lines below rest on the
+fan wiki only (seesaawiki あいさつ集); they are exported under decision B like the inventory above, at the author's
+request, and their sources are in the dossiers. Lamy's "Konlamy desu" (above) is now written 「こんらみです」.
+
+| Card | Line | Exported in |
+|---|---|---|
+| AZKi | おやあずき〜 | Catchphrases |
+| Shirogane-Noel | 牛丼は〜？ | Catchphrases |
+| Nakiri-Ayame | おつなきりー！ | Catchphrases |
+| Shishiro-Botan | ららーいおん ららーいおん | Catchphrases |
+| Yukihana-Lamy | こんらみです | Catchphrases |
+| Yukihana-Lamy | おつらミンミンゼミ | Catchphrases |
+| Yukihana-Lamy | ラミィちゃんを〜？ | Catchphrases |
+| Takane-Lui | こんルイルイ | Catchphrases |
+| Hakui-Koyori | おつこよ〜 | Catchphrases |
+| Hakui-Koyori | あのこより〜？そのこより〜？ | Catchphrases |
+| Kazama-Iroha | 皆殿〜ござる〜！ | Catchphrases |
+| Kikirara-Vivi | おつヴィヴィ〜！ | Catchphrases |
+| Laplus-Darknesss | 来る時に備えよ！ | Catchphrases, Dialogue Style |

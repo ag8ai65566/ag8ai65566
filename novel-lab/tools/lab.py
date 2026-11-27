@@ -821,6 +821,8 @@ def cmd_export(args):
         for p in exp.iterdir():
             if p.name == "elevenlabs":  # 手寫的 ElevenLabs 表演表，不是匯出產物，保留
                 continue
+            if p.suffix.lower() == ".xlsx":  # 作者的常用語表等手動維護的試算表，不是匯出產物，保留
+                continue
             shutil.rmtree(p) if p.is_dir() else p.unlink()
     write(exp / "sudowrite-paste.md", "\n".join(lines))
     made = ["sudowrite-paste.md"]

@@ -56,6 +56,11 @@ COHORTS = {
         "characters": ["Laplus-Darknesss", "Takane-Lui", "Hakui-Koyori", "Sakamata-Chloe", "Kazama-Iroha"],
         "world": ["holoX"],
     },
+    # FLOW GLOW completed by author order (2026-11-27); Vivi stays in jp2, where her card was first audited.
+    "flowglow": {
+        "characters": ["Isaki-Riona", "Koganei-Niko", "Mizumiya-Su", "Rindo-Chihaya"],
+        "world": ["FLOW-GLOW"],
+    },
     "global": {
         "characters": [],
         "world": ["hololive", "Streaming-Life", "VTuber-Persona-and-Lore", "Cross-Branch-Friends",
@@ -77,6 +82,7 @@ SHORT = {
     "Houshou-Marine": ["Marine"], "Shirogane-Noel": ["Noel"], "Yukihana-Lamy": ["Lamy"], "Shishiro-Botan": ["Botan"],
     "Kikirara-Vivi": ["Vivi"], "Laplus-Darknesss": ["La+", "Laplus"], "Takane-Lui": ["Lui"], "Hakui-Koyori": ["Koyori"],
     "Sakamata-Chloe": ["Chloe"], "Kazama-Iroha": ["Iroha"],
+    "Isaki-Riona": ["Riona"], "Koganei-Niko": ["Niko", "Nikotan"], "Mizumiya-Su": ["Su"], "Rindo-Chihaya": ["Chihaya"],
 }
 UNIT_WORDS = {"myth2": ["Myth"], "promise": ["Promise", "Council"], "advent": ["Advent"], "justice": ["Justice"]}
 
@@ -97,6 +103,7 @@ UNITS = [
     {"unit": "Bloodraven", "members": ["Nerissa Ravencroft", "Elizabeth Rose Bloodflame"], "evidence": "official Serendipity billing, 2026"},
     {"unit": "B.F.F", "members": ["Fuwawa Abyssgard", "Mococo Abyssgard", "Raora Panthera"], "evidence": "official Serendipity billing, 2026"},
     {"unit": "Autofister (also CCGG)", "members": ["Gigi Murin", "Cecilia Immergreen"], "evidence": "official Serendipity billing and shop, 2026"},
+    {"unit": "FLOW GLOW", "members": ["Isaki Riona", "Koganei Niko", "Mizumiya Su", "Rindo Chihaya", "Kikirara Vivi"], "evidence": "official (debut announcement 2024-11-07)"},
     {"unit": "LYRA", "members": ["Amane Kanata", "Koganei Niko", "Mori Calliope", "Ayunda Risu", "Elizabeth Rose Bloodflame"], "evidence": "mix engineer's credits (a remix-version cover of \"III\")"},
 ]
 
@@ -122,7 +129,7 @@ REFERENCE_ONLY = ["Tsukumo Sana", "Kobo Kanaeru", "Vestia Zeta", "Kureiji Ollie"
                   "Omaru Polka", "Momosuzu Nene", "Roboco", "Tokino Sora", "Yuzuki Choco",
                   "Shirakami Fubuki", "Akai Haato",
                   "Usada Pekora", "Shiranui Flare", "Amane Kanata", "Natsuiro Matsuri", "Ichijou Ririka",
-                  "Koganei Niko", "Hiodoshi Ao", "Machina X Flayon", "Jurard T Rexford", "Crimzon Ruze",
+                  "Hiodoshi Ao", "Machina X Flayon", "Jurard T Rexford", "Crimzon Ruze",
                   "Gavis Bettel", "Banzoin Hakka", "Josuiji Shinri", "Arurandeisu", "Astel Leda", "Octavio",
                   "Regis Altare", "Rikka"]
 

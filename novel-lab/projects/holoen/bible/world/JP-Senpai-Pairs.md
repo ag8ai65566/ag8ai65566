@@ -199,18 +199,26 @@ Relationship
 AS_tar, FWMCAZ, TakoNeko, Suisei and Calli, Okayu and Ina, AZKi and FUWAMOCO, Ayame and Kiara
 
 ## [SW] Description
-The ties of four members of hololive's historical JP roster, Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu, with the English cast and with each other. Suisei and Calli: collaborators on "CapSule" and "Wicked" (2022) and a performance at Calli's concert New Underworld Order; archived uploads document Calli's watch-alongs of Suisei's concerts. Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024). AZKi and FUWAMOCO: a FUWAMOCO-themed GeoGuessr collaboration (2024), a singing stream with Minato Aqua, and the twins' guest appearance at her 2025 birthday live (secondary). Okayu and Ina released "Kurukuru Cruise" (2025); secondary accounts call them "TakoNeko" and document Okayu's appearances around FUWAMOCO. Archived episode records list all four as guests on Kiara's translated talk show HOLOTALK (2021–2022). Ayame's ties with the English cast are HOLOTALK, team events and shared festival billing. Among themselves: Suisei and AZKi are "AS_tar" ("Going My Way," 2026); secondary references list MOMAS (Suisei, Okayu) and OKFAMS (Ayame, Okayu). All four were billed at hololive 7th fes. (March 2026).
+The ties of four members of hololive's historical JP roster, Hoshimachi Suisei, AZKi, Nakiri Ayame and Nekomata Okayu, with the English cast and with each other. Suisei and Calli: collaborators on "CapSule" and "Wicked" (2022) and a performance at Calli's concert New Underworld Order; Calli has done watch-alongs of Suisei's concerts. Suisei, AZKi, IRyS and Moona Hoshinova are the official unit Star Flower ("story time," 2022); Suisei sang "High Tide" with IRyS, Moona and Hakos Baelz and "BIBBIDIBA" with Moona, Ina and Gura at the 2024 English concert, and was a face of hololive night at Dodger Stadium with Gura and Pekora (2024). AZKi and FUWAMOCO: a FUWAMOCO-themed GeoGuessr collaboration (2024), a singing stream with Minato Aqua (graduated 2024-08-28), and the twins' guest appearance at her 2025 birthday live. Okayu and Ina released "Kurukuru Cruise" (2025); fans call them "TakoNeko," and Okayu often turns up around FUWAMOCO. All four were guests on Kiara's translated talk show HOLOTALK (2021–2022). Ayame's ties with the English cast are HOLOTALK, team events and shared festival billing. Among themselves: Suisei and AZKi are "AS_tar" ("Going My Way," 2026); fan unit names include MOMAS (Suisei, Okayu) and OKFAMS (Ayame, Okayu). All four were billed at hololive 7th fes. (March 2026).
 
 ## [SW] Rules
 These entries record public collaborations and senpai–kouhai ties. Same billing, same team, same song, a watch-along and a direct conversation are different kinds of evidence; none implies another. Language use depends on the event; HOLOTALK uses live translation. At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate. Historical scenes use each member's status at the scene's date. A title identifies advertised content; confirmation that a collaboration occurred requires evidence of the broadcast. Neither establishes private closeness.
 
 ## [SW] Sensory Details
-Proposed scene direction: a bilingual stream title, Calli's excited concert-watchalong commentary, easy giggles and a relaxed, unhurried "mogu mogu," a GeoGuessr guess called out in Japanese. (Avatar details are on each character's own card.)
+Scene direction: a bilingual stream title, Calli's excited concert-watchalong commentary, easy giggles and a relaxed, unhurried "mogu mogu," a GeoGuessr guess called out in Japanese. (Avatar details are on each character's own card.)
 
 ## [SW] Secrets
 (none)
 
 ---
+
+## Card Evidence Notes (r02, 2026-11-27)
+
+Evidence labels, hedges and measurements moved out of the Sudowrite fields in r02 (the claims stay on the card; their evidence grade is recorded here and in the sections above). New r02 facts list their sources here.
+
+- Calli's watch-alongs: archived uploads. HOLOTALK guests: archived episode records. The singing stream with Minato Aqua and the twins at AZKi's 2025 birthday live; "TakoNeko"; Okayu around FUWAMOCO; MOMAS and OKFAMS: secondary references and accounts.
+- Sensory Details are proposed scene directions.
+- r02 status marks: Minato Aqua graduated on 2024-08-28: Anime Corner <https://animecorner.me/hololives-minato-aqua-to-graduate-on-august-28/> (checked 2026-11-27).
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hoshimachi Suisei, AZKi, Nakiri

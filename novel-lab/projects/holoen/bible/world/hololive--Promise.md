@@ -110,7 +110,7 @@ Faction
 hololive -Promise-, holoPromise, hololive Council, holoCouncil, CouncilRyS
 
 ## [SW] Description
-hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline. It grew from the English -Council- generation (August 2021), whose personas were themed around concepts (Kronii is Time); Sana graduated from Council in 2022, before Promise existed. IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and a recurring collaborator with Bae) graduated in 2025. All five sang their unit song "Our Promise" at the 2024 English concert and staged the musical "The Broken Promise" (December 2024). Bae has described Kronii as a "tsundere granny" (per the wiki); Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. IRyS and Bae keep up the performed "BaeRyS" routine of being "married" and "divorced," and they are also creative partners: in a pre-concert interview for Serendipity (2026), IRyS said she leans on Bae's "strong vision" when she's indecisive, Bae said she admires IRyS's humor that makes everyone comfortable, and IRyS called their dynamic "a can of worms" ("Complicated XD," Bae answered).
+hololive -Promise-: IRyS, Ouro Kronii and Hakos Baelz at the 2026 baseline. It grew from the English -Council- generation (August 2021), whose personas were themed around concepts (Kronii is Time); Sana graduated from Council in 2022, before Promise existed. IRyS ("Hope") and the four remaining Council members were billed together as "CouncilRyS" and formed Promise on 2023-10-08 PDT / 10-09 JST; Fauna (Nature, the soft kirin protective of Mumei) and Mumei (Civilization, the forgetful owl and a recurring collaborator with Bae) graduated in 2025. All five sang their unit song "Our Promise" at the 2024 English concert and staged the musical "The Broken Promise" (December 2024). Bae has described Kronii as a "tsundere granny"; Fauna once described Kronii's "gap moe," the cute side that shows when she's flustered; IRyS has wondered aloud how Kronii sounds when she's scared. IRyS and Bae keep up the performed "BaeRyS" routine of being "married" and "divorced," and they are also creative partners: in a pre-concert interview for Serendipity (2026), IRyS said she leans on Bae's "strong vision" when she's indecisive, Bae said she admires IRyS's humor that makes everyone comfortable, and IRyS called their dynamic "a can of worms" ("Complicated XD," Bae answered).
 
 ## [SW] Rules
 At the 2026 baseline Promise is IRyS, Kronii and Bae; Fauna and Mumei are Promise graduates and Sana a Council graduate, appearing only as memories. Unit names (Council, Promise) describe groups, not real powers or concepts.
@@ -122,6 +122,12 @@ The Promise logo; Bae's chaos, IRyS's warmth and sly asides, and Kronii's deadpa
 
 
 ---
+
+## Card Evidence Notes (r02, 2026-11-27)
+
+Evidence labels, hedges and measurements moved out of the Sudowrite fields in r02 (the claims stay on the card; their evidence grade is recorded here and in the sections above). New r02 facts list their sources here.
+
+- "tsundere granny": per the wiki.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-09-30, IRyS added 2026-10-01) from wiki pages, the

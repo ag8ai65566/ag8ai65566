@@ -156,18 +156,24 @@ Relationship
 Marine and Kiara, Noel and Calliope, Lamy and Ina, Botan and IRyS, Vivi and FUWAMOCO
 
 ## [SW] Description
-The public ties of five more hololive members, Houshou Marine, Shirogane Noel, Yukihana Lamy, Shishiro Botan and Kikirara Vivi, with the English cast and with each other. Archived channel metadata records the following. Marine was the first guest of Kiara's talk show HOLOTALK (2020), joined Calli's first English lesson with Ina (2022), played Mario Kart with Calli and Bae (2021) and joined their house-party off-collab (2023), joined off-collabs with FUWAMOCO and Nerissa (2024), and was a guest at Ina's 3D live "Pleides" (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA. Noel was HOLOTALK's 22nd guest in 2022. She appeared with Shiranui Flare on Calli's HOLOYOI #02 in 2023. Lamy joined the Usaken Summer Festival in Minecraft with Ina and a "date"-billed Minecraft stream (2021) and her 3D live (2024). Botan played Left 4 Dead 2 and Overwatch 2 with IRyS, was on HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and guested at Ina's 2025 birthday live. Vivi, a FLOW GLOW member, played R.E.P.O. with FUWAMOCO and Bae and, separately, on Ina's stream, and Gartic Phone with Mumei, Kronii, Ina and Elizabeth (2025). Among themselves: Marine and Noel are hololive Fantasy; Marine, Noel and Lamy are "Yakamashi Musume" with Inugami Korone; Lamy and Botan are NePoLaBo; Marine, Vivi and Pekora are "MVP."
+The public ties of five more hololive members, Houshou Marine, Shirogane Noel, Yukihana Lamy, Shishiro Botan and Kikirara Vivi, with the English cast and with each other. Marine was the first guest of Kiara's talk show HOLOTALK (2020), joined Calli's first English lesson with Ina (2022), played Mario Kart with Calli and Bae (2021) and joined their house-party off-collab (2023), joined off-collabs with FUWAMOCO and Nerissa (2024), and was a guest at Ina's 3D live "Pleides" (2024); Calli, and Bae with Mumei, played "Truth of Beauty Witch," a horror game featuring Marine (2023); Marine, Ina and Gura were in the ocean unit UMISEA. Noel was HOLOTALK's 22nd guest in 2022. She appeared with Shiranui Flare on Calli's HOLOYOI #02 in 2023. Lamy joined the Usaken Summer Festival in Minecraft with Ina and a "date"-billed Minecraft stream (2021) and her 3D live (2024). Botan played Left 4 Dead 2 and Overwatch 2 with IRyS, was on HOLOYOI and Bae's BAE-GEMITE DOMINATION with Oozora Subaru (2023), and guested at Ina's 2025 birthday live. Vivi, a FLOW GLOW member, played R.E.P.O. with FUWAMOCO and Bae and, separately, on Ina's stream, and Gartic Phone with Mumei, Kronii, Ina and Elizabeth (2025). Among themselves: Marine and Noel are hololive Fantasy; Marine, Noel and Lamy are "Yakamashi Musume" with Inugami Korone; Lamy and Botan are NePoLaBo; Marine, Vivi and Pekora are "MVP."
 
 ## [SW] Rules
 These entries record public collaborations. Seniority depends on the pairing: Marine, Noel, Lamy and Botan are senpai to the English cast, while Vivi is a kouhai to the EN members listed here. The five stream mostly in Japanese; language use varies by collaboration. At the 2026-09-30 baseline, Gura and Mumei are graduates and Ame is an affiliate. Historical scenes use each member's status at the scene date. A collaboration title identifies its billing; occurrence and participation depend on the available archive and credits. These records do not establish private closeness; a playthrough of a game featuring a member is not a collab with her.
 
 ## [SW] Sensory Details
-Crimson twintails under a gold-trimmed pirate hat; silver hair over black knight's armor; light-blue hair under a snow-flower beret; silver lion ears over a striped black top; pink-to-purple twin tails and a bag of makeup brushes. Proposed scene directions: a captain's "Ahoy!", a muscle pun, a toast before a chat, Botan tossing a grenade casually, Vivi delivering a comic retort deadpan.
+Crimson twintails under a gold-trimmed pirate hat; silver hair over black knight's armor; light-blue hair under a snow-flower beret; silver lion ears over a striped black top; pink-to-purple twin tails and a bag of makeup brushes. Scene directions: a captain's "Ahoy!", a muscle pun, a toast before a chat, Botan tossing a grenade casually, Vivi delivering a comic retort deadpan.
 
 ## [SW] Secrets
 (none)
 
 ---
+
+## Card Evidence Notes (r02, 2026-11-27)
+
+Evidence labels, hedges and measurements moved out of the Sudowrite fields in r02 (the claims stay on the card; their evidence grade is recorded here and in the sections above). New r02 facts list their sources here.
+
+- The collaborations listed in Description come from archived channel metadata. Sensory Details are proposed scene directions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Marine, Noel, Lamy, Botan and Kikirara

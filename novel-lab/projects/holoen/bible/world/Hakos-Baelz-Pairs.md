@@ -168,18 +168,25 @@ Relationship
 Bae and IRyS, BaeRyS, CHADCast, BaeBi, BratTea, Bae and Kronii, Bae and Calli, Bae and Cecilia
 
 ## [SW] Description
-Hakos Baelz's ties with the cast. With IRyS she is BaeRyS: a performed "married and divorced" routine that fan references trace to a Minecraft bento exchange, covers and off-collabs, "High Tide" with Moona Hoshinova and Hoshimachi Suisei on stage in 2024, and their first duo stage, "LUVATORRRRRY!", at Serendipity 2026; in a pre-concert interview Bae says she was "blown away" by IRyS's voice, and IRyS admires Bae's creativity and calls their dynamic "a can of worms." With IRyS and Mori Calliope she is CHADCast (Chaos, Hope and Death), a podcast trio archived from January 2022, with the song "Here Comes the CHADCast" (2026); they sang "BLUE CLAPPER" with Koseki Bijou in 2024, and Bae and Calli sang "R x R x R" in 2025. In Promise she plays games with Ouro Kronii (Sandwich Review, Fortnite) and sang "Dance Monkey" with Kronii and IRyS in Sydney (2025); with the graduated Fauna she played Amnesia ("Month of Horrors," 2022), and the graduated Mumei joined her lessons and off-collabs. With Bijou she is "BaeBi" (a 2024 sleepover marathon); with Cecilia Immergreen, "BratTea," a coffee-versus-tea debate by Bae's account; she sang "Countach" with Gigi Murin and Kureiji Ollie (2025) and "HELP!!" with Kobo Kanaeru and Elizabeth Rose Bloodflame (2026), and FUWAMOCO danced to her "SNAKE EYES." Fan references call Keep Talking and Nobody Explodes with Takanashi Kiara (2021) her first official collab outside Council.
+Hakos Baelz's ties with the cast. With IRyS she is BaeRyS: a performed "married and divorced" routine that traces back to a Minecraft bento exchange, covers and off-collabs, "High Tide" with Moona Hoshinova and Hoshimachi Suisei on stage in 2024, and their first duo stage, "LUVATORRRRRY!", at Serendipity 2026; in a pre-concert interview Bae says she was "blown away" by IRyS's voice, and IRyS admires Bae's creativity and calls their dynamic "a can of worms." With IRyS and Mori Calliope she is CHADCast (Chaos, Hope and Death), a podcast trio archived from January 2022, with the song "Here Comes the CHADCast" (2026); they sang "BLUE CLAPPER" with Koseki Bijou in 2024, and Bae and Calli sang "R x R x R" in 2025. In Promise she plays games with Ouro Kronii (Sandwich Review, Fortnite) and sang "Dance Monkey" with Kronii and IRyS in Sydney (2025); with the graduated Fauna she played Amnesia ("Month of Horrors," 2022), and the graduated Mumei joined her lessons and off-collabs. With Bijou she is "BaeBi" (a 2024 sleepover marathon); with Cecilia Immergreen, "BratTea," a coffee-versus-tea debate by Bae's account; she sang "Countach" with Gigi Murin and Kureiji Ollie (2025) and "HELP!!" with Kobo Kanaeru and Elizabeth Rose Bloodflame (2026), and FUWAMOCO danced to her "SNAKE EYES." Keep Talking and Nobody Explodes with Takanashi Kiara (2021) was her first official collab outside Council.
 
 ## [SW] Rules
 These entries record public collaborations and performed bits; the BaeRyS "marriage" is a comedy routine, not a romance. Fauna, Mumei, Gura and Sana appear only as memories after their graduations; Ame is an affiliate. Collab titles show that a collab happened, not how close two members are.
 
 ## [SW] Sensory Details
-Red pigtails and a little mouse on her head beside IRyS's angel and devil colors. Proposed scene direction (not an audio observation): three voices trading turns during CHADCast; Bae's quick, rhythmic thank-you patter over a stream of gifts against IRyS's laughter or Kronii's deadpan.
+Red pigtails and a little mouse on her head beside IRyS's angel and devil colors. Scene direction: three voices trading turns during CHADCast; Bae's quick, rhythmic thank-you patter over a stream of gifts against IRyS's laughter or Kronii's deadpan.
 
 ## [SW] Secrets
 (none)
 
 ---
+
+## Card Evidence Notes (r02, 2026-11-27)
+
+Evidence labels, hedges and measurements moved out of the Sudowrite fields in r02 (the claims stay on the card; their evidence grade is recorded here and in the sections above). New r02 facts list their sources here.
+
+- Sensory Details are proposed scene directions, not audio observations.
+- The BaeRyS routine's origin and KTANE as her first collab outside Council: fan references.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hakos Baelz): archive metadata,

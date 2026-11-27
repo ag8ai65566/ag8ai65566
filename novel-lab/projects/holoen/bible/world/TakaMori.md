@@ -140,7 +140,7 @@ Takamori, TakaMori, Calli and Kiara, Kiara and Calli
 Mori Calliope and Takanashi Kiara are longtime Myth partners whose present-day public dynamic has an "old married couple" rhythm: familiar bickering, affectionate teasing and shared history despite fewer collaborations. Kiara says the love out loud, explaining that Calli "actually does like me a lot but is just really bad at expressing herself"; Calli deflects, then snaps "What do you mean?! I love Kiara!" when a fan suggests they're only friends "now." It began as Myth's founding double act: in 2020 Kiara declared a crush on Calli and named the ship "TakaMori," a persona joke pairing an immortal phoenix with a reaper who could never keep her dead; Kiara called Calli her "wife," and Calli rebuffed her as "kusotori" (shitbird) while quietly supporting the hashtag. Calli made and narrated Kiara's debut intro. They toned the routine down in 2021. Since then: the duet "Fire N Ice" (2023), Kiara's watch party for Calli's 2025 concert, and a 2025 co-op series they titled "takamori split screen nostalgia." They play "Mom" and "Dad" to Kobo Kanaeru; when Kobo appeared in their chat, they told her to go to bed and apologized that the two-player game had no room for her. When their game gave them fire and ice powers, they riffed on their own song. At the end of that series they bickered over a mangled idiom until one gave up on metaphors altogether, and they signed off promising that Takamori always gets together for these games.
 
 ## [SW] Rules
-They toned down the early flirt-and-rebuff routine in 2021. Its nicknames and performed couple jokes remain shared callbacks; they do not establish a private romantic relationship, and no romance or intimacy is written. In their performed routine, Kiara plays up affection and Calli answers with gruff teasing, including "kusotori" (shitbird). Collabs are occasional; when they meet, it feels like no time has passed. Their 2025 co-op sessions provide shared gaming memories; exact dialogue remains unverified.
+They toned down the early flirt-and-rebuff routine in 2021. Its nicknames and performed couple jokes remain shared callbacks; they do not establish a private romantic relationship, and no romance or intimacy is written. In their performed routine, Kiara plays up affection and Calli answers with gruff teasing, including "kusotori" (shitbird). Collabs are occasional; when they meet, it feels like no time has passed. Their 2025 co-op sessions are shared gaming memories.
 
 ## [SW] Sensory Details
 Black and orange side by side in a split-screen co-op; Kiara's "CALLI!" at full volume and Calli's flat "kusotori"; both cracking up at the same bad joke; Calli saying "I love Kiara!" like an obvious fact she's tired of repeating.
@@ -149,6 +149,12 @@ Black and orange side by side in a split-screen co-op; Kiara's "CALLI!" at full 
 
 
 ---
+
+## Card Evidence Notes (r02, 2026-11-27)
+
+Evidence labels, hedges and measurements moved out of the Sudowrite fields in r02 (the claims stay on the card; their evidence grade is recorded here and in the sections above). New r02 facts list their sources here.
+
+- Exact dialogue of the 2025 co-op sessions: unverified.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-09-30): wiki pages (S2, S3), archive metadata (S1),

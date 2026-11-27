@@ -151,7 +151,7 @@ Organization
 Secret Society holoX, 秘密結社holoX, hololive 6th Generation
 
 ## [SW] Description
-Secret Society holoX is hololive's sixth Japanese generation, a self-styled evil secret society that streams. In their official lore, La+ Darknesss is the founder, a demon whose vast powers are sealed; her archived channel introduction uses "wagahai" and performs a world-conquest boast. Takane Lui is the executive officer and point of contact who does the real work and cares for her subordinates; Hakui Koyori runs R&D as the self-proclaimed "brains," meddling in everyone's affairs to study them; Kazama Iroha is the society's bodyguard and "insurance policy," a samurai who says "de gozaru." Sakamata Chloe, the orca intern who cleaned up after them, ended her regular activities on 2025-01-26 and is now a hololive affiliate rather than part of the four-member performing lineup. They debuted one a night in November 2021 and held their first in-person unit concert, "First MISSION," at Pia Arena MM on 2026-04-29 as four; with NePoLaBo they form NePoX ("Watcha Gatcha!!!!!!!!," 2026). With the English cast, archived uploads document Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (secondary name "KoMeHa").
+Secret Society holoX is hololive's sixth Japanese generation, a self-styled evil secret society that streams. In their official lore, La+ Darknesss is the founder, a demon whose vast powers are sealed; her channel introduction uses "wagahai" and performs a world-conquest boast. Takane Lui is the executive officer and point of contact who does the real work and cares for her subordinates; Hakui Koyori runs R&D as the self-proclaimed "brains," meddling in everyone's affairs to study them; Kazama Iroha is the society's bodyguard and "insurance policy," a samurai who says "de gozaru." Sakamata Chloe, the orca intern who cleaned up after them, ended her regular activities on 2025-01-26 and is now a hololive affiliate rather than part of the four-member performing lineup. They debuted one a night in November 2021 and held their first in-person unit concert, "First MISSION," at Pia Arena MM on 2026-04-29 as four; with NePoLaBo they form NePoX ("Watcha Gatcha!!!!!!!!," 2026). With the English cast: Lui in the bird unit HOLOTORI with Kiara and Mumei (and Lui and Mumei's "Q&A With Bird Sisters"); "Glow in the Dark" by La+ and Kiara (2025); Chloe and Kiara's "WILDCARD" cover; Calli's English lessons with La+ and Iroha (#02) and Lui and Chloe (#04); Koyori's "FUWAMOKOYO" morning-show guest spot with FUWAMOCO and a separate Lethal Company session with them and Fubuki; and Iroha's VALORANT collab with Ame and Kobo (fans' name "KoMeHa").
 
 ## [SW] Rules
 holoX's "evil organization" is a performed lore frame; their schemes are bits. After 2025-01-26 Chloe is a hololive affiliate rather than an active member of holoX's four-member performing lineup; affiliates can appear at individual events. The 2026 concert was four members. Collab titles show that a collab happened, not how close two members are; event rosters are dated.
@@ -163,6 +163,12 @@ A tiny horned founder with long silver hair, oversized sleeves and shackles; a p
 (none)
 
 ---
+
+## Card Evidence Notes (r02, 2026-11-27)
+
+Evidence labels, hedges and measurements moved out of the Sudowrite fields in r02 (the claims stay on the card; their evidence grade is recorded here and in the sections above). New r02 facts list their sources here.
+
+- La+'s introduction: archived channel introduction. EN-cast items: archived uploads. "KoMeHa": secondary name.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author orders: add holoX in full): official profiles,

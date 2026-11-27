@@ -43,13 +43,14 @@ CAST_ORDER = ["Mori-Calliope", "Takanashi-Kiara", "Ninomae-Inanis", "Gawr-Gura",
               "Shiori-Novella", "Koseki-Bijou", "Nerissa-Ravencroft", "Fuwawa-Abyssgard", "Mococo-Abyssgard",
               "Elizabeth-Rose-Bloodflame", "Gigi-Murin", "Cecilia-Immergreen", "Raora-Panthera",
               "Hoshimachi-Suisei", "AZKi", "Nakiri-Ayame", "Nekomata-Okayu", "Houshou-Marine", "Shirogane-Noel",
-              "Yukihana-Lamy", "Shishiro-Botan", "Kikirara-Vivi", "Laplus-Darknesss", "Takane-Lui", "Hakui-Koyori",
+              "Yukihana-Lamy", "Shishiro-Botan", "Kikirara-Vivi", "Isaki-Riona", "Koganei-Niko", "Mizumiya-Su",
+              "Rindo-Chihaya", "Laplus-Darknesss", "Takane-Lui", "Hakui-Koyori",
               "Sakamata-Chloe", "Kazama-Iroha"]
 WORLD_ORDER = ["VTuber-Persona-and-Lore", "hololive", "Streaming-Life",
                "hololive--Myth", "hololive--Promise", "hololive--Advent", "hololive--Justice", "FUWAMOCO",
                "TakaMori", "TakoTori", "AmeSame", "Bone-Bros", "Myth-and-Kronii-Other-Pairs", "Time-Duo",
                "Time-and-Death", "OctoClock", "Fauna-and-Mumei-Pairs", "IRyS-and-Nerissa-Pairs", "Hakos-Baelz-Pairs", "Advent-Pairs",
-               "Justice-Pairs", "JP-Senpai-Pairs", "JP-Senpai-Pairs-2", "holoX", "Cross-Branch-Friends", "Concerts-and-Live-Events", "hololive-History-to-2022",
+               "Justice-Pairs", "JP-Senpai-Pairs", "JP-Senpai-Pairs-2", "holoX", "FLOW-GLOW", "Cross-Branch-Friends", "Concerts-and-Live-Events", "hololive-History-to-2022",
                "hololive-History-2023-2026"]
 assert set(CAST_ORDER) == set(ROSTER_CHARS) and set(WORLD_ORDER) == set(ROSTER_WORLD), \
     "CAST_ORDER/WORLD_ORDER must list exactly the COHORTS roster (tools/qa_packets.py)"
@@ -458,7 +459,8 @@ def pronunciation_rows(cards):
     rows = []
     for stem in (s for s in CAST_ORDER if s in cards):
         at = cards[stem]["fields"].get("Audio Tags", "")
-        m = re.search(r"Pronunciation guide \(provisional, untested\): (.*?)(?:\. Not as default|\.$)", at)
+        # r02 cards write "Pronunciation:"; the status column below still records that every guide is untested
+        m = re.search(r"Pronunciation(?: guide \(provisional, untested\))?: (.*?)(?:\. Not as default|\.$)", at)
         if not m:
             continue
         for pm in re.finditer(r"([^,;/()]+?)\s+(/[^/]+/)\s*(\([^)]*\))?", m.group(1)):
