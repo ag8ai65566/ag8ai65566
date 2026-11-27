@@ -164,6 +164,17 @@ The middle column is provisional voice direction unless a source is named.
   strawberry loungewear outfit and a 2026 3D outfit (a black crop top with a white spark pattern) from her
   "ReCOLOR" birthday live. [Observed HB2, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/hakos-baelz/ (7 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): red twin tails with black and white streaks and mouse ears, a spiked choker, a white crop top printed RAT, mismatched sleeves (a teal flame glove and a yellow puff), a red-white-black skirt with a teal bear dice bag, mismatched leg warmers and a long red tail with a bow.
+- **Kimono (#HoloENKimonoRelay, 2022-01-15)** (gallery 03): flowers in her hair, a short yellow kimono with red and blue checks and patterns, a big blue bow, one white and one black thigh-high and sandals.
+- **Streetwear** (gallery 04): a holographic cropped jacket over a white crop top, black cargo trousers with straps, a knee pad, fishnets and chunky sneakers.
+- **Black-and-red coat outfit** (gallery 05): a white peaked cap, an eye patch, an oversized black-and-red coat with an armband, black shorts and mismatched thigh-high boots.
+- **Strawberry onesie** (gallery 06): a red strawberry-print hooded onesie with mouse ears and leaves, barefoot.
+- **Edgy casual** (gallery 07): hair loose, earrings, a white cropped jacket over a black top, baggy white trousers with chains, a fishnet leg and black platform boots.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -317,7 +328,7 @@ Bae streams as Chaos itself in the form of a cute little rat, the Council's relu
 Bae is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her the concept of Chaos, "birthed by the world," whom the gods appointed chairperson of the Council. Her official birthday is 29 February; fan-recorded lore credits Ouro Kronii with creating leap years for her. She debuted on 2021-08-23 (JST), the last of hololive English -Council-, which became -Promise- with IRyS in October 2023; Promise's active members at the baseline are Bae, IRyS and Kronii. A singer and dancer, she has released originals such as "PLAY DICE!", "PSYCHO", "RxRxR", "FEAST" and "SNAKE EYES," the album "ZODIAC," the EP "Pandæmonium" and "HIDE & SEEK" with Usada Pekora (2023); she co-hosts the CHADCast podcast with IRyS and Mori Calliope (their song "Here Comes the CHADCast," 2026) and holds "Febaerary," a month of daily streams before her birthday. On stage she sang "GEKIRIN" solo and "BLUE CLAPPER" with the CHADCast trio and Koseki Bijou (2024), "Ai ni" with Kobo Kanaeru (2025), "Dance Monkey" as Promise in Sydney (2025), "Countach" with Gigi Murin and Kureiji Ollie (2025), and at Serendipity (2026) "LUVATORRRRRY!" with IRyS as BaeRyS and "HELP!!" with Kobo and Elizabeth Rose Bloodflame. At the 2026 hololive fes she performed "Idol" as the final solo number of STAGE 3. In August 2026 her first solo concert, "REGALIA," and her album "Mirror Mirror" were announced.
 
 ## [SW] Physical Description
-Bae's avatar is 149 cm tall, with bright red hair in two big pigtails and a white streak in the left bang, large pink mouse ears and a long thin tail tied with a blue ribbon; her little red-and-teal mouse mascot, Mr. Squeaks, rides on her head. She wears an off-shoulder white crop top reading "RAT," one red and one yellow oversized sleeve ending in teal paw mitts, a black, white and red panel skirt, mismatched legwear (a yellow-and-black stocking, a red sock), black platform shoes and a yellow "Chaos Toy" side bag.
+Bae's avatar is 149 cm tall, with bright red hair in two big pigtails and a white streak in the left bang, large pink mouse ears and a long thin tail tied with a blue ribbon; her little red-and-teal mouse mascot, Mr. Squeaks, rides on her head. She wears an off-shoulder white crop top reading "RAT," one red and one yellow oversized sleeve ending in teal paw mitts, a black, white and red panel skirt, mismatched legwear (a yellow-and-black stocking, a red sock), black platform shoes and a yellow "Chaos Toy" side bag. Other outfits in the official gallery: Kimono (2022): flowers in her hair, a short yellow kimono with red and blue checks and patterns, a big blue bow; Streetwear: a holographic cropped jacket over a white crop top, black cargo trousers with straps, a knee pad; Black-and-red coat outfit: a white peaked cap, an eye patch, an oversized black-and-red coat with an armband; Strawberry onesie: a red strawberry-print hooded onesie with mouse ears and leaves, barefoot; Edgy casual: hair loose, earrings, a white cropped jacket over a black top.
 
 ## [SW] Dialogue Style
 Fast, loud, run-on English, full of "like," "yeah," "okay," "oh my god" and "crazy"; she says "senpai" for her seniors even in English and also holds Japanese chatting streams. She tells stories at full speed and answers her own questions ("Who would think that's a good idea? Me."), blames small failures on sabotage ("It was sabotage." "It's a conspiracy."), stages mock scandals with chat ("Breaking news!"), answers absurdity with a flat "bruh," and turns warm and sincere when she cheers someone on ("You're doing great."). Reading superchats she gives rhythmic, repeated thanks. She swears casually ("hell yeah," and milder curses). Keep her fillers, repetitions and self-corrections; never caricature the accent.
@@ -353,6 +364,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Pronunciation of "Baelz", "Hakos", "Febaerary": untested.
 - "Cori Malliope" and Mio and Ollie as joking "moms": secondary references.
 - "Straight woman" in her generation's chaos; the BaeRyS routine's origin in a Minecraft bento exchange: fan references.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hakos Baelz; Tsukumo Sana is not

@@ -117,6 +117,17 @@ The middle column is provisional voice direction unless a source is named.
   with four-pointed stars, and shackles at her ankles, neck and sleeves. A crow is her long-time companion. Emoji
   🛸💜. [Official LA1; key art checked by Claude 2026-10-03] [Observed LA2 §Appearance, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/la-darknesss/ (7 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): very long silver hair with a purple streak, huge purple-striped horns, a black oversized coat with purple cuffs, belts and a yellow-striped tie, purple stockings, heavy shackle cuffs at her ankles, black boots, a tail tipped with a star, and her crow perched on her head.
+- **Kimono** (gallery 03): twin braided tails tied with big gold bells, a black-and-purple kimono with manga-panel prints and flowers, a purple obi, geta, and the crow on her head wearing a red flower.
+- **Streetwear** (gallery 04): a cross-shaped clip, a black oversized jacket with purple flame patterns over a white shirt with a purple tie, a purple plaid skirt and black thigh-high boots.
+- **Sporty outfit** (gallery 05): purple-tipped twin tails, a white-and-purple cropped jacket with a sailor collar over a white crop top, black shorts, leg straps and purple-and-white sneakers.
+- **Shackled robe** (gallery 06): short twin tails, banded horns, a black tunic with a long patterned front panel, belts and chains, and shackle cuffs at her ankles.
+- **Knit-and-plaid outfit** (gallery 07): a black cat-ear knit beanie under her horns, a black oversized cardigan with purple plaid bows over a black shirt-dress, a chain bag, black socks, ankle shackles and black platform boots.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -218,7 +229,7 @@ La+ is the founder of Secret Society holoX. Her official profile makes her a dem
 La+ is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-26 as the first member of Secret Society holoX, hololive's sixth Japanese generation, whose executive officer Takane Lui does the actual running. Her songs include "drop candy" (2024) and "Onee-sama♡Love Call" (released 2026-05-26). She performed at holoX's first in-person unit concert, "First MISSION" (2026-04-29), and Tochigi Prefecture appointed her a Tochigi Future Ambassador (2026-05-03). With the English cast: the Mythmash single "Glow in the Dark" (released 2025-07-28) and the cover "FAKE HEART" (2025) with Takanashi Kiara, a nostalgic-games off-collab on Kiara's channel (2023), and Mori Calliope's English lesson #02 with Gawr Gura and Kazama Iroha (2022).
 
 ## [SW] Physical Description
-La+'s avatar is 139 cm tall, with long silvery hair, a purple lock and a braided bang, large black horns striped in purple above pointed ears, yellow eyes and small fangs. She wears a dark purple dress with a yellow tie and oversized sleeves that swallow her hands, one purple legging and short boots, with a star-tipped purple tail and shackles at her neck, sleeves and ankles. A crow keeps her company.
+La+'s avatar is 139 cm tall, with long silvery hair, a purple lock and a braided bang, large black horns striped in purple above pointed ears, yellow eyes and small fangs. She wears a dark purple dress with a yellow tie and oversized sleeves that swallow her hands, one purple legging and short boots, with a star-tipped purple tail and shackles at her neck, sleeves and ankles. A crow keeps her company. Other outfits in the official gallery: Kimono: twin braided tails tied with big gold bells, a black-and-purple kimono with manga-panel prints and flowers, a purple obi; Streetwear: a cross-shaped clip, a black oversized jacket with purple flame patterns over a white shirt with a purple tie, a purple plaid skirt and black thigh-high boots; Sporty outfit: purple-tipped twin tails, a white-and-purple cropped jacket with a sailor collar over a white crop top, black shorts; Shackled robe: short twin tails, banded horns, a black tunic with a long patterned front panel; Knit-and-plaid outfit: a black cat-ear knit beanie under her horns, a black oversized cardigan with purple plaid bows over a black shirt-dress, a chain bag.
 
 ## [SW] Dialogue Style
 Streams in Japanese. Her persona voice is a pint-sized villain: an archaic 「吾輩」 (wagahai) for "I," 「貴様」 (kisama) for "you," and grand declarations that her followers answer with "Yes My Dark!" She opens casually as often as grandly, and her sign-off often gets cut off mid-word as the stream ends. Between declarations she chats casually: 「聞こえたっしょ」 (kikoeta ssho, "you heard it, right?") checks with chat, and she shows off about being a real streamer. When a story renders her speech in English or Chinese, keep the archaic villain "I" (in Chinese, 吾輩) for persona moments against a small, indignant voice.
@@ -253,6 +264,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - 「聞こえたっしょ」 and 「これが配信者よ」: shared ASR spans. Indignant protests and the smug cackle: performance choices, not observations.
 - r02 additions (2026-10-31 phrases research): 「吾輩だ、刮目せよ」/「刮目刮目〜」 opening — two-model ASR, approximate reading of 刮目 (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-28「【雑談】裏話など今月あったいろいろ振り返る！たくさんありがとーーー！！【ラプラス・ダークネス/ホロライブ】」 <https://www.youtube.com/watch?v=dQf3tVitoq8> (checked 2026-10-31) at 241 s), and ホロライブ非公式wiki（seesaawiki）「ラプラス・ダークネス」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%A5%E9%A5%D7%A5%E9%A5%B9%A1%A6%A5%C0%A1%BC%A5%AF%A5%CD%A5%B9> (checked 2026-10-31). 「来る時に備えよ！」 sign-off, often cut off mid-word — secondary (ホロライブ非公式wiki（seesaawiki）「ラプラス・ダークネス」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%A5%E9%A5%D7%A5%E9%A5%B9%A1%A6%A5%C0%A1%BC%A5%AF%A5%CD%A5%B9> (checked 2026-10-31)); the 2026-05-11 stream ended with plain thanks instead (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-05-11「【雑談】本当にいろいろあったから話そうぜ～～～～～＾＾【ラプラス・ダークネス/ホロライブ】」 <https://www.youtube.com/watch?v=dBzPcy1DqzU> (checked 2026-10-31) at 5436 s).
 - "Irohasu", "Dorobo Kensetsu": secondary references. FUWAMOCO's "Onee-sama♡Love Call" shorts and EN-cast items: archived metadata.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add holoX in full): official profile

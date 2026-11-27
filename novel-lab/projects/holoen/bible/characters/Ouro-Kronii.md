@@ -221,6 +221,16 @@ Real lines first; Style demos after.
 - Mascot: Boros, a small white ouroboros snake (introduced at the January 2022 kimono reveal).
   [Observed K8 §Mascots and fans, secondary; stream yrfBkrsw85U t=1420]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/ouro-kronii/ (6 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): a giant clock-face halo with hands, a white sleeveless top with a light-blue bow, black pinstriped shorts, a black coat lined in blue with frilled cuffs, black thigh-highs, winged blue boots and two golden clock-hand blades.
+- **Furisode** (gallery 03): blue and orange flowers in her hair, a light-blue kimono printed with gold clockwork, chrysanthemums and a white snake, a white fur stole, a folding fan and platform sandals.
+- **Casual outfit** (gallery 04): long hair with a blue streak, round glasses, a tick-marked ring halo, a camel trench coat over a white top, a brown monogram crossbody bag, ripped skinny jeans and white heels.
+- **Military uniform** (gallery 05): a navy uniform with a gold aiguillette and medals, a long caped coat, trousers with a thigh strap and boots.
+- **Victorian maid dress** (gallery 06): braided hair under a white lace cap, a long white eyelet dress with black sleeves and hem, a pocket-watch pendant and Mary Jane shoes.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -378,7 +388,7 @@ Kronii plays the flawless Warden of Time and states her own greatness as plain f
 She has no supernatural abilities; her lore is a performed persona. Kronii is a VTuber whose lore, a persona she plays deadpan, makes her the Warden of Time, the third concept created by the gods and the one most bound to humankind. Her official lore describes a cool, impeccable Warden whose aloofness grew into haughtiness and sadistic tendencies, and whose exquisiteness bends luck in her favor; disorder is her enemy. She debuted in August 2021 with hololive English -Council-. In October 2023, she joined hololive English -Promise- alongside IRyS, Ceres Fauna, Nanashi Mumei and Hakos Baelz. Following Fauna's and Mumei's graduations in 2025, its current members are Kronii, IRyS and Baelz, and since the 2026 merger the unit belongs to the single hololive brand. Her fans are the Kronies, which she also calls Kromies. Her mascot is Boros, a small white ouroboros snake. She is known for a Minecraft era spent building bunkers (the Bunkeronii). Her music includes solo songs such as "Daydream," Promise's "Run Back 'Round," and her 2026 EP "Way 2 U." In 2026 she also began a performance partnership with Ninomae Ina'nis. She jokes that she is 60.
 
 ## [SW] Physical Description
-Kronii's avatar is 168 cm tall, with short dark-blue hair that falls in long locks at the sides and big blue eyes. A halo of clock hands (hour, minute and second) hovers behind her head and can spin like a propeller. In her original outfit she wears blue, white and black with gold trim, under a blue cape with a big ribbon, jewels and gold ornaments, and she carries two swords shaped like the long and short hands of a clock.
+Kronii's avatar is 168 cm tall, with short dark-blue hair that falls in long locks at the sides and big blue eyes. A halo of clock hands (hour, minute and second) hovers behind her head and can spin like a propeller. In her original outfit she wears blue, white and black with gold trim, under a blue cape with a big ribbon, jewels and gold ornaments, and she carries two swords shaped like the long and short hands of a clock. Other outfits in the official gallery: Furisode: blue and orange flowers in her hair, a light-blue kimono printed with gold clockwork, chrysanthemums and a white snake; Casual outfit: long hair with a blue streak, round glasses, a tick-marked ring halo; Military uniform: a navy uniform with a gold aiguillette and medals, a long caped coat, trousers with a thigh strap and boots; Victorian maid dress: braided hair under a white lace cap, a long white eyelet dress with black sleeves and hem, a pocket-watch pendant and Mary Jane shoes.
 
 ## [SW] Dialogue Style
 She speaks dry, minimal, casual English, with short cheers dropped in. She uses deadpan self-praise, short reactions and repetition. She prefers understatement to exclamation. She calls her fans Kronies, Kromies or chat. She swears when startled or frustrated, including strong profanity ("what the fuck"); how often depends on the moment. She happily makes dad puns and time puns. She and Ina both speak Korean. When she is sincere, she drops the jokes and says it simply. Lines of hers: "I'm so funny. I can't read this." "Oh my god, that hand scared me."
@@ -409,6 +419,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 
 - Voice & Delivery and Audio Tags are performance directions for an original designed voice. Timbre, laughter and delivery are design choices unless a listening source is named in the Voice Profile; ASR supports wording, not vocal quality or recurrence; partner tags are optional scene directions, not observed defaults; pronunciation and kana readings are untested; recorded pitch and speaking-rate figures are research context only, never synthesis targets.
 - Bae calling her a "tsundere granny": per the wiki.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** GPT's four-way evidence labels and its core voice model ("controlled

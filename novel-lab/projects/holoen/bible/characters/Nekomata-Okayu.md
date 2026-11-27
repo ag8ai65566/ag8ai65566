@@ -135,6 +135,19 @@ The middle column is provisional voice direction unless a source is named.
   purple cat-print jacket outfit used for her 2025 solo concert, and a maid outfit in the 2026 game hololive
   Dreams. [Observed OK2 §2023–§2025, secondary; OK4]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/nekomata-okayu/ (9 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): lavender hair, cat ears and tail, a black collar with a bell, a grey-and-purple cropped hoodie with an onigiri emblem and black straps, baggy white trousers with purple stripes and yellow sneakers.
+- **Kimono-maid outfit** (gallery 03): a purple-to-white kimono top with wide sleeves, a black obi, a white frilled apron with an onigiri patch, white socks and geta.
+- **Sailor-style outfit** (gallery 04): a black headband, a dark purple sailor crop top with a white tie, white shorts, black knee socks and sneakers.
+- **Loungewear** (gallery 05): glasses, an oversized white shirt under a dark grey cardigan, and slippers.
+- **Card-suit coat outfit** (gallery 06): a black beret, a white blouse with a purple ribbon, a long black coat patterned with white card suits, black shorts, mismatched striped stockings with purple wraps and black shoes.
+- **Green-and-purple outfit** (gallery 07): a black beret with a green rose, a green cropped jacket with one fishnet purple sleeve, a purple skirt, garters, mismatched purple and green thigh-highs and black lace-up boots with a yellow bow.
+- **Techwear** (gallery 08): twin tails, an oversized black coat with teal straps over a short grey-and-black dress with plated panels, a thigh strap, grey stockings and shoes.
+- **Punk outfit** (gallery 09): long hair, a sheer grey cut-out top over a purple top, grey denim shorts, one purple stocking printed with hearts and one fishnet, and black boots.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -255,7 +268,7 @@ Okayu is a relaxed cat of hololive GAMERS. She calls herself "boku," and her del
 Okayu is an active member of hololive GAMERS. She has no supernatural abilities; her lore is a performed persona. She debuted on 2019-04-06 and belongs to hololive GAMERS with Shirakami Fubuki, Ookami Mio and Inugami Korone. She held solo concerts in 2022 and 2025, appears at GAMERS concerts and passed two million subscribers in May 2025; she is the star and supervisor of the game "Okayu Nyūmu!" and stars in its 2026 sequel.
 
 ## [SW] Physical Description
-Okayu's avatar is 152 cm tall, a cat girl with medium-length light purple hair, purple cat ears and a tail, and bright purple eyes. She wears an off-black, purple-tinted hoodie and a black collar. Her emoji is a rice ball (🍙).
+Okayu's avatar is 152 cm tall, a cat girl with medium-length light purple hair, purple cat ears and a tail, and bright purple eyes. She wears an off-black, purple-tinted hoodie and a black collar. Her emoji is a rice ball (🍙). Other outfits in the official gallery: Kimono-maid outfit: a purple-to-white kimono top with wide sleeves, a black obi, a white frilled apron with an onigiri patch; Sailor-style outfit: a black headband, a dark purple sailor crop top with a white tie, white shorts; Loungewear: glasses, an oversized white shirt under a dark grey cardigan, slippers; Card-suit coat outfit: a black beret, a white blouse with a purple ribbon, a long black coat patterned with white card suits; Green-and-purple outfit: a black beret with a green rose, a green cropped jacket with one fishnet purple sleeve, a purple skirt; Techwear: twin tails, an oversized black coat with teal straps over a short grey-and-black dress with plated panels, a thigh strap; Punk outfit: long hair, a sheer grey cut-out top over a purple top, grey denim shorts.
 
 ## [SW] Dialogue Style
 Streams in Japanese in a relaxed, unhurried voice: "boku" for "I," polite "-masu" endings mixed with easygoing ones, long trailing vowels and "hai hai hai." She greets with "Mogu mogu~ Okayu~!" ("Om nom, Okayu!"), calls her fans "Onigiryā" and narrates what she is doing as she plays; she once opened a game by proposing to go "by vibes" (「ノリで相手をぶっ倒したいと思いまーす」), and she repeats "nya" when a move feels good. Her flirting is a playful tease to see people react; she agrees with everyone and calls Korone "Koro-san." Her default here is relaxed; stronger reactions follow the scene. When a story renders her speech in English or Chinese, keep the boyish "boku" register, the unhurried pace and the teasing warmth.
@@ -292,6 +305,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "TakoNeko", "Dorobo Kensetsu": secondary references. The Gigi banter: secondary clip metadata.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「完食〜おかゆ〜！」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-26「新しい朝がきた～～ 希望の朝だ～～～～～～！🌤」 <https://www.youtube.com/watch?v=ukYZ4iMSTAg> (checked 2026-10-31) at 3728 s; Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2025-05-08「寝起き声低許して雑談」 <https://www.youtube.com/watch?v=QpuVXgtsUAs> (checked 2026-10-31) at 6814 s) and ホロライブ非公式wiki（seesaawiki）「猫又おかゆ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C7%AD%CB%F4%A4%AA%A4%AB%A4%E6> (checked 2026-10-31).
 - Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hoshimachi Suisei, AZKi, Nakiri

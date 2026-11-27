@@ -145,6 +145,16 @@ The middle column is provisional voice direction unless a source is named.
   a microphone; a master key of The Cell on a keychain; a magical lyre (2026). Emoji 🎼. Illustrator EB+.
   [Observed N2 §Miscellaneous, §Lore, secondary] [Official N1]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/nerissa-ravencroft/ (6 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): long black hair with blue streaks, a dark horn with feathers, black raven wings, a white striped shirt with a black tie under a belted black corset and skirt, feather-trimmed black sleeves, garters, heeled black thigh-high boots and a long forked staff.
+- **Kimono** (gallery 03): a blue paper umbrella hung with wisteria, a black kimono with blue cranes and flowers, a white fur collar, trailing feathers and sandals.
+- **Office outfit** (gallery 04): glasses, a plaid scarf, a navy coat over a white blouse, a black pencil skirt, black tights and heels.
+- **Sleepwear** (gallery 05): a white-and-lavender babydoll nightdress with a ribbon and slippers with faces.
+- **Summer outfit** (gallery 06): a long side braid, a white cropped jacket over a blue bikini top, a frilled plaid wrap skirt, a beaded thigh garter and sandals.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -255,7 +265,7 @@ Nerissa streams as the "Demon of Sound," a singer whose voice was too powerful f
 She has no supernatural abilities; her lore is a performed persona. Nerissa is a VTuber whose lore, a persona she plays for laughs, makes her the Demon of Sound: a singer whose love-filled voice could drive the world mad, sealed by the gods in The Cell with one horn broken, until she escaped with the rest of Advent, master key on her keychain. She debuted on 2023-07-31 with hololive English -Advent- (since the 2026 merger, hololive -Advent-). She had her 3D debut on 2024-08-09 PDT (with a literal pot of soup), released her first EP "In My Feelings" (2024-08-08), held the 3D concert "Requiem for Love – A JukeBox Musical" (2025) with Calli and IRyS as guests, sang the duet "OVER//RIDE" with Calli (2025), and released "OYOME♡HOLIC" and "Blue World" (2026). She reached one million subscribers on 2026-06-12, and in 2026 she was announced as the English voice of the space pirate Risa in the anime pilot "Tenchi Galaxy." Her fans are Jailbirds.
 
 ## [SW] Physical Description
-Nerissa's avatar is 175 cm tall, the tallest in hololive (197 cm counting heels and horns): long straight black hair with a blue inner layer and silver and gold ornaments, light purple eyes with a beauty mark under the left eye, and two horns layered black over blue, shaped like musical notes near the base and decorated with black flowers; one horn is broken. She wears a striped off-shoulder white shirt with a black bow and ruffled collar, feather-edged black sleeves and gloves, a layered sleeveless coat with three crossed belts, and asymmetrical high boots. Her staff is a giant flower-decorated tuning fork that can become a microphone, and her raven mascot Shadow can perch on her right shoulder.
+Nerissa's avatar is 175 cm tall, the tallest in hololive (197 cm counting heels and horns): long straight black hair with a blue inner layer and silver and gold ornaments, light purple eyes with a beauty mark under the left eye, and two horns layered black over blue, shaped like musical notes near the base and decorated with black flowers; one horn is broken. She wears a striped off-shoulder white shirt with a black bow and ruffled collar, feather-edged black sleeves and gloves, a layered sleeveless coat with three crossed belts, and asymmetrical high boots. Her staff is a giant flower-decorated tuning fork that can become a microphone, and her raven mascot Shadow can perch on her right shoulder. Other outfits in the official gallery: Kimono: a blue paper umbrella hung with wisteria, a black kimono with blue cranes and flowers, a white fur collar; Office outfit: glasses, a plaid scarf, a navy coat over a white blouse; Sleepwear: a white-and-lavender babydoll nightdress with a ribbon and slippers with faces; Summer outfit: a long side braid, a white cropped jacket over a blue bikini top, a frilled plaid wrap skirt.
 
 ## [SW] Dialogue Style
 Casual, chatty English that runs on: long anecdotes with mock-dramatic escalation ("he's trying to kill me"), then "anyway" back to the point. Fillers: "like," "okay," "mind you," "oh my god," "man," and a tag question, "You know what I'm saying?" She calls chat "you guys" or "Jailbirds" and a friend "girl," drops Japanese honorifics ("Kiara-senpai," "kohai"), and does silly voices mid-story (a caveman voice). Crude and flirty lines often come out deadpan, sometimes walked back right away; a rage-bait opinion can get retracted once chat bites. She swears as casual emphasis ("That shit's divine") and knows it: "I need to stop swearing so much." Lines of hers: "I'm sorry. They are donuts." "The point I was trying to make was not correct."
@@ -290,6 +300,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "Ope?!": a proposed spoken use of a written expression; delivery unverified.
 - Marine as an oshi: secondary. "AutoTune": secondary pair name.
 - Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-09-30): official profile (N1), wiki (N2, by section),

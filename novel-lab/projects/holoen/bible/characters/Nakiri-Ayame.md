@@ -134,6 +134,20 @@ The middle column is provisional voice direction unless a source is named.
   looks include a shrine-maiden outfit (2023), a 7th-anniversary kimono with a paper parasol (2025), a white dress
   with a rifle (2025-11) and a pink kimono with a black beret (2026-02-14). [Official AY1] [Observed AY2]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/nakiri-ayame/ (10 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original oni outfit** (gallery 01-02): long white hair with red tips, two small horns, a red flower and bells in her hair, a short black-and-red frilled kimono with a green obi and red bow, two katana, a red-and-white sacred rope, white thigh-highs tied with red ribbons, black sandals and blue will-o'-wisps.
+- **Western-style outfit** (gallery 03): a black frilled headband, a white blouse with a blue bow, detached frilled sleeves, a black corset skirt over a pale pleated skirt, black socks and shoes.
+- **Furisode** (gallery 04): a red flower ornament, a purple-and-red furisode with plum blossoms and flowers, a gold obi and geta.
+- **Streetwear** (gallery 05): twin tails, an oversized black jacket with red lining and printed lettering, a white shirt with a black tie, a black pleated skirt, black thigh-highs and black shoes with red bows.
+- **Shrine-maiden-style outfit** (gallery 06): twin buns, a red-and-white outfit with pink arrow-feather sleeves and pom-pom tassels, a red skirt, pink thigh-highs and will-o'-wisps.
+- **Gold-accented kimono** (gallery 07): gold hair ornaments, a dark brown-and-red kimono top with a short red skirt, one long white patterned sleeve, gold accents, tassels and sandals.
+- **White uniform** (gallery 08): a white beret, a white jacket dress with a red tie and gold buckles, a black gauntlet and black boots.
+- **Pink idol kimono** (gallery 09): twin buns with red bows, a pink frilled kimono dress with a black corset obi and pink ribbons, tassels and black lace-up boots.
+- **Tracksuit** (gallery 10): a red tracksuit over a white T-shirt printed かわ余 and slippers with oni faces.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -237,7 +251,7 @@ Her performed lore presents her as a kimono-clad oni from the Underworld Academy
 Ayame is an active member of hololive's 2nd generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2018-09-03; her 2nd-generation groupmates were Minato Aqua (graduated 2024-08-28), Murasaki Shion (graduated 2025-04-26), Yuzuki Choco and Oozora Subaru. Her originals include "Yoi no Yo, Yoi!", "Kawayo," "melting" and "Hanafubuki"; with Shirakami Fubuki and Ookami Mio as AyaFubuMi she performed "Ame Tokimeki Koimoyō," a 2025 anime opening theme. Fubuki created her companion Poyoyo. She has played in VALORANT tournaments; she was a guest artist at a Pretty Cure virtual music event and streams chats, karaoke and evening talks. She shared 7th fes STAGE 1 with Ina and FUWAMOCO (2026), and the official Anime NYC 2026 announcement listed her, Fubuki and Mio for an August 22 convention-exclusive stream.
 
 ## [SW] Physical Description
-Ayame's avatar is 152 cm tall, an oni girl with long, loose white hair tinted pink, white horns, reddish-pink eyes, bell-ribbon hair ornaments and a red oni mask. She wears a black kimono with red and gold accents and spider lilies at the hem, a green obi with a gold flower motif, a large red-and-white bow, long white stockings and zori, with two swords on her back: the black-handled "Rasetsu" and the red-handled "Asura."
+Ayame's avatar is 152 cm tall, an oni girl with long, loose white hair tinted pink, white horns, reddish-pink eyes, bell-ribbon hair ornaments and a red oni mask. She wears a black kimono with red and gold accents and spider lilies at the hem, a green obi with a gold flower motif, a large red-and-white bow, long white stockings and zori, with two swords on her back: the black-handled "Rasetsu" and the red-handled "Asura." Other outfits in the official gallery: Western-style outfit: a black frilled headband, a white blouse with a blue bow, detached frilled sleeves; Furisode: a red flower ornament, a purple-and-red furisode with plum blossoms and flowers, a gold obi and geta; Streetwear: twin tails, an oversized black jacket with red lining and printed lettering, a white shirt with a black tie; Shrine-maiden-style outfit: twin buns, a red-and-white outfit with pink arrow-feather sleeves and pom-pom tassels, a red skirt; Gold-accented kimono: gold hair ornaments, a dark brown-and-red kimono top with a short red skirt, one long white patterned sleeve; White uniform: a white beret, a white jacket dress with a red tie and gold buckles, a black gauntlet and black boots; Pink idol kimono: twin buns with red bows, a pink frilled kimono dress with a black corset obi and pink ribbons, tassels and black lace-up boots; Tracksuit: a red tracksuit over a white T-shirt printed かわ余 and slippers with oni faces.
 
 ## [SW] Dialogue Style
 Streams in Japanese: chatty and storytelling, with "nanka," "maji de" and "meccha," polite with chat at first and quickly casual (「聞こえておりますでしょうか」, "can you hear me?", opening a 2026 chat). She calls herself "Yo" and her viewers "ningen-sama"; the archaic pronoun does not make her syntax archaic. She scolds teasing chat with a pouting 「うるさい」 ("Urusai!", "Shut up!") and, in a separate moment, 「困った人たち」 ("you troublesome people"), and in a horror game talks herself down (「落ち着いて落ち着いて」, "calm down, calm down") while 「声が震えちゃう」 ("my voice is shaking"). When a story renders her speech in English or Chinese, keep the royal "Yo" (in Chinese, 余) and the mock-haughty act melting into giggles; the English glosses are ours.
@@ -275,6 +289,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - r02 status marks: Minato Aqua graduated on 2024-08-28: Anime Corner <https://animecorner.me/hololives-minato-aqua-to-graduate-on-august-28/> (checked 2026-11-27).
 - r02 status marks: Murasaki Shion graduated on 2025-04-26: Anime Corner <https://animecorner.me/hololive-vtuber-murasaki-shion-to-graduate-on-april-26/> (checked 2026-11-27).
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「おつなきりー！」 — secondary (ホロライブ非公式wiki（seesaawiki）「百鬼あやめ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C9%B4%B5%B4%A4%A2%A4%E4%A4%E1> (checked 2026-10-31); ホロライブ非公式wiki「百鬼あやめ【語録】」：口癖（次要來源） <https://seesaawiki.jp/hololivetv/d/%C9%B4%B5%B4%A4%A2%A4%E4%A4%E1%A1%DA%B8%EC%CF%BF%A1%DB> (checked 2026-10-31)).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hoshimachi Suisei, AZKi, Nakiri

@@ -153,6 +153,18 @@ The middle column is provisional voice direction unless a source is named.
 - 2026: a race-queen outfit for her birthday live "Racing Towards Hope" (visor, gold accessories, blue and
   pink eyeshadow). [ASR R20]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/irys/ (8 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): long magenta hair, small horns, pointed ears, a white spiked halo, one dark wing and one translucent wing; a white-and-black dress with red roses and ribbons, detached sleeves, a frilled skirt, purple thigh-highs with bows and red heels.
+- **Furisode** (gallery 03): a purple-and-white kimono printed with planets, stars and flowers, a red obi with a decorative cord knot, ornaments in her twin tails and sandals.
+- **Casual outfit** (gallery 04): a short bob under a checked cap, a cream cable-knit cardigan over a white dress, black tights and ankle boots.
+- **School-sporty outfit** (gallery 05): two braids and headphones, a teal jacket with patches over a navy sailor uniform, slouchy white leg warmers and sneakers.
+- **Maid outfit** (gallery 06): twin tails with a maid headdress and a red rose, a black-and-white maid dress with long frilled sleeves, garters, black thigh-highs and black boots.
+- **Racing idol outfit** (gallery 07): a high ponytail with a visor, a cropped top under a white-and-teal racing jacket, a checkered skirt, a holographic ribbon tail and teal-and-pink boots.
+- **Monster Hunter collaboration outfit (©CAPCOM)** (gallery 08): a flower in her hair, a pink-and-white kimono-style top with tassels and wide sleeves, a dark frilled skirt, white thigh-highs and platform sandals.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -254,7 +266,7 @@ IRyS streams as a nephilim, half angel and half demon, who delivers hope through
 She has no supernatural abilities; her lore is a performed persona. IRyS is a VTuber and singer whose lore, a persona she plays for laughs, makes her a nephilim who was once the embodiment of hope in "The Paradise" and reawakened in an age of despair to deliver hope through her songs; she doesn't speak of what came before. She debuted on 2021-07-11 as hololive English's VSinger, the sole member of -Project: HOPE-, and joined -Promise- with Fauna, Kronii, Mumei and Bae in 2023; since the 2026 merger she is in hololive -Promise-. Her fans are IRyStocrats and her members Nephamily. She has released several EPs, held 3D lives such as "The Devil Wears Hope" (2024), "HOPE UPON A STAR" (2025) and "Racing Towards Hope" (2026, in a race-queen outfit), released her first full-length album, "DANGERyS," on 2026-07-12, and held her first solo concert, "HOPE ||: Beyond the Stars," at SGC Hall Ariake in Tokyo on 2026-10-06.
 
 ## [SW] Physical Description
-IRyS's avatar is 162 cm tall (166 cm in heels), with light brown skin, floor-length magenta hair, long pointed ears and two small black horns. Her eyes are heterochromatic, cyan on the right and purple on the left, and a halo of white crystal stars floats above her head. She has a small pair of iridescent wings at her shoulders and larger magenta ones at her lower back.
+IRyS's avatar is 162 cm tall (166 cm in heels), with light brown skin, floor-length magenta hair, long pointed ears and two small black horns. Her eyes are heterochromatic, cyan on the right and purple on the left, and a halo of white crystal stars floats above her head. She has a small pair of iridescent wings at her shoulders and larger magenta ones at her lower back. Other outfits in the official gallery: Furisode: a purple-and-white kimono printed with planets, stars and flowers, a red obi with a decorative cord knot; Casual outfit: a short bob under a checked cap, a cream cable-knit cardigan over a white dress, black tights and ankle boots; School-sporty outfit: two braids and headphones, a teal jacket with patches over a navy sailor uniform, slouchy white leg warmers and sneakers; Maid outfit: twin tails with a maid headdress and a red rose, a black-and-white maid dress with long frilled sleeves, garters; Racing idol outfit: a high ponytail with a visor, a cropped top under a white-and-teal racing jacket, a checkered skirt; Monster Hunter collaboration outfit: a flower in her hair, a pink-and-white kimono-style top with tassels and wide sleeves, a dark frilled skirt.
 
 ## [SW] Dialogue Style
 Fast, bubbly, run-on English when she's excited, full of "like," "you know," "I do think so," restarts and repeated phrases ("It's so cute. It's so cute."). She calls her audience "you guys," puns on her own name, and slips a Japanese interjection into English. Strong profanity is uncommon ("damn it," "holy shoot!"); her usual comic edge is innuendo, delivered sweetly and then walked back: she insists she is "a hundred percent seiso," or tells chat to erase what she just said from memory. She reads superchats in counted batches and wanders into long, detailed explanations of how a show or outfit was made. Lines of hers: "I'm trying to make you guys feel guilty. That's what I'm doing here, okay?" "Glad you guys like the outfit. I knew you guys would."
@@ -287,6 +299,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Profanity frequency: sampled recent streams.
 - Light giggle: a proposed effect. Repeated thanks and goodbyes: ASR-supported wording; vocal treatment untested.
 - r02 (2026-11-27): the first solo concert took place on 2026-10-06 at SGC Hall Ariake: official event page <https://hololive.hololivepro.com/en/events/hope-beyond-the-stars/>; COVERedge retrospective interview, headed "setting sights on a 2nd, even larger concert" <https://coveredge.cover-corp.com/en/list/7430> (checked 2026-11-27).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-09-30): official profile (R1), wiki (R2, by section),

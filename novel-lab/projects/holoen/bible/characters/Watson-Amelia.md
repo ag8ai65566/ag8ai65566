@@ -236,6 +236,16 @@ Real lines first; Style demos after.
   detective coat with a stethoscope. [Observed A2 §Appearance, secondary] [Official A18]
 - Mascot: Bubba, a small dog designed by Ina. [Observed A2 §Mascots and fans]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/watson-amelia/ (6 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original detective outfit** (gallery 01-02): a checked deerstalker with a gear-decorated magnifying-glass hairpin, a white blouse with a short red tie, a checked skirt with her golden pocket watch, a detective coat with a stethoscope, syringes on her left leg, black thigh-highs and brown shoes.
+- **Casual outfit** (gallery 03): a brown cap with Bubba sitting on top, round glasses, a brown plaid cardigan over a white top, black shorts, tan tights, a black handbag with a mustache emblem and strappy heels.
+- **Black evening dress** (gallery 04): an updo with a tiara, a sheer black puff-sleeved dress with a white flower belt, a blue vine tattoo on one leg and gold heels.
+- **Hakama** (gallery 05): a navy kimono printed with goldfish, a yellow-to-orange hakama with a big orange bow, and geta.
+- **Astronaut suit** (gallery 06): a golden spacesuit with a MYTH patch, a clear bubble helmet with a bow, white boots, and Bubba floating in his own helmet.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -375,7 +385,7 @@ Ame streams as hololive's self-proclaimed #1 detective and is a competitive game
 She has no supernatural abilities; her lore is a performed persona. Ame is a VTuber and a hololive affiliate: she concluded her regular activities on September 30, 2024, and appears at individually announced events. Her lore, a persona she plays for laughs, makes her a time-traveling detective with a pocket watch that lets her travel through time. After hearing rumors about the unusual beings in hololive, she became an idol just out of interest, training her reflexes with shooters and her mind with puzzle games. She debuted in hololive English -Myth- in September 2020, briefly undercover with a fake British accent, and her fans are the Teamates. Her mascot is Bubba, her dog mascot. She built her own 3D and VR setups for her genmates, came up with and co-managed the ChikuTaku rhythm game, and hosted a charity stream. She was a guest at Kronii's 3D birthday live in March 2026.
 
 ## [SW] Physical Description
-Ame's avatar is 150 cm tall, with light-blonde hair falling below her shoulders and blue eyes. In her original outfit she wears a checked deerstalker with a gear-decorated magnifying-glass hairpin, a white blouse with a short red tie printed with a mustache, a checked skirt carrying her golden pocket watch, a detective coat with a stethoscope, and syringes of her concoction strapped to her left leg. Bubba, her dog mascot, appears in later outfit designs.
+Ame's avatar is 150 cm tall, with light-blonde hair falling below her shoulders and blue eyes. In her original outfit she wears a checked deerstalker with a gear-decorated magnifying-glass hairpin, a white blouse with a short red tie printed with a mustache, a checked skirt carrying her golden pocket watch, a detective coat with a stethoscope, and syringes of her concoction strapped to her left leg. Bubba, her dog mascot, appears in later outfit designs. Other outfits in the official gallery: Casual outfit: a brown cap with Bubba sitting on top, round glasses, a brown plaid cardigan over a white top; Black evening dress: an updo with a tiara, a sheer black puff-sleeved dress with a white flower belt, a blue vine tattoo on one leg and gold heels; Hakama: a navy kimono printed with goldfish, a yellow-to-orange hakama with a big orange bow, geta; Astronaut suit: a golden spacesuit with a MYTH patch, a clear bubble helmet with a bow, white boots.
 
 ## [SW] Dialogue Style
 Stumbling English that restarts mid-sentence and drops thoughts, then recovers them. Fillers everywhere: "okay," "oh," "like," "uh," "yeah," and "all right" to move on. She calls her audience "you guys," only sometimes "chat," and "Teamates" on big occasions. She sets up something sweet and innocent, then twists it crude (mom jokes, lewd-adjacent quips) as if nothing happened. Her anger swearing can escalate through repeated questions into a shout and may end in an apology or an admission of a bad play. She builds in threes to a shouted third line, uses detective and time-traveler branding as punchlines, and slips into a put-on British accent as a bit. Cute words sit beside the crude ones: "doggies," "yummy." Lines of hers: "I'm gonna connect the world with my fist. I'm gonna connect the world by force." "I'm four years old! I can barely talk!" "This game fucking sucks. It sucks. I'm done. I'm done."
@@ -406,6 +416,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 
 - Voice & Delivery and Audio Tags are performance directions for an original designed voice. Timbre, laughter and delivery are design choices unless a listening source is named in the Voice Profile; ASR supports wording, not vocal quality or recurrence; partner tags are optional scene directions, not observed defaults; pronunciation and kana readings are untested; recorded pitch and speaking-rate figures are research context only, never synthesis targets.
 - "ClueChaser" and "KoMeHa": secondary references.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** the Kronii/Calli format: audio-status note, wiki cited by section

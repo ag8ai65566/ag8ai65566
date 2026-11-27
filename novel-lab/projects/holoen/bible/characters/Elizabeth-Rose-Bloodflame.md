@@ -154,6 +154,14 @@ The middle column is provisional voice direction unless a source is named.
 - Red is her color; her oshi mark is 💄. Fans: Rosarians (the Bloodflame Kingdom; drawn as white corgis with
   blue flame tails); mascots Bobby (a dog) and Guard (lipstick-armored knights). [Observed EB2, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/elizabeth-rose-bloodflame/ (4 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): very long red hair with an ahoge, a blue flame gem at her chest, a white armored bodice with black accents and belts, a black skirt, a white coat of flowing cut-out panels edged in lace, white thigh-high heeled boots and a huge black-and-red executioner's sword.
+- **Kimono** (gallery 03): hair up with blue roses, a red-and-navy kimono with blue roses and lace worn over a white off-shoulder top, long black gloves, a big red obi bow, a long frilled trailing hem and sandals.
+- **Loungewear** (gallery 04): a pink bunny-ear hood topped with a cake, round glasses, a pink oversized cardigan, leg warmers, fluffy slippers and a game controller in her hands.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -268,7 +276,7 @@ Elizabeth streams as "The Scarlet Queen," Harbinger of Order and organizer of Ju
 Elizabeth is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Scarlet Queen" and organizer of Justice; her lore adds that she is the Harbinger of Order, a human knight from Great Exardia (not actually royalty) whose sword is Thorn, who joined hololive to keep an eye on Advent and to become an idol. She debuted first of her generation on 2024-06-21 (PDT) in hololive English -Justice-, held her 3D showcase on 2025-08-01 (PDT), sang at the 2025 English concert ("ALiCE&u" with Nerissa and Ayunda Risu, a solo "Stellar Stellar," and the day-two opener "START AGAIN" with Calli, IRyS and Nerissa), invited guests from several branches to her 2026 birthday live, and at the 2026 Serendipity concert sang "HELP!!" with Kobo Kanaeru and Hakos Baelz and formed the unit Bloodraven with Nerissa Ravencroft ("Cruel Angel's Thesis"). Her representative color is red; her fans are the Rosarians of the Bloodflame Kingdom.
 
 ## [SW] Physical Description
-Elizabeth's avatar is 171 cm tall, the tallest of Justice, with red eyes, long red hair tinted blue underneath and a long ahoge. She wears a black and white outfit fastened with belts, red pauldrons and removable sleeves, and carries a black-and-red sword engraved with the scales of justice. A blue flame effect sits on her chest and can flare.
+Elizabeth's avatar is 171 cm tall, the tallest of Justice, with red eyes, long red hair tinted blue underneath and a long ahoge. She wears a black and white outfit fastened with belts, red pauldrons and removable sleeves, and carries a black-and-red sword engraved with the scales of justice. A blue flame effect sits on her chest and can flare. Other outfits in the official gallery: Kimono: hair up with blue roses, a red-and-navy kimono with blue roses and lace worn over a white off-shoulder top, long black gloves; Loungewear: a pink bunny-ear hood topped with a cake, round glasses, a pink oversized cardigan.
 
 ## [SW] Dialogue Style
 Warm, polite English with British slang ("Ello," "Soz," "bits and bobs," "for funsies," "willy-nilly," "whilst," "gosh," "cheeky," "Fancies!"), full of "like," "okay" and "lovely," and warm reactions to anything cute. She opens and closes like a TV host, with a heartfelt sign-off undercut a moment later by a cheer, and slips into queenly theatre for bits. She uses minced oaths ("What the frick?"; "What the Frigg!" and "Oh, you mothertrucker…"). She talks about singing with real feeling ("singing is good for the soul"; "a very Liz song"), jokes about her flame dancers' work ethic, voices game characters and does impressions. Most of the time she simply chats warmly; save the royal flourish for bits.
@@ -303,6 +311,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "What the frick?": sampled streams; "What the Frigg!" and "Oh, you mothertrucker…": wiki.
 - Towa's 2025 New Year Game Festival team: secondary roster.
 - r02 status marks: Amane Kanata graduated on 2025-12-27: her announcement <https://x.com/amanekanatach/status/1996849896578527269>; Dengeki Online <https://dengekionline.com/article/202512/59482> (checked 2026-11-27).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (EB1), wiki (EB2, by section),

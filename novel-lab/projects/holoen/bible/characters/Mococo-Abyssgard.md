@@ -134,6 +134,15 @@ The middle column is provisional voice direction unless a source is named.
   (2025) and pink pajamas (2026). [Observed MC2, secondary]
 - Fans: Ruffians (Mococo's own: "Mocobros"); the twins' fictional dog mascot is Pero. [Observed MC2, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/mococo-abyssgard/ (5 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): blonde hair with pink streaks, pink-tipped dog ears, a pink hairband with clips, headphones around her neck, a cropped black jacket with pink flame patterns and pink claws over a white top, a pink belt, frilled white shorts, fishnet knee socks, chunky pink-and-white sneakers and a fluffy cream tail.
+- **Kimono-style outfit** (gallery 03): hair up with pink flowers, a one-sleeved pink floral kimono top, a big purple obi bow, a garter, paw gloves and fluffy paw boots.
+- **Casual outfit** (gallery 04): a pink jacket with bows over a white crop top printed with her name, a denim skirt, mismatched white and pink-striped socks and blue boots.
+- **Loungewear** (gallery 05): a pink sleep mask pushed up, a sheer pink hoodie over a pink camisole with bows, white shorts, leg warmers and pink slippers.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -236,7 +245,7 @@ Mococo streams as "The Fuzzy One," the younger of the twin demonic guard dogs. O
 Mococo is a hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Fuzzy One," the younger of two twin demonic guard dogs from the demon world, sealed in The Cell "for being a pain in the godly behind," who spent her prison time watching anime and playing games and joined the escape "just for the heck of it," barking at the guards and throwing Pero, the twins' dog mascot, at them. She debuted with her older twin Fuwawa as FUWAMOCO on 2023-07-31 in hololive English -Advent-, sharing one channel and the morning show FUWAMOCO MORNING. Together they won "VTuber of the Year" at the 2024 VTuber Awards, made their 3D debut in August 2024, sang "Mekurumeku Rendezvous" (digital release 2026-04-02), the ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album. Her color is pink.
 
 ## [SW] Physical Description
-Mococo's avatar is 155 cm tall, with short blonde hair streaked pink, pointed dog ears with white tufts and a collar. She wears a black and pink jacket and headphones, with light-pink X-shaped hairpins and a white-and-pink bandage clip that mirrors her twin's blue one. Pink is always her color, so people can tell her from Fuwawa, who is otherwise her identical twin. Pero, "The Great Perroccino," their small, muscular fictional dog mascot, appears in their bits.
+Mococo's avatar is 155 cm tall, with short blonde hair streaked pink, pointed dog ears with white tufts and a collar. She wears a black and pink jacket and headphones, with light-pink X-shaped hairpins and a white-and-pink bandage clip that mirrors her twin's blue one. Pink is always her color, so people can tell her from Fuwawa, who is otherwise her identical twin. Pero, "The Great Perroccino," their small, muscular fictional dog mascot, appears in their bits. Other outfits in the official gallery: Kimono-style outfit: hair up with pink flowers, a one-sleeved pink floral kimono top, a big purple obi bow; Casual outfit: a pink jacket with bows over a white crop top printed with her name, a denim skirt, mismatched white and pink-striped socks and blue boots; Loungewear: a pink sleep mask pushed up, a sheer pink hoodie over a pink camisole with bows, white shorts.
 
 ## [SW] Dialogue Style
 Bright, quick, earnest English with "bau bau" everywhere, short exclamations ("Whæt?", "Haeh?", "This is good!"). She gives Pup Talks that build step by step to a cheer ("Not tomorrow! Today!"; "That means you're unstoppable!"), keeps the show running ("hashtag hashtag FWMCMORNING"), and insists on her real nicknames. She refers to herself by name ("What about Mococo?"; "I'm not silly. I'm Mococo!"), gets overexcited, and sneezes mid-sentence. She calls her sister "Fuwawa," mixes in Japanese words she loves, and does not swear. With Fuwawa she finishes sentences in sync and argues a little. Her Pup Talks turn small daily efforts into an encouraging picture of cumulative progress. Lines of hers: "I'm the danger!" "If I die, I die."
@@ -271,6 +280,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - No regional accent assigned (no in-scope listening check).
 - Singing stream with Minato Aqua and the 2025 birthday-live guest spot (AZKi): secondary records. Okayu items: secondary accounts and archived metadata. Marine off-collabs: archived metadata.
 - r02 status marks: Minato Aqua graduated on 2024-08-28: Anime Corner <https://animecorner.me/hololives-minato-aqua-to-graduate-on-august-28/> (checked 2026-11-27).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (MC1), wiki (MC2, by section),

@@ -168,6 +168,15 @@ The middle column is provisional voice direction unless a source is named.
   now and then; a small owl, Hootsie. Fans: Hoomans; members: Owl Pals; emoji 🪶 and the text face ":D".
   [Observed M2 §Mascots and fans, §Miscellaneous, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/nanashi-mumei/ (5 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): two owl-feather tufts, a brown hooded capelet over a white blouse with a black bow, a dark corset with belts and a dagger, a red pleated skirt, a long teal cloak, a lantern at her hip, gloves, mismatched black stockings and fur-trimmed brown boots; Friend, a paper-bag creature, floats beside her.
+- **Winter kimono outfit** (gallery 03): a short bob under a brown beret, a red shawl over a white kimono, a basket with a little owl, and boots.
+- **Casual outfit** (gallery 04): round glasses, a cream oversized sweatshirt with a ribbon, a long brown plaid skirt and sneakers.
+- **Punk outfit** (gallery 05): a side tail, a black skull T-shirt with red-and-black striped sleeves, a black pleated skirt with a red plaid panel, a garter, fishnets, printed leg warmers and black shoes.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -284,7 +293,7 @@ Mumei streams as the Guardian of Civilization, a wandering owl who has watched h
 Mumei is a hololive alum: she graduated on 2025-04-27 (04-28 JST). She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her the Guardian of "Civilization," the only member of her generation created not by the gods but by mankind's efforts; she chose an owl's form for wisdom, and too many transformations made her brain "more bird," so she forgets things, including her original name and her age. Lonely on her travels, she made a friend out of paper: a paper bag called simply "Friend," so she can't forget his name. She debuted on 2021-08-23 with hololive English -Council-, released the original songs "A New Start" (2022) and "mumei" (2023), joined -Promise- in 2023, reached one million subscribers on 2024-01-26 (the first in Council and Promise), held the 3D birthday live "Outside the Box" on 2024-08-05, premiered the duet "It's Not a Phase" with Fauna at the 2024 English concert, and spent her last month in collabs and covers with members across hololive. Her fans are Hoomans, her members Owl Pals, and her stream descriptions end with ":D".
 
 ## [SW] Physical Description
-Mumei's avatar is 156 cm tall, with long light-brown hair in a high ponytail, tied with a black band and two brown feathers standing up in a V, and brown eyes with a yellow gradient. She dresses like a fantasy adventurer: a white puff-sleeved blouse under a brown, gold-trimmed corset, a short red ruffled skirt with a brown outer skirt, mismatched black stockings with thigh straps, a brown and beige feathered cape lined in teal, fingerless gloves, and a belt hung with a lantern, a pouch and a small dagger. Her paper-bag mascot Friend, with a drawn mouth and a cross-shaped plaster, sometimes floats beside her.
+Mumei's avatar is 156 cm tall, with long light-brown hair in a high ponytail, tied with a black band and two brown feathers standing up in a V, and brown eyes with a yellow gradient. She dresses like a fantasy adventurer: a white puff-sleeved blouse under a brown, gold-trimmed corset, a short red ruffled skirt with a brown outer skirt, mismatched black stockings with thigh straps, a brown and beige feathered cape lined in teal, fingerless gloves, and a belt hung with a lantern, a pouch and a small dagger. Her paper-bag mascot Friend, with a drawn mouth and a cross-shaped plaster, sometimes floats beside her. Other outfits in the official gallery: Winter kimono outfit: a short bob under a brown beret, a red shawl over a white kimono, a basket with a little owl; Casual outfit: round glasses, a cream oversized sweatshirt with a ribbon, a long brown plaid skirt and sneakers; Punk outfit: a side tail, a black skull T-shirt with red-and-black striped sleeves, a black pleated skirt with a red plaid panel.
 
 ## [SW] Dialogue Style
 Soft, quick, scattered English that runs on with "okay," "I guess," "you know" and "I don't know," then cuts itself off with "anyways" or "sorry" and starts again; she repeats words in threes and fours ("okay, okay, okay"; a dozen "bye-bye"s). She says macabre things in the same cute tone as everything else, and grand ones as the guardian, flatly, as if they were obvious, often undercut a beat later. She cheers with "yippee" and "hooray," often sarcastically ("I love talking about myself. Yippee, yippee. Hooray."), and reacts in games with short bright words: "uh oh," "oh shoot," "oh dear," "oh no," "nice," "yay," "owie owie owie!" Her swearing is mild ("shoot," "heck"). She drops Japanese into games (calling herself "yowai," weak), and says "don don!" when thanking superchats. Lines of hers: "It's okay not to know stuff sometimes. Yeah, unless you're me." "I'm too poor. No money." "Okay, are we ready? Are we bracing ourselves?"
@@ -316,6 +325,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Voice & Delivery and Audio Tags are performance directions for an original designed voice. Timbre, laughter and delivery are design choices unless a listening source is named in the Voice Profile; ASR supports wording, not vocal quality or recurrence; partner tags are optional scene directions, not observed defaults; pronunciation and kana readings are untested; recorded pitch and speaking-rate figures are research context only, never synthesis targets.
 - "don don!": ASR confirms the word in a game sample; its use for superchat thanks comes from secondary descriptions.
 - JP collaborations (Lui Q&A, Korone duet, "Outside the Box" guests): archived uploads.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (M1, greeting re-checked

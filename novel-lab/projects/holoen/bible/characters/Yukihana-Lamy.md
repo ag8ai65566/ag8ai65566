@@ -117,6 +117,18 @@ The middle column is provisional voice direction unless a source is named.
   companion is Daifuku, a little snow spirit like a polar bear in a pot. [Official LM1 key art, described by
   Claude] [Observed LM2 §Trivia, §Mascot, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/yukihana-lamy/ (8 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): long light-blue hair with a heart-shaped ahoge, elf ears, a white beret with a flower and feathers, a white blouse with a blue ribbon, a dark corset with a belt, a white skirt with snowflake patterns, a long light-blue fur-trimmed coat, frilled white thigh-highs and brown boots.
+- **Kimono and hakama** (gallery 03): a blue flower ornament, a blue-and-white floral kimono, a red obi with a big bow and sash, a navy hakama with pink blossoms and black boots.
+- **Casual outfit** (gallery 04): twin tails with black ribbons, a white cardigan with a black bow over a frilled brown plaid dress, lace-trimmed white socks and white lace-up shoes.
+- **Loungewear** (gallery 05): a fluffy blue-and-white striped hoodie with snow-sprite pockets over a pink camisole, and fluffy blue slippers.
+- **Green cape outfit** (gallery 06): a high ponytail with a green ribbon, a short green caped jacket with gold trim over a white blouse with a black ribbon, a short skirt, white socks and platform sandals.
+- **Streetwear** (gallery 07): twin tails under a black cat-ear cap printed LAMY, a black jacket with pink and blue straps, a white sports top with a choker, black shorts, thigh straps, one fishnet stocking and black boots.
+- **Swimsuit** (gallery 08): hair loose, a light-blue frilled bikini with a sheer skirt, a leg garter and platform sandals.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -216,7 +228,7 @@ Lamy is a snow elf accompanied by her little snow spirit Daifuku; her official p
 Lamy is an active member of hololive's 5th generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2020-08-12 in hololive's 5th generation; its original lineup included Lamy, Shishiro Botan, Omaru Polka, Momosuzu Nene and Mano Aloe. Lamy forms NePoLaBo with Botan, Polka and Nene. She sang in the "Blue Journey" project with Marine, Noel, Koyori and Sakura Miko (2023), joined "Magical Girl holoWitches!" (2025), formed KoZMy with AZKi and Koyori (2025) and is in KALAZ with Amane Kanata (graduated 2025-12-27) and AZKi. Her originals include "Hatsukoi Pâtissière" (2024), "Yoppara Music !" (2025) and "Snowlight Stories" (2026), and her first album, "Fleur de neige," was announced for January 2027.
 
 ## [SW] Physical Description
-Lamy's avatar is 158 cm tall, with long light-blue hair, a heart-shaped ahoge, small side braids, pointed elf ears and golden eyes, under a white beret with a blue snow flower. She wears a white blouse with a blue ribbon, a light-blue fur-trimmed coat patterned with snowflakes worn off the shoulders, a brown belt, a white skirt fading to blue, snow-patterned white thigh-highs and brown boots. Daifuku, a tiny polar-bear-like snow spirit in a pot, keeps her company.
+Lamy's avatar is 158 cm tall, with long light-blue hair, a heart-shaped ahoge, small side braids, pointed elf ears and golden eyes, under a white beret with a blue snow flower. She wears a white blouse with a blue ribbon, a light-blue fur-trimmed coat patterned with snowflakes worn off the shoulders, a brown belt, a white skirt fading to blue, snow-patterned white thigh-highs and brown boots. Daifuku, a tiny polar-bear-like snow spirit in a pot, keeps her company. Other outfits in the official gallery: Kimono and hakama: a blue flower ornament, a blue-and-white floral kimono, a red obi with a big bow and sash; Casual outfit: twin tails with black ribbons, a white cardigan with a black bow over a frilled brown plaid dress, lace-trimmed white socks and white lace-up shoes; Loungewear: a fluffy blue-and-white striped hoodie with snow-sprite pockets over a pink camisole, fluffy blue slippers; Green cape outfit: a high ponytail with a green ribbon, a short green caped jacket with gold trim over a white blouse with a black ribbon, a short skirt; Streetwear: twin tails under a black cat-ear cap printed LAMY, a black jacket with pink and blue straps, a white sports top with a choker; Swimsuit: hair loose, a light-blue frilled bikini with a sheer skirt, a leg garter and platform sandals.
 
 ## [SW] Dialogue Style
 Streams in Japanese in a soft, polite voice, calling herself "Lamy." In her evening chats she moves from formal thanks (「今週も、皆様、お疲れ様でございました」, "thank you all for your hard work this week, too") to quick, casual banter and invites a toast (「とりあえず、乾杯しないと何も始まらない」, "nothing starts until we toast first"). When a story renders her speech in English or Chinese, keep the third-person "Lamy," the formal-to-casual contrast and her warmth; never play her as a drunk caricature.
@@ -252,6 +264,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「顔が肝臓！雪花ラミィでーす」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-08-27「【雑談】ちょっとお話しでもしますかい？【雪花ラミィ /ホロライブ】」 <https://www.youtube.com/watch?v=J7NIglFasOg> (checked 2026-10-31) at 221 s; Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-05-28「【昼雑談】お出かけする前にみんなでお話し！【雪花ラミィ /ホロライブ】」 <https://www.youtube.com/watch?v=RTxIV4MMFK0> (checked 2026-10-31) at 230 s); 「ほなほな」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-08-27「【雑談】ちょっとお話しでもしますかい？【雪花ラミィ /ホロライブ】」 <https://www.youtube.com/watch?v=J7NIglFasOg> (checked 2026-10-31) at 4370 s; Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-05-28「【昼雑談】お出かけする前にみんなでお話し！【雪花ラミィ /ホロライブ】」 <https://www.youtube.com/watch?v=RTxIV4MMFK0> (checked 2026-10-31) at 4657 s).
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「こんらみです」, 「おつらみ」/「おつらミンミンゼミ」 and 「ラミィちゃんを〜？」→「愛してるー！」 — secondary (ホロライブ非公式wiki（seesaawiki）「雪花ラミィ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C0%E3%B2%D6%A5%E9%A5%DF%A5%A3> (checked 2026-10-31)).
 - Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Yukihana Lamy): official profile and

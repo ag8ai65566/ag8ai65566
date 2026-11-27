@@ -149,6 +149,16 @@ The middle column is provisional voice direction unless a source is named.
 - Later outfits include a red-and-black gothic dress (2025), pajamas with Novelite slippers (2026) and a
   Monster Hunter Stories 3 armor outfit (2026). [Observed SN2 §2025, §2026, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/shiori-novella/ (6 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): hair split white and black with a hash-mark clip, a black fur-trimmed jacket lined in purple whose hem drips like ink, a black corset dress with white lacing over a grey ruffled skirt, a striped thigh-high and spiked black platform boots.
+- **Kimono** (gallery 03): hair up with a pink flower and black ornaments, a grey kimono with red and black peonies, a black fur stole, a giant calligraphy brush and frilled black platform sandals.
+- **Red gothic outfit** (gallery 04): a black newsboy cap, a black capelet over a red-and-black strapped corset dress, patterned thigh-highs, fingerless gloves and black shoes.
+- **Sleepwear** (gallery 05): braids under a pink frilled bonnet, a sheer pink nightgown and robe, white stockings and spiky black slippers.
+- **Monster Hunter collaboration outfit (©CAPCOM)** (gallery 06): a short bob, a black high-collared dress with red accents, dark-blue scaled armor on her arms and legs and a bandaged thigh.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -261,7 +271,7 @@ Shiori streams as "The Archiver," a bookish fugitive with forbidden knowledge, a
 Shiori is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Archiver," driven by a thirst for knowledge, who turns favorite stories and memories into bookmarks; imprisoned in The Cell for forbidden knowledge found in a story (which, in the lore, turned half her hair grey), she planned and executed Advent's prison break. She debuted on 2023-07-30 (JST) with hololive English -Advent-, narrates the group's lore videos, and is jokingly called its leader. She made her 3D debut on 2024-08-02 (PDT), sang at the 2024 and 2025 English concerts, released her first original song "Monsters and Men" digitally on 2026-02-16, was paired with Mori Calliope at the 2026 Serendipity concert, and began her original motion comic "Into The Void" in July 2026. Her fans are Novelites; her mascot is Yorick.
 
 ## [SW] Physical Description
-Shiori's avatar is 163 cm tall, with mid-length two-tone hair, black on one side and white on the other, held by sharp shuriken-like hairpins, and bright, glowing light-yellow eyes. She wears a dark purple and black jacket over a dress with "dripping" edges, long fingerless gloves and two rings on each hand. Yorick, a small, sad black sphere with long arms and four spikes on its head, rides on her right shoulder.
+Shiori's avatar is 163 cm tall, with mid-length two-tone hair, black on one side and white on the other, held by sharp shuriken-like hairpins, and bright, glowing light-yellow eyes. She wears a dark purple and black jacket over a dress with "dripping" edges, long fingerless gloves and two rings on each hand. Yorick, a small, sad black sphere with long arms and four spikes on its head, rides on her right shoulder. Other outfits in the official gallery: Kimono: hair up with a pink flower and black ornaments, a grey kimono with red and black peonies, a black fur stole; Red gothic outfit: a black newsboy cap, a black capelet over a red-and-black strapped corset dress, patterned thigh-highs; Sleepwear: braids under a pink frilled bonnet, a sheer pink nightgown and robe, white stockings and spiky black slippers; Monster Hunter collaboration outfit: a short bob, a black high-collared dress with red accents, dark-blue scaled armor on her arms and legs and a bandaged thigh.
 
 ## [SW] Dialogue Style
 Fast, chatty English that stacks reactions and restarts mid-thought, full of "like," "actually," "kind of," "sort of," "genuinely" and "if that makes sense"; she talks to "guys," rarely "chat." She defends her lore with a straight face ("In my defense, guys, they trespassed"; "It was not my fault everyone got sacrificed, okay?"), thirsts at game characters as a goofy bit ("Is that a vampire?"), cheers creators on ("I'm so happy for you"). Exclamations: "whoa," "ooh," "oh my god," "oh heavens," "oh shoot," "oh fudge." Her profanity is situational and can include "fuck" ("what the hell," "it pisses me off"); once, moderating a troll, she snapped "Go fuck yourself" and added at once, "I'm so sorry. I shouldn't say that." She teases her genmates, keeps lore secrets as a joke, and calls viewers with Japanese honorifics now and then. Lines of hers: "I would love to watch someone else play this." "…really bad at remembering names." "That's dead, guys. I defeated my first chimera."
@@ -294,6 +304,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "Aw, it's okay! There, there!" and "Oh nyo...": secondary transcriptions.
 - One sampled troll-moderation exchange: she swore and immediately apologized (situational, not a default for annoyance).
 - Register is qualitative; the sampled recordings mix in other voices. No regional accent assigned (no in-scope listening check).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (SN1), wiki (SN2, by section),

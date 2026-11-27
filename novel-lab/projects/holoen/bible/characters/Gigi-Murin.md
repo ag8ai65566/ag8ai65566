@@ -147,6 +147,15 @@ The middle column is provisional voice direction unless a source is named.
   is 👧. Later outfits: a 2025 New Year kimono, a 2026 Monster Hunter outfit Raora designed, a 2026 qipao
   outfit with a propeller hat she shares with Popo. [Observed GG2 §Lore, §History, secondary; X post GG6]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/gigi-murin/ (5 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): twin tails under an orange monster hood marked with an X, fangs, an oversized orange jacket over a white top with a red scarf, black bike shorts, one orange-and-black striped stocking, red-and-white sneakers with paw soles, a long black tail with a round orange-and-white tip, giant mechanical gauntlets and a little green gremlin mascot.
+- **New Year outfit (#GigiNewYear, 2025-01-01)** (gallery 03): a red flower in her hair, a white kimono top with orange and red flowers, a yellow pleated skirt with red ropes, fingerless gloves, bandages and white sandals.
+- **Monster Hunter collaboration outfit (©CAPCOM)** (gallery 04): heart-shaped goggles on her head, a green-and-white patterned cropped jacket over a black top, white shorts with a belt, brown gloves, green thigh-highs and chunky boots.
+- **Orange-and-navy outfit** (gallery 05): sunglasses, an oversized orange-and-navy jacket with a red cord knot, a small pouch, one orange stocking and sneakers.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -264,7 +273,7 @@ Gigi streams as "The Free-spirited Chaser," a gremlin who follows her instincts 
 Gigi is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Free-spirited Chaser," a mischievous gremlin "born and raised under the flag of Freedom" who chases targets on instinct and struggles with memorizing directions; her lore places her in Freesia and frames the pursuit of Advent as another chance for fun. She debuted on 2024-06-21 (PDT) in hololive English -Justice-, won the 2024 Most Chaotic VTuber award, held her 3D showcase on 2025-08-02 (PDT), and sang at the 2025 English concert (solo "Wonky Monkey," "Countach" with Hakos Baelz and Kureiji Ollie, "MONSTER" with Ina, Kronii and Shiori, "III" with Nerissa). She performs original songs: "I'll still be here" (presented on her 2025 birthday), "Bright Tonight" with IRyS, Kronii and FUWAMOCO (2025), and "enough" (2026). She and Cecilia Immergreen perform together as Autofister, also called CCGG: in 2026 they released "CCGG MADNESS" (Gigi helped with the lyrics and designed the chibi models) and sang it at the Serendipity concert, where Gigi also sang "MAKE IT, BREAK IT" with Vestia Zeta and FUWAMOCO. Her representative color is orange; her fans are grems; her fictional mascot is Popo, a kakapo.
 
 ## [SW] Physical Description
-Gigi's avatar is 153 cm tall, with pink eyes, sharp teeth and two-tone light-and-dark brown hair in bunches, a tall ahoge sticking out of her hood. She wears a bright orange hoodie decorated with fans, whose X-shaped eye blinks when she blinks, black cycle shorts and a single striped orange-and-black knee sock. Her lore weapons are huge gauntlets. Her mascot Popo, a small green kakapo with a propeller-like ahoge, often appears with her.
+Gigi's avatar is 153 cm tall, with pink eyes, sharp teeth and two-tone light-and-dark brown hair in bunches, a tall ahoge sticking out of her hood. She wears a bright orange hoodie decorated with fans, whose X-shaped eye blinks when she blinks, black cycle shorts and a single striped orange-and-black knee sock. Her lore weapons are huge gauntlets. Her mascot Popo, a small green kakapo with a propeller-like ahoge, often appears with her. Other outfits in the official gallery: New Year outfit (2025): a red flower in her hair, a white kimono top with orange and red flowers, a yellow pleated skirt with red ropes; Monster Hunter collaboration outfit: heart-shaped goggles on her head, a green-and-white patterned cropped jacket over a black top, white shorts with a belt; Orange-and-navy outfit: sunglasses, an oversized orange-and-navy jacket with a red cord knot, a small pouch.
 
 ## [SW] Dialogue Style
 Fast, animated, run-on English full of "like," "okay," "yeah," "sure," "hold on" and bursts of laughter; she talks to "grems," reads superchats with quick deadpan comebacks ("I require context."), and turns anything into a bit: a blurred photo becomes a crime scene, bad luck an "Etsy witch" hex. Recurring bits: an escalating childish plea ("PPEEWEASEEEEE"), "Boat goes binted," "DON'T TELL LIZ!" and an emphatic "MORI CALLIOPE!" She swears casually now and then, then says something sweet and plain ("Thanks for coming to see me! … stay hydrated"). Most of the time she simply chats, fast and animated; save the shouting for a specific bit. Style demo: "Hold on, hold on. Who did this? Was it me? It was funny though." She calls her superchat catch-up streams "SC KETCHUP."
@@ -298,6 +307,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Recurring bits ("PPEEWEASEEEEE", "Boat goes binted", "DON'T TELL LIZ!", "MORI CALLIOPE!") and Cecilia's "FREAK": wiki transcriptions.
 - No regional accent assigned (no in-scope listening check).
 - Translation-based banter with Okayu (2026 New Year Game Festival): secondary clip metadata.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (GG1), wiki (GG2, by section),

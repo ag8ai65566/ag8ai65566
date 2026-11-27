@@ -150,6 +150,14 @@ The middle column is provisional voice direction unless a source is named.
 - Green is her color; her oshi mark is 🍵. Fans: Otomos (oto, "musical note," plus tomo, "friend"); her
   clockwork bird is Ototori. Later looks include a self-rigged 2025 New Year kimono. [Observed CI2; X post CI6]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/cecilia-immergreen/ (4 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): short silver hair with green streaks, a wind-up key on her head, doll joints, a white off-shoulder blouse with a red cravat, a green corset dress with gold gears and red gems, a gilded ring cage around the skirt with a musical staff, heeled boots and a spear with a glowing green tip.
+- **Kimono** (gallery 03): a white lace parasol, a green-and-white harlequin kimono with roses and gears, a frilled white underskirt and white boots.
+- **Casual outfit** (gallery 04): long hair, rose-tinted glasses, a black cropped jacket and top, a black-and-green frilled skirt, black tights with green ribbons, black flats with green bows and a black heart-shaped bag.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -264,7 +272,7 @@ Cecilia streams as "The Ancient Automaton," a clockwork maid built for eternal s
 Cecilia is an active hololive member. She has no supernatural abilities; her lore is a performed persona. Her lore adds that she was built long ago, cooks mostly potatoes and comes from Immerheim, and in a public joke she blamed her maid duties on an earlier Justice. She debuted on 2024-06-22 (PDT) in hololive English -Justice- with a chat-controlled game and a violin performance, and held her 3D showcase on 2025-08-08 (PDT). Her first original song, "Wind-Up," which she composed and wrote, was the first Justice solo at the 2025 English concert, where she also played violin in "SHALLYS" with Ina and FUWAMOCO. She and Gigi Murin perform together as Autofister, also called CCGG: "CCGG MADNESS" (2026; Cecilia wrote the lyrics and directed it), a 2026 3D live, and the Serendipity concert, where she also sang "Break It Down" with Vestia Zeta and Shiori Novella and "Cloudy Sheep" with Tsunomaki Watame and Mori Calliope. Her representative color is green; her fans are Otomos.
 
 ## [SW] Physical Description
-Cecilia's avatar is 162 cm tall: a clockwork automaton maiden with doll joints, green eyes and pale white-green neck-length hair, and a brass ribbon and wind-up key on her head; the key spins as an avatar effect when she is excited or thinking hard. She wears a gold-trimmed off-shoulder dress with a red neckerchief, a green skirt patterned with musical notes and clockwork, and ancient-looking sandals. She carries a white lance that transforms into a violin.
+Cecilia's avatar is 162 cm tall: a clockwork automaton maiden with doll joints, green eyes and pale white-green neck-length hair, and a brass ribbon and wind-up key on her head; the key spins as an avatar effect when she is excited or thinking hard. She wears a gold-trimmed off-shoulder dress with a red neckerchief, a green skirt patterned with musical notes and clockwork, and ancient-looking sandals. She carries a white lance that transforms into a violin. Other outfits in the official gallery: Kimono: a white lace parasol, a green-and-white harlequin kimono with roses and gears, a frilled white underskirt and white boots; Casual outfit: long hair, rose-tinted glasses, a black cropped jacket and top.
 
 ## [SW] Dialogue Style
 Fast, dry, sarcastic English, stacked with "like," "okay," "wait," "you know" and runs of repeated words ("okay, okay, okay"; "easy, easy, easy"). She announces what she hates, boasts at her own luck, and narrates whole plots in long stretches with self-insert jokes ("Wow, he's just like me"). In games she swings between panic and grand villain lines, and backseats the game's characters. She drops German words for jokes ("In German he says…"), swears lightly now and then ("yippee type shit"), teases Gigi as a "FREAK", and thanks viewers warmly and self-mockingly ("thank you very much for spending time with me today"; "listening to me be a little bit weird"). Sarcasm is her usual edge, not every line.
@@ -299,6 +307,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - "FREAK", "For Justice!", "Let's wind you up!", "Ew! Get away from me, you FREAK!", "I'm not a hag. I'm ancient, it's different.": wiki transcriptions.
 - "BratTea" and "AutoTune": secondary pair names.
 - Okayu's 2025 New Year Game Festival team: archived listing.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (CI1), wiki (CI2, by section),

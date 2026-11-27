@@ -119,6 +119,18 @@ The middle column is provisional voice direction unless a source is named.
   by Claude] [Observed BO2 §Mascot, secondary]
 - Fans nicknamed her look "Adidas Lion" for its tracksuit-like stripes. [Observed BO2 §Miscellaneous, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/shishiro-botan/ (8 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): long silver-white hair with lion ears and tail, a gold choker, a sheer black top with white stripes, an oversized fur-trimmed black jacket, a grey miniskirt with a lettered belt, torn black tights on one leg and heeled black ankle boots.
+- **Kimono** (gallery 03): buns with red ornaments, a white kimono top with red-and-gold decorations and a long red sash, a short black lace skirt, white socks and tall geta.
+- **Vest suit** (gallery 04): a white shirt with a loose tie, a black vest, black shorts with straps, grey tights and black boots.
+- **Streetwear** (gallery 05): a black-and-grey hooded jacket with neon-green stripes over a white T-shirt, shorts, one grey leg warmer and black-and-neon sneakers.
+- **White veil dress** (gallery 06): a white veil with blue flowers, a white dress with black lacing and ribbons, a white cape lined with starry blue, white thigh-highs and white heels.
+- **Gothic outfit** (gallery 07): twin tails with black ribbons, a sleeveless burgundy blouse with a black bow, a black skirt, strapped thigh-high stockings and black boots.
+- **Grey uniform** (gallery 08): a small black hat, a grey pinstripe jacket with white flower motifs and a belt, a white pleated skirt, tights and black loafers.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -216,7 +228,7 @@ Botan is hololive's white lion, who by her official profile "prefers lazing arou
 Botan is an active member of hololive's 5th generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2020-08-14 as a fifth-generation member; she forms NePoLaBo with Yukihana Lamy, Omaru Polka and Momosuzu Nene. She passed 1.5 million subscribers in February 2025. She has released originals such as "Simulacre," "Gaotteko!" and "Tokihanate"; her first album, "BOTAN.EXE," opened for orders on 2026-09-19. She ran the hololive Minecraft money-making event twice (2025, 2026) as its game master and hosted the "Shishiro Cup."
 
 ## [SW] Physical Description
-Botan's avatar is 166 cm tall, with long silver-white hair, lion ears and a lion's tail, and grey eyes. She wears a black sleeveless top with three white stripes, a black choker with a gold chain, an oversized black jacket with a fur-lined hood slipping off her shoulders, a grey miniskirt with a lettered belt, one torn black stocking and black heeled ankle boots. Fans call the sporty stripes her "Adidas Lion" look.
+Botan's avatar is 166 cm tall, with long silver-white hair, lion ears and a lion's tail, and grey eyes. She wears a black sleeveless top with three white stripes, a black choker with a gold chain, an oversized black jacket with a fur-lined hood slipping off her shoulders, a grey miniskirt with a lettered belt, one torn black stocking and black heeled ankle boots. Fans call the sporty stripes her "Adidas Lion" look. Other outfits in the official gallery: Kimono: buns with red ornaments, a white kimono top with red-and-gold decorations and a long red sash, a short black lace skirt; Vest suit: a white shirt with a loose tie, a black vest, black shorts with straps; Streetwear: a black-and-grey hooded jacket with neon-green stripes over a white T-shirt, shorts, one grey leg warmer and black-and-neon sneakers; White veil dress: a white veil with blue flowers, a white dress with black lacing and ribbons, a white cape lined with starry blue; Gothic outfit: twin tails with black ribbons, a sleeveless burgundy blouse with a black bow, a black skirt; Grey uniform: a small black hat, a grey pinstripe jacket with white flower motifs and a belt, a white pleated skirt.
 
 ## [SW] Dialogue Style
 Streams in Japanese in a relaxed, cheerful voice, calling herself "Shishiro" and laughing at her own mishaps. In games she is calm and offhand; presenting a project she shifts into a brisk explanatory register, with numbered points and polite "~to omotte orimasu" closings. She teases friends gently and keeps everyone included. When a story renders her speech in English or Chinese, keep the easygoing calm and the contrast between relaxed play and organized explanation.
@@ -251,6 +263,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - 「ぽい」: secondary transcription; 「前回はですねペコちゃんが優勝しました」: shared ASR span. Horror-scene direction: proposed, informed by secondary descriptions.
 - "Usada Kensetsu", "InuTakaShishiRam", "Apex Predators": secondary references.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「らいおん♪」 and 「それじゃ、またね～」: official profile (English "La-lion♪", "Well then, cya~"); the 「ららーいおん」 jingle — secondary (ホロライブ非公式wiki（seesaawiki）「獅白ぼたん」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%BB%E2%C7%F2%A4%DC%A4%BF%A4%F3> (checked 2026-10-31)).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Shishiro Botan): official profile and

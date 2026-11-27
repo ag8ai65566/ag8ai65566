@@ -143,6 +143,16 @@ The middle column is provisional voice direction unless a source is named.
   floating golden crown (2025) and a little-devil outfit with horns, wings and a color-changing left eye (2026).
   [Observed AZ2 §2023–§2026, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/azki/ (5 images). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **White shirt-dress outfit (main image)** (gallery 01): long dark hair with pink inner streaks and a pink flower clip, a white high-low shirt dress under a beige asymmetric wrap jacket with black buttons and a belt, and black ankle boots.
+- **Diva gown** (gallery 02): a tiara and a blue ribbon in a very long side ponytail, a white-and-blue gown with puffed blue sleeves and a starry navy high-low skirt, white gloves and white heels.
+- **New Year outfit (official New Year visual, announced 2023-12-19)** (gallery 03): a short bob under a flowered pink beret, a pink floral kimono top with a fur collar, a navy hakama with gold lines and peonies, and brown lace-up boots.
+- **Loungewear** (gallery 04): a pink knit hoodie with bear ears over a white dress, and white boots.
+- **Little-devil outfit** (gallery 05): twin tails with red horns, bat wings and a devil tail, a sleeveless white shirt with a black tie, black shorts, a thigh strap, one fishnet sock and black platform boots.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -277,7 +287,7 @@ AZKi is the "Virtual Diva," a songstress "reborn into the virtual world to fabri
 AZKi is an active member of hololive Generation 0. She has no supernatural abilities; her lore is a performed persona. She debuted in 2018 as "Virtual Diva AZKi," joined hololive production's music label INoNaKa Music with Hoshimachi Suisei in 2019, and transferred to hololive's main group in April 2022. Her units include SorAZ with Tokino Sora, AS_tar with Suisei ("Going My Way," 2026), Star Flower with Suisei, Moona Hoshinova and IRyS ("story time," 2022), AzuIro with Kazama Iroha ("AZUIRO BESTIE DAYS," 2025) and, from 2026, RosaMiA. She headlined "Departure" at Pia Arena MM in 2025 and held her 8th birthday live, "Cross Over," on 2026-07-01. With the English cast she sings in Star Flower with IRyS, took Calli's English lesson (2022), was Kiara's 13th HOLOTALK guest (2021), and played a FUWAMOCO-themed GeoGuessr map with the twins (2024), who also appeared at her 2025 birthday live.
 
 ## [SW] Physical Description
-AZKi's avatar is 158 cm tall, with long dark hair streaked and lined with pink, light purple eyes and a floral hairpin. She wears a long dress with a partly pink skirt and a light beige half jacket on one side, with dark boots trimmed with pink triangle zippers. Her fan mark is ⚒️, for her fans, the Pioneers; in 2026 she also has a little-devil outfit with horns and wings.
+AZKi's avatar is 158 cm tall, with long dark hair streaked and lined with pink, light purple eyes and a floral hairpin. She wears a long dress with a partly pink skirt and a light beige half jacket on one side, with dark boots trimmed with pink triangle zippers. Her fan mark is ⚒️, for her fans, the Pioneers. Other outfits in the official gallery: Diva gown: a tiara and a blue ribbon in a very long side ponytail, a white-and-blue gown with puffed blue sleeves and a starry navy high-low skirt, white gloves and white heels; New Year outfit (2023): a short bob under a flowered pink beret, a pink floral kimono top with a fur collar, a navy hakama with gold lines and peonies; Loungewear: a pink knit hoodie with bear ears over a white dress, white boots; Little-devil outfit: twin tails with red horns, bat wings and a devil tail, a sleeveless white shirt with a black tie.
 
 ## [SW] Dialogue Style
 Streams in Japanese with a gentle, friendly register, reacting with a drawn-out "e~?" and introducing herself as "Virtual Diva AZKi, the songstress of the virtual world" in her April Fools 2026 debut parody. A playful streak runs under the poise: puns, mock-villain flourishes, grand "strategic retreats" in games, outrage at shop prices, GeoGuessr shouts, one-word cries when moved, and a flustered "chotto chotto" when chat knows too much. When a story renders her speech in English or Chinese, keep the poised diva voice cracking into playfulness.
@@ -318,6 +328,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: The English glosses on this card are ours.
 - Comforting fellow members and going deep on Key visual novels and anime: fan summaries.
 - Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Hoshimachi Suisei, AZKi, Nakiri

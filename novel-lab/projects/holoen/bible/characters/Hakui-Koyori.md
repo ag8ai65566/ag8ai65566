@@ -118,6 +118,17 @@ The middle column is provisional voice direction unless a source is named.
   with pink ankle ribbons. Kokoro, a small pink coyote, peeks out of her coat pocket. Emoji 🧪. [Official KO1; key
   art checked by Claude 2026-10-03] [Observed KO2 §Appearance, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/hakui-koyori/ (7 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): long pink hair with coyote ears and a fluffy pink tail, a frilled white lab coat over a white crop top with a pink tie, a navy skirt with test tubes at the belt, brown tights, a potion vial on her thigh and black Mary Janes with pink bows.
+- **Kimono and hakama** (gallery 03): a side ponytail with flower ornaments, a pink-and-white floral kimono with a big pink obi bow, a patterned pink hakama, white socks, geta and a tiny pink coyote on her shoulder.
+- **Short-hair casual outfit** (gallery 04): a short bob, a choker, a white zip hoodie dress with pink laced sleeves, and clear sandals.
+- **School outfit** (gallery 05): twin side tails, a white blouse with a pink bow, a lavender plaid skirt, white knee socks and brown loafers.
+- **Maid outfit** (gallery 06): twin tails with a maid headdress, a pink-and-white maid dress with a black corset and a frilled apron, and black boots.
+- **Chinese-style outfit** (gallery 07): buns with red tassels, a red high-collared dress with gold trim, wide black frilled sleeves with tassels, a corset belt hung with potions, one white thigh-high and one fishnet, and red shoes.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -222,7 +233,7 @@ Koyori is Secret Society holoX's head of research and development, a pink-haired
 Koyori is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-28 as the third member of Secret Society holoX and released her first original song, "WAO!!," in 2022. She sang in "Blue Journey" with Marine, Noel, Lamy, Botan, Lui and Sakura Miko (2023); she has been in Suisei's Hoshimatic Project since 2023; 2025 collabs bill her, AZKi and Lamy as "KoZMy." She performed at holoX's first in-person unit concert, "First MISSION" (2026-04-29), and in September 2026 announced her second album, "Chemical Spark," and her first solo concert, "Dream Spark," for December 2026. With the English cast: Lethal Company with FUWAMOCO and Shirakami Fubuki (2024), a FUWAMOCO Morning guest spot billed "FUWAMOKOYO" (2024), and guest appearances at FUWAMOCO's birthday concert (2025) and Mumei's first 3D live (2024). In 2023 she joined Bae's "BAE-GEMITE DOMINATION" with Momosuzu Nene and tasted Bae's "KHAOS KITCHEN" curry with Calli and Oozora Subaru.
 
 ## [SW] Physical Description
-Koyori's avatar is 153 cm tall, with long pink hair in braids and buns, an ahoge, lilac eyes, pink coyote ears, a fluffy pink tail and a hexagonal hair clip. She wears an open white lab coat with pink trim and a ruffled hem over a white crop top, a pink tie with a heart, a black choker and a pocket-watch chain, with a black pleated skirt hung with test tubes, flasks on a thigh strap, brown tights and black heels tied with pink ankle ribbons. Kokoro, a small pink coyote, peeks out of her coat pocket.
+Koyori's avatar is 153 cm tall, with long pink hair in braids and buns, an ahoge, lilac eyes, pink coyote ears, a fluffy pink tail and a hexagonal hair clip. She wears an open white lab coat with pink trim and a ruffled hem over a white crop top, a pink tie with a heart, a black choker and a pocket-watch chain, with a black pleated skirt hung with test tubes, flasks on a thigh strap, brown tights and black heels tied with pink ankle ribbons. Kokoro, a small pink coyote, peeks out of her coat pocket. Other outfits in the official gallery: Kimono and hakama: a side ponytail with flower ornaments, a pink-and-white floral kimono with a big pink obi bow, a patterned pink hakama; Short-hair casual outfit: a short bob, a choker, a white zip hoodie dress with pink laced sleeves; School outfit: twin side tails, a white blouse with a pink bow, a lavender plaid skirt; Maid outfit: twin tails with a maid headdress, a pink-and-white maid dress with a black corset and a frilled apron, black boots; Chinese-style outfit: buns with red tassels, a red high-collared dress with gold trim, wide black frilled sleeves with tassels.
 
 ## [SW] Dialogue Style
 Streams in Japanese with a presenter's polish: 「こんこよ～！」 to open, crisp segment transitions on her news show (「それでは続いてはこちら」, "and next up"), 「助手くん」 (assistants) for her audience and 「こよりちゃん」 for herself. She invites viewers to look at things with a warm 「ぜひぜひ見てみてください」 ("please do take a look"). She teases members under the cover of "research" and screams when scared. When a story renders her speech in English or Chinese, keep the bright anchor manner, the lab vocabulary and the sudden screams.
@@ -259,6 +270,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Her giggle was heard by the first ASR model only; laughs are design choices.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「おつこよさまでした！」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-09-27「【雑談】ねぽっくす打ち上げ裏話&デジモンの話とか！【博衣こより/ホロライブ】」 <https://www.youtube.com/watch?v=QTUZgrGymlc> (checked 2026-10-31) at 10575 s); 「おつこよ〜」 and the call and response — secondary (ホロライブ非公式wiki（seesaawiki）「博衣こより」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C7%EE%B0%E1%A4%B3%A4%E8%A4%EA> (checked 2026-10-31)).
 - Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add holoX in full): official profile

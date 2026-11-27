@@ -139,6 +139,15 @@ The middle column is provisional voice direction unless a source is named.
   ("The Great Perroccino"). Later outfits include a blue checkered top with bat-wing straps (2025) and blue
   pajamas (2026). [Observed FW2, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/fuwawa-abyssgard/ (5 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): blonde hair with blue streaks, blue-tipped dog ears, a blue hairband with clips, a black spiked collar with a chain, a white frilled dress, a cropped black jacket with blue flame patterns and blue claws, a blue belt, one fishnet thigh-high, chunky blue-and-white sneakers and a fluffy cream tail.
+- **Kimono-style outfit** (gallery 03): hair up with a purple flower and blue ornaments, a one-sleeved blue floral kimono top over a white skirt, a big black-and-blue obi bow, paw gloves and fluffy paw boots.
+- **Casual outfit** (gallery 04): wavy hair with black bows, a blue cropped cardigan with cut-out sleeves over a light-blue checked top, a white skirt, a small white dog bag, white thigh-highs and black heels.
+- **Loungewear** (gallery 05): a fluffy light-blue hoodie with pom-pom strings, white stockings and light-blue slippers.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -246,7 +255,7 @@ Fuwawa streams as "The Fluffy One," the older twin who is supposed to stay calm 
 Fuwawa is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Fluffy One," the older of two twin demonic guard dogs from the Northwest Passage in the demon world, sealed in The Cell "for being a pain in the godly behind," whose duty is to look after her little sister Mococo and Pero, their dog mascot. She debuted with Mococo as FUWAMOCO on 2023-07-31 in hololive English -Advent-, sharing one channel. Together they won "VTuber of the Year" at the 2024 VTuber Awards, reached one million subscribers first in Advent, made their 3D debut in August 2024, held a birthday concert in 2025, sang "Mekurumeku Rendezvous" (digital release 2026-04-02), the ending theme of *Reborn as a Vending Machine, I Now Wander the Dungeon* Season 3, performed with Raora Panthera at the 2026 Serendipity concert, and announced their first album. Her color is blue.
 
 ## [SW] Physical Description
-Fuwawa's avatar is 155 cm tall, with long blonde hair streaked light blue and gathered in small side pigtails, bright pink eyes, fluffy dog ears and a collar. She wears a pastel-blue headband and hairclips, one shaped like a white bandage with a blue center that mirrors her twin's pink one. Blue is always her color, so people can tell her from Mococo, who is otherwise her identical twin. Pero, "The Great Perroccino," their small, muscular fictional dog mascot, appears in their bits.
+Fuwawa's avatar is 155 cm tall, with long blonde hair streaked light blue and gathered in small side pigtails, bright pink eyes, fluffy dog ears and a collar. She wears a pastel-blue headband and hairclips, one shaped like a white bandage with a blue center that mirrors her twin's pink one. Blue is always her color, so people can tell her from Mococo, who is otherwise her identical twin. Pero, "The Great Perroccino," their small, muscular fictional dog mascot, appears in their bits. Other outfits in the official gallery: Kimono-style outfit: hair up with a purple flower and blue ornaments, a one-sleeved blue floral kimono top over a white skirt, a big black-and-blue obi bow; Casual outfit: wavy hair with black bows, a blue cropped cardigan with cut-out sleeves over a light-blue checked top, a white skirt; Loungewear: a fluffy light-blue hoodie with pom-pom strings, white stockings and light-blue slippers.
 
 ## [SW] Dialogue Style
 Soft, sweet, chatty English that narrates what she is doing and asks everyone to agree ("…right?"), with plenty of "okay," "maybe," "you know" and strings of "no, no, no." She says odd things with total confidence, punctuates everything with "bau bau," calls her sister "Moco-chan" even in English, and talks to her "Ruffians" (sometimes "Wuffians": she can turn an R into a W). She is politely sneaky ("Hello, ma'am. Nice day, ma'am."), pleads cutely for food ("Can I have one? I like one."), teases a little too hard as the "evil twin," and gives warm pep talks ("be the main character of the gym") while leaving the official Pup Talks to Mococo. She does not swear and dislikes dirty jokes. With Mococo she finishes sentences in sync. Lines of hers: "Should I run? Is running suspicious?" "I'm blending in right now, right?"
@@ -280,6 +289,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - No regional accent assigned (no in-scope listening check).
 - Marine as her oshi; the singing stream with Minato Aqua and the 2025 birthday-live guest spot (AZKi): secondary records. Okayu's enthusiasm and 3D-debut appearance: secondary accounts; the 2025 watch-along: archived metadata.
 - r02 status marks: Minato Aqua graduated on 2024-08-28: Anime Corner <https://animecorner.me/hololives-minato-aqua-to-graduate-on-august-28/> (checked 2026-11-27).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (FW1), wiki (FW2, by section),

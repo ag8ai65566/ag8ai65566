@@ -171,6 +171,15 @@ The middle column is provisional voice direction unless a source is named.
   🌿. Later outfits include a gothic dress (2024) and a cat-eared casual look. [Observed F2 §Mascot and fans,
   §2024, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/ceres-fauna/ (5 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): leafy antlers, a white blouse under a navy corset dress with gold trim and a flowered belt, a long sheer pink-to-peach train with a scalloped hem, a thigh ring, anklets and toe sandals; a golden fruit in her hand.
+- **Kimono (#HoloENKimonoRelay, 2022-01-15)** (gallery 03): braids with a pink flower, a white kimono with red peonies, a white frilled apron, a teal obi bow, a drawstring bag and brown lace-up boots.
+- **Casual outfit ("Casual Fauna," 2022-12-10)** (gallery 04): a choker, a cream cardigan over a lilac blouse with a ribbon, a dark plaid skirt with a sheer hem, frilled socks and black Mary Janes.
+- **Goth outfit (#GothFauna, 2024-02-25)** (gallery 05): black ribbons in her hair, a black dress with lace sleeves, fishnet thigh-highs with a garter and chunky black boots.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -276,7 +285,7 @@ Fauna streams as the Keeper of Nature, a druidic kirin four and a half billion y
 Fauna is a hololive alum: she graduated on 2025-01-03. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore, a persona she plays for laughs, makes her the Keeper of "Nature," the second concept created by the gods: a druid with kirin blood whose horns are tree branches, who came online to win humans over and lead them back to nature. She debuted on 2021-08-23 with hololive English -Council-, joined -Promise- with IRyS, Kronii, Mumei and Bae in 2023, won VTuber Awards for ASMR and for chatting streams, sang at both hololive English concerts (2023, and 2024, where she and Mumei premiered their duet "It's Not a Phase") and in Promise's musical "The Broken Promise" (2024), reached one million subscribers on 2024-12-27, and finished her Minecraft World Tree on 2024-12-31, days before graduating. Her fans are Saplings, her members Faunatics, and her mascot is Nemu, a sleepy kirin.
 
 ## [SW] Physical Description
-Fauna's avatar is 164 cm tall, with wavy light-green hair that fades to blue-green at the tips and is decorated with small white five-petal flowers, and horns like leafy tree branches (kirin horns, not deer antlers). Her eyes are yellow, with a beauty mark under the right one. She wears a short blue dress with golden ornaments under a white overcoat lined with pink flowers and closed with a blue bow, a golden belt set with green roses and water-drop gems, one long white sock and a golden bangle on the other ankle, and she goes barefoot. A golden apple sometimes floats at her hand; her sleepy kirin mascot Nemu may be curled up nearby.
+Fauna's avatar is 164 cm tall, with wavy light-green hair that fades to blue-green at the tips and is decorated with small white five-petal flowers, and horns like leafy tree branches (kirin horns, not deer antlers). Her eyes are yellow, with a beauty mark under the right one. She wears a short blue dress with golden ornaments under a white overcoat lined with pink flowers and closed with a blue bow, a golden belt set with green roses and water-drop gems, one long white sock and a golden bangle on the other ankle, and she goes barefoot. A golden apple sometimes floats at her hand; her sleepy kirin mascot Nemu may be curled up nearby. Other outfits in the official gallery: Kimono (2022): braids with a pink flower, a white kimono with red peonies, a white frilled apron; Casual outfit (2022): a choker, a cream cardigan over a lilac blouse with a ribbon, a dark plaid skirt with a sheer hem; Goth outfit (2024): black ribbons in her hair, a black dress with lace sleeves, fishnet thigh-highs with a garter and chunky black boots.
 
 ## [SW] Dialogue Style
 Soft, meandering English that circles with "like," "I guess," "kind of" and "actually," and often trails off on a gentle "I don't know." She talks to her Saplings warmly and, now and then, as their slightly spooky goddess: sweet reassurances with an ominous "...right?" at the end, invitations to "return to nature," spells cast on chat, a shop she insists is "not a scam." She commits fully to absurd bits and improvised drama, from love speeches to a forklift to grand deadpan ("I will be the sole arbitrator of YouTube monetization"), and laughs a flat, fake "ha ha ha" at her own puns. In games she reads the dialogue aloud in the characters' voices; scared, she murmurs "oh no," "oh gosh." Her own swearing stays mild ("dang," "what the heck"). She reads superchats as quick, rhythmic lists of names and thank-yous, adds brief Japanese thanks, and sings happy birthday when asked. Lines of hers: "I was ready to be a kirin because that's what I am. But if they need me to be a giraffe, I guess I can do that." "Me. I'll be the mean manager."
@@ -309,6 +318,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Self-description as soft-spoken, using head voice: ASR (her own words).
 - Bae praising her maternal persona at debut: fan reference.
 - "FruitPunch": secondary pair name.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (F1, greeting re-checked

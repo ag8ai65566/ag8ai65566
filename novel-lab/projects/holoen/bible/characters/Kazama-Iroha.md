@@ -117,6 +117,17 @@ The middle column is provisional voice direction unless a source is named.
   and black-and-red thong sandals. Her companion is Pokobee, a tanuki. [Official IR1; key art checked by Claude
   2026-10-03] [Observed IR2 §Appearance, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/kazama-iroha/ (7 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original samurai outfit** (gallery 01-02): a blonde ponytail with a teal ribbon, a cream haori with teal sleeves and wave patterns over a white top, a teal-and-black pleated skirt, fingerless gloves, a thigh strap, geta with red straps and her katana.
+- **Kimono and hakama** (gallery 03): red-and-white flower ornaments, a pale kimono top with orange flowers, an orange-red hakama with cherry blossoms, a red obi and black boots.
+- **Pastel casual outfit** (gallery 04): a white cap with flowers, long hair, a pastel holographic jacket over a crop top, denim shorts, a thigh band and white platform sneakers.
+- **Sailor uniform** (gallery 05): braids with a black headband, a white sailor top with a light-blue tie, a navy pleated skirt, white socks and loafers.
+- **Sporty outfit** (gallery 06): twin tails with black ribbons, a white cropped hoodie with quilted sleeves, a black miniskirt, fishnet tights, black leg warmers and boots.
+- **Café outfit** (gallery 07): short hair, a black bow at the collar, a white apron with a brush in the pocket over a brown frilled dress with black lace and ribbons, yellow tights and brown lace-up boots.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -210,7 +221,7 @@ Iroha is Secret Society holoX's bodyguard and "insurance policy." In her perform
 Iroha is an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-30 as the fifth and last member of Secret Society holoX; she was the last of holoX to pass a million subscribers (2024-11-19), and 「風向きエントロピー」 ("Entropy of wind direction," 2026) is her ninth original. She formed the duo AzuIro with AZKi (covers, the 2025 song "AZUIRO BESTIE DAYS," off-collabs), sings in Suisei's Hoshimatic Project (credited on "BEEP BEEP," 2026) and performed at holoX's first in-person unit concert, "First MISSION" (2026-04-29). With the English cast: Calli's English lesson #02 with La+ and Gura (2022), a VALORANT collab with Ame and Kobo Kanaeru (2022), the cookie-battle off-collab she and AZKi presented with FUWAMOCO as challengers (2024), credited guest spots at Kiara's 2024 and 2025 lives, and a credit on "CHA-LA HEAD-CHA-LA" from Elizabeth's 2026 birthday show.
 
 ## [SW] Physical Description
-Iroha's avatar is 156 cm tall, with short blonde hair in a ponytail tied with a green leaf-like ribbon and aqua-blue eyes. She wears a white top with gold fittings and a red cord with a bell at her waist, a teal pleated skirt with a cloud pattern, a black fingerless glove and, over everything, a long cream haori-like coat with teal-gradient sleeves and cloud motifs; she carries a katana with a teal scabbard and wears white thigh-highs with teal diamond accents and black-and-red thong sandals. Pokobee, a small tanuki, travels with her.
+Iroha's avatar is 156 cm tall, with short blonde hair in a ponytail tied with a green leaf-like ribbon and aqua-blue eyes. She wears a white top with gold fittings and a red cord with a bell at her waist, a teal pleated skirt with a cloud pattern, a black fingerless glove and, over everything, a long cream haori-like coat with teal-gradient sleeves and cloud motifs; she carries a katana with a teal scabbard and wears white thigh-highs with teal diamond accents and black-and-red thong sandals. Pokobee, a small tanuki, travels with her. Other outfits in the official gallery: Kimono and hakama: red-and-white flower ornaments, a pale kimono top with orange flowers, an orange-red hakama with cherry blossoms; Pastel casual outfit: a white cap with flowers, long hair, a pastel holographic jacket over a crop top; Sailor uniform: braids with a black headband, a white sailor top with a light-blue tie, a navy pleated skirt; Sporty outfit: twin tails with black ribbons, a white cropped hoodie with quilted sleeves, a black miniskirt; Café outfit: short hair, a black bow at the collar, a white apron with a brush in the pocket over a brown frilled dress with black lace and ribbons.
 
 ## [SW] Dialogue Style
 Streams in Japanese in a bright samurai persona: 「でござる」 ("de gozaru") as her signature ending, 「殿」 ("-dono") for friends and 「ござる」 ("Gozaru") for herself. After a success she may chant 「よしよしよしよし」 (yoshi yoshi yoshi yoshi). When a story renders her speech in English or Chinese, keep occasional samurai flavor without forcing an archaic ending onto every sentence ("I daresay" is the official English localization; in Chinese, 在下 for herself and an occasional sentence-final 是也) against an upbeat, sporty voice.
@@ -247,6 +258,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Removed from Dialogue Style (covered by Voice & Delivery): quick play-by-play, flustered replies, laughter after mistakes (provisional directions).
 - "Lui-nee" and "KoMeHa": secondary references.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「皆殿〜ござる〜！」 — secondary (ホロライブ非公式wiki（seesaawiki）「風真いろは」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C9%F7%BF%BF%A4%A4%A4%ED%A4%CF> (checked 2026-10-31)); 「行ってらっしゃい、ござる」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-04「【#ホロドリ】朝活☀#ござる金冠チャレンジ👑DAY1🎣【風真いろは/ホロライブ】」 <https://www.youtube.com/watch?v=vcIlbVGqwVQ> (checked 2026-10-31) at 7426 s).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add holoX in full): official profile

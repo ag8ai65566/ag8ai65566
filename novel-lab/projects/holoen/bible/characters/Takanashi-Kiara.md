@@ -249,6 +249,21 @@ Real lines first; Style demos after.
   she's angry; her belt could turn her back into her phoenix form, so she's banned from using it.
   [Observed T2 §Lore, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/takanashi-kiara/ (11 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): an orange cap with a feather and badges, an orange vest-top with black buttons and a sailor collar, an orange miniskirt with a belt, white thigh-highs on garters and dark sneakers; a green-flamed sword and a blue shield.
+- **Summer casual** (gallery 03): a straw hat, two braids, a white puff-sleeved crop blouse, a heart-shaped chocolate bag, denim shorts and white sandals.
+- **Phoenix gown** (gallery 04): a gold leaf crown, a wrap of blue feathers at the shoulders, a dark red asymmetric gown with a feathered hem, patterned tights and red heels.
+- **Furisode** (gallery 05): flowers and pink feathered wings in her hair and a white kimono printed with cranes and peonies.
+- **Dirndl-style outfit** (gallery 06): hair up under a flower crown, a pink jacket over a white blouse, and a mint-green skirt and apron with folk patterns.
+- **Armored outfit** (gallery 07): a long high ponytail with a blue feather ornament, sleek black-and-silver armor, dark blue feathered wings at her hips and armored boots.
+- **Retro aerobics outfit** (gallery 08): short hair with a blue bow headband, a light-blue off-shoulder sweatshirt printed KFP, a white leotard, shiny pink leggings and leg warmers.
+- **Loungewear** (gallery 09): short hair, a fluffy white jacket with heart pockets over a white top with orange lacing, frilled bloomers, white thigh-highs with orange bows and chick slippers.
+- **Horned folk-festival outfit** (gallery 10): a crimson headdress with black ram horns, a red-and-white frilled dress with wide patterned sleeves, white tights, a long tail ending in a pom-pom and a winged microphone staff.
+- **Monster Hunter collaboration outfit (©CAPCOM)** (gallery 11): very long straight hair with small horns and a black bodysuit with red accents.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -396,7 +411,7 @@ Kiara streams as a phoenix idol and the self-appointed CEO of KFP. She can accel
 She has no supernatural abilities; her lore is a performed persona. Kiara is a VTuber whose lore, a persona she plays for laughs, makes her a phoenix, not a chicken, and an idol whose dream is to own a fast-food chain; a phoenix can always be reborn. In the bit she is the CEO of KFP (Kiara Fried Phoenix), whose employees are chickens; misbehaving staff get sent to the Usual Room, and she insists KFP is not a cult. She debuted with hololive -Myth- in September 2020 speaking English, Japanese and German. In December 2020 her channel was briefly terminated and she came back with a "#PhoenixDown" re-debut. She hosted the interview show HOLOTALK, translating for Japanese guests, and from 2026 co-hosts the bilingual HoloEN REWIND. She released her second album Vogelfrei in 2026 and held the duo concert Drawn to Dawn with Ninomae Ina'nis in Los Angeles, a birthday 3D live in July, and Myth's 6th-anniversary 3D live with Calli and Ina, which premiered the Myth song "THIS IS MYTH." Her mascot is the little bird Kotori.
 
 ## [SW] Physical Description
-Kiara's avatar is 165 cm tall, with medium-length coral hair fading to teal and magenta eyes. Shiny blue feathers grow behind her ears; they look like earrings but are phoenix down. In her original outfit she wears a mostly orange uniform with a greenish neck bow, a small white chef's hat and a red beret with a starred black bow, and she carries a sword that slots into her shield.
+Kiara's avatar is 165 cm tall, with medium-length coral hair fading to teal and magenta eyes. Shiny blue feathers grow behind her ears; they look like earrings but are phoenix down. In her original outfit she wears a mostly orange uniform with a greenish neck bow, a small white chef's hat and a red beret with a starred black bow, and she carries a sword that slots into her shield. Other outfits in the official gallery: Summer casual: a straw hat, two braids, a white puff-sleeved crop blouse; Phoenix gown: a gold leaf crown, a wrap of blue feathers at the shoulders, a dark red asymmetric gown with a feathered hem; Furisode: flowers and pink feathered wings in her hair and a white kimono printed with cranes and peonies; Dirndl-style outfit: hair up under a flower crown, a pink jacket over a white blouse, a mint-green skirt and apron with folk patterns; Armored outfit: a long high ponytail with a blue feather ornament, sleek black-and-silver armor, dark blue feathered wings at her hips and armored boots; Retro aerobics outfit: short hair with a blue bow headband, a light-blue off-shoulder sweatshirt printed KFP, a white leotard; Loungewear: short hair, a fluffy white jacket with heart pockets over a white top with orange lacing, frilled bloomers; Horned folk-festival outfit: a crimson headdress with black ram horns, a red-and-white frilled dress with wide patterned sleeves, white tights; Monster Hunter collaboration outfit: very long straight hair with small horns and a black bodysuit with red accents.
 
 ## [SW] Dialogue Style
 Fast, chatty, self-interrupting English that restarts mid-word, repeats short words in threes, flags a tangent and derails into it, and pairs self-praise with self-insult. She swears casually and often ("fucking," "holy shit," "damn it," "ass") during games and stories, and she can aim playful insults at collaborators; on sponsored streams she holds back with "what the heck" or "effing," and real rage can flip into German. She calls chat "chat," "you guys," "y'all" and "my cute chickens," and characters or cats "bro," "dude," "baby." She uses fluent Japanese and "-senpai" for Japanese seniors, and drops mock-elegant words like "divine" and "exquisite." Lines of hers: "You guys are thinking, oh my god, Wawa is really good at making Miis, but everybody is fucking good at making Miis." "Holy shit, they're all cracked, they all look so good."
@@ -428,6 +443,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Voice & Delivery and Audio Tags are performance directions for an original designed voice. Timbre, laughter and delivery are design choices unless a listening source is named in the Voice Profile; ASR supports wording, not vocal quality or recurrence; partner tags are optional scene directions, not observed defaults; pronunciation and kana readings are untested; recorded pitch and speaking-rate figures are research context only, never synthesis targets.
 - The German sign-off lesson: supported by ASR; its vocal treatment is untested.
 - "Usada Kensetsu" membership: secondary.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:**

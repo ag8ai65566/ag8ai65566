@@ -117,6 +117,14 @@ The middle column is provisional voice direction unless a source is named.
   patterned brown tights; black lace-up boots with pink laces. Emoji 💅✨. [Official VI1 key art, described by
   Claude] [Observed VI2 infobox, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/kikirara-vivi/ (4 images (01_a and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01_a, 02): pink-to-purple twin tails with black sparkle bows, a cream off-shoulder top with oversized purple sleeves over a black crop top, a black heart-shaped bag full of makeup brushes, baggy purple cargo pants with one leg pulled up over patterned tights and black lace-up boots with pink laces.
+- **Stage outfit** (gallery 01_b): a high ponytail with a black bow, a black-and-pink studded dress with a pink puffed jacket, a garter, one black patterned stocking and chunky black boots.
+- **New Year outfit (revealed 2026-01-02, her first)** (gallery 03): a side bun with flowers, a black-and-purple kimono with star patterns and a big pink bow, a short pink pleated skirt underneath and black sandals.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -213,7 +221,7 @@ Her official character profile presents Vivi as FLOW GLOW's makeup artist, a see
 Vivi is an active member of FLOW GLOW. She has no supernatural abilities; her lore is a performed persona. She debuted on 2024-11-09 through hololive DEV_IS as a member of FLOW GLOW, with Isaki Riona, Koganei Niko, Mizumiya Su and Rindo Chihaya. FLOW GLOW released its self-titled album on 2026-01-21 and the single "magic summer" later in 2026. She reached 700,000 subscribers during an endurance karaoke stream on 2026-08-11, and her first solo original, "Vivid Cute," came out digitally on 2026-08-28. She plays games with Usada Pekora ("PekoVivi"), and Marine, Vivi and Pekora performed together as MVP (2026).
 
 ## [SW] Physical Description
-Vivi's avatar is 161 cm tall, with long twin tails that fade from pink to purple, black sparkle-patterned bows and blue eyes. She wears a cream off-shoulder top with oversized purple sleeves over a black crop top, baggy purple cargo pants with one leg pulled up over patterned tights, black lace-up boots with pink laces, and a quilted black heart-shaped bag full of makeup brushes at her hip.
+Vivi's avatar is 161 cm tall, with long twin tails that fade from pink to purple, black sparkle-patterned bows and blue eyes. She wears a cream off-shoulder top with oversized purple sleeves over a black crop top, baggy purple cargo pants with one leg pulled up over patterned tights, black lace-up boots with pink laces, and a quilted black heart-shaped bag full of makeup brushes at her hip. Other outfits in the official gallery: New Year outfit (2026): a side bun with flowers, a black-and-purple kimono with star patterns and a big pink bow, a short pink pleated skirt underneath and black sandals.
 
 ## [SW] Dialogue Style
 Streams in Japanese: frank, quick and funny, bantering with chat and referring to herself as "Vivi," then a deliberately flat retort. Her casual endings (-yan, -nen, akan, honma) appear in the transcript; no regional accent is assigned to the voice. She teases and turns sincere when thanking her fans. When a story renders her speech in English or Chinese, preserve casual wording, frankness and deadpan timing without assigning a different real-world regional accent.
@@ -250,6 +258,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Goals (cosmetics collaborations, concerts with her own songs, smiles for fans): secondary references.
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「せーの！（ん〜）ヴィヴィー！」 as the final greeting — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-11「【#ホロドリ 】おはよう！朝のホロドリ！新エリアクリア目指す！【#綺々羅々ヴィヴィ #hololive  #FLOWGLOW】」 <https://www.youtube.com/watch?v=1jfrtUlxO0E> (checked 2026-10-31) at 5801 s); 「せーの！んーーヴィヴィ〜！」 and 「おつヴィヴィ〜！」 — secondary (ホロライブ非公式wiki（seesaawiki）「綺々羅々ヴィヴィ」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%E5%BA%A1%B9%CD%E5%A1%B9%A5%F4%A5%A3%A5%F4%A5%A3> (checked 2026-10-31)).
 - Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Kikirara Vivi): official profile and

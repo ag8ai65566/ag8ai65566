@@ -118,6 +118,15 @@ The middle column is provisional voice direction unless a source is named.
   platform boots with red laces; small yellow "caution" stickers everywhere. Her mascot is Inu, a small orca in a
   red-and-white "Caution" life jacket. Emoji 🎣. [Official CH1] [Observed CH2 §Appearance, §Mascot, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/sakamata-chloe/ (5 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): grey hair with a black streak under a black orca hood with red plaid bows, a white frilled camisole with black straps and red ribbons, a red plaid skirt, an oversized black jacket with belts and yellow tape, garters with torn black stockings and black platform boots with red soles.
+- **Kimono** (gallery 03): hair up with red flowers and a dangling hairpin, a black-and-white kimono with gold wave patterns and a black fur collar, a red cord at her thigh and sandals.
+- **Gothic outfit** (gallery 04): drill twin tails with black bows, a red jacket with black bows over a black-and-grey corset dress with a heart cut-out, one fishnet and one black stocking, and black platform shoes.
+- **School outfit** (gallery 05): long hair with a clip, a pink cardigan with black bows over a white shirt with a red bow, a red plaid skirt, white leg warmers and loafers.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -214,7 +223,7 @@ Chloe is Secret Society holoX's orca intern, its fixer and cleaner. Her official
 Chloe is a hololive affiliate, formerly an active member of Secret Society holoX. She has no supernatural abilities; her lore is a performed persona. She debuted on 2021-11-29 as the fourth member of Secret Society holoX, and reached 500,000 subscribers in her first week and a million in 2023. She released ten numbered original songs by January 2025. She took part in the original lineup of Suisei's Hoshimatic Project, "Magical Girl holoWitches!" and the "Kanaken" Minecraft company, and concluded her regular activities on 2025-01-26, holding a graduation live and remaining an affiliate; she sang "Sparkle" at Murasaki Shion's graduation live (2025-04-26). After 2025-01-26 she is an affiliate rather than part of holoX's four-member performing lineup.
 
 ## [SW] Physical Description
-Chloe's avatar is 148 cm tall, with long wavy gray hair, a side braid, X-shaped hair pins, red eyes and a small fang, under a black orca hood with white "eyes" and red plaid bows. She wears an open, off-shoulder black jacket lined in quilted red and strapped with belts, a white ruffled top, a collar with a heart charm, a studded belt with chains, a red plaid skirt over black ruffles, torn black thigh-highs with garters and black boots with red laces and red platform soles, all marked with yellow "caution" tape. Inu, a tiny orca in a "Caution" life jacket, is her mascot.
+Chloe's avatar is 148 cm tall, with long wavy gray hair, a side braid, X-shaped hair pins, red eyes and a small fang, under a black orca hood with white "eyes" and red plaid bows. She wears an open, off-shoulder black jacket lined in quilted red and strapped with belts, a white ruffled top, a collar with a heart charm, a studded belt with chains, a red plaid skirt over black ruffles, torn black thigh-highs with garters and black boots with red laces and red platform soles, all marked with yellow "caution" tape. Inu, a tiny orca in a "Caution" life jacket, is her mascot. Other outfits in the official gallery: Kimono: hair up with red flowers and a dangling hairpin, a black-and-white kimono with gold wave patterns and a black fur collar, a red cord at her thigh and sandals; Gothic outfit: drill twin tails with black bows, a red jacket with black bows over a black-and-grey corset dress with a heart cut-out, one fishnet and one black stocking; School outfit: long hair with a clip, a pink cardigan with black bows over a white shirt with a red bow, a red plaid skirt.
 
 ## [SW] Dialogue Style
 She talks in connected, run-on phrasing, refers to herself in the third person as 「沙花叉」 (Sakamata) and calls her viewers 「飼育員」 (shiikuin, Handlers). She opens like a meal (「いただきまーす」), teases seniors and friends, and turns a stray question into a poll of chat (「いつからおじさんなの」, "since when are you an old man?").
@@ -251,6 +260,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - r02 status marks: Amane Kanata graduated on 2025-12-27: her announcement <https://x.com/amanekanatach/status/1996849896578527269>; Dengeki Online <https://dengekionline.com/article/202512/59482> (checked 2026-11-27).
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「ではな〜」 — two-model ASR (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2024-11-21「【 雑談 】ねぇねぇおはなししよ【ホロライブ/沙花叉クロヱ】」 <https://www.youtube.com/watch?v=Myw1OMa2wvQ> (checked 2026-10-31) at 15354 s; Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2024-06-19「【 ハースストーン 】バトグラ雑談！ねぇアプデの新要素めちょおもろいから皆やって！【ホロライブ/沙花叉クロヱ】」 <https://www.youtube.com/watch?v=A67M6BdsSBQ> (checked 2026-10-31) at 12366 s).
 - Ties to the FLOW GLOW cards (added 2026-11-27 by author order; Claude only, GPT review pending): archived titles on both channels where listed in the Relationship Map row; covers and dance shorts show that the upload happened, not how close the members are.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add holoX in full): official profile

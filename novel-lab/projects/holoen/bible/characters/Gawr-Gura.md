@@ -228,6 +228,17 @@ Real lines first; Style demos after.
 - Mascot: Bloop, a long-time friend kept in a bubble "for the better," wearing a can marked "emergency
   ration." [Observed G2 §Mascots and fans; G3-dBK0gKW61NU]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/gawr-gura/ (7 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): a blue shark hoodie whose hood has teeth and whose front has a toothy mouth, blue socks, white sneakers, her shark tail and a coral-blue trident.
+- **Cat-ear outfit (#CatShark, revealed 2021-05-06; the cat ears match the hashtag)** (gallery 03): cat ears, a side ponytail, a white puff-sleeved blouse under a navy button dress, a blue shoulder bag and platform sandals.
+- **Greek-style outfit** (gallery 04): a gold laurel wreath, braids, a white off-shoulder dress fading to blue, a sheer light-blue wrap, a gold belt, gladiator sandals and her trident.
+- **Kimono-style outfit** (gallery 05): twin buns with leaf-and-berry ornaments, a short blue-and-white kimono dress with a fur collar and a navy obi, white socks and sandals.
+- **Hoodie-and-skirt outfit** (gallery 06): a side tail, a light-blue zip hoodie over a white shirt with a blue tie, a blue pleated skirt, white socks and a bandage on one knee.
+- **Winter outfit (#snowshark, revealed 2025-01-26; matched by the hashtag)** (gallery 07): an X-shaped hair clip, a navy coat with fluffy white trim and pom-poms, a red plaid scarf, grey socks and beige boots.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -367,7 +378,7 @@ Gura streamed as a shark from Atlantis playing a fearsome apex predator, and on 
 She has no supernatural abilities; her lore is a performed persona. Gura is a VTuber and a hololive alum: she graduated from hololive -Myth- on May 1, 2025. Her lore, which she played for laughs, is a persona, not literal: a descendant of the Lost City of Atlantis who swam to land because it was "so boring down there," bought her clothes and shark hat in the human world, and talks to marine life. Her age jokes put her in the 9,000s, with a different number from one telling to the next. She keeps a long-time friend, Bloop, sealed in a bubble "for the better" and calls him her emergency rations. She debuted in hololive English -Myth- in September 2020, twelve minutes late, opening with a single "a" that became a meme, and won fans by singing city pop. Her fans are the chumbuds and her members are shrimps. She hosted The Fish Tank with Watson Amelia and sang "Q" with Mori Calliope. She said goodbye with a small concert and a reminder to keep swimming.
 
 ## [SW] Physical Description
-Gura's avatar is small, 141 cm, with white-silver hair streaked with blue, short pigtails tied with shark-face hair ties, cyan eyes and sharp shark teeth. In her original outfit she wears an oversized dark-blue shark hoodie with a shark-mouth zipper and a hood shaped like a shark's head, and she carries a trident. Her avatar's cyan shark tail is stitched up (in her lore, a rock fell on it).
+Gura's avatar is small, 141 cm, with white-silver hair streaked with blue, short pigtails tied with shark-face hair ties, cyan eyes and sharp shark teeth. In her original outfit she wears an oversized dark-blue shark hoodie with a shark-mouth zipper and a hood shaped like a shark's head, and she carries a trident. Her avatar's cyan shark tail is stitched up (in her lore, a rock fell on it). Other outfits in the official gallery: Cat-ear outfit (2021): cat ears, a side ponytail, a white puff-sleeved blouse under a navy button dress; Greek-style outfit: a gold laurel wreath, braids, a white off-shoulder dress fading to blue; Kimono-style outfit: twin buns with leaf-and-berry ornaments, a short blue-and-white kimono dress with a fur collar and a navy obi, white socks and sandals; Hoodie-and-skirt outfit: a side tail, a light-blue zip hoodie over a white shirt with a blue tie, a blue pleated skirt; Winter outfit (2025): an X-shaped hair clip, a navy coat with fluffy white trim and pom-poms, a red plaid scarf.
 
 ## [SW] Dialogue Style
 Soft, friendly, slightly goofy English that stumbles, repeats and restarts before committing ("I'm gonna, I'm gonna leave that there"). She talks in triplets ("hello hello hello," "wait wait wait," "okay okay okay," "goodbye goodbye goodbye") and piles on "oh my god," "oh no," "hold on," "come on." She calls her audience "you guys" or "everybody," fans "chumbuds," members "shrimps," and sometimes "stinkies." She uses sound effects instead of words ("Hoocha!", "Ka-chow!", "Parkour!"). Her swearing is usually softened ("heck," "freaking," "dang," "screw you," "shut up," "stupid") and delivered cutely; her gaming commentary also includes stronger language, including "what the hell," "shit," "you bastard" and "fuck." Crude jokes arrive deadpan. She echoes chat in a mocking voice, puts on pompous mock-formality before a punchline, and sprinkles in tiny bits of Japanese ("domo," "yabai," "arigato"). Her own words: "Hello, hello, hello, how's this one?" "Okay, okay, wait, okay, wait, wait." "Bro, you cooked."
@@ -399,6 +410,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Voice & Delivery and Audio Tags are performance directions for an original designed voice. Timbre, laughter and delivery are design choices unless a listening source is named in the Voice Profile; ASR supports wording, not vocal quality or recurrence; partner tags are optional scene directions, not observed defaults; pronunciation and kana readings are untested; recorded pitch and speaking-rate figures are research context only, never synthesis targets.
 - "Apex Predators" (with Botan): secondary pair name.
 - r02 status marks: Murasaki Shion graduated on 2025-04-26: Anime Corner <https://animecorner.me/hololive-vtuber-murasaki-shion-to-graduate-on-april-26/> (checked 2026-11-27).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** the Kronii/Calli format: audio-status note, wiki cited by section

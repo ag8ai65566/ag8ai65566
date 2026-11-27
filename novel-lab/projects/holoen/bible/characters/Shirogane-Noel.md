@@ -118,6 +118,20 @@ The middle column is provisional voice direction unless a source is named.
   boots; she carries a flanged mace. Emoji ⚔️. [Official NO1 key art, described by Claude] [Observed NO2
   §Appearance, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/shirogane-noel/ (10 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original knight outfit** (gallery 01-02): short silver hair with a braid and a black headband, black-and-gold plate on her shoulders and arms over a white-and-black outfit, a white surcoat with a black crest, belts, black armored boots and a mace.
+- **Furisode** (gallery 03): a braid with a blue flower ornament, a blue kimono with white peonies and arrow-feather patterns, a pale obi and geta.
+- **Casual outfit** (gallery 04): round glasses, a choker, a white peasant blouse with laced sleeves, a brown plaid skirt, a crossbody bag, black socks and brown shoes.
+- **Waitress outfit** (gallery 05): long hair, a brown capelet with a bow over a white blouse, a corset with a frilled apron, white thigh-highs, a garter holster, red shoes and her mace on her back.
+- **School outfit** (gallery 06): a navy blazer over a light-blue zip hoodie with a blue bow, a pleated skirt, white socks and loafers.
+- **Ponytail stage outfit** (gallery 07): a high ponytail, a white-and-black halter top with belts and wide detached sleeves, black shorts with a garter and brown boots.
+- **Dark knight outfit** (gallery 08): curved black horns on her headband, a black armored dress with gold trim, long black gloves, garters, black boots and a huge black spiked mace.
+- **Loungewear** (gallery 09): round glasses, a low bun, a cream cardigan over a light-blue camisole and bloomers, leg warmers, slippers and a cat plush in her arms.
+- **Bridal-style idol dress** (gallery 10): a tiara and long braided hair, a white-and-navy off-shoulder ruffled dress with star-tipped panels, white gloves, white thigh-highs and navy heels.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -213,7 +227,7 @@ Noel is hololive Fantasy's silver-haired knight, the "Danchou" (commander) of he
 Noel is an active member of hololive's 3rd generation. She has no supernatural abilities; her lore is a performed persona. She debuted on 2019-08-08 in hololive's 3rd generation, the "hololive Fantasy" group, whose original lineup comprised Noel, Usada Pekora, Uruha Rushia, Shiranui Flare and Houshou Marine. She released the originals "Lyrical Monster" and "Ours" (2022), her first album "NOESANPO" (2023), "TREVIAN KNIGHT" (2025) and "KAGAMI YO KAGAMI" (2026), and sang at hololive Fantasy's "#OperationHeartfulCuties" concert (2026). With the English cast, she was Kiara's 22nd HOLOTALK guest (2022), a guest with Flare on Calli's HOLOYOI #02 (2023), in a team Mario Kart event with FUWAMOCO and Bae (2023) and in Gartic Phone with Mumei, Ina, Kronii, Elizabeth and Vivi (2025); FUWAMOCO danced to "TREVIAN KNIGHT."
 
 ## [SW] Physical Description
-Noel's avatar is 158 cm tall, with shoulder-length silver hair, a braid, a black-and-gold metal headband and green eyes. She wears black, gold-edged armor on one shoulder and both arms, a long white surcoat with navy trim and a heraldic panel, leather belts and pouches, and armored steel boots, and carries a flanged mace.
+Noel's avatar is 158 cm tall, with shoulder-length silver hair, a braid, a black-and-gold metal headband and green eyes. She wears black, gold-edged armor on one shoulder and both arms, a long white surcoat with navy trim and a heraldic panel, leather belts and pouches, and armored steel boots, and carries a flanged mace. Other outfits in the official gallery: Furisode: a braid with a blue flower ornament, a blue kimono with white peonies and arrow-feather patterns, a pale obi and geta; Casual outfit: round glasses, a choker, a white peasant blouse with laced sleeves; Waitress outfit: long hair, a brown capelet with a bow over a white blouse, a corset with a frilled apron; School outfit: a navy blazer over a light-blue zip hoodie with a blue bow, a pleated skirt, white socks and loafers; Ponytail stage outfit: a high ponytail, a white-and-black halter top with belts and wide detached sleeves, black shorts with a garter and brown boots; Dark knight outfit: curved black horns on her headband, a black armored dress with gold trim, long black gloves; Loungewear: round glasses, a low bun, a cream cardigan over a light-blue camisole and bloomers; Bridal-style idol dress: a tiara and long braided hair, a white-and-navy off-shoulder ruffled dress with star-tipped panels, white gloves.
 
 ## [SW] Dialogue Style
 Streams in Japanese in a cheerful, chatty voice, calling herself "Danchou" and her viewers "danin-san." She uses muscle-themed greetings (the official 「こんまっする〜」), recaps her week with old-fashioned endings (「まぁ色々ありましたな」, "well, quite a lot happened"), recommends games eagerly, and plays up mock jealousy about Flare as a comedy bit. When a story renders her speech in English or Chinese, keep the muscle puns, the "Danchou" self-reference and the soft voice under the armor.
@@ -246,6 +260,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - EN-cast items: archived metadata.
 - "Ohamassuru" and 「まぁ色々ありましたな」: shared ASR spans. "Konbanmassuru~": secondary transcription (the second model heard 「こんばんは」).
 - r02 Japanese greetings/sign-offs from the 2026-10-31 phrases research: 「おつまっする〜」 — ホロライブ非公式wiki（seesaawiki）「白銀ノエル」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C7%F2%B6%E4%A5%CE%A5%A8%A5%EB> (checked 2026-10-31) and two-model ASR 「では、おつまっする皆さん」 (Claude 語音辨識（日文；開頭 8 分鐘、結尾 7 分鐘，引用的句子再用第二個模型核對）：2026-10-18「【朝活雑談】このあとホロライブ甲子園2026本戦！！ドキドキだけどさんまありまっする💪🔥【白銀ノエル/ホロライブ】」 <https://www.youtube.com/watch?v=O3JHLJzRtGY> (checked 2026-10-31) at 4107 s); 「牛丼は〜？」→「飲み物ー！」 — secondary (ホロライブ非公式wiki（seesaawiki）「白銀ノエル」：あいさつ集（配信者側・視聴者側・コールアンドレスポンス）、呼称一覧（次要來源） <https://seesaawiki.jp/hololivetv/d/%C7%F2%B6%E4%A5%CE%A5%A8%A5%EB> (checked 2026-10-31)).
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-02, author order: add Shirogane Noel): official profile and

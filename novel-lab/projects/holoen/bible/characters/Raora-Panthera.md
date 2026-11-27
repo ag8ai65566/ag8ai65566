@@ -143,6 +143,15 @@ The middle column is provisional voice direction unless a source is named.
 - Pink is her color; her oshi mark is 🐱. Later looks include a 2025 New Year kimono, a 2026 Monster Hunter
   maid outfit with Rathalos armor, and a Chattino cape. [Observed RP2, secondary]
 
+### Outfits in the official profile gallery (checked 2026-11-27)
+Claude's reading of the gallery images on https://hololive.hololivepro.com/en/talents/raora-panthera/ (5 images (01 and 02 show the same original outfit)). Labels are descriptive
+unless a date and its source are given; the gallery may not include every seasonal outfit shown only on stream.
+
+- **Original outfit** (gallery 01-02): long pink hair with a white streak, panther ears, goggles on a black cap, a white-and-black bodysuit with red accents under an oversized magenta-and-white coat trailing black straps, garters, white thigh-highs, white heeled ankle boots, a spotted pink tail, a drawing pen and a little blue mascot plush.
+- **Kimono** (gallery 03): a fox mask on her head, twin tails, an off-shoulder white kimono with pink and gold patterns, a white fur stole, a blue flower obi ornament and sandals.
+- **Monster Hunter collaboration outfit (©CAPCOM)** (gallery 04): a maid headdress, a white-and-black maid dress with red armored sleeves, tan cloth panels with heart designs, black tights and red armored boots.
+- **School outfit** (gallery 05): glasses, very long braids tied with pink ribbons, a navy cardigan over a white shirt with a red bow, a blue plaid skirt, a thigh garter, leg warmers and loafers.
+
 ## Background Timeline
 | Date | Event | Relevance |
 |---|---|---|
@@ -262,7 +271,7 @@ Raora streams as "The Artist with the God Eyes," Justice's big cat sketch artist
 Raora is an active hololive member. She has no supernatural abilities; her lore is a performed persona. She is a VTuber whose lore makes her "The Artist with the God Eyes," a big cat whose all-seeing eyes make her suspect sketches uncannily accurate; in her lore she comes from the Romance Empire, abandoned a FUWAMOCO pursuit for crane games and left reporting duties for idol work. She debuted on 2024-06-22 (PDT) in hololive English -Justice-, won Best Art VTuber at the 2024 VTuber Awards, and held her 3D showcase on 2025-08-09 (PDT); later that month, at the 2025 English concert, she sang her original "Gacha×Gacha ADVENTURE!," "Neko Kaburi-Na" with Ina, Shiori and Oozora Subaru. She held her first birthday 3D live in May 2026, and at the 2026 Serendipity concert she formed the unit B.F.F with FUWAMOCO ("Inu Neko. Seishun Massakari"). Her representative color is pink; her fans are the Chattini.
 
 ## [SW] Physical Description
-Raora's avatar is 155 cm tall, with long pink hair streaked white, pink cat ears, a long fuzzy tail, tiny fangs and yellow eyes; an aquamarine eye-glow effect marks her performed God Eyes bit. She wears a white-and-black outfit under a pink off-shoulder coat with a gap for her tail, white stockings, a round black hat, silver-tinted goggles on her head, an artist's glove on her right hand and an amulet with a blue gem.
+Raora's avatar is 155 cm tall, with long pink hair streaked white, pink cat ears, a long fuzzy tail, tiny fangs and yellow eyes; an aquamarine eye-glow effect marks her performed God Eyes bit. She wears a white-and-black outfit under a pink off-shoulder coat with a gap for her tail, white stockings, a round black hat, silver-tinted goggles on her head, an artist's glove on her right hand and an amulet with a blue gem. Other outfits in the official gallery: Kimono: a fox mask on her head, twin tails, an off-shoulder white kimono with pink and gold patterns; Monster Hunter collaboration outfit: a maid headdress, a white-and-black maid dress with red armored sleeves, tan cloth panels with heart designs; School outfit: glasses, very long braids tied with pink ribbons, a navy cardigan over a white shirt with a red bow.
 
 ## [SW] Dialogue Style
 Warm, cheerful, rambling English, full of "like," "yeah," "you know," "honestly" and "guys"; she greets with "Ciao ciao!", and her titles and posts add Italian words such as "mamma mia" and "grazie." She greets and celebrates with a playful roar ("RAAAOO!") and her motto, "big cat means big trouble." When the Chattini ask for her plushies she lays down mock-stern rules ("Hear me out." … "First, you guys have no rights."; "it's not negotiable"; "No, thank you. I refuse."), covers her slips with mock innocence ("That was totally intentional, everyone"), declares herself "a hater now" about tiny things, complains playfully when a game goes wrong, and squeals at anything cute. She swears rarely and mildly ("frick"). Keep her fillers, repetitions and self-corrections; never invent grammar mistakes or an accent caricature.
@@ -295,6 +304,7 @@ Evidence labels, hedges and measurements moved out of the Sudowrite fields in r0
 - Romance Empire origin, the abandoned FUWAMOCO pursuit, leaving reporting for idol work: secondary-recorded lore.
 - No regional accent assigned (no in-scope listening check). "Chattini" pronunciation: unverified.
 - "Here to capture (you)r hearts! ~", "No break-a da pasta!", "Doya!", "mamma mia," "grazie!": wiki and her posts.
+- Outfits (added 2026-11-27 by author request): Claude's reading of the official profile gallery images; labels are descriptive, and a date is given only where a reveal title, hashtag or official visual ties the outfit to it. The Sudowrite field lists the other outfits in short form; the dossier's Appearance Anchors has the full descriptions.
 
 ## Merge Record
 - **Structure and evidence:** Claude's draft (2026-10-01): official profile (RP1), wiki (RP2, by section),
